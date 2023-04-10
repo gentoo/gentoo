@@ -4,6 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN/-/.}
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit distutils-r1 pypi
@@ -13,12 +15,10 @@ HOMEPAGE="
 	https://github.com/zopefoundation/zc.lockfile/
 	https://pypi.org/project/zc.lockfile/
 "
-SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
-S=${WORKDIR}/${PN/-/.}-${PV/_p/.post}
 
 LICENSE="ZPL"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 BDEPEND="
 	test? (

@@ -16,7 +16,7 @@ DESCRIPTION="Common PIM libraries"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 RDEPEND="
@@ -54,7 +54,7 @@ DEPEND="${RDEPEND}"
 src_test() {
 	# bugs 641730, 661330
 	local myctestargs=(
-		-E "(autocorrectiontest|pimcommon-translator-translatortest)"
+		-E "(autocorrectiontest|pimcommon-translator-translatorwidgettest)"
 	)
 
 	ecm_src_test

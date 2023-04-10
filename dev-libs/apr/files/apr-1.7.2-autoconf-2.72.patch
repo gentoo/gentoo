@@ -1,0 +1,23 @@
+https://src.fedoraproject.org/rpms/apr/raw/rawhide/f/apr-1.7.2-autoconf.patch
+
+Similar to https://github.com/apache/apr/commit/a15958a37a06f71c42c690278f9c958b93b7ee20.
+--- a/build/apr_common.m4
++++ b/build/apr_common.m4
+@@ -468,15 +468,8 @@ AC_DEFUN([APR_TRY_COMPILE_NO_WARNING],
+  fi
+  AC_COMPILE_IFELSE(
+   [AC_LANG_SOURCE(
+-   [
+-#ifndef PACKAGE_NAME
+-#include "confdefs.h"
+-#endif
+-   ]
+-   [[$1]]
+-   [int main(int argc, const char *const *argv) {]
++   [[$1]],
+    [[$2]]
+-   [   return 0; }]
+   )], [CFLAGS=$apr_save_CFLAGS
+ $3],  [CFLAGS=$apr_save_CFLAGS
+ $4])
+

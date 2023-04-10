@@ -15,7 +15,7 @@ DESCRIPTION="Library for gravatar integration"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 DEPEND="
@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}"
 src_test() {
 	# bug 624584 - needs internet connection
 	local myctestargs=(
-		-E "(gravatar-gravatarresolvurljobtest)"
+		-E "(gravatarresolvurljobtest)"
 	)
 	ecm_src_test
 }

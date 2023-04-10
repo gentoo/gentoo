@@ -15,7 +15,7 @@ net-fs/samba fam
 # Native inotify support is preferred on linux.
 kde-frameworks/kcoreaddons fam
 
-# Diego Elio Pettenò (2012-08-27)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp -pci
 
@@ -24,7 +24,7 @@ net-analyzer/net-snmp -pci
 # should use it until documentation improves.
 sys-fs/zfs kernel-builtin
 
-# Diego Elio Pettenò (2012-08-20)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-20)
 # The prevent-removal USE flag is only implemented for Linux.
 sys-auth/pam_mktemp -prevent-removal
 
@@ -32,13 +32,13 @@ sys-auth/pam_mktemp -prevent-removal
 # Masked in base/package.use.mask as Linux -only feature
 app-arch/libarchive -e2fsprogs
 
+# Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
+#
+# Unmask pdnsd's Linux-specific USE flags.
+net-dns/pdnsd -urandom
+
 # Diego E. Pettenò <flameeyes@gentoo.org> (2009-08-20)
 # Mask oss USE flag for PulseAudio; it's present for compatibility
 # with FreeBSD and other operating systems that have no better
 # interfaces, but people would probably abuse it with Linux as well.
 media-sound/pulseaudio-daemon oss
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
-#
-# Unmask pdnsd's Linux-specific USE flags.
-net-dns/pdnsd -urandom

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -69,7 +69,7 @@ src_configure() {
 	use cpupower || myconf="--disable-cpufreq"
 
 	mate_src_configure \
-		--libexecdir=/usr/libexec/mate-applets \
+		--libexecdir="${EPREFIX}"/usr/libexec/mate-applets \
 		$(use_with X x) \
 		$(use_with upower) \
 		$(use_with netlink nl) \

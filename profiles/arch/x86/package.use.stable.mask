@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
 # sci-libs/vtk is not stable on x86 and we don't want to complicate
 # newer maxima and geant stabilisation, bug #867547, #886975

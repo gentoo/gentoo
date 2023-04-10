@@ -4,7 +4,7 @@
 EAPI=8
 
 if [[ ${PV} != *9999* ]]; then
-	QT5_KDEPATCHSET_REV=5
+	QT5_KDEPATCHSET_REV=6
 	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 
@@ -38,8 +38,6 @@ QT5_TARGET_SUBDIRS=(
 QT5_GENTOO_PRIVATE_CONFIG=(
 	:sql
 )
-
-PATCHES=( "${FILESDIR}/${P}-CVE-2023-24607.patch" )
 
 src_configure() {
 	local myconf=(

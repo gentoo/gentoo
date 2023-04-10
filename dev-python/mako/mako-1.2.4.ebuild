@@ -4,19 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P^}
 DESCRIPTION="A Python templating language"
 HOMEPAGE="
 	https://www.makotemplates.org/
 	https://github.com/sqlalchemy/mako/
 	https://pypi.org/project/Mako/
 "
-SRC_URI="mirror://pypi/${MY_P:0:1}/${PN^}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"

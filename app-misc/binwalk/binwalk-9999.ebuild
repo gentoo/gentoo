@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} pypy3 )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit distutils-r1
 
@@ -24,6 +24,8 @@ SLOT="0"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.0-disable-test-coverage.patch
+	"${FILESDIR}"/2.3.3-tests.patch
+	"${FILESDIR}"/${PN}-2.3.3-syntax-fix.patch
 
 )
 

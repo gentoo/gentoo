@@ -4,14 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN/-/.}
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Tools for working with iterables. Complements itertools and more_itertools"
 HOMEPAGE="https://github.com/jaraco/jaraco.itertools"
-SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
-S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
 SLOT="0"

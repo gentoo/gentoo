@@ -15,7 +15,7 @@ S="${WORKDIR}/${P/-/_}"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
 
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 CP_DEPEND="dev-java/jakarta-servlet-api:4"
 

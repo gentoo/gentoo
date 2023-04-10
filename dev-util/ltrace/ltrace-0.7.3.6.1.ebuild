@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,11 +27,9 @@ DEPEND="${RDEPEND}
 	sys-libs/binutils-libs
 	test? ( dev-util/dejagnu )"
 
-# under musl tests need major work upstream, half of them does not work.
-RESTRICT="
-	!test? ( test )
-	elibc_musl? ( test )
-"
+# Effectively abandoned upstream. Extremely sensitive to the sandbox, versions
+# of core libraries, kernel security settings...
+RESTRICT="test"
 
 S=${WORKDIR}/${PN}-${LTRACE_V}
 

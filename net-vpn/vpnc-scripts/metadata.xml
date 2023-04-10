@@ -5,4 +5,8 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gitlab">openconnect/vpnc-scripts</remote-id>
+	</upstream>
 </pkgmetadata>

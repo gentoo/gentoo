@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH=${EGIT_BRANCH:-master}
 else
 	SRC_URI="https://github.com/anonbeat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Music management program designed for all music enthusiasts"

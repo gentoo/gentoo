@@ -1,4 +1,4 @@
-# Copyright 2018-2022 Gentoo Authors
+# Copyright 2018-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: libretro-core.eclass
@@ -69,17 +69,17 @@ fi
 # @DESCRIPTION:
 # Contains the real repo name of the core formatted as "repouser/reponame".
 # Needs to be set before inherit. Otherwise defaults to "libretro/${PN}"
-: ${LIBRETRO_REPO_NAME:="libretro/libretro-${LIBRETRO_CORE_NAME}"}
+: "${LIBRETRO_REPO_NAME:="libretro/libretro-${LIBRETRO_CORE_NAME}"}"
 
-: ${HOMEPAGE:="https://github.com/${LIBRETRO_REPO_NAME}"}
+: "${HOMEPAGE:="https://github.com/${LIBRETRO_REPO_NAME}"}"
 
 if [[ ${PV} == *9999 ]]; then
-	: ${EGIT_REPO_URI:="https://github.com/${LIBRETRO_REPO_NAME}.git"}
+	: "${EGIT_REPO_URI:="https://github.com/${LIBRETRO_REPO_NAME}.git"}"
 	inherit git-r3
 else
 	[[ -z "${LIBRETRO_COMMIT_SHA}" ]] && die "LIBRETRO_COMMIT_SHA must be set before inherit."
 	S="${WORKDIR}/${LIBRETRO_REPO_NAME##*/}-${LIBRETRO_COMMIT_SHA}"
-	: ${SRC_URI:="https://github.com/${LIBRETRO_REPO_NAME}/archive/${LIBRETRO_COMMIT_SHA}.tar.gz -> ${P}.tar.gz"}
+	: "${SRC_URI:="https://github.com/${LIBRETRO_REPO_NAME}/archive/${LIBRETRO_COMMIT_SHA}.tar.gz -> ${P}.tar.gz"}"
 fi
 inherit flag-o-matic toolchain-funcs
 

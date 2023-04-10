@@ -1,0 +1,19 @@
+This test is only activated for >= ruby32 because ruby32 adds support
+for assessing coverage within an eval. But the failure isn't anything
+to do with eval.
+
+The test tries to call 'ruby' which in Gentoo isn't (yet!) wrapped,
+so it ends up calling an older Ruby which then results in 0 coverage
+being found. Replace it with a string we can safely sed with the
+correct Ruby per-test.
+--- a/spec/coverage_for_eval_spec.rb
++++ b/spec/coverage_for_eval_spec.rb
+@@ -16,7 +16,7 @@ RSpec.describe "coverage for eval" do
+     end
+ 
+     context "foo" do
+-      let(:command) { "ruby eval_test.rb" }
++      let(:command) { "@GENTOO_RUBY@ eval_test.rb" }
+ 
+       it "records coverage for erb" do
+         expect(@stdout).to include(" 2 / 3 LOC")

@@ -5,15 +5,12 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+PYPI_PN="psycopg2"
 
-MY_PN="${PN}2"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="PostgreSQL database adapter for Python"
 HOMEPAGE="https://www.psycopg.org https://pypi.org/project/psycopg2/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3+"
 SLOT="2"

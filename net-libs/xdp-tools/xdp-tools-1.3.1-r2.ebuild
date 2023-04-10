@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/1.3.1-fix-btf__type_cnt-detection.patch
 	"${FILESDIR}"/1.3.1-no-Werror.patch
 	"${FILESDIR}"/1.3.1-xdpdump-clang.patch
+	"${FILESDIR}"/1.3.1-musl.patch
 )
 
 src_configure() {

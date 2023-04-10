@@ -60,7 +60,7 @@ IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
 	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
-	smartcard snappy spice ssh static static-user systemtap test udev usb
+	smartcard snappy spice ssh static-user systemtap test udev usb
 	usbredir vde +vhost-net virgl virtfs +vnc vte xattr xen
 	zstd"
 
@@ -130,14 +130,13 @@ REQUIRED_USE="
 	qemu_softmmu_targets_riscv64? ( fdt )
 	qemu_softmmu_targets_x86_64? ( fdt )
 	sdl-image? ( sdl )
-	static? ( static-user !alsa !gtk !jack !opengl !pam !pulseaudio !plugins !rbd !snappy !udev )
 	static-user? ( !plugins )
 	virgl? ( opengl )
 	virtfs? ( xattr )
 	vnc? ( gnutls )
 	vte? ( gtk )
 	multipath? ( udev )
-	plugins? ( !static !static-user )
+	plugins? ( !static-user )
 "
 for smname in ${IUSE_SOFTMMU_TARGETS} ; do
 	REQUIRED_USE+=" qemu_softmmu_targets_${smname}? ( seccomp ) "
@@ -284,10 +283,8 @@ BDEPEND="
 	)
 "
 CDEPEND="
-	!static? (
-		${ALL_DEPEND//\[static-libs(+)]}
-		${SOFTMMU_TOOLS_DEPEND//\[static-libs(+)]}
-	)
+	${ALL_DEPEND//\[static-libs(+)]}
+	${SOFTMMU_TOOLS_DEPEND//\[static-libs(+)]}
 	qemu_softmmu_targets_i386? ( ${X86_FIRMWARE_DEPEND} )
 	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )
 	qemu_softmmu_targets_ppc? ( ${PPC_FIRMWARE_DEPEND} )
@@ -295,10 +292,6 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
-	static? (
-		${ALL_DEPEND}
-		${SOFTMMU_TOOLS_DEPEND}
-	)
 	static-user? ( ${ALL_DEPEND} )"
 RDEPEND="${CDEPEND}
 	acct-group/kvm
@@ -640,7 +633,7 @@ qemu_src_configure() {
 			--enable-cap-ng
 			--enable-seccomp
 		)
-		local static_flag="static"
+		local static_flag="none"
 		;;
 	tools)
 		conf_opts+=(
@@ -650,7 +643,7 @@ qemu_src_configure() {
 			--enable-tools
 			--enable-cap-ng
 		)
-		local static_flag="static"
+		local static_flag="none"
 		;;
 	esac
 
@@ -663,7 +656,7 @@ qemu_src_configure() {
 	# We always want to attempt to build with PIE support as it results
 	# in a more secure binary. But it doesn't work with static or if
 	# the current GCC doesn't have PIE support.
-	if use ${static_flag}; then
+	if [[ ${static_flag} != "none" ]] && use ${static_flag}; then
 		conf_opts+=( --static --disable-pie )
 	else
 		tc-enables-pie && conf_opts+=( --enable-pie )

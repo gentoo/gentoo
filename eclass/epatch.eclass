@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: epatch.eclass
@@ -190,7 +190,7 @@ epatch() {
 		local patchname=${x##*/}
 
 		# Apply single patches, or forced sets of patches, or
-		# patches with ARCH dependant names.
+		# patches with ARCH dependent names.
 		#	???_arch_foo.patch
 		# Else, skip this input altogether
 		local a=${patchname#*_} # strip the ???_
@@ -272,7 +272,7 @@ epatch() {
 		fi
 
 		# Check for absolute paths in patches.  If sandbox is disabled,
-		# people could (accidently) patch files in the root filesystem.
+		# people could (accidentally) patch files in the root filesystem.
 		# Or trigger other unpleasantries #237667.  So disallow -p0 on
 		# such patches.
 		local abs_paths=$(grep -E -n '^[-+]{3} /' "${PATCH_TARGET}" | awk '$2 != "/dev/null" { print }')

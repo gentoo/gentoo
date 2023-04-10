@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/ipython[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/jupyter_core[${PYTHON_USEDEP}]
+	dev-python/jupyter-core[${PYTHON_USEDEP}]
 	>=dev-python/jupyterlab-server-2.10[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-1.16[${PYTHON_USEDEP}]
 	>=dev-python/nbclassic-0.2[${PYTHON_USEDEP}]
@@ -41,7 +41,7 @@ BDEPEND="
 		dev-python/openapi-core[${PYTHON_USEDEP}]
 		dev-python/openapi-spec-validator[${PYTHON_USEDEP}]
 		dev-python/pytest-console-scripts[${PYTHON_USEDEP}]
-		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]

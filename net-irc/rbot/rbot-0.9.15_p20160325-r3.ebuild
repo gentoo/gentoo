@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby27 ruby30"
 
 GITHUB_COMMIT="e358601cc521d8aced941eb928fae2d8c53cf0c2"
 inherit ruby-ng strip-linguas

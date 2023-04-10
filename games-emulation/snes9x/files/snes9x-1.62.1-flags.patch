@@ -1,0 +1,24 @@
+Avoid forcing -O3 and let users set these as wanted.
+--- a/libretro/Makefile
++++ b/libretro/Makefile
+@@ -579,6 +579,6 @@
+    CXXFLAGS += -O2 -DNDEBUG
+ else
+-   CFLAGS += -O3 -DNDEBUG
+-   CXXFLAGS += -O3 -DNDEBUG
++   CFLAGS += -DNDEBUG
++   CXXFLAGS += -DNDEBUG
+ endif
+ 
+--- a/unix/configure.ac
++++ b/unix/configure.ac
+@@ -65,9 +65,4 @@
+ 	AC_S9X_COMPILER_FLAG([-g],  [g])
+ 	AC_S9X_COMPILER_FLAG([-O0], [o0])
+-else
+-	AC_S9X_COMPILER_FLAG([-O3], [o3], [
+-		AC_S9X_COMPILER_FLAG([-O2], [o2], [
+-			AC_S9X_COMPILER_FLAG([-O1], [o1])])])
+-	AC_S9X_COMPILER_FLAG([-fomit-frame-pointer], [omit_frame_pointer])
+ fi
+ 

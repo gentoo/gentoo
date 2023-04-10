@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kopete/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="ssl v4l"
 
 # Available plugins
@@ -134,6 +134,13 @@ DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 "
 #	jingle? ( dev-libs/jsoncpp )
+
+src_prepare() {
+	ecm_src_prepare
+
+	# breaks with oscar disabled, bug 901487
+	cmake_run_in tests/protocols cmake_comment_add_subdirectory oscar
+}
 
 src_configure() {
 	local x x2

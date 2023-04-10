@@ -10,16 +10,16 @@ inherit distutils-r1
 
 DESCRIPTION="Removes commented-out code from Python files"
 HOMEPAGE="
-	https://github.com/myint/eradicate/
+	https://github.com/wemake-services/eradicate/
 	https://pypi.org/project/eradicate/
 "
 SRC_URI="
-	https://github.com/myint/eradicate/archive/${PV}.tar.gz
+	https://github.com/wemake-services/eradicate/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 distutils_enable_tests unittest

@@ -22,7 +22,7 @@ SLOT="0"
 QA_PKGCONFIG_VERSION="${PV}.0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
 	libcanberra? ( notification )
 	libnotify? ( notification )
@@ -56,7 +56,6 @@ COMMONDEPEND="
 		sys-apps/dbus
 	)
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
-	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
@@ -88,7 +87,7 @@ COMMONDEPEND="
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
-	webkit? ( net-libs/webkit-gtk:4 )
+	webkit? ( net-libs/webkit-gtk:4.1 )
 "
 
 DEPEND="${COMMONDEPEND}
@@ -113,12 +112,15 @@ PATCHES=(
 
 src_prepare() {
 	default
+	sed -e "s/webkit2gtk-4.0/webkit2gtk-4.1/" -i configure.ac || die
+
 	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
 		--disable-bsfilter-plugin
+		--disable-dillo-plugin
 		--disable-generic-umpc
 		--disable-jpilot #735118
 		--disable-python-plugin
@@ -141,7 +143,6 @@ src_configure() {
 		$(use_enable debug crash-dialog)
 		$(use_enable debug more-addressbook-debug)
 		$(use_enable debug more-ldap-debug)
-		$(use_enable dillo dillo-plugin)
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)

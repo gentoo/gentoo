@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOCS="README.markdown CONTRIBUTING.md CHANGELOG.md doc"
 RUBY_FAKEGEM_TASK_TEST="test:unit"
@@ -13,9 +13,9 @@ RUBY_FAKEGEM_EXTENSIONS=(ext/redcarpet/extconf.rb)
 
 inherit ruby-fakegem
 
-SRC_URI="https://github.com/vmg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A Ruby wrapper for Upskirt"
 HOMEPAGE="https://github.com/vmg/redcarpet"
+SRC_URI="https://github.com/vmg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

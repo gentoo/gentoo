@@ -6,6 +6,7 @@
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">spyder-ide/qtsass</remote-id>
 		<remote-id type="pypi">qtsass</remote-id>
 	</upstream>
 	<stabilize-allarches/>

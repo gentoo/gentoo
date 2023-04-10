@@ -18,7 +18,8 @@ fi
 DESCRIPTION="Open source RGB lighting control"
 HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
 LICENSE="GPL-2"
-# subslot is OPENRGB_PLUGIN_API_VERSION from https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
+# subslot is OPENRGB_PLUGIN_API_VERSION from
+# https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
 SLOT="0/2"
 
 RDEPEND="
@@ -41,6 +42,7 @@ BDEPEND="
 "
 
 PATCHES+=(
+	"${FILESDIR}"/${PN}-0.8-gcc-13.patch
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
 	"${FILESDIR}"/OpenRGB-0.8-includes.patch
 )

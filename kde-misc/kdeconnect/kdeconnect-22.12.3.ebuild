@@ -16,7 +16,7 @@ HOMEPAGE="https://kdeconnect.kde.org/ https://apps.kde.org/kdeconnect/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="bluetooth pulseaudio X"
 
 RESTRICT="test"
@@ -61,13 +61,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-libs/kpeoplevcard
+	dev-libs/plasma-wayland-protocols
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtmultimedia-${QTMIN}:5[qml]
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	net-fs/sshfs
 "
 BDEPEND="
-	dev-libs/plasma-wayland-protocols
 	>=dev-qt/qtwaylandscanner-${QTMIN}:5
 	dev-util/wayland-scanner
 "

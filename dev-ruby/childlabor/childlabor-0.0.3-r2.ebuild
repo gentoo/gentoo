@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="childlabor.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A scripting framework that replaces rake and sake"
+DESCRIPTION="Gem that helps manage child processes"
 HOMEPAGE="https://github.com/carllerche/childlabor"
 COMMIT_ID="6518b939dddbad20c7f05aa075d76e3ca6e70447"
 SRC_URI="https://github.com/carllerche/childlabor/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"

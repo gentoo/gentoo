@@ -26,7 +26,7 @@ SRC_URI="
 # use Creative Commons and the bundled SeriousProton is MIT-licensed.
 LICENSE="Apache-2.0 GPL-2 CC-BY-SA-3.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-cpp/nlohmann_json

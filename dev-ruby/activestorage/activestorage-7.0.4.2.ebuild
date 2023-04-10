@@ -23,7 +23,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
@@ -43,7 +43,7 @@ ruby_add_bdepend "
 	test? (
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/image_processing-1.2:0
-		=dev-ruby/minitest-5.15*:5
+		=dev-ruby/minitest-5.15*:*
 		dev-ruby/mini_magick
 		dev-ruby/mocha
 		dev-ruby/rake

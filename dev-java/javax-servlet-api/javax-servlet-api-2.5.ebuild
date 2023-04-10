@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/javax/servlet/servlet-api/${PV}/servlet-
 
 LICENSE="CDDL GPL-2"
 SLOT="2.5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"

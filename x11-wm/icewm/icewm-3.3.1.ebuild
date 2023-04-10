@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SRC_URI="https://github.com/ice-wm/icewm/releases/download/${PV}/${P}.tar.lz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE="+alsa ao bidi debug +gdk-pixbuf imlib nls truetype xinerama"
 
 # Tests broken in all versions, patches welcome, bug #323907, #389533
@@ -82,7 +82,7 @@ BDEPEND="
 
 pkg_pretend() {
 	if use gdk-pixbuf && use imlib ; then
-		einfo 'Confilcting USE flags have been enabled:'
+		einfo 'Conflicting USE flags have been enabled:'
 		einfo '"gdk-pixbuf" and "imlib" exclude each other!'
 		einfo 'Using "gdk-pixbuf".'
 	fi

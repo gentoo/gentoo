@@ -4,15 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="Keras_Preprocessing"
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
 
-MY_PN="Keras_Preprocessing"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Easy data preprocessing and data augmentation for deep learning models"
 HOMEPAGE="https://keras.io/"
-SRC_URI="https://files.pythonhosted.org/packages/source/${MY_PN::1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"

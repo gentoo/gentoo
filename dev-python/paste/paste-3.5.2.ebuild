@@ -4,19 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P="Paste-${PV}"
 DESCRIPTION="Tools for using a Web Server Gateway Interface stack"
 HOMEPAGE="
 	https://pythonpaste.readthedocs.io/en/latest/
 	https://github.com/cdent/paste/
 	https://pypi.org/project/Paste/
 "
-SRC_URI="mirror://pypi/${MY_P::1}/${PN^}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"

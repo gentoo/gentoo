@@ -38,7 +38,7 @@
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
-: ${KERNEL_DIR:=/usr/src/linux}
+: "${KERNEL_DIR:=/usr/src/linux}"
 
 # @ECLASS_VARIABLE: ECONF_PARAMS
 # @DEFAULT_UNSET
@@ -54,7 +54,7 @@
 # @ECLASS_VARIABLE: BUILD_TARGETS
 # @DESCRIPTION:
 # It's a string with the build targets to pass to make. The default value is "clean module"
-: ${BUILD_TARGETS:=clean module}
+: "${BUILD_TARGETS:=clean module}"
 
 # @ECLASS_VARIABLE: MODULE_NAMES
 # @DEFAULT_UNSET
@@ -177,7 +177,7 @@ RDEPEND="
 		)
 	${MODULES_OPTIONAL_USE:+)}"
 DEPEND="${RDEPEND}
-    ${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
+	${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
 	kernel_linux? ( virtual/linux-sources virtual/libelf )
 	${MODULES_OPTIONAL_USE:+)}"
 
@@ -340,7 +340,7 @@ get-KERNEL_CC() {
 # @USAGE: /path/to/the/modulename_without_extension
 # @RETURN: A file in /etc/modprobe.d
 # @DESCRIPTION:
-# This function will generate and install the neccessary modprobe.d file from the
+# This function will generate and install the necessary modprobe.d file from the
 # information contained in the modules exported parms.
 # (see the variables MODULESD_<modulename>_ENABLED, MODULESD_<modulename>_EXAMPLES,
 # MODULESD_<modulename>_ALIASES, MODULESD_<modulename>_ADDITION and MODULESD_<modulename>_DOCS).
@@ -679,7 +679,7 @@ linux-mod_src_install() {
 		insinto "${INSTALL_MOD_PATH}"/lib/modules/${KV_FULL}/${libdir}
 
 		# check here for CONFIG_MODULE_COMPRESS_<compression option> (NONE, GZIP, XZ, ZSTD)
-		# and similarily compress the module being built if != NONE.
+		# and similarly compress the module being built if != NONE.
 
 		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
 			xz -T$(makeopts_jobs) --memlimit-compress=50% -q ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
@@ -728,7 +728,7 @@ linux-mod_pkg_postinst() {
 
 # @FUNCTION: linux-mod_pkg_postrm
 # @DESCRIPTION:
-# It removes the package from the /var/lib/module-rebuild/moduledb database but it doens't
+# It removes the package from the /var/lib/module-rebuild/moduledb database but it doesn't
 # call /sbin/depmod because the modules are still installed.
 linux-mod_pkg_postrm() {
 	debug-print-function ${FUNCNAME} $*

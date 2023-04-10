@@ -11,6 +11,7 @@
 		the timew extensions directory).
 	</longdescription>
 	<upstream>
-		<remote-id type="github"> lauft/timew-report</remote-id>
+		<remote-id type="github">lauft/timew-report</remote-id>
+		<remote-id type="pypi">timew-report</remote-id>
 	</upstream>
 </pkgmetadata>

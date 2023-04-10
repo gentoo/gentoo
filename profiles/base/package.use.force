@@ -1,10 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Turner <mattst88@gentoo.org> (2022-12-02)
-# The patch we apply from Fedora doesn't apply.
->x11-terms/gnome-terminal-3.46.3 vanilla
-
 # Patrick McLean <chutzpah@gentoo.org> (2022-06-27)
 # Doesn't build with boost installed on the system, some deps require boost
 # so force the flag on until problem fixed upstream
@@ -52,6 +48,13 @@ dev-java/openjdk:17 system-bootstrap
 >=sys-devel/llvm-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
 >=sys-devel/llvm-14 llvm_targets_VE
 >=sys-devel/llvm-16 llvm_targets_LoongArch
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
+# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
+# distribution and rely on external providers like libxcrypt.
+# Here we are following that path too.
+<sys-libs/glibc-2.33-r2 crypt
+sys-libs/libxcrypt system compat
 
 # Sam James <sam@gentoo.org> (2021-03-08)
 # Broken without USE=unicode
@@ -130,13 +133,6 @@ sys-libs/libcxx libcxxabi
 # to avoid initramfs, he needs to use a custom .config and unforce
 # the flag.
 sys-kernel/vanilla-kernel initramfs
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
-# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
-# distribution and rely on external providers like libxcrypt.
-# Here we are following that path too.
-<sys-libs/glibc-2.33-r2 crypt
-sys-libs/libxcrypt system compat
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2

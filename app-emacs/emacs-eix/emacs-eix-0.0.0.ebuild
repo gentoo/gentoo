@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.3
-
 inherit elisp
 
 DESCRIPTION="Eix integration for GNU Emacs"

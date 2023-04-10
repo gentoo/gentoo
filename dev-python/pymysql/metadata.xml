@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">PyMySQL/PyMySQL</remote-id>
-		<remote-id type="pypi">PyMySQL</remote-id>
+		<remote-id type="pypi">pymysql</remote-id>
 	</upstream>
 </pkgmetadata>

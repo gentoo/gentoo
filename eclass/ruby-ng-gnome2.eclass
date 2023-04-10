@@ -30,7 +30,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 # @DESCRIPTION:
 # If set to 'yes', the test is run with virtx. Set before inheriting this
 # eclass.
-: ${RUBY_GNOME2_NEED_VIRTX:="no"}
+: "${RUBY_GNOME2_NEED_VIRTX:="no"}"
 
 inherit ruby-fakegem
 if [[ ${RUBY_GNOME2_NEED_VIRTX} == yes ]]; then

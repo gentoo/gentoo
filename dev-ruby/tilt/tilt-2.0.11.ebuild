@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ IUSE=""
 
 # Block on some of the potential test dependencies. These dependencies
 # are optional for the test suite, and we don't want to depend on all of
-# them to faciliate keywording and stabling.
+# them to facilitate keywording and stabling.
 ruby_add_bdepend "test? (
 	dev-ruby/erubis
 	dev-ruby/nokogiri

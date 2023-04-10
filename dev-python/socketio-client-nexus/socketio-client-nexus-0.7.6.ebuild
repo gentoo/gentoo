@@ -4,13 +4,13 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9..10} )
-inherit distutils-r1
+PYPI_NO_NORMALIZE=1
+PYPI_PN="socketIO-client-nexus"
 
-MY_PN="socketIO-client-nexus"
+inherit distutils-r1 pypi
+
 DESCRIPTION="A socket.io 2.x client library for Python"
 HOMEPAGE="https://github.com/nexus-devs/socketIO-client-2.0.3/ https://pypi.org/project/socketIO-client-nexus/"
-S="${WORKDIR}/${MY_PN}-${PV}"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

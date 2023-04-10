@@ -61,7 +61,7 @@ readonly ACCT_GROUP_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred GID for the new group.  This variable is obligatory, and its
-# value must be unique across all group packages.  This can be overriden
+# value must be unique across all group packages.  This can be overridden
 # in make.conf through ACCT_GROUP_<UPPERCASE_USERNAME>_ID variable.
 #
 # Overlays should set this to -1 to dynamically allocate GID.  Using -1
@@ -72,13 +72,13 @@ readonly ACCT_GROUP_NAME
 # If set to a non-null value, the eclass will require the group to have
 # specified GID.  If the group already exists with another GID, or
 # the GID is taken by another group, the install will fail.
-: ${ACCT_GROUP_ENFORCE_ID:=}
+: "${ACCT_GROUP_ENFORCE_ID:=}"
 
 
 # << Boilerplate ebuild variables >>
-: ${DESCRIPTION:="System group: ${ACCT_GROUP_NAME}"}
-: ${SLOT:=0}
-: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 ~loong m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
+: "${DESCRIPTION:="System group: ${ACCT_GROUP_NAME}"}"
+: "${SLOT:=0}"
+: "${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 ~loong m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}"
 S=${WORKDIR}
 
 

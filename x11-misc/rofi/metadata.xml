@@ -18,6 +18,6 @@
 		<flag name="windowmode">Enable normal window mode</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">DaveDavenport/rofi</remote-id>
+		<remote-id type="github">davatorium/rofi</remote-id>
 	</upstream>
 </pkgmetadata>

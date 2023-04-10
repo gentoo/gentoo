@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-  <maintainer type="person">
-    <email>andrewammerlaan@gentoo.org</email>
-    <name>Andrew Ammerlaan</name>
-  </maintainer>
   <maintainer type="project">
     <email>python@gentoo.org</email>
     <name>Python</name>

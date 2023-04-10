@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">geemus/netrc</remote-id>
+    <remote-id type="github">heroku/netrc</remote-id>
+    <remote-id type="rubygems">netrc</remote-id>
   </upstream>
 </pkgmetadata>

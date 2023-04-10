@@ -1,6 +1,10 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# jinqiang zhang <peeweep@0x0.ee> (2023-03-27)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan
+
 # Yixun Lan <dlan@gentoo.org> (2023-02-16)
 # USE=java depend on virtual/jdk:1.8 which is not support on RISC-V
 app-office/libreoffice java libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
@@ -101,7 +105,6 @@ dev-python/anyio test
 # Marek Szuba <marecki@gentoo.org> (2021-09-23)
 # mkdocs ecosystem only partly keyworded on riscv, has rather messy
 # Python-target requirements.
-dev-python/backrefs doc
 dev-python/pyspelling doc
 dev-python/wcmatch doc
 
@@ -145,11 +148,6 @@ net-analyzer/rrdtool rados
 app-crypt/heimdal afs
 # app-editors/xemacs reports arch as unknown, fails to build
 dev-lang/ruby xemacs
-
-# Yixun Lan <dlan@gentoo.org> (2021-08-20)
-# dependencies not keyworded/tested
-gnome-extra/sushi office
-gnome-base/gnome-shell browser-extension
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested

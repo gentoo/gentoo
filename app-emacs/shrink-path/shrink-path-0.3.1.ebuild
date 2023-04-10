@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24
-
 inherit elisp
 
 DESCRIPTION="Fish-style path truncation for GNU Emacs"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Matt Turner <tetromino@gentoo.org> (2023-02-15)
@@ -120,6 +120,7 @@ media-libs/rubberband jni
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
 media-gfx/graphicsmagick heif
+www-client/links avif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here

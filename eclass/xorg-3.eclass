@@ -33,7 +33,7 @@ _XORG_3_ECLASS=1
 GIT_ECLASS=""
 if [[ ${PV} == *9999* ]]; then
 	GIT_ECLASS="git-r3"
-	: ${XORG_EAUTORECONF:="yes"}
+	: "${XORG_EAUTORECONF:="yes"}"
 fi
 
 # If we're a font package, but not the font.alias one
@@ -55,7 +55,7 @@ fi
 # @DESCRIPTION:
 # If set to 'yes', the multilib support for package will be enabled. Set
 # before inheriting this eclass.
-: ${XORG_MULTILIB:="no"}
+: "${XORG_MULTILIB:="no"}"
 
 # we need to inherit autotools first to get the deps
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
@@ -69,14 +69,14 @@ unset FONT_ECLASS GIT_ECLASS
 # @DESCRIPTION:
 # If set to 'yes' and configure.ac exists, eautoreconf will run. Set
 # before inheriting this eclass.
-: ${XORG_EAUTORECONF:="no"}
+: "${XORG_EAUTORECONF:="no"}"
 
 # @ECLASS_VARIABLE: XORG_BASE_INDIVIDUAL_URI
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set up SRC_URI for individual modular releases. If set to an empty
 # string, no SRC_URI will be provided by the eclass.
-: ${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}
+: "${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}"
 
 # @ECLASS_VARIABLE: XORG_MODULE
 # @PRE_INHERIT
@@ -84,7 +84,7 @@ unset FONT_ECLASS GIT_ECLASS
 # The subdirectory to download source from. Possible settings are app,
 # doc, data, util, driver, font, lib, proto, xserver. Set above the
 # inherit to override the default autoconfigured module.
-: ${XORG_MODULE:="auto"}
+: "${XORG_MODULE:="auto"}"
 if [[ ${XORG_MODULE} == auto ]]; then
 	case "${CATEGORY}/${P}" in
 		app-doc/*)               XORG_MODULE=doc/     ;;
@@ -104,7 +104,7 @@ fi
 # @DESCRIPTION:
 # For git checkout the git repository might differ from package name.
 # This variable can be used for proper directory specification
-: ${XORG_PACKAGE_NAME:=${PN}}
+: "${XORG_PACKAGE_NAME:=${PN}}"
 
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}"
 
@@ -113,20 +113,20 @@ HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MOD
 # @DESCRIPTION:
 # Most X11 projects provide tarballs as tar.bz2 or tar.xz. This eclass defaults
 # to bz2.
-: ${XORG_TARBALL_SUFFIX:="bz2"}
+: "${XORG_TARBALL_SUFFIX:="bz2"}"
 
 if [[ ${PV} == *9999* ]]; then
-	: ${EGIT_REPO_URI:="https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}.git"}
+	: "${EGIT_REPO_URI:="https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}.git"}"
 elif [[ -n ${XORG_BASE_INDIVIDUAL_URI} ]]; then
 	SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/${XORG_MODULE}${P}.tar.${XORG_TARBALL_SUFFIX}"
 fi
 
-: ${SLOT:=0}
+: "${SLOT:=0}"
 
 # Set the license for the package. This can be overridden by setting
 # LICENSE after the inherit. Nearly all FreeDesktop-hosted X packages
 # are under the MIT license. (This is what Red Hat does in their rpms)
-: ${LICENSE:=MIT}
+: "${LICENSE:=MIT}"
 
 # Set up autotools shared dependencies
 # Remember that all versions here MUST be stable
@@ -181,7 +181,7 @@ BDEPEND+=" virtual/pkgconfig"
 # are required for. Default value is "no"
 #
 # Eg. XORG_DRI="opengl" will pull all dri dependent deps for opengl useflag
-: ${XORG_DRI:="no"}
+: "${XORG_DRI:="no"}"
 
 DRI_COMMON_DEPEND="
 	x11-base/xorg-server[-minimal]
@@ -215,7 +215,7 @@ fi
 # are required for. Default value is "no"
 #
 # Eg. XORG_DOC="manual" will pull all doc dependent deps for manual useflag
-: ${XORG_DOC:="no"}
+: "${XORG_DOC:="no"}"
 
 DOC_DEPEND="
 	doc? (

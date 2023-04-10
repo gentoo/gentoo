@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -76,6 +76,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DRUBY_LIB_INSTALL=${my_ruby_sitelibdir}
+		-DWITHOUT_JRUBY=ON
 		-DBLKID_LIBRARYDIR="${EPREFIX}/$(get_libdir)"
 	)
 	cmake_src_configure

@@ -245,7 +245,7 @@ cargo_gen_config() {
 
 	[source.crates-io]
 	replace-with = "gentoo"
-	local-registry = "/nonexistant"
+	local-registry = "/nonexistent"
 
 	[net]
 	offline = true
@@ -352,7 +352,7 @@ cargo_live_src_unpack() {
 	mkdir -p "${ECARGO_HOME}" || die
 
 	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
-	: ${ECARGO_REGISTRY_DIR:=${distdir}/cargo-registry}
+	: "${ECARGO_REGISTRY_DIR:=${distdir}/cargo-registry}"
 
 	local offline="${ECARGO_OFFLINE:-${EVCS_OFFLINE}}"
 

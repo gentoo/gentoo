@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_BINWRAP=""
 
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="ruby on rails is a web-application and persistance framework"
+DESCRIPTION="ruby on rails is a web-application and persistence framework"
 HOMEPAGE="https://rubyonrails.org"
 
 LICENSE="MIT"

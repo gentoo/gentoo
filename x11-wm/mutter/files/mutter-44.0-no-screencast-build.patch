@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/901809
+https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2935
+
+From 2c1eee4d0a27439e97ff5dee541ad138aa75aaed Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Sat, 25 Mar 2023 17:22:01 +0000
+Subject: [PATCH] backend: Fix build with -Dremote_desktop=false
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+../mutter-44.0/src/backends/meta-backend.c: In function â€˜meta_backend_real_post_initâ€™:
+../mutter-44.0/src/backends/meta-backend.c:560:7: error: â€˜MetaBackendPrivateâ€™ {aka â€˜struct _MetaBackendPrivateâ€™} has no member named â€˜remote_access_controllerâ€™
+  560 |   priv->remote_access_controller =
+      |       ^~
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/2655
+--- a/src/backends/meta-backend.c
++++ b/src/backends/meta-backend.c
+@@ -134,8 +134,8 @@ struct _MetaBackendPrivate
+ #endif
+   MetaSettings *settings;
+   MetaDbusSessionWatcher *dbus_session_watcher;
+-#ifdef HAVE_REMOTE_DESKTOP
+   MetaRemoteAccessController *remote_access_controller;
++#ifdef HAVE_REMOTE_DESKTOP
+   MetaScreenCast *screen_cast;
+   MetaRemoteDesktop *remote_desktop;
+ #endif
+-- 
+GitLab

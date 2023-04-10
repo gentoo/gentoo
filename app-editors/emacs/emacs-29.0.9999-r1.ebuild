@@ -498,7 +498,7 @@ src_install() {
 	X	   (while (and (cdr q) (not (string-match re (cadr q))))
 	X	     (setq q (cdr q)))
 	X	   (setcdr q (cons dir (delete dir (cdr q))))
-	X	   (setq Info-directory-list (prune-directory-list (cdr p)))))))
+	X	   (setenv "INFOPATH" (mapconcat 'identity (cdr p) ":"))))))
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 

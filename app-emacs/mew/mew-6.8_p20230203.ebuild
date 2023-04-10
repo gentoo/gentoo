@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-NEED_EMACS=24
 
 inherit elisp readme.gentoo-r1
 
@@ -14,7 +13,7 @@ S="${WORKDIR}/${PN^}-${COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="ssl l10n_ja"
 RESTRICT="test"
 

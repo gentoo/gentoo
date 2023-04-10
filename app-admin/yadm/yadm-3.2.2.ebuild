@@ -3,18 +3,20 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit bash-completion-r1 python-any-r1
 
 DESCRIPTION="Git based tool for managing dotfiles"
 HOMEPAGE="https://github.com/TheLocehiliosan/yadm"
-SRC_URI="https://github.com/TheLocehiliosan/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/TheLocehiliosan/${PN}/archive/${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE="test"
-
 RESTRICT="!test? ( test )"
 
 RDEPEND="

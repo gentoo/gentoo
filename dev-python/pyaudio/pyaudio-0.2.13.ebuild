@@ -4,18 +4,16 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
-
-MY_PN="PyAudio"
+PYPI_NO_NORMALIZE=1
+PYPI_PN="PyAudio"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings for PortAudio"
 HOMEPAGE="http://people.csail.mit.edu/hubert/pyaudio/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Tests work if you have the correct HW device(s) to test. 0.2.11-r1.
 RESTRICT="test"

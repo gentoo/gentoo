@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ inherit autotools multilib-minimal toolchain-funcs prefix verify-sig
 DESCRIPTION="Contains error handling functions used by GnuPG software"
 HOMEPAGE="https://www.gnupg.org/related_software/libgpg-error"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
-SRC_URI+=" mirror://gnupg/${PN}/${P}.tar.bz2.sig"
+SRC_URI+=" verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

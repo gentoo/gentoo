@@ -114,6 +114,7 @@ media-video/openshot
 media-video/vidify
 media-video/vidify-audiosync
 net-analyzer/nmapsi
+net-im/whatsie
 net-libs/signon-ui
 net-misc/nextcloud-client
 net-p2p/ktorrent:5

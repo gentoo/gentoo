@@ -4,13 +4,12 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="pyOpenSSL"
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 toolchain-funcs
-
-MY_PN=pyOpenSSL
-MY_P=${MY_PN}-${PV}
+inherit distutils-r1 toolchain-funcs pypi
 
 DESCRIPTION="Python interface to the OpenSSL library"
 HOMEPAGE="
@@ -18,8 +17,6 @@ HOMEPAGE="
 	https://github.com/pyca/pyopenssl/
 	https://pypi.org/project/pyOpenSSL/
 "
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"

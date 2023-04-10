@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/ipykernel-5.5.6[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_core-4.9.2[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-core-4.9.2[${PYTHON_USEDEP}]
 	>=dev-python/jedi-0.18[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.8[${PYTHON_USEDEP}]
 "

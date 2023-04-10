@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DOCS=( README.md )
 

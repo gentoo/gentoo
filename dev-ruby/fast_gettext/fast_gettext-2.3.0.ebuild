@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG Readme.md"
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="fast_gettext.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!"
+DESCRIPTION="GetText but 3.5x faster, 560x less memory, clean namespace and threadsafe!"
 HOMEPAGE="https://github.com/grosser/fast_gettext"
 SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

@@ -6,7 +6,8 @@ EAPI=7
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{9..11} )
-USE_RUBY="ruby27 ruby26"
+# ruby32 needs https://github.com/apache/subversion/commit/36e916ddaec4a5b1e64adee34337582f152805c5
+USE_RUBY="ruby27 ruby30 ruby31"
 
 inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module prefix python-any-r1 ruby-single xdg-utils
 
@@ -77,7 +78,6 @@ BDEPEND="
 	virtual/pkgconfig
 	!!<sys-apps/sandbox-1.6
 	doc? ( app-doc/doxygen )
-	kwallet? ( kde-frameworks/kdelibs4support:5 )
 	nls? ( sys-devel/gettext )
 	perl? ( dev-lang/swig )
 	ruby? ( dev-lang/swig )
@@ -184,7 +184,6 @@ src_configure() {
 		$(use_with gnome-keyring)
 		$(use_enable java javahl)
 		$(use_with java jdk "${JAVA_HOME}")
-		$(use_with kwallet)
 		$(use_enable nls)
 		$(use_enable plaintext-password-storage)
 		$(use_with sasl)
@@ -197,6 +196,12 @@ src_configure() {
 		--disable-static
 		--enable-svnxx
 	)
+
+	if use kwallet ; then
+		myconf+=( "--with-kwallet=/usr/include/:/usr/$(get_libdir)/" )
+	else
+		myconf+=( --without-kwallet )
+	fi
 
 	if use perl || use ruby; then
 		myconf+=( --with-swig )

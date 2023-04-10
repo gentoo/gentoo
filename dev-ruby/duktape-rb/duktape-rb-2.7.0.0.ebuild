@@ -15,13 +15,13 @@ inherit ruby-fakegem
 MY_PN=${PN/-/\.}
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="Ruby bindings to the Duktape JavaScript interpeter"
+DESCRIPTION="Ruby bindings to the Duktape JavaScript interpreter"
 HOMEPAGE="https://github.com/judofyr/duktape.rb"
 SRC_URI="https://github.com/judofyr/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~riscv"
+KEYWORDS="~amd64 ppc ~riscv ~sparc"
 
 COMMON_DEPEND="dev-lang/duktape:="
 DEPEND+="${COMMON_DEPEND}"

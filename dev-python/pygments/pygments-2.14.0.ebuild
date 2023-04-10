@@ -4,19 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1 bash-completion-r1
+inherit distutils-r1 bash-completion-r1 pypi
 
-MY_P=${P^}
 DESCRIPTION="Pygments is a syntax highlighting package written in Python"
 HOMEPAGE="
 	https://pygments.org/
 	https://github.com/pygments/pygments/
 	https://pypi.org/project/Pygments/
 "
-SRC_URI="mirror://pypi/${MY_P:0:1}/${PN^}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"

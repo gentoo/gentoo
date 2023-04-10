@@ -1,0 +1,65 @@
+https://github.com/rails/sprockets/commit/39490de3bdda3cb0b3aed16544b38b3771fbcca7
+
+From 39490de3bdda3cb0b3aed16544b38b3771fbcca7 Mon Sep 17 00:00:00 2001
+From: Benoit Daloze <eregontp@gmail.com>
+Date: Mon, 19 Dec 2022 21:16:29 +0100
+Subject: [PATCH] Make the URI tests pass with ruby-head
+
+* host is "" instead of nil, following the upstream change:
+  https://github.com/ruby/uri/commit/81263c9e94bd67ca01deee238842a88c2c8885f3
+
+--- a/lib/sprockets/uri_utils.rb
++++ b/lib/sprockets/uri_utils.rb
+@@ -50,7 +50,7 @@ module Sprockets
+       # Hack for parsing Windows "file:///C:/Users/IEUser" paths
+       path.gsub!(/^\/([a-zA-Z]:)/, '\1'.freeze)
+ 
+-      [scheme, host, path, query]
++      [scheme, host || '', path, query]
+     end
+ 
+     # Internal: Join file: URI component parts into String.
+--- a/test/test_uri_utils.rb
++++ b/test/test_uri_utils.rb
+@@ -38,22 +38,22 @@ class TestURIUtils < MiniTest::Test
+     assert_equal ['file', 'localhost', '/etc/fstab', nil], parts
+ 
+     parts = split_file_uri("file:///etc/fstab")
+-    assert_equal ['file', nil, '/etc/fstab', nil], parts
++    assert_equal ['file', '', '/etc/fstab', nil], parts
+ 
+     parts = split_file_uri("file:///usr/local/bin/ruby%20on%20rails")
+-    assert_equal ['file', nil, '/usr/local/bin/ruby on rails', nil], parts
++    assert_equal ['file', '', '/usr/local/bin/ruby on rails', nil], parts
+ 
+     parts = split_file_uri("file:///usr/local/var/github/app/assets/javascripts/application.js")
+-    assert_equal ['file', nil, '/usr/local/var/github/app/assets/javascripts/application.js', nil], parts
++    assert_equal ['file', '', '/usr/local/var/github/app/assets/javascripts/application.js', nil], parts
+ 
+     parts = split_file_uri("file:///C:/Documents%20and%20Settings/davris/FileSchemeURIs.doc")
+-    assert_equal ['file', nil, 'C:/Documents and Settings/davris/FileSchemeURIs.doc', nil], parts
++    assert_equal ['file', '', 'C:/Documents and Settings/davris/FileSchemeURIs.doc', nil], parts
+ 
+     parts = split_file_uri("file:///D:/Program%20Files/Viewer/startup.htm")
+-    assert_equal ['file', nil, 'D:/Program Files/Viewer/startup.htm', nil], parts
++    assert_equal ['file', '', 'D:/Program Files/Viewer/startup.htm', nil], parts
+ 
+     parts = split_file_uri("file:///C:/Program%20Files/Music/Web%20Sys/main.html?REQUEST=RADIO")
+-    assert_equal ['file', nil, 'C:/Program Files/Music/Web Sys/main.html', 'REQUEST=RADIO'], parts
++    assert_equal ['file', '', 'C:/Program Files/Music/Web Sys/main.html', 'REQUEST=RADIO'], parts
+   end
+ 
+   def test_join_uri_path
+@@ -61,10 +61,10 @@ class TestURIUtils < MiniTest::Test
+       join_file_uri('file', 'localhost', '/etc/fstab', nil)
+ 
+     assert_equal "file:///etc/fstab",
+-      join_file_uri('file', nil, '/etc/fstab', nil)
++      join_file_uri('file', '', '/etc/fstab', nil)
+ 
+     assert_equal "file:///usr/local/bin/ruby%20on%20rails",
+-      join_file_uri('file', nil, '/usr/local/bin/ruby on rails', nil)
++      join_file_uri('file', '', '/usr/local/bin/ruby on rails', nil)
+   end
+ 
+   def test_inverse_file_uri_functions

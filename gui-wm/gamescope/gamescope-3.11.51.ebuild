@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,8 +8,8 @@ inherit fcaps meson
 MY_PV=$(ver_rs 3 -)
 MY_PV="${MY_PV//_/-}"
 DESCRIPTION="Efficient micro-compositor for running games"
-HOMEPAGE="https://github.com/Plagman/gamescope"
-SRC_URI="https://github.com/Plagman/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/ValveSoftware/gamescope"
+SRC_URI="https://github.com/ValveSoftware/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 LICENSE="BSD-2"
 SLOT="0"

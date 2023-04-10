@@ -84,7 +84,7 @@ readonly KDE_ORG_CATEGORIES
 # @DESCRIPTION:
 # If unset, default value is mapped from ${CATEGORY} to corresponding upstream
 # category on invent.kde.org, with "kde" as fallback value.
-: ${KDE_ORG_CATEGORY:=${KDE_ORG_CATEGORIES[${CATEGORY}]:-kde}}
+: "${KDE_ORG_CATEGORY:=${KDE_ORG_CATEGORIES[${CATEGORY}]:-kde}}"
 
 # @ECLASS_VARIABLE: KDE_ORG_COMMIT
 # @PRE_INHERIT
@@ -99,12 +99,12 @@ readonly KDE_ORG_CATEGORIES
 # @DESCRIPTION:
 # If unset, default value is set to ${PN}.
 # Name of the package as hosted on kde.org mirrors.
-: ${KDE_ORG_NAME:=$PN}
+: "${KDE_ORG_NAME:=$PN}"
 
 # @ECLASS_VARIABLE: KDE_ORG_SCHEDULE_URI
 # @DESCRIPTION:
 # Known schedule URI of package or release group.
-: ${KDE_ORG_SCHEDULE_URI:="https://community.kde.org/Schedules"}
+: "${KDE_ORG_SCHEDULE_URI:="https://community.kde.org/Schedules"}"
 
 # @ECLASS_VARIABLE: KDE_SELINUX_MODULE
 # @PRE_INHERIT
@@ -112,7 +112,7 @@ readonly KDE_ORG_CATEGORIES
 # If set to "none", do nothing.
 # For any other value, add selinux to IUSE, and depending on that useflag
 # add a dependency on sec-policy/selinux-${KDE_SELINUX_MODULE} to (R)DEPEND.
-: ${KDE_SELINUX_MODULE:=none}
+: "${KDE_SELINUX_MODULE:=none}"
 
 case ${KDE_SELINUX_MODULE} in
 	none)   ;;

@@ -1,0 +1,59 @@
+https://foss.heptapod.net/pypy/cffi/-/commit/ab11bfa551697cd2b61fdaa571c7975c06e6912c
+
+From ab11bfa551697cd2b61fdaa571c7975c06e6912c Mon Sep 17 00:00:00 2001
+From: John David Anglin <dave.anglin@bell.net>
+Date: Sun, 18 Dec 2022 14:52:04 -0500
+Subject: [PATCH] Fix the test failures on hppa
+
+A couple of years ago the libffi port for hppa-linux was changed from using a
+trampoline executed on the stack to the function descriptor technique used by
+ia64. This doesn't require an executable stack and is simpler. However,
+function pointers need to have the PLABEL bit set in the pointer. As a result,
+a simple cast can't be used to convert closure pointers to function pointers.
+
+python-cffi uses its own closure allocation so the problem can't be fixed in
+libffi.
+
+I added a macro CFFI_FN to do the conversion. It shouldn't affect other
+architectures. There is a similar define in libffi.
+
+Fixes: https://bugs.debian.org/1024271
+
+--HG--
+branch : hppa
+--- a/c/_cffi_backend.c
++++ b/c/_cffi_backend.c
+@@ -60,6 +60,13 @@
+ # endif
+ #endif
+ 
++/* Convert from closure pointer to function pointer. */
++#if defined(__hppa__) && !defined(__LP64__)
++#define CFFI_FN(f) ((void (*)(void))((unsigned int)(f) | 2))
++#else
++#define CFFI_FN(f) ((void (*)(void))f)
++#endif
++
+ 
+ /* Define the following macro ONLY if you trust libffi's version of
+  * ffi_closure_alloc() more than the code in malloc_closure.h.
+@@ -3191,7 +3198,7 @@ cdata_call(CDataObject *cd, PyObject *args, PyObject *kwds)
+ 
+     Py_BEGIN_ALLOW_THREADS
+     restore_errno();
+-    ffi_call(&cif_descr->cif, (void (*)(void))(cd->c_data),
++    ffi_call(&cif_descr->cif, (void (*)(void)) CFFI_FN(cd->c_data),
+              resultdata, buffer_array);
+     save_errno();
+     Py_END_ALLOW_THREADS
+@@ -6394,7 +6401,7 @@ static PyObject *b_callback(PyObject *self, PyObject *args)
+         goto error;
+     Py_INCREF(ct);
+     cd->head.c_type = ct;
+-    cd->head.c_data = (char *)closure_exec;
++    cd->head.c_data = (char *)CFFI_FN(closure_exec);
+     cd->head.c_weakreflist = NULL;
+     closure->user_data = NULL;
+     cd->closure = closure;
+-- 
+GitLab

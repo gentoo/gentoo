@@ -103,16 +103,21 @@ ruby_implementation_depend() {
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
 _ruby_get_all_impls() {
-	local i
+	local i found_valid_impl
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
 			ruby19|ruby20|ruby21|ruby22|ruby23|ruby24|ruby25|ruby26|jruby)
 				;;
 			*)
+				found_valid_impl=1
 				echo ${i};;
 		esac
 	done
+
+	if [[ -z ${found_valid_impl} ]] ; then
+		die "No supported implementation in USE_RUBY."
+	fi
 }
 
 # @FUNCTION: ruby_samelib
@@ -699,7 +704,7 @@ ruby-ng_rspec() {
 	fi
 
 	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/rspec"* ]]; then
-		ewarn "Missing test dependency dev-ruby/rspec"
+		eqawarn "Missing test dependency dev-ruby/rspec"
 	fi
 
 	local rspec_params=
@@ -721,7 +726,7 @@ ruby-ng_rspec() {
 			;;
 	esac
 
-	${RUBY} -S rspec-${version} ${rspec_params} ${files} || die "rspec failed"
+	${RUBY} -S rspec-${version} ${rspec_params} ${files} || die -n "rspec failed"
 }
 
 # @FUNCTION: ruby-ng_cucumber
@@ -754,7 +759,32 @@ ruby-ng_cucumber() {
 			;;
 	esac
 
-	CUCUMBER_PUBLISH_QUIET=true ${RUBY} -S cucumber ${cucumber_params} "$@" || die "cucumber failed"
+	CUCUMBER_PUBLISH_QUIET=true ${RUBY} -S cucumber ${cucumber_params} "$@" || die -n "cucumber failed"
+}
+
+# @FUNCTION: ruby-ng_sus
+# @DESCRIPTION:
+# This is simply a wrapper around the sus-parallel command (executed by $RUBY})
+# which also respects TEST_VERBOSE and NOCOLOR environment variables.
+ruby-ng_sus() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/sus"* ]]; then
+		ewarn "Missing test dependency dev-ruby/sus"
+	fi
+
+	local sus_params=
+
+	# sus has a --verbose argument but it does not seem to impact the output (yet?)
+	case ${TEST_VERBOSE} in
+		1|yes|true)
+			sus_params+=" --verbose"
+			;;
+		*)
+			;;
+	esac
+
+	${RUBY} -S sus-parallel ${sus_params} "$@" || die -n "sus failed"
 }
 
 # @FUNCTION: ruby-ng_testrb-2

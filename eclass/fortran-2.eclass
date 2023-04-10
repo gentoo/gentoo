@@ -40,7 +40,7 @@ inherit toolchain-funcs
 # @DESCRIPTION:
 # Set to "1" in order to automatically have the eclass abort if the fortran
 # compiler lacks openmp support.
-: ${FORTRAN_NEED_OPENMP:=0}
+: "${FORTRAN_NEED_OPENMP:=0}"
 
 # @ECLASS_VARIABLE: FORTRAN_STANDARD
 # @DESCRIPTION:
@@ -48,7 +48,7 @@ inherit toolchain-funcs
 # Generally not needed as default is sufficient.
 #
 # Valid settings are any combination of: 77 90 95 2003
-: ${FORTRAN_STANDARD:=77}
+: "${FORTRAN_STANDARD:=77}"
 
 # @ECLASS_VARIABLE: FORTRAN_NEEDED
 # @DESCRIPTION:
@@ -61,7 +61,7 @@ inherit toolchain-funcs
 # DEPEND="lapack? ( virtual/fortran )"
 #
 # If unset, we always depend on virtual/fortran.
-: ${FORTRAN_NEEDED:=always}
+: "${FORTRAN_NEEDED:=always}"
 
 for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
@@ -107,7 +107,7 @@ fortran_int64_abi_fflags() {
 	elif [[ ${_FC} == ifort ]]; then
 		echo "-integer-size 64"
 	else
-		die "Compiler flag for 64bit interger for ${_FC} unknown"
+		die "Compiler flag for 64bit integer for ${_FC} unknown"
 	fi
 }
 
@@ -221,9 +221,9 @@ _fortran_test_function() {
 
 	local dialect
 
-	: ${F77:=$(tc-getFC)}
+	: "${F77:=$(tc-getFC)}"
 
-	: ${FORTRAN_STANDARD:=77}
+	: "${FORTRAN_STANDARD:=77}"
 	for dialect in ${FORTRAN_STANDARD}; do
 		case ${dialect} in
 			77) _fortran_compile_test "$(tc-getF77)" || \

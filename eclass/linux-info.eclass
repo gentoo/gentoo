@@ -4,9 +4,9 @@
 # @ECLASS: linux-info.eclass
 # @MAINTAINER:
 # kernel@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
 # @AUTHOR:
 # Original author: John Mylchreest <johnm@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: eclass used for accessing kernel related information
 # @DESCRIPTION:
 # This eclass is used as a central eclass for accessing kernel
@@ -45,7 +45,7 @@ _LINUX_INFO_ECLASS=1
 # @DESCRIPTION:
 # Do not error out in check_extra_config if CONFIG settings are not met.
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
-: ${CHECKCONFIG_DONOTHING:=""}
+: "${CHECKCONFIG_DONOTHING:=""}"
 
 # @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
@@ -85,8 +85,8 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # e.g.: ERROR_MTRR="MTRR exists in the .config but shouldn't!!"
 #
 # CONFIG_CHECK="CFG" with ERROR_<CFG>="Error Message" will die
-# CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dieing
-# CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dieing
+# CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dying
+# CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dying
 
 
 # @ECLASS_VARIABLE: KBUILD_OUTPUT
@@ -105,7 +105,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # the following names, in order: GNUmakefile, makefile and Makefile. Set this variable to the
 # proper Makefile name or the eclass will search in this order for it.
 # See https://www.gnu.org/software/make/manual/make.html
-: ${KERNEL_MAKEFILE:=""}
+: "${KERNEL_MAKEFILE:=""}"
 
 # @ECLASS_VARIABLE: KV_FULL
 # @OUTPUT_VARIABLE
@@ -156,7 +156,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # Do not check for kernel sources or a running kernel version.
 # Main use-case is for chroots.
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
-: ${SKIP_KERNEL_CHECK:=""}
+: "${SKIP_KERNEL_CHECK:=""}"
 
 # And to ensure all the weirdness with crosscompile
 inherit toolchain-funcs
@@ -290,7 +290,7 @@ _LINUX_CONFIG_EXISTS_DONE=
 # @FUNCTION: linux_config_qa_check
 # @INTERNAL
 # @DESCRIPTION:
-# Helper funciton which returns an error before the function argument is run if no config exists
+# Helper function which returns an error before the function argument is run if no config exists
 linux_config_qa_check() {
 	local f="$1"
 
@@ -679,7 +679,7 @@ get_running_version() {
 	KV_MINOR=$(ver_cut 2 ${kv_full})
 	KV_PATCH=$(ver_cut 3 ${kv_full})
 	KV_EXTRA="${KV_FULL#${KV_MAJOR}.${KV_MINOR}${KV_PATCH:+.${KV_PATCH}}}"
-	: ${KV_PATCH:=0}
+	: "${KV_PATCH:=0}"
 
 	return 0
 }

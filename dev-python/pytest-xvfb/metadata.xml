@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andrewammerlaan@gentoo.org</email>
-		<name>Andrew Ammerlaan</name>
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">pytest-xvfb</remote-id>
 		<remote-id type="github">The-Compiler/pytest-xvfb</remote-id>
+		<remote-id type="pypi">pytest-xvfb</remote-id>
 	</upstream>
 </pkgmetadata>

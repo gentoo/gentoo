@@ -1,0 +1,120 @@
+https://github.com/egonSchiele/contracts.ruby/issues/300
+https://github.com/egonSchiele/contracts.ruby/commit/88fd1d841615e59c873d7da64d050d3a251634dd
+
+From 88fd1d841615e59c873d7da64d050d3a251634dd Mon Sep 17 00:00:00 2001
+From: PikachuEXE <pikachuexe@gmail.com>
+Date: Wed, 5 Oct 2022 10:27:41 +0800
+Subject: [PATCH] * Update all references to Fixnum to Integer
+
+Deprecated in ruby 2.4
+--- a/lib/contracts/builtin_contracts.rb
++++ b/lib/contracts/builtin_contracts.rb
+@@ -95,7 +95,7 @@ def self.[](*vals)
+ 
+     # Takes a variable number of contracts.
+     # The contract passes if any of the contracts pass.
+-    # Example: <tt>Or[Fixnum, Float]</tt>
++    # Example: <tt>Or[Integer, Float]</tt>
+     class Or < CallableClass
+       def initialize(*vals)
+         super()
+@@ -120,7 +120,7 @@ def to_s
+ 
+     # Takes a variable number of contracts.
+     # The contract passes if exactly one of those contracts pass.
+-    # Example: <tt>Xor[Fixnum, Float]</tt>
++    # Example: <tt>Xor[Integer, Float]</tt>
+     class Xor < CallableClass
+       def initialize(*vals)
+         super()
+@@ -146,7 +146,7 @@ def to_s
+ 
+     # Takes a variable number of contracts.
+     # The contract passes if all contracts pass.
+-    # Example: <tt>And[Fixnum, Float]</tt>
++    # Example: <tt>And[Integer, Float]</tt>
+     class And < CallableClass
+       def initialize(*vals)
+         super()
+--- a/spec/builtin_contracts_spec.rb
++++ b/spec/builtin_contracts_spec.rb
+@@ -30,7 +30,7 @@ def passes(&some)
+   end
+ 
+   describe "Num:" do
+-    it "should pass for Fixnums" do
++    it "should pass for Integers" do
+       passes { @o.double(2) }
+     end
+ 
+--- a/spec/fixtures/fixtures.rb
++++ b/spec/fixtures/fixtures.rb
+@@ -100,11 +100,11 @@ def sum_three(vals)
+     end
+   end
+ 
+-  Contract ({ :name => String, :age => Fixnum }) => nil
++  Contract ({ :name => String, :age => Integer }) => nil
+   def person(data)
+   end
+ 
+-  Contract C::StrictHash[{ :name => String, :age => Fixnum }] => nil
++  Contract C::StrictHash[{ :name => String, :age => Integer }] => nil
+   def strict_person(data)
+   end
+ 
+@@ -119,7 +119,7 @@ def hash_complex_contracts(data)
+   def nested_hash_complex_contracts(data)
+   end
+ 
+-  Contract C::KeywordArgs[:name => String, :age => Fixnum] => nil
++  Contract C::KeywordArgs[:name => String, :age => Integer] => nil
+   def person_keywordargs(name: "name", age: 10)
+   end
+ 
+@@ -529,30 +529,30 @@ def initialize(day, month)
+     @month = month
+   end
+ 
+-  Contract C::None => Fixnum
++  Contract C::None => Integer
+   def silly_next_day!
+     self.day += 1
+   end
+ 
+-  Contract C::None => Fixnum
++  Contract C::None => Integer
+   def silly_next_month!
+     self.month += 1
+   end
+ 
+-  Contract C::None => Fixnum
++  Contract C::None => Integer
+   def clever_next_day!
+     return clever_next_month! if day == 31
+     self.day += 1
+   end
+ 
+-  Contract C::None => Fixnum
++  Contract C::None => Integer
+   def clever_next_month!
+     return next_year! if month == 12
+     self.month += 1
+     self.day = 1
+   end
+ 
+-  Contract C::None => Fixnum
++  Contract C::None => Integer
+   def next_year!
+     self.month = 1
+     self.day = 1
+@@ -610,7 +610,7 @@ def on_response(status, body)
+       body + "!"
+     end
+ 
+-    Contract Fixnum, String => String
++    Contract Integer, String => String
+     def on_response(status, body)
+       "error #{status}: #{body}"
+     end
+

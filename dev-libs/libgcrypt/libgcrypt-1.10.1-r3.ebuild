@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.1-fix-no-asm-hppa.patch
 	"${FILESDIR}"/${PN}-1.9.4-no-fgrep-libgcrypt-config.patch
 	"${FILESDIR}"/${PN}-1.10.1-configure-clang16.patch
+	"${FILESDIR}"/libgcrypt-1.10-build-Allow-build-with-Oz.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -102,7 +103,8 @@ multilib_src_configure() {
 	# https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=commitdiff;h=0b399721ce9709ae25f9d2050360c5ab2115ae29
 	# https://dev.gnupg.org/T5581
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102124
-	if use arm64 && tc-is-gcc && (($(gcc-major-version) == 11)) && (($(gcc-minor-version) <= 2)) && (($(gcc-micro-version) == 0)) ; then
+	if use arm64 && tc-is-gcc && (($(gcc-major-version) == 11)) &&
+		(($(gcc-minor-version) <= 2)) && (($(gcc-micro-version) == 0)) ; then
 		append-flags -fno-tree-loop-vectorize
 	fi
 

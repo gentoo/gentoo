@@ -1,0 +1,47 @@
+--- a/src/chemical-mime-database.xml.in.old	2023-03-20 16:22:36.841959114 +0100
++++ b/src/chemical-mime-database.xml.in	2023-03-20 16:26:38.315772298 +0100
+@@ -1418,7 +1418,7 @@
+ 		<cm:specification url="http://www.ebi.ac.uk/help/formats.html"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-basis" cm:support="no">
++	<mime-type type="chemical/x-turbomole-basis" cm:support="yes">
+ 		<_comment>Turbomole basis set</_comment>
+ 		<glob pattern="basis"/>
+ 		<sub-class-of type="text/plain"/>
+@@ -1432,7 +1432,7 @@
+ 		<cm:specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-control" cm:support="no">
++	<mime-type type="chemical/x-turbomole-control" cm:support="yes">
+ 		<_comment>Turbomole control file</_comment>
+ 		<glob pattern="control"/>
+ 		<sub-class-of type="text/plain"/>
+@@ -1448,7 +1448,7 @@
+ 		<cm:specification url="http://www.cosmologic.de/data/DOK_HTML/node230.html"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-coord" cm:support="no">
++	<mime-type type="chemical/x-turbomole-coord" cm:support="yes">
+ 		<_comment>Turbomole coordinate file</_comment>
+ 		<glob pattern="coord"/>
+ 		<glob pattern="*.tmol"/>
+@@ -1463,7 +1463,7 @@
+ 		<cm:specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-grad" cm:support="no">
++	<mime-type type="chemical/x-turbomole-grad" cm:support="yes">
+ 		<_comment>Turbomole gradient file</_comment>
+ 		<glob pattern="gradient"/>
+ 		<sub-class-of type="text/plain"/>
+@@ -1511,7 +1511,7 @@
+ 		<cm:specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-scfmo" cm:support="no">
++	<mime-type type="chemical/x-turbomole-scfmo" cm:support="yes">
+ 		<_comment>Turbomole SCF MO file</_comment>
+ 		<acronym>MO</acronym>
+ 		<expanded-acronym>Molecular Orbital</expanded-acronym>

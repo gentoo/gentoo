@@ -92,10 +92,6 @@ valgrind
 # sys-auth/elogind is not keyworded here.
 elogind
 
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
-
 # Paul de Vrieze <pauldv@gentoo.org>
 # There is no java in this profile (if there is it must be available). Without
 # this, sys-libs/db has unsolvable dependencies

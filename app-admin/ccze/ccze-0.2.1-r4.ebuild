@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools fixheadtails toolchain-funcs
 
 DESCRIPTION="A flexible and fast logfile colorizer"
-HOMEPAGE="https://github.com/madhouse/ccze/releases"
+HOMEPAGE="https://git.madhouse-project.org/archive/ccze"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

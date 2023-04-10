@@ -125,9 +125,6 @@ webengine
 -cpu_flags_x86_ssse3
 -cpu_flags_x86_xop
 
-# Unmask nvidia XvMC support
--nvidia
-
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
 -input_devices_vmmouse
@@ -139,7 +136,6 @@ webengine
 -video_cards_i965
 -video_cards_intel
 -video_cards_iris
--video_cards_nvidia
 -video_cards_siliconmotion
 -video_cards_vmware
 -video_cards_geode

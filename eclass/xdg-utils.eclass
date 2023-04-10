@@ -1,4 +1,4 @@
-# Copyright 2004-2022 Gentoo Authors
+# Copyright 2004-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xdg-utils.eclass
@@ -26,13 +26,13 @@ esac
 # @INTERNAL
 # @DESCRIPTION:
 # Directory where .desktop files database is stored
-: ${DESKTOP_DATABASE_DIR="/usr/share/applications"}
+: "${DESKTOP_DATABASE_DIR="/usr/share/applications"}"
 
 # @ECLASS_VARIABLE: MIMEINFO_DATABASE_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Directory where .desktop files database is stored
-: ${MIMEINFO_DATABASE_DIR:="/usr/share/mime"}
+: "${MIMEINFO_DATABASE_DIR:="/usr/share/mime"}"
 
 # @FUNCTION: xdg_environment_reset
 # @DESCRIPTION:

@@ -12,12 +12,12 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="ruby on rails is a web-application and persistance framework"
+DESCRIPTION="ruby on rails is a web-application and persistence framework"
 HOMEPAGE="https://rubyonrails.org"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 
 IUSE=""
 

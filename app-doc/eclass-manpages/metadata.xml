@@ -13,6 +13,6 @@
 		<name>Gentoo Portage tools team</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">projg2/eclass-manpages</remote-id>
+		<remote-id type="github">projg2/eclass-to-manpage</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -3,12 +3,17 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python port of the YUI CSS compression algorithm"
-HOMEPAGE="https://pypi.org/project/cssmin/ https://github.com/zacharyvoase/cssmin"
+HOMEPAGE="
+	https://pypi.org/project/cssmin/
+	https://github.com/zacharyvoase/cssmin/
+"
 
 LICENSE="MIT BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"

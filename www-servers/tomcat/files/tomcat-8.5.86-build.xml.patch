@@ -1,5 +1,3 @@
-diff --git a/build.xml b/build.xml
-index d407be0..7c69a1b 100644
 --- a/build.xml
 +++ b/build.xml
 @@ -1148,9 +1148,9 @@

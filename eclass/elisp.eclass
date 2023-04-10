@@ -125,7 +125,7 @@ elisp_src_prepare() {
 
 # @FUNCTION: elisp_src_configure
 # @DESCRIPTION:
-# Do nothing, because Emacs packages seldomly bring a full build system.
+# Do nothing, because Emacs packages seldom bring a full build system.
 
 elisp_src_configure() { :; }
 

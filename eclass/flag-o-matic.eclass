@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
@@ -888,15 +888,14 @@ no-as-needed() {
 	esac
 }
 
-# @FUNCTION: _test-compile-PROG
+# @FUNCTION: test-compile
 # @USAGE: <language> <code>
-# @INTERNAL
 # @DESCRIPTION:
 # Attempts to compile (and possibly link) the given program.  The first
 # <language> parameter corresponds to the standard -x compiler argument.
 # If the program should additionally be attempted to be linked, the string
 # "+ld" should be added to the <language> parameter.
-_test-compile-PROG() {
+test-compile() {
 	local lang=$1
 	local code=$2
 	shift 2
@@ -982,7 +981,7 @@ append-atomic-flags() {
 	local code
 
 	# first, ensure we can compile a trivial program
-	# this is because we can't distinguish if _test-compile-PROG
+	# this is because we can't distinguish if test-compile
 	# fails because -latomic is actually needed or if we have a
 	# broken toolchain (like due to bad FLAGS)
 	read -r -d '' code <<- EOF
@@ -996,7 +995,7 @@ append-atomic-flags() {
 	# let other pieces of the build fail later down the line than to
 	# make people think that something to do with atomic support is the
 	# cause of their problems.
-	_test-compile-PROG "c+ld" "${code}" || return
+	test-compile "c+ld" "${code}" || return
 
 	local bytesizes
 	[[ "${#}" == "0" ]] && bytesizes=( "1" "2" "4" "8" ) || bytesizes="${@}"
@@ -1017,7 +1016,7 @@ append-atomic-flags() {
 		EOF
 
 		# do nothing if test program links fine
-		_test-compile-PROG "c+ld" "${code}" && continue
+		test-compile "c+ld" "${code}" && continue
 
 		# ensure that the toolchain supports -latomic
 		test-flags-CCLD "-latomic" &>/dev/null || die "-latomic is required but not supported by $(tc-getCC)"
@@ -1025,7 +1024,7 @@ append-atomic-flags() {
 		append-libs "-latomic"
 
 		# verify that this did indeed fix the problem
-		_test-compile-PROG "c+ld" "${code}" || \
+		test-compile "c+ld" "${code}" || \
 			die "libatomic does not include an implementation of ${bytesize}-byte atomics for this toolchain"
 
 		# if any of the required bytesizes require -latomic, no need to continue

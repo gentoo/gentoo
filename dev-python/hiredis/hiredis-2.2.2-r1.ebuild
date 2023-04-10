@@ -14,7 +14,7 @@ SRC_URI="https://github.com/redis/hiredis-py/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 DEPEND=">=dev-libs/hiredis-1.0.0:="

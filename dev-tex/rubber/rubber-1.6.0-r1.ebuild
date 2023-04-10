@@ -15,7 +15,7 @@ else
 	UPSTREAM_PV=$(ver_rs 3 -)
 	SRC_URI="https://gitlab.com/latex-rubber/${PN}/-/archive/${UPSTREAM_PV}/${PN}-${UPSTREAM_PV}.tar.bz2"
 	S="${WORKDIR}/${PN}-${UPSTREAM_PV}"
-	KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+	KEYWORDS="amd64 ~ppc ~riscv ~x86"
 fi
 
 DESCRIPTION="A LaTeX wrapper for automatically building documents"

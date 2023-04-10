@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24
-
 inherit elisp
 
 DESCRIPTION="GNU Emacs major mode for editing PHP code"

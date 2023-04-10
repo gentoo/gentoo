@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=hatchling
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
-	>=dev-python/mkdocs_pymdownx_material_extras-2.1
+	>=dev-python/mkdocs-pymdownx-material-extras-2.1
 	dev-python/mkdocs-git-revision-date-localized-plugin
 	dev-python/mkdocs-minify-plugin
 "
@@ -27,7 +27,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 
 RDEPEND="
 	|| ( app-text/aspell app-text/hunspell )

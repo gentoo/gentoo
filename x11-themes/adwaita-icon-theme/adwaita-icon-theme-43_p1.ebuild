@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/adwaita-icon-theme"
 
 # Rely on Debian workaround until all involved upstreams agree on how to
 # fix this: https://gitlab.gnome.org/GNOME/evolution/-/issues/1848
-SRC_URI="${SRC_URI/_p*}.tar.xz
+SRC_URI="${SRC_URI/.p*}.tar.xz
 	branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}.orig-41.tar.xz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ninja-utils.eclass
@@ -34,12 +34,12 @@ _NINJA_UTILS_ECLASS=1
 # but other values can be set where NINJA_DEPEND will then be set
 # to a blank variable.
 # The default is set to "ninja".
-: ${NINJA:=ninja}
+: "${NINJA:=ninja}"
 
 # @ECLASS_VARIABLE: NINJA_DEPEND
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
-# Contains a set of build-time depenendencies based on the NINJA setting.
+# Contains a set of build-time dependencies based on the NINJA setting.
 
 # @ECLASS_VARIABLE: NINJAOPTS
 # @DEFAULT_UNSET

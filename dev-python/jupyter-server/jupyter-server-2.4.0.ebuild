@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/argon2-cffi[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-7.4.4[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_core-5.1.0[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-core-5.1.0[${PYTHON_USEDEP}]
 	dev-python/jupyter-server-terminals[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_events-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-6.4.4[${PYTHON_USEDEP}]
@@ -43,7 +43,7 @@ BDEPEND="
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/pytest-console-scripts[${PYTHON_USEDEP}]
-		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]

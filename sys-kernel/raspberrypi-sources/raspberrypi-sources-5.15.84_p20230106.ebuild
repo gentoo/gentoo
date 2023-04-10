@@ -27,7 +27,7 @@ SRC_URI="
 	${GENPATCHES_URI}
 "
 
-KEYWORDS="~arm ~arm64"
+KEYWORDS="arm arm64"
 
 PATCHES=("${FILESDIR}"/${PN}-5.15.32-gentoo-kconfig.patch)
 

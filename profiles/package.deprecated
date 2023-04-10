@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -16,6 +16,23 @@
 ## dev-foo/foo
 
 #--- END OF EXAMPLES ---
+
+# Sam James <sam@gentoo.org> (2023-04-07)
+# Inactive upstream, doesn't support newer Rubies.
+# Please port your package to use dev-ruby/erubis instead.
+dev-ruby/erubis
+
+# Sam James <sam@gentoo.org> (2023-04-07)
+# No longer supported upstream, fork of dev-ruby/listen.
+# Please port your package to use dev-ruby/listen instead.
+dev-ruby/sass-listen
+
+# Sam James <sam@gentoo.org> (2023-04-06)
+# net-libs/libgsasl and net-misc/gsasl are now merged together.
+# Please depend on net-misc/gsasl[server] for the server and
+# net-misc/gsasl[client] for the client.
+net-libs/libgsasl
+virtual/gsasl
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-03)
 # The same functionality is supported by dev-python/setuptools-scm-7.
@@ -125,10 +142,8 @@ dev-cpp/gtkmm:2.4
 dev-libs/libcroco
 dev-libs/libIDL
 dev-libs/libunique:1
-gnome-base/gconf
 gnome-base/libglade
 gnome-base/libgnomecanvas
-gnome-extra/gconf-editor
 media-libs/libart_lgpl
 x11-libs/gtksourceview:2.0
 x11-libs/libwnck:1

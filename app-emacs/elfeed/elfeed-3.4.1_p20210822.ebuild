@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.3
-
 inherit elisp
 
 DESCRIPTION="Emacs web feeds client"
@@ -20,7 +18,7 @@ fi
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="net-misc/curl[ssl]"
 

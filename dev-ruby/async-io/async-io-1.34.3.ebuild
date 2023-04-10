@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Provides support for asynchonous TCP, UDP, UNIX and SSL sockets"
+DESCRIPTION="Provides support for asynchronous TCP, UDP, UNIX and SSL sockets"
 HOMEPAGE="https://github.com/socketry/async-io"
 SRC_URI="https://github.com/socketry/async-io/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

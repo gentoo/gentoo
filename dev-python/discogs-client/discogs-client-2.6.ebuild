@@ -4,6 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="python3-discogs-client"
 PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
@@ -12,9 +14,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/joalla/discogs_client.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/p/python3-${PN}/python3-${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="amd64 ~x86"
-	S="${WORKDIR}/python3-${P}"
 fi
 
 DESCRIPTION="Continuation of the official Python API client for Discogs"

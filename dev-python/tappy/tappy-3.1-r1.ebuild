@@ -4,14 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="tap.py"
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
-MY_PN=tap.py
 DESCRIPTION="Test Anything Protocol (TAP) tools"
 HOMEPAGE="https://github.com/python-tap/tappy https://pypi.org/project/tap.py/"
-SRC_URI="mirror://pypi/${MY_PN::1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S=${WORKDIR}/${MY_PN}-${PV}
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -34,6 +34,12 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 "
 
+PATCHES=(
+	# backport
+	# https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/merge_requests/83
+	"${FILESDIR}"/${P}-x11-only.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Dsystemduserunitdir="$(systemd_get_userunitdir)"

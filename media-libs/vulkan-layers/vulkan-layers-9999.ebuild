@@ -37,9 +37,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES="${FILESDIR}/${PN}-1.3.239-Build-shared-libs.patch
-${FILESDIR}/${PN}-1.3.239-Export-symbols.patch
-"
+PATCHES="${FILESDIR}/${PN}-1.3.239-r2-Build-shared-libs.patch"
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -54,4 +52,8 @@ multilib_src_configure() {
 		-DBUILD_TESTS=OFF
 	)
 	cmake_src_configure
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name \*.a -delete || die
 }

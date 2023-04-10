@@ -241,14 +241,8 @@ _distutils_set_globals() {
 				'
 				;;
 			setuptools)
-				# || ( ... ) dep is a workaround for bug #892525
-				# It can be removed once >=67.2.0 is stable and replaced with
-				# a simple >=67.2.0 dep.
 				bdep+='
-					|| (
-						>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]
-						<dev-python/setuptools-65.7.1[${PYTHON_USEDEP}]
-					)
+					>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]
 					>=dev-python/wheel-0.38.4[${PYTHON_USEDEP}]
 				'
 				;;
@@ -445,7 +439,7 @@ unset -f _distutils_set_globals
 # This helper is meant for the most common case, that is a single Sphinx
 # subdirectory with standard layout, building and installing HTML docs
 # behind USE=doc.  It assumes it's the only consumer of the three
-# aforementioned functions.  If you need to use a custom implemention,
+# aforementioned functions.  If you need to use a custom implementation,
 # you can't use it.
 #
 # If your package uses additional Sphinx plugins, they should be passed

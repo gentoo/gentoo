@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-04-07)
+# dev-db/mysql not stable here
+dev-ruby/mysql2 mysql
+
 # Sam James <sam@gentoo.org> (2023-01-05)
 # dev-python/pythran fails tests on ppc32 right now, bug #880263
 dev-python/scipy fortran pythran
@@ -117,6 +121,7 @@ dev-python/diskcache test
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
+www-client/links avif
 
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)

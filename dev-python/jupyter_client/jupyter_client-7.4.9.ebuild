@@ -23,7 +23,7 @@ KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/entrypoints[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_core-4.9.2[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-core-4.9.2[${PYTHON_USEDEP}]
 	>=dev-python/nest_asyncio-1.5.4[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-23.0[${PYTHON_USEDEP}]

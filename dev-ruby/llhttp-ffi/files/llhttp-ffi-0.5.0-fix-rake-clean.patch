@@ -1,0 +1,18 @@
+https://github.com/bryanp/llhttp/commit/89551cd7fa539d7073e62ba8f6ba1dd70e73c36a
+
+From 89551cd7fa539d7073e62ba8f6ba1dd70e73c36a Mon Sep 17 00:00:00 2001
+From: Bryan Powell <bryan@metabahn.com>
+Date: Wed, 29 Mar 2023 07:27:08 -0700
+Subject: [PATCH] Fix ffi clean
+
+--- a/Rakefile
++++ b/Rakefile
+@@ -16,6 +16,8 @@ task :clean do
+   [
+     "./lib/llhttp/llhttp_ext.bundle"
+   ].each do |file|
++    next unless File.exist?(file)
++
+     FileUtils.rm(file)
+   end
+ end

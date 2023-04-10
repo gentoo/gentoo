@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: stardict.eclass
@@ -33,16 +33,16 @@ RESTRICT="strip"
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Suffix used for dictionaries.
-: ${DICT_SUFFIX:=${PN#stardict-[[:lower:]]*-}}
+: "${DICT_SUFFIX:=${PN#stardict-[[:lower:]]*-}}"
 
 # @ECLASS_VARIABLE: DICT_P
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The filestem used for downloading dictionaries from SourceForge.
-: ${DICT_P:=stardict-${DICT_PREFIX}${DICT_SUFFIX}-${PV}}
+: "${DICT_P:=stardict-${DICT_PREFIX}${DICT_SUFFIX}-${PV}}"
 
-: ${DESCRIPTION:="Another Stardict Dictionary"}
+: "${DESCRIPTION:="Another Stardict Dictionary"}"
 if [[ -n ${FROM_LANG} && -n ${TO_LANG} ]]; then
 	DESCRIPTION="Stardict Dictionary ${FROM_LANG} to ${TO_LANG}"
 fi

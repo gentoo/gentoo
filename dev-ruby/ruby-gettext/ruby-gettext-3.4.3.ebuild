@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_NAME="${PN/ruby-/}"
 RUBY_FAKEGEM_VERSION="${PV%_*}"
@@ -20,7 +20,7 @@ inherit ruby-fakegem
 DESCRIPTION="Native Language Support Library and Tools modeled after GNU gettext package"
 HOMEPAGE="https://ruby-gettext.github.io/"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 IUSE="doc test"
 SLOT="0"
 LICENSE="|| ( GPL-2 Ruby-BSD LGPL-3+ )"
@@ -54,6 +54,10 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
+	# Borrowed from Fedora
+	local -x LANG=C.UTF-8
+	local -x LANGUAGE=ja_JP.utf8
+
 	# Upstream tries to daisy-chain rake calls but they fail badly
 	# with our setup, so run it manually.
 	${RUBY} test/run-test.rb || die "tests failed"

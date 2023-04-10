@@ -21,6 +21,6 @@
 		like to say secure - but it's just a beta) and yet functional.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">z3APA3A/3proxy</remote-id>
+		<remote-id type="github">3proxy/3proxy</remote-id>
 	</upstream>
 </pkgmetadata>

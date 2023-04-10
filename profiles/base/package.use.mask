@@ -6,16 +6,28 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-09)
+# dev-java/jython is last-rited due to vulnerabilities.
+# See bug #825486.
+dev-java/bsf python
+dev-java/ant-apache-bsf python
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-04-05)
+# Currently broken on 11
+# https://bugs.gentoo.org/833097
+# https://bugs.gentoo.org/833098
+dev-java/openjdk:11 lto
+
+# Sam James <sam@gentoo.org> (2023-03-29)
+# Depends on last-rited kde-apps/kross-interpreters.
+kde-apps/kdesdk-meta ruby
+
 # Sam James <sam@gentoo.org> (2023-03-15)
 # Signing key is expired on Savannah. The same key is renewed elsewhere
 # and the signature is valid, but it's easier to disable verify-sig here
 # for now as it's not a new release.  Recent Gemato got stricter with this
 # which is how it appears now. See bug #900895.
 ~net-misc/wget-1.21.3 verify-sig
-
-# Matt Turner <mattst88@gentoo.org> (2023-03-03)
-# Depends on deprecated gnome-base/gconf and gtk+:2
-sys-power/apcupsd gnome
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-20)
 # dev-python/colorspacious is masked for removal.
@@ -356,6 +368,11 @@ sys-kernel/dracut test
 # Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
 kde-plasma/plasma-meta firewall
 
+# Tobias Klausmann <klausman@gentoo.org> (2021-04-16)
+# Newer (>=4.4.0) versions of Quodlibet have a different library structure, so
+# puddletag needs to be updated to handle that.
+media-sound/puddletag quodlibet
+
 # Joonas Niilola <juippis@gentoo.org> (2021-04-12)
 # Creates +130 GB worth of bindings, possibly Gentoo-related.
 # Upstream issue: https://phab.enlightenment.org/T8924
@@ -462,6 +479,10 @@ net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 # Highly experimental, may cause breakages when updating. Use with
 # caution!
 dev-libs/efl efl-one
+
+# Ross Charles Campbell <rossbridger.cc@gmail.com> (2020-09-21)
+# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE.
+media-libs/opencv contribovis
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
@@ -691,10 +712,6 @@ sys-boot/refind custom-cflags
 # Does not build
 sci-libs/linux-gpib php
 
-# Michał Górny <mgorny@gentoo.org> (2017-05-15)
-# Mask ruby20-only compatible packages
-~media-libs/libcaca-0.99_beta19 ruby
-
 # Mike Gilbert <floppym@gentoo.org> (2017-02-16)
 # Multiple test failures.
 sys-boot/grub:2 test
@@ -750,23 +767,15 @@ dev-java/icedtea cacao jamvm
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
 dev-lang/python berkdb
 
-# Lars Wendler <polynomial-c@gentoo.org> (2015-03-19)
-# >=games-strategy/freeciv-2.5.0 requires >=dev-lang/lua-5.2
-games-strategy/freeciv system-lua
-
 # Andrew Savchenko <bircoph@gentoo.org> (2015-02-11)
 # Cluster code is still under development, only base functionality
 # is implemented. Masking for testing and evaluation.
 app-admin/clsync cluster mhash
 
 # Brian Evans <grknight@gentoo.org> (2014-11-29)
-# Strongly recommened by upstream to disable lzo and zlib due to memory leaks
+# Strongly recommended by upstream to disable lzo and zlib due to memory leaks
 # https://github.com/groonga/groonga/issues/6 (Japanese)
 app-text/groonga lzo zlib
-
-# Jeroen Roovers <jer@gentoo.org> (2014-11-18)
-# Requires dev-lang/lua-5.2 (bug #253269)
-net-analyzer/nmap system-lua
 
 # Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # Most targets do not support ASAN/etc... #504200.
@@ -839,6 +848,10 @@ sci-libs/mathgl octave
 # Mask pdnsd's Linux-specific USE flags.
 net-dns/pdnsd urandom
 
+# Alexis Ballier <aballier@gentoo.org> (2011-02-16)
+# Win32 specific useflag for vlc. Can be used for cross-compiling.
+media-video/vlc directx
+
 # Tomas Touceda <chiiph@gentoo.org> (2010-04-13)
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
@@ -847,16 +860,3 @@ dev-lisp/clisp svm
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio-daemon system-wide
-
-# Alexis Ballier <aballier@gentoo.org> (2011-02-16)
-# Win32 specific useflag for vlc. Can be used for cross-compiling.
-media-video/vlc directx
-
-# Ross Charles Campbell <rossbridger.cc@gmail.com> (2020-09-21)
-# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE.
-media-libs/opencv contribovis
-
-# Tobias Klausmann <klausman@gentoo.org> (2021-04-16)
-# Newer (>=4.4.0) versions of Quodlibet have a different library structure, so
-# puddletag needs to be updated to handle that.
-media-sound/puddletag quodlibet

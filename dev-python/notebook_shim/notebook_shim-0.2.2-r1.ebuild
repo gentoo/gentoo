@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~riscv ~x86"
 
 RDEPEND="
 	<dev-python/jupyter-server-3[${PYTHON_USEDEP}]
@@ -26,7 +26,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
-		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
 	)
 "
 

@@ -35,7 +35,7 @@ RELEASE_VER=${PV}
 
 GCC_BOOTSTRAP_VER=20201208
 
-LOCALE_GEN_VER=2.22
+LOCALE_GEN_VER=2.23
 
 GLIBC_SYSTEMD_VER=20210729
 
@@ -139,7 +139,6 @@ RDEPEND="${COMMON_DEPEND}
 	app-alternatives/awk
 	sys-apps/gentoo-functions
 	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
-	!<net-misc/openssh-8.1_p1-r2
 "
 
 RESTRICT="!test? ( test )"

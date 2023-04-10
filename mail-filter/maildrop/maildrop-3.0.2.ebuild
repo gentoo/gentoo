@@ -32,8 +32,6 @@ CDEPEND="!mail-mta/courier
 	tools? (
 		!mail-mta/netqmail
 		!net-mail/courier-imap
-		!mail-mta/mini-qmail
-		!mail-mta/qmail-ldap
 	)"
 DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}

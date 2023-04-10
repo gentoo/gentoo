@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gnote"
 
 LICENSE="GPL-3+ FDL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

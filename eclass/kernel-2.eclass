@@ -26,7 +26,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Used as a comparison kernel version, which is used when
-# PV doesnt reflect the genuine kernel version.
+# PV doesn't reflect the genuine kernel version.
 # This gets set to the portage style versioning. ie:
 # CKV=2.6.11_rc4
 
@@ -87,7 +87,7 @@
 # @ECLASS_VARIABLE: K_EXTRAEINFO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# this is a new-line seperated list of einfo displays in
+# this is a new-line separated list of einfo displays in
 # postinst and can be used to carry additional postinst
 # messages
 
@@ -171,7 +171,7 @@
 # @ECLASS_VARIABLE: K_SYMLINK
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# if this is set, then forcably create symlink anyway
+# if this is set, then forcibly create symlink anyway
 
 # @ECLASS_VARIABLE: K_USEPV
 # @DEFAULT_UNSET
@@ -251,7 +251,7 @@
 # @ECLASS_VARIABLE: UNIPATCH_EXCLUDE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An addition var to support exlusion based completely
+# An addition var to support exclusion based completely
 # on "<passedstring>*" and not "<passedno#>_*"
 # this should _NOT_ be used from the ebuild as this is
 # reserved for end users passing excludes from the cli
@@ -299,13 +299,13 @@ if [[ ${CTARGET} == ${CHOST} && ${CATEGORY/cross-} != ${CATEGORY} ]]; then
 fi
 
 HOMEPAGE="https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel ${HOMEPAGE}"
-: ${LICENSE:="GPL-2"}
+: "${LICENSE:="GPL-2"}"
 
 # No need to run scanelf/strip on kernel sources/headers (bug #134453).
 RESTRICT="binchecks strip"
 
 # set LINUX_HOSTCFLAGS if not already set
-: ${LINUX_HOSTCFLAGS:="-Wall -Wstrict-prototypes -Os -fomit-frame-pointer -I${S}/include"}
+: "${LINUX_HOSTCFLAGS:="-Wall -Wstrict-prototypes -Os -fomit-frame-pointer -I${S}/include"}"
 
 
 # @FUNCTION: debug-print-kernel2-variables
@@ -393,7 +393,7 @@ detect_version() {
 	[[ -n ${KV_FULL} ]] && return 0
 
 	# CKV is used as a comparison kernel version, which is used when
-	# PV doesnt reflect the genuine kernel version.
+	# PV doesn't reflect the genuine kernel version.
 	# this gets set to the portage style versioning. ie:
 	#   CKV=2.6.11_rc4
 	CKV=${CKV:-${PV}}
@@ -487,7 +487,7 @@ detect_version() {
 	RELEASE=${RELEASE/_beta}
 	RELEASE=${RELEASE/_rc/-rc}
 	RELEASE=${RELEASE/_pre/-pre}
-	# We cannot trivally call kernel_is here, because it calls us to detect the
+	# We cannot trivially call kernel_is here, because it calls us to detect the
 	# version
 	#kernel_is ge 2 6 && RELEASE=${RELEASE/-pre/-git}
 	(( KV_MAJOR * 1000 + ${KV_MINOR:-0} >= 2006 )) && RELEASE=${RELEASE/-pre/-git}
@@ -928,7 +928,7 @@ postinst_sources() {
 	#	use deblob && \
 	#	K_SECURITY_UNSUPPORTED=deblob
 
-	# if we are to forcably symlink, delete it if it already exists first.
+	# if we are to forcibly symlink, delete it if it already exists first.
 	if [[ ${K_SYMLINK} -gt 0 ]]; then
 		if [[ -e ${EROOT}/usr/src/linux && ! -L ${EROOT}/usr/src/linux ]] ; then
 			die "${EROOT}/usr/src/linux exists and is not a symlink"
@@ -1024,7 +1024,7 @@ setup_headers() {
 # Universal function that will apply patches to source
 
 unipatch() {
-	local i x y z extention PIPE_CMD UNIPATCH_DROP KPATCH_DIR PATCH_DEPTH ELINE
+	local i x y z extension PIPE_CMD UNIPATCH_DROP KPATCH_DIR PATCH_DEPTH ELINE
 	local STRICT_COUNT PATCH_LEVEL myLC_ALL myLANG
 
 	# set to a standard locale to ensure sorts are ordered properly.
@@ -1070,10 +1070,10 @@ unipatch() {
 
 			[[ ${i} == *:* ]] && elog ">>> Strict patch levels not currently supported for tarballed patchsets"
 		else
-			extention=${i/*./}
-			extention=${extention/:*/}
+			extension=${i/*./}
+			extension=${extension/:*/}
 			PIPE_CMD=""
-			case ${extention} in
+			case ${extension} in
 				     xz) PIPE_CMD="xz -T$(makeopts_jobs) -dc";;
 				   lzma) PIPE_CMD="lzma -dc";;
 				    bz2) PIPE_CMD="bzip2 -dc";;
@@ -1087,7 +1087,7 @@ unipatch() {
 			PATCH_LEVEL=${i/*([^:])?(:)}
 			i=${i/:*/}
 			x=${i/*\//}
-			x=${x/\.${extention}/}
+			x=${x/\.${extension}/}
 
 			if [[ -n ${PIPE_CMD} ]]; then
 				if [[ ! -r ${i} ]]; then
@@ -1342,7 +1342,7 @@ getfilevar() {
 # @USAGE:
 # @DESCRIPTION:
 # This function sets ARCH_URI and ARCH_PATCH
-# with the neccessary info for the arch sepecific compatibility
+# with the necessary info for the arch specific compatibility
 # patchsets.
 
 detect_arch() {
@@ -1499,7 +1499,7 @@ kernel-2_pkg_preinst() {
 # @FUNCTION: kernel-2_src_install
 # @USAGE:
 # @DESCRIPTION:
-# Install headers or sources dependant on ETYPE
+# Install headers or sources dependent on ETYPE
 
 kernel-2_src_install() {
 	install_universal

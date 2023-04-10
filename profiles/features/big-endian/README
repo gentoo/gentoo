@@ -1,0 +1,12 @@
+features/big-endian: a common profile for big-endian architectures and
+sub-architectures.  This is for masks which are necessary due to problems which
+arise solely due to endian correctness.  Solving a problem which causes one of
+these masks does not guarantee that the package will automatically work on all
+big-endian platforms, but it is a prerequisite to work on any of them.
+
+Please be cautious about adding things here as it will likely affect a platform
+that has not been tested on.  A good heuristic to use is either:
+
+1) works on ppc64le and not on ppc64, or 2) work on 3 different little-endian
+platforms and not on 3 different big-endian platforms, and the BE platforms
+fail in the same way.

@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.16.0-musl.patch
 	"${FILESDIR}"/${PN}-0.16.2-tests.patch
 )
 

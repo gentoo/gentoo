@@ -162,6 +162,7 @@ media-libs/rubberband jni
 media-libs/gd avif heif
 net-libs/webkit-gtk avif
 media-gfx/graphicsmagick heif
+www-client/links avif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here

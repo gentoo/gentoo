@@ -16,7 +16,7 @@ S="${WORKDIR}/beanshell-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux"
 
 # There was 1 failure:
 # 1) do_not_access_non_open_methods(bsh.Java_9_Test)
@@ -40,29 +40,24 @@ DOCS=(
 	README.md
 )
 
+PATCHES=( "${FILESDIR}/bsh-2.1.1-skip-tests.patch" )
+
 JAVA_LAUNCHER_FILENAME="bsh-console"
 JAVA_MAIN_CLASS="bsh.Console"
 JAVA_RESOURCE_DIRS="resources/src"
 JAVA_SRC_DIR=( src bsf/src engine/src )
-JAVA_TEST_EXCLUDES=(
-	bsh.TestUtil	# invalid test class
-	bsh.TestFilter	# invalid test class
-	bsh.Class3_Test
-	bsh.Class13Test
-	bsh.Issue_7_Test
-	bsh.Issue_8_Test
-	bsh.OldScriptsTest # ?? As the name says Old...
-)
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_SRC_DIR="tests/junitTests/src"
+JAVA_TEST_SRC_DIR="tests"
 
 src_prepare() {
+	default
 	java-pkg-2_src_prepare
-	java-pkg_clean
+	java-pkg_clean ! -path "./tests/test-scripts/*"
 
 	# These classes are not in upstream jar file
-	rm engine/src/bsh/TestBshScriptEngine.java || die
-	rm src/bsh/JThis.java || die
+	mkdir -p tests/src/bsh/engine || die
+	mv {engine,tests}/src/bsh/TestBshScriptEngine.java || die
+	mv {,tests/}src/bsh/JThis.java || die
 
 	# java-pkg-simple.eclass wants resources in JAVA_RESOURCE_DIRS
 	mkdir resources || die
@@ -78,26 +73,6 @@ src_prepare() {
 		! -name 'CodeMap.html' \
 		! -name 'Manifest.*' \
 		| xargs cp --parent -t resources || die
-
-	# Some but not all tests in these test classes fail
-	sed \
-		-e '/import org.junit.Test/a import org.junit.Ignore;' \
-		-e '/diamond_operator()/i @Ignore' \
-		-e '/try_with_resource()/i @Ignore' \
-		-e '/integer_literal_enhancements()/i @Ignore' \
-		-i tests/junitTests/src/bsh/Project_Coin_Test.java || die
-
-	sed \
-		-e '/import org.junit.Test/a import org.junit.Ignore;' \
-		-e '/parsing_very_large_hex_literal()/i @Ignore' \
-		-e '/integer_literal_enhancements_binary()/i @Ignore' \
-		-e '/parsing_large_hex_literal()/i @Ignore' \
-		-i tests/junitTests/src/bsh/NumberLiteralTest.java || die
-
-	sed \
-		-e '/import org.junit.Test/a import org.junit.Ignore;' \
-		-e '/define_interface_with_constants()/i @Ignore' \
-		-i tests/junitTests/src/bsh/ClassGeneratorTest.java || die
 }
 
 src_test() {
@@ -106,11 +81,35 @@ src_test() {
 	#                                                       ^
 	#   symbol:   class BshScriptEngineFactory
 	#   location: class Issue_55_Test
+#	cp {engine,tests}/src/bsh/engine/BshScriptEngineFactory.java || die
 	rm tests/junitTests/src/bsh/Issue_55_Test.java || die
+
+	# We add 3 test classes which are not covered by the default test selection of java-pkg-simple
+	# We skip "OldScriptsTest" and 4 failing test classes.
+	# Test failures are documeted in bug #903519.
+	pushd tests/junitTests/src > /dev/null || die
+		local JAVA_TEST_RUN_ONLY=$(find * \
+			-type f \
+			! -name 'OldScriptsTest.java' \
+			! -name 'Class3_Test.java' \
+			! -name 'Class13Test.java' \
+			! -name 'Issue_7_Test.java' \
+			! -name 'Issue_8_Test.java' \
+			\( \
+			-name "*Test.java" \
+			-o -name "AnnotationsParsing.java" \
+			-o -name "GoogleReports.java" \
+			-o -name "Namespace_chaining.java" \
+			\) )
+		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
+		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
+	popd > /dev/null || die
+
 	java-pkg-simple_src_test
 }
 
 src_install() {
 	java-pkg-simple_src_install
+	# The eclass installs only then main launcher.
 	java-pkg_dolauncher "${PN}-interpreter" --main bsh.Interpreter
 }

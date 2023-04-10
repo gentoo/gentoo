@@ -51,10 +51,6 @@ luajittex
 # media-libs/libglvnd is not keyworded
 libglvnd
 
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
-
 # Stuff we don't want/not tested
 R
 octave

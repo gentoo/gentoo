@@ -1,5 +1,5 @@
---- a/src/slic3r/GUI/PrintHostDialogs.cpp	2022-12-21 10:21:43.583075853 +1100
-+++ b/src/slic3r/GUI/PrintHostDialogs.cpp	2022-12-21 10:23:03.902694287 +1100
+--- a/src/slic3r/GUI/PrintHostDialogs.cpp
++++ b/src/slic3r/GUI/PrintHostDialogs.cpp
 @@ -79,8 +79,8 @@ PrintHostSendDialog::PrintHostSendDialog
      if (size_t extension_start = recent_path.find_last_of('.'); extension_start != std::string::npos)
          m_valid_suffix = recent_path.substr(extension_start);

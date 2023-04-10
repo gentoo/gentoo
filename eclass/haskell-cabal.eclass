@@ -26,11 +26,11 @@
 #   nocabaldep --  don't add dependency on cabal.
 #                  only used for packages that _must_ not pull the dependency
 #                  on cabal, but still use this eclass (e.g. haskell-updater).
-#   ghcdeps    --  constraint dependency on package to ghc onces
+#   ghcdeps    --  constraint dependency on package to ghc once
 #                  only used for packages that use libghc internally and _must_
 #                  not pull upper versions
 #   test-suite --  add support for cabal test-suites (introduced in Cabal-1.8)
-#   rebuild-after-doc-workaround -- enable doctest test failue workaround.
+#   rebuild-after-doc-workaround -- enable doctest test failure workaround.
 #                  Symptom: when `./setup haddock` is run in a `build-type: Custom`
 #                  package it might cause cause the test-suite to fail with
 #                  errors like:
@@ -58,14 +58,14 @@ inherit ghc-package multilib toolchain-funcs
 # User-specified additional parameters passed to 'setup configure'.
 # example: /etc/portage/make.conf:
 #    CABAL_EXTRA_CONFIGURE_FLAGS="--enable-shared --enable-executable-dynamic"
-: ${CABAL_EXTRA_CONFIGURE_FLAGS:=}
+: "${CABAL_EXTRA_CONFIGURE_FLAGS:=}"
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_BUILD_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup build'.
 # example: /etc/portage/make.conf: CABAL_EXTRA_BUILD_FLAGS=-v
-: ${CABAL_EXTRA_BUILD_FLAGS:=}
+: "${CABAL_EXTRA_BUILD_FLAGS:=}"
 
 # @ECLASS_VARIABLE: GHC_BOOTSTRAP_FLAGS
 # @USER_VARIABLE
@@ -74,7 +74,7 @@ inherit ghc-package multilib toolchain-funcs
 # _only_ 'setup' binary bootstrap.
 # example: /etc/portage/make.conf: GHC_BOOTSTRAP_FLAGS=-dynamic to make
 # linking 'setup' faster.
-: ${GHC_BOOTSTRAP_FLAGS:=}
+: "${GHC_BOOTSTRAP_FLAGS:=}"
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_HADDOCK_FLAGS
 # @USER_VARIABLE
@@ -82,7 +82,7 @@ inherit ghc-package multilib toolchain-funcs
 # User-specified additional parameters passed to 'setup haddock'.
 # example: /etc/portage/make.conf:
 #    CABAL_EXTRA_HADDOCK_FLAGS="--haddock-options=--latex --haddock-options=--pretty-html"
-: ${CABAL_EXTRA_HADDOCK_FLAGS:=}
+: "${CABAL_EXTRA_HADDOCK_FLAGS:=}"
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_HOOGLE_FLAGS
 # @USER_VARIABLE
@@ -90,7 +90,7 @@ inherit ghc-package multilib toolchain-funcs
 # User-specified additional parameters passed to 'setup haddock --hoogle'.
 # example: /etc/portage/make.conf:
 #    CABAL_EXTRA_HOOGLE_FLAGS="--haddock-options=--show-all"
-: ${CABAL_EXTRA_HOOGLE_FLAGS:=}
+: "${CABAL_EXTRA_HOOGLE_FLAGS:=}"
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_HSCOLOUR_FLAGS
 # @USER_VARIABLE
@@ -98,7 +98,7 @@ inherit ghc-package multilib toolchain-funcs
 # User-specified additional parameters passed to 'setup hscolour'.
 # example: /etc/portage/make.conf:
 #    CABAL_EXTRA_HSCOLOUR_FLAGS="--executables --tests"
-: ${CABAL_EXTRA_HSCOLOUR_FLAGS:=}
+: "${CABAL_EXTRA_HSCOLOUR_FLAGS:=}"
 
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_TEST_FLAGS
@@ -107,13 +107,13 @@ inherit ghc-package multilib toolchain-funcs
 # User-specified additional parameters passed to 'setup test'.
 # example: /etc/portage/make.conf:
 #    CABAL_EXTRA_TEST_FLAGS="-v3 --show-details=streaming"
-: ${CABAL_EXTRA_TEST_FLAGS:=}
+: "${CABAL_EXTRA_TEST_FLAGS:=}"
 
 # @ECLASS_VARIABLE: CABAL_DEBUG_LOOSENING
 # @DESCRIPTION:
 # Show debug output for 'cabal_chdeps' function if set.
 # Needs working 'diff'.
-: ${CABAL_DEBUG_LOOSENING:=}
+: "${CABAL_DEBUG_LOOSENING:=}"
 
 # @ECLASS_VARIABLE: CABAL_REPORT_OTHER_BROKEN_PACKAGES
 # @DESCRIPTION:
@@ -121,14 +121,14 @@ inherit ghc-package multilib toolchain-funcs
 # It should be normally enabled unless you know you are about
 # to try to compile a lot of broken packages. Default value: 'yes'
 # Set to anything else to disable.
-: ${CABAL_REPORT_OTHER_BROKEN_PACKAGES:=yes}
+: "${CABAL_REPORT_OTHER_BROKEN_PACKAGES:=yes}"
 
 # @ECLASS_VARIABLE: CABAL_HACKAGE_REVISION
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set the upstream revision number from Hackage. This will automatically
 # add the upstream cabal revision to SRC_URI and apply it in src_prepare.
-: ${CABAL_HACKAGE_REVISION:=0}
+: "${CABAL_HACKAGE_REVISION:=0}"
 
 # @ECLASS_VARIABLE: CABAL_PN
 # @PRE_INHERIT
@@ -136,7 +136,7 @@ inherit ghc-package multilib toolchain-funcs
 # Set the name of the package as it is recorded in the Hackage database. This
 # is mostly used when packages use CamelCase names upstream, but we want them
 # to be lowercase in portage.
-: ${CABAL_PN:=${PN}}
+: "${CABAL_PN:=${PN}}"
 
 # @ECLASS_VARIABLE: CABAL_PV
 # @PRE_INHERIT
@@ -144,7 +144,7 @@ inherit ghc-package multilib toolchain-funcs
 # Set the version of the package as it is recorded in the Hackage database.
 # This can be useful if we use a different versioning scheme in Portage than
 # the one from upstream
-: ${CABAL_PV:=${PV}}
+: "${CABAL_PV:=${PV}}"
 
 # @ECLASS_VARIABLE: CABAL_P
 # @OUTPUT_VARIABLE
@@ -158,7 +158,7 @@ S="${WORKDIR}/${CABAL_P}"
 # @DESCRIPTION:
 # The location of the .cabal file for the Haskell package. This defaults to
 # "${S}/${CABAL_PN}.cabal".
-: ${CABAL_FILE:="${S}/${CABAL_PN}.cabal"}
+: "${CABAL_FILE:="${S}/${CABAL_PN}.cabal"}"
 
 # @ECLASS_VARIABLE: CABAL_DISTFILE
 # @OUTPUT_VARIABLE
@@ -179,14 +179,14 @@ fi
 #    'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
 #    'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
 # )
-: ${CABAL_CHDEPS:=}
+: "${CABAL_CHDEPS:=}"
 
 # @ECLASS_VARIABLE: CABAL_LIVE_VERSION
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this to any value to prevent SRC_URI from being set automatically.
-: ${CABAL_LIVE_VERSION:=}
+: "${CABAL_LIVE_VERSION:=}"
 
 # @ECLASS_VARIABLE: GHC_BOOTSTRAP_PACKAGES
 # @DEFAULT_UNSET
@@ -196,7 +196,7 @@ fi
 # GHC_BOOTSTRAP_PACKAGES=(
 #	cabal-doctest
 # )
-: ${GHC_BOOTSTRAP_PACKAGES:=}
+: "${GHC_BOOTSTRAP_PACKAGES:=}"
 
 # 'dev-haskell/cabal' passes those options with ./configure-based
 # configuration, but most packages don't need/don't accept it:
@@ -266,7 +266,7 @@ BDEPEND="${BDEPEND} app-text/dos2unix"
 
 # returns the version of cabal currently in use.
 # Rarely it's handy to pin cabal version from outside.
-: ${_CABAL_VERSION_CACHE:=""}
+: "${_CABAL_VERSION_CACHE:=""}"
 cabal-version() {
 	if [[ -z "${_CABAL_VERSION_CACHE}" ]]; then
 		if [[ "${CABAL_BOOTSTRAP}" ]]; then
@@ -516,7 +516,7 @@ cabal-configure() {
 	cabalconf+=(--verbose)
 
 	# We build shared version of our Cabal where ghc ships it's shared
-	# version of it. We will link ./setup as dynamic binary againt Cabal later.
+	# version of it. We will link ./setup as dynamic binary against Cabal later.
 	[[ ${CATEGORY}/${PN} == "dev-haskell/cabal" ]] && \
 		$(ghc-supports-shared-libraries) && \
 			cabalconf+=(--enable-shared)
@@ -882,8 +882,8 @@ cabal_chdeps() {
 
 # @FUNCTION: cabal-constraint
 # @DESCRIPTION:
-# Allowes to set contraint to the libraries that are
-# used by specified package
+# Allows to set constraints to the libraries that are used by the
+# specified package.
 cabal-constraint() {
 	while read p v ; do
 		echo "--constraint \"$p == $v\""

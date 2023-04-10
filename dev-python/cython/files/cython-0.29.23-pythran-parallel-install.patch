@@ -1,0 +1,20 @@
+An empty directory in site-packages is a valid Python module, unfortunately, because
+of namespaces. If installing packages in parallel, the pythran module might "exist"
+but be empty (hence no __version__ attribute). Catch AttributeError to avoid a narrow
+race.
+
+See https://bugs.gentoo.org/902713.
+
+This might still be a Portage issue if there's a substantial delay between creating
+the directory and installing the remaining files though.
+--- a/Cython/Compiler/Pythran.py
++++ b/Cython/Compiler/Pythran.py
+@@ -10,7 +10,7 @@ try:
+     import pythran
+     pythran_is_pre_0_9 = tuple(map(int, pythran.__version__.split('.')[0:2])) < (0, 9)
+     pythran_is_pre_0_9_6 = tuple(map(int, pythran.__version__.split('.')[0:3])) < (0, 9, 6)
+-except ImportError:
++except (AttributeError, ImportError):
+     pythran = None
+     pythran_is_pre_0_9 = True
+     pythran_is_pre_0_9_6 = True

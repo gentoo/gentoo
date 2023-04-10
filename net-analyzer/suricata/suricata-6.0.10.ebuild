@@ -146,7 +146,7 @@ src_install() {
 
 	fowners -R ${PN}: "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 	fperms 750 "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
-	fperms 2750 "/var/lib/${PN}/rules" "/var/lib/${PN}/update"
+	fperms 6750 "/var/lib/${PN}/rules" "/var/lib/${PN}/update"
 
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}

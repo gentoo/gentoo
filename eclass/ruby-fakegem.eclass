@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -44,6 +44,7 @@ RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 #  - rspec3 (calls ruby-ng_rspec, adds dev-ruby/rspec:3 to the dependencies)
 #  - cucumber (calls ruby-ng_cucumber, adds dev-util/cucumber to the
 #    dependencies)
+#  - sus (calls ruby-ng_sus, adds dev-ruby/sus to the dependencies)
 #  - none
 RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
 
@@ -193,7 +194,15 @@ case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		RESTRICT+=" !test? ( test )"
 		ruby_add_bdepend "test? ( dev-util/cucumber )"
 		;;
+	sus)
+		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
+		ruby_add_bdepend "test? ( dev-ruby/sus )"
+		;;
+	none)
+		;;
 	*)
+		eqawarn "${CATEGORY}/${PF}: Unknown test recipe '${RUBY_FAKEGEM_RECIPE_TEST}' specified, using 'none'"
 		RUBY_FAKEGEM_RECIPE_TEST="none"
 		;;
 esac
@@ -448,7 +457,7 @@ each_ruby_configure() {
 # @FUNCTION: all_fakegem_compile
 # @DESCRIPTION:
 # Build documentation for the package if indicated by the doc USE flag
-# and if there is a documetation task defined.
+# and if there is a documentation task defined.
 all_fakegem_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -552,7 +561,7 @@ each_fakegem_test() {
 
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
-			MT_NO_PLUGINS=true ${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
+			MT_NO_PLUGINS=true ${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die -n "tests failed"
 			;;
 		rspec)
 			RSPEC_VERSION=2 ruby-ng_rspec
@@ -562,6 +571,9 @@ each_fakegem_test() {
 			;;
 		cucumber)
 			ruby-ng_cucumber
+			;;
+		sus)
+			ruby-ng_sus
 			;;
 		none)
 			ewarn "each_fakegem_test called, but \${RUBY_FAKEGEM_RECIPE_TEST} is 'none'"

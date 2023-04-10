@@ -12,7 +12,7 @@
 # @BLURB: Provides phases for MATE based packages.
 # @DESCRIPTION:
 # Exports portage base functions used by ebuilds written for packages using the
-# MATE framework. Occassionally acts as a wrapper to gnome2 due to the
+# MATE framework. Occasionally acts as a wrapper to gnome2 due to the
 # fact that MATE is a GNOME fork. For additional functions, see gnome2-utils.eclass.
 
 case ${EAPI} in
@@ -48,7 +48,7 @@ DEPEND=">=mate-base/mate-common-${MATE_BRANCH}"
 # python-r1 eclass
 mate_py_cond_func_wrap() {
 	if [[ ! ${_PYTHON_R1_ECLASS} ]]; then
-		die "This function requires the inheritence of the python-r1 eclass"
+		die "This function requires the inheritance of the python-r1 eclass"
 	fi
 	if use python; then
 		python_foreach_impl run_in_build_dir "$@"
@@ -63,7 +63,7 @@ mate_py_cond_func_wrap() {
 # - true: will always run eautoreconf
 # - false: will default to automatic detect
 # - If it is not set, it will default to false
-: ${MATE_FORCE_AUTORECONF:="false"}
+: "${MATE_FORCE_AUTORECONF:="false"}"
 
 # @FUNCTION: ematedocize
 # @DESCRIPTION:

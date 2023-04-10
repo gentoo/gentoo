@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -98,8 +98,7 @@ pkg_setup() {
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
 	local ERROR_X86_KERNEL_IBT="CONFIG_X86_KERNEL_IBT: is set, be warned the modules may not load.
-	If run into problems, either unset or pass ibt=off to the kernel.
-	https://github.com/NVIDIA/open-gpu-kernel-modules/issues/256"
+	If run into problems, either unset or try to pass ibt=off to the kernel."
 
 	kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
@@ -234,13 +233,14 @@ pkg_setup() {
 	fi
 
 	if kernel_is -gt ${NV_KERNEL_MAX/./ }; then
-		ewarn "Kernel ${KV_MAJOR}.${KV_MINOR} is either known to break this version of ${PN}"
-		ewarn "or was not tested with it. It is recommended to use one of:"
+		ewarn "Kernel ${KV_MAJOR}.${KV_MINOR} is known to break this version ${PN}"
+		ewarn "It is recommended to use one of:"
 		ewarn "  <=sys-kernel/gentoo-kernel-${NV_KERNEL_MAX}.x"
 		ewarn "  <=sys-kernel/gentoo-sources-${NV_KERNEL_MAX}.x"
 		ewarn "You are free to try or use /etc/portage/patches, but support will"
-		ewarn "not be given and issues wait until NVIDIA releases a fixed version"
-		ewarn "(Gentoo will not accept patches for this)."
+		ewarn "not be given (Gentoo will not accept patches for this). When no"
+		ewarn "supported kernel are usable anymore, end-of-life 390.xx will be"
+		ewarn "removed -- 6.1.x LTS will be supported until at least December 2026."
 		ewarn
 		ewarn "Do _not_ file a bug report if run into issues."
 		ewarn
@@ -541,4 +541,11 @@ pkg_postinst() {
 		ewarn "libraries and may prevent launching GPU-accelerated applications."
 		use driver && ewarn "The easiest way to fix this is usually to reboot."
 	fi
+
+	ewarn
+	ewarn "Be warned/reminded that the 390.xx branch reached end-of-life and"
+	ewarn "NVIDIA is no longer fixing issues (including security). Free to keep"
+	ewarn "using (for now) but it is recommended to either switch to nouveau or"
+	ewarn "replace hardware. Will be kept in-tree while possible, but expect it"
+	ewarn "to be removed likely in early 2027 or earlier if major issues arise."
 }

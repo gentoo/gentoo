@@ -24,7 +24,7 @@
 # @DEPRECATED: none
 # @DESCRIPTION:
 # Only "cmake" is supported.
-: ${CMAKE_ECLASS:=cmake}
+: "${CMAKE_ECLASS:=cmake}"
 
 case ${EAPI} in
 	7|8)

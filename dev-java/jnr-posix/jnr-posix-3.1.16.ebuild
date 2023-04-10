@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="EPL-2.0 GPL-2 LGPL-2.1"
 SLOT="3.0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	>=dev-java/jnr-ffi-2.2.12:2

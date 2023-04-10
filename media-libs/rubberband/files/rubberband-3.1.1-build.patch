@@ -1,5 +1,3 @@
-diff --git a/meson.build b/meson.build
-index 43cbf33..2024964 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -117,12 +117,18 @@ sleef_dep = dependency('sleef', version: '>= 3.3.0', required: false)
@@ -158,8 +156,6 @@ index 43cbf33..2024964 100644
    message('Will build command-line utilities')
    target_summary += { 'Command-line utility (R2)': [ true, 'Name: ' + rubberband_program_name ] }
    rubberband_program = executable(
-diff --git a/meson_options.txt b/meson_options.txt
-index e44837c..4e4ca29 100644
 --- a/meson_options.txt
 +++ b/meson_options.txt
 @@ -26,3 +26,18 @@ option('extra_lib_dirs',

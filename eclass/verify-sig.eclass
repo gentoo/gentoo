@@ -57,7 +57,7 @@ IUSE="verify-sig"
 #
 # - openpgp -- verify PGP signatures using app-crypt/gnupg (the default)
 # - signify -- verify signatures with Ed25519 public key using app-crypt/signify
-: ${VERIFY_SIG_METHOD:=openpgp}
+: "${VERIFY_SIG_METHOD:=openpgp}"
 
 case ${VERIFY_SIG_METHOD} in
 	openpgp)
@@ -102,7 +102,7 @@ esac
 # connection.
 #
 # Supported for OpenPGP only.
-: ${VERIFY_SIG_OPENPGP_KEY_REFRESH:=no}
+: "${VERIFY_SIG_OPENPGP_KEY_REFRESH:=no}"
 
 # @FUNCTION: verify-sig_verify_detached
 # @USAGE: <file> <sig-file> [<key-file>]

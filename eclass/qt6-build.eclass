@@ -26,14 +26,14 @@ _QT6_BUILD_ECLASS=1
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
-: ${QT6_MODULE:=${PN}}
+: "${QT6_MODULE:=${PN}}"
 
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass man page.
 # Here we redefine default value to be manual, if your package needs virtualx
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
-: ${VIRTUALX_REQUIRED:=manual}
+: "${VIRTUALX_REQUIRED:=manual}"
 
 inherit cmake virtualx
 
@@ -82,7 +82,7 @@ EGIT_REPO_URI=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
-: ${QT6_BUILD_DIR:=${S}_build}
+: "${QT6_BUILD_DIR:=${S}_build}"
 
 IUSE="debug test"
 
@@ -142,9 +142,9 @@ qt_feature() {
 # @DESCRIPTION:
 # Symlink a given binary from QT6_BINDIR to QT6_PREFIX/bin, with optional suffix
 qt6_symlink_binary_to_path() {
-    [[ $# -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
+	[[ $# -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
 
-    dosym -r "${QT6_BINDIR}"/${1} /usr/bin/${1}${2}
+	dosym -r "${QT6_BINDIR}"/${1} /usr/bin/${1}${2}
 }
 
 ######  Internal functions  ######

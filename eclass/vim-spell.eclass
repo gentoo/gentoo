@@ -79,30 +79,30 @@ SLOT="0"
 # This variable defines the language for the spell package being
 # installed.
 # The default value is "English".
-: ${VIM_SPELL_LANGUAGE:="English"}
+: "${VIM_SPELL_LANGUAGE:="English"}"
 
 # @ECLASS_VARIABLE: VIM_SPELL_LOCALE
 # @INTERNAL
 # @DESCRIPTION:
 # This variable defines the locale for the current ebuild.
 # The default value is ${PN} stripped of the "vim-spell-" string.
-: ${VIM_SPELL_LOCALE:="${PN/vim-spell-/}"}
+: "${VIM_SPELL_LOCALE:="${PN/vim-spell-/}"}"
 
 # @ECLASS_VARIABLE: VIM_SPELL_DIRECTORY
 # @INTERNAL
 # @DESCRIPTION:
 # This variable defines the path to Vim spell files.
-: ${VIM_SPELL_DIRECTORY:="${EPREFIX}/usr/share/vim/vimfiles/spell/"}
+: "${VIM_SPELL_DIRECTORY:="${EPREFIX}/usr/share/vim/vimfiles/spell/"}"
 
 # @ECLASS_VARIABLE: DESCRIPTION
 # @DESCRIPTION:
 # This variable defines the DESCRIPTION for Vim spell ebuilds.
-: ${DESCRIPTION:="vim spell files: ${VIM_SPELL_LANGUAGE} (${VIM_SPELL_LOCALE})"}
+: "${DESCRIPTION:="vim spell files: ${VIM_SPELL_LANGUAGE} (${VIM_SPELL_LOCALE})"}"
 
 # @ECLASS_VARIABLE: HOMEPAGE
 # @DESCRIPTION:
 # This variable defines the HOMEPAGE for Vim spell ebuilds.
-: ${HOMEPAGE:="https://www.vim.org"}
+: "${HOMEPAGE:="https://www.vim.org"}"
 
 # @FUNCTION: vim-spell_src_install
 # @DESCRIPTION:

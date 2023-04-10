@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Graphite whisper metrics storage and retrieval server."
+
+carbonapi_config=${CONFIG_FILE:-/etc/go-carbon/${SVCNAME}.conf}
+
+command="/usr/bin/go-carbon"
+command_args="-config ${carbonapi_config}"
+pidfile="/run/go-carbon/${SVCNAME}.pid"
+user=${USER:-carbon}
+group=${GROUP:-carbon}
+
+depend() {
+	need net
+	use dns
+}
+
+start_pre() {
+	mkdir -p "${pidfile%/*}"
+	mkdir -p /var/log/go-carbon
+	chown ${user}:${group} "${pidfile%/*}" /var/log/go-carbon
+}
+
+stop_post() {
+	rm -f "${pidfile}"
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile "${pidfile}" \
+		--make-pidfile --background \
+		--user ${user} --group ${group} \
+		--exec ${command} -- \
+		${command_args}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --exec ${command} --pidfile "${pidfile}"
+	eend $?
+}

@@ -69,7 +69,7 @@ readonly ACCT_USER_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred UID for the new user.  This variable is obligatory, and its
-# value must be unique across all user packages.  This can be overriden
+# value must be unique across all user packages.  This can be overridden
 # in make.conf through ACCT_USER_<UPPERCASE_USERNAME>_ID variable.
 #
 # Overlays should set this to -1 to dynamically allocate UID.  Using -1
@@ -80,14 +80,14 @@ readonly ACCT_USER_NAME
 # If set to a non-null value, the eclass will require the user to have
 # specified UID.  If the user already exists with another UID, or
 # the UID is taken by another user, the install will fail.
-: ${ACCT_USER_ENFORCE_ID:=}
+: "${ACCT_USER_ENFORCE_ID:=}"
 
 # @ECLASS_VARIABLE: ACCT_USER_NO_MODIFY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, the eclass will not make any changes
 # to an already existing user.
-: ${ACCT_USER_NO_MODIFY:=}
+: "${ACCT_USER_NO_MODIFY:=}"
 
 # @ECLASS_VARIABLE: ACCT_USER_COMMENT
 # @DEFAULT_UNSET
@@ -99,33 +99,33 @@ readonly ACCT_USER_NAME
 # @ECLASS_VARIABLE: ACCT_USER_SHELL
 # @DESCRIPTION:
 # The shell to use for the user.  If not specified, a 'nologin' variant
-# for the system is used.  This can be overriden in make.conf through
+# for the system is used.  This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_SHELL variable.
-: ${ACCT_USER_SHELL:=/sbin/nologin}
+: "${ACCT_USER_SHELL:=/sbin/nologin}"
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME
 # @DESCRIPTION:
 # The home directory for the user.  If not specified, /dev/null is used.
 # The directory will be created with appropriate permissions if it does
 # not exist.  When updating, existing home directory will not be moved.
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME variable.
-: ${ACCT_USER_HOME:=/dev/null}
+: "${ACCT_USER_HOME:=/dev/null}"
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME_OWNER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The ownership to use for the home directory, in chown ([user][:group])
 # syntax.  Defaults to the newly created user, and its primary group.
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME_OWNER variable.
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME_PERMS
 # @DESCRIPTION:
 # The permissions to use for the home directory, in chmod (octal
-# or verbose) form.  This can be overriden in make.conf through
+# or verbose) form.  This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME_PERMS variable.
-: ${ACCT_USER_HOME_PERMS:=0755}
+: "${ACCT_USER_HOME_PERMS:=0755}"
 
 # @ECLASS_VARIABLE: ACCT_USER_GROUPS
 # @REQUIRED
@@ -134,7 +134,7 @@ readonly ACCT_USER_NAME
 # array.  The first group specified is the user's primary group, while
 # the remaining groups (if any) become supplementary groups.
 #
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_GROUPS variable, or appended to
 # via ACCT_USER_<UPPERCASE_USERNAME>_GROUPS_ADD.  Please note that
 # due to technical limitations, the override variables are not arrays
@@ -142,9 +142,9 @@ readonly ACCT_USER_NAME
 
 
 # << Boilerplate ebuild variables >>
-: ${DESCRIPTION:="System user: ${ACCT_USER_NAME}"}
-: ${SLOT:=0}
-: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 ~loong m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
+: "${DESCRIPTION:="System user: ${ACCT_USER_NAME}"}"
+: "${SLOT:=0}"
+: "${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 ~loong m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}"
 S=${WORKDIR}
 
 
@@ -269,7 +269,7 @@ acct-user_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	# Replace reserved characters in comment
-	: ${ACCT_USER_COMMENT:=${DESCRIPTION//[:,=]/;}}
+	: "${ACCT_USER_COMMENT:=${DESCRIPTION//[:,=]/;}}"
 
 	# serialize for override support
 	local ACCT_USER_GROUPS=${ACCT_USER_GROUPS[*]}

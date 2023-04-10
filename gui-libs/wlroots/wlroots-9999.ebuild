@@ -43,6 +43,7 @@ DEPEND="
 		x11-base/xwayland
 		x11-libs/libxcb:0=
 		x11-libs/xcb-util-image
+		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
 	)
 "

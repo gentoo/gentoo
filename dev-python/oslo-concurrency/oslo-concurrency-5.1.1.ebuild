@@ -4,6 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN/-/.}
 PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 pypi
@@ -14,12 +16,10 @@ HOMEPAGE="
 	https://github.com/openstack/oslo.concurrency/
 	https://pypi.org/project/oslo.concurrency/
 "
-SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
-S=${WORKDIR}/${P/-/.}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]

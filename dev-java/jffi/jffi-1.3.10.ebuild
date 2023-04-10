@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="1.3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*
 	>=dev-libs/libffi-3.4.2-r2:="

@@ -275,7 +275,7 @@ java-ant_bsfix_files() {
 
 						for dir in ${JAVA_ANT_JAVADOC_INPUT_DIRS};do
 							if [[ ! -d ${dir} ]]; then
-								eerror "This dir: ${dir} doesnt' exists"
+								eerror "Directory ${dir} doesn't exist"
 								die "You must specify directories for javadoc input/output dirs."
 							fi
 						done

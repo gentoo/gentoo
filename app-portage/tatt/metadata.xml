@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>kensington@gentoo.org</email>
-    <name>Michael Palimaka</name>
-  </maintainer>
+  <!--maintainer-needed-->
   <use>
     <flag name="templates">Install template scripts to be used with tatt</flag>
   </use>

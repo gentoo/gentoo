@@ -1,0 +1,11 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2023-04-07)
+# media-libs/openh264 casualties (#896138)
+# https://github.com/cisco/openh264/issues/3634
+openh264
+
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
+# Unmask as this profile is big endian.
+-big-endian

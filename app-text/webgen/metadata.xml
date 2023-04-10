@@ -10,4 +10,7 @@
     <flag name="highlight">Enable syntax highlighting for certain plugins</flag>
     <flag name="markdown">Markdown support</flag>
   </use>
+  <upstream>
+    <remote-id type="github">gettalong/webgen</remote-id>
+  </upstream>
 </pkgmetadata>

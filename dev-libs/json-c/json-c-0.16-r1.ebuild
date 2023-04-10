@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,10 +20,6 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h
 )
 
-src_prepare() {
-	cmake_src_prepare
-}
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
@@ -34,10 +30,6 @@ multilib_src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-multilib_src_compile() {
-	cmake_src_compile
 }
 
 multilib_src_test() {

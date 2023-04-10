@@ -6,7 +6,7 @@
 		<name>James Le Cuirot</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">Plagman/gamescope</remote-id>
+		<remote-id type="github">ValveSoftware/gamescope</remote-id>
 	</upstream>
 	<use>
 		<flag name="pipewire">Enable screen capture via PipeWire</flag>

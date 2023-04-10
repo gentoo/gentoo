@@ -26,19 +26,19 @@ _SSL_CERT_ECLASS=1
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero if ssl-cert is mandatory for ebuild.
-: ${SSL_CERT_MANDATORY:=0}
+: "${SSL_CERT_MANDATORY:=0}"
 
 # @ECLASS_VARIABLE: SSL_CERT_USE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Use flag to append dependency to.
-: ${SSL_CERT_USE:=ssl}
+: "${SSL_CERT_USE:=ssl}"
 
 # @ECLASS_VARIABLE: SSL_DEPS_SKIP
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero to skip adding to DEPEND and IUSE.
-: ${SSL_DEPS_SKIP:=0}
+: "${SSL_DEPS_SKIP:=0}"
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then

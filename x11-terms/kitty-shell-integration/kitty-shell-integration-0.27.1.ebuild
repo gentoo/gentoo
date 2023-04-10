@@ -10,7 +10,7 @@ S="${WORKDIR}/kitty-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 RESTRICT="test" # intended to be ran on the full kitty package
 
 src_compile() { :; }

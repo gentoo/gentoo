@@ -39,19 +39,19 @@ inherit gnuconfig libtool
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The major version of autoconf your package needs
-: ${WANT_AUTOCONF:=latest}
+: "${WANT_AUTOCONF:=latest}"
 
 # @ECLASS_VARIABLE: WANT_AUTOMAKE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The major version of automake your package needs
-: ${WANT_AUTOMAKE:=latest}
+: "${WANT_AUTOMAKE:=latest}"
 
 # @ECLASS_VARIABLE: WANT_LIBTOOL
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Do you want libtool?  Valid values here are "latest" and "none".
-: ${WANT_LIBTOOL:=latest}
+: "${WANT_LIBTOOL:=latest}"
 
 # @ECLASS_VARIABLE: _LATEST_AUTOMAKE
 # @INTERNAL
@@ -125,7 +125,7 @@ RDEPEND=""
 # Set to 'no' to disable automatically adding to DEPEND.  This lets
 # ebuilds form conditional depends by using ${AUTOTOOLS_DEPEND} in
 # their own DEPEND string.
-: ${AUTOTOOLS_AUTO_DEPEND:=yes}
+: "${AUTOTOOLS_AUTO_DEPEND:=yes}"
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
 	case ${EAPI} in
 		6) DEPEND=${AUTOTOOLS_DEPEND} ;;
@@ -141,14 +141,14 @@ unset _automake_atom _autoconf_atom
 # @DESCRIPTION:
 # Additional options to pass to automake during
 # eautoreconf call.
-: ${AM_OPTS:=}
+: "${AM_OPTS:=}"
 
 # @ECLASS_VARIABLE: AT_NOEAUTOHEADER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Don't run eautoheader command if set to 'yes'; only used to work around
 # packages that don't want their headers being modified.
-: ${AT_NOEAUTOHEADER:=}
+: "${AT_NOEAUTOHEADER:=}"
 
 # @ECLASS_VARIABLE: AT_NOEAUTOMAKE
 # @DEFAULT_UNSET
@@ -156,7 +156,7 @@ unset _automake_atom _autoconf_atom
 # Don't run eautomake command if set to 'yes'; only used to workaround
 # broken packages.  Generally you should, instead, fix the package to
 # not call AM_INIT_AUTOMAKE if it doesn't actually use automake.
-: ${AT_NOEAUTOMAKE:=}
+: "${AT_NOEAUTOMAKE:=}"
 
 # @ECLASS_VARIABLE: AT_NOELIBTOOLIZE
 # @DEFAULT_UNSET
@@ -164,13 +164,13 @@ unset _automake_atom _autoconf_atom
 # Don't run elibtoolize command if set to 'yes',
 # useful when elibtoolize needs to be ran with
 # particular options
-: ${AT_NOELIBTOOLIZE:=}
+: "${AT_NOELIBTOOLIZE:=}"
 
 # @ECLASS_VARIABLE: AT_M4DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional director(y|ies) aclocal should search
-: ${AT_M4DIR:=}
+: "${AT_M4DIR:=}"
 
 # @ECLASS_VARIABLE: AT_SYS_M4DIR
 # @DEFAULT_UNSET
@@ -179,7 +179,7 @@ unset _automake_atom _autoconf_atom
 # For system integrators, a list of additional aclocal search paths.
 # This variable gets eval-ed, so you can use variables in the definition
 # that may not be valid until eautoreconf & friends are run.
-: ${AT_SYS_M4DIR:=}
+: "${AT_SYS_M4DIR:=}"
 
 # @FUNCTION: eautoreconf
 # @DESCRIPTION:
@@ -325,7 +325,7 @@ eaclocal_amflags() {
 # @FUNCTION: eaclocal
 # @DESCRIPTION:
 # These functions runs the autotools using autotools_run_tool with the
-# specified parametes. The name of the tool run is the same of the function
+# specified parameters. The name of the tool run is the same of the function
 # without e prefix.
 # They also force installing the support files for safety.
 # Respects AT_M4DIR for additional directories to search for macros.

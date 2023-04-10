@@ -14,7 +14,9 @@ DESCRIPTION="KDE Office Suite"
 HOMEPAGE="https://calligra.org/"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
-	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
+	PATCHSET="${P}-patchset-1"
+	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz
+		https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
 	KEYWORDS="amd64 ~ppc64 ~riscv x86"
 fi
 
@@ -115,14 +117,14 @@ RDEPEND="${COMMON_DEPEND}
 BDEPEND="sys-devel/gettext"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.1.89-no-arch-detection.patch
-	"${FILESDIR}"/${P}-cmake-3.16.patch # bug 796224
-	"${FILESDIR}"/${P}-{openexr-3,imath-{1,2}}.patch
-	"${FILESDIR}"/${P}-cxx17-for-poppler-22.patch
-	"${FILESDIR}"/${P}-cxx17-fixes.patch
-	"${FILESDIR}"/${P}-poppler-22.03.0-{1,2}.patch
-	"${FILESDIR}"/${P}-poppler-22.04.0.patch
-	"${FILESDIR}"/${P}-clang-16-c++17.patch
+	"${WORKDIR}"/${PATCHSET}/${PN}-3.1.89-no-arch-detection.patch
+	"${WORKDIR}"/${PATCHSET}/${P}-cmake-3.16.patch # bug 796224
+	"${WORKDIR}"/${PATCHSET}/${P}-{openexr-3,imath-{1,2}}.patch
+	"${WORKDIR}"/${PATCHSET}/${P}-cxx17-for-poppler-22.patch
+	"${WORKDIR}"/${PATCHSET}/${P}-cxx17-fixes.patch
+	"${WORKDIR}"/${PATCHSET}/${P}-poppler-22.03.0-{1,2}.patch
+	"${WORKDIR}"/${PATCHSET}/${P}-poppler-22.04.0.patch
+	"${WORKDIR}"/${PATCHSET}/${P}-clang-16-c++17.patch
 )
 
 pkg_pretend() {

@@ -15,7 +15,7 @@ S="${WORKDIR}"/${P^}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"  # Just desktop / schema / appstream file validation (fails).
 

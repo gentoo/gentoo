@@ -21,7 +21,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Clear-BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
 
 COMMON_DEPEND="
 	>=dev-python/cppy-1.2.0[${PYTHON_USEDEP}]
@@ -36,7 +36,7 @@ BDEPEND="
 "
 
 PATCHES=(
- "${FILESDIR}/${PN}-1.4.4-pypy3-tests.patch"
+	"${FILESDIR}/${PN}-1.4.4-pypy3-tests.patch"
 )
 
 distutils_enable_tests pytest

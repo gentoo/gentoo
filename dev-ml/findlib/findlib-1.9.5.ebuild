@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,21 +52,22 @@ src_install() {
 		docinto html
 		dodoc -r ref-html guide-html
 	fi
+
+	# See bug #803275 and bug #833604
+	rm -f "${ED}"/usr/$(get_libdir)/ocaml/{ocamlbuild,labltk}/META || die
 }
 
 check_stublibs() {
-	local ocaml_stdlib=`ocamlc -where`
+	local ocaml_stdlib=$(ocamlc -where)
 	local ldconf="${ocaml_stdlib}/ld.conf"
 
-	if [ ! -e ${ldconf} ]
-	then
-		echo "${ocaml_stdlib}" > ${ldconf}
-		echo "${ocaml_stdlib}/stublibs" >> ${ldconf}
+	if [[ ! -e ${ldconf} ]] ; then
+		echo "${ocaml_stdlib}" > ${ldconf} || die
+		echo "${ocaml_stdlib}/stublibs" >> ${ldconf} || die
 	fi
 
-	if [ -z `grep -e ${stublibs} ${ldconf}` ]
-	then
-		echo ${stublibs} >> ${ldconf}
+	if ! grep -qe ${stublibs} ${ldconf} ; then
+		echo ${stublibs} >> ${ldconf} || die
 	fi
 }
 

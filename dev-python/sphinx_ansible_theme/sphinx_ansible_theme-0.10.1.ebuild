@@ -4,20 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="sphinx-ansible-theme"
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
-
-MY_PN="${PN//_/-}"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="A reusable Ansible Sphinx theme"
 HOMEPAGE="
 	https://github.com/ansible-community/sphinx_ansible_theme/
 	https://pypi.org/project/sphinx-ansible-theme/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"

@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
 	"${FILESDIR}/${PN}-$(ver_cut 1-2)-dependencies.patch"
 	"${FILESDIR}/${PN}-$(ver_cut 1-2)-execinfo-r2.patch"
+	"${FILESDIR}/${PN}-prototypes.patch"
 )
 
 DOCS=( README.md NEWS ChangeLog AUTHORS )

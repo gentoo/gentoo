@@ -1,0 +1,6 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2023-03-20)
+# Requires dev-lang/go, not available on n32 ABI
+sys-libs/libcap tools

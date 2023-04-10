@@ -1,8 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-NEED_EMACS=24
 
 inherit elisp readme.gentoo-r1
 

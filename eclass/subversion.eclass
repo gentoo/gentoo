@@ -145,7 +145,7 @@ ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 # @DESCRIPTION:
 # Set the minimum number of hours between svn up'ing in any given svn module. This is particularly
 # useful for split KDE ebuilds where we want to ensure that all submodules are compiled for the same
-# revision. It should also be kept user overrideable.
+# revision. It should also be kept user overridable.
 ESVN_UP_FREQ="${ESVN_UP_FREQ:=}"
 
 # @ECLASS_VARIABLE: ESCM_LOGDIR

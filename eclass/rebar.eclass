@@ -13,7 +13,7 @@
 # dev-util/rebar.
 #
 # rebar is a tool which tries to resolve dependencies itself which is by
-# cloning remote git repositories. Dependant projects are usually expected to
+# cloning remote git repositories. Dependent projects are usually expected to
 # be in sub-directory 'deps' rather than looking at system Erlang lib
 # directory. Projects relying on rebar usually don't have 'install' make
 # targets. The eclass workarounds some of these problems. It handles
@@ -111,7 +111,7 @@ erebar() {
 # @FUNCTION: rebar_fix_include_path
 # @USAGE: <project_name> [<rebar_config>]
 # @DESCRIPTION:
-# Fix path in rebar.config to 'include' directory of dependant project/package,
+# Fix path in rebar.config to 'include' directory of dependent project/package,
 # so it points to installation in system Erlang lib rather than relative 'deps'
 # directory.
 #

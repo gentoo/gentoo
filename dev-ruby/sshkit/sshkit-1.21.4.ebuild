@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 # There are functional tests that require vagrant boxes to be set up.
 RUBY_FAKEGEM_TASK_TEST="test:units"
@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/capistrano/sshkit"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "

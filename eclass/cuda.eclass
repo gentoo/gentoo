@@ -28,12 +28,12 @@ inherit flag-o-matic toolchain-funcs
 # @DESCRIPTION:
 # nvcc compiler flags (see nvcc --help), which should be used like
 # CFLAGS for c compiler
-: ${NVCCFLAGS:=-O2}
+: "${NVCCFLAGS:=-O2}"
 
 # @ECLASS_VARIABLE: CUDA_VERBOSE
 # @DESCRIPTION:
 # Being verbose during compilation to see underlying commands
-: ${CUDA_VERBOSE:=true}
+: "${CUDA_VERBOSE:=true}"
 
 # @FUNCTION: cuda_gccdir
 # @USAGE: [-f]

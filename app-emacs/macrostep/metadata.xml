@@ -23,5 +23,6 @@
   <upstream>
     <bugs-to>https://github.com/joddie/macrostep/issues/</bugs-to>
     <remote-id type="github">joddie/macrostep</remote-id>
+    <remote-id type="github">emacsorphanage/macrostep</remote-id>
   </upstream>
 </pkgmetadata>

@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.3
-
 inherit elisp
 
 DESCRIPTION="Groovy major mode, grails minor mode, and a groovy inferior mode"
@@ -14,7 +12,7 @@ SRC_URI="https://github.com/Groovy-Emacs-Modes/${PN}/archive/${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

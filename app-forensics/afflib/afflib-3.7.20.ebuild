@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~hppa ppc x86 ~x64-macos"
 IUSE="fuse ncurses python qemu readline s3 static-libs threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # Tests don't play well with sandbox

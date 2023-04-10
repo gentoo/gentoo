@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=25.1
-
 inherit elisp
 
 DESCRIPTION="Fancy and fast mode-line for Emacs inspired by minimalism design"

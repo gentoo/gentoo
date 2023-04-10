@@ -117,7 +117,8 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	local -x GOFLAGS="-buildmode=pie -p=$(makeopts_jobs) -v -x"
+	local -x GOFLAGS="-p=$(makeopts_jobs) -v -x"
+	use ppc64 && [[ $(tc-endian) == big ]] || GOFLAGS+=" -buildmode=pie"
 	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
 
 	local conf=(

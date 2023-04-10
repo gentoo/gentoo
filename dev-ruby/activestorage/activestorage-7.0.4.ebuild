@@ -43,7 +43,7 @@ ruby_add_bdepend "
 	test? (
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/image_processing-1.2:0
-		=dev-ruby/minitest-5.15*:5
+		=dev-ruby/minitest-5.15*:*
 		dev-ruby/mini_magick
 		dev-ruby/mocha
 		dev-ruby/rake

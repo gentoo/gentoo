@@ -37,7 +37,7 @@ has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 # @VARIABLE: JAVA_PKG_E_DEPEND
 # @INTERNAL
 # @DESCRIPTION:
-# This is a convience variable to be used from the other java eclasses. This is
+# This is a convenience variable to be used from the other java eclasses. This is
 # the version of java-config we want to use. Usually the latest stable version
 # so that ebuilds can use new features without depending on specific versions.
 JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3"
@@ -783,7 +783,7 @@ java-pkg_dosrc() {
 # @FUNCTION: java-pkg_dolauncher
 # @USAGE: <filename> [options]
 # @DESCRIPTION:
-# Make a wrapper script to lauch/start this package
+# Make a wrapper script to launch/start this package
 # If necessary, the wrapper will switch to the appropriate VM.
 #
 # Can be called without parameters if the package installs only one jar
@@ -953,7 +953,7 @@ java-pkg_recordjavadoc()
 # Example: get a specific jar from xerces slot 2
 # 	java-pkg_jar-from xerces-2 xml-apis.jar
 #
-# Example: get a specific jar from xerces slot 2, and name it diffrently
+# Example: get a specific jar from xerces slot 2, and name it differently
 # 	java-pkg_jar-from xerces-2 xml-apis.jar xml.jar
 #
 # Example: get junit.jar which is needed only for building
@@ -1364,7 +1364,7 @@ java-pkg_register-optional-dependency() {
 # @DESCRIPTION:
 # Register an arbitrary environment variable into package.env. The gjl launcher
 # for this package or any package depending on this will export it into
-# environement before executing java command.
+# environment before executing java command.
 # Must only be called in src_install phase.
 JAVA_PKG_EXTRA_ENV="${T}/java-pkg-extra-env"
 JAVA_PKG_EXTRA_ENV_VARS=""
@@ -2640,7 +2640,7 @@ java-pkg_get-vm-version() {
 # @RETURN: VM handle of an available JDK
 # @DESCRIPTION:
 # Selects a build vm from a list of vm handles. First checks for the system-vm
-# beeing usable, then steps through the listed handles till a suitable vm is
+# being usable, then steps through the listed handles till a suitable vm is
 # found.
 #
 java-pkg_build-vm-from-handle() {
