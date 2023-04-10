@@ -18,6 +18,18 @@ RDEPEND="${DEPEND}
 	acct-user/carbon"
 BDEPEND=""
 
+src_prepare() {
+	export BUILD="gentoo-${PVR}"
+
+	# bug 904050: -race conflicts with -buildmode=pie added by go-module
+	sed -i \
+		-e '/make run-test COMMAND="test -race"/d' \
+		-e '/make run-test COMMAND="vet"/d' \
+		Makefile || die
+
+	eapply_user
+}
+
 src_install() {
 	insinto /etc/go-carbon
 	doins "${S}"/go-carbon.conf.example
