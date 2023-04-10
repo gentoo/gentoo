@@ -74,3 +74,7 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+src_test() {
+	OMP_STACKSIZE=512k cmake_src_test
+}
