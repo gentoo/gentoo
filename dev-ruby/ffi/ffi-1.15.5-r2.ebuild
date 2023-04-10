@@ -17,7 +17,7 @@ RUBY_FAKEGEM_EXTENSIONS=(ext/ffi_c/extconf.rb)
 inherit ruby-fakegem toolchain-funcs
 
 DESCRIPTION="Ruby extension for programmatically loading dynamic libraries"
-HOMEPAGE="https://wiki.github.com/ffi/ffi"
+HOMEPAGE="https://github.com/ffi/ffi/wiki"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 
 LICENSE="BSD"
