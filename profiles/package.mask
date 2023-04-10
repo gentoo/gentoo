@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2023-04-10)
+# Pretest versions, masked for testing.
+<app-editors/emacs-29.0.9999:29-vcs
+
 # Hans de Graaff <graaff@gentoo.org> (2023-04-10)
 # Ruby 2.7 reached EOL upstream on April 1st. Mask this version and any
 # remaining ruby27-only packages for removal on 2023-05-10.
