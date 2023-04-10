@@ -12,7 +12,7 @@ DESCRIPTION="Serialization library and protocol for interaction with the Coq pro
 HOMEPAGE="https://github.com/ejgallego/coq-serapi/"
 
 # The tarball in SRC_URI is comprised of <supported coq>+<package version>
-SRC_URI="https://github.com/ejgallego/${PN}/archive/${COQV}+${PV}.tar.gz
+SRC_URI="https://github.com/ejgallego/${PN}/archive/${COQ_MIN_V}+${PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${COQ_MIN_V}-${PV}
 
