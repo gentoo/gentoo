@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.0-desktop.patch
 	"${FILESDIR}"/${PN}-2.4.0-no-git.patch
+	"${FILESDIR}"/${PN}-2.4.0-gcc13.patch
 )
 
 src_prepare() {

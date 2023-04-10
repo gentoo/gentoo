@@ -1,0 +1,31 @@
+https://github.com/TASEmulators/fceux/pull/629
+
+From 6ad3837eebdab597da693a39068b2c05716282be Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 10 Apr 2023 05:18:41 +0100
+Subject: [PATCH] Fix build with GCC 13
+
+GCC 13 (as usual for new compiler releases) shuffles around some internal includes and so etc is no longer transitively included:
+```
+In file included from /var/tmp/portage/games-emulation/fceux-2.6.5/work/fceux-2.6.5/src/drivers/Qt/AboutWindow.cpp:33:
+/usr/include/x264.h:40:4: warning: #warning You must include stdint.h or inttypes.h before x264.h [-Wcpp]
+   40 | #  warning You must include stdint.h or inttypes.h before x264.h
+      |    ^~~~~~~
+/usr/include/x264.h:127:5: error: uint8_t does not name a type
+  127 |     uint8_t *p_payload;
+      |     ^~~~~~~
+```
+
+See https://gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Bug: https://bugs.gentoo.org/900611
+--- a/src/drivers/Qt/AboutWindow.cpp
++++ b/src/drivers/Qt/AboutWindow.cpp
+@@ -30,6 +30,7 @@
+ #endif
+ 
+ #ifdef _USE_X264
++#include <cstdint>
+ #include "x264.h"
+ #endif
+ 
