@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..10} )
 inherit python-single-r1 vim-plugin
 
 DESCRIPTION="vim plugin: emulates a two-pane text outliner"
-HOMEPAGE="https://vim-voom.github.com/ https://www.vim.org/scripts/script.php?script_id=2657"
+HOMEPAGE="https://vim-voom.github.io/ https://www.vim.org/scripts/script.php?script_id=2657"
 SRC_URI="https://github.com/vim-voom/VOoM/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0"
