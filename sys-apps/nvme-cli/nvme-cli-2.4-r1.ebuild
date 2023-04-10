@@ -38,7 +38,7 @@ src_configure() {
 	local emesonargs=(
 		-Dversion-tag="${PV}"
 		-Ddocs=all
-		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
+		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		-Dsystemddir="${unitdir%/system}"
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"
 		$(meson_use hugepages)
