@@ -45,23 +45,23 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/minitest-5.15.0[ruby_targets_ruby31]
-	>=dev-ruby/power_assert-2.0.1[ruby_targets_ruby31]
-	>=dev-ruby/rake-13.0.6[ruby_targets_ruby31]
-	>=dev-ruby/rbs-2.1.0[ruby_targets_ruby31]
-	>=dev-ruby/rexml-3.2.5[ruby_targets_ruby31]
-	>=dev-ruby/rss-0.2.9[ruby_targets_ruby31]
-	>=dev-ruby/test-unit-3.5.3[ruby_targets_ruby31]
-	>=dev-ruby/typeprof-0.12.2[ruby_targets_ruby31]
+	>=dev-ruby/minitest-5.15.0[ruby_targets_ruby31(-)]
+	>=dev-ruby/power_assert-2.0.1[ruby_targets_ruby31(-)]
+	>=dev-ruby/rake-13.0.6[ruby_targets_ruby31(-)]
+	>=dev-ruby/rbs-2.1.0[ruby_targets_ruby31(-)]
+	>=dev-ruby/rexml-3.2.5[ruby_targets_ruby31(-)]
+	>=dev-ruby/rss-0.2.9[ruby_targets_ruby31(-)]
+	>=dev-ruby/test-unit-3.5.3[ruby_targets_ruby31(-)]
+	>=dev-ruby/typeprof-0.12.2[ruby_targets_ruby31(-)]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby31]
-	>=dev-ruby/bundler-2.3.3[ruby_targets_ruby31]
-	>=dev-ruby/did_you_mean-1.6.1[ruby_targets_ruby31]
-	>=dev-ruby/json-2.6.1[ruby_targets_ruby31]
-	rdoc? ( >=dev-ruby/rdoc-6.3.3[ruby_targets_ruby31] )
+	virtual/rubygems[ruby_targets_ruby31(-)]
+	>=dev-ruby/bundler-2.3.3[ruby_targets_ruby31(-)]
+	>=dev-ruby/did_you_mean-1.6.1[ruby_targets_ruby31(-)]
+	>=dev-ruby/json-2.6.1[ruby_targets_ruby31(-)]
+	rdoc? ( >=dev-ruby/rdoc-6.3.3[ruby_targets_ruby31(-)] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {

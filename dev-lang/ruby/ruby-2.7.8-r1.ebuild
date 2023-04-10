@@ -55,11 +55,11 @@ BUNDLED_GEMS="
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby27]
-	>=dev-ruby/bundler-2.1.4[ruby_targets_ruby27]
-	>=dev-ruby/did_you_mean-1.3.1[ruby_targets_ruby27]
-	>=dev-ruby/json-2.0.2[ruby_targets_ruby27]
-	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby27] )
+	virtual/rubygems[ruby_targets_ruby27(-)]
+	>=dev-ruby/bundler-2.1.4[ruby_targets_ruby27(-)]
+	>=dev-ruby/did_you_mean-1.3.1[ruby_targets_ruby27(-)]
+	>=dev-ruby/json-2.0.2[ruby_targets_ruby27(-)]
+	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby27(-)] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {

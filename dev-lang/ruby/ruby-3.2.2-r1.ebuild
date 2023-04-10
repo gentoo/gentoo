@@ -45,30 +45,30 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/debug-1.7.1[ruby_targets_ruby32]
-	>=dev-ruby/matrix-0.4.2[ruby_targets_ruby32]
-	>=dev-ruby/minitest-5.16.3[ruby_targets_ruby32]
-	>=dev-ruby/net-ftp-0.2.0[ruby_targets_ruby32]
-	>=dev-ruby/net-imap-0.3.4[ruby_targets_ruby32]
-	>=dev-ruby/net-pop-0.1.2[ruby_targets_ruby32]
-	>=dev-ruby/net-smtp-0.3.3[ruby_targets_ruby32]
-	>=dev-ruby/power_assert-2.0.3[ruby_targets_ruby32]
-	>=dev-ruby/prime-0.1.2[ruby_targets_ruby32]
-	>=dev-ruby/rake-13.0.6[ruby_targets_ruby32]
-	>=dev-ruby/rbs-2.8.2[ruby_targets_ruby32]
-	>=dev-ruby/rexml-3.2.5[ruby_targets_ruby32]
-	>=dev-ruby/rss-0.2.9[ruby_targets_ruby32]
-	>=dev-ruby/test-unit-3.5.7[ruby_targets_ruby32]
-	>=dev-ruby/typeprof-0.21.3[ruby_targets_ruby32]
+	>=dev-ruby/debug-1.7.1[ruby_targets_ruby32(-)]
+	>=dev-ruby/matrix-0.4.2[ruby_targets_ruby32(-)]
+	>=dev-ruby/minitest-5.16.3[ruby_targets_ruby32(-)]
+	>=dev-ruby/net-ftp-0.2.0[ruby_targets_ruby32(-)]
+	>=dev-ruby/net-imap-0.3.4[ruby_targets_ruby32(-)]
+	>=dev-ruby/net-pop-0.1.2[ruby_targets_ruby32(-)]
+	>=dev-ruby/net-smtp-0.3.3[ruby_targets_ruby32(-)]
+	>=dev-ruby/power_assert-2.0.3[ruby_targets_ruby32(-)]
+	>=dev-ruby/prime-0.1.2[ruby_targets_ruby32(-)]
+	>=dev-ruby/rake-13.0.6[ruby_targets_ruby32(-)]
+	>=dev-ruby/rbs-2.8.2[ruby_targets_ruby32(-)]
+	>=dev-ruby/rexml-3.2.5[ruby_targets_ruby32(-)]
+	>=dev-ruby/rss-0.2.9[ruby_targets_ruby32(-)]
+	>=dev-ruby/test-unit-3.5.7[ruby_targets_ruby32(-)]
+	>=dev-ruby/typeprof-0.21.3[ruby_targets_ruby32(-)]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby32]
-	>=dev-ruby/bundler-2.3.3[ruby_targets_ruby32]
-	>=dev-ruby/did_you_mean-1.6.1[ruby_targets_ruby32]
-	>=dev-ruby/json-2.6.1[ruby_targets_ruby32]
-	rdoc? ( >=dev-ruby/rdoc-6.3.3[ruby_targets_ruby32] )
+	virtual/rubygems[ruby_targets_ruby32(-)]
+	>=dev-ruby/bundler-2.3.3[ruby_targets_ruby32(-)]
+	>=dev-ruby/did_you_mean-1.6.1[ruby_targets_ruby32(-)]
+	>=dev-ruby/json-2.6.1[ruby_targets_ruby32(-)]
+	rdoc? ( >=dev-ruby/rdoc-6.3.3[ruby_targets_ruby32(-)] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {

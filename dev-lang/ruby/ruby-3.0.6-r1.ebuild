@@ -45,23 +45,23 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/minitest-5.14.2[ruby_targets_ruby30]
-	>=dev-ruby/power_assert-1.2.0[ruby_targets_ruby30]
-	>=dev-ruby/rake-13.0.3[ruby_targets_ruby30]
-	>=dev-ruby/rbs-1.0.0[ruby_targets_ruby30]
-	>=dev-ruby/rexml-3.2.4[ruby_targets_ruby30]
-	>=dev-ruby/rss-0.2.9[ruby_targets_ruby30]
-	>=dev-ruby/test-unit-3.3.7[ruby_targets_ruby30]
-	>=dev-ruby/typeprof-0.11.0[ruby_targets_ruby30]
+	>=dev-ruby/minitest-5.14.2[ruby_targets_ruby30(-)]
+	>=dev-ruby/power_assert-1.2.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/rake-13.0.3[ruby_targets_ruby30(-)]
+	>=dev-ruby/rbs-1.0.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/rexml-3.2.4[ruby_targets_ruby30(-)]
+	>=dev-ruby/rss-0.2.9[ruby_targets_ruby30(-)]
+	>=dev-ruby/test-unit-3.3.7[ruby_targets_ruby30(-)]
+	>=dev-ruby/typeprof-0.11.0[ruby_targets_ruby30(-)]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby30]
-	>=dev-ruby/bundler-2.2.15[ruby_targets_ruby30]
-	>=dev-ruby/did_you_mean-1.5.0[ruby_targets_ruby30]
-	>=dev-ruby/json-2.5.1[ruby_targets_ruby30]
-	rdoc? ( >=dev-ruby/rdoc-6.3.0[ruby_targets_ruby30] )
+	virtual/rubygems[ruby_targets_ruby30(-)]
+	>=dev-ruby/bundler-2.2.15[ruby_targets_ruby30(-)]
+	>=dev-ruby/did_you_mean-1.5.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/json-2.5.1[ruby_targets_ruby30(-)]
+	rdoc? ( >=dev-ruby/rdoc-6.3.0[ruby_targets_ruby30(-)] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {
