@@ -15,7 +15,7 @@ RUBY_FAKEGEM_GEMSPEC="httparty.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Makes http fun! Also, makes consuming restful web services dead easy"
-HOMEPAGE="https://jnunemaker.github.com/httparty"
+HOMEPAGE="https://www.johnnunemaker.com/httparty/"
 SRC_URI="https://github.com/jnunemaker/httparty/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
