@@ -20,8 +20,8 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	graphicsmagick? ( media-gfx/graphicsmagick[cxx,imagemagick] )
-	!graphicsmagick? ( media-gfx/imagemagick[cxx] )
+	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx,imagemagick] )
+	!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
