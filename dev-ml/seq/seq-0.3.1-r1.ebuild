@@ -14,4 +14,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt"
 
-RDEPEND="<dev-lang/ocaml-4.07"
+RDEPEND=">=dev-lang/ocaml-4.07"
+BDEPEND="${RDEPEND}"
