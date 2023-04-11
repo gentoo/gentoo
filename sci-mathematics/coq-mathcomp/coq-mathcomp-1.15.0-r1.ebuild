@@ -18,3 +18,6 @@ RDEPEND="
 	>=sci-mathematics/coq-8.16.0:=
 "
 DEPEND="${RDEPEND}"
+
+# Do not complain about CFLAGS etc since ML projects do not use them.
+QA_FLAGS_IGNORED='.*'

@@ -20,3 +20,6 @@ RDEPEND="
 	dev-lang/ocaml:=
 "
 DEPEND="${RDEPEND}"
+
+# Do not complain about CFLAGS etc since ML projects do not use them.
+QA_FLAGS_IGNORED='.*'

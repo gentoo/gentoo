@@ -19,6 +19,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+# Do not complain about CFLAGS etc since ML projects do not use them.
+QA_FLAGS_IGNORED='.*'
+
 # > make jobserver unavailable
 src_compile() {
 	emake -j1
