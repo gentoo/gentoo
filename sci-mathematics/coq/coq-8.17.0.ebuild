@@ -18,7 +18,8 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc gui +ocamlopt"
+IUSE="debug doc gui +ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/zarith:=
@@ -47,6 +48,7 @@ BDEPEND="
 		dev-texlive/texlive-xetex
 		media-fonts/freefont
 	)
+	test? ( dev-ml/ounit2 )
 "
 
 DOCS=( CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS INSTALL.md README.md )
