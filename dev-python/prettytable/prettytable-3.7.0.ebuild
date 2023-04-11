@@ -6,16 +6,12 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Easily displaying tabular data in a visually appealing ASCII table format"
 HOMEPAGE="
 	https://github.com/jazzband/prettytable/
 	https://pypi.org/project/prettytable/
-"
-SRC_URI="
-	https://github.com/jazzband/prettytable/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="BSD"
@@ -34,5 +30,3 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
