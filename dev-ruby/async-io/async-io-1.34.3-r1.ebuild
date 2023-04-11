@@ -28,6 +28,10 @@ ruby_add_bdepend "test? (
 	dev-ruby/rack-test
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests.patch
+)
+
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
 
