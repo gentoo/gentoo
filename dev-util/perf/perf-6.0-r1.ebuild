@@ -36,8 +36,11 @@ IUSE="audit babeltrace clang crypt debug +doc gtk java libpfm lzma numa perl pyt
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# setuptools (and Python) are always needed even if not building Python bindings
 BDEPEND="
 	${LINUX_PATCH+dev-util/patchutils}
+	${PYTHON_DEPS}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
@@ -47,7 +50,6 @@ BDEPEND="
 		app-text/xmlto
 		sys-process/time
 	)
-	${PYTHON_DEPS}
 "
 
 RDEPEND="audit? ( sys-process/audit )
