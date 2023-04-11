@@ -20,9 +20,6 @@ SLOT="0"
 
 PATCHES=( "${FILESDIR}/${PN}-No-static-libs-gentoo.patch" )
 
-# see Makefile:1
-QA_PKGCONFIG_VERSION="0.6.3"
-
 src_prepare() {
 	default
 	tc-export CC
@@ -36,9 +33,9 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" \
-		  PREFIX="${EPREFIX}/usr" \
-		  LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		  install
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		install
 }
 
 pkg_postinst() {
