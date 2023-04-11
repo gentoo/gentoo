@@ -30,7 +30,7 @@ DEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	media-gfx/graphviz
-	test? ( x11-libs/gtk+:3 )
+	test? ( x11-libs/gtk+:3[X] )
 "
 RDEPEND="${DEPEND}"
 
