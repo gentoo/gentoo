@@ -1,6 +1,11 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-04-11)
+# Test failures on BE (#833010).  Supported by Debian CI.
+# https://gitlab.freedesktop.org/wayland/weston/-/issues/739
+dev-libs/weston
+
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # Explicit no-support for BE (#801238)
 media-libs/libldac
