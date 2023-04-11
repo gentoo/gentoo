@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools edo flag-o-matic multilib multilib-build
 inherit python-any-r1 toolchain-funcs wrapper
 
-WINE_GECKO=2.47.3
+WINE_GECKO=2.47.4
 WINE_MONO=7.4.0
 
 if [[ ${PV} == *9999 ]]; then
