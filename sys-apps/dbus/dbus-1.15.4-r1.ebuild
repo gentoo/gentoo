@@ -226,7 +226,7 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		emake DESTDIR="${D}" install
 	else
-		emake DESTDIR="${D}" install-pkgconfigDATA
+		emake DESTDIR="${D}" install-pkgconfigDATA install-cmakeconfigDATA
 		emake DESTDIR="${D}" -C dbus \
 			install-libLTLIBRARIES install-dbusincludeHEADERS \
 			install-nodist_dbusarchincludeHEADERS
