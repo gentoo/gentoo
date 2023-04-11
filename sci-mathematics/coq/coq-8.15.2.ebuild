@@ -14,7 +14,7 @@ SRC_URI="https://github.com/coq/coq/archive/V${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc gtk debug +ocamlopt"
 RESTRICT="test"  # fails
