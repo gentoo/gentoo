@@ -39,6 +39,7 @@ DOCS=( ACKNOWLEDGEMENTS.txt FEEDBACK.txt NEWS.txt README.txt )
 
 src_prepare() {
 	cmake_src_prepare
+	# Tests are broken with python 3.11.  See also: https://github.com/alembic/alembic/issues/411
 	cmake_run_in "${S}/python/PyAlembic" cmake_comment_add_subdirectory Tests
 }
 
