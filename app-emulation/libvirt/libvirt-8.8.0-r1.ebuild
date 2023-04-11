@@ -272,6 +272,7 @@ src_configure() {
 
 		-Dnetcf=disabled
 		-Dsanlock=disabled
+		-Dopenwsman=disabled
 
 		-Ddriver_esx=enabled
 		-Dinit_script=systemd
