@@ -26,6 +26,7 @@ BDEPEND="
 	test? (
 		>=dev-python/colorama-0.4.6[${PYTHON_USEDEP}]
 		>=dev-python/freezegun-1.2.2[${PYTHON_USEDEP}]
+		dev-python/mypy[${PYTHON_USEDEP}]
 	)
 "
 
