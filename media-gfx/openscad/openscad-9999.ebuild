@@ -3,13 +3,12 @@
 
 # TODO's
 # package and unbundle manifold
-# package Emacs scad-mode (and scad-dbus) and re-add emacs USE flag
 # set up proper testing
 # set up OFFLINE_DOCS and add doc USE flag
 
 EAPI=8
 
-inherit cmake git-r3 xdg
+inherit cmake git-r3 optfeature xdg
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
 HOMEPAGE="https://www.openscad.org/"
@@ -20,7 +19,6 @@ EGIT_REPO_URI="https://github.com/openscad/openscad.git"
 LICENSE="GPL-3+ LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-# TODO: emacs mode files have been moved to a separate repo: github://openscad/emacs-scad-mode
 IUSE="cairo dbus egl experimental gamepad gui hidapi mimalloc spacenav"
 RESTRICT="test" # 32 out 1300+ tests fail
 
@@ -42,7 +40,7 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/glew:0=
 	media-libs/harfbuzz:=
-	media-libs/lib3mf
+	media-libs/lib3mf:=
 	sci-mathematics/cgal:=
 	virtual/opengl
 	cairo? ( x11-libs/cairo )
@@ -122,6 +120,8 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
+
+	optfeature "support scad major mode in GNU Emacs" app-emacs/scad-mode
 }
 
 pkg_postrm() {
