@@ -1433,19 +1433,19 @@ glibc_do_src_install() {
 		find "${ED}" -name pt_chown -exec chmod -s {} +
 	fi
 
+	# We need to make sure that /lib and /usr/lib always exists.
+	# gcc likes to use relative paths to get to its multilibs like
+	# /usr/lib/../lib64/.  So while we don't install any files into
+	# /usr/lib/, we do need it to exist.
+	keepdir $(alt_prefix)/lib
+	keepdir $(alt_prefix)/usr/lib
+
 	#################################################################
 	# EVERYTHING AFTER THIS POINT IS FOR NATIVE GLIBC INSTALLS ONLY #
 	# Make sure we install some symlink hacks so that when we build
 	# a 2nd stage cross-compiler, gcc finds the target system
 	# headers correctly.  See gcc/doc/gccinstall.info
 	if is_crosscompile ; then
-		# We need to make sure that /lib and /usr/lib always exists.
-		# gcc likes to use relative paths to get to its multilibs like
-		# /usr/lib/../lib64/.  So while we don't install any files into
-		# /usr/lib/, we do need it to exist.
-		keepdir $(alt_prefix)/lib
-		keepdir $(alt_prefix)/usr/lib
-
 		dosym usr/include $(alt_prefix)/sys-include
 		return 0
 	fi
