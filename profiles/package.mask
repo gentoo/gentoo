@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2023-04-12)
+# Mask experimental software
+=mail-mta/postfix-3.9*
+
 # Matt Turner <mattst88@gentoo.org> (2023-04-10)
 # DMX support was dropped from the Xserver in v21.1.0 and had been broken for
 # 14 years previous to its removal. See
