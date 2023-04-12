@@ -54,7 +54,7 @@ BDEPEND="
 DOCS=( CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS INSTALL.md README.md )
 
 src_prepare() {
-	# Remove failing tests. bug #859877
+	# Remove failing tests. bug #904186
 	rm -r test-suite/coq-makefile/timing || die
 
 	default
