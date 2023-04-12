@@ -1,0 +1,35 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3145
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/8748c77451ce332dd24549b414200499ede4f184
+
+From 8748c77451ce332dd24549b414200499ede4f184 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 11 Apr 2023 16:31:44 +0200
+Subject: [PATCH] context: make driver runnable when we add a runnable node
+
+Explicitly make the driver runnable when we add a runnable node to it.
+
+We have to do this because the runnable node might not be directly linked
+to this driver.
+
+In the case of the echo-canceler, for example, a playback stream
+can be linked to the sink before the echo canceled virtual sink.
+All echo-cancel nodes are added to a source driver, which would not be
+activated because there is no direct path from the playback stream
+to the source river.
+
+Fixes #3145
+--- a/src/pipewire/context.c
++++ b/src/pipewire/context.c
+@@ -943,6 +943,8 @@ static void move_to_driver(struct pw_context *context, struct spa_list *nodes,
+ 	spa_list_consume(n, nodes, sort_link) {
+ 		spa_list_remove(&n->sort_link);
+ 
++		driver->runnable |= n->runnable;
++
+ 		pw_log_debug(" follower: %p %s runnable:%u driver-runnable:%u", n, n->name,
+ 				n->runnable, driver->runnable);
+ 		pw_impl_node_set_driver(n, driver);
+-- 
+GitLab
+
+
