@@ -12,6 +12,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">danmar/cppcheck</remote-id>
 		<remote-id type="sourceforge">cppcheck</remote-id>
 	</upstream>
 </pkgmetadata>
