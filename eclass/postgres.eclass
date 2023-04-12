@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: postgres.eclass
@@ -149,6 +149,10 @@ postgres_pkg_setup() {
 
 	export PG_SLOT=${best_slot}
 	export PG_CONFIG=$(type -P pg_config${best_slot//./})
+
+	if [[ -z ${PG_CONFIG} ]] ; then
+		die "Could not find pg_config for ${PG_SLOT}. Is dev-db/postgresql:${PG_SLOT} installed?"
+	fi
 
 	local pg_pkg_config_path="$(${PG_CONFIG} --libdir)/pkgconfig"
 	if [[ -n "${PKG_CONFIG_PATH}" ]]; then
