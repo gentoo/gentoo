@@ -307,6 +307,12 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	# Temporary workaround: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7717#note_1832122
+	use opencl && eapply "${FILESDIR}/clang_resource_dir.patch"
+	default
+}
+
 multilib_src_configure() {
 	local emesonargs=()
 
