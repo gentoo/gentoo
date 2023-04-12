@@ -20,7 +20,7 @@ MY_P="${P/_/-}"
 inherit lua-single pax-utils php-ext-source-r3 python-r1 ruby-ng
 
 DESCRIPTION="uWSGI server for Python web applications"
-HOMEPAGE="https://projects.unbit.it/uwsgi/"
+HOMEPAGE="https://uwsgi-docs.readthedocs.io/en/latest/"
 SRC_URI="https://github.com/unbit/uwsgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
