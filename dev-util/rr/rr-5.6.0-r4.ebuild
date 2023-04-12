@@ -47,7 +47,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-linux-headers-6.0.patch
 	"${FILESDIR}"/${P}-tests-clang16.patch
 	"${FILESDIR}"/${P}-gcc13.patch
-	"${FILESDIR}"/${P}-epoll_pwait2.patch
 	"${FILESDIR}"/${P}-gcc13-workaround.patch
 )
 
