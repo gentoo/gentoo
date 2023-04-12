@@ -50,6 +50,7 @@ python_check_deps() {
 PATCHES=(
 	"${FILESDIR}"/${PN}-2022.01.13-gentoo.patch
 	"${FILESDIR}"/${PN}-2022.07.16-gcc13.patch
+	"${FILESDIR}"/${P}-test.patch
 )
 
 src_prepare() {
