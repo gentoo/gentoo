@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Photos"
 LICENSE="GPL-3+ LGPL-2+ CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="test"
+IUSE="test upnp-av"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -38,6 +38,7 @@ DEPEND="
 
 # tracker-miners gschema used at runtime.
 RDEPEND="${DEPEND}
+	upnp-av? ( net-libs/dleyna:1.0= )
 	app-misc/tracker-miners:3
 "
 BDEPEND="
