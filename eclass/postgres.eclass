@@ -65,6 +65,17 @@ declare -p POSTGRES_USEDEP &>/dev/null && POSTGRES_DEP+="[${POSTGRES_USEDEP}]"
 # required if the package must build against one of the PostgreSQL slots
 # declared in POSTGRES_COMPAT.
 
+# @ECLASS_VARIABLE: PG_SLOT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# PG_SLOT is the chosen PostgreSQL slot that is used for the build.
+
+# @ECLASS_VARIABLE: PG_CONFIG
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# PG_CONFIG is the path to pg_config for the chosen PostgreSQL slot.
+# For example, PG_CONFIG="pg_config15"
+
 # @ECLASS_VARIABLE: _POSTGRES_COMPAT
 # @INTERNAL
 # @DESCRIPTION:
