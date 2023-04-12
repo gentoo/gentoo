@@ -22,7 +22,8 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv"
+IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/asgiref-3.4.0[${PYTHON_USEDEP}]
@@ -32,17 +33,24 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/a2wsgi[${PYTHON_USEDEP}]
-		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-dotenv[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/trustme[${PYTHON_USEDEP}]
 		>=dev-python/websockets-10.4[${PYTHON_USEDEP}]
 		dev-python/wsproto[${PYTHON_USEDEP}]
+		test-rust? (
+			dev-python/cryptography[${PYTHON_USEDEP}]
+			dev-python/trustme[${PYTHON_USEDEP}]
+			dev-python/watchfiles[${PYTHON_USEDEP}]
+		)
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.21.1-optional-rust.patch
+)
 
 distutils_enable_tests pytest
 
@@ -64,10 +72,19 @@ python_test() {
 	fi
 
 	local EPYTEST_IGNORE=()
-	# love from Rust world
-	if ! has_version "dev-python/watchfiles[${PYTHON_USEDEP}]"; then
+
+	if ! use test-rust ; then
+		EPYTEST_DESELECT+=(
+			# dev-python/cryptography
+			tests/test_config.py::test_ssl_config
+			tests/test_config.py::test_ssl_config_combined
+		)
+
 		EPYTEST_IGNORE+=(
+			# dev-python/watchfiles
 			tests/supervisors/test_reload.py
+			# dev-python/cryptography
+			tests/test_ssl.py
 		)
 	fi
 
