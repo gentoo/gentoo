@@ -88,6 +88,7 @@ PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
 PATCHES=(
 	"${WORKDIR}"/mysql-patches
+	"${FILESDIR}"/${PN}-8.0.32-gcc13.patch
 )
 
 mysql_init_vars() {
