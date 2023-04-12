@@ -1,0 +1,259 @@
+https://github.com/socketry/timers/issues/82
+https://github.com/socketry/timers/commit/039bbd2750d5e50721789ef5d3404b18c36517bc
+
+From 039bbd2750d5e50721789ef5d3404b18c36517bc Mon Sep 17 00:00:00 2001
+From: Samuel Williams <samuel.williams@oriontransfer.co.nz>
+Date: Wed, 12 Apr 2023 17:25:59 +1200
+Subject: [PATCH] Modernize gem (#83)
+
+* Improve robustness of `Timer#inspect`.
+
+* 100% test coverage.
+--- a/fixtures/timer_quantum.rb
++++ b/fixtures/timer_quantum.rb
+@@ -1,3 +1,5 @@
++# frozen_string_literal: true
++
+ # Released under the MIT License.
+ # Copyright, 2022, by Samuel Williams.
+ 
+--- a/lib/timers/group.rb
++++ b/lib/timers/group.rb
+@@ -92,8 +92,9 @@ def wait
+ 		# -   0: timers ready to fire
+ 		# - +ve: timers waiting to fire
+ 		def wait_interval(offset = current_offset)
+-			handle = @events.first
+-			handle.time - Float(offset) if handle
++			if handle = @events.first
++				handle.time - Float(offset)
++			end
+ 		end
+ 		
+ 		# Fire all timers that are ready.
+--- a/lib/timers/priority_heap.rb
++++ b/lib/timers/priority_heap.rb
+@@ -84,9 +84,10 @@ def valid?
+ 
+ 		private
+ 		
+-		def swap(i, j)
+-			@contents[i], @contents[j] = @contents[j], @contents[i]
+-		end
++		# Left here for reference, but unused.
++		# def swap(i, j)
++		# 	@contents[i], @contents[j] = @contents[j], @contents[i]
++		# end
+ 		
+ 		def bubble_up(index)
+ 			parent_index = (index - 1) / 2 # watch out, integer division!
+--- a/lib/timers/timer.rb
++++ b/lib/timers/timer.rb
+@@ -23,12 +23,11 @@ def initialize(group, interval, recurring = false, offset = nil, &block)
+ 			@interval = interval
+ 			@recurring = recurring
+ 			@block = block
+-			@offset = offset
+-			
++			@offset = nil
+ 			@handle = nil
+ 			
+ 			# If a start offset was supplied, use that, otherwise use the current timers offset.
+-			reset(@offset || @group.current_offset)
++			reset(offset || @group.current_offset)
+ 		end
+ 		
+ 		def paused?
+@@ -73,7 +72,7 @@ def cancel
+ 			@handle = nil
+ 			
+ 			# This timer is no longer valid:
+-			@group.timers.delete self if @group
++			@group.timers.delete(self) if @group
+ 		end
+ 		
+ 		# Reset this timer. Do not call while paused.
+@@ -117,18 +116,18 @@ def fires_in
+ 		
+ 		# Inspect a timer
+ 		def inspect
+-			buffer = "#{to_s[0..-2]} ".dup
++			buffer = to_s[0..-2]
+ 			
+ 			if @offset
+-				if fires_in >= 0
+-					buffer << "fires in #{fires_in} seconds"
++				delta_offset = @offset - @group.current_offset
++				
++				if delta_offset > 0
++					buffer << " fires in #{delta_offset} seconds"
+ 				else
+-					buffer << "fired #{fires_in.abs} seconds ago"
++					buffer << " fired #{delta_offset.abs} seconds ago"
+ 				end
+ 				
+ 				buffer << ", recurs every #{interval}" if recurring
+-			else
+-				buffer << "dead"
+ 			end
+ 			
+ 			buffer << ">"
+--- a/lib/timers/wait.rb
++++ b/lib/timers/wait.rb
+@@ -17,6 +17,7 @@ def self.for(duration, &block)
+ 				
+ 				timeout.while_time_remaining(&block)
+ 			else
++				# If there is no "duration" to wait for, we wait forever.
+ 				loop do
+ 					yield(nil)
+ 				end
+--- a/license.md
++++ b/license.md
+@@ -28,6 +28,7 @@ Copyright, 2017-2020, by Olle Jonsson.
+ Copyright, 2020, by Tim Smith.  
+ Copyright, 2021, by Wander Hillen.  
+ Copyright, 2022, by Yoshiki Takagi.  
++Copyright, 2023, by Peter Goldstein.  
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+--- a/test/timers/group.rb
++++ b/test/timers/group.rb
+@@ -36,18 +36,31 @@
+ 			expect(called).to be == true
+ 			expect(fired).to be == true
+ 		end
++		
++		it "repeatedly calls the wait block if it sleeps less than the interval" do
++			called = 0
++			fired = false
++			
++			group.after(0.1) { fired = true }
++			
++			group.wait do |interval|
++				called += 1
++				sleep(0.01)
++			end
++			
++			expect(called).to be > 1
++			expect(fired).to be == true
++		end
+ 	end
+ 	
+ 	it "sleeps until the next timer" do
+ 		interval = 0.1
+-		started_at = Time.now
+ 		
+ 		fired = false
+ 		group.after(interval) {fired = true}
+ 		group.wait
+ 		
+ 		expect(fired).to be == true
+-		expect(Time.now - started_at).to be_within(TIMER_QUANTUM).of(interval)
+ 	end
+ 	
+ 	it "fires instantly when next timer is in the past" do
+@@ -88,6 +101,26 @@
+ 		end.to raise_exception(TypeError)
+ 	end
+ 	
++	with "#now_and_after" do
++		it "fires the timer immediately" do
++			result = []
++			
++			group.now_and_after(TIMER_QUANTUM * 2) { result << :foo }
++			
++			expect(result).to be == [:foo]
++		end
++		
++		it "fires the timer at the correct time" do
++			result = []
++			
++			group.now_and_after(TIMER_QUANTUM * 2) { result << :foo }
++			
++			group.wait
++			
++			expect(result).to be == [:foo, :foo]
++		end
++	end
++	
+ 	with "recurring timers" do
+ 		it "continues to fire the timers at each interval" do
+ 			result = []
+--- a/test/timers/group/cancel.rb
++++ b/test/timers/group/cancel.rb
+@@ -10,6 +10,17 @@
+ describe Timers::Group do
+ 	let(:group) {subject.new}
+ 	
++	it "can cancel a timer" do
++		fired = false
++		
++		timer = group.after(0.1) { fired = true }
++		timer.cancel
++		
++		group.wait
++		
++		expect(fired).to be == false
++	end
++	
+ 	it "should be able to cancel twice" do
+ 		fired = false
+ 		
+@@ -51,4 +62,18 @@
+ 		expect(group.timers).to be(:empty?)
+ 		expect(x).to be == 0
+ 	end
++	
++	with "#cancel" do
++		it "should cancel all timers" do
++			timers = 3.times.map do
++				group.every(0.1) {}
++			end
++			
++			expect(group.timers).not.to be(:empty?)
++			
++			group.cancel
++			
++			expect(group.timers).to be(:empty?)
++		end
++	end
+ end
+--- a/test/timers/wait.rb
++++ b/test/timers/wait.rb
+@@ -14,9 +14,14 @@
+ 	it "repeats until timeout expired" do
+ 		timeout = Timers::Wait.new(interval*repeats)
+ 		count = 0
++		previous_remaining = nil
+ 		
+ 		timeout.while_time_remaining do |remaining|
+-			expect(remaining).to be_within(TIMER_QUANTUM).of(timeout.duration - (count * interval))
++			if previous_remaining
++				expect(remaining).to be_within(TIMER_QUANTUM).of(previous_remaining - interval)
++			end
++			
++			previous_remaining = remaining
+ 			
+ 			count += 1
+ 			sleep(interval)
+@@ -34,4 +39,18 @@
+ 		
+ 		expect(result).to be == :done
+ 	end
++	
++	with "#for" do
++		with "no duration" do
++			it "waits forever" do
++				count = 0
++				Timers::Wait.for(nil) do
++					count += 1
++					break if count > 10
++				end
++				
++				expect(count).to be > 10
++			end
++		end
++	end
+ end
