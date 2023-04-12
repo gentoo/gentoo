@@ -22,9 +22,12 @@ S="${WORKDIR}/client_python-${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="-twisted"
 
 RDEPEND="
-	dev-python/twisted[${PYTHON_USEDEP}]
+	twisted? (
+		dev-python/twisted[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
