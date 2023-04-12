@@ -92,7 +92,7 @@ www-apps/roundup ssl
 dev-python/anyio test
 dev-python/httpcore test
 dev-python/httpx test
-dev-python/uvicorn test
+<dev-python/uvicorn-0.21.1-r1 test
 dev-python/aiohttp-socks test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
