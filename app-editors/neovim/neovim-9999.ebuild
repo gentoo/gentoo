@@ -71,7 +71,6 @@ BDEPEND+="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.0-cmake_lua_version.patch"
 	"${FILESDIR}/${PN}-0.9.0-cmake-darwin.patch"
-	"${FILESDIR}/${PN}-0.9.0-cmake-release-type.patch"
 )
 
 src_prepare() {
