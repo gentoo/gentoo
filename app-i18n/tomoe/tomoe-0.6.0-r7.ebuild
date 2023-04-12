@@ -1,8 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-USE_RUBY="ruby30"
+EAPI=7
+
+USE_RUBY="ruby30 ruby31 ruby32"
 
 inherit autotools ruby-utils
 
@@ -24,7 +25,7 @@ RDEPEND="dev-libs/glib:2
 		$(for ruby in ${USE_RUBY}; do
 			echo "ruby_targets_${ruby}? (
 				$(_ruby_implementation_depend "${ruby}")
-				dev-ruby/ruby-glib2[ruby_targets_${ruby}]
+				dev-ruby/ruby-glib2[ruby_targets_${ruby}(-)]
 			)"
 		done)
 	)
