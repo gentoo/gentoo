@@ -30,7 +30,7 @@ RDEPEND="
 		dev-qt/qthelp
 		dev-qt/qtprintsupport:5
 	)
-	z3? ( sci-mathematics/z3 )
+	z3? ( sci-mathematics/z3:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
