@@ -26,8 +26,12 @@ BDEPEND="
 "
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2021.11.17-gentoo.patch
+	"${FILESDIR}"/${P}-gcc13.patch
+)
+
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-2021.11.17-gentoo.patch
 	cd libkineto
 	cmake_src_prepare
 }
