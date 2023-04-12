@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv"
 
 RDEPEND="
 	>=dev-python/asgiref-3.4.0[${PYTHON_USEDEP}]
