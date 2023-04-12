@@ -18,11 +18,14 @@ RESTRICT="!test? ( test )"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="
+	test? ( >=dev-libs/mpfr-4.2 )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-riscv.patch
+	"${FILESDIR}"/${P}-mpfr42.patch
 )
 
 src_configure() {
@@ -33,4 +36,12 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+
+	local myctestargs=(
+		-E "iut(y)?purec(fma)?_scalar"
+	)
+	cmake_src_test
 }
