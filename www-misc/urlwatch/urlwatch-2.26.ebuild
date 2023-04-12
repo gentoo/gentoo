@@ -30,6 +30,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		app-text/tesseract[png]
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/jq[${PYTHON_USEDEP}]
 		dev-python/pytesseract[${PYTHON_USEDEP}]
