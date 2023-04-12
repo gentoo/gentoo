@@ -1,0 +1,78 @@
+https://github.com/rr-debugger/rr/commit/7d1b31dd76d18e9e810455f4abd804e76b0a6c1f
+
+From 7d1b31dd76d18e9e810455f4abd804e76b0a6c1f Mon Sep 17 00:00:00 2001
+From: Robert O'Callahan <robert@ocallahan.org>
+Date: Sun, 26 Mar 2023 23:52:44 +1300
+Subject: [PATCH] Support epoll_pwait2
+
+Resolves #3462
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -933,6 +933,7 @@ set(BASIC_TESTS
+   epoll_edge
+   epoll_many
+   epoll_pwait_eintr_sigmask
++  epoll_pwait2
+   eventfd
+   exec_flags
+   exec_no_env
+--- a/src/record_syscall.cc
++++ b/src/record_syscall.cc
+@@ -4841,6 +4841,7 @@ static Switchable rec_prepare_syscall_arch(RecordTask* t,
+               sizeof(typename Arch::epoll_event)));
+       return ALLOW_SWITCH;
+ 
++    case Arch::epoll_pwait2:
+     case Arch::epoll_pwait: {
+       syscall_state.reg_parameter(
+           2, ParamSize::from_syscall_result<int>(sizeof(typename Arch::epoll_event) * regs.arg3_signed(),
+--- a/src/syscalls.py
++++ b/src/syscalls.py
+@@ -1729,7 +1729,7 @@ def __init__(self, **kwargs):
+ openat2 = UnsupportedSyscall(x86=437, x64=437, generic=437)
+ pidfd_getfd = UnsupportedSyscall(x86=438, x64=438, generic=438)
+ process_madvise = UnsupportedSyscall(x86=440, x64=440, generic=440)
+-epoll_pwait2 = UnsupportedSyscall(x86=441, x64=441, generic=441)
++epoll_pwait2 = IrregularEmulatedSyscall(x86=441, x64=441, generic=441)
+ mount_setattr = UnsupportedSyscall(x86=442, x64=442, generic=442)
+ quotactl_fd = UnsupportedSyscall(x86=443, x64=443, generic=443)
+ landlock_create_ruleset = UnsupportedSyscall(x86=444, x64=444, generic=444)
+--- /dev/null
++++ b/src/test/epoll_pwait2.c
+@@ -0,0 +1,35 @@
++/* -*- Mode: C; tab-width: 8; c-basic-offset: 2; indent-tabs-mode: nil; -*- */
++
++#include "util.h"
++
++static void handle_sig(__attribute__((unused)) int sig) {
++  /* Don't do anything, just go through the signal handler motions */
++}
++
++int main(void) {
++  int pipe_fd[2];
++  int epfd;
++  struct timespec ts = { 5, 0 };
++  struct epoll_event ev;
++  sigset_t sigmask;
++  sigemptyset(&sigmask);
++  sigaddset(&sigmask, SIGCHLD);
++
++  signal(SIGALRM, handle_sig);
++
++  test_assert(0 == pipe(pipe_fd));
++  test_assert(0 <= (epfd = epoll_create(1 /*num events*/)));
++
++  ev.events = EPOLLIN;
++  ev.data.fd = pipe_fd[0];
++  test_assert(0 == epoll_ctl(epfd, EPOLL_CTL_ADD, ev.data.fd, &ev));
++
++  // Make sure something will wake us from the epoll_pwait2.
++  alarm(1);
++  // But also use the epoll_pwait to modify the signal mask.
++  epoll_pwait2(epfd, &ev, 1, &ts, &sigmask);
++  test_assert(errno == EINTR || errno == ENOSYS);
++
++  atomic_puts("EXIT-SUCCESS");
++  return 0;
++}
+
