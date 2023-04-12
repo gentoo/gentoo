@@ -314,6 +314,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="test"
 
+BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]"
+
 distutils_enable_tests pytest
 
 src_unpack() {
