@@ -10,7 +10,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc64 ~riscv x86"
 
 RDEPEND="
-	dev-libs/opencl-icd-loader[${MULTILIB_USEDEP}]
+	>=dev-libs/opencl-icd-loader-2023.02.06[${MULTILIB_USEDEP}]
 "
 
 pkg_postinst() {
