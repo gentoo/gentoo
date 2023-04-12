@@ -15,7 +15,8 @@ SRC_URI+=" verify-sig? ( https://botan.randombit.net/releases/${MY_P}.tar.xz.asc
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
-SLOT="2/$(ver_cut 1-2)" # soname version
+# New major versions are parallel-installable
+SLOT="$(ver_cut 1)/$(ver_cut 1-2)" # soname version
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
 IUSE="doc boost bzip2 lzma python static-libs sqlite test tools zlib"
 RESTRICT="!test? ( test )"
@@ -175,6 +176,6 @@ src_install() {
 
 	# Manually install the Python bindings (bug #723096)
 	if use python ; then
-		python_foreach_impl python_domodule src/python/botan2.py
+		python_foreach_impl python_domodule src/python/botan$(ver_cut 1).py
 	fi
 }

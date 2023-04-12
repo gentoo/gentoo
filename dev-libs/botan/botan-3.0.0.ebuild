@@ -176,6 +176,6 @@ src_install() {
 
 	# Manually install the Python bindings (bug #723096)
 	if use python ; then
-		python_foreach_impl python_domodule src/python/botan2.py
+		python_foreach_impl python_domodule src/python/botan$(ver_cut 1).py
 	fi
 }
