@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-13)
+# No Python 3.11 support.  The package has been discontinued upstream
+# (in favor of pyro5 that we do not package at the moment).  It was only
+# used as an optional dependency of dev-python/kombu, and it has
+# no revdeps anymore.
+# Removal on 2023-05-13.  Bug #896744.
+dev-python/Pyro4
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-13)
 # Broken tests and no Python 3.11 support.  Upstream has discontinued
 # the package, dev-python/mistune is suggested as a replacement.
 # No reverse dependencies.
