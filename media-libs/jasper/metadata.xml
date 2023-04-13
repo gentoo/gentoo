@@ -16,4 +16,7 @@
 	<upstream>
 		<remote-id type="github">jasper-software/jasper</remote-id>
 	</upstream>
+	<use>
+		<flag name="heif">This is experimental and unlikely to be supported by upstream</flag>
+	</use>
 </pkgmetadata>
