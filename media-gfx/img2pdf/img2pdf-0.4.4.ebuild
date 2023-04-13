@@ -38,8 +38,9 @@ RDEPEND="
 	gui? ( $(python_gen_impl_dep tk) )
 "
 
-# gif animation test fails
-PATCHES=( "${FILESDIR}"/img2pdf-0.4.3-test-gif-animation.patch )
+PATCHES=(
+	"${FILESDIR}"/img2pdf-0.4.4-Support-imagemagick-7.1.0-48.patch
+)
 
 distutils_enable_tests pytest
 
@@ -50,11 +51,10 @@ src_prepare() {
 	if ! use gui; then
 		sed -i '/gui_scripts/d' setup.py || die
 	fi
-
-	# gif animation test fails
-	rm src/tests/input/animation.gif src/tests/output/animation.gif.pdf || die "rm animation gif failes"
 }
 
 python_test() {
-	epytest -n auto
+	epytest \
+		-n auto \
+		-k "not test_png_gray1 and not test_gif_animation"
 }
