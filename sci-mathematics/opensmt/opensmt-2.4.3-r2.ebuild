@@ -25,7 +25,7 @@ REQUIRED_USE="?? ( libedit readline )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/gmp:=
+	dev-libs/gmp:=[cxx]
 	readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit:= )
 "
