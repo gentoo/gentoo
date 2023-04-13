@@ -32,8 +32,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-shells/bash
-	doc? ( app-doc/doxygen )
-"
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-plaingeneric
+		virtual/latex-base
+	)"
 
 src_configure() {
 	local mycmakeargs=(
