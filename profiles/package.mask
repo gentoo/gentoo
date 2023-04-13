@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-04-13)
+# Unmaintained, implicit declarations, last release over 17 years ago,
+# no other distro still packages this.
+# Removal on 2023-05-13. Bug #874522, #898456.
+x11-plugins/ascpu
+
 # Eray Aslan <eras@gentoo.org> (2023-04-12)
 # Mask experimental software
 =mail-mta/postfix-3.9*
