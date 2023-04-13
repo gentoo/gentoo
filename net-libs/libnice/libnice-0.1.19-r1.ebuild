@@ -5,8 +5,8 @@ EAPI=7
 inherit meson-multilib xdg
 
 DESCRIPTION="An implementation of the Interactice Connectivity Establishment standard (ICE)"
-HOMEPAGE="https://nice.freedesktop.org/wiki/"
-SRC_URI="https://nice.freedesktop.org/releases/${P}.tar.gz"
+HOMEPAGE="https://libnice.freedesktop.org/"
+SRC_URI="https://libnice.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="|| ( MPL-1.1 LGPL-2.1 )"
 SLOT="0"
