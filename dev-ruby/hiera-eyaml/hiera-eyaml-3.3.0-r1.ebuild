@@ -17,7 +17,7 @@ SRC_URI="https://github.com/voxpupuli/hiera-eyaml/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/highline-1.6.19:*"
