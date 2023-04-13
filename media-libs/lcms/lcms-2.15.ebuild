@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.15-meson-big-endian.patch
 	"${FILESDIR}"/${PN}-2.15-meson-samples.patch
 	"${FILESDIR}"/${PN}-2.15-meson-psicc-man-page.patch
+	"${FILESDIR}"/${PN}-2.15-pthread-linking.patch
 )
 
 multilib_src_configure() {
