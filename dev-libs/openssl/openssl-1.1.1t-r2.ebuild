@@ -93,7 +93,6 @@ src_prepare() {
 		rm test/recipes/80-test_ssl_new.t || die
 	fi
 
-
 	# Remove test target when FEATURES=test isn't set
 	if ! use test ; then
 		sed \
