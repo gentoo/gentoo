@@ -15,5 +15,5 @@ HOMEPAGE="https://github.com/gtmtechltd/hiera-eyaml-plaintext"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
