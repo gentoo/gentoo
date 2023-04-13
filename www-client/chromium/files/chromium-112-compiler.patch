@@ -1,0 +1,256 @@
+From 307a0f63dd9b118f4b8470ed3d7567e81fdb7a6d Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 15 Nov 2022 10:27:58 +0000
+Subject: [PATCH] Disable various compiler configs
+
+---
+ build/config/compiler/BUILD.gn | 134 +++++----------------------------
+ 1 file changed, 17 insertions(+), 117 deletions(-)
+
+diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
+index bd039fc..4d3759a 100644
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -276,9 +276,7 @@ config("compiler") {
+ 
+   configs += [
+     # See the definitions below.
+-    ":clang_revision",
+     ":rustc_revision",
+-    ":compiler_cpu_abi",
+     ":compiler_codegen",
+     ":compiler_deterministic",
+   ]
+@@ -529,37 +527,6 @@ config("compiler") {
+     ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
+   }
+ 
+-  if (is_clang && !is_nacl && current_os != "zos") {
+-    cflags += [ "-fcrash-diagnostics-dir=" + clang_diagnostic_dir ]
+-    if (save_reproducers_on_lld_crash && use_lld) {
+-      ldflags += [
+-        "-fcrash-diagnostics=all",
+-        "-fcrash-diagnostics-dir=" + clang_diagnostic_dir,
+-      ]
+-    }
+-
+-    # TODO(hans): Remove this once Clang generates better optimized debug info
+-    # by default. https://crbug.com/765793
+-    cflags += [
+-      "-mllvm",
+-      "-instcombine-lower-dbg-declare=0",
+-    ]
+-    if (!is_debug && use_thin_lto && is_a_target_toolchain) {
+-      if (is_win) {
+-        ldflags += [ "-mllvm:-instcombine-lower-dbg-declare=0" ]
+-      } else {
+-        ldflags += [ "-Wl,-mllvm,-instcombine-lower-dbg-declare=0" ]
+-      }
+-    }
+-
+-    # TODO(crbug.com/1235145): Investigate why/if this should be needed.
+-    if (is_win) {
+-      cflags += [ "/clang:-ffp-contract=off" ]
+-    } else {
+-      cflags += [ "-ffp-contract=off" ]
+-    }
+-  }
+-
+   # Rust compiler setup (for either clang or rustc).
+   if (enable_rust) {
+     defines += [ "RUST_ENABLED" ]
+@@ -1301,46 +1268,6 @@ config("compiler_deterministic") {
+     }
+   }
+ 
+-  # Makes builds independent of absolute file path.
+-  if (is_clang && strip_absolute_paths_from_debug_symbols) {
+-    # If debug option is given, clang includes $cwd in debug info by default.
+-    # For such build, this flag generates reproducible obj files even we use
+-    # different build directory like "out/feature_a" and "out/feature_b" if
+-    # we build same files with same compile flag.
+-    # Other paths are already given in relative, no need to normalize them.
+-    if (is_nacl) {
+-      # TODO(https://crbug.com/1231236): Use -ffile-compilation-dir= here.
+-      cflags += [
+-        "-Xclang",
+-        "-fdebug-compilation-dir",
+-        "-Xclang",
+-        ".",
+-      ]
+-    } else {
+-      # -ffile-compilation-dir is an alias for both -fdebug-compilation-dir=
+-      # and -fcoverage-compilation-dir=.
+-      cflags += [ "-ffile-compilation-dir=." ]
+-      swiftflags += [ "-file-compilation-dir=." ]
+-    }
+-    if (!is_win) {
+-      # We don't use clang -cc1as on Windows (yet? https://crbug.com/762167)
+-      asmflags = [ "-Wa,-fdebug-compilation-dir,." ]
+-    }
+-
+-    if (is_win && use_lld) {
+-      if (symbol_level == 2 || (is_clang && using_sanitizer)) {
+-        # Absolutize source file paths for PDB. Pass the real build directory
+-        # if the pdb contains source-level debug information and if linker
+-        # reproducibility is not critical.
+-        ldflags += [ "/PDBSourcePath:" + rebase_path(root_build_dir) ]
+-      } else {
+-        # Use a fake fixed base directory for paths in the pdb to make the pdb
+-        # output fully deterministic and independent of the build directory.
+-        ldflags += [ "/PDBSourcePath:o:\fake\prefix" ]
+-      }
+-    }
+-  }
+-
+   # Tells the compiler not to use absolute paths when passing the default
+   # paths to the tools it invokes. We don't want this because we don't
+   # really need it and it can mess up the goma cache entries.
+@@ -1359,27 +1286,6 @@ config("compiler_deterministic") {
+   }
+ }
+ 
+-config("clang_revision") {
+-  if (is_clang && clang_base_path == default_clang_base_path) {
+-    update_args = [
+-      "--print-revision",
+-      "--verify-version=$clang_version",
+-    ]
+-    if (llvm_force_head_revision) {
+-      update_args += [ "--llvm-force-head-revision" ]
+-    }
+-    clang_revision = exec_script("//tools/clang/scripts/update.py",
+-                                 update_args,
+-                                 "trim string")
+-
+-    # This is here so that all files get recompiled after a clang roll and
+-    # when turning clang on or off. (defines are passed via the command line,
+-    # and build system rebuild things when their commandline changes). Nothing
+-    # should ever read this define.
+-    defines = [ "CR_CLANG_REVISION=\"$clang_revision\"" ]
+-  }
+-}
+-
+ config("rustc_revision") {
+   if (enable_rust && defined(rustc_version)) {
+     # Similar to the above config, this is here so that all files get
+@@ -1669,7 +1575,7 @@ config("chromium_code") {
+       defines = [ "_HAS_NODISCARD" ]
+     }
+   } else {
+-    cflags = [ "-Wall" ]
++    cflags = []
+     if (treat_warnings_as_errors) {
+       cflags += [ "-Werror" ]
+ 
+@@ -1678,10 +1584,6 @@ config("chromium_code") {
+       # well.
+       ldflags = [ "-Werror" ]
+     }
+-    if (is_clang) {
+-      # Enable extra warnings for chromium_code when we control the compiler.
+-      cflags += [ "-Wextra" ]
+-    }
+ 
+     # In Chromium code, we define __STDC_foo_MACROS in order to get the
+     # C99 macros on Mac and Linux.
+@@ -1690,16 +1592,6 @@ config("chromium_code") {
+       "__STDC_FORMAT_MACROS",
+     ]
+ 
+-    if (!is_debug && !using_sanitizer && current_cpu != "s390x" &&
+-        current_cpu != "s390" && current_cpu != "ppc64" &&
+-        current_cpu != "mips" && current_cpu != "mips64" &&
+-        current_cpu != "riscv64" && current_cpu != "loong64") {
+-      # Non-chromium code is not guaranteed to compile cleanly with
+-      # _FORTIFY_SOURCE. Also, fortified build may fail when optimizations are
+-      # disabled, so only do that for Release build.
+-      defines += [ "_FORTIFY_SOURCE=2" ]
+-    }
+-
+     if (is_mac) {
+       cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
+       cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
+@@ -2092,7 +1984,8 @@ config("default_stack_frames") {
+ }
+ 
+ # Default "optimization on" config.
+-config("optimize") {
++config("optimize") { }
++config("xoptimize") {
+   if (is_win) {
+     if (chrome_pgo_phase != 2) {
+       # Favor size over speed, /O1 must be before the common flags.
+@@ -2137,7 +2030,8 @@ config("optimize") {
+ }
+ 
+ # Turn off optimizations.
+-config("no_optimize") {
++config("no_optimize") { }
++config("xno_optimize") {
+   if (is_win) {
+     cflags = [
+       "/Od",  # Disable optimization.
+@@ -2177,7 +2071,8 @@ config("no_optimize") {
+ # Turns up the optimization level. On Windows, this implies whole program
+ # optimization and link-time code generation which is very expensive and should
+ # be used sparingly.
+-config("optimize_max") {
++config("optimize_max") { }
++config("xoptimize_max") {
+   if (is_nacl && is_nacl_irt) {
+     # The NaCl IRT is a special case and always wants its own config.
+     # Various components do:
+@@ -2210,7 +2105,8 @@ config("optimize_max") {
+ #
+ # TODO(crbug.com/621335) - rework how all of these configs are related
+ # so that we don't need this disclaimer.
+-config("optimize_speed") {
++config("optimize_speed") { }
++config("xoptimize_speed") {
+   if (is_nacl && is_nacl_irt) {
+     # The NaCl IRT is a special case and always wants its own config.
+     # Various components do:
+@@ -2236,7 +2132,8 @@ config("optimize_speed") {
+   }
+ }
+ 
+-config("optimize_fuzzing") {
++config("optimize_fuzzing") { }
++config("xoptimize_fuzzing") {
+   cflags = [ "-O1" ] + common_optimize_on_cflags
+   rustflags = [ "-Copt-level=1" ]
+   ldflags = common_optimize_on_ldflags
+@@ -2356,7 +2253,8 @@ config("win_pdbaltpath") {
+ }
+ 
+ # Full symbols.
+-config("symbols") {
++config("symbols") { }
++config("xsymbols") {
+   if (is_win) {
+     if (is_clang) {
+       cflags = [
+@@ -2495,7 +2393,8 @@ config("symbols") {
+ # Minimal symbols.
+ # This config guarantees to hold symbol for stack trace which are shown to user
+ # when crash happens in unittests running on buildbot.
+-config("minimal_symbols") {
++config("minimal_symbols") { }
++config("xminimal_symbols") {
+   if (is_win) {
+     # Functions, files, and line tables only.
+     cflags = []
+@@ -2568,7 +2467,8 @@ config("minimal_symbols") {
+ # This configuration contains function names only. That is, the compiler is
+ # told to not generate debug information and the linker then just puts function
+ # names in the final debug information.
+-config("no_symbols") {
++config("no_symbols") { }
++config("xno_symbols") {
+   if (is_win) {
+     ldflags = [ "/DEBUG" ]
+ 
+-- 
+2.37.4
+
