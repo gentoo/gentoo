@@ -1,0 +1,24 @@
+https://gitlab.freedesktop.org/libopenraw/libopenraw/-/commit/03f8270d6bb255ca6618505e83169ab9d95ccef1
+https://bugs.gentoo.org/895374
+
+From 03f8270d6bb255ca6618505e83169ab9d95ccef1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Hubert=20Figui=C3=A8re?= <hub@figuiere.net>
+Date: Tue, 21 Feb 2023 18:45:00 -0500
+Subject: [PATCH] Issue #12 - Include stdint.h where needed
+
+- This fixes an issue building with gcc 13
+
+https://gitlab.freedesktop.org/libopenraw/libopenraw/-/issues/12
+--- a/lib/trace.hpp
++++ b/lib/trace.hpp
+@@ -20,6 +20,8 @@
+ 
+ #pragma once
+ 
++#include <stdint.h>
++
+ #include <string>
+ #include <vector>
+ #include <algorithm>
+-- 
+GitLab
