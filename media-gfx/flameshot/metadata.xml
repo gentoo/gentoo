@@ -9,4 +9,14 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">flameshot-org/flameshot</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		Flameshot is a screenshot tool that aims to be powerful yet
+		simple-to-use. Its notable features include customizable appearance,
+		in-app screenshot editing, D-Bus interface, tray icon support,
+		experimental GNOME/KDE Wayland support, integration with Imgur and
+		support for both GUI and CLI interface.
+	</longdescription>
 </pkgmetadata>
