@@ -33,6 +33,16 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PV}-meson-Use-install_symlink.patch"
+)
+
+src_prepare() {
+	default
+
+	sed -i -e '/meson_python_compile.py/d' meson.build || die
+}
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use gtk-doc gtk_doc)
