@@ -42,7 +42,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-disable-pgp-test.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-disable-pgp-test.patch"
+	"${FILESDIR}/${PN}-2.3.5-openssl3-tests.patch"
+)
 
 qca_plugin_use() {
 	echo -DWITH_${2:-$1}_PLUGIN=$(usex "$1")
