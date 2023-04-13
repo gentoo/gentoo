@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Celery Sphinx Theme and Utilities"
 HOMEPAGE="
 	https://github.com/celery/sphinx_celery/
-	https://pypi.org/project/sphinx_celery/
+	https://pypi.org/project/sphinx-celery/
 "
 
 LICENSE="BSD"
