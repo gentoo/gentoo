@@ -55,6 +55,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="$(vala_depend)"
 
+PATCHES=("${FILESDIR}/${P}-no-movies.patch")
+
 DOCS=(
 	CHANGELOG.rst
 	FAQ.rst
