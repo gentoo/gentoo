@@ -56,6 +56,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-curl-8.patch
+	"${FILESDIR}"/${P}-musl.patch #897820
 )
 
 src_prepare() {
