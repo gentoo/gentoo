@@ -42,4 +42,5 @@ BDEPEND="
 	)
 "
 
+# Test markers exist to exclude trio etc if needed
 distutils_enable_tests pytest
