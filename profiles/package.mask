@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-04-13)
+# Broken tests and no Python 3.11 support.  Upstream has discontinued
+# the package, dev-python/mistune is suggested as a replacement.
+# No reverse dependencies.
+# Removal on 2023-05-13.  Bug #798066.
+dev-python/misaka
+
 # David Seifert <soap@gentoo.org> (2023-04-13)
 # Unmaintained, implicit declarations, last release over 17 years ago,
 # no other distro still packages this.
