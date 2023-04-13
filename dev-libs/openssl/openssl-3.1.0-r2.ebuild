@@ -134,6 +134,10 @@ src_configure() {
 	# Don't remove the no strict aliasing bits below!
 	filter-flags -fstrict-aliasing
 	append-flags -fno-strict-aliasing
+	# The OpenSSL developers don't test with LTO right now, it leads to various
+	# warnings/errors (which may or may not be false positives), it's considered
+	# unsupported, and it's not tested in CI: https://github.com/openssl/openssl/issues/18663.
+	filter-lto
 
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 
