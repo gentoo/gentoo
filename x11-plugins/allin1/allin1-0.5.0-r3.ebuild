@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,21 +12,19 @@ SRC_URI="mirror://sourceforge/allinone/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-RDEPEND="x11-libs/libX11
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+BDEPEND="sys-devel/flex"
 
-PATCHES=( "${FILESDIR}/makefile-r2.patch" )
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-src_compile() {
-	emake \
-		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
