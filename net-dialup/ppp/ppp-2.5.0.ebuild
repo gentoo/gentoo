@@ -2,20 +2,25 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+AUTOTOOLS_AUTO_DEPEND=no
 
-inherit linux-info pam
+inherit autotools linux-info pam
 
 PATCH_TARBALL_NAME="${PN}-2.4.9-patches-03"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
 SRC_URI="https://download.samba.org/pub/ppp/${P}.tar.gz
-	https://github.com/ppp-project/ppp/blob/${P}/contrib/pppgetpass/pppgetpass.8"
+	https://github.com/ppp-project/ppp/blob/${P}/contrib/pppgetpass/pppgetpass.8
+	dhcp? (
+		http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz
+		https://dev.gentoo.org/~floppym/dist/${P}-dhcp-patches.tar.gz
+	)"
 #https://dev.gentoo.org/~polynomial-c/${PATCH_TARBALL_NAME}.tar.xz
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="activefilter atm gtk pam systemd"
+IUSE="activefilter atm dhcp gtk pam systemd"
 
 DEPEND="
 	dev-libs/openssl:0=
@@ -28,8 +33,23 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!<net-misc/netifrc-0.7.1-r2"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	dhcp? ( ${AUTOTOOLS_DEPEND} )"
 PDEPEND="net-dialup/ppp-scripts"
+
+src_prepare() {
+	if use dhcp; then
+		eapply "${FILESDIR}/ppp-2.5.0-add-dhcp-plugin.patch"
+		cd "${WORKDIR}/dhcp" || die
+		eapply "${WORKDIR}/ppp-2.5.0-dhcp-patches"
+		cd "${S}" || die
+		mv "${WORKDIR}/dhcp" "${S}/pppd/plugins/dhcp" || die
+	fi
+	default
+	if use dhcp; then
+		eautoreconf
+	fi
+}
 
 src_configure() {
 	local args=(

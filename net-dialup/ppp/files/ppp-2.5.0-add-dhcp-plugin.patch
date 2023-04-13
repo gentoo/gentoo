@@ -1,0 +1,36 @@
+From de05f72948317b40c19b1c113e18713816010dd9 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 13 Apr 2023 16:26:56 -0400
+Subject: [PATCH] Add dhcp plugin
+
+---
+ configure.ac             | 1 +
+ pppd/plugins/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1180f64..5db4197 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -329,6 +329,7 @@ AC_CONFIG_FILES([
+     pppd/Makefile
+     pppd/pppd.pc
+     pppd/plugins/Makefile
++    pppd/plugins/dhcp/Makefile
+     pppd/plugins/pppoe/Makefile
+     pppd/plugins/pppoatm/Makefile
+     pppd/plugins/pppol2tp/Makefile
+diff --git a/pppd/plugins/Makefile.am b/pppd/plugins/Makefile.am
+index 2826148..9708ab1 100644
+--- a/pppd/plugins/Makefile.am
++++ b/pppd/plugins/Makefile.am
+@@ -21,5 +21,5 @@ winbind_la_LDFLAGS = $(PLUGIN_LDFLAGS)
+ winbind_la_SOURCES = winbind.c
+ 
+ if !SUNOS
+-SUBDIRS = pppoe pppoatm pppol2tp radius
++SUBDIRS = dhcp pppoe pppoatm pppol2tp radius
+ endif
+-- 
+2.40.0
+
