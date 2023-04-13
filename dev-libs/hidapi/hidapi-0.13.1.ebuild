@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="A multi-platform library for USB and Bluetooth HID-Class devices"
 HOMEPAGE="https://github.com/libusb/hidapi"
@@ -22,6 +22,12 @@ BDEPEND="
 	doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}/${PN}-${P}"
+
+multilib_src_configure() {
+	append-lfs-flags
+
+	cmake_src_configure
+}
 
 multilib_src_compile() {
 	cmake_src_compile
