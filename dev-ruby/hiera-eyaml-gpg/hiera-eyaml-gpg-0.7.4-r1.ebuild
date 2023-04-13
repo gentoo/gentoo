@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/voxpupuli/hiera-eyaml-gpg"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "
