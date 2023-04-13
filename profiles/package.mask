@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-13)
+# django-tagging is broken on Python 3.11 and unmaintained upstream
+# (last commit in 2020).  Graphite-web is its only revdep and it is
+# replaced by app-metrics/carbonapi-web.
+# Removal on 2023-05-13.  Bug #897056.
+dev-python/django-tagging
+net-analyzer/graphite-web
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-13)
 # No Python 3.11 support.  The package has been discontinued upstream
 # (in favor of pyro5 that we do not package at the moment).  It was only
 # used as an optional dependency of dev-python/kombu, and it has
