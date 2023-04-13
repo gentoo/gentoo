@@ -126,11 +126,11 @@ fi
 
 if [[ ${QT5_MODULE} == qtbase ]]; then
 	case ${PV} in
-		5.15.7)
-			_QT5_GENTOOPATCHSET_REV=2
+		5.15.8)
+			_QT5_GENTOOPATCHSET_REV=3
 			;;
 		*)
-			_QT5_GENTOOPATCHSET_REV=3
+			_QT5_GENTOOPATCHSET_REV=4
 			;;
 	esac
 	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
