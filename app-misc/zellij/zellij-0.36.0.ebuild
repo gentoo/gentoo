@@ -109,16 +109,10 @@ CRATES="
 	fixedbitset-0.4.2
 	fnv-1.0.7
 	form_urlencoded-1.0.1
-	futures-0.3.21
 	futures-channel-0.3.21
 	futures-core-0.3.21
-	futures-executor-0.3.21
 	futures-io-0.3.21
 	futures-lite-1.12.0
-	futures-macro-0.3.21
-	futures-sink-0.3.21
-	futures-task-0.3.21
-	futures-util-0.3.21
 	generational-arena-0.2.8
 	generic-array-0.12.4
 	generic-array-0.14.5
@@ -141,7 +135,7 @@ CRATES="
 	indexmap-1.8.2
 	insta-1.14.0
 	instant-0.1.12
-	interprocess-1.1.1
+	interprocess-1.2.1
 	intmap-0.7.1
 	inventory-0.2.3
 	is_ci-1.1.1
@@ -153,7 +147,7 @@ CRATES="
 	lazy_static-1.4.0
 	leb128-0.2.5
 	lev_distance-0.1.1
-	libc-0.2.126
+	libc-0.2.140
 	libloading-0.7.4
 	libssh2-sys-0.2.23
 	libz-sys-1.1.8
@@ -258,12 +252,14 @@ CRATES="
 	rustc-demangle-0.1.21
 	rustc-hash-1.1.0
 	rustc_version-0.2.3
+	rustc_version-0.4.0
 	rustversion-1.0.9
 	ryu-1.0.10
 	scopeguard-1.1.0
 	seahash-4.1.0
 	semver-0.9.0
 	semver-0.11.0
+	semver-1.0.17
 	semver-parser-0.7.0
 	semver-parser-0.10.2
 	serde-1.0.137
@@ -323,6 +319,7 @@ CRATES="
 	time-macros-impl-0.1.2
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.0
+	to_method-1.1.0
 	toml-0.5.10
 	tracing-0.1.35
 	tracing-attributes-0.1.21
@@ -410,7 +407,7 @@ CRATES="
 	zeroize-1.5.5
 "
 
-inherit bash-completion-r1 desktop cargo
+inherit desktop cargo
 
 DESCRIPTION="A terminal workspace with batteries included"
 # Double check the homepage as the cargo_metadata crate
@@ -473,8 +470,6 @@ src_install() {
 
 	use doc && doman ${PN}.1
 	domenu assets/zellij.desktop
-
-	newbashcomp ${PN}-utils/assets/completions/comp.bash ${PN}
 
 	insinto /usr/share/zsh/site-functions
 	newins ${PN}-utils/assets/completions/comp.zsh _${PN}
