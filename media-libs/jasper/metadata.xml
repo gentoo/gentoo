@@ -16,4 +16,7 @@
 	<upstream>
 		<remote-id type="github">jasper-software/jasper</remote-id>
 	</upstream>
+	<use>
+		<flag name="heif">Enable experimental support for HEIF/HEIC, unsupported by upstream</flag>
+	</use>
 </pkgmetadata>
