@@ -19,7 +19,7 @@ HOMEPAGE="https://streamlink.github.io/"
 
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="https://github.com/streamlink/${PN}/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="BSD-2 Apache-2.0"
