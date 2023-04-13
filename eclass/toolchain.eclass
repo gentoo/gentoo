@@ -1066,15 +1066,21 @@ toolchain_src_configure() {
 
 	confgcc+=( --disable-libunwind-exceptions )
 
-	# Use the default ("release") checking because upstream usually neglects
-	# to test "disabled" so it has a history of breaking. bug #317217
 	if in_iuse debug ; then
-		# Non-released versions get extra checks, follow configure.ac's default to for those.
-		if ! grep -q "experimental" gcc/DEV-PHASE ; then
-			# The "release" keyword is new to 4.0. bug #551636
-			# After discussing in #gcc, we concluded that =yes,extra,rtl makes
-			# more sense when a user explicitly requests USE=debug. If rtl is too slow,
-			# we can change this to yes,extra.
+		# Non-released versions get extra checks, follow configure.ac's default to for those
+		# unless USE=debug. Note that snapshots on stable branches don't count as "non-released"
+		# for these purposes.
+		if grep -q "experimental" gcc/DEV-PHASE ; then
+			# - USE=debug for pre-releases: yes,extra,rtl
+			# - USE=-debug for pre-releases: yes,extra (following upstream default)
+			confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes,extra,rtl yes,extra)}" )
+		else
+			# - Use the default ("release") checking because upstream usually neglects
+			#   to test "disabled" so it has a history of breaking. bug #317217.
+			# - The "release" keyword is new to 4.0. bug #551636.
+			# - After discussing in #gcc, we concluded that =yes,extra,rtl makes
+			#   more sense when a user explicitly requests USE=debug. If rtl is too slow,
+			#   we can change this to yes,extra.
 			local off=$(tc_version_is_at_least 4.0 && echo release || echo no)
 			confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes,extra,rtl ${off})}" )
 		fi
