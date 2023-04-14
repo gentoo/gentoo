@@ -10,3 +10,14 @@
  
  install-mann: $(MAN_N)
  	for i in *.n ; do \
+--- a/demos/Makefile.in	2023-04-14 18:50:47.196822925 +0200
++++ b/demos/Makefile.in	2023-04-14 18:50:54.448710445 +0200
+@@ -47,7 +47,7 @@
+ 
+ all:
+ 
+-install: mkdirs install-bitmaps install-images install-scripts 
++install: install-bitmaps install-images install-scripts 
+ 
+ install-scripts: 
+ 	for i in $(srcdir)/scripts/*.tcl ; do \
