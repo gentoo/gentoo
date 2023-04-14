@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2023-04-14)
-# Needs dev-python/sympy which is not keyworded, see bug #892183
+# Needs dev-python/sympy which is not keyworded
 dev-python/nbval test
 
 # Sam James <sam@gentoo.org> (2023-04-07)
