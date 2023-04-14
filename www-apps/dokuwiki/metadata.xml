@@ -14,4 +14,7 @@
 		eases the creation of structured texts. All data is stored in plain text
 		files - no database is required.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">dokuwiki/dokuwiki</remote-id>
+	</upstream>
 </pkgmetadata>
