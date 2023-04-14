@@ -16,8 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2 Tenable-Master-Agreement"
 SLOT="0"
-# -* temporarily removed
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="-* ~amd64 ~arm64"
 
 RESTRICT="mirror strip"
 
