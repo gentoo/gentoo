@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2023-04-14)
+# Fails with modern C, no upstream activity since 2005.
+# Removal on 2023-05-14.  Bug #778506, bug #881205.
+www-apache/mod_log_sql
+
+# Sam James <sam@gentoo.org> (2023-04-14)
 # Obsolete because of Twitter API changes. Archived upstream.
 # Removal on 2023-05-14.  Bug #904296.
 net-im/cawbird
