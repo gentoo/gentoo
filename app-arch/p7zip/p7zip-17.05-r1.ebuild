@@ -13,8 +13,9 @@ SRC_URI="https://github.com/p7zip-project/p7zip/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
-IUSE="abi_x86_x32 doc +pch rar static"
+IUSE="abi_x86_x32 doc natspec +pch rar static"
 
+RDEPEND="natspec? ( dev-libs/libnatspec )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	abi_x86_x32? ( >=dev-lang/yasm-1.2.0-r1 )
@@ -23,6 +24,8 @@ BDEPEND="
 
 src_prepare() {
 	default
+
+	use natspec && eapply "${FILESDIR}"/${P}-natspec.patch
 
 	if ! use pch; then
 		sed "s:PRE_COMPILED_HEADER=StdAfx.h.gch:PRE_COMPILED_HEADER=:g" -i makefile.* || die
