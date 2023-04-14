@@ -16,10 +16,3 @@ media-plugins/gst-plugins-ldac
 # https://github.com/cisco/openh264/issues/3634
 media-libs/openh264
 media-libs/tg_owt
-
-# matoro <matoro_gentoo@matoro.tk> (2023-03-20)
-# Broken on big-endian (#861710)
-# https://github.com/trendmicro/tlsh/issues/131
-dev-libs/tlsh
-dev-python/tlsh
-dev-util/diffoscope
