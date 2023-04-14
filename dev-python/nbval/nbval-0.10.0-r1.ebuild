@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/computationalmodelling/nbval"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	dev-python/coverage[${PYTHON_USEDEP}]
