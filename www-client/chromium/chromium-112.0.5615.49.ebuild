@@ -340,6 +340,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-112-compiler.patch"
 		"${FILESDIR}/chromium-112-libstdc++.patch"
 		"${FILESDIR}/chromium-112-libstdc++-1.patch"
+		"${FILESDIR}/chromium-112-sql-relax.patch"
 	)
 
 	if use ppc64 ; then
