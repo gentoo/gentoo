@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 RDEPEND="
 	dev-python/coverage[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
-	dev-python/jupyter_client[${PYTHON_USEDEP}]
+	dev-python/jupyter-client[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 "
 BDEPEND="

@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/pyzmq-18[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.3[${PYTHON_USEDEP}]
 	>=dev-python/ipython-4[${PYTHON_USEDEP}]
-	dev-python/jupyter_client[${PYTHON_USEDEP}]
+	dev-python/jupyter-client[${PYTHON_USEDEP}]
 	dev-python/jupyter-server[${PYTHON_USEDEP}]
 	>=dev-python/ipykernel-4.4[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]

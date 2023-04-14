@@ -24,7 +24,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	>=dev-python/jupyter_client-6.1.12[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-client-6.1.12[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-5.1.0[${PYTHON_USEDEP}]
 	>=dev-python/nbformat-5.0[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.3[${PYTHON_USEDEP}]

@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-4.6.1[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_client-5.3.4[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-client-5.3.4[${PYTHON_USEDEP}]
 	>=dev-python/nbclassic-0.4.7[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]

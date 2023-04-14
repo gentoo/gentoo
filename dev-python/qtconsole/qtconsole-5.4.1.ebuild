@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/ipykernel-4.1[${PYTHON_USEDEP}]
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	dev-python/jupyter-core[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_client-4.1.1[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-client-4.1.1[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17.1[${PYTHON_USEDEP}]

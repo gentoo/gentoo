@@ -25,7 +25,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/jupyter_client[${PYTHON_USEDEP}]
+		dev-python/jupyter-client[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 	)
 "
