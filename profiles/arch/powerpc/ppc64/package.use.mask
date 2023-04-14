@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Needs dev-python/sympy which is not yet keyworded, see bug #892183
+dev-python/nbval test
+
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
 >=sys-libs/libomp-16.0.0_pre20230124 -offload
