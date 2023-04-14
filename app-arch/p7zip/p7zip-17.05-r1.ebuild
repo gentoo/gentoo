@@ -38,9 +38,7 @@ src_prepare() {
 		-i makefile* || die
 
 	# remove non-free RAR codec
-	if use rar; then
-		ewarn "Enabling nonfree RAR decompressor"
-	else
+	if ! use rar; then
 		sed \
 			-e '/Rar/d' \
 			-e '/RAR/d' \
