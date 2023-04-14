@@ -115,16 +115,3 @@ index 353e895..44071f3 100644
    if (isUtf8)
      if (ConvertUTF8ToUnicode(s, res) || ignore_Utf8_Errors)
        return;
-diff --git a/makefile.machine b/makefile.machine
-index a89b568..3e12592 100644
---- a/makefile.machine
-+++ b/makefile.machine
-@@ -16,7 +16,7 @@ CC=gcc
- CC_SHARED=-fPIC
- LINK_SHARED=-fPIC -shared
- 
--LOCAL_LIBS=-lpthread
-+LOCAL_LIBS=-lpthread -lnatspec
- LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
- 
- OBJ_CRC32=$(OBJ_CRC32_C)
