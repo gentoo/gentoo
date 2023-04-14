@@ -14,7 +14,7 @@ HOMEPAGE="https://jupyter.org"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
 RDEPEND="
 	>=dev-libs/mathjax-2.7.4
