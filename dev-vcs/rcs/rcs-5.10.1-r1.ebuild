@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic unpacker
+inherit autotools flag-o-matic unpacker
 
 DESCRIPTION="Revision Control System"
 HOMEPAGE="https://www.gnu.org/software/rcs/"
@@ -19,11 +19,18 @@ RDEPEND="sys-apps/diffutils
 DEPEND="${RDEPEND}"
 BDEPEND="$(unpacker_src_uri_depends)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.10.1-configure-clang16.patch
+)
+
 src_prepare() {
 	default
 
 	sed -i -e '/gets is a security hole/d' \
 		lib/stdio.in.h || die
+
+	# Drop when clang 16 patch isn't needed anymore
+	eautoreconf
 }
 
 src_configure() {
