@@ -31,4 +31,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.1-fix-tests.patch
+)
+
 distutils_enable_tests pytest
