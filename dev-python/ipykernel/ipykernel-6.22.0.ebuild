@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/comm-0.1.1[${PYTHON_USEDEP}]
 	>=dev-python/debugpy-1.6.5[${PYTHON_USEDEP}]
 	>=dev-python/ipython-7.23.1[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_client-8[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-client-8[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-4.12[${PYTHON_USEDEP}]
 	>=dev-python/matplotlib-inline-0.1[${PYTHON_USEDEP}]
 	dev-python/nest_asyncio[${PYTHON_USEDEP}]

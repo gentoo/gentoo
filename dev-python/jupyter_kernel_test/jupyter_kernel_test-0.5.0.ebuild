@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=dev-python/jupyter_client-6.1.13[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-client-6.1.13[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 "
 BDEPEND="

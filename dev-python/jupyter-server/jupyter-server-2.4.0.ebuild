@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/anyio-3.1.0[${PYTHON_USEDEP}]
 	dev-python/argon2-cffi[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_client-7.4.4[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-client-7.4.4[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-5.1.0[${PYTHON_USEDEP}]
 	dev-python/jupyter-server-terminals[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_events-0.4.0[${PYTHON_USEDEP}]

@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-python/ipykernel[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_client-4.3.0[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-client-4.3.0[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_packaging-0.9[${PYTHON_USEDEP}]
 	>=dev-python/metakernel-0.24.0[${PYTHON_USEDEP}]
 	sci-mathematics/octave"
