@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -69,14 +69,8 @@ src_prepare() {
 		installer/resources/clients.config || die
 
 	# generate wrapper classpath, keeping the default to be replaced later
-	i2p_cp="" # global forced by java-pkg_gen-cp
-	java-pkg_gen-cp i2p_cp
-	local lib i=2
 	local classpath="wrapper.java.classpath.1=${EPREFIX}/usr/share/i2p/lib/*\n"
-	for lib in ${i2p_cp//,/ }
-	do
-		classpath+="wrapper.java.classpath.$((i++))=$(java-pkg_getjars ${lib})\n"
-	done
+	classpath+="wrapper.java.classpath.2=$(java-pkg_getjars java-service-wrapper)\n"
 
 	# add generated classpath, hardcode system VM, setting system's conf
 	sed -e "s|\(wrapper\.java\.classpath\.1\)=.*|${classpath}|" \
@@ -132,8 +126,8 @@ src_install() {
 	java-pkg_dowar webapps/*.war
 
 	# Install daemon files
-	newinitd "${FILESDIR}/i2p.init" i2p
-	systemd_dounit "${FILESDIR}/i2p.service"
+	newinitd "${FILESDIR}/${PV}-i2p.init" i2p
+	systemd_dounit "${FILESDIR}/${PV}-i2p.service"
 
 	# setup log
 	keepdir /var/log/i2p
