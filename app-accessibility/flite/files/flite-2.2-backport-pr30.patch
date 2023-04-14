@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/896106
 https://github.com/festvox/flite/pull/90
 
-From 56ef01e5a7cd8d8606b4ccd13b4366039269f9d7 Mon Sep 17 00:00:00 2001
+From 1f26195418fbe8915f48bb51e1e6126f531ecc25 Mon Sep 17 00:00:00 2001
 From: matoro <matoro@users.noreply.github.com>
 Date: Fri, 24 Feb 2023 14:25:16 -0500
 Subject: [PATCH] Expose automated tests under "make check"
@@ -31,7 +31,7 @@ index 511f8cf..1b627b2 100644
  	@ $(MAKE) --no-print-directory -C testsuite test
  
 diff --git a/testsuite/Makefile b/testsuite/Makefile
-index b60e98a..275a3e8 100644
+index b60e98a..8b1163c 100644
 --- a/testsuite/Makefile
 +++ b/testsuite/Makefile
 @@ -49,15 +49,17 @@ SRCS = token_test_main.c hrg_test_main.c \
@@ -85,7 +85,7 @@ index b60e98a..275a3e8 100644
 +check test: $(patsubst %, run_%, $(AUTO_EXECS))
  
 +run_%: %
-+	./$<
++	LD_LIBRARY_PATH="$(LD_LIBRARY_PATH):$(LIBDIR)" ./$<
  
 +run_multi_thread: multi_thread
-+	OMP_NUM_THREADS=100 ./$<
++	LD_LIBRARY_PATH="$(LD_LIBRARY_PATH):$(LIBDIR)" OMP_NUM_THREADS=100 ./$<
