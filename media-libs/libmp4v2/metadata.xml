@@ -9,6 +9,6 @@
 		<flag name="utils">Install command-line utilities</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">mp4v2</remote-id>
+		<remote-id type="github">enzo1982/mp4v2</remote-id>
 	</upstream>
 </pkgmetadata>
