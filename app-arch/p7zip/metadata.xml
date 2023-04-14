@@ -5,6 +5,7 @@
     <email>prometheanfire@gentoo.org</email>
   </maintainer>
   <use>
+    <flag name="natspec">Use <pkg>dev-libs/libnatspec</pkg> to correctly decode non-ascii file names archived in Windows.</flag>
     <flag name="rar">Enable support for non-free rar decoder</flag>
   </use>
   <upstream>
