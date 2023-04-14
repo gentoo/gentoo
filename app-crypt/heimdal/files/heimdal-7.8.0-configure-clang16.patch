@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/899072
+https://github.com/heimdal/heimdal/issues/790
+https://github.com/heimdal/heimdal/pull/1085
+
+From 5b872a635c9c8f04f58e03c43e7953c35e1f66b7 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 13 Apr 2023 13:13:59 +0200
+Subject: [PATCH 1/2] cf: Include <string.h> for memset in AC_HAVE_STRUCT_FIELD
+
+Otherwise, the check relies on an implicit function declaration,
+and will fail unconditionally with compilers that do not support
+them.
+--- a/cf/have-struct-field.m4
++++ b/cf/have-struct-field.m4
+@@ -7,7 +7,8 @@ dnl AC_HAVE_STRUCT_FIELD(struct, field, headers)
+ AC_DEFUN([AC_HAVE_STRUCT_FIELD], [
+ define(cache_val, translit(ac_cv_type_$1_$2, [A-Z ], [a-z_]))
+ AC_CACHE_CHECK([for $2 in $1], cache_val,[
+-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[$3]],
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <string.h>
++$3]],
+ 	[[$1 x; memset(&x, 0, sizeof(x)); x.$2]])],
+ 	[cache_val=yes],
+ 	[cache_val=no])
+
+From fc6d5b5c7677bb7271361c4bd60ea1bd36d944b9 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 13 Apr 2023 13:26:29 +0200
+Subject: [PATCH 2/2] cf: Do not use headers and argument lists in
+ AC_FIND_FUNC_NO_LIBS2
+
+The callers of this macro generally do not supply this information.
+Without it, the checks rely on compiler support for implicit function
+declarations.  It would be possible to supply this information in
+the callers.  But even then, with the existing macro interface, it
+would be necessary to pass eg. null pointers where they trigger
+undefined behavior.  Therefore, use the same kludge that autoconf
+uses to make up prototypes, avoiding those implicit function
+declarations.
+
+The includes/arguments macro parameters are now ignored, but preserved
+for interface compatibility.
+--- a/cf/find-func-no-libs2.m4
++++ b/cf/find-func-no-libs2.m4
+@@ -21,7 +21,7 @@ if eval "test \"\$ac_cv_func_$1\" != yes" ; then
+ 		*) ac_lib="-l$ac_lib" ;;
+ 		esac
+ 		LIBS="$6 $ac_lib $5 $ac_save_LIBS"
+-		AC_LINK_IFELSE([AC_LANG_PROGRAM([[$3]],[[$1($4)]])],[eval "if test -n \"$ac_lib\";then ac_cv_funclib_$1=$ac_lib; else ac_cv_funclib_$1=yes; fi";break])
++		AC_LINK_IFELSE([AC_LANG_PROGRAM([[char $1 (void);]],[[$1()]])],[eval "if test -n \"$ac_lib\";then ac_cv_funclib_$1=$ac_lib; else ac_cv_funclib_$1=yes; fi";break])
+ 	done
+ 	eval "ac_cv_funclib_$1=\${ac_cv_funclib_$1-no}"
+ 	LIBS="$ac_save_LIBS"
+
