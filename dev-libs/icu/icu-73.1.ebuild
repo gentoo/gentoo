@@ -14,13 +14,14 @@ MY_PV=${MY_PV//./_}
 
 DESCRIPTION="International Components for Unicode"
 HOMEPAGE="https://icu.unicode.org/"
-SRC_URI="https://github.com/unicode-org/icu/releases/download/release-${MY_PV}/icu4c-${MY_PV/-rc/rc}-src.tgz"
-SRC_URI+=" verify-sig? ( https://github.com/unicode-org/icu/releases/download/release-${MY_PV}/icu4c-${MY_PV/-rc/rc}-src.tgz.asc )"
+SRC_URI="https://github.com/unicode-org/icu/releases/download/release-${MY_PV/_/-}/icu4c-${MY_PV/-rc/rc}-src.tgz"
+SRC_URI+=" verify-sig? ( https://github.com/unicode-org/icu/releases/download/release-${MY_PV/_/-}/icu4c-${MY_PV/-rc/rc}-src.tgz.asc )"
 S="${WORKDIR}"/${PN}/source
 
-if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-fi
+# Keyword with boost-1.82
+#if [[ ${PV} != *_rc* ]] ; then
+#	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+#fi
 LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE="debug doc examples static-libs test"
