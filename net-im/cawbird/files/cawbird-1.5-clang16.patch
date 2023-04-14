@@ -1,0 +1,28 @@
+https://bugzilla.redhat.com/show_bug.cgi?id=2185474
+https://src.fedoraproject.org/rpms/cawbird/raw/40963504cc61b410cf82b0f4e5938f1e66d3cf12/f/cawbird-c99.patch
+
+Declare cb_tweet_model_set_thread_mode in CbTweetModel.h, so that it
+can be called from TweetInfoPage.vala.  Likewise for
+cb_tweet_has_quoted_inline_media, CbTweet.h and TweetListEntry.vala.
+
+--- a/src/CbTweet.h
++++ b/src/CbTweet.h
+@@ -104,6 +104,7 @@ CbMedia **       cb_tweet_get_quoted_medias(CbTweet   *tweet,
+ char **          cb_tweet_get_mentions     (CbTweet   *tweet,
+                                             int       *n_mentions);
+ gboolean         cb_tweet_has_inline_media (CbTweet   *tweet);
++gboolean         cb_tweet_has_quoted_inline_media (CbTweet *tweet);
+ gint64           cb_tweet_get_user_id      (CbTweet   *tweet);
+ const char *     cb_tweet_get_screen_name  (CbTweet   *tweet);
+ const char *     cb_tweet_get_user_name    (CbTweet   *tweet);
+--- a/src/CbTweetModel.h
++++ b/src/CbTweetModel.h
+@@ -56,6 +56,7 @@ GType    cb_tweet_model_get_type     (void) G_GNUC_CONST;
+ CbTweetModel *cb_tweet_model_new (void);
+ 
+ int cb_tweet_model_index_of (CbTweetModel *self, gint64 id);
++int cb_tweet_model_index_of_retweet  (CbTweetModel *self, gint64 id);
+ 
+ gboolean cb_tweet_model_contains_id  (CbTweetModel *self,
+                                       gint64        id);
+
