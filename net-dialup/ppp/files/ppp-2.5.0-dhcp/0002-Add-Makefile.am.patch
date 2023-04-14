@@ -1,0 +1,35 @@
+From 9fa2696fa7348e647289e08ce299bb27ab97356d Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 13 Apr 2023 15:20:30 -0400
+Subject: [PATCH 2/3] Add Makefile.am
+
+---
+ Makefile    | 1 -
+ Makefile.am | 6 ++++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+ delete mode 120000 Makefile
+ create mode 100644 Makefile.am
+
+diff --git a/Makefile b/Makefile
+deleted file mode 120000
+index 8bad27d..0000000
+--- a/Makefile
++++ /dev/null
+@@ -1 +0,0 @@
+-Makefile.linux
+\ No newline at end of file
+diff --git a/Makefile.am b/Makefile.am
+new file mode 100644
+index 0000000..195435a
+--- /dev/null
++++ b/Makefile.am
+@@ -0,0 +1,6 @@
++pppd_plugin_LTLIBRARIES = dhcpc.la
++pppd_plugindir = $(PPPD_PLUGIN_DIR)
++
++dhcpc_la_CPPFLAGS = -I${top_srcdir}
++dhcpc_la_LDFLAGS = -module -avoid-version
++dhcpc_la_SOURCES = dhcpc.c clientpacket.c options.c packet.c socket.c
+-- 
+2.40.0
+

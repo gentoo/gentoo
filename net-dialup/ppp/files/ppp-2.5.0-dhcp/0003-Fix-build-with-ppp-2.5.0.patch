@@ -1,0 +1,126 @@
+From f3707ff09fb17e6d6b851f6cda66e2bdfa4b9108 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 13 Apr 2023 16:09:45 -0400
+Subject: [PATCH 3/3] Fix build with ppp-2.5.0
+
+---
+ debug.h |  1 +
+ dhcpc.c | 26 +++++++++++++++-----------
+ 2 files changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/debug.h b/debug.h
+index e01bd0b..674dffb 100644
+--- a/debug.h
++++ b/debug.h
+@@ -2,6 +2,7 @@
+ #define _DEBUG_H
+ 
+ #include <stdio.h>
++#include <pppd/pppd.h>
+ 
+ #define DEBUG
+ #ifdef DEBUG
+diff --git a/dhcpc.c b/dhcpc.c
+index ff83b53..d383793 100644
+--- a/dhcpc.c
++++ b/dhcpc.c
+@@ -33,7 +33,6 @@
+ #include <sys/types.h>
+ #include <sys/file.h>
+ #include <unistd.h>
+-#include <getopt.h>
+ #include <stdlib.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+@@ -44,9 +43,12 @@
+ #include <net/if.h>
+ #include <errno.h>
+ 
+-#include "pppd.h"
++#include <pppd/pppd.h>
++#include <pppd/options.h>
++#include <pppd/fsm.h>
++#include <pppd/ipcp.h>
+ 
+-char pppd_version[] = VERSION;
++char pppd_version[] = PPPD_VERSION;
+ 
+ #include "dhcpd.h"
+ #include "dhcpc.h"
+@@ -237,8 +239,8 @@ void dhcp_rx(void *dummy) {
+ 	if (requested_ip != assigned_ip) {
+ 	  fatal("DHCPC: Terminating because address has changed!");
+ 	}
+-       	untimeout(&dhcp_renew,NULL);
+-	timeout(&dhcp_renew, NULL, lease / 2,0);
++	ppp_untimeout(&dhcp_renew,NULL);
++	ppp_timeout(&dhcp_renew, NULL, lease / 2,0);
+ 	return;
+       } else if (*message == DHCPNAK) {
+ 	/* return to init state */
+@@ -248,7 +250,7 @@ void dhcp_rx(void *dummy) {
+       }
+     }
+   }
+-  timeout(&dhcp_rx,NULL,DHCP_RX_POLL_INTERVAL,0);
++  ppp_timeout(&dhcp_rx,NULL,DHCP_RX_POLL_INTERVAL,0);
+   
+ }
+ 
+@@ -272,7 +274,7 @@ void dhcp_renew(void *dummy) {
+   if (dhcp_state == BOUND) {
+     dhcp_state = RENEWING;
+     change_mode(LISTEN_KERNEL);
+-    timeout(&dhcp_rx,NULL,3,0);
++    ppp_timeout(&dhcp_rx,NULL,3,0);
+     dbglog("DHCPC: Entering renew state");
+     /* 1/2 of lease used on entry, timeout renew after another 3/8 of lease */
+     dhcp_renew_timeout = (lease * 0x3) >> 3;
+@@ -299,7 +301,7 @@ void dhcp_renew(void *dummy) {
+   send_renew(xid, dhcp_state==REBINDING ? client_config.siaddr : server_addr, requested_ip); 
+   
+   dhcp_renew_timeout-=dhcp_packet_interval;
+-  timeout(&dhcp_renew, NULL, dhcp_packet_interval,0);
++  ppp_timeout(&dhcp_renew, NULL, dhcp_packet_interval,0);
+ }
+ 
+ void dhcp_request_new() {
+@@ -312,6 +314,7 @@ void dhcp_request_new() {
+   int c, len;
+   struct dhcpMessage packet;
+   time_t now;
++  const char *peer_authname = ppp_peer_authname(NULL, 0);
+   
+   if (dhcp_state == BOUND || dhcp_state == RENEWING || dhcp_state == REBINDING)
+     return;
+@@ -426,7 +429,7 @@ void dhcp_request_new() {
+ 	  dhcp_process_ack(&packet);
+ 	  assigned_ip = requested_ip;
+ 	  dbglog("DHCPC: Setting renewal timer for %d seconds", lease /2);
+-  	  timeout(&dhcp_renew, NULL, lease / 2,0);
++	  ppp_timeout(&dhcp_renew, NULL, lease / 2,0);
+ 	  return;
+ 	} else if (*message == DHCPNAK) {
+ 	  /* return to init state */
+@@ -455,6 +458,7 @@ void dhcp_request_new() {
+ 
+ void dhcp_ip_choose(u_int32_t *addrp) {
+   u_int32_t entryvalue;
++  const char *peer_authname = ppp_peer_authname(NULL, 0);
+ 
+   dbglog("DHCPC: ip_choose_hook entered with peer name %s",peer_authname);
+ 
+@@ -489,8 +493,8 @@ void plugin_init(void)
+   /* we save pointer to ip_choose_hook so we can defer to other modules
+      that may specify an IP, e.g. radius */
+   ip_choose_hook= dhcp_ip_choose;
+-  add_options(dhcpc_options);
+-  add_notifier(&exitnotify, dhcp_release, NULL);
++  ppp_add_options(dhcpc_options);
++  ppp_add_notify(NF_EXIT, dhcp_release, NULL);
+   info("DHCPC: plugin initialized");
+ 
+ }
+-- 
+2.40.0
+
