@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="JavaScript minifier"
 HOMEPAGE="https://pypi.org/project/jsmin/ https://github.com/tikitu/jsmin/"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 LICENSE="MIT"
 SLOT="0"
 
