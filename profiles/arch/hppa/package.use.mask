@@ -7,6 +7,7 @@
 # Michał Górny <mgorny@gentoo.org> (2023-03-14)
 # Requires virtual/pandoc.
 dev-python/nbclassic doc
+dev-python/nbval doc
 
 # Hans de Graaff <graaff@gentoo.org> (2023-02-27)
 # Depends on virtual/rust
