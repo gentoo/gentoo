@@ -12,15 +12,16 @@ MY_PV=${MY_PV//./_}
 
 DESCRIPTION="External layout part of International Components for Unicode"
 HOMEPAGE="https://icu.unicode.org/"
-SRC_URI="https://github.com/unicode-org/icu/releases/download/release-${MY_PV}/icu4c-${MY_PV/-rc/rc}-src.tgz"
-SRC_URI+=" verify-sig? ( https://github.com/unicode-org/icu/releases/download/release-${MY_PV}/icu4c-${MY_PV/-rc/rc}-src.tgz.asc )"
+
+SRC_URI="https://github.com/unicode-org/icu/releases/download/release-${MY_PV/_/-}/icu4c-${MY_PV/-rc/rc}-src.tgz"
+SRC_URI+=" verify-sig? ( https://github.com/unicode-org/icu/releases/download/release-${MY_PV/_/-}/icu4c-${MY_PV/-rc/rc}-src.tgz.asc )"
 S="${WORKDIR}"/${PN/-layoutex}/source
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-fi
+#if [[ ${PV} != *_rc* ]] ; then
+#	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+#fi
 IUSE="debug static-libs test"
 RESTRICT="!test? ( test )"
 
