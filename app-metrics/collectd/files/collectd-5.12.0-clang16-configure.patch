@@ -1,0 +1,127 @@
+https://bugs.gentoo.org/879633
+https://bugs.gentoo.org/900392
+https://github.com/collectd/collectd/pull/4106
+
+From f23164e589502ff675b3b54fa598bd9efd1422ed Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 6 Apr 2023 19:00:08 +0200
+Subject: [PATCH] Fix glibc feature macro handling for timegm
+
+The way strptime is activated using feature macros, _DEFAULT_SOURCE
+(successor to _BSD_SOURCE) is disabled implicitly, so timegm is
+hidden.  Defining _DEFAULT_SOURCE at the same time as the other
+feature macros solves this, and removes the need for the
+TIMEGM_NEEDS_BSD configure macro.
+
+This avoids an implicit declaration of timegm in src/bind.c, and build
+failures with future compilers.
+---
+ configure.ac | 53 ++++++++++++----------------------------------------
+ src/bind.c   | 10 +++++-----
+ 2 files changed, 17 insertions(+), 46 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index bbe65a7e99..78bbff6624 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -974,6 +974,12 @@ if test "x$have_strptime" = "xyes" && test "x$c_cv_have_strptime_default" = "xno
+               #ifndef _XOPEN_SOURCE
+               # define _XOPEN_SOURCE 500
+               #endif
++              # ifndef _BSD_SOURCE
++              #  define _BSD_SOURCE
++              # endif
++              # ifndef _DEFAULT_SOURCE
++              #  define _DEFAULT_SOURCE
++              # endif
+               #include <time.h>
+             ]],
+             [[
+@@ -1024,6 +1030,12 @@ AC_CACHE_CHECK([for timegm],
+ # ifndef _XOPEN_SOURCE
+ #  define _XOPEN_SOURCE 500
+ # endif
++# ifndef _BSD_SOURCE
++#  define _BSD_SOURCE
++# endif
++# ifndef _DEFAULT_SOURCE
++#  define _DEFAULT_SOURCE
++# endif
+ #endif
+ #include <time.h>
+ ]]],
+@@ -1039,50 +1051,9 @@ AC_CACHE_CHECK([for timegm],
+   )
+ )
+ 
+-if test "x$c_cv_have_timegm" != "xyes"
+-then
+-  AC_CACHE_CHECK([for timegm with _BSD_SOURCE],
+-    [c_cv_have_timegm_bsd],
+-    AC_LINK_IFELSE(
+-      [AC_LANG_PROGRAM(
+-[[[
+-#if STRPTIME_NEEDS_STANDARDS
+-# ifndef _ISOC99_SOURCE
+-#  define _ISOC99_SOURCE 1
+-# endif
+-# ifndef _POSIX_C_SOURCE
+-#  define _POSIX_C_SOURCE 200112L
+-# endif
+-# ifndef _XOPEN_SOURCE
+-#  define _XOPEN_SOURCE 500
+-# endif
+-#endif
+-#ifndef _BSD_SOURCE
+-# define _BSD_SOURCE 1
+-#endif
+-#include <time.h>
+-]]],
+-[[[
+- time_t t = timegm(&(struct tm){0});
+- if (t == ((time_t) -1)) {
+-   return 1;
+- }
+-]]]
+-      )],
+-      [c_cv_have_timegm_bsd="yes"
+-       c_cv_have_timegm="yes"],
+-      [c_cv_have_timegm_bsd="no"]
+-    )
+-  )
+-fi
+-
+ if test "x$c_cv_have_timegm" = "xyes"
+ then
+   AC_DEFINE(HAVE_TIMEGM, 1, [Define if the timegm(3) function is available.])
+-  if test "x$c_cv_have_timegm_bsd" = "xyes"
+-  then
+-    AC_DEFINE(TIMEGM_NEEDS_BSD, 1, [Set to true if timegm is only exported in BSD mode.])
+-  fi
+ fi
+ 
+ CFLAGS="$SAVE_CFLAGS"
+diff --git a/src/bind.c b/src/bind.c
+index a246f1aacf..4a7c024253 100644
+--- a/src/bind.c
++++ b/src/bind.c
+@@ -33,13 +33,13 @@
+ #ifndef _XOPEN_SOURCE
+ #define _XOPEN_SOURCE 500
+ #endif
+-#endif /* STRPTIME_NEEDS_STANDARDS */
+-
+-#if TIMEGM_NEEDS_BSD
+ #ifndef _BSD_SOURCE
+-#define _BSD_SOURCE 1
++#define _BSD_SOURCE
+ #endif
+-#endif /* TIMEGM_NEEDS_BSD */
++#ifndef _DEFAULT_SOURCE
++#define _DEFAULT_SOURCE
++#endif
++#endif /* STRPTIME_NEEDS_STANDARDS */
+ 
+ #include "collectd.h"
+ 
+
