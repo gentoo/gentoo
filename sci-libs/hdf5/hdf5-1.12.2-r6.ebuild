@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.9-static_libgfortran.patch
 	"${FILESDIR}"/${PN}-1.12.2-no-messing-ldpath.patch
 	"${FILESDIR}"/${PN}-1.12.2-no-strip-symbols.patch
+	"${FILESDIR}"/${PN}-1.12.2-configure-clang16.patch
 )
 
 pkg_setup() {
