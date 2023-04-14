@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Obsolete because of Twitter API changes. Archived upstream.
+# Removal on 2023-05-14.  Bug #904296.
+net-im/cawbird
+
 # Sam James <sam@gentoo.org> (2023-04-13)
 # Leads to broken terminal output in e.g. vim and openrc and other applications
 # like joe crashing.
