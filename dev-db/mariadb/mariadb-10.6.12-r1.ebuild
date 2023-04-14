@@ -129,6 +129,12 @@ RDEPEND="${COMMON_DEPEND}
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# These don't exist on Linux
+	pthread_threadid_np
+	getthrid
+)
+
 mysql_init_vars() {
 	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mariadb"}
 	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
@@ -212,6 +218,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
 	eapply "${FILESDIR}"/${PN}-10.6.11-include.patch
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
+	eapply "${FILESDIR}"/${PN}-10.6.11-configure-clang16.patch
 
 	eapply_user
 
