@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.mister-muffin.de/josch/img2pdf"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="gui"
 
 # pytest-xdist isn't really required but it helps speed up tests
