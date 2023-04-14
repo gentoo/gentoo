@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 LUA_COMPAT=( lua5-{1,2,3,4} luajit )
 
 inherit meson lua-single python-any-r1
