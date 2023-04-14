@@ -9,12 +9,12 @@ DESCRIPTION="A makefile framework for writing simple makefiles for complex tasks
 HOMEPAGE="https://trac.netlabs.org/kbuild/wiki"
 SRC_URI="
 	https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}-src.tar.xz
-	https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-0.1.9998.3499-fix-clang.patch.bz2
+	https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-0.1.9998.3499-fix-clang-16.patch.bz2
 "
 
 LICENSE="GPL-3+"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86"	# for testing only.  This version is buggy
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 BDEPEND="
@@ -30,13 +30,18 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.1.5-gentoo-docdir.patch"
 	"${FILESDIR}/${PN}-0.1.9998_pre20120806-qa.patch"
 	"${FILESDIR}/${PN}-0.1.9998_pre20110817-kash-link-pthread.patch"
+	"${FILESDIR}/${PN}-0.1.9998.3499-gold.patch"
+
+	# Please check on version bumps if this can be removed
+	"${FILESDIR}/${PN}-0.1.9998.3499-kash-no_separate_parser_allocator.patch"
+
 	"${FILESDIR}/${PN}-0.1.9998.3572-fix-bison.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3572-fix-lto.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3499-implicit-function-declaration.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3499-int-conversion.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3499-fix-CC.patch"
 
-	"${WORKDIR}/${PN}-0.1.9998.3499-fix-clang.patch"
+	"${WORKDIR}/${PN}-0.1.9998.3499-fix-clang-16.patch"
 )
 
 pkg_setup() {
