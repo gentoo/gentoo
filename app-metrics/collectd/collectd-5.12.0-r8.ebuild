@@ -173,6 +173,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.11.0-libsigrok-0.4+.patch
 	"${FILESDIR}"/${PN}-5.12.0-python3_11.patch
+	"${FILESDIR}"/${PN}-5.12.0-clang16-configure.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
