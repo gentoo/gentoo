@@ -4,6 +4,7 @@
 # Michał Górny <mgorny@gentoo.org> (2023-03-14)
 # Requires virtual/pandoc.
 dev-python/nbclassic doc
+dev-python/nbval doc
 
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Unkeyworded dependencies
