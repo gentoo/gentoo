@@ -54,6 +54,7 @@ COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
 	>=x11-libs/gtk+-3.24.16:3[introspection]
 	>=x11-libs/pango-1.44.7
+	>=x11-libs/libXmu-1.1.4
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	heif? ( >=media-libs/libheif-1.13.0:= )
