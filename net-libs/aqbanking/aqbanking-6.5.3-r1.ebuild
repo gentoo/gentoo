@@ -22,7 +22,7 @@ DEPEND="
 	dev-libs/gmp:0=
 	>=sys-libs/gwenhywfar-5.10.1:=
 	virtual/libintl
-	ebics? ( dev-libs/xmlsec[gcrypt] )
+	ebics? ( dev-libs/xmlsec:=[gcrypt] )
 	ofx? ( >=dev-libs/libofx-0.9.5:= )
 "
 RDEPEND="${DEPEND}"
