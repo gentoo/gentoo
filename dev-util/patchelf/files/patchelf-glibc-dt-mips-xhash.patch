@@ -1,0 +1,9 @@
+Add define for DT_MIPS_XHASH (MIPS gnu hash support) using system elf.h header.
+Bug: https://bugs.gentoo.org/860888
+--- /dev/null
++++ b/src/elf.h
+@@ -0,0 +1,4 @@
++#include_next <elf.h>
++#ifndef DT_MIPS_XHASH
++#define DT_MIPS_XHASH 0x70000036
++#endif
