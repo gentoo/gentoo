@@ -25,11 +25,11 @@ fi
 
 SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
-IUSE="+bullet +dds +fluid +openexr +tbb \
-	alembic collada +color-management cuda +cycles cycles-bin-kernels \
-	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k \
-	man +nanovdb ndof nls openal +oidn +openmp +openpgl +opensubdiv \
-	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl \
+IUSE="+bullet +dds +fluid +openexr +tbb
+	alembic collada +color-management cuda +cycles cycles-bin-kernels
+	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k
+	man +nanovdb ndof nls openal +oidn +openmp +openpgl +opensubdiv
+	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl
 	+sndfile test +tiff valgrind wayland X"
 RESTRICT="!test? ( test )"
 
