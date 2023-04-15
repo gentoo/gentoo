@@ -24,6 +24,7 @@ RDEPEND="
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
+	sys-devel/bison
 	sys-devel/flex
 "
 
@@ -35,6 +36,10 @@ PATCHES=(
 )
 
 multilib_src_configure() {
+	# Needs flex, bison
+	export LEX=flex
+	unset YACC
+
 	# --enable-driver-conf is --enable-driverc as per configure.in
 	local myeconfargs=(
 		--cache-file="${BUILD_DIR}"/config.cache
