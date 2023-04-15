@@ -37,6 +37,10 @@ DEPEND="
 	>=dev-cpp/popl-1.2.0
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.27.0-gcc13.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_CLIENT=$(usex client)
