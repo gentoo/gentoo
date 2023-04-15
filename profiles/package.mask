@@ -465,17 +465,6 @@ dev-tcltk/tkzinc
 # Removal on 2023-04-11.
 app-crypt/yubioath-desktop
 
-# Hans de Graaff <graaff@gentoo.org> (2023-03-12)
-# Mask ruby27-only slot for removal. Use a newer slot instead.
-# Masked for removal on 2023-04-12.
-dev-ruby/net-http-persistent:3
-
-# Hans de Graaff <graaff@gentoo.org> (2023-03-11)
-# Mask ruby27-only dev-ruby/sass-rails:5.0 for removal. Use a newer
-# sass-rails slot or consider migrating to sassc-rails.  Masked for
-# removal on 2023-04-11.
-dev-ruby/sass-rails:5.0
-
 # Mike Pagano <mpagano@gentoo.org> (2023-03-10)
 # Mask =sys-kernel/gentoo-sources-5.15.99 since it does
 # not include 5.15.99 and is misleading
