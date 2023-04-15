@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
@@ -105,6 +105,9 @@ src_prepare() {
 	sed -i \
 		-e 's:-static-libgcc::' \
 		Makefile.flags || die
+
+	# Print all link lines too
+	sed -i -e 's:debug=false:debug=true:' scripts/trylink || die
 }
 
 src_configure() {
