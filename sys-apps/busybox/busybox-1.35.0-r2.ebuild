@@ -109,6 +109,9 @@ src_prepare() {
 	sed -i \
 		-e 's:-static-libgcc::' \
 		Makefile.flags || die
+
+	# Print all link lines too
+	sed -i -e 's:debug=false:debug=true:' scripts/trylink || die
 }
 
 src_configure() {
