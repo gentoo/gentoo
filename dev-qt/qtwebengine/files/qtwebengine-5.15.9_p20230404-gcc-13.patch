@@ -12,3 +12,13 @@ https://bugs.gentoo.org/904342
  enum class DarkModeResult : uint8_t {
    kDoNotApplyFilter,
    kApplyFilter,
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.h"
+ 
++#include <cstdint>
+ #include <set>
+ 
+ #include "base/memory/singleton.h"
