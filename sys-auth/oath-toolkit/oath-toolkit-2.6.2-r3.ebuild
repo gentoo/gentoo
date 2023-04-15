@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/icu:=
 	pam? ( sys-libs/pam )
-	pskc? ( dev-libs/xmlsec )"
+	pskc? ( dev-libs/xmlsec:= )"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/libxml2 )
 	dev-util/gtk-doc-am"
