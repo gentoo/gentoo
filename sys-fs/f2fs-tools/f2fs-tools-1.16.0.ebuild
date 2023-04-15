@@ -18,11 +18,11 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/10"
-IUSE="selinux"
+IUSE="lz4 lzo selinux"
 
 RDEPEND="
-	app-arch/lz4:=
-	dev-libs/lzo:2
+	lz4? ( app-arch/lz4:= )
+	lzo? ( dev-libs/lzo:2 )
 	sys-apps/util-linux
 	selinux? ( sys-libs/libselinux )
 	elibc_musl? ( sys-libs/queue-standalone )
@@ -38,6 +38,8 @@ src_configure() {
 	local myconf=(
 		# This is required to install to /sbin, bug #481110
 		--bindir="${EPREFIX}"/sbin
+		$(use_with lz4)
+		$(use_with lzo lzo2)
 		$(use_with selinux)
 	)
 
