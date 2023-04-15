@@ -37,6 +37,7 @@ RDEPEND="${LUA_DEPS}
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
+	sys-devel/bc
 	test? (
 		$(lua_gen_cond_dep '
 			dev-util/hermes[${LUA_SINGLE_USEDEP}]
