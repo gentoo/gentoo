@@ -1,17 +1,6 @@
 This is on top of the GCC 13 patches in our patchset.
 
 https://bugs.gentoo.org/904342
---- a/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_types.h
-+++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_types.h
-@@ -7,6 +7,8 @@
- 
- namespace blink {
- 
-+#include <cstdint>
-+
- enum class DarkModeResult : uint8_t {
-   kDoNotApplyFilter,
-   kApplyFilter,
 --- a/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.cc
 +++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.cc
 @@ -4,6 +4,7 @@
@@ -22,3 +11,14 @@ https://bugs.gentoo.org/904342
  #include <set>
  
  #include "base/memory/singleton.h"
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_types.h
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_types.h
+@@ -5,6 +5,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_PLATFORM_GRAPHICS_DARK_MODE_TYPES_H_
+ #define THIRD_PARTY_BLINK_RENDERER_PLATFORM_GRAPHICS_DARK_MODE_TYPES_H_
+ 
++#include <cstdint>
++
+ namespace blink {
+ 
+ enum class DarkModeResult : uint8_t {
