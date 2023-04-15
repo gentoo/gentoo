@@ -5,8 +5,7 @@ Requires=yaskkserv.socket
 
 [Service]
 User=nobody
-EnvironmentFile=/etc/conf.d/yaskkserv
-ExecStart=/usr/sbin/yaskkserv${YASKKSERV_SERVER_TYPE} --no-daemonize ${YASKKSERV_OPTS}
+ExecStart=/usr/sbin/yaskkserv_normal --no-daemonize /usr/share/skk/SKK-JISYO.L.yaskkserv
 
 [Install]
 WantedBy=multi-user.target
