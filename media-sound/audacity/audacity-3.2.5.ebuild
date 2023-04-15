@@ -122,6 +122,9 @@ PATCHES=(
 	# For has_networking
 	"${FILESDIR}/${PN}-3.2.3-remove-conan-threadpool.patch"
 	"${FILESDIR}/${PN}-3.2.3-allow-finding-rapidjson-pkgconfig.patch"
+
+	# GCC 13
+	"${FILESDIR}/${PN}-3.2.5-gcc13.patch"
 )
 
 src_prepare() {
