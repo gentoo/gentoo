@@ -142,7 +142,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/nspr
 	dev-libs/nss
 	>=dev-libs/redland-1.0.16
-	>=dev-libs/xmlsec-1.2.28[nss]
+	>=dev-libs/xmlsec-1.2.28:=[nss]
 	>=games-engines/box2d-2.4.1:0
 	media-gfx/fontforge
 	media-gfx/graphite2
