@@ -72,7 +72,9 @@ python_test() {
 			"test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[False-True]"
 			"test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[True-True]"
 			"test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[has_terminate-is_asyncio]"
+			"test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[not_has_terminate-is_asyncio]"
 			"test/engine/test_pool.py::QueuePoolTest::test_userspace_disconnectionerror_weakref_finalizer[True-_exclusions0]"
+			"test/engine/test_pool.py::QueuePoolTest::test_userspace_disconnectionerror_weakref_finalizer[True]"
 		)
 	fi
 
