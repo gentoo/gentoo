@@ -1,0 +1,345 @@
+https://github.com/lurcher/unixODBC/pull/138
+
+From d4782b9eea043de2a08519af3f1c49f56d917022 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Wed, 12 Apr 2023 21:28:26 +0200
+Subject: [PATCH] Avoid implicit function declarations, for C99 compatibility
+
+Add additional prototypes and #include directives for system headers, so
+that builds will not fail with compilers which do not support implicit
+function declarations by default.
+--- a/Drivers/Postgre7.1/bind.h
++++ b/Drivers/Postgre7.1/bind.h
+@@ -44,4 +44,8 @@ struct ParameterInfoClass_ {
+ BindInfoClass *create_empty_bindings(int num_columns);
+ void extend_bindings(StatementClass *stmt, int num_columns);
+ 
++RETCODE SQL_API PG_SQLBindCol(HSTMT hstmt, UWORD icol, SWORD fCType,
++			      PTR rgbValue, SQLLEN cbValueMax,
++			      SQLLEN *pcbValue);
++
+ #endif
+--- a/Drivers/Postgre7.1/connection.c
++++ b/Drivers/Postgre7.1/connection.c
+@@ -20,6 +20,7 @@
+ #include "statement.h"
+ #include "qresult.h"
+ #include "lobj.h"
++#include "misc.h"
+ #include "dlg_specific.h"
+ #include <stdio.h>
+ #include <string.h>
+--- a/Drivers/Postgre7.1/execute.c
++++ b/Drivers/Postgre7.1/execute.c
+@@ -34,10 +34,10 @@
+ #include "convert.h"
+ #include "bind.h"
+ #include "lobj.h"
++#include "misc.h"
+ 
+ extern GLOBAL_VALUES globals;
+ 
+-RETCODE SQL_API PG_SQLExecute( HSTMT   hstmt);
+ SQLRETURN   PG_SQLPrepare(SQLHSTMT hstmt,
+             SQLCHAR *szSqlStr , SQLINTEGER cbSqlStr);
+ 
+--- a/Drivers/Postgre7.1/misc.h
++++ b/Drivers/Postgre7.1/misc.h
+@@ -106,4 +106,17 @@ int  my_strlen(char *s, int len);
+ 
+ int my_strcpy(char *dst, int dst_len, char *src, int src_len);
+ 
++RETCODE SQL_API PG_SQLExecDirect(HSTMT hstmt, UCHAR FAR *szSqlStr,
++                                 SDWORD cbSqlStr);
++RETCODE SQL_API PG_SQLExecute(HSTMT hstmt);
++RETCODE SQL_API PG_SQLGetData(HSTMT hstmt, UWORD icol, SWORD fCType,
++                              PTR rgbValue, SDWORD cbValueMax,
++                              SDWORD FAR *pcbValue);
++RETCODE SQL_API PG_SQLFetch(HSTMT hstmt);
++RETCODE SQL_API PG_SQLColumns(HSTMT hstmt, UCHAR FAR * szTableQualifier,
++                              SWORD cbTableQualifier,
++                              UCHAR FAR * szTableOwner, SWORD cbTableOwner,
++                              UCHAR FAR * szTableName, SWORD cbTableName,
++                              UCHAR FAR * szColumnName, SWORD cbColumnName);
++
+ #endif
+--- a/Drivers/Postgre7.1/parse.c
++++ b/Drivers/Postgre7.1/parse.c
+@@ -29,6 +29,7 @@
+ #include "connection.h"
+ #include "qresult.h"
+ #include "pgtypes.h"
++#include "misc.h"
+ 
+ #ifndef WIN32
+ #ifndef HAVE_STRICMP
+--- a/Drivers/Postgre7.1/results.c
++++ b/Drivers/Postgre7.1/results.c
+@@ -29,6 +29,7 @@
+ #include "qresult.h"
+ #include "convert.h"
+ #include "pgtypes.h" 
++#include "misc.h"
+ 
+ #include <stdio.h>
+ 
+--- a/Drivers/Postgre7.1/statement.c
++++ b/Drivers/Postgre7.1/statement.c
+@@ -22,6 +22,7 @@
+ #include "qresult.h"
+ #include "convert.h"
+ #include "environ.h"
++#include "misc.h"
+ 
+ #include <stdio.h>
+ #include <string.h>
+--- a/Drivers/Postgre7.1/statement.h
++++ b/Drivers/Postgre7.1/statement.h
+@@ -220,5 +220,7 @@ void		SC_free_params(StatementClass *self, char option);
+ void		SC_log_error(char *func, char *desc, StatementClass *self);
+ unsigned long	SC_get_bookmark(StatementClass *self);
+ 
++RETCODE SQL_API PG_SQLAllocStmt(HDBC hdbc, HSTMT FAR *phstmt);
++RETCODE SQL_API PG_SQLFreeStmt(HSTMT hstmt, UWORD fOption);
+ 
+ #endif
+--- a/Drivers/nn/SQLBindParameter.c
++++ b/Drivers/nn/SQLBindParameter.c
+@@ -126,3 +126,26 @@ RETCODE SQL_API SQLBindParameter(
+ }
+ 
+ 
++RETCODE SQL_API SQLSetParam (
++									 HSTMT     hstmt,
++									 UWORD     ipar,
++									 SWORD     fCType,
++									 SWORD     fSqlType,
++									 UDWORD       cbColDef,
++									 SWORD     ibScale,
++									 PTR       rgbValue,
++									 SDWORD FAR *pcbValue)
++{
++	return SQLBindParameter(hstmt,
++									ipar,
++									(SWORD)SQL_PARAM_INPUT_OUTPUT,
++									fCType,
++									fSqlType,
++									cbColDef,
++									ibScale,
++									rgbValue,
++									SQL_SETPARAM_VALUE_MAX,
++									pcbValue );
++}
++
++
+--- a/Drivers/nn/SQLDriverConnect.c
++++ b/Drivers/nn/SQLDriverConnect.c
+@@ -61,12 +61,7 @@ RETCODE SQL_API SQLDriverConnect(
+ 			break;
+ 		/* to next case */
+ 	case SQL_DRIVER_PROMPT:
+-		if ( nnodbc_conndialog( hwnd, buf, sizeof(buf)) )
+-		{
+-			sqlstat = en_IM008;
+-			break;
+-		}
+-		server = buf;
++		sqlstat = en_IM008;
+ 		break;
+ 
+ 	default:
+--- a/Drivers/nn/SQLSetParam.c
++++ b/Drivers/nn/SQLSetParam.c
+@@ -1,40 +1 @@
+-/**
+-    Copyright (C) 1995, 1996 by Ke Jin <kejin@visigenic.com>
+-	Enhanced for unixODBC (1999) by Peter Harvey <pharvey@codebydesign.com>
+-	
+-    This program is free software; you can redistribute it and/or modify
+-    it under the terms of the GNU General Public License as published by
+-    the Free Software Foundation; either version 2 of the License, or
+-    (at your option) any later version.
+-
+-    This program is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-    GNU General Public License for more details.
+-**/
+-#include <config.h>
+-#include "driver.h"
+-
+-RETCODE SQL_API SQLSetParam (
+-									 HSTMT     hstmt,
+-									 UWORD     ipar,
+-									 SWORD     fCType,
+-									 SWORD     fSqlType,
+-									 UDWORD       cbColDef,
+-									 SWORD     ibScale,
+-									 PTR       rgbValue,
+-									 SDWORD FAR *pcbValue)
+-{
+-	return SQLBindParameter(hstmt,
+-									ipar,
+-									(SWORD)SQL_PARAM_INPUT_OUTPUT,
+-									fCType,
+-									fSqlType,
+-									cbColDef,
+-									ibScale,
+-									rgbValue,
+-									SQL_SETPARAM_VALUE_MAX,
+-									pcbValue );
+-}
+-
+-
++/* Moved to SQLBindParameter.c. */
+--- a/Drivers/nn/connect.c
++++ b/Drivers/nn/connect.c
+@@ -129,6 +129,7 @@ readtoken(
+ 
+ #if	!defined(WINDOWS) && !defined(WIN32) && !defined(OS2)
+ # include	<pwd.h>
++# include	<unistd.h>
+ # define	UNIX_PWD
+ #endif
+ 
+--- a/Drivers/nn/driver.h
++++ b/Drivers/nn/driver.h
+@@ -113,6 +113,11 @@ char*	getkeyvalinstr(
+ 		char*	value,
+ 		int	size );
+ 
++int sqlputdata (stmt_t* pstmt, int ipar, char* data);
++int sqlexecute (stmt_t* pstmt);
++
++int upper_strneq (char*	s1, char* s2, int n);
++
+ #endif
+ 
+ 
+--- a/Drivers/nn/herr.h
++++ b/Drivers/nn/herr.h
+@@ -113,6 +113,7 @@ enum {
+ extern	void*	nnodbc_pusherr		(void* stack, int code, char* msg);
+ extern	void	nnodbc_poperr		(void* stack);
+ extern	int	nnodbc_errstkempty	(void* stack);
++extern  void	nnodbc_errstkunset	(void* stack);
+ extern	int	nnodbc_getsqlstatcode	(void* stack);
+ extern	char*	nnodbc_getsqlstatstr	(void* stack);
+ extern	char*	nnodbc_getsqlstatmsg	(void* stack);
+--- a/Drivers/nn/misc.c
++++ b/Drivers/nn/misc.c
+@@ -15,6 +15,7 @@
+ 
+ #include <config.h>
+ #include	<nnconfig.h>
++#include "driver.h"
+ 
+ int	upper_strneq(
+ 	char*	s1,
+--- a/Drivers/nn/nncol.c
++++ b/Drivers/nn/nncol.c
+@@ -18,6 +18,7 @@
+ 
+ #include	<nncol.h>
+ #include	"nncol.ci"
++#include	"driver.h"
+ 
+ int	nnsql_getcolidxbyname( char* col_name )
+ {
+--- a/Drivers/nn/nndate.c
++++ b/Drivers/nn/nndate.c
+@@ -16,6 +16,7 @@
+ #include	<nnconfig.h>
+ 
+ #include	<nndate.h>
++#include	"driver.h"
+ 
+ static char* month_name[] =
+ { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+--- a/Drivers/nn/nntp.c
++++ b/Drivers/nn/nntp.c
+@@ -19,6 +19,7 @@
+ #include    <string.h>
+ #include	<errno.h>
+ #include	<nntp.h>
++#include	"driver.h"
+ 
+ # include	"nntp.ci"
+ 
+@@ -28,6 +29,8 @@
+ # include	<sys/socket.h>
+ # include	<netdb.h>
+ # include	<netinet/in.h>
++# include	<arpa/inet.h>
++# include	<unistd.h>
+ 
+ #else
+ 
+--- a/Drivers/nn/nntp.h
++++ b/Drivers/nn/nntp.h
+@@ -78,6 +78,7 @@ extern int	nntp_end_post	( void* hcndes );
+ 
+ extern int	nntp_cancel	( void* hcndes, char* group, char* sender,
+ 				   char* from, char* msgid);
++extern int	nntp_postok	( void* hcndes );
+ 
+ extern int	nntp_getaccmode( void* hcndes );
+ extern void	nntp_setaccmode( void* hcndes, int mode );
+--- a/Drivers/nn/yyenv.h
++++ b/Drivers/nn/yyenv.h
+@@ -37,4 +37,7 @@ typedef struct
+ #  define	YYINITDEPTH	(512)
+ # endif
+ 
++void nnsql_yyinit(yyenv_t* penv, yystmt_t* yystmt);
++int nnsql_yyparse(yyenv_t* pyyenv);
++
+ #endif
+--- a/Drivers/nn/yylex.c
++++ b/Drivers/nn/yylex.c
+@@ -27,6 +27,8 @@
+ #include	<stdio.h>
+ #include	<ctype.h>
+ 
++#include	"driver.h"
++
+ static int	getcmpopidxbyname(char* name)
+ {
+ 	int	i, size;
+--- a/Drivers/nn/yyparse.y
++++ b/Drivers/nn/yyparse.y
+@@ -39,6 +39,9 @@ static	char	sccsid[]
+ #else
+ # define yylex()		nnsql_yylex(&yylval, pyyenv)
+ #endif
++union YYSTYPE;
++int nnsql_yylex(union YYSTYPE* pyylval, yyenv_t* penv);
++
+ 
+ #define yyparse(x)		nnsql_yyparse	(yyenv_t* pyyenv)
+ #define yyerror(msg)		nnsql_yyerror (pyyenv, msg)
+--- a/Drivers/nn/yystmt.c
++++ b/Drivers/nn/yystmt.c
+@@ -14,6 +14,9 @@
+ **/
+ #include <config.h>
+ #include "driver.h"
++#if	!defined(WINDOWS) && !defined(WIN32) && !defined(OS2)
++#include	<unistd.h>
++#endif
+ 
+ static char	sccsid[]
+ 	= "@(#)NNSQL(NetNews SQL) v0.5, Copyright(c) 1995, 1996 by Ke Jin";
+--- a/Drivers/nn/yystmt.h
++++ b/Drivers/nn/yystmt.h
+@@ -151,4 +151,9 @@ typedef struct {
+ 	long		artnum_max;
+ } yystmt_t;
+ 
++void nnsql_getrange(void* hstmt, long* pmin, long* pmax);
++int nnsql_strlike(char* str, char* pattern, char esc, int flag);
++int nnsql_srchtree_evl(void* hstmt);
++int nnsql_srchtree_tchk(void* hstmt);
++
+ #endif
+
