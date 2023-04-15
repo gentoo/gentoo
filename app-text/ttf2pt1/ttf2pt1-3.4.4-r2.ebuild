@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-3.4.0-man-pages.diff
 	"${FILESDIR}"/${P}-freetype.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
