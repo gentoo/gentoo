@@ -145,6 +145,7 @@ src_prepare() {
 
 	pushd "${S_K}" >/dev/null || die
 	eapply "${FILESDIR}"/${P}-clang.patch
+	eapply "${FILESDIR}"/perf-6.0-c++17.patch
 	popd || die
 
 	# Drop some upstream too-developer-oriented flags and fix the
