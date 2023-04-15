@@ -1,4 +1,4 @@
-# Copyright 2016-2021 Gentoo Authors
+# Copyright 2016-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/java-ebuilder.git/snapshot/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 inherit java-pkg-2 java-pkg-simple prefix ${ECLASS}
