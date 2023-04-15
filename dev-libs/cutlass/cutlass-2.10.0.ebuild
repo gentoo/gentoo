@@ -24,7 +24,7 @@ src_configure() {
 		-DCUTLASS_ENABLE_HEADERS_ONLY=yes
 		-DCUTLASS_ENABLE_TESTS=no
 	)
-	addpredict /dev/nvidiactl
+	cuda_add_sandbox -w
 	cmake_src_configure
 }
 
