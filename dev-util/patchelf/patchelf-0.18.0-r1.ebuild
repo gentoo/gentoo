@@ -12,9 +12,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~riscv-linux ~x86-linux"
 LICENSE="GPL-3"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-glibc-dt-mips-xhash.patch
+)
+
 src_prepare() {
-	default
 	rm src/elf.h || die
+	default
 
 	sed -i \
 		-e 's:-Werror::g' \
