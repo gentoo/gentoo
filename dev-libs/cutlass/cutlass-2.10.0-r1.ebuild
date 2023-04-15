@@ -18,6 +18,11 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND="dev-util/nvidia-cuda-toolkit"
 
+src_prepare() {
+	cmake_src_prepare
+	cuda_src_prepare
+}
+
 src_configure() {
 	mycmakeargs+=(
 		-DCMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
