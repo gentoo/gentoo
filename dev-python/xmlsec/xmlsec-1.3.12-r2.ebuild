@@ -24,8 +24,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
 
+# Doesn't yet support xmlsec-1.3.0: https://github.com/xmlsec/python-xmlsec/issues/252
 RDEPEND="
-	dev-libs/xmlsec:=[openssl]
+	<dev-libs/xmlsec-1.3.0:=[openssl]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
