@@ -38,6 +38,10 @@ distutils_enable_tests pytest
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3_p20221125-clang16.patch
+)
+
 src_prepare() {
 	sed -i -e "s:share/doc/gnofract4d/:share/doc/${PF}/:" setup.py || die
 
