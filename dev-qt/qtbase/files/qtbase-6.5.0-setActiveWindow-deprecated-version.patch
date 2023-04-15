@@ -1,0 +1,35 @@
+Upstream commit: https://code.qt.io/cgit/qt/qtbase.git/commit/?h=6.5&id=bbb330c95fd
+
+From bbb330c95fdf6161b23227cb08cec58cca31e465 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@kdab.com>
+Date: Tue, 14 Mar 2023 19:14:41 +0100
+Subject: QApplication: Fix DEPRECATED_VERSION for setActiveWindow
+
+It's not deprecated in 6.4, only 6.5
+
+Change-Id: I86a09b9ce5a7f4d8b1d80a6e67218dfe00f93844
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+(cherry picked from commit 99975ec07feb6b1a9f6be9e0d392a35e40f9550a)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/widgets/kernel/qapplication.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/widgets/kernel/qapplication.h b/src/widgets/kernel/qapplication.h
+index c4c73d4cf8..fd698fb69f 100644
+--- a/src/widgets/kernel/qapplication.h
++++ b/src/widgets/kernel/qapplication.h
+@@ -79,8 +79,8 @@ public:
+ 
+     static QWidget *activeWindow();
+ 
+-#if QT_DEPRECATED_SINCE(6,4)
+-    QT_DEPRECATED_VERSION_X_6_4("Use QWidget::activateWindow() instead.")
++#if QT_DEPRECATED_SINCE(6, 5)
++    QT_DEPRECATED_VERSION_X_6_5("Use QWidget::activateWindow() instead.")
+     static void setActiveWindow(QWidget* act);
+ #endif
+ 
+-- 
+cgit v1.2.3
+
