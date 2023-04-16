@@ -17,7 +17,7 @@ SRC_URI="https://github.com/unbescape/unbescape/archive/unbescape-${PV}.RELEASE.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
