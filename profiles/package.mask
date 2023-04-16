@@ -517,6 +517,7 @@ media-gfx/gnome-photos
 >=media-libs/grilo-0.3.15-r1
 >=media-plugins/grilo-plugins-0.3.16
 media-sound/gnome-music
+>=media-sound/rhythmbox-3.4.7
 net-libs/libdmapsharing:4.0
 
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
