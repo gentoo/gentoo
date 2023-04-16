@@ -1,0 +1,19 @@
+https://src.fedoraproject.org/rpms/kakasi/raw/4756771349822d4ccd4d74a6ce70040ca57084cb/f/kakasi-configure-c99.patch
+https://bugs.gentoo.org/874654
+
+Avoid an implicit declaration of exit and build failures with future
+compilers which do not support implicit function declarations by
+default.
+
+--- a/configure.in
++++ b/configure.in
+@@ -85,7 +85,7 @@ AS_VAR_IF(utf8, "yes",[
+     LIBS="$LIBICONV $LIBS"
+     AC_DEFINE(KAKASI_SUPPORT_UTF8, 1, [KAKASI_SUPPORT_UTF8])
+     AC_RUN_IFELSE([AC_LANG_PROGRAM([#include <iconv.h>],
+-		    [if (iconv_open("EUC-JP", "UTF-8") == -1) exit(1);])],
++		    [if (iconv_open("EUC-JP", "UTF-8") == -1) return 1;])],
+ 	[],
+ 	[AC_MSG_ERROR([can not use EUC-JP or UTF-8 encoding on iconv])])
+ ])
+
