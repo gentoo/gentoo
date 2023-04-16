@@ -179,7 +179,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	coinmp? ( sci-libs/coinor-mp )
 	cups? ( net-print/cups )
-	dbus? ( sys-apps/dbus[X] )
+	dbus? ( sys-apps/dbus )
 	eds? (
 		dev-libs/glib:2
 		gnome-base/dconf
