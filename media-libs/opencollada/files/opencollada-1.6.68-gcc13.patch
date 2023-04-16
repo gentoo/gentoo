@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/899750
+https://github.com/KhronosGroup/OpenCOLLADA/pull/656
+
+From 84c8c9a02b4e5fe40465034563cb36527e865dac Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Mon, 11 Jul 2022 21:33:11 +0100
+Subject: [PATCH] DAEValidator: fix gcc-13 build
+
+On gcc-13 c++ headers don't include <stdint.h> implicitly any more.
+This exposed build failure as:
+
+    /build/source/DAEValidator/library/src/XmlDoc.cpp: In member function 'virtual void opencollada::XmlDoc::readFile(const std::string&)':
+    /build/source/DAEValidator/library/src/XmlDoc.cpp:59:17: error: 'uint32_t' was not declared in this scope
+       59 |                 uint32_t signature = *reinterpret_cast<const uint32_t*>(content.data());
+          |                 ^~~~~~~~
+--- a/DAEValidator/library/src/DaeValidator.cpp
++++ b/DAEValidator/library/src/DaeValidator.cpp
+@@ -4,6 +4,7 @@
+ #include "Strings.h"
+ #include "StringUtil.h"
+ #include <cmath>
++#include <cstdint>
+ #include "no_warning_iomanip"
+ #include "no_warning_iostream"
+ #include <set>
+--- a/DAEValidator/library/src/XmlDoc.cpp
++++ b/DAEValidator/library/src/XmlDoc.cpp
+@@ -1,5 +1,6 @@
+ #include "Macros.h"
+ 
++#include <cstdint>
+ #if IS_GNUC_AND_GNUC_VERSION_LT(5,1,1)
+ #include <cstring>
+ #endif
+
