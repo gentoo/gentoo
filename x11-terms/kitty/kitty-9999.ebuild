@@ -70,12 +70,7 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
-# kitten: written in Go
-# *.so: unsure for their use but they have no objects, so CFLAGS play no part
-QA_FLAGS_IGNORED="
-	usr/bin/kitten
-	usr/lib.*/kitty/kittens/diff/diff_speedup.so
-	usr/lib.*/kitty/kittens/unicode_input/unicode_names.so"
+QA_FLAGS_IGNORED="usr/bin/kitten" # written in Go
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
