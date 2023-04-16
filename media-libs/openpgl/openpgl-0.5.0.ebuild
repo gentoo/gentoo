@@ -10,11 +10,12 @@ HOMEPAGE="https://github.com/OpenPathGuidingLibrary/openpgl"
 SRC_URI="https://github.com/OpenPathGuidingLibrary/openpgl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+
 X86_CPU_FLAGS=( sse4_2 avx2 avx512dq )
 CPU_FLAGS=( ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
 IUSE="${CPU_FLAGS[@]%:*} debug"
-SLOT="0"
 
 RDEPEND="
 	media-libs/embree
