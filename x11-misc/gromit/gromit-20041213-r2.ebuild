@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -14,22 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ppc x86"
 
 RDEPEND="x11-libs/gtk+:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-build.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-build.patch )
 
-src_compile() {
-	tc-export PKG_CONFIG
-
-	emake CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC PKG_CONFIG
 }
 
 src_install() {
-	dobin ${PN}
-	newdoc ${PN}rc ${PN}rc.example
+	dobin gromit
+	newdoc gromitrc gromitrc.example
 	einstalldocs
 }
