@@ -28,7 +28,8 @@ DEPEND="${PYTHON_DEPS}
 	dev-qt/qtwidgets:5
 	>=dev-util/rizin-0.5.0:=
 	graphviz? ( media-gfx/graphviz )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!net-analyzer/cutter" # https://bugs.gentoo.org/897738
 BDEPEND="dev-qt/linguist-tools:5"
 
 src_configure() {
