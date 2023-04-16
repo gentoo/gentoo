@@ -59,6 +59,7 @@ DOCS=()
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+	"${FILESDIR}"/${PN}-0.4.7.13-libressl.patch
 )
 
 pkg_setup() {
