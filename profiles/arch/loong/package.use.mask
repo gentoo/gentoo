@@ -10,10 +10,6 @@ dev-python/sympy opengl
 # cc invocations)
 dev-python/sympy aesara
 
-# Sam James <sam@gentoo.org> (2023-04-14)
-# dev-python/sympy not keyworded here yet
-dev-python/nbval test
-
 # Hans de Graaff <graaff@gentoo.org> (2023-02-27)
 # Depends on virtual/rust
 dev-lang/ruby jit
