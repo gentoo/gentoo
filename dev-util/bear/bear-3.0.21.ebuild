@@ -45,6 +45,10 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${P^}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.21-clang16-tests.patch
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
