@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/icu:=
 	pam? ( sys-libs/pam )
-	pskc? ( dev-libs/xmlsec:= )"
+	pskc? ( <dev-libs/xmlsec-1.3.0:= )"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/libxml2 )
 	dev-util/gtk-doc-am"

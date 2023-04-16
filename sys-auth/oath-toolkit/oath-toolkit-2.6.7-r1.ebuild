@@ -21,7 +21,7 @@ DEPEND="
 	pam? ( sys-libs/pam )
 	pskc? (
 		dev-libs/libxml2
-		dev-libs/xmlsec:=
+		<dev-libs/xmlsec-1.3.0:=
 	)
 "
 RDEPEND="${DEPEND}"
