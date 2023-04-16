@@ -38,11 +38,6 @@
 # See https://github.com/openzfs/zfs/issues/14753.
 =sys-fs/zfs-kmod-2.1.10
 
-# Sam James <sam@gentoo.org> (2023-04-16)
-# OpenRC is broken with this version, but the issue is on OpenRC's side
-# and needs to be fixed there. bug #904277
-=sys-libs/ncurses-6.4_p20230415
-
 # Sam James <sam@gentoo.org> (2023-04-14)
 # Fails with modern C, no upstream activity since 2005.
 # Removal on 2023-05-14.  Bug #778506, bug #881205.
@@ -58,6 +53,7 @@ net-im/cawbird
 # like joe crashing.
 # See issues reported at bottom of bug #904247 and bug #904263.
 =sys-libs/ncurses-6.4_p20230408
+=sys-libs/ncurses-6.4_p20230415
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-13)
 # Lack of support for Python 3.11.  The current version is from 2016.
