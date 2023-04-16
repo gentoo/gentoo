@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Assign particular actions to any key or key combination"
 HOMEPAGE="http://wmalms.tripod.com/#XHKEYS"
@@ -25,6 +27,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-linux_headers.patch
 	"${FILESDIR}"/${P}-CC.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	dobin xhkeys xhkconf
