@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
-	>=net-libs/libhtp-0.5.42
+	>=net-libs/libhtp-0.5.43
 	net-libs/libpcap
 	sys-apps/file
 	sys-libs/libcap-ng
@@ -119,6 +119,7 @@ src_configure() {
 	if use debug; then
 		myeconfargs+=( $(use_enable debug) )
 		# so we can get a backtrace according to "reporting bugs" on upstream web site
+		QA_FLAGS_IGNORED="usr/bin/${PN}"
 		CFLAGS="-ggdb -O0" econf ${myeconfargs[@]}
 	else
 		econf ${myeconfargs[@]}
@@ -145,7 +146,7 @@ src_install() {
 
 	fowners -R ${PN}: "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 	fperms 750 "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
-	fperms 2750 "/var/lib/${PN}/rules" "/var/lib/${PN}/update"
+	fperms 6750 "/var/lib/${PN}/rules" "/var/lib/${PN}/update"
 
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
@@ -205,11 +206,7 @@ pkg_postinst() {
 	elog
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "To download and install an initial set of rules, run:"
-		elog "    emerge --config =${CATEGORY}/${PF}"
+		elog "    suricata-update"
 	fi
 	elog
-}
-
-pkg_config() {
-	suricata-update
 }
