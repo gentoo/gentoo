@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2023-04-16)
+# SEEK_HOLE issues causing corruption with (sparse?) copies again.
+# See https://github.com/openzfs/zfs/issues/14753.
+=sys-fs/zfs-kmod-2.1.10
+
+# Sam James <sam@gentoo.org> (2023-04-16)
 # OpenRC is broken with this version, but the issue is on OpenRC's side
 # and needs to be fixed there. bug #904277
 =sys-libs/ncurses-6.4_p20230415

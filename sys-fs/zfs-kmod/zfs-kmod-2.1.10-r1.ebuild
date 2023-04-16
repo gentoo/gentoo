@@ -60,6 +60,11 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=(
+	# https://github.com/openzfs/zfs/issues/14753
+	"${FILESDIR}"/2.1.10-Revert-ZFS_IOC_COUNT_FILLED-does-unnecessary-txg_wai.patch
+)
+
 pkg_pretend() {
 	use rootfs || return 0
 
