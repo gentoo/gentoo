@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
+# dev-python/pyopengl fails tests
+dev-python/sympy opengl
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
 # dev-python/aesara doesn't work on loong yet (due to hardcoding -m64 in its
 # cc invocations)
 dev-python/sympy aesara
