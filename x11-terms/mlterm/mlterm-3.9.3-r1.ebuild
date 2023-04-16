@@ -53,19 +53,23 @@ RDEPEND="virtual/libcrypt:=
 		x11-libs/libxkbcommon
 	)
 	xft? ( x11-libs/libXft )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-PATCHES=( "${FILESDIR}"/${PN}-font.patch )
 DOCS=( doc/{en,ja} )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-font.patch
+	"${FILESDIR}"/${PN}-configure-clang16.patch
+)
 
 src_prepare() {
 	# default config
 	sed -i \
 		-e "/ icon_path =/aicon_path = ${EPREFIX}/usr/share/pixmaps/${PN}-icon.svg" \
 		-e "/ scrollbar_view_name =/ascrollbar_view_name = sample" \
-		etc/main
+		etc/main || die
 
 	default
 }
