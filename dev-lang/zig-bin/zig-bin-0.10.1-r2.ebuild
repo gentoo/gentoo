@@ -12,7 +12,18 @@ SRC_URI="
 	riscv? ( https://ziglang.org/download/${PV}/zig-linux-riscv64-${PV}.tar.xz )
 	x86? ( https://ziglang.org/download/${PV}/zig-linux-i386-${PV}.tar.xz )"
 
-LICENSE="MIT"
+# project itself: MIT
+# There are bunch of projects under "lib/" folder that are needed for cross-compilation.
+# Files that are unnecessary for cross-compilation are removed by upstream
+# and therefore their licenses (if any special) are not included.
+# lib/libunwind: Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )
+# lib/libcxxabi: Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )
+# lib/libcxx: Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )
+# lib/libc/wasi: || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain
+# lib/libc/musl: MIT BSD-2
+# lib/libc/mingw: ZPL public-domain BSD-2 ISC HPND
+# lib/libc/glibc: BSD HPND ISC inner-net LGPL-2.1+
+LICENSE="MIT Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT ) || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain BSD-2 ZPL ISC HPND BSD inner-net LGPL-2.1+"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="-* ~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="doc"
