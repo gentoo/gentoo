@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-04-16)
+# OpenRC is broken with this version, but the issue is on OpenRC's side
+# and needs to be fixed there. bug #904277
+=sys-libs/ncurses-6.4_p20230415
+
 # Sam James <sam@gentoo.org> (2023-04-14)
 # Fails with modern C, no upstream activity since 2005.
 # Removal on 2023-05-14.  Bug #778506, bug #881205.
