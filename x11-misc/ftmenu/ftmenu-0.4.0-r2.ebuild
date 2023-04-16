@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="A tray menu for the Fluxbox toolbar"
 HOMEPAGE="http://ftmenu.sourceforge.net/"
@@ -10,14 +10,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-COMMON_DEPEND=">=x11-libs/gtk+-2.6:2
-	>=dev-libs/glib-2.6:2"
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
-RDEPEND="${COMMON_DEPEND}
+DEPEND="
+	dev-libs/glib:2
+	x11-libs/gtk+:2"
+RDEPEND="
+	${DEPEND}
 	x11-wm/fluxbox"
+BDEPEND="virtual/pkgconfig"
 
 pkg_postinst() {
 	einfo
