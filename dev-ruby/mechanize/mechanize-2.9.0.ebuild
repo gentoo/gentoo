@@ -26,7 +26,7 @@ ruby_add_rdepend "
 	>=dev-ruby/http-cookie-1.0.3:0
 	dev-ruby/mime-types:3
 	>=dev-ruby/net-http-digest_auth-1.4.1:0
-	|| ( dev-ruby/net-http-persistent:4 dev-ruby/net-http-persistent:3 )
+	dev-ruby/net-http-persistent:4
 	>=dev-ruby/nokogiri-1.11.2:0
 	>=dev-ruby/rubyntlm-0.6.3:0
 	>=dev-ruby/webrick-1.7:0
