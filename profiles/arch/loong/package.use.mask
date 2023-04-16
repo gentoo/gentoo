@@ -1,6 +1,11 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
+# dev-python/aesara doesn't work on loong yet (due to hardcoding -m64 in its
+# cc invocations)
+dev-python/sympy aesara
+
 # Sam James <sam@gentoo.org> (2023-04-14)
 # dev-python/sympy not keyworded here yet
 dev-python/nbval test
