@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2023-04-16)
+# net-libs/libcloudproviders not keyworded here
+x11-libs/gtk+ cloudproviders
+
 # Sam James <sam@gentoo.org> (2023-04-14)
 # Needs unkeyworded dev-python/sympy
 dev-python/nbval test
