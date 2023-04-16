@@ -72,9 +72,9 @@ src_configure() {
 
 src_compile() {
 	if use gtk; then
-		emake droidcam
+		APPINDICATOR=ayatana-appindicator3-0.1 emake droidcam
 	fi
-	emake droidcam-cli
+	 APPINDICATOR=ayatana-appindicator3-0.1 emake droidcam-cli
 
 	if linux_chkconfig_present CC_IS_CLANG; then
 		BUILD_PARAMS+=' CC=${CHOST}-clang'
