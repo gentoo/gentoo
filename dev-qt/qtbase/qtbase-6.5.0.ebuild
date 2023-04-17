@@ -97,6 +97,7 @@ DEPEND="
 		x11-libs/xcb-util-keysyms
 		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
+		x11-libs/xcb-util-cursor
 	)
 	zstd? ( app-arch/zstd:= )
 "
