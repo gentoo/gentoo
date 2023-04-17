@@ -34,6 +34,7 @@ ruby_add_rdepend "
 ruby_add_bdepend "
 	test? (
 		dev-ruby/mocha
+		dev-ruby/zeitwerk
 	)"
 
 all_ruby_prepare() {

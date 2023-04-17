@@ -20,6 +20,14 @@ SLOT="0"
 
 PATCHES=( "${FILESDIR}/${PN}-No-static-libs-gentoo.patch" )
 
+# see Makefile:1￼
+QA_PKGCONFIG_VERSION="0.20.9"
+
+# XXX: Please, don't forget to check this on next version bump.
+# And, maybe remove as non-needed, if version in Makefile will
+# match the release.
+# ref: https://github.com/tree-sitter/tree-sitter/issues/2210
+
 src_prepare() {
 	default
 	tc-export CC

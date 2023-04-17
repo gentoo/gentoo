@@ -39,6 +39,8 @@ distutils_enable_tests pytest
 src_prepare() {
 	# sterilize build flags
 	sed -i -e '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt || die
+	# remove bundled libraries
+	rm -r extern || die
 
 	distutils-r1_src_prepare
 
