@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit systemd
-
 DESCRIPTION="Lightweight connection pooler for PostgreSQL"
 HOMEPAGE="https://www.pgbouncer.org/"
 SRC_URI="https://www.pgbouncer.org/downloads/files/${PV}/pgbouncer-${PV}.tar.gz"
