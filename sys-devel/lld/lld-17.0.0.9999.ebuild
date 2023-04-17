@@ -16,7 +16,7 @@ IUSE="debug test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	~sys-devel/llvm-${PV}[zstd=]
+	~sys-devel/llvm-${PV}[debug=,zstd=]
 	sys-libs/zlib:=
 	zstd? ( app-arch/zstd:= )
 "
