@@ -1,4 +1,4 @@
-# Copyright 2003-2022 Gentoo Authors
+# Copyright 2003-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 #############################################
@@ -272,29 +272,29 @@ riscv		default/linux/riscv/20.0/rv64gc/lp64d					stable
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop				dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome			dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome/systemd		dev
-#riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome/systemd/merged-usr	dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome/systemd/merged-usr	dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma			dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma/systemd		dev
-#riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma/systemd/merged-usr	dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma/systemd/merged-usr	dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/systemd			dev
-#riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/systemd/merged-usr	dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/systemd/merged-usr	dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/systemd				stable
-#riscv		default/linux/riscv/20.0/rv64gc/lp64d/systemd/merged-usr		stable
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/systemd/merged-usr		stable
 riscv		default/linux/riscv/20.0/rv64gc/lp64					stable
 riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop				dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome			dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome/systemd		dev
-#riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome/systemd/merged-usr	dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome/systemd/merged-usr	dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma			dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma/systemd		dev
-#riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma/systemd/merged-usr	dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma/systemd/merged-usr	dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/systemd			dev
-#riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/systemd/merged-usr		dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/systemd/merged-usr		dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/systemd				stable
-#riscv		default/linux/riscv/20.0/rv64gc/lp64/systemd/merged-usr			stable
+riscv		default/linux/riscv/20.0/rv64gc/lp64/systemd/merged-usr			stable
 riscv		default/linux/riscv/20.0/rv64gc/multilib				exp
 riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd			exp
-#riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd/merged-usr		exp
+riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd/merged-usr		exp
 
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
