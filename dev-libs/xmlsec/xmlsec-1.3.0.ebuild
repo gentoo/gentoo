@@ -42,6 +42,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-strict-prototypes.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_configure() {
