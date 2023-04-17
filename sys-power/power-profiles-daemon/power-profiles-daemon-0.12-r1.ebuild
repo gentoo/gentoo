@@ -28,7 +28,10 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	gtk-doc? ( dev-util/gi-docgen )
+	gtk-doc? (
+		dev-util/gi-docgen
+		dev-util/gtk-doc
+	)
 	test? (
 		dev-util/umockdev
 		$(python_gen_cond_dep '
