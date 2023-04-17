@@ -6,6 +6,6 @@
     <name>ML</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">yoriyuki/Camomile</remote-id>
+    <remote-id type="github">savonet/Camomile</remote-id>
   </upstream>
 </pkgmetadata>
