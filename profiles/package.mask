@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-04-17)
+# Unmaintained, no release in over 10 years, EAPI 6, no other distro
+# carries this, usual suckless.org assortment of build system
+# patching required. Removal on 2023-05-17. Bug #732424.
+x11-misc/sprop
+
 # Sam James <sam@gentoo.org> (2023-04-16)
 # SEEK_HOLE issues causing corruption with (sparse?) copies again.
 # See https://github.com/openzfs/zfs/issues/14753.
