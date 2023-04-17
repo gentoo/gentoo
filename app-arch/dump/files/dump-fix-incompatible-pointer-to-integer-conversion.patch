@@ -1,0 +1,25 @@
+From: listout <listout@protonmail.com>
+Date: Mon, 17 Apr 2023 12:36:40 +0530
+Subject: [PATCH] Fix incompatible pointer to integer conversion
+
+transformation_null was initializing one of it's elements with NULL
+which is zero type casted to void. Hence, instead of initializing with
+NULL, now we are initializing that element with zero.
+
+Refer: https://bugs.gentoo.org/874675
+
+Signed-off-by: listout <listout@protonmail.com>
+--- a/common/transformation_null.c
++++ b/common/transformation_null.c
+@@ -81,7 +81,7 @@ null_decompress(Transformation *xform, struct tapebuf *tpbin, unsigned long *des
+ Transformation transformation_null =
+ {
+ 	0,
+-	NULL,
++	0,
+ 	"null",
+ 	0,
+ 	&null_initialize,
+--
+2.39.2
+
