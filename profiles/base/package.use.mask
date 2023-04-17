@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2023-04-17)
+# Ruby has several JITs available but they need porting to individual arches.
+# Unmask on specific arches where it's available.
+dev-lang/ruby jit
+
 # Matt Turner <mattst88@gentoo.org> (2023-04-10)
 # Not ported to libsoup:3.0
 >=media-plugins/grilo-plugins-0.3.16 youtube
