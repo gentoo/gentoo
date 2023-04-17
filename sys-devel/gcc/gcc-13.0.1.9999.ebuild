@@ -22,8 +22,9 @@ if [[ $(ver_cut 3) == 9999 ]] ; then
 fi
 
 inherit toolchain
+
 # Needs to be after inherit (for now?), bug #830908
-EGIT_BRANCH=master
+EGIT_BRANCH=releases/gcc-$(ver_cut 1)
 
 # Don't keyword live ebuilds
 if ! tc_is_live && [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
