@@ -55,6 +55,11 @@ src_configure() {
 	ecm_src_configure
 }
 
+src_test() {
+	local -x QT_QPA_PLATFORM=offscreen
+	ecm_src_test
+}
+
 pkg_postinst () {
 	ecm_pkg_postinst
 
