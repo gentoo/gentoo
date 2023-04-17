@@ -122,7 +122,5 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	elog "You may want to install some additional utils, check in:"
-	elog "https://code.visualstudio.com/Docs/setup#_additional-tools"
 	optfeature "keyring support inside vscode" "gnome-base/gnome-keyring"
 }
