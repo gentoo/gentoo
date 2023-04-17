@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dleidert/chemical-mime/archive/${COMMIT}.tar.gz -> $
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~x86"
 IUSE=""
 
 RDEPEND="x11-misc/shared-mime-info"
