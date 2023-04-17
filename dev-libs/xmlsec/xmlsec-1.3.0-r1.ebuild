@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Command line tool for signing, verifying, encrypting and decrypting XML"
 HOMEPAGE="https://www.aleksey.com/xmlsec"
 SRC_URI="https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
@@ -43,7 +45,14 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-strict-prototypes.patch
 	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${P}-optimisation.patch
 )
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
