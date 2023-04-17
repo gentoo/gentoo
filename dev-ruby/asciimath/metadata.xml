@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">pepijnve/asciimath</remote-id>
+    <remote-id type="github">asciidoctor/asciimath</remote-id>
   </upstream>
 </pkgmetadata>
