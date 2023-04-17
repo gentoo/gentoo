@@ -7,7 +7,7 @@ To keep a low maintenance cost, these changes are not reverted in Gentoo
 with the exception of re-enabling winemenubuilder for desktop entries.
 
 Also, given this Wine variant is oriented toward running games, some
-normally unrelated features (e.g. ldap) may not have real upstream
+normally unrelated features (e.g. cups) may not have real upstream
 (Valve) support. Because of this, some are left always disabled.
 
 If needed, use other variants for the more expected Wine behavior.
