@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.adoc README.adoc"
 inherit ruby-fakegem
 
 DESCRIPTION="A pure Ruby AsciiMath parsing and conversion library"
-HOMEPAGE="https://github.com/pepijnve/asciimath"
+HOMEPAGE="https://github.com/asciidoctor/asciimath"
 
 LICENSE="MIT"
 SLOT="1"
