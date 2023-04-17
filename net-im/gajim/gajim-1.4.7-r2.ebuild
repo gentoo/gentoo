@@ -73,7 +73,7 @@ RDEPEND="${COMMON_DEPEND}
 			app-text/gspell[introspection]
 			app-text/hunspell
 		)
-		upnp? ( net-libs/gupnp-igd[introspection] )
+		upnp? ( net-libs/gupnp-igd:0[introspection] )
 	')"
 
 src_install() {
