@@ -17,10 +17,6 @@ dev-python/nbval test
 dev-python/nbclassic doc
 dev-python/nbval doc
 
-# Hans de Graaff <graaff@gentoo.org> (2023-02-27)
-# Depends on virtual/rust
-dev-lang/ruby jit
-
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Unkeyworded dependencies
 dev-util/diffoscope opendocument pascal pdf R
