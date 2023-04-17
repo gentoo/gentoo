@@ -55,6 +55,8 @@ python_test() {
 		tests/test_scoped_nodes.py::test_deprecation_of_doc_attribute
 		# requires six bundled in urllib3, sigh
 		tests/test_modutils.py::test_file_info_from_modpath__SixMetaPathImporter
+		# requires pip, and looks suspicious anyway
+		tests/test_manager.py::IsolatedAstroidManagerTest::test_no_user_warning
 	)
 
 	# Faker causes sys.path_importer_cache keys to be overwritten
