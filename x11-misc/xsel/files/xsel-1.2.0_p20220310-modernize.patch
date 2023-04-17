@@ -1,0 +1,91 @@
+From 633443e093845d61b16049081c17d6f08f266c6e Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Mon, 17 Apr 2023 12:21:53 +0200
+Subject: [PATCH] configure.ac: modernize
+
+---
+ Makefile.am  |  8 +++-----
+ configure.ac | 23 ++++++-----------------
+ 2 files changed, 9 insertions(+), 22 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 2f55306..b72bc23 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,12 +1,10 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-EXTRA_DIST = xsel.1x
+-
+-AM_CFLAGS = @X_CFLAGS@
+-LDADD = @X_LIBS@
++AM_CPPFLAGS = $(X_CFLAGS)
++LDADD = $(X_LIBS)
+ 
+ bin_PROGRAMS = xsel
+ 
+ xsel_SOURCES = xsel.c xsel.h
+ 
+-man_MANS = xsel.1x
++dist_man_MANS = xsel.1x
+diff --git a/configure.ac b/configure.ac
+index fd20279..5e78b86 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,36 +1,27 @@
+ # Process this file with autoconf to produce a configure script.
+-AC_INIT([xsel.c])
+-AM_INIT_AUTOMAKE(xsel, 1.2.0)
++AC_INIT([xsel],[1.2.0])
++AM_INIT_AUTOMAKE([1.14 foreign dist-xz subdir-objects])
+ AC_CONFIG_SRCDIR([xsel.c])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ # Checks for programs.
+-AC_ISC_POSIX
+ AC_PROG_CC
+-AC_PROG_CC_C99
+ AC_PROG_CPP
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+ 
+ # Checks for libraries.
+-AC_PATH_XTRA
+-AC_SUBST(X_CFLAGS)
+-AC_SUBST(X_LDFLAGS)
+-AC_SUBST(X_LIBS)
+-AC_SUBST(X_EXTRA_LIBS)
+-
+-AC_SEARCH_LIBS([XOpenDisplay], [X11], [], [AC_MSG_ERROR([libX11 is required])])
++PKG_CHECK_MODULES([X], [x11])
+ 
+ # Error out on compile warnings
+ dnl Add some useful warnings if we have gcc.
+ dnl changequote(,)dnl
+-if test "x$ac_cv_prog_gcc" = xyes ; then
++AS_IF([test "x$ac_cv_c_compiler_gnu" = xyes], [
+   CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -Wdeclaration-after-statement -Wno-unused"
+-fi
++])
+ dnl changequote([,])dnl
+ 
+ # Checks for header files.
+-AC_HEADER_STDC
+ AC_CHECK_HEADERS([errno.h fcntl.h stdlib.h string.h sys/time.h unistd.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+@@ -38,13 +29,11 @@ AC_C_CONST
+ AC_TYPE_PID_T
+ AC_TYPE_SIZE_T
+ AC_CHECK_MEMBERS([struct stat.st_blksize])
+-AC_HEADER_TIME
+ AC_TYPE_UID_T
+ 
+ # Checks for library functions.
+ AC_FUNC_FORK
+ AC_FUNC_MALLOC
+-AC_TYPE_SIGNAL
+ AC_CHECK_FUNCS([dup2 select strdup strerror strtol])
+ 
+ AC_CONFIG_FILES([Makefile])

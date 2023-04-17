@@ -1,0 +1,32 @@
+From 2a47fb141cc317a8eec7542a22c348f6abcec8a2 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Mon, 17 Apr 2023 12:21:52 +0200
+Subject: [PATCH] configure.ac: do not add `-Werror` to compile line
+
+* With every new compiler release, it breaks:
+  https://flameeyes.blog/2009/02/25/future-proof-your-code-dont-use-werror/
+---
+ configure.ac | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 77dc524..fd20279 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,6 +7,7 @@ AM_CONFIG_HEADER(config.h)
+ # Checks for programs.
+ AC_ISC_POSIX
+ AC_PROG_CC
++AC_PROG_CC_C99
+ AC_PROG_CPP
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+@@ -24,7 +25,7 @@ AC_SEARCH_LIBS([XOpenDisplay], [X11], [], [AC_MSG_ERROR([libX11 is required])])
+ dnl Add some useful warnings if we have gcc.
+ dnl changequote(,)dnl
+ if test "x$ac_cv_prog_gcc" = xyes ; then
+-  CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -Werror -g -std=gnu99 -Wdeclaration-after-statement -Wno-unused"
++  CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -Wdeclaration-after-statement -Wno-unused"
+ fi
+ dnl changequote([,])dnl
+ 
