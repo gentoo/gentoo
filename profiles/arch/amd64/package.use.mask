@@ -26,6 +26,10 @@ dev-lang/ruby -jit
 # pytables is available here.
 dev-python/pytables -cpudetection
 
+# Craig Andrews <candrews@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is keyworded here
+media-video/ffmpeg -libplacebo
+
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
@@ -453,7 +457,3 @@ media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 # saves people from needlessly installing nasm
 # Refs bug #93279
 media-sound/lame cpu_flags_x86_mmx
-
-# Craig Andrews <candrews@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is keyworded here
-media-video/ffmepg -libplacebo
