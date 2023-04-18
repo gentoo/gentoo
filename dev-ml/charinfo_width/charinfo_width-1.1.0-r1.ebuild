@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="charInfo_width"
 DUNE_PKG_NAME="${MY_PN}"
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	dev-ml/camomile:=
+	<dev-ml/camomile-2.0.0:=
 	dev-ml/ppx_expect:=
 	dev-ml/result:=
 "
