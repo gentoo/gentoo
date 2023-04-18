@@ -27,3 +27,8 @@ src_configure() {
 	cargo_gen_config
 	cargo_src_configure --frozen
 }
+
+src_install() {
+	cargo_src_install
+	dodoc -r docs
+}
