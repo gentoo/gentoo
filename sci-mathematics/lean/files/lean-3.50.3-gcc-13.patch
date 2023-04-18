@@ -1,0 +1,10 @@
+--- a/shell/lean_js_main.cpp
++++ b/shell/lean_js_main.cpp
+@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
+ 
+ Author: Leonardo de Moura
+ */
++#include <cstdint>
+ #include <iostream>
+ #include <string>
+ #include "shell/lean_js.h"
