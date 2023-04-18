@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DUNE_PKG_NAME="gettext"
 inherit dune
@@ -14,15 +14,15 @@ LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~x86"
 IUSE="+ocamlopt test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"  # Tests fail
 
 BDEPEND="
 	>=dev-ml/cppo-1.6.6
 	dev-ml/dune-configurator
 "
+
 RDEPEND="
 	dev-ml/base:=
-	>=dev-ml/camomile-0.8.3:=[ocamlopt=]
 	>=dev-ml/ocaml-fileutils-0.4.0:=[ocamlopt=]
 	sys-devel/gettext
 "
@@ -34,10 +34,11 @@ DEPEND="
 src_prepare() {
 	default
 
-	# Port to dev-ml/ounit2
-	sed -i -e 's/oUnit/ounit2/' test/{,common,test-camomile,test-stub}/dune || die
-}
+	# Remove dependency on camomile (see
+	# https://github.com/gildor478/ocaml-gettext/issues/14)
+	rm -r src/lib/gettext-camomile || die
+	rm -r test/test-camomile || die
 
-src_install() {
-	dune_src_install
+	# Port to dev-ml/ounit2
+	sed -i -e 's/oUnit/ounit2/' test/{,common,test-stub}/dune || die
 }
