@@ -12,17 +12,14 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
-IUSE="pam pskc static-libs test"
-REQUIRED_USE="test? ( pskc )"
+IUSE="pam static-libs test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/icu:=
+	dev-libs/libxml2
+	<dev-libs/xmlsec-1.3.0:=
 	pam? ( sys-libs/pam )
-	pskc? (
-		dev-libs/libxml2
-		<dev-libs/xmlsec-1.3.0:=
-	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -40,10 +37,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 src_configure() {
 	local myeconfargs=(
+		--enable-pskc
 		$(use_enable test xmltest)
 		$(use_enable pam)
 		$(use_with pam pam-dir $(getpam_mod_dir))
-		$(use_enable pskc)
 		$(use_enable static-libs static)
 	)
 
@@ -68,7 +65,5 @@ src_install() {
 		newdoc pam_oath/README README.pam
 	fi
 
-	if use pskc; then
-		doman pskctool/pskctool.1
-	fi
+	doman pskctool/pskctool.1
 }
