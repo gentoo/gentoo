@@ -221,6 +221,7 @@ PATCHES=(
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
 	"${FILESDIR}/ceph-17.2.5-gcc13.patch"
+	"${FILESDIR}/ceph-17.2.5-gcc13-deux.patch"
 	"${FILESDIR}/ceph-17.2.5-boost-1.81.patch"
 	# https://bugs.gentoo.org/901403
 	"${FILESDIR}/ceph-17.2.5-link-boost-context.patch"
