@@ -1,0 +1,24 @@
+https://github.com/Blub/netevent/pull/29
+
+From 85f5db586dac20b69de1345c197e24be6123439d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 18 Apr 2023 07:40:05 +0100
+Subject: [PATCH] Fix build with GCC 13
+
+GCC 13 (as usual for new compiler releases) shuffles around some internal includes so some
+are no longer transitively included.
+
+See https://gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Bug: https://bugs.gentoo.org/895142
+--- a/src/socket.cpp
++++ b/src/socket.cpp
+@@ -6,6 +6,7 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ #include "socket.h"
++#include <cstdint>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ 
+
