@@ -220,6 +220,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.4-cyclic-deps.patch"
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
+	"${FILESDIR}/ceph-17.2.5-gcc13-deux.patch"
 	"${FILESDIR}/ceph-17.2.5-boost-1.81.patch"
 	# https://bugs.gentoo.org/901403
 	"${FILESDIR}/ceph-17.2.6-link-boost-context.patch"
