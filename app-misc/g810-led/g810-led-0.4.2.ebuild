@@ -1,4 +1,4 @@
-# Copyright 2018-2021 Gentoo Authors
+# Copyright 2018-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=("README.md" "sample_profiles" "sample_effects")
+
+# Fix for GCC 13; Bug #895426
+# See https://github.com/MatMoul/g810-led/pull/302
+PATCHES=( "${FILESDIR}/g810-led-0.4.2_gcc13.patch" )
 
 src_prepare() {
 	default
