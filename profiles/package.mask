@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-04-18)
+# Breaks ABI without SOVERSION bump, effectively preventing
+# xfce4-terminal from starting.
+# https://bugs.gentoo.org/904500
+=xfce-base/libxfce4ui-4.19.0
+
 # Sam James <sam@gentoo.org> (2023-04-18)
 # Fails to compile with GCC 13, out of date, QA issues, and various open bugs.
 # Removal on 2023-05-18.
