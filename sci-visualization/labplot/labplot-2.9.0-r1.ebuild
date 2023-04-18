@@ -72,6 +72,8 @@ BDEPEND="
 	sys-devel/gettext
 "
 
+PATCHES=( "${FILESDIR}/${P}-discount-3.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_MQTT=OFF # not packaged
