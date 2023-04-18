@@ -1,0 +1,18 @@
+When compiling with clang we get:
+
+src/VBox/Devices/PC/ipxe/src/core/settings.c:310:8: error: fields must have a constant size: 'variable length array in structure' extension will never be supported
+
+Apply this patch conditionally to disable rebuilding iPxeBiosBin.rom when using clang.
+
+--- a/src/VBox/Devices/PC/ipxe/Makefile.kmk
++++ b/src/VBox/Devices/PC/ipxe/Makefile.kmk
+@@ -45,7 +45,8 @@
+ iPxeBiosBin_CLEAN    = \
+ 	$(iPxeBiosBin_0_OUTDIR)/iPxeBiosBin.c \
+ 
+-if1of ($(KBUILD_TARGET), darwin os2 solaris win)
++# Disable building on Linux if using clang
++if1of ($(KBUILD_TARGET), darwin os2 solaris win linux)
+  $$(iPxeBiosBin_0_OUTDIR)/iPxeBiosBin.c: $(PATH_SUB_CURRENT)/iPxeBiosBin.rom $(VBOX_BIN2C) | $$(dir $$@)
+ 	$(call MSG_TOOL,bin2c,iPxeBiosBin,$<,$@)
+ 	$(QUIET)$(VBOX_BIN2C) -min 32 -max 56 -mask 0x1ff -export NetBiosBinary $< $@
