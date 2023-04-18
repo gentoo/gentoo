@@ -65,6 +65,11 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
+
 pkg_postinst() {
 	xdg_icon_cache_update
 }
