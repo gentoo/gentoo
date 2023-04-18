@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	libproxy? ( net-libs/libproxy )
 	lz4? ( app-arch/lz4:= )
 	nls? ( virtual/libintl )
-	pskc? ( sys-auth/oath-toolkit[pskc] )
+	pskc? ( sys-auth/oath-toolkit[pskc(+)] )
 	smartcard? ( sys-apps/pcsc-lite:0= )
 	stoken? ( app-crypt/stoken )
 "
