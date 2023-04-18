@@ -24,7 +24,7 @@ RESTRICT="!test? ( test ) python? ( test )"
 RDEPEND="
 	!sci-libs/libmed
 	dev-lang/tk:0=
-	>=sci-libs/hdf5-1.10.2:=[fortran?,mpi(+)?]
+	<sci-libs/hdf5-1.14.0:=[fortran?,mpi(+)?]
 	mpi? ( virtual/mpi[fortran?] )
 	python? ( ${PYTHON_DEPS} )
 "
