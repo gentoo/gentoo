@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2023-04-18)
+# Fails to compile with GCC 13, out of date, QA issues, and various open bugs.
+# Removal on 2023-05-18.
+# Bug #899218, bug #899218, bug #796599, bug #672326, bug #788844.
+net-p2p/litecoind
+
+# Sam James <sam@gentoo.org> (2023-04-18)
 # Fails to compile with GCC 13, no upstream activity.
 # Removal on 2023-05-18.  Bug #895206.
 sci-geosciences/congen
