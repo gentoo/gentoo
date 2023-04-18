@@ -7,7 +7,7 @@ NEED_EMACS=26.1
 DISTUTILS_USE_PEP517=no
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit elisp distutils-r1
+inherit distutils-r1 elisp
 
 DESCRIPTION="Tree style project file explorer"
 HOMEPAGE="https://github.com/Alexander-Miller/treemacs/"
@@ -17,8 +17,6 @@ SRC_URI="https://github.com/Alexander-Miller/${PN}/archive/${PV}.tar.gz
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-emacs/ace-window
@@ -29,10 +27,7 @@ RDEPEND="
 	app-emacs/pfuture
 	app-emacs/s
 "
-BDEPEND="
-	${RDEPEND}
-	test? ( app-emacs/buttercup )
-"
+BDEPEND="${RDEPEND}"
 
 BYTECOMPFLAGS="-L . -L src/elisp"
 PATCHES=(
@@ -43,6 +38,8 @@ PATCHES=(
 
 DOCS=( Changelog.org Extensions.org README.org screenshots )
 SITEFILE="50${PN}-gentoo.el"
+
+elisp-enable-tests buttercup test
 
 src_prepare() {
 	distutils-r1_src_prepare
@@ -60,10 +57,6 @@ src_compile() {
 	distutils-r1_src_compile
 
 	elisp-compile src/elisp/*.el
-}
-
-src_test() {
-	buttercup ${BYTECOMPFLAGS} -L test --traceback full || die "tests failed"
 }
 
 src_install() {
