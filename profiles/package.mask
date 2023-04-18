@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-04-18)
+# Fails to compile with GCC 13, no upstream activity.
+# Removal on 2023-05-18.  Bug #895206.
+sci-geosciences/congen
+
 # David Seifert <soap@gentoo.org> (2023-04-17)
 # Unmaintained, no release in over 10 years, EAPI 6, no other distro
 # carries this, usual suckless.org assortment of build system
