@@ -5,4 +5,7 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">kokkos/kokkos</remote-id>
+	</upstream>
 </pkgmetadata>
