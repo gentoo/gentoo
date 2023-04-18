@@ -151,6 +151,7 @@ python_check_deps() {
 }
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-32.0-python-version.patch
 )
 
 DISABLE_AUTOFORMATTING="yes"
@@ -158,7 +159,7 @@ DOC_CONTENTS="
 Support for metadata lookup changes is added. User configuration required.
 Details at: https://www.mythtv.org/wiki/Metadata_Lookup_Changes_March_2021
 
-Suppport for Python 2.7 is removed.
+Support for Python 2.7 is removed.
 
 If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
 is created if it does not already exist.
