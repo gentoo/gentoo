@@ -9,33 +9,36 @@ DESCRIPTION="A library for reading vector images in Microsoft's Windows Metafile
 HOMEPAGE="https://github.com/caolanm/libwmf http://wvware.sourceforge.net/"
 SRC_URI="https://github.com/caolanm/libwmf/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 LICENSE="LGPL-2"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="debug doc expat X"
 
-RDEPEND="app-text/ghostscript-gpl
+RDEPEND="
+	app-text/ghostscript-gpl
 	media-fonts/urw-fonts
 	media-libs/freetype:2=
-	media-libs/libpng:0=
+	media-libs/libpng:=
+	media-libs/libjpeg-turbo
 	sys-libs/zlib:=
 	x11-libs/gdk-pixbuf:2
-	virtual/jpeg:0=
 	expat? ( dev-libs/expat )
 	!expat? ( dev-libs/libxml2:2= )
-	X? ( x11-libs/libX11
+	X? (
+		x11-libs/libX11
 		x11-libs/libXt
-		x11-libs/libXpm )"
-
+		x11-libs/libXpm
+	)
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-DOCS=( "AUTHORS" "BUILDING" "ChangeLog" "CREDITS" "INSTALL" "NEWS" "README" "TODO" )
+DOCS=( AUTHORS BUILDING ChangeLog CREDITS INSTALL NEWS README TODO )
 
 PATCHES=(
-        "${FILESDIR}"/${PN}-0.2.8.4-build.patch
-        "${FILESDIR}"/${PN}-0.2.8.4-libpng-1.5.patch
-        "${FILESDIR}"/${PN}-0.2.8.4-pngfix.patch
+	"${FILESDIR}"/${PN}-0.2.8.4-build.patch
+	"${FILESDIR}"/${PN}-0.2.8.4-libpng-1.5.patch
+	"${FILESDIR}"/${PN}-0.2.8.4-pngfix.patch
 )
 
 src_prepare() {
