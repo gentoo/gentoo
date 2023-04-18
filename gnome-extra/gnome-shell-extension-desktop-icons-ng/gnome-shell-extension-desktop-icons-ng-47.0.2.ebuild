@@ -10,7 +10,7 @@ COMMIT="9c2f2bc688e9c95335c64f1b3a6ad0cc2051d7b4"
 
 DESCRIPTION="Fork from the desktop-icons project, with several enhancements like Drag'n'Drop"
 HOMEPAGE="https://gitlab.com/rastersoft/desktop-icons-ng"
-SRC_URI="https://gitlab.com/rastersoft/desktop-icons-ng/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/rastersoft/desktop-icons-ng/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
