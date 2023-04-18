@@ -239,7 +239,7 @@ src_install() {
 
 	# remove rdma libs (unless USE=rdma)
 	if ! use rdma; then
-		rm "${ED}"/${cudadir}/targets/x86_64-linux/lib/libcufile_rdma.so.* || die
+		rm "${ED}"/${cudadir}/targets/x86_64-linux/lib/libcufile_rdma* || die
 	fi
 
 	# set executable bit on demo_suite binaries
