@@ -14,7 +14,7 @@ SRC_URI="https://github.com/yhirose/cpp-httplib/archive/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/0.11"  # soversion
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="brotli ssl test zlib"
 REQUIRED_USE="test? ( brotli ssl zlib )"
