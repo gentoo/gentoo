@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,7 @@ STATIC_BUILD=${WORKDIR}/${P}_build_static
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
 	"${FILESDIR}"/${P}-FHS.patch
+	"${FILESDIR}"/${P}-gcc13.patch
 )
 
 pkg_setup() {
