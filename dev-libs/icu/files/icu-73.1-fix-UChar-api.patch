@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/904381
+https://unicode-org.atlassian.net/browse/ICU-22356
+https://github.com/unicode-org/icu/pull/2431
+
+From d58ab7c27c2f5ecb83a3fc3de5803dc42f807746 Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Mon, 17 Apr 2023 15:33:18 +0800
+Subject: [PATCH] ICU-22356 Revert ICU-21833 change for ures.h
+
+These usages of UChar are in inline functions for calling C API functions, so they should not be changed to char16_t or the code will fail to compile with `-DUCHAR_TYPE=`.
+--- a/common/unicode/ures.h
++++ b/common/unicode/ures.h
+@@ -812,7 +812,7 @@ inline UnicodeString
+ ures_getUnicodeString(const UResourceBundle *resB, UErrorCode* status) {
+     UnicodeString result;
+     int32_t len = 0;
+-    const char16_t *r = ures_getString(resB, &len, status);
++    const UChar *r = ures_getString(resB, &len, status);
+     if(U_SUCCESS(*status)) {
+         result.setTo(true, r, len);
+     } else {
+@@ -837,7 +837,7 @@ inline UnicodeString
+ ures_getNextUnicodeString(UResourceBundle *resB, const char ** key, UErrorCode* status) {
+     UnicodeString result;
+     int32_t len = 0;
+-    const char16_t* r = ures_getNextString(resB, &len, key, status);
++    const UChar* r = ures_getNextString(resB, &len, key, status);
+     if(U_SUCCESS(*status)) {
+         result.setTo(true, r, len);
+     } else {
+@@ -859,7 +859,7 @@ inline UnicodeString
+ ures_getUnicodeStringByIndex(const UResourceBundle *resB, int32_t indexS, UErrorCode* status) {
+     UnicodeString result;
+     int32_t len = 0;
+-    const char16_t* r = ures_getStringByIndex(resB, indexS, &len, status);
++    const UChar* r = ures_getStringByIndex(resB, indexS, &len, status);
+     if(U_SUCCESS(*status)) {
+         result.setTo(true, r, len);
+     } else {
+@@ -882,7 +882,7 @@ inline UnicodeString
+ ures_getUnicodeStringByKey(const UResourceBundle *resB, const char* key, UErrorCode* status) {
+     UnicodeString result;
+     int32_t len = 0;
+-    const char16_t* r = ures_getStringByKey(resB, key, &len, status);
++    const UChar* r = ures_getStringByKey(resB, key, &len, status);
+     if(U_SUCCESS(*status)) {
+         result.setTo(true, r, len);
+     } else {
+
