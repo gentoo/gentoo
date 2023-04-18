@@ -1,0 +1,39 @@
+From 8af1cfac332f6f7c4e6db40c851dd5ac719236f1 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Mon, 17 Apr 2023 16:01:50 +0200
+Subject: [PATCH] don't stumble over nullptrs if outputs changed during saving
+
+exec() opens a nested eventloop that does event processing and may end
+up processing output changes when e.g. a screen is getting unplugged. as
+part of this our m_configHandler may get reset to null, so make sure the
+pointers are still valid after exec
+
+BUG: 466960
+
+
+(cherry picked from commit 0bfa16bd2b59ac9b2ce8112c06d86e5e29c69654)
+---
+ kcm/kcm.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/kcm/kcm.cpp b/kcm/kcm.cpp
+index f292699c..931509eb 100644
+--- a/kcm/kcm.cpp
++++ b/kcm/kcm.cpp
+@@ -172,6 +172,13 @@ void KCMKScreen::doSave()
+     m_stopUpdatesFromBackend = true;
+     op->exec();
+ 
++    // exec() opens a nested eventloop that may have unset m_configHandler if (e.g.)
++    // outputs changed during saving. https://bugs.kde.org/show_bug.cgi?id=466960
++    if (!m_configHandler || !m_configHandler->config()) {
++        Q_EMIT errorOnSave();
++        return;
++    }
++
+     const auto updateInitialData = [this]() {
+         if (!m_configHandler || !m_configHandler->config()) {
+             return;
+-- 
+GitLab
+
