@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+l0 +vaapi"
 
 RDEPEND=">=media-libs/gmmlib-22.1.7:="
@@ -43,6 +43,7 @@ DOCS=( "README.md" "FAQ.md" )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-22.24.23453-remove-fortify-sources.patch"
+	"${FILESDIR}/${PN}-23.05.25593.18-gcc13.patch"
 )
 
 src_prepare() {

@@ -1,0 +1,237 @@
+From beaff2b7358706badc38743f012b5a6cd7823680 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Franti=C5=A1ek=20Zatloukal?= <fzatlouk@redhat.com>
+Date: Fri, 17 Feb 2023 17:53:57 +0100
+Subject: [PATCH] Include cstdint to fix GCC 13 build
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: František Zatloukal <fzatlouk@redhat.com>
+---
+ shared/offline_compiler/source/ocloc_concat.h         | 3 ++-
+ shared/source/ail/ail_configuration.h                 | 1 +
+ shared/source/compiler_interface/external_functions.h | 1 +
+ shared/source/device_binary_format/ar/ar_encoder.h    | 3 ++-
+ shared/source/os_interface/linux/drm_debug.h          | 3 ++-
+ shared/source/os_interface/linux/drm_neo.h            | 1 +
+ shared/source/os_interface/linux/pci_path.cpp         | 3 ++-
+ shared/source/os_interface/linux/pmt_util.cpp         | 5 +++--
+ shared/source/os_interface/linux/pmt_util.h           | 3 ++-
+ shared/source/os_interface/linux/print.cpp            | 3 ++-
+ shared/source/tbx/tbx_sockets.h                       | 3 ++-
+ shared/source/tbx/tbx_sockets_imp.h                   | 3 ++-
+ 12 files changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/shared/offline_compiler/source/ocloc_concat.h b/shared/offline_compiler/source/ocloc_concat.h
+index c53050b26bf..7a9c9ebdd4e 100644
+--- a/shared/offline_compiler/source/ocloc_concat.h
++++ b/shared/offline_compiler/source/ocloc_concat.h
+@@ -10,6 +10,7 @@
+ #include "shared/source/utilities/arrayref.h"
+ #include "shared/source/utilities/const_stringref.h"
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+@@ -52,4 +53,4 @@ Usage: ocloc concat <fat binary> <fat binary> ... [-out <concatenated fat binary
+     std::vector<std::string> fileNamesToConcat;
+     std::string fatBinaryName = "concat.ar";
+ };
+-} // namespace NEO
+\ No newline at end of file
++} // namespace NEO
+diff --git a/shared/source/ail/ail_configuration.h b/shared/source/ail/ail_configuration.h
+index 95381289d2f..0d8b349b495 100644
+--- a/shared/source/ail/ail_configuration.h
++++ b/shared/source/ail/ail_configuration.h
+@@ -9,6 +9,7 @@
+ 
+ #include "igfxfmid.h"
+ 
++#include <cstdint>
+ #include <string>
+ 
+ /*
+diff --git a/shared/source/compiler_interface/external_functions.h b/shared/source/compiler_interface/external_functions.h
+index 1dbe54296a8..61873b466c8 100644
+--- a/shared/source/compiler_interface/external_functions.h
++++ b/shared/source/compiler_interface/external_functions.h
+@@ -7,6 +7,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ #include <unordered_map>
+ #include <vector>
+diff --git a/shared/source/device_binary_format/ar/ar_encoder.h b/shared/source/device_binary_format/ar/ar_encoder.h
+index f30db2589be..5b3ec9dbb43 100644
+--- a/shared/source/device_binary_format/ar/ar_encoder.h
++++ b/shared/source/device_binary_format/ar/ar_encoder.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2020-2022 Intel Corporation
++ * Copyright (C) 2020-2023 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -11,6 +11,7 @@
+ #include "shared/source/utilities/arrayref.h"
+ #include "shared/source/utilities/const_stringref.h"
+ 
++#include <cstdint>
+ #include <vector>
+ 
+ namespace NEO {
+diff --git a/shared/source/os_interface/linux/drm_debug.h b/shared/source/os_interface/linux/drm_debug.h
+index 8e5180cb665..a86f55f0c14 100644
+--- a/shared/source/os_interface/linux/drm_debug.h
++++ b/shared/source/os_interface/linux/drm_debug.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2022 Intel Corporation
++ * Copyright (C) 2022-2023 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -8,6 +8,7 @@
+ #pragma once
+ 
+ #include <array>
++#include <cstdint>
+ #include <string>
+ #include <utility>
+ 
+diff --git a/shared/source/os_interface/linux/drm_neo.h b/shared/source/os_interface/linux/drm_neo.h
+index fd8ab8e61c8..fd9a2ab726f 100644
+--- a/shared/source/os_interface/linux/drm_neo.h
++++ b/shared/source/os_interface/linux/drm_neo.h
+@@ -18,6 +18,7 @@
+ #include "igfxfmid.h"
+ 
+ #include <array>
++#include <cstdint>
+ #include <limits>
+ #include <memory>
+ #include <mutex>
+diff --git a/shared/source/os_interface/linux/pci_path.cpp b/shared/source/os_interface/linux/pci_path.cpp
+index 04ade097a71..2f7f9800111 100644
+--- a/shared/source/os_interface/linux/pci_path.cpp
++++ b/shared/source/os_interface/linux/pci_path.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2021-2022 Intel Corporation
++ * Copyright (C) 2021-2023 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -9,6 +9,7 @@
+ 
+ #include "shared/source/os_interface/linux/sys_calls.h"
+ 
++#include <cstdint>
+ #include <string_view>
+ #include <unistd.h>
+ 
+diff --git a/shared/source/os_interface/linux/pmt_util.cpp b/shared/source/os_interface/linux/pmt_util.cpp
+index 7b20b671be4..a8004a0ff75 100644
+--- a/shared/source/os_interface/linux/pmt_util.cpp
++++ b/shared/source/os_interface/linux/pmt_util.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2021-2022 Intel Corporation
++ * Copyright (C) 2021-2023 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -14,6 +14,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cstdint>
+ #include <fcntl.h>
+ #include <map>
+ #include <sstream>
+@@ -106,4 +107,4 @@ ssize_t PmtUtil::readTelem(std::string_view telemDir, const std::size_t count, c
+     return bytesRead;
+ }
+ 
+-} // namespace NEO
+\ No newline at end of file
++} // namespace NEO
+diff --git a/shared/source/os_interface/linux/pmt_util.h b/shared/source/os_interface/linux/pmt_util.h
+index 28ecad3f05c..374b4767185 100644
+--- a/shared/source/os_interface/linux/pmt_util.h
++++ b/shared/source/os_interface/linux/pmt_util.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2021-2022 Intel Corporation
++ * Copyright (C) 2021-2023 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -7,6 +7,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <map>
+ #include <poll.h>
+ #include <string>
+diff --git a/shared/source/os_interface/linux/print.cpp b/shared/source/os_interface/linux/print.cpp
+index 9562bad72a9..1cd173560be 100644
+--- a/shared/source/os_interface/linux/print.cpp
++++ b/shared/source/os_interface/linux/print.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2018-2022 Intel Corporation
++ * Copyright (C) 2018-2023 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -7,6 +7,7 @@
+ 
+ #include "shared/source/os_interface/print.h"
+ 
++#include <cstdint>
+ #include <cstdio>
+ #include <iostream>
+ 
+diff --git a/shared/source/tbx/tbx_sockets.h b/shared/source/tbx/tbx_sockets.h
+index 9b7f7863f05..c00b1847bc2 100644
+--- a/shared/source/tbx/tbx_sockets.h
++++ b/shared/source/tbx/tbx_sockets.h
+@@ -1,11 +1,12 @@
+ /*
+- * Copyright (C) 2018-2021 Intel Corporation
++ * Copyright (C) 2018-2023 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+  */
+ 
+ #pragma once
++#include <cstdint>
+ #include <string>
+ 
+ namespace NEO {
+diff --git a/shared/source/tbx/tbx_sockets_imp.h b/shared/source/tbx/tbx_sockets_imp.h
+index 738f26175b3..c8e2ac6f0ff 100644
+--- a/shared/source/tbx/tbx_sockets_imp.h
++++ b/shared/source/tbx/tbx_sockets_imp.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2018-2020 Intel Corporation
++ * Copyright (C) 2018-2023 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -10,6 +10,7 @@
+ 
+ #include "os_socket.h"
+ 
++#include <cstdint>
+ #include <iostream>
+ 
+ namespace NEO {
