@@ -1,0 +1,49 @@
+From 2dd3dbc85f5c3ab789792844e50f7423bdb1d3f9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@gentoo.org>
+Date: Tue, 18 Apr 2023 15:50:52 +0200
+Subject: [PATCH] test: Add missing rebind to allocators
+
+See https://gcc.gnu.org/gcc-13/porting_to.html
+---
+https://github.com/msgpack/msgpack-c/pull/1065
+
+ test/msgpack_cpp11.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/test/msgpack_cpp11.cpp b/test/msgpack_cpp11.cpp
+index 2a856cb8..6b04e5a1 100644
+--- a/test/msgpack_cpp11.cpp
++++ b/test/msgpack_cpp11.cpp
+@@ -252,6 +252,9 @@ struct equal_to : std::equal_to<Key> {
+ template <class Key>
+ struct set_allocator : std::allocator<Key> {
+     using std::allocator<Key>::allocator;
++
++    template<class U>
++    struct rebind { using other = set_allocator<U>; };
+ };
+ 
+ // C++ named requirement Allocator implies that the first template type
+@@ -262,6 +265,9 @@ struct set_allocator : std::allocator<Key> {
+ template <typename KeyValuePair>
+ struct map_allocator_impl : std::allocator<KeyValuePair> {
+     using std::allocator<KeyValuePair>::allocator;
++
++    template<class U>
++    struct rebind { using other = map_allocator_impl<U>; };
+ };
+ 
+ template <class Key, class T>
+@@ -270,6 +276,9 @@ using map_allocator = map_allocator_impl<std::pair<const Key, T>>;
+ template <class T>
+ struct allocator : std::allocator<T> {
+     using std::allocator<T>::allocator;
++
++    template<class U>
++    struct rebind { using other = allocator<U>; };
+ };
+ 
+ } // namespace test
+-- 
+2.40.0
+
