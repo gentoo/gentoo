@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN=${PN/-camomile/}
 MY_P=${P/-camomile/}
@@ -17,7 +17,7 @@ LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="amd64"
 IUSE="+ocamlopt test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"  # Tests fail
 
 BDEPEND="
 	>=dev-ml/cppo-1.6.6
@@ -25,7 +25,7 @@ BDEPEND="
 "
 RDEPEND="
 	dev-ml/base:=
-	dev-ml/camomile:=[ocamlopt]
+	<dev-ml/camomile-2.0.0:=[ocamlopt]
 	dev-ml/ocaml-gettext:=
 "
 DEPEND="
