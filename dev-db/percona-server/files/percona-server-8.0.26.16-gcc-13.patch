@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/895700
+--- a/plugin/group_replication/libmysqlgcs/include/mysql/gcs/gcs_logging.h
++++ b/plugin/group_replication/libmysqlgcs/include/mysql/gcs/gcs_logging.h
+@@ -24,6 +24,7 @@
+ #define GCS_LOGGING_INCLUDED
+ 
+ #include <atomic>
++#include <cstdint>
+ #include <string>
+ 
+ #include "plugin/group_replication/libmysqlgcs/include/mysql/gcs/gcs_types.h"
+--- a/plugin/group_replication/libmysqlgcs/include/mysql/gcs/gcs_types.h
++++ b/plugin/group_replication/libmysqlgcs/include/mysql/gcs/gcs_types.h
+@@ -23,6 +23,7 @@
+ #ifndef GCS_TYPES_INCLUDED
+ #define GCS_TYPES_INCLUDED
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ #include <vector>
+--- a/plugin/x/src/interface/document_id_generator.h
++++ b/plugin/x/src/interface/document_id_generator.h
+@@ -26,6 +26,7 @@
+ #define PLUGIN_X_SRC_INTERFACE_DOCUMENT_ID_GENERATOR_H_
+ 
+ #include <cstdio>
++#include <cstdint>
+ #include <string>
+ 
+ namespace xpl {
+--- a/sql/dd/impl/sdi.h
++++ b/sql/dd/impl/sdi.h
+@@ -23,6 +23,7 @@
+ #ifndef DD__SDI_INCLUDED
+ #define DD__SDI_INCLUDED
+ 
++#include <cstdint>
+ #include <functional>
+ #include "my_compiler.h"
+ #include "sql/dd/sdi_fwd.h"      // RJ_Document
