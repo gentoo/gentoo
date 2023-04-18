@@ -142,7 +142,6 @@ src_configure() {
 		# hostname    - net-tools
 		--enable-install-program="arch,$(usev hostname),$(usev kill)"
 		--enable-no-install-program="groups,$(usev !hostname),$(usev !kill),su,uptime"
-		--enable-largefile
 		$(usex caps '' --disable-libcap)
 		$(use_enable nls)
 		$(use_enable acl)
