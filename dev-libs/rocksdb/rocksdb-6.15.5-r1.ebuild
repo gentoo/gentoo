@@ -26,6 +26,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-6.14.6-gcc13.patch
 	"${FILESDIR}"/${PN}-6.17.3-libatomic.patch
 )
 
