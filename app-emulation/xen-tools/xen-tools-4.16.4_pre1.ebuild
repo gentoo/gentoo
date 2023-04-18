@@ -17,10 +17,10 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 	SEABIOS_VER="1.16.0"
-	EDK2_COMMIT="7b4a99be8a39c12d3a7fc4b8db9f0eab4ac688d5"
-	EDK2_OPENSSL_VERSION="1_1_1j"
+	EDK2_COMMIT="b16284e2a0011489f6e16dfcc6af7623c3cbaf0b"
+	EDK2_OPENSSL_VERSION="1_1_1t"
 	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
-	EDK2_BROTLI_COMMIT="666c3280cc11dc433c303d79a83d4ffbdd12cc8d"
+	EDK2_BROTLI_COMMIT="f4153a09f87cbb9c826d8fc12c74642bb2d879ea"
 	IPXE_COMMIT="3c040ad387099483102708bb1839110bc788cefb"
 
 	XEN_GENTOO_PATCHSET_NUM=2
@@ -268,15 +268,6 @@ src_prepare() {
 		cp -r ../brotli-${EDK2_BROTLI_COMMIT} tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli || die
 		cp -r ../brotli-${EDK2_BROTLI_COMMIT} tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli || die
 		cp tools/firmware/ovmf-makefile tools/firmware/ovmf-dir-remote/Makefile || die
-
-		# Bug #816987
-		pushd tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli > /dev/null
-			eapply "${XEN_GENTOO_PATCHES_DIR}/ovmf/${PN}-4.15.1-brotli-gcc11.patch"
-		popd > /dev/null
-
-		pushd tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli > /dev/null
-			eapply "${XEN_GENTOO_PATCHES_DIR}/ovmf/${PN}-4.15.1-brotli-gcc11.patch"
-		popd > /dev/null
 	fi
 
 	# ipxe
@@ -385,11 +376,11 @@ src_prepare() {
 
 	# Remove -Werror
 	find . -type f \( -name Makefile -o -name "*.mk" \) \
-		 -exec sed -i \
-		 -e 's/-Werror //g' \
-		 -e '/^CFLAGS *+= -Werror$/d' \
-		 -e 's/, "-Werror"//' \
-		 {} + || die
+		-exec sed -i \
+		-e 's/-Werror //g' \
+		-e '/^CFLAGS *+= -Werror$/d' \
+		-e 's/, "-Werror"//' \
+		{} + || die
 
 	default
 }
