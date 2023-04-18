@@ -11,7 +11,7 @@ SRC_URI="https://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+man elogind systemd"
 
 RDEPEND="
