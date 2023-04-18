@@ -20,3 +20,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 DOCS=( AUTHORS README.rst )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.7.0-gcc13.patch
+)
