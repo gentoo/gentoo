@@ -24,6 +24,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.11.2-gcc13.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DRAPIDFUZZ_BUILD_TESTING=$(usex test)
