@@ -8,6 +8,16 @@
  using namespace std;
  typedef function<void(string dut_name, double cableLen1, double cableLen2)> xavna_ui_changed_cb;
  
+--- a/vna_qt/firmwareupdater.H
++++ b/vna_qt/firmwareupdater.H
+@@ -2,6 +2,7 @@
+ #define FIRMWAREUPDATER_H
+ #include <string>
+ #include <functional>
++#include <cstdint>
+ #include <pthread.h>
+ using namespace std;
+ 
 --- a/vna_qt/polarview.C
 +++ b/vna_qt/polarview.C
 @@ -3,6 +3,7 @@
@@ -17,4 +27,14 @@
 +#include <QPainterPath>
  PolarView::PolarView(QWidget *parent) : QWidget(parent)
  {
+ 
+--- a/vna_qt/polarview.H
++++ b/vna_qt/polarview.H
+@@ -5,6 +5,7 @@
+ #include <QImage>
+ #include <vector>
+ #include <complex>
++#include <cstdint>
+ using namespace std;
+ 
  
