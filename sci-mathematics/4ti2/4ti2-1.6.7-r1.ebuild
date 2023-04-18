@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,10 @@ RDEPEND="
 	dev-libs/gmp:0=[cxx(+)]"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3.2-gold.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.2-gold.patch
+	"${FILESDIR}"/${P}-gcc13.patch
+)
 
 src_prepare() {
 	default
