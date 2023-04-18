@@ -280,7 +280,8 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 12 && IUSE+=" ieee-long-double"
 	tc_version_is_at_least 12.2.1_p20221203 ${PV} && IUSE+=" default-znow"
 	tc_version_is_at_least 12.2.1_p20221203 ${PV} && IUSE+=" default-stack-clash-protection"
-	tc_version_is_at_least 13.0.0_pre20221211 ${PV} && IUSE+=" rust"
+	tc_version_is_at_least 13.0.0_pre20221218 ${PV} && IUSE+=" modula2"
+	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust"
 fi
 
 if tc_version_is_at_least 10; then
@@ -1045,6 +1046,7 @@ toolchain_src_configure() {
 	is_f77 && GCC_LANG+=",f77"
 	is_f95 && GCC_LANG+=",f95"
 	is_ada && GCC_LANG+=",ada"
+	is_modula2 && GCC_LANG+=",m2"
 	is_rust && GCC_LANG+=",rust"
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
@@ -2742,6 +2744,11 @@ is_objc() {
 is_objcxx() {
 	gcc-lang-supported 'obj-c++' || return 1
 	_tc_use_if_iuse cxx && _tc_use_if_iuse objc++
+}
+
+is_modula2() {
+	gcc-lang-supported m2 || return 1
+	_tc_use_if_iuse cxx && _tc_use_if_iuse modula2
 }
 
 is_rust() {
