@@ -25,7 +25,7 @@ src_unpack() {
 	cargo_src_unpack
 	mkdir  "${S}"/{vendor,.cargo} || die
 	ln -s "${WORKDIR}/vendor/"* "${S}"/vendor || die
-	cp "${FILESDIR}"/${P}-vendor-config "${S}"/.cargo/config.toml
+	cp "${FILESDIR}"/${P}-vendor-config "${S}"/.cargo/config.toml || die
 }
 
 src_prepare() {
