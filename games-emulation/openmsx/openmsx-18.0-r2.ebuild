@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,10 @@ the following directories: /usr/share/${PN}/systemroms
 or ~/.openMSX/share/systemroms
 "
 
-PATCHES=( "${FILESDIR}/${P}-add-ctime.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-add-ctime.patch"
+	"${FILESDIR}/${P}-gcc13.patch"
+)
 
 src_prepare() {
 	default
