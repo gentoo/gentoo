@@ -2069,6 +2069,16 @@ _distutils-r1_post_python_install() {
 			eerror "https://projects.gentoo.org/python/guide/qawarn.html#stray-top-level-files-in-site-packages"
 			die "Failing install because of stray top-level files in site-packages"
 		fi
+
+		if [[ ! ${DISTUTILS_EXT} && ! ${_DISTUTILS_EXT_WARNED} ]]; then
+			if [[ $(find "${sitedir}" -name "*$(get_modname)" | head -n 1) ]]
+			then
+				eqawarn "Python extension modules (*$(get_modname)) found installed. Please set:"
+				eqawarn "  DISTUTILS_EXT=1"
+				eqawarn "in the ebuild."
+				_DISTUTILS_EXT_WARNED=1
+			fi
+		fi
 	fi
 }
 
