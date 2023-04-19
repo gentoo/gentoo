@@ -17,7 +17,7 @@ IUSE="debug nls threads"
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
-DEPEND="media-libs/libsdl"
+DEPEND="media-libs/libsdl[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 MULTILIB_WRAPPED_HEADERS=(
