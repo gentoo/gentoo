@@ -41,7 +41,7 @@ RDEPEND="${PYTHON_DEPS}
 	~media-gfx/fdm-materials-${FDM_MATERIALS_PV}
 	dev-qt/qtquickcontrols[widgets]
 	$(python_gen_cond_dep '
-			dev-python/importlib_metadata[${PYTHON_USEDEP}]
+			dev-python/importlib-metadata[${PYTHON_USEDEP}]
 			dev-python/keyring[${PYTHON_USEDEP}]
 			dev-python/mypy[${PYTHON_USEDEP}]
 			dev-python/numpy[${PYTHON_USEDEP}]

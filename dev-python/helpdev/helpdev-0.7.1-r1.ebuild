@@ -17,7 +17,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
+		dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	' 3.8 )
 	dev-python/psutil[${PYTHON_USEDEP}]
 "

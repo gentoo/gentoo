@@ -21,7 +21,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 RDEPEND="
 	>=dev-python/packaging-17.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
+		dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	' 3.8 3.9)
 	$(python_gen_cond_dep '
 		<dev-python/tomli-3[${PYTHON_USEDEP}]

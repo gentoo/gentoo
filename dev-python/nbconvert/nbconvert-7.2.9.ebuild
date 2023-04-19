@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/bleach[${PYTHON_USEDEP}]
 	dev-python/defusedxml[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-3.6[${PYTHON_USEDEP}]
+		>=dev-python/importlib-metadata-3.6[${PYTHON_USEDEP}]
 	' 3.8 3.9)
 	>=dev-python/jinja-3.0[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-4.7[${PYTHON_USEDEP}]

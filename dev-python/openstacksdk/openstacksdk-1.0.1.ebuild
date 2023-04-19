@@ -33,7 +33,7 @@ RDEPEND="
 	>=dev-python/netifaces-0.10.4[${PYTHON_USEDEP}]
 	>=dev-python/dogpile-cache-0.6.5[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.7.0[${PYTHON_USEDEP}]
-	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pbr-2.1.0[${PYTHON_USEDEP}]

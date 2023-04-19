@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-python/jinja-3.0[${PYTHON_USEDEP}]
 	>=dev-python/werkzeug-2.2[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-3.6.0[${PYTHON_USEDEP}]
+		>=dev-python/importlib-metadata-3.6.0[${PYTHON_USEDEP}]
 	' 3.8 3.9)
 "
 BDEPEND="
