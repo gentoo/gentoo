@@ -77,6 +77,7 @@ net-im/cawbird
 # See issues reported at bottom of bug #904247 and bug #904263.
 =sys-libs/ncurses-6.4_p20230408
 =sys-libs/ncurses-6.4_p20230415
+=sys-libs/ncurses-6.4_p20230418
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-13)
 # Lack of support for Python 3.11.  The current version is from 2016.
