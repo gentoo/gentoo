@@ -1,0 +1,29 @@
+From 771d68f6dd9d5ecd0a867280aae02fec1fae3fbe Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Thu, 2 Mar 2023 11:55:27 +0000
+Subject: [PATCH] Cleanup dpms object in destructor
+
+(cherry picked from commit 00d8e90f821123f04fcb7ea39724a1f221a76f37)
+---
+ src/libdpms/waylanddpmshelper.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/libdpms/waylanddpmshelper.cpp b/src/libdpms/waylanddpmshelper.cpp
+index 454d5272..e671b1fe 100644
+--- a/src/libdpms/waylanddpmshelper.cpp
++++ b/src/libdpms/waylanddpmshelper.cpp
+@@ -26,6 +26,11 @@ public:
+     {
+     }
+ 
++    ~Dpms()
++    {
++        release();
++    }
++
+     bool isSupported() const
+     {
+         return m_supported;
+-- 
+GitLab
+
