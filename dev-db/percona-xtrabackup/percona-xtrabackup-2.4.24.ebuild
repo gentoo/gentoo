@@ -14,7 +14,7 @@ SRC_URI="https://www.percona.com/downloads/Percona-XtraBackup-2.4/Percona-XtraBa
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	app-arch/lz4:0=
