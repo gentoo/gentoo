@@ -5,11 +5,11 @@ EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop pax-utils rpm multilib-build xdg
+inherit chromium-2 desktop pax-utils unpacker multilib-build xdg
 
 DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
-SRC_URI="https://repo.skype.com/rpm/stable/${PN}_${PV}-1.x86_64.rpm"
+SRC_URI="https://repo.skype.com/deb/pool/main/s/skypeforlinux/${PN}_${PV}_amd64.deb"
 S="${WORKDIR}"
 
 LICENSE="Skype-TOS MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 Boost-1.0 ISC CC-BY-SA-3.0 CC0-1.0 openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
@@ -59,7 +59,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	rpm_src_unpack ${A}
+	unpack_deb ${A}
 }
 
 src_prepare() {
