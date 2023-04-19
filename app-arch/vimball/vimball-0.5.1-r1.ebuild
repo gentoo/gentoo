@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/radhermit/vimball.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 	inherit pypi
 fi
 
