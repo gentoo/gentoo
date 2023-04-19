@@ -12,7 +12,7 @@ HOMEPAGE="http://michael.orlitzky.com/code/djbdns-logparse.xhtml"
 SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.gz"
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
