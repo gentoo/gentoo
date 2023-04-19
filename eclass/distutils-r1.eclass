@@ -60,6 +60,8 @@ esac
 #
 # - adds PYTHON_DEPS to DEPEND (for cross-compilation support), unless
 #   DISTUTILS_OPTIONAL is used
+#
+# - adds debug flag to IUSE that controls assertions (i.e. -DNDEBUG)
 
 # @ECLASS_VARIABLE: DISTUTILS_OPTIONAL
 # @DEFAULT_UNSET
@@ -325,6 +327,7 @@ _distutils_set_globals() {
 
 		if [[ ${DISTUTILS_EXT} ]]; then
 			DEPEND="${PYTHON_DEPS}"
+			IUSE="debug"
 		fi
 	fi
 }
@@ -1765,6 +1768,10 @@ distutils-r1_run_phase() {
 	# Set up build environment, bug #513664.
 	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
 	tc-export AR CC CPP CXX
+
+	if [[ ${DISTUTILS_EXT} ]]; then
+		local -x CPPFLAGS="${CPPFLAGS} $(usex debug '-UNDEBUG' '-DNDEBUG')"
+	fi
 
 	# How to build Python modules in different worlds...
 	local ldopts
