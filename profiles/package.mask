@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-04-19)
+# Last-minute libstdc++ symbol versioning magic causes e.g. mold, cmake
+# to segfault:
+# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108969
+# - https://bugzilla.redhat.com/show_bug.cgi?id=2187768#c4
+# 13.0.1_pre20230419 was GCC 13.1 RC1. RC2 will be made when this is fixed.
+=sys-devel/gcc-13.0.1_pre20230419
+
 # Michał Górny <mgorny@gentoo.org> (2023-04-18)
 # Breaks ABI without SOVERSION bump, effectively preventing
 # xfce4-terminal from starting.
