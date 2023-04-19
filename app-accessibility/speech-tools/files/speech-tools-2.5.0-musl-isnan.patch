@@ -1,0 +1,65 @@
+See https://bugs.openjdk.org/browse/JDK-8178689 for some analysis - we can
+safely replace the deprecated/obsolete isnanf (which musl doesn't immplement)
+with isnan.
+
+https://bugs.gentoo.org/896170
+https://bugs.gentoo.org/829344
+--- a/intonation/tilt/tilt_utils.cc
++++ b/intonation/tilt/tilt_utils.cc
+@@ -133,7 +133,7 @@ float rfc_to_t_tilt(EST_Features &e)
+ {
+     float t_tilt;
+     t_tilt = (rfc_to_a_tilt(e) + rfc_to_d_tilt(e)) / 2;
+-    if (isnanf(t_tilt))
++    if (isnan(t_tilt))
+ 	t_tilt = 0.0;
+     return t_tilt;
+ }
+--- a/sigpr/pda/smooth_pda.cc
++++ b/sigpr/pda/smooth_pda.cc
+@@ -112,7 +112,7 @@ void smooth_portion(EST_Track &c, EST_Features &op)
+ 
+     for (i = 0; i < c.num_frames(); ++i)
+     {   // occasionally NaNs result...
+-	if (isnanf(a[i]))
++	if (isnan(a[i]))
+ 	{
+ 	    c.set_break(i);
+ 	    c.a(i) = 0.0;
+--- a/sigpr/sigpr_frame.cc
++++ b/sigpr/sigpr_frame.cc
+@@ -314,7 +314,7 @@ void lpc2cep(const EST_FVector &lpc, EST_FVector &cep)
+     for (n = 0; n < cep.length(); n++) 
+     {
+ 	// check if NaN -- happens on some frames of silence
+-	if (isnanf(cep[n]) ) cep[n] = 0.0;
++	if (isnan(cep[n]) ) cep[n] = 0.0;
+ 	
+ 	if (cep[n] >  MAX_ABS_CEPS){
+ 	    cerr << "WARNING : cepstral coeff " << n << " was " << 
+--- a/stats/confusion.cc
++++ b/stats/confusion.cc
+@@ -138,7 +138,7 @@ void print_confusion(const EST_FMatrix &a, EST_StrStr_KVL &list,
+ 	cout.precision(3);
+ 	cout.setf(ios::right);
+ //	cout.setf(ios::fixed, ios::floatfield);
+-	if (isnanf(correct(i)))
++	if (isnan(correct(i)))
+ 	    cout << endl;
+ 	else
+ 	    cout << correct(i) << endl;
+--- a/include/EST_math.h
++++ b/include/EST_math.h
+@@ -81,12 +81,6 @@ extern "C" {
+ #define isnanf(X) isnan(X)
+ #endif
+ 
+-/* Linux (and presumably Hurd too as Linux is GNU libc based) */
+-/* Sorry I haven't confirmed this cpp symbol yet              */
+-#if defined(linux)
+-#define isnanf(X) __isnanf(X)
+-#endif
+-
+ /* OS/2 with gcc EMX */
+ #if defined(__EMX__)
+ #define isnanf(X) isnan(X)
