@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2023-04-19)
+# Snapshot matching Proton-8.0-1's vkd3d-proton commit, but reported
+# to be semi-broken. Keeping around anyway but leaving masked until
+# a proper release. Bug #904660.
+=app-emulation/vkd3d-proton-2.8_p20230207
+
 # Sam James <sam@gentoo.org> (2023-04-19)
 # Last-minute libstdc++ symbol versioning magic causes e.g. mold, cmake
 # to segfault:
