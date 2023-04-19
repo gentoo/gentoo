@@ -1,0 +1,11 @@
+diff -ur '--color=auto' Clipboard-0.6.0/CMakeLists.txt Clipboard-0.6.0-new/CMakeLists.txt
+--- Clipboard-0.6.0/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
++++ Clipboard-0.6.0-new/CMakeLists.txt	2023-04-18 13:30:54.985154274 -0500
+@@ -96,7 +96,6 @@
+ endif()
+ 
+ find_package(PkgConfig)
+-pkg_check_modules(WAYLAND_CLIENT wayland-client wayland-protocols)
+ if(NOT NO_WAYLAND AND WAYLAND_CLIENT_FOUND)
+   message(STATUS "Building Clipboard with Wayland support")
+   add_subdirectory(src/clipboardwayland)
