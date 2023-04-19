@@ -9,16 +9,12 @@ DISTUTILS_USE_PEP517=flit
 # as well.
 PYTHON_COMPAT=( pypy3 python3_9 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Read resources from Python packages"
 HOMEPAGE="
 	https://github.com/python/importlib_resources/
 	https://pypi.org/project/importlib-resources/
-"
-SRC_URI="
-	https://github.com/python/importlib_resources/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="Apache-2.0"
