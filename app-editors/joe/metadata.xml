@@ -15,7 +15,7 @@
   user should expect: full use of termcap/terminfo, excellent screen update
   optimizations, simple installation, and all of the UNIX-integration features
   of VI.
-</longdescription> 
+</longdescription>
 <use>
   <flag name="xterm">Enable full xterm clipboard support</flag>
 </use>
