@@ -38,6 +38,7 @@ BDEPEND="python? ( ${PYTHON_DEPS} )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.1-build.patch
 	"${FILESDIR}"/${PN}-2.3.1-paths.patch
+	"${FILESDIR}"/${P}-gcc13.patch
 )
 
 pkg_setup() {

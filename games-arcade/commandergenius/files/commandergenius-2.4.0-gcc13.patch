@@ -1,0 +1,23 @@
+https://gitlab.com/Dringgstein/Commander-Genius/-/commit/f9fb2808acfca598fe6e6963c84fe9afe5bcd89e
+
+From f9fb2808acfca598fe6e6963c84fe9afe5bcd89e Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 28 Mar 2023 10:56:06 +0200
+Subject: [PATCH] build: resolve compile error with gcc-13
+
+GsKit/base/utils/Unicode.h:16:9: error: 'uint32_t' does not name a type
+GsKit/base/utils/Unicode.h:17:27: error: 'UnicodeChar' was not declared in this scope
+GsKit/base/utils/Unicode.h:17:38: error: template argument 1 is invalid
+...
+--- a/GsKit/base/utils/Unicode.h
++++ b/GsKit/base/utils/Unicode.h
+@@ -11,6 +11,7 @@
+ #ifndef __UNICODE_H__
+ #define __UNICODE_H__
+ 
++#include <cstdint>
+ #include <string>
+ 
+ typedef uint32_t UnicodeChar;
+-- 
+GitLab
