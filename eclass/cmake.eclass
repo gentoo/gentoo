@@ -484,17 +484,17 @@ cmake_src_configure() {
 		cat >> "${toolchain_file}" <<- _EOF_ || die
 			set(CMAKE_SYSTEM_NAME "${sysname}")
 		_EOF_
+	fi
 
-		if [ "${SYSROOT:-/}" != "/" ] ; then
-			# When cross-compiling with a sysroot (e.g. with crossdev's emerge wrappers)
-			# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
-			cat >> "${toolchain_file}" <<- _EOF_ || die
-				set(CMAKE_SYSROOT "${ESYSROOT}")
-				set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-				set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-				set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-			_EOF_
-		fi
+	if [[ ${SYSROOT:-/} != / ]] ; then
+		# When building with a sysroot (e.g. with crossdev's emerge wrappers)
+		# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
+		cat >> "${toolchain_file}" <<- _EOF_ || die
+			set(CMAKE_SYSROOT "${ESYSROOT}")
+			set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+			set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+			set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+		_EOF_
 	fi
 
 	if use prefix-guest; then
