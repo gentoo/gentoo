@@ -43,6 +43,8 @@ PATCHES=(
 	"${FILESDIR}"/colobot-0.1.12-sndfile-link.patch
 	# https://github.com/colobot/colobot/pull/1576
 	"${FILESDIR}"/colobot-0.2.0_alpha-gcc13.patch
+	# No -Werror
+	"${FILESDIR}"/colobot-0.2.0_alpha-werror.patch
 )
 
 src_prepare() {
