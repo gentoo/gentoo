@@ -18,7 +18,7 @@ SRC_URI+="
 
 LICENSE="MIT test? ( CC-BY-SA-4.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="examples test"
 
 # Tests fail with network-sandbox, since they need to connect to acoustid.org
