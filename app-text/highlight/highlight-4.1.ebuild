@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua-single qmake-utils toolchain-funcs
+inherit lua-single qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight"
 HOMEPAGE="http://www.andre-simon.de/"
