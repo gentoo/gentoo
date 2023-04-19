@@ -9,4 +9,10 @@
 		<remote-id type="github">coleifer/peewee</remote-id>
 		<remote-id type="pypi">peewee</remote-id>
 	</upstream>
+	<use>
+		<flag name="native-extensions">
+			Compiles native C extension for more complete SQLite3
+			support.
+		</flag>
+	</use>
 </pkgmetadata>
