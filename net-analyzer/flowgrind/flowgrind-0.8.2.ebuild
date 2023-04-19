@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc gsl pcap"
+IUSE="doc gsl pcap"
 
 RDEPEND="dev-libs/xmlrpc-c:=[abyss,curl]
 	sys-apps/util-linux
@@ -21,7 +21,7 @@ BDEPEND="doc? ( app-doc/doxygen )"
 
 src_configure() {
 	econf \
-		$(use_enable debug) \
+		--disable-debug \
 		$(use_with doc doxygen) \
 		$(use_with gsl) \
 		$(use_with pcap)
