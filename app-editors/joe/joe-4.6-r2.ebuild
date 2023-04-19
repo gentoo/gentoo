@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3-tinfo.patch"
 	"${FILESDIR}/${P}-db.patch"
 	"${FILESDIR}/${P}-prototypes.patch"
+	"${FILESDIR}/${P}-c99.patch"
 )
 
 DOCS=( README.md NEWS.md docs/hacking.md docs/man.md )
