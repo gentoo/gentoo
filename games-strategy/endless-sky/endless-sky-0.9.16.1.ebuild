@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.14-dont-compress-man-page.patch
 	"${FILESDIR}"/${PN}-0.9.16.1-respect-cflags.patch
 	"${FILESDIR}"/${PN}-0.9.16.1-test-libs.patch
+	"${FILESDIR}"/${PN}-0.9.16.1-gcc13.patch
 )
 
 src_compile() {
