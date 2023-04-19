@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,6 +41,10 @@ REQUIRED_USE="
 BDEPEND="
 	dev-util/glslang
 	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.10.3-gcc13.patch
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return

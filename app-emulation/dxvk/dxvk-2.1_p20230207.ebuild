@@ -50,6 +50,10 @@ BDEPEND="
 	dev-util/glslang
 	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.10.3-gcc13.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
