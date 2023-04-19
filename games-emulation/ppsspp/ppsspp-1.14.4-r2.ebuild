@@ -43,6 +43,7 @@ BDEPEND="${PYTHON_DEPS}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-CMakeLists-flags.patch
 	"${FILESDIR}"/${PN}-disable-ccache-autodetection.patch
+	"${FILESDIR}"/${P}-gcc13.patch
 )
 
 pkg_setup() {
