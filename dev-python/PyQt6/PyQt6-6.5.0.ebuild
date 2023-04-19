@@ -137,6 +137,7 @@ src_configure() {
 		$(usev !qml --no-qml-plugin)
 
 		$(usev !gles2-only --disabled-feature=PyQt_OpenGL_ES2)
+		$(usev !opengl --disabled-feature=PyQt_OpenGL)
 		$(usev !ssl --disabled-feature=PyQt_SSL)
 	)
 }
