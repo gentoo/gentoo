@@ -45,6 +45,10 @@ RDEPEND="acct-group/dnsdist
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-1.7.3-gcc13.patch
+)
+
 src_configure() {
 	# bug #822855
 	append-lfs-flags
