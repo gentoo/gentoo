@@ -62,6 +62,9 @@ esac
 #   DISTUTILS_OPTIONAL is used
 #
 # - adds debug flag to IUSE that controls assertions (i.e. -DNDEBUG)
+#
+# - calls `build_ext` command if setuptools build backend is used
+#   and there is potential benefit from parallel builds
 
 # @ECLASS_VARIABLE: DISTUTILS_OPTIONAL
 # @DEFAULT_UNSET
@@ -1452,12 +1455,14 @@ distutils-r1_python_compile() {
 				# .pyx is added for Cython
 				#
 				# esetup.py does not respect SYSROOT, so skip it there
-				if [[ -z ${SYSROOT} && 1 -ne ${jobs} && 2 -eq $(
-					find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
-						-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
-						-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
-						head -n 2 | wc -l
-				) ]]; then
+				if [[ -z ${SYSROOT} && ${DISTUTILS_EXT} && 1 -ne ${jobs}
+					&& 2 -eq $(
+						find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
+							-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
+							-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
+							head -n 2 | wc -l
+					)
+				]]; then
 					esetup.py build_ext -j "${jobs}" "${@}"
 				fi
 			else
