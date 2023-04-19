@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">pytest-custom-exit-code</remote-id>
+		<remote-id type="github">yashtodi94/pytest-custom_exit_code</remote-id>
+	</upstream>
+</pkgmetadata>
