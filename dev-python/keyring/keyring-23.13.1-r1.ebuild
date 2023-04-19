@@ -26,7 +26,7 @@ RDEPEND="
 		>=dev-python/importlib_metadata-4.11.4[${PYTHON_USEDEP}]
 	' 3.8 3.9 3.10 3.11)
 	$(python_gen_cond_dep '
-		dev-python/importlib_resources
+		dev-python/importlib-resources
 	' 3.8)
 "
 BDEPEND="
