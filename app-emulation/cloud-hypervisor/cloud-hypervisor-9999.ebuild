@@ -33,6 +33,12 @@ src_configure() {
 	cargo_src_configure --frozen
 }
 
+src_test() {
+	# Integration tests require root
+	# https://github.com/cloud-hypervisor/cloud-hypervisor/issues/5388
+	cargo_src_test --bins
+}
+
 src_install() {
 	cargo_src_install
 	dodoc -r docs
