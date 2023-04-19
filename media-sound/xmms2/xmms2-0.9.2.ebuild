@@ -127,7 +127,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	perl? (	dev-perl/Pod-Parser )
-	python? ( $(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]') )"
+	python? ( $(python_gen_cond_dep '<dev-python/cython-3[${PYTHON_USEDEP}]') )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.1-cpp-client.patch
