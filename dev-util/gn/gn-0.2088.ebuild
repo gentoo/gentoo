@@ -13,7 +13,6 @@ SRC_URI="https://dev.gentoo.org/~sultan/distfiles/dev-util/gn/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="vim-syntax"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -57,8 +56,6 @@ src_install() {
 	dobin out/gn
 	einstalldocs
 
-	if use vim-syntax; then
-		insinto /usr/share/vim/vimfiles
-		doins -r misc/vim/{autoload,ftdetect,ftplugin,syntax}
-	fi
+	insinto /usr/share/vim/vimfiles
+	doins -r misc/vim/{autoload,ftdetect,ftplugin,syntax}
 }
