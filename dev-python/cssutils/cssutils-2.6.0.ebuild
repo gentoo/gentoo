@@ -26,7 +26,7 @@ BDEPEND="
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/importlib_resources[${PYTHON_USEDEP}]
+			dev-python/importlib-resources[${PYTHON_USEDEP}]
 		' 3.8)
 	)
 "
