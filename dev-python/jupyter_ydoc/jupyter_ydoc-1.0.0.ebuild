@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/y-py-0.6.0[${PYTHON_USEDEP}]
 	<dev-python/y-py-0.7.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-4.8.3[${PYTHON_USEDEP}]
+		>=dev-python/importlib-metadata-4.8.3[${PYTHON_USEDEP}]
 	' 3.9)
 "
 BDEPEND="

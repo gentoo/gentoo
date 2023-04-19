@@ -24,7 +24,7 @@ IUSE="doc"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
+		dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	' 3.9)
 "
 BDEPEND="

@@ -20,7 +20,7 @@ RDEPEND="
 	dev-python/entrypoints[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-1.1.2[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-4.8.3[${PYTHON_USEDEP}]
+		>=dev-python/importlib-metadata-4.8.3[${PYTHON_USEDEP}]
 	' 3.9)
 "
 

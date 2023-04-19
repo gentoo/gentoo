@@ -37,7 +37,7 @@ RDEPEND="
 	dev-python/sphinxcontrib-qthelp[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-4.4[${PYTHON_USEDEP}]
+		>=dev-python/importlib-metadata-4.4[${PYTHON_USEDEP}]
 	' python3_{8,9} pypy3)
 	latex? (
 		dev-texlive/texlive-latexextra
