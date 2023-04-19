@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=app-portage/gentoopm-0.5.0[${PYTHON_USEDEP}]
