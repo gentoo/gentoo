@@ -20,6 +20,12 @@ SRC_URI="
 	https://github.com/daid/SeriousProton/archive/EE-${PV}.tar.gz -> SeriousProton-${PV}.tar.gz
 	https://github.com/BinomialLLC/basis_universal/archive/refs/tags/v${MY_BU_VER}.tar.gz -> basis_universal_${MY_BU_VER}.tar.gz
 	https://github.com/zeux/meshoptimizer/archive/refs/tags/v${MY_MO_VER}.tar.gz -> meshoptimizer-${MY_MO_VER}.tar.gz
+	https://github.com/Flowdalic/SeriousProton/commit/dc9dccf6c802b9c55ac4eccad424d2b1af9f4b93.patch ->
+		SeriousProton-2022.10.28-add-missing-cstdint-include.patch
+	https://github.com/daid/SeriousProton/commit/3bb7f1cfbd91a4520ff23af7d761e08b5ca7cf88.patch ->
+		SeriousProton-2022.10.28-lua-fix-underlinking.patch
+	https://github.com/daid/EmptyEpsilon/commit/5d7e7bba4daadeeb05897349d518a8d9568331cc.patch ->
+		EmptyEpsilon-2022.10.28-fix-underliking-stdcxx.patch
 "
 
 # EmptyEpsilon is mostly licensed under GPL, however the art ressources
@@ -40,6 +46,8 @@ S="${WORKDIR}/EmptyEpsilon-EE-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-cmake-meshoptimizer.patch"
+	# https://github.com/daid/EmptyEpsilon/pull/1969
+	"${DISTDIR}/EmptyEpsilon-2022.10.28-fix-underliking-stdcxx.patch"
 )
 
 pkg_pretend() {
@@ -72,6 +80,10 @@ src_prepare() {
 
 	local serious_proton_patches=(
 		"${FILESDIR}/SeriousProton-cmake.patch"
+		# https://github.com/daid/SeriousProton/pull/236
+		"${DISTDIR}/SeriousProton-2022.10.28-add-missing-cstdint-include.patch"
+		# https://github.com/daid/SeriousProton/pull/237
+		"${DISTDIR}/SeriousProton-2022.10.28-lua-fix-underlinking.patch"
 	)
 	eapply --directory="${WORKDIR}/SeriousProton-EE-${PV}" \
 		   "${serious_proton_patches[@]}"
