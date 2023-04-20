@@ -13,7 +13,7 @@ SRC_URI="https://github.com/yhirose/cpp-httplib/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/0.11"  # soversion
+SLOT="0/$(ver_cut 1-2)"  # soversion
 KEYWORDS="amd64 ~x86"
 
 IUSE="brotli ssl test zlib"
