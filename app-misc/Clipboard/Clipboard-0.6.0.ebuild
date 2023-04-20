@@ -28,9 +28,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	if ! use X; then
-		eapply "${FILESDIR}/${P}-disable-x11.patch"
-	elif ! use wayland; then
+	if ! use wayland; then
 		eapply "${FILESDIR}/${P}-disable-wayland.patch"
 	fi
 
@@ -44,6 +42,7 @@ src_configure() {
 	local mycmakeargs=(
 	"-DCMAKE_INSTALL_LIBDIR=$(get_libdir)"
 	"-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=$(usex lto TRUE FALSE)"
+	"-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex X OFF ON)"
 	)
 	cmake_src_configure
 }
