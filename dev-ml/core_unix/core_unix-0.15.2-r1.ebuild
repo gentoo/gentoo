@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit dune
+inherit dune toolchain-funcs
 
 DESCRIPTION="Unix-specific portions of Core"
 HOMEPAGE="https://github.com/janestreet/core_unix"
@@ -25,3 +25,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+src_prepare() {
+	sed -i \
+		-e "s:gcc:$(tc-getCC):" \
+		unix_pseudo_terminal/src/discover.sh \
+		|| die
+
+	default
+}
