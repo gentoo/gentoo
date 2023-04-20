@@ -26,6 +26,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+
 src_prepare() {
 	sed -i \
 		-e "s:gcc:$(tc-getCC):" \
