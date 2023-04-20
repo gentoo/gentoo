@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mjansson/mdns/archive/refs/tags/${PV}.tar.gz -> ${P}
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~loong ~x86"
 
 PATCHES=(
 	"${FILESDIR}/${P}-timeval.patch"
