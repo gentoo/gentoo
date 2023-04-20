@@ -17,11 +17,15 @@ IUSE="+X wayland lto debug"
 REQUIRED_USE=" || ( X wayland )"
 
 RDEPEND="X? ( x11-libs/libX11 )
-		wayland? ( dev-libs/wayland-protocols
-					dev-libs/wayland
-				)
+		wayland? (
+			dev-libs/wayland-protocols
+			dev-libs/wayland
+		)
 "
-PATCHES=( "${FILESDIR}/${P}-libdestination-and-disable-git-patch.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-libdestination-and-disable-git-patch.patch"
+	"${FILESDIR}/${P}-disable-lto.patch"
+)
 
 src_prepare() {
 	if ! use X; then
@@ -30,8 +34,8 @@ src_prepare() {
 		eapply "${FILESDIR}/${P}-disable-wayland.patch"
 	fi
 
-	if ! use lto; then
-		eapply "${FILESDIR}/${P}-disable-lto.patch"
+	if ! use debug; then
+		eapply "${FILESDIR}/${P}-disable-debug.patch"
 	fi
 	cmake_src_prepare
 }
@@ -39,13 +43,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 	"-DCMAKE_INSTALL_LIBDIR=$(get_libdir)"
+	"-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=$(usex lto TRUE FALSE)"
 	)
-	if use debug; then
-		CMAKE_BUILD_TYPE="Debug"
-	else
-		CFLAGS+=" -DNDEBUG"
-		CXXFLAGS+=" -DNDEBUG"
-	fi
 	cmake_src_configure
 }
 

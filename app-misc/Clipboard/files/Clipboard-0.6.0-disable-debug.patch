@@ -1,0 +1,18 @@
+diff -ur '--color=auto' Clipboard-0.6.0/src/gui/include/all/clipboard/logging.hpp Clipboard-0.6.0-new/src/gui/include/all/clipboard/logging.hpp
+--- Clipboard-0.6.0/src/gui/include/all/clipboard/logging.hpp	2023-04-08 12:34:14.000000000 -0500
++++ Clipboard-0.6.0-new/src/gui/include/all/clipboard/logging.hpp	2023-04-19 23:01:23.069641770 -0500
+@@ -17,7 +17,6 @@
+ #include <iostream>
+ #include <streambuf>
+ 
+-#if defined(NDEBUG)
+ class NullBuffer : public std::streambuf {
+ public:
+     int overflow(int c) override { return c; }
+@@ -26,6 +25,3 @@
+ static NullBuffer nullBuffer;
+ static std::ostream nullStream(&nullBuffer);
+ static std::ostream& debugStream = nullStream;
+-#else
+-static std::ostream& debugStream = std::cerr;
+-#endif
