@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P/_/-}"
 
 LICENSE="mac"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="cpu_flags_x86_mmx static-libs"
 
 BDEPEND="cpu_flags_x86_mmx? ( dev-lang/yasm )"
