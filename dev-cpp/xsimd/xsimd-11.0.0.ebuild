@@ -21,6 +21,7 @@ BDEPEND="
 		app-doc/doxygen
 		dev-python/breathe
 		dev-python/sphinx
+		dev-python/sphinx-rtd-theme
 	)
 	test? ( dev-cpp/doctest )"
 
