@@ -1,16 +1,17 @@
 #!/bin/bash
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-# apply exlass globals to test version parsing
-TOOLCHAIN_GCC_PV=7.3.0
+# apply eclass globals to test version parsing
+TOOLCHAIN_GCC_PV=11.3.0
 PR=r0
 
 source tests-common.sh || exit
 
-inherit toolchain
+EAPI=6 inherit eapi7-ver
+EAPI=7 inherit toolchain
 
 # Ignore actually running version of gcc and fake new version
 # to force downgrade test on all conditions below.
@@ -120,12 +121,12 @@ test_tc_version_is_at_least() {
 }
 
 #                           want                mine expect
-test_tc_version_is_at_least 8                   ''   1
-test_tc_version_is_at_least 8.0                 ''   1
-test_tc_version_is_at_least 7                   ''   0
-test_tc_version_is_at_least 7.0                 ''   0
+test_tc_version_is_at_least 12                  ''   1
+test_tc_version_is_at_least 11.4                ''   1
+test_tc_version_is_at_least 10                  ''   0
+test_tc_version_is_at_least 10                  ''   0
 test_tc_version_is_at_least ${TOOLCHAIN_GCC_PV} ''   0
-test_tc_version_is_at_least 5.0                 6.0  0
+test_tc_version_is_at_least 10                  11   0
 
 test_tc_version_is_between() {
 	local exp msg ret=0 lo hi res
@@ -149,11 +150,11 @@ test_tc_version_is_between() {
 #                          lo                  hi                  expect
 test_tc_version_is_between 1                   0                   1
 test_tc_version_is_between 1                   2                   1
-test_tc_version_is_between 7                   8                   0
-test_tc_version_is_between ${TOOLCHAIN_GCC_PV} 8                   0
+test_tc_version_is_between 11                  12                  0
+test_tc_version_is_between ${TOOLCHAIN_GCC_PV} 12                  0
 test_tc_version_is_between ${TOOLCHAIN_GCC_PV} ${TOOLCHAIN_GCC_PV} 1
-test_tc_version_is_between 7                   ${TOOLCHAIN_GCC_PV} 1
-test_tc_version_is_between 8                   9                   1
+test_tc_version_is_between 10                  ${TOOLCHAIN_GCC_PV} 1
+test_tc_version_is_between 12                  13                  1
 
 # eclass has a few critical global variables worth not breaking
 test_var_assert() {
@@ -173,14 +174,14 @@ test_var_assert() {
 
 # TODO: convert these globals to helpers to ease testing against multiple
 # ${TOOLCHAIN_GCC_PV} vaues.
-test_var_assert GCC_PV          7.3.0
-test_var_assert GCC_PVR         7.3.0
-test_var_assert GCC_RELEASE_VER 7.3.0
-test_var_assert GCC_BRANCH_VER  7.3
-test_var_assert GCCMAJOR        7
+test_var_assert GCC_PV          11.3.0
+test_var_assert GCC_PVR         11.3.0
+test_var_assert GCC_RELEASE_VER 11.3.0
+test_var_assert GCC_BRANCH_VER  11.3
+test_var_assert GCCMAJOR        11
 test_var_assert GCCMINOR        3
 test_var_assert GCCMICRO        0
-test_var_assert GCC_CONFIG_VER  7.3.0
+test_var_assert GCC_CONFIG_VER  11.3.0
 test_var_assert PREFIX          /usr
 
 texit
