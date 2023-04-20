@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,7 @@ PATCHES=(
 	# http://sourceforge.net/tracker/index.php?func=detail&aid=1872801&group_id=87941&atid=584895
 	"${FILESDIR}/${P}-uninitialized.patch"
 	"${FILESDIR}/${P}-prototypes.patch"
+	"${FILESDIR}/${P}-implicit-int.patch"
 )
 
 src_prepare() {
