@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="base-scope debug examples fortran hdf5 legacy mpi scoping szip test tools"
 
 RDEPEND="
-	hdf5? ( <sci-libs/hdf5-1.14.0:=[mpi=,szip=] )
+	hdf5? ( sci-libs/hdf5:=[mpi=,szip=] )
 	tools? (
 		dev-lang/tcl:=
 		dev-lang/tk:=
