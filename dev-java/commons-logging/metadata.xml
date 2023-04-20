@@ -11,12 +11,6 @@
 		<remote-id type="github">apache/commons-logging</remote-id>
 	</upstream>
 	<use>
-		<flag name="avalon-framework">Add optional support for avalon-framework</flag>
-		<flag name="avalon-logkit">Add optional support for avalon-logkit</flag>
 		<flag name="log4j">Add optional support for log4j</flag>
-		<flag name="servletapi">Add optional support for servletapi</flag>
 	</use>
-	<longdescription>
-		Apache Commons Logging is a thin adapter allowing configurable bridging to other, well known logging systems.
-	</longdescription>
 </pkgmetadata>
