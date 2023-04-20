@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.9-static_libgfortran.patch
 	"${FILESDIR}"/${PN}-1.12.2-no-strip-symbols.patch
+	"${FILESDIR}"/${PN}-1.14.0-fix-include-path.patch
 )
 
 pkg_setup() {
