@@ -1,0 +1,25 @@
+From 9be98b0c4b343abb24e6a2a598ba0084c2d65337 Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Thu, 20 Apr 2023 07:22:07 +0000
+Subject: [PATCH] core: Fix endless loop in NS lookup
+
+Fixes #228
+---
+ src/librygel-core/rygel-xml-utils.vala | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/librygel-core/rygel-xml-utils.vala b/src/librygel-core/rygel-xml-utils.vala
+index f347a271..aedf0545 100644
+--- a/src/librygel-core/rygel-xml-utils.vala
++++ b/src/librygel-core/rygel-xml-utils.vala
+@@ -40,6 +40,7 @@ public class Rygel.XMLUtils {
+             if (ns->prefix == prefix) {
+                 return ns;
+             }
++            ns = ns->next;
+         }
+ 
+         assert_not_reached ();
+-- 
+GitLab
+
