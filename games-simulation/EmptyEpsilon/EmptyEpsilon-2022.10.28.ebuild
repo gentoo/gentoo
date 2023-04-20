@@ -26,6 +26,8 @@ SRC_URI="
 		SeriousProton-2022.10.28-lua-fix-underlinking.patch
 	https://github.com/daid/EmptyEpsilon/commit/5d7e7bba4daadeeb05897349d518a8d9568331cc.patch ->
 		EmptyEpsilon-2022.10.28-fix-underliking-stdcxx.patch
+	https://github.com/void-linux/void-packages/raw/bfb212a0ca0f9dda6f34f837e723156f46813d4d/srcpkgs/EmptyEpsilon/patches/musl_and_ppc.patch ->
+		EmptyEpsilon-2022.10.28-musl-and-ppc.patch
 "
 
 # EmptyEpsilon is mostly licensed under GPL, however the art ressources
@@ -87,6 +89,9 @@ src_prepare() {
 	)
 	eapply --directory="${WORKDIR}/SeriousProton-EE-${PV}" \
 		   "${serious_proton_patches[@]}"
+
+	# https://bugs.gentoo.org/895994
+	eapply -p2 "${DISTDIR}/EmptyEpsilon-2022.10.28-musl-and-ppc.patch"
 }
 
 src_configure() {
