@@ -96,7 +96,7 @@ RDEPEND="
 	x11-libs/pango
 	${BDEPEND}
 	!hdx? ( !media-plugins/hdx-realtime-media-engine )
-	usb? ( sys-apps/systemd-utils )
+	usb? ( virtual/libudev )
 "
 DEPENDS=""
 
