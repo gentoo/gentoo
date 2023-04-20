@@ -9,6 +9,9 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <use>
+    <flag name="lto">Enable Link Time Optimization (LTO)</flag>
+  </use>
   <upstream>
     <remote-id type="github">Slackadays/Clipboard</remote-id>
     <doc lang="en">https://github.com/Slackadays/Clipboard/blob/main/README.md</doc>
