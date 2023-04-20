@@ -1,3 +1,5 @@
+https://src.fedoraproject.org/rpms/libmcrypt/blob/rawhide/f/libmcrypt-c99.patch
+
 Add return and argument types to fake prototypes in mcrypt_symb.c.
 This avoids build failures with future compilers that do not support
 implicit function declarations.
