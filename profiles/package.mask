@@ -441,12 +441,6 @@ dev-ruby/tidy-ext
 # Removal on 2023-04-18. Bug #713784, #895686.
 dev-ruby/sigar
 
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Apache NIH make, long abandoned upstream, forked reboot went nowhere.
-# Last release over 2 years ago, fails with modern C and no revdeps in
-# tree. Removal on 2023-04-18. Bug #880401.
-dev-util/dmake
-
 # Sam James <sam@gentoo.org> (2023-03-16)
 # Breaks building C++ consumers. See bug #901211 and bug #901035.
 # Please upgrade to glib-2.76.0-r1.
