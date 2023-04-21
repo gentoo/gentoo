@@ -23,11 +23,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+ELISP_REMOVE="${PN}-pkg.el"
 SITEFILE="50${PN}-gentoo.el"
-
-PATCHES=(
-	"${FILESDIR}"/jinx-0.6-try-load-path.patch
-)
 
 src_compile() {
 	edo $(tc-getCC) -fPIC -Wall -Wextra -shared \
