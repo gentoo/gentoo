@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-fix-MPPE-sstpc.patch
 	eapply "${FILESDIR}"/${P}-fix-clang-nested-functions.patch
 	eapply "${FILESDIR}"/${P}-fix-openssl-sysroot-clang.patch
+	eapply "${FILESDIR}"/${P}-pppol2tp-ipv6.patch
 
 	#IPX Support is removed in kernel >= 5.15
 	sed -i 's/-DIPX_CHANGE //' pppd/Makefile.linux || die

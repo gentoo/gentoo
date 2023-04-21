@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/904740
+https://github.com/ppp-project/ppp/pull/319
+
+From 44a70d6f9eb6d1843868da1d45de382134a03630 Mon Sep 17 00:00:00 2001
+From: str8fast <52187302+str8fast@users.noreply.github.com>
+Date: Thu, 28 Oct 2021 14:55:56 +0000
+Subject: [PATCH] pppol2tp.c add '#ifdef INET6' for optional ipv6
+
+Without it, l2tp daemon can't launch ppp, cuz undefined symbol ipv6_up_notifier.
+---
+ pppd/plugins/pppol2tp/pppol2tp.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pppd/plugins/pppol2tp/pppol2tp.c b/pppd/plugins/pppol2tp/pppol2tp.c
+index ed2d7c79..c9902afe 100644
+--- a/pppd/plugins/pppol2tp/pppol2tp.c
++++ b/pppd/plugins/pppol2tp/pppol2tp.c
+@@ -509,8 +509,10 @@ void plugin_init(void)
+ 	 */
+ 	add_notifier(&ip_up_notifier, pppol2tp_ip_up, NULL);
+ 	add_notifier(&ip_down_notifier, pppol2tp_ip_down, NULL);
++#ifdef INET6
+ 	add_notifier(&ipv6_up_notifier, pppol2tp_ip_up, NULL);
+ 	add_notifier(&ipv6_down_notifier, pppol2tp_ip_down, NULL);
++#endif
+ }
+ 
+ struct channel pppol2tp_channel = {
