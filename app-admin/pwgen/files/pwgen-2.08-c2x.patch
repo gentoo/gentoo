@@ -1,0 +1,62 @@
+replace antiquated C syntax constructs for function declarations
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- pwgen-2.08/randnum.c	2017-08-07 06:36:54.000000000 +0200
++++ pwgen-2.08/randnum.c	2023-04-20 14:46:50.107904416 +0200
+@@ -43,8 +43,7 @@
+  * Generate a random number n, where 0 <= n < max_num, using
+  * /dev/urandom if possible.
+  */
+-int pw_random_number(max_num)
+-	int max_num;
++int pw_random_number(int max_num)
+ {
+ 	unsigned int rand_num;
+ 	int i, fd = get_random_fd();
+--- pwgen-2.08/sha1.c	2007-07-04 23:39:35.000000000 +0200
++++ pwgen-2.08/sha1.c	2023-04-20 14:48:25.048635027 +0200
+@@ -42,8 +42,7 @@
+     (b)[(i) + 3] = (uint8) ( (n)       );       \
+ }
+ 
+-void sha1_starts(ctx)
+-	sha1_context *ctx;
++void sha1_starts(sha1_context *ctx)
+ {
+     ctx->total[0] = 0;
+     ctx->total[1] = 0;
+@@ -55,9 +54,7 @@
+     ctx->state[4] = 0xC3D2E1F0;
+ }
+ 
+-void sha1_process(ctx, data)
+-	sha1_context *ctx;
+-	uint8 data[64];
++void sha1_process(sha1_context *ctx, uint8 data[64])
+ {
+     uint32 temp, W[16], A, B, C, D, E;
+ 
+@@ -213,10 +210,7 @@
+     ctx->state[4] += E;
+ }
+ 
+-void sha1_update(ctx, input, length )
+-	sha1_context *ctx;
+-	uint8 *input;
+-	uint32 length;
++void sha1_update(sha1_context *ctx, uint8 *input, uint32 length)
+ {
+     uint32 left, fill;
+ 
+@@ -263,9 +257,7 @@
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+ };
+ 
+-void sha1_finish( ctx, digest )
+-	sha1_context *ctx;
+-	uint8 digest[20];
++void sha1_finish(sha1_context *ctx, uint8 digest[20])
+ {
+     uint32 last, padn;
+     uint32 high, low;
