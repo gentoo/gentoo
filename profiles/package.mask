@@ -417,12 +417,6 @@ dev-perl/PerlMol
 # Removal on 2023-04-18. Bug #683166, #814658, #834966, #898262.
 sci-libs/xdrfile
 
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Last release over 7.5 years ago, repo link broken and redirects to
-# homepage, build system is a mess, fails with modern C.
-# Removal on 2023-04-18. Bug #802729, #862414, #876993, #880577.
-x11-wm/subtle
-
 # Sam James <sam@gentoo.org> (2023-03-16)
 # Breaks building C++ consumers. See bug #901211 and bug #901035.
 # Please upgrade to glib-2.76.0-r1.
