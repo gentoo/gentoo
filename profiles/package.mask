@@ -447,12 +447,6 @@ dev-ruby/sigar
 # tree. Removal on 2023-04-18. Bug #880401.
 dev-util/dmake
 
-# Hans de Graaff <graaff@gentoo.org> (2023-03-19)
-# ruby27-only package without reverse dependencies. No recent activity
-# upstream and last supported ruby version is 2.5. Masked for removal on
-# 2023-04-19.
-dev-ruby/bit-struct
-
 # Sam James <sam@gentoo.org> (2023-03-16)
 # Breaks building C++ consumers. See bug #901211 and bug #901035.
 # Please upgrade to glib-2.76.0-r1.
