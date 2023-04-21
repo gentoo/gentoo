@@ -411,12 +411,6 @@ dev-perl/PerlMol
 # cucumber dependencies. Please downgrade cucumber-core.
 =dev-util/cucumber-core-11.1.0
 
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Upstream disappeared, last release over 8.5 years ago, unmaintained,
-# laundry list of QA issues, fails with modern C, no revdeps remaining.
-# Removal on 2023-04-18. Bug #683166, #814658, #834966, #898262.
-sci-libs/xdrfile
-
 # Sam James <sam@gentoo.org> (2023-03-16)
 # Breaks building C++ consumers. See bug #901211 and bug #901035.
 # Please upgrade to glib-2.76.0-r1.
