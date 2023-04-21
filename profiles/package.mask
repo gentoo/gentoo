@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2023-04-21)
+# Does not support python 3.11, uses deprecated dev-python/future,
+# inactive upstream (last commit in 2019).
+# Removal on 2023-05-21. Bugs #897102, #888293
+net-irc/quasselgrep
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-21)
 # Unused java libraries. Removal on 2023-05-22
 dev-java/avalon-framework
