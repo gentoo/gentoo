@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	app-misc/c_rehash
 	dev-libs/openssl:=
 	net-misc/curl:=
 	>=net-misc/sysrepo-2.2.60
