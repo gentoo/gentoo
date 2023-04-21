@@ -423,12 +423,6 @@ sci-libs/xdrfile
 # Removal on 2023-04-18. Bug #802729, #862414, #876993, #880577.
 x11-wm/subtle
 
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Last release over 5 years ago, fails with modern C, no revdeps in
-# tree.
-# Removal on 2023-04-18. Bug #884407.
-dev-ruby/ruby-xslt
-
 # Sam James <sam@gentoo.org> (2023-03-16)
 # Breaks building C++ consumers. See bug #901211 and bug #901035.
 # Please upgrade to glib-2.76.0-r1.
