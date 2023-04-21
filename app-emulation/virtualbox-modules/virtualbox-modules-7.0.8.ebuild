@@ -29,9 +29,10 @@ CONFIG_CHECK="~!SPINLOCK JUMP_LABEL"
 # Check if the build directory exists and all directories above it have sane permissions
 virtualbox_check_kv_dir() {
 	if [[ ! -d ${KV_DIR} ]]; then
+		[[ -z $a ]] && return 1
 		elog "Directory not found: ${KV_DIR}"
 		local a=$(dirname "${KV_DIR}")
-		while [[ -n $a && $a != '/' ]]; do
+		while [[ -n $a && $a != '/' && $1 != '.' ]]; do
 			if [[ -d $a && ( ! -r $a || ! -x $a ) ]]; then
 				elog "Please check permissions of $a"
 			fi
