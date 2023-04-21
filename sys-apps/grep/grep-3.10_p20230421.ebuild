@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gnu.org/software/grep/"
 if [[ ${PV} == *_p* ]] ; then
 	# Subscribe to the 'platform-testers' ML to find these.
 	# Useful to test on our especially more niche arches and report issues upstream.
-	MY_COMMIT="7-e498"
+	MY_COMMIT="12-0f2c"
 	MY_P=${PN}-$(ver_cut 1-2).${MY_COMMIT}
 	SRC_URI="https://meyering.net/${PN}/${MY_P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://meyering.net/${PN}/${MY_P}.tar.xz.sig )"
