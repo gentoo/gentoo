@@ -4,19 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Easily create mock objects on D-Bus for software testing"
 HOMEPAGE="
 	https://github.com/martinpitt/python-dbusmock/
 	https://pypi.org/project/python-dbusmock/
-"
-SRC_URI="
-	https://github.com/martinpitt/python-dbusmock/releases/download/${PV}/${P}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="LGPL-3+"
