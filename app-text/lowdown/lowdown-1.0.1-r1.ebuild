@@ -55,7 +55,6 @@ src_configure() {
 		LDFLAGS="${LDFLAGS}" \
 		CPPFLAGS="${CPPFLAGS}" \
 		LIBDIR="/usr/$(get_libdir)" \
-		LDLIBS="-lbsd" \
 		|| die "./configure failed"
 }
 
