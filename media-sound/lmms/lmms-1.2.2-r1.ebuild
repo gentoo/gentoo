@@ -5,7 +5,7 @@ EAPI=7
 
 # The order is important here! Both, cmake and xdg define src_prepare.
 # We need the one from cmake
-inherit bash-completion-r1 xdg cmake
+inherit xdg cmake
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/LMMS/lmms.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${P/_/-}.tar.xz -> ${P}.tar.xz"
+	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${PN}_${PV/_/-}.tar.xz -> ${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${P/_/-}"
 fi
@@ -51,8 +51,8 @@ COMMON_DEPEND="
 	soundio? ( media-libs/libsoundio )
 	stk? ( media-libs/stk )
 	vst? (
-		virtual/wine
 		dev-qt/qtx11extras:5
+		virtual/wine
 	)
 "
 DEPEND="${COMMON_DEPEND}"
@@ -69,9 +69,14 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( README.md doc/AUTHORS )
 
+S="${WORKDIR}/${PN}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2.2-no_compress_man.patch" #733284
+)
+
 src_configure() {
 	local mycmakeargs+=(
-		-DBASHCOMP_PKG_PATH="$(get_bashcompdir)"
 		-DUSE_WERROR=FALSE
 		-DWANT_CAPS=FALSE
 		-DWANT_TAP=FALSE
@@ -93,4 +98,16 @@ src_configure() {
 		-DWANT_SF2=$(usex fluidsynth)
 	)
 	cmake_src_configure
+}
+
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
 }
