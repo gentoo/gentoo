@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-22)
+# Unused acct-group. Removal on 2023-05-22
+# The server was removed on 2021-08-24 with commit
+# 7a1e8a90fa8a09a84741dc8ef5f774d92ae8433c
+acct-group/resin
+
 # Michał Górny <mgorny@gentoo.org> (2023-04-23)
 # Upstream changed config_settings interface breaking compatibility
 # with our invocations.  Bug #904677.
