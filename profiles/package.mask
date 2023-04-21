@@ -482,12 +482,6 @@ net-analyzer/traceroute-nanog
 # Removal on 2023-04-17. Bug #871711.
 media-plugins/vdr-remotetimers
 
-# David Seifert <soap@gentoo.org> (2023-03-18)
-# Upstream disappeared, release is over 14 years old, only Gentoo still
-# carries this, breaks with modern C under Clang, no revdeps.
-# Removal on 2023-04-17. Bug #862438.
-sci-chemistry/prekin
-
 # Sam James <sam@gentoo.org> (2023-03-16)
 # Breaks building C++ consumers. See bug #901211 and bug #901035.
 # Please upgrade to glib-2.76.0-r1.
