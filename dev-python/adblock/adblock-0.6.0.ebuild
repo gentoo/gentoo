@@ -68,6 +68,7 @@ CRATES="
 	windows_i686_msvc-0.36.1
 	windows_x86_64_gnu-0.36.1
 	windows_x86_64_msvc-0.36.1"
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{9..11} )
 inherit cargo distutils-r1
