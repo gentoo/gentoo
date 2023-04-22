@@ -13,6 +13,7 @@ CHROMIUM_LANGS="
 	bg
 	bn
 	ca
+	ca-valencia
 	cs
 	da
 	de
