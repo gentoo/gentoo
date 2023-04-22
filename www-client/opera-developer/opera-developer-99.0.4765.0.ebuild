@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 CHROMIUM_LANGS="
 	bg bn ca cs da de el en-GB en-US es-419 es fil fi fr hi hr hu id
 	it ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
