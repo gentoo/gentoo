@@ -19,6 +19,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # pandoc is stable here.
+dev-python/nbclassic -doc
 dev-python/nbval -doc
 
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
