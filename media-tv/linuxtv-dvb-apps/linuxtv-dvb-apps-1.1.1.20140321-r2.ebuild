@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	virtual/linuxtv-dvb-headers
+	dev-libs/libusb-compat
 "
 RDEPEND+="
 	media-tv/dtv-scan-tables
@@ -39,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-no-ca_set_pid.patch
 	"${FILESDIR}"/${PN}-glibc-2.31.patch
 	"${FILESDIR}"/${PN}-1.1.1.20140321-gcc10.patch
+	"${FILESDIR}"/${PN}-1.1.1.20140321-dvbdate.patch
 )
 
 src_prepare() {
