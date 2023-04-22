@@ -30,6 +30,11 @@ RDEPEND="${DEPEND}
 BDEPEND="virtual/pkgconfig"
 PDEPEND="net-dialup/ppp-scripts"
 
+pkg_setup() {
+	# Avoid linux-info_pkg_setup
+	:
+}
+
 src_configure() {
 	local args=(
 		--localstatedir="${EPREFIX}"/var
@@ -81,31 +86,27 @@ src_install() {
 }
 
 pkg_postinst() {
-	if linux-info_get_any_version && linux_config_src_exists ; then
-		echo
-		ewarn "If the following test report contains a missing kernel configuration option that you need,"
-		ewarn "you should reconfigure and rebuild your kernel before running pppd."
-		CONFIG_CHECK="~PPP ~PPP_ASYNC ~PPP_SYNC_TTY"
-		local ERROR_PPP="CONFIG_PPP:\t missing PPP support (REQUIRED)"
-		local ERROR_PPP_ASYNC="CONFIG_PPP_ASYNC:\t missing asynchronous serial line discipline (optional, but highly recommended)"
-		local WARNING_PPP_SYNC_TTY="CONFIG_PPP_SYNC_TTY:\t missing synchronous serial line discipline (optional; used by 'sync' pppd option)"
-		if use activefilter ; then
-			CONFIG_CHECK="${CONFIG_CHECK} ~PPP_FILTER"
-			local ERROR_PPP_FILTER="CONFIG_PPP_FILTER:\t missing PPP filtering support (REQUIRED)"
-		fi
-		CONFIG_CHECK="${CONFIG_CHECK} ~PPP_DEFLATE ~PPP_BSDCOMP ~PPP_MPPE"
-		local ERROR_PPP_DEFLATE="CONFIG_PPP_DEFLATE:\t missing Deflate compression (optional, but highly recommended)"
-		local ERROR_PPP_BSDCOMP="CONFIG_PPP_BSDCOMP:\t missing BSD-Compress compression (optional, but highly recommended)"
-		local WARNING_PPP_MPPE="CONFIG_PPP_MPPE:\t missing MPPE encryption (optional, mostly used by PPTP links)"
-		CONFIG_CHECK="${CONFIG_CHECK} ~PPPOE ~PACKET"
-		local WARNING_PPPOE="CONFIG_PPPOE:\t missing PPPoE support (optional, needed by pppoe plugin)"
-		local WARNING_PACKET="CONFIG_PACKET:\t missing AF_PACKET support (optional, used by pppoe plugin)"
-		if use atm ; then
-			CONFIG_CHECK="${CONFIG_CHECK} ~PPPOATM"
-			local WARNING_PPPOATM="CONFIG_PPPOATM:\t missing PPPoA support (optional, needed by pppoatm plugin)"
-		fi
-		check_extra_config
+	local CONFIG_CHECK="~PPP ~PPP_ASYNC ~PPP_SYNC_TTY"
+	local ERROR_PPP="CONFIG_PPP:\t missing PPP support (REQUIRED)"
+	local ERROR_PPP_ASYNC="CONFIG_PPP_ASYNC:\t missing asynchronous serial line discipline (optional, but highly recommended)"
+	local WARNING_PPP_SYNC_TTY="CONFIG_PPP_SYNC_TTY:\t missing synchronous serial line discipline (optional; used by 'sync' pppd option)"
+	if use activefilter ; then
+		CONFIG_CHECK+=" ~PPP_FILTER"
+		local ERROR_PPP_FILTER="CONFIG_PPP_FILTER:\t missing PPP filtering support (REQUIRED)"
 	fi
+	CONFIG_CHECK+=" ~PPP_DEFLATE ~PPP_BSDCOMP ~PPP_MPPE"
+	local ERROR_PPP_DEFLATE="CONFIG_PPP_DEFLATE:\t missing Deflate compression (optional, but highly recommended)"
+	local ERROR_PPP_BSDCOMP="CONFIG_PPP_BSDCOMP:\t missing BSD-Compress compression (optional, but highly recommended)"
+	local WARNING_PPP_MPPE="CONFIG_PPP_MPPE:\t missing MPPE encryption (optional, mostly used by PPTP links)"
+	CONFIG_CHECK+=" ~PPPOE ~PACKET"
+	local WARNING_PPPOE="CONFIG_PPPOE:\t missing PPPoE support (optional, needed by pppoe plugin)"
+	local WARNING_PACKET="CONFIG_PACKET:\t missing AF_PACKET support (optional, used by pppoe plugin)"
+	if use atm ; then
+		CONFIG_CHECK+=" ~PPPOATM"
+		local WARNING_PPPOATM="CONFIG_PPPOATM:\t missing PPPoA support (optional, needed by pppoatm plugin)"
+	fi
+
+	linux-info_pkg_setup
 
 	echo
 	elog "pon, poff and plog scripts have been supplied for experienced users."
