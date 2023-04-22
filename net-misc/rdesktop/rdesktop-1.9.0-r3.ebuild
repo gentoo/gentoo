@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.3-xrandr_configure.patch
 	"${FILESDIR}"/${P}-rdssl_rkey_get_exp_mod.patch
 	"${FILESDIR}"/${P}-gssapi-check.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 DOCS=( doc/ChangeLog doc/HACKING doc/TODO doc/keymapping.txt )
