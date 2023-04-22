@@ -190,11 +190,6 @@ net-im/wazzapp-bin
 # Removal on 2023-05-07
 app-admin/mcollective
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-04-08)
-# Long obsolete part of KDE Plasma (merged back into kwin).
-# Removal on 2023-08-22
-kde-plasma/kwayland-server
-
 # John Helmert III <ajak@gentoo.org> (2023-04-08)
 # i3-gaps has been meregd into upstream i3. Use x11-wm/i3 instead.
 # See also: https://github.com/i3/i3/issues/3724
