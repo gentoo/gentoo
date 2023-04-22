@@ -121,7 +121,8 @@ BDEPEND="
 	mingw? ( !crossdev-mingw? (
 		>=dev-util/mingw64-toolchain-10.0.0_p1-r2[${MULTILIB_USEDEP}]
 	) )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	wayland? ( dev-util/wayland-scanner )"
 IDEPEND=">=app-eselect/eselect-wine-2"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
