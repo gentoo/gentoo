@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-22)
+# snap only works on amd64
+kde-plasma/discover -snap
+
 # Sam James <sam@gentoo.org> (2023-04-17)
 # Ruby has several JITs available but they need porting to individual arches.
 # Unmask on specific arches where it's available.
