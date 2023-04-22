@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,10 @@ JAVA_SRC_DIR="src/java/"
 JAVA_JAR_FILENAME="wrapper.jar"
 JAVA_TEST_SRC_DIR="src/test"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
+
+PATCHES=(
+	"${FILESDIR}"/java-service-wrapper-3.5.25-gentoo-wrapper-defaults.patch
+)
 
 src_prepare() {
 	default
