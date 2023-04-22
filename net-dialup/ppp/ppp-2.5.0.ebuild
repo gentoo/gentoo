@@ -9,7 +9,7 @@ PATCH_TARBALL_NAME="${PN}-2.4.9-patches-03"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
 SRC_URI="https://download.samba.org/pub/ppp/${P}.tar.gz
-	https://github.com/ppp-project/ppp/blob/${P}/contrib/pppgetpass/pppgetpass.8"
+	https://raw.githubusercontent.com/ppp-project/ppp/${P}/contrib/pppgetpass/pppgetpass.8"
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
