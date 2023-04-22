@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/871177
+https://github.com/jedwing/CHMLib/pull/17
+
+From 5877959e3eb9a54e131608c52e2d6f4c89bc0189 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Wed, 19 Apr 2023 09:47:03 +0200
+Subject: [PATCH] Avoid implicit function declarations, for C99 compatibility
+
+Define _LARGEFILE64_SOURCE so that <unistd.h> defines pread64.
+
+This avoids build failures with future compilers which do not
+support implicit function declarations by default.
+--- a/src/chm_lib.c
++++ b/src/chm_lib.c
+@@ -48,6 +48,8 @@
+  *                                                                         *
+  ***************************************************************************/
+ 
++#define _LARGEFILE64_SOURCE /* for pread64 */
++
+ #include "chm_lib.h"
+ 
+ #ifdef CHM_MT
+
