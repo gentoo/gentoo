@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoobeer@gmail.com</email>
+		<name>Gabriel M. Dutra</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Terragrunt is a thin wrapper for Terraform that provides extra tools for
+		keeping your Terraform configurations DRY, working with multiple Terraform
+		modules, and managing remote state.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">gruntwork-io/terragrunt</remote-id>
+	</upstream>
+</pkgmetadata>
