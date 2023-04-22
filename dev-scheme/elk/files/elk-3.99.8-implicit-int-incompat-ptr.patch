@@ -1,0 +1,52 @@
+--- a/lib/misc/gdbm.c	2011-06-18 07:24:06.000000000 -0300
++++ b/lib/misc/gdbm.c	2023-04-22 14:28:35.200400436 -0300
+@@ -103,7 +103,7 @@
+ 
+ extern gdbm_error gdbm_errno;
+ extern int errno;
+-static char *gdbm_error_message = "";
++static const char *gdbm_error_message = "";
+ 
+ static SYMDESCR RW_Syms[] = {
+     { "reader", GDBM_READER },
+@@ -144,7 +144,7 @@
+     return TYPE(x) == T_Gdbm_fh ? True : False;
+ }
+ 
+-static void Fatal_Func (char *s) {
++static void Fatal_Func (const char *s) {
+     gdbm_error_message = s;
+     fprintf (stderr, "gdbm error: %s\n", s);
+ }
+--- a/src/heap-gen.c	2011-06-18 07:24:06.000000000 -0300
++++ b/src/heap-gen.c	2023-04-22 14:14:51.977052826 -0300
+@@ -872,7 +872,7 @@
+  * determines whether the object is immutable.
+  */
+ 
+-Object Alloc_Object (size, type, konst) {
++Object Alloc_Object (int size, int type, int konst) {
+     Object obj;
+     register addrarith_t s = /* size in words */
+         ((size + sizeof(Object) - 1) / sizeof(Object)) + 1;
+--- a/lib/xwidgets/xaw/list.c	2011-06-18 07:41:13.000000000 -0300
++++ b/lib/xwidgets/xaw/list.c	2023-04-22 14:32:58.923738362 -0300
+@@ -2,14 +2,15 @@
+ #include <X11/Xaw/List.h>
+ 
+ 
+-static char **Get_List (Object x) {
++static const char **Get_List (Object x) {
+     register int i, n;
+-    register char *s, **l;
++    register char *s;
++    register const char **l;
+     Alloca_Begin;
+ 
+     Check_List (x);
+     n = Fast_Length (x);
+-    l = (char **)XtMalloc ((n+1) * sizeof (char *));
++    l = (const char **)XtMalloc ((n+1) * sizeof (char *));
+     for (i = 0; i < n; i++, x = Cdr (x)) {
+         Get_Strsym_Stack (Car (x), s);
+         l[i] = XtNewString (s);
