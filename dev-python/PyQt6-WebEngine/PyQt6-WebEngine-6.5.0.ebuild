@@ -42,8 +42,7 @@ src_prepare() {
 	PATH=${T}/cxx:${PATH}
 }
 
-src_configure() {
-	append-cppflags $(usex debug -{U,D}NDEBUG) # not set by eclass "yet"
+python_configure_all() {
 	append-cxxflags -std=c++17 # for old gcc / clang that use <17 (bug #892331)
 	append-cxxflags ${CPPFLAGS} # respect CPPFLAGS
 
