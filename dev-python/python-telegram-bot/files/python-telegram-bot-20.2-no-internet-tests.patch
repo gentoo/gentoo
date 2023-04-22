@@ -1,0 +1,667 @@
+From: Pedro Arizmendi <dwosky@pm.me>
+Skip all tests that require an internet connection.
+
+--- a/tests/_files/test_animation.py
++++ b/tests/_files/test_animation.py
+@@ -66,11 +66,13 @@ class TestAnimationBase:
+
+
+ class TestAnimationWithoutRequest(TestAnimationBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, animation):
+         for attr in animation.__slots__:
+             assert getattr(animation, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(animation)) == len(set(mro_slots(animation))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_creation(self, animation):
+         assert isinstance(animation, Animation)
+         assert isinstance(animation.file_id, str)
+@@ -78,6 +80,7 @@ class TestAnimationWithoutRequest(TestAnimationBase):
+         assert animation.file_id != ""
+         assert animation.file_unique_id != ""
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_expected_values(self, animation):
+         assert animation.mime_type == self.mime_type
+         assert animation.file_name.startswith("game.gif") == self.file_name.startswith("game.gif")
+@@ -95,6 +98,7 @@ class TestAnimationWithoutRequest(TestAnimationBase):
+         assert animation.thumb is animation.thumbnail
+         check_thumb_deprecation_warnings_for_args_and_attrs(recwarn, __file__)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_de_json(self, bot, animation):
+         json_dict = {
+             "file_id": self.animation_file_id,
+@@ -115,6 +119,7 @@ class TestAnimationWithoutRequest(TestAnimationBase):
+         assert animation.mime_type == self.mime_type
+         assert animation.file_size == self.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_to_dict(self, animation):
+         animation_dict = animation.to_dict()
+
+@@ -184,6 +189,7 @@ class TestAnimationWithoutRequest(TestAnimationBase):
+         finally:
+             bot._local_mode = False
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_animation(self, monkeypatch, bot, chat_id, animation):
+         async def make_assertion(url, request_data: RequestData, *args, **kwargs):
+             return request_data.json_parameters["animation"] == animation.file_id
+@@ -200,6 +206,7 @@ class TestAnimationWithoutRequest(TestAnimationBase):
+         with pytest.raises(ValueError, match="different entities as 'thumb' and 'thumbnail'"):
+             await bot.send_animation(chat_id, file, thumbnail=file, thumb=different_file)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_file_instance_method(self, monkeypatch, animation):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == animation.file_id
+--- a/tests/_files/test_audio.py
++++ b/tests/_files/test_audio.py
+@@ -67,11 +67,13 @@ class TestAudioBase:
+
+
+ class TestAudioWithoutRequest(TestAudioBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, audio):
+         for attr in audio.__slots__:
+             assert getattr(audio, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(audio)) == len(set(mro_slots(audio))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_creation(self, audio):
+         # Make sure file has been uploaded.
+         assert isinstance(audio, Audio)
+@@ -80,6 +82,7 @@ class TestAudioWithoutRequest(TestAudioBase):
+         assert audio.file_id != ""
+         assert audio.file_unique_id != ""
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_expected_values(self, audio):
+         assert audio.duration == self.duration
+         assert audio.performer is None
+@@ -95,6 +98,7 @@ class TestAudioWithoutRequest(TestAudioBase):
+         assert audio.thumb is audio.thumbnail
+         check_thumb_deprecation_warnings_for_args_and_attrs(recwarn, __file__)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_de_json(self, bot, audio):
+         json_dict = {
+             "file_id": self.audio_file_id,
+@@ -120,6 +124,7 @@ class TestAudioWithoutRequest(TestAudioBase):
+         assert json_audio.file_size == self.file_size
+         assert json_audio.thumbnail == audio.thumbnail
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_to_dict(self, audio):
+         audio_dict = audio.to_dict()
+
+@@ -131,6 +136,7 @@ class TestAudioWithoutRequest(TestAudioBase):
+         assert audio_dict["file_size"] == audio.file_size
+         assert audio_dict["file_name"] == audio.file_name
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_equality(self, audio):
+         a = Audio(audio.file_id, audio.file_unique_id, audio.duration)
+         b = Audio("", audio.file_unique_id, audio.duration)
+@@ -151,6 +157,7 @@ class TestAudioWithoutRequest(TestAudioBase):
+         assert a != e
+         assert hash(a) != hash(e)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_audio(self, monkeypatch, bot, chat_id, audio):
+         async def make_assertion(url, request_data: RequestData, *args, **kwargs):
+             return request_data.json_parameters["audio"] == audio.file_id
+@@ -198,6 +205,7 @@ class TestAudioWithoutRequest(TestAudioBase):
+         with pytest.raises(ValueError, match="different entities as 'thumb' and 'thumbnail'"):
+             await bot.send_audio(chat_id, file, thumbnail=file, thumb=different_file)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_file_instance_method(self, monkeypatch, audio):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == audio.file_id
+--- a/tests/_files/test_chatphoto.py
++++ b/tests/_files/test_chatphoto.py
+@@ -61,11 +61,13 @@ class TestChatPhotoBase:
+
+
+ class TestChatPhotoWithoutRequest(TestChatPhotoBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, chat_photo):
+         for attr in chat_photo.__slots__:
+             assert getattr(chat_photo, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(chat_photo)) == len(set(mro_slots(chat_photo))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_de_json(self, bot, chat_photo):
+         json_dict = {
+             "small_file_id": self.chatphoto_small_file_id,
+@@ -80,6 +82,7 @@ class TestChatPhotoWithoutRequest(TestChatPhotoBase):
+         assert chat_photo.small_file_unique_id == self.chatphoto_small_file_unique_id
+         assert chat_photo.big_file_unique_id == self.chatphoto_big_file_unique_id
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_to_dict(self, chat_photo):
+         chat_photo_dict = chat_photo.to_dict()
+
+@@ -121,6 +124,7 @@ class TestChatPhotoWithoutRequest(TestChatPhotoBase):
+         assert a != e
+         assert hash(a) != hash(e)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_chat_photo(self, monkeypatch, bot, super_group_id, chat_photo):
+         async def make_assertion(url, request_data: RequestData, *args, **kwargs):
+             return request_data.parameters["photo"] == chat_photo.to_dict()
+@@ -129,6 +133,7 @@ class TestChatPhotoWithoutRequest(TestChatPhotoBase):
+         message = await bot.set_chat_photo(photo=chat_photo, chat_id=super_group_id)
+         assert message
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_small_file_instance_method(self, monkeypatch, chat_photo):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == chat_photo.small_file_id
+@@ -142,6 +147,7 @@ class TestChatPhotoWithoutRequest(TestChatPhotoBase):
+         monkeypatch.setattr(chat_photo.get_bot(), "get_file", make_assertion)
+         assert await chat_photo.get_small_file()
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_big_file_instance_method(self, monkeypatch, chat_photo):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == chat_photo.big_file_id
+--- a/tests/_files/test_document.py
++++ b/tests/_files/test_document.py
+@@ -62,11 +62,13 @@ class TestDocumentBase:
+
+
+ class TestDocumentWithoutRequest(TestDocumentBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, document):
+         for attr in document.__slots__:
+             assert getattr(document, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(document)) == len(set(mro_slots(document))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_creation(self, document):
+         assert isinstance(document, Document)
+         assert isinstance(document.file_id, str)
+@@ -74,6 +76,7 @@ class TestDocumentWithoutRequest(TestDocumentBase):
+         assert document.file_id != ""
+         assert document.file_unique_id != ""
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_expected_values(self, document):
+         assert document.file_size == self.file_size
+         assert document.mime_type == self.mime_type
+@@ -87,6 +90,7 @@ class TestDocumentWithoutRequest(TestDocumentBase):
+         assert document.thumb is document.thumbnail
+         check_thumb_deprecation_warnings_for_args_and_attrs(recwarn, __file__)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_de_json(self, bot, document):
+         json_dict = {
+             "file_id": self.document_file_id,
+@@ -106,6 +110,7 @@ class TestDocumentWithoutRequest(TestDocumentBase):
+         assert test_document.mime_type == self.mime_type
+         assert test_document.file_size == self.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_to_dict(self, document):
+         document_dict = document.to_dict()
+
+@@ -116,6 +121,7 @@ class TestDocumentWithoutRequest(TestDocumentBase):
+         assert document_dict["mime_type"] == document.mime_type
+         assert document_dict["file_size"] == document.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_equality(self, document):
+         a = Document(document.file_id, document.file_unique_id)
+         b = Document("", document.file_unique_id)
+@@ -137,6 +143,7 @@ class TestDocumentWithoutRequest(TestDocumentBase):
+             await bot.send_document(chat_id=chat_id)
+
+     @pytest.mark.parametrize("disable_content_type_detection", [True, False, None])
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_document(
+         self, monkeypatch, bot, chat_id, document, disable_content_type_detection
+     ):
+@@ -192,6 +199,7 @@ class TestDocumentWithoutRequest(TestDocumentBase):
+         with pytest.raises(ValueError, match="different entities as 'thumb' and 'thumbnail'"):
+             await bot.send_document(chat_id, file, thumbnail=file, thumb=different_file)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_file_instance_method(self, monkeypatch, document):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == document.file_id
+--- a/tests/_files/test_inputmedia.py
++++ b/tests/_files/test_inputmedia.py
+@@ -186,6 +186,7 @@ class TestInputMediaVideoWithoutRequest(TestInputMediaVideoBase):
+         assert input_media_video_dict["supports_streaming"] == input_media_video.supports_streaming
+         assert input_media_video_dict["has_spoiler"] == input_media_video.has_spoiler
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_with_video(self, video):  # noqa: F811
+         # fixture found in test_video
+         input_media_video = InputMediaVideo(video, caption="test 3")
+@@ -258,6 +259,7 @@ class TestInputMediaPhotoWithoutRequest(TestInputMediaPhotoBase):
+         ]
+         assert input_media_photo_dict["has_spoiler"] == input_media_photo.has_spoiler
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_with_photo(self, photo):  # noqa: F811
+         # fixture found in test_photo
+         input_media_photo = InputMediaPhoto(photo, caption="test 2")
+@@ -329,6 +331,7 @@ class TestInputMediaAnimationWithoutRequest(TestInputMediaAnimationBase):
+         assert input_media_animation_dict["duration"] == input_media_animation.duration
+         assert input_media_animation_dict["has_spoiler"] == input_media_animation.has_spoiler
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_with_animation(self, animation):  # noqa: F811
+         # fixture found in test_animation
+         input_media_animation = InputMediaAnimation(animation, caption="test 2")
+@@ -411,6 +414,7 @@ class TestInputMediaAudioWithoutRequest(TestInputMediaAudioBase):
+             ce.to_dict() for ce in input_media_audio.caption_entities
+         ]
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_with_audio(self, audio):  # noqa: F811
+         # fixture found in test_audio
+         input_media_audio = InputMediaAudio(audio, caption="test 3")
+@@ -496,6 +500,7 @@ class TestInputMediaDocumentWithoutRequest(TestInputMediaDocumentBase):
+             == input_media_document.disable_content_type_detection
+         )
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_with_document(self, document):  # noqa: F811
+         # fixture found in test_document
+         input_media_document = InputMediaDocument(document, caption="test 3")
+@@ -559,6 +564,7 @@ def media_group_no_caption_only_parse_mode(photo, thumb):  # noqa: F811
+
+
+ class TestSendMediaGroupWithoutRequest:
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_media_group_throws_error_with_group_caption_and_individual_captions(
+         self,
+         bot,
+--- a/tests/_files/test_photo.py
++++ b/tests/_files/test_photo.py
+@@ -74,11 +74,13 @@ class TestPhotoBase:
+
+
+ class TestPhotoWithoutRequest(TestPhotoBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, photo):
+         for attr in photo.__slots__:
+             assert getattr(photo, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(photo)) == len(set(mro_slots(photo))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_creation(self, thumb, photo):
+         # Make sure file has been uploaded.
+         assert isinstance(photo, PhotoSize)
+@@ -93,6 +95,7 @@ class TestPhotoWithoutRequest(TestPhotoBase):
+         assert thumb.file_id != ""
+         assert thumb.file_unique_id != ""
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_expected_values(self, photo, thumb):
+         assert photo.width == self.width
+         assert photo.height == self.height
+@@ -101,6 +104,7 @@ class TestPhotoWithoutRequest(TestPhotoBase):
+         assert thumb.height == 90
+         assert thumb.file_size == 1477
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_de_json(self, bot, photo):
+         json_dict = {
+             "file_id": photo.file_id,
+@@ -118,6 +122,7 @@ class TestPhotoWithoutRequest(TestPhotoBase):
+         assert json_photo.height == self.height
+         assert json_photo.file_size == self.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_to_dict(self, photo):
+         photo_dict = photo.to_dict()
+
+@@ -128,6 +133,7 @@ class TestPhotoWithoutRequest(TestPhotoBase):
+         assert photo_dict["height"] == photo.height
+         assert photo_dict["file_size"] == photo.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_equality(self, photo):
+         a = PhotoSize(photo.file_id, photo.file_unique_id, self.width, self.height)
+         b = PhotoSize("", photo.file_unique_id, self.width, self.height)
+@@ -189,6 +195,7 @@ class TestPhotoWithoutRequest(TestPhotoBase):
+         finally:
+             bot._local_mode = False
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_photosize(self, monkeypatch, bot, chat_id, photo):
+         async def make_assertion(url, request_data: RequestData, *args, **kwargs):
+             return request_data.json_parameters["photo"] == photo.file_id
+@@ -196,6 +203,7 @@ class TestPhotoWithoutRequest(TestPhotoBase):
+         monkeypatch.setattr(bot.request, "post", make_assertion)
+         assert await bot.send_photo(photo=photo, chat_id=chat_id)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_file_instance_method(self, monkeypatch, photo):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == photo.file_id
+--- a/tests/_files/test_sticker.py
++++ b/tests/_files/test_sticker.py
+@@ -116,11 +116,13 @@ class TestStickerBase:
+
+
+ class TestStickerWithoutRequest(TestStickerBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, sticker):
+         for attr in sticker.__slots__:
+             assert getattr(sticker, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(sticker)) == len(set(mro_slots(sticker))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_creation(self, sticker):
+         # Make sure file has been uploaded.
+         assert isinstance(sticker, Sticker)
+@@ -135,6 +137,7 @@ class TestStickerWithoutRequest(TestStickerBase):
+         assert sticker.thumbnail.file_unique_id != ""
+         assert isinstance(sticker.needs_repainting, bool)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_expected_values(self, sticker):
+         assert sticker.width == self.width
+         assert sticker.height == self.height
+@@ -163,6 +166,7 @@ class TestStickerWithoutRequest(TestStickerBase):
+         assert sticker.thumb is sticker.thumbnail
+         check_thumb_deprecation_warnings_for_args_and_attrs(recwarn, __file__)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_to_dict(self, sticker):
+         sticker_dict = sticker.to_dict()
+
+@@ -178,6 +182,7 @@ class TestStickerWithoutRequest(TestStickerBase):
+         assert sticker_dict["type"] == sticker.type
+         assert sticker_dict["needs_repainting"] == sticker.needs_repainting
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_de_json(self, bot, sticker):
+         json_dict = {
+             "file_id": self.sticker_file_id,
+@@ -211,6 +216,7 @@ class TestStickerWithoutRequest(TestStickerBase):
+         assert json_sticker.custom_emoji_id == self.custom_emoji_id
+         assert json_sticker.needs_repainting == self.needs_repainting
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_equality(self, sticker):
+         a = Sticker(
+             sticker.file_id,
+@@ -273,6 +279,7 @@ class TestStickerWithoutRequest(TestStickerBase):
+         with pytest.raises(TypeError):
+             await bot.send_sticker(chat_id)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_sticker(self, monkeypatch, bot, chat_id, sticker):
+         async def make_assertion(url, request_data: RequestData, *args, **kwargs):
+             return request_data.json_parameters["sticker"] == sticker.file_id
+@@ -564,6 +571,7 @@ class TestStickerSetWithoutRequest(TestStickerSetBase):
+         assert sticker_set.thumb is sticker_set.thumbnail
+         check_thumb_deprecation_warnings_for_args_and_attrs(recwarn, __file__)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_de_json(self, bot, sticker):
+         name = f"test_by_{bot.username}"
+         json_dict = {
+@@ -587,6 +595,7 @@ class TestStickerSetWithoutRequest(TestStickerSetBase):
+         assert sticker_set.sticker_type == self.sticker_type
+         assert sticker_set.api_kwargs == {"contains_masks": self.contains_masks}
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_sticker_set_to_dict(self, sticker_set):
+         sticker_set_dict = sticker_set.to_dict()
+
+@@ -927,6 +936,7 @@ class TestStickerSetWithoutRequest(TestStickerSetBase):
+             assert recwarn[0].filename == __file__, f"incorrect stacklevel for class {cls_name}!"
+             recwarn.clear()
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_file_instance_method(self, monkeypatch, sticker):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == sticker.file_id
+--- a/tests/_files/test_video.py
++++ b/tests/_files/test_video.py
+@@ -66,11 +66,13 @@ class TestVideoBase:
+
+
+ class TestVideoWithoutRequest(TestVideoBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, video):
+         for attr in video.__slots__:
+             assert getattr(video, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(video)) == len(set(mro_slots(video))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_creation(self, video):
+         # Make sure file has been uploaded.
+         assert isinstance(video, Video)
+@@ -85,6 +87,7 @@ class TestVideoWithoutRequest(TestVideoBase):
+         assert video.thumbnail.file_id != ""
+         assert video.thumbnail.file_unique_id != ""
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_expected_values(self, video):
+         assert video.width == self.width
+         assert video.height == self.height
+@@ -127,6 +130,7 @@ class TestVideoWithoutRequest(TestVideoBase):
+         assert json_video.file_size == self.file_size
+         assert json_video.file_name == self.file_name
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_to_dict(self, video):
+         video_dict = video.to_dict()
+
+@@ -140,6 +144,7 @@ class TestVideoWithoutRequest(TestVideoBase):
+         assert video_dict["file_size"] == video.file_size
+         assert video_dict["file_name"] == video.file_name
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_equality(self, video):
+         a = Video(video.file_id, video.file_unique_id, self.width, self.height, self.duration)
+         b = Video("", video.file_unique_id, self.width, self.height, self.duration)
+@@ -164,6 +169,7 @@ class TestVideoWithoutRequest(TestVideoBase):
+         with pytest.raises(TypeError):
+             await bot.send_video(chat_id=chat_id)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_video(self, monkeypatch, bot, chat_id, video):
+         async def make_assertion(url, request_data: RequestData, *args, **kwargs):
+             return request_data.json_parameters["video"] == video.file_id
+@@ -212,6 +218,7 @@ class TestVideoWithoutRequest(TestVideoBase):
+         with pytest.raises(ValueError, match="different entities as 'thumb' and 'thumbnail'"):
+             await bot.send_video(chat_id, file, thumbnail=file, thumb=different_file)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_file_instance_method(self, monkeypatch, video):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == video.file_id
+--- a/tests/_files/test_videonote.py
++++ b/tests/_files/test_videonote.py
+@@ -60,11 +60,13 @@ class TestVideoNoteBase:
+
+
+ class TestVideoNoteWithoutRequest(TestVideoNoteBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, video_note):
+         for attr in video_note.__slots__:
+             assert getattr(video_note, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(video_note)) == len(set(mro_slots(video_note))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_creation(self, video_note):
+         # Make sure file has been uploaded.
+         assert isinstance(video_note, VideoNote)
+@@ -79,6 +81,7 @@ class TestVideoNoteWithoutRequest(TestVideoNoteBase):
+         assert video_note.thumbnail.file_id != ""
+         assert video_note.thumbnail.file_unique_id != ""
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_expected_values(self, video_note):
+         assert video_note.length == self.length
+         assert video_note.duration == self.duration
+@@ -108,6 +111,7 @@ class TestVideoNoteWithoutRequest(TestVideoNoteBase):
+         assert json_video_note.duration == self.duration
+         assert json_video_note.file_size == self.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_to_dict(self, video_note):
+         video_note_dict = video_note.to_dict()
+
+@@ -118,6 +122,7 @@ class TestVideoNoteWithoutRequest(TestVideoNoteBase):
+         assert video_note_dict["duration"] == video_note.duration
+         assert video_note_dict["file_size"] == video_note.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_equality(self, video_note):
+         a = VideoNote(video_note.file_id, video_note.file_unique_id, self.length, self.duration)
+         b = VideoNote("", video_note.file_unique_id, self.length, self.duration)
+@@ -142,6 +147,7 @@ class TestVideoNoteWithoutRequest(TestVideoNoteBase):
+         with pytest.raises(TypeError):
+             await bot.send_video_note(chat_id=chat_id)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_video_note(self, monkeypatch, bot, chat_id, video_note):
+         async def make_assertion(url, request_data: RequestData, *args, **kwargs):
+             return request_data.json_parameters["video_note"] == video_note.file_id
+@@ -194,6 +200,7 @@ class TestVideoNoteWithoutRequest(TestVideoNoteBase):
+         with pytest.raises(ValueError, match="different entities as 'thumb' and 'thumbnail'"):
+             await bot.send_video_note(chat_id, file, thumbnail=file, thumb=different_file)
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_file_instance_method(self, monkeypatch, video_note):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == video_note.file_id
+--- a/tests/_files/test_voice.py
++++ b/tests/_files/test_voice.py
+@@ -58,11 +58,13 @@ class TestVoiceBase:
+
+
+ class TestVoiceWithoutRequest(TestVoiceBase):
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_slot_behaviour(self, voice):
+         for attr in voice.__slots__:
+             assert getattr(voice, attr, "err") != "err", f"got extra slot '{attr}'"
+         assert len(mro_slots(voice)) == len(set(mro_slots(voice))), "duplicate slot"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_creation(self, voice):
+         # Make sure file has been uploaded.
+         assert isinstance(voice, Voice)
+@@ -71,6 +73,7 @@ class TestVoiceWithoutRequest(TestVoiceBase):
+         assert voice.file_id != ""
+         assert voice.file_unique_id != ""
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_expected_values(self, voice):
+         assert voice.duration == self.duration
+         assert voice.mime_type == self.mime_type
+@@ -93,6 +96,7 @@ class TestVoiceWithoutRequest(TestVoiceBase):
+         assert json_voice.mime_type == self.mime_type
+         assert json_voice.file_size == self.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_to_dict(self, voice):
+         voice_dict = voice.to_dict()
+
+@@ -103,6 +107,7 @@ class TestVoiceWithoutRequest(TestVoiceBase):
+         assert voice_dict["mime_type"] == voice.mime_type
+         assert voice_dict["file_size"] == voice.file_size
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_equality(self, voice):
+         a = Voice(voice.file_id, voice.file_unique_id, self.duration)
+         b = Voice("", voice.file_unique_id, self.duration)
+@@ -135,6 +140,7 @@ class TestVoiceWithoutRequest(TestVoiceBase):
+
+         assert await bot.send_voice(chat_id, voice_file, filename="custom_filename")
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_send_with_voice(self, monkeypatch, bot, chat_id, voice):
+         async def make_assertion(url, request_data: RequestData, *args, **kwargs):
+             return request_data.json_parameters["voice"] == voice.file_id
+@@ -164,6 +170,7 @@ class TestVoiceWithoutRequest(TestVoiceBase):
+         finally:
+             bot._local_mode = False
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_file_instance_method(self, monkeypatch, voice):
+         async def make_assertion(*_, **kwargs):
+             return kwargs["file_id"] == voice.file_id
+--- a/tests/request/test_request.py
++++ b/tests/request/test_request.py
+@@ -411,6 +411,7 @@ class TestHTTPXRequestWithoutRequest:
+         assert self.test_flag["init"] == 1
+         assert self.test_flag["shutdown"] == 1
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_multiple_init_cycles(self):
+         # nothing really to assert - this should just not fail
+         httpx_request = HTTPXRequest()
+@@ -423,6 +424,7 @@ class TestHTTPXRequestWithoutRequest:
+         with pytest.raises(ValueError, match="`http_version` must be either"):
+             HTTPXRequest(http_version="1.0")
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_http_1_response(self):
+         httpx_request = HTTPXRequest(http_version="1.1")
+         async with httpx_request:
+--- a/tests/test_bot.py
++++ b/tests/test_bot.py
+@@ -302,6 +302,7 @@ class TestBotWithoutRequest:
+
+         assert self.test_flag == "stop"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_equality(self):
+         async with make_bot(token=FALLBACKS[0]["token"]) as a, make_bot(
+             token=FALLBACKS[0]["token"]
+@@ -343,6 +344,7 @@ class TestBotWithoutRequest:
+         finally:
+             await bot.shutdown()
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_get_me_and_properties(self, bot):
+         get_me_bot = await ExtBot(bot.token).get_me()
+
+@@ -377,6 +379,7 @@ class TestBotWithoutRequest:
+             re.match(rf"\s*\@\_log\s*async def {bot_method_name}", source)
+         ), f"{bot_method_name} is missing the @_log decorator"
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_log_decorator(self, bot: PytestExtBot, caplog):
+         # Second argument makes sure that we ignore logs from e.g. httpx
+         with caplog.at_level(logging.DEBUG, logger="telegram"):
+@@ -1361,6 +1364,7 @@ class TestBotWithoutRequest:
+
+     @pytest.mark.parametrize("json_keyboard", [True, False])
+     @pytest.mark.parametrize("caption", ["<b>Test</b>", "", None])
++    @pytest.mark.skip(reason="Requires internet connection")
+     async def test_copy_message(
+         self, monkeypatch, bot, chat_id, media_message, json_keyboard, caption
+     ):
+--- a/tests/test_forum.py
++++ b/tests/test_forum.py
+@@ -73,6 +73,7 @@ async def real_topic(bot, emoji_id, forum_group_id):
+     assert result is True, "Topic was not deleted"
+
+
++@pytest.mark.skip(reason="Requires internet connection")
+ class TestForumTopicWithoutRequest:
+     def test_slot_behaviour(self, forum_topic_object):
+         inst = forum_topic_object
+@@ -336,6 +337,7 @@ class TestForumTopicCreatedWithoutRequest:
+         assert action_dict["name"] == TEST_TOPIC_NAME
+         assert action_dict["icon_color"] == TEST_TOPIC_ICON_COLOR
+
++    @pytest.mark.skip(reason="Requires internet connection")
+     def test_equality(self, emoji_id):
+         a = ForumTopicCreated(name=TEST_TOPIC_NAME, icon_color=TEST_TOPIC_ICON_COLOR)
+         b = ForumTopicCreated(
