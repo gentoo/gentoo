@@ -88,8 +88,10 @@ src_install() {
 pkg_postinst() {
 	local CONFIG_CHECK="~PPP ~PPP_ASYNC ~PPP_SYNC_TTY"
 	local ERROR_PPP="CONFIG_PPP:\t missing PPP support (REQUIRED)"
-	local ERROR_PPP_ASYNC="CONFIG_PPP_ASYNC:\t missing asynchronous serial line discipline (optional, but highly recommended)"
-	local WARNING_PPP_SYNC_TTY="CONFIG_PPP_SYNC_TTY:\t missing synchronous serial line discipline (optional; used by 'sync' pppd option)"
+	local ERROR_PPP_ASYNC="CONFIG_PPP_ASYNC:\t missing asynchronous serial line discipline"
+	ERROR_PPP_ASYNC+=" (optional, but highly recommended)"
+	local WARNING_PPP_SYNC_TTY="CONFIG_PPP_SYNC_TTY:\t missing synchronous serial line discipline"
+	WARNING_PPP_SYNC_TTY+=" (optional; used by 'sync' pppd option)"
 	if use activefilter ; then
 		CONFIG_CHECK+=" ~PPP_FILTER"
 		local ERROR_PPP_FILTER="CONFIG_PPP_FILTER:\t missing PPP filtering support (REQUIRED)"
