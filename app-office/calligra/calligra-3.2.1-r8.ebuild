@@ -126,6 +126,7 @@ PATCHES=(
 	"${WORKDIR}"/${PATCHSET}/${P}-clang-16-c++17.patch
 	"${WORKDIR}"/${PATCHSET}/${P}-kross-optional.patch # bug 903532
 	"${FILESDIR}"/${P}-use-cmake-FindGSL-module.patch # bug 903343
+	"${FILESDIR}"/${P}-clang-16-configure.patch
 )
 
 pkg_pretend() {
