@@ -37,6 +37,7 @@ BDEPEND="
 	${RDEPEND}
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
 
