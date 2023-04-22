@@ -1,0 +1,134 @@
+Pending upstream:
+https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/473909
+https://codereview.qt-project.org/c/qt/qtwebengine/+/473911
+
+diff --git a/src/3rdparty/chromium/device/base/synchronization/one_writer_seqlock.cc b/src/3rdparty/chromium/device/base/synchronization/one_writer_seqlock.cc
+index 213b630..98266a1 100644
+--- a/src/3rdparty/chromium/device/base/synchronization/one_writer_seqlock.cc
++++ b/src/3rdparty/chromium/device/base/synchronization/one_writer_seqlock.cc
+@@ -2,6 +2,8 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
++#include <cstdint>
++
+ #include "device/base/synchronization/one_writer_seqlock.h"
+ 
+ namespace device {
+diff --git a/src/3rdparty/chromium/gpu/command_buffer/common/webgpu_cmd_format.h b/src/3rdparty/chromium/gpu/command_buffer/common/webgpu_cmd_format.h
+index 286a41c..25d2413 100644
+--- a/src/3rdparty/chromium/gpu/command_buffer/common/webgpu_cmd_format.h
++++ b/src/3rdparty/chromium/gpu/command_buffer/common/webgpu_cmd_format.h
+@@ -5,6 +5,7 @@
+ #ifndef GPU_COMMAND_BUFFER_COMMON_WEBGPU_CMD_FORMAT_H_
+ #define GPU_COMMAND_BUFFER_COMMON_WEBGPU_CMD_FORMAT_H_
+ 
++#include <cstdint>
+ #include <string.h>
+ 
+ #include "gpu/command_buffer/common/gl2_types.h"
+diff --git a/src/3rdparty/chromium/gpu/command_buffer/service/shared_context_state.h b/src/3rdparty/chromium/gpu/command_buffer/service/shared_context_state.h
+index bcba574..f4916be 100644
+--- a/src/3rdparty/chromium/gpu/command_buffer/service/shared_context_state.h
++++ b/src/3rdparty/chromium/gpu/command_buffer/service/shared_context_state.h
+@@ -5,6 +5,7 @@
+ #ifndef GPU_COMMAND_BUFFER_SERVICE_SHARED_CONTEXT_STATE_H_
+ #define GPU_COMMAND_BUFFER_SERVICE_SHARED_CONTEXT_STATE_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/src/3rdparty/chromium/gpu/config/gpu_util.h b/src/3rdparty/chromium/gpu/config/gpu_util.h
+index b4d6dfb..0dc300a 100644
+--- a/src/3rdparty/chromium/gpu/config/gpu_util.h
++++ b/src/3rdparty/chromium/gpu/config/gpu_util.h
+@@ -5,6 +5,8 @@
+ #ifndef GPU_CONFIG_GPU_UTIL_H_
+ #define GPU_CONFIG_GPU_UTIL_H_
+ 
++#include <cstdint>
++
+ #include "build/build_config.h"
+ #include "gpu/config/gpu_feature_info.h"
+ #include "gpu/gpu_export.h"
+diff --git a/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.cc b/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.cc
+index fa755dd..040656b 100644
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "third_party/blink/renderer/platform/graphics/dark_mode_image_classifier.h"
+ 
++#include <cstdint>
+ #include <set>
+ 
+ #include "base/memory/singleton.h"
+diff --git a/src/3rdparty/chromium/third_party/libgav1/src/src/utils/threadpool.cc b/src/3rdparty/chromium/third_party/libgav1/src/src/utils/threadpool.cc
+index 8c8f4fe..4e8788b 100644
+--- a/src/3rdparty/chromium/third_party/libgav1/src/src/utils/threadpool.cc
++++ b/src/3rdparty/chromium/third_party/libgav1/src/src/utils/threadpool.cc
+@@ -28,6 +28,7 @@
+ #include <cassert>
+ #include <cinttypes>
+ #include <cstddef>
++#include <cstdio>
+ #include <cstdint>
+ #include <cstring>
+ #include <new>
+diff --git a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/importers/proto/proto_importer_module.h b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/importers/proto/proto_importer_module.h
+index 74cc958..098433c 100644
+--- a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/importers/proto/proto_importer_module.h
++++ b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/importers/proto/proto_importer_module.h
+@@ -17,6 +17,8 @@
+ #ifndef SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_PROTO_IMPORTER_MODULE_H_
+ #define SRC_TRACE_PROCESSOR_IMPORTERS_PROTO_PROTO_IMPORTER_MODULE_H_
+ 
++#include <cstdint>
++
+ #include "perfetto/ext/base/optional.h"
+ #include "perfetto/trace_processor/status.h"
+ #include "src/trace_processor/trace_blob_view.h"
+diff --git a/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp b/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
+index 0a19810..fcfe94c 100644
+--- a/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
++++ b/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
+@@ -9,10 +9,9 @@
+ #include "include/utils/SkParse.h"
+ 
+ #include <algorithm> // std::lower_bound
++#include <cstring>
+ #include <iterator>
+ 
+-#include <algorithm> // std::lower_bound
+-
+ static constexpr const char* gColorNames[] = {
+     "aliceblue",
+     "antiquewhite",
+diff --git a/src/3rdparty/chromium/v8/src/base/macros.h b/src/3rdparty/chromium/v8/src/base/macros.h
+index 37cab78..4220eac 100644
+--- a/src/3rdparty/chromium/v8/src/base/macros.h
++++ b/src/3rdparty/chromium/v8/src/base/macros.h
+@@ -5,6 +5,7 @@
+ #ifndef V8_BASE_MACROS_H_
+ #define V8_BASE_MACROS_H_
+ 
++#include <cstdint>
+ #include <limits>
+ #include <type_traits>
+ 
+diff --git a/src/core/browsing_data_remover_delegate_qt.h b/src/core/browsing_data_remover_delegate_qt.h
+index a10409f..5adfbbe 100644
+--- a/src/core/browsing_data_remover_delegate_qt.h
++++ b/src/core/browsing_data_remover_delegate_qt.h
+@@ -40,6 +40,8 @@
+ #ifndef BROWSING_DATA_REMOVER_DELEGATE_QT_H
+ #define BROWSING_DATA_REMOVER_DELEGATE_QT_H
+ 
++#include <cstdint>
++
+ #include "content/public/browser/browsing_data_remover_delegate.h"
+ 
+ namespace QtWebEngineCore {
+
+
