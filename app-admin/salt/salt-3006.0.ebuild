@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_BRANCH="develop"
 else
 	inherit pypi
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv"
 fi
 
 LICENSE="Apache-2.0"
