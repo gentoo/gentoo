@@ -60,8 +60,10 @@ src_install() {
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}/modules.ppp" ppp.conf
 
-	dobin scripts/p{on,off,log}
+	dosbin scripts/p{on,off,log}
 	doman scripts/pon.1
+	dosym pon.1 /usr/share/man/man1/poff.1
+	dosym pon.1 /usr/share/man/man1/plog.1
 
 	# Adding misc. specialized scripts to doc dir
 	dodoc -r scripts
