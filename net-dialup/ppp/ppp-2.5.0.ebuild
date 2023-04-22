@@ -12,7 +12,6 @@ HOMEPAGE="https://ppp.samba.org/"
 SRC_URI="https://download.samba.org/pub/ppp/${P}.tar.gz
 	https://github.com/ppp-project/ppp/blob/${P}/contrib/pppgetpass/pppgetpass.8
 	dhcp? ( http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz )"
-#https://dev.gentoo.org/~polynomial-c/${PATCH_TARBALL_NAME}.tar.xz
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
