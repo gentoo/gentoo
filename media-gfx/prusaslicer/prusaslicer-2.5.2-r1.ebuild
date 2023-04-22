@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.5.0_rc1-cereal-1.3.1.patch"
 	"${FILESDIR}/${PN}-2.5.0_rc1-fix-tests.patch"
 	"${FILESDIR}/${PN}-2.5.0_boost-1.81-std-wxString-to-std-wstring.patch"
+	"${FILESDIR}/${PN}-2.5.2-fix-slicing.patch"
 )
 
 S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
