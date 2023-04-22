@@ -69,6 +69,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_LOCALSTATEDIR="${EPREFIX}/var"
+		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DENABLE_DOCS="$(usex doc)"
 		-DENABLE_FROTZ="$(usex frotz)"
 		-DENABLE_IRC="$(usex irc)"
@@ -81,7 +83,6 @@ src_configure() {
 		-DENABLE_TESTS="$(usex test)"
 		-DENABLE_TWITTER="$(usex twitter)"
 		-DENABLE_XMPP="$(usex xmpp)"
-		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 
 	cmake_src_configure
