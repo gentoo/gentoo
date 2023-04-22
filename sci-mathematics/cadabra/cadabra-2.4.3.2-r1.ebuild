@@ -11,7 +11,8 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit xdg-utils python-single-r1 cmake
 
 DESCRIPTION="Field-theory motivated approach to computer algebra"
-HOMEPAGE="https://cadabra.science/"
+HOMEPAGE="https://cadabra.science/
+	https://github.com/kpeeters/cadabra2/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
@@ -25,7 +26,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${MAJOR}"
-IUSE="gtk +jupyter test"
+IUSE="gui +jupyter test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -45,7 +46,7 @@ RDEPEND="
 		dev-python/sympy[${PYTHON_USEDEP}]
 		jupyter? ( dev-python/jupyter[${PYTHON_USEDEP}] )
 	')
-	gtk? ( dev-cpp/gtkmm:3.0 )
+	gui? ( dev-cpp/gtkmm:3.0 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')"
@@ -54,9 +55,8 @@ PATCHES=( "${FILESDIR}"/${CADABRA}-CMake.patch )
 
 DOCS=( CODE_OF_CONDUCT.md CONTRIBUTING.md JUPYTER.rst README.rst )
 
-# Because we do not want to pull in "_XDG_DEPEND" dependencies with USE="-gtk"
 xdg_update() {
-	if use gtk ; then
+	if use gui ; then
 		xdg_icon_cache_update
 		xdg_desktop_database_update
 		xdg_mimeinfo_database_update
@@ -75,7 +75,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=(
+	local -a mycmakeargs=(
 		-DENABLE_SYSTEM_JSONCPP=ON
 		-DPACKAGING_MODE=ON
 		-DUSE_PYTHON_3=ON
@@ -84,7 +84,7 @@ src_configure() {
 		-DENABLE_MATHEMATICA=OFF
 		-DINSTALL_TARGETS_ONLY=OFF
 		-DBUILD_TESTS=$(usex test)
-		-DENABLE_FRONTEND=$(usex gtk)
+		-DENABLE_FRONTEND=$(usex gui)
 		-DENABLE_PY_JUPYTER=$(usex jupyter)
 	)
 	cmake_src_configure
