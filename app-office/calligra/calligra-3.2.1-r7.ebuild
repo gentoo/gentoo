@@ -4,6 +4,7 @@
 EAPI=8
 
 CHECKREQS_DISK_BUILD="4G"
+CMAKE_REMOVE_MODULES_LIST=( FindGSL )
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
 KFMIN=5.88.0
@@ -124,6 +125,7 @@ PATCHES=(
 	"${WORKDIR}"/${PATCHSET}/${P}-poppler-22.04.0.patch
 	"${WORKDIR}"/${PATCHSET}/${P}-clang-16-c++17.patch
 	"${WORKDIR}"/${PATCHSET}/${P}-kross-optional.patch # bug 903532
+	"${FILESDIR}"/${P}-use-cmake-FindGSL-module.patch # bug 903343
 )
 
 pkg_pretend() {
