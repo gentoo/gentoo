@@ -18,6 +18,7 @@
 	</use>
 	<upstream>
 		<bugs-to>https://gitlab.com/dave_m/clamtk/issues</bugs-to>
+		<remote-id type="github">dave-theunsub/clamtk</remote-id>
 		<remote-id type="gitlab">dave_m/clamtk</remote-id>
 	</upstream>
 </pkgmetadata>
