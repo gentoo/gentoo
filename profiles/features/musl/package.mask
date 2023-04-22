@@ -113,6 +113,7 @@ app-eselect/eselect-opencascade
 app-doc/kicad-doc
 media-gfx/freecad
 media-gfx/prusaslicer
+media-gfx/superslicer
 sci-electronics/kicad
 sci-electronics/kicad-footprints
 sci-electronics/kicad-meta
