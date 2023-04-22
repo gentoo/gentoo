@@ -16,7 +16,7 @@ S="${WORKDIR}/jaxb-istack-commons-${PV}/istack-commons"
 
 LICENSE="EPL-1.0"
 SLOT="3"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # fails if jdk-1.8:* # https://bugs.gentoo.org/857024
 DEPEND="

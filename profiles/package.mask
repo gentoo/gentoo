@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2023-04-21)
+# Does not support python 3.11, uses deprecated dev-python/future,
+# inactive upstream (last commit in 2019).
+# Removal on 2023-05-21. Bugs #897102, #888293
+net-irc/quasselgrep
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-21)
 # Unused java libraries. Removal on 2023-05-22
 dev-java/avalon-framework
@@ -400,104 +406,10 @@ dev-java/tomcat-jsp-api
 dev-java/tomcat-el-api
 dev-java/glassfish-xmlrpc-api
 
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Unmaintained, last release 18 years ago, assortment of QA issues,
-# upstream gone, fails with modern C, no revdeps remaining.
-# Removal on 2023-04-18. Bug #833484, #833536, #833944, #883757.
-dev-perl/PerlMol
-
 # Hans de Graaff <graaff@gentoo.org> (2023-03-19)
 # This version of cucumber-core is not compatible with the other
 # cucumber dependencies. Please downgrade cucumber-core.
 =dev-util/cucumber-core-11.1.0
-
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Upstream disappeared, last release over 8.5 years ago, unmaintained,
-# laundry list of QA issues, fails with modern C, no revdeps remaining.
-# Removal on 2023-04-18. Bug #683166, #814658, #834966, #898262.
-sci-libs/xdrfile
-
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Last release over 7.5 years ago, repo link broken and redirects to
-# homepage, build system is a mess, fails with modern C.
-# Removal on 2023-04-18. Bug #802729, #862414, #876993, #880577.
-x11-wm/subtle
-
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Last release over 5 years ago, fails with modern C, no revdeps in
-# tree.
-# Removal on 2023-04-18. Bug #884407.
-dev-ruby/ruby-xslt
-
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Last release over 10 years ago, fails with modern C, no revdeps in
-# tree.
-# Removal on 2023-04-18. Bug #587222, #884409.
-dev-ruby/tidy-ext
-
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Upstream disappeared, last release over 8 years ago, fails with modern
-# C, no revdeps in tree.
-# Removal on 2023-04-18. Bug #713784, #895686.
-dev-ruby/sigar
-
-# David Seifert <soap@gentoo.org> (2023-03-19)
-# Apache NIH make, long abandoned upstream, forked reboot went nowhere.
-# Last release over 2 years ago, fails with modern C and no revdeps in
-# tree. Removal on 2023-04-18. Bug #880401.
-dev-util/dmake
-
-# Hans de Graaff <graaff@gentoo.org> (2023-03-19)
-# ruby27-only package without reverse dependencies. No recent activity
-# upstream and last supported ruby version is 2.5. Masked for removal on
-# 2023-04-19.
-dev-ruby/bit-struct
-
-# Obsolete slot using an older version of faraday. Use the newer slot
-# instead. Masked for removal on 2023-04-19.
-dev-ruby/elasticsearch:6
-dev-ruby/elasticsearch-api:6
-dev-ruby/elasticsearch-transport:6
-
-# Hans de Graaff <graaff@gentoo.org> (2023-03-19)
-# Last upstream activity 5 years ago, no longer works with modern
-# Cucumber. Masked for removal on 2023-04-19.
-dev-ruby/fivemat
-
-# David Seifert <soap@gentoo.org> (2023-03-18)
-# Upstream disappeared, last release over 20 years ago, only Gentoo
-# still carries this, breaks with modern C under Clang, no revdeps.
-# Removal on 2023-04-17. Bug #875683.
-net-analyzer/bigeye
-
-# David Seifert <soap@gentoo.org> (2023-03-18)
-# Upstream disappeared, last release over 15 years ago, only Gentoo
-# still carries this, breaks with modern C under Clang, no revdeps.
-# Removal on 2023-04-17. Bug #875020.
-net-analyzer/traceroute-nanog
-
-# David Seifert <soap@gentoo.org> (2023-03-18)
-# Last release over 7.5 years ago, only Gentoo still carries this,
-# breaks with modern C under Clang, no revdeps.
-# Removal on 2023-04-17. Bug #871711.
-media-plugins/vdr-remotetimers
-
-# David Seifert <soap@gentoo.org> (2023-03-18)
-# Upstream disappeared, release is over 14 years old, only Gentoo still
-# carries this, breaks with modern C under Clang, no revdeps.
-# Removal on 2023-04-17. Bug #862438.
-sci-chemistry/prekin
-
-# David Seifert <soap@gentoo.org> (2023-03-18)
-# Unmaintained in Gentoo, last upstream commit 7 years ago, breaks with
-# modern C under Clang, no revdeps. Bug #741078, #874648, #883303.
-# Removal on 2023-04-17.
-net-wireless/spectools
-
-# Hans de Graaff <graaff@gentoo.org> (2023-03-18)
-# Ancient out-of-date package. No proper upstream release since 2011.
-# No reverse dependencies. Masked for removal on 2023-04-18.
-dev-ruby/six
 
 # Sam James <sam@gentoo.org> (2023-03-16)
 # Breaks building C++ consumers. See bug #901211 and bug #901035.
