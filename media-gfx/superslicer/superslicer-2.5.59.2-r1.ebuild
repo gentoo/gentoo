@@ -40,6 +40,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	media-libs/qhull:=
 	sci-libs/nlopt
+	sci-libs/opencascade:=
 	>=sci-mathematics/cgal-5.0:=
 	sys-apps/dbus
 	sys-libs/zlib:=
@@ -61,6 +62,9 @@ PATCHES=(
 	"${FILESDIR}/${P}-openexr3.patch"
 	"${FILESDIR}/${P}-wxgtk3-wayland-fix.patch"
 	"${FILESDIR}/${P}-relax-OpenCASCADE-dep.patch"
+	"${FILESDIR}/${P}-link-occtwrapper-statically.patch"
+	"${FILESDIR}/${P}-fix-dereferencing-in-std-unique_ptr-to-nullptr.patch"
+	"${FILESDIR}/${P}-fix-spiral_vase-null-pointer.patch"
 )
 
 S="${WORKDIR}/${MY_PN}-${PV}"
