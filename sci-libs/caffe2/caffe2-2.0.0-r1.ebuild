@@ -161,6 +161,7 @@ src_configure() {
 
 	if use cuda; then
 		addpredict "/dev/nvidiactl" # bug 867706
+		addpredict "/dev/char"
 
 		mycmakeargs+=(
 			-DCMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
