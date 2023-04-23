@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/mgorny/eselect-lib-bin-symlink.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~arm64-macos"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="app-admin/eselect"
