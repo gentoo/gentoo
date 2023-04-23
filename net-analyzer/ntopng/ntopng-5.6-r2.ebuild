@@ -81,7 +81,7 @@ src_install() {
 	doins -r httpdocs
 	doins -r scripts
 
-	insinto "${SHARE_NTOPNG_DIR}"/httpdocs
+	insinto "${SHARE_NTOPNG_DIR}"/httpdocs/dist
 	doins -r "${WORKDIR}"/ntopng-dist-${NTOPNG_DIST_COMMIT}/.
 
 	insinto "${SHARE_NTOPNG_DIR}/third-party"
