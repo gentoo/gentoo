@@ -94,6 +94,13 @@ pkg_postinst() {
 	# ensure to preserve the symlink before app-alternatives/tar
 	# is installed
 	if [[ ! -h ${EROOT}/bin/tar ]]; then
+		if [[ -e ${EROOT}/usr/bin/tar ]] ; then
+			# bug #904887
+			ewarn "${EROOT}/usr/bin/tar exists but is not a symlink."
+			ewarn "This is expected during Prefix bootstrap and unsual otherwise."
+			ewarn "Moving away unexpected ${EROOT}/usr/bin/tar to .bak."
+			mv "${EROOT}/usr/bin/tar" "${EROOT}/usr/bin/tar.bak" || die
+		fi
 		ln -s gtar "${EROOT}/bin/tar" || die
 	fi
 }
