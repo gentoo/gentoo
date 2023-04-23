@@ -48,6 +48,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/xsimd
 	json? ( dev-libs/rapidjson )
 	test? (
+		dev-libs/boost
 		dev-cpp/gflags
 		dev-cpp/gtest
 	)
