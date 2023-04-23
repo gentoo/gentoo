@@ -52,7 +52,7 @@ RDEPEND="
 
 BDEPEND="nls? ( sys-devel/gettext )"
 
-DOCS=( "CHANGES" "credits.md" "DISCLAIMER" "README.md" )
+DOCS=( "CHANGES" "credits.md" "DISCLAIMER.md" "README.md" )
 
 pkg_setup() {
 	use nautilus && python-single-r1_pkg_setup
