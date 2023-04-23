@@ -4,7 +4,9 @@
 EAPI=8
 
 TOOLCHAIN_PATCH_DEV="sam"
+PATCH_VER="1"
 PATCH_GCC_VER="14.0.0"
+MUSL_VER="1"
 MUSL_GCC_VER="14.0.0"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
@@ -31,12 +33,12 @@ fi
 inherit toolchain
 
 # Needs to be after inherit (for now?), bug #830908
-EGIT_BRANCH=master
+#EGIT_BRANCH=master
 
 # Don't keyword live ebuilds
-if ! tc_is_live && [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-fi
+#if ! tc_is_live && [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
+#	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+#fi
 
 if [[ ${CATEGORY} != cross-* ]] ; then
 	# Technically only if USE=hardened *too* right now, but no point in complicating it further.
