@@ -12,6 +12,13 @@ inline function ppp_add_notify().
 
 Additional formatting changes to the nm-fortisslvpn-pppd-compat.h based
 on review from Lubomir.
+---
+ src/nm-fortisslvpn-pppd-compat.h | 112 ++++++++++++++++++++-----------
+ src/nm-fortisslvpn-pppd-plugin.c |   6 --
+ 2 files changed, 71 insertions(+), 47 deletions(-)
+
+diff --git a/src/nm-fortisslvpn-pppd-compat.h b/src/nm-fortisslvpn-pppd-compat.h
+index 9a02908..5d2d02a 100644
 --- a/src/nm-fortisslvpn-pppd-compat.h
 +++ b/src/nm-fortisslvpn-pppd-compat.h
 @@ -1,32 +1,15 @@
@@ -170,6 +177,8 @@ on review from Lubomir.
 -#endif // #ifdef __NM_FORTISSLVPN_PPPD_COMPAT_H__
 +#endif /* #if WITH_PPP_VERSION < PPP_VERSION(2,5,0) */
 +#endif /* #ifdef __NM_FORTISSLVPN_PPPD_COMPAT_H__ */
+diff --git a/src/nm-fortisslvpn-pppd-plugin.c b/src/nm-fortisslvpn-pppd-plugin.c
+index c2efb9a..0f1c687 100644
 --- a/src/nm-fortisslvpn-pppd-plugin.c
 +++ b/src/nm-fortisslvpn-pppd-plugin.c
 @@ -438,14 +438,8 @@ plugin_init (void)

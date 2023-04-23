@@ -42,10 +42,10 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
-
 	# Fix deprecated location, #709450
 	sed -i 's|/appdata|/metainfo|g' Makefile.{in,am} || die
+
+	gnome2_src_prepare
 }
 
 src_configure() {
