@@ -22,7 +22,8 @@ IUSE="gui gtk4"
 # As of 1.3.0, if want GUI support, GTK 3 is always needed, even with GTK 4.
 # atk/graphene/harfbuzz/cairo/gdk-pixbuf/pango are all standard "dragged in by gtk/glib"
 # deps.
-RDEPEND=">=dev-libs/glib-2.32:2
+RDEPEND="
+	>=dev-libs/glib-2.32:2
 	net-misc/sstp-client
 	>=net-misc/networkmanager-1.1.0
 	net-dialup/ppp:=
@@ -33,7 +34,7 @@ RDEPEND=">=dev-libs/glib-2.32:2
 		>=x11-libs/gtk+-3.4:3
 
 		gtk4? (
-			dev-libs/atk
+			>=app-accessibility/at-spi2-core-2.46.0
 			media-libs/graphene
 			media-libs/harfbuzz:=
 			x11-libs/cairo
