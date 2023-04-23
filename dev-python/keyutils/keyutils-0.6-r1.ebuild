@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A set of python bindings for keyutils"
 HOMEPAGE="https://github.com/sassoftware/python-keyutils/"
-SRC_URI="https://github.com/sassoftware/python-keyutils/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/sassoftware/python-keyutils/archive/refs/tags/${PV}.tar.gz -> python-keyutils-${PV}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -19,6 +19,8 @@ DEPEND="sys-apps/keyutils"
 RDEPEND="${DEPEND}"
 
 distutils_enable_tests pytest
+
+S="${WORKDIR}/python-keyutils-${PV}"
 
 src_prepare() {
 	default
