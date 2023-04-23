@@ -41,8 +41,9 @@ REQUIRED_USE="
 	websockets? ( network )
 	widgets? ( gui )"
 
+# can use parts of the Qt private api and "sometimes" needs rebuilds wrt :=
 DEPEND="
-	>=dev-qt/qtbase-${QT_PV}[dbus?,gles2-only=,gui?,network?,opengl?,sql?,ssl=,widgets?,xml?]
+	>=dev-qt/qtbase-${QT_PV}=[dbus?,gles2-only=,gui?,network?,opengl?,sql?,ssl=,widgets?,xml?]
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		sys-apps/dbus
