@@ -53,13 +53,8 @@ src_prepare() {
 			-e 's@SET(_install_dir lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/med)@SET(_install_dir '${pysite}'/med)@' \
 			-i ./python/CMakeLists.txt || die "sed on ./python/CMakeLists.txt failed"
 	fi
-	for cm in ./src/CMakeLists.txt ./tools/medimport/CMakeLists.txt
-	do
-		sed -i -e "s@INSTALL(TARGETS \(.*\) DESTINATION lib)@INSTALL(TARGETS \1 DESTINATION $(get_libdir))@" \
-			"${cm}" || die "sed on ${cm} failed"
-	done
 	sed -e 's/med-fichier/med/' -i CMakeLists.txt || die "fix paths failed"
-	sed -e 's|doc/med-${MED_STR_VERSION}|doc/med-${MED_STR_VERSION}/html|' \
+	sed -e 's|doc/med-${MED_STR_VERSION}|doc/'${PF}'/html|' \
 		-i CMakeLists.txt || die "fix doc path failed"
 
 	# bug #862900, already reported upstream. CHECK on updates!
