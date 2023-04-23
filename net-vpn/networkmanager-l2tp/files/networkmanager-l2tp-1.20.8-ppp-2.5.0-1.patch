@@ -11,6 +11,13 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
+---
+ configure.ac              | 46 +++++++++++++++++++++++++++++++++++++--
+ src/nm-l2tp-pppd-plugin.c | 20 +++++++++--------
+ 2 files changed, 55 insertions(+), 11 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index baf8d44..b925eb0 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -33,7 +33,10 @@ dnl
@@ -90,6 +97,8 @@ Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
  ], [have_eap_tls=yes] , [have_eap_tls=no])
  
  if test "x${have_eap_tls}" = "xno"; then
+diff --git a/src/nm-l2tp-pppd-plugin.c b/src/nm-l2tp-pppd-plugin.c
+index 71a7878..dd752a1 100644
 --- a/src/nm-l2tp-pppd-plugin.c
 +++ b/src/nm-l2tp-pppd-plugin.c
 @@ -9,11 +9,6 @@

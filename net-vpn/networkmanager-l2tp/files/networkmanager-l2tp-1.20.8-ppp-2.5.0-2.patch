@@ -11,6 +11,18 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
+---
+ Makefile.am                                   |  5 +-
+ src/nm-l2tp-pppd-compat.h                     | 93 +++++++++++++++++++
+ src/nm-l2tp-pppd-plugin.c                     |  7 +-
+ ...{nm-ppp-status.h => nm-l2tp-pppd-status.h} |  0
+ src/nm-l2tp-service.c                         |  2 +-
+ 5 files changed, 100 insertions(+), 7 deletions(-)
+ create mode 100644 src/nm-l2tp-pppd-compat.h
+ rename src/{nm-ppp-status.h => nm-l2tp-pppd-status.h} (100%)
+
+diff --git a/Makefile.am b/Makefile.am
+index 8201ca7..1feb9be 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -99,7 +99,7 @@ src_nm_l2tp_service_SOURCES = \
@@ -32,6 +44,9 @@ Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
  src_nm_l2tp_pppd_plugin_la_CPPFLAGS = $(src_cppflags)
  src_nm_l2tp_pppd_plugin_la_LDFLAGS = \
  	-module -avoid-version
+diff --git a/src/nm-l2tp-pppd-compat.h b/src/nm-l2tp-pppd-compat.h
+new file mode 100644
+index 0000000..80e2891
 --- /dev/null
 +++ b/src/nm-l2tp-pppd-compat.h
 @@ -0,0 +1,93 @@
@@ -128,6 +143,8 @@ Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
 +
 +#endif // #if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
 +#endif // #ifdef __NM_L2TP_PPPD_COMPAT_H__
+diff --git a/src/nm-l2tp-pppd-plugin.c b/src/nm-l2tp-pppd-plugin.c
+index dd752a1..f1d588e 100644
 --- a/src/nm-l2tp-pppd-plugin.c
 +++ b/src/nm-l2tp-pppd-plugin.c
 @@ -9,8 +9,6 @@
@@ -153,9 +170,12 @@ Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
  #include "nm-utils/nm-shared-utils.h"
  #include "nm-utils/nm-vpn-plugin-macros.h"
  
+diff --git a/src/nm-ppp-status.h b/src/nm-l2tp-pppd-status.h
 similarity index 100%
 rename from src/nm-ppp-status.h
 rename to src/nm-l2tp-pppd-status.h
+diff --git a/src/nm-l2tp-service.c b/src/nm-l2tp-service.c
+index 55f9542..629923c 100644
 --- a/src/nm-l2tp-service.c
 +++ b/src/nm-l2tp-service.c
 @@ -36,7 +36,7 @@
