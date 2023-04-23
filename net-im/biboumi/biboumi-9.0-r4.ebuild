@@ -9,7 +9,11 @@ MY_PV="${PV/_/-}"
 
 DESCRIPTION="XMPP gateway to IRC"
 HOMEPAGE="https://biboumi.louiz.org/"
-SRC_URI="https://git.louiz.org/biboumi/snapshot/biboumi-${MY_PV}.tar.xz"
+SRC_URI="
+	https://git.louiz.org/biboumi/snapshot/biboumi-${MY_PV}.tar.xz
+	https://lab.louiz.org/flow/biboumi/-/commit/f9d58a44871931ef9b60354fade6f8d7b24cc668.patch ->
+		${PN}-9.0-fix-missing-include.patch
+"
 
 LICENSE="ZLIB"
 SLOT="0"
@@ -46,6 +50,7 @@ DOCS=( README.rst CHANGELOG.rst doc/user.rst )
 PATCHES=(
 	"${FILESDIR}/${PN}-9.0-do-not-use-as-a-namespace-separator-with-expat.patch"
 	"${FILESDIR}/${PN}-9.0-use-system-catch2.patch"
+	"${DISTDIR}/${PN}-9.0-fix-missing-include.patch"
 )
 
 src_configure() {
