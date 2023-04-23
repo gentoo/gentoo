@@ -23,11 +23,13 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="bzip2 dataset json lz4 parquet re2 snappy test zlib zstd"
+IUSE="brotli bzip2 compute dataset json lz4 parquet re2 snappy ssl test zlib zstd"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	brotli? ( app-arch/brotli )
 	bzip2? ( app-arch/bzip2 )
+	compute? ( dev-libs/libutf8proc )
 	dataset? (
 		dev-libs/libutf8proc
 		re2? ( dev-libs/re2 )
@@ -36,6 +38,7 @@ RDEPEND="
 	parquet? (
 		dev-libs/libutf8proc
 		dev-libs/thrift
+		ssl? ( dev-libs/openssl )
 	)
 	snappy? ( app-arch/snappy )
 	zlib? ( sys-libs/zlib )
@@ -45,6 +48,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/xsimd
 	json? ( dev-libs/rapidjson )
 	test? (
+		dev-cpp/gflags
 		dev-cpp/gtest
 	)
 "
@@ -72,15 +76,20 @@ src_configure() {
 	local mycmakeargs=(
 		-DARROW_BUILD_STATIC=OFF
 		-DARROW_BUILD_TESTS=$(usex test)
+		-DARROW_COMPUTE=$(usex compute)
 		-DARROW_CSV=ON
 		-DARROW_DATASET=$(usex dataset)
 		-DARROW_DEPENDENCY_SOURCE=SYSTEM
 		-DARROW_DOC_DIR=share/doc/${PF}
+		-DARROW_FILESYSTEM=ON
+		-DARROW_HDFS=ON
 		-DARROW_JEMALLOC=OFF
 		-DARROW_JSON=$(usex json)
 		-DARROW_PARQUET=$(usex parquet)
+		-DPARQUET_REQUIRE_ENCRYPTION=$(usex ssl)
 		-DARROW_USE_CCACHE=OFF
 		-DARROW_USE_SCCACHE=OFF
+		-DARROW_WITH_BROTLI=$(usex brotli)
 		-DARROW_WITH_BZ2=$(usex bzip2)
 		-DARROW_WITH_LZ4=$(usex lz4)
 		-DARROW_WITH_RE2=$(usex re2)
