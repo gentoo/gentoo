@@ -397,11 +397,6 @@ dev-python/collective-checkdocs
 # Please upgrade to make-4.4.1 as make-4.4 has a bunch of issues.
 =sys-devel/make-4.4
 
-# John Helmert III <ajak@gentoo.org> (2023-03-22)
-# Multiple vulnerabilities, unmaintained and broken in Gentoo, removal
-# on 2023-04-22. Bug #782037, #850547.
-net-fs/minio
-
 # Hans de Graaff <graaff@gentoo.org> (2023-03-19)
 # This version of cucumber-core is not compatible with the other
 # cucumber dependencies. Please downgrade cucumber-core.
