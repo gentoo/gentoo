@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit readme.gentoo-r1
 
 DESCRIPTION="A user-mode PPPoE client and server suite for Linux"
-HOMEPAGE="https://dianne.skoll.ca/projects/rp-pppoe/"
+HOMEPAGE="https://dianne.skoll.ca/projects/rp-pppoe/ https://salsa.debian.org/dskoll/rp-pppoe"
 if [[ $PV = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI=https://github.com/dfskoll/rp-pppoe.git
