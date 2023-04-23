@@ -35,7 +35,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	test? ( dev-cpp/catch:0 )
+	test? ( <dev-cpp/catch-3:0 )
 "
 BDEPEND="dev-python/sphinx"
 RDEPEND="
