@@ -19,20 +19,18 @@ IUSE="lua"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
-	dev-libs/atk
+	>=app-accessibility/at-spi2-core-2.46.0
 	dev-libs/glib:2
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango
-	lua? ( ${LUA_DEPS} )"
-
+	lua? ( ${LUA_DEPS} )
+"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-BDEPEND="
-	virtual/pkgconfig"
-
-DOCS=("../README")
+DOCS=( "../README" )
 
 S="${WORKDIR}/${PN}/gtk"
 
