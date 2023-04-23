@@ -57,7 +57,7 @@ COMMON_DEPEND="
 	gnutls? (
 		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}]
 	)
-	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6] )
+	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6(+)] )
 	modemmanager? (
 		net-misc/mobile-broadband-provider-info
 		>=net-misc/modemmanager-0.7.991:0=

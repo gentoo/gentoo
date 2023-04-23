@@ -9,6 +9,9 @@ inherit gnome.org linux-info meson-multilib python-any-r1 readme.gentoo-r1 syste
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
+# bug #904840
+# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/1607
+SRC_URI+=" https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/5df19f5b26c5921a401e63fb329e844a02d6b1f2.patch -> ${PN}-ppp-2.5.0.patch"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
@@ -29,7 +32,7 @@ REQUIRED_USE="
 	?? ( syslog systemd )
 "
 
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 COMMON_DEPEND="
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
@@ -119,6 +122,10 @@ BDEPEND="
 			dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	)
 "
+
+PATCHES=(
+	"${DISTDIR}"/${PN}-ppp-2.5.0.patch
+)
 
 python_check_deps() {
 	if use introspection; then
