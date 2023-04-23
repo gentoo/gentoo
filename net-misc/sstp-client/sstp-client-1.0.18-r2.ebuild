@@ -33,6 +33,7 @@ PATCHES=(
 
 	"${FILESDIR}/${PN}-1.0.18-includes.patch"
 	"${WORKDIR}/${P}-ppp-2.5.0-patches"
+	"${FILESDIR}/sstp-client-1.0.18-sstp-mppe.patch"
 )
 
 src_prepare() {
