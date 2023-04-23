@@ -236,16 +236,6 @@ app-misc/wildq
 dev-perl/Bio-SamTools
 sci-biology/samtools:0.1-legacy
 
-# Florian Schmaus <flow@gentoo.org> (2023-04-05)
-# Packages that became orphaned leaf packages with the removal of
-# app-admin/abrt. See
-# - eea6958136ef ("profiles: Mask abrt software for removal")
-# - 8aedf444c3a5 ("app-admin/abrt: treeclean")
-# Removal on 2023-04-20
-acct-user/abrt
-acct-group/abrt
-sec-policy/selinux-abrt
-
 # Hans de Graaff <graaff@gentoo.org> (2023-04-02)
 # Archived upstream since two years, meant to be used with Rails
 # 5.2. Continued as Turbo as part of the hotwire project in Rails.
