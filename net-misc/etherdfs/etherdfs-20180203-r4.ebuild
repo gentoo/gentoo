@@ -57,7 +57,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/etherdfs.initd etherdfs
 	newconfd "${FILESDIR}"/etherdfs.confd etherdfs
-	systemd_dounit "${FILESDIR}"/etherdfs.service
+	systemd_newunit "${FILESDIR}"/etherdfs.service-r1 etherdfs.service
 
 	einstalldocs
 }
