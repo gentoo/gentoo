@@ -406,7 +406,6 @@ net-fs/minio
 # Unused Java libraries. Removal on 2023-04-22.
 dev-java/tomcat-jsp-api
 dev-java/tomcat-el-api
-dev-java/glassfish-xmlrpc-api
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-19)
 # This version of cucumber-core is not compatible with the other
