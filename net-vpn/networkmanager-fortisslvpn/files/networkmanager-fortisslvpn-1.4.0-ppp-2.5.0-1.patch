@@ -11,6 +11,19 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Signed-off-by: Eivind NÃ¦ss <eivnaes@yahoo.com>
+---
+ Makefile.am                                   |  5 +-
+ configure.ac                                  | 37 +++++++-
+ src/nm-fortisslvpn-pppd-compat.h              | 93 +++++++++++++++++++
+ src/nm-fortisslvpn-pppd-plugin.c              | 24 ++---
+ ...-status.h => nm-fortisslvpn-pppd-status.h} |  0
+ src/nm-fortisslvpn-service.c                  |  2 +-
+ 6 files changed, 145 insertions(+), 16 deletions(-)
+ create mode 100644 src/nm-fortisslvpn-pppd-compat.h
+ rename src/{nm-ppp-status.h => nm-fortisslvpn-pppd-status.h} (100%)
+
+diff --git a/Makefile.am b/Makefile.am
+index b2e5533..e1e5ec9 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -81,7 +81,7 @@ libexec_PROGRAMS += src/nm-fortisslvpn-service
@@ -32,6 +45,8 @@ Signed-off-by: Eivind NÃ¦ss <eivnaes@yahoo.com>
  nodist_src_nm_fortisslvpn_pppd_plugin_la_SOURCES = \
  	src/nm-fortisslvpn-pppd-service-dbus.h
  src_nm_fortisslvpn_pppd_plugin_la_CPPFLAGS = $(src_cppflags)
+diff --git a/configure.ac b/configure.ac
+index a998707..877493e 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -19,7 +19,10 @@ AC_PROG_CC
@@ -98,6 +113,9 @@ Signed-off-by: Eivind NÃ¦ss <eivnaes@yahoo.com>
  dnl
  dnl Checks for typedefs, structures, and compiler characteristics.
  dnl
+diff --git a/src/nm-fortisslvpn-pppd-compat.h b/src/nm-fortisslvpn-pppd-compat.h
+new file mode 100644
+index 0000000..9a02908
 --- /dev/null
 +++ b/src/nm-fortisslvpn-pppd-compat.h
 @@ -0,0 +1,93 @@
@@ -194,6 +212,8 @@ Signed-off-by: Eivind NÃ¦ss <eivnaes@yahoo.com>
 +
 +#endif // #if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
 +#endif // #ifdef __NM_FORTISSLVPN_PPPD_COMPAT_H__
+diff --git a/src/nm-fortisslvpn-pppd-plugin.c b/src/nm-fortisslvpn-pppd-plugin.c
+index f2ad262..c2efb9a 100644
 --- a/src/nm-fortisslvpn-pppd-plugin.c
 +++ b/src/nm-fortisslvpn-pppd-plugin.c
 @@ -23,12 +23,6 @@
@@ -266,9 +286,12 @@ Signed-off-by: Eivind NÃ¦ss <eivnaes@yahoo.com>
 +#endif	
  	return 0;
  }
+diff --git a/src/nm-ppp-status.h b/src/nm-fortisslvpn-pppd-status.h
 similarity index 100%
 rename from src/nm-ppp-status.h
 rename to src/nm-fortisslvpn-pppd-status.h
+diff --git a/src/nm-fortisslvpn-service.c b/src/nm-fortisslvpn-service.c
+index 6c340d0..a8483c2 100644
 --- a/src/nm-fortisslvpn-service.c
 +++ b/src/nm-fortisslvpn-service.c
 @@ -40,7 +40,7 @@

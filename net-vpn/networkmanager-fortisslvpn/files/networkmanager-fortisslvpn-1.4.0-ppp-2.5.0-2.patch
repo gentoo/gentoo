@@ -10,6 +10,12 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Signed-off-by: Eivind NÃ¦ss <eivnaes@yahoo.com>
+---
+ configure.ac | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 877493e..a5b4abb 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -47,11 +47,7 @@ AC_CHECK_HEADERS(pppd/pppd.h,,
