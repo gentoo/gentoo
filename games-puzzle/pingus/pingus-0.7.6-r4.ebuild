@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${P}-boost_signals2.patch
 	"${FILESDIR}"/${P}-python3.patch
+	"${FILESDIR}"/${P}-gcc13.patch
 )
 
 src_compile() {
