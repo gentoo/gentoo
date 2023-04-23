@@ -31,3 +31,10 @@ src_configure() {
 	tc-export CC
 	econf $(use_with lto)
 }
+
+src_install() {
+	# Still needed as of 20221016, otherwise man dirs don't exist
+	# at the right time.
+	emake -j1 DESTDIR="${D}" install
+	einstalldocs
+}
