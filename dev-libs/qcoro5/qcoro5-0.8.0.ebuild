@@ -33,6 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	examples? (
 		dev-qt/qtconcurrent:5
+		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
 	)
 	test? (
