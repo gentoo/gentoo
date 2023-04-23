@@ -5,7 +5,7 @@ EAPI=8
 
 MY_PN="NetworkManager-l2tp"
 MY_P="${MY_PN}-${PV}"
-
+GNOME2_EAUTORECONF="yes"
 inherit gnome.org
 
 DESCRIPTION="NetworkManager L2TP plugin"
@@ -48,6 +48,10 @@ BDEPEND="dev-util/gdbus-codegen
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.20.8-ppp-2.5.0.patch
+)
 
 src_configure() {
 	local PPPD_VER=$(best_version net-dialup/ppp)
