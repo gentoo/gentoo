@@ -31,14 +31,14 @@ DEPEND="
 	)
 "
 RDEPEND="${RDEPEND}
-	net-dialup/ppp
+	net-dialup/ppp:=
 	>=net-vpn/openfortivpn-1.2.0"
 BDEPEND="dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.19
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.0-ppp-2.5.0.patch
+	"${FILESDIR}"/${PN}-1.4.0-ppp-2.5.0-{1,2,3}.patch
 )
 
 src_prepare() {
