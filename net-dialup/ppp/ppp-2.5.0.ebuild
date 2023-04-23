@@ -49,10 +49,6 @@ src_configure() {
 	econf "${args[@]}"
 }
 
-src_compile() {
-	default
-}
-
 src_install() {
 	default
 
