@@ -44,6 +44,7 @@ DEPEND="
 		acct-user/ntp
 		sys-libs/libcap
 	)
+	libtomcrypt? ( dev-libs/libtomcrypt:= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss:= )
 	nts? ( net-libs/gnutls:= )
