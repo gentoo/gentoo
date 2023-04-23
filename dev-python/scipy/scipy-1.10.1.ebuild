@@ -74,18 +74,6 @@ BDEPEND="
 	)
 "
 
-EPYTEST_DESELECT=(
-	linalg/tests/test_decomp.py::TestSchur::test_sort
-	linalg/tests/test_solvers.py::test_solve_discrete_are
-	optimize/tests/test_milp.py::test_milp_timeout_16545
-
-	# Network
-	datasets/tests/test_data.py::TestDatasets::test_existence_all
-	datasets/tests/test_data.py::TestDatasets::test_ascent
-	datasets/tests/test_data.py::TestDatasets::test_face
-	datasets/tests/test_data.py::TestDatasets::test_electrocardiogram
-)
-
 distutils_enable_tests pytest
 
 src_unpack() {
@@ -106,6 +94,19 @@ python_configure_all() {
 
 python_test() {
 	cd "${T}" || die
+
+	local EPYTEST_DESELECT=(
+		linalg/tests/test_decomp.py::TestSchur::test_sort
+		linalg/tests/test_solvers.py::test_solve_discrete_are
+		optimize/tests/test_milp.py::test_milp_timeout_16545
+
+		# Network
+		datasets/tests/test_data.py::TestDatasets::test_existence_all
+		datasets/tests/test_data.py::TestDatasets::test_ascent
+		datasets/tests/test_data.py::TestDatasets::test_face
+		datasets/tests/test_data.py::TestDatasets::test_electrocardiogram
+	)
+	local EPYTEST_IGNORE=()
 
 	if ! has_version -b "dev-python/pooch[${PYTHON_USEDEP}]" ; then
 		EPYTEST_IGNORE+=(
