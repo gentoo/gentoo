@@ -107,3 +107,13 @@ src_test() {
 	export ARROW_TEST_DATA="${WORKDIR}/arrow-testing-${ARROW_DATA_GIT_HASH}/data"
 	cmake_src_test
 }
+
+src_install() {
+	cmake_src_install
+	if use test; then
+		cd "${D}"/usr/$(get_libdir)
+		rm -r cmake/ArrowTesting || die
+		rm libarrow_testing* || die
+		rm pkgconfig/arrow-testing.pc || die
+	fi
+}
