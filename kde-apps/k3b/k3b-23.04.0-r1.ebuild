@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.101.0
+KFMIN=5.104.0
 QTMIN=5.15.5
 inherit ecm gear.kde.org
 
@@ -15,10 +15,10 @@ HOMEPAGE="https://apps.kde.org/k3b/ https://userbase.kde.org/K3b"
 
 LICENSE="GPL-2 FDL-1.2"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
-IUSE="dvd ffmpeg flac mad musepack sndfile taglib vcd vorbis"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+IUSE="dvd ffmpeg flac lame mad musepack sndfile sox taglib vcd vorbis"
 
-REQUIRED_USE="flac? ( taglib )"
+REQUIRED_USE="flac? ( taglib ) lame? ( taglib ) sox? ( taglib )"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -50,6 +50,7 @@ DEPEND="
 	dvd? ( media-libs/libdvdread:= )
 	ffmpeg? ( media-video/ffmpeg:0= )
 	flac? ( >=media-libs/flac-1.2:=[cxx] )
+	lame? ( media-sound/lame )
 	mad? ( media-libs/libmad )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	sndfile? ( media-libs/libsndfile )
@@ -65,6 +66,7 @@ RDEPEND="${DEPEND}
 	dev-libs/libburn
 	media-sound/cdparanoia
 	dvd? ( >=app-cdr/dvd+rw-tools-7 )
+	sox? ( media-sound/sox )
 	vcd? ( media-video/vcdimager )
 "
 
@@ -74,8 +76,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DK3B_BUILD_API_DOCS=OFF
 		-DK3B_BUILD_EXTERNAL_ENCODER_PLUGIN=OFF
-		-DK3B_BUILD_LAME_ENCODER_PLUGIN=OFF
-		-DK3B_BUILD_SOX_ENCODER_PLUGIN=OFF
 		-DK3B_BUILD_WAVE_DECODER_PLUGIN=ON
 		-DK3B_ENABLE_HAL_SUPPORT=OFF
 		-DK3B_ENABLE_MUSICBRAINZ=OFF
@@ -84,9 +84,11 @@ src_configure() {
 		-DK3B_ENABLE_DVD_RIPPING=$(usex dvd)
 		-DK3B_BUILD_FFMPEG_DECODER_PLUGIN=$(usex ffmpeg)
 		-DK3B_BUILD_FLAC_DECODER_PLUGIN=$(usex flac)
+		-DK3B_BUILD_LAME_ENCODER_PLUGIN=$(usex lame)
 		-DK3B_BUILD_MAD_DECODER_PLUGIN=$(usex mad)
 		-DK3B_BUILD_MUSE_DECODER_PLUGIN=$(usex musepack)
 		-DK3B_BUILD_SNDFILE_DECODER_PLUGIN=$(usex sndfile)
+		-DK3B_BUILD_SOX_ENCODER_PLUGIN=$(usex sox)
 		-DK3B_ENABLE_TAGLIB=$(usex taglib)
 		-DK3B_BUILD_OGGVORBIS_DECODER_PLUGIN=$(usex vorbis)
 		-DK3B_BUILD_OGGVORBIS_ENCODER_PLUGIN=$(usex vorbis)
