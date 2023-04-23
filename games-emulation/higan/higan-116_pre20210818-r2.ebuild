@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,8 +24,8 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	openal? ( media-libs/openal )
-	opengl? ( virtual/opengl )
-	pulseaudio? ( media-sound/pulseaudio )
+	opengl? ( media-libs/libglvnd[X] )
+	pulseaudio? ( media-libs/libpulse )
 	sdl? ( media-libs/libsdl2[joystick] )
 	udev? ( virtual/libudev:= )
 	xv? ( x11-libs/libXv )
@@ -51,6 +51,7 @@ PATCHES=(
 	# insane build system, reinvents every built-in rule
 	"${FILESDIR}"/${PN}-116_pre20210404-makefile.patch
 	"${FILESDIR}"/${PN}-116_pre20210818-paths.patch
+	"${FILESDIR}"/${PN}-116_pre20210818-gcc13.patch
 )
 
 src_prepare() {
