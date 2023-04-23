@@ -1,0 +1,21 @@
+--- a/src/server/objects.c
++++ b/src/server/objects.c
+@@ -24,7 +24,7 @@
+ #include <stdio.h>
+ #endif
+ 
+-
++extern void logit(char* fmt, ...);
+ 
+     
+ size_t getSize(ObjectPtr optr)
+--- a/src/server/subscription.c
++++ b/src/server/subscription.c
+@@ -28,6 +28,7 @@
+ 
+ extern Manager* manager;
+ extern Connection* admin_connection;
++extern void logit(char* fmt, ...);
+ 
+ /*
+  * Create a new subscription:
