@@ -45,6 +45,7 @@ BDEPEND="
 PATCHES=(
 	"${WORKDIR}"/${PN}-0.187-patches/
 	"${FILESDIR}"/${P}-configure-bashisms.patch
+	"${FILESDIR}"/${P}-clang16-tests.patch
 )
 
 src_unpack() {

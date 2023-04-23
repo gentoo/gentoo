@@ -1,0 +1,26 @@
+https://sourceware.org/git/?p=elfutils.git;a=commit;h=51373aa9a77ef53d237edc1af664efcbb49f1bf5
+
+From 51373aa9a77ef53d237edc1af664efcbb49f1bf5 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Sat, 22 Apr 2023 21:37:09 +0200
+Subject: [PATCH] testsuite: Avoid C99 compatibility issues in
+ run-native-test.sh
+
+Include <unistd.h> for the pause function, and add the return type
+of main.  Avoids an implicit function declaration and implicit int.
+
+Signed-off-by: Florian Weimer <fweimer@redhat.com>
+--- a/tests/run-native-test.sh
++++ b/tests/run-native-test.sh
+@@ -27,7 +27,8 @@
+ # in all builds.
+ 
+ tempfiles native.c native
+-echo 'main () { while (1) pause (); }' > native.c
++printf '#include <unistd.h>\nint main (void) { while (1) pause (); }\n' \
++  > native.c
+ 
+ native=0
+ kill_native()
+-- 
+2.31.1
