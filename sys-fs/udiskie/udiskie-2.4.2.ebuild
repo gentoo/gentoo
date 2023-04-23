@@ -19,7 +19,7 @@ RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	sys-fs/udisks:2"
 DEPEND="app-text/asciidoc
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/python-keyutils[${PYTHON_USEDEP}] )"
+	test? ( dev-python/keyutils[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
