@@ -13,6 +13,6 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-qt/qtbase:6[gui,opengl,widgets]"
+RDEPEND="dev-qt/qtbase:6[gui,opengl,widgets,-gles2-only]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"
