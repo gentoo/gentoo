@@ -52,6 +52,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DUSE_EXTERNAL_GTEST=ON
 			-DBUILD_BENCHMARKS=OFF
+			-DRUN_NETWORK_DEPENDENT_TESTS=OFF
 		)
 	fi
 
