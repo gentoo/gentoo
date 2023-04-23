@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/904534
+--- a/ogr/ogrsf_frmts/flatgeobuf/CMakeLists.txt
++++ b/ogr/ogrsf_frmts/flatgeobuf/CMakeLists.txt
+@@ -8,6 +8,7 @@
+           ogrflatgeobufeditablelayer.cpp
+           PLUGIN_CAPABLE
+           NO_DEPS)
++set_property(TARGET ogr_FlatGeobuf PROPERTY CXX_STANDARD 17)
+ gdal_standard_includes(ogr_FlatGeobuf)
+ target_include_directories(ogr_FlatGeobuf PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+                                                   $<TARGET_PROPERTY:ogrsf_generic,SOURCE_DIR>)
+
