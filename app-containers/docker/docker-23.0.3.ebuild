@@ -167,6 +167,7 @@ pkg_setup() {
 		~IP_VS_PROTO_UDP
 		~IP_VS_RR
 		"
+	WARNING_RT_GROUP_SCHED="CONFIG_RT_GROUP_SCHED is disabled: Depending on your docker setup, you may want to enable this. See https://docs.docker.com/config/containers/resource_constraints/#configure-the-realtime-scheduler for more information."
 
 	if use selinux; then
 		CONFIG_CHECK+="
