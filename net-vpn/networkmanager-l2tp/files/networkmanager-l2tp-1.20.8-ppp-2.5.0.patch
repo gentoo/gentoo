@@ -1,0 +1,329 @@
+https://bugs.gentoo.org/904843
+https://github.com/nm-l2tp/NetworkManager-l2tp/commit/e6860eb957208a932fb565dd7b5e79fe5a4df662
+https://github.com/nm-l2tp/NetworkManager-l2tp/commit/36a427c316a8ccd3168606f6e7fd6c8ae2b9bebf
+
+From e6860eb957208a932fb565dd7b5e79fe5a4df662 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Eivind=20N=C3=A6ss?= <eivnaes@yahoo.com>
+Date: Fri, 3 Mar 2023 05:22:13 +0000
+Subject: [PATCH] Adding support for compiling against pppd-2.5.0 (current
+ master)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,7 +33,10 @@ dnl
+ AC_PROG_CC
+ AM_PROG_CC_C_O
+ AC_PROG_INSTALL
++AC_PROG_CPP
++AC_PROG_EGREP
+ AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
++PKG_PROG_PKG_CONFIG()
+ 
+ AC_CHECK_PROG([has_file], file, yes, no)
+ if test x$has_file = xno ; then
+@@ -49,24 +52,63 @@ dnl
+ dnl Required headers
+ dnl
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(fcntl.h paths.h sys/ioctl.h sys/time.h syslog.h unistd.h)
++AC_CHECK_HEADERS([
++	fcntl.h
++	paths.h
++	stdarg.h
++	stdbool.h
++	sys/ioctl.h
++	sys/time.h
++	syslog.h
++	unistd.h
++	])
+ 
+ AC_CHECK_HEADERS(pppd/pppd.h,,
+   AC_MSG_ERROR(couldn't find pppd.h. pppd development headers are required.))
+ 
++dnl
++dnl Check the presense of other pppd/*.h files
++AC_CHECK_HEADERS([
++    pppd/chap.h
++    pppd/chap-new.h
++    pppd/chap_ms.h
++    ])
++
++dnl
++dnl Versions >= 2.5.0 will have pkg-config support
++PKG_CHECK_EXISTS([pppd],
++    [AS_VAR_SET([pppd_pkgconfig_support],[yes])])
++
++dnl
++dnl Get the version of pppd using pkg-config, assume 2.4.9 if not present
++PPPD_VERSION=2.4.9
++if test x"$pppd_pkgconfig_support" = xyes; then
++    PPPD_VERSION=`$PKG_CONFIG --modversion pppd`
++fi
++
+ AC_ARG_WITH([pppd-plugin-dir], AS_HELP_STRING([--with-pppd-plugin-dir=DIR], [path to the pppd plugins directory]))
+ 
+ if test -n "$with_pppd_plugin_dir" ; then
+ 	PPPD_PLUGIN_DIR="$with_pppd_plugin_dir"
+ else
+-	PPPD_PLUGIN_DIR="${libdir}/pppd/2.4.9"
++	PPPD_PLUGIN_DIR="${libdir}/pppd/$PPPD_VERSION"
+ fi
+ AC_SUBST(PPPD_PLUGIN_DIR)
+ 
++dnl The version of pppd dictates what code can be included, i.e. enable use of
++dnl   #if WITH_PPP_VERSION >= PPP_VERSION(2,5,0) in the code
++AC_DEFINE_UNQUOTED([PPP_VERSION(x,y,z)],
++    [((x & 0xFF) << 16 | (y & 0xFF) << 8 | (z & 0xFF) << 0)],
++    [Macro to help determine the particular version of pppd])
++PPP_VERSION=$(echo $PPPD_VERSION | sed -e "s/\./\,/g")
++AC_DEFINE_UNQUOTED(WITH_PPP_VERSION, PPP_VERSION($PPP_VERSION),
++    [The real version of pppd represented as an int])
++
+ AC_MSG_CHECKING(whether EAP-TLS patch has been applied to pppd)
+ AC_EGREP_CPP(eaptls_passwd_hook, [
+ #define USE_EAPTLS
+ #include <pppd/pppd.h>
++#include <pppd/eap.h>
+ ], [have_eap_tls=yes] , [have_eap_tls=no])
+ 
+ if test "x${have_eap_tls}" = "xno"; then
+--- a/src/nm-l2tp-pppd-plugin.c
++++ b/src/nm-l2tp-pppd-plugin.c
+@@ -9,11 +9,6 @@
+ #include <config.h>
+ #define ___CONFIG_H__
+ 
+-/* pppd headers *sigh* */
+-#include <pppd/pppd.h>
+-#include <pppd/fsm.h>
+-#include <pppd/ipcp.h>
+-
+ #include "nm-default.h"
+ 
+ #include <string.h>
+@@ -25,13 +20,14 @@
+ 
+ #include "nm-l2tp-service.h"
+ #include "nm-ppp-status.h"
++#include "nm-l2tp-pppd-compat.h"
+ 
+ #include "nm-utils/nm-shared-utils.h"
+ #include "nm-utils/nm-vpn-plugin-macros.h"
+ 
+ int plugin_init(void);
+ 
+-char pppd_version[] = VERSION;
++char pppd_version[] = PPPD_VERSION;
+ 
+ /*****************************************************************************/
+ 
+@@ -146,7 +142,7 @@ nm_phasechange(void *data, int arg)
+ static void
+ nm_ip_up(void *data, int arg)
+ {
+-    guint32         pppd_made_up_address = htonl (0x0a404040 + ifunit);
++    guint32         pppd_made_up_address = htonl (0x0a404040 + ppp_ifunit());
+     ipcp_options    opts                 = ipcp_gotoptions[0];
+     ipcp_options    peer_opts            = ipcp_hisoptions[0];
+     GVariantBuilder builder;
+@@ -166,7 +162,7 @@ nm_ip_up(void *data, int arg)
+     g_variant_builder_add(&builder,
+                           "{sv}",
+                           NM_VPN_PLUGIN_IP4_CONFIG_TUNDEV,
+-                          g_variant_new_string(ifname));
++                          g_variant_new_string(ppp_ifname()));
+ 
+     g_variant_builder_add(&builder,
+                           "{sv}",
+@@ -343,12 +339,18 @@ plugin_init(void)
+     chap_check_hook  = get_chap_check;
+     pap_passwd_hook  = get_credentials;
+     pap_check_hook   = get_pap_check;
+-#ifdef USE_EAPTLS
++#if defined(USE_EAPTLS) || defined(PPP_WITH_EAPTLS)
+     eaptls_passwd_hook = get_credentials;
+ #endif
+ 
++#if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
+     add_notifier(&phasechange, nm_phasechange, NULL);
+     add_notifier(&ip_up_notifier, nm_ip_up, NULL);
+     add_notifier(&exitnotify, nm_exit_notify, NULL);
++#else
++    ppp_add_notify(NF_PHASE_CHANGE, nm_phasechange, NULL);
++    ppp_add_notify(NF_IP_UP, nm_ip_up, NULL);
++    ppp_add_notify(NF_EXIT, nm_exit_notify, NULL);
++#endif
+     return 0;
+ }
+
+From 36a427c316a8ccd3168606f6e7fd6c8ae2b9bebf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Eivind=20N=C3=A6ss?= <eivnaes@yahoo.com>
+Date: Fri, 3 Mar 2023 05:22:13 +0000
+Subject: [PATCH] Adding support for compiling against pppd-2.5.0 (current
+ master)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -99,7 +99,7 @@ src_nm_l2tp_service_SOURCES = \
+ 	shared/nm-l2tp-crypto-nss.c \
+ 	shared/utils.h \
+ 	shared/utils.c \
+-	src/nm-ppp-status.h \
++	src/nm-l2tp-pppd-status.h \
+ 	src/nm-l2tp-service.h \
+ 	src/nm-l2tp-service.c
+ src_nm_l2tp_service_CPPFLAGS = $(src_cppflags) $(NSS_CFLAGS) $(OPENSSL_CFLAGS)
+@@ -118,7 +118,8 @@ pppd_plugin_LTLIBRARIES = src/nm-l2tp-pppd-plugin.la
+ src_nm_l2tp_pppd_plugin_la_SOURCES = \
+ 	$(shared_sources) \
+ 	src/nm-l2tp-pppd-plugin.c \
+-	src/nm-ppp-status.h
++	src/nm-l2tp-pppd-compat.h \
++	src/nm-l2tp-pppd-status.h
+ src_nm_l2tp_pppd_plugin_la_CPPFLAGS = $(src_cppflags)
+ src_nm_l2tp_pppd_plugin_la_LDFLAGS = \
+ 	-module -avoid-version
+--- /dev/null
++++ b/src/nm-l2tp-pppd-compat.h
+@@ -0,0 +1,93 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/* -*- Mode: C; tab-width: 4; indent-tabs-mode: t; c-basic-offset: 4 -*- */
++/* nm-sstp-service - sstp (and other pppd) integration with NetworkManager
++ *
++ * Copyright (C) 2023 Eivind Naess, eivnaes@yahoo.com
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ */
++
++#ifndef __NM_L2TP_PPPD_COMPAT_H__
++#define __NM_L2TP_PPPD_COMPAT_H__
++
++// PPP < 2.5.0 defines and exports VERSION which overlaps with current package VERSION define.
++//   this silly macro magic is to work around that.
++
++#define INET6	1
++
++#undef VERSION
++#include <pppd/pppd.h>
++#ifndef PPPD_VERSION
++#define PPPD_VERSION VERSION
++#endif
++
++#include <pppd/fsm.h>
++#include <pppd/ccp.h>
++#include <pppd/eui64.h>
++#include <pppd/ipcp.h>
++#include <pppd/ipv6cp.h>
++#include <pppd/eap.h>
++#include <pppd/upap.h>
++
++#ifdef HAVE_PPPD_CHAP_H
++ #include <pppd/chap.h>
++#endif
++
++#ifdef HAVE_PPPD_CHAP_NEW_H
++ #include <pppd/chap-new.h>
++#endif
++
++#ifdef HAVE_PPPD_CHAP_MS_H
++ #include <pppd/chap_ms.h>
++#endif
++
++#ifndef PPP_PROTO_CHAP
++#define PPP_PROTO_CHAP              0xc223
++#endif 
++
++#ifndef PPP_PROTO_EAP
++#define PPP_PROTO_EAP               0xc227
++#endif
++
++#if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
++
++static inline bool debug_on(void)
++{
++    return debug;
++}
++
++static inline const char *ppp_ipparam(void)
++{
++    return ipparam;
++}
++
++static inline int ppp_ifunit(void)
++{
++    return ifunit;
++}
++
++static inline const char *ppp_ifname(void)
++{
++    return ifname;
++}
++
++static inline int ppp_get_mtu(int idx)
++{
++    return netif_get_mtu(idx);
++}
++
++#endif // #if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
++#endif // #ifdef __NM_L2TP_PPPD_COMPAT_H__
+--- a/src/nm-l2tp-pppd-plugin.c
++++ b/src/nm-l2tp-pppd-plugin.c
+@@ -9,8 +9,6 @@
+ #include <config.h>
+ #define ___CONFIG_H__
+ 
+-#include "nm-default.h"
+-
+ #include <string.h>
+ #include <stdlib.h>
+ #include <sys/socket.h>
+@@ -18,10 +16,11 @@
+ #include <arpa/inet.h>
+ #include <dlfcn.h>
+ 
+-#include "nm-l2tp-service.h"
+-#include "nm-ppp-status.h"
++#include "nm-l2tp-pppd-status.h"
+ #include "nm-l2tp-pppd-compat.h"
+ 
++#include "nm-default.h"
++#include "nm-l2tp-service.h"
+ #include "nm-utils/nm-shared-utils.h"
+ #include "nm-utils/nm-vpn-plugin-macros.h"
+ 
+similarity index 100%
+rename from src/nm-ppp-status.h
+rename to src/nm-l2tp-pppd-status.h
+--- a/src/nm-l2tp-service.c
++++ b/src/nm-l2tp-service.c
+@@ -36,7 +36,7 @@
+ #include <arpa/inet.h>
+ #include <netdb.h>
+ 
+-#include "nm-ppp-status.h"
++#include "nm-l2tp-pppd-status.h"
+ #include "nm-l2tp-pppd-service-dbus.h"
+ #include "nm-utils/nm-shared-utils.h"
+ #include "nm-utils/nm-secret-utils.h"
+
