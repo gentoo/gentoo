@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/ethflopd.initd ethflopd
 	newconfd "${FILESDIR}"/ethflopd.confd ethflopd
-	systemd_dounit "${FILESDIR}"/ethflopd.service
+	systemd_newunit "${FILESDIR}"/ethflopd.service-r1 ethflopd.service
 
 	dodoc ethflop.txt
 }
