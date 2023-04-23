@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-112-patches-04j.tar.xz"
+FIREFOX_PATCHSET="firefox-112-patches-05j.tar.xz"
 
 LLVM_MAX_SLOT=15
 
@@ -65,7 +65,7 @@ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+clang cpu_flags_arm_neon dbus debug eme-free hardened hwaccel"
 IUSE+=" jack libproxy lto +openh264 pgo pulseaudio sndio selinux"
 IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx system-png system-python-libs +system-webp"
-IUSE+=" wayland wifi +X"
+IUSE+=" telemetry wayland wifi +X"
 
 # Firefox-only IUSE
 IUSE+=" geckodriver +gmp-autoupdate screencast"
@@ -460,9 +460,11 @@ virtwl() {
 
 	debug-print "${FUNCNAME}: $@"
 	"$@"
+	local r=$?
 
 	[[ -n $VIRTWL_PID ]] || die "tinywl exited unexpectedly"
 	exec {VIRTWL[0]}<&- {VIRTWL[1]}>&-
+	return $r
 }
 
 pkg_pretend() {
@@ -742,7 +744,9 @@ src_configure() {
 	mozconfig_add_options_ac '' --enable-project=browser
 
 	# Set Gentoo defaults
-	export MOZILLA_OFFICIAL=1
+	if use telemetry; then
+		export MOZILLA_OFFICIAL=1
+	fi
 
 	mozconfig_add_options_ac 'Gentoo default' \
 		--allow-addon-sideload \
@@ -1049,6 +1053,13 @@ src_configure() {
 		export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="system"
 	else
 		export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="none"
+	fi
+
+	if ! use telemetry; then
+		mozconfig_add_options_mk '-telemetry setting' "MOZ_CRASHREPORTER=0"
+		mozconfig_add_options_mk '-telemetry setting' "MOZ_DATA_REPORTING=0"
+		mozconfig_add_options_mk '-telemetry setting' "MOZ_SERVICES_HEALTHREPORT=0"
+		mozconfig_add_options_mk '-telemetry setting' "MOZ_TELEMETRY_REPORTING=0"
 	fi
 
 	# Disable notification when build system has finished
