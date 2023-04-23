@@ -81,7 +81,7 @@ DEPEND="
 	test? ( dev-cpp/gtest )"
 BDEPEND="
 	dev-lang/perl
-	qt6? ( dev-qt/qttools[linguist] )
+	qt6? ( dev-qt/qttools:6[linguist] )
 	!qt6? ( sys-devel/gettext )"
 
 FILECAPS=(

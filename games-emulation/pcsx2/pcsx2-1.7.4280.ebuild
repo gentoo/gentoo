@@ -71,7 +71,7 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )"
-BDEPEND="dev-qt/qttools[linguist]"
+BDEPEND="dev-qt/qttools:6[linguist]"
 
 FILECAPS=(
 	-m 0755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
