@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/thoughtbot/shoulda-matchers"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/activesupport-4.0.0:*"
