@@ -30,6 +30,7 @@ src_configure() {
 		-DCUTLASS_ENABLE_TESTS=no
 	)
 	cuda_add_sandbox -w
+	addpredict /dev/char
 	cmake_src_configure
 }
 
