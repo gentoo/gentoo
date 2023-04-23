@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit flag-o-matic meson-multilib
+PYTHON_COMPAT=( python3_{9..11} )
+inherit flag-o-matic meson-multilib python-any-r1
 
 DESCRIPTION="Open codec for interactive speech and music transmission over the Internet"
 HOMEPAGE="https://opus-codec.org/"
@@ -17,6 +18,7 @@ IUSE="custom-modes debug doc hardened static-libs test ${INTRINSIC_FLAGS}"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
