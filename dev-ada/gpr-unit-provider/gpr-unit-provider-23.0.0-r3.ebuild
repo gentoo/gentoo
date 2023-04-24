@@ -25,21 +25,16 @@ REQUIRED_USE="${ADA_REQUIRED_USE}
 	|| ( shared static-libs static-pic )"
 
 src_compile() {
-	if use static-libs; then
-		emake PROCESSORS=$(makeopts_jobs) \
-			GPRBUILD_OPTIONS=-v \
-			build-static
-	fi
-	if use shared; then
-		emake PROCESSORS=$(makeopts_jobs) \
-			GPRBUILD_OPTIONS=-v \
-			build-relocatable
-	fi
-	if use static-pic; then
-		emake PROCESSORS=$(makeopts_jobs) \
-			GPRBUILD_OPTIONS=-v \
-			build-static-pic
-	fi
+	build () {
+		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
+		-XGPR_UNIT_PROVIDER_BUILD=release -XXMLADA_BUILD=$1 \
+		-P gpr_unit_provider.gpr \
+		-largs ${LDFLAGS} \
+		-cargs ${ADAFLAGS} || die "gprbuild failed"
+	}
+	use static-libs && build static
+	use shared && build relocatable
+	use static-pic && build static-pic
 }
 
 src_install() {
