@@ -27,7 +27,7 @@ BDEPEND="${DEPEND}
 # (and pthreads4w for Winnt), but it is easier for now to install
 # elt-patches, gentoo-functions and gnuconfig as well, instead of
 # fixing all uses that expect them in EPREFIX rather than BROOT.
-# See als: pkg_preinst
+# See also: pkg_preinst
 RDEPEND="${DEPEND}
 	prefix-stack? (
 		>=sys-apps/baselayout-prefix-2.6
