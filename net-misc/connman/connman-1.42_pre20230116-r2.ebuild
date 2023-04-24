@@ -53,7 +53,10 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-2.6.39"
 
 PATCHES=( "${FILESDIR}/libresolv-musl-fix.patch" )
-S=${WORKDIR}/${PN}-${COMMIT}
+
+if [ ! -z ${COMMIT} ]; then
+	S=${WORKDIR}/${PN}-${COMMIT}
+fi
 
 src_prepare() {
 	default
