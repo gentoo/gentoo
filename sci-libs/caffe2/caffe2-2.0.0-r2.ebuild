@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.0-glog-0.6.0.patch
 	"${FILESDIR}"/${PN}-1.13.1-tensorpipe.patch
 	"${FILESDIR}"/${P}-gcc13.patch
+	"${FILESDIR}"/${P}-cudnn_include_fix.patch
 )
 
 src_prepare() {
