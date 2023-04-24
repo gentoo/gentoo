@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/show_bug.cgi?id=902445
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/merge_requests/505
+
+From b7d41ac5bdf08c682c693e91c77d428268a7869e Mon Sep 17 00:00:00 2001
+From: matoro <75928-matoro1@users.noreply.gitlab.freedesktop.org>
+Date: Thu, 20 Apr 2023 17:53:35 -0400
+Subject: [PATCH] tests: common: crank up timeout for slower devices
+
+Timeout of 3 seconds is too slow for test-si-standard-link on slower
+devices, crank this up with plenty of extra margin.  Does not
+practically affect running time on faster devices.
+---
+ tests/common/base-test-fixture.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/common/base-test-fixture.h b/tests/common/base-test-fixture.h
+index b15dd1af2..d1b56ab4b 100644
+--- a/tests/common/base-test-fixture.h
++++ b/tests/common/base-test-fixture.h
+@@ -67,7 +67,7 @@ wp_base_test_fixture_setup (WpBaseTestFixture * self, WpBaseTestFlags flags)
+   g_main_context_push_thread_default (self->context);
+ 
+   /* watchdog */
+-  self->timeout_source = g_timeout_source_new_seconds (3);
++  self->timeout_source = g_timeout_source_new_seconds (8);
+   g_source_set_callback (self->timeout_source, (GSourceFunc) timeout_callback,
+       self, NULL);
+   g_source_attach (self->timeout_source, self->context);
+-- 
+GitLab
+
