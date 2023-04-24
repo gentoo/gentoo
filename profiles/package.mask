@@ -39,11 +39,6 @@
 # 7a1e8a90fa8a09a84741dc8ef5f774d92ae8433c
 acct-group/resin
 
-# Michał Górny <mgorny@gentoo.org> (2023-04-23)
-# Upstream changed config_settings interface breaking compatibility
-# with our invocations.  Bug #904677.
-=dev-python/meson-python-0.13.0
-
 # Conrad Kostecki <conikost@gentoo.org> (2023-04-23)
 # Very old package, does not build with modern compilers.
 # It provides BOOTP support, predecessor of DHCP.
