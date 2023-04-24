@@ -50,7 +50,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/$PN-0.70-integer-value-is-outside-the-valid-range-clang-16.patch
+	"${FILESDIR}"/${PN}-0.70-integer-value-is-outside-the-valid-range-clang-16.patch
 )
 
 src_prepare() {
