@@ -30,10 +30,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/5.1.0-drop-coverage.patch
-)
-
 distutils_enable_tests unittest
 
 src_prepare() {
