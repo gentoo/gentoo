@@ -25,7 +25,7 @@ src_configure() {
 
 src_install() {
 	# Override HEADERS for missing declspec.h wrt #506832
-	emake HEADERS='declspec.h natpmp.h' PREFIX="${ED}" GENTOO_LIBDIR="$(get_libdir)" install
+	emake HEADERS="natpmp.h natpmp_declspec.h" PREFIX="${ED}" GENTOO_LIBDIR="$(get_libdir)" install
 
 	dodoc Changelog.txt README
 	doman natpmpc.1
