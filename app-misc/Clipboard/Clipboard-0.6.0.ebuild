@@ -12,9 +12,7 @@ SRC_URI="https://github.com/Slackadays/${PN}/archive/refs/tags/${PV}.tar.gz -> $
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+X wayland lto debug"
-
-REQUIRED_USE=" || ( X wayland )"
+IUSE="X wayland lto debug"
 
 RDEPEND="X? ( x11-libs/libX11 )
 		wayland? (
