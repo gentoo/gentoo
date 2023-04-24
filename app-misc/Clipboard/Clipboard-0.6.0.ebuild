@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="Remember anything, anytime, anywhere... "
+DESCRIPTION="Cut, copy, and paste anything in your terminal"
 HOMEPAGE="https://getclipboard.app/ https://github.com/Slackadays/Clipboard"
 SRC_URI="https://github.com/Slackadays/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 

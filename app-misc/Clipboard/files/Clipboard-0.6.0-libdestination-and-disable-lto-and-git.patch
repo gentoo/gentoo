@@ -1,6 +1,6 @@
 diff -ur '--color=auto' Clipboard-0.6.0/CMakeLists.txt Clipboard-0.6.0-new/CMakeLists.txt
 --- Clipboard-0.6.0/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
-+++ Clipboard-0.6.0-new/CMakeLists.txt	2023-04-23 21:41:58.369423993 -0500
++++ Clipboard-0.6.0-new/CMakeLists.txt	2023-04-24 10:03:45.180861938 -0500
 @@ -11,22 +11,6 @@
    set(X11WL ON)
  endif()
@@ -44,7 +44,7 @@ diff -ur '--color=auto' Clipboard-0.6.0/CMakeLists.txt Clipboard-0.6.0-new/CMake
  find_package(X11)
 diff -ur '--color=auto' Clipboard-0.6.0/src/clipboard/CMakeLists.txt Clipboard-0.6.0-new/src/clipboard/CMakeLists.txt
 --- Clipboard-0.6.0/src/clipboard/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
-+++ Clipboard-0.6.0-new/src/clipboard/CMakeLists.txt	2023-04-23 21:42:25.119425458 -0500
++++ Clipboard-0.6.0-new/src/clipboard/CMakeLists.txt	2023-04-24 10:04:39.144864894 -0500
 @@ -5,8 +5,6 @@
    src/themes.cpp
  )
@@ -54,9 +54,25 @@ diff -ur '--color=auto' Clipboard-0.6.0/src/clipboard/CMakeLists.txt Clipboard-0
  target_link_libraries(clipboard gui)
  
  if(WIN32)
+@@ -45,13 +43,13 @@
+     TARGET clipboard
+     APPEND
+     PROPERTY BUILD_RPATH
+-    "${CMAKE_INSTALL_PREFIX}/lib"
++    "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}"
+   )
+   set_property(
+     TARGET clipboard
+     APPEND
+     PROPERTY INSTALL_RPATH
+-    "${CMAKE_INSTALL_PREFIX}/lib"
++    "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}"
+   )
+   target_link_options(clipboard PRIVATE -z origin) # set the rpath to $ORIGIN
+   target_link_libraries(clipboard ${CMAKE_DL_LIBS})
 diff -ur '--color=auto' Clipboard-0.6.0/src/clipboardwayland/CMakeLists.txt Clipboard-0.6.0-new/src/clipboardwayland/CMakeLists.txt
 --- Clipboard-0.6.0/src/clipboardwayland/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
-+++ Clipboard-0.6.0-new/src/clipboardwayland/CMakeLists.txt	2023-04-23 21:43:06.304427714 -0500
++++ Clipboard-0.6.0-new/src/clipboardwayland/CMakeLists.txt	2023-04-24 10:05:44.524868476 -0500
 @@ -60,8 +60,6 @@
  )
  add_dependencies(clipboardwayland clipboardwayland_generatedheaders)
@@ -74,7 +90,7 @@ diff -ur '--color=auto' Clipboard-0.6.0/src/clipboardwayland/CMakeLists.txt Clip
 +install(TARGETS clipboardwayland LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff -ur '--color=auto' Clipboard-0.6.0/src/clipboardx11/CMakeLists.txt Clipboard-0.6.0-new/src/clipboardx11/CMakeLists.txt
 --- Clipboard-0.6.0/src/clipboardx11/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
-+++ Clipboard-0.6.0-new/src/clipboardx11/CMakeLists.txt	2023-04-23 21:43:35.387429307 -0500
++++ Clipboard-0.6.0-new/src/clipboardx11/CMakeLists.txt	2023-04-24 10:05:23.048867299 -0500
 @@ -7,8 +7,6 @@
    gui
  )
