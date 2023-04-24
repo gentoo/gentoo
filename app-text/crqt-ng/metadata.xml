@@ -12,7 +12,7 @@
   </maintainer>
   <longdescription lang="en">
     A fork of coolreader Qt program. Supported formats are: fb2 (including fb2.zip), fb3,
-    epub (without DRM), rtf, doc, docx, odt, html, chm, pdb, mobi (without DRM), txt, trc, prc.
+    epub (without DRM), rtf, doc, docx, odt, md, html, chm, pdb, mobi (without DRM), txt, trc, prc.
   </longdescription>
   <use>
     <flag name="chm">Support chm format</flag>
