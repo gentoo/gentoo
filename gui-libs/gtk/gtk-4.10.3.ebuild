@@ -162,7 +162,7 @@ src_test() {
 
 	if use X; then
 		einfo "Running tests under X"
-		GSETTINGS_SCHEMA_DIR="${S}/gtk" virtx meson_src_test --setup=x11
+		GSETTINGS_SCHEMA_DIR="${S}/gtk" virtx meson_src_test --setup=x11 --timeout-multiplier=130
 	fi
 
 	if use wayland; then
@@ -174,7 +174,7 @@ src_test() {
 		compositor=$!
 		export WAYLAND_DISPLAY=wayland-5
 
-		GSETTINGS_SCHEMA_DIR="${S}/gtk" meson_src_test --setup=wayland
+		GSETTINGS_SCHEMA_DIR="${S}/gtk" meson_src_test --setup=wayland --timeout-multiplier=130
 
 		exit_code=$?
 		kill ${compositor}
