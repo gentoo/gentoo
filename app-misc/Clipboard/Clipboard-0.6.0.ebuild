@@ -23,13 +23,12 @@ RDEPEND="X? ( x11-libs/libX11 )
 		)
 "
 PATCHES=(
-	"${FILESDIR}/${P}-libdestination-and-disable-git-patch.patch"
-	"${FILESDIR}/${P}-disable-lto.patch"
+	"${FILESDIR}/${P}-libdestination-and-disable-lto-and-git.patch"
 )
 
 src_prepare() {
 	if ! use wayland; then
-		eapply "${FILESDIR}/${P}-disable-wayland.patch"
+		sed -i '/pkg_check_modules(WAYLAND_CLIENT wayland-client wayland-protocols)/d' CMakeLists.txt || die
 	fi
 
 	if ! use debug; then

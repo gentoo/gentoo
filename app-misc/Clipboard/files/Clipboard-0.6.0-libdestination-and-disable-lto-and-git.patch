@@ -1,6 +1,6 @@
 diff -ur '--color=auto' Clipboard-0.6.0/CMakeLists.txt Clipboard-0.6.0-new/CMakeLists.txt
 --- Clipboard-0.6.0/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
-+++ Clipboard-0.6.0-new/CMakeLists.txt	2023-04-18 16:03:46.776648869 -0500
++++ Clipboard-0.6.0-new/CMakeLists.txt	2023-04-23 21:41:58.369423993 -0500
 @@ -11,22 +11,6 @@
    set(X11WL ON)
  endif()
@@ -24,10 +24,49 @@ diff -ur '--color=auto' Clipboard-0.6.0/CMakeLists.txt Clipboard-0.6.0-new/CMake
  add_definitions(-DCLIPBOARD_VERSION="${PROJECT_VERSION}")
  
  if (MSVC)
+@@ -74,17 +58,6 @@
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CMAKE_BUILD_TYPE} ${LIB_LOCATION})
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CMAKE_BUILD_TYPE} ${BIN_LOCATION})
+ 
+-function(enable_lto this_target)
+-include(CheckIPOSupported)
+-check_ipo_supported(RESULT lto_supported)
+-if(lto_supported AND NOT NO_LTO)
+-  set_property(TARGET ${this_target} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+-  if(CMAKE_COMPILER_IS_GNUCXX)
+-    list(APPEND CMAKE_CXX_COMPILE_OPTIONS_IPO "-flto=auto") # set the thread amount to what is available on the CPU
+-  endif()
+-endif()
+-endfunction()
+-
+ add_subdirectory(src/gui)
+ 
+ find_package(X11)
+diff -ur '--color=auto' Clipboard-0.6.0/src/clipboard/CMakeLists.txt Clipboard-0.6.0-new/src/clipboard/CMakeLists.txt
+--- Clipboard-0.6.0/src/clipboard/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
++++ Clipboard-0.6.0-new/src/clipboard/CMakeLists.txt	2023-04-23 21:42:25.119425458 -0500
+@@ -5,8 +5,6 @@
+   src/themes.cpp
+ )
+ 
+-enable_lto(clipboard)
+-
+ target_link_libraries(clipboard gui)
+ 
+ if(WIN32)
 diff -ur '--color=auto' Clipboard-0.6.0/src/clipboardwayland/CMakeLists.txt Clipboard-0.6.0-new/src/clipboardwayland/CMakeLists.txt
 --- Clipboard-0.6.0/src/clipboardwayland/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
-+++ Clipboard-0.6.0-new/src/clipboardwayland/CMakeLists.txt	2023-04-18 16:04:24.489646791 -0500
-@@ -71,4 +71,4 @@
++++ Clipboard-0.6.0-new/src/clipboardwayland/CMakeLists.txt	2023-04-23 21:43:06.304427714 -0500
+@@ -60,8 +60,6 @@
+ )
+ add_dependencies(clipboardwayland clipboardwayland_generatedheaders)
+ 
+-enable_lto(clipboardwayland)
+-
+ target_link_libraries(clipboardwayland
+   ${WAYLAND_CLIENT_LIBRARIES}
+   gui
+@@ -71,4 +69,4 @@
    ${GENERATED_INCLUDE_DIR}
  )
  
@@ -35,9 +74,13 @@ diff -ur '--color=auto' Clipboard-0.6.0/src/clipboardwayland/CMakeLists.txt Clip
 +install(TARGETS clipboardwayland LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff -ur '--color=auto' Clipboard-0.6.0/src/clipboardx11/CMakeLists.txt Clipboard-0.6.0-new/src/clipboardx11/CMakeLists.txt
 --- Clipboard-0.6.0/src/clipboardx11/CMakeLists.txt	2023-04-08 12:34:14.000000000 -0500
-+++ Clipboard-0.6.0-new/src/clipboardx11/CMakeLists.txt	2023-04-18 16:03:32.158649675 -0500
-@@ -11,4 +11,4 @@
++++ Clipboard-0.6.0-new/src/clipboardx11/CMakeLists.txt	2023-04-23 21:43:35.387429307 -0500
+@@ -7,8 +7,6 @@
+   gui
+ )
  
+-enable_lto(clipboardx11)
+-
  target_include_directories(clipboardx11 PRIVATE ${X11_INCLUDE_DIR})
  
 -install(TARGETS clipboardx11 LIBRARY DESTINATION lib)
