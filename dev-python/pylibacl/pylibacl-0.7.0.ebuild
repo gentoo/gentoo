@@ -27,7 +27,8 @@ RDEPEND="
 	${DEPEND}
 "
 
-distutils_enable_sphinx doc
+distutils_enable_sphinx doc \
+	dev-python/recommonmark
 distutils_enable_tests pytest
 
 python_test() {
