@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>devlemosjose@gmail.org</email>
+    <name>José Lemos</name>
+  </maintainer>
+  <use>
+    <flag name="man">
+	Produces manaul pages for emilua using asciidoctor. 
+    </flag>
+    <flag name="color_output">
+	Builds emilua with support for colored output. 
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="gitlab">emilua/emilua</remote-id>
+  </upstream>
+</pkgmetadata>
