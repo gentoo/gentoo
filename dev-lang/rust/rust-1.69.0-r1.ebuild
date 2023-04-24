@@ -312,12 +312,13 @@ src_configure() {
 	fi
 	rust_targets="${rust_targets#,}"
 
-	local tools='"cargo"'
+	# cargo and rustdoc are mandatory and should always be included
+	local tools='"cargo","rustdoc"'
 	use clippy && tools+=',"clippy"'
 	use miri && tools+=',"miri"'
 	use profiler && tools+=',"rust-demangler"'
 	use rustfmt && tools+=',"rustfmt"'
-	use rust-analyzer && tools+=',"rust-analyzer","analysis"'
+	use rust-analyzer && tools+=',"rust-analyzer"'
 	use rust-src && tools+=',"src"'
 
 	local rust_stage0_root
