@@ -3,7 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10} )
+#this doesn't work because of multiple calls to distutils-r1_src_compile
+#DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_OPTIONAL=1
 
 inherit toolchain-funcs distutils-r1 flag-o-matic autotools
@@ -23,7 +25,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+airdrop-ng +airgraph-ng +netlink +pcre +sqlite +experimental"
+IUSE="+airdrop-ng +airgraph-ng +experimental +netlink +pcre +sqlite test"
 
 DEPEND="net-libs/libpcap
 	sys-apps/hwloc:0=
@@ -34,7 +36,8 @@ DEPEND="net-libs/libpcap
 	airdrop-ng? ( ${PYTHON_DEPS} )
 	airgraph-ng? ( ${PYTHON_DEPS} )
 	experimental? ( sys-libs/zlib )
-	sqlite? ( >=dev-db/sqlite-3.4 )"
+	sqlite? ( >=dev-db/sqlite-3.4:3 )
+	test? ( dev-tcltk/expect )"
 RDEPEND="${DEPEND}
 	kernel_linux? (
 		net-wireless/iw
@@ -44,10 +47,13 @@ RDEPEND="${DEPEND}
 		sys-apps/pciutils )
 	sys-apps/hwdata
 	airdrop-ng? ( net-wireless/lorcon[python,${PYTHON_USEDEP}] )"
+BDEPEND="${DISTUTILS_DEPS}"
 
 REQUIRED_USE="
 	airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
 	airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
+
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	default
@@ -61,6 +67,7 @@ src_configure() {
 		--enable-shared \
 		--disable-static \
 		--without-opt \
+		--with-duma=no \
 		$(use_enable netlink libnl) \
 		$(use_with experimental) \
 		$(use_with sqlite sqlite3)
