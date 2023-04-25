@@ -134,7 +134,7 @@ SRC_URI="
 # use cargo-license for a more accurate license picture
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 QA_FLAGS_IGNORED="usr/bin/difft"
 
