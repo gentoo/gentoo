@@ -306,7 +306,7 @@ LICENSE+="
 	|| ( GPL-2 GPL-3 LGPL-3 )
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 # See e.g. https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/-/issues/8
 # Even though that's fixed as of >0.2.0, tests still completely fail inside
 # Portage. Not yet sure why/how. They do better outside, although some fail
