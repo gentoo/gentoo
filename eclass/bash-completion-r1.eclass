@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bash-completion-r1.eclass
@@ -75,6 +75,7 @@ _bash-completion-r1_get_bashhelpersdir() {
 }
 
 # @FUNCTION: get_bashcompdir
+# @INCLUDES_EPREFIX
 # @DESCRIPTION:
 # Get the bash-completion completions directory.
 get_bashcompdir() {
@@ -84,6 +85,7 @@ get_bashcompdir() {
 }
 
 # @FUNCTION: get_bashhelpersdir
+# @INCLUDES_EPREFIX
 # @INTERNAL
 # @DESCRIPTION:
 # Get the bash-completion helpers directory.
