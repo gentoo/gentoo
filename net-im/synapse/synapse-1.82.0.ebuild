@@ -40,17 +40,17 @@ CRATES="
 	pythonize-0.17.0
 	quote-1.0.26
 	redox_syscall-0.2.16
-	regex-1.7.1
-	regex-syntax-0.6.27
+	regex-1.7.3
+	regex-syntax-0.6.29
 	ryu-1.0.11
 	scopeguard-1.1.0
-	serde-1.0.157
-	serde_derive-1.0.157
-	serde_json-1.0.94
+	serde-1.0.160
+	serde_derive-1.0.160
+	serde_json-1.0.96
 	smallvec-1.10.0
 	subtle-2.4.1
 	syn-1.0.104
-	syn-2.0.2
+	syn-2.0.10
 	target-lexicon-0.12.4
 	typenum-1.15.0
 	unicode-ident-1.0.5
@@ -83,7 +83,7 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64"
 IUSE="postgres systemd test"
 RESTRICT="!test? ( test )"
 
@@ -96,10 +96,10 @@ RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/bleach[${PYTHON_USEDEP}]
-	<dev-python/canonicaljson-2[${PYTHON_USEDEP}]
+	>=dev-python/canonicaljson-2[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/frozendict[${PYTHON_USEDEP}]
 	dev-python/ijson[${PYTHON_USEDEP}]
+	dev-python/immutabledict[${PYTHON_USEDEP}]
 	>=dev-python/jinja-3.0[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 	>=dev-python/matrix-common-1.3.0[${PYTHON_USEDEP}]
@@ -134,10 +134,6 @@ BDEPEND="
 		postgres? ( dev-db/postgresql[server] )
 	)
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.78.0-frozendict-version.patch"
-)
 
 # Rust extension
 QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/synapse/synapse_rust.abi3.so"
