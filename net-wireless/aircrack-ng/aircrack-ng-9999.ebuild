@@ -27,7 +27,7 @@ SLOT="0"
 
 IUSE="+airdrop-ng +airgraph-ng +experimental +netlink +pcre +sqlite test"
 
-DEPEND="net-libs/libpcap
+CDEPEND="net-libs/libpcap
 	sys-apps/hwloc:0=
 	dev-libs/libbsd
 	dev-libs/openssl:0=
@@ -37,8 +37,11 @@ DEPEND="net-libs/libpcap
 	airgraph-ng? ( ${PYTHON_DEPS} )
 	experimental? ( sys-libs/zlib )
 	sqlite? ( >=dev-db/sqlite-3.4:3 )
-	test? ( dev-tcltk/expect )"
-RDEPEND="${DEPEND}
+	"
+DEPEND="${CDEPEND}
+	test? ( dev-tcltk/expect )
+	"
+RDEPEND="${CDEPEND}
 	kernel_linux? (
 		net-wireless/iw
 		net-wireless/wireless-tools
@@ -47,10 +50,10 @@ RDEPEND="${DEPEND}
 		sys-apps/pciutils )
 	sys-apps/hwdata
 	airdrop-ng? ( net-wireless/lorcon[python,${PYTHON_USEDEP}] )"
-BDEPEND="${DISTUTILS_DEPS}"
+#BDEPEND="airdrop-ng? ( ${DISTUTILS_DEPS} )
+#		airgraph-ng? ( ${DISTUTILS_DEPS} )"
 
-REQUIRED_USE="
-	airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
+REQUIRED_USE="airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
 	airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
@@ -82,11 +85,11 @@ src_compile() {
 	default
 
 	if use airgraph-ng; then
-		cd "${S}/scripts/airgraph-ng"
+		cd "${S}/scripts/airgraph-ng" || die
 		distutils-r1_src_compile
 	fi
 	if use airdrop-ng; then
-		cd "${S}/scripts/airdrop-ng"
+		cd "${S}/scripts/airdrop-ng" || die
 		distutils-r1_src_compile
 	fi
 }
@@ -95,15 +98,15 @@ src_install() {
 	default
 
 	if use airgraph-ng; then
-		cd "${S}/scripts/airgraph-ng"
+		cd "${S}/scripts/airgraph-ng" || die
 		distutils-r1_src_install
 	fi
 	if use airdrop-ng; then
-		cd "${S}/scripts/airdrop-ng"
+		cd "${S}/scripts/airdrop-ng" || die
 		distutils-r1_src_install
 	fi
 
 	# we don't need aircrack-ng's oui updater, we have our own
-	rm "${ED}"/usr/sbin/airodump-ng-oui-update
+	rm "${ED}"/usr/sbin/airodump-ng-oui-update || die
 	find "${D}" -xtype f -name '*.la' -delete || die
 }
