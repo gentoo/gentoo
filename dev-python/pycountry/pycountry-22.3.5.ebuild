@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/flyingcircusio/pycountry"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ia64 ppc ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ~riscv ~sparc x86"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
