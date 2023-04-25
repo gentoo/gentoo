@@ -135,7 +135,7 @@ pkg_setup() {
 		RB_VER=""
 		for rbslot in $(sed 's@\([[:digit:]]\+\)\([[:digit:]]\)@\1.\2@g' <<< ${USE_RUBY//ruby}) ; do
 			# No break here as we want to pick the best (latest)
-			if has_version "dev-lang/ruby:${rbslot}" && has_version "virtual/rubygems[ruby_targets_ruby${rbslot}(-)]" ; then
+			if has_version "dev-lang/ruby:${rbslot}" && has_version "virtual/rubygems[ruby_targets_ruby${rbslot/.}(-)]" ; then
 				RB_VER="${rbslot/.}"
 			fi
 		done
