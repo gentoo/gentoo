@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/pytest-dev/pytest-env"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 x86"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/hatch-vcs[${PYTHON_USEDEP}]"
