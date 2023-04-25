@@ -94,24 +94,24 @@ python_configure_all() {
 }
 
 python_test() {
-	cd "${T}" || die
+	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 
 	local EPYTEST_DESELECT=(
 		# Network
-		datasets/tests/test_data.py::TestDatasets::test_existence_all
-		datasets/tests/test_data.py::TestDatasets::test_ascent
-		datasets/tests/test_data.py::TestDatasets::test_face
-		datasets/tests/test_data.py::TestDatasets::test_electrocardiogram
+		scipy/datasets/tests/test_data.py::TestDatasets::test_existence_all
+		scipy/datasets/tests/test_data.py::TestDatasets::test_ascent
+		scipy/datasets/tests/test_data.py::TestDatasets::test_face
+		scipy/datasets/tests/test_data.py::TestDatasets::test_electrocardiogram
 	)
 	local EPYTEST_IGNORE=()
 
 	if ! has_version -b "dev-python/pooch[${PYTHON_USEDEP}]" ; then
 		EPYTEST_IGNORE+=(
-			datasets/tests/test_data.py
+			scipy/datasets/tests/test_data.py
 		)
 	fi
 
-	epytest -n "$(makeopts_jobs)" --pyargs scipy
+	epytest -n "$(makeopts_jobs)" scipy
 }
 
 python_install_all() {
