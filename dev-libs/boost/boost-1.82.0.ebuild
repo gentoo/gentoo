@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}_${MY_PV}"
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}" # ${PV} instead of the major version due to bug 486122
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="bzip2 context debug doc icu lzma +nls mpi numpy python tools zlib zstd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # the tests will never fail because these are not intended as sanity
@@ -71,13 +71,8 @@ create_user-config.jam() {
 	fi
 
 	local compiler compiler_version compiler_executable="$(tc-getCXX)"
-	if [[ ${CHOST} == *-darwin* ]]; then
-		compiler="darwin"
-		compiler_version="$(gcc-fullversion)"
-	else
-		compiler="gcc"
-		compiler_version="$(gcc-version)"
-	fi
+	compiler="gcc"
+	compiler_version="$(gcc-version)"
 
 	if use mpi; then
 		local mpi_configuration="using mpi ;"
@@ -194,8 +189,15 @@ src_configure() {
 	# Use C++17 globally as of 1.80
 	append-cxxflags -std=c++17
 
-	# need to enable LFS explicitly for 64-bit offsets on 32-bit hosts (#894564)
-	append-lfs-flags
+	if [[ ${CHOST} != *-darwin* ]]; then
+		# On modern macOS, file I/O is already 64-bit by default,
+		# there's no support for special options like O_LARGEFILE.
+		# Thus, LFS must be disabled.
+		#
+		# On other systems, we need to enable LFS explicitly for 64-bit
+		# offsets on 32-bit hosts (#894564)
+		append-lfs-flags
+	fi
 }
 
 multilib_src_compile() {
@@ -242,16 +244,24 @@ multilib_src_install() {
 				install_name_tool -id "/${d#${D}}" "${d}"
 				eend $?
 				# fix references to other libs
+				# these paths look like this:
+				# bin.v2/libs/thread/build/gcc-12.1/gentoorelease/pch-off/
+				#  threadapi-pthread/threading-multi/visibility-hidden/
+				#  libboost_thread.dylib
 				refs=$(otool -XL "${d}" | \
 					sed -e '1d' -e 's/^\t//' | \
-					grep "^libboost_" | \
+					grep "libboost_" | \
 					cut -f1 -d' ')
 				local r
 				for r in ${refs}; do
-					ebegin "    correcting reference to ${r}"
+					# strip path prefix from references, so we obtain
+					# something like libboost_thread.dylib.
+					local r_basename=${r##*/}
+
+					ebegin "    correcting reference to ${r_basename}"
 					install_name_tool -change \
 						"${r}" \
-						"${EPREFIX}/usr/lib/${r}" \
+						"${EPREFIX}/usr/lib/${r_basename}" \
 						"${d}"
 					eend $?
 				done
