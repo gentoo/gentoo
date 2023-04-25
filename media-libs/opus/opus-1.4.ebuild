@@ -27,6 +27,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.1-libdir-macro.patch
+	"${FILESDIR}"/${PN}-1.4-arm64-neon.patch
 )
 
 multilib_src_configure() {
