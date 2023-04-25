@@ -23,6 +23,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="app-arch/xz-utils[extra-filters]"
 
 S="${WORKDIR}"
+QA_PREBUILT="opt/tuxedo-control-center/*"
 
 src_prepare() {
 	default
