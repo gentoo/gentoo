@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
 	"${FILESDIR}"/${PN}-powerpc-darwin.patch
 	"${FILESDIR}"/${PN}-1.9.4-no-fgrep-libgcrypt-config.patch
+	"${FILESDIR}"/${P}-darwin.patch  # upstream T6442
 )
 
 MULTILIB_CHOST_TOOLS=(
