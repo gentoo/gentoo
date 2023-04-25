@@ -172,7 +172,7 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD CC0-1.0 ISC MIT"
 SLOT="0"
 if [[ ${PV} != 9999 ]] ; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 # Building onig-sys fails w/ Clang 16 right now
