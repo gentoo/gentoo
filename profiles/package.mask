@@ -113,7 +113,10 @@ net-im/cawbird
 # Sam James <sam@gentoo.org> (2023-04-13)
 # Leads to broken terminal output in e.g. vim and openrc and other applications
 # like joe crashing.
-# See issues reported at bottom of bug #904247 and bug #904263.
+# Bugs:
+# - reported at bottom of bug #904247 and bug #904263
+# - app-misc/tmux: https://github.com/tmux/tmux/issues/3531
+# - sys-apps/openrc: https://github.com/OpenRC/openrc/issues/619
 =sys-libs/ncurses-6.4_p20230408
 =sys-libs/ncurses-6.4_p20230415
 =sys-libs/ncurses-6.4_p20230418
