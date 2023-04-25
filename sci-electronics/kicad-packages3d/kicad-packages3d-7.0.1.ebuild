@@ -15,7 +15,7 @@ else
 	SRC_URI="https://gitlab.com/kicad/libraries/kicad-packages3D/-/archive/${PV}/kicad-packages3D-${PV}.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${PN/3d/3D}-${PV}"
 
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 fi
 
 IUSE=""
