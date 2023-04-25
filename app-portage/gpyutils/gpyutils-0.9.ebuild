@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	>=app-portage/gentoopm-0.3.2[${PYTHON_USEDEP}]
