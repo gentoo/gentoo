@@ -47,6 +47,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch
 	"${FILESDIR}"/${P}-add-missing-limits-header.patch
+	"${FILESDIR}"/${PN}-3.5.1-add-missing-include-statements-for-gcc-13.patch
 )
 
 DOCS=( AUTHORS.md CHANGELOG.md CODING.md INSTALL.md README.md )
