@@ -3,12 +3,11 @@
 
 EAPI=8
 
-#this doesn't work because of multiple calls to distutils-r1_src_compile
-#DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_OPTIONAL=1
 
-inherit toolchain-funcs distutils-r1 flag-o-matic autotools
+inherit distutils-r1 autotools
 
 DESCRIPTION="WLAN tools for breaking 802.11 WEP/WPA keys"
 HOMEPAGE="http://www.aircrack-ng.org"
@@ -50,8 +49,8 @@ RDEPEND="${CDEPEND}
 		sys-apps/pciutils )
 	sys-apps/hwdata
 	airdrop-ng? ( net-wireless/lorcon[python,${PYTHON_USEDEP}] )"
-#BDEPEND="airdrop-ng? ( ${DISTUTILS_DEPS} )
-#		airgraph-ng? ( ${DISTUTILS_DEPS} )"
+BDEPEND="airdrop-ng? ( ${DISTUTILS_DEPS} )
+	airgraph-ng? ( ${DISTUTILS_DEPS} )"
 
 REQUIRED_USE="airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
 	airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
@@ -61,6 +60,9 @@ RESTRICT="!test? ( test )"
 src_prepare() {
 	default
 	eautoreconf
+	if use airgraph-ng || use airdrop-ng; then
+		distutils-r1_src_prepare
+	fi
 }
 
 src_configure() {
@@ -76,33 +78,27 @@ src_configure() {
 		$(use_with sqlite sqlite3)
 }
 
-src_compile() {
-	if [[ $($(tc-getCC) --version) == clang* ]] ; then
-		#https://bugs.gentoo.org/show_bug.cgi?id=472890
-		filter-flags -frecord-gcc-switches
-	fi
-
-	default
-
+python_compile() {
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng" || die
-		distutils-r1_src_compile
+		distutils-r1_python_compile
 	fi
 	if use airdrop-ng; then
 		cd "${S}/scripts/airdrop-ng" || die
+		distutils-r1_python_compile
+	fi
+}
+
+src_compile() {
+	default
+	if use airgraph-ng || use airdrop-ng; then
 		distutils-r1_src_compile
 	fi
 }
 
 src_install() {
 	default
-
-	if use airgraph-ng; then
-		cd "${S}/scripts/airgraph-ng" || die
-		distutils-r1_src_install
-	fi
-	if use airdrop-ng; then
-		cd "${S}/scripts/airdrop-ng" || die
+	if use airgraph-ng || use airdrop-ng; then
 		distutils-r1_src_install
 	fi
 
