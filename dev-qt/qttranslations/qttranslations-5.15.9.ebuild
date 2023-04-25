@@ -4,7 +4,7 @@
 EAPI=8
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 fi
 
 inherit qt5-build
