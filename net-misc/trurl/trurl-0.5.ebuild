@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/curl/trurl/archive/refs/tags/${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${P}
 
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm"
 fi
 
 LICENSE="curl"
