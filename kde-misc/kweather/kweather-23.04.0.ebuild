@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kweather/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 DEPEND="
 	>=dev-libs/kirigami-addons-0.6:5
