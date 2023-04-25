@@ -145,6 +145,7 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+	eapply "${FILESDIR}/${PV}"-Cherry-pick-262461-main-b36decf27ea9-.-https-bugs.we.patch
 	eapply "${FILESDIR}/${PV}"-gcc-13.patch
 	eapply "${FILESDIR}"/2.40.0-respect-RUBY.patch
 }
