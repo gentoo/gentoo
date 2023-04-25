@@ -41,10 +41,6 @@ all_ruby_prepare() {
 		-e 's|`git ls-files`|""|' \
 		Rakefile || die "rakefile fix failed"
 
-	# Remove hardcoded and broken -O setting.
-	sed -i -e '/^  \(if\|unless\)/,/^  end/ s:^:#:' \
-		-e '/^unless/,/^end/ s:^:#:' ext/json/ext/*/extconf.rb || die
-
 	# Avoid setting gem since it will not be available yet when installing
 	sed -i -e '/gem/ s:^:#:' tests/test_helper.rb || die
 }
