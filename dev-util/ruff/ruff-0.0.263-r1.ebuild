@@ -380,6 +380,7 @@ KEYWORDS="~amd64"
 
 BDEPEND="
 	dev-util/patchelf
+	virtual/rust-1.69
 "
 
 # rust does not use *FLAGS from make.conf, silence portage warning
