@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Command-line program for getting and setting the contents of the X selection"
 HOMEPAGE="https://vergenet.net/~conrad/software/xsel"
-SRC_URI="https://github.com/kfish/xsel/archive/refs/tags/${PV}.tar.gz"
+SRC_URI="https://github.com/kfish/xsel/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
