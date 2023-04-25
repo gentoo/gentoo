@@ -1,7 +1,3 @@
-#Maintainer: José Lemos <devlemosjose@gmail.com>
-#USES STILL DON'T APPLY, ONLY FETCH DEPENDENCIES NEEDED.
-
-
 EAPI=8
 EGIT_REPO_URI="https://gitlab.com/emilua/emilua"
 inherit meson
@@ -12,7 +8,7 @@ HOMEPAGE="http://emilua.org/"
 
 SRC_URI="https://gitlab.com/emilua/emilua/-/archive/v${PV}/${PN}-v${PV}.tar.gz
          https://github.com/breese/trial.protocol/archive/79149f604a49b8dfec57857ca28aaf508069b669.tar.gz -> trial_protocol.tar.gz
-		https://github.com/BoostGSoC14/boost.http/archive/93ae527c89ffc517862e1f5f54c8a257278f1195.tar.gz -> boost_http.tar.gz"
+		 https://github.com/BoostGSoC14/boost.http/archive/93ae527c89ffc517862e1f5f54c8a257278f1195.tar.gz -> boost_http.tar.gz"
 
 S=/var/tmp/portage/dev-lang/emilua-${PV}/work/emilua-v${PV}/
 
@@ -42,6 +38,7 @@ BDEPEND="dev-util/re2c
     dev-util/meson
 	app-editors/vim-core
 	virtual/pkgconfig"
+
 
 src_prepare(){
 	cp -r "${WORKDIR}/boost.http-93ae527c89ffc517862e1f5f54c8a257278f1195/" "${WORKDIR}/emilua-v${PV}/subprojects/"
