@@ -4,6 +4,7 @@
 EAPI=8
 
 FORTRAN_NEEDED=fortran
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
