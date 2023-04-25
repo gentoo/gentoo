@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2023-04-25)
+# Masked for testing, bug #904958.
+=net-im/zoom-5.14.5.2430-r1
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-22)
 # Unused acct-group. Removal on 2023-05-22
 # The server was removed on 2021-08-24 with commit
