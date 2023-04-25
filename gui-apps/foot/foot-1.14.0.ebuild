@@ -28,7 +28,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	dev-libs/tllist
+	>=dev-libs/tllist-1.1.0
 	dev-libs/wayland-protocols
 "
 RDEPEND="
