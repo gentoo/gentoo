@@ -23,3 +23,14 @@ BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	virtual/perl-ExtUtils-MakeMaker
 "
+
+src_prepare() {
+	# remove some test inputs that fail in w3m
+	# https://bugs.gentoo.org/904076
+	sed -i -e 's/-###/-/' t/FormatExternal.t || \
+		die "Couldn't replace -### test input"
+	sed -i -e 's/%57/-/' t/FormatExternal.t || \
+		die "Couldn't replace %57 test input"
+
+	eapply_user
+}
