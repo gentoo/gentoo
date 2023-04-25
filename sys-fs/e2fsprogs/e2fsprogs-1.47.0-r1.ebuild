@@ -44,6 +44,8 @@ PATCHES=(
 	# upgrade. See bug #904093 and bug #904048.
 	"${FILESDIR}"/${PN}-1.47.0-disable-metadata_csum_seed-and-orphan_file-by-default.patch
 
+	"${FILESDIR}"/e2fsprogs-1.47.0-parallel-make.patch
+
 	# Upstream patches (can usually removed with next version bump)
 )
 
