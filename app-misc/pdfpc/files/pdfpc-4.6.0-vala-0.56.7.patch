@@ -1,0 +1,31 @@
+https://github.com/pdfpc/pdfpc/issues/686
+https://bugs.gentoo.org/904970
+
+commit 18beaecbbcc066e0d4c889b3aa3ecaa7351f7768
+Author: Evgeny Stambulchik <fnevgeny@gmail.com>
+Date:   Tue, 25 Apr 2023 16:11:25 +0300
+
+    Create Lists of nullable types
+
+--- a/src/classes/drawings/drawing_commands.vala
++++ b/src/classes/drawings/drawing_commands.vala
+@@ -54,8 +54,8 @@
+         }
+ 
+         public void clear() {
+-            this.drawing_commands = new List<DrawingCommand>();
+-            this.redo_commands = new List<DrawingCommand>();
++            this.drawing_commands = new List<DrawingCommand?>();
++            this.redo_commands = new List<DrawingCommand?>();
+         }
+ 
+         public void add_line(bool is_eraser,
+@@ -70,7 +70,7 @@
+ 
+             // After adding a new line you can no longer redo the old
+             // path.
+-            this.redo_commands = new List<DrawingCommand>(); // clear
++            this.redo_commands = new List<DrawingCommand?>(); // clear
+ 
+             bool new_path = true;
+             double epsilon = 1e-4; // Less than 0.1 pixel for a 1000x1000 img

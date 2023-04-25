@@ -55,7 +55,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="$(vala_depend)"
 
-PATCHES=("${FILESDIR}/${P}-no-movies.patch")
+PATCHES=(
+	"${FILESDIR}/${P}-no-movies.patch"
+	"${FILESDIR}/${P}-vala-0.56.7.patch"
+)
 
 DOCS=(
 	CHANGELOG.rst
