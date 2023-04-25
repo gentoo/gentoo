@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tj/git-extras/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~x64-macos"
 
 RDEPEND="
 	>=app-shells/bash-4.0:*
