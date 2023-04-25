@@ -10,4 +10,4 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-c"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64"
