@@ -87,7 +87,10 @@ DEPEND="${RDEPEND}
 	media-libs/libglvnd
 "
 
-PATCHES=( "${FILESDIR}/${PN}-6.5.0-gcc-13-build.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-6.5.0-gcc-13-build.patch"
+	"${FILESDIR}/${PN}-6.5.0-userscripts-loading.patch"
+)
 
 python_check_deps() {
 	python_has_version "dev-python/html5lib[${PYTHON_USEDEP}]"

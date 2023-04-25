@@ -1,0 +1,112 @@
+https://github.com/qutebrowser/qutebrowser/issues/7662
+https://bugreports.qt.io/browse/QTBUG-113109
+
+https://codereview.qt-project.org/c/qt/qtwebengine/+/474114
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Mon, 24 Apr 2023 17:33:17 +0200
+Subject: [PATCH] Fix user script management when subframes are present
+
+Only the main frames should administer scripts associated with it.
+
+Pick-to: 6.5
+Fixes: QTBUG-113109
+Change-Id: Ibda66f55ef99da632134a9de1425797262faba9b
+--- a/src/core/renderer/user_resource_controller.cpp
++++ b/src/core/renderer/user_resource_controller.cpp
+@@ -289,10 +289,11 @@
+     FrameUserScriptMap::iterator it = m_frameUserScriptMap.find(renderFrame);
+     if (it == m_frameUserScriptMap.end()) // ASSERT maybe?
+         return;
+-    for (uint64_t id : std::as_const(it.value())) {
+-        m_scripts.remove(id);
++    if (renderFrame->IsMainFrame()) {
++        for (uint64_t id : std::as_const(it.value()))
++            m_scripts.remove(id);
+     }
+-    m_frameUserScriptMap.remove(renderFrame);
++    m_frameUserScriptMap.erase(it);
+ }
+ 
+ void UserResourceController::addScriptForFrame(const QtWebEngineCore::UserScriptData &script,
+@@ -304,7 +305,8 @@
+ 
+     if (!(*it).contains(script.scriptId))
+         (*it).append(script.scriptId);
+-    m_scripts.insert(script.scriptId, script);
++    if (!frame || frame->IsMainFrame())
++        m_scripts.insert(script.scriptId, script);
+ }
+ 
+ void UserResourceController::removeScriptForFrame(const QtWebEngineCore::UserScriptData &script,
+@@ -315,7 +317,8 @@
+         return;
+ 
+     (*it).removeOne(script.scriptId);
+-    m_scripts.remove(script.scriptId);
++    if (!frame || frame->IsMainFrame())
++        m_scripts.remove(script.scriptId);
+ }
+ 
+ void UserResourceController::clearScriptsForFrame(content::RenderFrame *frame)
+@@ -323,8 +326,10 @@
+     FrameUserScriptMap::iterator it = m_frameUserScriptMap.find(frame);
+     if (it == m_frameUserScriptMap.end())
+         return;
+-    for (uint64_t id : std::as_const(it.value()))
+-        m_scripts.remove(id);
++    if (!frame || frame->IsMainFrame()) {
++        for (uint64_t id : std::as_const(it.value()))
++            m_scripts.remove(id);
++    }
+ 
+     m_frameUserScriptMap.remove(frame);
+ }
+--- a/tests/auto/widgets/qwebenginescript/tst_qwebenginescript.cpp
++++ b/tests/auto/widgets/qwebenginescript/tst_qwebenginescript.cpp
+@@ -76,6 +76,7 @@
+     void scriptsInNestedIframes();
+     void matchQrcUrl();
+     void injectionOrder();
++    void reloadWithSubframes();
+ };
+ 
+ void tst_QWebEngineScript::domEditing()
+@@ -694,6 +695,38 @@
+     QTRY_COMPARE(page.log, expected);
+ }
+ 
++void tst_QWebEngineScript::reloadWithSubframes()
++{
++    class Page : public QWebEnginePage
++    {
++    public:
++        Page() : QWebEnginePage() {}
++        QVector<QString> log;
++
++    protected:
++        void javaScriptConsoleMessage(JavaScriptConsoleMessageLevel, const QString &message, int,
++                                      const QString &) override
++        {
++            log.append(message);
++        }
++    } page;
++
++    QWebEngineScript s;
++    s.setInjectionPoint(QWebEngineScript::DocumentCreation);
++    s.setSourceCode(QStringLiteral("console.log('Hello');"));
++    page.scripts().insert(s);
++
++    page.setHtml(QStringLiteral("<body>"
++                                "  <h1>Test scripts working on reload </h1>"
++                                "  <iframe src='about://blank'>"
++                                "  </iframe>"
++                                "</body>"));
++    QTRY_COMPARE(page.log.size(), 1);
++
++    page.triggerAction(QWebEnginePage::Reload);
++    QTRY_COMPARE(page.log.size(), 2);
++}
++
+ QTEST_MAIN(tst_QWebEngineScript)
+ 
+ #include "tst_qwebenginescript.moc"
