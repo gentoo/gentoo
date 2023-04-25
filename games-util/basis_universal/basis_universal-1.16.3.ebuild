@@ -12,7 +12,7 @@ SRC_URI="https://github.com/BinomialLLC/basis_universal/archive/refs/tags/${PV}.
 
 LICENSE="Apache-2.0 zstd? ( BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="cpu_flags_x86_sse4_1 opencl zstd"
 
 # zstd is bundled, see https://github.com/BinomialLLC/basis_universal/pull/228
