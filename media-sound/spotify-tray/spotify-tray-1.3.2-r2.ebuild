@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,4 +34,8 @@ src_install() {
 	default
 	# remove desktop file, launching is handled in spotify ebuild
 	rm "${ED}/usr/share/applications/spotify-tray.desktop" || die
+
+	# move executable outside of PATH to avoid accidentally launching it in a loop
+	mkdir -p "${ED}/opt/spotify/spotify-client" || die
+	mv "${ED}/usr/bin/spotify-tray" "${ED}/opt/spotify/spotify-client/spotify-tray" || die
 }
