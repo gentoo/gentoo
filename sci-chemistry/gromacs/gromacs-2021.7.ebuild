@@ -85,7 +85,10 @@ DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}/${PN}-2021-musl-stdint.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2021-musl-stdint.patch"
+	"${FILESDIR}/${PN}-2021-cuda-detection.patch"
+)
 
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
