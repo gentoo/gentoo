@@ -4,7 +4,9 @@
 EAPI=8
 
 LLVM_MAX_SLOT=14
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake distutils-r1 llvm
@@ -29,14 +31,20 @@ ALL_LLVM_TARGETS=( AArch64 ARM Hexagon Mips PowerPC Sparc SystemZ X86 )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
-IUSE="python ${ALL_LLVM_TARGETS[*]}"
+IUSE="debug python ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[${LLVM_TARGET_USEDEPS// /,}]
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	python?
+	(
+		${DISTUTILS_DEPS}
+		${PYTHON_DEPS}
+	)
+"
 
 RESTRICT=test # only regression tests
 
