@@ -11,6 +11,8 @@ DESCRIPTION="HTTP Action, Adventure and Excitement"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -27,4 +29,8 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	virtual/perl-ExtUtils-MakeMaker
+	test? (
+		dev-perl/Test-Fatal
+		dev-perl/Test-Warnings
+	)
 "
