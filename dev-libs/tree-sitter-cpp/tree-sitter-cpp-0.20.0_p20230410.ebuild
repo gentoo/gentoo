@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${GIT_COMMIT}/src
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 # requires test data from tree-sitter-c
 RESTRICT="test"
