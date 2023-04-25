@@ -14,7 +14,7 @@ SRC_URI="https://github.com/rr-debugger/${PN}/archive/${PV}.tar.gz -> mozilla-${
 
 LICENSE="MIT BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="multilib test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
