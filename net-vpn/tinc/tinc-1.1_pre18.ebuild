@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,13 +38,14 @@ PATCHES+=(
 
 src_prepare() {
 	default
-	eautoreconf
 
 	# Fix the static (failing UNKNOWN) version in the autoconf
 	# NOTE: When updating the ebuild, make sure to check that this
 	# line number hasn't changed in the upstream sources.
-	sed -i "6d" configure.ac
-	sed -i "6iAC_INIT([tinc], ${PVR})" configure.ac
+	sed -i "6d" configure.ac || die
+	sed -i "6iAC_INIT([tinc], ${PVR})" configure.ac || die
+
+        eautoreconf
 }
 
 src_configure() {
