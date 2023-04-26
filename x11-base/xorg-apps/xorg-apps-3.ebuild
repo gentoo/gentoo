@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,6 @@ RDEPEND="
 	x11-apps/oclock
 	x11-apps/rgb
 	x11-apps/rstart
-	x11-apps/scripts
 	x11-apps/sessreg
 	x11-apps/setxkbmap
 	x11-apps/showfont
