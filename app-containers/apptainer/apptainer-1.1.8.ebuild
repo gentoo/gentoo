@@ -11,7 +11,7 @@ SRC_URI="https://github.com/apptainer/${PN}/releases/download/v${PV}/${P}.tar.gz
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples +network suid systemd"
 
 # Do not complain about CFLAGS etc. since go projects do not use them.
