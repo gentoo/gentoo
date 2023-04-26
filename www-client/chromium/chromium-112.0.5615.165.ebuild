@@ -21,6 +21,7 @@ HOMEPAGE="https://chromium.org/"
 PATCHSET_URI_PPC64="https://quickbuild.io/~raptor-engineering-public"
 PATCHSET_NAME_PPC64="chromium_112.0.5615.49-2raptor0~deb11u1.debian"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
+	https://dev.gentoo.org/~sam/distfiles/www-client/chromium/chromium-112-gcc-13-patches.tar.xz
 	ppc64? (
 		${PATCHSET_URI_PPC64}/+archive/ubuntu/chromium/+files/${PATCHSET_NAME_PPC64}.tar.xz
 		https://dev.gentoo.org/~sultan/distfiles/www-client/chromium/chromium-ppc64le-gentoo-patches-1.tar.xz
@@ -344,6 +345,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-112-sql-relax.patch"
 		"${FILESDIR}/chromium-112-gcc-mno-outline.patch"
 		"${FILESDIR}/chromium-112-swiftshader.patch"
+		"${WORKDIR}/chromium-112-gcc-13-patches"
 	)
 
 	if use ppc64 ; then
