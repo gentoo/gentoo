@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org>
+# Merged into net-libs/ldns.  Bug 828109.
+# Removal on 2023-05-26.
+net-dns/ldns-utils
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-22)
 # Unused acct-group. Removal on 2023-05-22
 # The server was removed on 2021-08-24 with commit
