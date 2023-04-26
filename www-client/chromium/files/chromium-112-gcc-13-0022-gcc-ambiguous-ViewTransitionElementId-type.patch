@@ -1,0 +1,27 @@
+https://chromium-review.googlesource.com/c/chromium/src/+/4406546
+
+From 5157addae4101604be0cc5de2d755cf54c5fc38e Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Tue, 11 Apr 2023 15:09:36 +0000
+Subject: [PATCH] GCC: fix ambiguous ViewTransitionElementId type
+
+GCC sees cc::ViewTransitionElementId and
+blink::ViewTransitionElementId. Add namespace to avoid confusion.
+
+Bug: 819294
+Change-Id: I5ab81a04b4c7c15a1a0441266fc6f1e0ceb81a05
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4406546
+Reviewed-by: Ian Vollick <vollick@chromium.org>
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Cr-Commit-Position: refs/heads/main@{#1128644}
+--- a/third_party/blink/renderer/platform/graphics/paint/effect_paint_property_node.h
++++ b/third_party/blink/renderer/platform/graphics/paint/effect_paint_property_node.h
+@@ -116,7 +116,7 @@
+ 
+     // An identifier for a view transition element. `id.valid()` returns true if
+     // this has been set, and false otherwise.
+-    ViewTransitionElementId view_transition_element_id;
++    blink::ViewTransitionElementId view_transition_element_id;
+ 
+     // An identifier to tag transition element resources generated and cached in
+     // the Viz process. This generated resource can be used as content for other

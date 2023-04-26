@@ -1,0 +1,23 @@
+https://dawn-review.googlesource.com/c/dawn/+/126120
+
+From a7423b3d8367a706c50ab787df2fe5eedb6c3c9f Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Mon, 03 Apr 2023 13:51:27 +0000
+Subject: [PATCH] IWYU: add cstdint for uint8_t dawn::native::stream::ByteVectorSink
+
+Bug: chromium:957519
+Change-Id: I48436db0e203d793e47d717bfb75977c67145e94
+Reviewed-on: https://dawn-review.googlesource.com/c/dawn/+/126120
+Reviewed-by: Corentin Wallez <cwallez@chromium.org>
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Kokoro: Kokoro <noreply+kokoro@google.com>
+--- a/third_party/dawn/src/dawn/native/stream/ByteVectorSink.h
++++ b/third_party/dawn/src/dawn/native/stream/ByteVectorSink.h
+@@ -15,6 +15,7 @@
+ #ifndef SRC_DAWN_NATIVE_STREAM_BYTEVECTORSINK_H_
+ #define SRC_DAWN_NATIVE_STREAM_BYTEVECTORSINK_H_
+ 
++#include <cstdint>
+ #include <ostream>
+ #include <vector>
+ 

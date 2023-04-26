@@ -344,6 +344,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-112-sql-relax.patch"
 		"${FILESDIR}/chromium-112-gcc-mno-outline.patch"
 		"${FILESDIR}/chromium-112-swiftshader.patch"
+		"${FILESDIR}"/chromium-112-gcc-13*.patch
 	)
 
 	if use ppc64 ; then

@@ -1,0 +1,37 @@
+https://chromium-review.googlesource.com/c/chromium/src/+/4394856
+
+From 78e8aa30665d0344a64a98c092612ea6064dbe60 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Wed, 12 Apr 2023 08:42:20 +0000
+Subject: [PATCH] IWYU: add stdint.h for various integer types in //net
+
+Bug: 957519
+Change-Id: I7161bc8f5974a4d241c12d618d954db0787ab84c
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4394856
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Reviewed-by: Steven Bingler <bingler@chromium.org>
+Reviewed-by: Matt Mueller <mattm@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1129139}
+--- a/net/cert/pki/string_util.h
++++ b/net/cert/pki/string_util.h
+@@ -7,6 +7,8 @@
+ 
+ #include "net/base/net_export.h"
+ 
++#include <stdint.h>
++
+ #include <string_view>
+ #include <vector>
+ 
+--- a/net/cookies/cookie_inclusion_status.h
++++ b/net/cookies/cookie_inclusion_status.h
+@@ -5,6 +5,8 @@
+ #ifndef NET_COOKIES_COOKIE_INCLUSION_STATUS_H_
+ #define NET_COOKIES_COOKIE_INCLUSION_STATUS_H_
+ 
++#include <stdint.h>
++
+ #include <bitset>
+ #include <cstdint>
+ #include <ostream>
+

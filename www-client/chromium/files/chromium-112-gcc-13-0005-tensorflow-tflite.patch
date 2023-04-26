@@ -1,0 +1,18 @@
+https://github.com/tensorflow/tensorflow/pull/60299
+
+From 9dbee4329ffd0474b939927f6d337959fb72318a Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Fri, 31 Mar 2023 16:01:44 +0000
+Subject: [PATCH] tflite: add stdint.h for int types in internal::Spectrogram
+
+--- a/third_party/tflite/src/tensorflow/lite/kernels/internal/spectrogram.cc
++++ b/third_party/tflite/src/tensorflow/lite/kernels/internal/spectrogram.cc
+@@ -17,6 +17,7 @@ limitations under the License.
+ 
+ #include <assert.h>
+ #include <math.h>
++#include <stdint.h>
+ 
+ #include "third_party/fft2d/fft.h"
+ 
+

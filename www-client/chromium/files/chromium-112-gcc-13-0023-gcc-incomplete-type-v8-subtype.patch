@@ -1,0 +1,37 @@
+https://chromium-review.googlesource.com/c/v8/v8/+/4394663
+
+From c5ab3e4f0c5a3ce880941184ef8447c27cd19a93 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Mon, 03 Apr 2023 12:19:34 +0200
+Subject: [PATCH] libstdc++: fix incomplete type in v8::internal::is_subtype<T, U>
+
+Using std::convertible with incomplete types is UB. However, till
+GCC 12 it was accepted and std::convertible returned false.
+This fails now for e.g. v8::internal::WasmArray. Use
+std::disjunction and std::conjunction instead which are short-
+circuiting, because std::is_base_of<T, T> is already true.
+
+Bug: chromium:957519
+Change-Id: Ia26643dbdf0fb00d5586c71ae6b18e8d0f3cf96e
+Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/4394663
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Reviewed-by: Clemens Backes <clemensb@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#86904}
+---
+
+diff --git a/src/codegen/tnode.h b/src/codegen/tnode.h
+index 3a8f844..c1de483 100644
+--- a/v8/src/codegen/tnode.h
++++ b/v8/src/codegen/tnode.h
+@@ -270,8 +270,9 @@
+ template <class T, class U>
+ struct is_subtype {
+   static const bool value =
+-      std::is_base_of<U, T>::value || (std::is_same<U, MaybeObject>::value &&
+-                                       std::is_convertible<T, Object>::value);
++      std::disjunction<std::is_base_of<U, T>,
++                       std::conjunction<std::is_same<U, MaybeObject>,
++                                        std::is_convertible<T, Object>>>::value;
+ };
+ template <class T1, class T2, class U>
+ struct is_subtype<UnionT<T1, T2>, U> {

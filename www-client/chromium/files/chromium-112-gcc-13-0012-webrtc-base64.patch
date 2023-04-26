@@ -1,0 +1,26 @@
+https://webrtc-review.googlesource.com/c/src/+/296980
+
+From 86eb6ba2079259f410b1c559f900080ffeac12c8 Mon Sep 17 00:00:00 2001
+From: Bruno Pitrus <brunopitrus@hotmail.com>
+Date: Fri, 10 Mar 2023 19:27:38 +0000
+Subject: [PATCH] Add missing header causing build error with GCC13
+
+Bug: chromium:957519
+Change-Id: I0146fdb18764b683b502e9804bce1c7b2ab05294
+Reviewed-on: https://webrtc-review.googlesource.com/c/src/+/296980
+Reviewed-by: Harald Alvestrand <hta@webrtc.org>
+Commit-Queue: Harald Alvestrand <hta@webrtc.org>
+Auto-Submit: Bruno Pitrus <brunopitrus@hotmail.com>
+Cr-Commit-Position: refs/heads/main@{#39536}
+--- a/third_party/webrtc/rtc_base/third_party/base64/base64.h
++++ b/third_party/webrtc/rtc_base/third_party/base64/base64.h
+@@ -12,6 +12,8 @@
+ #ifndef RTC_BASE_THIRD_PARTY_BASE64_BASE64_H_
+ #define RTC_BASE_THIRD_PARTY_BASE64_BASE64_H_
+ 
++#include <cstddef>
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+

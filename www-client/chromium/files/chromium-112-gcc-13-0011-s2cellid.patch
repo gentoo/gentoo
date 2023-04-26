@@ -1,0 +1,24 @@
+https://chromium-review.googlesource.com/c/chromium/src/+/4418467
+
+From dbb0a49610aa491c5eaa1461342485721c37354c Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Fri, 14 Apr 2023 05:29:45 +0000
+Subject: [PATCH] IWYU: add cstdint for int types in s2cellid
+
+Bug: 957519
+Change-Id: I65ad411c605baeaeda3addfd07ea9b565179368b
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4418467
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Reviewed-by: Andrew Moylan <amoylan@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1130286}
+--- a/third_party/s2cellid/src/s2/util/math/vector.h
++++ b/third_party/s2cellid/src/s2/util/math/vector.h
+@@ -22,6 +22,7 @@
+ 
+ #include <algorithm>
+ #include <cmath>
++#include <cstdint>
+ #include <cstdlib>
+ #include <iosfwd>
+ #include <iostream>  // NOLINT(readability/streams)
+

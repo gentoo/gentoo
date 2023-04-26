@@ -1,0 +1,19 @@
+https://github.com/google/maldoca/commit/dc14ae0a5452a2f47a1c28e0aecd691639c097cf
+
+From dc14ae0a5452a2f47a1c28e0aecd691639c097cf Mon Sep 17 00:00:00 2001
+From: b-maldoca <66144360+b-maldoca@users.noreply.github.com>
+Date: Wed, 12 Apr 2023 21:36:57 +0200
+Subject: [PATCH] fixing import in maldoca/ole/header.h (#88)
+
+--- a/third_party/maldoca/src/maldoca/ole/header.h
++++ b/third_party/maldoca/src/maldoca/ole/header.h
+@@ -43,6 +43,8 @@
+ #ifndef MALDOCA_OLE_HEADER_H_
+ #define MALDOCA_OLE_HEADER_H_
+ 
++#include <cstdint>
++
+ #include "absl/strings/string_view.h"
+ 
+ namespace maldoca {
+

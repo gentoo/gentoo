@@ -1,0 +1,29 @@
+https://chromium-review.googlesource.com/c/chromium/src/+/4401097
+
+From 2a7bf74bdb6348781dd4f3fbe9897969c4e7b819 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Tue, 11 Apr 2023 16:09:29 +0000
+Subject: [PATCH] IWYU: add stdint.h for int types in gpu_feature_info
+
+Bug: 957519
+Change-Id: Ic3bebb43bcbb3a04876e5fc35767af39b01afdd2
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4401097
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Reviewed-by: vikas soni <vikassoni@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1128679}
+---
+
+diff --git a/gpu/config/gpu_feature_info.h b/gpu/config/gpu_feature_info.h
+index d269ce2..45edc112 100644
+--- a/gpu/config/gpu_feature_info.h
++++ b/gpu/config/gpu_feature_info.h
+@@ -5,6 +5,8 @@
+ #ifndef GPU_CONFIG_GPU_FEATURE_INFO_H_
+ #define GPU_CONFIG_GPU_FEATURE_INFO_H_
+ 
++#include <stdint.h>
++
+ #include <string>
+ #include <vector>
+ 
+

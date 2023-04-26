@@ -1,0 +1,32 @@
+https://quiche.googlesource.com/quiche/+/e2cb2d0ee59e82a68f3132359c2a80f3f3184f16
+
+--- a/net/third_party/quiche/src/quiche/http2/adapter/header_validator_base.h
++++ b/net/third_party/quiche/src/quiche/http2/adapter/header_validator_base.h
+@@ -1,6 +1,7 @@
+ #ifndef QUICHE_HTTP2_ADAPTER_HEADER_VALIDATOR_BASE_H_
+ #define QUICHE_HTTP2_ADAPTER_HEADER_VALIDATOR_BASE_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "absl/strings/string_view.h"
+--- a/net/third_party/quiche/src/quiche/quic/core/crypto/quic_hkdf.h
++++ b/net/third_party/quiche/src/quiche/quic/core/crypto/quic_hkdf.h
+@@ -5,6 +5,7 @@
+ #ifndef QUICHE_QUIC_CORE_CRYPTO_QUIC_HKDF_H_
+ #define QUICHE_QUIC_CORE_CRYPTO_QUIC_HKDF_H_
+ 
++#include <cstdint>
+ #include <vector>
+ 
+ #include "absl/strings/string_view.h"
+--- a/net/third_party/quiche/src/quiche/quic/core/quic_connection_id.h
++++ b/net/third_party/quiche/src/quiche/quic/core/quic_connection_id.h
+@@ -5,6 +5,7 @@
+ #ifndef QUICHE_QUIC_CORE_QUIC_CONNECTION_ID_H_
+ #define QUICHE_QUIC_CORE_QUIC_CONNECTION_ID_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 

@@ -1,0 +1,11 @@
+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/commit/383f06b9fd9d36fb54cb3d4ac3363a670104bc62
+--- a/third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
++++ b/third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
+@@ -2389,6 +2389,7 @@
+ #undef VMA_IMPLEMENTATION
+ 
+ #include <cstdint>
++#include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
+ #include <utility>

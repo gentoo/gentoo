@@ -1,0 +1,28 @@
+https://chromium-review.googlesource.com/c/chromium/src/+/4395935
+
+From b969f3cc2482f118819919900d0d42fe81c947e2 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Tue, 04 Apr 2023 16:10:52 +0000
+Subject: [PATCH] GCC: fix copy-list-initialization in net::HostCache
+
+absl::optional has an explicit constructor and therefore all
+constructors are considered on copy-list-initialization (CWG1228).
+
+Bug: 819294
+Change-Id: Ifce659f6a3ed072e0336b5655f2237c0613bddbe
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4395935
+Reviewed-by: Adam Langley <agl@chromium.org>
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Cr-Commit-Position: refs/heads/main@{#1126024}
+--- a/net/dns/host_cache.cc
++++ b/net/dns/host_cache.cc
+@@ -389,7 +389,7 @@
+ 
+     // Even if otherwise empty, having the metadata result object signifies
+     // receiving a compatible HTTPS record.
+-    https_record_compatibility_ = {true};
++    https_record_compatibility_ = std::vector<bool>{true};
+ 
+     if (endpoint_metadatas_.value().empty())
+       error_ = ERR_NAME_NOT_RESOLVED;
+

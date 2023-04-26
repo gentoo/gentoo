@@ -1,0 +1,251 @@
+These patches are in the same file as they touch the same files and
+need to be applied in order.
+
+https://chromium-review.googlesource.com/c/chromium/src/+/4401098
+https://chromium-review.googlesource.com/c/chromium/src/+/4401098
+https://chromium-review.googlesource.com/c/chromium/src/+/4394541
+https://chromium-review.googlesource.com/c/chromium/src/+/4400997
+https://chromium-review.googlesource.com/c/chromium/src/+/4330267
+
+From dae4f1f4114ff6c6811aa3a0410e88e7a53b0531 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Wed, 05 Apr 2023 17:46:42 +0000
+Subject: [PATCH] IWYU: add cstdint for uint8_t in web_bluetooth_device_id
+
+Bug: 957519
+Change-Id: I2dba0b0088f6975d7ce59c3a14427d2dc5838477
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4401098
+Reviewed-by: Jack Hsieh <chengweih@chromium.org>
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Cr-Commit-Position: refs/heads/main@{#1126677}
+--- a/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
++++ b/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
+@@ -5,6 +5,8 @@
+ #ifndef THIRD_PARTY_BLINK_PUBLIC_COMMON_BLUETOOTH_WEB_BLUETOOTH_DEVICE_ID_H_
+ #define THIRD_PARTY_BLINK_PUBLIC_COMMON_BLUETOOTH_WEB_BLUETOOTH_DEVICE_ID_H_
+ 
++#include <stdint.h>
++
+ #include <array>
+ #include <string>
+ 
+
+From 83de2fa6806fc337e61fef0bd156dc2602542db3 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Tue, 04 Apr 2023 16:10:03 +0000
+Subject: [PATCH] IWYU: add cstdint for uintptr_t in device::OneWriterSeqLock
+
+Bug: 957519
+Change-Id: I283f5b0cc34a268bea5dcb03c34726cbec905ea7
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4394541
+Reviewed-by: Ken Rockot <rockot@google.com>
+Commit-Queue: Ken Rockot <rockot@google.com>
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Cr-Commit-Position: refs/heads/main@{#1126023}
+--- a/device/base/synchronization/one_writer_seqlock.h
++++ b/device/base/synchronization/one_writer_seqlock.h
+@@ -6,6 +6,7 @@
+ #define DEVICE_BASE_SYNCHRONIZATION_ONE_WRITER_SEQLOCK_H_
+ 
+ #include <atomic>
++#include <cstdint>
+ #include <type_traits>
+ 
+ #include "base/atomicops.h"
+
+From 7815db39abc8ccf64305c5fbac7e0f88bcc8b371 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Wed, 05 Apr 2023 21:14:20 +0000
+Subject: [PATCH] IWYU: add stdint.h for integer types in //ui
+
+Bug: 957519
+Change-Id: I33698e997a32c36db19775f0cf4b22fb13cee349
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4400997
+Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
+Reviewed-by: Scott Violet <sky@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1126829}
+--- a/ui/base/prediction/kalman_filter.h
++++ b/ui/base/prediction/kalman_filter.h
+@@ -5,6 +5,8 @@
+ #ifndef UI_BASE_PREDICTION_KALMAN_FILTER_H_
+ #define UI_BASE_PREDICTION_KALMAN_FILTER_H_
+ 
++#include <stdint.h>
++
+ #include "base/component_export.h"
+ #include "ui/gfx/geometry/matrix3_f.h"
+ 
+--- a/ui/events/types/scroll_types.h
++++ b/ui/events/types/scroll_types.h
+@@ -5,6 +5,8 @@
+ #ifndef UI_EVENTS_TYPES_SCROLL_TYPES_H_
+ #define UI_EVENTS_TYPES_SCROLL_TYPES_H_
+ 
++#include <stdint.h>
++
+ namespace ui {
+ 
+ enum class ScrollGranularity : uint8_t {
+--- a/ui/gfx/geometry/linear_gradient.h
++++ b/ui/gfx/geometry/linear_gradient.h
+@@ -5,6 +5,8 @@
+ #ifndef UI_GFX_LINEAR_GRADIENT_H_
+ #define UI_GFX_LINEAR_GRADIENT_H_
+ 
++#include <stdint.h>
++
+ #include <array>
+ #include <string>
+ 
+
+From 6bbf6b001e085025cf33412b15eb79d46e2e670c Mon Sep 17 00:00:00 2001
+From: Bruno Pitrus <brunopitrus@hotmail.com>
+Date: Tue, 11 Apr 2023 19:32:13 +0000
+Subject: [PATCH] Add missing includes causing build errors with GCC/libstdc++ 13
+
+Bug: 957519
+Change-Id: If09ae682695714a19e37f3830013a003caba025a
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4330267
+Reviewed-by: Ken Rockot <rockot@google.com>
+Auto-Submit: Bruno Pitrus <brunopitrus@hotmail.com>
+Reviewed-by: Reilly Grant <reillyg@chromium.org>
+Commit-Queue: Ken Rockot <rockot@google.com>
+Reviewed-by: Robert Kaplow <rkaplow@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1128822}
+--- a/components/metrics/psi_memory_parser.h
++++ b/components/metrics/psi_memory_parser.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_METRICS_PSI_MEMORY_PARSER_H_
+ #define COMPONENTS_METRICS_PSI_MEMORY_PARSER_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "base/gtest_prod_util.h"
+--- a/components/services/app_service/public/cpp/capability_access.h
++++ b/components/services/app_service/public/cpp/capability_access.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_SERVICES_APP_SERVICE_PUBLIC_CPP_CAPABILITY_ACCESS_H_
+ #define COMPONENTS_SERVICES_APP_SERVICE_PUBLIC_CPP_CAPABILITY_ACCESS_H_
+ 
++#include <memory>
+ #include <string>
+ #include <utility>
+ 
+--- a/components/soda/constants.h
++++ b/components/soda/constants.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_SODA_CONSTANTS_H_
+ #define COMPONENTS_SODA_CONSTANTS_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "base/files/file_path.h"
+--- a/device/base/synchronization/one_writer_seqlock.h
++++ b/device/base/synchronization/one_writer_seqlock.h
+@@ -6,6 +6,7 @@
+ #define DEVICE_BASE_SYNCHRONIZATION_ONE_WRITER_SEQLOCK_H_
+ 
+ #include <atomic>
++#include <cstddef>
+ #include <cstdint>
+ #include <type_traits>
+ 
+--- a/device/bluetooth/public/cpp/bluetooth_uuid.h
++++ b/device/bluetooth/public/cpp/bluetooth_uuid.h
+@@ -5,6 +5,7 @@
+ #ifndef DEVICE_BLUETOOTH_PUBLIC_CPP_BLUETOOTH_UUID_H_
+ #define DEVICE_BLUETOOTH_PUBLIC_CPP_BLUETOOTH_UUID_H_
+ 
++#include <cstdint>
+ #include <ostream>
+ #include <string>
+ #include <vector>
+--- a/extensions/common/constants.h
++++ b/extensions/common/constants.h
+@@ -5,6 +5,9 @@
+ #ifndef EXTENSIONS_COMMON_CONSTANTS_H_
+ #define EXTENSIONS_COMMON_CONSTANTS_H_
+ 
++#include <cstddef>
++#include <cstdint>
++
+ #include "base/files/file_path.h"
+ #include "base/strings/string_piece_forward.h"
+ #include "build/chromeos_buildflags.h"
+--- a/extensions/renderer/bindings/api_invocation_errors.h
++++ b/extensions/renderer/bindings/api_invocation_errors.h
+@@ -5,6 +5,7 @@
+ #ifndef EXTENSIONS_RENDERER_BINDINGS_API_INVOCATION_ERRORS_H_
+ #define EXTENSIONS_RENDERER_BINDINGS_API_INVOCATION_ERRORS_H_
+ 
++#include <cstdint>
+ #include <set>
+ #include <string>
+ 
+--- a/net/base/parse_number.h
++++ b/net/base/parse_number.h
+@@ -5,6 +5,8 @@
+ #ifndef NET_BASE_PARSE_NUMBER_H_
+ #define NET_BASE_PARSE_NUMBER_H_
+ 
++#include <cstdint>
++
+ #include "base/strings/string_piece.h"
+ #include "net/base/net_export.h"
+ 
+--- a/net/cookies/cookie_inclusion_status.h
++++ b/net/cookies/cookie_inclusion_status.h
+@@ -6,6 +6,7 @@
+ #define NET_COOKIES_COOKIE_INCLUSION_STATUS_H_
+ 
+ #include <bitset>
++#include <cstdint>
+ #include <ostream>
+ #include <string>
+ #include <vector>
+--- a/sandbox/linux/syscall_broker/broker_file_permission.h
++++ b/sandbox/linux/syscall_broker/broker_file_permission.h
+@@ -6,6 +6,7 @@
+ #define SANDBOX_LINUX_SYSCALL_BROKER_BROKER_FILE_PERMISSION_H_
+ 
+ #include <bitset>
++#include <cstdint>
+ #include <string>
+ 
+ #include "base/strings/string_piece.h"
+--- a/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
++++ b/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
+@@ -8,6 +8,9 @@
+ #include <stdint.h>
+ 
+ #include <array>
++#include <cstdint>
++#include <functional>
++#include <iosfwd>
+ #include <string>
+ 
+ #include "third_party/blink/public/common/common_export.h"
+--- a/third_party/blink/public/common/origin_trials/origin_trial_public_key.h
++++ b/third_party/blink/public/common/origin_trials/origin_trial_public_key.h
+@@ -6,6 +6,7 @@
+ #define THIRD_PARTY_BLINK_PUBLIC_COMMON_ORIGIN_TRIALS_ORIGIN_TRIAL_PUBLIC_KEY_H_
+ 
+ #include <array>
++#include <cstdint>
+ 
+ namespace blink {
+ 
+--- a/ui/gfx/geometry/linear_gradient.h
++++ b/ui/gfx/geometry/linear_gradient.h
+@@ -8,6 +8,8 @@
+ #include <stdint.h>
+ 
+ #include <array>
++#include <cstddef>
++#include <cstdint>
+ #include <string>
+ 
+ #include "ui/gfx/geometry/geometry_skia_export.h"
+

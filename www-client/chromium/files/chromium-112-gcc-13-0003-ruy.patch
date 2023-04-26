@@ -1,0 +1,18 @@
+https://github.com/google/ruy/pull/329
+
+From 7f6f4cfe5fd301bdeb2d7c19ba8b0d7963090f78 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Fri, 31 Mar 2023 14:58:38 +0000
+Subject: [PATCH] IWYU: add string for std::string
+
+--- a/third_party/ruy/src/ruy/profiler/instrumentation.h
++++ b/third_party/ruy/src/ruy/profiler/instrumentation.h
+@@ -19,6 +19,7 @@ limitations under the License.
+ #ifdef RUY_PROFILER
+ #include <cstdio>
+ #include <mutex>
++#include <string>
+ #include <vector>
+ #endif
+ 
+
