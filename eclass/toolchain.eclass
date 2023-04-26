@@ -242,7 +242,14 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" pgo"
 	IUSE+=" objc-gc" TC_FEATURES+=( objc-gc )
 	IUSE+=" libssp objc++"
-	IUSE+=" +openmp"
+
+	# Stop forcing openmp on by default in the eclass. Gradually phase it out.
+	# See bug #890999.
+	if tc_version_is_at_least 13.0.0_pre20221218 ; then
+		IUSE+=" openmp"
+	else
+		IUSE+=" +openmp"
+	fi
 
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
