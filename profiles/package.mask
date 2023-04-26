@@ -33,7 +33,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Mike Gilbert <floppym@gentoo.org>
+# Mike Gilbert <floppym@gentoo.org> (2023-04-26)
 # Merged into net-libs/ldns.  Bug 828109.
 # Removal on 2023-05-26.
 net-dns/ldns-utils
