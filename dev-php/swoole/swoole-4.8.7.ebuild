@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -40,6 +40,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 IUSE="debug http2 mysql sockets ssl"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc13.patch
+)
 
 src_configure() {
 	# JEMalloc not included as it refuses to find a ${ESYSROOT}/usr/includes/jemalloc subdirectory
