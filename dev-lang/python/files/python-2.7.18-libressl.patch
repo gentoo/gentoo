@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/903001
+https://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/lang/python/2.7/patches/patch-Modules__hashopenssl_c
+
+Index: Modules/_hashopenssl.c
+--- a/Modules/_hashopenssl.c.orig
++++ b/Modules/_hashopenssl.c
+@@ -56,7 +56,8 @@
+ #define _OPENSSL_SUPPORTS_SHA2
+ #endif
+ 
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || \
++    (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x2070000fL)
+ /* OpenSSL < 1.1.0 */
+ #define EVP_MD_CTX_new EVP_MD_CTX_create
+ #define EVP_MD_CTX_free EVP_MD_CTX_destroy

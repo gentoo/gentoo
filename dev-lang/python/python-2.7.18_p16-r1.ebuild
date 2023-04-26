@@ -107,6 +107,7 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/${PATCHSET}"
+		"${FILESDIR}"/${PN}-2.7.18-libressl.patch #903001
 	)
 
 	default
