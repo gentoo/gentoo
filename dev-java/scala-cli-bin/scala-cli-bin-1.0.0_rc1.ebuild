@@ -12,16 +12,16 @@ DESCRIPTION="CLI to interact with Scala and Java"
 HOMEPAGE="https://scala-cli.virtuslab.org/"
 SRC_URI="
 	!amd64? ( !arm64? (
-		https://github.com/VirtusLab/scala-cli/releases/download/v${UPSTREAM_PV}/scala-cli ->
-			 scala-cli-non-native-${UPSTREAM_PV}
+		https://github.com/VirtusLab/scala-cli/releases/download/v${UPSTREAM_PV}/scala-cli
+			-> scala-cli-non-native-${UPSTREAM_PV}
 	) )
 	amd64? (
-		https://github.com/VirtusLab/scala-cli/releases/download/v${UPSTREAM_PV}/scala-cli-x86_64-pc-linux.gz ->
-			scala-cli-amd64-${UPSTREAM_PV}.gz
+		https://github.com/VirtusLab/scala-cli/releases/download/v${UPSTREAM_PV}/scala-cli-x86_64-pc-linux.gz
+			-> scala-cli-amd64-${UPSTREAM_PV}.gz
 	)
 	arm64? (
-		https://github.com/VirtusLab/scala-cli/releases/download/v${UPSTREAM_PV}/scala-cli-aarch64-pc-linux.gz ->
-			scala-cli-arm64-${UPSTREAM_PV}.gz
+		https://github.com/VirtusLab/scala-cli/releases/download/v${UPSTREAM_PV}/scala-cli-aarch64-pc-linux.gz
+			-> scala-cli-arm64-${UPSTREAM_PV}.gz
 	)
 "
 
