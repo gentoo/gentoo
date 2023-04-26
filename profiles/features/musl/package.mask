@@ -35,16 +35,6 @@ dev-libs/intel-compute-runtime
 =sys-devel/gcc-12.2.1_p20221231:12
 =sys-devel/gcc-12.2.1_p20230121:12
 
-# Andrey Grozin <grozin@gentoo.org> (2022-12-01)
-# sbcl upstream supports only glibc Linux systems, bug #712626
-# and these packages depend on dev-lisp/sbcl unconditionally
-dev-lisp/sbcl
-app-emacs/sly
-dev-lisp/alexandria
-sci-mathematics/acl2
-x11-wm/stumpwm
-x11-wm/stumpwm-contrib
-
 # Sam James <sam@gentoo.org> (2022-10-17)
 # Needs porting to musl
 # https://github.com/rr-debugger/rr/issues/2236

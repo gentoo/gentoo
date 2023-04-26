@@ -5,10 +5,6 @@
 # sys-block/arcconf is masked on musl
 net-analyzer/nagios-plugin-check_raid aacraid
 
-# Sam James <sam@gentoo.org> (2023-02-17)
-# dev-lisp/sbcl is masked on musl
-sci-mathematics/fricas sbcl
-
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-10-04)
 # Mask loguru until fixed upstream #873601
 sci-libs/vtk logging
