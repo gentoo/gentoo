@@ -117,7 +117,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.18-modulepathfix.patch"
 	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
-	"${FILESDIR}/${PN}-6.0.3-system.sw.packages.patch"
+	"${FILESDIR}/${PN}-6.4.0-configure-sscanf.patch"
 )
 
 S=${WORKDIR}/${MY_P}
@@ -141,6 +141,10 @@ pkg_setup() {
 	fi
 
 	java-pkg-opt-2_pkg_setup
+}
+
+src_prepare() {
+	default
 }
 
 src_configure() {
