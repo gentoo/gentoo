@@ -20,12 +20,12 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-LLVM_MAX_SLOT=15
+LLVM_MAX_SLOT=16
 DEPEND="
 	|| (
+		sys-devel/clang:16
 		sys-devel/clang:15
 		sys-devel/clang:14
-		sys-devel/clang:13
 	)
 	<sys-devel/clang-$(( LLVM_MAX_SLOT + 1 )):=
 "
@@ -50,6 +50,10 @@ BDEPEND="
 		')
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-llvm16.patch
+)
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"

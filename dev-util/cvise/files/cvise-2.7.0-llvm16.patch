@@ -1,0 +1,68 @@
+https://github.com/marxin/cvise/commit/2f4e1755aa32b131b49606cd55b5bfcc7714a8a8
+
+From 2f4e1755aa32b131b49606cd55b5bfcc7714a8a8 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Thu, 26 Jan 2023 09:17:16 +0100
+Subject: [PATCH] bump CMake minimal version
+
+Fixes building with the latest LLVM 16 due to use of IN_LIST operator:
+
+Policy CMP0057 is not set: Support new IN_LIST if() operator.  Run "cmake
+--help-policy CMP0057" for policy details.  Use the cmake_policy command to
+set the policy and suppress this warning.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ 
+ ###############################################################################
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.3)
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+ 
+--- a/clang_delta/CMakeLists.txt
++++ b/clang_delta/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ 
+ ###############################################################################
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.3)
+ project(clang_delta)
+ 
+ ###############################################################################
+--- a/clex/CMakeLists.txt
++++ b/clex/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ 
+ ###############################################################################
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.3)
+ 
+ # find_package(FLEX) is done by the topmost "CMakeLists.txt" file.
+ 
+--- a/cvise/CMakeLists.txt
++++ b/cvise/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ 
+ ###############################################################################
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.3)
+ 
+ project(cvise_python)
+ 
+--- a/delta/CMakeLists.txt
++++ b/delta/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ 
+ ###############################################################################
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.3)
+ 
+ # find_package(FLEX) is done by the topmost "CMakeLists.txt" file.
+ 
+
