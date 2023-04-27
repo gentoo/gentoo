@@ -235,7 +235,7 @@ src_test() {
 		test/parallel/test-fs-mkdir.js
 	test/parallel/test-fs-utimes-y2K38
 	test/parallel/test-release-npm.js
-	test/parallel/test-socket-write-after-fin-errorr.js
+	test/parallel/test-socket-write-after-fin-error.js
 		test/parallel/test-strace-openat-openssl.js
 	test/sequential/test-util-debug.js
 	)
