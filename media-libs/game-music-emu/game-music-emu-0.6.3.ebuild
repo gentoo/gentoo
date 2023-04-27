@@ -27,5 +27,8 @@ src_configure() {
 }
 
 multilib_src_test() {
-	emake -C "${S}/test" test LIBGME_NEW_PATH="${BUILD_DIR}/gme/libgme.so" CXXFLAGS="${CXXFLAGS}"
+	LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BUILD_DIR}/gme" \
+		emake -C "${S}/test" test \
+		LIBGME_NEW_PATH="${BUILD_DIR}/gme/libgme.so" \
+		CXXFLAGS="${CXXFLAGS}" LIBRARIES="${BUILD_DIR}/gme"
 }
