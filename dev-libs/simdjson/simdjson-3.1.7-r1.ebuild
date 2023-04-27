@@ -19,7 +19,7 @@ SRC_URI="
 LICENSE="Apache-2.0 Boost-1.0 BSD MIT"
 SLOT="0/15"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="test tools"
+IUSE="+all-impls test tools"
 
 BDEPEND="
 	sys-apps/file
@@ -63,23 +63,38 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DSIMDJSON_ENABLE_THREADS=ON
+		-DSIMDJSON_ENABLE_THREADS:BOOL=ON
 	)
 	use test && mycmakeargs+=(
-		-DSIMDJSON_TESTS=ON
+		-DSIMDJSON_TESTS:BOOL=ON
 	)
 
 	if use tools; then
 		mycmakeargs+=(
-			-DSIMDJSON_DEVELOPER_MODE=ON
-			-DSIMDJSON_ALLOW_DOWNLOADS=OFF
-			-DSIMDJSON_GOOGLE_BENCHMARKS=OFF
-			-DSIMDJSON_COMPETITION=OFF
-			-DSIMDJSON_TOOLS=ON
+			-DSIMDJSON_DEVELOPER_MODE:BOOL=ON
+			-DSIMDJSON_ALLOW_DOWNLOADS:BOOL=OFF
+			-DSIMDJSON_GOOGLE_BENCHMARKS:BOOL=OFF
+			-DSIMDJSON_COMPETITION:BOOL=OFF
+			-DSIMDJSON_TOOLS:BOOL=ON
 		)
 	elif ! use test; then
 		mycmakeargs+=(
-			-DSIMDJSON_DEVELOPER_MODE=OFF
+			-DSIMDJSON_DEVELOPER_MODELBOOL=OFF
+		)
+	fi
+
+	if use all-impls; then
+		local -a impls=("fallback")
+		if use amd64 || use x86; then
+			impls+=("westmere" "haswell" "icelake")
+		elif use arm64; then
+			impls+=("arm64")
+		elif use ppc64; then
+			impls+=("ppc64")
+		fi
+
+		mycmakeargs+=(
+			-DSIMDJSON_IMPLEMENTATION:STRING=$(printf '%s;' "${impls[@]}")
 		)
 	fi
 

@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="tools">Build and install extra command line tools</flag>
+		<flag name="all-impls">Enable all implementations rather than only onem</flag>
 	</use>
 </pkgmetadata>
