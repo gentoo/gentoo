@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://github.com/MaskRay/${PN}"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
-	LLVM_MAX_SLOT=15
+	LLVM_MAX_SLOT=16
 else
 	LLVM_MAX_SLOT=15
 fi
