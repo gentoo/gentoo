@@ -57,6 +57,10 @@ DEPEND="${RDEPEND}"
 CHECKREQS_MEMORY="8G"
 CHECKREQS_DISK_BUILD="22G"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-fix-incomplete-type.patch
+)
+
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
 		die "Your CPU doesn't support the required SSE2 instruction."
@@ -73,10 +77,6 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 	linux-info_pkg_setup
 }
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-fix-incomplete-type.patch
-)
 
 src_prepare() {
 	tc-export AR CC CXX PKG_CONFIG
