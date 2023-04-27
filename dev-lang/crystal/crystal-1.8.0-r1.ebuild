@@ -5,7 +5,7 @@ EAPI=8
 
 BV=${PV}-1
 BV_AMD64=${BV}-linux-x86_64
-LLVM_MAX_SLOT=14
+LLVM_MAX_SLOT=15
 
 inherit bash-completion-r1 llvm multiprocessing toolchain-funcs
 
