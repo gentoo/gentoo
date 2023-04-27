@@ -5,4 +5,7 @@
 		<email>tommy@gentoo.org</email>
 		<name>Thomas Sachau (Tommy[D])</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">hyphanet/contrib</remote-id>
+	</upstream>
 </pkgmetadata>
