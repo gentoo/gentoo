@@ -208,6 +208,17 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
+	local ver
+	for ver in ${REPLACING_VERSIONS} ; do
+		# 2.14.2 and 2.14.2-r1 included the bad 10-sub-pixel-none.conf
+		if ver_test ${ver} -lt 2.14.2-r2 && ver_test ${ver} -ge 2.14.2 ; then
+			if [[ -e "${EROOT}"/etc/fonts/conf.d/10-sub-pixel-none.conf ]] ; then
+				einfo "Deleting 10-sub-pixel-none.conf from bad fontconfig-2.14.2 (bug #900681)"
+				rm "${EROOT}"/etc/fonts/conf.d/10-sub-pixel-none.conf || die
+			fi
+		fi
+	done
+
 	if [[ -z ${ROOT} ]] ; then
 		multilib_pkg_postinst() {
 			ebegin "Creating global font cache for ${ABI}"
