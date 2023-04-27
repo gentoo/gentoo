@@ -13,7 +13,7 @@ S="${WORKDIR}"/${P}/lisp
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DOCS=( ../AUTHORS.md ../CHANGELOG.md ../CONTRIBUTING.md ../README{,.ja}.md ../docs )
 SITEFILE="50${PN}-gentoo.el"
