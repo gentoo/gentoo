@@ -24,12 +24,12 @@ DEPEND="
 	)
 	selinux? ( sys-libs/libselinux )
 "
+BDEPEND="acct-group/crontab"
 RDEPEND="
 	${BDEPEND}
 	${DEPEND}
 	sys-apps/debianutils
 "
-BDEPEND="acct-group/crontab"
 
 #cronie supports /etc/crontab
 CRON_SYSTEM_CRONTAB="yes"
