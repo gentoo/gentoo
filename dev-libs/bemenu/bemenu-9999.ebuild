@@ -22,7 +22,7 @@ IUSE="doc ncurses wayland X"
 # Require at least one backend be built
 REQUIRED_USE="|| ( ncurses wayland X )"
 
-DEPEND="
+RDEPEND="
 	ncurses? ( sys-libs/ncurses:= )
 	wayland? (
 		dev-libs/wayland
@@ -39,7 +39,8 @@ DEPEND="
 		x11-libs/libXinerama
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	wayland? (
 		dev-libs/wayland-protocols
 	)
