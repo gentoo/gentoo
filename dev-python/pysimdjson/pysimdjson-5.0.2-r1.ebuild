@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
-
+DISTUTILS_EXT=1
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for simdjson"
@@ -24,6 +24,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	>=dev-libs/simdjson-2.0.1:=
+	test? ( dev-libs/simdjson[all-impls(-)] )
 "
 RDEPEND="
 	${DEPEND}
@@ -31,6 +32,11 @@ RDEPEND="
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 "
+
+PATCHES=(
+	"${FILESDIR}/pysimdjson-5.0.2-system-lib.patch"
+	"${FILESDIR}/pysimdjson-5.0.2-tests.patch"
+)
 
 distutils_enable_tests pytest
 
@@ -45,7 +51,7 @@ src_prepare() {
 
 	distutils-r1_src_prepare
 
-	export BUILD_WITH_CYTHON=1
+	export BUILD_WITH_CYTHON=1 BUILD_WITH_SYSTEM_LIB=1
 }
 
 python_compile() {
