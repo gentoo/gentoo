@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/905131
+https://github.com/grobian/darwin-xtools/pull/1
+
+From 58967cfac9ab9c39d5c6988624bdd6a5c986537e Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Mon, 24 Apr 2023 18:58:54 +0000
+Subject: [PATCH] [cctools] don't include objc-runtime.h in print_objc.c and
+ print_bitcode.c.
+
+On macOS 13, Gentoo Prefix fails to compile cctools due to
+missing Blocks support in GCC, creating the following error:
+
+/Users/ec2-user/gentoo/MacOSX.sdk/usr/include/objc/runtime.h:373:29: error: expected ')' before '^' token
+  373 |                       void (^ _Nonnull block)(Class _Nonnull aClass, BOOL * _Nonnull stop)
+      |                             ^
+      |                             )
+
+Fortunately the header objc-runtime.h is not strictly necessary.
+As a workaround, stop including objc-runtime.h in print_objc.c
+and print_bitcode.c.
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ cctools/otool/print_bitcode.c | 1 -
+ cctools/otool/print_objc.c    | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/cctools/otool/print_bitcode.c b/cctools/otool/print_bitcode.c
+index cc54c57..617a142 100644
+--- a/cctools/otool/print_bitcode.c
++++ b/cctools/otool/print_bitcode.c
+@@ -38,7 +38,6 @@
+ #include <dlfcn.h>
+ #include <xar/xar.h>
+ #include "mach-o/loader.h"
+-#include "objc/objc-runtime.h"
+ #include "stuff/allocate.h"
+ #include "stuff/bytesex.h"
+ #include "stuff/symbol.h"
+diff --git a/cctools/otool/print_objc.c b/cctools/otool/print_objc.c
+index a1605e8..2018bd1 100644
+--- a/cctools/otool/print_objc.c
++++ b/cctools/otool/print_objc.c
+@@ -31,7 +31,6 @@
+ #include "stdio.h"
+ #include "string.h"
+ #include "mach-o/loader.h"
+-#include "objc/objc-runtime.h"
+ #include "stuff/allocate.h"
+ #include "stuff/bytesex.h"
+ #include "stuff/symbol.h"

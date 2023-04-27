@@ -1,0 +1,60 @@
+https://github.com/iains/darwin-xtools/pull/8
+
+From 86d77719693861fc8fa9c584dee36adaac5f883a Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Tue, 25 Apr 2023 21:41:01 +0000
+Subject: [PATCH] [cctools] fix ar(1) crash without argument, closes #7.
+
+In ar(1), strcmp() checks are used to determine the value
+of argument argv[1], even when no argument is given. In the
+past, they were possibly harmless out-of-bound reads and
+comparison with garbage, without consequences.
+
+However, running it on macOS 13 w/ Apple Silicon immediately
+crashes it with Segmentation Fault, because argv[1] is now
+NULL and generates EXC_BAD_ACCESS in strcmp().
+
+This commit checks whether argc is equal or greater than 2
+before doing strcmp().
+
+$ ./bin/ar
+Segmentation fault: 11
+
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BAD_ACCESS (code=1, address=0x0)
+    frame #0: 0x0000000193181460 libsystem_platform.dylib`_platform_strcmp + 144
+libsystem_platform.dylib`:
+->  0x193181460 <+144>: ldr    q0, [x0], #0x10
+    0x193181464 <+148>: ldr    q1, [x1], #0x10
+    0x193181468 <+152>: cmeq.16b v1, v0, v1
+    0x19318146c <+156>: and.16b v0, v0, v1
+Target 0: (ar) stopped.
+(lldb) bt
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BAD_ACCESS (code=1, address=0x0)
+  * frame #0: 0x0000000193181460 libsystem_platform.dylib`_platform_strcmp + 144
+    frame #1: 0x0000000100006440 ar`main(argc=1, argv=0x000000016fdfef58) at ar.c:126:8
+    frame #2: 0x0000000192e2be50 dyld`start + 2544
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ cctools/ar/ar.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cctools/ar/ar.c b/cctools/ar/ar.c
+index 90ed570..b010b02 100644
+--- a/cctools/ar/ar.c
++++ b/cctools/ar/ar.c
+@@ -123,12 +123,12 @@ main(argc, argv)
+ 	run_ranlib = 1;
+ 
+ 	if (argc < 3) {
+-	   if(strcmp(argv[1], "--version") == 0){
++	   if(argc >= 2 && strcmp(argv[1], "--version") == 0){
+ 		/* Implement a gnu-style --version to be friendly to GCC.  */
+ 		fprintf(stdout, "xtools-%s ar %s\nBased on Apple Inc. %s\n",
+ 		        xtools_version, package_version, apple_version);
+ 		exit(0);
+-	   } else if(strcmp(argv[1], "--help") == 0){
++	   } else if(argc >= 2 && strcmp(argv[1], "--help") == 0){
+ 		usage(0);
+ 		fprintf(stdout, "Please report bugs to %s\n", support_url);
+ 		exit(0);

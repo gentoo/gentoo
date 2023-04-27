@@ -27,6 +27,9 @@ S="${WORKDIR}/darwin-xtools-gentoo-${PVR}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.2.1-macos-12.patch
+	"${FILESDIR}"/${PN}-8.2.1-macos-13.patch
+	"${FILESDIR}"/${PN}-8.2.1-arm64.patch
+	"${FILESDIR}"/${PN}-8.2.1-fix-ar-crash.patch
 )
 
 src_configure() {
