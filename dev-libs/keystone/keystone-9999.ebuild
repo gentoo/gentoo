@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit cmake distutils-r1 llvm
+inherit cmake distutils-r1
 
 DESCRIPTION="assembly/assembler framework + bindings"
 HOMEPAGE="https://www.keystone-engine.org/"
