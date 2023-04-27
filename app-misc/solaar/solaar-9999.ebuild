@@ -36,9 +36,9 @@ RDEPEND="
 
 	')
 	x11-libs/gtk+:3[introspection]
-	appindicator? ( dev-libs/libappindicator:3[introspection] )
+	appindicator? ( dev-libs/libayatana-appindicator )
 	libnotify? ( x11-libs/libnotify[introspection] )"
-# libappindicator & libnotify are entirely optional and detected at runtime
+# libayatana-appindicator & libnotify are entirely optional and detected at runtime
 
 CONFIG_CHECK="~HID_LOGITECH_DJ ~HIDRAW"
 
@@ -72,4 +72,10 @@ python_install_all() {
 
 pkg_postinst() {
 	udev_reload
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	udev_reload
+	xdg_pkg_postrm
 }
