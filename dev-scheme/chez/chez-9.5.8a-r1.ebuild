@@ -69,4 +69,7 @@ src_install() {
 	# TempRoot == DESTDIR
 	emake TempRoot="${D}" install
 	einstalldocs
+
+	find "${ED}"/usr/$(get_libdir)/csv${PV//a}/examples \
+		 \( -name "*.md" -o -name "*.so" \)  -delete || die
 }
