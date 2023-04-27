@@ -1,2 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2023-04-27)
+# https://bugs.gentoo.org/905152
+# breaks behaviour with -stdlib=libc++, masked for now
+=sys-devel/gcc-12.2.0
+=sys-devel/gcc-12.2.0-r1
