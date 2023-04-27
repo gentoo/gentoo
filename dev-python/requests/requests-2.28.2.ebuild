@@ -59,6 +59,10 @@ python_test() {
 		tests/test_requests.py::TestTimeout::test_total_timeout_connect
 		# TODO: openssl?
 		tests/test_requests.py::TestRequests::test_pyopenssl_redirect
+		# flask-2
+		tests/test_requests.py::TestRequests::test_cookie_sent_on_redirect
+		tests/test_requests.py::TestRequests::test_cookie_removed_on_expire
+		tests/test_requests.py::TestPreparingURLs::test_redirecting_to_bad_url
 	)
 
 	if ! has_version "dev-python/trustme[${PYTHON_USEDEP}]"; then
