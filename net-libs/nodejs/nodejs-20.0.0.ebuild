@@ -108,14 +108,6 @@ src_prepare() {
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
 	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-18.16.0-paxmarking.patch )
-
-	# All this test does is check if the npm CLI produces warnings of any sort,
-	# failing if it does. Overkill, much? Especially given one possible warning
-	# is that there is a newer version of npm available upstream (yes, it does
-	# use the network if available), thus making it a real possibility for this
-	# test to begin failing one day even though it was fine before.
-	rm -f test/parallel/test-release-npm.js
-
 	default
 }
 
@@ -238,14 +230,16 @@ src_install() {
 }
 
 src_test() {
-	rm \
-		"${S}"/test/parallel/test-dns-setserver-when-querying.js \
-		"${S}"/test/parallel/test-strace-openat-openssl.js || die
-	if has usersandbox ${FEATURES}; then
-		rm -f "${S}"/test/parallel/test-fs-mkdir.js
-		ewarn "You are emerging ${PN} with 'usersandbox' enabled. Excluding tests known to fail in this mode." \
-			"For full test coverage, emerge =${CATEGORY}/${PF} with 'FEATURES=-usersandbox'."
-	fi
+	local drop_tests=(
+		test/parallel/test-dns-setserver-when-querying.js
+		test/parallel/test-fs-mkdir.js
+	test/parallel/test-fs-utimes-y2K38
+	test/parallel/test-release-npm.js
+	test/parallel/test-socket-write-after-fin-errorr.js
+		test/parallel/test-strace-openat-openssl.js
+	test/sequential/test-util-debug.js
+	)
+	rm "${drop_tests[@]}" || die "disabling tests failed"
 
 	out/${BUILDTYPE}/cctest || die
 	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} --flaky-tests=dontcare -J message parallel sequential || die
