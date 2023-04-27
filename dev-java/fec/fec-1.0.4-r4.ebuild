@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source"
 inherit flag-o-matic toolchain-funcs java-pkg-2 java-ant-2
 
 DESCRIPTION="Forward Error Correction library in Java"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://github.com/hyphanet/contrib/blob/master/README"
 SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="BSD-2"
