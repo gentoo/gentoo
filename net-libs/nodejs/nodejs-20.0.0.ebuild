@@ -108,6 +108,7 @@ src_prepare() {
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
 	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-18.16.0-paxmarking.patch )
+
 	default
 }
 
@@ -233,11 +234,11 @@ src_test() {
 	local drop_tests=(
 		test/parallel/test-dns-setserver-when-querying.js
 		test/parallel/test-fs-mkdir.js
-	test/parallel/test-fs-utimes-y2K38
-	test/parallel/test-release-npm.js
-	test/parallel/test-socket-write-after-fin-error.js
+		test/parallel/test-fs-utimes-y2K38.js
+		test/parallel/test-release-npm.js
+		test/parallel/test-socket-write-after-fin-error.js
 		test/parallel/test-strace-openat-openssl.js
-	test/sequential/test-util-debug.js
+		test/sequential/test-util-debug.js
 	)
 	rm "${drop_tests[@]}" || die "disabling tests failed"
 
