@@ -6,6 +6,6 @@
 		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
-		 <remote-id type="github">baszoetekouw/pinfo</remote-id>
+		<remote-id type="github">baszoetekouw/pinfo</remote-id>
 	</upstream>
 </pkgmetadata>
