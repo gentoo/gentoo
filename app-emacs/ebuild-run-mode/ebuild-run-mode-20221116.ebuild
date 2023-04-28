@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}-v${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND=">=app-emacs/ebuild-mode-1.53"
 
