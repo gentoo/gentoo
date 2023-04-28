@@ -13,7 +13,7 @@ S="${WORKDIR}"/use-package-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	app-emacs/bind-key
