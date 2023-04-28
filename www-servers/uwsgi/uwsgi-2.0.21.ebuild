@@ -152,6 +152,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-php82.patch
 	"${FILESDIR}"/${P}-python-unicode.patch
+	"${FILESDIR}"/${P}-libphp-version.patch
 )
 
 pkg_setup() {
