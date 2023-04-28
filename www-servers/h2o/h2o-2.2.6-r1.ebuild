@@ -39,6 +39,7 @@ BDEPEND="libh2o? ( virtual/pkgconfig )
 	)"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-libressl.patch #903001
 	"${FILESDIR}"/${PN}-2.2-mruby.patch
 	"${FILESDIR}"/${PN}-2.2-ruby30.patch
 )
