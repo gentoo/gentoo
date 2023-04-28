@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,10 @@ S="${WORKDIR}/oneTBB-${MY_PV}"
 
 DOCS=( CHANGES README README.md doc/Release_Notes.txt )
 
-PATCHES=( "${FILESDIR}"/${PN}-2020.1-makefile-debug.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2020.1-makefile-debug.patch
+	"${FILESDIR}"/${PN}-2020.3-gcc13.patch
+)
 
 src_prepare() {
 	default
