@@ -6,7 +6,8 @@ EAPI=8
 CMAKE_IN_SOURCE_BUILD=1
 inherit autotools cmake flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
-XSERVER_VERSION="21.1.1"
+XSERVER_VERSION="21.1.8"
+XSERVER_PATCH_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="https://tigervnc.org"
@@ -122,7 +123,7 @@ src_prepare() {
 
 	if use server; then
 		cd unix/xserver || die
-		eapply ../xserver${XSERVER_VERSION}.patch
+		eapply ../xserver${XSERVER_PATCH_VERSION}.patch
 		eautoreconf
 		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
 		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die
