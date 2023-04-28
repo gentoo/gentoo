@@ -1,0 +1,59 @@
+From 8f796a61697e9efe1d6e5498b807e74fc274af24 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Fri, 28 Apr 2023 12:01:28 +0300
+Subject: [PATCH] Fixes to buildsystem
+
+* Properly respect CFLAGS
+* Respect LDFLAGS
+* Don't compress man-pages
+* Don't strip binaries
+--- a/Makefile
++++ b/Makefile
+@@ -11,8 +11,7 @@ VIM_DIR=$(DESTDIR)/share/vim/vimfiles/syntax
+ 
+ OS := $(shell uname)
+ 
+-CFLAGS = -pipe -pedantic -Wall -W -Iinclude -Iurlan -Ieval -Isupport
+-CFLAGS += -O3 -DNDEBUG
++CFLAGS += -pipe -pedantic -Wall -W -Iinclude -Iurlan -Ieval -Isupport
+ #CFLAGS += -g -DDEBUG
+ 
+ ifeq ($(OS), Darwin)
+@@ -91,7 +90,7 @@ $(ODIR)/%.o: eval/%.c
+ 	cc -c $(CFLAGS) $(CONFIG) $< -o $@
+ 
+ boron: $(EXE_OBJS) $(BORON_LIB)
+-	cc $^ -o $@ $(EXE_LIBS)
++	cc $^ -o $@ $(EXE_LIBS) $(LDFLAGS)
+ 
+ $(ODIR)/os.o: unix/os.c
+ 	cc -c $(CFLAGS) $(CONFIG) $< -o $@
+@@ -108,7 +107,7 @@ ifdef STATIC_LIB
+ else ifeq ($(OS), Darwin)
+ 	libtool -dynamiclib -o $@ $^ -install_name @rpath/$(BORON_LIB) $(LIBS)
+ else
+-	cc -o $@ -shared -Wl,-soname,libboron.so.2 $^ $(LIBS)
++	cc -o $@ -shared -Wl,-soname,libboron.so.2 $^ $(LIBS) $(LDFLAGS)
+ 	ln -sf $(BORON_LIB) libboron.so.2
+ 	ln -sf $(BORON_LIB) libboron.so
+ endif
+@@ -130,13 +129,12 @@ ifeq ($(OS), Darwin)
+ 	install_name_tool -change libboron.dylib $(LIB_DIR)/libboron.dylib boron
+ 	install -m 644 libboron.dylib $(LIB_DIR)
+ else
+-	install -m 755 -s $(BORON_LIB) $(LIB_DIR)
++	install -m 755 $(BORON_LIB) $(LIB_DIR)
+ 	ln -s $(BORON_LIB) $(LIB_DIR)/libboron.so.2
+ endif
+ endif
+-	install -s -m 755 boron $(BIN_DIR)
+-	gzip -c -n doc/boron.troff > doc/boron.1.gz
+-	install -m 644 doc/boron.1.gz $(MAN_DIR)
++	install -m 755 boron $(BIN_DIR)
++	install -m 644 doc/boron.troff $(MAN_DIR)/boron.1
+ 
+ uninstall:
+ 	rm -f $(BIN_DIR)/boron $(MAN_DIR)/boron.1
+-- 
+2.39.2
+
