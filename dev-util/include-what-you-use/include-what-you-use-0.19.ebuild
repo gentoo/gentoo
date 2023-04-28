@@ -54,5 +54,5 @@ src_configure() {
 }
 
 src_test() {
-	"${EPYTHON}" run_iwyu_tests.py
+	"${EPYTHON}" run_iwyu_tests.py || die
 }
