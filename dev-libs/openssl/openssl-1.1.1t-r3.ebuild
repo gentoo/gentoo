@@ -95,6 +95,9 @@ src_prepare() {
 		rm test/recipes/80-test_ssl_new.t || die
 	fi
 
+	# Test fails depending on kernel configuration, bug #699134
+	rm test/recipes/30-test_afalg.t || die
+
 	# Remove test target when FEATURES=test isn't set
 	if ! use test ; then
 		sed \
