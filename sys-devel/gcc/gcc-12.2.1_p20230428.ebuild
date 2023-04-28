@@ -4,7 +4,9 @@
 EAPI=8
 
 TOOLCHAIN_PATCH_DEV="sam"
+PATCH_VER="1"
 PATCH_GCC_VER="12.3.0"
+MUSL_VER="1"
 MUSL_GCC_VER="12.3.0"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
@@ -46,13 +48,6 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 fi
 
 src_prepare() {
-	local p upstreamed_patches=(
-		# add them here
-	)
-	for p in "${upstreamed_patches[@]}"; do
-		rm -v "${WORKDIR}/patch/${p}" || die
-	done
-
 	toolchain_src_prepare
 
 	eapply_user
