@@ -40,6 +40,7 @@ PATCHES=(
 src_compile() {
 	strip-flags
 	escons \
+		AR="$(tc-getAR)" \
 		CXX="$(tc-getCXX)" \
 		CCFLAGS="${CXXFLAGS}" \
 		LINKFLAGS="${LDFLAGS}" \
