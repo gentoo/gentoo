@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="gre-extreme-debug tcpd"
 
-RDEPEND="net-dialup/ppp:=
+RDEPEND="<net-dialup/ppp-2.5.0:=
 	tcpd? ( sys-apps/tcp-wrappers )"
 DEPEND="${RDEPEND}
 	elibc_musl? ( net-libs/ppp-defs )"
