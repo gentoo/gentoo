@@ -11,7 +11,7 @@ SRC_URI="https://bitbucket.org/mpyne/game-music-emu/downloads/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
