@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 PATCHES=( "${FILESDIR}"/${PN}-company-icons-root.patch )
 
