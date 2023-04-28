@@ -10,6 +10,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">stympy/faker</remote-id>
+    <remote-id type="github">faker-ruby/faker</remote-id>
   </upstream>
 </pkgmetadata>
