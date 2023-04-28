@@ -66,8 +66,8 @@ src_configure() {
 		--with-user-smtpd=smtpd \
 		--with-user-queue=smtpq \
 		--with-group-queue=smtpq \
-		--with-libevent="$(get_libdir)" \
-		--with-libssl="$(get_libdir)" \
+		--with-libevent="${EPREFIX}/usr/$(get_libdir)" \
+		--with-libssl="${EPREFIX}/usr/$(get_libdir)" \
 		$(use_with pam auth-pam) \
 		$(use_with berkdb table-db)
 }
