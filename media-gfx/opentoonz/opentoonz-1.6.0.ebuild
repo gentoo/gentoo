@@ -50,6 +50,10 @@ DEPEND="${RDEPEND}"
 
 CMAKE_USE_DIR="${S}"/toonz/sources
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-gcc13.patch
+)
+
 src_configure() {
 	# bug #859778
 	append-flags -fno-strict-aliasing
