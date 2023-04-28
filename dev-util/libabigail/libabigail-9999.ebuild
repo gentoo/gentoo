@@ -36,12 +36,13 @@ fi
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
 SLOT="0/2"
-IUSE="${LIBABIGAIL_DOCS_USEFLAG} test"
+IUSE="btf ${LIBABIGAIL_DOCS_USEFLAG} test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/elfutils
 	dev-libs/libxml2:2
+	btf? ( dev-libs/libbpf:= )
 	elibc_musl? ( sys-libs/fts-standalone )
 "
 DEPEND="${RDEPEND}"
@@ -63,16 +64,21 @@ src_prepare() {
 }
 
 my_src_configure() {
-	econf \
-		--disable-deb \
-		--disable-fedabipkgdiff \
-		--disable-rpm \
-		--disable-rpm415 \
-		--disable-ctf \
-		--enable-bash-completion \
-		--enable-python3 \
-		$(use_enable doc apidoc) \
+	local myeconfargs=(
+		--disable-deb
+		--disable-fedabipkgdiff
+		--disable-rpm
+		--disable-rpm415
+		--disable-ctf
+		--disable-debug-ct-propagation
+		--enable-bash-completion
+		--enable-python3
+		$(use_enable btf)
+		$(use_enable doc apidoc)
 		$(use_enable doc manual)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 my_src_compile() {
