@@ -283,6 +283,11 @@ src_test() {
 	#	ewarn "before running the test suite."
 	#	ewarn "Test suite skipped."
 	#fi
+	if [[ -f "${S}/fails.log" ]] ; then
+		echo "====== contents of fails.log follow ======"
+		cat "${S}/fails.log"
+		echo "====== contents of fails.log end    ======"
+	fi
 }
 
 src_install() {
