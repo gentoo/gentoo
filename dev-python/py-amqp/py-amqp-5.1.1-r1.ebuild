@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs \
-	dev-python/sphinx_celery
+	dev-python/sphinx-celery
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(
