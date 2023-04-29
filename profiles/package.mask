@@ -332,14 +332,6 @@ dev-ruby/rspec-mocks:2
 # Removal on 2023-04-28.  Bug #903542.
 dev-ruby/flickraw
 
-# Sam James <sam@gentoo.org> (2023-03-29)
-# Only supports imminently-EOL ruby27, depends on obsolete QtScript instead
-# of QML. Support for other languages was removed long ago, e.g. python support
-# is stuck on python2-only. Kross itself is on the chopping block too:
-# bug #810493, bug #903532.
-# Removal on 2023-04-28.
-kde-apps/kross-interpreters
-
 # Hans de Graaff <graaff@gentoo.org> (2023-03-29)
 # ruby27-only package. app-text/ronn-ng is a drop-in replacement.  it is
 # also the only consumer of dev-ruby/hpricot which has a ruby30 target
