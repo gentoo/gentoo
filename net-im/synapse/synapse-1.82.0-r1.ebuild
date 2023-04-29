@@ -171,7 +171,7 @@ python_test() {
 }
 
 src_install() {
-	distutils-r1_python_install_all
+	distutils-r1_src_install
 	keepdir /var/{lib,log}/synapse /etc/synapse
 	fowners synapse:synapse /var/{lib,log}/synapse /etc/synapse
 	fperms 0750 /var/{lib,log}/synapse /etc/synapse
