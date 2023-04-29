@@ -58,7 +58,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON # broken, re-enable w/ ECM_QTHELP
 		-DBUILD_APIDOC=OFF
-		-DBUILD_KF5=ON
 		-DBUILD_PHP_IMPORT=$(usex php)
 		-DBUILD_unittests=$(usex test)
 	)
