@@ -1,0 +1,11 @@
+--- a/pm_test/CMakeLists.txt
++++ b/pm_test/CMakeLists.txt
+@@ -6,6 +6,8 @@ if(APPLE)
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+ endif(APPLE)
+ 
++set(CMAKE_SKIP_BUILD_RPATH TRUE)
++
+ # if(WIN32)
+ #   if(NOT BUILD_SHARED_LIBS)
+     # /MDd is multithread debug DLL, /MTd is multithread debug
