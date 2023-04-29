@@ -5,3 +5,4 @@ move dev-python/importlib_resources dev-python/importlib-resources
 move dev-python/importlib_metadata dev-python/importlib-metadata
 move dev-python/python-keyutils dev-python/keyutils
 move dev-python/notebook_shim dev-python/notebook-shim
+move dev-python/python-mpd dev-python/python-mpd2

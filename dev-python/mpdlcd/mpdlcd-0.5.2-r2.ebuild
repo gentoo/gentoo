@@ -17,7 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-python/python-mpd"
+RDEPEND="dev-python/python-mpd2"
 
 distutils_enable_tests pytest
 

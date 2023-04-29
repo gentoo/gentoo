@@ -20,7 +20,7 @@ IUSE="dbus taglib"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		dev-python/python-mpd[${PYTHON_USEDEP}]
+		dev-python/python-mpd2[${PYTHON_USEDEP}]
 		dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 		taglib? ( dev-python/tagpy[${PYTHON_USEDEP}] )
 	')
