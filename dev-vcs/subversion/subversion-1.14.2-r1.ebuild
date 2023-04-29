@@ -76,7 +76,6 @@ DEPEND="${COMMON_DEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
-	!!<sys-apps/sandbox-1.6
 	doc? ( app-doc/doxygen )
 	nls? ( sys-devel/gettext )
 	perl? ( dev-lang/swig )
