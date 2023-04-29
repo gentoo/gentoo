@@ -268,7 +268,6 @@ src_configure() {
 			: "${CROSSCFLAGS:=$(
 				# >=wine-7.21 configure.ac no longer adds -fno-strict by mistake
 				append-cflags '-fno-strict-aliasing'
-				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
