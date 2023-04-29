@@ -46,7 +46,7 @@ PDEPEND="modules? ( =dev-util/scap-driver-${PV}* )"
 
 src_prepare() {
 	# manually apply patch to falcosecurity-libs dependency
-	pushd $WORKDIR && eapply -p0 "${FILESDIR}/${PV}-libs-gcc13.patch" && popd
+	pushd "${WORKDIR}" && eapply -p0 "${FILESDIR}/${PV}-libs-gcc13.patch" && popd
 
 	sed -i -e 's:-ggdb::' CMakeLists.txt || die
 	cmake_src_prepare
