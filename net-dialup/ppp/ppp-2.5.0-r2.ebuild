@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info pam
+inherit linux-info pam tmpfiles
 
 PATCH_TARBALL_NAME="${PN}-2.4.9-patches-03"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
@@ -79,6 +79,9 @@ src_install() {
 	else
 		newsbin contrib/pppgetpass/pppgetpass.vt pppgetpass
 	fi
+
+	newtmpfiles "${FILESDIR}/pppd.tmpfiles" pppd.conf
+
 	# Missing from upstream tarball
 	# https://github.com/ppp-project/ppp/pull/412
 	#doman contrib/pppgetpass/pppgetpass.8
@@ -86,6 +89,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process pppd.conf
+
 	local CONFIG_CHECK="~PPP ~PPP_ASYNC ~PPP_SYNC_TTY"
 	local ERROR_PPP="CONFIG_PPP:\t missing PPP support (REQUIRED)"
 	local ERROR_PPP_ASYNC="CONFIG_PPP_ASYNC:\t missing asynchronous serial line discipline"
