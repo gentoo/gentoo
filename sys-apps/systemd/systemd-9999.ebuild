@@ -358,6 +358,9 @@ multilib_src_install_all() {
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
 
+	insinto /usr/lib/tmpfiles.d
+	doins "${FILESDIR}"/legacy.conf
+
 	if ! use resolvconf; then
 		rm -f "${ED}${rootprefix}/${sbin}"/resolvconf || die
 	fi
