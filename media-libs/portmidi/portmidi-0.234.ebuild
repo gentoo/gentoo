@@ -8,7 +8,7 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 # Python bindings dropped b/c of bug #855077
 inherit cmake desktop xdg java-pkg-opt-2
 
-MY_P="portmedia-code-r${PV}"
+MY_P="portmedia-code-r$(ver_cut 2)"
 
 DESCRIPTION="Library for real time MIDI input and output"
 HOMEPAGE="http://portmedia.sourceforge.net/"
