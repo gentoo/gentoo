@@ -41,12 +41,6 @@ src_prepare() {
 	# Don't force multiarch stuff on OSX, bug #306467
 	sed -i -e 's:-arch \(i386\|x86_64\)::g' Makefile.all.am || die
 
-	if use elibc_musl ; then
-		PATCHES+=(
-			"${FILESDIR}"/${PN}-3.13.0-malloc.patch
-		)
-	fi
-
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# upstream doesn't support this, but we don't build with
 		# Sun/Oracle ld, we have a GNU toolchain, so get some things
