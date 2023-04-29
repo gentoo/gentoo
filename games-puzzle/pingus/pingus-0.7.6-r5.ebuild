@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-boost_signals2.patch
 	"${FILESDIR}"/${P}-python3.patch
 	"${FILESDIR}"/${P}-gcc13.patch
+	"${FILESDIR}"/${P}-ar-detection.patch
 )
 
 src_compile() {
