@@ -12,7 +12,7 @@ SRC_URI="https://github.com/PortMidi/portmidi/archive/refs/tags/v${PV}.tar.gz ->
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="debug doc test-programs"
+IUSE="debug test-programs"
 # Per pm-test/README:
 # "Because device numbers depend on the system, there is no automated
 # script to run all tests on PortMidi."
@@ -26,12 +26,6 @@ DEPEND="
 "
 BDEPEND="
 	app-arch/unzip
-	doc? (
-		app-doc/doxygen
-		dev-texlive/texlive-fontsrecommended
-		dev-texlive/texlive-latexextra
-		virtual/latex-base
-	)
 "
 
 PATCHES=(
@@ -53,24 +47,10 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_compile() {
-	cmake_src_compile
-
-	if use doc ; then
-		doxygen || die "doxygen failed"
-
-		pushd latex > /dev/null || die
-		VARTEXFONTS="${T}"/fonts emake
-		popd > /dev/null || die
-	fi
-}
-
 src_install() {
 	cmake_src_install
 
 	dodoc CHANGELOG.txt README.txt pm_linux/README_LINUX.txt
-
-	use doc && dodoc latex/refman.pdf
 
 	if use test-programs ; then
 		exeinto /usr/$(get_libdir)/${PN}
