@@ -152,6 +152,7 @@ python_check_deps() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-32.0-python-version.patch
+	"${FILESDIR}"/${PN}-32.0-gcc13.patch
 )
 
 DISABLE_AUTOFORMATTING="yes"
