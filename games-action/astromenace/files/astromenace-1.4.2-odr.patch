@@ -1,0 +1,203 @@
+From 710b35e786e5fe940a00b59c17eb638ec05a7a97 Mon Sep 17 00:00:00 2001
+From: Mikhail Kurinnoi <viewizard@viewizard.com>
+Date: Fri, 28 Apr 2023 20:31:57 +0300
+Subject: [PATCH] Fix "violates the C++ One Definition Rule errors" during
+ build. Related to https://bugs.gentoo.org/858515
+
+---
+ CMakeLists.txt                      |  1 +
+ src/menu/dialog.cpp                 | 10 +++---
+ src/menu/menu_information.cpp       |  8 ++---
+ src/menu/menu_workshop_weaponry.cpp | 53 ++++++++++++++++-------------
+ 4 files changed, 40 insertions(+), 32 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 80210a66..7902931b 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -190,6 +190,7 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra")
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Weffc++")
+ #SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion")
++#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -flto -Werror=odr -Werror=lto-type-mismatch -Werror=strict-aliasing")
+ 
+ # AppleClang 8.1.0.8020042 don't support this flag
+ IF(NOT (MACOS AND ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")))
+diff --git a/src/menu/dialog.cpp b/src/menu/dialog.cpp
+index a2e0469f..68da945c 100644
+--- a/src/menu/dialog.cpp
++++ b/src/menu/dialog.cpp
+@@ -71,16 +71,16 @@ float StartHideTransp = 1.0f;
+ // what should draw in dialogue 6,7,8
+ std::weak_ptr<cSpaceShip> DialogSpaceShip{};
+ extern std::weak_ptr<cSpaceShip> WorkshopFighterGame; // player's ship "holder" in shipyard menu
+-char *GetShipGroupTitle(int Num);
+-char *GetWorkshopShipName(int Num);
++const char *GetShipGroupTitle(int Num);
++const char *GetWorkshopShipName(int Num);
+ 
+ cWeapon *DialogWeapon = nullptr;
+-char *GetWeaponName(int Num);
+-char *GetWeaponGroupTitle(int Num);
++const char *GetWeaponName(int Num);
++const char *GetWeaponGroupTitle(int Num);
+ 
+ // internal system number... 1-20
+ int DialogSystem = 0;
+-char *GetSystemName(int Num);
++const char *GetSystemName(int Num);
+ float GetShipEngineSystemEnergyUse(int Num);
+ float GetShipProtectionSystemEnergyUse(int Num);
+ float GetShipRechargeEnergy(int Num);
+diff --git a/src/menu/menu_information.cpp b/src/menu/menu_information.cpp
+index ee41014e..8579a49b 100644
+--- a/src/menu/menu_information.cpp
++++ b/src/menu/menu_information.cpp
+@@ -53,10 +53,10 @@ std::weak_ptr<cProjectile> InfoMine{};
+ std::weak_ptr<cGroundObject> InfoGroundObject{};
+ 
+ 
+-char *GetWeaponGroupTitle(int Num);
+-char *GetWeaponName(int Num);
+-char *GetShipGroupTitle(int Num);
+-char *GetWorkshopShipName(int Num);
++const char *GetWeaponGroupTitle(int Num);
++const char *GetWeaponName(int Num);
++const char *GetShipGroupTitle(int Num);
++const char *GetWorkshopShipName(int Num);
+ 
+ 
+ 
+diff --git a/src/menu/menu_workshop_weaponry.cpp b/src/menu/menu_workshop_weaponry.cpp
+index ff90eb4a..0a0a74f3 100644
+--- a/src/menu/menu_workshop_weaponry.cpp
++++ b/src/menu/menu_workshop_weaponry.cpp
+@@ -48,7 +48,7 @@ namespace viewizard {
+ namespace astromenace {
+ 
+ extern std::weak_ptr<cSpaceShip> WorkshopFighterGame;
+-extern cWeapon *WorkshopNewWeapon;
++extern std::weak_ptr<cWeapon> WorkshopNewWeapon;
+ extern int CurrentWorkshopNewWeapon;
+ extern float CurrentDeviationSum;
+ extern sVECTOR3D WorkShopPointCamera;
+@@ -545,8 +545,12 @@ void ShipSlotWeapon(int SlotNum, int X, int Y)
+     if (DragWeapon && sharedWorkshopFighterGame->WeaponSlots[SlotNum].Type >= DragWeaponLevel) {
+         CanOn = true;
+     }
+-    if (!DragWeapon && sharedWorkshopFighterGame->WeaponSlots[SlotNum].Type >= WorkshopNewWeapon->WeaponLevel) {
+-        CanOn = true;
++
++    if (auto sharedWorkshopNewWeapon = WorkshopNewWeapon.lock())
++    {
++        if (!DragWeapon && sharedWorkshopFighterGame->WeaponSlots[SlotNum].Type >= sharedWorkshopNewWeapon->WeaponLevel) {
++            CanOn = true;
++        }
+     }
+ 
+ 
+@@ -561,8 +565,8 @@ void ShipSlotWeapon(int SlotNum, int X, int Y)
+                     if (sharedWorkshopFighterGame->WeaponSlots[i].Type < DragWeaponLevel) {
+                         NeedAlert = true;
+                     }
+-                } else {
+-                    if (sharedWorkshopFighterGame->WeaponSlots[i].Type < WorkshopNewWeapon->WeaponLevel) {
++                } else if (auto sharedWorkshopNewWeapon = WorkshopNewWeapon.lock()) {
++                    if (sharedWorkshopFighterGame->WeaponSlots[i].Type < sharedWorkshopNewWeapon->WeaponLevel) {
+                         NeedAlert = true;
+                     }
+                 }
+@@ -1045,7 +1049,10 @@ void Workshop_Weaponry()
+ {
+     sRECT SrcRect, DstRect;
+ 
+-
++    auto sharedWorkshopNewWeapon = WorkshopNewWeapon.lock();
++    if (!sharedWorkshopNewWeapon) {
++        return;
++    }
+ 
+     // start weapon dragging from shopfront
+     DstRect(GameConfig().InternalWidth/2-416, 100+32, GameConfig().InternalWidth/2-96, 450-32);
+@@ -1058,9 +1065,9 @@ void Workshop_Weaponry()
+             // setup drag-and-drop variables for new weapon
+             DragWeapon = true;
+             DragWeaponNum = CurrentWorkshopNewWeapon;
+-            DragWeaponLevel = WorkshopNewWeapon->WeaponLevel;
+-            DragWeaponAmmo = WorkshopNewWeapon->Ammo;
+-            DragWeaponAmmoStart = WorkshopNewWeapon->AmmoStart;
++            DragWeaponLevel = sharedWorkshopNewWeapon->WeaponLevel;
++            DragWeaponAmmo = sharedWorkshopNewWeapon->Ammo;
++            DragWeaponAmmoStart = sharedWorkshopNewWeapon->AmmoStart;
+             // by default, second for launchers only
+             if (CurrentWorkshopNewWeapon <= 15) {
+                 DragWeaponControl = 1;
+@@ -1082,7 +1089,7 @@ void Workshop_Weaponry()
+ 
+     vw_End2DMode();
+     WorkshopDrawShip(WorkshopFighterGame, 4);
+-    WorkshopDrawWeapon(WorkshopNewWeapon);
++    WorkshopDrawWeapon(sharedWorkshopNewWeapon.get());
+     vw_Start2DMode(-1,1);
+ 
+ 
+@@ -1090,7 +1097,7 @@ void Workshop_Weaponry()
+     vw_DrawTextUTF32(GameConfig().InternalWidth/2-438, 50+6, 0, 0, 1.0f, sRGBCOLOR{eRGBCOLOR::yellow}, MenuContentTransp, vw_GetTextUTF32(GetWeaponName(CurrentWorkshopNewWeapon)));
+     if (DrawButton128_2(GameConfig().InternalWidth/2-197, 50, vw_GetTextUTF32("Info"), MenuContentTransp, false)) {
+         SetCurrentDialogBox(eDialogBox::ShowWeaponsInfo);
+-        DialogWeapon = WorkshopNewWeapon;
++        DialogWeapon = sharedWorkshopNewWeapon.get();
+     }
+ 
+     std::ostringstream tmpStream;
+@@ -1101,14 +1108,14 @@ void Workshop_Weaponry()
+ 
+ 
+     int k2 = 0;
+-    if (GetProjectileDamageKinetic(WorkshopNewWeapon->InternalType) > 0.0f) {
++    if (GetProjectileDamageKinetic(sharedWorkshopNewWeapon->InternalType) > 0.0f) {
+         vw_DrawTextUTF32(GameConfig().InternalWidth/2-438, 130, -170, 0, 1.0f, sRGBCOLOR{eRGBCOLOR::white}, MenuContentTransp, vw_GetTextUTF32("Damage, Kinetic:"));
+         tmpStream.clear();
+         tmpStream.str(std::string{});
+-        tmpStream << GetProjectileDamageKinetic(WorkshopNewWeapon->InternalType) << " ";
+-        if (WorkshopNewWeapon->InternalType == 11
+-            || WorkshopNewWeapon->InternalType == 12
+-            || WorkshopNewWeapon->InternalType == 14) {
++        tmpStream << GetProjectileDamageKinetic(sharedWorkshopNewWeapon->InternalType) << " ";
++        if (sharedWorkshopNewWeapon->InternalType == 11
++            || sharedWorkshopNewWeapon->InternalType == 12
++            || sharedWorkshopNewWeapon->InternalType == 14) {
+             tmpStream << vw_GetText("units/sec");
+         } else {
+             tmpStream << vw_GetText("units/shot");
+@@ -1117,14 +1124,14 @@ void Workshop_Weaponry()
+ 
+         k2=20;
+     }
+-    if (GetProjectileDamageEM(WorkshopNewWeapon->InternalType) > 0.0f) {
++    if (GetProjectileDamageEM(sharedWorkshopNewWeapon->InternalType) > 0.0f) {
+         vw_DrawTextUTF32(GameConfig().InternalWidth/2-438, 130+k2, -170, 0, 1.0f, sRGBCOLOR{eRGBCOLOR::white}, MenuContentTransp, vw_GetTextUTF32("Damage, EM:"));
+         tmpStream.clear();
+         tmpStream.str(std::string{});
+-        tmpStream << GetProjectileDamageEM(WorkshopNewWeapon->InternalType) << " ";
+-        if (WorkshopNewWeapon->InternalType == 11
+-            || WorkshopNewWeapon->InternalType == 12
+-            || WorkshopNewWeapon->InternalType == 14) {
++        tmpStream << GetProjectileDamageEM(sharedWorkshopNewWeapon->InternalType) << " ";
++        if (sharedWorkshopNewWeapon->InternalType == 11
++            || sharedWorkshopNewWeapon->InternalType == 12
++            || sharedWorkshopNewWeapon->InternalType == 14) {
+             tmpStream << vw_GetText("units/sec");
+         } else {
+             tmpStream << vw_GetText("units/shot");
+@@ -1140,8 +1147,8 @@ void Workshop_Weaponry()
+     sRGBCOLOR tmpColor{eRGBCOLOR::green};
+     tmpStream.clear();
+     tmpStream.str(std::string{});
+-    tmpStream << vw_GetText("Weapon Level") << ": " << WorkshopNewWeapon->WeaponLevel;
+-    if (WorkshopNewWeapon->WeaponLevel > GetShipWeaponsMaxSlotLevel()) {
++    tmpStream << vw_GetText("Weapon Level") << ": " << sharedWorkshopNewWeapon->WeaponLevel;
++    if (sharedWorkshopNewWeapon->WeaponLevel > GetShipWeaponsMaxSlotLevel()) {
+         tmpTransp = MenuContentTransp * CurrentAlert3;
+         tmpColor = sRGBCOLOR{eRGBCOLOR::orange};
+     }
