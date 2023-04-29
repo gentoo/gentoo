@@ -13,7 +13,7 @@ S="${WORKDIR}"/use-package-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
 SITEFILE="50${PN}-gentoo.el"
 
