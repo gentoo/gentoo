@@ -35,7 +35,7 @@ LICENSE="
 	GPL-3+ Apache-2.0 BSD BSD-2 BSD-4 Boost-1.0 CC0-1.0 GPL-2+
 	ISC LGPL-2.1+ LGPL-3+ MIT OFL-1.1 ZLIB public-domain"
 SLOT="0"
-IUSE="alsa backtrace cpu_flags_x86_sse4_1 jack pulseaudio sndio test vulkan wayland"
+IUSE="alsa backtrace cpu_flags_x86_sse4_1 dbus jack pulseaudio sndio test vulkan wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
@@ -62,6 +62,7 @@ RDEPEND="
 	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
 	backtrace? ( sys-libs/libbacktrace )
+	dbus? ( sys-apps/dbus )
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
@@ -152,6 +153,7 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package backtrace Libbacktrace)
 		-DBUILD_SHARED_LIBS=no
+		-DDBUS_API=$(usex dbus)
 		-DDISABLE_BUILD_DATE=yes
 		-DENABLE_TESTS=$(usex test)
 		-DUSE_VTUNE=no
