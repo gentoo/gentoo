@@ -322,7 +322,6 @@ dev-ruby/classifier-reborn
 # ruby27-only slot of rspec. Please use rspec:3 instead. Masked for
 # removal on 2023-04-28.
 dev-ruby/rspec:2
-dev-ruby/rspec-core:2
 
 # Sam James <sam@gentoo.org> (2023-03-29)
 # Regressions in solving ability affecting e.g. igraph:
