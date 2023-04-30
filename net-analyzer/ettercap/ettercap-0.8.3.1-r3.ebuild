@@ -56,6 +56,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-curl-8.patch
+	"${FILESDIR}"/${P}-libressl.patch #903001, 736990
 	"${FILESDIR}"/${P}-musl.patch #897820
 )
 
