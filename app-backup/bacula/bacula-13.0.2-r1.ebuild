@@ -72,6 +72,13 @@ REQUIRED_USE="
 	static? ( bacula-clientonly )
 "
 
+# suppress warning wrt 'implicit function declaration' in config logs
+# bug 900663
+QA_CONFIG_IMPL_DECL_SKIP=(
+	makedev		# designed to check availability in
+				# used header file
+)
+
 S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
