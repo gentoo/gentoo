@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/JsonGlib"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="gtk-doc +introspection"
+IUSE="gtk-doc +introspection test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.54.0:2[${MULTILIB_USEDEP}]
@@ -44,6 +45,10 @@ multilib_src_configure() {
 		$(meson_native_use_feature introspection)
 		$(meson_native_use_feature gtk-doc gtk_doc)
 		$(meson_native_true man)
+
+		# TODO: implement in next release
+		#$(meson_feature nls)
+		$(meson_use test tests)
 	)
 	meson_src_configure
 }
