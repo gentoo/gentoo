@@ -359,12 +359,6 @@ app-admin/ec2-ami-tools
 # Removal on 2023-04-27.  Bug #831304.
 net-analyzer/netio
 
-# Michał Górny <mgorny@gentoo.org> (2023-03-28)
-# Unfetchable due to untrusted TLS certificate.  The game doesn't seem
-# to work anyway (displays blank window).
-# Removal on 2023-04-27.  Bug #835858.
-games-rpg/coe2
-
 # Sam James <sam@gentoo.org> (2023-03-27)
 # The upstream tzinfo maintainers recommend using 2023a for now because of the
 # disruption regarding Lebanon's DST change. See https://lore.kernel.org/distributions/87cz4u2gmj.fsf@gentoo.org/T/#u.
