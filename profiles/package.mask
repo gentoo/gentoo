@@ -365,12 +365,6 @@ net-analyzer/netio
 # Removal on 2023-04-27.  Bug #835858.
 games-rpg/coe2
 
-# Michał Górny <mgorny@gentoo.org> (2023-03-28)
-# No upstream activity since Jan 2019.  The current version fails
-# to build.  Multiple other bugs reported.
-# Removal on 2023-04-27.  Bug #902069.
-acct-group/shellinaboxd
-
 # Sam James <sam@gentoo.org> (2023-03-27)
 # The upstream tzinfo maintainers recommend using 2023a for now because of the
 # disruption regarding Lebanon's DST change. See https://lore.kernel.org/distributions/87cz4u2gmj.fsf@gentoo.org/T/#u.
