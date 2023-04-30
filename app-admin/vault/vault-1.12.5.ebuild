@@ -16,7 +16,7 @@ SRC_URI="https://github.com/zmedico/vault/archive/refs/tags/v${PV}-vendor.tar.gz
 
 LICENSE="MPL-2.0 Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 IUSE="+webui"
 
 BDEPEND="
