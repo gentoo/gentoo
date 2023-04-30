@@ -40,6 +40,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-fix-qch.patch" ) # bug 905361
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package speech Qt5TextToSpeech)
