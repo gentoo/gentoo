@@ -305,11 +305,6 @@ net-misc/gnome-online-miners
 # Deprecated upstream and ruby27-only. Masked for removal on 2023-04-30.
 dev-ruby/elasticsearch-extensions
 
-# Hans de Graaff <graaff@gentoo.org> (2023-03-30)
-# Ships a Certificate Authority bundle from 2014. Not needed on Gentoo
-# since we use ca-certificates. Masked for removal on 2023-04-30.
-dev-ruby/certified
-
 # Sam James <sam@gentoo.org> (2023-03-29)
 # Regressions in solving ability affecting e.g. igraph:
 # https://github.com/opencollab/arpack-ng/issues/401
