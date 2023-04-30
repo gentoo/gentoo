@@ -255,13 +255,6 @@ sci-biology/samtools:0.1-legacy
 dev-ruby/turbolinks
 dev-ruby/turbolinks-source
 
-# Michał Górny <mgorny@gentoo.org> (2023-03-31)
-# Packages with non-functional tests and no py3.11 support.  They were
-# only needed for media-fonts/noto-emoji[buildfont], and that variant
-# was removed, so they have no revdeps now.
-# Removal on 2023-04-30.  Bug #719882.
-dev-python/booleanOperations
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
 #
