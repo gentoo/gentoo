@@ -33,8 +33,8 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-meson.patch
-	"${FILESDIR}"/${PN}-static-libs.patch
 	"${FILESDIR}"/${PN}-musl.patch
+	"${FILESDIR}"/${PN}-static-libs.patch
 )
 
 src_prepare() {
