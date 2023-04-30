@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-05-01)
+# Quite broken, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109672.
+=sys-devel/gcc-14.0.0_pre20230430
+
 # Andreas Sturmlechner <asturm@gentoo.org> 2023-04-30
 # Breaking even latest ~arch version of KDE PIM, bug #905352.
 =dev-libs/ktextaddons-1.3*
