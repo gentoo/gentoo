@@ -23,12 +23,12 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="${RDEPEND}
-	>=dev-libs/libxml2-2.10.3:=
+	>=dev-libs/libxml2-2.10.3:= =dev-libs/libxml2-2.10*
 	>=dev-libs/libxslt-1.1.37
 	sys-libs/zlib
 	virtual/libiconv"
 DEPEND="${DEPEND}
-	>=dev-libs/libxml2-2.10.3
+	>=dev-libs/libxml2-2.10.3 =dev-libs/libxml2-2.10*
 	>=dev-libs/libxslt-1.1.37
 	>=sys-libs/zlib-1.2.13
 	virtual/libiconv"
