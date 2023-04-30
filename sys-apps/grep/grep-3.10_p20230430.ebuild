@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gnu.org/software/grep/"
 if [[ ${PV} == *_p* ]] ; then
 	# Subscribe to the 'platform-testers' ML to find these.
 	# Useful to test on our especially more niche arches and report issues upstream.
-	MY_COMMIT="12-0f2c"
+	MY_COMMIT="19-2ea9"
 	MY_P=${PN}-$(ver_cut 1-2).${MY_COMMIT}
 	SRC_URI="https://meyering.net/${PN}/${MY_P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://meyering.net/${PN}/${MY_P}.tar.xz.sig )"
@@ -31,7 +31,7 @@ IUSE="+egrep-fgrep nls pcre static"
 REQUIRED_USE="static? ( !sparc )"
 
 LIB_DEPEND="
-	pcre? ( >=dev-libs/libpcre2-7.8-r1[static-libs(+)] )
+	pcre? ( >=dev-libs/libpcre2-10.42-r1[static-libs(+)] )
 	sparc? ( dev-libs/libsigsegv )
 "
 RDEPEND="
