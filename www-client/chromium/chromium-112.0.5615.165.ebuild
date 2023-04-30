@@ -306,8 +306,8 @@ pkg_setup() {
 			else
 				CPP="${CHOST}-clang++ -E"
 			fi
-			if ! ver_test "$(clang-major-version)" -ge 13; then
-				die "At least clang 13 is required"
+			if ! ver_test "$(clang-major-version)" -ge 16; then
+				die "At least clang 16 is required"
 			fi
 		fi
 	fi
