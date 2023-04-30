@@ -298,6 +298,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool kmod)
 		$(meson_use lz4)
 		$(meson_use lzma xz)
+		$(meson_use test tests)
 		$(meson_use zstd)
 		$(meson_native_use_bool iptables libiptc)
 		$(meson_native_use_bool openssl)
