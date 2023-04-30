@@ -43,7 +43,7 @@ RDEPEND="
 	media-libs/openal
 	media-libs/opus:=
 	media-libs/rnnoise
-	~media-libs/tg_owt-0_pre20230105:=[screencast=,X=]
+	~media-libs/tg_owt-0_pre20230428:=[screencast=,X=]
 	media-video/ffmpeg:=[opus,vpx]
 	sys-libs/zlib:=[minizip]
 	virtual/opengl
