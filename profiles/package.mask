@@ -386,11 +386,6 @@ app-editors/le
 =dev-python/pytz-2023.2-r1
 =dev-perl/DateTime-TimeZone-2.580.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-03-26)
-# No py3.11.  Last release in 2014.  No revdeps.
-# Removal on 2023-04-25.  Bug #896762.
-dev-python/collective-checkdocs
-
 # Sam James <sam@gentoo.org> (2023-03-24)
 # Please upgrade to make-4.4.1 as make-4.4 has a bunch of issues.
 =sys-devel/make-4.4
