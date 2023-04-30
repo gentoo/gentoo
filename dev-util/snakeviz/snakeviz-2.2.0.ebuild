@@ -23,9 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/tornado[${PYTHON_USEDEP}]
-	')
+	dev-python/tornado[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
