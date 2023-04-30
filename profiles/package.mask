@@ -354,11 +354,6 @@ app-admin/ec2-ami-tools
 # https://github.com/igraph/igraph/issues/2311
 =sci-libs/arpack-3.9.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-03-28)
-# Unfetchable, the homepage is gone.  Last updated in 2020.
-# Removal on 2023-04-27.  Bug #831304.
-net-analyzer/netio
-
 # Sam James <sam@gentoo.org> (2023-03-27)
 # The upstream tzinfo maintainers recommend using 2023a for now because of the
 # disruption regarding Lebanon's DST change. See https://lore.kernel.org/distributions/87cz4u2gmj.fsf@gentoo.org/T/#u.
