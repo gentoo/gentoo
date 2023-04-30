@@ -20,9 +20,6 @@ dev-lang/rust-bin
 dev-python/autobahn
 >=dev-python/bcrypt-4
 >=dev-python/cryptography-36
-dev-python/gcs-oauth2-boto-plugin
-dev-python/google-apitools
-dev-python/google-reauth-python
 dev-python/josepy
 dev-python/keyring
 dev-python/libcloud
@@ -34,8 +31,6 @@ dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-git-revision-date-localized-plugin
-dev-python/ndg-httpsclient
-dev-python/oauth2client
 dev-python/oauthlib
 dev-python/openstacksdk
 dev-python/os-client-config
@@ -92,7 +87,6 @@ net-im/gajim
 >=net-irc/polari-3.37
 net-libs/quiche
 net-misc/electrum-ltc
-net-misc/gsutil
 net-news/newsboat
 net-p2p/deluge
 sci-geosciences/gnome-maps
