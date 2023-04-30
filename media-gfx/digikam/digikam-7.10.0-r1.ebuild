@@ -109,6 +109,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-7.8.0-cmake.patch"
 	"${FILESDIR}/${PN}-7.9.0-akonadi-23.04.patch" # bug 904976
+	"${FILESDIR}/${P}-gcc13.patch"
 )
 
 pkg_pretend() {
