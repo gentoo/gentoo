@@ -72,7 +72,7 @@ media-video/ffmpeg svt-av1
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
-dev-python/scipy pythran
+dev-python/scipy fortran
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Test suite is very fragile and doesn't even run on amd64.

@@ -105,7 +105,7 @@ app-admin/conky lua-rsvg
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
-dev-python/scipy pythran
+dev-python/scipy fortran
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Requires dev-db/mariadb which, at last check, was broken on sparc.
