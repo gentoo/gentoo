@@ -301,10 +301,6 @@ net-libs/libgfbgraph
 net-libs/libzapojit
 net-misc/gnome-online-miners
 
-# Hans de Graaff <graaff@gentoo.org> (2023-03-30)
-# Deprecated upstream and ruby27-only. Masked for removal on 2023-04-30.
-dev-ruby/elasticsearch-extensions
-
 # Sam James <sam@gentoo.org> (2023-03-29)
 # Regressions in solving ability affecting e.g. igraph:
 # https://github.com/opencollab/arpack-ng/issues/401
