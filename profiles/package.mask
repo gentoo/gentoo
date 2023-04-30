@@ -324,7 +324,6 @@ dev-ruby/classifier-reborn
 dev-ruby/rspec:2
 dev-ruby/rspec-core:2
 dev-ruby/rspec-expectations:2
-dev-ruby/rspec-mocks:2
 
 # Sam James <sam@gentoo.org> (2023-03-29)
 # Regressions in solving ability affecting e.g. igraph:
