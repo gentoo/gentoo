@@ -1,6 +1,10 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Craig Andrews <candrews@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is keyworded here
+media-video/ffmpeg -libplacebo
+
 # Joonas Niilola <juippis@gentoo.org> (2022-11-10)
 # Doesn't work on ppc64, #871921
 sci-mathematics/gmp-ecm custom-tune
@@ -65,7 +69,3 @@ media-video/vlc -libplacebo
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
 # works on ppc64le
 media-libs/mesa -llvm -video_cards_radeonsi
-
-# Craig Andrews <candrews@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is keyworded here
-media-video/ffmepg -libplacebo
