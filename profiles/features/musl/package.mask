@@ -249,7 +249,6 @@ sys-apps/ipmicfg
 sys-apps/tas
 sys-block/hpssacli
 sys-block/megacli
-sys-power/dptfxtract
 www-apps/chromedriver-bin
 www-apps/grafana-bin
 www-apps/jellyfin
