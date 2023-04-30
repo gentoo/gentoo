@@ -371,7 +371,6 @@ games-rpg/coe2
 # Removal on 2023-04-27.  Bug #902069.
 acct-group/shellinaboxd
 acct-user/shellinaboxd
-www-misc/shellinabox
 
 # Sam James <sam@gentoo.org> (2023-03-27)
 # The upstream tzinfo maintainers recommend using 2023a for now because of the
