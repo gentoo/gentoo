@@ -327,12 +327,6 @@ dev-ruby/rspec-expectations:2
 dev-ruby/rspec-mocks:2
 
 # Sam James <sam@gentoo.org> (2023-03-29)
-# Stuck on ruby27, low activity upstream, needs someone who actively uses it to
-# test it properly as automated tests require an API key.
-# Removal on 2023-04-28.  Bug #903542.
-dev-ruby/flickraw
-
-# Sam James <sam@gentoo.org> (2023-03-29)
 # Regressions in solving ability affecting e.g. igraph:
 # https://github.com/opencollab/arpack-ng/issues/401
 # https://github.com/opencollab/arpack-ng/issues/410
