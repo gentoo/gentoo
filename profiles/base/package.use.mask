@@ -584,7 +584,7 @@ dev-python/statsmodels doc
 net-libs/ngtcp2 ssl
 net-misc/curl nghttp3
 
-# Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
+# Thomas Deutschmann <whissi@gentoo.org> (2019-09-02)
 # PGO not yet supported for comm-central, bug #693160
 >=mail-client/thunderbird-68 pgo
 
