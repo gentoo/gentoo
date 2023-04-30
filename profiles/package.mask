@@ -318,11 +318,6 @@ dev-ruby/certified
 dev-ruby/rb-gsl
 dev-ruby/classifier-reborn
 
-# Hans de Graaff <graaff@gentoo.org> (2023-03-29)
-# ruby27-only slot of rspec. Please use rspec:3 instead. Masked for
-# removal on 2023-04-28.
-dev-ruby/rspec:2
-
 # Sam James <sam@gentoo.org> (2023-03-29)
 # Regressions in solving ability affecting e.g. igraph:
 # https://github.com/opencollab/arpack-ng/issues/401
