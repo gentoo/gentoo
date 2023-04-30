@@ -36,7 +36,7 @@ fi
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
 SLOT="0/2"
-IUSE="btf ${LIBABIGAIL_DOCS_USEFLAG} test"
+IUSE="btf debug ${LIBABIGAIL_DOCS_USEFLAG} test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -71,8 +71,11 @@ my_src_configure() {
 		--disable-rpm415
 		--disable-ctf
 		--disable-debug-ct-propagation
+		# Don't try to run Valgrind on tests.
+		--disable-valgrind
 		--enable-bash-completion
 		--enable-python3
+		$(use_enable debug assert)
 		$(use_enable btf)
 		$(use_enable doc apidoc)
 		$(use_enable doc manual)
