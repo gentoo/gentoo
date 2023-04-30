@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2023-04-30)
+# Stacks on HPPA grow upwards and GCC doesn't support SSP or SCP there.
+sys-devel/gcc default-stack-clash-protection
+
 # Sam James <sam@gentoo.org> (2023-04-16)
 # net-libs/libcloudproviders not keyworded here
 x11-libs/gtk+ cloudproviders
