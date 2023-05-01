@@ -64,7 +64,7 @@ tmpfile=$(mktemp)
 
 inherit python-utils-r1
 
-for minor in 9 10 11; do
+for minor in 10 11; do
 	ebegin "Testing python3.${minor}"
 	eindent
 	test_var EPYTHON "python3_${minor}" "python3.${minor}"
@@ -199,16 +199,10 @@ test_is "_python_impl_matches python3_6 python*" 0
 test_is "_python_impl_matches python3_7 python*" 0
 test_is "_python_impl_matches pypy3 python*" 1
 set +f
-test_is "_python_impl_matches python3_9 3.9" 0
-test_is "_python_impl_matches python3_9 3.10" 1
-test_is "_python_impl_matches python3_9 3.11" 1
-test_is "_python_impl_matches python3_10 3.9" 1
 test_is "_python_impl_matches python3_10 3.10" 0
 test_is "_python_impl_matches python3_10 3.11" 1
-test_is "_python_impl_matches python3_11 3.9" 1
 test_is "_python_impl_matches python3_11 3.10" 1
 test_is "_python_impl_matches python3_11 3.11" 0
-test_is "_python_impl_matches pypy3 3.9" 0
 test_is "_python_impl_matches pypy3 3.10" 1
 test_is "_python_impl_matches pypy3 3.11" 1
 eoutdent
