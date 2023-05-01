@@ -34,6 +34,10 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2023-05-01)
+# Breaks dev-python/scipy build. See bug #905396 and https://github.com/serge-sans-paille/gast/issues/74.
+=dev-python/gast-0.5.4
+
+# Sam James <sam@gentoo.org> (2023-05-01)
 # Masked for testing. Other distros seem to have hit a bunch of new test
 # failures in various applications, and initially there were ABI issues in .0.
 # Also, the failure case for bug #745162 needs retesting to see if the patch
