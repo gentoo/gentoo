@@ -24,6 +24,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-apps/portage"
+# Only needed for man page generation but easier to just require it for all impls
+BDEPEND="dev-python/docutils[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${WORKDIR}/${PN}-patches-${PV}-r7"
