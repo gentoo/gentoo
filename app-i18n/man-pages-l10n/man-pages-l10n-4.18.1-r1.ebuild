@@ -50,6 +50,7 @@ src_prepare() {
 		halt.8
 		killall5.8
 		runlevel.8
+		shutdown.8
 		sulogin.8
 		# sys-process/procps
 		free.1
