@@ -11,7 +11,7 @@ inherit cmake fortran-2 python-single-r1
 PID=38205
 DESCRIPTION="Parallel solver for very large sparse linear systems"
 HOMEPAGE="https://solverstack.gitlabpages.inria.fr/pastix/"
-SRC_URI="https://gforge.inria.fr/frs/download.php/file/${PID}/${P}.tar.gz"
+SRC_URI="https://files.inria.fr/pastix/releases/v$(ver_cut 1)/${P}.tar.gz"
 
 LICENSE="CeCILL-C"
 SLOT="0"
