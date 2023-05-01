@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="DJ's Hex Calculator"
 HOMEPAGE="http://www.delorie.com/store/hcalc/ https://github.com/jlec/hcalc"
-SRC_URI="https://github.com/downloads/jlec/hcalc/${P}.tar.xz"
+SRC_URI="https://github.com/jlec/hcalc/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
