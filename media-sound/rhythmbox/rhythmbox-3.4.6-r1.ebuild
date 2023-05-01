@@ -81,8 +81,8 @@ RDEPEND="${DEPEND}
 		gnome-keyring? ( >=app-crypt/libsecret-0.18[introspection] )
 	)
 	upnp-av? (
-		>=media-libs/grilo-0.3:0.3
-		>=media-plugins/grilo-plugins-0.3:0.3[upnp-av]
+		<media-libs/grilo-0.3.15-r1:0.3
+		<media-plugins/grilo-plugins-0.3.15-r1:0.3[upnp-av]
 	)
 "
 BDEPEND="
