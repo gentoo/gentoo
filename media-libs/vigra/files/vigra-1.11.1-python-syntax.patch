@@ -1,0 +1,64 @@
+https://github.com/ukoethe/vigra/commit/aba7e731bdde39516b5470673ce40a0036665201
+https://github.com/ukoethe/vigra/commit/c949d3640266f515eb1e3ecca2b752e13e0c3804
+
+From aba7e731bdde39516b5470673ce40a0036665201 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Mon, 5 Sep 2022 15:10:08 -0400
+Subject: [PATCH] Avoid using `is not` when comparing to an integer
+
+---
+ vigranumpy/lib/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vigranumpy/lib/__init__.py b/vigranumpy/lib/__init__.py
+index 072a797c6..f598e0a8d 100644
+--- a/vigranumpy/lib/__init__.py
++++ b/vigranumpy/lib/__init__.py
+@@ -1780,7 +1780,7 @@ def handle_click(self, event):
+                         for yo in range(-1*bs, bs+1):
+                             xx = x+xo
+                             yy = y+yo
+-                            if xo is not 0 or yo is not 0:
++                            if (xo != 0) or (yo != 0):
+                                 if  xx >=0 and xx<shape[0] and \
+                                     yy >=0 and yy<shape[0]:
+                                     otherLabel = labels[xx, yy]
+
+From c949d3640266f515eb1e3ecca2b752e13e0c3804 Mon Sep 17 00:00:00 2001
+From: Omari Stephens <xsdg@xsdg.org>
+Date: Tue, 28 Dec 2021 21:54:51 +0000
+Subject: [PATCH] Updates doc generation config for Python 3 compatibility
+
+---
+ vigranumpy/docsrc/conf.py.cmake2.in | 2 +-
+ vigranumpy/docsrc/conf.py.in        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/vigranumpy/docsrc/conf.py.cmake2.in b/vigranumpy/docsrc/conf.py.cmake2.in
+index e4266a636..175dfb39f 100644
+--- a/vigranumpy/docsrc/conf.py.cmake2.in
++++ b/vigranumpy/docsrc/conf.py.cmake2.in
+@@ -23,7 +23,7 @@ _original_getargspec = inspect.getargspec
+ def _getargspec_workaround(*args, **kw):
+     try:
+         return _original_getargspec(*args, **kw)
+-    except TypeError, e:
++    except TypeError as e:
+         if str(e).startswith('arg is not a Python function'):
+             return inspect.ArgSpec([], None, None, None)
+         else:
+diff --git a/vigranumpy/docsrc/conf.py.in b/vigranumpy/docsrc/conf.py.in
+index 607559352..ac2261d20 100644
+--- a/vigranumpy/docsrc/conf.py.in
++++ b/vigranumpy/docsrc/conf.py.in
+@@ -22,7 +22,7 @@ _original_getargspec = inspect.getargspec
+ def _getargspec_workaround(*args, **kw):
+     try:
+         return _original_getargspec(*args, **kw)
+-    except TypeError, e:
++    except TypeError as e:
+         if str(e).startswith('arg is not a Python function'):
+             return inspect.ArgSpec([], None, None, None)
+         else:
+
+
