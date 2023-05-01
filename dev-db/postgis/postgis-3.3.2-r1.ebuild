@@ -43,6 +43,7 @@ RDEPEND="${POSTGRES_DEP}
 	gtk? ( x11-libs/gtk+:2 )
 "
 DEPEND="${RDEPEND}
+	!!dev-cpp/abseil-cpp
 	virtual/pkgconfig
 	doc? (
 		app-text/docbook-xsl-stylesheets
