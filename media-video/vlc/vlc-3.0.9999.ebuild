@@ -33,8 +33,8 @@ SLOT="0/5-9" # vlc - vlccore
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme gnome-keyring gstreamer +gui ieee1394 jack jpeg kate
-	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
-	macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses nfs ogg
+	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc live
+	lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses nfs ogg
 	omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba sdl-image
 	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
 	udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf zvbi
@@ -141,6 +141,7 @@ RDEPEND="
 		x11-libs/gtk+:3
 		x11-libs/libnotify
 	)
+	libplacebo? ( media-libs/libplacebo )
 	libsamplerate? ( media-libs/libsamplerate )
 	libtar? ( dev-libs/libtar )
 	libtiger? ( media-libs/libtiger )
@@ -234,6 +235,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
+	"${FILESDIR}"/${PN}-3.0.18-libplacebo-5.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -348,6 +350,7 @@ src_configure() {
 		$(use_enable libass)
 		$(use_enable libcaca caca)
 		$(use_enable libnotify notify)
+		$(use_enable libplacebo)
 		$(use_enable libsamplerate samplerate)
 		$(use_enable libtar)
 		$(use_enable libtiger tiger)
@@ -419,7 +422,6 @@ src_configure() {
 		--disable-goom
 		--disable-kai
 		--disable-kva
-		--disable-libplacebo
 		--disable-maintainer-mode
 		--disable-merge-ffmpeg
 		--disable-mfx
