@@ -59,6 +59,9 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/xml2-config
 )
 
+# Needs testing to see if still relevant (bug #745162) and rebasing if so
+#PATCHES=( "${FILESDIR}"/${PN}-2.10.3-python3-unicode-errors.patch )
+
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
