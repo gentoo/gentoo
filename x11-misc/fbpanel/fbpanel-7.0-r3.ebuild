@@ -1,13 +1,13 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit python-any-r1 toolchain-funcs
+inherit edo python-any-r1 toolchain-funcs
 
-DESCRIPTION="light-weight X11 desktop panel"
+DESCRIPTION="Light-weight X11 desktop panel"
 HOMEPAGE="https://aanatoly.github.io/fbpanel/"
 SRC_URI="https://aanatoly.github.io/fbpanel/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -49,17 +49,18 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+
 	# not autotools based
-	local myconfigure=(
-		./configure V=1
+	local confargs=(
+		V=1
 		--mandir="${EPREFIX}"/usr/share/man/man1
 		--datadir="${EPREFIX}"/usr/share/${PN}
 		--prefix="${EPREFIX}"/usr
 		--libdir="${EPREFIX}"/usr/$(get_libdir)/${PN}
 		$(usex alsa --sound --no-sound)
 	)
-	echo ${myconfigure[@]} || die
-	${myconfigure[@]} || die
+
+	edo ./configure "${confargs[@]}"
 }
 
 pkg_postinst() {
