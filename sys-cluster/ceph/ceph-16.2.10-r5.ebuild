@@ -93,7 +93,7 @@ DEPEND="
 	spdk? ( dev-util/cunit )
 	sqlite? ( dev-db/sqlite:= )
 	system-boost? ( dev-libs/boost:=[context,python,${PYTHON_USEDEP},zlib] )
-	!system-boost? ( $(python_gen_impl_dep '' 3.10 3.11) )
+	!system-boost? ( $(python_gen_impl_dep '' 3.10) )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zbd? ( sys-block/libzbd:= )
@@ -176,7 +176,6 @@ REQUIRED_USE="
 	mgr? ( cephfs )
 	rabbitmq? ( radosgw )
 	!system-boost? (
-		python_targets_python3_9
 		python_targets_python3_10
 	)
 "
@@ -236,7 +235,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	if ! use system-boost; then
-		python_setup 3.10 3.11
+		python_setup 3.10
 	else
 		python_setup
 	fi
