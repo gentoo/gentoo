@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 if [[ ${PV} == *9999* ]]; then
 	SRC_ECLASS="git-r3"
@@ -12,7 +12,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}
