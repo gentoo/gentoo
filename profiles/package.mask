@@ -298,13 +298,6 @@ x11-drivers/nvidia-drivers:0/390
 # https://github.com/igraph/igraph/issues/2311
 =sci-libs/arpack-3.9.0
 
-# Sam James <sam@gentoo.org> (2023-03-27)
-# The upstream tzinfo maintainers recommend using 2023a for now because of the
-# disruption regarding Lebanon's DST change. See https://lore.kernel.org/distributions/87cz4u2gmj.fsf@gentoo.org/T/#u.
-=sys-libs/timezone-data-2023b
-=dev-python/pytz-2023.2-r1
-=dev-perl/DateTime-TimeZone-2.580.0
-
 # Sam James <sam@gentoo.org> (2023-03-24)
 # Please upgrade to make-4.4.1 as make-4.4 has a bunch of issues.
 =sys-devel/make-4.4
@@ -341,15 +334,6 @@ x11-drivers/nvidia-drivers:0/390
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
-
-# Sam James <sam@gentoo.org> (2023-01-05)
-# Breaks reverse dependencies: bug #889694, bug #888579.
-=sys-fs/btrfs-progs-6.1.1
-
-# Sam James <sam@gentoo.org> (2022-12-27)
-# Regression in listing subvolumes (no UUIDs), bug #888549
-# https://github.com/kdave/btrfs-progs/issues/562
-=sys-fs/btrfs-progs-6.1
 
 # Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
 # Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
