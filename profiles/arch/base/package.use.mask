@@ -118,13 +118,6 @@ x11-wm/mutter video_cards_nvidia
 # We don't list "clozurecl" here since it's already in use.mask.
 >=sci-mathematics/maxima-5.44.0-r5 clozurecl64
 
-# Sam James <sam@gentoo.org> (2021-03-02)
-# Java build is extremely sensitive to environment
-# Previously stable-masked but moved here
-# Then: bug #483372, bug #508564
-# Now: bug #773913 (exposed by having a new ~arch ebuild)
-media-libs/libcaca java mono
-
 # Jaco Kroon <jaco@uls.co.za> (2021-01-08)
 # blocksruntime (clang -fblocks) isn't available on all arches.
 net-misc/asterisk blocks
@@ -347,7 +340,7 @@ media-sound/lmms vst
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-01-04)
 # Mask until dependencies are keyworded (bug 497068)
-dev-vcs/git mediawiki mediawiki-experimental
+dev-vcs/git mediawiki
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-12-27)
 # Mask because Boost.Context library does not work on most of arches

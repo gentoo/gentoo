@@ -18,10 +18,6 @@ www-client/firefox system-libvpx
 dev-java/openjdk:11 -system-bootstrap
 dev-java/openjdk:17 -system-bootstrap
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-18)
-# Force host target
-dev-libs/keystone llvm_targets_X86
-
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # We have ready-to-use configs here.
 sys-kernel/gentoo-kernel -savedconfig

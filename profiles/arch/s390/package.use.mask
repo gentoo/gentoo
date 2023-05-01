@@ -151,7 +151,6 @@ app-editors/vim lua
 media-gfx/imagemagick raw
 dev-db/mariadb numa
 # not tested yet
-app-misc/mc samba
 app-arch/rpm test
 # no ceph keyworded
 net-analyzer/rrdtool rados
@@ -170,7 +169,7 @@ app-portage/layman g-sorcery
 
 # Mikle Kolyada <zlogene@gentoo.org> (2014-01-11)
 # too much unkeyworded dependencies (bug #497068)
-dev-vcs/git mediawiki mediawiki-experimental
+dev-vcs/git mediawiki
 
 # Agostino Sarubbo <ago@gentoo.org< (2013-04-10)
 # It requires too much unstable dep.

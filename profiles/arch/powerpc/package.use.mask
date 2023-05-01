@@ -258,10 +258,6 @@ x11-base/xorg-drivers video_cards_amdgpu
 # Missing keywords
 net-dns/unbound dnstap
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (2015-02-15)
-# There's no keyworded office implementation anymore.
-gnome-extra/sushi office
-
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-24, 2015-04-01)
 # test dependencies need keywording
 dev-haskell/dlist test

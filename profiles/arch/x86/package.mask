@@ -11,7 +11,6 @@ dev-python/PyQtWebEngine
 app-admin/calamares
 app-doc/zeal
 app-editors/ghostwriter
-app-editors/notepadqq
 app-editors/retext
 app-misc/anki
 app-office/kalendar:5

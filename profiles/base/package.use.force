@@ -84,7 +84,6 @@ app-arch/unzip unicode
 app-arch/zip unicode
 sys-apps/util-linux unicode
 sys-process/procps unicode
-www-client/lynx unicode
 #
 # b) using libidn
 app-text/ghostscript-gpl unicode
@@ -176,7 +175,6 @@ sys-firmware/seabios binary
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
 net-analyzer/snort libtirpc
-net-firewall/conntrack-tools libtirpc
 net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc

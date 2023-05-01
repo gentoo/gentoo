@@ -167,7 +167,6 @@ mate-base/mate help
 # virtual/{jdk,jre} is not available on loong yet.
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
 media-libs/rubberband jni
-www-client/chromium js-type-check
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # Fails testing at least with libssh-0.9.6 and mbedtls-2.28.0-r1, needs

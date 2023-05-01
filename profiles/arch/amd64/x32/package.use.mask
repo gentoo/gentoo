@@ -46,10 +46,8 @@ www-servers/uwsgi uwsgi_plugins_rados
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Those packages require net-libs/nodejs.
 dev-lang/nim test-js
-dev-python/nbdime webtools
 dev-ruby/ammeter test
 dev-ruby/jsobfu test
-dev-ruby/rails asset-pipeline
 dev-ruby/sprockets test
 dev-ruby/tilt test
 net-analyzer/netdata nodejs

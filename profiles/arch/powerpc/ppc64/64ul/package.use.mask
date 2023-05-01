@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev (2022-02-16)
@@ -12,7 +12,7 @@ dev-lang/python-exec -python_targets_pypy3
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
 # deps not keyworded
-media-gfx/gnome-photos flickr upnp-av
+media-gfx/gnome-photos upnp-av
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
 # deps not keyworded
@@ -39,7 +39,6 @@ dev-util/perf clang
 dev-lang/spidermonkey clang
 mail-client/thunderbird clang
 <www-client/firefox-104 clang
-
 
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
