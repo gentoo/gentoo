@@ -364,15 +364,6 @@ x11-drivers/nvidia-drivers:0/390
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
 
-# Matt Turner <mattst88@gentoo.org> (2022-11-16)
-# Masked for testing and migration of consumers
-media-gfx/gnome-photos
->=media-libs/grilo-0.3.15-r1
->=media-plugins/grilo-plugins-0.3.16
-media-sound/gnome-music
->=media-sound/rhythmbox-3.4.7
-net-libs/libdmapsharing:4.0
-
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
 # Some potentially breaking changes here, please check the UPGRADE.txt file.
 # Most important:  chan_sip no longer builds by default, if you've migrated to
