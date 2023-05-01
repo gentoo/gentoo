@@ -4,6 +4,7 @@
   <upstream>
     <bugs-to>https://github.com/flame/blis/issues/</bugs-to>
     <doc>https://github.com/flame/blis</doc>
+    <remote-id type="github">flame/blis</remote-id>
   </upstream>
   <maintainer type="person" proxied="yes">
     <name>Mo Zhou</name>
