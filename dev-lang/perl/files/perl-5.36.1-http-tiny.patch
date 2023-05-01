@@ -1,0 +1,25 @@
+in current year, we should verify tls certs by default.
+not doing so is as good as not using tls
+https://www.openwall.com/lists/oss-security/2023/04/18/14
+
+Source:
+https://git.alpinelinux.org/aports/plain/main/perl/default-https-perl-http-tiny.patch?id=fc21c0f7930ae3a9e2f50bacc305fb167a456ded
+
+Bug: https://bugs.gentoo.org/905296
+See-also: https://github.com/chansen/p5-http-tiny/pull/151
+See-also: https://github.com/chansen/p5-http-tiny/issues/152
+
+--
+diff --git a/cpan/HTTP-Tiny/lib/HTTP/Tiny.pm b/cpan/HTTP-Tiny/lib/HTTP/Tiny.pm
+index 83ca06d..dc6217a 100644
+--- a/cpan/HTTP-Tiny/lib/HTTP/Tiny.pm
++++ b/cpan/HTTP-Tiny/lib/HTTP/Tiny.pm
+@@ -1055,7 +1055,7 @@ sub new {
+         timeout          => 60,
+         max_line_size    => 16384,
+         max_header_lines => 64,
+-        verify_SSL       => 0,
++        verify_SSL       => 1,
+         SSL_options      => {},
+         %args
+     }, $class;
