@@ -16,7 +16,7 @@ inherit fortran-2 toolchain-funcs
 # package id: change every version, see the link on inriaforge
 PID=218
 DESCRIPTION="Parallel solver for very large sparse linear systems"
-HOMEPAGE="https://solverstack.gitlabpages.inria.fr/pastix/"
+HOMEPAGE="https://solverstack.gitlabpages.inria.fr/pastix/ https://gitlab.inria.fr/solverstack/pastix"
 SRC_URI="https://gforge.inria.fr/frs/download.php/latestfile/${PID}/${PN}_${PV}.tar.bz2"
 S="${WORKDIR}/${PN}_${PV}/src"
 
