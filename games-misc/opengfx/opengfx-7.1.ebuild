@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit python-any-r1
 
@@ -27,12 +27,6 @@ DOCS=( "README.md" "changelog.txt" )
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.1-no-which.patch
 )
-
-src_prepare() {
-	default
-
-	python-any-r1_pkg_setup
-}
 
 src_compile() {
 	local myemakeargs=(
