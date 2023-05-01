@@ -61,9 +61,6 @@
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
 		<flag name="oidn">Enable OpenImageDenoiser Support</flag>
-		<flag name="opencl">
-			Allow OpenCL Graphics Acceleration. This may
-			require extra graphics card drivers.</flag>
 		<flag name="openimageio">Enable OpenImageIO Support</flag>
 		<flag name="openpgl">Enable path guiding support in Cycles</flag>
 		<flag name="opensubdiv">
