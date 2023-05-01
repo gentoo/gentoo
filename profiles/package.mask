@@ -210,7 +210,6 @@ media-fonts/font-bitstream-speedo
 # remaining ruby27-only packages for removal on 2023-05-10.
 dev-lang/ruby:2.7
 =dev-ruby/bundler-2.1.4
-=dev-ruby/did_you_mean-1.4.0
 =dev-ruby/rubygems-3.1.6
 =dev-ruby/contracts-0.16.1
 
