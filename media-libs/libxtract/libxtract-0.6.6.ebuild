@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="A simple, portable, lightweight library of audio feature extraction functions"
 HOMEPAGE="https://github.com/jamiebullock/LibXtract"
-SRC_URI="https://github.com/downloads/jamiebullock/LibXtract/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
