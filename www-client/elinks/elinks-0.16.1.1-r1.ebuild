@@ -35,7 +35,7 @@ RDEPEND="
 		>=sys-libs/gpm-1.20.0-r5
 	)
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
-	idn? ( net-dns/libidn2:= )
+	idn? ( net-dns/libidn:= )
 	javascript? (
 		dev-cpp/libxmlpp:5.0
 		dev-lang/mujs:=
@@ -63,7 +63,7 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	test? (
-		net-dns/libidn2
+		net-dns/libidn
 	)
 "
 
