@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-05-01)
+# Masked for testing. Other distros seem to have hit a bunch of new test
+# failures in various applications, and initially there were ABI issues in .0.
+>=dev-libs/libxml2-2.11.0
+
 # John Helmert III <ajak@gentoo.org> (2023-04-30)
 # STARTTLS vulnerability, depends on gtk+:2, practically unmainatined
 # upstream. Use mail-client/claws instead. Removal in 30 days, bugs
