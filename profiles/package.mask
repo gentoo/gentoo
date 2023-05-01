@@ -343,13 +343,6 @@ x11-drivers/nvidia-drivers:0/390
 # Breaks too many revdeps for now
 =app-text/discount-3*
 
-# David Seifert <soap@gentoo.org> (2023-01-14)
-# Py3.8 only backports
-dev-python/backports-tempfile
-dev-python/backports-weakref
-dev-python/backports-zoneinfo
-dev-python/pkgutil_resolve_name
-
 # Sam James <sam@gentoo.org> (2023-01-05)
 # Breaks reverse dependencies: bug #889694, bug #888579.
 =sys-fs/btrfs-progs-6.1.1
