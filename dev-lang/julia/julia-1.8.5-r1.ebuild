@@ -9,7 +9,9 @@ EAPI=8
 # >=1.8.2 still sits on LLVM 13, bug: https://bugs.gentoo.org/876184
 MY_LLVM_V=13.0.1
 
-inherit check-reqs flag-o-matic pax-utils toolchain-funcs optfeature
+PYTHON_COMPAT=( python3_{9..11} )
+
+inherit check-reqs flag-o-matic optfeature pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/
@@ -56,6 +58,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/cmake
 	virtual/pkgconfig
 "
@@ -93,6 +96,11 @@ for archlinux_patch in ${archlinux_patches[@]} ; do
 	"
 	PATCHES+=( "${DISTDIR}/${archlinux_patch_name}" )
 done
+
+pkg_setup() {
+	check-reqs_pkg_setup
+	python-any-r1_pkg_setup
+}
 
 src_unpack() {
 	local -a tounpack=( ${A} )
