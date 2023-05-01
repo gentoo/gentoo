@@ -1,0 +1,16 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -598,11 +598,8 @@ else()
+         target_link_libraries(${PROJECT_NAME} pthread tinfo.a curses.a)
+     else()
+         find_package(Curses REQUIRED)
+-        if (CURSES_EXTRA_LIBRARY)
+-            # this contains the tinfo library, if found
+-            target_link_libraries(${PROJECT_NAME} ${CURSES_EXTRA_LIBRARY})
+-        endif()
+-        target_link_libraries(${PROJECT_NAME} pthread ${CURSES_CURSES_LIBRARY})
++        set(CURSES_NEED_NCURSES ON)
++        target_link_libraries(${PROJECT_NAME} pthread ${CURSES_LIBRARIES})
+     endif()
+ endif()
+ 
