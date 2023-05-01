@@ -60,8 +60,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+	test? (
+		net-dns/libidn
+	)
 "
 
 PATCHES=(
