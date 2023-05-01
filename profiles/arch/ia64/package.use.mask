@@ -1,6 +1,14 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
 # Sam James <sam@gentoo.org> (2023-04-14)
 # dev-python/sympy not keyworded here yet
 dev-python/nbval test
@@ -30,15 +38,9 @@ dev-util/pkgcheck emacs
 # net-libs/libqrtr-glib not keyworded
 net-misc/modemmanager qrtr
 
-# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
-# media-libs/libjxl is not keyworded
-# bug https://bugs.gentoo.org/853628
-media-gfx/gimp jpegxl
-
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif jpegxl
-media-gfx/graphicsmagick jpegxl
+media-libs/imlib2 svg heif
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded

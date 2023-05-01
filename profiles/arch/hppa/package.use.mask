@@ -4,6 +4,14 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
 # Sam James <sam@gentoo.org> (2023-04-30)
 # Stacks on HPPA grow upwards and GCC doesn't support SSP or SCP there.
 sys-devel/gcc default-stack-clash-protection
@@ -38,11 +46,6 @@ net-dns/ddclient test
 # deps not keyworded
 dev-util/pkgcheck emacs
 
-# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
-# media-libs/libjxl is not keyworded
-# bug https://bugs.gentoo.org/853628
-media-gfx/gimp jpegxl
-
 # Sam James <sam@gentoo.org> (2022-05-17)
 # sci-libs/sundials fails to build tests on HPPA
 # bug #845222
@@ -55,7 +58,7 @@ dev-libs/libgdata crypt
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif jpegxl
+media-libs/imlib2 svg heif
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # Requires dev-util/pahole.
@@ -69,10 +72,6 @@ app-text/enchant nuspell
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords
 media-libs/freetype svg
-
-# Sam James <sam@gentoo.org> (2022-03-26)
-# media-libs/libjxl not keyworded here
-media-gfx/graphicsmagick jpegxl
 
 # Sam James <sam@gentoo.org> (2022-03-22)
 # media-libs/dav1d not keyworded here

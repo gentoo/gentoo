@@ -1,6 +1,14 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
 # Matt Turner <tetromino@gentoo.org> (2023-02-15)
 # pandoc not keyworded here, bug #878355
 app-admin/conky doc
@@ -29,11 +37,6 @@ net-misc/openntpd constraints
 # Needs unkeyworded app-doc/halibut
 >=net-misc/putty-0.77 doc
 
-# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
-# media-libs/libjxl is not keyworded
-# bug https://bugs.gentoo.org/853628
-media-gfx/gimp jpegxl
-
 # Sam James <sam@gentoo.org> (2022-04-29)
 # Needs unkeyworded dev-util/umockdev
 sys-power/upower test
@@ -44,7 +47,7 @@ dev-python/click doc
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif jpegxl
+media-libs/imlib2 svg heif
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -53,10 +56,6 @@ app-text/enchant nuspell
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords
 media-libs/freetype svg
-
-# Sam James <sam@gentoo.org> (2022-03-26)
-# media-libs/libjxl not keyworded here
-media-gfx/graphicsmagick jpegxl
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
