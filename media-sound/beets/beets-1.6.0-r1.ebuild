@@ -16,7 +16,7 @@ else
 	inherit pypi
 	MY_PV=${PV/_beta/-beta.}
 	MY_P=${PN}-${MY_PV}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
