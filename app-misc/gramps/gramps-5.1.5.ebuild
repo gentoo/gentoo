@@ -20,8 +20,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="berkdb exif geo postscript +rcs +reports spell test"
 
-RESTRICT="!test? ( test )
-	!berkdb? ( test )"
+# Previously had: !berkdb? ( test ) combined w/ dev-python/bsddb3 dep only for py3.9
+# so now restricted entirely.
+# See also https://github.com/gramps-project/gramps/pull/1408.
+RESTRICT="test"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -34,9 +36,6 @@ RDEPEND="
 	>x11-libs/gtk+-3.14.8:3[introspection]
 	x11-libs/pango[introspection]
 	x11-misc/xdg-utils
-	berkdb? ( $(python_gen_cond_dep '
-		dev-python/bsddb3[${PYTHON_USEDEP}]
-	' python3_9) )
 	geo? ( >=sci-geosciences/osm-gps-map-1.1.0 )
 	spell? ( app-text/gtkspell:3[introspection] )
 	rcs? ( dev-vcs/rcs )
@@ -97,13 +96,6 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-
-	if use berkdb; then
-		ewarn "The BSDDB back-end in ${PN} has got known stability and data-corruption issues. It has been deprecated since version 5.1.0 and might be removed in 5.2.0."
-		ewarn "If you have any family trees in this format you are highly advised to convert them to SQLite, as described here:"
-		ewarn
-		ewarn "https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Manage_Family_Trees#Converting_a_BSDDB_Family_Tree_to_SQLite"
-	fi
 }
 
 pkg_postrm() {
