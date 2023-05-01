@@ -31,6 +31,7 @@
         If beets doesn’t do what you want yet, writing your own plugin is
         shockingly simple if you know a little Python.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">beets</remote-id>
   </upstream>
