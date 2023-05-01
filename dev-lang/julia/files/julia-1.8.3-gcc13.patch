@@ -1,0 +1,10 @@
+--- a/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/include/llvm/Support/Signals.h
++++ b/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/include/llvm/Support/Signals.h
+@@ -15,6 +15,7 @@
+ #define LLVM_SUPPORT_SIGNALS_H
+ 
+ #include <string>
++#include <cstdint>
+ 
+ namespace llvm {
+ class StringRef;
