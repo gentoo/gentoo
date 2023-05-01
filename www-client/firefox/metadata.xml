@@ -12,6 +12,7 @@
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
 	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
+	<flag name="jumbo-build">Enable unified build - combines source files to speed up build process, but requires more memory</flag>
 	<flag name="libproxy">Enable libproxy support</flag>
 	<flag name="lto">Enable Link Time Optimization (LTO)</flag>
 	<flag name="openh264">Use <pkg>media-libs/openh264</pkg> for H264 support

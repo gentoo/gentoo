@@ -63,7 +63,7 @@ SLOT="rapid"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 
 IUSE="+clang cpu_flags_arm_neon dbus debug eme-free hardened hwaccel"
-IUSE+=" jack libproxy lto +openh264 pgo pulseaudio sndio selinux"
+IUSE+=" jack +jumbo-build libproxy lto +openh264 pgo pulseaudio sndio selinux"
 IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx system-png system-python-libs +system-webp"
 IUSE+=" +telemetry wayland wifi +X"
 
@@ -664,7 +664,23 @@ src_prepare() {
 		|| die "sed failed to disable ccache stats call"
 
 	einfo "Removing pre-built binaries ..."
+
 	find "${S}"/third_party -type f \( -name '*.so' -o -name '*.o' \) -print -delete || die
+
+	# Respect choice for "jumbo-build"
+	# Changing the value for FILES_PER_UNIFIED_FILE may not work, see #905431
+	if use jumbo-build; then
+		local my_files_per_unified_file=${FILES_PER_UNIFIED_FILE:=16}
+		elog ""
+		elog "jumbo-build enabled with ${my_files_per_unified_file}."
+		elog "if you get a build failure, try -jumbo-build before opening a bug report."
+		elog ""
+
+		sed -i -e "s/\"FILES_PER_UNIFIED_FILE\", 16/\"FILES_PER_UNIFIED_FILE\", "${my_files_per_unified_file}"/" python/mozbuild/mozbuild/frontend/data.py ||
+			die "Failed to adjust FILES_PER_UNIFIED_FILE in python/mozbuild/mozbuild/frontend/data.py"
+		sed -i -e "s/FILES_PER_UNIFIED_FILE = 6/FILES_PER_UNIFIED_FILE = "${my_files_per_unified_file}"/" js/src/moz.build ||
+			die "Failed to adjust FILES_PER_UNIFIED_FILE in js/src/moz.build"
+	fi
 
 	# Create build dir
 	BUILD_DIR="${WORKDIR}/${PN}_build"
@@ -872,6 +888,8 @@ src_configure() {
 	mozconfig_add_options_ac '--enable-audio-backends' --enable-audio-backends="${myaudiobackends::-1}"
 
 	mozconfig_use_enable wifi necko-wifi
+
+	! use jumbo-build && mozconfig_add_options_ac '--disable-unified-build' --disable-unified-build
 
 	if use X && use wayland ; then
 		mozconfig_add_options_ac '+x11+wayland' --enable-default-toolkit=cairo-gtk3-x11-wayland
