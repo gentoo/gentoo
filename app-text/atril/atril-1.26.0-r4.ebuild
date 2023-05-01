@@ -5,7 +5,7 @@ EAPI=7
 
 MATE_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit mate python-any-r1 virtualx
 
