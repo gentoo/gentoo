@@ -14,4 +14,7 @@
 		<flag name="bpf">Add support for BPF programs via <pkg>dev-libs/libbpf</pkg></flag>
 		<flag name="nftables">Add support for <pkg>net-firewall/nftables</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">checkpoint-restore/criu</remote-id>
+	</upstream>
 </pkgmetadata>
