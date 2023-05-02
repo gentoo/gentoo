@@ -63,7 +63,7 @@ SLOT="rapid"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 
 IUSE="+clang cpu_flags_arm_neon dbus debug eme-free hardened hwaccel"
-IUSE+=" jack +jumbo-build libproxy lto +openh264 pgo pulseaudio sndio selinux"
+IUSE+=" jack jumbo-build libproxy lto +openh264 pgo pulseaudio sndio selinux"
 IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx system-png system-python-libs +system-webp"
 IUSE+=" +telemetry wayland wifi +X"
 
@@ -669,11 +669,12 @@ src_prepare() {
 
 	# Respect choice for "jumbo-build"
 	# Changing the value for FILES_PER_UNIFIED_FILE may not work, see #905431
-	if use jumbo-build; then
+	if [[ ! -z ${FILES_PER_UNIFIED_FILE} ]] && use jumbo-build; then
 		local my_files_per_unified_file=${FILES_PER_UNIFIED_FILE:=16}
 		elog ""
-		elog "jumbo-build enabled with ${my_files_per_unified_file}."
-		elog "if you get a build failure, try -jumbo-build before opening a bug report."
+		elog "jumbo-build defaults modified to ${my_files_per_unified_file}."
+		elog "if you get a build failure, try undefining FILES_PER_UNIFIED_FILE,"
+		elog "if that fails try -jumbo-build before opening a bug report."
 		elog ""
 
 		sed -i -e "s/\"FILES_PER_UNIFIED_FILE\", 16/\"FILES_PER_UNIFIED_FILE\", "${my_files_per_unified_file}"/" python/mozbuild/mozbuild/frontend/data.py ||
