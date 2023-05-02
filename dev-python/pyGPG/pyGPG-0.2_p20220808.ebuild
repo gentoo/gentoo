@@ -26,7 +26,7 @@ HOMEPAGE="https://github.com/dol-sen/pyGPG"
 LICENSE="BSD"
 SLOT="0"
 if [[ ${PV} != *9999 ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 RDEPEND="app-crypt/gnupg"
