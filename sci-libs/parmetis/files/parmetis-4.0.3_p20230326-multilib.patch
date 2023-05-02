@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 146bc5f..faa1cfd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,9 +30,9 @@ include_directories(${CMAKE_INSTALL_PREFIX}/include)
+ 
+ # List of paths that the compiler will search for library files.
+ # i.e., the -L equivalent
+-link_directories(${GKLIB_PATH}/lib)
+-link_directories(${METIS_PATH}/lib)
+-link_directories(${CMAKE_INSTALL_PREFIX}/lib)
++link_directories(${GKLIB_PATH}/lib${LIB_SUFFIX})
++link_directories(${METIS_PATH}/lib${LIB_SUFFIX})
++link_directories(${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ # List of directories that cmake will look for CMakeLists.txt
+ add_subdirectory(include)
+diff --git a/libparmetis/CMakeLists.txt b/libparmetis/CMakeLists.txt
+index b9d6d84..c0553e7 100644
+--- a/libparmetis/CMakeLists.txt
++++ b/libparmetis/CMakeLists.txt
+@@ -12,6 +12,6 @@ if(SHARED)
+ endif()
+  
+ install(TARGETS parmetis
+-  LIBRARY DESTINATION lib
+-  RUNTIME DESTINATION lib
+-  ARCHIVE DESTINATION lib)
++  LIBRARY DESTINATION lib${LIB_SUFFIX}
++  RUNTIME DESTINATION lib${LIB_SUFFIX}
++  ARCHIVE DESTINATION lib${LIB_SUFFIX})
