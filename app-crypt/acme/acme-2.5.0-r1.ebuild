@@ -43,13 +43,13 @@ BDEPEND="
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	)
 "
-
+# The requirement is really 17.5.0 but easier to require latest stable >= 23.1.1
+# to avoid broken 23.1.0.
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/josepy-1.13.0[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-17.5.0[${PYTHON_USEDEP}]
-	!~dev-python/pyopenssl-23.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pyopenssl-23.1.1[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
