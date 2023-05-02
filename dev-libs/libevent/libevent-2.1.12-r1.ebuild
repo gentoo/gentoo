@@ -37,6 +37,10 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 S=${WORKDIR}/${P/_/-}-stable
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libressl.patch #903001
+)
+
 src_prepare() {
 	default
 	# bug #767472
