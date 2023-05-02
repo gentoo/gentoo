@@ -34,6 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-doc/doxygen
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.6.2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
