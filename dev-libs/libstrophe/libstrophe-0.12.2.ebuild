@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit autotools
+
 DESCRIPTION="A simple, lightweight C library for writing XMPP clients"
 HOMEPAGE="https://strophe.im/libstrophe/"
 # 2nd SRC is a backport of the /bin/sh -> dash fix, #877049, #879533
@@ -34,6 +37,13 @@ PATCHES=(
 	"${DISTDIR}/${PN}-fix-configure-bashisms.patch"
 )
 
+src_prepare() {
+	default
+
+	# Needed for bashisms patch which touches configure
+	eautoreconf
+}
+
 src_configure() {
 	# shellcheck disable=SC2207
 	local myeconf=(
@@ -43,6 +53,7 @@ src_configure() {
 	)
 	econf "${myeconf[@]}"
 }
+
 src_compile() {
 	default
 	if use doc; then
