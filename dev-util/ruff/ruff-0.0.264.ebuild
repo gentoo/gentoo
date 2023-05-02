@@ -19,6 +19,7 @@ CRATES="
 	anstyle-query-1.0.0
 	anstyle-wincon-1.0.0
 	anyhow-1.0.70
+	argfile-0.1.5
 	ascii-1.1.0
 	ascii-canvas-3.0.0
 	assert_cmd-2.0.11
@@ -234,7 +235,6 @@ CRATES="
 	serde_derive_internals-0.26.0
 	serde_json-1.0.96
 	serde_spanned-0.6.1
-	serde_test-1.0.160
 	shellexpand-3.1.0
 	similar-2.2.1
 	siphasher-0.3.10
@@ -348,15 +348,15 @@ PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=maturin
 
 LIBCST_COMMIT="80e4c1399f95e5beb532fdd1e209ad2dbb470438"
-RUSTPYTHON_COMMIT="c15f670f2c30cfae6b41a1874893590148c74bc4"
+RUSTPYTHON_COMMIT="c3147d2c1524ebd0e90cf1c2938d770314fd5a5a"
 declare -A GIT_CRATES=(
 	[libcst]="https://github.com/charliermarsh/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst"
 	[libcst_derive]="https://github.com/charliermarsh/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst_derive"
-	[rustpython-ast]="https://github.com/RustPython/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/compiler/ast"
-	[rustpython-common]="https://github.com/RustPython/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/common"
-	[rustpython-compiler-core]="https://github.com/RustPython/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/compiler/core"
-	[rustpython-parser]="https://github.com/RustPython/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/compiler/parser"
-	[pep440_rs]="https://github.com/konstin/pep440-rs;a8fef4ec47f4c25b070b39cdbe6a0b9847e49941;pep440-rs-%commit%"
+	[rustpython-ast]="https://github.com/charliermarsh/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/compiler/ast"
+	[rustpython-common]="https://github.com/charliermarsh/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/common"
+	[rustpython-compiler-core]="https://github.com/charliermarsh/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/compiler/core"
+	[rustpython-parser]="https://github.com/charliermarsh/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/compiler/parser"
+	[ruff_text_size]="https://github.com/charliermarsh/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/ruff_text_size"
 	[unicode_names2]="https://github.com/youknowone/unicode_names2;4ce16aa85cbcdd9cc830410f1a72ef9a235f2fde"
 )
 
@@ -432,7 +432,7 @@ src_install() {
 
 	local releasedir=target/$(usex 'debug' 'debug' 'release')
 
-	dobin ${releasedir}/{ruff,flake8-to-ruff,ruff_python_formatter}
+	dobin ${releasedir}/{ruff{,_dev},flake8-to-ruff,ruff_python_formatter}
 	dolib.so $(find target/$(usex 'debug' 'debug' 'release') -maxdepth 1 -name '*.so')
 
 	dodoc "${DOCS[@]}"
