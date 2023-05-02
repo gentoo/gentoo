@@ -1,0 +1,19 @@
+diff --git a/libmetis/CMakeLists.txt b/libmetis/CMakeLists.txt
+index fc6cec6..e10a1a1 100644
+--- a/libmetis/CMakeLists.txt
++++ b/libmetis/CMakeLists.txt
+@@ -6,10 +6,11 @@ file(GLOB metis_sources *.c)
+ 
+ # Build libmetis.
+ add_library(metis ${METIS_LIBRARY_TYPE} ${metis_sources})
++set_target_properties(metis PROPERTIES SOVERSION 0)
+ 
+ if(METIS_INSTALL)
+   install(TARGETS metis
+-    LIBRARY DESTINATION lib
+-    RUNTIME DESTINATION lib
+-    ARCHIVE DESTINATION lib)
++    LIBRARY DESTINATION lib${LIB_SUFFIX}
++    RUNTIME DESTINATION lib${LIB_SUFFIX}
++    ARCHIVE DESTINATION lib${LIB_SUFFIX})
+ endif()
