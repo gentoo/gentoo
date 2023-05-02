@@ -68,7 +68,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P}-source
 
-PATCHES=( "${FILESDIR}"/${PN}-4.9.5-opencascade.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.9.5-opencascade.patch
+	"${FILESDIR}"/${P}_gcc13_fix_cstdint_include.patch
+)
 
 pkg_setup() {
 	fortran-2_pkg_setup
