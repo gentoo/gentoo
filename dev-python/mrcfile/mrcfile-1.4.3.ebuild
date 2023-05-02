@@ -27,3 +27,8 @@ RDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://github.com/ccpem/mrcfile/issues/49
+	"${FILESDIR}/${P}-test-assertion-error.patch"
+)
