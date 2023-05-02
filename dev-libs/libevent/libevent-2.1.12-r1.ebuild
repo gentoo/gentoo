@@ -38,6 +38,7 @@ MULTILIB_WRAPPED_HEADERS=(
 S=${WORKDIR}/${P/_/-}-stable
 
 PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch #880381
 	"${FILESDIR}"/${P}-libressl.patch #903001
 )
 
