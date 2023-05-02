@@ -57,7 +57,7 @@ src_install() {
 	distutils-r1_src_install
 
 	# Use Gentoo package name for doc folder
-	mv "${ED}/usr/share/doc/${MY_P}" "${ED}/usr/share/doc/${P}" || die
+	mv "${ED}/usr/share/doc/${MY_P}" "${ED}/usr/share/doc/${PF}" || die
 }
 
 pkg_postinst() {
