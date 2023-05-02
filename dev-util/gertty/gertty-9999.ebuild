@@ -21,6 +21,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
+# needed til upstream merges https://review.opendev.org/c/ttygroup/gertty/+/880123
+PATCHES="${FILESDIR}/sqlalchemy-2.patch"
+
 DEPEND=">=dev-python/pbr-0.11[${PYTHON_USEDEP}]"
 RDEPEND="
 	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
