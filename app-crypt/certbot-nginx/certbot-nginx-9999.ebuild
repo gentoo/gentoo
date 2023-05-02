@@ -40,11 +40,12 @@ BDEPEND="
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
+# The requirement is really 17.5.0 but easier to require latest stable >= 23.1.1
+# to avoid broken 23.1.0.
 RDEPEND="
 	>=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
 	>=app-crypt/certbot-${PV}[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-17.5.0[${PYTHON_USEDEP}]
-	!~dev-python/pyopenssl-23.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pyopenssl-23.1.1[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-2.2.1[${PYTHON_USEDEP}]
 "
 
