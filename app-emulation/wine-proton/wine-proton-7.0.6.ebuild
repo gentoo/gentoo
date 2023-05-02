@@ -117,6 +117,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.0.4-restore-menubuilder.patch
 	"${FILESDIR}"/${PN}-7.0.4-unwind.patch
+	"${FILESDIR}"/${PN}-7.0.6-mingw64-11.0.0.patch
 )
 
 pkg_pretend() {

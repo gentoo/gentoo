@@ -1,0 +1,20 @@
+Hack: this does not actually need stdarg.h, but including it ensures
+that _mingw.h will be loaded before the rest of Wine's winnt.h avoiding
+issues with mingw64-runtime-11.0.0, e.g.:
+
+    _mingw.h:602:60: error: redefinition of ‘__fastfail’
+    make[1]: *** [Makefile:5900: dlls/advapi32/crypt_des.cross.o] Error 1
+
+(other crypt_*.c happen to include stdarg.h first and don't fail, but this
+one does not, same for several other files in dlls/)
+
+Not an issue with non-proton Wine 7.0 as Wine did not define __fastfail
+until ~wine-7.10. Wine 8 does define it but does not seem to be a problem
+there (perhaps due to different header layout). A more "right" fix would
+be welcome, but given Proton-7 seems EOL it is not judged important.
+--- a/include/winnt.h
++++ b/include/winnt.h
+@@ -32,2 +32,3 @@
+ #include <string.h>
++#include <stdarg.h>
+ #endif
