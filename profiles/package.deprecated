@@ -124,7 +124,6 @@ virtual/jpeg
 app-text/enchant:0
 app-text/gnome-doc-utils
 app-text/gtkspell:2
-app-text/rarian
 app-text/scrollkeeper-dtd
 dev-cpp/gtkmm:2.4
 dev-libs/libcroco
