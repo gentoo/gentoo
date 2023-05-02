@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit cuda desktop flag-o-matic prefix python-single-r1 toolchain-funcs xdg
+inherit cuda desktop prefix python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="Visual Molecular Dynamics"
 HOMEPAGE="http://www.ks.uiuc.edu/Research/vmd/"
