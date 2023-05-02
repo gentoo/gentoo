@@ -1,0 +1,105 @@
+https://bugs.gentoo.org/880381
+https://github.com/libevent/libevent/commit/35375101e741d78bf49642c6929c1eb69a7c3d79
+
+From 35375101e741d78bf49642c6929c1eb69a7c3d79 Mon Sep 17 00:00:00 2001
+From: Azat Khuzhin <azat@libevent.org>
+Date: Fri, 27 Jan 2023 08:57:33 +0100
+Subject: [PATCH] Fixes some new warnings under clang-15
+
+- -Wdeprecated-non-prototype
+
+  /src/le/libevent/strlcpy.c:48:1: warning: a function definition without a prototype is deprecated in all versions of C and is not supported in C2x [-Wdeprecated-non-prototype]
+  event_strlcpy_(dst, src, siz)
+
+- -Wstrict-prototypes
+
+  /src/le/libevent/evthread.c:82:70: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+  struct evthread_condition_callbacks *evthread_get_condition_callbacks()
+
+- -Wunused-but-set-variable
+
+  /src/le/libevent/test/regress_buffer.c:130:6: warning: variable 'n' set but not used [-Wunused-but-set-variable]
+          int n = 0;
+                                                                     ^
+---
+ evthread.c            | 4 ++--
+ strlcpy.c             | 6 +-----
+ test/regress_buffer.c | 5 -----
+ 3 files changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/evthread.c b/evthread.c
+index 3eac594d64..c2da914da1 100644
+--- a/evthread.c
++++ b/evthread.c
+@@ -74,12 +74,12 @@ evthread_set_id_callback(unsigned long (*id_fn)(void))
+ 	evthread_id_fn_ = id_fn;
+ }
+ 
+-struct evthread_lock_callbacks *evthread_get_lock_callbacks()
++struct evthread_lock_callbacks *evthread_get_lock_callbacks(void)
+ {
+ 	return evthread_lock_debugging_enabled_
+ 	    ? &original_lock_fns_ : &evthread_lock_fns_;
+ }
+-struct evthread_condition_callbacks *evthread_get_condition_callbacks()
++struct evthread_condition_callbacks *evthread_get_condition_callbacks(void)
+ {
+ 	return evthread_lock_debugging_enabled_
+ 	    ? &original_cond_fns_ : &evthread_cond_fns_;
+diff --git a/strlcpy.c b/strlcpy.c
+index 3876475f5a..04c74298dc 100644
+--- a/strlcpy.c
++++ b/strlcpy.c
+@@ -44,11 +44,7 @@ static char *rcsid = "$OpenBSD: strlcpy.c,v 1.5 2001/05/13 15:40:16 deraadt Exp
+  * will be copied.  Always NUL terminates (unless siz == 0).
+  * Returns strlen(src); if retval >= siz, truncation occurred.
+  */
+-size_t
+-event_strlcpy_(dst, src, siz)
+-	char *dst;
+-	const char *src;
+-	size_t siz;
++size_t event_strlcpy_(char *dst, const char *src, size_t siz)
+ {
+ 	register char *d = dst;
+ 	register const char *s = src;
+diff --git a/test/regress_buffer.c b/test/regress_buffer.c
+index 5683810e26..b0a9e0c162 100644
+--- a/test/regress_buffer.c
++++ b/test/regress_buffer.c
+@@ -127,19 +127,16 @@ evbuffer_get_waste(struct evbuffer *buf, size_t *allocatedp, size_t *wastedp, si
+ {
+ 	struct evbuffer_chain *chain;
+ 	size_t a, w, u;
+-	int n = 0;
+ 	u = a = w = 0;
+ 
+ 	chain = buf->first;
+ 	/* skip empty at start */
+ 	while (chain && chain->off==0) {
+-		++n;
+ 		a += chain->buffer_len;
+ 		chain = chain->next;
+ 	}
+ 	/* first nonempty chain: stuff at the end only is wasted. */
+ 	if (chain) {
+-		++n;
+ 		a += chain->buffer_len;
+ 		u += chain->off;
+ 		if (chain->next && chain->next->off)
+@@ -148,7 +145,6 @@ evbuffer_get_waste(struct evbuffer *buf, size_t *allocatedp, size_t *wastedp, si
+ 	}
+ 	/* subsequent nonempty chains */
+ 	while (chain && chain->off) {
+-		++n;
+ 		a += chain->buffer_len;
+ 		w += (size_t)chain->misalign;
+ 		u += chain->off;
+@@ -158,7 +154,6 @@ evbuffer_get_waste(struct evbuffer *buf, size_t *allocatedp, size_t *wastedp, si
+ 	}
+ 	/* subsequent empty chains */
+ 	while (chain) {
+-		++n;
+ 		a += chain->buffer_len;
+ 	}
+ 	*allocatedp = a;
