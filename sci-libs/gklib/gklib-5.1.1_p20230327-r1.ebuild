@@ -18,4 +18,5 @@ KEYWORDS="~amd64"
 
 PATCHES=(
 	"${FILESDIR}/${P}-multilib.patch"
+	"${FILESDIR}/${P}-respect-user-flags.patch"
 )
