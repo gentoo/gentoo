@@ -13,14 +13,17 @@ HOMEPAGE="https://protonvpn.com https://github.com/ProtonVPN/protonvpn-cli-ng"
 SRC_URI="https://github.com/ProtonVPN/linux-cli-community/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~riscv"
 SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 
-RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/pythondialog:0[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
-	net-vpn/openvpn"
+	dev-python/pythondialog:0[${PYTHON_USEDEP}]
+	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	net-vpn/openvpn
+"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/linux-cli-community-${PV}"
