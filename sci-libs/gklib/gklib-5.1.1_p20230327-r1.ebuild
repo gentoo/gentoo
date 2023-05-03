@@ -20,3 +20,13 @@ PATCHES=(
 	"${FILESDIR}/${P}-multilib.patch"
 	"${FILESDIR}/${P}-respect-user-flags.patch"
 )
+
+src_configure() {
+	local mycmakeargs=()
+	if ! use amd64 && ! use x86; then # bug 905642
+		mycmakeargs+=(
+			-DNO_X86=ON
+		)
+	fi
+	cmake_src_configure
+}
