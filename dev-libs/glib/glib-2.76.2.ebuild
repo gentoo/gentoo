@@ -16,7 +16,7 @@ IUSE="dbus debug +elf gtk-doc +mime selinux static-libs sysprof systemtap test u
 RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( test )" # Bug #777636
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 
 # * elfutils (via libelf) does not build on Windows. gresources are not embedded
 # within ELF binaries on that platform anyway and inspecting ELF binaries from
@@ -130,6 +130,30 @@ src_prepare() {
 	EOF
 	chmod a+x "${T}/glib-test-ld-wrapper" || die
 	sed -i -e "s|'ld'|'${T}/glib-test-ld-wrapper'|g" gio/tests/meson.build || die
+
+	# make default sane for us
+	if use prefix ; then
+		sed -i -e "s:/usr/local:${EPREFIX}/usr:" gio/xdgmime/xdgmime.c || die
+		# bug #308609, without path, bug #314057
+		export PERL=perl
+	fi
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# fix standards conflicts
+		sed -i \
+			-e 's/\<\(_XOPEN_SOURCE_EXTENDED\)\>/_POSIX_PTHREAD_SEMANTICS/' \
+			-e '/\<_XOPEN_SOURCE\>/s/\<2\>/600/' \
+			meson.build || die
+		sed -i -e '/#define\s\+_POSIX_SOURCE/d' \
+			glib/giounix.c || die
+	fi
+
+	# disable native macOS integrations
+	sed -i -e '/glib_conf.set(.HAVE_\(CARBON\|COCOA\).)/s/true/false/' \
+		meson.build || die
+	sed -i \
+		-e '/AvailabilityMacros.h/d' \
+		gio/giomodule.c || die
 
 	default
 	gnome2_environment_reset
