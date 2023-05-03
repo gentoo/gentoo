@@ -37,7 +37,7 @@ database tables, then run the initdb command as shown above."
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Due to the nature of Fangfrisch, most tests require network
 # connectivity and/or access keys to download signature files.
