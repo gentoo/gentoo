@@ -103,7 +103,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.0-xsession-path.patch
 	"${FILESDIR}"/${PN}-1.12.80-disable-server-and-pam.patch
 )
-[[ ${PV} == *9999 ]] && PATCHES+=( "${FILESDIR}"/${PN}-1.13.80-depend-po-files.patch )
 
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then
