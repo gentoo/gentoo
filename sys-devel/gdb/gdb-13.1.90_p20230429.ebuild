@@ -32,6 +32,7 @@ case ${PV} in
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-weekly-${MY_PV}.tar.xz
 			https://sourceware.org/pub/gdb/snapshots/current/gdb-weekly-${MY_PV}.tar.xz
+			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/gdb-weekly-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -45,6 +46,7 @@ case ${PV} in
 		MY_PV="${PV/_p/.}"
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-${MY_PV}.tar.xz
+			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/gdb-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 		;;
