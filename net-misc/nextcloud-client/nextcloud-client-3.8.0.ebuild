@@ -9,7 +9,8 @@ DESCRIPTION="Desktop Syncing Client for Nextcloud"
 HOMEPAGE="https://github.com/nextcloud/desktop"
 SRC_URI="
 	https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz
-	https://github.com/nextcloud/desktop/commit/31c3aee447bba3627a824cfa11bb318ab5fdf523.patch -> ${PN}-3.8.0-Fix-unit-tests-SecureFileDrop.patch
+	https://github.com/nextcloud/desktop/commit/31c3aee447bba3627a824cfa11bb318ab5fdf523.patch
+		-> ${PN}-3.8.0-Fix-unit-tests-SecureFileDrop.patch
 "
 S="${WORKDIR}/desktop-${PV/_/-}"
 
