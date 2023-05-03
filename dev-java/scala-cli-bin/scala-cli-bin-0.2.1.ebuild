@@ -26,7 +26,7 @@ RDEPEND="
 	>=virtual/jre-11
 	sys-libs/zlib
 "
-BEPEND="!amd64 ( !arm64 ( >=virtual/jre-11 ) )"
+BDEPEND="!amd64? ( !arm64? ( >=virtual/jre-11 ) )"
 
 QA_TEXTRELS="*"
 QA_FLAGS_IGNORED="/usr/bin/scala-cli"
