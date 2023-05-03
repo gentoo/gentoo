@@ -10,6 +10,7 @@ inherit cmake fortran-2 python-any-r1 toolchain-funcs
 DESCRIPTION="Three-dimensional finite element mesh generator"
 HOMEPAGE="https://gmsh.info"
 SRC_URI="https://gmsh.info/src/${P}-source.tgz"
+S="${WORKDIR}/${P}-source"
 
 LICENSE="
 	GPL-2+ free-noncomm
@@ -50,6 +51,7 @@ RDEPEND="
 		sci-libs/med[mpi=]
 		sci-libs/hdf5[mpi=]
 	)
+	metis? ( <sci-libs/metis-5.2.0 )
 	mpi? ( virtual/mpi[cxx] )
 	mumps? ( sci-libs/mumps[mpi=] )
 	opencascade? ( sci-libs/opencascade:* )
@@ -58,15 +60,14 @@ RDEPEND="
 	petsc? ( sci-mathematics/petsc[mpi=] )
 	slepc? ( sci-mathematics/slepc[mpi=] )
 	voro? ( sci-libs/voro++ )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+	"
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	python? ( dev-lang/swig:0 )
 	"
-
-S="${WORKDIR}"/${P}-source
 
 PATCHES=( "${FILESDIR}"/${PN}-4.9.5-opencascade.patch )
 

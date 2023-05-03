@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 63fb873..2563850 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -860,11 +860,12 @@ endif()
+ 
+ if(HAVE_MESH OR HAVE_SOLVER)
+   if(ENABLE_METIS)
+-    find_library(METIS_LIB metis PATH_SUFFIXES lib)
++    find_library(METIS_LIB metis PATH_SUFFIXES lib64 REQUIRED)
++    find_library(GKLIB_LIB GKlib PATH_SUFFIXES lib64 REQUIRED)
+     find_path(METIS_INC "metis.h" PATH_SUFFIXES include)
+     if(ENABLE_SYSTEM_CONTRIB AND METIS_LIB AND METIS_INC)
+       message(STATUS "Using system version of METIS")
+-      list(APPEND EXTERNAL_LIBRARIES ${METIS_LIB})
++      list(APPEND EXTERNAL_LIBRARIES ${METIS_LIB} ${GKLIB_LIB})
+       list(APPEND EXTERNAL_INCLUDES ${METIS_INC})
+       set_config_option(HAVE_METIS "Metis")
+     elseif(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/contrib/metis)
