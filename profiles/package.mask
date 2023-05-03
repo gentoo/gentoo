@@ -283,7 +283,6 @@ sci-biology/samtools:0.1-legacy
 # 5.2. Continued as Turbo as part of the hotwire project in Rails.
 # Masked for removal on 2023-05-02
 dev-ruby/turbolinks
-dev-ruby/turbolinks-source
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
