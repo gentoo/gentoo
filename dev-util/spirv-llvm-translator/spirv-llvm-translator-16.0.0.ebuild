@@ -7,7 +7,7 @@ LLVM_MAX_SLOT="16"
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic llvm
+inherit cmake flag-o-matic llvm multiprocessing
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -55,5 +55,5 @@ src_configure() {
 }
 
 src_test() {
-	lit "${BUILD_DIR}/test" || die
+	lit -vv "-j${LIT_JOBS:-$(makeopts_jobs)}" "${BUILD_DIR}/test" || die
 }
