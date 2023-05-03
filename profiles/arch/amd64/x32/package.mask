@@ -171,7 +171,6 @@ dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/deckar01-task_list
 dev-ruby/execjs
-dev-ruby/turbolinks
 dev-ruby/uglifier
 dev-util/uglifyjs
 net-libs/nodejs
