@@ -73,8 +73,8 @@ src_install() {
 		Description: ${DESCRIPTION}
 		Version: ${PV}
 		URL: ${HOMEPAGE}
-		Libs: -L\${libdir} -l${PN}
-		Cflags: -I\${includedir}/${PN}
+		Libs: -L\${libdir} -lparmetis -lGKlib
+		Cflags: -I\${includedir}
 		Requires: metis
 	EOF
 	insinto /usr/$(get_libdir)/pkgconfig
