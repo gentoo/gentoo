@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/Arisotura/${MY_PN}/archive/${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 	S="${WORKDIR}"/${MY_P}
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 IUSE="+jit +opengl"
