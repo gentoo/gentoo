@@ -53,7 +53,7 @@ src_compile() {
 
 src_install() {
 	cmake_src_install
-	dolib.so "${BUILD_DIR}"/libqhull.so*
+	dolib.so "${BUILD_DIR}"/libqhull{$(get_libname),$(get_libname "*")}
 
 	# fix double prefix in pc files
 	sed -i "/^libdir/s@/.*@/$(get_libdir)@" "${ED}/usr/$(get_libdir)/pkgconfig/"*.pc || die
