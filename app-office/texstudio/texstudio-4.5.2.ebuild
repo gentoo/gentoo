@@ -74,13 +74,4 @@ src_install() {
 
 	# We don't install licences per package
 	rm "${ED}"/usr/share/texstudio/COPYING || die
-
-	## let texstudio use the binaries of our texlive installation
-	mv "${ED}"/usr/bin/texstudio "${ED}"/usr/bin/texstudio.exe || die
-	cat <<EOF | newbin - texstudio
-#!/bin/sh
-export PATH=\${PATH}:${EPREFIX}/usr/local/texlive/2022/bin/x86_64-linux
-exec ${EPREFIX}/usr/bin/texstudio.exe "\$@"
-EOF
-
 }
