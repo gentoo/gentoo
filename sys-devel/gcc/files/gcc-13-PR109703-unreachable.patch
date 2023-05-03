@@ -1,0 +1,54 @@
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109703
+
+From d50f2599d7b23bdba05a9102645d082ed9bcb05f Mon Sep 17 00:00:00 2001
+From: Kefu Chai <kefu.chai@scylladb.com>
+Date: Mon, 1 May 2023 21:24:26 +0100
+Subject: [PATCH] libstdc++: Set _M_string_length before calling _M_dispose()
+ [PR109703]
+
+This always sets _M_string_length in the constructor for ranges of input
+iterators, such as stream iterators.
+
+We copy from the source range to the local buffer, and then repeatedly
+reallocate a larger one if necessary. When disposing the old buffer,
+_M_is_local() is used to tell if the buffer is the local one or not (and
+so must be deallocated). In addition to comparing the buffer address
+with the local buffer, _M_is_local() has an optimization hint so that
+the compiler knows that for a string using the local buffer, there is an
+invariant that _M_string_length <= _S_local_capacity (added for PR109299
+via r13-6915-gbf78b43873b0b7).  But we failed to set _M_string_length in
+the constructor taking a pair of iterators, so the invariant might not
+hold, and __builtin_unreachable() is reached. This causes UBsan errors,
+and potentially misoptimization.
+
+To ensure the invariant holds, _M_string_length is initialized to zero
+before doing anything else, so that _M_is_local() doesn't see an
+uninitialized value.
+
+This issue only surfaces when constructing a string with a range of
+input iterator, and the uninitialized _M_string_length happens to be
+greater than _S_local_capacity, i.e., 15 for the std::string
+specialization.
+
+libstdc++-v3/ChangeLog:
+
+	PR libstdc++/109703
+	* include/bits/basic_string.h (basic_string(Iter, Iter, Alloc)):
+	Initialize _M_string_length.
+
+Signed-off-by: Kefu Chai <kefu.chai@scylladb.com>
+Co-authored-by: Jonathan Wakely <jwakely@redhat.com>
+(cherry picked from commit cbf6c7a1d16490a1e63e9a5ce00e9a5c44c4c2f2)
+--- a/libstdc++-v3/include/bits/basic_string.h
++++ b/libstdc++-v3/include/bits/basic_string.h
+@@ -760,7 +760,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+ 	_GLIBCXX20_CONSTEXPR
+         basic_string(_InputIterator __beg, _InputIterator __end,
+ 		     const _Alloc& __a = _Alloc())
+-	: _M_dataplus(_M_local_data(), __a)
++	: _M_dataplus(_M_local_data(), __a), _M_string_length(0)
+ 	{
+ #if __cplusplus >= 201103L
+ 	  _M_construct(__beg, __end, std::__iterator_category(__beg));
+-- 
+2.31.1
