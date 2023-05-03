@@ -84,8 +84,8 @@ src_install() {
 		Name: METIS
 		Description: Software for partioning unstructured graphes and meshes
 		Version: ${PV}
-		Cflags: -I\${includedir}/metis
-		Libs: -L\${libdir} -lmetis
+		Cflags: -I\${includedir}
+		Libs: -L\${libdir} -lmetis -lGKlib
 	EOF
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins "${T}"/metis.pc
