@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/905387
+https://github.com/Kitware/VTK/commit/4d8283bcb460ff60d8df1b7b67b5db19876a5ca3
+
+From 890f7574f01cf58cb1522772a62ca07deb438479 Mon Sep 17 00:00:00 2001
+From: Mathieu Westphal <mathieu.westphal@kitware.com>
+Date: Thu, 23 Feb 2023 18:06:07 +0100
+Subject: [PATCH 1580/2105] More #include <cstdint> to compile with gcc13
+
+--- a/IO/PIO/PIOData.h
++++ b/IO/PIO/PIOData.h
+@@ -1,6 +1,7 @@
+ #if !defined(_PIODATA_H)
+ #define _PIODATA_H
+ 
++#include <cstdint>
+ #include <fstream>
+ #include <iostream>
+ #include <list>
+--- a/Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h
++++ b/Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h
+@@ -49,7 +49,8 @@
+ #include "vtkMathTextUtilities.h"
+ #include "vtkRenderingMatplotlibModule.h" // For export macro
+ 
+-#include <vector> // for std::vector
++#include <cstdint> // for std::uint64_t
++#include <vector>  // for std::vector
+ 
+ struct _object;
+ typedef struct _object PyObject;
+-- 
+2.40.1
+
