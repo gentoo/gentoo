@@ -36,6 +36,7 @@ rust_abi() {
 	case ${CTARGET%%*-} in
 		aarch64*gnu)  echo aarch64-unknown-linux-gnu;;
 		aarch64*musl) echo aarch64-unknown-linux-musl;;
+		mips64el*)	  echo mips64el-unknown-linux-gnuabi64;;
 		mips64*)	  echo mips64-unknown-linux-gnuabi64;;
 		powerpc64le*) echo powerpc64le-unknown-linux-gnu;;
 		powerpc64*)   echo powerpc64-unknown-linux-gnu;;
@@ -115,7 +116,8 @@ rust_all_arch_uris()
                        elibc_musl?  ( $(rust_arch_uri aarch64-unknown-linux-musl "$@") ) ) "
   uris+="mips?       ( $(rust_arch_uri mips-unknown-linux-gnu         "$@")
                        $(rust_arch_uri mipsel-unknown-linux-gnu       "$@")
-                       $(rust_arch_uri mips64-unknown-linux-gnuabi64  "$@") ) "
+                       $(rust_arch_uri mips64-unknown-linux-gnuabi64  "$@")
+                       $(rust_arch_uri mips64el-unknown-linux-gnuabi64 "$@") ) "
   uris+="ppc?        ( $(rust_arch_uri powerpc-unknown-linux-gnu      "$@") ) "
   uris+="ppc64?      ( $(rust_arch_uri powerpc64-unknown-linux-gnu    "$@")
                        $(rust_arch_uri powerpc64le-unknown-linux-gnu  "$@") ) "
