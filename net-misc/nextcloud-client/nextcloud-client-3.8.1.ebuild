@@ -44,7 +44,7 @@ RDEPEND="
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 DEPEND="
-	${R_DEPEND}
+	${RDEPEND}
 	dev-qt/qtconcurrent:5
 	dev-qt/qtxml:5
 	|| ( gnome-base/librsvg media-gfx/inkscape )
