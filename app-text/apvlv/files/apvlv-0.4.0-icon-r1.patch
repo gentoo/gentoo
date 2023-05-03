@@ -1,0 +1,10 @@
+--- a/apvlv.desktop
++++ b/apvlv.desktop
+@@ -2,6 +2,7 @@
+ Version=1.0
+ Type=Application
+ Name=apvlv
++Icon=x-office-document
+ Comment=A minimalistic document viewer
+ Comment[de]=Ein minimalistischer Dokumenten-Betrachter
+ Comment[fr]=Un visionneur de document minimaliste
