@@ -251,7 +251,7 @@ RDEPEND="dev-libs/libgit2:=
 	net-misc/curl[ssl]
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
-BDEPEND=">=virtual/rust-1.67.0"
+BDEPEND=">=virtual/rust-1.69"
 
 QA_FLAGS_IGNORED="usr/bin/cargo-capi usr/bin/cargo-cbuild usr/bin/cargo-ctest usr/bin/cargo-cinstall"
 
