@@ -33,6 +33,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.19.0-curses-cmake.patch
+	"${FILESDIR}"/${P}-gcc13.patch
 )
 
 pkg_setup() {
