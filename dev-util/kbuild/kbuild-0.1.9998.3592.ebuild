@@ -46,6 +46,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# 905419 - build fails if /bin/sh is something other than bash
+	sed 's:ln -s /bin/sh:ln -s /bin/bash:' -i bootstrap.gmk || die
+
 	# Add a file with the svn revision this package was pulled from
 	printf '%s\n' "KBUILD_SVN_REV := $(ver_cut 4)" \
 		> SvnInfo.kmk || die
