@@ -1,0 +1,11 @@
+diff --git a/include/libpy/util.h b/include/libpy/util.h
+index 3e0c72d..8669483 100644
+--- a/include/libpy/util.h
++++ b/include/libpy/util.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <algorithm>
+ #include <sstream>
+ #include <stdexcept>

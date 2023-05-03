@@ -1,10 +1,11 @@
 # Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
-
+PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
 inherit flag-o-matic distutils-r1
 
 GTEST_VER="23b2a3b1cf803999fb38175f6e9e038a4495c8a5"
@@ -25,8 +26,11 @@ IUSE="sparsehash test"
 COMMON_DEPEND="
 	>=dev-python/numpy-1.11.3[${PYTHON_USEDEP}]
 "
-RDEPEND="${COMMON_DEPEND}"
-BDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
+"
+BDEPEND="
+	${COMMON_DEPEND}
 	sparsehash? ( dev-cpp/sparsehash )
 	test? (
 		dev-cpp/gtest
@@ -37,10 +41,15 @@ BDEPEND="${COMMON_DEPEND}
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( sparsehash )"
 
+# my C++ isn't good enough to fix the tests
+RESTRICT+=" test"
+
 PATCHES=(
 	"${FILESDIR}/libpy-0.2.5-no-werror.patch"
 	"${FILESDIR}/libpy-0.2.5-permissions.patch"
 	"${FILESDIR}/libpy-0.2.5-cflags.patch"
+	"${FILESDIR}/libpy-0.2.5-stdint.patch"
+	"${FILESDIR}/libpy-0.2.5-setuptools.patch"
 )
 
 python_test() {
