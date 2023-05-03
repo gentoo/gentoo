@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-05-03)
+# Unmaintained upstream.  Fails to build without sys-apps/which, fails
+# with modern autoconf.
+# Removal on 2023-06-02.  Bug #896896.
+dev-python/thunarx-python
+
 # Sam James <sam@gentoo.org> (2023-05-01)
 # Breaks dev-python/scipy build. See bug #905396 and https://github.com/serge-sans-paille/gast/issues/74.
 =dev-python/gast-0.5.4
