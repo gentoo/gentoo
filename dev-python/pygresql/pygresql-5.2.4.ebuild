@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN="PyGreSQL"
 POSTGRES_COMPAT=( 9.6 {10..14} )
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 postgres pypi
 
