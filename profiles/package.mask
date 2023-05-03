@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-05-03)
+# Broken pkgconfig file, please upgrade to -r1.
+# bug #704348, bug #905632.
+=sci-libs/metis-5.2.1
+=sci-libs/parmetis-4.0.3_p20230326
+
 # Michał Górny <mgorny@gentoo.org> (2023-05-03)
 # Unmaintained upstream.  Fails to build without sys-apps/which, fails
 # with modern autoconf.
