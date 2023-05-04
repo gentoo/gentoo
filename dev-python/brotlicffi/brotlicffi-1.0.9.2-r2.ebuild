@@ -4,6 +4,7 @@
 # please keep this ebuild at EAPI 7 -- sys-apps/portage dep
 EAPI=7
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
