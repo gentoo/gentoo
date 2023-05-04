@@ -3,6 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
+
 CRATES="
 	ahash-0.7.6
 	ahash-0.8.0
@@ -75,9 +79,6 @@ CRATES="
 	windows_x86_64_gnullvm-0.42.0
 	windows_x86_64_msvc-0.42.0
 "
-
-DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cargo distutils-r1 multiprocessing optfeature
 
