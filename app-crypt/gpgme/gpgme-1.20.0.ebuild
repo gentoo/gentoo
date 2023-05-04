@@ -9,6 +9,7 @@ EAPI=8
 # (find the one for the current release then subscribe to it +
 # any subsequent ones linked within so you're covered for a while.)
 
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{9..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
