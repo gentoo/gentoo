@@ -16,7 +16,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-1.tar.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5/8"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 # requires running session
