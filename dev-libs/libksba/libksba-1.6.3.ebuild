@@ -37,6 +37,7 @@ src_configure() {
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
+		--disable-valgrind-tests
 		$(use_enable static-libs static)
 
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
