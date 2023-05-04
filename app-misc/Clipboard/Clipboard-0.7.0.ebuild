@@ -21,7 +21,7 @@ RDEPEND="X? ( x11-libs/libX11 )
 		)
 "
 PATCHES=(
-	"${FILESDIR}/${P}-libdestination-and-disable-lto-and-git.patch"
+	"${FILESDIR}/${P}-disable-git-and-lto.patch"
 )
 
 src_prepare() {
@@ -42,8 +42,4 @@ src_configure() {
 	"-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex X OFF ON)"
 	)
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	elog "The \"clipboard\" command is depreciated.  Use \"cb\" instead.  \"cb\" is symlinked to \"clipboard\" for now."
 }
