@@ -54,8 +54,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-bashcomp.patch
-	# TODO: merge these two when older versions are gone
-	"${FILESDIR}"/django-3.2.18-py311.patch
 	"${FILESDIR}"/django-3.2.19-py311.patch
 )
 
