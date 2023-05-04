@@ -1,0 +1,40 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -335,36 +335,7 @@
+ target_link_libraries( ${TARGET_NAME}
+                        LINK_PRIVATE
+                        ${OPENCL_CLANG_LINK_LIBS}
+-                       LLVMX86CodeGen
+-                       LLVMX86AsmParser
+-                       LLVMX86Desc
+-                       LLVMX86Info
+-                       LLVMX86Disassembler
+-                       LLVMAnalysis
+-                       LLVMCodeGen
+-                       LLVMCore
+-                       LLVMipo
+-                       LLVMInstCombine
+-                       LLVMInstrumentation
+-                       LLVMMC
+-                       LLVMMCParser
+-                       LLVMObjCARCOpts
+-                       LLVMOption
+-                       LLVMScalarOpts
+-                       LLVMSupport
+-                       LLVMTransformUtils
+-                       LLVMVectorize
+-                       LLVMAsmPrinter
+-                       LLVMSelectionDAG
+-                       LLVMMCDisassembler
+-                       LLVMProfileData
+-                       LLVMObject
+-                       LLVMBitWriter
+-                       LLVMIRReader
+-                       LLVMAsmParser
+-                       LLVMTarget
+-                       LLVMBitReader
+-                       ${OTHER_LIBRARIES}
++                       LLVM
+                       )
+ 
+ install(FILES opencl_clang.h
