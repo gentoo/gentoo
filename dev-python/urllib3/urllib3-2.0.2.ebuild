@@ -59,5 +59,7 @@ python_test() {
 		test/with_dummyserver/test_socketlevel.py::TestSSL::test_requesting_large_resources_via_ssl
 	)
 
+	# plugins make tests slower, and more fragile
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
