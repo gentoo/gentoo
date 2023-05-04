@@ -21,6 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="dbus examples +network qml test testlib websockets"
 
+REQUIRED_USE="test? ( testlib )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
