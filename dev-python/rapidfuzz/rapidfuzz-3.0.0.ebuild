@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 # custom wrapper over setuptools
 DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{9..11} )
