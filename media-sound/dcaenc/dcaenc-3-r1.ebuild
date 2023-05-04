@@ -35,6 +35,8 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -type f -name "*.la" -delete || die
-	dosym ../../../usr/share/alsa/pcm/dca.conf \
-			/etc/alsa/conf.d/dca.conf
+	if use alsa; then
+		dosym ../../../usr/share/alsa/pcm/dca.conf \
+				/etc/alsa/conf.d/dca.conf
+	fi
 }
