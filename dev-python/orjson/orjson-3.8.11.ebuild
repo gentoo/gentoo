@@ -5,6 +5,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=maturin
+PYTHON_COMPAT=( python3_{9..11} )
+
 CRATES="
 	ahash-0.8.3
 	arrayvec-0.7.2
@@ -38,9 +42,6 @@ CRATES="
 	target-lexicon-0.12.7
 	version_check-0.9.4
 "
-
-DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cargo distutils-r1 pypi
 
