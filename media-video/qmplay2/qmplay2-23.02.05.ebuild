@@ -66,6 +66,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-23.02.05-fix-libva-glx.patch"
+)
+
 src_prepare() {
 	# disable compress man pages
 	sed -r \
