@@ -172,7 +172,7 @@ BDEPEND="
 	!headless? (
 		qt5? ( dev-qt/qtcore:5 )
 	)
-	libcxx? ( >=sys-devel/clang-13 )
+	libcxx? ( >=sys-devel/clang-16 )
 	lto? ( $(depend_clang_llvm_versions 16) )
 	pgo? (
 		>=dev-python/selenium-3.141.0
