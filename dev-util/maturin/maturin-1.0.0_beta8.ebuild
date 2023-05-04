@@ -22,16 +22,16 @@ CRATES="
 	bzip2-sys-0.1.11+1.0.8
 	cab-0.4.1
 	camino-1.1.4
-	cargo-config2-0.1.6
+	cargo-config2-0.1.7
 	cargo-options-0.6.0
 	cargo-platform-0.1.2
 	cargo-xwin-0.14.2
-	cargo-zigbuild-0.16.5
-	cargo_metadata-0.15.3
+	cargo-zigbuild-0.16.7
+	cargo_metadata-0.15.4
 	cbindgen-0.24.3
 	cc-1.0.79
 	cfb-0.7.3
-	cfg-expr-0.14.0
+	cfg-expr-0.15.1
 	cfg-if-1.0.0
 	charset-0.1.3
 	chumsky-0.9.2
@@ -49,22 +49,22 @@ CRATES="
 	console-0.15.5
 	content_inspector-0.2.4
 	core-foundation-0.9.3
-	core-foundation-sys-0.8.3
-	cpufeatures-0.2.5
+	core-foundation-sys-0.8.4
+	cpufeatures-0.2.6
 	crc32fast-1.3.2
-	crossbeam-channel-0.5.7
+	crossbeam-channel-0.5.8
 	crossbeam-deque-0.8.3
 	crossbeam-epoch-0.9.14
 	crossbeam-utils-0.8.15
 	crypto-common-0.1.6
 	ctor-0.1.26
 	data-encoding-2.3.3
-	dialoguer-0.10.3
+	dialoguer-0.10.4
 	diff-0.1.13
 	digest-0.10.6
 	dirs-4.0.0
 	dirs-sys-0.3.7
-	dunce-1.0.3
+	dunce-1.0.4
 	either-1.8.1
 	encode_unicode-0.3.6
 	encoding_rs-0.8.32
@@ -73,14 +73,14 @@ CRATES="
 	fastrand-1.9.0
 	fat-macho-0.4.6
 	filetime-0.2.19
-	flate2-1.0.25
+	flate2-1.0.26
 	fnv-1.0.7
 	foreign-types-0.3.2
 	foreign-types-shared-0.1.1
 	form_urlencoded-1.1.0
 	fs-err-2.9.0
 	generic-array-0.14.7
-	getrandom-0.2.8
+	getrandom-0.2.9
 	glob-0.3.1
 	globset-0.4.10
 	goblin-0.6.1
@@ -101,10 +101,10 @@ CRATES="
 	itertools-0.10.5
 	itoa-1.0.6
 	js-sys-0.3.61
-	keyring-2.0.1
+	keyring-2.0.2
 	lazy_static-1.4.0
 	lddtree-0.3.2
-	libc-0.2.140
+	libc-0.2.142
 	linux-keyutils-0.2.3
 	linux-raw-sys-0.1.4
 	lock_api-0.4.9
@@ -116,9 +116,9 @@ CRATES="
 	memoffset-0.8.0
 	mime-0.3.17
 	mime_guess-2.0.4
-	minijinja-0.31.0
+	minijinja-0.31.1
 	minimal-lexical-0.2.1
-	miniz_oxide-0.6.2
+	miniz_oxide-0.7.1
 	msi-0.5.1
 	multipart-0.18.0
 	native-tls-0.2.11
@@ -129,11 +129,11 @@ CRATES="
 	num_cpus-1.15.0
 	number_prefix-0.4.0
 	once_cell-1.17.1
-	openssl-0.10.48
+	openssl-0.10.50
 	openssl-macros-0.1.0
 	openssl-probe-0.1.5
-	openssl-src-111.25.1+1.1.1t
-	openssl-sys-0.9.83
+	openssl-src-111.25.2+1.1.1t
+	openssl-sys-0.9.85
 	os_pipe-1.1.2
 	os_str_bytes-6.5.0
 	output_vt100-0.1.3
@@ -141,8 +141,8 @@ CRATES="
 	parking_lot-0.12.1
 	parking_lot_core-0.9.6
 	path-slash-0.2.1
-	pep440_rs-0.3.3
-	pep508_rs-0.1.1
+	pep440_rs-0.3.5
+	pep508_rs-0.1.5
 	percent-encoding-2.2.0
 	pin-project-lite-0.2.9
 	pkg-config-0.3.26
@@ -153,9 +153,9 @@ CRATES="
 	pretty_assertions-1.3.0
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
-	proc-macro2-1.0.54
+	proc-macro2-1.0.56
 	psm-0.1.21
-	pyproject-toml-0.5.1
+	pyproject-toml-0.6.0
 	python-pkginfo-0.5.5
 	quote-1.0.26
 	quoted_printable-0.4.7
@@ -207,7 +207,7 @@ CRATES="
 	strsim-0.10.0
 	syn-1.0.109
 	tar-0.4.38
-	target-lexicon-0.12.6
+	target-lexicon-0.12.7
 	tempfile-3.4.0
 	termcolor-1.2.0
 	terminal_size-0.2.3
@@ -242,7 +242,7 @@ CRATES="
 	untrusted-0.7.1
 	ureq-2.6.2
 	url-2.3.1
-	uuid-1.3.0
+	uuid-1.3.1
 	valuable-0.1.0
 	vcpkg-0.2.15
 	version_check-0.9.4
@@ -276,7 +276,7 @@ CRATES="
 	xattr-0.2.3
 	xwin-0.2.12
 	yansi-0.5.1
-	zeroize-1.5.7
+	zeroize-1.6.0
 	zip-0.6.4"
 # additional crates used by test-crates/* test packages,
 # `grep test-crates tests/run.rs` to see which are needed
@@ -288,26 +288,33 @@ CRATES_TEST="
 	askama_shared-0.12.2
 	bincode-1.3.3
 	camino-1.1.2
+	cargo_metadata-0.15.3
 	cc-1.0.73
 	cc-1.0.74
+	getrandom-0.2.8
 	goblin-0.6.0
 	indoc-1.0.7
 	itoa-1.0.5
 	libc-0.2.134
 	libc-0.2.137
+	libc-0.2.141
 	mime-0.3.16
 	once_cell-1.15.0
 	once_cell-1.16.0
 	once_cell-1.17.0
 	parking_lot_core-0.9.3
 	parking_lot_core-0.9.4
+	parking_lot_core-0.9.7
 	paste-1.0.11
 	proc-macro2-1.0.46
 	proc-macro2-1.0.47
 	proc-macro2-1.0.51
 	pyo3-0.18.1
+	pyo3-0.18.3
 	pyo3-build-config-0.18.1
+	pyo3-build-config-0.18.3
 	pyo3-ffi-0.18.1
+	pyo3-ffi-0.18.3
 	pyo3-macros-0.18.1
 	pyo3-macros-backend-0.18.1
 	python3-dll-a-0.2.6
@@ -322,7 +329,6 @@ CRATES_TEST="
 	syn-1.0.102
 	syn-1.0.103
 	syn-1.0.107
-	target-lexicon-0.12.4
 	thiserror-1.0.38
 	thiserror-impl-1.0.38
 	unicode-ident-1.0.5
@@ -338,6 +344,8 @@ CRATES_TEST="
 	unindent-0.1.10
 	weedle2-4.0.0
 	windows-sys-0.36.1
+	windows-sys-0.45.0
+	windows-targets-0.42.2
 	windows_aarch64_gnullvm-0.42.0
 	windows_aarch64_msvc-0.36.1
 	windows_aarch64_msvc-0.42.0
@@ -383,6 +391,7 @@ BDEPEND="
 		$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 		dev-python/boltons[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
+		dev-vcs/git
 	)"
 RDEPEND+=" ${DEPEND}"
 
@@ -391,12 +400,21 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 src_prepare() {
 	distutils-r1_src_prepare
 
-	# used to prevent use of network during tests
-	cat > "${T}"/pip.conf <<-EOF || die
-		[install]
-		no-index = yes
-		no-dependencies = yes
-	EOF
+	if use test; then
+		# used to prevent use of network during tests
+		cat > "${T}"/pip.conf <<-EOF || die
+			[install]
+			no-index = yes
+			no-dependencies = yes
+		EOF
+
+		# needed by *git_sdist_generator tests
+		git init -q || die
+		git config --global user.email "larry@gentoo.org" || die
+		git config --global user.name "Larry the Cow" || die
+		git add . || die
+		git commit -qm 'init' || die
+	fi
 }
 
 src_configure() {
