@@ -173,6 +173,8 @@ python_configure() {
 		--enable-libblkid
 		--enable-libmount
 		--enable-pylibmount
+		--runstatedir="${EPREFIX}/run"
+		--localstatedir="${EPREFIX}/var"
 	)
 
 	mkdir "${BUILD_DIR}" || die
@@ -209,6 +211,8 @@ multilib_src_configure() {
 		"${commonargs[@]}"
 		--with-bashcompletiondir="$(get_bashcompdir)"
 		--without-python
+		--runstatedir="${EPREFIX}/run"
+		--localstatedir="${EPREFIX}/var"
 		$(multilib_native_use_enable suid makeinstall-chown)
 		$(multilib_native_use_enable suid makeinstall-setuid)
 		$(multilib_native_use_with readline)
