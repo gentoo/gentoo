@@ -3,9 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
 PYPI_NO_NORMALIZE=1
 PYPI_PN="PyWavelets"
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 pypi
 
