@@ -29,7 +29,7 @@ HOMEPAGE="https://github.com/google/brotli/"
 
 LICENSE="MIT python? ( Apache-2.0 )"
 SLOT="0/$(ver_cut 1)"
-IUSE="python static-libs test"
+IUSE="debug python static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
