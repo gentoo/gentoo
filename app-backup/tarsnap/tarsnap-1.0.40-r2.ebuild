@@ -16,11 +16,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="acl bzip2 lzma xattr"
 
 RDEPEND="
+	app-arch/bzip2
 	dev-libs/openssl:=
 	sys-fs/e2fsprogs
 	sys-libs/zlib
 	acl? ( sys-apps/acl )
-	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	xattr? ( sys-apps/attr )
 "
@@ -39,7 +39,9 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable xattr)
 		$(use_enable acl)
-		$(use_with bzip2 bz2lib)
+		# The bundled libarchive (ancient copy) always builds
+		# the bzip2 bits.
+		--with-bz2lib
 		--without-lzmadec
 		$(use_with lzma)
 	)
