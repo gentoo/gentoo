@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-findzlib.patch"
-	)
+)
 
 src_configure() {
 	DOUBLEFUNCTION=OFF
