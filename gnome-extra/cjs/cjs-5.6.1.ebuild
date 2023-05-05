@@ -38,6 +38,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.6.1-clang15.patch
+)
+
 src_prepare() {
 	default
 	python_fix_shebang build
