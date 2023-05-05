@@ -21,14 +21,13 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-BDEPEND="dev-util/cmake"
-
 DEPEND="
 	dev-libs/json-c:=
 	dev-libs/libuv:=
 	net-libs/libwebsockets:=[libuv,ssl]
 	sys-libs/zlib:=
-	"
+"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
