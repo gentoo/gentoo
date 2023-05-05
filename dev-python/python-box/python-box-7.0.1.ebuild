@@ -33,5 +33,8 @@ RDEPEND="
 	' 3.8 3.9 3.10)
 	dev-python/tomli-w[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
