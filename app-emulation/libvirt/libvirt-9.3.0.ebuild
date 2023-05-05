@@ -31,9 +31,10 @@ SLOT="0/${PV}"
 IUSE="
 	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
 	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nfs nls numa openvz
-	parted pcap policykit +qemu rbd sasl selinux +udev
+	parted pcap policykit +qemu rbd sasl selinux test +udev
 	virtualbox +virt-network wireshark-plugins xen zfs
 "
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
@@ -269,6 +270,7 @@ src_configure() {
 		$(meson_feature rbd storage_rbd)
 		$(meson_feature sasl)
 		$(meson_feature selinux)
+		$(meson_feature test tests)
 		$(meson_feature udev)
 		$(meson_feature virt-network driver_network)
 		$(meson_feature virtualbox driver_vbox)
