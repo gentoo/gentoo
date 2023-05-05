@@ -50,7 +50,7 @@ SLOT="0"
 IUSE="doc +extra-filters nls static-libs"
 
 if [[ ${PV} != 9999 ]] ; then
-	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-lassecollin-20230213 )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-jiatan )"
 fi
 
 src_prepare() {
