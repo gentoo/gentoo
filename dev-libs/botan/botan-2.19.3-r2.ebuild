@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/botan.asc
 inherit edo python-r1 toolchain-funcs verify-sig
 
@@ -119,7 +119,7 @@ src_configure() {
 		$(usev !cpu_flags_x86_sse4_1 '--disable-sse4.1')
 		$(usev !cpu_flags_x86_sse4_2 '--disable-sse4.2')
 
-		# HPPA's GCC doesn't support SSP (presumably due to stack direction)
+		# HPPA's GCC doesn't support SSP
 		$(usev hppa '--without-stack-protector')
 
 		$(use_with boost)
@@ -136,6 +136,8 @@ src_configure() {
 		--disable-modules=$(IFS=","; echo "${disable_modules[*]}")
 		--distribution-info="Gentoo ${PVR}"
 		--libdir="$(get_libdir)"
+		# Avoid collisions between slots for tools (bug #905700)
+		--program-suffix=$(ver_cut 1)
 
 		# Don't install Python bindings automatically
 		# (do it manually later in the right place)
@@ -171,19 +173,19 @@ src_configure() {
 }
 
 src_test() {
-	LD_LIBRARY_PATH="${S}" ./botan-test || die "Validation tests failed"
+	LD_LIBRARY_PATH="${S}" ./botan-test$(ver_cut 1) || die "Validation tests failed"
 }
 
 src_install() {
 	default
 
+	if [[ -d "${ED}"/usr/share/doc/${P} ]] ; then
+		# --docdir in configure controls the parent directory unfortunately
+		mv "${ED}"/usr/share/doc/${P} "${ED}"/usr/share/doc/${PF} || die
+	fi
+
 	# Manually install the Python bindings (bug #723096)
 	if use python ; then
 		python_foreach_impl python_domodule src/python/botan$(ver_cut 1).py
-	fi
-
-	# Avoid collisions between slots for tools (bug #905700)
-	if use tools ; then
-		mv "${ED}"/usr/bin/botan "${ED}"/usr/bin/botan$(ver_cut 1) || die
 	fi
 }
