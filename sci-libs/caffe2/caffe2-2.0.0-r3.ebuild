@@ -17,13 +17,14 @@ SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed fbgemm ffmpeg mpi nnpack +numpy opencl opencv openmp qnnpack tensorpipe xnnpack"
+IUSE="cuda distributed fbgemm ffmpeg gloo mpi nnpack +numpy opencl opencv openmp qnnpack tensorpipe xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	ffmpeg? ( opencv )
 	mpi? ( distributed )
 	tensorpipe? ( distributed )
+	gloo? ( distributed )
 " # ?? ( cuda rocm )
 
 # CUDA 12 not supported yet: https://github.com/pytorch/pytorch/issues/91122
@@ -46,6 +47,7 @@ RDEPEND="
 	)
 	fbgemm? ( dev-libs/FBGEMM )
 	ffmpeg? ( media-video/ffmpeg:= )
+	gloo? ( sci-libs/gloo )
 	mpi? ( sys-cluster/openmpi )
 	nnpack? ( sci-libs/NNPACK )
 	numpy? ( $(python_gen_cond_dep '
@@ -86,6 +88,10 @@ PATCHES=(
 
 src_prepare() {
 	filter-lto #bug 862672
+	sed -i \
+		-e "/third_party\/gloo/d" \
+		cmake/Dependencies.cmake \
+		|| die
 	cmake_src_prepare
 	pushd torch/csrc/jit/serialization || die
 	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
@@ -123,7 +129,7 @@ src_configure() {
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_GFLAGS=ON
 		-DUSE_GLOG=ON
-		-DUSE_GLOO=OFF
+		-DUSE_GLOO=$(usex gloo)
 		-DUSE_KINETO=OFF # TODO
 		-DUSE_LEVELDB=OFF
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
