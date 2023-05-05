@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools elisp-common flag-o-matic python-single-r1 toolchain-funcs
 
@@ -14,8 +14,9 @@ LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos"
 IUSE="berkdb bidi +clients emacs gdbm sasl guile kerberos kyotocabinet \
-	ldap mysql nls pam postgres python servers split-usr ssl static-libs +threads tcpd \
+	ldap mysql nls pam postgres python servers split-usr ssl static-libs test +threads tcpd \
 	tokyocabinet"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!mail-filter/libsieve
@@ -47,7 +48,10 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	test? ( dev-util/dejagnu )
+"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	servers? ( tcpd ldap )"
