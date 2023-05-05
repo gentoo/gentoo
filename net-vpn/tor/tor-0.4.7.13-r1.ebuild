@@ -106,7 +106,15 @@ src_configure() {
 		--disable-module-dirauth
 		--enable-pic
 		--disable-restart-debugging
+
+		# This option is enabled by default upstream w/ zstd, surprisingly.
+		# zstd upstream says this shouldn't be relied upon and it may
+		# break API & ABI at any point, so Tor tries to fake static-linking
+		# to make it work, but then requires a rebuild on any new zstd version
+		# even when its standard ABI hasn't changed.
+		# See bug #727406 and bug #905708.
 		--disable-zstd-advanced-apis
+
 		$(use_enable man asciidoc)
 		$(use_enable man manpage)
 		$(use_enable lzma)
