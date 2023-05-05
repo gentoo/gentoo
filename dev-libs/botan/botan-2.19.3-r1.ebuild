@@ -40,7 +40,10 @@ DEPEND="
 	sqlite? ( dev-db/sqlite:3= )
 	zlib? ( >=sys-libs/zlib-1.2.3:= )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!<dev-libs/botan-3.0.0-r1:3[tools]
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
@@ -177,5 +180,10 @@ src_install() {
 	# Manually install the Python bindings (bug #723096)
 	if use python ; then
 		python_foreach_impl python_domodule src/python/botan$(ver_cut 1).py
+	fi
+
+	# Avoid collisions between slots for tools (bug #905700)
+	if use tools ; then
+		mv "${ED}"/usr/bin/botan "${ED}"/usr/bin/botan$(ver_cut 1) || die
 	fi
 }
