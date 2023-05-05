@@ -147,6 +147,7 @@ PHP_MV="$(ver_cut 1)"
 
 PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
+	"${FILESDIR}/php-capstone-optional.patch"
 )
 
 php_install_ini() {
