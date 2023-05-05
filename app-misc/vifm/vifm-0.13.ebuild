@@ -1,28 +1,37 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools vim-doc xdg
 
 DESCRIPTION="Console file manager with vi(m)-like keybindings"
 HOMEPAGE="https://vifm.info/"
-SRC_URI="https://github.com/vifm/vifm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/vifm/vifm"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/vifm/vifm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
 IUSE="+extended-keys gtk +magic +vim +vim-syntax X"
 
 DEPEND="
-	>=sys-libs/ncurses-5.9-r3:0
+	>=sys-libs/ncurses-5.9-r3:=
 	magic? ( sys-apps/file )
 	gtk? ( x11-libs/gtk+:2 )
-	X? ( x11-libs/libX11 )"
-
-RDEPEND="${DEPEND}
+	X? ( x11-libs/libX11 )
+"
+RDEPEND="
+	${DEPEND}
 	vim? ( || ( app-editors/vim app-editors/gvim ) )
-	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
+	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+"
+# "Either perl or Vim is necessary to generate tags for documentation in Vim's format." from configure
+BDEPEND="|| ( dev-lang/perl app-editors/vim )"
 
 src_prepare() {
 	default
