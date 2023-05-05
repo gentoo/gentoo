@@ -4,7 +4,7 @@
 EAPI=7
 
 # Try to keep an eye on Fedora's packaging: https://src.fedoraproject.org/rpms/coreutils
-# The upstream coreutils maintianers also maintain the package in Fedora and may
+# The upstream coreutils maintainers also maintain the package in Fedora and may
 # backport fixes which we want to pick up.
 
 PYTHON_COMPAT=( python3_{9..11} )
