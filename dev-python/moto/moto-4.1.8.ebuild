@@ -34,7 +34,7 @@ RDEPEND="
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-3.0.7[${PYTHON_USEDEP}]
 	>=dev-python/openapi-spec-validator-0.2.8[${PYTHON_USEDEP}]
-	dev-python/pretty-yaml[${PYTHON_USEDEP}]
+	dev-python/pyaml[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
