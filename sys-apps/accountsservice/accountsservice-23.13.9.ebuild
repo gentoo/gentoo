@@ -52,6 +52,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.04.62-gentoo-system-users.patch
+	"${FILESDIR}"/${PN}-23.13.9-generate-version.patch #905770
 )
 
 python_check_deps() {
