@@ -4,8 +4,7 @@
 EAPI="8"
 
 DESCRIPTION="NetBSD FTP client with several advanced features"
-SRC_URI="ftp://ftp.netbsd.org/pub/NetBSD/misc/${PN}/${P}.tar.gz
-	ftp://ftp.netbsd.org/pub/NetBSD/misc/${PN}/old/${P}.tar.gz"
+SRC_URI="ftp://ftp.netbsd.org/pub/NetBSD/misc/${PN}/${P}.tar.gz"
 HOMEPAGE="ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/"
 
 SLOT="0"
