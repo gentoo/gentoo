@@ -33,6 +33,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-05-05)
+# The Gentoo packages are severely out of date, and they haven't been
+# ported to Python 3.11.  They are hard to keep working, and there
+# are better alternatives available.  The suggested replacements are:
+# media-gfx/prusaslicer, media-gfx/superslicer and orcaslicer
+# (not packaged).
+# Removal on 2023-06-04.  Bug #905769.
+media-gfx/cura
+acct-group/ultimaker
+acct-user/ultimaker
+dev-libs/libarcus
+dev-libs/clipper
+dev-libs/libcharon
+dev-libs/libnest2d
+dev-libs/libsavitar
+dev-python/pynest2d
+dev-python/uranium
+media-gfx/fdm-materials
+media-gfx/curaengine
+
 # Mike Gilbert <floppym@gentoo.org> (2023-05-04)
 # Out of date by several versions. Many unresolved security
 # vulnerabilities. Lack of manpower/interest in keeping it up to date.
