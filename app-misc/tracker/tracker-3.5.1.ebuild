@@ -52,7 +52,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	local CONFIG_CHECK="INOTIFY_USER"
+	local CONFIG_CHECK="~INOTIFY_USER"
 	linux-info_pkg_setup
 
 	use test && python-any-r1_pkg_setup
