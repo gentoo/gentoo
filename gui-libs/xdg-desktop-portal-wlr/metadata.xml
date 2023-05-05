@@ -8,4 +8,7 @@
 	<use>
 		<flag name="elogind">Enable support for rootless session via elogind</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">emersion/xdg-desktop-portal-wlr</remote-id>
+	</upstream>
 </pkgmetadata>
