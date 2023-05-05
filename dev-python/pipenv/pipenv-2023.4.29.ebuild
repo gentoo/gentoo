@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}/pipenv-2022.9.24-inject-site-packages.patch"
 	"${FILESDIR}/pipenv-2023.4.29-append-always-install.patch"
 	"${FILESDIR}/pipenv-2023.4.29-fix-imports.patch"
+	"${FILESDIR}/pipenv-2023.4.29-fix-toml-in-vendor.patch"
 )
 
 RDEPEND="
@@ -33,7 +34,7 @@ RDEPEND="
 	>=dev-python/pexpect-4.8.0[${PYTHON_USEDEP}]
 	>=dev-python/ptyprocess-0.7.0[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep ' dev-python/tomli[${PYTHON_USEDEP}] ' python3_{9..10})
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.21.0[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
@@ -90,13 +91,6 @@ src_prepare() {
 		sed --in-place \
 			-e "s/from pipenv\.vendor import plette, toml, tomlkit, vistir/from pipenv\.vendor import plette, toml, vistir\\nimport tomlkit/g"
 
-	# remove tomlkit from vendoring
-	for fname in pipenv/utils/toml.py tests/integration/conftest.py; do
-		sed --in-place -e "s/from pipenv\.vendor import toml, tomlkit/from pipenv\.vendor import toml\\nimport tomlkit/g" $fname || die "Failed sed in $fname"
-	done
-	#for fname in "tests/unit/test_vendor.py "; do
-	#	sed --in-place -e "s/from pipenv\.vendor import tomlkit/import tomlkit/g" $fname || die "Failed sed in tomlkit"
-	#done
 	# remove python ruaml yaml
 	sed --in-place -e "s/from pipenv\.vendor\.ruamel\.yaml import YAML/from ruamel\.yaml import YAML/g" pipenv/patched/safety/util.py || die "Failed sed in ruaml-yaml"
 	sed --in-place -e "s/from pipenv\.vendor\.ruamel\.yaml\.error import MarkedYAMLError/from ruamel\.yaml\.error import MarkedYAMLError/g" pipenv/patched/safety/util.py || die "Failed sed in ruamel-yaml"
