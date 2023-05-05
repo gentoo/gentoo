@@ -1,0 +1,15 @@
+This causes sandbox failure. (see https://bugs.gentoo.org/905743)
+
+--- a/wlroots/ffi_build.py
++++ b/wlroots/ffi_build.py
+@@ -83,8 +83,8 @@ def has_xwayland() -> bool:
+         )
+         has_xwayland = False
+ 
+-    with (Path(__file__).parent / "_build.py").open("w") as f:
+-        f.write(f"has_xwayland = {has_xwayland}\n")
++    # with (Path(__file__).parent / "_build.py").open("w") as f:
++    #     f.write(f"has_xwayland = {has_xwayland}\n")
+ 
+     return has_xwayland
+ 

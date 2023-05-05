@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15.24-no-import-version-check.patch
+	"${FILESDIR}"/${PN}-0.15.24-no-xwayland-check.patch
 )
 
 distutils_enable_tests pytest
