@@ -54,12 +54,18 @@ gentoo_path_check() {
 	done
 
 	# 3. check for unexpected /usr/share/doc subdirectories
-	local doc_dirs=( "${ED%/}"/usr/share/doc/* )
-	for x in "${doc_dirs[@]##*/}"; do
-		if [[ ${x} != ${PF} ]]; then
-			bad_paths+=( "/usr/share/doc/${x}" )
-		fi
-	done
+	#
+	# Skip in ebuilds by setting QA_DOCDIR_CHECK_SKIP=1.
+	# Needed for cases where e.g. proprietary software has a hardcoded
+	# path to HTML help.
+	if [[ -z ${QA_DOCDIR_CHECK_SKIP} ]] ; then
+		local doc_dirs=( "${ED%/}"/usr/share/doc/* )
+		for x in "${doc_dirs[@]##*/}"; do
+			if [[ ${x} != ${PF} ]]; then
+				bad_paths+=( "/usr/share/doc/${x}" )
+			fi
+		done
+	fi
 
 	${shopt_save}
 
