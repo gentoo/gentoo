@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">pycuda</remote-id>
+    <remote-id type="github">inducer/pycuda</remote-id>
   </upstream>
 </pkgmetadata>
