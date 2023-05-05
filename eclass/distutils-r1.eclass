@@ -330,8 +330,11 @@ _distutils_set_globals() {
 
 		if [[ ${DISTUTILS_EXT} ]]; then
 			DEPEND="${PYTHON_DEPS}"
-			IUSE="debug"
 		fi
+	fi
+
+	if [[ ${DISTUTILS_EXT} ]]; then
+		IUSE="debug"
 	fi
 }
 _distutils_set_globals
