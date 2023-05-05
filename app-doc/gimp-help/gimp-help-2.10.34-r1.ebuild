@@ -21,11 +21,30 @@ BDEPEND="
 	app-text/docbook-xml-dtd
 	dev-lang/perl
 	dev-libs/libxslt
+	gnome-base/librsvg
 	sys-devel/gettext
 "
 
+DOCS=( AUTHORS COPYING NEWS README )
+
 python_check_deps() {
 	python_has_version "dev-libs/libxml2[python,${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	# See bug: 891709
+	if [[ -z "${LINGUAS}" ]] ; then
+		export LINGUAS="en"
+
+		ewarn "The 'LINGUAS' environment variable isn't setup in '/etc/portage/make.conf',"
+		ewarn "therefore only the generic ('en') documentation will be built."
+		ewarn "To build ${PN} for other languages please setup 'LINGUAS' variable"
+		ewarn "or assign it to 'L10N' variable if available, i.e. LINGUAS=\"\${L10N}\""
+		ewarn "The following languages are supported for ${PN}:"
+		ewarn "'ca cs da de el en en_GB es fa fi fr hr hu it ja ko lt nl nn pt pt_BR ro ru sl sv uk zh_CN'"
+		ewarn "For more details please read:"
+		ewarn "https://wiki.gentoo.org/wiki/Localization/Guide#LINGUAS"
+	fi
 }
 
 src_configure() {
@@ -37,4 +56,10 @@ src_compile() {
 	python_export_utf8_locale
 	# Affected with bugs: 677198, 876205. Set "emake -j1"
 	emake -j1
+}
+
+src_install() {
+	# See bug: 905693
+	emake -j1 DESTDIR="${D}" install
+	einstalldocs
 }
