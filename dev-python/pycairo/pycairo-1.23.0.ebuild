@@ -38,6 +38,10 @@ DEPEND="
 	x11-base/xorg-proto
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.23.0-fix-sphinx.patch
+)
+
 distutils_enable_sphinx docs \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
