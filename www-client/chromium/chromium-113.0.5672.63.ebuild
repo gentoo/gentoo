@@ -349,6 +349,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-113-system-zlib.patch"
 		"${FILESDIR}/chromium-113-web_view_impl-cstring.patch"
 		"${FILESDIR}/chromium-113-std-monospace.patch"
+		"${FILESDIR}/chromium-113-gcc-13-0001-vulkanmemoryallocator.patch"
 	)
 
 	if use ppc64 ; then
