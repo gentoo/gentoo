@@ -20,7 +20,7 @@ RDEPEND="
 	>=dev-libs/wayland-1.21
 	>=dev-libs/wayland-protocols-1.17
 	=gui-libs/wlroots-0.16*[X]
-	<media-libs/libdisplay-info-0.1.0
+	>=media-libs/libdisplay-info-0.1.1
 	media-libs/libsdl2[video,vulkan]
 	media-libs/vulkan-loader
 	sys-apps/hwdata
