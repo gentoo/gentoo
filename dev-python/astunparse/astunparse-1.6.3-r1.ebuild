@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 pypi
 
@@ -25,8 +25,10 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/astunparse-1.6.2-tests.patch"
-	# from Fedora
+	# From Fedora
 	"${FILESDIR}/${P}-py39.patch"
+	# From Debian
+	"${FILESDIR}/${P}-test-py311.patch"
 )
 
 distutils_enable_tests unittest
