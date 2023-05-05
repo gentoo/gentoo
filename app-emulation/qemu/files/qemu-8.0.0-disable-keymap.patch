@@ -1,7 +1,8 @@
-diff -ruN qemu-9999.orig/meson.build qemu-9999/meson.build
---- qemu-9999.orig/meson.build	2023-03-12 01:17:38.273756012 +0100
-+++ qemu-9999/meson.build	2023-03-12 01:18:44.854716789 +0100
-@@ -667,6 +667,8 @@
+diff --git a/meson.build b/meson.build
+index c44d05a13..5c5c09894 100644
+--- a/meson.build
++++ b/meson.build
+@@ -671,6 +671,8 @@ endif
  
  if get_option('xkbcommon').auto() and not have_system and not have_tools
    xkbcommon = not_found
@@ -10,10 +11,11 @@ diff -ruN qemu-9999.orig/meson.build qemu-9999/meson.build
  else
    xkbcommon = dependency('xkbcommon', required: get_option('xkbcommon'),
                           method: 'pkg-config', kwargs: static_kwargs)
-diff -ruN qemu-9999.orig/pc-bios/keymaps/meson.build qemu-9999/pc-bios/keymaps/meson.build
---- qemu-9999.orig/pc-bios/keymaps/meson.build	2023-03-12 01:17:38.321756706 +0100
-+++ qemu-9999/pc-bios/keymaps/meson.build	2023-03-12 01:20:22.015111600 +0100
-@@ -33,8 +33,10 @@
+diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
+index 158a3b410..3bb318a23 100644
+--- a/pc-bios/keymaps/meson.build
++++ b/pc-bios/keymaps/meson.build
+@@ -33,8 +33,10 @@ keymaps = {
    'tr': '-l tr',
  }
  
