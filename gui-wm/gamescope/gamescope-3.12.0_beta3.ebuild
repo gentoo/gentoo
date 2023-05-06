@@ -43,6 +43,7 @@ DEPEND="
 	${RDEPEND}
 	dev-libs/stb
 	dev-util/vulkan-headers
+	media-libs/glm
 	wsi-layer? ( >=media-libs/vkroots-0_p20230103 )
 "
 BDEPEND="
