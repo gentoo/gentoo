@@ -4,3 +4,6 @@ KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="d007", TAG+="uacc
 
 # Google Stadia Controller
 KERNEL=="hidraw*", ATTRS{idVendor}=="18d1", ATTRS{idProduct}=="9400", TAG+="uaccess"
+
+# Microsoft X-Box One S pad
+SUBSYSTEM=="input", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="02ea", MODE="0664", TAG+="uaccess"
