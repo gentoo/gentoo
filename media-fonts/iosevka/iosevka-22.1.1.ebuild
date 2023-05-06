@@ -62,7 +62,7 @@ unset MY_BASE my_filename variant
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 BDEPEND="app-arch/unzip"
 
