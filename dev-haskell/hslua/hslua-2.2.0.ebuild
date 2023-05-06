@@ -23,7 +23,7 @@ RDEPEND=">=dev-haskell/hslua-aeson-2.2:=[profile?] <dev-haskell/hslua-aeson-2.3:
 	>=dev-haskell/hslua-marshalling-2.2:=[profile?] <dev-haskell/hslua-marshalling-2.3:=[profile?]
 	>=dev-haskell/hslua-objectorientation-2.2:=[profile?] <dev-haskell/hslua-objectorientation-2.3:=[profile?]
 	>=dev-haskell/hslua-packaging-2.2:=[profile?] <dev-haskell/hslua-packaging-2.3:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.2.0.0

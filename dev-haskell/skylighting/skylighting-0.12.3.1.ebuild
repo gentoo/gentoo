@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="executable"
 
 RDEPEND="~dev-haskell/skylighting-core-0.12.3.1:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	executable? ( >=dev-haskell/blaze-html-0.5:=[profile?]
 			dev-haskell/pretty-show:=[profile?] )
 "

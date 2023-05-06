@@ -38,7 +38,7 @@ RDEPEND=">=dev-haskell/case-insensitive-0.4:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
 	>=dev-haskell/xml-conduit-1.0:=[profile?]
 	>=dev-haskell/xml-hamlet-0.4:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3

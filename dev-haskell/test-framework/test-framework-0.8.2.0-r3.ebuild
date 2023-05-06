@@ -28,7 +28,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.4.0:=[profile?]
 	>=dev-haskell/regex-posix-0.72:=[profile?]
 	>=dev-haskell/semigroups-0.18:=[profile?]
 	>=dev-haskell/xml-1.3.5:=[profile?] <dev-haskell/xml-1.4:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

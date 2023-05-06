@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND="dev-haskell/base-compat:=[profile?]
 	dev-haskell/logging-facade:=[profile?]
 	dev-haskell/temporary:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

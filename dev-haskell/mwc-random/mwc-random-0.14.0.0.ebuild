@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND=">=dev-haskell/math-functions-0.2.1.0:=[profile?]
 	>=dev-haskell/primitive-0.6:=[profile?]
 	>=dev-haskell/vector-0.7:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8.0.4

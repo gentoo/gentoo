@@ -24,7 +24,7 @@ RESTRICT=test # QuickCheck finds counterxamples:
 #         UnixTime {utSeconds = 747130527, utMicroSeconds = 819438}
 
 RDEPEND="dev-haskell/old-time:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18

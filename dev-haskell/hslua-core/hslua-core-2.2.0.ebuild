@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/lua-2.2:=[profile?] <dev-haskell/lua-2.3:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.2.0.0

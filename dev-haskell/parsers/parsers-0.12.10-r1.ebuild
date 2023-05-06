@@ -28,7 +28,7 @@ RDEPEND=">=dev-haskell/base-orphans-0.3:=[profile?] <dev-haskell/base-orphans-1:
 	>=dev-haskell/scientific-0.3:=[profile?] <dev-haskell/scientific-0.4:=[profile?]
 	>=dev-haskell/semigroups-0.12:=[profile?] <dev-haskell/semigroups-1:=[profile?]
 	>=dev-haskell/unordered-containers-0.2:=[profile?] <dev-haskell/unordered-containers-0.3:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	attoparsec? ( >=dev-haskell/attoparsec-0.12.1.4:=[profile?] <dev-haskell/attoparsec-0.15:=[profile?] )
 "
 DEPEND="${RDEPEND}

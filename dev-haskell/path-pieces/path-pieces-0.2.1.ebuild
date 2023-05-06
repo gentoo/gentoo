@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/text-0.5:=[profile?]
-	>=dev-lang/ghc-7.6.2:=
+	>=dev-lang/ghc-7.6.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.16.0

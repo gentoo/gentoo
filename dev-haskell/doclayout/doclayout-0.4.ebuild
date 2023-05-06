@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/emojis-0.1.2:=[profile?]
 	dev-haskell/safe:=[profile?]
-	>=dev-lang/ghc-8.6.3:=
+	>=dev-lang/ghc-8.6.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.4.0.1

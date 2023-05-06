@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="parsec1"
 
-RDEPEND=">=dev-lang/ghc-7.4.1:=
+RDEPEND=">=dev-lang/ghc-7.4.1:=[profile?]
 	parsec1? ( dev-haskell/parsec1:=[profile?] )
 	!parsec1? ( dev-haskell/parsec:=[profile?] )
 "

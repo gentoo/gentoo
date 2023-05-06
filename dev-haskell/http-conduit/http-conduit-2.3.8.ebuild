@@ -30,7 +30,7 @@ RDEPEND=">=dev-haskell/aeson-0.8:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	>=dev-haskell/resourcet-1.1:=[profile?]
 	dev-haskell/unliftio-core:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	>=dev-haskell/aeson-0.8:=[profile?]
 "
 DEPEND="${RDEPEND}

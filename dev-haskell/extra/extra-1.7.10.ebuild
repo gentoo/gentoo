@@ -17,7 +17,7 @@ SLOT="2/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/clock-0.7:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

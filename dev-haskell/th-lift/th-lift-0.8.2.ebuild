@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/th-abstraction-0.2.3:=[profile?] <dev-haskell/th-abstraction-0.5:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.12

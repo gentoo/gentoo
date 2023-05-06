@@ -30,7 +30,7 @@ RDEPEND="dev-haskell/async:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	>=dev-haskell/network-2.3:=[profile?]
 	dev-haskell/psqueues:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.0

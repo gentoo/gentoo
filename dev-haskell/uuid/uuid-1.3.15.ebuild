@@ -24,7 +24,7 @@ RDEPEND=">=dev-haskell/cryptohash-md5-0.11.100:=[profile?] <dev-haskell/cryptoha
 	>=dev-haskell/network-info-0.2:=[profile?] <dev-haskell/network-info-0.3:=[profile?]
 	>=dev-haskell/random-1.1:=[profile?] <dev-haskell/random-1.3:=[profile?]
 	>=dev-haskell/uuid-types-1.0.5:=[profile?] <dev-haskell/uuid-types-1.0.6:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	>=dev-haskell/text-1.2.3.0:=[profile?] <dev-haskell/text-2.1:=[profile?]
 "
 DEPEND="${RDEPEND}

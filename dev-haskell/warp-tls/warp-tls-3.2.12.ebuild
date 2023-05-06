@@ -26,7 +26,7 @@ RDEPEND=">=dev-haskell/cryptonite-0.12:=[profile?]
 	>=dev-haskell/tls-session-manager-0.0.4:=[profile?]
 	>=dev-haskell/wai-3.2:=[profile?] <dev-haskell/wai-3.3:=[profile?]
 	>=dev-haskell/warp-3.3.6:=[profile?] <dev-haskell/warp-3.4:=[profile?]
-	>=dev-lang/ghc-8.2.1:=
+	>=dev-lang/ghc-8.2.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.0.0.2

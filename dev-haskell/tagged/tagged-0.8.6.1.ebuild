@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/transformers-compat-0.5:=[profile?] <dev-haskell/transformers-compat-1:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}"
 

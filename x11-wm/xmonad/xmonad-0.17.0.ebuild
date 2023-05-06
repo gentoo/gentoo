@@ -22,7 +22,7 @@ RDEPEND="dev-haskell/data-default-class:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/setlocale:=[profile?]
 	>=dev-haskell/x11-1.10:=[profile?] <dev-haskell/x11-1.11:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

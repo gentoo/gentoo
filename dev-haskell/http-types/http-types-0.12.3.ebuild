@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/case-insensitive-0.2:=[profile?] <dev-haskell/case-insensitive-1.3:=[profile?]
 	>=dev-haskell/text-0.11.0.2:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3

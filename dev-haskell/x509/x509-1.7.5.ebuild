@@ -25,7 +25,7 @@ RDEPEND=">=dev-haskell/asn1-encoding-0.9:=[profile?] <dev-haskell/asn1-encoding-
 	dev-haskell/memory:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	>=dev-haskell/pem-0.1:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3

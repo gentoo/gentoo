@@ -20,6 +20,6 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND=">=dev-lang/ghc-7.4.1:=
+RDEPEND=">=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}"

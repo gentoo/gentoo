@@ -41,7 +41,7 @@ RDEPEND=">=dev-haskell/attoparsec-0.14.2:=[profile?] <dev-haskell/attoparsec-0.1
 	>=dev-haskell/uuid-types-1.0.5:=[profile?] <dev-haskell/uuid-types-1.1:=[profile?]
 	>=dev-haskell/vector-0.12.0.1:=[profile?] <dev-haskell/vector-0.14:=[profile?]
 	>=dev-haskell/witherable-0.4.2:=[profile?] <dev-haskell/witherable-0.5:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

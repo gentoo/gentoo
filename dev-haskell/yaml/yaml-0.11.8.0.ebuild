@@ -25,7 +25,7 @@ RDEPEND=">=dev-haskell/aeson-0.11:=[profile?]
 	>=dev-haskell/scientific-0.3:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
 	dev-haskell/vector:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	examples? ( dev-haskell/raw-strings-qq:=[profile?] )
 	executable? ( dev-haskell/optparse-applicative:=[profile?] )
 "

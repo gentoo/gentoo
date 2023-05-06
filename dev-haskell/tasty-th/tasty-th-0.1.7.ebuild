@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/haskell-src-exts-1.18.0:=[profile?]
 	dev-haskell/tasty:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8

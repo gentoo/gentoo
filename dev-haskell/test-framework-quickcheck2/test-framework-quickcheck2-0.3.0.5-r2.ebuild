@@ -22,7 +22,7 @@ RDEPEND=">=dev-haskell/extensible-exceptions-0.1.1:=[profile?] <dev-haskell/exte
 	>=dev-haskell/quickcheck-2.4:2=[profile?]
 	>=dev-haskell/random-1:=[profile?] <dev-haskell/random-1.3:=[profile?]
 	>=dev-haskell/test-framework-0.8:=[profile?] <dev-haskell/test-framework-0.9:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

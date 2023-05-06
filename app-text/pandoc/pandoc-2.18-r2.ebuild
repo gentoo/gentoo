@@ -74,7 +74,7 @@ RDEPEND=">=dev-haskell/aeson-0.7:=[profile?] <dev-haskell/aeson-2.1:=[profile?]
 	>=dev-haskell/yaml-0.11:=[profile?] <dev-haskell/yaml-0.12:=[profile?]
 	>=dev-haskell/zip-archive-0.2.3.4:=[profile?] <dev-haskell/zip-archive-0.5:=[profile?]
 	>=dev-haskell/zlib-0.5:=[profile?] <dev-haskell/zlib-0.7:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 	>=dev-haskell/hslua-2.2:=[profile?] <dev-haskell/hslua-2.3:=[profile?]
 	trypandoc? ( >=dev-haskell/wai-0.3:=[profile?]
 			>=dev-haskell/wai-extra-3.0.24:=[profile?] )

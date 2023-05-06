@@ -21,7 +21,7 @@ IUSE=""
 RDEPEND=">=dev-haskell/aeson-0.8:=[profile?]
 	>=dev-haskell/base-compat-0.9:=[profile?]
 	>=dev-haskell/vector-0.7.1:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

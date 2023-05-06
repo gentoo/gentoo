@@ -21,7 +21,7 @@ IUSE="+bench +boundschecks internalchecks +properties unsafechecks"
 RDEPEND=">=dev-haskell/primitive-0.3:=[profile?] <dev-haskell/primitive-0.8:=[profile?]
 	>=dev-haskell/tagged-0.4:=[profile?] <dev-haskell/tagged-0.9:=[profile?]
 	>=dev-haskell/vector-0.6:=[profile?] <dev-haskell/vector-0.13:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

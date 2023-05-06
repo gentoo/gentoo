@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND="dev-haskell/basement:=[profile?]
 	>=dev-haskell/cereal-0.3.1:=[profile?]
 	>=dev-haskell/network-2.6:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18

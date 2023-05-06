@@ -21,7 +21,7 @@ RDEPEND=">=dev-haskell/digest-0.0.0.1:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	>=dev-haskell/text-0.11:=[profile?]
 	dev-haskell/zlib:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.0

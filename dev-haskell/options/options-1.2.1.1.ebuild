@@ -21,7 +21,7 @@ RESTRICT=test # circular depends: options[test]->chell->options
 
 RDEPEND=">=dev-haskell/monads-tf-0.1:=[profile?]
 	>=dev-haskell/transformers-0.2:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8

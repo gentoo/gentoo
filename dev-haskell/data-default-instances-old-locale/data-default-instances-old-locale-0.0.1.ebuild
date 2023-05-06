@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="dev-haskell/data-default-class:=[profile?]
 	dev-haskell/old-locale:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6

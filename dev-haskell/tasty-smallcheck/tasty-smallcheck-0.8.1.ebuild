@@ -21,7 +21,7 @@ RDEPEND="dev-haskell/async:=[profile?]
 	>=dev-haskell/smallcheck-1.0:=[profile?]
 	dev-haskell/tagged:=[profile?]
 	>=dev-haskell/tasty-0.8:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6

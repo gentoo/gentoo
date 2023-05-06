@@ -20,7 +20,7 @@ IUSE="+semigroups +tagged"
 RDEPEND=">=dev-haskell/base-orphans-0.8.4:=[profile?] <dev-haskell/base-orphans-1:=[profile?]
 	>=dev-haskell/comonad-5.0.7:=[profile?] <dev-haskell/comonad-6:=[profile?]
 	>=dev-haskell/th-abstraction-0.4.2.0:=[profile?] <dev-haskell/th-abstraction-0.5:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	tagged? ( >=dev-haskell/tagged-0.8.6:=[profile?] <dev-haskell/tagged-1:=[profile?] )
 "
 DEPEND="${RDEPEND}

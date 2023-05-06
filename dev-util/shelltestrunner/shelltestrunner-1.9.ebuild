@@ -27,7 +27,7 @@ RDEPEND=">=dev-haskell/cmdargs-0.7:=
 	>=dev-haskell/test-framework-0.3.2:=
 	>=dev-haskell/test-framework-hunit-0.2:=
 	>=dev-haskell/utf8-string-0.3.5:=
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6

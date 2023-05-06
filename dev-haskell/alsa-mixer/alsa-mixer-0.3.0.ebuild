@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/alsa-core-0.5:=[profile?] <dev-haskell/alsa-core-0.6:=[profile?]
-	>=dev-lang/ghc-7.6.1:=
+	>=dev-lang/ghc-7.6.1:=[profile?]
 	media-libs/alsa-lib
 "
 DEPEND="${RDEPEND}

@@ -44,7 +44,7 @@ RDEPEND=">=dev-haskell/aeson-1.4.1.0:=[profile?] <dev-haskell/aeson-3:=[profile?
 	>=dev-haskell/wai-3.2.1.2:=[profile?] <dev-haskell/wai-3.3:=[profile?]
 	>=dev-haskell/wai-app-static-3.1.6.2:=[profile?] <dev-haskell/wai-app-static-3.2:=[profile?]
 	>=dev-haskell/word8-0.1.3:=[profile?] <dev-haskell/word8-0.2:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 	examples? ( >=dev-haskell/warp-3.2.25:=[profile?] <dev-haskell/warp-3.4:=[profile?] )
 "
 DEPEND="${RDEPEND}

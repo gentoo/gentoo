@@ -29,7 +29,7 @@ RDEPEND=">=dev-haskell/convertible-1.1.0.0:=[profile?]
 	dev-haskell/old-time:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8

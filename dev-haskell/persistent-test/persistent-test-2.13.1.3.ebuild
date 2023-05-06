@@ -34,7 +34,7 @@ RDEPEND=">=dev-haskell/aeson-1.0:=[profile?]
 	dev-haskell/unliftio:=[profile?]
 	dev-haskell/unliftio-core:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.2.0.0

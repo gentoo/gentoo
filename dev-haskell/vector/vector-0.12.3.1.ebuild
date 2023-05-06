@@ -27,7 +27,7 @@ IUSE="+boundschecks internalchecks unsafechecks"
 PATCHES=( "${FILESDIR}/${PN}-0.12.3.1-cabal-doctest.patch" )
 
 RDEPEND=">=dev-haskell/primitive-0.6.4.0:=[profile?] <dev-haskell/primitive-0.8:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

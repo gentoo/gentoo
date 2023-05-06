@@ -25,7 +25,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND="~dev-haskell/base-compat-0.12.1:=[profile?]
 	>=dev-haskell/contravariant-1.5:=[profile?] <dev-haskell/contravariant-1.6:=[profile?]
 	>=dev-haskell/onetuple-0.3:=[profile?] <dev-haskell/onetuple-0.4:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

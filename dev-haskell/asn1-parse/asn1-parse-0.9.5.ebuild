@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/asn1-encoding-0.9:=[profile?]
 	>=dev-haskell/asn1-types-0.3:=[profile?] <dev-haskell/asn1-types-0.4:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6

@@ -21,7 +21,7 @@ RDEPEND="dev-haskell/haskell-src-exts:=[profile?]
 	>=dev-haskell/language-haskell-extract-0.2:=[profile?]
 	dev-haskell/regex-posix:=[profile?]
 	dev-haskell/test-framework:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6

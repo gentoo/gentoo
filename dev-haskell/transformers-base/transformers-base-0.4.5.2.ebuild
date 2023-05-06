@@ -19,7 +19,7 @@ IUSE="+orphaninstances"
 
 RDEPEND=">=dev-haskell/stm-2.3:=[profile?]
 	>=dev-haskell/transformers-compat-0.6.1:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 	orphaninstances? ( >=dev-haskell/base-orphans-0.3:=[profile?] )
 "
 DEPEND="${RDEPEND}

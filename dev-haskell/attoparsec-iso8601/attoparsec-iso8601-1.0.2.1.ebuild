@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND=">=dev-haskell/attoparsec-0.14.2:=[profile?] <dev-haskell/attoparsec-0.15:=[profile?]
 	>=dev-haskell/base-compat-batteries-0.10.0:=[profile?] <dev-haskell/base-compat-batteries-0.13:=[profile?]
 	>=dev-haskell/time-compat-1.9.4:=[profile?] <dev-haskell/time-compat-1.10:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

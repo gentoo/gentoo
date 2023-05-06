@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="usecas"
 
 RDEPEND="dev-haskell/random:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 	usecas? ( >=dev-haskell/atomic-primops-0.5.0.2:=[profile?] )
 "
 DEPEND="${RDEPEND}

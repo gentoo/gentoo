@@ -23,7 +23,7 @@ IUSE=""
 
 RESTRICT=test # circular depend: test-framework->base-orphans->cabal->semigroups->nats->binary
 
-RDEPEND=">=dev-lang/ghc-7.8.2:=
+RDEPEND=">=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 "

@@ -20,7 +20,7 @@ RDEPEND=">=dev-haskell/aeson-1.5.2.0:=[profile?]
 	dev-haskell/base64-bytestring:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

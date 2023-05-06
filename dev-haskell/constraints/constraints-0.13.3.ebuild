@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND=">=dev-haskell/hashable-1.2:=[profile?] <dev-haskell/hashable-1.5:=[profile?]
 	>=dev-haskell/transformers-compat-0.5:=[profile?] <dev-haskell/transformers-compat-1:=[profile?]
 	>=dev-haskell/type-equality-1:=[profile?] <dev-haskell/type-equality-2:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

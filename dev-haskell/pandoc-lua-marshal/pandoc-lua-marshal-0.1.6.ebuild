@@ -21,7 +21,7 @@ RDEPEND=">=dev-haskell/hslua-2.1:=[profile?] <dev-haskell/hslua-2.3:=[profile?]
 	>=dev-haskell/lua-2.1:=[profile?] <dev-haskell/lua-2.3:=[profile?]
 	>=dev-haskell/pandoc-types-1.22.1:=[profile?] <dev-haskell/pandoc-types-1.23:=[profile?]
 	>=dev-haskell/safe-0.3:=[profile?] <dev-haskell/safe-0.4:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.2.0.0

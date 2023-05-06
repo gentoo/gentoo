@@ -24,7 +24,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="examples"
 
 RDEPEND=">=dev-haskell/ansi-terminal-0.9.1:=[profile?] <dev-haskell/ansi-terminal-0.12:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

@@ -38,7 +38,7 @@ RDEPEND=">=dev-haskell/async-2.0:= <dev-haskell/async-2.3:=
 	>=dev-haskell/tar-0.5.0.3:= <dev-haskell/tar-0.6:=
 	>=dev-haskell/text-1.2.3:= <dev-haskell/text-1.3:=
 	>=dev-haskell/zlib-0.5.3:= <dev-haskell/zlib-0.7:=
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	lukko? ( >=dev-haskell/lukko-0.1:= <dev-haskell/lukko-0.2:= )
 	native-dns? ( >=dev-haskell/resolv-0.1.1:= <dev-haskell/resolv-0.2:= )
 "

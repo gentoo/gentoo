@@ -24,7 +24,7 @@ RDEPEND=">=dev-haskell/mtl-1.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]
 	>=dev-haskell/primitive-0.4:=[profile?]
 	>=dev-haskell/vector-0.10:=[profile?] <dev-haskell/vector-0.13:=[profile?]
 	>=dev-haskell/zlib-0.5.3.1:=[profile?] <dev-haskell/zlib-0.7:=[profile?]
-	>=dev-lang/ghc-8.0.1:=
+	>=dev-lang/ghc-8.0.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.24.0.0

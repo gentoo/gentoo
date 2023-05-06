@@ -25,7 +25,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND=">=dev-haskell/aeson-0.11:=[profile?] <dev-haskell/aeson-2.1:=[profile?]
 	>=dev-haskell/unordered-containers-0.2.5:=[profile?] <dev-haskell/unordered-containers-0.3:=[profile?]
 	>=dev-haskell/vector-0.11:=[profile?] <dev-haskell/vector-0.13:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

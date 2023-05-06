@@ -18,7 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="system-lua"
 
-RDEPEND=">=dev-lang/ghc-8.4.3:=
+RDEPEND=">=dev-lang/ghc-8.4.3:=[profile?]
 	system-lua? ( dev-lang/lua:5.4 )
 "
 DEPEND="${RDEPEND}

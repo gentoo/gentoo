@@ -27,7 +27,7 @@ RDEPEND=">=dev-haskell/base16-bytestring-0.1.1:=[profile?] <dev-haskell/base16-b
 	>=dev-haskell/parsec-3.1:=[profile?] <dev-haskell/parsec-3.2:=[profile?]
 	>=dev-haskell/tar-0.5:=[profile?] <dev-haskell/tar-0.6:=[profile?]
 	>=dev-haskell/zlib-0.5:=[profile?] <dev-haskell/zlib-0.7:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	>=dev-haskell/cabal-1.14:=[profile?] <dev-haskell/cabal-3.8:=[profile?]
 	>=dev-haskell/network-2.6:=[profile?] <dev-haskell/network-3.2:=[profile?]
 	lukko? ( >=dev-haskell/lukko-0.1:=[profile?] <dev-haskell/lukko-0.2:=[profile?] )

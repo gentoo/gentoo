@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="dev-haskell/auto-update:=[profile?]
-	>=dev-lang/ghc-7.10.1:=
+	>=dev-lang/ghc-7.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.22.2.0

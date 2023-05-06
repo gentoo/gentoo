@@ -22,7 +22,7 @@ RDEPEND=">=dev-haskell/cmdargs-0.10:=
 	>=dev-haskell/dns-1.4:=
 	>=dev-haskell/iproute-1.2:=
 	>=dev-haskell/parallel-io-0.3:=
-	>=dev-lang/ghc-9.0.0:=
+	>=dev-lang/ghc-9.0.0:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.0.0

@@ -21,7 +21,7 @@ RESTRICT=test # needs unprefixed 'cpp'
 
 RDEPEND="dev-haskell/dlist:=
 	>=dev-haskell/language-c-0.7.1:= <dev-haskell/language-c-0.10:=
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	regression? ( >=dev-haskell/shelly-1.9.0:= <dev-haskell/shelly-1.10.0:=
 			dev-haskell/text:=
 			>=dev-haskell/yaml-0.8:= )

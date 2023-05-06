@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/hslua-core-2.1:=[profile?] <dev-haskell/hslua-core-2.3:=[profile?]
 	>=dev-haskell/hslua-marshalling-2.1:=[profile?] <dev-haskell/hslua-marshalling-2.3:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.2.0.0

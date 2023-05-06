@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/base-orphans-0.8.6:=[profile?]
 	>=dev-haskell/hashable-1.3.5.0:=[profile?] <dev-haskell/hashable-1.5:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

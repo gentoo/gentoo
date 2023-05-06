@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 #IUSE="use-pkg-config"
 IUSE=""
 
-RDEPEND=">=dev-lang/ghc-7.4.1:=
+RDEPEND=">=dev-lang/ghc-7.4.1:=[profile?]
 	dev-libs/libpcre
 "
 DEPEND="${RDEPEND}

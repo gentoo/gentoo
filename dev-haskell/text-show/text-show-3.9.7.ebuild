@@ -24,7 +24,7 @@ RDEPEND=">=dev-haskell/base-compat-batteries-0.11:=[profile?] <dev-haskell/base-
 	>=dev-haskell/th-abstraction-0.4:=[profile?] <dev-haskell/th-abstraction-0.5:=[profile?]
 	>=dev-haskell/th-lift-0.7.6:=[profile?] <dev-haskell/th-lift-1:=[profile?]
 	>=dev-haskell/transformers-compat-0.5:=[profile?] <dev-haskell/transformers-compat-1:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

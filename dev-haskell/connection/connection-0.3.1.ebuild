@@ -26,7 +26,7 @@ RDEPEND="dev-haskell/basement:=[profile?]
 	>=dev-haskell/x509-store-1.5:=[profile?]
 	>=dev-haskell/x509-system-1.5:=[profile?]
 	>=dev-haskell/x509-validation-1.5:=[profile?]
-	>=dev-lang/ghc-7.10.1:=
+	>=dev-lang/ghc-7.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.22.2.0

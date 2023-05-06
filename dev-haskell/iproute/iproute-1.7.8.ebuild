@@ -23,7 +23,7 @@ RDEPEND="dev-haskell/appar:=[profile?]
 	dev-haskell/byteorder:=[profile?]
 	dev-haskell/network:=[profile?]
 	>=dev-haskell/semigroups-0.17:=[profile?]
-	>=dev-lang/ghc-7.6.2:=
+	>=dev-lang/ghc-7.6.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.16.0

@@ -36,7 +36,7 @@ RDEPEND=">=dev-haskell/auto-update-0.1.3:=[profile?] <dev-haskell/auto-update-0.
 	>=dev-haskell/vault-0.3:=[profile?]
 	>=dev-haskell/wai-3.2:=[profile?] <dev-haskell/wai-3.3:=[profile?]
 	dev-haskell/word8:=[profile?]
-	>=dev-lang/ghc-8.6.3:=
+	>=dev-lang/ghc-8.6.3:=[profile?]
 	x509? ( dev-haskell/x509:=[profile?] )
 "
 DEPEND="${RDEPEND}

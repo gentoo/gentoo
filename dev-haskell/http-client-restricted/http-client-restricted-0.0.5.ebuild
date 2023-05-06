@@ -23,7 +23,7 @@ RDEPEND=">=dev-haskell/connection-0.2.5:=[profile?]
 	>=dev-haskell/network-3.0.0.0:=[profile?]
 	dev-haskell/network-bsd:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

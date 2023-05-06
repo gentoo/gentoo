@@ -21,7 +21,7 @@ IUSE="experimental"
 RESTRICT=test # hangs indefinitely
 
 RDEPEND="~dev-haskell/basement-0.0.12:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

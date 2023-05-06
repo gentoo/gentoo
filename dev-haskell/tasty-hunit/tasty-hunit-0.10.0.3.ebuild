@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="dev-haskell/call-stack:=[profile?]
 	>=dev-haskell/tasty-1.2.2:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

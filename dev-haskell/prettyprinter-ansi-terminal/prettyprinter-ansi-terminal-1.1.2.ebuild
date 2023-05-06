@@ -21,7 +21,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.4.0:=[profile?]
 	>=dev-haskell/prettyprinter-1.1.1:=[profile?]
 	>=dev-haskell/semigroups-0.1:=[profile?]
 	>=dev-haskell/text-1.2:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

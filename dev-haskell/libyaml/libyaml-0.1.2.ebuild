@@ -19,7 +19,7 @@ IUSE="no-unicode system-libyaml"
 
 RDEPEND=">=dev-haskell/conduit-1.2.8:=[profile?] <dev-haskell/conduit-1.4:=[profile?]
 	>=dev-haskell/resourcet-0.3:=[profile?] <dev-haskell/resourcet-1.3:=[profile?]
-	>=dev-lang/ghc-8.0.2:=
+	>=dev-lang/ghc-8.0.2:=[profile?]
 	system-libyaml? ( dev-libs/libyaml )
 "
 DEPEND="${RDEPEND}

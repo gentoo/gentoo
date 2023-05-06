@@ -21,7 +21,7 @@ RDEPEND="dev-haskell/mtl:=[profile?]
 	>=dev-haskell/pem-0.1:=[profile?] <dev-haskell/pem-0.3:=[profile?]
 	>=dev-haskell/x509-1.6:=[profile?]
 	>=dev-haskell/x509-store-1.6.2:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

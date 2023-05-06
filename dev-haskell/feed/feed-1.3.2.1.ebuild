@@ -26,7 +26,7 @@ RDEPEND=">=dev-haskell/base-compat-0.9:=[profile?] <dev-haskell/base-compat-0.13
 	<dev-haskell/utf8-string-1.1:=[profile?]
 	>=dev-haskell/xml-conduit-1.3:=[profile?] <dev-haskell/xml-conduit-1.10:=[profile?]
 	>=dev-haskell/xml-types-0.3.6:=[profile?] <dev-haskell/xml-types-0.4:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

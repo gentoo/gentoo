@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/bencode-0.2:=[profile?]
 	dev-haskell/syb:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6

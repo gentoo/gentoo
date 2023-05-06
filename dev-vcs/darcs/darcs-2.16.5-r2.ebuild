@@ -47,7 +47,7 @@ RDEPEND=">=dev-haskell/async-2.0.2:=[profile?] <dev-haskell/async-2.3:=[profile?
 	>=dev-haskell/vector-0.11:=[profile?] <dev-haskell/vector-0.13:=[profile?]
 	>=dev-haskell/zip-archive-0.3:=[profile?] <dev-haskell/zip-archive-0.5:=[profile?]
 	>=dev-haskell/zlib-0.6.1.2:=[profile?] <dev-haskell/zlib-0.7.0.0:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	curl? ( net-misc/curl )
 "
 DEPEND="${RDEPEND}

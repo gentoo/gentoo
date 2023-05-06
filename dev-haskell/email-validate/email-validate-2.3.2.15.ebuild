@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 PATCHES=( "${FILESDIR}/${PN}-2.3.2.15-fix-doctest.patch" )
 
 RDEPEND=">=dev-haskell/attoparsec-0.10.0:=[profile?] <dev-haskell/attoparsec-0.15:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

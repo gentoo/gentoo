@@ -25,7 +25,7 @@ RDEPEND=">=dev-db/sqlite-3.0
 	>=dev-haskell/hdbc-2.3.0.0:2=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.2

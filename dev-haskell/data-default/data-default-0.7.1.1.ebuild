@@ -21,7 +21,7 @@ RDEPEND=">=dev-haskell/data-default-class-0.1.2.0:=[profile?]
 	dev-haskell/data-default-instances-containers:=[profile?]
 	dev-haskell/data-default-instances-dlist:=[profile?]
 	dev-haskell/data-default-instances-old-locale:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6

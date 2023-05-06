@@ -22,7 +22,7 @@ RDEPEND="dev-haskell/optparse-applicative:=[profile?]
 	dev-haskell/random:=[profile?]
 	dev-haskell/tagged:=[profile?]
 	>=dev-haskell/tasty-1.0.1:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

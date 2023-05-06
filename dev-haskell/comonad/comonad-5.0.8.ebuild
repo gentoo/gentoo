@@ -22,7 +22,7 @@ RDEPEND=">=dev-haskell/distributive-0.5.2:=[profile?] <dev-haskell/distributive-
 	>=dev-haskell/semigroups-0.18.5:=[profile?] <dev-haskell/semigroups-1:=[profile?]
 	>=dev-haskell/tagged-0.8.6.1:=[profile?] <dev-haskell/tagged-1:=[profile?]
 	>=dev-haskell/transformers-compat-0.5:=[profile?] <dev-haskell/transformers-compat-1:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 	indexed-traversable? ( >=dev-haskell/indexed-traversable-0.1.1:=[profile?] <dev-haskell/indexed-traversable-0.2:=[profile?] )
 "
 DEPEND="${RDEPEND}

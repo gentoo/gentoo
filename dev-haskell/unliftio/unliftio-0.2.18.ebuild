@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND=">dev-haskell/async-2.1.1:=[profile?]
 	>=dev-haskell/stm-2.4.3:=[profile?]
 	>=dev-haskell/unliftio-core-0.1.1.0:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

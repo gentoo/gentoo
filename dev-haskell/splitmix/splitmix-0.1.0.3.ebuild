@@ -19,7 +19,7 @@ IUSE="optimised-mixer"
 
 RESTRICT=test # circular deps: dev-haskell/splitmix[test]->dev-haskell/base-compat-batteries->dev-haskell/quickcheck->dev-haskell/splitmix
 
-RDEPEND=">=dev-lang/ghc-7.4.1:=
+RDEPEND=">=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10"

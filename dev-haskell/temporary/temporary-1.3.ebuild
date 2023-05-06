@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/exceptions-0.6:=[profile?]
 	>=dev-haskell/random-1.1:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3

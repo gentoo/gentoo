@@ -20,7 +20,7 @@ RDEPEND=">=dev-haskell/hslua-core-2.1:=[profile?] <dev-haskell/hslua-core-2.3:=[
 	>=dev-haskell/hslua-marshalling-2.1:=[profile?] <dev-haskell/hslua-marshalling-2.3:=[profile?]
 	>=dev-haskell/hslua-packaging-2.1:=[profile?] <dev-haskell/hslua-packaging-2.3:=[profile?]
 	>=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-2.1:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

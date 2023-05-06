@@ -34,7 +34,7 @@ RDEPEND=">=dev-haskell/blaze-html-0.5:=[profile?]
 	>=dev-haskell/wai-extra-3.0:=[profile?] <dev-haskell/wai-extra-3.2:=[profile?]
 	>=dev-haskell/warp-3.0.11:=[profile?] <dev-haskell/warp-3.4:=[profile?]
 	>=dev-haskell/zlib-0.5:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3

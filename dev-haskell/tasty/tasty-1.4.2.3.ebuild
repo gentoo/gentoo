@@ -24,7 +24,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.9:=[profile?]
 	>=dev-haskell/tagged-0.5:=[profile?]
 	>=dev-haskell/unbounded-delays-0.1:=[profile?]
 	dev-haskell/wcwidth:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

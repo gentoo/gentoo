@@ -21,7 +21,7 @@ RESTRICT=test # test-suite fails to build
 
 RDEPEND=">=dev-haskell/hspec-core-2.5.0:=[profile?]
 	dev-haskell/hunit:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10"

@@ -29,7 +29,7 @@ IUSE="doc"
 # block USE=test exclusively on arches that support registerised GHC
 # through the LLVM backend only.
 RDEPEND=">=dev-haskell/mtl-2.2.1:=
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 	test? ( !dev-lang/ghc[llvm(-)] )
 "
 DEPEND="${RDEPEND}

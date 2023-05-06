@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 
 RDEPEND="
-	dev-lang/ghc:=
+	dev-lang/ghc:=[profile?]
 "
 BDEPEND="
 	>=dev-haskell/cabal-1.10

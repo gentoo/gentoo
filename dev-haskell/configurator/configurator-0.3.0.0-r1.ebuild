@@ -23,7 +23,7 @@ RDEPEND=">=dev-haskell/attoparsec-0.10.0.2:=[profile?]
 	>=dev-haskell/text-0.11.1.0:=[profile?]
 	dev-haskell/unix-compat:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8

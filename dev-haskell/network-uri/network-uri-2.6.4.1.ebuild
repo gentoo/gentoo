@@ -20,7 +20,7 @@ RESTRICT=test # circular depend: network-uri[test]->criterion->js-flot->http->ne
 
 RDEPEND=">=dev-haskell/parsec-3.1.12.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?]
 	>=dev-haskell/th-compat-0.1.1:=[profile?] <dev-haskell/th-compat-1.0:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1"

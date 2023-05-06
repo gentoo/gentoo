@@ -21,7 +21,7 @@ RDEPEND=">=dev-haskell/base-compat-0.8:=[profile?]
 	dev-haskell/base-orphans:=[profile?]
 	>=dev-haskell/generics-sop-0.2.3:=[profile?] <dev-haskell/generics-sop-0.6:=[profile?]
 	dev-haskell/tagged:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.12

@@ -42,7 +42,7 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	>=dev-haskell/wai-logger-2.3.2:=[profile?]
 	dev-haskell/word8:=[profile?]
 	dev-haskell/zlib:=[profile?]
-	>=dev-lang/ghc-8.2.1:=
+	>=dev-lang/ghc-8.2.1:=[profile?]
 	examples? ( dev-haskell/warp:=[profile?] )
 "
 DEPEND="${RDEPEND}

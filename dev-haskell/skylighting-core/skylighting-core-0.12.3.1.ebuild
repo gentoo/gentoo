@@ -29,7 +29,7 @@ RDEPEND=">=dev-haskell/aeson-1.0:=[profile?]
 	dev-haskell/safe:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
 	>=dev-haskell/xml-conduit-1.9.1.0:=[profile?] <dev-haskell/xml-conduit-1.10:=[profile?]
-	>=dev-lang/ghc-8.6.3:=
+	>=dev-lang/ghc-8.6.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.4.0.1

@@ -23,7 +23,7 @@ RDEPEND=">=dev-haskell/comonad-5.0.8:=[profile?] <dev-haskell/comonad-6:=[profil
 	>=dev-haskell/semigroupoids-5.3.5:=[profile?] <dev-haskell/semigroupoids-6:=[profile?]
 	>=dev-haskell/th-abstraction-0.4.2.0:=[profile?] <dev-haskell/th-abstraction-0.5:=[profile?]
 	>=dev-haskell/transformers-base-0.4.5.2:=[profile?] <dev-haskell/transformers-base-0.5:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.2.0.0

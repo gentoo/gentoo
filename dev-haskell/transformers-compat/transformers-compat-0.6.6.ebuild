@@ -24,7 +24,7 @@ IUSE=""
 RDEPEND=">=dev-haskell/fail-4.9:=[profile?] <dev-haskell/fail-4.10:=[profile?]
 	>=dev-haskell/mtl-2.1:=[profile?]
 	>=dev-haskell/transformers-0.3:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 "

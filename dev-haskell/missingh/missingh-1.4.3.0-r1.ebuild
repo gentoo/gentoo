@@ -29,7 +29,7 @@ RDEPEND=">=dev-haskell/hslogger-1.3.0.0:=[profile?] <dev-haskell/hslogger-1.4:=[
 	>=dev-haskell/parsec-3.1:=[profile?] <dev-haskell/parsec-3.2:=[profile?]
 	dev-haskell/random
 	>=dev-haskell/regex-compat-0.95.1:=[profile?] <dev-haskell/regex-compat-0.96:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 	>=dev-haskell/network-3.0:=[profile?] <dev-haskell/network-3.2:=[profile?]
 	>=dev-haskell/network-bsd-2.8.1:=[profile?] <dev-haskell/network-bsd-2.9:=[profile?]
 "

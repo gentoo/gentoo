@@ -21,7 +21,7 @@ IUSE=""
 RDEPEND=">=dev-haskell/hashable-1.1.2.3:=[profile?]
 	dev-haskell/syb:=[profile?]
 	>=dev-haskell/unordered-containers-0.2.1:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18

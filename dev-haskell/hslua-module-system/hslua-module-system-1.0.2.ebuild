@@ -22,7 +22,7 @@ RDEPEND=">=dev-haskell/exceptions-0.8:=[profile?] <dev-haskell/exceptions-0.11:=
 	>=dev-haskell/hslua-packaging-2.1:=[profile?] <dev-haskell/hslua-packaging-2.3:=[profile?]
 	>=dev-haskell/temporary-1.2:=[profile?] <dev-haskell/temporary-1.4:=[profile?]
 	>=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-2.1:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.2.0.0

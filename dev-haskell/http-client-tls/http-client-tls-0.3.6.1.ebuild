@@ -28,7 +28,7 @@ RDEPEND="dev-haskell/case-insensitive:=[profile?]
 	dev-haskell/network:=[profile?]
 	dev-haskell/network-uri:=[profile?]
 	>=dev-haskell/tls-1.2:=[profile?]
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.2.0.0

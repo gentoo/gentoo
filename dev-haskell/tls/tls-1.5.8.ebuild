@@ -29,7 +29,7 @@ RDEPEND="dev-haskell/asn1-encoding:=[profile?]
 	>=dev-haskell/x509-1.7.5:=[profile?]
 	>=dev-haskell/x509-store-1.6:=[profile?]
 	>=dev-haskell/x509-validation-1.6.5:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	network? ( >=dev-haskell/network-2.4.0.0:=[profile?] )
 "
 DEPEND="${RDEPEND}

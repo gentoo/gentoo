@@ -35,7 +35,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.6:=[profile?] <dev-haskell/ansi-terminal-
 	>=dev-haskell/text-1.1:=[profile?] <dev-haskell/text-1.3:=[profile?]
 	>=dev-haskell/transformers-base-0.4.5.1:=[profile?] <dev-haskell/transformers-base-0.5:=[profile?]
 	>=dev-haskell/wl-pprint-annotated-0.0:=[profile?] <dev-haskell/wl-pprint-annotated-0.2:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

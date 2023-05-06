@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND="dev-haskell/byteable:=[profile?]
 	>=dev-haskell/cipher-aes-0.2.9:=[profile?] <dev-haskell/cipher-aes-0.3:=[profile?]
 	>=dev-haskell/crypto-random-0.0.7:=[profile?] <dev-haskell/crypto-random-0.1:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8

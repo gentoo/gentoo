@@ -22,7 +22,7 @@ RDEPEND=">=dev-haskell/auto-update-0.1.2:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/unix-compat:=[profile?]
 	>=dev-haskell/unix-time-0.4.4:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3

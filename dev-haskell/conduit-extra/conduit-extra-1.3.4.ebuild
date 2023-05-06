@@ -30,7 +30,7 @@ RDEPEND="dev-haskell/async:=[profile?]
 	dev-haskell/text:=[profile?]
 	>=dev-haskell/typed-process-0.2.6:=[profile?]
 	dev-haskell/unliftio-core:=[profile?]
-	>=dev-lang/ghc-8.0.1:=
+	>=dev-lang/ghc-8.0.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.24.0.0

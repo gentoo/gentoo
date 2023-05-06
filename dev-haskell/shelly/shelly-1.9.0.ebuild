@@ -28,7 +28,7 @@ RDEPEND="dev-haskell/async:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/transformers-base:=[profile?]
 	<dev-haskell/unix-compat-0.6:=[profile?]
-	>=dev-lang/ghc-8.0.2:=
+	>=dev-lang/ghc-8.0.2:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.24.2.0

@@ -27,7 +27,7 @@ RDEPEND=">=dev-db/sqlite-3.0
 	>=dev-haskell/resourcet-1.1.9:=[profile?]
 	dev-haskell/unliftio-core:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	virtual/libc
 "
 DEPEND="${RDEPEND}

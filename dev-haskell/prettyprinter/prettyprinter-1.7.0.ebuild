@@ -21,7 +21,7 @@ RDEPEND=">=dev-haskell/fail-4.9.0.0:=[profile?] <dev-haskell/fail-4.10:=[profile
 	>=dev-haskell/semigroups-0.17:=[profile?]
 	>=dev-haskell/text-1.2:=[profile?]
 	>=dev-haskell/void-0.4:=[profile?] <dev-haskell/void-0.8:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

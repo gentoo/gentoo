@@ -24,7 +24,7 @@ RDEPEND="dev-haskell/cereal:=[profile?]
 	>=dev-haskell/test-framework-0.4:=[profile?]
 	>=dev-haskell/test-framework-hunit-0.2:=[profile?]
 	>=dev-haskell/test-framework-quickcheck2-0.3:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6

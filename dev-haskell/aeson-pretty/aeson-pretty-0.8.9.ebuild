@@ -24,7 +24,7 @@ RDEPEND=">=dev-haskell/base-compat-0.9:=[profile?]
 	>=dev-haskell/text-0.11:=[profile?]
 	>=dev-haskell/unordered-containers-0.2.14.0:=[profile?]
 	>=dev-haskell/vector-0.9:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 	>=dev-haskell/aeson-1.0:=[profile?] <dev-haskell/aeson-2.1:=[profile?]
 	!lib-only? ( >=dev-haskell/aeson-0.6:=[profile?]
 			>=dev-haskell/attoparsec-0.10:=[profile?]

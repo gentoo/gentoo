@@ -25,7 +25,7 @@ RDEPEND=">=dev-haskell/binary-0.4.0:=[profile?]
 	>=dev-haskell/cereal-0.2:=[profile?]
 	dev-haskell/crypto-api:=[profile?]
 	dev-haskell/tagged:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

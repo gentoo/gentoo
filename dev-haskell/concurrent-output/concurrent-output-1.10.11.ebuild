@@ -23,7 +23,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.9.1:=[profile?] <dev-haskell/ansi-termina
 	>=dev-haskell/stm-2.0:=[profile?] <dev-haskell/stm-2.6:=[profile?]
 	>=dev-haskell/terminal-size-0.3.0:=[profile?] <dev-haskell/terminal-size-0.4.0:=[profile?]
 	>=dev-haskell/text-0.11.0:=[profile?] <dev-haskell/text-1.3.0:=[profile?]
-	>=dev-lang/ghc-8.2.1:=
+	>=dev-lang/ghc-8.2.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.0.0.2

@@ -19,7 +19,7 @@ IUSE=""
 # circular dependencies: colour -> ansi-terminal -> test-framework -> colour
 RESTRICT=test
 
-RDEPEND=">=dev-lang/ghc-8.0.1:=
+RDEPEND=">=dev-lang/ghc-8.0.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.24.0.0

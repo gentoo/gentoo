@@ -18,7 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86 ~ppc-macos"
 IUSE="bundled-c-zlib non-blocking-ffi"
 
-RDEPEND=">=dev-lang/ghc-8.4.3:=
+RDEPEND=">=dev-lang/ghc-8.4.3:=[profile?]
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}

@@ -87,7 +87,7 @@ RDEPEND="dev-haskell/aeson:=
 	dev-haskell/utf8-string:=
 	>=dev-haskell/uuid-1.2.6:=
 	dev-haskell/vector:=
-	>=dev-lang/ghc-8.10.1:=
+	>=dev-lang/ghc-8.10.1:=[profile?]
 	assistant? ( >=dev-haskell/hinotify-0.3.10:=
 			dev-haskell/mountpoints:= )
 	benchmark? ( dev-haskell/criterion:= )

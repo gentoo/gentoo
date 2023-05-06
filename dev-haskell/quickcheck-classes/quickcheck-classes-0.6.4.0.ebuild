@@ -26,7 +26,7 @@ RDEPEND=">=dev-haskell/base-orphans-0.1:=[profile?]
 	>=dev-haskell/quickcheck-classes-base-0.6:=[profile?] <dev-haskell/quickcheck-classes-base-0.7:=[profile?]
 	>=dev-haskell/semigroups-0.17:=[profile?]
 	dev-haskell/tagged:=[profile?]
-	>=dev-lang/ghc-8.0.1:=
+	>=dev-lang/ghc-8.0.1:=[profile?]
 	aeson? ( >=dev-haskell/aeson-0.9:=[profile?] )
 	binary-laws? ( >=dev-haskell/quickcheck-2.10.0:2=[profile?] )
 	semigroupoids? ( dev-haskell/semigroupoids:=[profile?] )

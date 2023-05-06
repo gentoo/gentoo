@@ -23,7 +23,7 @@ RDEPEND="dev-haskell/async:=[profile?]
 	dev-haskell/random:=[profile?]
 	dev-haskell/stm:=[profile?]
 	dev-haskell/zlib:=[profile?]
-	>=dev-lang/ghc-8.6.3:=
+	>=dev-lang/ghc-8.6.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.4.0.1

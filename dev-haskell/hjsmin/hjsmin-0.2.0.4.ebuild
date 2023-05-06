@@ -22,7 +22,7 @@ RESTRICT=test # Requires network access?
 RDEPEND=">=dev-haskell/language-javascript-0.6:=[profile?] <dev-haskell/language-javascript-0.8:=[profile?]
 	>=dev-haskell/optparse-applicative-0.7:=[profile?]
 	>=dev-haskell/text-1.2:=[profile?] <dev-haskell/text-1.3:=[profile?]
-	>=dev-lang/ghc-7.10.1:=
+	>=dev-lang/ghc-7.10.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.22.2.0

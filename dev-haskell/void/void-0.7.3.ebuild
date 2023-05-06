@@ -19,7 +19,7 @@ IUSE="safe"
 
 RDEPEND=">=dev-haskell/hashable-1.1:=[profile?]
 	>=dev-haskell/semigroups-0.8.2:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

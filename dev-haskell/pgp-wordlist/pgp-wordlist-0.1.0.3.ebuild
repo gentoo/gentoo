@@ -21,7 +21,7 @@ RESTRICT=test # ambiguous packages: AC-Vector-Fancy vector
 
 RDEPEND=">=dev-haskell/text-1.2:=[profile?]
 	>=dev-haskell/vector-0.5:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

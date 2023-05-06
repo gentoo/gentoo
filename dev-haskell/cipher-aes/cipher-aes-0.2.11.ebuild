@@ -21,7 +21,7 @@ IUSE="cpu_flags_x86_aes cpu_flags_x86_ssse3"
 RDEPEND="dev-haskell/byteable:=[profile?]
 	>=dev-haskell/crypto-cipher-types-0.0.6:=[profile?] <dev-haskell/crypto-cipher-types-0.1:=[profile?]
 	>=dev-haskell/securemem-0.1.2:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8

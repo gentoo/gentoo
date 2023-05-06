@@ -27,7 +27,7 @@ RDEPEND="dev-haskell/case-insensitive:=[profile?]
 	dev-haskell/stm:=[profile?]
 	dev-haskell/time-manager:=[profile?]
 	dev-haskell/unix-time:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1"

@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/tagged-0.8.5:=[profile?] <dev-haskell/tagged-0.9:=[profile?]
-	>=dev-lang/ghc-7.6.1:=
+	>=dev-lang/ghc-7.6.1:=[profile?]
 	>=dev-haskell/dec-0.0.3 <dev-haskell/dec-0.1
 "
 DEPEND="${RDEPEND}

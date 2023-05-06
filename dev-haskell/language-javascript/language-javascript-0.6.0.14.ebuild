@@ -22,7 +22,7 @@ RDEPEND=">=dev-haskell/blaze-builder-0.2:=[profile?]
 	>=dev-haskell/semigroups-0.16.1:=[profile?]
 	>=dev-haskell/text-1.2:=[profile?]
 	>=dev-haskell/utf8-string-0.3.7:=[profile?] <dev-haskell/utf8-string-2:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	dev-haskell/alex

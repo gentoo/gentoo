@@ -20,7 +20,7 @@ IUSE=""
 
 RESTRICT=test # fails on QC-2.10 as: The constructor ‘Failure’ should have 11 arguments, but has been given 10
 
-RDEPEND=">=dev-lang/ghc-7.4.1:=
+RDEPEND=">=dev-lang/ghc-7.4.1:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
