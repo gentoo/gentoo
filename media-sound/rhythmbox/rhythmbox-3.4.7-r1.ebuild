@@ -87,7 +87,6 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	gtk-doc? ( dev-util/gtk-doc )
-	>=dev-util/intltool-0.35
 	dev-util/itstool
 	virtual/pkgconfig
 	test? ( dev-libs/check )
