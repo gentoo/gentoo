@@ -16,6 +16,10 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 RDEPEND="media-libs/libjpeg-turbo:="
 DEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.3-system-libjpeg-libm.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_MOZJPEG=no

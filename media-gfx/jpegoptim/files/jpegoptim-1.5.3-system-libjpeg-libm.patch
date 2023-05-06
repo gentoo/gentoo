@@ -1,0 +1,9 @@
+libm is used with mozjpeg and built libjpeg, but not if using system's,
+yet jpegoptim.c uses floor() either way.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -356,3 +356,3 @@
+         target_include_directories(${PROJECT_NAME} PRIVATE ${JPEG_INCLUDE_DIRS})
+-        target_link_libraries(${PROJECT_NAME} JPEG::JPEG)
++        target_link_libraries(${PROJECT_NAME} JPEG::JPEG m)
+     endif()
