@@ -19,7 +19,7 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 toolchain-funcs virtualx xdg-
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 PATCHSET_URI_PPC64="https://quickbuild.io/~raptor-engineering-public"
-PATCHSET_NAME_PPC64="chromium_112.0.5615.49-2raptor0~deb11u1.debian"
+PATCHSET_NAME_PPC64="chromium_113.0.5672.63-2raptor0~deb11u1.debian"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://dev.gentoo.org/~sam/distfiles/www-client/chromium/chromium-112-gcc-13-patches.tar.xz
 	ppc64? (
@@ -30,7 +30,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 
 LICENSE="BSD"
 SLOT="0/stable"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 IUSE="+X component-build cups cpu_flags_arm_neon debug gtk4 +hangouts headless kerberos libcxx lto +official pax-kernel pgo pic +proprietary-codecs pulseaudio qt5 screencast selinux +suid +system-av1 +system-ffmpeg +system-harfbuzz +system-icu +system-png vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid !libcxx )
