@@ -57,6 +57,7 @@ media-gfx/curaengine
 # Out of date by several versions. Many unresolved security
 # vulnerabilities. Lack of manpower/interest in keeping it up to date.
 # Removal on 2023-06-03.
+# Chromium-based bin alternatives: google-chrome, microsoft-edge & vivaldi.
 www-client/chromium-bin
 
 # Sam James <sam@gentoo.org> (2023-05-03)
