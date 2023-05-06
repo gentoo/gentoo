@@ -19,6 +19,7 @@ SLOT="0"
 RDEPEND="
 	app-alternatives/awk
 	app-arch/gzip
+	sys-apps/gentoo-functions
 	sys-apps/grep
 	>=sys-libs/glibc-2.38
 	!<sys-libs/glibc-2.38
