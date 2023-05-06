@@ -31,7 +31,6 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="${PYTHON_DEPS}
 	dev-libs/appstream-glib
-	dev-util/intltool
 	virtual/pkgconfig
 	$(vala_depend)
 "
