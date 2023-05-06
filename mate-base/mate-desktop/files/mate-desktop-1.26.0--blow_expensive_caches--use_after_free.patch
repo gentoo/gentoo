@@ -1,0 +1,50 @@
+From 7b379f54a5b09df007f7e84dabbbc5f8ce9381a9 Mon Sep 17 00:00:00 2001
+From: Colomban Wendling <cwendling@hypra.fr>
+Date: Mon, 7 Nov 2022 11:57:51 +0100
+Subject: [PATCH] Revert "[mate-bg] small cleanup"
+
+It is not possible to use the `list` pointer after it has been deleted,
+so the "cleanup" this commit made lead to using freed memory if any
+item actually got clean up.
+
+This "cleanup" also don't seem meaningful to me, as all it does
+otherwise is trade an assignation for a redundant test -- either of
+which the compiler might happily optimize out.
+
+This reverts commit 47426c90d10e9f738ecf89f35db94ca8deff55e0.
+---
+ libmate-desktop/mate-bg.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/libmate-desktop/mate-bg.c b/libmate-desktop/mate-bg.c
+index 0f617fa8..e535231d 100644
+--- a/libmate-desktop/mate-bg.c
++++ b/libmate-desktop/mate-bg.c
+@@ -2002,19 +2002,18 @@ static gboolean
+ blow_expensive_caches (gpointer data)
+ {
+ 	MateBG *bg = data;
+-	GList *list;
++	GList *list, *next;
+ 
+ 	bg->blow_caches_id = 0;
+ 
+-	if (bg->file_cache) {
+-		for (list = bg->file_cache; list != NULL; list = list->next) {
+-			FileCacheEntry *ent = list->data;
++	for (list = bg->file_cache; list != NULL; list = next) {
++		FileCacheEntry *ent = list->data;
++		next = list->next;
+ 
+-			if (ent->type == PIXBUF) {
+-				file_cache_entry_delete (ent);
+-				bg->file_cache = g_list_delete_link (bg->file_cache,
+-								     list);
+-			}
++		if (ent->type == PIXBUF) {
++			file_cache_entry_delete (ent);
++			bg->file_cache = g_list_delete_link (bg->file_cache,
++							     list);
+ 		}
+ 	}
+ 
