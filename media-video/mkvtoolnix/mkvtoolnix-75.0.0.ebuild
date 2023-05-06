@@ -104,12 +104,15 @@ src_configure() {
 
 		$(use_with dvd dvdread)
 		$(use_with nls gettext)
-		$(usex nls "" --with-po4a=false)
+		#$(use_with nls po4a)
 		--disable-update-check
 		--disable-optimization
 		--with-boost="${ESYSROOT}"/usr
 		--with-boost-libdir="${ESYSROOT}"/usr/$(get_libdir)
 	)
+
+	# Work around bug #904710.
+	use nls || export ac_cv_path_PO4A=
 
 	econf "${myeconfargs[@]}"
 }
