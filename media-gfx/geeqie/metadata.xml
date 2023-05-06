@@ -12,4 +12,7 @@
 		<flag name="jpegxl">Enable support for JPEG XL image format</flag>
 		<flag name="map">Enable items GPS map display</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">BestImageViewer/geeqie</remote-id>
+	</upstream>
 </pkgmetadata>
