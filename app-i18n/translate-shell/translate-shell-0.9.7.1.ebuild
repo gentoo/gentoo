@@ -33,7 +33,7 @@ src_install() {
 pkg_postinst() {
 	optfeature "all built-in translators (e.g. Apertium, Yandex)" net-misc/curl[ssl]
 	optfeature "display text in right-to-left scripts" dev-libs/fribidi
-	optfeature "text-to-speech functionality" media-sound/mpg123 app-accessibility/espeak media-video/mpv media-video/mplayer
+	optfeature "text-to-speech functionality" media-sound/mpg123 app-accessibility/espeak-ng media-video/mpv media-video/mplayer
 	optfeature "interactive translation (REPL)" app-editors/emacs app-misc/rlwrap
 	optfeature "spell checking" app-text/aspell app-text/hunspell
 }
