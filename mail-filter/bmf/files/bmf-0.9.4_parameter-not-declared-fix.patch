@@ -1,0 +1,24 @@
+Bug: https://bugs.gentoo.org/885043
+--- a/lex.c
++++ b/lex.c
+@@ -186,17 +186,17 @@ static inline bool_t is_whitespace( int c )
+     return ( c == ' ' || c == '\t' || c == '\r' );
+ }
+
+-static inline bool_t is_base64char(c)
++static inline bool_t is_base64char( int c )
+ {
+     return ( isalnum(c) || (c == '/' || c == '+') );
+ }
+
+-static inline bool_t is_wordmidchar(c)
++static inline bool_t is_wordmidchar( int c )
+ {
+     return ( isalnum(c) || c == '$' || c == '\'' || c == '.' || c == '-' );
+ }
+
+-static inline bool_t is_wordendchar(c)
++static inline bool_t is_wordendchar( int c )
+ {
+     return ( isalnum(c) || c == '$' );
+ }
