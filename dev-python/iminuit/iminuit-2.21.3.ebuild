@@ -31,6 +31,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-gcc-13.patch )
+
 distutils_enable_tests pytest
 
 src_test() {
