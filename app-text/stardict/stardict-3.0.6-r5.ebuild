@@ -9,49 +9,41 @@ EAPI=6
 
 GNOME2_LA_PUNT=yes
 
-inherit autotools flag-o-matic gnome2
+inherit flag-o-matic gnome2
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
-HOMEPAGE="http://stardict-4.sourceforge.net/
-	https://github.com/huzheng001/stardict-3"
-SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz
+HOMEPAGE="http://stardict-4.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}-4/${P}.tar.bz2
 	pronounce? ( https://${PN}-3.googlecode.com/files/WyabdcRealPeopleTTS.tar.bz2 )
 	qqwry? ( mirror://gentoo/QQWry.Dat.bz2 )"
-S="${WORKDIR}"/${P}
 
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="advertisement cal debug dictdotcn espeak examples flite
-fortune gucharmap +htmlparse info man perl +powerwordparse
-pronounce qqwry spell tools updateinfo +wikiparse +wordnet
-+xdxfparse youdaodict"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 sparc x86"
+IUSE="advertisement debug dictdotcn espeak examples +gucharmap
++htmlparse man perl +powerwordparse pronounce qqwry spell
+tools updateinfo +wikiparse +wordnet +xdxfparse"
 
 RESTRICT="test"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.32:2
+	>=dev-libs/glib-2.16:2
 	dev-libs/libsigc++:2=
-	media-libs/libcanberra[gtk3]
 	sys-libs/zlib:=
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
+	>=x11-libs/gtk+-2.20:2
 	x11-libs/libX11
 	x11-libs/pango
-	espeak? ( >=app-accessibility/espeak-1.29 )
-	flite? ( app-accessibility/flite )
-	gucharmap? ( gnome-extra/gucharmap:2.90= )
+	gucharmap? ( gnome-extra/gucharmap:0= )
 	spell? ( >=app-text/enchant-1.2:0 )
 	tools? (
 		dev-db/mysql-connector-c
-		dev-libs/expat
 		dev-libs/libpcre:=
 		dev-libs/libxml2:=
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	info? ( sys-apps/texinfo )
-	fortune? ( games-misc/fortune-mod )
+	espeak? ( >=app-accessibility/espeak-ng-1.29 )
 	perl? ( dev-lang/perl )
 "
 DEPEND="${COMMON_DEPEND}
@@ -66,8 +58,6 @@ DEPEND="${COMMON_DEPEND}
 # docs are messy, installed manually below
 DOCS=""
 
-PATCHES=( "${FILESDIR}/${PN}-4.0.0_pre20160518-tabfile.patch" )
-
 src_prepare() {
 	# From Fedora
 	# Remove unneeded sigc++ header files to make it sure
@@ -78,35 +68,29 @@ src_prepare() {
 	# libsigc++ started to require c++11 support
 	append-cxxflags "-std=c++11"
 
-	# bug 604318
-	sed -i '/AM_GCONF_SOURCE_2/d' dict/configure.ac || die
-
 	eapply_user
-	eautoreconf
 	gnome2_src_prepare
 }
 
 src_configure() {
+	# Hint: EXTRA_ECONF="--enable-gnome-support" and manual install of
+	# libbonobo-2, libgnome-2, libgnomeui-2, gconf-2 and orbit-2 will
+	# give you GNOME 2.x support, that is otherwise considered deprecated
+	# because of the deep GNOME 2.x core library dependencies
+
 	# Festival plugin crashes, bug 188684. Disable for now.
-	# Gnome2 support is disabled due to deprecation request, bug 644346
 	gnome2_src_configure \
-		--disable-darwin-support \
 		--disable-festival \
 		--disable-gnome-support \
 		--disable-gpe-support \
-		--disable-maemo-support \
 		--disable-schemas-install \
 		--disable-scrollkeeper \
 		$(use_enable advertisement) \
-		$(use_enable cal) \
 		$(use_enable debug) \
 		$(use_enable dictdotcn) \
 		$(use_enable espeak) \
-		$(use_enable flite) \
-		$(use_enable fortune) \
 		$(use_enable gucharmap) \
 		$(use_enable htmlparse) \
-		$(use_enable info) \
 		$(use_enable man) \
 		$(use_enable powerwordparse) \
 		$(use_enable qqwry) \
@@ -115,8 +99,7 @@ src_configure() {
 		$(use_enable updateinfo) \
 		$(use_enable wikiparse) \
 		$(use_enable wordnet) \
-		$(use_enable xdxfparse) \
-		$(use_enable youdaodict)
+		$(use_enable xdxfparse)
 }
 
 src_install() {
@@ -127,7 +110,6 @@ src_install() {
 	docinto dict
 	dodoc dict/{AUTHORS,ChangeLog,README,TODO}
 	dodoc dict/doc/{Documentation,FAQ,HowToCreateDictionary,Skins,StarDictFileFormat,TextualDictionaryFileFormat,Translation}
-	dodoc -r dict/doc/wiki
 
 	docinto lib
 	dodoc lib/{AUTHORS,ChangeLog,README}
@@ -155,16 +137,16 @@ src_install() {
 	# and additional scripts from tools dir
 	if use tools; then
 		local app
-		local apps="${PN}-editor pydict2dic olddic2newdic oxford2dic directory2dic dictd2dic
-			wquick2dic ec50 directory2treedic treedict2dir jdictionary mova xmlinout
-			soothill kanjidic2 powerword kdic 21tech 21shiji buddhist tabfile
-			cedict edict duden ${PN}-dict-update degb2utf frgb2utf jpgb2utf gmx2utf
-			rucn kingsoft kingsoft2 wikipedia wikipediaImage babylon ${PN}2txt ${PN}-verify
-			fest2dict i2e2dict downloadwiki ooo2dict myspell2dic exc2i2e
-			dictbuilder tabfile2sql KangXi Unihan xiaoxuetang-ja wubi ydp2dict
-			wordnet lingvosound2resdb resdatabase2dir dir2resdatabase ${PN}-index
-			sd2foldoc
-			${PN}-text2bin ${PN}-bin2text ${PN}-repair"
+		local apps="${PN}-editor pydict2dic olddic2newdic oxford2dic directory2dic
+			dictd2dic wquick2dic ec50 directory2treedic treedict2dir jdictionary mova
+			xmlinout soothill kanjidic2 powerword kdic 21tech 21shiji buddhist
+			tabfile cedict edict duden ${PN}-dict-update degb2utf frgb2utf
+			jpgb2utf gmx2utf rucn kingsoft wikipedia wikipediaImage babylon
+			${PN}2txt ${PN}-verify fest2dict i2e2dict downloadwiki
+			ooo2dict myspell2dic exc2i2e dictbuilder tabfile2sql KangXi Unihan
+			xiaoxuetang-ja wubi ydp2dict wordnet lingvosound2resdb
+			resdatabase2dir dir2resdatabase ${PN}-index sd2foldoc ${PN}-text2bin
+			${PN}-bin2text ${PN}-repair"
 
 		use perl && apps+=" dicts-dump.pl ncce2stardict.pl parse-oxford.perl"
 
