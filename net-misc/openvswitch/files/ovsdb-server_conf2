@@ -1,5 +1,5 @@
 # Socket for bringing the server up
-DB_SOCKET="/var/run/openvswitch/db.sock"
+DB_SOCKET="/run/openvswitch/db.sock"
 
 # Remote sockets are defined in the database by default
 REMOTE_DB="db:Open_vSwitch,Open_vSwitch,manager_options"
