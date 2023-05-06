@@ -115,8 +115,19 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	sys-devel/bison
-	doc? ( sys-apps/texinfo )
-	test? ( dev-lang/perl )
+	compile-locales? (
+		app-arch/gzip
+		sys-apps/grep
+		app-alternatives/awk
+	)
+	doc? (
+		dev-lang/perl
+		sys-apps/texinfo
+	)
+	test? (
+		dev-lang/perl
+		>=net-dns/libidn2-2.3.0
+	)
 "
 COMMON_DEPEND="
 	gd? ( media-libs/gd:2= )
@@ -124,27 +135,16 @@ COMMON_DEPEND="
 		audit? ( sys-process/audit )
 		caps? ( sys-libs/libcap )
 	) )
-	perl? ( dev-lang/perl )
-	test? ( dev-lang/perl )
 	suid? ( caps? ( sys-libs/libcap ) )
 	selinux? ( sys-libs/libselinux )
 	systemtap? ( dev-util/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
-	compile-locales? (
-		app-arch/gzip
-		sys-apps/grep
-		app-alternatives/awk
-	)
-	doc? ( dev-lang/perl )
-	test? ( >=net-dns/libidn2-2.3.0 )
 "
 RDEPEND="${COMMON_DEPEND}
-	app-arch/gzip
-	sys-apps/grep
-	app-alternatives/awk
 	sys-apps/gentoo-functions
 	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
+	perl? ( dev-lang/perl )
 "
 
 RESTRICT="!test? ( test )"
