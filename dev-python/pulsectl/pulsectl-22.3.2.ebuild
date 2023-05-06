@@ -21,5 +21,10 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	media-sound/pulseaudio
 "
+BDEPEND="
+	test? (
+		media-sound/pulseaudio-daemon
+	)
+"
 
 distutils_enable_tests unittest
