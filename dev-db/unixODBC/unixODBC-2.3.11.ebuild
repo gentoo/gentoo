@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Complete ODBC driver manager"
 HOMEPAGE="https://www.unixodbc.org/"
@@ -27,11 +27,19 @@ DEPEND="
 "
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/odbc_config )
-MULTILIB_WRAPPED_HEADERS=( /usr/include/unixodbc_conf.h )
+MULTILIB_WRAPPED_HEADERS=( /usr/include/unixODBC/unixodbc_conf.h /usr/include/unixodbc.h )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-clang16.patch
+	"${FILESDIR}"/${PN}-2.3.9-clang16.patch
+	"${FILESDIR}"/${P}-config-no-install.patch
 )
+
+src_prepare() {
+	default
+
+	# Only needed for config.h install patch
+	eautoreconf
+}
 
 multilib_src_configure() {
 	# Needs flex, bison
