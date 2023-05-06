@@ -18,8 +18,8 @@ RESTRICT="test"
 RDEPEND="dev-libs/glib:=
 	sys-libs/libseccomp
 	systemd? ( sys-apps/systemd:= )"
-DEPEND="${RDEPEND}
-	dev-go/go-md2man"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-go/go-md2man"
 
 src_prepare() {
 	default
