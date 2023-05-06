@@ -46,7 +46,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libsigc++-2.8:2
 	>=dev-libs/libxml2-2.7.4
 	>=dev-libs/libxslt-1.1.25
-	dev-libs/gdl:3
 	dev-libs/popt
 	media-gfx/potrace
 	media-libs/libepoxy
