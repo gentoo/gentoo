@@ -29,8 +29,6 @@ RDEPEND="${DEPEND}
 	gnome-base/gsettings-desktop-schemas
 "
 BDEPEND="
-	app-text/docbook-xml-dtd:4.1.2
-	>=dev-util/intltool-0.35.0
 	dev-util/itstool
 	virtual/pkgconfig
 "
