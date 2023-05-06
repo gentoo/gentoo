@@ -13,5 +13,6 @@
 </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:mozilla:nss</remote-id>
+  <remote-id type="github">nss-dev/nss</remote-id>
 </upstream>
 </pkgmetadata>
