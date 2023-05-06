@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,15 +20,16 @@ BDEPEND="
 	sys-apps/help2man
 	virtual/pkgconfig
 	doc? (
+		app-text/ghostscript-gpl
+		app-text/texlive
 		dev-lang/perl
 		dev-perl/Readonly
 		dev-tex/hevea
 		gnome-base/librsvg
 		media-gfx/graphviz
 		media-gfx/transfig
-		sci-visualization/gnuplot[gd]
-		virtual/imagemagick-tools
-		virtual/latex-base
+		sci-visualization/gnuplot[cairo,gd]
+		virtual/imagemagick-tools[tiff]
 	)
 "
 RDEPEND="
