@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2023-05-06)
+# sci-libs/vtk not keyworded here (+ lots of unkw'd deps), bug #778293
+sci-mathematics/maxima vtk
+
+# Sam James <sam@gentoo.org> (2023-05-06)
 # Broken bundled Eigen, fails to compile. See bug #865191.
 sci-geosciences/grass pdal
 sci-libs/vtk pdal
