@@ -12,4 +12,8 @@
 	<upstream>
 		<remote-id type="github">winterheart/broadcom-bt-firmware</remote-id>
 	</upstream>
+<use>
+	<flag name="compress-xz">Compress firmware using xz (<pkg>app-arch/xz-utils</pkg>) before installation</flag>
+	<flag name="compress-zstd">Compress firmware using zstd (<pkg>app-arch/zstd</pkg>) before installation</flag>
+</use>
 </pkgmetadata>
