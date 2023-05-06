@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-05-06)
+# Broken bundled Eigen, fails to compile. See bug #865191.
+sci-libs/pdal
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-02-17)
 # Not ported to ppc32. See ALL_.*_SUPPORTED_ARCH
