@@ -7,14 +7,14 @@ CRATES="
 	adler-1.0.2
 	ahash-0.7.6
 	aho-corasick-0.7.20
-	anyhow-1.0.70
+	anyhow-1.0.71
 	autocfg-1.1.0
 	base64-0.13.1
 	base64-0.21.0
 	bitflags-1.3.2
 	block-buffer-0.10.4
 	bstr-1.4.0
-	bumpalo-3.12.0
+	bumpalo-3.12.1
 	byteorder-1.4.3
 	bytes-1.4.0
 	bytesize-1.2.0
@@ -141,7 +141,7 @@ CRATES="
 	parking_lot-0.12.1
 	parking_lot_core-0.9.6
 	path-slash-0.2.1
-	pep440_rs-0.3.5
+	pep440_rs-0.3.6
 	pep508_rs-0.1.5
 	percent-encoding-2.2.0
 	pin-project-lite-0.2.9
@@ -158,7 +158,7 @@ CRATES="
 	pyproject-toml-0.6.0
 	python-pkginfo-0.5.5
 	quote-1.0.26
-	quoted_printable-0.4.7
+	quoted_printable-0.4.8
 	rand-0.8.5
 	rand_chacha-0.3.1
 	rand_core-0.6.4
@@ -215,9 +215,9 @@ CRATES="
 	thiserror-1.0.39
 	thiserror-impl-1.0.39
 	thread_local-1.1.7
-	time-0.3.20
-	time-core-0.1.0
-	time-macros-0.2.8
+	time-0.3.21
+	time-core-0.1.1
+	time-macros-0.2.9
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.1
 	toml-0.5.11
@@ -229,7 +229,7 @@ CRATES="
 	tracing-core-0.1.30
 	tracing-log-0.1.3
 	tracing-serde-0.1.3
-	tracing-subscriber-0.3.16
+	tracing-subscriber-0.3.17
 	trycmd-0.14.11
 	twox-hash-1.6.3
 	typenum-1.16.0
@@ -272,7 +272,7 @@ CRATES="
 	windows_x86_64_gnu-0.42.2
 	windows_x86_64_gnullvm-0.42.2
 	windows_x86_64_msvc-0.42.2
-	winnow-0.4.1
+	winnow-0.4.6
 	xattr-0.2.3
 	xwin-0.2.12
 	yansi-0.5.1
