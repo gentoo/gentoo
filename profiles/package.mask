@@ -39,7 +39,7 @@
 # are better alternatives available.  The suggested replacements are:
 # media-gfx/prusaslicer, media-gfx/superslicer and orcaslicer
 # (not packaged).
-# Removal on 2023-06-04.  Bug #905769.
+# Removal on 2023-08-04.  Bug #905769.
 media-gfx/cura
 acct-group/ultimaker
 acct-user/ultimaker
