@@ -669,7 +669,7 @@ src_prepare() {
 
 	# Respect choice for "jumbo-build"
 	# Changing the value for FILES_PER_UNIFIED_FILE may not work, see #905431
-	if [[ ! -z ${FILES_PER_UNIFIED_FILE} ]] && use jumbo-build; then
+	if [[ -n ${FILES_PER_UNIFIED_FILE} ]] && use jumbo-build; then
 		local my_files_per_unified_file=${FILES_PER_UNIFIED_FILE:=16}
 		elog ""
 		elog "jumbo-build defaults modified to ${my_files_per_unified_file}."
