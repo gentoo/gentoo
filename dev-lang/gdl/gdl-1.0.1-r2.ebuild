@@ -64,7 +64,6 @@ DEPEND="${RDEPEND}
 	eigen? ( dev-cpp/eigen:3 )
 "
 BDEPEND="
-	dev-util/intltool
 	virtual/pkgconfig
 "
 
