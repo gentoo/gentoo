@@ -9,3 +9,4 @@ move dev-python/python-mpd dev-python/python-mpd2
 move dev-python/sphinx_celery dev-python/sphinx-celery
 move dev-python/pretty-yaml dev-python/pyaml
 move dev-python/aws-xray-sdk-python dev-python/aws-xray-sdk
+move dev-python/python-docs app-doc/python-docs
