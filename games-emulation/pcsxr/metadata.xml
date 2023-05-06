@@ -11,4 +11,7 @@
 		<flag name="cdio">Use libcdio for CD support</flag>
 		<flag name="sdl">Use SDL sound backend (other parts of SDL are used unconditionally)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">iCatButler/pcsxr</remote-id>
+	</upstream>
 </pkgmetadata>
