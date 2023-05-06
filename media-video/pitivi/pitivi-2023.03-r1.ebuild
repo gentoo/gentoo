@@ -66,7 +66,6 @@ BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
-	>=dev-util/intltool-0.35.5
 	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
