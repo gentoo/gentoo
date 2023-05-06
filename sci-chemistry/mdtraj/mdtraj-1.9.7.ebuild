@@ -31,6 +31,9 @@ DEPEND="${RDEPEND}
 		sci-libs/scikit-learn[${PYTHON_USEDEP}]
 	)
 "
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests --install pytest
 
