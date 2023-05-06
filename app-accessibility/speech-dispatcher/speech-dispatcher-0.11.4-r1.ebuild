@@ -14,7 +14,7 @@ SRC_URI="https://github.com/brailcom/speechd/releases/download/${PV}/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
-IUSE="alsa ao espeak +espeak-ng flite nas pulseaudio python"
+IUSE="alsa ao +espeak flite nas pulseaudio python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -24,8 +24,7 @@ DEPEND="python? ( ${PYTHON_DEPS} )
 	>=media-libs/libsndfile-1.0.2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
-	espeak? ( app-accessibility/espeak )
-	espeak-ng? ( app-accessibility/espeak-ng )
+	espeak? ( app-accessibility/espeak-ng )
 	flite? ( app-accessibility/flite )
 	nas? ( media-libs/nas )
 	pulseaudio? ( media-sound/pulseaudio )"
@@ -59,10 +58,10 @@ src_configure() {
 		--with-kali=no
 		--with-pico=no
 		--with-voxin=no
+		--with-espeak=no
 		$(use_with alsa)
 		$(use_with ao libao)
-		$(use_with espeak)
-		$(use_with espeak-ng)
+		$(use_with espeak espeak-ng)
 		$(use_with flite)
 		$(use_with nas)
 		$(use_with pulseaudio pulse)
@@ -109,7 +108,7 @@ src_install() {
 
 pkg_postinst() {
 	local editconfig="n"
-	if ! use espeak-ng; then
+	if ! use espeak; then
 		ewarn "You have disabled espeak-ng, which is speech-dispatcher's"
 		ewarn "default speech synthesizer."
 		ewarn
