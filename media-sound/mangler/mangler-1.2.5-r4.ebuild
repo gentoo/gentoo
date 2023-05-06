@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,18 +24,20 @@ RDEPEND="
 	x11-libs/libXi
 	alsa? ( media-libs/alsa-lib )
 	opus? ( media-libs/opus )
-	espeak? ( app-accessibility/espeak )
+	espeak? ( app-accessibility/espeak-ng )
 	g15? ( app-misc/g15daemon )
 	gsm? ( media-sound/gsm )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.14 )
 	speex? ( >=media-libs/speex-1.2_rc1 )
-	xosd? ( x11-libs/xosd )"
+	xosd? ( x11-libs/xosd )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/mangler-version-info.patch"
 	"${FILESDIR}/fix_ftbfs_narrowing_conversion.patch"
+	"${FILESDIR}/mangler-1.2.5-espeak-ng.patch"
 )
 
 src_prepare() {

@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -117,9 +117,9 @@ if test "$disable_ui" != "yes" ; then
+ 	fi
+ 
+ 	if test "$enable_espeak" != "no" ; then
+-		AC_CHECK_LIB([espeak], [espeak_Initialize], [
++		AC_CHECK_LIB([espeak-ng], [espeak_Initialize], [
+ 			AC_DEFINE(HAVE_ESPEAK, 1, [have espeak])
+-			LIBS="-lespeak $LIBS"
++			LIBS="-lespeak-ng $LIBS"
+ 			echo "Enabled optional eSpeak support."
+ 		], [
+ 			echo "Optional eSpeak support is not enabled."
