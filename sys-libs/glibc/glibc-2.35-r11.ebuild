@@ -412,6 +412,7 @@ setup_flags() {
 		# relating to failed builds, we strip most CFLAGS out to ensure as few
 		# problems as possible.
 		strip-flags
+		filter-lto
 		# Lock glibc at -O2; we want to be conservative here.
 		filter-flags '-O?'
 		append-flags -O2
