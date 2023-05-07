@@ -18,7 +18,7 @@ if [[ ${PV} = *9999 ]]; then
 	S="${WORKDIR}/freecad-${PV}"
 else
 	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
 
