@@ -19,6 +19,8 @@ KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-2.1.3-json-serverlist.patch" )
+
 python_install_all() {
 	doman ${PN}.1
 	distutils-r1_python_install_all
