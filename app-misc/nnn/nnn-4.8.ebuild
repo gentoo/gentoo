@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jarun/nnn/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="+readline pcre 8contexts icons nerdfonts emoji qsort colemak colemak-dh gitstatus namefirst restorepreview"
+IUSE="8contexts colemak colemak-dh emoji gitstatus icons namefirst nerdfonts pcre qsort +readline restorepreview"
 
 DEPEND="sys-libs/ncurses:=
 	pcre? ( dev-libs/libpcre )
@@ -20,7 +20,8 @@ DEPEND="sys-libs/ncurses:=
 	elibc_musl? ( sys-libs/fts-standalone )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="${DEPEND}"
-REQUIRED_USE="?? ( icons nerdfonts emoji ) ?? ( colemak colemak-dh )"
+REQUIRED_USE="?? ( icons nerdfonts emoji )
+	?? ( colemak colemak-dh )"
 
 src_prepare() {
 	default
