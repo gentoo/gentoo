@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/guillemjover.asc
-inherit autotools multilib multilib-minimal verify-sig
+inherit autotools flag-o-matic multilib multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -34,6 +34,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	# The build system will install libbsd-ctor.a despite USE="-static-libs"
 	# which is correct, see:
 	# https://gitlab.freedesktop.org/libbsd/libbsd/commit/c5b959028734ca2281250c85773d9b5e1d259bc8

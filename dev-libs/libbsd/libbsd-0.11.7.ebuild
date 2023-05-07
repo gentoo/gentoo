@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/guillemjover.asc
-inherit multilib-minimal verify-sig
+inherit flag-o-matic multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
 
 multilib_src_configure() {
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	# The build system will install libbsd-ctor.a despite USE="-static-libs"
 	# which is correct, see:
 	# https://gitlab.freedesktop.org/libbsd/libbsd/commit/c5b959028734ca2281250c85773d9b5e1d259bc8
