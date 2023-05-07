@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2023-05-07)
+# Doesn't compile, see #894210.
+dev-libs/log4cxx smtp
+
 # Mike Gilbert <floppym@gentoo.org> (2023-05-04)
 # Requires unreleased >media-libs/libaom-3.6.0.
 >=www-client/chromium-113 system-av1
