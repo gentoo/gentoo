@@ -37,6 +37,8 @@ python_compile() {
 	# given need lazy before compile and it needs a usable ${PYTHON}
 	emake completions lazy-extractors $(usev man yt-dlp.1)
 
+	"${EPYTHON}" devscripts/update-version.py || die
+
 	distutils-r1_python_compile
 }
 
