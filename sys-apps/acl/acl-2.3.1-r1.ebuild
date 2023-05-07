@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,6 +48,8 @@ multilib_src_configure() {
 		filter-flags -D_FORTIFY_SOURCE=3
 		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 	fi
+
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
