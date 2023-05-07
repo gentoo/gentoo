@@ -33,6 +33,5 @@ src_configure() {
 		--host=${CHOST} \
 		--prefix="${EPREFIX}"/usr \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
-		--shell="${EPREFIX}"/bin/sh \
 			|| die
 }
