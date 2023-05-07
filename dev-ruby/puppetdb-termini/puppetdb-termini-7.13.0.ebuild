@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 # will need the same keywords as puppet
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 
 RDEPEND+=""
 DEPEND+=""
