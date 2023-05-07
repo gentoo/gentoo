@@ -26,9 +26,6 @@ PATCH_DEV=dilfridge
 # gcc mulitilib bootstrap files version
 GCC_BOOTSTRAP_VER=20201208
 
-# locale-gen version
-LOCALE_GEN_VER=2.23
-
 # systemd integration version
 GLIBC_SYSTEMD_VER=20210729
 
@@ -47,7 +44,6 @@ else
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 fi
 
-SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${LOCALE_GEN_VER}.tar.gz"
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git/snapshot/glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz )"
 
@@ -105,21 +101,13 @@ fi
 # compile-locales useflag either in src_install or in pkg_postinst.
 
 IDEPEND="
-	!compile-locales? (
-		app-arch/gzip
-		sys-apps/grep
-		app-alternatives/awk
-	)
+	!compile-locales? ( sys-apps/locale-gen )
 "
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	sys-devel/bison
-	compile-locales? (
-		app-arch/gzip
-		sys-apps/grep
-		app-alternatives/awk
-	)
+	compile-locales? ( sys-apps/locale-gen )
 	doc? (
 		dev-lang/perl
 		sys-apps/texinfo
@@ -142,7 +130,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
-	sys-apps/gentoo-functions
+	sys-apps/locale-gen
 	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	perl? ( dev-lang/perl )
 "
@@ -912,7 +900,6 @@ src_unpack() {
 	fi
 
 	cd "${WORKDIR}" || die
-	unpack locale-gen-${LOCALE_GEN_VER}.tar.gz
 	use systemd && unpack glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz
 }
 
@@ -937,12 +924,6 @@ src_prepare() {
 
 	cd "${WORKDIR}" || die
 	find . -name configure -exec touch {} +
-
-	# move the external locale-gen to its old place
-	mkdir extra || die
-	mv locale-gen-${LOCALE_GEN_VER} extra/locale || die
-
-	eprefixify extra/locale/locale-gen
 
 	# Fix permissions on some of the scripts.
 	chmod u+x "${S}"/scripts/*.sh
@@ -1461,13 +1442,6 @@ glibc_do_src_install() {
 		-e "s: \\\\::g" -e "s:/: :g" \
 		"${S}"/localedata/SUPPORTED > "${ED}"/usr/share/i18n/SUPPORTED \
 		|| die "generating /usr/share/i18n/SUPPORTED failed"
-	cd "${WORKDIR}"/extra/locale || die
-	dosbin locale-gen
-	doman *.[0-8]
-	insinto /etc
-	doins locale.gen
-
-	keepdir /usr/lib/locale
 
 	cd "${S}" || die
 
@@ -1514,7 +1488,6 @@ glibc_do_src_install() {
 	# Generate all locales if this is a native build as locale generation
 	if use compile-locales && ! is_crosscompile ; then
 		run_locale_gen --inplace-glibc "${ED}/"
-		sed -e 's:COMPILED_LOCALES="":COMPILED_LOCALES="1":' -i "${ED}"/usr/sbin/locale-gen || die
 	fi
 }
 
