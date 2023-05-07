@@ -51,7 +51,6 @@ _setup-allowed-flags() {
 
 		# Hardening flags
 		'-fstack-protector*'
-		'-fstack-check*' -fno-stack-check
 		-fstack-clash-protection
 		'-fcf-protection=*'
 		-fbounds-check -fbounds-checking
