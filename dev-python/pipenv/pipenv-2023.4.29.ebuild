@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}/pipenv-2023.4.29-append-always-install.patch"
 	"${FILESDIR}/pipenv-2023.4.29-fix-imports.patch"
 	"${FILESDIR}/pipenv-2023.4.29-fix-toml-in-vendor.patch"
+	"${FILESDIR}/pipenv-2023.4.29-fix-toml-dump.patch"
 )
 
 RDEPEND="
