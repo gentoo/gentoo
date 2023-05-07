@@ -247,6 +247,7 @@ multilib_src_configure() {
 	if use elibc_musl; then
 		# Avoid redefinition of struct ethhdr.
 		append-cppflags -D__UAPI_DEF_ETHHDR=0
+		append-flags -D_LARGEFILE64_SOURCE
 	fi
 
 	if multilib_is_native_abi || use udev; then
