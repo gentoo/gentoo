@@ -61,6 +61,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.2-libressl.patch #903001
 )
 
+# Gnulib false positive #900064
+QA_CONFIG_IMPL_DECL_SKIP="( MIN )"
+
 src_prepare() {
 	default
 

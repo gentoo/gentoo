@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,6 +56,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.2-libdir-zlib.patch
 	"${FILESDIR}"/${PN}-4.9.1-libdir-readline.patch
 )
+
+# Gnulib false positive #900064
+QA_CONFIG_IMPL_DECL_SKIP="( MIN )"
 
 src_prepare() {
 	default
