@@ -434,8 +434,6 @@ CRATES="
 	zstd-sys-2.0.7+zstd.1.5.4
 "
 
-
-
 inherit cargo
 
 MY_P="${PN}-${PN}-v${PV}"
