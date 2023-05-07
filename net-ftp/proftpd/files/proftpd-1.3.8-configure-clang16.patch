@@ -1,0 +1,255 @@
+https://bugs.gentoo.org/881709 (and dupe https://bugs.gentoo.org/900066)
+https://github.com/proftpd/proftpd/pull/1667
+
+From 98e46de3093da71121362d5be4c445a3ef227010 Mon Sep 17 00:00:00 2001
+From: Arjun Shankar <arjun@redhat.com>
+Date: Fri, 5 May 2023 15:35:56 +0200
+Subject: [PATCH] configure: Remove several implicit function declarations
+
+During configure, some checks omit the corresponding include. A compiler
+defaulting to C99 mode could cause those checks to fail since C99 does
+not allow implicit function declarations. This commit fixes the same.
+The configure script is re-generated.
+
+Signed-off-by: Arjun Shankar <arjun@redhat.com>
+--- a/configure
++++ b/configure
+@@ -18305,6 +18305,20 @@ _ACEOF
+ fi
+ 
+ 
++for ac_header in stddef.h crypt.h netdb.h arpa/inet.h sys/socket.h
++do :
++  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
++ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
++if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
++  cat >>confdefs.h <<_ACEOF
++#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
++_ACEOF
++
++fi
++
++done
++
++
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for standalone crypt" >&5
+ $as_echo_n "checking for standalone crypt... " >&6; }
+ if ${pr_cv_lib_standalone_crypt+:} false; then :
+@@ -18313,10 +18327,19 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++      #if HAVE_STDDEF_H
++      # include <stddef.h>
++      #endif
++      #if HAVE_CRYPT_H
++      # include <crypt.h>
++      #endif
++
+ int
+ main ()
+ {
+-crypt();
++
++      crypt(NULL, NULL);
++
+   ;
+   return 0;
+ }
+@@ -18388,10 +18411,19 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++      #if HAVE_STDDEF_H
++      # include <stddef.h>
++      #endif
++      #if HAVE_NETDB_H
++      # include <netdb.h>
++      #endif
++
+ int
+ main ()
+ {
+-gethostbyname();
++
++      gethostbyname(NULL);
++
+   ;
+   return 0;
+ }
+@@ -18508,10 +18540,19 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++      #if HAVE_STDDEF_H
++      # include <stddef.h>
++      #endif
++      #if HAVE_ARPA_INET_H
++      # include <arpa/inet.h>
++      #endif
++
+ int
+ main ()
+ {
+-inet_aton();
++
++      inet_aton(NULL, NULL);
++
+   ;
+   return 0;
+ }
+@@ -18584,10 +18625,16 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++      #if HAVE_NETDB_H
++      # include <netdb.h>
++      #endif
++
+ int
+ main ()
+ {
+-gethostent();
++
++      gethostent();
++
+   ;
+   return 0;
+ }
+@@ -18659,10 +18706,19 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++      #if HAVE_STDDEF_H
++      # include <stddef.h>
++      #endif
++      #if HAVE_SYS_SOCKET_H
++      # include <sys/socket.h>
++      #endif
++
+ int
+ main ()
+ {
+-bind();
++
++      bind(0, NULL, 0);
++
+   ;
+   return 0;
+ }
+--- a/configure.in
++++ b/configure.in
+@@ -1476,18 +1476,42 @@ AC_ARG_ENABLE(transfer-buffer-size,
+   ])
+ 
+ dnl Checks for libraries.  Yes, this is the hard way, but it's necessary.
++AC_CHECK_HEADERS(stddef.h crypt.h netdb.h arpa/inet.h sys/socket.h)
++
+ AC_CACHE_CHECK(for standalone crypt,pr_cv_lib_standalone_crypt,
+-  AC_TRY_LINK(,[crypt();],
+-  	pr_cv_lib_standalone_crypt="yes", pr_cv_lib_standalone_crypt="no" ))
++  AC_TRY_LINK(
++    [
++      #if HAVE_STDDEF_H
++      # include <stddef.h>
++      #endif
++      #if HAVE_CRYPT_H
++      # include <crypt.h>
++      #endif
++    ],
++    [
++      crypt(NULL, NULL);
++    ],
++    pr_cv_lib_standalone_crypt="yes", pr_cv_lib_standalone_crypt="no" ))
+ 
+ if test "$pr_cv_lib_standalone_crypt" = "no"; then
+   AC_CHECK_LIB(crypt, crypt)
+ fi
+ 
+ AC_CACHE_CHECK(for standalone gethostbyname,pr_cv_lib_standalone_gethost,
+-  AC_TRY_LINK(,[gethostbyname();],
+-  	pr_cv_lib_standalone_gethost="yes",
+-	pr_cv_lib_standalone_gethost="no" ))
++  AC_TRY_LINK(
++    [
++      #if HAVE_STDDEF_H
++      # include <stddef.h>
++      #endif
++      #if HAVE_NETDB_H
++      # include <netdb.h>
++      #endif
++    ],
++    [
++      gethostbyname(NULL);
++    ],
++    pr_cv_lib_standalone_gethost="yes",
++    pr_cv_lib_standalone_gethost="no" ))
+ 
+ if test "$pr_cv_lib_standalone_gethost" = "no"; then
+   AC_CHECK_LIB(resolv, gethostbyname)
+@@ -1495,25 +1519,57 @@ if test "$pr_cv_lib_standalone_gethost" = "no"; then
+ fi
+ 
+ AC_CACHE_CHECK(for standalone inet_aton,pr_cv_lib_standalone_aton,
+-  AC_TRY_LINK(,[inet_aton();],
+-  	pr_cv_lib_standalone_aton="yes",
+-	pr_cv_lib_standalone_aton="no" ))
++  AC_TRY_LINK(
++    [
++      #if HAVE_STDDEF_H
++      # include <stddef.h>
++      #endif
++      #if HAVE_ARPA_INET_H
++      # include <arpa/inet.h>
++      #endif
++    ],
++    [
++      inet_aton(NULL, NULL);
++    ],
++    pr_cv_lib_standalone_aton="yes",
++    pr_cv_lib_standalone_aton="no" ))
+ 
+ if test "$pr_cv_lib_standalone_aton" = "no"; then
+   AC_CHECK_LIB(bind, inet_aton)
+ fi
+ 
+ AC_CACHE_CHECK(for standalone nsl functions,pr_cv_lib_standalone_nsl,[
+-  AC_TRY_LINK(,[gethostent();],
+-  pr_cv_lib_standalone_nsl="yes", pr_cv_lib_standalone_nsl="no") ])
++  AC_TRY_LINK(
++    [
++      #if HAVE_NETDB_H
++      # include <netdb.h>
++      #endif
++    ],
++    [
++      gethostent();
++    ],
++    pr_cv_lib_standalone_nsl="yes",
++    pr_cv_lib_standalone_nsl="no") ])
+ 
+ if test "$pr_cv_lib_standalone_nsl" = "no"; then
+   AC_CHECK_LIB(nsl, gethostent)
+ fi
+ 
+ AC_CACHE_CHECK(for standalone socket functions,pr_cv_lib_standalone_sockets,
+-  AC_TRY_LINK(,[bind();],
+-  pr_cv_lib_standalone_sockets="yes", pr_cv_lib_standalone_sockets="no"))
++  AC_TRY_LINK(
++    [
++      #if HAVE_STDDEF_H
++      # include <stddef.h>
++      #endif
++      #if HAVE_SYS_SOCKET_H
++      # include <sys/socket.h>
++      #endif
++    ],
++    [
++      bind(0, NULL, 0);
++    ],
++    pr_cv_lib_standalone_sockets="yes",
++    pr_cv_lib_standalone_sockets="no"))
+ 
+ if test "$pr_cv_lib_standalone_sockets" = "no"; then
+   AC_CHECK_LIB(socket, bind)
+
