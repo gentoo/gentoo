@@ -26,6 +26,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-arch/zip
 	test? (
 		app-alternatives/gzip
 		app-arch/zip
