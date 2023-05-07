@@ -1,9 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit toolchain-funcs
+EAPI=7
 
 DESCRIPTION="A thread safe high level multi-database connection pool library"
 HOMEPAGE="https://www.tildeslash.com/libzdb/"
@@ -11,7 +9,7 @@ SRC_URI="https://www.tildeslash.com/${PN}/dist/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc mysql postgres +sqlite ssl static-libs"
 REQUIRED_USE=" || ( postgres mysql sqlite )"
 
@@ -28,8 +26,6 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	sed -i -e "s|&& ./pool||g" test/Makefile.in || die
-	# Fix detection of openssl 1.1
-	sed -i -e "s|SSL_library_init|SSL_CTX_new|" configure || die
 }
 
 src_configure() {
