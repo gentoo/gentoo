@@ -48,7 +48,10 @@ RDEPEND="
 
 BDEPEND="sys-devel/autoconf-archive"
 
-PATCHES=( "${FILESDIR}/${PN}-1.0.28-pam.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.28-pam.patch"
+	"${FILESDIR}/${PN}-1.0.51-sys-sendfile.patch"
+)
 
 src_prepare() {
 	default
