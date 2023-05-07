@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="A library for converting unicode strings to numbers and vice versa"
 HOMEPAGE="https://billposer.org/Software/libuninum.html"
@@ -19,6 +19,8 @@ src_prepare() {
 	# LTO does not work.
 	# See https://bugs.gentoo.org/855956
 	filter-lto
+
+	eautoreconf
 }
 
 src_configure() {
