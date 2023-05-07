@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>julien@jroy.ca</email>
+		<name>Julien Roy</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://github.com/hyprwm/Hyprland/releases</changelog>
+		<doc>https://wiki.hyprland.org/</doc>
+		<bugs-to>https://github.com/hyprwm/Hyprland/issues</bugs-to>
+		<remote-id type="github">hyprwm/Hyprland</remote-id>
+	</upstream>
+	<use>
+		<flag name="legacy-renderer">Enable legacy renderer</flag>
+	</use>
+</pkgmetadata>
