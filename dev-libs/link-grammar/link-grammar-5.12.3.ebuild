@@ -31,6 +31,11 @@ BDEPEND="
 	sys-devel/autoconf-archive
 	virtual/pkgconfig"
 
+PATCHES=(
+	# upstreamed (https://github.com/opencog/link-grammar/pull/1471)
+	"${FILESDIR}"/${P}-Wimplicit-function-declaration.patch
+)
+
 pkg_setup() {
 	if use aspell && use hunspell; then
 		ewarn "You have enabled 'aspell' and 'hunspell' support, but both cannot coexist,"
