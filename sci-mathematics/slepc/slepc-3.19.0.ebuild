@@ -9,7 +9,9 @@ inherit python-any-r1
 
 DESCRIPTION="Scalable Library for Eigenvalue Problem Computations"
 HOMEPAGE="https://slepc.upv.es/"
-SRC_URI="https://slepc.upv.es/download/distrib/${P}.tar.gz"
+SRC_URI="
+	!doc? ( https://slepc.upv.es/download/distrib/${P}.tar.gz )
+	doc? ( https://slepc.upv.es/download/distrib/${PN}-with-docs-${PV}.tar.gz )"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -31,6 +33,11 @@ DEPEND="${RDEPEND}
 "
 
 MAKEOPTS="${MAKEOPTS} V=1"
+
+src_unpack() {
+	use doc || unpack ${P}.tar.gz
+	use doc && unpack ${PN}-with-docs-${PV}.tar.gz
+}
 
 src_configure() {
 	# *sigh*
