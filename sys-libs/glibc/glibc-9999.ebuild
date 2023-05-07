@@ -1576,6 +1576,9 @@ pkg_preinst() {
 	# nothing to do if just installing headers
 	just_headers && return
 
+	einfo "Checking general environment sanity."
+	sanity_prechecks
+
 	# prepare /etc/ld.so.conf.d/ for files
 	mkdir -p "${EROOT}"/etc/ld.so.conf.d
 
