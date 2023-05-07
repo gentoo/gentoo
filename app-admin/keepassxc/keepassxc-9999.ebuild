@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ REQUIRED_USE="autotype? ( X )"
 
 RDEPEND="
 	app-crypt/argon2:=
-	dev-libs/botan:2=
+	dev-libs/botan:3=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -84,6 +84,7 @@ src_configure() {
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
 		-DWITH_XC_DOCS="$(usex doc)"
 		-DWITH_XC_BROWSER="$(usex browser)"
+		-DWITH_XC_BOTAN3=ON
 		-DWITH_XC_FDOSECRETS=ON
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
 		-DWITH_XC_NETWORKING="$(usex network)"
