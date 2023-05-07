@@ -20,6 +20,7 @@ RDEPEND="
 	app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
 	media-libs/libepoxy
+	sys-apps/pcsc-lite
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
@@ -67,4 +68,11 @@ src_install() {
 	doins -r .
 
 	dosym ../../opt/yubico-authenticator/authenticator /usr/bin/authenticator
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	elog "Make sure you are a member of the pcscd group"
+	elog "and the pcscd service is running."
 }
