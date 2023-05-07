@@ -13,6 +13,7 @@ Documentation=man:motion(1)
 Type=simple
 ExecStart=/usr/bin/motion -n -c /etc/motion/motion.conf
 StandardError=null
+ExecReload=/bin/kill -HUP $MAINPID
 
 User=motion
 Group=motion
