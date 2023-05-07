@@ -48,7 +48,7 @@ setup-allowed-flags() {
 _setup-allowed-flags() {
 	ALLOWED_FLAGS=(
 		-pipe -O '-O[123szg]' '-mcpu=*' '-march=*' '-mtune=*'
-		-flto '-flto=*'
+		-flto '-flto=*' -fno-lto
 
 		# Hardening flags
 		'-fstack-protector*'
