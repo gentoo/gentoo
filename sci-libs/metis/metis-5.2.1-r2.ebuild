@@ -18,6 +18,8 @@ IUSE="double-precision examples int64 openmp"
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
 	"${FILESDIR}"/${P}-respect-user-flags.patch
+	# https://github.com/KarypisLab/METIS/pull/52 Bug 905822
+	"${FILESDIR}"/${P}-add-gklib-as-required.patch
 )
 
 DEPEND="sci-libs/gklib"
