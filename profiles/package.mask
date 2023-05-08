@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2023-05-08)
+# Package is unmaintained and appears quite dead. Last release in 2020. Broken
+# with stable glib-2.76. Depends on app-text/enchant:0.
+# Bug #905954. Removal on 2023-06-08
+net-im/mcabber
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-08)
 # Package is unmaintained and appears quite dead (e.g. SSL certificate for the
 # homepage expired in 2021). Only version is a snapshot from 2021. No Python
 # 3.11 support. Depends on app-text/enchant:0.
