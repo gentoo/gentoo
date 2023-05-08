@@ -28,7 +28,7 @@ RDEPEND="
 # The tests use ssh-keygen and use dsa and rsa keys (which is why ssl is required)
 DEPEND="${RDEPEND}
 	test? (
-		net-misc/openssh[ssl]
+		virtual/openssh[ssl]
 		dev-cpp/doctest
 	)"
 
