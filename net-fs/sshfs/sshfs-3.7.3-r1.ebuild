@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SLOT="0"
 DEPEND=">=sys-fs/fuse-3.1.0:3
 	>=dev-libs/glib-2.4.2"
 RDEPEND="${DEPEND}
-	>=net-misc/openssh-4.4"
+	virtual/openssh"
 BDEPEND="dev-python/docutils
 	virtual/pkgconfig"
 
