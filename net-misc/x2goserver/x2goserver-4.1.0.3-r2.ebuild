@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,8 +30,8 @@ RDEPEND="acct-user/x2gouser
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-misc[nls]
 	>=net-misc/nx-3.5.99.14
-	net-misc/openssh
 	>=sys-apps/iproute2-4.3.0
+	virtual/openssh
 	x11-apps/xauth
 	x11-apps/xhost
 	x11-apps/xwininfo
