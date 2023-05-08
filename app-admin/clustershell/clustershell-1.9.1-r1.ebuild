@@ -23,7 +23,7 @@ KEYWORDS="amd64 ~x86"
 BDEPEND="
 	test? (
 		app-shells/pdsh
-		net-misc/openssh
+		virtual/openssh
 		sys-devel/bc
 	)
 "
@@ -47,8 +47,6 @@ python_test() {
 
 src_install() {
 	distutils-r1_src_install
-
-	doman doc/man/man*/*
 
 	mv "${ED}/usr/etc" "${ED}/etc" || die
 }
