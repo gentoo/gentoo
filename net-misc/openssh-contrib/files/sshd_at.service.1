@@ -1,0 +1,8 @@
+[Unit]
+Description=OpenSSH per-connection server daemon
+After=auditd.service
+
+[Service]
+ExecStart=-/usr/sbin/sshd -i -e
+StandardInput=socket
+StandardError=journal
