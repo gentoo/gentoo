@@ -513,10 +513,6 @@ net-misc/modemmanager mbim
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
 
-# Raúl Porcel <armin76@gentoo.org> (2014-02-01)
-# Sigbuses
-net-misc/openssh hpn
-
 # Pacho Ramos <pacho@gentoo.org> (2014-01-19)
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
