@@ -30,6 +30,7 @@ RDEPEND="
 		dev-python/multiprocess[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pyarrow[${PYTHON_USEDEP},parquet,snappy]
+		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/xxhash[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
 		sci-libs/huggingface_hub[${PYTHON_USEDEP}]
