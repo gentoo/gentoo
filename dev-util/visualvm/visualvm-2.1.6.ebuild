@@ -6,9 +6,9 @@ EAPI=8
 NBV=140
 NBT=20220908
 NBZ=nb${NBV}_platform_${NBT}.zip
-FLIGHT_RECORDER_VERSION="8.2.1"
+FLIGHT_RECORDER_VERSION="8.3.0"
 FLIGHT_RECORDER_FILE="flightrecorder-${FLIGHT_RECORDER_VERSION}.jar"
-COMMON_VERSION="8.2.1"
+COMMON_VERSION="8.3.0"
 COMMON_FILE="common-${COMMON_VERSION}.jar"
 ENCODER_VERSION="1.2.3"
 ENCODER_FILE="encoder-${ENCODER_VERSION}.jar"
@@ -21,7 +21,7 @@ DESCRIPTION="Integrates commandline JDK tools and profiling capabilities"
 HOMEPAGE="https://visualvm.github.io"
 
 SRC_URI="https://github.com/oracle/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/oracle/${PN}/releases/download/${PV}/${NBZ}
+	https://github.com/oracle/${PN}/releases/download/2.1.5/${NBZ}
 	https://repo1.maven.org/maven2/org/openjdk/jmc/flightrecorder/${FLIGHT_RECORDER_VERSION}/${FLIGHT_RECORDER_FILE}
 	https://repo1.maven.org/maven2/org/openjdk/jmc/common/${COMMON_VERSION}/${COMMON_FILE}
 	https://repo1.maven.org/maven2/org/owasp/encoder/encoder/${ENCODER_VERSION}/${ENCODER_FILE}"
@@ -54,8 +54,11 @@ BDEPEND="app-arch/unzip"
 S="${WORKDIR}/${P}/${PN}"
 
 QA_PREBUILT="
+	/usr/share/visualvm/cluster/lib/deployed/jdk15/linux-amd64/libprofilerinterface.so
+	/usr/share/visualvm/cluster/lib/deployed/jdk16/linux-amd64/libprofilerinterface.so
+	/usr/share/visualvm/platform/modules/lib/aarch64/linux/libjnidispatch-nb.so
 	/usr/share/visualvm/platform/modules/lib/amd64/linux/libjnidispatch-nb.so
-	/usr/share/visualvm/cluster/lib/deployed/jdk1[56]/linux-amd64/libprofilerinterface.so
+	/usr/share/visualvm/platform/modules/lib/riscv64/linux/libjnidispatch-nb.so
 "
 
 EANT_BUILD_TARGET=build
