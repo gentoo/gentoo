@@ -78,3 +78,8 @@ src_test() {
 	cd "${BUILD_DIR}"/src/tests || die
 	ctest -j"${MAKEOPTS}" -R .* --output-on-failure || die
 }
+
+src_install() {
+	cmake_src_install
+	find "${D}" -name '*.a' -delete || die
+}
