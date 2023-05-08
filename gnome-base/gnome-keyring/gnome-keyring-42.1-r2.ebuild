@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-libs/libgcrypt-1.2.2:0=
 	pam? ( sys-libs/pam )
 	selinux? ( sec-policy/selinux-gnome )
-	ssh-agent? ( net-misc/openssh )
+	ssh-agent? ( virtual/openssh )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
