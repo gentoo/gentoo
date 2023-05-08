@@ -44,7 +44,7 @@ DEPEND="${REAL_DEPEND}
 	game? ( games-util/qstat )
 	fping? ( net-analyzer/fping )
 	samba? ( net-fs/samba )
-	ssh? ( net-misc/openssh )
+	ssh? ( virtual/openssh )
 	snmp? ( dev-perl/Net-SNMP
 			net-analyzer/net-snmp[-minimal] )"
 
@@ -56,6 +56,11 @@ RDEPEND="${DEPEND}
 
 # At least one test is interactive.
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-gnutls.patch" #880211
+	"${FILESDIR}/${PN}-fix-check-http-segfault.patch" #893252
+)
 
 src_configure() {
 	append-flags -fno-strict-aliasing
