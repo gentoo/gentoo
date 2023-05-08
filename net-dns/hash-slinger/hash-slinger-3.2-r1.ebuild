@@ -28,7 +28,7 @@ RDEPEND="
 	net-dns/unbound[python,${PYTHON_SINGLE_USEDEP}]
 	ipsec? ( net-vpn/libreswan[dnssec] )
 	openpgp? ( $(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]') )
-	ssh? ( net-misc/openssh )
+	ssh? ( virtual/openssh )
 "
 
 src_install() {
