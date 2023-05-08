@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit libtool multilib-minimal toolchain-funcs
+inherit libtool flag-o-matic multilib-minimal toolchain-funcs
 
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
