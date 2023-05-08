@@ -737,10 +737,6 @@ toolchain_src_prepare() {
 		sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk || die
 	fi
 
-	# Prevent new texinfo from breaking old versions (see #198182, bug #464008)
-	einfo "Remove texinfo (bug #198182, bug #464008)"
-	eapply "${FILESDIR}"/gcc-configure-texinfo.patch
-
 	if ! use prefix-guest && [[ -n ${EPREFIX} ]] ; then
 		einfo "Prefixifying dynamic linkers..."
 		for f in gcc/config/*/*linux*.h ; do
@@ -1565,21 +1561,11 @@ toolchain_src_configure() {
 		)
 	fi
 
-	if [[ ${PV} != *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
-		# Disable gcc info regeneration -- it ships with generated info pages
-		# already.  Our custom version/urls/etc... trigger it. bug #464008
-		export gcc_cv_prog_makeinfo_modern=no
-	else
-		# Allow a fallback so we don't accidentally install no docs
-		# bug #834845
-		ewarn "No pre-generated info pages in tarball. Allowing regeneration with texinfo..."
-
-		if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
-			# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
-			# without corresponding ebuild changes.
-			eqawarn "Snapshot release with pre-generated info pages found!"
-			eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
-		fi
+	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
+		# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
+		# without corresponding ebuild changes.
+		eqawarn "Snapshot release with pre-generated info pages found!"
+		eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
 	fi
 
 	# Do not let the X detection get in our way.  We know things can be found
@@ -1908,7 +1894,7 @@ toolchain_src_compile() {
 	touch "${S}"/gcc/c-gperf.h || die
 
 	# Do not make manpages if we do not have perl ...
-	[[ ! -x /usr/bin/perl ]] \
+	[[ ! -x "${BROOT}"/usr/bin/perl ]] \
 		&& find "${WORKDIR}"/build -name '*.[17]' -exec touch {} +
 
 	# To compile ada library standard files special compiler options are passed
@@ -2097,16 +2083,6 @@ toolchain_src_install() {
 
 	# Don't allow symlinks in private gcc include dir as this can break the build
 	find gcc/include*/ -type l -delete || die
-
-	# Copy over the info pages.  We disabled their generation earlier, but the
-	# build system only expects to install out of the build dir, not the source. bug #464008
-	mkdir -p gcc/doc || die
-	local x=
-	for x in "${S}"/gcc/doc/*.info* ; do
-		if [[ -f ${x} ]] ; then
-			cp "${x}" gcc/doc/ || die
-		fi
-	done
 
 	# Re-enable fixincludes for >= GCC 13
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107128
