@@ -23,7 +23,7 @@ DEPEND="${PYTHON_DEPS}
 		dev-python/keyring[${PYTHON_USEDEP}]
 	')"
 RDEPEND="${DEPEND}
-	net-misc/openssh
+	virtual/openssh
 	net-misc/rsync[xattr,acl]
 	qt5? ( dev-python/PyQt5[gui,widgets] )"
 BDEPEND="sys-devel/gettext"
