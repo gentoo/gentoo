@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
-DESCRIPTION="access and share datasets for Audio, Computer Vision, and NLP tasks"
+DESCRIPTION="Access and share datasets for Audio, Computer Vision, and NLP tasks"
 HOMEPAGE="
 	https://pypi.org/project/datasets/
 "
@@ -24,13 +24,14 @@ RDEPEND="
 	${PYTHON_DEPS}
 	sci-libs/pytorch[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/pyarrow[${PYTHON_USEDEP},parquet,snappy]
+		dev-python/absl-py[${PYTHON_USEDEP}]
+		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/fsspec[${PYTHON_USEDEP}]
 		dev-python/multiprocess[${PYTHON_USEDEP}]
-		dev-python/aiohttp[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/pyarrow[${PYTHON_USEDEP},parquet,snappy]
 		dev-python/xxhash[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
-		dev-python/absl-py[${PYTHON_USEDEP}]
 		sci-libs/scikit-learn[${PYTHON_USEDEP}]
 	')
 "
