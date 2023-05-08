@@ -165,7 +165,7 @@ pkg_postinst() {
 	optfeature "Support NFS" net-fs/nfs-utils net-nds/rpcbind
 	optfeature \
 		"Install ssh and scp along with config files and specified keys" \
-		net-misc/openssh
+		virtual/openssh
 	optfeature "Enable logging with rsyslog" app-admin/rsyslog
 	optfeature \
 		"Enable rngd service to help generating entropy early during boot" \
