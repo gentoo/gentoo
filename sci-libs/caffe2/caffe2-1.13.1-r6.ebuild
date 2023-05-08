@@ -47,7 +47,7 @@ RDEPEND="
 	)
 	fbgemm? ( dev-libs/FBGEMM )
 	ffmpeg? ( media-video/ffmpeg:= )
-	gloo? ( sci-libs/gloo )
+	gloo? ( sci-libs/gloo[cuda?] )
 	mpi? ( sys-cluster/openmpi )
 	nnpack? ( sci-libs/NNPACK )
 	numpy? ( $(python_gen_cond_dep '
@@ -57,7 +57,7 @@ RDEPEND="
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
 	tensorpipe? ( sci-libs/tensorpipe )
-	xnnpack? ( >=sci-libs/XNNPACK-2022.12.22 )
+	xnnpack? ( sci-libs/XNNPACK )
 "
 DEPEND="
 	${RDEPEND}
@@ -78,12 +78,11 @@ DEPEND="
 S="${WORKDIR}"/${MYP}
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-1.13.0-gentoo.patch
 	"${FILESDIR}"/${PN}-1.13.0-install-dirs.patch
 	"${FILESDIR}"/${PN}-1.12.0-glog-0.6.0.patch
-	"${FILESDIR}"/${PN}-1.13.1-tensorpipe.patch
-	"${FILESDIR}"/${P}-gcc13.patch
-	"${FILESDIR}"/${P}-cudnn_include_fix.patch
+	"${FILESDIR}"/${PN}-1.12.0-clang.patch
+	"${FILESDIR}"/${P}-tensorpipe.patch
 )
 
 src_prepare() {
@@ -121,7 +120,6 @@ src_configure() {
 		-DUSE_CUDNN=$(usex cuda)
 		-DUSE_FAST_NVCC=$(usex cuda)
 		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
-		-DBUILD_NVFUSER=OFF
 		-DUSE_DISTRIBUTED=$(usex distributed)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_FAKELOWP=OFF
