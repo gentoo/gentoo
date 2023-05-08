@@ -64,7 +64,7 @@ BDEPEND="
 			dev-python/pyasn1[${PYTHON_USEDEP}]
 			>=dev-python/pyhamcrest-1.9.0[${PYTHON_USEDEP}]
 			>=dev-python/pyserial-3.0[${PYTHON_USEDEP}]
-			net-misc/openssh
+			virtual/openssh
 			conch? (
 				>=dev-python/bcrypt-3.0.0[${PYTHON_USEDEP}]
 				>=dev-python/cryptography-2.6[${PYTHON_USEDEP}]
