@@ -33,7 +33,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	net-misc/openssh
+	virtual/openssh
 	net-misc/rsync[xattr,acl]
 	qt5? ( dev-python/PyQt5[gui,widgets] )
 "
