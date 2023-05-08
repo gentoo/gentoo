@@ -57,18 +57,18 @@ RDEPEND="
 	bluray? ( media-libs/libbluray:= )
 	mtp? (
 		virtual/libusb:1
-		>=media-libs/libmtp-1.1.15:=
+		>=media-libs/libmtp-1.1.15
 	)
 	samba? ( >=net-fs/samba-4[client] )
 	archive? ( app-arch/libarchive:= )
 	cdda? (
 		dev-libs/libcdio:0=
-		>=dev-libs/libcdio-paranoia-0.78.2:=
+		>=dev-libs/libcdio-paranoia-0.78.2
 	)
 	google? ( >=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts] )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
 	nfs? ( >=net-fs/libnfs-1.9.8:= )
-	net-misc/openssh
+	virtual/openssh
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
