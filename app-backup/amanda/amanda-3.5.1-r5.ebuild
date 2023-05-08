@@ -23,7 +23,7 @@ DEPEND="
 	dev-lang/perl:=
 	dev-perl/Encode-Locale
 	dev-perl/JSON
-	net-misc/openssh
+	virtual/openssh
 	sys-libs/readline:=
 	app-alternatives/awk
 	kerberos? ( app-crypt/mit-krb5 )
