@@ -61,7 +61,7 @@ RDEPEND="
 	rpm? ( app-arch/rpm )
 	sqlite? ( dev-db/sqlite:3 )
 	squashfs? ( sys-fs/squashfs-tools )
-	ssh? ( net-misc/openssh )
+	ssh? ( virtual/openssh )
 	tar? ( app-arch/tar )
 	tcpdump? ( net-analyzer/tcpdump )
 	zip? ( app-arch/unzip )
