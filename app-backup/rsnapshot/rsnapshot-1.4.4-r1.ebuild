@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,12 +11,13 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
-RDEPEND=">=dev-lang/perl-5.8.2
-		dev-perl/Lchown
-		>=sys-apps/util-linux-2.12-r4
-		>=sys-apps/coreutils-5.0.91-r4
-		>=net-misc/openssh-3.7.1_p2-r1
-		>=net-misc/rsync-2.6.0"
+RDEPEND="
+	>=dev-lang/perl-5.8.2
+	dev-perl/Lchown
+	>=sys-apps/util-linux-2.12-r4
+	>=sys-apps/coreutils-5.0.91-r4
+	virtual/openssh
+	>=net-misc/rsync-2.6.0"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
