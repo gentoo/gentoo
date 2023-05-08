@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	!net-misc/putty
-	net-misc/openssh
+	virtual/openssh
 "
 DEPEND="${RDEPEND}"
 
