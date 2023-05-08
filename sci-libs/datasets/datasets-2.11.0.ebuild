@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	$(python_gen_cond_dep '
 		dev-python/pytest-datadir[${PYTHON_USEDEP}]
+		dev-python/decorator[${PYTHON_USEDEP}]
 	')
 )"
 
