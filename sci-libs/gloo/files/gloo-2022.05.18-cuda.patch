@@ -1,0 +1,13 @@
+diff --git a/gloo/CMakeLists.txt b/gloo/CMakeLists.txt
+index 9ee82df..3b3affb 100644
+--- a/gloo/CMakeLists.txt
++++ b/gloo/CMakeLists.txt
+@@ -184,7 +184,7 @@ if(GLOO_INSTALL)
+           DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   if(USE_CUDA)
+     install(TARGETS gloo_cuda EXPORT GlooTargets
+-        DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   endif()
+   if(USE_ROCM)
+     install(TARGETS gloo_hip EXPORT GlooTargets
