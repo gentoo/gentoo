@@ -731,8 +731,11 @@ toolchain_src_prepare() {
 			|| eerror "Please file a bug about this"
 		eend $?
 	done
+
 	# bug #215828
-	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk || die
+	if ! tc_version_is_at_least 4.6.0 ; then
+		sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk || die
+	fi
 
 	# Prevent new texinfo from breaking old versions (see #198182, bug #464008)
 	einfo "Remove texinfo (bug #198182, bug #464008)"
