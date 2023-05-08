@@ -19,12 +19,18 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="parquet snappy ssl"
-RESTRICT="test" #Tests not working 'import pyarrow.lib' error out
 
 RDEPEND="
 	~dev-libs/apache-arrow-${PV}[compute,dataset,json,parquet?,snappy?,ssl?]
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
+BDEPEND="test? (
+	dev-python/hypothesis
+	dev-python/pandas
+	dev-python/pytest-lazy-fixture
+)"
+
+PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
 distutils_enable_tests pytest
 
@@ -47,4 +53,9 @@ src_compile() {
 	fi
 
 	distutils-r1_src_compile
+}
+
+python_test() {
+	cd "${T}" || die
+	epytest --pyargs pyarrow
 }
