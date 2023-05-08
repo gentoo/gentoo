@@ -130,7 +130,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
-	sys-apps/locale-gen
 	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	perl? ( dev-lang/perl )
 "
