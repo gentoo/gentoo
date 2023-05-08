@@ -19,8 +19,8 @@ DEPEND="readline? (
 		sys-libs/readline:0
 	)"
 RDEPEND="${DEPEND}
-	net-misc/openssh
-	net-dialup/lrzsz"
+	net-dialup/lrzsz
+	virtual/openssh"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.5a-gentoo-include.diff"
