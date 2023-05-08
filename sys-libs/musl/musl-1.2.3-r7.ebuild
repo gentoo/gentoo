@@ -102,7 +102,7 @@ src_prepare() {
 }
 
 src_configure() {
-	strip-flags # Prevent issues caused by aggressive optimizations & bug #877343
+	strip-flags && filter-lto # Prevent issues caused by aggressive optimizations & bug #877343
 	tc-getCC ${CTARGET}
 
 	just_headers && export CC=true
