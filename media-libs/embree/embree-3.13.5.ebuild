@@ -11,13 +11,11 @@ SRC_URI="https://github.com/embree/embree/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-X86_CPU_FLAGS=( sse2:sse2 sse4_2:sse4_2 avx:avx avx2:avx2 avx512dq:avx512dq )
+KEYWORDS="-* ~amd64 ~arm64"
+X86_CPU_FLAGS=( sse2 sse4_2 avx avx2 avx512dq )
 CPU_FLAGS=( cpu_flags_arm_neon ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
-IUSE="+compact-polys ispc +raymask ssp +tbb tutorial ${CPU_FLAGS[@]%:*}"
-# Let's be explicit here even though we could simplify it.
-REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )
-	x86? ( cpu_flags_x86_sse2 )"
+IUSE="+compact-polys ispc +raymask ssp +tbb tutorial ${CPU_FLAGS[@]}"
+REQUIRED_USE="|| ( ${CPU_FLAGS[@]} )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -39,6 +37,7 @@ DOCS=( CHANGELOG.md README.md readme.pdf )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.13.5-fix-openimageio-test.patch
+	"${FILESDIR}"/${PN}-3.13.5-fix-arm64.patch
 )
 
 pkg_setup() {
@@ -106,6 +105,7 @@ src_configure() {
 		-DEMBREE_ISA_AVX=$(usex cpu_flags_x86_avx)
 		-DEMBREE_ISA_AVX2=$(usex cpu_flags_x86_avx2)
 		-DEMBREE_ISA_AVX512=$(usex cpu_flags_x86_avx512dq)
+		# TODO look into neon 2x support
 		-DEMBREE_ISA_NEON=$(usex cpu_flags_arm_neon)
 		-DEMBREE_ISA_SSE2=$(usex cpu_flags_x86_sse2)
 		-DEMBREE_ISA_SSE42=$(usex cpu_flags_x86_sse4_2)

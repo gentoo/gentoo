@@ -1,0 +1,53 @@
+Based on: https://github.com/embree/embree/commit/82ca6b5ccb7abe0403a658a0e079926478f04cb1
+Tested in: https://bugs.gentoo.org/851705
+
+Without this patch, it will only build on ARM Mac computers
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e807351401..e8b08b1247 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -160,11 +160,13 @@ OPTION(EMBREE_MIN_WIDTH "Enables min-width feature to enlarge curve and point th
+ # Platform detection and defaults
+ ##############################################################
+ 
+-IF (APPLE)
+-  IF (CMAKE_SYSTEM_NAME STREQUAL "Darwin" AND (CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64" OR CMAKE_OSX_ARCHITECTURES MATCHES "arm64"))
+-    MESSAGE(STATUS "Building for Apple silicon")
+-    SET(EMBREE_ARM ON)
+-  ENDIF()
++# detect ARM compilation
++IF (APPLE AND CMAKE_SYSTEM_NAME STREQUAL "Darwin" AND (CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64" OR CMAKE_OSX_ARCHITECTURES MATCHES "arm64"))
++  MESSAGE(STATUS "Building for Apple silicon")
++  SET(EMBREE_ARM ON)
++ELSEIF(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
++  MESSAGE(STATUS "Building for AArch64")
++  SET(EMBREE_ARM ON)
+ ENDIF()
+ 
+ SET(EMBREE_TASKING_SYSTEM "TBB" CACHE STRING "Selects tasking system")
+diff --git a/common/cmake/gnu.cmake b/common/cmake/gnu.cmake
+index f36d79ca25..365212bdda 100644
+--- a/common/cmake/gnu.cmake
++++ b/common/cmake/gnu.cmake
+@@ -26,9 +26,12 @@ IF (EMBREE_IGNORE_CMAKE_CXX_FLAGS)
+ ENDIF()
+ 
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
++
+ IF (EMBREE_ARM)
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsigned-char")             # treat 'char' as 'signed char'
++  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -flax-vector-conversions")  # allow lax vector type conversions
+ ENDIF (EMBREE_ARM)
++
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")                       # enables most warnings
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wformat -Wformat-security")  # enables string format vulnerability warnings
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-class-memaccess")        # disables clearing an object of type ‘XXX’ with no trivial copy-assignment; use assignment or value-initialization instead
+@@ -89,7 +92,6 @@ SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -O3")
+ IF (APPLE)
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=10.7")   # makes sure code runs on older MacOSX versions
+   # SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")             # link against libc++ which supports C++11 features
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -flax-vector-conversions")
+ ELSE(APPLE)
+   IF (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+     SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined") # issues link error for undefined symbols in shared library
