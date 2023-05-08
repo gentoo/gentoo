@@ -8,13 +8,15 @@ inherit autotools flag-o-matic linux-info toolchain-funcs
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="https://adaptivecomputing.com/cherry-services/torque-resource-manager/ https://github.com/adaptivecomputing/torque/"
-SRC_URI="https://github.com/adaptivecomputing/torque/archive/${MY_COMMIT}.tar.gz -> ${P}-gh-20170829.tar.gz
+SRC_URI="
+	https://github.com/adaptivecomputing/torque/archive/${MY_COMMIT}.tar.gz -> ${P}-gh-20170829.tar.gz
 	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-6.0.4-glibc-2.34-pthread.patch.bz2"
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-glibc-2.34-pthread.patch.bz2
+"
 
 LICENSE="torque-2.5"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="autorun cgroups cpusets +crypt doc munge nvidia quickcommit server +syslog tk"
 
 DEPEND_COMMON="
@@ -30,17 +32,22 @@ DEPEND_COMMON="
 		dev-lang/tcl:0=
 	)
 	syslog? ( virtual/logger )
-	!!games-util/qstat"
+	!!games-util/qstat
+"
 
 # libncurses.so is only needed for configure check on readline
-DEPEND="${DEPEND_COMMON}
+DEPEND="
+	${DEPEND_COMMON}
 	sys-libs/ncurses:*
-	!!sys-cluster/slurm"
+	!!sys-cluster/slurm
+"
 
-RDEPEND="${DEPEND_COMMON}
-	crypt? ( net-misc/openssh )
+RDEPEND="
+	${DEPEND_COMMON}
+	crypt? ( virtual/openssh )
 	!crypt? ( net-misc/netkit-rsh )
-	!dev-libs/uthash"
+	!dev-libs/uthash
+"
 
 # Torque should depend on dev-libs/uthash but that's pretty much impossible
 # to patch in as they ship with a broken configure such that files referenced
@@ -157,6 +164,8 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}-conf.d-munge ${PN}
 	newinitd "${FILESDIR}"/trqauthd-init.d trqauthd
 	newenvd "${FILESDIR}"/${PN}-env.d 25${PN}
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {
