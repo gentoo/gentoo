@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/json-glib-1.2.8
 	net-misc/curl
 	>=x11-libs/gtk+-3.22:3
-	appindicator? ( dev-libs/libappindicator:3 )
+	appindicator? ( dev-libs/libayatana-appindicator )
 	geoip? ( dev-libs/geoip )
 	libproxy? ( net-libs/libproxy )
 	rss? ( >=net-libs/libmrss-0.18 )
@@ -33,6 +33,10 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/transmission-remote-gtk-1.5.1-libayatana-appindicator.patch"
+)
 
 src_configure() {
 	local emesonargs=(
