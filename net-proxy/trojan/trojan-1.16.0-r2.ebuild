@@ -5,7 +5,7 @@ EAPI=7
 
 DISABLE_AUTOFORMATTING=1
 FORCE_PRINT_ELOG=1
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake python-any-r1 systemd readme.gentoo-r1
 DESCRIPTION="An unidentifiable mechanism that helps you bypass GFW"
