@@ -32,6 +32,7 @@ RDEPEND="
 		dev-python/pyarrow[${PYTHON_USEDEP},parquet,snappy]
 		dev-python/xxhash[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
+		sci-libs/huggingface_hub[${PYTHON_USEDEP}]
 		sci-libs/scikit-learn[${PYTHON_USEDEP}]
 	')
 "
