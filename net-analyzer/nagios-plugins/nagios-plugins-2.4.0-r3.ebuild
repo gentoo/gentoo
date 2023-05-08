@@ -22,7 +22,7 @@ AUTOMAGIC_DEPEND="
 	nagios-game? ( games-util/qstat )
 	nagios-ping? ( net-analyzer/fping )
 	samba? ( net-fs/samba )
-	ssh? ( net-misc/openssh )
+	ssh? ( virtual/openssh )
 	snmp? ( dev-perl/Net-SNMP
 			net-analyzer/net-snmp[-minimal] )"
 
@@ -60,6 +60,10 @@ DOCS=(
 	REQUIREMENTS
 	SUPPORT
 	THANKS
+)
+
+PATCHES=(
+	"${FILESDIR}/define-own-mysql-port-constant.patch"
 )
 
 src_prepare() {
