@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -44,7 +44,7 @@ DEPEND="${REAL_DEPEND}
 	game? ( games-util/qstat )
 	fping? ( net-analyzer/fping )
 	samba? ( net-fs/samba )
-	ssh? ( net-misc/openssh )
+	ssh? ( virtual/openssh )
 	snmp? ( dev-perl/Net-SNMP
 			net-analyzer/net-snmp[-minimal] )"
 
