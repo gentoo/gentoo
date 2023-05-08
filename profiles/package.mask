@@ -196,6 +196,7 @@ net-im/cawbird
 # - app-misc/tmux: https://github.com/tmux/tmux/issues/3531
 # - sys-apps/openrc: https://github.com/OpenRC/openrc/issues/619
 =sys-libs/ncurses-6.4_p20230424
+=sys-libs/ncurses-6.4_p20230506
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-13)
 # Lack of support for Python 3.11.  The current version is from 2016.
