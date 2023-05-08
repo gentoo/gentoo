@@ -11,8 +11,8 @@ IUSE="minimal"
 
 RDEPEND="
 	minimal? (
-		|| ( net-misc/dropbear net-misc/openssh )
+		|| ( net-misc/dropbear virtual/openssh )
 	)
 	!minimal? (
-		|| ( net-misc/openssh net-misc/dropbear )
+		|| ( virtual/openssh net-misc/dropbear )
 	)"
