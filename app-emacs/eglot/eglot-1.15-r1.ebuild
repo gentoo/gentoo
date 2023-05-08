@@ -30,7 +30,7 @@ RDEPEND="app-emacs/external-completion"
 BDEPEND="${RDEPEND}"
 
 DOCS=( README.md )
-SITEFILE="50${PN}-gentoo.el"
+SITEFILE="50${PN}-gentoo-r1.el"
 
 src_install() {
 	elisp-make-autoload-file
