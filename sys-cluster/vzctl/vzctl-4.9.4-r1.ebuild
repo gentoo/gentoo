@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,11 +30,11 @@ RDEPEND="
 		sys-fs/quota
 	)
 	vzmigrate? (
+		app-alternatives/awk
 		app-arch/tar[xattr,acl]
-		net-misc/openssh
 		net-misc/rsync[xattr,acl]
 		net-misc/bridge-utils
-		app-alternatives/awk
+		virtual/openssh
 	)
 "
 DEPEND="${RDEPEND}"
