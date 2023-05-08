@@ -22,7 +22,7 @@ RDEPEND="
 	>=gui-libs/libhandy-1.6.0:1
 	>=app-crypt/libsecret-0.16
 	dev-libs/libpwquality
-	net-misc/openssh
+	virtual/openssh
 	ldap? ( net-nds/openldap:= )
 	net-libs/libsoup:3.0
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
