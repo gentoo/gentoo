@@ -17,7 +17,7 @@ IUSE="crypt readline rsh test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	crypt? ( net-misc/openssh )
+	crypt? ( virtual/openssh )
 	rsh? ( net-misc/netkit-rsh )
 	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}"
