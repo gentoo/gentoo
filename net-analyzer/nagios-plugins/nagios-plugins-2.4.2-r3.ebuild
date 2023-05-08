@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ AUTOMAGIC_DEPEND="
 	nagios-game? ( games-util/qstat )
 	nagios-ping? ( net-analyzer/fping )
 	samba? ( net-fs/samba )
-	ssh? ( net-misc/openssh )
+	ssh? ( virtual/openssh )
 	snmp? ( dev-perl/Net-SNMP
 			net-analyzer/net-snmp[-minimal] )"
 
@@ -60,10 +60,6 @@ DOCS=(
 	REQUIREMENTS
 	SUPPORT
 	THANKS
-)
-
-PATCHES=(
-	"${FILESDIR}/define-own-mysql-port-constant.patch"
 )
 
 src_prepare() {
