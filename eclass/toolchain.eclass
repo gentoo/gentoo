@@ -1758,6 +1758,9 @@ gcc_do_filter_flags() {
 		append-flags -O2
 	fi
 
+	# Please use USE=lto instead (bug #906007).
+	filter-lto
+
 	# Avoid shooting self in foot
 	filter-flags '-mabi*' -m31 -m32 -m64
 
