@@ -294,8 +294,8 @@ pkg_setup() {
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
-		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 10.4; then
-			die "At least gcc 10.4 is required"
+		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 12; then
+			die "At least gcc 12 is required"
 		fi
 		if use pgo && tc-is-cross-compiler; then
 			die "The pgo USE flag cannot be used when cross-compiling"
