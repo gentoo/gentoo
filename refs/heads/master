@@ -1,16 +1,17 @@
 certificate version 0.1
-pusher 0xACEB29740C9A4E97 1683647576 -0400
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1683647576-8e099c3a2ee338655c986119439fac63159fdb5f
+pusher DF84256885283521 1683647588 +0200
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1683647587-5c084154c97bb165574c5d73e6ffe920a7fc470d
 
-7470ff20d0c13899856bbeedad75dcc046d93bef 0be4a1799e9c0f798c3e9a05fd1b205cfeb5f1c0 refs/heads/master
+0be4a1799e9c0f798c3e9a05fd1b205cfeb5f1c0 23c9adc04a8b5e06eccd08beecaeddebc1b5d87b refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iNUEABYKAH0WIQReryEEmoa4pUzLG/qs6yl0DJpOlwUCZFpsWF8UgAAAAAAuAChp
-c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0NUVB
-RjIxMDQ5QTg2QjhBNTRDQ0IxQkZBQUNFQjI5NzQwQzlBNEU5NwAKCRCs6yl0DJpO
-l0RqAQDqwpl75bCx4dPR/T7QAtVUj3me4Sj3rynCuPoPVWp1DwD/emSfEYN/eK2M
-eiZQYV0rU3NmFA+k/6h4Q8rzl9n+nwA=
-=ltJM
+iQEzBAABCAAdFiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAmRabGQACgkQY5ra4jKe
+JA5MoQgAmd4yVO/ZjPiLXWAvBt7acRETj/HnWRSoCxn2RmV92q82R2Xey8q6xAJP
+wmLR2+hBsupDatNud9lYe8zq9ia3gFJGOmQaXAuYT8hg2OwGlAuqyd2fDwqt7T4l
+qdRMOoyKKKb8cihbXAhHzGEP8cRI+OuPMOotCrbqA5/LeVz3ecbl5a+XEfarpQN2
+jOhn8TYLCly2U72Npb30G7x82/0sha3TmEbVrGvYmGxJ53xkU8WsYK9Kljl4vfNb
+wR5t0DJjpbheZnsIu74i1CjLcm15fWEREEWqXX6XozppC/Hot/eTT+4JFc9QOwRW
+Y8FdURFUR+LsdiG09+RO4oCbEJBRRg==
+=fb3t
 -----END PGP SIGNATURE-----
