@@ -67,10 +67,6 @@ sys-cluster/slurm ucx
 # Supports 64-bit NEON
 dev-libs/libgcrypt -cpu_flags_arm_neon
 
-# Sam James <sam@gentoo.org> (2021-10-31)
-# dev-python/pyilmbase isn't keyworded on arm64
-media-gfx/alembic python
-
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-07)
 # dev-libs/mongo-c-driver is not keyworded here
 net-analyzer/zmap mongo
