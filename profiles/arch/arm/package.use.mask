@@ -83,10 +83,6 @@ app-emulation/qemu rbd slirp spice virgl vde
 app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 app-emulation/qemu qemu_softmmu_targets_ppc qemu_softmmu_targets_ppc64
 
-# Sam James <sam@gentoo.org> (2021-10-31)
-# dev-python/pyilmbase isn't keyworded on arm
-media-gfx/alembic python
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2021-09-25)
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
