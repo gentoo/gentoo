@@ -28,6 +28,44 @@ DOCS=( AUTHORS NEWS COPYING README ChangeLog )
 
 PATCHES=( "${FILESDIR}"/${PN}-0.9.75-fix-testsuite-with-lto.patch )
 
+# All checks in libmicrohttpd's configure are correct
+# Gentoo Bug #898662
+QA_CONFIG_IMPL_DECL_SKIP=(
+	'pthread_sigmask'
+	'CreateThread'
+	'pthread_attr_init'
+	'pthread_attr_setname_np'
+	'pthread_setname_np'
+	'__builtin_bswap32'
+	'__builtin_bswap64'
+	'WSAPoll'
+	'epoll_create1'
+	'eventfd'
+	'pipe'
+	'pipe2'
+	'socketpair'
+	'gmtime_s'
+	'host_get_clock_service'
+	'clock_get_time'
+	'mach_port_deallocate'
+	'gethrtime'
+	'timespec_get'
+	'gettimeofday'
+	'sendfile'
+	'gnutls_privkey_import_x509_raw'
+	'calloc'
+	'fork'
+	'waitpid'
+	'random'
+	'rand'
+	'getsockname'
+	'sysconf'
+	'sysctl'
+	'sysctlbyname'
+	'usleep'
+	'nanosleep'
+)
+
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \
