@@ -12,7 +12,8 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~sparc x86"
-IUSE="async-connect chat-screen doc +help-screen key-screen +library-screen lirc lyrics-screen +mouse nls outputs-screen pcre search-screen +song-screen"
+IUSE="async-connect chat-screen doc +help-screen key-screen +library-screen lirc lyrics-screen +mouse nls outputs-screen pcre search-screen +song-screen test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -61,6 +62,7 @@ src_configure() {
 		-Dregex=$(usex pcre enabled disabled)
 		-Dsearch_screen=$(usex search-screen true false)
 		-Dsong_screen=$(usex song-screen true false)
+		$(meson_use test)
 	)
 
 	meson_src_configure
