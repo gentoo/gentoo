@@ -1,0 +1,17 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DESCRIPTION="A single file library for audio playback and capture"
+HOMEPAGE="https://miniaudio.io"
+SRC_URI="https://github.com/mackron/miniaudio/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="|| ( public-domain MIT-0 )"
+SLOT="0"
+KEYWORDS="~amd64"
+
+src_install() {
+	insinto /usr/include/${PN}/
+	doins -r *
+}
