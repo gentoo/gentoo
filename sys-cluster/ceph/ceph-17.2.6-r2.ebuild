@@ -14,7 +14,7 @@ SRC_URI="
 	https://download.ceph.com/tarballs/${P}.tar.gz
 	parquet? ( https://github.com/xtensor-stack/xsimd/archive/${XSIMD_HASH}.tar.gz -> ceph-xsimd-${PV}.tar.gz )
 "
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="https://ceph.com/"
@@ -49,6 +49,7 @@ DEPEND="
 	dev-libs/crypto++:=
 	dev-cpp/gflags:=
 	dev-lang/jsonnet:=
+	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
 	>=dev-libs/libfmt-6.2.1:=
 	<dev-libs/libfmt-9:=
@@ -219,11 +220,10 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.4-cyclic-deps.patch"
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
-	"${FILESDIR}/ceph-17.2.5-gcc13.patch"
 	"${FILESDIR}/ceph-17.2.5-gcc13-deux.patch"
 	"${FILESDIR}/ceph-17.2.5-boost-1.81.patch"
 	# https://bugs.gentoo.org/901403
-	"${FILESDIR}/ceph-17.2.5-link-boost-context.patch"
+	"${FILESDIR}/ceph-17.2.6-link-boost-context.patch"
 )
 
 check-reqs_export_vars() {
@@ -424,7 +424,7 @@ src_install() {
 	fowners -R ceph:ceph /var/log/ceph
 
 	newinitd "${FILESDIR}/rbdmap.initd-r1" rbdmap
-	newinitd "${FILESDIR}/${PN}.initd-r13" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r14" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r5" ${PN}
 
 	insinto /etc/sudoers.d
