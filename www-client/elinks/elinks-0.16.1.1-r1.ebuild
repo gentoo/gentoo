@@ -88,7 +88,7 @@ src_configure() {
 		$(meson_use ftp)
 		-Dfsp=false
 		-Dgemini=false
-		-Dgettext=true
+		$(meson_use nls gettext)
 		$(meson_use gopher)
 		$(meson_use gpm)
 		$(meson_use guile)
