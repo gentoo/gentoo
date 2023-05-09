@@ -38,6 +38,8 @@ src_configure() {
 		--enable-threads
 		--disable-network-tests
 		$(use_enable test tests)
+		# See README.md note wrt ipv6. Disabled by default upstream
+		# because can break Pd and SuperCollider.
 		$(use_enable ipv6)
 		$(use_enable static-libs static)
 	)
