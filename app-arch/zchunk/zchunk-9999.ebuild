@@ -13,11 +13,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/zchunk/zchunk.git"
 else
 	SRC_URI="https://github.com/zchunk/zchunk/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/zstd:=
@@ -25,3 +27,11 @@ DEPEND="
 	dev-libs/openssl:=
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local emesonargs=(
+		$(meson_use test tests)
+	)
+
+	meson_src_configure
+}

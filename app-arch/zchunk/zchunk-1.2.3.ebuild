@@ -18,6 +18,8 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/zstd:=
@@ -25,3 +27,11 @@ DEPEND="
 	dev-libs/openssl:=
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local emesonargs=(
+		$(meson_use test tests)
+	)
+
+	meson_src_configure
+}
