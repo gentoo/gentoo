@@ -385,7 +385,7 @@ tweak_ssh_configs() {
 	Include "${EPREFIX}/etc/ssh/sshd_config.d/*.conf"
 	EOF
 
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/90gentoo.conf || die
+	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/9999999gentoo.conf || die
 	# Send locale environment variables (bug #367017)
 	SendEnv ${locale_vars[*]}
 
@@ -393,7 +393,7 @@ tweak_ssh_configs() {
 	SendEnv COLORTERM
 	EOF
 
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/91gentoo-security.conf || die
+	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/9999999gentoo-security.conf || die
 	RevokedHostKeys "${EPREFIX}/etc/ssh/ssh_revoked_hosts"
 	EOF
 
@@ -402,7 +402,7 @@ tweak_ssh_configs() {
 	ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
 	EOF
 
-	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/90gentoo.conf || die
+	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo.conf || die
 	# Allow client to pass locale environment variables (bug #367017)
 	AcceptEnv ${locale_vars[*]}
 
@@ -411,7 +411,7 @@ tweak_ssh_configs() {
 	EOF
 
 	if use pam ; then
-		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/90gentoo-pam.conf || die
+		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo-pam.conf || die
 		UsePAM yes
 		# This interferes with PAM.
 		PasswordAuthentication no
@@ -422,7 +422,7 @@ tweak_ssh_configs() {
 	fi
 
 	if use livecd ; then
-		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/90gentoo-livecd.conf || die
+		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo-livecd.conf || die
 		# Allow root login with password on livecds.
 		PermitRootLogin Yes
 		EOF
