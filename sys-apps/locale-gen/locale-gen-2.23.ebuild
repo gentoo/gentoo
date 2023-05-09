@@ -21,7 +21,6 @@ RDEPEND="
 	app-arch/gzip
 	sys-apps/gentoo-functions
 	sys-apps/grep
-	>=sys-libs/glibc-2.37-r3
 	!<sys-libs/glibc-2.37-r3
 "
 DEPEND=""
