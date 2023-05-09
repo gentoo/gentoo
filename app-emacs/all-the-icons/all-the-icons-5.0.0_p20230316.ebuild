@@ -22,7 +22,7 @@ else
 			-> ${P}.tar.gz"
 		S="${WORKDIR}"/${PN}.el-${PV}
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="MIT"
