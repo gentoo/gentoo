@@ -22,6 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc
 SLOT="0"
 IUSE=""
 
+# https://github.com/sparklemotion/nokogiri/issues/2865 for libxml2-2.10* dep
 RDEPEND="${RDEPEND}
 	>=dev-libs/libxml2-2.10.4:= =dev-libs/libxml2-2.10*
 	>=dev-libs/libxslt-1.1.37
