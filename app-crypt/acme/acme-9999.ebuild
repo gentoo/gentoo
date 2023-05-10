@@ -47,7 +47,7 @@ BDEPEND="
 # to avoid broken 23.1.0.
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-2.5.0[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-3.2.1[${PYTHON_USEDEP}]
 	>=dev-python/josepy-1.13.0[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-23.1.1[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
