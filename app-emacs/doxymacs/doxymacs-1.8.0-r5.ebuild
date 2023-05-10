@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit elisp flag-o-matic
+inherit elisp
 
 DESCRIPTION="Doxygen editing minor mode"
 HOMEPAGE="http://doxymacs.sourceforge.net/"
@@ -13,14 +13,18 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND=">=dev-libs/libxml2-2.6.13"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-libs/libxml2-2.6.13"
+DEPEND="${RDEPEND}"
 
-PATCHES=("${FILESDIR}"/${P}-gcc7.patch)
+PATCHES=(
+	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/${P}-gcc7.patch
+)
+
+DOCS=( AUTHORS ChangeLog NEWS README TODO )
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
-	append-flags -Wno-error		#260874
 	econf --with-lispdir="${SITELISP}/${PN}"
 }
 
@@ -31,5 +35,6 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	dodoc AUTHORS ChangeLog NEWS README TODO
+
+	einstalldocs
 }
