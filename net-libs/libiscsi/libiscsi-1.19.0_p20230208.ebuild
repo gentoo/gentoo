@@ -19,7 +19,7 @@ else
 		SRC_URI="https://github.com/sahlberg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	fi
 
-	KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="iscsi client library and utilities"
