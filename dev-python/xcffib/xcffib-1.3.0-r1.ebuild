@@ -25,7 +25,6 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		>=dev-python/cffi-1.1:=[${PYTHON_USEDEP}]
 	' 'python*')
-	dev-python/six[${PYTHON_USEDEP}]
 	${DEPEND}
 "
 BDEPEND="
