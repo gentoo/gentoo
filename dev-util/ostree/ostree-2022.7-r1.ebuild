@@ -77,6 +77,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Needs Bison (bug #884289)
+	unset YACC
+
 	local econfargs=(
 		--enable-man
 		--enable-shared
