@@ -30,7 +30,6 @@ RDEPEND="
 	>=dev-python/cryptography-2.5[${PYTHON_USEDEP}]
 	>=dev-python/pynacl-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-0.1.7[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
