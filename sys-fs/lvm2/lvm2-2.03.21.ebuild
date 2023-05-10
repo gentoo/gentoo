@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN^^}.${PV}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="lvm lvm2create-initrd readline sanlock selinux static static-libs systemd thin +udev"
+IUSE="lvm readline sanlock selinux static static-libs systemd thin +udev"
 REQUIRED_USE="
 	static? ( !systemd !udev )
 	static-libs? ( static !udev )
@@ -37,7 +37,6 @@ RDEPEND="${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
 	lvm? (
 		virtual/tmpfiles
-		lvm2create-initrd? ( sys-apps/makedev )
 		thin? ( sys-block/thin-provisioning-tools )
 	)"
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
@@ -59,7 +58,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.20-example.conf.in.patch
 
 	# For upstream -- review and forward:
-	"${FILESDIR}"/${PN}-2.03.20-lvm2create_initrd.patch
 	"${FILESDIR}"/${PN}-2.03.20-locale-muck.patch #330373
 	"${FILESDIR}"/${PN}-2.03.20-dmeventd-no-idle-exit.patch
 	"${FILESDIR}"/${PN}-2.03.20-freopen-musl.patch
@@ -216,12 +214,6 @@ src_install() {
 
 		newinitd "${FILESDIR}"/lvm-monitoring.initd-r3 lvm-monitoring
 		newinitd "${FILESDIR}"/lvmpolld.initd-r1 lvmpolld
-
-		if use lvm2create-initrd; then
-			dosbin scripts/lvm2create_initrd/lvm2create_initrd
-			doman scripts/lvm2create_initrd/lvm2create_initrd.8
-			newdoc scripts/lvm2create_initrd/README README.lvm2create_initrd
-		fi
 
 		if use sanlock; then
 			newinitd "${FILESDIR}"/lvmlockd.initd-r2 lvmlockd
