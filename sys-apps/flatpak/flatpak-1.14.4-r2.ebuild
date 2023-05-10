@@ -35,7 +35,7 @@ RDEPEND="
 	net-misc/curl:=
 	>=sys-apps/bubblewrap-0.5.0
 	sys-apps/dbus
-	>=sys-fs/fuse-2.9.9:0=
+	>=sys-fs/fuse-3.1.1:3=
 	sys-apps/xdg-dbus-proxy
 	X? (
 		x11-apps/xauth
