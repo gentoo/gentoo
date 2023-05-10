@@ -188,7 +188,12 @@ src_unpack() {
 }
 
 src_prepare() {
-	export JAVA_HOME=$(java-config --jre-home) # so keepwork works
+	if java-config -P openjdk-11 &> /dev/null ; then
+		export JAVA_HOME=$(java-config -P openjdk-11 | grep -Po '^JAVA_HOME=\K[[:ascii:]]{1,}') # so keepwork works
+	else
+		export JAVA_HOME=$(java-config -P openjdk-bin-11 | grep -Po '^JAVA_HOME=\K[[:ascii:]]{1,}') # so keepwork works
+	fi
+
 
 	append-flags $(get-cpu-flags)
 	append-cxxflags -std=c++17
@@ -212,7 +217,11 @@ src_prepare() {
 }
 
 src_configure() {
-	export JAVA_HOME=$(java-config --jre-home) # so keepwork works
+	if java-config -P openjdk-11 &> /dev/null ; then
+		export JAVA_HOME=$(java-config -P openjdk-11 | grep -Po '^JAVA_HOME=\K[[:ascii:]]{1,}') # so keepwork works
+	else
+		export JAVA_HOME=$(java-config -P openjdk-bin-11 | grep -Po '^JAVA_HOME=\K[[:ascii:]]{1,}') # so keepwork works
+	fi
 	export KERAS_HOME="${T}/.keras" # otherwise sandbox violation writing ~/.keras
 
 	do_configure() {
@@ -331,7 +340,12 @@ src_configure() {
 }
 
 src_compile() {
-	export JAVA_HOME=$(java-config --jre-home) # so keepwork works
+	if java-config -P openjdk-11 &> /dev/null ; then
+		export JAVA_HOME=$(java-config -P openjdk-11 | grep -Po '^JAVA_HOME=\K[[:ascii:]]{1,}') # so keepwork works
+	else
+		export JAVA_HOME=$(java-config -P openjdk-bin-11 | grep -Po '^JAVA_HOME=\K[[:ascii:]]{1,}') # so keepwork works
+	fi
+
 	export KERAS_HOME="${T}/.keras" # otherwise sandbox violation writing ~/.keras
 
 	if use python; then
@@ -365,7 +379,12 @@ src_compile() {
 
 src_install() {
 	local i l
-	export JAVA_HOME=$(java-config --jre-home) # so keepwork works
+	if java-config -P openjdk-11 &> /dev/null ; then
+		export JAVA_HOME=$(java-config -P openjdk-11 | grep -Po '^JAVA_HOME=\K[[:ascii:]]{1,}') # so keepwork works
+	else
+		export JAVA_HOME=$(java-config -P openjdk-bin-11 | grep -Po '^JAVA_HOME=\K[[:ascii:]]{1,}') # so keepwork works
+	fi
+
 	export KERAS_HOME="${T}/.keras" # otherwise sandbox violation writing ~/.keras
 
 	do_install() {
