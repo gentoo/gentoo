@@ -45,6 +45,7 @@ BDEPEND="
 			dev-python/click[${PYTHON_USEDEP}]
 			dev-python/httpx[${PYTHON_USEDEP}]
 			dev-python/platformdirs[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
 			dev-python/rich[${PYTHON_USEDEP}]
 			dev-python/tomli-w[${PYTHON_USEDEP}]
 			dev-python/virtualenv[${PYTHON_USEDEP}]
