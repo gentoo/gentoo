@@ -268,7 +268,9 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 BDEPEND="dev-go/go-md2man
 	dev-libs/protobuf"
 
-QA_FLAGS_IGNORED="usr/bin/${PN}"
+QA_FLAGS_IGNORED="usr/bin/${PN}
+	usr/bin/${PN}-dhcp-proxy-client
+	usr/libexec/podman/${PN}"
 
 src_compile() {
 	go-md2man -in docs/netavark.1.md -out docs/netavark.1 || die
