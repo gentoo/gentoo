@@ -96,13 +96,6 @@ dev-python/thunarx-python
 =dev-python/pythran-0.13.0
 =dev-python/gast-0.5.4
 
-# Sam James <sam@gentoo.org> (2023-05-01)
-# Masked for testing. Other distros seem to have hit a bunch of new test
-# failures in various applications, and initially there were ABI issues in .0.
-# Also, the failure case for bug #745162 needs retesting to see if the patch
-# should be rebased or just dropped.
->=dev-libs/libxml2-2.11.0
-
 # John Helmert III <ajak@gentoo.org> (2023-04-30)
 # STARTTLS vulnerability, depends on gtk+:2, practically unmainatined
 # upstream. Use mail-client/claws instead. Removal in 30 days, bugs
