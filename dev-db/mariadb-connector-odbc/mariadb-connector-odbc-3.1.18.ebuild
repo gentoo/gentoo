@@ -8,13 +8,12 @@ inherit cmake-multilib flag-o-matic
 DESCRIPTION="MariaDB Connector/ODBC"
 HOMEPAGE="https://downloads.mariadb.org/connector-odbc/"
 SRC_URI="mirror://mariadb/connector-odbc-${PV}/${P}-src.tar.gz"
+S="${S}-src"
 
 LICENSE="LGPL-2.1"
 SLOT="0/3.1"
 KEYWORDS="~amd64 ~x86"
 IUSE="ssl"
-
-S="${S}-src"
 
 # USE=ssl merely enables the configuration options (seemingly for interactive
 # sessions) and does not cause direct linking to any SSL libraries.  However,
@@ -39,6 +38,8 @@ multilib_src_configure() {
 		-DUSE_SYSTEM_INSTALLED_LIB=YES
 		-DINSTALL_DOCDIR="/usr/share/doc/${PF}"
 		-DINSTALL_LICENSEDIR="/usr/share/doc/${PF}"
+		-DINSTALL_LIBDIR="$(get_libdir)/mariadb"
+		-DINSTALL_PCDIR="$(get_libdir)/pkgconfig"
 		#-DCMAKE_C_FLAGS="$(mariadb_config --cflags)"
 	)
 	cmake_src_configure
@@ -47,6 +48,8 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	insinto /usr/share/${PN}
 	doins odbcinst.ini
+
+	rm "${ED}/usr/share/doc/${PF}/COPYING" || die "Error removing COPYING file from installation"
 }
 
 pkg_postinst() {
