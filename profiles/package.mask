@@ -75,8 +75,9 @@ www-client/chromium-bin
 
 # Sam James <sam@gentoo.org> (2023-05-03)
 # Broken pkgconfig file, please upgrade to -r1.
-# bug #704348, bug #905632.
+# bug #704348, bug #905632, bug #905822
 =sci-libs/metis-5.2.1
+=sci-libs/metis-5.2.1-r1
 =sci-libs/parmetis-4.0.3_p20230326
 
 # Michał Górny <mgorny@gentoo.org> (2023-05-03)
