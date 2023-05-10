@@ -11,9 +11,8 @@ if [[ $PV = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI=https://github.com/dfskoll/rp-pppoe.git
 else
-	SRC_URI="https://dianne.skoll.ca/projects/rp-pppoe/download/${P}.tar.gz
-		https://dev.gentoo.org/~polynomial-c/dist/${PATCHSET}.tar.xz"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	SRC_URI="https://dianne.skoll.ca/projects/rp-pppoe/download/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
