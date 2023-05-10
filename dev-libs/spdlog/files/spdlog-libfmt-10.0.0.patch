@@ -3,18 +3,8 @@ Upstream: https://github.com/gabime/spdlog/pull/2694
 
 Fixing spdlog-1.11.0 fails compile with libfmt-10.0.0
 
-https://github.com/gabime/spdlog/commit/0ca574ae168820da0268b3ec7607ca7b33024d05
-
-From 0ca574ae168820da0268b3ec7607ca7b33024d05 Mon Sep 17 00:00:00 2001
-From: H1X4 <10332146+H1X4Dev@users.noreply.github.com>
-Date: Fri, 31 Mar 2023 20:39:32 +0300
-Subject: [PATCH] fix build for master fmt (non-bundled) (#2694)
-
-* fix build for master fmt (non-bundled)
-
-* update fmt_runtime_string macro
-
-* fix build of updated macro
+diff --git a/include/spdlog/common.h b/include/spdlog/common.h
+index e69201a81..5f671c5c6 100644
 --- a/include/spdlog/common.h
 +++ b/include/spdlog/common.h
 @@ -173,12 +173,19 @@ using format_string_t = fmt::format_string<Args...>;
