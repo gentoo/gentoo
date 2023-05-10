@@ -39,7 +39,7 @@ DEPEND="
 	test? ( dev-util/cunit )
 "
 BDEPEND="
-	test? ( sys-block/tgt )
+	test? ( >=sys-block/tgt-1.0.58 )
 "
 
 PATCHES=(
@@ -48,6 +48,10 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# bug #906063
+	rm tests/test_0600_ipv6.sh || die
+
 	eautoreconf
 }
 
