@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,11 +19,18 @@ HOMEPAGE="https://github.com/sahlberg/libiscsi"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-IUSE="rdma"
+IUSE="rdma test"
+# test_9000_compareandwrite.sh failure needs investigation
+RESTRICT="!test? ( test ) test"
 
-RDEPEND="dev-libs/libgcrypt:0=
-	rdma? ( sys-cluster/rdma-core )"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	dev-libs/libgcrypt:=
+	rdma? ( sys-cluster/rdma-core )
+"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-util/cunit )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.18.0-fno-common.patch
@@ -42,7 +49,12 @@ src_configure() {
 	econf \
 		--enable-manpages \
 		$(use_with rdma) \
-		--disable-werror
+		--disable-werror \
+		$(use_enable test tests)
+}
+
+src_test() {
+	emake -C tests test
 }
 
 src_install() {
