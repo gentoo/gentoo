@@ -26,7 +26,7 @@ RDEPEND="
 "
 BDEPEND="test? (
 	dev-python/hypothesis
-	dev-python/pandas
+	<dev-python/pandas-2
 	dev-python/pytest-lazy-fixture
 )"
 
