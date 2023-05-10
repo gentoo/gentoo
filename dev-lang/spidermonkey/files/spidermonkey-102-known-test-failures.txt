@@ -19,11 +19,14 @@ non262/Intl/DateTimeFormat/format_timeZone.js
 non262/Intl/DateTimeFormat/fractional-second-digits-append-item.js
 non262/Intl/DateTimeFormat/hourCycle.js
 non262/Intl/DateTimeFormat/implied-script-has-consistent-output.js
+non262/Intl/DateTimeFormat/timeZone_backzone.js
 non262/Intl/DateTimeFormat/timeZone_version.js
 non262/Intl/DisplayNames/calendar.js
 non262/Intl/DisplayNames/dateTimeField.js
+non262/Intl/DisplayNames/language-dialect.js
 non262/Intl/ListFormat/conjunction-type.js
 non262/Intl/Locale/likely-subtags-generated.js
+non262/Intl/Locale/likely-subtags.js
 non262/Intl/NumberFormat/currency-narrow-symbol.js
 non262/Intl/NumberFormat/format.js
 non262/Intl/NumberFormat/notation-compact-long.js
@@ -98,3 +101,5 @@ test262/intl402/DateTimeFormat/prototype/formatRange/en-US.js
 test262/intl402/DateTimeFormat/prototype/formatRange/fractionalSecondDigits.js
 test262/intl402/DateTimeFormat/prototype/formatRangeToParts/en-US.js
 test262/intl402/DateTimeFormat/prototype/formatRangeToParts/fractionalSecondDigits.js
+test262/intl402/Locale/constructor-non-iana-canon.js
+test262/intl402/Locale/prototype/minimize/removing-likely-subtags-first-adds-likely-subtags.js
