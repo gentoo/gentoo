@@ -122,7 +122,6 @@ src_configure() {
 		-DENABLE_IPO=OFF
 		-DGDAL_USE_EXTERNAL_LIBS=ON
 		-DGDAL_USE_INTERNAL_LIBS=OFF
-		-DUSE_EXTERNAL_GTEST=ON
 		-DBUILD_TESTING=$(usex test)
 
 		# bug #844874 and bug #845150
@@ -232,6 +231,10 @@ src_configure() {
 		#-Dtest_fma4=$(usex cpu_flags_x86_fma4)
 		#-Dtest_xop=$(usex cpu_flags_x86_xop)
 	)
+
+	if use test ; then
+		mycmakeargs+=( -DUSE_EXTERNAL_GTEST=ON )
+	fi
 
 	cmake_src_configure
 }
