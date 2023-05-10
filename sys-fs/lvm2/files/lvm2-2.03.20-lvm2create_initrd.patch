@@ -1,5 +1,5 @@
---- LVM2.2.02.56/scripts/lvm2create_initrd/lvm2create_initrd.orig	2006-11-21 22:41:56.000000000 +0000
-+++ LVM2.2.02.56/scripts/lvm2create_initrd/lvm2create_initrd	2009-12-26 01:47:08.025224602 +0000
+--- a/scripts/lvm2create_initrd/lvm2create_initrd
++++ b/scripts/lvm2create_initrd/lvm2create_initrd
 @@ -54,7 +54,9 @@
  DEVRAM=/tmp/initrd.$$
  
@@ -65,8 +65,15 @@
  if [ $? -ne 0 ]; then
     echo "$cmd -- ERROR creating directories in $TMPMNT"
     cleanup 1
-@@ -499,4 +508,3 @@
- FINALTXT
+@@ -460,9 +469,9 @@
+ rmdir $TMPMNT/lost+found
  
- cleanup 0
--
+ echo "$cmd -- ummounting ram disk"
+-umount $DEVRAM
++umount $TMPMNT
+ if [ $? -ne 0 ]; then
+-   echo "$cmd -- ERROR umounting $DEVRAM"
++   echo "$cmd -- ERROR umounting $TMPMNT"
+    cleanup 1
+ fi
+ 

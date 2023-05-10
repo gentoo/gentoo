@@ -60,7 +60,6 @@ PATCHES=(
 
 	# For upstream -- review and forward:
 	"${FILESDIR}"/${PN}-2.03.20-lvm2create_initrd.patch
-	"${FILESDIR}"/${PN}-2.03.20-createinitrd.patch #301331
 	"${FILESDIR}"/${PN}-2.03.20-locale-muck.patch #330373
 	"${FILESDIR}"/${PN}-2.03.20-dmeventd-no-idle-exit.patch
 	"${FILESDIR}"/${PN}-2.03.20-freopen-musl.patch
