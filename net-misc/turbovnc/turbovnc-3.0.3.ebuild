@@ -70,6 +70,9 @@ PATCHES=( "${FILESDIR}"/"${PN}"-3.0-fix-musl-compilation.patch )
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/vgl-turbovnc.asc
 
+#879797 - BSD functions
+QA_CONFIG_IMPL_DECL_SKIP=( strlcat strlcpy )
+
 pkg_pretend() {
 	if use ssl && ! use server; then
 		einfo "USE=\"ssl\" selected but USE=\"server\" is not.  The SSL support is unused"
