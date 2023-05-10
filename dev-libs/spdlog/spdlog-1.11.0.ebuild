@@ -31,7 +31,6 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
-	"${FILESDIR}/${PN}-libfmt-10.0.0.patch"
 )
 
 src_prepare() {
