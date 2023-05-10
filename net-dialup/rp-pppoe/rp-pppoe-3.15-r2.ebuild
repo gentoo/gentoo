@@ -21,7 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc
 IUSE="tk"
 
 RDEPEND="
-	net-dialup/ppp:=
+	<net-dialup/ppp-2.5:=
 	sys-apps/iproute2
 	tk? ( dev-lang/tk:= )
 "
