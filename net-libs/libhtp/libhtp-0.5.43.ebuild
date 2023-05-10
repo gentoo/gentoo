@@ -21,6 +21,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.43-configure_fortify_source.patch
 )
 
+# false positive -- function specific to dev-libs/libiconv, which is only used
+# in Windows-based Prefix installations
+QA_CONFIG_IMPL_DECL_SKIP=( iconvctl )
+
 src_prepare() {
 	default
 	eautoreconf

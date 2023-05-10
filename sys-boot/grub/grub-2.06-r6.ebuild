@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.06-grub-mkconfig-restore-umask.patch
 	"${FILESDIR}"/grub-2.06-gentpl.py-Remove-.interp-section-from-.img-files.patch
 	"${FILESDIR}"/grub-2.06-fs-ext2-ignore-checksum-seed.patch
+	"${FILESDIR}"/grub-2.06-riscv.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37

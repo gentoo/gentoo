@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0/15"
-KEYWORDS="amd64 ~arm ~hppa"
+KEYWORDS="amd64 ~arm ~hppa ~x86"
 IUSE="odbc smtp test"
 RESTRICT="!test? ( test )"
 
@@ -26,6 +26,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-arch/zip
 	test? (
 		app-alternatives/gzip
 		app-arch/zip

@@ -1,6 +1,10 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-05-05)
+# Test failures on BE (https://github.com/sekrit-twc/zimg/pull/156)
+media-libs/zimg
+
 # matoro <matoro_gentoo@matoro.tk> (2023-04-11)
 # Test failures on BE (#833010).  Supported by Debian CI.
 # https://gitlab.freedesktop.org/wayland/weston/-/issues/739

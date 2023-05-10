@@ -37,6 +37,7 @@ src_prepare() {
 		"${FILESDIR}"/efivar-38-lld-fixes.patch
 		"${FILESDIR}"/efivar-38-efisecdb-musl.patch
 		"${FILESDIR}"/efivar-38-efisecdb-optarg.patch
+		"${FILESDIR}"/efivar-38-64bit-off_t.patch
 
 		# Rejected upstream, keep this for ia64 support
 		"${FILESDIR}"/efivar-38-ia64-relro.patch

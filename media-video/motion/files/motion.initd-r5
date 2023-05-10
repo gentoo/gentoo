@@ -20,7 +20,7 @@ start_pre() {
     directory="${MOTION_DIR}"
   fi
   if [ "${MOTION_LOGFILE}" ] ; then
-    checkpath -f -o "${MOTION_USER}":"${MOTION_GROUP}" "${LOGFILE}"
+    checkpath -f -o "${MOTION_USER}":"${MOTION_GROUP}" "${MOTION_LOGFILE}"
   fi
   if [ "${MOTION_PIDFILE}" ] ; then
     pidfile="${MOTION_PIDFILE}"

@@ -24,7 +24,7 @@ else
 			-> ${P}.tar.gz"
 		S="${WORKDIR}"/emacs-${PN}-${PV}
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3+"

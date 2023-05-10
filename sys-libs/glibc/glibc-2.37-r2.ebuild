@@ -131,6 +131,7 @@ DEPEND="${COMMON_DEPEND}
 		sys-apps/grep
 		app-alternatives/awk
 	)
+	doc? ( dev-lang/perl )
 	test? ( >=net-dns/libidn2-2.3.0 )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -418,6 +419,7 @@ setup_flags() {
 		# relating to failed builds, we strip most CFLAGS out to ensure as few
 		# problems as possible.
 		strip-flags
+		filter-lto
 		# Lock glibc at -O2; we want to be conservative here.
 		filter-flags '-O?'
 		append-flags -O2
@@ -1032,7 +1034,7 @@ glibc_do_configure() {
 		# execute Perl during configure if we're cross-compiling a prefix, but
 		# it will just disable mtrace in that case.
 		# Note: mtrace is needed by the test suite.
-		ac_cv_path_PERL="$(usex perl "${EPREFIX}"/usr/bin/perl $(usex test "${EPREFIX}"/usr/bin/perl no))"
+		ac_cv_path_PERL="$(usex perl "${EPREFIX}"/usr/bin/perl $(usex test "${EPREFIX}"/usr/bin/perl $(usex doc "${EPREFIX}"/usr/bin/perl no)))"
 
 		# locale data is arch-independent
 		# https://bugs.gentoo.org/753740

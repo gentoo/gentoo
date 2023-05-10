@@ -21,9 +21,9 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-4.10.6-solaris.patch
 	"${FILESDIR}"/${PN}-4.23-prtime.patch
 	"${FILESDIR}"/${PN}-4.7.1-solaris.patch
-	"${FILESDIR}"/${PN}-4.10.6-solaris.patch
 	"${FILESDIR}"/${PN}-4.8.4-darwin-install_name.patch
 	"${FILESDIR}"/${PN}-4.8.9-link-flags.patch
 	# We do not need to pass -L$libdir via nspr-config --libs
@@ -37,7 +37,10 @@ src_prepare() {
 
 	default
 
-	use elibc_musl && eapply "${FILESDIR}"/${PN}-4.21-ipv6-musl-support.patch
+	if use elibc_musl; then
+		eapply "${FILESDIR}"/${PN}-4.21-ipv6-musl-support.patch
+		eapply "${FILESDIR}"/nspr-4.35-bgo-905998-lfs64-musl.patch
+	fi
 
 	# rename configure.in to configure.ac for new autotools compatibility
 	if [[ -e "${S}"/nspr/configure.in ]] ; then

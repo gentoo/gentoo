@@ -1,6 +1,10 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-05-10)
+# sys-cluster/ceph not keyworded here
+sys-block/tgt rbd
+
 # jinqiang zhang <peeweep@0x0.ee> (2023-03-27)
 # Sanitizers supported on this architecture.
 sys-libs/compiler-rt-sanitizers -asan -lsan

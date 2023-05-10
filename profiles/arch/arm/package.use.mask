@@ -1,6 +1,14 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-05-10)
+# sys-cluster/ceph not keyworded here
+sys-block/tgt rbd
+
+# Sebastian Parborg <darkdefende@gmail.com> (2023-05-08)
+# media-libs/openpgl and media-libs/embree only supports amd64 and arm64
+media-gfx/blender embree openpgl
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-03-07)
 # nbval/nbclassic docs require pandoc which is not keyworded here yet
 dev-python/nbval doc

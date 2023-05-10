@@ -4,6 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="google-code">lsyncd</remote-id>
-		<remote-id type="github">axkibe/lsyncd</remote-id>
+		<remote-id type="github">lsyncd/lsyncd</remote-id>
 	</upstream>
 </pkgmetadata>

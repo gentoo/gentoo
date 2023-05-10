@@ -14,7 +14,7 @@ if [[ ${PV} = 9999* ]]; then
 		EGIT_REPO_URI="https://github.com/fedora-modularity/libmodulemd.git"
 else
 		SRC_URI="https://github.com/fedora-modularity/libmodulemd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-		KEYWORDS="~amd64"
+		KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -38,6 +38,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/gobject-introspection
+	dev-util/glib-utils
 	gtk-doc? (
 		dev-libs/glib[gtk-doc]
 		dev-util/gtk-doc

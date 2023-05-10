@@ -25,6 +25,7 @@ RDEPEND="
 	>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	>=x11-base/xcb-proto-1.15.2
 	elibc_Darwin? ( dev-libs/libpthread-stubs )
 	test? ( dev-libs/check[${MULTILIB_USEDEP}] )

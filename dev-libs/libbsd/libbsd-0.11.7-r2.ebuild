@@ -24,6 +24,7 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
 
 PATCHES=(
 	"${FILESDIR}/libbsd-build-Fix-version-script-linker-support-detection.patch"
+	"${FILESDIR}/libbsd-0.11.7-musl-lfs.patch"
 )
 
 src_prepare() {

@@ -64,7 +64,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd:= )
 	tray? (
 		dev-libs/libdbusmenu[gtk3]
-		dev-libs/libappindicator
+		dev-libs/libayatana-appindicator
 	)
 	udev? ( virtual/libudev:= )
 	upower? ( sys-power/upower )

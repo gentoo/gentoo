@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit check-reqs cmake optfeature python-single-r1 xdg
 
@@ -57,7 +57,6 @@ RDEPEND="
 	dev-qt/qtxmlpatterns:5
 	media-libs/freetype
 	media-libs/qhull:=
-	sci-libs/flann[openmp]
 	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1
 	sci-libs/opencascade:=[json,vtk]

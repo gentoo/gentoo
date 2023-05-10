@@ -10,7 +10,7 @@ DESCRIPTION="GNU Image Manipulation Program help files"
 HOMEPAGE="https://docs.gimp.org/"
 SRC_URI="mirror://gimp/help/${P}.tar.bz2"
 
-LICENSE="FDL-1.2"
+LICENSE="FDL-1.2+"
 SLOT="2"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE=""

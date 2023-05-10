@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2023-05-10)
+# sys-cluster/ceph not keyworded here
+sys-block/tgt rbd
+
 # Sam James <sam@gentoo.org> (2023-05-01)
 # media-libs/libjxl is not keyworded
 # bug https://bugs.gentoo.org/853628

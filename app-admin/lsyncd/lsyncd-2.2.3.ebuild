@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,10 +10,11 @@ LUA_REQ_USE="deprecated"
 inherit cmake lua-single
 
 DESCRIPTION="Live Syncing (Mirror) Daemon"
-HOMEPAGE="https://github.com/axkibe/lsyncd"
-SRC_URI="https://github.com/axkibe/lsyncd/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/lsyncd/lsyncd"
+SRC_URI="https://github.com/lsyncd/lsyncd/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-release-${PV}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
@@ -32,8 +33,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.3-cmake_lua_version.patch
 	"${FILESDIR}"/${PN}-2.2.3-mandir.patch
 )
-
-S=${WORKDIR}/${PN}-release-${PV}
 
 src_configure() {
 	local mycmakeargs=(

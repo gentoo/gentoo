@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit toolchain-funcs
 
-DESCRIPTION="farbfeld simple image format tools"
+DESCRIPTION="Farbfeld simple image format tools"
 HOMEPAGE="https://tools.suckless.org/farbfeld/"
 SRC_URI="https://dl.suckless.org/${PN}/${P}.tar.gz"
 
@@ -16,9 +17,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo
 	media-libs/libpng:*
 "
-DEPEND="
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default

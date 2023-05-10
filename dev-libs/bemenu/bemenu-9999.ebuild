@@ -45,7 +45,10 @@ DEPEND="
 		dev-libs/wayland-protocols
 	)
 "
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="
+	app-text/scdoc
+	doc? ( app-doc/doxygen )
+"
 
 src_compile() {
 	tc-export CC

@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-05-08)
+# Package is unmaintained and appears quite dead. Last release in 2020. Broken
+# with stable glib-2.76. Depends on app-text/enchant:0.
+# Bug #905954. Removal on 2023-06-08
+net-im/mcabber
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-08)
+# Package is unmaintained and appears quite dead (e.g. SSL certificate for the
+# homepage expired in 2021). Only version is a snapshot from 2021. No Python
+# 3.11 support. Depends on app-text/enchant:0.
+# Bug #905955. Removal on 2023-06-08
+net-irc/kvirc
+
 # Michał Górny <mgorny@gentoo.org> (2023-05-05)
 # The Gentoo packages are severely out of date, and they haven't been
 # ported to Python 3.11.  They are hard to keep working, and there
@@ -62,8 +75,9 @@ www-client/chromium-bin
 
 # Sam James <sam@gentoo.org> (2023-05-03)
 # Broken pkgconfig file, please upgrade to -r1.
-# bug #704348, bug #905632.
+# bug #704348, bug #905632, bug #905822
 =sci-libs/metis-5.2.1
+=sci-libs/metis-5.2.1-r1
 =sci-libs/parmetis-4.0.3_p20230326
 
 # Michał Górny <mgorny@gentoo.org> (2023-05-03)
@@ -195,10 +209,8 @@ net-im/cawbird
 # - reported at bottom of bug #904247 and bug #904263
 # - app-misc/tmux: https://github.com/tmux/tmux/issues/3531
 # - sys-apps/openrc: https://github.com/OpenRC/openrc/issues/619
-=sys-libs/ncurses-6.4_p20230408
-=sys-libs/ncurses-6.4_p20230415
-=sys-libs/ncurses-6.4_p20230418
 =sys-libs/ncurses-6.4_p20230424
+=sys-libs/ncurses-6.4_p20230506
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-13)
 # Lack of support for Python 3.11.  The current version is from 2016.
@@ -277,11 +289,6 @@ dev-python/cbor
 # - net-im/whatsapp-for-linux::guru (a simple app using webkit2gtk)
 # Removal on 2023-05-09
 net-im/wazzapp-bin
-
-# Matthew Thode <prometheanfire@gentoo.org> (2023-04-08)
-# upstream has been dead for nearly five years
-# Removal on 2023-05-07
-app-admin/mcollective
 
 # John Helmert III <ajak@gentoo.org> (2023-04-08)
 # i3-gaps has been meregd into upstream i3. Use x11-wm/i3 instead.
