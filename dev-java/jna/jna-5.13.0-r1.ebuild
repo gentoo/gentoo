@@ -102,6 +102,7 @@ src_compile() {
 	cd native || die
 	local args=(
 		CC="$(tc-getCC)"
+		STRIP=true
 		DYNAMIC_LIBFFI=true
 	)
 	# Using -j1 since otherwise fails to build:
