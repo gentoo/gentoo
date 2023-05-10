@@ -69,11 +69,16 @@ python_test() {
 		tests/backend/dep/test_core.py::test_extra_unmet
 		tests/backend/dep/test_core.py::test_unknown_extra
 		tests/backend/dep/test_core.py::test_version_unmet
+		# broken if CARGO is set
+		tests/backend/builders/test_app.py::TestBuildBootstrap::test_no_cargo
 	)
 
 	# top-level "tests" directory contains tests both for hatch
 	# and hatchling
 	cd "${WORKDIR}/${MY_P}" || die
 	local -x PYTHONPATH="src:${PYTHONPATH}"
+	# tests mock cargo subprocess call but the backend raises if CARGO
+	# is not set and shutil.which() can't find it
+	local -x CARGO=cargo
 	epytest tests/backend
 }
