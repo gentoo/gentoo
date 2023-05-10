@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 LUA_COMPAT=( lua5-3 )
 
 CMAKE_MAKEFILE_GENERATOR=emake
@@ -93,7 +93,7 @@ DEPEND="
 	spdk? ( dev-util/cunit )
 	sqlite? ( dev-db/sqlite:= )
 	system-boost? ( dev-libs/boost:=[context,python,${PYTHON_USEDEP},zlib] )
-	!system-boost? ( $(python_gen_impl_dep '' 3.10) )
+	!system-boost? ( $(python_gen_impl_dep '' 3.{10..11}) )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zbd? ( sys-block/libzbd:= )
