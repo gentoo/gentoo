@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -12,26 +12,35 @@ SRC_URI="https://www.linuxnetworks.de/opendbx/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="firebird +man +mysql oracle postgres sqlite"
-RESTRICT="firebird? ( bindist )"
+IUSE="firebird +man +mysql oracle postgres sqlite test"
+# The test programs need manual/interactive use.
+RESTRICT="
+	firebird? ( bindist )
+	!test? ( test )
+	test
+"
+REQUIRED_USE="|| ( firebird mysql oracle postgres sqlite )"
 
 RDEPEND="mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite:3 )
 	oracle? ( dev-db/oracle-instantclient[sdk] )
 	firebird? ( dev-db/firebird )"
-DEPEND="${RDEPEND}
-	man? ( app-doc/doxygen
-		app-text/docbook2X )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	man? (
+		app-doc/doxygen
+		app-text/docbook2X
+	)
+"
 
-REQUIRED_USE="|| ( firebird mysql oracle postgres sqlite )"
-
-PATCHES=( "${FILESDIR}/${PN}-doxy.patch"
-	"${FILESDIR}/${PN}-man-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-doxy.patch"
+	"${FILESDIR}/${PN}-man-optional.patch"
+)
 
 pkg_setup() {
-	if use oracle && [[ ! -d ${ORACLE_HOME} ]]
-	then
+	if use oracle && [[ ! -d ${ORACLE_HOME} ]]; then
 		die "Oracle support requested, but ORACLE_HOME not set to a valid directory!"
 	fi
 }
@@ -50,8 +59,8 @@ src_configure() {
 	use postgres && backends="${backends} pgsql"
 	use sqlite && backends="${backends} sqlite3"
 
-	use mysql && append-cppflags -I/usr/include/mysql
-	use firebird && append-cppflags -I/opt/firebird/include
+	use mysql && append-cppflags -I"${ESYSROOT}"/usr/include/mysql
+	use firebird && append-cppflags -I"${ESYSROOT}"/opt/firebird/include
 
 	if use oracle ; then
 		# Traditionally, OCI header files are provided in:
@@ -71,7 +80,10 @@ src_configure() {
 	# bug #788304
 	append-cxxflags -std=c++14
 
-	econf --with-backends="${backends}" --enable-manpages="$(usex man yes no)"
+	econf \
+		--with-backends="${backends}" \
+		--enable-manpages="$(usex man yes no)" \
+		$(use_enable test)
 }
 
 src_compile() {
