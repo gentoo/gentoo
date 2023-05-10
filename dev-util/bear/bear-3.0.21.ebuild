@@ -47,6 +47,7 @@ S="${WORKDIR}/${P^}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.21-clang16-tests.patch
+	"${FILESDIR}"/${PN}-3.0.21-libfmt-10.0.0.patch
 )
 
 pkg_setup() {
