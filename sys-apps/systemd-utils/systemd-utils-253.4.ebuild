@@ -120,7 +120,12 @@ src_prepare() {
 	)
 
 	if use elibc_musl; then
-		PATCHES+=( "${WORKDIR}/${MUSL_PATCHSET}" )
+		PATCHES+=(
+			"${WORKDIR}/${MUSL_PATCHSET}"
+			# The LFS patch should be fine unconditionally but
+			# let's keep it conditional until merged upstream.
+			"${FILESDIR}"/${PN}-253.4-musl-lfs.patch
+		)
 	fi
 	default
 
