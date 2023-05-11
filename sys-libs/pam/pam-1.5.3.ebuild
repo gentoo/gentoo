@@ -45,6 +45,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PDEPEND=">=sys-auth/pambase-20200616"
 
+PATCHES=(
+	"${FILESDIR}/${P}-termios.patch"
+)
+
 src_prepare() {
 	default
 	touch ChangeLog || die
