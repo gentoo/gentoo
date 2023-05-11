@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=pdm
 
 inherit distutils-r1
 
-DESCRIPTION="Python language handler for dev-python/mkdocstrings"
+DESCRIPTION="Python handler for dev-python/mkdocstrings"
 HOMEPAGE="https://mkdocstrings.github.io/python/ https://pypi.org/project/mkdocstrings-python/"
 # Tests need files absent from the PyPI tarballs
 SRC_URI="https://github.com/mkdocstrings/python/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
@@ -17,7 +17,8 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
-RDEPEND="dev-python/griffe[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/griffe[${PYTHON_USEDEP}]
+	dev-python/mkdocstrings[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.1-build_backend.patch
