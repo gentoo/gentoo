@@ -222,6 +222,11 @@ llvm_check_deps() {
 	has_version "sys-devel/llvm:${LLVM_SLOT}[${flags}]"
 }
 
+PATCHES=(
+	# Temporary rusticl workaround: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7717#note_1832122
+	"${FILESDIR}/clang_resource_dir.patch"
+)
+
 pkg_pretend() {
 	if use vulkan; then
 		if ! use video_cards_d3d12 &&
@@ -305,12 +310,6 @@ pkg_setup() {
 		llvm_pkg_setup
 	fi
 	python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	# Temporary workaround: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7717#note_1832122
-	use opencl && eapply "${FILESDIR}/clang_resource_dir.patch"
-	default
 }
 
 multilib_src_configure() {
