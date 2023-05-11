@@ -13,4 +13,7 @@
     <flag name="flash">Support (short) flash on FXS</flag>
     <flag name="oslec">Enable OSLEC (software) echo canceller (require ECHO in kernel)</flag>
   </use>
+  <upstream>
+    <remote-id type="github">asterisk/dahdi-linux</remote-id>
+  </upstream>
 </pkgmetadata>
