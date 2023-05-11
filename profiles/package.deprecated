@@ -90,12 +90,6 @@ dev-python/nose
 # https://projects.gentoo.org/python/guide/porting.html#replacing-the-toml-package
 dev-python/toml
 
-# Petr Vaněk <arkamar@atlas.cz> (2022-10-06)
-# Obsolete virtual.
-# Only one provider is left (net-libs/c-client), please change dependency to
-# that instead.
-virtual/imap-c-client
-
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.
 # When possible, replace dependencies on these packages with a dependency on
