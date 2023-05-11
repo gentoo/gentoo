@@ -28,7 +28,9 @@ DEPEND=">=sys-kernel/linux-headers-2.6.25
 	elibc_musl? ( net-libs/ppp-defs )
 	${RDEPEND}"
 
-DOC_CONTENTS="Use pppoe-setup to configure your dialup connection"
+PATCHES=(
+	"${FILESDIR}/rp-pppoe-4.0-ar_environment.patch"
+)
 
 pkg_setup() {
 	# This is needed in multiple phases

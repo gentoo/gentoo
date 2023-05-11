@@ -28,8 +28,6 @@ DEPEND=">=sys-kernel/linux-headers-2.6.25
 	elibc_musl? ( net-libs/ppp-defs )
 	${RDEPEND}"
 
-DOC_CONTENTS="Use pppoe-setup to configure your dialup connection"
-
 pkg_setup() {
 	# This is needed in multiple phases
 	PPPD_VER="$(best_version net-dialup/ppp)"
