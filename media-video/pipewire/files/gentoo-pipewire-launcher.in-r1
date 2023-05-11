@@ -22,16 +22,16 @@ then
     then
 	restart
     else
-        echo "Unrecognised argument."
-	echo "Usage: gentoo-pipewire-launcher [restart]"
+        echo "Unrecognised argument." >&2
+        echo "Usage: gentoo-pipewire-launcher [restart]" >&2
 	exit 1
     fi
 fi
 
 if pgrep -u "${USER}" -x pipewire\|wireplumber 1>/dev/null 2>&1
 then
-    echo "PipeWire already running, exiting."
-    echo "(Use 'gentoo-pipewire-launcher restart' to restart PipeWire and WirePlumber.)"
+    echo "PipeWire already running, exiting." >&2
+    echo "(Use 'gentoo-pipewire-launcher restart' to restart PipeWire and WirePlumber.)" >&2
     exit 1
 fi
 
