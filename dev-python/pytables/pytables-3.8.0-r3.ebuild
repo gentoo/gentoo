@@ -52,6 +52,7 @@ python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/${P}-blosc2.patch
 		"${FILESDIR}"/${P}-optional-cpuinfo.patch
+		"${FILESDIR}"/${P}-cython3.patch
 	)
 
 	export PYTABLES_NO_EMBEDDED_LIBS=1
