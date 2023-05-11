@@ -138,9 +138,9 @@ python_check_deps() {
 
 pkg_pretend() {
 	if use test ; then
-		CHECKREQS_DISK_BUILD="7000M"
+		CHECKREQS_DISK_BUILD="4000M"
 	else
-		CHECKREQS_DISK_BUILD="6000M"
+		CHECKREQS_DISK_BUILD="3600M"
 	fi
 
 	check-reqs_pkg_pretend
@@ -149,9 +149,9 @@ pkg_pretend() {
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
 		if use test ; then
-			CHECKREQS_DISK_BUILD="7000M"
+			CHECKREQS_DISK_BUILD="4000M"
 		else
-			CHECKREQS_DISK_BUILD="6000M"
+			CHECKREQS_DISK_BUILD="3600M"
 		fi
 
 		check-reqs_pkg_setup
