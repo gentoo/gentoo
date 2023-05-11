@@ -1,0 +1,41 @@
+From ff65fefaa53a199933c005129b78e0c4f5a5ab47 Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Thu, 11 May 2023 11:34:42 +0530
+Subject: [PATCH] Fix type specifier missing and undeclared function call with
+ clang 16
+
+- wmrack.c:1243:12: error: type specifier missing, defaults to 'int'
+- wmrack.c:1300:22: error: call to undeclared function 'time'; ISO C99 and later do not support implicit function declarations
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+
+Bug: https://bugs.gentoo.org/899046
+Upstream Issue: https://sourceforge.net/p/wmrack/patches/3/
+---
+ wmrack.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/wmrack.c b/wmrack.c
+index ea49d40..4aa3d56 100644
+--- a/wmrack.c
++++ b/wmrack.c
+@@ -25,6 +25,7 @@
+ #include <unistd.h>
+ #include <errno.h>
+ #include <signal.h>
++#include <time.h>
+
+ #include <X11/Xlib.h>
+ #include <X11/Xresource.h>
+@@ -1240,7 +1241,7 @@ redrawDisplay (int force_win, int force_disp)
+     int track[2] = { 0, 0 };
+     int cdtime[4] = { 0, 0, 0, 0 };
+     static time_t last_flash_time;
+-    static flash = 0;
++    static int flash = 0;
+     int st = 0, newRack = RACK_NODISC, im_stop = 0;
+     MSF pos;
+
+--
+2.40.1
+
