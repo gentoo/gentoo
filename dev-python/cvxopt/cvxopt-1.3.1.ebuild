@@ -46,7 +46,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-distutils_enable_sphinx doc/source --no-autodoc
+distutils_enable_sphinx doc/source \
+	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 # The BLAS_LIB and LAPACK_LIB variables (among others) in cvxopt's
