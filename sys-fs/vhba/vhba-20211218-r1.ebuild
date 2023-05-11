@@ -30,6 +30,16 @@ pkg_setup() {
 	CONFIG_CHECK="~BLK_DEV_SR ~CHR_DEV_SG"
 	check_extra_config
 	BUILD_PARAMS="KDIR=${KV_OUT_DIR}"
+	if linux_chkconfig_present CC_IS_CLANG; then
+	  BUILD_PARAMS+=" CC=${CHOST}-clang"
+	  if linux_chkconfig_present LD_IS_LLD; then
+	    BUILD_PARAMS+=' LD=ld.lld'
+	    if linux_chkconfig_present LTO_CLANG_THIN; then
+	      # kernel enables cache by default leading to sandbox violations
+	      BUILD_PARAMS+=' ldflags-y=--thinlto-cache-dir= LDFLAGS_MODULE=--thinlto-cache-dir='
+	    fi
+	  fi
+	fi
 	linux-mod_pkg_setup
 }
 
