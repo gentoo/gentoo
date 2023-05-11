@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	<dev-python/cachetools-6.0.0[${PYTHON_USEDEP}]
@@ -40,7 +40,7 @@ BDEPEND="
 		dev-python/pyu2f[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
-		dev-python/urllib3[${PYTHON_USEDEP}]
+		<dev-python/urllib3-2[${PYTHON_USEDEP}]
 	)
 "
 
