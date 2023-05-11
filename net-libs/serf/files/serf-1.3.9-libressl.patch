@@ -1,3 +1,8 @@
+This backported patch avoids the upstream scons check to prevent unintended
+issues and can be removed next release bump where it may be preferable to
+use the newer cmake build system.
+
+https://bugs.gentoo.org/906123
 https://bugs.gentoo.org/903001
 https://github.com/apache/serf/commit/df0d2d0dbdf88576f26da9c71df3ab6249d351dc
 
@@ -14,28 +19,7 @@ Subject: [PATCH] Fix another build problem with LibreSSL.
    of USE_LEGACY_OPENSSL.
 
 git-svn-id: https://svn.apache.org/repos/asf/serf/trunk@1775242 13f79535-47bb-0310-9956-ffa450edef68
----
- SConstruct            | 6 ++++++
- buckets/ssl_buckets.c | 2 +-
- 2 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/SConstruct b/SConstruct
-index 4358a23..115f409 100644
---- a/SConstruct
-+++ b/SConstruct
-@@ -373,6 +373,12 @@ else:
-   env.Append(CPPPATH=['$OPENSSL/include'])
-   env.Append(LIBPATH=['$OPENSSL/lib'])
- 
-+  # Check for OpenSSL functions which are only available in some of
-+  # the versions we support. Also handles forks like LibreSSL.
-+  conf = Configure(env)
-+  if conf.CheckFunc('OPENSSL_malloc_init'):
-+    env.Append(CPPDEFINES=['SERF_HAVE_OPENSSL_MALLOC_INIT'])
-+  env = conf.Finish()
- 
- # If build with gssapi, get its information and define SERF_HAVE_GSSAPI
- if gssapi and CALLOUT_OKAY:
 diff --git a/buckets/ssl_buckets.c b/buckets/ssl_buckets.c
 index b01e535..27c84c7 100644
 --- a/buckets/ssl_buckets.c
@@ -45,7 +29,7 @@ index b01e535..27c84c7 100644
  #endif
  
 -#ifdef USE_OPENSSL_1_1_API
-+#ifdef SERF_HAVE_OPENSSL_MALLOC_INIT
++#ifndef LIBRESSL_VERSION_NUMBER
          OPENSSL_malloc_init();
  #else
          CRYPTO_malloc_init();
