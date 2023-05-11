@@ -293,12 +293,6 @@ dev-python/cbor
 # Removal on 2023-05-09
 net-im/wazzapp-bin
 
-# John Helmert III <ajak@gentoo.org> (2023-04-08)
-# i3-gaps has been meregd into upstream i3. Use x11-wm/i3 instead.
-# See also: https://github.com/i3/i3/issues/3724
-# Removal on 2023-05-08.
-x11-wm/i3-gaps
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
 #
