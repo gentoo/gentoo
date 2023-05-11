@@ -260,13 +260,6 @@ x11-plugins/ascpu
 # Removal on 2023-05-10
 x11-libs/libdmx
 
-# Matt Turner <mattst88@gentoo.org> (2023-04-10)
-# speedo support was dropped from libXfont ~14 years ago. See
-# https://www.x.org/wiki/DeprecatedInX11R7/
-# https://gitlab.freedesktop.org/xorg/lib/libxfont/-/commit/85b66b8a7f3095f10437c8ecb3dcbfe68c9cfced
-# Removal on 2023-05-10
-media-fonts/font-bitstream-speedo
-
 # Ulrich Müller <ulm@gentoo.org> (2023-04-10)
 # Pretest versions, masked for testing.
 <app-editors/emacs-29.0.9999:29-vcs
