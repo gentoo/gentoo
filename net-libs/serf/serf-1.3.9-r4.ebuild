@@ -34,7 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.9-python3-check.patch
 	"${FILESDIR}"/${PN}-1.3.9-openssl-3-bio-ctrl.patch
 	"${FILESDIR}"/${PN}-1.3.9-openssl-3-errgetfunc.patch
-	"${FILESDIR}"/${PN}-1.3.9-libressl.patch #903001
+	"${FILESDIR}"/${PN}-1.3.9-libressl.patch #903001, 906123
 )
 
 src_prepare() {
