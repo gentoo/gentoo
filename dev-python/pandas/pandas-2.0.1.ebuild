@@ -67,8 +67,11 @@ OPTIONAL_DEPEND="
 		)
 	)
 "
-COMMON_DEPEND="
+DEPEND="
 	>=dev-python/numpy-1.23.2[${PYTHON_USEDEP}]
+"
+COMMON_DEPEND="
+	${DEPEND}
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2020.1[${PYTHON_USEDEP}]
 "
