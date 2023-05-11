@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,21 +17,24 @@ KEYWORDS="amd64 x86"
 IUSE="john"
 
 DEPEND="
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	net-libs/libpcap
 	sys-libs/zlib
 "
-
-RDEPEND="${DEPEND}
-	john? ( || (
-		app-crypt/johntheripper
-		app-crypt/johntheripper-jumbo
+RDEPEND="
+	${DEPEND}
+	john? (
+		|| (
+			app-crypt/johntheripper
+			app-crypt/johntheripper-jumbo
 		)
-	)"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-filter-mac-address.patch
 	"${FILESDIR}"/${P}-missed-string.h-warnings-fix.patch
+	"${FILESDIR}"/${P}-modern-c.patch
 )
 
 src_prepare() {
@@ -55,11 +58,12 @@ src_compile() {
 }
 
 src_install() {
+	dodoc README
 	dobin src/wepattack
+
 	if use john; then
 		dosbin run/wepattack_{inc,word}
 		insinto /etc
 		doins "${FILESDIR}"/wepattack.conf
 	fi
-	dodoc README
 }
