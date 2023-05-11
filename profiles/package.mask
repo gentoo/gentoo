@@ -309,12 +309,6 @@ dev-java/jython
 # Removal on 2023-05-08
 dev-ruby/allison
 
-# Michał Górny <mgorny@gentoo.org> (2023-04-07)
-# No Python 3.11 support and the ebuild is not running the test suite.
-# Still uses deprecated dev-python/toml (upstream).  No revdeps.
-# Removal on 2023-05-07.  Bug #878655.
-app-misc/wildq
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
 #
