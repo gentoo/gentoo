@@ -16,18 +16,17 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.g
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE="python"
-
-REQUIRED_USE="test? ( python )"
 
 RDEPEND=">=dev-python/jinja-2.11.1[${PYTHON_USEDEP}]
 	>=dev-python/markdown-3.3[${PYTHON_USEDEP}]
 	>=dev-python/markupsafe-1.1[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-1.2[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-autorefs-0.3.1[${PYTHON_USEDEP}]
-	>=dev-python/pymdown-extensions-6.3[${PYTHON_USEDEP}]
-	python? ( dev-python/mkdocstrings-python[${PYTHON_USEDEP}] )"
-BDEPEND="test? ( dev-python/mkdocs-material[${PYTHON_USEDEP}] )"
+	>=dev-python/pymdown-extensions-6.3[${PYTHON_USEDEP}]"
+BDEPEND="test? (
+	dev-python/mkdocs-material[${PYTHON_USEDEP}]
+	dev-python/mkdocstrings-python[${PYTHON_USEDEP}]
+)"
 
 # mkdocstrings documentation generation requires several currently
 # unpackaged mkdocs extensions and plug-ins, and this test
