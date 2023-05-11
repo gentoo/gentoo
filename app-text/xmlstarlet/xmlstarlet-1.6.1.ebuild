@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A set of tools to transform, query, validate, and edit XML documents"
-HOMEPAGE="http://xmlstar.sourceforge.net/"
+HOMEPAGE="https://xmlstar.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xmlstar/${P}.tar.gz"
 
 LICENSE="MIT"
