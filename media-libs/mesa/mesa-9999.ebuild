@@ -107,69 +107,25 @@ RDEPEND="${RDEPEND}
 # 2. Update the := to specify *max* version, e.g. < 10.
 # 3. Specify LLVM_MAX_SLOT, e.g. 9.
 LLVM_MAX_SLOT="16"
+LLVM_USE_DEPS="llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}"
 LLVM_DEPSTR="
 	|| (
-		sys-devel/llvm:16[${MULTILIB_USEDEP}]
-		sys-devel/llvm:15[${MULTILIB_USEDEP}]
+		sys-devel/@@@@:16[${LLVM_USE_DEPS}]
+		sys-devel/@@@@:15[${LLVM_USE_DEPS}]
 	)
-	<sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=[${MULTILIB_USEDEP}]
+	<sys-devel/@@@@-$((LLVM_MAX_SLOT + 1)):=[${LLVM_USE_DEPS}]
 "
-LLVM_DEPSTR_AMDGPU=${LLVM_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
-CLANG_DEPSTR=${LLVM_DEPSTR//llvm/clang}
-CLANG_DEPSTR_AMDGPU=${CLANG_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
 RDEPEND="${RDEPEND}
 	llvm? (
 		opencl? (
-			video_cards_r600? (
-				${CLANG_DEPSTR_AMDGPU}
-			)
-			!video_cards_r600? (
-				video_cards_radeonsi? (
-					${CLANG_DEPSTR_AMDGPU}
-				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeonsi? (
-					video_cards_radeon? (
-						${CLANG_DEPSTR_AMDGPU}
-					)
-				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeon? (
-					!video_cards_radeonsi? (
-						${CLANG_DEPSTR}
-					)
-				)
-			)
+			${LLVM_DEPSTR//@@@@/clang}
 		)
 		!opencl? (
-			video_cards_r600? (
-				${LLVM_DEPSTR_AMDGPU}
-			)
-			!video_cards_r600? (
-				video_cards_radeonsi? (
-					${LLVM_DEPSTR_AMDGPU}
-				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeonsi? (
-					video_cards_radeon? (
-						${LLVM_DEPSTR_AMDGPU}
-					)
-				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeon? (
-					!video_cards_radeonsi? (
-						${LLVM_DEPSTR}
-					)
-				)
-			)
+			${LLVM_DEPSTR//@@@@/llvm}
 		)
 	)
 "
-unset {LLVM,CLANG}_DEPSTR{,_AMDGPU}
+unset LLVM_DEPSTR
 
 DEPEND="${RDEPEND}
 	video_cards_d3d12? ( dev-util/directx-headers[${MULTILIB_USEDEP}] )
@@ -204,16 +160,10 @@ x86? (
 )"
 
 llvm_check_deps() {
-	local flags=${MULTILIB_USEDEP}
-	if use video_cards_r600 || use video_cards_radeon || use video_cards_radeonsi
-	then
-		flags+=",llvm_targets_AMDGPU(-)"
-	fi
-
 	if use opencl; then
-		has_version "sys-devel/clang:${LLVM_SLOT}[${flags}]" || return 1
+		has_version "sys-devel/clang:${LLVM_SLOT}[${LLVM_USE_DEPS}]" || return 1
 	fi
-	has_version "sys-devel/llvm:${LLVM_SLOT}[${flags}]"
+	has_version "sys-devel/llvm:${LLVM_SLOT}[${LLVM_USE_DEPS}]"
 }
 
 pkg_pretend() {
