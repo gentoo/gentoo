@@ -1,0 +1,23 @@
+From ebe5c5e83903685742a39ae63b779d7a64527cff Mon Sep 17 00:00:00 2001
+From: polyzen <polyzen@noreply.torsion.org>
+Date: Fri, 14 Apr 2023 01:01:31 +0000
+Subject: [PATCH] Fix "TypeError: 'module' object is not callable" in
+ test_commands.py
+
+--- a/tests/integration/borg/test_commands.py
++++ b/tests/integration/borg/test_commands.py
+@@ -1,6 +1,6 @@
+ import copy
+ 
+-import flexmock
++from flexmock import flexmock
+ 
+ import borgmatic.borg.info
+ import borgmatic.borg.list
+@@ -105,4 +105,4 @@ def test_display_archives_info_command_does_not_duplicate_flags_or_raise():
+ 
+         borgmatic.borg.info.display_archives_info(
+             'repo', {}, '2.3.4', fuzz_argument(arguments, argument_name)
+-        )
++        )
+\ No newline at end of file
