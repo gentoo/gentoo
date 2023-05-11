@@ -24,7 +24,8 @@ RDEPEND="
 	${COMMON_DEPEND}
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/docopt[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]"
+	dev-python/pillow[${PYTHON_USEDEP}]
+	!media-gfx/ueberzugpp"
 DEPEND="
 	${COMMON_DEPEND}
 	x11-base/xorg-proto"
