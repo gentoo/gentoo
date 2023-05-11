@@ -28,6 +28,10 @@ RDEPEND="~dev-games/irrlicht-mt-headers-${PV}
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.0.10-no_upstream_optflags.patch
+)
+
 S="${WORKDIR}"/${MY_P}
 
 src_install() {
