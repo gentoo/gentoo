@@ -6,11 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Marek Szuba <marecki@gentoo.org> (2023-05-11)
-# New doc-building system which depends on many packages currently absent
-# from the tree. Work in progress.
->=app-admin/ansible-molecule-5.0.0 doc
-
 # Joonas Niilola <juippis@gentoo.org> (2023-05-07)
 # Doesn't compile, see #894210.
 dev-libs/log4cxx smtp
