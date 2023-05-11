@@ -11,6 +11,7 @@ DOCS_DEPEND="
 	>=dev-python/mkdocs-ansible-0.1.4
 	dev-python/mkdocs-autorefs
 	dev-python/mkdocstrings-python
+	media-gfx/cairosvg
 "
 PYPI_PN="molecule"
 
@@ -39,16 +40,11 @@ RDEPEND="$(python_gen_cond_dep '
 	>=dev-util/cookiecutter-1.7.3[${PYTHON_USEDEP}]
 	selinux? ( sys-libs/libselinux[python,${PYTHON_USEDEP}] )
 ')"
-# cairosvg and pillow are technically speaking dependencies of the mkdocs-material
-# plugin "social" (Bug #906126).
-# mkdocstrings is here rather than in DOCS_DEPEND because the latter does not seem
-# to support the [use] syntax at present.
 BDEPEND="$(python_gen_cond_dep '
 	>=dev-python/setuptools-scm-7.0.0[${PYTHON_USEDEP}]
 	doc? (
-		dev-python/mkdocstrings[python,${PYTHON_USEDEP}]
 		dev-python/pillow[truetype,${PYTHON_USEDEP}]
-		media-gfx/cairosvg
+		media-fonts/roboto
 	)
 	test? (
 		app-admin/ansible-lint[${PYTHON_USEDEP}]
