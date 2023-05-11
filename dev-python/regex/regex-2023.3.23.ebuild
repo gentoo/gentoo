@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Alternative regular expression module to replace re"
 HOMEPAGE="
-	https://bitbucket.org/mrabarnett/mrab-regex/
+	https://github.com/mrabarnett/mrab-regex/
 	https://pypi.org/project/regex/
 "
 
