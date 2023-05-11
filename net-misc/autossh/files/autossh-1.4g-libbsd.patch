@@ -1,0 +1,28 @@
+diff --git a/configure.ac b/configure.ac
+index 4bb9380..8c15089 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -110,9 +110,10 @@ AC_FUNC_SELECT_ARGTYPES
+ AC_FUNC_STRFTIME
+ AC_FUNC_VPRINTF
+ AC_CHECK_FUNCS([alarm daemon dup2 gethostbyname gettimeofday memmove])
+-AC_CHECK_FUNCS([memset poll select setproctitle socket strchr strerror])
++AC_CHECK_FUNCS([memset poll select socket strchr strerror])
+ AC_CHECK_FUNCS([strncasecmp strtoul uname vsyslog])
+ 
++AC_CHECK_LIB(bsd, setproctitle)
+ AC_CHECK_LIB(nsl, gethostbyname)
+ AC_CHECK_LIB(socket, connect)
+ 
+diff --git a/autossh.c b/autossh.c
+index e2e3b84..9d3c1bf 100644
+--- a/autossh.c
++++ b/autossh.c
+@@ -52,6 +52,7 @@ typedef int32_t socklen_t;
+ #include <syslog.h>
+ #include <time.h>
+ #include <errno.h>
++#include <bsd/unistd.h>
+ 
+ #ifndef HAVE_POLL
+ #  ifdef HAVE_SELECT
