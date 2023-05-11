@@ -253,13 +253,6 @@ x11-plugins/ascpu
 # Mask experimental software
 =mail-mta/postfix-3.9*
 
-# Matt Turner <mattst88@gentoo.org> (2023-04-10)
-# DMX support was dropped from the Xserver in v21.1.0 and had been broken for
-# 14 years previous to its removal. See
-# https://cgit.freedesktop.org/xorg/xserver/commit/?id=b3b81c8c2090cd49410960a021baf0d27fdd2ab3
-# Removal on 2023-05-10
-x11-libs/libdmx
-
 # Ulrich Müller <ulm@gentoo.org> (2023-04-10)
 # Pretest versions, masked for testing.
 <app-editors/emacs-29.0.9999:29-vcs
