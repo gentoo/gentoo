@@ -1,0 +1,81 @@
+From 7686d18a896118d4b99b15313edac34e6f5a2370 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Thu, 11 May 2023 13:44:06 +0200
+Subject: [PATCH 1/2] libevent: avoid failure in case ar isn't ar but something
+ else.
+
+---
+ src/libevent/Makefile.in | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/libevent/Makefile.in b/src/libevent/Makefile.in
+index 5f4f43f..02ebe21 100644
+--- a/libevent/Makefile.in
++++ b/libevent/Makefile.in
+@@ -14,13 +14,12 @@ OBJS=event.o event_tcp.o hash.o event_sig.o
+ SRCS=$(OBJS:.o=.c)
+ HDRS=event.h event_tcp.h eventpriv.h hash.h
+ CFLAGS=@CFLAGS@ -I.. $(DEFINES)
+-AR=ar
+ 
+ all: libevent.a
+ 
+ libevent.a: $(OBJS)
+ 	rm -f libevent.a
+-	$(AR) -cq libevent.a $(OBJS)
++	@AR@ -cq libevent.a $(OBJS)
+ 	@RANLIB@ libevent.a
+ 
+ event.o: event.c $(HDRS)
+
+From 162bf8bf6b9c6776e3b6ac000a1e88afe49d9d31 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Thu, 11 May 2023 13:49:48 +0200
+Subject: [PATCH 2/2] ./configure - marginally improve ar detection.
+
+---
+ src/configure    | 6 +++++-
+ src/configure.ac | 6 +++++-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/configure b/src/configure
+index 7eb80d0..9a31790 100755
+--- a/configure
++++ b/configure
+@@ -3088,7 +3088,7 @@ $as_echo "no" >&6; }
+ fi
+ 
+   if test "x$ac_ct_AR" = x; then
+-    AR="/bin/false"
++    AR=""
+   else
+     case $cross_compiling:$ac_tool_warned in
+ yes:)
+@@ -3103,6 +3103,10 @@ else
+ fi
+ 
+ 
++if test "no$AR" = no ; then
++	as_fn_error $? "ar is a required program" "$LINENO" 5
++fi
++
+ 
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for sys/wait.h that is POSIX.1 compatible" >&5
+diff --git a/src/configure.ac b/src/configure.ac
+index cb7a094..a09241a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13,7 +13,11 @@ AC_PREFIX_DEFAULT(/usr)
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_RANLIB
+-AC_CHECK_TOOL([AR],[ar],[/bin/false])
++AC_CHECK_TOOL([AR],[ar])
++
++if test "no$AR" = no ; then
++	AC_ERROR(ar is a required program)
++fi
+ 
+ dnl Checks for libraries.
+ 
