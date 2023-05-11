@@ -25,8 +25,8 @@ COMMON="dev-cpp/nlohmann_json
 	>=dev-libs/glib-2.56:2
 	dev-libs/libfmt
 	>=dev-libs/libsigc++-3.0.6:3
-	>=gui-libs/gtk-4.2.1:4
-	gui-libs/libadwaita:1
+	>=gui-libs/gtk-4.10.0:4
+	>=gui-libs/libadwaita-1.2.0:1
 	media-libs/libbs2b
 	>=media-libs/libebur128-1.2.0
 	media-libs/libsndfile
@@ -34,7 +34,6 @@ COMMON="dev-cpp/nlohmann_json
 	>=media-libs/lv2-1.18.2
 	media-libs/rnnoise
 	media-libs/rubberband[ladspa]
-	media-libs/speex
 	media-libs/speexdsp
 	>=media-libs/zita-convolver-3.0.0
 	>=media-video/pipewire-0.3.41
