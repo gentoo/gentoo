@@ -18,6 +18,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
 RDEPEND=">=dev-python/colorama-0.4[${PYTHON_USEDEP}]"
+BDEPEND="test? (
+	>=dev-python/jsonschema-4.17.3[${PYTHON_USEDEP}]
+	>=dev-python/pytest-xdist-2.4[${PYTHON_USEDEP}]
+)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.27.4-build_backend.patch
