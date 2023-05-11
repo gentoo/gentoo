@@ -13,7 +13,7 @@ SRC_URI="https://github.com/vtorri/entice/archive/${MY_COMMIT}.tar.gz -> ${P}.ta
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
 	media-libs/libexif"
