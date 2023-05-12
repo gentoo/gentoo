@@ -94,6 +94,10 @@ x86? (
 	usr/lib/libGLX_amber.so.0.0.0
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-i915c.patch
+)
+
 python_check_deps() {
 	python_has_version ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
 }
