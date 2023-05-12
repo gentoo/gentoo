@@ -1,0 +1,26 @@
+https://github.com/listout/lshw/commit/9555d6cfc33a58a7cf91d137f7209ccf1bee86a8
+From: Lyonel Vincent <lyonel@ezix.org>
+Date: Tue, 12 Oct 2021 22:02:22 +0200
+Subject: [PATCH] code clean-up
+
+get rid of warning complaining about `register` storage of CRC
+Bug: https://bugs.gentoo.org/898546
+--- a/src/core/partitions.cc
++++ b/src/core/partitions.cc
+@@ -520,7 +520,6 @@ hwNode & partition)
+  * - Now pass seed as an arg
+  * - changed unsigned long to uint32_t, added #include<stdint.h>
+  * - changed len to be an unsigned long
+- * - changed crc32val to be a register
+  * - License remains unchanged!  It's still GPL-compatable!
+  */
+
+@@ -626,7 +625,7 @@ uint32_t
+ __efi_crc32(const void *buf, unsigned long len, uint32_t seed)
+ {
+   unsigned long i;
+-  register uint32_t crc32val;
++  uint32_t crc32val;
+   const unsigned char *s = (const unsigned char *)buf;
+
+   crc32val = seed;
