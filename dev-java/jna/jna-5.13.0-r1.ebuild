@@ -150,13 +150,13 @@ src_test() {
 	# java.lang.UnsatisfiedLinkError: Unable to load library '/libtestlib-jar.so':
 	# /libtestlib-jar.so: cannot open shared object file: No such file or directory
 	jar cvf build/jna-test.jar \
-		-C build/native libtestlib-jar.so || die
+		-C build/native libtestlib-jar.so \
+		-C test com/sun/jna/data || die
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":build/jna-test.jar"
 
 	JAVA_TEST_EXCLUDES=(
 		com.sun.jna.CallbacksTest # Needs to run separately
 		com.sun.jna.DirectTest # Needs to run separately
-		com.sun.jna.ELFAnalyserTest # NPE
 		com.sun.jna.NativeTest # Needs to run separately
 		com.sun.jna.UnionTest # Needs to run separately
 		com.sun.jna.VMCrashProtectionTest # Needs to run separately
