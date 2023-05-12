@@ -43,6 +43,7 @@ BDEPEND="
 		>=dev-python/pytest-6.1.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-1.18[${PYTHON_USEDEP}]
 		>=dev-python/py-1.5.2[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
 		>=dev-python/typed-ast-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/virtualenv-16.0.0[${PYTHON_USEDEP}]
 	)
