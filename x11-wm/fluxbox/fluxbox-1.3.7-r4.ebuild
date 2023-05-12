@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,9 +12,10 @@ SRC_URI="mirror://sourceforge/fluxbox/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="nls xinerama bidi +truetype +imlib +slit +systray +toolbar vim-syntax"
-
+IUSE="nls xinerama bidi +truetype +imlib +slit +systray test +toolbar vim-syntax"
 REQUIRED_USE="systray? ( toolbar )"
+# Tests are all manual and throw an exception on launch.
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="bidi? ( >=dev-libs/fribidi-0.19.2 )
 	imlib? ( >=media-libs/imlib2-1.2.0[X] )
@@ -72,9 +73,10 @@ src_configure() {
 		$(use_enable bidi fribidi ) \
 		$(use_enable imlib imlib2) \
 		$(use_enable nls) \
-		$(use_enable slit ) \
-		$(use_enable systray ) \
-		$(use_enable toolbar ) \
+		$(use_enable slit) \
+		$(use_enable systray) \
+		$(use_enable test) \
+		$(use_enable toolbar) \
 		$(use_enable truetype xft) \
 		$(use_enable xinerama) \
 		--sysconfdir="${EPREFIX}"/etc/X11/${PN} \
