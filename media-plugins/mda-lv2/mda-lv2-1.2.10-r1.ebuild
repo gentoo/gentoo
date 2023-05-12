@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 # Tests fail because of lvz_new_audioeffectx symbol in plugins, check
-# on new lv2lint release (>0.16.2)
+# on new lv2lint release (>0.16.2). See https://gitlab.com/drobilla/mda-lv2/-/issues/2.
 RESTRICT="!test? ( test ) test"
 
 DEPEND="media-libs/lv2"
