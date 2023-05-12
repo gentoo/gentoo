@@ -81,14 +81,13 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-7.9_p1-include-stdlib.patch"
-	"${FILESDIR}/${PN}-8.7_p1-GSSAPI-dns.patch" #165444 integrated into gsskex
-	"${FILESDIR}/${PN}-6.7_p1-openssl-ignore-status.patch"
-	"${FILESDIR}/${PN}-7.5_p1-disable-conch-interop-tests.patch"
-	"${FILESDIR}/${PN}-8.0_p1-fix-putty-tests.patch"
+	"${FILESDIR}/${PN}-9.3_p1-include-stdlib.patch"
+	"${FILESDIR}/${PN}-9.3_p1-GSSAPI-dns.patch" #165444 integrated into gsskex
+	"${FILESDIR}/${PN}-9.3_p1-openssl-ignore-status.patch"
+	"${FILESDIR}/${PN}-9.3_p1-disable-conch-interop-tests.patch"
+	"${FILESDIR}/${PN}-9.3_p1-fix-putty-tests.patch"
 	"${FILESDIR}/${PN}-9.3_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
-	"${FILESDIR}/${PN}-8.9_p1-allow-ppoll_time64.patch" #834019
-	"${FILESDIR}/${PN}-8.9_p1-gss-use-HOST_NAME_MAX.patch" #834044
+	"${FILESDIR}/${PN}-9.3_p1-gss-use-HOST_NAME_MAX.patch" #834044
 	"${FILESDIR}/${PN}-9.3_p1-openssl-version-compat-check.patch"
 )
 

@@ -1,8 +1,6 @@
-diff --git a/auth.c b/auth.c
-index 00b168b4..8ee93581 100644
 --- a/auth.c
 +++ b/auth.c
-@@ -729,118 +729,6 @@ fakepw(void)
+@@ -637,118 +637,6 @@
  	return (&fake);
  }
  
@@ -121,11 +119,9 @@ index 00b168b4..8ee93581 100644
  /* These functions link key/cert options to the auth framework */
  
  /* Log sshauthopt options locally and (optionally) for remote transmission */
-diff --git a/canohost.c b/canohost.c
-index a810da0e..18e9d8d4 100644
 --- a/canohost.c
 +++ b/canohost.c
-@@ -202,3 +202,117 @@ get_local_port(int sock)
+@@ -205,3 +205,117 @@
  {
  	return get_sock_port(sock, 1);
  }
@@ -243,11 +239,9 @@ index a810da0e..18e9d8d4 100644
 +		return dnsname;
 +	}
 +}
-diff --git a/readconf.c b/readconf.c
-index 03369a08..b45898ce 100644
 --- a/readconf.c
 +++ b/readconf.c
-@@ -161,6 +161,7 @@ typedef enum {
+@@ -160,6 +160,7 @@
  	oClearAllForwardings, oNoHostAuthenticationForLocalhost,
  	oEnableSSHKeysign, oRekeyLimit, oVerifyHostKeyDNS, oConnectTimeout,
  	oAddressFamily, oGssAuthentication, oGssDelegateCreds,
@@ -255,7 +249,7 @@ index 03369a08..b45898ce 100644
  	oServerAliveInterval, oServerAliveCountMax, oIdentitiesOnly,
  	oSendEnv, oSetEnv, oControlPath, oControlMaster, oControlPersist,
  	oHashKnownHosts,
-@@ -207,9 +208,11 @@ static struct {
+@@ -207,9 +208,11 @@
  #if defined(GSSAPI)
  	{ "gssapiauthentication", oGssAuthentication },
  	{ "gssapidelegatecredentials", oGssDelegateCreds },
@@ -267,7 +261,7 @@ index 03369a08..b45898ce 100644
  #endif
  #ifdef ENABLE_PKCS11
  	{ "pkcs11provider", oPKCS11Provider },
-@@ -1117,6 +1120,10 @@ parse_time:
+@@ -1125,6 +1128,10 @@
  		intptr = &options->gss_deleg_creds;
  		goto parse_flag;
  
@@ -278,7 +272,7 @@ index 03369a08..b45898ce 100644
  	case oBatchMode:
  		intptr = &options->batch_mode;
  		goto parse_flag;
-@@ -2307,6 +2314,7 @@ initialize_options(Options * options)
+@@ -2341,6 +2348,7 @@
  	options->pubkey_authentication = -1;
  	options->gss_authentication = -1;
  	options->gss_deleg_creds = -1;
@@ -286,7 +280,7 @@ index 03369a08..b45898ce 100644
  	options->password_authentication = -1;
  	options->kbd_interactive_authentication = -1;
  	options->kbd_interactive_devices = NULL;
-@@ -2465,6 +2473,8 @@ fill_default_options(Options * options)
+@@ -2501,6 +2509,8 @@
  		options->gss_authentication = 0;
  	if (options->gss_deleg_creds == -1)
  		options->gss_deleg_creds = 0;
@@ -295,11 +289,9 @@ index 03369a08..b45898ce 100644
  	if (options->password_authentication == -1)
  		options->password_authentication = 1;
  	if (options->kbd_interactive_authentication == -1)
-diff --git a/readconf.h b/readconf.h
-index f7d53b06..c3a91898 100644
 --- a/readconf.h
 +++ b/readconf.h
-@@ -40,6 +40,7 @@ typedef struct {
+@@ -41,6 +41,7 @@
  	int     hostbased_authentication;	/* ssh2's rhosts_rsa */
  	int     gss_authentication;	/* Try GSS authentication */
  	int     gss_deleg_creds;	/* Delegate GSS credentials */
@@ -307,11 +299,9 @@ index f7d53b06..c3a91898 100644
  	int     password_authentication;	/* Try password
  						 * authentication. */
  	int     kbd_interactive_authentication; /* Try keyboard-interactive auth. */
-diff --git a/ssh_config.5 b/ssh_config.5
-index cd0eea86..27101943 100644
 --- a/ssh_config.5
 +++ b/ssh_config.5
-@@ -832,6 +832,16 @@ The default is
+@@ -843,6 +843,16 @@
  Forward (delegate) credentials to the server.
  The default is
  .Cm no .
@@ -328,11 +318,9 @@ index cd0eea86..27101943 100644
  .It Cm HashKnownHosts
  Indicates that
  .Xr ssh 1
-diff --git a/sshconnect2.c b/sshconnect2.c
-index fea50fab..aeff639b 100644
 --- a/sshconnect2.c
 +++ b/sshconnect2.c
-@@ -776,6 +776,13 @@ userauth_gssapi(struct ssh *ssh)
+@@ -764,6 +764,13 @@
  	OM_uint32 min;
  	int r, ok = 0;
  	gss_OID mech = NULL;
@@ -346,7 +334,7 @@ index fea50fab..aeff639b 100644
  
  	/* Try one GSSAPI method at a time, rather than sending them all at
  	 * once. */
-@@ -790,7 +797,7 @@ userauth_gssapi(struct ssh *ssh)
+@@ -778,7 +785,7 @@
  		    elements[authctxt->mech_tried];
  		/* My DER encoding requires length<128 */
  		if (mech->length < 128 && ssh_gssapi_check_mechanism(&gssctxt,

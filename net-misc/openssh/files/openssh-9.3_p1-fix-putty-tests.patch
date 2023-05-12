@@ -5,9 +5,9 @@ https://bugs.gentoo.org/493866
 
 --- a/regress/putty-ciphers.sh
 +++ b/regress/putty-ciphers.sh
-@@ -10,11 +10,17 @@ fi
+@@ -16,11 +16,17 @@
  
- for c in aes 3des aes128-ctr aes192-ctr aes256-ctr ; do
+ for c in aes 3des aes128-ctr aes192-ctr aes256-ctr chacha20 ; do
  	verbose "$tid: cipher $c"
 +	rm -f ${COPY}
  	cp ${OBJ}/.putty/sessions/localhost_proxy \
@@ -26,7 +26,7 @@ https://bugs.gentoo.org/493866
  	if [ $? -ne 0 ]; then
 --- a/regress/putty-kex.sh
 +++ b/regress/putty-kex.sh
-@@ -14,6 +14,12 @@ for k in dh-gex-sha1 dh-group1-sha1 dh-group14-sha1 ; do
+@@ -20,6 +20,12 @@
  	    ${OBJ}/.putty/sessions/kex_$k
  	echo "KEX=$k" >> ${OBJ}/.putty/sessions/kex_$k
  
@@ -41,7 +41,7 @@ https://bugs.gentoo.org/493866
  		fail "KEX $k failed"
 --- a/regress/putty-transfer.sh
 +++ b/regress/putty-transfer.sh
-@@ -14,6 +14,13 @@ for c in 0 1 ; do
+@@ -26,6 +26,13 @@
  	cp ${OBJ}/.putty/sessions/localhost_proxy \
  	    ${OBJ}/.putty/sessions/compression_$c
  	echo "Compression=$c" >> ${OBJ}/.putty/sessions/kex_$k
