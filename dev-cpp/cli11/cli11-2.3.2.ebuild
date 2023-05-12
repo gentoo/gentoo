@@ -29,10 +29,10 @@ BDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
-		-DCLI11_BOOST=$(usex test)
 		-DCLI11_BUILD_DOCS=$(usex doc)
 		-DCLI11_BUILD_EXAMPLES=no
 		-DCLI11_BUILD_TESTS=$(usex test)
+		$(usev test -DCLI11_BOOST=yes)
 	)
 
 	cmake_src_configure
