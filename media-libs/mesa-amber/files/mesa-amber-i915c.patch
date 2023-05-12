@@ -1,0 +1,46 @@
+
+This patch is fixed the issue created when /usr/lib/dri/i915_dri.so is renamed to /usr/lib/dri/i915c_dri.so
+by mesa-amber/mesa-amber-21.3.9.ebuild
+
+Without this patch the driver cannot be loaded using the environment variable MESA_LOADER_DRIVER_OVERRIDE="i915c"
+as that mechanism expects to find the __driDriverGetExtensions_i915c:
+
+MESA-LOADER: dlopen(/usr/lib/dri/i915c_dri.so)
+MESA-LOADER: driver does not expose __driDriverGetExtensions_i915c(): /usr/lib/dri/i915c_dri.so: undefined symbol: __driDriverGetExtensions_i915c
+MESA-LOADER: dlopen(/usr/lib/dri/swrast_dri.so)
+
+This patch adds the __driDriverGetExtensions_i915c symbol by simply cloning the code for the original
+__driDriverGetExtensions_i915 symbol.
+
+Allan Mondor
+bugs.gentoo@acmondor.ca
+
+
+diff -w -ruN mesa-21.3.9.org/src/mesa/drivers/dri/i915/intel_screen.c mesa-21.3.9/src/mesa/drivers/dri/i915/intel_screen.c
+--- mesa-21.3.9.org/src/mesa/drivers/dri/i915/intel_screen.c	2022-06-08 12:13:35.000000000 -0600
++++ mesa-21.3.9/src/mesa/drivers/dri/i915/intel_screen.c	2022-08-23 11:32:19.151578025 -0600
+@@ -1290,6 +1290,13 @@
+    return i915_driver_extensions;
+ }
+ 
++PUBLIC const __DRIextension **__driDriverGetExtensions_i915c(void)
++{
++   globalDriverAPI = &i915_driver_api;
++
++   return i915_driver_extensions;
++}
++
+ PUBLIC const __DRIextension **__driDriverGetExtensions_i830(void)
+ {
+    globalDriverAPI = &i915_driver_api;
+diff -w -ruN mesa-21.3.9.org/src/mesa/drivers/dri/i915/intel_screen.h mesa-21.3.9/src/mesa/drivers/dri/i915/intel_screen.h
+--- mesa-21.3.9.org/src/mesa/drivers/dri/i915/intel_screen.h	2022-06-08 12:13:35.000000000 -0600
++++ mesa-21.3.9/src/mesa/drivers/dri/i915/intel_screen.h	2022-08-23 11:31:54.047576393 -0600
+@@ -160,6 +160,7 @@
+ 
+ const __DRIextension **__driDriverGetExtensions_i830(void);
+ const __DRIextension **__driDriverGetExtensions_i915(void);
++const __DRIextension **__driDriverGetExtensions_i915c(void);
+ extern const __DRI2fenceExtension intelFenceExtension;
+ 
+ extern GLboolean
