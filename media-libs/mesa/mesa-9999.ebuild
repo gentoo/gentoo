@@ -103,29 +103,30 @@ RDEPEND="${RDEPEND}
 # simultaneously.
 #
 # How to use it:
-# 1. List all the working slots (with min versions) in ||, newest first.
-# 2. Update the := to specify *max* version, e.g. < 10.
-# 3. Specify LLVM_MAX_SLOT, e.g. 9.
+# 1. Specify LLVM_MAX_SLOT (inclusive), e.g. 16.
+# 2. Specify LLVM_MIN_SLOT (inclusive), e.g. 15.
 LLVM_MAX_SLOT="16"
+LLVM_MIN_SLOT="15"
 LLVM_USE_DEPS="llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}"
+PER_SLOT_DEPSTR="
+	(
+		!opencl? ( sys-devel/llvm:@SLOT@[${LLVM_USE_DEPS}] )
+		opencl? ( sys-devel/clang:@SLOT@[${LLVM_USE_DEPS}] )
+	)
+"
 LLVM_DEPSTR="
 	|| (
-		sys-devel/@@@@:16[${LLVM_USE_DEPS}]
-		sys-devel/@@@@:15[${LLVM_USE_DEPS}]
+		$(for ((slot=LLVM_MAX_SLOT; slot>=LLVM_MIN_SLOT; slot--)); do
+			echo "${PER_SLOT_DEPSTR//@SLOT@/${slot}}"
+		done)
 	)
-	<sys-devel/@@@@-$((LLVM_MAX_SLOT + 1)):=[${LLVM_USE_DEPS}]
+	!opencl? ( <sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=[${LLVM_USE_DEPS}] )
+	opencl? ( <sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=[${LLVM_USE_DEPS}] )
 "
 RDEPEND="${RDEPEND}
-	llvm? (
-		opencl? (
-			${LLVM_DEPSTR//@@@@/clang}
-		)
-		!opencl? (
-			${LLVM_DEPSTR//@@@@/llvm}
-		)
-	)
+	llvm? ( ${LLVM_DEPSTR} )
 "
-unset LLVM_DEPSTR
+unset LLVM_MIN_SLOT {LLVM,PER_SLOT}_DEPSTR
 
 DEPEND="${RDEPEND}
 	video_cards_d3d12? ( dev-util/directx-headers[${MULTILIB_USEDEP}] )
