@@ -88,6 +88,8 @@ src_configure() {
 src_install() {
 	default
 
+	rm -rf "${ED}"/usr/var
+
 	diropts -m 0770
 	keepdir /var/lib/${PN}
 	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
