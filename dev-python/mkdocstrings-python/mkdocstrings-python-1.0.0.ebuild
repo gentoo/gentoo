@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="dev-python/griffe[${PYTHON_USEDEP}]
 	dev-python/mkdocstrings[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/mkdocs-material[${PYTHON_USEDEP}] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.1-build_backend.patch
