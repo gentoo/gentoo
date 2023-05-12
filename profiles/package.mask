@@ -310,7 +310,6 @@ x11-plugins/ascpu
 # remaining ruby27-only packages for removal on 2023-05-10.
 dev-lang/ruby:2.7
 =dev-ruby/bundler-2.1.4
-=dev-ruby/rubygems-3.1.6
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
