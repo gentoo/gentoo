@@ -85,8 +85,8 @@ get_bashcompdir() {
 }
 
 # @FUNCTION: get_bashhelpersdir
-# @INCLUDES_EPREFIX
 # @INTERNAL
+# @INCLUDES_EPREFIX
 # @DESCRIPTION:
 # Get the bash-completion helpers directory.
 get_bashhelpersdir() {
