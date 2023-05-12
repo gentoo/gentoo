@@ -8,6 +8,6 @@
 	<upstream>
 		<remote-id type="github">docker/docker-py</remote-id>
 		<bugs-to>https://github.com/docker/docker-py/issues</bugs-to>
-		<remote-id type="pypi">docker-py</remote-id>
+		<remote-id type="pypi">docker</remote-id>
 	</upstream>
 </pkgmetadata>
