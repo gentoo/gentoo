@@ -93,6 +93,8 @@ src_prepare() {
 	use vala && vala_setup
 
 	sed -i "s/'vips-doc'/'${PF}'/" cplusplus/meson.build || die
+
+	sed -i "/subdir('fuzz')/d" meson.build || die
 }
 
 src_configure() {
