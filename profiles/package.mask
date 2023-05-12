@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-05-12)
+# Dead slot. Only reverse dependency is stardict which is masked for removal
+# Removal on 2023-06-12
+gnome-extra/gucharmap:0
+
 # Matt Turner <mattst88@gentoo.org> (2023-05-11)
 # Console version of stardict which is masked for removal. Only reverse
 # dependencies are app-dicts/stardict-* (via stardict.eclass).
