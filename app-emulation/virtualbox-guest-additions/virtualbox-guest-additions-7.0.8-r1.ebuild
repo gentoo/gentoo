@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
-SRC_URI="https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2
+SRC_URI="https://download.virtualbox.org/virtualbox/${PV}/${MY_P}a.tar.bz2
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.8.tar.bz2"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
@@ -61,6 +61,11 @@ PDEPEND="
 	gui? ( x11-drivers/xf86-video-vboxvideo )
 "
 
+PATCHES=(
+	"${FILESDIR}"/virtualbox-guest-additions-7.0.8-kernel-6.4-patch-1.patch
+	"${FILESDIR}"/virtualbox-guest-additions-7.0.8-kernel-6.4-patch-2.patch
+)
+
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 
@@ -78,6 +83,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply "${PATCHES[@]}"
+
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -r kBuild/bin tools || die
 
