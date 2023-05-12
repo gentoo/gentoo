@@ -33,7 +33,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	rm -f "${ED}"/usr/lib*/libcppconsui.{a,la}
+	find "${ED}" -name '*.la' -delete || die
 
 	dodoc AUTHORS HACKING NEWS README TODO
 }
