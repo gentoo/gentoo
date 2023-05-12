@@ -81,7 +81,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9.3_p1-include-stdlib.patch"
 	"${FILESDIR}/${PN}-9.3_p1-GSSAPI-dns.patch" #165444 integrated into gsskex
 	"${FILESDIR}/${PN}-9.3_p1-openssl-ignore-status.patch"
 	"${FILESDIR}/${PN}-9.3_p1-disable-conch-interop-tests.patch"
