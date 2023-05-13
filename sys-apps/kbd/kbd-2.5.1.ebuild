@@ -31,7 +31,7 @@ RESTRICT="!test? ( test )"
 QA_AM_MAINTAINER_MODE=".*--run autom4te --language=autotest.*"
 
 RDEPEND="
-	app-arch/gzip
+	app-alternatives/gzip
 	pam? (
 		!app-misc/vlock
 		sys-libs/pam
