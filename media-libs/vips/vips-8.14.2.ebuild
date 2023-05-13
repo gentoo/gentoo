@@ -70,6 +70,9 @@ RDEPEND="
 	webp? ( media-libs/libwebp:= )"
 DEPEND="
 	${RDEPEND}
+	pango? ( x11-base/xorg-proto )
+	pdf? ( x11-base/xorg-proto )
+	svg? ( x11-base/xorg-proto )
 	test? (
 		tiff? ( media-libs/tiff[jpeg] )
 	)"
