@@ -18,5 +18,10 @@
     <remote-id type="github">squidfunk/mkdocs-material</remote-id>
     <remote-id type="pypi">mkdocs-material</remote-id>
   </upstream>
+  <use>
+    <flag name="social">
+      Install the dependencies of the "social" plugin.
+    </flag>
+  </use>
   <stabilize-allarches/>
 </pkgmetadata>
