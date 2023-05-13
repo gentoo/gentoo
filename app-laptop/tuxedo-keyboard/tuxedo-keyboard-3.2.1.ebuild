@@ -9,7 +9,6 @@ inherit linux-mod toolchain-funcs
 DESCRIPTION="Kernel Module for Tuxedo Keyboard"
 HOMEPAGE="https://github.com/tuxedocomputers/tuxedo-keyboard"
 SRC_URI="https://github.com/tuxedocomputers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-PATCHES=( ${FILESDIR}/${PN}-${PV}-rm-unused-functions.patch )
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -17,6 +16,8 @@ KEYWORDS="~amd64 ~x86"
 
 BUILD_TARGETS="all"
 MODULE_NAMES="clevo_acpi(tuxedo:${S}:src) clevo_wmi(tuxedo:${S}:src) uniwill_wmi(tuxedo:${S}:src) tuxedo_keyboard(tuxedo:${S}:src) tuxedo_io(tuxedo:${S}:src/tuxedo_io)"
+
+PATCHES=( "${FILESDIR}"/${PN}-${PV}-rm-unused-functions.patch )
 
 pkg_setup() {
 	linux-mod_pkg_setup
