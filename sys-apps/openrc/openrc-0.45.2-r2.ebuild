@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson pam
+inherit flag-o-matic meson pam
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
@@ -72,6 +72,7 @@ src_configure() {
 		$(meson_use sysv-utils sysvinit)
 		-Dtermcap=$(usev ncurses)
 	)
+	use prefix && append-cflags -DPREFIX
 	# export DEBUG=$(usev debug)
 	meson_src_configure
 }
