@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-05-13)
+# Unmaintained.  Does not build anymore.  No activity upstream
+# since 2019, the build system is messy and fixing the issues would take
+# a lot of effort.
+# Removal on 2023-06-12.  Bug #791034.
+games-emulation/pcsxr
+
 # Matt Turner <mattst88@gentoo.org> (2023-05-12)
 # Dead slot. Only reverse dependency is stardict which is masked for removal
 # Removal on 2023-06-12
