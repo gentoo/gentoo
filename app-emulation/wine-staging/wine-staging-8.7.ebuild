@@ -25,7 +25,9 @@ fi
 S="${WORKDIR}/wine-${PV}"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
-HOMEPAGE="https://wiki.winehq.org/Wine-Staging"
+HOMEPAGE="
+	https://wiki.winehq.org/Wine-Staging
+	https://gitlab.winehq.org/wine/wine-staging/"
 
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
