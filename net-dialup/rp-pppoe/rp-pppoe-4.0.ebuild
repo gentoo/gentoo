@@ -3,11 +3,9 @@
 
 EAPI=8
 
-inherit readme.gentoo-r1
-
 DESCRIPTION="A user-mode PPPoE client and server suite for Linux"
 HOMEPAGE="https://dianne.skoll.ca/projects/rp-pppoe/ https://salsa.debian.org/dskoll/rp-pppoe"
-if [[ $PV = 9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI=https://github.com/dfskoll/rp-pppoe.git
 else
@@ -59,6 +57,4 @@ src_install() {
 
 	newinitd "${FILESDIR}"/pppoe-server.initd pppoe-server
 	newconfd "${FILESDIR}"/pppoe-server.confd pppoe-server
-
-	readme.gentoo_create_doc
 }
