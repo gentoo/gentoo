@@ -1,0 +1,121 @@
+Revert patch https://invent.kde.org/system/dolphin/-/commit/d19800c69198b904ae47cb1e53dfe28f74618eb2
+See https://bugs.gentoo.org/906170
+---
+diff -ruN dolphin-23.04.1/src/dolphinmainwindow.cpp new/src/dolphinmainwindow.cpp
+--- dolphin-23.04.1/src/dolphinmainwindow.cpp	2023-05-09 10:52:07.000000000 +0200
++++ new/src/dolphinmainwindow.cpp	2023-05-13 22:37:50.984895964 +0200
+@@ -270,31 +270,6 @@
+     openFiles(QUrl::fromStringList(files), splitView);
+ }
+ 
+-bool DolphinMainWindow::isOnCurrentDesktop() const
+-{
+-#if HAVE_X11
+-    if (KWindowSystem::isPlatformX11()) {
+-        const NET::Properties properties = NET::WMDesktop;
+-        KWindowInfo info(this->winId(), properties);
+-        return info.isOnCurrentDesktop();
+-    }
+-#endif
+-    return true;
+-}
+-
+-bool DolphinMainWindow::isOnActivity(const QString &activityId) const
+-{
+-#if HAVE_X11 && HAVE_KACTIVITIES
+-    if (KWindowSystem::isPlatformX11()) {
+-        const NET::Properties properties = NET::Supported;
+-        const NET::Properties2 properties2 = NET::WM2Activities;
+-        KWindowInfo info(this->winId(), properties, properties2);
+-        return info.activities().contains(activityId);
+-    }
+-#endif
+-    return true;
+-}
+-
+ void DolphinMainWindow::activateWindow(const QString &activationToken)
+ {
+     window()->setAttribute(Qt::WA_NativeWindow, true);
+diff -ruN dolphin-23.04.1/src/dolphinmainwindow.h new/src/dolphinmainwindow.h
+--- dolphin-23.04.1/src/dolphinmainwindow.h	2023-05-09 10:52:07.000000000 +0200
++++ new/src/dolphinmainwindow.h	2023-05-13 22:37:50.984895964 +0200
+@@ -203,9 +203,6 @@
+     /** @see GeneralSettings::splitViewChanged() */
+     void slotSplitViewChanged();
+ 
+-    bool isOnActivity(const QString &activityId) const;
+-    bool isOnCurrentDesktop() const;
+-
+ Q_SIGNALS:
+     /**
+      * Is sent if the selection of the currently active view has
+diff -ruN dolphin-23.04.1/src/global.cpp new/src/global.cpp
+--- dolphin-23.04.1/src/global.cpp	2023-05-09 10:52:07.000000000 +0200
++++ new/src/global.cpp	2023-05-13 22:50:40.449973915 +0200
+@@ -16,9 +16,6 @@
+ #include <KIO/ApplicationLauncherJob>
+ #include <KService>
+ #include <KWindowSystem>
+-#if HAVE_KACTIVITIES
+-#include <KActivities/Consumer>
+-#endif
+ 
+ #include <QApplication>
+ 
+@@ -143,37 +140,13 @@
+ 
+ QVector<QPair<QSharedPointer<OrgKdeDolphinMainWindowInterface>, QStringList>> Dolphin::dolphinGuiInstances(const QString &preferredService)
+ {
+-#if HAVE_KACTIVITIES
+-    static std::once_flag one_consumer;
+-    static KActivities::Consumer *consumer;
+-    std::call_once(one_consumer, []() {
+-        consumer = new KActivities::Consumer();
+-        // ensures the consumer is ready for query
+-        QEventLoop loop;
+-        QObject::connect(consumer, &KActivities::Consumer::serviceStatusChanged, &loop, &QEventLoop::quit);
+-        loop.exec();
+-    });
+-#endif
+-
+     QVector<QPair<QSharedPointer<OrgKdeDolphinMainWindowInterface>, QStringList>> dolphinInterfaces;
+-    const auto tryAppendInterface = [&dolphinInterfaces](const QString &service) {
+-        // Check if instance can handle our URLs
+-        QSharedPointer<OrgKdeDolphinMainWindowInterface> interface(
+-            new OrgKdeDolphinMainWindowInterface(service, QStringLiteral("/dolphin/Dolphin_1"), QDBusConnection::sessionBus()));
+-        if (interface->isValid() && !interface->lastError().isValid()) {
+-#if HAVE_KACTIVITIES
+-            const auto currentActivity = consumer->currentActivity();
+-            if (currentActivity.isEmpty() || currentActivity == QStringLiteral("00000000-0000-0000-0000-000000000000")
+-                || interface->isOnActivity(consumer->currentActivity()))
+-#endif
+-                if (interface->isOnCurrentDesktop()) {
+-                    dolphinInterfaces.append(qMakePair(interface, QStringList()));
+-                }
+-        }
+-    };
+-
+     if (!preferredService.isEmpty()) {
+-        tryAppendInterface(preferredService);
++        QSharedPointer<OrgKdeDolphinMainWindowInterface> preferredInterface(
++            new OrgKdeDolphinMainWindowInterface(preferredService, QStringLiteral("/dolphin/Dolphin_1"), QDBusConnection::sessionBus()));
++        if (preferredInterface->isValid() && !preferredInterface->lastError().isValid()) {
++            dolphinInterfaces.append(qMakePair(preferredInterface, QStringList()));
++        }
+     }
+ 
+     // Look for dolphin instances among all available dbus services.
+@@ -185,7 +158,12 @@
+     const QString myPid = QLatin1Char('-') + QString::number(QCoreApplication::applicationPid());
+     for (const QString &service : dbusServices) {
+         if (service.startsWith(pattern) && !service.endsWith(myPid)) {
+-            tryAppendInterface(service);
++            // Check if instance can handle our URLs
++            QSharedPointer<OrgKdeDolphinMainWindowInterface> interface(
++                new OrgKdeDolphinMainWindowInterface(service, QStringLiteral("/dolphin/Dolphin_1"), QDBusConnection::sessionBus()));
++            if (interface->isValid() && !interface->lastError().isValid()) {
++                dolphinInterfaces.append(qMakePair(interface, QStringList()));
++            }
+         }
+     }
+ 
