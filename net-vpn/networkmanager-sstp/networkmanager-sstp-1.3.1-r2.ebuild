@@ -54,6 +54,7 @@ BDEPEND="
 
 PATCHES=(
 	"${WORKDIR}"/${P}-ppp-2.5.0-patches
+	"${FILESDIR}"/networkmanager-sstp-1.3.1-ppp-2.4.9.patch
 )
 
 src_prepare() {
