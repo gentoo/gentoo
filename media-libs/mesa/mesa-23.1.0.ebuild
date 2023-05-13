@@ -76,7 +76,14 @@ RDEPEND="
 		>=media-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 	)
 	vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
-	vulkan? ( video_cards_intel? ( >=dev-util/spirv-tools-1.3.231.0 ) )
+	vulkan? (
+		video_cards_intel? (
+				amd64? (
+				dev-libs/libclc[spirv(-)]
+				>=dev-util/spirv-tools-1.3.231.0
+			)
+		)
+	)
 	selinux? ( sys-libs/libselinux[${MULTILIB_USEDEP}] )
 	wayland? ( >=dev-libs/wayland-1.18.0[${MULTILIB_USEDEP}] )
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_intel?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
