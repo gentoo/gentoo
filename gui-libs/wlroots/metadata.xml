@@ -21,7 +21,6 @@
 		wlroots is developed under the direction of the <pkg>gui-wm/sway</pkg> project.
 	</longdescription>
 	<use>
-		<flag name="display-info">Enable support for EDID and DisplayID</flag>
 		<flag name="hwdata">Use system hwdata</flag>
 		<flag name="liftoff">Enable support for libliftoff kms plane backend</flag>
 		<flag name="seatd">Enable libseatd session support</flag>
