@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,12 +19,14 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="vulkan x11-backend X"
+IUSE="+libinput +drm vulkan x11-backend X"
 
 DEPEND="
-	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.20.0
 	>=dev-libs/wayland-protocols-1.24
+	libinput? (
+		>=dev-libs/libinput-1.14.0:0=
+	)
 	media-libs/mesa[egl(+),gles2,gbm(+)]
 	sys-auth/seatd:=
 	virtual/libudev
@@ -55,13 +57,18 @@ BDEPEND="
 "
 
 src_configure() {
+	local backends="$(usex drm 'drm' '')"
+	backends+="$(usex libinput ',libinput' '')"
+	backends+="$(usex x11-backend ',x11' '')"
+	# Get rid of a leading comma
+	backends="$(echo ${backends} | sed -e 's/^,//')"
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
 		"-Dxcb-errors=disabled"
 		"-Dexamples=false"
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
-		-Dbackends=drm,libinput$(usex x11-backend ',x11' '')
+		-Dbackends=${backends}
 	)
 
 	meson_src_configure

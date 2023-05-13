@@ -19,15 +19,15 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+hwdata +seatd tinywl +udev vulkan x11-backend X"
+IUSE="+libinput +drm tinywl +udev vulkan x11-backend X"
 
 DEPEND="
-	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.21.0
 	>=dev-libs/wayland-protocols-1.28
+	drm? ( sys-apps/hwdata:= )
+	libinput? ( >=dev-libs/libinput-1.14.0:0= )
 	media-libs/mesa[egl(+),gles2]
-	hwdata? ( sys-apps/hwdata:= )
-	seatd? ( sys-auth/seatd:= )
+	sys-auth/seatd
 	udev? ( virtual/libudev )
 	vulkan? (
 		dev-util/glslang:0=
@@ -57,13 +57,18 @@ BDEPEND="
 "
 
 src_configure() {
+	local backends="$(usex drm 'drm' '')"
+	backends+="$(usex libinput ',libinput' '')"
+	backends+="$(usex x11-backend ',x11' '')"
+	# Get rid of leading comma
+	backends="$(echo ${backends} | sed -e 's/^,//')"
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
 		"-Dxcb-errors=disabled"
 		$(meson_use tinywl examples)
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
-		-Dbackends=drm,libinput$(usex x11-backend ',x11' '')
+		-Dbackends=${backends}
 	)
 
 	meson_src_configure
