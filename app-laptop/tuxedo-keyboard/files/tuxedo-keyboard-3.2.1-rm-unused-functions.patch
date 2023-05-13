@@ -1,3 +1,7 @@
+https://github.com/tuxedocomputers/tuxedo-keyboard/pull/162
+https://github.com/tuxedocomputers/tuxedo-keyboard/issues/164
+https://bugs.gentoo.org/902133
+
 diff --git a/src/tuxedo_io/tuxedo_io.c b/src/tuxedo_io/tuxedo_io.c
 index 879efd7..5cf4f20 100644
 --- a/src/tuxedo_io/tuxedo_io.c
