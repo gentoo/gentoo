@@ -104,6 +104,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.24.31-update-icon-cache.patch # requires eautoreconf
 	# Respect ${NM}, bug #725852
 	"${FILESDIR}"/${PN}-2.24.33-respect-NM.patch # requires eautoreconf
+	# Fix casts, bug #880617
+	"${FILESDIR}"/${PN}-2.24.33-Fix-casts.patch
 )
 
 strip_builddir() {
