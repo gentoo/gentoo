@@ -12,7 +12,8 @@ SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv x86"
-IUSE="doc gtk gtk2 qt5 X"
+IUSE="doc gtk gtk2 qt5 test X"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -42,8 +43,8 @@ RDEPEND="
 	)
 	X? ( x11-libs/libX11 )
 "
-
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-libs/check )"
 
 DOCS=( AUTHORS NEWS README.md )
 
@@ -60,6 +61,7 @@ src_configure() {
 		$(meson_feature gtk2)
 		$(meson_feature gtk gtk3)
 		$(meson_feature qt5)
+		$(meson_feature test tests)
 		$(meson_feature X x11)
 	)
 
