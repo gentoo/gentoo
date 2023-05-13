@@ -104,12 +104,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="gpm +stack-realign tinfo unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
-# Block the ncurses-5 that installs the same lib. #557472
+# Block the ncurses-5 that installs the same lib, bug #557472
 RDEPEND="
 	${DEPEND}
 	!<sys-libs/ncurses-6:0
 	!sys-libs/ncurses:5
 "
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomasdickey )"
 
 S="${WORKDIR}/${MY_P}"
 
