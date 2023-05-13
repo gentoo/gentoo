@@ -13,19 +13,21 @@ WINE_MONO=7.4.0
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/wine-staging/wine-staging.git"
+	EGIT_REPO_URI="https://gitlab.winehq.org/wine/wine-staging.git"
 	WINE_EGIT_REPO_URI="https://gitlab.winehq.org/wine/wine.git"
 else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="
 		https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz
-		https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+		https://gitlab.winehq.org/wine/wine-staging/-/archive/v${PV}/${P}.tar.bz2"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 S="${WORKDIR}/wine-${PV}"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
-HOMEPAGE="https://wiki.winehq.org/Wine-Staging"
+HOMEPAGE="
+	https://wiki.winehq.org/Wine-Staging
+	https://gitlab.winehq.org/wine/wine-staging/"
 
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
