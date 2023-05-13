@@ -58,6 +58,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/gtk+:3[X?]
 	X? ( x11-libs/libX11 )
 	$(python_gen_cond_dep '
+		dev-python/appdirs[${PYTHON_USEDEP}]
 		dev-python/cachecontrol[${PYTHON_USEDEP}]
 		dev-python/cssselect[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]
