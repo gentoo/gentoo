@@ -16,6 +16,7 @@
 			Add support for command line editing to pcretest, through
 			<pkg>sys-libs/readline</pkg>.
 		</flag>
+		<flag name="valgrind">Support Valgrind (<pkg>dev-util/valgrind</pkg>) with annotations to improve results for memcheck.</flag>
 		<flag name="zlib">
 			Add support for pcregrep command to search within
 			gzip-compressed files (via <pkg>sys-libs/zlib</pkg>).
