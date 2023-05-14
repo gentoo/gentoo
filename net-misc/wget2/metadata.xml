@@ -13,4 +13,7 @@
 		<flag name="openssl">Enable crypto support via <pkg>dev-libs/openssl</pkg></flag>
 		<flag name="psl">Use public suffix list via <pkg>net-libs/libpsl</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">gnuwget/wget2</remote-id>
+	</upstream>
 </pkgmetadata>
