@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-05-14)
+# QA and build issues, EAPI 6, no proper releases, no other
+# distro packages this. Removal on 2023-06-13. Bug #713794, #872539.
+dev-vcs/cvsync
+
+# David Seifert <soap@gentoo.org> (2023-05-14)
 # EAPI 6, last release over 20 years ago, no other distro packages this
 # anymore. Removal on 2023-06-13.
 dev-tex/cpp2latex
