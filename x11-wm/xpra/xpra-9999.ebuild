@@ -21,13 +21,13 @@ DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based o
 HOMEPAGE="https://xpra.org/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE="brotli +client +clipboard csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal opengl pillow pinentry pulseaudio +server sound systemd test udev vpx webcam webp xdg xinerama"
+IUSE="brotli +client +clipboard crypt csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal opengl pillow pinentry pulseaudio +server sound systemd test udev vpx webcam webp xdg xinerama"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
 	cups? ( dbus )
 	opengl? ( client )
-	test? ( client clipboard dbus html server sound xdg xinerama )
+	test? ( client clipboard crypt dbus html server sound xdg xinerama )
 "
 
 TDEPEND="
@@ -80,6 +80,7 @@ RDEPEND="
 	${DEPEND}
 	${TDEPEND}
 	$(python_gen_cond_dep '
+		crypt? ( dev-python/cryptography[${PYTHON_USEDEP}] )
 		cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
 		lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
 		lzo? ( >=dev-python/python-lzo-0.7.0[${PYTHON_USEDEP}] )
