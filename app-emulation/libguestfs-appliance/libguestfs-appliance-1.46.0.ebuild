@@ -31,7 +31,7 @@ src_unpack() {
 
 src_install() {
 	dodir /usr/share/guestfs
-	cd "${ED}"/usr/share/guestfs || Die
+	cd "${ED}"/usr/share/guestfs || die
 	unpack ${A}
 
 	cd appliance || die
