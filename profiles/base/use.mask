@@ -61,9 +61,6 @@ packagekit
 selinux
 multilib
 
-# Mask ELIBC, KERNEL, and USERLAND flags that apply to specific profiles.
-userland_BSD
-
 elibc_bionic
 elibc_Cygwin
 elibc_Darwin
