@@ -284,13 +284,6 @@ net-im/cawbird
 # No revdeps.  Removal on 2023-05-13.
 dev-python/picklemagic
 
-# Michał Górny <mgorny@gentoo.org> (2023-04-13)
-# django-tagging is broken on Python 3.11 and unmaintained upstream
-# (last commit in 2020).  Graphite-web is its only revdep and it is
-# replaced by app-metrics/carbonapi-web.
-# Removal on 2023-05-13.  Bug #897056.
-dev-python/django-tagging
-
 # Eray Aslan <eras@gentoo.org> (2023-04-12)
 # Mask experimental software
 =mail-mta/postfix-3.9*
