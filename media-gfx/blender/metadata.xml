@@ -85,9 +85,5 @@
 		<flag name="tbb">
 			Use threading building blocks library from <pkg>dev-cpp/tbb</pkg>.
 		</flag>
-		<flag name="valgrind">
-			Add support for memory debugging using
-			<pkg>dev-util/valgrind</pkg>
-		</flag>
 	</use>
 </pkgmetadata>
