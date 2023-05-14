@@ -27,7 +27,6 @@ backbone of cloud and data center management.
     <flag name="libvirt">Support managing virtual machines with <pkg>app-emulation/libvirt</pkg>.</flag>
     <flag name="genshi">Enable support for <pkg>dev-python/genshi</pkg></flag>
     <flag name="gnupg">Enable support for gnupg via python-gnupg.</flag>
-    <flag name="keyring">Enable support for keyrings via python-keyring.</flag>
     <flag name="mako">Add support for using the mako template engine for parsing salt states.</flag>
     <flag name="mongodb">Support returning data to a mongodb server.</flag>
     <flag name="neutron">Support the OpenStack neutron network service.</flag>
