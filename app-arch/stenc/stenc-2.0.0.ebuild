@@ -20,6 +20,11 @@ HOMEPAGE="https://github.com/scsitape/stenc/"
 LICENSE="GPL-2"
 SLOT="0"
 
+BDEPEND="
+	app-text/pandoc
+	virtual/pkgconfig
+"
+
 src_prepare() {
 	default
 	eautoreconf
