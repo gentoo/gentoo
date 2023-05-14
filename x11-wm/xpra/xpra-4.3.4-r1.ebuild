@@ -66,7 +66,7 @@ DEPEND="
 	x11-libs/libxkbfile
 	brotli? ( app-arch/brotli )
 	csc? ( >=media-video/ffmpeg-1.2.2:0= )
-	ffmpeg? ( >=media-video/ffmpeg-3.2.2:0=[x264,x265] )
+	ffmpeg? ( >=media-video/ffmpeg-3.2.2:0=[x264] )
 	jpeg? ( media-libs/libjpeg-turbo )
 	pulseaudio? (
 		media-sound/pulseaudio
@@ -159,7 +159,7 @@ python_configure_all() {
 		$(use_with ffmpeg dec_avcodec2)
 		$(use_with ffmpeg enc_ffmpeg)
 		$(use_with ffmpeg enc_x264)
-		$(use_with ffmpeg enc_x265)
+		--without-enc_x265
 		--with-gtk3
 		$(use_with jpeg jpeg_encoder)
 		$(use_with jpeg jpeg_decoder)
