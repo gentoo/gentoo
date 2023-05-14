@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Rhythmbox"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="cdr daap dbus gnome-keyring gtk-doc ipod libnotify lirc mtp +python test +udev upnp-av"
+IUSE="cdr daap dbus keyring gtk-doc ipod libnotify lirc mtp +python test +udev upnp-av"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	ipod? ( udev )
@@ -45,7 +45,7 @@ DEPEND="
 		>=net-libs/libdmapsharing-3.9.11:4.0=
 		>=media-plugins/gst-plugins-soup-1.4:1.0
 	)
-	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
+	keyring? ( >=app-crypt/libsecret-0.18 )
 	libnotify? ( >=x11-libs/libnotify-0.7.0 )
 	lirc? ( app-misc/lirc )
 	python? (
@@ -78,7 +78,7 @@ RDEPEND="${DEPEND}
 		x11-libs/pango[introspection]
 
 		dbus? ( sys-apps/dbus )
-		gnome-keyring? ( >=app-crypt/libsecret-0.18[introspection] )
+		keyring? ( >=app-crypt/libsecret-0.18[introspection] )
 	)
 	upnp-av? (
 		>=media-libs/grilo-0.3.15-r1:0.3
@@ -105,7 +105,7 @@ src_configure() {
 		$(meson_feature udev gudev)
 		$(meson_feature ipod)
 		$(meson_feature libnotify)
-		$(meson_feature gnome-keyring libsecret)
+		$(meson_feature keyring libsecret)
 		$(meson_feature lirc)
 		$(meson_feature mtp)
 		$(meson_feature python plugins_python)
