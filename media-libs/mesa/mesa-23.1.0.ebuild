@@ -168,7 +168,14 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
-	vulkan? ( dev-util/glslang )
+	vulkan? (
+		dev-util/glslang
+		video_cards_intel? (
+			amd64? (
+				$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
+			)
+		)
+	)
 	wayland? ( dev-util/wayland-scanner )
 "
 
@@ -248,6 +255,9 @@ pkg_pretend() {
 
 python_check_deps() {
 	python_has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
+	if use vulkan && use video_cards_intel && use amd64; then
+		python_has_version -b "dev-python/ply[${PYTHON_USEDEP}]"
+	fi
 }
 
 pkg_setup() {
