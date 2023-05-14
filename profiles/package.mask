@@ -279,11 +279,6 @@ net-im/cawbird
 =sys-libs/ncurses-6.4_p20230424
 =sys-libs/ncurses-6.4_p20230506
 
-# Michał Górny <mgorny@gentoo.org> (2023-04-13)
-# Lack of support for Python 3.11.  The current version is from 2016.
-# No revdeps.  Removal on 2023-05-13.
-dev-python/picklemagic
-
 # Eray Aslan <eras@gentoo.org> (2023-04-12)
 # Mask experimental software
 =mail-mta/postfix-3.9*
