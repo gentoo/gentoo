@@ -1,0 +1,27 @@
+# Fixes Gentoo bug https://bugs.gentoo.org/885563
+--- a/test/test-send-xmessage-xcb.c
++++ b/test/test-send-xmessage-xcb.c
+@@ -52,8 +52,8 @@ main (int argc, char **argv)
+   display = sn_xcb_display_new (xconnection, NULL, NULL);
+
+   sn_internal_broadcast_xmessage (display, screen,
+-                                  argv[1],
+-                                  argv[2],
++                                  (xcb_atom_t)argv[1],
++                                  (xcb_atom_t)argv[2],
+                                   argv[3]);
+
+   return 0;
+--- a/test/test-send-xmessage.c
++++ b/test/test-send-xmessage.c
+@@ -57,8 +57,8 @@ main (int argc, char **argv)
+                             error_trap_pop);
+
+   sn_internal_broadcast_xmessage (display, DefaultScreen (xdisplay),
+-                                  argv[1],
+-                                  argv[2],
++                                  (xcb_atom_t)argv[1],
++                                  (xcb_atom_t)argv[2],
+                                   argv[3]);
+
+   return 0;

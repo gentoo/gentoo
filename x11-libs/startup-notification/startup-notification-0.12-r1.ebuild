@@ -1,7 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit xorg-3
 
 DESCRIPTION="Application startup notification and feedback library"
@@ -23,4 +24,5 @@ DOCS=( AUTHORS ChangeLog NEWS doc/${PN}.txt )
 PATCHES=(
 	"${FILESDIR}"/${P}-sys-select_h.patch
 	"${FILESDIR}"/${P}-time_t-crash-with-32bit.patch
+	"${FILESDIR}"/${P}-clang-16-test-fix.patch
 )
