@@ -1,0 +1,100 @@
+From 5e657b3fbed2f8495272d6b207d1b3c0a660a72f Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 2 Oct 2022 22:59:17 +0100
+Subject: [PATCH 1/3] Fix test_root_window_model by formatting geometry string
+ correctly
+
+You can't use `{geometry:24}` style formatting on a list or tuple. It
+must be converted to a string first.
+---
+ xpra/server/shadow/root_window_model.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xpra/server/shadow/root_window_model.py b/xpra/server/shadow/root_window_model.py
+index cb89466ef..e69949e7d 100644
+--- a/xpra/server/shadow/root_window_model.py
++++ b/xpra/server/shadow/root_window_model.py
+@@ -65,7 +65,7 @@ class RootWindowModel:
+         self.signal_listeners = {}
+
+     def __repr__(self):
+-        return f"RootWindowModel({self.capture} : {self.geometry:24})"
++        return f"RootWindowModel({self.capture} : {str(self.geometry):24})"
+
+     def get_info(self) -> dict:
+         info = {}
+--
+2.38.0
+
+
+From 3fe12855383831f10442a1f4451d206dfee2cb92 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 2 Oct 2022 21:51:01 +0100
+Subject: [PATCH 2/3] Fix test_get_version_info when the revision is 0
+
+The 4.4 tarball has revision 0, which causes it to not be included in
+the version info dict. Check for `not None` instead of truthiness.
+---
+ xpra/version_util.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/xpra/version_util.py b/xpra/version_util.py
+index 17c0ec27a..5dd38fd3e 100755
+--- a/xpra/version_util.py
++++ b/xpra/version_util.py
+@@ -158,7 +158,7 @@ def get_version_info(full=1) -> dict:
+                 "branch"                : BRANCH,
+                 "commit"                : COMMIT,
+                 }.items():
+-                if v and v!="unknown":
++                if v is not None and v!="unknown":
+                     props[k] = v
+         except ImportError as e:
+             warn("missing some source information: %s", e)
+@@ -181,7 +181,7 @@ def get_version_info_full() -> dict:
+                     "cython"               : "CYTHON_VERSION",
+                   }.items():
+             v = getattr(build_info, bk, None)
+-            if v:
++            if v is not None:
+                 props[k] = v
+         #record library versions:
+         d = dict((k.lstrip("lib_"), getattr(build_info, k)) for k in dir(build_info) if k.startswith("lib_"))
+--
+2.38.0
+
+
+From 79573c7f1241225922bee992f2caaf730cfbe3ac Mon Sep 17 00:00:00 2001
+From: totaam <antoine@xpra.org>
+Date: Sun, 9 Oct 2022 21:37:39 +0700
+Subject: [PATCH 3/3] Revert "don't use GLib directly"
+
+This reverts commit bc8bf26c44d1b151d709232460483f5432f79f5b.
+---
+ xpra/server/mixins/child_command_server.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/xpra/server/mixins/child_command_server.py b/xpra/server/mixins/child_command_server.py
+index 8dea3c1f7..1c2a60e27 100644
+--- a/xpra/server/mixins/child_command_server.py
++++ b/xpra/server/mixins/child_command_server.py
+@@ -11,6 +11,8 @@ import os.path
+ from time import monotonic
+ from subprocess import Popen
+
++from gi.repository import GLib
++
+ from xpra.platform.features import COMMAND_SIGNALS
+ from xpra.child_reaper import getChildReaper, reaper_cleanup
+ from xpra.os_util import (
+@@ -72,7 +74,7 @@ class ChildCommandServer(StubServerMixin):
+         #even if __init__ is called multiple times:
+         if not getattr(self, "late_start_requested", False):
+             self.late_start_requested = True
+-            self.idle_add(self.late_start)
++            GLib.idle_add(self.late_start)
+
+     def late_start(self):
+         def do_late_start():
+--
+2.38.0
