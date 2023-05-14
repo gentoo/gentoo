@@ -39,6 +39,8 @@ DEPEND="
 	${RDEPEND}
 "
 
+BDEEPND=">=dev-python/cython-0.29.29[${PYTHON_USEDEP}]"
+
 src_install() {
 	distutils-r1_src_install
 	doman docs/man/*
