@@ -16,6 +16,7 @@
   </longdescription>
   <use>
     <flag name="ssh-agent">Use GNOME Keyring to unlock SSH keys. Recommended unless you are using ECDSA or Ed25519 keys.</flag>
+    <flag name="valgrind">Support Valgrind (<pkg>dev-util/valgrind</pkg>) with annotations to improve results for memcheck.</flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/gnome-keyring</remote-id>

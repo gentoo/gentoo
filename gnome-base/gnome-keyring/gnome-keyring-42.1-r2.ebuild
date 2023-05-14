@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeKeyring"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="pam selinux +ssh-agent systemd test"
+IUSE="pam selinux +ssh-agent systemd test valgrind"
 RESTRICT="!test? ( test )"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
@@ -27,7 +27,10 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-gnome )
 	ssh-agent? ( virtual/openssh )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+"
 BDEPEND="
 	>=app-eselect/eselect-pinentry-0.5
 	app-text/docbook-xml-dtd:4.3
@@ -58,6 +61,7 @@ src_configure() {
 		$(use_enable selinux) \
 		$(use_enable ssh-agent) \
 		$(use_with systemd) \
+		$(use_enable valgrind) \
 		--enable-doc
 }
 
