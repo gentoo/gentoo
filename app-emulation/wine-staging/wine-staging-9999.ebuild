@@ -19,7 +19,7 @@ else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="
 		https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz
-		https://gitlab.winehq.org/wine/wine-staging/-/archive/v${PV}/${P}.tar.bz2"
+		https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 S="${WORKDIR}/wine-${PV}"
