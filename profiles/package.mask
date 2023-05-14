@@ -300,13 +300,6 @@ net-analyzer/graphite-web
 # Removal on 2023-05-13.  Bug #896744.
 dev-python/Pyro4
 
-# Michał Górny <mgorny@gentoo.org> (2023-04-13)
-# Broken tests and no Python 3.11 support.  Upstream has discontinued
-# the package, dev-python/mistune is suggested as a replacement.
-# No reverse dependencies.
-# Removal on 2023-05-13.  Bug #798066.
-dev-python/misaka
-
 # Eray Aslan <eras@gentoo.org> (2023-04-12)
 # Mask experimental software
 =mail-mta/postfix-3.9*
