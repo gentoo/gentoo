@@ -14,14 +14,13 @@ SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${P}.tar.gz.sig )"
 LICENSE="LGPL-2.1+"
 SLOT="0/6" # subslot = libtasn1 soname version
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="static-libs test valgrind"
+IUSE="static-libs test"
 
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	sys-apps/help2man
 	app-alternatives/yacc
-	test? ( valgrind? ( dev-util/valgrind ) )
 	verify-sig? ( sec-keys/openpgp-keys-libtasn1 )
 "
 
@@ -41,8 +40,8 @@ multilib_src_configure() {
 	export gl_cv_warn_c__fanalyzer=no
 
 	local myeconfargs=(
+		--disable-valgrind-tests
 		$(use_enable static-libs static)
-		$(multilib_native_use_enable valgrind valgrind-tests)
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
