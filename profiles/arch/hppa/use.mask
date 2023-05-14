@@ -150,6 +150,7 @@ gconf
 gnome
 gnome-keyring
 gnome-online-accounts
+keyring
 
 # Jeroen Roovers <jer@gentoo.org> (2010-07-19)
 # Masked because of missing gnome-base/gnome-panel

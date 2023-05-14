@@ -101,6 +101,7 @@ audit
 # Masking these globally, since we don't have X
 gnome
 gnome-keyring
+keyring
 nas
 
 # Masking since net-dns/avahi and net-misc/mDNSResponder are masked
@@ -128,7 +129,6 @@ djbfft
 djvu
 emacs
 emf
-gnome-keyring
 graphite
 guile
 hardened

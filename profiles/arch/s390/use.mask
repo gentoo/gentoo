@@ -95,6 +95,7 @@ gtk2
 gtk3
 gnome
 gnome-keyring
+keyring
 
 diet
 m17n-lib
