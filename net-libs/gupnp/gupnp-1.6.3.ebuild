@@ -47,6 +47,9 @@ BDEPEND="
 src_prepare() {
 	default
 	use vala && vala_setup
+
+	# This makes sense for upstream but not for us downstream, bug #906124.
+	sed -i -e '/-Werror=deprecated-declarations/d' meson.build || die
 }
 
 multilib_src_configure() {

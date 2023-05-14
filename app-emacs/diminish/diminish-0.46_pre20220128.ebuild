@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}.el-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"

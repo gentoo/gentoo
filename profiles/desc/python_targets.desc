@@ -3,7 +3,6 @@
 
 # This file contains descriptions of PYTHON_TARGETS USE_EXPAND flags.
 
-python3_9 - Build with Python 3.9
 python3_10 - Build with Python 3.10
 python3_11 - Build with Python 3.11
 pypy3 - Build with PyPy3

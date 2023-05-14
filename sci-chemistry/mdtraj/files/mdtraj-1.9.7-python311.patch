@@ -1,0 +1,16 @@
+Index: mdtraj/setup.py
+===================================================================
+--- mdtraj.orig/setup.py	2023-01-18 15:26:51.424826255 +0100
++++ mdtraj/setup.py	2023-01-18 15:26:51.420826223 +0100
+@@ -298,6 +298,10 @@
+ 
+         for e in extensions:
+             e.include_dirs.append(np.get_include())
+-        metadata['ext_modules'] = cythonize(extensions, language_level=sys.version_info[0])
++        metadata['ext_modules'] = cythonize(
++            extensions,
++            language_level=sys.version_info[0],
++            force=True,
++        )
+ 
+     setup(**metadata)

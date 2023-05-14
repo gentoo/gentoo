@@ -1,8 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">be5invis/iosevka</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <name>Arsen Arsenović</name>
+    <email>arsen@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">be5invis/iosevka</remote-id>
+  </upstream>
+  <use>
+    <flag name="iosevka">
+      Install the classic Iosevka font.
+    </flag>
+    <flag name="iosevka-slab">
+      Install Iosevka Slab, a monospace slab-serif font.
+    </flag>
+    <flag name="iosevka-curly">
+      Install Iosevka Curly, a curlier variant of Iosevka.
+    </flag>
+    <flag name="iosevka-curly-slab">
+      Install Iosevka Curly Slab, the curly font, with slab-serifs.
+    </flag>
+    <flag name="iosevka-ss01">
+      Install Iosevka SS01, an Iosevka variant made in the style of
+      Andale Mono.
+    </flag>
+    <flag name="iosevka-ss02">
+      Install Iosevka SS02, an Iosevka variant made in the style of
+      Anonymous Pro Style.
+    </flag>
+    <flag name="iosevka-ss03">
+      Install Iosevka SS03, an Iosevka variant made in the style of
+      Consolas.
+    </flag>
+    <flag name="iosevka-ss04">
+      Install Iosevka SS04, an Iosevka variant made in the style of
+      Menlo.
+    </flag>
+    <flag name="iosevka-ss05">
+      Install Iosevka SS05, an Iosevka variant made in the style of
+      Fira Mono.
+    </flag>
+    <flag name="iosevka-ss06">
+      Install Iosevka SS06, an Iosevka variant made in the style of
+      Liberation Mono.
+    </flag>
+    <flag name="iosevka-ss07">
+      Install Iosevka SS07, an Iosevka variant made in the style of
+      Monaco.
+    </flag>
+    <flag name="iosevka-ss08">
+      Install Iosevka SS08, an Iosevka variant made in the style of
+      Pragmata Pro.
+    </flag>
+    <flag name="iosevka-ss09">
+      Install Iosevka SS09, an Iosevka variant made in the style of
+      Source Code Pro.
+    </flag>
+    <flag name="iosevka-ss10">
+      Install Iosevka SS10, an Iosevka variant made in the style of Envy
+      Code R.
+    </flag>
+    <flag name="iosevka-ss11">
+      Install Iosevka SS11, an Iosevka variant made in the style of X
+      Windows Fixed.
+    </flag>
+    <flag name="iosevka-ss12">
+      Install Iosevka SS12, an Iosevka variant made in the style of
+      Ubuntu Mono.
+    </flag>
+    <flag name="iosevka-ss13">
+      Install Iosevka SS13, an Iosevka variant made in the style of
+      Lucida.
+    </flag>
+    <flag name="iosevka-ss14">
+      Install Iosevka SS14, an Iosevka variant made in the style of
+      JetBrains Mono.
+    </flag>
+    <flag name="iosevka-ss15">
+      Install Iosevka SS15, an Iosevka variant made in the style of IBM
+      Plex Mono.
+    </flag>
+    <flag name="iosevka-ss16">
+      Install Iosevka SS16, an Iosevka variant made in the style of PT
+      Mono.
+    </flag>
+    <flag name="iosevka-ss17">
+      Install Iosevka SS17, an Iosevka variant made in the style of
+      Recursive Mono.
+    </flag>
+    <flag name="iosevka-ss18">
+      Install Iosevka SS18, an Iosevka variant made in the style of
+      Input Mono.
+    </flag>
+    <flag name="iosevka-aile">
+      Install Iosevka Aile, a quasi-proportional sans-serif font.
+    </flag>
+    <flag name="iosevka-etoile">
+      Install Iosevka Etoile, a quasi-proportional slab-serif font.
+    </flag>
+  </use>
 </pkgmetadata>

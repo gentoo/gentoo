@@ -310,7 +310,7 @@ multilib_src_install_all() {
 		newins "${FILESDIR}"/pipewire.desktop-r1 pipewire.desktop
 
 		exeinto /usr/bin
-		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in gentoo-pipewire-launcher
+		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r1 gentoo-pipewire-launcher
 
 		# Disable pipewire-pulse if sound-server is disabled.
 		if ! use sound-server ; then

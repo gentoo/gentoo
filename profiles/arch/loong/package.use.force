@@ -7,7 +7,6 @@
 # Some packages are not fully ported yet, but preemptively added so we won't
 # have to revisit later.
 dev-lang/rust llvm_targets_LoongArch
-dev-libs/keystone llvm_targets_LoongArch
 dev-ml/llvm-ocaml llvm_targets_LoongArch
 sys-devel/clang llvm_targets_LoongArch
 sys-devel/llvm llvm_targets_LoongArch

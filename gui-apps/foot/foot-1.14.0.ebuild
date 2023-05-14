@@ -13,7 +13,8 @@ S="${WORKDIR}/${PN}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="+grapheme-clustering"
+IUSE="+grapheme-clustering test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/wayland
@@ -28,7 +29,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	dev-libs/tllist
+	>=dev-libs/tllist-1.1.0
 	dev-libs/wayland-protocols
 "
 RDEPEND="
@@ -52,13 +53,14 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature grapheme-clustering)
+		$(meson_use test tests)
 		-Dthemes=true
 		-Dime=true
 		-Dterminfo=disabled
 	)
 	meson_src_configure
 
-	sed 's|@bindir@|/usr/bin|g' "${S}/"/foot-server@.service.in > foot-server@.service
+	sed 's|@bindir@|/usr/bin|g' "${S}/"/foot-server@.service.in > foot-server@.service || die
 }
 
 src_install() {

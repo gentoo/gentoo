@@ -84,7 +84,6 @@ app-arch/unzip unicode
 app-arch/zip unicode
 sys-apps/util-linux unicode
 sys-process/procps unicode
-www-client/lynx unicode
 #
 # b) using libidn
 app-text/ghostscript-gpl unicode
@@ -176,7 +175,6 @@ sys-firmware/seabios binary
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
 net-analyzer/snort libtirpc
-net-firewall/conntrack-tools libtirpc
 net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
@@ -209,7 +207,6 @@ app-shells/bash:0 readline
 # Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
-dev-lang/python-exec python_targets_python3_9
 dev-lang/python-exec python_targets_python3_10
 dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_pypy3

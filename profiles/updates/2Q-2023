@@ -3,3 +3,10 @@ move dev-python/mkdocs_pymdownx_material_extras dev-python/mkdocs-pymdownx-mater
 move dev-python/jupyter_client dev-python/jupyter-client
 move dev-python/importlib_resources dev-python/importlib-resources
 move dev-python/importlib_metadata dev-python/importlib-metadata
+move dev-python/python-keyutils dev-python/keyutils
+move dev-python/notebook_shim dev-python/notebook-shim
+move dev-python/python-mpd dev-python/python-mpd2
+move dev-python/sphinx_celery dev-python/sphinx-celery
+move dev-python/pretty-yaml dev-python/pyaml
+move dev-python/aws-xray-sdk-python dev-python/aws-xray-sdk
+move dev-python/python-docs app-doc/python-docs

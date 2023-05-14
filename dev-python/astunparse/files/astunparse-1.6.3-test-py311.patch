@@ -1,0 +1,26 @@
+From: Carsten Schoenert <c.schoenert@t-online.de>
+Date: Sat, 31 Dec 2022 12:01:26 +0100
+Subject: tests: Skip test_files() on Python >= 3.11
+
+Given functions from astunparse are now mostly "battery included" in
+Python 3.10 and ongoing und the test itself is only a small part of the
+testing I think it's o.k. to simply skip now this test until upstream
+will probably do some adjustment.
+
+Forwarded: https://github.com/simonpercivall/astunparse/issues/67
+---
+ tests/common.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/common.py b/tests/common.py
+index 95b9755..7c8fa27 100644
+--- a/tests/common.py
++++ b/tests/common.py
+@@ -179,6 +179,7 @@ class AstunparseCommonTestCase:
+         os.path.join(getattr(sys, 'real_prefix', sys.prefix),
+                      'lib', 'python%s.%s' % sys.version_info[:2])]
+ 
++    @unittest.skipIf(sys.version_info >= (3, 11), "Ignoring if Python >= 3.11")
+     def test_files(self):
+         names = []
+         for test_dir in self.test_directories:

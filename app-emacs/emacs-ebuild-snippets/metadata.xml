@@ -8,6 +8,10 @@
   </maintainer>
   <stabilize-allarches />
   <upstream>
-    <remote-id type="gitlab">xgqt/emacs-ebuild-snippets</remote-id>
+    <maintainer status="active">
+      <email>emacs@gentoo.org</email>
+      <name>Gentoo Emacs project</name>
+    </maintainer>
+    <remote-id type="gentoo">proj/emacs-ebuild-snippets</remote-id>
   </upstream>
 </pkgmetadata>

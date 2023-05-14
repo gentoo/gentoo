@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-04-22)
+# pandoc is stable here.
+dev-python/nbclassic -doc
+dev-python/nbval -doc
+
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
@@ -29,6 +34,7 @@ net-misc/curl rustls curl_ssl_rustls
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/oneVPL
 media-libs/gst-plugins-bad qsv
+media-video/ffmpeg qsv
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
 # Dependency media-libs/intel-hybrid-codec-driver is only available on unstable

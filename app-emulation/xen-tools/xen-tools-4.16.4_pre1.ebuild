@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 
 	SEABIOS_VER="1.16.0"
 	EDK2_COMMIT="b16284e2a0011489f6e16dfcc6af7623c3cbaf0b"

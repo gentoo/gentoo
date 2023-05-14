@@ -1,0 +1,10 @@
+--- a/SConscript.old	2023-04-29 15:35:01.161090820 +0200
++++ b/SConscript	2023-04-29 15:36:38.909311880 +0200
+@@ -88,6 +88,7 @@
+         self.opts.Add('BUILD', 'Set the build type', "default")
+         self.opts.Add('CC', 'C Compiler', 'gcc')
+         self.opts.Add('CXX', 'C++ Compiler', 'g++')
++        self.opts.Add('AR', 'Archiver', 'ar')
+     #   self.opts.Add('debug', 'Build with debugging options', 0)
+     #   self.opts.Add('profile', 'Build with profiling support', 0)
+     

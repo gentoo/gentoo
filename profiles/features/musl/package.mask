@@ -14,7 +14,7 @@ sys-block/arcconf
 sys-apps/smcipmitool
 
 # Alfredo Tupone <tupone@gentoo.org> (2023-02-27)
-# Uses dev-util/nvidia-cuda-toolkit
+# Uses dev-util/nvidia-cuda-sdk
 dev-libs/cutlass
 
 # Sam James <sam@gentoo.org> (2023-01-02)
@@ -34,16 +34,6 @@ dev-libs/intel-compute-runtime
 =sys-devel/gcc-11.3.1_p20221223:11
 =sys-devel/gcc-12.2.1_p20221231:12
 =sys-devel/gcc-12.2.1_p20230121:12
-
-# Andrey Grozin <grozin@gentoo.org> (2022-12-01)
-# sbcl upstream supports only glibc Linux systems, bug #712626
-# and these packages depend on dev-lisp/sbcl unconditionally
-dev-lisp/sbcl
-app-emacs/sly
-dev-lisp/alexandria
-sci-mathematics/acl2
-x11-wm/stumpwm
-x11-wm/stumpwm-contrib
 
 # Sam James <sam@gentoo.org> (2022-10-17)
 # Needs porting to musl
@@ -109,10 +99,10 @@ net-misc/casync
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-03-14)
 # Doesn't build with musl, bug #832742
-app-eselect/eselect-opencascade
 app-doc/kicad-doc
 media-gfx/freecad
 media-gfx/prusaslicer
+media-gfx/superslicer
 sci-electronics/kicad
 sci-electronics/kicad-footprints
 sci-electronics/kicad-meta
@@ -232,7 +222,6 @@ net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
 net-im/skypeforlinux
 net-im/slack
-net-im/teams
 net-im/telegram-desktop-bin
 net-im/wazzapp-bin
 net-im/whatsapp-desktop-bin
@@ -258,7 +247,6 @@ sys-apps/ipmicfg
 sys-apps/tas
 sys-block/hpssacli
 sys-block/megacli
-sys-power/dptfxtract
 www-apps/chromedriver-bin
 www-apps/grafana-bin
 www-apps/jellyfin
@@ -322,7 +310,6 @@ net-misc/netkit-rsh
 dev-libs/cudnn
 dev-libs/cudnn-frontend
 dev-python/pycuda
-dev-util/nvidia-cuda-sdk
 dev-util/nvidia-cuda-toolkit
 dev-libs/optix
 x11-drivers/nvidia-drivers

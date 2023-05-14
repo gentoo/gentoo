@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,6 +59,8 @@ src_configure() {
 multilib_src_configure() {
 	# bug #357487
 	unset CODECS
+	# bug #905986
+	unset DIST_DIR
 
 	# bug #498364: sse doesn't work without sse2 enabled,
 	local myconfargs=(

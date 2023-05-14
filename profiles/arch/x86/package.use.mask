@@ -1,9 +1,17 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2023-05-12)
+# Likely untested upstream. Not worth the hassle.
+>=media-libs/mesa-23.1 opencl
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # Needs x11-drivers/nvidia-drivers which is no longer available here.
 media-tv/mythtv nvdec
+
+# Craig Andrews <candrews@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is keyworded here
+media-video/ffmpeg -libplacebo
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
@@ -184,10 +192,6 @@ sys-block/fio -io-uring -zbc
 # Marek Szuba <marecki@gentoo.org> (2020-06-17)
 # Unmask globally-masked flashrom drivers and tools which do work on x86
 sys-apps/flashrom -atahpt -atapromise -atavia -drkaiser -gfxnvidia -internal -it8212 -nic3com -nicintel -nicintel-eeprom -nicintel-spi -nicnatsemi -nicrealtek -ogp-spi -rayer-spi -satamv -satasii -tools
-
-# Christopher Head <chead@chead.ca> (2020-06-10)
-# Requires dev-db/influxdb which is amd64-only
-dev-python/influxdb test
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on x86
@@ -456,7 +460,3 @@ media-gfx/iscan -X
 
 # Steve Dibb <beandog@gentoo.org> (2008-09-29)
 media-video/mplayer -cpudetection
-
-# Craig Andrews <candrews@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is keyworded here
-media-video/ffmepg -libplacebo

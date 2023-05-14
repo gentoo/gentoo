@@ -10,10 +10,9 @@ EAPI=8
 # app-emulation/libvirt
 # Please bump them together!
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-MY_P="${P/_rc/-rc}"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libvirt.org.asc
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 verify-sig
 
 if [[ ${PV} == *9999* ]]; then
@@ -21,9 +20,10 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt-python.git"
 	RDEPEND="app-emulation/libvirt:="
 else
+	MY_P="${P/_rc/-rc}"
 	SRC_URI="https://libvirt.org/sources/python/${MY_P}.tar.gz
 		verify-sig? ( https://libvirt.org/sources/python/${MY_P}.tar.gz.asc )"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 fi
 S="${WORKDIR}/${P%_rc*}"
@@ -43,6 +43,8 @@ BDEPEND="
 	)
 	verify-sig? ( sec-keys/openpgp-keys-libvirt )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libvirt.org.asc
 
 distutils_enable_tests pytest
 

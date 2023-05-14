@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This is a global minor mode for entering Emacs commands without modifier
+    keys. It's similar to Vim's separation of command mode and insert mode. All
+    existing key bindings will work in God mode. It's only there to reduce your
+    usage of modifier keys.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/emacsorphanage/god-mode/issues/</bugs-to>
+    <remote-id type="github">emacsorphanage/god-mode</remote-id>
+  </upstream>
+</pkgmetadata>

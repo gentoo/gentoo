@@ -24,8 +24,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn"
 IUSE+=" javascript lua lzma +mouse nls nntp perl samba ssl test tre unicode X xml zlib zstd"
-# tests restricted for https://github.com/rkd77/elinks/issues/203
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
@@ -36,7 +35,7 @@ RDEPEND="
 		>=sys-libs/gpm-1.20.0-r5
 	)
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
-	idn? ( net-dns/libidn:= )
+	idn? ( net-dns/libidn2:= )
 	javascript? (
 		dev-cpp/libxmlpp:5.0
 		dev-lang/mujs:=
@@ -61,8 +60,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+	test? (
+		net-dns/libidn2
+	)
 "
 
 pkg_setup() {
@@ -73,6 +75,9 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
+		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
+		-Dhtmldoc=false
+		-Dpdfdoc=false
 		-D88-colors=true
 		-D256-colors=true
 		$(meson_use bittorrent)
@@ -83,7 +88,7 @@ src_configure() {
 		$(meson_use ftp)
 		-Dfsp=false
 		-Dgemini=false
-		-Dgettext=true
+		$(meson_use nls gettext)
 		$(meson_use gopher)
 		$(meson_use gpm)
 		$(meson_use guile)

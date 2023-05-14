@@ -71,6 +71,7 @@ DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.10-config-disable-sound-server-parts.patch # defer enabling sound server parts to media-video/pipewire
+	"${FILESDIR}"/${PN}-0.4.14-backport-pr505.patch # bug 902445
 )
 
 src_configure() {

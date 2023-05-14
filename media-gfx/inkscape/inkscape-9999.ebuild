@@ -28,7 +28,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	dev-util/glib-utils
-	>=dev-util/intltool-0.40
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	test? ( virtual/imagemagick-tools )
@@ -46,7 +45,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libsigc++-2.8:2
 	>=dev-libs/libxml2-2.7.4
 	>=dev-libs/libxslt-1.1.25
-	dev-libs/gdl:3
 	dev-libs/popt
 	media-gfx/potrace
 	media-libs/libepoxy
@@ -60,6 +58,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/gtk+:3[X?]
 	X? ( x11-libs/libX11 )
 	$(python_gen_cond_dep '
+		dev-python/appdirs[${PYTHON_USEDEP}]
 		dev-python/cachecontrol[${PYTHON_USEDEP}]
 		dev-python/cssselect[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]

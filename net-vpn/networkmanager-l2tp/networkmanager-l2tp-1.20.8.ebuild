@@ -21,7 +21,7 @@ COMMON_DEPEND="dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
 	dev-libs/openssl:=
-	net-dialup/ppp:=[eap-tls]
+	net-dialup/ppp:=[eap-tls(+)]
 	net-dialup/xl2tpd
 	>=net-misc/networkmanager-1.20[ppp]
 	|| (

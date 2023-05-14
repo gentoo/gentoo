@@ -10,13 +10,13 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Alternative regular expression module to replace re"
 HOMEPAGE="
-	https://bitbucket.org/mrabarnett/mrab-regex/
+	https://github.com/mrabarnett/mrab-regex/
 	https://pypi.org/project/regex/
 "
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 IUSE="doc"
 
 PATCHES=(

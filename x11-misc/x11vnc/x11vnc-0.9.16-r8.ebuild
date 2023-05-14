@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-CVE-2020-29074.patch
 	"${FILESDIR}"/${P}-implicit-function-declaration.patch
+	"${FILESDIR}"/${P}-libressl.patch # 903001
 )
 
 src_prepare() {

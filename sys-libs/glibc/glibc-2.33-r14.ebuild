@@ -6,10 +6,7 @@ EAPI=7
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-# We avoid Python 3.10 here _for now_ (it does work!) to avoid circular dependencies
-# on upgrades as people migrate to libxcrypt.
-# https://wiki.gentoo.org/wiki/User:Sam/Portage_help/Circular_dependencies#Python_and_libcrypt
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_{9..11} )
 TMPFILES_OPTIONAL=1
 
 inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
@@ -399,6 +396,7 @@ setup_flags() {
 		# relating to failed builds, we strip most CFLAGS out to ensure as few
 		# problems as possible.
 		strip-flags
+		filter-lto
 		# Lock glibc at -O2; we want to be conservative here.
 		filter-flags '-O?'
 		append-flags -O2

@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-04-30)
+# Stacks on HPPA grow upwards and GCC doesn't support SSP or SCP there.
+sys-devel/gcc -default-stack-clash-protection
 
 # Sam James <sam@gentoo.org> (2022-02-19)
 # New enough SpiderMonkey not keyworded here, bug #753221

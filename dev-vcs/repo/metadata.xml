@@ -5,4 +5,7 @@
 		<name>Mike Frysinger</name>
 		<email>vapier@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">GerritCodeReview/git-repo</remote-id>
+	</upstream>
 </pkgmetadata>

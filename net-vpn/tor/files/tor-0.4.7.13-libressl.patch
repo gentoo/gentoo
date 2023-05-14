@@ -1,0 +1,161 @@
+Upstream-MR: https://gitlab.torproject.org/tpo/core/tor/-/merge_requests/598
+Upstream-Commit: https://gitlab.torproject.org/tpo/core/tor/-/commit/da52d7206a4a8e4fa8b5e80b5ed73de50fbe8692
+
+From f3dabd705f26c56076934323f24b5b05ecdfd39c Mon Sep 17 00:00:00 2001
+From: "Alex Xu (Hello71)" <alex_y_xu@yahoo.ca>
+Date: Tue, 5 Jul 2022 11:37:30 -0400
+Subject: [PATCH 1/2] LibreSSL 3.5 compatibility
+
+LibreSSL is now closer to OpenSSL 1.1 than OpenSSL 1.0. According to
+https://undeadly.org/cgi?action=article;sid=20220116121253, this is the
+intention of OpenBSD developers.
+
+According to #40630, many special cases are needed to compile Tor against
+LibreSSL 3.5 when using Tor's OpenSSL 1.0 compatibility mode, whereas only a
+small number of #defines are required when using OpenSSL 1.1 compatibility
+mode. One additional workaround is required for LibreSSL 3.4 compatibility.
+
+Compiles and passes unit tests with LibreSSL 3.4.3 and 3.5.1.
+---
+ configure.ac                           |  2 +-
+ src/lib/crypt_ops/compat_openssl.h     | 22 +++++++++++++---------
+ src/lib/crypt_ops/crypto_openssl_mgt.h |  3 +--
+ src/lib/crypt_ops/crypto_rsa_openssl.c |  8 +++++---
+ 4 files changed, 20 insertions(+), 15 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8baae007cf..6ab7903010 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1022,7 +1022,7 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ AC_MSG_CHECKING([for OpenSSL < 1.0.1])
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <openssl/opensslv.h>
+-#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER < 0x1000100fL
++#if OPENSSL_VERSION_NUMBER < 0x1000100fL
+ #error "too old"
+ #endif
+    ]], [[]])],
+diff --git a/src/lib/crypt_ops/compat_openssl.h b/src/lib/crypt_ops/compat_openssl.h
+index 0f56f338b5..c5eccdb015 100644
+--- a/src/lib/crypt_ops/compat_openssl.h
++++ b/src/lib/crypt_ops/compat_openssl.h
+@@ -20,32 +20,36 @@
+  * \brief compatibility definitions for working with different openssl forks
+  **/
+ 
+-#if !defined(LIBRESSL_VERSION_NUMBER) && \
+-  OPENSSL_VERSION_NUMBER < OPENSSL_V_SERIES(1,0,1)
++#if OPENSSL_VERSION_NUMBER < OPENSSL_V_SERIES(1,0,1)
+ #error "We require OpenSSL >= 1.0.1"
+ #endif
+ 
+-#if OPENSSL_VERSION_NUMBER >= OPENSSL_V_SERIES(1,1,0) && \
+-   ! defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= OPENSSL_V_SERIES(1,1,0)
+ /* We define this macro if we're trying to build with the majorly refactored
+  * API in OpenSSL 1.1 */
+ #define OPENSSL_1_1_API
+ #endif /* OPENSSL_VERSION_NUMBER >= OPENSSL_V_SERIES(1,1,0) && ... */
+ 
+-#ifndef OPENSSL_1_1_API
+-#define OpenSSL_version(v) SSLeay_version(v)
+-#define tor_OpenSSL_version_num() SSLeay()
++/* LibreSSL claims to be OpenSSL 2.0 but lacks these OpenSSL 1.1 APIs */
++#if !defined(OPENSSL_1_1_API) || defined(LIBRESSL_VERSION_NUMBER)
+ #define RAND_OpenSSL() RAND_SSLeay()
+ #define STATE_IS_SW_SERVER_HELLO(st)       \
+   (((st) == SSL3_ST_SW_SRVR_HELLO_A) ||    \
+    ((st) == SSL3_ST_SW_SRVR_HELLO_B))
+ #define OSSL_HANDSHAKE_STATE int
+ #define CONST_IF_OPENSSL_1_1_API
+-#else /* defined(OPENSSL_1_1_API) */
+-#define tor_OpenSSL_version_num() OpenSSL_version_num()
++#else
+ #define STATE_IS_SW_SERVER_HELLO(st) \
+   ((st) == TLS_ST_SW_SRVR_HELLO)
+ #define CONST_IF_OPENSSL_1_1_API const
++#endif
++
++/* OpenSSL 1.1 and LibreSSL both have these APIs */
++#ifndef OPENSSL_1_1_API
++#define OpenSSL_version(v) SSLeay_version(v)
++#define tor_OpenSSL_version_num() SSLeay()
++#else /* defined(OPENSSL_1_1_API) */
++#define tor_OpenSSL_version_num() OpenSSL_version_num()
+ #endif /* !defined(OPENSSL_1_1_API) */
+ 
+ #endif /* defined(ENABLE_OPENSSL) */
+diff --git a/src/lib/crypt_ops/crypto_openssl_mgt.h b/src/lib/crypt_ops/crypto_openssl_mgt.h
+index c6f63ffa08..96a37721dd 100644
+--- a/src/lib/crypt_ops/crypto_openssl_mgt.h
++++ b/src/lib/crypt_ops/crypto_openssl_mgt.h
+@@ -54,8 +54,7 @@
+ #define DISABLE_ENGINES
+ #endif
+ 
+-#if OPENSSL_VERSION_NUMBER >= OPENSSL_VER(1,1,0,0,5) && \
+-  !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= OPENSSL_VER(1,1,0,0,5)
+ /* OpenSSL as of 1.1.0pre4 has an "new" thread API, which doesn't require
+  * setting up various callbacks.
+  *
+diff --git a/src/lib/crypt_ops/crypto_rsa_openssl.c b/src/lib/crypt_ops/crypto_rsa_openssl.c
+index a21c4a65cf..544d72e6ca 100644
+--- a/src/lib/crypt_ops/crypto_rsa_openssl.c
++++ b/src/lib/crypt_ops/crypto_rsa_openssl.c
+@@ -572,7 +572,9 @@ static bool
+ rsa_private_key_too_long(RSA *rsa, int max_bits)
+ {
+   const BIGNUM *n, *e, *p, *q, *d, *dmp1, *dmq1, *iqmp;
+-#ifdef OPENSSL_1_1_API
++#if defined(OPENSSL_1_1_API) && \
++    (!defined(LIBRESSL_VERSION_NUMBER) || \
++     LIBRESSL_VERSION_NUMBER >= OPENSSL_V_SERIES(3,5,0))
+ 
+ #if OPENSSL_VERSION_NUMBER >= OPENSSL_V_SERIES(1,1,1)
+   n = RSA_get0_n(rsa);
+@@ -591,7 +593,7 @@ rsa_private_key_too_long(RSA *rsa, int max_bits)
+ 
+   if (RSA_bits(rsa) > max_bits)
+     return true;
+-#else /* !defined(OPENSSL_1_1_API) */
++#else /* !defined(OPENSSL_1_1_API) && ... */
+   n = rsa->n;
+   e = rsa->e;
+   p = rsa->p;
+@@ -600,7 +602,7 @@ rsa_private_key_too_long(RSA *rsa, int max_bits)
+   dmp1 = rsa->dmp1;
+   dmq1 = rsa->dmq1;
+   iqmp = rsa->iqmp;
+-#endif /* defined(OPENSSL_1_1_API) */
++#endif /* defined(OPENSSL_1_1_API) && ... */
+ 
+   if (n && BN_num_bits(n) > max_bits)
+     return true;
+-- 
+GitLab
+
+
+From b1545b6d18fbef6c790e2731a814fa54230d8857 Mon Sep 17 00:00:00 2001
+From: "Alex Xu (Hello71)" <alex_y_xu@yahoo.ca>
+Date: Tue, 19 Jul 2022 16:18:29 -0400
+Subject: [PATCH 2/2] Changes file for #40630 (LibreSSL 3.5 compatibility)
+
+---
+ changes/issue40630 | 3 +++
+ 1 file changed, 3 insertions(+)
+ create mode 100644 changes/issue40630
+
+diff --git a/changes/issue40630 b/changes/issue40630
+new file mode 100644
+index 0000000000..faf04941b6
+--- /dev/null
++++ b/changes/issue40630
+@@ -0,0 +1,3 @@
++  o Minor features (portability, compilation):
++    - Use OpenSSL 1.1 APIs for LibreSSL, fixing LibreSSL 3.5 compatibility.
++      Fixes issue 40630; patch by Alex Xu (Hello71).
+-- 
+GitLab
+

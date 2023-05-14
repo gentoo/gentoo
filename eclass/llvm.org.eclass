@@ -63,7 +63,7 @@ _LLVM_MASTER_MAJOR=17
 # @INTERNAL
 # @DESCRIPTION:
 # The newest release of LLVM for which manpages were generated.
-_LLVM_NEWEST_MANPAGE_RELEASE=16.0.1
+_LLVM_NEWEST_MANPAGE_RELEASE=16.0.3
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -78,11 +78,11 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				17.0.0_pre20230414)
-					EGIT_COMMIT=5c60a08c696c0420ddc5fdad5b8e50a7528cb3bf
+				17.0.0_pre20230512)
+					EGIT_COMMIT=7d436d56b60b36508b94e39d08761f1405a9c770
 					;;
-				17.0.0_pre20230325)
-					EGIT_COMMIT=0be1fbac2a7797399c0970e3f4033288036b65f6
+				17.0.0_pre20230502)
+					EGIT_COMMIT=52882de0e641487329c9e093a90ea3dad01842c8
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"

@@ -19,15 +19,16 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+hwdata +seatd tinywl +udev vulkan x11-backend X"
+IUSE="+hwdata liftoff +seatd tinywl +udev vulkan x11-backend xcb-errors X"
 
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
-	>=dev-libs/wayland-1.21.0
+	>=dev-libs/wayland-1.22.0
 	>=dev-libs/wayland-protocols-1.28
 	media-libs/mesa[egl(+),gles2]
-	media-libs/libdisplay-info:=
+	media-libs/libdisplay-info
 	hwdata? ( sys-apps/hwdata:= )
+	liftoff? ( dev-libs/libliftoff )
 	seatd? ( sys-auth/seatd:= )
 	udev? ( virtual/libudev )
 	vulkan? (
@@ -45,6 +46,7 @@ DEPEND="
 		x11-libs/xcb-util-image
 		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
+		xcb-errors? ( x11-libs/xcb-util-errors )
 	)
 "
 RDEPEND="
@@ -61,11 +63,17 @@ src_configure() {
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
 		"-Dxcb-errors=disabled"
+		-Dxcb-errors=$(usex xcb-errors enabled disabled)
 		$(meson_use tinywl examples)
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
 		-Dbackends=drm,libinput$(usex x11-backend ',x11' '')
 	)
+	if use udev; then
+		emesonargs+=(-Dsession=$(usex seatd enabled disabled))
+	else
+		emesonargs+=(-Dsession=disabled)
+	fi
 
 	meson_src_configure
 }

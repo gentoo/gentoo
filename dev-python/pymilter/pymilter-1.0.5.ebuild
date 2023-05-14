@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -15,7 +16,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-python/bsddb3[${PYTHON_USEDEP}]

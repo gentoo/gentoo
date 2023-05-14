@@ -49,14 +49,6 @@ src_compile() {
 	done
 }
 
-src_test() {
-	for crate in crates/*; do
-		pushd "${crate}" >/dev/null || die
-		cargo_src_test
-		popd >/dev/null || die
-	done
-}
-
 src_install() {
 	pushd crates/arti >/dev/null || due
 

@@ -89,6 +89,11 @@ python_test() {
 	epytest -p no:xdist --backend=x11 $(usev wayland '--backend=wayland') || die "Tests failed with ${EPYTHON}"
 }
 
+python_compile() {
+	export CFFI_TMPDIR=${T}
+	distutils-r1_python_compile
+}
+
 python_install_all() {
 	local DOCS=( CHANGELOG README.rst )
 	distutils-r1_python_install_all

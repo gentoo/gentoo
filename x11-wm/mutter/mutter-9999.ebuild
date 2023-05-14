@@ -46,7 +46,7 @@ DEPEND="
 	sys-apps/dbus
 	>=x11-misc/colord-1.4.5:=
 	>=media-libs/lcms-2.6:2
-	>=media-libs/harfbuzz-2.6.0
+	>=media-libs/harfbuzz-2.6.0:=
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
@@ -174,7 +174,7 @@ src_configure() {
 		$(meson_use systemd)
 		$(meson_use wayland native_backend)
 		$(meson_use screencast remote_desktop)
-		-Dlibgnome_desktop=true
+		$(meson_use gnome libgnome_desktop)
 		$(meson_use udev)
 		-Dudev_dir=$(get_udevdir)
 		$(meson_use input_devices_wacom libwacom)

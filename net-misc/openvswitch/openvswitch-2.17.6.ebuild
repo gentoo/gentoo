@@ -87,7 +87,7 @@ src_configure() {
 
 	# Need PYTHON3 variable for bug #860240
 	PYTHON3="${PYTHON}" CONFIG_SHELL="${BROOT}"/bin/bash SHELL="${BROOT}"/bin/bash econf ${linux_config} \
-		--with-rundir=/var/run/openvswitch \
+		--with-rundir=/run/openvswitch \
 		--with-logdir=/var/log/openvswitch \
 		--with-pkidir=/etc/ssl/openvswitch \
 		--with-dbdir=/var/lib/openvswitch \

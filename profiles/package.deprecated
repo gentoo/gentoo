@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-04-26)
+# Renamed upstream to dev-python/pypdf.  Since Python modules were
+# renamed as well, projects need to update their imports.
+dev-python/PyPDF2
+
 # Sam James <sam@gentoo.org> (2023-04-07)
 # Inactive upstream, doesn't support newer Rubies.
 # Please port your package to use dev-ruby/erubis instead.
@@ -62,11 +67,6 @@ sys-apps/edac-utils
 # Last-rites pending and waiting for revdeps, bug 877311
 x11-libs/snorenotify
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-25)
-# Archived upstream.  Last activity in 2018.  Broken with Python 3.8.
-# Broken with Django 2.
-dev-python/oauth2client
-
 # Michał Górny <mgorny@gentoo.org> (2022-12-24)
 # Unmaintained with last release in 2019.  We already patched it to work
 # with Python 3.9+.  The upstream code is also vulnerable
@@ -80,11 +80,7 @@ dev-python/future
 # work with prior Python versions.  If your package still needs it
 # (sic!), then either port it to use a maintained test framework (pytest
 # preferably) or last rite it.
-#
-# Case is also unmaintained (since 2018).  Nose-random has had last
-# commit in 2016 and was not even released to pypi!
 dev-python/nose
-dev-python/nose-random
 
 # Michał Górny <mgorny@gentoo.org> (2022-10-14)
 # The toml package is unmaintained (last release in 2020) and does not
@@ -128,7 +124,6 @@ virtual/jpeg
 app-text/enchant:0
 app-text/gnome-doc-utils
 app-text/gtkspell:2
-app-text/rarian
 app-text/scrollkeeper-dtd
 dev-cpp/gtkmm:2.4
 dev-libs/libcroco
@@ -139,7 +134,6 @@ gnome-base/libgnomecanvas
 media-libs/libart_lgpl
 x11-libs/gtksourceview:2.0
 x11-libs/libwnck:1
-x11-libs/vte:0
 x11-themes/gnome-icon-theme-extras
 x11-themes/gnome-icon-theme-symbolic
 x11-themes/gtk-chtheme
@@ -148,7 +142,6 @@ x11-themes/gtk-engines-adwaita
 x11-themes/gtk-engines-candido
 x11-themes/gtk-engines-experience
 x11-themes/gtk-engines-murrine
-x11-themes/gtk-engines-nodoka
 x11-themes/gtk-engines-qtpixmap
 x11-themes/gtk-engines-quartz
 x11-themes/gtk-engines-rezlooks

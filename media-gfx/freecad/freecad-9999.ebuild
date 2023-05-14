@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit check-reqs cmake optfeature python-single-r1 xdg
 
@@ -57,7 +57,6 @@ RDEPEND="
 	dev-qt/qtxmlpatterns:5
 	media-libs/freetype
 	media-libs/qhull:=
-	sci-libs/flann[openmp]
 	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1
 	sci-libs/opencascade:=[json,vtk]
@@ -136,7 +135,7 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.19.4-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.19.1-0001-Gentoo-specific-Remove-ccache-usage.patch
 	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
 )

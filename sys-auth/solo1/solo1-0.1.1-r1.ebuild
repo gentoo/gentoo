@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/solokeys/solo1-cli"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND=">=dev-python/click-7.1.0[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]

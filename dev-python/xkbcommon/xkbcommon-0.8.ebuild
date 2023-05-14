@@ -3,8 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for libxkbcommon using cffi"
@@ -20,7 +22,7 @@ S="${WORKDIR}"/python-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 # x11-libs/libxkbcommon dep per README
 RDEPEND="

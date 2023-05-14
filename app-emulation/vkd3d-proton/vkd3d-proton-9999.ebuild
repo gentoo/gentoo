@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,11 +17,11 @@ if [[ ${PV} == 9999 ]]; then
 		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
 	)
 else
-	HASH_VKD3D=4df366172e025c23621c8df5a794de90de165d97 # match tag on bumps
-	HASH_DXIL=2166bc7ea0ceb2d7ff6d787d9b007f7eb7d4aaa8
-	HASH_SPIRV=ae217c17809fadb232ec94b29304b4afcd417bb4
-	HASH_SPIRV_DXIL=87d5b782bec60822aa878941e6b13c0a9a954c9b
-	HASH_VULKAN=5177b119bbdf463b7b909855a83230253c2d8b68
+	HASH_VKD3D=f125062ee1278ac8508ab5561e289ec4ce0f406e # match tag on bumps
+	HASH_DXIL=830106bc2393ba7e7af67863e1c7cfa856432ec5
+	HASH_SPIRV=1d31a100405cf8783ca7a31e31cdd727c9fc54c3
+	HASH_SPIRV_DXIL=aa331ab0ffcb3a67021caa1a0c1c9017712f2f31
+	HASH_VULKAN=bd6443d28f2ebecedfb839b52d612011ba623d14
 	SRC_URI="
 		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
@@ -108,10 +108,14 @@ src_configure() {
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP WIDL
-			filter-flags '-fstack-clash-protection' #758914
-			filter-flags '-fstack-protector*' #870136
 			filter-flags '-fuse-ld=*'
 			filter-flags '-mfunction-return=thunk*' #878849
+			if has_version '<dev-util/mingw64-toolchain-11' ||
+				{ use crossdev-mingw &&
+					has_version "<cross-$(usex x86 i686 x86_64)-w64-mingw32/mingw64-runtime-11"; }
+			then
+				filter-flags '-fstack-protector*' #870136
+			fi
 		fi
 
 		CHOST_amd64=x86_64-w64-mingw32
@@ -166,13 +170,18 @@ pkg_postinst() {
 		elog "	WINEPREFIX=/path/to/prefix setup_vkd3d_proton.sh install --symlink"
 		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
-	fi
+	elif [[ ${REPLACING_VERSIONS##* } ]]; then
+		if ver_test ${REPLACING_VERSIONS##* } -lt 2.7; then
+			elog
+			elog ">=${PN}-2.7 requires drivers and Wine to support vulkan-1.3, meaning:"
+			elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
+		fi
 
-	if [[ ! ${REPLACING_VERSIONS##* } ]] ||
-		ver_test ${REPLACING_VERSIONS##* } -lt 2.7
-	then
-		elog
-		elog ">=${PN}-2.7 requires drivers and Wine to support vulkan-1.3, meaning:"
-		elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
+		if ver_test ${REPLACING_VERSIONS##* } -lt 2.8_p20230510; then
+			elog
+			elog ">=${PN}-2.8_p20230510 has a new file to install (d3d12core.dll), old"
+			elog "Wine prefixes that relied on '--symlink' may need updates by using the"
+			elog "setup_vkd3d_proton.sh script again."
+		fi
 	fi
 }

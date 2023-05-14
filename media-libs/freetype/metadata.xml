@@ -24,5 +24,6 @@
 		<remote-id type="cpe">cpe:/a:freetype:freetype</remote-id>
 		<remote-id type="github">freetype/freetype</remote-id>
 		<remote-id type="sourceforge">freetype</remote-id>
+		<remote-id type="freedesktop-gitlab">FreeType/FreeType</remote-id>
 	</upstream>
 </pkgmetadata>

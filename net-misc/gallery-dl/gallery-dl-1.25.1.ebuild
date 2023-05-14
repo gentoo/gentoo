@@ -17,12 +17,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mikf/${PN}.git"
 else
 	SRC_URI="https://github.com/mikf/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 hppa ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-# tests require network access
+# Tests require network access.
+PROPERTIES="test_network"
 RESTRICT="test"
 
 RDEPEND=">=dev-python/requests-2.11.0[${PYTHON_USEDEP}]"

@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
 PYPI_PN="tables"
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 prefix pypi
@@ -18,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+cpudetection examples test"
 RESTRICT="!test? ( test )"
 
@@ -51,6 +52,7 @@ python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/${P}-blosc2.patch
 		"${FILESDIR}"/${P}-optional-cpuinfo.patch
+		"${FILESDIR}"/${P}-cython3.patch
 	)
 
 	export PYTABLES_NO_EMBEDDED_LIBS=1

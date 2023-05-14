@@ -42,7 +42,6 @@ dev-python/PyQtWebEngine
 app-admin/calamares
 app-doc/zeal
 app-editors/ghostwriter
-app-editors/notepadqq
 app-editors/retext
 app-misc/anki
 app-office/kalendar:5
@@ -172,7 +171,6 @@ dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/deckar01-task_list
 dev-ruby/execjs
-dev-ruby/turbolinks
 dev-ruby/uglifier
 dev-util/uglifyjs
 net-libs/nodejs

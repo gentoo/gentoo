@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="readline(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -11,7 +11,8 @@ inherit distutils-r1
 
 DESCRIPTION="Replacement for 'emerge --search' with search-index"
 HOMEPAGE="https://github.com/fuzzyray/esearch"
-SRC_URI="https://github.com/downloads/fuzzyray/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/fuzzyray/esearch/archive/refs/tags/${P}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}"/${PN}-${P}
 
 LICENSE="GPL-2"
 SLOT="0"

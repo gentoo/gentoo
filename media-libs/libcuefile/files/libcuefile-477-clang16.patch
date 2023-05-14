@@ -1,0 +1,14 @@
+https://src.fedoraproject.org/rpms/libcuefile/blob/7dd8752f5aa2dccbaccb4c28a23f659df3bc0d19/f/libcuefile-fedora-c99.patch
+https://bugs.gentoo.org/871588
+--- a/src/cue_parse.c
++++ b/src/cue_parse.c
+@@ -1513,6 +1513,8 @@ void yyerror (char *s)
+ 	fprintf(stderr, "%d: %s\n", cue_lineno, s);
+ }
+ 
++void cue_delete_buffer(void);
++
+ Cd *cue_parse (FILE *fp)
+ {
+ 	cue_yyin = fp;
+

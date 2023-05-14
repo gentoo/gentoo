@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs elisp-common
+inherit autotools flag-o-matic toolchain-funcs elisp-common
 
 DESCRIPTION="Symbolic Manipulation System"
 HOMEPAGE="https://www.nikhef.nl/~form/ https://github.com/vermaseren/form/"
@@ -34,6 +34,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for GCC -fchecking ICE, bug #904339
+	append-cxxflags $(test-flags-CXX -Wno-uninitialized)
+
 	econf \
 		--enable-scalar \
 		--enable-largefile \

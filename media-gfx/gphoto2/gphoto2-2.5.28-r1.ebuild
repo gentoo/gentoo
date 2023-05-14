@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/gphoto/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="aalib ncurses nls readline"
 
 # aalib -> needs libjpeg

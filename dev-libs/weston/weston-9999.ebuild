@@ -39,7 +39,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libinput-0.8.0
+	>=dev-libs/libinput-1.2.0
 	>=dev-libs/wayland-1.20.0
 	media-libs/libpng:0=
 	sys-auth/seatd:=

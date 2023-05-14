@@ -1,0 +1,7 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-22)
+# pandoc is stable on amd64 only.
+dev-python/nbclassic doc
+dev-python/nbval doc

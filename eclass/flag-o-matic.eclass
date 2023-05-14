@@ -47,11 +47,11 @@ setup-allowed-flags() {
 # Note: shell globs and character lists are allowed
 _setup-allowed-flags() {
 	ALLOWED_FLAGS=(
-		-pipe -O '-O[12sg]' '-mcpu=*' '-march=*' '-mtune=*'
+		-pipe -O '-O[123szg]' '-mcpu=*' '-march=*' '-mtune=*'
+		-flto '-flto=*' -fno-lto
 
 		# Hardening flags
 		'-fstack-protector*'
-		'-fstack-check*' -fno-stack-check
 		-fstack-clash-protection
 		'-fcf-protection=*'
 		-fbounds-check -fbounds-checking

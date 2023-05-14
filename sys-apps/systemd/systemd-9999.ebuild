@@ -1,8 +1,8 @@
 # Copyright 2011-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{9..11} )
+EAPI=8
+PYTHON_COMPAT=( python3_{10..11} )
 
 # Avoid QA warnings
 TMPFILES_OPTIONAL=1
@@ -42,7 +42,7 @@ IUSE="
 "
 REQUIRED_USE="
 	dns-over-tls? ( || ( gnutls openssl ) )
-	fido2? ( openssl )
+	fido2? ( cryptsetup openssl )
 	homed? ( cryptsetup pam openssl )
 	importd? ( curl lzma || ( gcrypt openssl ) )
 	pwquality? ( homed )
@@ -179,7 +179,7 @@ pkg_pretend() {
 			ewarn "See https://bugs.gentoo.org/674458."
 		fi
 
-		local CONFIG_CHECK=" ~BINFMT_MISC ~BLK_DEV_BSG ~CGROUPS
+		local CONFIG_CHECK="~BLK_DEV_BSG ~CGROUPS
 			~CGROUP_BPF ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 			~TIMERFD ~TMPFS_XATTR ~UNIX ~USER_NS
@@ -298,6 +298,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool kmod)
 		$(meson_use lz4)
 		$(meson_use lzma xz)
+		$(meson_use test tests)
 		$(meson_use zstd)
 		$(meson_native_use_bool iptables libiptc)
 		$(meson_native_use_bool openssl)
@@ -357,6 +358,9 @@ multilib_src_install_all() {
 
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
+
+	insinto /usr/lib/tmpfiles.d
+	doins "${FILESDIR}"/legacy.conf
 
 	if ! use resolvconf; then
 		rm -f "${ED}${rootprefix}/${sbin}"/resolvconf || die

@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="fluxbox-util application that creates and manage icons on your Fluxbox desktop"
 HOMEPAGE="http://fluxbox.sourceforge.net/fbdesk/"
@@ -30,6 +32,8 @@ PATCHES=(
 )
 
 src_configure() {
+	append-cxxflags -std=c++14
+
 	econf \
 		$(use_enable debug) \
 		$(use_enable png)

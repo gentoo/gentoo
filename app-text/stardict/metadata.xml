@@ -15,7 +15,7 @@
 		<flag name="advertisement">Enable stardict advertisements plugin</flag>
 		<flag name="cal">Enable calendar support using cal program</flag>
 		<flag name="dictdotcn">Enable dict.cn network plugin (for Chinese language)</flag>
-		<flag name="espeak">Enable text to speech synthesizer plugin using <pkg>app-accessibility/espeak</pkg> engine</flag>
+		<flag name="espeak">Enable text to speech synthesizer plugin using <pkg>app-accessibility/espeak-ng</pkg> engine</flag>
 		<flag name="flite">Enable text to speech synthesizer plugin using <pkg>app-accessibility/flite</pkg> engine</flag>
 		<flag name="fortune">Enable plugin to read fortune messages using <pkg>games-misc/fortune-mod</pkg>. You may consider installing <pkg>games-misc/fortune-mod-all</pkg> to get all fortune messages.</flag>
 		<flag name="gucharmap">Enable plugin for unicode symbols description using <pkg>gnome-extra/gucharmap</pkg></flag>

@@ -15,7 +15,11 @@ SRC_URI="https://github.com/elharo/${PN}/releases/download/v${PV}/${P}-src.tar.g
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
+
+# Bug #905215
+PROPERTIES="test_network"
+RESTRICT="test"
 
 CP_DEPEND="
 	dev-java/jaxen:1.2

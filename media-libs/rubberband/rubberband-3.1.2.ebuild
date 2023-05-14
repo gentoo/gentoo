@@ -31,7 +31,7 @@ RDEPEND="
 	sys-devel/gcc:*
 "
 DEPEND="${CDEPEND}"
-BDEPEND="test? ( dev-libs/boost )"
+BDEPEND="test? ( dev-libs/boost[${MULTILIB_USEDEP}] )"
 RESTRICT="!test? ( test )"
 
 src_prepare() {

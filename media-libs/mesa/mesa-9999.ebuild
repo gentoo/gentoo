@@ -43,6 +43,7 @@ REQUIRED_USE="
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_radeonsi?   ( llvm )
+	vdpau? ( X )
 	xa? ( X )
 	zink? ( vulkan )
 "
@@ -66,14 +67,23 @@ RDEPEND="
 	)
 	lm-sensors? ( sys-apps/lm-sensors:=[${MULTILIB_USEDEP}] )
 	opencl? (
-				>=virtual/opencl-3[${MULTILIB_USEDEP}]
-				dev-libs/libclc
-				virtual/libelf:0=[${MULTILIB_USEDEP}]
-			)
+		>=virtual/opencl-3
+		dev-libs/libclc[spirv(-)]
+		>=dev-util/spirv-tools-1.3.231.0
+		virtual/libelf:0=
+	)
 	vaapi? (
 		>=media-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 	)
 	vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
+	vulkan? (
+		video_cards_intel? (
+			amd64? (
+				dev-libs/libclc[spirv(-)]
+				>=dev-util/spirv-tools-1.3.231.0
+			)
+		)
+	)
 	selinux? ( sys-libs/libselinux[${MULTILIB_USEDEP}] )
 	wayland? ( >=dev-libs/wayland-1.18.0[${MULTILIB_USEDEP}] )
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_intel?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
@@ -102,73 +112,32 @@ RDEPEND="${RDEPEND}
 # simultaneously.
 #
 # How to use it:
-# 1. List all the working slots (with min versions) in ||, newest first.
-# 2. Update the := to specify *max* version, e.g. < 10.
-# 3. Specify LLVM_MAX_SLOT, e.g. 9.
+# 1. Specify LLVM_MAX_SLOT (inclusive), e.g. 16.
+# 2. Specify LLVM_MIN_SLOT (inclusive), e.g. 15.
 LLVM_MAX_SLOT="16"
+LLVM_MIN_SLOT="15"
+LLVM_USE_DEPS="llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}"
+PER_SLOT_DEPSTR="
+	(
+		!opencl? ( sys-devel/llvm:@SLOT@[${LLVM_USE_DEPS}] )
+		opencl? ( sys-devel/clang:@SLOT@[${LLVM_USE_DEPS}] )
+		opencl? ( dev-util/spirv-llvm-translator:@SLOT@ )
+		vulkan? ( video_cards_intel? ( dev-util/spirv-llvm-translator:@SLOT@ ) )
+	)
+"
 LLVM_DEPSTR="
 	|| (
-		sys-devel/llvm:16[${MULTILIB_USEDEP}]
-		sys-devel/llvm:15[${MULTILIB_USEDEP}]
+		$(for ((slot=LLVM_MAX_SLOT; slot>=LLVM_MIN_SLOT; slot--)); do
+			echo "${PER_SLOT_DEPSTR//@SLOT@/${slot}}"
+		done)
 	)
-	<sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=[${MULTILIB_USEDEP}]
+	!opencl? ( <sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=[${LLVM_USE_DEPS}] )
+	opencl? ( <sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=[${LLVM_USE_DEPS}] )
 "
-LLVM_DEPSTR_AMDGPU=${LLVM_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
-CLANG_DEPSTR=${LLVM_DEPSTR//llvm/clang}
-CLANG_DEPSTR_AMDGPU=${CLANG_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
 RDEPEND="${RDEPEND}
-	llvm? (
-		opencl? (
-			video_cards_r600? (
-				${CLANG_DEPSTR_AMDGPU}
-			)
-			!video_cards_r600? (
-				video_cards_radeonsi? (
-					${CLANG_DEPSTR_AMDGPU}
-				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeonsi? (
-					video_cards_radeon? (
-						${CLANG_DEPSTR_AMDGPU}
-					)
-				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeon? (
-					!video_cards_radeonsi? (
-						${CLANG_DEPSTR}
-					)
-				)
-			)
-		)
-		!opencl? (
-			video_cards_r600? (
-				${LLVM_DEPSTR_AMDGPU}
-			)
-			!video_cards_r600? (
-				video_cards_radeonsi? (
-					${LLVM_DEPSTR_AMDGPU}
-				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeonsi? (
-					video_cards_radeon? (
-						${LLVM_DEPSTR_AMDGPU}
-					)
-				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeon? (
-					!video_cards_radeonsi? (
-						${LLVM_DEPSTR}
-					)
-				)
-			)
-		)
-	)
+	llvm? ( ${LLVM_DEPSTR} )
 "
-unset {LLVM,CLANG}_DEPSTR{,_AMDGPU}
+unset LLVM_MIN_SLOT {LLVM,PER_SLOT}_DEPSTR
 
 DEPEND="${RDEPEND}
 	video_cards_d3d12? ( dev-util/directx-headers[${MULTILIB_USEDEP}] )
@@ -180,9 +149,11 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
+	>=dev-util/meson-1.0.0
 	${PYTHON_DEPS}
 	opencl? (
-		>=sys-devel/gcc-4.6
+		>=virtual/rust-1.62.0
+		>=dev-util/bindgen-0.58.0
 	)
 	sys-devel/bison
 	sys-devel/flex
@@ -197,26 +168,25 @@ EGIT_CHECKOUT_DIR=${S}
 
 QA_WX_LOAD="
 x86? (
-	usr/lib*/libglapi.so.0.0.0
-	usr/lib*/libGLESv1_CM.so.1.1.0
-	usr/lib*/libGLESv2.so.2.0.0
-	usr/lib*/libGL.so.1.2.0
-	usr/lib*/libOSMesa.so.8.0.0
+	usr/lib/libglapi.so.0.0.0
+	usr/lib/libOSMesa.so.8.0.0
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
 
 llvm_check_deps() {
-	local flags=${MULTILIB_USEDEP}
-	if use video_cards_r600 || use video_cards_radeon || use video_cards_radeonsi
-	then
-		flags+=",llvm_targets_AMDGPU(-)"
-	fi
-
 	if use opencl; then
-		has_version "sys-devel/clang:${LLVM_SLOT}[${flags}]" || return 1
+		has_version "sys-devel/clang:${LLVM_SLOT}[${LLVM_USE_DEPS}]" || return 1
 	fi
-	has_version "sys-devel/llvm:${LLVM_SLOT}[${flags}]"
+	if use opencl || { use vulkan && use video_cards_intel; }; then
+		has_version "dev-util/spirv-llvm-translator:${LLVM_SLOT}" || return 1
+	fi
+	has_version "sys-devel/llvm:${LLVM_SLOT}[${LLVM_USE_DEPS}]"
 }
+
+PATCHES=(
+	# Temporary rusticl workaround: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7717#note_1832122
+	"${FILESDIR}/clang_resource_dir.patch"
+)
 
 pkg_pretend() {
 	if use vulkan; then
@@ -226,13 +196,6 @@ pkg_pretend() {
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d; then
 			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, radeonsi, or v3d"
-		fi
-	fi
-
-	if use opencl; then
-		if ! use video_cards_r600 &&
-		   ! use video_cards_radeonsi; then
-			ewarn "Ignoring USE=opencl     since VIDEO_CARDS does not contain r600 or radeonsi"
 		fi
 	fi
 
@@ -385,10 +348,14 @@ multilib_src_configure() {
 		gallium_enable video_cards_radeon r300 r600
 	fi
 
-	# opencl stuff
-	emesonargs+=(
-		-Dgallium-opencl="$(usex opencl icd disabled)"
-	)
+	if use llvm && use opencl; then
+		PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
+		# See https://gitlab.freedesktop.org/mesa/mesa/-/blob/main/docs/rusticl.rst
+		emesonargs+=(
+			$(meson_native_true gallium-rusticl)
+			-Drust_std=2021
+		)
+	fi
 
 	if use vulkan; then
 		vulkan_enable video_cards_freedreno freedreno
@@ -407,6 +374,11 @@ multilib_src_configure() {
 	use vulkan && vulkan_layers+="device-select"
 	use vulkan-overlay && vulkan_layers+=",overlay"
 	emesonargs+=(-Dvulkan-layers=${vulkan_layers#,})
+
+	if use vulkan && use video_cards_intel; then
+		PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
+		emesonargs+=($(meson_feature llvm intel-clc))
+	fi
 
 	emesonargs+=(
 		$(meson_use test build-tests)

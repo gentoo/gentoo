@@ -36,13 +36,9 @@ DEPEND="
 "
 # >=dev-libs/libgdata-0.17.13:0=[gnome-online-accounts] # Upstream left this commented in meson.build. Probably comes back with the next version
 
-# gnome-online-miners is also used for google, facebook, DLNA - not only upnp-av
-# but out of all the grilo-plugins, only upnp-av gets used, which has a USE flag here,
-# so don't pull it always, but only if USE flag is enabled.
 # tracker-miners gschema used at runtime.
 RDEPEND="${DEPEND}
-	net-misc/gnome-online-miners
-	upnp-av? ( media-plugins/grilo-plugins:0.3[upnp-av] )
+	upnp-av? ( net-libs/dleyna:1.0= )
 	app-misc/tracker-miners:3
 "
 BDEPEND="

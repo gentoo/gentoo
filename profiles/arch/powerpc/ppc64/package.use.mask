@@ -165,10 +165,6 @@ net-irc/kvirc kde
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
-# Missing keywords on app-text/gspell - bug #587368
->=app-editors/gedit-3.20 spell
-
 # Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
 # I would need to keyword an awful lot of packages on ppc64
 # that would need Java 7 otherwise.
@@ -188,11 +184,6 @@ games-simulation/openttd openmedia
 # sys-cluster/ploop can not be build on ppc64, bug #447644
 # Masking USE-dep on it
 sys-cluster/vzctl ploop
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# requires app-office/unoconv, which requires virtual/ooo, which is not
-# keyworded here. Remove mask if this situation changes.
-gnome-extra/sushi office
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191

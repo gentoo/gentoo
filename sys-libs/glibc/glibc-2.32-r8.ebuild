@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_{9..11} )
 TMPFILES_OPTIONAL=1
 
 inherit python-any-r1 prefix toolchain-funcs flag-o-matic gnuconfig \
@@ -384,6 +384,7 @@ setup_flags() {
 		# relating to failed builds, we strip most CFLAGS out to ensure as few
 		# problems as possible.
 		strip-flags
+		filter-lto
 		# Lock glibc at -O2; we want to be conservative here.
 		filter-flags '-O?'
 		append-flags -O2

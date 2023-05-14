@@ -11,7 +11,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="doc elogind gtk-doc +introspection selinux systemd test"
 RESTRICT="!test? ( test )"
@@ -52,6 +52,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.04.62-gentoo-system-users.patch
+	"${FILESDIR}"/${PN}-23.13.9-generate-version.patch #905770
 )
 
 python_check_deps() {

@@ -16,7 +16,7 @@ else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz"
 	S="${WORKDIR}/wine-${PV}"
-	KEYWORDS="-* ~amd64 x86"
+	KEYWORDS="-* amd64 x86"
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
@@ -98,7 +98,12 @@ WINE_COMMON_DEPEND="
 RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
-	dos? ( games-emulation/dosbox )
+	dos? (
+		|| (
+			games-emulation/dosbox
+			games-emulation/dosbox-staging
+		)
+	)
 	gecko? ( app-emulation/wine-gecko:${WINE_GECKO}[${MULTILIB_USEDEP}] )
 	gstreamer? ( media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}] )
 	mono? ( app-emulation/wine-mono:${WINE_MONO} )
@@ -260,7 +265,6 @@ src_configure() {
 		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
 		if use mingw; then
 			: "${CROSSCFLAGS:=$(
-				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"

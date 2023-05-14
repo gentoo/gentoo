@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 # Disable PyPy3 for now because it is not stable enough:
 # https://github.com/wbolster/plyvel/issues/140

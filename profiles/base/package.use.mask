@@ -6,6 +6,18 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2023-05-07)
+# Doesn't compile, see #894210.
+dev-libs/log4cxx smtp
+
+# Mike Gilbert <floppym@gentoo.org> (2023-05-04)
+# Requires unreleased >media-libs/libaom-3.6.0.
+>=www-client/chromium-113 system-av1
+
+# Sam James <sam@gentoo.org> (2023-05-01)
+# Doc building is broken with Python 3.11. See https://github.com/ukoethe/vigra/issues/529.
+media-libs/vigra doc
+
 # Sam James <sam@gentoo.org> (2023-04-17)
 # Ruby has several JITs available but they need porting to individual arches.
 # Unmask on specific arches where it's available.
@@ -74,10 +86,6 @@ media-gfx/kphotoalbum qtav
 # Fails to compile: https://github.com/libffi/libffi/issues/760
 dev-libs/libffi exec-static-trampoline
 
-# Sam James <sam@gentoo.org> (2023-01-10)
-# Needs last-rited www-client/dillo, bug #890244
-mail-client/claws-mail dillo
-
 # Joonas Niilola <juippis@gentoo.org> (2023-01-08)
 # Doesn't compile currently, bug #853094.
 >=net-dialup/freeradius-3.2.0 oracle
@@ -125,10 +133,6 @@ x11-wm/stumpwm doc
 # Particularly unwise given it parses data from network.
 net-libs/libproxy spidermonkey
 
-# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
-# Metamail last rited
-app-text/crm114 mimencode
-
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
 # app-text/pandoc is not keyworded on most architectures
 net-libs/gssdp man
@@ -161,7 +165,6 @@ dev-python/pyotherside qt6
 # Mask the flag for now
 # Bugs: #643466, #674872, #832161, #855722
 app-emulation/virtualbox pax-kernel
-app-emulation/virtualbox-modules pax-kernel
 
 # Sam James <sam@gentoo.org> (2022-10-02)
 # USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
@@ -242,10 +245,6 @@ sys-libs/ncurses stack-realign
 # Stephan Hartmann <sultan@gentoo.org> (2022-05-29)
 # Not ready for general use.
 >=www-client/chromium-104 pgo
-
-# Michał Górny <mgorny@gentoo.org> (2022-05-25)
-# dev-python/sphinxcontrib-openapi is masked for removal.
-dev-python/jupyter-server doc
 
 # Joonas Niilola <juippis@gentoo.org> (2022-05-03)
 # system-python-libs is HIGHLY EXPERIMENTAL according to upstream, and
@@ -372,10 +371,6 @@ dev-lang/gnat-gpl:10 lto
 # Mike Gilbert <floppym@gentoo.org> (2021-06-14)
 # Avoid running failing tests by default.
 sys-kernel/dracut test
-
-# Michał Górny <mgorny@gentoo.org> (2021-05-31)
-# Requires Python 3.7 and old SciPy.
-<sys-cluster/ceph-16 diskprediction
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
 # Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
@@ -546,10 +541,6 @@ sci-physics/root cudnn
 mail-client/thunderbird eme-free
 www-client/firefox eme-free
 
-# Rick Farina <zerochaos@gentoo.org> (2020-02-26)
-# dev-python/pyzmq USE=doc deps are not met with python2_7
-dev-python/pyzmq doc
-
 # Alexey Shvetsov <alexxy@gentoo.org> (2019-12-24)
 # Gromacs python module install br0ken
 sci-chemistry/gromacs python
@@ -566,7 +557,6 @@ sci-mathematics/gsl-shell fox
 # using any-r1 API to build docs or cond-deps.
 dev-python/matplotlib doc
 dev-python/pandas doc
-dev-python/pandas-datareader doc
 dev-python/statsmodels doc
 
 # Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2019-12-01)
@@ -585,7 +575,7 @@ dev-python/statsmodels doc
 net-libs/ngtcp2 ssl
 net-misc/curl nghttp3
 
-# Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
+# Thomas Deutschmann <whissi@gentoo.org> (2019-09-02)
 # PGO not yet supported for comm-central, bug #693160
 >=mail-client/thunderbird-68 pgo
 
@@ -684,7 +674,6 @@ virtual/mysql embedded
 
 # Brian Evans <grknight@gentoo.org> (2018-02-28)
 # Mask client-libs USE to force users to install alternative standard pacakges
-dev-db/mariadb client-libs
 dev-db/mysql client-libs
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
@@ -806,10 +795,6 @@ media-libs/cogl gstreamer
 # Randomly breaks consumers at runtime. Do not report
 # gentoo bugs.
 media-libs/libsdl2 custom-cflags
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-07-13)
-# GL/GLES support in cairo is mutually exclusive, bug #428770.
-x11-libs/cairo gles2-only
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-05-19)
 # Fails to build, haven't had time to debug

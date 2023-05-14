@@ -1,0 +1,28 @@
+https://salsa.debian.org/debian/keychain/-/blob/debian/master/debian/patches/malformed-ssh-key.patch
+
+Description: Display a more visible warning for a malformed SSH public key.
+Bug-Debian: https://bugs.debian.org/673019
+Forwarded: https://github.com/funtoo/keychain/pull/111
+Author: Ryan Kavanagh <rak@debian.org>
+Author: Peter Pentchev <roam@debian.org>
+Last-Update: 2019-02-18
+
+--- a/keychain.sh
++++ b/keychain.sh
+@@ -853,7 +853,15 @@
+ 
+ 	for slm_k in "$@"; do
+ 		# Fingerprint current user-specified key
+-		slm_finger=$(ssh_f "$slm_k") || continue
++		if ! slm_finger=$(ssh_f "$slm_k"); then
++			warn "Unable to extract fingerprint from keyfile ${slm_k}.pub, skipping"
++			continue
++		fi
++		slm_wordcount="$(printf -- '%s\n' "$slm_finger" | wc -w)"
++		if [ "$slm_wordcount" -ne 1 ]; then
++			warn "Unable to extract exactly one key fingerprint from keyfile ${slm_k}.pub, got $slm_wordcount instead, skipping"
++			continue
++		fi
+ 
+ 		# Check if it needs to be added
+ 		case " $sshavail " in

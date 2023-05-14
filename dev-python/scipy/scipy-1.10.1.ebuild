@@ -4,6 +4,7 @@
 EAPI=8
 
 FORTRAN_NEEDED=fortran
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
@@ -36,7 +37,7 @@ else
 		)"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="amd64 arm arm64 -hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+		KEYWORDS="amd64 arm arm64 -hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 	fi
 fi
 
@@ -74,18 +75,6 @@ BDEPEND="
 	)
 "
 
-EPYTEST_DESELECT=(
-	linalg/tests/test_decomp.py::TestSchur::test_sort
-	linalg/tests/test_solvers.py::test_solve_discrete_are
-	optimize/tests/test_milp.py::test_milp_timeout_16545
-
-	# Network
-	datasets/tests/test_data.py::TestDatasets::test_existence_all
-	datasets/tests/test_data.py::TestDatasets::test_ascent
-	datasets/tests/test_data.py::TestDatasets::test_face
-	datasets/tests/test_data.py::TestDatasets::test_electrocardiogram
-)
-
 distutils_enable_tests pytest
 
 src_unpack() {
@@ -105,15 +94,24 @@ python_configure_all() {
 }
 
 python_test() {
-	cd "${T}" || die
+	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
+
+	local EPYTEST_DESELECT=(
+		# Network
+		scipy/datasets/tests/test_data.py::TestDatasets::test_existence_all
+		scipy/datasets/tests/test_data.py::TestDatasets::test_ascent
+		scipy/datasets/tests/test_data.py::TestDatasets::test_face
+		scipy/datasets/tests/test_data.py::TestDatasets::test_electrocardiogram
+	)
+	local EPYTEST_IGNORE=()
 
 	if ! has_version -b "dev-python/pooch[${PYTHON_USEDEP}]" ; then
 		EPYTEST_IGNORE+=(
-			datasets/tests/test_data.py
+			scipy/datasets/tests/test_data.py
 		)
 	fi
 
-	epytest -n "$(makeopts_jobs)" --pyargs scipy
+	epytest -n "$(makeopts_jobs)" scipy
 }
 
 python_install_all() {

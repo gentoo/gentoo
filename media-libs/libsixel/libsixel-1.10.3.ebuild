@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_OPTIONAL="1"
 
 inherit bash-completion-r1 distutils-r1 meson
@@ -33,8 +33,8 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-meson.patch
-	"${FILESDIR}"/${PN}-static-libs.patch
 	"${FILESDIR}"/${PN}-musl.patch
+	"${FILESDIR}"/${PN}-static-libs.patch
 )
 
 src_prepare() {

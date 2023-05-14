@@ -16,7 +16,7 @@ S="${WORKDIR}/xmlunit-${PV}-src/xmlunit-assertj"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 PROPERTIES="test_network"
 RESTRICT="test"

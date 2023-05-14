@@ -22,6 +22,11 @@ RESTRICT="!test? ( test )"
 DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	# https://github.com/PDB-REDO/libcifpp/issues/40
+	"${FILESDIR}/${P}-missing-include.patch"
+)
+
 src_configure() {
 	cp "${WORKDIR}"/${P}-components.cif data/components.cif || die
 

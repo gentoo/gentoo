@@ -49,6 +49,23 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+# @ECLASS_VARIABLE: DISTUTILS_EXT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set this variable to a non-null value if the package (possibly
+# optionally) builds Python extensions (loadable modules written in C,
+# Cython, Rust, etc.).
+#
+# When enabled, the eclass:
+#
+# - adds PYTHON_DEPS to DEPEND (for cross-compilation support), unless
+#   DISTUTILS_OPTIONAL is used
+#
+# - adds `debug` flag to IUSE that controls assertions (i.e. -DNDEBUG)
+#
+# - calls `build_ext` command if setuptools build backend is used
+#   and there is potential benefit from parallel builds
+
 # @ECLASS_VARIABLE: DISTUTILS_OPTIONAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -310,6 +327,14 @@ _distutils_set_globals() {
 		RDEPEND="${PYTHON_DEPS} ${rdep}"
 		BDEPEND="${PYTHON_DEPS} ${bdep}"
 		REQUIRED_USE=${PYTHON_REQUIRED_USE}
+
+		if [[ ${DISTUTILS_EXT} ]]; then
+			DEPEND="${PYTHON_DEPS}"
+		fi
+	fi
+
+	if [[ ${DISTUTILS_EXT} ]]; then
+		IUSE="debug"
 	fi
 }
 _distutils_set_globals
@@ -1283,6 +1308,7 @@ distutils_pep517_install() {
 	fi
 
 	local root=${1}
+	export BUILD_DIR
 	local -x WHEEL_BUILD_DIR=${BUILD_DIR}/wheel
 	mkdir -p "${WHEEL_BUILD_DIR}" || die
 
@@ -1294,23 +1320,42 @@ distutils_pep517_install() {
 	case ${DISTUTILS_USE_PEP517} in
 		meson-python)
 			local -x NINJAOPTS=$(get_NINJAOPTS)
-			config_settings=$(
-				"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
-					import json
-					import os
-					import shlex
-					import sys
+			if has_version -b '>=dev-python/meson-python-0.13'; then
+				config_settings=$(
+					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+						import json
+						import os
+						import shlex
+						import sys
 
-					ninjaopts = shlex.split(os.environ["NINJAOPTS"])
-					print(json.dumps({
-						"setup-args": sys.argv[1:],
-						"compile-args": [
-							"-v",
-							f"--ninja-args={ninjaopts!r}",
-						],
-					}))
-				EOF
-			)
+						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
+						print(json.dumps({
+							"builddir": "${BUILD_DIR}",
+							"setup-args": sys.argv[1:],
+							"compile-args": ["-v"] + ninjaopts,
+						}))
+					EOF
+				)
+			else
+				config_settings=$(
+					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+						import json
+						import os
+						import shlex
+						import sys
+
+						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
+						print(json.dumps({
+							"builddir": "${BUILD_DIR}",
+							"setup-args": sys.argv[1:],
+							"compile-args": [
+								"-v",
+								f"--ninja-args={ninjaopts!r}",
+							],
+						}))
+					EOF
+				)
+			fi
 			;;
 		setuptools)
 			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
@@ -1433,12 +1478,14 @@ distutils-r1_python_compile() {
 				# .pyx is added for Cython
 				#
 				# esetup.py does not respect SYSROOT, so skip it there
-				if [[ -z ${SYSROOT} && 1 -ne ${jobs} && 2 -eq $(
-					find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
-						-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
-						-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
-						head -n 2 | wc -l
-				) ]]; then
+				if [[ -z ${SYSROOT} && ${DISTUTILS_EXT} && 1 -ne ${jobs}
+					&& 2 -eq $(
+						find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
+							-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
+							-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
+							head -n 2 | wc -l
+					)
+				]]; then
 					esetup.py build_ext -j "${jobs}" "${@}"
 				fi
 			else
@@ -1750,6 +1797,10 @@ distutils-r1_run_phase() {
 	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
 	tc-export AR CC CPP CXX
 
+	if [[ ${DISTUTILS_EXT} ]]; then
+		local -x CPPFLAGS="${CPPFLAGS} $(usex debug '-UNDEBUG' '-DNDEBUG')"
+	fi
+
 	# How to build Python modules in different worlds...
 	local ldopts
 	case "${CHOST}" in
@@ -2040,6 +2091,16 @@ _distutils-r1_post_python_install() {
 			eerror "can be found in the Python Guide:"
 			eerror "https://projects.gentoo.org/python/guide/qawarn.html#stray-top-level-files-in-site-packages"
 			die "Failing install because of stray top-level files in site-packages"
+		fi
+
+		if [[ ! ${DISTUTILS_EXT} && ! ${_DISTUTILS_EXT_WARNED} ]]; then
+			if [[ $(find "${sitedir}" -name "*$(get_modname)" | head -n 1) ]]
+			then
+				eqawarn "Python extension modules (*$(get_modname)) found installed. Please set:"
+				eqawarn "  DISTUTILS_EXT=1"
+				eqawarn "in the ebuild."
+				_DISTUTILS_EXT_WARNED=1
+			fi
 		fi
 	fi
 }

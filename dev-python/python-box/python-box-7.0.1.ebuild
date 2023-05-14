@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -31,6 +32,9 @@ RDEPEND="
 		dev-python/tomli[${PYTHON_USEDEP}]
 	' 3.8 3.9 3.10)
 	dev-python/tomli-w[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

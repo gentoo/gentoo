@@ -11,15 +11,15 @@ SRC_URI="https://github.com/containers/conmon/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 IUSE="systemd"
 RESTRICT="test"
 
 RDEPEND="dev-libs/glib:=
 	sys-libs/libseccomp
 	systemd? ( sys-apps/systemd:= )"
-DEPEND="${RDEPEND}
-	dev-go/go-md2man"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-go/go-md2man"
 
 src_prepare() {
 	default

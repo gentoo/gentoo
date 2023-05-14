@@ -15,6 +15,10 @@ SRC_URI="https://github.com/jazzband/${PN}/archive/refs/tags/${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test" # Need some effort to do that
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
+
+python_test() {
+	"${EPYTHON}" -m django test -v 2 --settings tests.settings \
+		|| die "Tests failed with ${EPYTHON}"
+}

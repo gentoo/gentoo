@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-desktop/"
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1+"
 SLOT="3/20" # subslot = libgnome-desktop-3 soname version
 IUSE="debug +introspection seccomp systemd udev"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.36.5:2[introspection?]

@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
@@ -36,6 +37,10 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.23.0-fix-sphinx.patch
+)
 
 distutils_enable_sphinx docs \
 	dev-python/sphinx-rtd-theme

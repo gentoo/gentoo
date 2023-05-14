@@ -3,8 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="sip extension module for PyQt5"
@@ -20,4 +22,4 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"

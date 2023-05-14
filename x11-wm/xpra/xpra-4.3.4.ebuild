@@ -11,7 +11,7 @@ else
 	SRC_URI+="
 		https://dev.gentoo.org/~chewi/distfiles/${PN}-4.3.1-tests.patch
 	"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 PYTHON_COMPAT=( python3_{9..11} )

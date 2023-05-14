@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # TODO: Figure out a way to disable SRTP from pjproject entirely.
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic toolchain-funcs
 DESCRIPTION="Open source SIP, Media, and NAT Traversal Library"
 HOMEPAGE="https://github.com/pjsip/pjproject https://www.pjsip.org/"
 SRC_URI="https://github.com/pjsip/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"

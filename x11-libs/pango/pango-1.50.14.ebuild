@@ -11,7 +11,7 @@ SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/pango/$(ver_cut 1-2)/${P}.tar.xz
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 IUSE="debug +introspection sysprof test X"
 RESTRICT="!test? ( test )"
@@ -45,6 +45,10 @@ src_prepare() {
 	default
 	xdg_environment_reset
 	gnome2_environment_reset
+
+	# False positive with GCC 13 and -O3 at least, see bug #903259
+	# https://gitlab.gnome.org/GNOME/pango/-/issues/740
+	sed -i -e '/\-Werror=array-bounds/d' meson.build || die
 }
 
 multilib_src_configure() {

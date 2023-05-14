@@ -15,7 +15,8 @@
     brand also supported by Polychromatic.
   </longdescription>
   <upstream>
-    <bugs-to>https://gitlab.com/polychromatic/polychromatic/-/issues/</bugs-to>
-    <remote-id type="gitlab">polychromatic/polychromatic</remote-id>
+    <changelog>https://raw.githubusercontent.com/polychromatic/polychromatic/master/CHANGELOG</changelog>
+    <bugs-to>https://github.com/polychromatic/polychromatic/issues/</bugs-to>
+    <remote-id type="github">polychromatic/polychromatic</remote-id>
   </upstream>
 </pkgmetadata>

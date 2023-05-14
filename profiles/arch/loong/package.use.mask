@@ -69,12 +69,6 @@ dev-cpp/eigen test
 app-cdr/brasero tracker
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
-# dev-libs/libcdio fails to build on loong for now.
-gnome-base/gvfs cdda
-media-video/ffmpeg cdio
-media-video/mpv cdda
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # Respective dependency fails to build, pending investigation, mask for the
 # time being
 app-text/enchant voikko
@@ -142,7 +136,6 @@ media-plugins/gst-plugins-meta libvisual
 # in particular need downstream changes).
 app-office/libreoffice clang
 <dev-db/postgresql-16 llvm
-<media-libs/mesa-22.3.0 llvm
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
 # LLVM toolchain now partially usable on loong, mask the remaining pieces
@@ -174,7 +167,6 @@ mate-base/mate help
 # virtual/{jdk,jre} is not available on loong yet.
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
 media-libs/rubberband jni
-www-client/chromium js-type-check
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # Fails testing at least with libssh-0.9.6 and mbedtls-2.28.0-r1, needs

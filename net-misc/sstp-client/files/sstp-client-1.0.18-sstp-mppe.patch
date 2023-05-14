@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/904874
+https://gitlab.com/sstp-project/sstp-client/-/merge_requests/11
+
+From e902ce947eaccdbd0399c42371934e16d3737f35 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 23 Apr 2023 12:14:21 -0400
+Subject: [PATCH] Replace sstp-mppe.h with sstp-pppd-compat.h
+
+Fixes: 3f7835df9ac5e84729903ca536cf65e4a7b04c6c
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ src/pppd-plugin/sstp-mppe.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pppd-plugin/sstp-mppe.c b/src/pppd-plugin/sstp-mppe.c
+index 7c7c7c2..207e283 100644
+--- a/src/pppd-plugin/sstp-mppe.c
++++ b/src/pppd-plugin/sstp-mppe.c
+@@ -27,7 +27,7 @@
+ #include <string.h>
+ #include <stdarg.h>
+ #include <pppd/pppd.h>
+-#include <sstp-mppe.h>
++#include <sstp-pppd-compat.h>
+ 
+ #ifndef HAVE_MPPE_KEYS_FUNCTIONS
+ 
+-- 
+GitLab
+

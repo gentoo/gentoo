@@ -43,10 +43,8 @@ net-misc/chrony pps
 net-libs/libpcap netlink rdma
 
 # Sam James <sam@gentoo.org> (2021-11-17)
-# x11-libs/libXvMC is not marked stable on HPPA
 # media-libs/mesa is not marked stable on HPPA
 media-libs/libepoxy egl
-media-libs/mesa xvmc
 
 # Rolf Eike Beer <eike@sf-mail.de> (2021-11-10)
 # The following packages have no stable keywords on hppa:
@@ -169,10 +167,6 @@ sys-apps/dbus test
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-14)
 # noone actually tests it on real hardware anymore
 x11-base/xorg-server xorg
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
-# not all needed sphinx modules are stable on hppa.
-dev-python/aiohttp doc
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not stable.

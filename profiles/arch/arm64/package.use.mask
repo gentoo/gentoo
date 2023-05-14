@@ -374,10 +374,6 @@ app-emulation/libvirt xen
 # Requires USE=sdl that is masked in this profile.
 media-video/mjpegtools sdlgfx
 
-# Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
-# missing keywords media-libs/lastfmlib
-net-misc/gerbera lastfm
-
 # Roy Bamford <neddysegoon@gentoo.org> (2017-08-24)
 # Support for g15daemon still needs -9999 packages on all arches
 net-voip/mumble g15

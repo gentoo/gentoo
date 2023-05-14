@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gstreamer soup webkit"
 
 RDEPEND="
@@ -55,7 +55,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="$(vala_depend)"
 
-PATCHES=("${FILESDIR}/${P}-no-movies.patch")
+PATCHES=(
+	"${FILESDIR}/${P}-no-movies.patch"
+	"${FILESDIR}/${P}-vala-0.56.7.patch"
+)
 
 DOCS=(
 	CHANGELOG.rst

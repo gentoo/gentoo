@@ -4,8 +4,10 @@
 EAPI=8
 
 # Try to keep an eye on Fedora's packaging: https://src.fedoraproject.org/rpms/coreutils
-# The upstream coreutils maintianers also maintain the package in Fedora and may
+# The upstream coreutils maintainers also maintain the package in Fedora and may
 # backport fixes which we want to pick up.
+#
+# Also recommend subscribing to the coreutils and bug-coreutils MLs.
 
 PYTHON_COMPAT=( python3_{9..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/coreutils.asc

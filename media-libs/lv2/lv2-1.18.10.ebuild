@@ -15,13 +15,19 @@ SRC_URI="https://lv2plug.in/spec/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE="doc plugins"
+IUSE="doc plugins test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	plugins? ( virtual/pkgconfig )
 	doc? (
 		app-doc/doxygen
+		dev-python/rdflib
+	)
+	test? (
+		dev-libs/serd
+		dev-libs/sord[tools]
 		dev-python/rdflib
 	)
 "
@@ -48,6 +54,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.18.6-add-missing-lv2.h.patch"
+	"${FILESDIR}/${P}-tests-optional.patch"
 )
 
 src_prepare() {
@@ -62,6 +69,7 @@ multilib_src_configure() {
 		-Dlv2dir="${EPREFIX}"/usr/$(get_libdir)/lv2
 		$(meson_native_use_feature doc docs)
 		$(meson_feature plugins)
+		$(meson_feature test tests)
 	)
 
 	meson_src_configure

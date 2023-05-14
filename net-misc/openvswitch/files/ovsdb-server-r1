@@ -22,7 +22,7 @@ command_args="
     ${bootstrap_ca_cert}
     ${DATABASE}
     ${OPTIONS}"
-pidfile="/var/run/openvswitch/ovsdb-server.pid"
+pidfile="/run/openvswitch/ovsdb-server.pid"
 
 depend() {
 	need localmount
@@ -30,5 +30,5 @@ depend() {
 }
 
 start_pre() {
-	checkpath -d "/var/run/openvswitch" -m 0750
+	checkpath -d "/run/openvswitch" -m 0750
 }

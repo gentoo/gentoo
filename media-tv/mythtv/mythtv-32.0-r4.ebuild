@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit flag-o-matic java-pkg-opt-2 java-ant-2 python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
 
@@ -152,6 +152,7 @@ python_check_deps() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-32.0-python-version.patch
+	"${FILESDIR}"/${PN}-32.0-gcc13.patch
 )
 
 DISABLE_AUTOFORMATTING="yes"

@@ -19,12 +19,12 @@ LICENSE="GPL-3"
 SLOT="0/5"
 KEYWORDS="~alpha amd64 arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	apidoc? ( doc )
 	nmbug? ( python )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( crypt emacs python valgrind )
+	test? ( crypt emacs python )
 "
-IUSE="apidoc crypt doc emacs mutt nmbug python test valgrind"
+IUSE="apidoc crypt doc emacs mutt nmbug python test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -71,7 +71,6 @@ DEPEND="${COMMON_DEPEND}
 			dev-libs/openssl
 		)
 	)
-	valgrind? ( dev-util/valgrind )
 "
 
 RDEPEND="${COMMON_DEPEND}

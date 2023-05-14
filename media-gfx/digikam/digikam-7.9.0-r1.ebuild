@@ -96,6 +96,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/eigen:3
 	dev-libs/boost
+	addressbook? ( >=kde-apps/akonadi-19.04.3:5 )
 "
 RDEPEND="${COMMON_DEPEND}
 	mysql? ( virtual/mysql[server(+)] )
@@ -109,7 +110,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-7.8.0-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-7.8.0-cmake.patch"
+	"${FILESDIR}/${P}-akonadi-23.04.patch" # bug 904976
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

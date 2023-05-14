@@ -1,0 +1,15 @@
+Description: Search for webkit2gtk-4.1.
+Author: Unit 193 <unit193@debian.org>
+Forwarded: no
+
+--- atril-1.26.0.orig/configure.ac
++++ atril-1.26.0/configure.ac
+@@ -622,7 +622,7 @@ AC_ARG_ENABLE(epub,
+
+ have_webkit="no"
+ if test "x$enable_epub" = "xyes"; then
+-    PKG_CHECK_MODULES(EPUB, webkit2gtk-4.0 >= $WEBKIT_REQUIRED \
++    PKG_CHECK_MODULES(EPUB, webkit2gtk-4.1 >= $WEBKIT_REQUIRED \
+        libxml-2.0 >= $LIBXML_REQUIRED zlib,have_webkit=yes,have_webkit=no)
+
+     if test "x$have_webkit" = "xyes"; then

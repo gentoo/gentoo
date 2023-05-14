@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools elisp-common python-single-r1 tmpfiles systemd
 
@@ -34,10 +34,11 @@ RDEPEND="
 	dev-libs/userspace-rcu:=
 	sys-apps/util-linux
 	sys-libs/readline:=
+	${PYTHON_DEPS}
+
 	!elibc_glibc? ( sys-libs/argp-standalone )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
-	georeplication? ( ${PYTHON_DEPS} )
 	libtirpc? ( net-libs/libtirpc:= )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 	selinux? ( sec-policy/selinux-glusterfs )

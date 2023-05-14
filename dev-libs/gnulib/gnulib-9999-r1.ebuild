@@ -9,7 +9,7 @@ DESCRIPTION="Gnulib is a library of common routines intended to be shared at the
 HOMEPAGE="https://www.gnu.org/software/gnulib"
 
 EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"
-LICENSE="GPL-2"
+LICENSE="GPL-3+ LGPL-2.1+ FDL-1.3+"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc"

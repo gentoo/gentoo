@@ -26,7 +26,7 @@ export CFLAGS_default
 export LDFLAGS_default
 export CHOST_default=${CHOST_default:-${CHOST}}
 export CTARGET_default=${CTARGET_default:-${CTARGET:-${CHOST_default}}}
-export LIBDIR_default=${CONF_LIBDIR:-"lib"}
+export LIBDIR_default="lib"
 export KERNEL_ABI=${KERNEL_ABI:-${DEFAULT_ABI}}
 
 # @FUNCTION: has_multilib_profile

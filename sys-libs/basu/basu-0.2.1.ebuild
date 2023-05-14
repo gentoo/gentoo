@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 
 SRC_URI="https://git.sr.ht/~emersion/basu/refs/download/v${PV}/basu-${PV}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="audit caps"
 

@@ -22,10 +22,12 @@
 	</longdescription>
 	<use>
 		<flag name="hwdata">Use system hwdata</flag>
+		<flag name="liftoff">Enable support for libliftoff kms plane backend</flag>
 		<flag name="seatd">Enable libseatd session support</flag>
 		<flag name="tinywl">Install the minimal wayland client, tinywl</flag>
 		<flag name="vulkan">Enable support for the vulkan backend renderer</flag>
 		<flag name="x11-backend">Enable support for handling input/output devices through <pkg>x11-libs/libxcb</pkg></flag>
+		<flag name="xcb-errors">Better error reporting when using xwayland</flag>
 		<flag name="X">Enable support for X11 applications (XWayland)</flag>
 	</use>
 	<upstream>

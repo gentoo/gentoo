@@ -28,7 +28,7 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	fits? ( sci-libs/cfitsio[bzip2?] )
 	jansson? ( dev-libs/jansson )
-	hdf5? ( sci-libs/hdf5[zlib?] )
+	hdf5? ( sci-libs/hdf5[hl,zlib?] )
 	openexr? ( media-libs/openexr:= )
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-ruby/narray )

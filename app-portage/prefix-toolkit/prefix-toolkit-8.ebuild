@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 [[ ${PV} == 9999 ]] ||
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 
 DEPEND="
 	!app-portage/prefix-chain-setup
@@ -23,7 +23,7 @@ BDEPEND="${DEPEND}
 # In prefix-stack, these dependencies actually are the @system set,
 # as we rely on the base prefix anyway for package management,
 # which should have a proper @system set.
-# See als: pkg_preinst
+# See also: pkg_preinst
 RDEPEND="${DEPEND}
 	prefix-stack? (
 		>=sys-apps/baselayout-prefix-2.6

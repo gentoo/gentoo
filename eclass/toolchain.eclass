@@ -242,7 +242,14 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" pgo"
 	IUSE+=" objc-gc" TC_FEATURES+=( objc-gc )
 	IUSE+=" libssp objc++"
-	IUSE+=" +openmp"
+
+	# Stop forcing openmp on by default in the eclass. Gradually phase it out.
+	# See bug #890999.
+	if tc_version_is_at_least 13.0.0_pre20221218 ; then
+		IUSE+=" openmp"
+	else
+		IUSE+=" +openmp"
+	fi
 
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
@@ -642,6 +649,11 @@ toolchain_src_unpack() {
 	if tc_is_live ; then
 		git-r3_src_unpack
 
+		# Needed for gcc --version to include the upstream commit used
+		# rather than only the commit after we apply our patches.
+		# It includes both with this.
+		echo "${EGIT_VERSION}" > "${S}"/gcc/REVISION || die
+
 		if [[ -z ${PATCH_VER} ]] && ! use vanilla ; then
 			toolchain_fetch_git_patches
 		fi
@@ -719,12 +731,11 @@ toolchain_src_prepare() {
 			|| eerror "Please file a bug about this"
 		eend $?
 	done
-	# bug #215828
-	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk || die
 
-	# Prevent new texinfo from breaking old versions (see #198182, bug #464008)
-	einfo "Remove texinfo (bug #198182, bug #464008)"
-	eapply "${FILESDIR}"/gcc-configure-texinfo.patch
+	# bug #215828
+	if ! tc_version_is_at_least 4.6.0 ; then
+		sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk || die
+	fi
 
 	if ! use prefix-guest && [[ -n ${EPREFIX} ]] ; then
 		einfo "Prefixifying dynamic linkers..."
@@ -1550,21 +1561,11 @@ toolchain_src_configure() {
 		)
 	fi
 
-	if [[ ${PV} != *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
-		# Disable gcc info regeneration -- it ships with generated info pages
-		# already.  Our custom version/urls/etc... trigger it. bug #464008
-		export gcc_cv_prog_makeinfo_modern=no
-	else
-		# Allow a fallback so we don't accidentally install no docs
-		# bug #834845
-		ewarn "No pre-generated info pages in tarball. Allowing regeneration with texinfo..."
-
-		if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
-			# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
-			# without corresponding ebuild changes.
-			eqawarn "Snapshot release with pre-generated info pages found!"
-			eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
-		fi
+	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
+		# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
+		# without corresponding ebuild changes.
+		eqawarn "Snapshot release with pre-generated info pages found!"
+		eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
 	fi
 
 	# Do not let the X detection get in our way.  We know things can be found
@@ -1757,6 +1758,9 @@ gcc_do_filter_flags() {
 		append-flags -O2
 	fi
 
+	# Please use USE=lto instead (bug #906007).
+	filter-lto
+
 	# Avoid shooting self in foot
 	filter-flags '-mabi*' -m31 -m32 -m64
 
@@ -1893,7 +1897,7 @@ toolchain_src_compile() {
 	touch "${S}"/gcc/c-gperf.h || die
 
 	# Do not make manpages if we do not have perl ...
-	[[ ! -x /usr/bin/perl ]] \
+	[[ ! -x "${BROOT}"/usr/bin/perl ]] \
 		&& find "${WORKDIR}"/build -name '*.[17]' -exec touch {} +
 
 	# To compile ada library standard files special compiler options are passed
@@ -2082,16 +2086,6 @@ toolchain_src_install() {
 
 	# Don't allow symlinks in private gcc include dir as this can break the build
 	find gcc/include*/ -type l -delete || die
-
-	# Copy over the info pages.  We disabled their generation earlier, but the
-	# build system only expects to install out of the build dir, not the source. bug #464008
-	mkdir -p gcc/doc || die
-	local x=
-	for x in "${S}"/gcc/doc/*.info* ; do
-		if [[ -f ${x} ]] ; then
-			cp "${x}" gcc/doc/ || die
-		fi
-	done
 
 	# Re-enable fixincludes for >= GCC 13
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107128

@@ -154,7 +154,7 @@ dev-python/wxpython webkit
 
 # Markos Chandras <hwoarang@gentoo.org> (2014-01-05)
 # Perl is heavily unkeyworded on MIPS. See 497068
-dev-vcs/git mediawiki mediawiki-experimental
+dev-vcs/git mediawiki
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-09-02)
 # Not tested

@@ -22,7 +22,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-# tests require network access
+# Tests require network access.
+PROPERTIES="test_network"
 RESTRICT="test"
 
 RDEPEND=">=dev-python/requests-2.11.0[${PYTHON_USEDEP}]"

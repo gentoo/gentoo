@@ -1,6 +1,14 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
 # Sam James <sam@gentoo.org> (2023-04-14)
 # dev-python/sympy not keyworded here yet
 dev-python/nbval test
@@ -30,15 +38,9 @@ dev-util/pkgcheck emacs
 # net-libs/libqrtr-glib not keyworded
 net-misc/modemmanager qrtr
 
-# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
-# media-libs/libjxl is not keyworded
-# bug https://bugs.gentoo.org/853628
-media-gfx/gimp jpegxl
-
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif jpegxl
-media-gfx/graphicsmagick jpegxl
+media-libs/imlib2 svg heif
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -66,7 +68,7 @@ app-accessibility/espeak-ng man
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
-dev-python/scipy pythran
+dev-python/scipy fortran
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Test suite is very fragile and doesn't even run on amd64.
@@ -347,7 +349,6 @@ media-sound/rhythmbox upnp-av
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
 # Missing keywords on app-text/gspell - bug #587368
->=app-editors/gedit-3.20 spell
 >=app-text/evince-3.30 spell
 
 # Pacho Ramos <pacho@gentoo.org> (2016-01-31)
@@ -450,11 +451,6 @@ net-misc/modemmanager qmi
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# requires app-office/unoconv, which requires virtual/ooo, which is not
-# keyworded here. Remove mask if this situation changes.
-gnome-extra/sushi office
 
 # Agostino Sarubbo <ago@gentoo.org> (2012-12-18)
 # kde is not stable, then no needs phonon backends

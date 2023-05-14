@@ -14,6 +14,7 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">serge-sans-paille/gast</remote-id>
 		<remote-id type="pypi">gast</remote-id>
 	</upstream>
 </pkgmetadata>

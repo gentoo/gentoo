@@ -97,7 +97,7 @@ multilib_src_install_all() {
 			/etc/alsa/conf.d/51-pulseaudio-probe.conf
 	fi
 
-	find "${ED}" -type f \( -name '*.a' -o -name '*.la' \) -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
 
 pkg_postinst() {

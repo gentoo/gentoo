@@ -1,6 +1,18 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
+# Conrad Kostecki <conikost@gentoo.org> (2023-04-23)
+# Needs dev-perl/Math-Int64 which is not keyworded
+dev-perl/IP-Country-DB_File test
+
 # Sam James <sam@gentoo.org> (2023-04-14)
 # Needs dev-python/sympy which is not keyworded
 dev-python/nbval test
@@ -23,9 +35,7 @@ dev-ruby/stringex test
 # Sam James <sam@gentoo.org> (2022-04-26)
 # eps: app-text/libspectre not keyworded here
 # heif: media-libs/libheif not keyworded here
-# jpegxl: libjxl not keyworded here
-media-libs/imlib2 eps heif jpegxl
-media-gfx/imagemagick jpegxl
+media-libs/imlib2 eps heif
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # Avoid unkeyworded dependencies
@@ -114,7 +124,7 @@ media-video/ffmpeg vmaf
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
-dev-python/scipy pythran
+dev-python/scipy fortran
 
 # Matt Turner <mattst88@gentoo.org> (2021-06-10)
 # dev-python/django is not keyworded here
@@ -141,7 +151,6 @@ app-editors/vim lua
 media-gfx/imagemagick raw
 dev-db/mariadb numa
 # not tested yet
-app-misc/mc samba
 app-arch/rpm test
 # no ceph keyworded
 net-analyzer/rrdtool rados
@@ -160,7 +169,7 @@ app-portage/layman g-sorcery
 
 # Mikle Kolyada <zlogene@gentoo.org> (2014-01-11)
 # too much unkeyworded dependencies (bug #497068)
-dev-vcs/git mediawiki mediawiki-experimental
+dev-vcs/git mediawiki
 
 # Agostino Sarubbo <ago@gentoo.org< (2013-04-10)
 # It requires too much unstable dep.

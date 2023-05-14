@@ -40,7 +40,7 @@ inherit multiprocessing toolchain-funcs
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
 	pypy3
-	python3_{9..11}
+	python3_{10..11}
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -52,7 +52,7 @@ _PYTHON_HISTORICAL_IMPLS=(
 	jython2_7
 	pypy pypy1_{8,9} pypy2_0
 	python2_{5..7}
-	python3_{1..8}
+	python3_{1..9}
 )
 readonly _PYTHON_HISTORICAL_IMPLS
 
@@ -131,7 +131,7 @@ _python_set_impls() {
 			case ${i} in
 				pypy3|python3_9|python3_1[01])
 					;;
-				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-7]|python3_[1-8])
+				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-7]|python3_[1-9])
 					obsolete+=( "${i}" )
 					;;
 				*)
@@ -440,8 +440,6 @@ _python_export() {
 			PYTHON_PKG_DEP)
 				local d
 				case ${impl} in
-					python3.9)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.9.16-r1:3.9";;
 					python3.10)
 						PYTHON_PKG_DEP=">=dev-lang/python-3.10.9-r1:3.10";;
 					python3.11)

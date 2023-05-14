@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9,10,11} )
+# Port to meson once https://gitlab.freedesktop.org/spice/spice/-/issues/75 is fixed
 inherit autotools python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"

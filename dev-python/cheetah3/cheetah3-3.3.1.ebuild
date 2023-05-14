@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -22,7 +23,7 @@ SRC_URI="
 S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv x86"
 SLOT="0"
 
 RDEPEND="

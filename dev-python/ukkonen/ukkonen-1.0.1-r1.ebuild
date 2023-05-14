@@ -3,8 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Implementation of bounded Levenshtein distance (Ukkonen)"
@@ -17,7 +19,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '

@@ -76,7 +76,6 @@ DEPEND="${COMMON_DEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
-	!!<sys-apps/sandbox-1.6
 	doc? ( app-doc/doxygen )
 	nls? ( sys-devel/gettext )
 	perl? ( dev-lang/swig )
@@ -134,12 +133,12 @@ pkg_setup() {
 		local rbslot
 		RB_VER=""
 		for rbslot in $(sed 's@\([[:digit:]]\+\)\([[:digit:]]\)@\1.\2@g' <<< ${USE_RUBY//ruby}) ; do
-			if has_version dev-lang/ruby:${rbslot} ;  then
+			# No break here as we want to pick the best (latest)
+			if has_version "dev-lang/ruby:${rbslot}" && has_version "virtual/rubygems[ruby_targets_ruby${rbslot/.}(-)]" ; then
 				RB_VER="${rbslot/.}"
-				break
 			fi
 		done
-		[[ -z "${RB_VER}" ]] && die "No useable ruby version found"
+		[[ -z "${RB_VER}" ]] && die "No usable ruby version found"
 	fi
 }
 
@@ -283,6 +282,11 @@ src_test() {
 	#	ewarn "before running the test suite."
 	#	ewarn "Test suite skipped."
 	#fi
+	if [[ -f "${S}/fails.log" ]] ; then
+		echo "====== contents of fails.log follow ======"
+		cat "${S}/fails.log"
+		echo "====== contents of fails.log end    ======"
+	fi
 }
 
 src_install() {

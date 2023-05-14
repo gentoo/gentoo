@@ -1,0 +1,12 @@
+diff --git a/api/mfx_dispatch/linux/mfxparser.cpp b/api/mfx_dispatch/linux/mfxparser.cpp
+index 9d3823ec3e..12e46d1881 100644
+--- a/api/mfx_dispatch/linux/mfxparser.cpp
++++ b/api/mfx_dispatch/linux/mfxparser.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <ctype.h>
+ #include <stdio.h>
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 

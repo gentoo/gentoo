@@ -16,7 +16,18 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
-LICENSE="MIT"
+# project itself: MIT
+# There are bunch of projects under "lib/" folder that are needed for cross-compilation.
+# Files that are unnecessary for cross-compilation are removed by upstream
+# and therefore their licenses (if any special) are not included.
+# lib/libunwind: Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )
+# lib/libcxxabi: Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )
+# lib/libcxx: Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )
+# lib/libc/wasi: || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain
+# lib/libc/musl: MIT BSD-2
+# lib/libc/mingw: ZPL public-domain BSD-2 ISC HPND
+# lib/libc/glibc: BSD HPND ISC inner-net LGPL-2.1+
+LICENSE="MIT Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT ) || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain BSD-2 ZPL ISC HPND BSD inner-net LGPL-2.1+"
 SLOT="$(ver_cut 1-2)"
 IUSE="doc"
 
@@ -105,6 +116,7 @@ src_configure() {
 		-DZIG_USE_LLVM_CONFIG=ON
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
+		-DZIG_NO_LANGREF="$(usex !doc ON OFF)"
 	)
 
 	cmake_src_configure
@@ -115,17 +127,25 @@ src_compile() {
 
 	if use doc; then
 		cd "${BUILD_DIR}" || die
-		edo ./zig2 run ../doc/docgen.zig -- --zig ./zig2 ../doc/langref.html.in "${S}/langref.html"
-		edo ./zig2 test ../lib/std/std.zig --zig-lib-dir ../lib -fno-emit-bin -femit-docs="${S}/std"
+		mv ./stage3/doc/langref.html "${S}" || die
+		edo ./stage3/bin/zig test ../lib/std/std.zig --zig-lib-dir ../lib -fno-emit-bin -femit-docs="${S}/std"
 	fi
 }
 
 src_test() {
 	cd "${BUILD_DIR}" || die
 	local ZIG_TEST_ARGS="-Dstatic-llvm=false -Denable-llvm -Dskip-non-native \
-		-Drelease -Dtarget=$(get_zig_target) -Dcpu=$(get_zig_mcpu)"
-	# TBF zig2 -> stage3/bin/zig when (if) https://github.com/ziglang/zig/pull/14255 will be merged
-	edo ./zig2 build test ${ZIG_TEST_ARGS}
+		-Doptimize=ReleaseSafe -Dtarget=$(get_zig_target) -Dcpu=$(get_zig_mcpu)"
+	local ZIG_TEST_STEPS=(
+		test-cases test-fmt test-behavior test-compiler-rt test-universal-libc test-compare-output
+		test-standalone test-c-abi test-link test-stack-traces test-cli test-asm-link test-translate-c
+		test-run-translated-c test-std
+	)
+
+	local step
+	for step in "${ZIG_TEST_STEPS[@]}" ; do
+		edob ./stage3/bin/zig build ${step} ${ZIG_TEST_ARGS}
+	done
 }
 
 src_install() {

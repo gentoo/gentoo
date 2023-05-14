@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
 	bluetooth build +ensurepip examples gdbm hardened libedit lto
 	+ncurses pgo +readline +sqlite +ssl test tk valgrind
@@ -47,12 +47,12 @@ RDEPEND="
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-python/gentoo-common
-	sys-apps/util-linux:=
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
 	ensurepip? ( dev-python/ensurepip-wheels )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
+	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? (
 		!libedit? ( >=sys-libs/readline-4.1:= )

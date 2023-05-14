@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/torproject.org.asc
-inherit python-any-r1 readme.gentoo-r1 systemd verify-sig
+inherit autotools python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
@@ -59,6 +59,7 @@ DOCS=()
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+	"${FILESDIR}"/${PN}-0.4.7.13-libressl.patch
 )
 
 pkg_setup() {
@@ -82,6 +83,9 @@ src_prepare() {
 
 	# Running shellcheck automagically isn't useful for ebuild testing.
 	echo "exit 0" > scripts/maint/checkShellScripts.sh || die
+
+	# Only needed for libressl patch
+	eautoreconf
 }
 
 src_configure() {
@@ -102,7 +106,15 @@ src_configure() {
 		--disable-module-dirauth
 		--enable-pic
 		--disable-restart-debugging
+
+		# This option is enabled by default upstream w/ zstd, surprisingly.
+		# zstd upstream says this shouldn't be relied upon and it may
+		# break API & ABI at any point, so Tor tries to fake static-linking
+		# to make it work, but then requires a rebuild on any new zstd version
+		# even when its standard ABI hasn't changed.
+		# See bug #727406 and bug #905708.
 		--disable-zstd-advanced-apis
+
 		$(use_enable man asciidoc)
 		$(use_enable man manpage)
 		$(use_enable lzma)

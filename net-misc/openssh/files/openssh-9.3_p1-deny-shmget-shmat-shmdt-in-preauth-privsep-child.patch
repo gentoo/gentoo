@@ -1,5 +1,3 @@
-diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
-index 23b40b643..d93a357c6 100644
 --- a/sandbox-seccomp-filter.c
 +++ b/sandbox-seccomp-filter.c
 @@ -257,6 +257,15 @@ static const struct sock_filter preauth_insns[] = {

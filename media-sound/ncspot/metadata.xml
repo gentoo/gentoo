@@ -8,6 +8,7 @@
     <flag name="clipboard">Use the system clipboard to e.g. share a link</flag>
     <flag name="cover">Support displaying the album cover</flag>
     <flag name="mpris">Allow ncspot to be controlled via MPRIS API</flag>
+    <flag name="ncurses">Use cursive/ncurses-backend instead of crossterm or pancurses</flag>
     <flag name="notify">Show what's playing via a notification</flag>
   </use>
   <upstream>

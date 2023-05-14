@@ -11,21 +11,9 @@ SRC_URI="https://gitlab.com/OldManProgrammer/unix-${PN}/-/archive/${PV}/unix-${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE=""
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 
 S=${WORKDIR}/unix-${P}
-
-RDEPEND=""
-DEPEND=""
-
-src_prepare() {
-	if use !elibc_glibc ; then
-		# 433972, also previously done only for elibc_uclibc
-		sed -i -e '/^OBJS=/s/$/ strverscmp.o/' Makefile || die
-	fi
-	default
-}
 
 src_compile() {
 	append-lfs-flags

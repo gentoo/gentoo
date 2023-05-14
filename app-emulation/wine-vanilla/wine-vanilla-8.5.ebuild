@@ -97,7 +97,12 @@ WINE_COMMON_DEPEND="
 RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
-	dos? ( games-emulation/dosbox )
+	dos? (
+		|| (
+			games-emulation/dosbox
+			games-emulation/dosbox-staging
+		)
+	)
 	gecko? ( app-emulation/wine-gecko:${WINE_GECKO}[${MULTILIB_USEDEP}] )
 	gstreamer? ( media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}] )
 	mono? ( app-emulation/wine-mono:${WINE_MONO} )
@@ -267,7 +272,6 @@ src_configure() {
 			: "${CROSSCFLAGS:=$(
 				# >=wine-7.21 configure.ac no longer adds -fno-strict by mistake
 				append-cflags '-fno-strict-aliasing'
-				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"

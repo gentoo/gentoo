@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,8 @@ EGIT_MASTER=master
 inherit perl-module ${SCM}
 
 DESCRIPTION="Highly flexible server for git directory version tracker, Gentoo fork"
-HOMEPAGE="https://cgit.gentoo.org/proj/gitolite-gentoo.git"
+HOMEPAGE="https://cgit.gentoo.org/fork/gitolite-gentoo.git/"
+
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	SRC_URI+=" https://github.com/sitaramc/gitolite/commit/5df2b817255ee919991da6c310239e08c8fcc1ae.patch"

@@ -13,7 +13,7 @@ SRC_URI="
 	arm64? ( https://github.com/VirtusLab/scala-cli/releases/download/v${PV}/scala-cli-aarch64-pc-linux.gz -> scala-cli-arm64-${PV}.gz )
 "
 
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 LICENSE="Apache-2.0"
 SLOT="0"
 
@@ -26,7 +26,7 @@ RDEPEND="
 	>=virtual/jre-11
 	sys-libs/zlib
 "
-BEPEND="!amd64 ( !arm64 ( >=virtual/jre-11 ) )"
+BDEPEND="!amd64? ( !arm64? ( >=virtual/jre-11 ) )"
 
 QA_TEXTRELS="*"
 QA_FLAGS_IGNORED="/usr/bin/scala-cli"

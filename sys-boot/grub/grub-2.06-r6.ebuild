@@ -46,7 +46,7 @@ if [[ ${PV} != 9999 ]]; then
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
-	KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.06-grub-mkconfig-restore-umask.patch
 	"${FILESDIR}"/grub-2.06-gentpl.py-Remove-.interp-section-from-.img-files.patch
 	"${FILESDIR}"/grub-2.06-fs-ext2-ignore-checksum-seed.patch
+	"${FILESDIR}"/grub-2.06-riscv.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37

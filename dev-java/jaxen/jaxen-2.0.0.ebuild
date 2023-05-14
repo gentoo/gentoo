@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="BSD-2"
 SLOT="1.2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="dom4j jdom xom"
 
 # It seems that most tests depend on dom4j, jdom and xom which all depend back on jaxen

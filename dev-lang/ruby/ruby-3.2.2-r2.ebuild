@@ -120,6 +120,11 @@ src_prepare() {
 			sed -i \
 				-e "s/ac_cv_prog_ac_ct_AR='libtool/ac_cv_prog_AR='${CHOST}-libtool/" \
 				configure.ac || die
+
+			# disable using security framework (GCC barfs on those headers)
+			sed -i \
+				-e 's/MAC_OS_X_VERSION_MIN_REQUIRED/_DISABLED_/' \
+				random.c || die
 		fi
 	fi
 

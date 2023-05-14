@@ -1,0 +1,83 @@
+https://bugs.gentoo.org/904877
+
+From ea207b89c61e3a201155b973307ee45413f0d058 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 28 Apr 2023 16:37:44 -0400
+Subject: [PATCH] pptp-logwtmp: update for ppp-2.5.0
+
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ plugins/pptpd-logwtmp.c | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/plugins/pptpd-logwtmp.c b/plugins/pptpd-logwtmp.c
+index ac5ecc2..457bbce 100644
+--- a/plugins/pptpd-logwtmp.c
++++ b/plugins/pptpd-logwtmp.c
+@@ -12,14 +12,16 @@
+ #include <unistd.h>
+ #include <utmp.h>
+ #include <string.h>
++#include <limits.h>
+ #include <pppd/pppd.h>
++#include <pppd/options.h>
+ 
+-char pppd_version[] = VERSION;
++char pppd_version[] = PPPD_VERSION;
+ 
+ static char pptpd_original_ip[PATH_MAX+1];
+ static bool pptpd_logwtmp_strip_domain = 0;
+ 
+-static option_t options[] = {
++static struct option options[] = {
+   { "pptpd-original-ip", o_string, pptpd_original_ip,
+     "Original IP address of the PPTP connection",
+     OPT_STATIC, NULL, PATH_MAX },
+@@ -28,7 +30,7 @@ static option_t options[] = {
+   { NULL }
+ };
+ 
+-static char *reduce(char *user)
++static const char *reduce(const char *user)
+ {
+   char *sep;
+   if (!pptpd_logwtmp_strip_domain) return user;
+@@ -42,8 +44,10 @@ static char *reduce(char *user)
+ 
+ static void ip_up(void *opaque, int arg)
+ {
+-  char *user = reduce(peer_authname);
+-  if (debug)
++  const char *peer_authname = ppp_peer_authname(NULL, 0);
++  const char *user = reduce(peer_authname);
++  const char *ifname = ppp_ifname();
++  if (debug_on())
+     notice("pptpd-logwtmp.so ip-up %s %s %s", ifname, user, 
+ 	   pptpd_original_ip);
+   logwtmp(ifname, user, pptpd_original_ip);
+@@ -51,16 +55,17 @@ static void ip_up(void *opaque, int arg)
+ 
+ static void ip_down(void *opaque, int arg)
+ {
+-  if (debug) 
++  const char *ifname = ppp_ifname();
++  if (debug_on())
+     notice("pptpd-logwtmp.so ip-down %s", ifname);
+   logwtmp(ifname, "", "");
+ }
+ 
+ void plugin_init(void)
+ {
+-  add_options(options);
+-  add_notifier(&ip_up_notifier, ip_up, NULL);
+-  add_notifier(&ip_down_notifier, ip_down, NULL);
+-  if (debug) 
++  ppp_add_options(options);
++  ppp_add_notify(NF_IP_UP, ip_up, NULL);
++  ppp_add_notify(NF_IP_DOWN, ip_down, NULL);
++  if (debug_on())
+     notice("pptpd-logwtmp: $Version$");
+ }
+-- 
+2.40.1
+

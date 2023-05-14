@@ -23,20 +23,15 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="schema"
 
-MY_CDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
+RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	>=dev-python/python-ldap-3.0[${PYTHON_USEDEP}]
 	virtual/logger"
-DEPEND="${MY_CDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-describe[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)"
-
-# We need to block previous net-misc/openssh packages
-# to avoid file collision on "/etc/openldap/schema/openssh-lpk.schema"
-RDEPEND="${MY_CDEPEND}
-	schema? ( !net-misc/openssh[ldap(-)] )"
 
 DOCS=( README.md CHANGELOG.adoc )
 

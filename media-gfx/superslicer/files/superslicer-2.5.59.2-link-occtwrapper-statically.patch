@@ -1,0 +1,93 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b84292b..63fea9c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -19,7 +19,7 @@ add_subdirectory(libnest2d)
+ add_subdirectory(libslic3r)
+ 
+ if (SLIC3R_ENABLE_FORMAT_STEP)
+-    add_subdirectory(occt_wrapper)
++    add_subdirectory(occt_wrapper EXCLUDE_FROM_ALL)
+ endif ()
+ 
+ if (SLIC3R_GUI)
+diff --git a/src/libslic3r/CMakeLists.txt b/src/libslic3r/CMakeLists.txt
+index 36917f3..63c4201 100644
+--- a/src/libslic3r/CMakeLists.txt
++++ b/src/libslic3r/CMakeLists.txt
+@@ -435,10 +435,7 @@ target_link_libraries(libslic3r
+     qoi
+     )
+ 
+-if (APPLE)
+-    # TODO: we need to fix notarization with the separate shared library
+-    target_link_libraries(libslic3r OCCTWrapper)
+-endif ()
++target_link_libraries(libslic3r OCCTWrapper)
+ 
+ if (TARGET OpenVDB::openvdb)
+     target_link_libraries(libslic3r OpenVDB::openvdb)
+diff --git a/src/libslic3r/Format/STEP.cpp b/src/libslic3r/Format/STEP.cpp
+index 5165bb7..3ed0154 100644
+--- a/src/libslic3r/Format/STEP.cpp
++++ b/src/libslic3r/Format/STEP.cpp
+@@ -22,17 +22,13 @@
+ 
+ namespace Slic3r {
+ 
+-#if __APPLE__
+ extern "C" bool load_step_internal(const char *path, OCCTResult* res);
+-#endif
+ 
+ LoadStepFn get_load_step_fn()
+ {
+     static LoadStepFn load_step_fn = nullptr;
+ 
+-#ifndef __APPLE__
+     constexpr const char* fn_name = "load_step_internal";
+-#endif
+ 
+     if (!load_step_fn) {
+         auto libpath = boost::dll::program_location().parent_path();
+@@ -54,22 +50,8 @@ LoadStepFn get_load_step_fn()
+             FreeLibrary(module);
+             throw;
+         }
+-#elif __APPLE__
+-        load_step_fn = &load_step_internal;
+ #else
+-        libpath /= "OCCTWrapper.so";
+-        void *plugin_ptr = dlopen(libpath.c_str(), RTLD_NOW | RTLD_GLOBAL);
+-
+-        if (plugin_ptr) {
+-            load_step_fn = reinterpret_cast<LoadStepFn>(dlsym(plugin_ptr, fn_name));
+-            if (!load_step_fn) {
+-                dlclose(plugin_ptr);
+-                throw Slic3r::RuntimeError(std::string("Cannot load function from OCCTWrapper.so: ") + fn_name
+-                                           + "\n\n" + dlerror());
+-            }
+-        } else {
+-            throw Slic3r::RuntimeError(std::string("Cannot load OCCTWrapper.so:\n\n") + dlerror());
+-        }
++        load_step_fn = &load_step_internal;
+ #endif
+     }
+ 
+diff --git a/src/occt_wrapper/CMakeLists.txt b/src/occt_wrapper/CMakeLists.txt
+index 16de4e0..ad983be 100644
+--- a/src/occt_wrapper/CMakeLists.txt
++++ b/src/occt_wrapper/CMakeLists.txt
+@@ -1,12 +1,7 @@
+ cmake_minimum_required(VERSION 3.13)
+ project(OCCTWrapper)
+ 
+-if (APPLE)
+-    # TODO: we need to fix notarization with the separate shared library
+-    add_library(OCCTWrapper STATIC OCCTWrapper.cpp)
+-else ()
+-    add_library(OCCTWrapper MODULE OCCTWrapper.cpp)
+-endif ()
++add_library(OCCTWrapper STATIC OCCTWrapper.cpp)
+ 
+ set_target_properties(OCCTWrapper
+     PROPERTIES

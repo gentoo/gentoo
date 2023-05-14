@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kbibtex/ https://userbase.kde.org/KBibTeX"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/KBibTeX/$(ver_cut 1-3)/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"

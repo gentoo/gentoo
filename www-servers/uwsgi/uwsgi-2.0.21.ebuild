@@ -30,7 +30,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux"
 
 UWSGI_PLUGINS_STD=(
 	ping cache carbon nagios rpc rrdtool
@@ -152,6 +152,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-php82.patch
 	"${FILESDIR}"/${P}-python-unicode.patch
+	"${FILESDIR}"/${P}-libphp-version.patch
 )
 
 pkg_setup() {

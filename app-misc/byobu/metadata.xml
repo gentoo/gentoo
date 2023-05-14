@@ -19,5 +19,6 @@
 	</use>
 	<upstream>
 		<remote-id type="launchpad">byobu</remote-id>
+		<remote-id type="github">dustinkirkland/byobu</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -17,7 +17,7 @@ HOMEPAGE="https://www.ruby-lang.org/"
 SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc rubytests socks5 +ssl static-libs systemtap tk xemacs"
 
 RDEPEND="
@@ -100,6 +100,11 @@ src_prepare() {
 			sed -i \
 				-e "s/ac_cv_prog_ac_ct_AR='libtool/ac_cv_prog_AR='${CHOST}-libtool/" \
 				configure.ac || die
+
+			# disable using security framework (GCC barfs on those headers)
+			sed -i \
+				-e 's/MAC_OS_X_VERSION_MIN_REQUIRED/_DISABLED_/' \
+				random.c || die
 		fi
 	fi
 

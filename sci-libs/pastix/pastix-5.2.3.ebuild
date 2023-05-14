@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ inherit fortran-2 toolchain-funcs
 # package id: change every version, see the link on inriaforge
 PID=218
 DESCRIPTION="Parallel solver for very large sparse linear systems"
-HOMEPAGE="https://pastix.gforge.inria.fr"
+HOMEPAGE="https://solverstack.gitlabpages.inria.fr/pastix/ https://gitlab.inria.fr/solverstack/pastix"
 SRC_URI="https://gforge.inria.fr/frs/download.php/latestfile/${PID}/${PN}_${PV}.tar.bz2"
 S="${WORKDIR}/${PN}_${PV}/src"
 

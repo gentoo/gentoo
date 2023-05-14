@@ -21,5 +21,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gnudatalanguage</remote-id>
+		<remote-id type="github">gnudatalanguage/gdl</remote-id>
 	</upstream>
 </pkgmetadata>

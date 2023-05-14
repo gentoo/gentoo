@@ -1,8 +1,0 @@
-[Unit]
-Description=OpenSSH per-connection server daemon
-After=syslog.target auditd.service
-
-[Service]
-ExecStart=-/usr/sbin/sshd -i -e
-StandardInput=socket
-StandardError=journal

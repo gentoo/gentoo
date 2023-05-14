@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# TODO: port to meson on next release
 inherit autotools multilib-minimal
 
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11"

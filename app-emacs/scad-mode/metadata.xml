@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>waebbl-gentoo@posteo.net</email>
+    <name>Bernd Waibel</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/openscad/emacs-scad-mode/issues/</bugs-to>
+    <remote-id type="github">openscad/emacs-scad-mode</remote-id>
+  </upstream>
+</pkgmetadata>

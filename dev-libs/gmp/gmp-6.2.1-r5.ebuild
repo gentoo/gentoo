@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnuconfig libtool multilib-minimal toolchain-funcs
+inherit gnuconfig libtool flag-o-matic multilib-minimal toolchain-funcs
 
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
@@ -27,7 +27,7 @@ S="${WORKDIR}"/${MY_P%a}
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
 SLOT="0/10.4"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+asm doc +cpudetection +cxx pic static-libs"
 REQUIRED_USE="cpudetection? ( asm )"
 RESTRICT="!cpudetection? ( bindist )"
@@ -94,6 +94,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Generally a very fragile package
+	strip-flags
+	# Miscompiled with LTO at least on arm64, bug #889948
+	filter-lto
+
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
 	# https://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then

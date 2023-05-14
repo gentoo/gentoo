@@ -10,12 +10,12 @@ command_args="
     --detach
     --monitor
     ${OPTIONS} ${DATABASE}"
-pidfile="/var/run/openvswitch/ovs-vswitchd.pid"
+pidfile="/run/openvswitch/ovs-vswitchd.pid"
 
 depend() {
 	use ovsdb-server logger
 }
 
 start_pre() {
-	checkpath -d "/var/run/openvswitch" -m 0750
+	checkpath -d "/run/openvswitch" -m 0750
 }
