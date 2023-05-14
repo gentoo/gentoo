@@ -11,9 +11,6 @@
 		and tcsh were incorporated into zsh; many original features were
 		added.
 	</longdescription>
-	<use>
-		<flag name="valgrind">Support Valgrind (<pkg>dev-util/valgrind</pkg>) with annotations to improve results for memcheck.</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">zsh</remote-id>
 	</upstream>
