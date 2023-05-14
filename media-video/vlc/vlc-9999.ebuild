@@ -1,4 +1,4 @@
-# Copyright 2000-2022 Gentoo Authors
+# Copyright 2000-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ SLOT="0/12-9" # vlc - vlccore
 
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
-	fontconfig +gcrypt gme gnome-keyring gstreamer +gui ieee1394 jack jpeg kate kms
+	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate kms
 	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc live
 	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
 	nfs ogg omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba
@@ -110,7 +110,7 @@ RDEPEND="
 		dev-libs/libgpg-error
 	)
 	gme? ( media-libs/game-music-emu )
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	gui? (
 		dev-qt/qtcore:5
@@ -336,7 +336,7 @@ src_configure() {
 		$(use_enable fontconfig)
 		$(use_enable gcrypt libgcrypt)
 		$(use_enable gme)
-		$(use_enable gnome-keyring secret)
+		$(use_enable keyring secret)
 		$(use_enable gstreamer gst-decode)
 		$(use_enable gui qt)
 		$(use_enable ieee1394 dv1394)
