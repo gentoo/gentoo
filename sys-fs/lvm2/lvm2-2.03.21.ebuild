@@ -14,12 +14,13 @@ S="${WORKDIR}/${PN^^}.${PV}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="lvm readline sanlock selinux static static-libs systemd thin +udev"
+IUSE="lvm readline sanlock selinux static static-libs systemd thin +udev valgrind"
 REQUIRED_USE="
 	static? ( !systemd !udev )
 	static-libs? ( static !udev )
 	systemd? ( udev )
-	thin? ( lvm )"
+	thin? ( lvm )
+"
 
 DEPEND_COMMON="
 	udev? ( virtual/libudev:= )
@@ -29,18 +30,22 @@ DEPEND_COMMON="
 		readline? ( sys-libs/readline:= )
 		sanlock? ( sys-cluster/sanlock )
 		systemd? ( sys-apps/systemd:= )
-	)"
+	)
+"
 # /run is now required for locking during early boot. /var cannot be assumed to
 # be available -- thus, pull in recent enough baselayout for /run.
 # This version of LVM is incompatible with cryptsetup <1.1.2.
-RDEPEND="${DEPEND_COMMON}
+RDEPEND="
+	${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
 	lvm? (
 		virtual/tmpfiles
 		thin? ( sys-block/thin-provisioning-tools )
-	)"
-# note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
-DEPEND="${DEPEND_COMMON}
+	)
+"
+# note: thin-0.3.0 is required to avoid --disable-thin_check_needs_check
+DEPEND="
+	${DEPEND_COMMON}
 	static? (
 		lvm? (
 			dev-libs/libaio[static-libs]
@@ -48,10 +53,13 @@ DEPEND="${DEPEND_COMMON}
 			readline? ( sys-libs/readline[static-libs] )
 		)
 		selinux? ( sys-libs/libselinux[static-libs] )
-	)"
+	)
+	valgrind? ( >=dev-util/valgrind-3.6 )
+"
 BDEPEND="
 	sys-devel/autoconf-archive
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	# Gentoo specific modification(s):
@@ -160,6 +168,7 @@ src_configure() {
 		$(use_enable systemd app-machineid)
 		$(use_enable systemd systemd-journal)
 		$(use_with systemd systemd-run "/usr/bin/systemd-run")
+		$(use_enable valgrind valgrind-pool)
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		CLDFLAGS="${LDFLAGS}"
 	)
