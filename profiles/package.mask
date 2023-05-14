@@ -290,7 +290,6 @@ dev-python/picklemagic
 # replaced by app-metrics/carbonapi-web.
 # Removal on 2023-05-13.  Bug #897056.
 dev-python/django-tagging
-net-analyzer/graphite-web
 
 # Eray Aslan <eras@gentoo.org> (2023-04-12)
 # Mask experimental software
