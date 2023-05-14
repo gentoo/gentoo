@@ -1,6 +1,8 @@
-diff -ur '--color=auto' Clipboard-0.7.0/CMakeLists.txt Clipboard-0.7.0-new/CMakeLists.txt
---- Clipboard-0.7.0/CMakeLists.txt	2023-05-03 10:43:47.000000000 -0500
-+++ Clipboard-0.7.0-new/CMakeLists.txt	2023-05-04 09:19:30.508030264 -0500
+#Created by Quincy Fleming
+#Disables git program as it will just result in fatal error during build (won't stop the build though. just annoying)
+#Also, this removes enabling of LTO by default and allows the user to choose wether or not they want LTO support via USE flag
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -11,22 +11,6 @@
    set(X11WL ON)
  endif()
@@ -42,9 +44,8 @@ diff -ur '--color=auto' Clipboard-0.7.0/CMakeLists.txt Clipboard-0.7.0-new/CMake
  add_subdirectory(src/gui)
  
  find_package(X11)
-diff -ur '--color=auto' Clipboard-0.7.0/src/cb/CMakeLists.txt Clipboard-0.7.0-new/src/cb/CMakeLists.txt
---- Clipboard-0.7.0/src/cb/CMakeLists.txt	2023-05-03 10:43:47.000000000 -0500
-+++ Clipboard-0.7.0-new/src/cb/CMakeLists.txt	2023-05-04 09:17:57.458025167 -0500
+--- a/src/cb/CMakeLists.txt
++++ b/src/cb/CMakeLists.txt
 @@ -5,8 +5,6 @@
    src/themes.cpp
  )
@@ -54,9 +55,8 @@ diff -ur '--color=auto' Clipboard-0.7.0/src/cb/CMakeLists.txt Clipboard-0.7.0-ne
  target_link_libraries(cb gui)
  
  if(WIN32)
-diff -ur '--color=auto' Clipboard-0.7.0/src/cbwayland/CMakeLists.txt Clipboard-0.7.0-new/src/cbwayland/CMakeLists.txt
---- Clipboard-0.7.0/src/cbwayland/CMakeLists.txt	2023-05-03 10:43:47.000000000 -0500
-+++ Clipboard-0.7.0-new/src/cbwayland/CMakeLists.txt	2023-05-04 09:18:34.454027194 -0500
+--- a/src/cbwayland/CMakeLists.txt
++++ b/src/cbwayland/CMakeLists.txt
 @@ -60,8 +60,6 @@
  )
  add_dependencies(cbwayland cbwayland_generatedheaders)
@@ -66,9 +66,8 @@ diff -ur '--color=auto' Clipboard-0.7.0/src/cbwayland/CMakeLists.txt Clipboard-0
  target_link_libraries(cbwayland
    ${WAYLAND_CLIENT_LIBRARIES}
    gui
-diff -ur '--color=auto' Clipboard-0.7.0/src/cbx11/CMakeLists.txt Clipboard-0.7.0-new/src/cbx11/CMakeLists.txt
---- Clipboard-0.7.0/src/cbx11/CMakeLists.txt	2023-05-03 10:43:47.000000000 -0500
-+++ Clipboard-0.7.0-new/src/cbx11/CMakeLists.txt	2023-05-04 09:16:59.336021983 -0500
+--- a/src/cbx11/CMakeLists.txt
++++ b/src/cbx11/CMakeLists.txt
 @@ -7,8 +7,6 @@
    gui
  )

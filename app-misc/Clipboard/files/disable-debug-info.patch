@@ -1,6 +1,7 @@
-diff -ur '--color=auto' Clipboard-0.7.0/src/gui/include/all/clipboard/logging.hpp Clipboard-0.7.0-new/src/gui/include/all/clipboard/logging.hpp
---- Clipboard-0.7.0/src/gui/include/all/clipboard/logging.hpp	2023-05-03 10:43:47.000000000 -0500
-+++ Clipboard-0.7.0-new/src/gui/include/all/clipboard/logging.hpp	2023-05-04 09:23:58.640044952 -0500
+#Created by Quincy Fleming.
+#Disables debug info without using flag NDEBUG as unless forced it will be ignored in favor of the user's specified compiler flags 
+--- a/src/gui/include/all/clipboard/logging.hpp
++++ b/src/gui/include/all/clipboard/logging.hpp
 @@ -17,7 +17,6 @@
  #include <iostream>
  #include <streambuf>

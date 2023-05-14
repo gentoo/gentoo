@@ -21,7 +21,7 @@ RDEPEND="X? ( x11-libs/libX11 )
 		)
 "
 PATCHES=(
-	"${FILESDIR}/${P}-disable-git-and-lto.patch"
+	"${FILESDIR}/disable-git-and-lto.patch"
 )
 
 src_prepare() {
@@ -30,7 +30,7 @@ src_prepare() {
 	fi
 
 	if ! use debug; then
-		eapply "${FILESDIR}/${P}-disable-debug.patch"
+		eapply "${FILESDIR}/disable-debug-info.patch"
 	fi
 	cmake_src_prepare
 }
