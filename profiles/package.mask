@@ -292,14 +292,6 @@ dev-python/picklemagic
 dev-python/django-tagging
 net-analyzer/graphite-web
 
-# Michał Górny <mgorny@gentoo.org> (2023-04-13)
-# No Python 3.11 support.  The package has been discontinued upstream
-# (in favor of pyro5 that we do not package at the moment).  It was only
-# used as an optional dependency of dev-python/kombu, and it has
-# no revdeps anymore.
-# Removal on 2023-05-13.  Bug #896744.
-dev-python/Pyro4
-
 # Eray Aslan <eras@gentoo.org> (2023-04-12)
 # Mask experimental software
 =mail-mta/postfix-3.9*
