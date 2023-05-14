@@ -45,6 +45,10 @@ BDEPEND="
 "
 PDEPEND="miners? ( >=app-misc/tracker-miners-${PV_SERIES} )"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-build-Define-_GNU_SOURCE-for-gmtime_r.patch"
+)
+
 python_check_deps() {
 	python_has_version -b \
 		"dev-python/pygobject[${PYTHON_USEDEP}]" \
