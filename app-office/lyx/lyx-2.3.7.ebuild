@@ -10,7 +10,7 @@ inherit desktop font optfeature python-single-r1 qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="WYSIWYM (What You See Is What You Mean) document processor based on LaTeX"
 HOMEPAGE="https://www.lyx.org/"
-SRC_URI="http://ftp.lyx.org/pub/lyx/stable/2.3.x/${MY_P}-1.tar.xz"
+SRC_URI="http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${MY_P}-1.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
