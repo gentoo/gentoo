@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools elisp-common readme.gentoo-r1 toolchain-funcs
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -43,7 +43,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm xwidgets zlib"
 
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sys-libs/ncurses:0=
@@ -67,6 +67,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
+	valgrind? ( dev-util/valgrind )
 	zlib? ( sys-libs/zlib )
 	gui? ( !aqua? (
 		x11-libs/libICE
@@ -316,6 +317,9 @@ src_configure() {
 }
 
 src_compile() {
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
+	append-cppflags -DUSE_VALGRIND=$(usex valgrind)
+
 	if tc-is-cross-compiler; then
 		# Build native tools for compiling lisp etc.
 		emake -C "${S}-build" src

@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"
 
 RDEPEND="acct-group/mail
 	app-emacs/emacs-common[games?,gui(-)?]
@@ -29,6 +29,7 @@ RDEPEND="acct-group/mail
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
+	valgrind? ( dev-util/valgrind )
 	zlib? ( sys-libs/zlib )
 	gui? ( !aqua? (
 		x11-libs/libICE
@@ -228,6 +229,8 @@ src_configure() {
 }
 
 src_compile() {
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
+
 	# Disable sandbox when dumping. For the unbelievers, see bug #131505
 	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
