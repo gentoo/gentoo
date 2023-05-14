@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -333,6 +333,7 @@ usb - Add USB support to applications that have optional USB support (e.g. cups)
 v4l - Enable support for video4linux (using linux-headers or userspace libv4l libraries)
 vaapi - Enable Video Acceleration API for hardware decoding
 vala - Enable bindings for dev-lang/vala
+valgrind - Enable annotations for accuracy. May slow down runtime slightly. Safe to use even if not currently using dev-util/valgrind
 vanilla - Do not add extra patches which change default behaviour; DO NOT USE THIS ON A GLOBAL SCALE as the severity of the meaning changes drastically
 vcd - Video CD support
 vdpau - Enable the Video Decode and Presentation API for Unix acceleration interface
