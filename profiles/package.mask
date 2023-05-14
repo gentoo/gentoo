@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-05-14)
+# EAPI 6, last release over 20 years ago, no other distro packages this
+# anymore. Removal on 2023-06-13.
+dev-tex/cpp2latex
+
 # Michał Górny <mgorny@gentoo.org> (2023-05-13)
 # Unmaintained.  Does not build anymore.  No activity upstream
 # since 2019, the build system is messy and fixing the issues would take
