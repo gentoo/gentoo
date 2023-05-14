@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,7 +44,7 @@ src_configure() {
 		$(use_with perl) \
 		$(use_with socks5) \
 		$(use_with tcl tcl "${EPREFIX}"/usr/$(get_libdir)/tclConfig.sh) \
-		$(use_with valgrind valgrind)
+		$(use_with valgrind)
 }
 
 src_compile() {
