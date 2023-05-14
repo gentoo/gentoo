@@ -1,14 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.2-gtk3"
 inherit cmake desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
 HOMEPAGE="https://odamex.net/"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${PN}-src-${PV}.tar.xz"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"
@@ -41,16 +41,11 @@ BDEPEND="games-util/deutex"
 S="${WORKDIR}/${PN}-src-${PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-10.0.0-unbundle-miniupnpc.patch
-	"${FILESDIR}"/${PN}-10.0.0-unbundle-jsoncpp.patch
-	"${FILESDIR}"/${PN}-10.0.0-unbundle-fltk.patch
-	"${FILESDIR}"/${PN}-10.0.0-musl.patch
-	"${FILESDIR}"/${PN}-10.0.0-master-std.patch
-	"${FILESDIR}"/${PN}-10.0.0-gcc12.patch
+	"${FILESDIR}"/${PN}-10.3.0-unbundle-fltk.patch
 )
 
 src_prepare() {
-	rm -r libraries/libminiupnpc || die
+	rm -r libraries/miniupnp || die
 	hprefixify common/d_main.cpp
 
 	use odalaunch && setup-wxwidgets

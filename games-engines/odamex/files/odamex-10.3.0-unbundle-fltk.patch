@@ -14,19 +14,9 @@ window is unaffected.
 
 Tested against FLTK 1.3.5 on Gentoo Linux.
 
-(cherry picked from commit 656afab54e30598022f4dd2af298cf6a487a1fe1)
----
- CMakeLists.txt           |  1 +
- client/CMakeLists.txt    | 23 ++++++++++++++++++++++-
- client/gui/gui_boot.cpp  |  2 ++
- libraries/CMakeLists.txt |  2 +-
- 4 files changed, 26 insertions(+), 2 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9353d0c6b..599b6e85b 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -42,6 +42,7 @@ option(USE_INTERNAL_DEUTEX "Use internal DeuTex" ${USE_INTERNAL_LIBS})
+--- a/CMakeLists.txt	2022-11-24 21:02:08.000000000 -0600
++++ b/CMakeLists.txt	2023-05-12 14:08:26.838832213 -0500
+@@ -43,6 +43,7 @@
  cmake_dependent_option( USE_INTERNAL_ZLIB "Use internal zlib" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
  cmake_dependent_option( USE_INTERNAL_PNG "Use internal libpng" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
  cmake_dependent_option( USE_INTERNAL_CURL "Use internal libcurl" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
@@ -34,16 +24,14 @@ index 9353d0c6b..599b6e85b 100644
  cmake_dependent_option( USE_INTERNAL_JSONCPP "Use internal JsonCpp" 1 BUILD_SERVER 0 )
  cmake_dependent_option( USE_INTERNAL_WXWIDGETS "Use internal wxWidgets" ${USE_INTERNAL_LIBS} BUILD_LAUNCHER 0 )
  cmake_dependent_option( ENABLE_PORTMIDI "Enable portmidi support" 1 BUILD_CLIENT 0 )
-diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
-index bd071a7a5..ff1e72ba3 100644
---- a/client/CMakeLists.txt
-+++ b/client/CMakeLists.txt
-@@ -206,7 +206,28 @@ if(TARGET SDL2::SDL2 OR TARGET SDL::SDL)
+--- a/client/CMakeLists.txt	2022-11-24 21:02:08.000000000 -0600
++++ b/client/CMakeLists.txt	2023-05-12 14:10:01.895750073 -0500
+@@ -206,8 +206,28 @@
    target_link_libraries(odamex ${PNG_LIBRARY} ${ZLIB_LIBRARY} CURL::libcurl)
    if(NOT GCONSOLE)
      target_include_directories(odamex PRIVATE gui)
 -    target_link_libraries(odamex fltk fltk_images)
-+
+-  endif()
 +    if(USE_INTERNAL_FLTK)
 +      set(FLTK_LIBRARIES fltk fltk_images)
 +      set(HAVE_FLTK_SCREEN_SCALE TRUE)
@@ -65,16 +53,15 @@ index bd071a7a5..ff1e72ba3 100644
 +    endif()
 +
 +    target_link_libraries(odamex ${FLTK_LIBRARIES})
-   endif()
++   endif()
  
    if(ENABLE_PORTMIDI)
-diff --git a/client/gui/gui_boot.cpp b/client/gui/gui_boot.cpp
-index f0a0035d1..834038209 100644
---- a/client/gui/gui_boot.cpp
-+++ b/client/gui/gui_boot.cpp
-@@ -315,12 +315,14 @@ static BootWindow* MakeBootWindow()
+     target_link_libraries(odamex ${PORTMIDI_LIBRARY})
+--- a/client/gui/gui_boot.cpp	2022-11-24 21:02:08.000000000 -0600
++++ b/client/gui/gui_boot.cpp	2023-05-12 14:11:19.362517260 -0500
+@@ -537,12 +537,14 @@
   */
- std::string GUI_BootWindow()
+ scannedWADs_t GUI_BootWindow()
  {
 +#ifdef HAVE_FLTK_SCREEN_SCALE
  	// Scale according to 1600x900.
@@ -87,19 +74,14 @@ index f0a0035d1..834038209 100644
  
  	BootWindow* win = MakeBootWindow();
  	win->initWADDirs();
-diff --git a/libraries/CMakeLists.txt b/libraries/CMakeLists.txt
-index 493d8f12b..a53441d13 100644
---- a/libraries/CMakeLists.txt
-+++ b/libraries/CMakeLists.txt
-@@ -255,7 +255,7 @@ endif()
+--- a/libraries/CMakeLists.txt	2022-11-24 21:02:08.000000000 -0600
++++ b/libraries/CMakeLists.txt	2023-05-12 14:11:46.463789831 -0500
+@@ -264,7 +264,7 @@
  
  ### FLTK (dep: libpng) ###
  
 -if(BUILD_CLIENT)
 +if(BUILD_CLIENT AND USE_INTERNAL_FLTK)
-   message(STATUS "Compiling FLTK...")
- 
    set(_FLTK_BUILDGEN_PARAMS
--- 
-2.34.1
-
+     "-DOPTION_USE_SYSTEM_LIBJPEG=OFF"
+     "-DOPTION_PRINT_SUPPORT=OFF"
