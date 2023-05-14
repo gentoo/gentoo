@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind +zlib"
+IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff +zlib"
 
 REQUIRED_USE="
 	python? ( hdf5 ${PYTHON_REQUIRED_USE} )
@@ -29,7 +29,6 @@ REQUIRED_USE="
 BDEPEND="
 	test? (
 		>=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}]
-		valgrind? ( dev-util/valgrind )
 	)
 "
 # runtime dependency on python is required by the vigra-config script
@@ -114,7 +113,7 @@ src_configure() {
 			-DDOCINSTALL="share/doc/${PF}/html"
 			-DWITH_HDF5=$(usex hdf5)
 			-DWITH_OPENEXR=$(usex openexr)
-			-DWITH_VALGRIND=$(usex valgrind)
+			-DWITH_VALGRIND=OFF # only used for tests
 			-DWITH_VIGRANUMPY=$(usex python)
 		)
 		cmake_src_configure
