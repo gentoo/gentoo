@@ -2,16 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 CSSC_PN="${PN^^}"
 CSSC_P="${CSSC_PN}-${PV}"
 
 DESCRIPTION="The GNU Project's replacement for SCCS"
-SRC_URI="mirror://gnu/${PN}/${CSSC_P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/cssc/"
-SLOT="0"
+SRC_URI="mirror://gnu/${PN}/${CSSC_P}.tar.gz"
+
 LICENSE="GPL-3"
+SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -32,7 +34,7 @@ src_prepare() {
 src_configure() {
 	# Valgrind is only used for tests
 	econf \
-		--disable-valgrind \
+		--without-valgrind \
 		--enable-binary
 }
 
