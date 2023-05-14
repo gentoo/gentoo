@@ -30,7 +30,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	test? ( client clipboard crypt dbus html server sound xdg xinerama )
 "
 
-TDEPEND="
+TEST_DEPEND="
 	$(python_gen_cond_dep '
 		dev-python/netifaces[${PYTHON_USEDEP}]
 		dev-python/pillow[jpeg?,${PYTHON_USEDEP}]
@@ -78,7 +78,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	${TDEPEND}
+	${TEST_DEPEND}
 	$(python_gen_cond_dep '
 		crypt? ( dev-python/cryptography[${PYTHON_USEDEP}] )
 		cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
@@ -102,7 +102,7 @@ RDEPEND="
 	udev? ( virtual/udev )
 "
 DEPEND+="
-	test? ( ${TDEPEND} )
+	test? ( ${TEST_DEPEND} )
 "
 BDEPEND="
 	$(python_gen_cond_dep '
