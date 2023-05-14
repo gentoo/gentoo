@@ -21,11 +21,12 @@ DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based o
 HOMEPAGE="https://xpra.org/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE="brotli +client +clipboard crypt csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal opengl pillow pinentry pulseaudio +server sound systemd test udev vpx webcam webp xdg xinerama"
+IUSE="brotli +client +clipboard crypt csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal oauth opengl pillow pinentry pulseaudio +server sound systemd test udev vpx webcam webp xdg xinerama"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
 	cups? ( dbus )
+	oauth? ( server )
 	opengl? ( client )
 	test? ( client clipboard crypt dbus html server sound xdg xinerama )
 "
@@ -84,9 +85,8 @@ RDEPEND="
 		cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
 		lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
 		lzo? ( >=dev-python/python-lzo-0.7.0[${PYTHON_USEDEP}] )
-		opengl? (
-			client? ( dev-python/pyopengl_accelerate[${PYTHON_USEDEP}] )
-		)
+		oauth? ( dev-python/oauthlib[${PYTHON_USEDEP}] )
+		opengl? ( dev-python/pyopengl_accelerate[${PYTHON_USEDEP}] )
 		webcam? (
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/pyinotify[${PYTHON_USEDEP}]
@@ -115,9 +115,9 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
-	"${FILESDIR}"/${PN}-4.3-no-service.patch
+	"${FILESDIR}"/${PN}-4.5-no-service.patch
 	"${FILESDIR}"/${PN}-9999-xdummy.patch
+	"${FILESDIR}"/${PN}-9999-tests.patch
 )
 
 python_prepare_all() {
@@ -144,6 +144,7 @@ python_configure_all() {
 	DISTUTILS_ARGS=(
 		--without-PIC
 		--without-Xdummy
+		$(use_with sound audio)
 		$(use_with client)
 		$(use_with clipboard)
 		$(use_with csc csc_swscale)
@@ -165,7 +166,6 @@ python_configure_all() {
 		$(use_with opengl)
 		$(use_with server shadow)
 		$(use_with server)
-		$(use_with sound)
 		--with-strict
 		$(use_with vpx)
 		--with-warn
