@@ -214,6 +214,14 @@ src_configure() {
 		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
+	if use jit; then
+		use zlib || ewarn \
+			"USE flag \"jit\" overrides \"-zlib\"; enabling zlib support."
+		myconf+=" --with-zlib"
+	else
+		myconf+=" $(use_with zlib)"
+	fi
+
 	# Emacs supports these window systems:
 	# X11, pure GTK (without X11), or Nextstep (Aqua/Cocoa).
 	# General GUI support is enabled by the "gui" USE flag, then
@@ -224,14 +232,6 @@ src_configure() {
 	# For X11 there is the further choice of toolkits GTK, Motif,
 	# Athena (Lucid), or no toolkit. They are enabled (in order of
 	# preference) with the "gtk", "motif", "Xaw3d", and "athena" flags.
-
-	if use jit; then
-		use zlib || ewarn \
-			"USE flag \"jit\" overrides \"-zlib\"; enabling zlib support."
-		myconf+=" --with-zlib"
-	else
-		myconf+=" $(use_with zlib)"
-	fi
 
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
