@@ -7,7 +7,6 @@
 	<use>
 		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
 		<flag name="systemd">Build with <pkg>sys-apps/systemd</pkg> at_console support</flag>
-		<flag name="valgrind">Support Valgrind (<pkg>dev-util/valgrind</pkg>) with annotations to improve results for memcheck.</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:freedesktop:dbus</remote-id>
