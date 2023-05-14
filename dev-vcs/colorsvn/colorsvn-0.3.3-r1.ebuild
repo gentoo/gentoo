@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Subversion output colorizer"
 HOMEPAGE="http://colorsvn.tigris.org"
@@ -10,22 +10,16 @@ SRC_URI="http://colorsvn.tigris.org/files/documents/4414/49311/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~x64-macos"
-IUSE=""
 
-RDEPEND="dev-lang/perl
+RDEPEND="
+	dev-lang/perl
 	dev-vcs/subversion"
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/use-open2-not-open3.patch" )
-
-src_prepare() {
-	default
-	# Fix confdir location for Prefix, #435434
-	sed -i \
-		-e '/^confdir/d' \
-		-e 's/$(confdir)/$(sysconfdir)/g' \
-		Makefile.in || die
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-use-open2-not-open3.patch
+	"${FILESDIR}"/${P}-prefix-fhs.patch
+)
 
 src_compile() {
 	# bug 335134

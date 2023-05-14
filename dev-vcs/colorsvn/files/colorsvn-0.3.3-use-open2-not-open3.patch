@@ -1,7 +1,5 @@
-This is idl0r's fix for bug 326279, rerolled for v0.3.3.
+https://bugs.gentoo.org/326279
 
-diff --git a/colorsvn-original b/colorsvn-original
-index 4236121..4edf3c8 100644
 --- a/colorsvn-original
 +++ b/colorsvn-original
 @@ -56,7 +56,7 @@
