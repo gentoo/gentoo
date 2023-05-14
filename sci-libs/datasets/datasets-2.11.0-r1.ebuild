@@ -42,16 +42,10 @@ BDEPEND="test? (
 	$(python_gen_cond_dep '
 		dev-python/pytest-datadir[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
+		sci-libs/jiwer[${PYTHON_USEDEP}]
 	')
 )"
 
 PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	# Require jiwer
-	rm metrics/cer/test_cer.py || die
-
-	distutils-r1_src_prepare
-}
