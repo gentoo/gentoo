@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arsen Arsenović (2023-05-14)
+# dev-lang/go doesn't work on SPARC.
+sys-libs/libnbd go
+
 # Sam James <sam@gentoo.org> (2023-05-10)
 # sys-cluster/ceph not keyworded here
 sys-block/tgt rbd
