@@ -3,7 +3,7 @@
 
 EAPI=8
 
-WX_GTK_VER="3.2-gtk3"
+WX_GTK_VER="3.0-gtk3"
 inherit cmake desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
