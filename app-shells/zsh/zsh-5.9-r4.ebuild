@@ -20,7 +20,7 @@ HOMEPAGE="https://www.zsh.org/"
 
 LICENSE="ZSH gdbm? ( GPL-2 )"
 SLOT="0"
-IUSE="caps debug doc examples gdbm maildir pcre static"
+IUSE="caps debug doc examples gdbm maildir pcre static valgrind"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1:0=
@@ -36,6 +36,7 @@ RDEPEND="
 	)
 "
 DEPEND="sys-apps/groff
+	valgrind? ( dev-util/valgrind )
 	${RDEPEND}"
 PDEPEND="
 	examples? ( app-doc/zsh-lovers )
@@ -92,6 +93,7 @@ src_configure() {
 		$(use_enable pcre)
 		$(use_enable caps cap)
 		$(use_enable gdbm)
+		$(use_enable valgrind zsh-valgrind)
 	)
 
 	if use static ; then
