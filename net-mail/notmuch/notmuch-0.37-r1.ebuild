@@ -22,9 +22,9 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	apidoc? ( doc )
 	nmbug? ( python )
-	test? ( crypt emacs python valgrind )
+	test? ( crypt emacs python )
 "
-IUSE="apidoc crypt doc emacs mutt nmbug python test valgrind"
+IUSE="apidoc crypt doc emacs mutt nmbug python test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -71,7 +71,6 @@ DEPEND="${COMMON_DEPEND}
 			dev-libs/openssl
 		)
 	)
-	valgrind? ( dev-util/valgrind )
 "
 
 RDEPEND="${COMMON_DEPEND}
