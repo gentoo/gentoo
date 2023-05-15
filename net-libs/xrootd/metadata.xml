@@ -21,5 +21,6 @@
     <flag name="http">Enable http protocol support</flag>
     <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for XML parsing (preferred) instead of bundled tinyxml</flag>
     <flag name="server">Install xrootd server and related plug-ins</flag>
+    <flag name="xrdec">Enable erasure coding support (XrdEc plugin) with <pkg>dev-libs/isa-l</pkg></flag>
   </use>
 </pkgmetadata>
