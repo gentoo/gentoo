@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 IUSE=""
-DEPEND="dev-lang/go:="
+DEPEND=">=dev-lang/go-1.16:="
 RESTRICT="strip"
 QA_FLAGS_IGNORED=".*"
 
