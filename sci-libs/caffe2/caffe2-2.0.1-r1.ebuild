@@ -57,7 +57,7 @@ RDEPEND="
 	opencl? ( virtual/opencl )
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
-	tensorpipe? ( sci-libs/tensorpipe )
+	tensorpipe? ( sci-libs/tensorpipe[cuda?] )
 	xnnpack? ( >=sci-libs/XNNPACK-2022.12.22 )
 "
 DEPEND="
