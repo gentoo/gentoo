@@ -33,9 +33,11 @@ COMMON_DEPEND="
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libXi
 	x11-libs/libXpresent
 	x11-libs/libXrandr
 	x11-libs/libXrender
+	x11-libs/libXres
 	>=x11-libs/startup-notification-0.7
 	xinerama? ( x11-libs/libXinerama )
 "
