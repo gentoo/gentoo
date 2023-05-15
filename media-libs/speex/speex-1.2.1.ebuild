@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,14 +15,17 @@ SRC_URI="https://downloads.xiph.org/releases/speex/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
-IUSE="cpu_flags_arm_v4 cpu_flags_arm_v5 cpu_flags_arm_v6 cpu_flags_x86_sse utils +vbr"
+IUSE="cpu_flags_arm_v4 cpu_flags_arm_v5 cpu_flags_arm_v6 cpu_flags_x86_sse utils valgrind +vbr"
 
 RDEPEND="
 	utils? (
 		media-libs/libogg:=
 		media-libs/speexdsp[${MULTILIB_USEDEP}]
 	)"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
@@ -58,6 +61,7 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}" econf \
 		--disable-static \
+		$(multilib_native_use_enable valgrind) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable vbr) \
 		$(use_with utils speexdsp) \
