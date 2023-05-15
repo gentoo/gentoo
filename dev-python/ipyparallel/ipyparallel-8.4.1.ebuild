@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-python/tornado-5.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/flit_core[${PYTHON_USEDEP}]
+	dev-python/flit-core[${PYTHON_USEDEP}]
 	test? (
 		dev-python/ipython[test]
 		dev-python/mock[${PYTHON_USEDEP}]

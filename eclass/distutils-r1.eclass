@@ -107,7 +107,7 @@ esac
 # The variable specifies the build system used.  Currently,
 # the following values are supported:
 #
-# - flit - flit_core backend
+# - flit - flit-core backend
 #
 # - flit_scm - flit_scm backend
 #
@@ -210,7 +210,7 @@ _distutils_set_globals() {
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					>=dev-python/flit_core-3.8.0[${PYTHON_USEDEP}]
+					>=dev-python/flit-core-3.8.0[${PYTHON_USEDEP}]
 				'
 				;;
 			flit_scm)
@@ -921,12 +921,12 @@ _distutils-r1_print_package_versions() {
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				packages+=(
-					dev-python/flit_core
+					dev-python/flit-core
 				)
 				;;
 			flit_scm)
 				packages+=(
-					dev-python/flit_core
+					dev-python/flit-core
 					dev-python/flit_scm
 					dev-python/setuptools-scm
 				)
@@ -1145,7 +1145,7 @@ _distutils-r1_backend_to_key() {
 
 	local backend=${1}
 	case ${backend} in
-		flit_core.buildapi|flit.buildapi)
+		flit-core.buildapi|flit.buildapi)
 			echo flit
 			;;
 		flit_scm:buildapi)
@@ -1224,7 +1224,7 @@ _distutils-r1_get_backend() {
 		local new_backend=
 		case ${build_backend} in
 			flit.buildapi)
-				new_backend=flit_core.buildapi
+				new_backend=flit-core.buildapi
 				;;
 			poetry.masonry.api)
 				new_backend=poetry.core.masonry.api

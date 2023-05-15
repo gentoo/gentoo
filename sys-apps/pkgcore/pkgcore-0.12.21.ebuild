@@ -32,7 +32,7 @@ else
 	RDEPEND+=" >=dev-python/snakeoil-0.10.4[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
-	>=dev-python/flit_core-3.8[${PYTHON_USEDEP}]
+	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
 	test? (
 		dev-vcs/git
 	)
