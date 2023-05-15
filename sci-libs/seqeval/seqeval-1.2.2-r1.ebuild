@@ -19,7 +19,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND="test? ( dev-python/setuptools-scm )"
+RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]"
+BDEPEND="test? (
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+)"
 
 distutils_enable_tests pytest
 
