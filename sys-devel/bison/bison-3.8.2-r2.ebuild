@@ -91,7 +91,7 @@ pkg_postinst() {
 		if [[ -e ${EROOT}/usr/bin/yacc ]] ; then
 			# bug #886123
 			ewarn "${EROOT}/usr/bin/yacc exists but is not a symlink."
-			ewarn "This is expected during Prefix bootstrap and unsual otherwise."
+			ewarn "This is expected during Prefix bootstrap and unusual otherwise."
 			ewarn "Moving away unexpected ${EROOT}/usr/bin/yacc to .bak."
 			mv "${EROOT}/usr/bin/yacc" "${EROOT}/usr/bin/yacc.bak" || die
 		fi
