@@ -1145,7 +1145,7 @@ _distutils-r1_backend_to_key() {
 
 	local backend=${1}
 	case ${backend} in
-		flit-core.buildapi|flit.buildapi)
+		flit_core.buildapi|flit.buildapi)
 			echo flit
 			;;
 		flit_scm:buildapi)
@@ -1224,7 +1224,7 @@ _distutils-r1_get_backend() {
 		local new_backend=
 		case ${build_backend} in
 			flit.buildapi)
-				new_backend=flit-core.buildapi
+				new_backend=flit_core.buildapi
 				;;
 			poetry.masonry.api)
 				new_backend=poetry.core.masonry.api
