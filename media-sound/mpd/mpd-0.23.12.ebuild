@@ -39,9 +39,12 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
+# Note: This version is incompatible with dev-libs/libfmt-10
+# Bug: https://bugs.gentoo.org/906074
 RDEPEND="
 	acct-user/mpd
 	dev-libs/libfmt:=
+	<dev-libs/libfmt-10
 	dev-libs/libpcre2
 	media-libs/libogg
 	sys-libs/liburing:=
