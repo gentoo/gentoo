@@ -19,7 +19,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/numpy[${PYTHON_USEDEP}]
+	sci-libs/scikit-learn[${PYTHON_USEDEP}]
+"
 BDEPEND="test? (
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 )"
