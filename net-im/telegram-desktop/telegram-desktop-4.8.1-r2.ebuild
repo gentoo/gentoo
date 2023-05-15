@@ -35,6 +35,7 @@ RDEPEND="
 	dev-libs/libdispatch
 	dev-libs/libsigc++:2
 	dev-libs/openssl:=
+	dev-libs/protobuf
 	dev-libs/xxhash
 	media-libs/fontconfig:=
 	media-libs/libjpeg-turbo:=
@@ -46,7 +47,7 @@ RDEPEND="
 	media-video/ffmpeg:=[opus,vpx]
 	sys-libs/zlib:=[minizip]
 	virtual/opengl
-	dbus? ( dev-cpp/glibmm:2.68 )
+	dbus? ( >=dev-cpp/glibmm-2.76:2.68 )
 	!enchant? ( >=app-text/hunspell-1.7:= )
 	enchant? ( app-text/enchant:= )
 	jemalloc? ( dev-libs/jemalloc:=[-lazy-lock] )
@@ -84,7 +85,7 @@ BDEPEND="
 # dev-libs/jemalloc:=[-lazy-lock] -> https://bugs.gentoo.org/803233
 
 PATCHES=(
-	"${FILESDIR}/tdesktop-4.2.4-jemalloc-only-telegram.patch"
+	"${FILESDIR}/tdesktop-4.2.4-jemalloc-only-telegram-r1.patch"
 	"${FILESDIR}/tdesktop-4.4.1-fix-dupe-main-decl.patch"
 )
 
@@ -106,7 +107,7 @@ src_prepare() {
 	if use qt6-imageformats; then
 		sed -e 's/DESKTOP_APP_USE_PACKAGED_LAZY/TRUE/' -i \
 			cmake/external/kimageformats/CMakeLists.txt || die
-		printf "%s\n" \
+		printf '%s\n' \
 			'Q_IMPORT_PLUGIN(QAVIFPlugin)' \
 			'Q_IMPORT_PLUGIN(HEIFPlugin)' \
 			'Q_IMPORT_PLUGIN(QJpegXLPlugin)' \
