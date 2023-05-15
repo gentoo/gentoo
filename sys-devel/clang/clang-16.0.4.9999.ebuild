@@ -4,8 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit cmake llvm llvm.org multilib multilib-minimal \
-	prefix python-single-r1 toolchain-funcs flag-o-matic
+
+inherit cmake llvm llvm.org multilib multilib-minimal
+inherit prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -254,8 +255,6 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
-	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
-
 	local mycmakeargs=(
 		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
