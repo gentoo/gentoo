@@ -17,7 +17,7 @@ IUSE="static"
 
 DEPEND="dev-libs/libevent:=
 	dev-libs/openssl:=
-	net-dialup/ppp:="
+	net-dialup/ppp:=[ipv6(+)]"
 RDEPEND="${DEPEND}
 	acct-group/sstpc
 	acct-user/sstpc"
