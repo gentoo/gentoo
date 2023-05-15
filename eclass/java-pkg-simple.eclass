@@ -496,6 +496,9 @@ java-pkg-simple_src_test() {
 		return
 	fi
 
+	# https://bugs.gentoo.org/906311
+	rm -rf ${classes} || die
+
 	# create the target directory
 	mkdir -p ${classes} || die "Could not create target directory for testing"
 
@@ -513,7 +516,6 @@ java-pkg-simple_src_test() {
 	else
 		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java > ${test_sources}
 	fi
-
 
 	# compile
 	if [[ -s ${test_sources} ]]; then
