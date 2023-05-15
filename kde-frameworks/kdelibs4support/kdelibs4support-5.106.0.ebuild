@@ -80,6 +80,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${P}-libressl.patch" # bug 903001
 	# downstream patches
 	"${FILESDIR}/${PN}-5.80.0-no-kdesignerplugin.patch" # bug 755956
 	"${FILESDIR}/${PN}-5.86.0-unused-dep.patch" # bug 755956
