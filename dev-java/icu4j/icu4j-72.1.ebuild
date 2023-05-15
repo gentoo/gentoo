@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -65,6 +65,7 @@ JAVA_TEST_EXCLUDES=(
 	"com.ibm.icu.dev.test.stringprep.TestData" # Invalid test class 1. No runnable methods
 	"com.ibm.icu.dev.test.calendar.ChineseTestCase" # Invalid test class 1. Test class should have exactly one public zero-argument constructor
 	"com.ibm.icu.dev.test.calendar.TestCase" # java.lang.IllegalArgumentException: Test class can only have one constructor
+	"com.ibm.icu.dev.test.message2.TestCase" # Invalid test class - No runnable methods
 	"com.ibm.icu.dev.test.bidi.TestData" # Invalid test class 1. Test class should have exactly one public constructor
 	# following kills 98 tests and and avoids 9 test failures
 	# coverage tests fail because test handlers for the parametrized tests are not defined so the tests are broken and cannot succeed
