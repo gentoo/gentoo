@@ -47,6 +47,10 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+src_test() {
+	emake VERBOSE=yes check
+}
+
 src_install() {
 	default
 
