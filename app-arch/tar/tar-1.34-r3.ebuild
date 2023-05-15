@@ -97,7 +97,7 @@ pkg_postinst() {
 		if [[ -e ${EROOT}/usr/bin/tar ]] ; then
 			# bug #904887
 			ewarn "${EROOT}/usr/bin/tar exists but is not a symlink."
-			ewarn "This is expected during Prefix bootstrap and unsual otherwise."
+			ewarn "This is expected during Prefix bootstrap and unusual otherwise."
 			ewarn "Moving away unexpected ${EROOT}/usr/bin/tar to .bak."
 			mv "${EROOT}/usr/bin/tar" "${EROOT}/usr/bin/tar.bak" || die
 		fi
