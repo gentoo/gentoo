@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>hollowman@opensuse.org</email>
+    <name>Songlin Jiang</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">kubescape/kubescape</remote-id>
+    <doc lang="en">https://github.com/kubescape/kubescape/blob/master/README.md</doc>
+    <bugs-to>https://github.com/kubescape/kubescape/issues</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+    Kubescape is an open-source Kubernetes security platform.
+    It includes risk analysis, security compliance, and misconfiguration scanning.
+    Targeted at the DevSecOps practitioner or platform engineer, it offers
+    an easy-to-use CLI interface, flexible output formats, and automated scanning capabilities.
+    It saves Kubernetes users and admins precious time, effort, and resources.
+
+    Kubescape scans clusters, YAML files, and Helm charts. It detects misconfigurations
+    according to multiple frameworks.
+
+    Kubescape was created by ARMO and is a Cloud Native Computing Foundation (CNCF) sandbox project.
+  </longdescription>
+</pkgmetadata>
