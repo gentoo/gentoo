@@ -14,7 +14,7 @@ if [[ "${PV}" == "9999" ]]; then
 	KVIRC_GIT_REVISION=""
 	KVIRC_GIT_SOURCES_DATE=""
 else
-	KVIRC_GIT_REVISION=""
+	KVIRC_GIT_REVISION="eb3fdd6b1d824f148fd6e582852dcba77fc9a271"
 	KVIRC_GIT_SOURCES_DATE="${PV#*_pre}"
 	KVIRC_GIT_SOURCES_DATE="${KVIRC_GIT_SOURCES_DATE:0:4}-${KVIRC_GIT_SOURCES_DATE:4:2}-${KVIRC_GIT_SOURCES_DATE:6:2}"
 fi
@@ -29,7 +29,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
