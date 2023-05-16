@@ -166,7 +166,7 @@ python_configure_all() {
 		$(use_with server shadow)
 		$(use_with server)
 		$(use_with sound)
-		--with-strict
+		--without-strict
 		$(use_with vpx)
 		--with-warn
 		$(use_with webcam)
