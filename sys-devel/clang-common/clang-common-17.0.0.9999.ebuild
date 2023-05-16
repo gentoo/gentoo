@@ -87,6 +87,8 @@ src_install() {
 		@gentoo-runtimes.cfg
 		@gentoo-gcc-install.cfg
 		@gentoo-hardened.cfg
+		# bug #870001
+		-include "${EPREFIX}/usr/include/gentoo/maybe-stddefs.h"
 	EOF
 
 	# Baseline hardening (bug #851111)
@@ -100,6 +102,14 @@ src_install() {
 	EOF
 
 	dodir /usr/include/gentoo
+
+	cat >> "${ED}/usr/include/gentoo/maybe-stddefs.h" <<-EOF || die
+	/* __has_include is an extension, but it's fine, because this is only
+	for Clang anyway. */
+	#if defined __has_include && __has_include (<stdc-predef.h>)
+	# include <stdc-predef.h>
+	#endif
+	EOF
 
 	local fortify_level=$(usex hardened 3 2)
 	# We have to do this because glibc's headers warn if F_S is set
