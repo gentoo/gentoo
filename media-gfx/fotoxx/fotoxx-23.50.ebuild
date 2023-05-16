@@ -11,7 +11,7 @@ SRC_URI="https://kornelix.net/downloads/downloads/${P}-source.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 # For required dependencies read doc/README, for required tools read
@@ -57,7 +57,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "HEIC file support" media-libs/libheif
+	optfeature "HEIC & AVIF file support" media-libs/libheif
 	optfeature "additional RAW file support" media-gfx/rawtherapee
 	optfeature "additional RAW file support" media-gfx/darktable
 	optfeature "video thumbnails & playback" media-video/ffmpeg
