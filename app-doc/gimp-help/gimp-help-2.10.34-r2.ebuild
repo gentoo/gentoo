@@ -68,6 +68,10 @@ src_compile() {
 	emake -j1
 }
 
+src_test() {
+	emake -j1 check
+}
+
 src_install() {
 	# See bug: 905693
 	emake -j1 DESTDIR="${D}" install
