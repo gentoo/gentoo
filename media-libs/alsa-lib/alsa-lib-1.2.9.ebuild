@@ -57,6 +57,7 @@ multilib_src_configure() {
 	# (This bug is closed as of 1.2.9 but there's been no clear actual fix to it.
 	# Let us know if you can identify one.)
 	filter-lto
+	append-lfs-flags
 
 	local myeconfargs=(
 		--disable-maintainer-mode

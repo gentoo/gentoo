@@ -56,6 +56,7 @@ multilib_src_configure() {
 	# but it's a hack to workaround the real problem and not strictly safe.
 	# bug #616108, bug #669086, and https://github.com/alsa-project/alsa-lib/issues/6.
 	filter-lto
+	append-lfs-flags
 
 	local myeconfargs=(
 		--disable-maintainer-mode

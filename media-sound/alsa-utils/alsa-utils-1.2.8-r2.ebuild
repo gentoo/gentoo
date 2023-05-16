@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd udev
+inherit flag-o-matic systemd udev
 
 DESCRIPTION="Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)"
 HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
@@ -36,6 +36,8 @@ PATCHES=(
 
 src_configure() {
 	export ac_cv_lib_ffado_ffado_streaming_init=$(usex ieee1394)
+
+	append-lfs-flags
 
 	local myeconfargs=(
 		# --disable-alsaconf because it doesn't work with sys-apps/kmod wrt #456214
