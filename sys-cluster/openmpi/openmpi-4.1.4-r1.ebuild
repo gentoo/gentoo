@@ -31,7 +31,7 @@ SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~ppc ppc64 ~riscv sparc x86 ~amd64-linux"
-IUSE="cma cuda cxx fortran ipv6 java libompitrace peruse romio
+IUSE="cma cuda cxx fortran ipv6 java libompitrace peruse romio valgrind
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="
@@ -61,7 +61,8 @@ RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.8:* )"
 
 DEPEND="${CDEPEND}
-	java? ( >=virtual/jdk-1.8:* )"
+	java? ( >=virtual/jdk-1.8:* )
+	valgrind? ( dev-util/valgrind )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpi.h
@@ -137,6 +138,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable openmpi_ofed_features_dynamic-sl openib-dynamic-sl)
 
 		$(multilib_native_use_with cuda cuda "${EPREFIX}"/opt/cuda)
+		$(multilib_native_use_with valgrind)
 		$(multilib_native_use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr)
 		$(multilib_native_use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr)
 		$(multilib_native_use_with openmpi_rm_pbs tm)
