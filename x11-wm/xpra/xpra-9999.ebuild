@@ -200,7 +200,7 @@ python_install_all() {
 		mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
 	else
 		rm -vr "${ED}"/usr/lib/udev || die
-		rm -v "${ED}"/usr/bin/xpra_udev_product_version || die
+		rm -v "${ED}"/usr/libexec/xpra/xpra_udev_product_version || die
 	fi
 }
 
