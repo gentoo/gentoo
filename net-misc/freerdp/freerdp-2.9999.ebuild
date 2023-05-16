@@ -1,4 +1,4 @@
-# Copyright 2011-2022 Gentoo Authors
+# Copyright 2011-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg openh264 pulseaudio server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -79,7 +79,10 @@ RDEPEND="
 		x11-libs/libxkbfile
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+"
 BDEPEND="
 	virtual/pkgconfig
 	X? ( doc? (
@@ -112,6 +115,7 @@ src_configure() {
 		-DWITH_SERVER=$(usex server ON OFF)
 		-DWITH_PCSC=$(usex smartcard ON OFF)
 		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
+		-DWITH_VALGRIND_MEMCHECK=$(usex valgrind ON OFF)
 		-DWITH_X11=$(usex X ON OFF)
 		-DWITH_XINERAMA=$(usex xinerama ON OFF)
 		-DWITH_XV=$(usex xv ON OFF)
