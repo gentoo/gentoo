@@ -38,4 +38,5 @@ src_install() {
 	elisp_src_install
 
 	elisp-modules-install "${PN}" jinx-mod.so
+	doinfo jinx.info
 }
