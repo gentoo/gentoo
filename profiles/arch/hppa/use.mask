@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -40,10 +40,6 @@ vulkan
 # media-libs/libvpx is not keyworded, bug #698956
 system-libvpx
 vpx
-
-# Matt Turner <mattst88@gentoo.org> (2018-05-26)
-# Unmask systemd since it is keyworded here.
--systemd
 
 #
 # Jeroen Roovers <jer@gentoo.org> (2018-03-22)
