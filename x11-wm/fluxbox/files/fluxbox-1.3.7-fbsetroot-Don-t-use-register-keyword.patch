@@ -1,0 +1,25 @@
+https://github.com/fluxbox/fluxbox/pull/78
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 16 May 2023 16:46:09 +0530
+Subject: [PATCH] util/fbsetroot: Don't use register keyword
+
+Register keyword has been deprecated since c++14 and completely removed
+since c++17.
+
+Encountered while building fluxbox with clang-16.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/util/fbsetroot.cc
++++ b/util/fbsetroot.cc
+@@ -224,7 +224,7 @@ void fbsetroot::modula(int x, int y) {
+     char data[32];
+     long pattern = 0;
+ 
+-    register int i;
++    int i;
+ 
+     FbRootWindow root(screen);
+ 
+-- 
+2.40.1
+
