@@ -1,0 +1,35 @@
+From bd9d2d7e4a6df4608962bfbe0a85b716fffe9e03 Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 16 May 2023 12:53:29 +0530
+Subject: [PATCH] Dont use rpmatch on non glibc systems
+
+The funciton rpmatch is available only on glibc, so other build systems
+like musl will give undeclared funtion error.
+
+Patch taken from alpine linux distribution
+https://git.alpinelinux.org/aports/tree/community/plymouth/plymouth-rpmatch.patch
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/libply/ply-command-parser.c
++++ b/src/libply/ply-command-parser.c
+@@ -76,6 +76,17 @@ struct _ply_command_parser
+         uint32_t          dispatch_is_queued : 1;
+ };
+ 
++// From https://git.alpinelinux.org/aports/tree/community/plymouth/plymouth-rpmatch.patch
++#ifndef __GLIBC__
++static inline int
++rpmatch (const char *response)
++{
++  /* Test against "^[yY]" and "^[nN]", hardcoded to avoid requiring regex */
++  return (*response == 'y' || *response == 'Y' ? 1
++	  : *response == 'n' || *response == 'N' ? 0 : -1);
++}
++#endif /* ifndef __GLIBC__ */
++
+ static ply_command_option_t *
+ ply_command_option_new (const char               *name,
+                         const char               *description,
+-- 
+2.40.1
+
