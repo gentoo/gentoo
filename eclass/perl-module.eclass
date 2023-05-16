@@ -231,14 +231,14 @@ perl-module_src_configure() {
 		if grep -q '\(use\|require\)\s*Module::Build::Tiny' Build.PL ; then
 			einfo "Using Module::Build::Tiny"
 			if [[ ${BDEPEND} != *dev-perl/Module-Build-Tiny* && ${PN} != Module-Build-Tiny ]]; then
-				eerror "QA Notice: The ebuild uses Module::Build::Tiny but doesn't depend on it."
-				eerror " Add dev-perl/Module-Build-Tiny to BDEPEND!"
+				eqawarn "QA Notice: The ebuild uses Module::Build::Tiny but doesn't depend on it."
+				eqawarn " Add dev-perl/Module-Build-Tiny to BDEPEND!"
 			fi
 		else
 			einfo "Using Module::Build"
 			if [[ ${BDEPEND} != *virtual/perl-Module-Build* && ${BDEPEND} != *dev-perl/Module-Build* && ${PN} != Module-Build ]] ; then
-				eerror "QA Notice: The ebuild uses Module::Build but doesn't depend on it."
-				eerror " Add dev-perl/Module-Build to BDEPEND!"
+				eqawarn "QA Notice: The ebuild uses Module::Build but doesn't depend on it."
+				eqawarn " Add dev-perl/Module-Build to BDEPEND!"
 			fi
 		fi
 
