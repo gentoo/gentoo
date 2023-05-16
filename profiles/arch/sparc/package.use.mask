@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arsen Arsenović <arsen@gentoo.org> (2023-05-17)
+# app-emulation/libguestfs pulls in a large amount of dependencies, most
+# of which aren't or can't be kw'd on SPARC.
+sys-block/nbdkit libguestfs
+
 # Arsen Arsenović (2023-05-14)
 # dev-lang/go doesn't work on SPARC.
 sys-libs/libnbd go
