@@ -39,6 +39,5 @@
 	</longdescription>
 	<use>
 		<flag name="openclipart">Support openclipart database</flag>
-		<flag name="texturemate">Install extra backgrounds</flag>
 	</use>
 </pkgmetadata>
