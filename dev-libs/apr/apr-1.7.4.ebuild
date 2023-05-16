@@ -12,7 +12,7 @@ SRC_URI="mirror://apache/apr/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="1/${PV%.*}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc old-kernel selinux static-libs +urandom"
+IUSE="doc old-kernel selinux static-libs +urandom valgrind"
 
 # See bug #815265 for libcrypt dependency
 DEPEND="
@@ -23,6 +23,7 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-base-policy )
 "
+DEPEND+=" valgrind? ( dev-util/valgrind )"
 BDEPEND="
 	>=sys-devel/libtool-2.4.2
 	doc? ( app-doc/doxygen )
@@ -57,6 +58,7 @@ src_configure() {
 		--enable-posix-shm
 		--enable-threads
 		$(use_enable static-libs static)
+		$(use_with valgrind)
 		--with-installbuilddir="${EPREFIX}"/usr/share/${PN}/build
 	)
 
