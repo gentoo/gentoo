@@ -18,7 +18,7 @@ fi
 
 DESCRIPTION="X.Org driver for Intel cards"
 
-IUSE="debug +sna tools +udev uxa xvmc"
+IUSE="debug +sna tools +udev uxa valgrind xvmc"
 
 REQUIRED_USE="
 	|| ( sna uxa )
@@ -50,8 +50,11 @@ RDEPEND="
 		x11-libs/xcb-util
 	)
 "
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+	valgrind? ( dev-util/valgrind )
+"
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -72,6 +75,7 @@ src_configure() {
 		$(use_enable tools)
 		$(use_enable udev)
 		$(use_enable uxa)
+		$(use_enable valgrind)
 		$(use_enable xvmc)
 	)
 	xorg-3_src_configure
