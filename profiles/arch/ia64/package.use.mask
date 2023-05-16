@@ -129,6 +129,7 @@ media-libs/rubberband jni
 media-libs/gd avif heif
 media-gfx/graphicsmagick heif
 www-client/links avif
+dev-lang/php avif
 
 # Akinori Hattori <hattya@gentoo.org> (2021-03-03)
 # dev-lang/ruby is not keyworded

@@ -161,6 +161,7 @@ media-libs/rubberband jni
 media-libs/gd avif heif
 media-gfx/graphicsmagick heif
 www-client/links avif
+dev-lang/php avif
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
 # uchardet not stable/keyworded yet on this arch

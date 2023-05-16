@@ -96,6 +96,7 @@ media-libs/libcanberra sound
 media-libs/gd avif heif
 media-gfx/graphicsmagick heif
 www-client/links avif
+dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # Unkeyworded dev-tcltk/* dependencies
