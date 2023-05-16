@@ -9,8 +9,8 @@ TEXMFD_VERSION="11"
 
 DESCRIPTION="Path searching library for TeX-related files"
 HOMEPAGE="http://tug.org/texlive/"
-SRC_URI="https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz
-	https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/${PN}-texmf.d-${TEXMFD_VERSION}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~sam/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz
+	https://dev.gentoo.org/~sam/distfiles/texlive/${PN}-texmf.d-${TEXMFD_VERSION}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV%_p*}"
@@ -24,12 +24,12 @@ EXTRA_TL_MODULES="kpathsea"
 EXTRA_TL_DOC_MODULES="kpathsea.doc"
 
 for i in ${EXTRA_TL_MODULES} ; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~sam/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 
 SRC_URI="${SRC_URI} doc? ( "
 for i in ${EXTRA_TL_DOC_MODULES} ; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~sam/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 SRC_URI="${SRC_URI} ) "
 

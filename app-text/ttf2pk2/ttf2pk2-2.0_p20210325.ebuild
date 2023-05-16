@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Freetype 2 based TrueType font to TeX's PK format converter"
 HOMEPAGE="http://tug.org/texlive/"
-SRC_URI="https://dev.gentoo.org/~{zlogene,sam}/texlive/texlive-${PV#*_p}-source.tar.xz"
+SRC_URI="https://dev.gentoo.org/~sam/texlive/texlive-${PV#*_p}-source.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
