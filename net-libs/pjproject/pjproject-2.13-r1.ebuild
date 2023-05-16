@@ -33,7 +33,7 @@ RDEPEND=">=net-libs/libsrtp-2.3.0:=
 	opus? ( media-libs/opus )
 	portaudio? ( media-libs/portaudio )
 	resample? ( media-libs/libsamplerate )
-	sdl? ( media-libs/libsdl )
+	sdl? ( media-libs/libsdl2 )
 	speex? (
 		media-libs/speex
 		media-libs/speexdsp
