@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/888912
+https://github.com/elogind/elogind/commit/ab72a46f3104f44a32ef7bec7439aa9d3b5f0fdc
+
+Rebased version to apply to 246.10 by concord@.
+
+From ab72a46f3104f44a32ef7bec7439aa9d3b5f0fdc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Fri, 9 Oct 2020 16:48:03 +0200
+Subject: [PATCH] basic/selinux: work around mallinfo deprecation
+
+Latest glibc has deprecated mallinfo(), so it might become unavailable at some point
+in the future. There is malloc_info(), but it returns XML, ffs. I think the information
+that we get from mallinfo() is quite useful, so let's use mallinfo() if available, and
+not otherwise.
+--- a/meson.build
++++ b/meson.build
+@@ -617,6 +617,7 @@ foreach ident : [
+                                  #include <unistd.h>
+                                  #include <signal.h>
+                                  #include <sys/wait.h>'''],
++        ['mallinfo',          '''#include <malloc.h>'''],
+ ]
+ 
+         have = cc.has_function(ident[0], prefix : ident[1], args : '-D_GNU_SOURCE')
+--- a/src/basic/macro.h
++++ b/src/basic/macro.h
+@@ -93,6 +93,10 @@
+ #endif
+ 
+ /* Temporarily disable some warnings */
++#define DISABLE_WARNING_DEPRECATED_DECLARATIONS                         \
++        _Pragma("GCC diagnostic push");                                 \
++        _Pragma("GCC diagnostic ignored \"-Wdeprecated-declarations\"")
++
+ #define DISABLE_WARNING_FORMAT_NONLITERAL                               \
+         _Pragma("GCC diagnostic push");                                 \
+         _Pragma("GCC diagnostic ignored \"-Wformat-nonliteral\"")
+--- a/src/basic/selinux-util.c
++++ b/src/basic/selinux-util.c
+@@ -72,6 +72,17 @@ void mac_selinux_retest(void) {
+ #endif
+ }
+ 
++#if HAVE_MALLINFO
++static struct mallinfo mallinfo_nowarn(void) {
++        /* glibc has deprecated mallinfo(), but the replacement malloc_info() returns an XML blob ;=[ */
++DISABLE_WARNING_DEPRECATED_DECLARATIONS
++        return mallinfo();
++REENABLE_WARNING
++}
++#else
++#	warning "mallinfo() is missing, add mallinfo2() supported instead."
++#endif
++
+ int mac_selinux_init(void) {
+ #if HAVE_SELINUX
+         usec_t before_timestamp, after_timestamp;
