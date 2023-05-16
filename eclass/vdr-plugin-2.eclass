@@ -388,12 +388,12 @@ vdr-plugin-2_pkg_setup() {
 	# missing ${chost}- tag
 	tc-export CC CXX
 
+	# Plugins need to be compiled with position independent code, otherwise linking
+	# VDR against it will fail
 	# -fPIC is needed for shared objects on some platforms (amd64 and others)
 	append-flags -fPIC
 
-	# Plugins need to be compiled with position independent code, otherwise linking
-	# VDR against it will fail
-	append-cxxflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
+	append-lfs-flags
 
 	# Where should the plugins live in the filesystem
 	local PKG__CONFIG=$(tc-getPKG_CONFIG)
