@@ -21,10 +21,6 @@ tpm
 # rdma-core is not keyworded mips...
 rdma
 
-# Matt Turner <mattst88@gentoo.org> (2018-03-25)
-# Unmask systemd since it is keyworded here.
--systemd
-
 # Mart Raudsepp <leio@gentoo.org> (2018-02-11)
 # dev-util/valgrind is not keyworded here yet,
 # though the MIPS platform is supported upstream

@@ -4,9 +4,6 @@
 # Unmask the flag which corresponds to ARCH.
 -riscv
 
-# Unmask systemd
--systemd
-
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here
 -tcmalloc

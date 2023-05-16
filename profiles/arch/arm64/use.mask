@@ -73,10 +73,6 @@ opencl
 # net-libs/libsmi not tested on arm64 yet
 smi
 
-# Mart Raudsepp <leio@gentoo.org> (2017-02-01)
-# Unmask systemd since it is keyworded here.
--systemd
-
 # Markus Meier <maekke@gentoo.org> (2010-08-22)
 # net-wireless/wimax not tested
 wimax

@@ -242,10 +242,6 @@ unwind
 # sys-devel/llvm is not keyworded, bug #320221
 llvm
 
-# Pacho Ramos <pacho@gentoo.org> (2014-01-19)
-# Unmask systemd since it is keyworded here.
--systemd
-
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp
 

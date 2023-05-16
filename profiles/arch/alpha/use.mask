@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -192,10 +192,6 @@ opencl
 
 # Unmask once sys-libs/libunwind gets ported & keyworded.
 unwind
-
-# Pacho Ramos <pacho@gentoo.org> (2014-01-08)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-07-20)
 # Mask redis USE flag everywhere since redis depends on google-perftools,
