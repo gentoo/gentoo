@@ -26,6 +26,7 @@ COMMON_DEPEND="
 		dev-lang/duktape:=
 		net-misc/curl
 	)
+	introspection? ( dev-libs/gobject-introspection )
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( net-libs/libsoup:3.0[${MULTILIB_USEDEP}] )
@@ -35,6 +36,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gi-docgen )
 	vala? ( $(vala_depend) )
 "
 
