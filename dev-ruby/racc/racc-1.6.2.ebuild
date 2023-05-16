@@ -40,12 +40,10 @@ all_ruby_prepare() {
 	sed -i -e '/ExtensionTask/,/^  end/ s:^:#:' Rakefile || die
 
 	# ...which means we need to generate the parser file here
-	for ruby in ${USE_RUBY} ; do
-		if use ruby_targets_${ruby} ; then
-			if has_version -b "virtual/rubygems[ruby_targets_${ruby}(-)]" && has_version -b "dev-ruby/rake[ruby_targets_${ruby}(-)]" ; then
-				${ruby} -S rake lib/racc/parser-text.rb || die
-				break
-			fi
+	for ruby in $(ruby_get_use_implementations) ; do
+		if has_version -b "virtual/rubygems[ruby_targets_${ruby}(-)]" && has_version -b "dev-ruby/rake[ruby_targets_${ruby}(-)]" ; then
+			${ruby} -S rake lib/racc/parser-text.rb || die
+			break
 		fi
 	done
 
