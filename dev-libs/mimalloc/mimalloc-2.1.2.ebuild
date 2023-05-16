@@ -12,8 +12,10 @@ SRC_URI="https://github.com/microsoft/mimalloc/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="MIT"
 SLOT="0/2"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="hardened test"
+IUSE="hardened test valgrind"
 RESTRICT="!test? ( test )"
+
+DEPEND="valgrind? ( dev-util/valgrind )"
 
 src_configure() {
 	local mycmakeargs=(
@@ -23,6 +25,7 @@ src_configure() {
 
 		-DMI_BUILD_OBJECT=OFF
 		-DMI_BUILD_STATIC=OFF
+		-DMI_TRACK_VALGRIND=$(usex valgrind)
 	)
 
 	cmake-multilib_src_configure
