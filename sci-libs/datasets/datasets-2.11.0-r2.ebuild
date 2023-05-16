@@ -43,6 +43,7 @@ BDEPEND="test? (
 		dev-python/pytest-datadir[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
 		sci-libs/jiwer[${PYTHON_USEDEP}]
+		sci-libs/seqeval[${PYTHON_USEDEP}]
 	')
 )"
 

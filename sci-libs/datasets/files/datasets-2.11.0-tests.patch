@@ -123,16 +123,6 @@
  def test_dataset_with_audio_feature_map_undecoded(shared_datadir):
      audio_path = str(shared_datadir / "test_audio_44100.wav")
      data = {"audio": [audio_path]}
---- a/tests/test_metric_common.py	2023-05-06 13:20:24.496197629 +0200
-+++ b/tests/test_metric_common.py	2023-05-06 13:21:09.916732417 +0200
-@@ -210,6 +210,7 @@
-             yield
- 
- 
-+@pytest.mark.skip(reason="require seqeval")
- def test_seqeval_raises_when_incorrect_scheme():
-     metric = load_metric(os.path.join("metrics", "seqeval"))
-     wrong_scheme = "ERROR"
 --- a/tests/packaged_modules/test_audiofolder.py	2023-05-06 14:00:39.560876163 +0200
 +++ b/tests/packaged_modules/test_audiofolder.py	2023-05-06 14:01:26.005212423 +0200
 @@ -1,10 +1,8 @@
