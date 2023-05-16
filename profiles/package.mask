@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-05-16)
+# Unmaintained since 2020.  Does not implement TOML 1.0, buggy.
+# Alternatives include built-in tomllib module (Python 3.11+),
+# dev-python/tomli along with dev-python/tomli-w, dev-python/tomlkit.
+# Removal on 2023-06-15.  Bug #878651.
+dev-python/toml
+
 # David Seifert <soap@gentoo.org> (2023-05-14)
 # QA and build issues, EAPI 6, no proper releases, no other
 # distro packages this. Removal on 2023-06-13. Bug #713794, #872539.
