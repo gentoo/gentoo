@@ -23,8 +23,8 @@ else
 	EDK2_BROTLI_COMMIT="f4153a09f87cbb9c826d8fc12c74642bb2d879ea"
 	IPXE_COMMIT="3c040ad387099483102708bb1839110bc788cefb"
 
-	XEN_GENTOO_PATCHSET_NUM=0
-	XEN_GENTOO_PATCHSET_BASE=4.17.0
+	XEN_GENTOO_PATCHSET_NUM=2
+	XEN_GENTOO_PATCHSET_BASE=4.16.1
 	XEN_PRE_PATCHSET_NUM=
 	XEN_PRE_VERSION_BASE=
 
@@ -207,6 +207,10 @@ QA_PREBUILT="
 "
 
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}/xen-tools-m4-ptyfuncs.m4-tools-configure-add-linux-headers-for.patch"
+)
 
 pkg_setup() {
 	python_setup
@@ -391,7 +395,6 @@ src_configure() {
 		--libexecdir="${EPREFIX}/usr/libexec"
 		--localstatedir="${EPREFIX}/var"
 		--disable-golang
-		--disable-pvshim
 		--disable-werror
 		--disable-xen
 		--enable-tools

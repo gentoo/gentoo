@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='ncurses,xml(+),threads(+)'
 
-inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -14,26 +14,23 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 	SEABIOS_VER="1.16.0"
-	EDK2_COMMIT="7b4a99be8a39c12d3a7fc4b8db9f0eab4ac688d5"
-	EDK2_OPENSSL_VERSION="1_1_1j"
+	EDK2_COMMIT="b16284e2a0011489f6e16dfcc6af7623c3cbaf0b"
+	EDK2_OPENSSL_VERSION="1_1_1t"
 	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
-	EDK2_BROTLI_COMMIT="666c3280cc11dc433c303d79a83d4ffbdd12cc8d"
+	EDK2_BROTLI_COMMIT="f4153a09f87cbb9c826d8fc12c74642bb2d879ea"
 	IPXE_COMMIT="3c040ad387099483102708bb1839110bc788cefb"
 
-	XEN_GENTOO_PATCHSET_NUM=2
-	XEN_GENTOO_PATCHSET_BASE=4.15.3
-	XEN_PRE_PATCHSET_NUM=0
-	XEN_PRE_VERSION_BASE=4.15.4
+	XEN_GENTOO_PATCHSET_NUM=0
+	XEN_GENTOO_PATCHSET_BASE=4.17.0
+	XEN_PRE_PATCHSET_NUM=
+	XEN_PRE_VERSION_BASE=
 
 	XEN_BASE_PV="${PV}"
 	if [[ -n "${XEN_PRE_VERSION_BASE}" ]]; then
 		XEN_BASE_PV="${XEN_PRE_VERSION_BASE}"
-	fi
-	if [[ -z "${XEN_GENTOO_PATCHSET_BASE}" ]]; then
-		XEN_GENTOO_PATCHSET_BASE="${XEN_BASE_PV}"
 	fi
 
 	SRC_URI="
@@ -72,7 +69,7 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api debug doc +hvm +ipxe lzma ocaml ovmf pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios"
+IUSE="api debug doc +hvm +ipxe lzma ocaml ovmf pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios systemd zstd"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -90,7 +87,9 @@ COMMON_DEPEND="
 		dev-libs/glib:2
 		sys-libs/pam
 	)
+	zstd? ( app-arch/zstd )
 	app-arch/bzip2
+	app-arch/zstd
 	dev-libs/libnl:3
 	dev-libs/lzo:2
 	dev-libs/yajl
@@ -209,6 +208,10 @@ QA_PREBUILT="
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/xen-tools-m4-ptyfuncs.m4-tools-configure-add-linux-headers-for.patch"
+)
+
 pkg_setup() {
 	python_setup
 	export "CONFIG_LOMOUNT=y"
@@ -252,10 +255,11 @@ src_prepare() {
 	# collisions with app-emulation/qemu.
 	sed -i 's/qemu-bridge-helper/xen-bridge-helper/g' \
 		tools/qemu-xen/include/net/net.h \
-		tools/qemu-xen/Makefile \
+		tools/qemu-xen/meson.build \
 		tools/qemu-xen/qemu-bridge-helper.c \
 		tools/qemu-xen/qemu-options.hx \
 		|| die
+	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
 	if use ovmf; then
 		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
@@ -268,15 +272,6 @@ src_prepare() {
 		cp -r ../brotli-${EDK2_BROTLI_COMMIT} tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli || die
 		cp -r ../brotli-${EDK2_BROTLI_COMMIT} tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli || die
 		cp tools/firmware/ovmf-makefile tools/firmware/ovmf-dir-remote/Makefile || die
-
-		# Bug #816987
-		pushd tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli > /dev/null
-			eapply "${FILESDIR}/${PN}-4.15.1-brotli-gcc11.patch"
-		popd > /dev/null
-
-		pushd tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli > /dev/null
-			eapply "${FILESDIR}/${PN}-4.15.1-brotli-gcc11.patch"
-		popd > /dev/null
 	fi
 
 	# ipxe
@@ -287,8 +282,6 @@ src_prepare() {
 		cp "${XEN_GENTOO_PATCHES_DIR}/ipxe/${PN}-4.15.0-ipxe-gcc11.patch" tools/firmware/etherboot/patches/ipxe-gcc11.patch || die
 		echo ipxe-gcc11.patch >> tools/firmware/etherboot/patches/series || die
 	fi
-
-	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
 	# Fix texi2html build error with new texi2html, qemu.doc.html
 	sed -i -e "/texi2html -monolithic/s/-number//" tools/qemu-xen-traditional/Makefile || die
@@ -387,11 +380,11 @@ src_prepare() {
 
 	# Remove -Werror
 	find . -type f \( -name Makefile -o -name "*.mk" \) \
-		 -exec sed -i \
-		 -e 's/-Werror //g' \
-		 -e '/^CFLAGS *+= -Werror$/d' \
-		 -e 's/, "-Werror"//' \
-		 {} + || die
+		-exec sed -i \
+		-e 's/-Werror //g' \
+		-e '/^CFLAGS *+= -Werror$/d' \
+		-e 's/, "-Werror"//' \
+		{} + || die
 
 	default
 }
@@ -402,6 +395,7 @@ src_configure() {
 		--libexecdir="${EPREFIX}/usr/libexec"
 		--localstatedir="${EPREFIX}/var"
 		--disable-golang
+		--disable-pvshim
 		--disable-werror
 		--disable-xen
 		--enable-tools
@@ -412,6 +406,7 @@ src_configure() {
 		$(use_enable ocaml ocamltools)
 		$(use_enable ovmf)
 		$(use_enable rombios)
+		$(use_enable systemd)
 		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored')
 	)
 
@@ -436,7 +431,16 @@ src_compile() {
 		local -x NO_WERROR=1
 	fi
 
-	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" build-tools ${myopt}
+	emake \
+		HOSTCC="$(tc-getBUILD_CC)" \
+		HOSTCXX="$(tc-getBUILD_CXX)" \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
+		AR="$(tc-getAR)" \
+		OBJDUMP="$(tc-getOBJDUMP)" \
+		RANLIB="$(tc-getRANLIB)" \
+		build-tools ${myopt}
 
 	if use doc; then
 		emake -C docs build
@@ -515,27 +519,10 @@ src_install() {
 	fi
 
 	python_optimize
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog "Official Xen Guide and the offical wiki page:"
-	elog "https://wiki.gentoo.org/wiki/Xen"
-	elog "https://wiki.xen.org/wiki/Main_Page"
-	elog ""
-	elog "Recommended to utilise the xencommons script to config system at boot"
-	elog "Add by use of rc-update on completion of the install"
-
-	if ! use hvm; then
-		echo
-		elog "HVM (VT-x and AMD-V) support has been disabled. If you need hvm"
-		elog "support enable the hvm use flag."
-		elog "An x86 or amd64 system is required to build HVM support."
-	fi
-
-	if use qemu; then
-		elog "The qemu-bridge-helper is renamed to the xen-bridge-helper in the in source"
-		elog "build of qemu.  This allows for app-emulation/qemu to be emerged concurrently"
-		elog "with the qemu capable xen.  It is up to the user to distinguish between and utilise"
-		elog "the qemu-bridge-helper and the xen-bridge-helper. File bugs of any issues that arise"
-	fi
+	readme.gentoo_print_elog
 }
