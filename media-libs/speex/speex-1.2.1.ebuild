@@ -30,7 +30,10 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.2.0-configure.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.0-configure.patch
+	"${FILESDIR}"/${PN}-1.2.1-valgrind.patch
+)
 
 src_prepare() {
 	default
