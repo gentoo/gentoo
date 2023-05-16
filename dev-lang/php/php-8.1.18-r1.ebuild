@@ -5,13 +5,12 @@ EAPI="8"
 
 WANT_AUTOMAKE="none"
 
-inherit flag-o-matic multilib systemd autotools
+inherit flag-o-matic systemd autotools
 
 MY_PV=${PV/_rc/RC}
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
 SRC_URI="https://www.php.net/distributions/${P}.tar.xz"
-#SRC_URI="https://downloads.php.net/~pierrick/php-${MY_PV}.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
@@ -34,11 +33,11 @@ IUSE="${IUSE}
 	${SAPIS/cli/+cli}
 	threads"
 
-IUSE="${IUSE} acl apparmor argon2 bcmath berkdb bzip2 calendar cdb cjk
-	coverage +ctype curl debug
+IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
+	cdb cjk coverage +ctype curl debug
 	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
-	intl iodbc +jit kerberos ldap ldap-sasl libedit lmdb
+	intl iodbc ipv6 +jit kerberos ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline selinux +session session-mm sharedmem
@@ -50,6 +49,7 @@ IUSE="${IUSE} acl apparmor argon2 bcmath berkdb bzip2 calendar cdb cjk
 # The Oracle instant client provides its own incompatible ldap library.
 REQUIRED_USE="
 	|| ( cli cgi fpm apache2 embed phpdbg )
+	avif? ( gd zlib )
 	cli? ( ^^ ( readline libedit ) )
 	!cli? ( ?? ( readline libedit ) )
 	truetype? ( gd zlib )
@@ -80,9 +80,10 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=app-eselect/eselect-php-0.9.7[apache2?,fpm?]
 	>=dev-libs/libpcre2-10.30[jit?,unicode]
-	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) selinux? ( sys-libs/libselinux ) )
+	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
+	avif? ( media-libs/libavif:= )
 	berkdb? ( || (	sys-libs/db:5.3 sys-libs/db:4.8 ) )
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
@@ -257,13 +258,13 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var"
 		--without-pear
 		--without-valgrind
-		--enable-ipv6
 		$(use_enable threads zts)
 	)
 
 	our_conf+=(
 		$(use_with apparmor fpm-apparmor)
 		$(use_with argon2 password-argon2 "${EPREFIX}/usr")
+		$(use_with avif)
 		$(use_enable bcmath)
 		$(use_with bzip2 bz2 "${EPREFIX}/usr")
 		$(use_enable calendar)
@@ -283,6 +284,7 @@ src_configure() {
 		$(use_with iconv iconv \
 			$(use elibc_glibc || use elibc_musl || echo "${EPREFIX}/usr"))
 		$(use_enable intl)
+		$(use_enable ipv6)
 		$(use_with kerberos)
 		$(use_with xml libxml)
 		$(use_enable unicode mbstring)
@@ -293,7 +295,6 @@ src_configure() {
 		$(use_enable opcache)
 		$(use_with postgres pgsql "${EPREFIX}/usr")
 		$(use_enable posix)
-		$(use_with selinux fpm-selinux)
 		$(use_with spell pspell "${EPREFIX}/usr")
 		$(use_enable simplexml)
 		$(use_enable sharedmem shmop)
@@ -362,7 +363,7 @@ src_configure() {
 	fi
 
 	# MySQL support
-	our_conf+=( $(use_with mysqli) )
+	our_conf+=( $(use_with mysqli mysqli "mysqlnd") )
 
 	local mysqlsock="${EPREFIX}/var/run/mysqld/mysqld.sock"
 	if use mysql || use mysqli ; then
