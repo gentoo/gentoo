@@ -135,8 +135,8 @@ src_unpack() {
 src_prepare() {
 	cmake_src_prepare
 
-	sed -e "/EmuFolders::AppRoot =/s|=.*|= \"${EPREFIX}/usr/share/${PN}\";|" \
-		-i pcsx2/Frontend/CommonHost.cpp || die
+	sed -e "/AppRoot =/s|=.*|= \"${EPREFIX}/usr/share/${PN}\";|" \
+		-i pcsx2/Pcsx2Config.cpp || die
 
 	if [[ ${PV} != 9999 ]]; then
 		sed -e '/set(PCSX2_GIT_TAG "")/s/""/"v'${PV}-gentoo'"/' \
