@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,28 +28,34 @@ SLOT="0"
 IUSE="+kmod rule-generator selinux split-usr static-libs test"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=sys-apps/util-linux-2.20
+DEPEND="
+	>=sys-apps/util-linux-2.20
 	>=sys-kernel/linux-headers-${KV_MIN}
 	virtual/libcrypt:=
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 	!sys-apps/gentoo-systemd-integration
-	!sys-apps/systemd"
-RDEPEND="${DEPEND}
+	!sys-apps/systemd
+"
+RDEPEND="
+	${DEPEND}
 	acct-group/input
 	acct-group/kvm
 	acct-group/render
 	!sys-apps/systemd-utils[udev]
 	!sys-fs/udev
 	!sys-apps/systemd
-	!sys-apps/hwids[udev]"
-BDEPEND="dev-util/gperf
+	!sys-apps/hwids[udev]
+"
+BDEPEND="
+	dev-util/gperf
 	virtual/os-headers
 	virtual/pkgconfig
 	test? (
 		app-text/tree
 		dev-lang/perl
-	)"
+	)
+"
 PDEPEND=">=sys-fs/udev-init-scripts-26"
 
 MULTILIB_WRAPPED_HEADERS=(
