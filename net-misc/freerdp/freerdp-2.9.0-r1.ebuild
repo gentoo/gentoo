@@ -1,4 +1,4 @@
-# Copyright 2011-2022 Gentoo Authors
+# Copyright 2011-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg kerberos openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -55,6 +55,7 @@ RDEPEND="
 		x11-libs/libXrandr
 	)
 	jpeg? ( media-libs/libjpeg-turbo:0= )
+	kerberos? ( virtual/krb5 )
 	openh264? ( media-libs/openh264:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	server? (
@@ -106,6 +107,7 @@ src_configure() {
 		-DWITH_DSP_FFMPEG=$(usex ffmpeg ON OFF)
 		-DWITH_GSTREAMER_1_0=$(usex gstreamer ON OFF)
 		-DWITH_JPEG=$(usex jpeg ON OFF)
+		-DWITH_GSSAPI=$(usex kerberos ON OFF)
 		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
 		-DWITH_OPENH264=$(usex openh264 ON OFF)
 		-DWITH_PULSE=$(usex pulseaudio ON OFF)
