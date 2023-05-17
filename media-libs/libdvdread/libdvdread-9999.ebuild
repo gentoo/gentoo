@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,8 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 fi
 
-LICENSE="GPL-2"
+# See https://code.videolan.org/videolan/libdvdread/-/commit/0e020921726ee812e633959d9ad6315ff58b902b
+LICENSE="GPL-2 GPL-3"
 SLOT="0/8" # libdvdread.so.VERSION
 IUSE="+css static-libs"
 
