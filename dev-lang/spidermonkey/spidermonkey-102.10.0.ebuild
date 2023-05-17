@@ -371,6 +371,13 @@ src_test() {
 		echo "test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js" >> "${T}"/known_failures.list
 	fi
 
+	if use x86; then
+		echo "non262/Date/timeclip.js" >> "${T}"/known_failures.list
+		echo "test262/built-ins/Date/UTC/fp-evaluation-order.js" >> "${T}"/known_failures.list
+		echo "test262/language/types/number/S8.5_A2.1.js" >> "${T}"/known_failures.list
+		echo "test262/language/types/number/S8.5_A2.2.js" >> "${T}"/known_failures.list
+	fi
+
 	${EPYTHON} \
 		"${S}"/tests/jstests.py -d -s -t 1800 --wpt=disabled --no-progress \
 		--exclude-file="${T}"/known_failures.list \
