@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Software https://gitlab.gnome.org/GNOME/gn
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="flatpak +firmware gnome gtk-doc sysprof udev test"
 
 RDEPEND="
