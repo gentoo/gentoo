@@ -66,7 +66,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.20-example.conf.in.patch
 
 	# For upstream -- review and forward:
-	"${FILESDIR}"/${PN}-2.03.20-locale-muck.patch #330373
 	"${FILESDIR}"/${PN}-2.03.20-dmeventd-no-idle-exit.patch
 	"${FILESDIR}"/${PN}-2.03.20-freopen-musl.patch
 )
