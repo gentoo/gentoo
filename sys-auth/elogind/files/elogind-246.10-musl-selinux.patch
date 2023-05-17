@@ -72,7 +72,7 @@ not otherwise.
          before_timestamp = now(CLOCK_MONOTONIC);
  
          label_hnd = selabel_open(SELABEL_CTX_FILE, NULL, 0);
-@@ -95,14 +106,16 @@ int mac_selinux_init(void) {
+@@ -95,14 +107,17 @@ int mac_selinux_init(void) {
                  return log_enforcing_errno(errno, "Failed to initialize SELinux labeling handle: %m");
  
          after_timestamp = now(CLOCK_MONOTONIC);
@@ -91,6 +91,7 @@ not otherwise.
 +#else
 +        log_debug("Successfully loaded SELinux database in %s.",
 +                  format_timespan(timespan, sizeof(timespan), after_timestamp - before_timestamp, 0));
++#endif
  #endif
          return 0;
  }
