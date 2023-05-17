@@ -49,6 +49,7 @@ src_configure() {
 	# docbook-sgml-utils among other things.
 	#ALLOWED_FLAGS="-O -O1 -O2 -pipe -g -march"
 	strip-flags
+	filter-lto
 
 	append-cxxflags -std=gnu++11
 
