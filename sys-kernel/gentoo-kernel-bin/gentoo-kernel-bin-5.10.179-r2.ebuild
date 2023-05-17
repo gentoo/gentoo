@@ -7,7 +7,7 @@ inherit kernel-install toolchain-funcs unpacker
 
 MY_P=linux-${PV%.*}
 GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 10 ))
-BINPKG=${P/-bin}-1
+BINPKG=${PF/-bin}-1
 
 DESCRIPTION="Pre-built Linux kernel with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
