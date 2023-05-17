@@ -12,7 +12,7 @@ SRC_URI="https://download.libguestfs.org/nbdkit/$(ver_cut 1-2)-stable/${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~sparc ~x86"
 IUSE="curl ext2 nbd gnutls libguestfs libssh libvirt lzma selinux torrent valgrind zlib zstd"
 
 RDEPEND="
