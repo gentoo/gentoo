@@ -149,6 +149,12 @@
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
+# @ECLASS_VARIABLE: KV_OBJ_COMPRESS_EXT
+# @INTERNAL
+# @DESCRIPTION:
+# Read-only variable. It contains the compression extension of the kernel
+# modules (.xz, .gz, .zst)
+
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -385,7 +391,7 @@ generate_modulesd() {
 
 		# OK so now if we have got this far, then we know we want to continue
 		# and generate the modprobe.d file.
-		module_modinfo="$(modinfo -p ${currm_path}.${KV_OBJ})"
+		module_modinfo="$(modinfo -p ${currm_path}.${KV_OBJ}${KV_OBJ_COMPRESS_EXT})"
 		module_config="${T}/modulesd-${currm}"
 
 		ebegin "Preparing file for modprobe.d"
@@ -684,6 +690,7 @@ linux-mod_src_install() {
 		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
 			xz -T$(makeopts_jobs) --memlimit-compress=50% -q ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
 			doins ${modulename}.${KV_OBJ}.xz
+			KV_OBJ_COMPRESS_EXT=".xz"
 		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
 			if type -P pigz &>/dev/null ; then
 				pigz -p$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with pigz failed"
@@ -691,9 +698,11 @@ linux-mod_src_install() {
 				gzip ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with gzip failed"
 			fi
 			doins ${modulename}.${KV_OBJ}.gz
+			KV_OBJ_COMPRESS_EXT=".gz"
 		elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
 			zstd -T$(makeopts_jobs) ${modulename}.${KV_OBJ} || "Compressing ${modulename}.${KV_OBJ} with zstd failed"
 			doins ${modulename}.${KV_OBJ}.zst
+			KV_OBJ_COMPRESS_EXT=".zst"
 		else
 			doins ${modulename}.${KV_OBJ}
 		fi
