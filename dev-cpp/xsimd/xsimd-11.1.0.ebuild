@@ -25,6 +25,8 @@ BDEPEND="
 	)
 	test? ( dev-cpp/doctest )"
 
+PATCHES=( "${FILESDIR}"/${P}-c++17.patch )
+
 src_prepare() {
 	sed -i \
 		-e '/fPIC/d' \
