@@ -9,11 +9,11 @@ media-gfx/graphicsmagick jpegxl
 media-gfx/imagemagick jpegxl
 media-libs/imlib2 jpegxl
 
-# Matt Turner <tetromino@gentoo.org> (2023-02-15)
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
 # pandoc not keyworded here, bug #878355
 app-admin/conky doc
 
-# Matt Turner <tetromino@gentoo.org> (2023-02-15)
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
 # net-libs/libqmi and net-libs/libqrtr-glib are not keyworded here
 net-misc/modemmanager qmi qrtr
 
