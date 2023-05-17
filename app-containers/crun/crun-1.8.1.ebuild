@@ -67,4 +67,7 @@ src_install() {
 	emake "DESTDIR=${D}" install-exec
 	doman crun.1
 	einstalldocs
+
+	einfo "Cleaning up .la files"
+	find "${ED}" -name '*.la' -delete || die
 }
