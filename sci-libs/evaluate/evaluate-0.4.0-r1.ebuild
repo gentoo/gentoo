@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_11 )
+DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="makes evaluating, comparing models and reporting their performance easier"
@@ -20,12 +21,17 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	dev-python/pyarrow[${PYTHON_USEDEP},parquet]
-	dev-python/unidecode[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyarrow[${PYTHON_USEDEP},parquet]
+		dev-python/unidecode[${PYTHON_USEDEP}]
+	')
+	sci-libs/datasets[${PYTHON_SINGLE_USEDEP}]
 "
 BDEPEND="test? (
-	sci-libs/jiwer[${PYTHON_USEDEP}]
-	sci-libs/seqeval[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		sci-libs/jiwer[${PYTHON_USEDEP}]
+		sci-libs/seqeval[${PYTHON_USEDEP}]
+	')
 )"
 
 PATCHES=( "${FILESDIR}"/${P}-tests.patch )
