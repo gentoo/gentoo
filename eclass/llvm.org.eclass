@@ -248,7 +248,7 @@ llvm.org_set_globals() {
 			"
 			BDEPEND+="
 				verify-sig? (
-					>=sec-keys/openpgp-keys-llvm-15
+					>=sec-keys/openpgp-keys-llvm-16.0.4
 				)
 			"
 			VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
