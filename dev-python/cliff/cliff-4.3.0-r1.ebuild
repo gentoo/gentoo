@@ -22,13 +22,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 ~riscv ~s390 ~sparc
 RDEPEND="
 	>=dev-python/autopage-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/cmd2-0.8.0[${PYTHON_USEDEP}]
+	>=dev-python/importlib-metadata-4.11.1[${PYTHON_USEDEP}]
 	dev-python/prettytable[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/stevedore-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib-metadata-4.11.1[${PYTHON_USEDEP}]
-	' 3.8 3.9)
+	>=dev-python/stevedore-2.0.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
