@@ -19,18 +19,23 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+hwdata liftoff +seatd tinywl +udev vulkan x11-backend xcb-errors X"
+IUSE="liftoff +libinput +drm +session tinywl vulkan x11-backend xcb-errors X"
+REQUIRED_USE="drm? ( session ) libinput? ( session )"
 
 DEPEND="
-	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.22.0
 	>=dev-libs/wayland-protocols-1.28
+	drm? (
+		liftoff? ( dev-libs/libliftoff )
+		media-libs/libdisplay-info
+		sys-apps/hwdata:=
+	)
+	libinput? ( >=dev-libs/libinput-1.14.0:0= )
 	media-libs/mesa[egl(+),gles2]
-	media-libs/libdisplay-info
-	hwdata? ( sys-apps/hwdata:= )
-	liftoff? ( dev-libs/libliftoff )
-	seatd? ( sys-auth/seatd:= )
-	udev? ( virtual/libudev )
+	session? (
+		sys-auth/seatd:=
+		virtual/libudev
+	)
 	vulkan? (
 		dev-util/glslang:0=
 		dev-util/vulkan-headers:0=
@@ -60,20 +65,20 @@ BDEPEND="
 "
 
 src_configure() {
+	local backends="$(usex drm 'drm,' '')"
+	backends+="$(usex libinput 'libinput,' '')"
+	backends+="$(usex x11-backend 'x11,' '')"
+	# Get rid of a trailing comma
+	backends="${backends%,}"
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
-		"-Dxcb-errors=disabled"
 		-Dxcb-errors=$(usex xcb-errors enabled disabled)
 		$(meson_use tinywl examples)
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
-		-Dbackends=drm,libinput$(usex x11-backend ',x11' '')
+		-Dbackends="${backends}"
+		-Dsession=$(usex session enabled disabled)
 	)
-	if use udev; then
-		emesonargs+=(-Dsession=$(usex seatd enabled disabled))
-	else
-		emesonargs+=(-Dsession=disabled)
-	fi
 
 	meson_src_configure
 }
