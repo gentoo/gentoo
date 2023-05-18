@@ -84,6 +84,7 @@ DOCS=( "AUTHORS" "ChangeLog" "HACKING" "NEWS" "README" "README.i18n" )
 PATCHES=(
 	"${FILESDIR}/${PN}-2.10_fix_test-appdata.patch" # Bugs 685210 (and duplicate 691070)
 	"${FILESDIR}/${PN}-2.10_fix_musl_backtrace_backend_switch.patch" #900148
+	"${FILESDIR}/${PN}-2.10_fix_configure_GCC13_implicit_function_declarations.patch" #899796
 )
 
 src_prepare() {
