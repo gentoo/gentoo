@@ -18,7 +18,7 @@ RDEPEND="
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
 
-	app-arch/gzip
+	app-alternatives/gzip
 	app-arch/ncompress
 "
 DEPEND="${RDEPEND}
