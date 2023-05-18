@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-05-19)
+# Abandoned, NIH library only used by other obsolete packages like gkeys
+# and layman, use app-crypt/gpgme[python] as a proper upstream
+# supported gpg library. Removal on 2023-06-18.
+dev-python/pyGPG
+
+# David Seifert <soap@gentoo.org> (2023-05-19)
 # Abandoned, replaced by 'eselect repository', tons of open bugs.
 # Removal on 2023-06-18. Bug #761199.
 app-portage/layman
