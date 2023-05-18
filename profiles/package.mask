@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-05-19)
+# Depends on obsolete app-portage/g-sorcery.
+# Removal on 2023-06-18.
+app-portage/gs-elpa
+
+# David Seifert <soap@gentoo.org> (2023-05-19)
 # Abandoned, NIH library only used by other obsolete packages like gkeys
 # and layman, use app-crypt/gpgme[python] as a proper upstream
 # supported gpg library. Removal on 2023-06-18.
