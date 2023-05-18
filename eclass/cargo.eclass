@@ -35,7 +35,8 @@ case ${EAPI} in
 		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
 		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
 		# 1.56 added patch and env config option
-		RUST_DEPEND=">=virtual/rust-1.56"
+		# 1.57 added custom profiles
+		RUST_DEPEND=">=virtual/rust-1.57"
 
 		if [[ -z ${CRATES} && "${PV}" != *9999* ]]; then
 			eerror "undefined CRATES variable in non-live EAPI=8 ebuild"
@@ -76,6 +77,23 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @INTERNAL
 # @DESCRIPTION:
 # Bash string containing the Cargo working directory.
+
+# @ECLASS_VARIABLE: ECARGO_PROFILE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Specify a custom profile from Cargo.toml for cargo_src_{compile,test,install}.
+# It defaults to "release" if unset.  If the debug USE flag is set, this variable is
+# ignored.
+#
+# Exemplary Cargo.toml snippet and corresponding ebuild snippet:
+# @CODE
+# [profile.release-debug-info]
+# inherits = "release"
+# debug = true
+# @CODE
+# @CODE
+# ECARGO_PROFILE="release-debug-info"
+# @CODE
 
 # @ECLASS_VARIABLE: ECARGO_VENDOR
 # @INTERNAL
@@ -504,7 +522,9 @@ cargo_src_compile() {
 
 	tc-export AR CC CXX PKG_CONFIG
 
-	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	set -- cargo build \
+		--profile $(usex debug dev "${ECARGO_PROFILE:-release}") \
+		${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo build failed"
 }
@@ -524,7 +544,7 @@ cargo_src_install() {
 	set -- cargo install $(has --path ${@} || echo --path ./) \
 		--root "${ED}/usr" \
 		${GIT_CRATES[@]:+--frozen} \
-		$(usex debug --debug "") \
+		--profile $(usex debug dev "${ECARGO_PROFILE:-release}") \
 		${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo install failed"
@@ -553,7 +573,9 @@ cargo_src_test() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
-	set -- cargo test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	set -- cargo test \
+		--profile $(usex debug test "${ECARGO_PROFILE:-release}") \
+		${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo test failed"
 }
