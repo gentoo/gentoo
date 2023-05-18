@@ -31,6 +31,11 @@ RDEPEND="
 	${DEPEND}
 "
 
+PATCHES=(
+	# https://bugs.gentoo.org/906644
+	"${FILESDIR}/${P}-header.patch"
+)
+
 src_configure() {
 	# remove bundled libs (just in case)
 	rm -rf internal-complibs || die
