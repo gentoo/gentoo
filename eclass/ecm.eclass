@@ -148,7 +148,8 @@ fi
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. Default value for kde-frameworks
 # is ${PV} and 5.106.0 baseline for everything else.
-# Version will also be used to differentiate between KF5/Qt5 and KF6/Qt6.
+# If set to >=5.240, KF6/Qt6 is assumed thus SLOT=6 dependencies added and
+# -DQT_MAJOR_VERSION=6 added to cmake args.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: "${KFMIN:=$(ver_cut 1-2)}"
 fi
@@ -158,8 +159,16 @@ fi
 # @INTERNAL
 # @DESCRIPTION:
 # KDE Frameworks and Qt slot dependency, implied by KFMIN version.
-: ${_KFSLOT:=5}
-[[ ${KFMIN/.*} == 6 ]] && _KFSLOT=6
+: "${_KFSLOT:=5}"
+if [[ ${CATEGORY} == kde-frameworks ]]; then
+	if [[ ${PV} != 5.9999 ]] && $(ver_test ${KFMIN} -ge 5.240); then
+		_KFSLOT=6
+	fi
+else
+	if [[ ${KFMIN/.*} == 6 ]] || $(ver_test ${KFMIN} -ge 5.240); then
+		_KFSLOT=6
+	fi
+fi
 
 case ${ECM_NONGUI} in
 	true) ;;
@@ -533,6 +542,10 @@ ecm_src_configure() {
 	fi
 
 	local cmakeargs
+
+	if [[ ${_KFSLOT} == 6 ]]; then
+		cmakeargs+=( -DQT_MAJOR_VERSION=6 )
+	fi
 
 	if in_iuse test && ! use test ; then
 		cmakeargs+=( -DBUILD_TESTING=OFF )
