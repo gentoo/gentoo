@@ -35,7 +35,12 @@
 
 # David Seifert <soap@gentoo.org> (2023-05-19)
 # EAPI 6, abandoned, never went anywhere, long obsolete with
-# app-crypt/gkeys removal. Removal on 2023-06-18. Bug #566782, #659822
+# app-crypt/gkeys removal.
+# Use these instead:
+# sec-keys/openpgp-keys-gentoo-auth
+# sec-keys/openpgp-keys-gentoo-developers
+# sec-keys/openpgp-keys-gentoo-release
+# Removal on 2023-06-18. Bug #566782, #659822
 app-crypt/gentoo-keys
 
 # Thomas Beierlein <tomjbe@gentoo.org> (2023-05-17)
