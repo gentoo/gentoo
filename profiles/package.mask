@@ -32,6 +32,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# David Seifert <soap@gentoo.org> (2023-05-19)
+# EAPI 6, abandoned, never went anywhere, long obsolete with
+# app-crypt/gkeys removal. Removal on 2023-06-18. Bug #566782, #659822
+app-crypt/gentoo-keys
+
 # Thomas Beierlein <tomjbe@gentoo.org> (2023-05-17)
 # Functionality got integrated into >=net-wireless/gnuradio-3.10
 # itself. See
