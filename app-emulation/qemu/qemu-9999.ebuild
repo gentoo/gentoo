@@ -833,7 +833,7 @@ src_install() {
 	doins "${FILESDIR}/bridge.conf"
 
 	cd "${S}" || die
-	dodoc MAINTAINERS docs/specs/pci-ids.txt
+	dodoc MAINTAINERS
 	newdoc pc-bios/README README.pc-bios
 
 	# Disallow stripping of prebuilt firmware files.
