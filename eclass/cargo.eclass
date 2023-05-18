@@ -34,7 +34,8 @@ case ${EAPI} in
 		# 1.51 added split-debuginfo profile option
 		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
 		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
-		RUST_DEPEND=">=virtual/rust-1.53"
+		# 1.56 added patch and env config option
+		RUST_DEPEND=">=virtual/rust-1.56"
 
 		if [[ -z ${CRATES} && "${PV}" != *9999* ]]; then
 			eerror "undefined CRATES variable in non-live EAPI=8 ebuild"
