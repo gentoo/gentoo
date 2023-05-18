@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-05-19)
+# Abandoned, replaced by 'eselect repository', tons of open bugs.
+# Removal on 2023-06-18. Bug #761199.
+app-portage/layman
+
+# David Seifert <soap@gentoo.org> (2023-05-19)
 # Depends on app-portage/layman. Removal on 2023-06-18.
 app-portage/g-sorcery
 
