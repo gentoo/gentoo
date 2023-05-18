@@ -111,6 +111,10 @@ BDEPEND="
 
 DOCS=( "AUTHORS" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.10_fix_musl_backtrace_backend_switch.patch" #900148
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 
