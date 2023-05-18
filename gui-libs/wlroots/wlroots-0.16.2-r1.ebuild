@@ -14,19 +14,19 @@ if [[ ${PV} == 9999 ]]; then
 	SLOT="0/9999"
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SLOT="0/$(ver_cut 2)"
 fi
 
 LICENSE="MIT"
-IUSE="tinywl vulkan x11-backend X"
+IUSE="+drm +libinput tinywl vulkan x11-backend X"
 
 DEPEND="
-	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.21.0
 	>=dev-libs/wayland-protocols-1.28
+	drm? ( sys-apps/hwdata:= )
+	libinput? ( >=dev-libs/libinput-1.14.0:0= )
 	media-libs/mesa[egl(+),gles2]
-	sys-apps/hwdata:=
 	sys-auth/seatd:=
 	virtual/libudev
 	vulkan? (
@@ -57,13 +57,20 @@ BDEPEND="
 "
 
 src_configure() {
+	local backends=(
+		$(usev drm)
+		$(usev libinput)
+		$(usev x11-backend 'x11')
+	)
+	# Separate values with a comma with this evil floating point bit hack
+	local meson_backends=$(IFS=','; echo "${backends[*]}")
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
 		"-Dxcb-errors=disabled"
 		$(meson_use tinywl examples)
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
-		-Dxwayland=$(usex X enabled disabled)
-		-Dbackends=drm,libinput$(usex x11-backend ',x11' '')
+		$(meson_feature X xwayland)
+		-Dbackends=${meson_backends}
 	)
 
 	meson_src_configure
