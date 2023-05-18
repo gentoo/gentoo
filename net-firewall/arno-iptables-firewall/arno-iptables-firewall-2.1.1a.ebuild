@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="Arno's iptables firewall script"
@@ -14,7 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+plugins rsyslog"
 
-DEPEND=""
 RDEPEND="
 	net-firewall/ipset
 	net-firewall/iptables
