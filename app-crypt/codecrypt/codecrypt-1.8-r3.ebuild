@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -14,18 +14,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+cryptopp"
 
-DEPEND="dev-libs/gmp:=
-	cryptopp? ( >=dev-libs/crypto++-7:= )
-	sci-libs/fftw:3.0="
+DEPEND="
+	dev-libs/gmp:=
+	sci-libs/fftw:3.0=
+	cryptopp? ( >=dev-libs/crypto++-7:= )"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-libcryptopp.pc-rename.patch )
+
 src_prepare() {
 	default
-	# workaround -- the library renamed the pkg-config file
-	sed -i -e 's/PKG_CHECK_MODULES(\[CRYPTOPP\],.*/PKG_CHECK_MODULES([CRYPTOPP], [libcryptopp])/' configure.ac || die
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_with cryptopp)
+	econf $(use_with cryptopp)
 }
