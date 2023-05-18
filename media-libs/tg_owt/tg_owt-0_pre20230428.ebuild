@@ -63,6 +63,7 @@ DEPEND="${RDEPEND}
 		media-libs/mesa
 		x11-libs/libdrm
 	)
+	X? ( x11-base/xorg-proto )
 "
 BDEPEND="virtual/pkgconfig"
 
