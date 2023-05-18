@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-python/trio-0.17[${PYTHON_USEDEP}]
 	<dev-python/trio-websocket-1[${PYTHON_USEDEP}]
 	>=dev-python/trio-websocket-0.9[${PYTHON_USEDEP}]
-	<dev-python/urllib3-2[${PYTHON_USEDEP}]
+	<dev-python/urllib3-3[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.26[${PYTHON_USEDEP}]
 "
 BDEPEND="
