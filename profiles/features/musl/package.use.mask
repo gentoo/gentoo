@@ -91,6 +91,7 @@ sys-apps/man-pages l10n_sr l10n_sv l10n_uk l10n_vi
 sys-apps/man-pages l10n_ja l10n_ru l10n_zh-CN
 sys-apps/sysvinit nls
 sys-auth/sssd man
+sys-apps/util-linux nls
 
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Disable some sanitizers for LLVM, see bug #753935
