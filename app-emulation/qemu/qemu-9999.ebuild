@@ -302,9 +302,8 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-8.0.0-make.patch
-	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
-	"${FILESDIR}"/${PN}-8.0.0-remove-python-meson-check.patch
+	"${FILESDIR}"/${PN}-8.1.0-also-build-virtfs-proxy-helper.patch
 )
 
 QA_PREBUILT="
@@ -450,7 +449,7 @@ src_prepare() {
 	sed -i -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' configure || die
 
 	# Remove bundled modules
-	rm -r dtc meson roms/*/ || die
+	rm -r dtc roms/*/ || die
 }
 
 ##
