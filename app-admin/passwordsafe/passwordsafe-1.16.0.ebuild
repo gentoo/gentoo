@@ -35,11 +35,6 @@ BDEPEND="
 	sys-devel/gettext
 	test? ( dev-cpp/gtest )"
 
-pkg_pretend() {
-	einfo "Checking for -std=c++11 support in compiler"
-	test-flags-CXX -std=c++11 > /dev/null || die
-}
-
 src_configure() {
 	setup-wxwidgets
 
