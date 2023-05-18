@@ -1,0 +1,41 @@
+From 40db21129c0ba08ea457b6e40e7357e86ea1404b Mon Sep 17 00:00:00 2001
+From: Raul E Rangel <rrangel@chromium.org>
+Date: Fri, 28 Jul 2023 15:50:49 -0600
+Subject: [PATCH] hints/linux: Add additional expression when matching clang
+
+Newer versions of clang actually print the distro before `clang` when
+calling `$CC --version`. This changes fixes the regex so it can match
+this new pattern.
+
+i.e.,
+
+	$ clang --version
+	Debian clang version 14.0.6
+
+	$ x86_64-pc-linux-gnu-clang --version
+	Chromium OS 17.0_pre496208_p20230501-r1 clang version 17.0.0
+
+Fixes #21099
+
+BUG=b:283275881
+See: https://github.com/Perl/perl5/issues/21099
+---
+ hints/linux.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hints/linux.sh b/hints/linux.sh
+index e1508c7509..5202b28b09 100644
+--- a/hints/linux.sh
++++ b/hints/linux.sh
+@@ -166,7 +166,7 @@ esac
+ if [ -x /usr/bin/gcc ] ; then
+     gcc=/usr/bin/gcc
+ # clang also provides -print-search-dirs
+-elif ${cc:-cc} --version 2>/dev/null | grep -q '^clang ' ; then
++elif ${cc:-cc} --version 2>/dev/null | grep -q -e '^clang version' -e ' clang version'; then
+     gcc=${cc:-cc}
+ else
+     gcc=gcc
+-- 
+2.41.0.585.gd2178a4bd4-goog
+

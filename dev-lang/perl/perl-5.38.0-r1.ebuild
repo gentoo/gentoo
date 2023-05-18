@@ -395,6 +395,10 @@ src_prepare() {
 	# add_patch "${FILESDIR}/${PN}-5.26.2-hppa.patch" "100-5.26.2-hppa.patch"\
 	#		"Fix broken miniperl on hppa"\
 	#		"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
+	add_patch "${FILESDIR}/${PN}-5.36.0-fix-configure-for-clang.patch" \
+			"100-5.36.0-fix-configure-for-clang.patch" \
+			"Fix clang check in configure" \
+			"https://github.com/Perl/perl5/issues/21099"
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
