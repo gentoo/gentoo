@@ -243,11 +243,6 @@ dev-java/resin-servlet-api
 # Bug #899218, bug #899218, bug #796599, bug #672326, bug #788844.
 net-p2p/litecoind
 
-# Sam James <sam@gentoo.org> (2023-04-18)
-# Fails to compile with GCC 13, no upstream activity.
-# Removal on 2023-05-18.  Bug #895206.
-sci-geosciences/congen
-
 # Sam James <sam@gentoo.org> (2023-04-16)
 # SEEK_HOLE issues causing corruption with (sparse?) copies again.
 # See https://github.com/openzfs/zfs/issues/14753.
