@@ -39,11 +39,6 @@
 dev-python/pep517
 
 # David Seifert <soap@gentoo.org> (2023-05-19)
-# Depends on obsolete app-portage/g-sorcery.
-# Removal on 2023-06-18.
-app-portage/gs-elpa
-
-# David Seifert <soap@gentoo.org> (2023-05-19)
 # Abandoned, NIH library only used by other obsolete packages like gkeys
 # and layman, use app-crypt/gpgme[python] as a proper upstream
 # supported gpg library. Removal on 2023-06-18.
@@ -53,10 +48,6 @@ dev-python/pyGPG
 # Abandoned, replaced by 'eselect repository', tons of open bugs.
 # Removal on 2023-06-18. Bug #761199.
 app-portage/layman
-
-# David Seifert <soap@gentoo.org> (2023-05-19)
-# Depends on app-portage/layman. Removal on 2023-06-18.
-app-portage/g-sorcery
 
 # David Seifert <soap@gentoo.org> (2023-05-19)
 # EAPI 6, abandoned, never went anywhere, long obsolete with
