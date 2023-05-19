@@ -96,38 +96,6 @@ games-emulation/pcsxr
 gnome-extra/gucharmap:0
 
 # Matt Turner <mattst88@gentoo.org> (2023-05-11)
-# Dictionaries for app-text/stardict which is masked for removal.
-# Bug #905901. Removal on 2023-06-11
-app-dicts/stardict-cdict-en-zh-big5
-app-dicts/stardict-cdict-en-zh-gb
-app-dicts/stardict-cedict-zh-en-big5
-app-dicts/stardict-cedict-zh-en-gb
-app-dicts/stardict-dictd-devils
-app-dicts/stardict-freedict-eng-deu
-app-dicts/stardict-freedict-eng-fra
-app-dicts/stardict-freedict-eng-ita
-app-dicts/stardict-freedict-eng-lat
-app-dicts/stardict-freedict-eng-rus
-app-dicts/stardict-freedict-eng-spa
-app-dicts/stardict-freedict-eng-swe
-app-dicts/stardict-freedict-eng-tur
-app-dicts/stardict-freedict-tur-deu
-app-dicts/stardict-freedict-tur-eng
-app-dicts/stardict-jmdict-en-ja
-app-dicts/stardict-jmdict-ja-en
-app-dicts/stardict-langdao-en-zh-gb
-app-dicts/stardict-langdao-zh-en-gb
-app-dicts/stardict-mova-smiley
-app-dicts/stardict-oxford-en-zh-gb
-app-dicts/stardict-quick-eng-jpn
-app-dicts/stardict-quick-jpn-eng
-app-dicts/stardict-quick-ru-en
-app-dicts/stardict-xdict-en-zh-big5
-app-dicts/stardict-xdict-en-zh-gb
-app-dicts/stardict-xdict-zh-en-big5
-app-dicts/stardict-xdict-zh-en-gb
-
-# Matt Turner <mattst88@gentoo.org> (2023-05-11)
 # Depends on many deprecated packages, such as
 # 	- app-text/enchant:0
 # 	- app-text/gnome-doc-utils
