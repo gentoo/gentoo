@@ -36,7 +36,6 @@ BDEPEND="
 	${RDEPEND}
 	test? (
 		dev-python/build[${PYTHON_USEDEP}]
-		dev-python/pep517[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/tomli-w[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
