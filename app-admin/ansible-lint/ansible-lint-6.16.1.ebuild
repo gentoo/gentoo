@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP}]
 	>=dev-python/rich-12.0.0[${PYTHON_USEDEP}]
-	>=dev-python/ruamel-yaml-0.17.24[${PYTHON_USEDEP}]
+	>=dev-python/ruamel-yaml-0.17.0[${PYTHON_USEDEP}]
 	>=dev-python/wcmatch-8.3.2[${PYTHON_USEDEP}]
 	>=dev-util/yamllint-1.30.0[${PYTHON_USEDEP}]
 	dev-vcs/git"
