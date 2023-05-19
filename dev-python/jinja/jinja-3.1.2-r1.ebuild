@@ -28,6 +28,7 @@ IUSE="examples"
 RDEPEND="
 	>=dev-python/markupsafe-2.0.0[${PYTHON_USEDEP}]
 "
+DEPEND="${RDEPEND}"
 
 distutils_enable_sphinx docs \
 	dev-python/sphinx-issues \
