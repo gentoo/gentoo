@@ -9,7 +9,7 @@ inherit autotools edo flag-o-matic multilib multilib-build
 inherit python-any-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
-WINE_MONO=7.4.0
+WINE_MONO=8.0.0
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
