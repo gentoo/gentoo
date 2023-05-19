@@ -6,7 +6,7 @@ EAPI=8
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-cmake-docs
 # Set to 1 if prebuilt, 0 if not
 # (the construct below is to allow overriding from env for script)
-: ${CMAKE_DOCS_PREBUILT:=0}
+: ${CMAKE_DOCS_PREBUILT:=1}
 
 CMAKE_DOCS_PREBUILT_DEV=sam
 #CMAKE_DOCS_VERSION=$(ver_cut 1-3)
