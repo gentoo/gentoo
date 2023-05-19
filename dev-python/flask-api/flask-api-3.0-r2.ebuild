@@ -23,8 +23,10 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+# tests are broken with 2.3, I don't know if the code works
+# https://github.com/flask-api/flask-api/issues/151
 RDEPEND="
-	dev-python/flask[${PYTHON_USEDEP}]
+	<dev-python/flask-2.3[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 "
 
