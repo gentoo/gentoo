@@ -32,7 +32,7 @@ REQUIRED_USE="autotype? ( X )"
 
 RDEPEND="
 	app-crypt/argon2:=
-	dev-libs/botan:3=
+	dev-libs/botan:2=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -62,6 +62,8 @@ BDEPEND="
 	doc? ( dev-ruby/asciidoctor )
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-2.7.4-tests.patch )
+
 src_prepare() {
 	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *9999 ]] && [[ ! -f .version ]] ; then
 		printf '%s' "${PV}" > .version || die
@@ -83,7 +85,6 @@ src_configure() {
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
 		-DWITH_XC_DOCS="$(usex doc)"
 		-DWITH_XC_BROWSER="$(usex browser)"
-		-DWITH_XC_BOTAN3=ON
 		-DWITH_XC_FDOSECRETS=ON
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
 		-DWITH_XC_NETWORKING="$(usex network)"
