@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-05-19)
+# kde-frameworks/kwayland:5 is not keyworded here.
+app-crypt/pinentry wayland
+
 # Sam James <sam@gentoo.org> (2023-05-06)
 # sci-libs/vtk not keyworded here (+ lots of unkw'd deps), bug #778293
 sci-mathematics/maxima vtk
