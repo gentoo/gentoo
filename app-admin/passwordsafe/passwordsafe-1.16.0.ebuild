@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="qr test +xml yubikey"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	net-misc/curl
 	sys-apps/util-linux
 	x11-libs/libXt
@@ -28,12 +28,16 @@ DEPEND="
 	qr? ( media-gfx/qrencode )
 	xml? ( dev-libs/xerces-c )
 	yubikey? ( sys-auth/ykpers )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	app-arch/zip
-	virtual/pkgconfig
+	dev-lang/perl
 	sys-devel/gettext
+	virtual/pkgconfig
 	test? ( dev-cpp/gtest )"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.15.0-gtest-no-gnu++11.patch )
 
 src_configure() {
 	setup-wxwidgets
