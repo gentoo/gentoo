@@ -2113,7 +2113,7 @@ toolchain_src_install() {
 		#
 		# Do the 'make install' from the build directory
 		pushd "${WORKDIR}"/build-jit > /dev/null || die
-		S="${WORKDIR}"/build-jit emake DESTDIR="${D}" install
+		S="${WORKDIR}"/build-jit emake DESTDIR="${D}" -j1 install
 
 		# Punt some tools which are really only useful while building gcc
 		find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
@@ -2127,7 +2127,17 @@ toolchain_src_install() {
 	fi
 
 	# Do the 'make install' from the build directory
-	S="${WORKDIR}"/build emake DESTDIR="${D}" install
+	#
+	# Unfortunately, we have to use -j1 for make install. Upstream
+	# don't really test it and there's not much appetite for fixing bugs
+	# with it. Several reported bugs exist where the resulting image
+	# was wrong, rather than a simple compile/install failure:
+	# - bug #906155
+	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=42980
+	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=51814
+	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=103656
+	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109898
+	S="${WORKDIR}"/build emake DESTDIR="${D}" -j1 install
 
 	# Punt some tools which are really only useful while building gcc
 	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
