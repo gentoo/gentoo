@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-05-19)
+# Breaks Portage's pid-sandbox at least with 5.10 kernels. Pending investigation.
+# If you're hitting this, try: FEATURES="-pid-sandbox" emerge -v1 sys-apps/util-linux
+# as a workaround. bug #906797.
+~sys-apps/util-linux-2.39
+
 # Michał Górny <mgorny@gentoo.org> (2023-05-19)
 # Replaced by dev-python/pyproject-hooks.  No revdeps left.
 # Removal on 2023-06-18.  Bug #906789.
