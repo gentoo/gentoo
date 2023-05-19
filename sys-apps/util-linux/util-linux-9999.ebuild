@@ -202,6 +202,8 @@ multilib_src_configure() {
 
 	# configure args shared by python and non-python builds
 	local commonargs=(
+		--localstatedir="${EPREFIX}/var"
+		--runstatedir="${EPREFIX}/run"
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
 	)
 
