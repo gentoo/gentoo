@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>layman@gentoo.org</email>
-		<name>Gentoo Layman team</name>
-	</maintainer>
-	<maintainer type="project">
 		<email>gnu-emacs@gentoo.org</email>
 		<name>Gentoo GNU Emacs project</name>
 	</maintainer>
