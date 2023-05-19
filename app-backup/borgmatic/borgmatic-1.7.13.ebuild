@@ -33,9 +33,8 @@ BDEPEND="
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.1-no_test_coverage.patch
 	"${FILESDIR}"/${PN}-1.7.3-systemd_service_bin_path.patch
-	"${FILESDIR}"/${PN}-1.7.12-tests_flexmock.patch
+	"${FILESDIR}"/${PN}-1.7.13-no_test_coverage.patch
 )
 
 # A fragile test whose only purpose is to make sure the NEWS file
