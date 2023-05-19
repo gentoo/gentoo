@@ -31,7 +31,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	<dev-python/jmespath-2[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	<dev-python/urllib3-1.27[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.25.4[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -67,6 +66,13 @@ python_test() {
 		tests/unit/test_client.py::TestClientErrors::test_BOTO_DISABLE_COMMONNAME
 		# TODO
 		tests/functional/test_credentials.py::SSOSessionTest::test_token_chosen_from_provider
+		# urllib3-2 compatibility, mock relies on implementation details
+		tests/unit/test_awsrequest.py::TestAWSHTTPConnection::test_expect_100_continue_no_response_from_server
+		tests/unit/test_awsrequest.py::TestAWSHTTPConnection::test_expect_100_continue_returned
+		tests/unit/test_awsrequest.py::TestAWSHTTPConnection::test_expect_100_continue_sends_307
+		tests/unit/test_awsrequest.py::TestAWSHTTPConnection::test_expect_100_sends_connection_header
+		tests/unit/test_awsrequest.py::TestAWSHTTPConnection::test_handles_expect_100_with_different_reason_phrase
+		tests/unit/test_awsrequest.py::TestAWSHTTPConnection::test_state_reset_on_connection_close
 	)
 
 	epytest tests/{functional,unit} -n "$(makeopts_jobs)"
