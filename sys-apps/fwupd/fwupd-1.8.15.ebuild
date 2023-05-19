@@ -92,8 +92,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.11-installed_tests.patch
-	"${FILESDIR}"/${PN}-1.8.11-empty_kernel_cmdline.patch
+	"${FILESDIR}"/${PN}-1.8.13-installed_tests.patch
 )
 
 src_prepare() {
