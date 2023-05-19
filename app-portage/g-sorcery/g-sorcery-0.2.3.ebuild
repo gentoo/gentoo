@@ -21,7 +21,7 @@ RDEPEND="bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	git? ( dev-vcs/git )
 	sys-apps/portage[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
-PDEPEND=">=app-portage/layman-2.2.0[g-sorcery(-),${PYTHON_USEDEP}]"
+#PDEPEND=">=app-portage/layman-2.2.0[g-sorcery(-),${PYTHON_USEDEP}]"
 
 src_prepare() {
 	hprefixify setup.py
