@@ -47,5 +47,6 @@ src_prepare() {
 	rm -r metrics/{nist_mt,rl_reliability,rouge,sacrebleu,sari} || die
 	rm -r metrics/{ter,trec_eval,wiki_split,xtreme_s} || die
 	rm -r measurements/word_length || die
+	rm tests/test_evaluation_suite.py || die
 	distutils-r1_src_prepare
 }
