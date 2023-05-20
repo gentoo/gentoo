@@ -92,7 +92,7 @@ src_install() {
 
 	diropts -m 0770
 	keepdir /var/lib/${PN}
-	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}
 	newconfd "${FILESDIR}"/nginx-unit.confd nginx-unit
 	systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
 }
