@@ -12,3 +12,4 @@ move dev-python/aws-xray-sdk-python dev-python/aws-xray-sdk
 move dev-python/python-docs app-doc/python-docs
 move dev-python/flit_core dev-python/flit-core
 move dev-python/jupyter_ydoc dev-python/jupyter-ydoc
+move dev-python/jupyter_console dev-python/jupyter-console
