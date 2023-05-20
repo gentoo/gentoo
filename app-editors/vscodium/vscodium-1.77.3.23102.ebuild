@@ -35,7 +35,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm ~arm64"
-IUSE=""
+IUSE="X wayland"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
@@ -104,10 +104,14 @@ src_install() {
 	fperms +x /opt/${PN}/resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper
 	dosym "../../opt/${PN}/bin/codium" "usr/bin/vscodium"
 	dosym "../../opt/${PN}/bin/codium" "usr/bin/codium"
-	domenu "${FILESDIR}/vscodium.desktop"
-	domenu "${FILESDIR}/vscodium-url-handler.desktop"
-	domenu "${FILESDIR}/vscodium-wayland.desktop"
-	domenu "${FILESDIR}/vscodium-url-handler-wayland.desktop"
+	if use X; then
+		domenu "${FILESDIR}/vscodium.desktop"
+		domenu "${FILESDIR}/vscodium-url-handler.desktop"
+	fi
+	if use wayland; then
+		domenu "${FILESDIR}/vscodium-wayland.desktop"
+		domenu "${FILESDIR}/vscodium-url-handler-wayland.desktop"
+	fi
 	newicon "resources/app/resources/linux/code.png" "vscodium.png"
 }
 

@@ -36,6 +36,7 @@ LICENSE="
 	W3C
 "
 SLOT="0"
+IUSE="X wayland"
 KEYWORDS="-* ~amd64 ~arm ~arm64"
 
 RDEPEND="
@@ -109,10 +110,14 @@ src_install() {
 	dosym -r "/opt/${PN}/bin/code" "usr/bin/vscode"
 	dosym -r "/opt/${PN}/bin/code" "usr/bin/code"
 	dosym -r "/opt/${PN}/bin/code-tunnel" "usr/bin/code-tunnel"
-	domenu "${FILESDIR}/vscode.desktop"
-	domenu "${FILESDIR}/vscode-url-handler.desktop"
-	domenu "${FILESDIR}/vscode-wayland.desktop"
-	domenu "${FILESDIR}/vscode-url-handler-wayland.desktop"
+	if use X; then
+		domenu "${FILESDIR}/vscode.desktop"
+		domenu "${FILESDIR}/vscode-url-handler.desktop"
+	fi
+	if use wayland; then
+		domenu "${FILESDIR}/vscode-wayland.desktop"
+		domenu "${FILESDIR}/vscode-url-handler-wayland.desktop"
+	fi
 	newicon "resources/app/resources/linux/code.png" "vscode.png"
 }
 
