@@ -419,7 +419,10 @@ CRATES="
 	zeroize_derive-1.3.2
 "
 
-inherit bash-completion-r1 cargo
+# TODO: Should be able to try 16 in next release after 0.28.0
+LLVM_MAX_SLOT=15
+
+inherit bash-completion-r1 cargo llvm
 
 DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia"
@@ -448,9 +451,15 @@ DEPEND="
 	${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}"
+# Clang needed for bindgen
 BDEPEND="
+	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
 	virtual/pkgconfig
 "
+
+llvm_check_deps() {
+	has_version -b "sys-devel/clang:${LLVM_SLOT}"
+}
 
 src_compile() {
 	cd sq || die
