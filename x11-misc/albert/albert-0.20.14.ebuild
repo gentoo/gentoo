@@ -31,18 +31,19 @@ REQUIRED_USE="
 
 RDEPEND="
 	dev-cpp/muParser
+	dev-libs/qhotkey[qt6]
 	dev-qt/qtbase:6[concurrent,dbus,gui,network,sql,sqlite,widgets]
 	dev-qt/qtscxml:6
 	dev-qt/qtsvg:6
+	sci-libs/libqalculate:=
 	python? (
 		$(python_gen_cond_dep 'dev-python/urllib3[${PYTHON_USEDEP}]')
 		${PYTHON_DEPS}
 	)
 "
 DEPEND="${RDEPEND}
-	dev-libs/qhotkey[qt6]
-	python? ( $(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]') )
-	sci-libs/libqalculate"
+	x11-base/xorg-proto
+	python? ( $(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]') )"
 
 PATCHES=("${FILESDIR}/${PN}-0.20.13-use-system-qhotkey-libraries-and-headers.patch")
 
