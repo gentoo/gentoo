@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anna Vyalkova <cyber+gentoo@sysrq.in> (2023-05-20)
+# net-libs/libomemo-c is not keyworded for ~x86.
+net-libs/qxmpp omemo
+
 # Joonas Niilola <juippis@gentoo.org> (2023-05-16)
 # Doesn't work on x86. #878445
 net-libs/pjproject webrtc
