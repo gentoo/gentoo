@@ -396,7 +396,8 @@ LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND=">=virtual/rust-1.65"
+BDEPEND="dev-util/cmake
+	>=virtual/rust-1.65"
 
 PATCHES=(
 	# https://bugs.gentoo.org/866133
