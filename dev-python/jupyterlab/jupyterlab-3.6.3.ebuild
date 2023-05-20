@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/jupyterlab-server-2.19[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-1.16[${PYTHON_USEDEP}]
 	<dev-python/jupyter-server-3[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_ydoc-0.2.3[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-ydoc-0.2.3[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-ydoc-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/nbclassic-0.2[${PYTHON_USEDEP}]
 	<dev-python/notebook-7[${PYTHON_USEDEP}]
