@@ -3,12 +3,13 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 flag-o-matic multiprocessing prefix toolchain-funcs \
-	virtualx
+inherit distutils-r1 flag-o-matic multiprocessing prefix pypi
+inherit toolchain-funcs virtualx
 
 FT_PV=2.6.1
 DESCRIPTION="Pure python plotting library with matlab like syntax"
@@ -17,8 +18,7 @@ HOMEPAGE="
 	https://github.com/matplotlib/matplotlib/
 	https://pypi.org/project/matplotlib/
 "
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+SRC_URI+="
 	test? (
 		https://downloads.sourceforge.net/project/freetype/freetype2/${FT_PV}/freetype-${FT_PV}.tar.gz
 	)
