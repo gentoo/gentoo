@@ -7,6 +7,7 @@ QTMIN=5.15.5
 inherit ecm gear.kde.org
 
 DESCRIPTION="Wrapper around exiv2 library"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-exiv2-0.28.patch.xz"
 
 LICENSE="GPL-2+"
 SLOT="5"
@@ -18,3 +19,5 @@ DEPEND="
 	>=media-gfx/exiv2-0.25:=[xmp=]
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${WORKDIR}/${P}-exiv2-0.28.patch" ) # bug 906087
