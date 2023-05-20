@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python documentation generator"
 HOMEPAGE="https://www.sphinx-doc.org/
 	https://github.com/sphinx-doc/sphinx"
-SRC_URI="mirror://pypi/S/${PN^}/${P^}.tar.gz"
-S=${WORKDIR}/${P^}
 
 LICENSE="BSD"
 SLOT="0"
