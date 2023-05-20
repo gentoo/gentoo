@@ -13,7 +13,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND="app-text/scdoc"
+BDEPEND="
+	app-text/scdoc
+	virtual/pkgconfig
+"
 
 src_install() {
 	cmake_src_install
