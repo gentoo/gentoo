@@ -19,7 +19,8 @@ fi
 DESCRIPTION="Documentation system for most programming languages"
 HOMEPAGE="https://www.doxygen.nl/"
 
-LICENSE="GPL-2"
+# GPL-2 also for bundled libmscgen, MIT for bundled spdlog
+LICENSE="GPL-2 MIT"
 SLOT="0"
 IUSE="clang debug doc dot doxysearch qt5 sqlite test"
 # We need TeX for tests, bug #765472
@@ -105,6 +106,7 @@ src_configure() {
 		-Dbuild_search=$(usex doxysearch)
 		-Dbuild_wizard=$(usex qt5)
 		-Duse_sqlite3=$(usex sqlite)
+		-DBUILD_SHARED_LIBS=OFF
 		-DGIT_EXECUTABLE="false"
 	)
 
