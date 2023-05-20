@@ -1,0 +1,20 @@
+https://github.com/ccache/ccache/pull/1287
+
+From efad3d7c1d18a260b694904fe695e6abd7dfd4df Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 20 May 2023 05:30:54 +0100
+Subject: [PATCH] test: Fix typo (missing line continuation)
+
+Fixes: ef634bdb292e1e24b8d1b5490e7857144a77c0fd
+--- a/test/suites/base.bash
++++ b/test/suites/base.bash
+@@ -552,7 +552,7 @@ fi
+     # -------------------------------------------------------------------------
+     TEST "Directory is not hashed if using -gz"
+ 
+-    if $COMPILER -c test1.c -gz 2>/dev/null
++    if $COMPILER -c test1.c -gz 2>/dev/null \
+        && $COMPILER -E test1.c -gz >preprocessed.i 2>/dev/null \
+        && [ -s preprocessed.i ] \
+        && ! grep -Fq $PWD preprocessed.i; then
+
