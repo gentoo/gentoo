@@ -1,0 +1,12 @@
+diff --git a/tests/helpers/test_enosys.c b/tests/helpers/test_enosys.c
+index 88e7af3b02fe..12eedbcb8361 100644
+--- a/tests/helpers/test_enosys.c
++++ b/tests/helpers/test_enosys.c
+@@ -68,6 +68,7 @@ const struct syscall syscalls[] = {
+ 	{ "move_mount", __NR_move_mount },
+ 	{ "open_tree", __NR_open_tree },
+ 	{ "fsopen", __NR_fsopen },
++	{ "mount_setattr", __NR_mount_setattr },
+ };
+ 
+ int main(int argc, char **argv)
