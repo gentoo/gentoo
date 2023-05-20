@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-05-20)
+# Various regressions, please upgrade to the latest libxml2 (>=2.11.4).
+=dev-libs/libxml2-2.11.1
+=dev-libs/libxml2-2.11.2
+=dev-libs/libxml2-2.11.2-r1
+=dev-libs/libxml2-2.11.3
+
 # Sam James <sam@gentoo.org> (2023-05-19)
 # Breaks Portage's pid-sandbox at least with 5.10 kernels. Pending investigation.
 # If you're hitting this, try: FEATURES="-pid-sandbox" emerge -v1 sys-apps/util-linux
