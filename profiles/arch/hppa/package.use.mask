@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Michał Górny <mgorny@gentoo.org> (2023-05-20)
+# Requires dev-python/sphinx-autodoc-types that has unkeyworded depgraph.
+dev-python/jupyter-core doc
+
 # Sam James <sam@gentoo.org> (2023-05-19)
 # kde-frameworks/kwayland:5 is not keyworded here.
 app-crypt/pinentry wayland
