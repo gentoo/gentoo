@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/jupyter-client-7.4.4[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-5.1.0[${PYTHON_USEDEP}]
 	dev-python/jupyter-server-terminals[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_events-0.4.0[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-events-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-6.4.4[${PYTHON_USEDEP}]
 	>=dev-python/nbformat-5.3.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
