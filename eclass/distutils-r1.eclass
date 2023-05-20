@@ -225,7 +225,7 @@ _distutils_set_globals() {
 				;;
 			jupyter)
 				bdep+='
-					>=dev-python/jupyter_packaging-0.12.3[${PYTHON_USEDEP}]
+					>=dev-python/jupyter-packaging-0.12.3[${PYTHON_USEDEP}]
 				'
 				;;
 			maturin)
@@ -940,7 +940,7 @@ _distutils-r1_print_package_versions() {
 				;;
 			jupyter)
 				packages+=(
-					dev-python/jupyter_packaging
+					dev-python/jupyter-packaging
 					dev-python/setuptools
 					dev-python/setuptools-scm
 					dev-python/wheel

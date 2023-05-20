@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/jupyter-server-1.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/jupyter_packaging[${PYTHON_USEDEP}]
+	dev-python/jupyter-packaging[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 		dev-python/pytest-jupyter[${PYTHON_USEDEP}]

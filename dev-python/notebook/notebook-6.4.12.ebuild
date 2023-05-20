@@ -35,7 +35,7 @@ RDEPEND="
 	dev-python/prometheus_client[${PYTHON_USEDEP}]"
 
 BDEPEND="
-	>=dev-python/jupyter_packaging-0.9[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-packaging-0.9[${PYTHON_USEDEP}]
 	test? (
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]
