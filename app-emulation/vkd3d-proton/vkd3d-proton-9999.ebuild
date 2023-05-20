@@ -17,8 +17,8 @@ if [[ ${PV} == 9999 ]]; then
 		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
 	)
 else
-	HASH_VKD3D=f125062ee1278ac8508ab5561e289ec4ce0f406e # match tag on bumps
-	HASH_DXIL=830106bc2393ba7e7af67863e1c7cfa856432ec5
+	HASH_VKD3D=6365efeba253807beecaed0eaa963295522c6b70 # match tag on bumps
+	HASH_DXIL=f20a0fb4e984a83743baa9d863eb7b26228bcca3
 	HASH_SPIRV=1d31a100405cf8783ca7a31e31cdd727c9fc54c3
 	HASH_SPIRV_DXIL=aa331ab0ffcb3a67021caa1a0c1c9017712f2f31
 	HASH_VULKAN=bd6443d28f2ebecedfb839b52d612011ba623d14
@@ -169,6 +169,9 @@ pkg_postinst() {
 		elog
 		elog "	WINEPREFIX=/path/to/prefix setup_vkd3d_proton.sh install --symlink"
 		elog
+		elog "You should also ensure >=app-emulation/dxvk-2.1 is available on that"
+		elog "prefix, not meant to function independently even if only using d3d12."
+		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
 	elif [[ ${REPLACING_VERSIONS##* } ]]; then
 		if ver_test ${REPLACING_VERSIONS##* } -lt 2.7; then
@@ -177,11 +180,13 @@ pkg_postinst() {
 			elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
 		fi
 
-		if ver_test ${REPLACING_VERSIONS##* } -lt 2.8_p20230510; then
+		if ver_test ${REPLACING_VERSIONS##* } -lt 2.9; then
 			elog
-			elog ">=${PN}-2.8_p20230510 has a new file to install (d3d12core.dll), old"
-			elog "Wine prefixes that relied on '--symlink' may need updates by using the"
-			elog "setup_vkd3d_proton.sh script again."
+			elog ">=${PN}-2.9 has a new file to install (d3d12core.dll), old Wine prefixes that"
+			elog "relied on '--symlink' may need updates by using the setup_vkd3d_proton.sh."
+			elog
+			elog "Furthermore, it may not function properly if >=app-emulation/dxvk-2.1 is not"
+			elog "available on that prefix (even if only using d3d12)."
 		fi
 	fi
 }
