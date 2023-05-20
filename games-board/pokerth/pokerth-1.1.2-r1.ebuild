@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="dedicated"
 
-RDEPEND="dev-db/sqlite:3
-	dev-libs/boost:=
+RDEPEND="
+	dev-db/sqlite:3
+	dev-libs/boost:=[zlib]
 	dev-libs/libgcrypt:0
 	dev-libs/protobuf:0=
 	dev-libs/tinyxml[stl]
