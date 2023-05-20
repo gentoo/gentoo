@@ -5,6 +5,8 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN/-/_}
 PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
@@ -12,13 +14,13 @@ inherit distutils-r1
 DESCRIPTION="sip extension module for PyQt5"
 HOMEPAGE="https://www.riverbankcomputing.com/software/sip/ https://pypi.org/project/PyQt5-sip/"
 
-MY_P=${PN/-/_}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
+	MY_P=${PYPI_PN}-${PV/_pre/.dev}
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
+	S="${WORKDIR}/${MY_P}"
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+	inherit pypi
 fi
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 SLOT="0/$(ver_cut 1)"
