@@ -30,7 +30,7 @@ RDEPEND="
 	dev-python/GitPython[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/jupyter-server[${PYTHON_USEDEP}]
-	dev-python/jupyter_server_mathjax[${PYTHON_USEDEP}]
+	dev-python/jupyter-server-mathjax[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
