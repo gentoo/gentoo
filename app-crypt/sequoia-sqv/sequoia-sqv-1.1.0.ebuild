@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -155,7 +155,10 @@ CRATES="
 	zeroize_derive-1.2.2
 "
 
-inherit bash-completion-r1 cargo
+# TODO: Should be able to try 16 in next release after 1.1.0
+LLVM_MAX_SLOT=15
+
+inherit bash-completion-r1 cargo llvm
 
 DESCRIPTION="A simple OpenPGP signature verification program"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia"
@@ -176,14 +179,19 @@ COMMON_DEPEND="
 "
 
 DEPEND="
-	sys-devel/clang
 	${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}"
+# Needed for bindgen
 BDEPEND="
+	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
 	sys-apps/help2man
 	virtual/pkgconfig
 "
+
+llvm_check_deps() {
+	has_version -b "sys-devel/clang:${LLVM_SLOT}"
+}
 
 src_compile() {
 	# Setting CARGO_TARGET_DIR is required to have the build system
