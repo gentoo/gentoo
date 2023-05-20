@@ -24,6 +24,7 @@ KEYWORDS="amd64 ~x86"
 BDEPEND="
 	test? (
 		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/portend[${PYTHON_USEDEP}]
 	)
 "
 
