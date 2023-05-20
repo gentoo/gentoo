@@ -23,7 +23,7 @@ else
 	else
 		SRC_URI="https://lutris.net/releases/${P/-/_}.tar.xz"
 		S="${WORKDIR}/${PN}"
-		KEYWORDS="~amd64"
+		KEYWORDS="~amd64 ~x86"
 	fi
 fi
 
