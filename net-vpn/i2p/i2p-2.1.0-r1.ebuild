@@ -38,7 +38,7 @@ CP_DEPEND="
 	dev-java/minidns-core:1
 	dev-java/zxing-core:3
 	dev-java/zxing-javase:3
-	net-libs/nativebiginteger:0
+	>=net-libs/nativebiginteger-2.1.0:0
 	sys-devel/gettext:0[java]
 	>=www-servers/tomcat-9.0.73:9
 "
