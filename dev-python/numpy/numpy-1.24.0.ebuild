@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
 
-inherit distutils-r1 flag-o-matic fortran-2 toolchain-funcs
+inherit distutils-r1 flag-o-matic fortran-2 pypi toolchain-funcs
 
 DOC_PV=${PV}
 DESCRIPTION="Fast array and numerical python library"
@@ -16,9 +16,6 @@ HOMEPAGE="
 	https://numpy.org/
 	https://github.com/numpy/numpy/
 	https://pypi.org/project/numpy/
-"
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 "
 LICENSE="BSD"
 SLOT="0"
