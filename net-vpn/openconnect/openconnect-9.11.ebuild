@@ -6,11 +6,11 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit linux-info python-any-r1
+inherit autotools linux-info python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/openconnect.git"
-	inherit git-r3 autotools
+	inherit git-r3
 else
 	inherit verify-sig
 	SRC_URI="https://www.infradead.org/openconnect/download/${P}.tar.gz
@@ -97,10 +97,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/openconnect-9.11-json-cflags.patch"
+	)
 	default
-	if [[ ${PV} == 9999 ]]; then
-		eautoreconf
-	fi
+	eautoreconf
 }
 
 src_configure() {
