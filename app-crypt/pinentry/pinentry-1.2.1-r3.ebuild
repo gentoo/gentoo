@@ -49,7 +49,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-AR.patch"
-	"${FILESDIR}/${PN}-1.2.1-automagic-capslock.patch" # bug #819939, bug ##837719
+	"${FILESDIR}/${PN}-1.2.1-automagic-capslock.patch" # bug #819939, bug #837719
 )
 
 src_prepare() {
