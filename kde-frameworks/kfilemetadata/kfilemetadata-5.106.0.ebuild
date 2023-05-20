@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.28.patch" ) # bug 906090
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 	ecm_pkg_setup
