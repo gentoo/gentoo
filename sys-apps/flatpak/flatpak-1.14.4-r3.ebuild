@@ -48,7 +48,6 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-# pyparsing version pinned for https://bugs.gentoo.org/825230
 BDEPEND="
 	>=sys-devel/automake-1.13.4
 	>=sys-devel/gettext-0.18.2
@@ -64,6 +63,10 @@ BDEPEND="
 "
 
 PDEPEND="sys-apps/xdg-desktop-portal"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.4-fuse-3-slotted.patch
+)
 
 python_check_deps() {
 	has_version -b "dev-python/pyparsing[${PYTHON_USEDEP}]"
