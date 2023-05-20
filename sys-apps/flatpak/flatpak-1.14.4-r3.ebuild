@@ -54,12 +54,12 @@ BDEPEND="
 	virtual/pkgconfig
 	dev-util/gdbus-codegen
 	sys-devel/bison
+	$(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]')
 	introspection? ( >=dev-libs/gobject-introspection-1.40 )
 	doc? (
 		app-text/xmlto
 		dev-libs/libxslt
 	)
-	$(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]')
 "
 
 PDEPEND="sys-apps/xdg-desktop-portal"
@@ -69,7 +69,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version -b "dev-python/pyparsing[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pyparsing[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
