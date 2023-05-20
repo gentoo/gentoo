@@ -20,5 +20,5 @@ BDEPEND="
 
 src_install() {
 	cmake_src_install
-	newinitd Daemon/ydotool.service-openrc.in ydotoold
+	newinitd Daemon/ydotool.service-openrc.in ${PN}
 }
