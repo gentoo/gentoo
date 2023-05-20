@@ -8,13 +8,18 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
+MY_P=${PN/-/_}-${PV}
 DESCRIPTION="Document structures for collaborative editing using Ypy"
 HOMEPAGE="
 	https://jupyter.org/
 	https://github.com/jupyter-server/jupyter_ydoc/
 	https://pypi.org/project/jupyter-ydoc/
 "
-SRC_URI="https://github.com/jupyter-server/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="
+	https://github.com/jupyter-server/jupyter_ydoc/archive/v${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
