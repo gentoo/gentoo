@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.81.0-phoenix-multiple-definitions.patch
 
 	# (upstreamed)
+	"${FILESDIR}"/${PN}-1.82.0-context-arm64.patch
 )
 
 python_bindings_needed() {
