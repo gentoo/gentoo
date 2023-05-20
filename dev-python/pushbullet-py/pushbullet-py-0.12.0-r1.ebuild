@@ -12,7 +12,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="A simple python client for pushbullet.com"
 HOMEPAGE="
-	https://github.com/randomchars/pushbullet.py/
+	https://github.com/richard-better/pushbullet.py/
 	https://pypi.org/project/pushbullet.py/
 "
 
