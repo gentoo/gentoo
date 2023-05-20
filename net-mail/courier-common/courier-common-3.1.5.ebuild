@@ -19,6 +19,7 @@ RDEPEND="!mail-mta/courier
 	!<=net-mail/courier-imap-5.2.3
 	!<=mail-filter/maildrop-3.1.4
 	!net-mail/courier-makedat
+	>=net-libs/courier-unicode-2.0:=
 	gdbm? ( >=sys-libs/gdbm-1.8.0:= )
 	!gdbm? ( berkdb? ( >=sys-libs/db-3:= ) )"
 DEPEND="${RDEPEND}"
