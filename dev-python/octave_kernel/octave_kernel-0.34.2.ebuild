@@ -29,7 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
-		dev-python/jupyter_kernel_test[${PYTHON_USEDEP}]
+		dev-python/jupyter-kernel-test[${PYTHON_USEDEP}]
 	)
 "
 
