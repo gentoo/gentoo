@@ -35,4 +35,4 @@ distutils_enable_tests pytest
 distutils_enable_sphinx docs \
 	dev-python/pallets-sphinx-themes \
 	dev-python/sphinx-issues \
-	dev-python/sphinxcontrib-log_cabinet
+	dev-python/sphinxcontrib-log-cabinet

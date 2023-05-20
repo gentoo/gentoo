@@ -49,7 +49,7 @@ distutils_enable_sphinx docs \
 	dev-python/pallets-sphinx-themes \
 	dev-python/sphinx-issues \
 	dev-python/sphinx-tabs \
-	dev-python/sphinxcontrib-log_cabinet
+	dev-python/sphinxcontrib-log-cabinet
 distutils_enable_tests pytest
 
 python_test() {

@@ -18,3 +18,4 @@ move dev-python/jupyter_kernel_test dev-python/jupyter-kernel-test
 move dev-python/jupyter_server_mathjax dev-python/jupyter-server-mathjax
 move dev-python/jupyter_packaging dev-python/jupyter-packaging
 move dev-python/jupyterlab_pygments dev-python/jupyterlab-pygments
+move dev-python/sphinxcontrib-log_cabinet dev-python/sphinxcontrib-log-cabinet
