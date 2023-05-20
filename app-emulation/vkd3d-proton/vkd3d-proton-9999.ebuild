@@ -169,8 +169,8 @@ pkg_postinst() {
 		elog
 		elog "	WINEPREFIX=/path/to/prefix setup_vkd3d_proton.sh install --symlink"
 		elog
-		elog "You should also ensure >=app-emulation/dxvk-2.1 is available on that"
-		elog "prefix, not meant to function independently even if only using d3d12."
+		elog "Should also ensure that >=app-emulation/dxvk-2.1's dxgi.dll is available"
+		elog "on it, not meant to function independently even if only using d3d12."
 		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
 	elif [[ ${REPLACING_VERSIONS##* } ]]; then
@@ -185,8 +185,8 @@ pkg_postinst() {
 			elog ">=${PN}-2.9 has a new file to install (d3d12core.dll), old Wine prefixes that"
 			elog "relied on '--symlink' may need updates by using the setup_vkd3d_proton.sh."
 			elog
-			elog "Furthermore, it may not function properly if >=app-emulation/dxvk-2.1 is not"
-			elog "available on that prefix (even if only using d3d12)."
+			elog "Furthermore, it may not function properly if >=app-emulation/dxvk-2.1's"
+			elog "dxgi.dll is not available on that prefix (even if only using d3d12)."
 		fi
 	fi
 }
