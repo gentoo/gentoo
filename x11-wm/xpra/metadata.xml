@@ -27,6 +27,7 @@
 	<flag name="oauth">Enable OAuth2 authentication in the server</flag>
 	<flag name="pillow">Enable pillow support</flag>
 	<flag name="pinentry">Use <pkg>app-crypt/pinentry</pkg> for password entry</flag>
+	<flag name="trayicon">Enable system tray icon</flag>
 	<flag name="server">Build server-side code</flag>
 	<flag name="vpx">Enable vpx image format support</flag>
 	<flag name="webcam">Enable webcam support via opencv</flag>
