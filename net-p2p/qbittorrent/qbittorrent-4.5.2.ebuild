@@ -24,7 +24,6 @@ REQUIRED_USE="dbus? ( gui )
 	|| ( gui webui )"
 
 RDEPEND="
-	dev-libs/boost:=
 	>=dev-libs/openssl-1.1.1:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
@@ -39,7 +38,9 @@ RDEPEND="
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 	)"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost"
 BDEPEND="dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
