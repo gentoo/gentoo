@@ -58,7 +58,7 @@ RDEPEND="
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
-	media-libs/suil[gtk2]
+	media-libs/suil[X,gtk2]
 	media-libs/lv2"
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
@@ -136,7 +136,8 @@ src_configure() {
 		--noconfirm
 		--optimize
 		--with-backends=${backends}
-		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && \
+			echo "--fpu-optimization" || echo "--no-fpu-optimization")
 		$(usex doc "--docs" '')
 		$(usex nls "--nls" "--no-nls")
 		$(usex phonehome "--phone-home" "--no-phone-home")
