@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gentoo">proj/gs-elpa</remote-id>
+		<remote-id type="github">gentoo/gs-elpa</remote-id>
 	</upstream>
 </pkgmetadata>
