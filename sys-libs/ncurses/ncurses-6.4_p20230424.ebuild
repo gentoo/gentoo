@@ -198,7 +198,7 @@ src_configure() {
 		CXXFLAGS=${BUILD_CXXFLAGS} \
 		CPPFLAGS=${BUILD_CPPFLAGS} \
 		LDFLAGS="${BUILD_LDFLAGS} ${lbuildflags}" \
-		do_configure cross --without-shared --with-normal --with-progs
+		do_configure cross --without-shared --with-normal --with-progs --without-ada
 	fi
 	multilib-minimal_src_configure
 }
