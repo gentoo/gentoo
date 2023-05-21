@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/Gallopsled/pwntools.git"
 else
 	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 	S="${WORKDIR}/${PN}-${PV/_beta/beta}"
 fi
 
@@ -45,8 +45,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0.0_do_not_mess_with_docs.patch"
-	"${FILESDIR}/${PN}-4.1.0_update_deps.patch"
+	"${FILESDIR}/${PN}-4.11.0_update_deps.patch"
 )
 
 python_configure_all() {
