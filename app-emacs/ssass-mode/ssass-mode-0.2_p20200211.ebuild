@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Write Sass in Emacs without a Turing Machine"
 HOMEPAGE="https://github.com/AdamNiederer/ssass-mode/"
-SRC_URI="https://github.com/AdamNiedererw/${PN}/archive/${COMMIT}.tar.gz
+SRC_URI="https://github.com/AdamNiederer/${PN}/archive/${COMMIT}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${COMMIT}
 
