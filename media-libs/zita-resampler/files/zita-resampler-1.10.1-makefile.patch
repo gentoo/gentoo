@@ -77,3 +77,13 @@ diff -urpN zita-resampler-1.10.1.orig/source/Makefile zita-resampler-1.10.1/sour
  LDFLAGS += 
  LDLIBS +=
  
+@@ -49,6 +47,9 @@ ZITA-RESAMPLER_H = zita-resampler/resamp
+ 	zita-resampler/vresampler.h zita-resampler/cresampler.h
+ 
+ 
++$(ZITA-RESAMPLER_SO): $(ZITA-RESAMPLER_MIN)
++	ln -sf $(ZITA-RESAMPLER_MIN) $(ZITA-RESAMPLER_SO)
++
+ $(ZITA-RESAMPLER_MIN): $(ZITA-RESAMPLER_O)
+ 	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(ZITA-RESAMPLER_MAJ) -o $(ZITA-RESAMPLER_MIN) $(ZITA-RESAMPLER_O) $(ZITA-RESAMPLER_DEP)
+ 
