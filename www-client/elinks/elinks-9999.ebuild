@@ -57,7 +57,8 @@ RDEPEND="
 	zlib? ( >=sys-libs/zlib-1.1.4 )
 	zstd? ( app-arch/zstd:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
