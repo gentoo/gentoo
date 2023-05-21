@@ -48,7 +48,6 @@ DEPEND="
 	test? (
 		dev-java/ant-junit4:0
 		dev-java/hamcrest:0
-		dev-java/hamcrest-core:1.3
 		dev-java/junit:4
 		dev-java/mockito:4
 	)
