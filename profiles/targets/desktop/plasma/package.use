@@ -37,6 +37,9 @@ media-gfx/graphviz python
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
 media-libs/gd fontconfig
 
+# Needed by a global USE=wayland right now
+media-libs/libsdl2 gles2
+
 # Required by kde-plasma/kwin
 media-libs/mesa wayland
 
