@@ -55,7 +55,7 @@ src_compile() {
 	if use doc; then
 		mkdir -p doc/build || die
 		pushd doc >/dev/null || die
-		emake html man
+		emake -j1 html man
 		popd >/dev/null || die
 	fi
 }
