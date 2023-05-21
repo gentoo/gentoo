@@ -18,5 +18,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">layman</remote-id>
+		<remote-id type="gentoo">proj/layman</remote-id>
 	</upstream>
 </pkgmetadata>
