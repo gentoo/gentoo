@@ -24,7 +24,7 @@ LICENSE="BSD"
 SLOT="0/2.2"
 KEYWORDS=""
 IUSE="
-	+clock-gettime debug malloc-replacement mbedtls +openssl static-libs
+	+clock-gettime debug malloc-replacement mbedtls +ssl static-libs
 	test verbose-debug
 "
 # TODO: hangs
@@ -32,7 +32,7 @@ RESTRICT="test"
 
 DEPEND="
 	mbedtls? ( net-libs/mbedtls:=[${MULTILIB_USEDEP}] )
-	openssl? ( >=dev-libs/openssl-1.0.1h-r2:=[${MULTILIB_USEDEP}] )
+	ssl? ( >=dev-libs/openssl-1.0.1h-r2:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	${DEPEND}
@@ -59,7 +59,7 @@ multilib_src_configure() {
 		$(use_enable debug debug-mode)
 		$(use_enable malloc-replacement malloc-replacement)
 		$(use_enable mbedtls)
-		$(use_enable openssl)
+		$(use_enable ssl openssl)
 		$(use_enable static-libs static)
 		$(use_enable test libevent-regress)
 		$(use_enable verbose-debug)
