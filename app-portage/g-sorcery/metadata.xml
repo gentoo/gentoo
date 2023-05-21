@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gentoo">proj/g-sorcery</remote-id>
+		<remote-id type="github">gentoo/g-sorcery</remote-id>
 	</upstream>
 </pkgmetadata>
