@@ -31,6 +31,10 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-Werror
+}
+
 src_install() {
 	default
 
