@@ -290,7 +290,7 @@ src_install() {
 	done
 
 	local sed_args=(
-		-e "s:#${USERLAND}#@::"
+		-e 's:#GNU#@::'
 		-e '/#@/d'
 	)
 
