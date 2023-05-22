@@ -22,12 +22,11 @@ REQUIRED_USE="test? ( tools )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-util/spirv-headers
 	sys-devel/llvm:${SLOT}
 "
-
-DEPEND="${RDEPEND}"
-
+DEPEND="${RDEPEND}
+	dev-util/spirv-headers
+"
 BDEPEND="
 	virtual/pkgconfig
 	test? (
