@@ -66,6 +66,9 @@ multilib_src_configure() {
 		--disable-samples
 	)
 	econf "${myconf[@]}"
+
+	# workaround https://github.com/libevent/libevent/issues/1459
+	sed -i -e 's:@CMAKE_DEBUG_POSTFIX@::' *.pc || die
 }
 
 multilib_src_install_all() {
