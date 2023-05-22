@@ -88,10 +88,4 @@ multilib_src_install_all() {
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
-
-	# We need this to build pppd on G/FBSD systems
-	if [[ "${USERLAND}" == "BSD" ]]; then
-		insinto /usr/include
-		doins pcap-int.h portability.h
-	fi
 }
