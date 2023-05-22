@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,14 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
-	default
+	econf \
+		--with-emacs \
+		--with-lispdir="${SITELISP}" \
+		EMACS="${EMACS} --no-site-file"
 }
 
 src_compile() {
-	emake -j1 </dev/null
+	emake -j1 EMACS="${EMACS} --no-site-file" </dev/null
 }
 
 src_install() {
