@@ -20,7 +20,7 @@ color green "-(eq|ne|gt|lt|ge|le|ef|ot|nt)\>"
 ## Variables... official portage ones in red, all others in bright red:
 color brightred "\$[-0-9@*#?$!]" "\$[[:alpha:]_][[:alnum:]_]*"
 color brightred "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:digit:]]|@)+\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
-color red "\<(EAPI|ARCH|HOMEPAGE|DESCRIPTION|IUSE|SRC_URI|LICENSE|SLOT|KEYWORDS|[BIPR]?DEPEND|PROVIDE|PROPERTIES|REQUIRED_USE|RESTRICT|USERLAND)\>"
+color red "\<(EAPI|ARCH|HOMEPAGE|DESCRIPTION|IUSE|SRC_URI|LICENSE|SLOT|KEYWORDS|[BIPR]?DEPEND|PROVIDE|PROPERTIES|REQUIRED_USE|RESTRICT)\>"
 color red "\<(S|E?D|T|PV|PF|P|PN|PR|PVR|A|CATEGORY|DISTDIR|FILESDIR|EPREFIX|(B|E|E?SYS)?ROOT|WORKDIR)\>"
 color red "\<(T|TMPDIR|HOME)\>"
 color red "\<(AS|C(PP|XX)?|FF|GO|LD|RUST)FLAGS\>" "\<C(HOST|TARGET|BUILD)\>" "\<(MERGE_TYPE|REPLACING_VERSIONS|REPLACED_BY_VERSION)\>"
