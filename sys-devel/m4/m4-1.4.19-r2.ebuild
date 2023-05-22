@@ -77,8 +77,6 @@ src_configure() {
 		ac_cv_libsigsegv=no
 	)
 
-	[[ ${USERLAND} != GNU ]] && myeconfargs+=( --program-prefix=g )
-
 	econf "${myeconfargs[@]}"
 }
 
