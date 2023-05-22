@@ -1,0 +1,74 @@
+From 57f3c17c684a4e5607a322a24be306eb98d340ac Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 22 May 2023 10:18:29 -0400
+Subject: [PATCH 1/1] tests: skip tests that fail with --enable-debug.
+
+With PHP debugging enabled, a few tests fail. The root cause of this
+is that uploadprogress_get_contents() can return FALSE to indicate
+that an error has occurred, but its declared type is string. It
+would probably be better if the function raised an error rather
+than abusing the return value, but that's a decision upstream
+would have to agree too (see: Github issue 17). For now we just
+skip the tests if PHP_DEBUG is defined.
+---
+ tests/uploadprogress_get_contents_error001.phpt     | 2 ++
+ tests/uploadprogress_get_contents_error003.phpt     | 2 ++
+ tests/uploadprogress_get_contents_variation002.phpt | 2 ++
+ tests/uploadprogress_get_contents_variation006.phpt | 2 ++
+ 4 files changed, 8 insertions(+)
+
+diff --git a/tests/uploadprogress_get_contents_error001.phpt b/tests/uploadprogress_get_contents_error001.phpt
+index 63f4f5d..c3e10d9 100644
+--- a/tests/uploadprogress_get_contents_error001.phpt
++++ b/tests/uploadprogress_get_contents_error001.phpt
+@@ -5,6 +5,8 @@ uploadprogress_get_contents - Warns when function is disabled
+ <?php
+ if (!extension_loaded('uploadprogress')) exit('skip extension not loaded');
+ 
++if (PHP_DEBUG) exit('skip test throws a fatal error with --enable-debug');
++
+ --INI--
+ uploadprogress.get_contents = Off
+ 
+diff --git a/tests/uploadprogress_get_contents_error003.phpt b/tests/uploadprogress_get_contents_error003.phpt
+index 1ea19b8..65d94c1 100644
+--- a/tests/uploadprogress_get_contents_error003.phpt
++++ b/tests/uploadprogress_get_contents_error003.phpt
+@@ -5,6 +5,8 @@ uploadprogress_get_contents - Warns when maxlength is less than zero
+ <?php
+ if (!extension_loaded('uploadprogress')) exit('skip extension not loaded');
+ 
++if (PHP_DEBUG) exit('skip test throws a fatal error with --enable-debug');
++
+ --INI--
+ uploadprogress.get_contents = On
+ 
+diff --git a/tests/uploadprogress_get_contents_variation002.phpt b/tests/uploadprogress_get_contents_variation002.phpt
+index b4bf458..67b1b89 100644
+--- a/tests/uploadprogress_get_contents_variation002.phpt
++++ b/tests/uploadprogress_get_contents_variation002.phpt
+@@ -5,6 +5,8 @@ uploadprogress_get_contents - File contents not found
+ <?php
+ if (!extension_loaded('uploadprogress')) exit('skip extension not loaded');
+ 
++if (PHP_DEBUG) exit('skip test throws a fatal error with --enable-debug');
++
+ --INI--
+ uploadprogress.get_contents = On
+ 
+diff --git a/tests/uploadprogress_get_contents_variation006.phpt b/tests/uploadprogress_get_contents_variation006.phpt
+index e19f8d5..ec70c78 100644
+--- a/tests/uploadprogress_get_contents_variation006.phpt
++++ b/tests/uploadprogress_get_contents_variation006.phpt
+@@ -5,6 +5,8 @@ uploadprogress_get_contents - When contents file cannot be read
+ <?php
+ if (!extension_loaded('uploadprogress')) exit('skip extension not loaded');
+ 
++if (PHP_DEBUG) exit('skip test throws a fatal error with --enable-debug');
++
+ --INI--
+ uploadprogress.get_contents = On
+ 
+-- 
+2.39.3
+
