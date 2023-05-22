@@ -23,7 +23,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/spirv-headers
-	sys-devel/clang:${SLOT}
 	sys-devel/llvm:${SLOT}
 "
 
@@ -31,7 +30,10 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="
 	virtual/pkgconfig
-	test? ( dev-python/lit )
+	test? (
+		dev-python/lit
+		sys-devel/clang:${SLOT}
+	)
 "
 
 PATCHES=(
