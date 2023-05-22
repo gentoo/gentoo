@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,10 +44,7 @@ src_compile() {
 		-DMACHINE=\\\"gentoo\\\" -DMACHINE_ARCH=\\\"$(tc-arch-kernel)\\\" \
 		-D_PATH_DEFSHELLDIR=\\\"${EPREFIX}/bin\\\" \
 		-D_PATH_DEFSYSPATH=\\\"${EPREFIX}/usr/share/mk\\\" \
-		-DHAVE_VSNPRINTF"
-	if [[ "${USERLAND}" == "GNU" ]]; then
-		CFLAGS="${CFLAGS} -D_PATH_DEFSYSPATH=\\\"${EPREFIX}/usr/share/mk/${PN}\\\""
-	fi
+		-DHAVE_VSNPRINTF -D_PATH_DEFSYSPATH=\\\"${EPREFIX}/usr/share/mk/${PN}\\\""
 
 	emake -f Makefile.boot \
 		CC="$(tc-getCC)" \
@@ -55,11 +52,8 @@ src_compile() {
 }
 
 src_install() {
-	# Don't install these on BSD, else they conflict
-	if [[ ${USERLAND} == GNU ]]; then
-		insinto /usr/share/mk/${PN}
-		doins -r mk/.
-	fi
+	insinto /usr/share/mk/${PN}
+	doins -r mk/.
 
 	newbin bmake pmake
 	dobin mkdep
@@ -68,9 +62,4 @@ src_install() {
 	newman make.1 pmake.1
 
 	dodoc PSD.doc/tutorial.ms
-
-	if [[ ${USERLAND} == BSD ]]; then
-		dosym pmake /usr/bin/make
-		dosym pmake.1.gz /usr/share/man/man1/make.1.gz
-	fi
 }
