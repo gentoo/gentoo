@@ -1,0 +1,83 @@
+From a7275c90bf51a352783c723116a716af419896f4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@lindev.ch>
+Date: Sun, 21 May 2023 01:09:59 +0200
+Subject: [PATCH] Fix build with exiv2 >= 0.28
+
+---
+ lib/jpegcontent.cpp | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/lib/jpegcontent.cpp b/lib/jpegcontent.cpp
+index 284fb6e61..286333f69 100644
+--- a/lib/jpegcontent.cpp
++++ b/lib/jpegcontent.cpp
+@@ -301,7 +301,11 @@ Orientation JpegContent::orientation() const
+     if (it == d->mExifData.end() || it->count() == 0 || it->typeId() != Exiv2::unsignedShort) {
+         return NOT_AVAILABLE;
+     }
++#if EXIV2_TEST_VERSION(0,28,0)
++    return Orientation(it->toUint32());
++#else
+     return Orientation(it->toLong());
++#endif
+ }
+ 
+ int JpegContent::dotsPerMeterX() const
+@@ -321,7 +325,11 @@ int JpegContent::dotsPerMeter(const QString &keyName) const
+     if (it == d->mExifData.end()) {
+         return 0;
+     }
++#if EXIV2_TEST_VERSION(0,28,0)
++    int res = it->toUint32();
++#else
+     int res = it->toLong();
++#endif
+     QString keyVal = QStringLiteral("Exif.Image.") + keyName;
+     Exiv2::ExifKey keyResolution(keyVal.toLocal8Bit().data());
+     it = d->mExifData.findKey(keyResolution);
+@@ -337,9 +345,17 @@ int JpegContent::dotsPerMeter(const QString &keyName) const
+     const float INCHESPERMETER = (100. / 2.54);
+     switch (res) {
+     case 3: // dots per cm
++#if EXIV2_TEST_VERSION(0,28,0)
++        return int(it->toUint32() * 100);
++#else
+         return int(it->toLong() * 100);
++#endif
+     default: // dots per inch
++#if EXIV2_TEST_VERSION(0,28,0)
++        return int(it->toUint32() * INCHESPERMETER);
++#else
+         return int(it->toLong() * INCHESPERMETER);
++#endif
+     }
+ 
+     return 0;
+@@ -568,15 +584,24 @@ QImage JpegContent::thumbnail() const
+         auto it = d->mExifData.findKey(Exiv2::ExifKey("Exif.Canon.ThumbnailImageValidArea"));
+         // ensure ThumbnailImageValidArea actually specifies a rectangle, i.e. there must be 4 coordinates
+         if (it != d->mExifData.end() && it->count() == 4) {
++#if EXIV2_TEST_VERSION(0,28,0)
++            QRect validArea(QPoint(it->toUint32(0), it->toUint32(2)), QPoint(it->toUint32(1), it->toUint32(3)));
++#else
+             QRect validArea(QPoint(it->toLong(0), it->toLong(2)), QPoint(it->toLong(1), it->toLong(3)));
++#endif
+             image = image.copy(validArea);
+         } else {
+             // Unfortunately, Sony does not provide an exif tag that specifies the valid area of the
+             // embedded thumbnail. Need to derive it from the size of the preview image instead.
+             it = d->mExifData.findKey(Exiv2::ExifKey("Exif.Sony1.PreviewImageSize"));
+             if (it != d->mExifData.end() && it->count() == 2) {
++#if EXIV2_TEST_VERSION(0,28,0)
++                const long prevHeight = it->toUint32(0);
++                const long prevWidth = it->toUint32(1);
++#else
+                 const long prevHeight = it->toLong(0);
+                 const long prevWidth = it->toLong(1);
++#endif
+ 
+                 if (image.width() > 0 && prevWidth > 0) {
+                     const double scale = prevWidth / image.width();
+-- 
+GitLab
+

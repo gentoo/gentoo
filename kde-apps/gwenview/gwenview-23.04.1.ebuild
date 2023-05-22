@@ -82,6 +82,8 @@ BDEPEND="
 	dev-util/wayland-scanner
 "
 
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.28.patch" ) # bug 906467
+
 src_prepare() {
 	ecm_src_prepare
 	if ! use mpris; then
