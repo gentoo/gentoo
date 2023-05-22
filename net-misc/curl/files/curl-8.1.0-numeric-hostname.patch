@@ -1,0 +1,227 @@
+https://github.com/curl/curl/commit/92772e6d395bbdda0e7822d980caf86e8c4aa51c.patch
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Thu, 18 May 2023 00:31:17 +0200
+Subject: [PATCH] urlapi: allow numerical parts in the host name
+
+It can only be an IPv4 address if all parts are all digits and no more than
+four parts, otherwise it is a host name. Even slightly wrong IPv4 will now be
+passed through as a host name.
+
+Regression from 17a15d88467 shipped in 8.1.0
+
+Extended test 1560 accordingly.
+
+Reported-by: Pavel Kalyugin
+Fixes #11129
+Closes #11131
+--- a/lib/urlapi.c
++++ b/lib/urlapi.c
+@@ -34,6 +34,7 @@
+ #include "inet_ntop.h"
+ #include "strdup.h"
+ #include "idn.h"
++#include "curl_memrchr.h"
+ 
+ /* The last 3 #include files should be in this order */
+ #include "curl_printf.h"
+@@ -643,8 +644,8 @@ static CURLUcode hostname_check(struct Curl_URL *u, char *hostname,
+  * Handle partial IPv4 numerical addresses and different bases, like
+  * '16843009', '0x7f', '0x7f.1' '0177.1.1.1' etc.
+  *
+- * If the given input string is syntactically wrong or any part for example is
+- * too big, this function returns FALSE and doesn't create any output.
++ * If the given input string is syntactically wrong IPv4 or any part for
++ * example is too big, this function returns HOST_NAME.
+  *
+  * Output the "normalized" version of that input string in plain quad decimal
+  * integers.
+@@ -675,7 +676,7 @@ static int ipv4_normalize(struct dynbuf *host)
+     unsigned long l;
+     if(!ISDIGIT(*c))
+       /* most importantly this doesn't allow a leading plus or minus */
+-      return n ? HOST_BAD : HOST_NAME;
++      return HOST_NAME;
+     l = strtoul(c, &endp, 0);
+ 
+     parts[n] = l;
+@@ -684,7 +685,7 @@ static int ipv4_normalize(struct dynbuf *host)
+     switch(*c) {
+     case '.':
+       if(n == 3)
+-        return HOST_BAD;
++        return HOST_NAME;
+       n++;
+       c++;
+       break;
+@@ -694,39 +695,40 @@ static int ipv4_normalize(struct dynbuf *host)
+       break;
+ 
+     default:
+-      return n ? HOST_BAD : HOST_NAME;
++      return HOST_NAME;
+     }
+ 
+     /* overflow */
+     if((l == ULONG_MAX) && (errno == ERANGE))
+-      return HOST_BAD;
++      return HOST_NAME;
+ 
+ #if SIZEOF_LONG > 4
+     /* a value larger than 32 bits */
+     if(l > UINT_MAX)
+-      return HOST_BAD;
++      return HOST_NAME;
+ #endif
+   }
+ 
+-  /* this is a valid IPv4 numerical address */
+-  Curl_dyn_reset(host);
+-
+   switch(n) {
+   case 0: /* a -- 32 bits */
++    Curl_dyn_reset(host);
++
+     result = Curl_dyn_addf(host, "%u.%u.%u.%u",
+                            parts[0] >> 24, (parts[0] >> 16) & 0xff,
+                            (parts[0] >> 8) & 0xff, parts[0] & 0xff);
+     break;
+   case 1: /* a.b -- 8.24 bits */
+     if((parts[0] > 0xff) || (parts[1] > 0xffffff))
+-      return HOST_BAD;
++      return HOST_NAME;
++    Curl_dyn_reset(host);
+     result = Curl_dyn_addf(host, "%u.%u.%u.%u",
+                            parts[0], (parts[1] >> 16) & 0xff,
+                            (parts[1] >> 8) & 0xff, parts[1] & 0xff);
+     break;
+   case 2: /* a.b.c -- 8.8.16 bits */
+     if((parts[0] > 0xff) || (parts[1] > 0xff) || (parts[2] > 0xffff))
+-      return HOST_BAD;
++      return HOST_NAME;
++    Curl_dyn_reset(host);
+     result = Curl_dyn_addf(host, "%u.%u.%u.%u",
+                            parts[0], parts[1], (parts[2] >> 8) & 0xff,
+                            parts[2] & 0xff);
+@@ -734,7 +736,8 @@ static int ipv4_normalize(struct dynbuf *host)
+   case 3: /* a.b.c.d -- 8.8.8.8 bits */
+     if((parts[0] > 0xff) || (parts[1] > 0xff) || (parts[2] > 0xff) ||
+        (parts[3] > 0xff))
+-      return HOST_BAD;
++      return HOST_NAME;
++    Curl_dyn_reset(host);
+     result = Curl_dyn_addf(host, "%u.%u.%u.%u",
+                            parts[0], parts[1], parts[2], parts[3]);
+     break;
+@@ -796,6 +799,9 @@ static CURLUcode parse_authority(struct Curl_URL *u,
+   if(result)
+     goto out;
+ 
++  if(!Curl_dyn_len(host))
++    return CURLUE_NO_HOST;
++
+   switch(ipv4_normalize(host)) {
+   case HOST_IPV4:
+     break;
+--- a/tests/libtest/lib1560.c
++++ b/tests/libtest/lib1560.c
+@@ -474,6 +474,13 @@ static const struct testcase get_parts_list[] ={
+ };
+ 
+ static const struct urltestcase get_url_list[] = {
++  {"https://1.0x1000000", "https://1.0x1000000/", 0, 0, CURLUE_OK},
++  {"https://0x7f.1", "https://127.0.0.1/", 0, 0, CURLUE_OK},
++  {"https://1.2.3.256.com", "https://1.2.3.256.com/", 0, 0, CURLUE_OK},
++  {"https://10.com", "https://10.com/", 0, 0, CURLUE_OK},
++  {"https://1.2.com", "https://1.2.com/", 0, 0, CURLUE_OK},
++  {"https://1.2.3.com", "https://1.2.3.com/", 0, 0, CURLUE_OK},
++  {"https://1.2.com.99", "https://1.2.com.99/", 0, 0, CURLUE_OK},
+   {"https://[fe80::0000:20c:29ff:fe9c:409b]:80/moo",
+    "https://[fe80::20c:29ff:fe9c:409b]:80/moo",
+    0, 0, CURLUE_OK},
+@@ -522,22 +529,24 @@ static const struct urltestcase get_url_list[] = {
+ 
+   /* IPv4 trickeries */
+   {"https://16843009", "https://1.1.1.1/", 0, 0, CURLUE_OK},
+-  {"https://0x7f.1", "https://127.0.0.1/", 0, 0, CURLUE_OK},
+   {"https://0177.1", "https://127.0.0.1/", 0, 0, CURLUE_OK},
+   {"https://0111.02.0x3", "https://73.2.0.3/", 0, 0, CURLUE_OK},
++  {"https://0111.02.0x3.", "https://0111.02.0x3./", 0, 0, CURLUE_OK},
++  {"https://0111.02.030", "https://73.2.0.24/", 0, 0, CURLUE_OK},
++  {"https://0111.02.030.", "https://0111.02.030./", 0, 0, CURLUE_OK},
+   {"https://0xff.0xff.0377.255", "https://255.255.255.255/", 0, 0, CURLUE_OK},
+   {"https://1.0xffffff", "https://1.255.255.255/", 0, 0, CURLUE_OK},
+   /* IPv4 numerical overflows or syntax errors will not normalize */
+   {"https://a127.0.0.1", "https://a127.0.0.1/", 0, 0, CURLUE_OK},
+   {"https://\xff.127.0.0.1", "https://%FF.127.0.0.1/", 0, CURLU_URLENCODE,
+    CURLUE_OK},
+-  {"https://127.-0.0.1", "https://127.-0.0.1/", 0, 0, CURLUE_BAD_HOSTNAME},
++  {"https://127.-0.0.1", "https://127.-0.0.1/", 0, 0, CURLUE_OK},
+   {"https://127.0. 1", "https://127.0.0.1/", 0, 0, CURLUE_MALFORMED_INPUT},
+-  {"https://1.0x1000000", "https://1.0x1000000/", 0, 0, CURLUE_BAD_HOSTNAME},
+-  {"https://1.2.3.256", "https://1.2.3.256/", 0, 0, CURLUE_BAD_HOSTNAME},
+-  {"https://1.2.3.4.5", "https://1.2.3.4.5/", 0, 0, CURLUE_BAD_HOSTNAME},
+-  {"https://1.2.0x100.3", "https://1.2.0x100.3/", 0, 0, CURLUE_BAD_HOSTNAME},
+-  {"https://4294967296", "https://4294967296/", 0, 0, CURLUE_BAD_HOSTNAME},
++  {"https://1.2.3.256", "https://1.2.3.256/", 0, 0, CURLUE_OK},
++  {"https://1.2.3.256.", "https://1.2.3.256./", 0, 0, CURLUE_OK},
++  {"https://1.2.3.4.5", "https://1.2.3.4.5/", 0, 0, CURLUE_OK},
++  {"https://1.2.0x100.3", "https://1.2.0x100.3/", 0, 0, CURLUE_OK},
++  {"https://4294967296", "https://4294967296/", 0, 0, CURLUE_OK},
+   {"https://123host", "https://123host/", 0, 0, CURLUE_OK},
+   /* 40 bytes scheme is the max allowed */
+   {"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA://hostname/path",
+@@ -599,20 +608,11 @@ static const struct urltestcase get_url_list[] = {
+    0, 0, CURLUE_OK},
+   /* here the password has the semicolon */
+   {"http://user:pass;word@host/file",
+-   "http://user:pass;word@host/file",
+-   0, 0, CURLUE_OK},
+-  {"file:///file.txt#moo",
+-   "file:///file.txt#moo",
+-   0, 0, CURLUE_OK},
+-  {"file:////file.txt",
+-   "file:////file.txt",
+-   0, 0, CURLUE_OK},
+-  {"file:///file.txt",
+-   "file:///file.txt",
+-   0, 0, CURLUE_OK},
+-  {"file:./",
+-   "file://",
+-   0, 0, CURLUE_BAD_SCHEME},
++   "http://user:pass;word@host/file", 0, 0, CURLUE_OK},
++  {"file:///file.txt#moo", "file:///file.txt#moo", 0, 0, CURLUE_OK},
++  {"file:////file.txt", "file:////file.txt", 0, 0, CURLUE_OK},
++  {"file:///file.txt", "file:///file.txt", 0, 0, CURLUE_OK},
++  {"file:./", "file://", 0, 0, CURLUE_OK},
+   {"http://example.com/hello/../here",
+    "http://example.com/hello/../here",
+    CURLU_PATH_AS_IS, 0, CURLUE_OK},
+@@ -1124,7 +1124,7 @@ static int get_url(void)
+       }
+       curl_free(url);
+     }
+-    else if(rc != get_url_list[i].ucode) {
++    if(rc != get_url_list[i].ucode) {
+       fprintf(stderr, "Get URL\nin: %s\nreturned %d (expected %d)\n",
+               get_url_list[i].in, (int)rc, get_url_list[i].ucode);
+       error++;
+@@ -1515,6 +1515,9 @@ int test(char *URL)
+ {
+   (void)URL; /* not used */
+ 
++  if(get_url())
++    return 3;
++
+   if(huge())
+     return 9;
+ 
+@@ -1533,9 +1536,6 @@ int test(char *URL)
+   if(set_parts())
+     return 2;
+ 
+-  if(get_url())
+-    return 3;
+-
+   if(get_parts())
+     return 4;
+ 
