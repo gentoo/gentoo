@@ -9,7 +9,7 @@ DESCRIPTION="Generic command-line automation tool (no X!)"
 HOMEPAGE="https://github.com/ReimuNotMoe/ydotool"
 SRC_URI="https://github.com/ReimuNotMoe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -18,7 +18,4 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_install() {
-	cmake_src_install
-	newinitd Daemon/ydotool.service-openrc.in ${PN}
-}
+PATCHES=( "${FILESDIR}"/${PN}-openrc.patch )
