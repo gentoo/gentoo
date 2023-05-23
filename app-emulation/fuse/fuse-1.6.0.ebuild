@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,8 @@ IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl backend-svga gpm
 
 # At most one audio driver and at most one UI back-end can be enabled at a time
 REQUIRED_USE="?? ( alsa ao backend-sdl pulseaudio )
-	?? ( backend-X backend-fbcon backend-gtk3 backend-sdl backend-svga )"
+	?? ( backend-X backend-fbcon backend-gtk3 backend-sdl backend-svga )
+	png? ( zlib )"
 
 RDEPEND="
 	>=app-emulation/libspectrum-1.5.0[zlib?]
