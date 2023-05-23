@@ -243,6 +243,9 @@ src_install() {
 	# Move the cmake directory to the right location:
 	mkdir -p "${ED}/usr/$(get_libdir)"/cmake
 	mv "${ED}/usr/$(get_libdir)"/trilinos/cmake/* "${ED}/usr/$(get_libdir)"/cmake || die "mv failed"
+	# Fix up include paths:
+	sed -i -e 's#external_packages#trilinos/external_packages#g' \
+		"${ED}/usr/$(get_libdir)"/cmake/**/*.cmake || die "sed failed"
 	rmdir "${ED}/usr/$(get_libdir)/trilinos/cmake" || die "rmdir failed"
 
 	# Register $(get_libdir)/trilinos in LDPATH so that the dynamic linker
