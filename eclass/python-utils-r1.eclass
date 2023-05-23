@@ -1344,7 +1344,12 @@ eunittest() {
 
 	_python_check_EPYTHON
 
-	set -- "${EPYTHON}" -m unittest_or_fail discover -v "${@}"
+	# unittest fails with "no tests" correctly since Python 3.12
+	local runner=unittest
+	if _python_impl_matches "${EPYTHON}" 3.{9..11}; then
+		runner=unittest_or_fail
+	fi
+	set -- "${EPYTHON}" -m "${runner}" discover -v "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die -n "Tests failed with ${EPYTHON}"
