@@ -34,10 +34,10 @@ BDEPEND="
 		dev-python/cython[${PYTHON_USEDEP}]
 	)
 	test? (
+		>=dev-python/email-validator-1.2.1[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-dotenv[${PYTHON_USEDEP}]
-		>=dev-python/python-email-validator-1.2.1[${PYTHON_USEDEP}]
 	)
 "
 
