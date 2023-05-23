@@ -1,0 +1,25 @@
+diff -Naur ydotool-1.0.4-orig/Daemon/CMakeLists.txt ydotool-1.0.4/Daemon/CMakeLists.txt
+--- ydotool-1.0.4-orig/Daemon/CMakeLists.txt	2023-01-30 03:53:24.000000000 -0800
++++ ydotool-1.0.4/Daemon/CMakeLists.txt	2023-05-22 22:42:53.960568790 -0700
+@@ -2,4 +2,9 @@
+     "${CMAKE_CURRENT_SOURCE_DIR}/ydotool.service.in"
+     "${PROJECT_BINARY_DIR}/ydotool.service"
+     @ONLY)
++configure_file(
++    "${CMAKE_CURRENT_SOURCE_DIR}/ydotool.service-openrc.in"
++    "${PROJECT_BINARY_DIR}/ydotool.openrc"
++    @ONLY)
+ install(FILES "${PROJECT_BINARY_DIR}/ydotool.service" DESTINATION ${SD_UNITDIR})
++install(FILES "${PROJECT_BINARY_DIR}/ydotool.openrc" DESTINATION "/etc/init.d" RENAME ydotool)
+diff -Naur ydotool-1.0.4-orig/Daemon/ydotool.service-openrc.in ydotool-1.0.4/Daemon/ydotool.service-openrc.in
+--- ydotool-1.0.4-orig/Daemon/ydotool.service-openrc.in	2023-01-30 03:53:24.000000000 -0800
++++ ydotool-1.0.4/Daemon/ydotool.service-openrc.in	2023-05-22 22:38:49.822064144 -0700
+@@ -3,7 +3,7 @@
+ name=$RC_SVCNAME
+ description="Starts ydotoold service"
+ supervisor="supervise-daemon"
+-command="/usr/local/bin/ydotoold"
++command="@CMAKE_INSTALL_FULL_BINDIR@/ydotoold"
+ 
+ reload() {
+ 	ebegin "Reloading $RC_SVCNAME"
