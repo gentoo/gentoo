@@ -26,7 +26,6 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
 	default
-	mv configure.in configure.ac || die
 	AT_M4DIR=m4 eautoreconf
 	append-cflags -std=gnu89 # build with gcc5 (bug #570966)
 }
