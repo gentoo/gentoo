@@ -301,6 +301,7 @@ ssl - Add support for SSL/TLS connections (Secure Socket Layer / Transport Layer
 startup-notification - Enable application startup event feedback mechanism
 static - !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
 static-libs - Build static versions of dynamic libraries as well
+strip - Allow symbol stripping to be performed by the ebuild for special files
 subversion - Enable subversion (version control system) support
 suid - Enable setuid root program(s)
 svg - Add support for SVG (Scalable Vector Graphics)
