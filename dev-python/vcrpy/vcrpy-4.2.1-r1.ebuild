@@ -22,6 +22,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 
+# <urllib3-2 for https://github.com/kevin1024/vcrpy/issues/688.
 RDEPEND="
 	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
