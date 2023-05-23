@@ -97,6 +97,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.39-check-for-mount_setattr.patch"
 	"${FILESDIR}/${PN}-2.39-tests-for-mount_setattr.patch"
+	"${FILESDIR}/${PN}-2.39-mount-parse-options-user.patch"
 )
 
 pkg_pretend() {
