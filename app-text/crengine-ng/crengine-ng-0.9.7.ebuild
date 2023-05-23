@@ -17,7 +17,7 @@ CDEPEND="sys-libs/zlib
 	png? ( media-libs/libpng:0 )
 	jpeg? ( media-libs/libjpeg-turbo )
 	>=media-libs/freetype-2.10.0
-	harfbuzz? ( media-libs/harfbuzz:= )
+	harfbuzz? ( media-libs/harfbuzz:=[truetype] )
 	libunibreak? ( dev-libs/libunibreak:= )
 	fribidi? ( dev-libs/fribidi )
 	zstd? ( app-arch/zstd:= )
