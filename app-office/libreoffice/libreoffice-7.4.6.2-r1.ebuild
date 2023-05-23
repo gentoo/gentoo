@@ -438,10 +438,6 @@ src_configure() {
 	# Ensure we use correct toolchain
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
 
-	if use vulkan && ! use clang ; then
-		ewarn "Building skia with gcc may lead to performance issues. Disable vulkan or enable clang."
-	fi
-
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
 	# System python enablement:
