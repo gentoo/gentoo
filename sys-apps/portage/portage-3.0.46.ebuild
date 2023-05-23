@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+DISTUTILS_EXT=1
+PYTHON_COMPAT=( pypy3 python3_{10..11} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
