@@ -41,6 +41,11 @@ python_check_deps() {
 	python_has_version "dev-ada/langkit[${PYTHON_USEDEP}]"
 }
 
+pkg_setup() {
+	ada_pkg_setup
+	python-any-r1_pkg_setup
+}
+
 src_configure() {
 	emake ENABLE_SHARED=$(usex shared) setup
 }
@@ -56,7 +61,7 @@ src_compile() {
 	gprbuild -p -v -P src/kb/collect_kb.gpr -XKB_BUILD_DIR=.build/kb \
 		--relocate-build-tree -largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 	.build/kb/collect_kb -o .build/kb/config.kb /usr/share/gprconfig || die
-	emake -C langkit setup DEST="${S}/.build/lkparser"
+	emake -C langkit setup DEST="${S}/.build/lkparser" PYTHONEXE=${PYTHON}
 	if use shared; then
 		build relocatable
 	fi
