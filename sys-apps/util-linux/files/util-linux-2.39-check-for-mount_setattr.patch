@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/906797
 https://github.com/util-linux/util-linux/pull/2248
 
-From 9b68f614c8d02ca41f077ba064e0a83d2ae7b1fe Mon Sep 17 00:00:00 2001
+From 1bd85b64632280d6bf0e86b4ff29da8b19321c5f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
 Date: Sat, 20 May 2023 06:38:20 +0200
 Subject: [PATCH] libmount: check for availability of mount_setattr
@@ -33,28 +33,32 @@ Signed-off-by: Thomas Weißschuh <thomas@t-8ch.de>
  /*
   * open_tree() and fsopen()
   */
-@@ -675,9 +684,12 @@ static int hook_prepare(struct libmnt_context *cxt,
+@@ -675,9 +684,14 @@ static int hook_prepare(struct libmnt_context *cxt,
  	/* call mount_setattr() */
  	if (!rc
  	    && cxt->helper == NULL
 -	    && (set != 0 || clr != 0 || (flags & MS_REMOUNT)))
 +	    && (set != 0 || clr != 0 || (flags & MS_REMOUNT))) {
-+		if (!mount_setattr_is_supported())
++		if (!mount_setattr_is_supported()) {
++			hookset_deinit(cxt, hs);
 +			return 1;
++		}
  		rc = mnt_context_append_hook(cxt, hs, MNT_STAGE_MOUNT, NULL,
  					hook_set_vfsflags);
 +	}
  
  	/* call move_mount() to attach target */
  	if (!rc
-@@ -688,9 +700,12 @@ static int hook_prepare(struct libmnt_context *cxt,
+@@ -688,9 +702,14 @@ static int hook_prepare(struct libmnt_context *cxt,
  					hook_attach_target);
  
  	/* set propagation (has to be attached to VFS) */
 -	if (!rc && mnt_optlist_get_propagation(ol))
 +	if (!rc && mnt_optlist_get_propagation(ol)) {
-+		if (!mount_setattr_is_supported())
++		if (!mount_setattr_is_supported()) {
++			hookset_deinit(cxt, hs);
 +			return 1;
++		}
  		rc = mnt_context_append_hook(cxt, hs, MNT_STAGE_MOUNT_POST, NULL,
  					hook_set_propagation);
 +	}
