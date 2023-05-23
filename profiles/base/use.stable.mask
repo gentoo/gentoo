@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Michał Górny <mgorny@gentoo.org> (2023-05-23)
+# Mask until dev-lang/python:3.12 becomes stable.
+python_targets_python3_12
+python_single_target_python3_12
+
 # Hans de Graaff <graaff@gentoo.org> (2023-01-15)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby31
