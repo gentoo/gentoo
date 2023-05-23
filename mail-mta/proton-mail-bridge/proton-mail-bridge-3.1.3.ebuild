@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,10 +34,8 @@ src_prepare() {
 
 src_compile() {
 	if use gui; then
-		emake \
-			QT_DOC_DIR="/usr/share/qt5-doc" \
-			QT_PKG_CONFIG=true \
-			build
+		eerror "Since version 3.0.0, GUI support in ${PN} requires Qt6 and is therefore currently not available"
+		die "USE=gui requires Qt6"
 	else
 		emake build-nogui
 	fi
@@ -49,11 +47,9 @@ src_test() {
 
 src_install() {
 	exeinto /usr/bin
-	newexe ${MY_PN} ${PN}
+	newexe bridge ${PN}
 
-	systemd_douserunit "${FILESDIR}"/${PN}.service
-
-	# FIXME: USE=gui will probably need more files
+	systemd_newuserunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
 
 	einstalldocs
 }
