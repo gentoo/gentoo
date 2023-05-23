@@ -22,7 +22,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 
 DEPEND="
 	x11-libs/cairo
