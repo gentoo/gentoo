@@ -16,7 +16,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/tiran/defusedxml/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="PSF-2"
