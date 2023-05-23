@@ -116,8 +116,6 @@ src_configure() {
 		-DTrilinos_ENABLE_SEACAS=OFF
 		-DTrilinos_ENABLE_Amesos=ON
 		-DTrilinos_ENABLE_AztecOO=ON
-		-DTrilinos_ENABLE_COMPLEX_DOUBLE=ON
-		-DTrilinos_ENABLE_COMPLEX_FLOAT=ON
 		-DTrilinos_ENABLE_EpetraExt=ON
 		-DTrilinos_ENABLE_Epetra=ON
 		-DTrilinos_ENABLE_Ifpack=ON
