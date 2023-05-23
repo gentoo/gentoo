@@ -125,7 +125,7 @@ src_install() {
 
 	# bugs 61116, 374009, and 639124
 	if ! use tools ; then
-		for tool in "maildirmake" "deliverquota"; do
+		for tool in "maildirmake"; do
 			rm "${D}/usr/bin/${tool}" || die
 			rm "${D}/usr/share/man/man"[0-9]"/${tool}."[0-9] || die
 		done
