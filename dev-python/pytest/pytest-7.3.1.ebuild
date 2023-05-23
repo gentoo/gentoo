@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{9..11} pypy3 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_TESTED=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_12 )
 
 inherit distutils-r1 multiprocessing pypi
 
@@ -30,7 +30,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		>=dev-python/exceptiongroup-1.0.0_rc8[${PYTHON_USEDEP}]
 		>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
-	' 3.8 3.9 3.10)
+	' 3.{9..10})
 "
 BDEPEND="
 	>=dev-python/setuptools-scm-6.2.3[${PYTHON_USEDEP}]
