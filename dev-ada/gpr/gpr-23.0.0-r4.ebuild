@@ -46,13 +46,15 @@ src_configure() {
 }
 
 src_compile() {
-	build() {
-		gprbuild -p -m -v -j$(makeopts_jobs) -XGPR2_BUILD=release \
-			-XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 gpr2.gpr || die
+	build () {
+		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
+			-XGPR2_BUILD=release -XXMLADA_BUILD=$1 gpr2.gpr \
+			-largs ${LDFLAGS} \
+			-cargs ${ADAFLAGS} || die "gprbuild failed"
 	}
 	mkdir -p .build/kb || die
-	gprbuild -p -P src/kb/collect_kb.gpr -XKB_BUILD_DIR=.build/kb \
-		--relocate-build-tree || die
+	gprbuild -p -v -P src/kb/collect_kb.gpr -XKB_BUILD_DIR=.build/kb \
+		--relocate-build-tree -largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 	.build/kb/collect_kb -o .build/kb/config.kb /usr/share/gprconfig || die
 	emake -C langkit setup DEST="${S}/.build/lkparser"
 	if use shared; then
@@ -81,10 +83,10 @@ src_compile() {
 }
 
 src_install() {
-	build() {
-		gprinstall -p -f -v -XGPR2_BUILD=release --prefix="${D}/usr" \
-			-XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 --build-name=$1 \
-			--build-var=LIBRARY_TYPE \
+	build () {
+		gprinstall -XLIBRARY_TYPE=$1 -f -p -v -XGPR2_BUILD=release \
+			--prefix="${D}/usr" -XXMLADA_BUILD=$1 \
+			--build-name=$1 --build-var=LIBRARY_TYPE \
 			--build-var=GPR2_LIBRARY_TYPE gpr2.gpr || die
 	}
 	if use shared; then
