@@ -17,6 +17,5 @@
 	</upstream>
 	<use>
 		<flag name="discord">Enable Discord presence/join integration</flag>
-		<flag name="vulkan">Enable vulkan backend</flag>
 	</use>
 </pkgmetadata>
