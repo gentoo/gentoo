@@ -605,7 +605,7 @@ distutils_enable_tests() {
 		setup.py)
 			;;
 		unittest)
-			test_pkg="dev-python/unittest-or-fail"
+			# dep handled below
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
@@ -623,6 +623,13 @@ distutils_enable_tests() {
 				${test_pkg}[\${PYTHON_USEDEP}]
 			")"
 		fi
+	elif [[ ${1} == unittest ]]; then
+		# unittest-or-fail is needed in py<3.12
+		test_deps+="
+			$(python_gen_cond_dep '
+				dev-python/unittest-or-fail[${PYTHON_USEDEP}]
+			' 3.{9..11})
+		"
 	fi
 	if [[ -n ${test_deps} ]]; then
 		IUSE+=" test"
