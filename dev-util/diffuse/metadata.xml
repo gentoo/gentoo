@@ -6,6 +6,6 @@
 		<name>Andrey Grozin</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">diffuse</remote-id>
+		<remote-id type="github">MightyCreak/diffuse</remote-id>
 	</upstream>
 </pkgmetadata>
