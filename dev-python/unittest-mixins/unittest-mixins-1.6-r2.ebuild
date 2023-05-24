@@ -4,18 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A set of mixin classes and other helpers for unittest test case classes"
 HOMEPAGE="
 	https://github.com/nedbat/unittest-mixins/
 	https://pypi.org/project/unittest-mixins/
-"
-SRC_URI="
-	https://github.com/nedbat/unittest-mixins/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz
 "
 
 LICENSE="Apache-2.0"
