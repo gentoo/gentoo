@@ -17,14 +17,11 @@ HOMEPAGE="
 	https://github.com/cython/cython/
 	https://pypi.org/project/Cython/
 "
-#SRC_URI="
-#	https://github.com/cython/cython/archive/${PV/_beta/b}.tar.gz
-#		-> ${MY_P}.gh.tar.gz
-#"
-#S=${WORKDIR}/${MY_P}
-SNAPSHOT_COMMIT="d73164b56544def09b65d250d72b227a38944bb1"
-SRC_URI="https://github.com/cython/cython/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.gh.tar.gz"
-S=${WORKDIR}/${PN}-${SNAPSHOT_COMMIT}
+SRC_URI="
+	https://github.com/cython/cython/archive/${PV/_beta/b}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
