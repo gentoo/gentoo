@@ -33,6 +33,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	alignof
+)
+
 src_configure() {
 	local myconf=(
 		--disable-static
