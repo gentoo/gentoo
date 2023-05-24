@@ -8,24 +8,24 @@ inherit autotools dist-kernel-utils flag-o-matic linux-mod-r1 multiprocessing
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
-if [[ ${PV} == "9999" ]]; then
+MODULES_KERNEL_MAX=6.2
+MODULES_KERNEL_MIN=3.10
+
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
+	unset MODULES_KERNEL_MAX
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openzfs.asc
 	inherit verify-sig
 
-	MY_PV="${PV/_rc/-rc}"
+	MY_PV=${PV/_rc/-rc}
+
 	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz.asc )"
 	S="${WORKDIR}/zfs-${PV%_rc?}"
-	ZFS_KERNEL_COMPAT="6.2"
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openzfs.asc
 
-	# increments minor eg 5.14 -> 5.15, and still supports override.
-	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
-	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
-
-	if [[ ${PV} != *_rc* ]]; then
+	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~sparc"
 	fi
 fi
@@ -33,32 +33,26 @@ fi
 LICENSE="CDDL MIT debug? ( GPL-2+ )"
 SLOT="0/${PVR}"
 IUSE="custom-cflags debug +rootfs"
-
-RDEPEND="${DEPEND}"
+RESTRICT="test"
 
 BDEPEND="
 	dev-lang/perl
 	app-alternatives/awk
 "
 
-# we want dist-kernel block in BDEPEND because of portage resolver.
-# since linux-mod.eclass already sets version-unbounded dep, portage
-# will pull new versions. So we set it in BDEPEND which takes priority.
-# and we don't need in in git ebuild.
-if [[ ${PV} != "9999" ]] ; then
-	BDEPEND+="
-		verify-sig? ( sec-keys/openpgp-keys-openzfs )
-		dist-kernel? ( <virtual/dist-kernel-${ZFS_KERNEL_DEP}:= )
+if [[ ${PV} != 9999 ]] ; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openzfs )"
+
+	IUSE+=" +dist-kernel-cap"
+	RDEPEND="
+		dist-kernel-cap? ( dist-kernel? (
+			<virtual/dist-kernel-${MODULES_KERNEL_MAX%%.*}.$(( ${MODULES_KERNEL_MAX##*.} + 1))
+		) )
 	"
 fi
 
-# PDEPEND in this form is needed to trick portage suggest
-# enabling dist-kernel if only 1 package have it set
+# Used to suggest matching USE, but without suggesting to disable
 PDEPEND="dist-kernel? ( ~sys-fs/zfs-${PV}[dist-kernel] )"
-
-RESTRICT="debug? ( strip ) test"
-
-DOCS=( AUTHORS COPYRIGHT META README.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.11-gentoo.patch
@@ -76,53 +70,26 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	CONFIG_CHECK="
-		!DEBUG_LOCK_ALLOC
+	local CONFIG_CHECK="
 		EFI_PARTITION
-		MODULES
-		!PAX_KERNEXEC_PLUGIN_METHOD_OR
-		!TRIM_UNUSED_KSYMS
 		ZLIB_DEFLATE
 		ZLIB_INFLATE
+		!DEBUG_LOCK_ALLOC
+		!PAX_KERNEXEC_PLUGIN_METHOD_OR
 	"
-
-	use debug && CONFIG_CHECK="${CONFIG_CHECK}
-		FRAME_POINTER
+	use debug && CONFIG_CHECK+="
 		DEBUG_INFO
+		FRAME_POINTER
 		!DEBUG_INFO_REDUCED
 	"
-
-	use rootfs && \
-		CONFIG_CHECK="${CONFIG_CHECK}
-			BLK_DEV_INITRD
-			DEVTMPFS
+	use rootfs && CONFIG_CHECK+="
+		BLK_DEV_INITRD
+		DEVTMPFS
 	"
 
-	kernel_is -lt 5 && CONFIG_CHECK="${CONFIG_CHECK} IOSCHED_NOOP"
-
-	if [[ ${PV} != "9999" ]]; then
-		local kv_major_max kv_minor_max zcompat
-		zcompat="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
-		kv_major_max="${zcompat%%.*}"
-		zcompat="${zcompat#*.}"
-		kv_minor_max="${zcompat%%.*}"
-		kernel_is -le "${kv_major_max}" "${kv_minor_max}" || die \
-			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
-
-	fi
-
-	kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
+	kernel_is -lt 5 && CONFIG_CHECK+=" IOSCHED_NOOP"
 
 	linux-mod-r1_pkg_setup
-}
-
-src_unpack() {
-	if use verify-sig ; then
-		# Needed for downloaded patch (which is unsigned, which is fine)
-		verify-sig_verify_detached "${DISTDIR}"/zfs-${MY_PV}.tar.gz{,.asc}
-	fi
-
-	default
 }
 
 src_prepare() {
@@ -131,20 +98,19 @@ src_prepare() {
 	# Run unconditionally (bug #792627)
 	eautoreconf
 
-	if [[ ${PV} != "9999" ]]; then
+	if [[ ${PV} != 9999 ]] ; then
 		# Set module revision number
-		sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" META || die "Could not set Gentoo release"
+		sed -Ei "s/(Release:.*)1/\1${PR}-gentoo/" META || die
 	fi
 }
 
 src_configure() {
 	use custom-cflags || strip-flags
-
 	filter-ldflags -Wl,*
 
 	local myconf=(
-		--bindir="${EPREFIX}/bin"
-		--sbindir="${EPREFIX}/sbin"
+		--bindir="${EPREFIX}"/bin
+		--sbindir="${EPREFIX}"/sbin
 		--with-config=kernel
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
@@ -166,22 +132,22 @@ src_install() {
 	emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
 	modules_post_process
 
-	einstalldocs
+	dodoc AUTHORS COPYRIGHT META README.md
 }
 
 pkg_postinst() {
 	linux-mod-r1_pkg_postinst
 
-	if [[ -z ${ROOT} ]] && use dist-kernel; then
+	if [[ -z ${ROOT} ]] && use dist-kernel ; then
 		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 
-	if use x86 || use arm; then
+	if use x86 || use arm ; then
 		ewarn "32-bit kernels will likely require increasing vmalloc to"
 		ewarn "at least 256M and decreasing zfs_arc_max to some value less than that."
 	fi
 
-	if has_version sys-boot/grub; then
+	if has_version sys-boot/grub ; then
 		ewarn "This version of OpenZFS includes support for new feature flags"
 		ewarn "that are incompatible with previous versions. GRUB2 support for"
 		ewarn "/boot with the new feature flags is not yet available."
