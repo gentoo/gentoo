@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-05-24)
+# Breaks building C++ consumers at least: bug #906755, bug #906879, bug #906957.
+# Please upgrade to >=0.5.1.
+=net-libs/libproxy-0.5.0
+
 # Sam James <sam@gentoo.org> (2023-05-23)
 # Argument splitting seems broken, see bug #906892 and https://github.com/ffi/ffi-compiler/issues/23.
 =dev-ruby/ffi-compiler-1.2.0
