@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -31,11 +31,15 @@ BDEPEND="
 "
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${P}-py312.patch"
+
+		# use system pypiserver instead of bundled one
+		"${FILESDIR}"/distlib-0.3.2-system-pypiserver.py
+	)
+
 	# make sure they're not used
 	rm tests/pypi-server-standalone.py || die
-
-	# use system pypiserver instead of broken bundled one
-	eapply "${FILESDIR}"/distlib-0.3.2-system-pypiserver.py || die
 
 	distutils-r1_src_prepare
 }
