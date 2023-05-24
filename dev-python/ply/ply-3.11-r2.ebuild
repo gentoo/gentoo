@@ -5,7 +5,7 @@
 EAPI=7
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -15,6 +15,7 @@ HOMEPAGE="
 	https://github.com/dabeaz/ply/
 	https://pypi.org/project/ply/
 "
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-py3.12-assert.patch.xz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -25,6 +26,7 @@ DOCS=( ANNOUNCE CHANGES TODO )
 
 PATCHES=(
 	"${FILESDIR}/3.6-picklefile-IOError.patch"
+	"${WORKDIR}/${P}-py3.12-assert.patch"
 )
 
 python_test() {
