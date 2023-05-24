@@ -41,16 +41,5 @@ python_test() {
 	# since we disabled autoloading, force loading necessary plugins
 	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail,pytest_forked
 
-	[[ ${PV} != 3.3.1 ]] && die "Recheck deselects, please!"
-	local EPYTEST_DESELECT=()
-	if [[ ${EPYTHON} == python3.12 ]]; then
-		EPYTEST_DESELECT+=(
-			# failures due to warnings from pytest
-			# https://github.com/pytest-dev/pytest-xdist/issues/914
-			testing/acceptance_test.py::test_config_initialization
-			testing/acceptance_test.py::test_collection_crash
-		)
-	fi
-
 	epytest
 }
