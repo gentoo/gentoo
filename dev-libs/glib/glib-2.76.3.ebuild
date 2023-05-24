@@ -154,7 +154,7 @@ src_prepare() {
 	fi
 
 	# disable native macOS integrations
-	sed -i -e '/glib_conf.set(.HAVE_\(CARBON\|COCOA\).)/s/true/false/' \
+	sed -i -e '/glib_conf.set(.HAVE_\(CARBON\|COCOA\).,/s/true/false/' \
 		meson.build || die
 	sed -i \
 		-e '/AvailabilityMacros.h/d' \
