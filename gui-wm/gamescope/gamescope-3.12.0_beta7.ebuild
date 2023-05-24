@@ -41,6 +41,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	dev-cpp/benchmark
 	dev-libs/stb
 	dev-util/vulkan-headers
 	media-libs/glm
