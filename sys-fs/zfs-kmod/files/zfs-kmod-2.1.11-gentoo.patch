@@ -1,0 +1,24 @@
+Hack to pass the full linux-mod-r1 toolchain to make during ./configure.
+Not needed at build time given can pass it normally then.
+
+Eclass has workarounds, compiler/version matching, and its own set of
+user variables which creates disparity between ebuilds if not used.
+
+For the (normal) alternative: KERNEL_{CC,LD} alone is insufficient,
+but combining with KERNEL_LLVM=1 when CC_IS_CLANG will allow it
+to work for *most* people (will likely still need KERNEL_LD from
+linux-mod-r1, or ThinLTO kernels may fail with sandbox violations).
+
+Note KERNEL_* also cause failure if they contain spaces.
+
+https://bugs.gentoo.org/865157
+--- a/config/kernel.m4
++++ b/config/kernel.m4
+@@ -646,6 +646,5 @@
+ 	AC_TRY_COMMAND([
+ 	    KBUILD_MODPOST_NOFINAL="$5" KBUILD_MODPOST_WARN="$6"
+-	    make modules -k -j$TEST_JOBS ${KERNEL_CC:+CC=$KERNEL_CC}
+-	    ${KERNEL_LD:+LD=$KERNEL_LD} ${KERNEL_LLVM:+LLVM=$KERNEL_LLVM}
++	    make modules -k -j$TEST_JOBS '${GENTOO_MAKEARGS_EVAL}'
+ 	    CONFIG_MODULES=y CFLAGS_MODULE=-DCONFIG_MODULES
+ 	    -C $LINUX_OBJ $ARCH_UM M=$PWD/$1 >$1/build.log 2>&1])
