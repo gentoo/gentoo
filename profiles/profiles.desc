@@ -408,7 +408,6 @@ arm64-macos	prefix/darwin/macos/13.0/arm64/gcc				exp
 # Solaris Profiles
 sparc-solaris	prefix/sunos/solaris/5.11/sparc					exp
 sparc64-solaris	prefix/sunos/solaris/5.11/sparc64				exp
-x86-solaris	prefix/sunos/solaris/5.11/x86					exp
 x64-solaris	prefix/sunos/solaris/5.11/x64					exp
 
 # Windows Profiles
