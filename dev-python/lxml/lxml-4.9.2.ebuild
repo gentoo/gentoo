@@ -37,6 +37,7 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.29[${PYTHON_USEDEP}]
 	doc? (
 		$(python_gen_any_dep '
