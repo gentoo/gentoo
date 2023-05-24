@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="teamspeak3 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="3"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 ~x86"
 IUSE="+alsa pulseaudio system-libcxx +system-quazip"
 
 REQUIRED_USE="|| ( alsa pulseaudio )"
