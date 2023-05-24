@@ -21,7 +21,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
-RDEPEND="dev-libs/libansilove"
+RDEPEND=">=dev-libs/libansilove-1.4.0:="
 DEPEND="${RDEPEND}"
 
 src_configure() {
