@@ -33,7 +33,8 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx doc
+distutils_enable_sphinx doc \
+	dev-python/sphinxcontrib-github-alt
 
 src_test() {
 	# workaround new readline defaults
