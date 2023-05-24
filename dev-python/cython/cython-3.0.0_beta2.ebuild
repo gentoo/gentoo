@@ -5,10 +5,10 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r1 multiprocessing toolchain-funcs
 
 MY_P=${P/_beta/b}
 DESCRIPTION="A Python to C compiler"
@@ -34,7 +34,7 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
-		' python3_{8..10})
+		' python3_{10..11})
 	)
 "
 
@@ -57,7 +57,7 @@ python_compile() {
 }
 
 python_test() {
-	if has "${EPYTHON}" pypy3 python3.11; then
+	if has "${EPYTHON}" pypy3; then
 		einfo "Skipping tests on ${EPYTHON} (xfail)"
 		return
 	fi
@@ -65,7 +65,7 @@ python_test() {
 	tc-export CC
 	# https://github.com/cython/cython/issues/1911
 	local -x CFLAGS="${CFLAGS} -fno-strict-overflow"
-	"${PYTHON}" runtests.py -vv --work-dir "${BUILD_DIR}"/tests ||
+	"${PYTHON}" runtests.py -vv -j "$(makeopts_jobs)" --work-dir "${BUILD_DIR}"/tests ||
 		die "Tests fail with ${EPYTHON}"
 }
 
