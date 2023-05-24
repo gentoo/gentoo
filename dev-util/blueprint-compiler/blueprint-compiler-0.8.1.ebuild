@@ -42,6 +42,7 @@ BDEPEND="
 	)
 	test? (
 		gui-libs/gtk:4[introspection]
+		gui-libs/libadwaita:1[introspection]
 	)
 "
 
