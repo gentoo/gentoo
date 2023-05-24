@@ -101,6 +101,10 @@ multilib_src_configure() {
 	# Filter seemingly problematic CFLAGS (bug #26320)
 	filter-flags -fprefetch-loop-arrays -funroll-loops
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		append-libs iconv
+	fi
+
 	# Notes:
 	# The meaning of the 'debug' USE flag does not apply to the --with-debug
 	# switch (enabling the libxml2 debug module). See bug #100898.
