@@ -106,8 +106,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/rust
-	<dev-python/semantic_version-3[${PYTHON_USEDEP}]
-	>=dev-python/semantic_version-2.8.2[${PYTHON_USEDEP}]
+	<dev-python/semantic-version-3[${PYTHON_USEDEP}]
+	>=dev-python/semantic-version-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-62.4[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-3.7.4.3[${PYTHON_USEDEP}]
 "

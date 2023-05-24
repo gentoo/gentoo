@@ -30,7 +30,7 @@ DEPEND="
 	test? (
 		dev-python/asgiref[${PYTHON_USEDEP}]
 		dev-python/blinker[${PYTHON_USEDEP}]
-		dev-python/semantic_version[${PYTHON_USEDEP}]
+		dev-python/semantic-version[${PYTHON_USEDEP}]
 		<dev-python/werkzeug-2.3[${PYTHON_USEDEP}]
 	)
 "

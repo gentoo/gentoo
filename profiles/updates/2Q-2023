@@ -21,3 +21,4 @@ move dev-python/jupyterlab_pygments dev-python/jupyterlab-pygments
 move dev-python/sphinxcontrib-log_cabinet dev-python/sphinxcontrib-log-cabinet
 move app-misc/pdfpc app-text/pdfpc
 move dev-python/python-email-validator dev-python/email-validator
+move dev-python/semantic_version dev-python/semantic-version
