@@ -29,6 +29,9 @@ RDEPEND="
 		dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	' python3_9)
 "
+BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests unittest
 
