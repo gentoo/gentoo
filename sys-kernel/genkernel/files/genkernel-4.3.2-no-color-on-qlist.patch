@@ -1,0 +1,38 @@
+From 75d666895ff428ca18863674bcf7e5ebf176505b Mon Sep 17 00:00:00 2001
+From: Ben Kohler <bkohler@gentoo.org>
+Date: Wed, 24 May 2023 11:24:32 -0500
+Subject: [PATCH] gen_initramfs.sh: force no-color on qlist calls
+
+In some cases, qlist's pipe detection may not work, and this is fatal to
+our build. Let's just force -C on all qlist calls.
+
+Signed-off-by: Ben Kohler <bkohler@gentoo.org>
+---
+ gen_initramfs.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gen_initramfs.sh b/gen_initramfs.sh
+index 227badd..986b3b4 100755
+--- a/gen_initramfs.sh
++++ b/gen_initramfs.sh
+@@ -801,7 +801,7 @@ append_multipath() {
+ 
+ 	local udevdir=$(get_udevdir)
+ 	local udevdir_initramfs="/usr/lib/udev"
+-	local udev_files=( $(qlist -e sys-fs/multipath-tools:0 \
++	local udev_files=( $(qlist -eC sys-fs/multipath-tools:0 \
+ 		| grep -E -- "^${udevdir}")
+ 	)
+ 
+@@ -1131,7 +1131,7 @@ append_zfs() {
+ 
+ 	local udevdir=$(get_udevdir)
+ 	local udevdir_initramfs="/usr/lib/udev"
+-	local udev_files=( $(qlist -e sys-fs/zfs:0 \
++	local udev_files=( $(qlist -eC sys-fs/zfs:0 \
+ 		| grep -E -- "^${udevdir}")
+ 	)
+ 
+-- 
+2.40.1
+
