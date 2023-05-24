@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools dist-kernel-utils flag-o-matic linux-mod toolchain-funcs
+inherit autotools dist-kernel-utils flag-o-matic linux-mod-r1 multiprocessing
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -60,6 +60,10 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.11-gentoo.patch
+)
+
 pkg_pretend() {
 	use rootfs || return 0
 
@@ -109,7 +113,7 @@ pkg_setup() {
 
 	kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
 
-	linux-mod_pkg_setup
+	linux-mod-r1_pkg_setup
 }
 
 src_unpack() {
@@ -134,60 +138,41 @@ src_prepare() {
 }
 
 src_configure() {
-	set_arch_to_kernel
-
 	use custom-cflags || strip-flags
 
 	filter-ldflags -Wl,*
 
-	# Set CROSS_COMPILE in the environment.
-	# This allows the user to override it via make.conf or via a local Makefile.
-	# https://bugs.gentoo.org/811600
-	export CROSS_COMPILE=${CROSS_COMPILE-${CHOST}-}
-
 	local myconf=(
-		HOSTCC="$(tc-getBUILD_CC)"
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=kernel
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		$(use_enable debug)
+
+		# See gentoo.patch
+		GENTOO_MAKEARGS_EVAL="${MODULES_MAKEARGS[*]@Q}"
+		TEST_JOBS="$(makeopts_jobs)"
 	)
 
 	econf "${myconf[@]}"
 }
 
 src_compile() {
-	set_arch_to_kernel
-
-	myemakeargs=(
-		HOSTCC="$(tc-getBUILD_CC)"
-		V=1
-	)
-
-	emake "${myemakeargs[@]}"
+	emake "${MODULES_MAKEARGS[@]}"
 }
 
 src_install() {
-	set_arch_to_kernel
-
-	myemakeargs+=(
-		DEPMOD=:
-		# INSTALL_MOD_PATH ?= $(DESTDIR) in module/Makefile
-		DESTDIR="${D}"
-	)
-
-	emake "${myemakeargs[@]}" install
+	emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
+	modules_post_process
 
 	einstalldocs
 }
 
 pkg_postinst() {
-	linux-mod_pkg_postinst
+	linux-mod-r1_pkg_postinst
 
 	if [[ -z ${ROOT} ]] && use dist-kernel; then
-		set_arch_to_pkgmgr
 		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 
