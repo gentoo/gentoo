@@ -21,12 +21,10 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/xmlada[${ADA_USEDEP}]
-	shared? ( dev-ada/xmlada[shared,static-pic] )
-	dev-ada/gnatcoll-core[${ADA_USEDEP}]
-	shared? ( dev-ada/gnatcoll-core[shared,static-pic] )
-	dev-ada/gnatcoll-bindings[${ADA_USEDEP},iconv,gmp]
-	shared? ( dev-ada/gnatcoll-bindings[shared,static-pic] )"
+	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/gnatcoll-core[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},shared?,static-libs?,static-pic?,iconv,gmp]
+"
 
 DEPEND="${RDEPEND}
 	dev-ada/gprconfig_kb[${ADA_USEDEP}]
@@ -35,7 +33,9 @@ DEPEND="${RDEPEND}
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-ada/langkit[${PYTHON_USEDEP}]
-	')"
+	')
+	dev-ada/libadalang
+"
 
 python_check_deps() {
 	python_has_version "dev-ada/langkit[${PYTHON_USEDEP}]"
