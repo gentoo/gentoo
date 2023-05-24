@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -26,7 +26,7 @@ BDEPEND="
 		$(python_gen_impl_dep sqlite)
 		$(python_gen_cond_dep '
 			dev-python/cloudpickle[${PYTHON_USEDEP}]
-		' 'python3*')
+		' python3_{10..11})
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 	)
