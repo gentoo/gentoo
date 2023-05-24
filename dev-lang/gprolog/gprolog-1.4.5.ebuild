@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P}
 
 LICENSE="|| ( GPL-2+ LGPL-3+ )"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug doc examples"
 
 PATCHES=(

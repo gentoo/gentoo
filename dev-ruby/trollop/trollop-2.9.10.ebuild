@@ -13,7 +13,7 @@ DESCRIPTION="Trollop is a commandline option parser for Ruby"
 HOMEPAGE="https://manageiq.github.io/trollop/"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris"
 SLOT="2"
 IUSE=""
 

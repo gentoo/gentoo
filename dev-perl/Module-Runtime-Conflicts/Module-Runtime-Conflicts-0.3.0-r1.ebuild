@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Provide information on conflicts for Module::Runtime"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris"
 
 RDEPEND="
 	dev-perl/Dist-CheckConflicts

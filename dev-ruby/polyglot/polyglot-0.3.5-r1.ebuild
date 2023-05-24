@@ -14,6 +14,6 @@ DESCRIPTION="Polyglot provides support for fully-custom DSLs"
 HOMEPAGE="http://polyglot.rubyforge.org/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris"
 SLOT="0"
 IUSE=""

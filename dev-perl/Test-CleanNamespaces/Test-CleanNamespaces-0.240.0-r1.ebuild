@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Check for uncleaned imports"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="minimal"
 
 RDEPEND="

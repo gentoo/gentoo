@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="MySQL-specific functions for Time::Piece"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=virtual/perl-Time-Piece-1.15

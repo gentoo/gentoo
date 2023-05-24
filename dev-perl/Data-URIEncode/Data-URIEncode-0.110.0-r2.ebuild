@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Allow complex data structures to be encoded using flat URIs"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/CGI

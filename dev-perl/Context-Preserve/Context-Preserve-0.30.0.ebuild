@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Return chained, modified values from subs, without losing context"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

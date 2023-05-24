@@ -14,7 +14,7 @@ SLOT="0"
 
 AIX_V='aix-2'
 
-KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
 IUSE=""
 

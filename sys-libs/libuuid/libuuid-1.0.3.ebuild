@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~sparc-solaris ~sparc64-solaris ~x64-solaris"
 IUSE=""
 
 DEPEND="!!sys-apps/util-linux

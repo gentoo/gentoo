@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="adds a moniker to every class or module"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 x86 ~x86-solaris"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 
 RDEPEND=""
 BDEPEND="${RDEPEND}
