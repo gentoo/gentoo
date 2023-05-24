@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -40,6 +40,17 @@ python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# since we disabled autoloading, force loading necessary plugins
 	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail,pytest_forked
+
+	[[ ${PV} != 3.3.1 ]] && die "Recheck deselects, please!"
+	local EPYTEST_DESELECT=()
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			# failures due to warnings from pytest
+			# https://github.com/pytest-dev/pytest-xdist/issues/914
+			testing/acceptance_test.py::test_config_initialization
+			testing/acceptance_test.py::test_collection_crash
+		)
+	fi
 
 	epytest
 }
