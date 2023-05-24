@@ -103,8 +103,9 @@ pkg_setup() {
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
-	local ERROR_X86_KERNEL_IBT="CONFIG_X86_KERNEL_IBT: is set, be warned the modules may not load.
-	If run into problems, either unset or try to pass ibt=off to the kernel."
+	local ERROR_X86_KERNEL_IBT="CONFIG_X86_KERNEL_IBT: is set, this should be fine and is supposed
+	to be fixed but, *if* modules fail to load, then try to either unset
+	or pass ibt=off to the kernel (ignore this message otherwise)"
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
