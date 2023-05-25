@@ -3,7 +3,10 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-{1..4} luajit )
+# lua5-{3,4} were dropped due to bug #903577. This issue has been resolved
+# upstream, see https://github.com/rspamd/rspamd/issues/4455. They will be
+# restored with the next version bump.
+LUA_COMPAT=( lua5-1 luajit )
 
 inherit cmake lua-single pax-utils systemd tmpfiles
 
