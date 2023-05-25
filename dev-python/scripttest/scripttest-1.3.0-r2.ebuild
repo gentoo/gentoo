@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/pypa/scripttest/archive/${PV}.tar.gz
-		-> ${P}.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
