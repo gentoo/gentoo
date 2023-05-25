@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit flag-o-matic meson-multilib python-any-r1
 
