@@ -90,7 +90,7 @@ multilib_src_test() {
 	default
 
 	if multilib_is_native_abi && use python ; then
-		python_foreach_impl run_in_build_dir libxslt_py_emake test
+		python_foreach_impl run_in_build_dir libxslt_py_emake check
 	fi
 }
 
