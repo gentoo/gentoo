@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 optfeature toolchain-funcs
 
@@ -54,6 +54,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.0-tests-pypy.patch
+	"${FILESDIR}"/${P}-py3.12-drop-deprecated-imp.patch
 )
 
 python_check_deps() {
