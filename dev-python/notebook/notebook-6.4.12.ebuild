@@ -31,7 +31,7 @@ RDEPEND="
 	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	>=dev-python/send2trash-1.8.0[${PYTHON_USEDEP}]
-	dev-python/prometheus_client[${PYTHON_USEDEP}]"
+	dev-python/prometheus-client[${PYTHON_USEDEP}]"
 
 BDEPEND="
 	>=dev-python/jupyter-packaging-0.9[${PYTHON_USEDEP}]

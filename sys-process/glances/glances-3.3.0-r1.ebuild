@@ -76,7 +76,7 @@ pkg_postinst() {
 	#	dev-python/kafka-python \
 	#	dev-python/pika \
 	#	dev-python/paho-mqtt \
-	#	dev-python/prometheus_client \
+	#	dev-python/prometheus-client \
 	#	dev-python/pyzmq \
 	#	dev-python/statsd
 	#optfeature "Nvidia GPU monitoring" unpackaged/nvidia-ml-py3

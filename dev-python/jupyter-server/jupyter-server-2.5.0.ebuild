@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-python/nbconvert-6.4.4[${PYTHON_USEDEP}]
 	>=dev-python/nbformat-5.3.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/prometheus_client[${PYTHON_USEDEP}]
+	dev-python/prometheus-client[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-24[${PYTHON_USEDEP}]
 	dev-python/send2trash[${PYTHON_USEDEP}]
 	>=dev-python/terminado-0.8.3[${PYTHON_USEDEP}]

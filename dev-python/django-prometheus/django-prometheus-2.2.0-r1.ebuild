@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/django[${PYTHON_USEDEP}]
-	>=dev-python/prometheus_client-0.7[${PYTHON_USEDEP}]
+	>=dev-python/prometheus-client-0.7[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
