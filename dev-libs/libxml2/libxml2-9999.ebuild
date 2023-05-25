@@ -5,7 +5,7 @@ EAPI=8
 
 # Note: Please bump in sync with dev-libs/libxslt
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit flag-o-matic python-r1 multilib-minimal
 
@@ -100,6 +100,10 @@ src_prepare() {
 multilib_src_configure() {
 	# Filter seemingly problematic CFLAGS (bug #26320)
 	filter-flags -fprefetch-loop-arrays -funroll-loops
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		append-libs iconv
+	fi
 
 	# Notes:
 	# The meaning of the 'debug' USE flag does not apply to the --with-debug
