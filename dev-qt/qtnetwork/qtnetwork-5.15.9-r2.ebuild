@@ -33,6 +33,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-QDnsLookup-dont-overflow-the-buffer.patch"
 	"${FILESDIR}/${P}-CVE-2023-32762.patch"
+	"${FILESDIR}/${P}-libproxy-0.5-pkgconfig.patch"
 )
 
 QT5_TARGET_SUBDIRS=(
