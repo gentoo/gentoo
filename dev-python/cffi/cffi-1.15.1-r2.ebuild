@@ -5,8 +5,9 @@
 EAPI=7
 
 # no py3.12 yet because of:
-# 1. https://foss.heptapod.net/pypy/cffi/-/issues/563
-# 2. https://foss.heptapod.net/pypy/cffi/-/issues/562
+# 1. https://foss.heptapod.net/pypy/cffi/-/issues/562
+# 2. https://foss.heptapod.net/pypy/cffi/-/issues/563
+# 3. https://foss.heptapod.net/pypy/cffi/-/issues/564
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 # DO NOT ADD pypy to PYTHON_COMPAT
