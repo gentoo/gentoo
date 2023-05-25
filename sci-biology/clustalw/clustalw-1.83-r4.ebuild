@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}${PV}"
 
 LICENSE="clustalw"
 SLOT="1"
-KEYWORDS="amd64 ~ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-as-needed.patch

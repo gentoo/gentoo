@@ -9,7 +9,7 @@ HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8
 
 LICENSE="LSI"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~sparc-solaris ~x64-solaris"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~x64-solaris"
 IUSE="doc efi"
 
 RESTRICT="strip fetch mirror"

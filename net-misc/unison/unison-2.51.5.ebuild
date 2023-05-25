@@ -11,7 +11,7 @@ SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug doc gtk +ocamlopt threads"
 
 BDEPEND="dev-lang/ocaml:=[ocamlopt?]

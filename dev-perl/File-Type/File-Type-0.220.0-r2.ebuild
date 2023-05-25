@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Determine file type using magic"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~hppa ~ia64 ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
