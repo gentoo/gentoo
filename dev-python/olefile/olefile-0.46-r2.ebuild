@@ -16,7 +16,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/decalage2/olefile/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="BSD-2"
