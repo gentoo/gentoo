@@ -50,8 +50,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eautoreconf
 	default
+	eautoreconf
 }
 
 multilib_src_configure() {
