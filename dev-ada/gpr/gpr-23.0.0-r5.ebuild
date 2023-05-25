@@ -81,10 +81,11 @@ src_compile() {
 
 	gprbuild -p -m -v -j$(makeopts_jobs) -XGPR2_BUILD=release \
 		-XLIBRARY_TYPE=${libtype} -XXMLADA_BUILD=${libtype} gpr2-tools.gpr \
-		|| die
+		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 	gprbuild -p -m -v -j$(makeopts_jobs) -XGPR2_BUILD=release \
 		-XLIBRARY_TYPE=${libtype} -XXMLADA_BUILD=${libtype} \
-		-XLANGKIT_SUPPORT_BUILD=${libtype} gpr2-name.gpr || die
+		-XLANGKIT_SUPPORT_BUILD=${libtype} gpr2-name.gpr \
+		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 }
 
 src_install() {
