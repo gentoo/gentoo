@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 multiprocessing
 
@@ -60,6 +60,12 @@ python_test() {
 		# (requires dev-python/toml that we'd like to lastrite eventually)
 		tests/test_projectbuilder.py::test_toml_instead_of_tomli
 	)
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			# mismatch on deprecation warning
+			'tests/test_main.py::test_output[via-sdist-no-isolation]'
+		)
+	fi
 
 	epytest -p no:flaky -n "$(makeopts_jobs)"
 }
