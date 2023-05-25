@@ -9,7 +9,7 @@ DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
 EGIT_REPO_URI="https://github.com/ruffle-rs/ruffle.git"
 
-LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB curl"
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 OFL-1.1 UbuntuFontLicense-1.0 Unicode-DFS-2016 ZLIB curl"
 SLOT="0"
 
 # dlopen: libX* (see winit+x11-dl crates)
@@ -59,6 +59,9 @@ src_unpack() {
 
 src_configure() {
 	filter-lto # TODO: cleanup after bug #893658
+
+	# see .cargo/cargo.toml, only needed if RUSTFLAGS is set by the user
+	[[ -v RUSTFLAGS ]] && RUSTFLAGS+=" --cfg=web_sys_unstable_apis"d
 
 	if use test; then
 		# tests will be skipped if don't build everything
