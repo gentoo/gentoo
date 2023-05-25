@@ -6,9 +6,9 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
 
+# corresponding to upstream version 0.0.3
 COMMIT_SHA1="cc3c9dbf0a271b27a7ac5cd04cc1485bbc3b4307"
 
-# corresponding to upstream version 0.0.3
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="HMAC-based Extract-and-Expand Key Derivation Function (HKDF)"
