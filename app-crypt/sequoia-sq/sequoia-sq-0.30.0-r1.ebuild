@@ -470,6 +470,7 @@ KEYWORDS="~amd64 ~ppc64"
 QA_FLAGS_IGNORED="usr/bin/sq"
 
 COMMON_DEPEND="
+	dev-db/sqlite:3
 	dev-libs/gmp:=
 	dev-libs/nettle:=
 	dev-libs/openssl:=
@@ -480,7 +481,6 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	dev-db/sqlite:3
 "
 # Clang needed for bindgen
 BDEPEND="
@@ -501,7 +501,7 @@ src_compile() {
 src_install() {
 	cargo_src_install
 
-	doman target/release/build/sequoia-sq-*/out/*.1
+	doman target/*/build/sequoia-sq-*/out/*.1
 
 	newbashcomp target/sq.bash sq
 
