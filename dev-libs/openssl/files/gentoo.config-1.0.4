@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # Openssl doesn't play along nicely with cross-compiling
@@ -111,7 +111,9 @@ linux)
 		powerpc64*)   machine=ppc64;;
 		powerpc*le*)  machine="generic32 -DL_ENDIAN";;
 		powerpc*)     machine=ppc;;
+		riscv32be*)   machine="generic32 -DB_ENDIAN";;
 		riscv32*)     machine="generic32 -DL_ENDIAN";;
+		riscv64be*)   machine="riscv64 -DB_ENDIAN" system=linux64;;
 		riscv64*)     machine="riscv64 -DL_ENDIAN" system=linux64;;
 	#	sh64*)        machine=elf;;
 		sh*b*)        machine="generic32 -DB_ENDIAN";;
