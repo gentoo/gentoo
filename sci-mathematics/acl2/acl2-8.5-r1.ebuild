@@ -22,7 +22,7 @@ IUSE="doc emacs"
 REQUIRED_USE="emacs? ( doc )"
 
 RDEPEND="
-	dev-lisp/sbcl
+	dev-lisp/sbcl:=
 	emacs? ( >=app-editors/emacs-25:* )
 "
 BDEPEND="
