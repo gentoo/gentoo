@@ -408,13 +408,6 @@ arm64-macos	prefix/darwin/macos/13.0/arm64/gcc				exp
 # Solaris Profiles
 x64-solaris	prefix/sunos/solaris/5.11/x64					exp
 
-# Windows Profiles
-x86-winnt	prefix/windows/winnt/x86					exp
-x64-winnt	prefix/windows/winnt/x64					exp
-
-# Cygwin Profiles
-x64-cygwin	prefix/windows/cygwin/x64					exp
-
 # vim: set ts=8 noet ft=conf:
 
 # Local Variables:
