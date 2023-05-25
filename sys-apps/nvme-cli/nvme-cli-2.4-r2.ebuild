@@ -34,13 +34,12 @@ PATCHES=(
 )
 
 src_configure() {
-	local unitdir="$(systemd_get_systemunitdir)"
 	local emesonargs=(
 		-Dversion-tag="${PV}"
 		-Ddocs=all
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
-		-Dsystemddir="${unitdir%/system}"
-		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"
+		-Dsystemddir="$(systemd_get_systemunitdir)"
+		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		$(meson_use hugepages)
 		$(meson_feature json json-c)
 	)
