@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 	BDEPEND="dev-util/confix"
 else
 	SRC_URI="https://github.com/ssi-schaefer/${PN}/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~x64-cygwin"
+	KEYWORDS=""
 fi
 DESCRIPTION="A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)"
 HOMEPAGE="https://github.com/ssi-schaefer/parity"

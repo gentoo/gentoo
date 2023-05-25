@@ -31,7 +31,7 @@ else
 		https://github.com/haubi/cygwin-rebase/compare/rebase-${MY_PV}...rebase-${MY_PV}_merge-files-flag-0.patch -> ${P}_merge-files-flag-0.patch
 	"
 	PATCHES=( "${DISTDIR}/${P}_merge-files-flag-0.patch" )
-	KEYWORDS="-* ~x64-cygwin"
+	KEYWORDS="-*"
 fi
 
 DEPEND=""
