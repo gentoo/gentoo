@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -32,6 +32,8 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# TODO
 	qrcode/tests/test_script.py::ScriptTest::test_factory
+	# release process-specific tests, broken on py3.12
+	qrcode/tests/test_release.py
 )
 
 src_install() {
