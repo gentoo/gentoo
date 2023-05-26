@@ -124,6 +124,7 @@ PATCHES=(
 
 	### Backports
 	"${FILESDIR}"/${P}-hanging-http2.patch
+	"${FILESDIR}"/${P}-configure-compiler.patch
 )
 
 src_prepare() {

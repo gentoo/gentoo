@@ -1,0 +1,73 @@
+The check for "basic compiler options" hangs otherwise.
+
+https://github.com/curl/curl/commit/471dab2da0c6b2b08ca2b96a1da0a4825e2c3c36
+https://github.com/curl/curl/commit/c4a019603b82a08c3572591a9393df0818ee02f6
+
+From 471dab2da0c6b2b08ca2b96a1da0a4825e2c3c36 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Tue, 23 May 2023 09:40:18 +0200
+Subject: [PATCH] configure: quote the assignments for run-compiler
+
+Building for multilib failed, as the compiler command contains an
+extra argument. That needs quoting.
+
+Regression from b78ca50cb3dda361f9c1
+
+Fixes #11179
+Closes #11180
+--- a/configure.ac
++++ b/configure.ac
+@@ -193,8 +193,8 @@ dnl something different but only have that affect the execution of the results
+ dnl of the compile, not change the libraries for the compiler itself.
+ dnl
+ compilersh="run-compiler"
+-echo "CC=$CC" > $compilersh
+-echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $compilersh
++echo "CC=\"$CC\"" > $compilersh
++echo "LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\"" >> $compilersh
+ echo 'exec $CC $@' >> $compilersh
+ 
+ dnl **********************************************************************
+
+From c4a019603b82a08c3572591a9393df0818ee02f6 Mon Sep 17 00:00:00 2001
+From: Emanuele Torre <torreemanuele6@gmail.com>
+Date: Tue, 23 May 2023 11:59:59 +0200
+Subject: [PATCH] configure: fix build with arbitrary CC and LD_LIBRARY_PATH
+
+Since ./configure and processes that inherit its environment variables
+are the only callers of the run-compiler script, we can just save the
+current value of the LD_LIBRARY_PATH and CC variables to another pair of
+environment variables, and make run-compiler a static script that
+simply restores CC and LD_LIBRARY_PATH to the saved value, and before
+running the compiler.
+
+This avoids having to inject the values of the variables in the script,
+possibly causing problems if they contains spaces, quotes, and other
+special characters.
+
+Also add exports in the script just in case LD_LIBRARY_PATH and CC are
+not already in the environment.
+
+follow-up from 471dab2
+
+Closes #11182
+--- a/configure.ac
++++ b/configure.ac
+@@ -193,9 +193,13 @@ dnl something different but only have that affect the execution of the results
+ dnl of the compile, not change the libraries for the compiler itself.
+ dnl
+ compilersh="run-compiler"
+-echo "CC=\"$CC\"" > $compilersh
+-echo "LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\"" >> $compilersh
+-echo 'exec $CC $@' >> $compilersh
++export "CURL_SAVED_CC=$CC"
++export "CURL_SAVED_LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
++cat <<\EOF > "$compilersh"
++export "CC=$CURL_SAVED_CC"
++export "LD_LIBRARY_PATH=$CURL_SAVED_LD_LIBRARY_PATH"
++exec $CC "$@"
++EOF
+ 
+ dnl **********************************************************************
+ dnl See which TLS backend(s) that are requested. Just do all the
+
