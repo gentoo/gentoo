@@ -35,8 +35,8 @@ HOMEPAGE="http://systemd.io/"
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
-	acl apparmor audit cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnuefi gnutls homed http idn importd iptables +kmod
+	acl apparmor audit boot cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
+	fido2 +gcrypt gnutls homed http idn importd iptables +kmod
 	+lz4 lzma +openssl pam pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
 "
@@ -90,7 +90,6 @@ COMMON_DEPEND="
 # Newer linux-headers needed by ia64, bug #480218
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-${MINKV}
-	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
 "
 
 # baselayout-2.2 has /run
@@ -162,11 +161,15 @@ BDEPEND="
 	dev-libs/libxslt:0
 	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
+	boot? ( $(python_gen_any_dep 'dev-python/pyelftools[${PYTHON_USEDEP}]') )
 "
 
 python_check_deps() {
-	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" || return
+	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]" || return
+	if use boot; then
+		python_has_version "dev-python/pyelftools[${PYTHON_USEDEP}]" || return
+	fi
 }
 
 QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
@@ -279,16 +282,14 @@ multilib_src_configure() {
 		$(meson_native_use_bool acl)
 		$(meson_native_use_bool apparmor)
 		$(meson_native_use_bool audit)
+		$(meson_native_use_bool boot bootloader)
 		$(meson_native_use_bool cryptsetup libcryptsetup)
 		$(meson_native_use_bool curl libcurl)
 		$(meson_native_use_bool dns-over-tls dns-over-tls)
 		$(meson_native_use_bool elfutils)
 		$(meson_native_use_bool fido2 libfido2)
 		$(meson_use gcrypt)
-		$(meson_native_use_bool gnuefi gnu-efi)
 		$(meson_native_use_bool gnutls)
-		-Defi-includedir="${ESYSROOT}/usr/include/efi"
-		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		$(meson_native_use_bool homed)
 		$(meson_native_use_bool http microhttpd)
 		$(meson_native_use_bool idn)
