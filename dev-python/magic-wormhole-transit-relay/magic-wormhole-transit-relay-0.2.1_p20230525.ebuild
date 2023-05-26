@@ -10,7 +10,7 @@ DISTUTILS_USE_PEP517=setuptools
 # miscelleanous bufixes
 COMMIT_SHA1="db48e915311d1d10c748bb5299e2345c74e90a1b"
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r1
 
 DESCRIPTION="Transit relay server for magic-wormhole"
 HOMEPAGE="https://magic-wormhole.readthedocs.io/en/latest/ https://pypi.org/project/magic-wormhole-transit-relay/"
@@ -19,10 +19,23 @@ SRC_URI="https://github.com/magic-wormhole/${PN}/archive/${COMMIT_SHA1}.tar.gz -
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-S="${WORKDIR}/${P}.gh"
+S="${WORKDIR}/magic-wormhole-transit-relay-${COMMIT_SHA1}"
 
 RDEPEND="
 	dev-python/autobahn[${PYTHON_USEDEP}]
 	dev-python/twisted[ssl,${PYTHON_USEDEP}]"
 
+BDEPEND="test? (
+	dev-python/mock[${PYTHON_USEDEP}]
+	)"
+
 distutils_enable_tests pytest
+
+python_test() {
+	# deselect test_buff_fill test because it exhibits intermittent hangs,
+	# bug #907200
+	local EPYTEST_DESELECT=(
+		src/wormhole_transit_relay/test/test_backpressure.py::TransitWebSockets::test_buffer_fill
+	)
+	epytest
+}
