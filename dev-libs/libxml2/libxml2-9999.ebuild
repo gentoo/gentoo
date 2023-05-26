@@ -42,6 +42,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	virtual/libiconv
 	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	icu? ( >=dev-libs/icu-51.2-r1:=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:=[${MULTILIB_USEDEP}] )
@@ -100,10 +101,6 @@ src_prepare() {
 multilib_src_configure() {
 	# Filter seemingly problematic CFLAGS (bug #26320)
 	filter-flags -fprefetch-loop-arrays -funroll-loops
-
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		append-libs iconv
-	fi
 
 	# Notes:
 	# The meaning of the 'debug' USE flag does not apply to the --with-debug

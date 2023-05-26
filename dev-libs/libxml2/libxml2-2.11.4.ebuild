@@ -42,6 +42,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	virtual/libiconv
 	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	icu? ( >=dev-libs/icu-51.2-r1:=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:=[${MULTILIB_USEDEP}] )
@@ -101,6 +102,8 @@ multilib_src_configure() {
 	# Filter seemingly problematic CFLAGS (bug #26320)
 	filter-flags -fprefetch-loop-arrays -funroll-loops
 
+	# Workaround for too simplistic iconv check already addressed
+	# upstream (bug #907065), should be dropped on next release.
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		append-libs iconv
 	fi
