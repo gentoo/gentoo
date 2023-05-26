@@ -3,6 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
+# Drop eautoreconf after 2.56.0-r1 (once -Wl,--gc-sections patch is in a release)
 GNOME2_EAUTORECONF=yes
 CRATES="
 	adler-1.0.2
