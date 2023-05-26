@@ -95,9 +95,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.39-check-for-mount_setattr.patch"
-	"${FILESDIR}/${PN}-2.39-tests-for-mount_setattr.patch"
-	"${FILESDIR}/${PN}-2.39-mount-parse-options-user.patch"
+	"${FILESDIR}/${P}-check-for-mount_setattr.patch"
+	"${FILESDIR}/${P}-tests-for-mount_setattr.patch"
+	"${FILESDIR}/${P}-mount-parse-options-user.patch"
+	"${FILESDIR}/${P}-mount-dont-call-hooks.patch"
 )
 
 pkg_pretend() {
