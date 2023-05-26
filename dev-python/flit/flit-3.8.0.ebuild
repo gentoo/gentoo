@@ -49,6 +49,6 @@ distutils_enable_sphinx doc \
 
 src_prepare() {
 	# make sure system install is used
-	rm -r flit-core || die
+	rm -r flit_core || die
 	distutils-r1_src_prepare
 }
