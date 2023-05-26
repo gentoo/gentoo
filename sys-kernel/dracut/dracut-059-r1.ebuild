@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Generic initramfs generation tool"
-HOMEPAGE="https://dracut.wiki.kernel.org"
+HOMEPAGE="https://github.com/dracutdevs/dracut/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"

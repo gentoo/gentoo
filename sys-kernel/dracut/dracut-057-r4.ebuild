@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Generic initramfs generation tool"
-HOMEPAGE="https://dracut.wiki.kernel.org"
+HOMEPAGE="https://github.com/dracutdevs/dracut/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -64,6 +64,8 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	"${FILESDIR}"/gentoo-network-r1.patch
+	"${FILESDIR}"/057-virtiofs-split-usr.patch
+	"${FILESDIR}"/057-i18n-keymaps.patch
 	"${FILESDIR}"/uefi-stub-split-usr.patch
 )
 

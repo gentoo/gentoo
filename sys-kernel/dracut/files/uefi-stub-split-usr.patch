@@ -1,0 +1,20 @@
+systemd installs the stub in ${prefix}/lib/systemd/boot/efi.
+systemdutildir is ${rootprefix}/lib/systemd.
+
+When prefix != rootprefix, the dracut code failed to find the stub.
+This failure is apparent on split-usr systems where rootprefix is empty
+and prefix=/usr.
+
+Bug: https://bugs.gentoo.org/765208
+
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1453,7 +1453,7 @@ if [[ ! $print_cmdline ]]; then
+         esac
+ 
+         if ! [[ -s $uefi_stub ]]; then
+-            uefi_stub="$dracutsysrootdir${systemdutildir}/boot/efi/linux${EFI_MACHINE_TYPE_NAME}.efi.stub"
++            uefi_stub="$dracutsysrootdir/usr/lib/systemd/boot/efi/linux${EFI_MACHINE_TYPE_NAME}.efi.stub"
+         fi
+ 
+         if ! [[ -s $uefi_stub ]]; then
