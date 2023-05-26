@@ -212,9 +212,9 @@ src_configure() {
 		# Bindings
 		-DBUILD_PYTHON_BINDINGS=$(usex python)
 		-DBUILD_JAVA_BINDINGS=$(usex java)
-		$(usex java -DJAVA_AWT_LIBRARY=/etc/java-config-2/current-system-vm/lib '')
-		$(usex java -DJAVA_JVM_LIBRARY=/etc/java-config-2/current-system-vm/lib '')
-		$(usex java -DJAVA_INCLUDE_PATH=/etc/java-config-2/current-system-vm/include '')
+		$(usev java -DJAVA_AWT_LIBRARY=/etc/java-config-2/current-system-vm/lib)
+		$(usev java -DJAVA_JVM_LIBRARY=/etc/java-config-2/current-system-vm/lib)
+		$(usev java -DJAVA_INCLUDE_PATH=/etc/java-config-2/current-system-vm/include)
 		# bug #845369
 		-DBUILD_CSHARP_BINDINGS=OFF
 
