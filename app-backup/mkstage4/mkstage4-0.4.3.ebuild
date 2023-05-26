@@ -3,18 +3,17 @@
 
 EAPI=8
 
-inherit git-r3
-
 DESCRIPTION="Bash Utility for Creating Stage 4 Tarballs"
 HOMEPAGE="https://github.com/TheChymera/mkstage4"
-EGIT_REPO_URI="https://github.com/TheChymera/${PN}.git"
+SRC_URI="https://github.com/TheChymera/mkstage4/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+KEYWORDS="~amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND=""
+DEPEND="test? ( dev-util/bats )"
 RDEPEND="
 	app-shells/bash
 	app-arch/tar
