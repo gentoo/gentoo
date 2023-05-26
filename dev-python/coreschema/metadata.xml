@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">coreschema</remote-id>
+		<remote-id type="github">core-api/python-coreschema</remote-id>
 	</upstream>
 </pkgmetadata>
