@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Utilities for users of Gentoo Prefix"
 HOMEPAGE="https://prefix.gentoo.org/"
-SRC_URI=""
+SRC_URI="https://gitweb.gentoo.org/proj/prefix/prefix-toolkit.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -41,23 +41,10 @@ RDEPEND="${DEPEND}
 	)
 "
 
-S="${WORKDIR}"
-
-my_unpack() {
-	local infile=$1
-	local outfile=${2:-${infile}}
-	ebegin "extracting ${outfile}"
-	sed -ne "/^: ${infile} /,/EOIN/{/EOIN/d;p}" "${EBUILD}" \
-		> "${outfile}" || die "Failed to unpack ${outfile}"
-	eend $?
-}
-
 src_unpack() {
+	default
+
 	if use prefix-stack ; then
-		my_unpack prefix-stack.bash_login
-		my_unpack prefix-stack.bashrc
-		my_unpack prefix-stack.envd.99stack
-		my_unpack prefix-stack-ccwrap
 		local editor pager
 		for editor in "${EDITOR}" {"${EPREFIX}","${BROOT}"}/bin/nano
 		do
@@ -68,12 +55,6 @@ src_unpack() {
 			[[ -x ${pager} ]] || continue
 		done
 		printf '%s\n' "EDITOR=\"${editor}\"" "PAGER=\"${pager}\"" > 000fallback
-	else
-		my_unpack prefix-stack-setup
-	fi
-	if use prefix; then
-		# does not make sense on vanilla Gentoo
-		my_unpack startprefix
 	fi
 }
 
