@@ -71,6 +71,7 @@ fi
 JAVA_ANT_E_DEPEND="${JAVA_ANT_E_DEPEND}
 	${ANT_TASKS_DEPEND}
 	dev-java/javatoolkit"
+unset ANT_TASKS_DEPEND
 
 # this eclass must be inherited after java-pkg-2 or java-pkg-opt-2
 # if it's java-pkg-opt-2, ant dependencies are pulled based on USE flag
