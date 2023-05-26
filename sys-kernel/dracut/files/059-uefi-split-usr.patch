@@ -1,6 +1,6 @@
 https://github.com/dracutdevs/dracut/pull/2365
 
-From afb2019ddc6ffe6e59df3d3dc9929a840bd09bc8 Mon Sep 17 00:00:00 2001
+From 3462e0ac6f3562a5247bbeda2dc41eaf4e4ebf5e Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
 Date: Fri, 26 May 2023 15:56:45 -0400
 Subject: [PATCH] Fix path to UEFI stub on split-usr systems
@@ -15,24 +15,26 @@ Instead, grab 'prefix' from systemd.pc and store it in 'systemd_prefix'.
 Bug: https://bugs.gentoo.org/765208
 Signed-off-by: Mike Gilbert <floppym@gentoo.org>
 ---
- dracut.sh | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ dracut.sh | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/dracut.sh b/dracut.sh
-index bbb34697..9da59561 100755
+index bbb34697..52a83061 100755
 --- a/dracut.sh
 +++ b/dracut.sh
-@@ -1389,6 +1389,9 @@ esac
+@@ -1389,6 +1389,11 @@ esac
  
  abs_outfile=$(readlink -f "$outfile") && outfile="$abs_outfile"
  
 +[[ -n $systemd_prefix ]] \
 +    || systemd_prefix=$(pkg-config systemd --variable=prefix 2> /dev/null)
 +
++[[ -n $systemd_prefix ]] || systemd_prefix=/usr
++
  [[ -d $dracutsysrootdir$systemdutildir ]] \
      || systemdutildir=$(pkg-config systemd --variable=systemdutildir 2> /dev/null)
  
-@@ -1467,7 +1470,7 @@ if [[ ! $print_cmdline ]]; then
+@@ -1467,7 +1472,7 @@ if [[ ! $print_cmdline ]]; then
          esac
  
          if ! [[ -s $uefi_stub ]]; then
