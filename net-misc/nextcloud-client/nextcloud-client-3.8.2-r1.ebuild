@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-db/sqlite-3.34:3
 	>=dev-libs/openssl-1.1.0:0=
-	dev-libs/qtkeychain:=[keyring,qt5(+)]
+	dev-libs/qtkeychain:=[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
