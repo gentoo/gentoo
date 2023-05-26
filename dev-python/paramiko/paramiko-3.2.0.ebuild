@@ -22,9 +22,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-# the release is broken
-# https://github.com/paramiko/paramiko/issues/2245
-KEYWORDS=""
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="examples server"
 
 RDEPEND="
@@ -35,6 +33,12 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# upstream doesn't really maintain the gssapi support
+	tests/test_kex_gss.py
+	tests/test_ssh_gss.py
+)
 
 src_prepare() {
 	local PATCHES=(
