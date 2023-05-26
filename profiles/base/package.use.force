@@ -27,7 +27,7 @@ dev-java/openjdk:17 system-bootstrap
 # to find a clean way of resolving that.  Compared to the damage
 # potential, the increase of build time is a minor problem.  Users who
 # really insist of building a smaller system can un-force the flags
-# at their own responsibility.
+# at their own responsibility. See bug #767700.
 >=sys-devel/clang-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
 >=sys-devel/clang-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
 >=sys-devel/clang-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
