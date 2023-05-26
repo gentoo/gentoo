@@ -209,8 +209,6 @@ if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
 	# Export multilib phases used for split builds.
 	multilib_src_install_all() { gstreamer_multilib_src_install_all; }
 else
-	extra_deps=""
-
 	IUSE="nls test"
 	RESTRICT="!test? ( test )"
 	if [[ "${PN}" != "gstreamer" ]]; then
