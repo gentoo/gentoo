@@ -18,6 +18,7 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">testing-cabal/fixtures</remote-id>
 		<remote-id type="pypi">fixtures</remote-id>
 		<remote-id type="launchpad">python-fixtures</remote-id>
 	</upstream>
