@@ -18,7 +18,11 @@ KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/python-${P}"
 
 RDEPEND="
-	dev-python/more-itertools[${PYTHON_USEDEP}]
-	dev-python/hkdf[${PYTHON_USEDEP}]"
+	dev-python/cryptography[${PYTHON_USEDEP}]
+	dev-python/more-itertools[${PYTHON_USEDEP}]"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-do_not_use_hkdf_package.patch
+)
 
 distutils_enable_tests pytest
