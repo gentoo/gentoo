@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Implementation of PBKDF2, specified in RSA PKCS#5 v2.0"
-HOMEPAGE="https://www.dlitz.net/software/python-pbkdf2/"
+HOMEPAGE="
+	https://www.dlitz.net/software/python-pbkdf2/
+	https://pypi.org/project/pbkdf2/
+"
 
 LICENSE="MIT"
 SLOT="0"
