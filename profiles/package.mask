@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2023-05-26)
+# Cygwin package for which keyword/profile support was dropped
+# Removal on 2023-06-25.  Bug #907194.
+app-admin/cygwin-rebase
+
 # Sam James <sam@gentoo.org> (2023-05-24)
 # Breaks building C++ consumers at least: bug #906755, bug #906879, bug #906957.
 # Please upgrade to >=0.5.1.
