@@ -61,7 +61,7 @@ python_test() {
 	ln -s "${src}/coverage" \
 		"${BUILD_DIR}/install$(python_get_sitedir)/coverage" || die
 
-	nonfatal epytest foo
+	nonfatal epytest
 	local ret=${?}
 
 	rm "${BUILD_DIR}/install$(python_get_sitedir)/coverage" || die
