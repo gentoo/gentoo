@@ -64,6 +64,7 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	"${FILESDIR}"/gentoo-network-r1.patch
+	"${FILESDIR}"/059-uefi-split-usr.patch
 )
 
 src_configure() {
