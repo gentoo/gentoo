@@ -51,6 +51,7 @@ if has test ${JAVA_PKG_IUSE}; then
 		esac
 	done
 	[[ ${test_deps} ]] && DEPEND="test? ( ${test_deps} )"
+	unset test_deps
 fi
 
 # @ECLASS_VARIABLE: JAVA_GENTOO_CLASSPATH
