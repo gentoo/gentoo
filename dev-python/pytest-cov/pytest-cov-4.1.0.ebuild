@@ -51,6 +51,10 @@ python_test() {
 		tests/test_pytest_cov.py::test_dist_missing_data
 		# TODO
 		tests/test_pytest_cov.py::test_contexts
+		tests/test_pytest_cov.py::test_cleanup_on_sigterm
+		tests/test_pytest_cov.py::test_cleanup_on_sigterm_sig_dfl
+		tests/test_pytest_cov.py::test_cleanup_on_sigterm_sig_dfl_sigint
+		tests/test_pytest_cov.py::test_cleanup_on_sigterm_sig_ign
 	)
 
 	local src=$(
