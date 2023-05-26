@@ -212,6 +212,9 @@ src_configure() {
 		# Bindings
 		-DBUILD_PYTHON_BINDINGS=$(usex python)
 		-DBUILD_JAVA_BINDINGS=$(usex java)
+		$(usex java -DJAVA_AWT_LIBRARY=/etc/java-config-2/current-system-vm/lib '')
+		$(usex java -DJAVA_JVM_LIBRARY=/etc/java-config-2/current-system-vm/lib '')
+		$(usex java -DJAVA_INCLUDE_PATH=/etc/java-config-2/current-system-vm/include '')
 		# bug #845369
 		-DBUILD_CSHARP_BINDINGS=OFF
 
@@ -260,10 +263,25 @@ src_test() {
 src_install() {
 	cmake_src_install
 	use python && python_optimize
+
+	if use java; then
+		# Move the native library into the proper place for Gentoo.  The
+		# library in ${D} has already had its RPATH fixed, so we use it
+		# rather than ${BUILD_DIR}/swig/java/libgdalalljni.so.
+		java-pkg_doso "${D}/usr/share/java/libgdalalljni.so"
+		rm "${D}/usr/share/java/libgdalalljni.so" || die
+	fi
+
 	# TODO: install docs?
 }
 
 pkg_postinst() {
 	elog "Check available image and data formats after building with"
 	elog "gdalinfo and ogrinfo (using the --formats switch)."
+
+	if use java; then
+		elog
+		elog "To use the Java bindings, you need to pass the following to java:"
+		elog "    -Djava.library.path=$(java-config -i gdal)"
+	fi
 }
