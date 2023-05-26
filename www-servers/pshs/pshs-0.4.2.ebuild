@@ -13,11 +13,11 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="+magic qrcode ssl upnp"
 
 DEPEND="
-	>=dev-libs/libevent-2:0=
+	>=dev-libs/libevent-2.2:0=
 	magic? ( sys-apps/file:0= )
 	qrcode? ( media-gfx/qrencode:0= )
 	ssl? (
