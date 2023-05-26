@@ -30,7 +30,7 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
-	bluetooth build +ensurepip examples gdbm hardened lto +ncurses pgo
+	bluetooth build debug +ensurepip examples gdbm hardened lto +ncurses pgo
 	+readline +sqlite +ssl test tk valgrind wininst +xml
 "
 RESTRICT="!test? ( test )"
@@ -182,6 +182,7 @@ src_configure() {
 		--with-system-ffi
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
 
+		$(use_with debug assertions)
 		$(use_with valgrind)
 	)
 
