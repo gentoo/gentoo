@@ -51,10 +51,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	|| (
-		>=app-arch/par2cmdline-0.8
-		>=app-arch/par2cmdline-turbo-0.9.0
-	)
+	>=app-arch/par2cmdline-0.8
 	net-misc/wget
 "
 BDEPEND="
