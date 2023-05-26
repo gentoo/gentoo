@@ -36,7 +36,7 @@ S="${WORKDIR}"
 
 # handle dependencies for testing frameworks
 if has test ${JAVA_PKG_IUSE}; then
-	local test_deps
+	test_deps=
 	for framework in ${JAVA_TESTING_FRAMEWORKS}; do
 		case ${framework} in
 			junit)
