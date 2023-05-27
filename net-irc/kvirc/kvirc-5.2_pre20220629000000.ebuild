@@ -80,6 +80,10 @@ fi
 
 DOCS=()
 
+PATCHES=(
+	"${FILESDIR}/fixqprocess.patch"
+)
+
 pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
