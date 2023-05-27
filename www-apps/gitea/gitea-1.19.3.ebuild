@@ -42,16 +42,7 @@ RESTRICT="test"
 src_prepare() {
 	default
 
-	local sedcmds=(
-		-e "s#^ROOT =#ROOT = ${EPREFIX}/var/lib/gitea/gitea-repositories#"
-		-e "s#^ROOT_PATH =#ROOT_PATH = ${EPREFIX}/var/log/gitea#"
-		-e "s#^APP_DATA_PATH = data#APP_DATA_PATH = ${EPREFIX}/var/lib/gitea/data#"
-		-e "s#^HTTP_ADDR = 0.0.0.0#HTTP_ADDR = 127.0.0.1#"
-		-e "s#^MODE = console#MODE = file#"
-		-e "s#^DISABLE_ROUTER_LOG = false#DISABLE_ROUTER_LOG = true#"
-	)
-
-	sed -i "${sedcmds[@]}" custom/conf/app.example.ini || die
+	sed -i -e "s#^MODE = console#MODE = file#" custom/conf/app.example.ini || die
 	if use sqlite ; then
 		sed -i -e "s#^DB_TYPE = .*#DB_TYPE = sqlite3#" custom/conf/app.example.ini || die
 	fi
