@@ -56,7 +56,7 @@ BDEPEND="
 PDEPEND="virtual/ttf-fonts"
 # We need app-eselect/eselect-fontconfig in IDEPEND to update ROOT
 # when cross-compiling.
-IDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )"
+IDEPEND="app-eselect/eselect-fontconfig"
 
 PATCHES=(
 	# bug #130466 + make liberation default
