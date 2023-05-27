@@ -16,5 +16,4 @@ RDEPEND="
 		elibc_glibc? ( sys-libs/glibc[crypt(+),static-libs(+)?] )
 		elibc_musl? ( sys-libs/musl )
 	)
-	elibc_Cygwin? ( sys-libs/cygwin-crypt )
 "
