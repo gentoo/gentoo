@@ -12,27 +12,38 @@ inherit distutils-r1 linux-info toolchain-funcs tmpfiles prefix
 
 DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
-SRC_URI="https://gitweb.gentoo.org/proj/portage.git/snapshot/${P}.tar.bz2"
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="
+		https://anongit.gentoo.org/git/proj/portage.git
+		https://github.com/gentoo/portage.git
+	"
+	inherit git-r3
+else
+	SRC_URI="https://gitweb.gentoo.org/proj/portage.git/snapshot/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	app-arch/xz-utils
 	test? ( dev-vcs/git )
 "
 DEPEND="
-	!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
 	>=sys-apps/sed-4.0.5 sys-devel/patch
-	doc? ( app-text/xmlto ~app-text/docbook-xml-dtd-4.4 )
+	!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	apidoc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx-epytext[${PYTHON_USEDEP}]
+	)
+	doc? (
+		app-text/xmlto
+		~app-text/docbook-xml-dtd-4.4
 	)
 "
 # Require sandbox-2.2 for bug #288863.
@@ -70,6 +81,8 @@ RDEPEND="
 	!<app-portage/repoman-2.3.10
 	!~app-portage/repoman-3.0.0
 "
+# coreutils-6.4 rdep is for date format in emerge-webrsync #164532
+# NOTE: FEATURES=installsources requires debugedit and rsync
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
@@ -77,8 +90,8 @@ PDEPEND="
 		>=sys-apps/file-5.44-r3
 	)
 "
-# coreutils-6.4 rdep is for date format in emerge-webrsync #164532
-# NOTE: FEATURES=installsources requires debugedit and rsync
+
+distutils_enable_tests setup.py
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
@@ -91,12 +104,11 @@ pkg_pretend() {
 }
 
 python_prepare_all() {
-	local PATCHES=(
-	)
-
 	distutils-r1_python_prepare_all
 
-	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
+	if [[ ${PV} != 9999 ]] ; then
+		sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
+	fi
 
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
@@ -182,10 +194,6 @@ python_compile_all() {
 	if [[ ${targets[@]} ]]; then
 		esetup.py "${targets[@]}"
 	fi
-}
-
-python_test() {
-	esetup.py test
 }
 
 python_install() {
