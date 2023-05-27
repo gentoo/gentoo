@@ -220,7 +220,7 @@ _distutils_set_globals() {
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.12.2[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.17.0[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
@@ -230,7 +230,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-0.14.10[${PYTHON_USEDEP}]
+					>=dev-util/maturin-0.14.17[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -239,7 +239,7 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.12.0[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.12.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
@@ -249,23 +249,23 @@ _distutils_set_globals() {
 				;;
 			pdm)
 				bdep+='
-					>=dev-python/pdm-pep517-1.0.6[${PYTHON_USEDEP}]
+					>=dev-python/pdm-pep517-1.1.4[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.4.0[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-1.5.2[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]
-					>=dev-python/wheel-0.38.4[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-67.7.2[${PYTHON_USEDEP}]
+					>=dev-python/wheel-0.40.0[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.7.5-r1[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.7.8[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -600,7 +600,7 @@ distutils_enable_tests() {
 			test_pkg=">=dev-python/nose-1.3.7_p20221026"
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-7.2.1"
+			test_pkg=">=dev-python/pytest-7.3.1"
 			;;
 		setup.py)
 			;;
