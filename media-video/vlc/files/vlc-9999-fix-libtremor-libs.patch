@@ -1,0 +1,20 @@
+From 9f8193bd55f7b75c213a60a48a3302f009bdf054 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 27 May 2023 03:13:38 +0100
+Subject: [PATCH 1/2] foo1
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/modules/codec/Makefile.am
++++ b/modules/codec/Makefile.am
+@@ -332,7 +332,7 @@ codec_LTLIBRARIES += $(LTLIBdaala)
+ libtremor_plugin_la_SOURCES = codec/vorbis.c
+ libtremor_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) -DPLUGIN_TREMOR
+ libtremor_plugin_la_LDFLAGS = $(AM_LDFLAGS) -rpath '$(codecdir)'
+-libtremor_plugin_la_LIBADD = -lvorbisdec -logg
++libtremor_plugin_la_LIBADD = $(VORBIS_LIBS) $(OGG_LIBS)
+ EXTRA_LTLIBRARIES += libtremor_plugin.la
+ codec_LTLIBRARIES += $(LTLIBtremor)
+ 
+-- 
+2.40.1
+

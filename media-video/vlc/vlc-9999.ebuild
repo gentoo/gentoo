@@ -230,9 +230,8 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
-	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
-	"${FILESDIR}"/${PN}-configure_lua_version.patch
+	"${FILESDIR}"/${PN}-9999-fix-libtremor-libs.patch # build system
+	"${FILESDIR}"/${PN}-9999-configure-lua-version.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
