@@ -130,7 +130,6 @@ fi
 
 # Set up autotools shared dependencies
 # Remember that all versions here MUST be stable
-XORG_EAUTORECONF_ARCHES="x86-winnt"
 EAUTORECONF_DEPEND+="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4"
@@ -139,10 +138,6 @@ if [[ ${PN} != util-macros ]] ; then
 	# Required even by xorg-server
 	[[ ${PN} == "font-util" ]] || EAUTORECONF_DEPEND+=" >=media-fonts/font-util-1.2.0"
 fi
-for arch in ${XORG_EAUTORECONF_ARCHES}; do
-	EAUTORECONF_DEPENDS+=" ${arch}? ( ${EAUTORECONF_DEPEND} )"
-done
-unset arch XORG_EAUTORECONF_ARCHES
 BDEPEND+=" ${EAUTORECONF_DEPENDS}"
 [[ ${XORG_EAUTORECONF} != no ]] && BDEPEND+=" ${EAUTORECONF_DEPEND}"
 unset EAUTORECONF_DEPENDS
