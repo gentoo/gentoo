@@ -70,7 +70,7 @@ CRATES="
 	windows_x86_64_msvc-0.36.1"
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cargo distutils-r1
 
 DESCRIPTION="Python wrapper for Brave's adblocking library, which is written in Rust"
