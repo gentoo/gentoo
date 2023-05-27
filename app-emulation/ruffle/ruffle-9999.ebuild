@@ -61,7 +61,7 @@ src_configure() {
 	filter-lto # TODO: cleanup after bug #893658
 
 	# see .cargo/cargo.toml, only needed if RUSTFLAGS is set by the user
-	[[ -v RUSTFLAGS ]] && RUSTFLAGS+=" --cfg=web_sys_unstable_apis"d
+	[[ -v RUSTFLAGS ]] && RUSTFLAGS+=" --cfg=web_sys_unstable_apis"
 
 	if use test; then
 		# tests will be skipped if don't build everything
