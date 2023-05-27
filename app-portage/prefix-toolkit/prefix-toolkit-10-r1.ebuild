@@ -13,10 +13,7 @@ SLOT="0"
 [[ ${PV} == 9999 ]] ||
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~riscv-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
-DEPEND="
-	!app-portage/prefix-chain-setup
-	!sys-apps/prefix-chain-utils
-"
+DEPEND=""
 BDEPEND="${DEPEND}
 	>sys-apps/portage-2.3.62
 "
@@ -30,7 +27,6 @@ BDEPEND="${DEPEND}
 # See also: pkg_preinst
 RDEPEND="${DEPEND}
 	prefix-stack? (
-		>=sys-apps/baselayout-prefix-2.6
 		sys-devel/gcc-config
 		elibc_Winnt? (
 			dev-libs/pthreads4w
