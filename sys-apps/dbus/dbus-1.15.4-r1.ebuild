@@ -6,7 +6,7 @@ EAPI=8
 # Be careful with packaging odd-version-number branches.
 # See https://www.freedesktop.org/wiki/Software/dbus/#download.
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 TMPFILES_OPTIONAL=1
 
 # From 1.15.0 release notes:
