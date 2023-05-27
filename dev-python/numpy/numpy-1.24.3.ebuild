@@ -143,12 +143,17 @@ python_test() {
 			numpy/core/tests/test_einsum.py::TestEinsum::test_einsum_sums_int16
 		)
 	fi
-	if use arm || use x86 ; then
-		EPYTEST_DESELECT+=(
-			# too large for 32-bit platforms
-			numpy/core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
-		)
-	fi
+
+	case "${ABI}" in
+		alpha|arm|hppa|m68k|o32|ppc|s390|sh|sparc|x86)
+			EPYTEST_DESELECT+=(
+				# too large for 32-bit platforms
+				numpy/core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
+			)
+			;;
+		*)
+			;;
+	esac
 
 	distutils_install_for_testing --single-version-externally-managed \
 		--record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}
