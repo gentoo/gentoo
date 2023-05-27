@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
-inherit distutils-r1 multiprocessing
+inherit distutils-r1
 
 MY_PN="${PN//-/.}"
 MY_P="${MY_PN}-${PV}"
@@ -36,5 +36,5 @@ src_unpack() {
 }
 
 src_configure() {
-	cythonize -3 _ruamel_yaml.pyx "-j$(makeopts_jobs)" -f || die
+	cython -f -3 _ruamel_yaml.pyx || die
 }
