@@ -111,12 +111,6 @@ src_prepare() {
 			-e 's/-Wl,-M,/-Wl,--version-script=/' \
 			-e 's/-Wl,-h,/-Wl,--soname=/' \
 			Configurations/10-main.conf || die
-
-		# fix building on Solaris 10
-		# https://github.com/openssl/openssl/issues/6333
-		sed -i \
-			-e 's/-lsocket -lnsl -ldl/-lsocket -lnsl -ldl -lrt/' \
-			Configurations/10-main.conf || die
 	fi
 
 	# The config script does stupid stuff to prompt the user.  Kill it.
