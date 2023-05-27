@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -41,7 +41,7 @@ BDEPEND="
 		!hppa? ( !ia64? ( !loong? (
 			$(python_gen_cond_dep '
 				dev-python/greenlet[${PYTHON_USEDEP}]
-			' 'python3*')
+			' python3_{10..11})
 		) ) )
 	)
 "
