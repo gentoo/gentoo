@@ -59,22 +59,14 @@ PATCHES=(
 
 EPYTEST_DESELECT=(
 	# TODO
-	zmq/tests/test_constants.py::TestConstants::test_draft
-	zmq/tests/test_cython.py::test_cython
-
-	# Hangs often
-	zmq/tests/test_log.py::TestPubLog::test_blank_root_topic
+	zmq/tests/test_auth.py
+	zmq/tests/test_cython.py
+	zmq/tests/test_zmqstream.py
 )
 
 EPYTEST_IGNORE=(
 	# Avoid dependency on mypy
 	zmq/tests/test_mypy.py
-
-	# Broken upstream
-	zmq/tests/test_auth.py
-
-	# pytest-asyncio incompatibility?
-	zmq/tests/test_zmqstream.py
 )
 
 distutils_enable_tests pytest
@@ -91,6 +83,7 @@ python_prepare_all() {
 }
 
 python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
-	epytest -p no:flaky
+	epytest -p asyncio -p rerunfailures
 }
