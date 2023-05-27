@@ -1,0 +1,39 @@
+From bbb9e5c7cba84fb4665a521569d1cfcca08ee4e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 27 May 2023 18:05:44 +0200
+Subject: [PATCH] pytest-shutil: Replace deprecated imp module
+
+Replace the use of the deprecated `imp` module with `importlib.util',
+as the former has been removed from Python 3.12.
+---
+ pytest-shutil/pytest_shutil/run.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/pytest-shutil/pytest_shutil/run.py b/pytest-shutil/pytest_shutil/run.py
+index 7d46aea..08a6a34 100644
+--- a/pytest_shutil/run.py
++++ b/pytest_shutil/run.py
+@@ -3,7 +3,7 @@
+ """
+ import sys
+ import os
+-import imp
++import importlib.util
+ import logging
+ from functools import update_wrapper
+ import inspect
+@@ -112,7 +112,10 @@ def run_module_as_main(module, argv=[]):
+     filename = os.path.splitext(filename)[0] + ".py"
+ 
+     with patch("sys.argv", new=argv):
+-        imp.load_source('__main__', os.path.join(where, filename))
++        spec = importlib.util.spec_from_file_location(
++            "__main__", os.path.join(where, filename))
++        module = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(module)
+ 
+ 
+ def _evaluate_fn_source(src, *args, **kwargs):
+-- 
+2.40.1
+
