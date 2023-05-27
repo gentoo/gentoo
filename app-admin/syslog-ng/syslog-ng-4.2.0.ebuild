@@ -22,7 +22,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.10.1:2
 	>=dev-libs/ivykis-0.42.4
-	>=dev-libs/libpcre-6.1:=
+	>=dev-libs/libpcre-6.1
+	dev-libs/openssl:0=
 	!dev-libs/eventlog
 	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
 	caps? ( sys-libs/libcap )
@@ -41,10 +42,9 @@ RDEPEND="
 	redis? ( >=dev-libs/hiredis-0.11.0:= )
 	smtp? ( net-libs/libesmtp:= )
 	snmp? ( net-analyzer/net-snmp:0= )
-	spoof-source? ( net-libs/libnet:1.1= )
+	spoof-source? ( net-libs/libnet:1.1 )
 	systemd? ( sys-apps/systemd:= )
-	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
-	dev-libs/openssl:0="
+	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/criterion )"
 BDEPEND="
