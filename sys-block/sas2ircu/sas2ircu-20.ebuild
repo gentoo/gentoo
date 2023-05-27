@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -87,8 +87,7 @@ src_install() {
 	exeinto /opt/lsi/
 	use amd64 || use x86 && doexe sas2ircu_linux_x86_rel/sas2ircu
 	use ppc64 && doexe sas2ircu_linux_x86_rel/sas2ircu
-	use x64-solaris || use x86-solaris && doexe sas2ircu_solaris_x86_rel/sas2ircu
-	use sparc-solaris && doexe sas2ircu_solaris_sparc_rel/sas2ircu
+	use x64-solaris && doexe sas2ircu_solaris_x86_rel/sas2ircu
 	if use efi; then
 		exeinto /boot/efi/
 		doexe sas2ircu_efi_ebc_rel/sas2ircu.efi
