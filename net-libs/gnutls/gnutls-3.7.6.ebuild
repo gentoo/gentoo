@@ -91,9 +91,6 @@ multilib_src_configure() {
 	#   complains about duplicate symbols
 	[[ ${CHOST} == *-darwin* ]] && libconf+=( --disable-hardware-acceleration )
 
-	# Cygwin as does not understand these asm files at all
-	[[ ${CHOST} == *-cygwin* ]] && libconf+=( --disable-hardware-acceleration )
-
 	# -fanalyzer substantially slows down the build and isn't useful for
 	# us. It's useful for upstream as it's static analysis, but it's not
 	# useful when just getting something built.
