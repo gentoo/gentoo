@@ -87,10 +87,6 @@ src_prepare() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} != python3.12 ]]; then
-		local -x SETUPTOOLS_USE_DISTUTILS=stdlib
-	fi
-
 	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
 		return
 	fi
