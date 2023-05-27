@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( pypy3 python3_{10..11} )
+PYTHON_TESTED=( pypy3 python3_{10..11} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_12 )
 
 inherit distutils-r1
 
@@ -35,11 +36,13 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/build[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/tomli-w[${PYTHON_USEDEP}]
-		dev-python/virtualenv[${PYTHON_USEDEP}]
-		dev-vcs/git
+		$(python_gen_cond_dep '
+			dev-python/build[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
+			dev-python/tomli-w[${PYTHON_USEDEP}]
+			dev-python/virtualenv[${PYTHON_USEDEP}]
+			dev-vcs/git
+		' "${PYTHON_TESTED[@]}")
 	)
 "
 
@@ -61,6 +64,11 @@ src_prepare() {
 }
 
 python_test() {
+	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
+		einfo "Skippin tests on ${EPYTHON} (unported deps)"
+		return
+	fi
+
 	# needed for migration from <1.1
 	distutils_write_namespace poetry
 	epytest
