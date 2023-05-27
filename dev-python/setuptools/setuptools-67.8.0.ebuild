@@ -7,8 +7,8 @@ EAPI=8
 # please bump dev-python/ensurepip-setuptools along with this package!
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_TESTED=( python3_{10..11} pypy3 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_12 )
+PYTHON_TESTED=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 multiprocessing pypi
@@ -87,7 +87,9 @@ src_prepare() {
 }
 
 python_test() {
-	local -x SETUPTOOLS_USE_DISTUTILS=stdlib
+	if [[ ${EPYTHON} != python3.12 ]]; then
+		local -x SETUPTOOLS_USE_DISTUTILS=stdlib
+	fi
 
 	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
 		return
