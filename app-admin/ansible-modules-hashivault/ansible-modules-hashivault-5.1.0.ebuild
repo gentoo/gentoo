@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/TerryHowe/ansible-modules-hashivault.git"
 else
 	SRC_URI="https://github.com/TerryHowe/ansible-modules-hashivault/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="MIT"
