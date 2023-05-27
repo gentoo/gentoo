@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">yaxmldiff</remote-id>
+		<remote-id type="github">latk/yaxmldiff.py</remote-id>
 	</upstream>
 </pkgmetadata>
