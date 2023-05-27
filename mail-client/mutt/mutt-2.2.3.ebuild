@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -158,12 +158,6 @@ src_configure() {
 		"--without-bundled-regex"     # use the implementation from libc
 		"--with-exec-shell=${EPREFIX}/bin/sh"
 	)
-
-	if [[ ${CHOST} == *-solaris2.* && ${CHOST#*-solaris2.} -le 10 ]] ; then
-		# arrows in index view do not show when using wchar_t
-		# or misalign due to wrong computations
-		myconf+=( "--without-wc-funcs" )
-	fi
 
 	# note: REQUIRED_USE should have selected only one of these, but for
 	# bug #607360 we're forced to allow multiple.  For that reason, this
