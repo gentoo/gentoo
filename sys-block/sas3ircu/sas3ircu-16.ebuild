@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -73,10 +73,8 @@ src_install() {
 		doexe sas3ircu_rel/sas3ircu/sas3ircu_linux_arm_rel/sas3ircu
 	elif use ppc64; then
 		doexe sas3ircu_rel/sas3ircu/sas3ircu_linux_ppc64_rel/sas3ircu
-	elif use x64-solaris || use x86-solaris; then
+	elif use x64-solaris; then
 		doexe sas3ircu_rel/sas3ircu/sas3ircu_solaris_x86_rel/sas3ircu
-	elif use sparc-solaris; then
-		doexe sas3ircu_rel/sas3ircu/sas3ircu_solaris_sparc_rel/sas3ircu
 	fi
 
 	if use efi; then
