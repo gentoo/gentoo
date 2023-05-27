@@ -39,6 +39,7 @@
 app-admin/cygwin-rebase
 dev-libs/pthreads4w
 sys-devel/parity
+sys-libs/cygwin-crypt
 
 # Sam James <sam@gentoo.org> (2023-05-24)
 # Breaks building C++ consumers at least: bug #906755, bug #906879, bug #906957.
