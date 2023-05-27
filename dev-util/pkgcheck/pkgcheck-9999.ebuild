@@ -74,7 +74,7 @@ src_compile() {
 }
 
 python_test() {
-	if ! has_version -b "dev-python/requests[${PYTHON_USEDEP}" ; then
+	if ! has_version -b "dev-python/requests[${PYTHON_USEDEP}]" ; then
 		EPYTEST_DESELECT=(
 			tests/checks/test_all.py::TestNetworkCheck::test_network_enabled
 		)
