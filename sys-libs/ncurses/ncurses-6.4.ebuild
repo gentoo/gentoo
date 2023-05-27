@@ -142,11 +142,6 @@ src_configure() {
 	# bug #214642
 	BUILD_CPPFLAGS+=" -D_GNU_SOURCE"
 
-	# bug #852665
-	if [[ ${CHOST} == *-cygwin* ]]; then
-	  BUILD_CPPFLAGS+=" -DBUILDING_NCURSES"
-	fi
-
 	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
 	# Order matters here -- we want unicode/thread versions to come last so that the
 	# binaries in /usr/bin support both wide and narrow.
