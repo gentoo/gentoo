@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
 # Arsen Arsenović <arsen@gentoo.org> (2023-05-17)
 # app-emulation/libguestfs pulls in a large amount of dependencies, most
 # of which aren't or can't be kw'd on SPARC.
