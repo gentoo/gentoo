@@ -469,6 +469,10 @@ pkg_preinst() {
 			die "System layout with split directories still used"
 		fi
 	fi
+	if ! use boot && has_version "sys-apps/systemd[gnuefi(-)]"; then
+		ewarn "The 'gnuefi' USE flag has been renamed to 'boot'."
+		ewarn "Make sure to enable the 'boot' USE flag if you use systemd-boot."
+	fi
 }
 
 pkg_postinst() {
