@@ -35,6 +35,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.3.2-test-timeout-increase.patch
+)
+
 src_prepare() {
 	# network-sandbox? ipv6?
 	sed -i -e 's:test_localhost:_&:' \
