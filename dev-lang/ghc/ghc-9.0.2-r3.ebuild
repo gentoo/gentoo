@@ -502,7 +502,6 @@ src_prepare() {
 		[[ -e "${f}" ]] || ln -sf "$($(tc-getPKG_CONFIG) --cflags-only-I libffi | sed "s/-I//g" | tr -d " ")/$(basename "${f}")" "${f}" || die
 	done
 
-
 	eapply "${FILESDIR}"/${PN}-9.0.2-sphinx-6.patch
 
 	if use binary; then
