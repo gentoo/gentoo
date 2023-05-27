@@ -31,7 +31,6 @@ BDEPEND="
 DOCS=( CHANGES NOTICE README )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.0-mint.patch
 	"${FILESDIR}"/${PN}-1.6.3-skip-known-failing-tests.patch
 	"${FILESDIR}"/${PN}-1.7.2-libtool.patch
 	"${FILESDIR}"/${PN}-1.7.2-sysroot.patch # bug #385775
@@ -96,38 +95,16 @@ src_configure() {
 
 	if use urandom; then
 		myconf+=( --with-devrandom=/dev/urandom )
-	elif (( ${CHOST#*-hpux11.} <= 11 )); then
-		: # no /dev/*random on hpux11.11 and before, apr detects this.
 	else
 		myconf+=( --with-devrandom=/dev/random )
 	fi
 
-	# shl_load does not search runpath, but hpux11 supports dlopen
-	if [[ ${CHOST} == *-hpux11* ]]; then
-		myconf+=( --enable-dso=dlfcn )
-	elif [[ ${CHOST} == *-solaris2.10 ]]; then
-		local atomic_contents=$(<$([[ ${CHOST} != ${CBUILD} ]] && echo "${EPREFIX}/usr/${CHOST}")/usr/include/atomic.h)
-
-		case "${atomic_contents}" in
-			*atomic_cas_ptr*)
-				;;
-			*)
-				local patch_id=$([[ ${CHOST} == sparc* ]] && echo 118884 || echo 118885)
-
-				elog "You do not have Solaris Patch ID ${patch_id} (Problem 4954703) installed on your host ($(hostname)),"
-				elog "using generic atomic operations instead."
-
-				myconf+=( --disable-nonportable-atomics )
-				;;
-		esac
-	else
-		if use ppc || use sparc || use mips; then
-			# Avoid libapr containing undefined references (underlinked)
-			# undefined reference to `__sync_val_compare_and_swap_8'
-			# (May be possible to fix via libatomic linkage in future?)
-			# bug #740464
-			myconf+=( --disable-nonportable-atomics )
-		fi
+	if use ppc || use sparc || use mips; then
+		# Avoid libapr containing undefined references (underlinked)
+		# undefined reference to `__sync_val_compare_and_swap_8'
+		# (May be possible to fix via libatomic linkage in future?)
+		# bug #740464
+		myconf+=( --disable-nonportable-atomics )
 	fi
 
 	econf "${myconf[@]}"
