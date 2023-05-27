@@ -1,0 +1,81 @@
+modified for Gentoo, removed Changelog due to conflicts
+
+From 30520c8f87fcf660ed99a2344cae7f9787f7bc89 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Thu, 5 Jan 2023 18:39:51 +0000
+Subject: [PATCH 3/3] DANE: do not check dns_again_means_nonexist for TLSA
+ results of TRY_AGAIN
+
+---
+ doc/doc-docbook/spec.xfpt |  7 ++++++-
+ doc/ChangeLog     |  4 ++++
+ src/dns.c             | 35 ++++++++++++++++++++++-------------
+ 3 files changed, 32 insertions(+), 14 deletions(-)
+
+--- a/src/dns.c
++++ b/src/dns.c
+@@ -904,25 +904,34 @@ if (dnsa->answerlen < 0) switch (h_errno
+     DEBUG(D_dns) debug_printf("DNS lookup of %s (%s) gave TRY_AGAIN\n",
+       name, dns_text_type(type));
+ 
+     /* Cut this out for various test programs */
+ #ifndef STAND_ALONE
+-    if (try_again_recursion)
++    /* Permitting dns_again_means nonexist for TLSA lookups breaks the
++    doewngrade resistance of dane, so avoid for those. */
++
++    if (type == T_TLSA)
++      rc = FAIL;
++    else
+       {
+-      log_write(0, LOG_MAIN|LOG_PANIC,
+-	"dns_again_means_nonexist recursion seen for %s (assuming nonexist)",
+-	name);
+-      return dns_fail_return(name, type, dns_expire_from_soa(dnsa, type), DNS_NOMATCH);
+-      }
++      if (try_again_recursion)
++	{
++	log_write(0, LOG_MAIN|LOG_PANIC,
++	  "dns_again_means_nonexist recursion seen for %s"
++	  " (assuming nonexist)", name);
++	return dns_fail_return(name, type, dns_expire_from_soa(dnsa, type),
++			      DNS_NOMATCH);
++	}
+ 
+-    try_again_recursion = TRUE;
+-    save_domain = deliver_domain;
+-    deliver_domain = string_copy(name);  /* set $domain */
+-    rc = match_isinlist(name, CUSS &dns_again_means_nonexist, 0,
+-      &domainlist_anchor, NULL, MCL_DOMAIN, TRUE, NULL);
+-    deliver_domain = save_domain;
+-    try_again_recursion = FALSE;
++      try_again_recursion = TRUE;
++      save_domain = deliver_domain;
++      deliver_domain = string_copy(name);  /* set $domain */
++      rc = match_isinlist(name, CUSS &dns_again_means_nonexist, 0,
++	&domainlist_anchor, NULL, MCL_DOMAIN, TRUE, NULL);
++      deliver_domain = save_domain;
++      try_again_recursion = FALSE;
++      }
+ 
+     if (rc != OK)
+       {
+       DEBUG(D_dns) debug_printf("returning DNS_AGAIN\n");
+       return dns_fail_return(name, type, 0, DNS_AGAIN);
+--- a/doc/spec.txt
++++ b/doc/spec.txt
+@@ -14246,11 +14246,13 @@ dns_again_means_nonexist, it is treated
+ should be used with care. You can make it apply to reverse lookups by a setting
+ such as this:
+ 
+ dns_again_means_nonexist = *.in-addr.arpa
+ 
+-This option applies to all DNS lookups that Exim does. It also applies when the
++This option applies to all DNS lookups that Exim does, except for TLSA lookups
++(where knowing about such failures +is security-relevant). It also applies
++when the
+ gethostbyname() or getipnodebyname() functions give temporary errors, since
+ these are most likely to be caused by DNS lookup problems. The dnslookup router
+ has some options of its own for controlling what happens when lookups for MX or
+ SRV records give temporary errors. These more specific options are applied
+ after this global option.

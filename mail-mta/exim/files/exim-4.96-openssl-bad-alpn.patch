@@ -1,0 +1,101 @@
+modified for Gentoo, removed tests
+
+From e1aca33756f73c22b00a98d40ce2be8ed94464b1 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Thu, 5 Jan 2023 13:03:37 +0000
+Subject: [PATCH 2/3] OpenSSL: log conns rejected for bad ALPN, with the
+ offered value
+
+Unfortunately, no way to do this under GnuTLS
+---
+ src/match.c       |  1 +
+ src/tls-gnu.c     |  9 ++++++++-
+ src/tls-openssl.c | 13 +++++++++++--
+ test/log/1190         |  2 ++
+ test/runtest          |  3 +++
+ 5 files changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/src/match.c b/src/match.c
+index 91a49c0f0..07070362d 100644
+--- a/src/match.c
++++ b/src/match.c
+@@ -968,6 +968,7 @@ Arguments:
+   s              string to search for
+   listptr        ptr to ptr to colon separated list of patterns, or NULL
+   sep            a separator value for the list (see string_nextinlist())
++		 or zero for auto
+   anchorptr      ptr to tree for named items, or NULL if no named items
+   cache_bits     ptr to cache_bits for ditto, or NULL if not caching
+   type           MCL_DOMAIN when matching a domain list
+diff --git a/src/tls-gnu.c b/src/tls-gnu.c
+index 729fb5879..b47fabf1d 100644
+--- a/src/tls-gnu.c
++++ b/src/tls-gnu.c
+@@ -1119,21 +1119,28 @@ switch (tls_id)
+     /* The format of "data" here doesn't seem to be documented, but appears
+     to be a 2-byte field with a (redundant, given the "size" arg) total length
+     then a sequence of one-byte size then string (not nul-term) names.  The
+-    latter is as described in OpenSSL documentation. */
++    latter is as described in OpenSSL documentation.
++    Note that we do not get called for a match_fail, making it hard to log
++    a single bad ALPN being offered (the common case). */
++    {
++    gstring * g = NULL;
+ 
+     DEBUG(D_tls) debug_printf("Seen ALPN extension from client (s=%u):", size);
+     for (const uschar * s = data+2; s-data < size-1; s += *s + 1)
+       {
+       server_seen_alpn++;
++      g = string_append_listele_n(g, ':', s+1, *s);
+       DEBUG(D_tls) debug_printf(" '%.*s'", (int)*s, s+1);
+       }
+     DEBUG(D_tls) debug_printf("\n");
+     if (server_seen_alpn > 1)
+       {
++      log_write(0, LOG_MAIN, "TLS ALPN (%s) rejected", string_from_gstring(g));
+       DEBUG(D_tls) debug_printf("TLS: too many ALPNs presented in handshake\n");
+       return GNUTLS_E_NO_APPLICATION_PROTOCOL;
+       }
+     break;
++    }
+ #endif
+   }
+ return 0;
+diff --git a/src/tls-openssl.c b/src/tls-openssl.c
+index e063d29bd..513ba0d3a 100644
+--- a/src/tls-openssl.c
++++ b/src/tls-openssl.c
+@@ -2324,6 +2324,8 @@ static int
+ tls_server_alpn_cb(SSL *ssl, const uschar ** out, uschar * outlen,
+   const uschar * in, unsigned int inlen, void * arg)
+ {
++gstring * g = NULL;
++
+ server_seen_alpn = TRUE;
+ DEBUG(D_tls)
+   {
+@@ -2354,12 +2356,19 @@ if (  inlen > 1		/* at least one name */
+       }
+   }
+ 
+-/* More than one name from clilent, or name did not match our list. */
++/* More than one name from client, or name did not match our list. */
+ 
+ /* This will be fatal to the TLS conn; would be nice to kill TCP also.
+ Maybe as an option in future; for now leave control to the config (must-tls). */
+ 
+-DEBUG(D_tls) debug_printf("TLS ALPN rejected\n");
++for (int pos = 0, siz; pos < inlen; pos += siz+1)
++  {
++  siz = in[pos];
++  if (pos + 1 + siz > inlen) siz = inlen - pos - 1;
++  g = string_append_listele_n(g, ':', in + pos + 1, siz);
++  }
++log_write(0, LOG_MAIN, "TLS ALPN (%s) rejected", string_from_gstring(g));
++gstring_release_unused(g);
+ return SSL_TLSEXT_ERR_ALERT_FATAL;
+ }
+ #endif	/* EXIM_HAVE_ALPN */
+-- 
+2.39.0
+

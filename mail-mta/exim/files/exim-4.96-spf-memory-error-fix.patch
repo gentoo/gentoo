@@ -1,0 +1,25 @@
+From 93c722ce0549360af68269f088f4e59ed8fc130e Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Sun, 7 Aug 2022 17:00:27 +0100
+Subject: [PATCH] SPF: fix memory accounting for error case
+
+---
+ src/spf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/spf.c b/src/spf.c
+index db6eea3a8..a8c0f75c4 100644
+--- a/src/spf.c
++++ b/src/spf.c
+@@ -204,7 +204,7 @@ spf_nxdomain = SPF_dns_rr_new_init(spf_dns_server,
+   "", ns_t_any, 24 * 60 * 60, HOST_NOT_FOUND);
+ if (!spf_nxdomain)
+   {
+-  free(spf_dns_server);
++  store_free(spf_dns_server);
+   return NULL;
+   }
+ 
+-- 
+2.35.1
+

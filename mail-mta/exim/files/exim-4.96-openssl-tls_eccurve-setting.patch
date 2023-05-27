@@ -1,0 +1,169 @@
+modified for Gentoo, dropped Changelog and test due to conflicts
+
+From ca4014de81e6aa367aa0a54c49b4c3d4b137814c Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Sun, 1 Jan 2023 12:18:38 +0000
+Subject: [PATCH] OpenSSL: fix tls_eccurve setting explicit curve/group.  Bug
+ 2954
+
+---
+ doc/ChangeLog          |  4 +++
+ src/tls-openssl.c          | 39 ++++++++++++++----------
+ test/confs/2148                | 54 ++++++++++++++++++++++++++++++++++
+ test/confs/2149                | 39 +++++++++++++-----------
+ test/log/2148                  | 48 ++++++++++++++++++++++++++++++
+ test/log/2149                  | 39 ++++++++++++------------
+ test/paniclog/{2149 => 2148}   |  0
+ test/scripts/2100-OpenSSL/2148 | 50 +++++++++++++++++++++++++++++++
+ test/scripts/2100-OpenSSL/2149 | 50 ++++++++++++++++---------------
+ test/stderr/2148               |  5 ++++
+ test/stderr/2149               |  3 --
+ 11 files changed, 250 insertions(+), 81 deletions(-)
+ create mode 100644 test/confs/2148
+ create mode 100644 test/log/2148
+ rename test/paniclog/{2149 => 2148} (100%)
+ create mode 100644 test/scripts/2100-OpenSSL/2148
+ create mode 100644 test/stderr/2148
+
+--- a/src/tls-openssl.c
++++ b/src/tls-openssl.c
+@@ -657,16 +657,16 @@ if (dh_bitsize <= tls_dh_max_bits)
+     /* EVP_PKEY_free(pkey);  crashes */
+ #endif
+     }
+   else
+     DEBUG(D_tls)
+-      debug_printf("Diffie-Hellman initialized from %s with %d-bit prime\n",
++      debug_printf(" Diffie-Hellman initialized from %s with %d-bit prime\n",
+ 	dhexpanded ? dhexpanded : US"default", dh_bitsize);
+   }
+ else
+   DEBUG(D_tls)
+-    debug_printf("dhparams '%s' %d bits, is > tls_dh_max_bits limit of %d\n",
++    debug_printf(" dhparams '%s' %d bits, is > tls_dh_max_bits limit of %d\n",
+ 	dhexpanded ? dhexpanded : US"default", dh_bitsize, tls_dh_max_bits);
+ 
+ #if OPENSSL_VERSION_NUMBER < 0x30000000L
+ DH_free(dh);
+ #endif
+@@ -712,23 +712,31 @@ init_ecdh(SSL_CTX * sctx, uschar ** errs
+ #ifdef OPENSSL_NO_ECDH
+ return TRUE;
+ #else
+ 
+ uschar * exp_curve;
+-int nid;
+-BOOL rv;
++int nid, rc;
+ 
+ # ifndef EXIM_HAVE_ECDH
+ DEBUG(D_tls)
+-  debug_printf("No OpenSSL API to define ECDH parameters, skipping\n");
++  debug_printf(" No OpenSSL API to define ECDH parameters, skipping\n");
+ return TRUE;
+ # else
+ 
+ if (!expand_check(tls_eccurve, US"tls_eccurve", &exp_curve, errstr))
+   return FALSE;
++
++/* Is the option deliberately empty? */
++
+ if (!exp_curve || !*exp_curve)
++  {
++#if OPENSSL_VERSION_NUMBER >= 0x10002000L
++  DEBUG(D_tls) debug_printf( " ECDH OpenSSL 1.0.2+: clearing curves list\n");
++  (void) SSL_CTX_set1_curves(sctx, &nid, 0);
++#endif
+   return TRUE;
++  }
+ 
+ /* "auto" needs to be handled carefully.
+  * OpenSSL <  1.0.2: we do not select anything, but fallback to prime256v1
+  * OpenSSL <  1.1.0: we have to call SSL_CTX_set_ecdh_auto
+  *                   (openssl/ssl.h defines SSL_CTRL_SET_ECDH_AUTO)
+@@ -737,27 +745,26 @@ if (!exp_curve || !*exp_curve)
+  */
+ if (Ustrcmp(exp_curve, "auto") == 0)
+   {
+ #if OPENSSL_VERSION_NUMBER < 0x10002000L
+   DEBUG(D_tls) debug_printf(
+-    "ECDH OpenSSL < 1.0.2: temp key parameter settings: overriding \"auto\" with \"prime256v1\"\n");
++    " ECDH OpenSSL < 1.0.2: temp key parameter settings: overriding \"auto\" with \"prime256v1\"\n");
+   exp_curve = US"prime256v1";
+ #else
+ # if defined SSL_CTRL_SET_ECDH_AUTO
+   DEBUG(D_tls) debug_printf(
+-    "ECDH OpenSSL 1.0.2+: temp key parameter settings: autoselection\n");
++    " ECDH OpenSSL 1.0.2+: temp key parameter settings: autoselection\n");
+   SSL_CTX_set_ecdh_auto(sctx, 1);
+   return TRUE;
+ # else
+   DEBUG(D_tls) debug_printf(
+-    "ECDH OpenSSL 1.1.0+: temp key parameter settings: default selection\n");
++    " ECDH OpenSSL 1.1.0+: temp key parameter settings: library default selection\n");
+   return TRUE;
+ # endif
+ #endif
+   }
+ 
+-DEBUG(D_tls) debug_printf("ECDH: curve '%s'\n", exp_curve);
+ if (  (nid = OBJ_sn2nid       (CCS exp_curve)) == NID_undef
+ #   ifdef EXIM_HAVE_OPENSSL_EC_NIST2NID
+    && (nid = EC_curve_nist2nid(CCS exp_curve)) == NID_undef
+ #   endif
+    )
+@@ -777,27 +784,27 @@ if (  (nid = OBJ_sn2nid       (CCS exp_c
+     }
+ 
+   /* The "tmp" in the name here refers to setting a temporary key
+   not to the stability of the interface. */
+ 
+-  if ((rv = SSL_CTX_set_tmp_ecdh(sctx, ecdh) == 0))
++  if ((rc = SSL_CTX_set_tmp_ecdh(sctx, ecdh) == 0))
+     tls_error(string_sprintf("Error enabling '%s' curve", exp_curve), NULL, NULL, errstr);
+   else
+-    DEBUG(D_tls) debug_printf("ECDH: enabled '%s' curve\n", exp_curve);
++    DEBUG(D_tls) debug_printf(" ECDH: enabled '%s' curve\n", exp_curve);
+   EC_KEY_free(ecdh);
+  }
+ 
+ #else	/* v 3.0.0 + */
+ 
+-if ((rv = SSL_CTX_set1_groups(sctx, &nid, 1)) == 0)
++if ((rc = SSL_CTX_set1_groups(sctx, &nid, 1)) == 0)
+   tls_error(string_sprintf("Error enabling '%s' group", exp_curve), NULL, NULL, errstr);
+ else
+-  DEBUG(D_tls) debug_printf("ECDH: enabled '%s' group\n", exp_curve);
++  DEBUG(D_tls) debug_printf(" ECDH: enabled '%s' group\n", exp_curve);
+ 
+ #endif
+ 
+-return !rv;
++return !!rc;
+ 
+ # endif	/*EXIM_HAVE_ECDH*/
+ #endif /*OPENSSL_NO_ECDH*/
+ }
+ 
+@@ -1719,19 +1726,19 @@ state_server.lib_state.lib_ctx = ctx;
+ 
+ /* Preload DH params and EC curve */
+ 
+ if (opt_unset_or_noexpand(tls_dhparam))
+   {
+-  DEBUG(D_tls) debug_printf("TLS: preloading DH params for server\n");
++  DEBUG(D_tls) debug_printf("TLS: preloading DH params '%s' for server\n", tls_dhparam);
+   if (init_dh(ctx, tls_dhparam, &dummy_errstr))
+     state_server.lib_state.dh = TRUE;
+   }
+ else
+   DEBUG(D_tls) debug_printf("TLS: not preloading DH params for server\n");
+ if (opt_unset_or_noexpand(tls_eccurve))
+   {
+-  DEBUG(D_tls) debug_printf("TLS: preloading ECDH curve for server\n");
++  DEBUG(D_tls) debug_printf("TLS: preloading ECDH curve '%s' for server\n", tls_eccurve);
+   if (init_ecdh(ctx, &dummy_errstr))
+     state_server.lib_state.ecdh = TRUE;
+   }
+ else
+   DEBUG(D_tls) debug_printf("TLS: not preloading ECDH curve for server\n");

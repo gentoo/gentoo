@@ -1,0 +1,69 @@
+modified for Gentoo, removed Changelog and tests
+
+From 70069b65a39a7ba73a36fbd95371ff03cde1eb23 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Thu, 2 Feb 2023 20:00:35 +0000
+Subject: [PATCH] Fix crash in expansions
+
+Broken-by: 1058096b8c53
+---
+ doc/ChangeLog | 4 ++++
+ src/expand.c      | 9 +++++----
+ test/stderr/0630      | 1 +
+ 3 files changed, 10 insertions(+), 4 deletions(-)
+
+--- a/src/expand.c
++++ b/src/expand.c
+@@ -4652,11 +4652,11 @@ while (*s)
+       yield = string_catn(yield, value, len);
+ 
+     continue;
+     }
+ 
+-  if (isdigit(*s))
++  if (isdigit(*s))		/* A $<n> variable */
+     {
+     int n;
+     s = read_cnumber(&n, s);
+     if (n >= 0 && n <= expand_nmax)
+       yield = string_catn(yield, expand_nstring[n], expand_nlength[n]);
+@@ -7060,10 +7060,11 @@ NOT_ITEM: ;
+       if (arg) *arg++ = '_';		/* Put back for error messages */
+       }
+ 
+     /* Deal specially with operators that might take a certificate variable
+     as we do not want to do the usual expansion. For most, expand the string.*/
++
+     switch(c)
+       {
+ #ifndef DISABLE_TLS
+       case EOP_MD5:
+       case EOP_SHA1:
+@@ -7107,11 +7108,11 @@ NOT_ITEM: ;
+ 
+     /* Otherwise, switch on the operator type.  After handling go back
+     to the main loop top. */
+ 
+      {
+-     int start = yield->ptr;
++     unsigned expansion_start = gstring_length(yield);
+      switch(c)
+       {
+       case EOP_BASE32:
+ 	{
+ 	uschar *t;
+@@ -8168,12 +8169,12 @@ NOT_ITEM: ;
+ 	  goto EXPAND_FAILED;
+ 	}	/* EOP_* switch */
+ 
+        DEBUG(D_expand)
+ 	{
+-	const uschar * s = yield->s + start;
+-	int i = yield->ptr - start;
++	const uschar * s = yield->s + expansion_start;
++	int i = gstring_length(yield) - expansion_start;
+ 	BOOL tainted = is_tainted(s);
+ 
+ 	DEBUG(D_noutf8)
+ 	  {
+ 	  debug_printf_indent("|-----op-res: %.*s\n", i, s);

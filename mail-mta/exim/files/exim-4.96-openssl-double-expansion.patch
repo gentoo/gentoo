@@ -1,0 +1,217 @@
+From 62b97c2ecf148ee86053d82e5509e4c3a5a20054 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Sat, 29 Oct 2022 22:33:43 +0100
+Subject: [PATCH 2/2] OpenSSL: fix double-expansion of tls_verify_certificates
+
+---
+ src/tls-openssl.c | 66 +++++++++++++++++++++----------------------
+ 1 file changed, 33 insertions(+), 33 deletions(-)
+
+diff --git a/src/tls-openssl.c b/src/tls-openssl.c
+index fdf0d92b2..2e09882d2 100644
+--- a/src/tls-openssl.c
++++ b/src/tls-openssl.c
+@@ -435,15 +435,15 @@ typedef struct exim_openssl_state {
+ /* should figure out a cleanup of API to handle state preserved per
+ implementation, for various reasons, which can be void * in the APIs.
+ For now, we hack around it. */
+ exim_openssl_state_st *client_static_state = NULL;	/*XXX should not use static; multiple concurrent clients! */
+ exim_openssl_state_st state_server = {.is_server = TRUE};
+ 
+ static int
+-setup_certs(SSL_CTX *sctx, uschar *certs, uschar *crl, host_item *host,
++setup_certs(SSL_CTX * sctx, uschar ** certs, uschar * crl, host_item * host,
+     uschar ** errstr );
+ 
+ /* Callbacks */
+ #ifndef DISABLE_OCSP
+ static int tls_server_stapling_cb(SSL *s, void *arg);
+ static void x509_stack_dump_cert_s_names(const STACK_OF(X509) * sk);
+ static void x509_store_dump_cert_s_names(X509_STORE * store);
+@@ -1762,18 +1762,18 @@ if (  opt_set_and_noexpand(tls_verify_certificates)
+   {
+   /* Watch the default dir also as they are always included */
+ 
+   if (  tls_set_watch(CUS X509_get_default_cert_file(), FALSE)
+      && tls_set_watch(tls_verify_certificates, FALSE)
+      && tls_set_watch(tls_crl, FALSE))
+     {
++    uschar * v_certs = tls_verify_certificates;
+     DEBUG(D_tls) debug_printf("TLS: preloading CA bundle for server\n");
+ 
+-    if (setup_certs(ctx, tls_verify_certificates, tls_crl, NULL, &dummy_errstr)
+-	== OK)
++    if (setup_certs(ctx, &v_certs, tls_crl, NULL, &dummy_errstr) == OK)
+       state_server.lib_state.cabundle = TRUE;
+ 
+     /* If we can, preload the server-side cert, key and ocsp */
+ 
+     if (  opt_set_and_noexpand(tls_certificate)
+ # ifndef DISABLE_OCSP
+        && opt_unset_or_noexpand(tls_ocsp_file)
+@@ -1897,18 +1897,19 @@ if (  opt_set_and_noexpand(ob->tls_verify_certificates)
+   {
+   if (  !watch
+      ||    tls_set_watch(CUS X509_get_default_cert_file(), FALSE)
+         && tls_set_watch(ob->tls_verify_certificates, FALSE)
+ 	&& tls_set_watch(ob->tls_crl, FALSE)
+      )
+     {
++    uschar * v_certs = ob->tls_verify_certificates;
+     DEBUG(D_tls)
+       debug_printf("TLS: preloading CA bundle for transport '%s'\n", t->name);
+ 
+-    if (setup_certs(ctx, ob->tls_verify_certificates,
++    if (setup_certs(ctx, &v_certs,
+ 	  ob->tls_crl, dummy_host, &dummy_errstr) == OK)
+       ob->tls_preload.cabundle = TRUE;
+     }
+   }
+ else
+   DEBUG(D_tls)
+       debug_printf("TLS: not preloading CA bundle, for transport '%s'\n", t->name);
+@@ -2238,22 +2239,20 @@ if (state->u_ocsp.server.file)
+   {
+   SSL_CTX_set_tlsext_status_cb(server_sni, tls_server_stapling_cb);
+   SSL_CTX_set_tlsext_status_arg(server_sni, state);
+   }
+ #endif
+ 
+   {
+-  uschar * expcerts;
+-  if (  !expand_check(tls_verify_certificates, US"tls_verify_certificates",
+-		  &expcerts, &dummy_errstr)
+-     || (rc = setup_certs(server_sni, expcerts, tls_crl, NULL,
++  uschar * v_certs = tls_verify_certificates;
++  if ((rc = setup_certs(server_sni, &v_certs, tls_crl, NULL,
+ 			&dummy_errstr)) != OK)
+     goto bad;
+ 
+-  if (expcerts && *expcerts)
++  if (v_certs && *v_certs)
+     setup_cert_verify(server_sni, FALSE, verify_callback_server);
+   }
+ 
+ /* do this after setup_certs, because this can require the certs for verifying
+ OCSP information. */
+ if ((rc = tls_expand_session_files(server_sni, state, &dummy_errstr)) != OK)
+   goto bad;
+@@ -3017,32 +3016,33 @@ return TRUE;
+ 
+ 
+ /* Called by both client and server startup; on the server possibly
+ repeated after a Server Name Indication.
+ 
+ Arguments:
+   sctx          SSL_CTX* to initialise
+-  certs         certs file, expanded
++  certs         certs file, returned expanded
+   crl           CRL file or NULL
+   host          NULL in a server; the remote host in a client
+   errstr	error string pointer
+ 
+ Returns:        OK/DEFER/FAIL
+ */
+ 
+ static int
+-setup_certs(SSL_CTX *sctx, uschar *certs, uschar *crl, host_item *host,
++setup_certs(SSL_CTX * sctx, uschar ** certsp, uschar * crl, host_item * host,
+     uschar ** errstr)
+ {
+-uschar *expcerts, *expcrl;
++uschar * expcerts, * expcrl;
+ 
+-if (!expand_check(certs, US"tls_verify_certificates", &expcerts, errstr))
++if (!expand_check(*certsp, US"tls_verify_certificates", &expcerts, errstr))
+   return DEFER;
+ DEBUG(D_tls) debug_printf("tls_verify_certificates: %s\n", expcerts);
+ 
++*certsp = expcerts;
+ if (expcerts && *expcerts)
+   {
+   /* Tell the library to use its compiled-in location for the system default
+   CA bundle. Then add the ones specified in the config, if any. */
+ 
+   if (!SSL_CTX_set_default_verify_paths(sctx))
+     return tls_error(US"SSL_CTX_set_default_verify_paths", host, NULL, errstr);
+@@ -3330,28 +3330,28 @@ if (verify_check_host(&tls_verify_hosts) == OK)
+   server_verify_optional = FALSE;
+ else if (verify_check_host(&tls_try_verify_hosts) == OK)
+   server_verify_optional = TRUE;
+ else
+   goto skip_certs;
+ 
+  {
+-  uschar * expcerts;
+-  if (!expand_check(tls_verify_certificates, US"tls_verify_certificates",
+-		    &expcerts, errstr))
+-    return DEFER;
+-  DEBUG(D_tls) debug_printf("tls_verify_certificates: %s\n", expcerts);
++  uschar * v_certs = tls_verify_certificates;
+ 
+   if (state_server.lib_state.cabundle)
+-    { DEBUG(D_tls) debug_printf("TLS: CA bundle for server was preloaded\n"); }
++    {
++    DEBUG(D_tls) debug_printf("TLS: CA bundle for server was preloaded\n");
++    setup_cert_verify(ctx, server_verify_optional, verify_callback_server);
++    }
+   else
+-    if ((rc = setup_certs(ctx, expcerts, tls_crl, NULL, errstr)) != OK)
++    {
++    if ((rc = setup_certs(ctx, &v_certs, tls_crl, NULL, errstr)) != OK)
+       return rc;
+-
+-  if (expcerts && *expcerts)
+-    setup_cert_verify(ctx, server_verify_optional, verify_callback_server);
++    if (v_certs && *v_certs)
++      setup_cert_verify(ctx, server_verify_optional, verify_callback_server);
++    }
+  }
+ skip_certs: ;
+ 
+ #ifndef DISABLE_TLS_RESUME
+ # if OPENSSL_VERSION_NUMBER < 0x30000000L
+ SSL_CTX_set_tlsext_ticket_key_cb(ctx, ticket_key_callback);
+ /* despite working, appears to always return failure, so ignoring */
+@@ -3606,28 +3606,28 @@ if (  (  (  !ob->tls_verify_hosts || !ob->tls_verify_hosts
+   client_verify_optional = FALSE;
+ else if (verify_check_given_host(CUSS &ob->tls_try_verify_hosts, host) == OK)
+   client_verify_optional = TRUE;
+ else
+   return OK;
+ 
+  {
+-  uschar * expcerts;
+-  if (!expand_check(ob->tls_verify_certificates, US"tls_verify_certificates",
+-		    &expcerts, errstr))
+-    return DEFER;
+-  DEBUG(D_tls) debug_printf("tls_verify_certificates: %s\n", expcerts);
++  uschar * v_certs = ob->tls_verify_certificates;
+ 
+   if (state->lib_state.cabundle)
+-    { DEBUG(D_tls) debug_printf("TLS: CA bundle was preloaded\n"); }
++    {
++    DEBUG(D_tls) debug_printf("TLS: CA bundle for tpt was preloaded\n");
++    setup_cert_verify(ctx, client_verify_optional, verify_callback_client);
++    }
+   else
+-    if ((rc = setup_certs(ctx, expcerts, ob->tls_crl, host, errstr)) != OK)
++    {
++    if ((rc = setup_certs(ctx, &v_certs, ob->tls_crl, host, errstr)) != OK)
+       return rc;
+-
+-  if (expcerts && *expcerts)
+-    setup_cert_verify(ctx, client_verify_optional, verify_callback_client);
++    if (v_certs && *v_certs)
++      setup_cert_verify(ctx, client_verify_optional, verify_callback_client);
++    }
+  }
+ 
+ if (verify_check_given_host(CUSS &ob->tls_verify_cert_hostnames, host) == OK)
+   {
+   state->verify_cert_hostnames =
+ #ifdef SUPPORT_I18N
+     string_domain_utf8_to_alabel(host->certname, NULL);
+-- 
+2.35.1
+

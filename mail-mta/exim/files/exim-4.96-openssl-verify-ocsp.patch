@@ -1,0 +1,232 @@
+From 7f65a63b60c6ea86db683ac00e221939f3bb1d47 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Tue, 25 Oct 2022 21:26:30 +0100
+Subject: [PATCH 1/2] OpenSSL: when preloading creds do the server certs before
+ the OCSP proofs so that the latter can ve verified before loading
+
+---
+ src/tls-openssl.c | 113 ++++++++++++++++++++++--------------------
+ 1 file changed, 58 insertions(+), 55 deletions(-)
+
+diff --git a/src/tls-openssl.c b/src/tls-openssl.c
+index 68ad6f15b..fdf0d92b2 100644
+--- a/src/tls-openssl.c
++++ b/src/tls-openssl.c
+@@ -441,14 +441,16 @@ exim_openssl_state_st state_server = {.is_server = TRUE};
+ static int
+ setup_certs(SSL_CTX *sctx, uschar *certs, uschar *crl, host_item *host,
+     uschar ** errstr );
+ 
+ /* Callbacks */
+ #ifndef DISABLE_OCSP
+ static int tls_server_stapling_cb(SSL *s, void *arg);
++static void x509_stack_dump_cert_s_names(const STACK_OF(X509) * sk);
++static void x509_store_dump_cert_s_names(X509_STORE * store);
+ #endif
+ 
+ 
+ 
+ /* Daemon-called, before every connection, key create/rotate */
+ #ifndef DISABLE_TLS_RESUME
+ static void tk_init(void);
+@@ -1307,15 +1309,14 @@ ocsp_load_response(exim_openssl_state_st * state, const uschar * filename,
+ {
+ BIO * bio;
+ OCSP_RESPONSE * resp;
+ OCSP_BASICRESP * basic_response;
+ OCSP_SINGLERESP * single_response;
+ ASN1_GENERALIZEDTIME * rev, * thisupd, * nextupd;
+ STACK_OF(X509) * sk;
+-unsigned long verify_flags;
+ int status, reason, i;
+ 
+ DEBUG(D_tls)
+   debug_printf("tls_ocsp_file (%s)  '%s'\n", is_pem ? "PEM" : "DER", filename);
+ 
+ if (!filename || !*filename) return;
+ 
+@@ -1372,28 +1373,28 @@ if ((status = OCSP_response_status(resp)) != OCSP_RESPONSE_STATUS_SUCCESSFUL)
+ if (!(basic_response = OCSP_response_get1_basic(resp)))
+   {
+   DEBUG(D_tls)
+     debug_printf("OCSP response parse error: unable to extract basic response.\n");
+   goto bad;
+   }
+ 
+-sk = state->verify_stack;
+-verify_flags = OCSP_NOVERIFY; /* check sigs, but not purpose */
++sk = state->verify_stack;	/* set by setup_certs() / chain_from_pem_file() */
+ 
+ /* May need to expose ability to adjust those flags?
+ OCSP_NOSIGS OCSP_NOVERIFY OCSP_NOCHAIN OCSP_NOCHECKS OCSP_NOEXPLICIT
+ OCSP_TRUSTOTHER OCSP_NOINTERN */
+ 
+-/* This does a full verify on the OCSP proof before we load it for serving
+-up; possibly overkill - just date-checks might be nice enough.
++/* This does a partial verify (only the signer link, not the whole chain-to-CA)
++on the OCSP proof before we load it for serving up; possibly overkill -
++just date-checks might be nice enough.
+ 
+ OCSP_basic_verify takes a "store" arg, but does not
+-use it for the chain verification, which is all we do
+-when OCSP_NOVERIFY is set.  The content from the wire
+-"basic_response" and a cert-stack "sk" are all that is used.
++use it for the chain verification, when OCSP_NOVERIFY is set.
++The content from the wire "basic_response" and a cert-stack "sk" are all
++that is used.
+ 
+ We have a stack, loaded in setup_certs() if tls_verify_certificates
+ was a file (not a directory, or "system").  It is unfortunate we
+ cannot used the connection context store, as that would neatly
+ handle the "system" case too, but there seems to be no library
+ function for getting a stack from a store.
+ [ In OpenSSL 1.1 - ?  X509_STORE_CTX_get0_chain(ctx) ? ]
+@@ -1402,15 +1403,15 @@ SNI handling.
+ 
+ Separately we might try to replace using OCSP_basic_verify() - which seems to not
+ be a public interface into the OpenSSL library (there's no manual entry) -
+ But what with?  We also use OCSP_basic_verify in the client stapling callback.
+ And there we NEED it; we must verify that status... unless the
+ library does it for us anyway?  */
+ 
+-if ((i = OCSP_basic_verify(basic_response, sk, NULL, verify_flags)) < 0)
++if ((i = OCSP_basic_verify(basic_response, sk, NULL, OCSP_NOVERIFY)) < 0)
+   {
+   DEBUG(D_tls)
+     {
+     ERR_error_string_n(ERR_get_error(), ssl_errstring, sizeof(ssl_errstring));
+     debug_printf("OCSP response verify failure: %s\n", US ssl_errstring);
+     }
+   goto bad;
+@@ -1747,61 +1748,18 @@ if (opt_unset_or_noexpand(tls_eccurve))
+   if (init_ecdh(ctx, &dummy_errstr))
+     state_server.lib_state.ecdh = TRUE;
+   }
+ else
+   DEBUG(D_tls) debug_printf("TLS: not preloading ECDH curve for server\n");
+ 
+ #if defined(EXIM_HAVE_INOTIFY) || defined(EXIM_HAVE_KEVENT)
+-/* If we can, preload the server-side cert, key and ocsp */
+-
+-if (  opt_set_and_noexpand(tls_certificate)
+-# ifndef DISABLE_OCSP
+-   && opt_unset_or_noexpand(tls_ocsp_file)
+-#endif
+-   && opt_unset_or_noexpand(tls_privatekey))
+-  {
+-  /* Set watches on the filenames.  The implementation does de-duplication
+-  so we can just blindly do them all.  */
+-
+-  if (  tls_set_watch(tls_certificate, TRUE)
+-# ifndef DISABLE_OCSP
+-     && tls_set_watch(tls_ocsp_file, TRUE)
+-#endif
+-     && tls_set_watch(tls_privatekey, TRUE))
+-    {
+-    state_server.certificate = tls_certificate;
+-    state_server.privatekey = tls_privatekey;
+-#ifndef DISABLE_OCSP
+-    state_server.u_ocsp.server.file = tls_ocsp_file;
+-#endif
+-
+-    DEBUG(D_tls) debug_printf("TLS: preloading server certs\n");
+-    if (tls_expand_session_files(ctx, &state_server, &dummy_errstr) == OK)
+-      state_server.lib_state.conn_certs = TRUE;
+-    }
+-  }
+-else if (  !tls_certificate && !tls_privatekey
+-# ifndef DISABLE_OCSP
+-	&& !tls_ocsp_file
+-#endif
+-   )
+-  {		/* Generate & preload a selfsigned cert. No files to watch. */
+-  if (tls_expand_session_files(ctx, &state_server, &dummy_errstr) == OK)
+-    {
+-    state_server.lib_state.conn_certs = TRUE;
+-    lifetime = f.running_in_test_harness ? 2 : 60 * 60;		/* 1 hour */
+-    }
+-  }
+-else
+-  DEBUG(D_tls) debug_printf("TLS: not preloading server certs\n");
+-
+-
+ /* If we can, preload the Authorities for checking client certs against.
+ Actual choice to do verify is made (tls_{,try_}verify_hosts)
+-at TLS conn startup */
++at TLS conn startup.
++Do this before the server ocsp so that its info can verify the ocsp. */
+ 
+ if (  opt_set_and_noexpand(tls_verify_certificates)
+    && opt_unset_or_noexpand(tls_crl))
+   {
+   /* Watch the default dir also as they are always included */
+ 
+   if (  tls_set_watch(CUS X509_get_default_cert_file(), FALSE)
+@@ -1809,18 +1767,63 @@ if (  opt_set_and_noexpand(tls_verify_certificates)
+      && tls_set_watch(tls_crl, FALSE))
+     {
+     DEBUG(D_tls) debug_printf("TLS: preloading CA bundle for server\n");
+ 
+     if (setup_certs(ctx, tls_verify_certificates, tls_crl, NULL, &dummy_errstr)
+ 	== OK)
+       state_server.lib_state.cabundle = TRUE;
+-    }
++
++    /* If we can, preload the server-side cert, key and ocsp */
++
++    if (  opt_set_and_noexpand(tls_certificate)
++# ifndef DISABLE_OCSP
++       && opt_unset_or_noexpand(tls_ocsp_file)
++# endif
++       && opt_unset_or_noexpand(tls_privatekey))
++      {
++      /* Set watches on the filenames.  The implementation does de-duplication
++      so we can just blindly do them all.  */
++
++      if (  tls_set_watch(tls_certificate, TRUE)
++# ifndef DISABLE_OCSP
++	 && tls_set_watch(tls_ocsp_file, TRUE)
++# endif
++	 && tls_set_watch(tls_privatekey, TRUE))
++	{
++	state_server.certificate = tls_certificate;
++	state_server.privatekey = tls_privatekey;
++#ifndef DISABLE_OCSP
++	state_server.u_ocsp.server.file = tls_ocsp_file;
++# endif
++
++	DEBUG(D_tls) debug_printf("TLS: preloading server certs\n");
++	if (tls_expand_session_files(ctx, &state_server, &dummy_errstr) == OK)
++	  state_server.lib_state.conn_certs = TRUE;
++	}
++      }
++    else if (  !tls_certificate && !tls_privatekey
++# ifndef DISABLE_OCSP
++	    && !tls_ocsp_file
++# endif
++       )
++      {		/* Generate & preload a selfsigned cert. No files to watch. */
++      if (tls_expand_session_files(ctx, &state_server, &dummy_errstr) == OK)
++	{
++	state_server.lib_state.conn_certs = TRUE;
++	lifetime = f.running_in_test_harness ? 2 : 60 * 60;		/* 1 hour */
++	}
++      }
++    else
++      DEBUG(D_tls) debug_printf("TLS: not preloading server certs\n");
++	}
+   }
+ else
+   DEBUG(D_tls) debug_printf("TLS: not preloading CA bundle for server\n");
++
++
+ #endif	/* EXIM_HAVE_INOTIFY */
+ 
+ 
+ /* If we can, preload the ciphers control string */
+ 
+ if (opt_set_and_noexpand(tls_require_ciphers))
+   {
+-- 
+2.35.1
+

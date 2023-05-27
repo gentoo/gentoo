@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -116,7 +116,20 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.95-localscan_dlopen.patch
+	eapply     "${FILESDIR}"/exim-4.96-rewrite-malformed-addr-fix.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-spf-memory-error-fix.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-regex-use-after-free.patch # upstr
 	eapply -p2 "${FILESDIR}"/exim-4.96-dmarc_use_after_free.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-deamon-startup-fix.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-openssl-verify-ocsp.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-openssl-double-expansion.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-recursion-dns_again.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-openssl-tls_eccurve-setting.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-openssl-tls_eccurve-lt-3.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-openssl-bad-alpn.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-dane-dns_again.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-expansion-crash.patch # upstr
+	eapply     "${FILESDIR}"/exim-4.96-transport-crash.patch # upstr
 
 	# oddity, they disable berkdb as hack, and then throw an error when
 	# berkdb isn't enabled
@@ -125,11 +138,10 @@ src_prepare() {
 		-e 's/define DB void/define DONTMESS void/' \
 		src/auths/call_radius.c || die
 
-	# for this reason we have a := dep on opendmarc, they changed their
-	# API in a minor release
-	if use dmarc && has_version ">=mail-filter/opendmarc-1.4" ; then
-		eapply "${FILESDIR}"/exim-4.94-opendmarc-1.4.patch
-	fi
+	# API changed from 1.3 to 1.4, upstream doesn't think 1.4 should be
+	# used, but 1.3 has a CVE and Gentoo (like most downstreams) only
+	# has 1.4 available
+	eapply "${FILESDIR}"/exim-4.94-opendmarc-1.4.patch
 
 	if use maildir ; then
 		eapply "${FILESDIR}"/exim-4.94-maildir.patch
