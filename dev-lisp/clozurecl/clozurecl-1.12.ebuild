@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,6 @@ SRC_URI="
 	x86? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-linuxx86.tar.gz )
 	amd64? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-linuxx86.tar.gz )
 	x64-macos? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-darwinx86.tar.gz )
-	x86-solaris? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-solarisx86.tar.gz )
 	x64-solaris? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-solarisx86.tar.gz )
 	doc? ( https://ccl.clozure.com/docs/ccl.html )"
 
@@ -42,8 +41,6 @@ src_prepare() {
 src_configure() {
 	if use x64-macos; then
 		CCL_RUNTIME=dx86cl64; CCL_HEADERS=darwin-x86-headers64; CCL_KERNEL=darwinx8664
-	elif use x86-solaris; then
-		CCL_RUNTIME=sx86cl; CCL_HEADERS=solarisx86-headers; CCL_KERNEL=solarisx86
 	elif use x64-solaris; then
 		CCL_RUNTIME=sx86cl64; CCL_HEADERS=solarisx64-headers; CCL_KERNEL=solarisx64
 	elif use x86; then
