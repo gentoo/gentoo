@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://www.daemon.de/idisk/Apps/note/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~riscv x86"
+KEYWORDS="amd64 ~arm64 ppc ~riscv x86"
 IUSE="crypt dbm general mysql text"
 
 DEPEND="
