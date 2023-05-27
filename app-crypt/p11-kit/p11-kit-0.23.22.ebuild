@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,20 +25,6 @@ BDEPEND="virtual/pkgconfig"
 pkg_setup() {
 	# disable unsafe tests, bug#502088
 	export FAKED_MODE=1
-}
-
-src_prepare() {
-	if [[ ${CHOST} == *-solaris2.* && ${CHOST##*-solaris2.} -lt 11 ]] ; then
-		# Solaris 10 and before doesn't know about XPG7 (XOPEN_SOURCE=700)
-		# drop to XPG6 to make feature_tests.h happy
-		sed -i -e '/define _XOPEN_SOURCE/s/700/600/' common/compat.c || die
-		# paths.h isn't available, oddly enough also not used albeit included
-		sed -i -e '/#include <paths.h>/d' trust/test-trust.c || die
-		# we don't have SUN_LEN here
-		sed -i -e 's/SUN_LEN \(([^)]\+)\)/strlen (\1->sun_path)/' \
-			p11-kit/server.c || die
-	fi
-	default
 }
 
 multilib_src_configure() {
