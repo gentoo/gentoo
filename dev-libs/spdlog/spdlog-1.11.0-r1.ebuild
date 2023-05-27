@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
+	"${FILESDIR}/${PN}-musl-1.2.4.patch"
 )
 
 src_prepare() {
