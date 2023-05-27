@@ -44,11 +44,6 @@ multilib_src_configure() {
 		-e "/^libdir/s!lib\$!$(get_libdir)!" \
 		-e "s!shared!shared ${soname}!" \
 		"Makefile" || die
-
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		# fdatasync lives in -lrt on Solaris 10
-		[[ ${CHOST#*-solaris2.} -le 10 ]] && append-ldflags -lrt
-	fi
 }
 
 multilib_src_compile() {
