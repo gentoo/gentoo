@@ -925,6 +925,11 @@ _distutils-r1_print_package_versions() {
 			dev-python/gpep517
 			dev-python/installer
 		)
+		if [[ ${DISTUTILS_EXT} ]]; then
+			packages+=(
+				dev-python/cython
+			)
+		fi
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				packages+=(
