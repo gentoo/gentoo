@@ -70,6 +70,7 @@ python_test() {
 		# these look serious but affect hypothesis only partially,
 		# i.e. many revdeps will still work and since this is a test dep,
 		# we don't need it 100% perfect
+		# https://github.com/python/cpython/issues/105013
 		EPYTEST_IGNORE+=(
 			tests/cover/test_type_lookup.py
 		)
