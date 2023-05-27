@@ -7,7 +7,7 @@
 # Profile IUSE injection (applies only to ebuilds which use EAPI 5 or later)
 IUSE_IMPLICIT="prefix prefix-guest prefix-stack"
 USE_EXPAND_IMPLICIT="ELIBC KERNEL"
-USE_EXPAND_VALUES_ELIBC="bionic Cygwin Darwin glibc mingw musl SunOS Winnt"
+USE_EXPAND_VALUES_ELIBC="bionic Cygwin Darwin glibc mingw musl SunOS"
 USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS Winnt"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
