@@ -20,17 +20,14 @@ BDEPEND="${DEPEND}
 # In prefix-stack, these dependencies actually are the @system set,
 # as we rely on the base prefix anyway for package management,
 # which should have a proper @system set.
-# Strictly speaking, only baselayout and gcc-config are necessary
-# (and pthreads4w for Winnt), but it is easier for now to install
-# elt-patches, gentoo-functions and gnuconfig as well, instead of
-# fixing all uses that expect them in EPREFIX rather than BROOT.
+# Strictly speaking, only baselayout and gcc-config are necessary, but
+# it is easier for now to install elt-patches, gentoo-functions and
+# gnuconfig as well, instead of fixing all uses that expect them in
+# EPREFIX rather than BROOT.
 # See also: pkg_preinst
 RDEPEND="${DEPEND}
 	prefix-stack? (
 		sys-devel/gcc-config
-		elibc_Winnt? (
-			dev-libs/pthreads4w
-		)
 		app-portage/elt-patches
 		sys-apps/gentoo-functions
 		sys-devel/gnuconfig
