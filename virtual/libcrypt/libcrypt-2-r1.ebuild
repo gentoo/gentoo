@@ -16,5 +16,4 @@ RDEPEND="
 		elibc_glibc? ( sys-libs/libxcrypt[system(-),static-libs(-)?,${MULTILIB_USEDEP}] )
 		elibc_musl? ( sys-libs/libxcrypt[system(-),static-libs(-)?] )
 	)
-	elibc_Cygwin? ( sys-libs/cygwin-crypt )
 "
