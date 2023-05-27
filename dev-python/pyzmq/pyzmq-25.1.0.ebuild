@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 # TODO: Find out exactly where this error comes from
 # error: '<' not supported between instances of 'str' and 'int'
-#DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 
@@ -52,6 +52,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-23.2.0-libdir.patch
+	# fix build_ext -j... invocation used by PEP517 build
+	# https://github.com/zeromq/pyzmq/pull/1872
+	"${FILESDIR}"/${P}-build_ext.patch
 )
 
 EPYTEST_DESELECT=(
@@ -88,6 +91,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	cd "${BUILD_DIR}/lib" || die
+	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	epytest -p no:flaky
 }
