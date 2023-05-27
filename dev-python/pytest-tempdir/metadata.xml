@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-tempdir</remote-id>
+		<remote-id type="github">saltstack/pytest-tempdir</remote-id>
 	</upstream>
 </pkgmetadata>
