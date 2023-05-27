@@ -34,8 +34,10 @@ SDIR=$([[ ${PV} == *_rc* ]]   && echo /test
 	 [[ ${PV} == *.*.*.* ]] && echo /fixes)
 COMM_URI="https://downloads.exim.org/exim4${SDIR}"
 
+GPV="r0"
 DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
 SRC_URI="${COMM_URI}/${P//_rc/-RC}.tar.xz
+	https://dev.gentoo.org/~grobian/distfiles/${P}-gentoo-patches-${GPV}.tar.xz
 	mirror://gentoo/system_filter.exim.gz
 	doc? ( ${COMM_URI}/${PN}-pdf-${PV//_rc/-RC}.tar.xz )"
 HOMEPAGE="https://www.exim.org/"
@@ -116,20 +118,23 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.95-localscan_dlopen.patch
-	eapply     "${FILESDIR}"/exim-4.96-rewrite-malformed-addr-fix.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-spf-memory-error-fix.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-regex-use-after-free.patch # upstr
-	eapply -p2 "${FILESDIR}"/exim-4.96-dmarc_use_after_free.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-deamon-startup-fix.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-openssl-verify-ocsp.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-openssl-double-expansion.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-recursion-dns_again.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-openssl-tls_eccurve-setting.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-openssl-tls_eccurve-lt-3.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-openssl-bad-alpn.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-dane-dns_again.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-expansion-crash.patch # upstr
-	eapply     "${FILESDIR}"/exim-4.96-transport-crash.patch # upstr
+
+	# Upstream post-release fixes :(
+	local GPVDIR=${WORKDIR}/${P}-gentoo-patches-${GPV}
+	eapply     "${GPVDIR}"/exim-4.96-rewrite-malformed-addr-fix.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-spf-memory-error-fix.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-regex-use-after-free.patch # upstr
+	eapply -p2 "${GPVDIR}"/exim-4.96-dmarc_use_after_free.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-deamon-startup-fix.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-openssl-verify-ocsp.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-openssl-double-expansion.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-recursion-dns_again.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-openssl-tls_eccurve-setting.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-openssl-tls_eccurve-lt-3.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-openssl-bad-alpn.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-dane-dns_again.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-expansion-crash.patch # upstr
+	eapply     "${GPVDIR}"/exim-4.96-transport-crash.patch # upstr
 
 	# oddity, they disable berkdb as hack, and then throw an error when
 	# berkdb isn't enabled
