@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit desktop toolchain-funcs
 
 DESCRIPTION="A minimalist, no frills window manager for X"
-HOMEPAGE="http://www.6809.org.uk/evilwm/"
-SRC_URI="http://www.6809.org.uk/evilwm/${P}.tar.gz"
+HOMEPAGE="https://www.6809.org.uk/evilwm/"
+SRC_URI="https://www.6809.org.uk/evilwm/${P}.tar.gz"
 
 LICENSE="MIT 9wm"
 SLOT="0"
@@ -23,7 +24,6 @@ src_prepare() {
 	default
 	sed -e 's/^#define DEF_FONT.*/#define DEF_FONT "fixed"/' \
 		-i evilwm.h || die "sed font failed"
-	sed -e '/Encoding/d' -i ${PN}.desktop || die
 }
 
 src_compile() {
