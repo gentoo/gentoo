@@ -9,14 +9,12 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 
 # explicitly depend on SLOT 2.2 of glibc, because it sets
 # a different SLOT for cross-compiling
-# Cygwin uses newlib, which lacks libcrypt
 RDEPEND="
 	!prefix-guest? (
 		elibc_glibc? ( sys-libs/glibc:2.2 )
 		elibc_musl? ( sys-libs/musl )
 	)
 	prefix-guest? (
-		elibc_Cygwin? ( sys-libs/cygwin-crypt )
 		!sys-libs/glibc
 		!sys-libs/musl
 	)"
