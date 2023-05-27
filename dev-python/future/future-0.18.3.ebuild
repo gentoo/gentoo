@@ -35,7 +35,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.18.2-py3.10.patch
 )
 
-
 EPYTEST_DESELECT=(
 	# tests requiring network access
 	tests/test_future/test_requests.py
