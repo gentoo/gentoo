@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -89,11 +89,14 @@ python_test() {
 		'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3-64-bin-]'
 		'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3--bin-]'
 	)
-	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+	[[ ${EPYTHON} == python3.1[12] ]] && EPYTEST_DESELECT+=(
 		# TODO
 		tests/unit/discovery/py_info/test_py_info.py::test_py_info_setuptools
 		tests/unit/discovery/py_info/test_py_info.py::test_custom_venv_install_scheme_is_prefered
 		tests/unit/discovery/py_info/test_py_info.py::test_fallback_existent_system_executable
+	)
+	[[ ${EPYTHON} == python3.12 ]] && EPYTEST_DESELECT+=(
+		tests/unit/create/via_global_ref/test_build_c_ext.py
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
