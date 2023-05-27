@@ -5,7 +5,7 @@ EAPI=7
 
 inherit mount-boot
 
-DESCRIPTION="Stand alone memory testing software for x86 computers"
+DESCRIPTION="Stand alone memory testing software for x86 EFI hardware"
 HOMEPAGE="http://www.memtest86.com/"
 SRC_URI="https://www.memtest86.com/downloads/memtest86-usb.zip -> ${P}.zip"
 
