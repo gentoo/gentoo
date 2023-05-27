@@ -1828,6 +1828,10 @@ distutils-r1_run_phase() {
 
 	if [[ ${DISTUTILS_EXT} ]]; then
 		local -x CPPFLAGS="${CPPFLAGS} $(usex debug '-UNDEBUG' '-DNDEBUG')"
+		# always generate .c files from .pyx files to ensure we get latest
+		# bug fixes from Cython (this works only when setup.py is using
+		# cythonize() but it's better than nothing)
+		local -x CYTHON_FORCE_REGEN=1
 	fi
 
 	# How to build Python modules in different worlds...
