@@ -202,12 +202,6 @@ src_configure() {
 		$(use_with guile)
 	)
 
-	if use sparc-solaris || use x86-solaris ; then
-		# Disable largefile support
-		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
-		myconf+=( --disable-largefile )
-	fi
-
 	# source-highlight is detected with pkg-config: bug #716558
 	export ac_cv_path_pkg_config_prog_path="$(tc-getPKG_CONFIG)"
 
