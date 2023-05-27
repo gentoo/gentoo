@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,8 +59,6 @@ get_target() {
 		echo "macosx-ppc32-altivec"
 	elif use x64-macos; then
 		echo "macosx-x86-64"
-	elif use x86-solaris; then
-		echo "solaris-x86-any"
 	else
 		echo "generic"
 	fi
