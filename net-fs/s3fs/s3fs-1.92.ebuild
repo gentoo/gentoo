@@ -46,7 +46,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 
-	sed -i 's/-D_FORTIFY_SOURCE=2//' configure.ac
+	sed -i 's/-D_FORTIFY_SOURCE=2//' configure.ac || die
 
 	eautoreconf
 }
