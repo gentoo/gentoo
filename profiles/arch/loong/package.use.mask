@@ -1,6 +1,11 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2023-05-27)
+# Newer sd-boot does not use gnuefi.
+>=sys-apps/systemd-254 -boot
+>=sys-apps/systemd-utils-254 -boot
+
 # WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
 # dev-python/pyopengl fails tests
 dev-python/sympy opengl
@@ -52,8 +57,8 @@ sys-apps/fwupd flashrom
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-boot/gnu-efi upstream hasn't merged the loong port yet
 sys-apps/fwupd uefi
-sys-apps/systemd gnuefi
-sys-apps/systemd-utils boot
+<sys-apps/systemd-254 gnuefi
+<sys-apps/systemd-utils-254 boot
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # The loong port of sys-boot/grub:2 isn't upstreamed yet.

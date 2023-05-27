@@ -390,8 +390,8 @@ media-sound/pulseaudio-daemon ofono-headset
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd -gnuefi
-sys-apps/systemd-utils -boot
+<sys-apps/systemd-254 -gnuefi
+<sys-apps/systemd-utils-254 -boot
 
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108

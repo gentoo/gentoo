@@ -1,6 +1,11 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2023-05-27)
+# sd-boot should work here.
+sys-apps/systemd -boot -gnuefi
+sys-apps/systemd-utils -boot
+
 # Sam James <sam@gentoo.org> (2023-05-10)
 # sys-cluster/ceph not keyworded here
 sys-block/tgt rbd
