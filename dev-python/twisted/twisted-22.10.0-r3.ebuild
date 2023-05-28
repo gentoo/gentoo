@@ -84,6 +84,10 @@ BDEPEND="
 PATCHES=(
 	# https://twistedmatrix.com/trac/ticket/10200
 	"${FILESDIR}/${PN}-22.1.0-force-gtk3.patch"
+
+	"${FILESDIR}/${PN}-22.10.0-python3.11-tests.patch"
+	"${FILESDIR}/${PN}-22.10.0-time.patch"
+	"${FILESDIR}/${PN}-22.10.0-sendmail.patch"
 )
 
 python_prepare_all() {
