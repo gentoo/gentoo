@@ -400,7 +400,7 @@ eautoconf() {
 		*)
 				# Move configure file to the new location only on newer EAPIs to ensure
 				# checks are done rather than retroactively breaking ebuilds.
-				eqawarn "Moving configure.in to configure.ac (bug #426262)"
+				einfo "Moving configure.in to configure.ac (bug #426262)"
 				mv configure.{in,ac} || die
 			;;
 		esac
