@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 inherit gnome2-utils meson python-single-r1 xdg
 
-DESCRIPTION="Chirurgien helps to understand and manipulate file formats"
+DESCRIPTION="Simple game launcher written in Python using GTK4 and Libadwaita"
 HOMEPAGE="https://github.com/kra-mo/cartridges/"
 SRC_URI="https://github.com/kra-mo/${PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
