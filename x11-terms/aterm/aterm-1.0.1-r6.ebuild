@@ -59,7 +59,6 @@ src_configure() {
 
 	case "${CHOST}" in
 		*-darwin*) myconf="${myconf} --enable-wtmp" ;;
-		*-interix*) ;;
 		*) myconf="${myconf} --enable-utmp --enable-wtmp"
 	esac
 
