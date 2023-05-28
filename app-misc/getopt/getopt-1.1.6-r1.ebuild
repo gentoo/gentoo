@@ -35,10 +35,6 @@ src_compile() {
 		has_version sys-libs/glibc || libintl="-lintl"
 	fi
 
-	[[ ${CHOST} == *-aix* ]] && libcgetopt=0
-	[[ ${CHOST} == *-irix* ]] && libcgetopt=0
-	[[ ${CHOST} == *-interix* ]] && libcgetopt=0
-
 	emake CC="$(tc-getCC)" prefix="${EPREFIX}/usr" \
 		LIBCGETOPT=${libcgetopt} \
 		WITHOUT_GETTEXT=${nogettext} LIBINTL=${libintl} \
@@ -49,12 +45,6 @@ src_install() {
 	use nls && emake prefix="${EPREFIX}/usr" DESTDIR="${D}" install_po
 
 	newbin getopt getopt-long
-
-	# at least on interix, the system getopt is ... broken...
-	# util-linux, which would provide the getopt binary, does not build &
-	# install on interix/prefix, so, this has to provide it.
-	[[ ${CHOST} == *-interix* ]] && \
-		dosym getopt-long /usr/bin/getopt
 
 	newman getopt.1 getopt-long.1
 
