@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2023-05-28)
+# Both versions are affected by notable regressions, i.e. 2.8.5
+# leaves 100% cpu processes behind, and 2.8.6 has broken positioning
+# and scaling. Use 2.8.4 unless need the sway/hyprland support.
+# Under active development and releases are a bit experimental.
+=media-gfx/ueberzugpp-2.8.5
+=media-gfx/ueberzugpp-2.8.6
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-05-28)
 # Causes only problems, at negligible gain. Removal in 30days.
 # Bugs 880573, 864157, 885471, 870454, 884571
