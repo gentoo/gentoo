@@ -1,0 +1,15 @@
+Please reffer https://www.openembedded.org/pipermail/openembedded-core/2011-July/044923.html
+--- a/src/wdm/util.c
++++ b/src/wdm/util.c
+@@ -113,8 +113,10 @@ CleanUpChild (void)
+ #ifdef CSRG_BASED
+ 	setsid();
+ #else
++	sigset_t sigmask;
+ 	setpgid (0, getpid ());
+-	sigsetmask (0);
++	sigemptyset(&sigmask);
++	sigprocmask(SIG_SETMASK, &sigmask, NULL);
+ #endif
+ #ifdef SIGCHLD
+ 	(void) Signal (SIGCHLD, SIG_DFL);
