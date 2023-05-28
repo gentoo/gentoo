@@ -1,0 +1,654 @@
+https://bugs.gentoo.org/903607
+https://github.com/rust-lang/libc/issues/2934
+https://github.com/rust-lang/libc/pull/2935
+https://github.com/rust-lang/libc/commit/1e8c55cbed0b6e05a6c5063baa1fea50cad49269
+
+--- a/src/unix/linux_like/linux/mod.rs
++++ b/src/unix/linux_like/linux/mod.rs
+@@ -58,11 +58,6 @@ impl ::Clone for fpos64_t {
+ }
+ 
+ s! {
+-    pub struct rlimit64 {
+-        pub rlim_cur: rlim64_t,
+-        pub rlim_max: rlim64_t,
+-    }
+-
+     pub struct glob_t {
+         pub gl_pathc: ::size_t,
+         pub gl_pathv: *mut *mut c_char,
+@@ -625,6 +620,11 @@ s! {
+         pub flag: *mut ::c_int,
+         pub val: ::c_int,
+     }
++
++    pub struct rlimit64 {
++        pub rlim_cur: rlim64_t,
++        pub rlim_max: rlim64_t,
++    }
+ }
+ 
+ s_no_extra_traits! {
+@@ -643,14 +643,6 @@ s_no_extra_traits! {
+         pub d_name: [::c_char; 256],
+     }
+ 
+-    pub struct dirent64 {
+-        pub d_ino: ::ino64_t,
+-        pub d_off: ::off64_t,
+-        pub d_reclen: ::c_ushort,
+-        pub d_type: ::c_uchar,
+-        pub d_name: [::c_char; 256],
+-    }
+-
+     pub struct sockaddr_alg {
+         pub salg_family: ::sa_family_t,
+         pub salg_type: [::c_uchar; 14],
+@@ -738,6 +730,14 @@ s_no_extra_traits! {
+         #[cfg(not(libc_union))]
+         pub ifr_ifru: ::sockaddr,
+     }
++
++    pub struct dirent64 {
++        pub d_ino: ::ino64_t,
++        pub d_off: ::off64_t,
++        pub d_reclen: ::c_ushort,
++        pub d_type: ::c_uchar,
++        pub d_name: [::c_char; 256],
++    }
+ }
+ 
+ s_no_extra_traits! {
+@@ -3872,21 +3872,8 @@ extern "C" {
+     pub fn mprotect(addr: *mut ::c_void, len: ::size_t, prot: ::c_int) -> ::c_int;
+     pub fn __errno_location() -> *mut ::c_int;
+ 
+-    pub fn fopen64(filename: *const c_char, mode: *const c_char) -> *mut ::FILE;
+-    pub fn freopen64(
+-        filename: *const c_char,
+-        mode: *const c_char,
+-        file: *mut ::FILE,
+-    ) -> *mut ::FILE;
+-    pub fn tmpfile64() -> *mut ::FILE;
+-    pub fn fgetpos64(stream: *mut ::FILE, ptr: *mut fpos64_t) -> ::c_int;
+-    pub fn fsetpos64(stream: *mut ::FILE, ptr: *const fpos64_t) -> ::c_int;
+-    pub fn fseeko64(stream: *mut ::FILE, offset: ::off64_t, whence: ::c_int) -> ::c_int;
+-    pub fn ftello64(stream: *mut ::FILE) -> ::off64_t;
+     pub fn fallocate(fd: ::c_int, mode: ::c_int, offset: ::off_t, len: ::off_t) -> ::c_int;
+-    pub fn fallocate64(fd: ::c_int, mode: ::c_int, offset: ::off64_t, len: ::off64_t) -> ::c_int;
+     pub fn posix_fallocate(fd: ::c_int, offset: ::off_t, len: ::off_t) -> ::c_int;
+-    pub fn posix_fallocate64(fd: ::c_int, offset: ::off64_t, len: ::off64_t) -> ::c_int;
+     pub fn readahead(fd: ::c_int, offset: ::off64_t, count: ::size_t) -> ::ssize_t;
+     pub fn getxattr(
+         path: *const c_char,
+@@ -4203,12 +4190,6 @@ extern "C" {
+         offset: *mut off_t,
+         count: ::size_t,
+     ) -> ::ssize_t;
+-    pub fn sendfile64(
+-        out_fd: ::c_int,
+-        in_fd: ::c_int,
+-        offset: *mut off64_t,
+-        count: ::size_t,
+-    ) -> ::ssize_t;
+     pub fn sigsuspend(mask: *const ::sigset_t) -> ::c_int;
+     pub fn getgrgid_r(
+         gid: ::gid_t,
+@@ -4460,6 +4441,40 @@ extern "C" {
+     ) -> ::c_int;
+ }
+ 
++// LFS64 extensions
++//
++// * musl has 64-bit versions only so aliases the LFS64 symbols to the standard ones
++cfg_if! {
++    if #[cfg(not(target_env = "musl"))] {
++        extern "C" {
++            pub fn fallocate64(
++                fd: ::c_int,
++                mode: ::c_int,
++                offset: ::off64_t,
++                len: ::off64_t
++            ) -> ::c_int;
++            pub fn fgetpos64(stream: *mut ::FILE, ptr: *mut fpos64_t) -> ::c_int;
++            pub fn fopen64(filename: *const c_char, mode: *const c_char) -> *mut ::FILE;
++            pub fn freopen64(
++                filename: *const c_char,
++                mode: *const c_char,
++                file: *mut ::FILE,
++            ) -> *mut ::FILE;
++            pub fn fseeko64(stream: *mut ::FILE, offset: ::off64_t, whence: ::c_int) -> ::c_int;
++            pub fn fsetpos64(stream: *mut ::FILE, ptr: *const fpos64_t) -> ::c_int;
++            pub fn ftello64(stream: *mut ::FILE) -> ::off64_t;
++            pub fn posix_fallocate64(fd: ::c_int, offset: ::off64_t, len: ::off64_t) -> ::c_int;
++            pub fn sendfile64(
++                out_fd: ::c_int,
++                in_fd: ::c_int,
++                offset: *mut off64_t,
++                count: ::size_t,
++            ) -> ::ssize_t;
++            pub fn tmpfile64() -> *mut ::FILE;
++        }
++    }
++}
++
+ cfg_if! {
+     if #[cfg(target_env = "uclibc")] {
+         mod uclibc;
+--- a/src/unix/linux_like/linux/musl/b32/riscv32/mod.rs
++++ b/src/unix/linux_like/linux/musl/b32/riscv32/mod.rs
+@@ -184,22 +184,6 @@ s! {
+         __pad1: ::c_ulong,
+         __pad2: ::c_ulong,
+     }
+-
+-    pub struct flock {
+-        pub l_type: ::c_short,
+-        pub l_whence: ::c_short,
+-        pub l_start: ::off_t,
+-        pub l_len: ::off_t,
+-        pub l_pid: ::pid_t,
+-    }
+-
+-    pub struct flock64 {
+-        pub l_type: ::c_short,
+-        pub l_whence: ::c_short,
+-        pub l_start: ::off64_t,
+-        pub l_len: ::off64_t,
+-        pub l_pid: ::pid_t,
+-    }
+ }
+ 
+ //pub const RLIM_INFINITY: ::rlim_t = !0;
+--- a/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs
++++ b/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs
+@@ -173,22 +173,6 @@ s! {
+         __unused5: ::c_ulong,
+         __unused6: ::c_ulong,
+     }
+-
+-    pub struct flock {
+-        pub l_type: ::c_short,
+-        pub l_whence: ::c_short,
+-        pub l_start: ::off_t,
+-        pub l_len: ::off_t,
+-        pub l_pid: ::pid_t,
+-    }
+-
+-    pub struct flock64 {
+-        pub l_type: ::c_short,
+-        pub l_whence: ::c_short,
+-        pub l_start: ::off64_t,
+-        pub l_len: ::off64_t,
+-        pub l_pid: ::pid_t,
+-    }
+ }
+ 
+ pub const SYS_read: ::c_long = 63;
+--- /dev/null
++++ b/src/unix/linux_like/linux/musl/lfs64.rs
+@@ -0,0 +1,251 @@
++#[inline]
++pub unsafe extern "C" fn creat64(path: *const ::c_char, mode: ::mode_t) -> ::c_int {
++    ::creat(path, mode)
++}
++
++#[inline]
++pub unsafe extern "C" fn fallocate64(
++    fd: ::c_int,
++    mode: ::c_int,
++    offset: ::off64_t,
++    len: ::off64_t,
++) -> ::c_int {
++    ::fallocate(fd, mode, offset, len)
++}
++
++#[inline]
++pub unsafe extern "C" fn fgetpos64(stream: *mut ::FILE, pos: *mut ::fpos64_t) -> ::c_int {
++    ::fgetpos(stream, pos as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn fopen64(pathname: *const ::c_char, mode: *const ::c_char) -> *mut ::FILE {
++    ::fopen(pathname, mode)
++}
++
++#[inline]
++pub unsafe extern "C" fn freopen64(
++    pathname: *const ::c_char,
++    mode: *const ::c_char,
++    stream: *mut ::FILE,
++) -> *mut ::FILE {
++    ::freopen(pathname, mode, stream)
++}
++
++#[inline]
++pub unsafe extern "C" fn fseeko64(
++    stream: *mut ::FILE,
++    offset: ::off64_t,
++    whence: ::c_int,
++) -> ::c_int {
++    ::fseeko(stream, offset, whence)
++}
++
++#[inline]
++pub unsafe extern "C" fn fsetpos64(stream: *mut ::FILE, pos: *const ::fpos64_t) -> ::c_int {
++    ::fsetpos(stream, pos as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn fstat64(fildes: ::c_int, buf: *mut ::stat64) -> ::c_int {
++    ::fstat(fildes, buf as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn fstatat64(
++    fd: ::c_int,
++    path: *const ::c_char,
++    buf: *mut ::stat64,
++    flag: ::c_int,
++) -> ::c_int {
++    ::fstatat(fd, path, buf as *mut _, flag)
++}
++
++#[inline]
++pub unsafe extern "C" fn fstatfs64(fd: ::c_int, buf: *mut ::statfs64) -> ::c_int {
++    ::fstatfs(fd, buf as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn fstatvfs64(fd: ::c_int, buf: *mut ::statvfs64) -> ::c_int {
++    ::fstatvfs(fd, buf as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn ftello64(stream: *mut ::FILE) -> ::off64_t {
++    ::ftello(stream)
++}
++
++#[inline]
++pub unsafe extern "C" fn ftruncate64(fd: ::c_int, length: ::off64_t) -> ::c_int {
++    ::ftruncate(fd, length)
++}
++
++#[inline]
++pub unsafe extern "C" fn getrlimit64(resource: ::c_int, rlim: *mut ::rlimit64) -> ::c_int {
++    ::getrlimit(resource, rlim as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn lseek64(fd: ::c_int, offset: ::off64_t, whence: ::c_int) -> ::off64_t {
++    ::lseek(fd, offset, whence)
++}
++
++#[inline]
++pub unsafe extern "C" fn lstat64(path: *const ::c_char, buf: *mut ::stat64) -> ::c_int {
++    ::lstat(path, buf as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn mmap64(
++    addr: *mut ::c_void,
++    length: ::size_t,
++    prot: ::c_int,
++    flags: ::c_int,
++    fd: ::c_int,
++    offset: ::off64_t,
++) -> *mut ::c_void {
++    ::mmap(addr, length, prot, flags, fd, offset)
++}
++
++#[inline]
++pub unsafe extern "C" fn open64(
++    pathname: *const ::c_char,
++    flags: ::c_int,
++    mode: ::mode_t,
++) -> ::c_int {
++    ::open(pathname, flags, mode)
++}
++
++#[inline]
++pub unsafe extern "C" fn openat64(
++    dirfd: ::c_int,
++    pathname: *const ::c_char,
++    flags: ::c_int,
++    mode: ::mode_t,
++) -> ::c_int {
++    ::openat(dirfd, pathname, flags, mode)
++}
++
++#[inline]
++pub unsafe extern "C" fn posix_fadvise64(
++    fd: ::c_int,
++    offset: ::off64_t,
++    len: ::off64_t,
++    advice: ::c_int,
++) -> ::c_int {
++    ::posix_fadvise(fd, offset, len, advice)
++}
++
++#[inline]
++pub unsafe extern "C" fn posix_fallocate64(
++    fd: ::c_int,
++    offset: ::off64_t,
++    len: ::off64_t,
++) -> ::c_int {
++    ::posix_fallocate(fd, offset, len)
++}
++
++#[inline]
++pub unsafe extern "C" fn pread64(
++    fd: ::c_int,
++    buf: *mut ::c_void,
++    count: ::size_t,
++    offset: ::off64_t,
++) -> ::ssize_t {
++    ::pread(fd, buf, count, offset)
++}
++
++#[inline]
++pub unsafe extern "C" fn preadv64(
++    fd: ::c_int,
++    iov: *const ::iovec,
++    iovcnt: ::c_int,
++    offset: ::off64_t,
++) -> ::ssize_t {
++    ::preadv(fd, iov, iovcnt, offset)
++}
++
++#[inline]
++pub unsafe extern "C" fn prlimit64(
++    pid: ::pid_t,
++    resource: ::c_int,
++    new_limit: *const ::rlimit64,
++    old_limit: *mut ::rlimit64,
++) -> ::c_int {
++    ::prlimit(pid, resource, new_limit as *mut _, old_limit as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn pwrite64(
++    fd: ::c_int,
++    buf: *const ::c_void,
++    count: ::size_t,
++    offset: ::off64_t,
++) -> ::ssize_t {
++    ::pwrite(fd, buf, count, offset)
++}
++
++#[inline]
++pub unsafe extern "C" fn pwritev64(
++    fd: ::c_int,
++    iov: *const ::iovec,
++    iovcnt: ::c_int,
++    offset: ::off64_t,
++) -> ::ssize_t {
++    ::pwritev(fd, iov, iovcnt, offset)
++}
++
++#[inline]
++pub unsafe extern "C" fn readdir64(dirp: *mut ::DIR) -> *mut ::dirent64 {
++    ::readdir(dirp) as *mut _
++}
++
++#[inline]
++pub unsafe extern "C" fn readdir64_r(
++    dirp: *mut ::DIR,
++    entry: *mut ::dirent64,
++    result: *mut *mut ::dirent64,
++) -> ::c_int {
++    ::readdir_r(dirp, entry as *mut _, result as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn sendfile64(
++    out_fd: ::c_int,
++    in_fd: ::c_int,
++    offset: *mut ::off64_t,
++    count: ::size_t,
++) -> ::ssize_t {
++    ::sendfile(out_fd, in_fd, offset, count)
++}
++
++#[inline]
++pub unsafe extern "C" fn setrlimit64(resource: ::c_int, rlim: *const ::rlimit64) -> ::c_int {
++    ::setrlimit(resource, rlim as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn stat64(pathname: *const ::c_char, statbuf: *mut ::stat64) -> ::c_int {
++    ::stat(pathname, statbuf as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn statfs64(pathname: *const ::c_char, buf: *mut ::statfs64) -> ::c_int {
++    ::statfs(pathname, buf as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn statvfs64(path: *const ::c_char, buf: *mut ::statvfs64) -> ::c_int {
++    ::statvfs(path, buf as *mut _)
++}
++
++#[inline]
++pub unsafe extern "C" fn tmpfile64() -> *mut ::FILE {
++    ::tmpfile()
++}
++
++#[inline]
++pub unsafe extern "C" fn truncate64(path: *const ::c_char, length: ::off64_t) -> ::c_int {
++    ::truncate(path, length)
++}
+--- a/src/unix/linux_like/linux/musl/mod.rs
++++ b/src/unix/linux_like/linux/musl/mod.rs
+@@ -22,8 +22,6 @@ pub type fsblkcnt_t = ::c_ulonglong;
+ pub type fsfilcnt_t = ::c_ulonglong;
+ pub type rlim_t = ::c_ulonglong;
+ 
+-pub type flock64 = flock;
+-
+ cfg_if! {
+     if #[cfg(doc)] {
+         // Used in `linux::arch` to define ioctl constants.
+@@ -189,6 +187,14 @@ s! {
+         pub l_pid: ::pid_t,
+     }
+ 
++    pub struct flock64 {
++        pub l_type: ::c_short,
++        pub l_whence: ::c_short,
++        pub l_start: ::off64_t,
++        pub l_len: ::off64_t,
++        pub l_pid: ::pid_t,
++    }
++
+     pub struct regex_t {
+         __re_nsub: ::size_t,
+         __opaque: *mut ::c_void,
+@@ -709,8 +715,6 @@ extern "C" {
+         timeout: *mut ::timespec,
+     ) -> ::c_int;
+ 
+-    pub fn getrlimit64(resource: ::c_int, rlim: *mut ::rlimit64) -> ::c_int;
+-    pub fn setrlimit64(resource: ::c_int, rlim: *const ::rlimit64) -> ::c_int;
+     pub fn getrlimit(resource: ::c_int, rlim: *mut ::rlimit) -> ::c_int;
+     pub fn setrlimit(resource: ::c_int, rlim: *const ::rlimit) -> ::c_int;
+     pub fn prlimit(
+@@ -719,13 +723,6 @@ extern "C" {
+         new_limit: *const ::rlimit,
+         old_limit: *mut ::rlimit,
+     ) -> ::c_int;
+-    pub fn prlimit64(
+-        pid: ::pid_t,
+-        resource: ::c_int,
+-        new_limit: *const ::rlimit64,
+-        old_limit: *mut ::rlimit64,
+-    ) -> ::c_int;
+-
+     pub fn ioctl(fd: ::c_int, request: ::c_int, ...) -> ::c_int;
+     pub fn gettimeofday(tp: *mut ::timeval, tz: *mut ::c_void) -> ::c_int;
+     pub fn ptrace(request: ::c_int, ...) -> ::c_long;
+@@ -774,6 +771,10 @@ extern "C" {
+     pub fn basename(path: *mut ::c_char) -> *mut ::c_char;
+ }
+ 
++// Alias <foo> to <foo>64 to mimic glibc's LFS64 support
++mod lfs64;
++pub use self::lfs64::*;
++
+ cfg_if! {
+     if #[cfg(any(target_arch = "x86_64",
+                  target_arch = "aarch64",
+--- a/src/unix/linux_like/mod.rs
++++ b/src/unix/linux_like/mod.rs
+@@ -1653,20 +1653,9 @@ extern "C" {
+     pub fn setgroups(ngroups: ::size_t, ptr: *const ::gid_t) -> ::c_int;
+     pub fn pipe2(fds: *mut ::c_int, flags: ::c_int) -> ::c_int;
+     pub fn statfs(path: *const ::c_char, buf: *mut statfs) -> ::c_int;
+-    pub fn statfs64(path: *const ::c_char, buf: *mut statfs64) -> ::c_int;
+     pub fn fstatfs(fd: ::c_int, buf: *mut statfs) -> ::c_int;
+-    pub fn fstatfs64(fd: ::c_int, buf: *mut statfs64) -> ::c_int;
+-    pub fn statvfs64(path: *const ::c_char, buf: *mut statvfs64) -> ::c_int;
+-    pub fn fstatvfs64(fd: ::c_int, buf: *mut statvfs64) -> ::c_int;
+     pub fn memrchr(cx: *const ::c_void, c: ::c_int, n: ::size_t) -> *mut ::c_void;
+-
+     pub fn posix_fadvise(fd: ::c_int, offset: ::off_t, len: ::off_t, advise: ::c_int) -> ::c_int;
+-    pub fn posix_fadvise64(
+-        fd: ::c_int,
+-        offset: ::off64_t,
+-        len: ::off64_t,
+-        advise: ::c_int,
+-    ) -> ::c_int;
+     pub fn futimens(fd: ::c_int, times: *const ::timespec) -> ::c_int;
+     pub fn utimensat(
+         dirfd: ::c_int,
+@@ -1678,43 +1667,6 @@ extern "C" {
+     pub fn freelocale(loc: ::locale_t);
+     pub fn newlocale(mask: ::c_int, locale: *const ::c_char, base: ::locale_t) -> ::locale_t;
+     pub fn uselocale(loc: ::locale_t) -> ::locale_t;
+-    pub fn creat64(path: *const c_char, mode: mode_t) -> ::c_int;
+-    pub fn fstat64(fildes: ::c_int, buf: *mut stat64) -> ::c_int;
+-    pub fn fstatat64(
+-        dirfd: ::c_int,
+-        pathname: *const c_char,
+-        buf: *mut stat64,
+-        flags: ::c_int,
+-    ) -> ::c_int;
+-    pub fn ftruncate64(fd: ::c_int, length: off64_t) -> ::c_int;
+-    pub fn lseek64(fd: ::c_int, offset: off64_t, whence: ::c_int) -> off64_t;
+-    pub fn lstat64(path: *const c_char, buf: *mut stat64) -> ::c_int;
+-    pub fn mmap64(
+-        addr: *mut ::c_void,
+-        len: ::size_t,
+-        prot: ::c_int,
+-        flags: ::c_int,
+-        fd: ::c_int,
+-        offset: off64_t,
+-    ) -> *mut ::c_void;
+-    pub fn open64(path: *const c_char, oflag: ::c_int, ...) -> ::c_int;
+-    pub fn openat64(fd: ::c_int, path: *const c_char, oflag: ::c_int, ...) -> ::c_int;
+-    pub fn pread64(fd: ::c_int, buf: *mut ::c_void, count: ::size_t, offset: off64_t) -> ::ssize_t;
+-    pub fn pwrite64(
+-        fd: ::c_int,
+-        buf: *const ::c_void,
+-        count: ::size_t,
+-        offset: off64_t,
+-    ) -> ::ssize_t;
+-    pub fn readdir64(dirp: *mut ::DIR) -> *mut ::dirent64;
+-    pub fn readdir64_r(
+-        dirp: *mut ::DIR,
+-        entry: *mut ::dirent64,
+-        result: *mut *mut ::dirent64,
+-    ) -> ::c_int;
+-    pub fn stat64(path: *const c_char, buf: *mut stat64) -> ::c_int;
+-    pub fn truncate64(path: *const c_char, length: off64_t) -> ::c_int;
+-
+     pub fn mknodat(
+         dirfd: ::c_int,
+         pathname: *const ::c_char,
+@@ -1784,8 +1736,70 @@ extern "C" {
+     pub fn uname(buf: *mut ::utsname) -> ::c_int;
+ }
+ 
++// LFS64 extensions
++//
++// * musl has 64-bit versions only so aliases the LFS64 symbols to the standard ones
++// * ulibc doesn't have preadv64/pwritev64
+ cfg_if! {
+-    if #[cfg(not(target_env = "uclibc"))] {
++    if #[cfg(not(target_env = "musl"))] {
++        extern "C" {
++            pub fn fstatfs64(fd: ::c_int, buf: *mut statfs64) -> ::c_int;
++            pub fn statvfs64(path: *const ::c_char, buf: *mut statvfs64) -> ::c_int;
++            pub fn fstatvfs64(fd: ::c_int, buf: *mut statvfs64) -> ::c_int;
++            pub fn statfs64(path: *const ::c_char, buf: *mut statfs64) -> ::c_int;
++            pub fn creat64(path: *const c_char, mode: mode_t) -> ::c_int;
++            pub fn fstat64(fildes: ::c_int, buf: *mut stat64) -> ::c_int;
++            pub fn fstatat64(
++                dirfd: ::c_int,
++                pathname: *const c_char,
++                buf: *mut stat64,
++                flags: ::c_int,
++            ) -> ::c_int;
++            pub fn ftruncate64(fd: ::c_int, length: off64_t) -> ::c_int;
++            pub fn lseek64(fd: ::c_int, offset: off64_t, whence: ::c_int) -> off64_t;
++            pub fn lstat64(path: *const c_char, buf: *mut stat64) -> ::c_int;
++            pub fn mmap64(
++                addr: *mut ::c_void,
++                len: ::size_t,
++                prot: ::c_int,
++                flags: ::c_int,
++                fd: ::c_int,
++                offset: off64_t,
++            ) -> *mut ::c_void;
++            pub fn open64(path: *const c_char, oflag: ::c_int, ...) -> ::c_int;
++            pub fn openat64(fd: ::c_int, path: *const c_char, oflag: ::c_int, ...) -> ::c_int;
++            pub fn posix_fadvise64(
++                fd: ::c_int,
++                offset: ::off64_t,
++                len: ::off64_t,
++                advise: ::c_int,
++            ) -> ::c_int;
++            pub fn pread64(
++                fd: ::c_int,
++                buf: *mut ::c_void,
++                count: ::size_t,
++                offset: off64_t
++            ) -> ::ssize_t;
++            pub fn pwrite64(
++                fd: ::c_int,
++                buf: *const ::c_void,
++                count: ::size_t,
++                offset: off64_t,
++            ) -> ::ssize_t;
++            pub fn readdir64(dirp: *mut ::DIR) -> *mut ::dirent64;
++            pub fn readdir64_r(
++                dirp: *mut ::DIR,
++                entry: *mut ::dirent64,
++                result: *mut *mut ::dirent64,
++            ) -> ::c_int;
++            pub fn stat64(path: *const c_char, buf: *mut stat64) -> ::c_int;
++            pub fn truncate64(path: *const c_char, length: off64_t) -> ::c_int;
++        }
++    }
++}
++
++cfg_if! {
++    if #[cfg(not(any(target_env = "uclibc", target_env = "musl")))] {
+         extern "C" {
+             pub fn preadv64(
+                 fd: ::c_int,
+@@ -1799,6 +1813,13 @@ cfg_if! {
+                 iovcnt: ::c_int,
+                 offset: ::off64_t,
+             ) -> ::ssize_t;
++        }
++    }
++}
++
++cfg_if! {
++    if #[cfg(not(target_env = "uclibc"))] {
++        extern "C" {
+             // uclibc has separate non-const version of this function
+             pub fn forkpty(
+                 amaster: *mut ::c_int,

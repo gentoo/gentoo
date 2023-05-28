@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/903607
+https://github.com/rust-random/getrandom/pull/326
+https://github.com/rust-random/getrandom/commit/7f73e3ccc1f53bfc419e4ddcfd343766aa5837b6
+
+From 7c80ae7cae663e5b85dcd953f3e93b13ed5b1b8e Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Wed, 28 Dec 2022 21:44:17 -0800
+Subject: [PATCH] Use open instead of open64
+
+glibc is providing open64 and other lfs64 functions but musl aliases
+them to normal equivalents since off_t is always 64-bit on musl,
+therefore check for target env along when target OS is linux before
+using open64, this is more available. Latest Musl has made these
+namespace changes [1]
+
+There is no need for using LFS64 open explicitly as we are only using it
+for opening device files and not real files
+
+[1] https://git.musl-libc.org/cgit/musl/commit/?id=246f1c811448f37a44b41cd8df8d0ef9736d95f4
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ src/util_libc.rs | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/src/util_libc.rs b/src/util_libc.rs
+index 63b060e7..bd9c7de1 100644
+--- a/src/util_libc.rs
++++ b/src/util_libc.rs
+@@ -140,19 +140,11 @@ impl Weak {
+     }
+ }
+ 
+-cfg_if! {
+-    if #[cfg(any(target_os = "linux", target_os = "emscripten"))] {
+-        use libc::open64 as open;
+-    } else {
+-        use libc::open;
+-    }
+-}
+-
+ // SAFETY: path must be null terminated, FD must be manually closed.
+ pub unsafe fn open_readonly(path: &str) -> Result<libc::c_int, Error> {
+     debug_assert_eq!(path.as_bytes().last(), Some(&0));
+     loop {
+-        let fd = open(path.as_ptr() as *const _, libc::O_RDONLY | libc::O_CLOEXEC);
++        let fd = libc::open(path.as_ptr() as *const _, libc::O_RDONLY | libc::O_CLOEXEC);
+         if fd >= 0 {
+             return Ok(fd);
+         }
