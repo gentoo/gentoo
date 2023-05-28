@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/${P}.tar.bz2"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
