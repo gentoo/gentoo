@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -25,9 +25,6 @@ RDEPEND="
 	dev-python/canonicaljson[${PYTHON_USEDEP}]
 	dev-python/pynacl[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib-metadata[${PYTHON_USEDEP}]
-	' python3_9)
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
