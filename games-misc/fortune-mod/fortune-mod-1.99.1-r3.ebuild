@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,7 +53,6 @@ src_prepare() {
 
 src_compile() {
 	local myrex=
-	[[ ${CHOST} == *-interix* ]] && myrex="REGEXDEFS=-DNO_REGEX"
 	emake prefix="${EPREFIX}" CC="$(tc-getCC)" ${myrex}
 }
 
