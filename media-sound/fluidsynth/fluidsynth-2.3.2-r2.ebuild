@@ -33,7 +33,7 @@ DEPEND="
 		media-video/pipewire:0=[${MULTILIB_USEDEP}]
 	)
 	portaudio? ( media-libs/portaudio[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
 	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[${MULTILIB_USEDEP}] )
 	sndfile? ( media-libs/libsndfile[${MULTILIB_USEDEP}] )
