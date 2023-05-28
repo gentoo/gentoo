@@ -6,6 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">tantale/deprecated</remote-id>
 		<remote-id type="pypi">Deprecated</remote-id>
 	</upstream>
 </pkgmetadata>
