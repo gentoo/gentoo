@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN=${PN^}
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -40,7 +40,7 @@ python_test() {
 		tests/test_proxy.py
 	)
 
-	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+	[[ ${EPYTHON} == python3.1[12] ]] && EPYTEST_DESELECT+=(
 		# fails due to cgi deprecation warning
 		tests/test_cgiapp.py::test_form
 	)
