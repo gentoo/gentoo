@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -47,6 +47,8 @@ python_test() {
 		tests/test_commands.py::TestRedisCommands::test_acl_list
 		# redis-7 different return
 		tests/test_commands.py::TestRedisCommands::test_xautoclaim
+		# hangs on all targets
+		tests/test_asyncio/test_cwe_404.py::test_standalone
 	)
 
 	# TODO: try to run more servers?
