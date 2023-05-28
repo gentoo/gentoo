@@ -246,13 +246,6 @@ src_configure() {
 	# keep prefix env contained within the EPREFIX
 	use prefix && myconf+=( --without-local-dir )
 
-	if [[ ${CHOST} == *-interix* ]]; then
-		# avoid finding of this function, to avoid having to patch either
-		# configure or the source, which would be much more hackish.
-		# after all vim does it right, only interix is badly broken (again)
-		export ac_cv_func_sigaction=no
-	fi
-
 	if tc-is-cross-compiler ; then
 		export vim_cv_getcwd_broken=no \
 			   vim_cv_memmove_handles_overlap=yes \
