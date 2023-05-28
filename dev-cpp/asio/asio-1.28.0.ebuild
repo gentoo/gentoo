@@ -21,6 +21,7 @@ DEPEND="
 		dev-libs/openssl
 	)
 "
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
