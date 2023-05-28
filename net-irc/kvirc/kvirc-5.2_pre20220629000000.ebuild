@@ -81,7 +81,7 @@ fi
 DOCS=()
 
 PATCHES=(
-	"${FILESDIR}/fixqprocess.patch"
+	"${FILESDIR}/kvirc-5.2_pre20210630233331-fixqprocess.patch"
 )
 
 pkg_setup() {
