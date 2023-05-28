@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,6 @@ BDEPEND="
 	amd64-linux? ( ${ASM_DEPEND} )
 	x86-linux? ( ${ASM_DEPEND} )
 	x64-macos? ( ${ASM_DEPEND} )
-	x64-cygwin? ( ${ASM_DEPEND} )
 "
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )

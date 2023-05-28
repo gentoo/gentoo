@@ -38,7 +38,6 @@ BDEPEND="
 	amd64-linux? ( ${ASM_DEPEND} )
 	x86-linux? ( ${ASM_DEPEND} )
 	x64-macos? ( ${ASM_DEPEND} )
-	x64-cygwin? ( ${ASM_DEPEND} )
 "
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
