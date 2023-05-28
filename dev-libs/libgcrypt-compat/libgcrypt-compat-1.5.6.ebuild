@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,9 +44,7 @@ multilib_src_configure() {
 		--without-capabilities
 
 		# http://trac.videolan.org/vlc/ticket/620
-		# causes bus-errors on sparc64-solaris
 		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
-		$([[ ${CHOST} == sparcv9-*-solaris* ]] && echo "--disable-asm")
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
