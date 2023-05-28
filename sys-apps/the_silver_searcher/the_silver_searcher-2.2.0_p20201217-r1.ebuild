@@ -30,6 +30,7 @@ DOCS="README.md"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-lzma.patch
+	"${FILESDIR}"/${PN}-musl-off64_t.patch
 )
 
 src_prepare() {

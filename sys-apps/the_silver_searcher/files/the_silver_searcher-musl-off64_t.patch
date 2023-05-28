@@ -1,0 +1,24 @@
+https://github.com/ggreer/the_silver_searcher/pull/1521
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 28 May 2023 11:45:13 +0530
+Subject: [PATCH] sys-apps/the_silver_searcher: Use off_t in musl libc
+
+Using data types from _LARGEFILE64_SOURCE is discouraged as it will be
+removed in later versions of musl.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/zfile.c
++++ b/src/zfile.c
+@@ -7,6 +7,10 @@
+ typedef _off64_t off64_t;
+ #endif
+
++#ifndef __GLIBC__
++typedef off_t off64_t;
++#endif /* ifndef __GLIBC__ */
++
+ #include <assert.h>
+ #include <errno.h>
+ #include <inttypes.h>
+--
+2.40.1
