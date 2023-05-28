@@ -40,7 +40,6 @@ DEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
-	elibc_musl? ( sys-libs/libbacktrace )
 "
 
 PATCHES=(
