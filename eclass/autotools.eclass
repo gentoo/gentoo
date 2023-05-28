@@ -389,7 +389,6 @@ eautoconf() {
 		die "No configure.{ac,in} present!"
 	fi
 
-
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
 		case ${EAPI} in
 			6|7)
