@@ -45,7 +45,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.18.3-sharedir-pluginsdir.patch ) # bug 621826
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.18.3-sharedir-pluginsdir.patch # downstream, bug 621826
+	"${FILESDIR}"/${P}-exiv2-0.28.patch # upstream git master, bug 906501
+)
 
 DOCS=( AUTHORS CHANGELOG )
 
