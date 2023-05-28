@@ -59,8 +59,6 @@ src_prepare() {
 
 python_test() {
 	local -x CI=1
-	# FIXME: get tornado ported
-	# please keep in sync with BDEPEND!
 	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
 		einfo "Skipping tests on ${EPYTHON}"
 		return
