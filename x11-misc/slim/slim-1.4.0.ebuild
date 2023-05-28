@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit subversion
 else
 	SRC_URI="mirror://sourceforge/project/${PN}-fork/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~riscv sparc ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 ~riscv sparc ~x86"
 fi
 
 DESCRIPTION="Simple Login Manager resurrected"
