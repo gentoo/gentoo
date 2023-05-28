@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="opencv">Use <pkg>media-libs/opencv</pkg> for additional image formats and OpenCL accelerated scaling</flag>
-		<flag name="sway">Enable support for <pkg>gui-wm/sway</pkg> on wayland</flag>
+		<flag name="wayland">Enable wayland support (only usable with some wlroots-based compositors)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">jstkdng/ueberzugpp</remote-id>

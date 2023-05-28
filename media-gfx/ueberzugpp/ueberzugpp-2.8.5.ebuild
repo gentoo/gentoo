@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jstkdng/ueberzugpp/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="X opencv sway"
+IUSE="X opencv wayland"
 
 RDEPEND="
 	dev-cpp/tbb:=
@@ -29,7 +29,7 @@ RDEPEND="
 		x11-libs/xcb-util-image
 	)
 	opencv? ( media-libs/opencv:= )
-	sway? ( dev-libs/wayland )
+	wayland? ( dev-libs/wayland )
 	!media-gfx/ueberzug"
 DEPEND="
 	${RDEPEND}
@@ -37,9 +37,9 @@ DEPEND="
 	dev-cpp/ms-gsl
 	dev-cpp/nlohmann_json
 	X? ( x11-base/xorg-proto )
-	sway? ( dev-libs/wayland-protocols )"
+	wayland? ( dev-libs/wayland-protocols )"
 BDEPEND="
-	sway? (
+	wayland? (
 		dev-util/wayland-scanner
 		kde-frameworks/extra-cmake-modules
 	)"
@@ -49,7 +49,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DENABLE_OPENCV=$(usex opencv)
-		-DENABLE_SWAY=$(usex sway)
+		-DENABLE_SWAY=$(usex wayland)
 		-DENABLE_TURBOBASE64=no # not packaged
 		-DENABLE_X11=$(usex X)
 		-DFETCHCONTENT_FULLY_DISCONNECTED=yes
