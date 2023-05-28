@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,7 +54,6 @@ target() {
 	*-darwin*)  echo darwin  ;;
 	*-freebsd*) echo freebsd ;;
 	*-solaris*) echo solaris ;;
-	*-aix*)     echo aixgcc  ;;
 	*)          echo linux   ;;
 	esac
 }
@@ -110,8 +109,5 @@ pkg_postinst() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		einfo "Note: to use lsof on Solaris you need read permissions on"
 		einfo "/dev/kmem, i.e. you need to be root, or to be in the group sys"
-	elif [[ ${CHOST} == *-aix* ]] ; then
-		einfo "Note: to use lsof on AIX you need read permissions on /dev/mem and"
-		einfo "/dev/kmem, i.e. you need to be root, or to be in the group system"
 	fi
 }
