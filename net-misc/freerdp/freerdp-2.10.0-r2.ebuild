@@ -57,7 +57,7 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	kerberos? ( virtual/krb5 )
 	openh264? ( media-libs/openh264:0= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	server? (
 		X? (
 			x11-libs/libXcursor
