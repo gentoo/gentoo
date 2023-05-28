@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic linux-mod toolchain-funcs
+inherit linux-mod-r1
 
 MY_P="${P/dahdi/dahdi-linux}"
 JNET=1.0.14
@@ -45,11 +45,11 @@ IUSE="flash oslec"
 
 PATCHES=( "${WORKDIR}/gentoo-dahdi-patches-${GENTOO_PATCHVERSION}" )
 
-CONFIG_CHECK="MODULES PCI ~CRC_CCITT"
-
 pkg_setup() {
+	local CONFIG_CHECK="PCI ~CRC_CCITT"
 	use oslec && CONFIG_CHECK+=" ECHO"
-	linux-mod_pkg_setup
+
+	linux-mod-r1_pkg_setup
 }
 
 src_unpack() {
@@ -98,23 +98,18 @@ src_prepare() {
 }
 
 src_compile() {
-	unset ARCH
-	emake V=1 CC="$(tc-getCC)" LD="$(tc-getLD)" KSRC="${KV_OUT_DIR}" \
-		DAHDI_MODULES_EXTRA="${JNET_DRIVERS// /.o }.o$(usex oslec " dahdi_echocan_oslec.o" "")" \
-		LDFLAGS="$(raw-ldflags)" all
+	MODULES_MAKEARGS+=(
+		KSRC="${KV_OUT_DIR}"
+		DAHDI_MODULES_EXTRA="${JNET_DRIVERS// /.o }.o$(usev oslec " dahdi_echocan_oslec.o")${DAHDI_GENTOO_MODULES}"
+	)
+
+	emake "${MODULES_MAKEARGS[@]}"
 }
 
 src_install() {
-	einfo "Installing kernel module"
-	emake V=1 CC="$(tc-getCC)" LD="$(tc-getLD)" KSRC="${KV_OUT_DIR}" DESTDIR="${D}" \
-		DAHDI_MODULES_EXTRA="${JNET_DRIVERS// /.o }.o$(usex oslec " dahdi_echocan_oslec.o" "")${DAHDI_GENTOO_MODULES}" \
-		LDFLAGS="$(raw-ldflags)" install
+	emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
+	modules_post_process
 
 	# Remove the blank "version" files (these files are all empty, and root owned).
 	find "${ED}/lib/firmware" -name ".*" -delete || die "Error removing empty firmware version files"
-
-	# If the kernel sources have a System.map, and there a suitable depmod
-	# available (seemingly when we're not cross-compiling), then the kernel
-	# sources depmod kicks in.  Remove the files caused by that.
-	find "${ED}/lib/modules" -name "modules.*" -delete || die "Error deleting bogus modules.* files"
 }
