@@ -40,7 +40,7 @@ RDEPEND="
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		dev-python/pypresence[${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -53,6 +53,7 @@ RDEPEND="
 		net-libs/webkit-gtk:4[introspection]
 		net-libs/webkit-gtk:4.1[introspection]
 	)
+	sys-apps/xdg-desktop-portal
 	x11-apps/mesa-progs
 	x11-apps/xgamma
 	x11-apps/xrandr
@@ -76,7 +77,7 @@ python_install_all() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	optfeature "running MS Windows games through wine+DXVK/proton or other Vulkan games (plus ICD for your hardware)" media-libs/vulkan-loader
+	optfeature "running MS Windows games through wine+DXVK/proton or other Vulkan games (plus ICD for your hardware)" "media-libs/vulkan-loader dev-util/vulkan-tools"
 
 	# Quote README.rst
 	elog ""
