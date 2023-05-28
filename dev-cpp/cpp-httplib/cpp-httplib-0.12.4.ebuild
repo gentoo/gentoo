@@ -46,5 +46,5 @@ src_configure() {
 multilib_src_test() {
 	cp -p -R --reflink=auto "${S}/test" ./test || die
 
-	emake -C test "CXX=$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} -I."
+	GTEST_FILTER='-*.*_Online' emake -C test "CXX=$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} -I."
 }
