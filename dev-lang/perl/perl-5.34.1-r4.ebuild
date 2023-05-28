@@ -645,10 +645,6 @@ src_configure() {
 	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
 		append-cflags -Dinline=__inline__ -DPERL_DARWIN
 
-	# flock on 32-bit sparc Solaris is broken, fall back to fcntl
-	[[ ${CHOST} == sparc-*-solaris* ]] && \
-		myconf -Ud_flock
-
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find
 	# something compatible.
