@@ -108,8 +108,6 @@ multilib_src_configure() {
 
 		# http://trac.videolan.org/vlc/ticket/620
 		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
-		# causes bus-errors on sparc64-solaris
-		$([[ ${CHOST} == sparcv9-*-solaris* ]] && echo "--disable-asm")
 
 		$(use asm || echo "--disable-asm")
 
