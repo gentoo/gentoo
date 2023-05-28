@@ -38,7 +38,7 @@ LICENSE="
 	GPL-3+ Apache-2.0 BSD BSD-2 BSD-4 Boost-1.0 CC0-1.0 GPL-2+
 	ISC LGPL-2.1+ LGPL-3+ MIT OFL-1.1 ZLIB public-domain"
 SLOT="0"
-IUSE="alsa backtrace cpu_flags_x86_sse4_1 dbus jack pulseaudio sndio test vulkan wayland"
+IUSE="alsa cpu_flags_x86_sse4_1 jack pulseaudio sndio test vulkan wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
@@ -63,8 +63,6 @@ RDEPEND="
 	virtual/libudev:=
 	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
-	backtrace? ( sys-libs/libbacktrace )
-	dbus? ( sys-apps/dbus )
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
@@ -135,8 +133,8 @@ src_unpack() {
 src_prepare() {
 	cmake_src_prepare
 
-	sed -e "/AppRoot =/s|=.*|= \"${EPREFIX}/usr/share/${PN}\";|" \
-		-i pcsx2/Pcsx2Config.cpp || die
+	sed -e "/EmuFolders::AppRoot =/s|=.*|= \"${EPREFIX}/usr/share/${PN}\";|" \
+		-i pcsx2/Frontend/CommonHost.cpp || die
 
 	if [[ ${PV} != 9999 ]]; then
 		sed -e '/set(PCSX2_GIT_TAG "")/s/""/"v'${PV}-gentoo'"/' \
@@ -156,19 +154,11 @@ src_prepare() {
 }
 
 src_configure() {
-	if use vulkan; then
-		# for bundled glslang (bug #858374)
-		append-flags -fno-strict-aliasing
-
-		# odr violations in pcsx2's vulkan code, disabling as a safety for now
-		# (vulkan support tend to receive major changes, is more on WIP side)
-		filter-lto
-	fi
+	# for bundled glslang (bug #858374)
+	use vulkan && append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
-		$(cmake_use_find_package backtrace Libbacktrace)
 		-DBUILD_SHARED_LIBS=no
-		-DDBUS_API=$(usex dbus)
 		-DDISABLE_BUILD_DATE=yes
 		-DENABLE_TESTS=$(usex test)
 		-DUSE_VTUNE=no
