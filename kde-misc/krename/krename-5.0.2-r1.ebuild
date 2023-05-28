@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/krename/ https://userbase.kde.org/KRename"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz
 		https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-1.tar.xz"
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -46,7 +46,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/gettext"
 
-PATCHES=( "${WORKDIR}/${PN}-5.0.2-patchset-1/${PN}-5.0.1-no-kjs.patch" )
+PATCHES=( "${WORKDIR}/${P}-patchset-1" ) # upstream, git master
 
 src_configure() {
 	local mycmakeargs=(
