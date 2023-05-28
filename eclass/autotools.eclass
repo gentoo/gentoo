@@ -560,7 +560,7 @@ autotools_run_tool() {
 		shift
 	done
 
-	if [[ ${EBUILD_PHASE_FUNC} != "src_unpack" && ${EBUILD_PHASE_FUNC} != "src_prepare" ]] ; then
+	if [[ ${EBUILD_PHASE_FUNC} != "src_prepare" ]] ; then
 		eqawarn "Running '${1}' in ${EBUILD_PHASE_FUNC} phase"
 	fi
 
