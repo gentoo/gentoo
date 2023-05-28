@@ -28,6 +28,7 @@ RDEPEND="
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	test? (
 			dev-qt/qttest:5
 			dev-cpp/gtest
