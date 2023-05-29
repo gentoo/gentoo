@@ -3,21 +3,28 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( pypy3 python3_{10..11} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="Mock out responses from the requests package"
-HOMEPAGE="https://github.com/jamielennox/requests-mock"
+HOMEPAGE="
+	https://github.com/jamielennox/requests-mock/
+	https://pypi.org/project/requests-mock/
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
+# urllib3 causes regressions that aren't caught by tests:
+# https://github.com/jamielennox/requests-mock/issues/228
 RDEPEND="
 	>=dev-python/requests-2.3[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	<dev-python/urllib3-2[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pbr-0.8[${PYTHON_USEDEP}]
