@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/patroclos/PAmix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/PAmix-${PV}"
 fi
 
@@ -27,6 +27,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-ncurses_pkgconfig.patch"
+	"${FILESDIR}/${P}-xdgconfigdir.patch"
+	"${FILESDIR}/${P}-fix-output-scrolling.patch"
+	"${FILESDIR}/${P}-fix-ncurses-freezing.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
