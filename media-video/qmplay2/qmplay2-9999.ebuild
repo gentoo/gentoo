@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	pipewire? ( media-video/pipewire )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sid? ( media-libs/libsidplayfp )
 	shaders? ( >=media-libs/shaderc-2020.1 )
 	taglib? ( media-libs/taglib	)
