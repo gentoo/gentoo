@@ -1,16 +1,16 @@
-From b1ba5ff337300e4242fb961d8496474e4b739c9b Mon Sep 17 00:00:00 2001
+From 653606791456f7e6412712bc26428b90092336b5 Mon Sep 17 00:00:00 2001
 From: Ran Benita <ran@unusedvar.com>
 Date: Wed, 10 May 2023 10:36:09 +0300
 Subject: [PATCH] Avoid ast deprecation warnings on Python 3.12
 
 Fix #10977.
 ---
- src/_pytest/assertion/rewrite.py | 44 ++++++++++++++++++--------------
+ src/_pytest/assertion/rewrite.py | 49 +++++++++++++++++++-------------
  src/_pytest/mark/expression.py   |  8 +++++-
- 2 files changed, 32 insertions(+), 20 deletions(-)
+ 2 files changed, 36 insertions(+), 21 deletions(-)
 
 diff --git a/src/_pytest/assertion/rewrite.py b/src/_pytest/assertion/rewrite.py
-index 8b182347052..2f9038ee132 100644
+index 8b182347052..00bb4feb94a 100644
 --- a/src/_pytest/assertion/rewrite.py
 +++ b/src/_pytest/assertion/rewrite.py
 @@ -46,8 +46,14 @@
@@ -28,16 +28,22 @@ index 8b182347052..2f9038ee132 100644
  
  
  assertstate_key = StashKey["AssertionState"]()
-@@ -680,7 +686,7 @@ def run(self, mod: ast.Module) -> None:
+@@ -680,9 +686,12 @@ def run(self, mod: ast.Module) -> None:
              if (
                  expect_docstring
                  and isinstance(item, ast.Expr)
 -                and isinstance(item.value, ast.Str)
 +                and isinstance(item.value, astStr)
              ):
-                 doc = item.value.s
+-                doc = item.value.s
++                if sys.version_info >= (3, 8):
++                    doc = item.value.value
++                else:
++                    doc = item.value.s
                  if self.is_rewrite_disabled(doc):
-@@ -814,7 +820,7 @@ def pop_format_context(self, expl_expr: ast.expr) -> ast.Name:
+                     return
+                 expect_docstring = False
+@@ -814,7 +823,7 @@ def pop_format_context(self, expl_expr: ast.expr) -> ast.Name:
          current = self.stack.pop()
          if self.stack:
              self.explanation_specifiers = self.stack[-1]
@@ -46,7 +52,7 @@ index 8b182347052..2f9038ee132 100644
          format_dict = ast.Dict(keys, list(current.values()))
          form = ast.BinOp(expl_expr, ast.Mod(), format_dict)
          name = "@py_format" + str(next(self.variable_counter))
-@@ -868,16 +874,16 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
+@@ -868,16 +877,16 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
          negation = ast.UnaryOp(ast.Not(), top_condition)
  
          if self.enable_assertion_pass_hook:  # Experimental pytest_assertion_pass hook
@@ -66,7 +72,7 @@ index 8b182347052..2f9038ee132 100644
              err_msg = ast.BinOp(assertmsg, ast.Add(), err_explanation)
              err_name = ast.Name("AssertionError", ast.Load())
              fmt = self.helper("_format_explanation", err_msg)
-@@ -893,8 +899,8 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
+@@ -893,8 +902,8 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
              hook_call_pass = ast.Expr(
                  self.helper(
                      "_call_assertion_pass",
@@ -77,7 +83,7 @@ index 8b182347052..2f9038ee132 100644
                      fmt_pass,
                  )
              )
-@@ -913,7 +919,7 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
+@@ -913,7 +922,7 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
                  variables = [
                      ast.Name(name, ast.Store()) for name in self.format_variables
                  ]
@@ -86,7 +92,7 @@ index 8b182347052..2f9038ee132 100644
                  self.statements.append(clear_format)
  
          else:  # Original assertion rewriting
-@@ -924,9 +930,9 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
+@@ -924,9 +933,9 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
                  assertmsg = self.helper("_format_assertmsg", assert_.msg)
                  explanation = "\n>assert " + explanation
              else:
@@ -98,7 +104,7 @@ index 8b182347052..2f9038ee132 100644
              msg = self.pop_format_context(template)
              fmt = self.helper("_format_explanation", msg)
              err_name = ast.Name("AssertionError", ast.Load())
-@@ -938,7 +944,7 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
+@@ -938,7 +947,7 @@ def visit_Assert(self, assert_: ast.Assert) -> List[ast.stmt]:
          # Clear temporary variables by setting them to None.
          if self.variables:
              variables = [ast.Name(name, ast.Store()) for name in self.variables]
@@ -107,7 +113,7 @@ index 8b182347052..2f9038ee132 100644
              self.statements.append(clear)
          # Fix locations (line numbers/column offsets).
          for stmt in self.statements:
-@@ -952,20 +958,20 @@ def visit_NamedExpr(self, name: namedExpr) -> Tuple[namedExpr, str]:
+@@ -952,20 +961,20 @@ def visit_NamedExpr(self, name: namedExpr) -> Tuple[namedExpr, str]:
          # thinks it's acceptable.
          locs = ast.Call(self.builtin("locals"), [], [])
          target_id = name.target.id  # type: ignore[attr-defined]
@@ -132,7 +138,7 @@ index 8b182347052..2f9038ee132 100644
          return name, self.explanation_param(expr)
  
      def visit_BoolOp(self, boolop: ast.BoolOp) -> Tuple[ast.Name, str]:
-@@ -1001,7 +1007,7 @@ def visit_BoolOp(self, boolop: ast.BoolOp) -> Tuple[ast.Name, str]:
+@@ -1001,7 +1010,7 @@ def visit_BoolOp(self, boolop: ast.BoolOp) -> Tuple[ast.Name, str]:
              self.push_format_context()
              res, expl = self.visit(v)
              body.append(ast.Assign([ast.Name(res_var, ast.Store())], res))
@@ -141,7 +147,7 @@ index 8b182347052..2f9038ee132 100644
              call = ast.Call(app, [expl_format], [])
              self.expl_stmts.append(ast.Expr(call))
              if i < levels:
-@@ -1013,7 +1019,7 @@ def visit_BoolOp(self, boolop: ast.BoolOp) -> Tuple[ast.Name, str]:
+@@ -1013,7 +1022,7 @@ def visit_BoolOp(self, boolop: ast.BoolOp) -> Tuple[ast.Name, str]:
                  self.statements = body = inner
          self.statements = save
          self.expl_stmts = fail_save
@@ -150,7 +156,7 @@ index 8b182347052..2f9038ee132 100644
          expl = self.pop_format_context(expl_template)
          return ast.Name(res_var, ast.Load()), self.explanation_param(expl)
  
-@@ -1099,9 +1105,9 @@ def visit_Compare(self, comp: ast.Compare) -> Tuple[ast.expr, str]:
+@@ -1099,9 +1108,9 @@ def visit_Compare(self, comp: ast.Compare) -> Tuple[ast.expr, str]:
                  next_expl = f"({next_expl})"
              results.append(next_res)
              sym = BINOP_MAP[op.__class__]
@@ -195,3 +201,58 @@ index f82a81d44c5..9287bcee50c 100644
      else:
          ret = expr(s)
          s.accept(TokenType.EOF, reject=True)
+From c945dba571025623a3ace7311d682e3e9448a161 Mon Sep 17 00:00:00 2001
+From: Ran Benita <ran@unusedvar.com>
+Date: Fri, 26 May 2023 20:28:21 +0300
+Subject: [PATCH] testing/python/collect: replace use of deprecated/removed
+ `imp` module
+
+---
+ testing/python/collect.py | 26 +++++++++++++++-----------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/testing/python/collect.py b/testing/python/collect.py
+index ac3edd395ab..52b34800965 100644
+--- a/testing/python/collect.py
++++ b/testing/python/collect.py
+@@ -897,25 +897,29 @@ def pytest_pycollect_makeitem(collector, name, obj):
+     def test_issue2369_collect_module_fileext(self, pytester: Pytester) -> None:
+         """Ensure we can collect files with weird file extensions as Python
+         modules (#2369)"""
+-        # We'll implement a little finder and loader to import files containing
++        # Implement a little meta path finder to import files containing
+         # Python source code whose file extension is ".narf".
+         pytester.makeconftest(
+             """
+-            import sys, os, imp
++            import sys
++            import os.path
++            from importlib.util import spec_from_loader
++            from importlib.machinery import SourceFileLoader
+             from _pytest.python import Module
+ 
+-            class Loader(object):
+-                def load_module(self, name):
+-                    return imp.load_source(name, name + ".narf")
+-            class Finder(object):
+-                def find_module(self, name, path=None):
+-                    if os.path.exists(name + ".narf"):
+-                        return Loader()
+-            sys.meta_path.append(Finder())
++            class MetaPathFinder:
++                def find_spec(self, fullname, path, target=None):
++                    if os.path.exists(fullname + ".narf"):
++                        return spec_from_loader(
++                            fullname,
++                            SourceFileLoader(fullname, fullname + ".narf"),
++                        )
++            sys.meta_path.append(MetaPathFinder())
+ 
+             def pytest_collect_file(file_path, parent):
+                 if file_path.suffix == ".narf":
+-                    return Module.from_parent(path=file_path, parent=parent)"""
++                    return Module.from_parent(path=file_path, parent=parent)
++            """
+         )
+         pytester.makefile(
+             ".narf",
