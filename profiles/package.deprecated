@@ -17,6 +17,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-05-29)
+# Use the following snippet instead:
+#
+#   $(python_gen_cond_dep '
+#       dev-python/cffi[${PYTHON_USEDEP}]
+#   ' 'python*')
+#
+# Possibly adding version constraints if package declares them.
+virtual/python-cffi
+
 # Michał Górny <mgorny@gentoo.org> (2023-04-26)
 # Renamed upstream to dev-python/pypdf.  Since Python modules were
 # renamed as well, projects need to update their imports.
