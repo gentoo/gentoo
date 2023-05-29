@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Sam James <sam@gentoo.org> (2023-05-29)
+# Temporary mask for bug #907377
+ruby_targets_ruby31
+
 # Alfredo Tupone <tupone@gentoo.org> (2023-2-2)
 # sys-devel/gcc:12 is not stable yet on x86
 ada_target_gcc_12

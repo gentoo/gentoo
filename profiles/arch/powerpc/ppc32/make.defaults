@@ -31,3 +31,7 @@ IUSE_IMPLICIT="abi_ppc_32"
 
 # Enable abi_ppc_32 for packages that don't have it forced.
 ABI_PPC="32"
+
+# Sam James <sam@gentoo.org> (2023-05-29)
+# Temporarily use old default until bug #907377 is done for this arch
+RUBY_TARGETS="ruby30"
