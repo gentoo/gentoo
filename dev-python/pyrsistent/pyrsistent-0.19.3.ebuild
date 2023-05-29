@@ -26,15 +26,3 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-python_test() {
-	local EPYTEST_IGNORE=()
-	if [[ ${EPYTHON} == python3.12 ]]; then
-		EPYTEST_IGNORE+=(
-			# probably a bug in python itself or in hypothesis
-			tests/hypothesis_vector_test.py
-		)
-	fi
-
-	epytest
-}
