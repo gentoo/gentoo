@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Signal Protocol C Library"
 HOMEPAGE="https://signal.org/ https://github.com/signalapp/libsignal-protocol-c"
 SRC_URI="https://github.com/signalapp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 
 LICENSE="GPL-3"
 SLOT="0"
