@@ -92,7 +92,8 @@ src_configure() {
 		$(meson_use cdr libbrasero)
 	)
 
-	# colord pulls in lcms2 anyway, so enable lcms with USE="colord -lcms"; some of upstream HAVE_COLORD code depends on HAVE_LCMS2
+	# colord pulls in lcms2 anyway, so enable lcms with USE="colord -lcms";
+	# some of upstream HAVE_COLORD code depends on HAVE_LCMS2
 	if use lcms || use colord; then
 		emesonargs+=( -Dlcms2=true )
 	else
