@@ -28,7 +28,3 @@ USE="libtirpc"
 # Michał Górny <mgorny@gentoo.org> (2017-03-14)
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
-
-# Sam James <sam@gentoo.org> (2023-05-29)
-# Temporarily use old default until bug #907377 is done for this arch
-RUBY_TARGETS="ruby30"
