@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="ca cs de el en_GB es eu fr it ja ko nn pl pt pt_PT ru sv zh"
@@ -54,7 +55,7 @@ RDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/pango
 	jack? ( virtual/jack )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
