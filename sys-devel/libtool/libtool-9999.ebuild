@@ -41,7 +41,6 @@ PATCHES=(
 	# bug #581314
 	"${FILESDIR}"/${PN}-2.4.6-ppc64le.patch
 
-	"${FILESDIR}"/${PN}-2.4.6-mint.patch
 	"${FILESDIR}"/${PN}-2.2.6a-darwin-module-bundle.patch
 	"${FILESDIR}"/${PN}-2.4.6-darwin-use-linux-version.patch
 	"${FILESDIR}"/${PN}-2.4.7-grep-3.8.patch
