@@ -10,6 +10,7 @@ inherit python-any-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
 WINE_MONO=8.0.0
+WINE_P=wine-$(ver_cut 1-2)
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -18,11 +19,11 @@ if [[ ${PV} == *9999 ]]; then
 else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="
-		https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz
+		https://dl.winehq.org/wine/source/${WINE_SDIR}/${WINE_P}.tar.xz
 		https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
-S="${WORKDIR}/wine-${PV}"
+S="${WORKDIR}/${WINE_P}"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
 HOMEPAGE="
