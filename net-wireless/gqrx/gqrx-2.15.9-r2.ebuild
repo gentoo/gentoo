@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ DEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	sci-libs/volk:=
-	pulseaudio? ( media-sound/pulseaudio:= )
+	pulseaudio? ( media-libs/libpulse )
 	portaudio? ( media-libs/portaudio:= )"
 RDEPEND="${DEPEND}"
 
