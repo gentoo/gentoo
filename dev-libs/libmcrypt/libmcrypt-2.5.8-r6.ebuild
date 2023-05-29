@@ -33,7 +33,7 @@ src_prepare() {
 	mv configure.in configure.ac
 	mv libltdl/configure.in libltdl/configure.ac
 	sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.ac libltdl/configure.ac || die
-	eautoreconf # need new libtool for interix (elibtoolize would suffice for freebsd)
+	eautoreconf # update stale autotools
 }
 
 src_install() {
