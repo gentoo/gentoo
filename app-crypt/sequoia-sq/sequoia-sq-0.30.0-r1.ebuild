@@ -501,7 +501,7 @@ src_compile() {
 src_install() {
 	cargo_src_install
 
-	doman target/*/build/sequoia-sq-*/out/*.1
+	doman target/$(usex debug debug release)/build/sequoia-sq-*/out/*.1
 
 	newbashcomp target/sq.bash sq
 
