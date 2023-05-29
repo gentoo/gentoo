@@ -5,12 +5,15 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Manage .env files"
-HOMEPAGE="https://github.com/theskumar/python-dotenv"
+HOMEPAGE="
+	https://github.com/theskumar/python-dotenv/
+	https://pypi.org/project/python-dotenv/
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -22,7 +25,7 @@ BDEPEND="
 		>=dev-python/sh-2[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/ipython[${PYTHON_USEDEP}]
-		' 'python*')
+		' python3_{10,11})
 	)
 "
 
