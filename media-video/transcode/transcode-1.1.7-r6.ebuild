@@ -23,6 +23,7 @@ REQUIRED_USE="
 	nuv? ( lzo )
 "
 
+# <ffmpeg-5 dep for bug #831482
 RDEPEND="
 	<media-video/ffmpeg-5:=
 	a52? ( media-libs/a52dec )
