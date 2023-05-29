@@ -46,15 +46,13 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( media-libs/libmad )
 	musepack? ( >=media-sound/musepack-tools-444 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sndfile? ( media-libs/libsndfile )
 	speex? ( media-libs/speex media-libs/liboggz media-libs/libogg )
 	vorbis? ( media-libs/libvorbis media-libs/libogg )
 	wavpack? ( media-sound/wavpack )
 "
-DEPEND="
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-configure-lua-version.patch"
