@@ -29,6 +29,6 @@ DEPEND="
 	>=dev-qt/qtgui-5.15:5
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
-	media-sound/pulseaudio[glib]
+	media-libs/libpulse[glib]
 "
 RDEPEND="${DEPEND}"
