@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">WSGIProxy2</remote-id>
+		<remote-id type="github">gawel/WSGIProxy2</remote-id>
 	</upstream>
 </pkgmetadata>
