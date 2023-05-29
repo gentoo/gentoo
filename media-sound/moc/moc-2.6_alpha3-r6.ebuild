@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.11 )
 	cache? ( >=sys-libs/db-4.1:= )
 	curl? ( >=net-misc/curl-7.15.1 )
-	ffmpeg? ( >=media-video/ffmpeg-1.2.6-r1 )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	flac? ( >=media-libs/flac-1.1.3:= )
 	jack? ( virtual/jack )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.0 )
