@@ -8,7 +8,6 @@
 	<use>
 		<flag name="lto">Build with Link Time Optimization (LTO)</flag>
 		<flag name="nvimpager">Install nvimpager symlink to less.sh macro</flag>
-		<flag name="tui">Build the neovim unix tui</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">neovim/neovim</remote-id>
