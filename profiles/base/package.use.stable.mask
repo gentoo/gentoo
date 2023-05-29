@@ -217,11 +217,6 @@ kde-apps/cantor julia
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-01-15)
-# Has no stable reverse deps requiring this useflag
-# Stable-masking it so Boost 1.62 stabilization can go ahead
-sci-libs/vtk mpi
-
 # Alon Bar-Lev <alonbl@gentoo.org> (2017-01-01)
 # Will always require unstable packages.
 net-libs/gnutls test-full
