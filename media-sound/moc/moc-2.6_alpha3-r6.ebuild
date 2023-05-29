@@ -17,6 +17,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 ~riscv sparc x86"
 IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modplug musepack
 	oss sid sndfile sndio speex timidity tremor +unicode vorbis wavpack"
 
+# <ffmpeg-5 dep for bug #834393
 RDEPEND="
 	>=dev-libs/libltdl-2
 	dev-libs/popt
