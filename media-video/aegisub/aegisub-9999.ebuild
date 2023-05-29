@@ -41,7 +41,7 @@ RDEPEND="${LUA_DEPS}
 	fftw? ( >=sci-libs/fftw-3.3:= )
 	openal? ( media-libs/openal )
 	portaudio? ( =media-libs/portaudio-19* )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	spell? ( app-text/hunspell:= )
 	uchardet? ( app-i18n/uchardet )
 "
