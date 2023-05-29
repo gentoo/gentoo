@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -22,7 +22,7 @@ RDEPEND="
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sndfile? ( media-libs/libsndfile )"
 DEPEND="${RDEPEND}
 	sys-devel/flex"
