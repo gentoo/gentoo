@@ -6,8 +6,7 @@ EAPI=8
 inherit meson toolchain-funcs
 
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
-HOMEPAGE="https://github.com/hyprwm/Hyprland/releases"
-
+HOMEPAGE="https://github.com/hyprwm/Hyprland"
 SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${PF}.gh.tar.gz"
 S="${WORKDIR}/${PN}-source"
 
