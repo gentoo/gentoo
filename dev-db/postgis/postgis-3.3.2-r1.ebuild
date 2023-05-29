@@ -54,6 +54,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.3-try-other-cpp-names.patch"
+	# source: https://github.com/google/flatbuffers/pull/7897
+	"${FILESDIR}/${P}-flatbuffers-abseil-2023.patch" # bug 905378
 )
 
 src_prepare() {
