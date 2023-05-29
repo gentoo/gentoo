@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="aac? ( media-libs/faac )
 	libsamplerate? ( media-libs/libsamplerate )
 	mp3? ( media-sound/lame )
 	opus? ( media-libs/opus )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	twolame? ( media-sound/twolame )
 	vorbis? ( media-libs/libvorbis )"
 DEPEND="${RDEPEND}"
