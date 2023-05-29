@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -32,7 +32,9 @@ DEPEND="
 	net-dns/c-ares:=
 "
 BDEPEND="
-	virtual/python-cffi[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/cffi[${PYTHON_USEDEP}]
+	' 'python*')
 "
 RDEPEND="
 	dev-python/idna[${PYTHON_USEDEP}]
