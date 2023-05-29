@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> 2023-06-10
+# Replaced by app-accessibility/espeak-ng, bug #877221
+# Removal on 2023-07-10
+app-accessibility/espeak
+
 # Jimi Huotari <chiitoo@gentoo.org> (2023-06-10)
 # Mask to allow qt6 unmask.
 <dev-python/pyside6-6.5.0
