@@ -64,13 +64,9 @@ src_configure() {
 	case ${CHOST} in
 		i?86*-*linux*)       TARGET="linux_asm" ;;
 		*linux*)             TARGET="linux_noasm" ;;
-		i?86*-*bsd* | \
-		i?86*-dragonfly*)    TARGET="freebsd" ;; # mislabelled bsd with x86 asm
-		*bsd* | *dragonfly*) TARGET="bsd" ;;
 		*-darwin*)           TARGET="macosx" ;;
 		*-solaris*)          TARGET="generic" ;;
-		*-cygwin*)           TARGET="generic" ;;
-		*) die "Unknown target; please update the ebuild to handle ${CHOST}	" ;;
+		*) die "Unknown target; please update the ebuild to handle ${CHOST}" ;;
 	esac
 
 	# Needed for Clang 16
