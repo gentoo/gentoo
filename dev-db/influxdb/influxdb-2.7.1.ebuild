@@ -196,7 +196,7 @@ src_prepare() {
 src_compile() {
 	mv "${WORKDIR}/go-mod" "${WORKDIR}/go-mod-tmp" || die
 	mv "${WORKDIR}/go-mod-tmp/github.com/influxdata/pkg-config@v0.2.11/go-mod" "${WORKDIR}/go-mod" || die
-	cd ${WORKDIR}/go-mod-tmp/github.com/influxdata/pkg-config* || die
+	cd "${WORKDIR}"/go-mod-tmp/github.com/influxdata/pkg-config* || die
 	ego build .
 	mv "${WORKDIR}/go-mod" "${WORKDIR}/go-mod-tmp/github.com/influxdata/pkg-config@v0.2.11" || die
 	mv "${WORKDIR}/go-mod-tmp" "${WORKDIR}/go-mod" || die
