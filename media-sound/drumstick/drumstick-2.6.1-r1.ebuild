@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ DEPEND="
 	media-libs/alsa-lib
 	fluidsynth? ( media-sound/fluidsynth )
 	network? ( dev-qt/qtnetwork:5 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 "
 RDEPEND="${DEPEND}"
 
