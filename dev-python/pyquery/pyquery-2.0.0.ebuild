@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+# No 3.12 yet for https://github.com/gawel/pyquery/issues/249
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
 inherit distutils-r1 optfeature pypi
 
