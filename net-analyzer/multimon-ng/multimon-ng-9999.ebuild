@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="pulseaudio X"
 
-DEPEND="pulseaudio? ( media-sound/pulseaudio )
+DEPEND="pulseaudio? ( media-libs/libpulse )
 		X? ( x11-libs/libX11 )"
 RDEPEND="${DEPEND}"
 PDEPEND="media-sound/sox"
