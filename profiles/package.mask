@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-05-29)
+# Masked until enough reverse dependencies are fixed, bug #901257.
+=media-video/ffmpeg-6*
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-05-28)
 # Both versions are affected by notable regressions, i.e. 2.8.5
 # leaves 100% cpu processes behind, and 2.8.6 has broken positioning
@@ -447,12 +451,6 @@ dev-qt/qtwebsockets:6
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
 ~sci-physics/bullet-3.22b
-
-# James Beddek <telans@posteo.de> (2022-01-19)
-# FFmpeg 5.0 ABI/API changes break many packages.
-# Masking for tracker/tinderbox. Bug #831437
->=media-video/ffmpeg-5
->=media-sound/spek-0.8.5
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
