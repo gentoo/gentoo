@@ -50,7 +50,7 @@ DEPEND="
 		sys-apps/dbus
 	)
 	opus? ( media-libs/opusfile )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	pipewire? ( media-video/pipewire )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
