@@ -67,20 +67,10 @@ python_test() {
 		)
 	fi
 	if [[ ${EPYTHON} == python3.12 ]]; then
-		# these look serious but affect hypothesis only partially,
-		# i.e. many revdeps will still work and since this is a test dep,
-		# we don't need it 100% perfect
-		# https://github.com/python/cpython/issues/105013
-		EPYTEST_IGNORE+=(
-			tests/cover/test_type_lookup.py
-		)
 		EPYTEST_DESELECT+=(
-			hypothesis-python/tests/cover/test_complex_numbers.py::test_allow_subnormal
-			hypothesis-python/tests/cover/test_lambda_formatting.py::test_can_get_descriptions_of_nested_lambdas_with_different_names
 			hypothesis-python/tests/cover/test_lookup.py
-			hypothesis-python/tests/cover/test_targeting.py::test_disallowed_inputs_to_target
+			hypothesis-python/tests/cover/test_type_lookup.py
 			hypothesis-python/tests/cover/test_type_lookup_forward_ref.py
-			hypothesis-python/tests/cover/test_uuids.py
 			hypothesis-python/tests/quality/test_discovery_ability.py::test_one_of_flattens_filter_branches_{1..3}
 		)
 	fi
