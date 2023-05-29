@@ -75,7 +75,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.01-interix.patch
 	"${FILESDIR}"/${PN}-5.31-pragma.patch
 	"${FILESDIR}"/${PN}-6.01-gentoo.patch
 	"${FILESDIR}"/${PN}-5.45-gcc.patch
