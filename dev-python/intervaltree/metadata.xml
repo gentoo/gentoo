@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">intervaltree</remote-id>
+		<remote-id type="github">chaimleib/intervaltree</remote-id>
 	</upstream>
 </pkgmetadata>
