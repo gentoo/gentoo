@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -28,6 +28,10 @@ distutils_enable_tests pytest
 src_prepare() {
 	sed -i -e '/mypy/d' tests/conftest.py || die
 	distutils-r1_src_prepare
+
+	# workaround check removed from python3.12
+	# https://github.com/MagicStack/immutables/pull/103
+	export CFLAGS="${CFLAGS} -DHAVE_STDARG_PROTOTYPES=1"
 }
 
 src_test() {
