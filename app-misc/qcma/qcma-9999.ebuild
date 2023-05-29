@@ -14,6 +14,7 @@ SLOT="0"
 
 IUSE="+ffmpeg"
 
+# <ffmpeg-5 for bug #900947
 DEPEND="
 	dev-libs/glib:2
 	dev-qt/qtcore:5

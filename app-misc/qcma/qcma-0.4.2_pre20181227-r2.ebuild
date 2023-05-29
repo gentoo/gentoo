@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ffmpeg"
 
+# <ffmpeg-5 for bug #900947
 DEPEND="
 	dev-libs/glib:2
 	dev-qt/qtcore:5
