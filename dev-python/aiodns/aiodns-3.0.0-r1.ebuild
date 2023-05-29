@@ -22,9 +22,18 @@ RESTRICT="test"
 RDEPEND=">=dev-python/pycares-3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 PATCHES=(
 	# https://github.com/saghul/aiodns/commit/146286601fe80eb4ede8126769e79b5d5e63f64e
 	"${FILESDIR}/${P}-py3.10-tests.patch"
 )
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# Internet changed, https://github.com/saghul/aiodns/issues/107
+		tests.py::DNSTest::test_query_bad_chars
+	)
+
+	epytest tests.py
+}
