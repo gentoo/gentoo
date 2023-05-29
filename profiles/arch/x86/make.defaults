@@ -43,7 +43,3 @@ ABI_X86="32"
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
-
-# Sam James <sam@gentoo.org> (2023-05-29)
-# Temporarily use old default until bug #907377 is done for this arch
-RUBY_TARGETS="ruby30"
