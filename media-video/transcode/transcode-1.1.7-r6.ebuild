@@ -1,4 +1,4 @@
-# Copyright 2002-2022 Gentoo Authors
+# Copyright 2002-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=media-video/ffmpeg-0.10
+	<media-video/ffmpeg-5:=
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faac )
 	alsa? ( media-libs/alsa-lib )
