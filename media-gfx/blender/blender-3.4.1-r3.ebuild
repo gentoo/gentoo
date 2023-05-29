@@ -13,30 +13,29 @@ HOMEPAGE="https://www.blender.org"
 if [[ ${PV} = *9999* ]] ; then
 	# Subversion is needed for downloading unit test files
 	inherit git-r3 subversion
-	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
-	ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
+	EGIT_REPO_URI="https://git.blender.org/blender.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	# Update these between major releases.
 	TEST_TARBALL_VERSION="$(ver_cut 1-2).0"
-	# SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
+	#SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
-IUSE="+bullet +dds +fluid +openexr +tbb
-	alembic collada +color-management cuda +cycles cycles-bin-kernels
-	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k
-	man +nanovdb ndof nls openal +oidn +openmp +openpgl +opensubdiv
-	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl
-	+sndfile test +tiff valgrind wayland X"
+IUSE="+bullet +dds +fluid +openexr +tbb \
+	alembic collada +color-management cuda +cycles \
+	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k \
+	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
+	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile \
+	test +tiff valgrind wayland X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
-	cycles? ( openexr tiff )
+	cycles? ( openexr tiff openimageio )
 	fluid? ( tbb )
 	openvdb? ( tbb )
 	optix? ( cuda )
@@ -59,7 +58,6 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsamplerate
-	>=media-libs/openimageio-2.4.6.0:=
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/libintl
@@ -82,11 +80,11 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-1.4.1 )
+	openimageio? ( >=media-libs/openimageio-2.3.12.0-r3:= )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
-	openpgl? ( media-libs/openpgl )
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0 )
 	openvdb? (
 		>=media-gfx/openvdb-9.0.0:=[nanovdb?]
@@ -97,7 +95,7 @@ RDEPEND="${PYTHON_DEPS}
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
@@ -138,6 +136,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.3.0-fix-build-with-boost-1.81.patch
+)
+
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
@@ -170,16 +172,10 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
 		git-r3_src_unpack
-
-		git-r3_fetch ${ADDONS_EGIT_REPO_URI}
-		git-r3_checkout ${ADDONS_EGIT_REPO_URI} ${S}/scripts/addons
-
 		if use test; then
 			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
 			subversion_fetch ${TESTS_SVN_URL} ../lib/tests
 		fi
-		ASSETS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets
-		subversion_fetch ${ASSETS_SVN_URL} ../lib/assets
 	else
 		default
 		if use test; then
@@ -238,12 +234,11 @@ src_configure() {
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
 		-DWITH_CXX_GUARDEDALLOC=$(usex debug)
 		-DWITH_CYCLES=$(usex cycles)
-		-DWITH_CYCLES_CUDA_BINARIES=$(usex cycles-bin-kernels)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES_DEVICE_OPTIX=$(usex optix)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
 		-DWITH_CYCLES_OSL=$(usex osl)
-		-DWITH_CYCLES_PATH_GUIDING=$(usex openpgl)
+		-DWITH_CYCLES_PATH_GUIDING=OFF
 		-DWITH_CYCLES_STANDALONE=OFF
 		-DWITH_CYCLES_STANDALONE_GUI=OFF
 		-DWITH_DOC_MANPAGE=$(usex man)
@@ -275,6 +270,7 @@ src_configure() {
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENCOLORIO=$(usex color-management)
 		-DWITH_OPENIMAGEDENOISE=$(usex oidn)
+		-DWITH_OPENIMAGEIO=$(usex openimageio)
 		-DWITH_OPENMP=$(usex openmp)
 		-DWITH_OPENSUBDIV=$(usex opensubdiv)
 		-DWITH_OPENVDB=$(usex openvdb)

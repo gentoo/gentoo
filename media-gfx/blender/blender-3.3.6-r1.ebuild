@@ -26,11 +26,11 @@ SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
 IUSE="+bullet +dds +fluid +openexr +tbb \
 	alembic collada +color-management cuda +cycles \
-	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k \
+	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
 	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
 	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile \
-	test +tiff valgrind wayland X"
-RESTRICT="!test? ( test )"
+	test +tiff valgrind"
+RESTRICT="!test? ( test ) test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
@@ -54,7 +54,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	media-libs/freetype:=[brotli]
-	media-libs/libepoxy:=
+	media-libs/glew:*
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsamplerate
@@ -70,6 +70,11 @@ RDEPEND="${PYTHON_DEPS}
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
+	!headless? (
+		x11-libs/libX11
+		x11-libs/libXi
+		x11-libs/libXxf86vm
+	)
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -95,24 +100,12 @@ RDEPEND="${PYTHON_DEPS}
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff:= )
 	valgrind? ( dev-util/valgrind )
-	wayland? (
-		>=dev-libs/wayland-1.12
-		>=dev-libs/wayland-protocols-1.15
-		>=x11-libs/libxkbcommon-0.2.0
-		media-libs/mesa[wayland]
-		sys-apps/dbus
-	)
-	X? (
-		x11-libs/libX11
-		x11-libs/libXi
-		x11-libs/libXxf86vm
-	)
 "
 
 DEPEND="${RDEPEND}
@@ -131,12 +124,12 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 	nls? ( sys-devel/gettext )
-	wayland? (
-		dev-util/wayland-scanner
-	)
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.2.2-support-building-with-musl-libc.patch
+	"${FILESDIR}"/${PN}-3.2.2-Cycles-add-option-to-specify-OptiX-runtime-root-dire.patch
+	"${FILESDIR}"/${PN}-3.2.2-Fix-T100845-wrong-Cycles-OptiX-runtime-compilation-i.patch
 	"${FILESDIR}"/${PN}-3.3.0-fix-build-with-boost-1.81.patch
 )
 
@@ -212,14 +205,13 @@ src_prepare() {
 
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
-		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i tests/CMakeLists.txt || die
+		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i tests/CMakeLists.txt || die
 		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i build_files/cmake/Modules/GTestTesting.cmake || die
 	fi
 }
 
 src_configure() {
 	append-lfs-flags
-	blender_get_version
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
@@ -238,21 +230,14 @@ src_configure() {
 		-DWITH_CYCLES_DEVICE_OPTIX=$(usex optix)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
 		-DWITH_CYCLES_OSL=$(usex osl)
-		-DWITH_CYCLES_PATH_GUIDING=OFF
 		-DWITH_CYCLES_STANDALONE=OFF
 		-DWITH_CYCLES_STANDALONE_GUI=OFF
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
-		-DWITH_GHOST_WAYLAND=$(usex wayland)
-		-DWITH_GHOST_WAYLAND_APP_ID=blender-${BV}
-		-DWITH_GHOST_WAYLAND_DBUS=$(usex wayland)
-		-DWITH_GHOST_WAYLAND_DYNLOAD=OFF
-		-DWITH_GHOST_WAYLAND_LIBDECOR=OFF
-		-DWITH_GHOST_X11=$(usex X)
 		-DWITH_GMP=$(usex gmp)
 		-DWITH_GTESTS=$(usex test)
 		-DWITH_HARU=$(usex pdf)
-		-DWITH_HEADLESS=$($(use X || use wayland) && echo OFF || echo ON)
+		-DWITH_HEADLESS=$(usex headless)
 		-DWITH_INSTALL_PORTABLE=OFF
 		-DWITH_IMAGE_DDS=$(usex dds)
 		-DWITH_IMAGE_OPENEXR=$(usex openexr)
@@ -283,6 +268,7 @@ src_configure() {
 		-DWITH_STATIC_LIBS=OFF
 		-DWITH_SYSTEM_EIGEN3=ON
 		-DWITH_SYSTEM_FREETYPE=ON
+		-DWITH_SYSTEM_GLEW=ON
 		-DWITH_SYSTEM_LZO=ON
 		-DWITH_TBB=$(usex tbb)
 		-DWITH_USD=OFF

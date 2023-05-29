@@ -13,29 +13,30 @@ HOMEPAGE="https://www.blender.org"
 if [[ ${PV} = *9999* ]] ; then
 	# Subversion is needed for downloading unit test files
 	inherit git-r3 subversion
-	EGIT_REPO_URI="https://git.blender.org/blender.git"
+	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
+	ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	# Update these between major releases.
 	TEST_TARBALL_VERSION="$(ver_cut 1-2).0"
-	#SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
+	# SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
-IUSE="+bullet +dds +fluid +openexr +tbb \
-	alembic collada +color-management cuda +cycles \
-	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
-	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
-	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile \
-	test +tiff valgrind"
-RESTRICT="!test? ( test ) test"
+IUSE="+bullet +dds +fluid +openexr +tbb
+	alembic collada +color-management cuda +cycles cycles-bin-kernels
+	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k
+	man +nanovdb ndof nls openal +oidn +openmp +openpgl +opensubdiv
+	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl
+	+sndfile test +tiff valgrind wayland X"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
-	cycles? ( openexr tiff openimageio )
+	cycles? ( openexr tiff )
 	fluid? ( tbb )
 	openvdb? ( tbb )
 	optix? ( cuda )
@@ -54,10 +55,11 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	media-libs/freetype:=[brotli]
-	media-libs/glew:*
+	media-libs/libepoxy:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsamplerate
+	>=media-libs/openimageio-2.4.6.0:=
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/libintl
@@ -70,11 +72,6 @@ RDEPEND="${PYTHON_DEPS}
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
-	!headless? (
-		x11-libs/libX11
-		x11-libs/libXi
-		x11-libs/libXxf86vm
-	)
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -85,11 +82,11 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-1.4.1 )
-	openimageio? ( >=media-libs/openimageio-2.3.12.0-r3:= )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
+	openpgl? ( media-libs/openpgl )
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0 )
 	openvdb? (
 		>=media-gfx/openvdb-9.0.0:=[nanovdb?]
@@ -100,12 +97,24 @@ RDEPEND="${PYTHON_DEPS}
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff:= )
 	valgrind? ( dev-util/valgrind )
+	wayland? (
+		>=dev-libs/wayland-1.12
+		>=dev-libs/wayland-protocols-1.15
+		>=x11-libs/libxkbcommon-0.2.0
+		media-libs/mesa[wayland]
+		sys-apps/dbus
+	)
+	X? (
+		x11-libs/libX11
+		x11-libs/libXi
+		x11-libs/libXxf86vm
+	)
 "
 
 DEPEND="${RDEPEND}
@@ -124,14 +133,10 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 	nls? ( sys-devel/gettext )
+	wayland? (
+		dev-util/wayland-scanner
+	)
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.2-support-building-with-musl-libc.patch
-	"${FILESDIR}"/${PN}-3.2.2-Cycles-add-option-to-specify-OptiX-runtime-root-dire.patch
-	"${FILESDIR}"/${PN}-3.2.2-Fix-T100845-wrong-Cycles-OptiX-runtime-compilation-i.patch
-	"${FILESDIR}"/${PN}-3.3.0-fix-build-with-boost-1.81.patch
-)
 
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -165,10 +170,16 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
 		git-r3_src_unpack
+
+		git-r3_fetch ${ADDONS_EGIT_REPO_URI}
+		git-r3_checkout ${ADDONS_EGIT_REPO_URI} ${S}/scripts/addons
+
 		if use test; then
 			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
 			subversion_fetch ${TESTS_SVN_URL} ../lib/tests
 		fi
+		ASSETS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets
+		subversion_fetch ${ASSETS_SVN_URL} ../lib/assets
 	else
 		default
 		if use test; then
@@ -205,13 +216,14 @@ src_prepare() {
 
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
-		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i tests/CMakeLists.txt || die
+		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i tests/CMakeLists.txt || die
 		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i build_files/cmake/Modules/GTestTesting.cmake || die
 	fi
 }
 
 src_configure() {
 	append-lfs-flags
+	blender_get_version
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
@@ -226,18 +238,26 @@ src_configure() {
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
 		-DWITH_CXX_GUARDEDALLOC=$(usex debug)
 		-DWITH_CYCLES=$(usex cycles)
+		-DWITH_CYCLES_CUDA_BINARIES=$(usex cycles-bin-kernels)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES_DEVICE_OPTIX=$(usex optix)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
 		-DWITH_CYCLES_OSL=$(usex osl)
+		-DWITH_CYCLES_PATH_GUIDING=$(usex openpgl)
 		-DWITH_CYCLES_STANDALONE=OFF
 		-DWITH_CYCLES_STANDALONE_GUI=OFF
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
+		-DWITH_GHOST_WAYLAND=$(usex wayland)
+		-DWITH_GHOST_WAYLAND_APP_ID=blender-${BV}
+		-DWITH_GHOST_WAYLAND_DBUS=$(usex wayland)
+		-DWITH_GHOST_WAYLAND_DYNLOAD=OFF
+		-DWITH_GHOST_WAYLAND_LIBDECOR=OFF
+		-DWITH_GHOST_X11=$(usex X)
 		-DWITH_GMP=$(usex gmp)
 		-DWITH_GTESTS=$(usex test)
 		-DWITH_HARU=$(usex pdf)
-		-DWITH_HEADLESS=$(usex headless)
+		-DWITH_HEADLESS=$($(use X || use wayland) && echo OFF || echo ON)
 		-DWITH_INSTALL_PORTABLE=OFF
 		-DWITH_IMAGE_DDS=$(usex dds)
 		-DWITH_IMAGE_OPENEXR=$(usex openexr)
@@ -255,7 +275,6 @@ src_configure() {
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENCOLORIO=$(usex color-management)
 		-DWITH_OPENIMAGEDENOISE=$(usex oidn)
-		-DWITH_OPENIMAGEIO=$(usex openimageio)
 		-DWITH_OPENMP=$(usex openmp)
 		-DWITH_OPENSUBDIV=$(usex opensubdiv)
 		-DWITH_OPENVDB=$(usex openvdb)
@@ -268,7 +287,6 @@ src_configure() {
 		-DWITH_STATIC_LIBS=OFF
 		-DWITH_SYSTEM_EIGEN3=ON
 		-DWITH_SYSTEM_FREETYPE=ON
-		-DWITH_SYSTEM_GLEW=ON
 		-DWITH_SYSTEM_LZO=ON
 		-DWITH_TBB=$(usex tbb)
 		-DWITH_USD=OFF
