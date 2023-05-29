@@ -16,10 +16,11 @@ IUSE="pam selinux truetype"
 
 DEPEND="
 	virtual/libcrypt:=
-	>=x11-wm/windowmaker-0.70.0
+	x11-libs/libX11
+	x11-libs/libXau
+	x11-libs/libXdmcp
 	x11-libs/libXmu
-	x11-libs/libXpm
-	x11-libs/libXt
+	x11-wm/windowmaker
 	pam? ( sys-libs/pam )
 	truetype? ( x11-libs/libXft )
 "
