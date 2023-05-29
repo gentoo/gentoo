@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-libs/expat
-	net-libs/libmicrohttpd
+	net-libs/libmicrohttpd:=
 	net-misc/curl
 "
 DEPEND="${RDEPEND}"

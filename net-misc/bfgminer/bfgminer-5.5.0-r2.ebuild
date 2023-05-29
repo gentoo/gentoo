@@ -83,7 +83,7 @@ DEPEND="
 		dev-libs/hidapi
 	)
 	proxy_getwork? (
-		net-libs/libmicrohttpd
+		net-libs/libmicrohttpd:=
 	)
 	proxy_stratum? (
 		dev-libs/libevent

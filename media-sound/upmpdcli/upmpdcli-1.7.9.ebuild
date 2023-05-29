@@ -17,7 +17,7 @@ IUSE="thirdparty"
 DEPEND="
 	dev-libs/jsoncpp
 	media-libs/libmpdclient
-	net-libs/libmicrohttpd
+	net-libs/libmicrohttpd:=
 	net-libs/libupnpp
 "
 RDEPEND="
