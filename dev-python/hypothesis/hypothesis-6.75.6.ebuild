@@ -67,6 +67,7 @@ python_test() {
 		)
 	fi
 	if [[ ${EPYTHON} == python3.12 ]]; then
+		# cpython bug: https://github.com/python/cpython/issues/105042
 		EPYTEST_DESELECT+=(
 			hypothesis-python/tests/cover/test_lookup.py
 			hypothesis-python/tests/cover/test_type_lookup.py
