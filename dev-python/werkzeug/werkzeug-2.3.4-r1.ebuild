@@ -48,6 +48,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/pallets/werkzeug/pull/2709
+	"${FILESDIR}/${P}-iri-bytes.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=()
 	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
