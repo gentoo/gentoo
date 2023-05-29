@@ -25,7 +25,7 @@ S="${WORKDIR}/freenet-build0${PV#*p}"
 # needed for pebble is 'BSD' in Gentoo.
 LICENSE="GPL-2+ GPL-2 MIT BSD-2 BSD Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="+nss"
 
 CP_DEPEND="
