@@ -9,7 +9,7 @@ DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
 SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="
@@ -64,7 +64,7 @@ DEPEND="
 		>=media-libs/libcddb-1.2.1
 	)
 	cue? ( media-libs/libcue:= )
-	ffmpeg? ( >=media-video/ffmpeg-0.7.3 )
+	ffmpeg? ( >=media-video/ffmpeg-0.7.3:= )
 	flac? (
 		>=media-libs/flac-1.2.1-r1:=
 		>=media-libs/libvorbis-1.0
@@ -85,7 +85,7 @@ DEPEND="
 	opengl? ( dev-qt/qtopengl:5 )
 	openmpt? ( media-libs/libopenmpt )
 	opus? ( media-libs/opusfile )
-	pipewire? ( media-video/pipewire )
+	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
