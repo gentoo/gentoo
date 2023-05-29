@@ -45,6 +45,12 @@ BDEPEND+="
 	)
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# regression due to Internet changing (probably)
+	# https://github.com/saghul/pycares/issues/187
+	tests/test_all.py::DNSTest::test_query_class_chaos
+)
 
 export PYCARES_USE_SYSTEM_LIB=1
