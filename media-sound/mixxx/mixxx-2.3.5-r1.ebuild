@@ -6,10 +6,10 @@ EAPI=8
 inherit cmake xdg udev
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
-HOMEPAGE="https://www.mixxx.org/"
-if [[ "${PV}" == *9999 ]] ; then
+HOMEPAGE="https://mixxx.org/"
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
-	if [[ "${PV}" == ?.?.9999 ]] ; then
+	if [[ ${PV} == ?.?.9999 ]] ; then
 		EGIT_BRANCH=${PV%.9999}
 	fi
 	EGIT_REPO_URI="https://github.com/mixxxdj/${PN}.git"
@@ -70,9 +70,9 @@ RDEPEND="
 	mp3? ( media-libs/libmad )
 	mp4? ( media-libs/libmp4v2:= )
 	opus? (	media-libs/opusfile )
-	qtkeychain? ( dev-libs/qtkeychain )
+	qtkeychain? ( dev-libs/qtkeychain:=[qt5(+)] )
 	wavpack? ( media-sound/wavpack )
-	"
+"
 	# libshout-idjc-2.4.6 is required. Please check and re-add once it's
 	# available in ::gentoo
 	# Meanwhile we're using the bundled libshout-idjc. See bug #775443
@@ -81,9 +81,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
 "
-BDEPEND="virtual/pkgconfig
+BDEPEND="
 	dev-qt/qttest:5
-	dev-qt/qtxmlpatterns:5"
+	dev-qt/qtxmlpatterns:5
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.0-docs.patch
@@ -106,10 +108,6 @@ mixxx_set_globals() {
 }
 mixxx_set_globals
 
-src_prepare() {
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		# Not available on Linux yet and requires additional deps
@@ -131,17 +129,12 @@ src_configure() {
 		-DWAVPACK="$(usex wavpack on off)"
 	)
 
-	if [[ "${PV}" == 9999 ]] ; then
+	if [[ ${PV} == 9999 ]] ; then
 		mycmakeargs+=(
 			-DENGINEPRIME="OFF"
-
 		)
 	fi
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
 }
 
 src_install() {
