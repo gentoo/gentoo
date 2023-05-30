@@ -53,7 +53,7 @@ COMMON_DEPEND="
 	lame? ( media-sound/lame )
 	nvenc? ( amd64? ( media-libs/nv-codec-headers ) )
 	opus? ( media-libs/opus )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
