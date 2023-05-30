@@ -10,22 +10,18 @@ inherit java-pkg-2 java-pkg-simple systemd verify-sig
 
 DESCRIPTION="An encrypted network without censorship"
 HOMEPAGE="https://freenetproject.org/"
-# Currently we bundle a binary version of pebble, see bug #905005
 PEV="3.1.6"
 SRC_URI="https://github.com/hyphanet/fred/releases/download/build0${PV#*p}/freenet-build0${PV#*p}-source.tar.bz2
 	https://github.com/hyphanet/seedrefs/archive/build01480.tar.gz -> seednodes-0.7.5_p1480.tar.gz
-	https://repo1.maven.org/maven2/io/pebbletemplates/pebble/${PEV}/pebble-${PEV}.jar
 	mirror://gentoo/freenet-ant-1.7.1.jar
 	verify-sig? (
 		https://github.com/hyphanet/fred/releases/download/build0${PV#*p}/freenet-build0${PV#*p}-source.tar.bz2.sig
 	)"
 S="${WORKDIR}/freenet-build0${PV#*p}"
 
-# 'SPDX-License-Identifier: BSD-3-Clause'
-# needed for pebble is 'BSD' in Gentoo.
-LICENSE="GPL-2+ GPL-2 MIT BSD-2 BSD Apache-2.0"
+LICENSE="GPL-2+ GPL-2 MIT BSD-2 Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+nss"
 
 CP_DEPEND="
@@ -33,12 +29,13 @@ CP_DEPEND="
 	dev-java/commons-compress:0
 	dev-java/fec:0
 	dev-java/freenet-ext:29
+	dev-java/java-service-wrapper:0
 	dev-java/jbitcollider-core:0
 	dev-java/jna:4
 	dev-java/lzma:0
 	dev-java/lzmajio:0
 	dev-java/mersennetwister:0
-	dev-java/java-service-wrapper:0
+	dev-java/pebble:0
 	dev-java/unbescape:0
 "
 
@@ -78,8 +75,6 @@ PATCHES=(
 )
 
 JAVA_CLASSPATH_EXTRA="java-service-wrapper"
-# pebble packaging resistant
-JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/pebble-${PEV}.jar"
 JAVA_RESOURCE_DIRS="res"
 JAVA_SRC_DIR="src"
 JAVA_TEST_GENTOO_CLASSPATH="
