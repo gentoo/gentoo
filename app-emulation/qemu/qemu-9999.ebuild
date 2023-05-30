@@ -13,7 +13,7 @@ QEMU_DOCS_VERSION=$(ver_cut 1-3)
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11,12} )
 PYTHON_REQ_USE="ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.2.0"
@@ -28,7 +28,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_SUBMODULES=(
 		tests/fp/berkeley-softfloat-3
 		tests/fp/berkeley-testfloat-3
-		ui/keycodemapdb
+		subprojects/keycodemapdb
 	)
 	inherit git-r3
 	SRC_URI=""
@@ -56,7 +56,7 @@ IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
 	+fdt fuse glusterfs +gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg
 	lzo multipath
-	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs
+	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs pipewire
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
 	smartcard snappy spice ssh static-user systemtap test udev usb
@@ -203,6 +203,7 @@ SOFTMMU_TOOLS_DEPEND="
 		media-libs/mesa[egl(+),gbm(+)]
 	)
 	pam? ( sys-libs/pam )
+	pipewire? ( media-video/pipewire )
 	png? ( >=media-libs/libpng-1.6.34:=[static-libs(+)] )
 	pulseaudio? ( media-libs/libpulse )
 	rbd? ( sys-cluster/ceph )
@@ -301,7 +302,6 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.0-disable-keymap.patch
-	"${FILESDIR}"/${PN}-8.0.0-make.patch
 	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
 	"${FILESDIR}"/${PN}-8.1.0-also-build-virtfs-proxy-helper.patch
 )
@@ -449,7 +449,7 @@ src_prepare() {
 	sed -i -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' configure || die
 
 	# Remove bundled modules
-	rm -r dtc roms/*/ || die
+	rm -r subprojects/dtc roms/*/ || die
 }
 
 ##
@@ -504,6 +504,7 @@ qemu_src_configure() {
 		$(use_enable jack)
 		$(use_enable nls gettext)
 		$(use_enable oss)
+		$(use_enable pipewire)
 		$(use_enable plugins)
 		$(use_enable pulseaudio pa)
 		$(use_enable selinux)
