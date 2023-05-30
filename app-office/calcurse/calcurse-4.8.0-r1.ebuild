@@ -33,6 +33,8 @@ DEPEND="
 	${RDEPEND}
 "
 
+BDEPEND="virtual/pkgconfig"
+
 src_configure() {
 	local myconf=(
 		$(use_enable doc docs)
