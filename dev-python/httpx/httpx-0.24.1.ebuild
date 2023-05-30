@@ -39,6 +39,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	test? (
+		app-arch/brotli[python,${PYTHON_USEDEP}]
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
