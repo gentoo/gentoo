@@ -3,7 +3,7 @@
 
 EAPI=7
 GST_ORG_MODULE=gst-plugins-bad
-PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit gstreamer-meson python-any-r1
 
 DESCRIPTION="OpenCV elements for GStreamer"
@@ -16,9 +16,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
-#PATCHES=(
-#	"${FILESDIR}"/gst-plugins-bad-1.20.1-use-system-libs-opencv.patch
-#)
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-1.22.3-use-system-libs-opencv.patch
+)
 
 src_prepare() {
 	default
