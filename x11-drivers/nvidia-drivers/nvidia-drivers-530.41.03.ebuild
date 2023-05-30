@@ -238,9 +238,6 @@ src_compile() {
 	if use modules; then
 		local o_cflags=${CFLAGS} o_cxxflags=${CXXFLAGS} o_ldflags=${LDFLAGS}
 
-		# TODO?: may make sense to switch to one of kernel/drivers/video:,
-		# nvidia: or use the default (aka extra) -- first is most correct but
-		# users may prefer these easier to find and not mixed with kernel's
 		local modlistargs=video:kernel
 		if use kernel-open; then
 			modlistargs+=-module-source:kernel-module-source/kernel-open
