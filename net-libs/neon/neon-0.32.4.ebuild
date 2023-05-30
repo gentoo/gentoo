@@ -1,4 +1,4 @@
-# Copyright 2001-2022 Gentoo Authors
+# Copyright 2001-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -43,6 +43,11 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 DOCS=( AUTHORS BUGS NEWS README.md THANKS TODO )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.32.4-dash.patch #832851
+	"${FILESDIR}"/${PN}-0.32.4-libressl.patch #903001
+)
 
 src_prepare() {
 	if use gnutls; then
