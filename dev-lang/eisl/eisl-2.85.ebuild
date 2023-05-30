@@ -7,12 +7,18 @@ inherit toolchain-funcs
 
 DESCRIPTION="Interpreter and compiler compatible with the ISLisp standard"
 HOMEPAGE="https://github.com/sasagawa888/eisl/"
-SRC_URI="https://github.com/sasagawa888/eisl/archive/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/sasagawa888/${PN}.git"
+else
+	SRC_URI="https://github.com/sasagawa888/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
+	KEYWORDS="amd64 ~x86"
+fi
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
 RESTRICT="test"  # Tests run cppcheck (and fail)
 
 DOCS=( README{,-ja}.md documents )
