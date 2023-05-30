@@ -5,7 +5,7 @@ EAPI=8
 inherit go-module systemd tmpfiles
 
 # make sure this gets updated for every bump
-GIT_COMMIT=436955cb
+GIT_COMMIT=0d8a024e
 
 DESCRIPTION="The official GitLab Runner, written in Go"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-runner"
