@@ -8,11 +8,11 @@ EAPI=8
 NETATOP_VER=3.1
 
 # Controls 'netatop' kernel module
-MODULES_OPTIONAL_USE="modules"
-NETATOP_P=net${PN}-${NETATOP_VER}
+MODULES_OPTIONAL_IUSE="modules"
+NETATOP_P=netatop-${NETATOP_VER}
 NETATOP_S="${WORKDIR}"/${NETATOP_P}
 
-inherit linux-info linux-mod systemd toolchain-funcs
+inherit linux-mod-r1 systemd toolchain-funcs
 
 DESCRIPTION="Resource-specific view of processes"
 HOMEPAGE="https://www.atoptool.nl/ https://github.com/Atoptool/atop"
@@ -26,8 +26,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-l
 
 RDEPEND="
 	sys-libs/ncurses:=
+	sys-libs/zlib
 	>=sys-process/acct-6.6.4-r1
-	modules? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -48,7 +48,7 @@ src_prepare() {
 
 	if use modules ; then
 		cd "${WORKDIR}"/${NETATOP_P} || die
-		eapply -p1 "${FILESDIR}"/${PN}-2.7.0-netatop-makefile.patch
+		eapply "${FILESDIR}"/${PN}-2.9.0-netatop-makefile.patch
 		cd "${S}" || die
 	fi
 
@@ -57,31 +57,27 @@ src_prepare() {
 	# bug #191926
 	sed -i 's: root : :' atop.cronsysv || die
 
-	# prefixify
+	# Prefixify
 	sed -i "s:/\(usr\|etc\|var\):${EPREFIX}/\1:g" Makefile || die
-}
-
-src_configure() {
-	default
-
-	BUILD_TARGETS="netatop.ko"
-	MODULE_NAMES="netatop(:${NETATOP_S}/module)"
 }
 
 src_compile() {
 	default
 
-	linux-mod_src_compile
-}
-
-src_install() {
-	linux-mod_src_install
+	local modlist=( "netatop=:../${NETATOP_P}/module::netatop.ko" )
+	linux-mod-r1_src_compile
 
 	if use modules ; then
 		# netatop's Makefile tries to build the kernel module for us
 		# so let's just replicate parts of it here.
 		emake -C "${NETATOP_S}"/daemon all
+	fi
+}
 
+src_install() {
+	linux-mod-r1_src_install
+
+	if use modules ; then
 		dosbin "${NETATOP_S}"/daemon/netatopd
 		doman "${NETATOP_S}"/man/*
 
