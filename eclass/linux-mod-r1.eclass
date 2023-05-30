@@ -1219,8 +1219,19 @@ _modules_update_depmod() {
 
 	einfo "Updating module dependencies for kernel ${KV_FULL} ..."
 	if [[ -f ${map} ]]; then
-		nonfatal edob depmod -ae -F "${map}" -b "${EROOT:-/}" "${KV_FULL}" &&
-			return 0
+		local depmodargs=( -ae -F "${map}" "${KV_FULL}" )
+
+		# for nicer postinst display, keep command shorter if EROOT is unset
+		[[ ${EROOT} ]] &&
+			depmodargs+=(
+				-b "${EROOT}"
+
+				# EROOT from -b is not used when looking for configuration
+				# directories, so pass the whole list from kmod's tools/depmod.c
+				--config="${EROOT}"/{etc,run,usr/local/lib,lib}/depmod.d
+			)
+
+		nonfatal edob depmod "${depmodargs[@]}" && return 0
 	else
 		eerror
 		eerror "System.map for kernel ${KV_FULL} was not found, may be due to the"
