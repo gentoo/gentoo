@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit cmake-multilib git-r3
+inherit cmake-multilib
 
 DESCRIPTION="Library implementing the SSH2 protocol"
 HOMEPAGE="https://www.libssh2.org"
-EGIT_REPO_URI="https://github.com/libssh2/libssh2"
+SRC_URI="https://www.libssh2.org/download/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="gcrypt mbedtls test zlib"
 REQUIRED_USE="?? ( gcrypt mbedtls )"
 RESTRICT="!test? ( test )"
@@ -26,7 +26,9 @@ RDEPEND="
 	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.0-mansyntax_sh.patch
@@ -53,5 +55,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -name '*.a' -delete || die
 }
