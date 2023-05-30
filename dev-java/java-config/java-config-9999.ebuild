@@ -7,7 +7,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1
+inherit distutils-r1 prefix
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
@@ -31,6 +31,11 @@ DEPEND="test? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 RDEPEND="
 	sys-apps/baselayout-java
 	sys-apps/portage[${PYTHON_USEDEP}]"
+
+python_configure_all() {
+	# setup.py fails to update this file
+	eprefixify src/launcher.bash
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
