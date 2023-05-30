@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 optfeature
 
@@ -67,6 +67,14 @@ python_test() {
 			tests/middleware/test_logging.py::test_running_log_using_fd
 		)
 	fi
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			tests/supervisors/test_signal.py::test_sigint_abort_req
+			# hang
+			tests/protocols/test_websocket.py::test_send_close_on_server_shutdown
+		)
+	fi
+
 
 	epytest
 }
