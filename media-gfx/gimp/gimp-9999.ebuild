@@ -157,7 +157,7 @@ src_configure() {
 	use vala && vala_setup
 
 	local emesonargs=(
-		-Denable-default-bin=true
+		-Denable-default-bin=enabled
 
 		-Dcheck-update=no
 		-Denable-multiproc=true
