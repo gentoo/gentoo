@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit multilib multilib-minimal
 
-DESCRIPTION="A library to play a wide range of module formats"
-HOMEPAGE="http://mikmod.sourceforge.net/"
+DESCRIPTION="Library to play a wide range of module formats"
+HOMEPAGE="https://mikmod.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mikmod/${P}.tar.gz"
 
 LICENSE="LGPL-2+ LGPL-2.1"
@@ -16,15 +16,17 @@ IUSE="+alsa coreaudio cpu_flags_ppc_altivec debug nas openal oss pulseaudio cpu_
 
 REQUIRED_USE="|| ( alsa coreaudio nas openal oss pulseaudio )"
 
-RDEPEND="
-	!${CATEGORY}/${PN}:2
+COMMON_DEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2:=[${MULTILIB_USEDEP}] )
 	nas? ( >=media-libs/nas-1.9.4:=[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1-r1[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-5.0[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	oss? ( virtual/os-headers )
+"
+RDEPEND="${COMMON_DEPEND}
+	!${CATEGORY}/${PN}:2
 "
 BDEPEND="sys-apps/texinfo"
 
