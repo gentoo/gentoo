@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of XTABLES_ADDONS USE-EXPANDED variables.
 # Keep it sorted.
 
 account - ACCOUNT target is a high performance accounting system for large local networks
+asn - match a packet by its source or destination Autonomous System Number
 chaos - CHAOS target causes confusion on the other end by doing odd things with incoming packets
 condition - matches if a specific condition variable is (un)set
 delude - DELUDE target will reply to a SYN packet with SYN-ACK, and to all other packets with an RST
