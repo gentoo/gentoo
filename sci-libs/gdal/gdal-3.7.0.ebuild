@@ -29,7 +29,6 @@ BDEPEND="
 	java? (
 		dev-java/ant-core
 		dev-lang/swig
-		>=virtual/jdk-1.8:*
 	)
 	python? (
 		dev-lang/swig
@@ -60,6 +59,9 @@ DEPEND="
 	gml? ( >=dev-libs/xerces-c-3.1 )
 	heif? ( media-libs/libheif:= )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[cxx,szip] )
+	java? (
+		>=virtual/jdk-1.8:*
+	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lzma? ( || (
@@ -212,9 +214,6 @@ src_configure() {
 		# Bindings
 		-DBUILD_PYTHON_BINDINGS=$(usex python)
 		-DBUILD_JAVA_BINDINGS=$(usex java)
-		$(usev java -DJAVA_AWT_LIBRARY=/etc/java-config-2/current-system-vm/lib)
-		$(usev java -DJAVA_JVM_LIBRARY=/etc/java-config-2/current-system-vm/lib)
-		$(usev java -DJAVA_INCLUDE_PATH=/etc/java-config-2/current-system-vm/include)
 		# bug #845369
 		-DBUILD_CSHARP_BINDINGS=OFF
 
