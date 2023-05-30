@@ -1058,7 +1058,13 @@ _modules_sanity_kernelversion() {
 			ewarn "with the current kernel (${KV_FULL}), it was either hardly"
 			ewarn "tested or is known broken. It is recommended to use one of:"
 			ewarn
-			ewarn "    <=sys-kernel/gentoo-kernel-${max}"
+			# fwiw we do not know what is *actually* used or wanted even with
+			# the USE, so stay a bit vague and always mention both dist+sources
+			if use dist-kernel; then
+				ewarn "    <=virtual/dist-kernel-${max} or"
+			else
+				ewarn "    <=sys-kernel/gentoo-kernel-${max} or"
+			fi
 			ewarn "    <=sys-kernel/gentoo-sources-${max}"
 			ewarn
 			ewarn "or equivalent rather than file downstream bug reports if run into"
