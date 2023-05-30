@@ -318,7 +318,9 @@ multilib_src_test() {
 	# Note: if needed, we can skip specific tests. See e.g. Fedora's packaging
 	# or just read https://github.com/curl/curl/tree/master/tests#run.
 	# Note: we don't run the testsuite for cross-compilation.
-	multilib_is_native_abi && emake test TFLAGS="-n -v -a -k -am -p"
+	# The network sandbox causes tests 241 and 1083 to fail; these are typically skipped
+	# as most gentoo users don't have an 'ip6-localhost'
+	multilib_is_native_abi && emake test TFLAGS="-n -v -a -k -am -p !241 !1083"
 }
 
 multilib_src_install_all() {
