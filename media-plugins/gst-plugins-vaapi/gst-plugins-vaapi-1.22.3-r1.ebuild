@@ -50,7 +50,7 @@ GL_DEPS="
 RDEPEND="
 	>=media-libs/gst-plugins-base-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-bad-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
-	>=media-libs/libva-1.4.0:=[drm(+)?,wayland?,X?,${MULTILIB_USEDEP}]
+	>=media-libs/libva-1.10.0:=[drm(+)?,wayland?,X?,${MULTILIB_USEDEP}]
 	drm? (
 		>=virtual/libudev-208:=[${MULTILIB_USEDEP}]
 		>=x11-libs/libdrm-2.4.98[${MULTILIB_USEDEP}]
@@ -73,22 +73,22 @@ RESTRICT="test"
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dwith_encoders=yes
-		-Dwith_drm=$(usex drm yes no)
-		-Dwith_x11=$(usex X yes no)
-		-Dwith_wayland=$(usex wayland yes no)
+		-Dencoders=enabled
+		$(meson_feature drm)
+		$(meson_feature X x11)
+		$(meson_feature wayland)
 	)
 
 	if use opengl || use gles2; then
-		emesonargs+=( -Dwith_egl=$(usex egl yes no) )
+		emesonargs+=( $(meson_feature egl) )
 	else
-		emesonargs+=( -Dwith_egl=no )
+		emesonargs+=( -Degl=disabled )
 	fi
 
 	if use opengl && use X; then
-		emesonargs+=( -Dwith_glx=yes )
+		emesonargs+=( -Dglx=enabled )
 	else
-		emesonargs+=( -Dwith_glx=no )
+		emesonargs+=( -Dglx=disabled )
 	fi
 
 	# Workaround EGL/eglplatform.h being built with X11 present
