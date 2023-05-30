@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -75,6 +75,14 @@ python_test() {
 				tests/test_private_attributes.py::test_private_attribute_factory
 				tests/test_private_attributes.py::test_private_attribute_multiple_inheritance
 				tests/test_private_attributes.py::test_underscore_attrs_are_private
+			)
+			;;
+		python3.12)
+			EPYTEST_DESELECT+=(
+				tests/test_abc.py::test_model_subclassing_abstract_base_classes_without_implementation_raises_exception
+				tests/test_generics.py::test_partial_specification_name
+				tests/test_generics.py::test_parse_generic_json
+				tests/test_types.py::test_secretfield
 			)
 			;;
 	esac
