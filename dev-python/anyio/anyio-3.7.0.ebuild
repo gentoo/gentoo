@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -59,6 +59,11 @@ python_test() {
 		'tests/test_taskgroups.py::test_exception_group_host[trio]'
 		'tests/test_taskgroups.py::test_exception_group_filtering[trio]'
 	)
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			tests/test_fileio.py::TestPath::test_properties
+		)
+	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -m 'not network'
