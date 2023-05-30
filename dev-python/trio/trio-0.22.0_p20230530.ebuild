@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -28,7 +28,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/attrs-20.1.0[${PYTHON_USEDEP}]
-	>=dev-python/exceptiongroup-1.0.0_rc9[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/exceptiongroup-1.0.0_rc9[${PYTHON_USEDEP}]
+	' 3.{9..10})
 	dev-python/idna[${PYTHON_USEDEP}]
 	dev-python/outcome[${PYTHON_USEDEP}]
 	dev-python/sniffio[${PYTHON_USEDEP}]
@@ -65,6 +67,11 @@ python_test() {
 		# incompatible ipython version?
 		trio/_core/tests/test_multierror.py::test_ipython_exc_handler
 	)
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			trio/_core/_tests/test_run.py::test_nursery_cancel_doesnt_create_cyclic_garbage
+		)
+	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p trio._tests.pytest_plugin  -m "not redistributors_should_skip"
