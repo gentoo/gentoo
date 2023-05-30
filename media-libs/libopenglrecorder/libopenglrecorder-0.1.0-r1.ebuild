@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake-multilib
 
@@ -14,19 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="openh264 sound vpx"
 
-BDEPEND="
-	virtual/pkgconfig
-"
 DEPEND="
 	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	openh264? ( media-libs/openh264[${MULTILIB_USEDEP}] )
 	sound? (
+		media-libs/libpulse[${MULTILIB_USEDEP}]
 		media-libs/libvorbis[${MULTILIB_USEDEP}]
-		media-sound/pulseaudio[${MULTILIB_USEDEP}]
 	)
 	vpx? ( media-libs/libvpx:0=[${MULTILIB_USEDEP}] )"
 
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( CHANGELOG.md README.md USAGE.md )
 
