@@ -22,7 +22,6 @@
 #     - try without :target first, it is now almost always unnecessary
 #     - srcdir defaults to the current directory, and note that paths
 #       can be relative to that (should typically *not* pass ${S})
-#     - "name(misc)" or "(extra)" are fine just as modlist=( name )
 #  2. BUILD_PARAMS and/or BUILD_FIXES
 #       -> local modargs=( VAR="${KV_OUT_DIR}" ... )
 #     - CC/LD and similar are unneeded, always passed (V=1 too)
@@ -335,6 +334,10 @@ linux-mod-r1_pkg_setup() {
 # INSTALL_MOD_DIR(Makefile) or DEST_MODULE_LOCATION(dkms.conf) if it
 # exists, but it can be anything.
 #  -> Default: extra
+#
+# Warning: Changing this location may leave stale modules until a
+# kernel upgrade as the package manager does not typically delete
+# old modules and only does overwrite on rebuilds.
 #
 # > source-dir: Directory containing the Makefile to build the module.
 # Path can be relative to the current directory or absolute.
