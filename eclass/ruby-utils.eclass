@@ -33,10 +33,10 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 # provide for a better first installation experience.
 
 # All stable RUBY_TARGETS
-RUBY_TARGETS_PREFERENCE="ruby30 "
+RUBY_TARGETS_PREFERENCE="ruby31 ruby30 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby31 ruby32"
+RUBY_TARGETS_PREFERENCE+="ruby32"
 
 
 _ruby_implementation_depend() {
