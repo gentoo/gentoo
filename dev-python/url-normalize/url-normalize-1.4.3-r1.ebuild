@@ -4,16 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
 DESCRIPTION="URL normalization for Python"
 HOMEPAGE="
 	https://github.com/niksite/url-normalize/
-	https://pypi.org/project/url-normalize/"
+	https://pypi.org/project/url-normalize/
+"
 SRC_URI="
 	https://github.com/niksite/url-normalize/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
