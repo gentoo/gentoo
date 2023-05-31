@@ -75,7 +75,6 @@ python_test() {
 		)
 	fi
 
-
 	epytest
 }
 
