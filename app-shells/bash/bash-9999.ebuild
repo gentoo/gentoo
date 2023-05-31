@@ -33,7 +33,7 @@ is_release() {
 
 # The version of readline this bash normally ships with.
 # Note: right now, we don't use the system copy of readline for bash for non-releases.
-READLINE_VER="8.2"
+READLINE_VER="8.2_p1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
@@ -92,8 +92,8 @@ RDEPEND="
 	${DEPEND}
 "
 # We only need yacc when the .y files get patched (bash42-005, bash51-011)
-#BDEPEND="app-alternatives/yacc"
 BDEPEND="
+	app-alternatives/yacc
 	pgo? ( dev-util/gperf )
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )
 "
@@ -106,7 +106,7 @@ QA_CONFIGURE_OPTIONS="--disable-static"
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
-	# Patches from Chet sent to bashbug ml
+	# Patches from Chet sent to bash-bug ml
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
 )
 
@@ -162,6 +162,9 @@ src_prepare() {
 	# Avoid regenerating docs after patches, bug #407985
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/* || die
+
+	# Sometimes hangs (more noticeable w/ pgo), bug #907403.
+	rm tests/run-jobs || die
 
 	eapply -p0 "${PATCHES[@]}"
 	eapply_user
