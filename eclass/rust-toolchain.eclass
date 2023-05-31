@@ -40,6 +40,7 @@ rust_abi() {
 		armv6j*s*)    echo arm-unknown-linux-gnueabi;;
 		armv7a*h*)    echo armv7-unknown-linux-gnueabihf;;
 		i?86*)        echo i686-unknown-linux-gnu;;
+		mips64el*)    echo mips64el-unknown-linux-gnuabi64;;
 		mips64*)      echo mips64-unknown-linux-gnuabi64;;
 		mipsel*)      echo mipsel-unknown-linux-gnu;;
 		mips*)        echo mips-unknown-linux-gnu;;
@@ -124,6 +125,7 @@ rust_all_arch_uris()
 		$(rust_arch_uri mips-unknown-linux-gnu          "$@")
 		$(rust_arch_uri mipsel-unknown-linux-gnu        "$@")
 		$(rust_arch_uri mips64-unknown-linux-gnuabi64   "$@")
+		$(rust_arch_uri mips64el-unknown-linux-gnuabi64 "$@")
 	)
 	ppc? ( $(rust_arch_uri powerpc-unknown-linux-gnu "$@") )
 	ppc64? (
