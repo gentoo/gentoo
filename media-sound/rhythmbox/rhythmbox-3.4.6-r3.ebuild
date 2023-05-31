@@ -62,7 +62,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-soup:1.0
-	media-plugins/gst-plugins-libmms:1.0
 	|| (
 		media-plugins/gst-plugins-cdparanoia:1.0
 		media-plugins/gst-plugins-cdio:1.0
