@@ -1,0 +1,17 @@
+Remove the usage of assertRaisesRegexp unit test alias removed in Python 3.12
+
+Upstream-PR: https://github.com/wolever/parameterized/pull/169
+
+diff --git a/parameterized/test.py b/parameterized/test.py
+index 6c71f79..498c591 100644
+--- a/parameterized/test.py
++++ b/parameterized/test.py
+@@ -35,7 +35,7 @@ def assert_raises_regexp_decorator(expected_exception, expected_regexp):
+     def func_decorator(func):
+         @wraps(func)
+         def wrapper(self, *args, **kwargs):
+-            with self.assertRaisesRegexp(expected_exception, expected_regexp):
++            with self.assertRaisesRegex(expected_exception, expected_regexp):
+                 func(self, *args, **kwargs)
+ 
+         return wrapper
