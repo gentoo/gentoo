@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Python Data Validation for Humans"
 HOMEPAGE="
-	https://github.com/kvesteri/validators/
+	https://github.com/python-validators/validators/
 	https://pypi.org/project/validators/
 "
 
