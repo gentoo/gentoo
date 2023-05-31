@@ -13,7 +13,9 @@ LICENSE="LGPL-2.1+"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+orc"
 
+# Old media-libs/gst-plugins-ugly blocker for xingmux moving from ugly->good
 RDEPEND="
+	!<media-libs/gst-plugins-ugly-1.22.3
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
