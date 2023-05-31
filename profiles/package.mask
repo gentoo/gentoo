@@ -285,6 +285,7 @@ dev-java/resin-servlet-api
 # - sys-apps/openrc: https://github.com/OpenRC/openrc/issues/619
 =sys-libs/ncurses-6.4_p20230424
 =sys-libs/ncurses-6.4_p20230506
+=sys-libs/ncurses-6.4_p20230527
 
 # Eray Aslan <eras@gentoo.org> (2023-04-12)
 # Mask experimental software
