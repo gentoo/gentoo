@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic qmake-utils
+inherit flag-o-matic multibuild qmake-utils
 
 DESCRIPTION="Qt port of Neil Hodgson's Scintilla C++ editor control"
 HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/intro"
@@ -20,16 +20,31 @@ S=${WORKDIR}/${MY_P}
 LICENSE="GPL-3"
 SLOT="0/15"
 KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~riscv x86"
-IUSE="designer doc"
+IUSE="designer doc +qt5 qt6"
+
+REQUIRED_USE="|| ( qt5 qt6 )"
+
+# no tests
+RESTRICT="test"
 
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtwidgets:5
-	designer? ( dev-qt/designer:5 )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
+		designer? ( dev-qt/designer:5 )
+	)
+	qt6? (
+		dev-qt/qtbase:6[cups,gui,widgets]
+		designer? ( dev-qt/qttools:6[designer] )
+	)
 "
 DEPEND="${RDEPEND}"
+
+pkg_setup() {
+	MULTIBUILD_VARIANTS=( $(usev qt5) $(usev qt6) )
+}
 
 src_unpack() {
 	default
@@ -46,6 +61,8 @@ src_unpack() {
 		eerror
 		die "sub-slot sanity check failed"
 	fi
+
+	multibuild_copy_sources
 }
 
 qsci_run_in() {
@@ -61,19 +78,34 @@ src_configure() {
 		append-cxxflags -I../src
 		append-ldflags -L../src
 	fi
+	my_src_configure() {
+		case ${MULTIBUILD_VARIANT} in
+			qt5) local QMAKE=eqmake5 ;;
+			qt6) local QMAKE=eqmake6 ;;
+		esac
+		qsci_run_in "${BUILD_DIR}"/src "${QMAKE}"
+		use designer && qsci_run_in "${BUILD_DIR}"/designer "${QMAKE}"
+	}
 
-	qsci_run_in src eqmake5
-	use designer && qsci_run_in designer eqmake5
+	multibuild_foreach_variant my_src_configure
 }
 
 src_compile() {
-	qsci_run_in src emake
-	use designer && qsci_run_in designer emake
+	my_src_compile() {
+		qsci_run_in "${BUILD_DIR}"/src emake
+		use designer && qsci_run_in "${BUILD_DIR}"/designer emake
+	}
+
+	multibuild_foreach_variant my_src_compile
 }
 
 src_install() {
-	qsci_run_in src emake INSTALL_ROOT="${D}" install
-	use designer && qsci_run_in designer emake INSTALL_ROOT="${D}" install
+	my_src_install() {
+		qsci_run_in "${BUILD_DIR}"/src emake INSTALL_ROOT="${D}" install
+		use designer && qsci_run_in "${BUILD_DIR}"/designer emake INSTALL_ROOT="${D}" install
+	}
+
+	multibuild_foreach_variant my_src_install
 
 	use doc && local HTML_DOCS=( doc/html/. )
 	einstalldocs
