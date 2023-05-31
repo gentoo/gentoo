@@ -336,6 +336,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.3-clang-14-ff_seek_frame_binary-crash.patch
 	"${FILESDIR}"/${PN}-4.4.3-get_cabac_inline_x86-32-bit.patch
 	"${FILESDIR}"/${PN}-4.4.4-wint-conversion-vulkan.patch
+	"${FILESDIR}"/${P}-fix-build-svt-av1-1.5.0.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
