@@ -29,12 +29,12 @@ RDEPEND="
 	net-misc/curl
 	sys-libs/zlib
 	opengl? ( virtual/opengl )
-	x11-libs/gtk+:3
-	x11-libs/wxGTK:${WX_GTK_VER}[opengl,X]"
+	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/gettext
-	sys-apps/lsb-release"
+	sys-apps/lsb-release
+	x11-libs/wxGTK:${WX_GTK_VER}[opengl,X]"
 
 src_configure() {
 	use doc && HTML_DOCS=( "${S}"/../${PN}/doc/. )
