@@ -26,7 +26,7 @@ fi
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit prometheus-exporter
-ssl systemd +threads tools vim-syntax zlib lua 51degrees wurfl"
+ssl systemd +threads tools zlib lua 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	lua? ( ${LUA_REQUIRED_USE} )
 	?? ( slz zlib )"
@@ -161,10 +161,8 @@ src_install() {
 		dodoc doc/seamless_reload.txt
 	fi
 
-	if use vim-syntax ; then
-		insinto /usr/share/vim/vimfiles/syntax
-		doins admin/syntax-highlight/haproxy.vim
-	fi
+	insinto /usr/share/vim/vimfiles/syntax
+	doins admin/syntax-highlight/haproxy.vim
 }
 
 pkg_postinst() {
