@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: icon
 
-EAPI=7
+EAPI=8
 
 inherit desktop wrapper
 
 DESCRIPTION="A stealth game with bombs in glorious 2D"
-HOMEPAGE="http://www.galcon.com/dynamitejack/"
+HOMEPAGE="https://www.galcon.com/dynamitejack/"
 SRC_URI="${P}.tgz"
 S="${WORKDIR}"/${PN}
 
@@ -27,10 +27,10 @@ RDEPEND="
 	>=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)]
 	>=media-libs/flac-1.2.1-r5[abi_x86_32(-)]
 	>=media-libs/libogg-1.3.0[abi_x86_32(-)]
+	>=media-libs/libpulse-2.1-r1[abi_x86_32(-)]
 	>=media-libs/libsdl-1.2.15-r4[X,sound,joystick,opengl,video,abi_x86_32(-)]
 	>=media-libs/libsndfile-1.0.25[abi_x86_32(-)]
 	>=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)]
-	>=media-sound/pulseaudio-2.1-r1[abi_x86_32(-)]
 	>=virtual/glu-9.0-r1[abi_x86_32(-)]
 	>=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)]
 	>=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)]
