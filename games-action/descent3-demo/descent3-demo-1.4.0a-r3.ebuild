@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Indoor/outdoor 3D combat with evil robotic mining spacecraft"
-HOMEPAGE="http://www.lokigames.com/products/descent3/"
+HOMEPAGE="https://www.lokigames.com/products/descent3/"
 SRC_URI="mirror://lokigames/loki_demos/${PN}.run"
 S="${WORKDIR}"
 
@@ -24,7 +24,7 @@ RDEPEND="
 	>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
 	>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
 	alsa? ( media-libs/alsa-oss[abi_x86_32(-)] )
-	pulseaudio? ( media-sound/pulseaudio[abi_x86_32(-)] )
+	pulseaudio? ( media-libs/libpulse[abi_x86_32(-)] )
 "
 BDEPEND="games-util/loki_patch"
 
