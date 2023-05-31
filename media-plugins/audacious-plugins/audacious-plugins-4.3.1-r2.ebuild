@@ -86,7 +86,7 @@ DEPEND="
 	openmpt? ( media-libs/libopenmpt )
 	opus? ( media-libs/opusfile )
 	pipewire? ( media-video/pipewire:= )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
+	pulseaudio? ( media-libs/libpulse )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )
