@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-strict-prototypes.patch
 	"${FILESDIR}"/${P}-clang.patch
 	"${FILESDIR}"/${P}-optimisation.patch
+	"${FILESDIR}"/${P}-libressl.patch #903001
 )
 
 src_prepare() {

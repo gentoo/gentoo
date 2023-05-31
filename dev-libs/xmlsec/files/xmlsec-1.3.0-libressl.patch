@@ -1,0 +1,481 @@
+https://github.com/lsh123/xmlsec/pull/654
+https://github.com/lsh123/xmlsec/commit/dfdf981f3522e4059170b504fb6fd40b37c9d70f
+
+From dfdf981f3522e4059170b504fb6fd40b37c9d70f Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 30 May 2023 07:36:12 -0700
+Subject: [PATCH] openssl_compat.h: Update LibreSSL UI_null() compat (#654)
+
+LibreSSL added UI_null() in 3.7.1.
+
+https://github.com/lsh123/xmlsec/issues/665
+https://github.com/lsh123/xmlsec/pull/666
+https://github.com/lsh123/xmlsec/commit/1ee1754c5ab8f0071adbde92d3a007729df7c5a7
+
+From 1ee1754c5ab8f0071adbde92d3a007729df7c5a7 Mon Sep 17 00:00:00 2001
+From: lsh123 <aleksey@aleksey.com>
+Date: Sat, 3 Jun 2023 13:30:01 -0400
+Subject: [PATCH] Fix Libressl support and bump min version to 3.6 (issue #665)
+  (#666)
+
+https://github.com/lsh123/xmlsec/pull/667
+https://github.com/lsh123/xmlsec/commit/c9b0dcd01af1ecaed828269b734861cb93edeae3
+
+From c9b0dcd01af1ecaed828269b734861cb93edeae3 Mon Sep 17 00:00:00 2001
+From: lsh123 <aleksey@aleksey.com>
+Date: Sat, 3 Jun 2023 15:37:50 -0400
+Subject: [PATCH] Downgrade to LibreSSL 3.5 (#667)
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -71,14 +71,18 @@ EXTRA_CLEAN = \
+ ABS_SRCDIR=@abs_srcdir@
+ ABS_BUILDDIR=@abs_builddir@
+ XMLSEC_OPENSSL_TEST_CONFIG=@OPENSSL_TEST_CONFIG@
++XMLSEC_OPENSSL_VERSION=@OPENSSL_VERSION@
++
+ if XMLSEC_NO_APPS_CRYPTO_DYNAMIC_LOADING
+ PRECHECK_COMMANDS = \
+ 	export XMLSEC_OPENSSL_TEST_CONFIG="$(XMLSEC_OPENSSL_TEST_CONFIG)" && \
++	export XMLSEC_OPENSSL_VERSION="$(XMLSEC_OPENSSL_VERSION)" && \
+ 	cd $(ABS_SRCDIR) \
+ 	$(NULL)
+ else
+ PRECHECK_COMMANDS= \
+ 	export XMLSEC_OPENSSL_TEST_CONFIG="$(XMLSEC_OPENSSL_TEST_CONFIG)" && \
++	export XMLSEC_OPENSSL_VERSION="$(XMLSEC_OPENSSL_VERSION)" && \
+ 	export LD_LIBRARY_PATH="$(ABS_BUILDDIR)/src/.libs:$$LD_LIBRARY_PATH" && \
+ 	for i in $(XMLSEC_CHECK_CRYPTO_LIST) ; do \
+ 		export LTDL_LIBRARY_PATH="$(ABS_BUILDDIR)/src/$$i/.libs:$$LTDL_LIBRARY_PATH" ; \
+@@ -198,4 +202,3 @@ rpm: cleantar tar-release
+ 	@(unset CDPATH && rpmbuild -ta $(distdir).tar.gz)
+ 
+ rpm-release: clean cleantar rpm
+-
+--- a/configure.ac
++++ b/configure.ac
+@@ -812,11 +812,11 @@ if test "z$OPENSSL_FOUND" = "zyes" ; then
+     if test "z$OPENSSL_VERSION" = "z" ; then
+         AC_EGREP_CPP(greater-than-minvers, [
+             #include <openssl/opensslv.h>
+-            #if defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER >= 0x20700000L
++            #if defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER >= 0x30500000L
+             greater-than-minvers
+             #endif
+         ],[
+-            OPENSSL_VERSION="1.1.0 (LibreSSL >= 2.7)"
++            OPENSSL_VERSION="LibreSSL >= 3.5"
+         ],[
+             OPENSSL_VERSION=""
+         ])
+@@ -832,7 +832,7 @@ if test "z$OPENSSL_FOUND" = "zyes" ; then
+             #endif
+             #endif
+         ],[
+-            OPENSSL_VERSION="1.1.0 (BoringSSL)"
++            OPENSSL_VERSION="BoringSSL >= 1.1.0"
+             enable_ripemd160=no
+             enable_dsa=no
+         ],[
+@@ -897,6 +897,7 @@ AC_SUBST(OPENSSL_LIBS)
+ AC_SUBST(OPENSSL_CRYPTO_LIB)
+ AC_SUBST(OPENSSL_TEST_CONFIG)
+ AC_SUBST(OPENSSL_MIN_VERSION)
++AC_SUBST(OPENSSL_VERSION)
+ 
+ dnl See if we should build OpenSSL 3+ with engines support
+ AC_ARG_ENABLE([openssl3_engines],[AS_HELP_STRING([--enable-openssl3-engines],[enable engines support for OpenSSL 3+ (no)])])
+--- a/src/openssl/app.c
++++ b/src/openssl/app.c
+@@ -44,11 +44,14 @@
+ #include <openssl/pkcs12.h>
+ #include <openssl/conf.h>
+ #include <openssl/engine.h>
+-#include <openssl/store.h>
+ #include <openssl/x509_vfy.h>
+ #include <openssl/x509.h>
+ #include <openssl/ui.h>
+ 
++#ifndef XMLSEC_OPENSSL_NO_STORE
++#include <openssl/store.h>
++#endif /* XMLSEC_OPENSSL_NO_STORE */
++
+ #ifdef XMLSEC_OPENSSL_API_300
+ #include <openssl/provider.h>
+ #endif /* XMLSEC_OPENSSL_API_300 */
+@@ -477,8 +480,10 @@ xmlSecOpenSSLAppEngineKeyLoad(const char *engineName, const char *engineKeyId,
+ ) {
+ #if !defined(OPENSSL_NO_ENGINE) && (!defined(XMLSEC_OPENSSL_API_300) || defined(XMLSEC_OPENSSL3_ENGINES))
+     UI_METHOD * ui_method  = NULL;
+-    pem_password_cb * pwdCb;
+     void * pwdCbCtx;
++#ifndef XMLSEC_OPENSSL_NO_PWD_CALLBACK
++    pem_password_cb * pwdCb;
++#endif /* XMLSEC_OPENSSL_NO_PWD_CALLBACK */
+     ENGINE* engine = NULL;
+     xmlSecKeyPtr key = NULL;
+     xmlSecKeyDataPtr data = NULL;
+@@ -490,6 +495,7 @@ xmlSecOpenSSLAppEngineKeyLoad(const char *engineName, const char *engineKeyId,
+     xmlSecAssert2(engineKeyId != NULL, NULL);
+     xmlSecAssert2(format == xmlSecKeyDataFormatEngine, NULL);
+ 
++#ifndef XMLSEC_OPENSSL_NO_PWD_CALLBACK
+     /* prep pwd callbacks */
+     if(pwd != NULL) {
+         pwdCb = xmlSecOpenSSLDummyPasswordCallback;
+@@ -503,6 +509,18 @@ xmlSecOpenSSLAppEngineKeyLoad(const char *engineName, const char *engineKeyId,
+         xmlSecOpenSSLError("UI_UTIL_wrap_read_pem_callback", NULL);
+         goto done;
+     }
++#else   /* XMLSEC_OPENSSL_NO_PWD_CALLBACK */
++    UNREFERENCED_PARAMETER(pwd);
++    UNREFERENCED_PARAMETER(pwdCallback);
++    UNREFERENCED_PARAMETER(pwdCallbackCtx);
++
++    ui_method = UI_OpenSSL();
++    if(ui_method == NULL) {
++        xmlSecOpenSSLError("UI_OpenSSL", NULL);
++        goto done;
++    }
++    pwdCbCtx = NULL;
++#endif /* XMLSEC_OPENSSL_NO_PWD_CALLBACK */
+ 
+     /* load and initialize the engine */
+     engine = ENGINE_by_id(engineName);
+@@ -596,9 +614,10 @@ done:
+         }
+         ENGINE_free(engine);
+     }
+-    if(ui_method != NULL) {
++    if((ui_method != NULL) && (ui_method != UI_OpenSSL())) {
+         UI_destroy_method(ui_method);
+     }
++    /* result */
+     return(key);
+ 
+ #else /* !defined(OPENSSL_NO_ENGINE) && (!defined(XMLSEC_OPENSSL_API_300) || defined(XMLSEC_OPENSSL3_ENGINES)) */
+@@ -789,7 +808,7 @@ xmlSecOpenSSLAppFindKeyCert(EVP_PKEY * pKey, STACK_OF(X509) * certs) {
+ 
+ static xmlSecKeyPtr
+ xmlSecOpenSSLAppStoreKeyLoad(const char *uri, xmlSecKeyDataType type, const char *pwd, void* pwdCallback, void* pwdCallbackCtx) {
+-#ifndef XMLSEC_NO_X509
++#if !defined(XMLSEC_OPENSSL_NO_STORE) && !defined(XMLSEC_NO_X509)
+     UI_METHOD * ui_method = NULL;
+     pem_password_cb * pwdCb;
+     void * pwdCbCtx;
+@@ -964,7 +983,7 @@ done:
+     }
+     return(res);
+ 
+-#else /* XMLSEC_NO_X509 */
++#else /* !defined(XMLSEC_OPENSSL_NO_STORE) && !defined(XMLSEC_NO_X509) */
+ 
+     xmlSecAssert2(uri != NULL, NULL);
+     UNREFERENCED_PARAMETER(type);
+@@ -972,9 +991,9 @@ done:
+     UNREFERENCED_PARAMETER(pwdCallback);
+     UNREFERENCED_PARAMETER(pwdCallbackCtx);
+ 
+-    xmlSecNotImplementedError("X509 support is disabled");
++    xmlSecNotImplementedError("X509 or OpenSSL Stores support is disabled");
+     return(NULL);
+-#endif /* XMLSEC_NO_X509 */
++#endif /* !defined(XMLSEC_OPENSSL_NO_STORE) && !defined(XMLSEC_NO_X509) */
+ }
+ 
+ #ifndef XMLSEC_NO_X509
+--- a/src/openssl/openssl_compat.h
++++ b/src/openssl/openssl_compat.h
+@@ -70,6 +70,9 @@ static inline int xmlSecOpenSSLCompatRand(unsigned char *buf, xmlSecSize size) {
+  *****************************************************************************/
+ #ifdef OPENSSL_IS_BORINGSSL
+ 
++/* Not implemented by LibreSSL (yet?) */
++#define XMLSEC_OPENSSL_NO_ASN1_TIME_TO_TM   1
++
+ #define ENGINE_cleanup(...)                 {}
+ #define CONF_modules_unload(...)            {}
+ #define RAND_write_file(file)               (0)
+@@ -100,20 +103,26 @@ int RSA_padding_check_PKCS1_OAEP_mgf1(uint8_t *out, size_t *out_len, size_t max_
+  *****************************************************************************/
+ #if defined(LIBRESSL_VERSION_NUMBER)
+ 
+-/* Needed for Engine initialization */
+-#define UI_null()                          NULL
++/* Not implemented by LibreSSL (yet?) */
++#define XMLSEC_OPENSSL_NO_ASN1_TIME_TO_TM   1
++#define XMLSEC_OPENSSL_NO_STORE             1
++#define XMLSEC_OPENSSL_NO_PWD_CALLBACK      1
++#define XMLSEC_OPENSSL_NO_DEEP_COPY         1
++#define XMLSEC_NO_DH                        1
+ 
+-#endif /* defined(LIBRESSL_VERSION_NUMBER) */
++/* simply return success */
++#define sk_X509_reserve(crts, num)          (1)
++#define sk_X509_CRL_reserve(crls, num)      (1)
+ 
+-#if defined(LIBRESSL_VERSION_NUMBER) && (LIBRESSL_VERSION_NUMBER < 0x30500000L)
+-/* EVP_CIPHER_CTX stuff */
+-#define EVP_CIPHER_CTX_encrypting(x)       ((x)->encrypt)
++#if (LIBRESSL_VERSION_NUMBER < 0x3080000fL)
++#define XMLSEC_NO_SHA3                      1
++#endif /* (LIBRESSL_VERSION_NUMBER < 0x3080000fL) */
+ 
+-/* X509 stuff */
+-#define X509_STORE_CTX_get_by_subject      X509_STORE_get_by_subject
+-#define X509_OBJECT_new()                  (calloc(1, sizeof(X509_OBJECT)))
+-#define X509_OBJECT_free(x)                { X509_OBJECT_free_contents(x); free(x); }
+-#endif /* defined(LIBRESSL_VERSION_NUMBER) && (LIBRESSL_VERSION_NUMBER < 0x30500000L) */
++#if (LIBRESSL_VERSION_NUMBER < 0x3070200fL)
++#define UI_null()                           NULL
++#endif /* (LIBRESSL_VERSION_NUMBER < 0x3070200fL) */
++
++#endif /* defined(LIBRESSL_VERSION_NUMBER) */
+ 
+ 
+ /******************************************************************************
+--- a/src/openssl/x509.c
++++ b/src/openssl/x509.c
+@@ -552,6 +552,7 @@ xmlSecOpenSSLKeyDataX509Duplicate(xmlSecKeyDataPtr dst, xmlSecKeyDataPtr src) {
+ 
+     /* crts */
+     if(ctxSrc->certsList != NULL) {
++#ifndef XMLSEC_OPENSSL_NO_DEEP_COPY
+ #ifndef XMLSEC_OPENSSL_API_300
+         ctxDst->certsList = sk_X509_deep_copy(ctxSrc->certsList, (sk_X509_copyfunc)X509_dup, X509_free);
+ #else  /* XMLSEC_OPENSSL_API_300 */
+@@ -561,10 +562,41 @@ xmlSecOpenSSLKeyDataX509Duplicate(xmlSecKeyDataPtr dst, xmlSecKeyDataPtr src) {
+             xmlSecOpenSSLError("sk_X509_deep_copy", xmlSecKeyDataGetName(dst));
+             return(-1);
+         }
++#else /* XMLSEC_OPENSSL_NO_DEEP_COPY */
++        int size, ii;
++        X509* certSrc;
++        X509* certDst;
++        int ret;
++
++        ctxDst->certsList = sk_X509_new_null();
++        if(ctxDst->certsList == NULL) {
++            xmlSecOpenSSLError("sk_X509_new_null", xmlSecKeyDataGetName(dst));
++            return(-1);
++        }
++        size = sk_X509_num(ctxSrc->certsList);
++        for(ii = 0; ii < size; ++ii) {
++            certSrc = sk_X509_value(ctxSrc->certsList, ii);
++            if(certSrc == NULL) {
++                continue;
++            }
++            certDst = X509_dup(certSrc);
++            if(certDst == NULL) {
++                xmlSecOpenSSLError("X509_dup", xmlSecKeyDataGetName(dst));
++                return(-1);
++            }
++            ret = sk_X509_push(ctxDst->certsList, certDst);
++            if(ret <= 0) {
++                xmlSecOpenSSLError("sk_X509_push", NULL);
++                X509_free(certDst);
++                return(-1);
++            }
++        }
++#endif /* XMLSEC_OPENSSL_NO_DEEP_COPY */
+     }
+ 
+     /* crls */
+     if(ctxSrc->crlsList != NULL) {
++#ifndef XMLSEC_OPENSSL_NO_DEEP_COPY
+ #ifndef XMLSEC_OPENSSL_API_300
+         ctxDst->crlsList = sk_X509_CRL_deep_copy(ctxSrc->crlsList, (sk_X509_CRL_copyfunc)X509_CRL_dup, X509_CRL_free);
+ #else  /* XMLSEC_OPENSSL_API_300 */
+@@ -574,6 +606,36 @@ xmlSecOpenSSLKeyDataX509Duplicate(xmlSecKeyDataPtr dst, xmlSecKeyDataPtr src) {
+             xmlSecOpenSSLError("sk_X509_CRL_deep_copy", xmlSecKeyDataGetName(dst));
+             return(-1);
+         }
++#else /* XMLSEC_OPENSSL_NO_DEEP_COPY */
++        int size, ii;
++        X509_CRL* crlSrc;
++        X509_CRL* crlDst;
++        int ret;
++
++        ctxDst->crlsList = sk_X509_CRL_new_null();
++        if(ctxDst->crlsList == NULL) {
++            xmlSecOpenSSLError("sk_X509_CRL_new_null", xmlSecKeyDataGetName(dst));
++            return(-1);
++        }
++        size = sk_X509_CRL_num(ctxSrc->crlsList);
++        for(ii = 0; ii < size; ++ii) {
++            crlSrc = sk_X509_CRL_value(ctxSrc->crlsList, ii);
++            if(crlSrc == NULL) {
++                continue;
++            }
++            crlDst = X509_CRL_dup(crlSrc);
++            if(crlDst == NULL) {
++                xmlSecOpenSSLError("X509_CRL_dup", xmlSecKeyDataGetName(dst));
++                return(-1);
++            }
++            ret = sk_X509_CRL_push(ctxDst->crlsList, crlDst);
++            if(ret <= 0) {
++                xmlSecOpenSSLError("sk_X509_CRL_push", NULL);
++                X509_CRL_free(crlDst);
++                return(-1);
++            }
++        }
++#endif /* XMLSEC_OPENSSL_NO_DEEP_COPY */
+     }
+ 
+     /* keyCert: should be in the same position in certsList after copy */
+@@ -1393,7 +1455,7 @@ my_timegm(struct tm *t) {
+ 
+ #endif /* HAVE_TIMEGM */
+ 
+-#if !defined(OPENSSL_IS_BORINGSSL)
++#ifndef XMLSEC_OPENSSL_NO_ASN1_TIME_TO_TM
+ 
+ time_t
+ xmlSecOpenSSLX509Asn1TimeToTime(const ASN1_TIME * t) {
+@@ -1417,10 +1479,10 @@ xmlSecOpenSSLX509Asn1TimeToTime(const ASN1_TIME * t) {
+     return(timegm(&tm));
+ }
+ 
+-#else  /* !defined(OPENSSL_IS_BORINGSSL) */
++#else  /* XMLSEC_OPENSSL_NO_ASN1_TIME_TO_TM */
+ 
+ time_t
+-xmlSecOpenSSLX509Asn1TimeToTime(ASN1_TIME * t) {
++xmlSecOpenSSLX509Asn1TimeToTime(const ASN1_TIME * t) {
+     struct tm tm;
+     int offset;
+ 
+@@ -1482,7 +1544,7 @@ xmlSecOpenSSLX509Asn1TimeToTime(ASN1_TIME * t) {
+ #undef g2
+     return(timegm(&tm) - offset * 60);
+ }
+-#endif /* !defined(OPENSSL_IS_BORINGSSL) */
++#endif /* XMLSEC_OPENSSL_NO_ASN1_TIME_TO_TM */
+ 
+ /* returns 1 if cert was found and verified and also data was adopted, 0 if not, or negative value if an error occurs */
+ static int
+--- a/tests/aleksey-xmldsig-01/enveloping-ripemd160-rsa-ripemd160.xml
++++ b/tests/aleksey-xmldsig-01/enveloping-ripemd160-rsa-ripemd160.xml
+@@ -8,10 +8,40 @@
+       <DigestValue>Ofs8NqfoXX+r0Cas3GRY2GbzhPo=</DigestValue>
+     </Reference>
+   </SignedInfo>
+-  <SignatureValue>un5Fwdn5LTFBPQPv1GSst3mviS7I1X8icM7cYRTSIqKMnkXOIzXgcEKVcfO1oodP
+-9ABdLzQB0wdZJW6CCoHKwA==</SignatureValue>
++  <SignatureValue>Kncq42zs0n0gnmMQPYi2VuRMJH5hBFXl8Ea7P4ogmF4lW2OY+K7m145i46SlzZAU
++fxjK44tl4UL09VKn25BqskOkwYor0utRnbrrFP4lKyC3mB8f1KGsxUKN4sbsk21c
++8Lc+UZ/UZyIcA8a5qRCw7kJWWqOZB5Bv48+eCnbaZ8W5rPZ2vxxZvUtSlPTkZs3q
++2ZAsI0WlnPn5a1CgExvqkddULw1xBxEq8dy5gmLuYyvTPpwTYU/wlAxOMuyke69s
++2KBuB9XiRoYgHTKVIqvPOYFXctOJVWrLh7JbRDZTTw7IyaT8mH/cD3yixXLciL2I
++I6E6XtkiWyfPpOLmXxucjw==</SignatureValue>
+   <KeyInfo>
++    <KeyName>mykey</KeyName>
+     <X509Data>
++<X509Certificate>MIIEbzCCBBmgAwIBAgIJAK+ii7kzrdq5MA0GCSqGSIb3DQEBBQUAMIGcMQswCQYD
++VQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTE9MDsGA1UEChM0WE1MIFNlY3Vy
++aXR5IExpYnJhcnkgKGh0dHA6Ly93d3cuYWxla3NleS5jb20veG1sc2VjKTEWMBQG
++A1UEAxMNQWxla3NleSBTYW5pbjEhMB8GCSqGSIb3DQEJARYSeG1sc2VjQGFsZWtz
++ZXkuY29tMCAXDTIyMTIxMjIwMTQ0OFoYDzIxMjIxMTE4MjAxNDQ4WjCBxzELMAkG
++A1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExPTA7BgNVBAoTNFhNTCBTZWN1
++cml0eSBMaWJyYXJ5IChodHRwOi8vd3d3LmFsZWtzZXkuY29tL3htbHNlYykxKTAn
++BgNVBAsTIFRlc3QgVGhpcmQgTGV2ZWwgUlNBIENlcnRpZmljYXRlMRYwFAYDVQQD
++Ew1BbGVrc2V5IFNhbmluMSEwHwYJKoZIhvcNAQkBFhJ4bWxzZWNAYWxla3NleS5j
++b20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCbu5Mc7aNSahgJAWeP
++9BoQLQoqGne9rR+PcxsEIie7J4RoVhyK7iwh18HT1TTMdCm4fP6OkgUrosHMELB4
++NImb6GzHq0vJ9SOCT8B4UntNRJ0qJrWw0Gel99CtrhAQxESTggpqB9mtA1Po5AIH
++R+hQ8v2NxqEZkQS3DkjI1LjH4jX3iSyU7q7qM80m/7iCj8rQWJJIvdk53B89jj06
++s+85ZtywghS7EqjesRiW/YQoN39rg4Xh24fiVWdH7YsAL8GuiE9oimWnEWYDyyYV
++NoxAoEVe5OyV1D9RYjzp/qPypIBsQJ8EN0xBN8dn9jFxlPDGRfUxRm3MscTm0ziY
++XGNnAgMBAAGjggFFMIIBQTAMBgNVHRMEBTADAQH/MCwGCWCGSAGG+EIBDQQfFh1P
++cGVuU1NMIEdlbmVyYXRlZCBDZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQUmYhmm8qirSHN
++YCIr/2whHEivOwowgeMGA1UdIwSB2zCB2IAU/uTsUyTwlZXHELXhRLVdOWVa436h
++gbSkgbEwga4xCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMT0wOwYD
++VQQKEzRYTUwgU2VjdXJpdHkgTGlicmFyeSAoaHR0cDovL3d3dy5hbGVrc2V5LmNv
++bS94bWxzZWMpMRAwDgYDVQQLEwdSb290IENBMRYwFAYDVQQDEw1BbGVrc2V5IFNh
++bmluMSEwHwYJKoZIhvcNAQkBFhJ4bWxzZWNAYWxla3NleS5jb22CCQCvoou5M63a
++rTANBgkqhkiG9w0BAQUFAANBADSQ02d8qKGQdQj9D6/ZqA524hpGmyusPTI9BvCh
++8R1QO1w3ong7/my1/heps+dH6zw42uOnF6UK7TQIAtNafHM=
++</X509Certificate>
+ <X509Certificate>MIID9zCCA2CgAwIBAgIJAK+ii7kzrdqsMA0GCSqGSIb3DQEBBQUAMIGuMQswCQYD
+ VQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTE9MDsGA1UEChM0WE1MIFNlY3Vy
+ aXR5IExpYnJhcnkgKGh0dHA6Ly93d3cuYWxla3NleS5jb20veG1sc2VjKTEQMA4G
+@@ -33,7 +63,8 @@ BgkqhkiG9w0BCQEWEnhtbHNlY0BhbGVrc2V5LmNvbYIJAK+ii7kzrdqsMAwGA1Ud
+ EwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEARpb86RP/ck55X+NunXeIX81i763b
+ j7Z1VJwFbA/QfupzxnqJ2IP/lxC8YxJ3Bp2IJMI7rC9r0poa41ZxI5rGHip97Dpg
+ sxPF9lkRUmKBBQjkICOq1w/4d2DRInBoqXttD+0WsqDfNDVK+7kSE07ytn3RzHCj
+-j0gv0PdxmuCsR/E=</X509Certificate>
++j0gv0PdxmuCsR/E=
++</X509Certificate>
+ <X509Certificate>MIIDzzCCAzigAwIBAgIJAK+ii7kzrdqtMA0GCSqGSIb3DQEBBQUAMIGuMQswCQYD
+ VQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTE9MDsGA1UEChM0WE1MIFNlY3Vy
+ aXR5IExpYnJhcnkgKGh0dHA6Ly93d3cuYWxla3NleS5jb20veG1sc2VjKTEQMA4G
+@@ -54,27 +85,8 @@ VQQDEw1BbGVrc2V5IFNhbmluMSEwHwYJKoZIhvcNAQkBFhJ4bWxzZWNAYWxla3Nl
+ eS5jb22CCQCvoou5M63arDANBgkqhkiG9w0BAQUFAAOBgQBuTAW63AgWqqUDPGi8
+ BiXbdKHhFP4J8qgkdv5WMa6SpSWVgNgOYXkK/BSg1aSmQtGv8/8UvBRPoJnO4y0N
+ jWUFf1ubOgUNmedYNLq7YbTp8yTGWeogCyM2xdWELMP8BMgQL0sP+MDAFMKO3itY
+-mEWnCEsP15HKSTms54RNj7oJ+A==</X509Certificate>
+-<X509Certificate>MIIDpzCCA1GgAwIBAgIJAK+ii7kzrdqvMA0GCSqGSIb3DQEBBQUAMIGcMQswCQYD
+-VQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTE9MDsGA1UEChM0WE1MIFNlY3Vy
+-aXR5IExpYnJhcnkgKGh0dHA6Ly93d3cuYWxla3NleS5jb20veG1sc2VjKTEWMBQG
+-A1UEAxMNQWxla3NleSBTYW5pbjEhMB8GCSqGSIb3DQEJARYSeG1sc2VjQGFsZWtz
+-ZXkuY29tMCAXDTE0MDUyMzE3NTUzNFoYDzIxMTQwNDI5MTc1NTM0WjCBxzELMAkG
+-A1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExPTA7BgNVBAoTNFhNTCBTZWN1
+-cml0eSBMaWJyYXJ5IChodHRwOi8vd3d3LmFsZWtzZXkuY29tL3htbHNlYykxKTAn
+-BgNVBAsTIFRlc3QgVGhpcmQgTGV2ZWwgUlNBIENlcnRpZmljYXRlMRYwFAYDVQQD
+-Ew1BbGVrc2V5IFNhbmluMSEwHwYJKoZIhvcNAQkBFhJ4bWxzZWNAYWxla3NleS5j
+-b20wXDANBgkqhkiG9w0BAQEFAANLADBIAkEA09BtD3aeVt6DVDkk0dI7Vh7Ljqdn
+-sYmW0tbDVxxK+nume+Z9Sb4znbUKkWl+vgQATdRUEyhT2P+Gqrd0UBzYfQIDAQAB
+-o4IBRTCCAUEwDAYDVR0TBAUwAwEB/zAsBglghkgBhvhCAQ0EHxYdT3BlblNTTCBH
+-ZW5lcmF0ZWQgQ2VydGlmaWNhdGUwHQYDVR0OBBYEFNf0xkZ3zjcEI60pVPuwDqTM
+-QygZMIHjBgNVHSMEgdswgdiAFP7k7FMk8JWVxxC14US1XTllWuN+oYG0pIGxMIGu
+-MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTE9MDsGA1UEChM0WE1M
+-IFNlY3VyaXR5IExpYnJhcnkgKGh0dHA6Ly93d3cuYWxla3NleS5jb20veG1sc2Vj
+-KTEQMA4GA1UECxMHUm9vdCBDQTEWMBQGA1UEAxMNQWxla3NleSBTYW5pbjEhMB8G
+-CSqGSIb3DQEJARYSeG1sc2VjQGFsZWtzZXkuY29tggkAr6KLuTOt2q0wDQYJKoZI
+-hvcNAQEFBQADQQAOXBj0yICp1RmHXqnUlsppryLCW3pKBD1dkb4HWarO7RjA1yJJ
+-fBjXssrERn05kpBcrRfzou4r3DCgQFPhjxga</X509Certificate>
++mEWnCEsP15HKSTms54RNj7oJ+A==
++</X509Certificate>
+ </X509Data>
+   </KeyInfo>
+   <Object Id="object">some text</Object>
+--- a/tests/testrun.sh
++++ b/tests/testrun.sh
+@@ -87,6 +87,19 @@ else
+ fi
+ xmlsec_params="$xmlsec_params --crypto-config $crypto_config"
+ 
++# What flavour of OpenSSL do we have?
++case $XMLSEC_OPENSSL_VERSION in
++*LibreSSL*)
++    xmlsec_openssl_flavor="libressl"
++    ;;
++*BoringSSL*)
++    xmlsec_openssl_flavor="boringssl"
++    ;;
++*)
++    xmlsec_openssl_flavor="openssl"
++    ;;
++esac
++
+ #
+ # Setup extra vars
+ #
+@@ -333,7 +346,7 @@ execKeysTest() {
+         fi
+ 
+         # only openssl supports --privkey-openssl-store
+-        if [ "z$crypto" = "zopenssl" ] ; then
++        if [ "z$crypto" = "zopenssl" -a "z$xmlsec_openssl_flavor" != "zlibressl" ] ; then
+             printf "    Reading private key from pkcs12 file using ossl-store "
+             rm -f $tmpfile
+             params="--lax-key-search --privkey-openssl-store $privkey_file.p12 $pkcs12_key_extra_options $key_test_options --output $tmpfile $asym_key_test.tmpl"
+@@ -402,7 +415,7 @@ execKeysTest() {
+     # test reading public keys
+     if [ -n "$pubkey_file" -a -n "$asym_key_test" ]; then
+         # only openssl supports --pubkey-openssl-store
+-        if [ "z$crypto" = "zopenssl" ] ; then
++        if [ "z$crypto" = "zopenssl" -a "z$xmlsec_openssl_flavor" != "zlibressl" ] ; then
+             printf "    Reading public key from pem file using ossl-store     "
+             rm -f $tmpfile
+             params="--lax-key-search --pubkey-openssl-store $pubkey_file.pem $key_test_options $asym_key_test.xml"

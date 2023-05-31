@@ -36,6 +36,10 @@ BDEPEND="virtual/pkgconfig
 		)
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libressl.patch #903001
+)
+
 src_configure() {
 	# Bash because of bug #721128
 	CONFIG_SHELL="${BROOT}"/bin/bash econf \
