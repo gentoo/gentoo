@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop
 
@@ -34,9 +34,9 @@ RDEPEND="
 		>=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)]
 		|| ( media-libs/flac:0/0[abi_x86_32(-)] media-libs/flac-compat:8.3.0[abi_x86_32(-)] )
 		>=media-libs/libogg-1.3.0[abi_x86_32(-)]
+		media-libs/libpulse[abi_x86_32(-)]
 		>=media-libs/libsndfile-1.0.25[abi_x86_32(-)]
 		>=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)]
-		>=media-sound/pulseaudio-2.1-r1[abi_x86_32(-)]
 		>=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)]
 		>=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)]
 		>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
@@ -47,8 +47,8 @@ RDEPEND="
 		>=x11-libs/libXi-1.7.2[abi_x86_32(-)]
 		>=x11-libs/libXtst-1.2.1-r1[abi_x86_32(-)]
 		!bundled-libs? (
-			>=net-misc/curl-7.36.0[abi_x86_32(-)]
 			>=media-libs/libsdl-1.2.15-r4[X,sound,video,opengl,joystick,abi_x86_32(-)]
+			>=net-misc/curl-7.36.0[abi_x86_32(-)]
 		)
 	)
 	x86? (
@@ -56,9 +56,9 @@ RDEPEND="
 		media-libs/alsa-lib
 		|| ( media-libs/flac:0/0 media-libs/flac-compat:8.3.0 )
 		media-libs/libogg
+		media-libs/libpulse
 		media-libs/libsndfile
 		media-libs/libvorbis
-		media-sound/pulseaudio
 		sys-libs/zlib
 		virtual/glu
 		x11-libs/libICE
@@ -71,8 +71,8 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 		!bundled-libs? (
-			net-misc/curl
 			media-libs/libsdl[X,sound,video,opengl,joystick]
+			net-misc/curl
 		)
 	)"
 
