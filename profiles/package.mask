@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-05-31)
+# Unmaintained.  Last commit in 2020.  Does not work with Python 3.12.
+# No revdeps.
+# Removal on 2023-06-30.  Bug #907495.
+dev-python/http-parser
+
 # Sam James <sam@gentoo.org> (2023-05-29)
 # Masked until enough reverse dependencies are fixed, bug #901257.
 =media-video/ffmpeg-6*
