@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">pytest-dev/apipkg</remote-id>
 		<remote-id type="pypi">apipkg</remote-id>
 	</upstream>
 </pkgmetadata>
