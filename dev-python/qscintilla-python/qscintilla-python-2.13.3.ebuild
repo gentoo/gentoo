@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit python-r1 qmake-utils
+inherit multibuild python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for QScintilla"
 HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/ https://pypi.org/project/QScintilla/"
@@ -21,54 +21,72 @@ S=${WORKDIR}/${MY_P}/Python
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
-IUSE="debug"
+IUSE="debug +qt5 qt6"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="|| ( qt5 qt6 ) ${PYTHON_REQUIRED_USE}"
+
+# no tests
+RESTRICT="test"
 
 DEPEND="${PYTHON_DEPS}
-	>=dev-python/PyQt5-5.15.5[gui,printsupport,widgets,${PYTHON_USEDEP}]
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtwidgets:5
-	~x11-libs/qscintilla-${PV}:=
+	qt5? (
+		>=dev-python/PyQt5-5.15.5[gui,printsupport,widgets,${PYTHON_USEDEP}]
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
+	)
+	qt6? (
+		dev-python/PyQt6[gui,printsupport,widgets,${PYTHON_USEDEP}]
+		dev-qt/qtbase:6[cups,gui,widgets]
+	)
+	~x11-libs/qscintilla-${PV}:=[qt5=,qt6=]
 "
 RDEPEND="${DEPEND}
-	>=dev-python/PyQt5-sip-12.9:=[${PYTHON_USEDEP}]
+	qt5? ( >=dev-python/PyQt5-sip-12.9:=[${PYTHON_USEDEP}] )
+	qt6? ( >=dev-python/PyQt6-sip-13.5:=[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	>=dev-python/PyQt-builder-1.10[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.2[${PYTHON_USEDEP}]
-	dev-qt/qtcore:5
+	qt5? ( dev-qt/qtcore:5 )
+	qt6? ( dev-qt/qtbase:6 )
 "
 
-src_prepare() {
-	default
-	mv pyproject{-qt5,}.toml || die
+pkg_setup() {
+	MULTIBUILD_VARIANTS=( $(usev qt5) $(usev qt6) )
 }
 
 src_configure() {
-	configuration() {
-		local myconf=(
-			sip-build
-			--verbose
-			--build-dir="${BUILD_DIR}"
-			--scripts-dir="$(python_get_scriptdir)"
-			--qmake="$(qt5_get_bindir)"/qmake
-			--no-make
-			$(usev debug '--debug --qml-debug --tracing')
-		)
-		echo "${myconf[@]}"
-		"${myconf[@]}" || die
+	my_src_configure() {
+		configuration() {
+			local myconf=(
+				sip-build
+				--verbose
+				--build-dir="${BUILD_DIR}"
+				--scripts-dir="$(python_get_scriptdir)"
+				--qmake="/usr/bin/${QMAKE}"
+				--no-make
+				$(usev debug '--debug --qml-debug --tracing')
+			)
+			echo "${myconf[@]}"
+			"${myconf[@]}" || die
 
-		# Run eqmake to respect toolchain and build flags
-		run_in_build_dir eqmake5 -recursive ${MY_PN}.pro
+			# Run eqmake to respect toolchain and build flags
+			run_in_build_dir "${QMAKE}" -recursive ${MY_PN}.pro
+		}
+		case ${MULTIBUILD_VARIANT} in
+			qt5) local QMAKE=eqmake5 ;;
+			qt6) local QMAKE=eqmake6 ;;
+		esac
+		mv pyproject{-${MULTIBUILD_VARIANT},}.toml || die
+		python_foreach_impl configuration
 	}
-	python_foreach_impl configuration
+	multibuild_foreach_variant my_src_configure
 }
 
 src_compile() {
-	python_foreach_impl run_in_build_dir default
+	multibuild_foreach_variant python_foreach_impl run_in_build_dir default
 }
 
 src_install() {
@@ -76,5 +94,5 @@ src_install() {
 		emake INSTALL_ROOT="${D}" install
 		python_optimize
 	}
-	python_foreach_impl run_in_build_dir installation
+	multibuild_foreach_variant python_foreach_impl run_in_build_dir installation
 }
