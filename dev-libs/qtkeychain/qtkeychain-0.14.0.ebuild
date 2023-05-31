@@ -9,11 +9,11 @@ HOMEPAGE="https://github.com/frankosterfeld/qtkeychain"
 DESCRIPTION="Qt API for storing passwords securely"
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://github.com/frankosterfeld/qtkeychain/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/frankosterfeld/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 else
 	inherit git-r3
-	EGIT_REPO_URI="${HOMEPAGE}.git"
+	EGIT_REPO_URI="https://github.com/frankosterfeld/${PN}.git"
 fi
 
 LICENSE="BSD-2"
