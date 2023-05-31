@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{10..11} pypy3 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_12 )
+PYTHON_TESTED=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 
 inherit distutils-r1 pypi
 
@@ -31,7 +31,6 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	# https://github.com/python/cpython/issues/105042
 	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
 		einfo "Skipping tests on ${EPYTHON} (xfail)"
 		return
