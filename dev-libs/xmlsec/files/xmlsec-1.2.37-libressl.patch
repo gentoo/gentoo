@@ -1,0 +1,40 @@
+https://github.com/lsh123/xmlsec/pull/456
+https://github.com/lsh123/xmlsec/commit/c5469cfc8443c57a25a8783f0bd669f71e29bb04
+https://github.com/lsh123/xmlsec/pull/654
+https://github.com/lsh123/xmlsec/commit/dfdf981f3522e4059170b504fb6fd40b37c9d70f
+
+From c5469cfc8443c57a25a8783f0bd669f71e29bb04 Mon Sep 17 00:00:00 2001
+From: lsh123 <aleksey@aleksey.com>
+Date: Mon, 12 Dec 2022 10:34:56 -0500
+Subject: [PATCH] fix libressl (#456)
+
+---
+ src/openssl/openssl_compat.h | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+From d113d1e6355c4841fd03c6aa797d33bde1d064f3 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 29 May 2023 07:46:58 -0700
+Subject: [PATCH] openssl_compat.h: Update LibreSSL UI_null() compat
+
+LibreSSL added UI_null() in 3.7.1.
+---
+ src/openssl/openssl_compat.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/src/openssl/openssl_compat.h
++++ b/src/openssl/openssl_compat.h
+@@ -123,6 +123,13 @@ static inline int xmlSecOpenSSLCompatRand(unsigned char *buf, xmlSecSize size) {
+  * LibreSSL 2.7 compatibility (implements most of OpenSSL 1.1 API)
+  *
+  *****************************************************************************/
++#if defined(LIBRESSL_VERSION_NUMBER) && (LIBRESSL_VERSION_NUMBER < 0x3070200fL)
++
++/* Needed for Engine initialization */
++#define UI_null()                          NULL
++
++#endif /* defined(LIBRESSL_VERSION_NUMBER) */
++
+ #if defined(LIBRESSL_VERSION_NUMBER) && (LIBRESSL_VERSION_NUMBER < 0x30500000L) && defined(XMLSEC_OPENSSL_API_110)
+ /* EVP_CIPHER_CTX stuff */
+ #define EVP_CIPHER_CTX_encrypting(x)       ((x)->encrypt)
