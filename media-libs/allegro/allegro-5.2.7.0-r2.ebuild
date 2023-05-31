@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake-multilib
 
@@ -13,7 +13,6 @@ LICENSE="BSD ZLIB"
 SLOT="5"
 KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="alsa dumb flac gtk jpeg openal opengl opus oss physfs png pulseaudio test truetype vorbis webp X xinerama"
-RESTRICT="!test? ( test )"
 
 # TODO: For tests, we need some extra deps.
 # -- Could NOT find OPENSL (missing: OPENSL_INCLUDE_DIR OPENSL_LIBRARY)
@@ -24,8 +23,8 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="X? ( opengl )
 	xinerama? ( X )
 	|| ( alsa openal oss pulseaudio )"
+RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dumb? ( >=media-libs/dumb-0.9.3-r2:=[${MULTILIB_USEDEP}] )
@@ -40,7 +39,7 @@ RDEPEND="
 	opus? ( media-libs/opus[${MULTILIB_USEDEP}] )
 	physfs? ( >=dev-games/physfs-2.0.3-r1[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.5.18:0=[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}] )
 	vorbis? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:0=[${MULTILIB_USEDEP}] )
@@ -53,7 +52,9 @@ RDEPEND="
 	xinerama? ( >=x11-libs/libXinerama-1.1.3[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
+BDEPEND="virtual/pkgconfig"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/allegro5/allegro_native_dialog.h )
 
