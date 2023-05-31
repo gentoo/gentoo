@@ -33,12 +33,6 @@ fi
 
 inherit autotools cmake desktop libtool linux-info pax-utils python-single-r1 xdg
 
-PATCHES=(
-	"${FILESDIR}/${PN}-19.4-atomic.patch"
-	"${FILESDIR}/${PN}-19.4-dav1d-1.0.0.patch"
-	"${FILESDIR}/${PN}-19.5-gcc-13.patch"
-)
-
 DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/ https://kodi.wiki/"
 
@@ -194,6 +188,13 @@ ERROR_IP_MULTICAST="
 In some cases Kodi needs to access multicast addresses.
 Please consider enabling IP_MULTICAST under Networking options.
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-19.4-atomic.patch"
+	"${FILESDIR}/${PN}-19.4-dav1d-1.0.0.patch"
+	"${FILESDIR}/${PN}-19.5-gcc-13.patch"
+	"${FILESDIR}/${PN}-19.5-flatbuffers.patch"
+)
 
 pkg_setup() {
 	check_extra_config
