@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Asynchronous Python HTTP for Humans"
-HOMEPAGE="https://github.com/tardyp/txrequests"
+HOMEPAGE="
+	https://github.com/tardyp/txrequests/
+	https://pypi.org/project/txrequests/
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -21,7 +24,11 @@ RDEPEND="
 	>=dev-python/requests-1.2.0[${PYTHON_USEDEP}]
 	dev-python/twisted[${PYTHON_USEDEP}]
 "
-BDEPEND="test? ( ${RDEPEND} )"
+BDEPEND="
+	test? (
+		${RDEPEND}
+	)
+"
 
 python_test() {
 	"${EPYTHON}" -m twisted.trial txrequests || die "Tests failed with ${EPYTHON}"
