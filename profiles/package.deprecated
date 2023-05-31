@@ -18,7 +18,7 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2023-05-30)
-# Removed from GStreamer 1.22.
+# Removed from GStreamer 1.20.
 # Dropped upstream in https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/9a4651e3879270292672f08a1f6ed2bffefc5aed.
 media-plugins/gst-plugins-libmms
 
