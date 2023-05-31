@@ -33,9 +33,6 @@ DOCS=( "readme.txt" )
 QA_PREBUILT="usr/lib/unifi/lib/native/Linux/x86_64/*.so"
 
 src_prepare() {
-	# Remove unneeded files Mac and Windows
-	rm -r lib/native/{Mac,Windows} || die
-
 	if [[ ${CHOST} != aarch64* ]]; then
 		rm -r lib/native/Linux/aarch64 || die "Failed in removing aarch64 native libraries"
 	fi
