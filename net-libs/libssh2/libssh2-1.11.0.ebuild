@@ -47,9 +47,16 @@ multilib_src_configure() {
 		-DBUILD_TESTING=$(usex test)
 		-DCRYPTO_BACKEND=${crypto_backend}
 		-DENABLE_ZLIB_COMPRESSION=$(usex zlib)
-		-DRUN_SSHD_TESTS=OFF
-		-DRUN_DOCKER_TESTS=OFF
 	)
+
+	if use test ; then
+		# Pass separately to avoid unused var warnings w/ USE=-test
+		mycmakeargs+=(
+			-DRUN_SSHD_TESTS=OFF
+			-DRUN_DOCKER_TESTS=OFF
+		)
+	fi
+
 	cmake_src_configure
 }
 
