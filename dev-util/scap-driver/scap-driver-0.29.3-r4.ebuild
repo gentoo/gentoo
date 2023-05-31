@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake linux-mod
+inherit cmake linux-mod-r1
 
 DESCRIPTION="Kernel module for dev-util/sysdig"
 HOMEPAGE="https://sysdig.com/"
@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-fix-kmod-build-on-5.18+.patch
 	"${FILESDIR}"/${PV}-fix-kmod-build-on-6.2+.patch
 	"${FILESDIR}"/${PV}-fix-kmod-build-on-6.3+.patch
+	"${FILESDIR}"/${PV}-fix-kmod-build-on-6.4+.patch
 )
 
 src_configure() {
@@ -57,4 +58,11 @@ src_configure() {
 	fi
 
 	BUILD_TARGETS="all"
+}
+
+src_compile() {
+	local modlist=( scap=:"${BUILD_DIR}"/driver/src )
+	local modargs=( KERNELDIR="${KV_OUT_DIR}" )
+
+	linux-mod-r1_src_compile
 }
