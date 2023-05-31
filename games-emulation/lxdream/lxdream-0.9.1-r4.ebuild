@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic xdg
 
@@ -21,14 +21,14 @@ RDEPEND="
 	media-libs/libpng:0=
 	virtual/opengl
 	x11-libs/gtk+:2
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sdl? ( media-libs/libsdl[sound] )"
 DEPEND="${RDEPEND}
 	!!gnustep-base/gnustep-gui" #377635
 BDEPEND="
-	virtual/pkgconfig
 	sys-devel/gettext
-	virtual/os-headers"
+	virtual/os-headers
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-glib-single-include.patch
