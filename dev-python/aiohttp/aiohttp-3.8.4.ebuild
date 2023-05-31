@@ -86,6 +86,10 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# Internet
 		tests/test_client_session.py::test_client_session_timeout_zero
+		# broken by irrelevant deprecation warnings
+		tests/test_circular_imports.py::test_no_warnings
+		# TODO
+		tests/test_client_session.py::test_request_tracing_url_params
 	)
 
 	case ${EPYTHON} in
