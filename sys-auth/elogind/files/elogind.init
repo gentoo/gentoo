@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need dbus
+
+	# Make sure elogind is up before xdm starts any dm
+	before xdm
+}
+
+start() {
+	ebegin "Starting elogind"
+
+	start-stop-daemon --start --quiet \
+		--pidfile "${ELOGIND_PIDFILE}" \
+		--exec "${ELOGIND_EXEC}" -- --daemon
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping elogind"
+	start-stop-daemon --stop --quiet --pidfile "${ELOGIND_PIDFILE}"
+	eend $?
+}
