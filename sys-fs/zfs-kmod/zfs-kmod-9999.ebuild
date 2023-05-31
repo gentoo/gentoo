@@ -12,18 +12,22 @@ MODULES_KERNEL_MAX=6.2
 MODULES_KERNEL_MIN=3.10
 
 if [[ ${PV} == 9999 ]] ; then
-	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
+	inherit git-r3
 	unset MODULES_KERNEL_MAX
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/openzfs.asc
 	inherit verify-sig
 
 	MY_PV=${PV/_rc/-rc}
-
 	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz.asc )"
 	S="${WORKDIR}/zfs-${PV%_rc?}"
-	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openzfs.asc
+
+	ZFS_KERNEL_COMPAT="${MODULES_KERNEL_MAX}"
+	# Increments minor eg 5.14 -> 5.15, and still supports override.
+	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
+	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
 
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~sparc"
@@ -46,7 +50,7 @@ if [[ ${PV} != 9999 ]] ; then
 	IUSE+=" +dist-kernel-cap"
 	RDEPEND="
 		dist-kernel-cap? ( dist-kernel? (
-			<virtual/dist-kernel-${MODULES_KERNEL_MAX%%.*}.$(( ${MODULES_KERNEL_MAX##*.} + 1))
+			<virtual/dist-kernel-${ZFS_KERNEL_DEP}
 		) )
 	"
 fi
@@ -88,6 +92,16 @@ pkg_setup() {
 	"
 
 	kernel_is -lt 5 && CONFIG_CHECK+=" IOSCHED_NOOP"
+
+	if [[ ${PV} != 9999 ]] ; then
+		local kv_major_max kv_minor_max zcompat
+		zcompat="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
+		kv_major_max="${zcompat%%.*}"
+		zcompat="${zcompat#*.}"
+		kv_minor_max="${zcompat%%.*}"
+		kernel_is -le "${kv_major_max}" "${kv_minor_max}" || die \
+			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
+	fi
 
 	linux-mod-r1_pkg_setup
 }
