@@ -1,0 +1,23 @@
+As MUSL libc does not provide netax25/ax25.h, netrom/netrom.h and 
+netrose/rose.h instatll substitute files uncondiditionally. See bug #907465
+
+diff --git a/Makefile.am b/Makefile.am
+index 0ff5f37..517e084 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,15 +7,9 @@ libax25ioincludedir = $(includedir)
+ AM_CPPFLAGS = -DAX25_SYSCONFDIR=\""$(sysconfdir)/ax25/"\" \
+ 	      -DAX25_LOCALSTATEDIR=\""$(localstatedir)/ax25/"\"
+ 
+-if !AX25_H
+ USE_LIBAX25_AX25_H = netax25/ax25.h
+-endif
+-if !NETROM_H
+ USE_LIBAX25_NETROM_H = netrom/netrom.h
+-endif
+-if !ROSE_H
+ USE_LIBAX25_ROSE_H = netrose/rose.h
+-endif
+ 
+ nobase_libax25include_HEADERS = 	\
+ 	netax25/axlib.h			\
