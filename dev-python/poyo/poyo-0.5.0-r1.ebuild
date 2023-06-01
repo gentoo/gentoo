@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="A lightweight YAML Parser for Python"
-HOMEPAGE="https://github.com/hackebrot/poyo"
+HOMEPAGE="
+	https://github.com/hackebrot/poyo/
+	https://pypi.org/project/poyo/
+"
 
 LICENSE="MIT"
 SLOT="0"
