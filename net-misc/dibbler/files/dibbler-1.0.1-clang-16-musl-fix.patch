@@ -1,0 +1,74 @@
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Wed, 31 May 2023 06:27:08 +0000
+Subject: [PATCH] Fix build with clang 16
+
+Especially on musl libc.
+
+On musl libc with clang-16, the function pthread_kill can't be found, as its
+only available if the FTM is enabled. Hence defining _GNU_SOURCE makes thie
+function available.
+
+Other than that this patch also renames the variable lock, to fix the following
+error: ./Port-linux/dibbler-client.cpp:48:27: error: reference to 'lock' is
+ambiguous. I'm exactly not sure what the errors are, but I'm guessing it's
+related to CPP namespaces. Not sure either why its not reproducable under glibc
+llvm.
+
+Bug: https://bugs.gentoo.org/897944
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/Port-linux/dibbler-client.cpp
++++ b/Port-linux/dibbler-client.cpp
+@@ -26,7 +26,7 @@ using namespace std;
+ 
+ #define IF_RECONNECTED_DETECTED -1
+ 
+-extern pthread_mutex_t lock;
++extern pthread_mutex_t plock;
+ 
+ TDHCPClient* ptr = 0;
+ 
+@@ -44,8 +44,8 @@ void signal_handler(int n) {
+ #ifdef MOD_CLNT_CONFIRM
+ void signal_handler_of_linkstate_change(int n) {
+     Log(Notice) << "Network switch off event detected. initiating CONFIRM." << LogEnd;
+-    pthread_mutex_lock(&lock);
+-    pthread_mutex_unlock(&lock);
++    pthread_mutex_lock(&plock);
++    pthread_mutex_unlock(&plock);
+ }
+ #endif
+ 
+--- a/Port-linux/lowlevel-linux-link-state.c
++++ b/Port-linux/lowlevel-linux-link-state.c
+@@ -10,6 +10,7 @@
+ #ifdef MOD_CLNT_CONFIRM
+ 
+ #define __USE_UNIX98
++#define _GNU_SOURCE
+ 
+ #include <stdio.h>
+ #include <signal.h>
+@@ -34,7 +35,7 @@ volatile int * notifier = 0;
+ int isDone = 0;
+ pthread_t parent_id;
+ pthread_t ntid;
+-pthread_mutex_t lock;
++pthread_mutex_t plock;
+ 
+ struct state {
+     int id;
+@@ -86,9 +87,9 @@ void link_state_changed(int ifindex)
+     {
+ 	if (changed_links->cnt<16)
+ 	    changed_links->ifindex[changed_links->cnt++] = ifindex;
+-	pthread_mutex_lock(&lock);
++	pthread_mutex_lock(&plock);
+ 	*notifier = 1; /* notify that change has occured */
+-	pthread_mutex_unlock(&lock);
++	pthread_mutex_unlock(&plock);
+ 	pthread_kill(parent_id,SIGUSR1);
+     } else
+     {
+-- 
+2.40.1
+
