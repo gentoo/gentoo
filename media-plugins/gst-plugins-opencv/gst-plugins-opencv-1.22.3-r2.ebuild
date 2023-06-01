@@ -25,6 +25,17 @@ src_prepare() {
 	gstreamer_system_package video_dep:gstreamer-video
 }
 
+multilib_src_configure() {
+	local emesonargs=(
+		# We need to disable here to avoid colliding w/ gst-plugins-bad
+		# on translations, because we currently do a "full" install in
+		# multilib_src_install in this package. See bug #907480.
+		-Dnls=disabled
+	)
+
+	gstreamer_multilib_src_configure
+}
+
 multilib_src_install() {
 	DESTDIR="${D}" eninja install
 }
