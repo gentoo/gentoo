@@ -29,10 +29,12 @@ RDEPEND="
 	dev-libs/libgee:0.8=
 	gui-libs/gtk:4
 	>=gui-libs/libadwaita-1.2.0:1
+	media-libs/graphene
 	net-libs/glib-networking
+	net-libs/gnutls:=
 	>=net-libs/libnice-0.1.15
 	net-libs/libsignal-protocol-c
-	net-libs/libsrtp:2
+	net-libs/libsrtp:2=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango
