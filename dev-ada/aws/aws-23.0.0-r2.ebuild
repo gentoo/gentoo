@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 )
+ADA_COMPAT=( gcc_12 )
 inherit ada multiprocessing
 
 DESCRIPTION="A complete Web development framework"
