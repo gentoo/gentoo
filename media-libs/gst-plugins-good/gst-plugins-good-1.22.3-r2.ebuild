@@ -44,6 +44,11 @@ multilib_src_configure() {
 
 		# gst-plugins-v4l2
 		-Dv4l2=disabled
+
+		# TODO: These two almost certainly need to be their own
+		# gst-plugins-qt5 & qt-plugins-qt6.
+		-Dqt5=disabled
+		-Dqt6=disabled
 	)
 
 	gstreamer_multilib_src_configure
