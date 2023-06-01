@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Read and modify ssh's authorized_keys files"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 SRC_URI+=" https://github.com/mschilli/net-ssh-authorizedkeysfile-perl/pull/3.patch -> ${PF}-extra-keys.patch "
 PATCHES=(
