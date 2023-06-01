@@ -10,7 +10,7 @@ HOMEPAGE="https://dino.im"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gpg +http +omemo +notification-sound test"
+IUSE="+gpg +http +omemo +notification-sound +rtp test"
 RESTRICT="!test? ( test )"
 
 MY_REPO_URI="https://github.com/dino/dino"
@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="${MY_REPO_URI}.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64"
 	SRC_URI="${MY_REPO_URI}/releases/download/v${PV}/${P}.tar.gz"
 fi
 
@@ -43,6 +43,11 @@ RDEPEND="
 		dev-libs/libgcrypt:=
 		media-gfx/qrencode:=
 	)
+	rtp? (
+		media-libs/gst-plugins-base:1.0
+		media-libs/gstreamer:1.0
+		media-libs/webrtc-audio-processing
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -57,12 +62,11 @@ BDEPEND="
 src_configure() {
 	vala_setup
 
-	# TODO: Make videocalls (rtp) optional and not completely disable it
 	local disabled_plugins=(
 		$(usex gpg "" "openpgp")
 		$(usex omemo "" "omemo")
 		$(usex http  "" "http-files")
-		"rtp"
+		$(usex rtp "" rtp)
 	)
 	local enabled_plugins=(
 		$(usex notification-sound "notification-sound" "")
