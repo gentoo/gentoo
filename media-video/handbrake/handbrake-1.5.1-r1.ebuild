@@ -26,6 +26,7 @@ IUSE="+fdk gstreamer gtk libav-aac numa nvenc x265"
 
 REQUIRED_USE="^^ ( fdk libav-aac )"
 
+# < ffmpeg-5.1 dep for bug #907406
 RDEPEND="
 	app-arch/xz-utils
 	dev-libs/jansson:=
@@ -46,7 +47,7 @@ RDEPEND="
 	media-libs/x264:=
 	media-libs/zimg
 	media-sound/lame
-	>=media-video/ffmpeg-4.2.1:0=[postproc,fdk?]
+	<media-video/ffmpeg-5.1:=[postproc,fdk?]
 	sys-libs/zlib
 	fdk? ( media-libs/fdk-aac:= )
 	gstreamer? (
