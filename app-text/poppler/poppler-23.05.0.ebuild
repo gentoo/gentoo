@@ -105,7 +105,7 @@ src_configure() {
 	append-lfs-flags # bug #898506
 
 	local mycmakeargs=(
-		-DBUILD_GTK_TESTS=OFFF
+		-DBUILD_GTK_TESTS=OFF
 		-DBUILD_QT5_TESTS=$(usex test $(usex qt5))
 		-DBUILD_CPP_TESTS=$(usex test)
 		-DBUILD_MANUAL_TESTS=$(usex test)
