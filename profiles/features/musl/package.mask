@@ -71,7 +71,7 @@ net-wireless/neard
 sys-apps/noexec
 
 # Giuseppe Foti <foti.giuseppe@gmail.com> (2023-05-19)
-# New packages that require blocked packages in the previous block.
+# New packages that require packages masked by the previous block.
 dev-db/pg-gvm
 net-analyzer/notus-scanner
 
