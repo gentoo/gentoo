@@ -48,7 +48,7 @@ RDEPEND="
 	rtp? (
 		media-libs/gst-plugins-base:1.0
 		media-libs/gstreamer:1.0
-		media-libs/webrtc-audio-processing
+		media-libs/webrtc-audio-processing:0
 	)
 "
 DEPEND="
