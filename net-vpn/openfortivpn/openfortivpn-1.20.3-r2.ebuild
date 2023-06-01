@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 
 DEPEND="
 	dev-libs/openssl:=
-	<net-dialup/ppp-2.5.0
+	net-dialup/ppp
 "
 RDEPEND="${DEPEND}"
 
