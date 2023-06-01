@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
@@ -348,7 +348,9 @@ pkg_postinst() {
 		cd "${T}" || die
 		mkdir _install
 		tar xf busybox-links.tar -C _install || die
-		echo n | cp -ivpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
+		# 907432: cp -n returns error if it skips any file, but that is expected here
+		# TODO: check if a new coreutils release has a replacement option
+		cp -nvpPR _install/* "${ROOT}"/
 	fi
 
 	if use sep-usr ; then
