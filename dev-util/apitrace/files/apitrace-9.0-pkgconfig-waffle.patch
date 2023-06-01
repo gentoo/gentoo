@@ -1,0 +1,14 @@
+waffle's upstream intentionally does not ship cmake files anymore
+(just a quick fix that works for us, there may be more to consider)
+
+https://bugs.gentoo.org/901365
+https://gitlab.freedesktop.org/mesa/waffle/-/issues/74
+https://gitlab.freedesktop.org/mesa/waffle/-/commit/a16983fea590491727c8119256c7b938fe1f9d10
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -195,3 +195,4 @@
+     # Use Waffle for eglretrace
+-    find_package (Waffle REQUIRED)
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(Waffle REQUIRED waffle-1)
+ endif ()
