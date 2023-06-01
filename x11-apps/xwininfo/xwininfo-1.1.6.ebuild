@@ -7,7 +7,7 @@ XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="window information utility for X"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="~amd64 ~loong ~ppc64"
 
 RDEPEND="
 	>=x11-libs/libxcb-1.6:=
