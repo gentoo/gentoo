@@ -49,7 +49,7 @@ BDEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
 		htmlreport? (
-			$(python_gen_cond_dep 'dev-python/unittest-or-fail[${PYTHON_USEDEP}]')
+			$(python_gen_cond_dep 'dev-python/unittest-or-fail[${PYTHON_USEDEP}]' python3_{10..11})
 		)
 	)
 "
