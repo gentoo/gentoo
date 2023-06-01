@@ -23,6 +23,7 @@ CONFIG_CHECK="~PPP ~PPP_ASYNC"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.02.3-systemd_substitute_bin_and_sysconfig_dirs.patch
+	"${FILESDIR}"/openfortivpn-1.20.3-pppd-ipcp-accept-remote.patch
 )
 
 src_prepare() {
