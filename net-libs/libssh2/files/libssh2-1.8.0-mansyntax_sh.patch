@@ -1,8 +1,0 @@
---- a/tests/CMakeLists.txt
-+++ b/tests/CMakeLists.txt
-@@ -179,5 +179,4 @@ mark_as_advanced(SH_EXECUTABLE MAN_EXECUTABLE GREP_EXECUTABLE)
- if(SH_EXECUTABLE AND MAN_EXECUTABLE AND GREP_EXECUTABLE)
-   set(cmd "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
-   set(cmd "${cmd} ${CMAKE_CURRENT_SOURCE_DIR}/mansyntax.sh")
--  add_test(mansyntax ${SH_EXECUTABLE} -c "${cmd}")
- endif()
