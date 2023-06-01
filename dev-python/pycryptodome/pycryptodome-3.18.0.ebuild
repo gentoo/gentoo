@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -26,11 +26,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 DEPEND="
-	dev-libs/gmp:0=
+	dev-libs/gmp:=
 	>=dev-libs/libtomcrypt-1.18.2-r1:=
 "
 BDEPEND="
-	virtual/python-cffi[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 "
 RDEPEND="
 	${DEPEND}
@@ -40,6 +40,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/pycryptodome-3.10.1-system-libtomcrypt.patch"
+	"${FILESDIR}/pycryptodome-3.18.0-python3.12-unittest.patch"
 )
 
 python_prepare_all() {
