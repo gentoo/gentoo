@@ -349,8 +349,8 @@ linux-mod-r1_pkg_setup() {
 # > make-target: Almost always unneeded but, if defaults are not right,
 # then can specify the Makefile's target(s) to build the module/extras.
 # Multiple targets can be used with spaces, e.g. :"first second".
-#  -> Default: specially tries modules, module, <name>.ko, <name>,
-# default, all, empty target, and runs the first found usable
+#  -> Default: specially tries modules, module, <name>.ko, default,
+# all, empty target, and runs the first found usable
 #
 # Missing elements results in defaults being used, e.g. this is valid:
 #   modlist=( name1 name2=:source name3=install::build )
@@ -406,7 +406,7 @@ linux-mod-r1_src_compile() {
 		if [[ -z ${mod[3]} ]]; then
 			# guess between commonly used targets if none given, fallback to
 			# an empty target without trying to see the error output
-			for target in module{s,} "${name}"{.ko,} default all; do
+			for target in module{s,} "${name}".ko default all; do
 				nonfatal emake "${emakeargs[@]}" -q "${target}" &>/dev/null
 				if [[ ${?} -eq 1 ]]; then
 					mod[3]=${target}
