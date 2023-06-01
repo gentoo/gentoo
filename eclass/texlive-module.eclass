@@ -99,31 +99,38 @@ TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge sam }
 BDEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils"
 
-for i in ${TEXLIVE_MODULE_CONTENTS}; do
-	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
-	done
+tl_uri_prefix="https://dev.gentoo.org/~@dev@/distfiles/texlive/tl-"
+tl_uri_suffix="-${PV}.${PKGEXT}"
+
+tl_uri=( ${TEXLIVE_MODULE_CONTENTS} )
+tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
+for tldev in ${TEXLIVE_DEVS}; do
+	SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 done
 
 # Forge doc SRC_URI
-[[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} doc? ("
-for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
+if [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]]; then
+	SRC_URI+=" doc? ("
+	tl_uri=( ${TEXLIVE_MODULE_DOC_CONTENTS} )
+	tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
 	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
+		SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 	done
-done
-[[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} )"
+	SRC_URI+=" )"
+fi
 
 # Forge source SRC_URI
-if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]] ; then
-	SRC_URI="${SRC_URI} source? ("
-	for i in ${TEXLIVE_MODULE_SRC_CONTENTS}; do
-		for tldev in ${TEXLIVE_DEVS}; do
-			SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
-		done
+if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]]; then
+	SRC_URI+=" source? ("
+	tl_uri=( ${TEXLIVE_MODULE_SRC_CONTENTS} )
+	tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
+	for tldev in ${TEXLIVE_DEVS}; do
+		SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 	done
-	SRC_URI="${SRC_URI} )"
+	SRC_URI+=" )"
 fi
+
+unset tldev tl_uri tl_uri_prefix tl_uri_suffix
 
 RDEPEND="${COMMON_DEPEND}"
 
