@@ -236,12 +236,6 @@ dev-python/thunarx-python
 =dev-python/pythran-0.13.0
 =dev-python/gast-0.5.4
 
-# John Helmert III <ajak@gentoo.org> (2023-04-30)
-# STARTTLS vulnerability, depends on gtk+:2, practically unmainatined
-# upstream. Use mail-client/claws instead. Removal in 30 days, bugs
-# #769293, #807358
-mail-client/sylpheed
-
 # Sam James <sam@gentoo.org> (2023-05-01)
 # Quite broken, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109672.
 =sys-devel/gcc-14.0.0_pre20230430
