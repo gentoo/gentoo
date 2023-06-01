@@ -261,12 +261,6 @@ net-dns/ldns-utils
 # 7a1e8a90fa8a09a84741dc8ef5f774d92ae8433c
 acct-group/resin
 
-# Jakov Smolić <jsmolic@gentoo.org> (2023-04-21)
-# Does not support python 3.11, uses deprecated dev-python/future,
-# inactive upstream (last commit in 2019).
-# Removal on 2023-05-21. Bugs #897102, #888293
-net-irc/quasselgrep
-
 # Sam James <sam@gentoo.org> (2023-04-19)
 # Last-minute libstdc++ symbol versioning magic causes e.g. mold, cmake
 # to segfault:
