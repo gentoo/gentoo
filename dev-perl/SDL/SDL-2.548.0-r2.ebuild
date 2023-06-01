@@ -44,6 +44,11 @@ BDEPEND="${RDEPEND}
 
 mydoc='CHANGELOG README TODO'
 
+PERL_RM_FILES=(
+	# Hangs, see bug #892011 and https://aur.archlinux.org/packages/perl-sdl#comment-903413.
+	t/core_video.t
+)
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.546-pointer.patch
 	"${FILESDIR}"/${PN}-2.546-implicit-func-decl.patch
