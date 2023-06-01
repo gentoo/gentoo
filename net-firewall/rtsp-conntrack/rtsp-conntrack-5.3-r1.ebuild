@@ -18,8 +18,8 @@ CONFIG_CHECK="NF_CONNTRACK"
 
 src_compile() {
 	local modlist=(
-		nf_conntrack_rtsp=net/netfilter:::all
-		nf_nat_rtsp=net/ipv4/netfilter:::all
+		nf_conntrack_rtsp=net/netfilter
+		nf_nat_rtsp=net/ipv4/netfilter
 	)
 	local modargs=( KERNELDIR="${KV_OUT_DIR}" )
 
