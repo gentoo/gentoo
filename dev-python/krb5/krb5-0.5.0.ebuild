@@ -30,3 +30,8 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/jborean93/pykrb5/pull/27
+	"${FILESDIR}/${P}-cython-3.patch"
+)
