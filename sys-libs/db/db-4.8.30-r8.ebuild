@@ -36,6 +36,8 @@ REQUIRED_USE="test? ( tcl )"
 DEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	test? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )"
 RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )"
+# Need binutils for tc-ld-force-bfd
+BDEPEND="sys-devel/binutils:*"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8-libtool.patch
