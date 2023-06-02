@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 if [[ "${PV}" == "9999" ]]; then
-	EGIT_REPO_URI="https://github.com/wcdolphin/${PN}.git"
+	EGIT_REPO_URI="https://github.com/corydolphin/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/corydolphin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -18,7 +18,7 @@ fi
 
 DESCRIPTION="A Flask extension for Cross Origin Resource Sharing (CORS)"
 HOMEPAGE="
-	https://github.com/wcdolphin/flask-cors/
+	https://github.com/corydolphin/flask-cors/
 	https://pypi.org/project/Flask-Cors/
 "
 
