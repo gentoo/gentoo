@@ -30,7 +30,7 @@ RDEPEND="
 	sys-libs/zlib
 	opengl? ( virtual/opengl )
 	x11-libs/gtk+:3
-	x11-libs/wxGTK:${WX_GTK_VER}=[opengl,X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[opengl?,X]
 	"
 DEPEND="${RDEPEND}"
 BDEPEND="
