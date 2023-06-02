@@ -230,7 +230,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-0.14.17[${PYTHON_USEDEP}]
+					>=dev-util/maturin-1.0.1[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -1331,26 +1331,21 @@ distutils_pep517_install() {
 	local config_settings=
 	case ${DISTUTILS_USE_PEP517} in
 		maturin)
-			# ebuild's DISTUTILS_ARGS are currently ignored if <1.0.0, ebuilds
-			# should set the dependency if used until this can be cleaned up
-			# (reminder to cleanup the old MATURIN_PEP517_ARGS block too)
-			if has_version -b '>=dev-util/maturin-1.0.0'; then
-				# `maturin pep517 build-wheel --help` for options
-				local maturin_args=(
-					"${DISTUTILS_ARGS[@]}"
-					--jobs="$(makeopts_jobs)"
-					--skip-auditwheel # see bug #831171
-					$(in_iuse debug && usex debug '--profile=dev' '')
-				)
+			# `maturin pep517 build-wheel --help` for options
+			local maturin_args=(
+				"${DISTUTILS_ARGS[@]}"
+				--jobs="$(makeopts_jobs)"
+				--skip-auditwheel # see bug #831171
+				$(in_iuse debug && usex debug '--profile=dev' '')
+			)
 
-				config_settings=$(
-					"${EPYTHON}" - "${maturin_args[@]}" <<-EOF || die
-						import json
-						import sys
-						print(json.dumps({"build-args": sys.argv[1:]}))
-					EOF
-				)
-			fi
+			config_settings=$(
+				"${EPYTHON}" - "${maturin_args[@]}" <<-EOF || die
+					import json
+					import sys
+					print(json.dumps({"build-args": sys.argv[1:]}))
+				EOF
+			)
 			;;
 		meson-python)
 			local -x NINJAOPTS=$(get_NINJAOPTS)
@@ -1524,15 +1519,6 @@ distutils-r1_python_compile() {
 				fi
 			else
 				esetup.py build -j "${jobs}" "${@}"
-			fi
-			;;
-		maturin)
-			if has_version -b '<dev-util/maturin-1.0.0'; then
-				local -x MATURIN_PEP517_ARGS="
-					--jobs=$(makeopts_jobs)
-					--skip-auditwheel
-					$(in_iuse debug && usex debug --profile=dev '')
-				"
 			fi
 			;;
 		no)
