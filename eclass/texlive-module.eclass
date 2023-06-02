@@ -164,10 +164,18 @@ texlive-module_src_unpack() {
 	sed -e 's/\/[^/]*$//' -e "s:^:${RELOC_TARGET}/:" "${T}/reloclist" |
 		sort -u |
 		xargs mkdir -p || die
-	local i
+	local i dir="" files=()
 	while read i; do
-		mv "${i}" "${RELOC_TARGET}/${i%/*}" || die
+		if [[ ${RELOC_TARGET}/${i%/*} != "${dir}" ]]; then
+			# new dir, do the previous move
+			[[ -z ${dir} ]] || mv "${files[@]}" "${dir}" || die
+			dir="${RELOC_TARGET}/${i%/*}"
+			files=()
+		fi
+		# collect files with same destination dir
+		files+=( "${i}" )
 	done < "${T}/reloclist"
+	mv "${files[@]}" "${dir}" || die
 }
 
 # @FUNCTION: texlive-module_add_format
