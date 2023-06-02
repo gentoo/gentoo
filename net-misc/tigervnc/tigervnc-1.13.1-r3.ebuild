@@ -217,7 +217,10 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	use server && elog 'OpenRC users: please migrate to one service per display as documented here'	#FIXME: add link
+	use server && {
+		elog 'OpenRC users: please migrate to one service per display as documented here:'
+		elog 'https://wiki.gentoo.org/wiki/TigerVNC#Migrating_from_1.13.1-r2_or_lower:'
+	}
 
 	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm x11-misc/sddm x11-misc/slim"
 	use server && \
