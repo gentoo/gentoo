@@ -22,14 +22,15 @@ IUSE="doc lzma opengl"
 
 RDEPEND="
 	app-arch/bzip2
-	lzma? ( app-arch/xz-utils )
 	dev-libs/tinyxml
+	lzma? ( app-arch/xz-utils )
 	media-libs/freetype:2
+	media-libs/glew:0
 	media-libs/jasper
 	media-libs/portaudio
 	net-misc/curl
-	sys-libs/zlib
 	opengl? ( virtual/opengl )
+	sys-libs/zlib
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}=[opengl?,X]
 	"
