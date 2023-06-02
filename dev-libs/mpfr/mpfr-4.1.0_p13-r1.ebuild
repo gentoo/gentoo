@@ -18,18 +18,27 @@ MY_P=${PN}-${MY_PV}
 DESCRIPTION="Library for multiple-precision floating-point computations with exact rounding"
 HOMEPAGE="https://www.mpfr.org/ https://gitlab.inria.fr/mpfr"
 SRC_URI="https://www.mpfr.org/${MY_P}/${MY_P}.tar.xz"
+
 if [[ ${PV} == *_p* ]] ; then
 	# If this is a patch release, we have to download each of the patches:
 	# -_pN = N patches
 	# - patch file names are like: patch01, patch02, ..., patch10, patch12, ..
 	#
 	# => name the ebuild _pN where N is the number of patches on the 'bugs' page.
-	for ((my_patch_index=1; my_patch_index <= MY_PATCH; my_patch_index++)); do
-		SRC_URI+=" $(printf "https://www.mpfr.org/${MY_P}/patch%02d -> ${MY_P}-patch%02d.patch " ${my_patch_index}{,})"
-		MY_PATCHES+=( "${DISTDIR}"/$(printf ${MY_P}-patch%02d.patch ${my_patch_index}) )
+	patch_url_base="https://www.mpfr.org/${MY_P}"
+	my_patch_index=
+
+	for ((my_patch_index=1; my_patch_index <= MY_PATCH ; my_patch_index++)) ; do
+		printf -v mangled_patch_ver "patch%02d" "${my_patch_index}"
+
+		SRC_URI+=" ${patch_url_base}/${mangled_patch_ver} -> ${MY_P}-${mangled_patch_ver}.patch"
+
+		MY_PATCHES+=( "${DISTDIR}"/${MY_P}-${mangled_patch_ver}.patch )
 	done
-	unset my_patch_index
+
+	unset patch_url_base my_patch_index mangled_patch_ver
 fi
+
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
