@@ -8,7 +8,7 @@ inherit git-r3 kernel-build
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.4.21
 CONFIG_HASH=2809b7faa6a8cb232cd825096c146b7bdc1e08ea
-GENTOO_CONFIG_VER=g1
+GENTOO_CONFIG_VER=g7
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
