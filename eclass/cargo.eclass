@@ -209,7 +209,7 @@ cargo_crate_uris() {
 				https://gitlab.com/*)
 					repo_ext=".gl"
 					repo_name="${crate_uri##*/}"
-					crate_uri="${crate_uri%/}/archive/-/%commit%/${repo_name}/%commit%.tar.gz"
+					crate_uri="${crate_uri%/}/-/archive/%commit%/${repo_name}-%commit%.tar.gz"
 				;;
 				*)
 					repo_ext=
