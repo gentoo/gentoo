@@ -22,7 +22,7 @@ RDEPEND="
 	>=media-libs/freetype-2:2
 	>=media-libs/libpng-1.2:0=
 	media-libs/libsdl2[X,joystick]
-	media-libs/sdl2-gfx:=
+	media-libs/sdl2-gfx
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-mixer
 	media-libs/sdl2-pango
