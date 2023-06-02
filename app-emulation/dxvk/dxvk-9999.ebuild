@@ -37,7 +37,7 @@ HOMEPAGE="https://github.com/doitsujin/dxvk/"
 
 LICENSE="ZLIB Apache-2.0 MIT"
 SLOT="0"
-IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 debug +dxgi"
+IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 +dxgi +strip"
 REQUIRED_USE="
 	|| ( d3d9 d3d10 d3d11 dxgi )
 	d3d10? ( d3d11 )
@@ -126,7 +126,7 @@ multilib_src_configure() {
 		$(meson_use {,enable_}d3d10)
 		$(meson_use {,enable_}d3d11)
 		$(meson_use {,enable_}dxgi)
-		$(usev !debug --strip) # portage won't strip .dll, so allow it here
+		$(usev strip --strip) # portage won't strip .dll, so allow it here
 	)
 
 	meson_src_configure
