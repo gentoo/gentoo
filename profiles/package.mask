@@ -36,6 +36,10 @@
 # Andeas K. Hüttel <dilfridge@gentoo.org> (2023-06-02)
 # Work in progress
 =dev-lang/perl-5.38*
+~virtual/perl-Attribute-Handlers-1.30.0
+~virtual/perl-autodie-2.360.0
+~virtual/perl-bignum-0.660.0
+~virtual/perl-Carp-1.540.0
 
 # Michał Górny <mgorny@gentoo.org> (2023-05-31)
 # Unmaintained.  Last commit in 2020.  Does not work with Python 3.12.
