@@ -3,13 +3,133 @@
 
 EAPI=8
 
-# CRATES="
-# "
+CRATES="
+	aho-corasick-0.7.20
+	android_system_properties-0.1.5
+	anyhow-1.0.68
+	anyhow-1.0.69
+	atty-0.2.14
+	autocfg-1.1.0
+	bitfield-0.14.0
+	bitflags-1.3.2
+	bumpalo-3.12.0
+	byteorder-1.4.3
+	cc-1.0.79
+	cexpr-0.6.0
+	cfg-if-1.0.0
+	chrono-0.4.23
+	clang-sys-1.6.0
+	clap_derive-4.1.0
+	clap_lex-0.3.1
+	clap-4.1.4
+	codespan-reporting-0.11.1
+	colored-2.0.0
+	core-foundation-sys-0.8.3
+	cxx-1.0.89
+	cxx-1.0.91
+	cxx-build-1.0.89
+	cxx-build-1.0.91
+	cxxbridge-flags-1.0.89
+	cxxbridge-flags-1.0.91
+	cxxbridge-macro-1.0.89
+	cxxbridge-macro-1.0.91
+	either-1.8.1
+	errno-0.2.8
+	errno-dragonfly-0.1.2
+	fastrand-1.8.0
+	fastrand-1.9.0
+	filedescriptor-0.8.2
+	gag-1.0.0
+	getset-0.1.2
+	glob-0.3.1
+	heck-0.4.1
+	hermit-abi-0.1.19
+	hermit-abi-0.2.6
+	iana-time-zone-0.1.53
+	iana-time-zone-haiku-0.1.1
+	instant-0.1.12
+	io-lifetimes-1.0.4
+	io-lifetimes-1.0.5
+	is-terminal-0.4.2
+	itertools-0.9.0
+	js-sys-0.3.61
+	lazy_static-1.4.0
+	lazycell-1.3.0
+	libc-0.2.139
+	libudev-sys-0.1.4
+	link-cplusplus-1.0.8
+	linux-raw-sys-0.1.4
+	log-0.4.17
+	memchr-2.5.0
+	memoffset-0.8.0
+	minimal-lexical-0.2.1
+	nom-7.1.3
+	num-integer-0.1.45
+	num-traits-0.2.15
+	once_cell-1.17.0
+	once_cell-1.17.1
+	os_str_bytes-6.4.1
+	parse-display-0.1.2
+	parse-display-derive-0.1.2
+	paste-1.0.11
+	peeking_take_while-0.1.2
+	pkg-config-0.3.26
+	proc-macro-error-1.0.4
+	proc-macro-error-attr-1.0.4
+	proc-macro2-1.0.50
+	proc-macro2-1.0.51
+	quote-1.0.23
+	redox_syscall-0.2.16
+	regex-1.7.1
+	regex-syntax-0.6.28
+	remove_dir_all-0.5.3
+	rpassword-4.0.5
+	rustc-hash-1.1.0
+	rustix-0.36.7
+	rustix-0.36.8
+	scratch-1.0.3
+	shlex-1.1.0
+	strsim-0.10.0
+	syn-1.0.107
+	syn-1.0.109
+	tempfile-3.3.0
+	tempfile-3.4.0
+	termcolor-1.2.0
+	terminal_size-0.2.3
+	thiserror-1.0.38
+	thiserror-impl-1.0.38
+	time-0.1.45
+	udev-0.7.0
+	unicode-ident-1.0.6
+	unicode-width-0.1.10
+	uuid-1.3.0
+	version_check-0.9.4
+	wasi-0.10.0+wasi-snapshot-preview1
+	wasm-bindgen-0.2.84
+	wasm-bindgen-backend-0.2.84
+	wasm-bindgen-macro-0.2.84
+	wasm-bindgen-macro-support-0.2.84
+	wasm-bindgen-shared-0.2.84
+	winapi-0.3.9
+	winapi-i686-pc-windows-gnu-0.4.0
+	winapi-util-0.1.5
+	winapi-x86_64-pc-windows-gnu-0.4.0
+	windows_aarch64_gnullvm-0.42.1
+	windows_aarch64_msvc-0.42.1
+	windows_i686_gnu-0.42.1
+	windows_i686_msvc-0.42.1
+	windows_x86_64_gnu-0.42.1
+	windows_x86_64_gnullvm-0.42.1
+	windows_x86_64_msvc-0.42.1
+	windows-sys-0.42.0
+	windows-sys-0.45.0
+	windows-targets-0.42.1
+"
 
 # Upstream have a fork of bindgen and use cgit
-# declare -A GIT_CRATES=(
-# 	[bindgen]="https://gitlab.com/Matt.Jolly/rust-bindgen-bcachefs;f773267b090bf16b9e8375fcbdcd8ba5e88806a8;rust-bindgen-bcachefs-%commit%/bindgen"
-# )
+declare -A GIT_CRATES=(
+	[bindgen]="https://gitlab.com/Matt.Jolly/rust-bindgen-bcachefs;f773267b090bf16b9e8375fcbdcd8ba5e88806a8;rust-bindgen-bcachefs-%commit%/bindgen"
+)
 
 PYTHON_COMPAT=( python3_{10..12} )
 
@@ -74,7 +194,6 @@ python_check_deps() {
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
 		git-r3_src_unpack
-		S="${S}/rust-src/bch_bindgen" cargo_live_src_unpack
 		S="${S}/rust-src" cargo_live_src_unpack
 	else
 		default
