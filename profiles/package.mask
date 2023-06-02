@@ -40,6 +40,16 @@
 ~virtual/perl-autodie-2.360.0
 ~virtual/perl-bignum-0.660.0
 ~virtual/perl-Carp-1.540.0
+~virtual/perl-Compress-Raw-Bzip2-2.204.1_rc
+~virtual/perl-Compress-Raw-Zlib-2.204.1_rc
+~virtual/perl-CPAN-2.360.0
+~virtual/perl-Data-Dumper-2.188.0
+~virtual/perl-DB_File-1.858.0
+~virtual/perl-Devel-PPPort-3.710.0
+~virtual/perl-Digest-MD5-2.580.100_rc
+~virtual/perl-Digest-SHA-6.40.0
+~virtual/perl-Encode-3.190.0
+~virtual/perl-ExtUtils-CBuilder-0.280.238
 
 # Michał Górny <mgorny@gentoo.org> (2023-05-31)
 # Unmaintained.  Last commit in 2020.  Does not work with Python 3.12.
