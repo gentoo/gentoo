@@ -4,18 +4,28 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Pagination support for flask"
-HOMEPAGE="https://flask-paginate.readthedocs.io"
-SRC_URI="https://github.com/lixxu/flask-paginate/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://flask-paginate.readthedocs.io/
+	https://github.com/lixxu/flask-paginate/
+	https://pypi.org/project/flask-paginate/
+"
+SRC_URI="
+	https://github.com/lixxu/flask-paginate/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/flask[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
