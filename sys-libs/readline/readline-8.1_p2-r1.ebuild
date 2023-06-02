@@ -36,17 +36,24 @@ case ${PV} in
 			patch_url=
 			my_patch_index=
 
-			for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
-				for url in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
-					patch_url=$(printf "${url}/${PN}-$(ver_cut 1-2)-patches/${my_p}-%03d" ${my_patch_index})
-					SRC_URI+=" ${patch_url}"
-					SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
-				done
+			upstream_url_base="mirror://gnu/bash"
+			mirror_url_base="ftp://ftp.cwru.edu/pub/bash"
 
-				MY_PATCHES+=( "${DISTDIR}"/$(printf ${my_p}-%03d ${my_patch_index}) )
+			for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
+				printf -v mangled_patch_ver ${my_p}-%03d ${my_patch_index}
+				patch_url="${upstream_url_base}/${MY_P}-patches/${mangled_patch_ver}"
+
+				SRC_URI+=" ${patch_url}"
+				SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
+
+				# Add in the mirror URL too.
+				SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
+				SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}} )"
+
+				MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
 			done
 
-			unset my_pn patch_url my_patch_index
+			unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
 		fi
 	;;
 esac
