@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod
+inherit linux-mod-r1
 
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN/smc-/}"
@@ -23,7 +23,6 @@ IUSE="module"
 RDEPEND="
 	sys-libs/zlib
 	sys-power/iasl
-	module? ( !sys-apps/smc-sum-driver )
 "
 
 RESTRICT="bindist mirror"
@@ -39,9 +38,6 @@ DOCS=(
 
 PATCHES=( "${FILESDIR}/${PN}-2.7.0.20210903-missing-include.patch" )
 
-BUILD_TARGETS="default"
-MODULE_NAMES="sum_bios(misc:${S}/driver/Source/Linux)"
-
 QA_PREBUILT="usr/bin/smc-sum"
 
 src_prepare() {
@@ -49,12 +45,16 @@ src_prepare() {
 
 	# Install new Makefile to respect users CFLAGS and LDFLAGS
 	cp "${FILESDIR}"/makefile driver/Source/Linux/Makefile || die
+
+	use module && linux-mod-r1_pkg_setup
 }
 
 src_compile() {
 	if use module; then
-		BUILD_PARAMS="KDIR=${KV_OUT_DIR} M=${S}/driver/Source/Linux"
-		linux-mod_src_compile
+		local modargs=( KDIR="${KV_OUT_DIR}" )
+		local modlist=( sum_bios="misc:driver/Source/Linux" )
+
+		linux-mod-r1_src_compile
 	else
 		:;
 	fi
@@ -64,5 +64,5 @@ src_install() {
 	newbin sum smc-sum
 	einstalldocs
 
-	use module && linux-mod_src_install
+	use module && linux-mod-r1_src_install
 }
