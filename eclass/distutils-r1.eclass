@@ -1814,9 +1814,11 @@ distutils-r1_run_phase() {
 		# and _all() already localizes it
 		local -x PATH=${PATH}
 
-		# Undo the default switch in setuptools-60+ for the time being,
-		# to avoid replacing .egg-info file with directory in-place.
-		local -x SETUPTOOLS_USE_DISTUTILS="${SETUPTOOLS_USE_DISTUTILS:-stdlib}"
+		if _python_impl_matches "${EPYTHON}" 3.{9..11}; then
+			# Undo the default switch in setuptools-60+ for the time being,
+			# to avoid replacing .egg-info file with directory in-place.
+			local -x SETUPTOOLS_USE_DISTUTILS="${SETUPTOOLS_USE_DISTUTILS:-stdlib}"
+		fi
 
 		# Bug 559644
 		# using PYTHONPATH when the ${BUILD_DIR}/lib is not created yet might lead to
