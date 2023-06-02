@@ -15,7 +15,7 @@ else
 	inherit verify-sig
 	SRC_URI="https://www.infradead.org/openconnect/download/${P}.tar.gz
 		verify-sig? ( https://www.infradead.org/openconnect/download/${P}.tar.gz.asc )"
-	KEYWORDS="~amd64 arm arm64 ~loong ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
