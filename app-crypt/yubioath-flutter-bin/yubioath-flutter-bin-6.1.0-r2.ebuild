@@ -18,9 +18,9 @@ KEYWORDS="-* ~amd64"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
+	app-crypt/ccid
 	dev-libs/glib:2
 	media-libs/libepoxy
-	sys-apps/pcsc-lite
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
