@@ -239,7 +239,7 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.12.1[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.13.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
@@ -1349,42 +1349,21 @@ distutils_pep517_install() {
 			;;
 		meson-python)
 			local -x NINJAOPTS=$(get_NINJAOPTS)
-			if has_version -b '>=dev-python/meson-python-0.13'; then
-				config_settings=$(
-					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
-						import json
-						import os
-						import shlex
-						import sys
+			config_settings=$(
+				"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+					import json
+					import os
+					import shlex
+					import sys
 
-						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
-						print(json.dumps({
-							"builddir": "${BUILD_DIR}",
-							"setup-args": sys.argv[1:],
-							"compile-args": ["-v"] + ninjaopts,
-						}))
-					EOF
-				)
-			else
-				config_settings=$(
-					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
-						import json
-						import os
-						import shlex
-						import sys
-
-						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
-						print(json.dumps({
-							"builddir": "${BUILD_DIR}",
-							"setup-args": sys.argv[1:],
-							"compile-args": [
-								"-v",
-								f"--ninja-args={ninjaopts!r}",
-							],
-						}))
-					EOF
-				)
-			fi
+					ninjaopts = shlex.split(os.environ["NINJAOPTS"])
+					print(json.dumps({
+						"builddir": "${BUILD_DIR}",
+						"setup-args": sys.argv[1:],
+						"compile-args": ["-v"] + ninjaopts,
+					}))
+				EOF
+			)
 			;;
 		setuptools)
 			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
