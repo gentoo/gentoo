@@ -341,8 +341,8 @@ texlive-module_src_compile() {
 	done
 
 	# Determine texlive-core version for fmtutil call
-        fmt_call="$(has_version '>=app-text/texlive-core-2019' \
-         && echo "fmtutil-user" || echo "fmtutil")"
+	fmt_call="$(has_version '>=app-text/texlive-core-2019' \
+		&& echo "fmtutil-user" || echo "fmtutil")"
 
 	# Build format files
 	for i in texmf-dist/fmtutil/format*.cnf; do
@@ -401,7 +401,6 @@ texlive-module_src_install() {
 	if [[ -d tlpkg ]] && use source; then
 		cp -pR tlpkg "${ED}/usr/share/" || die
 	fi
-
 
 	if [[ -d texmf-var ]]; then
 		insinto /var/lib/texmf
