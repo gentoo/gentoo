@@ -125,6 +125,8 @@ esac
 #
 # - pdm - pdm.pep517 backend
 #
+# - pdm-backend - pdm.backend backend
+#
 # - poetry - poetry-core backend
 #
 # - setuptools - distutils or setuptools (incl. legacy mode)
@@ -250,6 +252,11 @@ _distutils_set_globals() {
 			pdm)
 				bdep+='
 					>=dev-python/pdm-pep517-1.1.4[${PYTHON_USEDEP}]
+				'
+				;;
+			pdm-backend)
+				bdep+='
+					>=dev-python/pdm-backend-2.0.7[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
@@ -984,6 +991,12 @@ _distutils-r1_print_package_versions() {
 					dev-python/setuptools
 				)
 				;;
+			pdm-backend)
+				packages+=(
+					dev-python/pdm-backend
+					dev-python/setuptools
+				)
+				;;
 			poetry)
 				packages+=(
 					dev-python/poetry-core
@@ -1177,6 +1190,9 @@ _distutils-r1_backend_to_key() {
 			;;
 		pbr.build)
 			echo pbr
+			;;
+		pdm.backend)
+			echo pdm-backend
 			;;
 		pdm.pep517.api)
 			echo pdm
