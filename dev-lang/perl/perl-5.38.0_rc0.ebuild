@@ -7,7 +7,7 @@ inherit alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
 CROSS_VER=1.4.1
-PATCH_BASE="perl-5.36.0-patches-${PATCH_VER}"
+PATCH_BASE="perl-5.38.0-patches-${PATCH_VER}"
 PATCH_DEV=dilfridge
 
 DIST_AUTHOR=RJBS
@@ -42,8 +42,8 @@ DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
 #	mirror://cpan/src/5.0/${MY_P}.tar.xz
 #	mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${MY_P}.tar.xz
 SRC_URI="
-	https://github.com/gentoo-perl/perl-patchset/releases/download/${PATCH_BASE}/${PATCH_BASE}.tar.xz
-	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${PATCH_BASE}.tar.xz
+	https://github.com/gentoo-perl/perl-patchset/archive/refs/tags/${PATCH_BASE}.tar.gz
+	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${PATCH_BASE}.tar.gz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 	https://semiotic.systems/perl-5.38.0-RC0.tar.gz
 "
@@ -389,7 +389,11 @@ apply_patchdir() {
 }
 
 src_prepare() {
+
 	local patchdir="${WORKDIR}/patches"
+
+	mv -v "${WORKDIR}/perl-patchset-${PATCH_BASE}/patches" "${WORKDIR}/patches" || die
+	mv -v "${WORKDIR}/perl-patchset-${PATCH_BASE}/patch-info" "${WORKDIR}/patch-info" || die
 
 	# Prepare Patch dir with additional patches / remove unwanted patches
 	# Inject bug/desc entries for perl -V
