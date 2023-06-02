@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake xdg udev
 
+MY_PV=$(ver_cut 1-2)
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://www.mixxx.org/"
 if [[ "${PV}" == *9999 ]] ; then
@@ -97,12 +98,12 @@ PLOCALES="
 
 mixxx_set_globals() {
 	local lang
-	local MANUAL_URI_BASE="https://downloads.mixxx.org/manual/$(ver_cut 1-2)"
+	local MANUAL_URI_BASE="https://downloads.mixxx.org/manual/${MY_PV}"
 	for lang in ${PLOCALES} ; do
-		SRC_URI+=" l10n_${lang}? ( ${MANUAL_URI_BASE}/${PN}-manual-$(ver_cut 1-2)-${lang/ja/ja-JP}.pdf )"
+		SRC_URI+=" l10n_${lang}? ( ${MANUAL_URI_BASE}/${PN}-manual-${MY_PV}-${lang/ja/ja-JP}.pdf )"
 		IUSE+=" l10n_${lang/ en/ +en}"
 	done
-	SRC_URI+=" ${MANUAL_URI_BASE}/${PN}-manual-$(ver_cut 1-2)-en.pdf"
+	SRC_URI+=" ${MANUAL_URI_BASE}/${PN}-manual-${MY_PV}-en.pdf"
 }
 mixxx_set_globals
 
@@ -151,7 +152,7 @@ src_install() {
 	local locale
 	for locale in ${PLOCALES} ; do
 		if use l10n_${locale} ; then
-			dodoc "${DISTDIR}"/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
+			dodoc "${DISTDIR}"/${PN}-manual-${MY_PV}-${locale/ja/ja-JP}.pdf
 		fi
 	done
 }
