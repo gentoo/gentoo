@@ -15,11 +15,7 @@ SRC_URI="
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-<<<<<<< HEAD
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
-=======
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
->>>>>>> 2a0536d75d4e (dev-util/cvise: Keyword 2.8.0 riscv, #907672)
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
