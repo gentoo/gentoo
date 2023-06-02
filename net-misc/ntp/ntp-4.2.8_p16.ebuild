@@ -126,7 +126,7 @@ src_install() {
 		cd "${ED}" || die
 		rm usr/sbin/ntpd || die
 		rm etc/{conf,init}.d/ntpd || die
-		rm usr/share/man/*/ntpd.8 || die
+		rm usr/share/man/man1/ntpd.1 || die
 	else
 		newtmpfiles "${FILESDIR}"/ntp.tmpfiles ntp.conf
 		systemd_newunit "${FILESDIR}"/ntpd.service-r2 ntpd.service
