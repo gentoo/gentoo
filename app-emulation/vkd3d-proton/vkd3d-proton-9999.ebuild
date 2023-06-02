@@ -41,7 +41,7 @@ HOMEPAGE="https://github.com/HansKristian-Work/vkd3d-proton/"
 
 LICENSE="LGPL-2.1+ Apache-2.0 MIT"
 SLOT="0"
-IUSE="+abi_x86_32 crossdev-mingw debug extras"
+IUSE="+abi_x86_32 crossdev-mingw debug extras +strip"
 
 BDEPEND="
 	dev-util/glslang
@@ -149,7 +149,7 @@ multilib_src_configure() {
 		--{cross,native}-file="${T}"/widl.${ABI}.ini
 		$(meson_use {,enable_}extras)
 		$(meson_use debug enable_trace)
-		$(usev !debug --strip) # portage won't strip .dll, so allow it here
+		$(usev strip --strip) # portage won't strip .dll, so allow it here
 		-Denable_tests=false # needs wine/vulkan and is intended for manual use
 	)
 
