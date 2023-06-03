@@ -17,7 +17,7 @@ SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~x86"
 IUSE="berkdb exif geo postscript +rcs +reports spell test"
 
 # Previously had: !berkdb? ( test ) combined w/ dev-python/bsddb3 dep only for py3.9
