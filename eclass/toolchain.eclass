@@ -426,15 +426,17 @@ fi
 # Set the source directory depending on whether we're using
 # a live git tree, snapshot, or release tarball.
 if [[ ${TOOLCHAIN_SET_S} == yes ]] ; then
-	S=$(
-		if tc_is_live ; then
-			echo ${EGIT_CHECKOUT_DIR}
-		elif [[ -n ${SNAPSHOT} ]] ; then
-			echo ${WORKDIR}/gcc-${SNAPSHOT}
-		else
-			echo ${WORKDIR}/gcc-${GCC_RELEASE_VER}
-		fi
-	)
+	s_path=
+	if tc_is_live ; then
+		s_path=${EGIT_CHECKOUT_DIR}
+	elif [[ -n ${SNAPSHOT} ]] ; then
+		s_path=${WORKDIR}/gcc-${SNAPSHOT}
+	else
+		s_path=${WORKDIR}/gcc-${GCC_RELEASE_VER}
+	fi
+
+	S="${s_path}"
+	unset s_path
 fi
 
 gentoo_urls() {
