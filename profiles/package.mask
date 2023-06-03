@@ -76,6 +76,21 @@
 ~virtual/perl-Memoize-1.160.0
 ~virtual/perl-MIME-Base64-3.160.100_rc
 ~virtual/perl-Module-CoreList-5.202.305.200
+~virtual/perl-Net-Ping-2.760.0
+~virtual/perl-parent-0.241.0
+~virtual/perl-podlators-5.10.0
+~virtual/perl-Safe-2.440.0
+~virtual/perl-Scalar-List-Utils-1.630.0
+~virtual/perl-Socket-2.36.0
+~virtual/perl-Storable-3.320.0
+~virtual/perl-Test-Simple-1.302.194
+~virtual/perl-Text-Balanced-2.60.0
+~virtual/perl-threads-2.360.0
+~virtual/perl-threads-shared-1.680.0
+~virtual/perl-Time-HiRes-1.977.500
+~virtual/perl-Time-Piece-1.340.101_rc
+~virtual/perl-Unicode-Normalize-1.320.0
+~virtual/perl-XSLoader-0.320.0
 
 # Michał Górny <mgorny@gentoo.org> (2023-05-31)
 # Unmaintained.  Last commit in 2020.  Does not work with Python 3.12.
