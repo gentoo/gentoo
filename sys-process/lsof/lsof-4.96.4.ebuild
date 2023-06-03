@@ -52,7 +52,6 @@ src_prepare() {
 target() {
 	case ${CHOST} in
 	*-darwin*)  echo darwin  ;;
-	*-freebsd*) echo freebsd ;;
 	*-solaris*) echo solaris ;;
 	*)          echo linux   ;;
 	esac
