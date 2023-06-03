@@ -4,14 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="Google's i18n address metadata repository"
-HOMEPAGE="https://pypi.org/project/google-i18n-address/"
+HOMEPAGE="
+	https://github.com/mirumee/google-i18n-address/
+	https://pypi.org/project/google-i18n-address/
+"
 # Using the github release, as it contains the tests (unlike the pypi artifact).
-SRC_URI="https://github.com/mirumee/google-i18n-address/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="
+	https://github.com/mirumee/google-i18n-address/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
