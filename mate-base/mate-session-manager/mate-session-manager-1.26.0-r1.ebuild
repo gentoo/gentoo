@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ HOMEPAGE="https://mate-desktop.org/"
 
 LICENSE="GPL-2+ GPL-3+ HPND LGPL-2+ LGPL-2.1+"
 SLOT="0"
-IUSE="debug elogind gles2 gnome-keyring ipv6 nls systemd"
+IUSE="debug elogind gles2 gnome-keyring nls systemd"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 
@@ -70,7 +70,7 @@ src_configure() {
 		$(use_with systemd) \
 		--with-xtrans \
 		$(use_enable debug) \
-		$(use_enable ipv6) \
+		--enable-ipv6 \
 		$(use_enable nls)
 }
 
