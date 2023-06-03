@@ -22,12 +22,13 @@ IUSE="doc lzma"
 
 RDEPEND="
 	app-arch/bzip2
-	lzma? ( app-arch/xz-utils )
 	dev-libs/tinyxml
+	lzma? ( app-arch/xz-utils )
 	media-libs/freetype:2
 	media-libs/portaudio
 	net-misc/curl
 	sys-libs/zlib
+	virtual/libusb:1
 	virtual/opengl
 	x11-base/xorg-proto
 	x11-libs/gtk+:3

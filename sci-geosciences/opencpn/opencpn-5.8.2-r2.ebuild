@@ -3,7 +3,7 @@
 
 EAPI=8
 
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.2-gtk3"
 inherit wxwidgets xdg cmake
 
 DOC_VERSION="4.8.2.0"
@@ -22,12 +22,15 @@ IUSE="doc lzma"
 
 RDEPEND="
 	app-arch/bzip2
-	lzma? ( app-arch/xz-utils )
 	dev-libs/tinyxml
+	lzma? ( app-arch/xz-utils )
 	media-libs/freetype:2
+	media-libs/glew:0
+	media-libs/jasper
 	media-libs/portaudio
 	net-misc/curl
 	sys-libs/zlib
+	virtual/libusb:1
 	virtual/opengl
 	x11-base/xorg-proto
 	x11-libs/gtk+:3
@@ -35,8 +38,10 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/gettext
+	dev-cpp/gtest
+	dev-libs/rapidjson
 	sys-apps/lsb-release
+	sys-devel/gettext
 	"
 
 src_configure() {
@@ -44,11 +49,11 @@ src_configure() {
 
 	setup-wxwidgets
 	local mycmakeargs=(
-		-DUSE_S57=ON
 		-DUSE_GARMINHOST=ON
-		-DBUNDLE_GSHHS=CRUDE
-		-DBUNDLE_TCDATA=ON
 	)
+#		-DUSE_S57=ON
+#		-DBUNDLE_TCDATA=ON
+#		-DBUNDLE_GSHHS=CRUDE
 
 	cmake_src_configure
 }
