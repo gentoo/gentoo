@@ -197,10 +197,21 @@ pkg_setup() {
 		~IP_NF_FILTER
 		~IP_NF_MANGLE
 		~IP_NF_NAT
-		~IP_NF_TARGET_MASQUERADE
 		~IP6_NF_FILTER
 		~IP6_NF_MANGLE
 		~IP6_NF_NAT"
+
+	# This was renamed in kernel commit v5.2-rc1~133^2~174^2~6
+	if use virt-network ; then
+		if kernel_is -lt 5 2 ; then
+			CONFIG_CHECK+="
+			~IP_NF_TARGET_MASQUERADE"
+		else
+			CONFIG_CHECK+="
+			~NETFILTER_XT_TARGET_MASQUERADE"
+		fi
+	fi
+
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
