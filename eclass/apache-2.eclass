@@ -476,7 +476,7 @@ apache-2_src_prepare() {
 	# 03_all_gentoo-apache-tools.patch injects -Wl,-z,now, which is not a good
 	# idea for everyone
 	case ${CHOST} in
-		*-linux-gnu|*-solaris*|*-freebsd*)
+		*-linux-gnu|*-solaris*)
 			# do nothing, these use GNU binutils
 			:
 		;;
