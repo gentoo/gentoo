@@ -64,6 +64,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/virtualbox-guest-additions-7.0.8-kernel-6.4-patch-1.patch
 	"${FILESDIR}"/virtualbox-guest-additions-7.0.8-kernel-6.4-patch-2.patch
+	"${FILESDIR}"/virtualbox-guest-additions-7.0.8-fix-gcc13.patch
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs
