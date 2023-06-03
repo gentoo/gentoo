@@ -144,13 +144,8 @@ check_rebuild() {
 
 pkg_setup() {
 	case ${CHOST} in
-		*-freebsd*)   osname="freebsd" ;;
-		*-dragonfly*) osname="dragonfly" ;;
-		*-netbsd*)    osname="netbsd" ;;
-		*-openbsd*)   osname="openbsd" ;;
 		*-darwin*)    osname="darwin" ;;
 		*-solaris*)   osname="solaris" ;;
-		*-cygwin*)    osname="cygwin" ;;
 		*)            osname="linux" ;;
 	esac
 
