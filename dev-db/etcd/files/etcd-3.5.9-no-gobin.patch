@@ -1,0 +1,32 @@
+--- a/scripts/test_lib.sh
++++ b/scripts/test_lib.sh
+@@ -305,11 +305,6 @@ function tool_exists {
+   fi
+ }
+ 
+-# Ensure gobin is available, as it runs majority of the tools
+-if ! command -v "gobin" >/dev/null; then
+-    run env GO111MODULE=off go get github.com/myitcv/gobin || exit 1
+-fi
+-
+ # tool_get_bin [tool] - returns absolute path to a tool binary (or returns error)
+ function tool_get_bin {
+   local tool="$1"
+--- a/tests/Dockerfile
++++ b/tests/Dockerfile
+@@ -44,7 +44,6 @@ WORKDIR ${GOPATH}/src/go.etcd.io/etcd
+ 
+ ADD ./scripts/install-marker.sh /tmp/install-marker.sh
+ 
+-RUN GO111MODULE=off go get github.com/myitcv/gobin
+ RUN /tmp/install-marker.sh amd64 \
+   && rm -f /tmp/install-marker.sh \
+   && curl -s https://codecov.io/bash >/codecov \
+--- a/tools/mod/install_all.sh
++++ b/tools/mod/install_all.sh
+@@ -1,4 +1,4 @@
+ #!/usr/bin/env bash
+ 
+ cd ./tools/mod || exit 2
+-go list --tags tools -f '{{ join .Imports "\n" }}' | xargs gobin -p
++go list --tags tools -f '{{ join .Imports "\n" }}' | xargs go install
