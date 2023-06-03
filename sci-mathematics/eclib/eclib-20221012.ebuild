@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 # but it's actually still at 10, probably due to a forgotten autoreconf
 # or something.
 SLOT="0/11"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="boost flint minimal test"
 RESTRICT="!test? ( test )"
 
