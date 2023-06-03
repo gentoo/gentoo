@@ -57,20 +57,22 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2
 	media-fonts/font-adobe-100dpi
-	media-fonts/font-misc-misc
 	media-fonts/font-cursor-misc
-	media-fonts/font-xfree86-type1
 	media-fonts/font-misc-ethiopic
+	media-fonts/font-misc-misc
+	media-fonts/font-xfree86-type1
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	media-libs/libogg
+	media-libs/libpng
 	media-libs/libpulse
 	media-libs/libvorbis
 	media-libs/mesa
 	media-libs/speex
+	media-libs/speexdsp
 	net-libs/libsoup:2.4
 	net-libs/webkit-gtk:4
 	sys-apps/util-linux
