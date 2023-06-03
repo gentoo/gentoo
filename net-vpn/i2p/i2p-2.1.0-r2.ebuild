@@ -73,8 +73,8 @@ DOCS=( README.md history.txt )
 
 pkg_pretend() {
 	# see https://bugs.gentoo.org/831290
-	if [[ "`java-config --show-active-vm`" = openjdk*-8 ]] &&
-	   [[ "`java-config --query MERGE_VM --package=ant-core`" != openjdk*-8 ]]
+	if [[ "`java-config --show-active-vm`" = *-8 ]] &&
+	   [[ "`java-config --query MERGE_VM --package=ant-core`" != *-8 ]]
 	then
 		eerror "dev-java/ant-core was emerged with a newer version of the JDK."
 		eerror "It will fail to build with virtual/jdk:1.8 due to #831290."
