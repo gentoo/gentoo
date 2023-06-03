@@ -40,6 +40,7 @@ rust_abi() {
 		armv6j*s*)    echo arm-unknown-linux-gnueabi;;
 		armv7a*h*)    echo armv7-unknown-linux-gnueabihf;;
 		i?86*)        echo i686-unknown-linux-gnu;;
+		loongarch64*) echo loongarch64-unknown-linux-gnu;;
 		mips64el*)    echo mips64el-unknown-linux-gnuabi64;;
 		mips64*)      echo mips64-unknown-linux-gnuabi64;;
 		mipsel*)      echo mipsel-unknown-linux-gnu;;
@@ -139,4 +140,12 @@ rust_all_arch_uris()
 	riscv? ( $(rust_arch_uri riscv64gc-unknown-linux-gnu "$@") )
 	s390?  ( $(rust_arch_uri s390x-unknown-linux-gnu     "$@") )
 	"
+
+	# Upstream did not gain support for loong until v1.71.0.
+	# NOTE: Merge this into the block above after every <1.71.0 version is
+	# gone from tree.
+	local arg_version="${1##*-}"
+	if ver_test "${arg_version:-$PV}" -ge 1.71.0; then
+		echo "loong? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "$@") )"
+	fi
 }
