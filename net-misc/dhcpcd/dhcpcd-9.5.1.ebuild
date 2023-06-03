@@ -12,8 +12,7 @@ else
 	MY_P="${P/_alpha/-alpha}"
 	MY_P="${MY_P/_beta/-beta}"
 	MY_P="${MY_P/_rc/-rc}"
-	SRC_URI="https://github.com/NetworkConfiguration/dhcpcd/archive/refs/tags/${MY_P}.tar.gz"
-	S="${WORKDIR}/${PN}-${MY_P}"
+	SRC_URI="https://github.com/NetworkConfiguration/dhcpcd/releases/download/v${PV}/${P}.tar.xz"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
