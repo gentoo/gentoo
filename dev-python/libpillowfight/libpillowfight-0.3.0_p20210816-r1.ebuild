@@ -3,8 +3,9 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -19,7 +20,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/pillow[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
