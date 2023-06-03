@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="microwave CAD software"
-HOMEPAGE="https://wwwhome.cs.utwente.nl/~ptdeboer/ham/puff/"
-SRC_URI="https://wwwhome.cs.utwente.nl/~ptdeboer/ham/${PN}/${P}.tgz"
+HOMEPAGE="https://www.pa3fwm.nl/software/puff/"
+SRC_URI="https://www.pa3fwm.nl/software/${PN}/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,7 +22,7 @@ src_prepare() {
 	# fix lib path for X11 and dont ignore LDFLAGS
 	# respect CC and LD
 	# additional drop explicite format option for linker (bug #831569)
-	eapply -p0 "${FILESDIR}"/$P-Makefile.patch
+	eapply -p0 "${FILESDIR}"/${P}-Makefile.patch
 	# add missing LDPATH for libX11.so
 	sed -i -e "s:-lX11:-L/usr/$(get_libdir) -lX11:g" Makefile || die
 	# drop no longer needed and now unsupported paramter '-T' (bug #8802225)
