@@ -31,6 +31,7 @@ RDEPEND="
 	net-misc/curl
 	opengl? ( virtual/opengl )
 	sys-libs/zlib
+	virtual/libusb:0
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}=[opengl?,X]
 	"
