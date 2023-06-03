@@ -27,7 +27,7 @@ RDEPEND="
 	dev-ml/async_kernel:=
 	dev-ml/async_unix:=
 	dev-ml/base:=
-	net-libs/zeromq:=
+	dev-ml/zmq:=
 "
 DEPEND="${DEPEND}"
 BDEPEND="
