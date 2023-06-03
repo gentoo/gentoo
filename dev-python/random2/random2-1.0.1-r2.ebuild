@@ -14,7 +14,7 @@ SRC_URI="$(pypi_sdist_url "${PN}" "${PV}" .zip)"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 
 BDEPEND="
 	app-arch/unzip
