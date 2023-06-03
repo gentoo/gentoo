@@ -64,6 +64,18 @@
 ~virtual/perl-Getopt-Long-2.540.0
 ~virtual/perl-HTTP-Tiny-0.82.0
 ~virtual/perl-IO-1.520.0
+~virtual/perl-IO-Compress-2.204.0
+~virtual/perl-IO-Zlib-1.140.0
+~virtual/perl-JSON-PP-4.160.0
+~virtual/perl-libnet-3.150.0
+~virtual/perl-Locale-Maketext-1.330.0
+~virtual/perl-Math-BigInt-1.999.837
+~virtual/perl-Math-BigInt-FastCalc-0.501.300
+~virtual/perl-Math-BigRat-0.262.400
+~virtual/perl-Math-Complex-1.620.0
+~virtual/perl-Memoize-1.160.0
+~virtual/perl-MIME-Base64-3.160.100_rc
+~virtual/perl-Module-CoreList-5.202.305.200
 
 # Michał Górny <mgorny@gentoo.org> (2023-05-31)
 # Unmaintained.  Last commit in 2020.  Does not work with Python 3.12.
