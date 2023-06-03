@@ -54,7 +54,6 @@ COMMON_DEPEND="
 		x11-libs/libXfont2
 		x11-libs/libXtst
 		x11-libs/pixman
-		x11-libs/xtrans
 		x11-apps/xauth
 		x11-apps/xinit
 		x11-apps/xkbcomp
@@ -88,6 +87,7 @@ DEPEND="${COMMON_DEPEND}
 		x11-libs/libXi
 		x11-libs/libxkbfile
 		x11-libs/libXrender
+		x11-libs/xtrans
 		x11-misc/util-macros
 		opengl? ( media-libs/mesa )
 	)
