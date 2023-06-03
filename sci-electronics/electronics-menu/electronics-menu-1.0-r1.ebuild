@@ -11,4 +11,4 @@ SRC_URI="http://geda.seul.org/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~riscv sparc ~x86"
