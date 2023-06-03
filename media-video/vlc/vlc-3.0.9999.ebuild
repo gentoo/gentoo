@@ -64,7 +64,7 @@ BDEPEND="
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
-	sys-libs/zlib[minizip]
+	sys-libs/zlib
 	virtual/libintl
 	virtual/opengl
 	a52? ( media-libs/a52dec )
@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
+	"${FILESDIR}"/${PN}-3.0.18-drop-minizip-dep.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
