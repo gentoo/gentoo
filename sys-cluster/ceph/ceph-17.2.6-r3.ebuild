@@ -225,6 +225,8 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.5-boost-1.81.patch"
 	# https://bugs.gentoo.org/901403
 	"${FILESDIR}/ceph-17.2.6-link-boost-context.patch"
+	# https://bugs.gentoo.org/905626
+	"${FILESDIR}/ceph-17.2.6-arrow-flatbuffers-c++14.patch"
 )
 
 check-reqs_export_vars() {

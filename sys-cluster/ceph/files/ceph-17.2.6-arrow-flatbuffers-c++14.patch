@@ -1,0 +1,92 @@
+https://bugs.gentoo.org/905626
+https://github.com/google/flatbuffers/pull/7897
+https://github.com/apache/arrow/commit/22dc537e581b385b53ce579a03786a2db0bd4487
+
+From 22dc537e581b385b53ce579a03786a2db0bd4487 Mon Sep 17 00:00:00 2001
+From: Antoine Pitrou <antoine@python.org>
+Date: Thu, 20 Jan 2022 20:44:40 +0100
+Subject: [PATCH] ARROW-15388: [C++] Avoid including absl from flatbuffers
+
+There may be an incomplete/broken copy of the Abseil library lying around
+(for example because of a race condition while installing it as a bundled library).
+
+Since absl is only used by Flatbuffers to provide a string_view facility,
+use our own vendored string_view instead.
+
+Closes #12204 from pitrou/ARROW-15388-flatbuffers-string-view
+
+Authored-by: Antoine Pitrou <antoine@python.org>
+Signed-off-by: Antoine Pitrou <antoine@python.org>
+---
+ cpp/thirdparty/flatbuffers/README.md          | 42 +++++++++++++++++++
+ .../flatbuffers/include/flatbuffers/base.h    |  7 ----
+ 2 files changed, 42 insertions(+), 7 deletions(-)
+ create mode 100644 cpp/thirdparty/flatbuffers/README.md
+
+diff --git a/src/arrow/cpp/thirdparty/flatbuffers/README.md b/src/arrow/cpp/thirdparty/flatbuffers/README.md
+new file mode 100644
+index 0000000000000..e955adba4cebb
+--- /dev/null
++++ b/src/arrow/cpp/thirdparty/flatbuffers/README.md
+@@ -0,0 +1,42 @@
++<!---
++  Licensed to the Apache Software Foundation (ASF) under one
++  or more contributor license agreements.  See the NOTICE file
++  distributed with this work for additional information
++  regarding copyright ownership.  The ASF licenses this file
++  to you under the Apache License, Version 2.0 (the
++  "License"); you may not use this file except in compliance
++  with the License.  You may obtain a copy of the License at
++
++    http://www.apache.org/licenses/LICENSE-2.0
++
++  Unless required by applicable law or agreed to in writing,
++  software distributed under the License is distributed on an
++  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++  KIND, either express or implied.  See the License for the
++  specific language governing permissions and limitations
++  under the License.
++-->
++
++This directory contains a vendored version of Flatbuffers
++(unknown changeset), with the following patch for ARROW-15388:
++
++```diff
++diff --git a/cpp/thirdparty/flatbuffers/include/flatbuffers/base.h b/cpp/thirdparty/flatbuffers/include/flatbuffers/base.h
++index 955738067..fccce42f6 100644
++--- a/cpp/thirdparty/flatbuffers/include/flatbuffers/base.h
+++++ b/cpp/thirdparty/flatbuffers/include/flatbuffers/base.h
++@@ -212,13 +212,6 @@ namespace flatbuffers {
++         typedef std::experimental::string_view string_view;
++       }
++       #define FLATBUFFERS_HAS_STRING_VIEW 1
++-    // Check for absl::string_view
++-    #elif __has_include("absl/strings/string_view.h")
++-      #include "absl/strings/string_view.h"
++-      namespace flatbuffers {
++-        typedef absl::string_view string_view;
++-      }
++-      #define FLATBUFFERS_HAS_STRING_VIEW 1
++     #endif
++   #endif // __has_include
++ #endif // !FLATBUFFERS_HAS_STRING_VIEW
++```
+diff --git a/src/arrow/cpp/thirdparty/flatbuffers/include/flatbuffers/base.h b/src/arrow/cpp/thirdparty/flatbuffers/include/flatbuffers/base.h
+index 9557380672342..fccce42f68aa6 100644
+--- a/src/arrow/cpp/thirdparty/flatbuffers/include/flatbuffers/base.h
++++ b/src/arrow/cpp/thirdparty/flatbuffers/include/flatbuffers/base.h
+@@ -212,13 +212,6 @@ namespace flatbuffers {
+         typedef std::experimental::string_view string_view;
+       }
+       #define FLATBUFFERS_HAS_STRING_VIEW 1
+-    // Check for absl::string_view
+-    #elif __has_include("absl/strings/string_view.h")
+-      #include "absl/strings/string_view.h"
+-      namespace flatbuffers {
+-        typedef absl::string_view string_view;
+-      }
+-      #define FLATBUFFERS_HAS_STRING_VIEW 1
+     #endif
+   #endif // __has_include
+ #endif // !FLATBUFFERS_HAS_STRING_VIEW
+
