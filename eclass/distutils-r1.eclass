@@ -1825,8 +1825,6 @@ distutils-r1_run_phase() {
 	# How to build Python modules in different worlds...
 	local ldopts
 	case "${CHOST}" in
-		# provided by haubi, 2014-07-08
-		*-aix*) ldopts='-shared -Wl,-berok';; # good enough
 		# provided by grobian, 2014-06-22, bug #513664 c7
 		*-darwin*) ldopts='-bundle -undefined dynamic_lookup';;
 		*) ldopts='-shared';;
