@@ -14,7 +14,7 @@ HOMEPAGE="https://mate-desktop.org/"
 
 LICENSE="GPL-2+ GPL-3+ HPND LGPL-2+ LGPL-2.1+"
 SLOT="0"
-IUSE="debug elogind gles2 gnome-keyring ipv6 nls systemd +xtrans"
+IUSE="debug elogind gles2 gnome-keyring ipv6 nls systemd"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 
@@ -40,7 +40,6 @@ COMMON_DEPEND="
 	gles2? ( media-libs/mesa[egl(+),gles2] )
 	systemd? ( sys-apps/systemd )
 	elogind? ( sys-auth/elogind )
-	xtrans? ( x11-libs/xtrans )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -54,6 +53,7 @@ RDEPEND="${COMMON_DEPEND}
 
 DEPEND="${COMMON_DEPEND}
 	>=dev-lang/perl-5
+	x11-libs/xtrans
 "
 BDEPEND="
 	dev-util/glib-utils
@@ -68,7 +68,7 @@ src_configure() {
 		$(use_with elogind) \
 		$(use_with gles2 libglesv2) \
 		$(use_with systemd) \
-		$(use_with xtrans)  \
+		--with-xtrans \
 		$(use_enable debug) \
 		$(use_enable ipv6) \
 		$(use_enable nls)
