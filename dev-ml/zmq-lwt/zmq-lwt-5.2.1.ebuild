@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/lwt:=
-	net-libs/zeromq:=
+	dev-ml/zmq:=
 "
 DEPEND="${DEPEND}"
 BDEPEND="
