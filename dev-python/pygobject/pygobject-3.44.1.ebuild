@@ -5,12 +5,15 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit gnome.org meson virtualx xdg distutils-r1
 
 DESCRIPTION="Python bindings for GObject Introspection"
-HOMEPAGE="https://pygobject.readthedocs.io/"
+HOMEPAGE="
+	https://pygobject.readthedocs.io/
+	https://gitlab.gnome.org/GNOME/pygobject/
+"
 
 LICENSE="LGPL-2.1+"
 SLOT="3"
@@ -40,6 +43,15 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	# workaround minor py3.12 test failure
+	# (I wish we could just use EPYTEST_DESELECT here, sigh)
+	# https://gitlab.gnome.org/GNOME/pygobject/-/issues/582
+	sed -i -e 's@Item 0: @.*@' tests/test_gi.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_configure() {
 	local emesonargs=(
