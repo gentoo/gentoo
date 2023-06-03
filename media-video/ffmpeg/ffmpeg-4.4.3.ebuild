@@ -479,9 +479,6 @@ multilib_src_configure() {
 	if tc-is-cross-compiler ; then
 		myconf+=( --enable-cross-compile --arch=$(tc-arch-kernel) --cross-prefix=${CHOST}- --host-cc="$(tc-getBUILD_CC)" )
 		case ${CHOST} in
-			*freebsd*)
-				myconf+=( --target-os=freebsd )
-				;;
 			*mingw32*)
 				myconf+=( --target-os=mingw32 )
 				;;
