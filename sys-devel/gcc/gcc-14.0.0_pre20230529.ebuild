@@ -4,7 +4,9 @@
 EAPI=8
 
 TOOLCHAIN_PATCH_DEV="sam"
+PATCH_VER="1"
 PATCH_GCC_VER="14.0.0"
+MUSL_VER="1"
 MUSL_GCC_VER="14.0.0"
 
 if [[ ${PV} == *.9999 ]] ; then
