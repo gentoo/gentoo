@@ -14,7 +14,7 @@ IUSE="doc elogind systemd"
 # There is a null backend available, thus ?? not ^^
 REQUIRED_USE="?? ( elogind systemd )"
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-libs/glib-2.46.0:2
 	>=x11-libs/gtk+-3.22.0:3
 	x11-libs/libICE
@@ -37,7 +37,7 @@ DEPEND="
 # xdg-user-dirs-update is run during login (see 10-user-dirs-update-gnome below).
 # sys-apps/dbus[X] is needed for session management.
 # Our 90-xcursor-theme-gnome reads a setting from gsettings-desktop-schemas.
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	>=gnome-base/gnome-settings-daemon-3.35.91
 	>=gnome-base/gsettings-desktop-schemas-0.1.7
 	sys-apps/dbus[X]
@@ -45,11 +45,13 @@ RDEPEND="${DEPEND}
 	x11-misc/xdg-user-dirs
 	x11-misc/xdg-user-dirs-gtk
 "
+DEPEND="${COMMON_DEPEND}
+	x11-libs/xtrans
+"
 BDEPEND="
 	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.19.8
-	x11-libs/xtrans
 	virtual/pkgconfig
 	doc? (
 		app-text/xmlto
