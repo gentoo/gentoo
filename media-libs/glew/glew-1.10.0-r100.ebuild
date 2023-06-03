@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,8 +32,6 @@ src_prepare() {
 
 	# don't do stupid Solaris specific stuff that won't work in Prefix
 	cp config/Makefile.linux config/Makefile.solaris || die
-	# and let freebsd be built as on linux too
-	cp config/Makefile.linux config/Makefile.freebsd || die
 
 	multilib_copy_sources
 }
@@ -42,7 +40,6 @@ glew_system() {
 	# Set the SYSTEM variable instead of probing. #523444 #595280
 	case ${CHOST} in
 	*linux*)          echo "linux" ;;
-	*-freebsd*)       echo "freebsd" ;;
 	*-darwin*)        echo "darwin" ;;
 	*-solaris*)       echo "solaris" ;;
 	mingw*|*-mingw*)  echo "mingw" ;;
