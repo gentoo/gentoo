@@ -51,13 +51,11 @@ strip_completions() {
 
 		# Now-dead symlinks to deprecated completions
 		hd ncal
+
+		# FreeBSD
+		freebsd-update kldload kldunload portinstall portsnap
+		pkg_deinstall pkg_delete pkg_info
 	)
-	if [[ ${ARCH} != *-fbsd && ${ARCH} != *-freebsd ]]; then
-		strip_completions+=(
-			freebsd-update kldload kldunload portinstall portsnap
-			pkg_deinstall pkg_delete pkg_info
-		)
-	fi
 
 	local file
 	for file in "${strip_completions[@]}"; do
