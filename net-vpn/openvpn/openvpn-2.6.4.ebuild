@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz"
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64 ~loong ~riscv"
 fi
 
 LICENSE="GPL-2"
