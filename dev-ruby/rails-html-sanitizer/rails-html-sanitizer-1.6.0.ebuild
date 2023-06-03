@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Sanitize HTML fragments in Rails applications"
-HOMEPAGE="https://github.com/rafaelfranca/rails-html-sanitizer"
+HOMEPAGE="https://github.com/rails/rails-html-sanitizer"
 
 LICENSE="MIT"
 SLOT="1"
