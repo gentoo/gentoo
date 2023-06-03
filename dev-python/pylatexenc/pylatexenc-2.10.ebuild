@@ -4,13 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="Simple LaTeX parser providing latex-to-unicode and unicode-to-latex conversion"
-HOMEPAGE="https://github.com/phfaist/pylatexenc"
-SRC_URI="https://github.com/phfaist/pylatexenc/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/phfaist/pylatexenc/
+	https://pypi.org/project/pylatexenc/
+"
+SRC_URI="
+	https://github.com/phfaist/pylatexenc/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
