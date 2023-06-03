@@ -208,7 +208,7 @@ llvm_check_deps() {
 		return 1
 	fi
 
-	if use clang && tc-ld-is-lld ; then
+	if use clang && ! tc-ld-is-mold ; then
 		if ! has_version -b "sys-devel/lld:${LLVM_SLOT}" ; then
 			einfo "sys-devel/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 			return 1
