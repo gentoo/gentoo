@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> $
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
-IUSE="ipv6 systemd"
+IUSE="systemd"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.37.3:2
@@ -58,7 +58,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use ipv6)
+		-Dipv6=true
 		-Dxtrans=true
 	)
 	meson_src_configure
