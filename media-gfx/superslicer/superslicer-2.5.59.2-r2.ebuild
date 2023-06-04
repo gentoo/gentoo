@@ -5,6 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 MY_PN="SuperSlicer"
+SLICER_PROFILES_COMMIT="f6b1b123062a77101fe350f6d2a2a57be9adc684"
 
 inherit cmake wxwidgets xdg flag-o-matic
 
@@ -12,7 +13,7 @@ DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D
 HOMEPAGE="https://github.com/supermerill/SuperSlicer/"
 SRC_URI="
 	https://github.com/supermerill/SuperSlicer/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/slic3r/slic3r-profiles/archive/f6b1b123062a77101fe350f6d2a2a57be9adc684.tar.gz -> ${P}-profiles.tar.gz
+	https://github.com/slic3r/slic3r-profiles/archive/${SLICER_PROFILES_COMMIT}.tar.gz -> ${P}-profiles.tar.gz
 "
 
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
