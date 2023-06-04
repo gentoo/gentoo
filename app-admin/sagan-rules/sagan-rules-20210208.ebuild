@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Rules for Sagan log analyzer"
-HOMEPAGE="https://quadrantsec.com/sagan_log_analysis_engine/"
+HOMEPAGE="https://github.com/quadrantsec/sagan-rules"
 SRC_URI="https://quadrantsec.com/rules/${P}.tar.gz"
 S="${WORKDIR}/rules"
 
