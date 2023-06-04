@@ -99,7 +99,6 @@ src_install() {
 
 	dosym -r "/opt/${PN}/bin/codium" "usr/bin/vscodium"
 	dosym -r "/opt/${PN}/bin/codium" "usr/bin/codium"
-	dosym -r "/opt/${PN}/bin/codium-tunnel" "usr/bin/codium-tunnel"
 	domenu "${FILESDIR}/vscodium.desktop"
 	domenu "${FILESDIR}/vscodium-url-handler.desktop"
 	domenu "${FILESDIR}/vscodium-wayland.desktop"
