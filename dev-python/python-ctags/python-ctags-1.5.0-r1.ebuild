@@ -8,12 +8,12 @@ PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
-MY_PN="${PN}3"
+MY_P="python-ctags3-${PV}"
 DESCRIPTION="Exuberant Ctags indexing python bindings"
 HOMEPAGE="https://github.com/universal-ctags/python-ctags3"
 # PyPI tarballs don't contain pyx files
-SRC_URI="https://github.com/universal-ctags/python-ctags3/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
+SRC_URI="https://github.com/universal-ctags/python-ctags3/archive/${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-3"
 SLOT="0"
