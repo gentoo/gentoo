@@ -50,7 +50,7 @@ RDEPEND="
 		media-libs/libjpeg-turbo:=
 	)
 	lzip? (
-		app-arch/lzip
+		app-arch/lzlib
 	)
 	lzma? (
 		app-arch/xz-utils
