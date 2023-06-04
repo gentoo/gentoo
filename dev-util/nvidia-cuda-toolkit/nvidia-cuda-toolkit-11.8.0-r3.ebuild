@@ -15,7 +15,7 @@ S="${WORKDIR}"
 LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
-IUSE="debugger nsight profiler vis-profiler sanitizer"
+IUSE="debugger nsight profiler vis-profiler sanitizer cuda-minor-compat"
 RESTRICT="bindist mirror"
 
 # since CUDA 11, the bundled toolkit driver (== ${DRIVER_PV}) and the
@@ -24,7 +24,7 @@ RESTRICT="bindist mirror"
 # https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#cuda-major-component-versions
 RDEPEND="
 	<sys-devel/gcc-12_pre[cxx]
-	>=x11-drivers/nvidia-drivers-450.80.02
+	cuda-minor-compat? ( >=x11-drivers/nvidia-drivers-450.80.02 ) !cuda-minor-compat? ( >=x11-drivers/nvidia-drivers-520.61.05 )
 	nsight? (
 		dev-libs/libpfm
 		dev-libs/wayland
