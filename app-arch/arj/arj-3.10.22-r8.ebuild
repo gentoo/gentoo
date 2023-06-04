@@ -9,7 +9,7 @@ PATCH_LEVEL=15
 MY_P="${PN}_${PV}"
 
 DESCRIPTION="Utility for opening arj archives"
-HOMEPAGE="http://arj.sourceforge.net/"
+HOMEPAGE="https://arj.sourceforge.net/"
 SRC_URI="
 	mirror://debian/pool/main/a/arj/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/a/arj/${MY_P}-${PATCH_LEVEL}.debian.tar.xz"
