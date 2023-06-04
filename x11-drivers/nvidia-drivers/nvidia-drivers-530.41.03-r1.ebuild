@@ -3,7 +3,7 @@
 
 EAPI=8
 
-MODULES_OPTIONAL_IUSE="+modules"
+MODULES_OPTIONAL_IUSE=+modules
 inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 

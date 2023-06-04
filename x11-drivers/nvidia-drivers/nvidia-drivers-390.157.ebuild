@@ -3,11 +3,11 @@
 
 EAPI=8
 
-MODULES_OPTIONAL_USE="driver"
-inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
-	systemd toolchain-funcs unpacker user-info
+MODULES_OPTIONAL_IUSE=+modules
+inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
+inherit systemd toolchain-funcs unpacker user-info
 
-NV_KERNEL_MAX="6.1"
+MODULES_KERNEL_MAX=6.1
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -23,7 +23,7 @@ S="${WORKDIR}"
 LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT"
 SLOT="0/${PV%%.*}"
 KEYWORDS="-* amd64 x86"
-IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced +static-libs +tools"
+IUSE="+X abi_x86_32 abi_x86_64 persistenced +static-libs +tools"
 
 COMMON_DEPEND="
 	acct-group/video
@@ -81,7 +81,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use driver || return
+	use modules && [[ ${MERGE_TYPE} != binary ]] || return
 
 	local CONFIG_CHECK="
 		PROC_FS
@@ -102,15 +102,7 @@ pkg_setup() {
 
 	kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
-	MODULE_NAMES="
-		nvidia(video:kernel)
-		nvidia-drm(video:kernel)
-		nvidia-modeset(video:kernel)
-		$(usev !x86 "nvidia-uvm(video:kernel)")"
-
-	linux-mod_pkg_setup
-
-	[[ ${MERGE_TYPE} == binary ]] && return
+	linux-mod-r1_pkg_setup
 
 	# do some extra checks manually as it gets messy to handle builtin-only
 	# and some other conditional checks through CONFIG_CHECK
@@ -174,77 +166,6 @@ pkg_setup() {
 
 	(( ${#warn[@]} )) &&
 		ewarn "Detected potential configuration issues with used kernel:${warn[*]/#/$'\n'}"
-
-	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KV_DIR}" SYSOUT="${KV_OUT_DIR}"'
-	use x86 && BUILD_PARAMS+=' ARCH=i386'
-	BUILD_TARGETS="modules"
-
-	# Try to match toolchain with kernel only for modules
-	# (experimental, ideally this should be handled in linux-mod.eclass)
-	nvidia-tc-set() {
-		local -n var=KERNEL_${1}
-		if [[ ! -v var ]]; then
-			read -r var < <(type -P "${@:2}") ||
-				die "failed to find in PATH at least one of: ${*:2}"
-			einfo "Forcing '${var}' for modules (set ${!var} to override)"
-		fi
-	}
-
-	local tool switch
-	if linux_chkconfig_present CC_IS_GCC; then
-		if ! tc-is-gcc; then
-			switch=
-			nvidia-tc-set CC {${CHOST}-,}gcc
-		fi
-	elif linux_chkconfig_present CC_IS_CLANG; then
-		ewarn "Warning: using ${PN} with a clang-built kernel is largely untested"
-		if ! tc-is-clang; then
-			switch=llvm-
-			nvidia-tc-set CC {${CHOST}-,}clang
-		fi
-	fi
-
-	if linux_chkconfig_present LD_IS_BFD; then
-		# tc-ld-is-bfd needs https://github.com/gentoo/gentoo/pull/28355
-		[[ $(LC_ALL=C $(tc-getLD) --version 2>/dev/null) == "GNU ld"* ]] ||
-			nvidia-tc-set LD {${CHOST}-,}{ld.bfd,ld}
-	elif linux_chkconfig_present LD_IS_LLD; then
-		tc-ld-is-lld || nvidia-tc-set LD {${CHOST}-,}{ld.lld,lld}
-	fi
-
-	if [[ -v switch ]]; then
-		# only need llvm-nm for lto, but use complete set to be safe
-		for tool in AR NM OBJCOPY OBJDUMP READELF STRIP; do
-			case $(LC_ALL=C $(tc-get${tool}) --version 2>/dev/null) in
-				LLVM*|llvm*) [[ ! ${switch} ]];;
-				*) [[ ${switch} ]];;
-			esac && nvidia-tc-set ${tool} {${CHOST}-,}${switch}${tool,,}
-		done
-	fi
-
-	# pass unconditionally given exports are semi-ignored except CC/LD
-	for tool in CC LD AR NM OBJCOPY OBJDUMP READELF STRIP; do
-		BUILD_PARAMS+=" ${tool}=\"\${KERNEL_${tool}:-\$(tc-get${tool})}\""
-	done
-
-	if linux_chkconfig_present LTO_CLANG_THIN; then
-		# kernel enables cache by default leading to sandbox violations
-		BUILD_PARAMS+=' ldflags-y=--thinlto-cache-dir= LDFLAGS_MODULE=--thinlto-cache-dir='
-	fi
-
-	if kernel_is -gt ${NV_KERNEL_MAX/./ }; then
-		ewarn "Kernel ${KV_MAJOR}.${KV_MINOR} is known to break this version ${PN}"
-		ewarn "It is recommended to use one of:"
-		ewarn "  <=sys-kernel/gentoo-kernel-${NV_KERNEL_MAX}.x"
-		ewarn "  <=sys-kernel/gentoo-sources-${NV_KERNEL_MAX}.x"
-		ewarn "You are free to try or use /etc/portage/patches, but support will"
-		ewarn "not be given (Gentoo will not accept patches for this). When no"
-		ewarn "supported kernel are usable anymore, end-of-life 390.xx will be"
-		ewarn "removed -- 6.1.x LTS will be supported until at least December 2026."
-		ewarn
-		ewarn "Do _not_ file a bug report if run into issues."
-		ewarn
-	fi
 }
 
 src_prepare() {
@@ -287,24 +208,14 @@ src_compile() {
 		NV_VERBOSE=1 DO_STRIP= MANPAGE_GZIP= OUTPUTDIR=out
 	)
 
-	if use driver; then
-		if linux_chkconfig_present GCC_PLUGINS; then
-			mkdir "${T}"/plugin-test || die
-			echo "obj-m += test.o" > "${T}"/plugin-test/Kbuild || die
-			:> "${T}"/plugin-test/test.c || die
-			if [[ $(LC_ALL=C make -C "${KV_OUT_DIR}" ARCH="$(tc-arch-kernel)" \
-				HOSTCC="$(tc-getBUILD_CC)" CC="${CC}" M="${T}"/plugin-test 2>&1) \
-				=~ "error: incompatible gcc/plugin version" ]]
-			then
-				eerror "Detected kernel was built with a different gcc/plugin version,"
-				eerror "Please 'make clean' and rebuild your kernel with the current"
-				eerror "gcc (or re-emerge for distribution kernels, including kernel-bin)."
-				die "kernel ${KV_FULL} needs to be rebuilt"
-			fi
-		fi
+	local modlist=( nvidia{,-drm,-modeset}=video:kernel )
+	use x86 || modlist+=( nvidia-uvm=video:kernel )
+	local modargs=(
+		IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
+		SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
+	)
 
-		linux-mod_src_compile
-	fi
+	linux-mod-r1_src_compile
 
 	if use persistenced; then
 		# 390.xx persistenced does not auto-detect libtirpc
@@ -377,7 +288,7 @@ src_install() {
 	local DOC_CONTENTS="\
 Trusted users should be in the 'video' group to use NVIDIA devices.
 You can add yourself by using: gpasswd -a my-user video\
-$(usev driver "
+$(usev modules "
 
 Like all out-of-tree kernel modules, it is necessary to rebuild
 ${PN} after upgrading or rebuilding the Linux kernel
@@ -419,8 +330,8 @@ For general information on using ${PN}, please see:
 https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	readme.gentoo_create_doc
 
-	if use driver; then
-		linux-mod_src_install
+	if use modules; then
+		linux-mod-r1_src_install
 
 		insinto /etc/modprobe.d
 		newins "${FILESDIR}"/nvidia-390.conf nvidia.conf
@@ -528,8 +439,7 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 }
 
 pkg_preinst() {
-	use driver || return
-	linux-mod_pkg_preinst
+	use modules || return
 
 	# set video group id based on live system (bug #491414)
 	local g=$(egetent group video | cut -d: -f3)
@@ -538,7 +448,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	linux-mod_pkg_postinst
+	linux-mod-r1_pkg_postinst
 
 	readme.gentoo_print_elog
 
@@ -546,7 +456,7 @@ pkg_postinst() {
 		$(</proc/driver/nvidia/version) != *"  ${PV}  "* ]]; then
 		ewarn "Currently loaded NVIDIA modules do not match the newly installed"
 		ewarn "libraries and may prevent launching GPU-accelerated applications."
-		use driver && ewarn "The easiest way to fix this is usually to reboot."
+		use modules && ewarn "The easiest way to fix this is usually to reboot."
 	fi
 
 	ewarn
