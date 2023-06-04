@@ -5,8 +5,8 @@ EAPI=7
 inherit multilib-minimal flag-o-matic
 
 DESCRIPTION="a configuration file parser library"
-HOMEPAGE="https://github.com/martinh/libconfuse"
-SRC_URI="https://github.com/martinh/libconfuse/releases/download/v${PV}/${P}.tar.xz"
+HOMEPAGE="https://github.com/libconfuse/libconfuse"
+SRC_URI="https://github.com/libconfuse/libconfuse/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0/2.1.0"
