@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="photos scripts test"
 REQUIRED_USE="scripts? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
