@@ -45,6 +45,9 @@ RDEPEND="
 	introspection? ( dev-libs/gobject-introspection )
 	dev-libs/openssl:=
 	lz4? ( app-arch/lz4 )
+	policykit? (
+		>=sys-auth/polkit-0.110-r1
+	)
 	sasl? ( dev-libs/cyrus-sasl )
 	smartcard? ( app-emulation/qemu[smartcard] )
 	usbredir? (
@@ -52,9 +55,6 @@ RDEPEND="
 		>=sys-apps/usbredir-0.4.2
 		virtual/acl
 		virtual/libusb:1
-		policykit? (
-			>=sys-auth/polkit-0.110-r1
-		)
 	)
 	webdav? (
 		net-libs/phodav:3.0
