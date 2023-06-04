@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Create space-efficient, small, read-only romfs filesystems"
-HOMEPAGE="http://romfs.sourceforge.net/"
+HOMEPAGE="https://romfs.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
