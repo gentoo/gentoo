@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic tmpfiles systemd
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
-HOMEPAGE="https://sagan.quadrantsec.com/"
+HOMEPAGE="https://github.com/quadrantsec/sagan"
 SRC_URI="https://sagan.quadrantsec.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
