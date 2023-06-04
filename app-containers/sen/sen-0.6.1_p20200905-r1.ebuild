@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-python/urwid[${PYTHON_USEDEP}]
 	dev-python/urwidtrees[${PYTHON_USEDEP}]
-	dev-python/docker-py[${PYTHON_USEDEP}]
+	dev-python/docker[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

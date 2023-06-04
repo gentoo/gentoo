@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/cfn-lint-0.40.0[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-3.3.1[${PYTHON_USEDEP}]
 	dev-python/cookies[${PYTHON_USEDEP}]
-	>=dev-python/docker-py-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/docker-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.5[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]
 	>=dev-python/jsondiff-1.1.2[${PYTHON_USEDEP}]

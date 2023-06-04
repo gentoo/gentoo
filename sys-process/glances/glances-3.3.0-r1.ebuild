@@ -65,7 +65,7 @@ pkg_postinst() {
 	#optfeature "Action script feature" dev-python/pystache
 	optfeature "Autodiscover mode" dev-python/zeroconf
 	optfeature "Cloud support" dev-python/requests
-	optfeature "Docker monitoring support" dev-python/docker-py
+	optfeature "Docker monitoring support" dev-python/docker
 	#optfeature "Export module" \
 	#	unpackaged/bernhard \
 	#	unpackaged/cassandra-driver \

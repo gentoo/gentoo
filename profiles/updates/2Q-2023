@@ -23,3 +23,4 @@ move app-misc/pdfpc app-text/pdfpc
 move dev-python/python-email-validator dev-python/email-validator
 move dev-python/semantic_version dev-python/semantic-version
 move dev-python/prometheus_client dev-python/prometheus-client
+move dev-python/docker-py dev-python/docker

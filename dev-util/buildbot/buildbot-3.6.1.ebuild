@@ -47,7 +47,7 @@ RDEPEND="
 		dev-python/txrequests[${PYTHON_USEDEP}]
 	)
 	docker? (
-		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/docker-2.2.0[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "

@@ -65,7 +65,7 @@ net-vpn/networkmanager-vpnc gtk
 app-admin/salt keyring neutron
 dev-python/boto test
 dev-python/dask test
-dev-python/docker-py test
+dev-python/docker test
 dev-python/google-api-python-client test
 dev-python/httpx-socks test
 dev-python/hypercorn test
