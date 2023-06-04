@@ -440,6 +440,7 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 		insinto ${into}
 		doins ${m[0]}
 	done < .manifest || die
+	insopts -m0644 # reset
 
 	# MODULE:installer non-skipped extras
 	: "$(systemd_get_sleepdir)"
