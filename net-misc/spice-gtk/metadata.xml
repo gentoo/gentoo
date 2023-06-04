@@ -15,4 +15,7 @@
 		<flag name="webdav">Support for folder-sharing between guest and client
 			using <pkg>net-libs/phodav</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">spice/spice-gtk</remote-id>
+	</upstream>
 </pkgmetadata>
