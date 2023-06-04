@@ -1,0 +1,39 @@
+From d8e42490b18bd0c8a827d96608e951bf5bc875e4 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Sun, 4 Jun 2023 04:56:58 -0400
+Subject: [PATCH] Fix build with libc++ on linux
+
+--- a/libs/vst3/pluginterfaces/base/funknown.cpp
++++ b/libs/vst3/pluginterfaces/base/funknown.cpp
+@@ -44,7 +44,9 @@
+ #endif
+ 
+ #if SMTG_OS_LINUX
++#ifndef USE_LIBCXX
+ #include <ext/atomicity.h>
++#endif
+ /* UUID */
+ #include <string>
+ #include <boost/uuid/uuid.hpp>
+@@ -83,7 +85,7 @@ int32 PLUGIN_API atomicAdd (int32& var, int32 d)
+ 	return InterlockedExchangeAdd ((volatile long int*)&var, d) + d;
+ #elif SMTG_OS_MACOS
+ 	return OSAtomicAdd32Barrier (d, (int32_t*)&var);
+-#elif SMTG_OS_LINUX
++#elif SMTG_OS_LINUX && !defined USE_LIBCXX
+ 	__gnu_cxx::__atomic_add (&var, d);
+ 	return var;
+ #else
+--- a/wscript
++++ b/wscript
+@@ -545,6 +545,8 @@ int main() { return 0; }''',
+     if opt.use_libcpp or conf.env['build_host'] in [ 'yosemite', 'el_capitan', 'sierra', 'high_sierra', 'mojave', 'catalina' ]:
+         cxx_flags.append('--stdlib=libc++')
+         linker_flags.append('--stdlib=libc++')
++        if platform == 'linux':
++            cxx_flags.append('-DUSE_LIBCXX')
+ 
+     if conf.options.cxx11 or conf.env['build_host'] in [ 'mavericks', 'yosemite', 'el_capitan', 'sierra', 'high_sierra', 'mojave', 'catalina' , 'bigsur', 'monterey', 'ventura' ]:
+         conf.check_cxx(cxxflags=["-std=c++11"])
+-- 
+2.40.1
