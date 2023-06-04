@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 LUA_COMPAT=( lua5-{3..4} )
 
 inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single \
@@ -227,6 +227,8 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.6-link-boost-context.patch"
 	# https://bugs.gentoo.org/905626
 	"${FILESDIR}/ceph-17.2.6-arrow-flatbuffers-c++14.patch"
+	# https://bugs.gentoo.org/868891
+	"${FILESDIR}/ceph-17.2.6-cmake.patch"
 )
 
 check-reqs_export_vars() {
