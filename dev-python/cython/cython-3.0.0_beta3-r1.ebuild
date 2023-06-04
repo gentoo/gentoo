@@ -43,6 +43,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.29.22-spawn-multiprocessing.patch"
 	"${FILESDIR}/${PN}-0.29.23-test_exceptions-py310.patch"
 	"${FILESDIR}/${PN}-0.29.23-pythran-parallel-install.patch"
+	# backport upstream fix e.g. for dev-python/pysimdjson on py3.12
+	"${FILESDIR}/${P}-py312-long.patch"
 )
 
 distutils_enable_sphinx docs \
