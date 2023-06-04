@@ -1,0 +1,52 @@
+diff -upr libglvnd-v1.6.0/src/EGL/meson.build libglvnd-v1.6.0.patch/src/EGL/meson.build
+--- libglvnd-v1.6.0/src/EGL/meson.build	2022-11-21 21:05:30.000000000 +0000
++++ libglvnd-v1.6.0.patch/src/EGL/meson.build	2023-05-03 05:40:27.870428931 +0000
+@@ -44,7 +44,8 @@ libEGL = shared_library(
+       join_paths(get_option('prefix'), get_option('datadir'))),
+   ],
+   include_directories : inc_include,
+-  link_args : '-Wl,-Bsymbolic',
++  # '-Wl,-Bsymbolic' is unsupported on Darwin
++  link_args : '',
+   link_with : libegl_dispatch_stubs,
+   dependencies : [
+     dep_threads, dep_dl, dep_m, dep_x11_headers, idep_trace, idep_glvnd_pthread,
+diff -upr libglvnd-v1.6.0/src/GL/meson.build libglvnd-v1.6.0.patch/src/GL/meson.build
+--- libglvnd-v1.6.0/src/GL/meson.build	2022-11-21 21:05:30.000000000 +0000
++++ libglvnd-v1.6.0.patch/src/GL/meson.build	2023-05-03 05:41:31.938495177 +0000
+@@ -26,7 +26,8 @@ libGL = shared_library(
+   'GL',
+   ['libgl.c', g_libglglxwrapper_c],
+   include_directories : [inc_include],
+-  link_args : '-Wl,-Bsymbolic',
++  # '-Wl,-Bsymbolic' is unsupported on Darwin
++  link_args : '',
+   dependencies : [
+     dep_dl, idep_gldispatch, idep_glapi_gl, dep_glx, idep_utils_misc, dep_x11_headers
+   ],
+diff -upr libglvnd-v1.6.0/src/GLX/meson.build libglvnd-v1.6.0.patch/src/GLX/meson.build
+--- libglvnd-v1.6.0/src/GLX/meson.build	2022-11-21 21:05:30.000000000 +0000
++++ libglvnd-v1.6.0.patch/src/GLX/meson.build	2023-05-03 05:40:49.611743232 +0000
+@@ -39,7 +39,8 @@ libGLX = shared_library(
+     g_glx_dispatch_stub_list_h,
+   ],
+   include_directories : [inc_include],
+-  link_args : '-Wl,-Bsymbolic',
++  # '-Wl,-Bsymbolic' is unsupported on Darwin
++  link_args : '',
+   dependencies : [
+     dep_dl, dep_x11, dep_xext, dep_glproto,
+     idep_gldispatch, idep_trace,
+diff -upr libglvnd-v1.6.0/src/GLdispatch/meson.build libglvnd-v1.6.0.patch/src/GLdispatch/meson.build
+--- libglvnd-v1.6.0/src/GLdispatch/meson.build	2022-11-21 21:05:30.000000000 +0000
++++ libglvnd-v1.6.0.patch/src/GLdispatch/meson.build	2023-05-03 05:42:17.427842502 +0000
+@@ -34,7 +34,8 @@ libgldispatch = shared_library(
+   'GLdispatch',
+   ['GLdispatch.c'],
+   include_directories : [include_directories('vnd-glapi'), inc_include],
+-  link_args : ['-Wl,--version-script', _ver_script],
++  # '-Wl,--version-script' is unsupported on Darwin
++  link_args : [],
+   link_with : libglapi,
+   dependencies : [
+     idep_trace, idep_glvnd_pthread, idep_app_error_check, dep_dl,

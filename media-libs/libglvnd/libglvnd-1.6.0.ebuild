@@ -19,7 +19,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 	SRC_URI="https://gitlab.freedesktop.org/glvnd/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 	S=${WORKDIR}/${PN}-v${PV}
 fi
@@ -44,6 +44,7 @@ src_prepare() {
 	default
 	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
 		bin/symbols-check.py || die
+	use elibc_Darwin && eapply "${FILESDIR}"/${PN}-1.6.0-darwin.patch
 }
 
 multilib_src_configure() {
@@ -52,6 +53,7 @@ multilib_src_configure() {
 		$(meson_feature X glx)
 	)
 	use elibc_musl && emesonargs+=( -Dtls=false )
+	use elibc_Darwin && emesonargs+=( -Dasm=disabled )
 
 	meson_src_configure
 }
