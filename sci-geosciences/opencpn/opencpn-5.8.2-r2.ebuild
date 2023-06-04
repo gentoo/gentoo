@@ -65,6 +65,13 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_install() {
+	default
+	cmake_src_install
+	mv "${D}/usr/share/doc/${PN}"/* "${D}/usr/share/doc/${PF}" || die
+	rmdir "${D}/usr/share/doc/${PN}"
+}
+
 pkg_postinst() {
 	xdg_pkg_postinst
 
