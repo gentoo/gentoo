@@ -17,7 +17,7 @@ SRC_URI="
 "
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 SLOT="0"
 
 RDEPEND="sys-libs/gdbm:0="
