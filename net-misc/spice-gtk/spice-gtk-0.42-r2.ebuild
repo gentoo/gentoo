@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="+gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala valgrind wayland webdav"
+IUSE="gtk-doc +gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala valgrind wayland webdav"
 
 # TODO:
 # * check if sys-freebsd/freebsd-lib (from virtual/acl) provides acl/libacl.h
@@ -65,25 +65,28 @@ RDEPEND="
 # configure knob. The package is relatively lightweight so we just depend
 # on it unconditionally for now. It would be cleaner to transform this into
 # a USE="vaapi" conditional and patch the buildsystem...
-RDEPEND="${RDEPEND}
+RDEPEND="
+	${RDEPEND}
 	amd64? ( media-libs/libva:= )
 	arm64? ( media-libs/libva:= )
 	x86? ( media-libs/libva:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=app-emulation/spice-protocol-${SPICE_PROTOCOL_VER}
-	valgrind? ( dev-util/valgrind )"
+	valgrind? ( dev-util/valgrind )
+"
 BDEPEND="
-	dev-perl/Text-CSV
-	dev-util/glib-utils
-	dev-util/gtk-doc
-	>=sys-devel/gettext-0.17
-	virtual/pkgconfig
-	vala? ( $(vala_depend) )
 	$(python_gen_any_dep '
 		dev-python/pyparsing[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	')
+	dev-perl/Text-CSV
+	dev-util/glib-utils
+	>=sys-devel/gettext-0.17
+	virtual/pkgconfig
+	gtk-doc? (  dev-util/gtk-doc )
+	vala? ( $(vala_depend) )
 "
 
 python_check_deps() {
@@ -101,6 +104,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		$(meson_feature gtk-doc gtk_doc)
 		$(meson_feature gtk3 gtk)
 		$(meson_feature introspection)
 		$(meson_use mjpeg builtin-mjpeg)
