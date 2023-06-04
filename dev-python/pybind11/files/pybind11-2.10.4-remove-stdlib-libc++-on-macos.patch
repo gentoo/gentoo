@@ -1,0 +1,59 @@
+https://github.com/pybind/pybind11/issues/4637
+https://github.com/pybind/pybind11/commit/da91926295638b2b1c0c85a568a2d66ca3646565
+
+From da91926295638b2b1c0c85a568a2d66ca3646565 Mon Sep 17 00:00:00 2001
+From: biergaizi <biergaizi@users.noreply.github.com>
+Date: Mon, 1 May 2023 14:14:52 +0000
+Subject: [PATCH] fix: remove -stdlib=libc++ from setup helpers, not needed on
+ modern Pythons (#4639)
+
+* Inject -stdlib=libc++ on macOS only when it's supported, close #4637.
+
+On macOS, by default, pybind11 currently unconditionally set the compiler
+flag "-stdlib=libc++" in Pybind11Extension.__init__(), regardless of which
+compiler is used. This flag is required for clang, but is invalid for GCC.
+If GCC is used, it causes compilation failures in all Python projects that
+use pybind11, with the error message:
+
+    arm64-apple-darwin22-gcc: error: unrecognized command-line option -stdlib=libc++.
+
+This commit uses has_flag() to detect whether "-stdlib=libc++" on macOS,
+and injects this flag from build_ext.build_extensions(), rather than
+setting it unconditionally.
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+
+* revert: just remove flags
+
+---------
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+Co-authored-by: Henry Schreiner <HenrySchreinerIII@gmail.com>
+---
+ pybind11/setup_helpers.py | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/pybind11/setup_helpers.py b/pybind11/setup_helpers.py
+index 0fb4679e49..cb279f27e0 100644
+--- a/pybind11/setup_helpers.py
++++ b/pybind11/setup_helpers.py
+@@ -144,7 +144,6 @@ def __init__(self, *args: Any, **kwargs: Any) -> None:
+         self.cxx_std = cxx_std
+ 
+         cflags = []
+-        ldflags = []
+         if WIN:
+             cflags += ["/EHsc", "/bigobj"]
+         else:
+@@ -154,11 +153,7 @@ def __init__(self, *args: Any, **kwargs: Any) -> None:
+             c_cpp_flags = shlex.split(env_cflags) + shlex.split(env_cppflags)
+             if not any(opt.startswith("-g") for opt in c_cpp_flags):
+                 cflags += ["-g0"]
+-            if MACOS:
+-                cflags += ["-stdlib=libc++"]
+-                ldflags += ["-stdlib=libc++"]
+         self._add_cflags(cflags)
+-        self._add_ldflags(ldflags)
+ 
+     @property
+     def cxx_std(self) -> int:
