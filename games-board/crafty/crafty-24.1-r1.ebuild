@@ -12,7 +12,7 @@ SRC_URI="http://www.craftychess.com/${P}.zip
 
 LICENSE="crafty"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="no-opts"
 RESTRICT="test"
 
