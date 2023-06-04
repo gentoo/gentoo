@@ -73,6 +73,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.8-metadata.patch"
+	"${FILESDIR}/${PN}-7.4-libc++.patch"
 )
 
 pkg_pretend() {
@@ -144,6 +145,8 @@ src_configure() {
 		$(usex phonehome "--phone-home" "--no-phone-home")
 		# not possible right now  --use-external-libs
 	)
+
+	[[ "$(tc-get-cxx-stdlib)" = "libc++" ]] && myconf+=( --use-libc++ )
 
 	waf-utils_src_configure "${myconf[@]}"
 }
