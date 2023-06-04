@@ -384,7 +384,7 @@ src_test() {
 		# Reason: hangs in gpg
 		# epg-roundtrip-1
 		# epg-roundtrip-2
-		#%lisp/epg-tests.el
+		%lisp/epg-tests.el
 	)
 
 	# See test/README for possible options
