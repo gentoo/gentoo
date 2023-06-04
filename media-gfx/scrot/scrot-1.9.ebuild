@@ -15,24 +15,21 @@ else
 	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 fi
 
-LICENSE="feh LGPL-2+"
+LICENSE="feh"
 SLOT="0"
 
 # imlib2[X] needed for imlib_create_image_from_drawable, bug #835582
+# imlib2[png] not technically requried, but it's the default format used by
+# scrot, so unconditionally depend on it to avoid breaking basic commands which
+# don't specify an output format.
 RDEPEND="
-	dev-libs/libbsd
 	media-libs/imlib2[X,filters(+),text(+)]
 	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
 	x11-libs/libXinerama
-	|| (
-		media-libs/imlib2[gif]
-		media-libs/imlib2[jpeg]
-		media-libs/imlib2[png]
-		media-libs/imlib2[tiff]
-	)
+	media-libs/imlib2[png]
 "
 DEPEND="
 	${RDEPEND}
