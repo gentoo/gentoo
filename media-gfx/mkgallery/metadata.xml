@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">mkgallery</remote-id>
+		<remote-id type="github">jaafreitas/mkgallery</remote-id>
 	</upstream>
 </pkgmetadata>
