@@ -26,6 +26,7 @@ KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 RESTRICT="test"
 PROPERTIES="test_network"
 
+# See https://github.com/ekalinin/nodeenv/issues/333 for which.
 RDEPEND="
 	sys-apps/which
 "
