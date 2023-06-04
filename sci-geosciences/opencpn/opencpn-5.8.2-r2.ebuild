@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-inherit wxwidgets xdg cmake
+inherit wxwidgets xdg cmake toolchain-funcs
 
 DOC_VERSION="4.8.2.0"
 
@@ -43,6 +43,13 @@ BDEPEND="
 	sys-apps/lsb-release
 	sys-devel/gettext
 	"
+
+src_prepare() {
+	default
+	# see bug #907759
+	sed -i "s/ cc / $(tc-getBUILD_CC) /" "${S}"/CMakeLists.txt
+	cmake_src_prepare
+}
 
 src_configure() {
 	use doc && HTML_DOCS=( "${S}"/../${PN}/doc/. )
