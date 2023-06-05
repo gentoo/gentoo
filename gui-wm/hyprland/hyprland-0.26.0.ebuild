@@ -56,24 +56,29 @@ BDEPEND="
 	>=gui-libs/wlroots-0.16.0[X?]
 "
 
-src_prepare() {
-	if [[ $(tc-is-gcc) ]]; then
+pkg_setup() {
+	[[ ${MERGE_TYPE} == binary ]] && return
+
+	if tc-is-gcc; then
 		STDLIBVER=$(echo '#include <string>' | $(tc-getCXX) -x c++ -dM -E - | \
 					grep GLIBCXX_RELEASE | sed 's/.*\([1-9][0-9]\)/\1/')
+
 		if ! [[ ${STDLIBVER} -ge 12 ]]; then
 			die "Hyprland requires >=sys-devel/gcc-12.1.0 to build"
 		fi
-		elif [[ $(clang-major-version) -lt 16 ]]; then
-			die "Hyprland requires >=sys-devel/clang-16.0.3 to build";
-		fi
+	elif [[ $(clang-major-version) -lt 16 ]]; then
+		die "Hyprland requires >=sys-devel/clang-16.0.3 to build";
+	fi
+}
 
+src_prepare() {
 	if use video_cards_nvidia; then
 		cd "${S}/subprojects/wlroots" || die
 		eapply "${FILESDIR}/nvidia-0.25.0.patch"
 		cd "${S}" || die
 	fi
 
-	eapply_user
+	default
 }
 
 src_configure() {
