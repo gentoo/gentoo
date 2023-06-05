@@ -3,6 +3,8 @@
 
 EAPI=8
 
+MODULES_OPTIONAL_IUSE="+module"
+
 inherit linux-mod-r1
 
 MY_DATE="$(ver_cut 4)"
@@ -46,23 +48,19 @@ src_prepare() {
 	# Install new Makefile to respect users CFLAGS and LDFLAGS
 	cp "${FILESDIR}"/makefile driver/Source/Linux/Makefile || die
 
-	use module && linux-mod-r1_pkg_setup
+	linux-mod-r1_pkg_setup
 }
 
 src_compile() {
-	if use module; then
-		local modargs=( KDIR="${KV_OUT_DIR}" )
-		local modlist=( sum_bios="misc:driver/Source/Linux" )
+	local modargs=( KDIR="${KV_OUT_DIR}" )
+	local modlist=( sum_bios="misc:driver/Source/Linux" )
 
-		linux-mod-r1_src_compile
-	else
-		:;
-	fi
+	linux-mod-r1_src_compile
 }
 
 src_install() {
 	newbin sum smc-sum
 	einstalldocs
 
-	use module && linux-mod-r1_src_install
+	linux-mod-r1_src_install
 }
