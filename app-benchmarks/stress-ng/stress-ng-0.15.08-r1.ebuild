@@ -34,6 +34,8 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README.md" "README.Android" "TODO" "syscalls.txt" )
 
+PATCHES=( "${FILESDIR}/${PN}-0.15.08-fortify-source.patch" )
+
 pkg_pretend() {
 	if use apparmor; then
 		CONFIG_CHECK="SECURITY_APPARMOR"
