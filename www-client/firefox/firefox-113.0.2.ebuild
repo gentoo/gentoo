@@ -649,6 +649,9 @@ src_prepare() {
 	! use ppc64 && rm -v "${WORKDIR}"/firefox-patches/*bmo-1775202-ppc64*.patch
 
 	eapply "${WORKDIR}/firefox-patches"
+	eapply "${FILESDIR}"/${PN}-113.0.2-musl-1.2.4-getrandom.patch
+	sed -e 's/2a63ac0e6dab16b85c4728b79a16e0640301e8b876f151b0a1db0b4394fa219f/a47b20e73637fed248405650f56358f3339e511b217b7ba80e32011d8ee2ca22/' \
+		-i third_party/rust/getrandom/.cargo-checksum.json
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
