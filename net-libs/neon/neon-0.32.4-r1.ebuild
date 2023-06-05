@@ -56,7 +56,7 @@ src_prepare() {
 		sed -e "s/T(pkcs11)/T_XFAIL(pkcs11)/" -i test/ssl.c || die
 	fi
 
-	eapply_user
+	default
 
 	AT_M4DIR="macros" eautoreconf
 
