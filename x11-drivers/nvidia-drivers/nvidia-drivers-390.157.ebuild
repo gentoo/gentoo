@@ -457,7 +457,12 @@ pkg_postinst() {
 		$(</proc/driver/nvidia/version) != *"  ${PV}  "* ]]; then
 		ewarn "Currently loaded NVIDIA modules do not match the newly installed"
 		ewarn "libraries and may prevent launching GPU-accelerated applications."
-		use modules && ewarn "The easiest way to fix this is usually to reboot."
+		if use modules; then
+			ewarn "Easiest way to fix this is normally to reboot. If still run into issues"
+			ewarn "(e.g. API mismatch messages in the \`dmesg\` output), please verify"
+			ewarn "that the running kernel is ${KV_FULL} and that (if used) the"
+			ewarn "initramfs does not include NVIDIA modules (or at least, not old ones)."
+		fi
 	fi
 
 	ewarn
