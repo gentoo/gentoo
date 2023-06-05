@@ -43,3 +43,14 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+pkg_postinst() {
+	ewarn "The new history feature makes CB incompatible with how older versions stored clipboard contents."
+	ewarn "If you have existing content when you upgrade, then it might not appear in CB, although it won't be deleted."
+	ewarn "To fix this, take everything stored in the data folder of your existing clipboards"
+	ewarn "and move them to a \"0\" subfolder within data."
+	ewarn "So, if you have the file Foobar stored under data, the new setup will look like the folder 0 under data,"
+	ewarn "and 0 stores the file Foobar."
+	ewarn "To find where CB keeps your clipboards, use the cb info command and check the line that says Stored in...."
+	ewarn "If you don't already have content stored with CB, then this warning doesn't apply to you."
+}
