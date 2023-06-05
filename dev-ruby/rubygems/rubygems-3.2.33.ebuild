@@ -105,6 +105,6 @@ pkg_postinst() {
 
 	ewarn
 	ewarn "To switch between available Ruby profiles, execute as root:"
-	ewarn "\teselect ruby set ruby(25|26|...)"
+	ewarn "\teselect ruby set ruby(30|31|...)"
 	ewarn
 }
