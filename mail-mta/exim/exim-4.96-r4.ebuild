@@ -6,7 +6,7 @@ EAPI="7"
 inherit db-use toolchain-funcs pam systemd
 
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
-dsn exiscan-acl gdbm gnutls idn ipv6 ldap lmtp maildir mbx
+dsn gdbm gnutls idn ipv6 ldap lmtp maildir mbx
 mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux
 socks5 spf sqlite srs +ssl syslog tdb tcpd +tpda X"
 REQUIRED_USE="
@@ -16,8 +16,6 @@ REQUIRED_USE="
 	dkim? ( ssl !gnutls )
 	gnutls? ( ssl )
 	pkcs11? ( ssl )
-	spf? ( exiscan-acl )
-	srs? ( exiscan-acl )
 	|| ( berkdb gdbm tdb )
 "
 # NOTE on USE="gnutls dane", gnutls[dane] is masked in base, unmasked
@@ -196,6 +194,7 @@ src_configure() {
 		PID_FILE_PATH=${EPREFIX}/run/exim.pid
 		SPOOL_DIRECTORY=${EPREFIX}/var/spool/exim
 		HAVE_ICONV=yes
+		WITH_CONTENT_SCAN=yes
 	EOC
 
 	# configure db implementation, Exim always needs one for its hints
@@ -355,13 +354,6 @@ src_configure() {
 	#
 	# features
 	#
-
-	# content scanning support
-	if use exiscan-acl; then
-		cat >> Makefile <<- EOC
-			WITH_CONTENT_SCAN=yes
-		EOC
-	fi
 
 	# DomainKeys Identified Mail, RFC4871
 	if ! use dkim; then
@@ -595,9 +587,6 @@ src_install() {
 	# conf files
 	insinto /etc/exim
 	newins "${S}"/src/configure.default exim.conf.dist
-	if use exiscan-acl; then
-		newins "${S}"/src/configure.default exim.conf.exiscan-acl
-	fi
 	doins "${WORKDIR}"/system_filter.exim
 	doins "${FILESDIR}"/auth_conf.sub
 
