@@ -9,4 +9,7 @@
   SuiteSparse_config is a set of configuration files for the SuiteSparse matrix libraries
   from CISE at University of Florida. It contains some headers and makefiles.
   </longdescription>
+  <upstream>
+    <remote-id type="github">DrTimothyAldenDavis/SuiteSparse</remote-id>
+  </upstream>
 </pkgmetadata>
