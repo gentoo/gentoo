@@ -11,7 +11,7 @@ SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.t
 
 LICENSE="GPL-3+ LGPL-2.1+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="~x64-macos ~x64-solaris"
+KEYWORDS="~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="doc"
 
 S="${WORKDIR}/${PN}-${GIT_TAG}"
