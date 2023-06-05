@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-06-04)
+# Obsolete and insecure SageMath (out of tree) dependency.
+# Removal on 2023-07-04.
+sci-mathematics/flintqs
+
 # Michał Górny <mgorny@gentoo.org> (2023-06-03)
 # Obsoleted by dev-python/pyspnego.  No revdeps left.
 # Removal on 2023-07-03.  Bug #895004.
