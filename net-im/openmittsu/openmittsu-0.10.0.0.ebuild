@@ -35,6 +35,8 @@ DOCS=(
 	Example-contacts-file.txt
 )
 
+CMAKE_BUILD_TYPE="Gentoo"
+
 src_configure() {
 	local mycmakeargs=(
 		# set version manually, since autodetection works only with git
