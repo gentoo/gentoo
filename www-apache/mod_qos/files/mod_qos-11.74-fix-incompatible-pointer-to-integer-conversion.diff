@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/898860
+--- a/tools/src/qsfilter2.c
++++ b/tools/src/qsfilter2.c
+@@ -1800,7 +1800,7 @@ int main(int argc, const char * const argv[]) {
+   printf("# --------------------------------------------------------\n");
+ 
+   {
+-    STACK_OF(qs_rule_t) *st = sk_new(STACK_qs_cmp);
++    STACK_OF(qs_rule_t) *st = sk_new((qs_rule_t *)STACK_qs_cmp);
+     qs_rule_t *r;
+     int j = 1;
+     entry = (apr_table_entry_t *)apr_table_elts(rules)->elts;
