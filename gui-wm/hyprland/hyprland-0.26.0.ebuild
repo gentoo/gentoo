@@ -52,6 +52,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-libs/hyprland-protocols
 	>=dev-libs/wayland-1.22.0
+	dev-util/wayland-scanner
 	dev-vcs/git
 	>=gui-libs/wlroots-0.16.0[X?]
 "
