@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 inherit distutils-r1 pypi
 
 DESCRIPTION="C++ header library which makes it easier to write Python extension modules"
-HOMEPAGE="https://pypi.org/project/cppy/"
+HOMEPAGE="
+	https://pypi.org/project/cppy/
+	https://github.com/nucleic/cppy/
+"
 
 LICENSE="BSD"
 SLOT="0"
