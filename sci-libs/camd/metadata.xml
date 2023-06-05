@@ -10,4 +10,7 @@
   for ordering a sparse matrix prior to Cholesky factorization (or for
   LU factorization with diagonal pivoting).
   </longdescription>
+  <upstream>
+    <remote-id type="github">DrTimothyAldenDavis/SuiteSparse</remote-id>
+  </upstream>
 </pkgmetadata>
