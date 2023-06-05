@@ -55,6 +55,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	boost? ( >=dev-libs/boost-1.71 )
+	test? ( qt5? ( dev-qt/qttest:5 ) )
 "
 BDEPEND="
 	>=dev-util/glib-utils-2.64
