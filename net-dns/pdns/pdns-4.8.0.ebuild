@@ -16,12 +16,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug doc geoip ldap lmdb lua lua-records mysql odbc postgres remote sodium sqlite systemd tools tinydns test"
+IUSE="debug doc geoip ldap lmdb lua-records mysql odbc postgres remote sodium sqlite systemd tools tinydns test"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) lua-records? ( lua )"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-DEPEND="lua? ( ${LUA_DEPS} )
+DEPEND="${LUA_DEPS}
 	dev-libs/openssl:=
 	dev-libs/boost:=
 	lmdb? ( >=dev-db/lmdb-0.9.29 )
@@ -52,12 +52,11 @@ pkg_setup() {
 }
 
 src_configure() {
-	local cnf_dynmodules="pipe bind" # the default backends, always enabled
+	local cnf_dynmodules="bind lua2 pipe" # the default backends, always enabled
 
 	use geoip && cnf_dynmodules+=" geoip"
 	use ldap && cnf_dynmodules+=" ldap"
 	use lmdb && cnf_dynmodules+=" lmdb"
-	use lua && cnf_dynmodules+=" lua2"
 	use mysql && cnf_dynmodules+=" gmysql"
 	use odbc && cnf_dynmodules+=" godbc"
 	use postgres && cnf_dynmodules+=" gpgsql"

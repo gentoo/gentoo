@@ -23,9 +23,9 @@ KEYWORDS="amd64 x86"
 IUSE="debug doc geoip ldap lmdb lua-records mysql postgres remote sodium sqlite systemd tools tinydns test"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="lua-records? ( ${LUA_REQUIRED_USE} )"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-DEPEND="lua-records? ( ${LUA_DEPS} )
+DEPEND="${LUA_DEPS}
 	dev-libs/openssl:=
 	dev-libs/boost:=
 	lmdb? ( >=dev-db/lmdb-0.9.29 )
