@@ -82,6 +82,9 @@ src_configure() {
 		# Increase the default memlimit from 32MiB to 128MiB, bug #533232
 		--with-memlock=256
 
+		# Avoid overriding the user's toolchain settings, bug #895802
+		--with-hardenfile=/dev/null
+
 		$(use_enable caps linuxcaps)
 		$(use_enable parse-clocks)
 		$(use_enable ipv6)
