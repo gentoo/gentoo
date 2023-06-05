@@ -28,14 +28,13 @@ SLOT="0/${PV%%.*}"
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced +static-libs +tools wayland"
 REQUIRED_USE="kernel-open? ( modules )"
 
+# wrt openssl, can only use exactly :0/1.1 *or* :0/3 (prebuilt) but depend on
+# a simple >=1.1 given a || ( ) block confuses portage with subslot "rebuilds"
+# TODO: change to a hard dependency on exactly :0/3 when :0/1.1 loses relevance
 COMMON_DEPEND="
 	acct-group/video
 	sys-libs/glibc
-	dev-libs/openssl:=
-	|| (
-		dev-libs/openssl:0/3
-		dev-libs/openssl:0/1.1
-	)
+	>=dev-libs/openssl-1.1:=
 	X? ( x11-libs/libpciaccess )
 	persistenced? (
 		acct-user/nvpd
@@ -312,6 +311,10 @@ src_install() {
 		libnvidia-egl-gbm 15_nvidia_gbm # gui-libs/egl-gbm
 		libnvidia-egl-wayland 10_nvidia_wayland # gui-libs/egl-wayland
 	)
+	# TODO: hard-depend on openssl:0/3, drop this, and add pkcs11.so above
+	has_version 'dev-libs/openssl:0/3' &&
+		skip_files+=( libnvidia-pkcs11.so ) ||
+		skip_files+=( libnvidia-pkcs11-openssl3.so )
 	local skip_modules=(
 		$(usev !X "nvfbc vdpau xdriver")
 		$(usev !modules gsp)
@@ -437,21 +440,8 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 			dosym ${m[4]} ${into}/${m[0]}
 			continue
 		fi
-
-		case ${m[0]} in
-			libnvidia-ngx.so*|libnvidia-egl-gbm.so*)
-				# soname is missing from the manifest
-				dosym ${m[0]} ${into}/${m[0]%.so*}.so.1
-			;;
-			libnvidia-pkcs11.so*)
-				# TODO: always skip when can reasonably depend only on 3
-				# (currently relies on subslot rebuilds to pick)
-				has_version 'dev-libs/openssl:0/1.1' || continue
-			;;
-			libnvidia-pkcs11-openssl3.so*)
-				has_version 'dev-libs/openssl:0/3' || continue
-			;;
-		esac
+		[[ ${m[0]} =~ ^libnvidia-ngx.so|^libnvidia-egl-gbm.so ]] &&
+			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1 # soname not in .manifest
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}
