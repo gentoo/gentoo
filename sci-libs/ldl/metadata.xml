@@ -16,4 +16,7 @@
 		consists of a total of only 49 lines of code. The package is written
 		in C, and includes a MATLAB interface.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">DrTimothyAldenDavis/SuiteSparse</remote-id>
+	</upstream>
 </pkgmetadata>
