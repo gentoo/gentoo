@@ -56,8 +56,9 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
-# bash string containing all crates package wants to download
-# used by cargo_crate_uris()
+# Bash string containing all crates that are to be downloaded.
+# It is used by cargo_crate_uris.
+#
 # Example:
 # @CODE
 # CRATES="
@@ -73,32 +74,28 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @ECLASS_VARIABLE: GIT_CRATES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# bash associative array containing all crates that a package wants
-# to be fetch by git.
-# The key is the crate name, the value is a semicolon separated list of
-# the following fields:
+# Bash associative array containing all of the crates that are to be
+# fetched via git.  It is used by cargo_crate_uris.
+# If this is defined, then cargo_src_install will add --frozen to "cargo install".
+# The key is a crate name, the value is a semicolon-separated list of:
 #
-# - the URI to to fetch the crate from
-#     - this intelligentally handles GitHub URIs and GitLab URIs so
-#       just the path is needed.
-#     - the string "%commit%" gets replaced with the commit
-# - the hash of the commit to use
-# - (optional) the path to look for Cargo.toml in
-#   - this will also replace  the string "%commit%" with the commit
-#   - if this not provided, it will be generated using the crate name and
-#     the commit
-# Used by cargo_crate_uris
+# - the URI to fetch the crate from.
+#     - This intelligently handles GitHub and GitLab URIs so that
+#       just the repository path is needed.
+#     - The string "%commit%" gets replaced with the commit's checksum.
+# - the checksum of the commit to use.
+# - optionally: the path to look for Cargo.toml in.
+#   - This will also replace the string "%commit%" with the commit's checksum.
+#   - Defaults to: "${crate}-%commit%"
 #
-# If this is defined, then cargo_src_install will add --frozen to "cargo install"
-#
-# Example of simple definition of GIT_CRATES without any paths defined
+# Example of a simple definition with no path to Cargo.toml:
 # @CODE
 # declare -A GIT_CRATES=(
 # 	[home]="https://github.com/rbtcollins/home;a243ee2fbee6022c57d56f5aa79aefe194eabe53"
 # )
 # @CODE
 #
-# Example code of how to define GIT_CRATES with paths defined.
+# Example with paths defined:
 # @CODE
 # declare -A GIT_CRATES=(
 # 	[rustpython-common]="https://github.com/RustPython/RustPython;4f38cb68e4a97aeea9eb19673803a0bd5f655383;RustPython-%commit%/common"
@@ -110,22 +107,22 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
-# If set to a non-null value, before inherit cargo part of the ebuild will
+# If set to a non-null value, the part of the ebuild before "inherit cargo" will
 # be considered optional. No dependencies will be added and no phase
 # functions will be exported.
 #
 # If you enable CARGO_OPTIONAL, you have to set BDEPEND on virtual/rust
 # for your package and call at least cargo_gen_config manually before using
-# other src_ functions of this eclass.
-# note that cargo_gen_config is automatically called by cargo_src_unpack.
+# other src_functions of this eclass.
+# Note that cargo_gen_config is automatically called by cargo_src_unpack.
 
 # @ECLASS_VARIABLE: myfeatures
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Optional cargo features defined as bash array.
-# Should be defined before calling cargo_src_configure().
+# Should be defined before calling cargo_src_configure.
 #
-# Example package that has x11 and wayland as features, and disables default.
+# Example of a package that has x11 and wayland features and disables default features.
 # @CODE
 # src_configure() {
 # 	local myfeatures=(
@@ -145,7 +142,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # This is intended to be set by users.
 # Ebuilds must not set it.
 #
-# Defaults to "${DISTDIR}/cargo-registry" it not set.
+# Defaults to "${DISTDIR}/cargo-registry" if not set.
 
 # @ECLASS_VARIABLE: ECARGO_OFFLINE
 # @USER_VARIABLE
@@ -168,8 +165,8 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @FUNCTION: cargo_crate_uris
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
-# Uses first argument as crate list.
-# If no argument provided, uses CRATES variable.
+# Constructs a list of crates from its arguments.
+# If no arguments are provided, it uses the CRATES variable.
 cargo_crate_uris() {
 	local -r regex='^([a-zA-Z0-9_\-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
 	local crate crates
@@ -299,7 +296,7 @@ _cargo_gen_git_config() {
 
 # @FUNCTION: cargo_src_unpack
 # @DESCRIPTION:
-# Unpacks the package and the cargo registry
+# Unpacks the package and the cargo registry.
 cargo_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -381,7 +378,7 @@ cargo_live_src_unpack() {
 
 	pushd "${S}" > /dev/null || die
 
-	# Respect user settings befire cargo_gen_config is called.
+	# Respect user settings before cargo_gen_config is called.
 	if [[ ! ${CARGO_TERM_COLOR} ]]; then
 		[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && export CARGO_TERM_COLOR=never
 		local unset_color=true
@@ -434,10 +431,10 @@ cargo_live_src_unpack() {
 # will be passed to cargo in all phases.
 # Make sure all cargo subcommands support flags passed here.
 #
-# Example for package that explicitly builds only 'baz' binary and
+# Example of a package that explicitly builds only 'baz' binary and
 # enables 'barfeature' and optional 'foo' feature.
-# will pass '--features barfeature --features foo --bin baz'
-# in src_{compile,test,install}
+# It will pass '--features barfeature --features foo --bin baz'
+# in src_{compile,test,install}.
 #
 # @CODE
 # src_configure() {
@@ -449,11 +446,11 @@ cargo_live_src_unpack() {
 # }
 # @CODE
 #
-# In some cases crates may need '--no-default-features' option,
-# as there is no way to disable single feature, except disabling all.
-# It can be passed directly to cargo_src_configure().
+# In some cases crates may need the '--no-default-features' option,
+# as there is no way to disable a single default feature, except disabling all.
+# It can be passed directly to cargo_src_configure.
 #
-# Some live/9999 ebuild may need '--frozen' option, if git crates
+# Some live/9999 ebuild may need the '--frozen' option, if git crates
 # are used.
 # Otherwise src_install phase may query network again and fail.
 cargo_src_configure() {
@@ -480,7 +477,7 @@ cargo_src_configure() {
 
 # @FUNCTION: cargo_src_compile
 # @DESCRIPTION:
-# Build the package using cargo build
+# Build the package using cargo build.
 cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -496,10 +493,10 @@ cargo_src_compile() {
 
 # @FUNCTION: cargo_src_install
 # @DESCRIPTION:
-# Installs the binaries generated by cargo
-# In come case workspaces need alternative --path parameter
-# default is '--path ./' if nothing specified.
-# '--path ./somedir' can be passed directly to cargo_src_install()
+# Installs the binaries generated by cargo.
+# In come cases workspaces need an alternative --path parameter.
+# Defaults to '--path ./' if no path is specified.
+# '--path ./somedir' can be passed directly to cargo_src_install.
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -531,7 +528,7 @@ cargo_src_install() {
 
 # @FUNCTION: cargo_src_test
 # @DESCRIPTION:
-# Test the package using cargo test
+# Test the package using cargo test.
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
