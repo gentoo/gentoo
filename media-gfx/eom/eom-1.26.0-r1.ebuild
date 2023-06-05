@@ -13,7 +13,7 @@ DESCRIPTION="The MATE image viewer"
 LICENSE="FDL-1.1+ GPL-2+ IJG LGPL-2+"
 SLOT="0"
 
-IUSE="X debug exif imagemagick +introspection nls jpeg lcms svg tiff xmp"
+IUSE="X debug exif imagemagick +introspection nls jpeg lcms svg tiff xmp webp"
 
 COMMON_DEPEND="
 	dev-libs/atk
@@ -38,6 +38,7 @@ COMMON_DEPEND="
 	lcms? ( media-libs/lcms:2 )
 	svg? ( >=gnome-base/librsvg-2.36.2:2 )
 	xmp? ( >=media-libs/exempi-1.99.5:2= )
+	webp? ( gui-libs/gdk-pixbuf-loader-webp )
 "
 
 RDEPEND="${COMMON_DEPEND}
