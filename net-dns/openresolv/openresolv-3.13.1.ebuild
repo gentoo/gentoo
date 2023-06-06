@@ -15,6 +15,8 @@ IUSE="selinux"
 RDEPEND="!sys-apps/systemd[resolvconf]
 	selinux? ( sec-policy/selinux-resolvconf )"
 
+PDEPEND="net-dns/resolvconf-symlink"
+
 src_configure() {
 	local myeconfargs=(
 		--prefix="${EPREFIX}"
