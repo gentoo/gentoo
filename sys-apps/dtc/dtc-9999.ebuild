@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit meson
+PYTHON_COMPAT=( python3_{10..11} )
+inherit meson python-single-r1
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/dtc/dtc.git"
@@ -18,15 +19,20 @@ HOMEPAGE="https://devicetree.org/ https://git.kernel.org/cgit/utils/dtc/dtc.git/
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="static-libs test yaml"
+IUSE="python static-libs test yaml"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
+	python? ( dev-lang/swig )
 "
-RDEPEND="yaml? ( >=dev-libs/libyaml-0.2.3 )"
+RDEPEND="
+	python? ( ${PYTHON_DEPS} )
+	yaml? ( >=dev-libs/libyaml-0.2.3 )
+"
 DEPEND="${RDEPEND}"
 
 DOCS=(
@@ -34,6 +40,10 @@ DOCS=(
 	Documentation/dts-format.txt
 	Documentation/manual.txt
 )
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -46,9 +56,9 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		-Ddefault_library=$(usex static-libs both shared)
-		-Dpython=disabled
 		-Dtools=true
 		-Dvalgrind=disabled # only used for some tests
+		$(meson_feature python)
 		$(meson_feature yaml)
 	)
 
