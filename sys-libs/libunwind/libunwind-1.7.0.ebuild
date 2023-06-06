@@ -17,6 +17,7 @@ LIBUNWIND_DOCS_USEFLAG="+doc"
 
 inherit multilib-minimal
 
+# Weird MY_P for https://github.com/libunwind/libunwind/issues/535
 MY_P=${PN}-$(ver_rs 2 '')
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
