@@ -138,7 +138,7 @@ REQUIRED_USE="
 	plugins? ( !static-user )
 "
 for smname in ${IUSE_SOFTMMU_TARGETS} ; do
-	REQUIRED_USE+=" qemu_softmmu_targets_${smname}? ( seccomp ) "
+	REQUIRED_USE+=" qemu_softmmu_targets_${smname}? ( kernel_linux? ( seccomp ) )"
 done
 
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
