@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
 	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
 	"${FILESDIR}"/nss-3.87-use-clang-as-bgo892686.patch
+	"${FILESDIR}"/nss-3.90-arm64-simd.patch
 )
 
 src_prepare() {
