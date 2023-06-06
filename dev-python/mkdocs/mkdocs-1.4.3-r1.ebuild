@@ -41,7 +41,6 @@ RDEPEND="
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.11.1[${PYTHON_USEDEP}]
 	>=dev-python/markdown-3.3.3[${PYTHON_USEDEP}]
-	<dev-python/markdown-3.4[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	>=dev-python/watchdog-2.0[${PYTHON_USEDEP}]
 	>=dev-python/ghp-import-1.0[${PYTHON_USEDEP}]
@@ -70,6 +69,10 @@ python_prepare_all() {
 	# Does not work in emerge env
 	sed -i -e 's/test_paths_localized_to_config/_&/' \
 		mkdocs/tests/config/config_options_tests.py
+
+	# unpin markdown
+	# https://github.com/mkdocs/mkdocs/commit/562d5e14c1d2c914d42942ab2385822c04d5bc7b
+	sed -i -e '/markdown/s:, <3.4::' pyproject.toml || die
 
 	distutils-r1_python_prepare_all
 }
