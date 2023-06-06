@@ -25,13 +25,18 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 "
-RDEPEND="yaml? ( >=dev-libs/libyaml-0.2.3 )"
+RDEPEND="yaml? ( dev-libs/libyaml )"
 DEPEND="${RDEPEND}"
 
 DOCS=(
 	Documentation/dt-object-internal.txt
 	Documentation/dts-format.txt
 	Documentation/manual.txt
+)
+
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-tests.patch
+	"${FILESDIR}"/${P}-meson-macos.patch
 )
 
 src_configure() {
