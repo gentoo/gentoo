@@ -17,6 +17,7 @@
 		should be familiar to users of that module.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">unidata/netcdf4-python</remote-id>
 		<remote-id type="pypi">netCDF4</remote-id>
 	</upstream>
 </pkgmetadata>
