@@ -18,7 +18,8 @@ HOMEPAGE="https://devicetree.org/ https://git.kernel.org/cgit/utils/dtc/dtc.git/
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="static-libs yaml"
+IUSE="static-libs test yaml"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	sys-devel/bison
@@ -39,10 +40,19 @@ PATCHES=(
 	"${FILESDIR}"/${P}-meson-macos.patch
 )
 
+src_prepare() {
+	default
+
+	if ! use test ; then
+		sed -i -e "/subdir('tests')/d" meson.build || die
+	fi
+}
+
 src_configure() {
 	local emesonargs=(
 		-Ddefault_library=$(usex static-libs both shared)
 		-Dpython=disabled
+		-Dtools=true
 		-Dvalgrind=disabled # only used for some tests
 		$(meson_feature yaml)
 	)
