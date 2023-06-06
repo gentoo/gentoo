@@ -441,7 +441,7 @@ each_fakegem_configure() {
 
 	tc-export PKG_CONFIG
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
-		CC=$(tc-getCC) ${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} --with-cflags="${CFLAGS}" --with-ldflags="${LDFLAGS}" ${RUBY_FAKEGM_EXTENSION_OPTIONS} || die
+		CC=$(tc-getCC) ${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} --with-cflags="${CFLAGS}" --with-ldflags="${LDFLAGS}" ${RUBY_FAKEGEM_EXTENSION_OPTIONS} || die
 	done
 }
 
