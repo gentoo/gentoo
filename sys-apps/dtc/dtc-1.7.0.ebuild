@@ -6,7 +6,7 @@ EAPI=8
 inherit meson
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/dtc/dtc.git"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/dtc/dtc.git"
 	inherit git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/software/utils/${PN}/${P}.tar.xz"
