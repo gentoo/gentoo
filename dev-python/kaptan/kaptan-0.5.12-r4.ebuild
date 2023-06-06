@@ -23,3 +23,9 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# remove pinned deps
+	> requirements/base.txt || die
+	distutils-r1_src_prepare
+}
