@@ -24,12 +24,16 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 
 RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
-	<dev-python/markdown-it-py-3[${PYTHON_USEDEP}]
 	>=dev-python/markdown-it-py-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.13.0[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i -e '/markdown-it-py/s:\^:>=:' pyproject.toml || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	local -x COLUMNS=80
