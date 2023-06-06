@@ -19,14 +19,14 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="X aqua freefonts truetype"
+IUSE="X aqua freefonts"
 REQUIRED_USE="?? ( X aqua )"
 
 DEPEND="
-	X? ( x11-apps/xauth )
-	truetype? (
+	X? (
 		media-libs/freetype
 		media-libs/fontconfig
+		x11-apps/xauth
 	)
 "
 RDEPEND="${DEPEND}"
@@ -94,19 +94,16 @@ src_configure() {
 	)
 
 	if use X; then
-		myconf+=( WSYSTYPE=x11 )
+		myconf+=(
+			WSYSTYPE=x11
+			FONTSRV=fontsrv
+		)
 	elif use aqua; then
 		local wsystype="$(awk '{if ($1 > 10.5) print "osx-cocoa"; else print "osx"}' \
 			<<< "${MACOSX_DEPLOYMENT_TARGET}")"
 		myconf+=( WSYSTYPE="${wsystype}" )
 	else
 		myconf+=( WSYSTYPE=nowsys )
-	fi
-
-	if use truetype; then
-		myconf+=( FONTSRV=fontsrv )
-	else
-		myconf+=( FONTSRV= )
 	fi
 
 	printf '%s\n' "${myconf[@]}" >> LOCAL.config ||
