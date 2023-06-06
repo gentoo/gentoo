@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXrender
 	gtk? (
-		dev-libs/atk
+		>=app-accessibility/at-spi2-core-2.46.0
 		dev-libs/glib
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:2
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-signals.patch
 	"${FILESDIR}"/${PN}-1.6.9-freetype_pkgconfig.patch
 	"${FILESDIR}"/${PN}-1.6.9-gcc12-time.patch
+	"${FILESDIR}"/${PN}-1.6.9-clang16-register-narrowing.diff
 )
 
 src_prepare() {
