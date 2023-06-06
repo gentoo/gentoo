@@ -55,6 +55,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.0-tests-pypy.patch
 	"${FILESDIR}"/${P}-py3.12-drop-deprecated-imp.patch
+	"${FILESDIR}"/${P}-py3.12-backport-unicode-fix.patch
 )
 
 python_check_deps() {
