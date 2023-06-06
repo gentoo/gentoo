@@ -4,6 +4,7 @@
 # Sam James <sam@gentoo.org> (2023-06-06)
 # Only available on Linux.
 dev-libs/libaio
+sys-libs/libseccomp
 
 # Sam James <sam@gentoo.org> (2022-09-10)
 # Mask in general and unmask on specific profiles
