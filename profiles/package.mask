@@ -475,6 +475,7 @@ dev-python/pyside6-tools
 >=app-editors/retext-8.0.0
 dev-python/PyQt6
 dev-python/PyQt6-WebEngine
+dev-qt/qt3d:6
 dev-qt/qt5compat:6
 dev-qt/qtbase:6
 dev-qt/qtcharts:6
