@@ -11,7 +11,7 @@ SRC_URI="https://github.com/pmem/ndctl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1 MIT CC0-1.0"
 SLOT="0/6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc libtracefs systemd test"
 
 DEPEND="
