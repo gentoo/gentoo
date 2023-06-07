@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -87,7 +87,7 @@ multilib_src_configure() {
 		--without-ikvm-native
 		--disable-dtrace
 		--enable-system-aot
-		$(use_with doc mcs-docs)
+		$(multilib_native_use_with doc mcs-docs)
 		$(use_enable nls)
 	)
 
