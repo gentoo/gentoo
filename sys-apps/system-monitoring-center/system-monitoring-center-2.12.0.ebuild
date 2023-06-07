@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hakandundar34coding/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
