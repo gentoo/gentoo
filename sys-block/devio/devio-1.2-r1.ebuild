@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Correctly read (or write) a region of a block device"
-HOMEPAGE="http://devio.sourceforge.net/"
+HOMEPAGE="https://devio.sourceforge.net/"
 SRC_URI="mirror://sourceforge/devio/${P}.tar.gz"
 
 LICENSE="MIT"
