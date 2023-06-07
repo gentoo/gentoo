@@ -73,7 +73,6 @@ inherit cargo bash-completion-r1
 DESCRIPTION="A fast, accurate, ergonomic emerge.log parser"
 HOMEPAGE="https://github.com/vincentdephily/emlop"
 SRC_URI="$(cargo_crate_uris)"
-RESTRICT="mirror"
 
 LICENSE="GPL-3"
 # Dependent crate licenses
@@ -83,7 +82,7 @@ LICENSE+="
 "
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64"
 
 DEPEND=">=virtual/rust-1.58.1"
 
