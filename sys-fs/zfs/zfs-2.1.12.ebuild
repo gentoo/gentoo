@@ -102,6 +102,9 @@ REQUIRED_USE="
 RESTRICT="test"
 
 PATCHES=(
+	# bug #854333
+	"${FILESDIR}"/2.1.5-r2-dracut-non-root.patch
+
 	"${FILESDIR}"/2.1.5-dracut-zfs-missing.patch
 )
 
