@@ -35,10 +35,10 @@ REQUIRED_USE="|| ( ${MY_COLOR_VARIANTS[*]} )"
 # not needed and slows us down, package installs 120 000 small files
 RESTRICT="binchecks strip test"
 
-# technically we can use app-arch/harlink too, but it's deprecated
+# technically we can use app-arch/hardlink too, but it's deprecated
 BDEPEND="
 	app-shells/bash
-	sys-apps/util-linux[hardlink(-)?]
+	hardlink? ( sys-apps/util-linux[hardlink(-)?] )
 "
 
 src_prepare() {
@@ -49,18 +49,13 @@ src_prepare() {
 
 src_install() {
 	local v variants=(
-		$(usev kde '-c')
 		$(for v in ${MY_COLOR_VARIANTS[@]}; do
 			usev ${v}
 		done)
+		$(usev kde '-c')
 	)
 
 	dodir /usr/share/icons
-
-	# FIXME: remove after merged
-	# https://github.com/vinceliuice/Tela-icon-theme/issues/223
-	rm -v links/scalable/apps/preferences-desktop-keyboard-shortcuts.svg || :
-
 	./install.sh -d "${ED}/usr/share/icons" "${variants[@]}" || die
 	if use hardlink; then
 		einfo "Linking duplicate icons... (may take a long time)"
