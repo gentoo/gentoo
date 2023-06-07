@@ -8,4 +8,7 @@
 	<use>
 		<flag name="libtracefs">Use <pkg>dev-libs/libtracefs</pkg> to build cxl-monitor binary</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">pmem/ndctl</remote-id>
+	</upstream>
 </pkgmetadata>
