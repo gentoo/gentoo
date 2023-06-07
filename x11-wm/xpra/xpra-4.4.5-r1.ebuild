@@ -14,6 +14,7 @@ fi
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_EXT=1
 
 inherit xdg xdg-utils distutils-r1 tmpfiles udev
 
