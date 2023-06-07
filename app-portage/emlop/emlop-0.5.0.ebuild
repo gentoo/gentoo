@@ -93,14 +93,14 @@ src_install() {
 	cargo_src_install
 	dodoc README.md CHANGELOG.md
 	# bash
-	./target/release/emlop complete bash > emlop || die
+	./target/$(usex debug debug release)/emlop complete bash > emlop || die
 	dobashcomp emlop
 	# zsh
-	./target/release/emlop complete zsh > _emlop || die
+	./target/$(usex debug debug release)/emlop complete zsh > _emlop || die
 	insinto /usr/share/zsh/site-functions
 	doins _emlop
 	# fish
-	./target/release/emlop complete fish > emlop.fish || die
+	./target/$(usex debug debug release)/emlop complete fish > emlop.fish || die
 	insinto /usr/share/fish/vendor_completions.d
 	doins emlop.fish
 }
