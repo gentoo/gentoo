@@ -76,6 +76,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-21.07.80-revert-disable-kpeople.patch"
 	"${FILESDIR}/${PN}-23.04.0-telephony-optional.patch" # bug 904823
+	"${FILESDIR}/${PN}-23.04.0-explicit-constructor-for-QSslCertificate.patch" #841416
 )
 
 src_configure() {
