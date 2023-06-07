@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ RESTRICT="binchecks strip test"
 # technically we can use app-arch/hardlink too, but it's deprecated
 BDEPEND="
 	app-shells/bash
-	sys-apps/util-linux[hardlink(-)?]
+	hardlink? ( sys-apps/util-linux[hardlink(-)?] )
 "
 
 src_prepare() {
