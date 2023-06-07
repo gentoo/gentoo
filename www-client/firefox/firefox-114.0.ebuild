@@ -57,7 +57,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
 
-KEYWORDS="~amd64 ~arm64 -ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 SLOT="rapid"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -925,14 +925,6 @@ src_configure() {
 			# Upstream only supports lld or mold when using clang.
 			if tc-ld-is-mold ; then
 				mozconfig_add_options_ac "using ld=mold due to system selection" --enable-linker=mold
-
-				# increase ulimit with mold+lto, bugs #892641, #907485
-				if ! ulimit -n 16384 1>/dev/null 2>&1 ; then
-					ewarn "Unable to modify ulimits - building with mold+lto might fail due to low ulimit -n resources."
-					ewarn "Please see bugs #892641 & #907485."
-				else
-					ulimit -n 16384
-				fi
 			else
 				mozconfig_add_options_ac "forcing ld=lld due to USE=clang and USE=lto" --enable-linker=lld
 			fi
@@ -1161,6 +1153,16 @@ src_configure() {
 
 src_compile() {
 	local virtx_cmd=
+
+	if tc-ld-is-mold && use lto; then
+		# increase ulimit with mold+lto, bugs #892641, #907485
+		if ! ulimit -n 16384 1>/dev/null 2>&1 ; then
+			ewarn "Unable to modify ulimits - building with mold+lto might fail due to low ulimit -n resources."
+			ewarn "Please see bugs #892641 & #907485."
+		else
+			ulimit -n 16384
+		fi
+	fi
 
 	if use pgo; then
 		# Reset and cleanup environment variables used by GNOME/XDG
