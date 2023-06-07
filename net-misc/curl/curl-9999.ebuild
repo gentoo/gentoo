@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/danielstenberg.asc
-inherit autotools multilib-minimal prefix verify-sig
+inherit autotools multilib-minimal multiprocessing prefix verify-sig
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.se/"
@@ -318,7 +318,10 @@ multilib_src_test() {
 	# Note: if needed, we can skip specific tests. See e.g. Fedora's packaging
 	# or just read https://github.com/curl/curl/tree/master/tests#run.
 	# Note: we don't run the testsuite for cross-compilation.
-	multilib_is_native_abi && emake test TFLAGS="-n -v -a -k -am -p"
+	# Upstream recommend 7*nproc as a starting point for parallel tests.
+	# The network sandbox causes tests 241 and 1083 to fail; these are typically skipped
+	# as most gentoo users don't have an 'ip6-localhost'
+	multilib_is_native_abi && emake test TFLAGS="-n -v -a -k -am -p -j$((7*$(makeopts_jobs))) !241 !1083"
 }
 
 multilib_src_install_all() {
