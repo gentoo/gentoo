@@ -28,7 +28,7 @@ RDEPEND="
 		dev-libs/wayland
 		|| (
 			dev-libs/openssl-compat:1.1.1
-			=dev-libs/openssl-1.1.1*
+			dev-libs/openssl:0/1.1
 		)
 		media-libs/tiff-compat:4
 		sys-libs/zlib
