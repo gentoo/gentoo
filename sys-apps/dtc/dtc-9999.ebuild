@@ -42,7 +42,10 @@ DOCS=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	if use python ; then
+		export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+		python-single-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
