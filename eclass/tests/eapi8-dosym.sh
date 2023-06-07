@@ -54,6 +54,7 @@ teq foo _dosym8_canonicalize foo/.
 teq ../foo _dosym8_canonicalize ../foo
 teq ../baz _dosym8_canonicalize foo/bar/../../../baz
 teq '*' _dosym8_canonicalize '*'
+teq '-e' _dosym8_canonicalize '-e'
 
 for f in ref_dosym_r "dosym8 -r"; do
 	teq ../../bin/foo ${f} /bin/foo /usr/bin/foo
