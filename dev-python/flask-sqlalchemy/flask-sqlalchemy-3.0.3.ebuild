@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=pdm
 PYPI_NO_NORMALIZE=1
 PYPI_PN="Flask-SQLAlchemy"
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
