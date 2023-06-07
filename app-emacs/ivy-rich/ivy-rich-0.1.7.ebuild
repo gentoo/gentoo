@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Yevgnen/${PN}/archive/${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="app-emacs/ivy"
 BDEPEND="${RDEPEND}"
