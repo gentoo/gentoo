@@ -31,7 +31,7 @@ esac
 _dosym8_canonicalize() {
 	local path slash i prev out IFS=/
 
-	read -r -d '' -a path <<< "$1"
+	read -r -d '' -a path < <(echo -n "$1")
 	[[ $1 == /* ]] && slash=/
 
 	while true; do
