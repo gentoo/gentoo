@@ -11,13 +11,9 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 TMPFILES_OPTIONAL=1
 
-# From 1.15.0 release notes:
-# "• Add a Meson build system. This is currently considered experimental,
-#  but the intention is for it to replace Autotools and/or CMake in future
-#  releases, preferably both. Please test!"
-# We haven't migrated to it yet as it's experimental but our elogind
-# patch needs adjusting too (and upstreaming, ideally!)
-# https://gitlab.freedesktop.org/dbus/dbus/-/blob/master/NEWS#L31
+# As of 1.15.6, the Meson build system is now recommended upstream, but we
+# can't use it because our elogind patch needs rebasing and submission upstream.
+# See bug #599494.
 inherit autotools flag-o-matic linux-info python-any-r1 readme.gentoo-r1 systemd tmpfiles virtualx multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
