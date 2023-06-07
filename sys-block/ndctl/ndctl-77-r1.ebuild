@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc libtracefs systemd test"
 
 DEPEND="
-	dev-libs/iniparser:0=
+	dev-libs/iniparser:4=
 	dev-libs/json-c:=
 	sys-apps/keyutils:=
 	sys-apps/kmod:=
