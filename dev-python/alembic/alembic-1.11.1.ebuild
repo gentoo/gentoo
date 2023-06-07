@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -28,6 +28,12 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	# setup.cfg contains -p no:warnings in addopts which triggers
+	# datetime.utcfromtimestamp() deprecation warning as an error in py3.12
+	epytest -o addopts=
+}
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/. )
