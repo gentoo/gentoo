@@ -10,7 +10,7 @@ EAPI=8
 # any subsequent ones linked within so you're covered for a while.)
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
-inherit toolchain-funcs verify-sig
+inherit toolchain-funcs verify-sig libtool
 
 DESCRIPTION="X.509 and CMS (PKCS#7) library"
 HOMEPAGE="https://www.gnupg.org/related_software/libksba"
@@ -32,6 +32,12 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-no-fgrep-ksba-config.patch
 )
+
+src_prepare() {
+	default
+
+	elibtoolize  # necessary on Solaris for shared lib support
+}
 
 src_configure() {
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
