@@ -51,6 +51,8 @@ BDEPEND="
 PATCHES=(
 	# Fix the paths in the munin plugin to match our install
 	"${FILESDIR}"/nsd_munin_.patch
+	# bug #907997
+	"${FILESDIR}"/${P}-no-bind8-stats-no-ssl.patch
 )
 
 src_prepare() {
