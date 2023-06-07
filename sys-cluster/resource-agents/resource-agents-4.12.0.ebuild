@@ -40,6 +40,7 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO: fix systemd automagic
 	# --with-ocf-root needs to be /usr/lib, see bug #720420
 	econf \
 		--disable-fatal-warnings \
@@ -58,6 +59,12 @@ src_install() {
 	rm -rf "${ED}"{,/var}/run || die
 
 	use rgmanager || rm -rf "${ED}"/usr/share/cluster/ "${ED}"/var/
+
+	if ! use systemd ; then
+		newtmpfiles - resource-agents.conf <<-EOF || die
+		d /var/run/resource-agents 1755 root root
+		EOF
+	fi
 }
 
 pkg_postinst() {
