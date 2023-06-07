@@ -99,7 +99,7 @@ RDEPEND="
 	x11-apps/xmodmap
 	ibus? ( app-i18n/ibus )
 	pinentry? ( app-crypt/pinentry )
-	trayicon? ( dev-libs/libappindicator:3 )
+	trayicon? ( dev-libs/libayatana-appindicator )
 	udev? ( virtual/udev )
 "
 DEPEND+="
