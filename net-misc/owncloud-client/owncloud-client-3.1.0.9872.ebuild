@@ -8,7 +8,7 @@ inherit cmake xdg
 MY_PN="ownCloud"
 REGRAPHAPI_PV="1.0.1"
 DESCRIPTION="Synchronize files from ownCloud Server with your computer"
-HOMEPAGE="https://owncloud.org/"
+HOMEPAGE="https://owncloud.com/"
 SRC_URI="https://download.owncloud.com/desktop/${MY_PN}/stable/${PV}/source/${MY_PN}-${PV}.tar.xz
 	https://github.com/owncloud/libre-graph-api-cpp-qt-client/archive/refs/tags/v${REGRAPHAPI_PV}.tar.gz
 		-> libregraphapi-${REGRAPHAPI_PV}.tar.gz"
