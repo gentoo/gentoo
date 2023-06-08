@@ -101,6 +101,11 @@ BDEPEND="
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
 
+PATCHES=(
+	# bug 746590
+	"${FILESDIR}/${PN}-flock.patch"
+)
+
 pkg_setup() {
 	if use lapack; then
 		local mylapack=$(eselect lapack show)
