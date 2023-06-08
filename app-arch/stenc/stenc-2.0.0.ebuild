@@ -21,7 +21,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 BDEPEND="
-	app-text/pandoc
+	virtual/pandoc
 	virtual/pkgconfig
 "
 
