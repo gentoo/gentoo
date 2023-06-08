@@ -9,7 +9,7 @@ DESCRIPTION="Implementation of the Double Ratchet cryptographic ratchet in C++"
 HOMEPAGE="https://gitlab.matrix.org/matrix-org/olm"
 SRC_URI="https://gitlab.matrix.org/matrix-org/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
-LICENSE="GPL-3"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
