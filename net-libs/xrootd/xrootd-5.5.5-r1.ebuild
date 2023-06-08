@@ -23,7 +23,12 @@ SRC_URI="https://xrootd.slac.stanford.edu/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="examples fuse http kerberos +libxml2 python readline +server systemd test xrdec"
+IUSE="examples fuse http kerberos +libxml2 macaroons python readline scitokens +server systemd test xrdec"
+
+REQUIRED_USE="
+		macaroons? ( server )
+		scitokens? ( server )
+"
 
 RESTRICT="!test? ( test )"
 
@@ -39,8 +44,10 @@ CDEPEND="acct-group/xrootd
 	)
 	kerberos? ( virtual/krb5 )
 	libxml2? ( dev-libs/libxml2:2= )
+	macaroons? ( dev-libs/libmacaroons )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
+	scitokens? ( dev-cpp/scitokens-cpp )
 	systemd? ( sys-apps/systemd:= )
 	xrdec? ( dev-libs/isa-l )
 "
@@ -98,10 +105,10 @@ src_configure() {
 		-DENABLE_FUSE=$(usex fuse)
 		-DENABLE_HTTP=$(usex http)
 		-DENABLE_KRB5=$(usex kerberos)
-		-DENABLE_MACAROONS=no
+		-DENABLE_MACAROONS=$(usex macaroons)
 		-DENABLE_PYTHON=$(usex python)
 		-DENABLE_READLINE=$(usex readline)
-		-DENABLE_SCITOKENS=no
+		-DENABLE_SCITOKENS=$(usex scitokens)
 		-DENABLE_TESTS=$(usex test)
 		-DENABLE_VOMS=no
 		-DENABLE_XRDCL=yes
