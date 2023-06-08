@@ -44,14 +44,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	# workaround minor py3.12 test failure
-	# (I wish we could just use EPYTEST_DESELECT here, sigh)
-	# https://gitlab.gnome.org/GNOME/pygobject/-/issues/582
-	sed -i -e 's@Item 0: @.*@' tests/test_gi.py || die
-
-	distutils-r1_src_prepare
-}
+PATCHES=(
+	# fix test failure on py3.12
+	# https://gitlab.gnome.org/GNOME/pygobject/-/commit/fe6aedd8eebd92844b873f72e99dc4023316c6f3
+	"${FILESDIR}/${P}-py312.patch"
+)
 
 python_configure() {
 	local emesonargs=(
