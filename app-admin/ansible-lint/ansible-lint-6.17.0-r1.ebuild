@@ -22,11 +22,12 @@ RESTRICT="test"
 
 RDEPEND="
 	>=app-admin/ansible-core-2.12.0[${PYTHON_USEDEP}]
-	>=dev-python/ansible-compat-2.2.7[${PYTHON_USEDEP}]
+	>=dev-python/ansible-compat-4.0.5[${PYTHON_USEDEP}]
 	>=dev-python/black-22.8.0[${PYTHON_USEDEP}]
 	>=dev-python/filelock-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.17.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
+	>=dev-python/pathspec-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP}]
 	>=dev-python/rich-12.0.0[${PYTHON_USEDEP}]
 	>=dev-python/ruamel-yaml-0.17.0[${PYTHON_USEDEP}]
