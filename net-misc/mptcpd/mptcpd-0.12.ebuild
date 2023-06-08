@@ -23,7 +23,7 @@ DEPEND="
 BDEPEND="
 	doc? (
 		app-doc/doxygen
-		app-text/pandoc
+		virtual/pandoc
 	)
 	virtual/pkgconfig
 	"
