@@ -21,4 +21,7 @@
 	<upstream>
 		<remote-id type="github">influxdata/influxdb</remote-id>
 	</upstream>
+	<use>
+		<flag name="cli">Pull in influx-cli</flag>
+	</use>
 </pkgmetadata>

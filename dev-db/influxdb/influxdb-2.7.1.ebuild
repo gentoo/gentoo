@@ -168,7 +168,7 @@ SRC_URI+=" $(cargo_crate_uris)"
 LICENSE="Apache-2.0 BSD BSD-2 EPL-2.0 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
+IUSE="test cli"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
@@ -179,6 +179,10 @@ COMMON_DEPEND="
 "
 
 DEPEND="${COMMON_DEPEND}"
+
+RDEPEND="
+	cli? ( dev-db/influx-cli )
+"
 
 src_unpack() {
 	cargo_src_unpack
