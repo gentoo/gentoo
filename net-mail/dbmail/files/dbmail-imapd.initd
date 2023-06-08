@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 
 BIN_DIR=/usr/sbin
@@ -37,12 +37,11 @@ start() {
 		--name dbmail-imapd \
 		-- -p ${PIDFILE} -f /etc/dbmail/dbmail.conf 2>&1
 	eend $?
-}	
+}
 
 stop() {
 	ebegin "Stopping DBMail IMAP daemon"
 	    start-stop-daemon --stop --quiet --retry 5 \
 		--pidfile ${PIDFILE}
 	eend $?
-}	
-
+}
