@@ -52,6 +52,12 @@ distutils_enable_sphinx docs/source \
 	dev-python/sphinx-rtd-theme \
 	dev-python/towncrier
 
+src_prepare() {
+	# strip +dev from version, as it is breaking poorly written packages
+	sed -i -e 's:+dev::' trio/_version.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local EPYTEST_IGNORE=(
 		# these tests require internet access
