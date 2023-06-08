@@ -57,6 +57,8 @@ DOCS=( authors.txt README TODO )
 
 S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
 
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.28.patch" ) # bug 906468
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	setup-wxwidgets
