@@ -39,10 +39,6 @@ BDEPEND="
 
 REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"
 
-# stripping rust may break it (at least on x86_64)
-# https://github.com/rust-lang/rust/issues/112286
-RESTRICT="strip"
-
 QA_PREBUILT="
 	opt/${P}/bin/.*
 	opt/${P}/lib/.*.so
@@ -208,6 +204,11 @@ multilib_src_install() {
 
 	# BUG: installs x86_64 binary on other arches
 	rm -f "${ED}/opt/${P}/lib/rustlib/"*/bin/rust-llvm-dwp || die
+
+	# libLLVM must NOT be stripped
+	# it's not present on all arches, but if present and stripped rustc will segfault.
+	# https://github.com/rust-lang/rust/issues/112286
+	dostrip -x *libLLVM-*
 }
 
 pkg_postinst() {
