@@ -69,6 +69,8 @@ BDEPEND="
 		test? (
 			dev-python/httmock[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
+
+			dev-python/pyside2[widgets,gui,multimedia,${PYTHON_USEDEP}]
 		)
 	')
 "
@@ -82,8 +84,6 @@ src_prepare() {
 
 	# Contains pre-built binaries for other systems and a broken swf renderer for linux
 	rm -r bin/ || die
-	# Build files used for CI and development, not actually needed
-	rm -r static/build_files static/requirements || die
 	# Python requirements file, not needed
 	rm requirements.txt || die
 	# Remove unneeded additional scripts
@@ -99,7 +99,7 @@ src_test() {
 	# The tests use unittest, but are run with a custom runner script.
 	# QT_QPA_PLATFORM is required to make them run without X
 	local -x QT_QPA_PLATFORM=offscreen
-	"${EPYTHON}" "${S}/test.py" || die "Tests failed"
+	"${EPYTHON}" "${S}/hydrus_test.py" || die "Tests failed"
 }
 
 src_install() {
@@ -114,8 +114,11 @@ src_install() {
 	einstalldocs
 
 	# Files only needed for testing
-	rm test.py hydrus/hydrus_test.py || die
+	rm hydrus_test.py hydrus/hydrus_test_boot.py || die
 	rm -r hydrus/test/ static/testing/ || die
+	# Build files used for CI and development, not actually needed. Has to be deleted after src_compile.
+	# because it contains documentation
+	rm -r static/build_files static/requirements || die
 
 	# ${DOCS[@]} files are copied into doc
 	# ${S}/docs/ is the markdown source code for documentation
