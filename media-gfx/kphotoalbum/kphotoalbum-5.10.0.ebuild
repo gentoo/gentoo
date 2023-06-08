@@ -57,6 +57,8 @@ RDEPEND="${DEPEND}
 
 DOCS=( CHANGELOG.{md,old} README.md )
 
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.28.patch" ) # git master, bug 906469
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_QtAV=ON # bug 758641, last-rited
