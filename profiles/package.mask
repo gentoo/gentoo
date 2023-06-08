@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-06-08)
+# May be broken on some arches due to weird LLVM interaction.
+# Masked for now.
+~dev-lang/rust-1.70.0
+~dev-lang/rust-bin-1.70.0
+~virtual/rust-1.70.0
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-06-06)
 # Vulnerable CVE-2023-33546, Bug #907927.
 # Reverse deps (logback-*, netty) are unused Java libraries.
