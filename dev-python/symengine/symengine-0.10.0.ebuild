@@ -27,7 +27,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 
 BDEPEND="
 	dev-util/cmake
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	test? (
 		dev-python/sympy[${PYTHON_USEDEP}]
 	)
