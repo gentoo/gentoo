@@ -140,12 +140,12 @@ DEPEND="${COMMON_DEPEND}
 		rombios? ( sys-devel/bin86 sys-devel/dev86 ) )
 	doc? (
 		app-text/ghostscript-gpl
-		app-text/pandoc
 		$(python_gen_cond_dep '
 			dev-python/markdown[${PYTHON_USEDEP}]
 		')
 		dev-texlive/texlive-latexextra
 		media-gfx/transfig
+		virtual/pandoc
 	)
 	hvm? ( x11-base/xorg-proto )
 	qemu? (
