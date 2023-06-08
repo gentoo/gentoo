@@ -16,6 +16,10 @@ KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-musl-1.2.4.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
