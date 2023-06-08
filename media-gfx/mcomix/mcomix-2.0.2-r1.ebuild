@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 optfeature xdg
 
 DESCRIPTION="GTK image viewer for comic book archives"
-HOMEPAGE="http://mcomix.sourceforge.net"
+HOMEPAGE="https://mcomix.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
