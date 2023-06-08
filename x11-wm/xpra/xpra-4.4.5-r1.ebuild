@@ -111,7 +111,7 @@ BDEPEND="
 		>=dev-python/cython-0.16[${PYTHON_USEDEP}]
 	')
 	virtual/pkgconfig
-	doc? ( app-text/pandoc )
+	doc? ( virtual/pandoc )
 "
 
 RESTRICT="!test? ( test )"
