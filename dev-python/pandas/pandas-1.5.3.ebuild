@@ -81,7 +81,6 @@ BDEPEND="
 	>=dev-python/cython-0.29.32[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
-		app-text/pandoc
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
@@ -97,6 +96,7 @@ BDEPEND="
 		dev-python/xlrd[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
+		virtual/pandoc
 		x11-misc/xclip
 	)
 	test? (
