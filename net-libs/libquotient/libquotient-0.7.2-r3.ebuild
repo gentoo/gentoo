@@ -17,9 +17,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/libqtolm
-	dev-libs/openssl:=
 	dev-libs/olm
+	dev-libs/openssl:=
 	dev-libs/qtkeychain:=[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
