@@ -95,3 +95,8 @@ multilib_src_configure() {
 
 	meson_src_configure
 }
+
+multilib_src_test() {
+	# harfbuzz:src / check-static-inits times out on hppa
+	meson_src_test --timeout-multiplier 5
+}
