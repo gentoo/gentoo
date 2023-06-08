@@ -168,7 +168,7 @@ SRC_URI+=" $(cargo_crate_uris)"
 LICENSE="Apache-2.0 BSD BSD-2 EPL-2.0 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test cli"
+IUSE="test +cli"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
@@ -231,4 +231,12 @@ src_install() {
 	newinitd "${FILESDIR}"/influxdb.initd influxdb
 	keepdir /var/log/influxdb
 	fowners influxdb:influxdb /var/log/influxdb
+}
+
+pkg_postinst() {
+	elog "Upgrading from InfluxDB1.x requires migration of time series data."
+	elog "See https://docs.influxdata.com/influxdb/v2.7/upgrade/v1-to-v2/"
+	elog "Keep in mind that some applications not compatible with InfluxDB 2.x may stop working."
+
+	ewarn "InfluxDB client has been moved to dev-db/influx-cli"
 }
