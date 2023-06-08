@@ -13,9 +13,10 @@ S="${WORKDIR}/libQuotient-${PV}"
 LICENSE="LGPL-2+"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	dev-libs/libqtolm
 	dev-libs/olm
 	dev-libs/qtkeychain:=[qt5(+)]
@@ -24,7 +25,12 @@ DEPEND="
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5[ssl]
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-qt/qtconcurrent:5
+		dev-qt/qttest:5
+	)
+"
 
 PATCHES=(
 	# downstream patches
@@ -35,8 +41,21 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WITH_QT6=OFF
-		-DBUILD_TESTING=OFF
+		-DBUILD_TESTING=$(usex test)
 		-DQuotient_ENABLE_E2EE=ON
 	)
+	use test && mycmakeargs+=(
+		-DQuotient_INSTALL_TESTS=OFF
+	)
 	cmake_src_configure
+}
+
+src_test() {
+	# https://github.com/quotient-im/libQuotient/issues/435
+	# testolmaccount requires network connection/server set up
+	local myctestargs=(
+		-j1
+		-E "(testolmaccount)"
+	)
+	cmake_src_test
 }
