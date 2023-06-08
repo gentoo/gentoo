@@ -75,6 +75,7 @@ src_compile() {
 	local modlist=(
 		v4l2loopback-dc=video:v4l2loopback:v4l2loopback:all
 	)
+	export KERNEL_DIR || die
 	linux-mod-r1_src_compile
 }
 
