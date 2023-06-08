@@ -100,7 +100,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.1_libxcf-cmake.patch
 	"${FILESDIR}"/${PN}-4.2.1_cmake-musl.patch
 	# patch by ArchLinux
-        "${FILESDIR}"/${P}-exiv2-0.28.patch
+	"${FILESDIR}"/${P}-exiv2-0.28.patch # bug 906466
 )
 
 S="${WORKDIR}/${P/_/~}"
