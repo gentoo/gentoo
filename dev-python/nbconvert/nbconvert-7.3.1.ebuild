@@ -85,7 +85,7 @@ python_test() {
 }
 
 pkg_postinst() {
-	if ! has_version app-text/pandoc && ! has_version app-text/pandoc-bin; then
+	if ! has_version virtual/pandoc; then
 		einfo "Pandoc is required for converting to formats other than Python,"
 		einfo "HTML, and Markdown. If you need this functionality, install"
 		einfo "app-text/pandoc or app-text/pandoc-bin."
