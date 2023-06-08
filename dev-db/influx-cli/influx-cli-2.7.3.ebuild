@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit go-module
+inherit bash-completion-r1 go-module
 MY_PV="${PV/_rc/-rc.}"
 
 DESCRIPTION="The command line for influxdb"
@@ -11,12 +11,11 @@ HOMEPAGE="https://github.com/influxdata/influx-cli"
 SRC_URI="https://github.com/influxdata/influx-cli/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
 RESTRICT+=" test"
-
 
 src_compile() {
 	unset LDFLAGS
@@ -25,4 +24,11 @@ src_compile() {
 
 src_install() {
 	dobin bin/$(go env GOOS)/$(go env GOARCH)/influx
+
+	influx completion zsh > zsh-compl || die
+	insinto /usr/share/zsh/site-functions
+	newins zsh-compl _influx
+
+	influx completion bash > bash-compl || die
+	newbashcomp bash-compl "${PN}"
 }
