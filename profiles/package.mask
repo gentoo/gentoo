@@ -36,6 +36,7 @@
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-06-08)
 # May be broken on some arches due to weird LLVM interaction.
 # Masked for now.
+# https://github.com/rust-lang/rust/issues/112286
 ~dev-lang/rust-1.70.0
 ~dev-lang/rust-bin-1.70.0
 ~virtual/rust-1.70.0
