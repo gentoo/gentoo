@@ -74,7 +74,6 @@ python_check_deps() {
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
 		git-r3_src_unpack
-		S="${S}/rust-src/bch_bindgen" cargo_live_src_unpack
 		S="${S}/rust-src" cargo_live_src_unpack
 	else
 		default
