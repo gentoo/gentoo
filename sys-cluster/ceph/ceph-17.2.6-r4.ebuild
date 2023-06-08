@@ -51,7 +51,6 @@ DEPEND="
 	dev-libs/crypto++:=
 	dev-cpp/gflags:=
 	dev-lang/jsonnet:=
-	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
 	<dev-libs/libfmt-10:=
 	dev-libs/libnl:3=
