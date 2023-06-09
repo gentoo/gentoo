@@ -60,7 +60,7 @@ BDEPEND="
 	fcitx4? ( sys-devel/gettext )
 "
 DEPEND="
-	dev-cpp/abseil-cpp:=[cxx17(+)]
+	>=dev-cpp/abseil-cpp-20211102.0-r2:=[cxx17(+)]
 	>=dev-libs/protobuf-3.0.0:=
 	fcitx4? (
 		app-i18n/fcitx:4
@@ -87,7 +87,7 @@ DEPEND="
 		dev-libs/jsoncpp
 	)"
 RDEPEND="
-	dev-cpp/abseil-cpp:=[cxx17(+)]
+	>=dev-cpp/abseil-cpp-20211102.0-r2:=[cxx17(+)]
 	>=dev-libs/protobuf-3.0.0:=
 	emacs? ( app-editors/emacs:* )
 	fcitx4? (
