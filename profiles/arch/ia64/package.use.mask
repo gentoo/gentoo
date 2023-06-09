@@ -30,10 +30,6 @@ dev-python/nbval doc
 # Unkeyworded dependencies
 dev-util/diffoscope opendocument pascal pdf R
 
-# Florian Schmaus <flow@gentoo.org> (2022-11-23)
-# avoid larger deptree, bug #882593
-dev-python/bracex doc
-
 # matoro <matoro_gentoo@matoro.tk> (2022-09-30)
 # No ruby on ia64 for dev-ruby/asciidoctor
 net-misc/chrony html

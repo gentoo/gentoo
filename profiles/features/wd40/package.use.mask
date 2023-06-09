@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-06-09)
+# Deps on several mkdocs plugins (#882593)
+dev-python/bracex doc
+
 # Matt Turner <mattst88@gentoo.org> (2023-05-12)
 # The Rusticl OpenCL state tracker requires rust
 >=media-libs/mesa-23.1 opencl
