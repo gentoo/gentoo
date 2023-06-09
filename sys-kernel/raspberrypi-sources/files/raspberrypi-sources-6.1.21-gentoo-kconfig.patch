@@ -1,0 +1,13 @@
+--- a/drivers/base/firmware_loader/Kconfig
++++ b/drivers/base/firmware_loader/Kconfig
+@@ -75,6 +75,7 @@ config EXTRA_FIRMWARE_DIR
+ 
+ config FW_LOADER_USER_HELPER
+ 	bool "Enable the firmware sysfs fallback mechanism"
++	depends on !GENTOO_LINUX_INIT_SYSTEMD
+ 	select FW_LOADER_SYSFS
+ 	select FW_LOADER_PAGED_BUF
+ 	help
+-- 
+2.41.0
+
