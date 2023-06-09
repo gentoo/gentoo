@@ -34,6 +34,10 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-20230125.2-musl-1.2.4.patch #906218
+)
+
 src_prepare() {
 	cmake_src_prepare
 
