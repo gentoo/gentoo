@@ -29,11 +29,12 @@ SRC_URI="
 
 KEYWORDS="~arm ~arm64"
 
-PATCHES=("${FILESDIR}"/${PN}-5.15.32-gentoo-kconfig.patch)
+PATCHES=("${FILESDIR}"/${PN}-6.1.21-gentoo-kconfig.patch)
 
 UNIPATCH_EXCLUDE="
 	10*
 	15*
+	1700
 	2000
 	29*
 	3000
