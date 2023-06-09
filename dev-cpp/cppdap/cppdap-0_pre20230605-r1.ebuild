@@ -20,6 +20,9 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+RDEPEND="dev-cpp/nlohmann_json"
+DEPEND="${RDEPEND}"
+
 src_prepare() {
 	if use test ; then
 		rm -rf "${S}"/third_party/googletest || die
