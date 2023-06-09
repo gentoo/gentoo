@@ -74,12 +74,7 @@ src_prepare() {
 		done
 	fi
 
-	if use arm64; then
-		patchelf --replace-needed libc.so libc.so.6 "${S}"/lib/pty4j-native/linux/aarch64/libpty.so ||
-			die "Unable to patch libpty for libc"
-	else
-		rm -vf "${S}"/lib/pty4j-native/linux/{aarch64,arm,x86}/libpty.so
-	fi
+	rm -vf "${S}"/lib/pty4j-native/linux/x86-64/libpty.so
 
 	sed -i \
 		-e "\$a\\\\" \
