@@ -13,6 +13,7 @@
 		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
 		<flag name="gui">Install graphical user interface tool (mozc_tool)</flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
+		<flag name="mozcdic-ut">Enable support for Mozc UT Dictionaries. Must be placed at compile time at /tmp/mozcdic-ut.txt</flag>
 		<flag name="renderer">Enable native candidate window</flag>
 	</use>
 	<upstream>
