@@ -93,8 +93,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS NEWS README.md RELEASE )
 
-# Fixes backported to 1.20.1, to be removed in 1.20.2+
 PATCHES=(
+	"${FILESDIR}"/${P}-libs_allocators.patch
 )
 
 multilib_src_configure() {
