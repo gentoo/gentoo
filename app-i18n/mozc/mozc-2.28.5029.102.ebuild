@@ -5,7 +5,7 @@ EAPI="8"
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit edo elisp-common multiprocessing python-any-r1 toolchain-funcs desktop xdg
+inherit desktop edo elisp-common multiprocessing python-any-r1 savedconfig toolchain-funcs xdg
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -46,18 +46,21 @@ fi
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="debug emacs fcitx4 +gui ibus renderer test mozcdic-ut"
+IUSE="debug emacs fcitx4 +gui ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus )"
 RESTRICT="!test? ( test )"
 
-BDEPEND="$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
+BDEPEND="
+	$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	>=dev-libs/protobuf-3.0.0
 	dev-util/gyp
 	dev-util/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
-	fcitx4? ( sys-devel/gettext )"
-DEPEND="dev-cpp/abseil-cpp:=[cxx17(+)]
+	fcitx4? ( sys-devel/gettext )
+"
+DEPEND="
+	dev-cpp/abseil-cpp:=[cxx17(+)]
 	>=dev-libs/protobuf-3.0.0:=
 	fcitx4? (
 		app-i18n/fcitx:4
@@ -83,7 +86,8 @@ DEPEND="dev-cpp/abseil-cpp:=[cxx17(+)]
 		>=dev-cpp/gtest-1.8.0
 		dev-libs/jsoncpp
 	)"
-RDEPEND="dev-cpp/abseil-cpp:=[cxx17(+)]
+RDEPEND="
+	dev-cpp/abseil-cpp:=[cxx17(+)]
 	>=dev-libs/protobuf-3.0.0:=
 	emacs? ( app-editors/emacs:* )
 	fcitx4? (
@@ -105,7 +109,8 @@ RDEPEND="dev-cpp/abseil-cpp:=[cxx17(+)]
 		x11-libs/cairo
 		x11-libs/gtk+:2
 		x11-libs/pango
-	)"
+	)
+"
 
 S="${WORKDIR}/${P}/src"
 
@@ -116,7 +121,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version -b "dev-python/six[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/six[${PYTHON_USEDEP}]"
 }
 
 src_unpack() {
@@ -189,15 +194,11 @@ src_prepare() {
 		-e "/'-stdlib=libc++'/d" \
 		-i gyp/common.gypi || die
 
-	# Add mozcdic-ut
-	if use mozcdic-ut; then
-		if [ ! -f "${BROOT}"/tmp/mozcdic-ut.txt ]; then
-			ewarn "No mozcdic-ut.txt found. Please place your customized mozcdic-ut.txt in /tmp/.";
-			die
-		else
-			einfo "mozcdic-ut.txt found. Adding to mozc dictionary..."
-			cat "${BROOT}"/tmp/mozcdic-ut.txt >> "${WORKDIR}/${P}/src/data/dictionary_oss/dictionary00.txt" || die
-		fi
+	# bug #877765
+	restore_config mozcdic-ut.txt
+	if [[ -f /mozcdic-ut.txt && -s mozcdic-ut.txt ]]; then
+		einfo "mozcdic-ut.txt found. Adding to mozc dictionary..."
+		cat mozcdic-ut.txt >> "${WORKDIR}/${P}/src/data/dictionary_oss/dictionary00.txt" || die
 	fi
 }
 
@@ -286,6 +287,8 @@ src_test() {
 src_install() {
 	exeinto /usr/libexec/mozc
 	doexe out_linux/${BUILD_TYPE}/mozc_server
+
+	[[ -s mozcdic-ut.txt ]] && save_config mozcdic-ut.txt
 
 	if use gui; then
 		doexe out_linux/${BUILD_TYPE}/mozc_tool
