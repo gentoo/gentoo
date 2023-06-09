@@ -31,9 +31,6 @@ RDEPEND="
 BDEPEND="
 	app-arch/unzip
 	dev-lang/swig:0
-	test? (
-		dev-python/doctest-ignore-unicode[${PYTHON_USEDEP}]
-	)
 "
 
 distutils_enable_tests pytest
