@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-06-09)
+# dev-cpp/cppdap is not keyworded on most arches
+dev-util/cmake -debugger
+
 # Sam James <sam@gentoo.org> (2023-05-15)
 # net-libs/rustls-ffi is keyworded here
 www-servers/apache -apache2_modules_tls
