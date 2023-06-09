@@ -39,13 +39,6 @@
 # Removal on 2023-07-09.  Bug #888245.
 dev-python/doctest-ignore-unicode
 
-# Sam James <sam@gentoo.org> (2023-06-09)
-# Severe security vulnerability: executes arbitrary code returned in responses
-# from the server. Appears a CA is abusing that acme-sh uses eval.
-# Please see https://github.com/acmesh-official/acme.sh/issues/4659 and
-# https://bugs.gentoo.org/908104.
-app-crypt/acme-sh
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-06-08)
 # May be broken on some arches due to weird LLVM interaction.
 # Masked for now.
