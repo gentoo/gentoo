@@ -24,19 +24,21 @@ DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in 
 HOMEPAGE="https://crawl.develz.org"
 SLOT="0.30"
 
-COMMITSHA="acf32f4bd3330cf0c882ac39c3e11ce40d587b49"
-MY_P="crawl-${COMMITSHA}/crawl-ref"
-IS_RELEASE=true
-
-if [ "${IS_RELEASE}" = true ]; then
+# Leave empty string if not a _pre release
+COMMITSHA=""
+if [ -z "${COMMITSHA}" ]; then
+	# This is a tagged release
+	# Note the archive URI and file layout changed upstream between 0.29.0 and 0.29.1
 	SRC_URI="
 		https://github.com/crawl/crawl/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	"
+	MY_P="crawl-${PV}/crawl-ref"
 else
 	# This is a _pre release
 	SRC_URI="
 		https://github.com/crawl/crawl/archive/${COMMITSHA}.tar.gz -> ${P}.tar.gz
 	"
+	MY_P="crawl-${COMMITSHA}/crawl-ref"
 fi
 SRC_URI="
 	${SRC_URI}
