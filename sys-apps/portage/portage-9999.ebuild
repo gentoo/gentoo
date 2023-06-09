@@ -61,12 +61,12 @@ RDEPEND="
 	>=sys-apps/baselayout-2.9
 	>=sys-apps/findutils-4.4
 	!build? (
-		>=sys-apps/sed-4.0.5
-		>=app-shells/bash-5.0:0[readline]
 		>=app-admin/eselect-1.2
+		>=app-shells/bash-5.0:0[readline]
+		>=sys-apps/sed-4.0.5
+		>=sec-keys/openpgp-keys-gentoo-release-20230329
 		rsync-verify? (
 			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
-			>=sec-keys/openpgp-keys-gentoo-release-20220101
 			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		)
 	)
