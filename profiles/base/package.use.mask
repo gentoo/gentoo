@@ -83,10 +83,6 @@ sci-libs/vtk debug
 sys-libs/libomp llvm_targets_AMDGPU
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-21)
-# media-libs/libextractor is masked for removal.
-media-plugins/vdr-xineliboutput libextractor
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-21)
 # media-libs/qtav is masked for removal.
 media-gfx/digikam mediaplayer
 media-gfx/kphotoalbum qtav
