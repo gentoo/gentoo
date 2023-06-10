@@ -6,7 +6,7 @@ EAPI=8
 CRATES=" "
 inherit cargo
 
-DESCRIPTION="C library for pkgcraft"
+DESCRIPTION="pkgcraft-based tools for Gentoo"
 HOMEPAGE="https://pkgcraft.github.io/"
 
 if [[ ${PV} == 9999 ]] ; then
