@@ -437,7 +437,7 @@ multilib_src_install() {
 	# (also drop the version suffix from runtime headers)
 	rm -rf "${ED}"/usr/include || die
 	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include "${ED}"/usr/include || die
-	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/clang "${ED}"/usr/include/clangrt || die
+	mv "${ED}"/usr/lib/clang "${ED}"/usr/include/clangrt || die
 	if multilib_native_use extra; then
 		# don't wrap clang-tidy headers, the list is too long
 		# (they're fine for non-native ABI but enabling the targets is problematic)
