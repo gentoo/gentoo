@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod
+inherit flag-o-matic linux-mod
 
 DESCRIPTION="OpenVPN Data Channel Offload in the linux kernel"
 HOMEPAGE="https://github.com/OpenVPN/ovpn-dco"
@@ -35,6 +35,13 @@ pkg_setup() {
 		CRYPTO_CHACHA20POLY1305"
 
 	linux-mod_pkg_setup
+}
+
+src_configure() {
+	# Causes build failures because it builds with -pg,
+	# bug #907744
+	filter-flags -fomit-frame-pointer
+	default
 }
 
 src_compile() {
