@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 LLVM_MAX_SLOT=16
 inherit toolchain-funcs llvm optfeature python-single-r1
 
@@ -25,8 +25,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # This isn't compatible with sandbox
 RESTRICT="test"
 
-# It turns out we need Clang too
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	>=sys-devel/llvm-13:=
 	|| (
 		sys-devel/clang:13
@@ -34,8 +34,10 @@ RDEPEND="${PYTHON_DEPS}
 		sys-devel/clang:${LLVM_MAX_SLOT}
 	)
 	!app-forensics/afl"
-DEPEND="${RDEPEND}
-	test? ( dev-util/cmocka )"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-util/cmocka )
+"
 
 QA_FLAGS_IGNORED="afl-gcc-cmplog-pass.so afl-gcc-cmptrs-pass.so"
 QA_PREBUILT="usr/share/afl/testcases/others/elf/small_exec.elf"
