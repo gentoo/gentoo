@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
+# Requires media-libs/opencolorio, broken on x86, bug #884115
+color-management
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
