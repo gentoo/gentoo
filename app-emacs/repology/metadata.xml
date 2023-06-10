@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package provides tools to query Repology API, process results, and
+    display them. The results of a query revolve around three types of objects:
+    projects, packages and problems. Using this library, you can find projects
+    matching certain criteria, packages in a given project, and possible
+    problems in some repository.
+  </longdescription>
+</pkgmetadata>
