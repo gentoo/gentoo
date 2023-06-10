@@ -273,9 +273,11 @@ xorg-3_src_unpack() {
 xorg-3_reconf_source() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${XORG_EAUTORECONF} != no && ( -e "./configure.ac" || -e "./configure.in" ) ]] && XORG_EAUTORECONF=yes
-	[[ ${XORG_EAUTORECONF} != no ]] && eautoreconf
-	elibtoolize --patch-only
+	if [[ ${XORG_EAUTORECONF} != no ]] ; then
+		eautoreconf
+	else
+		elibtoolize --patch-only
+	fi
 }
 
 # @FUNCTION: xorg-3_src_prepare
