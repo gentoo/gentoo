@@ -403,8 +403,8 @@ cargo_live_src_unpack() {
 
 	# Users may have git checkouts made by cargo.
 	# While cargo vendors the sources, it still needs git checkout to be present.
-	# Copying full dir is an overkill, so just symlink it.
-	if [[ -d ${ECARGO_REGISTRY_DIR}/git ]]; then
+	# Copying full dir is overkill, so just symlink it (guard w/ -L to keep idempotent).
+	if [[ -d ${ECARGO_REGISTRY_DIR}/git && ! -L "${ECARGO_HOME}/git" ]]; then
 		ln -sv "${ECARGO_REGISTRY_DIR}/git" "${ECARGO_HOME}/git" || die
 	fi
 
