@@ -8,7 +8,7 @@ MY_P=${P/projectc/ProjectC}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="An IDE for GNUstep"
-HOMEPAGE="http://www.gnustep.org/experience/ProjectCenter.html"
+HOMEPAGE="https://gnustep.github.io/experience/ProjectCenter.html"
 SRC_URI="https://github.com/gnustep/apps-projectcenter/releases/download/projectcenter-${PV//./_}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~ppc ~x86"
