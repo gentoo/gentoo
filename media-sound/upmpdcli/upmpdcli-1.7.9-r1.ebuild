@@ -30,6 +30,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/makefile.patch
+	"${FILESDIR}"/configure.patch
 )
 
 src_prepare() {
@@ -38,6 +39,8 @@ src_prepare() {
 }
 
 src_configure() {
+
+	eautoconf
 
 	./configure \
 		--prefix=/usr \
