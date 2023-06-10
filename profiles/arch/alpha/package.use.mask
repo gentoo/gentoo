@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-10)
+# Requires virtual/pandoc.
+dev-python/nbval doc
+dev-python/nbclassic doc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-10)
 # sys-cluster/ceph not keyworded here
 sys-block/tgt rbd
 
