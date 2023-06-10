@@ -39,7 +39,8 @@ RDEPEND="${DEPEND}
 	acct-user/pdns
 	acct-group/pdns"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )"
 
 S="${WORKDIR}"/${P/_/-}
