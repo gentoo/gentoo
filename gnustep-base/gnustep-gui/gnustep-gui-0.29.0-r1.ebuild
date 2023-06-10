@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit gnustep-base multilib virtualx
 
 DESCRIPTION="Library of GUI classes written in Obj-C"
-HOMEPAGE="http://www.gnustep.org/"
+HOMEPAGE="https://gnustep.github.io/"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
