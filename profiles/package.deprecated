@@ -32,11 +32,6 @@ media-plugins/gst-plugins-libmms
 # Possibly adding version constraints if package declares them.
 virtual/python-cffi
 
-# Michał Górny <mgorny@gentoo.org> (2023-04-26)
-# Renamed upstream to dev-python/pypdf.  Since Python modules were
-# renamed as well, projects need to update their imports.
-dev-python/PyPDF2
-
 # Sam James <sam@gentoo.org> (2023-04-07)
 # Inactive upstream, doesn't support newer Rubies.
 # Please port your package to use dev-ruby/erubis instead.

@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-06-10)
+# Renamed to dev-python/pypdf.  No revdeps left.
+# Removal on 2023-07-10.  Bug #908227.
+dev-python/PyPDF2
+
 # Michał Górny <mgorny@gentoo.org> (2023-06-09)
 # Requires dev-python/nose.  Last activity in 2013.  No reverse
 # dependencies left.
