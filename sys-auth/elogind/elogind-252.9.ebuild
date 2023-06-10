@@ -56,7 +56,6 @@ PATCHES=(
 	"${FILESDIR}/${P}-nodocs.patch"
 )
 
-
 python_check_deps() {
 	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
