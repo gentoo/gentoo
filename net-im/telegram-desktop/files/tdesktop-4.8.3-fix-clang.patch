@@ -1,0 +1,52 @@
+Fix build issues with clang
+
+/var/tmp/portage/net-im/telegram-desktop-4.8.3/work/tdesktop-4.8.3-full/Telegram/lib_base/base/platform/linux/base_system_media_controls_linux.cpp:198:4: error: reference to 'GObject' is ambiguous
+                        GObject::Object,
+                        ^
+/usr/include/glib-2.0/gobject/gobject.h:192:42: note: candidate found by name lookup is 'GObject'
+typedef struct _GObject                  GObject;
+                                         ^
+/var/tmp/portage/net-im/telegram-desktop-4.8.3/work/tdesktop-4.8.3-full_build/gen/gobject/_functions_impl.hpp:10:11: note: candidate found by name lookup is 'gi::repository::GObject'
+namespace GObject {
+          ^
+--- tdesktop-4.8.3-full.orig/Telegram/lib_base/base/platform/linux/base_system_media_controls_linux.cpp
++++ tdesktop-4.8.3-full/Telegram/lib_base/base/platform/linux/base_system_media_controls_linux.cpp
+@@ -195,7 +195,7 @@
+ 	player().set_loop_status("None");
+ 	player().set_rate(1.0);
+ 	const auto executeCommand = [=](
+-			GObject::Object,
++			gi::repository::GObject::Object,
+ 			Gio::DBusMethodInvocation invocation) {
+ 		base::Integration::Instance().enterFromEventLoop([&] {
+ 			_commandRequests.fire_copy(
+@@ -232,23 +232,23 @@
+ 		return true;
+ 	});
+ 	player().property_loop_status().signal_notify().connect([=](
+-			GObject::Object,
+-			GObject::ParamSpec) {
++			gi::repository::GObject::Object,
++			gi::repository::GObject::ParamSpec) {
+ 		base::Integration::Instance().enterFromEventLoop([&] {
+ 			_commandRequests.fire_copy(
+ 				LoopStatusToCommand(player().get_loop_status()));
+ 		});
+ 	});
+ 	player().property_shuffle().signal_notify().connect([=](
+-			GObject::Object,
+-			GObject::ParamSpec) {
++			gi::repository::GObject::Object,
++			gi::repository::GObject::ParamSpec) {
+ 		base::Integration::Instance().enterFromEventLoop([&] {
+ 			_commandRequests.fire_copy(Command::Shuffle);
+ 		});
+ 	});
+ 	player().property_volume().signal_notify().connect([=](
+-			GObject::Object,
+-			GObject::ParamSpec) {
++			gi::repository::GObject::Object,
++			gi::repository::GObject::ParamSpec) {
+ 		base::Integration::Instance().enterFromEventLoop([&] {
+ 			_volumeChangeRequests.fire_copy(player().get_volume());
+ 		});
