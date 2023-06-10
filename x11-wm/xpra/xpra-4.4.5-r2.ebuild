@@ -117,8 +117,7 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-xdummy.patch
-	"${FILESDIR}"/${PN}-9999-tests.patch
+	"${FILESDIR}"/${PN}-4.4-xdummy.patch
 )
 
 python_prepare_all() {
@@ -145,7 +144,6 @@ python_configure_all() {
 	DISTUTILS_ARGS=(
 		--without-PIC
 		--without-Xdummy
-		$(use_with sound audio)
 		$(use_with client)
 		$(use_with clipboard)
 		$(use_with csc csc_swscale)
@@ -169,6 +167,7 @@ python_configure_all() {
 		$(use_with opengl)
 		$(use_with server shadow)
 		$(use_with server)
+		$(use_with sound)
 		--without-strict
 		$(use_with vpx)
 		--with-warn
