@@ -27,5 +27,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-oletange-20210423 )"
 
 src_configure() {
+	# bug #908214
+	unset PARALLEL_HOME
+
 	econf --docdir="${EPREFIX}"/usr/share/doc/${PF}/html
 }
