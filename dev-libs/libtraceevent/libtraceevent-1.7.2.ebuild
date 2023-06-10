@@ -18,13 +18,18 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!<dev-util/trace-cmd-3.0
 "
 BDEPEND="
-	doc? ( app-text/xmlto app-text/asciidoc )
+	doc? (
+		app-text/asciidoc
+		app-text/xmlto
+	)
+	test? ( dev-util/cunit )
 "
 
 src_configure() {
@@ -39,7 +44,11 @@ src_configure() {
 
 src_compile() {
 	emake "${EMAKE_FLAGS[@]}"
-	use doc && emake doc
+	use doc && emake "${EMAKE_FLAGS[@]}" doc
+}
+
+src_test() {
+	emake "${EMAKE_FLAGS[@]}" test
 }
 
 src_install() {
