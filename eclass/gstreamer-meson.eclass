@@ -88,6 +88,16 @@ opencv"
 		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
 hls"
 	fi
+
+	# See bug #907483
+	if grep -q "option('qt5'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+qt5"
+	fi
+	if grep -q "option('qt6'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+qt6"
+	fi
 }
 
 # @FUNCTION: gstreamer_system_package
