@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.74
 	)
 	pulseaudio? (
 		>=media-libs/libmatemixer-1.10[pulseaudio]
-		>=media-sound/pulseaudio-0.9.15
+		media-libs/libpulse
 	)
 	smartcard? ( >=dev-libs/nss-3.11.2 )
 	sound? (
