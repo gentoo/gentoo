@@ -25,6 +25,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 DEPEND="
+	<dev-cpp/rapidfuzz-cpp-2
 	>=dev-cpp/rapidfuzz-cpp-1.7.0
 "
 RDEPEND="
