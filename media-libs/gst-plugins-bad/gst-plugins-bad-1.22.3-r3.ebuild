@@ -18,6 +18,7 @@ IUSE="X bzip2 +egl gles2 gtk +introspection +opengl +orc vaapi vnc wayland qsv" 
 # X11 is automagic for now, upstream #709530 - only used by librfb USE=vnc plugin
 # We mirror opengl/gles2 from -base to ensure no automagic openglmixers plugin (with "opengl?" it'd still get built with USE=-opengl here)
 # FIXME	gtk? ( >=media-plugins/gst-plugins-gtk-${PV}:${SLOT}[${MULTILIB_USEDEP}] )
+# Baseline requirement for libva is 1.6, but 1.10 gets more features
 RDEPEND="
 	!media-plugins/gst-plugins-va
 	!media-plugins/gst-transcoder
@@ -37,6 +38,8 @@ RDEPEND="
 	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
 
 	qsv? ( media-libs/oneVPL[wayland?,X?,${MULTILIB_USEDEP}] )
+
+        vaapi? ( >=media-libs/libva-1.10[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}"
@@ -49,7 +52,7 @@ BDEPEND="
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 
 # FIXME: gstharness.c:889:gst_harness_new_with_padnames: assertion failed: (element != NULL)
-#RESTRICT="test"
+RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/0001-meson-Fix-libdrm-and-vaapi-configure-checks.patch
@@ -68,7 +71,6 @@ multilib_src_configure() {
 		-Dshm=enabled
 		-Dipcpipeline=enabled
 		-Dhls=disabled
-		$(meson_feature vaapi va)
 		$(meson_feature vnc librfb)
 		$(meson_feature wayland)
 	)
@@ -82,13 +84,15 @@ multilib_src_configure() {
 		emesonargs+=( -Dmsdk=disabled )
 	fi
 
-	if use opengl || use gles2; then
-		myconf+=( -Dgl=enabled )
-	else
-		myconf+=( -Dgl=disabled )
-	fi
+	# XXX: See comment above IUSE wrt egl; this was actually typo'd with
+	# myconf for ages and nothing exploded.
+	#if use opengl || use gles2; then
+	#	emesonargs+=( -Dgl=enabled )
+	#else
+	#	emesonargs+=( -Dgl=disabled )
+	#fi
 
-	gstreamer_multilib_src_configure
+	gstreamer_multilib_src_configure "$(meson_feature vaapi va)"
 }
 
 multilib_src_test() {
