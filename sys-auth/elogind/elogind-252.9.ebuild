@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{10..11} )
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_BRANCH="v241-stable"
+	EGIT_BRANCH="v252-stable"
 	EGIT_REPO_URI="https://github.com/elogind/elogind.git"
 	inherit git-r3
 else
