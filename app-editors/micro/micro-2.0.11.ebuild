@@ -17,9 +17,9 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 BDEPEND="dev-vcs/git"
 
 src_compile() {
-	go build -v -work -x -o ${PN} -ldflags \
+	ego build -v -work -x -o ${PN} -ldflags \
 		"-X github.com/zyedidia/micro/v2/internal/util.Version=${PV} -X github.com/zyedidia/micro/v2/internal/util.CompileDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-		./cmd/micro || die
+		./cmd/micro
 }
 
 src_install() {
