@@ -4,7 +4,8 @@
 EAPI=8
 
 CRATES=" "
-inherit cargo
+LLVM_MAX_SLOT=16
+inherit cargo llvm
 
 DESCRIPTION="pkgcraft-based tools for Gentoo"
 HOMEPAGE="https://pkgcraft.github.io/"
@@ -26,6 +27,16 @@ LICENSE+=" Apache-2.0 BSD-2 BSD CC0-1.0 GPL-3+ ISC MIT Unicode-DFS-2016"
 SLOT="0"
 
 QA_FLAGS_IGNORED="usr/bin/pk"
+
+# Clang needed for bindgen
+BDEPEND="
+	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
+	virtual/pkgconfig
+"
+
+llvm_check_deps() {
+	has_version -b "sys-devel/clang:${LLVM_SLOT}"
+}
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
