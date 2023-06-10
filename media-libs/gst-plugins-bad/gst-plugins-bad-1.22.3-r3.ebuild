@@ -39,7 +39,7 @@ RDEPEND="
 
 	qsv? ( media-libs/oneVPL[wayland?,X?,${MULTILIB_USEDEP}] )
 
-        vaapi? ( >=media-libs/libva-1.10[${MULTILIB_USEDEP}] )
+	vaapi? ( >=media-libs/libva-1.10[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}"
