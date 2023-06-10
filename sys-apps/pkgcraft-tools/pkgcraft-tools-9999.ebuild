@@ -31,7 +31,6 @@ QA_FLAGS_IGNORED="usr/bin/pk"
 # Clang needed for bindgen
 BDEPEND="
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
-	virtual/pkgconfig
 "
 
 llvm_check_deps() {
