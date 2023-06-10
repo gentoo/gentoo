@@ -72,6 +72,7 @@ src_configure() {
 		-DCONFIG_LV2=1
 		-DCONFIG_LV2_UI_GTK2=0
 		-DCONFIG_NSM=0
+		-DCONFIG_QT6=0
 		-DCONFIG_SSE=$(usex cpu_flags_x86_sse 1 0)
 		-DCONFIG_STACKTRACE=$(usex debug 1 0)
 		-DCONFIG_VESTIGE=1
