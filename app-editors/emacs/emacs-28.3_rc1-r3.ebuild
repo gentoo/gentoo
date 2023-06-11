@@ -381,10 +381,10 @@ src_test() {
 		%lisp/emacs-lisp/ert-tests.el
 		%lisp/loadhist-tests.el
 
-		# Reason: hangs in gpg
+		# Reason: hangs in gpg #907839
 		# epg-roundtrip-1
 		# epg-roundtrip-2
-		%lisp/epg-tests.el
+		#%lisp/epg-tests.el
 	)
 
 	# See test/README for possible options
