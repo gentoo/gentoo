@@ -31,6 +31,10 @@ RDEPEND="
 	>=dev-python/sphinx-6.0[${PYTHON_USEDEP}]
 "
 
+BDEPEND+="
+	test? ( dev-python/beautifulsoup4[${PYTHON_USEDEP}] )
+"
+
 DOCS=( README.rst CHANGELOG.rst )
 
 distutils_enable_tests pytest
