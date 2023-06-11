@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-any-r1
+inherit cmake-multilib python-any-r1
 
 DESCRIPTION="Abseil Common Libraries (C++), LTS Branch"
 HOMEPAGE="https://abseil.io/"
@@ -45,7 +45,7 @@ src_prepare() {
 	absl/copts/generate_copts.py || die
 }
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		# We use -std=c++14 here so that abseil-cpp's string_view is used
 		# See the discussion in https://github.com/gentoo/gentoo/pull/32281.
