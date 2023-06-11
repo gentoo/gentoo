@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ DIST_EXAMPLES=( "examples/*" )
 inherit perl-module
 
 DESCRIPTION="Perl script indenter and beautifier"
-HOMEPAGE="http://perltidy.sourceforge.net/ https://metacpan.org/release/Perl-Tidy"
+HOMEPAGE="https://perltidy.sourceforge.net/ https://metacpan.org/release/Perl-Tidy"
 
 LICENSE="GPL-2+"
 SLOT="0"
