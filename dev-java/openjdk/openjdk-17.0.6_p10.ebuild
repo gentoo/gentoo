@@ -259,8 +259,8 @@ src_configure() {
 
 src_compile() {
 	# Too brittle - gets confused by e.g. -Oline
-	unset GNUMAKEFLAGS
 	export MAKEOPTS="-j$(makeopts_jobs) -l$(makeopts_loadavg)"
+	unset GNUMAKEFLAGS MAKEFLAGS
 
 	local myemakeargs=(
 		JOBS=$(makeopts_jobs)
