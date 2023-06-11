@@ -114,9 +114,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	# bug #640836, bug #852929
-	# Seems to be fixed in 3.10.0:
-	# https://github.com/pciutils/pciutils/commit/2d16e3a7875a9cb5abd60713bb2e39b536a7dec4
-	#filter-lto
+	# Still broken in 3.10.0, see https://github.com/pciutils/pciutils/pull/144.
+	filter-lto
 
 	# bug #471102
 	append-lfs-flags
