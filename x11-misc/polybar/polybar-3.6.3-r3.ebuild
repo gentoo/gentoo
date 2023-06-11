@@ -35,11 +35,11 @@ DEPEND="
 	doc? ( dev-python/sphinx )
 	i3wm? (
 		dev-libs/jsoncpp:=
-		|| ( x11-wm/i3 x11-wm/i3-gaps )
+		x11-wm/i3
 	)
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 "
 RDEPEND="${DEPEND}"
 
