@@ -169,10 +169,6 @@ app-text/tesseract	webp
 # Needs dev-ruby/builder, which isn't keyworded
 dev-ruby/rubygems server
 
-# Wolfram Schlich <wschlich@gentoo.org> (2007-11-20)
-# dependency can't be fulfilled at the moment
-net-im/mcabber otr
-
 # Jim Ramsay <lack@gentoo.org> (2007-09-07)
 # app-admin/gkrellm may pull in hddtemp, which is not yet available here
 app-admin/gkrellm hddtemp
