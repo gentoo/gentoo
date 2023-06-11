@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="
 	dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
