@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 virtualx xdg-utils
 
@@ -35,8 +35,8 @@ RDEPEND="
 		x11-libs/gtk+:2
 	) )
 	sound? ( || (
+		media-libs/libpulse
 		media-libs/openal
-		media-sound/pulseaudio
 	) )
 "
 #	ffmpeg? ( media-libs/avbin-bin )
