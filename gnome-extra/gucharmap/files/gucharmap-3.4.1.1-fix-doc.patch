@@ -1,9 +1,0 @@
---- a/docs/reference/gucharmap-docs.sgml
-+++ b/docs/reference/gucharmap-docs.sgml
-@@ -21,6 +21,5 @@
-     <xi:include href="xml/gucharmap-script-codepoint-list.xml"/>
-     <xi:include href="xml/gucharmap-chapters-view.xml"/>
-     <xi:include href="xml/gucharmap-unicode-info.xml"/>
--    <xi:include href="xml/gucharmap.xml"/>
-   </chapter>
- </book>

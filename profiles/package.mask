@@ -252,11 +252,6 @@ dev-tex/cpp2latex
 # Removal on 2023-06-12.  Bug #791034.
 games-emulation/pcsxr
 
-# Matt Turner <mattst88@gentoo.org> (2023-05-12)
-# Dead slot. Only reverse dependency is stardict which is masked for removal
-# Removal on 2023-06-12
-gnome-extra/gucharmap:0
-
 # Sam James <sam@gentoo.org> (2023-05-10)
 # A major reverse depndency (kde-apps/libkexiv2) does not yet build against this
 # so mask for now, see bug #906087 and bug #906090.
