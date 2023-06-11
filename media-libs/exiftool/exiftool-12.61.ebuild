@@ -10,7 +10,7 @@ DIST_NAME=Image-ExifTool
 inherit perl-module
 
 DESCRIPTION="Read and write meta information in image, audio and video files"
-HOMEPAGE="https://exiftool.org/ http://exiftool.sourceforge.net"
+HOMEPAGE="https://exiftool.org/ https://exiftool.sourceforge.net"
 SRC_URI="https://exiftool.org/${DIST_P}.tar.gz"
 
 SLOT="0"
