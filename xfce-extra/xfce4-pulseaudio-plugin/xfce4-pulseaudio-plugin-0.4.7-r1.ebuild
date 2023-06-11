@@ -21,7 +21,7 @@ REQUIRED_USE="?? ( libxfce4windowing wnck )"
 
 DEPEND="
 	>=dev-libs/glib-2.44.0
-	media-sound/pulseaudio:=[glib]
+	media-libs/libpulse:=[glib]
 	>=x11-libs/gtk+-3.20.0:3
 	>=xfce-base/exo-0.11:=
 	>=xfce-base/libxfce4ui-4.11.0:=[gtk3(+)]
