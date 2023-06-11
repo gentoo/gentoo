@@ -101,7 +101,7 @@ RDEPEND="${LUA_DEPS}
 	pdf? ( app-text/poppler:=[cxx] )
 	physics? ( sci-physics/bullet:= )
 	postscript? ( app-text/libspectre )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	raw? ( media-libs/libraw:= )
 	scim? ( app-i18n/scim )
 	sdl? ( media-libs/libsdl2 )
