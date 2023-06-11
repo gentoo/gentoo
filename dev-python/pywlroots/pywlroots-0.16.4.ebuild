@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 pypi
 
@@ -21,6 +21,9 @@ KEYWORDS="amd64 ~riscv ~x86"
 
 # See README for wlroots dep
 DEPEND="
+	$(python_gen_cond_dep '
+		dev-python/cffi[${PYTHON_USEDEP}]
+	' 'python*')
 	>=dev-python/pywayland-0.4.14[${PYTHON_USEDEP}]
 	>=dev-python/xkbcommon-0.2[${PYTHON_USEDEP}]
 	=gui-libs/wlroots-$(ver_cut 1-2)*:=
