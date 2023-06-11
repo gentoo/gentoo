@@ -9,7 +9,7 @@
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common functions for qmake-based packages.
 # @DESCRIPTION:
-# Utility eclass providing wrapper functions for Qt6 qmake.
+# Utility eclass providing wrapper functions for Qt qmake.
 #
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
