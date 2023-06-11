@@ -6,7 +6,7 @@ EAPI=8
 inherit prefix
 
 DESCRIPTION="User land tool for cleaning up old perl installs"
-HOMEPAGE="https://www.gentoo.org/proj/en/perl/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Perl"
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
