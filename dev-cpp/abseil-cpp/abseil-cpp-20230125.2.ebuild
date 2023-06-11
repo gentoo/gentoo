@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit cmake python-any-r1
+inherit cmake-multilib python-any-r1
 
 # yes, it needs SOURCE, not just installed one
 GTEST_COMMIT="v1.13.0"
@@ -56,7 +56,7 @@ src_prepare() {
 	fi
 }
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_CXX_STANDARD=17
 		-DABSL_ENABLE_INSTALL=TRUE
@@ -65,5 +65,6 @@ src_configure() {
 		-DABSL_BUILD_TESTING=$(usex test ON OFF)
 		$(usex test -DBUILD_TESTING=ON '') #intentional usex, it used both variables for tests.
 	)
+
 	cmake_src_configure
 }
