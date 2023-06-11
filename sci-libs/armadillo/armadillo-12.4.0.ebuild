@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/arma/${P}.tar.xz"
 LICENSE="Apache-2.0"
 SLOT="0/12"
 KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="arpack blas doc examples hdf5 lapack mkl superlu test"
+IUSE="arpack blas doc examples lapack mkl superlu test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( arpack lapack superlu )"
 
@@ -31,12 +31,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	arpack? ( virtual/pkgconfig )
 	blas? ( virtual/pkgconfig )
-	hdf5? ( sci-libs/hdf5:= )
 	lapack? ( virtual/pkgconfig )
 	mkl? ( sci-libs/mkl )
 "
 PDEPEND="${RDEPEND}
-	hdf5? ( sci-libs/hdf5:= )
 	mkl? ( sci-libs/mkl )
 "
 
@@ -91,17 +89,6 @@ src_configure() {
 	else
 		mycmakeargs+=(
 			-DBLAS_FOUND=OFF
-		)
-	fi
-	if use hdf5; then
-		mycmakeargs+=(
-			-DDETECT_HDF5=ON
-			-DHDF5_LIBRARIES="-lhdf5"
-			-DHDF5_INCLUDE_DIRS=/usr/include
-		)
-	else
-		mycmakeargs+=(
-			-DDETECT_HDF5=OFF
 		)
 	fi
 	if use lapack; then
