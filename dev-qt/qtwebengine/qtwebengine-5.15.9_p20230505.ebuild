@@ -42,7 +42,7 @@ RDEPEND="
 	dev-libs/libevent:=
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
-	dev-libs/re2:=
+	<dev-libs/re2-0.2023.06.02:=
 	=dev-qt/qtcore-${QT5_PV}*
 	=dev-qt/qtdeclarative-${QT5_PV}*
 	=dev-qt/qtgui-${QT5_PV}*
