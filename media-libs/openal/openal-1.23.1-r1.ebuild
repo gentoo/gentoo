@@ -35,7 +35,7 @@ RDEPEND="
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	pipewire? ( media-video/pipewire[${MULTILIB_USEDEP}] )
 	portaudio? ( media-libs/portaudio[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
