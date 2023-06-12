@@ -64,7 +64,7 @@ BDEPEND+="
 	test? (
 		$(python_gen_cond_dep '
 			dev-libs/libbytesize[python,${PYTHON_USEDEP}]
-		' python3_{9..10} )
+		')
 		sys-block/targetcli-fb
 	)
 "
