@@ -95,6 +95,19 @@ pypi_normalize_name() {
 	echo "${_PYPI_NORMALIZED_NAME}"
 }
 
+# @FUNCTION: _pypi_translate_version
+# @USAGE: <version>
+# @DESCRIPTION:
+# Internal version translation function, returns the result
+# via _PYPI_TRANSLATED_VERSION variable.
+_pypi_translate_version() {
+	local version=${1}
+	version=${version/_alpha/a}
+	version=${version/_beta/b}
+	version=${version/_rc/rc}
+	_PYPI_TRANSLATED_VERSION=${version/_p/.post}
+}
+
 # @FUNCTION: pypi_translate_version
 # @USAGE: <version>
 # @DESCRIPTION:
@@ -106,12 +119,9 @@ pypi_normalize_name() {
 pypi_translate_version() {
 	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <version>"
 
-	local version=${1}
-	version=${version/_alpha/a}
-	version=${version/_beta/b}
-	version=${version/_rc/rc}
-	version=${version/_p/.post}
-	echo "${version}"
+	local _PYPI_TRANSLATED_VERSION
+	_pypi_translate_version "${@}"
+	echo "${_PYPI_TRANSLATED_VERSION}"
 }
 
 # @FUNCTION: pypi_sdist_url
@@ -239,16 +249,17 @@ pypi_wheel_url() {
 # @DESCRIPTION:
 # Set global variables, SRC_URI and S.
 _pypi_set_globals() {
-	local version=$(pypi_translate_version "${PV}")
+	local _PYPI_TRANSLATED_VERSION
+	_pypi_translate_version "${PV}"
 
 	if [[ ${PYPI_NO_NORMALIZE} ]]; then
-		SRC_URI="$(pypi_sdist_url --no-normalize "${PYPI_PN}" "${version}")"
-		S="${WORKDIR}/${PYPI_PN}-${version}"
+		SRC_URI="$(pypi_sdist_url --no-normalize "${PYPI_PN}" "${_PYPI_TRANSLATED_VERSION}")"
+		S="${WORKDIR}/${PYPI_PN}-${_PYPI_TRANSLATED_VERSION}"
 	else
 		local _PYPI_NORMALIZED_NAME
 		_pypi_normalize_name "${PYPI_PN}"
-		SRC_URI="$(pypi_sdist_url "${PYPI_PN}" "${version}")"
-		S="${WORKDIR}/${_PYPI_NORMALIZED_NAME}-${version}"
+		SRC_URI="$(pypi_sdist_url "${PYPI_PN}" "${_PYPI_TRANSLATED_VERSION}")"
+		S="${WORKDIR}/${_PYPI_NORMALIZED_NAME}-${_PYPI_TRANSLATED_VERSION}"
 	fi
 }
 
