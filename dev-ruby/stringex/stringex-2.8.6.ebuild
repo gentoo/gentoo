@@ -28,5 +28,8 @@ each_ruby_prepare() {
 		einfo "Testing activerecord integration"
 	else
 		rm -f test/unit/acts_as_url_integration_test.rb || die
+		# These tests fails when the acts_as_url code is not loaded
+		# through the above integration test.
+		rm -f test/unit/unicode_point_suite/basic_{greek,latin}_test.rb || die
 	fi
 }
