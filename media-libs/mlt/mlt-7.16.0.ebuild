@@ -103,6 +103,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
+		-DCLANG_FORMAT=OFF
 		-DGPL=ON
 		-DGPL3=ON
 		-DBUILD_TESTING=$(usex test)
