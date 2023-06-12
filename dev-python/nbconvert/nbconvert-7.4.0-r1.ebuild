@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 multiprocessing pypi virtualx
 
@@ -17,8 +17,9 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
+# <mistune-3 for https://github.com/jupyter/nbconvert/pull/1820 (bug #908377)
 RDEPEND="
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/bleach[${PYTHON_USEDEP}]
@@ -30,7 +31,7 @@ RDEPEND="
 	>=dev-python/jupyter-core-4.7[${PYTHON_USEDEP}]
 	dev-python/jupyterlab-pygments[${PYTHON_USEDEP}]
 	>=dev-python/markupsafe-2.0[${PYTHON_USEDEP}]
-	>=dev-python/mistune-2.0.2[${PYTHON_USEDEP}]
+	<dev-python/mistune-3[${PYTHON_USEDEP}]
 	>=dev-python/nbclient-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/nbformat-5.1[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
