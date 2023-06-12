@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-06-12)
+# Installs no files with newer versions because GTK 2 support was dropped upstream.
+# Removal on 2023-07-12.  Bug #908378.
+dev-ruby/ruby-gtk2
+
 # Jimi Huotari <chiitoo@gentoo.org> (2023-06-10)
 # Mask to allow qt6 unmask.
 <dev-python/pyside6-6.5.0
