@@ -262,7 +262,22 @@ go-module_set_globals() {
 			continue
 		fi
 
-		_dir=$(_go-module_gomod_encode "${module}")
+		# Encode the name(path) of a Golang module in the format expected by Goproxy.
+		# Upper letters are replaced by their lowercase version with a '!' prefix.
+		# The transformed result of 'module' is stored in the '_dir' variable.
+		#
+		## Python:
+		# return re.sub('([A-Z]{1})', r'!\1', s).lower()
+		## Sed:
+		## This uses GNU Sed extension \l to downcase the match
+		# echo "${module}" |sed 's,[A-Z],!\l&,g'
+		local re _dir lower
+		_dir="${module}"
+		re='(.*)([A-Z])(.*)'
+		while [[ ${_dir} =~ ${re} ]]; do
+			lower='!'"${BASH_REMATCH[2],}"
+			_dir="${BASH_REMATCH[1]}${lower}${BASH_REMATCH[3]}"
+		done
 
 		for _ext in "${exts[@]}" ; do
 			# Relative URI within a GOPROXY for a file
@@ -494,33 +509,6 @@ go-module_live_vendor() {
 	pushd "${S}" >& /dev/null || die
 	ego mod vendor
 	popd >& /dev/null || die
-}
-
-# @FUNCTION: _go-module_gomod_encode
-# @DEPRECATED: none
-# @DESCRIPTION:
-# Encode the name(path) of a Golang module in the format expected by Goproxy.
-#
-# Upper letters are replaced by their lowercase version with a '!' prefix.
-#
-_go-module_gomod_encode() {
-	## Python:
-	# return re.sub('([A-Z]{1})', r'!\1', s).lower()
-
-	## Sed:
-	## This uses GNU Sed extension \l to downcase the match
-	#echo "${module}" |sed 's,[A-Z],!\l&,g'
-	#
-	# Bash variant:
-	debug-print-function "${FUNCNAME}" "$@"
-	#local re input lower
-	re='(.*)([A-Z])(.*)'
-	input="${1}"
-	while [[ ${input} =~ ${re} ]]; do
-		lower='!'"${BASH_REMATCH[2],}"
-		input="${BASH_REMATCH[1]}${lower}${BASH_REMATCH[3]}"
-	done
-	echo "${input}"
 }
 
 fi
