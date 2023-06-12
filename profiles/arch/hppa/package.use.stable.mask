@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-07-02)
+# Unlikely that anybody wants to use net-nds/openldap on hppa & often has
+# platform-specific bugs.
+dev-libs/cyrus-sasl openldap
+app-crypt/mit-krb5 openldap
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-12-18)
 # Unstable test dependencies
 dev-util/pkgdev test
