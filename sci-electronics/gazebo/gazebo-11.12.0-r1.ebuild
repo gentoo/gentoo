@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 BDEPEND="
-	|| ( app-text/ronn-ng app-text/ronn )
+	app-text/ronn-ng
 	app-arch/gzip
 	virtual/pkgconfig
 "
