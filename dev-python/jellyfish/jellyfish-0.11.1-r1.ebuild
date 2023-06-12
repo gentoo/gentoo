@@ -8,13 +8,11 @@ DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{9..11} )
 
 CRATES="
-	ahash-0.8.3
 	autocfg-1.1.0
 	bitflags-1.3.2
 	cfg-if-1.0.0
 	csv-1.2.1
 	csv-core-0.1.10
-	getrandom-0.2.8
 	indoc-1.0.9
 	itoa-1.0.6
 	libc-0.2.140
@@ -24,7 +22,7 @@ CRATES="
 	once_cell-1.17.1
 	parking_lot-0.12.1
 	parking_lot_core-0.9.7
-	proc-macro2-1.0.55
+	proc-macro2-1.0.54
 	pyo3-0.18.2
 	pyo3-build-config-0.18.2
 	pyo3-ffi-0.18.2
@@ -44,8 +42,6 @@ CRATES="
 	unicode-normalization-0.1.22
 	unicode-segmentation-1.10.1
 	unindent-0.1.11
-	version_check-0.9.4
-	wasi-0.11.0+wasi-snapshot-preview1
 	windows-sys-0.45.0
 	windows-targets-0.42.2
 	windows_aarch64_gnullvm-0.42.2
@@ -74,8 +70,12 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc64 ~riscv x86"
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/jellyfish/_rustyfish.*.so"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.11.2-maturin-1.patch"
+)
