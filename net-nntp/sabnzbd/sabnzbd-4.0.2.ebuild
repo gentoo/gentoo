@@ -60,7 +60,6 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/flaky[${PYTHON_USEDEP}]
 			>=dev-python/lxml-4.5.0[${PYTHON_USEDEP}]
-			dev-python/pkginfo[${PYTHON_USEDEP}]
 			dev-python/pyfakefs[${PYTHON_USEDEP}]
 			dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 			dev-python/pytest-httpserver[${PYTHON_USEDEP}]
