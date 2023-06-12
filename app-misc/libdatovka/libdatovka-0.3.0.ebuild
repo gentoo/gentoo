@@ -33,6 +33,10 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.0-musl-getopt-fix.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		--disable-fatalwarnings

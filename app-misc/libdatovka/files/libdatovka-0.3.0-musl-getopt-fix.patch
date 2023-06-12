@@ -1,0 +1,22 @@
+Bug: https://bugs.gentoo.org/900495
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Mon, 12 Jun 2023 17:18:00 +0000
+Subject: [PATCH] server_cli.c: Include unistd for getopt
+
+Whithout the include one would get a error: call to undeclared function
+getopt.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/test/simline/server_cli.c
++++ b/test/simline/server_cli.c
+@@ -9,6 +9,7 @@
+ #include <sys/select.h>
+ #include <sys/types.h> /* For pid_t */
+ #include <string.h> /* memset() */
++#include <unistd.h> /* For getopt(3) */
+ 
+ static const char *username = NULL;
+ static const char *password = NULL;
+-- 
+2.41.0
+
