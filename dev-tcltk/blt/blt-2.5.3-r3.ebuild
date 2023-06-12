@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MYP=${PN}$(ver_cut 1-2)
 SHVER=$(ver_rs 1 '' $(ver_cut 1-2))
@@ -137,4 +137,16 @@ src_install() {
 	use static-libs || \
 		find "${ED}"/usr/$(get_libdir) -name "*.a" -print0 | \
 		xargs -r -0 rm -fv
+}
+
+pkg_preinst() {
+	# Fix 'symlink is blocked by a directory' Bug #907270
+	rm -rf "${EROOT}"/usr/$(get_libdir)/${MYP}/demos/bitmaps/hand
+	rm -rf "${EROOT}"/usr/$(get_libdir)/${MYP}/demos/bitmaps/hand.backup.*
+	rm -rf "${EROOT}"/usr/$(get_libdir)/${MYP}/demos/bitmaps/fish
+	rm -rf "${EROOT}"/usr/$(get_libdir)/${MYP}/demos/bitmaps/fish.backup.*
+	rm -rf "${EROOT}"/usr/$(get_libdir)/${MYP}/demos/images
+	rm -rf "${EROOT}"/usr/$(get_libdir)/${MYP}/demos/images.backup.*
+	rm -rf "${EROOT}"/usr/$(get_libdir)/${MYP}/demos/scripts
+	rm -rf "${EROOT}"/usr/$(get_libdir)/${MYP}/demos/scripts.backup.*
 }
