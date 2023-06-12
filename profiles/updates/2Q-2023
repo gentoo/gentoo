@@ -25,3 +25,4 @@ move dev-python/semantic_version dev-python/semantic-version
 move dev-python/prometheus_client dev-python/prometheus-client
 move dev-python/docker-py dev-python/docker
 move dev-python/python-ctags dev-python/python-ctags3
+move dev-python/python-miniupnpc dev-python/miniupnpc
