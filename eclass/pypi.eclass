@@ -124,6 +124,31 @@ pypi_translate_version() {
 	echo "${_PYPI_TRANSLATED_VERSION}"
 }
 
+# @FUNCTION: _pypi_sdist_url
+# @INTERNAL
+# @USAGE: [--no-normalize] [<project> [<version> [<suffix>]]]
+# @DESCRIPTION:
+# Internal sdist generated, returns the result via _PYPI_SDIST_URL
+# variable.
+_pypi_sdist_url() {
+	local normalize=1
+	if [[ ${1} == --no-normalize ]]; then
+		normalize=
+		shift
+	fi
+
+	if [[ ${#} -gt 3 ]]; then
+		die "Usage: ${FUNCNAME} [--no-normalize] <project> [<version> [<suffix>]]"
+	fi
+
+	local project=${1-"${PYPI_PN}"}
+	local version=${2-"$(pypi_translate_version "${PV}")"}
+	local suffix=${3-.tar.gz}
+	local _PYPI_NORMALIZED_NAME=${project}
+	[[ ${normalize} ]] && _pypi_normalize_name "${_PYPI_NORMALIZED_NAME}"
+	_PYPI_SDIST_URL="https://files.pythonhosted.org/packages/source/${project::1}/${project}/${_PYPI_NORMALIZED_NAME}-${version}${suffix}"
+}
+
 # @FUNCTION: pypi_sdist_url
 # @USAGE: [--no-normalize] [<project> [<version> [<suffix>]]]
 # @DESCRIPTION:
@@ -146,23 +171,9 @@ pypi_translate_version() {
 # If <format> is unspecified, it defaults to ".tar.gz".  Another valid
 # value is ".zip" (please remember to add a BDEPEND on app-arch/unzip).
 pypi_sdist_url() {
-	local normalize=1
-	if [[ ${1} == --no-normalize ]]; then
-		normalize=
-		shift
-	fi
-
-	if [[ ${#} -gt 3 ]]; then
-		die "Usage: ${FUNCNAME} [--no-normalize] <project> [<version> [<suffix>]]"
-	fi
-
-	local project=${1-"${PYPI_PN}"}
-	local version=${2-"$(pypi_translate_version "${PV}")"}
-	local suffix=${3-.tar.gz}
-	local _PYPI_NORMALIZED_NAME=${project}
-	[[ ${normalize} ]] && _pypi_normalize_name "${_PYPI_NORMALIZED_NAME}"
-	printf "https://files.pythonhosted.org/packages/source/%s" \
-		"${project::1}/${project}/${_PYPI_NORMALIZED_NAME}-${version}${suffix}"
+	local _PYPI_SDIST_URL
+	_pypi_sdist_url "${@}"
+	echo "${_PYPI_SDIST_URL}"
 }
 
 # @FUNCTION: pypi_wheel_name
@@ -249,18 +260,20 @@ pypi_wheel_url() {
 # @DESCRIPTION:
 # Set global variables, SRC_URI and S.
 _pypi_set_globals() {
-	local _PYPI_TRANSLATED_VERSION
+	local _PYPI_SDIST_URL _PYPI_TRANSLATED_VERSION
 	_pypi_translate_version "${PV}"
 
 	if [[ ${PYPI_NO_NORMALIZE} ]]; then
-		SRC_URI="$(pypi_sdist_url --no-normalize "${PYPI_PN}" "${_PYPI_TRANSLATED_VERSION}")"
+		_pypi_sdist_url --no-normalize "${PYPI_PN}" "${_PYPI_TRANSLATED_VERSION}"
 		S="${WORKDIR}/${PYPI_PN}-${_PYPI_TRANSLATED_VERSION}"
 	else
 		local _PYPI_NORMALIZED_NAME
 		_pypi_normalize_name "${PYPI_PN}"
-		SRC_URI="$(pypi_sdist_url "${PYPI_PN}" "${_PYPI_TRANSLATED_VERSION}")"
+		_pypi_sdist_url "${PYPI_PN}" "${_PYPI_TRANSLATED_VERSION}"
 		S="${WORKDIR}/${_PYPI_NORMALIZED_NAME}-${_PYPI_TRANSLATED_VERSION}"
 	fi
+
+	SRC_URI=${_PYPI_SDIST_URL}
 }
 
 _pypi_set_globals
