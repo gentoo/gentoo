@@ -30,6 +30,7 @@ DOCS=( AUTHORS ChangeLog README.md )
 
 PATCHES=(
 	"${FILESDIR}/givaro-4.1.1-gcc-10.patch"
+	"${FILESDIR}/givaro-4.1.1-gcc-13.patch"
 	"${FILESDIR}/givaro-4.1.1-fix-pc-libdir.patch"
 )
 
