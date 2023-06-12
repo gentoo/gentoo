@@ -54,6 +54,7 @@ DOCS=( README.md)
 
 PATCHES=(
 	"${FILESDIR}/${P}-nodocs.patch"
+	"${FILESDIR}/${PN}-252.9-musl-lfs.patch"
 )
 
 python_check_deps() {
