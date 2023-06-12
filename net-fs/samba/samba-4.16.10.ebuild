@@ -233,6 +233,25 @@ multilib_src_configure() {
 		bundled_libs="cmocka,${bundled_libs}"
 	fi
 
+	# bug #874633
+	if use llvm-libunwind ; then
+		mkdir -p "${T}"/${ABI}/pkgconfig || die
+
+		local -x PKG_CONFIG_PATH="${T}/${ABI}/pkgconfig:${PKG_CONFIG_PATH}"
+
+		cat <<-EOF > "${T}"/${ABI}/pkgconfig/libunwind-generic.pc || die
+		exec_prefix=\${prefix}
+		libdir=/usr/$(get_libdir)
+		includedir=\${prefix}/include
+
+		Name: libunwind-generic
+		Description: libunwind generic library
+		Version: 1.70
+		Libs: -L\${libdir} -lunwind
+		Cflags: -I\${includedir}
+		EOF
+	fi
+
 	local myconf=(
 		--enable-fhs
 		--sysconfdir="${EPREFIX}/etc"
