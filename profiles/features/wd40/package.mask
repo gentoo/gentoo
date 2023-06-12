@@ -34,6 +34,7 @@ dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-git-revision-date-localized-plugin
 dev-python/oauthlib
+dev-python/openapi-spec-validator
 dev-python/openstacksdk
 dev-python/os-client-config
 dev-python/osc-lib
