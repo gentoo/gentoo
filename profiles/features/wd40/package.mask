@@ -21,6 +21,8 @@ dev-python/autobahn
 >=dev-python/bcrypt-4
 >=dev-python/cryptography-36
 dev-python/josepy
+dev-python/jsonschema-spec
+dev-python/jsonschema-specifications
 dev-python/keyring
 dev-python/libcloud
 dev-python/moto
@@ -49,8 +51,10 @@ dev-python/python-jose
 dev-python/python-neutronclient
 dev-python/python-openstackclient
 dev-python/python-sshpubkeys
+dev-python/referencing
 dev-python/requests-kerberos
 dev-python/requests-oauthlib
+dev-python/rpds-py
 dev-python/secretstorage
 dev-python/selenium
 dev-python/service_identity
