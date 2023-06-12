@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	"
 
 	# TODO: Add tomlplusplus as a system library, like quazip
-	EGIT_SUBMODULES=( '*' '-libraries/quazip' '-libraries/filesystem' '-libraries/zlib' '-libraries/extra-cmake-modules' )
+	EGIT_SUBMODULES=( '*' '-libraries/quazip' '-libraries/filesystem' '-libraries/zlib' '-libraries/extra-cmake-modules' '-libraries/cmark' )
 else
 	MY_PN="PrismLauncher"
 
@@ -81,6 +81,7 @@ COMMON_DEPENDS="
 # only on legacy macOS. Still, we need it present at build time to appease CMake, and having it like this
 # makes it easier to maintain than patching the CMakeLists file directly.
 BDEPEND="
+	app-text/cmark
 	app-text/scdoc
 	dev-cpp/gulrak-filesystem
 	kde-frameworks/extra-cmake-modules:5
