@@ -82,11 +82,6 @@ python_test() {
 		typing/tests/test_typing.py
 	)
 
-	local EPYTEST_IGNORE=(
-		# very slow, unlikely to be practically useful
-		#typing/tests/test_typing.py
-	)
-
 	if use arm && [[ $(uname -m || echo "unknown") == "armv8l" ]] ; then
 		# Degenerate case. arm32 chroot on arm64.
 		# bug #774108
