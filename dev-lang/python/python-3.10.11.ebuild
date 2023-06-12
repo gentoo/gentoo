@@ -187,6 +187,7 @@ src_configure() {
 			--timeout 1200
 
 			-x test_gdb
+			-x test_dtrace
 
 			# All of these seem to occasionally hang for PGO inconsistently
 			# They'll even hang here but be fine in src_test sometimes.

@@ -176,6 +176,7 @@ src_configure() {
 			"-j$(makeopts_jobs)"
 			--pgo-extended
 			-x test_gdb
+			-x test_dtrace
 			-u-network
 
 			# All of these seem to occasionally hang for PGO inconsistently
