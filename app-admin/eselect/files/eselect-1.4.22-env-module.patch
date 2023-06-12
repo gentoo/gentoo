@@ -1,0 +1,19 @@
+env.eselect: More robust file type detection
+https://bugs.gentoo.org/908401
+
+--- a/modules/env.eselect
++++ b/modules/env.eselect
+@@ -46,9 +46,10 @@ is_envfile() {
+ 	[[ -n ${envfile##*~} ]] || return 1
+ 	[[ ${envfile##*.} != bak ]] || return 1
+ 
+-	mime=$(POSIXLY_CORRECT=1 file -i "${envfile}" \
+-		| cut -d ' ' -f 2 | sed -e 's/;$//')
+-	if ! has ${mime} ${MIME_WHITELIST}; then
++	mime=$(POSIXLY_CORRECT=1 file -bi -e soft "${envfile}") \
++		|| die "'file' command failed"
++	mime=${mime%%;*}
++	if ! has "${mime}" ${MIME_WHITELIST}; then
+ 		echo "Skipping non-text file ${envfile}."
+ 		return 1
+ 	fi
