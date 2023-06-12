@@ -221,12 +221,20 @@ pypi_wheel_url() {
 	fi
 }
 
-if [[ ${PYPI_NO_NORMALIZE} ]]; then
-	SRC_URI="$(pypi_sdist_url --no-normalize)"
-	S="${WORKDIR}/${PYPI_PN}-$(pypi_translate_version "${PV}")"
-else
-	SRC_URI="$(pypi_sdist_url)"
-	S="${WORKDIR}/$(pypi_normalize_name "${PYPI_PN}")-$(pypi_translate_version "${PV}")"
-fi
+# @FUNCTION: _pypi_set_globals
+# @INTERNAL
+# @DESCRIPTION:
+# Set global variables, SRC_URI and S.
+_pypi_set_globals() {
+	if [[ ${PYPI_NO_NORMALIZE} ]]; then
+		SRC_URI="$(pypi_sdist_url --no-normalize)"
+		S="${WORKDIR}/${PYPI_PN}-$(pypi_translate_version "${PV}")"
+	else
+		SRC_URI="$(pypi_sdist_url)"
+		S="${WORKDIR}/$(pypi_normalize_name "${PYPI_PN}")-$(pypi_translate_version "${PV}")"
+	fi
+}
+
+_pypi_set_globals
 
 fi
