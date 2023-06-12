@@ -1,0 +1,21 @@
+https://github.com/andikleen/mcelog/pull/115
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Mon, 12 Jun 2023 10:56:44 +0000
+Subject: [PATCH] client: Fix build w/ musl libc
+
+Refer: https://github.com/andikleen/mcelog/pull/115
+Bug: https://bugs.gentoo.org/894316
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/client.c
++++ b/client.c
+@@ -19,6 +19,7 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <unistd.h>
++#include <string.h>
+ #include "mcelog.h"
+ #include "client.h"
+ #include "paths.h"
+-- 
+2.41.0
+
