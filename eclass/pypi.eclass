@@ -63,6 +63,21 @@ _PYPI_ECLASS=1
 # @CODE
 : "${PYPI_PN:=${PN}}"
 
+# @FUNCTION: _pypi_normalize_name
+# @INTERNAL
+# @USAGE: <name>
+# @DESCRIPTION:
+# Internal normalization function, returns the result
+# via _PYPI_NORMALIZED_NAME variable.
+_pypi_normalize_name() {
+	local name=${1}
+	local shopt_save=$(shopt -p extglob)
+	shopt -s extglob
+	name=${name//+([._-])/_}
+	${shopt_save}
+	_PYPI_NORMALIZED_NAME="${name,,}"
+}
+
 # @FUNCTION: pypi_normalize_name
 # @USAGE: <name>
 # @DESCRIPTION:
@@ -75,12 +90,9 @@ _PYPI_ECLASS=1
 pypi_normalize_name() {
 	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <name>"
 
-	local name=${1}
-	local shopt_save=$(shopt -p extglob)
-	shopt -s extglob
-	name=${name//+([._-])/_}
-	${shopt_save}
-	echo "${name,,}"
+	local _PYPI_NORMALIZED_NAME
+	_pypi_normalize_name "${@}"
+	echo "${_PYPI_NORMALIZED_NAME}"
 }
 
 # @FUNCTION: pypi_translate_version
@@ -137,10 +149,10 @@ pypi_sdist_url() {
 	local project=${1-"${PYPI_PN}"}
 	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local suffix=${3-.tar.gz}
-	local fn_project=${project}
-	[[ ${normalize} ]] && fn_project=$(pypi_normalize_name "${project}")
+	local _PYPI_NORMALIZED_NAME=${project}
+	[[ ${normalize} ]] && _pypi_normalize_name "${_PYPI_NORMALIZED_NAME}"
 	printf "https://files.pythonhosted.org/packages/source/%s" \
-		"${project::1}/${project}/${fn_project}-${version}${suffix}"
+		"${project::1}/${project}/${_PYPI_NORMALIZED_NAME}-${version}${suffix}"
 }
 
 # @FUNCTION: pypi_wheel_name
@@ -167,11 +179,12 @@ pypi_wheel_name() {
 		die "Usage: ${FUNCNAME} <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
 	fi
 
-	local project=$(pypi_normalize_name "${1-"${PYPI_PN}"}")
+	local _PYPI_NORMALIZED_NAME
+	_pypi_normalize_name "${1:-"${PYPI_PN}"}"
 	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local pytag=${3-py3}
 	local abitag=${4-none-any}
-	echo "${project}-${version}-${pytag}-${abitag}.whl"
+	echo "${_PYPI_NORMALIZED_NAME}-${version}-${pytag}-${abitag}.whl"
 }
 
 # @FUNCTION: pypi_wheel_url
@@ -232,8 +245,10 @@ _pypi_set_globals() {
 		SRC_URI="$(pypi_sdist_url --no-normalize "${PYPI_PN}" "${version}")"
 		S="${WORKDIR}/${PYPI_PN}-${version}"
 	else
+		local _PYPI_NORMALIZED_NAME
+		_pypi_normalize_name "${PYPI_PN}"
 		SRC_URI="$(pypi_sdist_url "${PYPI_PN}" "${version}")"
-		S="${WORKDIR}/$(pypi_normalize_name "${PYPI_PN}")-${version}"
+		S="${WORKDIR}/${_PYPI_NORMALIZED_NAME}-${version}"
 	fi
 }
 
