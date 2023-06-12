@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Tomáš Mózes <hydrapolic@gmail.com> (2023-06-12)
+# Buggy version that causes ibdata1 to grow, please update.
+=dev-db/mariadb-10.5.20
+=dev-db/mariadb-10.6.13
+=dev-db/mariadb-10.11.2
+=dev-db/mariadb-10.11.3
+
 # Sam James <sam@gentoo.org> (2023-06-12)
 # Installs no files with newer versions because GTK 2 support was dropped upstream.
 # Removal on 2023-07-12.  Bug #908378.
