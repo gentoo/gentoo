@@ -4,21 +4,28 @@
 EAPI=8
 
 NEED_EMACS=26.1
+
 inherit elisp
 
 DESCRIPTION="Gruvbox is a retro groove color scheme, now in Emacs"
 HOMEPAGE="https://github.com/greduan/emacs-theme-gruvbox/"
 
-SRC_URI="https://github.com/greduan/emacs-theme-gruvbox/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/emacs-theme-gruvbox-${PV}"
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/greduan/emacs-theme-gruvbox.git"
+else
+	SRC_URI="https://github.com/greduan/emacs-theme-gruvbox/archive/${PV}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}/emacs-theme-gruvbox-${PV}"
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
 
 RDEPEND="
 	>=app-emacs/autothemer-0.2
 "
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 SITEFILE="50${PN}-gentoo.el"
