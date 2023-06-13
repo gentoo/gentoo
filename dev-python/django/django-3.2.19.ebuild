@@ -104,5 +104,4 @@ pkg_postinst() {
 	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
 	optfeature "ImageField Support" dev-python/pillow
 	optfeature "Password encryption" dev-python/bcrypt
-	optfeature "High-level abstractions for Django forms" dev-python/django-formtools
 }
