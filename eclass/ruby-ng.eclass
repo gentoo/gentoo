@@ -102,6 +102,7 @@ ruby_implementation_depend() {
 # @DESCRIPTION:
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
+_RUBY_GET_ALL_IMPLS=()
 _ruby_get_all_impls() {
 	local i found_valid_impl
 	for i in ${USE_RUBY}; do
@@ -111,7 +112,8 @@ _ruby_get_all_impls() {
 				;;
 			*)
 				found_valid_impl=1
-				echo ${i};;
+				_RUBY_GET_ALL_IMPLS+=( ${i} )
+				;;
 		esac
 	done
 
@@ -131,7 +133,7 @@ ruby_samelib() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local res=
-	for _ruby_implementation in $(_ruby_get_all_impls); do
+	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		has -${_ruby_implementation} $@ || \
 			res="${res}ruby_targets_${_ruby_implementation}(-)?,"
 	done
@@ -174,7 +176,7 @@ ruby_implementation_command() {
 _ruby_atoms_samelib() {
 	local atoms=$(_ruby_atoms_samelib_generic "$*")
 
-	for _ruby_implementation in $(_ruby_get_all_impls); do
+	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		echo "${atoms//RUBYTARGET/ruby_targets_${_ruby_implementation}}"
 	done
 }
@@ -310,7 +312,7 @@ ruby_get_use_implementations() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local i implementation
-	for implementation in $(_ruby_get_all_impls); do
+	for implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		use ruby_targets_${implementation} && i+=" ${implementation}"
 	done
 	echo $i
@@ -322,8 +324,8 @@ ruby_get_use_implementations() {
 ruby_get_use_targets() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-
-	local impls="$(_ruby_get_all_impls)"
+	_ruby_get_all_impls
+	local impls="${_RUBY_GET_ALL_IMPLS[@]}"
 	echo "${impls//ruby/ruby_targets_ruby}"
 }
 
@@ -346,12 +348,13 @@ ruby_get_use_targets() {
 ruby_implementations_depend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local depend
-	for _ruby_implementation in $(_ruby_get_all_impls); do
+	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		depend="${depend}${depend+ }ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
 	done
 	echo "${depend}"
 }
+
+_ruby_get_all_impls
 
 IUSE+=" $(ruby_get_use_targets)"
 # If you specify RUBY_OPTIONAL you also need to take care of
@@ -412,7 +415,7 @@ _ruby_invoke_environment() {
 
 _ruby_each_implementation() {
 	local invoked=no
-	for _ruby_implementation in $(_ruby_get_all_impls); do
+	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		# only proceed if it's requested
 		use ruby_targets_${_ruby_implementation} || continue
 
@@ -435,7 +438,7 @@ _ruby_each_implementation() {
 
 	if [[ ${invoked} == "no" ]]; then
 		eerror "You need to select at least one compatible Ruby installation target via RUBY_TARGETS in make.conf."
-		eerror "Compatible targets for this package are: $(_ruby_get_all_impls)"
+		eerror "Compatible targets for this package are: ${_RUBY_GET_ALL_IMPLS[@]}"
 		eerror
 		eerror "See https://www.gentoo.org/proj/en/prog_lang/ruby/index.xml#doc_chap3 for more information."
 		eerror
