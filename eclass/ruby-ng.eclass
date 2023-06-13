@@ -280,7 +280,6 @@ ruby_add_bdepend() {
 		6) DEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
 		*) BDEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
 	esac
-	RDEPEND="${RDEPEND}"
 }
 
 # @FUNCTION: ruby_add_depend
