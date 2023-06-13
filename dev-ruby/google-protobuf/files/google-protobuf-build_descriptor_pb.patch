@@ -1,0 +1,44 @@
+diff --git a/.gitignore b/.gitignore
+index 653309818f3..2a47fdc71d9 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,4 +6,5 @@ protobuf-jruby.iml
+ target/
+ pkg/
+ tmp/
+-tests/google/
+\ No newline at end of file
++tests/google/
++lib/google/git_version.rb
+diff --git a/Rakefile b/Rakefile
+index c05e115..f1dd23c 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -154,6 +154,18 @@ task :clean do
+   sh "rm -f #{genproto_output.join(' ')}"
+ end
+ 
++task :genversion do
++  File.open("lib/google/protobuf/git_version.rb", "w") do |fp|
++    fp.write(<<~EOD)
++    module Google
++      module Protobuf
++        GIT_VERSION = "#{`git rev-parse HEAD`.strip}".strip
++      end
++    end
++    EOD
++  end
++end
++
+ Gem::PackageTask.new(spec) do |pkg|
+ end
+ 
+@@ -169,7 +181,7 @@ Rake::TestTask.new(:gc_test => ENV['BAZEL'] == 'true' ? [] : :build) do |t|
+   t.test_files = FileList["tests/gc_test.rb"]
+ end
+ 
+-task :build => [:clean, :genproto, :compile]
++task :build => [:clean, :genproto, :compile, :genversion]
+ task :default => [:build]
+ 
+ # vim:sw=2:et
