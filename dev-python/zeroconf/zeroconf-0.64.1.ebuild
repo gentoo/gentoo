@@ -37,6 +37,8 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+export REQUIRE_CYTHON=1
+
 python_test() {
 	local -x SKIP_IPV6=1
 	local EPYTEST_DESELECT=(
