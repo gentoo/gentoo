@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
 # 'can' work with older Qt depending on features, but keeping it simple
@@ -91,8 +91,8 @@ python_configure_all() {
 
 	DISTUTILS_ARGS=(
 		--jobs=$(makeopts_jobs)
-		--qmake="$(type -P qmake6 || die)"
-		--qmake-setting="$(qt5_get_qmake_args)"
+		--qmake="$(qt6_get_bindir)"/qmake
+		--qmake-setting="$(qt6_get_qmake_args)"
 		--verbose
 		--confirm-license
 
