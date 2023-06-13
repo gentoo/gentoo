@@ -141,23 +141,6 @@ ruby_samelib() {
 	echo "[${res%,}]"
 }
 
-_ruby_atoms_samelib_generic() {
-	eshopts_push -o noglob
-	echo "RUBYTARGET? ("
-	for token in $*; do
-		case "$token" in
-			"||" | "(" | ")" | *"?")
-				echo "${token}" ;;
-			*])
-				echo "${token%[*}[RUBYTARGET(-),${token/*[}" ;;
-			*)
-				echo "${token}[RUBYTARGET(-)]" ;;
-		esac
-	done
-	echo ")"
-	eshopts_pop
-}
-
 # @FUNCTION: ruby_implementation_command
 # @RETURN: the path to the given ruby implementation
 # @DESCRIPTION:
@@ -173,11 +156,29 @@ ruby_implementation_command() {
 	echo $(type -p ${_ruby_name} 2>/dev/null)
 }
 
+_RUBY_ATOMS_SAMELIB_RESULT=""
 _ruby_atoms_samelib() {
-	local atoms=$(_ruby_atoms_samelib_generic "$*")
+	_RUBY_ATOMS_SAMELIB_RESULT=""
 
+	eshopts_push -o noglob
+	local token
+	local atoms=" RUBYTARGET? ("
+	for token in $*; do
+		case "${token}" in
+			"||" | "(" | ")" | *"?")
+				atoms+=" ${token}" ;;
+			*])
+				atoms+=" ${token%[*}[RUBYTARGET(-),${token/*[}" ;;
+			*)
+				atoms+=" ${token}[RUBYTARGET(-)]" ;;
+		esac
+	done
+	atoms+=" ) "
+	eshopts_pop
+
+	local _ruby_implementation
 	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
-		echo "${atoms//RUBYTARGET/ruby_targets_${_ruby_implementation}}"
+		_RUBY_ATOMS_SAMELIB_RESULT+="${atoms//RUBYTARGET/ruby_targets_${_ruby_implementation}}"
 	done
 }
 
@@ -226,15 +227,15 @@ ruby_add_rdepend() {
 			;;
 	esac
 
-	local dependency=$(_ruby_atoms_samelib "$1")
+	_ruby_atoms_samelib "$1"
 
-	RDEPEND="${RDEPEND} $dependency"
+	RDEPEND="${RDEPEND} ${_RUBY_ATOMS_SAMELIB_RESULT}"
 
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
 	case ${EAPI} in
-		6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
-		*) BDEPEND="${BDEPEND} test? ( ${dependency} )" ;;
+		6) DEPEND="${DEPEND} test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
+		*) BDEPEND="${BDEPEND} test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
 	esac
 	if ! has test "$IUSE"; then
 		IUSE+=" test"
@@ -273,11 +274,11 @@ ruby_add_bdepend() {
 			;;
 	esac
 
-	local dependency=$(_ruby_atoms_samelib "$1")
+	_ruby_atoms_samelib "$1"
 
 	case ${EAPI} in
-		6) DEPEND="${DEPEND} $dependency" ;;
-		*) BDEPEND="${BDEPEND} $dependency" ;;
+		6) DEPEND="${DEPEND} ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
+		*) BDEPEND="${BDEPEND} ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
 	esac
 	RDEPEND="${RDEPEND}"
 }
@@ -300,9 +301,9 @@ ruby_add_depend() {
 		*) die "bad number of arguments to $0" ;;
 	esac
 
-	local dependency=$(_ruby_atoms_samelib "$1")
+	_ruby_atoms_samelib "$1"
 
-	DEPEND="${DEPEND} $dependency"
+	DEPEND="${DEPEND} ${_RUBY_ATOMS_SAMELIB_RESULT}"
 }
 
 # @FUNCTION: ruby_get_use_implementations
