@@ -29,6 +29,12 @@ RDEPEND="
 	>=dev-python/jsonschema-specifications-2023.3.4[${PYTHON_USEDEP}]
 "
 
+BDEPEND="
+	test? (
+		dev-python/responses[${PYTHON_USEDEP}]
+	)
+"
+
 distutils_enable_tests pytest
 
 src_prepare() {
