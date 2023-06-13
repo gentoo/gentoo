@@ -71,10 +71,13 @@ _PYPI_ECLASS=1
 # via _PYPI_NORMALIZED_NAME variable.
 _pypi_normalize_name() {
 	local name=${1}
-	local shopt_save=$(shopt -p extglob)
-	shopt -s extglob
-	name=${name//+([._-])/_}
-	${shopt_save}
+	if shopt -p -q extglob; then
+		name=${name//+([._-])/_}
+	else
+		shopt -s extglob
+		name=${name//+([._-])/_}
+		shopt -u extglob
+	fi
 	_PYPI_NORMALIZED_NAME="${name,,}"
 }
 
