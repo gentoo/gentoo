@@ -392,7 +392,7 @@ fi
 
 _ruby_invoke_environment() {
 	old_S=${S}
-	if [ -z "${RUBY_S}" ]; then
+	if [[ -z ${RUBY_S} ]]; then
 		sub_S=${P}
 	else
 		sub_S=${RUBY_S}
@@ -728,7 +728,7 @@ ruby-ng_rspec() {
 
 	# Explicitly pass the expected spec directory since the versioned
 	# rspec wrappers don't handle this automatically.
-	if [ ${#@} -eq 0 ]; then
+	if [[ $# -eq 0 ]]; then
 		files="spec"
 	fi
 
