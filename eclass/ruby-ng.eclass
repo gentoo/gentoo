@@ -325,9 +325,20 @@ ruby_get_use_implementations() {
 ruby_get_use_targets() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_ruby_get_all_impls
+	_ruby_get_use_targets
+	echo "${_RUBY_GET_USE_TARGETS}"
+}
+
+# @FUNCTION: _ruby_get_use_targets
+# @INTERNAL
+# @DESCRIPTION:
+# Gets an array of ruby use targets that the ebuild sets
+_RUBY_GET_USE_TARGETS=""
+_ruby_get_use_targets() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local impls="${_RUBY_GET_ALL_IMPLS[@]}"
-	echo "${impls//ruby/ruby_targets_ruby}"
+	_RUBY_GET_USE_TARGETS="${impls//ruby/ruby_targets_ruby}"
 }
 
 # @FUNCTION: ruby_implementations_depend
@@ -346,27 +357,36 @@ ruby_get_use_targets() {
 # ...
 # DEPEND="ruby? ( $(ruby_implementations_depend) )"
 # RDEPEND="${DEPEND}"
+_RUBY_IMPLEMENTATIONS_DEPEND=""
 ruby_implementations_depend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	_ruby_implementations_depend
+	echo "${_RUBY_IMPLEMENTATIONS_DEPEND}"
+}
+
+_ruby_implementations_depend() {
+	local depend _ruby_implementation
 	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		depend="${depend}${depend+ }ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
 	done
-	echo "${depend}"
+	_RUBY_IMPLEMENTATIONS_DEPEND="${depend}"
 }
 
 _ruby_get_all_impls
+_ruby_get_use_targets
+_ruby_implementations_depend
 
-IUSE+=" $(ruby_get_use_targets)"
+IUSE+=" ${_RUBY_GET_USE_TARGETS}"
 # If you specify RUBY_OPTIONAL you also need to take care of
 # ruby useflag and dependency.
 if [[ ${RUBY_OPTIONAL} != yes ]]; then
-	DEPEND="${DEPEND} $(ruby_implementations_depend)"
-	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
-	REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
+	DEPEND="${DEPEND} ${_RUBY_IMPLEMENTATIONS_DEPEND}"
+	RDEPEND="${RDEPEND} ${_RUBY_IMPLEMENTATIONS_DEPEND}"
+	REQUIRED_USE+=" || ( ${_RUBY_GET_USE_TARGETS} )"
 	case ${EAPI} in
 		6) ;;
-		*) BDEPEND="${BDEPEND} $(ruby_implementations_depend)" ;;
+		*) BDEPEND="${BDEPEND} ${_RUBY_IMPLEMENTATIONS_DEPEND}" ;;
 	esac
 fi
 
