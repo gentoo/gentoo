@@ -100,14 +100,14 @@ src_test() {
 }
 
 src_install() {
-	multibuild_foreach_variant cmake_src_install
-
-	if use doc; then
-		pushd "${BUILD_DIR}" >/dev/null || die
-		doxygen Doxyfile || die
-		dodoc -r apidocs/html
-		popd >/dev/null || die
-	fi
+	myinstall() {
+		cmake_src_install
+		if use doc; then
+			cmake_build doc
+			dodoc -r "${BUILD_DIR}"/apidocs/html
+		fi
+	}
+	multibuild_foreach_variant myinstall
 
 	if use examples; then
 		dodoc -r "${S}"/examples
