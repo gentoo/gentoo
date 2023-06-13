@@ -29,6 +29,8 @@ RDEPEND="dev-db/qt5-sqlcipher
 DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0 )"
 
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+
 DOCS=(
 	README.md
 	Example-client-configuration-file.ini
