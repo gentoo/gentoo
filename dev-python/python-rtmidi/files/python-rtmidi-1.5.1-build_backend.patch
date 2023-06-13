@@ -1,0 +1,33 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,14 +1,14 @@
+ [build-system]
+-# https://thiblahute.gitlab.io/mesonpep517/
+-build-backend = "mesonpep517.buildapi"
++build-backend = "mesonpy"
+ requires = [
+     "cython",
+     "wheel",
+-    "mesonpep517 @ git+https://gitlab.com/SpotlightKid/mesonpep517.git@rtmidi",
++    "meson-python",
+     "ninja"
+ ]
+ 
+ [project]
++name = "python-rtmidi"
+ description = "A Python binding for the RtMidi C++ library implemented using Cython."
+ authors = [
+     { name="Christopher Arndt", email="info@chrisarndt.de" },
+@@ -41,12 +41,6 @@
+     "music",
+     "rtmidi",
+ ]
+-meson-python-option-name = "python"
+-meson-options = [
+-    "-Dwheel=true",
+-    "-Dverbose=true",
+-    "--buildtype=plain"
+-]
+ 
+ [project.license]
+ file = "LICENSE.md"
