@@ -229,13 +229,13 @@ ruby_add_rdepend() {
 
 	_ruby_atoms_samelib "$1"
 
-	RDEPEND="${RDEPEND} ${_RUBY_ATOMS_SAMELIB_RESULT}"
+	RDEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}"
 
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
 	case ${EAPI} in
-		6) DEPEND="${DEPEND} test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
-		*) BDEPEND="${BDEPEND} test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
+		6) DEPEND+=" test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
+		*) BDEPEND+=" test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
 	esac
 	if ! has test "$IUSE"; then
 		IUSE+=" test"
@@ -277,8 +277,8 @@ ruby_add_bdepend() {
 	_ruby_atoms_samelib "$1"
 
 	case ${EAPI} in
-		6) DEPEND="${DEPEND} ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
-		*) BDEPEND="${BDEPEND} ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
+		6) DEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
+		*) BDEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
 	esac
 	RDEPEND="${RDEPEND}"
 }
@@ -303,7 +303,7 @@ ruby_add_depend() {
 
 	_ruby_atoms_samelib "$1"
 
-	DEPEND="${DEPEND} ${_RUBY_ATOMS_SAMELIB_RESULT}"
+	DEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}"
 }
 
 # @FUNCTION: ruby_get_use_implementations
@@ -381,12 +381,12 @@ IUSE+=" ${_RUBY_GET_USE_TARGETS}"
 # If you specify RUBY_OPTIONAL you also need to take care of
 # ruby useflag and dependency.
 if [[ ${RUBY_OPTIONAL} != yes ]]; then
-	DEPEND="${DEPEND} ${_RUBY_IMPLEMENTATIONS_DEPEND}"
-	RDEPEND="${RDEPEND} ${_RUBY_IMPLEMENTATIONS_DEPEND}"
+	DEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}"
+	RDEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}"
 	REQUIRED_USE+=" || ( ${_RUBY_GET_USE_TARGETS} )"
 	case ${EAPI} in
 		6) ;;
-		*) BDEPEND="${BDEPEND} ${_RUBY_IMPLEMENTATIONS_DEPEND}" ;;
+		*) BDEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}" ;;
 	esac
 fi
 
