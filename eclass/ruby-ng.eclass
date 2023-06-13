@@ -183,11 +183,11 @@ _ruby_wrap_conditions() {
 	local conditions="$1"
 	local atoms="$2"
 
-	for condition in $conditions; do
+	for condition in ${conditions}; do
 		atoms="${condition}? ( ${atoms} )"
 	done
 
-	echo "$atoms"
+	echo "${atoms}"
 }
 
 # @FUNCTION: ruby_add_rdepend
@@ -322,11 +322,9 @@ ruby_get_use_implementations() {
 ruby_get_use_targets() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local t implementation
-	for implementation in $(_ruby_get_all_impls); do
-		t+=" ruby_targets_${implementation}"
-	done
-	echo $t
+
+	local impls="$(_ruby_get_all_impls)"
+	echo "${impls//ruby/ruby_targets_ruby}"
 }
 
 # @FUNCTION: ruby_implementations_depend
