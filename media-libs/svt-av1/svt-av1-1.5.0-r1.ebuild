@@ -37,6 +37,7 @@ multilib_src_configure() {
 		# .. and https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/.gitlab/workflows/linux/.gitlab-ci.yml implies it's all quite manual?
 		-DBUILD_TESTING=OFF
 		-DCMAKE_OUTPUT_DIRECTORY="${BUILD_DIR}"
+		-DENABLE_AVX512=ON
 	)
 
 	[[ ${ABI} != amd64 ]] && mycmakeargs+=( -DCOMPILE_C_ONLY=ON )
