@@ -13,4 +13,7 @@
 		The user space tools to control, configure the DRBD driver, as well as integration programs and scripts
 		that glues the DRBD system to cluster management software and other system components.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">LINBIT/drbd-utils</remote-id>
+	</upstream>
 </pkgmetadata>
