@@ -25,6 +25,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	>=dev-python/pathable-0.4.0[${PYTHON_USEDEP}]
 	dev-python/isodate[${PYTHON_USEDEP}]
+	<dev-python/jsonschema-spec-0.2[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-spec-0.1.1[${PYTHON_USEDEP}]
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 	dev-python/parse[${PYTHON_USEDEP}]
