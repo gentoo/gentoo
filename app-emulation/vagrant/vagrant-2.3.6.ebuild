@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
@@ -29,23 +29,27 @@ RDEPEND="
 "
 
 ruby_add_rdepend "
-	>=dev-ruby/bcrypt_pbkdf-1.0.0
-	>=dev-ruby/childprocess-4.0.0
-	>=dev-ruby/ed25519-1.2.4
+	>=dev-ruby/bcrypt_pbkdf-1.1.0
+	>=dev-ruby/childprocess-4.1.0
+	>=dev-ruby/ed25519-1.3.0
 	dev-ruby/erubi
+	>=dev-ruby/googleapis-common-protos-types-1.3.3
+	dev-ruby/grpc
 	>=dev-ruby/hashicorp-checkpoint-0.1.5
-	>=dev-ruby/i18n-1.8:1
-	>=dev-ruby/listen-3.6
+	>=dev-ruby/i18n-1.12
+	>=dev-ruby/listen-3.7
 	<dev-ruby/log4r-1.1.11
 	>=dev-ruby/mime-types-3.3:*
-	>=dev-ruby/rubyzip-2.0
-	>=dev-ruby/net-scp-3.0.0
-	>=dev-ruby/net-sftp-3.0
-	>=dev-ruby/net-ssh-6.1.0:6
-	<dev-ruby/net-ssh-6.2.0:6
+	>=dev-ruby/net-ftp-0.2
+	>=dev-ruby/net-ssh-7.0.1
+	>=dev-ruby/net-sftp-4.0.0
+	>=dev-ruby/net-scp-4.0.0
+	>=dev-ruby/rexml-3.2.5
+	>=dev-ruby/rgl-0.5.7
+	>=dev-ruby/rubyzip-2.3.2
 	dev-ruby/rest-client:2
 	>=dev-ruby/vagrant_cloud-3.0.5
-	>=dev-ruby/rexml-3.2.5
+	>=dev-ruby/ipaddr-1.2.4
 "
 
 ruby_add_bdepend "
