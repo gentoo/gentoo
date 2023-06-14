@@ -75,7 +75,7 @@ if [[ -z ${_RUBY_NG_ECLASS} ]]; then
 _RUBY_NG_ECLASS=1
 
 [[ ${EAPI} == 6 ]] && inherit eqawarn toolchain-funcs
-inherit estack multilib ruby-utils
+inherit multilib ruby-utils
 
 # S is no longer automatically assigned when it doesn't exist.
 S="${WORKDIR}"
@@ -163,7 +163,8 @@ _RUBY_ATOMS_SAMELIB_RESULT=""
 _ruby_atoms_samelib() {
 	_RUBY_ATOMS_SAMELIB_RESULT=""
 
-	eshopts_push -o noglob
+	local shopt_save=$(shopt -p -o noglob)
+	set -f
 	local token
 	local atoms=" RUBYTARGET? ("
 	for token in $*; do
@@ -177,7 +178,7 @@ _ruby_atoms_samelib() {
 		esac
 	done
 	atoms+=" ) "
-	eshopts_pop
+	${shopt_save}
 
 	_ruby_set_globals_invalidate_if_stale
 	local _ruby_implementation
