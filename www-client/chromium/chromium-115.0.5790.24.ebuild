@@ -78,7 +78,7 @@ COMMON_SNAPSHOT_DEPEND="
 	!headless? (
 		dev-libs/glib:2
 		>=media-libs/alsa-lib-1.0.19:=
-		pulseaudio? ( media-sound/pulseaudio:= )
+		pulseaudio? ( media-libs/libpulse:= )
 		sys-apps/pciutils:=
 		kerberos? ( virtual/krb5 )
 		vaapi? ( >=media-libs/libva-2.7:=[X?,wayland?] )
