@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
+MY_P=${P/_/-}
 DESCRIPTION="Service identity verification for pyOpenSSL"
 HOMEPAGE="
 	https://github.com/pyca/service-identity/
@@ -15,9 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/pyca/service-identity/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
-S=${WORKDIR}/${P/_/-}
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
