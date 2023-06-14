@@ -25,7 +25,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
-		dev-python/service_identity[${PYTHON_USEDEP}]
+		dev-python/service-identity[${PYTHON_USEDEP}]
 	)
 "
 

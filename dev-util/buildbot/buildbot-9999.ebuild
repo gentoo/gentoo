@@ -36,7 +36,7 @@ RDEPEND="
 	dev-util/buildbot-worker[${PYTHON_USEDEP}]
 	crypt? (
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
-		dev-python/service_identity[${PYTHON_USEDEP}]
+		dev-python/service-identity[${PYTHON_USEDEP}]
 		|| (
 			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},ssl(-)]
 			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},crypt(-)]

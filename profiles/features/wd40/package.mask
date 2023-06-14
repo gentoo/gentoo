@@ -58,7 +58,7 @@ dev-python/requests-oauthlib
 dev-python/rpds-py
 dev-python/secretstorage
 dev-python/selenium
-dev-python/service_identity
+dev-python/service-identity
 dev-python/setuptools-rust
 dev-python/spur
 dev-python/sshtunnel

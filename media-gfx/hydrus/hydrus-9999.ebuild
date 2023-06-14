@@ -53,7 +53,7 @@ RDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
-		dev-python/service_identity[${PYTHON_USEDEP}]
+		dev-python/service-identity[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 		media-libs/opencv[python,png,jpeg,${PYTHON_USEDEP}]
