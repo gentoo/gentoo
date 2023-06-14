@@ -34,6 +34,9 @@ RESTRICT="
 	!picojson? ( test )
 	!test? ( test )
 "
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-0.6.0-gcc13.patch
+)
 DOCS=( README.md docs/{faqs,ssl,traits}.md )
 
 src_prepare() {
