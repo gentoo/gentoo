@@ -102,8 +102,9 @@ ruby_implementation_depend() {
 # @DESCRIPTION:
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
-_RUBY_GET_ALL_IMPLS=()
 _ruby_get_all_impls() {
+	_RUBY_GET_ALL_IMPLS=()
+
 	local i found_valid_impl
 	for i in ${USE_RUBY}; do
 		case ${i} in
@@ -131,6 +132,8 @@ _ruby_get_all_impls() {
 # more complex dependencies.
 ruby_samelib() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	_ruby_set_globals_invalidate_if_stale
 
 	local res=
 	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
@@ -176,6 +179,7 @@ _ruby_atoms_samelib() {
 	atoms+=" ) "
 	eshopts_pop
 
+	_ruby_set_globals_invalidate_if_stale
 	local _ruby_implementation
 	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		_RUBY_ATOMS_SAMELIB_RESULT+="${atoms//RUBYTARGET/ruby_targets_${_ruby_implementation}}"
@@ -227,6 +231,7 @@ ruby_add_rdepend() {
 			;;
 	esac
 
+	_ruby_set_globals_invalidate_if_stale
 	_ruby_atoms_samelib "$1"
 
 	RDEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}"
@@ -274,6 +279,7 @@ ruby_add_bdepend() {
 			;;
 	esac
 
+	_ruby_set_globals_invalidate_if_stale
 	_ruby_atoms_samelib "$1"
 
 	case ${EAPI} in
@@ -300,6 +306,7 @@ ruby_add_depend() {
 		*) die "bad number of arguments to $0" ;;
 	esac
 
+	_ruby_set_globals_invalidate_if_stale
 	_ruby_atoms_samelib "$1"
 
 	DEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}"
@@ -310,6 +317,8 @@ ruby_add_depend() {
 # Gets an array of ruby use targets enabled by the user
 ruby_get_use_implementations() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	_ruby_set_globals_invalidate_if_stale
 
 	local i implementation
 	for implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
@@ -324,6 +333,7 @@ ruby_get_use_implementations() {
 ruby_get_use_targets() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	_ruby_set_globals_invalidate_if_stale
 	_ruby_get_use_targets
 	echo "${_RUBY_GET_USE_TARGETS}"
 }
@@ -335,6 +345,8 @@ ruby_get_use_targets() {
 _RUBY_GET_USE_TARGETS=""
 _ruby_get_use_targets() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	_ruby_set_globals_invalidate_if_stale
 
 	local impls="${_RUBY_GET_ALL_IMPLS[@]}"
 	_RUBY_GET_USE_TARGETS="${impls//ruby/ruby_targets_ruby}"
@@ -360,11 +372,14 @@ _RUBY_IMPLEMENTATIONS_DEPEND=""
 ruby_implementations_depend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	_ruby_set_globals_invalidate_if_stale
 	_ruby_implementations_depend
 	echo "${_RUBY_IMPLEMENTATIONS_DEPEND}"
 }
 
 _ruby_implementations_depend() {
+	_ruby_set_globals_invalidate_if_stale
+
 	local depend _ruby_implementation
 	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		depend="${depend}${depend+ }ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
@@ -372,9 +387,24 @@ _ruby_implementations_depend() {
 	_RUBY_IMPLEMENTATIONS_DEPEND="${depend}"
 }
 
-_ruby_get_all_impls
-_ruby_get_use_targets
-_ruby_implementations_depend
+_ruby_set_globals() {
+	_RUBY_SET_GLOBALS_USE_RUBY="${USE_RUBY}"
+	_ruby_get_all_impls
+	_ruby_get_use_targets
+	_ruby_implementations_depend
+}
+
+_ruby_set_globals_invalidate_if_stale() {
+	# Packages may try to restrict their test dependencies to ease bootstrapping/porting
+	# if they're not yet available for a newer Ruby implementation by setting
+	# USE_RUBY="<some subset of original USE_RUBY>" ruby_add_bdepend ...
+	if [[ ${_RUBY_SET_GLOBALS_USE_RUBY} != ${USE_RUBY} && -z ${_RUBY_SET_GLOBALS_INVALIDATING} ]] ; then
+		local _RUBY_SET_GLOBALS_INVALIDATING=1
+		_ruby_set_globals
+	fi
+}
+
+_ruby_set_globals
 
 IUSE+=" ${_RUBY_GET_USE_TARGETS}"
 # If you specify RUBY_OPTIONAL you also need to take care of
@@ -434,6 +464,8 @@ _ruby_invoke_environment() {
 }
 
 _ruby_each_implementation() {
+	_ruby_set_globals_invalidate_if_stale
+
 	local invoked=no
 	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		# only proceed if it's requested
