@@ -16,6 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ctags"
 
+# Tests can only be run from a git repository so they are not included in
+# source distributions.
+RESTRICT="test"
+
 RDEPEND="
 	>=dev-python/dulwich-0.19.3[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
@@ -24,9 +28,6 @@ RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
 	ctags? ( dev-python/python-ctags3[${PYTHON_USEDEP}] )
 "
-
-# The tests can only be run from a git repository
-# so they are not included in the source distributions
 
 python_install_all() {
 	distutils-r1_python_install_all
