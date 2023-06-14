@@ -105,6 +105,8 @@ ruby_implementation_depend() {
 _ruby_get_all_impls() {
 	_RUBY_GET_ALL_IMPLS=()
 
+	# XXX: Please update _ruby_get_use_targets if adding a non-'ruby*'
+	# target.
 	local i found_valid_impl
 	for i in ${USE_RUBY}; do
 		case ${i} in
@@ -350,6 +352,7 @@ _ruby_get_use_targets() {
 	_ruby_set_globals_invalidate_if_stale
 
 	local impls="${_RUBY_GET_ALL_IMPLS[@]}"
+	# XXX: This assumes all targets begin with 'ruby'.
 	_RUBY_GET_USE_TARGETS="${impls//ruby/ruby_targets_ruby}"
 }
 
