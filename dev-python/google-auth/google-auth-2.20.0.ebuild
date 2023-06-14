@@ -40,11 +40,16 @@ BDEPEND="
 		dev-python/pyu2f[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
-		<dev-python/urllib3-2[${PYTHON_USEDEP}]
+		>=dev-python/urllib3-2[${PYTHON_USEDEP}]
 	)
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/googleapis/google-auth-library-python/pull/1290
+	"${FILESDIR}"/google-auth-2.20.0-urllib3-2.patch
+)
 
 EPYTEST_IGNORE=(
 	# these are compatibility tests with oauth2client
