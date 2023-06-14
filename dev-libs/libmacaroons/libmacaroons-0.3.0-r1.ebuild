@@ -22,7 +22,10 @@ BDEPEND=""
 
 S="${WORKDIR}"/${PN}-releases-${PV}
 
-PATCHES=( "${FILESDIR}"/${P}-json-c.patch )
+PATCHES=(
+		"${FILESDIR}"/${P}-json-c.patch
+		"${FILESDIR}"/${P}-no-python.patch
+)
 
 src_prepare() {
 	default
@@ -30,7 +33,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --disable-python-bindings --enable-json-support
+	econf --enable-json-support
 }
 
 src_install() {
