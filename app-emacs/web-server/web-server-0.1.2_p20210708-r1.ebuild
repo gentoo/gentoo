@@ -9,12 +9,19 @@ inherit elisp
 
 DESCRIPTION="Web server running Emacs Lisp handlers"
 HOMEPAGE="https://github.com/eschulte/emacs-web-server/"
-SRC_URI="https://github.com/eschulte/emacs-${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/emacs-${PN}-${COMMIT}
+
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/eschulte/emacs-${PN}.git"
+else
+	SRC_URI="https://github.com/eschulte/emacs-${PN}/archive/${COMMIT}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}"/emacs-${PN}-${COMMIT}
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 BDEPEND="sys-apps/texinfo"
 
@@ -35,7 +42,7 @@ src_install() {
 	elisp_src_install
 
 	doinfo doc/${PN}.info
-	dodoc -r doc/${PN}
+	dodoc doc/${PN}_html/*
 
 	insinto ${SITEETC}/${PN}
 	doins -r examples
