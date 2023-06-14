@@ -34,6 +34,8 @@ DOCS=( changelog README.md )
 PATCHES=(
 	"${FILESDIR}/${P}-nomancompress.patch"
 	"${FILESDIR}/${P}-fix-gcc91.patch"
+	"${FILESDIR}/${P}-fix-sse2.patch"
+	"${FILESDIR}/${P}-fix-atomic.patch"
 )
 
 src_prepare() {
