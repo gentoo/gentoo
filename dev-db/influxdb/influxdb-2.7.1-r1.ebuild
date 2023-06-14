@@ -240,7 +240,7 @@ src_install() {
 pkg_postinst() {
 	elog "Upgrading from InfluxDB1.x requires migration of time series data."
 	elog "See https://docs.influxdata.com/influxdb/v2.7/upgrade/v1-to-v2/"
-	elog "Keep in mind that some applications not compatible with InfluxDB 2.x
+	elog "Keep in mind that some applications not compatible with InfluxDB 2.x"
 	elog "may stop working."
 
 	ewarn "The InfluxDB command line client has been moved to dev-db/influx-cli"
