@@ -39,7 +39,6 @@ if [[ ${PV} == *_p* ]] ; then
 	done
 
 	unset patch_url_base my_patch_index mangled_patch_ver
-
 fi
 
 S="${WORKDIR}/${MY_P}"
