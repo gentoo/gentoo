@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Method of four russian for inversion (M4RI)"
-HOMEPAGE="https://bitbucket.org/malb/m4ri"
+HOMEPAGE="https://github.com/malb/m4ri"
 SRC_URI="https://bitbucket.org/malb/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2+"
