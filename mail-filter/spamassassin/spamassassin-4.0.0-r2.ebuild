@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="berkdb cron ipv6 ldap mysql postgres qmail sqlite ssl test"
 RESTRICT="!test? ( test )"
 
