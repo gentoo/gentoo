@@ -10,7 +10,10 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="Low and high level wrappers around the GSSAPI C libraries"
-HOMEPAGE="https://github.com/pythongssapi/python-gssapi https://pypi.org/project/gssapi/"
+HOMEPAGE="
+	https://github.com/pythongssapi/python-gssapi/
+	https://pypi.org/project/gssapi/
+"
 SRC_URI="
 	https://github.com/pythongssapi/python-gssapi/releases/download/v${PV}/python-${P}.tar.gz
 		-> ${P}.gh.tar.gz
@@ -27,7 +30,7 @@ RDEPEND="
 "
 
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	virtual/krb5
 	test? (
 		dev-python/k5test[${PYTHON_USEDEP}]
