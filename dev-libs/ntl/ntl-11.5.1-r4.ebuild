@@ -47,12 +47,6 @@ src_configure() {
 	# may lead to worse performance." So we are probably not missing out
 	# on much.
 	#
-	# The NATIVE=on option adds "-march=native" to CXXFLAGS and should
-	# not be enabled on Gentoo, but is currently necessary for NTL's CPU
-	# feature detection to work (bug 815775). See the upstream issue,
-	#
-	#  https://github.com/libntl/ntl/issues/22
-	#
 	perl DoConfig \
 		PREFIX="${EPREFIX}"/usr \
 		LIBDIR="${EPREFIX}"/usr/$(get_libdir) \
@@ -67,7 +61,7 @@ src_configure() {
 		NTL_GF2X_LIB=on \
 		NTL_THREADS=$(usex threads on off) \
 		NTL_ENABLE_AVX_FFT=off \
-		NATIVE=on \
+		NATIVE=off \
 		|| die "DoConfig failed"
 
 	if use doc; then
