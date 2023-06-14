@@ -1,0 +1,17 @@
+Refer: http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-bsp/apmd/apmd/wexitcode.patch
+Bug: https://bugs.gentoo.org/898538
+--- a/apmd.c
++++ b/apmd.c
+@@ -55,6 +55,12 @@
+ #define MINIMUM_RATE_CALC_TIME  120
+ #endif
+ 
++#ifndef _POSIX_SOURCE
++#define __WCOREFLAG  0200
++#define __WCOREDUMP(x)  (_W_INT(x) & __WCOREFLAG)
++#define __W_EXITCODE(ret, sig) ((ret) << 8 | (sig))
++#endif
++
+ /*
+  * For the verbosity level feature to be useful,
+  * we rely on the fact that syslog.h assigns adjacent
