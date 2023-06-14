@@ -360,6 +360,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-114-compiler.patch"
 		"${FILESDIR}/chromium-114-gcc12.patch"
 		"${FILESDIR}/chromium-114-sigsegv-dom.patch"
+		"${FILESDIR}/chromium-114-iwyu-gcc-13.patch"
 	)
 
 	if use ppc64 ; then
