@@ -15,6 +15,9 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="allegro cpu_flags_x86_sse debug dedicated +fluidsynth icu +lzma lzo +openmedia +png +sdl timidity +truetype +zlib"
 REQUIRED_USE="!dedicated? ( || ( allegro sdl ) )"
 
+# TODO: On master (after 13.x):
+# - icu-layoutex is gone (https://github.com/OpenTTD/OpenTTD/commit/81d4fa69990abbc18bd83d60658b0eedd66b7447)
+# - icu-le-hb looks like it might be too (https://github.com/OpenTTD/OpenTTD/issues/6922)
 RDEPEND="
 	dedicated? (
 		acct-group/openttd
