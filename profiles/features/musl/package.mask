@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Brahmajit Das <brahmajit.xyz@gmail.com> (2023-06-15)
+# The package uses innetgr which is not available in musl, bug 898556
+# The package is only for long-obsolete polkit policies anyway.
+sys-auth/polkit-pkla-compat
+
 # Mike Gilbert <floppym@gentoo.org> (2023-06-15)
 # Reverse entry from base profile.
 -sys-apps/musl-locales
