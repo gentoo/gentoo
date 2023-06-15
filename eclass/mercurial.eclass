@@ -25,14 +25,6 @@ _MERCURIAL_ECLASS=1
 
 PROPERTIES+=" live"
 
-case ${EAPI:-0} in
-	7)
-		# For compatibiilty only (indirect inherits).
-		# Eclass itself doesn't need it.
-		inherit eutils
-		;;
-esac
-
 BDEPEND="dev-vcs/mercurial"
 
 # @ECLASS_VARIABLE: EHG_REPO_URI
