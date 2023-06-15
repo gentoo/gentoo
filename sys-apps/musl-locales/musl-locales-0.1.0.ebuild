@@ -13,6 +13,8 @@ LICENSE="LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="!sys-libs/glibc"
+
 src_configure() {
 	local mycmakeargs=(
 		-DLOCALE_PROFILE=OFF
