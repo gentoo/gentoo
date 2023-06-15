@@ -62,7 +62,7 @@ RDEPEND="${CDEPEND}
 
 DEPEND="${CDEPEND}
 		dev-lang/swig
-		virtual/jre
+		>=virtual/jre-11
 		virtual/pkgconfig"
 
 S="${WORKDIR}"/"${MY_P}"
