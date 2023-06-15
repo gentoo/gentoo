@@ -55,7 +55,12 @@ RDEPEND="${COMMON_DEPEND}
 	app-admin/sudo
 	dev-libs/libatasmart
 	net-misc/rsync
-	|| ( sys-boot/grub:2 sys-apps/systemd sys-apps/systemd-utils[boot] )
+	|| (
+		sys-boot/grub:2
+		sys-apps/systemd[gnuefi(-)]
+		sys-apps/systemd[boot(-)]
+		sys-apps/systemd-utils[boot]
+	)
 	sys-boot/os-prober
 	sys-fs/squashfs-tools
 	sys-libs/timezone-data
