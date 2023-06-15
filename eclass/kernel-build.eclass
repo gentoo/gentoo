@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -40,6 +40,8 @@ BDEPEND="
 	virtual/libelf
 	app-alternatives/yacc
 "
+
+IUSE="+strip"
 
 # @FUNCTION: kernel-build_src_configure
 # @DESCRIPTION:
@@ -83,7 +85,7 @@ kernel-build_src_configure() {
 		LD="${LD}"
 		AR="$(tc-getAR)"
 		NM="$(tc-getNM)"
-		STRIP=":"
+		STRIP="$(tc-getSTRIP)"
 		OBJCOPY="$(tc-getOBJCOPY)"
 		OBJDUMP="$(tc-getOBJDUMP)"
 
@@ -176,8 +178,18 @@ kernel-build_src_install() {
 		targets+=( dtbs_install )
 	fi
 
+	# Use the kernel build system to strip, this ensures the modules
+	# are stripped *before* they are signed or compressed.
+	local strip_args
+	if use strip; then
+		strip_args="--strip-unneeded"
+	fi
+	# Modules were already stripped by the kernel build system
+	dostrip -x /lib/modules
+
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${ED}" INSTALL_PATH="${ED}/boot" "${targets[@]}"
+		INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
+		INSTALL_PATH="${ED}/boot" "${targets[@]}"
 
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
@@ -216,6 +228,14 @@ kernel-build_src_install() {
 	doins build/{System.map,Module.symvers}
 	local image_path=$(dist-kernel_get_image_path)
 	cp -p "build/${image_path}" "${ED}${kernel_dir}/${image_path}" || die
+
+	# If a key was generated, copy it so external modules can be signed
+	local suffix
+	for suffix in pem x509; do
+		if [[ -f "build/certs/signing_key.${suffix}" ]]; then
+			cp -p "build/certs/signing_key.${suffix}" "${ED}${kernel_dir}/certs" || die
+		fi
+	done
 
 	# building modules fails with 'vmlinux has no symtab?' if stripped
 	use ppc64 && dostrip -x "${kernel_dir}/${image_path}"
