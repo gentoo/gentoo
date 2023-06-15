@@ -3,13 +3,15 @@
 
 EAPI=8
 
+DISABLE_AUTOFORMATTING="yes"
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit flag-o-matic java-pkg-opt-2 java-ant-2 python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
+inherit edo flag-o-matic java-pkg-opt-2 java-ant-2 python-any-r1
+inherit qmake-utils readme.gentoo-r1 systemd toolchain-funcs user-info
 
 DESCRIPTION="Open Source DVR and media center hub"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
-if [[ $(ver_cut 3) == "p" ]] ; then
+if [[ ${PV} == *_p* ]] ; then
 	MY_COMMIT="5824c588db24b4e71a7d94e829e6419f71089297"
 	SRC_URI="https://github.com/MythTV/mythtv/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	# mythtv and mythplugins are separate builds in the github MythTV project
@@ -19,20 +21,21 @@ else
 	# mythtv and mythplugins are separate builds in the github mythtv project
 	S="${WORKDIR}/${P}/mythtv"
 fi
-KEYWORDS="~amd64 ~x86"
+
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE_VIDEO_CAPTURE_DEVICES="v4l ieee1394 hdhomerun vbox ceton"
-IUSE="alsa asi autostart cdda cdr cec cpu_flags_ppc_altivec debug dvd dvb exif fftw jack java
-	+lame lcd libass lirc nvdec +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
-	+wrapper x264 x265 +xml xmltv +xvid +X zeroconf
-	${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
-
+IUSE="alsa asi autostart cdda cdr cec cpu_flags_ppc_altivec debug dvd dvb exif fftw jack java"
+IUSE+=" +lame lcd libass lirc nvdec +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx"
+IUSE+=" +wrapper x264 x265 +xml xmltv +xvid +X zeroconf"
+IUSE+=" ${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
 REQUIRED_USE="
 	cdr? ( cdda )
 "
+
 RDEPEND="
 	acct-user/mythtv
 	dev-libs/glib:2
@@ -83,7 +86,7 @@ RDEPEND="
 	lirc? ( app-misc/lirc )
 	nvdec? ( x11-drivers/nvidia-drivers )
 	opengl? ( dev-qt/qtopengl:5 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	systemd? ( sys-apps/systemd:= )
 	vaapi? ( media-libs/libva:= )
 	vdpau? ( x11-libs/libvdpau )
@@ -111,11 +114,6 @@ RDEPEND="
 		net-dns/avahi[mdnsresponder-compat]
 	)
 "
-BDEPEND="
-	virtual/pkgconfig
-	opengl? ( virtual/opengl )
-	python? ( ${PYTHON_DEPS} )
-"
 DEPEND="
 	${RDEPEND}
 	dev-lang/yasm
@@ -129,7 +127,12 @@ DEPEND="
 		dev-perl/Net-UPnP
 		dev-perl/XML-Simple
 	)
+"
+BDEPEND="
+	virtual/pkgconfig
+	opengl? ( virtual/opengl )
 	python? (
+		${PYTHON_DEPS}
 		$(python_gen_any_dep '
 			dev-python/python-dateutil[${PYTHON_USEDEP}]
 			dev-python/future[${PYTHON_USEDEP}]
@@ -140,101 +143,54 @@ DEPEND="
 		')
 	)
 "
-python_check_deps() {
-	use python || return 0
-	has_version "dev-python/python-dateutil[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/future[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/requests-cache[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/simplejson[${PYTHON_USEDEP}]"
-}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-33.1-libva.patch
 )
 
-DISABLE_AUTOFORMATTING="yes"
-DOC_CONTENTS="
-Support for metadata lookup changes is added. User configuration required.
-Details at: https://www.mythtv.org/wiki/Metadata_Lookup_Changes_March_2021
-
-Support for Python 2.7 is removed.
-
-If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
-is created if it does not already exist.
-You will be prompted for your MySQL root password.
-
-A mythtv user is maintained by acct-user/mythtv. An existing mythtv user
-may be modified to the configuration defined by acct-user/mythtv.
-The mythtv user's primary group is now mythtv. (formerly video)
-An existing mythtv user may be changed which may alter some functionality.
-If it breaks mythtv you may need to (choose one):
-	* Restore the original mythtv user
-	* Create custom acct-user/mythtv overlay for your system
-	* Fix you system to use mythtv as daemon only (recommended)
-Failure to emerge acct-user/mythtv indicates that the existing mythtv user
-is customized and not changed. Corrective action (choose one):
-	* Ignore emerge failure
-	* Create custom acct-user/mythtv overlay for your system
-	* Fix you system to use mythtv as daemon only
-	* Delete existing user and try again (dangerous)
-
-Mythtv is updated to use correct FHS/Gentoo policy paths.
-Updating mythtv installations may report:
-	* mythtv is in use, cannot update home
-	* There was an error when attempting to update the home directory for mythtv
-	* Please update it manually on your system (as root):
-	*       usermod -d "/var/lib/mythtv" "mythtv"
-This can be ignored. The previous default was "/home/mythtv".
-Use caution if you change the home directory.
-
-To have this machine operate as recording host for MythTV,
-mythbackend must be running. Run the following:
-rc-update add mythbackend default
-
-Your recordings folder must be owned 'mythtv'. e.g.
-chown -R mythtv /var/lib/mythtv
-
-Want mythfrontend to start automatically?
-Set USE=autostart. Details can be found at:
-https://dev.gentoo.org/~cardoe/mythtv/autostart.html
-"
+python_check_deps() {
+	use python || return 0
+	python_has_version "dev-python/python-dateutil[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/future[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/requests-cache[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/simplejson[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	use python && python-any-r1_pkg_setup
-	# The acct-user/mythtv package creates/manages the user 'mythtv'
 }
 
 src_prepare() {
 	default
 
-	# Perl bits need to go into vender_perl and not site_perl
+	# Perl bits need to go into vendor_perl and not site_perl
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \
 		-i "${S}"/bindings/perl/Makefile || die "Cannot convert site_perl to vendor_perl!"
 
 }
 
 src_configure() {
-	local -a myconf
+	local -a myconf=()
 
 	# Setup paths
-	myconf+=(--prefix="${EPREFIX}"/usr)
-	myconf+=(--libdir="${EPREFIX}"/usr/$(get_libdir))
-	myconf+=(--libdir-name=$(get_libdir))
-	myconf+=(--mandir="${EPREFIX}"/usr/share/man)
+	myconf+=( --prefix="${EPREFIX}"/usr )
+	myconf+=( --libdir="${EPREFIX}"/usr/$(get_libdir) )
+	myconf+=( --libdir-name=$(get_libdir) )
+	myconf+=( --mandir="${EPREFIX}"/usr/share/man )
 
 	if use debug; then
-		myconf+=(--compile-type=debug)
-		myconf+=(--disable-stripping) # FIXME: does not disable for all files, only for some
-		myconf+=(--enable-valgrind) # disables timeouts for valgrind memory debugging
+		myconf+=( --compile-type=debug )
+		myconf+=( --disable-stripping ) # FIXME: does not disable for all files, only for some
+		myconf+=( --enable-valgrind ) # disables timeouts for valgrind memory debugging
 	else
-		myconf+=(--compile-type=release)
+		myconf+=( --compile-type=release )
 	fi
 
 	# Build boosters
-	has ccache "${FEATURES}" || myconf+=(--disable-ccache)
-	has distcc "${FEATURES}" || myconf+=(--disable-distcc)
+	has ccache "${FEATURES}" || myconf+=( --disable-ccache )
+	has distcc "${FEATURES}" || myconf+=( --disable-distcc )
 
 	# CPU settings
 	# Mythtv's configure is borrowed from ffmpeg,
@@ -246,10 +202,10 @@ src_configure() {
 	local i
 	for i in $(get-flag march) $(get-flag mcpu) $(get-flag mtune) ; do
 		[[ "${i}" == "native" ]] && i="host" # bug #273421
-		myconf+=(--cpu="${i}")
+		myconf+=( --cpu="${i}" )
 		break
 	done
-	myconf+=($(use_enable cpu_flags_ppc_altivec altivec))
+	myconf+=( $(use_enable cpu_flags_ppc_altivec altivec) )
 
 	# Sound Output Support
 	myconf+=(
@@ -299,18 +255,18 @@ src_configure() {
 
 	# Bindings
 	if use perl && use python; then
-		myconf+=(--with-bindings=perl,python)
+		myconf+=( --with-bindings=perl,python )
 	elif use perl; then
-		myconf+=(--without-bindings=python)
-		myconf+=(--with-bindings=perl)
+		myconf+=( --without-bindings=python )
+		myconf+=( --with-bindings=perl )
 	elif use python; then
-		myconf+=(--without-bindings=perl)
-		myconf+=(--with-bindings=python)
+		myconf+=( --without-bindings=perl )
+		myconf+=( --with-bindings=python )
 	else
-		myconf+=(--without-bindings=perl,python)
+		myconf+=( --without-bindings=perl,python )
 	fi
-	use python && myconf+=(--python="${EPYTHON}")
-	myconf+=($(use_enable java bdjava))
+	use python && myconf+=( --python="${EPYTHON}" )
+	myconf+=( $(use_enable java bdjava) )
 
 	# External codec library options (used for mythffmpeg and streaming transcode)
 	# lame is required for some broadcasts for silence detection of commercials
@@ -324,19 +280,18 @@ src_configure() {
 	)
 
 	# Clean up DSO load times and other compiler bits
-	myconf+=(--enable-symbol-visibility)
-	myconf+=(--enable-pic)
+	myconf+=( --enable-symbol-visibility )
+	myconf+=( --enable-pic )
 
 	if tc-is-cross-compiler ; then
-		myconf+=(--enable-cross-compile --arch=$(tc-arch-kernel))
-		myconf+=(--cross-prefix="${CHOST}"-)
+		myconf+=( --enable-cross-compile --arch=$(tc-arch-kernel) )
+		myconf+=( --cross-prefix="${CHOST}"- )
 	fi
 
 	# econf sets these options that are not handled by configure:
 	# --build --host --infodir --localstatedir --sysconfdir
 
-	einfo "Running ./configure ${myconf[@]} - THIS MAY TAKE A WHILE."
-	./configure \
+	edo ./configure \
 		--prefix="${EPREFIX}/usr" \
 		--cc="$(tc-getCC)" \
 		--cxx="$(tc-getCXX)" \
@@ -345,8 +300,8 @@ src_configure() {
 		--extra-cflags="${CFLAGS}" \
 		--extra-cxxflags="${CXXFLAGS}" \
 		--extra-ldflags="${LDFLAGS}" \
-		--qmake=$(qt5_get_bindir)/qmake \
-		"${myconf[@]}" || die "Fail doing ./configure ${myconf[@]}"
+		--qmake="$(qt5_get_bindir)"/qmake \
+		"${myconf[@]}"
 }
 
 src_install() {
@@ -364,6 +319,7 @@ src_install() {
 		systemd_newunit "${FILESDIR}"/mythbackend.service-28 mythbackend.service
 	fi
 
+	# The acct-user/mythtv package creates/manages the user 'mythtv'
 	keepdir /etc/mythtv
 	fowners -R mythtv /etc/mythtv
 	keepdir /var/log/mythtv
