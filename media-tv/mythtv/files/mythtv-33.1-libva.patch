@@ -1,5 +1,5 @@
-diff --git a/mythtv/libs/libmythtv/libmythtv.pro b/mythtv/libs/libmythtv/libmythtv.pro
-index 0ab94a295c..08b4c4d335 100644
+https://bugs.gentoo.org/904437
+https://github.com/MythTV/mythtv/pull/760
 --- a/libs/libmythtv/libmythtv.pro
 +++ b/libs/libmythtv/libmythtv.pro
 @@ -538,7 +538,7 @@ using_frontend {
@@ -37,8 +37,6 @@ index 0ab94a295c..08b4c4d335 100644
          }
  
          !win32-msvc* {
-diff --git a/mythtv/libs/libmythtv/opengl/mythvaapiinterop.cpp b/mythtv/libs/libmythtv/opengl/mythvaapiinterop.cpp
-index 5f92a6beb0..b87ed0da35 100644
 --- a/libs/libmythtv/opengl/mythvaapiinterop.cpp
 +++ b/libs/libmythtv/opengl/mythvaapiinterop.cpp
 @@ -8,8 +8,12 @@
@@ -85,8 +83,6 @@ index 5f92a6beb0..b87ed0da35 100644
          }
      }
      return nullptr;
-diff --git a/mythtv/libs/libmythtv/opengl/mythvaapiinterop.h b/mythtv/libs/libmythtv/opengl/mythvaapiinterop.h
-index 11358db236..2048d4586c 100644
 --- a/libs/libmythtv/opengl/mythvaapiinterop.h
 +++ b/libs/libmythtv/opengl/mythvaapiinterop.h
 @@ -25,9 +25,12 @@ struct AVFilterContext;
