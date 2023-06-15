@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 RDEPEND="
 	|| (
 		sys-apps/systemd-utils[udev]
-		sys-fs/udev
 		>=sys-fs/eudev-2.1.1
 		>=sys-apps/systemd-217
 	)
