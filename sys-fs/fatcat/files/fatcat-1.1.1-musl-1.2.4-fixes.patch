@@ -1,0 +1,107 @@
+From 12fdf46cb916b71ed8360250d50b9208684695c9 Mon Sep 17 00:00:00 2001
+From: Alex Kiernan <alex.kiernan@gmail.com>
+Date: Sun, 19 Jan 2020 16:03:21 +0000
+Subject: [PATCH 1/2] Use unistd.h not argp.h for all POSIX systems
+
+getopt(3) is found in unistd.h on all POSIX systems and we make no use
+of any of the GNU specific argp extensions. Include unistd.h directly to
+allow building with musl on linux, whilst retaining compatibility with
+glibc and other unices.
+
+Signed-off-by: Alex Kiernan <alex.kiernan@gmail.com>
+---
+ src/fatcat.cpp | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/src/fatcat.cpp b/src/fatcat.cpp
+index ce23ca0..b4427e4 100644
+--- a/src/fatcat.cpp
++++ b/src/fatcat.cpp
+@@ -1,14 +1,10 @@
+ #include <stdlib.h>
+-#include<string.h>
+-#ifdef __APPLE__
+-#include <unistd.h>
+-#else
++#include <string.h>
+ #ifdef __WIN__
+ #include <ctype.h>
+ #include "xgetopt/xgetopt.h"
+ #else
+-#include <argp.h>
+-#endif
++#include <unistd.h>
+ #endif
+ 
+ #include <stdio.h>
+
+From 29021747ac2e52a27013310a532439bfdf438c24 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Fri, 16 Dec 2022 18:54:55 -0800
+Subject: [PATCH 2/2] Enable 64bit off_t
+
+Ensure that off_t is always 64-bit by specifying -D_LARGEFILE_SOURCE
+-D_FILE_OFFSET_BITS=64 this will ensure that normal lseek() function is
+same as lseek64
+
+This helps compiling on latest musl where lseek64 and friends are not
+available
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ CMakeLists.txt         | 2 ++
+ src/core/FatSystem.cpp | 4 ++--
+ src/core/FatSystem.h   | 2 --
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d6a2649..4cdd1fb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,6 +34,8 @@ IF(DEFINE_WIN)
+ 	add_definitions(-D__WIN__)
+ ENDIF(DEFINE_WIN)
+ 
++add_definitions(-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64)
++
+ include_directories("${CMAKE_SOURCE_DIR}/src")
+ 
+ add_executable(fatcat "src/fatcat.cpp" ${ALL_SOURCES})
+diff --git a/src/core/FatSystem.cpp b/src/core/FatSystem.cpp
+index 79cda8c..1f52e82 100644
+--- a/src/core/FatSystem.cpp
++++ b/src/core/FatSystem.cpp
+@@ -90,7 +90,7 @@ int FatSystem::readData(unsigned long long address, char *buffer, int size)
+         cerr << "! Trying to read outside the disk" << endl;
+     }
+ 
+-    lseek64(fd, globalOffset+address, SEEK_SET);
++    lseek(fd, globalOffset+address, SEEK_SET);
+ 
+     int n;
+     int pos = 0;
+@@ -112,7 +112,7 @@ int FatSystem::writeData(unsigned long long address, const char *buffer, int siz
+         throw string("Trying to write data while write mode is disabled");
+     }
+ 
+-    lseek64(fd, globalOffset+address, SEEK_SET);
++    lseek(fd, globalOffset+address, SEEK_SET);
+ 
+     int n;
+     int pos = 0;
+diff --git a/src/core/FatSystem.h b/src/core/FatSystem.h
+index cd3c914..f9f2ca3 100644
+--- a/src/core/FatSystem.h
++++ b/src/core/FatSystem.h
+@@ -11,11 +11,9 @@
+ 
+ #ifdef __APPLE__
+ #define O_LARGEFILE 0
+-#define lseek64 lseek
+ #endif
+ #ifdef __WIN__
+ #define O_LARGEFILE 0
+-#define lseek64 lseek
+ #endif
+ using namespace std;
+ 
