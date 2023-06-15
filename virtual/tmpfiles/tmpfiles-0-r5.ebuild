@@ -11,6 +11,11 @@ IUSE="systemd"
 RDEPEND="
 	!prefix-guest? (
 		systemd? ( sys-apps/systemd )
-		!systemd? ( sys-apps/systemd-utils[tmpfiles] )
+		!systemd? (
+			|| (
+				sys-apps/systemd-utils[tmpfiles]
+				sys-fs/eudev
+			)
+		)
 	)
 "
