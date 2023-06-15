@@ -30,7 +30,7 @@ LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
 IUSE="
 	X bzip2 doc elf kmem ipv6 lm-sensors mfd-rewrites minimal mysql
-	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat valgrind zlib
+	netlink pcap pci pcre perl python rpm selinux smux ssl tcpd ucd-compat valgrind zlib
 "
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -47,6 +47,7 @@ COMMON_DEPEND="
 	netlink? ( dev-libs/libnl:3 )
 	pcap? ( net-libs/libpcap )
 	pci? ( sys-apps/pciutils )
+	pcre? ( dev-libs/libpcre )
 	perl? ( dev-lang/perl:= )
 	python? (
 		$(python_gen_cond_dep '
@@ -147,6 +148,7 @@ src_configure() {
 		$(use_with netlink nl) \
 		$(use_with pcap) \
 		$(use_with pci) \
+		$(use_with pcre) \
 		$(use_with perl perl-modules INSTALLDIRS=vendor) \
 		$(use_with python python-modules) \
 		$(use_with rpm) \
