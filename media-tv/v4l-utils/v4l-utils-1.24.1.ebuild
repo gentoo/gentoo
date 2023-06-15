@@ -45,6 +45,11 @@ BDEPEND="
 # Not really prebuilt but BPF objects make our QA checks go crazy.
 QA_PREBUILT="*/rc_keymaps/protocols/*.o"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.24.1-musl-include.patch
+	"${FILESDIR}"/${P}-musl-lfs.patch
+)
+
 check_llvm() {
 	if [[ ${MERGE_TYPE} != binary ]] && use bpf; then
 		local clang=${ac_cv_prog_CLANG:-${CLANG:-clang}}
