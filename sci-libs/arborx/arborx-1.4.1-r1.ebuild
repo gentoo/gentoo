@@ -24,6 +24,14 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/ArborX-${PV}
 
+src_prepare() {
+	default
+	cmake_src_prepare
+
+	# replace hardcoded "lib/" directory:
+	sed -i -e "s#lib/#$(get_libdir)/#g" CMakeLists.txt || die "sed failed"
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DARBORX_ENABLE_MPI="$(usex mpi)"
