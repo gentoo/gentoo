@@ -44,7 +44,7 @@ DEPEND="
 	ssl? ( >=dev-libs/openssl-1:= )
 	systemd? ( >=sys-apps/systemd-253 )
 	tcpd? ( sys-apps/tcp-wrappers )
-	usb? ( virtual/libusb )
+	usb? ( virtual/libusb:1 )
 	virtual/udev
 	xml? ( >=net-libs/neon-0.25.0:= )
 	zeroconf? ( net-dns/avahi )
