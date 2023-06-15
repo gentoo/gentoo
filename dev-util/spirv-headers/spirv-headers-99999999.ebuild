@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Machine-readable files for the SPIR-V Registry"
-HOMEPAGE="https://www.khronos.org/registry/spir-v/ https://github.com/KhronosGroup/SPIRV-Headers"
+HOMEPAGE="https://registry.khronos.org/SPIR-V/ https://github.com/KhronosGroup/SPIRV-Headers"
 
 LICENSE="MIT"
 SLOT="0"
