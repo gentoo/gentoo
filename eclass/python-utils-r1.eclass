@@ -114,11 +114,18 @@ _python_verify_patterns() {
 _python_set_impls() {
 	local i
 
-	if ! declare -p PYTHON_COMPAT &>/dev/null; then
-		die 'PYTHON_COMPAT not declared.'
+	# TODO: drop BASH_VERSINFO check when we require EAPI 8
+	if [[ ${BASH_VERSINFO[0]} -ge 5 ]]; then
+		[[ ${PYTHON_COMPAT@a} == *a* ]]
+	else
+		[[ $(declare -p PYTHON_COMPAT) == "declare -a"* ]]
 	fi
-	if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
-		die 'PYTHON_COMPAT must be an array.'
+	if [[ ${?} -ne 0 ]]; then
+		if ! declare -p PYTHON_COMPAT &>/dev/null; then
+			die 'PYTHON_COMPAT not declared.'
+		else
+			die 'PYTHON_COMPAT must be an array.'
+		fi
 	fi
 
 	local obsolete=()
