@@ -17,8 +17,8 @@ S="${WORKDIR}/${PN}"
 
 DEPEND="
 	>=dev-libs/glib-2.32.1
-	>=gui-libs/gtk-3.4.0
 	>=sys-libs/gdbm-1.10
+	>=gui-libs/gtk-3.4.0
 	net-misc/modemmanager
 	appindicator? (
 		dev-libs/libappindicator
@@ -40,6 +40,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-nocompress-man.patch"
+	"${FILESDIR}/${P}-dns-entries-fix.patch"
 )
 
 pkg_postinst() {
