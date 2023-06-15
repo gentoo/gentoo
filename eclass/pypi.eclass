@@ -70,14 +70,12 @@ _PYPI_ECLASS=1
 # Internal normalization function, returns the result
 # via _PYPI_NORMALIZED_NAME variable.
 _pypi_normalize_name() {
-	local name=${1}
-	if shopt -p -q extglob; then
-		name=${name//+([._-])/_}
-	else
-		shopt -s extglob
-		name=${name//+([._-])/_}
-		shopt -u extglob
-	fi
+	# NB: it's fine to alter it unconditionally since this function is
+	# always called from a subshell or in global scope
+	# (via _pypi_set_globals)
+	shopt -s extglob
+	local name=${1//+([._-])/_}
+	shopt -u extglob
 	_PYPI_NORMALIZED_NAME="${name,,}"
 }
 
