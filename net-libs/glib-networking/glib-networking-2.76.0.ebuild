@@ -30,6 +30,10 @@ BDEPEND="
 	test? ( sys-apps/dbus )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.76.0-libproxy-0.5.patch
+)
+
 src_prepare() {
 	default
 	xdg_environment_reset
