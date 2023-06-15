@@ -9,8 +9,7 @@
 
 case ${EAPI} in
 	6) inherit epatch eutils ;; # eutils for eqawarn
-	7) inherit eutils ;; # not needed, but ebuilds may still rely on it
-	8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
