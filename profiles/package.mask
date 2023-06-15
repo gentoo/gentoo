@@ -45,12 +45,6 @@
 # Removal on 2023-07-12.  Bug #908378.
 dev-ruby/ruby-gtk2
 
-# Jimi Huotari <chiitoo@gentoo.org> (2023-06-10)
-# Mask to allow qt6 unmask.
-<dev-python/pyside6-6.5.0
-<dev-python/pyside6-tools-6.5.0
-<dev-python/shiboken6-6.5.0
-
 # Sam James <sam@gentoo.org> (2023-06-10)
 # Integrated into media-libs/gst-plugins-bad[vaapi]. Please use that instead.
 # Removal in 14 days.
