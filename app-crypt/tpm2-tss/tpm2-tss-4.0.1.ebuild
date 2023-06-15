@@ -39,6 +39,7 @@ BDEPEND="sys-apps/acl
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0-Dont-install-files-into-run.patch"
+	"${FILESDIR}/${PN}-4.0.1-Make-sysusers-and-tmpfiles-optional.patch"
 	)
 
 pkg_setup() {
