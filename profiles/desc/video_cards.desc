@@ -17,6 +17,7 @@ glint - VIDEO_CARDS setting to build driver for glint video cards
 i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
+lavapipe - VIDEO_CARDS setting to build Vulkan software rasterizer using LLVMpipe
 lima - VIDEO_CARDS setting to build driver for Mali 200/400 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
