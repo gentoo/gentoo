@@ -77,6 +77,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
 # @ECLASS_VARIABLE: GIT_CRATES
 # @DEFAULT_UNSET
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Bash associative array containing all of the crates that are to be
 # fetched via git.  It is used by cargo_crate_uris.
