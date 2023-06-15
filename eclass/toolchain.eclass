@@ -1284,6 +1284,10 @@ toolchain_src_configure() {
 
 	if in_iuse pie ; then
 		confgcc+=( $(use_enable pie default-pie) )
+
+		if tc_version_is_at_least 14.0.0_pre20230612 ${PV} ; then
+			confgcc+=( --enable-host-pie )
+		fi
 	fi
 
 	if in_iuse ssp ; then
