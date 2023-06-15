@@ -68,7 +68,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # "
 # inherit cargo
 # ...
-# SRC_URI="$(cargo_crate_uris)"
+# SRC_URI="${CARGO_CRATE_URIS}"
 # @CODE
 
 # @ECLASS_VARIABLE: GIT_CRATES
@@ -162,31 +162,31 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # group, and then switch over to building with FEATURES=userpriv.
 # Or vice-versa.
 
-# @FUNCTION: cargo_crate_uris
+# @ECLASS_VARIABLE: CARGO_CRATE_URIS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# List of URIs to put in SRC_URI created from CRATES variable.
+
+# @FUNCTION: _cargo_set_crate_uris
+# @USAGE: <crates>
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
 # Constructs a list of crates from its arguments.
 # If no arguments are provided, it uses the CRATES variable.
-cargo_crate_uris() {
+# The value is set as CARGO_CRATE_URIS.
+_cargo_set_crate_uris() {
 	local -r regex='^([a-zA-Z0-9_\-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
-	local crate crates
+	local crates=${1}
+	local crate
 
-	if [[ -n ${@} ]]; then
-		crates="$@"
-	elif [[ -n ${CRATES} ]]; then
-		crates="${CRATES}"
-	else
-		eerror "CRATES variable is not defined and nothing passed as argument"
-		die "Can't generate SRC_URI from empty input"
-	fi
-
+	CARGO_CRATE_URIS=
 	for crate in ${crates}; do
 		local name version url
 		[[ $crate =~ $regex ]] || die "Could not parse name and version from crate: $crate"
 		name="${BASH_REMATCH[1]}"
 		version="${BASH_REMATCH[2]}"
 		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${crate}.crate"
-		echo "${url}"
+		CARGO_CRATE_URIS+="${url} "
 	done
 
 	local git_crates_type
@@ -214,11 +214,29 @@ cargo_crate_uris() {
 				;;
 			esac
 
-			printf -- '%s -> %s\n' "${crate_uri//%commit%/${commit}}" "${repo_name}-${commit}${repo_ext}.tar.gz"
+			CARGO_CRATE_URIS+="${crate_uri//%commit%/${commit}} -> ${repo_name}-${commit}${repo_ext}.tar.gz "
 		done
 	elif [[ -n ${git_crates_type} ]]; then
 		die "GIT_CRATE must be declared as an associative array"
 	fi
+}
+_cargo_set_crate_uris "${CRATES}"
+
+# @FUNCTION: cargo_crate_uris
+# @USAGE: [<crates>...]
+# @DESCRIPTION:
+# Generates the URIs to put in SRC_URI to help fetch dependencies.
+# Constructs a list of crates from its arguments.
+# If no arguments are provided, it uses the CRATES variable.
+cargo_crate_uris() {
+	local crates=${*-${CRATES}}
+	if [[ -z ${crates} ]]; then
+		eerror "CRATES variable is not defined and nothing passed as argument"
+		die "Can't generate SRC_URI from empty input"
+	fi
+
+	_cargo_set_crate_uris "${crates}"
+	echo "${CARGO_CRATE_URIS}"
 }
 
 # @FUNCTION: cargo_gen_config
