@@ -45,6 +45,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.29.23-pythran-parallel-install.patch"
 	# backport upstream fix e.g. for dev-python/pysimdjson on py3.12
 	"${FILESDIR}/${P}-py312-long.patch"
+	# should fix dev-python/symengine
+	# https://github.com/cython/cython/pull/5483
+	"${FILESDIR}/${P}-const-iter.patch"
 )
 
 distutils_enable_sphinx docs \
