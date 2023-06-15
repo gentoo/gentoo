@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KERNEL_IUSE_MODULES_SIGN=1
 inherit kernel-build toolchain-funcs
 
 MY_P=linux-${PV%.*}
