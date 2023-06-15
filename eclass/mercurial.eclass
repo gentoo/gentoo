@@ -3,7 +3,7 @@
 
 # @ECLASS: mercurial.eclass
 # @MAINTAINER:
-# No maintainer <maintainer-needed@gentoo.org.
+# No maintainer <maintainer-needed@gentoo.org>
 # @AUTHOR:
 # Next gen author: Krzysztof Pawlik <nelchael@gentoo.org>
 # Original author: Aron Griffis <agriffis@gentoo.org>
