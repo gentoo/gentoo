@@ -189,35 +189,35 @@ _cargo_set_crate_uris() {
 		CARGO_CRATE_URIS+="${url} "
 	done
 
-	local git_crates_type
-	git_crates_type="$(declare -p GIT_CRATES 2>&-)"
-	if [[ ${git_crates_type} == "declare -A "* ]]; then
-		local crate commit crate_uri crate_dir repo_ext feat_expr
+	if declare -p GIT_CRATES &>/dev/null; then
+		if [[ $(declare -p GIT_CRATES) == "declare -A"* ]]; then
+			local crate commit crate_uri crate_dir repo_ext feat_expr
 
-		for crate in "${!GIT_CRATES[@]}"; do
-			IFS=';' read -r crate_uri commit crate_dir <<< "${GIT_CRATES[${crate}]}"
+			for crate in "${!GIT_CRATES[@]}"; do
+				IFS=';' read -r crate_uri commit crate_dir <<< "${GIT_CRATES[${crate}]}"
 
-			case "${crate_uri}" in
-				https://github.com/*)
-					repo_ext=".gh"
-					repo_name="${crate_uri##*/}"
-					crate_uri="${crate_uri%/}/archive/%commit%.tar.gz"
-				;;
-				https://gitlab.com/*)
-					repo_ext=".gl"
-					repo_name="${crate_uri##*/}"
-					crate_uri="${crate_uri%/}/-/archive/%commit%/${repo_name}-%commit%.tar.gz"
-				;;
-				*)
-					repo_ext=
-					repo_name="${crate}"
-				;;
-			esac
+				case "${crate_uri}" in
+					https://github.com/*)
+						repo_ext=".gh"
+						repo_name="${crate_uri##*/}"
+						crate_uri="${crate_uri%/}/archive/%commit%.tar.gz"
+					;;
+					https://gitlab.com/*)
+						repo_ext=".gl"
+						repo_name="${crate_uri##*/}"
+						crate_uri="${crate_uri%/}/-/archive/%commit%/${repo_name}-%commit%.tar.gz"
+					;;
+					*)
+						repo_ext=
+						repo_name="${crate}"
+					;;
+				esac
 
-			CARGO_CRATE_URIS+="${crate_uri//%commit%/${commit}} -> ${repo_name}-${commit}${repo_ext}.tar.gz "
-		done
-	elif [[ -n ${git_crates_type} ]]; then
-		die "GIT_CRATE must be declared as an associative array"
+				CARGO_CRATE_URIS+="${crate_uri//%commit%/${commit}} -> ${repo_name}-${commit}${repo_ext}.tar.gz "
+			done
+		else
+			die "GIT_CRATE must be declared as an associative array"
+		fi
 	fi
 }
 _cargo_set_crate_uris "${CRATES}"
