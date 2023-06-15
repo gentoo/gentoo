@@ -59,12 +59,16 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # Bash string containing all crates that are to be downloaded.
 # It is used by cargo_crate_uris.
 #
+# Ideally, crate names and versions should be separated by a `@`
+# character.  A legacy syntax using hyphen is also supported but it is
+# much slower.
+#
 # Example:
 # @CODE
 # CRATES="
-# metal-1.2.3
-# bar-4.5.6
-# iron_oxide-0.0.1
+# metal@1.2.3
+# bar@4.5.6
+# iron_oxide@0.0.1
 # "
 # inherit cargo
 # ...
@@ -182,10 +186,16 @@ _cargo_set_crate_uris() {
 	CARGO_CRATE_URIS=
 	for crate in ${crates}; do
 		local name version url
-		[[ $crate =~ $regex ]] || die "Could not parse name and version from crate: $crate"
-		name="${BASH_REMATCH[1]}"
-		version="${BASH_REMATCH[2]}"
-		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${crate}.crate"
+		if [[ ${crate} == *@* ]]; then
+			name=${crate%@*}
+			version=${crate##*@}
+		else
+			[[ ${crate} =~ ${regex} ]] ||
+				die "Could not parse name and version from crate: ${crate}"
+			name="${BASH_REMATCH[1]}"
+			version="${BASH_REMATCH[2]}"
+		fi
+		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${name}-${version}.crate"
 		CARGO_CRATE_URIS+="${url} "
 	done
 
