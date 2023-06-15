@@ -15,7 +15,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/networkupstools/${PN}.git"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	SRC_URI="https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
 fi
 
