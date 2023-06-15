@@ -26,12 +26,12 @@ IUSE="pulseaudio wayland"
 # See bug #895722 and https://github.com/qtile/qtile/pull/3985 regarding
 # pywlroots-0.15 dep.
 RDEPEND="
-	>=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/cairocffi-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
 	dev-python/dbus-next[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/xcffib-0.10.1[${PYTHON_USEDEP}]
+	>=dev-python/xcffib-1.4.0[${PYTHON_USEDEP}]
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libnotify[introspection]
 	x11-libs/pango
