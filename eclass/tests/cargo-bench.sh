@@ -12,8 +12,9 @@ RUNS=3
 
 doit() {
 	for (( i = 0; i < ITERATIONS; i++ )); do
+		_cargo_set_crate_uris "${CRATES}"
 		SRC_URI="
-			$(cargo_crate_uris)
+			${CARGO_CRATE_URIS}
 		"
 	done
 }
@@ -102,6 +103,7 @@ CRATES="
 "
 
 inherit cargo
+
 timeit
 
 texit
