@@ -400,10 +400,10 @@ ruby_fakegem_binwrapper() {
 		# in the shebang, and we can actually avoid errors when
 		# calling the script by default.
 		local rubycmd=
-		for implementation in $(_ruby_get_all_impls); do
+		for implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 			# ignore non-enabled implementations
 			use ruby_targets_${implementation} || continue
-			if [ -z $rubycmd ]; then
+			if [[ -z ${rubycmd} ]]; then
 				# if no other implementation was set before, set it.
 				rubycmd="$(ruby_implementation_command ${implementation})"
 			else
