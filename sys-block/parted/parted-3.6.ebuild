@@ -45,6 +45,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3-atari.patch
 	# https://lists.gnu.org/archive/html/bug-parted/2022-02/msg00000.html
 	"${FILESDIR}"/${PN}-3.4-posix-printf.patch
+	# https://debbugs.gnu.org/61129
+	"${FILESDIR}"/${PN}-3.6-tests-unicode.patch
+	# https://debbugs.gnu.org/61128
+	"${FILESDIR}"/${PN}-3.6-tests-non-bash.patch
 )
 
 # false positive
@@ -52,7 +56,7 @@ QA_CONFIG_IMPL_DECL_SKIP="MIN"
 
 src_prepare() {
 	default
-	eautoconf
+	eautoreconf
 
 	touch doc/pt_BR/Makefile.in || die
 }
