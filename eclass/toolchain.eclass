@@ -22,7 +22,6 @@ _TOOLCHAIN_ECLASS=1
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-[[ ${EAPI} == 7 ]] && inherit eutils
 inherit edo flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
 tc_is_live() {
@@ -60,7 +59,6 @@ fi
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
-
 
 # @FUNCTION: tc_version_is_at_least
 # @USAGE: ver1 [ver2]
@@ -926,7 +924,6 @@ toolchain_src_configure() {
 	# 	)
 	# 	;;
 	# esac
-
 
 	### Cross-compiler options
 	if is_crosscompile ; then
