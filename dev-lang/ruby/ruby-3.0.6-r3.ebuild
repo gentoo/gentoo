@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 inherit autotools flag-o-matic multiprocessing
 
@@ -17,8 +17,8 @@ HOMEPAGE="https://www.ruby-lang.org/"
 SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc socks5 +ssl static-libs systemtap tk valgrind xemacs"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc rubytests socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
@@ -26,7 +26,7 @@ RDEPEND="
 	jemalloc? ( dev-libs/jemalloc:= )
 	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
 	ssl? (
-		dev-libs/openssl:0=
+		=dev-libs/openssl-1.1*:0=
 	)
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	systemtap? ( dev-util/systemtap )
@@ -48,32 +48,33 @@ DEPEND="
 "
 
 BUNDLED_GEMS="
-	>=dev-ruby/minitest-5.15.0[ruby_targets_ruby31(-)]
-	>=dev-ruby/power_assert-2.0.1[ruby_targets_ruby31(-)]
-	>=dev-ruby/rake-13.0.6[ruby_targets_ruby31(-)]
-	>=dev-ruby/rbs-2.1.0[ruby_targets_ruby31(-)]
-	>=dev-ruby/rexml-3.2.5[ruby_targets_ruby31(-)]
-	>=dev-ruby/rss-0.2.9[ruby_targets_ruby31(-)]
-	>=dev-ruby/test-unit-3.5.3[ruby_targets_ruby31(-)]
-	>=dev-ruby/typeprof-0.12.2[ruby_targets_ruby31(-)]
+	>=dev-ruby/minitest-5.14.2[ruby_targets_ruby30(-)]
+	>=dev-ruby/power_assert-1.2.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/rake-13.0.6-r2[ruby_targets_ruby30(-)]
+	>=dev-ruby/rbs-1.0.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/rexml-3.2.4[ruby_targets_ruby30(-)]
+	>=dev-ruby/rss-0.2.9[ruby_targets_ruby30(-)]
+	>=dev-ruby/test-unit-3.3.7[ruby_targets_ruby30(-)]
+	>=dev-ruby/typeprof-0.11.0[ruby_targets_ruby30(-)]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby31(-)]
-	>=dev-ruby/bundler-2.3.3[ruby_targets_ruby31(-)]
-	>=dev-ruby/did_you_mean-1.6.1[ruby_targets_ruby31(-)]
-	>=dev-ruby/json-2.6.1[ruby_targets_ruby31(-)]
-	rdoc? ( >=dev-ruby/rdoc-6.3.3[ruby_targets_ruby31(-)] )
+	virtual/rubygems[ruby_targets_ruby30(-)]
+	>=dev-ruby/bundler-2.2.15[ruby_targets_ruby30(-)]
+	>=dev-ruby/did_you_mean-1.5.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/json-2.5.1[ruby_targets_ruby30(-)]
+	rdoc? ( >=dev-ruby/rdoc-6.3.0[ruby_targets_ruby30(-)] )
 	xemacs? ( app-xemacs/ruby-modes )
 "
 
 src_prepare() {
-	eapply "${FILESDIR}"/"${SLOT}"/011*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
-		eapply "${FILESDIR}"/3.1/901-musl-*.patch
+		eapply "${FILESDIR}"/3.0/900-musl-*.patch
+		eapply "${FILESDIR}"/3.0/901-musl-*.patch
 	fi
 
 	einfo "Unbundling gems..."
@@ -88,12 +89,6 @@ src_prepare() {
 
 	einfo "Removing bundled libraries..."
 	rm -fr ext/fiddle/libffi-3.2.1 || die
-
-	# Remove tests that are known to fail or require a network connection
-	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
-	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb test/fiber/test_address_resolve.rb test/resolv/test_addr.rb \
-	   spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb|| die
-	sed -i -e '/def test_test/askip "Depends on system setup"' test/ruby/test_file_exhaustive.rb || die
 
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
@@ -123,7 +118,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local modules="win32,win32ole" myconf=
+	local modules= myconf=
 
 	# Ruby's build system does interesting things with MAKEOPTS and doesn't
 	# handle MAKEOPTS="-Oline" or similar well. Just filter it all out
@@ -207,7 +202,21 @@ src_compile() {
 }
 
 src_test() {
-	emake V=1 check
+	emake -j1 V=1 test
+
+	elog "Ruby's make test has been run. Ruby also ships with a make check"
+	elog "that cannot be run until after ruby has been installed."
+	elog
+	if use rubytests; then
+		elog "You have enabled rubytests, so they will be installed to"
+		elog "/usr/share/${PN}-${SLOT}/test. To run them you must be a user other"
+		elog "than root, and you must place them into a writeable directory."
+		elog "Then call: "
+		elog
+		elog "ruby${MY_SUFFIX} -C /location/of/tests runner.rb"
+	else
+		elog "Enable the rubytests USE flag to install the make check tests"
+	fi
 }
 
 src_install() {
@@ -256,6 +265,13 @@ src_install() {
 	fi
 
 	dodoc ChangeLog NEWS.md doc/NEWS* README*
+
+	if use rubytests; then
+		pushd test
+		insinto /usr/share/${PN}-${SLOT}/test
+		doins -r .
+		popd
+	fi
 }
 
 pkg_postinst() {

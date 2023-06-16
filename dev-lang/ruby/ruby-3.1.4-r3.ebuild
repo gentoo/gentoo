@@ -17,14 +17,14 @@ HOMEPAGE="https://www.ruby-lang.org/"
 SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
 	jemalloc? ( dev-libs/jemalloc:= )
-	jit? ( >=virtual/rust-1.58.1 )
+	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
 	ssl? (
 		dev-libs/openssl:0=
 	)
@@ -39,7 +39,7 @@ RDEPEND="
 	sys-libs/readline:0=
 	sys-libs/zlib
 	virtual/libcrypt:=
-	>=app-eselect/eselect-ruby-20221225
+	>=app-eselect/eselect-ruby-20201225
 "
 
 DEPEND="
@@ -48,39 +48,32 @@ DEPEND="
 "
 
 BUNDLED_GEMS="
-	>=dev-ruby/debug-1.7.1[ruby_targets_ruby32(-)]
-	>=dev-ruby/matrix-0.4.2[ruby_targets_ruby32(-)]
-	>=dev-ruby/minitest-5.16.3[ruby_targets_ruby32(-)]
-	>=dev-ruby/net-ftp-0.2.0[ruby_targets_ruby32(-)]
-	>=dev-ruby/net-imap-0.3.4[ruby_targets_ruby32(-)]
-	>=dev-ruby/net-pop-0.1.2[ruby_targets_ruby32(-)]
-	>=dev-ruby/net-smtp-0.3.3[ruby_targets_ruby32(-)]
-	>=dev-ruby/power_assert-2.0.3[ruby_targets_ruby32(-)]
-	>=dev-ruby/prime-0.1.2[ruby_targets_ruby32(-)]
-	>=dev-ruby/rake-13.0.6[ruby_targets_ruby32(-)]
-	>=dev-ruby/rbs-2.8.2[ruby_targets_ruby32(-)]
-	>=dev-ruby/rexml-3.2.5[ruby_targets_ruby32(-)]
-	>=dev-ruby/rss-0.2.9[ruby_targets_ruby32(-)]
-	>=dev-ruby/test-unit-3.5.7[ruby_targets_ruby32(-)]
-	>=dev-ruby/typeprof-0.21.3[ruby_targets_ruby32(-)]
+	>=dev-ruby/minitest-5.15.0[ruby_targets_ruby31(-)]
+	>=dev-ruby/power_assert-2.0.1[ruby_targets_ruby31(-)]
+	>=dev-ruby/rake-13.0.6-r2[ruby_targets_ruby31(-)]
+	>=dev-ruby/rbs-2.1.0[ruby_targets_ruby31(-)]
+	>=dev-ruby/rexml-3.2.5[ruby_targets_ruby31(-)]
+	>=dev-ruby/rss-0.2.9[ruby_targets_ruby31(-)]
+	>=dev-ruby/test-unit-3.5.3[ruby_targets_ruby31(-)]
+	>=dev-ruby/typeprof-0.12.2[ruby_targets_ruby31(-)]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby32(-)]
-	>=dev-ruby/bundler-2.3.3[ruby_targets_ruby32(-)]
-	>=dev-ruby/did_you_mean-1.6.1[ruby_targets_ruby32(-)]
-	>=dev-ruby/json-2.6.1[ruby_targets_ruby32(-)]
-	rdoc? ( >=dev-ruby/rdoc-6.3.3[ruby_targets_ruby32(-)] )
+	virtual/rubygems[ruby_targets_ruby31(-)]
+	>=dev-ruby/bundler-2.3.3[ruby_targets_ruby31(-)]
+	>=dev-ruby/did_you_mean-1.6.1[ruby_targets_ruby31(-)]
+	>=dev-ruby/json-2.6.1[ruby_targets_ruby31(-)]
+	rdoc? ( >=dev-ruby/rdoc-6.3.3[ruby_targets_ruby31(-)] )
 	xemacs? ( app-xemacs/ruby-modes )
 "
 
 src_prepare() {
-	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/011*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
-		eapply "${FILESDIR}"/${SLOT}/901-musl-*.patch
+		eapply "${FILESDIR}"/3.1/901-musl-*.patch
 	fi
 
 	einfo "Unbundling gems..."
@@ -93,22 +86,14 @@ src_prepare() {
 	rm -f bin/{racc,racc2y,y2racc} || die
 	sed -i -e '/executables/ s:^:#:' lib/racc/racc.gemspec || die
 
+	einfo "Removing bundled libraries..."
+	rm -fr ext/fiddle/libffi-3.2.1 || die
+
 	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
-	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb test/fiber/test_address_resolve.rb spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb|| die
-
-	# Remove webrick tests because setting LD_LIBRARY_PATH does not work for them.
-	rm -rf tool/test/webrick || die
-
-	# Avoid test using the system ruby
-	sed -i -e '/test_dumb_terminal/aomit "Uses system ruby"' test/reline/test_reline.rb || die
-
-	# Avoid testing against hard-coded blockdev devices that most likely are not available
-	sed -i -e '/def blockdev/a@blockdev = nil' test/ruby/test_file_exhaustive.rb || die
-
-	# Avoid tests that require gem downloads
-	sed -i -e '/^test-syntax-suggest/ s/\$(TEST_RUNNABLE)/no/' common.mk || die
-	sed -i -e '/^check:/ s/\$(TEST_RUNNABLE)-\$(PREPARE_SYNTAX_SUGGEST) test-syntax-suggest//' common.mk || die
+	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb test/fiber/test_address_resolve.rb test/resolv/test_addr.rb \
+	   spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb|| die
+	sed -i -e '/def test_test/askip "Depends on system setup"' test/ruby/test_file_exhaustive.rb || die
 
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
@@ -200,8 +185,7 @@ src_configure() {
 		--enable-mkmf-verbose \
 		--with-out-ext="${modules}" \
 		$(use_with jemalloc jemalloc) \
-		$(use_enable jit jit-support) \
-		$(use_enable jit yjit) \
+		$(use_enable jit jit-support ) \
 		$(use_enable socks5 socks) \
 		$(use_enable systemtap dtrace) \
 		$(use_enable doc install-doc) \
@@ -210,8 +194,8 @@ src_configure() {
 		$(use_enable static-libs install-static-library) \
 		$(use_with static-libs static-linked-ext) \
 		$(use_enable debug) \
-		${myconf} \
 		$(use_with valgrind) \
+		${myconf} \
 		--enable-option-checking=no
 
 	# Makefile is broken because it lacks -ldl
@@ -219,12 +203,10 @@ src_configure() {
 }
 
 src_compile() {
-	export LD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS=""
 }
 
 src_test() {
-	export LD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 check
 }
 
@@ -273,8 +255,7 @@ src_install() {
 		dodoc -r sample
 	fi
 
-	dodoc ChangeLog NEWS.md README*
-	dodoc -r doc
+	dodoc ChangeLog NEWS.md doc/NEWS* README*
 }
 
 pkg_postinst() {
