@@ -45,4 +45,3 @@ start() {
 		ewarn "UPS powerfail script scheduled, and flags found, but ${UPS_CTL} missing."
 	fi
 }
-
