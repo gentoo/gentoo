@@ -236,7 +236,7 @@ CRATES="
 	xattr-0.2.3
 "
 
-inherit cargo
+inherit bash-completion-r1 cargo
 
 DESCRIPTION="A modern replacement for ps"
 HOMEPAGE="https://github.com/dalance/procs"
@@ -252,3 +252,18 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 QA_FLAGS_IGNORED="usr/bin/procs"
+
+src_install() {
+	cargo_src_install
+
+	target/$(usex debug debug release)/procs --gen-completion bash || die
+	newbashcomp procs.bash procs
+
+	target/$(usex debug debug release)/procs --gen-completion zsh || die
+	insinto /usr/share/zsh/site-functions
+	doins _procs
+
+	target/$(usex debug debug release)/procs --gen-completion fish || die
+	insinto /usr/share/fish/vendor_completions.d
+	doins procs.fish
+}
