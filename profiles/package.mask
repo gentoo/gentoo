@@ -34,7 +34,6 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-06-16)
-
 # Obsolete slots without reverse dependencies that require rails 6.0 to
 # be present. Use the newer slots if needed.
 # Masked for removal on 2023-06-16.
