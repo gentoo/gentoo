@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-06-16)
+# Obsolete slot. Use the newer 0.7 slot instead.
+# Masked for removal on 2023-07-16.
+dev-ruby/websocket-driver:0
+
 # Tomáš Mózes <hydrapolic@gmail.com> (2023-06-12)
 # Buggy version that causes ibdata1 to grow, please update.
 =dev-db/mariadb-10.5.20
