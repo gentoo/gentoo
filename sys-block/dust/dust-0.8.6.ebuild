@@ -133,7 +133,7 @@ KEYWORDS="~amd64"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
-QA_FLAGS_IGNORED="usr/bin/${PN}"
+QA_FLAGS_IGNORED="usr/bin/dust"
 
 DOCS=(
 	README.md
