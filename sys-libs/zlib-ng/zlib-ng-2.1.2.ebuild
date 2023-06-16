@@ -44,6 +44,7 @@ src_configure() {
 
 	# The intrinsics options are all defined conditionally, so we need
 	# to enable them on/off per-arch here for now.
+	# TODO: There's no s390x USE_EXPAND yet
 	if use amd64 || use x86 ; then
 		mycmakeargs+=(
 			-DWITH_AVX2=$(usex cpu_flags_x86_avx2)
@@ -73,8 +74,6 @@ src_configure() {
 			-DWITH_POWER9=$(usex cpu_flags_ppc_vsx3)
 		)
 	fi
-
-	# TODO: There's no s390x USE_EXPAND yet
 
 	cmake_src_configure
 }
