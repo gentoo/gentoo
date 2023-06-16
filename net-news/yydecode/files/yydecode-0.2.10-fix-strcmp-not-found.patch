@@ -1,0 +1,15 @@
+Bug: https://bugs.gentoo.org/898078
+Include string.h for strcmp functions
+diff --git a/src/getopt.c b/src/getopt.c
+index 10a4c32..adf91e7 100644
+--- a/src/getopt.c
++++ b/src/getopt.c
+@@ -67,6 +67,8 @@
+ #include <stdlib.h>
+ #endif	/* GNU C library.  */
+ 
++#include <string.h>
++
+ /* This version of `getopt' appears to the caller like standard Unix `getopt'
+    but it behaves differently for the user, since it allows the user
+    to intersperse the options with the other arguments.
