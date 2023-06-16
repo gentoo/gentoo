@@ -18,8 +18,6 @@ esac
 if [[ -z ${_COMMON_LISP_3_ECLASS} ]]; then
 _COMMON_LISP_3_ECLASS=1
 
-inherit eutils
-
 # @ECLASS_VARIABLE: CLIMPLEMENTATIONS
 # @DESCRIPTION:
 # Common Lisp implementations
