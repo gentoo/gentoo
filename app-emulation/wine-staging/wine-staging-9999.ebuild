@@ -194,7 +194,6 @@ src_prepare() {
 	local patchinstallargs=(
 		--all
 		--no-autoconf
-		-W winemenubuilder-Desktop_Icon_Path #652176
 		${MY_WINE_STAGING_CONF}
 	)
 
