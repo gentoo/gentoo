@@ -6,7 +6,7 @@ EAPI=8
 # Worth keeping an eye on 'develop' branch upstream for possible backports,
 # as they copied this practice from sys-libs/zlib upstream.
 
-inherit cmake
+inherit cmake-multilib
 
 DESCRIPTION="Fork of the zlib data compression library"
 HOMEPAGE="https://github.com/zlib-ng/zlib-ng"
@@ -31,7 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/zlib-ng-2.1.2-cmake.patch
 )
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DZLIB_COMPAT=$(usex compat)
 		-DZLIB_ENABLE_TESTS=$(usex test)
@@ -78,9 +78,7 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_install() {
-	cmake_src_install
-
+pkg_postinst() {
 	if use compat ; then
 		ewarn "zlib-ng is experimental and replacing the system zlib is dangerous"
 		ewarn "Please be careful!"
