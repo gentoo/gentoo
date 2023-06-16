@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dist-kernel-utils.eclass
@@ -104,7 +104,7 @@ dist-kernel_install_kernel() {
 	if [[ ${magic} == MZ ]]; then
 		einfo "Combined UEFI kernel+initramfs executable found"
 		# install the combined executable in place of kernel
-		image=${initrd}.uefi
+		image=${initrd}.efi
 		mv "${initrd}" "${image}" || die
 		# put an empty file in place of initrd.  installing a duplicate
 		# file would waste disk space, and removing it entirely provokes
