@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
 PYPI_NO_NORMALIZE=1
 
@@ -33,6 +34,7 @@ BDEPEND="<dev-python/cython-2.99[${PYTHON_USEDEP}]
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.1-build_backend.patch
+	"${FILESDIR}"/${PN}-1.5.1-meson_pure.patch
 	"${FILESDIR}"/${PN}-1.5.1-unbundle_rtmidi.patch
 )
 
@@ -45,6 +47,8 @@ src_prepare() {
 	# Just in case
 	rm -r src/rtmidi || die
 	rm src/_rtmidi.cpp || die
+
+	DISTUTILS_ARGS=( -Dwheel=true )
 }
 
 python_test() {
