@@ -69,7 +69,7 @@ dev-ruby/activesupport:6.0
 dev-ruby/websocket-driver:0
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2023-06-12)
-# Buggy version that causes ibdata1 to grow, please update.
+# Buggy version that causes ibdata1 to grow, please update. See bug #908394.
 =dev-db/mariadb-10.5.20
 =dev-db/mariadb-10.6.13
 =dev-db/mariadb-10.11.2
