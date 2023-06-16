@@ -186,7 +186,7 @@ vtk_check_reqs() {
 			jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
 		fi
 	fi
-	mem=$(( ${mem} * ${jobs} ))
+	mem=$(( ${mem} * $(( ${jobs} > 4 ? 4 : ${jobs} )) ))
 
 	use cuda && export CHECKREQS_MEMORY=${mem}M
 	export CHECKREQS_DISK_BUILD=${dsk}M
