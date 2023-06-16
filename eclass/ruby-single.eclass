@@ -69,11 +69,11 @@ inherit ruby-utils
 # current state of ruby targets, e.g. stable version first.
 
 _ruby_single_implementations_depend() {
-	local depend
+	local _ruby_implementation depend
 	for _ruby_implementation in ${RUBY_TARGETS_PREFERENCE}; do
 		if [[ ${USE_RUBY} =~ ${_ruby_implementation} ]]; then
 			depend+=" ("
-			depend+=" $(_ruby_implementation_depend $_ruby_implementation)"
+			depend+=" $(_ruby_implementation_depend ${_ruby_implementation})"
 			depend+=" virtual/rubygems[ruby_targets_${_ruby_implementation}(-)]"
 			depend+=" )"
 		fi
