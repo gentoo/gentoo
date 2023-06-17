@@ -16,7 +16,7 @@ HOMEPAGE="
 "
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 SLOT="0"
 
 RDEPEND="
