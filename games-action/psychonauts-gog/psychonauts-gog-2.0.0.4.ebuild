@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit desktop unpacker wrapper xdg
+CHECKREQS_DISK_BUILD="5238M"
+inherit check-reqs desktop unpacker wrapper xdg
 
 MY_PN="Psychonauts"
 
@@ -14,21 +15,24 @@ SRC_URI="gog_${MY_PN,,}_${PV}.sh"
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="bindist fetch strip"
+RESTRICT="bindist fetch splitdebug"
 
-BDEPEND="app-arch/unzip"
+BDEPEND="
+	app-arch/unzip
+"
 
 RDEPEND="
 	media-libs/libsdl[abi_x86_32,opengl,video]
 	media-libs/openal[abi_x86_32]
-	>=sys-devel/gcc-3.4
+	>=sys-devel/gcc-3.4[cxx]
 	sys-libs/glibc
-	!games-action/${MY_PN,,}
+	!${CATEGORY}/${MY_PN,,}
+	!${CATEGORY}/${MY_PN,,}-hb
 "
 
 S="${WORKDIR}/data/noarch"
-dir="/opt/${MY_PN,,}"
-QA_PREBUILT="${dir#/}/*"
+DIR="/opt/${MY_PN,,}"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	elog "Please buy and download ${SRC_URI} from:"
@@ -41,11 +45,11 @@ src_unpack() {
 }
 
 src_install() {
-	exeinto "${dir}"
+	exeinto "${DIR}"
 	doexe game/${MY_PN}
-	make_wrapper ${MY_PN,,} "${dir}"/${MY_PN}
+	make_wrapper ${MY_PN,,} "${DIR}"/${MY_PN}
 
-	insinto "${dir}"
+	insinto "${DIR}"
 	doins -r game/{icon.bmp,WorkResource/,*.pkg}
 
 	newicon -s 256 support/icon.png ${MY_PN,,}.png
