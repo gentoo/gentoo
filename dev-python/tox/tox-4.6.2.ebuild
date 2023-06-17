@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 RDEPEND="
 	>=dev-python/cachetools-5.3.1[${PYTHON_USEDEP}]
