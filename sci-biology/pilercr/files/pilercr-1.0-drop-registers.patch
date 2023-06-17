@@ -1,0 +1,14 @@
+--- a/comp.cpp
++++ b/comp.cpp
+@@ -28,7 +28,7 @@ void Complement(char *seq, int len)
+   /* Complement and reverse sequence */
+ 
+ 
+-  { register unsigned char *s, *t;
++  { unsigned char *s, *t;
+     int c;
+ 
+ 
+old mode 100644
+new mode 100755
+Binary files a/pilercr and b/pilercr differ
