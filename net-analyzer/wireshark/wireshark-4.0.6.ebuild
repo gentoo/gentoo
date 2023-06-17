@@ -170,6 +170,8 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
+	! use lto && filter-lto
+
 	mycmakeargs+=(
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_{Asciidoctor,DOXYGEN}=$(usex !doc)

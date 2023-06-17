@@ -136,6 +136,8 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
+	! use lto && filter-lto
+
 	python_setup
 
 	mycmakeargs+=(
