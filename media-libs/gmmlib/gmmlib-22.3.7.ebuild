@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.2_conditional_testing.patch
 	"${FILESDIR}"/${PN}-20.3.2_cmake_project.patch
 	"${FILESDIR}"/${PN}-22.1.1_custom_cflags.patch
+	"${FILESDIR}"/${PN}-22.3.7_ambiguating.patch
 )
 
 multilib_src_configure() {
