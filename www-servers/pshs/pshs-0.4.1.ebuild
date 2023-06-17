@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,9 +6,9 @@ EAPI=7
 inherit meson
 
 DESCRIPTION="Pretty small HTTP server -- a command-line tool to share files"
-HOMEPAGE="https://github.com/mgorny/pshs/"
+HOMEPAGE="https://github.com/projg2/pshs/"
 SRC_URI="
-	https://github.com/mgorny/pshs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	https://github.com/projg2/pshs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
