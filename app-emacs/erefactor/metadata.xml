@@ -6,13 +6,9 @@
     <email>gnu-emacs@gentoo.org</email>
     <name>Gentoo GNU Emacs project</name>
   </maintainer>
-  <longdescription>
-    This Emacs package provides convenient methods for manipulating the naming
-    style of a symbol. It supports different naming conventions such as: camel
-    case, Pascal case, all upper case, lower case separated by underscore.
-  </longdescription>
+  <stabilize-allarches />
   <upstream>
-    <bugs-to>https://github.com/akicho8/string-inflection/issues/</bugs-to>
-    <remote-id type="github">akicho8/string-inflection</remote-id>
+    <bugs-to>https://github.com/mhayashi1120/Emacs-erefactor/issues/</bugs-to>
+    <remote-id type="github">mhayashi1120/Emacs-erefactor</remote-id>
   </upstream>
 </pkgmetadata>
