@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="An eselect library to manage executable symlinks"
-HOMEPAGE="https://github.com/mgorny/eselect-lib-bin-symlink/"
-SRC_URI="https://github.com/mgorny/eselect-lib-bin-symlink/releases/download/${P}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/eselect-lib-bin-symlink/"
+SRC_URI="https://github.com/projg2/eselect-lib-bin-symlink/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
