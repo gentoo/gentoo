@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">fakefs/fakefs</remote-id>
-    <remove-id type="rubygems">fakefs</remove-id>
+    <remote-id type="rubygems">fakefs</remote-id>
   </upstream>
 </pkgmetadata>
