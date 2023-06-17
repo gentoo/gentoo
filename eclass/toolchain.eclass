@@ -1687,8 +1687,8 @@ gcc_do_make() {
 
 	if ! is_crosscompile && _tc_use_if_iuse cxx && _tc_use_if_iuse doc ; then
 		if type -p doxygen > /dev/null ; then
-			cd "${CTARGET}"/libstdc++-v3/doc
-			emake -C "${CTARGET}"/libstdc++-v3/doc doc-man-doxygen
+			cd "${CTARGET}"/libstdc++-v3/doc || die
+			emake doc-man-doxygen
 
 			# Clean bogus manpages. bug #113902
 			find -name '*_build_*' -delete
