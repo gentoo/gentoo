@@ -143,7 +143,7 @@ src_install() {
 	use split-usr && dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
 
 	if use cgi; then
-		elog "CGI monitoring scripts are installed in ${EROOT}/usr/share/nut/cgi."
+		elog "CGI monitoring scripts are installed in ${EPREFIX}/usr/share/nut/cgi."
 		elog "copy them to your web server's ScriptPath to activate (this is a"
 		elog "change from the old location)."
 		elog "If you use lighttpd, see lighttpd_nut.conf in the documentation."
