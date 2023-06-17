@@ -15,6 +15,8 @@ SRC_URI="https://github.com/zlib-ng/minizip-ng/archive/refs/tags/${PV}.tar.gz ->
 LICENSE="ZLIB"
 SLOT="0/4"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+# TODO: Needs SONAME fixing for compat
+# https://github.com/zlib-ng/minizip-ng/issues/358#issuecomment-1593970564
 IUSE="compat openssl test zstd"
 RESTRICT="!test? ( test )"
 
