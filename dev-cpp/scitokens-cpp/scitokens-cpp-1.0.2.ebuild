@@ -21,11 +21,11 @@ SLOT="0"
 IUSE="test"
 
 DEPEND="
-	dev-cpp/jwt-cpp
+	dev-cpp/jwt-cpp[picojson]
 	dev-db/sqlite
 	dev-libs/openssl:0=
 	net-misc/curl:0=
-	sys-apps/util-linux
+	kernel_linux? ( sys-apps/util-linux )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
