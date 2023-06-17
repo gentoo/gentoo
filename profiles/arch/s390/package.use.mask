@@ -4,6 +4,7 @@
 # Sam James <sam@gentoo.org> (2023-06-17)
 # Qt 5 not keyworded here
 app-text/ansifilter gui
+app-text/highlight gui
 
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is not keyworded
