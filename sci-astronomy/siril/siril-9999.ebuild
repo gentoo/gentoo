@@ -6,7 +6,7 @@ EAPI=8
 inherit meson optfeature toolchain-funcs xdg
 
 DESCRIPTION="A free astronomical image processing software"
-HOMEPAGE="https://www.siril.org/"
+HOMEPAGE="https://siril.org/"
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -24,24 +24,25 @@ IUSE="curl exif ffmpeg heif jpeg libconfig openmp png raw tiff wcs"
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/json-glib-1.2.6
-	dev-libs/sleef:=
-	media-libs/librtprocess:=
+	media-libs/librtprocess
 	>=media-libs/opencv-4.4.0:=
-	sci-libs/cfitsio
+	sci-libs/cfitsio:=
 	sci-libs/fftw:3.0=
 	sci-libs/gsl:=
+	x11-libs/gdk-pixbuf:2
 	x11-libs/cairo
+	x11-libs/pango
 	>=x11-libs/gtk+-3.20.0:3
 	curl? ( net-misc/curl )
-	exif? ( >=media-gfx/exiv2-0.25 )
+	exif? ( >=media-gfx/exiv2-0.25:= )
 	ffmpeg? ( media-video/ffmpeg:= )
-	heif? ( media-libs/libheif )
-	libconfig? ( >=dev-libs/libconfig-1.4[cxx] )
+	heif? ( media-libs/libheif:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	png? ( >=media-libs/libpng-1.6.0 )
-	raw? ( media-libs/libraw )
+	libconfig? ( >=dev-libs/libconfig-1.4:=[cxx] )
+	png? ( >=media-libs/libpng-1.6.0:= )
+	raw? ( media-libs/libraw:= )
 	tiff? ( media-libs/tiff:= )
-	wcs? ( >=sci-astronomy/wcslib-7.7 )
+	wcs? ( >=sci-astronomy/wcslib-7.7:= )
 "
 RDEPEND="
 	${DEPEND}
