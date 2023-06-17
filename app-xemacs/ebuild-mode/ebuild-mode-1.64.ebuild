@@ -21,7 +21,7 @@ src_compile() {
 	local XEMACS="${EPREFIX}/usr/bin/xemacs"
 
 	"${XEMACS}" -batch -q --no-site-file \
-		-eval "(add-to-list 'load-path \".\")" \
+		-eval "(add-to-list 'load-path nil)" \
 		-f batch-byte-compile \
 		ebuild-mode.el gentoo-newsitem-mode.el || die
 
