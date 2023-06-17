@@ -49,7 +49,7 @@ RDEPEND="
 	fbgemm? ( dev-libs/FBGEMM )
 	ffmpeg? ( media-video/ffmpeg:= )
 	gloo? ( sci-libs/gloo[cuda?] )
-	mpi? ( sys-cluster/openmpi )
+	mpi? ( virtual/mpi )
 	nnpack? ( sci-libs/NNPACK )
 	numpy? ( $(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
@@ -106,7 +106,7 @@ src_configure() {
 		ewarn ""
 		ewarn "To configure caffe2 with the CUDA compute capability that is optimal for your GPU,"
 		ewarn "set TORCH_CUDA_ARCH_LIST in your make.conf, and re-emerge caffe2."
-		ewarn "For example, to use CUDA capability 7.5 & 3.5, add: TORCH_CUDA_ARCH_LIST=7.5,3.5"
+		ewarn "For example, to use CUDA capability 7.5 & 3.5, add: TORCH_CUDA_ARCH_LIST=7.5 3.5"
 		ewarn "For a Maxwell model GPU, an example value would be: TORCH_CUDA_ARCH_LIST=Maxwell"
 		ewarn ""
 		ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
