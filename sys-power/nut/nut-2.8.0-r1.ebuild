@@ -3,30 +3,35 @@
 
 EAPI=8
 
-inherit bash-completion-r1 flag-o-matic linux-info optfeature systemd tmpfiles toolchain-funcs udev
+inherit bash-completion-r1 flag-o-matic linux-info optfeature systemd
+inherit tmpfiles toolchain-funcs udev
 
 MY_P=${P/_/-}
 
 DESCRIPTION="Network-UPS Tools"
 HOMEPAGE="https://networkupstools.org/"
-if [[ "${PV}" == *9999 ]] ; then
-	inherit git-r3
+
+if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/networkupstools/${PN}.git"
+	inherit git-r3
 else
 	SRC_URI="https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
+
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
-
-IUSE="cgi doc ipmi serial i2c +man snmp +usb modbus selinux split-usr ssl tcpd xml zeroconf"
+IUSE="cgi doc ipmi serial i2c +man snmp +usb modbus selinux split-usr ssl tcpd test xml zeroconf"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-group/nut
 	acct-user/nut
-	cgi? ( >=media-libs/gd-2[png] )
 	dev-libs/libltdl
+	virtual/udev
+	cgi? ( >=media-libs/gd-2[png] )
 	i2c? ( sys-apps/i2c-tools )
 	ipmi? ( sys-libs/freeipmi )
 	modbus? ( dev-libs/libmodbus )
@@ -34,22 +39,18 @@ DEPEND="
 	ssl? ( >=dev-libs/openssl-1:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	usb? ( virtual/libusb:1 )
-	virtual/udev
 	xml? ( >=net-libs/neon-0.25.0:= )
 	zeroconf? ( net-dns/avahi )
 "
-
 BDEPEND="
-	man? ( app-text/asciidoc )
 	virtual/pkgconfig
+	man? ( app-text/asciidoc )
+	test? ( dev-util/cppunit )
 "
-
 RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-nut )
 "
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.2-lowspeed-buffer-size.patch"
@@ -74,18 +75,11 @@ pkg_pretend() {
 	check_extra_config
 }
 
-src_unpack() {
-	if [[ "${PV}" == *9999 ]] ; then
-		git-r3_src_unpack
-	fi
-	default
-}
-
 src_prepare() {
 	default
 
-	if [[ "${PV}" == *9999 ]] ; then
-		./autogen.sh
+	if [[ ${PV} == *9999 ]] ; then
+		./autogen.sh || die
 	fi
 }
 
@@ -94,6 +88,8 @@ src_configure() {
 		--datadir=/usr/share/nut
 		--datarootdir=/usr/share/nut
 		--disable-static
+		--disable-strip
+		--disable-Werror
 		--sysconfdir=/etc/nut
 		--with-dev
 		--with-drvpath="/$(get_libdir)/nut"
@@ -102,6 +98,8 @@ src_configure() {
 		--with-logfacility=LOG_DAEMON
 		--with-statepath=/var/lib/nut
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		--with-systemdtmpfilesdir="/usr/lib/tmpfiles.d"
+		--with-udev-dir="$(get_udevdir)"
 		--with-user=nut
 		--without-powerman
 		--without-python
@@ -109,6 +107,7 @@ src_configure() {
 		--without-python3
 		--with-altpidpath=/run/nut
 		--with-pidpath=/run/nut
+		$(use_enable test cppunit)
 		$(use_with i2c linux_i2c)
 		$(use_with ipmi freeipmi)
 		$(use_with ipmi)
@@ -121,11 +120,9 @@ src_configure() {
 		$(use_with zeroconf avahi)
 	)
 
+	filter-lto
 	append-flags -fno-lto
-
-	tc-export CC
-	tc-export CXX
-	tc-export AR
+	tc-export CC CXX AR
 
 	use cgi && myeconfargs+=( --with-cgipath=/usr/share/nut/cgi )
 	use man && myeconfargs+=( --with-doc=man )
@@ -138,15 +135,15 @@ src_configure() {
 src_install() {
 	default
 
-	rm -rf "${D}/etc/hotplug" || die
+	rm -rf "${ED}/etc/hotplug" || die
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 
 	dodir /sbin
 	use split-usr && dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
 
 	if use cgi; then
-		elog "CGI monitoring scripts are installed in /usr/share/nut/cgi."
+		elog "CGI monitoring scripts are installed in ${EROOT}/usr/share/nut/cgi."
 		elog "copy them to your web server's ScriptPath to activate (this is a"
 		elog "change from the old location)."
 		elog "If you use lighttpd, see lighttpd_nut.conf in the documentation."
@@ -154,8 +151,9 @@ src_install() {
 		elog "Use script aliases according to the web server you use (apache, nginx, lighttpd, etc...)"
 	fi
 
-	# this must be done after all of the install phases
-	for i in "${D}"/etc/nut/*.sample ; do
+	# This must be done after all of the install phases
+	local i
+	for i in "${ED}"/etc/nut/*.sample ; do
 		mv "${i}" "${i/.sample/}" || die
 	done
 
@@ -183,10 +181,10 @@ src_install() {
 		doins scripts/avahi/nut.service
 	fi
 
-	mv "${D}"/usr/lib/tmpfiles.d/nut-common.tmpfiles "${D}"/usr/lib/tmpfiles.d/nut-common-tmpfiles.conf || die
+	mv "${ED}"/usr/lib/tmpfiles.d/nut-common.tmpfiles "${ED}"/usr/lib/tmpfiles.d/nut-common-tmpfiles.conf || die
 
 	# Fix double directory
-	sed -i -e 's:/nut/nut:/nut:g' "${D}"/usr/lib/tmpfiles.d/nut-common-tmpfiles.conf || die
+	sed -i -e 's:/nut/nut:/nut:g' "${ED}"/usr/lib/tmpfiles.d/nut-common-tmpfiles.conf || die
 }
 
 pkg_postinst() {
@@ -210,7 +208,7 @@ pkg_postinst() {
 	elog
 
 	optfeature "all notify events generate a global message (wall) to all users, plus they are logged via the syslog" \
-		sys-apps/util-linu[logger,tty-helpers]
+		sys-apps/util-linux[logger,tty-helpers]
 
 	udev_reload
 
