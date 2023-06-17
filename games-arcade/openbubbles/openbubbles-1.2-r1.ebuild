@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit desktop
 
-DESCRIPTION="A clone of Evan Bailey's game Bubbles"
+DESCRIPTION="Clone of Evan Bailey's game Bubbles"
 HOMEPAGE="https://web.archive.org/web/20101126190910/http://www.freewebs.com/lasindi/openbubbles/"
 SRC_URI="https://web.archive.org/web/20101126190910/http://www.freewebs.com/lasindi/openbubbles/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
-IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-image[png]
