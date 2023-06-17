@@ -14,7 +14,7 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc introspection test"
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.38:2
@@ -81,7 +81,7 @@ src_test() {
 
 	export PATH="${BUILD_DIR}/playerctl/:${PATH}"
 
-	virtx epytest
+	virtx epytest --asyncio-mode=auto
 
 	kill "${dbus_params[1]}" || die
 }
