@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools git-r3
 
 DESCRIPTION="CD/DVD image converter using libmirage"
-HOMEPAGE="https://github.com/mgorny/mirage2iso/"
-EGIT_REPO_URI="https://github.com/mgorny/mirage2iso.git"
+HOMEPAGE="https://github.com/projg2/mirage2iso/"
+EGIT_REPO_URI="https://github.com/projg2/mirage2iso.git"
 
 LICENSE="BSD"
 SLOT="0"
