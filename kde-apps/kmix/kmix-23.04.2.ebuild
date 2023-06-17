@@ -44,6 +44,8 @@ RDEPEND="${DEPEND}
 	kde-plasma/kde-cli-tools:5
 "
 
+PATCHES=( "${FILESDIR}/${PN}-23.04.2-autostart_disable.patch" ) # TODO: upstream
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package alsa ALSA)
@@ -57,12 +59,16 @@ src_configure() {
 
 pkg_postinst() {
 	if use pulseaudio && has_version kde-plasma/plasma-pa; then
-		elog "In KDE Plasma, kde-plasma/plasma-pa is the default audio volume handler."
-		elog "Should you prefer this to be kde-apps/kmix instead, do the following:"
+		elog "In KDE Plasma, kde-plasma/plasma-pa is the default audio volume handler,"
+		elog "therefore, autostart by default was disabled for KMix."
+		elog
+		elog "Should you prefer to still use kde-apps/kmix instead, do the following:"
 		elog " - In system tray, right click on [Show hidden items]"
 		elog " - Select [Configure System Tray]"
 		elog " - In [Entries],  search for [Audio Volume] and set it to [Disabled]"
-		elog "KMix will be shown as [Volume Control]."
+		elog
 	fi
+	elog "KMix will be shown as [Volume Control] after manually starting it once"
+	elog "and will be autostarted after configuring such in KMix startup settings."
 	ecm_pkg_postinst
 }
