@@ -25,7 +25,6 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"/ArborX-${PV}
 
 src_prepare() {
-	default
 	cmake_src_prepare
 
 	# replace hardcoded "lib/" directory:
