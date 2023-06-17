@@ -10,6 +10,7 @@
 # @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: linux-info
 # @BLURB: It provides the functionality required to install external modules against a kernel source tree.
+# @DEPRECATED: linux-mod-r1.eclass
 # @DESCRIPTION:
 # This eclass is used to interface with linux-info.eclass in such a way
 # to provide the functionality and initial functions
