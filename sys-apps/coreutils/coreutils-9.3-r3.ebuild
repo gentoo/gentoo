@@ -110,6 +110,8 @@ src_unpack() {
 src_prepare() {
 	local PATCHES=(
 		# Upstream patches
+		"${FILESDIR}"/${P}-cp-parents-preserve-permissions.patch
+		"${FILESDIR}"/${P}-old-kernel-copy_file_range.patch
 	)
 
 	if ! use vanilla && [[ -d "${WORKDIR}"/patch ]] ; then
@@ -117,6 +119,9 @@ src_prepare() {
 	fi
 
 	default
+
+	# Just for ${P}-old-kernel-copy_file_range.patch
+	touch aclocal.m4 configure.ac Makefile.in gnulib-tests/Makefile.in configure || die
 
 	# Since we've patched many .c files, the make process will try to
 	# re-build the manpages by running `./bin --help`.  When doing a
