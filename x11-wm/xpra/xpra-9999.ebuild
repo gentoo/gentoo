@@ -196,11 +196,13 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_prepare_all
 
-	# Move udev dir to the right place.
+	# Move udev dir to the right place if necessary.
 	if use udev; then
 		local dir=$(get_udevdir)
-		dodir "${dir%/*}"
-		mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
+		if [[ ! ${ED}/usr/lib/udev -ef ${ED}${dir} ]]; then
+			dodir "${dir%/*}"
+			mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
+		fi
 	else
 		rm -vr "${ED}"/usr/lib/udev || die
 		rm -v "${ED}"/usr/libexec/xpra/xpra_udev_product_version || die
