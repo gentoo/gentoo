@@ -14,7 +14,7 @@ fi
 BDEPEND="dev-util/wayland-scanner"
 DEPEND="
 	dev-libs/wayland
-	=dev-qt/qtbase-${PV}*[gui,opengl]
+	=dev-qt/qtbase-${PV}*[egl,gui,opengl]
 	=dev-qt/qtdeclarative-${PV}*
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
