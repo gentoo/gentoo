@@ -162,8 +162,10 @@ dev-python/ntlm-auth
 ~virtual/perl-File-Spec-3.880.0
 ~virtual/perl-Getopt-Long-2.540.0
 ~virtual/perl-HTTP-Tiny-0.82.0
+~virtual/perl-HTTP-Tiny-0.83.0_rc
 ~virtual/perl-IO-1.520.0
 ~virtual/perl-IO-Compress-2.204.0
+~virtual/perl-IO-Socket-IP-0.410.100_rc
 ~virtual/perl-IO-Zlib-1.140.0
 ~virtual/perl-JSON-PP-4.160.0
 ~virtual/perl-libnet-3.150.0
