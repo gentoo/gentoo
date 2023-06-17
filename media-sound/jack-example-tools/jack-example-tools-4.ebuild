@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jackaudio/jack-example-tools/archive/refs/tags/${PV}
 
 LICENSE="GPL-2+ zalsa? ( GPL-3+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="alsa jack-net jack-netsource opus +readline sndfile zalsa"
 
 RDEPEND="

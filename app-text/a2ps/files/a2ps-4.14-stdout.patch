@@ -1,3 +1,6 @@
+https://bugs.gentoo.org/47691
+https://bugs.gentoo.org/47764
+https://lists.gnu.org/archive/html/bug-a2ps/2001-05/msg00000.html
 --- a2ps-4.14/lib/printers.c
 +++ a2ps-4.14/lib/printers.c
 @@ -315,8 +315,8 @@

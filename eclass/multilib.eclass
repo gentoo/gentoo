@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib.eclass
@@ -26,7 +26,7 @@ export CFLAGS_default
 export LDFLAGS_default
 export CHOST_default=${CHOST_default:-${CHOST}}
 export CTARGET_default=${CTARGET_default:-${CTARGET:-${CHOST_default}}}
-export LIBDIR_default=${CONF_LIBDIR:-"lib"}
+export LIBDIR_default="lib"
 export KERNEL_ABI=${KERNEL_ABI:-${DEFAULT_ABI}}
 
 # @FUNCTION: has_multilib_profile
@@ -47,7 +47,7 @@ has_multilib_profile() {
 # ex:
 # CFLAGS=$(get_abi_var CFLAGS sparc32) # CFLAGS=-m32
 #
-# Note that the prefered method is to set CC="$(tc-getCC) $(get_abi_CFLAGS)"
+# Note that the preferred method is to set CC="$(tc-getCC) $(get_abi_CFLAGS)"
 # This will hopefully be added to portage soon...
 #
 # If <ABI> is not specified, ${ABI} is used.
@@ -213,7 +213,7 @@ number_abis() {
 #     Returns: null string (almost everywhere) || .exe (mingw*) || ...
 get_exeext() {
 	case ${CHOST} in
-		*-cygwin*|mingw*|*-mingw*)  echo ".exe";;
+		mingw*|*-mingw*)  echo ".exe";;
 	esac
 }
 
@@ -230,11 +230,8 @@ get_libname() {
 	local libname
 	local ver=$1
 	case ${CHOST} in
-		*-cygwin*)       libname="dll.a";; # import lib
 		mingw*|*-mingw*) libname="dll";;
 		*-darwin*)       libname="dylib";;
-		*-mint*)         libname="irrelevant";;
-		hppa*-hpux*)     libname="sl";;
 		*)               libname="so";;
 	esac
 
@@ -243,9 +240,7 @@ get_libname() {
 	else
 		for ver in "$@" ; do
 			case ${CHOST} in
-				*-cygwin*) echo ".${ver}.${libname}";;
 				*-darwin*) echo ".${ver}.${libname}";;
-				*-mint*)   echo ".${libname}";;
 				*)         echo ".${libname}.${ver}";;
 			esac
 		done
@@ -288,8 +283,8 @@ multilib_env() {
 		# - https://bugs.gentoo.org/675954
 		# - https://gcc.gnu.org/PR90077
 		# - https://github.com/gentoo/musl/issues/245
-		: ${MULTILIB_ABIS=default}
-		: ${DEFAULT_ABI=default}
+		: "${MULTILIB_ABIS=default}"
+		: "${DEFAULT_ABI=default}"
 		export MULTILIB_ABIS DEFAULT_ABI
 		return
 	fi
@@ -311,8 +306,8 @@ multilib_env() {
 			export CTARGET_arm64=${CHOST_arm64}
 			export LIBDIR_arm64="lib64"
 
-			: ${MULTILIB_ABIS=arm64}
-			: ${DEFAULT_ABI=arm64}
+			: "${MULTILIB_ABIS=arm64}"
+			: "${DEFAULT_ABI=arm64}"
 		;;
 		x86_64*)
 			export CFLAGS_x86=${CFLAGS_x86--m32}
@@ -337,12 +332,12 @@ multilib_env() {
 
 			case ${CTARGET} in
 			*-gnux32)
-				: ${MULTILIB_ABIS=x32 amd64 x86}
-				: ${DEFAULT_ABI=x32}
+				: "${MULTILIB_ABIS=x32 amd64 x86}"
+				: "${DEFAULT_ABI=x32}"
 				;;
 			*)
-				: ${MULTILIB_ABIS=amd64 x86}
-				: ${DEFAULT_ABI=amd64}
+				: "${MULTILIB_ABIS=amd64 x86}"
+				: "${DEFAULT_ABI=amd64}"
 				;;
 			esac
 		;;
@@ -352,8 +347,8 @@ multilib_env() {
 			export CTARGET_lp64d=${CTARGET}
 			export LIBDIR_lp64d=${LIBDIR_lp64d-lib64}
 
-			: ${MULTILIB_ABIS=lp64d}
-			: ${DEFAULT_ABI=lp64d}
+			: "${MULTILIB_ABIS=lp64d}"
+			: "${DEFAULT_ABI=lp64d}"
 		;;
 		mips64*|mipsisa64*)
 			export CFLAGS_o32=${CFLAGS_o32--mabi=32}
@@ -372,8 +367,8 @@ multilib_env() {
 			export CTARGET_n64=${CHOST_n64}
 			export LIBDIR_n64="lib64"
 
-			: ${MULTILIB_ABIS=n64 n32 o32}
-			: ${DEFAULT_ABI=n32}
+			: "${MULTILIB_ABIS=n64 n32 o32}"
+			: "${DEFAULT_ABI=n32}"
 		;;
 		powerpc64*)
 			export CFLAGS_ppc=${CFLAGS_ppc--m32}
@@ -386,12 +381,12 @@ multilib_env() {
 			export CTARGET_ppc64=${CHOST_ppc64}
 			export LIBDIR_ppc64="lib64"
 
-			: ${MULTILIB_ABIS=ppc64 ppc}
-			: ${DEFAULT_ABI=ppc64}
+			: "${MULTILIB_ABIS=ppc64 ppc}"
+			: "${DEFAULT_ABI=ppc64}"
 		;;
 		riscv64*)
-			: ${MULTILIB_ABIS=lp64d lp64 ilp32d ilp32}
-			: ${DEFAULT_ABI=lp64d}
+			: "${MULTILIB_ABIS=lp64d lp64 ilp32d ilp32}"
+			: "${DEFAULT_ABI=lp64d}"
 
 			# the default abi is set to the 1-level libdir default
 
@@ -422,8 +417,8 @@ multilib_env() {
 			export LIBDIR_ilp32=${LIBDIR_ilp32-lib32/ilp32}
 		;;
 		riscv32*)
-			: ${MULTILIB_ABIS=ilp32d ilp32}
-			: ${DEFAULT_ABI=ilp32d}
+			: "${MULTILIB_ABIS=ilp32d ilp32}"
+			: "${DEFAULT_ABI=ilp32d}"
 
 			# the default abi is set to the 1-level libdir default
 
@@ -454,8 +449,8 @@ multilib_env() {
 			export CTARGET_s390x=${CHOST_s390x}
 			export LIBDIR_s390x="lib64"
 
-			: ${MULTILIB_ABIS=s390x s390}
-			: ${DEFAULT_ABI=s390x}
+			: "${MULTILIB_ABIS=s390x s390}"
+			: "${DEFAULT_ABI=s390x}"
 		;;
 		sparc64*)
 			export CFLAGS_sparc32=${CFLAGS_sparc32--m32}
@@ -468,12 +463,12 @@ multilib_env() {
 			export CTARGET_sparc64=${CHOST_sparc64}
 			export LIBDIR_sparc64="lib64"
 
-			: ${MULTILIB_ABIS=sparc64 sparc32}
-			: ${DEFAULT_ABI=sparc64}
+			: "${MULTILIB_ABIS=sparc64 sparc32}"
+			: "${DEFAULT_ABI=sparc64}"
 		;;
 		*)
-			: ${MULTILIB_ABIS=default}
-			: ${DEFAULT_ABI=default}
+			: "${MULTILIB_ABIS=default}"
+			: "${DEFAULT_ABI=default}"
 		;;
 	esac
 

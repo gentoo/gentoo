@@ -6,15 +6,14 @@ EAPI=7
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ssl(+)"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python FTP server library"
 HOMEPAGE="https://github.com/giampaolo/pyftpdlib https://pypi.org/project/pyftpdlib/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="examples ssl"
 
 RDEPEND="
@@ -28,7 +27,7 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
 python_test() {
 	cd "${BUILD_DIR}"/lib || die

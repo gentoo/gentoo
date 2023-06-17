@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,8 @@ HOMEPAGE="https://github.com/Aetf/kmscon"
 
 LICENSE="MIT LGPL-2.1 BSD-2"
 SLOT="0"
-IUSE="debug doc +drm +fbdev +gles2 +pango pixman systemd"
+IUSE="debug doc +drm +fbdev +gles2 +pango pixman systemd test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	>=virtual/udev-172
@@ -59,6 +60,7 @@ src_configure() {
 		-Drenderer_bbulk=enabled
 		$(meson_feature gles2 renderer_gltex)
 		$(meson_feature pixman renderer_pixman)
+		$(meson_use test tests)
 		-Dsession_dummy=enabled
 		-Dsession_terminal=enabled
 	)

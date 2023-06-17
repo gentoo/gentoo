@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md doc/*.md"
@@ -17,10 +17,10 @@ SRC_URI="https://github.com/janko/image_processing/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
 
-DEPEND+=" test? ( media-gfx/imagemagick[jpeg,png,tiff] )"
+DEPEND+=" test? ( media-gfx/imagemagick[jpeg,png,tiff,xml] )"
 
 ruby_add_rdepend "
 	>=dev-ruby/mini_magick-4.9.5:0

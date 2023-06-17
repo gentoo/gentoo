@@ -1,7 +1,7 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal toolchain-funcs
 
@@ -37,6 +37,7 @@ src_prepare() {
 multilib_src_configure() {
 	tc-export CC
 
+	# Not autotools-based but a custom one.
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \

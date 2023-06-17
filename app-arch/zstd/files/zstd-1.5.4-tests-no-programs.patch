@@ -1,0 +1,67 @@
+https://github.com/facebook/zstd/pull/3490
+
+From 183a18a45c1d69f8c42b9fcd25e6d28f9b3d75bb Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Fri, 10 Feb 2023 00:28:47 -0500
+Subject: [PATCH 1/2] meson: correctly specify the dependency relationship for
+ playtests
+
+It depends on the zstd program being built, and passes it as an env
+variable. Just like datagen. But for datagen, we explicitly depend on
+it, while for zstd, we assume it's built as part of "all".
+
+This can be wrong in two cases:
+- when running individual tests, meson can (re)build just what is needed
+  for that one test
+- a later patch will handle building zstd but not by default
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -162,7 +162,7 @@ if host_machine_os != os_windows
+       playTests_sh,
+       args: opt,
+       env: ['ZSTD_BIN=' + zstd.full_path(), 'DATAGEN_BIN=./datagen'],
+-      depends: [datagen],
++      depends: [datagen, zstd],
+       suite: suite,
+       workdir: meson.current_build_dir(),
+       timeout: 2800) # Timeout should work on HDD drive
+
+From 97ab0e2ab60fdda78f610032408df104de20b9f1 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Thu, 9 Feb 2023 23:55:09 -0500
+Subject: [PATCH 2/2] meson: always build the zstd binary when tests are
+ enabled
+
+We need to run it for the tests, even if programs are disabled. So if
+they are disabled, create a build rule for the program, but don't
+install it. Just make it available for the test itself.
+--- a/meson.build
++++ b/meson.build
+@@ -132,7 +132,7 @@ endif
+ 
+ subdir('lib')
+ 
+-if bin_programs
++if bin_programs or bin_tests
+   subdir('programs')
+ endif
+ 
+--- a/programs/meson.build
++++ b/programs/meson.build
+@@ -72,7 +72,14 @@ zstd = executable('zstd',
+   c_args: zstd_c_args,
+   dependencies: zstd_deps,
+   export_dynamic: export_dynamic_on_windows, # Since Meson 0.45.0
+-  install: true)
++  build_by_default: bin_programs,
++  install: bin_programs)
++
++if not bin_programs
++  # we generate rules to build the programs, but don't install anything
++  # so do not continue to installing scripts and manpages
++  subdir_done()
++endif
+ 
+ zstd_frugal_sources = [join_paths(zstd_rootdir, 'programs/zstdcli.c'),
+   join_paths(zstd_rootdir, 'programs/timefn.c'),
+

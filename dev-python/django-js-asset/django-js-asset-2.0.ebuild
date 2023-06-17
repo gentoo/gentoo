@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
+
 inherit distutils-r1
 
-DESCRIPTION="script tag with additional attributes for django.forms.Media"
-HOMEPAGE="https://github.com/matthiask/django-js-asset"
+DESCRIPTION="Script tag with additional attributes for django.forms.Media"
+HOMEPAGE="
+	https://github.com/matthiask/django-js-asset/
+	https://pypi.org/project/django-js-asset/
+"
 SRC_URI="
 	https://github.com/matthiask/django-js-asset/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
@@ -20,8 +24,14 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/django-2.2[${PYTHON_USEDEP}]"
-BDEPEND="test? ( ${RDEPEND} )"
+RDEPEND="
+	>=dev-python/django-2.2[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		${RDEPEND}
+	)
+"
 
 python_test() {
 	cd tests || die

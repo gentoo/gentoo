@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/rseichter/automx2/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="acct-user/automx2
 	dev-python/flask[${PYTHON_USEDEP}]
@@ -31,8 +31,8 @@ python_prepare_all() {
 }
 
 python_test() {
-	export AUTOMX2_CONF="tests/unittest.conf"
-	${EPYTHON} -m unittest discover tests/ || die "Tests failed with ${EPYTHON}"
+	local -x AUTOMX2_CONF="tests/unittest.conf"
+	eunittest tests/
 }
 
 python_install_all() {

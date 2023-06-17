@@ -6,18 +6,17 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Compatibility layer for multiple asynchronous event loop implementations"
 HOMEPAGE="
 	https://github.com/agronholm/anyio/
 	https://pypi.org/project/anyio/
 "
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/idna-2.8[${PYTHON_USEDEP}]
@@ -41,7 +40,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme \
+	dev-python/sphinx-rtd-theme \
 	dev-python/sphinx-autodoc-typehints
 
 python_test() {

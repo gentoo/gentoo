@@ -1,0 +1,44 @@
+From e3c750b98564bc66b50ae35e91f5222c441f8b75 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Maciej=20Bar=C4=87?= <xgqt@gentoo.org>
+Date: Wed, 16 Nov 2022 15:17:31 +0100
+Subject: [PATCH] configure.ac: remove bashisms
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+replace [[ ]] with test and == with =
+
+Signed-off-by: Maciej Barć <xgqt@gentoo.org>
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3a43681d72..6e66ec904b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1138,13 +1138,13 @@ AC_ARG_ENABLE(gnutls-tests,
+           no) enable_gnutls_tests="no" ;;
+            *) AC_MSG_ERROR(bad value ${enableval} for --enable-gnutls-tests) ;;
+          esac],
+-        [if [[ "$enable_gnutls" == "yes" ]]; then
++        [if test "x$enable_gnutls" = "xyes"; then
+ 		enable_gnutls_tests=yes
+ 	else
+ 		enable_gnutls_tests=no
+ 	fi]
+ )
+-if  [[ "$enable_gnutls_tests" == "yes" ]] && [[ "$enable_gnutls" != "yes" ]]; then
++if test "x$enable_gnutls_tests" = "xyes" && test "x$enable_gnutls" != "xyes"; then
+ 		AC_MSG_WARN([gnutls-tests can not be enabled without gnutls support. Disabling gnutls tests...])
+ 		enable_gnutls_tests="no"
+ fi
+@@ -1852,7 +1852,7 @@ AC_ARG_ENABLE(imfile-tests,
+          esac],
+         [enable_imfile_tests=yes]
+ )
+-if  [[ "$enable_imfile_tests" == "yes" ]] && [[ "$enable_imfile" != "yes" ]]; then
++if  test "x$enable_imfile_tests" = "xyes" && test "x$enable_imfile" != "xyes"; then
+ 		AC_MSG_WARN([imfile-tests can not be enabled without imfile support. Disabling imfile tests...])
+ 		enable_imfile_tests="no"
+ fi

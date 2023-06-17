@@ -1,0 +1,13 @@
+diff --git a/src/main-win.c b/src/main-win.c
+index 32f6433..bf5feba 100644
+--- a/src/main-win.c
++++ b/src/main-win.c
+@@ -378,7 +378,7 @@ gboolean main_win_open( MainWin* mw, const char* file_path, ZoomMode zoom )
+         image_list_sort_by_name( mw->img_list, GTK_SORT_DESCENDING );
+         if (image_list_get_first(mw->img_list))
+             main_win_open(mw, image_list_get_current_file_path(mw->img_list), zoom);
+-        return;
++        return 1;
+     }
+ 
+ 

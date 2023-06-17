@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-single-r1
 
 DESCRIPTION="Locate and modify variables in executing processes"
@@ -27,6 +27,7 @@ REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-musl-tests.patch
+	"${FILESDIR}"/${PN}-0.17-musl.patch
 )
 
 pkg_setup() {

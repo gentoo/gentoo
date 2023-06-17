@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michael Haubenwallner <haubi@gentoo.org> (2016-04-19)
@@ -21,7 +21,3 @@ FEATURES="${FEATURES} -sandbox -usersandbox"
 # Prefix does not have user management and the security model does not apply.
 # Disable user* features by default.
 FEATURES="${FEATURES} -userpriv -userfetch -usersync"
-
-# this probably already is like this, but we assure that in prefix we
-# have a GNU userland
-USERLAND="GNU"

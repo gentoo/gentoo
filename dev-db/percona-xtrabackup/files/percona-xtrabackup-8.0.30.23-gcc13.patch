@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/895702
+--- a/components/keyrings/common/data/data.h
++++ b/components/keyrings/common/data/data.h
+@@ -23,6 +23,7 @@
+ #ifndef DATA_INCLUDED
+ #define DATA_INCLUDED
+ 
++#include <cstdint>
+ #include <functional>
+ #include <string>
+ #include "pfs_string.h"
+--- a/libbinlogevents/include/gtids/global.h
++++ b/libbinlogevents/include/gtids/global.h
+@@ -23,6 +23,7 @@
+ #ifndef CS_GTIDS_GLOBALS_INCLUDED
+ #define CS_GTIDS_GLOBALS_INCLUDED
+ 
++#include <cstdint>
+ #include <set>
+ #include <sstream>
+ #include "libbinlogevents/include/uuid.h"
+@@ -34,4 +35,4 @@ typedef binary_log::Uuid Uuid;
+ 
+ }  // namespace binary_log::gtids
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/sql/dd/impl/sdi.h
++++ b/sql/dd/impl/sdi.h
+@@ -23,6 +23,7 @@
+ #ifndef DD__SDI_INCLUDED
+ #define DD__SDI_INCLUDED
+ 
++#include <cstdint>
+ #include <functional>
+ #include "my_compiler.h"
+ #include "sql/dd/sdi_fwd.h"      // RJ_Document

@@ -3,14 +3,17 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit python-any-r1 waf-utils
 
 DESCRIPTION="X terminal emulator rendering through OpenGL ES Compute Shaders"
 HOMEPAGE="https://tomscii.sig7.se/zutty/ https://github.com/tomszilagyi/zutty"
-SRC_URI="https://github.com/tomszilagyi/zutty/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/tomszilagyi/zutty/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/tomscii/zutty/raw/8db89ee270f3130d8a2c5c1201d08e7d627278ce/waf -> ${PF}-waf
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -40,3 +43,8 @@ PATCHES=(
 )
 
 DOCS=( doc/KEYS.org doc/USAGE.org )
+
+src_unpack() {
+	unpack ${P}.tar.gz
+	cp "${DISTDIR}"/${PF}-waf "${S}"/waf || die
+}

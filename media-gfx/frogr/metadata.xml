@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
 	<longdescription>
 		Frogr is a small application for the GNOME desktop that allows users to
 		manage their accounts in the Flickr image hosting website. It supports all
 		the basic Flickr features.
 	</longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>cfuga@cfuga.mx</email>
+		<name>Cristian Othón Martínez Vera</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="gnome-gitlab">GNOME/frogr</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    ts is a date and time library for Emacs. It aims to be more convenient than
+    patterns like (string-to-number (format-time-string "%Y")) by providing
+    easy accessors, like (ts-year (ts-now)). To improve performance
+    (significantly), formatted date parts are computed lazily rather than when
+    a timestamp object is instantiated, and the computed parts are then cached
+    for later access without recomputing. Behind the scenes, this avoids
+    unnecessary (string-to-number (format-time-string... calls, which are
+    surprisingly expensive.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/alphapapa/ts.el/issues/</bugs-to>
+    <remote-id type="github">alphapapa/ts.el</remote-id>
+  </upstream>
+</pkgmetadata>

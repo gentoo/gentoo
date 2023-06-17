@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-rel$(ver_rs 1- '')"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="doc +ocamlopt"
 
 DEPEND="<dev-lang/ocaml-4.11.0:=[ocamlopt?]"

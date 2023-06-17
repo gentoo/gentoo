@@ -19,6 +19,6 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">mpmath</remote-id>
-		<remote-id type="github">fredrik-johansson/mpmath</remote-id>
+		<remote-id type="github">mpmath/mpmath</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Extract data from Python tracebacks for informative displays"
 HOMEPAGE="
 	https://github.com/alexmojaki/stack_data/
 	https://pypi.org/project/stack-data/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -32,5 +31,9 @@ BDEPEND="
 		dev-python/pygments[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-pygments-2.14.0.patch
+)
 
 distutils_enable_tests pytest

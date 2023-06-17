@@ -1,21 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: webapp.eclass
 # @MAINTAINER:
 # web-apps@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: functions for installing applications to run under a web server
 # @DESCRIPTION:
 # The webapp eclass contains functions to handle web applications with
 # webapp-config. Part of the implementation of GLEP #11
 
-case ${EAPI:-0} in
-	[5678]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
 
 if [[ -z ${_WEBAPP_ECLASS} ]]; then
 _WEBAPP_ECLASS=1
@@ -391,7 +389,7 @@ webapp_pkg_setup() {
 	# webapp_src_install() within the same shell process
 	touch "${T}/${SETUP_CHECK_FILE}"
 
-	# special case - some ebuilds *do* need to overwride the SLOT
+	# special case - some ebuilds *do* need to override the SLOT
 	if [[ "${SLOT}+" != "${PVR}+" && "${WEBAPP_MANUAL_SLOT}" != "yes" ]]; then
 		die "Set WEBAPP_MANUAL_SLOT=\"yes\" if you need to SLOT manually"
 	fi
@@ -588,3 +586,5 @@ webapp_pkg_prerm() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm

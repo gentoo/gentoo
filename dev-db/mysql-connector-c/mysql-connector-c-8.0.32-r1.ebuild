@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://dev.mysql.com/get/Downloads/MySQL-$(ver_cut 1-2)/mysql-boost-${PV}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 	S="${WORKDIR}/mysql-${PV}"
 fi
@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.22-always-build-decompress-utilities.patch
 	"${FILESDIR}"/${PN}-8.0.19-do-not-install-comp_err.patch
 	"${FILESDIR}"/${PN}-8.0.27-res_n.patch
+	"${FILESDIR}"/${PN}-8.0.32-musl.patch
 )
 
 src_prepare() {
@@ -103,6 +104,7 @@ multilib_src_configure() {
 		-DSHARED_LIB_PATCH_VERSION="0"
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 		-DWITHOUT_SERVER=ON
+		-DWITH_BUILD_ID=OFF
 	)
 
 	cmake_src_configure

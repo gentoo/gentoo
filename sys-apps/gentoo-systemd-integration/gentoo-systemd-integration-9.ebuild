@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 2013-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,9 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=sys-apps/systemd-207
+RDEPEND="acct-group/floppy
+	acct-group/usb
+	>=sys-apps/systemd-207
 	!sys-fs/eudev
 	!sys-fs/udev"
 DEPEND=">=sys-apps/systemd-207"

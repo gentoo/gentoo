@@ -1,8 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+# No meson because of bug #791163
 inherit cmake
 
 DESCRIPTION="A simple, small, efficient, C++ XML parser"

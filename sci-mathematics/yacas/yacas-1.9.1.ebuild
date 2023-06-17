@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ EAPI=8
 # DOCS_BUILDER="sphinx"
 # DOCS_DEPEND="
 # 	dev-python/sphinxcontrib-bibtex
-# 	dev-python/sphinx_rtd_theme
+# 	dev-python/sphinx-rtd-theme
 # "
 
 inherit cmake xdg # python-any-r1 docs

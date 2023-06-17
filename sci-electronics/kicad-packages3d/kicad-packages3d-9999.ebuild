@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,21 +12,17 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/kicad/libraries/kicad-packages3D.git"
 	inherit git-r3
 else
-	MY_PV="${PV/_rc/-rc}"
-	MY_P="${PN}-${MY_PV}"
-	SRC_URI="https://gitlab.com/kicad/libraries/kicad-packages3D/-/archive/${MY_PV}/kicad-packages3D-${MY_PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN/3d/3D}-${MY_PV}"
+	SRC_URI="https://gitlab.com/kicad/libraries/kicad-packages3D/-/archive/${PV}/kicad-packages3D-${PV}.tar.bz2 -> ${P}.tar.bz2"
+	S="${WORKDIR}/${PN/3d/3D}-${PV}"
 
-	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~x86"
-	fi
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
-IUSE="+occ"
+IUSE=""
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 
-RDEPEND=">=sci-electronics/kicad-6.0.0[occ=]"
+RDEPEND=">=sci-electronics/kicad-6.0.0"
 
 if [[ ${PV} == 9999 ]] ; then
 	# x11-misc-util/macros only required on live ebuilds

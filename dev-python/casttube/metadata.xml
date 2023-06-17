@@ -8,7 +8,9 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">casttube</remote-id>
+		<remote-id type="github">ur1katz/casttube</remote-id>
 	</upstream>
 </pkgmetadata>

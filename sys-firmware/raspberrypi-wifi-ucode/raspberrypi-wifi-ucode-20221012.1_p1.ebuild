@@ -13,7 +13,7 @@ S="${WORKDIR}"
 
 LICENSE="Broadcom"
 SLOT="0"
-KEYWORDS="~arm ~arm64"
+KEYWORDS="arm arm64"
 
 RDEPEND="
 	net-wireless/wireless-regdb

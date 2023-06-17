@@ -13,6 +13,6 @@
 		<flag name="graceful-exit">use non-portable hack to exit gracefully on signal</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">stalonetray</remote-id>
+		<remote-id type="github">kolbusa/stalonetray</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,46 @@
+From 641f58c9951d9f5746cd63743dd337f1340d7bff Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 7 Apr 2023 14:51:10 +0000
+Subject: [PATCH] Freeze format_time() tests to a specific date to fix test
+ failures
+
+Freeze the date when performing the tests for format_time() with
+a timezone specified.  Since the time object does not specify a date,
+the formatter uses the format string specific to the current date.
+As a result, if the current DST state is different than when the test
+was last updated, it failed.
+
+This fix covers only regular tests.  I have no idea how to do the same
+for doctests.
+
+Issue #988
+---
+ tests/test_dates.py | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_dates.py b/tests/test_dates.py
+index b94c710..3f1fc3f 100644
+--- a/tests/test_dates.py
++++ b/tests/test_dates.py
+@@ -601,12 +601,13 @@ def test_format_time(timezone_getter):
+     custom = dates.format_time(t, "hh 'o''clock' a, zzzz", tzinfo=eastern, locale='en')
+     assert custom == "09 o'clock AM, Eastern Daylight Time"
+ 
+-    t = time(15, 30)
+-    paris = dates.format_time(t, format='full', tzinfo=paris, locale='fr_FR')
+-    assert paris == '15:30:00 heure normale d’Europe centrale'
++    with freezegun.freeze_time("2023-01-01"):
++        t = time(15, 30)
++        paris = dates.format_time(t, format='full', tzinfo=paris, locale='fr_FR')
++        assert paris == '15:30:00 heure normale d’Europe centrale'
+ 
+-    us_east = dates.format_time(t, format='full', tzinfo=eastern, locale='en_US')
+-    assert us_east == '3:30:00\u202fPM Eastern Standard Time'
++        us_east = dates.format_time(t, format='full', tzinfo=eastern, locale='en_US')
++        assert us_east == '3:30:00\u202fPM Eastern Standard Time'
+ 
+ 
+ def test_format_skeleton(timezone_getter):
+-- 
+2.40.0
+

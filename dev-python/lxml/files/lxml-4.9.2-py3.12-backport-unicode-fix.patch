@@ -1,0 +1,33 @@
+Upstream: https://github.com/lxml/lxml/commit/a1f2231dfdd31a37f2c55bc9ae4ac33e92221227
+
+From a1f2231dfdd31a37f2c55bc9ae4ac33e92221227 Mon Sep 17 00:00:00 2001
+From: Stefan Behnel <stefan_ml@behnel.de>
+Date: Fri, 12 May 2023 09:49:34 +0200
+Subject: [PATCH] Adapt unicode parsing to Py3.12.
+
+---
+ src/lxml/includes/etree_defs.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/lxml/includes/etree_defs.h b/src/lxml/includes/etree_defs.h
+index e671fa85d..d42f2158c 100644
+--- a/src/lxml/includes/etree_defs.h
++++ b/src/lxml/includes/etree_defs.h
+@@ -120,6 +120,16 @@ static PyObject* PyBytes_FromFormat(const char* format, ...) {
+ #  define _lx_PySlice_GetIndicesEx(o, l, b, e, s, sl) PySlice_GetIndicesEx(((PySliceObject*)o), l, b, e, s, sl)
+ #endif
+ 
++#if PY_VERSION_HEX >= 0x030B00A1
++/* Python 3.12 doesn't have wstr Unicode strings any more. */
++#undef PyUnicode_GET_DATA_SIZE
++#define PyUnicode_GET_DATA_SIZE(ustr)  (0)
++#undef PyUnicode_AS_DATA
++#define PyUnicode_AS_DATA(ustr)  (NULL)
++#undef PyUnicode_IS_READY
++#define PyUnicode_IS_READY(ustr)  (1)
++#endif
++
+ #ifdef WITHOUT_THREADING
+ #  undef PyEval_SaveThread
+ #  define PyEval_SaveThread() (NULL)
+

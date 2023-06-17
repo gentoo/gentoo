@@ -10,7 +10,7 @@ HOMEPAGE="https://www.joedog.org/siege-home https://github.com/JoeDog/siege"
 SRC_URI="http://download.joedog.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc x86 ~x64-macos"
 SLOT="0"
 IUSE="ssl"
 

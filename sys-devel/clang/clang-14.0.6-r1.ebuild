@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
 inherit cmake llvm llvm.org multilib multilib-minimal \
-	prefix python-single-r1 toolchain-funcs
+	prefix python-single-r1 toolchain-funcs flag-o-matic
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -234,6 +234,8 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
+	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
+
 	local llvm_version=$(llvm-config --version) || die
 	local clang_version=$(ver_cut 1-3 "${llvm_version}")
 

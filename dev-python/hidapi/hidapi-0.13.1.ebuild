@@ -4,12 +4,10 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A Cython interface to HIDAPI library"
 HOMEPAGE="https://github.com/trezor/cython-hidapi"
-MY_PV=$(ver_rs 3 .post)
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="|| ( BSD GPL-3 )"
 SLOT="0"
@@ -20,8 +18,6 @@ RDEPEND="${DEPEND}"
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 python_configure_all() {
 	DISTUTILS_ARGS=( --with-system-hidapi )

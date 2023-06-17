@@ -1,0 +1,11 @@
+--- a/yeahconsole.c
++++ b/yeahconsole.c
+@@ -340,7 +340,7 @@
+     XMapWindow(dpy, win);
+ }
+ 
+-void init_xterm(move)
++void init_xterm(int move)
+ {
+     XEvent ev;
+     long dummy;

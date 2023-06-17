@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ SV="0.1.0"
 SCRIPTS="scripts-${SV}"
 
 DESCRIPTION="Genetic Algorithm File Fitter"
-HOMEPAGE="http://gaffitter.sourceforge.net/"
+HOMEPAGE="https://gaffitter.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.bz2
 	scripts? ( mirror://sourceforge/${PN}/scripts/${SV}/${SCRIPTS}.tar.bz2 )"

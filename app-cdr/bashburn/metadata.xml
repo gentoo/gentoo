@@ -12,5 +12,6 @@
 			<name>Anders Lindén</name>
 		</maintainer>
 		<doc lang="en">http://bashburn.dose.se/index.php?s=docs</doc>
+		<remote-id type="gitlab">anders.linden/BashBurn</remote-id>
 	</upstream>
 </pkgmetadata>

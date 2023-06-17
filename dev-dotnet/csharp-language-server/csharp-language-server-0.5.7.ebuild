@@ -5,7 +5,7 @@ EAPI=8
 
 DOTNET_COMPAT=6.0
 
-inherit edo multiprocessing
+inherit edo
 
 DESCRIPTION="Roslyn-based LSP language server for C#"
 HOMEPAGE="https://github.com/razzmatazz/csharp-language-server/"
@@ -49,7 +49,7 @@ src_compile() {
 		--no-self-contained
 		--nologo
 		--output "${DOTNET_OUTPUT}"
-		-maxCpuCount:$(makeopts_jobs)
+		-maxCpuCount:1
 		-p:TargetFramework=net${DOTNET_COMPAT}
 	)
 	edob dotnet build ${myopts[@]} "${S}"/src
@@ -60,14 +60,14 @@ src_test() {
 		--configuration ${DOTNET_CONFIGURATION}
 		--no-restore
 		--nologo
-		-maxCpuCount:$(makeopts_jobs)
+		-maxCpuCount:1
 		-p:TargetFramework=net${DOTNET_COMPAT}
 	)
 	edob dotnet test ${myopts[@]} "${S}"/src
 }
 
 src_install() {
-	mkdir -p "${ED}"/usr/share/ || die
+	dodir /usr/share
 	cp -r "${DOTNET_OUTPUT}" "${ED}"/usr/share/ || die
 
 	dosym -r /usr/share/${PN}/CSharpLanguageServer /usr/bin/csharp-ls

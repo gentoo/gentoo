@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: virtualx.eclass
@@ -11,10 +11,10 @@
 
 case ${EAPI} in
 	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported." ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_VIRTUALX_ECLASS} ]]; then
+if [[ -z ${_VIRTUALX_ECLASS} ]]; then
 _VIRTUALX_ECLASS=1
 
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED
@@ -22,11 +22,11 @@ _VIRTUALX_ECLASS=1
 # @DESCRIPTION:
 # Variable specifying the dependency on xorg-server and xhost.
 # Possible special values are "always" and "manual", which specify
-# the dependency to be set unconditionaly or not at all.
+# the dependency to be set unconditionally or not at all.
 # Any other value is taken as useflag desired to be in control of
 # the dependency (eg. VIRTUALX_REQUIRED="kde" will add the dependency
 # into "kde? ( )" and add kde into IUSE.
-: ${VIRTUALX_REQUIRED:=test}
+: "${VIRTUALX_REQUIRED:=test}"
 
 # @ECLASS_VARIABLE: VIRTUALX_DEPEND
 # @OUTPUT_VARIABLE

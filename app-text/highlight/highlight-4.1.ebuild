@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua-single qmake-utils toolchain-funcs
+inherit lua-single qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight"
 HOMEPAGE="http://www.andre-simon.de/"

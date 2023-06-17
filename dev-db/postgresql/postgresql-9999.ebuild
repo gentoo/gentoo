@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11,12} )
 
 inherit flag-o-matic git-r3 linux-info pam python-single-r1 systemd tmpfiles
 
@@ -17,7 +17,7 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug icu kerberos ldap llvm +lz4
+IUSE="debug +icu kerberos ldap llvm +lz4
 	nls pam perl python +readline selinux server systemd
 	ssl static-libs tcl threads uuid xml zlib zstd"
 
@@ -108,9 +108,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# still needed as of 2021-08-13
-	eapply "${FILESDIR}"/${PN}-13.3-riscv-spinlocks.patch
-
 	# Set proper run directory
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die

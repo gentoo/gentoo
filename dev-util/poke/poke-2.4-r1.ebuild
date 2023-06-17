@@ -22,7 +22,7 @@ if [[ ${PV} == 9999 ]]; then
 	"
 else
 	SRC_URI="mirror://gnu/poke/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	REGEN_BDEPEND=""
 fi
 
@@ -42,7 +42,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( nbd? ( sys-libs/libnbd[uri-support] ) )
+	test? ( nbd? ( sys-libs/libnbd[uri-support(+)] ) )
 "
 BDEPEND="
 	${REGEN_BDEPEND}

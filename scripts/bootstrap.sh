@@ -345,10 +345,16 @@ fi
 if [[ -n ${STRAP_RUN} ]] ; then
 	if [[ -x ${GCC_CONFIG} ]] && ${GCC_CONFIG} --get-current-profile &>/dev/null
 	then
-		# Make sure we get the old gcc unmerged ...
-		${V_ECHO} emerge ${STRAP_EMERGE_OPTS} --prune sys-devel/gcc || cleanup 1
-		# Make sure the profile and /lib/cpp and /usr/bin/cc are valid ...
-		${GCC_CONFIG} "$(${GCC_CONFIG} --get-current-profile)" &>/dev/null
+		output=$(${V_ECHO} emerge ${STRAP_EMERGE_OPTS} --prune --pretend --quiet sys-devel/gcc 2>/dev/null)
+		if [[ ${DEBUG} = "1" ]] ; then
+			echo "${output}"
+		fi
+		if [[ "${output}" = *'All selected packages:'* ]] ; then
+			# Make sure we get the old gcc unmerged ...
+			${V_ECHO} emerge ${STRAP_EMERGE_OPTS} --prune sys-devel/gcc || cleanup 1
+			# Make sure the profile and /lib/cpp and /usr/bin/cc are valid ...
+			${GCC_CONFIG} "$(${GCC_CONFIG} --get-current-profile)" &>/dev/null
+		fi
 	fi
 fi
 

@@ -64,7 +64,7 @@ BDEPEND="
 
 src_configure() {
 	mate_src_configure \
-		--libexecdir=/usr/libexec/mate-applets \
+		--libexecdir="${EPREFIX}"/usr/libexec/mate-applets \
 		--disable-deprecation-flags \
 		$(use_enable X x11) \
 		$(use_enable introspection) \

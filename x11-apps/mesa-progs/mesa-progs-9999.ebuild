@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,10 +21,10 @@ else
 fi
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="gles2 wayland X"
+IUSE="gles2 vulkan wayland X"
 
 RDEPEND="
-	media-libs/mesa[${MULTILIB_USEDEP},egl(+),gles2?,wayland?,X?]
+	media-libs/mesa[${MULTILIB_USEDEP},egl(+),gles2?,vulkan?,wayland?,X?]
 	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
@@ -32,11 +32,13 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 	wayland? ( >=dev-libs/wayland-protocols-1.12 )
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
 	virtual/pkgconfig
+	vulkan? ( dev-util/glslang )
 	wayland? ( dev-util/wayland-scanner )
 "
 
@@ -56,11 +58,11 @@ pkg_setup() {
 
 	use gles2 && use X && MULTILIB_CHOST_TOOLS+=(
 		/usr/bin/es2_info
-		/usr/bin/es2gears_x11
+		/usr/bin/es2gears
 	)
 
-	use gles2 && use wayland && MULTILIB_CHOST_TOOLS+=(
-		/usr/bin/es2gears_wayland
+	use vulkan && MULTILIB_CHOST_TOOLS+=(
+		/usr/bin/vkgears
 	)
 }
 
@@ -71,6 +73,7 @@ multilib_src_configure() {
 		-Dgles1=disabled
 		$(meson_feature gles2)
 		-Dosmesa=disabled
+		$(meson_feature vulkan)
 		$(meson_feature wayland)
 		$(meson_feature X x11)
 	)

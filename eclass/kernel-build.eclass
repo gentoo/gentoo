@@ -28,7 +28,7 @@ esac
 if [[ ! ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit multiprocessing python-any-r1 savedconfig toolchain-funcs kernel-install
 

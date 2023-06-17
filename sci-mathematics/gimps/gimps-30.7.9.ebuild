@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ SRC_URI="
 SLOT="0"
 LICENSE="GIMPS"
 RESTRICT="mirror bindist"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* amd64 ~x86"
 
 # Since there are no statically linked binaries for this version of mprime,
 # and no static binaries for amd64 in general, we use the dynamically linked

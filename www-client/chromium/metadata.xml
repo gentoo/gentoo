@@ -5,8 +5,11 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>Matt.Jolly@footclan.ninja</email>
+		<name>Matt Jolly</name>
+	</maintainer>
 	<use>
-		<flag name="js-type-check">Enable JavaScript type-checking for Chrome's web technology-based UI. Requires Java.</flag>
 		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="debug">Enable DCHECK feature with severity configurable at runtime. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="gtk4">Build with GTK4 headers.</flag>
@@ -15,6 +18,7 @@
 		<flag name="libcxx">Use bundled libc++ instead of libstdc++ for building.</flag>
 		<flag name="lto">Build with Link Time Optimizations (via clang's ThinLTO)</flag>
 		<flag name="official">Enable Official build instead of Developer build.</flag>
+		<flag name="pax-kernel">Allow building on a PaX-enabled kernel</flag>
 		<flag name="pgo">Build with Profile Guided Optimizations (2-stage compilation)</flag>
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
@@ -27,6 +31,7 @@
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">chromium/chromium</remote-id>
 		<remote-id type="github">stha09/chromium-patches</remote-id>
 	</upstream>
 </pkgmetadata>

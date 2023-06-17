@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt sexp zarith zip"
 RESTRICT="strip"
 
@@ -52,6 +52,7 @@ S="${WORKDIR}"/${MYP}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2020-gentoo.patch
 	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/${P}-make.patch #Bug #883167
 	"${FILESDIR}"/${PN}-2020-bibtex.patch
 )
 

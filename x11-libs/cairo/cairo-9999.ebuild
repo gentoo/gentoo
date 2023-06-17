@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://gitlab.freedesktop.org/cairo/cairo/-/archive/${PV}/cairo-${PV}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A vector graphics library with cross-device output support"
@@ -19,7 +19,9 @@ HOMEPAGE="https://www.cairographics.org/ https://gitlab.freedesktop.org/cairo/ca
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 IUSE="X aqua debug +glib gtk-doc test"
-RESTRICT="!test? ( test ) test" # Requires poppler-glib, which isn't available in multilib
+# Tests need more wiring up like e.g. https://gitlab.freedesktop.org/cairo/cairo/-/blob/master/.gitlab-ci.yml
+# any2ppm tests seem to hang for now.
+RESTRICT="test !test? ( test )"
 
 RDEPEND="
 	>=dev-libs/lzo-2.06-r1:2[${MULTILIB_USEDEP}]
@@ -37,6 +39,11 @@ RDEPEND="
 		>=x11-libs/libxcb-1.9.1:=[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
+	test? (
+		app-text/ghostscript-gpl
+		app-text/poppler[cairo]
+		gnome-base/librsvg
+	)
 	X? ( x11-base/xorg-proto )"
 BDEPEND="virtual/pkgconfig"
 
@@ -54,10 +61,10 @@ multilib_src_configure() {
 		$(meson_feature X xcb)
 		$(meson_feature X xlib)
 		-Dxlib-xcb=disabled
-		-Dxml=disabled
 		-Dzlib=enabled
 
-		$(meson_feature test tests)
+		# Requires poppler-glib (poppler[cairo]) which isn't available in multilib
+		$(meson_native_use_feature test tests)
 
 		-Dgtk2-utils=disabled
 
@@ -69,6 +76,10 @@ multilib_src_configure() {
 	)
 
 	meson_src_configure
+}
+
+multilib_src_test() {
+	multilib_is_native_abi && meson_src_test
 }
 
 multilib_src_install_all() {

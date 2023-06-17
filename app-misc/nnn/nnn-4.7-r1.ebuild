@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 flag-o-matic toolchain-funcs xdg-utils
+inherit bash-completion-r1 flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="The missing terminal file browser for X"
 HOMEPAGE="https://github.com/jarun/nnn"
@@ -71,7 +71,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 
 	elog "nnn plugins are installed to /usr/share/nnn/plugins/, but nnn does not"
 	elog "load them fom this directory. You will need to copy/symlink them to"
@@ -89,8 +89,4 @@ pkg_postinst() {
 		elog "In order for file icons to work, your terminal needs to use a font that"
 		elog "includes standard unicode emoji."
 	fi
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }

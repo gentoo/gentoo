@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Useful base class for deriving other modules"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

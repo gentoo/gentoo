@@ -47,6 +47,9 @@ BDEPEND="
 src_prepare() {
 	use introspection && vala_src_prepare
 	xdg_src_prepare
+
+	# This makes sense for upstream but not for us downstream, bug #906124.
+	sed -i -e '/-Werror=deprecated-declarations/d' meson.build || die
 }
 
 multilib_src_configure() {

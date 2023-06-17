@@ -4,9 +4,10 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Extensions to the standard Python datetime module"
 HOMEPAGE="
@@ -14,7 +15,6 @@ HOMEPAGE="
 	https://pypi.org/project/python-dateutil/
 	https://github.com/dateutil/dateutil/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -25,7 +25,7 @@ RDEPEND="
 	sys-libs/timezone-data
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]

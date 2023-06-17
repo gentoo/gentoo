@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="Implementation of Lisp/Scheme-like cons in Python"
@@ -19,7 +19,7 @@ S="${WORKDIR}/python-${P}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 
 RDEPEND="dev-python/logical-unification[${PYTHON_USEDEP}]"
 

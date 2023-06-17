@@ -1,0 +1,10 @@
+# Copyright 2023 Gentoo Authors                                                 
+# Distributed under the terms of the GNU General Public License v2 
+
+# Sam James <sam@gentoo.org> (2023-03-03)
+# Force the toolchain environment we expect on the LLVM profiles.
+# default-libcxx in particular changes ABI so can't be toggled at-will, and other
+# profile settings expect it.
+# TODO: Make a profile without default-libcxx too?
+sys-devel/clang default-compiler-rt default-lld default-libcxx
+sys-devel/clang-common default-compiler-rt default-lld default-libcxx

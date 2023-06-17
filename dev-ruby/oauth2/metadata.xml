@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">intridea/oauth2</remote-id>
+    <remote-id type="gitlab">oauth-xx/oauth2</remote-id>
   </upstream>
 </pkgmetadata>

@@ -7,15 +7,14 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r1 pypi xdg-utils
 
 DESCRIPTION="Jupyter Interactive Notebook"
 HOMEPAGE="https://jupyter.org"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~ia64"
 
 RDEPEND="
 	>=dev-libs/mathjax-2.4
@@ -25,17 +24,17 @@ RDEPEND="
 	>=dev-python/tornado-6.0[${PYTHON_USEDEP}]
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_core-4.6.1[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-core-4.6.1[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_client-5.3.4[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-client-5.3.4[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	>=dev-python/send2trash-1.8.0[${PYTHON_USEDEP}]
-	dev-python/prometheus_client[${PYTHON_USEDEP}]"
+	dev-python/prometheus-client[${PYTHON_USEDEP}]"
 
 BDEPEND="
-	>=dev-python/jupyter_packaging-0.9[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-packaging-0.9[${PYTHON_USEDEP}]
 	test? (
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]

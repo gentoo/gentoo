@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-04-05)
+# x11-drivers/nvidia-drivers is not available for x32
+sys-apps/hwloc nvml
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
 # Dependency media-libs/intel-hybrid-codec-driver does not work on x32
@@ -42,10 +46,8 @@ www-servers/uwsgi uwsgi_plugins_rados
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Those packages require net-libs/nodejs.
 dev-lang/nim test-js
-dev-python/nbdime webtools
 dev-ruby/ammeter test
 dev-ruby/jsobfu test
-dev-ruby/rails asset-pipeline
 dev-ruby/sprockets test
 dev-ruby/tilt test
 net-analyzer/netdata nodejs

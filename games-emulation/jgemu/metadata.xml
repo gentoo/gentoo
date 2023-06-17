@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<use>
 		<flag name="bsnes">Install bsnes for Super Nintendo</flag>
 		<flag name="cega">Install Cega for SG-1000, Sega Master System and Game Gear</flag>
@@ -14,14 +22,6 @@
 		<flag name="sameboy">Install SameBoy for Game Boy and Game Boy Color</flag>
 		<flag name="vecx">Install Vecx for Vectrex</flag>
 	</use>
-	<maintainer type="person" proxied="yes">
-		<email>orbea@riseup.net</email>
-		<name>orbea</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription>
 		Jolly Good Emulation is an education and preservation oriented
 		emulation project. As a side effect, it offers emulation

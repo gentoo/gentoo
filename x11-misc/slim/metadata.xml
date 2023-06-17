@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>bugs.gentoo@flitspace.org.uk</email>
+		<name>Robert Pearce</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">slim.berlios</remote-id>
+		<remote-id type="sourceforge">slim-fork</remote-id>
 	</upstream>
 </pkgmetadata>

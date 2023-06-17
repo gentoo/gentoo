@@ -10,12 +10,9 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux64"
-ASIO_COMMIT="b73dc1d2c0ecb9452a87c26544d7f71e24342df6"
-JSON_COMMIT="a34e011e24beece3b69397a03fdc650546f052c3"
-OBS_BROWSER_COMMIT="1c2264d722f065646b72ac654f6ddbb6843f9bef"
-OBS_WEBSOCKET_COMMIT="31f9845b6132e6c1529401292bc1125401e2a324"
+OBS_BROWSER_COMMIT="995ad53cf3b774928a690d9de813fc8cb43175fe"
+OBS_WEBSOCKET_COMMIT="57a9c19f2ccf4e5452baeffd78014579622b9f3a"
 QR_COMMIT="8518684c0f33d004fa93971be2c6a8eca3167d1e"
-WEBSOCKETPP_COMMIT="56123c87598f8b1dd471be83ca841ceae07f95ba"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -32,11 +29,8 @@ else
 	SRC_URI="
 		https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
-		https://github.com/chriskohlhoff/asio/archive/${ASIO_COMMIT}.tar.gz -> asio-${ASIO_COMMIT}.tar.gz
 		https://github.com/nayuki/QR-Code-generator/archive/${QR_COMMIT}.tar.gz -> qr-${QR_COMMIT}.tar.gz
-		https://github.com/nlohmann/json/archive/${JSON_COMMIT}.tar.gz -> json-${JSON_COMMIT}.tar.gz
 		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz -> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
-		https://github.com/zaphoyd/websocketpp/archive/${WEBSOCKETPP_COMMIT}.tar.gz -> websocketpp-${WEBSOCKETPP_COMMIT}.tar.gz
 	"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
@@ -71,6 +65,7 @@ DEPEND="
 	net-misc/curl
 	sys-apps/dbus
 	sys-apps/pciutils
+	sys-apps/util-linux
 	sys-libs/zlib:=
 	x11-libs/libX11
 	x11-libs/libXcomposite
@@ -140,6 +135,11 @@ DEPEND="
 		dev-libs/wayland
 		x11-libs/libxkbcommon
 	)
+	websocket? (
+		dev-cpp/asio
+		dev-cpp/nlohmann_json
+		dev-cpp/websocketpp
+	)
 "
 RDEPEND="${DEPEND}"
 
@@ -171,24 +171,25 @@ src_unpack() {
 		rm -d ${P}/plugins/obs-websocket || die
 		mv obs-websocket-${OBS_WEBSOCKET_COMMIT} ${P}/plugins/obs-websocket || die
 
-		rm -d ${P}/plugins/obs-websocket/deps/asio || die
-		mv asio-${ASIO_COMMIT} ${P}/plugins/obs-websocket/deps/asio || die
-
-		rm -d ${P}/plugins/obs-websocket/deps/json || die
-		mv json-${JSON_COMMIT} ${P}/plugins/obs-websocket/deps/json || die
-
 		rm -d ${P}/plugins/obs-websocket/deps/qr || die
 		mv QR-Code-generator-${QR_COMMIT} ${P}/plugins/obs-websocket/deps/qr || die
-
-		rm -d ${P}/plugins/obs-websocket/deps/websocketpp || die
-		mv websocketpp-${WEBSOCKETPP_COMMIT} ${P}/plugins/obs-websocket/deps/websocketpp || die
 	fi
+}
+
+src_prepare() {
+	default
+
+	sed -i '/-Werror$/d' "${WORKDIR}"/${P}/cmake/Modules/CompilerConfig.cmake || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		$(usev browser -DCEF_ROOT_DIR=../${CEF_DIR})
+		-DCALM_DEPRECATION=ON
+		-DCCACHE_SUPPORT=OFF
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AJA=OFF
 		-DENABLE_BROWSER=$(usex browser)
@@ -263,5 +264,6 @@ pkg_postinst() {
 		elog
 	fi
 
+	optfeature "VA-API hardware encoding" media-video/ffmpeg[vaapi]
 	optfeature "virtual camera support" media-video/v4l2loopback
 }

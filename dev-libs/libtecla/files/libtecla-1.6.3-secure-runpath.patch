@@ -1,5 +1,5 @@
---- libtecla/Makefile.rules.orig	2014-11-10 00:36:53.000000000 +0300
-+++ libtecla/Makefile.rules	2016-04-13 10:37:36.234418914 +0300
+--- a/Makefile.rules
++++ b/Makefile.rules
 @@ -54,19 +54,19 @@
  demos: $(DEMO_PROGS)
  

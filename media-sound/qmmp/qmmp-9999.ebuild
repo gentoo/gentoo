@@ -1,14 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake xdg
 
 DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
-HOMEPAGE="http://qmmp.ylsoftware.com"
-if [[ ${PV} != 9999 ]]; then
-	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2
+HOMEPAGE="https://qmmp.ylsoftware.com"
+if [[ ${PV} != *9999* ]]; then
+	SRC_URI="https://qmmp.ylsoftware.com/files/${P}.tar.bz2
 		mirror://sourceforge/${PN}-dev/files/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
@@ -74,7 +74,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		media-libs/libprojectm:=
 	)
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
+	pulseaudio? ( media-libs/libpulse )
 	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	shout? ( media-libs/libshout )

@@ -20,13 +20,13 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/boolean-py-4.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-4[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-4[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

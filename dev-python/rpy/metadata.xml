@@ -13,5 +13,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">rpy2</remote-id>
+    <remote-id type="sourceforge">rpy</remote-id>
   </upstream>
 </pkgmetadata>

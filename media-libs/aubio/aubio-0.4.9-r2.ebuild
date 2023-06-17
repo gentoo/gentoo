@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 waf-utils
 
@@ -52,6 +52,7 @@ PYTHON_SRC_DIR="${S}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.9-docdir.patch
 	"${FILESDIR}"/ffmpeg5.patch
+	"${FILESDIR}"/${PN}-0.4.9-remove-universal-newlines.patch
 )
 
 src_prepare() {

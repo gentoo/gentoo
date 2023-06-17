@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-solaris"
 
 CP_DEPEND="
 	dev-java/antlr-runtime:3.5

@@ -1,10 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# pkgcheck note: toolchain-funcs is not unused
-inherit linux-mod toolchain-funcs udev
+inherit linux-mod-r1 udev
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -21,26 +20,27 @@ HOMEPAGE="https://atar-axis.github.io/xpadneo/"
 LICENSE="GPL-3"
 SLOT="0"
 
-S="${WORKDIR}/${P}/hid-${PN}"
-MODULE_NAMES="hid-${PN}(kernel/drivers/hid::src)"
-BUILD_PARAMS='V=1 LD="$(tc-getLD)" KERNEL_SOURCE_DIR="${KV_OUT_DIR}"'
-BUILD_TARGETS="modules"
-
 CONFIG_CHECK="INPUT_FF_MEMLESS"
 
+src_compile() {
+	local modlist=( hid-${PN}=kernel/drivers/hid:hid-${PN}:hid-${PN}/src )
+	local modargs=( KERNEL_SOURCE_DIR="${KV_OUT_DIR}" )
+
+	linux-mod-r1_src_compile
+}
+
 src_install() {
-	linux-mod_src_install
+	local DOCS=( docs/{[^i]*.md,descriptors,reports} NEWS.md )
+	linux-mod-r1_src_install
 
 	insinto /etc/modprobe.d
-	doins etc-modprobe.d/${PN}.conf
+	doins hid-${PN}/etc-modprobe.d/${PN}.conf
 
-	udev_dorules etc-udev-rules.d/60-${PN}.rules
-
-	dodoc -r ../docs/{[^i]*.md,descriptors,reports} ../NEWS.md
+	udev_dorules hid-${PN}/etc-udev-rules.d/60-${PN}.rules
 }
 
 pkg_postinst() {
-	linux-mod_pkg_postinst
+	linux-mod-r1_pkg_postinst
 	udev_reload
 
 	local disable_ertm=/sys/module/bluetooth/parameters/disable_ertm
@@ -69,6 +69,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	linux-mod_pkg_postrm
 	udev_reload
 }

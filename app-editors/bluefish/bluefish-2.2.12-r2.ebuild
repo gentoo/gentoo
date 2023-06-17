@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 MY_P=${P/_/-}
 inherit autotools python-single-r1 xdg
@@ -13,7 +13,7 @@ HOMEPAGE="https://bluefish.openoffice.nl/"
 SRC_URI="https://www.bennewitz.com/bluefish/stable/source/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3+"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 SLOT="0"
 IUSE="gucharmap nls python spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

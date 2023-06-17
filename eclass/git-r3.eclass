@@ -1,27 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using
 # git as remote repository.
 
-case ${EAPI:-0} in
-	5|6|7|8) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
-
-if [[ ! ${_GIT_R3} ]]; then
+if [[ -z ${_GIT_R3_ECLASS} ]]; then
+_GIT_R3_ECLASS=1
 
 PROPERTIES+=" live"
 
-if [[ ${EAPI} != [56] ]]; then
+if [[ ${EAPI} != 6 ]]; then
 	BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
 else
 	DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
@@ -63,7 +62,7 @@ fi
 # unavailable calls like 'git describe' will not reference prior tags.
 # No purging of old references is done. This mode is intended mostly for
 # embedded systems with limited disk space.
-: ${EGIT_CLONE_TYPE:=single}
+: "${EGIT_CLONE_TYPE:=single}"
 
 # @ECLASS_VARIABLE: EGIT_MIN_CLONE_TYPE
 # @DESCRIPTION:
@@ -80,7 +79,7 @@ fi
 # or a similar remote is used that does not support shallow clones
 # and fetching tags along with commits. Please use sparingly, and to fix
 # fatal errors rather than 'non-pretty versions'.
-: ${EGIT_MIN_CLONE_TYPE:=shallow}
+: "${EGIT_MIN_CLONE_TYPE:=shallow}"
 
 # @ECLASS_VARIABLE: EGIT3_STORE_DIR
 # @USER_VARIABLE
@@ -116,7 +115,7 @@ fi
 # read the manpage for git-clone(1).
 #
 # URIs should be using https:// whenever possible. http:// and git://
-# URIs are completely unsecured and their use (even if only as
+# URIs are completely insecure and their use (even if only as
 # a fallback) renders the ebuild completely vulnerable to MITM attacks.
 #
 # Can be a whitespace-separated list or an array.
@@ -318,7 +317,7 @@ _git-r3_set_gitdir() {
 	repo_name=${repo_name//\//_}
 
 	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
-	: ${EGIT3_STORE_DIR:=${distdir}/git3-src}
+	: "${EGIT3_STORE_DIR:=${distdir}/git3-src}"
 
 	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
 
@@ -534,7 +533,7 @@ git-r3_fetch() {
 	local r
 	for r in "${repos[@]}"; do
 		if [[ ${r} == git:* || ${r} == http:* ]]; then
-			ewarn "git-r3: ${r%%:*} protocol is completely unsecure and may render the ebuild"
+			ewarn "git-r3: ${r%%:*} protocol is completely insecure and may render the ebuild"
 			ewarn "easily susceptible to MITM attacks (even if used only as fallback). Please"
 			ewarn "use https instead."
 			ewarn "[URI: ${r}]"
@@ -559,49 +558,46 @@ git-r3_fetch() {
 	local commit_id=${2:-${EGIT_COMMIT}}
 	local commit_date=${4:-${EGIT_COMMIT_DATE}}
 
-	# support new override API for EAPI 6+
-	if [[ ${EAPI} != 5 ]]; then
-		# get the name and do some more processing:
-		# 1) kill .git suffix,
-		# 2) underscore (remaining) non-variable characters,
-		# 3) add preceding underscore if it starts with a digit,
-		# 4) uppercase.
-		local override_name=${GIT_DIR##*/}
-		override_name=${override_name%.git}
-		override_name=${override_name//[^a-zA-Z0-9_]/_}
-		override_name=${override_name^^}
+	# get the name and do some more processing:
+	# 1) kill .git suffix,
+	# 2) underscore (remaining) non-variable characters,
+	# 3) add preceding underscore if it starts with a digit,
+	# 4) uppercase.
+	local override_name=${GIT_DIR##*/}
+	override_name=${override_name%.git}
+	override_name=${override_name//[^a-zA-Z0-9_]/_}
+	override_name=${override_name^^}
 
-		local varmap=(
-			REPO:repos
-			BRANCH:branch_name
-			COMMIT:commit_id
-			COMMIT_DATE:commit_date
-		)
+	local varmap=(
+		REPO:repos
+		BRANCH:branch_name
+		COMMIT:commit_id
+		COMMIT_DATE:commit_date
+	)
 
-		local localvar livevar live_warn= override_vars=()
-		for localvar in "${varmap[@]}"; do
-			livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
-			localvar=${localvar#*:}
-			override_vars+=( "${livevar}" )
+	local localvar livevar live_warn= override_vars=()
+	for localvar in "${varmap[@]}"; do
+		livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
+		localvar=${localvar#*:}
+		override_vars+=( "${livevar}" )
 
-			if [[ -n ${!livevar} ]]; then
-				[[ ${localvar} == repos ]] && repos=()
-				live_warn=1
-				ewarn "Using ${livevar}=${!livevar}"
-				declare "${localvar}=${!livevar}"
-			fi
-		done
-
-		if [[ ${live_warn} ]]; then
-			ewarn "No support will be provided."
-		else
-			einfo "To override fetched repository properties, use:"
-			local x
-			for x in "${override_vars[@]}"; do
-				einfo "  ${x}"
-			done
-			einfo
+		if [[ -n ${!livevar} ]]; then
+			[[ ${localvar} == repos ]] && repos=()
+			live_warn=1
+			ewarn "Using ${livevar}=${!livevar}"
+			declare "${localvar}=${!livevar}"
 		fi
+	done
+
+	if [[ ${live_warn} ]]; then
+		ewarn "No support will be provided."
+	else
+		einfo "To override fetched repository properties, use:"
+		local x
+		for x in "${override_vars[@]}"; do
+			einfo "  ${x}"
+		done
+		einfo
 	fi
 
 	# set final variables after applying overrides
@@ -773,7 +769,7 @@ git-r3_fetch() {
 	[[ ${success} ]] || die "Unable to fetch from any of EGIT_REPO_URI"
 
 	# submodules can reference commits in any branch
-	# always use the 'mirror' mode to accomodate that, bug #503332
+	# always use the 'mirror' mode to accommodate that, bug #503332
 	local EGIT_CLONE_TYPE=mirror
 
 	# recursively fetch submodules
@@ -1079,5 +1075,6 @@ git-r3_pkg_needrebuild() {
 # 'export' locally until this gets into EAPI
 pkg_needrebuild() { git-r3_pkg_needrebuild; }
 
-_GIT_R3=1
 fi
+
+EXPORT_FUNCTIONS src_unpack

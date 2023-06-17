@@ -22,7 +22,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="mysql postgres sqlite"
 
 RUBY_S="rails-${PV}/${PN}"
@@ -40,7 +40,7 @@ ruby_add_bdepend "
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/sqlite3-1.4.0
 		dev-ruby/mocha
-		<dev-ruby/minitest-5.16:5
+		<dev-ruby/minitest-5.16:*
 	)"
 
 DEPEND+=" test? ( >=dev-db/sqlite-3.12.1 )"

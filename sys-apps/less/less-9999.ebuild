@@ -21,18 +21,25 @@ inherit autotools
 MY_PV=${PV/_beta/-beta}
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="Excellent text file viewer"
-HOMEPAGE="http://www.greenwoodsoftware.com/less/"
-[[ ${PV} != 9999 ]] && SRC_URI="http://www.greenwoodsoftware.com/less/${MY_P}.tar.gz"
+HOMEPAGE="https://www.greenwoodsoftware.com/less/"
+[[ ${PV} != 9999 ]] && SRC_URI="https://www.greenwoodsoftware.com/less/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P/?beta}
 
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+if [[ ${PV} != 9999 && ${PV} != *_beta* ]] ; then
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+fi
 IUSE="pcre"
+# As of 623_beta, lesstest is not included in dist tarballs
+# https://github.com/gwsw/less/issues/344
+RESTRICT="test"
 
-DEPEND=">=app-misc/editor-wrapper-3
-	>=sys-libs/ncurses-5.2:0=
-	pcre? ( dev-libs/libpcre2 )"
+DEPEND="
+	>=app-misc/editor-wrapper-3
+	>=sys-libs/ncurses-5.2:=
+	pcre? ( dev-libs/libpcre2 )
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -50,6 +57,10 @@ src_configure() {
 		--with-editor="${EPREFIX}"/usr/libexec/editor
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	emake check VERBOSE=1
 }
 
 src_install() {

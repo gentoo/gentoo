@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,6 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
 
 RDEPEND=">=dev-scheme/guile-2.0.0:="
 DEPEND="${RDEPEND}"
@@ -28,4 +27,12 @@ src_prepare() {
 
 src_configure() {
 	econf --with-guile-site=yes
+}
+
+src_install() {
+	default
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }

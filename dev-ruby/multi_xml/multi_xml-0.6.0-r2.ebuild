@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -18,10 +18,10 @@ inherit ruby-fakegem
 DESCRIPTION="A generic swappable back-end for XML parsing"
 HOMEPAGE="https://www.rubydoc.info/gems/multi_xml"
 SRC_URI="https://github.com/sferik/multi_xml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-LICENSE="MIT"
 
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+LICENSE="MIT"
 SLOT="0"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"

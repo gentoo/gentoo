@@ -9,4 +9,7 @@
 		Vorbis, Musepack, FLAC, and WAV files, and it might be the easiest way to
 		copy an audio CD.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">burncdda</remote-id>
+	</upstream>
 </pkgmetadata>

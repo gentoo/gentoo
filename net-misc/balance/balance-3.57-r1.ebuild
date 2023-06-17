@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit fcaps toolchain-funcs
 
 DESCRIPTION="TCP Load Balancing Port Forwarder"
-HOMEPAGE="http://www.inlab.de/balance.html"
-SRC_URI="http://www.inlab.de/${P}.tar.gz"
+HOMEPAGE="https://balance.inlab.net"
+SRC_URI="https://download.inlab.net/Balance/${PV}/${P}.tar"
 
 LICENSE="GPL-2"
 SLOT="0"

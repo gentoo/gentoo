@@ -14,6 +14,7 @@ net-analyzer/gsad
 # Requires qtwebengine
 sci-electronics/eagle
 sci-geosciences/gpsbabel
+sci-geosciences/qgis
 sci-geosciences/viking
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-09-09)
@@ -41,7 +42,6 @@ dev-python/PyQtWebEngine
 app-admin/calamares
 app-doc/zeal
 app-editors/ghostwriter
-app-editors/notepadqq
 app-editors/retext
 app-misc/anki
 app-office/kalendar:5
@@ -52,6 +52,7 @@ app-text/bibletime
 app-text/calibre
 app-text/cb2bib
 app-text/kchmviewer
+app-text/kjots
 app-text/sigil
 dev-lang/typescript
 dev-python/spyder
@@ -112,6 +113,7 @@ media-video/openshot
 media-video/vidify
 media-video/vidify-audiosync
 net-analyzer/nmapsi
+net-im/whatsie
 net-libs/signon-ui
 net-misc/nextcloud-client
 net-p2p/ktorrent:5
@@ -169,7 +171,6 @@ dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/deckar01-task_list
 dev-ruby/execjs
-dev-ruby/turbolinks
 dev-ruby/uglifier
 dev-util/uglifyjs
 net-libs/nodejs

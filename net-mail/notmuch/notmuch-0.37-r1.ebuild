@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
-NEED_EMACS="24.1"
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
 inherit bash-completion-r1 desktop distutils-r1 elisp-common flag-o-matic pax-utils toolchain-funcs xdg-utils
 
@@ -18,14 +17,14 @@ LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y. Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	apidoc? ( doc )
 	nmbug? ( python )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( crypt emacs python valgrind )
+	test? ( crypt emacs python )
 "
-IUSE="apidoc crypt doc emacs mutt nmbug python test valgrind"
+IUSE="apidoc crypt doc emacs mutt nmbug python test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -58,7 +57,9 @@ COMMON_DEPEND="
 	emacs? ( >=app-editors/emacs-${NEED_EMACS}:* )
 	python? (
 		${PYTHON_DEPS}
-		virtual/python-cffi[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/cffi[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 
@@ -72,7 +73,6 @@ DEPEND="${COMMON_DEPEND}
 			dev-libs/openssl
 		)
 	)
-	valgrind? ( dev-util/valgrind )
 "
 
 RDEPEND="${COMMON_DEPEND}

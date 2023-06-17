@@ -3,14 +3,14 @@
 
 EAPI=8
 
-COMMIT=382db93374380e5db56f02934ee32bbe39159019
+[[ ${PV} == *_p20210708 ]] && COMMIT=382db93374380e5db56f02934ee32bbe39159019
 
 inherit elisp
 
 DESCRIPTION="Collection of extensions for Proof General's Coq mode"
 HOMEPAGE="https://github.com/cpitclaudel/company-coq/"
 SRC_URI="https://github.com/cpitclaudel/${PN}/archive/${COMMIT}.tar.gz
-		-> ${P}.tar.gz"
+	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"

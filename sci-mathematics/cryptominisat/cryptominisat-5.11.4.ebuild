@@ -21,6 +21,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${PN}-5.11.4-gcc-13.patch )
+
 src_configure() {
 	local -a mycmakeargs=(
 		-DNOBREAKID=ON

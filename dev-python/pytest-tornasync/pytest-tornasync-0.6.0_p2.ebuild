@@ -3,14 +3,13 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Pytest plugin for testing Python 3.5+ Tornado code"
 HOMEPAGE="https://github.com/eukaryote/pytest-tornasync"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P//_p/.post}.tar.gz"
-S="${WORKDIR}/${P//_p/.post}"
 
 LICENSE="MIT"
 SLOT="0"

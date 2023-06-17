@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SRC_URI="https://www.jwz.org/xscreensaver/${P}.1.tar.gz"
 #   SpecialElite.ttf -- Apache-2.0
 LICENSE="BSD fonts? ( MIT Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="elogind fonts +gdk-pixbuf gdm gles glx +gtk jpeg +locking new-login offensive pam +perl +png selinux suid systemd xinerama"
 REQUIRED_USE="
 	gles? ( !glx )
@@ -78,7 +78,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.01-interix.patch
 	"${FILESDIR}"/${PN}-5.31-pragma.patch
 	"${FILESDIR}"/${PN}-6.01-gentoo.patch
 	"${FILESDIR}"/${PN}-5.45-gcc.patch

@@ -4,7 +4,6 @@
 EAPI=8
 
 [[ ${PV} == *_p20220325 ]] && COMMIT=65c496d3d1d1298345beb9845840067bffb2ffd8
-NEED_EMACS=24.3
 
 inherit elisp font readme.gentoo-r1
 

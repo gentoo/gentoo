@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+    <!-- maintainer-needed -->
     <longdescription>
         VNC server for wlroots based Wayland compositors.
         It attaches to a running Wayland session, creates
@@ -9,7 +10,9 @@
         headless one, so it is also possible to run wayvnc
         without a physical display attached.
     </longdescription>
-    <!-- maintainer-needed -->
+    <upstream>
+      <remote-id type="github">any1/wayvnc</remote-id>
+    </upstream>
     <use>
       <flag name="gbm">enable GPU-side screencopy (experimental)</flag>
       <flag name="tracing">Trace kernel and memory calls</flag>

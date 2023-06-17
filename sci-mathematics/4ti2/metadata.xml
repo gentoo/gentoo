@@ -9,4 +9,7 @@
   4ti2 is a software package for algebraic, geometric and combinatorial problems
   on linear spaces and for toric ideals too.
   </longdescription>
+  <upstream>
+    <remote-id type="github">4ti2/4ti2</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -25,6 +25,10 @@ S="${WORKDIR}"/${P}-src
 
 PATCHES=( "${FILESDIR}"/${PN}-0.9.2-useCC.patch )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+)
+
 src_prepare() {
 	append-libs -lm
 	sed \

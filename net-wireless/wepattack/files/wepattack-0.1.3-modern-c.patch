@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/881007
+--- a/src/log.c
++++ b/src/log.c
+@@ -25,6 +25,7 @@
+ #include "log.h"
+ #include "wepattack.h"
+ #include "config.h"
++#include "misc.h"
+ 
+ static time_t start_time;
+ char logfile[40];
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -23,6 +23,7 @@
+ #include "wepattack.h"
+ #include "config.h"
+ #include "misc.h"
++#include "log.h"
+ 
+ double difftime_us(struct timeval *time_start, struct timeval *time_end) {
+ 
+@@ -87,8 +88,10 @@ d_fprintf (FILE *__restrict __stream,
+ 	__const char *__restrict __format,...) {
+ 
+ 	if (DEBUG) {
+-		fprintf(__stream, __format);
++		return fprintf(__stream, __format);
+ 	}
++
++	return 0;
+ }
+ 
+ void print_hex_array(FILE* out, unsigned char* data, int length) {

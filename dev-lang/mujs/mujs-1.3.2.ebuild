@@ -12,7 +12,7 @@ SRC_URI="https://mujs.com/downloads/${P}.tar.gz"
 LICENSE="ISC"
 # The subslot matches the SONAME
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="sys-libs/readline:="
 DEPEND="${RDEPEND}"

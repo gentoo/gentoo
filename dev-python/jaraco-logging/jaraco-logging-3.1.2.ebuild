@@ -4,7 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN/-/.}
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -13,8 +15,6 @@ HOMEPAGE="
 	https://github.com/jaraco/jaraco.logging/
 	https://pypi.org/project/jaraco.logging/
 "
-SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
-S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/tempora[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-1.15.0[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

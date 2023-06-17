@@ -11,7 +11,7 @@ SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="libedit static"
 
 BDEPEND="virtual/pkgconfig"
@@ -38,9 +38,6 @@ src_configure() {
 		# don't redefine stat, open, dirent, etc. on Solaris
 		export ac_cv_func_stat64=yes
 		export ac_cv_func_open64=yes
-
-		# if your headers strictly adhere to POSIX, you'll need this too
-		[[ ${CHOST##*solaris2.} -le 10 ]] && append-cppflags -DNAME_MAX=255
 	fi
 
 	if [[ ${CHOST} == powerpc-*-darwin* ]] ; then

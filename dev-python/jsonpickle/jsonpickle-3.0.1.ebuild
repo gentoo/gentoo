@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/feedparser[${PYTHON_USEDEP}]
 		dev-python/gmpy[${PYTHON_USEDEP}]

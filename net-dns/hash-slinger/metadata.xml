@@ -11,4 +11,7 @@
 		<flag name="openpgp">Enable support for OPENPGPKEY records (openpgpkey)</flag>
 		<flag name="ssh">Enable support for SSHFP records (sshfp)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">letoams/hash-slinger</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -11,12 +11,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.21m-darwin.patch
 	"${FILESDIR}"/${PN}-5.21m-gentoo-fbsd.patch
-	"${FILESDIR}"/${PN}-5.21o-interix.patch
 	"${FILESDIR}"/${PN}-5.21p-fno-common.patch
 	"${FILESDIR}"/${PN}-5.21p-variadic-arcdie.patch
 )

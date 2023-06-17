@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ygrek/mldonkey/releases/download/release-${PV//./-}-
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 
 IUSE="bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt upnp"
 

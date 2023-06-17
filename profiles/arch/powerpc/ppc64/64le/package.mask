@@ -48,6 +48,7 @@
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
 # works on ppc64le
 -app-containers/docker
+-app-containers/docker-buildx
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-22
 # criu works on ppc64le

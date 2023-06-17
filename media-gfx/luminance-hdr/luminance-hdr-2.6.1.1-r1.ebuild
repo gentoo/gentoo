@@ -15,9 +15,6 @@ KEYWORDS="amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 fits openmp test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	dev-qt/linguist-tools:5
-"
 RDEPEND="
 	dev-libs/boost:=
 	dev-qt/qtconcurrent:5
@@ -46,6 +43,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	test? ( dev-cpp/gtest )
 "
+BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-openexr3.patch
@@ -54,6 +52,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-no-git.patch
 	"${FILESDIR}"/${PN}-2.6.0-docs.patch
 	"${FILESDIR}"/${PN}-2.5.1-openmp-automagic.patch
+	# patch by ArchLinux
+	"${FILESDIR}"/${P}-exiv2-0.28.patch
 )
 
 pkg_pretend() {

@@ -1,0 +1,37 @@
+https://github.com/aranym/aranym/pull/102
+
+From 1a45b77ee2eaabc53fef0794c0e3a64a7c41683e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 19 Mar 2023 02:05:09 +0000
+Subject: [PATCH] configure.ac: fix bashisms
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+--- a/configure.ac
++++ b/configure.ac
+@@ -1714,7 +1714,7 @@ SDL_CFLAGS=
+ SDL_LIBS=
+ no_sdl=yes
+ no_sdl2=yes
+-if test "$OS_TYPE" == darwin -a "$WITH_FINK" = no; then
++if test "$OS_TYPE" = darwin -a "$WITH_FINK" = no; then
+ 	ARANYM_CHECK_FRAMEWORK(SDL, [])
+ 	if test "$have_framework_SDL" = yes ; then
+ 		ARANYM_CHECK_FRAMEWORK_LOCATION(SDL)
+@@ -1781,7 +1781,7 @@ SDL_LIBS="$SDL_LIBS -lpthread"
+ AM_CONDITIONAL([ENABLE_SDL2], test "$enable_sdl2" = yes)
+ #
+ # SDL2 on macOS needs 10.6 or above
+-if test "$enable_sdl2" = yes -a "$OS_TYPE" == darwin; then
++if test "$enable_sdl2" = yes -a "$OS_TYPE" = darwin; then
+ 	export MACOSX_DEPLOYMENT_TARGET=10.6
+ fi
+ 
+-- 
+2.40.0
+

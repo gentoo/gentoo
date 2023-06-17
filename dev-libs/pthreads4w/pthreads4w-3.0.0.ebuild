@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-code-v${PV}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86-winnt"
+KEYWORDS=""
 IUSE=""
 
 DEPEND=""

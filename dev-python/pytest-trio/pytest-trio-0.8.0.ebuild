@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="This is a pytest plugin to help you test projects that use Trio"
 HOMEPAGE="
 	https://github.com/python-trio/pytest-trio
 	https://pypi.org/project/pytest-trio/
 "
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
@@ -33,7 +33,7 @@ BDEPEND="
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
 	dev-python/attrs \
-	dev-python/sphinx_rtd_theme \
+	dev-python/sphinx-rtd-theme \
 	dev-python/sphinxcontrib-trio
 
 python_prepare_all() {

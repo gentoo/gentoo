@@ -4,11 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="micro-framework for developing production-ready web services with Python"
 HOMEPAGE="https://pypi.org/project/klein/ https://github.com/twisted/klein/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

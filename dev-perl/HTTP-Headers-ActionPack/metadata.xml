@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>stasibear@gentoo.org</email>
+    <name>Erik Mackdanz</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTTP-Headers-ActionPack</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::AcceptCharset</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::AcceptLangage</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::AuthenticationInfo</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Authorization</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Authorization::Basic</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Authorization::Digest</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::ContentNegotiation</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Core::Base</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Core::BaseAuthHeader</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Core::BaseHeaderList</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Core::BaseHeaderType</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Core::BaseHeaderWithParams</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::DateHeader</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::LinkHeader</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::LinkList</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::MediaType</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::MediaTypeList</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::PriorityList</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::Util</remote-id>
+    <remote-id type="cpan-module">HTTP::Headers::ActionPack::WWWAuthenticate</remote-id>
+  </upstream>
+</pkgmetadata>

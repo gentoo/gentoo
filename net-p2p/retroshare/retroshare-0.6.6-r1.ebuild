@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ S="${WORKDIR}/RetroShare"
 LICENSE="AGPL-3 Apache-2.0 CC-BY-SA-4.0 GPL-2 GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="autologin cli +gui +jsonapi libupnp +miniupnp +service +sqlcipher"
+IUSE="keyring cli +gui +jsonapi libupnp +miniupnp +service +sqlcipher"
 
 REQUIRED_USE="
 	|| ( gui service )
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	>=dev-libs/rapidjson-1.1.0
 	sys-libs/zlib
-	autologin? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtmultimedia:5
@@ -58,7 +58,7 @@ PATCHES=( "${FILESDIR}/${P}-fix-cxx17-compilation.patch" )
 src_configure() {
 	local qconfigs=(
 		$(usex cli '' 'no_')rs_service_terminal_login
-		$(usex autologin '' 'no_')rs_autologin
+		$(usex keyring '' 'no_')rs_autologin
 		$(usex gui '' 'no_')retroshare_gui
 		$(usex jsonapi '' 'no_')rs_jsonapi
 		$(usex service '' 'no_')retroshare_service

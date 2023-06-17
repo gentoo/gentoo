@@ -10,4 +10,7 @@
     conforms to the 9P2000 protocol introduced by the Plan 9 operating
     system.
   </longdescription>
+  <upstream>
+    <remote-id type="github">0intro/wmii</remote-id>
+  </upstream>
 </pkgmetadata>

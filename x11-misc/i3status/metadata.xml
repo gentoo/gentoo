@@ -14,6 +14,9 @@
 		your CPU as much as spawning the corresponding amount of shell commands would.
 	</longdescription>
 	<use>
-		<flag name="filecaps">Linux capabilities library is required for i3status to be able to read net bandwith</flag>
+		<flag name="filecaps">Linux capabilities library is required for i3status to be able to read net bandwidth</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">i3/i3status</remote-id>
+	</upstream>
 </pkgmetadata>

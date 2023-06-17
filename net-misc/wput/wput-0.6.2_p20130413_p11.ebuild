@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Tiny program like wget, to upload files/whole directories via FTP"
-HOMEPAGE="http://wput.sourceforge.net/"
+HOMEPAGE="https://wput.sourceforge.net/"
 
 if [[ ${PV} == *_p* ]] ; then
 	MY_PV=$(ver_cut 1-3)
@@ -17,7 +17,7 @@ else
 	SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tgz"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="debug ssl"

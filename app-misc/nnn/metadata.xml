@@ -14,13 +14,14 @@
 	</upstream>
 	<use>
 		<flag name="8contexts">Enable 8 contexts (instead of 4)</flag>
-		<flag name="qsort">Use Alexey Tourbin's quick sort implementation</flag>
-		<flag name="icons">Display icons using icons-in-terminal</flag>
-		<flag name="nerdfonts">Display icons using nerdfonts icons</flag>
+		<flag name="colemak">Key bindings for Colemak keyboard layout</flag>
+		<flag name="colemak-dh">Key bindings for Colemak-DH keyboard layout</flag>
 		<flag name="emoji">Display icons using emoji</flag>
-		<flag name="colemak">Key bindings for Colemak-DH keyboard layout</flag>
 		<flag name="gitstatus">Add git status column to the detail view</flag>
+		<flag name="icons">Display icons using icons-in-terminal</flag>
 		<flag name="namefirst">Print filenames first in the detail view</flag>
+		<flag name="nerdfonts">Display icons using nerdfonts icons</flag>
+		<flag name="qsort">Use Alexey Tourbin's quick sort implementation</flag>
 		<flag name="restorepreview">Add pipe to close and restore preview-tui for internal undetached edits</flag>
 	</use>
 </pkgmetadata>

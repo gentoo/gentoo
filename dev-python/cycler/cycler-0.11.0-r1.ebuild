@@ -4,17 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Composable style cycles"
 HOMEPAGE="
 	https://matplotlib.org/cycler/
 	https://pypi.org/project/cycler/
-	https://github.com/matplotlib/cycler"
+	https://github.com/matplotlib/cycler/
+"
 SRC_URI="
 	https://github.com/matplotlib/cycler/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+		-> ${P}.gh.tar.gz
+"
 
 SLOT="0"
 LICENSE="BSD"

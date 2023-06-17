@@ -19,5 +19,6 @@
     <remote-id type="cpan-module">User::Identity::Item</remote-id>
     <remote-id type="cpan-module">User::Identity::Location</remote-id>
     <remote-id type="cpan-module">User::Identity::System</remote-id>
+    <remote-id type="github">markov2/perl5-User-Identity</remote-id>
   </upstream>
 </pkgmetadata>

@@ -83,13 +83,12 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility base bluetooth +branding clang coinmp +cups custom-cflags +dbus debug eds firebird
-googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test vulkan
+googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test valgrind vulkan
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	base? ( firebird java )
 	bluetooth? ( dbus )
-	gtk? ( dbus )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -101,8 +100,8 @@ RESTRICT="!test? ( test )"
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
-#[[ ${MY_PV} == *9999* ]] || \
-#KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
+[[ ${MY_PV} == *9999* ]] || \
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -136,20 +135,20 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
-	>=dev-libs/liborcus-0.17.2:0/0.17
+	>=dev-libs/liborcus-0.18.0:0/0.18
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
 	>=dev-libs/redland-1.0.16
-	>=dev-libs/xmlsec-1.2.28[nss]
+	>=dev-libs/xmlsec-1.2.35:=[nss]
 	>=games-engines/box2d-2.4.1:0
 	media-gfx/fontforge
 	media-gfx/graphite2
 	media-libs/fontconfig
 	>=media-libs/freetype-2.11.0-r1:2
-	>=media-libs/harfbuzz-0.9.42:=[graphite,icu]
+	>=media-libs/harfbuzz-5.1.0:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
 	>=media-libs/libepoxy-1.3.1[X]
@@ -163,7 +162,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/openjpeg:=
 	media-libs/tiff:=
 	media-libs/zxing-cpp:=
-	>=net-libs/neon-0.31.1:=
 	net-misc/curl
 	sci-mathematics/lpsolve:=
 	sys-libs/zlib
@@ -181,7 +179,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	coinmp? ( sci-libs/coinor-mp )
 	cups? ( net-print/cups )
-	dbus? ( sys-apps/dbus[X] )
+	dbus? ( sys-apps/dbus )
 	eds? (
 		dev-libs/glib:2
 		gnome-base/dconf
@@ -229,9 +227,8 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	dev-util/mdds:1/2.0
+	dev-util/mdds:1/2.1
 	media-libs/glm
-	sys-devel/ucpp
 	x11-base/xorg-proto
 	x11-libs/libXt
 	x11-libs/libXtst
@@ -245,6 +242,7 @@ DEPEND="${COMMON_DEPEND}
 		media-fonts/dejavu
 		media-fonts/liberation-fonts
 	)
+	valgrind? ( dev-util/valgrind )
 "
 RDEPEND="${COMMON_DEPEND}
 	acct-group/libreoffice
@@ -265,15 +263,15 @@ BDEPEND="
 	virtual/pkgconfig
 	clang? (
 		|| (
+			(	sys-devel/clang:16
+				sys-devel/llvm:16
+				=sys-devel/lld-16*	)
 			(	sys-devel/clang:15
 				sys-devel/llvm:15
 				=sys-devel/lld-15*	)
 			(	sys-devel/clang:14
 				sys-devel/llvm:14
 				=sys-devel/lld-14*	)
-			(	sys-devel/clang:13
-				sys-devel/llvm:13
-				=sys-devel/lld-13*	)
 		)
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
@@ -402,6 +400,9 @@ src_configure() {
 		NM=llvm-nm
 		RANLIB=llvm-ranlib
 		LDFLAGS+=" -fuse-ld=lld"
+
+		# Not implemented by Clang, bug #903889
+		filter-flags -Wlto-type-mismatch -Werror=lto-type-mismatch
 	else
 		# Force gcc
 		einfo "Enforcing the use of gcc due to USE=-clang ..."
@@ -432,10 +433,6 @@ src_configure() {
 
 	# Ensure we use correct toolchain
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
-
-	if use vulkan && ! use clang ; then
-		ewarn "Building skia with gcc may lead to performance issues. Disable vulkan or enable clang."
-	fi
 
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
@@ -495,10 +492,8 @@ src_configure() {
 		--with-parallelism=$(makeopts_jobs)
 		--with-system-abseil
 		--with-system-openjpeg
-		--with-system-ucpp
 		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
-		--with-webdav="neon"
 		--with-x
 		--without-fonts
 		--without-myspell-dicts
@@ -532,6 +527,7 @@ src_configure() {
 		$(use_with googledrive gdrive-client-secret ${google_default_client_secret})
 		$(use_with java)
 		$(use_with odk doxygen)
+		$(use_with valgrind)
 	)
 
 	if use eds || use gtk; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,6 +38,8 @@ REQUIRED_USE="test? ( tcl )"
 DEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	test? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )"
 RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )"
+# Need binutils for tc-ld-force-bfd
+BDEPEND="sys-devel/binutils:*"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/db${SLOT}/db.h

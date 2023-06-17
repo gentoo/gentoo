@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} pypy3 )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A strictly RFC 4511 conforming LDAP V3 pure Python client"

@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="pytest plugin for coverage reporting"
 HOMEPAGE="
 	https://github.com/pytest-dev/pytest-cov/
 	https://pypi.org/project/pytest-cov/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -61,7 +61,10 @@ python_test() {
 	ln -s "${src}/coverage" \
 		"${BUILD_DIR}/install$(python_get_sitedir)/coverage" || die
 
-	epytest
+	nonfatal epytest
+	local ret=${?}
 
 	rm "${BUILD_DIR}/install$(python_get_sitedir)/coverage" || die
+
+	[[ ${ret} -ne 0 ]] && die "epytest failed on ${EPYTHON}"
 }

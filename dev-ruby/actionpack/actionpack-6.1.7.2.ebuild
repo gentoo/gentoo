@@ -21,7 +21,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
@@ -44,7 +44,7 @@ ruby_add_bdepend "
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/rack-cache-1.2:1.2
 		www-servers/puma
-		<dev-ruby/minitest-5.16:5
+		<dev-ruby/minitest-5.16:*
 	)"
 
 all_ruby_prepare() {

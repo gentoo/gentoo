@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 inherit desktop distutils-r1 xdg
@@ -20,7 +20,7 @@ IUSE="dbus taglib"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		dev-python/python-mpd[${PYTHON_USEDEP}]
+		dev-python/python-mpd2[${PYTHON_USEDEP}]
 		dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 		taglib? ( dev-python/tagpy[${PYTHON_USEDEP}] )
 	')

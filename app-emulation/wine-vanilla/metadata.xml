@@ -30,9 +30,9 @@ This variant of the Wine packaging does not include external patchsets
 		<flag name="samba">Pull in <pkg>net-fs/samba</pkg> with winbind for NTLM auth support</flag>
 		<flag name="sdl">Enable gamepad support using <pkg>media-libs/libsdl2</pkg></flag>
 		<flag name="vkd3d">Enable DirectX 12 support using <pkg>app-emulation/vkd3d</pkg></flag>
-		<flag name="vulkan">Enable Vulkan drivers</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://bugs.winehq.org/describecomponents.cgi?product=Wine</bugs-to>
 		<remote-id type="sourceforge">wine</remote-id>
 	</upstream>
 </pkgmetadata>

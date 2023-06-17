@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="A suite of programs to use native stores to keep Docker credentials safe"
+DESCRIPTION="Suite of programs to use native stores to keep Docker credentials safe"
 HOMEPAGE="https://github.com/docker/docker-credential-helpers"
 EGO_PN=github.com/docker/docker-credential-helpers
 
@@ -20,23 +20,20 @@ else
 fi
 inherit golang-build
 
-IUSE="gnome-keyring pass"
-REQUIRED_USE="|| ( gnome-keyring pass )"
+IUSE="keyring pass"
+REQUIRED_USE="|| ( keyring pass )"
 RESTRICT="test"
 
-DEPEND="gnome-keyring? ( app-crypt/libsecret )"
-
-RDEPEND="(
-	${DEPEND}
+DEPEND="keyring? ( app-crypt/libsecret )"
+RDEPEND="${DEPEND}
 	pass? ( app-admin/pass )
-)
 "
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_compile() {
 	local -x GOPATH="${WORKDIR}/${P}"
-	use gnome-keyring && emake secretservice
+	use keyring && emake secretservice
 	use pass && emake pass
 }
 
@@ -46,8 +43,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use gnome-keyring; then
-		elog "For gnome-keyring/kwallet add:\n"
+	if use keyring; then
+		elog "For keyring/kwallet add:\n"
 		elog '		"credStore": "secretservice"'"\n"
 	fi
 	if use pass; then

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit distutils-r1
 
@@ -25,5 +25,5 @@ RDEPEND="
 	>=dev-python/dns-lexicon-3.2.1[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest

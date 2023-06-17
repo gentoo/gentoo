@@ -4,11 +4,10 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9..10} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Pure Python SSH tunnels"
 HOMEPAGE="https://pypi.org/project/sshtunnel/"
-SRC_URI="mirror://pypi/s/sshtunnel/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

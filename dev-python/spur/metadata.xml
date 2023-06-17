@@ -6,6 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">mwilliamson/spur.py</remote-id>
 		<remote-id type="pypi">spur</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="gtk-doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
@@ -61,9 +61,9 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "You to enable the service:"
+		elog "You need to enable the service:"
 		if systemd_is_booted; then
-			elog "# systemctl enable switcheroo-control"
+			elog "# systemctl enable ${PN}"
 		else
 			elog "# rc-update add ${PN} default"
 		fi

@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">bmabey/database_cleaner</remote-id>
+    <remote-id type="github">DatabaseCleaner/database_cleaner</remote-id>
+    <remote-id type="rubygems">database_cleaner-active_record</remote-id>
   </upstream>
 </pkgmetadata>

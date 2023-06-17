@@ -37,6 +37,11 @@
 			Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
 			<pkg>dev-libs/boost</pkg>).
 		</flag>
+		<flag name="cycles-bin-kernels">
+			Precompile the cycles render kernels for the CUDA/HIP/OneAPI backends, if they are enabled, at compile time.
+			This makes it so that the user doesn't have to wait for the kernels to compile when they are used for the first time in Blender.
+			If this option is not on, they will be built as needed at runtime.
+		</flag>
 		<flag name="dds">
 			Adds DDS textures support to Blender.
 		</flag>
@@ -56,10 +61,8 @@
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
 		<flag name="oidn">Enable OpenImageDenoiser Support</flag>
-		<flag name="opencl">
-			Allow OpenCL Graphics Acceleration. This may
-			require extra graphics card drivers.</flag>
 		<flag name="openimageio">Enable OpenImageIO Support</flag>
+		<flag name="openpgl">Enable path guiding support in Cycles</flag>
 		<flag name="opensubdiv">
 			Add rendering support form OpenSubdiv from Dreamworks Animation
 			through <pkg>media-libs/opensubdiv</pkg>.
@@ -81,10 +84,6 @@
 		</flag>
 		<flag name="tbb">
 			Use threading building blocks library from <pkg>dev-cpp/tbb</pkg>.
-		</flag>
-		<flag name="valgrind">
-			Add support for memory debugging using
-			<pkg>dev-util/valgrind</pkg>
 		</flag>
 	</use>
 </pkgmetadata>

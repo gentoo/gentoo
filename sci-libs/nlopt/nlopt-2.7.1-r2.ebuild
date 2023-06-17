@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
+FORTRAN_NEEDED="test"
 
 inherit python-r1 cmake fortran-2
 
@@ -12,7 +13,7 @@ HOMEPAGE="https://github.com/stevengj/nlopt"
 SRC_URI="https://github.com/stevengj/nlopt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="cxx guile octave python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

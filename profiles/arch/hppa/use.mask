@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -41,10 +41,6 @@ vulkan
 system-libvpx
 vpx
 
-# Matt Turner <mattst88@gentoo.org> (2018-05-26)
-# Unmask systemd since it is keyworded here.
--systemd
-
 #
 # Jeroen Roovers <jer@gentoo.org> (2018-03-22)
 # sys-cluster/ceph is not supported
@@ -61,10 +57,6 @@ plymouth
 # Matt Turner <mattst88@gentoo.org> (2018-03-10)
 # sys-fs/dmraid has not been tested on HPPA
 dmraid
-
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
 
 # Jeroen Roovers <jer@gentoo.org> (2016-01-31)
 # USE=xwidgets requires net-libs/webkit-gtk
@@ -158,6 +150,7 @@ gconf
 gnome
 gnome-keyring
 gnome-online-accounts
+keyring
 
 # Jeroen Roovers <jer@gentoo.org> (2010-07-19)
 # Masked because of missing gnome-base/gnome-panel

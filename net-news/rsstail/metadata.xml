@@ -6,4 +6,7 @@
 		RSSTail is more or less an rss reader: it monitors an rss-feed and if it
 		detects a new entry it'll emit only that new entry.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">folkertvanheusden/rsstail</remote-id>
+	</upstream>
 </pkgmetadata>

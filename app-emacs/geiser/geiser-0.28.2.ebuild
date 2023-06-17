@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=25.1
-
 inherit elisp
 
 DESCRIPTION="Generic interaction mode between Emacs and different Scheme implementations"

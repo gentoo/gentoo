@@ -6,7 +6,6 @@
     <name>Andrew Savchenko</name>
   </maintainer>
   <use>
-    <flag name="eet">Enable Eet image loader</flag>
     <flag name="xcf">Enable XCF image loader</flag>
   </use>
   <longdescription>

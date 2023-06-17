@@ -14,6 +14,7 @@
 		your needs exactly.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">mchaput/whoosh</remote-id>
 		<remote-id type="pypi">Whoosh</remote-id>
 	</upstream>
 </pkgmetadata>

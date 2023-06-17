@@ -1,5 +1,6 @@
 Needed for musl.
 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/include/uapi/linux/swab.h?id=defbab270d45e32b068e7e73c3567232d745c60f
 https://git.alpinelinux.org/aports/tree/main/linux-headers/include-uapi-linux-swab-Fix-potentially-missing-__always_inline.patch
 
 From: Matt Redfearn <matt.redfearn@mips.com>

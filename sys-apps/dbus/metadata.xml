@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:freedesktop:dbus</remote-id>
+		<remote-id type="freedesktop-gitlab">dbus/dbus</remote-id>
 	</upstream>
 </pkgmetadata>

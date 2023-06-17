@@ -1,8 +1,8 @@
 Gentoo Bug#334647:
 Respect CC, CFLAGS, LDFLAGS (with gcc).
 Support verbose building via 'make V=1'.
---- configure.orig	2012-10-02 14:01:48.735669564 +0200
-+++ configure	2012-10-02 14:23:01.224271511 +0200
+--- a/configure.orig
++++ b/configure
 @@ -10,7 +10,7 @@
  # This can be disabled if neccessary.
  #
@@ -57,8 +57,8 @@ Support verbose building via 'make V=1'.
  	rc=$?
  
  	if [ $rc -ne 0 ]; then # -o -n "$OUT" ]; then
---- Makefile.orig	2012-10-02 15:31:03.986270993 +0200
-+++ Makefile	2012-10-02 15:40:10.277689068 +0200
+--- a/Makefile.orig
++++ b/Makefile
 @@ -16,14 +16,13 @@
  CC		:= gcc
  VER		:= $(shell cat VERSION)

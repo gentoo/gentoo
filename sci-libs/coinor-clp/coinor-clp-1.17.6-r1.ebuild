@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"
 
 LICENSE="EPL-1.0"
 SLOT="0/1" # major soname component
-KEYWORDS="~amd64 ~loong ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples glpk metis mpi mumps sparse static-libs test"
 REQUIRED_USE="mpi? ( mumps )"
 RESTRICT="!test? ( test )"

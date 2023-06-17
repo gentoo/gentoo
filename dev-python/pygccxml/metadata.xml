@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
   <maintainer type="person">
     <email>tomjbe@gentoo.org</email>
@@ -9,4 +8,8 @@
   <maintainer type="project">
     <email>radio@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">CastXML/pygccxml</remote-id>
+    <remote-id type="pypi">pygccxml</remote-id>
+  </upstream>
 </pkgmetadata>

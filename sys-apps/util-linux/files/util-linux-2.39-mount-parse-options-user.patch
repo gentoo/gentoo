@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/906797#c4
+https://bugs.gentoo.org/906859
+https://github.com/util-linux/util-linux/issues/2238
+https://github.com/util-linux/util-linux/commit/c0267687fd7b41b00d523d1985182d7eb574effd
+
+From c0267687fd7b41b00d523d1985182d7eb574effd Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Mon, 22 May 2023 15:00:25 +0200
+Subject: [PATCH] libmount: fix options prepend/insert and merging
+
+ * the order of the new options should not be changed
+   (for example prepend "a,b,c" to list with "d" has to generate "a,b,c,d", not "c,b,a,d")
+
+ * make sure that  options map is defined when merging options
+
+Fixes: https://github.com/util-linux/util-linux/issues/2238
+Signed-off-by: Karel Zak <kzak@redhat.com>
+--- a/libmount/src/optlist.c
++++ b/libmount/src/optlist.c
+@@ -338,6 +338,7 @@ int mnt_optlist_merge_opts(struct libmnt_optlist *ls)
+ 
+ 			/* remove inverted option */
+ 			else if (opt->ent && x->ent
++			    && opt->map == x->map
+ 			    && opt->ent->id == x->ent->id
+ 			    && (opt->ent->mask & MNT_INVERT
+ 				    || x->ent->mask & MNT_INVERT))
+@@ -520,6 +521,8 @@ static int optlist_add_optstr(struct libmnt_optlist *ls, const char *optstr,
+ 		if (!opt)
+ 			return -ENOMEM;
+ 		opt->src = MNT_OPTSRC_STRING;
++		if (where)
++			where = &opt->opts;
+ 	}
+ 
+ 	optlist_cleanup_cache(ls);
+@@ -622,6 +625,8 @@ static int optlist_add_flags(struct libmnt_optlist *ls, unsigned long flags,
+ 		if (!opt)
+ 			return -ENOMEM;
+ 		opt->src = MNT_OPTSRC_FLAG;
++		if (where)
++			where = &opt->opts;
+ 	}
+ 
+ 	optlist_cleanup_cache(ls);
+

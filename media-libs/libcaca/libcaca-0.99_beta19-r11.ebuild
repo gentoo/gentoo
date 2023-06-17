@@ -1,22 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-RUBY_OPTIONAL=yes
-
-inherit autotools ruby-ng flag-o-matic toolchain-funcs multilib-minimal
+inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 MY_P=${P/_/.}
 DESCRIPTION="A library that creates colored ASCII-art graphics"
 HOMEPAGE="http://libcaca.zoy.org/"
 SRC_URI="http://libcaca.zoy.org/files/${PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/all/${MY_P}"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 ISC LGPL-2.1 WTFPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="doc imlib ncurses opengl ruby slang static-libs test truetype X"
+IUSE="doc imlib ncurses opengl slang static-libs test truetype X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE=""
@@ -65,10 +63,6 @@ PATCHES=(
 	"${FILESDIR}/fix-css-path.patch"
 )
 
-pkg_setup() {
-	use ruby && ruby-ng_pkg_setup
-}
-
 src_prepare() {
 	# bug #339962
 	sed -i -e '/doxygen_tests = check-doxygen/d' test/Makefile.am || die
@@ -103,9 +97,6 @@ multilib_src_configure() {
 	if multilib_is_native_abi; then
 		# bug #44128
 		export VARTEXFONTS="${T}/fonts"
-
-		# bug #329651
-		use ruby && use ruby_targets_${USE_RUBY} && export RUBY=$(ruby_implementation_command ${USE_RUBY})
 	fi
 
 	local myeconfargs=(
@@ -120,7 +111,7 @@ multilib_src_configure() {
 		$(use_enable imlib imlib2)
 		$(use_enable test cppunit)
 		--disable-java
-		$(multilib_native_use_enable ruby)
+		--disable-ruby
 		--disable-python
 		--disable-csharp
 		$(multilib_native_use_enable doc)

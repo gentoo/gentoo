@@ -1,0 +1,29 @@
+https://github.com/asciidoctor/asciidoctor/commit/b3c05398b1b4b483fe5f9c9ef89dc772863cf6f1
+https://src.fedoraproject.org/rpms/rubygem-asciidoctor/raw/rawhide/f/0001-resolves-4390-fix-call-order-so-use-of-an-include-fi.patch
+
+From b3c05398b1b4b483fe5f9c9ef89dc772863cf6f1 Mon Sep 17 00:00:00 2001
+From: Dan Allen <dan.j.allen@gmail.com>
+Date: Mon, 20 Feb 2023 23:47:59 -0700
+Subject: [PATCH] resolves #4390 fix call order so use of an include file with
+ invalid encoding continues to raise error when using Ruby >= 3.2.0
+
+--- a/lib/asciidoctor/reader.rb
++++ b/lib/asciidoctor/reader.rb
+@@ -1197,15 +1197,16 @@ def preprocess_include_directive target, attrlist
+           push_include inc_lines, inc_path, relpath, inc_offset, parsed_attrs
+         end
+       else
++        inc_content = nil
+         begin
+           # NOTE read content before shift so cursor is only advanced if IO operation succeeds
+           inc_content = reader.call(inc_path, read_mode) {|f| f.read }
+           shift
+-          push_include inc_content, inc_path, relpath, 1, parsed_attrs
+         rescue
+           logger.error message_with_context %(include #{target_type} not readable: #{inc_path}), source_location: cursor
+           return replace_next_line %(Unresolved directive in #{@path} - include::#{expanded_target}[#{attrlist}])
+         end
++        push_include inc_content, inc_path, relpath, 1, parsed_attrs
+       end
+       true
+     end

@@ -5,9 +5,9 @@
 		<email>orbea@riseup.net</email>
 		<name>orbea</name>
 	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 	<longdescription>
 		SameBoy is an extremely accurate, powerful and open source

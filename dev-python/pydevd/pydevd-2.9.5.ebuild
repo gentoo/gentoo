@@ -3,8 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
+
 inherit distutils-r1 toolchain-funcs
 
 MY_P="pydev_debugger_${PV//./_}"
@@ -19,7 +21,7 @@ S="${WORKDIR}/PyDev.Debugger-${MY_P}"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 # After removing and recompiling the prebuilt lib the tests fail?
 # For some reason the test suite is executing a slightly different gdb command

@@ -4,20 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r1 virtualx pypi
 
 DESCRIPTION="Extra features for standard library's cmd module"
 HOMEPAGE="
 	https://github.com/python-cmd2/cmd2/
 	https://pypi.org/project/cmd2/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
@@ -32,7 +31,7 @@ RDEPEND="
 # failures.  to avoid them, we must ensure that one of the backends
 # preferred to it is available (i.e. xclip or xsel).
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		|| (

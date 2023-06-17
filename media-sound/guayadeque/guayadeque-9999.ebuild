@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-WX_GTK_VER=3.0
+WX_GTK_VER=3.0-gtk3
 
 inherit cmake wxwidgets xdg
 
@@ -21,7 +21,7 @@ HOMEPAGE="https://guayadeque.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="appindicator ipod +minimal"
+IUSE="ipod +minimal"
 
 # No test available, Making src_test fail
 RESTRICT="test"
@@ -50,7 +50,6 @@ RDEPEND="
 	net-misc/curl
 	sys-apps/dbus
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	appindicator? ( >=dev-libs/libindicate-0.7 )
 	ipod? ( media-libs/libgpod )
 	!minimal? ( ${GST_DEPS} )"
 DEPEND="${RDEPEND}"
@@ -83,7 +82,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_IPOD=$(usex ipod)
-		-DENABLE_LIBINDICATE=$(usex appindicator)
 	)
 	cmake_src_configure
 }

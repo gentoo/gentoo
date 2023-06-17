@@ -1,0 +1,79 @@
+https://github.com/util-linux/util-linux/issues/2267
+https://github.com/storaged-project/libblockdev/pull/889
+https://bugzilla.redhat.com/show_bug.cgi?id=2189241
+https://github.com/util-linux/util-linux/commit/f94a7760ed7ce81389a6059f020238981627a70d
+
+From f94a7760ed7ce81389a6059f020238981627a70d Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Thu, 25 May 2023 11:48:24 +0200
+Subject: [PATCH] libmount: don't call hooks after mount.<type> helper
+
+In case more filesystems are specified (or when libmount follows
+/{etc,proc}/filesystems) then the library may try to use and
+initialize the new API because for some filesystems, we need
+exec(/sbin/mount.<type>) and for another fsopen().
+
+The hooks that use the API have to smart and detect that the mount
+operation was done in external /sbin/mount.<type> helper. And in this
+case, the new API file descriptors must be ignored.
+
+The exception is propagation flags, mount(8) can set the flags after
+exec(/sbin/mount.<type>), for example, "mount -t ntfs --make-private".
+
+Fixes: https://github.com/util-linux/util-linux/issues/2267
+Signed-off-by: Karel Zak <kzak@redhat.com>
+--- a/libmount/src/context_mount.c
++++ b/libmount/src/context_mount.c
+@@ -508,6 +508,8 @@ static int do_mount(struct libmnt_context *cxt, const char *try_type)
+ 	assert(cxt->fs);
+ 	assert((cxt->flags & MNT_FL_MOUNTFLAGS_MERGED));
+ 
++	mnt_context_reset_status(cxt);
++
+ 	if (try_type) {
+ 		rc = mnt_context_prepare_helper(cxt, "mount", try_type);
+ 		if (rc)
+--- a/libmount/src/hook_mount.c
++++ b/libmount/src/hook_mount.c
+@@ -239,6 +239,10 @@ static int hook_create_mount(struct libmnt_context *cxt,
+ 	int rc = 0;
+ 
+ 	assert(cxt);
++
++	if (mnt_context_helper_executed(cxt))
++		return 0;
++
+ 	assert(cxt->fs);
+ 
+ 	api = get_sysapi(cxt);
+@@ -309,6 +313,9 @@ static int hook_reconfigure_mount(struct libmnt_context *cxt,
+ 
+ 	assert(cxt);
+ 
++	if (mnt_context_helper_executed(cxt))
++		return 0;
++
+ 	api = get_sysapi(cxt);
+ 	assert(api);
+ 	assert(api->fd_tree >= 0);
+@@ -379,6 +386,9 @@ static int hook_set_vfsflags(struct libmnt_context *cxt,
+ 	uint64_t set = 0, clr = 0;
+ 	int rc = 0;
+ 
++	if (mnt_context_helper_executed(cxt))
++		return 0;
++
+ 	DBG(HOOK, ul_debugobj(hs, "setting VFS flags"));
+ 
+ 	ol = mnt_context_get_optlist(cxt);
+@@ -471,6 +481,9 @@ static int hook_attach_target(struct libmnt_context *cxt,
+ 	const char *target;
+ 	int rc = 0;
+ 
++	if (mnt_context_helper_executed(cxt))
++		return 0;
++
+ 	target = mnt_fs_get_target(cxt->fs);
+ 	if (!target)
+ 		return -EINVAL;
+

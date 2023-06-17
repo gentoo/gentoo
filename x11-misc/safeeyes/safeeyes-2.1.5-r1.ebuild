@@ -7,11 +7,10 @@ PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="tk"  # for site-packages/Xlib/ext/randr.py
 DISTUTILS_USE_PEP517=setuptools
 
-inherit xdg distutils-r1
+inherit xdg distutils-r1 pypi
 
 DESCRIPTION="Linux alternative to EyeLeo"
 HOMEPAGE="https://github.com/slgobinath/SafeEyes"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

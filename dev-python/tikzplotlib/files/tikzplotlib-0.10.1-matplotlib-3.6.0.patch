@@ -1,0 +1,48 @@
+https://github.com/texworld/tikzplotlib/issues/567
+https://github.com/texworld/tikzplotlib/pull/558
+
+From f9988eb6aa7cc7d55c0bb528c53e7a8408308939 Mon Sep 17 00:00:00 2001
+From: Paul Kim <44695374+thekpaul@users.noreply.github.com>
+Date: Mon, 3 Oct 2022 01:15:21 +0900
+Subject: [PATCH 1/2] Legend Compatibility Issue in texworld#557
+
+.
+
+.
+--- a/src/tikzplotlib/_legend.py
++++ b/src/tikzplotlib/_legend.py
+@@ -78,7 +78,7 @@ def draw_legend(data, obj):
+     if alignment:
+         data["current axes"].axis_options.append(f"legend cell align={{{alignment}}}")
+ 
+-    if obj._ncol != 1:
++    if obj._ncols != 1:
+         data["current axes"].axis_options.append(f"legend columns={obj._ncol}")
+ 
+     # Write styles to data
+
+From 61f7ea2fb2633f1c0de48f8da1f90a5f9ba078c1 Mon Sep 17 00:00:00 2001
+From: Paul Kim <44695374+thekpaul@users.noreply.github.com>
+Date: Wed, 5 Oct 2022 11:30:48 +0900
+Subject: [PATCH 2/2] Backwards Compat for `ncol`
+
+Co-authored-by: st-- <st--@users.noreply.github.com>
+--- a/src/tikzplotlib/_legend.py
++++ b/src/tikzplotlib/_legend.py
+@@ -78,8 +78,13 @@ def draw_legend(data, obj):
+     if alignment:
+         data["current axes"].axis_options.append(f"legend cell align={{{alignment}}}")
+ 
+-    if obj._ncols != 1:
+-        data["current axes"].axis_options.append(f"legend columns={obj._ncol}")
++    try:
++        ncols = obj._ncols
++    except AttributeError:
++        # backwards-compatibility with matplotlib < 3.6.0
++        ncols = obj._ncol
++    if ncols != 1:
++        data["current axes"].axis_options.append(f"legend columns={ncols}")
+ 
+     # Write styles to data
+     if legend_style:
+

@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake llvm llvm.org multilib multilib-minimal \
-	prefix python-single-r1 toolchain-funcs
+	prefix python-single-r1 toolchain-funcs flag-o-matic
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -252,6 +252,8 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
+	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
+
 	local mycmakeargs=(
 		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
@@ -428,6 +430,13 @@ src_install() {
 
 multilib_src_install() {
 	DESTDIR=${D} cmake_build install-distribution
+
+	if multilib_is_native_abi; then
+		# install clang-*-wrapper tools
+		# https://bugs.gentoo.org/904143
+		exeinto "/usr/lib/llvm/${LLVM_MAJOR}/bin"
+		doexe "${BUILD_DIR}"/bin/clang-{linker,nvlink}-wrapper
+	fi
 
 	# move headers to /usr/include for wrapping & ABI mismatch checks
 	# (also drop the version suffix from runtime headers)

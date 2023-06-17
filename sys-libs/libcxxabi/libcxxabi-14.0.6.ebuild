@@ -50,7 +50,7 @@ python_check_deps() {
 pkg_setup() {
 	# darwin prefix builds do not have llvm installed yet, so rely on bootstrap-prefix
 	# to set the appropriate path vars to LLVM instead of using llvm_pkg_setup.
-	if [[ ${CHOST} != *-darwin* ]] || has_version dev-lang/llvm; then
+	if [[ ${CHOST} != *-darwin* ]] || has_version sys-devel/llvm; then
 		llvm_pkg_setup
 	fi
 	python-any-r1_pkg_setup

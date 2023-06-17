@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/thomasdickey.asc
-inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs usr-ldscript verify-sig
+inherit flag-o-matic toolchain-funcs multilib multilib-minimal preserve-libs usr-ldscript verify-sig
 
 MY_PV="${PV:0:3}"
 MY_P="${PN}-${MY_PV}"
@@ -105,36 +105,32 @@ if [[ ${PV} == *_p* ]] ; then
 	)
 
 	if [[ -z ${PATCH_DATES[@]} ]] ; then
-		SRC_URI+=" https://invisible-island.net/archives/${PN}/${PV/_p*}/${P/_p/-}.patch.sh.gz"
-		SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/${PN}/${PV/_p*}/${P/_p/-}.patch.sh.gz.asc"
+		SRC_URI+=" https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P/_p/-}.patch.sh.gz"
+		SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P/_p/-}.patch.sh.gz.asc"
 
 		# If we have a rollup patch, use that instead of the individual ones.
-		UPSTREAM_PATCHES+=( "${WORKDIR}"/${P/_p/-}-patch.sh )
+		UPSTREAM_PATCHES+=( patch.sh )
 	else
-		patch_url=
-		my_patch_index=
+		# We use a mirror as well because we've had reports of 403 forbidden for some users.
+		upstream_url_base="https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P}-"
+		upstream_m_url_base="https://invisible-mirror.net/archives/${PN}/${PV/_p*}/${MY_P}-"
 
-		# We keep a bunch of mirrors here as we've had reports of invisible*.net
-		# being 403 forbidden for some users.
-		urls=(
-			"https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P}-%s"
-			"https://invisible-mirror.net/archives/${PN}/${PV/_p*}/${MY_P}-%s"
-			"https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${MY_P}-%s"
-		)
+		# Prefix each date with the upstream location (https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P})
+		mangled_patches=( "${PATCH_DATES[@]/#/${upstream_url_base}}" )
+		# Suffix each with .patch.gz
+		mangled_patches=( "${mangled_patches[@]/%/.patch.gz}" )
+		mangled_patches_sig=( "${mangled_patches[@]/%/.asc}" )
+		# Repeat for .patch.gz.asc for verify-sig
+		SRC_URI+=" ${mangled_patches[@]}"
+		SRC_URI+=" verify-sig? ( ${mangled_patches_sig[@]} )"
 
-		for ((my_patch_index=0; my_patch_index < "${#PATCH_DATES[@]}"; my_patch_index++)); do
-			for url in "${urls[@]}" ; do
-				patch_url="$(printf ${urls} ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
-				SRC_URI+=" ${patch_url}"
-				SRC_URI+=" verify-sig? ( ${patch_url}.asc )"
-			done
+		# For all of the URLs, chuck in invisible-island.net too:
+		SRC_URI+=" ${mangled_patches[@]/${upstream_url_base}/${upstream_m_url_base}}"
+		SRC_URI+=" verify-sig? ( ${mangled_patches_sig[@]/${upstream_url_base}/${upstream_m_url_base}} )"
 
-			UPSTREAM_PATCHES+=( "${WORKDIR}"/${MY_P}-${PATCH_DATES[${my_patch_index}]}.patch )
-		done
+		UPSTREAM_PATCHES=( "${PATCH_DATES[@]/%/.patch}" )
 
-		unset patch_url
-		unset my_patch_index
-		unset urls
+		unset upstream_url_base upstream_m_url_base mangled_patches mangled_patches_sig
 	fi
 
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${GENTOO_PATCH_NAME}.tar.xz"
@@ -143,7 +139,7 @@ fi
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="0/6"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="ada +cxx debug doc gpm minimal profile split-usr +stack-realign static-libs test tinfo trace"
 RESTRICT="!test? ( test )"
 
@@ -159,7 +155,7 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomasdickey )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${UPSTREAM_PATCHES[@]}"
+	"${UPSTREAM_PATCHES[@]/#/${WORKDIR}/${MY_P}-}"
 
 	# When rebasing Gentoo's patchset, please use git from a clean
 	# src_prepare with upstream patches already applied. git am --reject
@@ -297,7 +293,6 @@ do_configure() {
 		$(use_enable kernel_Winnt term-driver)
 		--disable-termcap
 		--enable-symlinks
-		--with-rcs-ids
 		--with-manpage-format=normal
 		--enable-const
 		--enable-colorfgbg
@@ -348,17 +343,7 @@ do_configure() {
 src_compile() {
 	# See comments in src_configure.
 	if ! has_version -b "~sys-libs/${P}:0" ; then
-		# We could possibly merge these two branches but opting to be
-		# conservative when merging some of the Prefix changes.
-
-		if [[ ${CHOST} == *-cygwin* ]] && ! multilib_is_native_abi ; then
-			# We make 'tic$(x)' here, for Cygwin having x=".exe".
-			BUILD_DIR="${WORKDIR}" \
-				 do_compile cross -C progs all PROGS='tic$(x)'
-		else
-			BUILD_DIR="${WORKDIR}" \
-				 do_compile cross -C progs tic
-		fi
+		BUILD_DIR="${WORKDIR}" do_compile cross -C progs tic$(get_exeext)
 	fi
 
 	multilib-minimal_src_compile

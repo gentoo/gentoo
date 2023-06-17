@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-utils.eclass
@@ -18,12 +18,12 @@
 # functions. It can be inherited safely.
 
 case ${EAPI} in
-	7|8)
-		;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_LUA_UTILS_R0} ]]; then
+if [[ -z ${_LUA_UTILS_ECLASS} ]]; then
+_LUA_UTILS_ECLASS=1
 
 inherit toolchain-funcs
 
@@ -384,7 +384,7 @@ lua_enable_tests() {
 		busted)
 			test_directory="${2:-spec}"
 			test_pkg="dev-lua/busted"
-			if [[ ! ${_LUA_SINGLE_R0} ]]; then
+			if [[ ! ${_LUA_SINGLE_ECLASS} ]]; then
 				eval "lua_src_test() {
 					busted --lua=\"\${ELUA}\" --output=\"plainTerminal\" \"${test_directory}\" || die \"Tests fail with \${ELUA}\"
 				}"
@@ -403,7 +403,7 @@ lua_enable_tests() {
 
 	local test_deps=${RDEPEND}
 	if [[ -n ${test_pkg} ]]; then
-		if [[ ! ${_LUA_SINGLE_R0} ]]; then
+		if [[ ! ${_LUA_SINGLE_ECLASS} ]]; then
 			test_deps+=" ${test_pkg}[${LUA_USEDEP}]"
 		else
 			test_deps+=" $(lua_gen_cond_dep "
@@ -536,5 +536,4 @@ lua_get_version() {
 	echo "${LUA_VERSION}"
 }
 
-_LUA_UTILS_R0=1
 fi

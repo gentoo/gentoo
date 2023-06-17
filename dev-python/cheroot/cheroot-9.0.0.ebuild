@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="High-performance, pure-Python HTTP server used by CherryPy"
 HOMEPAGE="
@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://pypi.org/project/cheroot/
 	https://github.com/cherrypy/cheroot/
 "
-SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -27,7 +26,7 @@ RDEPEND="
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/jaraco-context[${PYTHON_USEDEP}]
 		dev-python/jaraco-text[${PYTHON_USEDEP}]

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: savedconfig.eclass
@@ -30,14 +30,17 @@
 # 4. Emerge the package with just USE=savedconfig to get the custom
 # build.
 
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_SAVEDCONFIG_ECLASS} ]]; then
+_SAVEDCONFIG_ECLASS=1
+
 inherit portability
 
 IUSE="savedconfig"
-
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
-esac
 
 # @FUNCTION: save_config
 # @USAGE: <config files to save>
@@ -151,5 +154,7 @@ savedconfig_pkg_postinst() {
 			-exec touch {} + 2>/dev/null
 	fi
 }
+
+fi
 
 EXPORT_FUNCTIONS pkg_postinst

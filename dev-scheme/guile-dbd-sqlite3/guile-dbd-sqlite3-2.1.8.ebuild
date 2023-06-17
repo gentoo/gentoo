@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,6 @@ S="${WORKDIR}"/guile-dbi-guile-dbi-${PV}/${PN}
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
 
 RDEPEND="
 	dev-db/sqlite:3=
@@ -41,4 +40,8 @@ src_install() {
 	default
 
 	find "${ED}" -type f -name "*.la" -delete || die
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }

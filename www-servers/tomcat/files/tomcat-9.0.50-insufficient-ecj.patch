@@ -1,5 +1,3 @@
-diff --git a/java/org/apache/jasper/compiler/JDTCompiler.java b/java/org/apache/jasper/compiler/JDTCompiler.java
-index 10d80e0..34ff7e0 100644
 --- a/java/org/apache/jasper/compiler/JDTCompiler.java
 +++ b/java/org/apache/jasper/compiler/JDTCompiler.java
 @@ -306,11 +306,11 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {

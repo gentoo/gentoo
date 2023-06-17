@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mercurial.eclass
 # @MAINTAINER:
-# Christoph Junghans <junghans@gentoo.org>
+# No maintainer <maintainer-needed@gentoo.org>
 # @AUTHOR:
 # Next gen author: Krzysztof Pawlik <nelchael@gentoo.org>
 # Original author: Aron Griffis <agriffis@gentoo.org>
@@ -25,14 +25,6 @@ _MERCURIAL_ECLASS=1
 
 PROPERTIES+=" live"
 
-case ${EAPI:-0} in
-	7)
-		# For compatibiilty only (indirect inherits).
-		# Eclass itself doesn't need it.
-		inherit eutils
-		;;
-esac
-
 BDEPEND="dev-vcs/mercurial"
 
 # @ECLASS_VARIABLE: EHG_REPO_URI
@@ -45,7 +37,7 @@ BDEPEND="dev-vcs/mercurial"
 #
 # EHG_REVISION is passed as a value for --updaterev parameter, so it can be more
 # than just a revision, please consult `hg help revisions' for more details.
-: ${EHG_REVISION:="default"}
+: "${EHG_REVISION:="default"}"
 
 # @ECLASS_VARIABLE: EHG_STORE_DIR
 # @USER_VARIABLE
@@ -70,7 +62,7 @@ BDEPEND="dev-vcs/mercurial"
 # @ECLASS_VARIABLE: EHG_QUIET
 # @DESCRIPTION:
 # Suppress some extra noise from mercurial, set it to 'ON' to be quiet.
-: ${EHG_QUIET:="OFF"}
+: "${EHG_QUIET:="OFF"}"
 [[ "${EHG_QUIET}" == "ON" ]] && EHG_QUIET_CMD_OPT="--quiet"
 
 # @ECLASS_VARIABLE: EHG_CONFIG

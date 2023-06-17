@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Syntax highlighting and autocompletion for the Python interpreter"
 HOMEPAGE="
@@ -14,12 +14,11 @@ HOMEPAGE="
 	https://github.com/bpython/bpython/
 	https://pypi.org/project/bpython/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="clipboard +jedi watch"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/curtsies-0.4.0[${PYTHON_USEDEP}]

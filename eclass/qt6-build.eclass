@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt6-build.eclass
@@ -10,28 +10,30 @@
 # This eclass contains various functions that are used when building Qt6.
 # Requires EAPI 8.
 
-if [[ ${CATEGORY} != dev-qt ]]; then
-	die "qt6-build.eclass is only to be used for building Qt 6"
-fi
-
 case ${EAPI} in
-	8)	: ;;
-	*)	die "qt6-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_QT6_BUILD_ECLASS} ]]; then
+_QT6_BUILD_ECLASS=1
+
+[[ ${CATEGORY} != dev-qt ]] &&
+	die "${ECLASS} is only to be used for building Qt 6"
 
 # @ECLASS_VARIABLE: QT6_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
-: ${QT6_MODULE:=${PN}}
+: "${QT6_MODULE:=${PN}}"
 
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass man page.
 # Here we redefine default value to be manual, if your package needs virtualx
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
-: ${VIRTUALX_REQUIRED:=manual}
+: "${VIRTUALX_REQUIRED:=manual}"
 
 inherit cmake virtualx
 
@@ -80,7 +82,7 @@ EGIT_REPO_URI=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
-: ${QT6_BUILD_DIR:=${S}_build}
+: "${QT6_BUILD_DIR:=${S}_build}"
 
 IUSE="debug test"
 
@@ -98,8 +100,6 @@ BDEPEND="
 #if [[ ${PN} != qttest ]]; then
 #	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
 #fi
-
-EXPORT_FUNCTIONS src_prepare src_configure
 
 ######  Phase functions  ######
 
@@ -137,6 +137,16 @@ qt_feature() {
 	echo "-DQT_FEATURE_${2:-$1}=$(usex $1 ON OFF)"
 }
 
+# @FUNCTION: qt6_symlink_binary_to_path
+# @USAGE: <target binary name> [suffix]
+# @DESCRIPTION:
+# Symlink a given binary from QT6_BINDIR to QT6_PREFIX/bin, with optional suffix
+qt6_symlink_binary_to_path() {
+	[[ $# -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
+
+	dosym -r "${QT6_BINDIR}"/${1} /usr/bin/${1}${2}
+}
+
 ######  Internal functions  ######
 
 # @FUNCTION: qt6_prepare_env
@@ -166,3 +176,7 @@ qt6_prepare_env() {
 		QT6_QMLDIR QT6_DATADIR QT6_DOCDIR QT6_TRANSLATIONDIR \
 		QT6_EXAMPLESDIR QT6_TESTSDIR QT6_SYSCONFDIR
 }
+
+fi
+
+EXPORT_FUNCTIONS src_prepare src_configure

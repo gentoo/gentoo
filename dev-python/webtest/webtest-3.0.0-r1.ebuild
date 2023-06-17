@@ -4,20 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYPI_NO_NORMALIZE=1
+PYPI_PN="WebTest"
+# py3.12 should pass but pyquery doesn't yet support 3.12
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_PN="WebTest"
-MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Helper to test WSGI applications"
 HOMEPAGE="
 	https://docs.pylonsproject.org/projects/webtest/en/latest/
 	https://github.com/Pylons/webtest/
 	https://pypi.org/project/WebTest/
 "
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -39,6 +38,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/webtest-2.0.33-no-pylons-theme.patch"
+	"${FILESDIR}/webtest-3.0.0-python3.12-unittest.patch"
 )
 
 distutils_enable_sphinx docs

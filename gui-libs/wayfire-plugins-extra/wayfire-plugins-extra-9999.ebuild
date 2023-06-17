@@ -1,7 +1,7 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
@@ -21,9 +21,12 @@ SLOT="0"
 
 DEPEND="
 	dev-cpp/glibmm:2
+	x11-libs/pixman
+	gnome-base/librsvg
 	~gui-libs/wlroots-9999:=
 	~gui-wm/wayfire-9999
 	x11-libs/cairo
+	x11-libs/pixman
 "
 RDEPEND="${DEPEND}"
 

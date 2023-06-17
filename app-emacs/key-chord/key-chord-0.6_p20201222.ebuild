@@ -4,7 +4,6 @@
 EAPI=8
 
 COMMIT=7f7fd7c5bd2b996fa054779357e1566f7989e07d
-NEED_EMACS=24
 
 inherit elisp
 
@@ -16,7 +15,7 @@ S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"

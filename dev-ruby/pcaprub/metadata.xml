@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="rubygems">pcaprub</remote-id>
+		<remote-id type="github">pcaprub/pcaprub</remote-id>
 	</upstream>
 </pkgmetadata>

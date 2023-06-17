@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="A shell-level interface to TCP sockets"
-HOMEPAGE="http://www.jnickelsen.de/socket/"
-SRC_URI="http://www.jnickelsen.de/${PN}/${P}.tar.gz"
+DESCRIPTION="Shell-level interface to TCP sockets"
+HOMEPAGE="https://w21.org/jnickelsen/socket/"
+SRC_URI="https://w21.org/jnickelsen/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

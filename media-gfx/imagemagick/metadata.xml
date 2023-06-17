@@ -13,6 +13,7 @@
 		<flag name="corefonts">Use <pkg>media-fonts/corefonts</pkg> which is required by some commands</flag>
 		<flag name="fpx">Enable <pkg>media-libs/libfpx</pkg> support</flag>
 		<flag name="hdri">Enable High Dynamic Range Images formats</flag>
+		<flag name="jpegxl">Enable support for JPEG XL image format</flag>
 		<flag name="lqr">Enable experimental liquid rescale support using <pkg>media-libs/liblqr</pkg></flag>
 		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="pango">Enable Pango support using <pkg>x11-libs/pango</pkg></flag>

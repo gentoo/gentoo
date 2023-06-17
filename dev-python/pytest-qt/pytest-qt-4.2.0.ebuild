@@ -4,17 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
 PYSIDE2_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r1 virtualx pypi
 
 DESCRIPTION="Pytest plugin for PyQt5 and PySide2 applications"
 HOMEPAGE="
 	https://pypi.org/project/pytest-qt/
 	https://github.com/pytest-dev/pytest-qt/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -33,7 +33,7 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
 src_test() {
 	virtx distutils-r1_src_test

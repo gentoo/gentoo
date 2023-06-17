@@ -6,6 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">horejsek/python-fastjsonschema</remote-id>
 		<remote-id type="pypi">fastjsonschema</remote-id>
 	</upstream>
 </pkgmetadata>

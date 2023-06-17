@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,13 +22,12 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="+jit +opengl"
+IUSE="+jit +opengl wayland"
 LICENSE="BSD-2 GPL-2 GPL-3 Unlicense"
 SLOT="0"
 
 RDEPEND="
 	app-arch/libarchive
-	dev-libs/wayland
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
@@ -37,10 +36,10 @@ RDEPEND="
 	media-libs/libsdl2[sound,video]
 	net-libs/libpcap
 	net-libs/libslirp
-	opengl? ( media-libs/libepoxy )
+	wayland? ( dev-libs/wayland )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="kde-frameworks/extra-cmake-modules:5"
+BDEPEND="wayland? ( kde-frameworks/extra-cmake-modules:5 )"
 
 # used for JIT recompiler
 QA_EXECSTACK="usr/bin/melonDS"
@@ -66,6 +65,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=OFF
 		-DENABLE_JIT=$(usex jit)
 		-DENABLE_OGLRENDERER=$(usex opengl)
+		-DENABLE_WAYLAND=$(usex wayland)
 	)
 	cmake_src_configure
 }

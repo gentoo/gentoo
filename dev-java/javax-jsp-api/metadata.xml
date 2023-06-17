@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<slots>
+		<slot name="2.0">https://jcp.org/aboutJava/communityprocess/final/jsr152/</slot>
+		<slot name="2.2">https://jcp.org/aboutJava/communityprocess/mrel/jsr245/</slot>
+	</slots>
+</pkgmetadata>

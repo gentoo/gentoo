@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+DISTUTILS_EXT=1
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -37,8 +38,12 @@ DEPEND="
 	x11-base/xorg-proto
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.23.0-fix-sphinx.patch
+)
+
 distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 python_test() {

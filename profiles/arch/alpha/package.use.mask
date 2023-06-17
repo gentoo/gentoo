@@ -1,5 +1,41 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-10)
+# Requires virtual/pandoc.
+dev-python/nbval doc
+dev-python/nbclassic doc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-10)
+# sys-cluster/ceph not keyworded here
+sys-block/tgt rbd
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# pandoc not keyworded here, bug #878355
+app-admin/conky doc
+
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# net-libs/libqmi and net-libs/libqrtr-glib are not keyworded here
+net-misc/modemmanager qmi qrtr
+
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# Depends on dev-util/umockdev which is broken on alpha.
+# See https://github.com/martinpitt/umockdev/issues/200
+dev-libs/libgudev test
+dev-libs/libgusb test
+sys-power/upower test
 
 # Stijn Tintel <stijn@linux-ipv6.be> (2023-02-02)
 # Dependency not keyworded
@@ -14,11 +50,6 @@ net-misc/openntpd constraints
 # Needs unkeyworded app-doc/halibut
 >=net-misc/putty-0.77 doc
 
-# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
-# media-libs/libjxl is not keyworded
-# bug https://bugs.gentoo.org/853628
-media-gfx/gimp jpegxl
-
 # Sam James <sam@gentoo.org> (2022-04-29)
 # Needs unkeyworded dev-util/umockdev
 sys-power/upower test
@@ -29,7 +60,7 @@ dev-python/click doc
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif jpegxl
+media-libs/imlib2 svg heif
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -38,10 +69,6 @@ app-text/enchant nuspell
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords
 media-libs/freetype svg
-
-# Sam James <sam@gentoo.org> (2022-03-26)
-# media-libs/libjxl not keyworded here
-media-gfx/graphicsmagick jpegxl
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
@@ -57,7 +84,7 @@ media-video/ffmpeg svt-av1
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
-dev-python/scipy pythran
+dev-python/scipy fortran
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Test suite is very fragile and doesn't even run on amd64.
@@ -105,6 +132,8 @@ media-libs/rubberband jni
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
 media-gfx/graphicsmagick heif
+www-client/links avif
+dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here
@@ -169,8 +198,6 @@ media-libs/mesa vulkan vulkan-overlay zink
 # net-libs/webkit-gtk has no alpha keywords
 app-editors/emacs xwidgets
 gnome-extra/evolution-data-server oauth
-# needs mail-client/evolution, depends on net-libs/webkit-gtk
-app-office/planner eds
 # needs gnome-extra/sushi, depends on net-libs/webkit-gtk
 gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
@@ -450,18 +477,9 @@ media-libs/gst-plugins-base ivorbis
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-31)
-# remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# requires app-office/unoconv, which requires virtual/ooo, which is not
-# keyworded here. Remove mask if this situation changes.
-gnome-extra/sushi office
 
 # Raúl Porcel <armin76@gentoo.org> (2012-12-30)
 # Needs testing

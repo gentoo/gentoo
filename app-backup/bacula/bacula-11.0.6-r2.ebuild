@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -338,7 +338,7 @@ src_install() {
 		cp "${FILESDIR}/${script}".confd "${T}/${script}".confd || die "failed to copy ${script}.confd"
 		cp "${FILESDIR}/newscripts/${script}".initd "${T}/${script}".initd || die "failed to copy ${script}.initd"
 
-		# now set the database dependancy for the director init script
+		# now set the database dependency for the director init script
 		case "${script}" in
 			bacula-dir)
 				case "${mydbtype}" in

@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="+python gtk-doc"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.70:2

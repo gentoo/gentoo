@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xemacs-packages.eclass
@@ -35,13 +35,13 @@ _XEMACS_PACKAGES_ECLASS=1
 RDEPEND="app-editors/xemacs"
 S="${WORKDIR}"
 
-: ${HOMEPAGE:="http://xemacs.org/"}
-: ${LICENSE:="GPL-2+"}
+: "${HOMEPAGE:="http://xemacs.org/"}"
+: "${LICENSE:="GPL-2+"}"
 
 if [[ -n ${XEMACS_EXPERIMENTAL} ]]; then
-	: ${SRC_URI:="http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/${P}-pkg.tar.gz"}
+	: "${SRC_URI:="http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/${P}-pkg.tar.gz"}"
 else
-	: ${SRC_URI:="http://ftp.xemacs.org/pub/xemacs/packages/${P}-pkg.tar.gz"}
+	: "${SRC_URI:="http://ftp.xemacs.org/pub/xemacs/packages/${P}-pkg.tar.gz"}"
 fi
 
 xemacs-packages_src_unpack() { :; }

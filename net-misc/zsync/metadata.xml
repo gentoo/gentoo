@@ -22,4 +22,7 @@
 		anyone can download the file, make a .zsync and provide it to other users (this
 		is what I am doing for the moment)."
 	</longdescription>
+	<upstream>
+		<remote-id type="github">cph6/zsync</remote-id>
+	</upstream>
 </pkgmetadata>

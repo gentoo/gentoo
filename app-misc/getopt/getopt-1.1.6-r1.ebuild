@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://frodo.looijaard.name/system/files/software/getopt/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~x64-cygwin ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="nls"
 
 RDEPEND="nls? ( virtual/libintl )"
@@ -35,10 +35,6 @@ src_compile() {
 		has_version sys-libs/glibc || libintl="-lintl"
 	fi
 
-	[[ ${CHOST} == *-aix* ]] && libcgetopt=0
-	[[ ${CHOST} == *-irix* ]] && libcgetopt=0
-	[[ ${CHOST} == *-interix* ]] && libcgetopt=0
-
 	emake CC="$(tc-getCC)" prefix="${EPREFIX}/usr" \
 		LIBCGETOPT=${libcgetopt} \
 		WITHOUT_GETTEXT=${nogettext} LIBINTL=${libintl} \
@@ -49,12 +45,6 @@ src_install() {
 	use nls && emake prefix="${EPREFIX}/usr" DESTDIR="${D}" install_po
 
 	newbin getopt getopt-long
-
-	# at least on interix, the system getopt is ... broken...
-	# util-linux, which would provide the getopt binary, does not build &
-	# install on interix/prefix, so, this has to provide it.
-	[[ ${CHOST} == *-interix* ]] && \
-		dosym getopt-long /usr/bin/getopt
 
 	newman getopt.1 getopt-long.1
 

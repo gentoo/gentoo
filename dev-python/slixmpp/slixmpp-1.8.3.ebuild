@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -17,7 +18,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://lab.louiz.org/poezio/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="amd64 ~riscv"
 fi
 

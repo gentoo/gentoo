@@ -3,17 +3,15 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+PYPI_PN="tables"
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
-MY_PN=tables
-MY_P=${MY_PN}-${PV}
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Hierarchical datasets for Python"
 HOMEPAGE="https://www.pytables.org/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ PATCHES=(
 )
 
 DESCRIPTION="A user-mode PPPoE client and server suite for Linux"
-HOMEPAGE="https://dianne.skoll.ca/projects/rp-pppoe/"
+HOMEPAGE="https://dianne.skoll.ca/projects/rp-pppoe/ https://salsa.debian.org/dskoll/rp-pppoe"
 SRC_URI="https://dianne.skoll.ca/projects/rp-pppoe/download/${P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/dist/${PATCHSET}.tar.xz"
 
@@ -21,7 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc
 IUSE="tk"
 
 RDEPEND="
-	net-dialup/ppp:=
+	<net-dialup/ppp-2.5:=
 	sys-apps/iproute2
 	tk? ( dev-lang/tk:= )
 "

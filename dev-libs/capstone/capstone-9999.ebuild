@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
 
 inherit cmake distutils-r1 toolchain-funcs
 
@@ -17,22 +18,22 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_BRANCH="next"
 else
 	SRC_URI="https://github.com/capstone-engine/capstone/archive/${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
+	S=${WORKDIR}/${P/_rc/-rc}
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
 LICENSE="BSD"
 SLOT="0/5" # libcapstone.so.5
 
-IUSE="python test"
+IUSE="python static-libs test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
 "
+BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 distutils_enable_tests setup.py
-
-S=${WORKDIR}/${P/_rc/-rc}
 
 if [[ ${PV} == *_rc* ]]; then
 	# Upstream doesn't flag release candidates (bug 858350)
@@ -82,4 +83,8 @@ src_install() {
 	cmake_src_install
 
 	wrap_python ${FUNCNAME}
+
+	if ! use static-libs ; then
+		find "${ED}" -name '*.a' -delete || die
+	fi
 }

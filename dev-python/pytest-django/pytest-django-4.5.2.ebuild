@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/pytest-5.4[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-1.11.1[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-1.11.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/django-configurations[${PYTHON_USEDEP}]
 	)

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,12 +10,12 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Combinators for executing IO actions in parallel on a thread pool"
-HOMEPAGE="https://batterseapower.github.com/parallel-io"
+HOMEPAGE="https://batterseapower.github.io/parallel-io/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">dev-haskell/extensible-exceptions-0.1.0.1:=[profile?]
 	>=dev-haskell/random-1.0:=[profile?] <dev-haskell/random-1.3:=[profile?]

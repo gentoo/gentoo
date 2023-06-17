@@ -3,21 +3,18 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+PYPI_PN="gmpy2"
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
-
-MY_PN="${PN}2"
-MY_P="${MY_PN}-${PV/_beta/b}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings for GMP, MPC, MPFR and MPIR libraries"
 HOMEPAGE="
 	https://github.com/aleaxit/gmpy/
 	https://pypi.org/project/gmpy2/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-3+"
 SLOT="2"

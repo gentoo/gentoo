@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,6 +47,7 @@ DOCS=( README.md CHANGES.md OTHERS TODO )
 PATCHES=(
 	"${FILESDIR}/5.10.0-build.xml.patch"
 	"${FILESDIR}/5.11.0-makefile-flags.patch"
+	"${FILESDIR}/jna-5.11.0-no-Werror.patch"
 )
 
 JAVA_ANT_REWRITE_CLASSPATH="true"

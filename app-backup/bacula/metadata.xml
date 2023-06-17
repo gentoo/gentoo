@@ -11,6 +11,7 @@
 		<flag name="bacula-nodir">Disable building of director</flag>
 		<flag name="bacula-nosd">Disable building of storage daemon</flag>
 		<flag name="batch-insert">Enable batch insert into data base</flag>
+		<flag name="ipv6">Support IPV6 protocol"</flag>
 		<flag name="logwatch">Install support files for logwatch</flag>
 	</use>
 	<upstream>

@@ -3,6 +3,9 @@
 
 EAPI=7
 
+# Re cleanups:
+# 2.5.x is an LTS release so we want to keep it for a while.
+
 inherit autotools flag-o-matic multilib multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd tmpfiles
 
 MY_PV="$(ver_rs 1-2 _)"
@@ -22,7 +25,7 @@ S="${WORKDIR}"/${PN}-OPENLDAP_REL_ENG_${MY_PV}
 LICENSE="OPENLDAP GPL-2"
 # Subslot added for bug #835654
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE_DAEMON="argon2 +cleartext crypt experimental minimal samba tcpd"
 IUSE_OVERLAY="overlays perl autoca"
@@ -166,7 +169,7 @@ openldap_find_versiontags() {
 	openldap_found_tag=0
 	have_files=0
 	for each in ${openldap_datadirs[@]} ; do
-		CURRENT_TAGDIR="${ROOT}$(sed "s:\/::" <<< ${each})"
+		CURRENT_TAGDIR="${EROOT}$(sed "s:\/::" <<< ${each})"
 		CURRENT_TAG="${CURRENT_TAGDIR}/${OPENLDAP_VERSIONTAG}"
 		if [[ -d "${CURRENT_TAGDIR}" ]] && [[ "${openldap_found_tag}" == 0 ]] ; then
 			einfo "- Checking ${each}..."
@@ -232,7 +235,18 @@ openldap_find_versiontags() {
 			| awk '/libdb-/{gsub("^libdb-","",$1);gsub(".so$","",$1);print $1}')"
 		local fail=0
 
-		if has_version "${CATEGORY}/${PN}[berkdb]" ; then
+		# This will not cover detection of cn=Config based configuration, but
+		# it's hopefully good enough.
+		if grep -sq '^backend.*shell' "${EROOT}"/etc/openldap/slapd.conf; then
+			eerror "    OpenLDAP >= 2.6.x has dropped support for Shell backend."
+			eerror "	You will need to migrate per upstream's migration notes"
+			eerror "	at https://www.openldap.org/doc/admin25/appendix-upgrading.html."
+			eerror "	Your existing database will not be accessible until it is"
+			eerror "	converted away from backend shell!"
+			echo
+			fail=1
+		fi
+		if has_version "${CATEGORY}/${PN}[berkdb]" || grep -sq '^backend.*(bdb|hdb)' /etc/openldap/slapd.conf; then
 			eerror "	OpenLDAP >= 2.6.x has dropped support for Berkeley DB."
 			eerror "	You will need to migrate per upstream's migration notes"
 			eerror "	at https://www.openldap.org/doc/admin25/appendix-upgrading.html."
@@ -333,6 +347,8 @@ src_prepare() {
 
 	sed -i \
 		-e "s:\$(localstatedir)/run:${EPREFIX}/run:" \
+		-e '/MKDIR.*.(DESTDIR)\/run/d' \
+		-e '/MKDIR.*.(DESTDIR).*.(runstatedir)/d' \
 		servers/slapd/Makefile.in || die 'adjusting slapd Makefile.in failed'
 
 	pushd build &>/dev/null || die "pushd build"
@@ -652,7 +668,7 @@ multilib_src_install() {
 		# use our config
 		rm "${ED}"/etc/openldap/slapd.conf
 		insinto /etc/openldap
-		newins "${FILESDIR}"/${PN}-2.4.40-slapd-conf slapd.conf
+		newins "${FILESDIR}"/${PN}-2.6.3-slapd-conf slapd.conf
 		configfile="${ED}"/etc/openldap/slapd.conf
 
 		# populate with built backends

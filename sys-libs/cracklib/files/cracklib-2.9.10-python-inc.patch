@@ -1,0 +1,20 @@
+https://github.com/cracklib/cracklib/pull/61
+
+From 802cbc426779489d44d7fc19e695e7d962c65665 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 17 Mar 2023 02:20:19 +0000
+Subject: [PATCH] python: adjust include path for builddir
+
+We need this for config.h added by 2e0f854bada720ff4fbd13aed4f87087d466274d.
+--- a/python/setup.py.in
++++ b/python/setup.py.in
+@@ -22,7 +22,7 @@ from setuptools import setup, Extension
+ extensions = [
+     Extension("_cracklib",
+         ["@srcdir@/_cracklib.c"],
+-        include_dirs = ["@top_srcdir@/lib"],
++        include_dirs = ["@top_builddir@", "@top_srcdir@/lib"],
+         libraries = ["crack"],
+         library_dirs = ["@top_builddir@/lib/.libs"]),
+ ]
+

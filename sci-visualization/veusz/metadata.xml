@@ -13,5 +13,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">veusz</remote-id>
+    <remote-id type="github">veusz/veusz</remote-id>
   </upstream>
 </pkgmetadata>

@@ -5,7 +5,11 @@
 		<flag name="bson">Support BSON file format for package DB</flag>
 	</use>
 	<maintainer type="project">
-		<email>layman@gentoo.org</email>
-		<name>Gentoo Layman team</name>
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/g-sorcery</remote-id>
+		<remote-id type="github">gentoo/g-sorcery</remote-id>
+	</upstream>
 </pkgmetadata>

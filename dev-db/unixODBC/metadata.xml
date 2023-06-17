@@ -6,4 +6,7 @@
     <flag name="minimal">Disable bundled drivers and extra libraries (most users don't need these)</flag>
     <flag name="odbcmanual">Administrator, Internal Structure, Programmer and User documentation</flag>
   </use>
+  <upstream>
+    <remote-id type="github">lurcher/unixODBC</remote-id>
+  </upstream>
 </pkgmetadata>

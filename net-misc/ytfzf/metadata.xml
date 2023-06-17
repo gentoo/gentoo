@@ -7,7 +7,8 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<use>
-		<flag name="minimal">Skip <pkg>app-shells/fzf</pkg> and <pkg>media-video/mpv</pkg> dependencies (requires custom settings)</flag>
+		<flag name="minimal">Skip all optional dependencies (may no longer work out-of-the-box and require custom setting up)</flag>
+		<flag name="thumbnails">Pull <pkg>media-gfx/ueberzugpp</pkg> or <pkg>media-gfx/ueberzug</pkg> for viewing thumbnails (default method when using -t)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pystardust/ytfzf</remote-id>

@@ -3,8 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
+
 inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Python bindings for the libwayland library"
@@ -20,15 +22,21 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 RDEPEND="
 	dev-libs/wayland
-	virtual/python-cffi[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/cffi[${PYTHON_USEDEP}]
+	' 'python*')
 "
-DEPEND="${RDEPEND}"
-BDEPEND="dev-libs/wayland-protocols
-	dev-util/wayland-scanner"
+DEPEND="
+	${RDEPEND}
+	dev-libs/wayland-protocols
+"
+BDEPEND="
+	dev-util/wayland-scanner
+"
 
 distutils_enable_tests pytest
 
@@ -40,7 +48,7 @@ python_prepare_all() {
 
 python_test() {
 	# No die deliberately as sometimes it doesn't exist
-	rm -r pywayland
+	rm -rf pywayland || die
 
 	epytest
 }

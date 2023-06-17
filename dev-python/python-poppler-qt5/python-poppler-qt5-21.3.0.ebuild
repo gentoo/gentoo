@@ -3,8 +3,9 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9,10,11} )
 
 inherit distutils-r1 multiprocessing qmake-utils
 

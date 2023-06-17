@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,9 @@ SRC_URI="https://rlog.googlecode.com/files/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc sparc x86"
-IUSE=""
+IUSE="valgrind"
+
+DEPEND="valgrind? ( dev-util/valgrind )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.7-gcc-4.3.patch
@@ -23,6 +25,10 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	econf $(use_enable valgrind)
 }
 
 src_install() {

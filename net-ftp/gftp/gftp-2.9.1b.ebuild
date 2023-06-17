@@ -26,6 +26,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# Override gnome.org.eclass's S= (bug #904064)
+S="${WORKDIR}/${P}"
+
 src_configure() {
 	gnome2_src_configure \
 		$(use_enable gtk gtkport) \

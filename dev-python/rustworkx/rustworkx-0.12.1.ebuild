@@ -3,6 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
+
 CRATES="
 	ahash-0.7.6
 	autocfg-1.1.0
@@ -73,9 +77,6 @@ CRATES="
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-x86_64-pc-windows-gnu-0.4.0
 "
-
-DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cargo distutils-r1
 

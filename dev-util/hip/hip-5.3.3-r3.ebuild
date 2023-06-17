@@ -81,6 +81,7 @@ src_prepare() {
 	eapply "${FILESDIR}/0001-SWDEV-344620-hipcc-fails-to-parse-version-of-clang-i.patch"
 	eapply "${FILESDIR}/0002-SWDEV-355608-Remove-clang-include-path-2996.patch"
 	eapply "${FILESDIR}/0003-SWDEV-352878-Removed-relative-path-based-CLANG-inclu.patch"
+	eapply "${FILESDIR}/${PN}-5.4.3-fix-HIP_CLANG_PATH-detection.patch"
 	# Setting HSA_PATH to "/usr" results in setting "-isystem /usr/include"
 	# which makes "stdlib.h" not found when using "#include_next" in header files;
 	sed -e "/FLAGS .= \" -isystem \$HSA_PATH/d" \
@@ -101,6 +102,11 @@ src_prepare() {
 	sed -e "s,@HIP_BASE_VERSION_MAJOR@,$(ver_cut 1)," -e "s,@HIP_BASE_VERSION_MINOR@,$(ver_cut 2)," \
 		-e "s,@HIP_VERSION_PATCH@,$(ver_cut 3)," \
 		-e "s,@CLANG_PATH@,${LLVM_PREFIX}/bin," -i bin/hipvars.pm || die
+	popd || die
+
+	pushd ${CLR_S} || die
+	eapply "${FILESDIR}/rocclr-${PV}-fix-include.patch"
+	eapply "${FILESDIR}/rocclr-5.3.3-gcc13.patch"
 }
 
 src_configure() {

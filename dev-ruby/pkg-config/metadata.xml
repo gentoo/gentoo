@@ -10,6 +10,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">rcairo/pkg-config</remote-id>
+    <remote-id type="github">ruby-gnome/pkg-config</remote-id>
+    <remote-id type="rubygems">pkg-config</remote-id>
   </upstream>
 </pkgmetadata>

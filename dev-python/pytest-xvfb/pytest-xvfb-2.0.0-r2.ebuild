@@ -3,27 +3,26 @@
 
 EAPI=8
 
-PYTHON_REQ_USE="tk"
-PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_REQ_USE="tk"
+inherit distutils-r1 pypi
 
-DESCRIPTION="A pytest plugin to run Xvfb for tests"
+DESCRIPTION="Pytest plugin to run Xvfb for tests"
 HOMEPAGE="https://pypi.org/project/pytest-xvfb/"
-SRC_URI="https://github.com/The-Compiler/pytest-xvfb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
 RDEPEND="
-	>=dev-python/pytest-2.8.1[${PYTHON_USEDEP}]
-	>=dev-python/pyvirtualdisplay-1.3[${PYTHON_USEDEP}]
-	x11-base/xorg-server[xvfb]
-"
+	dev-python/pytest[${PYTHON_USEDEP}]
+	dev-python/pyvirtualdisplay[${PYTHON_USEDEP}]
+	x11-base/xorg-server[xvfb]"
 
 distutils_enable_tests pytest
 
 python_test() {
-	epytest -p xvfb
+	epytest -p xvfb --runpytest=subprocess
 }

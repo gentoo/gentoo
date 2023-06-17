@@ -32,7 +32,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="x11-misc/slim"
 

@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/guillemjover.asc
-inherit multilib multilib-minimal verify-sig
+inherit autotools multilib multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( https://${PN}.freedesktop.org/releases/${P}.tar.xz.asc 
 
 LICENSE="BSD BSD-2 BSD-4 ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 RDEPEND="app-crypt/libmd[${MULTILIB_USEDEP}]"
@@ -21,6 +21,18 @@ DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.17
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
+
+PATCHES=(
+	"${FILESDIR}/libbsd-build-Fix-version-script-linker-support-detection.patch"
+	"${FILESDIR}/libbsd-0.11.7-musl-lfs.patch"
+)
+
+src_prepare() {
+	default
+
+	# Drop on next release, only needed for lld patch
+	eautoreconf
+}
 
 multilib_src_configure() {
 	# The build system will install libbsd-ctor.a despite USE="-static-libs"

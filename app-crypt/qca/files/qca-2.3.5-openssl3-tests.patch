@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/904234
+https://invent.kde.org/libraries/qca/-/commit/33a35a699928318032f62eab0e39e263c604ad9e
+https://invent.kde.org/libraries/qca/-/commit/714073747c4a3ccff7a8c85c72872bdf6bd3db4a
+
+From 33a35a699928318032f62eab0e39e263c604ad9e Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 22 Oct 2022 13:51:17 +0200
+Subject: [PATCH] hashunittest: run sha384longtest only for providers that
+ support sha384
+
+Fixes commit bdb0e9d37d78ec8e01d4008dba5243afe9029346 that accidentally
+left the wrong logic when refactoring the file, and makes the check as
+done in the other longtest tests.
+--- a/unittest/hashunittest/hashunittest.cpp
++++ b/unittest/hashunittest/hashunittest.cpp
+@@ -581,7 +581,7 @@ void HashUnitTest::sha384longtest()
+     fillerString.fill('a', 1000);
+ 
+     foreach (QString provider, providersToTest) {
+-        if (!QCA::isSupported("sha384", provider)) {
++        if (QCA::isSupported("sha384", provider)) {
+             // QTime t;
+             // t.start();
+             QCA::Hash shaHash(QStringLiteral("sha384"), provider);
+-- 
+GitLab
+
+From 714073747c4a3ccff7a8c85c72872bdf6bd3db4a Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Mon, 20 Feb 2023 00:19:19 +0100
+Subject: [PATCH] Remove test that openssl has decided it's wrong
+
+--- a/unittest/pkits/pkits.cpp
++++ b/unittest/pkits/pkits.cpp
+@@ -256,6 +256,9 @@ void Pkits::pkits4_1_4()
+ 
+ void Pkits::pkits4_1_5()
+ {
++    // openssl has decided that they don't want to support this Â¯\_(ãƒ„)_/Â¯
++    // https://github.com/openssl/openssl/issues/20233
++#if 0
+     QStringList providersToTest;
+     providersToTest.append(QStringLiteral("qca-ossl"));
+ 
+@@ -298,6 +301,7 @@ void Pkits::pkits4_1_5()
+             QCOMPARE(cert.validate(trusted, untrusted), QCA::ValidityGood);
+         }
+     }
++#endif
+ }
+ 
+ void Pkits::pkits4_1_6()
+-- 
+GitLab

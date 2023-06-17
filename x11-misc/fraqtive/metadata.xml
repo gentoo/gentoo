@@ -4,5 +4,6 @@
 <!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">fraqtive</remote-id>
+		<remote-id type="github">mimecorg/fraqtive</remote-id>
 	</upstream>
 </pkgmetadata>

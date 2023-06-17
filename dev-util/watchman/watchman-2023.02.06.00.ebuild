@@ -207,7 +207,7 @@ xi-unicode-0.2.1
 "
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit cargo cmake distutils-r1 tmpfiles
 
 DESCRIPTION="A file watching service"
@@ -217,7 +217,7 @@ SRC_URI+=" $(cargo_crate_uris)"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="llvm-libunwind python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

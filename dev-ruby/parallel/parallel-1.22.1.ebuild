@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -15,17 +15,22 @@ inherit ruby-fakegem
 
 DESCRIPTION="Run any code in parallel Processes or Threads"
 HOMEPAGE="https://github.com/grosser/parallel"
-LICENSE="MIT"
 SRC_URI="https://github.com/grosser/parallel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~riscv"
+LICENSE="MIT"
 SLOT="1"
-IUSE="test"
+KEYWORDS="amd64 ~riscv"
 
 DEPEND+="test? ( sys-process/lsof sys-process/procps )"
 
 ruby_add_bdepend "
-	test? ( dev-ruby/ruby-progressbar dev-ruby/activerecord[sqlite] )"
+	test? ( dev-ruby/ruby-progressbar )
+"
+
+# Rails isn't yet ruby32-ready in Gentoo
+USE_RUBY="ruby27 ruby30 ruby31" ruby_add_bdepend "
+	test? ( dev-ruby/activerecord[sqlite] )
+"
 
 each_ruby_prepare() {
 	# Make sure the correct ruby is used for testing
@@ -43,6 +48,10 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
+	if ! has_version -b "dev-ruby/activerecord[sqlite]" ; then
+		rm spec/cases/map_with_ar.rb spec/cases/each_with_ar_sqlite.rb || die
+	fi
+
 	# Set RUBYLIB explicitly for the ruby's that get started from the specs.
 	TRAVIS=true RUBYLIB="lib" ${RUBY} -S rspec-3 spec || die
 }

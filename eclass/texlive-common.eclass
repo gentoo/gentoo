@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-common.eclass
@@ -14,14 +14,13 @@
 #
 # Note that this eclass *must* not assume the presence of any standard tex too
 
+case ${EAPI} in
+	7) inherit eapi8-dosym ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_TEXLIVE_COMMON_ECLASS} ]]; then
 _TEXLIVE_COMMON_ECLASS=1
-
-case ${EAPI:-0} in
-	[0-6]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	7)     inherit eapi8-dosym ;;
-	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
-esac
 
 TEXMF_PATH=/usr/share/texmf
 TEXMF_DIST_PATH=/usr/share/texmf-dist

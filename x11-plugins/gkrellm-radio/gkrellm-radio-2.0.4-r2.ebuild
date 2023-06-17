@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gkrellm-plugin toolchain-funcs
+inherit gkrellm-plugin multilib toolchain-funcs
 
 DESCRIPTION="A minimalistic GKrellM2 plugin to control radio tuners"
 HOMEPAGE="http://gkrellm.luon.net/gkrellm-radio.php"
@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc sparc x86"
 IUSE="lirc"
 
 RDEPEND="

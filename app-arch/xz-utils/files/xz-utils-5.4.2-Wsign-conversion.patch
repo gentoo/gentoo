@@ -1,0 +1,23 @@
+https://github.com/tukaani-project/xz/commit/0673c9ec98b6bae12b33dc295564514aaa26e2fc
+
+From 0673c9ec98b6bae12b33dc295564514aaa26e2fc Mon Sep 17 00:00:00 2001
+From: Lasse Collin <lasse.collin@tukaani.org>
+Date: Sun, 19 Mar 2023 22:45:59 +0200
+Subject: [PATCH] liblzma: Silence -Wsign-conversion in SSE2 code in
+ memcmplen.h.
+
+Thanks to Christian Hesse for reporting the issue.
+Fixes: https://github.com/tukaani-project/xz/issues/44
+--- a/src/liblzma/common/memcmplen.h
++++ b/src/liblzma/common/memcmplen.h
+@@ -89,7 +89,8 @@ lzma_memcmplen(const uint8_t *buf1, const uint8_t *buf2,
+ 	// version isn't used on x86-64.
+ #	define LZMA_MEMCMPLEN_EXTRA 16
+ 	while (len < limit) {
+-		const uint32_t x = 0xFFFF ^ _mm_movemask_epi8(_mm_cmpeq_epi8(
++		const uint32_t x = 0xFFFF ^ (uint32_t)_mm_movemask_epi8(
++			_mm_cmpeq_epi8(
+ 			_mm_loadu_si128((const __m128i *)(buf1 + len)),
+ 			_mm_loadu_si128((const __m128i *)(buf2 + len))));
+ 
+

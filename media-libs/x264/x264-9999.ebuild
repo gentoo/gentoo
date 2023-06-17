@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib-minimal toolchain-funcs
+inherit multilib-minimal toolchain-funcs flag-o-matic
 
 DESCRIPTION="A free library for encoding X264/AVC streams"
 HOMEPAGE="https://www.videolan.org/developers/x264.html"
@@ -41,7 +41,13 @@ multilib_src_configure() {
 
 	local asm_conf=""
 
-	if [[ ${ABI} == x86* ]] && { use pic || use !cpu_flags_x86_sse ; } || [[ ${ABI} == "x32" ]] || [[ ${CHOST} == armv5* ]] || [[ ${ABI} == ppc* ]] && { use !cpu_flags_ppc_altivec ; }; then
+	if \
+		[[ ${ABI} == x86* ]] && { use pic || use !cpu_flags_x86_sse ; } \
+		|| [[ ${ABI} == "x32" ]] \
+		|| [[ ${CHOST} == armv5* ]] \
+		|| [[ ${ABI} == ppc* ]] && { use !cpu_flags_ppc_altivec ; } \
+		|| use mips && { ! test-compile 'c' 'int main(void){__asm__("addvi.b $w0, $w1, 1");return 0;}' ; }
+	then
 		asm_conf=" --disable-asm"
 	fi
 

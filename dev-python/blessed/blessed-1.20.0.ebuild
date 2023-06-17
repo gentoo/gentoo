@@ -6,18 +6,17 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Library for making terminal apps using colors, keyboard input and positioning"
 HOMEPAGE="
 	https://github.com/jquast/blessed/
 	https://pypi.org/project/blessed/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
@@ -29,7 +28,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 python_prepare_all() {

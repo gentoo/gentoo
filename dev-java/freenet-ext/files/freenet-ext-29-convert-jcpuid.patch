@@ -1,0 +1,46 @@
+Backported from:
+
+From ec11ea4ca73646a790f20adf8ded2e48dedd96e5 Mon Sep 17 00:00:00 2001
+From: scintilla <scintilla>
+Date: Sun, 19 Dec 2004 06:25:27 +0000
+Subject: [PATCH] * Convert native jcpuid code from C++ to C. This should
+ alleviate build   problems experienced by some users.
+
+--- /dev/null
++++ b/jcpuid/src/jcpuid.c
+@@ -0,0 +1,35 @@
++#include "jcpuid.h"
++
++//Executes the indicated subfunction of the CPUID operation
++JNIEXPORT jobject JNICALL Java_freenet_support_CPUInformation_CPUID_doCPUID
++  (JNIEnv * env, jclass cls, jint iFunction)
++{
++	int a,b,c,d;
++	jclass clsResult = (*env)->FindClass(env, "freenet/support/CPUInformation/CPUID$CPUIDResult");
++	jmethodID constructor = (*env)->GetMethodID(env, clsResult,"<init>","(IIII)V" );
++	#ifdef _MSC_VER
++		//Use MSVC assembler notation
++		_asm 
++		{
++			mov eax, iFunction
++			cpuid
++			mov a, eax
++			mov b, ebx
++			mov c, ecx
++			mov d, edx
++		}
++	#else
++		//Use GCC assembler notation
++		asm 
++		(
++			"cpuid"
++			: "=a" (a),
++			  "=b" (b),
++			  "=c"(c),
++			  "=d"(d)
++			:"a"(iFunction)
++		);
++	#endif
++	return (*env)->NewObject(env, clsResult,constructor,a,b,c,d);
++}
++

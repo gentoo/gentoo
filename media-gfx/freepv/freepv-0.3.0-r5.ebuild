@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)"
-HOMEPAGE="http://freepv.sourceforge.net/"
+HOMEPAGE="https://freepv.sourceforge.net/"
 SRC_URI="mirror://sourceforge/freepv/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

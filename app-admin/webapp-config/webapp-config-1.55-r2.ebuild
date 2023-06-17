@@ -4,12 +4,18 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 prefix
 
-SRC_URI="https://dev.gentoo.org/~twitch153/${PN}/${P}.tar.bz2"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+if [[ ${PV} = 9999* ]]
+then
+	EGIT_REPO_URI="https://anongit.gentoo.org/proj/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.bz2"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+fi
 
 DESCRIPTION="Gentoo's installer for web-based applications"
 HOMEPAGE="https://sourceforge.net/projects/webapp-config/"
@@ -32,6 +38,11 @@ python_compile_all() {
 	emake -C doc/
 }
 
+python_test() {
+	PYTHONPATH="." "${EPYTHON}" WebappConfig/tests/external.py -v ||
+		die "Testing failed with ${EPYTHON}"
+}
+
 python_install() {
 	# According to this discussion:
 	# http://mail.python.org/pipermail/distutils-sig/2004-February/003713.html
@@ -52,11 +63,6 @@ python_install_all() {
 
 	dodoc AUTHORS
 	doman doc/*.[58]
-}
-
-python_test() {
-	PYTHONPATH="." "${EPYTHON}" WebappConfig/tests/external.py -v ||
-		die "Testing failed with ${EPYTHON}"
 }
 
 pkg_postinst() {

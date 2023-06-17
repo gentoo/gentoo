@@ -14,15 +14,16 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE=""
+IUSE="+dhcp"
 
 RDEPEND="sys-apps/gentoo-functions
-	>=sys-apps/openrc-0.15"
+	>=sys-apps/openrc-0.15
+	dhcp? ( || ( net-misc/dhcpcd net-misc/dhcp[client] ) )"
 BDEPEND="kernel_linux? ( virtual/pkgconfig )"
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ else
 	#SRC_URI+=" https://dev.gentoo.org/~polynomial-c/${PATCH_TARBALL_NAME}.tar.xz"
 
 	if ! [[ ${PV} == *_beta* ]] ; then
-		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 	S="${WORKDIR}"/${MY_P}
 fi
@@ -49,6 +49,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-make-4.4.patch
 	"${FILESDIR}"/${P}-K-R-decls-clang-deux.patch
 )
+
+TC_AUTOCONF_BREAK_INFOS=yes
 
 src_prepare() {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool

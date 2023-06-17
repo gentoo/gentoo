@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_10 )
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Write unit tests in Python to test actual state of your servers"
 HOMEPAGE="
 	https://github.com/pytest-dev/pytest-testinfra/
 	https://pypi.org/project/pytest-testinfra/
 "
-SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -27,10 +27,12 @@ RDEPEND="
 # (which e.g. happens when dash is used as /bin/sh)
 # https://github.com/pytest-dev/pytest-testinfra/issues/668
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		app-admin/ansible
-		app-admin/salt[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			app-admin/salt[${PYTHON_USEDEP}]
+		' python3_10)
 		dev-python/paramiko[${PYTHON_USEDEP}]
 		dev-python/pywinrm[${PYTHON_USEDEP}]
 		sys-apps/which
@@ -38,6 +40,19 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local -x EPYTEST_DESELECT=()
+
+	# This is the only test which actually fails if salt cannot be imported
+	if [[ ${EPYTHON} == python3.11 ]]; then
+		EPYTEST_DESELECT+=(
+			test/test_backends.py::test_backend_importables
+		)
+	fi
+
+	epytest
+}
 
 pkg_postinst() {
 	elog "For the list of available connection back-ends and their dependencies,"

@@ -11,5 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="hdx">Install and enable hdx-realtime-media-engine plugin</flag>
+		<flag name="usb">Allow connecting USB devices to virtual desktops</flag>
 	</use>
 </pkgmetadata>

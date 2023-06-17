@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/903001
+https://github.com/h2o/neverbleed/pull/51
+https://github.com/h2o/neverbleed/commit/e1005c16e11b2ca358c86df2a4226632a2992d55
+https://github.com/h2o/h2o/pull/3214
+https://github.com/h2o/h2o/commit/83f89f2fe7c5399b88386a940b2a675742478aca
+https://github.com/h2o/h2o/pull/2062
+https://github.com/h2o/h2o/commit/e61e9c8296e894a479268d041985e65433c17e67
+
+From 81494ee75e8f533c9fbf841d0dfe83f8eeba7bbd Mon Sep 17 00:00:00 2001
+From: Kazuho Oku <kazuhooku@gmail.com>
+Date: Mon, 13 Mar 2023 18:56:12 +0900
+Subject: [PATCH] libressl 3.5 and above have opaque RSA struct
+
+---
+ deps/neverbleed/neverbleed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/neverbleed.c b/neverbleed.c
+index d7cd979..74d7aa3 100644
+--- a/deps/neverbleed/neverbleed.c
++++ b/deps/neverbleed/neverbleed.c
+@@ -45,7 +45,7 @@
+ #endif
+ #include "neverbleed.h"
+ 
+-#if (!defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x1010000fL)
++#if defined(LIBRESSL_VERSION_NUMBER) ? LIBRESSL_VERSION_NUMBER >= 0x3050000fL : OPENSSL_VERSION_NUMBER >= 0x1010000fL
+ #define OPENSSL_1_1_API 1
+ #else
+ #define OPENSSL_1_1_API 0
+Silence compiler warning. The get_session_cb has had const since LibreSSL 2.8.
+
+From b408b9e015627394003a04577dd7ee7e870d1797 Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Thu, 30 May 2019 15:05:44 +0100
+Subject: [PATCH] LibreSSL little build warning fix proposal
+
+---
+ lib/common/socket.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/common/socket.c b/lib/common/socket.c
+index 172b75026f..45c18591b7 100644
+--- a/lib/common/socket.c
++++ b/lib/common/socket.c
+@@ -946,7 +946,7 @@ static void create_ossl(h2o_socket_t *sock)
+ }
+ 
+ static SSL_SESSION *on_async_resumption_get(SSL *ssl,
+-#if OPENSSL_VERSION_NUMBER >= 0x1010000fL && !defined(LIBRESSL_VERSION_NUMBER)
++#if !defined(LIBRESSL_VERSION_NUMBER) ? OPENSSL_VERSION_NUMBER >= 0x1010000fL : LIBRESSL_VERSION_NUMBER > 0x2070000f
+                                             const
+ #endif
+                                             unsigned char *data,

@@ -10,7 +10,7 @@ SRC_URI="https://github.com/philipl/pidgin-indicator/releases/download/${PV}/${P
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE=""
 
 # No direct gtk3 until pidgin migrates:

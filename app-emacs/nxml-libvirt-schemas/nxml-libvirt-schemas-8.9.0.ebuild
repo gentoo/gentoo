@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,11 @@ BDEPEND="app-text/trang"
 SITEFILE="60${PN}-gentoo.el"
 
 src_compile() {
-	emake -f "${FILESDIR}"/Makefile-trang
+	emake -f - <<'EOF'
+all: $(patsubst %.rng,%.rnc,$(wildcard *.rng))
+%.rnc: %.rng
+	trang -I rng -O rnc $< $@
+EOF
 }
 
 src_install() {

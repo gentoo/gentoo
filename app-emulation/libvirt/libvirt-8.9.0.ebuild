@@ -21,7 +21,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
@@ -140,6 +140,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-8.2.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-8.2.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-9.2.0-meson-Stop-detecting-Wl-version-script.patch
 )
 
 pkg_setup() {
@@ -193,10 +194,21 @@ pkg_setup() {
 		~IP_NF_FILTER
 		~IP_NF_MANGLE
 		~IP_NF_NAT
-		~IP_NF_TARGET_MASQUERADE
 		~IP6_NF_FILTER
 		~IP6_NF_MANGLE
 		~IP6_NF_NAT"
+
+	# This was renamed in kernel commit v5.2-rc1~133^2~174^2~6
+	if use virt-network ; then
+		if kernel_is -lt 5 2 ; then
+			CONFIG_CHECK+="
+			~IP_NF_TARGET_MASQUERADE"
+		else
+			CONFIG_CHECK+="
+			~NETFILTER_XT_TARGET_MASQUERADE"
+		fi
+	fi
+
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
@@ -274,6 +286,7 @@ src_configure() {
 
 		-Dnetcf=disabled
 		-Dsanlock=disabled
+		-Dopenwsman=disabled
 
 		-Ddriver_esx=enabled
 		-Dinit_script=systemd

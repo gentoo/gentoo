@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: docs.eclass
@@ -146,7 +146,7 @@ esac
 # will initialize a dummy git repository before compiling. A dependency
 # on dev-vcs/git is automatically added.
 
-if [[ ! ${_DOCS_ECLASS} ]]; then
+if [[ -z ${_DOCS_ECLASS} ]]; then
 _DOCS_ECLASS=1
 
 # For the python based DOCS_BUILDERS we need to inherit any python eclass
@@ -210,7 +210,7 @@ python_append_deps() {
 sphinx_deps() {
 	debug-print-function ${FUNCNAME}
 
-	: ${DOCS_AUTODOC:=1}
+	: "${DOCS_AUTODOC:=1}"
 
 	deps="dev-python/sphinx[\${PYTHON_USEDEP}]
 			${DOCS_DEPEND}"
@@ -235,8 +235,8 @@ sphinx_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
 
-	: ${DOCS_DIR:="${S}"}
-	: ${DOCS_OUTDIR:="${S}/_build/html/sphinx"}
+	: "${DOCS_DIR:="${S}"}"
+	: "${DOCS_OUTDIR:="${S}/_build/html/sphinx"}"
 
 	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
 
@@ -274,7 +274,7 @@ sphinx_compile() {
 mkdocs_deps() {
 	debug-print-function ${FUNCNAME}
 
-	: ${DOCS_AUTODOC:=0}
+	: "${DOCS_AUTODOC:=0}"
 
 	deps="dev-python/mkdocs[\${PYTHON_USEDEP}]
 			${DOCS_DEPEND}"
@@ -298,8 +298,8 @@ mkdocs_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
 
-	: ${DOCS_DIR:="${S}"}
-	: ${DOCS_OUTDIR:="${S}/_build/html/mkdocs"}
+	: "${DOCS_DIR:="${S}"}"
+	: "${DOCS_OUTDIR:="${S}/_build/html/mkdocs"}"
 
 	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
 
@@ -342,9 +342,9 @@ doxygen_compile() {
 	use doc || return
 
 	# This is the default name of the config file, upstream can change it.
-	: ${DOCS_CONFIG_NAME:="Doxyfile"}
-	: ${DOCS_DIR:="${S}"}
-	: ${DOCS_OUTDIR:="${S}/_build/html/doxygen"}
+	: "${DOCS_CONFIG_NAME:="Doxyfile"}"
+	: "${DOCS_DIR:="${S}"}"
+	: "${DOCS_OUTDIR:="${S}/_build/html/doxygen"}"
 
 	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
 
@@ -424,7 +424,7 @@ BDEPEND+=" doc? ( ${DOCS_DEPEND} )"
 # then put the compile function in the specific
 # python function, else docs_compile should be manually
 # added to src_compile
-if [[ ${_DISTUTILS_R1} && ( ${DOCS_BUILDER}="mkdocs" || ${DOCS_BUILDER}="sphinx" ) ]]; then
+if [[ ${_DISTUTILS_R1_ECLASS} && ( ${DOCS_BUILDER}="mkdocs" || ${DOCS_BUILDER}="sphinx" ) ]]; then
 	python_compile_all() { docs_compile; }
 fi
 

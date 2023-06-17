@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/pytest-7.1.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-6.2.3[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-6.2.3[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

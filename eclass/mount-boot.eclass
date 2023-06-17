@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mount-boot.eclass
@@ -13,12 +13,10 @@
 # function tries to ensure that it's mounted in rw mode, exiting with an
 # error if it can't.  It does nothing if /boot isn't a separate partition.
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS pkg_pretend pkg_preinst pkg_postinst pkg_prerm pkg_postrm
 
 # @FUNCTION: mount-boot_is_disabled
 # @INTERNAL
@@ -111,3 +109,5 @@ mount-boot_pkg_prerm() {
 mount-boot_pkg_postinst() { :; }
 
 mount-boot_pkg_postrm() { :; }
+
+EXPORT_FUNCTIONS pkg_pretend pkg_preinst pkg_postinst pkg_prerm pkg_postrm

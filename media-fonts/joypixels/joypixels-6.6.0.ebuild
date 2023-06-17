@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ S="${WORKDIR}"
 #https://cdn.joypixels.com/distributions/gentoo-linux/license/free-license.txt
 LICENSE="JoyPixels"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 RESTRICT="bindist mirror"
 
 FONT_CONF=( "${FILESDIR}"/99-joypixels.conf )

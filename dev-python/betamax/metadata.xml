@@ -6,6 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">betamaxpy/betamax</remote-id>
 		<remote-id type="pypi">betamax</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,5 +4,6 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="sourceforge">libexif</remote-id>
+    <remote-id type="github">libexif/exif</remote-id>
   </upstream>
 </pkgmetadata>

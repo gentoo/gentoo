@@ -5,4 +5,7 @@
 		<email>ruby@gentoo.org</email>
 		<name>Gentoo Ruby Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">freerange/mocha</remote-id>
+	</upstream>
 </pkgmetadata>

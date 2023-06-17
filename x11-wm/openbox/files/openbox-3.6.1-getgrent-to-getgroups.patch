@@ -1,0 +1,67 @@
+Gentoo: https://bugs.gentoo.org/827227
+Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=808138
+Upstream: https://bugzilla.icculus.org/show_bug.cgi?id=5978
+
+>From e0cb404f53c9b21a521ea2f14c8cd66fdfb68ea7 Mon Sep 17 00:00:00 2001
+From: Simon <simondobbss@gmail.com>
+Date: Tue, 15 Dec 2015 15:46:18 +0100
+Subject: [PATCH] Replace getgrent with getgroups. Fixes #5978.
+
+---
+ obt/paths.c | 34 +++++++++++++++++++++-------------
+ 1 file changed, 21 insertions(+), 13 deletions(-)
+
+diff --git a/obt/paths.c b/obt/paths.c
+index 25cb6b0..d526936 100644
+--- a/obt/paths.c
++++ b/obt/paths.c
+@@ -108,25 +108,33 @@ static void find_uid_gid(uid_t *u, gid_t **g, guint *n)
+     const gchar *name;
+     struct group *gr;
+ 
++    gid_t gmain;
++    unsigned int maininc;
++    int i;
++
+     *u = getuid();
+     pw = getpwuid(*u);
+     name = pw->pw_name;
+ 
+-    *g = g_new(gid_t, *n=1);
+-    (*g)[0] = getgid();
+-
+-    while ((gr = getgrent())) {
+-        if (gr->gr_gid != (*g)[0]) { /* skip the main group */
+-            gchar **c;
+-            for (c = gr->gr_mem; *c; ++c)
+-                if (strcmp(*c, name) == 0) {
+-                    *g = g_renew(gid_t, *g, ++(*n)); /* save the group */
+-                    (*g)[*n-1] = gr->gr_gid;
+-                    break;
+-                }
++    gmain = getgid();
++
++    *n = getgroups(0, *g);
++    *g = g_new(gid_t, *n);
++    *n = getgroups(*n, *g);
++
++    /* Check if the effective group ID of the calling process is already
++       included in the returned list. Add it otherwise. */
++    maininc = 0;
++    for (i = 0; i < *n; i++) {
++        if ( (*g)[i] == gmain ) {
++            maininc = 1;
++            break;
+         }
+     }
+-    endgrent();
++    if (!maininc) {
++        *g = g_renew(gid_t, *g, ++(*n));
++        (*g)[*n-1] = gmain;
++    }
+ 
+     qsort(*g, *n, sizeof(gid_t), gid_cmp);
+ }
+-- 
+2.1.4
+

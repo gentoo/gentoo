@@ -33,6 +33,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-noopt.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+)
+
 src_prepare() {
 	[[ ${CHOST} == *-darwin* ]] || eapply "${FILESDIR}"/${P}-link.patch
 

@@ -6,19 +6,11 @@ Subject: [PATCH] libvirt-8.2.0-fix-paths-for-apparmor.patch
 
 Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
 ---
- src/security/apparmor/libvirt-qemu                          | 1 +
- src/security/apparmor/meson.build                           | 6 +++---
- ...t-aa-helper.in => usr.libexec.libvirt.virt-aa-helper.in} | 2 +-
- ...elper.local => usr.libexec.libvirt.virt-aa-helper.local} | 0
- 4 files changed, 5 insertions(+), 4 deletions(-)
- rename src/security/apparmor/{usr.lib.libvirt.virt-aa-helper.in => usr.libexec.libvirt.virt-aa-helper.in} (97%)
- rename src/security/apparmor/{usr.lib.libvirt.virt-aa-helper.local => usr.libexec.libvirt.virt-aa-helper.local} (100%)
-
 diff --git a/src/security/apparmor/libvirt-qemu b/src/security/apparmor/libvirt-qemu
-index 250ba4ea58..1599289932 100644
+index 44056b5f14..1f0db2cda2 100644
 --- a/src/security/apparmor/libvirt-qemu
 +++ b/src/security/apparmor/libvirt-qemu
-@@ -95,6 +95,7 @@
+@@ -96,6 +96,7 @@
    /usr/share/sgabios/** r,
    /usr/share/slof/** r,
    /usr/share/vgabios/** r,
@@ -27,7 +19,7 @@ index 250ba4ea58..1599289932 100644
    # pki for libvirt-vnc and libvirt-spice (LP: #901272, #1690140)
    /etc/pki/CA/ r,
 diff --git a/src/security/apparmor/meson.build b/src/security/apparmor/meson.build
-index 990f00b4f3..2a2235c89a 100644
+index 58b4024b85..c77b32665d 100644
 --- a/src/security/apparmor/meson.build
 +++ b/src/security/apparmor/meson.build
 @@ -1,5 +1,5 @@
@@ -37,7 +29,7 @@ index 990f00b4f3..2a2235c89a 100644
    'usr.sbin.libvirtd',
    'usr.sbin.virtqemud',
    'usr.sbin.virtxend',
-@@ -34,7 +34,7 @@ install_data(
+@@ -35,7 +35,7 @@ install_data(
  )
  
  install_data(
@@ -48,12 +40,21 @@ index 990f00b4f3..2a2235c89a 100644
 +  rename: 'usr.libexec.libvirt.virt-aa-helper',
  )
 diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in b/src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.in
-similarity index 97%
+similarity index 94%
 rename from src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
 rename to src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.in
-index ff1d46bebe..4f2679de7b 100644
+index ff1d46bebe..6beedde1b1 100644
 --- a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
 +++ b/src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.in
+@@ -41,7 +41,7 @@ profile virt-aa-helper @libexecdir@/virt-aa-helper {
+   deny /dev/mapper/* r,
+ 
+   @libexecdir@/virt-aa-helper mr,
+-  /{usr/,}sbin/apparmor_parser Ux,
++  /{usr/,}{s,}bin/apparmor_parser Ux,
+ 
+   @sysconfdir@/apparmor.d/libvirt/* r,
+   @sysconfdir@/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
 @@ -71,5 +71,5 @@ profile virt-aa-helper @libexecdir@/virt-aa-helper {
    /**.[iI][sS][oO] r,
    /**/disk{,.*} r,
@@ -65,6 +66,3 @@ diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local b/src/se
 similarity index 100%
 rename from src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
 rename to src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.local
--- 
-2.34.1
-

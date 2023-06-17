@@ -2,15 +2,19 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-	<email>common-lisp@gentoo.org</email>
-	<name>Gentoo Common Lisp Project</name>
+		<email>common-lisp@gentoo.org</email>
+		<name>Gentoo Common Lisp Project</name>
 	</maintainer>
 	<maintainer type="project">
-	<email>java@gentoo.org</email>
-	<name>Java</name>
+		<email>java@gentoo.org</email>
+		<name>Java</name>
 	</maintainer>
 	<longdescription>
 		Armed Bear Common Lisp (ABCL) is an implementation of ANSI Common
 		Lisp that runs in a Java virtual machine.
 	</longdescription>
+	<upstream>
+		<bugs-to>https://abcl.org/trac/report/1</bugs-to>
+		<remote-id type="github">armedbear/abcl</remote-id>
+	</upstream>
 </pkgmetadata>

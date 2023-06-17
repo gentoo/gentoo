@@ -1,0 +1,245 @@
+From a5d86afd43920d2401682ecd3ec6879a574845ea Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 19 Feb 2023 21:08:36 +0300
+Subject: [PATCH] Fix compilation on GCC-13
+
+GCC-13 changes internal cstdint includes, and now files that uses
+standart integer types should directly include cstdint header.
+
+See: https://gcc.gnu.org/gcc-13/porting_to.html#header-dep-changes
+See: https://github.com/machinezone/IXWebSocket/pull/443
+Bug: https://bugs.gentoo.org/865117
+Bug: https://bugs.gentoo.org/895440
+--- a/third_party/IXWebSocket/ixwebsocket/IXBench.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXBench.h
+@@ -6,7 +6,7 @@
+ #pragma once
+ 
+ #include <chrono>
+-#include <stdint.h>
++#include <cstdint>
+ #include <string>
+ 
+ namespace ix
+--- a/third_party/IXWebSocket/ixwebsocket/IXConnectionState.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXConnectionState.h
+@@ -7,9 +7,9 @@
+ #pragma once
+ 
+ #include <atomic>
++#include <cstdint>
+ #include <functional>
+ #include <memory>
+-#include <stdint.h>
+ #include <string>
+ 
+ namespace ix
+--- a/third_party/IXWebSocket/ixwebsocket/IXDNSLookup.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXDNSLookup.h
+@@ -12,6 +12,7 @@
+ 
+ #include "IXCancellationRequest.h"
+ #include <atomic>
++#include <cstdint>
+ #include <memory>
+ #include <mutex>
+ #include <set>
+--- a/third_party/IXWebSocket/ixwebsocket/IXHttp.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXHttp.h
+@@ -9,6 +9,7 @@
+ #include "IXProgressCallback.h"
+ #include "IXWebSocketHttpHeaders.h"
+ #include <atomic>
++#include <cstdint>
+ #include <tuple>
+ #include <unordered_map>
+ 
+--- a/third_party/IXWebSocket/ixwebsocket/IXHttpClient.cpp
++++ b/third_party/IXWebSocket/ixwebsocket/IXHttpClient.cpp
+@@ -12,6 +12,7 @@
+ #include "IXUserAgent.h"
+ #include "IXWebSocketHttpHeaders.h"
+ #include <assert.h>
++#include <cstdint>
+ #include <cstring>
+ #include <iomanip>
+ #include <random>
+--- a/third_party/IXWebSocket/ixwebsocket/IXHttpServer.cpp
++++ b/third_party/IXWebSocket/ixwebsocket/IXHttpServer.cpp
+@@ -10,6 +10,7 @@
+ #include "IXNetSystem.h"
+ #include "IXSocketConnect.h"
+ #include "IXUserAgent.h"
++#include <cstdint>
+ #include <cstring>
+ #include <fstream>
+ #include <sstream>
+--- a/third_party/IXWebSocket/ixwebsocket/IXNetSystem.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXNetSystem.h
+@@ -6,6 +6,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ #ifdef _WIN32
+ 
+ #ifndef WIN32_LEAN_AND_MEAN
+--- a/third_party/IXWebSocket/ixwebsocket/IXSelectInterrupt.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXSelectInterrupt.h
+@@ -6,8 +6,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+-#include <stdint.h>
+ #include <string>
+ 
+ namespace ix
+--- a/third_party/IXWebSocket/ixwebsocket/IXSelectInterruptEvent.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXSelectInterruptEvent.h
+@@ -5,8 +5,8 @@
+ #pragma once
+ 
+ #include "IXSelectInterrupt.h"
++#include <cstdint>
+ #include <mutex>
+-#include <stdint.h>
+ #include <string>
+ #include <deque>
+ #ifdef _WIN32
+--- a/third_party/IXWebSocket/ixwebsocket/IXSelectInterruptPipe.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXSelectInterruptPipe.h
+@@ -7,6 +7,7 @@
+ #pragma once
+ 
+ #include "IXSelectInterrupt.h"
++#include <cstdint>
+ #include <mutex>
+ #include <stdint.h>
+ #include <string>
+--- a/third_party/IXWebSocket/ixwebsocket/IXSocket.cpp
++++ b/third_party/IXWebSocket/ixwebsocket/IXSocket.cpp
+@@ -14,7 +14,6 @@
+ #include <array>
+ #include <assert.h>
+ #include <fcntl.h>
+-#include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- a/third_party/IXWebSocket/ixwebsocket/IXSocket.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXSocket.h
+@@ -7,6 +7,7 @@
+ #pragma once
+ 
+ #include <atomic>
++#include <cstdint>
+ #include <functional>
+ #include <memory>
+ #include <mutex>
+--- a/third_party/IXWebSocket/ixwebsocket/IXSocketMbedTLS.cpp
++++ b/third_party/IXWebSocket/ixwebsocket/IXSocketMbedTLS.cpp
+@@ -14,6 +14,7 @@
+ #include "IXNetSystem.h"
+ #include "IXSocket.h"
+ #include "IXSocketConnect.h"
++#include <cstdint>
+ #include <string.h>
+ 
+ #ifdef _WIN32
+--- a/third_party/IXWebSocket/ixwebsocket/IXUuid.cpp
++++ b/third_party/IXWebSocket/ixwebsocket/IXUuid.cpp
+@@ -16,6 +16,7 @@
+ 
+ #include "IXUuid.h"
+ 
++#include <cstdint>
+ #include <iomanip>
+ #include <random>
+ #include <sstream>
+--- a/third_party/IXWebSocket/ixwebsocket/IXWebSocket.cpp
++++ b/third_party/IXWebSocket/ixwebsocket/IXWebSocket.cpp
+@@ -13,6 +13,7 @@
+ #include "IXWebSocketHandshake.h"
+ #include <cassert>
+ #include <cmath>
++#include <cstdint>
+ 
+ 
+ namespace
+--- a/third_party/IXWebSocket/ixwebsocket/IXWebSocket.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXWebSocket.h
+@@ -21,6 +21,7 @@
+ #include "IXWebSocketTransport.h"
+ #include <atomic>
+ #include <condition_variable>
++#include <cstdint>
+ #include <mutex>
+ #include <string>
+ #include <thread>
+--- a/third_party/IXWebSocket/ixwebsocket/IXWebSocketPerMessageDeflate.cpp
++++ b/third_party/IXWebSocket/ixwebsocket/IXWebSocketPerMessageDeflate.cpp
+@@ -46,6 +46,8 @@
+  *
+  */
+ 
++#include <cstdint>
++
+ #include "IXWebSocketPerMessageDeflate.h"
+ 
+ #include "IXUniquePtr.h"
+--- a/third_party/IXWebSocket/ixwebsocket/IXWebSocketPerMessageDeflateCodec.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXWebSocketPerMessageDeflateCodec.h
+@@ -10,6 +10,7 @@
+ #include "zlib.h"
+ #endif
+ #include <array>
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ #include "IXWebSocketSendData.h"
+--- a/third_party/IXWebSocket/ixwebsocket/IXWebSocketPerMessageDeflateOptions.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXWebSocketPerMessageDeflateOptions.h
+@@ -6,6 +6,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace ix
+--- a/third_party/IXWebSocket/ixwebsocket/IXWebSocketSendData.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXWebSocketSendData.h
+@@ -6,6 +6,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ #include <iterator>
+--- a/third_party/IXWebSocket/ixwebsocket/IXWebSocketTransport.cpp
++++ b/third_party/IXWebSocket/ixwebsocket/IXWebSocketTransport.cpp
+@@ -45,7 +45,6 @@
+ #include <cstdarg>
+ #include <cstdlib>
+ #include <sstream>
+-#include <stdlib.h>
+ #include <string.h>
+ #include <string>
+ #include <thread>
+--- a/third_party/IXWebSocket/ixwebsocket/IXWebSocketTransport.h
++++ b/third_party/IXWebSocket/ixwebsocket/IXWebSocketTransport.h
+@@ -21,6 +21,7 @@
+ #include "IXWebSocketSendData.h"
+ #include "IXWebSocketSendInfo.h"
+ #include <atomic>
++#include <cstdint>
+ #include <functional>
+ #include <list>
+ #include <memory>
+-- 
+2.39.2
+

@@ -1,0 +1,40 @@
+From fbad64abe28a96f591a30e3a5d3189c10172a414 Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Tue, 30 Aug 2022 10:03:57 -0700
+Subject: [PATCH 1/2] rest_proxy_call_sync: bail out if no payload
+
+goa-daemon is crashing on suspend/resume with a traceback that
+points here: it calls rest_proxy_call_sync, that calls
+_rest_proxy_send_message, assumes it gets a `payload` back,
+and calls `finish_call` with it. However, it's not actually
+guaranteed that `_rest_proxy_send_message` will return a payload
+(a `GBytes`). There are three ways it can return `NULL` instead:
+if it's passed a wrong proxy or message, or - when built against
+libsoup3 - if there is an error sending the message (it passes
+through the return value of `soup_session_send_and_read`, and
+that's documented to be `NULL` on error).
+
+If `payload` comes back `NULL`, let's just return `FALSE`, like
+we do if there's a problem with the call or message.
+
+Signed-off-by: Adam Williamson <awilliam@redhat.com>
+---
+ rest/rest-proxy-call.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/rest/rest-proxy-call.c b/rest/rest-proxy-call.c
+index 851b397..07b8b49 100644
+--- a/rest/rest-proxy-call.c
++++ b/rest/rest-proxy-call.c
+@@ -1428,6 +1428,8 @@ rest_proxy_call_sync (RestProxyCall *call,
+     return FALSE;
+ 
+   payload = _rest_proxy_send_message (priv->proxy, message, priv->cancellable, error_out);
++  if (!payload)
++    return FALSE;
+ 
+   ret = finish_call (call, message, payload, error_out);
+ 
+-- 
+2.37.1
+

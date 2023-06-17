@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/897822
+
+Add missing fcntl.h.
+Change sys/time.h to time.h.
+
+--- a/finger/lprint.c
++++ b/finger/lprint.c
+@@ -42,13 +42,14 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
++#include <fcntl.h>
+ #include <paths.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/file.h>
+ #include <sys/stat.h>
+-#include <sys/time.h>
++#include <time.h>
+ #include "finger.h"
+ 
+ static void lprint(PERSON *pn);
+--- a/finger/sprint.c
++++ b/finger/sprint.c
+@@ -40,7 +40,7 @@
+ #endif /* not lint */
+ 
+ #include <sys/types.h>
+-#include <sys/time.h>
++#include <time.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

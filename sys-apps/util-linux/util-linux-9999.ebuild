@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
 	pam python-r1 multilib-minimal multiprocessing systemd
@@ -19,7 +19,7 @@ else
 	inherit verify-sig
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos"
 	fi
 
 	SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
@@ -59,7 +59,10 @@ RDEPEND="
 	udev? ( virtual/libudev:= )"
 BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
+	nls? (
+		app-text/po4a
+		sys-devel/gettext
+	)
 	test? ( sys-devel/bc )
 "
 DEPEND="
@@ -85,7 +88,7 @@ if [[ ${PV} == 9999 ]] ; then
 	# Required for man-page generation
 	BDEPEND+=" dev-ruby/asciidoctor"
 else
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-karelzak )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-karelzak-20230517 )"
 fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
@@ -137,6 +140,9 @@ src_prepare() {
 			# Subtest 'options-maximum-size-8192' fails
 			hardlink/options
 
+			# Fails in sandbox
+			lsns/ioctl_ns
+
 			lsfd/mkfds-symlink
 			lsfd/mkfds-rw-character-device
 		)
@@ -155,21 +161,6 @@ src_prepare() {
 	else
 		elibtoolize
 	fi
-}
-
-lfs_fallocate_test() {
-	# Make sure we can use fallocate with LFS, bug #300307
-	cat <<-EOF > "${T}"/fallocate.${ABI}.c
-		#define _GNU_SOURCE
-		#include <fcntl.h>
-		main() { return fallocate(0, 0, 0, 0); }
-	EOF
-
-	append-lfs-flags
-
-	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} "${T}"/fallocate.${ABI}.c -o /dev/null >/dev/null 2>&1 \
-		|| export ac_cv_func_fallocate=no
-	rm -f "${T}"/fallocate.${ABI}.c
 }
 
 python_configure() {
@@ -191,8 +182,6 @@ python_configure() {
 }
 
 multilib_src_configure() {
-	lfs_fallocate_test
-
 	# The scanf test in a run-time test which fails while cross-compiling.
 	# Blindly assume a POSIX setup since we require libmount, and libmount
 	# itself fails when the scanf test fails. bug #531856
@@ -213,6 +202,8 @@ multilib_src_configure() {
 
 	# configure args shared by python and non-python builds
 	local commonargs=(
+		--localstatedir="${EPREFIX}/var"
+		--runstatedir="${EPREFIX}/run"
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
 	)
 
@@ -232,6 +223,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with audit)
 		$(tc-has-tls || echo --disable-tls)
 		$(use_enable nls)
+		$(use_enable nls poman)
 		$(use_enable unicode widechar)
 		$(use_enable static-libs static)
 		$(use_with ncurses tinfo)
@@ -280,6 +272,7 @@ multilib_src_configure() {
 			--disable-asciidoc
 			--disable-bash-completion
 			--without-systemdsystemunitdir
+			--disable-poman
 
 			# build libraries
 			--enable-libuuid
@@ -295,6 +288,11 @@ multilib_src_configure() {
 	if multilib_is_native_abi && use python ; then
 		python_foreach_impl python_configure
 	fi
+}
+
+src_configure() {
+	append-lfs-flags
+	multilib-minimal_src_configure
 }
 
 python_compile() {

@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,11 @@ if [[ ${PV} == 9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://gitlab.com/openconnect/ocserv.git"
 else
-	SRC_URI="ftp://ftp.infradead.org/pub/ocserv/${P}.tar.xz"
+	inherit verify-sig
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/ocserv.asc"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ocserv )"
+	SRC_URI="https://www.infradead.org/ocserv/download/${P}.tar.xz
+		verify-sig? ( https://www.infradead.org/ocserv/download/${P}.tar.xz.sig )"
 	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 fi
 
@@ -21,7 +25,7 @@ SLOT="0"
 IUSE="geoip kerberos +lz4 otp pam radius +seccomp systemd tcpd test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
+BDEPEND+="
 	virtual/pkgconfig
 	test? (
 		net-libs/gnutls[tools(+)]

@@ -16,7 +16,7 @@ SRC_URI="https://github.com/Guake/guake/archive/refs/tags/${PV}.tar.gz -> ${P}.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -30,7 +30,7 @@ RDEPEND="
 	x11-libs/vte:2.91[introspection]"
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/setuptools_scm[${PYTHON_USEDEP}]
+		dev-python/setuptools-scm[${PYTHON_USEDEP}]
 		test? (
 			dev-python/pyfakefs[${PYTHON_USEDEP}]
 			dev-python/pytest-mock[${PYTHON_USEDEP}]

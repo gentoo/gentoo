@@ -25,7 +25,7 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
-	>=dev-python/importlib_metadata-3.6[${PYTHON_USEDEP}]
+	>=dev-python/importlib-metadata-3.6[${PYTHON_USEDEP}]
 	>=dev-python/keyring-15.1[${PYTHON_USEDEP}]
 	>=dev-python/pkginfo-1.8.1[${PYTHON_USEDEP}]
 	>=dev-python/readme_renderer-35.0[${PYTHON_USEDEP}]
@@ -36,7 +36,7 @@ RDEPEND="
 	>=dev-python/urllib3-1.26.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/build[${PYTHON_USEDEP}]
 		dev-python/jaraco-envs[${PYTHON_USEDEP}]

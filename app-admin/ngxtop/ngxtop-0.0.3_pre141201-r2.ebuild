@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -13,17 +13,15 @@ HOMEPAGE="https://github.com/lebinh/ngxtop"
 #SRC_URI="https://github.com/lebinh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="
 	dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.0.2-py3.patch )
 

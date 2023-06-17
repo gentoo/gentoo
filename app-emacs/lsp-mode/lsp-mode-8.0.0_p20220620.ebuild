@@ -14,10 +14,8 @@ SRC_URI="https://github.com/emacs-lsp/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar
 S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-emacs/dash-2.18.0
@@ -33,7 +31,6 @@ BDEPEND="
 		app-emacs/deferred
 		app-emacs/ecukes
 		app-emacs/el-mock
-		app-emacs/ert-runner
 		app-emacs/espuds
 		app-emacs/flycheck
 		app-emacs/undercover
@@ -46,13 +43,11 @@ ELISP_REMOVE="test/lsp-clangd-test.el test/lsp-common-test.el
 	test/lsp-integration-test.el"  # Remove failing tests
 SITEFILE="50${PN}-gentoo.el"
 
+elisp-enable-tests ert-runner "${S}" -t "!no-win" -t "!org"
+
 src_compile() {
 	elisp_src_compile
 	elisp-compile clients/*.el
-}
-
-src_test() {
-	ert-runner -L clients --reporter ert+duration -t "!no-win" -t "!org" || die
 }
 
 src_install() {

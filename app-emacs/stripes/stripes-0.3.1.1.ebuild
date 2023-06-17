@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.3
-
 inherit elisp
 
 DESCRIPTION="An Emacs mode that alternates the background color of lines"
@@ -15,6 +13,6 @@ S="${WORKDIR}"/${PN}-el-${PV}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha amd64 x86"
 
 SITEFILE="50${PN}-gentoo.el"

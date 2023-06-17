@@ -17,9 +17,6 @@
 	integration, special functions, signal and image processing, genetic
 	algorithms, ODE solvers, and others.
 	</longdescription>
-	<use>
-		<flag name="pythran">Use <pkg>dev-python/pythran</pkg> to accelerate runtime</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">scipy/scipy</remote-id>
 		<remote-id type="pypi">scipy</remote-id>

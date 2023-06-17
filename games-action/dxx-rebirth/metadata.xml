@@ -32,7 +32,6 @@
 		<flag name="sc55-musicpack">Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module</flag>
 		<flag name="sdl2">Use libSDL2, SDL2-mixer instead of libSDL-1* and SDL-mixer-1*</flag>
 		<flag name="tracker">Enable support for the PHP-based multiplayer game tracker</flag>
-		<flag name="valgrind">Include a Valgrind header in build in order to support Memcheck client requests</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">dxx-rebirth/dxx-rebirth</remote-id>

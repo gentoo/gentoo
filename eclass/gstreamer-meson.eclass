@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gstreamer-meson.eclass
@@ -41,7 +41,7 @@ esac
 # @DESCRIPTION:
 # Defines the plugins to be built.
 # May be set by an ebuild and contain more than one identifier, space
-# separated (only src_configure can handle mutiple plugins at this time).
+# separated (only src_configure can handle multiple plugins at this time).
 
 # @ECLASS_VARIABLE: GST_PLUGINS_NOAUTO
 # @DESCRIPTION:
@@ -87,6 +87,16 @@ opencv"
 	if grep -q "option('hls'" "${EMESON_SOURCE}"/meson_options.txt ; then
 		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
 hls"
+	fi
+
+	# See bug #907483
+	if grep -q "option('qt5'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+qt5"
+	fi
+	if grep -q "option('qt6'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+qt6"
 	fi
 }
 
@@ -143,7 +153,7 @@ gstreamer_system_library() {
 # Actual build directories of the plugins.
 # Most often the same as the configure switch name.
 # FIXME: Change into a bash array
-: ${GST_PLUGINS_BUILD_DIR:=${PN/gst-plugins-/}}
+: "${GST_PLUGINS_BUILD_DIR:=${PN/gst-plugins-/}}"
 
 # @ECLASS_VARIABLE: GST_TARBALL_SUFFIX
 # @DESCRIPTION:
@@ -151,7 +161,7 @@ gstreamer_system_library() {
 # tarballs as tar.bz2 or tar.xz. This eclass defaults to xz. This is
 # because the gstreamer mirrors are moving to only have xz tarballs for
 # new releases.
-: ${GST_TARBALL_SUFFIX:="xz"}
+: "${GST_TARBALL_SUFFIX:="xz"}"
 
 # Even though xz-utils are in @system, they must still be added to BDEPEND; see
 # https://archives.gentoo.org/gentoo-dev/msg_a0d4833eb314d1be5d5802a3b710e0a4.xml
@@ -163,13 +173,13 @@ fi
 # @DESCRIPTION:
 # Name of the module as hosted on gstreamer.freedesktop.org mirrors.
 # Leave unset if package name matches module name.
-: ${GST_ORG_MODULE:=${PN}}
+: "${GST_ORG_MODULE:=${PN}}"
 
 # @ECLASS_VARIABLE: GST_ORG_PVP
 # @INTERNAL
 # @DESCRIPTION:
 # Major and minor numbers of the version number.
-: ${GST_ORG_PVP:=$(ver_cut 1-2)}
+: "${GST_ORG_PVP:=$(ver_cut 1-2)}"
 
 
 DESCRIPTION="${BUILD_GST_PLUGINS} plugin for gstreamer"
@@ -209,8 +219,6 @@ if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
 	# Export multilib phases used for split builds.
 	multilib_src_install_all() { gstreamer_multilib_src_install_all; }
 else
-	local extra_deps=""
-
 	IUSE="nls test"
 	RESTRICT="!test? ( test )"
 	if [[ "${PN}" != "gstreamer" ]]; then

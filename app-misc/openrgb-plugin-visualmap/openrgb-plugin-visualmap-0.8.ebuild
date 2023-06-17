@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit qmake-utils
 
 SRC_URI="https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin/-/archive/release_${PV}/OpenRGBVisualMapPlugin-release_${PV}.tar.bz2"
 S="${WORKDIR}/OpenRGBVisualMapPlugin-release_${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Plugin for OpenRGB to create virtual devices out of multiple real ones"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin"

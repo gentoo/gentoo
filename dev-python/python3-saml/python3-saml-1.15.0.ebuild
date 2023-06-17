@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -25,7 +25,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 RDEPEND="
 	>=dev-python/isodate-0.6.1[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.9.0[${PYTHON_USEDEP}]
-	>=dev-python/python-xmlsec-1.3.9[${PYTHON_USEDEP}]
+	>=dev-python/xmlsec-1.3.9[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

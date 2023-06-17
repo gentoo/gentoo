@@ -22,12 +22,17 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+rtlsdr soapysdr test"
 
-DEPEND="rtlsdr? ( net-wireless/rtl-sdr:=
+DEPEND="dev-libs/openssl:=
+	rtlsdr? ( net-wireless/rtl-sdr:=
 			virtual/libusb:1 )
-	soapysdr? ( net-wireless/soapysdr:= )
-	dev-libs/openssl:="
+	soapysdr? ( net-wireless/soapysdr:= )"
 RDEPEND="${DEPEND}"
 RESTRICT="!test? ( test )"
+
+src_prepare() {
+	sed -i 's#data data.c#data STATIC data.c#' src/CMakeLists.txt || die
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

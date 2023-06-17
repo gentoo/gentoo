@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="freedist"
 SLOT="1"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~s390 x86 ~amd64-linux ~x86-linux ~sparc-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~s390 x86 ~amd64-linux ~x86-linux"
 
 PATCHES=(
 	"${WORKDIR}"/debian/patches/

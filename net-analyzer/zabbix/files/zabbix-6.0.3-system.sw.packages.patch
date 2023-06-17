@@ -4,13 +4,6 @@ Date: Mon, 21 Mar 2022 11:23:54 +0300
 Subject: [PATCH] Allow to use system.sw.packages on gentoo linux
 
 Signed-off-by: Alexey Shvetsov <alexxy@gentoo.org>
----
- src/go/plugins/system/sw/sw.go       | 1 +
- src/libs/zbxsysinfo/linux/software.c | 1 +
- 2 files changed, 2 insertions(+)
-
-diff --git a/src/go/plugins/system/sw/sw.go b/src/go/plugins/system/sw/sw.go
-index 0abaf05fb3b..1d8a94b5924 100644
 --- a/src/go/plugins/system/sw/sw.go
 +++ b/src/go/plugins/system/sw/sw.go
 @@ -165,6 +165,7 @@ func getManagers() []manager {
@@ -21,8 +14,6 @@ index 0abaf05fb3b..1d8a94b5924 100644
  	}
  }
  
-diff --git a/src/libs/zbxsysinfo/linux/software.c b/src/libs/zbxsysinfo/linux/software.c
-index 749deaa9258..3a6ee97ec4c 100644
 --- a/src/libs/zbxsysinfo/linux/software.c
 +++ b/src/libs/zbxsysinfo/linux/software.c
 @@ -177,6 +177,7 @@ static ZBX_PACKAGE_MANAGER	package_managers[] =

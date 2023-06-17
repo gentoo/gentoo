@@ -9,7 +9,7 @@ SRC_URI="https://github.com/grobian/carbon-c-relay/releases/download/v${PV}/${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x64-macos ~x64-solaris"
 IUSE="lz4 snappy zlib ssl pcre pcre2 +oniguruma"
 
 # ensure only one of pcre, pcre2 and oniguruma is set, or none (libc)

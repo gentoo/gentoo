@@ -16,10 +16,3 @@ start_stop_daemon_args="--user ${user} --group ${group}"
 depend() {
 	after net
 }
-
-start_pre() {
-	if [ ! -f "/etc/ceph/ceph.${user}.keyring" ]; then
-		eerror "keyring not found, exporter won't be able to connect to the cluster!"
-		exit 1
-	fi
-}

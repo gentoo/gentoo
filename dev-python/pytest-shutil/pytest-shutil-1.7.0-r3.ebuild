@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A goodie-bag of unix shell and environment tools for py.test"
 HOMEPAGE="
 	https://github.com/man-group/pytest-plugins/
 	https://pypi.org/project/pytest-shutil/
 "
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,11 +27,6 @@ RDEPEND="
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
 "
-# block pytest plugins that will be broken by the upgrade
-RDEPEND+="
-	!<dev-python/pytest-virtualenv-1.7.0-r1[python_targets_python2_7(-)]
-"
-
 BDEPEND="
 	${RDEPEND}
 	dev-python/setuptools-git[${PYTHON_USEDEP}]

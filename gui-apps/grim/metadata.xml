@@ -10,7 +10,7 @@
 	</use>
 	<upstream>
 		<remote-id type="sourcehut">~emersion/grim</remote-id>
-		<bugs-to>https://github.com/emersion/grim/issues</bugs-to>
-		<changelog>https://github.com/emersion/grim/releases</changelog>
+		<bugs-to>https://todo.sr.ht/~emersion/grim</bugs-to>
+		<changelog>https://git.sr.ht/~emersion/grim/refs</changelog>
 	</upstream>
 </pkgmetadata>

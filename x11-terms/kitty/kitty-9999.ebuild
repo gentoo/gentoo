@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit edo optfeature multiprocessing python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -16,14 +16,14 @@ else
 		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/kovidgoyal.gpg"
-	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Fast, feature-rich, GPU-based terminal"
 HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 
 LICENSE="GPL-3 ZLIB"
-LICENSE+=" Apache-2.0 BSD MIT" # go
+LICENSE+=" Apache-2.0 BSD MIT MPL-2.0" # go
 SLOT="0"
 IUSE="+X test wayland"
 REQUIRED_USE="
@@ -49,7 +49,8 @@ RDEPEND="
 	~x11-terms/kitty-shell-integration-${PV}
 	~x11-terms/kitty-terminfo-${PV}
 	X? ( x11-libs/libX11 )
-	wayland? ( dev-libs/wayland )"
+	wayland? ( dev-libs/wayland )
+	!sci-mathematics/kissat"
 DEPEND="
 	${RDEPEND}
 	X? (
@@ -116,7 +117,8 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	local -x GOFLAGS="-buildmode=pie -p=$(makeopts_jobs) -v -x"
+	local -x GOFLAGS="-p=$(makeopts_jobs) -v -x"
+	use ppc64 && [[ $(tc-endian) == big ]] || GOFLAGS+=" -buildmode=pie"
 	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
 
 	local conf=(

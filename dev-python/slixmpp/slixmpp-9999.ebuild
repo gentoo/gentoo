@@ -17,12 +17,12 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://lab.louiz.org/poezio/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	inherit pypi
+	KEYWORDS="~amd64 ~riscv"
 fi
 
 DEPEND="
-	net-dns/libidn
+	net-dns/libidn:=
 "
 RDEPEND="
 	dev-python/aiodns[${PYTHON_USEDEP}]

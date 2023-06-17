@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit git-r3 linux-info linux-mod
+inherit git-r3 linux-mod-r1
 
 DESCRIPTION="A linux kernel module that enables calls to ACPI"
 HOMEPAGE="https://github.com/nix-community/acpi_call"
@@ -14,18 +14,17 @@ SLOT="0"
 KEYWORDS=""
 IUSE="examples"
 
-BUILD_TARGETS="default"
 CONFIG_CHECK="ACPI"
-MODULE_NAMES="acpi_call(misc:${S})"
 
 src_compile() {
-	BUILD_PARAMS="KDIR=${KV_OUT_DIR} M=${S}"
+	local modargs=( KDIR=${KV_OUT_DIR} )
+	local modlist=( acpi_call=misc )
 
-	linux-mod_src_compile
+	linux-mod-r1_src_compile
 }
 
 src_install() {
-	linux-mod_src_install
+	linux-mod-r1_src_install
 
 	if use examples; then
 		insinto /usr/share/acpi_call

@@ -14,7 +14,6 @@
 		<flag name="evdev">Enable evdev input support</flag>
 		<flag name="log">Increase logging output</flag>
 		<flag name="mgba">Enables GBA controllers emulation using libmgba.</flag>
-		<flag name="vulkan">Enable support for Vulkan-based video backend.</flag>
 	</use>
 	<longdescription lang="en">
 		Dolphin is a Gamecube and Wii emulator. Most games run perfectly or with

@@ -6,11 +6,11 @@
     <name>Gentoo Biology Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">BioPandas</remote-id>
+    <remote-id type="pypi">biopandas</remote-id>
     <maintainer status="unknown">
       <email>mail@sebastianraschka.com</email>
       <name>Sebastian Raschka</name>
     </maintainer>
-    <remote-id type="github">rasbt/biopandas</remote-id>
+    <remote-id type="github">BioPandas/biopandas</remote-id>
   </upstream>
 </pkgmetadata>

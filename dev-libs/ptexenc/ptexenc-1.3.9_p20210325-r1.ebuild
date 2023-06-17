@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit libtool
 
 DESCRIPTION="Library for Japanese pTeX providing a better way of handling character encodings"
 HOMEPAGE="http://tutimura.ath.cx/ptexlive/?ptexenc"
-SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
+SRC_URI="https://dev.gentoo.org/~sam/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
 S="${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}"
 
 LICENSE="BSD"

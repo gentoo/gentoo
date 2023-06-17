@@ -10,4 +10,7 @@
 		<pkg>sys-cluster/ceph</pkg>. Until its version 4.10.0 it used to part
 		of <pkg>net-libs/xrootd</pkg> itself.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">xrootd/xrootd-ceph</remote-id>
+	</upstream>
 </pkgmetadata>

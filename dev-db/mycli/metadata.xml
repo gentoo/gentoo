@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">dbcli/mycli</remote-id>
+		<remote-id type="pypi">mycli</remote-id>
 	</upstream>
 	<use>
 		<flag name="ssh">Add support for connection over SSH tunnel</flag>

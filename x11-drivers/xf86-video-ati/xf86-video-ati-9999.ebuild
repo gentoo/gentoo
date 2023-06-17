@@ -1,15 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 XORG_DRI=always
+XORG_TARBALL_SUFFIX="xz"
 inherit linux-info xorg-3
 
 if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha ~amd64 ~ia64 ~loong ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="ATI video driver"
@@ -17,7 +18,9 @@ HOMEPAGE="https://www.x.org/wiki/ati/"
 
 IUSE="udev"
 
-RDEPEND=">=x11-libs/libdrm-2.4.89[video_cards_radeon]
+RDEPEND="
+	media-libs/mesa
+	>=x11-libs/libdrm-2.4.89[video_cards_radeon]
 	>=x11-libs/libpciaccess-0.8.0
 	x11-base/xorg-server[-minimal]
 	udev? ( virtual/libudev:= )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -26,7 +26,7 @@ fi
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit prometheus-exporter
-ssl systemd +threads tools vim-syntax zlib lua 51degrees wurfl"
+ssl systemd +threads tools zlib lua 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	lua? ( ${LUA_REQUIRED_USE} )
 	?? ( slz zlib )"
@@ -70,11 +70,16 @@ pkg_setup() {
 src_compile() {
 	local -a args=(
 		V=1
-		TARGET=linux-glibc
 		# Switching to PCRE2 by default, bug 838013
 		PCRE=
 		PCRE_JIT=
 	)
+
+	if use elibc_musl; then
+		args+=( TARGET=linux-musl )
+	else
+		args+=( TARGET=linux-glibc )
+	fi
 
 	# TODO: PCRE2_WIDTH?
 	args+=( $(haproxy_use threads THREAD) )
@@ -156,10 +161,8 @@ src_install() {
 		dodoc doc/seamless_reload.txt
 	fi
 
-	if use vim-syntax ; then
-		insinto /usr/share/vim/vimfiles/syntax
-		doins admin/syntax-highlight/haproxy.vim
-	fi
+	insinto /usr/share/vim/vimfiles/syntax
+	doins admin/syntax-highlight/haproxy.vim
 }
 
 pkg_postinst() {

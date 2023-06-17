@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-08-13)
@@ -7,13 +7,11 @@
 # Some packages are not fully ported yet, but preemptively added so we won't
 # have to revisit later.
 dev-lang/rust llvm_targets_LoongArch
-dev-libs/keystone llvm_targets_LoongArch
 dev-ml/llvm-ocaml llvm_targets_LoongArch
 sys-devel/clang llvm_targets_LoongArch
 sys-devel/llvm llvm_targets_LoongArch
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Force-enable experimental-loong on packages; we're loong.
-<dev-libs/libffi-3.4.3 experimental-loong
 <sys-libs/glibc-2.36 experimental-loong
 sys-libs/libseccomp experimental-loong

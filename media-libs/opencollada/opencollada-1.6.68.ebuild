@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-null-conversion.patch"
 	"${FILESDIR}/${P}-cmake-fixes.patch"
 	"${FILESDIR}/${PN}-1.6.63-pcre-fix.patch"
+	"${FILESDIR}/${PN}-1.6.68-gcc13.patch"
+	"${FILESDIR}/${PN}-1.6.68-werror.patch"
 )
 
 src_prepare() {

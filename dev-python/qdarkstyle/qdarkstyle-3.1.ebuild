@@ -5,14 +5,13 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 optfeature
+PYPI_NO_NORMALIZE=1
+PYPI_PN="QDarkStyle"
 
-MY_PN="QDarkStyle"
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="A dark style sheet for QtWidgets application"
 HOMEPAGE="https://github.com/ColinDuquesnoy/QDarkStyleSheet"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"

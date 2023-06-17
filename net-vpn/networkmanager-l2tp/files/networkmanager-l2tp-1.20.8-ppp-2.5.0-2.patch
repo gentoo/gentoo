@@ -1,0 +1,190 @@
+https://bugs.gentoo.org/904843
+https://github.com/nm-l2tp/NetworkManager-l2tp/commit/36a427c316a8ccd3168606f6e7fd6c8ae2b9bebf
+
+From 36a427c316a8ccd3168606f6e7fd6c8ae2b9bebf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Eivind=20N=C3=A6ss?= <eivnaes@yahoo.com>
+Date: Fri, 3 Mar 2023 05:22:13 +0000
+Subject: [PATCH] Adding support for compiling against pppd-2.5.0 (current
+ master)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
+---
+ Makefile.am                                   |  5 +-
+ src/nm-l2tp-pppd-compat.h                     | 93 +++++++++++++++++++
+ src/nm-l2tp-pppd-plugin.c                     |  7 +-
+ ...{nm-ppp-status.h => nm-l2tp-pppd-status.h} |  0
+ src/nm-l2tp-service.c                         |  2 +-
+ 5 files changed, 100 insertions(+), 7 deletions(-)
+ create mode 100644 src/nm-l2tp-pppd-compat.h
+ rename src/{nm-ppp-status.h => nm-l2tp-pppd-status.h} (100%)
+
+diff --git a/Makefile.am b/Makefile.am
+index 8201ca7..1feb9be 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -99,7 +99,7 @@ src_nm_l2tp_service_SOURCES = \
+ 	shared/nm-l2tp-crypto-nss.c \
+ 	shared/utils.h \
+ 	shared/utils.c \
+-	src/nm-ppp-status.h \
++	src/nm-l2tp-pppd-status.h \
+ 	src/nm-l2tp-service.h \
+ 	src/nm-l2tp-service.c
+ src_nm_l2tp_service_CPPFLAGS = $(src_cppflags) $(NSS_CFLAGS) $(OPENSSL_CFLAGS)
+@@ -118,7 +118,8 @@ pppd_plugin_LTLIBRARIES = src/nm-l2tp-pppd-plugin.la
+ src_nm_l2tp_pppd_plugin_la_SOURCES = \
+ 	$(shared_sources) \
+ 	src/nm-l2tp-pppd-plugin.c \
+-	src/nm-ppp-status.h
++	src/nm-l2tp-pppd-compat.h \
++	src/nm-l2tp-pppd-status.h
+ src_nm_l2tp_pppd_plugin_la_CPPFLAGS = $(src_cppflags)
+ src_nm_l2tp_pppd_plugin_la_LDFLAGS = \
+ 	-module -avoid-version
+diff --git a/src/nm-l2tp-pppd-compat.h b/src/nm-l2tp-pppd-compat.h
+new file mode 100644
+index 0000000..80e2891
+--- /dev/null
++++ b/src/nm-l2tp-pppd-compat.h
+@@ -0,0 +1,93 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/* -*- Mode: C; tab-width: 4; indent-tabs-mode: t; c-basic-offset: 4 -*- */
++/* nm-sstp-service - sstp (and other pppd) integration with NetworkManager
++ *
++ * Copyright (C) 2023 Eivind Naess, eivnaes@yahoo.com
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ */
++
++#ifndef __NM_L2TP_PPPD_COMPAT_H__
++#define __NM_L2TP_PPPD_COMPAT_H__
++
++// PPP < 2.5.0 defines and exports VERSION which overlaps with current package VERSION define.
++//   this silly macro magic is to work around that.
++
++#define INET6	1
++
++#undef VERSION
++#include <pppd/pppd.h>
++#ifndef PPPD_VERSION
++#define PPPD_VERSION VERSION
++#endif
++
++#include <pppd/fsm.h>
++#include <pppd/ccp.h>
++#include <pppd/eui64.h>
++#include <pppd/ipcp.h>
++#include <pppd/ipv6cp.h>
++#include <pppd/eap.h>
++#include <pppd/upap.h>
++
++#ifdef HAVE_PPPD_CHAP_H
++ #include <pppd/chap.h>
++#endif
++
++#ifdef HAVE_PPPD_CHAP_NEW_H
++ #include <pppd/chap-new.h>
++#endif
++
++#ifdef HAVE_PPPD_CHAP_MS_H
++ #include <pppd/chap_ms.h>
++#endif
++
++#ifndef PPP_PROTO_CHAP
++#define PPP_PROTO_CHAP              0xc223
++#endif 
++
++#ifndef PPP_PROTO_EAP
++#define PPP_PROTO_EAP               0xc227
++#endif
++
++#if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
++
++static inline bool debug_on(void)
++{
++    return debug;
++}
++
++static inline const char *ppp_ipparam(void)
++{
++    return ipparam;
++}
++
++static inline int ppp_ifunit(void)
++{
++    return ifunit;
++}
++
++static inline const char *ppp_ifname(void)
++{
++    return ifname;
++}
++
++static inline int ppp_get_mtu(int idx)
++{
++    return netif_get_mtu(idx);
++}
++
++#endif // #if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
++#endif // #ifdef __NM_L2TP_PPPD_COMPAT_H__
+diff --git a/src/nm-l2tp-pppd-plugin.c b/src/nm-l2tp-pppd-plugin.c
+index dd752a1..f1d588e 100644
+--- a/src/nm-l2tp-pppd-plugin.c
++++ b/src/nm-l2tp-pppd-plugin.c
+@@ -9,8 +9,6 @@
+ #include <config.h>
+ #define ___CONFIG_H__
+ 
+-#include "nm-default.h"
+-
+ #include <string.h>
+ #include <stdlib.h>
+ #include <sys/socket.h>
+@@ -18,10 +16,11 @@
+ #include <arpa/inet.h>
+ #include <dlfcn.h>
+ 
+-#include "nm-l2tp-service.h"
+-#include "nm-ppp-status.h"
++#include "nm-l2tp-pppd-status.h"
+ #include "nm-l2tp-pppd-compat.h"
+ 
++#include "nm-default.h"
++#include "nm-l2tp-service.h"
+ #include "nm-utils/nm-shared-utils.h"
+ #include "nm-utils/nm-vpn-plugin-macros.h"
+ 
+diff --git a/src/nm-ppp-status.h b/src/nm-l2tp-pppd-status.h
+similarity index 100%
+rename from src/nm-ppp-status.h
+rename to src/nm-l2tp-pppd-status.h
+diff --git a/src/nm-l2tp-service.c b/src/nm-l2tp-service.c
+index 55f9542..629923c 100644
+--- a/src/nm-l2tp-service.c
++++ b/src/nm-l2tp-service.c
+@@ -36,7 +36,7 @@
+ #include <arpa/inet.h>
+ #include <netdb.h>
+ 
+-#include "nm-ppp-status.h"
++#include "nm-l2tp-pppd-status.h"
+ #include "nm-l2tp-pppd-service-dbus.h"
+ #include "nm-utils/nm-shared-utils.h"
+ #include "nm-utils/nm-secret-utils.h"
+

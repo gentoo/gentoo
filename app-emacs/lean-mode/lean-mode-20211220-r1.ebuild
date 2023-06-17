@@ -4,7 +4,6 @@
 EAPI=8
 
 [[ ${PV} == 20211220 ]] && COMMIT=a4205749d20a09871f0951c34f919d4ee5fbdb55
-NEED_EMACS=24.3
 
 inherit elisp
 

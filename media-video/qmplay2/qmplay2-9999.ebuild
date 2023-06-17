@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/zaps166/QMPlay2/releases/download/${PV}/QMPlay2-src-${PV}.tar.xz"
 	S="${WORKDIR}/QMPlay2-src-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="LGPL-3"
@@ -47,7 +47,7 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	pipewire? ( media-video/pipewire )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sid? ( media-libs/libsidplayfp )
 	shaders? ( >=media-libs/shaderc-2020.1 )
 	taglib? ( media-libs/taglib	)

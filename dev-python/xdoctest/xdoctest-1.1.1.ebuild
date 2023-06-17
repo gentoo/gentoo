@@ -35,7 +35,7 @@ BDEPEND="
 distutils_enable_tests pytest
 #distutils_enable_sphinx docs/source \
 #	dev-python/autoapi \
-#	dev-python/sphinx_rtd_theme
+#	dev-python/sphinx-rtd-theme
 
 EPYTEST_DESELECT=(
 	tests/test_pytest_cli.py::test_simple_pytest_import_error_cli

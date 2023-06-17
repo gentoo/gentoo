@@ -1,0 +1,43 @@
+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/commit/2d05f9e480cbc591a6b888dfd49d9f7ef1bef25f
+Reference: https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/issues/52
+Reference: https://bugs.gentoo.org/851702#c37
+This unblocks building blender with HIP cycles support
+======================================================================
+From 2d05f9e480cbc591a6b888dfd49d9f7ef1bef25f Mon Sep 17 00:00:00 2001
+From: Jacob Lambert <jacob.lambert@amd.com>
+Date: Thu, 12 Jan 2023 08:45:38 -0800
+Subject: [PATCH] Remove -h option from comgr-objdump
+
+The -h option (short for -headers) is a legal objdump option.
+However registering this as an LLVM option by Comgr prevents other
+LLVM tools or instances from registering a -h option in the same
+process, which is an issue because -h is a common short form for
+-help.
+
+A long term solution will be to libraryize llvm-obj dump, and
+call it in Comgr via an API instead of re-implementation, which
+will eliminate the need for Comgr to register any LLVM options for
+objdump.
+
+Change-Id: Ieb1981aeb1826422647fd301c4827e2bfb370560
+---
+ lib/comgr/src/comgr-objdump.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/comgr/src/comgr-objdump.cpp b/lib/comgr/src/comgr-objdump.cpp
+index 6d20a3c..ead69fe 100644
+--- a/src/comgr-objdump.cpp
++++ b/src/comgr-objdump.cpp
+@@ -175,9 +175,9 @@ cl::opt<bool> SectionHeaders("section-headers",
+ static cl::alias SectionHeadersShort("headers",
+                                      cl::desc("Alias for --section-headers"),
+                                      cl::aliasopt(SectionHeaders));
+-static cl::alias SectionHeadersShorter("h",
+-                                       cl::desc("Alias for --section-headers"),
+-                                       cl::aliasopt(SectionHeaders));
++// The following option has been removed to avoid conflicts with
++// other llvm tools/instances also attempting to register a -h option
++//   static cl::alias SectionHeadersShorter("h", ...)
+ 
+ cl::list<std::string>
+     FilterSections("section",

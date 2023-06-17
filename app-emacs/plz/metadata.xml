@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    plz is an HTTP library for Emacs. It uses curl as a backend, which avoids
+    some of the issues with using Emacs's built-in url library. It supports
+    both synchronous and asynchronous requests. Its API is intended to be
+    simple, natural, and expressive. Its code is intended to be simple and
+    well-organized. Every feature is tested against httpbin.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/alphapapa/plz.el/issues/</bugs-to>
+    <remote-id type="github">alphapapa/plz.el</remote-id>
+  </upstream>
+</pkgmetadata>

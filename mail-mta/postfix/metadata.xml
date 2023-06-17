@@ -3,15 +3,11 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>eras@gentoo.org</email>
-		<name>
-			Eray Aslan
-		</name>
+		<name>Eray Aslan</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
-		<name>
-			William Hubbs
-		</name>
+		<name>William Hubbs</name>
 	</maintainer>
 	<use>
 		<flag name="dovecot-sasl">Enable <pkg>net-mail/dovecot</pkg> protocol

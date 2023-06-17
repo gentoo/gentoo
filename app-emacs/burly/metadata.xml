@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package provides tools to save and restore frame and window
+    configurations in Emacs, including buffers that may not be live anymore. In
+    this way, it’s like a lightweight "workspace" manager, allowing you to
+    easily restore one or more frames, including their windows, the windows'
+    layout, and their buffers.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/alphapapa/burly.el/issues/</bugs-to>
+    <remote-id type="github">alphapapa/burly.el</remote-id>
+  </upstream>
+</pkgmetadata>

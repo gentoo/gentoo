@@ -15,6 +15,7 @@
 		tries to be very similar to the interface of the emerge tool.
 	</longdescription>
 	<upstream>
+		<remote-id type="gentoo">proj/g-octave</remote-id>
 		<remote-id type="github">rafaelmartins/g-octave</remote-id>
 	</upstream>
 </pkgmetadata>

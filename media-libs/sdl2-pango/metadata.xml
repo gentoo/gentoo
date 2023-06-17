@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>rndxelement@protonmail.com</email>
+		<name>Philipp Rösner</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	The sdl2-pango package is a software library that provides
+	a way to render text using the SDL2 library and the Pango
+	text layout and rendering engine.
+	SDL2 is a popular cross-platform library for multimedia and
+	game development, while Pango is a library for layout and
+	rendering of internationalized text. By combining these
+	two libraries, the sdl2-pango package allows developers to
+	easily add high-quality text rendering capabilities to their
+	SDL2-based applications.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">markuskimius/SDL2_Pango</remote-id>
+	</upstream>
+</pkgmetadata>

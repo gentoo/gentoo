@@ -1,0 +1,116 @@
+From 376fe8c3ef6b16d63995f76a194e2c1d788b28b1 Mon Sep 17 00:00:00 2001
+From: Lukas Spies <Lukas@photoqt.org>
+Date: Sun, 28 May 2023 20:23:32 -0500
+Subject: [PATCH 1/2] [exiv2] fix compilation with Exiv2 v0.28.0
+
+---
+ cplusplus/filefoldermodel/filefoldermodel.cpp | 4 ++++
+ cplusplus/scripts/handlingfacetags.cpp        | 4 ++++
+ cplusplus/scripts/metadata.cpp                | 4 ++++
+ 3 files changed, 12 insertions(+)
+
+diff --git a/cplusplus/filefoldermodel/filefoldermodel.cpp b/cplusplus/filefoldermodel/filefoldermodel.cpp
+index b6258735..56b120b7 100644
+--- a/cplusplus/filefoldermodel/filefoldermodel.cpp
++++ b/cplusplus/filefoldermodel/filefoldermodel.cpp
+@@ -560,7 +560,11 @@ void PQFileFolderModel::advancedSortMainView() {
+                         } catch (Exiv2::Error& e) {
+                             // An error code of 11 means unknown file type
+                             // Since we always try to read any file's meta data, this happens a lot
++#if EXIV2_TEST_VERSION(0, 28, 0)
++                            if(e.code() != Exiv2::ErrorCode::kerUnsupportedImageType)
++#else
+                             if(e.code() != 11)
++#endif
+                                 LOG << CURDATE << "PQMetaData::updateMetadaya(): ERROR reading exiv data (caught exception): " << e.what() << NL;
+                             else
+                                 DBG << CURDATE << "PQMetaData::updateMetadaya(): ERROR reading exiv data (caught exception): " << e.what() << NL;
+diff --git a/cplusplus/scripts/handlingfacetags.cpp b/cplusplus/scripts/handlingfacetags.cpp
+index d90ece73..562cf200 100644
+--- a/cplusplus/scripts/handlingfacetags.cpp
++++ b/cplusplus/scripts/handlingfacetags.cpp
+@@ -57,7 +57,11 @@ QVariantList PQHandlingFaceTags::getFaceTags(QString filename) {
+         image->readMetadata();
+     } catch (Exiv2::Error& e) {
+         // An error code of 11 means image not supported. This is much more reliable than, e.g., checking a file ending
++#if EXIV2_TEST_VERSION(0, 28, 0)
++        if(e.code() != Exiv2::ErrorCode::kerUnsupportedImageType)
++#else
+         if(e.code() != 11)
++#endif
+             LOG << CURDATE << "PQHandlingFaceTags::getFaceTags() - ERROR reading metadata (caught exception): " << e << NL;
+         else
+             DBG << CURDATE << "PQHandlingFaceTags::getFaceTags() - ERROR reading metadata (caught exception): " << e << NL;
+diff --git a/cplusplus/scripts/metadata.cpp b/cplusplus/scripts/metadata.cpp
+index 87e23474..a7d3e076 100644
+--- a/cplusplus/scripts/metadata.cpp
++++ b/cplusplus/scripts/metadata.cpp
+@@ -120,7 +120,11 @@ void PQMetaData::updateMetadata(QString path) {
+     } catch (Exiv2::Error& e) {
+         // An error code of 11 means unknown file type
+         // Since we always try to read any file's meta data, this happens a lot
++#if EXIV2_TEST_VERSION(0, 28, 0)
++        if(e.code() != Exiv2::ErrorCode::kerUnsupportedImageType)
++#else
+         if(e.code() != 11)
++#endif
+             LOG << CURDATE << "PQMetaData::updateMetadaya(): ERROR reading exiv data (caught exception): " << e.what() << NL;
+         else
+             DBG << CURDATE << "PQMetaData::updateMetadaya(): ERROR reading exiv data (caught exception): " << e.what() << NL;
+-- 
+2.40.1
+
+
+From 6190de9e47c358cf54748fa2a3593108831aa768 Mon Sep 17 00:00:00 2001
+From: Lukas Spies <Lukas@photoqt.org>
+Date: Sun, 28 May 2023 20:27:08 -0500
+Subject: [PATCH 2/2] [exiv2] switch to proper exvi2 errorcode
+
+---
+ cplusplus/filefoldermodel/filefoldermodel.cpp | 2 +-
+ cplusplus/scripts/handlingfacetags.cpp        | 2 +-
+ cplusplus/scripts/metadata.cpp                | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cplusplus/filefoldermodel/filefoldermodel.cpp b/cplusplus/filefoldermodel/filefoldermodel.cpp
+index 56b120b7..c8cf199a 100644
+--- a/cplusplus/filefoldermodel/filefoldermodel.cpp
++++ b/cplusplus/filefoldermodel/filefoldermodel.cpp
+@@ -561,7 +561,7 @@ void PQFileFolderModel::advancedSortMainView() {
+                             // An error code of 11 means unknown file type
+                             // Since we always try to read any file's meta data, this happens a lot
+ #if EXIV2_TEST_VERSION(0, 28, 0)
+-                            if(e.code() != Exiv2::ErrorCode::kerUnsupportedImageType)
++                            if(e.code() != Exiv2::ErrorCode::kerFileContainsUnknownImageType)
+ #else
+                             if(e.code() != 11)
+ #endif
+diff --git a/cplusplus/scripts/handlingfacetags.cpp b/cplusplus/scripts/handlingfacetags.cpp
+index 562cf200..94a7bca6 100644
+--- a/cplusplus/scripts/handlingfacetags.cpp
++++ b/cplusplus/scripts/handlingfacetags.cpp
+@@ -58,7 +58,7 @@ QVariantList PQHandlingFaceTags::getFaceTags(QString filename) {
+     } catch (Exiv2::Error& e) {
+         // An error code of 11 means image not supported. This is much more reliable than, e.g., checking a file ending
+ #if EXIV2_TEST_VERSION(0, 28, 0)
+-        if(e.code() != Exiv2::ErrorCode::kerUnsupportedImageType)
++        if(e.code() != Exiv2::ErrorCode::kerFileContainsUnknownImageType)
+ #else
+         if(e.code() != 11)
+ #endif
+diff --git a/cplusplus/scripts/metadata.cpp b/cplusplus/scripts/metadata.cpp
+index a7d3e076..fabc2d74 100644
+--- a/cplusplus/scripts/metadata.cpp
++++ b/cplusplus/scripts/metadata.cpp
+@@ -121,7 +121,7 @@ void PQMetaData::updateMetadata(QString path) {
+         // An error code of 11 means unknown file type
+         // Since we always try to read any file's meta data, this happens a lot
+ #if EXIV2_TEST_VERSION(0, 28, 0)
+-        if(e.code() != Exiv2::ErrorCode::kerUnsupportedImageType)
++        if(e.code() != Exiv2::ErrorCode::kerFileContainsUnknownImageType)
+ #else
+         if(e.code() != 11)
+ #endif
+-- 
+2.40.1
+

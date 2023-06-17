@@ -5,14 +5,12 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Classes implementing the SARIF 2.1.0 object model"
 HOMEPAGE="
 	https://pypi.org/project/sarif-om/
 	https://github.com/microsoft/sarif-python-om/"
-SRC_URI="
-	mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

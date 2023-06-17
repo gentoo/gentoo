@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake flag-o-matic python-any-r1 toolchain-funcs
 
@@ -36,6 +36,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20200923-arm_no_crypto.patch"
+	"${FILESDIR}/${PN}-20211102.0-r2-gcc-13.patch"
 	"${FILESDIR}/${PN}-20210324.1-glibc-2.34.patch"
 )
 

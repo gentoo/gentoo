@@ -3,4 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">brown-uk/dict_uk</remote-id>
+	</upstream>
 </pkgmetadata>

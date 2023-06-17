@@ -11,7 +11,10 @@
 	</maintainer>
 	<longdescription>
 		ProtonMail bridge has been Open Source since April 2020. Note that this package
-		is CLI-only for now, as we have run into some problems with Qt5 vendoring
+		is CLI-only for now, as we have run into some problems with Qt vendoring
 		(see https://github.com/ProtonMail/proton-bridge/issues/16).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ProtonMail/proton-bridge</remote-id>
+	</upstream>
 </pkgmetadata>

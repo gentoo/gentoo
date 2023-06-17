@@ -16,7 +16,7 @@ else
 	SRC_URI="
 		https://api.github.com/repos/streambinder/vpnc/tarball/fdd0de7 -> ${P}.tar.gz
 		https://dev.gentoo.org/~soap/distfiles/${PN}-0.5.3-docs.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 fi
 
 LICENSE="GPL-3"

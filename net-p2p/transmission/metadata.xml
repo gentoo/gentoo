@@ -5,11 +5,16 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">transmission/transmission</remote-id>
 	</upstream>
 	<use>
 		<flag name="cli">Build command-line client</flag>
+		<flag name="debug">Enable assertions</flag>
 		<flag name="lightweight">Optimize transmission for low-resource systems (smaller cache size, prefer unencrypted peer connections, etc.)</flag>
 		<flag name="mbedtls">Use mbed TLS instead of OpenSSL</flag>
 	</use>

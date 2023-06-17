@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ DESCRIPTION="vim plugin: Clojure syntax highlighting, filetype and indent settin
 HOMEPAGE="https://github.com/vim-scripts/VimClojure"
 SRC_URI="https://github.com/vim-scripts/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="BSD"
 SLOT="0"
 

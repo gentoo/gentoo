@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,12 @@ inherit opam
 DESCRIPTION="Core libraries for opam"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
 SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/dev-ml/opam/opam-2.1.0-dose3-6.patch.xz"
 S="${WORKDIR}/opam-${PV}"
 OPAM_INSTALLER="${S}/opam-installer"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	dev-ml/ocamlgraph:=
@@ -26,8 +25,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ml/cppo"
-
-PATCHES=( "${WORKDIR}"/opam-2.1.0-dose3-6.patch )
 
 src_prepare() {
 	default

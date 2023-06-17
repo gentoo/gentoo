@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,10 +8,10 @@ inherit autotools
 MY_P="${PN}-$(ver_cut 1-2)$(ver_cut 4-5)"
 
 DESCRIPTION="Lightweight ASCII art demo using media-libs/aalib"
-HOMEPAGE="http://aa-project.sourceforge.net/"
+HOMEPAGE="https://aa-project.sourceforge.net/"
 SRC_URI="mirror://sourceforge/aa-project/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="mikmod"

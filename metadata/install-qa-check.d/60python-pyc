@@ -27,7 +27,8 @@ python_pyc_check() {
 		local impl=${prog%/*}
 		impl=${impl##*/}
 
-		[[ -d "${ED}"/usr/lib/${impl}/site-packages ]] || continue
+		# NB: using ${impl}* to catch pypy3.* for pypy3
+		[[ -d "${ED}"/usr/lib/${impl}*/site-packages ]] || continue
 
 		einfo "Verifying compiled files for ${impl}"
 		local kind pyc py

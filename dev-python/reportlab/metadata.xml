@@ -33,7 +33,6 @@
   </longdescription>
   <upstream>
     <bugs-to>mailto:reportlab-users@lists2.reportlab.com</bugs-to>
-    <doc lang="en">https://www.reportlab.com/dev/docs/</doc>
     <remote-id type="pypi">reportlab</remote-id>
   </upstream>
 </pkgmetadata>

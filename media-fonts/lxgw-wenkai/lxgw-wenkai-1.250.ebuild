@@ -14,6 +14,6 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="amd64 ~loong"
 
 FONT_SUFFIX="ttf"

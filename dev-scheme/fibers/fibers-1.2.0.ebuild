@@ -14,7 +14,6 @@ SRC_URI="https://github.com/wingo/${PN}/archive/v${PV}.tar.gz
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
 
 RDEPEND=">=dev-scheme/guile-2.1.7:="
 DEPEND="${RDEPEND}"
@@ -32,8 +31,16 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-Werror
+}
+
 src_install() {
 	default
 
-	find "${D}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }

@@ -10,7 +10,7 @@ fi
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='xml(+),threads(+)'
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ HOMEPAGE="https://streamlink.github.io/"
 
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="https://github.com/streamlink/${PN}/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="BSD-2 Apache-2.0"
@@ -39,7 +39,8 @@ DEPEND="
 		>=dev-python/versioningit-2.0.0[${PYTHON_USEDEP}]
 	')
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	media-video/ffmpeg
 "
 BDEPEND="
@@ -51,6 +52,7 @@ BDEPEND="
 			dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 			dev-python/requests-mock[${PYTHON_USEDEP}]
 		)
-	')"
+	')
+"
 
 distutils_enable_tests pytest

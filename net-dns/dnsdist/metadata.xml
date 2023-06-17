@@ -17,4 +17,7 @@
 		<flag name="dnstap">Enable support for dnstap</flag>
 		<flag name="lmdb">Enable support for lmdb</flag>
 	</use>	
+	<upstream>
+		<remote-id type="github">PowerDNS/pdns</remote-id>
+	</upstream>
 </pkgmetadata>

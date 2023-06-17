@@ -1,0 +1,26 @@
+From 39d7c21c4173eb0f121b1bbff439d9cf43331a00 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Hubert=20Figui=C3=A8re?= <hub@figuiere.net>
+Date: Wed, 11 Jan 2023 18:55:36 -0500
+Subject: [PATCH] waf: python 3.11 removed the 'U' open mode
+
+Python3 deprecated it already by making this the default behaviour.
+---
+ trunk/wscript | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/trunk/wscript b/trunk/wscript
+index 947fd3d1..3f1f5cf3 100644
+--- a/wscript
++++ b/wscript
+@@ -537,7 +537,7 @@ def sub_file(task):
+     dst_fname = task.outputs[0].abspath()
+     lst = task.generator.sub_list
+ 
+-    with open(src_fname, 'rU') as f:
++    with open(src_fname, 'r') as f:
+         txt = f.read()
+     for (key, val) in lst:
+         re_pat = re.compile(key, re.M)
+-- 
+2.39.2
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,13 +33,14 @@ CDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
 	>=media-libs/libsndfile-1.0.18
 	alsa? ( media-libs/alsa-lib )
 	archive? ( app-arch/libarchive )
-	!archive? ( >=dev-libs/libtar-1.2.11-r3 )
+	!archive? ( dev-libs/libtar )
 	doc? ( dev-texlive/texlive-fontutils )
 	jack? ( virtual/jack )
 	ladspa? ( media-libs/liblrdf )
@@ -47,7 +48,7 @@ CDEPEND="
 	osc? ( media-libs/liblo )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 "
 DEPEND="
 	${CDEPEND}
@@ -55,7 +56,7 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
-DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
+DOCS=( AUTHORS ChangeLog DEVELOPERS README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.0-gnuinstalldirs.patch"

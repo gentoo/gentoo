@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EGO_PN=github.com/git-lfs/git-lfs
 inherit go-module
 
 DESCRIPTION="Command line extension and specification for managing large files with git"
-HOMEPAGE="https://git-lfs.github.com/"
+HOMEPAGE="https://git-lfs.com/"
 
 if [[ "${PV}" = 9999* ]]; then
 	EGIT_REPO_URI="https://${EGO_PN}"
@@ -20,7 +20,7 @@ LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
 IUSE="doc test"
 
-BDEPEND="doc? ( || ( app-text/ronn-ng app-text/ronn ) )"
+BDEPEND="doc? ( app-text/ronn-ng )"
 RDEPEND="dev-vcs/git"
 
 RESTRICT+=" !test? ( test )"
@@ -64,7 +64,7 @@ src_test() {
 pkg_postinst () {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog ""
-		elog "Run \'git lfs install\' once for each user account manually."
+		elog "Run 'git lfs install' once for each user account manually."
 		elog "For more details see https://bugs.gentoo.org/show_bug.cgi?id=733372."
 	fi
 }

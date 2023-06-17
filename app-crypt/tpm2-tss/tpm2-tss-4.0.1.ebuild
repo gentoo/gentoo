@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar
 
 LICENSE="BSD-2"
 SLOT="0/4"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="doc +fapi +openssl mbedtls +policy static-libs test"
 
 RESTRICT="!test? ( test )"
@@ -22,6 +22,7 @@ REQUIRED_USE="^^ ( mbedtls openssl )
 
 RDEPEND="acct-group/tss
 	acct-user/tss
+	sys-apps/util-linux:=[${MULTILIB_USEDEP}]
 	fapi? ( dev-libs/json-c:=[${MULTILIB_USEDEP}]
 		>=net-misc/curl-7.80.0[${MULTILIB_USEDEP}] )
 	mbedtls? ( net-libs/mbedtls:=[${MULTILIB_USEDEP}] )
@@ -49,8 +50,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eautoreconf
 	default
+	eautoreconf
 }
 
 multilib_src_configure() {

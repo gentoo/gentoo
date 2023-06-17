@@ -47,7 +47,7 @@ PATCHES=(
 distutils_enable_tests pytest
 # TODO: Package sphinx-click
 # distutils_enable_sphinx docs \
-# 	dev-python/sphinx_rtd_theme \
+# 	dev-python/sphinx-rtd-theme \
 # 	dev-python/recommonmark
 
 python_test() {

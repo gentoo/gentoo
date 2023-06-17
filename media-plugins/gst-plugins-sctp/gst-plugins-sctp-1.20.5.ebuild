@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer-meson
 
 DESCRIPTION="SCTP plugins for GStreamer"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:1.0[${MULTILIB_USEDEP}]

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/ruby/rdoc/"
 SRC_URI="https://github.com/ruby/rdoc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 Ruby-BSD )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 SLOT="0"
 IUSE="doc"
 
@@ -71,7 +71,7 @@ all_ruby_compile() {
 }
 
 each_ruby_compile() {
-	${RUBY} -S rake generate || die
+	LANG=C.UTF-8 ${RUBY} -S rake generate || die
 }
 
 all_ruby_install() {

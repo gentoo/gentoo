@@ -6,8 +6,8 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime"
-HOMEPAGE="https://github.com/JNRowe-retired/bfm"
-SRC_URI="https://github.com/JNRowe-retired/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/JNRowe/bfm"
+SRC_URI="https://github.com/JNRowe/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

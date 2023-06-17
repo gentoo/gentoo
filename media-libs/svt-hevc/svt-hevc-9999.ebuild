@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ else
 	S="${WORKDIR}/SVT-HEVC-${PV}"
 fi
 
-LICENSE="AOM BSD-2"
+LICENSE="BSD-2"
 SLOT="0"
 
 BDEPEND="dev-lang/nasm"

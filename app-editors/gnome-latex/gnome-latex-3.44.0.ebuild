@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/swilmet/gnome-latex"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="+introspection +latexmk rubber"
 
 DEPEND="
@@ -45,6 +45,5 @@ BDEPEND="
 src_configure() {
 	gnome2_src_configure \
 		$(use_enable introspection) \
-		--enable-dconf_migration \
-		--enable-vala=no
+		--enable-dconf_migration
 }

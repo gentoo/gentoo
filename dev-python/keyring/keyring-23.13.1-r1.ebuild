@@ -23,14 +23,14 @@ RDEPEND="
 	dev-python/jaraco-classes[${PYTHON_USEDEP}]
 	>=dev-python/jeepney-0.4.2[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-4.11.4[${PYTHON_USEDEP}]
+		>=dev-python/importlib-metadata-4.11.4[${PYTHON_USEDEP}]
 	' 3.8 3.9 3.10 3.11)
 	$(python_gen_cond_dep '
-		dev-python/importlib_resources
+		dev-python/importlib-resources
 	' 3.8)
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

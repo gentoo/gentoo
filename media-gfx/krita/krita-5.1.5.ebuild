@@ -11,7 +11,8 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~asturm/distfiles/${P}-exiv2-0.28.patch.xz"
 	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
@@ -85,7 +86,10 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-4.3.1-tests-optional.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}-4.3.1-tests-optional.patch"
+	"${WORKDIR}/${P}-exiv2-0.28.patch" # bug 906472
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup

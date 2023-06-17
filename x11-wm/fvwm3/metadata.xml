@@ -20,6 +20,7 @@
 		<flag name="stroke">Mouse Gesture support</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">fvwmorg/fvwm3</remote-id>
 		<bugs-to>https://github.com/fvwmorg/fvwm3/issues</bugs-to>
 		<changelog>https://raw.githubusercontent.com/fvwmorg/fvwm3/master/CHANGELOG.md</changelog>
 	</upstream>

@@ -12,6 +12,9 @@
   Master of Orion games, but is not a clone or remake of that series
   or any other game.
   </longdescription>
+  <use>
+    <flag name="client">Build game client</flag>
+  </use>
   <upstream>
     <remote-id type="github">freeorion/freeorion</remote-id>
   </upstream>

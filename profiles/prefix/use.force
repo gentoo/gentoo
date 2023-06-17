@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# unforce the GNU/Linux ELIBC, KERNEL, and USERLAND
+# unforce the GNU/Linux ELIBC and KERNEL
 # flags that come from the base profile
 -elibc_glibc
 -kernel_linux

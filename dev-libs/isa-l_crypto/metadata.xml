@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>
+	ISA-L_crypto is a collection of optimized low-level functions targeting storage applications. ISA-L_crypto includes:
+	* Multi-buffer hashes - run multiple hash jobs together on one core for much better throughput than single-buffer versions.
+		* SHA1, SHA256, SHA512, MD5, SM3
+	* Multi-hash - Get the performance of multi-buffer hashing with a single-buffer interface.
+	* Multi-hash + murmur - run both together.
+	* AES - block ciphers
+		* XTS, GCM, CBC
+	* Rolling hash - Hash input in a window which moves through the input
+	</longdescription>
+	<upstream>
+		<remote-id type="github">intel/isa-l_crypto</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit java-pkg-2
+
 DESCRIPTION="A language with a focus on simplicity, safety and correctness"
 HOMEPAGE="https://flang.dev/
 	https://github.com/tokiwa-software/fuzion/"
@@ -11,7 +13,7 @@ SRC_URI="https://github.com/tokiwa-software/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -26,7 +28,6 @@ src_compile () {
 }
 
 src_test() {
-	unset _JAVA_OPTIONS  # Setting _JAVA_OPTIONS causes testsuite failures.
 	emake -j1 run_tests_parallel
 }
 

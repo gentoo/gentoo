@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,8 @@ SRC_URI="https://download.libguestfs.org/nbdkit/$(ver_cut 1-2)-stable/${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="curl ext2 nbd gnutls libguestfs libssh libvirt lzma selinux torrent zlib zstd"
+KEYWORDS="amd64 ~sparc ~x86"
+IUSE="curl ext2 nbd gnutls libguestfs libssh libvirt lzma selinux torrent valgrind zlib zstd"
 
 RDEPEND="
 	virtual/libiconv
@@ -30,7 +30,10 @@ RDEPEND="
 	ext2? ( sys-fs/e2fsprogs )
 	torrent? ( net-libs/libtorrent-rasterbar:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+"
 BDEPEND="
 	dev-lang/perl
 "
@@ -70,9 +73,9 @@ src_configure() {
 		$(use_with libguestfs)
 		$(use_with ext2)
 		$(use_enable torrent)
+		$(use_enable valgrind)
 
 		--disable-linuxdisk # Not in Gentoo.
-		--disable-valgrind  # Seems to not do anything?
 		--disable-libfuzzer # Should not be used normally according to upstream
 
 		# TODO(arsen): Bindings left out

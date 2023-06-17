@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Reference-LAPACK/lapack/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 # TODO: static-libs 64bit-index
 IUSE="lapacke deprecated doc eselect-ldso test"
 RESTRICT="!test? ( test )"
@@ -44,6 +44,9 @@ src_configure() {
 		-DBUILD_DEPRECATED=$(usex deprecated)
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_TESTING=$(usex test)
+
+		# Breaks cross, will default to OFF in next release.
+		-DTEST_FORTRAN_COMPILER=OFF
 	)
 
 	cmake_src_configure
@@ -71,7 +74,7 @@ pkg_postinst() {
 
 	local me=reference libdir=$(get_libdir)
 	# check eselect-blas
-	eselect blas add ${libdir} "${EROOT}"/usr/${libdir}/blas/${me} ${me}
+	eselect blas add ${libdir} "${EPREFIX}"/usr/${libdir}/blas/${me} ${me}
 	local current_blas=$(eselect blas show ${libdir} | cut -d' ' -f2)
 	if [[ ${current_blas} == ${me} || -z ${current_blas} ]]; then
 		eselect blas set ${libdir} ${me}
@@ -83,7 +86,7 @@ pkg_postinst() {
 	fi
 
 	# check eselect-lapack
-	eselect lapack add ${libdir} "${EROOT}"/usr/${libdir}/lapack/${me} ${me}
+	eselect lapack add ${libdir} "${EPREFIX}"/usr/${libdir}/lapack/${me} ${me}
 	local current_lapack=$(eselect lapack show ${libdir} | cut -d' ' -f2)
 	if [[ ${current_lapack} == ${me} || -z ${current_lapack} ]]; then
 		eselect lapack set ${libdir} ${me}

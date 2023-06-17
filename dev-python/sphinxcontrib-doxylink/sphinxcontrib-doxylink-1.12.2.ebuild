@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -39,7 +39,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 distutils_enable_sphinx doc \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 
 python_test() {
 	distutils_write_namespace sphinxcontrib

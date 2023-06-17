@@ -23,6 +23,5 @@
 		<flag name="shaders">Compile Vulkan shaders using <pkg>media-libs/shaderc</pkg></flag>
 		<flag name="videofilters">Build with VideoFilters module</flag>
 		<flag name="visualizations">Build with Visualizations module</flag>
-		<flag name="vulkan">Build with Vulkan support</flag>
 	</use>
 </pkgmetadata>

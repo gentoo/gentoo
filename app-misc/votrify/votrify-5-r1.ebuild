@@ -8,9 +8,9 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit python-single-r1
 
 DESCRIPTION="Tool for community verification of Gentoo elections"
-HOMEPAGE="https://github.com/mgorny/votrify/"
+HOMEPAGE="https://github.com/projg2/votrify/"
 SRC_URI="
-	https://github.com/mgorny/votrify/archive/v${PV}.tar.gz
+	https://github.com/projg2/votrify/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

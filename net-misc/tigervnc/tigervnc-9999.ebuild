@@ -6,7 +6,8 @@ EAPI=8
 CMAKE_IN_SOURCE_BUILD=1
 inherit autotools cmake flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
-XSERVER_VERSION="21.1.1"
+XSERVER_VERSION="21.1.8"
+XSERVER_PATCH_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="https://tigervnc.org"
@@ -53,7 +54,6 @@ COMMON_DEPEND="
 		x11-libs/libXfont2
 		x11-libs/libXtst
 		x11-libs/pixman
-		x11-libs/xtrans
 		x11-apps/xauth
 		x11-apps/xinit
 		x11-apps/xkbcomp
@@ -71,13 +71,14 @@ COMMON_DEPEND="
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	java? ( virtual/jre:1.8 )
+	java? ( >=virtual/jre-1.8:* )
 	server? (
 		dev-lang/perl
 		sys-process/psmisc
 	)
 "
 DEPEND="${COMMON_DEPEND}
+	java? ( >=virtual/jdk-1.8:* )
 	drm? ( x11-libs/libdrm )
 	server? (
 		media-fonts/font-util
@@ -86,6 +87,7 @@ DEPEND="${COMMON_DEPEND}
 		x11-libs/libXi
 		x11-libs/libxkbfile
 		x11-libs/libXrender
+		x11-libs/xtrans
 		x11-misc/util-macros
 		opengl? ( media-libs/mesa )
 	)
@@ -101,7 +103,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.0-xsession-path.patch
 	"${FILESDIR}"/${PN}-1.12.80-disable-server-and-pam.patch
 )
-[[ ${PV} == *9999 ]] && PATCHES+=( "${FILESDIR}"/${PN}-1.13.80-depend-po-files.patch )
 
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then
@@ -121,7 +122,7 @@ src_prepare() {
 
 	if use server; then
 		cd unix/xserver || die
-		eapply ../xserver${XSERVER_VERSION}.patch
+		eapply ../xserver${XSERVER_PATCH_VERSION}.patch
 		eautoreconf
 		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
 		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die

@@ -3,11 +3,12 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 # Note: greenlet is built-in in pypy
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Lightweight in-process concurrent programming"
 HOMEPAGE="
@@ -15,18 +16,24 @@ HOMEPAGE="
 	https://github.com/python-greenlet/greenlet/
 	https://pypi.org/project/greenlet/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 -hppa -ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 -hppa -ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+
+BDEPEND="
+	test? (
+		dev-python/objgraph[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_sphinx docs
 distutils_enable_tests unittest
 
 src_prepare() {
 	# patch cflag manipulations out
-	sed -i -e 's:global_flags[.]append.*:pass:' setup.py || die
+	sed -i -e 's:global_compile_args[.]append.*:pass:' setup.py || die
 	distutils-r1_src_prepare
 }
 

@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9,10,11} )
+# Port to meson once https://gitlab.freedesktop.org/spice/spice/-/issues/75 is fixed
 inherit autotools python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
@@ -12,7 +13,7 @@ SRC_URI="https://www.spice-space.org/download/releases/spice-server/${P}.tar.bz2
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
 IUSE="gstreamer lz4 sasl smartcard static-libs test"
 
 RESTRICT="!test? ( test )"

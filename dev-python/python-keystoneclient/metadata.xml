@@ -15,6 +15,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">openstack/python-keystoneclient</remote-id>
     <remote-id type="pypi">python-keystoneclient</remote-id>
   </upstream>
 </pkgmetadata>

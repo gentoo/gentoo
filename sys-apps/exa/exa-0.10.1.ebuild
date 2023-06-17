@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -86,7 +86,7 @@ IUSE="+git man"
 
 DEPEND="git? ( dev-libs/libgit2:= )"
 RDEPEND="${DEPEND}"
-BDEPEND+="man? ( >=app-text/pandoc-2.11.3 )"
+BDEPEND+="man? ( virtual/pandoc )"
 
 QA_FLAGS_IGNORED="/usr/bin/exa"
 

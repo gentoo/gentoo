@@ -9,7 +9,7 @@ SRC_URI="https://github.com/nfc-tools/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc pcsc-lite readline usb"
 
 RDEPEND="

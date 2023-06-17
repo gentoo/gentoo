@@ -3,16 +3,16 @@
 
 EAPI=7
 
+DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{9..11} )
+PYPI_NO_NORMALIZE=1
+PYPI_PN="M2Crypto"
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r1 toolchain-funcs pypi
 
-MY_PN="M2Crypto"
 DESCRIPTION="A Python crypto and SSL toolkit"
 HOMEPAGE="https://gitlab.com/m2crypto/m2crypto https://pypi.org/project/M2Crypto/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"

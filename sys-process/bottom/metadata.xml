@@ -17,6 +17,8 @@
 		<remote-id type="github">ClementTsang/bottom</remote-id>
 	</upstream>
 	<use>
-		<flag name='battery'>Include support for laptop battery information.</flag>
+		<flag name='battery'>Include support for laptop battery information</flag>
+		<flag name='gpu'>Include support for GPU temperature and memory usage information</flag>
+		<flag name='zfs'>Include support for ZFS ARC memory usage information</flag>
 	</use>
 </pkgmetadata>

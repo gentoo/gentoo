@@ -1,0 +1,24 @@
+https://github.com/StanfordLegion/legion/pull/1461
+
+From 6165e09b8d990bd5c6baa7b7a487b6757d89d3e3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 18 Apr 2023 06:54:38 +0100
+Subject: [PATCH] Fix build with GCC 13
+
+GCC 13 (as usual for new compiler releases) shuffles around some internal includes so some
+are no longer transitively included.
+
+See https://gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Bug: https://bugs.gentoo.org/895564
+--- a/runtime/realm/utils.h
++++ b/runtime/realm/utils.h
+@@ -27,6 +27,7 @@
+ #include <vector>
+ #include <map>
+ #include <cassert>
++#include <cstdint>
+ #include <sstream>
+ 
+ namespace Realm {
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+			<email>Matt.Jolly@footclan.ninja</email>
+			<name>Matt Jolly</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+			<email>proxy-maint@gentoo.org</email>
+			<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+			<flag name="lzip">Enable <pkg>app-arch/lzip</pkg> decompression support via <pkg>app-arch/lzlib</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">rpm-software-management/drpm</remote-id>
+	</upstream>
+</pkgmetadata>

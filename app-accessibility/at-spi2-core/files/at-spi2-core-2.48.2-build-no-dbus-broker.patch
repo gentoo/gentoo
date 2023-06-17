@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/906235
+https://gitlab.gnome.org/GNOME/at-spi2-core/-/commit/ada254318a0a35e6f9ae3c080963353ead2a8966
+
+From ada254318a0a35e6f9ae3c080963353ead2a8966 Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Thu, 11 May 2023 15:42:06 -0500
+Subject: [PATCH] Fix the build when dbus-broker is not found
+
+--- a/bus/meson.build
++++ b/bus/meson.build
+@@ -46,6 +46,7 @@ launcher_args = [
+              '-DDATADIR="@0@"'.format(atspi_datadir),
+            ]
+ 
++dbus_daemon_arg = ''
+ if get_option('dbus_daemon') != 'default'
+   dbus_daemon_arg = '-DDBUS_DAEMON="@0@"'.format(get_option('dbus_daemon'))
+ else
+@@ -59,11 +60,10 @@ else
+                              required: false)
+   if dbus_daemon.found()
+     dbus_daemon_arg = '-DDBUS_DAEMON="@0@"'.format(dbus_daemon.full_path())
+-  else
+-    dbus_daemon_arg = ''
+   endif
+ endif
+ 
++dbus_broker_arg = ''
+ needs_systemd = false
+ if get_option('dbus_broker') != 'default'
+   dbus_broker_arg = '-DDBUS_BROKER="@0@"'.format(get_option('dbus_broker'))
+-- 
+GitLab

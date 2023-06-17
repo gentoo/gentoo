@@ -11,7 +11,7 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
 	jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
@@ -39,9 +39,12 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
+# Note: This version is incompatible with dev-libs/libfmt-10
+# Bug: https://bugs.gentoo.org/906074
 RDEPEND="
 	acct-user/mpd
 	dev-libs/libfmt:=
+	<dev-libs/libfmt-10
 	dev-libs/libpcre2
 	media-libs/libogg
 	sys-libs/liburing:=

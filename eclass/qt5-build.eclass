@@ -11,14 +11,16 @@
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
 
-if [[ ${CATEGORY} != dev-qt ]]; then
-	die "${ECLASS} is only to be used for building Qt 5"
-fi
-
 case ${EAPI} in
 	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_QT5_BUILD_ECLASS} ]]; then
+_QT5_BUILD_ECLASS=1
+
+[[ ${CATEGORY} != dev-qt ]] &&
+	die "${ECLASS} is only to be used for building Qt 5"
 
 # @ECLASS_VARIABLE: QT5_BUILD_TYPE
 # @DESCRIPTION:
@@ -49,7 +51,7 @@ readonly QT5_BUILD_TYPE
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
-: ${QT5_MODULE:=${PN}}
+: "${QT5_MODULE:=${PN}}"
 
 # @ECLASS_VARIABLE: QT5_PV
 # @DESCRIPTION:
@@ -98,7 +100,7 @@ readonly QT5_PV
 # For proper description see virtualx.eclass man page.
 # Here we redefine default value to be manual, if your package needs virtualx
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
-: ${VIRTUALX_REQUIRED:=manual}
+: "${VIRTUALX_REQUIRED:=manual}"
 
 inherit estack flag-o-matic toolchain-funcs virtualx
 
@@ -124,11 +126,11 @@ fi
 
 if [[ ${QT5_MODULE} == qtbase ]]; then
 	case ${PV} in
-		5.15.7)
-			_QT5_GENTOOPATCHSET_REV=2
+		5.15.8)
+			_QT5_GENTOOPATCHSET_REV=3
 			;;
 		*)
-			_QT5_GENTOOPATCHSET_REV=3
+			_QT5_GENTOOPATCHSET_REV=4
 			;;
 	esac
 	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
@@ -138,7 +140,7 @@ fi
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
-: ${QT5_BUILD_DIR:=${S}_build}
+: "${QT5_BUILD_DIR:=${S}_build}"
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
 
@@ -171,8 +173,6 @@ fi
 
 ######  Phase functions  ######
 
-EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test pkg_postinst pkg_postrm
-
 # @FUNCTION: qt5-build_src_prepare
 # @DESCRIPTION:
 # Prepares the environment and patches the sources if necessary.
@@ -189,20 +189,9 @@ qt5-build_src_prepare() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_symlink_tools_to_build_dir
 
-		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
-
 		# Avoid unnecessary qmake recompilations
 		sed -i -e "/Creating qmake/i if [ '!' -e \"\$outpath/bin/qmake\" ]; then" \
 			-e '/echo "Done."/a fi' configure || die "sed failed (skip qmake bootstrap)"
-
-		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
-		sed -i -e "/outpath\/qmake\".*\"*\$MAKE\"*)/ s|)| \
-			${MAKEOPTS} ${EXTRA_EMAKE} 'CC=$(tc-getCC)' 'CXX=$(tc-getCXX)' \
-			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&|" \
-			-e 's/\(setBootstrapVariable\s\+\|EXTRA_C\(XX\)\?FLAGS=.*\)QMAKE_C\(XX\)\?FLAGS_\(DEBUG\|RELEASE\).*/:/' \
-			configure || die "sed failed (respect env for qmake build)"
-		sed -i -e '/^CPPFLAGS\s*=/ s/-g //' \
-			qmake/Makefile.unix || die "sed failed (CPPFLAGS for qmake build)"
 
 		# Respect CXX in bsymbolic_functions, fvisibility, precomp, and a few other tests
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
@@ -213,6 +202,19 @@ qt5-build_src_prepare() {
 	fi
 
 	[[ -n ${QT5_KDEPATCHSET_REV} ]] && eapply "${WORKDIR}/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}"
+
+	if [[ ${QT5_MODULE} == qtbase ]]; then
+		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
+
+		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
+		sed -i -e "/outpath\/qmake\".*\"*\$MAKE\"*)/ s|)| \
+			${MAKEOPTS} ${EXTRA_EMAKE} 'CC=$(tc-getCC)' 'CXX=$(tc-getCXX)' \
+			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&|" \
+			-e 's/\(setBootstrapVariable\s\+\|EXTRA_C\(XX\)\?FLAGS=.*\)QMAKE_C\(XX\)\?FLAGS_\(DEBUG\|RELEASE\).*/:/' \
+			configure || die "sed failed (respect env for qmake build)"
+		sed -i -e '/^CPPFLAGS\s*=/ s/-g //' \
+			qmake/Makefile.unix || die "sed failed (CPPFLAGS for qmake build)"
+	fi
 
 	default
 }
@@ -971,3 +973,7 @@ qt5_regenerate_global_configs() {
 		ewarn "${qmodule_pri} or ${qmodule_pri_orig} does not exist or is not a regular file"
 	fi
 }
+
+fi
+
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test pkg_postinst pkg_postrm

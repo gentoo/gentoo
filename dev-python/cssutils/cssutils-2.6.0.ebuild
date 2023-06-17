@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -19,14 +19,14 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc x86"
 
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/cssselect[${PYTHON_USEDEP}]
 		>=dev-python/jaraco-test-5.1[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/importlib_resources[${PYTHON_USEDEP}]
+			dev-python/importlib-resources[${PYTHON_USEDEP}]
 		' 3.8)
 	)
 "

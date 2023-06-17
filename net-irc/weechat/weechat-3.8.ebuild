@@ -17,7 +17,7 @@ else
 		verify-sig? ( https://weechat.org/files/src/${P}.tar.xz.asc )"
 	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/weechat.org.asc
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-weechat )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
@@ -32,9 +32,10 @@ PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spe
 # dev-lang/php eclass support is lacking, php plugins don't work. bug #705702
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr it ja pl ru"
-IUSE="doc man nls selinux test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
+IUSE="doc enchant man nls selinux test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 
 REQUIRED_USE="
+	enchant? ( spell )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( nls )
@@ -61,7 +62,10 @@ RDEPEND="
 		)
 	)
 	selinux? ( sec-policy/selinux-irc )
-	spell? ( app-text/aspell )
+	spell? (
+		enchant? ( app-text/enchant:* )
+		!enchant? ( app-text/aspell )
+	)
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 "
 
@@ -136,6 +140,7 @@ src_configure() {
 		-DENABLE_BUFLIST=$(usex buflist)
 		-DENABLE_CHARSET=$(usex charset)
 		-DENABLE_DOC=$(usex doc)
+		-DENABLE_ENCHANT=$(usex enchant)
 		-DENABLE_EXEC=$(usex exec)
 		-DENABLE_FIFO=$(usex fifo)
 		-DENABLE_FSET=$(usex fset)

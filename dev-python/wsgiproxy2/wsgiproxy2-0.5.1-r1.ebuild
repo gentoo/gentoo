@@ -4,18 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="WSGIProxy2"
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_PN="WSGIProxy2"
 DESCRIPTION="HTTP proxying tools for WSGI apps"
 HOMEPAGE="
 	https://github.com/gawel/WSGIProxy2/
 	https://pypi.org/project/WSGIProxy2/
 "
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit flag-o-matic meson-multilib python-any-r1
 
@@ -37,7 +37,7 @@ HOMEPAGE="https://github.com/doitsujin/dxvk/"
 
 LICENSE="ZLIB Apache-2.0 MIT"
 SLOT="0"
-IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 debug +dxgi"
+IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 +dxgi +strip"
 REQUIRED_USE="
 	|| ( d3d9 d3d10 d3d11 dxgi )
 	d3d10? ( d3d11 )
@@ -94,10 +94,14 @@ src_configure() {
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP
-			filter-flags '-fstack-clash-protection' #758914
-			filter-flags '-fstack-protector*' #870136
 			filter-flags '-fuse-ld=*'
 			filter-flags '-mfunction-return=thunk*' #878849
+			if has_version '<dev-util/mingw64-toolchain-11' ||
+				{ use crossdev-mingw &&
+					has_version "<cross-$(usex x86 i686 x86_64)-w64-mingw32/mingw64-runtime-11"; }
+			then
+				filter-flags '-fstack-protector*' #870136
+			fi
 		fi
 
 		CHOST_amd64=x86_64-w64-mingw32
@@ -122,7 +126,7 @@ multilib_src_configure() {
 		$(meson_use {,enable_}d3d10)
 		$(meson_use {,enable_}d3d11)
 		$(meson_use {,enable_}dxgi)
-		$(usev !debug --strip) # portage won't strip .dll, so allow it here
+		$(usev strip --strip) # portage won't strip .dll, so allow it here
 	)
 
 	meson_src_configure

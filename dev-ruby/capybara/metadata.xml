@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">jnicklas/capybara</remote-id>
+    <remote-id type="github">teamcapybara/capybara</remote-id>
   </upstream>
 </pkgmetadata>

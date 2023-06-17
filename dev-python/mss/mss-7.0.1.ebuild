@@ -33,7 +33,7 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme
 
 EPYTEST_DESELECT=(
 	# upstream tests for self-build, apparently broken by setuptools

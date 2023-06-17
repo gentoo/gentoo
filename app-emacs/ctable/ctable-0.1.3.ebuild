@@ -4,7 +4,6 @@
 EAPI=8
 
 COMMIT=04dbcddeba1da1f39e885bc0d36240ff37d829e9  # ctable.el == 0.1.3 without tag
-NEED_EMACS=24.3
 
 inherit elisp
 

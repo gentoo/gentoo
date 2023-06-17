@@ -11,7 +11,6 @@
 	<use>
 		<flag name="epub">Enable support for reading EPUB ebook metadata</flag>
 		<flag name="mobi">Enable mobipocket support via <pkg>kde-apps/kdegraphics-mobipocket</pkg></flag>
-		<flag name="office">Enable support for reading ODF and OOXML metadata</flag>
 	</use>
 	<slots>
 		<subslots>

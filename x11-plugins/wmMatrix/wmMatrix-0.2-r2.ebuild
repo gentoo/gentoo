@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 	)
+
+src_prepare() {
+	default
+	# Use real usleep on modern systems
+	sed -e "s/short_uusleep/usleep/" -i wmMatrix.c || die
+}
 
 src_compile() {
 	# this version is distributed with compiled binaries!

@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390
 IUSE="a-like-o +center-tilde distinct-l +otf pcf-8bit +pcf-unicode +psf quote
 	ru-dv +ru-g ru-i ru-k"
 
-BDEPEND="app-arch/gzip
+BDEPEND="app-alternatives/gzip
 	${PYTHON_DEPS}
 	app-alternatives/awk
 	pcf-8bit? ( x11-apps/bdftopcf )

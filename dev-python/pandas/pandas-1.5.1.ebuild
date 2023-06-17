@@ -24,7 +24,7 @@ S=${WORKDIR}/${P/_/}
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -78,7 +78,6 @@ DEPEND="
 	>=dev-python/cython-0.29.32[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
-		app-text/pandoc
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
@@ -94,6 +93,7 @@ DEPEND="
 		dev-python/xlrd[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
+		virtual/pandoc
 		x11-misc/xclip
 	)
 	test? (

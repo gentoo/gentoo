@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 # Works without sandbox. But under sandbox sshd claims to break the protocol.
-RESTRICT="strip test"
+RESTRICT="test"
 
 # older libgit seems to be incompatible with guile-git bindings
 # https://github.com/trofi/nix-guix-gentoo/issues/7
@@ -51,4 +51,12 @@ src_prepare() {
 
 src_test() {
 	emake check VERBOSE=1
+}
+
+src_install() {
+	default
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }

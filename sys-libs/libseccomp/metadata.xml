@@ -10,7 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">seccomp/libseccomp</remote-id>
-		<remote-id type="sourceforge">libseccomp</remote-id>
 		<remote-id type="cpe">cpe:/a:libseccomp_project:libseccomp</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 prefix
 
@@ -38,6 +38,11 @@ python_compile_all() {
 	emake -C doc/
 }
 
+python_test() {
+	PYTHONPATH="." "${EPYTHON}" WebappConfig/tests/external.py -v ||
+		die "Testing failed with ${EPYTHON}"
+}
+
 python_install() {
 	# According to this discussion:
 	# http://mail.python.org/pipermail/distutils-sig/2004-February/003713.html
@@ -58,11 +63,6 @@ python_install_all() {
 
 	dodoc AUTHORS
 	doman doc/*.[58]
-}
-
-python_test() {
-	PYTHONPATH="." "${EPYTHON}" WebappConfig/tests/external.py -v ||
-		die "Testing failed with ${EPYTHON}"
 }
 
 pkg_postinst() {

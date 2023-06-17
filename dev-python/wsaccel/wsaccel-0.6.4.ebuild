@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -20,7 +21,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 arm arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]

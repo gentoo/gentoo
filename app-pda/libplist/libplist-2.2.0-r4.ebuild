@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-r1 toolchain-funcs
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"

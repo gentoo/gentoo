@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-pear-r2.eclass
@@ -14,31 +14,27 @@
 # Note that this eclass doesn't handle dependencies of PEAR packages
 # on purpose; please use (R)DEPEND to define them correctly!
 
-EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
-
-case "${EAPI:-0}" in
-	6|7)
-		;;
-	8)
-		IDEPEND=">=dev-php/pear-1.8.1"
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
-		;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+if [[ -z ${_PHP_PEAR_R2_ECLASS} ]]; then
+_PHP_PEAR_R2_ECLASS=1
+
 RDEPEND=">=dev-php/pear-1.8.1"
+[[ ${EAPI} != [67] ]] && IDEPEND=">=dev-php/pear-1.8.1"
 
 # @ECLASS_VARIABLE: PHP_PEAR_PKG_NAME
 # @DESCRIPTION:
 # Set this if the PEAR package name differs from ${PN/PEAR-/}
 # (generally shouldn't be the case).
-: ${PHP_PEAR_PKG_NAME:=${PN/PEAR-/}}
+: "${PHP_PEAR_PKG_NAME:=${PN/PEAR-/}}"
 
 # @ECLASS_VARIABLE: PEAR_PV
 # @DESCRIPTION:
 # Set in ebuild if the ${PV} breaks SRC_URI for alpha/beta/rc versions
-: ${PEAR_PV:=${PV}}
+: "${PEAR_PV:=${PV}}"
 
 # @ECLASS_VARIABLE: PEAR-P
 # @INTERNAL
@@ -50,7 +46,7 @@ PEAR_P="${PHP_PEAR_PKG_NAME}-${PEAR_PV}"
 # @DESCRIPTION:
 # Set in ebuild to the domain name of the channel if not pear.php.net
 # When the domain is not pear.php.net, setting the SRC_URI is required
-: ${PHP_PEAR_DOMAIN:=pear.php.net}
+: "${PHP_PEAR_DOMAIN:=pear.php.net}"
 
 # @ECLASS_VARIABLE: PHP_PEAR_CHANNEL
 # @DEFAULT_UNSET
@@ -64,7 +60,7 @@ if [[ "${PHP_PEAR_DOMAIN}" == "pear.php.net" ]] ; then
 	SRC_URI="https://pear.php.net/get/${PEAR_P}.tgz"
 fi
 
-: ${HOMEPAGE:=https://${PHP_PEAR_DOMAIN}/package/${PHP_PEAR_PKG_NAME}}
+: "${HOMEPAGE:=https://${PHP_PEAR_DOMAIN}/package/${PHP_PEAR_PKG_NAME}}"
 
 S="${WORKDIR}/${PEAR_P}"
 
@@ -129,3 +125,7 @@ php-pear-r2_pkg_postrm() {
 	# Uninstall known dependency
 	"${EROOT%/}/usr/bin/peardev" uninstall -nrO "${PHP_PEAR_DOMAIN}/${PHP_PEAR_PKG_NAME}"
 }
+
+fi
+
+EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm

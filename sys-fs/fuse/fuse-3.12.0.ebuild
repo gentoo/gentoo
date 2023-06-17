@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit meson-multilib udev python-any-r1
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
@@ -38,6 +38,7 @@ multilib_src_configure() {
 		$(meson_use test examples)
 		$(meson_use test tests)
 		-Duseroot=false
+		-Dinitscriptdir=
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 	)
 	meson_src_configure
@@ -58,7 +59,6 @@ multilib_src_test() {
 multilib_src_install_all() {
 	# Installed via fuse-common
 	rm -r "${ED}"{/etc,$(get_udevdir)} || die
-	rm -rf "${ED}"/etc || die
 
 	# useroot=false prevents the build system from doing this.
 	use suid && fperms u+s /usr/bin/fusermount3

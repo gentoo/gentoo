@@ -1,8 +1,35 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-06-03)
+# sys-cluster/knem not keyworded yet
+# sys-cluster/torque fails to build (seemingly because of incompatible hwloc)
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_rm_pbs
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-06-03)
+# fails to build with 6.3.x kernel
+sys-cluster/knem modules
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Mike Gilbert <floppym@gentoo.org> (2023-05-27)
+# Newer sd-boot does not use gnuefi.
+>=sys-apps/systemd-254 -boot
+>=sys-apps/systemd-utils-254 -boot
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
+# dev-python/pyopengl fails tests
+dev-python/sympy opengl
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
+# dev-python/aesara doesn't work on loong yet (due to hardcoding -m64 in its
+# cc invocations)
+dev-python/sympy aesara
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
-# dev-cpp/glog fails tests, needs checknig
+# dev-cpp/glog fails tests, needs checking
 media-libs/opencv glog contribsfm
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
@@ -43,8 +70,8 @@ sys-apps/fwupd flashrom
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-boot/gnu-efi upstream hasn't merged the loong port yet
 sys-apps/fwupd uefi
-sys-apps/systemd gnuefi
-sys-apps/systemd-utils boot
+<sys-apps/systemd-254 gnuefi
+<sys-apps/systemd-utils-254 boot
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # The loong port of sys-boot/grub:2 isn't upstreamed yet.
@@ -58,12 +85,6 @@ dev-cpp/eigen test
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # app-misc/tracker fails tests on loong.
 app-cdr/brasero tracker
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
-# dev-libs/libcdio fails to build on loong for now.
-gnome-base/gvfs cdda
-media-video/ffmpeg cdio
-media-video/mpv cdda
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # Respective dependency fails to build, pending investigation, mask for the
@@ -133,16 +154,14 @@ media-plugins/gst-plugins-meta libvisual
 # in particular need downstream changes).
 app-office/libreoffice clang
 <dev-db/postgresql-16 llvm
-<media-libs/mesa-22.3.0 llvm
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
 # LLVM toolchain now partially usable on loong, mask the remaining pieces
 # pending test/bugfixes/porting.
 #
-# - sys-libs/libcxx: will work once https://reviews.llvm.org/D139297 lands
 # - sys-devel/lld: port is still under review
-sys-devel/clang-common default-libcxx default-lld
-sys-devel/clang-runtime libcxx
+dev-util/lldb test
+sys-devel/clang-common default-lld
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
 # net-libs/webkit-gtk is not available on loong yet.
@@ -154,17 +173,18 @@ mate-base/mate help
 # Sanitizers partially supported on this architecture.
 #
 # ASan: https://reviews.llvm.org/D129418 (LLVM 15 and above)
+# Scudo: https://reviews.llvm.org/D138350 (LLVM 16 since 20221122)
 # TSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
 # UBSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
 # SafeStack: https://reviews.llvm.org/D139494 (LLVM 16 since 20221210)
+# LSan: https://reviews.llvm.org/D139686 (LLVM 16 since 20230114)
 >=sys-libs/compiler-rt-sanitizers-15 -asan
->=sys-libs/compiler-rt-sanitizers-16.0.0_pre20221210 -safestack -tsan -ubsan
+>=sys-libs/compiler-rt-sanitizers-16.0.0_rc1 -lsan -safestack -scudo -tsan -ubsan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
 media-libs/rubberband jni
-www-client/chromium js-type-check
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # Fails testing at least with libssh-0.9.6 and mbedtls-2.28.0-r1, needs
@@ -173,7 +193,6 @@ net-libs/libssh mbedtls
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Unmask experimental-loong on packages; we're loong.
-dev-libs/libffi -experimental-loong
 sys-libs/glibc -experimental-loong
 sys-libs/libseccomp -experimental-loong
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Kore is a web application platform for writing scalable, concurrent web
+    based processes. It is built with a "secure by default" approach. It is
+    fully privilege separated while using strong security features at the
+    operating system level such as seccomp, pledge, unveil and more. Today Kore
+    is used in a variety of applications ranging from high assurance
+    cryptographic devices, machine-learning stacks and even in the aerospace
+    industry.
+  </longdescription>
+  <use>
+    <flag name="acme">Add support for ACME</flag>
+    <flag name="http">Add support for HTTP</flag>
+    <flag name="json">Add support for JSONRPC</flag>
+    <flag name="openssl">Use the openssl TLS backend</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">jorisvink/kore</remote-id>
+  </upstream>
+</pkgmetadata>

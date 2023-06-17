@@ -33,833 +33,434 @@
 
 #--- END OF EXAMPLES ---
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-07)
-# Unused Java libraries. Removal on 2023-03-08.
-# jspeex had last upstream activities in 2005.
-dev-java/jspeex
-dev-java/osgi-annotation-versioning
-dev-java/commons-text
+# Sam James <sam@gentoo.org> (2023-06-16)
+# Please upgrade to >=app-admin/eselect-1.4.22-r1 for a fix to env-update
+# and the files it generates in /etc/env.d: bug #908401, then run env-update
+# and . /etc/profile.
+<app-admin/eselect-1.4.22-r1
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-05)
-# dev-python/python-box has broken build system that prevents us from
-# bumping it.  Its only used by dev-python/tavern that is last rited,
-# and dev-python/tavalidate that no longer has any revdeps.
-# Removal on 2023-03-07.
-dev-python/python-box
-dev-python/tavalidate
+# Hans de Graaff <graaff@gentoo.org> (2023-06-16)
+# Obsolete slots without reverse dependencies that require rails 6.0 to
+# be present. Use the newer slots if needed.
+# Masked for removal on 2023-06-16.
+dev-ruby/roadie:4
+dev-ruby/roadie-rails:2
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2023-02-04)
-# pytest plugin, which breaks a lot of python_test of other ebuilds
-# if installed unless disabled. The package itself is hard to
-# maintain. No reverse dependencies.
-# Removal: 2023-03-06.  Bug #893212.
-dev-python/tavern
+# Hans de Graaff <graaff@gentoo.org> (2023-06-16)
+# Rails 6.0 is no longer supported upstream and limited to ruby30. Use a
+# newer Rails version instead. Masked for removal on 2023-07-16.
+dev-ruby/rails:6.0
+dev-ruby/railties:6.0
+dev-ruby/actionmailbox:6.0
+dev-ruby/actiontext:6.0
+dev-ruby/activerecord:6.0
+dev-ruby/actionmailer:6.0
+dev-ruby/activestorage:6.0
+dev-ruby/actionpack:6.0
+dev-ruby/actionview:6.0
+dev-ruby/activejob:6.0
+dev-ruby/actioncable:6.0
+dev-ruby/activemodel:6.0
+dev-ruby/activesupport:6.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# Hacky build system that does not work via PEP517 build backend.
-# No reverse dependencies.
-# Removal on 2023-03-05.  Bug #890321.
-dev-python/pyFFTW
+# Hans de Graaff <graaff@gentoo.org> (2023-06-16)
+# Obsolete slot. Use the newer 0.7 slot instead.
+# Masked for removal on 2023-07-16.
+dev-ruby/websocket-driver:0
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# Dead upstream, no active maintainer, no reverse dependencies.
-# Removal on 2023-03-05.  Bug #892916.
-x11-themes/echo-icon-theme
+# Tomáš Mózes <hydrapolic@gmail.com> (2023-06-12)
+# Buggy version that causes ibdata1 to grow, please update. See bug #908394.
+=dev-db/mariadb-10.5.20
+=dev-db/mariadb-10.6.13
+=dev-db/mariadb-10.11.2
+=dev-db/mariadb-10.11.3
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# Dead upstream, no active maintainer, no reverse dependencies,
-# build issues.
-# Removal on 2023-03-05.  Bug #892918.
-x11-themes/gtk-engines-nodoka
+# Sam James <sam@gentoo.org> (2023-06-12)
+# Installs no files with newer versions because GTK 2 support was dropped upstream.
+# Removal on 2023-07-12.  Bug #908378.
+dev-ruby/ruby-gtk2
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# The package has been archived upstream.  It is broken with all Python
-# versions supported by Gentoo, and it is broken with django-2.
-# The other listed packages are its reverse dependencies.
-# Removal on 2023-03-05.  Bug #718972.
-app-misc/gcalcli
-app-misc/goobook
-dev-python/gcs-oauth2-boto-plugin
-dev-python/google-apitools
-dev-python/google-reauth-python
-dev-python/oauth2client
-net-misc/gsutil
+# Sam James <sam@gentoo.org> (2023-06-10)
+# Integrated into media-libs/gst-plugins-bad[vaapi]. Please use that instead.
+# Removal in 14 days.
+media-plugins/gst-plugins-va
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-02)
-# dev-python/citeproc-py requires dev-python/nose and is not maintained
-# upstream.  Its only revdep, dev-python/duecredit has no reverse
+# Michał Górny <mgorny@gentoo.org> (2023-06-10)
+# Renamed to dev-python/pypdf.  No revdeps left.
+# Removal on 2023-07-10.  Bug #908227.
+dev-python/PyPDF2
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-09)
+# Requires dev-python/nose.  Last activity in 2013.  No reverse
 # dependencies left.
-# Removal on 2023-03-04.  Bug #888239.
-dev-python/citeproc-py
-dev-python/duecredit
+# Removal on 2023-07-09.  Bug #888245.
+dev-python/doctest-ignore-unicode
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-01)
-# dev-python/blockdiag still requires dev-python/nose.  There was a PR
-# made to switch to pytest in Feb 2020 but it's not progressing at all.
-# It was needed only for dev-python/aiohttp[doc].
-# Removal on 2023-03-03.  Bug #888233.
-dev-python/blockdiag
-dev-python/sphinxcontrib-blockdiag
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-06-08)
+# May be broken on some arches due to weird LLVM interaction.
+# Masked for now.
+# https://github.com/rust-lang/rust/issues/112286
+~dev-lang/rust-1.70.0
+~dev-lang/rust-bin-1.70.0
+~virtual/rust-1.70.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-01)
-# Requires legacy setuptools backend.  Hacky build system.  The only
-# revdep is dev-python/rdflib where it is entirely optional.
-# Removal on 2023-03-03.  Bug #892854.
-dev-python/berkeleydb
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-06-06)
+# Vulnerable CVE-2023-33546, Bug #907927.
+# Reverse deps (logback-*, netty) are unused Java libraries.
+# Removal on 2023-07-06.
+dev-java/janino
+dev-java/logback-core
+dev-java/logback-classic
+dev-java/netty
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-02-01)
-# >=5.1 series uses vanilla llvm/clang instead of forked versions.
-# Removal on 2023-03-02
-sys-devel/llvm-roc
-dev-util/rocm-clang-ocl
+# Sam James <sam@gentoo.org> (2023-06-06)
+# Causes "illegal instruction" (SIGILL) errors for some users, pending investigation.
+# See bug #907932.
+=dev-libs/nss-3.90
 
-# Michał Górny <mgorny@gentoo.org> (2023-01-31)
-# No tests, no activity since Aug 2020, no reverse dependencies.
-# Removal on 2023-03-02.  Bug #892744.
-dev-python/alagitpull
+# Sam James <sam@gentoo.org> (2023-06-05)
+# Fails to boostrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
+=sys-devel/gcc-14.0.0_pre20230604
 
-# Michał Górny <mgorny@gentoo.org> (2023-01-31)
-# The test suite is broken (async tests don't run).  No revdeps.
-# Removal on 2023-03-02.  Bug #892742.
-dev-python/aiohttp-jinja2
+# Michael Orlitzky <mjo@gentoo.org> (2023-06-04)
+# Obsolete and insecure SageMath (out of tree) dependency.
+# Removal on 2023-07-04.
+sci-mathematics/flintqs
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-03)
+# Obsoleted by dev-python/pyspnego.  No revdeps left.
+# Removal on 2023-07-03.  Bug #895004.
+dev-python/ntlm-auth
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2023-05-31)
+# Mask this version for uptime soversion issue. There will be an updated release
+# shortly which fixes this.
+# See https://github.com/AcademySoftwareFoundation/Imath/issues/189#issuecomment-1567077722
+# Bug: #907211
+=dev-libs/imath-3.1.7
+
+# Andeas K. Hüttel <dilfridge@gentoo.org> (2023-06-02)
+# Work in progress
+=dev-lang/perl-5.38*
+~virtual/perl-Attribute-Handlers-1.30.0
+~virtual/perl-autodie-2.360.0
+~virtual/perl-bignum-0.660.0
+~virtual/perl-Carp-1.540.0
+~virtual/perl-Compress-Raw-Bzip2-2.204.1_rc
+~virtual/perl-Compress-Raw-Zlib-2.204.1_rc
+~virtual/perl-CPAN-2.360.0
+~virtual/perl-Data-Dumper-2.188.0
+~virtual/perl-DB_File-1.858.0
+~virtual/perl-Devel-PPPort-3.710.0
+~virtual/perl-Digest-MD5-2.580.100_rc
+~virtual/perl-Digest-SHA-6.40.0
+~virtual/perl-Encode-3.190.0
+~virtual/perl-ExtUtils-CBuilder-0.280.238
+~virtual/perl-ExtUtils-Install-2.220.0
+~virtual/perl-ExtUtils-MakeMaker-7.700.0
+~virtual/perl-ExtUtils-ParseXS-3.510.0
+~virtual/perl-File-Spec-3.880.0
+~virtual/perl-Getopt-Long-2.540.0
+~virtual/perl-HTTP-Tiny-0.82.0
+~virtual/perl-HTTP-Tiny-0.83.0_rc
+~virtual/perl-IO-1.520.0
+~virtual/perl-IO-Compress-2.204.0
+~virtual/perl-IO-Socket-IP-0.410.100_rc
+~virtual/perl-IO-Zlib-1.140.0
+~virtual/perl-JSON-PP-4.160.0
+~virtual/perl-libnet-3.150.0
+~virtual/perl-Locale-Maketext-1.330.0
+~virtual/perl-Math-BigInt-1.999.837
+~virtual/perl-Math-BigInt-FastCalc-0.501.300
+~virtual/perl-Math-BigRat-0.262.400
+~virtual/perl-Math-Complex-1.620.0
+~virtual/perl-Memoize-1.160.0
+~virtual/perl-MIME-Base64-3.160.100_rc
+~virtual/perl-Module-CoreList-5.202.305.200
+~virtual/perl-Module-CoreList-5.202.306.170
+~virtual/perl-Net-Ping-2.760.0
+~virtual/perl-parent-0.241.0
+~virtual/perl-podlators-5.10.0
+~virtual/perl-Safe-2.440.0
+~virtual/perl-Scalar-List-Utils-1.630.0
+~virtual/perl-Socket-2.36.0
+~virtual/perl-Storable-3.320.0
+~virtual/perl-Test-Simple-1.302.194
+~virtual/perl-Text-Balanced-2.60.0
+~virtual/perl-threads-2.360.0
+~virtual/perl-threads-shared-1.680.0
+~virtual/perl-Time-HiRes-1.977.500
+~virtual/perl-Time-Piece-1.340.101_rc
+~virtual/perl-Unicode-Normalize-1.320.0
+~virtual/perl-XSLoader-0.320.0
+
+# Michał Górny <mgorny@gentoo.org> (2023-05-31)
+# Unmaintained.  Last commit in 2020.  Does not work with Python 3.12.
+# No revdeps.
+# Removal on 2023-06-30.  Bug #907495.
+dev-python/http-parser
+
+# Sam James <sam@gentoo.org> (2023-05-29)
+# Masked until enough reverse dependencies are fixed, bug #901257.
+=media-video/ffmpeg-6*
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-05-28)
+# Causes only problems, at negligible gain. Removal in 30days.
+# Bugs 880573, 864157, 885471, 870454, 884571
+sys-libs/libbacktrace
+
+# Fabian Groffen <grobian@gentoo.org> (2023-05-26)
+# Cygwin package for which keyword/profile support was dropped
+# Removal on 2023-06-25.  Bug #907194.
+app-admin/cygwin-rebase
+dev-libs/pthreads4w
+sys-devel/parity
+sys-libs/cygwin-crypt
+
+# Sam James <sam@gentoo.org> (2023-05-24)
+# Breaks building C++ consumers at least: bug #906755, bug #906879, bug #906957.
+# Please upgrade to >=0.5.1.
+=net-libs/libproxy-0.5.0
+
+# Sam James <sam@gentoo.org> (2023-05-23)
+# Argument splitting seems broken, see bug #906892 and https://github.com/ffi/ffi-compiler/issues/23.
+=dev-ruby/ffi-compiler-1.2.0
+
+# Sam James <sam@gentoo.org> (2023-05-20)
+# Various regressions, please upgrade to the latest libxml2 (>=2.11.4).
+=dev-libs/libxml2-2.11.1
+=dev-libs/libxml2-2.11.2
+=dev-libs/libxml2-2.11.2-r1
+=dev-libs/libxml2-2.11.3
+
+# Sam James <sam@gentoo.org> (2023-05-19)
+# Breaks Portage's pid-sandbox at least with 5.10 kernels. Pending investigation.
+# If you're hitting this, try: FEATURES="-pid-sandbox" emerge -v1 sys-apps/util-linux
+# as a workaround. bug #906797.
+~sys-apps/util-linux-2.39
+
+# Michał Górny <mgorny@gentoo.org> (2023-05-19)
+# Replaced by dev-python/pyproject-hooks.  No revdeps left.
+# Removal on 2023-06-18.  Bug #906789.
+dev-python/pep517
+
+# David Seifert <soap@gentoo.org> (2023-05-19)
+# Abandoned, NIH library only used by other obsolete packages like gkeys
+# and layman, use app-crypt/gpgme[python] as a proper upstream
+# supported gpg library. Removal on 2023-08-17.
+dev-python/pyGPG
+
+# David Seifert <soap@gentoo.org> (2023-05-19)
+# Abandoned, replaced by 'eselect repository', tons of open bugs.
+# Removal on 2023-08-17. Bug #761199.
+app-portage/layman
+
+# David Seifert <soap@gentoo.org> (2023-05-19)
+# EAPI 6, abandoned, never went anywhere, long obsolete with
+# app-crypt/gkeys removal.
+# Use these instead:
+# sec-keys/openpgp-keys-gentoo-auth
+# sec-keys/openpgp-keys-gentoo-developers
+# sec-keys/openpgp-keys-gentoo-release
+# Removal on 2023-06-18. Bug #566782, #659822
+app-crypt/gentoo-keys
+
+# Thomas Beierlein <tomjbe@gentoo.org> (2023-05-17)
+# Functionality got integrated into >=net-wireless/gnuradio-3.10
+# itself. See
+# https://wiki.analog.com/resources/tools-software/linux-software/gnuradio
+# Removal on 2023-06-17. Bug #897168.
+net-wireless/gr-iio
+
+# Michał Górny <mgorny@gentoo.org> (2023-05-16)
+# Unmaintained since 2020.  Does not implement TOML 1.0, buggy.
+# Alternatives include built-in tomllib module (Python 3.11+),
+# dev-python/tomli along with dev-python/tomli-w, dev-python/tomlkit.
+# Removal on 2023-06-15.  Bug #878651.
+dev-python/toml
+
+# David Seifert <soap@gentoo.org> (2023-05-14)
+# QA and build issues, EAPI 6, no proper releases, no other
+# distro packages this. Removal on 2023-06-13. Bug #713794, #872539.
+dev-vcs/cvsync
+
+# David Seifert <soap@gentoo.org> (2023-05-14)
+# EAPI 6, last release over 20 years ago, no other distro packages this
+# anymore. Removal on 2023-06-13.
+dev-tex/cpp2latex
+
+# Michał Górny <mgorny@gentoo.org> (2023-05-13)
+# Unmaintained.  Does not build anymore.  No activity upstream
+# since 2019, the build system is messy and fixing the issues would take
+# a lot of effort.
+# Removal on 2023-06-12.  Bug #791034.
+games-emulation/pcsxr
+
+# Sam James <sam@gentoo.org> (2023-05-10)
+# A major reverse depndency (kde-apps/libkexiv2) does not yet build against this
+# so mask for now, see bug #906087 and bug #906090.
+=media-gfx/exiv2-0.28.0
+
+# Sam James <sam@gentoo.org> (2023-05-10)
+# Lots of package breakage as usual for new versions. Masked until most/all
+# reverse dependencies are fixed. Tracker bug is bug #906077.
+=dev-libs/libfmt-10*
+
+# Michał Górny <mgorny@gentoo.org> (2023-05-05)
+# The Gentoo packages are severely out of date, and they haven't been
+# ported to Python 3.11.  They are hard to keep working, and there
+# are better alternatives available.  The suggested replacements are:
+# media-gfx/prusaslicer, media-gfx/superslicer and orcaslicer
+# (not packaged).
+# Removal on 2023-08-04.  Bug #905769.
+media-gfx/cura
+acct-group/ultimaker
+acct-user/ultimaker
+dev-libs/libarcus
+dev-libs/clipper
+dev-libs/libcharon
+dev-libs/libnest2d
+dev-libs/libsavitar
+dev-python/pynest2d
+dev-python/uranium
+media-gfx/fdm-materials
+media-gfx/curaengine
+
+# Mike Gilbert <floppym@gentoo.org> (2023-05-04)
+# Out of date by several versions. Many unresolved security
+# vulnerabilities. Lack of manpower/interest in keeping it up to date.
+# Removal on 2023-06-03.
+# Chromium-based bin alternatives: google-chrome, microsoft-edge & vivaldi.
+www-client/chromium-bin
+
+# Sam James <sam@gentoo.org> (2023-05-03)
+# Broken pkgconfig file, please upgrade to -r1.
+# bug #704348, bug #905632, bug #905822
+=sci-libs/metis-5.2.1
+=sci-libs/metis-5.2.1-r1
+=sci-libs/parmetis-4.0.3_p20230326
+
+# Sam James <sam@gentoo.org> (2023-05-01)
+# Breaks dev-python/scipy build. See bug #905396 and https://github.com/serge-sans-paille/gast/issues/74.
+=dev-python/pythran-0.13.0
+=dev-python/gast-0.5.4
+
+# Sam James <sam@gentoo.org> (2023-05-01)
+# Quite broken, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109672.
+=sys-devel/gcc-14.0.0_pre20230430
+
+# Andreas Sturmlechner <asturm@gentoo.org> 2023-04-30
+# Breaking even latest ~arch version of KDE PIM, bug #905352.
+=dev-libs/ktextaddons-1.3*
+
+# Sam James <sam@gentoo.org> (2023-04-19)
+# Last-minute libstdc++ symbol versioning magic causes e.g. mold, cmake
+# to segfault:
+# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108969
+# - https://bugzilla.redhat.com/show_bug.cgi?id=2187768#c4
+# 13.0.1_pre20230419 was GCC 13.1 RC1. RC2 will be made when this is fixed.
+=sys-devel/gcc-13.0.1_pre20230419
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-18)
+# Breaks ABI without SOVERSION bump, effectively preventing
+# xfce4-terminal from starting.
+# https://bugs.gentoo.org/904500
+=xfce-base/libxfce4ui-4.19.0
+
+# Sam James <sam@gentoo.org> (2023-04-16)
+# SEEK_HOLE issues causing corruption with (sparse?) copies again.
+# See https://github.com/openzfs/zfs/issues/14753.
+=sys-fs/zfs-kmod-2.1.10
+
+# Sam James <sam@gentoo.org> (2023-04-13)
+# Leads to broken terminal output in e.g. vim and openrc and other applications
+# like joe crashing.
+# Bugs:
+# - reported at bottom of bug #904247 and bug #904263
+# - app-misc/tmux: https://github.com/tmux/tmux/issues/3531
+# - sys-apps/openrc: https://github.com/OpenRC/openrc/issues/619
+=sys-libs/ncurses-6.4_p20230424
+=sys-libs/ncurses-6.4_p20230506
+=sys-libs/ncurses-6.4_p20230527
+
+# Eray Aslan <eras@gentoo.org> (2023-04-12)
+# Mask experimental software
+=mail-mta/postfix-3.9*
+
+# Ulrich Müller <ulm@gentoo.org> (2023-04-10)
+# Pretest versions, masked for testing.
+<app-editors/emacs-29.0.9999:29-vcs
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
+# NVIDIA dropped support for the 390.xx branch in December 2022[1].
+#
+# Users are free to unmask and keep using, but be warned it is very
+# likely to be affected by security issues as NVIDIA does not track
+# nor fix these for this branch anymore.
+#
+# Gentoo will keep it packaged for as long as reasonably possible
+# (albeit masked) but no true support will be given nor patches
+# for newer kernels. It is recommended to use 6.1.x LTS kernels or
+# older (6.1.x will be supported until at least December 2026).
+#
+# Major issues will lead to removal without further warning, e.g.
+# if no usable kernels left in tree, or if broken with a newer Xorg.
+#
+# >> It is recommended to switch to nouveau[2] drivers (regardless
+#    of its worse performance), or ideally replace the hardware.
+#
+# [1] https://nvidia.custhelp.com/app/answers/detail/a_id/3142
+# [2] https://wiki.gentoo.org/wiki/Nouveau
+x11-drivers/nvidia-drivers:0/390
+
+# Sam James <sam@gentoo.org> (2023-03-29)
+# Regressions in solving ability affecting e.g. igraph:
+# https://github.com/opencollab/arpack-ng/issues/401
+# https://github.com/opencollab/arpack-ng/issues/410
+# https://github.com/opencollab/arpack-ng/issues/411
+# https://github.com/igraph/igraph/issues/2311
+=sci-libs/arpack-3.9.0
+
+# Sam James <sam@gentoo.org> (2023-03-24)
+# Please upgrade to make-4.4.1 as make-4.4 has a bunch of issues.
+=sys-devel/make-4.4
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-19)
+# This version of cucumber-core is not compatible with the other
+# cucumber dependencies. Please downgrade cucumber-core.
+=dev-util/cucumber-core-11.1.0
+
+# Sam James <sam@gentoo.org> (2023-03-16)
+# Breaks building C++ consumers. See bug #901211 and bug #901035.
+# Please upgrade to glib-2.76.0-r1.
+=dev-libs/glib-2.76.0
+
+# Mike Pagano <mpagano@gentoo.org> (2023-03-10)
+# Mask =sys-kernel/gentoo-sources-5.15.99 since it does
+# not include 5.15.99 and is misleading
+=sys-kernel/gentoo-sources-5.15.99
+
+# Mike Pagano <mpagano@gentoo.org> (2023-02-27)
+# Mask =www-servers/nginx-unit-1.29.0-r1 for testing
+=www-servers/nginx-unit-1.29.0-r1
+
+# Torokhov Sergey <torokhov-s-a@yandex.ru> (2023-02-26)
+# The masked version causes GIMP breaking of Cut/Copy/Paste
+# https://gitlab.gnome.org/GNOME/gimp/-/issues/9175
+=media-libs/babl-0.1.100
+
+# Michał Górny <mgorny@gentoo.org> (2023-02-25)
+# Major update.  Multiple packages are known to be broken.
+# Masked for further testing.
+>=dev-python/cython-3
 
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
 
-# Sam James <sam@gentoo.org> (2023-01-29)
-# Commands trigger an assertion and crashes, bug #892487
-=sys-fs/lvm2-2.03.18
-
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2023-01-28)
-# Possible security issues, obsolete. Use OpenEXR-3 / Imath instead.
-# No revdeps and consumers left in ::gentoo
-# Removal in 30 days. Bug #892375
-media-libs/ilmbase
-
-# Hans de Graaff <graaff@gentoo.org> (2023-01-28)
-# No upstream releases since 2010. No longer maintained
-# upstream. ruby27-only package. Masked for removal on 2023-02-27.
-dev-ruby/ruby_gntp
-
-# Mike Gilbert <floppym@gentoo.org> (2023-01-28)
-# No upstream releases since 2008.
-# No Gentoo maintainer since 2009.
-# Installs files in the wrong places (bug #455542)
-# and with the wrong mode (bug #892325).
-# Removal on 2023-02-27.
-app-admin/bastille
-
-# Ionen Wolkens <ionen@gentoo.org> (2023-01-28)
-# Recently broke at runtime, and its relationship with evolving
-# swig+python is likely to keep breaking this further without an
-# active upstream (no activty since 2018) to keep up with changes.
-# Removal: 2023-02-27. Bug #892323
-games-rpg/adonthell
-games-rpg/wastesedge
-
-# Florian Schmaus <flow@gentoo.org> (2023-01-27)
-# Previous dependencies of dev-lang/clojure, now part of the clojure
-# ebuild and no longer needed.
-# Removal on 2023-02-27.
-dev-java/core-specs-alpha
-dev-java/spec-alpha
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-26)
-# Unmaintained.  Last release in 2003.  The package fails to install
-# since Aug 2021 and while a fix would be trivial, there does not seem
-# to have been any interest in it during that period.
-# Removal on 2023-02-25.  Bug #806384.
-www-misc/wsmake
-
-# Marek Szuba <marecki@gentoo.org> (2023-01-26)
-# Upstream keeps the module files unversioned so it is only the use of
-# mirroring that has prevented us from seeing regular hash mismatches
-# - and it is not clear for many of the modules whether we are allowed
-# to mirror them or not. A convoluted and fragile process has been
-# required to detect new modules and versions, and the request for a
-# Repology-friendly upstream endpoint appears to have stalled.
-# Please switch to managing SWORD modules on a per-user basis, using
-# tools bundled with app-text/sword (see e.g.
-# https://wiki.crosswire.org/SWORD_Module_Source_Discovery_and_Module_Updating)
-# or appropriate functionality in GUI front-end software.
-# Removal on 2023-02-26. Bug #892069.
-app-dicts/sword-2BabDict
-app-dicts/sword-AB
-app-dicts/sword-Abbott
-app-dicts/sword-AbbottSmith
-app-dicts/sword-AbbottSmithStrongs
-app-dicts/sword-ABP
-app-dicts/sword-ABPGRK
-app-dicts/sword-ABS_Essay_GoodSam_SWB
-app-dicts/sword-ACV
-app-dicts/sword-Afr1953
-app-dicts/sword-AKJV
-app-dicts/sword-Alb
-app-dicts/sword-Aleppo
-app-dicts/sword-alzat
-app-dicts/sword-AmTract
-app-dicts/sword-Anderson
-app-dicts/sword-Antoniades
-app-dicts/sword-AraNAV
-app-dicts/sword-AraSVD
-app-dicts/sword-ArmEastern
-app-dicts/sword-ArmWestern
-app-dicts/sword-ASV
-app-dicts/sword-Azeri
-app-dicts/sword-BaptistConfession1646
-app-dicts/sword-BaptistConfession1689
-app-dicts/sword-Barnes
-app-dicts/sword-BasHautin
-app-dicts/sword-BBE
-app-dicts/sword-BDBGlosses_Strongs
-app-dicts/sword-BeaMRK
-app-dicts/sword-Bela
-app-dicts/sword-br_en
-app-dicts/sword-BretonNT
-app-dicts/sword-BulCarigradNT
-app-dicts/sword-BulVeren
-app-dicts/sword-BurCBCM
-app-dicts/sword-BurJudson
-app-dicts/sword-Burkitt
-app-dicts/sword-BWE
-app-dicts/sword-Byz
-app-dicts/sword-Calo
-app-dicts/sword-Catena
-app-dicts/sword-Cawdrey
-app-dicts/sword-CBC
-app-dicts/sword-CebPinadayag
-app-dicts/sword-Chamorro
-app-dicts/sword-Che1860
-app-dicts/sword-ChiNCVs
-app-dicts/sword-ChiNCVt
-app-dicts/sword-ChiSB
-app-dicts/sword-ChiUn
-app-dicts/sword-ChiUnL
-app-dicts/sword-ChiUns
-app-dicts/sword-Clarke
-app-dicts/sword-Common
-app-dicts/sword-Concord
-app-dicts/sword-CopNT
-app-dicts/sword-CopSahBible2
-app-dicts/sword-CopSahHorner
-app-dicts/sword-CopSahidica
-app-dicts/sword-CopSahidicMSS
-app-dicts/sword-CPDV
-app-dicts/sword-CroSaric
-app-dicts/sword-CSlElizabeth
-app-dicts/sword-CzeB21
-app-dicts/sword-CzeBKR
-app-dicts/sword-CzeCEP
-app-dicts/sword-CzeCSP
-app-dicts/sword-Daily
-app-dicts/sword-DaNT1819
-app-dicts/sword-DaOT1871NT1907
-app-dicts/sword-DaOT1931NT1907
-app-dicts/sword-Darby
-app-dicts/sword-Dari
-app-dicts/sword-DarkNightOfTheSoul
-app-dicts/sword-DBD
-app-dicts/sword-Diaglott
-app-dicts/sword-Dodson
-app-dicts/sword-DRC
-app-dicts/sword-DTN
-app-dicts/sword-DutKant
-app-dicts/sword-DutKingComm
-app-dicts/sword-DutSVV
-app-dicts/sword-DutSVVA
-app-dicts/sword-Easton
-app-dicts/sword-Elzevir
-app-dicts/sword-EMBReality
-app-dicts/sword-EMTV
-app-dicts/sword-en_eu
-app-dicts/sword-Esperanto
-app-dicts/sword-Est
-app-dicts/sword-Etheridge
-app-dicts/sword-Eusebian_num
-app-dicts/sword-Eusebian_vs
-app-dicts/sword-f35
-app-dicts/sword-Family
-app-dicts/sword-FarHezareNoh
-app-dicts/sword-FarOPV
-app-dicts/sword-FarTPV
-app-dicts/sword-FinBiblia
-app-dicts/sword-Finney
-app-dicts/sword-FinPR
-app-dicts/sword-FinPR92
-app-dicts/sword-FinRK
-app-dicts/sword-FinSTLK2017
-app-dicts/sword-FreAug
-app-dicts/sword-FreBailly
-app-dicts/sword-FreBBB
-app-dicts/sword-FreBDM1707
-app-dicts/sword-FreBDM1744
-app-dicts/sword-FreChry
-app-dicts/sword-FreCJE
-app-dicts/sword-FreCrampon
-app-dicts/sword-FreDAW
-app-dicts/sword-FreGBM
-app-dicts/sword-FreGeneve1669
-app-dicts/sword-FreJND
-app-dicts/sword-FreKhan
-app-dicts/sword-FreLSN1872
-app-dicts/sword-FreLXX
-app-dicts/sword-FreOltramare1874
-app-dicts/sword-FrePGR
-app-dicts/sword-FrePilgrim
-app-dicts/sword-FreSegond1910
-app-dicts/sword-FreStapfer1889
-app-dicts/sword-FreSynodale1921
-app-dicts/sword-FVDPVietAnh
-app-dicts/sword-Geez
-app-dicts/sword-Geneva
-app-dicts/sword-Geneva1599
-app-dicts/sword-GerAlbrecht
-app-dicts/sword-GerAugustinus
-app-dicts/sword-GerBoLut
-app-dicts/sword-GerElb1871
-app-dicts/sword-GerElb1905
-app-dicts/sword-GerGruenewald
-app-dicts/sword-GerHfa2002
-app-dicts/sword-GerHfaLex2002
-app-dicts/sword-GerKingComm
-app-dicts/sword-GerLeoNA28
-app-dicts/sword-GerLeoRP18
-app-dicts/sword-GerLutherpredigten
-app-dicts/sword-GerMenge
-app-dicts/sword-GerNeUe
-app-dicts/sword-GerOffBiSt
-app-dicts/sword-GerReinhardt
-app-dicts/sword-GerSch
-app-dicts/sword-GerTafel
-app-dicts/sword-GerTextbibel
-app-dicts/sword-GerZurcher
-app-dicts/sword-Godbey
-app-dicts/sword-GodsWord
-app-dicts/sword-GreekHebrew
-app-dicts/sword-GreVamvas
-app-dicts/sword-Haitian
-app-dicts/sword-HebDelitzsch
-app-dicts/sword-HebModern
-app-dicts/sword-HebrewGreek
-app-dicts/sword-Heretics
-app-dicts/sword-HinERV
-app-dicts/sword-Hitchcock
-app-dicts/sword-HunIMIT
-app-dicts/sword-HunKar
-app-dicts/sword-HunKNB
-app-dicts/sword-HunRUF
-app-dicts/sword-HunUj
-app-dicts/sword-Imitation
-app-dicts/sword-Institutes
-app-dicts/sword-IriODomhnuill
-app-dicts/sword-ISBE
-app-dicts/sword-ISV
-app-dicts/sword-ItaDio
-app-dicts/sword-ItaRive
-app-dicts/sword-ItDizGreco
-app-dicts/sword-ItNomiBibbia
-app-dicts/sword-JapBungo
-app-dicts/sword-JapDenmo
-app-dicts/sword-JapKougo
-app-dicts/sword-JapMeiji
-app-dicts/sword-JapRaguet
-app-dicts/sword-JCRHoliness
-app-dicts/sword-JEAffections
-app-dicts/sword-JESermons
-app-dicts/sword-JFB
-app-dicts/sword-JOChrist
-app-dicts/sword-JOCommGod
-app-dicts/sword-JOGlory
-app-dicts/sword-JOMortSin
-app-dicts/sword-Josephus
-app-dicts/sword-JPS
-app-dicts/sword-JST
-app-dicts/sword-Jubilee2000
-app-dicts/sword-Kapingamarangi
-app-dicts/sword-Kaz
-app-dicts/sword-KD
-app-dicts/sword-Kekchi
-app-dicts/sword-KhmerNT
-app-dicts/sword-KingComm
-app-dicts/sword-KJV
-app-dicts/sword-KJVA
-app-dicts/sword-KJVPCE
-app-dicts/sword-KLV
-app-dicts/sword-KLVen_iklingon
-app-dicts/sword-KLViklingon_en
-app-dicts/sword-KorHKJV
-app-dicts/sword-KorRV
-app-dicts/sword-KtuVB
-app-dicts/sword-la_en
-app-dicts/sword-Latvian
-app-dicts/sword-LawGospel
-app-dicts/sword-LEB
-app-dicts/sword-Leeser
-app-dicts/sword-Lightfoot
-app-dicts/sword-LinVB
-app-dicts/sword-LITV
-app-dicts/sword-LO
-app-dicts/sword-LtKBB
-app-dicts/sword-Luther
-app-dicts/sword-LvGluck8
-app-dicts/sword-LXX
-app-dicts/sword-MAK
-app-dicts/sword-Mal1910
-app-dicts/sword-ManxGaelic
-app-dicts/sword-Maori
-app-dicts/sword-MapM
-app-dicts/sword-Mg1865
-app-dicts/sword-MHC
-app-dicts/sword-MHCC
-app-dicts/sword-MKJV
-app-dicts/sword-MLStrong
-app-dicts/sword-MollColossians
-app-dicts/sword-MonKJV
-app-dicts/sword-Montgomery
-app-dicts/sword-MorphGNT
-app-dicts/sword-Murdock
-app-dicts/sword-Nave
-app-dicts/sword-Ndebele
-app-dicts/sword-Nestle1904
-app-dicts/sword-NETfree
-app-dicts/sword-NETnotesfree
-app-dicts/sword-NETtext
-app-dicts/sword-NHEB
-app-dicts/sword-NHEBJE
-app-dicts/sword-NHEBME
-app-dicts/sword-NlCanisius1939
-app-dicts/sword-NorBroed
-app-dicts/sword-Norsk
-app-dicts/sword-NorSMB
-app-dicts/sword-NorthernAzeri
-app-dicts/sword-Noyes
-app-dicts/sword-OEB
-app-dicts/sword-OEBcth
-app-dicts/sword-OrthJBC
-app-dicts/sword-Orthodoxy
-app-dicts/sword-OSHB
-app-dicts/sword-OSHM
-app-dicts/sword-OxfordTR
-app-dicts/sword-Packard
-app-dicts/sword-Passion
-app-dicts/sword-Personal
-app-dicts/sword-Peshitta
-app-dicts/sword-Phaistos
-app-dicts/sword-Pilgrim
-app-dicts/sword-PNT
-app-dicts/sword-PohnOld
-app-dicts/sword-Pohnpeian
-app-dicts/sword-PolGdanska
-app-dicts/sword-PolUGdanska
-app-dicts/sword-PorAlmeida1911
-app-dicts/sword-PorAR
-app-dicts/sword-PorBLivre
-app-dicts/sword-PorBLivreTR
-app-dicts/sword-PorCap
-app-dicts/sword-PorIBP
-app-dicts/sword-PotLykins
-app-dicts/sword-Practice
-app-dicts/sword-QuotingPassages
-app-dicts/sword-RecVer
-app-dicts/sword-Rieger
-app-dicts/sword-RKJNT
-app-dicts/sword-RNKJV
-app-dicts/sword-Robinson
-app-dicts/sword-RomCor
-app-dicts/sword-Rotherham
-app-dicts/sword-RusCARS
-app-dicts/sword-RusCARSA
-app-dicts/sword-RusCARSADICT
-app-dicts/sword-RusCARSDict
-app-dicts/sword-RusCARST
-app-dicts/sword-RusCARSTDICT
-app-dicts/sword-RusMakarij
-app-dicts/sword-RusSynodal
-app-dicts/sword-RusSynodalLIO
-app-dicts/sword-RusVZh
-app-dicts/sword-RWebster
-app-dicts/sword-RWP
-app-dicts/sword-SahidicBible
-app-dicts/sword-SAOA
-app-dicts/sword-SBLGNT
-app-dicts/sword-SBLGNTApp
-app-dicts/sword-Scofield
-app-dicts/sword-ScotsGaelic
-app-dicts/sword-Sentiment
-app-dicts/sword-Shona
-app-dicts/sword-SloKJV
-app-dicts/sword-SloOjacano
-app-dicts/sword-SloStritar
-app-dicts/sword-SME
-app-dicts/sword-Smith
-app-dicts/sword-sml_BL_2008
-app-dicts/sword-SomKQA
-app-dicts/sword-Sorani
-app-dicts/sword-SP
-app-dicts/sword-SpaPlatense
-app-dicts/sword-SpaRV
-app-dicts/sword-SpaRV1865
-app-dicts/sword-SpaRV1909
-app-dicts/sword-SpaRVG
-app-dicts/sword-SpaTDP
-app-dicts/sword-SpaVNT
-app-dicts/sword-SPDSS
-app-dicts/sword-SPE
-app-dicts/sword-SPMT
-app-dicts/sword-Spurious
-app-dicts/sword-SPVar
-app-dicts/sword-SrKDEkavski
-app-dicts/sword-SrKDIjekav
-app-dicts/sword-StrongsGreek
-app-dicts/sword-StrongsHebrew
-app-dicts/sword-Swahili
-app-dicts/sword-Swe1917
-app-dicts/sword-Swe1917Of
-app-dicts/sword-SweFolk1998
-app-dicts/sword-SweKarlXII
-app-dicts/sword-SweKarlXII1873
-app-dicts/sword-Tagalog
-app-dicts/sword-TagAngBiblia
-app-dicts/sword-Tausug
-app-dicts/sword-TCR
-app-dicts/sword-TDavid
-app-dicts/sword-TFG
-app-dicts/sword-ThaiKJV
-app-dicts/sword-Tisch
-app-dicts/sword-TNT
-app-dicts/sword-Torrey
-app-dicts/sword-TR
-app-dicts/sword-TSK
-app-dicts/sword-TurHADI
-app-dicts/sword-TurNTB
-app-dicts/sword-Twenty
-app-dicts/sword-Tyndale
-app-dicts/sword-UKJV
-app-dicts/sword-Ukrainian
-app-dicts/sword-UkrKulish
-app-dicts/sword-Uma
-app-dicts/sword-UrduGeo
-app-dicts/sword-UrduGeoDeva
-app-dicts/sword-UrduGeoRoman
-app-dicts/sword-UyCyr
-app-dicts/sword-VarApp
-app-dicts/sword-VieRobinson
-app-dicts/sword-VieStrongsGreek
-app-dicts/sword-Viet
-app-dicts/sword-VietLCCMN
-app-dicts/sword-VietLCCMNCT
-app-dicts/sword-VietNVB
-app-dicts/sword-vlsJoNT
-app-dicts/sword-Vulgate
-app-dicts/sword-Vulgate_HebPs
-app-dicts/sword-VulgClementine
-app-dicts/sword-VulgConte
-app-dicts/sword-VulgGlossa
-app-dicts/sword-VulgHetzenauer
-app-dicts/sword-VulgSistine
-app-dicts/sword-Webster
-app-dicts/sword-Webster1806
-app-dicts/sword-Webster1913
-app-dicts/sword-WelBeiblNet
-app-dicts/sword-Wesley
-app-dicts/sword-Westminster
-app-dicts/sword-Westminster21
-app-dicts/sword-Weymouth
-app-dicts/sword-WHNU
-app-dicts/sword-WLC
-app-dicts/sword-Worsley
-app-dicts/sword-Wulfila
-app-dicts/sword-Wycliffe
-app-dicts/sword-YLT
-app-dicts/sword-ZhEnglish
-app-dicts/sword-ZhHanzi
-app-dicts/sword-ZhPinyin
-app-text/sword-modules
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-25)
-# Unmaintained.  Multiple build failure bugs reported.  This version
-# predates 2008.
-# Removal on 2023-02-24.  Bug #837611.
-sys-cluster/wulfware
-
-# Ionen Wolkens <ionen@gentoo.org> (2023-01-24)
-# Mostly obsoleted by the better maintained net-misc/yt-dlp, please
-# migrate. If had USE=yt-dlp enabled (default) then was likely already
-# using through its youtube-dl compatibility wrapper and this will
-# change nothing beside needing to ensure that it is not depcleaned.
-#
-# Upstream is mostly focusing on compatibility and old python support,
-# still uses deprecated Nose for tests, and has not seen a new release
-# to deploy fixes in a long time despite major issues (e.g. throttling).
-#
-# Been kept due to some packages lacking compatibility with yt-dlp's
-# python modules, but none are left in tree. Those that call the command
-# rather than modules will often work as-is with yt-dlp's wrapper.
-# Removal: 2023-02-23. Bug #891917
-net-misc/youtube-dl
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-24)
-# mps-youtube does not seem to work "out of the box".  It has had its
-# last release in 2018, and no commits since 2020.  It is the only
-# package needing dev-python/pafy, and pafy is the final package
-# requiring net-misc/youtube-dl.
-# Removal on 2023-02-23.  Bug #891911.
-dev-python/pafy
-media-sound/mps-youtube
-
-# David Seifert <soap@gentoo.org> (2023-01-23)
-# EOL branch, switch to mariadb-10.4/galera-26.4, removal on 2023-02-22.
-<dev-db/mariadb-10.4
-<sys-cluster/galera-26.4
-
-# Sam James <sam@gentoo.org> (2023-01-23)
-# Please upgrade to >=app-eselect/eselect-wxwidgets-20230114-r1 as -r0 may
-# lead to build failures.
-=app-eselect/eselect-wxwidgets-20230114
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-21)
-# Packages that are incompatible with ffmpeg-5.
-#
-# media-libs/libextractor: no Gentoo maintainer, ver from 2019, bug #834382
-# media-libs/qtav: no Gentoo maintainer, no porting progress, bug #834386
-# media-plugins/vdr-vaapidevice: no activity since 2019, bug #834390
-# media-sound/potamus: last rel. 2018, one commit in 2020, bug #834396
-# media-video/ffmpeg2theora: no activity since 2016, bug #834403
-#
-# Removal on 2023-02-20.
-media-libs/libextractor
-media-libs/qtav
-media-plugins/vdr-vaapidevice
-media-sound/potamus
-media-video/ffmpeg2theora
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-21)
-# Obsoleted in favor of using extract-on-the-first-run feature
-# of games-strategy/wargus.
-# Removal on 2023-02-20.  Bug #578340.
-games-strategy/wargus-data
-
-# Hans de Graaff <graaff@gentoo.org> (2023-01-21)
-# No longer maintained upstream and missing recent security fixes.
-# Use a newer Rails version instead.
-# This mask also includes several supporting or rails 5.2-only packages.
-# Masked for removal after 2023-02-21.
-dev-ruby/actioncable:5.2
-dev-ruby/actionmailer:5.2
-dev-ruby/actionpack:5.2
-dev-ruby/actionview:5.2
-dev-ruby/activejob:5.2
-dev-ruby/activemodel:5.2
-dev-ruby/activerecord:5.2
-dev-ruby/activestorage:5.2
-dev-ruby/activesupport:5.2
-dev-ruby/rails:5.2
-dev-ruby/railties:5.2
-dev-ruby/arel
-=www-apps/redmine-4.2.9
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-01-20)
-# KDE Plasma 5.26.90 (5.27 Beta) mask
-# Pre-release version - happy testing!
-~kde-plasma/bluedevil-5.26.90
-~kde-plasma/breeze-5.26.90
-~kde-plasma/breeze-grub-5.26.90
-~kde-plasma/breeze-gtk-5.26.90
-~kde-plasma/breeze-plymouth-5.26.90
-~kde-plasma/discover-5.26.90
-~kde-plasma/drkonqi-5.26.90
-~kde-plasma/kactivitymanagerd-5.26.90
-~kde-plasma/kde-cli-tools-5.26.90
-~kde-plasma/kde-gtk-config-5.26.90
-~kde-plasma/kdecoration-5.26.90
-~kde-plasma/kdeplasma-addons-5.26.90
-~kde-plasma/kgamma-5.26.90
-~kde-plasma/khotkeys-5.26.90
-~kde-plasma/kinfocenter-5.26.90
-~kde-plasma/kmenuedit-5.26.90
-~kde-plasma/kpipewire-5.26.90
-~kde-plasma/kscreen-5.26.90
-~kde-plasma/kscreenlocker-5.26.90
-~kde-plasma/ksshaskpass-5.26.90
-~kde-plasma/ksystemstats-5.26.90
-~kde-plasma/kwallet-pam-5.26.90
-~kde-plasma/kwayland-integration-5.26.90
-~kde-plasma/kwin-5.26.90
-~kde-plasma/kwrited-5.26.90
-~kde-plasma/layer-shell-qt-5.26.90
-~kde-plasma/libkscreen-5.26.90
-~kde-plasma/libksysguard-5.26.90
-~kde-plasma/libkworkspace-5.26.90
-~kde-plasma/milou-5.26.90
-~kde-plasma/oxygen-5.26.90
-~kde-plasma/oxygen-sounds-5.26.90
-~kde-plasma/plasma-browser-integration-5.26.90
-~kde-plasma/plasma-desktop-5.26.90
-~kde-plasma/plasma-disks-5.26.90
-~kde-plasma/plasma-firewall-5.26.90
-~kde-plasma/plasma-integration-5.26.90
-~kde-plasma/plasma-meta-5.26.90
-~kde-plasma/plasma-nm-5.26.90
-~kde-plasma/plasma-pa-5.26.90
-~kde-plasma/plasma-sdk-5.26.90
-~kde-plasma/plasma-systemmonitor-5.26.90
-~kde-plasma/plasma-thunderbolt-5.26.90
-~kde-plasma/plasma-workspace-5.26.90
-~kde-plasma/plasma-workspace-wallpapers-5.26.90
-~kde-plasma/plasma-vault-5.26.90
-~kde-plasma/plymouth-kcm-5.26.90
-~kde-plasma/polkit-kde-agent-5.26.90
-~kde-plasma/powerdevil-5.26.90
-~kde-plasma/sddm-kcm-5.26.90
-~kde-plasma/systemsettings-5.26.90
-~kde-plasma/xdg-desktop-portal-kde-5.26.90
-~kde-plasma/xembed-sni-proxy-5.26.90
-
-# Alfredo Tupone <tupone@gentoo.org> (2023-01-18)
-# Masked for removal in 30 days.
-# Not maintained (2006), no rev dep, bugs
-# (bug #891283)
-dev-tcltk/tclperl
-
-# David Seifert <soap@gentoo.org> (2023-01-14)
-# Py3.8 only backports
-dev-python/backports-tempfile
-dev-python/backports-weakref
-dev-python/backports-zoneinfo
-dev-python/pkgutil_resolve_name
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-01-10)
-# Unmaintained and reportedly broken by KDE Plasma 5.25 already.
-# Masking current stable version is the first step towards last-rites.
-# Consider migrating away from latte-dock for your workflow.
-# See also: https://tinyurl.com/39dkw43a (links to reddit)
-# Removal on 2023-01-30.
-=kde-misc/latte-dock-0.10.8*
-
-# Jonas Stein <jstein@gentoo.org> (2023-01-09)
-# Dead upstream, open bugs unmaintained.
-# Removal after 2023-03-01.  Bug #890244.
-www-client/dillo
-
-# John Helmert III <ajak@gentoo.org> (2023-01-08)
-# Multiple vulnerabilities include remote code execution, maintainer
-# needed, removal in 30 days. Bug #834501
-dev-util/artifactory-bin
-
-# Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
-# Broken since many years, no reverse dependencies, last release from 2000
-# Bug #678518. Removal on 2023-02-08.
-net-dns/dnswalk
-
-# Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
-# EAPI=6, Installs only card pictures and has no reverse dependencies.
-# Bug #805278. Removal on 2023-02-08.
-dev-games/cardpics
-
-# Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
-# Dependencies of games-server/cyphesis, which got removed ~4 years ago, no
-# other reverse dependencies. Bug #728230
-# Removal on 2023-02-08.
-dev-games/mercator
-dev-games/wfmath
-
-# Sam James <sam@gentoo.org> (2023-01-05)
-# Breaks reverse dependencies: bug #889694, bug #888579.
-=sys-fs/btrfs-progs-6.1.1
-
-# David Seifert <soap@gentoo.org> (2023-01-02)
-# EAPI 6, pretty much no upstream activity, outdated, last upstream
-# release over 3 years ago, no revdeps. Removal on 2023-02-01.
-dev-cpp/pngpp
-
-# Jonas Stein <jstein@gentoo.org> (2023-01-01)
-# Package is broken and unusable, no activity upstream.
-# Removal after 2023-02-01.  Bug #722568.
-net-analyzer/chaosreader
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-31)
-# EAPI=6 ebuild, live only packages for 1 year! maintainer-needed package.
-# Removal: 2023-01-30.  Bug #889200.
-app-containers/docker-gc
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-31)
-# Live only packages for 4 years!
-# Removal: 2023-01-30.  Bug #889196.
-sys-auth/google-authenticator-libpam-hardened
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-31)
-# EAPI=6 ebuild, live only packages for 6 years!
-# Removal: 2023-01-30.  Bug #889194.
-x11-plugins/pidgin-funyahoo-plusplus
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-12-29)
-# Upstream is dead, last activity in Nov 2017. Does not
-# work with newer log4j, bug #857663. Use net-p2p/biglybt
-# instead. Removal on 2023-02-28.
-net-p2p/vuze
-net-p2p/vuze-coreplugins
-
-# Sam James <sam@gentoo.org> (2022-12-27)
-# Regression in listing subvolumes (no UUIDs), bug #888549
-# https://github.com/kdave/btrfs-progs/issues/562
-=sys-fs/btrfs-progs-6.1
-
-# Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
-# Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
-# and it now always requires Qt6. Masked given Qt6 is also masked in
-# Gentoo at the moment. It is recommended to use <=pcsx2-1.7.3772 for
-# now, but you can opt-in for testing by searching for "qtbase" in:
-# https://gitweb.gentoo.org/repo/gentoo.git/tree/profiles/package.mask
-# and package.unmask the whole list alongside pcsx2.
->=games-emulation/pcsx2-1.7.3773
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
-
-# Jaco Kroon <jaco@uls.co.za> (2022-12-14)
-# Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
-# is trivial to solve.
-# With more and more SIP traffic using TLS rather than plaintext UDP or TCP
-# this is fast becomming less and less useful.  You should rather use
-# asterisk's res_hep which can also report encrypted SIP and RTP to any HEP
-# compatible reporting tool (including Homer).
-# I'm no longer using this and don't recommend it's use, if you want this to be
-# unmasked again, please contact me so that we can figure out how to approach
-# maintenance thereof. Last-rites bug #885845.
-# Removal on 2023-01-31.
-net-voip/captagent
-
-# Jonas Stein <jstein@gentoo.org> (2022-12-11)
-# Unfetchable and mirror-restricted.
-# Upstream discontinued
-# Removal after 2023-02-01.  Bug #884715.
-dev-cpp/sourcetrail
-
-# Sam James <sam@gentoo.org> (2022-12-09)
-# Breaks compilation of reverse dependencies with broken pkgconfig (pc) file
-# bug #885075, https://github.com/libarchive/libarchive/issues/1766
-=app-arch/libarchive-3.6.2
-
-# Stephan Hartmann <sultan@gentoo.org> (2023-01-15)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-111
-
-# Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
-# Multiple stability issues, deadlocks on exit, broken API.
-# Bug #883559
-=net-p2p/qbittorrent-4.5.0
-
-# Matt Turner <mattst88@gentoo.org> (2022-11-16)
-# Packages or their dependencies have not been ported to libsoup:3.0, while
-# other non-slotted dependencies have been.
-media-gfx/gnome-photos
-media-sound/gnome-music
-net-libs/libzapojit
-net-misc/gnome-online-miners
 
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
 # Some potentially breaking changes here, please check the UPGRADE.txt file.
@@ -886,45 +487,6 @@ sys-cluster/slurm
 # See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
 dev-haskell/doctest-parallel
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-08-12)
-# Masked for testing, depends on dev-qt/qt*:6
-# Pyside6 is stuck on python3_10 for the moment being
-dev-python/shiboken6
-dev-python/pyside6
-dev-python/pyside6-tools
-
-# Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
-# Masked for testing. The split of some packages may still
-# change. bug #838970.
->=app-editors/retext-8.0.0
-dev-python/PyQt6
-dev-python/PyQt6-WebEngine
-dev-qt/qt5compat:6
-dev-qt/qtbase:6
-dev-qt/qtcharts:6
-dev-qt/qtdeclarative:6
-dev-qt/qtimageformats:6
-dev-qt/qtlocation:6
-dev-qt/qtmultimedia:6
-dev-qt/qtnetworkauth:6
-dev-qt/qtpositioning:6
-dev-qt/qtquick3d:6
-dev-qt/qtquicktimeline:6
-dev-qt/qtserialport:6
-dev-qt/qtshadertools:6
-dev-qt/qtsvg:6
-dev-qt/qttools:6
-dev-qt/qtwayland:6
-dev-qt/qtwebchannel:6
-dev-qt/qtwebengine:6
-dev-qt/qtwebsockets:6
->=media-video/bino-2
-
-# Fabian Groffen <grobian@gentoo.org> (2022-07-02)
-# Segfaults handling SPF validations (warn on permerror), like the
-# previous release, better not to trust your important mail to
-~mail-mta/exim-4.96
-
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
@@ -935,16 +497,6 @@ dev-qt/qtwebsockets:6
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
 ~sci-physics/bullet-3.22b
-
-# Eray Aslan <eras@gentoo.org> (2022-01-24)
-# Mask experimental software
-=mail-mta/postfix-3.8*
-
-# James Beddek <telans@posteo.de> (2022-01-19)
-# FFmpeg 5.0 ABI/API changes break many packages.
-# Masking for tracker/tinderbox. Bug #831437
-=media-video/ffmpeg-5*
->=media-sound/spek-0.8.5
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
@@ -1074,3 +626,4 @@ www-plugins/chrome-binary-plugins:unstable
 dev-util/mingw64-runtime
 sys-libs/newlib
 dev-embedded/avr-libc
+sys-devel/nvptx-tools

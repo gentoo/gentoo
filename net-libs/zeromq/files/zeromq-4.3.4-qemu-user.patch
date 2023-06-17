@@ -1,0 +1,52 @@
+UPSTREAM: https://github.com/zeromq/libzmq/pull/4486
+BUG: https://bugs.gentoo.org/899986
+From: Han Gao <gaohan@iscas.ac.cn>
+
+In qemu-user, CACHELINE_SIZE probe is undefined
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8672d61799..072a6507e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -481,7 +481,8 @@ execute_process(
+   ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+ if(CACHELINE_SIZE STREQUAL ""
+    OR CACHELINE_SIZE EQUAL 0
+-   OR CACHELINE_SIZE EQUAL -1)
++   OR CACHELINE_SIZE EQUAL -1
++   OR CACHELINE_SIZE EQUAL "undefined")
+   set(ZMQ_CACHELINE_SIZE 64)
+ else()
+   set(ZMQ_CACHELINE_SIZE ${CACHELINE_SIZE})
+diff --git a/RELICENSE/hangao.md b/RELICENSE/hangao.md
+new file mode 100644
+index 0000000000..de100bb59a
+--- /dev/null
++++ b/RELICENSE/hangao.md
+@@ -0,0 +1,13 @@
++# Permission to Relicense under MPLv2 or any other OSI approved license chosen by the current ZeroMQ BDFL
++
++This is a statement by Han Gao that grants permission to relicense its copyrights in the libzmq C++
++library (ZeroMQ) under the Mozilla Public License v2 (MPLv2) or any other 
++Open Source Initiative approved license chosen by the current ZeroMQ 
++BDFL (Benevolent Dictator for Life).
++
++A portion of the commits made by the Github handle "Rabenda", with
++commit author "Han Gao <gaohan@iscas.ac.cn>" or "Han Gao <rabenda.cn@gmail.com>", are copyright of Han Gao .
++This document hereby grants the libzmq project team to relicense libzmq, 
++including all past, present and future contributions of the author listed above.
++
++Han Gao 2023/01/10
+diff --git a/acinclude.m4 b/acinclude.m4
+index ac55776e53..f27fc8e831 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -1254,7 +1254,7 @@ AC_DEFUN([LIBZMQ_CHECK_CACHELINE], [{
+     AC_CHECK_TOOL(libzmq_getconf, getconf)
+     if ! test "x$libzmq_getconf" = "x"; then
+         zmq_cacheline_size=$($libzmq_getconf LEVEL1_DCACHE_LINESIZE 2>/dev/null || echo 64)
+-        if test "x$zmq_cacheline_size" = "x0" -o  "x$zmq_cacheline_size" = "x-1"; then
++        if test "x$zmq_cacheline_size" = "x0" -o  "x$zmq_cacheline_size" = "x-1" -o "x$zmq_cacheline_size" = "xundefined"; then
+             # getconf on some architectures does not know the size, try to fallback to
+             # the value the kernel knows on Linux
+             zmq_cacheline_size=$(cat /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size 2>/dev/null || echo 64)

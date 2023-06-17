@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -10,7 +10,8 @@
 # Mamoru Komachi <usata@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# Maciej Barć <xgqt@gentoo.org>
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
@@ -166,7 +167,6 @@
 # to above calls of elisp-site-regen().
 
 case ${EAPI} in
-	6) inherit eapi7-ver ;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -206,7 +206,7 @@ BYTECOMPFLAGS="-L ."
 # @ECLASS_VARIABLE: NEED_EMACS
 # @DESCRIPTION:
 # The minimum Emacs version required for the package.
-: ${NEED_EMACS:=23.1}
+: "${NEED_EMACS:=25.3}"
 
 # @ECLASS_VARIABLE: _ELISP_EMACS_VERSION
 # @INTERNAL
@@ -335,6 +335,205 @@ elisp-make-autoload-file() {
 		-f batch-update-autoloads "${@-.}"
 
 	eend $? "elisp-make-autoload-file: batch-update-autoloads failed" || die
+}
+
+# @FUNCTION: elisp-test-buttercup
+# @USAGE: [test-subdirectory] [test-runner-opts] ...
+# @DESCRIPTION:
+# Run ELisp package tests using the "buttercup" test runner.
+#
+# The option "test-subdirectory" may be given any number of times, it should
+# be given as though it was passed to Emacs or the test tool, not as a string.
+#
+# The options "test-subdirectory" and "test-runner-opts" are optional,
+# but if "test-runner-opts" needs to be provided also "test-subdirectory" has
+# to be specified.
+
+elisp-test-buttercup() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local test_dir="${1:-$(pwd)}"
+	shift
+
+	local -a myopts=(
+		${BYTECOMPFLAGS}
+		-L "${test_dir}"
+		--traceback full
+		"$@"
+	)
+	ebegin "Running buttercup tests"
+	buttercup "${myopts[@]}" "${test_dir}"
+	eend $? "${FUNCNAME}: tests failed" || die
+}
+
+# @FUNCTION: elisp-test-ert-runner
+# @USAGE: [test-subdirectory] [test-runner-opts] ...
+# @DESCRIPTION:
+# Run ELisp package tests using the "ert-runner" test runner.
+#
+# The option "test-subdirectory" may be given any number of times, it should
+# be given as though it was passed to Emacs or the test tool, not as a string.
+#
+# The options "test-subdirectory" and "test-runner-opts" are optional,
+# but if "test-runner-opts" needs to be provided also "test-subdirectory" has
+# to be specified.
+
+elisp-test-ert-runner() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local test_dir="${1:-$(pwd)}"
+	shift
+
+	local -a myopts=(
+		${BYTECOMPFLAGS}
+		--reporter ert+duration
+		--script
+		-L "${test_dir}"
+		"$@"
+	)
+	ebegin "Running ert-runner tests"
+	ert-runner "${myopts[@]}" "${test_dir}"
+	eend $? "${FUNCNAME}: tests failed" || die
+}
+
+# @FUNCTION: elisp-test-ert
+# @USAGE: [test-subdirectory] [test-runner-opts] ...
+# @DESCRIPTION:
+# Run ELisp package tests using "ert", the Emacs's built-in test runner.
+#
+# The option "test-subdirectory" may be given any number of times, it should
+# be given as though it was passed to Emacs or the test tool, not as a string.
+#
+# The options "test-subdirectory" and "test-runner-opts" are optional,
+# but if "test-runner-opts" needs to be provided also "test-subdirectory" has
+# to be specified.
+
+elisp-test-ert() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local test_dir="${1:-$(pwd)}"
+	shift
+
+	local -a extra_load=()
+	local extra_load_file
+	for extra_load_file in "${test_dir}"/?*-test.el; do
+		if [[ -f "${extra_load_file}" ]]; then
+			extra_load+=( -l "${extra_load_file}" )
+		fi
+	done
+
+	local -a myopts=(
+		${EMACSFLAGS}
+		${BYTECOMPFLAGS}
+		-L "${test_dir}"
+		"${extra_load[@]}"
+		"$@"
+		-f ert-run-tests-batch-and-exit
+	)
+	ebegin "Running ert tests"
+	${EMACS} "${myopts[@]}"
+	eend $? "${FUNCNAME}: tests failed" || die
+}
+
+# @FUNCTION: elisp-enable-tests
+# @USAGE: [--optional] <test-runner> [test-runner-options] ...
+# @DESCRIPTION:
+# Set up IUSE, RESTRICT, BDEPEND and test runner function for running tests
+# with the specified test runner.
+#
+# The test-runner argument must be one of:
+#
+# - buttercup: for "buttercup" provided via "app-emacs/buttercup"
+#
+# - ert-runner: for "ert-runner" provided via "app-emacs/ert-runner"
+#
+# - ert: for built-in GNU Emacs test utility
+#
+# If the "--optional" flag is passed (before specifying the test runner),
+# then it is assumed that the ELisp package is a part of some project that
+# optionally enables GNU Emacs support.
+# This will correctly set up the test and Emacs dependencies.
+#
+# Notice that the fist option passed to the "test-runner" is the directory
+# and the rest are miscellaneous options applicable to that given runner.
+#
+# This function has to be called post inherit, specifically after "IUSE",
+# "RESTRICT" and "BDEPEND" variables are assigned.
+# It is advised to place this call right before (re)defining a given ebuild's
+# phases.
+#
+# Example:
+# @CODE
+# 	inherit elisp-common
+#
+# 	...
+#
+# 	elisp-enable-tests --optional ert-runner "${S}"/elisp -t "!org"
+#
+# 	src_test() {
+# 		emake -C tests test
+# 		elisp-test
+# 	}
+# @CODE
+
+elisp-enable-tests() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local optional
+	if [[ ${1} = "--optional" ]] ; then
+		optional=YES
+		shift
+	fi
+
+	local test_pkg
+	local test_runner=${1}
+	shift
+
+	_ELISP_TEST_OPTS=( "$@" )
+
+	case ${test_runner} in
+		buttercup )
+			test_pkg="app-emacs/buttercup"
+			_ELISP_TEST_FUNCTION=elisp-test-buttercup
+			;;
+		ert-runner )
+			test_pkg="app-emacs/ert-runner"
+			_ELISP_TEST_FUNCTION=elisp-test-ert-runner
+			;;
+		ert )
+			_ELISP_TEST_FUNCTION=elisp-test-ert
+			;;
+		* )
+			die "${FUNCNAME}: unknown test runner, given ${test_runner}"
+			;;
+	esac
+
+	if [[ ${test_pkg} ]]; then
+		IUSE+=" test "
+		RESTRICT+=" !test? ( test ) "
+		if [[ ${optional} ]]; then
+			IUSE+=" emacs "
+			BDEPEND+=" test? ( emacs? ( ${test_pkg} ) ) "
+		else
+			BDEPEND+=" test? ( ${test_pkg} ) "
+		fi
+	fi
+
+	return 0
+}
+
+# @FUNCTION: elisp-test
+# @DESCRIPTION:
+# Test the package using a ELisp test runner.
+#
+# If called without executing "elisp-enable-tests" beforehand, then
+# does nothing, otherwise a test runner is called with given
+# "test-runner-options".
+
+elisp-test() {
+	if [[ ${_ELISP_TEST_FUNCTION} ]]; then
+		${_ELISP_TEST_FUNCTION} "${_ELISP_TEST_OPTS[@]}"
+	fi
 }
 
 # @FUNCTION: elisp-install

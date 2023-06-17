@@ -15,10 +15,9 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}stack/${PN}.git"
 	EGIT_BRANCH="develop"
-	SRC_URI=""
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv x86"
+	inherit pypi
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 fi
 
 LICENSE="Apache-2.0"

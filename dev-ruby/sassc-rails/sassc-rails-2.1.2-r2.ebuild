@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ IUSE=""
 ruby_add_rdepend "
 	>=dev-ruby/sassc-2.0
 	dev-ruby/tilt:*
-	|| ( dev-ruby/railties:5.2 dev-ruby/railties:6.0 dev-ruby/railties:6.1 )
+	|| ( dev-ruby/railties:6.0 dev-ruby/railties:6.1 )
 	>=dev-ruby/sprockets-3.0:*
 	dev-ruby/sprockets-rails:*
 "

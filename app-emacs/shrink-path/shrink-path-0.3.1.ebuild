@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24
-
 inherit elisp
 
 DESCRIPTION="Fish-style path truncation for GNU Emacs"
@@ -15,29 +13,22 @@ S="${WORKDIR}"/${PN}.el-v${PV}
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-emacs/s
 	app-emacs/dash
 	app-emacs/f
 "
-BDEPEND="
-	${RDEPEND}
-	test? ( app-emacs/buttercup )
-"
+BDEPEND="${RDEPEND}"
 
 DOCS=( README.org )
 SITEFILE="50${PN}-gentoo.el"
+
+elisp-enable-tests buttercup test
 
 src_prepare() {
 	sed -i 's|it "same as shrink-path"|xit "same as shrink-path"|' \
 		"${S}"/test/shrink-path-test.el || die
 
 	default
-}
-
-src_test() {
-	buttercup -L . -L test --traceback full test || die
 }

@@ -19,7 +19,7 @@ SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV#3.}.tar.gz ->
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 DEPEND="
 	>=virtual/jdk-1.8:*

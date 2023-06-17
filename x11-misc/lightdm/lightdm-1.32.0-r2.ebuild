@@ -12,7 +12,7 @@ SRC_URI="https://github.com/canonical/lightdm/releases/download/${PV}/${P}.tar.x
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="audit elogind +gnome +gtk +introspection non-root qt5 systemd vala"
 
 REQUIRED_USE="^^ ( elogind systemd )

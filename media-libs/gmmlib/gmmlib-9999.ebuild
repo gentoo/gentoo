@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CMAKE_BUILD_TYPE="Release"
 
-inherit cmake
+inherit cmake-multilib
 
 if [[ ${PV} == *9999 ]] ; then
 	: ${EGIT_REPO_URI:="https://github.com/intel/gmmlib"}
@@ -30,7 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-22.1.1_custom_cflags.patch
 )
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING="$(usex test)"
 		-DBUILD_TYPE="Release"

@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517="setuptools"
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -19,4 +20,5 @@ LICENSE="BSD GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 
-PATCHES=( "${FILESDIR}/python-axolotl-curve25519-fix-type.patch" )
+PATCHES=( "${FILESDIR}/python-axolotl-curve25519-fix-type.patch"
+	"${FILESDIR}/${P}-fix-setuptools-warning.diff" )

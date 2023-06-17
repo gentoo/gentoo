@@ -2,19 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..10} )
-WX_GTK_VER="3.0-gtk3"
 
 DISTUTILS_IN_SOURCE_BUILD="1"
+PYTHON_COMPAT=( python3_{9..10} )
+PYPI_NO_NORMALIZE=1
+PYPI_PN="wxPython"
+WX_GTK_VER="3.0-gtk3"
 
-inherit distutils-r1 multiprocessing virtualx wxwidgets
-
-MY_PN="wxPython"
-MY_PV="${PV}.post2"
+inherit distutils-r1 multiprocessing virtualx wxwidgets pypi
 
 DESCRIPTION="A blending of the wxWindows C++ class library with Python"
 HOMEPAGE="https://www.wxpython.org/"
-SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${MY_PV}.tar.gz"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PYPI_PN}" "${PV}.post2")"
 
 LICENSE="wxWinLL-3"
 SLOT="4.0"
@@ -45,7 +44,7 @@ BDEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
+S="${WORKDIR}/${PYPI_PN}-${PV}.post2"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.6-skip-broken-tests.patch"

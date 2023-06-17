@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit qmake-utils xdg-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="Image viewer and organizer"
 HOMEPAGE="https://github.com/oferkv/phototonic"
@@ -30,20 +30,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+# pending upstream: https://github.com/oferkv/phototonic/pull/274
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.28.patch" ) # bug 906492
+
 src_configure() {
 	eqmake5
 }
 
 src_install() {
 	emake install INSTALL_ROOT="${D}"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }

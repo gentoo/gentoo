@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-single.eclass
@@ -64,22 +64,18 @@
 # @CODE
 
 case ${EAPI} in
-	7|8)
-		;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_LUA_SINGLE_R0} ]]; then
+if [[ -z ${_LUA_SINGLE_ECLASS} ]]; then
+_LUA_SINGLE_ECLASS=1
 
-if [[ ${_LUA_R0} ]]; then
+if [[ ${_LUA_ECLASS} ]]; then
 	die 'lua-single.eclass cannot be used with lua.eclass.'
 fi
 
 inherit lua-utils
-
-fi
-
-EXPORT_FUNCTIONS pkg_setup
 
 # @ECLASS_VARIABLE: LUA_COMPAT
 # @REQUIRED
@@ -275,8 +271,6 @@ _lua_single_set_globals() {
 
 _lua_single_set_globals
 unset -f _lua_single_set_globals
-
-if [[ ! ${_LUA_SINGLE_R0} ]]; then
 
 # @FUNCTION: _lua_gen_usedep
 # @USAGE: [<pattern>...]
@@ -532,5 +526,6 @@ lua-single_pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && lua_setup
 }
 
-_LUA_SINGLE_R0=1
 fi
+
+EXPORT_FUNCTIONS pkg_setup

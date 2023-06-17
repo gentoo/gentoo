@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit python-r1 java-pkg-opt-2 udev xdg-utils
 
@@ -139,9 +139,11 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
+	udev_reload
 }
 
 pkg_postrm() {
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
+	udev_reload
 }

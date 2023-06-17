@@ -6,5 +6,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">dvdauthor</remote-id>
+    <remote-id type="github">ldo/dvdauthor</remote-id>
   </upstream>
 </pkgmetadata>

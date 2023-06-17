@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">rafaelfranca/rails-html-sanitizer</remote-id>
+    <remote-id type="github">rails/rails-html-sanitizer</remote-id>
   </upstream>
 </pkgmetadata>

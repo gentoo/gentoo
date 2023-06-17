@@ -9,4 +9,7 @@
 		XOM is a new XML object model. It is a tree-based API for processing
 		XML with Java that strives for correctness and simplicity.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">elharo/xom</remote-id>
+	</upstream>
 </pkgmetadata>

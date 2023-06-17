@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ MY_P=${P/projectc/ProjectC}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="An IDE for GNUstep"
-HOMEPAGE="http://www.gnustep.org/experience/ProjectCenter.html"
+HOMEPAGE="https://gnustep.github.io/experience/ProjectCenter.html"
 SRC_URI="http://ftpmain.gnustep.org/pub/gnustep/dev-apps/${MY_P}.tar.gz"
 
 KEYWORDS="amd64 ppc x86"

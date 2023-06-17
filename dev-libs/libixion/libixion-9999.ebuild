@@ -3,15 +3,14 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
-
+PYTHON_COMPAT=( python3_{9..11} )
 inherit python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"
 HOMEPAGE="https://gitlab.com/ixion/ixion"
 
-if [[ ${PV} == *9999 ]]; then
-	MDDS_SLOT="1/9999"
+if [[ ${PV} == *9999* ]]; then
+	MDDS_SLOT="1/2.1"
 	EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 	inherit git-r3 autotools
 else
@@ -39,7 +38,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999 ]] && eautoreconf
+	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 src_configure() {

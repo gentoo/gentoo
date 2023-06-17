@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <!-- maintainer-needed -->
-    </pkgmetadata>
+    <upstream>
+        <remote-id type="github">WayfireWM/wayfire-plugins-extra</remote-id>
+    </upstream>
+</pkgmetadata>

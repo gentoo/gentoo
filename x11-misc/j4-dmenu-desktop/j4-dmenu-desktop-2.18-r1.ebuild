@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,10 @@ RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-cpp/catch:1 )"
 RDEPEND="dmenu? ( x11-misc/dmenu )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.18-gcc13.patch
+)
 
 src_prepare() {
 	cmake_src_prepare

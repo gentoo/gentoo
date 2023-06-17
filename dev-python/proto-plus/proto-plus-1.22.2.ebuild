@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
@@ -21,7 +21,7 @@ S="${WORKDIR}/${PN}-python-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	<dev-python/protobuf-python-5[${PYTHON_USEDEP}]
@@ -37,4 +37,4 @@ BDEPEND="
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme

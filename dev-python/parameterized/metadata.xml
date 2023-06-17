@@ -10,6 +10,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">wolever/parameterized</remote-id>
 		<remote-id type="pypi">parameterized</remote-id>
 	</upstream>
 </pkgmetadata>

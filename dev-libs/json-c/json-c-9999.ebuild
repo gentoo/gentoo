@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,10 +18,6 @@ BDEPEND="doc? ( >=app-doc/doxygen-1.8.13 )"
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h
 )
-
-src_prepare() {
-	cmake_src_prepare
-}
 
 multilib_src_configure() {
 	local mycmakeargs=(

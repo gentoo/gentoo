@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="cpan">Business-ISBN-Data</remote-id>
 		<remote-id type="cpan-module">Business::ISBN::Data</remote-id>
+		<remote-id type="github">briandfoy/business-isbn-data</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Reading and writing of data on regular grids in Python"
 HOMEPAGE="
 	https://pypi.org/project/GridDataFormats/
 	https://github.com/MDAnalysis/GridDataFormats/
 "
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-3"

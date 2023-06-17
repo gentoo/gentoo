@@ -1,6 +1,23 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2023-05-27)
+# sd-boot should work here.
+sys-apps/systemd -boot -gnuefi
+sys-apps/systemd-utils -boot
+
+# Sam James <sam@gentoo.org> (2023-05-10)
+# sys-cluster/ceph not keyworded here
+sys-block/tgt rbd
+
+# jinqiang zhang <peeweep@0x0.ee> (2023-03-27)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan
+
+# Yixun Lan <dlan@gentoo.org> (2023-02-16)
+# USE=java depend on virtual/jdk:1.8 which is not support on RISC-V
+app-office/libreoffice java libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
+
 # Sam James <sam@gentoo.org> (2023-01-27)
 # media-libs/shaderc not keyworded here
 games-action/supertuxkart vulkan
@@ -59,11 +76,6 @@ dev-libs/cyrus-sasl berkdb
 dev-python/QtPy pyside2 webengine
 dev-python/QtPy test
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-06-07)
-# riscv has no sanitizers unmasked for the time being, so
-# mask to prevent emerge from erroring out by default
-sys-devel/clang-runtime sanitize
-
 # Marek Szuba <marecki@gentoo.org> (2022-04-30)
 # net-wireless/sdrplay contains prebuilt binaries, currently available
 # upstream only for amd64/x86 and arm
@@ -102,7 +114,6 @@ dev-python/anyio test
 # Marek Szuba <marecki@gentoo.org> (2021-09-23)
 # mkdocs ecosystem only partly keyworded on riscv, has rather messy
 # Python-target requirements.
-dev-python/backrefs doc
 dev-python/pyspelling doc
 dev-python/wcmatch doc
 
@@ -146,11 +157,6 @@ net-analyzer/rrdtool rados
 app-crypt/heimdal afs
 # app-editors/xemacs reports arch as unknown, fails to build
 dev-lang/ruby xemacs
-
-# Yixun Lan <dlan@gentoo.org> (2021-08-20)
-# dependencies not keyworded/tested
-gnome-extra/sushi office
-gnome-base/gnome-shell browser-extension
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested

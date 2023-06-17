@@ -34,7 +34,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		$(use_with doc docs)
+		$(multilib_native_use_with doc docs)
 		$(use_enable test tests)
 	)
 	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"

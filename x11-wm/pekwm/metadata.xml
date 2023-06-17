@@ -12,6 +12,10 @@
 	</longdescription>	
 	<use>
 		<flag name="contrib">Install optional extras in the documentation directory</flag>
+		<flag name="pango">Pango font support</flag>
 		<flag name="themes">Install additional themes</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">pekwm/pekwm</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -4,35 +4,41 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit autotools flag-o-matic multilib multilib-build toolchain-funcs wrapper
+PYTHON_COMPAT=( python3_{10..12} )
+inherit autotools edo flag-o-matic multilib multilib-build
+inherit python-any-r1 toolchain-funcs wrapper
 
-WINE_GECKO=2.47.3
-WINE_MONO=7.4.0
+WINE_GECKO=2.47.4
+WINE_MONO=8.0.0
+WINE_P=wine-$(ver_cut 1-2)
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/wine-staging/wine-staging.git"
+	EGIT_REPO_URI="https://gitlab.winehq.org/wine/wine-staging.git"
 	WINE_EGIT_REPO_URI="https://gitlab.winehq.org/wine/wine.git"
 else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="
-		https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz
+		https://dl.winehq.org/wine/source/${WINE_SDIR}/${WINE_P}.tar.xz
 		https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
-S="${WORKDIR}/wine-${PV}"
+S="${WORKDIR}/${WINE_P}"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
-HOMEPAGE="https://wiki.winehq.org/Wine-Staging"
+HOMEPAGE="
+	https://wiki.winehq.org/Wine-Staging
+	https://gitlab.winehq.org/wine/wine-staging/"
 
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
 IUSE="
 	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups dos
-	llvm-libunwind debug custom-cflags +fontconfig +gecko gphoto2
-	+gstreamer kerberos +mingw +mono netapi nls odbc opencl +opengl
-	osmesa pcap perl pulseaudio samba scanner +sdl selinux +ssl
-	+truetype udev udisks +unwind usb v4l +vulkan +xcomposite xinerama"
+	llvm-libunwind custom-cflags +fontconfig +gecko gphoto2 +gstreamer
+	kerberos +mingw +mono netapi nls opencl +opengl osmesa pcap perl
+	pulseaudio samba scanner +sdl selinux smartcard +ssl +strip
+	+truetype udev udisks +unwind usb v4l +vulkan wayland +xcomposite
+	xinerama"
 REQUIRED_USE="
 	X? ( truetype )
 	crossdev-mingw? ( mingw )" # bug #551124 for truetype
@@ -61,7 +67,6 @@ WINE_DLOPEN_DEPEND="
 	fontconfig? ( media-libs/fontconfig[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	netapi? ( net-fs/samba[${MULTILIB_USEDEP}] )
-	odbc? ( dev-db/unixODBC[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	truetype? ( media-libs/freetype[${MULTILIB_USEDEP}] )
@@ -86,16 +91,23 @@ WINE_COMMON_DEPEND="
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
 	scanner? ( media-gfx/sane-backends[${MULTILIB_USEDEP}] )
+	smartcard? ( sys-apps/pcsc-lite[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	unwind? (
 		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
-	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )"
+	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )
+	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )"
 RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
-	dos? ( games-emulation/dosbox )
+	dos? (
+		|| (
+			games-emulation/dosbox
+			games-emulation/dosbox-staging
+		)
+	)
 	gecko? ( app-emulation/wine-gecko:${WINE_GECKO}[${MULTILIB_USEDEP}] )
 	gstreamer? ( media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}] )
 	mono? ( app-emulation/wine-mono:${WINE_MONO} )
@@ -110,7 +122,16 @@ DEPEND="
 	${WINE_COMMON_DEPEND}
 	sys-kernel/linux-headers
 	X? ( x11-base/xorg-proto )"
+# gitapply.sh prefers git but can fallback to patch+extras
 BDEPEND="
+	${PYTHON_DEPS}
+	|| (
+		dev-vcs/git
+		(
+			sys-apps/gawk
+			sys-apps/util-linux
+		)
+	)
 	dev-lang/perl
 	sys-devel/binutils
 	sys-devel/bison
@@ -119,9 +140,15 @@ BDEPEND="
 	mingw? ( !crossdev-mingw? (
 		>=dev-util/mingw64-toolchain-10.0.0_p1-r2[${MULTILIB_USEDEP}]
 	) )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	wayland? ( dev-util/wayland-scanner )"
 IDEPEND=">=app-eselect/eselect-wine-2"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	__clear_cache # unused on amd64+x86 (bug #900334)
+	res_getservers # false positive
+)
+QA_FLAGS_IGNORED="usr/lib/.*/wine/.*-unix/odbc32.so" # has no compiled objects
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
 PATCHES=(
@@ -164,19 +191,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	local staging=(
-		./patchinstall.sh DESTDIR="${S}"
+	local patchinstallargs=(
 		--all
-		--backend=eapply
 		--no-autoconf
-		-W winemenubuilder-Desktop_Icon_Path #652176
 		${MY_WINE_STAGING_CONF}
 	)
 
-	# source patcher in a subshell so can use eapply as a backend
-	ebegin "Running ${staging[*]}"
-	( cd ../${P}/patches && . "${staging[@]}" )
-	eend ${?} || die "Failed to apply the patchset"
+	edo "${PYTHON}" ../${P}/staging/patchinstall.py "${patchinstallargs[@]}"
 
 	# sanity check, bumping these has a history of oversights
 	local geckomono=$(sed -En '/^#define (GECKO|MONO)_VER/{s/[^0-9.]//gp}' \
@@ -230,6 +251,7 @@ src_configure() {
 		$(use_with pulseaudio pulse)
 		$(use_with scanner sane)
 		$(use_with sdl)
+		$(use_with smartcard pcsclite)
 		$(use_with ssl gnutls)
 		$(use_with truetype freetype)
 		$(use_with udev)
@@ -238,9 +260,9 @@ src_configure() {
 		$(use_with usb)
 		$(use_with v4l v4l2)
 		$(use_with vulkan)
+		$(use_with wayland)
 		$(use_with xcomposite)
 		$(use_with xinerama)
-		$(usev !odbc ac_cv_lib_soname_odbc=)
 	)
 
 	tc-ld-force-bfd # builds with non-bfd but broken at runtime (bug #867097)
@@ -288,7 +310,6 @@ src_configure() {
 			: "${CROSSCFLAGS:=$(
 				# >=wine-7.21 configure.ac no longer adds -fno-strict by mistake
 				append-cflags '-fno-strict-aliasing'
-				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
@@ -334,13 +355,17 @@ src_install() {
 		make_wrapper "${bin##*/}-${P#wine-}" "${bin#"${ED}"}"
 	done
 
-	# don't let portage try to strip PE files with the wrong
-	# strip executable and instead handle it here (saves ~120MB)
 	if use mingw; then
+		# don't let portage try to strip PE files with the wrong
+		# strip executable and instead handle it here (saves ~120MB)
 		dostrip -x ${WINE_PREFIX}/wine/{i386,x86_64}-windows
-		use debug ||
+
+		if use strip; then
+			ebegin "Stripping Windows (PE) binaries"
 			find "${ED}"${WINE_PREFIX}/wine/*-windows -regex '.*\.\(a\|dll\|exe\)' \
-				-exec $(usex abi_x86_64 x86_64 i686)-w64-mingw32-strip --strip-unneeded {} + || die
+				-exec $(usex abi_x86_64 x86_64 i686)-w64-mingw32-strip --strip-unneeded {} +
+			eend ${?} || die
+		fi
 	fi
 
 	dodoc ANNOUNCE AUTHORS README* documentation/README*

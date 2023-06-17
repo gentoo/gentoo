@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">sipsak.berlios</remote-id>
+		<remote-id type="github">nils-ohlmeier/sipsak</remote-id>
 	</upstream>
 </pkgmetadata>

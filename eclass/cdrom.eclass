@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cdrom.eclass
@@ -200,7 +200,7 @@ cdrom_load_next_cd() {
 
 	while true ; do
 		local i cdset
-		: CD_ROOT_${CDROM_CURRENT_CD}
+		: "CD_ROOT_${CDROM_CURRENT_CD}"
 		export CDROM_ROOT=${CD_ROOT:-${!_}}
 		local var="CDROM_CHECK_${CDROM_CURRENT_CD}"
 		IFS=: read -r -a cdset -d "" <<< "${!var}"

@@ -1,0 +1,123 @@
+https://github.com/arakiken/mlterm/pull/68
+
+From 4eb1a0b237a861cee7ba0ceb4b69d54ab46f87f5 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 16 Apr 2023 11:38:16 +0100
+Subject: [PATCH] Fix configure.ac compatibility with Clang 16
+
+Clang 16 makes -Wimplicit-function-declaration and -Wimplicit-int errors by default.
+
+Unfortunately, this can lead to misconfiguration or miscompilation of software as configure
+tests may then return the wrong result.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+Bug: https://bugs.gentoo.org/904353
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+--- a/baselib/configure
++++ b/baselib/configure
+@@ -13226,6 +13226,8 @@ See \`config.log' for more details" "$LINENO" 5; }
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
++#define _XOPEN_SOURCE 600
++#include <stdlib.h>
+ #include <fcntl.h>
+ int
+ main ()
+@@ -13599,6 +13601,8 @@ else
+ /* end confdefs.h.  */
+ 
+ 	#include <stdio.h>
++	#include <stdlib.h>
++	#include <stddef.h>
+ 	int main() {
+ 		return  calloc(8, ((1 << (sizeof(size_t) * 8 - 1)) + 1)) ? 1 : 0 ;
+ 	}
+--- a/baselib/configure.in
++++ b/baselib/configure.in
+@@ -285,7 +285,9 @@ elif test "$bl_cv_mingw" = "yes" ; then
+ 	bl_cv_pty=streams
+ elif test "$host" = "$build" ; then
+ 	AC_CHECK_FUNC(posix_openpt,
+-		[AC_RUN_IFELSE([AC_LANG_PROGRAM([#include <fcntl.h>],
++		[AC_RUN_IFELSE([AC_LANG_PROGRAM([#define _XOPEN_SOURCE 600
++						#include <stdlib.h>
++						#include <fcntl.h>],
+ 						[return posix_openpt(O_RDWR | O_NOCTTY) == -1;])],
+ 				[
+ 					AC_DEFINE(HAVE_POSIX_OPENPT,,"HAVE_POSIX_OPENPT")
+@@ -435,6 +437,8 @@ if test "$host" = "$build"; then
+ 	AC_TRY_RUN(
+ 	[
+ 	#include <stdio.h>
++	#include <stdlib.h>
++	#include <stddef.h>
+ 	int main() {
+ 		return  calloc(8, ((1 << (sizeof(size_t) * 8 - 1)) + 1)) ? 1 : 0 ;
+ 	}
+--- a/configure
++++ b/configure
+@@ -25110,6 +25110,8 @@ See \`config.log' for more details" "$LINENO" 5; }
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
++#define _XOPEN_SOURCE 600
++#include <stdlib.h>
+ #include <fcntl.h>
+ int
+ main ()
+@@ -25147,6 +25149,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <fcntl.h>
++#include <sys/stat.h>
+ int
+ main ()
+ {
+@@ -25475,6 +25478,8 @@ else
+ /* end confdefs.h.  */
+ 
+ 	#include <stdio.h>
++	#include <stdlib.h>
++	#include <stddef.h>
+ 	int main() {
+ 		return  calloc(8, ((1 << (sizeof(size_t) * 8 - 1)) + 1)) ? 1 : 0 ;
+ 	}
+--- a/configure.in
++++ b/configure.in
+@@ -2150,7 +2150,9 @@ elif test "$bl_cv_mingw" = "yes" ; then
+ 	bl_cv_pty=streams
+ elif test "$host" = "$build" ; then
+ 	AC_CHECK_FUNC(posix_openpt,
+-		[AC_RUN_IFELSE([AC_LANG_PROGRAM([#include <fcntl.h>],
++		[AC_RUN_IFELSE([AC_LANG_PROGRAM([#define _XOPEN_SOURCE 600
++						#include <stdlib.h>
++						#include <fcntl.h>],
+ 						[return posix_openpt(O_RDWR | O_NOCTTY) == -1;])],
+ 				[
+ 					AC_DEFINE(HAVE_POSIX_OPENPT,,"HAVE_POSIX_OPENPT")
+@@ -2160,7 +2162,8 @@ elif test "$host" = "$build" ; then
+ 		[bl_cv_pty=bsd])
+ 	if test "$bl_cv_pty" = "bsd" ; then
+ 		AC_RUN_IFELSE(
+-			[AC_LANG_PROGRAM([#include <fcntl.h>],
++			[AC_LANG_PROGRAM([#include <sys/stat.h>
++					#include <fcntl.h>],
+ 					[return open( "/dev/ptmx", O_RDWR | O_NOCTTY, 0) == -1;])],
+ 			[bl_cv_pty=streams])
+ 	fi
+@@ -2297,6 +2300,8 @@ if test "$host" = "$build"; then
+ 	AC_TRY_RUN(
+ 	[
+ 	#include <stdio.h>
++	#include <stdlib.h>
++	#include <stddef.h>
+ 	int main() {
+ 		return  calloc(8, ((1 << (sizeof(size_t) * 8 - 1)) + 1)) ? 1 : 0 ;
+ 	}

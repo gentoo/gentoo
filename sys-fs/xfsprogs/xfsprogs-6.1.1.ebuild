@@ -6,12 +6,12 @@ EAPI=7
 inherit flag-o-matic systemd usr-ldscript
 
 DESCRIPTION="XFS filesystem utilities"
-HOMEPAGE="https://xfs.wiki.kernel.org/"
+HOMEPAGE="https://xfs.wiki.kernel.org/ https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/"
 SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="icu libedit nls selinux"
 
 RDEPEND="dev-libs/inih

@@ -14,7 +14,6 @@ SRC_URI="https://github.com/artyom-poptsov/${PN}/archive/v${PV}.tar.gz
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
 
 RDEPEND="
 	>=dev-scheme/guile-2.0.0:=
@@ -23,7 +22,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
-PATCHES=( "${FILESDIR}"/${P}-tests.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-tests.patch
+)
 
 # guile generates ELF files without use of C or machine code
 # It's a portage's false positive. bug #677600
@@ -42,4 +43,8 @@ src_install() {
 	default
 
 	find "${ED}" -name "*.la" -delete || die
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }

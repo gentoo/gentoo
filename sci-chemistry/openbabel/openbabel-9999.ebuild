@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 WX_GTK_VER=3.0-gtk3
 
 inherit cmake desktop flag-o-matic perl-functions python-r1 toolchain-funcs wxwidgets xdg-utils
@@ -30,7 +30,7 @@ fi
 
 SRC_URI="${SRC_URI}
 	https://openbabel.org/docs/dev/_static/babel130.png -> ${PN}.png
-	http://openbabel.org/OBTitle.jpg ->  ${PN}.jpg"
+	https://openbabel.org/OBTitle.jpg ->  ${PN}.jpg"
 
 # See src/CMakeLists.txt for LIBRARY_VERSION
 SLOT="0/7.0.0"

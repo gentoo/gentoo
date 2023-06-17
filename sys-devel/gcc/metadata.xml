@@ -24,6 +24,16 @@
 			code is therefore compatible with i686 at the earliest.
 		</flag>
 		<flag name="d">Enable support for the D programming language</flag>
+		<flag name="debug">
+			Enables GCC's 'checking' facility via --enable-checking=yes,extra,rtl.
+
+			This adds checks to various compiler passes for integrity and input
+			validation. This can help catch possible miscompilations early as
+			well as latent bugs which could become real problems in future, but
+			at the cost of slower compile times when using GCC.
+
+			Unrelated to backtraces.
+		</flag>
 		<flag name="default-stack-clash-protection">
 			Build packages with stack clash protection on by default as
 			a hardening measure.
@@ -64,6 +74,7 @@
 			other programs with LTO. This USE flag is for whether
 			GCC itself is built and optimized with LTO.
 		</flag>
+		<flag name="modula2">Build the GCC Modula-2 language frontend.</flag>
 		<flag name="mpx">Enable support for Intel Memory Protection Extensions (MPX)</flag>
 		<flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)</flag>
 		<flag name="objc">Build support for the Objective C code language</flag>
@@ -89,7 +100,6 @@
 		</flag>
 		<flag name="ssp">Build packages with stack smashing protection on by default</flag>
 		<flag name="systemtap">enable systemtap static probe points</flag>
-		<flag name="valgrind">Enable valgrind annotations for gcc internals (useful for gcc debugging).</flag>
 		<flag name="vtv">
 			Build support for virtual table verification (a C++ hardening feature).
 

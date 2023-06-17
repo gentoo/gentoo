@@ -1,0 +1,37 @@
+diff --git a/src/builtin.c b/src/builtin.c
+index 1c6b08c..407df2a 100644
+--- a/src/builtin.c
++++ b/src/builtin.c
+@@ -1,5 +1,6 @@
+ #define _BSD_SOURCE
+ #define _GNU_SOURCE
++#define _DEFAULT_SOURCE
+ #ifndef __sun__
+ # define _XOPEN_SOURCE
+ # define _XOPEN_SOURCE_EXTENDED 1
+diff --git a/src/jv_dtoa.c b/src/jv_dtoa.c
+index 33feb99..fcbd902 100644
+--- a/src/jv_dtoa.c
++++ b/src/jv_dtoa.c
+@@ -2327,7 +2327,7 @@ retlow1:
+ jvp_strtod
+  (struct dtoa_context* C, const char *s00, char **se)
+ {
+-	int bb2, bb5, bbe, bd2, bd5, bbbits, bs2, c, e, e1, test_scale;
++	int bb2, bb5, bbe, bd2, bd5, bbbits, bs2, c, e, e1;
+ 	int esign, i, j, k, nd, nd0, nf, nz, nz0, nz1, sign;
+ 	CONST char *s, *s0, *s1;
+ 	double aadj, aadj1;
+diff --git a/src/jv_dtoa_tsd.c b/src/jv_dtoa_tsd.c
+index cfccd40..d39911e 100644
+--- a/src/jv_dtoa_tsd.c
++++ b/src/jv_dtoa_tsd.c
+@@ -31,7 +31,7 @@ void jv_tsd_dtoa_ctx_fini() {
+ static
+ #endif
+ void jv_tsd_dtoa_ctx_init() {
+-  if (pthread_key_create(&dtoa_ctx_key, tsd_dtoa_ctx_dtor) != 0) {
++  if (pthread_key_create(&dtoa_ctx_key, (void (*)(void *))tsd_dtoa_ctx_dtor) != 0) {
+     fprintf(stderr, "error: cannot create thread specific key");
+     abort();
+   }

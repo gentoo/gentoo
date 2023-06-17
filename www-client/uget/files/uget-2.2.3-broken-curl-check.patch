@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/872080
+
+This check can't handle curl >= 8 or non-bash /bin/sh.
+--- a/configure.ac
++++ b/configure.ac
+@@ -81,11 +81,6 @@ if test "x$CURL_CONFIG" = "x" ; then
+ fi
+ CURL_CFLAGS=`$CURL_CONFIG --cflags`
+ CURL_LIBS=`$CURL_CONFIG --libs`
+-let CURL_VERNUM=0x0`$CURL_CONFIG --vernum`
+-let CURL_VERMIN=0x071301		# 7.19.1
+-if test $CURL_VERNUM -lt $CURL_VERMIN; then
+-	AC_MSG_ERROR(Requires libcurl version >= 7.19.1)
+-fi
+ AC_SUBST(CURL_CFLAGS)
+ AC_SUBST(CURL_LIBS)
+ 

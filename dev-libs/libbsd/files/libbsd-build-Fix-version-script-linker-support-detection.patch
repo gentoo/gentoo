@@ -1,0 +1,36 @@
+From dec783dce5a7131e232a06e63a544645b5463dd8 Mon Sep 17 00:00:00 2001
+From: Guillem Jover <guillem@hadrons.org>
+Date: Sun, 12 Feb 2023 23:55:09 +0100
+Subject: [PATCH] build: Fix version script linker support detection
+
+When the linker uses --no-undefined-version either specified by the user
+or as the default behavior (such as with newer clang >= 16 releases),
+a missing symbol definition will cause a linker error if that symbol is
+listed in the version script.
+
+Upstream commit: https://gitlab.freedesktop.org/libbsd/libbsd/-/commit/dec783dce5a7131e232a06e63a544645b5463dd8
+
+---
+ configure.ac | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 17d113c..7d17a93 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,7 +33,11 @@ AC_CACHE_CHECK([if ld supports --version-script flag],
+     save_LDFLAGS=$LDFLAGS
+     LDFLAGS="$LDFLAGS -Wl,--version-script=conftest.map"
+     AC_LINK_IFELSE([
+-      AC_LANG_PROGRAM([], [])
++	AC_LANG_PROGRAM([[
++extern int symbol(void);
++int symbol(void) { return 0; }
++]], [[
++]])
+     ], [
+       libbsd_cv_version_script=yes
+     ], [
+-- 
+2.39.1.615.ga0422de7ea.dirty
+

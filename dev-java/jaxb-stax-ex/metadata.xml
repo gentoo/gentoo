@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">eclipse-ee4j/jaxb-stax-ex</remote-id>
+	</upstream>
 </pkgmetadata>

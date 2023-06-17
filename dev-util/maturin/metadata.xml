@@ -14,6 +14,7 @@
 		<name>Rust Project</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://www.maturin.rs/changelog.html</changelog>
 		<remote-id type="github">PyO3/maturin</remote-id>
 		<remote-id type="pypi">maturin</remote-id>
 	</upstream>

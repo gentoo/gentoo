@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 inherit linux-info usr-ldscript verify-sig
@@ -14,10 +14,10 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	EGIT_REPO_URI="https://git.netfilter.org/${PN}"
 else
 	SRC_URI="
-		https://netfilter.org/projects/${PN}/files/${P}.tar.bz2
-		verify-sig? ( https://netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )
+		https://netfilter.org/projects/${PN}/files/${P}.tar.xz
+		verify-sig? ( https://netfilter.org/projects/${PN}/files/${P}.tar.xz.sig )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi

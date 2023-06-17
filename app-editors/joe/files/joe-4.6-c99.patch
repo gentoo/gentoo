@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/900164
+Patch from https://sourceforge.net/p/joe-editor/mercurial/merge-requests/3/
+
+commit 26e83257075789d901cadbe280ff7f1bd7602983
+Authored by: Nikita Popov 2023-01-31
+
+   Port to C99
+
+   Ensure that functions are declared before use for compatibility
+   with newer compiler versions.
+
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -9,7 +9,7 @@
+ int main() {
+   int a = 0;
+   isblank(a++);
+-  exit(a != 1);
++  return a != 1;
+ }
+ 			],
+ 			[joe_cv_isblank=yes],
+@@ -34,7 +34,7 @@
+ #endif
+ int main() {
+ 	/* exit succesfully if setpgrp() takes two args (*BSD systems) */
+-	exit(setpgrp(0, 0) != 0);
++	return setpgrp(0, 0) != 0;
+ }],
+ 			[joe_cv_setpgrp_void=no],
+ 			[joe_cv_setpgrp_void=yes],
+@@ -95,7 +95,7 @@
+ 	kill((int)getpid(), SIGINT);
+ 	kill((int)getpid(), SIGINT);
+ 	/* exit succesfully if don't have to reinstall sighandler when invoked */
+-	exit(nsigint != 2);
++	return nsigint != 2;
+ }],
+ 			[joe_cv_reinstall_sighandlers=no],
+ 			[joe_cv_reinstall_sighandlers=yes],
+--- a/joe/selinux.c
++++ b/joe/selinux.c
+@@ -6,6 +6,7 @@
+ 
+ #ifdef WITH_SELINUX
+ #include <selinux/selinux.h>
++#include <error.h>
+ static int selinux_enabled = -1;
+ #endif
+ 
+@@ -108,7 +109,7 @@
+ 		return 0;
+ 
+ 	if (setfscreatecon(0) < 0) {
+-		error(0, errno, joe_gettext(_("Could not reset default security context")));
++		error(0, errno, "%s", joe_gettext(_("Could not reset default security context")));
+ 		return 1;
+ 	}
+ #endif

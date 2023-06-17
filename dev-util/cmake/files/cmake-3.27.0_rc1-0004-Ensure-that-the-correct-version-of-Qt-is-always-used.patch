@@ -1,0 +1,54 @@
+From 30cf2aa7830a09b2bc4132eb3a3920fc0853b827 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 9 Jun 2023 09:57:18 +0100
+Subject: [PATCH 4/6] Ensure that the correct version of Qt is always used.
+
+With the introduction qt-4.8.6, Qt binaries were moved from /usr/bin to
+/usr/$(get_libdir)/qt4/bin, leaving behind in their place symlinks to qtchooser.
+
+There is no guarantee to which version of Qt these symlinks might point, so it
+is necessary to find the correct version explicitly.
+
+Once qmake is found, it is queried for the correct location of all other items.
+
+Bug: https://bugs.gentoo.org/547222
+
+[imported from cmake-3.5.2-FindQt4.patch.]
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Modules/FindQt4.cmake
++++ b/Modules/FindQt4.cmake
+@@ -478,13 +478,23 @@ function(_QT4_FIND_QMAKE QMAKE_NAMES QMAKE_RESULT VERSION_RESULT)
+ 
+   get_filename_component(qt_install_version "[HKEY_CURRENT_USER\\Software\\trolltech\\Versions;DefaultQtVersion]" NAME)
+ 
+-  find_program(QT_QMAKE_EXECUTABLE NAMES ${QMAKE_NAME}
+-    PATHS
+-      ENV QTDIR
+-      "[HKEY_CURRENT_USER\\Software\\Trolltech\\Versions\\${qt_install_version};InstallDir]"
+-    PATH_SUFFIXES bin
+-    DOC "The qmake executable for the Qt installation to use"
+-  )
++  if(CMAKE_GENTOO_BUILD OR CMAKE_BUILD_TYPE STREQUAL Gentoo)
++    find_program(QT_QMAKE_EXECUTABLE NAMES ${QMAKE_NAME}
++      PATHS
++        $ENV{EPREFIX}/usr/${CMAKE_INSTALL_LIBDIR}/qt4/bin
++        $ENV{EPREFIX}/usr/bin
++        NO_DEFAULT_PATH
++      DOC "The qmake executable for the Qt installation to use"
++    )
++  else()
++    find_program(QT_QMAKE_EXECUTABLE NAMES ${QMAKE_NAME}
++      PATHS
++        ENV QTDIR
++        "[HKEY_CURRENT_USER\\Software\\Trolltech\\Versions\\${qt_install_version};InstallDir]"
++      PATH_SUFFIXES bin
++      DOC "The qmake executable for the Qt installation to use"
++    )
++  endif()
+ 
+   set(major 0)
+   if (QT_QMAKE_EXECUTABLE)
+-- 
+2.41.0
+

@@ -1,8 +1,0 @@
-#!/sbin/openrc-run
-
-pidfile="/run/sonarr.pid"
-command="mono"
-command_args="/opt/sonarr/Sonarr.exe"
-command_user="sonarr:sonarr"
-command_background=true
-

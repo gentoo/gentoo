@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,12 +19,12 @@ fi
 
 LICENSE="GPL-3+ Boost-1.0"
 SLOT="0"
-IUSE="curl ffmpeg heif jpeg libconfig openmp png raw tiff wcs"
+IUSE="curl exif ffmpeg heif jpeg libconfig openmp png raw tiff wcs"
 
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/json-glib-1.2.6
-	>=media-gfx/exiv2-0.25
+	dev-libs/sleef:=
 	media-libs/librtprocess:=
 	>=media-libs/opencv-4.4.0:=
 	sci-libs/cfitsio
@@ -33,6 +33,7 @@ DEPEND="
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.20.0:3
 	curl? ( net-misc/curl )
+	exif? ( >=media-gfx/exiv2-0.25 )
 	ffmpeg? ( media-video/ffmpeg:= )
 	heif? ( media-libs/libheif )
 	libconfig? ( >=dev-libs/libconfig-1.4[cxx] )
@@ -45,6 +46,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="dev-util/cmake
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
@@ -64,6 +67,7 @@ src_configure() {
 	local emesonargs=(
 		-Dffms2=false
 		-Dcriterion=false
+		$(meson_use exif exiv2)
 		$(meson_use ffmpeg)
 		$(meson_use heif libheif)
 		$(meson_use jpeg libjpeg)
@@ -80,6 +84,7 @@ src_configure() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	optfeature "gnuplot support" sci-visualization/gnuplot
 }

@@ -214,7 +214,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND=""
 BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]"

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 qmake-utils xdg-utils
 
@@ -13,7 +13,7 @@ MY_P=mupen64plus-ui-python-${EGIT_COMMIT}
 
 DESCRIPTION="A frontend for Mupen64Plus"
 HOMEPAGE="
-	http://m64py.sourceforge.net/
+	https://m64py.sourceforge.net/
 	https://github.com/mupen64plus/mupen64plus-ui-python/
 "
 SRC_URI="

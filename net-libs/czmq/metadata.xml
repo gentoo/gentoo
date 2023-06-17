@@ -13,4 +13,7 @@
 		<flag name="nss">Use <pkg>dev-libs/nss</pkg> for SHA instead of an internal implementation</flag>
 		<flag name="uuid">Enable UUID support using <pkg>sys-apps/util-linux</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">zeromq/czmq</remote-id>
+	</upstream>
 </pkgmetadata>

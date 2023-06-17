@@ -9,7 +9,6 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="modemmanager">Enable support for mobile broadband devices</flag>
 		<flag name="openconnect">Build support for the OpenConnect VPN client</flag>
 		<flag name="teamd">Enable Teamd control support</flag>
 	</use>

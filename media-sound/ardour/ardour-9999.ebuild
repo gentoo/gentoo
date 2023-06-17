@@ -1,10 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
-PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
+PLOCALES="ca cs de el en_GB es eu fr it ja ko nn pl pt pt_PT ru sv zh"
 inherit toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
 
 DESCRIPTION="Digital Audio Workstation"
@@ -54,11 +55,11 @@ RDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/pango
 	jack? ( virtual/jack )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
-	media-libs/suil[gtk2]
+	media-libs/suil[X,gtk2]
 	media-libs/lv2"
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
@@ -72,6 +73,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.8-metadata.patch"
+	"${FILESDIR}/${PN}-7.4-libc++.patch"
 )
 
 pkg_pretend() {
@@ -87,7 +89,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	xdg_src_prepare
+	default
 
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
@@ -136,12 +138,15 @@ src_configure() {
 		--noconfirm
 		--optimize
 		--with-backends=${backends}
-		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && \
+			echo "--fpu-optimization" || echo "--no-fpu-optimization")
 		$(usex doc "--docs" '')
 		$(usex nls "--nls" "--no-nls")
 		$(usex phonehome "--phone-home" "--no-phone-home")
 		# not possible right now  --use-external-libs
 	)
+
+	[[ "$(tc-get-cxx-stdlib)" = "libc++" ]] && myconf+=( --use-libc++ )
 
 	waf-utils_src_configure "${myconf[@]}"
 }

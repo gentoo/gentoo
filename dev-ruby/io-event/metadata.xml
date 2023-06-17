@@ -5,6 +5,9 @@
     <email>ruby@gentoo.org</email>
     <name>Gentoo Ruby Project</name>
   </maintainer>
+  <use>
+    <flag name="io-uring">Enable io_uring support, and use io_uring instead of epoll</flag>
+  </use>
   <upstream>
     <remote-id type="github">socketry/io-event</remote-id>
   </upstream>

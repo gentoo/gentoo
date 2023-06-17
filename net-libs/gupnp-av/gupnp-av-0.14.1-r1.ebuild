@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,9 @@ BDEPEND="
 src_prepare() {
 	use vala && vala_setup
 	default
+
+	# This makes sense for upstream but not for us downstream, bug #906641.
+	sed -i -e '/-Werror=deprecated-declarations/d' meson.build || die
 }
 
 src_configure() {

@@ -37,7 +37,7 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 # TODO: Like to simplifiy these. Mostly the flags related to Groups.
 IUSE="all-modules boost cuda debug doc examples ffmpeg freetype gdal imaging
 	java las +logging mpi mysql odbc openmp openvdb pdal postgres python qt5
@@ -162,7 +162,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.2.2-VTKm-respect-user-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-9.2.2-link-with-glut-library-for-freeglut.patch
 	"${FILESDIR}"/${PN}-9.2.5-Add-include-cstdint-to-compile-with-gcc-13.patch
-	"${FILESDIR}"/${PN}-9.2.5-Add-include-cstdint-for-gcc-13.patch
+	"${FILESDIR}"/${PN}-9.2.5-Fix-compilation-error-with-CUDA-12.patch
+	"${FILESDIR}"/${PN}-9.2.5-More-include-cstdint-to-compile-with-gcc13.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )

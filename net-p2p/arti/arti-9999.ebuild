@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,13 +16,14 @@ if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.torproject.org/tpo/core/arti"
 else
-	SRC_URI="https://gitlab.torproject.org/tpo/core/${PN}/-/archive/${PN}-v${PV}/${PN}-${PN}-v${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://gitlab.torproject.org/tpo/core/${PN}/-/archive/${PN}-v${PV}/${PN}-${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2
 		$(cargo_crate_uris ${CRATES})"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="MIT Apache-2.0"
+LICENSE+=""
 SLOT="0"
 
 DEPEND="app-arch/xz-utils
@@ -42,14 +43,9 @@ src_unpack() {
 }
 
 src_compile() {
-	pushd crates/arti || die
-	cargo_src_compile
-}
-
-src_test() {
 	for crate in crates/*; do
-		pushd "${crate}" >/dev/null || die
-		cargo_src_test
+		pushd crates/arti || die
+		cargo_src_compile
 		popd >/dev/null || die
 	done
 }

@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">jupyter-lsp</remote-id>
-		<remote-id type="github">krassowski/jupyterlab-lsp</remote-id>
+		<remote-id type="github">jupyter-lsp/jupyterlab-lsp</remote-id>
 	</upstream>
 </pkgmetadata>

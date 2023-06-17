@@ -1,8 +1,8 @@
 # Copyright 2011-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{9..11} )
+EAPI=8
+PYTHON_COMPAT=( python3_{10..11} )
 
 # Avoid QA warnings
 TMPFILES_OPTIONAL=1
@@ -35,13 +35,14 @@ HOMEPAGE="http://systemd.io/"
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
-	acl apparmor audit cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnuefi gnutls homed http idn importd iptables +kmod
+	acl apparmor audit boot cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
+	fido2 +gcrypt gnutls homed http idn importd iptables +kmod
 	+lz4 lzma +openssl pam pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
 "
 REQUIRED_USE="
 	dns-over-tls? ( || ( gnutls openssl ) )
+	fido2? ( cryptsetup openssl )
 	homed? ( cryptsetup pam openssl )
 	importd? ( curl lzma || ( gcrypt openssl ) )
 	pwquality? ( homed )
@@ -89,7 +90,6 @@ COMMON_DEPEND="
 # Newer linux-headers needed by ia64, bug #480218
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-${MINKV}
-	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
 "
 
 # baselayout-2.2 has /run
@@ -161,11 +161,15 @@ BDEPEND="
 	dev-libs/libxslt:0
 	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
+	boot? ( $(python_gen_any_dep 'dev-python/pyelftools[${PYTHON_USEDEP}]') )
 "
 
 python_check_deps() {
-	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" || return
+	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]" || return
+	if use boot; then
+		python_has_version "dev-python/pyelftools[${PYTHON_USEDEP}]" || return
+	fi
 }
 
 QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
@@ -178,7 +182,7 @@ pkg_pretend() {
 			ewarn "See https://bugs.gentoo.org/674458."
 		fi
 
-		local CONFIG_CHECK=" ~BINFMT_MISC ~BLK_DEV_BSG ~CGROUPS
+		local CONFIG_CHECK="~BLK_DEV_BSG ~CGROUPS
 			~CGROUP_BPF ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 			~TIMERFD ~TMPFS_XATTR ~UNIX ~USER_NS
@@ -278,16 +282,14 @@ multilib_src_configure() {
 		$(meson_native_use_bool acl)
 		$(meson_native_use_bool apparmor)
 		$(meson_native_use_bool audit)
+		$(meson_native_use_bool boot bootloader)
 		$(meson_native_use_bool cryptsetup libcryptsetup)
 		$(meson_native_use_bool curl libcurl)
 		$(meson_native_use_bool dns-over-tls dns-over-tls)
 		$(meson_native_use_bool elfutils)
 		$(meson_native_use_bool fido2 libfido2)
 		$(meson_use gcrypt)
-		$(meson_native_use_bool gnuefi gnu-efi)
 		$(meson_native_use_bool gnutls)
-		-Defi-includedir="${ESYSROOT}/usr/include/efi"
-		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		$(meson_native_use_bool homed)
 		$(meson_native_use_bool http microhttpd)
 		$(meson_native_use_bool idn)
@@ -297,6 +299,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool kmod)
 		$(meson_use lz4)
 		$(meson_use lzma xz)
+		$(meson_use test tests)
 		$(meson_use zstd)
 		$(meson_native_use_bool iptables libiptc)
 		$(meson_native_use_bool openssl)
@@ -343,6 +346,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR
+	local -x COLUMNS=80
 	meson_src_test
 }
 
@@ -356,17 +360,17 @@ multilib_src_install_all() {
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
 
+	insinto /usr/lib/tmpfiles.d
+	doins "${FILESDIR}"/legacy.conf
+
 	if ! use resolvconf; then
 		rm -f "${ED}${rootprefix}/${sbin}"/resolvconf || die
 	fi
 
-	rm "${ED}"/etc/init.d/README || die
-	rm "${ED}${rootprefix}"/lib/systemd/system-generators/systemd-sysv-generator || die
-
 	if ! use sysv-utils; then
-		rm "${ED}${rootprefix}/${sbin}"/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
+		rm "${ED}${rootprefix}/${sbin}"/{halt,init,poweroff,reboot,shutdown} || die
 		rm "${ED}"/usr/share/man/man1/init.1 || die
-		rm "${ED}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 || die
+		rm "${ED}"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8 || die
 	fi
 
 	if ! use resolvconf && ! use sysv-utils && use split-usr; then
@@ -464,6 +468,10 @@ pkg_preinst() {
 			eerror "installing ${CATEGORY}/${PN} with USE=\"-split-usr\" to avoid run-time breakage."
 			die "System layout with split directories still used"
 		fi
+	fi
+	if ! use boot && has_version "sys-apps/systemd[gnuefi(-)]"; then
+		ewarn "The 'gnuefi' USE flag has been renamed to 'boot'."
+		ewarn "Make sure to enable the 'boot' USE flag if you use systemd-boot."
 	fi
 }
 

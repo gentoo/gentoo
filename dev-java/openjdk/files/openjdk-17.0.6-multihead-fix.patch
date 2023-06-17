@@ -1,0 +1,24 @@
+From cfc9a881afd300bd7c1ce784287d1669308e89fc Mon Sep 17 00:00:00 2001
+From: Sergey Bylokhov <serb@openjdk.org>
+Date: Sat, 2 Jul 2022 00:25:20 +0000
+Subject: [PATCH] 8288854: getLocalGraphicsEnvironment() on for multi-screen
+ setups throws exception NPE
+
+Reviewed-by: azvegint, aivanov
+---
+ .../unix/classes/sun/awt/X11GraphicsEnvironment.java            | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/java.desktop/unix/classes/sun/awt/X11GraphicsEnvironment.java b/src/java.desktop/unix/classes/sun/awt/X11GraphicsEnvironment.java
+index 5c9d2a1b695..93f5eaf6656 100644
+--- a/src/java.desktop/unix/classes/sun/awt/X11GraphicsEnvironment.java
++++ b/src/java.desktop/unix/classes/sun/awt/X11GraphicsEnvironment.java
+@@ -236,7 +236,7 @@ private synchronized void initDevices() {
+             throw new AWTError("no screen devices");
+         }
+         int index = getDefaultScreenNum();
+-        mainScreen = 0 < index && index < screens.length ? index : 0;
++        mainScreen = 0 < index && index < numScreens ? index : 0;
+ 
+         for (int id = 0; id < numScreens; ++id) {
+             devices.put(id, old.containsKey(id) ? old.remove(id) :

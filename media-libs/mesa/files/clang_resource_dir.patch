@@ -1,0 +1,24 @@
+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/19232#note_1776640
+https://gitlab.freedesktop.org/mesa/mesa/-/issues/7717#note_1832122
+
+diff --git a/src/compiler/clc/clc_helpers.cpp b/src/compiler/clc/clc_helpers.cpp
+index 80bc84831e4..34d156bf227 100644
+--- a/src/compiler/clc/clc_helpers.cpp
++++ b/src/compiler/clc/clc_helpers.cpp
+@@ -39,6 +39,7 @@
+ #include <llvm-c/Target.h>
+ #include <LLVMSPIRVLib/LLVMSPIRVLib.h>
+ 
++#include <clang/Config/config.h>
+ #include <clang/Driver/Driver.h>
+ #include <clang/CodeGen/CodeGenAction.h>
+ #include <clang/Lex/PreprocessorOptions.h>
+@@ -866,7 +867,7 @@ clc_compile_to_llvm_module(LLVMContext &llvm_ctx,
+    // because we might have linked clang statically.
+    auto libclang_path = fs::path(LLVM_LIB_DIR) / "libclang.so";
+    auto clang_res_path =
+-      fs::path(clang::driver::Driver::GetResourcesPath(libclang_path.string())) / "include";
++      fs::path(clang::driver::Driver::GetResourcesPath(libclang_path.string(), CLANG_RESOURCE_DIR)) / "include";
+ 
+    c->getHeaderSearchOpts().UseBuiltinIncludes = true;
+    c->getHeaderSearchOpts().UseStandardSystemIncludes = true;

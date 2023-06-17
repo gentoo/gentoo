@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 
 PATCHES=( "${FILESDIR}"/test.patch )
 
-distutils_enable_sphinx docs/src dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs/src dev-python/sphinx-rtd-theme
 distutils_enable_tests unittest
 
 python_prepare_all() {

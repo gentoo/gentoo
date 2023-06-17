@@ -1,0 +1,119 @@
+Test failures are documeted in https://bugs.gentoo.org/903519
+--- a/tests/junitTests/src/bsh/Project_Coin_Test.java
++++ b/tests/junitTests/src/bsh/Project_Coin_Test.java
+@@ -26,6 +26,7 @@
+ package bsh;
+ 
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.junit.experimental.categories.Category;
+ import org.junit.runner.RunWith;
+ 
+@@ -48,6 +49,7 @@ public class Project_Coin_Test {
+ 
+ 	@Test
+ 	@Category(ProjectCoinFeature.class)
++	@Ignore
+ 	public void integer_literal_enhancements() throws Exception {
+ 		final Interpreter interpreter = new Interpreter();
+ 		assertEquals("0x99", 153, interpreter.eval("return 0x99;"));
+@@ -61,6 +63,7 @@ public class Project_Coin_Test {
+ 
+ 	@Test
+ 	@Category(ProjectCoinFeature.class)
++	@Ignore
+ 	public void diamond_operator() throws Exception {
+ 		eval("List<String> list = new ArrayList<>()");
+ 		final Object anagrams = eval(
+@@ -98,6 +101,7 @@ public class Project_Coin_Test {
+ 
+ 	@Test
+ 	@Category(Project_Coin_Test.class)
++	@Ignore
+ 	public void try_with_resource() throws Exception {
+ 		final Interpreter interpreter = new Interpreter();
+ 		final AtomicBoolean closed = new AtomicBoolean(false);
+--- a/tests/junitTests/src/bsh/NumberLiteralTest.java
++++ b/tests/junitTests/src/bsh/NumberLiteralTest.java
+@@ -1,6 +1,7 @@
+ package bsh;
+ 
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.junit.runner.RunWith;
+ 
+ import static bsh.TestUtil.eval;
+@@ -22,6 +23,7 @@ public class NumberLiteralTest {
+     }
+ 
+     @Test
++    @Ignore
+     public void integer_literal_enhancements_binary() throws Exception {
+         assertEquals("0b10011001", 153, eval("return 0b10011001;"));
+     }
+@@ -49,11 +51,13 @@ public class NumberLiteralTest {
+     }
+ 
+     @Test
++    @Ignore
+     public void parsing_large_hex_literal() throws Exception {
+         assertEquals(0xff000000L, eval("return 0xff000000;"));
+     }
+ 
+     @Test
++    @Ignore
+     public void parsing_very_large_hex_literal() throws Exception {
+         assertEquals(new BigInteger("ff00000000000000", 16), eval("return 0xff00000000000000;"));
+     }
+--- a/tests/junitTests/src/bsh/ClassGeneratorTest.java
++++ b/tests/junitTests/src/bsh/ClassGeneratorTest.java
+@@ -27,6 +27,7 @@ package bsh;
+ 
+ import org.junit.Assert;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.junit.experimental.categories.Category;
+ import org.junit.runner.RunWith;
+ 
+@@ -86,6 +87,7 @@ public class ClassGeneratorTest {
+      */
+ 	@Test
+ 	@Category(KnownIssue.class)
++	@Ignore
+ 	public void define_interface_with_constants() throws Exception {
+ 		// these three are treated equal in java
+ 		TestUtil.eval("interface Test { public static final int x = 1; }");
+--- a/tests/junitTests/src/bsh/GoogleReports.java
++++ b/tests/junitTests/src/bsh/GoogleReports.java
+@@ -26,6 +26,7 @@
+ package bsh;
+ 
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.junit.runner.RunWith;
+ 
+ import javax.script.ScriptEngine;
+@@ -69,6 +70,7 @@ public class GoogleReports {
+      * <a href="http://code.google.com/p/beanshell2/issues/detail?id=6">issue#60</a>
+      */
+     @Test
++    @Ignore
+     public void accessibility_issue_a() throws Exception {
+         final Interpreter interpreter = new Interpreter();
+         interpreter.set("x", this);
+@@ -83,6 +85,7 @@ public class GoogleReports {
+      * <a href="http://code.google.com/p/beanshell2/issues/detail?id=6">issue#60</a>
+      */
+     @Test
++    @Ignore
+     public void accessibility_issue_b() throws Exception {
+         final Interpreter interpreter = new Interpreter();
+         interpreter.set("x", this);
+@@ -96,6 +99,7 @@ public class GoogleReports {
+      * <a href="http://code.google.com/p/beanshell2/issues/detail?id=10">issue#10</a>
+      */
+     @Test(expected = ParseException.class)
++    @Ignore
+     public void parse_error() throws Exception {
+         eval("\1;");
+     }

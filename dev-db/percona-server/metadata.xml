@@ -16,4 +16,7 @@
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
   <flag name="tokudb-backup-plugin">Builds the TokuDB backup plugin</flag>
 </use>
+<upstream>
+  <remote-id type="github">percona/percona-server</remote-id>
+</upstream>
 </pkgmetadata>

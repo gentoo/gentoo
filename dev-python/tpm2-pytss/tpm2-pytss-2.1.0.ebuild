@@ -3,15 +3,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings for TSS"
 HOMEPAGE="
 	https://pypi.org/project/tpm2-pytss
 	https://github.com/tpm2-software/tpm2-pytss
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -30,7 +30,7 @@ RDEPEND="app-crypt/tpm2-tss:=[fapi=]
 DEPEND="${RDEPEND}
 	test? ( app-crypt/swtpm )"
 
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]"
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}

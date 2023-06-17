@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Microsoft compress.exe/expand.exe compatible (de)compressor"
-HOMEPAGE="http://gnuwin32.sourceforge.net/packages/mscompress.htm"
+HOMEPAGE="https://gnuwin32.sourceforge.net/packages/mscompress.htm"
 SRC_URI="ftp://ftp.penguin.cz/pub/users/mhi/mscompress/${P}.tar.bz2"
 
 LICENSE="GPL-2"

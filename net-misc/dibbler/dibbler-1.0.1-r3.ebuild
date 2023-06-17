@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit readme.gentoo-r1 systemd
+inherit flag-o-matic readme.gentoo-r1 systemd
 
 DESCRIPTION="Portable DHCPv6 implementation (server, client and relay)"
 HOMEPAGE="http://klub.com.pl/dhcpv6/"
@@ -25,6 +25,12 @@ DOC_CONTENTS="Make sure that you modify client.conf, server.conf and/or relay.co
 to suit your needs. They are stored in /etc/dibbler"
 
 src_configure() {
+	# ODR violations, bug #861611
+	filter-lto
+
+	# Uses removed 'register' keyword
+	append-cxxflags -std=c++14
+
 	econf $(use_enable resolvconf)
 }
 

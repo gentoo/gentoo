@@ -1,5 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Bart Oldeman <bart.oldeman@calculquebec.ca> (2022-03-02)
+# getentropy requires >=linux=3.17 for __NR_getrandom
+dev-libs/libgcrypt getentropy
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
 # uchardet not stable/keyworded yet on this profile keyword

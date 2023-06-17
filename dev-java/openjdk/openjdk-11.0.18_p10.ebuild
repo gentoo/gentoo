@@ -45,13 +45,13 @@ SRC_URI="
 		$(bootstrap_uri riscv ${RISCV_XPAK})
 		$(bootstrap_uri x86 ${X86_XPAK})
 	)
-	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-11.0.14-riscv.patch.xz )
+	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-11.0.18-riscv.patch.xz )
 "
 
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
-IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap lto selinux source system-bootstrap systemtap"
 
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
@@ -153,7 +153,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use riscv && eapply "${WORKDIR}"/openjdk-11.0.14-riscv.patch
+	use riscv && eapply "${WORKDIR}"/openjdk-11.0.18-riscv.patch
 	default
 	chmod +x configure || die
 }
@@ -172,6 +172,12 @@ src_configure() {
 
 	# Strip some flags users may set, but should not. #818502
 	filter-flags -fexceptions
+
+	# Strip lto related flags, we rely on USE=lto and --with-jvm-features=link-time-opt
+	# https://bugs.gentoo.org/833097
+	# https://bugs.gentoo.org/833098
+	filter-flags '-flto*'
+	filter-flags -fdevirtualize-at-ltrans
 
 	# Enabling full docs appears to break doc building. If not
 	# explicitly disabled, the flag will get auto-enabled if pandoc and
@@ -207,6 +213,8 @@ src_configure() {
 	)
 	! use riscv && myconf+=( --with-jvm-features=shenandoahgc )
 
+	use lto && myconf+=( --with-jvm-features=link-time-opt )
+
 	if use javafx; then
 		# this is not useful for users, just for upstream developers
 		# build system compares mesa version in md file
@@ -235,6 +243,10 @@ src_configure() {
 }
 
 src_compile() {
+	# Too brittle - gets confused by e.g. -Oline
+	export MAKEOPTS="-j$(makeopts_jobs) -l$(makeopts_loadavg)"
+	unset GNUMAKEFLAGS MAKEFLAGS
+
 	local myemakeargs=(
 		JOBS=$(makeopts_jobs)
 		LOG=debug

@@ -1,0 +1,26 @@
+From 14d15bf331b5cc3ca2c1cdb8097dfe918173cba1 Mon Sep 17 00:00:00 2001
+From: matoro <11910244-matoro3@users.noreply.gitlab.com>
+Date: Wed, 24 Aug 2022 13:42:27 -0400
+Subject: [PATCH] Only recurse into src/python when BUILD_PYTHON is set
+
+---
+ src/Makefile.am | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index d586299c..7e44aed8 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,4 +1,8 @@
+-SUBDIRS = include test parser mso liborcus spreadsheet python
++SUBDIRS = include test parser mso liborcus spreadsheet
++
++if BUILD_PYTHON
++SUBDIRS += python
++endif
+ 
+ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/include \
+-- 
+GitLab
+

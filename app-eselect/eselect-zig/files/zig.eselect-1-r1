@@ -1,0 +1,132 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2022-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+DESCRIPTION="Manage Zig versions"
+MAINTAINER="bratishkaerik@getgoogleoff.me"
+
+show_selected_target() {
+	readlink "${EROOT}/usr/bin/zig"
+}
+
+find_targets() {
+	for f in "${EROOT}"/usr/bin/zig-*; do
+		[[ -f "${f}" ]] && basename "${f}"
+	done
+}
+
+remove_symlinks() {
+	rm "${EROOT}/usr/bin/zig"
+}
+
+set_symlinks() {
+	local target=$1
+	if is_number "${target}"; then
+		local targets=( $(find_targets) )
+		target=${targets[target-1]}
+	fi
+
+	[[ -z "${target}" || ! -f "${EROOT}/usr/bin/${target}" ]] \
+	&& die -q "Target \"$1\" doesn't appear to be valid!"
+
+	ln -s "${target}" "${EROOT}/usr/bin/zig"
+}
+
+
+
+### show action ###
+
+describe_show() {
+	echo "Show current Zig version"
+}
+
+do_show() {
+	write_list_start "Current Zig version:"
+	if [[ -L "${EROOT}/usr/bin/zig" ]]; then
+		write_kv_list_entry "$(show_selected_target)" ""
+	else
+		write_kv_list_entry "(unset)" ""
+	fi
+}
+
+### list action ###
+
+describe_list() {
+	echo "List available Zig versions"
+}
+
+do_list() {
+	local targets=( $(find_targets) )
+	local selected_target
+	selected_target=$(show_selected_target)
+
+	write_list_start "Available Zig versions:"
+	for (( i = 0; i < ${#targets[@]}; i++ )); do
+		[[ ${targets[i]} == "${selected_target}" ]] && targets[i]=$(highlight_marker "${targets[i]}")
+	done
+	write_numbered_list -m "(none found)" "${targets[@]}"
+}
+
+
+### set action ###
+
+describe_set() {
+	echo "Set active Zig version"
+}
+
+describe_set_parameters() {
+	echo "<target>"
+}
+
+describe_set_options() {
+	echo "target:      Target name or number (from 'list' action)"
+}
+
+do_set() {
+	[[ -z $1 ]] && die -q "You need to specify a target"
+	[[ $# -gt 1 ]] && die -q "Too many parameters"
+	test_usr_bin_writeable
+
+	if [[ -L "${EROOT}/usr/bin/zig" ]]; then
+		remove_symlinks || die -q "Couldn't remove symlink"
+	fi
+	set_symlinks "$1" || die -q "Couldn't set a new symlink"
+}
+
+
+### update action ###
+
+describe_update() {
+    echo "Automatically update the zig symlink"
+}
+
+describe_update_options() {
+    echo "ifunset: Do not override currently set version"
+}
+
+do_update() {
+    [[ -z $1 || $1 == ifunset ]] || die -q "Usage error"
+    [[ $# -gt 1 ]] && die -q "Too many parameters"
+	test_usr_bin_writeable
+
+    if [[ -L ${EROOT}/usr/bin/zig ]]; then
+        if [[ $1 == ifunset && -e ${EROOT}/usr/bin/zig ]]; then
+            return
+        fi
+        remove_symlinks
+    elif [[ -e ${EROOT}/usr/bin/zig ]]; then
+        die -q "${EROOT}/usr/bin/zig exists but is not a symlink"
+    fi
+
+    local targets=( $(find_targets) )
+    if [[ ${#targets[@]} -gt 0 ]]; then
+        set_symlinks "${targets[${#targets[@]}-1]}"
+    fi
+}
+
+
+### helper functions ###
+
+test_usr_bin_writeable() {
+    [[ -w ${EROOT}/usr/bin ]] || die -q "${EROOT}/usr/bin not writeable by current user. Are you root?"
+}

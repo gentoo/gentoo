@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">svgwrite</remote-id>
+		<remote-id type="github">mozman/svgwrite</remote-id>
 	</upstream>
 </pkgmetadata>

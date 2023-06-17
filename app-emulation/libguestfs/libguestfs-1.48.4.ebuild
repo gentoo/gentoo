@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 # Bump with app-emulation/guestfs-tools and app-emulation/libguestfs-appliance (if any new release there)
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools flag-o-matic linux-info lua-single perl-functions python-single-r1 strip-linguas toolchain-funcs
 
@@ -16,7 +16,7 @@ MY_PV_2="$(ver_cut 2)"
 
 DESCRIPTION="Tools for accessing, inspecting, and modifying virtual machine (VM) disk images"
 HOMEPAGE="https://libguestfs.org/"
-SRC_URI="https://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz"
+SRC_URI="https://download.libguestfs.org/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
@@ -120,7 +120,7 @@ DOCS=( AUTHORS BUGS ChangeLog HACKING README TODO )
 
 PATCHES=(
 	#"${FILESDIR}"/${MY_PV_1}/
-	"${FILESDIR}"/1.44/
+	#"${FILESDIR}"/1.44/
 )
 
 pkg_setup() {
@@ -227,6 +227,8 @@ src_install() {
 		doman "${ED}"/usr/man/man3/Sys::Guestfs.3pm
 		rm -rf "${ED}"/usr/man || die
 	fi
+
+	use python && python_optimize
 }
 
 pkg_postinst() {

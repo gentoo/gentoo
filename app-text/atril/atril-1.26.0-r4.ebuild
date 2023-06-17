@@ -5,7 +5,7 @@ EAPI=7
 
 MATE_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit mate python-any-r1 virtualx
 
@@ -17,7 +17,7 @@ DESCRIPTION="Atril document viewer for MATE"
 LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
 
-IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring nls +postscript synctex t1lib test tiff xps"
+IUSE="caja dbus debug djvu dvi epub +introspection keyring nls +postscript synctex t1lib test tiff xps"
 
 REQUIRED_USE="t1lib? ( dvi )"
 
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 		dev-libs/mathjax
 		>=net-libs/webkit-gtk-2.6.0:4
 	)
-	gnome-keyring? ( >=app-crypt/libsecret-0.5 )
+	keyring? ( >=app-crypt/libsecret-0.5 )
 	introspection? ( >=dev-libs/gobject-introspection-0.6:= )
 	postscript? ( >=app-text/libspectre-0.2 )
 	synctex? ( virtual/tex-base )
@@ -94,7 +94,7 @@ src_configure() {
 		--enable-pixbuf \
 		--enable-previewer \
 		--enable-thumbnailer \
-		$(use_with gnome-keyring keyring) \
+		$(use_with keyring) \
 		$(use_enable caja) \
 		$(use_enable dbus) \
 		$(use_enable debug) \

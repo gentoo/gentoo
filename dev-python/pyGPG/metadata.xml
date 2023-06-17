@@ -9,6 +9,7 @@
 		It also connects to gpg's status-fd output and makes all the status data
 		available as subclassed namedtuple instances.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">dol-sen/pyGPG</remote-id>
 	</upstream>

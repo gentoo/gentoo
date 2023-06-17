@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/854324
+https://github.com/gammu/gammu/commit/a37e5d8054f863fa71e38e244dd4da13eee6e251
+
+From a37e5d8054f863fa71e38e244dd4da13eee6e251 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Mon, 20 Jun 2022 10:24:13 +0200
+Subject: [PATCH] Fix buffer overflow in Backup.Creator
+
+I noticed that while testing the upcoming GCC 12 with -D_FORTIFY_SOURCE=3:
+here I have
+
+$1 = 0x7ffff7f0f940 <Buffer.1.lto_priv.1> "Linux, kernel 5.16.14-1-default (#1 SMP PREEMPT Fri Mar 11 12:33:34 UTC 2022 (80acc65))"
+(gdb) p (int)strlen(GetOS())
+$3 = 87
+so GetOS() returns 87 chars while:
+
+include/gammu-backup.h: char Creator[80];
+
+Fixes: #701
+--- a/include/gammu-backup.h
++++ b/include/gammu-backup.h
+@@ -218,7 +218,7 @@ typedef struct {
+ 	/**
+ 	 * Name of program which created backup
+ 	 */
+-	char Creator[80];
++	char Creator[512];
+ 	/**
+ 	 * Timestamp of backup
+ 	 */
+

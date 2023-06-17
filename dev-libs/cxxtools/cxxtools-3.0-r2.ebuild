@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,8 @@ SRC_URI="http://www.tntnet.org/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/libiconv"
 DEPEND="${RDEPEND}"
@@ -33,7 +35,16 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-demos \
-		--disable-unittest
+		$(use_enable test unittest)
+}
+
+src_test() {
+	emake -C test
+
+	local -x USER=${LOGNAME}
+	local -x TZ=UTC # doesn't like e.g. :/etc/timezone
+	cd test || die
+	./alltests || die
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,7 +55,7 @@ DEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	enchant? ( app-text/enchant:2 )
 	hunspell? ( app-text/hunspell:= )
-	keyring? ( dev-libs/qtkeychain:= )
+	keyring? ( dev-libs/qtkeychain:=[qt5(+)] )
 	webengine? (
 		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5[widgets]

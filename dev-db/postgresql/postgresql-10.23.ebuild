@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9,10,11} )
 
 inherit flag-o-matic linux-info pam python-single-r1 systemd tmpfiles
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-macos"
 
 SLOT=$(ver_cut 1)
 

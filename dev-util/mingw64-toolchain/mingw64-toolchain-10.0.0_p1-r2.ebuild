@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -220,7 +220,8 @@ src_compile() {
 
 		edo "${conf[@]}"
 		emake
-		emake DESTDIR="${MWT_D}" install
+		# -j1 to match bug #906155, other packages may be fragile too
+		emake -j1 DESTDIR="${MWT_D}" install
 
 		declare -f mwt-${id} >/dev/null && edo mwt-${id}
 		declare -f mwt-${id}_${2} >/dev/null && edo mwt-${id}_${2}

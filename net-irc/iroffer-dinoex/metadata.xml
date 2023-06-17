@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="admin">Compile with HTTP Admin</flag>
 		<flag name="blowfish">Compile with blowfish encryption support</flag>

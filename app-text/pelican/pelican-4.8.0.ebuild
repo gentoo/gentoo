@@ -4,20 +4,27 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="A tool to generate a static blog, with restructured text or markdown input files"
-HOMEPAGE="https://blog.getpelican.com/ https://pypi.org/project/pelican/"
-SRC_URI="https://github.com/getpelican/pelican/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://getpelican.com/
+	https://pypi.org/project/pelican/
+"
+SRC_URI="
+	https://github.com/getpelican/pelican/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
 IUSE="doc examples markdown"
 
-RDEPEND=">=dev-python/docutils-0.16[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/docutils-0.16[${PYTHON_USEDEP}]
 	>=dev-python/blinker-1.4[${PYTHON_USEDEP}]
 	>=dev-python/feedgenerator-1.9[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]

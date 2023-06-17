@@ -9,9 +9,9 @@ DESCRIPTION="Library of common routines intended to be shared"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
 SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+ LGPL-2.1+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~x64-macos ~x64-solaris"
 IUSE="doc"
 
 S="${WORKDIR}/${PN}-${GIT_TAG}"

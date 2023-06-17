@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug doc lirc video_cards_nvidia"
 
+# <ffmpeg-5 for bug #907682 and bug #834400. >=bino-2 uses Qt 6 and drops ffmpeg.
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -23,7 +24,7 @@ RDEPEND="
 	>=media-libs/libass-0.9.9
 	>=media-libs/openal-1.15.1
 	virtual/libintl
-	>=media-video/ffmpeg-0.7:0=
+	<media-video/ffmpeg-5:=
 	lirc? ( app-misc/lirc )
 	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )"
 DEPEND="${RDEPEND}"

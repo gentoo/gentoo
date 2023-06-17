@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_OPTIONAL=1
-DISTUTILS_USE_PEP571="setuptools"
+DISTUTILS_USE_PEP517="setuptools"
 
 inherit cmake distutils-r1
 

@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=hatchling
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
-	>=dev-python/mkdocs_pymdownx_material_extras-2.0
+	>=dev-python/mkdocs-pymdownx-material-extras-2.0
 	dev-python/mkdocs-material
 	dev-python/mkdocs-git-revision-date-localized-plugin
 	dev-python/mkdocs-minify-plugin
@@ -29,7 +29,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/bracex-2.1.1[${PYTHON_USEDEP}]

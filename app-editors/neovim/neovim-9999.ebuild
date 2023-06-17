@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,12 +16,12 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
 fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+lto +nvimpager test +tui"
+IUSE="+lto +nvimpager test"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 # Upstream say the test library needs LuaJIT
@@ -52,32 +52,24 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libuv-1.44.2:=
 	>=dev-libs/libvterm-0.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.20.2:=
-	tui? (
-		>=dev-libs/libtermkey-0.22
-		>=dev-libs/unibilium-2.0.0:0=
-	)
+	>=dev-libs/tree-sitter-0.20.8:=
+	>=dev-libs/libtermkey-0.22
+	>=dev-libs/unibilium-2.0.0:0=
 "
 RDEPEND="
 	${DEPEND}
 	app-eselect/eselect-vi
 "
-BDEPEND="
+BDEPEND+="
 	test? (
 		$(lua_gen_cond_dep 'dev-lua/busted[${LUA_USEDEP}]')
 	)
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-cmake_lua_version.patch"
-	"${FILESDIR}/${PN}-9999-cmake-darwin.patch"
+	"${FILESDIR}/${PN}-0.9.0-cmake_lua_version.patch"
+	"${FILESDIR}/${PN}-0.9.1-cmake-darwin.patch"
 )
-
-if [[ ${PV} != 9999 ]]; then
-	PATCHES+=(
-		"${FILESDIR}/${PN}-0.8.0-cmake-release-type.patch"
-	)
-fi
 
 src_prepare() {
 	# Use our system vim dir
@@ -98,10 +90,8 @@ src_configure() {
 	# TODO: Investigate USE_BUNDLED, doesn't seem to be needed right now
 	local mycmakeargs=(
 		-DENABLE_LTO=$(usex lto)
-		-DFEAT_TUI=$(usex tui)
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
 		-DLUA_PRG="${ELUA}"
-		-DMIN_LOG_LEVEL=3
 	)
 	cmake_src_configure
 }

@@ -1,30 +1,41 @@
---- a/Makefile	2006-01-14 16:54:05.000000000 +0100
-+++ b/Makefile	2009-02-26 16:18:25.000000000 +0100
-@@ -1,6 +1,4 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,30 +1,21 @@
  TARGET = yeahconsole
 -CC = gcc
 -#CC = cc
  INSTALL = install
  
- PREFIX = /usr/local
-@@ -8,17 +6,16 @@
- LIBS = -lX11 
- INCLUDES = -I/usr/X11R6/include 
- LIB_DIRS = -L/usr/X11R6/lib
+-PREFIX = /usr/local
++PREFIX = $(EPREFIX)/usr
+ 
+-LIBS = -lX11 
+-INCLUDES = -I/usr/X11R6/include 
+-LIB_DIRS = -L/usr/X11R6/lib
 -FLAGS = -Os -Wall
-+FLAGS = -Wall $(CFLAGS)
- 
- OBJECTS := yeahconsole.o
- SOURCES := yeahconsole.c
- 
- $(TARGET): $(OBJECTS) 
+-
+-OBJECTS := yeahconsole.o
+-SOURCES := yeahconsole.c
+-
+-$(TARGET): $(OBJECTS) 
 -	$(CC) $(DEFINES) $(INCLUDES) $(LIB_DIRS) $(LIBS) -o $@ $<
 -	strip $@
-+	$(CC) $(FLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDES) $(LIB_DIRS) -o $@ $< $(LIBS)
++PKG_CONFIG ?= pkg-config
++CFLAGS += -Wall
++CPPFLAGS += $(shell $(PKG_CONFIG) --cflags x11)
++LDLIBS += $(shell $(PKG_CONFIG) --libs x11)
  
- $(OBJECTS): $(SOURCES) 
+-$(OBJECTS): $(SOURCES) 
 -	$(CC) $(FLAGS)  $(DEFINES) $(INCLUDES) $(LIB_DIRS) -c -o $@ $<
-+	$(CC) $(FLAGS) $(DEFINES) $(INCLUDES) $(LIB_DIRS) -c -o $@ $<
++all: $(TARGET)
  
  clean:
  	rm -rf $(TARGET) $(OBJECTS)
+ 
+ install: $(TARGET) $(MAN)
+-	$(INSTALL) -o root -g root -m 0755 $(TARGET) $(PREFIX)/bin
++	$(INSTALL) -d $(DESTDIR)$(PREFIX)/bin
++	$(INSTALL) -o root -g root -m 0755 $(TARGET) $(DESTDIR)$(PREFIX)/bin
+ 	
+ 
+ uninstall:

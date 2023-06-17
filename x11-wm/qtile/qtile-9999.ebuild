@@ -9,39 +9,37 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="A full-featured, hackable tiling window manager written in Python"
-HOMEPAGE="http://qtile.org/"
+HOMEPAGE="http://www.qtile.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/qtile/qtile.git"
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	inherit pypi
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="pulseaudio wayland"
 
+# See bug #895722 and https://github.com/qtile/qtile/pull/3985 regarding
+# pywlroots-0.15 dep.
 RDEPEND="
-	>=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/cairocffi-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
 	dev-python/dbus-next[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/xcffib-0.10.1[${PYTHON_USEDEP}]
+	>=dev-python/xcffib-1.4.0[${PYTHON_USEDEP}]
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libnotify[introspection]
 	x11-libs/pango
-	pulseaudio? (
-		media-sound/pulseaudio
-	)
-	wayland? (
-		dev-python/pywlroots[${PYTHON_USEDEP}]
-	)
+	pulseaudio? ( media-libs/libpulse )
+	wayland? ( =dev-python/pywlroots-0.15*[${PYTHON_USEDEP}] )
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		media-gfx/imagemagick[X]
 		x11-base/xorg-server[xephyr]
@@ -83,8 +81,13 @@ python_test() {
 	# Force usage of built module
 	rm -rf "${S}"/libqtile || die
 
-	# TODO: remove "-p no:xdist" when https://github.com/qtile/qtile/issues/1634 will be resolved.
+	# TODO: remove "-p no:xdist" for next release when https://github.com/qtile/qtile/issues/1634 will be resolved.
 	epytest -p no:xdist --backend=x11 $(usev wayland '--backend=wayland') || die "Tests failed with ${EPYTHON}"
+}
+
+python_compile() {
+	export CFFI_TMPDIR=${T}
+	distutils-r1_python_compile
 }
 
 python_install_all() {

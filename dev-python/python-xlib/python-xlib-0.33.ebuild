@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 virtualx
 
@@ -27,7 +27,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	doc? ( sys-apps/texinfo )
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )
 "

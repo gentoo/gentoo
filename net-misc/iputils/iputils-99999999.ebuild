@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
@@ -18,10 +18,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
 	inherit git-r3
 else
-	SRC_URI="
-		https://github.com/iputils/iputils/archive/${PV}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-docs.tar.xz
-	"
+	SRC_URI="https://github.com/iputils/iputils/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -50,20 +47,15 @@ DEPEND="
 	virtual/os-headers
 "
 BDEPEND="
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-ns-stylesheets
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
 	virtual/pkgconfig
 	test? ( sys-apps/iproute2 )
 	nls? ( sys-devel/gettext )
 "
-
-if [[ ${PV} == *9999 ]] ; then
-	BDEPEND+="
-		app-text/docbook-xml-dtd:4.2
-		app-text/docbook-xml-dtd:4.5
-		app-text/docbook-xsl-ns-stylesheets
-		app-text/docbook-xsl-stylesheets
-		dev-libs/libxslt
-	"
-fi
 
 src_prepare() {
 	default
@@ -83,19 +75,9 @@ src_configure() {
 		-Dsystemdunitdir=$(systemd_get_systemunitdir)
 		-DUSE_GETTEXT=$(usex nls true false)
 		$(meson_use !test SKIP_TESTS)
+		-DBUILD_HTML_MANS=$(usex doc true false)
+		-DBUILD_MANS=true
 	)
-
-	if [[ ${PV} == *9999 ]] ; then
-		emesonargs+=(
-			-DBUILD_HTML_MANS=$(usex doc true false)
-			-DBUILD_MANS=true
-		)
-	else
-		emesonargs+=(
-			-DBUILD_HTML_MANS=false
-			-DBUILD_MANS=false
-		)
-	fi
 
 	meson_src_configure
 }
@@ -128,36 +110,12 @@ src_install() {
 	if use tracepath ; then
 		dosym tracepath /usr/bin/tracepath4
 		dosym tracepath /usr/bin/tracepath6
+		dosym tracepath.8 /usr/share/man/man8/tracepath4.8
 		dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 	fi
 
-	if [[ ${PV} != *9999 ]] ; then
-		local -a man_pages
-		local -a html_man_pages
-
-		while IFS= read -r -u 3 -d $'\0' my_bin; do
-			my_bin=$(basename "${my_bin}")
-			[[ -z "${my_bin}" ]] && continue
-
-			if [[ -f "${WORKDIR}/${PN}-99999999-docs/doc/${my_bin}.8" ]] ; then
-				man_pages+=( ${my_bin}.8 )
-			fi
-
-			if [[ -f "${WORKDIR}/${PN}-99999999-docs/doc/${my_bin}.html" ]] ; then
-				html_man_pages+=( ${my_bin}.html )
-			fi
-		done 3< <(find "${ED}"/{bin,usr/bin,usr/sbin} -type f -perm -a+x -print0 2>/dev/null)
-
-		pushd "${WORKDIR}"/${PN}-99999999-docs/doc &>/dev/null || die
-		doman "${man_pages[@]}"
-		if use doc ; then
-			dodoc "${html_man_pages[@]}"
-		fi
-		popd &>/dev/null || die
-	else
-		if use doc ; then
-			mv "${ED}"/usr/share/${PN} "${ED}"/usr/share/doc/${PF}/html || die
-		fi
+	if use doc ; then
+		mv "${ED}"/usr/share/${PN} "${ED}"/usr/share/doc/${PF}/html || die
 	fi
 }
 

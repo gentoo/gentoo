@@ -1,10 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN=Vulkan-ValidationLayers
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
@@ -24,7 +24,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland X"
 
-BDEPEND=">=dev-util/cmake-3.10.2"
 RDEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -38,7 +37,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES="${FILESDIR}/${PN}-1.3.239-Build-shared-libs.patch"
+PATCHES="${FILESDIR}/${PN}-1.3.239-r2-Build-shared-libs.patch"
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -53,4 +52,8 @@ multilib_src_configure() {
 		-DBUILD_TESTS=OFF
 	)
 	cmake_src_configure
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name \*.a -delete || die
 }

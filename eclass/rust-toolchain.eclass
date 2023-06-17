@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rust-toolchain.eclass
@@ -23,7 +23,7 @@ inherit multilib-build
 # This variable specifies the base URL used by the
 # rust_arch_uri and rust_all_arch_uris functions when
 # generating the URI output list.
-: ${RUST_TOOLCHAIN_BASEURL:=https://static.rust-lang.org/dist/}
+: "${RUST_TOOLCHAIN_BASEURL:=https://static.rust-lang.org/dist/}"
 
 # @FUNCTION: rust_abi
 # @USAGE: [CHOST-value]

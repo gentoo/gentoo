@@ -1,0 +1,18 @@
+https://github.com/rpm-software-management/drpm/commit/0bde9b7711a2fa8b811830cadfc979365f9362c6
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 12 Jan 2023 08:17:19 +0100
+Subject: [PATCH] C99 compatibility fix for drpm_write.c
+
+Include <string.h> for various string functions.  This avoids
+implicit function declarations and resulting build failures with
+future compilers.
+--- a/src/drpm_write.c
++++ b/src/drpm_write.c
+@@ -23,6 +23,7 @@
+ 
+ #include <stdio.h>
+ #include <stdint.h>
++#include <string.h>
+ #include <fcntl.h>
+ #include <openssl/md5.h>
+ #include <rpm/rpmlib.h>

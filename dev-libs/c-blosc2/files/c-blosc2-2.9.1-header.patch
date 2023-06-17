@@ -1,0 +1,26 @@
+From 04035a3759b8c100e4808918e44a3eaef4969875 Mon Sep 17 00:00:00 2001
+From: Dimitri Papadopoulos
+ <3234522+DimitriPapadopoulos@users.noreply.github.com>
+Date: Sat, 13 May 2023 21:40:32 +0200
+Subject: [PATCH] BLOSC_STUNE is not defined in c-blosc
+
+Therefore, do not guard it with BLOSC_H, the include guard of blosc.h
+from previous version c-blosc.
+---
+ include/blosc2.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/include/blosc2.h b/include/blosc2.h
+index dc6d1fc7..ef035f07 100644
+--- a/include/blosc2.h
++++ b/include/blosc2.h
+@@ -211,9 +211,7 @@ enum {
+  * @brief Codes for the different tunes shipped with Blosc
+  */
+ enum {
+-#ifndef BLOSC_H
+     BLOSC_STUNE = 0,
+-#endif // BLOSC_H
+     BLOSC_LAST_TUNE = 1,
+     //!< Determine the last tune defined by Blosc.
+     BLOSC_LAST_REGISTERED_TUNE = BLOSC2_GLOBAL_REGISTERED_TUNE_START + BLOSC2_GLOBAL_REGISTERED_TUNES - 1,

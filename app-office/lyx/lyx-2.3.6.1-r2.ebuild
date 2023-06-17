@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 MY_P="${P/_}"
 inherit desktop font python-single-r1 qmake-utils toolchain-funcs xdg-utils

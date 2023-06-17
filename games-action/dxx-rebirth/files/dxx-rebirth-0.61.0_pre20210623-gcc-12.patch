@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/894678
+https://github.com/dxx-rebirth/dxx-rebirth/commit/092daecb6118b3c072c71a8bea24f119e300bd49
+
+From 092daecb6118b3c072c71a8bea24f119e300bd49 Mon Sep 17 00:00:00 2001
+From: Kp <kp@valhallalegends.com>
+Date: Sat, 28 May 2022 21:04:37 +0000
+Subject: [PATCH] Use static_cast<> to convert player_marker_num to
+ game_marker_index
+
+gcc-12 rejects the list initialization syntax.  Switch to static_cast<>,
+which generates equivalent code.
+
+Reported-by: dbermond <https://github.com/dxx-rebirth/dxx-rebirth/issues/638>
+--- a/similar/main/automap.cpp
++++ b/similar/main/automap.cpp
+@@ -370,7 +370,7 @@ game_marker_index convert_player_marker_index_to_game_marker_index(const game_mo
+ 		return static_cast<game_marker_index>((player_num * MAX_DROP_MULTI_COOP) + static_cast<unsigned>(player_marker_num));
+ 	if (game_mode & GM_MULTI)
+ 		return static_cast<game_marker_index>((player_num * MAX_DROP_MULTI_COMPETITIVE) + static_cast<unsigned>(player_marker_num));
+-	return game_marker_index{player_marker_num};
++	return static_cast<game_marker_index>(player_marker_num);
+ }
+ 
+ unsigned d_marker_state::get_markers_per_player(const game_mode_flags game_mode, const unsigned max_numplayers)
+

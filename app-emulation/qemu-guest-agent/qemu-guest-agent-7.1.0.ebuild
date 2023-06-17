@@ -16,11 +16,13 @@ SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.xz"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="dev-libs/glib"
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="${PYTHON_DEPS}
+	dev-lang/perl
+	dev-util/ninja"
 
 S="${WORKDIR}/${MY_P}"
 

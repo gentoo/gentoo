@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font.eclass
@@ -7,15 +7,13 @@
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass to make font installation uniform
 
-case ${EAPI:-0} in
-	[7-8]) ;;
-	*) die "EAPI ${EAPI} is not supported by font.eclass." ;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_FONT_ECLASS} ]]; then
+if [[ -z ${_FONT_ECLASS} ]]; then
 _FONT_ECLASS=1
-
-EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
 
 # @ECLASS_VARIABLE: FONT_SUFFIX
 # @DEFAULT_UNSET
@@ -264,3 +262,5 @@ font_pkg_postrm() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm

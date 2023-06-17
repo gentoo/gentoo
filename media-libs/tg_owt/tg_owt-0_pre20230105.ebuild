@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 
 LICENSE="BSD"
 SLOT="0/${PV##*pre}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="screencast +X"
 
 # This package's USE flags may change the ABI and require a rebuild of
@@ -63,6 +63,10 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/tg_owt-0_pre20230105-gcc-13-cstdint.patch"
+)
 
 src_unpack() {
 	unpack "${P}.tar.gz"

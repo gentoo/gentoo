@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MY_PN}-$(ver_cut 1-2)
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc +ipv6 kerberos pam ssl static-libs topal"
 
 RDEPEND="
@@ -93,6 +93,8 @@ src_prepare() {
 		-e "s:RANLIB=ranlib:RANLIB=$(tc-getRANLIB):" \
 		-i src/osdep/unix/Makefile \
 		|| die "failed to fix build flags support in the Makefile"
+
+	sed -i -e "s:krb5-config.mit:krb5-config:" src/osdep/unix/Makefile.gss || die
 
 	elibtoolize
 }

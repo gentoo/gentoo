@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,12 +11,16 @@ if [[ ${PV} == *9999* ]]; then
 	RELEASE_URI=""
 
 	inherit subversion git-r3
-elif [[ "${PV%_rc*}" == "${PV}" && "${PV%_pre*}" == "${PV}" ]]; then
+elif [[ "${PV%_rc*}" == "${PV}" && "${PV%_pre*}" == "${PV}" && "${PV%_p*}" == "${PV}" ]]; then
 	MY_P="MPlayer-${PV}"
 	S="${WORKDIR}/${MY_P}"
 	RELEASE_URI="mirror://mplayer/releases/${MY_P}.tar.xz"
 else
-	RELEASE_URI="mirror://gentoo/${P}.tar.xz"
+	# If necessary, don't be afraid to make a snapshot.
+	# http://www.mplayerhq.hu/design7/dload.html says:
+	# "We recommend to always use the latest SVN to get the all the new
+	# features and bugfixes, especially if the release date above looks old."
+	RELEASE_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
 fi
 
 FONT_URI="
@@ -117,7 +121,7 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	png? ( media-libs/libpng:= )
 	pnm? ( media-libs/netpbm )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	rar? (
 		|| (
 			app-arch/unrar

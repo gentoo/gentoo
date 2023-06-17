@@ -1,0 +1,70 @@
+From bd14e6034ba2de0056278c3ad9923199b7f4d20f Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Mon, 20 Feb 2023 16:09:19 +0000
+Subject: [PATCH] Fix build with gcc 13
+
+Now some header files are not included transistively with new
+libstdc++.
+
+Bug: https://bugs.gentoo.org/895226
+--- a/src/backend/opencl/runners/OclBaseRunner.cpp
++++ b/src/backend/opencl/runners/OclBaseRunner.cpp
+@@ -23,6 +23,9 @@
+  */
+ 
+ 
++#include <stdexcept>
++
++
+ #include "backend/opencl/runners/OclBaseRunner.h"
+ #include "backend/opencl/cl/OclSource.h"
+ #include "backend/opencl/OclCache.h"
+--- a/src/backend/opencl/runners/OclCnRunner.cpp
++++ b/src/backend/opencl/runners/OclCnRunner.cpp
+@@ -16,6 +16,9 @@
+  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <stdexcept>
++
++
+ #include "backend/opencl/runners/OclCnRunner.h"
+ #include "backend/opencl/kernels/Cn0Kernel.h"
+ #include "backend/opencl/kernels/Cn1Kernel.h"
+--- a/src/backend/opencl/runners/OclKawPowRunner.cpp
++++ b/src/backend/opencl/runners/OclKawPowRunner.cpp
+@@ -16,6 +16,9 @@
+  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <stdexcept>
++
++
+ #include "backend/opencl/runners/OclKawPowRunner.h"
+ #include "backend/common/Tags.h"
+ #include "3rdparty/libethash/ethash_internal.h"
+--- a/src/backend/opencl/runners/OclRxJitRunner.cpp
++++ b/src/backend/opencl/runners/OclRxJitRunner.cpp
+@@ -16,6 +16,9 @@
+  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <stdexcept>
++
++
+ #include "backend/opencl/runners/OclRxJitRunner.h"
+ #include "backend/opencl/cl/rx/randomx_run_gfx803.h"
+ #include "backend/opencl/cl/rx/randomx_run_gfx900.h"
+--- a/src/base/net/http/HttpResponse.h
++++ b/src/base/net/http/HttpResponse.h
+@@ -21,6 +21,7 @@
+ #define XMRIG_HTTPRESPONSE_H
+ 
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ 
+-- 
+2.39.2
+

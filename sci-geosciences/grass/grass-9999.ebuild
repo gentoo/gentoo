@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
 inherit desktop python-single-r1 toolchain-funcs xdg
@@ -30,7 +30,7 @@ else
 	MY_P="${P/_rc/RC}"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~x86"
+		KEYWORDS="~amd64 ~ppc ~x86"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
@@ -46,13 +46,14 @@ RDEPEND="
 	>=app-admin/eselect-1.2
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/ply[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	')
 	sci-libs/gdal:=
 	sys-libs/gdbm:=
 	sys-libs/ncurses:=
 	sci-libs/proj:=
-	sci-libs/xdrfile
 	sys-libs/zlib
 	media-libs/libglvnd
 	media-libs/glu
@@ -78,7 +79,11 @@ RDEPEND="
 	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
-		dev-python/wxpython:4.0
+		$(python_gen_cond_dep '
+			>=dev-python/matplotlib-1.2[wxwidgets,${PYTHON_USEDEP}]
+			dev-python/pillow[${PYTHON_USEDEP}]
+			>=dev-python/wxpython-4.1:4.0[${PYTHON_USEDEP}]
+		')
 		x11-libs/cairo[X]
 		x11-libs/libICE
 		x11-libs/libSM
@@ -166,7 +171,7 @@ src_configure() {
 		--with-proj-share="${EPREFIX}"/usr/share/proj/
 		$(use_with cxx)
 		$(use_with tiff)
-		$(use_with png)
+		$(use_with png libpng "${EPREFIX}"/usr/bin/libpng-config)
 		$(use_with postgres)
 		$(use_with mysql)
 		$(use_with mysql mysql-includes "${EPREFIX}"/usr/include/mysql)

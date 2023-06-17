@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools desktop udev
 
 DESCRIPTION="Unofficial tool for controlling the Razer Copperhead mouse"
-HOMEPAGE="http://razertool.sourceforge.net/"
+HOMEPAGE="https://razertool.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-2"

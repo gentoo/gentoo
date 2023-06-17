@@ -5,18 +5,17 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="High speed universal character encoding detector"
 HOMEPAGE="
 	https://github.com/PyYoshi/cChardet
 	https://pypi.org/project/cchardet/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]

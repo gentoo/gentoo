@@ -4,13 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A WSGI middleware that secures routes using HTTP Digest Authentication"
-HOMEPAGE="https://github.com/jonashaag/httpauth/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/jonashaag/httpauth/
+	https://pypi.org/project/httpauth/
+"
 
 LICENSE="ISC"
 SLOT="0"

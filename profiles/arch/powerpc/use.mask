@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # PPC Specific use flags
@@ -33,10 +33,6 @@ mongodb
 fortune
 nagios-game
 physfs
-
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
 
 # Matt Turner <mattst88@gentoo.org> (2017-03-24)
 # virtual/opencl is not keyworded
@@ -131,7 +127,3 @@ nvtt
 
 # fdk-aac is already keyworded here
 -fdk
-
-# Pacho Ramos <pacho@gentoo.org> (2014-01-08)
-# Unmask systemd since it is keyworded here.
--systemd

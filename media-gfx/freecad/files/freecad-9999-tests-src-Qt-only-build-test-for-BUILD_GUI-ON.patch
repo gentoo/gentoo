@@ -1,0 +1,24 @@
+From cb77c7d937c259224699273fee1ba5907588fa4c Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sun, 12 Feb 2023 19:54:13 +0100
+Subject: [PATCH] tests/src/Qt: only build test for BUILD_GUI=ON
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/tests/src/Qt/CMakeLists.txt
++++ b/tests/src/Qt/CMakeLists.txt
+@@ -30,6 +30,7 @@ endfunction()
+ set(CMAKE_AUTOMOC ON)
+ 
+ # Qt Test
++if(BUILD_GUI)
+ include_directories(
+     ${QtGui_INCLUDE_DIRS}
+     ${QtTest_INCLUDE_DIRS}
+@@ -46,3 +47,4 @@ set (InventorBuilder_LIBS
+ SETUP_TESTS(
+     InventorBuilder
+ )
++endif()
+-- 
+2.39.1
+

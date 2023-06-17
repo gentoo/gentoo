@@ -5,15 +5,15 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="subprocess.run replacement with tee(1)-like output"
 HOMEPAGE="
 	https://github.com/pycontribs/subprocess-tee/
 	https://pypi.org/project/subprocess-tee/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,7 +23,7 @@ REQUIRED_USE="test-full? ( test )"
 
 # ansible-molecule is invoked as an executable so no need for PYTHON_USEDEP
 BDEPEND="
-	>=dev-python/setuptools_scm-7.0.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-7.0.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/enrich[${PYTHON_USEDEP}]
 		test-full? ( app-admin/ansible-molecule )

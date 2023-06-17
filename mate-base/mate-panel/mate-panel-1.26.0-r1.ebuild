@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -67,7 +67,7 @@ BDEPEND="
 
 src_configure() {
 	mate_src_configure \
-		--libexecdir=/usr/libexec/mate-applets \
+		--libexecdir="${EPREFIX}"/usr/libexec/mate-applets \
 		--disable-deprecation-flags \
 		$(use_enable X x11) \
 		$(use_enable introspection) \

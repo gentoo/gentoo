@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ipv6(+),sqlite,ssl"
 
 inherit toolchain-funcs python-single-r1 qmake-utils xdg-utils
@@ -31,7 +31,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 SLOT="0"
 IUSE="ios +udisks"
 
@@ -74,7 +74,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
-		dev-python/python-zeroconf[${PYTHON_USEDEP}]
+		dev-python/zeroconf[${PYTHON_USEDEP}]
 		>=dev-python/PyQt5-5.15.5_pre2107091435[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
 		>=dev-python/PyQt-builder-1.10.3[${PYTHON_USEDEP}]
 		>=dev-python/PyQtWebEngine-5.15.5_pre2108100905[${PYTHON_USEDEP}]

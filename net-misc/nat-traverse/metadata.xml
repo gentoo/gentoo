@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">linide</remote-id>
+		<remote-id type="gitlab">iblech/nat-traverse</remote-id>
 	</upstream>
 </pkgmetadata>

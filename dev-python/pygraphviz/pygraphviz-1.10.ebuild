@@ -3,26 +3,35 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python wrapper for the Graphviz Agraph data structure"
-HOMEPAGE="https://pygraphviz.github.io/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
+HOMEPAGE="
+	https://pygraphviz.github.io/
+	https://github.com/pygraphviz/pygraphviz/
+	https://pypi.org/project/pygraphviz/
+"
+SRC_URI="$(pypi_sdist_url "${PN}" "${PV}" .zip)"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv x86 ~x86-linux ~ppc-macos ~x64-macos"
 
 # Note: only C API of graphviz is used, PYTHON_USEDEP unnecessary.
-RDEPEND="media-gfx/graphviz"
-DEPEND="${RDEPEND}"
+DEPEND="
+	media-gfx/graphviz
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	app-arch/unzip
 	dev-lang/swig:0
-	test? ( dev-python/doctest-ignore-unicode[${PYTHON_USEDEP}] )"
+"
 
 distutils_enable_tests pytest
 

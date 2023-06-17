@@ -12,7 +12,7 @@ S="${WORKDIR}/password-store-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 IUSE="+git wayland X emacs dmenu importers"
 
 RDEPEND="

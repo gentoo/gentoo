@@ -1,9 +1,34 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-05-19)
+# kde-frameworks/kwayland:5 is not keyworded here.
+app-crypt/pinentry wayland
+
+# Sam James <sam@gentoo.org> (2023-05-06)
+# sci-libs/vtk not keyworded here (+ lots of unkw'd deps), bug #778293
+sci-mathematics/maxima vtk
+
+# Sam James <sam@gentoo.org> (2023-05-06)
+# Broken bundled Eigen, fails to compile. See bug #865191.
+sci-geosciences/grass pdal
+sci-libs/vtk pdal
+
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Needs dev-python/sympy which is not keyworded
+dev-python/nbval test
+
+# Sam James <sam@gentoo.org> (2023-04-07)
+# dev-db/mysql not stable here
+dev-ruby/mysql2 mysql
+
 # Sam James <sam@gentoo.org> (2023-01-05)
 # dev-python/pythran fails tests on ppc32 right now, bug #880263
-dev-python/scipy fortran pythran
+dev-python/scipy fortran
 
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Unkeyworded dependencies
@@ -75,8 +100,6 @@ sci-mathematics/singular polymake
 # keep masks here (for now?).
 # Needs unkeyworded gnome-extra/sushi
 gnome-base/nautilus previewer
-# needs mail-client/evolution, depends on net-libs/webkit-gtk
-app-office/planner eds
 # needs gnome-extra/sushi, depends on net-libs/webkit-gtk
 gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
@@ -117,6 +140,8 @@ dev-python/diskcache test
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
+www-client/links avif
+dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)
@@ -195,25 +220,13 @@ net-analyzer/wireshark bcg729
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
 
-# Michał Górny <mgorny@gentoo.org> (2017-03-23)
-# Most of clang runtimes are not supported here
-sys-devel/clang-runtime openmp sanitize
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-13)
 # Dropping ppc from sci-libs/armadillo, bug 555896
 sci-libs/gdal armadillo
 
-# Michał Górny <mgorny@gentoo.org> (2016-11-18)
-# libomp does not support 32-bit PPC, #600148.
-sys-devel/clang-runtime openmp
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
 # kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
-# Missing keywords on app-text/gspell - bug #587368
->=app-editors/gedit-3.20 spell
 
 # James Le Cuirot <chewi@gentoo.org> (2015-01-12)
 # Java is no longer supported on ppc.

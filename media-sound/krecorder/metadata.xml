@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="kde-invent">utilities/krecorder</remote-id>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=krecorder</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		Krecorder is a convergent audio recording application for Plasma.
+		Features:
+		- Record audio with a visualizer, and pausing functionality
+		- Ability to select audio sources
+		- Ability to select encoding and container formats
+		- Audio playback with a visualizer
+	</longdescription>
+</pkgmetadata>

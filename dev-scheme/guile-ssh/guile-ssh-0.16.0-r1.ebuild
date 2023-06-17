@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
-PATCHES=( "${FILESDIR}"/${P}-tests.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-tests.patch
+)
 
 # guile generates ELF files without use of C or machine code
 # It's a portage's false positive. bug #677600
@@ -41,4 +43,8 @@ src_install() {
 	default
 
 	find "${ED}" -name "*.la" -delete || die
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }

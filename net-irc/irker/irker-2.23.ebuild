@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="ssl"
 
 inherit optfeature python-single-r1 systemd
@@ -14,7 +14,7 @@ SRC_URI="http://www.catb.org/esr/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Dependency notes:

@@ -1,0 +1,170 @@
+https://bugs.gentoo.org/904843
+https://github.com/nm-l2tp/NetworkManager-l2tp/commit/e6860eb957208a932fb565dd7b5e79fe5a4df662
+
+From e6860eb957208a932fb565dd7b5e79fe5a4df662 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Eivind=20N=C3=A6ss?= <eivnaes@yahoo.com>
+Date: Fri, 3 Mar 2023 05:22:13 +0000
+Subject: [PATCH] Adding support for compiling against pppd-2.5.0 (current
+ master)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
+---
+ configure.ac              | 46 +++++++++++++++++++++++++++++++++++++--
+ src/nm-l2tp-pppd-plugin.c | 20 +++++++++--------
+ 2 files changed, 55 insertions(+), 11 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index baf8d44..b925eb0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,7 +33,10 @@ dnl
+ AC_PROG_CC
+ AM_PROG_CC_C_O
+ AC_PROG_INSTALL
++AC_PROG_CPP
++AC_PROG_EGREP
+ AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
++PKG_PROG_PKG_CONFIG()
+ 
+ AC_CHECK_PROG([has_file], file, yes, no)
+ if test x$has_file = xno ; then
+@@ -49,24 +52,63 @@ dnl
+ dnl Required headers
+ dnl
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(fcntl.h paths.h sys/ioctl.h sys/time.h syslog.h unistd.h)
++AC_CHECK_HEADERS([
++	fcntl.h
++	paths.h
++	stdarg.h
++	stdbool.h
++	sys/ioctl.h
++	sys/time.h
++	syslog.h
++	unistd.h
++	])
+ 
+ AC_CHECK_HEADERS(pppd/pppd.h,,
+   AC_MSG_ERROR(couldn't find pppd.h. pppd development headers are required.))
+ 
++dnl
++dnl Check the presense of other pppd/*.h files
++AC_CHECK_HEADERS([
++    pppd/chap.h
++    pppd/chap-new.h
++    pppd/chap_ms.h
++    ])
++
++dnl
++dnl Versions >= 2.5.0 will have pkg-config support
++PKG_CHECK_EXISTS([pppd],
++    [AS_VAR_SET([pppd_pkgconfig_support],[yes])])
++
++dnl
++dnl Get the version of pppd using pkg-config, assume 2.4.9 if not present
++PPPD_VERSION=2.4.9
++if test x"$pppd_pkgconfig_support" = xyes; then
++    PPPD_VERSION=`$PKG_CONFIG --modversion pppd`
++fi
++
+ AC_ARG_WITH([pppd-plugin-dir], AS_HELP_STRING([--with-pppd-plugin-dir=DIR], [path to the pppd plugins directory]))
+ 
+ if test -n "$with_pppd_plugin_dir" ; then
+ 	PPPD_PLUGIN_DIR="$with_pppd_plugin_dir"
+ else
+-	PPPD_PLUGIN_DIR="${libdir}/pppd/2.4.9"
++	PPPD_PLUGIN_DIR="${libdir}/pppd/$PPPD_VERSION"
+ fi
+ AC_SUBST(PPPD_PLUGIN_DIR)
+ 
++dnl The version of pppd dictates what code can be included, i.e. enable use of
++dnl   #if WITH_PPP_VERSION >= PPP_VERSION(2,5,0) in the code
++AC_DEFINE_UNQUOTED([PPP_VERSION(x,y,z)],
++    [((x & 0xFF) << 16 | (y & 0xFF) << 8 | (z & 0xFF) << 0)],
++    [Macro to help determine the particular version of pppd])
++PPP_VERSION=$(echo $PPPD_VERSION | sed -e "s/\./\,/g")
++AC_DEFINE_UNQUOTED(WITH_PPP_VERSION, PPP_VERSION($PPP_VERSION),
++    [The real version of pppd represented as an int])
++
+ AC_MSG_CHECKING(whether EAP-TLS patch has been applied to pppd)
+ AC_EGREP_CPP(eaptls_passwd_hook, [
+ #define USE_EAPTLS
+ #include <pppd/pppd.h>
++#include <pppd/eap.h>
+ ], [have_eap_tls=yes] , [have_eap_tls=no])
+ 
+ if test "x${have_eap_tls}" = "xno"; then
+diff --git a/src/nm-l2tp-pppd-plugin.c b/src/nm-l2tp-pppd-plugin.c
+index 71a7878..dd752a1 100644
+--- a/src/nm-l2tp-pppd-plugin.c
++++ b/src/nm-l2tp-pppd-plugin.c
+@@ -9,11 +9,6 @@
+ #include <config.h>
+ #define ___CONFIG_H__
+ 
+-/* pppd headers *sigh* */
+-#include <pppd/pppd.h>
+-#include <pppd/fsm.h>
+-#include <pppd/ipcp.h>
+-
+ #include "nm-default.h"
+ 
+ #include <string.h>
+@@ -25,13 +20,14 @@
+ 
+ #include "nm-l2tp-service.h"
+ #include "nm-ppp-status.h"
++#include "nm-l2tp-pppd-compat.h"
+ 
+ #include "nm-utils/nm-shared-utils.h"
+ #include "nm-utils/nm-vpn-plugin-macros.h"
+ 
+ int plugin_init(void);
+ 
+-char pppd_version[] = VERSION;
++char pppd_version[] = PPPD_VERSION;
+ 
+ /*****************************************************************************/
+ 
+@@ -146,7 +142,7 @@ nm_phasechange(void *data, int arg)
+ static void
+ nm_ip_up(void *data, int arg)
+ {
+-    guint32         pppd_made_up_address = htonl (0x0a404040 + ifunit);
++    guint32         pppd_made_up_address = htonl (0x0a404040 + ppp_ifunit());
+     ipcp_options    opts                 = ipcp_gotoptions[0];
+     ipcp_options    peer_opts            = ipcp_hisoptions[0];
+     GVariantBuilder builder;
+@@ -166,7 +162,7 @@ nm_ip_up(void *data, int arg)
+     g_variant_builder_add(&builder,
+                           "{sv}",
+                           NM_VPN_PLUGIN_IP4_CONFIG_TUNDEV,
+-                          g_variant_new_string(ifname));
++                          g_variant_new_string(ppp_ifname()));
+ 
+     g_variant_builder_add(&builder,
+                           "{sv}",
+@@ -343,12 +339,18 @@ plugin_init(void)
+     chap_check_hook  = get_chap_check;
+     pap_passwd_hook  = get_credentials;
+     pap_check_hook   = get_pap_check;
+-#ifdef USE_EAPTLS
++#if defined(USE_EAPTLS) || defined(PPP_WITH_EAPTLS)
+     eaptls_passwd_hook = get_credentials;
+ #endif
+ 
++#if WITH_PPP_VERSION < PPP_VERSION(2,5,0)
+     add_notifier(&phasechange, nm_phasechange, NULL);
+     add_notifier(&ip_up_notifier, nm_ip_up, NULL);
+     add_notifier(&exitnotify, nm_exit_notify, NULL);
++#else
++    ppp_add_notify(NF_PHASE_CHANGE, nm_phasechange, NULL);
++    ppp_add_notify(NF_IP_UP, nm_ip_up, NULL);
++    ppp_add_notify(NF_EXIT, nm_exit_notify, NULL);
++#endif
+     return 0;
+ }
+

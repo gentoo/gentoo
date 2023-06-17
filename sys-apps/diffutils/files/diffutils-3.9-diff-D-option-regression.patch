@@ -1,0 +1,27 @@
+https://debbugs.gnu.org/cgi/bugreport.cgi?bug=61193
+https://git.savannah.gnu.org/cgit/groff.git/commit/?id=10274fb69e517b2c4b10fcd0ba3347e5bd0eefd7
+https://git.savannah.gnu.org/cgit/diffutils.git/commit/?id=ba08fbbb0ca5da455bf695236c57bc50e7faed50
+
+From ba08fbbb0ca5da455bf695236c57bc50e7faed50 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Fri, 10 Feb 2023 15:33:40 -0800
+Subject: diff: fix bug where -D does not work
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Problem reported by Robert Webb (bug#61193).
+* src/diff.c (main): Omit stray ‘sizeof’.
+* tests/ifdef: New test.
+* tests/Makefile.am (TESTS): Add it.
+--- a/src/diff.c
++++ b/src/diff.c
+@@ -416,7 +416,7 @@ main (int argc, char **argv)
+ 	    char *base = b;
+ 	    int changes = 0;
+ 
+-	    for (i = 0; i < sizeof sizeof C_ifdef_group_formats; i++)
++	    for (i = 0; i < sizeof C_ifdef_group_formats; i++)
+ 	      {
+ 		char ch = C_ifdef_group_formats[i];
+ 		switch (ch)

@@ -5,11 +5,10 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{9,10,11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A user space multicast named pipe implementation backed by a regular file"
 HOMEPAGE="https://github.com/pipebus/filebus"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64"

@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]] ; then
 	# bug #272880 and bug #286068
 	BDEPEND="sys-devel/gettext >=sys-devel/libtool-2"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/lassecollin.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/jiatan.asc
 	inherit verify-sig
 
 	MY_P="${PN/-utils}-${PV/_}"
@@ -35,7 +35,7 @@ else
 	"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
@@ -47,10 +47,10 @@ HOMEPAGE="https://tukaani.org/xz/"
 # See top-level COPYING file as it outlines the various pieces and their licenses.
 LICENSE="public-domain LGPL-2.1+ GPL-2+"
 SLOT="0"
-IUSE="+extra-filters nls static-libs"
+IUSE="doc +extra-filters nls static-libs"
 
 if [[ ${PV} != 9999 ]] ; then
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-lassecollin )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-jiatan )"
 fi
 
 src_prepare() {
@@ -68,6 +68,7 @@ src_prepare() {
 multilib_src_configure() {
 	local myconf=(
 		--enable-threads
+		$(multilib_native_use_enable doc)
 		$(use_enable nls)
 		$(use_enable static-libs static)
 	)
@@ -110,7 +111,10 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	find "${ED}" -type f -name '*.la' -delete || die
-	rm "${ED}"/usr/share/doc/${PF}/COPYING* || die
+
+	if use doc ; then
+		rm "${ED}"/usr/share/doc/${PF}/COPYING* || die
+	fi
 }
 
 pkg_preinst() {

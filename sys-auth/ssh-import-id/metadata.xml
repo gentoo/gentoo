@@ -6,4 +6,7 @@
 		<name>Piotr Karbowski</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="launchpad">ssh-import-id</remote-id>
+	</upstream>
 </pkgmetadata>

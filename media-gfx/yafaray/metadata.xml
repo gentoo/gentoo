@@ -28,4 +28,7 @@
 			Add support for <pkg>media-libs/opencv</pkg> image processing.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">YafaRay/libYafaRay</remote-id>
+	</upstream>
 </pkgmetadata>

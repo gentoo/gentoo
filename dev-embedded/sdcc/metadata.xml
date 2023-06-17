@@ -6,12 +6,14 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<longdescription>
-SDCC is a retargettable, optimizing ANSI - C compiler suite that targets the
-Intel MCS51 based microprocessors (8031, 8032, 8051, 8052, etc.), Maxim
-(formerly Dallas) DS80C390 variants, Freescale (formerly Motorola) HC08 based
-(hc08, s08), Zilog Z80 based MCUs (z80, z180, gbz80, Rabbit 2000/3000, Rabbit
-3000A, TLCS-90) and STMicroelectronics STM8. It can be retargeted for other
-microprocessors.
+SDCC is a retargettable, optimizing Standard C (ANSI C89, ISO C99, ISO C11)
+compiler suite that targets the Intel MCS51 based microprocessors (8031, 8032,
+8051, 8052, etc.), Maxim (formerly Dallas) DS80C390 variants, Freescale
+(formerly Motorola) HC08 based (hc08, s08), Zilog Z80 based MCUs (Z80, Z180,
+SM83, Rabbit 2000, 2000A, 3000A, TLCS-90), Padauk (pdk14, pdk15) and
+STMicroelectronics STM8. Work is in progress on supporting the Padauk pdk13 and
+MOS 6502 targets; Microchip PIC16 and PIC18 targets are unmaintained. SDCC can
+be retargeted for other microprocessors.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">sdcc</remote-id>
@@ -35,6 +37,7 @@ microprocessors.
 		<flag name="r2ka">Add support for Rabbit 2000A</flag>
 		<flag name="r3ka">Add support for Rabbit 3000A</flag>
 		<flag name="gbz80">Add support for Gameboy gbz80</flag>
+		<flag name="sm83">Add support for Gameboy SM83</flag>
 		<flag name="tlcs90">Add support for TLCS-90</flag>
 		<flag name="ez80-z80">Add support for EZ80-Z80</flag>
 		<flag name="z80n">Add support for Zilog Z80N</flag>
@@ -49,5 +52,7 @@ microprocessors.
 		<flag name="pdk14">Add support for PDK14</flag>
 		<flag name="pdk15">Add support for PDK15</flag>
 		<flag name="pdk16">Add support for PDK16</flag>
+		<flag name="mos6502">Add support for MOS 6502</flag>
+		<flag name="mos65c02">Add support for MOS 65C02</flag>
 	</use>
 </pkgmetadata>

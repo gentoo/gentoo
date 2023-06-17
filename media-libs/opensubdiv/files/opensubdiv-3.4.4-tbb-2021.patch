@@ -6,12 +6,6 @@ From: Artur Sinila <freesoftware@logarithmus.dev>
 Date: Sun, 25 Jul 2021 20:34:48 +0300
 Subject: [PATCH 1/2] Fix typo: schedular -> scheduler
 
----
- opensubdiv/osd/tbbEvaluator.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/opensubdiv/osd/tbbEvaluator.h b/opensubdiv/osd/tbbEvaluator.h
-index 6bd365bc5..886a94837 100644
 --- a/opensubdiv/osd/tbbEvaluator.h
 +++ b/opensubdiv/osd/tbbEvaluator.h
 @@ -1226,7 +1226,7 @@ class TbbEvaluator {
@@ -29,12 +23,6 @@ From: Artur Sinila <freesoftware@logarithmus.dev>
 Date: Sun, 25 Jul 2021 20:58:27 +0300
 Subject: [PATCH 2/2] Support oneTBB 2021
 
----
- opensubdiv/osd/tbbEvaluator.cpp | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
-
-diff --git a/opensubdiv/osd/tbbEvaluator.cpp b/opensubdiv/osd/tbbEvaluator.cpp
-index c98db9f6d..66c2ed58f 100644
 --- a/opensubdiv/osd/tbbEvaluator.cpp
 +++ b/opensubdiv/osd/tbbEvaluator.cpp
 @@ -25,7 +25,8 @@

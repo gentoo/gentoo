@@ -28,7 +28,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup
+if [[ -z ${_ADA_ECLASS} ]]; then
+_ADA_ECLASS=1
 
 # @ECLASS_VARIABLE: ADA_DEPS
 # @OUTPUT_VARIABLE
@@ -56,7 +57,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2021 gcc_12_2_0 gcc_12
+	gnat_2021 gcc_12
 )
 readonly _ADA_ALL_IMPLS
 
@@ -107,7 +108,7 @@ readonly _ADA_ALL_IMPLS
 #
 # Returns 0 if the implementation is valid and supported. If it is
 # unsupported, returns 1 -- and the caller should ignore the entry.
-# If it is invalid, dies with an appopriate error messages.
+# If it is invalid, dies with an appropriate error message.
 _ada_impl_supported() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -119,9 +120,6 @@ _ada_impl_supported() {
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
 		gnat_2021)
-			return 0
-			;;
-		gcc_12_2_0)
 			return 0
 			;;
 		gcc_12)
@@ -222,10 +220,6 @@ ada_export() {
 			impl=${1}
 			shift
 			;;
-		gcc_12_2_0)
-			impl=${1}
-			shift
-			;;
 		gcc_12)
 			impl=${1}
 			shift
@@ -245,10 +239,6 @@ ada_export() {
 		gnat_2021)
 			gcc_pv=10
 			slot=10
-			;;
-		gcc_12_2_0)
-			gcc_pv=12.2.0
-			slot=12
 			;;
 		gcc_12)
 			gcc_pv=12
@@ -523,3 +513,7 @@ ada_pkg_setup() {
 
 	[[ ${MERGE_TYPE} != binary ]] && ada_setup
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup

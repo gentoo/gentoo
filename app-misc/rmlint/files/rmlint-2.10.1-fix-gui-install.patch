@@ -1,0 +1,11 @@
+--- a/gui/setup.py
++++ b/gui/setup.py
+@@ -19,7 +19,7 @@ def read_version():
+     with open('../.version', 'r') as handle:
+         version_string = handle.read()
+
+-    return version_string.strip()
++    return version_string.split()[0]
+
+ class install_glib_resources(install):
+     user_options = install.user_options + [

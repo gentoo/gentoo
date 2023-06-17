@@ -9,4 +9,7 @@
 		<flag name="convert-mozilla-cookies">Install the convert-mozilla-cookies script and its run-time dependencies</flag>
 		<flag name="verify-file">Install the verify-file script and its run-time dependencies</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">lavv17/lftp</remote-id>
+	</upstream>
 </pkgmetadata>

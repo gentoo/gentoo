@@ -5,6 +5,10 @@
         <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
     </maintainer>
+    <maintainer type="person" proxied="yes">
+        <email>xgreenlandforwyy@gmail.com</email>
+        <name>Yiyang Wu</name>
+    </maintainer>
     <upstream>
         <remote-id type="github">RadeonOpenCompute/ROCm-OpenCL-Runtime</remote-id>
     </upstream>

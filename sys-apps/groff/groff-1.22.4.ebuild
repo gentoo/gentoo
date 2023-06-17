@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P="${P/_/.}"
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://gnu/groff/${MY_P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="examples uchardet X"
 
 RDEPEND="
@@ -39,6 +39,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.19.2-man-unicode-dashes.patch #16108 #17580 #121502
+	"${FILESDIR}"/${PN}-1.22.4-skip-broken-diffutils-test.patch
 )
 
 src_prepare() {
@@ -69,6 +70,9 @@ src_configure() {
 		# bug #678026
 		export gl_cv_func_signbit_gcc=yes
 	fi
+
+	# Drop in release after 1.22.4! bug #894154
+	append-cxxflags -std=gnu++11
 
 	local myeconfargs=(
 		--with-appresdir="${EPREFIX}"/usr/share/X11/app-defaults

@@ -11,7 +11,7 @@ DESCRIPTION="Collection of extra plugins for the gedit Text Editor"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ThirdPartyPlugins"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 SLOT="0"
 
 IUSE="charmap git +python terminal vala"

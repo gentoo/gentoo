@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.textile"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_BINWRAP=""
 
@@ -32,4 +32,8 @@ all_ruby_prepare() {
 
 	# Drop integration tests since these require a running AMQP server.
 	rm -rf spec/integration spec/regression/bad_frame_slicing_in_adapters_spec.rb spec/unit/client_spec.rb || die
+
+	# Make specs compatible with rspec 3
+	sed -e 's/be_false/be_falsey/ ; s/be_true/be_truthy/' \
+		-i spec/unit/client/*_spec.rb spec/client/protocol/*_spec.rb || die
 }

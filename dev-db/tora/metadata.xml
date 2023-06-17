@@ -10,5 +10,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tora</remote-id>
+		<remote-id type="github">tora-tool/tora</remote-id>
 	</upstream>
 </pkgmetadata>

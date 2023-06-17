@@ -4,16 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Low-level, pure Python DBus protocol wrapper"
 HOMEPAGE="
 	https://gitlab.com/takluyver/jeepney/
 	https://pypi.org/project/jeepney/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -32,7 +31,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 
 src_test() {
 	local dbus_params=(

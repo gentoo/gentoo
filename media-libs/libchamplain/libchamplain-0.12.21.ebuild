@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/libchamplain"
 
 SLOT="0.12"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="+gtk gtk-doc +introspection vala"
 REQUIRED_USE="

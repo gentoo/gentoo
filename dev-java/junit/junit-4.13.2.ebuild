@@ -12,12 +12,12 @@ MAVEN_ID="junit:junit:4.13.2"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Simple framework to write repeatable tests"
-HOMEPAGE="https://junit.org/junit5/"
+HOMEPAGE="https://junit.org/junit4/"
 SRC_URI="https://github.com/${PN}-team/${PN}4/archive/refs/tags/r${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="4"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 # Common dependencies
 # POM: ${PN}4-r${PV}/pom.xml

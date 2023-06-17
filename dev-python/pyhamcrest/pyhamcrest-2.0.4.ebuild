@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -30,7 +30,7 @@ BDEPEND="
 "
 
 distutils_enable_sphinx doc \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}

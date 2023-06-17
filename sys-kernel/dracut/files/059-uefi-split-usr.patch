@@ -1,0 +1,48 @@
+https://github.com/dracutdevs/dracut/pull/2365
+
+From 3462e0ac6f3562a5247bbeda2dc41eaf4e4ebf5e Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 26 May 2023 15:56:45 -0400
+Subject: [PATCH] Fix path to UEFI stub on split-usr systems
+
+systemd always installs the UEFI stub in ${prefix}/lib/systemd/boot/efi.
+
+On split-usr systems, systemdutildir is ${rootprefix}/lib/systemd, which
+makes dracut look in the wrong place.
+
+Instead, grab 'prefix' from systemd.pc and store it in 'systemd_prefix'.
+
+Bug: https://bugs.gentoo.org/765208
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ dracut.sh | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index bbb34697..52a83061 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1389,6 +1389,11 @@ esac
+ 
+ abs_outfile=$(readlink -f "$outfile") && outfile="$abs_outfile"
+ 
++[[ -n $systemd_prefix ]] \
++    || systemd_prefix=$(pkg-config systemd --variable=prefix 2> /dev/null)
++
++[[ -n $systemd_prefix ]] || systemd_prefix=/usr
++
+ [[ -d $dracutsysrootdir$systemdutildir ]] \
+     || systemdutildir=$(pkg-config systemd --variable=systemdutildir 2> /dev/null)
+ 
+@@ -1467,7 +1472,7 @@ if [[ ! $print_cmdline ]]; then
+         esac
+ 
+         if ! [[ -s $uefi_stub ]]; then
+-            uefi_stub="$dracutsysrootdir${systemdutildir}/boot/efi/linux${EFI_MACHINE_TYPE_NAME}.efi.stub"
++            uefi_stub="$dracutsysrootdir${systemd_prefix}/lib/systemd/boot/efi/linux${EFI_MACHINE_TYPE_NAME}.efi.stub"
+         fi
+ 
+         if ! [[ -s $uefi_stub ]]; then
+-- 
+2.40.1
+

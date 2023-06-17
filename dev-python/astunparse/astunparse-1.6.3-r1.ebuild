@@ -4,20 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Astun parser for python"
 HOMEPAGE="
 	https://github.com/simonpercivall/astunparse/
 	https://pypi.org/project/astunparse/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
@@ -26,8 +25,10 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/astunparse-1.6.2-tests.patch"
-	# from Fedora
+	# From Fedora
 	"${FILESDIR}/${P}-py39.patch"
+	# From Debian
+	"${FILESDIR}/${P}-test-py311.patch"
 )
 
 distutils_enable_tests unittest

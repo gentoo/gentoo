@@ -5,21 +5,20 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Dictdiffer is a library that helps you to diff and patch dictionaries"
 HOMEPAGE="
 	https://github.com/inveniosoftware/dictdiffer/
 	https://pypi.org/project/dictdiffer/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
 
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
@@ -27,7 +26,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 # Requires self to be already installed
-#distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+#distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
 python_prepare_all() {
 	# remove dep on pytest-runner

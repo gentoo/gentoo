@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/jaraco/keyrings.alt/
 	https://pypi.org/project/keyrings.alt/
 "
-SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
 S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
@@ -25,7 +25,7 @@ RDEPEND="
 	!dev-python/keyrings_alt
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-3.4.1[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-3.4.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/keyring[${PYTHON_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_USEDEP}]

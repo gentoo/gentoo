@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/903001
+https://bugs.openldap.org/show_bug.cgi?id=10039
+https://git.openldap.org/openldap/openldap/-/merge_requests/613
+https://git.openldap.org/openldap/openldap/-/commit/cb73e60a49f85bf5207b2fd0f557013be29ac072
+
+From cb73e60a49f85bf5207b2fd0f557013be29ac072 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 12 Apr 2023 12:55:46 -0700
+Subject: [PATCH] ITS#10039 Test for SSL_CTX_set_ciphersuites()
+
+When configuring OpenLDAP using --with-tls=openssl with LibreSSL the
+configure will fail to detect SSL_export_keyring_material_early() since
+LibreSSL doesn't support this function yet. However OpenLDAP doesn't
+actually use this function and only checks for it to ensure a modern
+OpenSSL API is used. This can be easily solved by checking for an
+equivalent modern OpenSSL function which both LibreSSL and OpenSSL both
+support such as SSL_CTX_set_ciphersuites(). Doing this allows the build
+and tests to succeed with modern LibreSSL versions. This was tested with
+LibreSSL >= 3.6.
+
+Bug: https://bugs.openldap.org/show_bug.cgi?id=10039
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2cf28ef346..c4e2a905e2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1243,7 +1243,7 @@ if test $ol_with_tls = openssl || test $ol_with_tls = auto ; then
+ [#endif]])],
+ 					, [AC_MSG_FAILURE([OpenSSL 1.1.1 or newer required])])
+ 
+-		AC_CHECK_LIB(ssl, SSL_export_keying_material_early,
++		AC_CHECK_LIB(ssl, SSL_CTX_set_ciphersuites,
+ 			[have_openssl=yes], [have_openssl=no],
+ 			[-lcrypto])
+ 

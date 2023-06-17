@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A pragma to use the C3 method resolution order algortihm"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~ppc-macos ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

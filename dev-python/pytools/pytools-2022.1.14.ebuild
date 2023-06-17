@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='sqlite'
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Collection of tools missing from the Python standard library"
 HOMEPAGE="
@@ -15,11 +15,10 @@ HOMEPAGE="
 	https://github.com/inducer/pytools/
 	https://pypi.org/project/pytools/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 # NB: numpy is now an "extra" (optional) dep -- we can remove it from
 # RDEPEND If revdeps don't need it

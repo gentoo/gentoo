@@ -4,7 +4,7 @@
 
 extra_started_commands="reload"
 
-pidfile=/var/run/upsmon.pid
+pidfile=/run/nut/upsmon.pid
 bin=/usr/sbin/upsmon
 
 depend() {

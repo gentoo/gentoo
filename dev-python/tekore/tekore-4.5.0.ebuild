@@ -39,7 +39,7 @@ DOCS=( readme.rst )
 distutils_enable_tests pytest
 # TODO: package sphinx_codeautolink
 # distutils_enable_sphinx docs/src \
-# 	dev-python/sphinx_rtd_theme \
+# 	dev-python/sphinx-rtd-theme \
 # 	dev-python/sphinx-tabs \
 # 	dev-python/sphinx-autodoc-typehints
 

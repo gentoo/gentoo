@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/tcl/${MY_P}-src.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0/8.6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="debug +threads truetype aqua xscreensaver"
 RESTRICT="!test? ( test )"
 
@@ -43,6 +43,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.6.9-conf.patch # Bug 125971
 	"${FILESDIR}"/${PN}-8.6.12-test.patch
 	"${FILESDIR}"/${PN}-8.6.13-test.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
 )
 
 src_prepare() {

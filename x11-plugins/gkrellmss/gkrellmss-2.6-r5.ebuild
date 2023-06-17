@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gkrellm-plugin toolchain-funcs
+inherit gkrellm-plugin multilib toolchain-funcs
 
 DESCRIPTION="A plugin for GKrellM2 that has a VU meter and a sound chart"
 HOMEPAGE="http://members.dslextreme.com/users/billw/gkrellmss/gkrellmss.html"

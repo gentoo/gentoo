@@ -1,11 +1,11 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
-DESCRIPTION="A compiz like 3D wayland compositor"
+DESCRIPTION="Compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wf-shell"
 
 if [[ ${PV} == 9999 ]]; then
@@ -25,13 +25,14 @@ DEPEND="
 	dev-libs/gobject-introspection
 	gui-libs/gtk-layer-shell
 	>=gui-wm/wayfire-${PV%.*}
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 "
 RDEPEND="${DEPEND}
 	gui-apps/wayland-logout
 "
 BDEPEND="
 	dev-libs/wayland-protocols
+	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
 

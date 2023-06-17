@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 MY_COMMIT="2dbe627c1ec245db206cdc73bf1f9d785f1512d8"
@@ -42,7 +42,7 @@ REQUIRED_USE="
 distutils_enable_sphinx docs
 
 python_test() {
-	pytest -vv tests/unit || die "Tests fail with ${EPYTHON}"
+	epytest -vv tests/unit
 }
 
 src_install() {

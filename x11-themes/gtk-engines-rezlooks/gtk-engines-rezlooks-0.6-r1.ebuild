@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ src_prepare() {
 	mv Changelog{,.1} || die
 	mv Changelog.1 ChangeLog || die
 
-	eautoreconf # required for interix
+	eautoreconf # update stale autotools
 }
 
 src_configure() {

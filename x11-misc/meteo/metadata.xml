@@ -5,4 +5,7 @@
 	<email>pacho@gentoo.org</email>
 	<name>Pacho Ramos</name>
 </maintainer>
+<upstream>
+	<remote-id type="gitlab">bitseater/meteo</remote-id>
+</upstream>
 </pkgmetadata>

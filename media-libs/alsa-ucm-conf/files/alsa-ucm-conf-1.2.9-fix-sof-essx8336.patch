@@ -1,0 +1,20 @@
+https://github.com/alsa-project/alsa-ucm-conf/commit/906f692e4ed84dc136c270c05e1b490a554de99b
+
+From 906f692e4ed84dc136c270c05e1b490a554de99b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 4 May 2023 14:36:49 +0200
+Subject: [PATCH] sof-essx8336: Dmic is not a valid UCM device identifier, use
+ Mic
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+--- a/ucm2/Intel/sof-essx8336/sof-essx8336.conf
++++ b/ucm2/Intel/sof-essx8336/sof-essx8336.conf
+@@ -32,7 +32,7 @@ If.devdmic {
+ 		Haystack "${CardComponents}"
+ 		Needle "cfg-dmics:"
+ 	}
+-	True.Define.DeviceDmic "Dmic"
++	True.Define.DeviceDmic "Mic"
+ }
+ 
+ SectionUseCase."HiFi" {

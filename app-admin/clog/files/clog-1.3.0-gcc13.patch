@@ -1,0 +1,11 @@
+https://github.com/GothenburgBitFactory/libshared/pull/71
+--- a/src/libshared/src/JSON2.h
++++ b/src/libshared/src/JSON2.h
+@@ -27,6 +27,7 @@
+ #ifndef INCLUDED_JSON2
+ #define INCLUDED_JSON2
+ 
++#include <cstdint>
+ #include <string>
+ 
+ class JSON2

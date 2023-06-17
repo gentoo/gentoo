@@ -22,6 +22,8 @@ esac
 if [[ -z ${_VALA_ECLASS} ]] ; then
 _VALA_ECLASS=1
 
+inherit flag-o-matic
+
 # @ECLASS_VARIABLE: VALA_MIN_API_VERSION
 # @DESCRIPTION:
 # Minimum vala API version (e.g. 0.56).
@@ -167,8 +169,12 @@ vala_setup() {
 			fi
 		done
 	done
-	: ${PKG_CONFIG_PATH:="${EPREFIX}/usr/$(get_libdir)/pkgconfig:${EPREFIX}/usr/share/pkgconfig"}
+	: "${PKG_CONFIG_PATH:="${EPREFIX}/usr/$(get_libdir)/pkgconfig:${EPREFIX}/usr/share/pkgconfig"}"
 	export PKG_CONFIG_PATH="${T}/pkgconfig:${PKG_CONFIG_PATH}"
+
+	# See bug #892708.
+	# Workaround for https://gitlab.gnome.org/GNOME/vala/-/issues/1408.
+	append-cflags $(test-flags-CC -Wno-incompatible-function-pointer-types)
 }
 
 # @FUNCTION: vala_src_prepare

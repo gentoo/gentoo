@@ -1,0 +1,32 @@
+Upstream-PR: https://github.com/apache/tomcat-native/pull/14
+Upstream-Commit:
+https://github.com/apache/tomcat-native/commit/4f7fb7f442de3d9a9bb2f72b5dabc2f4bc8e3384
+
+From 54dccd3a4dc01801d9311b3160808305ec9fc2cf Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 21 Jul 2022 17:59:14 -0700
+Subject: [PATCH] native: Fix the build with rlibtool
+
+When building tomcat-native with slibtool using the rlibtool symlink the
+build will fail. This is because rlibtool requires the generated libtool
+script to determine if the build is shared, static or both.
+
+Gentoo bug: https://bugs.gentoo.org/778914
+---
+ native/configure.in | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/native/configure.in b/native/configure.in
+index 567894b10..e082ae6d2 100644
+--- a/configure.in
++++ b/configure.in
+@@ -50,6 +50,9 @@ AC_SUBST(TCN_CONFIG_LOCATION)
+ AC_CANONICAL_TARGET
+ AC_PROG_INSTALL
+ 
++dnl Generate the libtool script which is needed for rlibtool
++LT_INIT
++
+ dnl
+ dnl compute the top directory of the build
+ dnl note: this is needed for LIBTOOL and exporting the bundled Expat

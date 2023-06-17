@@ -19,6 +19,7 @@
 </maintainer>
 <upstream>
 	<remote-id type="cpe">cpe:/a:freedesktop:poppler</remote-id>
+	<remote-id type="freedesktop-gitlab">poppler/poppler</remote-id>
 </upstream>
 <use>
 	<flag name="boost">Use boost::small_vector for a serious performance gain</flag>

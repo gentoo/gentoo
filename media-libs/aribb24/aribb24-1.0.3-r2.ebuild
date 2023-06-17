@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/nkoriyama/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="media-libs/libpng:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

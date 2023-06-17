@@ -1,0 +1,22 @@
+https://github.com/hercules-team/augeas/pull/791
+
+From 46ecd3542820604603ab4f046f9fb3e6195f60aa Mon Sep 17 00:00:00 2001
+From: Dimitry Andric <dimitry@andric.com>
+Date: Thu, 8 Dec 2022 13:08:53 +0100
+Subject: [PATCH] Only use GNU specific strerror_r() API when __GLIBC__ is
+ defined.
+
+--- a/src/internal.c
++++ b/src/internal.c
+@@ -431,8 +431,8 @@ char *cleanpath(char *path) {
+ 
+ const char *xstrerror(int errnum, char *buf, size_t len) {
+ #ifdef HAVE_STRERROR_R
+-# ifdef __USE_GNU
+-    /* Annoying linux specific API contract */
++# if defined(__USE_GNU) && defined(__GLIBC__)
++    /* Annoying GNU specific API contract */
+     return strerror_r(errnum, buf, len);
+ # else
+     strerror_r(errnum, buf, len);
+

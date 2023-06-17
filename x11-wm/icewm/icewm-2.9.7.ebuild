@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -82,7 +82,7 @@ BDEPEND="
 
 pkg_pretend() {
 	if use gdk-pixbuf && use imlib ; then
-		einfo 'Confilcting USE flags have been enabled:'
+		einfo 'Conflicting USE flags have been enabled:'
 		einfo '"gdk-pixbuf" and "imlib" exclude each other!'
 		einfo 'Using "gdk-pixbuf".'
 	fi

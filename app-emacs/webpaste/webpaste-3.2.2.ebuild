@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.4
-
 inherit elisp
 
 DESCRIPTION="Paste parts of buffers to several pastebin-like services from Emacs"

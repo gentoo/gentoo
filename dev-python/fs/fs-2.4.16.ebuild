@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Filesystem abstraction layer"
 HOMEPAGE="
@@ -13,7 +13,6 @@ HOMEPAGE="
 	https://docs.pyfilesystem.org/
 	https://www.willmcgugan.com/tag/fs/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -33,7 +32,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme dev-python/recommonmark
+distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme dev-python/recommonmark
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(

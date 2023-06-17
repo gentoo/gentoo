@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: findlib.eclass
@@ -6,13 +6,13 @@
 # ML <ml@gentoo.org>
 # @AUTHOR:
 # Original author: Matthieu Sozeau <mattam@gentoo.org> (retired)
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: ocamlfind (a.k.a. findlib) eclass
 # @DESCRIPTION:
 # ocamlfind (a.k.a. findlib) eclass
 
-case ${EAPI:-0} in
-	[678]) ;;
+case ${EAPI} in
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -35,7 +35,7 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 # @DESCRIPTION:
 # Die if ocamlfind is not found
 check_ocamlfind() {
-	if [ ! -x "${EPREFIX}"/usr/bin/ocamlfind ] ; then
+	if [[ ! -x ${EPREFIX}/usr/bin/ocamlfind ]] ; then
 		eerror "In ${ECLASS}: could not find the ocamlfind executable"
 		eerror "Please report this bug on Gentoo's Bugzilla, assigning to ml@gentoo.org"
 		die "ocamlfind executable not found"
@@ -51,16 +51,16 @@ findlib_src_preinst() {
 	check_ocamlfind
 
 	# destdir is the ocaml sitelib
-	local destdir=`ocamlfind printconf destdir`
+	local destdir=$(ocamlfind printconf destdir)
 
 	# strip off prefix
 	destdir=${destdir#${EPREFIX}}
 
-	dodir ${destdir} || die "dodir failed"
+	dodir "${destdir}"
 	export OCAMLFIND_DESTDIR=${ED}${destdir}
 
 	# stublibs style
-	dodir ${destdir}/stublibs || die "dodir failed"
+	dodir "${destdir}"/stublibs
 	export OCAMLFIND_LDCONF=ignore
 }
 

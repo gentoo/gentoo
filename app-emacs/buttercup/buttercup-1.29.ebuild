@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS="24.3"
-
 inherit elisp
 
 DESCRIPTION="Behaviour-driven Elisp testing"
@@ -14,7 +12,7 @@ S="${WORKDIR}"/emacs-${P}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 arm64 ppc sparc x86"
 
 DOCS=( docs/{running,writing}-tests.md  )
 SITEFILE="50${PN}-gentoo.el"

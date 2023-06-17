@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/831219
+https://github.com/noxdafox/pebble/pull/112
+
+From cd78923ac2a3de7e2ce248734f10170bf516f5b4 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Sun, 19 Feb 2023 13:36:34 -0500
+Subject: [PATCH] increase attempts for test_process_pool_stop_stopped_callback
+
+On very slow machines, test_process_pool_stop_stopped_callback fails due
+to not raising a RuntimeError.  Increasing the number of long_function
+instances added to the pool causes it to perform as expected.
+---
+ test/test_process_pool_spawn.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test_process_pool_spawn.py b/test/test_process_pool_spawn.py
+index f839b0a..d734bdf 100644
+--- a/test/test_process_pool_spawn.py
++++ b/test/test_process_pool_spawn.py
+@@ -315,7 +315,7 @@ def stop_pool_callback(_):
+             future = pool.schedule(function, args=[1])
+             future.add_done_callback(stop_pool_callback)
+             with self.assertRaises(RuntimeError):
+-                for index in range(10):
++                for index in range(30):
+                     time.sleep(0.1)
+                     pool.schedule(long_function, args=[index])
+ 

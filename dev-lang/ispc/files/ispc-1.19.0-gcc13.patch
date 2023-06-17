@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/895572
+https://github.com/ispc/ispc/commit/ffc75e464ff2b8fce7dbf74f1846ebd0852bc6f9
+
+From ffc75e464ff2b8fce7dbf74f1846ebd0852bc6f9 Mon Sep 17 00:00:00 2001
+From: Luya Tshimbalanga <luya@fedoraproject.org>
+Date: Tue, 28 Feb 2023 17:20:21 -0800
+Subject: [PATCH] Fix build with GCC 13 and possibly Clang 15
+
+This fix add missing <cstdint> include to handle "uint32_t".
+--- a/src/target_registry.h
++++ b/src/target_registry.h
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2019-2021, Intel Corporation
++  Copyright (c) 2019-2023, Intel Corporation
+   All rights reserved.
+ 
+   Redistribution and use in source and binary forms, with or without
+@@ -40,6 +40,7 @@
+ #include "bitcode_lib.h"
+ 
+ #include <bitset>
++#include <cstdint>
+ #include <map>
+ #include <vector>
+ 
+

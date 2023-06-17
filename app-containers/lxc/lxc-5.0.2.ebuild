@@ -12,7 +12,7 @@ SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz
 
 LICENSE="GPL-2 LGPL-2.1 LGPL-3"
 SLOT="0/1.502" # SONAME liblxc.so.1 + ${PV//./} _if_ breaking ABI change while bumping.
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 IUSE="apparmor +caps examples io-uring lto man pam seccomp selinux ssl systemd test +tools"
 
 RDEPEND="acct-group/lxc

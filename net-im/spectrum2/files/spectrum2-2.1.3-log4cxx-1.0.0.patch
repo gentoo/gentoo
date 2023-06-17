@@ -1,0 +1,63 @@
+Description: (newer) Debian log4cxx needs C++17 and used smart pointers.
+  This patch just enables C++17 for the build and using smart pointers
+  where needed.
+Author: Tobias Frost <tobi@debian.org>
+Forwarded: not yet. log4cxx 0.14 will come with some preprocessor macros that will enable properly gating the new code.
+Last-Update: 2022-11-21 <YYYY-MM-DD, last update of the meta-information, optional>
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ 
+ project(libtransport)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ if(WIN32)
+ 	set(CMAKE_CXX_STANDARD 17)
+ endif(WIN32)
+--- a/plugin/cpp/Logging.cpp
++++ b/plugin/cpp/Logging.cpp
+@@ -26,6 +26,7 @@
+ #include <iterator>
+ #include <algorithm>
+ 
++#include <memory>
+ 
+ #include <boost/filesystem.hpp>
+ #include <boost/algorithm/string.hpp>
+@@ -100,15 +101,17 @@
+ #ifdef _MSC_VER
+ 		root->addAppender(new ConsoleAppender(new PatternLayout(L"%d %-5p %c: %m%n")));
+ #else
+-		root->addAppender(new ConsoleAppender(new PatternLayout("%d %-5p %c: %m%n")));
++		auto patternlayout = std::make_shared<PatternLayout>("%d %-5p %c: %m%n");
++		auto consoleappender = std::make_shared<ConsoleAppender>(patternlayout);
++		root->addAppender(consoleappender);
+ #endif
+ 	}
+ 	else {
+ 		log4cxx::helpers::Properties p;
+ 
+-		log4cxx::helpers::FileInputStream *istream = NULL;
++		log4cxx::helpers::InputStreamPtr istream;
+ 		try {
+-			istream = new log4cxx::helpers::FileInputStream(CONFIG_STRING(config, key));
++			istream.reset(new log4cxx::helpers::FileInputStream(CONFIG_STRING(config, key)));
+ 		}
+ 		catch(log4cxx::helpers::IOException &ex) {
+ 			std::cerr << "Can't create FileInputStream logger instance: " << ex.what() << "\n";
+--- a/tests/libtransport/main.cpp
++++ b/tests/libtransport/main.cpp
+@@ -23,7 +23,9 @@
+ #ifdef WITH_LOG4CXX
+ 	LoggerPtr root = Logger::getRootLogger();
+ #ifndef _MSC_VER
+-	root->addAppender(new FileAppender(new PatternLayout("%d %-5p %c: %m%n"), "libtransport_test.log", false));
++	auto patternlayout = std::make_shared<PatternLayout>("%d %-5p %c: %m%n");
++	auto fileappender = std::make_shared<FileAppender>(patternlayout, "libtransport_test.log", false);
++	root->addAppender(fileappender);
+ #else
+ 	root->addAppender(new FileAppender(new PatternLayout(L"%d %-5p %c: %m%n"), L"libtransport_test.log", false));
+ #endif

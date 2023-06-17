@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ RDEPEND="${PYTHON_DEPS}
 	~media-gfx/fdm-materials-${FDM_MATERIALS_PV}
 	dev-qt/qtquickcontrols[widgets]
 	$(python_gen_cond_dep '
-			dev-python/importlib_metadata[${PYTHON_USEDEP}]
+			dev-python/importlib-metadata[${PYTHON_USEDEP}]
 			dev-python/keyring[${PYTHON_USEDEP}]
 			dev-python/mypy[${PYTHON_USEDEP}]
 			dev-python/numpy[${PYTHON_USEDEP}]
@@ -52,7 +52,7 @@ RDEPEND="${PYTHON_DEPS}
 			dev-python/shapely[${PYTHON_USEDEP}]
 			dev-python/trimesh[${PYTHON_USEDEP}]
 			usb? ( dev-python/pyserial[${PYTHON_USEDEP}] )
-			zeroconf? ( dev-python/python-zeroconf[${PYTHON_USEDEP}] )
+			zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}"
 

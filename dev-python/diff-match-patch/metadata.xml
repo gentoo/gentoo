@@ -20,6 +20,7 @@
 		library features the same API and the same functionality.  All versions
 		also have comprehensive test harnesses.</longdescription>
 	<upstream>
+		<remote-id type="github">diff-match-patch-python/diff-match-patch</remote-id>
 		<remote-id type="pypi">diff-match-patch</remote-id>
 	</upstream>
 </pkgmetadata>

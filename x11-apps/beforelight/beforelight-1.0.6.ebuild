@@ -7,7 +7,7 @@ XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="Sample implementation of screen saver"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ppc64 ~s390 ~sparc x86"
 
 RDEPEND="
 	x11-libs/libX11

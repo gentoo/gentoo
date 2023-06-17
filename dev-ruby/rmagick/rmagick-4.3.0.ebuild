@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RUBY_S="rmagick-${MY_PV}"
 
 LICENSE="Artistic"
 SLOT="4"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:="

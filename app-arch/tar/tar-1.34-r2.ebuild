@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ SRC_URI+=" verify-sig? (
 LICENSE="GPL-3+"
 SLOT="0"
 if [[ -z "$(ver_cut 3)" ]] || [[ "$(ver_cut 3)" -lt 90 ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="acl minimal nls selinux xattr"
 
@@ -38,8 +38,13 @@ PDEPEND="
 "
 
 src_configure() {
+	# -fanalyzer doesn't make sense for us in ebuilds, as it's for static analysis
+	export gl_cv_warn_c__fanalyzer=no
+
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
+		# Avoid -Werror
+		--disable-gcc-warnings
 		--enable-backup-scripts
 		--libexecdir="${EPREFIX}"/usr/sbin
 		$(use_with acl posix-acls)
@@ -85,6 +90,13 @@ pkg_postinst() {
 	# ensure to preserve the symlink before app-alternatives/tar
 	# is installed
 	if [[ ! -h ${EROOT}/bin/tar ]]; then
+		if [[ -e ${EROOT}/usr/bin/tar ]] ; then
+			# bug #904887
+			ewarn "${EROOT}/usr/bin/tar exists but is not a symlink."
+			ewarn "This is expected during Prefix bootstrap and unsual otherwise."
+			ewarn "Moving away unexpected ${EROOT}/usr/bin/tar to .bak."
+			mv "${EROOT}/usr/bin/tar" "${EROOT}/usr/bin/tar.bak" || die
+		fi
 		ln -s gtar "${EROOT}/bin/tar" || die
 	fi
 }

@@ -7,31 +7,32 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit readme.gentoo-r1 python-single-r1 optfeature
 
 DESCRIPTION="Configurable FVWM theme with transparency and freedesktop compatible menu"
-HOMEPAGE="http://fvwm-crystal.sourceforge.net/"
-
-LICENSE="GPL-3+"
-SLOT="0"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+HOMEPAGE="https://fvwm-crystal.sourceforge.net/"
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/fvwm-crystal/fvwm-crystal.git"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~ppc ~ppc64 ~riscv x86"
 fi
+
+LICENSE="GPL-3+"
+SLOT="0"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	acct-group/fvwm-crystal
-	|| ( >=x11-wm/fvwm3-1.0.4[go] >=x11-wm/fvwm-2.6.9[png] )
-	virtual/imagemagick-tools
-	|| ( >=x11-misc/stalonetray-0.6.2-r2 x11-misc/trayer )
-	|| ( x11-misc/hsetroot media-gfx/feh )
+	app-alternatives/awk
+	media-sound/alsa-utils
 	sys-apps/sed
 	sys-devel/bc
-	app-alternatives/awk
+	virtual/imagemagick-tools
 	x11-apps/xwd
-	media-sound/alsa-utils"
+	|| ( x11-misc/hsetroot media-gfx/feh )
+	|| ( >=x11-misc/stalonetray-0.6.2-r2 x11-misc/trayer )
+	|| ( >=x11-wm/fvwm3-1.0.4[go] >=x11-wm/fvwm-2.6.9[png] )
+"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="After a first time installation, execute the following commands:
@@ -55,7 +56,7 @@ src_install() {
 		prefix="${EPREFIX}/usr" \
 		install
 	# GNU License is globally in the portage tree
-	rm -vf "${ED}/usr/share/doc/${PF}"/LICENSE
+	rm -vf "${ED}/usr/share/doc/${PF}"/LICENSE || die
 
 	python_doscript "${ED}/usr/bin/${PN}".{apps,wallpaper}
 	python_scriptinto "/usr/share/${PN}"/fvwm/scripts/FvwmMPD
@@ -67,5 +68,5 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 	optfeature "localized XDG user directories support" "x11-misc/xdg-user-dirs"
 	optfeature "hibernate/resume support" "sys-apps/systemd"
-	optfeature "professional sound server" "media-sound/jack-audio-connection-kit"
+	optfeature "professional sound server" "virtual/jack"
 }

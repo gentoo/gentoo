@@ -6,7 +6,13 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">junit-team/junit5</remote-id>
 		<remote-id type="github">junit-team/junit4</remote-id>
 		<remote-id type="sourceforge">junit</remote-id>
 	</upstream>
+	<use>
+		<flag name="migration-support" restrict="&gt;=dev-java/junit-5">Include the junit-jupiter-migrationsupport module, which helps with migration from JUnit 4 to JUnit Jupiter</flag>
+		<flag name="suite" restrict="&gt;=dev-java/junit-5">Include the JUnit Platform Suite Engine, which adds test suite support</flag>
+		<flag name="vintage" restrict="&gt;=dev-java/junit-5">Include JUnit Vintage, which allows JUnit 5 to run JUnit 3 and JUnit 4 tests</flag>
+	</use>
 </pkgmetadata>

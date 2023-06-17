@@ -1,0 +1,12 @@
+Index: rtabmap-0.20.22-rolling/guilib/src/opencv/vtkImageMatSource.cpp
+===================================================================
+--- rtabmap-0.20.22-rolling.orig/guilib/src/opencv/vtkImageMatSource.cpp
++++ rtabmap-0.20.22-rolling/guilib/src/opencv/vtkImageMatSource.cpp
+@@ -48,6 +48,7 @@
+ #include <vtkInformationVector.h>
+ #include <vtkStreamingDemandDrivenPipeline.h>
+ #include <vtkObjectFactory.h>
++#include <vtkVersionMacros.h>
+ 
+ namespace rtabmap {
+ 	vtkStandardNewMacro(vtkImageMatSource);

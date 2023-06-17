@@ -12,4 +12,4 @@ inherit stardict
 
 HOMEPAGE="http://download.huzheng.org/zh_CN/"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"

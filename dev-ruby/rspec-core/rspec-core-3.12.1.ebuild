@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_TEST="none"
 
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="highlight"
 
 SUBVERSION="$(ver_cut 1-2)"
@@ -70,7 +70,8 @@ all_ruby_prepare() {
 
 	# Avoid a spec that depends on dev-ruby/rspec to lessen circular
 	# dependencies, bug 662328
-	sed -i -e '/loads mocks and expectations when the constants are referenced/askip "gentoo: bug 662328"' spec/rspec/core_spec.rb || die
+	sed -e '/loads mocks and expectations when the constants are referenced/askip "gentoo: bug 662328"' \
+		-i spec/rspec/core_spec.rb || die
 
 	# Avoid a spec depending on specifics on local networks
 	# This fails when localhost resolves to ::1 which may be a

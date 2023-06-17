@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="gui test"
 RESTRICT="!test? ( test )"
 
@@ -59,6 +59,10 @@ BDEPEND="
 	)"
 
 DOCS=( ChangeLog doc/synergy.conf.example{,-advanced,-basic} )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.1.32-gcc13.patch
+)
 
 src_prepare() {
 	# broken on Xvfb

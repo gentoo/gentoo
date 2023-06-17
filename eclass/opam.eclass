@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: opam.eclass
@@ -25,7 +25,7 @@ QA_FLAGS_IGNORED='.*'
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Override dependency for OPAM_INSTALLER
-: ${OPAM_INSTALLER_DEP:="dev-ml/opam-installer"}
+: "${OPAM_INSTALLER_DEP:="dev-ml/opam-installer"}"
 
 RDEPEND=">=dev-lang/ocaml-4:="
 BDEPEND="${OPAM_INSTALLER_DEP} dev-lang/ocaml"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}"
 # @ECLASS_VARIABLE: OPAM_INSTALLER
 # @DESCRIPTION:
 # Eclass can use different opam-installer binary than the one provided in by system.
-: ${OPAM_INSTALLER:=opam-installer}
+: "${OPAM_INSTALLER:=opam-installer}"
 
 # @FUNCTION: opam-install
 # @USAGE: <list of packages>

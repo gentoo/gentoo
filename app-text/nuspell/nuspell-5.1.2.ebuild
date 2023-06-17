@@ -16,7 +16,7 @@ IUSE="doc test"
 
 RDEPEND=">=dev-libs/icu-60"
 DEPEND="${RDEPEND}
-	doc? ( app-text/pandoc )
+	doc? ( virtual/pandoc )
 	test? ( <dev-cpp/catch-3:0 )
 	"
 

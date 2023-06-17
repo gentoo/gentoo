@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: freedict.eclass
@@ -12,6 +12,11 @@
 # This eclass exists to ease the installation of freedict translation
 # dictionaries.
 
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_FREEDICT_ECLASS} ]]; then
 _FREEDICT_ECLASS=1
 
@@ -19,11 +24,6 @@ _FREEDICT_ECLASS=1
 # @DESCRIPTION:
 # Strips PN of 'freedict' prefix, to be used in SRC_URI and doins
 FREEDICT_P=${PN/freedict-/}
-
-case ${EAPI:-0} in
-	7) ;;
-	*) die "${ECLASS}.eclass is banned in EAPI=${EAPI}" ;;
-esac
 
 [[ ${FORLANG} ]] && die "FORLANG is banned, set DESCRIPTION instead"
 [[ ${TOLANG} ]] && die "TOLANG is banned, set DESCRIPTION instead"
@@ -47,6 +47,6 @@ freedict_src_install() {
 	doins ${FREEDICT_P}.index
 }
 
-EXPORT_FUNCTIONS src_install
-
 fi
+
+EXPORT_FUNCTIONS src_install

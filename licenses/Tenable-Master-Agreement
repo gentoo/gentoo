@@ -1,0 +1,641 @@
+TENABLE MASTER AGREEMENT
+This Master Agreement (this “Agreement”) is made by and between Tenable (as defined below) and the customer licensing Products
+and/or receiving services (“Customer”) with an effective date as of the date Customer clicks to accept this Agreement (the “Effective
+Date”). Hereinafter, each of Tenable and Customer may be referred to collectively as the “Parties” or individually as a “Party”.
+
+1. Definitions.
+
+(a) “Affiliate” means any entity that controls, is controlled by, or is under common control with a Party. “Control” shall mean:
+(1) ownership (either directly or indirectly) of greater than fifty percent (50%) of the voting equity or other controlling equity of another
+entity; or (2) power of one entity to direct the management or policies of another entity, by contract or otherwise.
+
+(b) “Documentation” means the then-current official user manuals and/or documentation for the Products available at
+docs.tenable.com (or a successor location).
+
+(c) “Hosted Services” are a type of service offered through Tenable’s cloud-based software as a service (SaaS) platform and
+include Scans and access to and use of the hosted environment (the “Hosted Environment”).
+
+(d) “Product(s)” means any of the products that Tenable offers, including Software, Hosted Services, Hardware (if any),
+Support Services and Professional Services.
+
+(e) “Professional Services” means services purchased, including consulting services which are relevant to the implementation
+and configurations of Tenable Products as well as on-site or virtual training courses. Generally, Professional Services are defined either
+in a separate SOW or a Services Brief. Professional Services do not include the Hosted Services or Support Services.
+
+(f) “Scan(s)” are a function performed by the Software and/or the Hosted Services on Scan Targets, which are conducted in
+order to provide data to Customer regarding its network security. “PCI Scans” are a specific type of Scan designed to assess compliance
+with the Payment Card Industry Data Security Standard. “Scan Data” is the resulting information created by the Scan. “Scan Target(s)”
+are the targets or subjects of a Scan.
+
+(g) “Services Brief” means the document which outlines Tenable’s basic, pre-packaged installation or training Professional
+Services offered under a Tenable SKU and which do not require a separate SOW. Current versions of Services Briefs may be found at
+http://static.tenable.com/prod_docs/tenable_slas.html (or a successor location). For the avoidance of doubt, Customer may purchase
+commercial off the shelf SKU-based Professional Services without executing a separate Statement of Work. A “SOW” or “Statement
+of Work” shall further describe Professional Services, the terms of which may be customized and which shall require execution by the
+Customer.
+
+(h) “Software” means each software product made available by Tenable under this Agreement for download. Software
+includes patches, updates, improvements, additions, enhancements and other modifications or revised versions of the same that may be
+provided to Customer by Tenable from time to time.
+
+(i) “Technical Data” means data Customer uploads or runs through or on the Products, or is otherwise generated thereby,
+including information regarding licensing metrics and product behavioral data.
+
+(j) “Tenable” means: (i) Tenable, Inc., if Customer is a commercial entity or individual located in North or South America
+(Tenable, Inc. is a Delaware corporation having offices at 6100 Merriweather Drive, 12th Floor, Columbia, MD 21044); (ii) Tenable
+Public Sector LLC, if Customer is an agency or instrumentality of the United States Government, a commercial entity operating
+predominantly as a federal systems integrator for eventual sale or resale or for the benefit of the United States Government, or an agency
+or instrumentality of a State or local government within the United States (Tenable Public Sector LLC is a Delaware limited liability
+company having offices at 6100 Merriweather Drive, 12 th Floor, Columbia, MD 21044); or (iii) Tenable Network Security Ireland
+Limited, if Customer is located outside of North or South America (Tenable Network Security Ireland Limited is a private limited
+company having offices at 81b Campshires, Sir John Rogerson’s Quay, Dublin 2, Ireland).
+
+2. Orders and Transactions.
+
+(a) Reseller Transactions. If Customer purchases Tenable Products through an authorized Tenable reseller (a “Reseller”), all
+terms related to pricing, billing, invoicing and payment (“Payment Terms”) set forth in this Agreement (if any) shall not apply. For the
+avoidance of doubt, all such Payment Terms shall be as agreed to between Customer and Reseller. To place an order, Customer shall
+provide the Reseller with a purchase order (or other similar document acceptable to Reseller) in response to a valid quote from such
+Reseller. Following Reseller’s receipt of such purchase order, Tenable shall issue a sales order confirmation or other similar order
+acceptance document (the “Ordering Document”). No order shall be deemed accepted by Tenable until Tenable issues the Ordering
+Document. The Ordering Document shall set forth all Products (and corresponding licensing metrics) purchased by Customer.
+
+(b) Direct Transactions. If the Parties have agreed to transact directly, the following Payment Terms shall apply. Customer
+agrees to pay all amounts due as specified in a Tenable invoice. Fees for Hosted Services are charged for access to the Host Environment
+(as defined herein), not actual usage. Payment is due within thirty (30) days from the date of Tenable’s invoice to Customer. Customer
+will pay directly or reimburse Tenable for any taxes (including, sales or excise taxes, value added taxes, gross receipt taxes, landing
+fees, import duties and the like), however designated and whether foreign or domestic, imposed on or arising out of this Agreement.
+Notwithstanding the foregoing, Tenable will be solely responsible for its income tax obligations and all employer reporting and payment
+obligations with respect to its personnel. Customer agrees to pay Tenable without deducting any present or future taxes, withholdings
+or other charges except those deductions it is legally required to make. If Customer is legally required to make any deductions or
+withholding, Customer agrees to provide evidence of such withholding upon request. If a certificate of exemption or similar document
+or proceeding is necessary in order to exempt any transaction from a tax, Customer shall provide such certificate or document to Tenable.
+
+(c) Delivery and Installation. Delivery of Tenable Products (“Delivery”) shall be deemed to occur on the date of availability
+for electronic download or electronic access. Tenable has no duty to provide installation services for Tenable Products unless installation
+services are purchased separately.
+
+3. Term and Termination.
+
+(a) Agreement Term. This Agreement shall commence upon the Effective Date and continue until terminated in accordance
+with the terms set forth herein.
+
+(b) License Term and Renewals. The “License Term” is the term of the license or subscription for Products as set forth in the
+Ordering Document. If this Agreement has been signed by both Parties, then unless otherwise agreed to in writing, any License Term,
+including renewals, shall be governed by the terms set forth herein. If this Agreement has been accepted via shrinkwrap or clickthrough,
+upon any renewal of the License Term, the terms then available at http://static.tenable.com/prod_docs/tenable_slas.html (or a
+successor location) will govern such renewal. Customer agrees that use of the Products at the time of such renewal will be deemed full
+and adequate acceptance of the updated terms.
+
+(c) Termination for Cause. Either Party may terminate this Agreement for cause if the other Party materially breaches this
+Agreement provided that such breaching Party has received written notice of such breach and failed to cure such breach within thirty
+(30) days. If this Agreement is terminated for cause by either Party, Customer shall remove all copies of the Products from any Customer
+systems and cease to use any Software or Hosted Services purchased hereunder. Further, Customer shall certify to Tenable that it has
+returned or destroyed all copies of the Software. If this Agreement is terminated for cause by Tenable, Customer shall remain responsible
+for any outstanding payment obligations throughout the rest of the License Term.
+
+(d) Termination for Convenience. Customer may terminate this Agreement for any lawful reason upon ninety (90) days’ prior
+written notice to Tenable. If Customer terminates for convenience, Customer shall not receive a refund and shall remain obligated to
+pay for Products for which it has previously entered into a transaction as well as any additional payment obligations agreed upon prior
+to the termination date.
+
+4. Products.
+
+(a) Product-Specific Terms. Pursuant to this Agreement, Customer may receive the right to use various Products as further
+described in the attached schedules (each, a “Schedule”). Terms related to Customer’s use of Software are described in Schedule A
+(Software). Terms related to Customer’s use of Hosted Services are described in Schedule B (Hosted Services). Terms related to the
+provision of Professional Services are described in Schedule C (Professional Services). For each Product, Customer will have the right
+to use the corresponding Documentation.
+
+(b) Licensing Model. Product licenses shall be in accordance with the terms of the applicable licensing model as set forth in
+the Documentation and/or the Ordering Document, which may include limitations on Scan Targets, compute, storage, resource
+utilization, License Term, the number of users, seats, licenses and/or types of modules licensed. Product licenses shall commence upon
+Delivery and shall be either perpetual or subscription in nature. Tenable shall use commercially reasonable efforts to meter resource
+utilization and assess likeness or uniqueness of Scan Targets within each Product/module licensed. If Customer exceeds the license
+restrictions, Customer must purchase an upgraded license to allow for all actual or additional usage, and Tenable or its Reseller may
+promptly invoice Customer for any such overages at a price not to exceed Tenable’s then-current rates. Discrepancies in Scan Target
+or utilization count is the sole responsibility of the Customer to resolve.
+
+(c) Restrictions on Use. Customer shall not directly or indirectly: (i) decompile, disassemble, reverse engineer, or otherwise
+attempt to derive, obtain or modify the source code of the Products; (ii) reproduce, modify, translate or create derivative works of all or
+any part of the Products; (iii) remove, alter or obscure any proprietary notice, labels, or marks on the Products; (iv) without Tenable’s
+prior written consent, use the Products in a service bureau, application service provider or similar capacity; (v) without signing Tenable’s
+Managed Security Services Provider Addendum, use the Products to provide any managed service to a third party; (vi) use the Products
+in order to create competitive analysis or a competitive product or service; (vii) copy any ideas, features, functions or graphics in the
+Product; or (viii) without Tenable’s prior written consent, interfere with or disrupt performance of Hosted Services (e.g., perform
+penetration testing on Tenable systems). Customer may only use the Products to manage or gather information from Scan Targets
+owned or hosted by Customer or its Affiliates, or third parties for which Customer has received express authorization to Scan.
+
+(d) Intellectual Property in Products. This Agreement does not transfer to Customer any title to or any ownership right or
+interest in the Products. Any rights in the Products not expressly granted in this Agreement are reserved by Tenable. If Customer
+provides Tenable with any comments, suggestions, or other feedback regarding the Product, Customer hereby assigns to Tenable all
+right, title and interest in and to such feedback. For clarity, such feedback shall not contain Customer Confidential Information and shall
+not reference or identify Customer or its users.
+
+(e) Customer Requirements. In order to use the Products, Customer must meet or exceed the specifications found in the
+Documentation.
+
+(f) Product Features. Customer agrees that purchase of any Product is not contingent on the delivery of any future
+functionality or features, or dependent on any oral or written public comments made by Tenable regarding future functionality or
+features. Tenable reserves the right to withdraw features from future versions of the Products provided that: (i) the core functionality of
+the affected Product remains the same; or (ii) Customer is offered access to a product or service providing materially similar functionality
+as the functionality removed from the affected Product. The preceding remedies under this Section 4(f) are the sole remedies available
+if Tenable withdraws features from the Products.
+
+(g) Rights Granted to Tenable. Provided that Tenable shall not publicly disclose any Customer Confidential Information,
+Tenable may: (i) use Technical Data for reasonable business purposes, including Support Services, license validation, research and
+development, feature creation, and Product testing; (ii) include aggregated and anonymized Technical Data in public materials; and (iii)
+retain Technical Data which is anonymized after the termination of this Agreement.
+
+(h) Hardware. Any Hardware purchased under this Agreement (if any) will be subject to the terms and conditions of Schedule
+D located at http://static.tenable.com/prod_docs/tenable_slas.html (or a successor location).
+
+(i) Temporary Limitation. If Tenable reasonably believes: (i) Customer’s use of the Products places an unreasonable or
+disproportionate burden on the Products; (ii) Customer’s use of the Products poses a risk or threat to the Products (including any systems
+supporting the Products), Tenable, or a third party; or (iii) Customer’s usage exceeds the limitations of the license, then Tenable may
+temporarily limit Customer’s access to or use of the Products or any specific feature therein. Tenable may also suspend or limit access
+to the Products if Customer fails to make any payments related to this Agreement. Tenable will, to the extent practical under the
+circumstances, use commercially reasonable efforts to provide Customer with prior written notice of any such limitation (email or in
+product messaging shall be sufficient). When commercially reasonable, Tenable shall promptly restore access once the Customer has
+remediated the issue. For the avoidance of doubt, Customer is responsible for all normal fees during any period for which usage or
+access is limited pursuant to this section.
+
+(j) Additional Details on Use Restrictions for Tenable Security Network Ireland Limited. The following shall only apply for
+transactions with Tenable Security Network Ireland Limited. Notwithstanding anything in Section 4(c), decompiling the Product is
+permitted to the extent the laws of Customer’s jurisdiction give Customer the right to do so to obtain information necessary to render
+the Products interoperable with other software; provided, however, that Customer must first request such information from Tenable and
+Tenable may, in its discretion, either provide such information to Customer or impose reasonable conditions, including a reasonable fee,
+on such use of the Products to ensure that its proprietary rights in the Product are protected.
+
+5. Support.
+
+(a) Support Services. Tenable shall provide Customer with support services (the “Support Services”) in accordance with
+Tenable’s then-current Technical Support Plans (available at http://static.tenable.com/prod_docs/tenable_slas.html or a successor
+location) and consistent with Tenable’s End of Life and End of Sale definitions contained therein. The Support Services include bug
+fixes, updates (including new vulnerability plug-ins), or enhancements that Tenable makes generally available to users of the Products.
+The Support Services also include the provision of new minor (Example: 1.1.x to 1.2.x, etc.) and major version releases of the Products
+(Example: 1.x to 2.x, etc.).
+
+(b) Support Fees. Standard Support Services for Products licensed for a finite License Term will be provided at no additional
+charge beyond the license fee for the duration of the License Term. Support Services for Products licensed on a perpetual basis must
+be purchased separately in advance. In all cases, premium support may be purchased at an additional charge. If during the course of a
+perpetual license Customer terminates or fails to renew the Support Services, Customer may, at any time during the term of this
+Agreement, request that Tenable reinstate the Support Services provided that Customer pays for the lapsed Support Services in an
+amount equal to the total fees Customer would have paid for the Support Services between the time Customer’s Support Services lapsed
+and the then-current date.
+
+6. Confidentiality.
+
+(a) Definition. “Confidential Information” means information learned or disclosed by a Party under this Agreement that
+should reasonably be assumed to be confidential or proprietary, including the Products and the terms of this Agreement. Confidential
+Information will remain the property of the disclosing Party, and the receiving Party will not be deemed by virtue of this Agreement or
+any access to the Confidential Information to have acquired any right, title or interest in or to the Confidential Information.
+
+(b) Obligations. Each Party agrees to only use the Confidential Information in connection with this Agreement or a purchase
+hereunder. The receiving Party agrees to hold the disclosing Party’s Confidential Information confidential using at least the same level
+of protection against unauthorized disclosure or use as the receiving Party normally uses to protect its own information of a similar
+character, but in no event less than a reasonable degree of care. Each Party may share Confidential Information with its Affiliates or
+authorized contractors in the performance of its duties under this Agreement; provided, however, that each Party shall be responsible to
+ensure that such Affiliate or authorized contractors are bound by obligations of confidentiality at least as stringent as those set forth in
+this Agreement.
+
+(c) Exclusions. Confidential Information shall not include information that: (i) is already known to the receiving Party free of
+any confidentiality obligation; (ii) is or becomes publicly known through no wrongful act of the receiving Party; (iii) is rightfully
+received by the receiving Party from a third party without any restriction or confidentiality; or (iv) is independently developed by the
+receiving Party without reference to the Confidential Information. Confidential Information does not include Scan Data that has been
+aggregated or anonymized so that it is not attributable to the disclosing Party. If Customer requests or performs scans on third party
+Scan Targets, and such third party inquires with Tenable about the scan, Tenable shall inform Customer and allow Customer to resolve
+any disputes with the third party. If Customer fails to contact the third party, Customer agrees that Tenable may provide Customer’s
+business contact information to the owner of the Scan Targets as well as to relevant authorities, and such disclosure shall not be
+considered a breach of confidentiality.
+
+(d) Sensitive Information. The Parties agree that Customer’s disclosure of sensitive, personal information (e.g., social security
+numbers, national identity card numbers, personal credit card information, racial or ethnic origin, political opinions, religious or
+philosophical beliefs, trade union membership, genetic data, biometric data, and health care data) (“Sensitive Information”) is not
+required for Tenable to perform its duties under this Agreement or sell any Products hereunder. If Customer inadvertently or
+unintentionally discloses any Sensitive Information to Tenable, Customer shall identify to Tenable that it has disclosed Sensitive
+Information and Tenable shall promptly return and/or destroy such Sensitive Information.
+
+(e) Legal Disclosures; Remedies. The receiving Party may disclose Confidential Information if required to do so by law
+provided the receiving Party shall promptly notify the disclosing Party so that the disclosing Party may seek any appropriate protective
+order and/or take any other action to prevent or limit such disclosure. If required hereunder, the receiving Party shall furnish only that
+portion of the Confidential Information disclosure of which is legally required. The receiving Party acknowledges and agrees that the
+breach of any term, covenant or provision of this Agreement may cause irreparable harm to the disclosing Party and, accordingly, upon
+the threatened or actual breach by the receiving Party of any term, covenant or provision of this Agreement, the disclosing Party shall
+be entitled to seek injunctive relief, together with any other remedy available at law or in equity. The receiving Party will notify the
+disclosing Party promptly of any unauthorized use or disclosure of the disclosing Party’s Confidential Information.
+
+7. Representations and Warranties; Disclaimer.
+
+(a) Warranty of Authority. The Parties hereby represent and warrant that they have the full power and authority to enter into
+this Agreement.
+
+(b) Products. Product warranties and associated warranty periods are set forth in the relevant Schedules.
+
+(c) Antivirus Warranty. Tenable represents it has taken commercially reasonable efforts to ensure that the Products, at the
+time of Delivery, are free from any known and undisclosed virus, worm, trap door, back door, timer, clock, counter or other limiting
+routine, instruction or design that would erase data or programming or otherwise cause the Products to become inoperable or incapable
+of being used in the manner for which it was designed or in accordance with the Documentation.
+
+(d) Warranty Disclaimer. EXCEPT AS EXPRESSLY STATED IN THIS AGREEMENT AND TO THE GREATEST
+EXTENT PERMITTED BY LAW, TENABLE OFFERS ITS PRODUCTS “AS-IS” AND MAKES NO OTHER WARRANTY OF
+ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING ANY WARRANTIES OF TITLE,
+NONINFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, SECURITY, INTEGRATION,
+PERFORMANCE AND ACCURACY, AND ANY IMPLIED WARRANTIES ARISING FROM STATUTE, COURSE OF
+DEALING, COURSE OF PERFORMANCE OR USAGE OF TRADE. THE WARRANTIES SET FORTH IN THIS AGREEMENT
+ARE MADE TO CUSTOMER FOR CUSTOMER’S BENEFIT ONLY. CUSTOMER’S USE OF THE PRODUCTS IS AT
+CUSTOMER’S OWN RISK. CUSTOMER UNDERSTANDS THAT ASSESSING NETWORK SECURITY IS A COMPLEX
+PROCEDURE, AND TENABLE DOES NOT GUARANTEE THAT THE RESULTS OF THE PRODUCTS WILL BE ERROR-FREE
+OR PROVIDE A COMPLETE AND ACCURATE PICTURE OF CUSTOMER’S SECURITY FLAWS, AND CUSTOMER AGREES
+NOT TO RELY SOLELY ON SUCH PRODUCTS IN DEVELOPING ITS SECURITY STRATEGY. CUSTOMER
+ACKNOWLEDGES THAT THE PRODUCTS MAY RESULT IN LOSS OF SERVICE OR HAVE OTHER IMPACTS TO
+NETWORKS, ASSETS OR COMPUTERS (INCLUDING MODIFICATION OF SCAN TARGETS), AND CUSTOMER IS SOLELY
+RESPONSIBLE FOR ANY DAMAGES RELATING TO SUCH LOSS OR IMPACT.
+
+8. Limitation of Liability.
+
+(a) Direct Damages. The cumulative liability of one Party to the other for all claims arising from or relating to the Products
+or this Agreement (including without limitation, any cause of action sounding in contract, tort or strict liability) shall be limited to proven
+direct damages in an amount not to exceed, in the aggregate, the fees paid by Customer for the Products over the twelve (12) months
+immediately prior to the event giving rise to the claim.
+
+(b) Indirect Damages. Neither Party shall be liable to the other for any indirect, incidental, special, punitive, consequential or
+exemplary damages regardless of the nature of the claim. This prohibition on indirect damages shall include, but not be limited to, claims
+based on lost profits, cost of delay, any failure of Delivery, business interruption, cost of lost or damaged data, or liabilities to any third
+parties even if such Party is advised of the possibility thereof.
+
+(c) Carve Outs. The liability caps set forth in Sections 8(a) and 8(b) shall not apply to damages resulting from:
+  (i) personal injury or death;
+  (ii) fraud or willful misconduct;
+  (iii) indemnification obligations set forth in Section 9 (Indemnification); or
+  (iv) Customer’s breach of Section 4(c) (Restrictions on Use).
+
+(d) Limitations; Time Period. Each of the limitations set forth in this Section 8 shall be enforced to the fullest extent of the
+law. Any laws preventing such limitations shall only apply to the extent required by law and the remaining unaffected terms shall apply
+in full. Unless expressly prohibited by law, each Party shall have a period of no greater than twelve (12) months from the date the cause
+of action accrues to bring a claim against the other Party for such cause of action.
+
+9. Indemnification.
+
+(a) Indemnification Obligations.
+  (i) By Tenable. Tenable shall (at its sole cost and expense): (i) defend and/or settle on behalf of Customer (including
+Customer’s officers, directors, employees, representatives and agents); and (ii) indemnify Customer for, any third party claims brought
+against Customer based upon a claim that Customer’s use of the Products in accordance with this Agreement infringes or misappropriates
+such third party’s intellectual property rights in a jurisdiction which is signatory to the Berne Convention.
+  (ii) By Customer. Customer shall (at its sole cost and expense): (i) defend and/or settle on behalf of Tenable (including
+Tenable’s officers, directors, employees, representatives and agents) and (ii) indemnify Tenable for, any third party claims brought
+against Tenable arising out of or relating to Customer’s use of the Products to perform Scans on third party Scan Targets, except to the
+extent that any such claim or action is caused by a failure of the Products to materially comply with the Documentation.
+
+(b) In Case of Infringement. If Customer’s use of the Products is, or in Tenable’s opinion is likely to be, the subject of an
+infringement claim, Tenable may, in its sole discretion and expense: (i) modify or replace the infringing Products as necessary to avoid
+infringement, provided that the replacement Products are substantially similar in functionality; (ii) procure the right for Customer to
+continue using the infringing Products; or (iii) terminate this Agreement and, upon Customer’s return or certified destruction of the
+infringing Product, provide Customer a pro-rata refund calculated as follows: (x) for infringing Products licensed on a subscription
+basis, the refund shall consist of any prepaid but unused fees for the remainder of the applicable License Term; or (y) for infringing
+Software licensed on a perpetual basis or infringing Hardware, the refund shall consist of a straight line depreciation of the license fee
+based on a three (3) year useful life as well as any prepaid but unused fees for separately charged Support Services. This Section 9 sets
+forth Tenable’s sole and exclusive liability and Customer’s sole and exclusive remedy with respect to any claim of intellectual property
+infringement.
+
+(c) Exclusions. Tenable shall have no liability with respect to a third party intellectual property infringement claim arising out
+of: (i) modifications of the Product made by Customer or a party under its control to conform with Customer’s specifications; (ii)
+modifications of the Product made by anyone other than Tenable or a Tenable authorized third party; (iii) Customer’s use of the Product
+in combination with other products or services not provided by Tenable; (iv) Customer’s failure to use any updated versions of the
+Product made available by Tenable; or (v) Customer’s use of the Product in a manner not permitted by this Agreement or otherwise not
+in accordance with the Documentation.
+
+(d) Requirements. The indemnitor shall only be responsible for the indemnification obligations set forth in this Section 9 if
+the indemnitee: (i) provides the indemnitor prompt written notice of such action or claim; (ii) gives the indemnitor the right to control
+and direct the investigation, defense, and/or settlement of such action or claim; (iii) reasonably cooperates with the indemnitor in the
+defense of such a claim (at the indemnitor’s expense); and (iv) is not in breach of this Agreement. Nothing herein shall prevent the
+indemnitee from engaging in defense of any such claim with its own legal representation, provided that this does not materially prejudice
+the indemnitor’s defense. The indemnitor may not settle any claim on behalf of the indemnitee without obtaining the indemnitee’s prior
+written consent; provided, however, the indemnitor shall not be required to obtain consent to settle a claim which settlement consists
+solely of: (x) discontinued use of infringing Products and/or (y) the payment of money for which the indemnitor has a duty to indemnify.
+
+10. Legal Compliance.
+
+(a) Generally. The Products are intended solely for lawful purposes and use. Both Parties, and their agents and Affiliates,
+agree to perform their respective obligations in an ethical manner that complies with all applicable national, federal, state and local laws,
+statutes, ordinances, regulations and codes (“Applicable Laws”) including, without limitation, the Computer Fraud and Abuse Act
+(CFAA), 18 USC Sec. 1030, the U.S. Foreign Corrupt Practices Act of 1977, as amended, and the UK Bribery Act of 2010. If Customer
+violates this Section 10, Tenable may terminate this Agreement immediately.
+
+(b) Trade Controls. Applicable Laws include U.S. export laws (including the International Traffic in Arms Regulation (ITAR),
+22 CFR 120-130, and the Export Administration Regulation (EAR), 15 CFR Parts 730 et seq.) and the anti-boycott rules implemented
+by the Departments of Commerce and Treasury. Information regarding export classifications of Tenable’s Products may be found on
+its website (www.tenable.com/export-controls or a successor location). Customer agrees that it will be the exporter of record any time
+it causes the Products to be accessed outside the United States or by a national of any country other than the United States. The Parties
+further agree to comply with trade and economic sanctions, rules, and regulations of the United States, European Union, EU member
+states, United Kingdom and other applicable government authorities and shall not engage in prohibited trade to persons or entities who
+are the subject of an active sanction, embargo, or executive order. Customer hereby acknowledges and confirms that Customer
+(including Customer’s officers, directors, employees, representatives and agents): (i) is not included on, owned or controlled by an
+individual or entity included on, or acting on behalf of an individual or entity included on any of the restricted party lists maintained by
+the U.S. Government (e.g., Specially Designated Nationals List, Foreign Sanctions Evader List, Sectoral Sanctions Identification List,
+Denied Persons List, Unverified List, Entity List or List of Statutorily Debarred Parties) (collectively, “Restricted Parties”); (ii) will not
+export, re-export, transfer, re-transfer or otherwise ship, directly or indirectly, the Products or related technology to or for use by or for
+Restricted Parties; (iii) will not export, re-export, transfer, re-transfer or otherwise ship, directly or indirectly, the Products or related
+technology to or for use in, by or for countries or territories subject to U.S. economic sanctions (e.g., Crimea, Cuba, Iran, North Korea,
+or Syria); or (iv) will not use or sell the Products for nuclear end-uses, rocket systems, unmanned air vehicles, chemical or biological
+weapons, maritime nuclear propulsion, weapons of mass destruction or other restricted end-uses except to the extent consistent with
+Trade Control Laws.
+
+(c) Data Processing Addendum. To the extent applicable, if Tenable is processing personal information on behalf of Customer
+under any applicable data protection law (e.g., the European Union’s General Data Protection Regulation 2016/679), then such
+processing shall be in accordance with Tenable’s Data Processing Addendum located at
+http://static.tenable.com/prod_docs/tenable_slas.html (or a successor location).
+
+11. Governing Law; Venue.
+
+(a) For transactions with Tenable, Inc. and Tenable Public Sector LLC, this Agreement shall be governed in all respects by
+the laws of the State of Delaware, USA, without regard to choice-of-law rules or principles. The Parties agree that: (i) no aspect or
+provision of the Uniform Computer Information Transactions Act shall apply to this Agreement; and (ii) this Agreement shall not be
+governed by the U.N. Convention on Contracts for the International Sale of Goods. The Parties hereby submit to the exclusive
+jurisdiction of the courts of Howard County, Maryland, and the United States District Court for Maryland, Baltimore Division, for any
+question or dispute arising out of or relating to this Agreement. Due to the high costs and time involved in commercial litigation before
+a jury, the Parties waive all right to a jury trial with respect to any issues in any action or proceeding arising out of or related to this
+Agreement.
+
+(b) For transactions with Tenable Network Security Ireland Limited, this Agreement and any issues, disputes or claims arising
+out of or in connection with it (whether contractual or non-contractual in nature such as claims in tort, from breach of statute or regulation
+or otherwise) (“Disputes”) shall be governed by, and construed in accordance with, the laws of Ireland. Customer expressly agrees with
+Tenable that this Agreement shall not be governed by the U.N. Convention on Contracts for the International Sale of Goods, the
+application of which is expressly excluded. All Disputes arising out of or relating to this Agreement shall be subject to arbitration within
+the meaning of the Arbitration Act 2010 or any legislation amending or repealing that act and shall be an arbitration conducted in Dublin,
+Ireland in the English language and shall be governed by the Arbitration Act 2010. Notwithstanding the foregoing, nothing in this
+Agreement shall limit the right of either Party to seek any injunctive, equitable or other interlocutory relief as it may be entitled to in the
+Courts of Ireland.
+
+12. Other Legal Clauses.
+
+(a) Third Parties. Customer may permit a third party (“Customer’s Agent”) to use the Products to perform security services
+for and on behalf of Customer but solely for Customer’s benefit and solely for Customer’s internal business purposes. Customer shall
+be fully responsible for Customer’s Agent’s use of the Products, including liability for any breach of this Agreement or use beyond the
+licensed quantities set forth in the Ordering Document. If Customer elects to utilize a Customer’s Agent to perform Scans on its behalf,
+then only Customer’s Agent (and not Customer) will be permitted to contact Tenable Support Services. Tenable shall have the right to
+withdraw its consent to the use of any Customer’s Agent in its reasonable discretion.
+
+(b) Notices. Any legal notices or other communication pursuant to this Agreement must be in writing, in English, and will be
+deemed to have been duly given when delivered if delivered personally or sent by recognized overnight express courier. All notices to
+Tenable must be sent to the address described in this Agreement to the attention of the Legal Department (unless otherwise specified by
+Tenable). All notices Tenable sends to Customer shall be at the physical address referenced in this Agreement (or otherwise provided
+to Tenable). Tenable may provide notices with regard to Products via the email address Customer provided during Product registration
+and Customer hereby consents to receive such communications from Tenable in an electronic form.
+
+(c) Assignment. Neither Party may assign or otherwise transfer this Agreement without the other Party’s prior written consent,
+which will not be unreasonably withheld; provided, however, either Party may transfer this Agreement to an Affiliate or in connection
+with a merger or sale of all (or substantially all) of the stock or other ownership units of such Party. Customer must complete Tenable’s
+License Assignment Request Form (to be provided upon request) in order to complete assignment of this Agreement.
+
+(d) Force Majeure. With the exception of payment, neither Party shall be liable for any loss or delay (including failure to meet
+the service level commitment) resulting from any force majeure event, including, but not limited to, acts of God, fire, natural disaster,
+terrorism, labor stoppage, Internet service provider failures or delays, civil unrest, war or military hostilities, or criminal acts of third
+parties, and any Delivery date shall be extended to the extent of any resulting delay.
+
+(e) Language. The language of this Agreement is English and all invoices and other documents given under this Agreement
+must be in English to be effective. No translation, if any, of this Agreement or any notice will be of any effect in the interpretation of
+this Agreement or in determining the intent of the parties. The Parties have expressly agreed that all invoices and related documents be
+drafted in English. The following shall apply solely for Agreements which are under French Canadian jurisdiction: C’est la volonté
+expresse des parties que la presente convention ainsi que les documents qui s’y rattacent soient rediges en anglais.
+
+13. Evaluations and NFR Licenses.
+
+(a) Evaluations. If Customer wants to conduct an evaluation, proof of value or other similar trial of Tenable Products
+(“Evaluation Products”), Tenable may (in its sole discretion) provide evaluation licenses for such Evaluation Products in accordance
+with the following: (i) Customer shall have no obligation to make payment for such Evaluation Product for such evaluation usage; (ii)
+the license term will expire at the end of the agreed-upon evaluation period, at which time Customer must either return or destroy the
+Software and cease access to the Hosted Services; and (iii) Tenable shall have no obligation to provide Support Services.
+Notwithstanding the foregoing, to facilitate a transition from an evaluation to a paid subscription, in certain cases Tenable may allow
+Customer to continue to use containers (or otherwise migrate data) generated during an evaluation period. Customers may not use the
+Evaluation Products to scan third party Scan Targets or provide a service to Customer’s clients.
+
+(b) Container Access. Customer acknowledges that a Tenable employee may request access to the Evaluation Products in
+the Customer environment (which may occur in a production container) in order to maximize the effectiveness of the Evaluation
+Products and to set up certain configurations, and this may be done without the Customer being present but will be subject to prior
+written consent from Customer.
+
+(c) Early Access. Tenable may make some versions of Products available to Customer on an alpha, beta, or early access
+basis (each, an “Early Access Product”). Customer’s access to the Early Access Product may be discontinued at any time. Early
+Access Products remain subject to all applicable license restrictions. Tenable may not offer Support Services for Early Access
+Products. No warranty or service level commitment made under this Agreement will apply to Early Access Products.
+
+(d) Technology Partners. Tenable in its sole discretion may allow Customers who are technology partners (a “Technology
+Partner”) to obtain an Evaluation license and use such evaluation license to create an interoperability (“Interoperability”) between
+Tenable Products and their own products. At the conclusion of the Evaluation Term, Customer may apply for an NFR license at which
+time Tenable may convert the Evaluation license to an NFR license. Tenable’s conversion to an NFR license shall be at Tenable’s sole
+discretion and may require Interoperability validation by Tenable.
+
+(e) NFR. If Customer is a sales partner or Technology Partner to whom a “Not For Resale” or “NFR” license has been granted,
+Customer’s license to the Product will commence upon Delivery and continue for a period of one year (unless the Ordering Document
+sets forth a different term) and shall automatically renew for consecutive one (1) year terms unless either Party provides the other Party
+with written notice of its non-renewal of the NFR license at least thirty (30) days before the expiration of the then-current term.
+Notwithstanding the foregoing, Tenable may terminate Customer’s NFR license for its convenience upon thirty (30) days’ notice, or
+immediately should Customer breach any obligations under this Agreement.
+
+(f) NFR Customer Prohibitions. Customer shall not purport to take on any obligation or responsibility, or make any
+representations, warranties, guarantees or endorsements to anyone on behalf of Tenable, including without limitation, relating to Tenable
+products, software, or services. Except as specifically permitted in this Agreement, Customer shall not state or imply that any of
+Customer’s products have been endorsed, reviewed, certified or otherwise approved by Tenable. Customer may not use Products
+provided under an NFR license: (i) in a production environment, (ii) to protect its own networks, (iii) as part of a service provided to its
+customers, or (iv) to perform customer evaluations.
+
+(g) NFR Customer Representations. Customer hereby represent and warrant to Tenable that: (i) Customer will not intentionally
+harm the reputation or goodwill of Tenable through any act or omission, and (ii) Customer have used commercially reasonable efforts
+to ensure that any software, code, algorithm, API, etc., transferred to Tenable is free from any time bomb, virus, drop dead device,
+worm, Trojan horse, or trap door that is designed to delete, disable, deactivate, interfere with, or otherwise harm hardware, data, or other
+programs or that is intended to provide access or produce modifications not authorized by Tenable.
+
+(h) NFR Customer Responsibilities. Customer shall, at its sole cost and expense, defend (or at its option, settle) and indemnify
+Tenable and Tenable’s subsidiaries and affiliates, and their officers, directors, employees, representatives and agents, from and against
+any and all third party claims brought against Tenable based upon a claim that use of Customer’s software or Customer’s product in
+accordance with this Agreement infringes such third party’s patent, copyright or trademark or misappropriates any trade secret, and shall
+pay all settlements entered into and damages awarded to the extent based on such claim or action.
+
+14. General.
+
+This Agreement constitutes the entire agreement between the Parties, and supersedes all other prior or contemporaneous
+communications between the Parties (whether written or oral) relating to the subject matter of this Agreement. No Customer document,
+purchase order, request for proposal, or other specifications requirement shall modify, supersede, or become part of this Agreement, or
+otherwise contractually bind Tenable unless signed by Tenable. The provisions of this Agreement will be deemed severable, and the
+unenforceability of any one or more provisions will not affect the enforceability of any other provisions. If any provision of this
+Agreement, for any reason, is declared to be unenforceable, the Parties will substitute an enforceable provision that, to the maximum
+extent possible under applicable law, preserves the original intentions and economic positions of the Parties. Section headings are for
+convenience only and shall not be considered in the interpretation of this Agreement. Customer agrees that Tenable may use Customer’s
+name or logo in a customer list. Customer may not use Tenable’s name or logo without prior written consent and in accordance with
+Tenable’s guidelines. No failure or delay by a Party in exercising any right, power or remedy will operate as a waiver of that right,
+power or remedy, and no waiver will be effective unless it is in writing and signed by the waiving Party. If a Party waives any right,
+power or remedy, the waiver will not waive any successive or other right, power or remedy the Party may have under this Agreement.
+The Parties are independent contractors and this Agreement will not establish any relationship of partnership, joint venture, employment,
+franchise or agency between the Parties. Nothing in this Agreement shall prevent Tenable from subcontracting any of its obligations
+hereunder; provided, however, that Tenable’s use of a subcontractor shall not release Tenable from any duty or liability to fulfill its
+obligations under this Agreement and Tenable shall be liable for any act or omission of a subcontractor to the same extent as if the act
+or omission had been made by Tenable. This Agreement is not intended nor will it be interpreted to confer any benefit, right or privilege
+in any person or entity not a party to this Agreement. Any party who is not a party to this Agreement has no right under any law to
+enforce any term of this Agreement. Any provision of this Agreement that imposes or contemplates continuing obligations on a Party
+and any section which by its nature is intended to survive will survive the expiration or termination of this Agreement, including Sections
+3, 4, 6, 8, 9 and 11.
+
+15. Government Entities. This Section 15 shall only apply to Government Customers, as defined below.
+
+If Customer is an agency or instrumentality of a sovereign government (a “Government Customer”), all Government Customer
+end users acquire the rights to use and/or access the Products and or Services with only those rights set forth herein (consistent with 48
+C.F.R. 12.212 and 48 C.F.R. 227.7202-1 through 227.7202-4). The terms and conditions of this Agreement govern Government
+Customer’s use and disclosure of the Products and supersede any conflicting terms and conditions that may be applicable through the
+Government Customer’s procurement regulations. If this Agreement fails to meet the Government Customer’s needs or is inconsistent
+in any way with federal law, the government must return the Product, unused, to Tenable. If Customer is prohibited by law, regulation,
+or relevant attorney general opinion from agreeing to any clause of this Agreement (collectively, “Restrictions”), the Agreement shall
+be modified to the extent required under such Restrictions. Each of the components that constitute the Product is a “commercial item”
+as that term is defined at 48 C.F.R. 2.101, consisting of “commercial computer software” and/or “commercial computer software
+documentation” as such terms are used in 48 C.F.R. 12.212.
+
+
+SCHEDULE A: SOFTWARE
+
+This Schedule for Tenable Software is subject to and made part of the Agreement.
+
+1. General. This Schedule governs Customer’s license of Software.
+
+2. License; Right to Use. Subject to the terms of the Agreement and payment of the applicable license fees, Tenable grants
+Customer for the duration of the License Term a non-exclusive, non-transferable, non-sublicensable license to use the Software
+(in object code form only) solely for Customer’s or Customer’s Affiliates own internal business purposes. Customer’s right to
+install such Software is limited to use with the computers or machines for which the Software is registered for use. Customer
+is permitted to make one copy of the Software for backup or archival purposes.
+
+3. Warranty. Tenable warrants that the Software shall materially conform to the Documentation for a period of thirty (30) days
+after Delivery. Customer’s sole and exclusive remedy for breach of this warranty shall be for Tenable to, at its sole option: (i)
+use commercially reasonable efforts to modify or correct the Software such that in all material respects it conforms to the
+functionality described in the Documentation; or (ii) if Tenable is unable to restore such functionality within sixty (60) days,
+Customer shall be entitled to a refund for the non-conforming Software.
+
+4. Open Source and Third Party Software. Any code or other intellectual property included as part of the Software that was
+licensed to Tenable by third parties that is not marked as copyrighted by Tenable is subject to other license terms that are
+specified in the Documentation available on Tenable’s website at https://docs.tenable.com/licensedeclarations/ (or a successor
+location). Customer agrees to be bound by such other license terms.
+
+5. Compliance Rights. Tenable may, by itself or through an independent third party, review Customer’s usage of the Software to
+confirm compliance with this Agreement or the applicable Ordering Document. Tenable shall: (i) provide Customer with
+reasonable advance notice of the review; (ii) not request such review more than once per year; and (iii) not unreasonably
+interfere with Customer’s business activities when conducting the review.
+
+
+SCHEDULE B: HOSTED SERVICES
+
+This Schedule for Tenable Hosted Services is subject to and made part of the Agreement.
+
+1. General. This Schedule governs Customer’s use of the Hosted Services.
+
+2. License; Right to Use. Subject to the terms of the Agreement and payment of the applicable license fees, Tenable grants
+Customer for the duration of the License Term a non-exclusive, non-transferable, non-sublicensable right to access the Hosted
+Environment and use those modules of the Hosted Services set forth on a valid Ordering Document solely for Customer’s or
+Customer’s Affiliates own internal business purposes.
+
+3. Warranty. Tenable warrants that the Hosted Services will materially comply with the functionality described in the
+Documentation. Customer’s sole and exclusive remedy for breach of this warranty shall be for Tenable to use commercially
+reasonable efforts to modify the Hosted Services to provide in all material respects the functionality described in the
+Documentation. If Tenable is unable to restore such functionality within sixty (60) days, Customer shall be entitled to terminate
+the Agreement and receive a pro-rata refund of any prepaid but unused fees for the nonconforming Hosted Services. Tenable
+shall have no obligation with respect to a warranty claim hereunder unless Customer notifies Tenable of such claim within
+thirty (30) days of the date the underlying condition first arose. This warranty shall only apply if the applicable Hosted Service
+has been utilized in accordance with the Agreement and the Documentation.
+
+4. Acknowledgements. By initiating a Scan, Customer authorizes Tenable to access the Scan Targets in the context of the Scans.
+Customer understands and acknowledges that the Scans may originate or appear to originate from a Tenable URL which could
+cause Customer (or the owner of the Scan Targets) to believe they are under attack. Customer agrees not to pursue any claims
+against Tenable as a result of any access to Scan Targets when such access was made in connection with an authorized Scan
+unless such a claim is based on the gross negligence or willful misconduct of Tenable.
+
+5. Usage Requirements. Customer must provide current and accurate information in all submissions made in connection with the
+Hosted Services, including registration information and the location of the Scan Targets to be Scanned. Tenable may, in its
+reasonable discretion, prohibit or suspend access of certain users of the Hosted Services. In the event Tenable suspects or
+anticipates such suspension, Tenable will, to the extent practical under the circumstances, use commercially reasonable efforts
+to provide Customer with prior written notice of the suspension and an opportunity to cure the issue prior to (and in avoidance
+of) suspension. Customer acknowledges that under certain circumstances such prior notice and/or cure period may not be
+possible or practical. Customer agrees to safeguard and maintain the confidentiality of all user names and passwords. Customer
+further agrees to use best efforts to ensure that no unauthorized parties have access to the Hosted Services through Customer’s
+account and/or log-in credentials. Customer will promptly notify Tenable of any unauthorized access of which Customer is
+aware or reasonably suspects. Customer is responsible for compliance with this Agreement and all use of the Hosted Services
+through Customer’s account.
+
+6. PCI Scans. Tenable makes no guarantee that a successful completion of a PCI Scan will make Customer compliant with the
+Payment Card Industry Data Security Standard.
+
+7. Data Retention Policy. Customer has the option to select the duration of the data retention period of Scan Data in the Hosted
+Environment in accordance with the limitations described in the Documentation. Customer acknowledges that Tenable is in
+no way responsible for any of Customer’s data retention compliance requirements. Tenable’s data retention policy with respect
+to PCI Scans will match then-current requirements set forth by the PCI Security Standards Council.
+
+8. Service Level Agreement. Tenable commits to make access to the Hosted Environment available in accordance with Tenable’s
+then-current service level agreement, available at http://static.tenable.com/prod_docs/Service_Level_Agreement.pdf (or a
+successor location).
+
+
+SCHEDULE C: PROFESSIONAL SERVICES
+
+This Schedule for Tenable Professional Services is subject to and made part of the Agreement.
+
+1. General. The Parties may agree, from time to time, on the purchase and sale of Tenable Professional Services, which may be
+further described in a separate SOW or Services Brief. Except as otherwise agreed to by the Parties in writing, all Services
+Briefs or SOWs will be governed by this Agreement. In the event of inconsistency between the Agreement and a signed SOW,
+the signed SOW shall govern.
+
+2. Type of Services. Tenable offers a range of Professional Services; provided, however, unless otherwise agreed upon in writing,
+Tenable does not offer creation of custom intellectual property. Tenable is not obligated to provide any Professional Services
+except as mutually agreed in a Services Brief or SOW.
+
+3. Deliverables. “Deliverable(s)” means the reports, analysis, codes, scripts, slides, documents, examples and other written
+materials or work results provided as part of the Professional Services.
+
+4. Intellectual Property Rights.
+
+(a) Grant of License in Deliverables. Tenable grants Customer a non-exclusive, non-transferable, irrevocable (except in case of
+breach of the Agreement or SOW) perpetual right to use, copy and create derivative works from the Deliverables (without the
+right to sublicense) for Customer’s or Customer’s Affiliates internal business operations, as contemplated by the applicable
+SOW or Services Brief.
+(b) Reservation of Rights. Except for the rights expressly granted herein to Customer, Tenable expressly reserve all other rights
+in and to the Professional Services and Deliverables. Notwithstanding anything to the contrary in this Schedule, nothing shall
+prevent Tenable from providing similar Professional Services to other customers and nothing in this Schedule shall be construed
+to provide any intellectual property rights whatsoever in the Products (or any modifications or enhancements thereto) that
+Tenable develops or makes generally available for sale to its customers.
+(c) Pre-Existing Materials. Any pre-existing materials, proprietary item or intellectual property rights of either Party which is
+disclosed or used in performing the Professional Services shall remain fully vested in such Party. Nothing in this Schedule
+shall transfer any rights whatsoever in Tenable’s Products. Customer hereby grants to Tenable the intellectual property rights
+(if any) required for Tenable to perform the Professional Services.
+
+5. Warranty. Tenable warrants that all Professional Services shall be performed in a professional manner and in accordance with
+industry standards. Tenable further warrants for a period of ten (10) days from the service completion date that the Professional
+Services shall materially conform to the applicable SOW or Services Brief. If Customer provides written notice of a nonconformity
+during this warranty period, Tenable shall promptly confirm the non-conformity and upon confirmation, Tenable’s
+entire liability and Customer’s exclusive remedy shall be for Tenable to use commercially reasonable efforts to re-perform the
+Professional Services within a reasonable amount of time. If Tenable is unable to re-perform the Professional Services, then
+Tenable may elect to refund amounts paid by Customer for the non-conforming Professional Services.
+
+6. Scheduling; Cancellation. Professional Services must be scheduled within nine (9) months of the date of the Ordering
+Document under which such Professional Services were purchased and completed within twelve (12) months of the Ordering
+Document. If Customer does not schedule the Professional Services within this time frame, Tenable shall have no obligation
+to perform the Professional Services or provide a refund. Tenable shall have no obligation to perform the Professional Services
+or provide a refund if Customer or Customer’s designated attendees do not attend a scheduled training session or cancel a
+Professional Services engagement without providing proper notice. Customer must provide Tenable at least five (5) business
+days’ notice to reschedule any Professional Services. Tenable reserves the right, directly or through a Reseller, to invoice
+Customer monthly for travel expenses incurred in the prior month.
+
+7. Customer Responsibilities. For Professional Services occurring on Customer’s site, Tenable agrees to comply with applicable
+and reasonable security procedures provided Customer provides Tenable with such written procedures in advance. Some of
+the Professional Services may require Customer to have specialized knowledge or meet particular software or hardware
+requirements (for example, appropriate computers or appliances, stable Internet connection or up-to-date web browsers or
+operating system, etc.). If technical issues arise during the Professional Services, Tenable will use commercially reasonable
+efforts to resolve such issues, but will have no liability based on Customer’s failure to meet technical requirements. Tenable
+will not provide any refund based on Customer’s failure to meet these prerequisites.
+
+8. Changes. Either Party may request that a change be made to the Professional Services. Tenable reserves the right to charge a
+fee for any material changes to the Professional Services. No changes shall be binding unless executed by both Parties.
+
+9. Non-Solicitation. During the term that Professional Services are being provided and for a period of one (1) year after their
+completion, Customer will not, either directly or indirectly, solicit for employment any person employed by Tenable or any of
+its Affiliates that have provided Customer Professional Services under this Agreement. For the avoidance of doubt, this
+restriction shall not prevent Customer from hiring based on a response to Customer’s advertising in good faith to the general
+public a position or vacancy to which an employee or worker of Tenable responds, provided that no such advertisement shall
+be intended to specifically target Tenable personnel.
+
+
+Tenable Confidential and Proprietary                     Tenable Master Agreement v.6 2.2023

@@ -1,41 +1,8 @@
---- a/tests/mansyntax.sh
-+++ b/tests/mansyntax.sh
-@@ -1,37 +1,2 @@
- #!/bin/sh
--set -e
--
--# Written by Mikhail Gusarov
--#
--# Run syntax checks for all manpages in the documentation tree.
--#
--
--srcdir=${srcdir:-$PWD}
--dstdir=${builddir:-$PWD}
--mandir=${srcdir}/../docs
--
--#
--# Only test if suitable man is available
--#
--if ! man --help | grep -q warnings; then
--  echo "man version not suitable, skipping tests"
--  exit 0
--fi
--
--ec=0
--
--trap "rm -f $dstdir/man3" EXIT
--
--ln -sf "$mandir" "$dstdir/man3"
--
--for manpage in $mandir/libssh2_*.*; do
--  echo "$manpage"
--  warnings=$(LANG=en_US.UTF-8 MANWIDTH=80 man -M "$dstdir" --warnings \
--    -E UTF-8 -l "$manpage" 2>&1 >/dev/null)
--  if [ -n "$warnings" ]; then
--    echo "$warnings"
--    ec=1
--  fi
--done
--
--exit $ec
-+:
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -179,5 +179,4 @@ mark_as_advanced(SH_EXECUTABLE MAN_EXECUTABLE GREP_EXECUTABLE)
+ if(SH_EXECUTABLE AND MAN_EXECUTABLE AND GREP_EXECUTABLE)
+   set(cmd "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
+   set(cmd "${cmd} ${CMAKE_CURRENT_SOURCE_DIR}/mansyntax.sh")
+-  add_test(mansyntax ${SH_EXECUTABLE} -c "${cmd}")
+ endif()

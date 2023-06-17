@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Needs dev-python/sympy which is not yet keyworded, see bug #892183
+dev-python/nbval test
+
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
 >=sys-libs/libomp-16.0.0_pre20230124 -offload
@@ -38,10 +42,6 @@ dev-util/kdevelop reviewboard
 # Sam James <sam@gentoo.org> (2021-10-17)
 # Go doesn't support pie on ppc64, bug #818529
 net-dns/dnscrypt-proxy pie
-
-# Sam James <sam@gentoo.org> (2021-09-23)
-# Needs media-libs/libldac which builds on ppc64le, but not be
-media-video/pipewire -bluetooth
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # media-plugins/zam-plugins not keyworded here
@@ -165,10 +165,6 @@ net-irc/kvirc kde
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
-# Missing keywords on app-text/gspell - bug #587368
->=app-editors/gedit-3.20 spell
-
 # Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
 # I would need to keyword an awful lot of packages on ppc64
 # that would need Java 7 otherwise.
@@ -189,11 +185,6 @@ games-simulation/openttd openmedia
 # Masking USE-dep on it
 sys-cluster/vzctl ploop
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# requires app-office/unoconv, which requires virtual/ooo, which is not
-# keyworded here. Remove mask if this situation changes.
-gnome-extra/sushi office
-
 # Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
 www-client/seamonkey ipc
@@ -205,3 +196,6 @@ x11-misc/rss-glx quesoglc
 # Joseph Jezak <josejx@gentoo.org> (2010-02-12)
 # Mask unstable pidgin deps until we can mark them stable (farsight2)
 net-im/pidgin gstreamer
+
+# mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
+media-video/mplayer cpudetection

@@ -5,8 +5,21 @@
 		<email>emily@emlove.me</email>
 		<name>Emily Mills</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>julien@jroy.ca</email>
+		<name>Julien Roy</name>
+	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/jtheoof/swappy/issues</bugs-to>
+		<changelog>https://github.com/jtheoof/swappy/releases</changelog>
+		<maintainer>
+			<name>Jeremy Attali</name>
+			<email>contact@jtheoof.me</email>
+		</maintainer>
+		<remote-id type="github">jtheoof/swappy</remote-id>
+	</upstream>
 </pkgmetadata>

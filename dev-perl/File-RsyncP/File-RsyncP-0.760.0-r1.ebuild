@@ -8,11 +8,11 @@ DIST_VERSION=0.76
 inherit perl-module toolchain-funcs
 
 DESCRIPTION="An rsync perl module"
-HOMEPAGE="http://perlrsync.sourceforge.net/ https://metacpan.org/release/File-RsyncP"
+HOMEPAGE="https://perlrsync.sourceforge.net/ https://metacpan.org/release/File-RsyncP"
 # Bundled files make for some weirdness
 LICENSE="GPL-3+ GPL-2+ RSA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 sparc x86"
 
 RDEPEND="
 	>=virtual/perl-Getopt-Long-2.240.0

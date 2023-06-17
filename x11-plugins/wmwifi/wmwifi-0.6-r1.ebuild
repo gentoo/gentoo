@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit autotools
 
 DESCRIPTION="wireless network interface monitor dockapp"
 HOMEPAGE="https://www.dockapps.net/wmwifi"
@@ -18,6 +20,11 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_compile() {
 	# by default it does not honour our CFLAGS

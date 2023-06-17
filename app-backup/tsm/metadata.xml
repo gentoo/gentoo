@@ -7,5 +7,6 @@
 	<use>
 		<flag name="tsm-cit">IBM Tivoli Common Inventory Technology</flag>
 		<flag name="tsm-hw">Difference snapshot support for NetApp and N-Series file servers</flag>
+		<flag name="vmware">Install vmware data protection support</flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: portability.eclass
@@ -90,9 +90,8 @@ dlopen_lib() {
 	# - Darwin needs nothing
 	# - *BSD needs nothing
 	# - Linux needs -ldl (glibc and uclibc)
-	# - Interix needs -ldl
 	case "${CHOST}" in
-		*-linux-gnu*|*-linux-uclibc|*-interix*)
+		*-linux-gnu*|*-linux-uclibc)
 			echo "-ldl"
 		;;
 	esac
@@ -139,11 +138,11 @@ get_mounts() {
 	fi
 
 	# OK, pray we have a -p option that outputs mounts in fstab format
-	# using tabs as the seperator.
+	# using tabs as the separator.
 	# Then pray that there are no tabs in the either.
 	# Currently only FreeBSD supports this and the other BSDs will
 	# have to be patched.
-	# Athough the BSD's may support /proc, they do NOT put \040 in place
+	# Although the BSDs may support /proc, they do NOT put \040 in place
 	# of the spaces and we should not force a /proc either.
 	local IFS=$'\t'
 	LC_ALL=C mount -p | while read node point fs foo ; do

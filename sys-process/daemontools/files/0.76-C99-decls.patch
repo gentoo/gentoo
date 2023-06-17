@@ -1,0 +1,503 @@
+--- a/alloc.c
++++ b/alloc.c
+@@ -12,8 +12,7 @@
+ #define space ((char *) realspace)
+ static unsigned int avail = SPACE; /* multiple of ALIGNMENT; 0<=avail<=SPACE */
+ 
+-/*@null@*//*@out@*/char *alloc(n)
+-unsigned int n;
++/*@null@*//*@out@*/char *alloc(unsigned int n)
+ {
+   char *x;
+   n = ALIGNMENT + n - (n & (ALIGNMENT - 1)); /* XXX: could overflow */
+@@ -23,8 +22,7 @@
+   return x;
+ }
+ 
+-void alloc_free(x)
+-char *x;
++void alloc_free(char *x)
+ {
+   if (x >= space)
+     if (x < space + SPACE)
+--- a/alloc.h
++++ b/alloc.h
+@@ -3,8 +3,8 @@
+ #ifndef ALLOC_H
+ #define ALLOC_H
+ 
+-extern /*@null@*//*@out@*/char *alloc();
+-extern void alloc_free();
+-extern int alloc_re();
++/*@null@*//*@out@*/char *alloc(unsigned int n);
++void alloc_free(char *x);
++int alloc_re(char **x, unsigned int m, unsigned int n);
+ 
+ #endif
+--- a/alloc_re.c
++++ b/alloc_re.c
+@@ -3,10 +3,7 @@
+ #include "alloc.h"
+ #include "byte.h"
+ 
+-int alloc_re(x,m,n)
+-char **x;
+-unsigned int m;
+-unsigned int n;
++int alloc_re(char **x, unsigned int m, unsigned int n)
+ {
+   char *y;
+  
+--- a/buffer.c
++++ b/buffer.c
+@@ -2,7 +2,7 @@
+ 
+ #include "buffer.h"
+ 
+-void buffer_init(buffer *s,int (*op)(),int fd,char *buf,unsigned int len)
++void buffer_init(buffer *s,int (*op)(int, char*, int),int fd,char *buf,unsigned int len)
+ {
+   s->x = buf;
+   s->fd = fd;
+--- a/buffer.h
++++ b/buffer.h
+@@ -8,14 +8,14 @@
+   unsigned int p;
+   unsigned int n;
+   int fd;
+-  int (*op)();
++  int (*op)(int, char*, int);
+ } buffer;
+ 
+ #define BUFFER_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
+ #define BUFFER_INSIZE 8192
+ #define BUFFER_OUTSIZE 8192
+ 
+-extern void buffer_init(buffer *,int (*)(),int,char *,unsigned int);
++extern void buffer_init(buffer *, int (*)(int, char*, int), int, char *, unsigned int);
+ 
+ extern int buffer_flush(buffer *);
+ extern int buffer_put(buffer *,const char *,unsigned int);
+@@ -50,7 +50,7 @@
+ extern int buffer_copy(buffer *,buffer *);
+ 
+ extern int buffer_unixread(int,char *,unsigned int);
+-extern int buffer_unixwrite(int,const char *,unsigned int);
++extern int buffer_unixwrite(int, char *, int);
+ 
+ extern buffer *buffer_0;
+ extern buffer *buffer_0small;
+--- a/buffer_0.c
++++ b/buffer_0.c
+@@ -2,7 +2,7 @@
+ 
+ #include "buffer.h"
+ 
+-int buffer_0_read(fd,buf,len) int fd; char *buf; int len;
++int buffer_0_read(int fd, char *buf, int len)
+ {
+   if (buffer_flush(buffer_1) == -1) return -1;
+   return buffer_unixread(fd,buf,len);
+--- a/buffer_get.c
++++ b/buffer_get.c
+@@ -4,7 +4,7 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int oneread(int (*op)(),int fd,char *buf,unsigned int len)
++static int oneread(int (*op)(int, char*, int),int fd,char *buf,unsigned int len)
+ {
+   int r;
+ 
+--- a/buffer_put.c
++++ b/buffer_put.c
+@@ -5,7 +5,7 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int allwrite(int (*op)(),int fd,const char *buf,unsigned int len)
++static int allwrite(int (*op)(int, char*, int),int fd,const char *buf,unsigned int len)
+ {
+   int w;
+ 
+--- a/buffer_write.c
++++ b/buffer_write.c
+@@ -3,7 +3,7 @@
+ #include <unistd.h>
+ #include "buffer.h"
+ 
+-int buffer_unixwrite(int fd,const char *buf,unsigned int len)
++int buffer_unixwrite(int fd, char *buf, int len)
+ {
+   return write(fd,buf,len);
+ }
+--- a/byte.h
++++ b/byte.h
+@@ -3,12 +3,11 @@
+ #ifndef BYTE_H
+ #define BYTE_H
+ 
+-extern unsigned int byte_chr();
+-extern unsigned int byte_rchr();
+-extern void byte_copy();
+-extern void byte_copyr();
+-extern int byte_diff();
+-extern void byte_zero();
++unsigned int byte_chr(char *s, unsigned int n, int c);
++unsigned int byte_rchr(char *s, unsigned int n, int c);
++void byte_copy(char *to, unsigned int n, char *from);
++void byte_copyr(char *to, unsigned int n, char *from);
++int byte_diff(char *s, unsigned int n, char *t);
+ 
+ #define byte_equal(s,n,t) (!byte_diff((s),(n),(t)))
+ 
+--- a/byte_chr.c
++++ b/byte_chr.c
+@@ -2,10 +2,7 @@
+ 
+ #include "byte.h"
+ 
+-unsigned int byte_chr(s,n,c)
+-char *s;
+-register unsigned int n;
+-int c;
++unsigned int byte_chr(char *s, unsigned int n, int c)
+ {
+   register char ch;
+   register char *t;
+--- a/byte_copy.c
++++ b/byte_copy.c
+@@ -2,10 +2,7 @@
+ 
+ #include "byte.h"
+ 
+-void byte_copy(to,n,from)
+-register char *to;
+-register unsigned int n;
+-register char *from;
++void byte_copy(char *to, unsigned int n, char *from)
+ {
+   for (;;) {
+     if (!n) return; *to++ = *from++; --n;
+--- a/byte_cr.c
++++ b/byte_cr.c
+@@ -2,10 +2,7 @@
+ 
+ #include "byte.h"
+ 
+-void byte_copyr(to,n,from)
+-register char *to;
+-register unsigned int n;
+-register char *from;
++void byte_copyr(char *to, unsigned int n, char *from)
+ {
+   to += n;
+   from += n;
+--- a/byte_diff.c
++++ b/byte_diff.c
+@@ -2,10 +2,7 @@
+ 
+ #include "byte.h"
+ 
+-int byte_diff(s,n,t)
+-register char *s;
+-register unsigned int n;
+-register char *t;
++int byte_diff(char *s, unsigned int n, char *t)
+ {
+   for (;;) {
+     if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
+--- a/byte_rchr.c
++++ b/byte_rchr.c
+@@ -2,10 +2,7 @@
+ 
+ #include "byte.h"
+ 
+-unsigned int byte_rchr(s,n,c)
+-char *s;
+-register unsigned int n;
+-int c;
++unsigned int byte_rchr(char *s, unsigned int n, int c)
+ {
+   register char ch;
+   register char *t;
+--- a/chkshsgr.c
++++ b/chkshsgr.c
+@@ -1,10 +1,13 @@
+ /* Public domain. */
+ 
++#include <sys/types.h>
++#include <stdlib.h>
++#include <grp.h>
+ #include <unistd.h>
+ 
+-int main()
++int main(void)
+ {
+-  short x[4];
++  gid_t x[4];
+ 
+   x[0] = x[1] = 0;
+   if (getgroups(1,x) == 0) if (setgroups(1,x) == -1) _exit(1);
+--- a/matchtest.c
++++ b/matchtest.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "match.h"
+ #include "buffer.h"
+ #include "str.h"
+--- a/multilog.c
++++ b/multilog.c
+@@ -1,3 +1,4 @@
++#include <stdio.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -435,12 +436,12 @@
+ int flagforcerotate = 0;
+ int flagnewline = 1;
+ 
+-void exitasap(void)
++void exitasap(int sig)
+ {
+   flagexitasap = 1;
+ }
+ 
+-void forcerotate(void)
++void forcerotate(int sig)
+ {
+   flagforcerotate = 1;
+ }
+--- a/pathexec_run.c
++++ b/pathexec_run.c
+@@ -1,5 +1,6 @@
+ /* Public domain. */
+ 
++#include <unistd.h>
+ #include "error.h"
+ #include "stralloc.h"
+ #include "str.h"
+--- a/prot.c
++++ b/prot.c
+@@ -1,5 +1,8 @@
+ /* Public domain. */
+ 
++#include <sys/types.h>
++#include <unistd.h>
++#include <grp.h>
+ #include "hasshsgr.h"
+ #include "prot.h"
+ 
+--- a/seek_set.c
++++ b/seek_set.c
+@@ -1,6 +1,7 @@
+ /* Public domain. */
+ 
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define SET 0 /* sigh */
+--- a/select.h1
++++ b/select.h1
+@@ -7,6 +7,5 @@
+ 
+ #include <sys/types.h>
+ #include <sys/time.h>
+-extern int select();
+ 
+ #endif
+--- a/select.h2
++++ b/select.h2
+@@ -8,6 +8,5 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/select.h>
+-extern int select();
+ 
+ #endif
+--- a/setlock.c
++++ b/setlock.c
+@@ -7,7 +7,7 @@
+ 
+ #define FATAL "setlock: fatal: "
+ 
+-void usage() {
++void usage(void) {
+   strerr_die1x(100,"setlock: usage: setlock [ -nNxX ] file program [ arg ... ]");
+ }
+ 
+--- a/sig.c
++++ b/sig.c
+@@ -11,5 +11,5 @@
+ int sig_pipe = SIGPIPE;
+ int sig_term = SIGTERM;
+ 
+-void (*sig_defaulthandler)() = SIG_DFL;
+-void (*sig_ignorehandler)() = SIG_IGN;
++void (*sig_defaulthandler)(int) = SIG_DFL;
++void (*sig_ignorehandler)(int) = SIG_IGN;
+--- a/sig.h
++++ b/sig.h
+@@ -11,10 +11,10 @@
+ extern int sig_pipe;
+ extern int sig_term;
+ 
+-extern void (*sig_defaulthandler)();
+-extern void (*sig_ignorehandler)();
++extern void (*sig_defaulthandler)(int);
++extern void (*sig_ignorehandler)(int);
+ 
+-extern void sig_catch(int,void (*)());
++extern void sig_catch(int,void (*)(int));
+ #define sig_ignore(s) (sig_catch((s),sig_ignorehandler))
+ #define sig_uncatch(s) (sig_catch((s),sig_defaulthandler))
+ 
+--- a/sig_block.c
++++ b/sig_block.c
+@@ -6,35 +6,23 @@
+ 
+ void sig_block(int sig)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t ss;
+   sigemptyset(&ss);
+   sigaddset(&ss,sig);
+   sigprocmask(SIG_BLOCK,&ss,(sigset_t *) 0);
+-#else
+-  sigblock(1 << (sig - 1));
+-#endif
+ }
+ 
+ void sig_unblock(int sig)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t ss;
+   sigemptyset(&ss);
+   sigaddset(&ss,sig);
+   sigprocmask(SIG_UNBLOCK,&ss,(sigset_t *) 0);
+-#else
+-  sigsetmask(sigsetmask(~0) & ~(1 << (sig - 1)));
+-#endif
+ }
+ 
+ void sig_blocknone(void)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t ss;
+   sigemptyset(&ss);
+   sigprocmask(SIG_SETMASK,&ss,(sigset_t *) 0);
+-#else
+-  sigsetmask(0);
+-#endif
+ }
+--- a/sig_catch.c
++++ b/sig_catch.c
+@@ -4,15 +4,11 @@
+ #include "sig.h"
+ #include "hassgact.h"
+ 
+-void sig_catch(int sig,void (*f)())
++void sig_catch(int sig, void (*f)(int))
+ {
+-#ifdef HASSIGACTION
+   struct sigaction sa;
+   sa.sa_handler = f;
+   sa.sa_flags = 0;
+   sigemptyset(&sa.sa_mask);
+   sigaction(sig,&sa,(struct sigaction *) 0);
+-#else
+-  signal(sig,f); /* won't work under System V, even nowadays---dorks */
+-#endif
+ }
+--- a/supervise.c
++++ b/supervise.c
+@@ -1,3 +1,4 @@
++#include <stdio.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -79,7 +80,7 @@
+     strerr_warn4(WARNING,"unable to rename ",dir,"/supervise/status.new to status: ",&strerr_sys);
+ }
+ 
+-void trigger(void)
++void trigger(int sig)
+ {
+   write(selfpipe[1],"",1);
+ }
+@@ -94,7 +95,7 @@
+     case -1:
+       strerr_warn4(WARNING,"unable to fork for ",dir,", sleeping 60 seconds: ",&strerr_sys);
+       deepsleep(60);
+-      trigger();
++      trigger(0);
+       return;
+     case 0:
+       sig_uncatch(sig_child);
+--- a/tai64n.c
++++ b/tai64n.c
+@@ -27,7 +27,7 @@
+ 
+ char stamp[TIMESTAMP + 1];
+ 
+-int main()
++int main(void)
+ {
+   char ch;
+ 
+--- a/tai64nlocal.c
++++ b/tai64nlocal.c
+@@ -28,7 +28,7 @@
+ unsigned long u;
+ struct tm *t;
+ 
+-int main()
++int main(void)
+ {
+   char ch;
+ 
+--- a/wait.h
++++ b/wait.h
+@@ -3,10 +3,8 @@
+ #ifndef WAIT_H
+ #define WAIT_H
+ 
+-extern int wait_pid();
+-extern int wait_nohang();
+-extern int wait_stop();
+-extern int wait_stopnohang();
++int wait_pid(int *wstat, int pid);
++int wait_nohang(int *wstat);
+ 
+ #define wait_crashed(w) ((w) & 127)
+ #define wait_exitcode(w) ((w) >> 8)
+--- a/wait_nohang.c
++++ b/wait_nohang.c
+@@ -4,11 +4,7 @@
+ #include <sys/wait.h>
+ #include "haswaitp.h"
+ 
+-int wait_nohang(wstat) int *wstat;
++int wait_nohang(int *wstat)
+ {
+-#ifdef HASWAITPID
+   return waitpid(-1,wstat,WNOHANG);
+-#else
+-  return wait3(wstat,WNOHANG,(struct rusage *) 0);
+-#endif
+ }
+--- a/wait_pid.c
++++ b/wait_pid.c
+@@ -5,9 +5,9 @@
+ #include "error.h"
+ #include "haswaitp.h"
+ 
+-#ifdef HASWAITPID
++#if 1
+ 
+-int wait_pid(wstat,pid) int *wstat; int pid;
++int wait_pid(int *wstat, int pid)
+ {
+   int r;
+ 

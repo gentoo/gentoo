@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -167,6 +167,8 @@ src_configure() {
 
 	use debug && myconf="${myconf} --with-debug" ||
 		myconf="${myconf} --with-optimization --with-cflags-debugging="
+
+	use freewnn && append-cppflags "-I. -I${ESYSROOT}/usr/include/wnn"
 
 	econf ${myconf} \
 		$(use_with gif ) \

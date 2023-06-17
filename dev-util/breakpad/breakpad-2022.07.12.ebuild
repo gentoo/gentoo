@@ -26,6 +26,7 @@ BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-gcc13.patch
 	"${FILESDIR}"/${PN}-2022.06.04-gentoo.patch
 )
 

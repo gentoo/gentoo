@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
@@ -311,7 +311,7 @@ _iconins() {
 				size=${2}
 			fi
 			case ${size} in
-			16|22|24|32|36|48|64|72|96|128|192|256|512)
+			16|22|24|32|36|48|64|72|96|128|192|256|512|1024)
 				size=${size}x${size};;
 			symbolic|scalable)
 				;;
@@ -369,7 +369,7 @@ _iconins() {
 #    !!! must specify to install into /usr/share/icons/... !!!
 #    size of the icon, like 48 or 48x48
 #    supported icon sizes are:
-#    16 22 24 32 36 48 64 72 96 128 192 256 512 scalable
+#    16 22 24 32 36 48 64 72 96 128 192 256 512 1024 scalable
 #  -c, --context
 #    defaults to "apps"
 #  -t, --theme

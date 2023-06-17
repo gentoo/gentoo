@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -17,7 +18,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~riscv ~sparc x86"
 IUSE="test xbr"
 RESTRICT="!test? ( test )"
 
@@ -43,7 +44,7 @@ BDEPEND="
 		>=dev-python/py-ubjson-0.16.1[${PYTHON_USEDEP}]
 		>=dev-python/flatbuffers-22.12.06[${PYTHON_USEDEP}]
 		>=dev-python/pyopenssl-20.0.1[${PYTHON_USEDEP}]
-		>=dev-python/service_identity-18.1.0[${PYTHON_USEDEP}]
+		>=dev-python/service-identity-18.1.0[${PYTHON_USEDEP}]
 		>=dev-python/pynacl-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/pytrie-0.4[${PYTHON_USEDEP}]
 		>=dev-python/cffi-1.14.5[${PYTHON_USEDEP}]
@@ -102,7 +103,7 @@ pkg_postinst() {
 	optfeature "accelerated WAMP serialization support" \
 		"dev-python/msgpack dev-python/ujson dev-python/cbor2 dev-python/flatbuffers dev-python/py-ubjson"
 	optfeature "TLS transport encryption" \
-		"dev-python/pyopenssl dev-python/pynacl dev-python/pytrie dev-python/qrcode dev-python/service_identity"
+		"dev-python/pyopenssl dev-python/pynacl dev-python/pytrie dev-python/qrcode dev-python/service-identity"
 	optfeature "WAMP-SCRAM authentication" \
 		"dev-python/cffi dev-python/argon2-cffi dev-python/passlib"
 	optfeature "native SIMD acceleration" "dev-python/cffi"

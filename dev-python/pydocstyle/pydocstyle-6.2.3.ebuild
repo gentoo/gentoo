@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/snowballstemmer-2.2.0[${PYTHON_USEDEP}]
@@ -35,7 +35,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 # Requires network to lookup github issues
-#distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/sphinxcontrib-issuetracker
+#distutils_enable_sphinx docs dev-python/sphinx-rtd-theme dev-python/sphinxcontrib-issuetracker
 
 PATCHES=(
 	"${FILESDIR}"/pydocstyle-6.1.1-disarm-pip-install.patch

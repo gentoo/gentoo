@@ -11,7 +11,7 @@ SRC_URI="https://erratique.ch/software/uunf/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-ml/topkg:=

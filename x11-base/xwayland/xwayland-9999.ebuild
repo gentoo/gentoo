@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,13 +24,13 @@ SLOT="0"
 COMMON_DEPEND="
 	dev-libs/libbsd
 	dev-libs/openssl:=
-	>=dev-libs/wayland-1.20
-	>=dev-libs/wayland-protocols-1.22
+	>=dev-libs/wayland-1.21.0
+	>=dev-libs/wayland-protocols-1.28
 	media-fonts/font-util
 	>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	media-libs/libglvnd[X]
 	>=media-libs/mesa-21.1[X(+),egl(+),gbm(+)]
-	>=x11-libs/libdrm-2.4.89
+	>=x11-libs/libdrm-2.4.109
 	>=x11-libs/libXau-1.0.4
 	x11-libs/libxcvt
 	>=x11-libs/libXdmcp-1.0.2
@@ -45,7 +45,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	x11-base/xorg-proto
+	>=x11-base/xorg-proto-2022.2
 	>=x11-libs/xtrans-1.3.5
 "
 RDEPEND="
@@ -85,6 +85,7 @@ src_configure() {
 		-Dxvfb=true
 		-Dxv=true
 		-Dxwayland-path="${EPREFIX}"/usr/bin
+		-Dlibdecor=false
 		-Ddocs=false
 		-Ddevel-docs=false
 		-Ddocs-pdf=false

@@ -56,3 +56,15 @@ Bug: https://bugs.gentoo.org/892503
  #include <string>
  #include <system_error>
  namespace KODI
+diff --git a/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h b/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h
+index 66d1bf0200..dcd60698d6 100644
+--- a/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h
++++ b/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h
+@@ -9,6 +9,7 @@
+ #pragma once
+ 
+ #include <array>
++#include <cstdint>
+ 
+ #if defined(HAS_GL)
+ // always define GL_GLEXT_PROTOTYPES before include gl headers

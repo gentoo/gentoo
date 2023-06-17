@@ -1,5 +1,5 @@
---- a/src/include/Makefile.in	2017-07-05 23:09:09.682703655 +0000
-+++ b/src/include/Makefile.in	2017-07-05 23:06:56.533612308 +0000
+--- a/src/include/Makefile.in
++++ b/src/include/Makefile.in
 @@ -81,7 +81,7 @@
  Rmath.h0: $(srcdir)/Rmath.h0.in $(top_builddir)/config.status
  	@cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@

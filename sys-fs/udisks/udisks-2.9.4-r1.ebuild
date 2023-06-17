@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -97,8 +97,8 @@ src_configure() {
 		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html
 		--with-modprobedir="${EPREFIX}"/lib/modprobe.d
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
-		--with-tmpfilesdir="/usr/lib/tmpfiles.d"
-		--with-udevdir="$(get_udevdir)"
+		--with-tmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d
+		--with-udevdir="${EPREFIX}$(get_udevdir)"
 		$(use_enable acl)
 		$(use_enable daemon)
 		$(use_enable debug)

@@ -59,7 +59,7 @@ test-DISTUTILS_USE_SETUPTOOLS() {
 
 	local BDEPEND=
 	local RDEPEND=
-	unset _DISTUTILS_R1
+	unset _DISTUTILS_R1_ECLASS
 	inherit distutils-r1
 
 	local ret var val

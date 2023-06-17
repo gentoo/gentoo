@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit bash-completion-r1 cmake python-single-r1 xdg-utils
 
@@ -19,16 +19,20 @@ KEYWORDS="amd64 x86"
 IUSE="+cdemu-daemon"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
-	cdemu-daemon? ( app-cdr/cdemu-daemon:0/7 )"
-BDEPEND="${PYTHON_DEPS}
+	cdemu-daemon? ( app-cdr/cdemu-daemon:0/7 )
+"
+BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/desktop-file-utils
 	>=dev-util/intltool-0.21
 	>=sys-devel/gettext-0.18
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS README )
 

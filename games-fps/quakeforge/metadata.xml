@@ -31,7 +31,6 @@
 	</longdescription>
 	<use>
 		<flag name="client">Build Normal and QuakeWorld clients alongside the servers</flag>
-		<flag name="vulkan">Enable vulkan renderer (experimental)</flag>
 		<flag name="wildmidi">Use <pkg>media-sound/wildmidi</pkg> for midi support</flag>
 	</use>
 	<upstream>
