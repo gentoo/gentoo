@@ -21,7 +21,7 @@ IUSE="bluetooth pulseaudio telephony X"
 
 RESTRICT="test"
 
-DEPEND="
+COMMON_DEPEND="
 	>=app-crypt/qca-2.3.0:2[qt5(+),ssl]
 	>=dev-libs/wayland-1.15.0
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -61,7 +61,10 @@ DEPEND="
 		x11-libs/libXtst
 	)
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	dev-libs/wayland-protocols
+"
+RDEPEND="${COMMON_DEPEND}
 	dev-libs/kpeoplevcard
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtmultimedia-${QTMIN}:5[qml]
