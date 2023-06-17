@@ -66,16 +66,18 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/PyQt-builder-1.15[${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}
-	sys-devel/gcc
 	dbus? ( virtual/pkgconfig )"
 
 src_prepare() {
 	default
 
-	# hack: qmake queries g++ directly for info (not building) and that doesn't
-	# work with clang, this is to make it at least respect CHOST (bug #726112)
+	# hack: qmake queries g++ or clang++ for info depending on which qtbase was
+	# built with, but ignores CHOST failing with -native-symlinks (bug #726112)
+	# and potentially using wrong information when cross-compiling
 	mkdir "${T}"/cxx || die
-	ln -s "$(type -P ${CHOST}-g++ || type -P g++ || die)" "${T}"/cxx/g++ || die
+	local cxx
+	! cxx=$(type -P "${CHOST}"-g++) || ln -s -- "${cxx}" "${T}"/cxx/g++ || die
+	! cxx=$(type -P "${CHOST}"-clang++) || ln -s -- "${cxx}" "${T}"/cxx/clang++ || die
 	PATH=${T}/cxx:${PATH}
 }
 
