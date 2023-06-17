@@ -363,12 +363,6 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake_build distribution
-
-	# provide a symlink for tests
-	if [[ ! -L ${WORKDIR}/lib/clang ]]; then
-		mkdir -p "${WORKDIR}"/lib || die
-		ln -s "${BUILD_DIR}/$(get_libdir)/clang" "${WORKDIR}"/lib/clang || die
-	fi
 }
 
 multilib_src_test() {
