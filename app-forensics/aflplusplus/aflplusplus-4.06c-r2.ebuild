@@ -27,7 +27,7 @@ RESTRICT="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=sys-devel/llvm-14:=
+	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=
 	|| (
 		sys-devel/clang:14
 		sys-devel/clang:15
