@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="ncurses? ( sys-libs/ncurses:= )
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5 )
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( media-libs/libpulse )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/libtool"
