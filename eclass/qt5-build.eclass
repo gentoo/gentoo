@@ -326,6 +326,25 @@ qt5-build_pkg_postrm() {
 
 ######  Public helpers  ######
 
+# @FUNCTION: qt5_syncqt_version
+# @DESCRIPTION:
+# Wrapper for Qt5 syncqt.pl to sync header files for ${PV} (required to run if
+# headers are added/removed by patching)
+qt5_syncqt_version() {
+	if [[ ${PV} == *9999* ]]; then
+		return
+	fi
+
+	local syncqt
+	if [[ ${PN} == qtcore ]]; then
+		syncqt=bin/syncqt.pl
+	else
+		syncqt=${QT5_BINDIR}/syncqt.pl
+	fi
+
+	perl ${syncqt} -version ${PV} || die
+}
+
 # @FUNCTION: qt5_symlink_binary_to_path
 # @USAGE: <target binary name> [suffix]
 # @DESCRIPTION:
