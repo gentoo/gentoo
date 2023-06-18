@@ -303,7 +303,7 @@ src_configure() {
 		-Ddriver_vmware=enabled
 
 		--localstatedir="${EPREFIX}/var"
-		-Dinitconfdir="${EPREFIX}/etc/conf.d"
+		-Dinitconfdir="${EPREFIX}/etc/systemd"
 		-Drunstatedir="${EPREFIX}/run"
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 	)
