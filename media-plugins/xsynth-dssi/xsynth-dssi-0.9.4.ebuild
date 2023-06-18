@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="A software synthesizer plugin for the DSSI Soft Synth Interface"
-HOMEPAGE="http://dssi.sourceforge.net/download.html#Xsynth-DSSI"
+HOMEPAGE="https://dssi.sourceforge.net/download.html#Xsynth-DSSI"
 SRC_URI="mirror://sourceforge/dssi/${P}.tar.gz"
 
 LICENSE="GPL-2+"
