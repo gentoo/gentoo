@@ -9,8 +9,8 @@ PYTHON_REQ_USE="threads(+)"
 inherit meson python-single-r1
 
 DESCRIPTION="Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system"
-HOMEPAGE="https://github.com/linuxaudio/a2jmidid"
-SRC_URI="https://github.com/linuxaudio/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/jackaudio/a2jmidid"
+SRC_URI="https://github.com/jackaudio/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
