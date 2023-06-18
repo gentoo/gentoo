@@ -49,12 +49,3 @@ src_prepare() {
 	qt5-build_src_prepare
 }
 fi
-
-src_configure() {
-	# src/plugins/geoservices requires files that are only generated when
-	# qmake is run in the root directory. Bug 633776.
-	mkdir -p "${QT5_BUILD_DIR}"/src/location || die
-	qt5_qmake "${QT5_BUILD_DIR}"
-	cp "${S}"/src/location/qtlocation-config.pri "${QT5_BUILD_DIR}"/src/location || die
-	qt5-build_src_configure
-}
