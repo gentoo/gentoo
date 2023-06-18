@@ -7,7 +7,7 @@ EAPI=7
 DISTUTILS_USE_PEP517=flit
 # NB: this package extends beyond built-in importlib stuff in py3.8+
 # new entry_point API not yet included in cpython release
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..11} )
 
 inherit distutils-r1 pypi
 
@@ -28,9 +28,6 @@ BDEPEND="
 	test? (
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/pyfakefs[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/importlib-resources[${PYTHON_USEDEP}]
-		' 3.8)
 	)
 "
 
