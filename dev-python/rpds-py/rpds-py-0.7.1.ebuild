@@ -8,42 +8,42 @@ DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 CRATES="
-	archery-0.5.0
-	autocfg-1.1.0
-	bitflags-1.3.2
-	cfg-if-1.0.0
-	indoc-1.0.9
-	libc-0.2.139
-	lock_api-0.4.9
-	memoffset-0.8.0
-	once_cell-1.17.1
-	parking_lot-0.12.1
-	parking_lot_core-0.9.7
-	proc-macro2-1.0.51
-	pyo3-0.18.1
-	pyo3-build-config-0.18.1
-	pyo3-ffi-0.18.1
-	pyo3-macros-0.18.1
-	pyo3-macros-backend-0.18.1
-	quote-1.0.23
-	redox_syscall-0.2.16
-	rpds-0.13.0
-	scopeguard-1.1.0
-	smallvec-1.10.0
-	static_assertions-1.1.0
-	syn-1.0.109
-	target-lexicon-0.12.6
-	unicode-ident-1.0.6
-	unindent-0.1.11
-	windows-sys-0.45.0
-	windows-targets-0.42.1
-	windows_aarch64_gnullvm-0.42.1
-	windows_aarch64_msvc-0.42.1
-	windows_i686_gnu-0.42.1
-	windows_i686_msvc-0.42.1
-	windows_x86_64_gnu-0.42.1
-	windows_x86_64_gnullvm-0.42.1
-	windows_x86_64_msvc-0.42.1
+	archery@0.5.0
+	autocfg@1.1.0
+	bitflags@1.3.2
+	cfg-if@1.0.0
+	indoc@1.0.9
+	libc@0.2.139
+	lock_api@0.4.9
+	memoffset@0.8.0
+	once_cell@1.17.1
+	parking_lot@0.12.1
+	parking_lot_core@0.9.7
+	proc-macro2@1.0.51
+	pyo3-build-config@0.18.1
+	pyo3-ffi@0.18.1
+	pyo3-macros-backend@0.18.1
+	pyo3-macros@0.18.1
+	pyo3@0.18.1
+	quote@1.0.23
+	redox_syscall@0.2.16
+	rpds@0.13.0
+	scopeguard@1.1.0
+	smallvec@1.10.0
+	static_assertions@1.1.0
+	syn@1.0.109
+	target-lexicon@0.12.6
+	unicode-ident@1.0.6
+	unindent@0.1.11
+	windows-sys@0.45.0
+	windows-targets@0.42.1
+	windows_aarch64_gnullvm@0.42.1
+	windows_aarch64_msvc@0.42.1
+	windows_i686_gnu@0.42.1
+	windows_i686_msvc@0.42.1
+	windows_x86_64_gnu@0.42.1
+	windows_x86_64_gnullvm@0.42.1
+	windows_x86_64_msvc@0.42.1
 "
 
 inherit cargo distutils-r1 pypi
@@ -54,7 +54,7 @@ HOMEPAGE="
 	https://pypi.org/project/rpds-py/
 "
 SRC_URI+="
-	$(cargo_crate_uris)
+	${CARGO_CRATE_URIS}
 "
 
 LICENSE="MIT"
