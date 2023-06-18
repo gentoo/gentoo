@@ -27,9 +27,6 @@ RDEPEND="
 	<dev-python/markdown-it-py-3[${PYTHON_USEDEP}]
 	>=dev-python/markdown-it-py-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.13.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.8)
 "
 
 distutils_enable_tests pytest
