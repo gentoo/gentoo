@@ -1,0 +1,42 @@
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -3792,8 +3792,7 @@
+     XE_PREPEND("$libpath_xpm", LDFLAGS)
+     AC_MSG_CHECKING(for Xpm - no older than 3.4f)
+     xe_check_libs="$libname_xpm"
+-    AC_RUN_IFELSE([AC_LANG_SOURCE([#define XPM_NUMBERS
+-#include <X11/xpm.h>
++    AC_RUN_IFELSE([AC_LANG_SOURCE([#include <X11/xpm.h>
+     int main(int c, char **v) {
+     return c == 1 ? 0 :
+       XpmIncludeVersion != XpmLibraryVersion() ? 1 :
+@@ -3831,7 +3830,7 @@
+     XE_PREPEND("$incpath_xpm", XE_CFLAGS)
+     AC_MSG_CHECKING([for "FOR_MSW" xpm])
+     xe_check_libs="$libname_xpm"
+-    AC_LINK_IFELSE([AC_LANG_PROGRAM([],[XpmCreatePixmapFromData();])],
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <X11/xpm.h>],[XpmCreatePixmapFromData(0, 0, 0, 0, 0, 0);])],
+     [xpm_for_msw=no],
+     [xpm_for_msw=yes])
+     xe_check_libs=
+@@ -4620,9 +4619,7 @@
+ AC_CACHE_VAL(emacs_cv_localtime_cache,
+ [if test "$ac_cv_func_tzset" = "yes"; then
+ AC_RUN_IFELSE([AC_LANG_SOURCE([#include <time.h>
+-#if STDC_HEADERS
+-# include <stdlib.h>
+-#endif
++#include <stdlib.h>
+ extern char **environ;
+ unset_TZ ()
+ {
+@@ -4733,6 +4730,8 @@
+ void *alloca ();
+ #endif /* C_ALLOCA */
+ #endif /* !defined (alloca) */
++#include <string.h>
++#include <stdlib.h>
+ 
+ void
+ f1 (double a, void *ptr, int b)
