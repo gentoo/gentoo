@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake kde.org multibuild qmake-utils
+inherit cmake kde.org multibuild out-of-source-utils qmake-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="https://userbase.kde.org/QCA"
@@ -89,6 +89,9 @@ src_configure() {
 
 src_compile() {
 	multibuild_foreach_variant cmake_src_compile
+	if use doc; then
+		multibuild_for_best_variant cmake_build doc
+	fi
 }
 
 src_test() {
@@ -103,10 +106,7 @@ src_install() {
 	multibuild_foreach_variant cmake_src_install
 
 	if use doc; then
-		pushd "${BUILD_DIR}" >/dev/null || die
-		doxygen Doxyfile || die
-		dodoc -r apidocs/html
-		popd >/dev/null || die
+		multibuild_for_best_variant run_in_build_dir dodoc -r apidocs/html
 	fi
 
 	if use examples; then
