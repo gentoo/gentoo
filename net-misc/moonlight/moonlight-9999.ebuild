@@ -52,10 +52,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-automagic.patch"
-)
-
 src_prepare() {
 	default
 
