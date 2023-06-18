@@ -1,5 +1,5 @@
 clang-15.0.7(?) or so may abort when the unused option -MD is passed,
-option removal is backported fro nvidia-535 branch
+option removal is backported from the nvidia:0/535 branch.
 
 Note patch is kept without context given the lines below change constantly
 (version) preventing from applying same patch to multiple versions.
