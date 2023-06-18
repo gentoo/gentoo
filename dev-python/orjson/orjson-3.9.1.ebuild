@@ -10,37 +10,37 @@ DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{10..11} )
 
 CRATES="
-	ahash-0.8.3
-	android-tzdata-0.1.1
-	arrayvec-0.7.2
-	associative-cache-1.0.1
-	autocfg-1.1.0
-	beef-0.5.2
-	bytecount-0.6.3
-	castaway-0.2.2
-	cc-1.0.79
-	cfg-if-1.0.0
-	chrono-0.4.26
-	compact_str-0.7.0
-	encoding_rs-0.8.32
-	itoa-1.0.6
-	itoap-1.0.1
-	libc-0.2.144
-	libm-0.1.4
-	num-traits-0.2.15
-	once_cell-1.17.2
-	packed_simd_2-0.3.8
-	pyo3-build-config-0.19.0
-	pyo3-ffi-0.19.0
-	rustversion-1.0.12
-	ryu-1.0.13
-	serde-1.0.163
-	serde_json-1.0.96
-	simdutf8-0.1.4
-	smallvec-1.10.0
-	static_assertions-1.1.0
-	target-lexicon-0.12.7
-	version_check-0.9.4
+	ahash@0.8.3
+	android-tzdata@0.1.1
+	arrayvec@0.7.2
+	associative-cache@1.0.1
+	autocfg@1.1.0
+	beef@0.5.2
+	bytecount@0.6.3
+	castaway@0.2.2
+	cc@1.0.79
+	cfg-if@1.0.0
+	chrono@0.4.26
+	compact_str@0.7.0
+	encoding_rs@0.8.32
+	itoa@1.0.6
+	itoap@1.0.1
+	libc@0.2.144
+	libm@0.1.4
+	num-traits@0.2.15
+	once_cell@1.17.2
+	packed_simd_2@0.3.8
+	pyo3-build-config@0.19.0
+	pyo3-ffi@0.19.0
+	rustversion@1.0.12
+	ryu@1.0.13
+	serde@1.0.163
+	serde_json@1.0.96
+	simdutf8@0.1.4
+	smallvec@1.10.0
+	static_assertions@1.1.0
+	target-lexicon@0.12.7
+	version_check@0.9.4
 "
 
 inherit cargo distutils-r1 pypi
@@ -51,7 +51,7 @@ HOMEPAGE="
 	https://pypi.org/project/orjson/
 "
 SRC_URI+="
-	$(cargo_crate_uris)
+	${CARGO_CRATE_URIS}
 "
 
 LICENSE="|| ( Apache-2.0 MIT )"
