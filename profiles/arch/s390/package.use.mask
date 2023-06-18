@@ -43,8 +43,7 @@ dev-ruby/stringex test
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # eps: app-text/libspectre not keyworded here
-# heif: media-libs/libheif not keyworded here
-media-libs/imlib2 eps heif
+media-libs/imlib2 eps
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # Avoid unkeyworded dependencies
@@ -100,10 +99,8 @@ net-fs/cifs-utils acl
 media-libs/libcanberra sound
 
 # Sam James <sam@gentoo.org> (2022-04-24)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
-media-gfx/graphicsmagick heif
+media-libs/gd avif
 www-client/links avif
 dev-lang/php avif
 

@@ -290,10 +290,6 @@ net-analyzer/zmap mongo
 # Unmask arch-specific USE flag available on x86
 net-analyzer/testssl -bundled-openssl
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
-# Unmask libheif support where media-libs/libheif is keyworded
-media-gfx/imagemagick -heif
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-09-28)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-python/pymongo test

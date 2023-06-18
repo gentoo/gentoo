@@ -70,7 +70,7 @@ dev-libs/libgdata crypt
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif
+media-libs/imlib2 svg
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # Requires dev-util/pahole.
@@ -164,10 +164,8 @@ dev-ruby/globalid test
 media-libs/rubberband jni
 
 # Sam James <sam@gentoo.org> (2021-03-11)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
-media-gfx/graphicsmagick heif
+media-libs/gd avif
 www-client/links avif
 dev-lang/php avif
 
@@ -190,7 +188,7 @@ media-sound/fluidsynth lash
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
-dev-libs/efl avif heif lua_single_target_luajit physics
+dev-libs/efl avif lua_single_target_luajit physics
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
@@ -249,10 +247,6 @@ net-im/pidgin gadu
 # Jeroen Roovers <jer@gentoo.org> (2020-01-28)
 # media-libs/libilbc has not been ported to HPPA
 net-analyzer/wireshark ilbc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches

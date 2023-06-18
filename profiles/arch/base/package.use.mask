@@ -241,10 +241,6 @@ net-vpn/strongswan strongswan_plugins_aesni strongswan_plugins_rdrand strongswan
 # Only available on amd64/x86
 net-analyzer/testssl bundled-openssl kerberos
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
-# Requires media-libs/libheif which is only keyworded for amd64 and x86
-media-gfx/imagemagick heif
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst only has support for assembling bootloader on some arches
 dev-util/catalyst system-bootloader

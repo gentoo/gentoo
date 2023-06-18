@@ -55,14 +55,6 @@ dev-util/pkgcheck emacs
 # kde-frameworks/plasma not keyworded here
 app-i18n/uim kde
 
-# Matt Turner <mattst88@gentoo.org> (2022-05-16)
-# media-libs/libheif not keyworded here
-media-gfx/gthumb heif
-
-# Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
-# Dependencies are missing keywords
-media-libs/imlib2 heif
-
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-22)
 # gnome-base/librsvg missing keywords
 media-libs/freetype svg
@@ -85,10 +77,6 @@ net-misc/plowshare javascript
 # Boost has support for PPC32
 # https://www.boost.org/doc/libs/1_78_0/libs/context/doc/html/context/architectures.html
 dev-libs/boost -context
-
-# Joonas Niilola <juippis@gentoo.org> (2022-01-04)
-# Dependency not keyworded on this arch.
-dev-libs/efl heif
 
 # Sam James <sam@gentoo.org> (2021-12-31)
 # sci-mathematics/polymake not keyworded here
@@ -115,11 +103,6 @@ app-admin/conky lua-rsvg
 # Requires unkeyworded dependencies
 app-i18n/uim kde
 
-# Sam James <sam@gentoo.org> (2021-10-17)
-# media-libs/libheif not keyworded here
-sci-libs/gdal heif
-media-gfx/graphicsmagick heif
-
 # Matt Turner <mattst88@gentoo.org> (2021-07-25)
 # gdm requires gnome-shell requires rustified librsvg.
 x11-misc/xscreensaver gdm
@@ -137,9 +120,8 @@ media-sound/easyeffects zamaudio
 dev-python/diskcache test
 
 # Sam James <sam@gentoo.org> (2021-03-11)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
+media-libs/gd avif
 www-client/links avif
 dev-lang/php avif
 
@@ -183,10 +165,6 @@ net-analyzer/pnp4nagios icinga
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches

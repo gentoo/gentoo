@@ -49,7 +49,7 @@ net-misc/modemmanager qrtr
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif
+media-libs/imlib2 svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -94,11 +94,6 @@ dev-python/argon2-cffi doc
 # bug #807616
 media-libs/libsdl2 pipewire
 
-# Sam James <sam@gentoo.org> (2021-10-17)
-# media-libs/libheif not keyworded here
-sci-libs/gdal heif
-media-gfx/graphicsmagick heif
-
 # Sam James <sam@gentoo.org> (2021-09-14)
 # JACK2 isn't keyworded here
 # bug #807616
@@ -133,10 +128,8 @@ dev-python/diskcache test
 media-libs/rubberband jni
 
 # Sam James <sam@gentoo.org> (2021-03-11)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
-media-gfx/graphicsmagick heif
+media-libs/gd avif
 www-client/links avif
 dev-lang/php avif
 
@@ -226,10 +219,6 @@ net-misc/openssh security-key
 # Joonas Niilola <juippis@gentoo.org> (2020-02-08)
 # Dependency not keyworded on this arch.
 dev-libs/dbus-c++ ecore
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
 
 # David Seifert <soap@gentoo.org> (2020-01-26)
 # media-libs/libkate is not keyworded on ia64 anymore

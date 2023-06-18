@@ -95,7 +95,7 @@ dev-lang/rust-bin clippy doc rustfmt rust-analyzer
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif
+media-libs/imlib2 svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -179,11 +179,9 @@ sys-apps/grep static
 media-libs/rubberband jni
 
 # Sam James <sam@gentoo.org> (2021-03-13)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
+media-libs/gd avif
 net-libs/webkit-gtk avif
-media-gfx/graphicsmagick heif
 www-client/links avif
 dev-lang/php avif
 

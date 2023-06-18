@@ -23,10 +23,6 @@ dev-python/bracex doc
 # pandoc not keyworded here, bug #878355
 app-admin/conky doc
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2022-10-17)
-# media-libs/libheif not keyworded
-media-gfx/geeqie heif
-
 # Sam James <sam@gentoo.org> (2022-10-16)
 # dev-cpp/notcurses not keyworded here
 media-sound/snd notcurses

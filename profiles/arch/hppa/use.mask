@@ -7,6 +7,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
+
 # Sam James <sam@gentoo.org> (2022-10-15)
 # x11-apps/fonttosfnt is not keyworded here
 opentype-compat

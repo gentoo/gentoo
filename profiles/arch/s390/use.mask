@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
+
 # Sam James <sam@gentoo.org> (2022-04-26)
 # dev-libs/mongo-c-driver not keyworded here
 mongodb
