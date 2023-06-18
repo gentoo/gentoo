@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 optfeature verify-sig
@@ -35,9 +35,6 @@ RDEPEND="
 	<dev-python/asgiref-4[${PYTHON_USEDEP}]
 	>=dev-python/asgiref-3.5.2[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.2.2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/backports-zoneinfo[${PYTHON_USEDEP}]
-	' 3.8)
 "
 BDEPEND="
 	test? (
