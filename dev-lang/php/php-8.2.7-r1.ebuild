@@ -1,17 +1,15 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 WANT_AUTOMAKE="none"
 
 inherit flag-o-matic multilib systemd autotools
 
-MY_PV=${PV/_rc/RC}
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
 SRC_URI="https://www.php.net/distributions/${P}.tar.xz"
-#SRC_URI="https://downloads.php.net/~pierrick/php-${MY_PV}.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
@@ -23,8 +21,6 @@ LICENSE="PHP-3.01
 
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
@@ -81,6 +77,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=app-eselect/eselect-php-0.9.7[apache2?,fpm?]
 	>=dev-libs/libpcre2-10.30[jit?,unicode]
+	virtual/libcrypt:=
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) selinux? ( sys-libs/libselinux ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
