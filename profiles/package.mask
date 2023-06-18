@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2023-06-18)
+# Last upstream activity in 2018, EAPI 7.
+# See app-crypt/swtpm for an alternative.
+# Removal on 2023-07-18.  Bug #768960, #794547.
+app-crypt/tpm-emulator
+
 # Hans de Graaff <graaff@gentoo.org> (2023-06-18)
 # Obsolete slot. Use the newer slot instead.
 # Masked for removal on 2023-07-18.
