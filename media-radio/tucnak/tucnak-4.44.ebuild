@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa fftw gpm hamlib suid"
 
 RDEPEND="dev-libs/glib:2
-	~dev-libs/libzia-4.43
+	~dev-libs/libzia-4.44
 	media-libs/libsndfile
 	media-libs/libsdl2
 	alsa? ( media-libs/alsa-lib )
