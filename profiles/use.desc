@@ -256,7 +256,7 @@ postscript - Enable support for the PostScript language (often with ghostscript-
 ppds - Add support for automatically generated ppd (printing driver) files
 prefix - Defines if a Gentoo Prefix offset installation is used
 profile - Add support for software performance analysis (will likely vary from ebuild to ebuild)
-pulseaudio - Add support for PulseAudio sound server
+pulseaudio - Add sound server support via media-libs/libpulse (may be PulseAudio or PipeWire)
 python - Add optional support/bindings for the Python language
 qdbm - Add support for the qdbm (Quick Database Manager) library
 qmail-spp - Add support for qmail SMTP plugins
