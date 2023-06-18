@@ -21,10 +21,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 RDEPEND="
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pyrsistent-0.18.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib-resources-1.4.0[${PYTHON_USEDEP}]
-		dev-python/pkgutil_resolve_name[${PYTHON_USEDEP}]
-	' 3.8)
 "
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
