@@ -28,6 +28,7 @@ DEPEND="
 	magic? ( sys-apps/file:= )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 PDEPEND="python? ( =dev-python/yara-python-$(ver_cut 1)* )"
 
 src_prepare() {
