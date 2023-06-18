@@ -32,12 +32,3 @@ src_prepare() {
 
 	qt5-build_src_prepare
 }
-
-src_configure() {
-	# qt5_tools_configure() not enough here, needs another fix, bug 676948
-	mkdir -p "${QT5_BUILD_DIR}"/src/qdoc || die
-	qt5_qmake "${QT5_BUILD_DIR}"
-	cp src/qdoc/qtqdoc-config.pri "${QT5_BUILD_DIR}"/src/qdoc || die
-
-	qt5-build_src_configure
-}
