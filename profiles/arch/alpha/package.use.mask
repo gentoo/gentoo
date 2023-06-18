@@ -1,6 +1,14 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-06-18)
+# sci-physics/bullet not keyworded here (#908240)
+dev-libs/efl physics
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-18)
+# media-libs/rlottie not keyworded here (#908241)
+dev-libs/efl json
+
 # Sam James <sam@gentoo.org> (2023-06-18)
 # Qt 5 not keyworded here
 app-text/ansifilter gui
