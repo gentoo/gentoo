@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Merged into dev-perl/Type-Tiny. Please depend on that instead.
+dev-perl/Type-Tie
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
 # Obsolete transitional meta package. Switch to media-libs/libpulse
 # which ensures a sound server is installed via PDEPEND.
