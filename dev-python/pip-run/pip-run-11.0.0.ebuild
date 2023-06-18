@@ -21,9 +21,6 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/autocommand[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib-resources[${PYTHON_USEDEP}]
-	' 3.8)
 	dev-python/jaraco-context[${PYTHON_USEDEP}]
 	dev-python/jaraco-env[${PYTHON_USEDEP}]
 	>=dev-python/jaraco-functools-3.7[${PYTHON_USEDEP}]

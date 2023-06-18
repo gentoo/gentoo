@@ -21,9 +21,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~
 
 RDEPEND="
 	dev-python/autocommand[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib-resources[${PYTHON_USEDEP}]
-	' 3.8)
 	dev-python/jaraco-context[${PYTHON_USEDEP}]
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
 	dev-python/jaraco-text[${PYTHON_USEDEP}]
