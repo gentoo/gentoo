@@ -65,6 +65,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/Trilinos-${PN}-release-${MY_PV}"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-missing_includes_gcc_13.patch
 )
 
 pkg_pretend() {
