@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1 linux-info systemd verify-sig
+inherit linux-mod-r1 systemd verify-sig
 
 DESCRIPTION="Linux Kernel Runtime Guard"
 HOMEPAGE="https://lkrg.org"
