@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake flag-o-matic
 
 DESCRIPTION="Software synthesizer capable of making a countless number of instruments"
-HOMEPAGE="http://zynaddsubfx.sourceforge.net/"
+HOMEPAGE="https://zynaddsubfx.sourceforge.net/"
 SRC_URI="mirror://sourceforge/zynaddsubfx/${P}.tar.bz2"
 
 LICENSE="GPL-2"
