@@ -27,7 +27,7 @@ RDEPEND="x11-libs/fltk:1[threads,xft]
 		media-libs/portaudio[alsa]
 	)
 	hamlib? ( media-libs/hamlib:= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	>=media-libs/libsndfile-1.0.10"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
