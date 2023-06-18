@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/dino/libomemo-c/"
 SRC_URI="https://github.com/dino/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD BSD-1 GPL-3 ISC"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
