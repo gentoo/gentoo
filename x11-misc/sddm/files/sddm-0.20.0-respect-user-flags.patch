@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,7 +51,7 @@
+     message(STATUS "Debug build")
+     add_definitions(-DDEBUG)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
+-else()
++elseif(CMAKE_BUILD_TYPE MATCHES Release)
+     message(STATUS "Release build")
+     add_definitions(-DNDEBUG)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
