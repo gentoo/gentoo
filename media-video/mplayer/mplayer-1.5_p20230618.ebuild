@@ -36,12 +36,15 @@ SRC_URI="
 	!truetype? ( ${FONT_URI} )
 "
 
-IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4"
+IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2"
+IUSE+=" cpu_flags_x86_fma3 cpu_flags_x86_fma4"
 IUSE+=" cpu_flags_x86_mmx cpu_flags_x86_mmxext"
 IUSE+=" cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1"
 IUSE+=" cpu_flags_x86_sse4_2 cpu_flags_x86_xop"
 IUSE+=" cpu_flags_x86_3dnow cpu_flags_x86_3dnowext"
 
+IUSE+=" cpu_flags_arm_thumb cpu_flags_arm_neon cpu_flags_arm_vfp cpu_flags_arm_vfpv3"
+IUSE+=" cpu_flags_arm_iwmmxt"
 IUSE+=" cpu_flags_ppc_altivec"
 
 IUSE+=" a52 aalib +alsa aqua bidi bl bluray"
@@ -461,15 +464,21 @@ src_configure() {
 	# Platform specific flags, hardcoded on amd64 (see below)
 	use cpudetection && myconf+=( --enable-runtime-cpudetection )
 
-	# TODO: refresh this list
-	uses="3dnow 3dnowext avx avx2 fma3 fma4 mmx mmxext sse sse2 sse3 ssse3 xop"
-	for i in ${uses}; do
+	local x86_uses="3dnow 3dnowext avx avx2 fma3 fma4 mmx mmxext sse sse2 sse3 ssse3 xop"
+	for i in ${x86_uses}; do
 		myconf+=( $(use_enable cpu_flags_x86_${i} ${i}) )
 	done
-	myconf+=( $(use_enable cpu_flags_x86_sse4_1 sse4) )
-	myconf+=( $(use_enable cpu_flags_x86_sse4_2 sse42) )
+	myconf+=(
+		$(use_enable cpu_flags_x86_sse4_1 sse4)
+		$(use_enable cpu_flags_x86_sse4_2 sse42)
+	)
 
 	myconf+=(
+		$(use_enable cpu_flags_arm_iwmmxt iwmmxt)
+		$(use_enable cpu_flags_arm_thumb thumb)
+		$(use_enable cpu_flags_arm_neon neon)
+		$(use_enable cpu_flags_arm_vfp armvfp)
+		$(use_enable cpu_flags_arm_vfpv3 vfpv3)
 		$(use_enable cpu_flags_ppc_altivec altivec)
 		$(use_enable shm)
 	)
