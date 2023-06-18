@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-20.12.1-qt5-deps.patch"
 	"${FILESDIR}/${PN}-21.09.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
+	"${FILESDIR}/${P}-fix-tests.patch" # git master, 23.07.0
 )
 
 src_unpack() {
