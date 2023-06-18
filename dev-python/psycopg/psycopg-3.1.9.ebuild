@@ -29,9 +29,6 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	$(python_gen_cond_dep '
-		>=dev-python/backports-zoneinfo-0.2.0[${PYTHON_USEDEP}]
-	' 3.8)
 	>=dev-python/typing-extensions-4.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
