@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-06-18)
+# Obsolete slot. Use the newer slot instead.
+# Masked for removal on 2023-07-18.
+dev-ruby/database_cleaner-active_record:2.0
+
 # Sam James <sam@gentoo.org> (2023-06-16)
 # Please upgrade to >=app-admin/eselect-1.4.22-r1 for a fix to env-update
 # and the files it generates in /etc/env.d: bug #908401, then run env-update
@@ -42,7 +47,7 @@
 # Hans de Graaff <graaff@gentoo.org> (2023-06-16)
 # Obsolete slots without reverse dependencies that require rails 6.0 to
 # be present. Use the newer slots if needed.
-# Masked for removal on 2023-06-16.
+# Masked for removal on 2023-07-16.
 dev-ruby/roadie:4
 dev-ruby/roadie-rails:2
 
