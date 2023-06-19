@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Maintains info about a physical person"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 
 # dev-perl/TimeDate
 # dev-perl/Geography-Countries
