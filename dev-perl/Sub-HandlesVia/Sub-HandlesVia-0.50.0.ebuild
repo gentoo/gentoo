@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Alternative handles_via implementation"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~riscv"
+KEYWORDS="~amd64 ~hppa ~ppc ~riscv"
 
 RDEPEND="
 	dev-perl/Class-Method-Modifiers
