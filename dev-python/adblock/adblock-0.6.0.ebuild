@@ -67,29 +67,24 @@ CRATES="
 	windows_i686_gnu@0.36.1
 	windows_i686_msvc@0.36.1
 	windows_x86_64_gnu@0.36.1
-	windows_x86_64_msvc@0.36.1
-"
-
+	windows_x86_64_msvc@0.36.1"
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{10..12} )
-
 inherit cargo distutils-r1
 
 DESCRIPTION="Python wrapper for Brave's adblocking library, which is written in Rust"
 HOMEPAGE="https://github.com/ArniDagur/python-adblock"
 SRC_URI="
-	https://github.com/ArniDagur/python-adblock/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
-	${CARGO_CRATE_URIS}
-"
+	https://github.com/ArniDagur/python-adblock/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+	${CARGO_CRATE_URIS}"
 S="${WORKDIR}/python-${P}"
 
 LICENSE="|| ( MIT Apache-2.0 )"
-# Dependent crate licenses
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT MPL-2.0
-	Unicode-DFS-2016
-"
+	Unicode-DFS-2016" # crates
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 
