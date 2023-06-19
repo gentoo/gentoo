@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="pypi">virtualenvwrapper</remote-id>
 		<remote-id type="bitbucket">dhellmann/virtualenvwrapper</remote-id>
+		<remote-id type="github">python-virtualenvwrapper/virtualenvwrapper</remote-id>
 	</upstream>
 </pkgmetadata>
