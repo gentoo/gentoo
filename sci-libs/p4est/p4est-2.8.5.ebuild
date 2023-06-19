@@ -8,7 +8,7 @@ inherit cmake toolchain-funcs
 DESCRIPTION="Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees"
 HOMEPAGE="http://www.p4est.org/"
 
-LIBSC_VERSION="2.8.3"
+LIBSC_VERSION="${PV}"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
