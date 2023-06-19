@@ -37,7 +37,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Run demo files
-	./klu_simple
+	./klu_simple || die "failed testing"
 	./kludemo  < "${S}"/Matrix/1c.mtx || die "failed testing"
 	./kludemo  < "${S}"/Matrix/arrowc.mtx || die "failed testing"
 	./kludemo  < "${S}"/Matrix/arrow.mtx || die "failed testing"
