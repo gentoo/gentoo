@@ -112,5 +112,5 @@ multilib_src_install_all() {
 	bashcomp_alias hwloc-annotate lstopo{,-no-graphics}
 
 	find "${ED}" -name '*.la' -delete || die
-	doicon "${DISTDIR}/lstopo.png"
+	newicon "${DISTDIR}/lstopo.png" "${PN}"
 }
