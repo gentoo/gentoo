@@ -32,8 +32,8 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Run demo files
-	./colamd_example > colamd_example.out
+	./colamd_example > colamd_example.out || die "failed to run test colamd_example"
 	diff "${S}"/Demo/colamd_example.out colamd_example.out || die "failed testing colamd_example"
-	./colamd_l_example > colamd_l_example.out
+	./colamd_l_example > colamd_l_example.out || die "failed to run test colamd_l_example"
 	diff "${S}"/Demo/colamd_l_example.out colamd_l_example.out || die "failed testing colamd_l_example"
 }
