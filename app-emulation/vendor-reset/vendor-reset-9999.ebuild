@@ -26,7 +26,8 @@ RDEPEND="${DEPEND}"
 CONFIG_CHECK="FTRACE KPROBES PCI_QUIRKS KALLSYMS FUNCTION_TRACER"
 
 src_compile() {
-	local modlist=( vendor-reset=extra )
+	local modlist=( vendor-reset )
+	local modargs=( KDIR="${KV_OUT_DIR}" )
 	linux-mod-r1_src_compile
 }
 
