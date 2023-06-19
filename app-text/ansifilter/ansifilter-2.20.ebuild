@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop toolchain-funcs qmake-utils xdg
+inherit desktop toolchain-funcs qmake-utils xdg-utils
 
 DESCRIPTION="Handles text files containing ANSI terminal escape codes"
 HOMEPAGE="http://www.andre-simon.de/"
@@ -72,13 +72,22 @@ src_install() {
 }
 
 pkg_preinst() {
-	use gui && xdg_pkg_preinst
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
 }
 
 pkg_postrm() {
-	use gui && xdg_pkg_postrm
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
 }
 
 pkg_postinst() {
-	use gui && xdg_pkg_postinst
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
 }
