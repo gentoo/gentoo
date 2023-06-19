@@ -123,6 +123,7 @@ src_compile() {
 	cffi_targets=(
 		pypy_util blake2/_blake2 sha3/_sha3 ssl
 		audioop syslog pwdgrp resource lzma posixshmem
+		testmultiphase
 	)
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
