@@ -198,6 +198,7 @@ RDEPEND="${DEPEND}
 DOCS=( README.md CHANGELOG.md doc/alternatives.md )
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+QA_PRESTRIPPED="${QA_FLAGS_IGNORED}"
 
 src_configure() {
 	export RUSTONIG_SYSTEM_LIBONIG=1
