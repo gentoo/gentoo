@@ -61,7 +61,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	rm -r "${ED}"/usr/cmake || die "rm failed"
+	mv "${ED}"/usr/cmake "${ED}"/usr/$(get_libdir)/ || die "mv failed"
+
 	mkdir -p "${ED}"/usr/share/doc/${P}
 	mv "${ED}"/usr/share/docs/P4EST/* "${ED}"/usr/share/doc/${P}/ || die "mv failed"
 	rm -r "${ED}"/usr/share/docs || die "rm failed"
