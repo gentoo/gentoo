@@ -3,17 +3,20 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic git-r3
+inherit cmake-multilib flag-o-matic
 
+# This changes frequently.  Please check the testdata submodule when bumping.
+TESTDATA_COMMIT="d6168ffb9e1cc24007e64b65dd84d822ad1fc759"
 DESCRIPTION="JPEG XL image format reference implementation"
 HOMEPAGE="https://github.com/libjxl/libjxl"
-
-EGIT_REPO_URI="https://github.com/libjxl/libjxl.git"
-EGIT_SUBMODULES=(third_party/testdata third_party/skcms)
+SRC_URI="https://github.com/libjxl/libjxl/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	test? ( https://github.com/libjxl/testdata/archive/${TESTDATA_COMMIT}.tar.gz
+		-> ${PN}-testdata-${TESTDATA_COMMIT}.tar.gz )"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="gdk-pixbuf openexr test"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="openexr test"
 RESTRICT="!test? ( test )"
 
 DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
@@ -23,10 +26,6 @@ DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	>=x11-misc/shared-mime-info-2.2
-	gdk-pixbuf? (
-		dev-libs/glib:2
-		x11-libs/gdk-pixbuf:2
-	)
 	openexr? ( media-libs/openexr:= )
 	test? ( dev-cpp/gtest )
 "
@@ -42,8 +41,9 @@ multilib_src_configure() {
 		-DJPEGXL_ENABLE_SJPEG=OFF
 		-DJPEGXL_WARNINGS_AS_ERRORS=OFF
 
-		-DJPEGXL_ENABLE_SKCMS=ON
+		-DJPEGXL_ENABLE_SKCMS=OFF
 		-DJPEGXL_ENABLE_VIEWERS=OFF
+		-DJPEGXL_ENABLE_PLUGINS=OFF
 		-DJPEGXL_FORCE_SYSTEM_BROTLI=ON
 		-DJPEGXL_FORCE_SYSTEM_GTEST=ON
 		-DJPEGXL_FORCE_SYSTEM_HWY=ON
@@ -60,17 +60,14 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DJPEGXL_ENABLE_TOOLS=ON
 			-DJPEGXL_ENABLE_OPENEXR=$(usex openexr)
-			-DJPEGXL_ENABLE_PLUGINS=ON
-			-DJPEGXL_ENABLE_PLUGIN_GDKPIXBUF=$(usex gdk-pixbuf)
-			-DJPEGXL_ENABLE_PLUGIN_GIMP210=OFF
-			-DJPEGXL_ENABLE_PLUGIN_MIME=OFF
 			-DBUILD_TESTING=$(usex test ON OFF)
 		)
+		use test && \
+			mycmakeargs+=( -DJPEGXL_TEST_DATA_PATH="${WORKDIR}/testdata-${TESTDATA_COMMIT}" )
 	else
 		mycmakeargs+=(
 			-DJPEGXL_ENABLE_TOOLS=OFF
 			-DJPEGXL_ENABLE_OPENEXR=OFF
-			-DJPEGXL_ENABLE_PLUGINS=OFF
 			-DBUILD_TESTING=OFF
 		)
 	fi
