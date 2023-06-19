@@ -1,8 +1,8 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{9..11} )
+EAPI=8
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit elisp-common gnome.org meson python-single-r1 readme.gentoo-r1
 
@@ -47,6 +47,8 @@ BDEPEND="
 PATCHES=(
 	# Remove global Emacs keybindings, bug #184588
 	"${FILESDIR}"/${PN}-1.8-emacs-keybindings.patch
+
+	"${FILESDIR}"/${P}-gtkdocize-don-t-backslash-escape-regular-characters-.patch
 )
 
 pkg_setup() {
