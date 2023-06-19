@@ -9,10 +9,10 @@ MY_P="gtk-quartz-engine-${PV}"
 
 DESCRIPTION="OSX GTK+ Theme Engine"
 HOMEPAGE="https://sourceforge.net/apps/trac/gtk-osx/wiki/GtkQuartzEngine"
-SRC_URI="http://downloads.sourceforge.net/project/gtk-osx/GTK%20Quartz%20Engine/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/gtk-osx/GTK%20Quartz%20Engine/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~ppc-macos"
 
