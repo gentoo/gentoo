@@ -32,7 +32,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Programs assume that they can access the Matrix folder in ${S}
-	ln -s "${S}/Matrix"
+	ln -s "${S}/Matrix" || die "cannot link to the Matrix folder"
 	# Run demo files
 	./cs_idemo < Matrix/t2 || die "failed testing"
 	./cs_ldemo < Matrix/t2 || die "failed testing"
