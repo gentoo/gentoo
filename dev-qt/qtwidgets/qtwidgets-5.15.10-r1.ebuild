@@ -24,7 +24,7 @@ DEPEND="
 	gtk? (
 		dev-libs/glib:2
 		=dev-qt/qtgui-${QT5_PV}*:5=[dbus]
-		x11-libs/gtk+:3
+		x11-libs/gtk+:3[X]
 		x11-libs/libX11
 		x11-libs/pango
 	)
