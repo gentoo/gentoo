@@ -5,7 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake python-single-r1 virtualx xdg-utils
+inherit cmake desktop python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
