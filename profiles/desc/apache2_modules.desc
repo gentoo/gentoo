@@ -1,4 +1,4 @@
-# Copyright 2007-2022 Gentoo Authors
+# Copyright 2007-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of APACHE2_MODULES USE_EXPAND flags.
@@ -7,6 +7,7 @@
 access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions
 actions - Provides for executing CGI scripts based on media type or request method
 alias - Provides for mapping different parts of the host filesystem in the document tree and for URL redirection
+allowmethods - This module makes it easy to restrict what HTTP methods can be used on a server
 asis - Sends files that contain their own HTTP headers
 auth_basic - Basic authentication
 auth_digest - User authentication using MD5 Digest Authentication
