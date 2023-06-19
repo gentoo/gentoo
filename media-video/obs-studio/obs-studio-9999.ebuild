@@ -5,13 +5,13 @@ EAPI=8
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux64"
 OBS_BROWSER_COMMIT="995ad53cf3b774928a690d9de813fc8cb43175fe"
-OBS_WEBSOCKET_COMMIT="57a9c19f2ccf4e5452baeffd78014579622b9f3a"
+OBS_WEBSOCKET_COMMIT="6fd18a7ef1ecb149e8444154af1daab61d4241a9"
 QR_COMMIT="8518684c0f33d004fa93971be2c6a8eca3167d1e"
 
 if [[ ${PV} == 9999 ]]; then
@@ -206,6 +206,7 @@ src_configure() {
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
 		-DENABLE_WAYLAND=$(usex wayland)
+		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
 		-DENABLE_WEBSOCKET=$(usex websocket)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
 		-DQT_VERSION=$(usex qt6 6 5)
