@@ -30,6 +30,7 @@ S="${WORKDIR}/${PN}-g${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.1-Introduce-the-BUILD_NONFREE-option.patch
+	"${FILESDIR}"/${P}-gcc-13.patch
 )
 
 src_prepare() {
