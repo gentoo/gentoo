@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.41.0-nostrip.patch
 	"${FILESDIR}"/${PN}-0.41.0-py3.11.patch
 	"${FILESDIR}"/${PN}-0.44.1-zita-resampler-1.10.patch
+	"${FILESDIR}"/${P}-gcc-13.patch
 )
 
 src_configure() {
