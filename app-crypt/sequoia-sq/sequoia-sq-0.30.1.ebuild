@@ -453,7 +453,7 @@ DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sq"
 SRC_URI="
 	https://gitlab.com/sequoia-pgp/sequoia-sq/-/archive/v${PV}/${PN}-v${PV}.tar.bz2
-	$(cargo_crate_uris)
+	${CARGO_CRATE_URIS}
 "
 S="${WORKDIR}"/${PN}-v${PV}
 
