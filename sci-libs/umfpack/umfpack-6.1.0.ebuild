@@ -53,8 +53,8 @@ multilib_src_test() {
 		umfpack_zi_demo
 		umfpack_zl_demo
 	)
-	for i in ${demofiles}; do
-		./"${i}" > "${i}.out"
+	for i in ${demofiles[@]}; do
+		./"${i}" > "${i}.out" || die "failed to run test ${i}"
 		diff --strip-trailing-cr "${S}/Demo/${i}.out" "${i}.out" || die "failed testing ${i}"
 	done
 }
