@@ -58,7 +58,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	rm -r "${ED}"/usr/cmake || die "rm failed"
+	mv "${ED}"/usr/cmake "${ED}"/usr/$(get_libdir)/ || die "mv failed"
 
 	rm -r "${ED}"/usr/include/getopt.h \
 		"${ED}"/usr/include/getopt_int.h \
