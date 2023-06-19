@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Role callbacks"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~riscv"
+KEYWORDS="~amd64 ~hppa ~ppc ~riscv"
 
 RDEPEND="
 	dev-perl/Class-Method-Modifiers
