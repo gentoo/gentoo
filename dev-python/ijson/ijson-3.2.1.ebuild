@@ -35,3 +35,8 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	rm -rf ijson || die
+	epytest
+}
