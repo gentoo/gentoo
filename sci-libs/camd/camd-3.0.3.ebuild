@@ -39,8 +39,8 @@ multilib_src_test() {
 		camd_demo2
 		camd_simple
 	)
-	for i in ${demofiles}; do
-		./"${i}" > "${i}.out"
+	for i in ${demofiles[@]}; do
+		./"${i}" > "${i}.out" || die "failed to run test ${i}"
 		diff "${S}/Demo/${i}.out" "${i}.out" || die "failed testing ${i}"
 	done
 	einfo "All tests passed"
