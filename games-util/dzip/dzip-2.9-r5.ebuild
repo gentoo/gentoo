@@ -1,13 +1,13 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="compressor/uncompressor for demo recordings from id's Quake"
-HOMEPAGE="http://speeddemosarchive.com/dzip/"
-SRC_URI="http://speeddemosarchive.com/dzip/dz${PV/./}src.zip"
+HOMEPAGE="https://speeddemosarchive.com/dzip/"
+SRC_URI="https://speeddemosarchive.com/dzip/dz${PV/./}src.zip"
 S="${WORKDIR}"
 
 LICENSE="ZLIB"
