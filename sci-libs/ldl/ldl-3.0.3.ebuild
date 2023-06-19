@@ -34,7 +34,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Some programs assume that they can access the Matrix folder in ${S}
-	ln -s "${S}/Matrix"
+	ln -s "${S}/Matrix" || die "cannot link to the Matrix folder"
 	# Run demo files
 	local demofiles=(
 		ldlsimple
