@@ -25,6 +25,7 @@ RDEPEND="
 	virtual/perl-Tie-RefHash
 	dev-perl/URI
 "
+# dev-perl/Test-Taint is missing from reqs but still needed, see bug #908748
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
@@ -37,6 +38,7 @@ BDEPEND="${RDEPEND}
 		dev-perl/Test-Memory-Cycle
 		dev-perl/Test-Output
 		>=virtual/perl-Test-Simple-0.960.0
+		dev-perl/Test-Taint
 		dev-perl/Test-Warnings
 	)
 "
