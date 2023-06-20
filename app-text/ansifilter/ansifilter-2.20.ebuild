@@ -71,13 +71,6 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	if use gui; then
-		xdg_desktop_database_update
-		xdg_icon_cache_update
-	fi
-}
-
 pkg_postrm() {
 	if use gui; then
 		xdg_desktop_database_update
