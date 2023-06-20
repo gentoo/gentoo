@@ -7,11 +7,11 @@ Subject: [PATCH] libvirt-9.5.0-fix-paths-for-apparmor.patch
 Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
 ---
  src/security/apparmor/libvirt-qemu                            | 1 +
- src/security/apparmor/meson.build                             | 2 +-
+ src/security/apparmor/meson.build                             | 4 ++--
  src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local    | 1 -
  ...irt-aa-helper.in => usr.libexec.libvirt.virt-aa-helper.in} | 4 ++--
  .../apparmor/usr.libexec.libvirt.virt-aa-helper.local         | 1 +
- 5 files changed, 5 insertions(+), 4 deletions(-)
+ 5 files changed, 6 insertions(+), 5 deletions(-)
  delete mode 100644 src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
  rename src/security/apparmor/{usr.lib.libvirt.virt-aa-helper.in => usr.libexec.libvirt.virt-aa-helper.in} (94%)
  create mode 100644 src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.local
@@ -29,7 +29,7 @@ index 44056b5f14..1f0db2cda2 100644
    # pki for libvirt-vnc and libvirt-spice (LP: #901272, #1690140)
    /etc/pki/CA/ r,
 diff --git a/src/security/apparmor/meson.build b/src/security/apparmor/meson.build
-index 02a6d098ad..39214a679f 100644
+index 58b4024b85..6f4ebb7fa9 100644
 --- a/src/security/apparmor/meson.build
 +++ b/src/security/apparmor/meson.build
 @@ -1,5 +1,5 @@
@@ -39,6 +39,15 @@ index 02a6d098ad..39214a679f 100644
    'usr.sbin.libvirtd',
    'usr.sbin.virtqemud',
    'usr.sbin.virtxend',
+@@ -35,7 +35,7 @@ install_data(
+ )
+ 
+ install_data(
+-  'usr.lib.libvirt.virt-aa-helper.local',
++  'usr.libexec.libvirt.virt-aa-helper.local',
+   install_dir: apparmor_dir / 'local',
+   rename: 'usr.lib.libvirt.virt-aa-helper',
+ )
 diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local b/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
 deleted file mode 100644
 index c0990e51d0..0000000000
@@ -77,5 +86,5 @@ index 0000000000..974653d797
 @@ -0,0 +1 @@
 +# Site-specific additions and overrides for 'usr.libexec.libvirt.virt-aa-helper'
 -- 
-2.39.3
+2.41.0
 
