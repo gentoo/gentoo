@@ -48,10 +48,6 @@ net-misc/chrony pps
 # Unstable dependencies (dev-libs/libnl, sys-cluster/rdma-core)
 net-libs/libpcap netlink rdma
 
-# Sam James <sam@gentoo.org> (2021-11-17)
-# media-libs/mesa is not marked stable on HPPA
-media-libs/libepoxy egl
-
 # Rolf Eike Beer <eike@sf-mail.de> (2021-11-10)
 # The following packages have no stable keywords on hppa:
 # net-mail/courier-imap mail-mta/courier
