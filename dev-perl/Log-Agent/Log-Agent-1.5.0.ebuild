@@ -7,7 +7,7 @@ DIST_AUTHOR=MROGASKI
 DIST_VERSION=1.005
 inherit perl-module
 
-DESCRIPTION="A general logging framework"
+DESCRIPTION="General logging framework"
 
 LICENSE="Artistic-2"
 SLOT="0"
