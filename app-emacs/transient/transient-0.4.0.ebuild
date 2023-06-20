@@ -13,7 +13,7 @@ SRC_URI="https://github.com/magit/transient/archive/v${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 DOCS=( CHANGELOG README.org docs/${PN}.org )
 ELISP_TEXINFO="docs/${PN}.texi"
