@@ -587,12 +587,12 @@ src_configure() {
 	# see .cargo/cargo.toml, only needed if RUSTFLAGS is set by the user
 	[[ -v RUSTFLAGS ]] && RUSTFLAGS+=" --cfg=web_sys_unstable_apis"
 
-	if use test; then
-		# tests will be skipped if don't build everything
-		cargo_src_configure --workspace
-	else
-		cargo_src_configure --package={ruffle_{desktop,scanner},exporter}
-	fi
+	local workspaces=(
+		ruffle_{desktop,scanner}
+		exporter
+		$(usev test tests)
+	)
+	cargo_src_configure ${workspaces[*]/#/--package=}
 }
 
 src_test() {
