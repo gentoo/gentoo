@@ -4,7 +4,7 @@
 EAPI=8
 
 DIST_AUTHOR=SRI
-DIST_VERSION=9.23
+DIST_VERSION=9.33
 DIST_EXAMPLES=("examples/*")
 
 inherit perl-module
