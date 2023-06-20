@@ -9,7 +9,7 @@ HOMEPAGE="https://soju.im/"
 SRC_URI="https://git.sr.ht/~emersion/${PN}/refs/download/v${PV}/${P}.tar.gz"
 SRC_URI+=" https://github.com/alfredfo/${PN}-deps/raw/master/${P}-deps.tar.xz"
 
-LICENSE="AGPL-3"
+LICENSE="AGPL-3 Apache-2.0 MIT BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="moderncsqlite +sqlite pam"
