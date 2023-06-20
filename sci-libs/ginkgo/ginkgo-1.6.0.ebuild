@@ -26,6 +26,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix_type_mismatch.patch
+	"${FILESDIR}"/${P}-disable_automagic_dependencies.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
