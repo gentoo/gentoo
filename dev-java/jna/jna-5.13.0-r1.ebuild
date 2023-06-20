@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}/5.11.0-makefile-flags.patch"
 	"${FILESDIR}/jna-5.11.0-no-Werror.patch"
 	"${FILESDIR}/jna-5.13.0-testpath.patch"
+	"${FILESDIR}/jna-5.13.0-LibCTest.patch"
 )
 
 src_prepare() {
