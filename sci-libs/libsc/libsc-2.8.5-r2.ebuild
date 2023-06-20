@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake toolchain-funcs
 
@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix_build_system.patch
 	"${FILESDIR}"/${P}-do_not_compile_zlib-ng.patch
 	"${FILESDIR}"/${P}-use_zlib-ng_symbols.patch
+	"${FILESDIR}"/${P}-fix_cmake_path.patch
 )
 
 pkg_pretend() {
@@ -58,12 +59,10 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	mv "${ED}"/usr/cmake "${ED}"/usr/$(get_libdir)/ || die "mv failed"
-
 	rm -r "${ED}"/usr/include/getopt.h \
 		"${ED}"/usr/include/getopt_int.h \
 		"${ED}"/usr/include/sc_builtin || die "rm failed"
 
-	mv "${ED}"/usr/share/docs/SC/* "${ED}"/usr/share/doc/${P}/ || die "mv failed"
+	mv "${ED}"/usr/share/docs/SC/* "${ED}"/usr/share/doc/${PF}/ || die "mv failed"
 	rm -r "${ED}"/usr/share/docs || die "rm failed"
 }
