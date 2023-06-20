@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Framework for accessing the Amazon S3 Simple Storage Service"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
