@@ -22,6 +22,10 @@ PATCHES=(
 	# Backported fix for https://bugs.gentoo.org/908670
 	# can be removed in 1.2.14 or later
 	"${FILESDIR}/${P}-musl-1.2.4-lfs64.patch"
+
+	# Backported patch to allow compilation with clang 16 or above
+	# can be removed in 1.2.14 or later
+	"${FILESDIR}/${P}-allow-clang.patch"
 )
 
 pkg_setup() {
