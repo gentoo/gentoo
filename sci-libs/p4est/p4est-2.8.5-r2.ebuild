@@ -62,7 +62,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	[ ! "$(get_libdir)" = "lib" ] && mv ${ED}/usr/{lib,$(get_libdir)}/pkgconfig || die "mv failed"
+	[ ! "$(get_libdir)" = "lib" ] && mv "${ED}"/usr/{lib,$(get_libdir)}/pkgconfig || die "mv failed"
 
 	mkdir -p "${ED}"/usr/share/doc/${PF}
 	mv "${ED}"/usr/share/docs/P4EST/* "${ED}"/usr/share/doc/${PF}/ || die "mv failed"
