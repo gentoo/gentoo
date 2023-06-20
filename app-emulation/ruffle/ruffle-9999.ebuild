@@ -9,7 +9,12 @@ DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
 EGIT_REPO_URI="https://github.com/ruffle-rs/ruffle.git"
 
-LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 OFL-1.1 UbuntuFontLicense-1.0 Unicode-DFS-2016 ZLIB curl"
+LICENSE="|| ( MIT Apache-2.0 )"
+LICENSE+="
+	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0
+	CC0-1.0 ISC UbuntuFontLicense-1.0 MIT MPL-2.0 OFL-1.1
+	Unicode-DFS-2016 ZLIB" # crates
+LICENSE+=" curl" # non-automated extra
 SLOT="0"
 
 # dlopen: libX* (see winit+x11-dl crates)
