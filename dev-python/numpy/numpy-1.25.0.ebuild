@@ -33,6 +33,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
+	>=dev-util/meson-1.1.0
 	<dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.30[${PYTHON_USEDEP}]
 	lapack? (
