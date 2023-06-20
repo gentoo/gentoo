@@ -6,12 +6,6 @@ Subject: [PATCH] Fix major version detection of zita-resampler >=1.10
 https://github.com/brummer10/guitarix/pull/129
 
 Fixes #122
----
- waftools/zita-resampler.py | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/waftools/zita-resampler.py b/waftools/zita-resampler.py
-index 1cd49a2a..ba5bbc7c 100644
 --- a/waftools/zita-resampler.py
 +++ b/waftools/zita-resampler.py
 @@ -18,10 +18,11 @@ def configure(conf):

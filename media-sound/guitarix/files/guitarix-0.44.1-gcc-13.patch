@@ -9,12 +9,6 @@ other standard headers.
 
 See also -
   https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/message/HLHKK7P5RB3BLQ5CV4STJGUYBFPC2VTB/
----
- src/LV2/DSP/gx_common.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/src/LV2/DSP/gx_common.h b/src/LV2/DSP/gx_common.h
-index 71108442..132a6839 100644
 --- a/src/LV2/DSP/gx_common.h
 +++ b/src/LV2/DSP/gx_common.h
 @@ -22,7 +22,7 @@
