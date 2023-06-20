@@ -18,8 +18,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
+# urllib3-2 blocked by https://github.com/betamaxpy/betamax/issues/200
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
+	<dev-python/urllib3-2[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
