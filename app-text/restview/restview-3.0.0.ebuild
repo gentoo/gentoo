@@ -4,19 +4,25 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="reStructuredText viewer"
-HOMEPAGE="https://mg.pov.lt/restview/ https://pypi.org/project/restview/"
+HOMEPAGE="
+	https://mg.pov.lt/restview/
+	https://pypi.org/project/restview/
+"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/docutils[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/readme_renderer[${PYTHON_USEDEP}]"
+	dev-python/readme-renderer[${PYTHON_USEDEP}]
+"
 
 DOCS=( README.rst CHANGES.rst )
 
