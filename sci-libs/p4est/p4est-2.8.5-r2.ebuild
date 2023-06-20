@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake toolchain-funcs
 
@@ -38,6 +38,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-fix_build_system.patch
 	"${FILESDIR}"/${P}-set_version.patch
+	"${FILESDIR}"/${P}-fix_cmake_path.patch
 )
 
 pkg_pretend() {
@@ -61,9 +62,9 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	mv "${ED}"/usr/cmake "${ED}"/usr/$(get_libdir)/ || die "mv failed"
+	[ ! "$(get_libdir)" = "lib" ] && mv ${ED}/usr/{lib,$(get_libdir)}/pkgconfig || die "mv failed"
 
-	mkdir -p "${ED}"/usr/share/doc/${P}
-	mv "${ED}"/usr/share/docs/P4EST/* "${ED}"/usr/share/doc/${P}/ || die "mv failed"
+	mkdir -p "${ED}"/usr/share/doc/${PF}
+	mv "${ED}"/usr/share/docs/P4EST/* "${ED}"/usr/share/doc/${PF}/ || die "mv failed"
 	rm -r "${ED}"/usr/share/docs || die "rm failed"
 }
