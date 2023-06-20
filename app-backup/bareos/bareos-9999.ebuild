@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 CMAKE_WARN_UNUSED_CLI=no
 #CMAKE_REMOVE_MODULES=yes
 
@@ -151,7 +151,6 @@ src_prepare() {
 	eapply -p1 "${FILESDIR}/${PN}-21-cmake-gentoo.patch"
 	eapply "${FILESDIR}/${PN}-22.0.2-werror.patch"
 	eapply "${FILESDIR}/${PN}-21.1.2-no-automagic-ccache.patch"
-	eapply "${FILESDIR}/${PN}-gcc13-fixes.patch"
 
 	# fix missing DESTDIR in symlink creation
 	sed -i '/bareos-symlink-default-db-backend.cmake/d' "${S}/core/src/cats/CMakeLists.txt"
