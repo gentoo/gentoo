@@ -3,15 +3,24 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 CMAKE_WARN_UNUSED_CLI=no
 #CMAKE_REMOVE_MODULES=yes
 
 inherit python-any-r1 systemd cmake tmpfiles
 
+if [[ ${PV} == *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/Release/${PV}.tar.gz -> ${P}.tar.gz"
+
+	KEYWORDS="~amd64 ~x86"
+	S=${WORKDIR}/${PN}-Release-${PV}
+fi
+
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="https://www.bareos.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/Release/${PV}.tar.gz -> ${P}.tar.gz"
 
 # some tests still fail propably due to missing bits in src_test -> TODO
 RESTRICT="mirror test"
@@ -22,7 +31,6 @@ RESTRICT="mirror test"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="X acl ceph clientonly +director glusterfs ipv6 lmdb
 	logwatch ndmp readline scsi-crypto split-usr
 	static +storage-daemon systemd tcpd test vim-syntax vmware xattr"
@@ -89,8 +97,6 @@ REQUIRED_USE="
 	x86? ( !ceph )
 "
 
-S=${WORKDIR}/${PN}-Release-${PV}
-
 pkg_pretend() {
 	local active_removed_backend=""
 	if has_version "<app-backup/bareos-21[director,mysql]"; then
@@ -145,7 +151,6 @@ src_prepare() {
 	eapply -p1 "${FILESDIR}/${PN}-21-cmake-gentoo.patch"
 	eapply "${FILESDIR}/${PN}-22.0.2-werror.patch"
 	eapply "${FILESDIR}/${PN}-21.1.2-no-automagic-ccache.patch"
-	eapply "${FILESDIR}/${PN}-gcc13-fixes.patch"
 
 	# fix missing DESTDIR in symlink creation
 	sed -i '/bareos-symlink-default-db-backend.cmake/d' "${S}/core/src/cats/CMakeLists.txt"
