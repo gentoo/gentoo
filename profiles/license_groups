@@ -26,8 +26,6 @@ FSF-APPROVED @GPL-COMPATIBLE AFL-2.1 AFL-3.0 Apache-1.0 Apache-1.1 APSL-2 BSD-4 
 # We exclude NOSA and Watcom-1.0, but we keep Artistic because Debian
 # considers it DFSG-free.
 OSI-APPROVED-FREE 0BSD AFL-3.0 AGPL-3 AGPL-3+ Apache-1.1 Apache-2.0 APL-1.0 APSL-2 Artistic Artistic-2 Boost-1.0 BSD BSD-2 CDDL CNRI CPAL-1.0 CPL-1.0 ECL-2.0 EPL-1.0 EPL-2.0 EUPL-1.1 EUPL-1.2 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ HPND IBM IPAfont ISC LGPL-2+ LGPL-2.1 LGPL-2.1+ LGPL-3 LGPL-3+ LPPL-1.3c MirOS MIT MIT-0 MPL-1.0 MPL-1.1 MPL-2.0 Ms-PL Ms-RL nethack OFL-1.1 OSL-2.1 PHP-3 PHP-3.01 POSTGRESQL PSF-2 QPL-1.0 Sleepycat Unicode-DFS-2016 UoI-NCSA W3C wxWinLL-3 ZLIB ZPL
-OSI-APPROVED-NONFREE NOSA Watcom-1.0
-OSI-APPROVED @OSI-APPROVED-FREE @OSI-APPROVED-NONFREE
 
 # Misc licenses that are probably free software, i.e. follow the
 # Free Software Definition at https://www.gnu.org/philosophy/free-sw.html
@@ -74,6 +72,12 @@ FREE @FREE-SOFTWARE @FREE-DOCUMENTS
 BINARY-REDISTRIBUTABLE @FREE Amazon Atmel AVASYS bh-luxi bonnie Broadcom freedist intel-ucode ipw2100-fw ipw2200-fw ipw3945 ISSL JSON linux-fw-redistributable LSI-tw_cli Mellanox-AS-IS MicroChip-SDCC no-source-code NOSA NVIDIA-r1 NVIDIA-r2 qlogic-fibre-channel-firmware shmux unRAR
 
 ######################################################################
+
+# Licenses approved by the Open Source Initiative that are nonfree
+# (see comment about OSI-APPROVED-FREE)
+OSI-APPROVED-NONFREE NOSA Watcom-1.0
+
+OSI-APPROVED @OSI-APPROVED-FREE @OSI-APPROVED-NONFREE
 
 # License agreements that try to take away your rights. These are more
 # restrictive than "all-rights-reserved" or require explicit approval.
