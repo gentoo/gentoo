@@ -113,8 +113,8 @@ dev-lang/gforth check
 # See bug #604542
 net-misc/iputils idn
 
-# See bug #504200, #723370
-<sys-devel/gcc-12 sanitize
+# See bug #504200, #723370, bug #893654
+<sys-devel/gcc-13 sanitize
 sys-devel/gcc nls vtv
 
 # These cause collisions with <libintl.h>
