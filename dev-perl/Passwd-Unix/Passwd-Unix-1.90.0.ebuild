@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Access to standard unix passwd files"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/Crypt-Password
