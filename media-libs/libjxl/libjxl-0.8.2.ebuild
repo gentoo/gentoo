@@ -62,7 +62,7 @@ multilib_src_configure() {
 			-DJPEGXL_ENABLE_OPENEXR=$(usex openexr)
 			-DBUILD_TESTING=$(usex test ON OFF)
 		)
-		use test && \
+		use test &&
 			mycmakeargs+=( -DJPEGXL_TEST_DATA_PATH="${WORKDIR}/testdata-${TESTDATA_COMMIT}" )
 	else
 		mycmakeargs+=(
