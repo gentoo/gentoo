@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Tied array which combines the power of Tie::File and Text::CSV"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Scalar-List-Utils
