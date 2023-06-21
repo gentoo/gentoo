@@ -16,7 +16,7 @@ IUSE="+botan man test"
 
 RDEPEND="app-arch/bzip2
 	dev-libs/json-c:=
-	dev-libs/sexp[-static-libs(-)]
+	>=dev-libs/sexp-0.8.5[-static-libs(-)]
 	sys-libs/zlib
 	botan? ( dev-libs/botan:2= )
 	!botan? ( >=dev-libs/openssl-1.1.1:= )"
