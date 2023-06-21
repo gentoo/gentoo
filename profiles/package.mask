@@ -33,6 +33,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-06-21)
+# suitesparseconfig-7.0.0 fails to build with multilib enabled
+# because of dependencies that cannot be satisfied.  All the other
+# packages require it.  Bug #908851.
+=sci-libs/amd-3.0.3
+=sci-libs/btf-2.0.3
+=sci-libs/camd-3.0.3
+=sci-libs/ccolamd-3.0.3
+=sci-libs/cholmod-4.0.3
+=sci-libs/colamd-3.0.3
+=sci-libs/cxsparse-4.0.3
+=sci-libs/klu-2.0.3
+=sci-libs/ldl-3.0.3
+=sci-libs/spqr-3.0.3
+=sci-libs/suitesparseconfig-7.0.0
+=sci-libs/umfpack-6.1.0
+
 # Mike Pagano <mpagano@gentoo.org> (2023-06-18)
 # Last upstream activity in 2018, EAPI 7.
 # See app-crypt/swtpm for an alternative.
