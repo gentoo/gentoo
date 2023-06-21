@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit linux-info linux-mod
+inherit linux-info linux-mod-r1
 
 DESCRIPTION="device that allows access to Linux kernel cryptographic drivers"
 HOMEPAGE="http://cryptodev-linux.org/"
@@ -26,10 +26,6 @@ DEPEND="virtual/linux-sources"
 #test requires that the module is already loaded
 RESTRICT="test"
 
-MODULE_NAMES="cryptodev(extra:${S})"
-BUILD_PARAMS="KERNEL_DIR=\"\${KV_OUT_DIR}\""
-BUILD_TARGETS="build"
-
 pkg_pretend() {
 	use kernel_linux || die "cryptodev ebuild only support linux"
 
@@ -42,8 +38,15 @@ pkg_pretend() {
 	check_extra_config
 }
 
+src_compile() {
+	local modlist=( cryptodev=extra:${S} )
+	local modargs=( KERNEL_DIR="${KV_OUT_DIR}" )
+
+	linux-mod-r1_src_compile
+}
+
 src_install() {
-	linux-mod_src_install
+	linux-mod-r1_src_install
 
 	insinto /usr/include/crypto
 	doins crypto/cryptodev.h
