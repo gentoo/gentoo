@@ -16,11 +16,11 @@ IUSE="+botan man test"
 
 RDEPEND="app-arch/bzip2
 	dev-libs/json-c:=
+	dev-libs/sexp[-static-libs(-)]
 	sys-libs/zlib
 	botan? ( dev-libs/botan:2= )
 	!botan? ( >=dev-libs/openssl-1.1.1:= )"
 DEPEND="${RDEPEND}
-	dev-libs/sexp[static-libs]
 	test? ( dev-cpp/gtest )"
 BDEPEND="man? ( dev-ruby/asciidoctor )"
 
