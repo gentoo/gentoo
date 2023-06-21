@@ -35,6 +35,7 @@ src_unpack() {
 }
 
 src_configure() {
+	MODULES_MAKEARGS+=( LINUX_SRCDIR="${KV_OUT_DIR}" )
 	use debug && MODULES_MAKEARGS+=( 'GPIB-DEBUG=1' )
 }
 
