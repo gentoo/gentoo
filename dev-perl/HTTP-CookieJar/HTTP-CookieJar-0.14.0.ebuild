@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Minimalist HTTP user agent cookie jar"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="minimal"
 
 RDEPEND="
