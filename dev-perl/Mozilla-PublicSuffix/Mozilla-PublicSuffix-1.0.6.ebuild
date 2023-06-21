@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Get a domain name's public suffix via the Mozilla Public Suffix List"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	virtual/perl-Exporter
