@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Collection of Perl Modules for the WWW"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~m68k ~mips ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~hppa ~m68k ~mips ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 IUSE="ssl"
 
 RDEPEND="
