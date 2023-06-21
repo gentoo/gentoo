@@ -12,7 +12,7 @@ S="${WORKDIR}/linux-gpib-kernel-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug"
 
 COMMONDEPEND=""
@@ -35,29 +35,21 @@ src_unpack() {
 }
 
 src_configure() {
-	my_gpib_makeopts=''
-	use debug && my_gpib_makeopts+='GPIB-DEBUG=1 '
-
-	my_gpib_makeopts+="LINUX_SRCDIR=${KERNEL_DIR} "
+	use debug && MODULES_MAKEARGS+=( 'GPIB-DEBUG=1' )
 }
 
 src_compile() {
-	set_arch_to_kernel
-
 	# The individual modules don't have separate targets so we can't use
 	# modlist here.
-	emake \
-		${my_gpib_makeopts}
+	emake "${MODULES_MAKEARGS[@]}"
 }
 
 src_install() {
-	set_arch_to_kernel
 	emake \
+		"${MODULES_MAKEARGS[@]}" \
 		DESTDIR="${ED}" \
 		INSTALL_MOD_PATH="${ED}" \
-		DEPMOD="/bin/true" \
 		docdir="${ED}/usr/share/doc/${PF}/html" \
-		${my_gpib_makeopts} \
 		install
 
 	modules_post_process
