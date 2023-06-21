@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rnpgp/sexp/archive/refs/tags/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="cli test"
 
 BDEPEND="virtual/pkgconfig
