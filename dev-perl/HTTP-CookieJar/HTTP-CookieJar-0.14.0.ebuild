@@ -7,7 +7,7 @@ DIST_AUTHOR=DAGOLDEN
 DIST_VERSION=0.014
 inherit perl-module
 
-DESCRIPTION="A minimalist HTTP user agent cookie jar"
+DESCRIPTION="Minimalist HTTP user agent cookie jar"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="minimal"
