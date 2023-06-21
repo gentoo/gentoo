@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 virtualx
 
@@ -25,13 +25,5 @@ BDEPEND="test? ( dev-python/xvfbwrapper[${PYTHON_USEDEP}] )"
 distutils_enable_tests pytest
 
 python_test() {
-	# https://github.com/jaseg/python-mpv/issues/209
-	EPYTEST_DESELECT=(
-		tests/test_mpv.py::TestLifecycle::test_wait_for_property_negative
-		tests/test_mpv.py::TestLifecycle::test_wait_for_property_positive
-		tests/test_mpv.py::TestLifecycle::test_wait_for_property_shutdown
-		tests/test_mpv.py::TestLifecycle::test_wait_for_prooperty_event_overflow
-		tests/test_mpv.py::TestLifecycle::test_event_callback
-	)
 	virtx epytest
 }
