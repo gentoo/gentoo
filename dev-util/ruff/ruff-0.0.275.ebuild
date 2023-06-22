@@ -320,7 +320,7 @@ CRATES="
 "
 
 LIBCST_COMMIT="80e4c1399f95e5beb532fdd1e209ad2dbb470438"
-RUSTPYTHON_COMMIT="08ebbe40d7776cac6e3ba66277d435056f2b8dca"
+RUSTPYTHON_COMMIT="f60e204b73b95bdb6ce87ccd0de34081b4a17c11"
 declare -A GIT_CRATES=(
 	[libcst]="https://github.com/charliermarsh/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst"
 	[ruff_text_size]="https://github.com/astral-sh/RustPython-Parser;${RUSTPYTHON_COMMIT};RustPython-Parser-%commit%/ruff_text_size"
