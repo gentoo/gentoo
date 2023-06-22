@@ -20,7 +20,7 @@ DEPEND="
 	dev-perl/IO-LockedFile
 	virtual/perl-Scalar-List-Utils
 "
-BRDEPEND="${DEPEND}
+BDEPEND="${DEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
 PERL_RM_FILES=(
