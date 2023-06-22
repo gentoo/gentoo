@@ -95,6 +95,8 @@ RDEPEND="${COMMON_DEPEND}
 	reviewboard? ( kde-apps/ktp-accounts-kcm:5 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-astyle-3.4.patch" ) # bug 908977
+
 llvm_check_deps() {
 	has_version -d "sys-devel/clang:${LLVM_SLOT}"
 }
