@@ -322,11 +322,6 @@ dev-python/toml
 # distro packages this. Removal on 2023-06-13. Bug #713794, #872539.
 dev-vcs/cvsync
 
-# David Seifert <soap@gentoo.org> (2023-05-14)
-# EAPI 6, last release over 20 years ago, no other distro packages this
-# anymore. Removal on 2023-06-13.
-dev-tex/cpp2latex
-
 # Sam James <sam@gentoo.org> (2023-05-10)
 # A major reverse depndency (kde-apps/libkexiv2) does not yet build against this
 # so mask for now, see bug #906087 and bug #906090.
