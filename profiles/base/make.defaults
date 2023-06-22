@@ -168,7 +168,7 @@ POSTGRES_TARGETS="postgres12 postgres13"
 # Moreover, it should only contain targets that have a stable version
 # of PHP, to avoid pulling in an unstable PHP on stable systems.
 #
-PHP_TARGETS="php7-4 php8-0"
+PHP_TARGETS="php8-1"
 
 # Alfredo Tupone <tupone@gentoo.org> (2022-11-16)
 #
