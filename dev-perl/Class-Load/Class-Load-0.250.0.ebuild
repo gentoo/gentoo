@@ -7,7 +7,7 @@ DIST_AUTHOR=ETHER
 DIST_VERSION=0.25
 inherit perl-module
 
-DESCRIPTION="A working (require q{Class::Name}) and more"
+DESCRIPTION="Working (require q{Class::Name}) and more"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
