@@ -36,6 +36,7 @@ BDEPEND="sys-devel/bison
 "
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
+	dev-libs/spdlog
 	media-libs/libpng:0=
 	virtual/libiconv
 	clang? ( >=sys-devel/clang-10:= )
@@ -57,7 +58,6 @@ RDEPEND="app-text/ghostscript-gpl
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	sqlite? ( dev-db/sqlite:3 )
 "
 DEPEND="${RDEPEND}"
 
@@ -106,7 +106,7 @@ src_configure() {
 		-Dbuild_doc=$(usex doc)
 		-Dbuild_search=$(usex doxysearch)
 		-Dbuild_wizard=$(usex qt5)
-		-Duse_sqlite3=$(usex sqlite)
+		-Duse_sys_spdlog=ON
 		-DBUILD_SHARED_LIBS=OFF
 		-DGIT_EXECUTABLE="false"
 	)
