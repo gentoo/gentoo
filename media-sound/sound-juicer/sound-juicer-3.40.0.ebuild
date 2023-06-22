@@ -56,5 +56,5 @@ src_install() {
 	meson_src_install
 
 	# Don't put files in deprecated directory
-	rm -rf "${ED}"/usr/doc
+	rm -rf "${ED}"/usr/share/doc/${PN} || die
 }
