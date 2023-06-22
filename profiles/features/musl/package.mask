@@ -265,7 +265,6 @@ www-apps/kibana-bin
 www-apps/prowlarr
 www-apps/radarr
 www-apps/readarr
-www-client/chromium-bin
 www-client/google-chrome
 www-client/google-chrome-beta
 www-client/google-chrome-unstable
