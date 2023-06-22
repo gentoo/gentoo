@@ -1,0 +1,63 @@
+Fix build with clang-16
+Bug: https://bugs.gentoo.org/906179
+Upstream PR: https://github.com/asterisk/dahdi-linux/pull/21
+--- a/drivers/dahdi/dahdi-sysfs.c
++++ b/drivers/dahdi/dahdi-sysfs.c
+@@ -47,7 +47,7 @@ static int span_match(struct device *dev, struct device_driver *driver)
+ 	return 1;
+ }
+ 
+-static inline struct dahdi_span *dev_to_span(struct device *dev)
++static inline struct dahdi_span *dev_to_span(const struct device *dev)
+ {
+ 	return dev_get_drvdata(dev);
+ }
+@@ -68,7 +68,7 @@ static inline struct dahdi_span *dev_to_span(struct device *dev)
+ 			return err;				\
+ 	} while (0)
+ 
+-static int span_uevent(struct device *dev, struct kobj_uevent_env *kenv)
++static int span_uevent(const struct device *dev, struct kobj_uevent_env *kenv)
+ {
+ 	struct dahdi_span *span;
+ 
+@@ -415,7 +415,7 @@ static struct {
+ 	unsigned int clean_chardev:1;
+ } should_cleanup;
+ 
+-static inline struct dahdi_device *to_ddev(struct device *dev)
++static inline struct dahdi_device *to_ddev(const struct device *dev)
+ {
+ 	return container_of(dev, struct dahdi_device, dev);
+ }
+@@ -438,7 +438,7 @@ static inline struct dahdi_device *to_ddev(struct device *dev)
+ 			return err;				\
+ 	} while (0)
+ 
+-static int device_uevent(struct device *dev, struct kobj_uevent_env *kenv)
++static int device_uevent(const struct device *dev, struct kobj_uevent_env *kenv)
+ {
+ 	struct dahdi_device *ddev;
+ 
+--- a/drivers/dahdi/wctc4xxp/base.c
++++ b/drivers/dahdi/wctc4xxp/base.c
+@@ -643,7 +643,7 @@ wctc4xxp_net_register(struct wcdte *wc)
+ 		return -ENOMEM;
+ 	priv = netdev_priv(netdev);
+ 	priv->wc = wc;
+-	memcpy(netdev->dev_addr, our_mac, sizeof(our_mac));
++	memcpy((void *)netdev->dev_addr, our_mac, sizeof(our_mac));
+ 
+ #	ifdef HAVE_NET_DEVICE_OPS
+ 	netdev->netdev_ops = &wctc4xxp_netdev_ops;
+--- a/drivers/dahdi/xpp/xbus-sysfs.c
++++ b/drivers/dahdi/xpp/xbus-sysfs.c
+@@ -418,7 +418,7 @@ static int astribank_match(struct device *dev, struct device_driver *driver)
+ 			return err;				\
+ 	} while (0)
+ 
+-static int astribank_uevent(struct device *dev, struct kobj_uevent_env *kenv)
++static int astribank_uevent(const struct device *dev, struct kobj_uevent_env *kenv)
+ {
+ 	xbus_t *xbus;
+ 	extern char *initdir;
