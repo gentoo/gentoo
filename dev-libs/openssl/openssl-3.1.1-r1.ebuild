@@ -4,7 +4,8 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/openssl.org.asc
-inherit edo flag-o-matic linux-info toolchain-funcs multilib-minimal multiprocessing verify-sig
+inherit edo flag-o-matic linux-info toolchain-funcs
+inherit multilib multilib-minimal multiprocessing preserve-libs verify-sig
 
 DESCRIPTION="Robust, full-featured Open Source Toolkit for the Transport Layer Security (TLS)"
 HOMEPAGE="https://www.openssl.org/"
@@ -16,19 +17,22 @@ if [[ ${PV} == 9999 ]] ; then
 
 	inherit git-r3
 else
-	SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
-		verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos"
+	SRC_URI="
+		mirror://openssl/source/${MY_P}.tar.gz
+		verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )
+	"
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="Apache-2.0"
-SLOT="0/3" # .so version of libssl/libcrypto
+SLOT="0/$(ver_cut 1)" # .so version of libssl/libcrypto
 IUSE="+asm cpu_flags_x86_sse2 fips ktls rfc3779 sctp static-libs test tls-compression vanilla verify-sig weak-ssl-ciphers"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	!<net-misc/openssh-9.2_p1-r3
 	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 "
 BDEPEND="
@@ -264,10 +268,16 @@ pkg_preinst() {
 			-module "${ED}/usr/$(get_libdir)/ossl-modules/fips.so"
 		eend $?
 	fi
+
+	preserve_old_lib /usr/$(get_libdir)/lib{crypto,ssl}$(get_libname 1) \
+		/usr/$(get_libdir)/lib{crypto,ssl}$(get_libname 1.1)
 }
 
 pkg_postinst() {
 	ebegin "Running 'openssl rehash ${EROOT}${SSL_CNF_DIR}/certs' to rebuild hashes (bug #333069)"
 	openssl rehash "${EROOT}${SSL_CNF_DIR}/certs"
 	eend $?
+
+	preserve_old_lib_notify /usr/$(get_libdir)/lib{crypto,ssl}$(get_libname 1) \
+		/usr/$(get_libdir)/lib{crypto,ssl}$(get_libname 1.1)
 }
