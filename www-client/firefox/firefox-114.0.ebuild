@@ -1034,6 +1034,8 @@ src_configure() {
 		fi
 	fi
 
+	mozconfig_add_options_ac 'elf-hack is broken' --disable-elf-hack
+
 	if use clang ; then
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
@@ -1047,9 +1049,6 @@ src_configure() {
 			disable_elf_hack=yes
 		fi
 
-		if [[ -n ${disable_elf_hack} ]] ; then
-			mozconfig_add_options_ac 'elf-hack is broken when using Clang' --disable-elf-hack
-		fi
 	elif tc-is-gcc ; then
 		if ver_test $(gcc-fullversion) -ge 10 ; then
 			einfo "Forcing -fno-tree-loop-vectorize to workaround GCC bug, see bug 758446 ..."
