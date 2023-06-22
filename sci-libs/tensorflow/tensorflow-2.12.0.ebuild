@@ -266,6 +266,7 @@ src_configure() {
 				ewarn ""
 				ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
 				ewarn "or by running /opt/cuda/extras/demo_suite/deviceQuery | grep 'CUDA Capability'"
+				ewarn "or by running nvidia-smi --query-gpu=compute_cap --format=csv | grep -v compute_cap"
 			fi
 		fi
 
