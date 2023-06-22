@@ -77,10 +77,6 @@ dev-python/setuptools_scm_git_archive
 # and autotools are both much better choices.
 dev-python/python-distutils-extra
 
-# Michał Górny <mgorny@gentoo.org> (2023-01-18)
-# Renamed to dev-python/pyproject-hooks (with upstream module name change).
-dev-python/pep517
-
 # Sam James <sam@gentoo.org> (2022-12-29)
 # Doesn't work correctly on newer kernels/hardware. Events may go unreported
 # if using sys-apps/edac-utils. See app-admin/rasdaemon's README for the technical

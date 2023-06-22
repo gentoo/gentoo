@@ -277,11 +277,6 @@ sys-libs/cygwin-crypt
 # as a workaround. bug #906797.
 ~sys-apps/util-linux-2.39
 
-# Michał Górny <mgorny@gentoo.org> (2023-05-19)
-# Replaced by dev-python/pyproject-hooks.  No revdeps left.
-# Removal on 2023-06-18.  Bug #906789.
-dev-python/pep517
-
 # David Seifert <soap@gentoo.org> (2023-05-19)
 # Abandoned, NIH library only used by other obsolete packages like gkeys
 # and layman, use app-crypt/gpgme[python] as a proper upstream
