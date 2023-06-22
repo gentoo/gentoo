@@ -303,13 +303,6 @@ app-portage/layman
 # Removal on 2023-06-18. Bug #566782, #659822
 app-crypt/gentoo-keys
 
-# Thomas Beierlein <tomjbe@gentoo.org> (2023-05-17)
-# Functionality got integrated into >=net-wireless/gnuradio-3.10
-# itself. See
-# https://wiki.analog.com/resources/tools-software/linux-software/gnuradio
-# Removal on 2023-06-17. Bug #897168.
-net-wireless/gr-iio
-
 # Sam James <sam@gentoo.org> (2023-05-10)
 # A major reverse depndency (kde-apps/libkexiv2) does not yet build against this
 # so mask for now, see bug #906087 and bug #906090.
