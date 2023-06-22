@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Please test that dev-util/conf2struct builds with any bumps! See bug #908989.
+# Conf-Libconfig is only in tree for it.
+
 DIST_AUTHOR=CNANGEL
 inherit perl-module
 
