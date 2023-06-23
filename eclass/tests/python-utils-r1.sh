@@ -208,7 +208,7 @@ test_is "_python_impl_matches python3_11 3.12" 1
 test_is "_python_impl_matches python3_12 3.10" 1
 test_is "_python_impl_matches python3_12 3.11" 1
 test_is "_python_impl_matches python3_12 3.12" 0
-test_is "_python_impl_matches pypy3 3.10" 1
+test_is "_python_impl_matches pypy3 3.10" 0
 test_is "_python_impl_matches pypy3 3.11" 1
 test_is "_python_impl_matches pypy3 3.12" 1
 eoutdent
