@@ -4,9 +4,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# test to find <ruby31-only pkgs
-ruby_targets_ruby30
-
 # Hans de Graaff <graaff@gentoo.org> (2023-04-10)
 # Ruby 2.7 is masked for removal.
 ruby_targets_ruby27
