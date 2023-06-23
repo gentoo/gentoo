@@ -448,11 +448,11 @@ _python_export() {
 				local d
 				case ${impl} in
 					python3.10)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.10.11:3.10";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.10.12:3.10";;
 					python3.11)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.11.3:3.11";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.11.4:3.11";;
 					python3.12)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.12.0_beta1:3.12";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.12.0_beta3:3.12";;
 					pypy3)
 						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.11_p1:0=';;
 					*)
