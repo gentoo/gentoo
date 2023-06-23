@@ -111,7 +111,7 @@ _ruby_get_all_impls() {
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
-			ruby19|ruby2[0-7]|jruby)
+			ruby19|ruby2[0-7]|ruby30|jruby)
 				;;
 			*)
 				found_valid_impl=1
