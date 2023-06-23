@@ -264,6 +264,11 @@ _distutils_set_globals() {
 					>=dev-python/poetry-core-1.6.1[${PYTHON_USEDEP}]
 				'
 				;;
+			scikit-build-core)
+				bdep+='
+					>=dev-python/scikit-build-core-0.4.6[${PYTHON_USEDEP}]
+				'
+				;;
 			setuptools)
 				bdep+='
 					>=dev-python/setuptools-67.7.2[${PYTHON_USEDEP}]
@@ -1002,6 +1007,11 @@ _distutils-r1_print_package_versions() {
 					dev-python/poetry-core
 				)
 				;;
+			scikit-build-core)
+				packages+=(
+					dev-python/scikit-build-core
+				)
+				;;
 			setuptools)
 				packages+=(
 					dev-python/setuptools
@@ -1199,6 +1209,9 @@ _distutils-r1_backend_to_key() {
 			;;
 		poetry.core.masonry.api|poetry.masonry.api)
 			echo poetry
+			;;
+		scikit_build_core.build)
+			echo scikit-build-core
 			;;
 		setuptools.build_meta|setuptools.build_meta:__legacy__)
 			echo setuptools
