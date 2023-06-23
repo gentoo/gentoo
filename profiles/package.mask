@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-06-23)
+# Causes bash to segfault in some cases.
+=app-shells/bash-5.2_p15-r4
+
 # Matt Turner <mattst88@gentoo.org> (2023-06-22)
 # Dead slot. Depends on x11-libs/gtk+:2.
 # Removal on 2023-07-22.  Bug #769500.
