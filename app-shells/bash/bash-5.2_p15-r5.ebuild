@@ -7,8 +7,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
 inherit flag-o-matic toolchain-funcs prefix verify-sig
 
 # Uncomment if we have a patchset
-GENTOO_PATCH_DEV="sam"
-GENTOO_PATCH_VER="${PV}"
+#GENTOO_PATCH_DEV="sam"
+#GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/
@@ -20,7 +20,7 @@ MY_PATCHES=()
 
 is_release() {
 	case ${PV} in
-		*_alpha*|*_beta*|*_rc*)
+		9999|*_alpha*|*_beta*|*_rc*)
 			return 1
 			;;
 		*)
@@ -32,12 +32,17 @@ is_release() {
 [[ ${PV} != *_p* ]] && PLEVEL=0
 
 # The version of readline this bash normally ships with.
-READLINE_VER="8.1"
+# Note: right now, we don't use the system copy of readline for bash for non-releases.
+READLINE_VER="8.2_p1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
 
-if is_release ; then
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/bash.git"
+	EGIT_BRANCH=devel
+	inherit git-r3
+elif is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/bash/${MY_P}.tar.gz.sig )"
 
@@ -68,39 +73,50 @@ if is_release ; then
 		unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
 	fi
 else
-	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
+	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
 fi
 
 if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-[[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
+if is_release ; then
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+fi
+IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
 
 DEPEND="
-	>=sys-libs/ncurses-5.2-r2:0=
+	>=sys-libs/ncurses-5.2-r2:=
 	nls? ( virtual/libintl )
-	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
 "
+if is_release ; then
+	DEPEND+=" readline? ( >=sys-libs/readline-${READLINE_VER}:= )"
+fi
 RDEPEND="
 	${DEPEND}
 "
-# We only need yacc when the .y files get patched (bash42-005, bash51-011)
-BDEPEND="app-alternatives/yacc
-	verify-sig? ( sec-keys/openpgp-keys-chetramey )"
+# We only need bison (yacc) when the .y files get patched (bash42-005, bash51-011)
+BDEPEND="
+	sys-devel/bison
+	pgo? ( dev-util/gperf )
+	verify-sig? ( sec-keys/openpgp-keys-chetramey )
+"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	# Patches from Chet sent to bashbug ml
-	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-syslog-history-extern.patch
+# EAPI 8 tries to append it but it doesn't exist here
+QA_CONFIGURE_OPTIONS="--disable-static"
 
-	"${FILESDIR}"/${PN}-5.1_p16-configure-clang16.patch
+PATCHES=(
+	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
+
+	# Patches from Chet sent to bash-bug ml
+	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	"${FILESDIR}"/${PN}-5.2_p15-random-ub.patch
+	"${FILESDIR}"/${PN}-5.2_p15-configure-clang16.patch
 )
 
 pkg_setup() {
@@ -156,11 +172,21 @@ src_prepare() {
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/* || die
 
+	# Sometimes hangs (more noticeable w/ pgo), bug #907403.
+	rm tests/run-jobs || die
+
 	eapply -p0 "${PATCHES[@]}"
 	eapply_user
 }
 
 src_configure() {
+	# Upstream only test with Bison and require GNUisms like YYEOF and
+	# YYERRCODE. The former at least may be in POSIX soon:
+	# https://www.austingroupbugs.net/view.php?id=1269.
+	# configure warns on use of non-Bison but doesn't abort. The result
+	# may misbehave at runtime.
+	unset YACC
+
 	local myconf=(
 		--disable-profiling
 
@@ -196,16 +222,16 @@ src_configure() {
 	#use static && export LDFLAGS="${LDFLAGS} -static"
 	use nls || myconf+=( --disable-nls )
 
-	# Historically, we always used the builtin readline, but since
-	# our handling of SONAME upgrades has gotten much more stable
-	# in the PM (and the readline ebuild itself preserves the old
-	# libs during upgrades), linking against the system copy should
-	# be safe.
-	# Exact cached version here doesn't really matter as long as it
-	# is at least what's in the DEPEND up above.
-	export ac_cv_rl_version=${READLINE_VER%%_*}
-
 	if is_release ; then
+		# Historically, we always used the builtin readline, but since
+		# our handling of SONAME upgrades has gotten much more stable
+		# in the PM (and the readline ebuild itself preserves the old
+		# libs during upgrades), linking against the system copy should
+		# be safe.
+		# Exact cached version here doesn't really matter as long as it
+		# is at least what's in the DEPEND up above.
+		export ac_cv_rl_version=${READLINE_VER%%_*}
+
 		# Use system readline only with released versions.
 		myconf+=( --with-installed-readline=. )
 	fi
@@ -230,11 +256,36 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	if use pgo ; then
+		# Build Bash and run its tests to generate profiles.
+		emake CFLAGS="${CFLAGS} -fprofile-generate=${T}/pgo -fprofile-dir=${T}/pgo"
 
-	if use plugins ; then
-		emake -C examples/loadables all others
+		# Used in test suite.
+		unset A
+
+		emake CFLAGS="${CFLAGS} -fprofile-generate=${T}/pgo -fprofile-dir=${T}/pgo" -k check
+
+		if tc-is-clang; then
+			llvm-profdata merge "${T}"/pgo --output="${T}"/pgo/default.profdata || die
+		fi
+
+		# Rebuild Bash using the profiling data we just generated.
+		emake clean
+		emake CFLAGS="${CFLAGS} -fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo"
+
+		use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} -fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo" all others
+	else
+		emake
+
+		use plugins && emake -C examples/loadables all others
 	fi
+}
+
+src_test() {
+	# Used in test suite.
+	unset A
+
+	default
 }
 
 src_install() {

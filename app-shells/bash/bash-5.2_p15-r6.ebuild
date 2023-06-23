@@ -98,9 +98,9 @@ fi
 RDEPEND="
 	${DEPEND}
 "
-# We only need yacc when the .y files get patched (bash42-005, bash51-011)
+# We only need bison (yacc) when the .y files get patched (bash42-005, bash51-011)
 BDEPEND="
-	app-alternatives/yacc
+	sys-devel/bison
 	pgo? ( dev-util/gperf )
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )
 "
@@ -117,6 +117,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
 	"${FILESDIR}"/${PN}-5.2_p15-random-ub.patch
 	"${FILESDIR}"/${PN}-5.2_p15-configure-clang16.patch
+	"${FILESDIR}"/${PN}-5.2_p15-shell-parser-reset-issue.patch
 )
 
 pkg_setup() {
@@ -180,6 +181,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream only test with Bison and require GNUisms like YYEOF and
+	# YYERRCODE. The former at least may be in POSIX soon:
+	# https://www.austingroupbugs.net/view.php?id=1269.
+	# configure warns on use of non-Bison but doesn't abort. The result
+	# may misbehave at runtime.
+	unset YACC
+
 	local myconf=(
 		--disable-profiling
 

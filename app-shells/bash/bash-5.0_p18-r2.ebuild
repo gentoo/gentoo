@@ -3,73 +3,49 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
-inherit flag-o-matic toolchain-funcs prefix verify-sig
+inherit flag-o-matic toolchain-funcs prefix
 
 # Uncomment if we have a patchset
 GENTOO_PATCH_DEV="sam"
 GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
-# See ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/
+# See ftp://ftp.cwru.edu/pub/bash/bash-5.0-patches/
 PLEVEL="${PV##*_p}"
 MY_PV="${PV/_p*}"
 MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
-MY_PATCHES=()
-
 is_release() {
 	case ${PV} in
-		*_alpha*|*_beta*|*_rc*)
-			return 1
-			;;
-		*)
-			return 0
-			;;
+	*_alpha*|*_beta*|*_rc*) return 1 ;;
+	*) return 0 ;;
 	esac
 }
-
 [[ ${PV} != *_p* ]] && PLEVEL=0
+patches() {
+	local opt=${1} plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
+	[[ ${plevel} -eq 0 ]] && return 1
+	eval set -- {1..${plevel}}
+	set -- $(printf "${pn}${pv/\.}-%03d " "$@")
+	if [[ ${opt} == -s ]] ; then
+		echo "${@/#/${DISTDIR}/}"
+	else
+		local u
+		for u in ftp://ftp.cwru.edu/pub/bash mirror://gnu/${pn} ; do
+			printf "${u}/${pn}-${pv}-patches/%s " "$@"
+		done
+	fi
+}
 
 # The version of readline this bash normally ships with.
-READLINE_VER="8.1"
+READLINE_VER="8.0"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
-
 if is_release ; then
-	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu/bash/${MY_P}.tar.gz.sig )"
-
-	if [[ ${PLEVEL} -gt 0 ]] ; then
-		# bash-5.1 -> bash51
-		my_p=${PN}$(ver_rs 1-2 '' $(ver_cut 1-2))
-
-		patch_url=
-		my_patch_index=
-
-		upstream_url_base="mirror://gnu/bash"
-		mirror_url_base="ftp://ftp.cwru.edu/pub/bash"
-
-		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
-			printf -v mangled_patch_ver ${my_p}-%03d ${my_patch_index}
-			patch_url="${upstream_url_base}/${MY_P}-patches/${mangled_patch_ver}"
-
-			SRC_URI+=" ${patch_url}"
-			SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
-
-			# Add in the mirror URL too.
-			SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
-			SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}} )"
-
-			MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
-		done
-
-		unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
-	fi
+	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 else
 	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
 fi
 
 if [[ -n ${GENTOO_PATCH_VER} ]] ; then
@@ -78,8 +54,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-[[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND="
@@ -90,14 +65,14 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
-# We only need yacc when the .y files get patched (bash42-005, bash51-011)
-BDEPEND="app-alternatives/yacc
-	verify-sig? ( sec-keys/openpgp-keys-chetramey )"
+# We only need bison (yacc) when the .y files get patched (bash42-005)
+BDEPEND="sys-devel/bison"
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	# Patches from Chet sent to bashbug ml
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-history-append.patch
 	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-syslog-history-extern.patch
 )
 
@@ -116,29 +91,16 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [[ ${PV} == 9999 ]] ; then
-		git-r3_src_unpack
-	else
-		if use verify-sig ; then
-			verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.sig}
+	unpack ${MY_P}.tar.gz
 
-			local patch
-			for patch in "${MY_PATCHES[@]}" ; do
-				verify-sig_verify_detached ${patch}{,.sig}
-			done
-		fi
-
-		unpack ${MY_P}.tar.gz
-
-		if [[ -n ${GENTOO_PATCH_VER} ]] ; then
-			unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
-		fi
+	if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+		unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
 	fi
 }
 
 src_prepare() {
 	# Include official patches
-	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 "${MY_PATCHES[@]}"
+	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if is_release ; then
@@ -159,6 +121,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream only test with Bison and require GNUisms like YYEOF and
+	# YYERRCODE. The former at least may be in POSIX soon:
+	# https://www.austingroupbugs.net/view.php?id=1269.
+	# configure warns on use of non-Bison but doesn't abort. The result
+	# may misbehave at runtime.
+	unset YACC
+
 	local myconf=(
 		--disable-profiling
 
@@ -209,7 +178,7 @@ src_configure() {
 	fi
 
 	if use plugins ; then
-		append-ldflags -Wl,-rpath,"${EPREFIX}"/usr/$(get_libdir)/bash
+		append-ldflags -Wl,-rpath,/usr/$(get_libdir)/bash
 	else
 		# Disable the plugins logic by hand since bash doesn't
 		# provide a way of doing it.
@@ -295,11 +264,7 @@ src_install() {
 		done
 	fi
 
-	# Install bash_builtins.1 and rbash.1
-	emake -C doc DESTDIR="${D}" install_builtins
-	sed 's:bash\.1:man1/&:' doc/rbash.1 > "${T}"/rbash.1 || die
-	doman "${T}"/rbash.1
-
+	doman doc/*.1
 	newdoc CWRU/changelog ChangeLog
 	dosym bash.info /usr/share/info/bashref.info
 }

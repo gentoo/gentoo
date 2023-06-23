@@ -53,8 +53,8 @@ DEPEND=">=sys-libs/ncurses-5.2-r2:0=
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
 	!<sys-apps/portage-2.1.6.7_p1"
-# We only need yacc when the .y files get patched (bash42-005)
-BDEPEND="app-alternatives/yacc"
+# We only need bison (yacc) when the .y files get patched (bash42-005)
+BDEPEND="sys-devel/bison"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-r2-patches/${PN}-4.3-mapfile-improper-array-name-validation.patch
@@ -106,6 +106,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream only test with Bison and require GNUisms like YYEOF and
+	# YYERRCODE. The former at least may be in POSIX soon:
+	# https://www.austingroupbugs.net/view.php?id=1269.
+	# configure warns on use of non-Bison but doesn't abort. The result
+	# may misbehave at runtime.
+	unset YACC
+
 	local myconf=(
 		--docdir='$(datarootdir)'/doc/${PF}
 		--htmldir='$(docdir)/html'
