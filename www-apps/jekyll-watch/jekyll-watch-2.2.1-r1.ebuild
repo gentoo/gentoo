@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby27 ruby30"
 
+USE_RUBY="ruby30 ruby31"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md History.markdown"
-
 RUBY_FAKEGEM_GEMSPEC="jekyll-watch.gemspec"
 
 inherit ruby-fakegem
@@ -19,7 +18,6 @@ SRC_URI="https://github.com/jekyll/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE=""
 
 ruby_add_rdepend "dev-ruby/listen:3"
 ruby_add_bdepend "test? ( >=www-apps/jekyll-2 )"
