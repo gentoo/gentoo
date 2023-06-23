@@ -1015,6 +1015,7 @@ _distutils-r1_print_package_versions() {
 			setuptools)
 				packages+=(
 					dev-python/setuptools
+					dev-python/setuptools-rust
 					dev-python/setuptools-scm
 					dev-python/wheel
 				)
