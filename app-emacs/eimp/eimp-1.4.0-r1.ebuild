@@ -22,4 +22,6 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 
+RDEPEND="media-gfx/imagemagick"
+
 SITEFILE="50${PN}-gentoo.el"
