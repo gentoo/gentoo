@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/908976
+
+From 7c811ad118d073c23038e61ee68ecdc07d5b563a Mon Sep 17 00:00:00 2001
+From: blockiv <blockiv@tuta.io>
+Date: Thu, 22 Jun 2023 05:26:02 +0000
+Subject: [PATCH] Mark breaking translation as fuzzy
+
+--- a/po/cs.po
++++ b/po/cs.po
+@@ -142,7 +142,7 @@ msgstr "%sChyba: příkaz \"%s\" již existuje pro plugin \"%s\""
+ msgid "%sBad file descriptor (%d) used in hook_fd"
+ msgstr ""
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid "End of command '%s', timeout reached (%.1fs)"
+ msgstr "Konec příkazu '%s', vypršel časový limit (%.lfs)"
+ 
+-- 
+2.41.0
