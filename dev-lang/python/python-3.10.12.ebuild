@@ -66,7 +66,6 @@ RDEPEND="
 		dev-tcltk/tix
 	)
 	xml? ( >=dev-libs/expat-2.1:= )
-	!!<sys-apps/sandbox-2.21
 "
 # bluetooth requires headers from bluez
 DEPEND="

@@ -66,7 +66,6 @@ RDEPEND="
 		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
-	!!<sys-apps/sandbox-2.21
 "
 # bluetooth requires headers from bluez
 DEPEND="
