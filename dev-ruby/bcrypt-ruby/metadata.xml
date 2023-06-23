@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">codahale/bcrypt-ruby</remote-id>
+    <remote-id type="github">bcrypt-ruby/bcrypt-ruby</remote-id>
   </upstream>
 </pkgmetadata>
