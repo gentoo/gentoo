@@ -67,6 +67,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/ostree-2023.3-libgpg-error-underlinked-lld.patch
+	"${FILESDIR}"/ostree-2023.3-dont-force-clang-introspection.patch
 )
 
 src_prepare() {
