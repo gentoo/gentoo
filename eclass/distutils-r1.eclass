@@ -212,7 +212,7 @@ _distutils_set_globals() {
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					>=dev-python/flit-core-3.8.0[${PYTHON_USEDEP}]
+					>=dev-python/flit-core-3.9.0[${PYTHON_USEDEP}]
 				'
 				;;
 			flit_scm)
@@ -256,12 +256,12 @@ _distutils_set_globals() {
 				;;
 			pdm-backend)
 				bdep+='
-					>=dev-python/pdm-backend-2.0.7[${PYTHON_USEDEP}]
+					>=dev-python/pdm-backend-2.1.0[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.5.2[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-1.6.1[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
@@ -272,7 +272,7 @@ _distutils_set_globals() {
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.7.8[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.7.9[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -287,7 +287,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-65.7.0[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-67.7.2[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
