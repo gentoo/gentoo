@@ -36,6 +36,7 @@ dev-python/mkdocs-git-revision-date-localized-plugin
 dev-python/oauthlib
 dev-python/openapi-spec-validator
 dev-python/openstacksdk
+dev-python/orjson
 dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
