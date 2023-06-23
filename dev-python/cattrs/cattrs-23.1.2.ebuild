@@ -21,6 +21,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/attrs-20.1.0[${PYTHON_USEDEP}]
@@ -35,12 +36,14 @@ BDEPEND="
 		>=dev-python/hypothesis-6.54.5[${PYTHON_USEDEP}]
 		>=dev-python/immutables-0.18[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-1.0.2[${PYTHON_USEDEP}]
-		>=dev-python/orjson-3.5.2[${PYTHON_USEDEP}]
 		>=dev-python/pymongo-4.2.0[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
 		>=dev-python/tomlkit-0.11.4[${PYTHON_USEDEP}]
 		>=dev-python/ujson-5.4.0[${PYTHON_USEDEP}]
+		test-rust? (
+			>=dev-python/orjson-3.5.2[${PYTHON_USEDEP}]
+		)
 	)
 "
 
@@ -54,6 +57,15 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	if ! has_version "dev-python/orjson[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_preconf.py::test_orjson
+			tests/test_preconf.py::test_orjson_converter
+			tests/test_preconf.py::test_orjson_converter_unstruct_collection_overrides
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p xdist -n "$(makeopts_jobs)" tests
 }
