@@ -28,8 +28,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 BDEPEND="
-	dev-python/pillow[${PYTHON_USEDEP}]
 	test? (
+		dev-python/pillow[jpeg,jpeg2k,tiff,${PYTHON_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 	)
 "
