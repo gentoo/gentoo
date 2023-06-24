@@ -13,10 +13,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64"
 
-RDEPEND=">=dev-perl/File-Find-Object-Rule-0.30.100
+RDEPEND="
+	>=dev-perl/File-Find-Object-Rule-0.30.100
 	virtual/perl-autodie
-	>=dev-lang/perl-5.14"
-BDEPEND="${RDEPEND}
+"
+BDEPEND="
+	${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/Module-Build-0.280.0
 	test? (
@@ -25,4 +27,5 @@ BDEPEND="${RDEPEND}
 		dev-perl/File-TreeCreate
 		virtual/perl-IO
 		virtual/perl-Test-Simple
-	)"
+	)
+"
