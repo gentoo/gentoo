@@ -154,6 +154,15 @@ src_install() {
 	fi
 }
 
+pkg_preinst() {
+	# Workaround https://bugs.gentoo.org/907288
+	if has_version "<${CATEGORY}/${PN}-2.3.7"; then
+		ewarn "dev-texlive/texlive-fontsextra is now an optional dependency"
+		ewarn "If you need these fonts, you will need to manually install"
+		ewarn "them."
+	fi
+}
+
 pkg_postinst() {
 	font_pkg_postinst
 	xdg_icon_cache_update
