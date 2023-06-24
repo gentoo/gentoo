@@ -11,7 +11,7 @@ DESCRIPTION="Test for trailing space in source files"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64"
+KEYWORDS="~alpha ~amd64 ~arm"
 
 RDEPEND="
 	>=dev-perl/File-Find-Object-Rule-0.30.100
