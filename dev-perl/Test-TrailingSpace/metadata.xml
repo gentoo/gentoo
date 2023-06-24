@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Test-TrailingSpace</remote-id>
     <remote-id type="cpan-module">Test::TrailingSpace</remote-id>
+    <remote-id type="github">shlomif/perl-test-trailingspace</remote-id>
   </upstream>
 </pkgmetadata>
