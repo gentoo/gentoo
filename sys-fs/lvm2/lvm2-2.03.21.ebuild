@@ -106,7 +106,7 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-flags -flto
+	filter-lto
 
 	# Workaround for bug #822210
 	tc-ld-disable-gold
