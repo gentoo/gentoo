@@ -350,7 +350,7 @@ src_configure() {
 		fi
 	fi
 	# LTO flag was handled via configure
-	filter-flags '-flto*'
+	filter-lto
 
 	##################################
 	# Former mozconfig_config() end  #
