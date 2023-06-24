@@ -42,8 +42,8 @@ IUSE="alsa cpu_flags_x86_sse4_1 dbus jack pulseaudio sndio test vulkan wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
-# dlopen: ffmpeg, qtsvg, vulkan-loader, wayland
-RDEPEND="
+# dlopen: qtsvg, vulkan-loader, wayland
+COMMON_DEPEND="
 	app-arch/xz-utils
 	app-arch/zstd:=
 	dev-cpp/rapidyaml:=
@@ -69,8 +69,13 @@ RDEPEND="
 	sndio? ( media-sound/sndio:= )
 	vulkan? ( media-libs/vulkan-loader )
 	wayland? ( dev-libs/wayland )"
+# patches is a optfeature but always pull given PCSX2 complaints if it
+# is missing and it is fairly small (installs a ~1.5MB patches.zip)
+RDEPEND="
+	${COMMON_DEPEND}
+	games-emulation/pcsx2_patches"
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )"
 BDEPEND="dev-qt/qttools:6[linguist]"
@@ -169,6 +174,7 @@ src_configure() {
 		-DDBUS_API=$(usex dbus)
 		-DDISABLE_BUILD_DATE=yes
 		-DENABLE_TESTS=$(usex test)
+		-DUSE_LINKED_FFMPEG=yes
 		-DUSE_VTUNE=no
 		-DUSE_VULKAN=$(usex vulkan)
 		-DWAYLAND_API=$(usex wayland)
