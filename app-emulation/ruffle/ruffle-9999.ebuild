@@ -65,7 +65,7 @@ src_unpack() {
 src_configure() {
 	filter-lto # TODO: cleanup after bug #893658
 
-	# see .cargo/cargo.toml, only needed if RUSTFLAGS is set by the user
+	# see .cargo/config.toml, only needed if RUSTFLAGS is set by the user
 	[[ -v RUSTFLAGS ]] && RUSTFLAGS+=" --cfg=web_sys_unstable_apis"
 
 	local workspaces=(
