@@ -9,22 +9,23 @@ inherit perl-module
 
 DESCRIPTION="Alternative interface to File::Find::Object"
 
-LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64"
 
-RDEPEND="virtual/perl-Carp
+RDEPEND="
+	virtual/perl-Carp
 	dev-perl/Class-XSAccessor
 	dev-perl/File-Find-Object
 	dev-perl/PathTools
 	dev-perl/Number-Compare
 	dev-perl/Text-Glob
-	>=dev-lang/perl-5.8"
-
-BDEPEND="${RDEPEND}
+"
+BDEPEND="
+	${RDEPEND}
 	>=dev-perl/Module-Build-0.280.0
 	test? (
 		virtual/perl-File-Path
 		dev-perl/File-TreeCreate
 		virtual/perl-IO
-	)"
+	)
+"
