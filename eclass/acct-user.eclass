@@ -432,12 +432,30 @@ acct-user_pkg_postinst() {
 	fi
 
 	elog "Updating user ${ACCT_USER_NAME}"
-	if ! usermod "${opts[@]}" "${ACCT_USER_NAME}" 2>"${T}/usermod-error.log"; then
-		# usermod outputs a warning if unlocking the account would result in an
-		# empty password. Hide stderr in a text file and display it if usermod
-		# fails.
+	# usermod outputs a warning if unlocking the account would result in an
+	# empty password. Hide stderr in a text file and display it if usermod fails.
+	usermod "${opts[@]}" "${ACCT_USER_NAME}" 2>"${T}/usermod-error.log"
+	local status=$?
+	if [[ ${status} -ne 0 ]]; then
 		cat "${T}/usermod-error.log" >&2
-		die "usermod failed"
+		if [[ ${status} -eq 8 ]]; then
+			# usermod refused to update the home directory
+			# for a uid with active processes.
+			eerror "Failed to update user ${ACCT_USER_NAME}"
+			eerror "This user currently has one or more running processes."
+			eerror "Please update this user manually with the following command:"
+
+			# Surround opts with quotes.
+			# With bash-5 (EAPI 8), we can use "${opts[@]@Q}" instead.
+			local q="'"
+			local optsq=( "${opts[@]/#/${q}}" )
+			optsq=( "${optsq[@]/%/${q}}" )
+
+			eerror "  usermod ${optsq[*]} ${ACCT_USER_NAME}"
+		else
+			eerror "$(<"${T}/usermod-error.log")"
+			die "usermod failed"
+		fi
 	fi
 }
 
