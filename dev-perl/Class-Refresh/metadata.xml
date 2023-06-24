@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Class-Refresh</remote-id>
+    <remote-id type="cpan-module">Class::Refresh</remote-id>
+    <remote-id type="github">doy/class-refresh</remote-id>
+  </upstream>
 </pkgmetadata>
