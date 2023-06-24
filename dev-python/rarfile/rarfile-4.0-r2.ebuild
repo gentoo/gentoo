@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTLS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Module for RAR archive reading"
@@ -18,6 +18,9 @@ REQUIRED_USE="test? ( compressed )"
 
 RDEPEND="compressed? ( app-arch/unrar )"
 
-PATCHES=( "${FILESDIR}"/${P}.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}.patch
+	"${FILESDIR}"/${P}-fix-pypy-datetime.patch
+)
 
 distutils_enable_tests pytest
