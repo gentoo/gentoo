@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Alternative interface to File::Find::Object"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~sparc"
 
 RDEPEND="
 	virtual/perl-Carp
