@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Tools for working with directory and file names"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64"
 
 RDEPEND="
 	virtual/perl-Carp
