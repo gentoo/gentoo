@@ -135,7 +135,7 @@ src_configure() {
 	# Strip lto related flags, no support in this version.
 	# https://bugs.gentoo.org/833097
 	# https://bugs.gentoo.org/833098
-	filter-flags '-flto*'
+	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
 	tc-export_build_env CC CXX PKG_CONFIG STRIP
