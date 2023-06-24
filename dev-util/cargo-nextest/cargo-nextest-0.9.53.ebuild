@@ -383,6 +383,6 @@ LICENSE+="
 	|| ( CC0-1.0 MIT-0 )
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 QA_FLAGS_IGNORED="usr/bin/cargo-nextest"
