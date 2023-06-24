@@ -1283,6 +1283,14 @@ toolchain_src_configure() {
 		fi
 	fi
 
+	if in_iuse default-znow && tc_version_is_at_least 14.0.0_pre20230619 ${PV}; then
+		# See https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=33ebb0dff9bb022f1e0709e0e73faabfc3df7931.
+		# TODO: Add to LDFLAGS_FOR_TARGET?
+		confgcc+=(
+			$(use_enable default-znow host-bind-now)
+		)
+	fi
+
 	if in_iuse ssp ; then
 		confgcc+=(
 			# This defaults to -fstack-protector-strong.
