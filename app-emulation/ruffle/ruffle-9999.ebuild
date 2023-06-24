@@ -34,7 +34,7 @@ DEPEND="
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.64
+	>=virtual/rust-1.70
 	test? (
 		media-libs/mesa[llvm]
 		x11-base/xorg-server[-minimal]
