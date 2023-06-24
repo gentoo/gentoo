@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit gnome.org meson python-r1 vala
 
@@ -47,6 +47,11 @@ BDEPEND="
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PV}-revert-default-cpp_stdto17.patch"
+)
+
 src_prepare() {
 	default
 	use vala && vala_setup
