@@ -11,13 +11,13 @@ SRC_URI="https://github.com/FedoraQt/QGnomePlatform/archive/${PV}.tar.gz -> ${P}
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="wayland"
+IUSE="minimal wayland"
 
 RDEPEND="
 	dev-qt/qtdbus:5=
 	>=dev-qt/qtquickcontrols2-5.15.2:5=
 	>=dev-qt/qtwidgets-5.15.2:5=
-	kde-frameworks/qqc2-desktop-style:5=
+	!minimal? ( kde-frameworks/qqc2-desktop-style:5= )
 	wayland? ( dev-qt/qtwayland:5= )
 	gnome-base/gsettings-desktop-schemas
 	sys-apps/xdg-desktop-portal
