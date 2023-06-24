@@ -307,7 +307,7 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-flags '-flto*' # https://bugs.gentoo.org/862109 https://bugs.gentoo.org/866231
+	filter-lto # https://bugs.gentoo.org/862109 https://bugs.gentoo.org/866231
 
 	local rust_target="" rust_targets="" arch_cflags
 
