@@ -256,7 +256,8 @@ src_configure() {
 
 		# use *FLAGS for mingw, but strip unsupported
 		: "${CROSSCFLAGS:=$(
-			# >=wine-7.21 configure.ac no longer adds -fno-strict by mistake
+			# >=wine-7.21 <8.10's configure.ac does not pass -fno-strict when
+			# it should (can be removed when proton is rebased on >=8.10)
 			append-cflags '-fno-strict-aliasing'
 			filter-flags '-fstack-protector*' #870136
 			filter-flags '-mfunction-return=thunk*' #878849
