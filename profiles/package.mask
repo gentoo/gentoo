@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2023-06-24)
+# This version is fine but it depends on >=virtual/rust-1.70 which is
+# currently masked. Feel free to unmask if you are using 1.70.
+~app-emulation/ruffle-0_p20230624
+
 # Hans de Graaff <graaff@gentoo.org> (2023-06-23)
 # Deprecated upstream, who recommends to use the Open3 method instead.
 # No reverse dependencies. Masked for removal on 2023-07-23.
