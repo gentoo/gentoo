@@ -15,8 +15,7 @@
     That is, it does not output something that could be used to program an FPGA
     or ASIC. It implements only the simulation behaviour of the language as
     described by the IEEE 1076 standard. NVC supports popular verification
-    frameworks including OSVVM, UVVM, and VUnit. See below for installation
-    instructions.
+    frameworks including OSVVM, UVVM, and VUnit.
   </longdescription>
   <use>
     <flag name="llvm">Build LLVM code generator</flag>
