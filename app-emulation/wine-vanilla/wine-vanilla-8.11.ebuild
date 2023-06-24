@@ -271,8 +271,6 @@ src_configure() {
 
 			# use *FLAGS for mingw, but strip unsupported
 			: "${CROSSCFLAGS:=$(
-				# >=wine-7.21 configure.ac no longer adds -fno-strict by mistake
-				append-cflags '-fno-strict-aliasing'
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
