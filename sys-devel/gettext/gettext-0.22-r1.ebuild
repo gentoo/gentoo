@@ -67,6 +67,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.22-disable-libintl.patch
 	"${FILESDIR}"/${PN}-0.21-CVE-2020-12825.patch
 )
 
