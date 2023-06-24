@@ -35,8 +35,8 @@ src_unpack() {
 
 src_compile() {
 	[[ ${PV} == *9999 ]] || export GH_VERSION="v${PV}"
-	# Filter '-flto*' flags to avoid build failures.
-	filter-flags "-flto*"
+	# Filter LTO flags to avoid build failures.
+	filter-lto
 	# Filter '-ggdb3' flag to avoid build failures. bugs.gentoo.org/847991
 	filter-flags "-ggdb3"
 	# Go LDFLAGS are not the same as GCC/Binutils LDFLAGS
