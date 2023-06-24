@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-06-24)
+# Breaks dev-python/setuptools-rust.
+# https://github.com/scikit-build/scikit-build-core/issues/413
+<=dev-python/scikit-build-core-0.4.7
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-06-24)
 # This version is fine but it depends on >=virtual/rust-1.70 which is
 # currently masked. Feel free to unmask if you are using 1.70.
