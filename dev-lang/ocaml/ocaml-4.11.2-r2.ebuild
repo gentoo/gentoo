@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ src_prepare() {
 
 	# Broken until 4.12
 	# bug #818445
-	filter-flags '-flto*'
+	filter-lto
 	append-flags -fno-strict-aliasing
 
 	# OCaml generates textrels on 32-bit arches
