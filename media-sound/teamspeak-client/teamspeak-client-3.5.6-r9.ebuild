@@ -40,7 +40,7 @@ RDEPEND="
 	sys-libs/zlib:0/1
 	virtual/udev
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-sound/pulseaudio-daemon )
 	system-libcxx? ( sys-libs/libcxx[libcxxabi] )
 	system-quazip? ( dev-libs/quazip:0/1[qt5(+)] )
 "
