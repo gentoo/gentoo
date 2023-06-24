@@ -9,9 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Advanced operations on path variables"
 
-LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64"
 
-DEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker"
+BDEPEND="virtual/perl-ExtUtils-MakeMaker"
