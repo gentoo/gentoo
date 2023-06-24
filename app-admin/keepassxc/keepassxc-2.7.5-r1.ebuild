@@ -74,7 +74,7 @@ src_prepare() {
 
 src_configure() {
 	# https://github.com/keepassxreboot/keepassxc/issues/5801
-	filter-flags -flto*
+	filter-lto
 
 	local mycmakeargs=(
 		# Gentoo users enable ccache via e.g. FEATURES=ccache or
