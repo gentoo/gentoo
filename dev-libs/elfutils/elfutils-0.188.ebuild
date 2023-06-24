@@ -75,7 +75,7 @@ src_configure() {
 
 	# Symbol aliases are implemented as asm statements.
 	# Will require porting: https://gcc.gnu.org/PR48200
-	filter-flags '-flto*'
+	filter-lto
 
 	multilib-minimal_src_configure
 }
