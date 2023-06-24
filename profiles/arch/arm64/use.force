@@ -1,4 +1,4 @@
-# Copyright 2014-2019 Gentoo Authors
+# Copyright 2014-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Force the flag which corresponds to ARCH.
@@ -12,8 +12,6 @@ cpu_flags_arm_v7
 cpu_flags_arm_v8
 
 cpu_flags_arm_edsp
-cpu_flags_arm_thumb
-cpu_flags_arm_thumb2
 cpu_flags_arm_vfp
 cpu_flags_arm_vfpv3
 cpu_flags_arm_vfpv4
