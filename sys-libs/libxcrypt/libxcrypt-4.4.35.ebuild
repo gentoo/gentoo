@@ -55,6 +55,10 @@ BDEPEND="
 	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-smartmatch.patch"
+)
+
 python_check_deps() {
 	python_has_version "dev-python/passlib[${PYTHON_USEDEP}]"
 }
