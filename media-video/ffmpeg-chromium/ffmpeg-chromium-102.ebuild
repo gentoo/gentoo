@@ -166,7 +166,7 @@ src_configure() {
 
 	# LTO support, bug #566282, bug #754654
 	is-flagq "-flto*" && myconf+=( "--enable-lto" )
-	filter-flags "-flto*"
+	filter-lto
 
 	# Mandatory configuration
 	myconf=(
