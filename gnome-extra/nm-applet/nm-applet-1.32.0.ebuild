@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="appindicator modemmanager selinux teamd"
+IUSE="appindicator +modemmanager selinux teamd"
 KEYWORDS="amd64 ~arm arm64 ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
