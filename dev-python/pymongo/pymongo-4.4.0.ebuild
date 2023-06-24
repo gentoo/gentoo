@@ -24,14 +24,14 @@ S=${WORKDIR}/${MY_P}
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~riscv ~x86"
-IUSE="doc kerberos"
+IUSE="doc kerberos +test-full"
 
 RDEPEND="
 	<dev-python/dnspython-3.0.0[${PYTHON_USEDEP}]
 	kerberos? ( dev-python/pykerberos[${PYTHON_USEDEP}] )
 "
 BDEPEND="
-	test? (
+	test-full? (
 		>=dev-db/mongodb-2.6.0
 	)
 "
@@ -40,7 +40,7 @@ distutils_enable_sphinx doc
 distutils_enable_tests unittest
 
 reqcheck() {
-	if use test; then
+	if use test-full; then
 		# During the tests, database size reaches 1.5G.
 		local CHECKREQS_DISK_BUILD=1536M
 
@@ -72,11 +72,16 @@ src_prepare() {
 }
 
 python_test() {
-	# Yes, we need TCP/IP for that...
-	local DB_IP=127.0.0.1
-	local DB_PORT=27000
+	if ! use test-full; then
+		# .invalid is guaranteed to return NXDOMAIN per RFC 6761
+		local -x DB_IP=mongodb.invalid
+		esetup.py test
+		return
+	fi
 
-	export DB_IP DB_PORT
+	# Yes, we need TCP/IP for that...
+	local -x DB_IP=127.0.0.1
+	local -x DB_PORT=27000
 
 	local dbpath=${TMPDIR}/mongo.db
 	local logpath=${TMPDIR}/mongod.log
@@ -116,7 +121,7 @@ python_test() {
 	done
 
 	local failed
-	esetup.py test || failed=1
+	nonfatal esetup.py test || failed=1
 
 	mongod --dbpath "${dbpath}" --shutdown || die
 
