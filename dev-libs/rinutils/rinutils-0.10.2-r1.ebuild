@@ -12,7 +12,7 @@ SRC_URI="https://github.com/shlomif/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-KEYWORDS="~alpha ~amd64 ~arm"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64"
 RESTRICT="!test? ( test )"
 
 DEPEND="${RDEPEND}
