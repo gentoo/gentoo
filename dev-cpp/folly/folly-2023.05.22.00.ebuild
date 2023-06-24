@@ -16,7 +16,7 @@ SRC_URI="https://github.com/facebook/folly/releases/download/v${PV}/${PN}-v${PV}
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="llvm-libunwind test"
 RESTRICT="!test? ( test )"
 
