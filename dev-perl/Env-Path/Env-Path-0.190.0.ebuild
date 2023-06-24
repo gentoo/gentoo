@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Advanced operations on path variables"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64"
+KEYWORDS="~alpha ~amd64 ~arm"
 
 BDEPEND="virtual/perl-ExtUtils-MakeMaker"
