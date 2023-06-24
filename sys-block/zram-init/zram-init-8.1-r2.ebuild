@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="Scripts to support compressed swap devices or ramdisks with zram"
@@ -9,7 +9,6 @@ HOMEPAGE="https://github.com/vaeth/zram-init/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
@@ -19,12 +18,16 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-RDEPEND=">=app-shells/push-2.0
-	!<sys-apps/openrc-0.13"
+RDEPEND="
+	>=app-shells/push-2.0
+	!<sys-apps/openrc-0.13
+"
 
 DISABLE_AUTOFORMATTING="true"
-DOC_CONTENTS="To use zram, activate it in your kernel and add it to default runlevel:
-	rc-config add zram default
+
+DOC_CONTENTS="\
+To use zram, activate it in your kernel and add it to boot runlevel:
+	rc-config add zram-init boot
 If you use systemd enable zram_swap, tmp, and/or var_tmp with systemctl.
 You might need to modify /etc/modprobe.d/zram.conf"
 
