@@ -47,6 +47,11 @@ BDEPEND="
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
+
+PATCHES+=(
+	"${FILESDIR}/${PV}-revert-default-cpp_stdto17.patch"
+)
+
 src_prepare() {
 	default
 	use vala && vala_setup
