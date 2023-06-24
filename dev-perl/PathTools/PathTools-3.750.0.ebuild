@@ -9,14 +9,17 @@ inherit perl-module
 
 DESCRIPTION="Tools for working with directory and file names"
 
-LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64"
 
-RDEPEND="virtual/perl-Carp
-	virtual/perl-Scalar-List-Utils"
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker"
+RDEPEND="
+	virtual/perl-Carp
+	virtual/perl-Scalar-List-Utils
+"
+BDEPEND="
+	${RDEPEND}
+	virtual/perl-ExtUtils-MakeMaker
+"
 
 src_prepare() {
 	# calls open() on nonexistent dir, #590084
