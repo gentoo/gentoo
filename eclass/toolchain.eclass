@@ -569,7 +569,7 @@ toolchain_src_prepare() {
 	eapply_user
 
 	if ! use vanilla ; then
-		make_gcc_hard
+		tc_enable_hardened_gcc
 	fi
 
 	# Make sure the pkg-config files install into multilib dirs.
@@ -653,8 +653,8 @@ do_gcc_gentoo_patches() {
 }
 
 # configure to build with the hardened GCC specs as the default
-make_gcc_hard() {
-	local gcc_hard_flags=""
+tc_enable_hardened_gcc() {
+	local hardened_gcc_flags=""
 
 	if _tc_use_if_iuse pie ; then
 		einfo "Updating gcc to use automatic PIE building ..."
@@ -667,13 +667,13 @@ make_gcc_hard() {
 	if _tc_use_if_iuse default-stack-clash-protection ; then
 		# The define DEF_GENTOO_SCP is checked in 24_all_DEF_GENTOO_SCP-fstack-clash-protection.patch
 		einfo "Updating gcc to use automatic stack clash protection ..."
-		gcc_hard_flags+=" -DDEF_GENTOO_SCP"
+		hardened_gcc_flags+=" -DDEF_GENTOO_SCP"
 	fi
 
 	if _tc_use_if_iuse default-znow ; then
 		# The define DEF_GENTOO_ZNOW is checked in 23_all_DEF_GENTOO_ZNOW-z-now.patch
 		einfo "Updating gcc to request symbol resolution at start (-z now) ..."
-		gcc_hard_flags+=" -DDEF_GENTOO_ZNOW"
+		hardened_gcc_flags+=" -DDEF_GENTOO_ZNOW"
 	fi
 
 	if _tc_use_if_iuse hardened ; then
@@ -681,14 +681,14 @@ make_gcc_hard() {
 		# * -fstack-clash-protection
 		# * -z now
 		# See gcc *_all_extra-options.patch patches.
-		gcc_hard_flags+=" -DEXTRA_OPTIONS"
+		hardened_gcc_flags+=" -DEXTRA_OPTIONS"
 		# Default to -D_FORTIFY_SOURCE=3 instead of -D_FORTIFY_SOURCE=2
-		gcc_hard_flags+=" -DGENTOO_FORTIFY_SOURCE_LEVEL=3"
+		hardened_gcc_flags+=" -DGENTOO_FORTIFY_SOURCE_LEVEL=3"
 		# Add -D_GLIBCXX_ASSERTIONS
-		gcc_hard_flags+=" -DDEF_GENTOO_GLIBCXX_ASSERTIONS"
+		hardened_gcc_flags+=" -DDEF_GENTOO_GLIBCXX_ASSERTIONS"
 
 		if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux* ]] ; then
-			gcc_hard_flags+=" -DEXTRA_OPTIONS_CF"
+			hardened_gcc_flags+=" -DEXTRA_OPTIONS_CF"
 		fi
 
 		# Rebrand to make bug reports easier
@@ -706,7 +706,7 @@ make_gcc_hard() {
 		-i "${S}"/gcc/Makefile.in || die
 
 	sed -i \
-		-e "/^HARD_CFLAGS = /s|=|= ${gcc_hard_flags} |" \
+		-e "/^HARD_CFLAGS = /s|=|= ${hardened_gcc_flags} |" \
 		"${S}"/gcc/Makefile.in || die
 
 }
