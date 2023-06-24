@@ -11,7 +11,7 @@ SRC_URI="http://download.auto-multiple-choice.net/${PN}_${PV}_sources.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86"  # work in progress- dilfridge
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 LANGS="ar es fr ja"
@@ -26,6 +26,7 @@ COMMON_DEPEND="
 	app-text/texlive[cjk,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,publishers,l10n_zh]
 	app-text/poppler:=
 	dev-perl/XML-LibXML
+	media-fonts/ipaex
 	media-libs/netpbm
 	media-libs/opencv
 	l10n_fr? ( app-text/texlive[l10n_fr] )
@@ -91,4 +92,6 @@ src_compile() {
 
 src_install() {
 	default
+	mv -v "${ED}/usr/share/doc/${PV}"/* "${ED}/usr/share/doc/${PF}/" || die
+	rmdir -v "${ED}/usr/share/doc/${PV}" || die
 }
