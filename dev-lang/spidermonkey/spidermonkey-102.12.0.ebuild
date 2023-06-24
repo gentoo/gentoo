@@ -333,7 +333,7 @@ src_configure() {
 	fi
 
 	# LTO flag was handled via configure
-	filter-flags '-flto*'
+	filter-lto
 
 	# Use system's Python environment
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="none"
