@@ -8,10 +8,6 @@
 # NOTE: Please add your entry at the top!
 #
 
-# Fabian Groffen <grobian@gentoo.org> (2023-06-24)
-# installs libintl files while it shouldn't, #909041
-=sys-devel/gettext-0.22
-
 # Fabian Groffen <grobian@gentoo.org> (2020-08-02)
 # Python 2 is no longer supported
 # Recent Portage releases no longer supports Python 2, and the version
