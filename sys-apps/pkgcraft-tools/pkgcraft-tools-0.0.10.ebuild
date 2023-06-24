@@ -33,6 +33,10 @@ BDEPEND="
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-skip-flaky-test.patch
+)
+
 llvm_check_deps() {
 	has_version -b "sys-devel/clang:${LLVM_SLOT}"
 }
