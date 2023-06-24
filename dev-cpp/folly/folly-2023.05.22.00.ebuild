@@ -8,7 +8,7 @@ EAPI=8
 # dev-cpp/folly
 # dev-util/watchman
 
-inherit cmake toolchain-funcs
+inherit cmake
 
 DESCRIPTION="An open-source C++ library developed and used at Facebook"
 HOMEPAGE="https://github.com/facebook/folly"
