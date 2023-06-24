@@ -34,7 +34,7 @@ src_prepare() {
 multilib_src_configure() {
 	# Filter out -flto flags as they break getfacl/setfacl binaries
 	# bug #667372
-	filter-flags -flto*
+	filter-lto
 
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
