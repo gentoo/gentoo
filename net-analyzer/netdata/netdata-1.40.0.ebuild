@@ -49,6 +49,7 @@ RDEPEND="
 		dev-libs/openssl:=
 	)
 	dev-libs/libuv:=
+	dev-libs/libyaml
 	cloud? ( dev-libs/protobuf:= )
 	sys-libs/zlib
 	ipmi? ( sys-libs/freeipmi )
