@@ -116,7 +116,7 @@ python_test() {
 	done
 
 	local failed
-	DB_PORT2=$(( DB_PORT + 1 )) DB_PORT3=$(( DB_PORT + 2 )) esetup.py test || failed=1
+	esetup.py test || failed=1
 
 	mongod --dbpath "${dbpath}" --shutdown || die
 
