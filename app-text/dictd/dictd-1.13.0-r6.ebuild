@@ -54,6 +54,7 @@ PATCHES=(
 src_prepare() {
 	default
 
+	sed -i -e 's:configure.in:configure.ac:' Makefile.in || die
 	eautoreconf
 }
 
