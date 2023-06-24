@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">File-TreeCreate</remote-id>
+    <remote-id type="cpan-module">File::TreeCreate</remote-id>
+    <remote-id type="github">shlomif/perl-File-TreeCreate</remote-id>
+  </upstream>
 </pkgmetadata>
