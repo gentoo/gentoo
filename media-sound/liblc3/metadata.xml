@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>joakim.tjernlund@infinera.com</email>
+		<name>Joakim Tjernlund</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/google/liblc3/issues</bugs-to>
+		<changelog>https://github.com/google/liblc3/releases</changelog>
+		<doc>https://github.com/google/liblc3#readme</doc>
+		<remote-id type="github">google/liblc3</remote-id>
+	</upstream>
+	<use>
+		<flag name="tools">Enable extra tools</flag>
+	</use>
+</pkgmetadata>
