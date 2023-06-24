@@ -116,7 +116,7 @@ src_configure() {
 	xdg_environment_reset
 
 	# LTO compiler flags are handled by configure.py itself
-	filter-flags '-flto*'
+	filter-lto
 	# nodejs unconditionally links to libatomic #869992
 	# specifically it requires __atomic_is_lock_free which
 	# is not yet implemented by sys-libs/compiler-rt (see
