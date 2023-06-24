@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTENSIONS=(ext/augeas/extconf.rb)
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby bindings for Augeas"
-HOMEPAGE="http://augeas.net/"
+HOMEPAGE="https://augeas.net/"
 SRC_URI="http://download.augeas.net/ruby/${P}.gem"
 
 LICENSE="LGPL-2.1"
