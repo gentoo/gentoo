@@ -179,7 +179,7 @@ acct-group_pkg_preinst() {
 	fi
 
 	elog "Adding group ${ACCT_GROUP_NAME}"
-	groupadd "${opts[@]}" "${ACCT_GROUP_NAME}" || die
+	groupadd "${opts[@]}" "${ACCT_GROUP_NAME}" || die "groupadd failed with status $?"
 }
 
 fi
