@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-MY_COMMIT="111f6f2f0dd8de7c2f669eb4d784a0d9e9f124f9"
+MY_COMMIT="e9daf03769d8408719c1b420a133155cb700b9a2"
 
 # Games under Gentoo are marked as 'testing' by convention
 #
@@ -167,10 +167,6 @@ BDEPEND="virtual/pkgconfig"
 # rebuild, the master flag USE=music controls whether sdl-mixer is used,
 # and therefore requires a rebuild when changed.
 #IUSE_RUNTIME="flac l10n_de midi mp3 opl3-musicpack sc55-musicpack vorbis"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-sdl12-compat.patch
-)
 
 dxx_scons() {
 	# Always build profile `m`.  If use editor, also build profile `e`.
