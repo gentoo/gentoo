@@ -34,9 +34,10 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (2023-06-25)
-# Impossible to legally obtain the native full game now. It freezes on keyboard
-# input, is incompatible with PipeWire, and requires gamescope to display under
-# Wayland. In short, it's a lost cause. Removal in 30 days. Bug #436140.
+# Impossible to legally obtain the original native full game now. It freezes on
+# keyboard input, is incompatible with PipeWire, and requires gamescope to work
+# under Wayland. In short, it's a lost cause. Removal in 30 days. Bug #436140.
+# There is a modern SDL2-based port, but it is only available from Steam.
 games-action/descent3
 games-action/descent3-demo
 
