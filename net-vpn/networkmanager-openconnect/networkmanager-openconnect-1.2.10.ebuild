@@ -5,7 +5,7 @@ EAPI=8
 
 GNOME_ORG_MODULE="NetworkManager-${PN##*-}"
 
-inherit gnome2
+inherit gnome2 autotools
 
 DESCRIPTION="NetworkManager OpenConnect plugin"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager https://gitlab.gnome.org/GNOME/NetworkManager-openconnect"
@@ -51,6 +51,7 @@ PATCHES+=(
 )
 
 src_configure() {
+	eautoreconf
 	local myconf=(
 	gnome2_src_configure
 		--disable-more-warnings
