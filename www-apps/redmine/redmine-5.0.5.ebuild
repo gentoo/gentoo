@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby30 ruby31"
 inherit depend.apache ruby-ng
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
