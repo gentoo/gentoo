@@ -11,13 +11,9 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 # sets a different SLOT for cross-building
 RDEPEND="
 	!prefix-guest? (
-		|| (
 			kernel_linux? ( sys-kernel/linux-headers:0 )
-			kernel_Winnt? (
-				elibc_mingw? ( dev-util/mingw64-runtime )
-			)
-		)
 	)
 	prefix-guest? (
 		!sys-kernel/linux-headers
-	)"
+	)
+"
