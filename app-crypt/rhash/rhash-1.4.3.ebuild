@@ -81,7 +81,7 @@ multilib_src_install() {
 	emake DESTDIR="${D}" -j1 \
 		install{,-lib-headers,-pkg-config} \
 		$(multilib_is_native_abi && use nls && echo install-gmo) \
-		$(use kernel_Winnt || echo install-lib-so-link)
+		install-lib-so-link
 }
 
 multilib_src_test() {
