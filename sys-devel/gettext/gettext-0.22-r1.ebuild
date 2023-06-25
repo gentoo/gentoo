@@ -67,7 +67,6 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.22-disable-libintl.patch
 	"${FILESDIR}"/${PN}-0.21-CVE-2020-12825.patch
 )
 
@@ -153,6 +152,9 @@ multilib_src_install() {
 		dosym msgfmt /usr/bin/gmsgfmt # bug #43435
 		dobin gettext-tools/misc/gettextize
 	fi
+
+	# 909041 never install libintl which upstream insists on building
+	rm -f "${ED}"/usr/$(get_libdir)/libintl.*
 }
 
 multilib_src_install_all() {
