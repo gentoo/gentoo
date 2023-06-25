@@ -34,7 +34,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	cdda? ( dev-libs/libcdio-paranoia )
 	cddb? ( media-libs/libcddb )
-	ffmpeg? ( <media-video/ffmpeg-5:= )
+	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac:= )
 	ifp? ( media-libs/libifp )
 	jack? ( virtual/jack )
