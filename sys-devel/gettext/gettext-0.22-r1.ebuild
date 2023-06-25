@@ -154,7 +154,7 @@ multilib_src_install() {
 	fi
 
 	# 909041 never install libintl which upstream insists on building
-	rm -f "${ED}"/usr/$(get_libdir)/libintl.*
+	rm -f "${ED}"/usr/$(get_libdir)/libintl.* "${ED}"/usr/include/libintl.h
 }
 
 multilib_src_install_all() {
