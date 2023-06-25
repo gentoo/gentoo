@@ -362,7 +362,7 @@ acct-user_pkg_preinst() {
 		fi
 
 		elog "Adding user ${ACCT_USER_NAME}"
-		useradd "${opts[@]}" "${ACCT_USER_NAME}" || die
+		useradd "${opts[@]}" "${ACCT_USER_NAME}" || die "useradd failed with status ${?}"
 		_ACCT_USER_ADDED=1
 	fi
 
@@ -454,7 +454,7 @@ acct-user_pkg_postinst() {
 			eerror "  usermod ${optsq[*]} ${ACCT_USER_NAME}"
 		else
 			eerror "$(<"${T}/usermod-error.log")"
-			die "usermod failed"
+			die "usermod failed with status ${status}"
 		fi
 	fi
 }
@@ -502,7 +502,7 @@ acct-user_pkg_prerm() {
 	fi
 
 	elog "Locking user ${ACCT_USER_NAME}"
-	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die
+	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die "usermod failed with status ${?}"
 }
 
 fi
