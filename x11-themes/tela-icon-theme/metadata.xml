@@ -25,7 +25,30 @@
 		<flag name="kde">Install dynamic color version for KDE plasma (folder color follows the colorscheme)</flag>
 		<flag name="hardlink">Hardlink duplicate icons to greatly reduce installation size</flag>
 	</use>
+	<use lang="fr">
+		<flag name="standard">Installer la variante de couleur des dossiers standard</flag>
+		<flag name="black">Installer la variante de couleur des dossiers noire</flag>
+		<flag name="blue">Installer la variante de couleur des dossiers bleue</flag>
+		<flag name="brown">Installer la variante de couleur des dossiers marron</flag>
+		<flag name="green">Installer la variante de couleur des dossiers verte</flag>
+		<flag name="grey">Installer la variante de couleur des dossiers grise</flag>
+		<flag name="orange">Installer la variante de couleur des dossiers orange</flag>
+		<flag name="pink">Installer la variante de couleur des dossiers rose</flag>
+		<flag name="purple">Installer la variante de couleur des dossiers violette</flag>
+		<flag name="red">Installer la variante de couleur des dossiers rouge</flag>
+		<flag name="yellow">Installer la variante de couleur des dossiers jaune</flag>
+		<flag name="manjaro">Installer la variante de couleur des dossiers spécifique à Manjaro</flag>
+		<flag name="ubuntu">Installer la variante de couleur des dossiers spécifique à Ubuntu</flag>
+		<flag name="dracula">Installer la variante de couleur des dossiers spécifique à Dracula</flag>
+		<flag name="nord">Installer la variante de couleur des dossiers « nord »</flag>
+		<flag name="kde">Installer la variante de couleur dynamique pour KDE Plasma (la couleur des dossiers suit le thème de couleur)</flag>
+		<flag name="hardlink">Créer des liens durs pour les icônes doublons afin de grandement réduire la taille à l'installation</flag>
+	</use>
 	<upstream>
+		<maintainer status="active">
+			<name>Vince</name>
+			<email>vinceliuice@hotmail.com</email>
+		</maintainer>
 		<bugs-to>https://github.com/vinceliuice/Tela-icon-theme/issues</bugs-to>
 		<remote-id type="github">vinceliuice/Tela-icon-theme</remote-id>
 	</upstream>
