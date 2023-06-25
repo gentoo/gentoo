@@ -185,7 +185,7 @@ src_configure() {
 		--datadir="${EPREFIX}"/usr/share/openssh
 		--with-privsep-path="${EPREFIX}"/var/empty
 		--with-privsep-user=sshd
-		--enable-hardening
+		--with-hardening
 		$(use_with audit audit linux)
 		$(use_with kerberos kerberos5 "${EPREFIX}"/usr)
 		$(use_with ldns)
