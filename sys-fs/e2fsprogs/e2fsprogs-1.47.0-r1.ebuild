@@ -68,8 +68,8 @@ multilib_src_configure() {
 	# Keep the package from doing silly things, bug #261411
 	export VARTEXFONTS="${T}/fonts"
 
-	# Needs open64() prototypes and friends
-	append-cppflags -D_GNU_SOURCE
+	# needed for >=musl-1.2.4, bug 908892
+	use elibc_musl && append-cflags -D_FILE_OFFSET_BITS=64
 
 	local myeconfargs=(
 		--with-root-prefix="${EPREFIX}"
@@ -85,9 +85,11 @@ multilib_src_configure() {
 		--disable-fsck
 		--disable-uuidd
 		--disable-lto
-		--disable-largefile # need to check effect on ABI
 		--with-pthread
 	)
+
+	# need to check effect on ABI (???)
+	use elibc_glibc && myeconfargs+=( --disable-largefile )
 
 	# We use blkid/uuid from util-linux now
 	if use kernel_linux ; then
