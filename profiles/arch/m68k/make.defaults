@@ -18,6 +18,3 @@ DEFAULT_ABI="m68k"
 MULTILIB_ABIS="m68k"
 LIBDIR_m68k="lib"
 CHOST_m68k="${CHOST}"
-
-# Disable sandbox on this architecture
-FEATURES="-sandbox"
