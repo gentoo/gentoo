@@ -71,7 +71,10 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
-	test? ( app-arch/xz-utils[extra-filters(+)] )
+	test? (
+		app-arch/xz-utils[extra-filters(+)]
+		dev-python/ensurepip-wheels
+	)
 	valgrind? ( dev-util/valgrind )
 "
 # autoconf-archive needed to eautoreconf
