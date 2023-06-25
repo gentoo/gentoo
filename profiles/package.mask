@@ -299,14 +299,6 @@ dev-python/http-parser
 # Bugs 880573, 864157, 885471, 870454, 884571
 sys-libs/libbacktrace
 
-# Fabian Groffen <grobian@gentoo.org> (2023-05-26)
-# Cygwin package for which keyword/profile support was dropped
-# Removal on 2023-06-25.  Bug #907194.
-app-admin/cygwin-rebase
-dev-libs/pthreads4w
-sys-devel/parity
-sys-libs/cygwin-crypt
-
 # Sam James <sam@gentoo.org> (2023-05-24)
 # Breaks building C++ consumers at least: bug #906755, bug #906879, bug #906957.
 # Please upgrade to >=0.5.1.
