@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/kra-mo/${PN}.git"
 else
-	SRC_URI="https://github.com/kra-mo/${PN}/archive/${PV}.tar.gz
+	SRC_URI="https://github.com/kra-mo/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
