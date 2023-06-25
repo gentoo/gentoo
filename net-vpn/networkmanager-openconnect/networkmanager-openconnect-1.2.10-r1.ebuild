@@ -3,6 +3,7 @@
 
 EAPI=8
 
+GNOME2_EAUTORECONF=yes
 GNOME_ORG_MODULE="NetworkManager-${PN##*-}"
 
 inherit gnome2
@@ -46,13 +47,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES+=(
+PATCHES=(
 	"${FILESDIR}"/${P}-check-webkit-if-gtk.patch
 )
 
 src_configure() {
 	local myconf=(
-	gnome2_src_configure
 		--disable-more-warnings
 		--disable-static
 		--without-libnm-glib
@@ -60,5 +60,6 @@ src_configure() {
 		$(use_with gtk authdlg)
 		$(use_with gtk gtk4)
 	)
-	econf "${myconf[@]}"
+
+	gnome2_src_configure "${myconf[@]}"
 }
