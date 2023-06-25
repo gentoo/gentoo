@@ -46,6 +46,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/rexml
 	dev-ruby/sqlite3
 	dev-ruby/webmock
+	dev-ruby/rails
 )"
 
 all_ruby_prepare() {
