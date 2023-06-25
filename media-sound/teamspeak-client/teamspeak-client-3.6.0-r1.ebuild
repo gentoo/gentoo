@@ -9,15 +9,12 @@ inherit desktop toolchain-funcs unpacker xdg
 
 DESCRIPTION="A client software for quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
-SRC_URI="
-	amd64? ( https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_amd64-${MY_PV}.run )
-	x86? ( https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_x86-${MY_PV}.run )
-"
+SRC_URI="https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_amd64-${MY_PV}.run"
 S="${WORKDIR}"
 
 LICENSE="teamspeak3 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="3"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="+alsa pulseaudio system-libcxx +system-quazip"
 
 REQUIRED_USE="|| ( alsa pulseaudio )"
@@ -25,8 +22,7 @@ RESTRICT="bindist mirror"
 
 BDEPEND=">=dev-util/patchelf-0.10"
 RDEPEND="
-	app-arch/snappy
-	dev-libs/openssl:0
+	dev-libs/glib:2
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[accessibility,dbus,X(-)]
 	dev-qt/qtnetwork:5
@@ -36,11 +32,9 @@ RDEPEND="
 	dev-qt/qtwebengine:5[geolocation(+),widgets]
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
-	net-libs/libsrtp:0
-	sys-libs/zlib:0/1
-	virtual/udev
+	sys-libs/libunwind
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio-daemon )
+	pulseaudio? ( media-libs/libpulse )
 	system-libcxx? ( sys-libs/libcxx[libcxxabi] )
 	system-quazip? ( dev-libs/quazip:0/1[qt5(+)] )
 "
@@ -48,6 +42,7 @@ RDEPEND="
 QA_PREBUILT="
 	opt/teamspeak3-client/libc++.so.1
 	opt/teamspeak3-client/libc++abi.so.1
+	opt/teamspeak3-client/libquazip.so
 	opt/teamspeak3-client/error_report
 	opt/teamspeak3-client/package_inst
 	opt/teamspeak3-client/soundbackends/libalsa_linux_*.so
@@ -81,6 +76,13 @@ src_prepare() {
 			patchelf --replace-needed libquazip.so "${quazip_so}" "${soname_file}" || die
 		done
 	fi
+
+	# Fixes QA Notice: Unresolved soname dependencies.
+	# Since this is a binary only package, it must be patched.
+	local soname_files=( "libc++abi.so.1" "libc++.so.1" )
+	for soname_file in ${soname_files[@]}; do
+		patchelf --replace-needed libunwind.so.1 libunwind.so.8 "${soname_file}" || die
+	done
 
 	tc-export CXX
 }
