@@ -141,7 +141,7 @@ src_configure() {
 	# In cases where the C library doesn't support wide characters, readline
 	# itself won't work correctly, so forcing the answer below should be OK.
 	if tc-is-cross-compiler ; then
-		use kernel_Winnt || export bash_cv_func_sigsetjmp='present'
+		export bash_cv_func_sigsetjmp='present'
 		export bash_cv_func_ctype_nonascii='yes'
 		export bash_cv_wcwidth_broken='no' #503312
 	fi
