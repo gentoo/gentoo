@@ -44,8 +44,6 @@ multilib_src_configure() {
 	local itc_type
 	if use eventfd ; then
 		itc_type="eventfd"
-	elif use kernel_Winnt ; then
-		itc_type="socketpair"
 	else
 		itc_type="pipe"
 	fi
