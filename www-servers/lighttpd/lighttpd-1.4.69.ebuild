@@ -72,6 +72,10 @@ BDEPEND="
 	test? ( virtual/perl-Test-Harness )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.69-fix-meson-typo.patch
+)
+
 # update certain parts of lighttpd.conf based on conditionals
 update_config() {
 	local config="${ED}/etc/lighttpd/lighttpd.conf"
