@@ -8,7 +8,7 @@
 IUSE_IMPLICIT="prefix prefix-guest prefix-stack"
 USE_EXPAND_IMPLICIT="ELIBC KERNEL"
 USE_EXPAND_VALUES_ELIBC="bionic Darwin glibc mingw musl SunOS"
-USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS Winnt"
+USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@lists.gentoo.org.
