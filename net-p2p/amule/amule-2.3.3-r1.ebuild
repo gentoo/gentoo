@@ -4,7 +4,7 @@
 EAPI=8
 WX_GTK_VER="3.0-gtk3"
 
-inherit flag-o-matic wxwidgets xdg-utils
+inherit autotools flag-o-matic wxwidgets xdg-utils
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/amule-project/amule"
@@ -52,6 +52,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
 	"${FILESDIR}/${PN}-2.3.3-fix-exception.patch"
+	"${FILESDIR}/${P}-autoconf-2.70.patch"
 )
 
 pkg_setup() {
