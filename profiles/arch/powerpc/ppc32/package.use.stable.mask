@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-06-25)
+# Destabilizing ppc keywords on net-libs/webkit-gtk
+app-text/libgepub webkit
+dev-python/wxpython webkit
+dev-util/glade webkit
+mail-client/claws-mail webkit
+x11-libs/wxGTK webkit
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-06-02)
 # Destabilizing ppc keywords on sci-*/* packages
 dev-perl/PDL gsl
