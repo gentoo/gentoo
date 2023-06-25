@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES="${FILESDIR}/${PN}-1.3.239-r2-Build-shared-libs.patch"
+PATCHES="${FILESDIR}/${PN}-1.3.250-Build-shared-libs.patch"
 
 multilib_src_configure() {
 	local mycmakeargs=(
