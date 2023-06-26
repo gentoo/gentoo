@@ -86,10 +86,8 @@ multilib_src_configure() {
 		--disable-uuidd
 		--disable-lto
 		--with-pthread
+		--enable-largefile
 	)
-
-	# need to check effect on ABI (???)
-	use elibc_glibc && myeconfargs+=( --disable-largefile )
 
 	# We use blkid/uuid from util-linux now
 	if use kernel_linux ; then
