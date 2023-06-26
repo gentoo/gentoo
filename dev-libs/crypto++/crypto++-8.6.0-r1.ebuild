@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/crypto++.asc
-inherit toolchain-funcs verify-sig
+inherit flag-o-matic toolchain-funcs verify-sig
 
 DESCRIPTION="C++ class library of cryptographic schemes"
 HOMEPAGE="https://cryptopp.com"
@@ -52,6 +52,14 @@ src_configure() {
 	export LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 	export PREFIX="${EPREFIX}/usr"
 	tc-export AR RANLIB
+
+	# Long history of correctness bugs:
+	# https://github.com/weidai11/cryptopp/issues/1134
+	# https://github.com/weidai11/cryptopp/issues/1141
+	# https://github.com/weidai11/cryptopp/pull/1147
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	default
 }
 
