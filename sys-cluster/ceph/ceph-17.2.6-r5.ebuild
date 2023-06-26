@@ -48,7 +48,6 @@ DEPEND="
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
-	dev-libs/crypto++:=
 	dev-cpp/gflags:=
 	dev-lang/jsonnet:=
 	dev-libs/libaio:=

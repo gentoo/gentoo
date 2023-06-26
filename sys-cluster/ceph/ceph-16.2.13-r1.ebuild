@@ -44,7 +44,6 @@ DEPEND="
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
-	dev-libs/crypto++:=
 	dev-cpp/gflags:=
 	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
