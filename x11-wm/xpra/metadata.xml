@@ -25,7 +25,6 @@
 	<flag name="html">Install the HTML5 client</flag>
 	<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
 	<flag name="oauth">Enable OAuth2 authentication in the server</flag>
-	<flag name="pillow">Enable pillow support</flag>
 	<flag name="pinentry">Use <pkg>app-crypt/pinentry</pkg> for password entry</flag>
 	<flag name="trayicon">Enable system tray icon</flag>
 	<flag name="server">Build server-side code</flag>

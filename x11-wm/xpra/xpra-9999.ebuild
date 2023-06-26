@@ -22,7 +22,7 @@ DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based o
 HOMEPAGE="https://xpra.org/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE="brotli +client +clipboard crypt csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal oauth opengl pillow pinentry pulseaudio +server sound systemd test +trayicon udev vpx webcam webp xdg xinerama"
+IUSE="brotli +client +clipboard crypt csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal oauth opengl pinentry pulseaudio +server sound systemd test +trayicon udev vpx webcam webp xdg xinerama"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
@@ -35,7 +35,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 TEST_DEPEND="
 	$(python_gen_cond_dep '
 		dev-python/netifaces[${PYTHON_USEDEP}]
-		dev-python/pillow[jpeg?,${PYTHON_USEDEP}]
+		dev-python/pillow[jpeg?,webp?,${PYTHON_USEDEP}]
 		dev-python/rencode[${PYTHON_USEDEP}]
 		dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 		xdg? ( dev-python/pyxdg[${PYTHON_USEDEP}] )

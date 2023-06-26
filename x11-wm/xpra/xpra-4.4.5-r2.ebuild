@@ -22,7 +22,7 @@ DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based o
 HOMEPAGE="https://xpra.org/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE="brotli +client +clipboard crypt csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal oauth opengl pillow pinentry pulseaudio +server sound systemd test +trayicon udev vpx webcam webp xdg xinerama"
+IUSE="brotli +client +clipboard crypt csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal oauth opengl pinentry pulseaudio +server sound systemd test +trayicon udev vpx webcam webp xdg xinerama"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
