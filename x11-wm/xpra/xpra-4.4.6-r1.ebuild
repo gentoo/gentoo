@@ -16,7 +16,7 @@ DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_EXT=1
 
-inherit xdg xdg-utils distutils-r1 tmpfiles udev
+inherit xdg xdg-utils distutils-r1 prefix tmpfiles udev
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="https://xpra.org/"
@@ -123,9 +123,7 @@ PATCHES=(
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# FIXME: There are hardcoded paths all over the place but the following
-	# double-prefixes some files under /etc. Looks tricky to fix. :(
-	#hprefixify $(find -type f \( -name "*.py" -o -name "*.conf" \))
+	hprefixify xpra/scripts/config.py
 
 	sed -r -e "/\bdoc_dir =/s:/${PN}/\":/${PF}/html\":" \
 		-i setup.py || die
