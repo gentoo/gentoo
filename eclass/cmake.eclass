@@ -293,6 +293,15 @@ _cmake_check_build_dir() {
 		BUILD_DIR="${CMAKE_USE_DIR}"
 	else
 		: "${BUILD_DIR:=${CMAKE_USE_DIR}_build}"
+
+		# Avoid creating ${WORKDIR}_build (which is above WORKDIR).
+		# TODO: For EAPI > 8, we should ban S=WORKDIR for CMake.
+		# See bug #889420.
+		if [[ ${S} == "${WORKDIR}" && ${BUILD_DIR} == "${WORKDIR}_build" ]] ; then
+			eqawarn "QA notice: S=WORKDIR is deprecated for cmake.eclass."
+			eqawarn "Please relocate the sources in src_unpack."
+			BUILD_DIR="${WORKDIR}"/${P}_build
+		fi
 	fi
 
 	einfo "Source directory (CMAKE_USE_DIR): \"${CMAKE_USE_DIR}\""
