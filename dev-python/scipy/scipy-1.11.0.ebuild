@@ -86,10 +86,10 @@ src_unpack() {
 }
 
 python_configure_all() {
-	export SCIPY_USE_PYTHRAN=$(usex fortran 1 0)
 	DISTUTILS_ARGS=(
 		-Dblas=blas
 		-Dlapack=lapack
+		-Duse-pythran=$(usex fortran true false)
 	)
 }
 
