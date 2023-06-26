@@ -180,11 +180,15 @@ src_unpack() {
 		EGIT_CHECKOUT_DIR=${WORKDIR}/${P}
 		git-r3_src_unpack
 
-		EGIT_COMMIT=$(<"${EGIT_CHECKOUT_DIR}"/staging/upstream-commit) || die
-		EGIT_REPO_URI=${WINE_EGIT_REPO_URI}
-		EGIT_CHECKOUT_DIR=${S}
-		einfo "Fetching Wine commit matching the current patchset by default (${EGIT_COMMIT})"
-		git-r3_src_unpack
+		# hack: use subshell to preserve state (including what git-r3 unpack
+		# sets) for smart-live-rebuild as this is not the repo to look at
+		(
+			EGIT_COMMIT=$(<"${EGIT_CHECKOUT_DIR}"/staging/upstream-commit) || die
+			EGIT_REPO_URI=${WINE_EGIT_REPO_URI}
+			EGIT_CHECKOUT_DIR=${S}
+			einfo "Fetching Wine commit matching the current patchset by default (${EGIT_COMMIT})"
+			git-r3_src_unpack
+		)
 	else
 		default
 	fi
@@ -194,7 +198,6 @@ src_prepare() {
 	local patchinstallargs=(
 		--all
 		--no-autoconf
-		-W winemenubuilder-Desktop_Icon_Path #652176
 		${MY_WINE_STAGING_CONF}
 	)
 
@@ -311,6 +314,11 @@ src_configure() {
 			: "${CROSSCFLAGS:=$(
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
+				# -mavx with mingw-gcc has a history of obscure issues and
+				# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+				# crashes with -march=skylake >=wine-8.10, similar issues with
+				# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+				append-cflags -mno-avx
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
 			: "${CROSSLDFLAGS:=$(
 				filter-flags '-fuse-ld=*'
