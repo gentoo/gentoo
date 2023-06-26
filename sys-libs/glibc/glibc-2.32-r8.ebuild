@@ -384,12 +384,12 @@ setup_flags() {
 		# relating to failed builds, we strip most CFLAGS out to ensure as few
 		# problems as possible.
 		strip-flags
-		filter-lto
 		# Lock glibc at -O2; we want to be conservative here.
 		filter-flags '-O?'
 		append-flags -O2
 	fi
 	strip-unsupported-flags
+	filter-lto
 	filter-flags -m32 -m64 '-mabi=*'
 
 	# glibc aborts if rpath is set by LDFLAGS
