@@ -5,11 +5,11 @@ EAPI=7
 
 inherit autotools flag-o-matic
 
-DESCRIPTION="A package of programs that fit together to form a morse code tutor program"
-HOMEPAGE="http://unixcw.sourceforge.net"
+DESCRIPTION="Collection of programs that fit together to form a morse code tutor program"
+HOMEPAGE="https://unixcw.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc x86"
 IUSE="alsa ncurses pulseaudio suid test qt5"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	append-cflags -std=gnu11
 	append-cxxflags -std=gnu++11
-	eapply -p0 "${FILESDIR}"/$PN-3.6-tinfo.patch
+	eapply -p0 "${FILESDIR}"/${PN}-3.6-tinfo.patch
 	# Bug# 837617 and 858278
 	sed -i -e "s/curses, initscr/ncurses, initscr/" \
 		-e "s/_curses_initscr/_ncurses_initscr/" configure.ac || die
