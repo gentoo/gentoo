@@ -3,6 +3,11 @@
 
 EAPI=8
 
+# Please bump the following packages together:
+# dev-util/lttng-modules
+# dev-util/lttng-tools
+# dev-util/lttng-ust
+
 inherit linux-mod-r1
 
 MY_P="${P/_rc/-rc}"
