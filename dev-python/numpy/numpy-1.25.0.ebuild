@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 FORTRAN_NEEDED=lapack
 
@@ -52,6 +52,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.25.0_rc1-meson-pyproject.toml.patch
+	"${FILESDIR}"/${PN}-1.25.0-skip-python3.12-irrelevant-tests.patch
 )
 
 distutils_enable_tests pytest
