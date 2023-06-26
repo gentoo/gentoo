@@ -29,7 +29,7 @@ else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
