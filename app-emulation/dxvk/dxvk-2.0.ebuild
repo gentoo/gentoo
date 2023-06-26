@@ -82,8 +82,10 @@ src_prepare() {
 src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
-	# AVX has a history of causing issues with this package, disable for safety
-	# https://github.com/Tk-Glitch/PKGBUILDS/issues/515
+	# -mavx with mingw-gcc has a history of obscure issues and
+	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+	# crashes with -march=skylake >=wine-8.10, similar issues with
+	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
 	append-flags -mno-avx
 
 	if [[ ${CHOST} != *-mingw* ]]; then
