@@ -12,11 +12,11 @@ else
 fi
 
 PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=yes
-DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_EXT=1
 
-inherit xdg xdg-utils distutils-r1 prefix tmpfiles udev
+inherit xdg xdg-utils distutils-r1 multibuild prefix tmpfiles udev
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="https://xpra.org/"
@@ -192,6 +192,14 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_prepare_all
+
+	# Switching to PEP517 gives /usr/etc. Previously, setup.py hardcodes
+	# if root_prefix.endswith("/usr"):
+	#     root_prefix = root_prefix[:-4]
+	# But now setuptools uses data/* to represent out-of-sitedir files.
+	# The upstream hack no longer works. We are on our own.
+
+	mv -v "${ED}"/usr/etc "${ED}"/ || die
 
 	# Move udev dir to the right place if necessary.
 	if use udev; then
