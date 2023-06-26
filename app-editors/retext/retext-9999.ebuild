@@ -61,8 +61,6 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "dictionary support" dev-python/pyenchant
-	# See https://bugs.gentoo.org/772197.
-	optfeature "rendering with webengine" dev-python/PyQt6-WebEngine
 
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."
