@@ -25,7 +25,7 @@ RDEPEND="gnome-extra/zenity
 	heif? ( >=media-libs/libheif-1.3.2 )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.0:2= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	jpegxl? ( >=media-libs/libjxl-0.3.7 )
+	jpegxl? ( >=media-libs/libjxl-0.3.7:= )
 	lcms? ( media-libs/lcms:2 )
 	lua? ( ${LUA_DEPS} )
 	map? ( media-libs/clutter-gtk
