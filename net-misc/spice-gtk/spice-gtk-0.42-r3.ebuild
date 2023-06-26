@@ -89,6 +89,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.42-libtool-export-symbols-fix.patch"
+)
+
 python_check_deps() {
 	python_has_version "dev-python/six[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pyparsing[${PYTHON_USEDEP}]"

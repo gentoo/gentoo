@@ -1,0 +1,66 @@
+Bug: https://bugs.gentoo.org/902853
+Bug: https://bugs.gentoo.org/888705
+Upstream: https://gitlab.freedesktop.org/spice/spice-gtk/-/merge_requests/119
+Upstream Bug: https://gitlab.freedesktop.org/spice/spice-gtk/-/issues/169
+
+From 1511f0ad5ea67b4657540c631e3a8c959bb8d578 Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <freddy77@gmail.com>
+Date: Wed, 21 Jun 2023 18:43:59 +0100
+Subject: [PATCH] Do not use libtool -export-symbols option
+
+This option is intended for libtool, not for any linker.
+Check the support of --version-script option using an empty
+list of symbols to catch some faulty linker supporting that
+option but not allowing not existing symbols (some buggy mold
+versions).
+
+Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -181,14 +181,19 @@ endif
+ #
+ 
+ # version-script
++test_syms_path = meson.current_source_dir() / 'test-map-file'
++test_version_script = '-Wl,--version-script=@0@'.format(test_syms_path)
++spice_has_version_script = compiler.has_link_argument(test_version_script)
++
+ spice_client_glib_syms = files('map-file')
+ spice_client_glib_syms_path = meson.current_source_dir() / 'map-file'
+ spice_gtk_version_script = '-Wl,--version-script=@0@'.format(spice_client_glib_syms_path)
+-spice_gtk_has_version_script = compiler.has_link_argument(spice_gtk_version_script)
+-if not spice_gtk_has_version_script
+-  spice_client_glib_syms = files('spice-glib-sym-file')
+-  spice_client_glib_syms_path = meson.current_source_dir() / 'spice-glib-sym-file'
+-  spice_gtk_version_script = ['-export-symbols', spice_client_glib_syms_path]
++if not spice_has_version_script
++  if host_machine.system() == 'linux'
++    error('Version scripts should be supported on Linux')
++  endif
++  spice_client_glib_syms = []
++  spice_gtk_version_script = []
+ endif
+ 
+ # soversion
+@@ -373,11 +378,6 @@ if spice_gtk_has_gtk
+   # libspice-client-gtk.so
+   #
+   spice_client_gtk_syms = spice_client_glib_syms
+-  if not spice_gtk_has_version_script
+-    spice_client_gtk_syms = files('spice-gtk-sym-file')
+-    spice_client_gtk_syms_path = meson.current_source_dir() / 'spice-gtk-sym-file'
+-    spice_gtk_version_script = ['-export-symbols', spice_client_gtk_syms_path]
+-  endif
+ 
+   # soversion
+   # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
+--- /dev/null
++++ b/src/test-map-file
+@@ -0,0 +1,4 @@
++TEST_LIB {
++local:
++*;
++};
+-- 
+GitLab
+
