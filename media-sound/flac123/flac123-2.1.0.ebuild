@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	dev-libs/popt
-	media-libs/flac:=
+	media-libs/flac:=[ogg]
 	media-libs/libao"
 DEPEND="${RDEPEND}"
 
