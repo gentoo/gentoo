@@ -62,6 +62,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.26.3-gettext-0.22-fix.patch
+)
+
 src_configure() {
 	mate_src_configure \
 		--libexecdir="${EPREFIX}"/usr/libexec/mate-applets \
