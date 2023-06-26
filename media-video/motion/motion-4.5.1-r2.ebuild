@@ -8,6 +8,7 @@ inherit autotools readme.gentoo-r1 systemd
 DESCRIPTION="A software motion detector"
 HOMEPAGE="https://motion-project.github.io"
 SRC_URI="https://github.com/Motion-Project/${PN}/archive/release-${PV}.tar.gz -> ${PN}-release-${PV}.tar.gz"
+S="${WORKDIR}/${PN}-release-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -34,6 +35,9 @@ DEPEND="${RDEPEND}
 		virtual/os-headers
 	)
 "
+
+PATCHES=( "${FILESDIR}"/${P}-fix-gettext-0.22-format-specifier.patch )
+
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
 You need to setup a configuraton file (/etc/motion/motion.conf) before
@@ -50,8 +54,6 @@ To install motion as a service, use:
 - rc-update add motion default # with OpenRC
 - systemctl enable motion.service # with systemd
 "
-
-S="${WORKDIR}"/${PN}-release-${PV}
 
 src_prepare() {
 	default
