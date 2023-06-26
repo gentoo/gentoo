@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ioquatix/fiber-annotation/archive/refs/tags/v${PV}.t
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 all_ruby_prepare() {
