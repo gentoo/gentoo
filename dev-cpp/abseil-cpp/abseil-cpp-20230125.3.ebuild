@@ -14,15 +14,18 @@ SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0/${PV%%.*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="test"
+IUSE="test-helpers test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-cpp/gtest-1.13.0
-	test? ( sys-libs/timezone-data )
+	test-helpers? ( >=dev-cpp/gtest-1.13.0 )
+	test? (
+		sys-libs/timezone-data
+		>=dev-cpp/gtest-1.13.0
+	)
 "
 
 RESTRICT="!test? ( test )"
@@ -47,9 +50,9 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_CXX_STANDARD=17
 		-DABSL_ENABLE_INSTALL=TRUE
-		-DABSL_USE_EXTERNAL_GOOGLETEST=ON
+		-DABSL_USE_EXTERNAL_GOOGLETEST=$(usex test ON $(usex test-helpers ON OFF))
 		-DABSL_PROPAGATE_CXX_STD=TRUE
-		-DABSL_BUILD_TEST_HELPERS=ON
+		-DABSL_BUILD_TEST_HELPERS=$(usex test-helpers ON OFF)
 		-DABSL_BUILD_TESTING=$(usex test ON OFF)
 		$(usex test -DBUILD_TESTING=ON '') # intentional usex, it used both variables for tests.
 	)
