@@ -53,6 +53,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.25.0_rc1-meson-pyproject.toml.patch
 	"${FILESDIR}"/${PN}-1.25.0-skip-python3.12-irrelevant-tests.patch
+	"${FILESDIR}"/${PN}-1.25.0-fix-long-double-check.patch
 )
 
 distutils_enable_tests pytest
