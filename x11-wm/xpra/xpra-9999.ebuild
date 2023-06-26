@@ -12,11 +12,11 @@ else
 fi
 
 PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=yes
-DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_EXT=1
 
-inherit xdg xdg-utils distutils-r1 tmpfiles udev
+inherit xdg xdg-utils distutils-r1 multibuild prefix tmpfiles udev
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="https://xpra.org/"
@@ -118,15 +118,12 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-xdummy.patch
-	"${FILESDIR}"/${PN}-9999-tests.patch
 )
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# FIXME: There are hardcoded paths all over the place but the following
-	# double-prefixes some files under /etc. Looks tricky to fix. :(
-	#hprefixify $(find -type f \( -name "*.py" -o -name "*.conf" \))
+	hprefixify xpra/scripts/config.py
 
 	sed -r -e "/\bdoc_dir =/s:/${PN}/\":/${PF}/html\":" \
 		-i setup.py || die
@@ -195,6 +192,14 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_prepare_all
+
+	# Switching to PEP517 gives /usr/etc. Previously, setup.py hardcodes
+	# if root_prefix.endswith("/usr"):
+	#     root_prefix = root_prefix[:-4]
+	# But now setuptools uses data/* to represent out-of-sitedir files.
+	# The upstream hack no longer works. We are on our own.
+
+	mv -v "${ED}"/usr/etc "${ED}"/ || die
 
 	# Move udev dir to the right place if necessary.
 	if use udev; then
