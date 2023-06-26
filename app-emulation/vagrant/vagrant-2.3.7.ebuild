@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,6 +51,7 @@ ruby_add_rdepend "
 	>=dev-ruby/rgl-0.5.10
 	>=dev-ruby/rubyzip-2.3.2
 	>=dev-ruby/vagrant_cloud-3.0.5
+
 	>=dev-ruby/ipaddr-1.2.4
 "
 

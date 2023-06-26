@@ -22,6 +22,6 @@ RDEPEND=">=net-libs/grpc-1.27"
 BDEPEND=""
 
 ruby_add_rdepend "
-  >=dev-ruby/google-protobuf-3.14
-  >=dev-ruby/googleapis-common-protos-types-1.2
+	>=dev-ruby/google-protobuf-3.14
+	>=dev-ruby/googleapis-common-protos-types-1.2
 "
