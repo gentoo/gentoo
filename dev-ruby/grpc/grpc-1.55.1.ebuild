@@ -36,22 +36,22 @@ ruby_add_rdepend "
 	>=dev-ruby/googleapis-common-protos-types-1.0
 "
 
-ruby_add_bdepend "
-	test? (
-		>=dev-ruby/bundler-1.9
-		>=dev-ruby/facter-2.4
-		>=dev-ruby/logging-2.0
-		>=dev-ruby/simplecov-0.22
-		>=dev-ruby/rake-13.0.0
-		>=dev-ruby/rake-compiler-1.2.1
-		>=dev-ruby/rake-compiler-dock-1.3
-		>=dev-ruby/rspec-3.6
-		>=dev-ruby/rubocop-1.41.0
-		>=dev-ruby/signet-0.7
-		>=dev-ruby/googleauth-0.5.1
-		<dev-ruby/googleauth-0.10
-	)
-"
+# ruby_add_bdepend "
+# 	test? (
+# 		>=dev-ruby/bundler-1.9
+# 		>=dev-ruby/facter-2.4
+# 		>=dev-ruby/logging-2.0
+# 		>=dev-ruby/simplecov-0.22
+# 		>=dev-ruby/rake-13.0.0
+# 		>=dev-ruby/rake-compiler-1.2.1
+# 		>=dev-ruby/rake-compiler-dock-1.3
+# 		>=dev-ruby/rspec-3.6
+# 		>=dev-ruby/rubocop-1.41.0
+# 		>=dev-ruby/signet-0.7
+# 		>=dev-ruby/googleauth-0.5.1
+# 		<dev-ruby/googleauth-0.10
+# 	)
+# "
 
 all_ruby_prepare() {
 	sed \

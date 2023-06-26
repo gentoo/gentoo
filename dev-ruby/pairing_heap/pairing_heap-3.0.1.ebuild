@@ -16,11 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-ruby_add_bdepend "
-	test? (
-		dev-ruby/minitest
-		dev-ruby/rake
-		dev-ruby/simplecov
-		dev-ruby/standard
-	)
-"
+# ruby_add_bdepend "
+# 	test? (
+# 		>=dev-ruby/minitest-5.0
+# 		>=dev-ruby/rake-13.0
+# 		>=dev-ruby/simplecov-0.22.0
+# 		>=dev-ruby/standard-1.20
+# 	)
+# "

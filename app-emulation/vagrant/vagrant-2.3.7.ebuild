@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
@@ -57,14 +57,17 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "
 	>=dev-ruby/rake-13.0.0
-	test? (
-		>=dev-ruby/grpc-tools-1.41
-		dev-ruby/rake-compiler
-		>=dev-ruby/rspec-3.11
-		>=dev-ruby/rspec-its-1.3.0
-		>=dev-ruby/webrick-1.7.0
-	)
 "
+# ruby_add_bdepend "
+# 	>=dev-ruby/rake-13.0.0
+# 	test? (
+# 		>=dev-ruby/grpc-tools-1.41
+# 		dev-ruby/rake-compiler
+# 		>=dev-ruby/rspec-3.11
+# 		>=dev-ruby/rspec-its-1.3.0
+# 		>=dev-ruby/webrick-1.7.0
+# 	)
+# "
 
 all_ruby_prepare() {
 	# remove bundler support
