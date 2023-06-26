@@ -35,7 +35,7 @@ else
 	LANGS=" cs de es fi fr he hu it ja nl pl pt-BR ru sl sq tr uk zh-CN zh-TW"
 fi
 
-IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc flickr gamepad geolocation gmic keyring gphoto2 graphicsmagick heif jpeg2k kwallet lto lua midi nls opencl openmp openexr test tools webp
+IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc flickr gamepad geolocation gmic keyring gphoto2 graphicsmagick heif jpeg2k jpegxl kwallet lto lua midi nls opencl openmp openexr test tools webp
 	${LANGS// / l10n_}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -86,6 +86,7 @@ DEPEND="dev-db/sqlite:3
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	heif? ( media-libs/libheif:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
+	jpegxl? ( media-libs/libjxl:= )
 	lua? ( ${LUA_DEPS} )
 	midi? ( media-libs/portmidi )
 	opencl? ( virtual/opencl )
@@ -151,6 +152,7 @@ src_configure() {
 		-DUSE_FLICKR=$(usex flickr)
 		-DUSE_GMIC=$(usex gmic)
 		-DUSE_GRAPHICSMAGICK=$(usex graphicsmagick)
+		-DUSE_JXL=$(usex jpegxl)
 		-DUSE_KWALLET=$(usex kwallet)
 		-DUSE_LIBSECRET=$(usex keyring)
 		-DUSE_LUA=$(usex lua)
