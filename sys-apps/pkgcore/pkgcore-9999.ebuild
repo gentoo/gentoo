@@ -23,7 +23,7 @@ LICENSE="BSD MIT"
 SLOT="0"
 
 RDEPEND="
-	>=app-shells/bash-5.0
+	>=app-shells/bash-5.0[readline]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
 if [[ ${PV} == *9999 ]]; then
