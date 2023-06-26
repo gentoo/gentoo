@@ -351,6 +351,7 @@ arm64		default/linux/arm64/17.0/musl					dev
 arm64		default/linux/arm64/17.0/musl/llvm				exp
 arm64		default/linux/arm64/17.0/musl/hardened				exp
 arm64		default/linux/arm64/17.0/musl/hardened/selinux			exp
+m68k		default/linux/m68k/17.0/musl					exp
 mips		default/linux/mips/17.0/o32/musl				exp
 mips		default/linux/mips/17.0/n64/musl				exp
 mips		default/linux/mips/17.0/mipsel/o32/musl				exp
