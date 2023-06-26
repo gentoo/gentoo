@@ -651,7 +651,10 @@ src_prepare() {
 
 	# temp workaround for https://bugs.gentoo.org/908297 until patch added to tarball
 	rm -v "${WORKDIR}"/firefox-patches/*bmo-1775202-ppc64*.patch
-	use ppc64 && eapply "${FILESDIR}"/firefox-114-ppc64-webrtc.patch
+	if use ppc64; then
+		eapply "${FILESDIR}"/firefox-114-ppc64-webrtc.patch
+		eapply "${FILESDIR}"/firefox-114-ppc64-profiler.patch
+	fi
 	# end temp workaround
 
 	eapply "${WORKDIR}/firefox-patches"
