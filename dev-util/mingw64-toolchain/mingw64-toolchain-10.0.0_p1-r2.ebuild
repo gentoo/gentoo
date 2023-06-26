@@ -193,6 +193,13 @@ src_compile() {
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-fuse-ld=*'
 				filter-flags '-mfunction-return=thunk*' #878849
+
+				# -mavx with mingw-gcc has a history of obscure issues and
+				# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+				# crashes with -march=skylake >=wine-8.10, similar issues with
+				# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+				append-flags -mno-avx
+
 				strip-unsupported-flags
 				mwt-build "${@:2}"
 			)
