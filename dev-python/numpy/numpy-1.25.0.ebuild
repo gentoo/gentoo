@@ -109,6 +109,9 @@ python_test() {
 			EPYTEST_DESELECT+=(
 				# too large for 32-bit platforms
 				core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
+				'core/tests/test_multiarray.py::TestDot::test_huge_vectordot[float64]'
+				'core/tests/test_multiarray.py::TestDot::test_huge_vectordot[complex128]'
+				lib/tests/test_histograms.py::TestHistogram::test_big_arrays
 			)
 			;;
 		*)
