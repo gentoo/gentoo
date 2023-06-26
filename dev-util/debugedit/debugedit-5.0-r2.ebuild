@@ -35,6 +35,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-zero-dir-entry.patch
 	"${FILESDIR}"/${P}-hppa.patch
 	"${FILESDIR}"/${P}-musl-error.h-fix.patch
+
+	# Upstreamed, remove next release
+	"${FILESDIR}"/${P}-musl-1.2.4.patch
 )
 
 src_prepare() {

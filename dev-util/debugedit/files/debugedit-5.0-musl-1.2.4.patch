@@ -1,0 +1,38 @@
+From 187ba161d1d18ad0d675115d8a9eee7ec1790074 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Mon, 26 Jun 2023 21:46:20 +0000
+Subject: [PATCH] Fix build failure on musl 1.2.4 due to removal of LFS64
+ compat symbols.
+
+--- a/tools/sepdebugcrcfix.c
++++ b/tools/sepdebugcrcfix.c
+@@ -144,7 +144,7 @@ crc32 (const char *fname, const char *base_fname, uint32_t *crcp)
+       error (0, errno, _("cannot open \"%s\""), debugname);
+       return false;
+     }
+-  off64_t size = lseek64 (fd, 0, SEEK_END);
++  off_t size = lseek (fd, 0, SEEK_END);
+   if (size == -1)
+     {
+       error (0, errno, _("cannot get size of \"%s\""), debugname);
+@@ -289,7 +289,7 @@ process (Elf *elf, int fd, const char *fname)
+ 	  return true;
+ 	}
+       updated_count++;
+-      off64_t seekto = (shdr->sh_offset + data->d_off
++      off_t seekto = (shdr->sh_offset + data->d_off
+ 			+ (crcp - (const uint8_t *) data->d_buf));
+       uint32_t crc_targetendian = (ehdr->e_ident[EI_DATA] == ELFDATA2LSB
+ 				   ? htole32 (crc) : htobe32 (crc));
+@@ -361,7 +361,7 @@ main (int argc, char **argv)
+ 	error (0, errno, _("cannot chmod \"%s\" to make sure we can read and write"), fname);
+ 
+       bool failed = false;
+-      int fd = open64 (fname, O_RDWR);
++      int fd = open (fname, O_RDWR);
+       if (fd == -1)
+ 	{
+ 	  error (0, errno, _("cannot open \"%s\""), fname);
+-- 
+2.41.0
+
