@@ -1,9 +1,5 @@
 https://bugs.gentoo.org/908976
-
-From 7c811ad118d073c23038e61ee68ecdc07d5b563a Mon Sep 17 00:00:00 2001
-From: blockiv <blockiv@tuta.io>
-Date: Thu, 22 Jun 2023 05:26:02 +0000
-Subject: [PATCH] Mark breaking translation as fuzzy
+Backported from https://github.com/weechat/weechat/commit/11177a096707ed75cd15c8933a3346e350cf7b18
 
 --- a/po/cs.po
 +++ b/po/cs.po
