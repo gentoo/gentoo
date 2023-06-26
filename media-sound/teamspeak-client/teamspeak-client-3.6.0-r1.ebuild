@@ -46,7 +46,6 @@ QA_PREBUILT="
 	opt/teamspeak3-client/error_report
 	opt/teamspeak3-client/package_inst
 	opt/teamspeak3-client/soundbackends/libalsa_linux_*.so
-	opt/teamspeak3-client/soundbackends/libpulseaudio_linux_*.so
 	opt/teamspeak3-client/ts3client
 	opt/teamspeak3-client/update
 "
@@ -56,10 +55,6 @@ src_prepare() {
 
 	if ! use alsa; then
 		rm soundbackends/libalsa_linux_*.so || die
-	fi
-
-	if ! use pulseaudio ; then
-		rm soundbackends/libpulseaudio_linux_*.so || die
 	fi
 
 	mv ts3client_linux_* ts3client || die
