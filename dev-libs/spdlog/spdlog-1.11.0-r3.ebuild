@@ -24,13 +24,16 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	virtual/pkgconfig
 "
+
 DEPEND="
-	dev-libs/libfmt:0/9.1.0
+	dev-libs/libfmt
 "
+
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
+	"${FILESDIR}/${PN}-fmt-10.patch"
 	"${FILESDIR}/${PN}-musl-1.2.4.patch"
 )
 
