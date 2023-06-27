@@ -28,3 +28,4 @@ move dev-python/python-ctags dev-python/python-ctags3
 move dev-python/python-miniupnpc dev-python/miniupnpc
 move dev-python/service_identity dev-python/service-identity
 move dev-python/readme_renderer dev-python/readme-renderer
+move dev-libs/sexp dev-libs/sexpp

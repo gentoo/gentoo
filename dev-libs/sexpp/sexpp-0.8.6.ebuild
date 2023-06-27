@@ -6,8 +6,8 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="S-expressions parser and generator library in C++"
-HOMEPAGE="https://github.com/rnpgp/sexp"
-SRC_URI="https://github.com/rnpgp/sexp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/rnpgp/sexpp"
+SRC_URI="https://github.com/rnpgp/sexpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,8 +18,6 @@ BDEPEND="virtual/pkgconfig
 	test? ( dev-cpp/gtest )"
 
 RESTRICT="!test? ( test )"
-
-S="${WORKDIR}"/sexpp-${PV}
 
 src_configure() {
 	local mycmakeargs=(
