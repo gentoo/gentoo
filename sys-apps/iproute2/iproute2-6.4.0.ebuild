@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch # bug #291907
 	"${FILESDIR}"/${PN}-5.12.0-configure-nomagic.patch # bug #643722
 	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
+	"${FILESDIR}"/${PN}-6.4.0-add-missing-limits.h-include.patch
 )
 
 src_prepare() {
