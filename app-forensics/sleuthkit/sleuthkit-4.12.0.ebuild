@@ -76,6 +76,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.0-tools-shared-libs.patch
 	"${FILESDIR}"/${PN}-4.6.4-default-jar-location-fix.patch
 	"${FILESDIR}"/${PN}-4.10.1-exclude-usr-local.patch
+	"${FILESDIR}"/${PN}-4.12.0-configure-ac-test-fix.patch
 )
 
 src_unpack() {
