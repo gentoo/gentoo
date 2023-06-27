@@ -138,6 +138,11 @@ src_configure() {
 
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 
+	# bug #895308
+	append-atomic-flags
+	# Configure doesn't respect LIBS
+	export LDLIBS="${LIBS}"
+
 	# bug #197996
 	unset APPS
 	# bug #312551
