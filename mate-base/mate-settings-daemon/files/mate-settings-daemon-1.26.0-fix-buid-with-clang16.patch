@@ -1,0 +1,45 @@
+https://github.com/mate-desktop/mate-settings-daemon/commit/42e91f2805c508317b4d26166cb3db332dd313e8.patch
+From: Colomban Wendling <cwendling@hypra.fr>
+Date: Tue, 27 Jun 2023 12:21:16 +0200
+Subject: [PATCH] a11y-keyboard-atspi: Fix memory leak
+
+Fix fairly large memory leak when beeping on keys while caps lock is
+enabled.  The libatspi2 docs and API were quite misleading, so I
+overlooked the fact the event parameter should be freed in the
+callback.
+
+This changes the constness of the callback argument, which is new in
+libatspi2 2.40 -- yet the actual behavior didn't change, only the
+qualifier was removed, see [1].
+This might however bring up a compiler warning when building against
+libatspi2 < 2.40;  but on the other hand it fixed build with
+clang >= 16, see #399.  As it is unlikely to build with clang >= 16
+and libatspi2 < 2.40, I think it's a good compromise.
+
+[1] https://gitlab.gnome.org/GNOME/at-spi2-core/-/commit/7dfb0b7fc2d1710ef7fad54f910fa4c6a5e3af17
+--- a/plugins/a11y-keyboard/msd-a11y-keyboard-atspi.c
++++ b/plugins/a11y-keyboard/msd-a11y-keyboard-atspi.c
+@@ -55,16 +55,16 @@ msd_a11y_keyboard_atspi_class_init (MsdA11yKeyboardAtspiClass *klass)
+ }
+ 
+ static gboolean
+-on_key_press_event (const AtspiDeviceEvent *event,
+-                    void                   *user_data G_GNUC_UNUSED)
++on_key_press_event (AtspiDeviceEvent *event,
++                    void             *user_data G_GNUC_UNUSED)
+ {
+         /* don't ring on capslock itself, that's taken care of by togglekeys
+          * if the user want it. */
+-        if (event->id == GDK_KEY_Caps_Lock)
+-                return FALSE;
+-
+-        gdk_display_beep (gdk_display_get_default ());
++        if (event->id != GDK_KEY_Caps_Lock)
++                gdk_display_beep (gdk_display_get_default ());
+ 
++        /* cast the possible erroneous const away with atspi < 2.40 */
++        g_boxed_free (ATSPI_TYPE_DEVICE_EVENT, (gpointer) event);
+         return FALSE;
+ }
+ 
+
