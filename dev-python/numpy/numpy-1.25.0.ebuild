@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 FORTRAN_NEEDED=lapack
 
-inherit distutils-r1 flag-o-matic fortran-2 multiprocessing pypi
+inherit distutils-r1 flag-o-matic fortran-2 multiprocessing pypi toolchain-funcs
 
 DESCRIPTION="Fast array and numerical python library"
 HOMEPAGE="
@@ -101,6 +101,16 @@ python_test() {
 			random/tests/test_generator_mt19937.py::TestRandomDist::test_pareto
 			# more precision problems
 			core/tests/test_einsum.py::TestEinsum::test_einsum_sums_int16
+		)
+	fi
+
+	if [[ $(tc-endian) == "big" ]] ; then
+		# https://github.com/numpy/numpy/issues/11831 and bug #707116
+		EPYTEST_DESELECT+=(
+			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f77[s1]'
+			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f90[t1]'
+			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f90[s1]'
+			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f77[t1]'
 		)
 	fi
 
