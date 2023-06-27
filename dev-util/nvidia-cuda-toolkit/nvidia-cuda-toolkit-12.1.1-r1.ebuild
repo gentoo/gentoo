@@ -15,7 +15,7 @@ S="${WORKDIR}"
 LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
-IUSE="debugger nsight profiler rdma vis-profiler sanitizer"
+IUSE="debugger examples nsight profiler rdma vis-profiler sanitizer"
 RESTRICT="bindist mirror"
 
 # since CUDA 11, the bundled toolkit driver (== ${DRIVER_PV}) and the
@@ -23,9 +23,14 @@ RESTRICT="bindist mirror"
 RDEPEND="
 	<sys-devel/gcc-13_pre[cxx]
 	>=x11-drivers/nvidia-drivers-525.60.13
+	examples? (
+		media-libs/freeglut
+		media-libs/glu
+	)
 	nsight? (
 		dev-libs/libpfm
 		dev-libs/wayland
+		dev-qt/qtwayland:6
 		|| (
 			dev-libs/openssl-compat:1.1.1
 			dev-libs/openssl:0/1.1
@@ -227,7 +232,8 @@ src_install() {
 		# TODO: unbundle sqlite
 	fi
 
-	exes=(
+	if use examples; then
+		local exes=(
 			extras/demo_suite/bandwidthTest
 			extras/demo_suite/busGrind
 			extras/demo_suite/deviceQuery
@@ -235,17 +241,20 @@ src_install() {
 			extras/demo_suite/oceanFFT
 			extras/demo_suite/randomFog
 			extras/demo_suite/vectorAdd
-	)
+		)
+
+		# set executable bit on demo_suite binaries
+		for f in "${exes[@]}"; do
+			fperms +x ${cudadir}/${f}
+		done
+	else
+		rm -r "${ED}"/${cudadir}/extras/demo_suite || die
+	fi
 
 	# remove rdma libs (unless USE=rdma)
 	if ! use rdma; then
 		rm "${ED}"/${cudadir}/targets/x86_64-linux/lib/libcufile_rdma* || die
 	fi
-
-	# set executable bit on demo_suite binaries
-	for f in "${exes[@]}"; do
-		fperms +x ${cudadir}/${f}
-	done
 
 	# Add include and lib symlinks
 	dosym targets/x86_64-linux/include ${ecudadir}/include

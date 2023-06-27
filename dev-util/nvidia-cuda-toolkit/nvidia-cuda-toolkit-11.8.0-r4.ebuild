@@ -28,14 +28,12 @@ RDEPEND="
 	nsight? (
 		dev-libs/libpfm
 		dev-libs/wayland
+		dev-qt/qtwayland:6
 		|| (
 			dev-libs/openssl-compat:1.1.1
 			=dev-libs/openssl-1.1.1*
 		)
-		|| (
-			media-libs/tiff-compat:4
-			media-libs/tiff:0/0
-		)
+		media-libs/tiff-compat:4
 		sys-libs/zlib
 	)
 	vis-profiler? (
@@ -43,7 +41,7 @@ RDEPEND="
 	)"
 
 QA_PREBUILT="opt/cuda/*"
-CHECKREQS_DISK_BUILD="6800M"
+CHECKREQS_DISK_BUILD="15000M"
 
 pkg_setup() {
 	check-reqs_pkg_setup
