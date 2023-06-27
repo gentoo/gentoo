@@ -189,6 +189,9 @@ src_prepare() {
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
 		> "${T}"/nvidia-persistenced.service || die
 
+	# use alternative vulkan icd option if USE=-X (bug #909181)
+	use X || sed -i 's/"libGLX/"libEGL/' nvidia_{layers,icd}.json || die
+
 	# enable nvidia-drm.modeset=1 by default with USE=wayland
 	cp "${FILESDIR}"/nvidia-470.conf "${T}"/nvidia.conf || die
 	use !wayland || sed -i '/^#.*modeset=1$/s/^#//' "${T}"/nvidia.conf || die
@@ -252,11 +255,7 @@ src_install() {
 	)
 
 	local skip_files=(
-		# nvidia_icd/layers(vulkan): skip with -X too as it uses libGLX_nvidia
-		$(usev !X "
-			libGLX_nvidia libglxserver_nvidia
-			libnvidia-ifr
-			nvidia_icd.json nvidia_layers.json")
+		$(usev !X "libGLX_nvidia libglxserver_nvidia libnvidia-ifr")
 		$(usev !wayland libnvidia-vulkan-producer)
 		libGLX_indirect # non-glvnd unused fallback
 		libnvidia-gtk nvidia-{settings,xconfig} # built from source

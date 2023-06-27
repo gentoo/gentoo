@@ -187,7 +187,8 @@ src_prepare() {
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
 		> "${T}"/nvidia-persistenced.service || die
 
-	sed 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' \
+	# use alternative vulkan icd option if USE=-X (bug #909181)
+	sed "s/__NV_VK_ICD__/lib$(usex X GLX EGL)_nvidia.so.0/" \
 		nvidia_icd.json.template > nvidia_icd.json || die
 
 	# 390 has legacy glx needing a modified .conf (bug #713546)
@@ -256,11 +257,7 @@ src_install() {
 	)
 
 	local skip_files=(
-		# nvidia_icd(vulkan): skip with -X too as it uses libGLX_nvidia
-		$(usev !X "
-			libGLX_nvidia libglx
-			libnvidia-ifr
-			nvidia_icd.json")
+		$(usev !X "libGLX_nvidia libglx libnvidia-ifr")
 		libGLX_indirect # non-glvnd unused fallback
 		libnvidia-gtk nvidia-{settings,xconfig} # built from source
 		libnvidia-egl-wayland 10_nvidia_wayland # gui-libs/egl-wayland
