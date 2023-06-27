@@ -3,17 +3,19 @@
 
 EAPI=8
 
-inherit git-r3 linux-mod-r1 toolchain-funcs
+inherit linux-mod-r1 toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
 HOMEPAGE="
 	https://sourceforge.net/projects/ipt-netflow
 	https://github.com/aabc/ipt-netflow
 "
-EGIT_REPO_URI="https://github.com/aabc/ipt-netflow"
+SRC_URI="https://github.com/aabc/ipt-netflow/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
 IUSE="debug natevents snmp"
 
 RDEPEND="
@@ -28,7 +30,10 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
-	"${FILESDIR}/${PN}-9999-gentoo.patch"
+	"${FILESDIR}/${PN}-2.6-gentoo.patch"
+	"${FILESDIR}/${P}-ref_module_fix.patch" # bug #781014
+	"${FILESDIR}/${P}-fix-linux-headers-5.14.patch" # bug #813993
+
 )
 
 pkg_setup() {
@@ -47,13 +52,14 @@ pkg_setup() {
 	linux-mod-r1_pkg_setup
 }
 
-src_prepare() {
+src_unpack() {
 	default
 
-	# Fix incorrect module version in sources
-	sed -i \
-		-e '/IPT_NETFLOW_VERSION/s#"[0-9.]*"#"'${PV}'"#' \
-		ipt_NETFLOW.c || die
+	mv "${WORKDIR}"/${PN/_/-}-* "${WORKDIR}"/${P} || die
+}
+
+src_prepare() {
+	default
 
 	# Checking for directory is enough
 	sed -i \
