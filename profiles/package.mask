@@ -291,10 +291,6 @@ dev-python/ntlm-auth
 # Removal on 2023-06-30.  Bug #907495.
 dev-python/http-parser
 
-# Sam James <sam@gentoo.org> (2023-05-29)
-# Masked until enough reverse dependencies are fixed, bug #901257.
-=media-video/ffmpeg-6*
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-05-28)
 # Causes only problems, at negligible gain. Removal in 30days.
 # Bugs 880573, 864157, 885471, 870454, 884571
