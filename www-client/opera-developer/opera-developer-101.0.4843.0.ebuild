@@ -50,7 +50,7 @@ SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.${OPERA_ARCHIVE_E
 		mirror+https://dev.gentoo.org/~sultan/distfiles/www-client/opera/opera-ffmpeg-codecs-${FFMPEG_VERSION}.tar.xz
 	)"
 
-IUSE="+proprietary-codecs +suid qt5"
+IUSE="+proprietary-codecs +suid qt5 qt6"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -85,6 +85,7 @@ RDEPEND="
 		dev-qt/qtgui:5[X]
 		dev-qt/qtwidgets:5
 	)
+	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 "
 
 QA_PREBUILT="*"
@@ -157,6 +158,9 @@ src_install() {
 
 	if ! use qt5; then
 		rm "${OPERA_HOME}/libqt5_shim.so" || die
+	fi
+	if ! use qt6; then
+		rm "${OPERA_HOME}/libqt6_shim.so" || die
 	fi
 
 	# pax mark opera, bug #562038
