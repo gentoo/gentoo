@@ -9,7 +9,6 @@ DOCS_DEPEND="dev-python/myst-parser"
 DOCS_DIR="docs"
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYPI_NO_NORMALIZE=1
 
 inherit distutils-r1 docs pypi
 
@@ -36,9 +35,7 @@ BDEPEND="<dev-python/cython-2.99[${PYTHON_USEDEP}]
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.1-meson_pure.patch
 	"${FILESDIR}"/${PN}-1.5.1-unbundle_rtmidi.patch
-	"${FILESDIR}"/${PN}-1.5.2-build_backend.patch
 )
 
 distutils_enable_tests unittest
