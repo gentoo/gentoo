@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.008.00-linux-5.18.patch" # bug 852311
 	"${FILESDIR}/${PN}-9.009.01-linux-5.19.patch"
 	"${FILESDIR}/${PN}-9.011.00-linux-6.1.patch" # bug 890714
+	"${FILESDIR}/${PN}-9.011.01-linux-6.2.patch" # bug 908645
 )
 
 CONFIG_CHECK="~!R8169"
