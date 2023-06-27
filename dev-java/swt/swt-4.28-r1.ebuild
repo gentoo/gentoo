@@ -26,7 +26,7 @@ IUSE="cairo opengl webkit"
 COMMON_DEP="
 	app-accessibility/at-spi2-core:2
 	dev-libs/glib
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	x11-libs/libXtst
 	cairo? ( x11-libs/cairo )
 	opengl?	(
