@@ -78,18 +78,14 @@ RDEPEND="
 		')
 	)
 	qt5? (
-		media-libs/glew:=
-		virtual/glu
-		virtual/opengl
+		media-libs/libglvnd
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
 	)
 	qt6? (
-		media-libs/glew:=
-		virtual/glu
-		virtual/opengl
+		media-libs/libglvnd
 		dev-qt/qtbase:6[gui,widgets,opengl]
 	)
 	raw? ( media-libs/libraw:= )
@@ -164,7 +160,7 @@ src_configure() {
 			mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON )
 		fi
 	else
-		mycmakeargs+=( -DENABLE_IV=OFF -DUSE_OPENGL=OFF -DUSE_QT=OFF )
+		mycmakeargs+=( -DENABLE_IV=OFF -DUSE_QT=OFF )
 	fi
 
 	if use python; then
