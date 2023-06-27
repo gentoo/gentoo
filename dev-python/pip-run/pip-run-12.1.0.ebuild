@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 
 RDEPEND="
 	dev-python/autocommand[${PYTHON_USEDEP}]
