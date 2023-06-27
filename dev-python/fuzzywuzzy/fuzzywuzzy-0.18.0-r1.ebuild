@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/fuzzywuzzy/
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 
