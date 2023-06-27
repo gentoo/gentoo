@@ -20,6 +20,7 @@ IUSE="+multi-tx-q ptp +rss use-firmware"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9.011.00-linux-6.1.patch" # bug 890714
+	"${FILESDIR}/${PN}-9.011.01-linux-6.2.patch" # bug 908645
 )
 
 CONFIG_CHECK="~!R8169"

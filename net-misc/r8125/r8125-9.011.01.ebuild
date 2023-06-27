@@ -18,6 +18,10 @@ MODULE_NAMES="r8125(net:${S}/src)"
 BUILD_TARGETS="modules"
 IUSE="+multi-tx-q ptp +rss use-firmware"
 
+PATCHES=(
+	"${FILESDIR}/${P}-linux-6.2.patch" # bug 908645
+)
+
 CONFIG_CHECK="~!R8169"
 WARNING_R8169="CONFIG_R8169 is enabled. ${PN} will not be loaded unless kernel driver Realtek 8169 PCI Gigabit Ethernet (CONFIG_R8169) is DISABLED."
 
@@ -28,7 +32,8 @@ pkg_setup() {
 	BUILD_PARAMS+=" ENABLE_RSS_SUPPORT=$(usex rss y n)"
 	BUILD_PARAMS+=" ENABLE_MULTIPLE_TX_QUEUE=$(usex multi-tx-q y n)"
 	BUILD_PARAMS+=" ENABLE_USE_FIRMWARE_FILE=$(usex use-firmware y n)"
-	BUILD_PARAMS+=" ENABLE_PAGE_REUSE=y ENABLE_RX_PACKET_FRAGMENT=y"
+	BUILD_PARAMS+=" ENABLE_PAGE_REUSE=$(usex ptp n y)" # Not compatible with PTP
+	BUILD_PARAMS+=" ENABLE_RX_PACKET_FRAGMENT=$(usex ptp n y)" # Not compatible with PTP
 }
 
 src_install() {
