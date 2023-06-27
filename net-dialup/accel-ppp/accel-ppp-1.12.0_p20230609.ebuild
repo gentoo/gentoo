@@ -4,17 +4,16 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 )
-EGIT_REPO_URI="https://github.com/accel-ppp/accel-ppp.git"
 MODULES_OPTIONAL_IUSE="ipoe"
-inherit cmake flag-o-matic git-r3 linux-mod-r1 lua-single
+inherit cmake flag-o-matic linux-mod-r1 lua-single
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
 HOMEPAGE="https://sourceforge.net/projects/accel-ppp/"
-SRC_URI=""
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc libtomcrypt lua postgres radius shaper snmp valgrind"
 
 RDEPEND="!libtomcrypt? ( dev-libs/openssl:0= )
@@ -34,6 +33,12 @@ CONFIG_CHECK="~L2TP ~PPPOE ~PPTP"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	valgrind? ( debug )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.11.1-socklen.patch"
+)
+
+S="${WORKDIR}"
+
 pkg_setup() {
 	linux-mod-r1_pkg_setup
 	set_arch_to_kernel
@@ -48,6 +53,10 @@ src_prepare() {
 	sed -i -e '/modules_install/d' \
 		drivers/ipoe/CMakeLists.txt \
 		drivers/vlan_mon/CMakeLists.txt || die
+
+	# Fix version
+	sed -i -e "s/1.11/${PV}/" drivers/ipoe/ipoe.c || die
+	sed -i -e "s/1.11/${PV}/" drivers/vlan_mon/vlan_mon.c || die
 
 	# Bug #549918
 	append-ldflags -Wl,-z,lazy
@@ -77,7 +86,7 @@ src_configure() {
 }
 
 src_compile() {
-	local modlist=( ipoe=accel-ppp:"${BUILD_DIR}/drivers/ipoe/driver" vlan_mon=accel-ppp:"${BUILD_DIR}/drivers/vlan_mon/driver" )
+	local modlist=( ipoe=accel-ppp:${BUILD_DIR}/drivers/ipoe/driver vlan_mon=accel-ppp:${BUILD_DIR}/drivers/vlan_mon/driver )
 	MODULES_MAKEARGS+=(
 		KDIR="${KV_OUT_DIR}"
 	)
