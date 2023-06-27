@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 VALA_USE_DEPEND=vapigen
 
 inherit git-r3 lua-single meson python-single-r1 vala xdg
@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-glib-0.7.16
-	>=dev-libs/glib-2.68.0:2
+	>=dev-libs/glib-2.70.0:2
 	>=dev-libs/json-glib-1.4.4
 	dev-libs/libxml2:2
 	dev-libs/libxslt
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	>=media-libs/babl-0.1.98[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.40:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.46:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.13.1:2
