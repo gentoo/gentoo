@@ -212,7 +212,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	# VFP = show subtests verbosely and show failed tests verbosely
 	# Normal V=1 would show everything verbosely but this slows things down.
-	emake HARNESS_JOBS="$(makeopts_jobs)" VFP=1 test
+	emake HARNESS_JOBS="$(makeopts_jobs)" -Onone VFP=1 test
 }
 
 multilib_src_install() {
