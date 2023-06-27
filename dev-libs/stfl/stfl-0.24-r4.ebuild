@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.22-soname-symlink.patch"
 	"${FILESDIR}/${PN}-0.22-ruby-sharedlib.patch"
 	"${FILESDIR}/${PN}-0.22-pc-libdir.patch"
+	"${FILESDIR}/${PN}-0.24-ncurses-widechar.patch"
 )
 
 src_prepare() {
