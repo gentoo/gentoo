@@ -7,7 +7,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A Graph Library for Ruby"
+DESCRIPTION="Graph Library for Ruby"
 HOMEPAGE="https://github.com/monora/rgl"
 SRC_URI="https://github.com/monora/rgl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
