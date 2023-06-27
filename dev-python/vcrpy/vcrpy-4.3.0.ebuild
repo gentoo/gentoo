@@ -47,7 +47,7 @@ python_test() {
 		tests/integration/test_boto.py
 		tests/integration/test_httplib2.py::test_effective_url
 		tests/integration/test_httpx.py
-                tests/integration/test_record_mode.py::test_new_episodes_record_mode_two_times
+		tests/integration/test_record_mode.py::test_new_episodes_record_mode_two_times
 		tests/integration/test_urllib2.py
 		tests/integration/test_urllib3.py::test_redirects
 		tests/integration/test_wild.py::test_amazon_doctype
