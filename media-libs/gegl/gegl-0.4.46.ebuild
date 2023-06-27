@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -105,6 +105,15 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* && ${CHOST#*-darwin} -le 9 ]] ; then
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
+
+	# fix 'build'headers from *.cl on gentoo-hardened, bug 739816
+	pushd "${S}/opencl/" || die
+	for file in *.cl; do
+		if [[ -f ${file} ]]; then
+			"${EPYTHON}" cltostring.py "${file}" || die
+		fi
+	done
+	popd || die
 }
 
 src_configure() {
