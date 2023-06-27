@@ -5,13 +5,17 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
 DESCRIPTION="Validate configuration and produce human-readable error messages"
-HOMEPAGE="https://github.com/asottile/cfgv"
+HOMEPAGE="
+	https://github.com/asottile/cfgv/
+	https://pypi.org/project/cfgv/
+"
 SRC_URI="
-	https://github.com/asottile/${PN}/archive/refs/tags/v${PV}.tar.gz
-		-> ${P}.tar.gz
+	https://github.com/asottile/cfgv/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
