@@ -31,7 +31,7 @@ DEPEND="
 	${RDEPEND}
 	dev-libs/elfutils
 	sys-devel/bison
-	test? ( dev-util/shellcheck-bin )
+	test? ( || ( dev-util/shellcheck-bin dev-util/shellcheck ) )
 "
 
 PATCHES=(
