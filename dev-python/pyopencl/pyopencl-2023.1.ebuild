@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="examples opengl"
 
 # Running tests on GPUs requires both appropriate hardware and additional permissions
