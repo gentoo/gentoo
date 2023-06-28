@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,7 +50,7 @@ src_prepare() {
 lua_src_compile() {
 	cd "${S}.${ELUA}/" || die
 	emake CC="$(tc-getCC)" \
-		LUADIR="${ESYSROOT}/$(lua_get_include_dir)"
+		LUADIR="${EPREFIX}/$(lua_get_include_dir)"
 }
 
 src_compile() {
