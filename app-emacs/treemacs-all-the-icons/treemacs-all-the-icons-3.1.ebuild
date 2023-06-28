@@ -31,5 +31,5 @@ src_compile() {
 
 src_install() {
 	elisp-install ${PN} ${PN}.el{,c}
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-make-site-file "${SITEFILE}"
 }
