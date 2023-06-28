@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ src_install() {
 		LISPDIR="${ED}/${SITELISP}" \
 		VERSION_SPECIFIC_LISPDIR="${ED}/${SITELISP}" install
 
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-make-site-file "${SITEFILE}"
 
 	dodoc FLIM-API.en NEWS VERSION README* ChangeLog
 }

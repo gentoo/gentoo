@@ -28,6 +28,6 @@ src_install() {
 	emake PREFIX="${ED}/usr" \
 		LISPDIR="${ED}/${SITELISP}" \
 		VERSION_SPECIFIC_LISPDIR="${ED}/${SITELISP}" install
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-make-site-file "${SITEFILE}"
 	dodoc FLIM-API.en NEWS VERSION README* ChangeLog*
 }
