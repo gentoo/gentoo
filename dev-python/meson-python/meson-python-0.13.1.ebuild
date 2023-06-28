@@ -33,7 +33,6 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/cython-0.29.34[${PYTHON_USEDEP}]
 	test? (
-		dev-python/GitPython[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			>=dev-python/typing-extensions-3.7.4[${PYTHON_USEDEP}]
