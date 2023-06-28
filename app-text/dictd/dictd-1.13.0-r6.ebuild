@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
 LICENSE="GPL-1+ GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="dbi judy minimal test"
+IUSE="dbi judy minimal selinux test"
 RESTRICT="!test? ( test )"
 
 # <gawk-3.1.6 makes tests fail.
@@ -32,6 +32,7 @@ BDEPEND="
 	app-alternatives/yacc
 	test? ( !~sys-apps/gawk-4.2.1 )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-dictd )"
 
 DOC_CONTENTS="
 	To start and use ${PN} you need to emerge at least one dictionary from
