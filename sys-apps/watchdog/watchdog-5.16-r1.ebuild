@@ -12,10 +12,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="nfs"
+IUSE="nfs selinux"
 
-RDEPEND="nfs? ( net-libs/libtirpc )"
-DEPEND="${RDEPEND}"
+DEPEND="nfs? ( net-libs/libtirpc )"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-watchdog )
+"
 BDEPEND="
 	virtual/pkgconfig
 "
