@@ -13,7 +13,7 @@ SRC_URI="https://download.mono-project.com/sources/mono/${P}.tar.xz"
 LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv ~x86 ~amd64-linux"
-IUSE="doc minimal nls pax-kernel xen"
+IUSE="doc minimal nls pax-kernel selinux xen"
 
 # Note: mono works incorrect with older versions of libgdiplus
 # Details on dotnet overlay issue: https://github.com/gentoo/dotnet/issues/429
@@ -27,6 +27,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	app-misc/ca-certificates
+	selinux? ( sec-policy/selinux-mono )
 "
 # CMake is used for bundled deps
 BDEPEND="
