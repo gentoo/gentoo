@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 FORTRAN_NEEDED=lapack
 
@@ -84,6 +84,13 @@ python_test() {
 
 		typing/tests/test_typing.py
 	)
+
+	if [[ ${EPYTHON} == pypy3 ]]; then
+		EPYTEST_DESELECT+=(
+			# TODO: crashed
+			lib/tests/test_histograms.py::TestHistogram::test_big_arrays
+		)
+	fi
 
 	if use arm && [[ $(uname -m || echo "unknown") == "armv8l" ]] ; then
 		# Degenerate case. arm32 chroot on arm64.
