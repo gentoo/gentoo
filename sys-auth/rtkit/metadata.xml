@@ -10,4 +10,7 @@
 	to escalate their priority to realtime, without any special setup in
 	rlimits, etc.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">heftig/rtkit</remote-id>
+	</upstream>
 </pkgmetadata>
