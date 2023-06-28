@@ -76,6 +76,9 @@ PATCHES=(
 	"${FILESDIR}"/R-4.3.0-no-gzip-doc.patch
 )
 
+# false positive, the linking step fails (as it should)
+QA_CONFIG_IMPL_DECL_SKIP=( iconvlist )
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
