@@ -12,6 +12,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 IUSE="demos static-libs"
+PATCHES=(
+	"${FILESDIR}"/no-automagic-manpages-compress.patch
+)
 
 RDEPEND="dev-libs/unibilium:="
 DEPEND="${RDEPEND}
@@ -36,4 +39,6 @@ src_install() {
 	emake PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" DESTDIR="${D}" install
 	use static-libs || rm "${ED}"/usr/$(get_libdir)/${PN}.a || die
 	rm "${ED}"/usr/$(get_libdir)/${PN}.la || die
+	doman "${S}"/man/*.3
+	doman "${S}"/man/*.7
 }
