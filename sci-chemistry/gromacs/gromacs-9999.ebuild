@@ -61,6 +61,10 @@ BDEPEND="${CDEPEND}
 		app-doc/doxygen
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-copybutton[${PYTHON_USEDEP}]
+			dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]
+			dev-python/sphinx-argparse[${PYTHON_USEDEP}]
+			dev-python/sphinxcontrib-autoprogram[${PYTHON_USEDEP}]
 		')
 		media-gfx/mscgen
 		media-gfx/graphviz
