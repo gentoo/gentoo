@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,7 @@ SRC_URI="https://www.cipherdyne.org/psad/download/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ppc ~sparc x86"
+IUSE="selinux"
 
 RDEPEND="
 	dev-perl/Bit-Vector
@@ -22,7 +23,9 @@ RDEPEND="
 	net-misc/whois
 	virtual/logger
 	virtual/mailx
-	virtual/perl-Storable"
+	virtual/perl-Storable
+	selinux? ( sec-policy/selinux-psad )
+"
 BDEPEND="virtual/perl-ExtUtils-MakeMaker"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.2.4-var-run.patch )
