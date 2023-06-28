@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.0-build-fixes.patch
+	"${FILESDIR}"/${PN}-0.9.0-build-fixes.patch
 	"${FILESDIR}"/0.9.0-remove-boost_iostreams.patch
 )
 
