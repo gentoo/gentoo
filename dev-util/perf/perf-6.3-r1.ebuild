@@ -63,7 +63,7 @@ RDEPEND="
 	crypt? ( virtual/libcrypt:= )
 	gtk? ( x11-libs/gtk+:2 )
 	java? ( virtual/jre:* )
-	libpfm? ( dev-libs/libpfm )
+	libpfm? ( dev-libs/libpfm:= )
 	lzma? ( app-arch/xz-utils )
 	numa? ( sys-process/numactl )
 	perl? ( dev-lang/perl:= )
