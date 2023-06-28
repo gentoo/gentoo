@@ -34,6 +34,7 @@ RDEPEND="${DEPEND}
 		!sys-apps/coreutils[kill]
 		!sys-apps/util-linux[kill]
 	)
+	selinux? ( sec-policy/selinux-uptime )
 	!<app-i18n/man-pages-l10n-4.2.0-r1
 	!<app-i18n/man-pages-de-2.12-r1
 	!<app-i18n/man-pages-pl-0.7-r1
