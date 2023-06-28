@@ -32,7 +32,7 @@ SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="audit babeltrace clang crypt debug +doc gtk java libpfm lzma numa perl python slang systemtap unwind zlib zstd"
+IUSE="audit babeltrace caps clang crypt debug +doc gtk java libpfm lzma numa perl python slang systemtap unwind zlib zstd"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -56,6 +56,7 @@ BDEPEND="
 RDEPEND="
 	audit? ( sys-process/audit )
 	babeltrace? ( dev-util/babeltrace )
+	caps? ( sys-libs/libcap )
 	clang? (
 		sys-devel/clang:=
 		sys-devel/llvm:=
@@ -207,6 +208,7 @@ perf_make() {
 		NO_LIBBABELTRACE=$(puse babeltrace)
 		NO_LIBBIONIC=1
 		NO_LIBBPF=
+		NO_LIBCAP=$(puse caps)
 		NO_LIBCRYPTO=$(puse crypt)
 		NO_LIBDW_DWARF_UNWIND=
 		NO_LIBELF=
