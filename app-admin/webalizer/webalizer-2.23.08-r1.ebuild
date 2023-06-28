@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # uses webapp.eclass to create directories with right permissions
@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
-IUSE="bzip2 xtended geoip nls"
+IUSE="bzip2 xtended geoip nls selinux"
 
 DEPEND="
 	>=sys-libs/db-4.2:*
@@ -39,8 +39,12 @@ DEPEND="
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/gd-1.8.3[png]
 	dev-libs/geoip
-	bzip2? ( app-arch/bzip2 )"
-RDEPEND="${DEPEND}"
+	bzip2? ( app-arch/bzip2 )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-webalizer )
+"
 
 pkg_setup() {
 	webapp_pkg_setup
