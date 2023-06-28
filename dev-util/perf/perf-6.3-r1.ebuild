@@ -32,7 +32,7 @@ SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="audit babeltrace caps clang crypt debug +doc gtk java libpfm lzma numa perl python slang systemtap unwind zlib zstd"
+IUSE="audit babeltrace caps clang crypt debug +doc gtk java libpfm lzma numa perl python slang systemtap unwind zstd"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -72,10 +72,10 @@ RDEPEND="
 	slang? ( sys-libs/slang )
 	systemtap? ( dev-util/systemtap )
 	unwind? ( sys-libs/libunwind:= )
-	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd:= )
 	dev-libs/elfutils
 	sys-libs/binutils-libs:=
+	sys-libs/zlib
 "
 
 DEPEND="${RDEPEND}
@@ -220,7 +220,7 @@ perf_make() {
 		NO_SDT=$(puse systemtap)
 		NO_SLANG=$(puse slang)
 		NO_LZMA=$(puse lzma)
-		NO_ZLIB=$(puse zlib)
+		NO_ZLIB=
 		WERROR=0
 		LIBDIR="/usr/libexec/perf-core"
 		libdir="${EPREFIX}/usr/$(get_libdir)"
