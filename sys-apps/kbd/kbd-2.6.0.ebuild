@@ -22,7 +22,7 @@ HOMEPAGE="https://kbd-project.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls pam test"
+IUSE="nls selinux pam test"
 RESTRICT="!test? ( test )"
 
 # Testsuite's Makefile.am calls missing(!)
@@ -30,14 +30,17 @@ RESTRICT="!test? ( test )"
 # Needs more investigation: https://www.gnu.org/software/autoconf/manual/autoconf-2.67/html_node/autom4te-Invocation.html
 QA_AM_MAINTAINER_MODE=".*--run autom4te --language=autotest.*"
 
-RDEPEND="
+DEPEND="
 	app-alternatives/gzip
 	pam? (
 		!app-misc/vlock
 		sys-libs/pam
 	)
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-loadkeys )
+"
 BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-libs/check )
