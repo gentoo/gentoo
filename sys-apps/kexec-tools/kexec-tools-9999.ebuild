@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,14 +19,18 @@ HOMEPAGE="https://kernel.org/pub/linux/utils/kernel/kexec/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="booke lzma xen zlib"
+IUSE="booke lzma selinux xen zlib"
 
 REQUIRED_USE="lzma? ( zlib )"
 
 DEPEND="
 	lzma? ( app-arch/xz-utils )
-	zlib? ( sys-libs/zlib )"
-RDEPEND="${DEPEND}"
+	zlib? ( sys-libs/zlib )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-kdump )
+"
 
 S="${WORKDIR}/${P/_/-}"
 
