@@ -90,7 +90,7 @@ src_compile() {
 		lttng-probe-sched=misc:"${S}":src/probes
 		lttng-lib-ring-buffer=misc:"${S}":src/lib)
 
-	local modargs=( KERNELDIR="/lib/modules/${KV_FULL}/build" )
+	local modargs=( KERNELDIR="${KV_OUT_DIR}" )
 
 	linux-mod-r1_src_compile
 }
