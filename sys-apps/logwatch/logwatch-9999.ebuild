@@ -5,6 +5,9 @@ EAPI=8
 
 inherit tmpfiles
 
+DESCRIPTION="Analyzes and Reports on system logs"
+HOMEPAGE="https://sourceforge.net/projects/logwatch/"
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/logwatch/git ${PN}"
 	inherit git-r3
@@ -13,11 +16,9 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-DESCRIPTION="Analyzes and Reports on system logs"
-HOMEPAGE="https://sourceforge.net/projects/logwatch/"
-
 LICENSE="MIT"
 SLOT="0"
+IUSE="selinux"
 
 RDEPEND="
 	dev-lang/perl
@@ -30,6 +31,7 @@ RDEPEND="
 	virtual/cron
 	virtual/mta
 	virtual/mailx
+	selinux? ( sec-policy/selinux-logwatch )
 "
 
 src_install() {
