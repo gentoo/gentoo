@@ -13,7 +13,7 @@ SRC_URI="http://${PN}.twibright.com/download/${P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="avif brotli bzip2 fbcon freetype gpm jpeg libevent livecd lzip lzma ssl suid svga tiff webp X zlib zstd"
+IUSE="avif brotli bzip2 fbcon freetype gpm jpeg libevent livecd lzip lzma selinux ssl suid svga tiff webp X zlib zstd"
 
 GRAPHICS_DEPEND="media-libs/libpng:="
 
@@ -86,6 +86,8 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 IDEPEND="X? ( dev-util/desktop-file-utils )"
+
+RDEPEND+=" selinux? ( sec-policy/selinux-links )"
 
 REQUIRED_USE="!livecd? ( fbcon? ( gpm ) )
 	svga? ( suid )"
