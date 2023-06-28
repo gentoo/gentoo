@@ -13,7 +13,7 @@ SRC_URI="https://arthurdejong.org/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ia64 ~sparc ~x86"
-IUSE="debug kerberos +pam pynslcd sasl test +utils"
+IUSE="debug kerberos +pam pynslcd sasl selinux test +utils"
 REQUIRED_USE="
 	utils? ( ${PYTHON_REQUIRED_USE} )
 	test? ( ${PYTHON_REQUIRED_USE} pynslcd )
@@ -41,6 +41,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	test? ( dev-python/pylint[${PYTHON_USEDEP}] )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-nslcd )"
 
 PATCHES=(
 	"${FILESDIR}"/nss-pam-ldapd-0.9.4-disable-py3-only-linters.patch
