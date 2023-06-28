@@ -1,0 +1,17 @@
+From 5ca483b67404a9ba2230f2f03ff3255eceb3d2bc Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sun, 19 Feb 2023 23:14:44 +0100
+Subject: [PATCH] [Gentoo-specific] adjust python installation
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/src/bindings/python/CMakeLists.txt
++++ b/src/bindings/python/CMakeLists.txt
+@@ -230,7 +230,7 @@ target_compile_definitions(PyOpenColorIO
+ if(WIN32)
+     set(_Python_VARIANT_PATH "${CMAKE_INSTALL_LIBDIR}/site-packages")
+ else()
+-    set(_Python_VARIANT_PATH "${CMAKE_INSTALL_LIBDIR}/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages")
++    set(_Python_VARIANT_PATH "${CMAKE_INSTALL_PREFIX}/lib/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages")
+ endif()
+ 
+ # Create an internal global variable to access it in another scope but not publicly visible
