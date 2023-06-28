@@ -72,7 +72,7 @@ RDEPEND="
 	systemtap? ( dev-util/systemtap )
 	unwind? ( sys-libs/libunwind )
 	zlib? ( sys-libs/zlib )
-	zstd? ( app-arch/zstd )
+	zstd? ( app-arch/zstd:= )
 	dev-libs/elfutils
 	sys-libs/binutils-libs:=
 "
