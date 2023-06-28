@@ -181,46 +181,49 @@ perf_make() {
 	local java_dir
 	use java && java_dir="${EPREFIX}/etc/java-config-2/current-system-vm"
 	# FIXME: NO_CORESIGHT
-	emake V=1 VF=1 \
-		HOSTCC="$(tc-getBUILD_CC)" HOSTLD="$(tc-getBUILD_LD)" \
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)" LD="$(tc-getLD)" NM="$(tc-getNM)" \
-		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
-		prefix="${EPREFIX}/usr" bindir_relative="bin" \
-		tipdir="share/doc/${PF}" \
-		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
-		ARCH="${arch}" \
-		JDIR="${java_dir}" \
-		LIBCLANGLLVM=$(usex clang 1 "") \
-		LIBPFM4=$(usex libpfm 1 "") \
-		NO_AUXTRACE="" \
-		NO_BACKTRACE="" \
-		NO_CORESIGHT=1 \
-		NO_DEMANGLE= \
-		GTK2=$(usex gtk 1 "") \
-		feature-gtk2-infobar=$(usex gtk 1 "") \
-		NO_JVMTI=$(puse java) \
-		NO_LIBAUDIT=$(puse audit) \
-		NO_LIBBABELTRACE=$(puse babeltrace) \
-		NO_LIBBIONIC=1 \
-		NO_LIBBPF= \
-		NO_LIBCRYPTO=$(puse crypt) \
-		NO_LIBDW_DWARF_UNWIND= \
-		NO_LIBELF= \
-		NO_LIBNUMA=$(puse numa) \
-		NO_LIBPERL=$(puse perl) \
-		NO_LIBPYTHON=$(puse python) \
-		NO_LIBUNWIND=$(puse unwind) \
-		NO_LIBZSTD=$(puse zstd) \
-		NO_SDT=$(puse systemtap) \
-		NO_SLANG=$(puse slang) \
-		NO_LZMA=$(puse lzma) \
-		NO_ZLIB=$(puse zlib) \
-		WERROR=0 \
-		LIBDIR="/usr/libexec/perf-core" \
-		libdir="${EPREFIX}/usr/$(get_libdir)" \
-		plugindir="${EPREFIX}/usr/$(get_libdir)/perf/plugins" \
+	local emakeargs=(
+		V=1 VF=1
+		HOSTCC="$(tc-getBUILD_CC)" HOSTLD="$(tc-getBUILD_LD)"
+		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)" LD="$(tc-getLD)" NM="$(tc-getNM)"
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
+		prefix="${EPREFIX}/usr" bindir_relative="bin"
+		tipdir="share/doc/${PF}"
+		EXTRA_CFLAGS="${CFLAGS}"
+		EXTRA_LDFLAGS="${LDFLAGS}"
+		ARCH="${arch}"
+		JDIR="${java_dir}"
+		LIBCLANGLLVM=$(usex clang 1 "")
+		LIBPFM4=$(usex libpfm 1 "")
+		NO_AUXTRACE=""
+		NO_BACKTRACE=""
+		NO_CORESIGHT=1
+		NO_DEMANGLE=
+		GTK2=$(usex gtk 1 "")
+		feature-gtk2-infobar=$(usex gtk 1 "")
+		NO_JVMTI=$(puse java)
+		NO_LIBAUDIT=$(puse audit)
+		NO_LIBBABELTRACE=$(puse babeltrace)
+		NO_LIBBIONIC=1
+		NO_LIBBPF=
+		NO_LIBCRYPTO=$(puse crypt)
+		NO_LIBDW_DWARF_UNWIND=
+		NO_LIBELF=
+		NO_LIBNUMA=$(puse numa)
+		NO_LIBPERL=$(puse perl)
+		NO_LIBPYTHON=$(puse python)
+		NO_LIBUNWIND=$(puse unwind)
+		NO_LIBZSTD=$(puse zstd)
+		NO_SDT=$(puse systemtap)
+		NO_SLANG=$(puse slang)
+		NO_LZMA=$(puse lzma)
+		NO_ZLIB=$(puse zlib)
+		WERROR=0
+		LIBDIR="/usr/libexec/perf-core"
+		libdir="${EPREFIX}/usr/$(get_libdir)"
+		plugindir="${EPREFIX}/usr/$(get_libdir)/perf/plugins"
 		"$@"
+	)
+	emake "${emakeargs[@]}"
 }
 
 src_compile() {
