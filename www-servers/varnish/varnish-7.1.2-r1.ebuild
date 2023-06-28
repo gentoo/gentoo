@@ -14,7 +14,7 @@ SRC_URI="http://varnish-cache.org/_downloads/${P}.tgz"
 LICENSE="BSD-2 GPL-2"
 SLOT="0/2"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
-IUSE="jemalloc jit static-libs unwind"
+IUSE="jemalloc jit selinux static-libs unwind"
 
 CDEPEND="
 	sys-libs/readline:=
@@ -25,19 +25,21 @@ CDEPEND="
 	unwind? ( sys-libs/libunwind:= )
 "
 
-#varnish compiles stuff at run time
+# varnish compiles stuff at run time
 RDEPEND="
 	${PYTHON_DEPS}
 	${CDEPEND}
 	acct-user/varnish
 	acct-group/varnish
-	sys-devel/gcc"
-
+	sys-devel/gcc
+	selinux? ( sec-policy/selinux-tgtd )
+"
 DEPEND="
 	${CDEPEND}
 	dev-python/docutils
 	dev-python/sphinx
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
