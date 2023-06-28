@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 LICENSE="GPL-2 public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
-IUSE="ssl nls kerberos tk socks"
+IUSE="ssl nls kerberos tk selinux socks"
 
 RDEPEND="acct-user/fetchmail
 	ssl? (
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	sys-devel/flex
 	nls? ( sys-devel/gettext )"
+RDEPEND+=" selinux? ( sec-policy/selinux-fetchmail )"
 
 DOCS="FAQ FEATURES NEWS NOTES README README.NTLM README.SSL* TODO"
 HTML_DOCS="*.html"
