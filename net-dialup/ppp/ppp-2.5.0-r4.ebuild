@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="activefilter atm gtk pam systemd"
+IUSE="activefilter atm gtk pam selinux systemd"
 
 DEPEND="
 	dev-libs/openssl:0=
@@ -29,6 +29,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	!<net-misc/netifrc-0.7.1-r2
+	selinux? ( sec-policy/selinux-ppp )
 "
 BDEPEND="virtual/pkgconfig"
 PDEPEND="net-dialup/ppp-scripts"
