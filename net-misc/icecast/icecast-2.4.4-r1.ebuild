@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://downloads.xiph.org/releases/icecast/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="kate +speex +ssl +theora +yp"
+IUSE="kate +speex selinux +ssl +theora +yp"
 
 #Although there is a --with-ogg and --with-orbis configure option, they're
 #only useful for specifying paths, not for disabling.
@@ -31,7 +31,10 @@ DEPEND="
 	theora? ( media-libs/libtheora )
 	yp? ( net-misc/curl )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-icecast )
+"
 
 PATCHES=(
 	# bug #368539
