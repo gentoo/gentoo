@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
-IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh static xmpp"
+IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc openipmi +openssl oracle +postgres proxy selinux server snmp sqlite ssh static xmpp"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	?? ( gnutls mbedtls openssl )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
@@ -63,6 +63,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-libs/libpcre
 		net-analyzer/fping[suid]
 	)
+	selinux? ( sec-policy/selinux-zabbix )
 	server? (
 		app-admin/webapp-config
 		dev-libs/libpcre
