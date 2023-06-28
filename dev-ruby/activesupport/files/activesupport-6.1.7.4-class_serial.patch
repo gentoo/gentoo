@@ -1,0 +1,23 @@
+From 45e9d5ea0dc61eb8d5977ef4f0d416d0ffcb8575 Mon Sep 17 00:00:00 2001
+From: Jean Boussier <jean.boussier@gmail.com>
+Date: Thu, 15 Dec 2022 10:06:04 +0100
+Subject: [PATCH] Merge pull request #46735 from amatsuda/ruby32_class_serial
+
+A quick fix for a Ruby 3.2 + Active Support test failure
+---
+ activesupport/test/executor_test.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/activesupport/test/executor_test.rb b/activesupport/test/executor_test.rb
+index ac87780b23ccb..b3021c4e70ef8 100644
+--- a/test/executor_test.rb
++++ b/test/executor_test.rb
+@@ -194,7 +194,7 @@ def test_hook_insertion_order
+   end
+ 
+   def test_class_serial_is_unaffected
+-    skip if !defined?(RubyVM)
++    skip if !defined?(RubyVM) || !RubyVM.stat.has_key?(:class_serial)
+ 
+     hook = Class.new do
+       define_method(:run) do
