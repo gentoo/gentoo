@@ -32,7 +32,7 @@ RDEPEND="
 	acct-user/varnish
 	acct-group/varnish
 	sys-devel/gcc
-	selinux? ( sec-policy/selinux-tgtd )
+	selinux? ( sec-policy/selinux-varnishd )
 "
 DEPEND="
 	${CDEPEND}
