@@ -61,7 +61,7 @@ RDEPEND="
 		sys-devel/clang:=
 		sys-devel/llvm:=
 	)
-	crypt? ( virtual/libcrypt:= )
+	crypt? ( dev-libs/openssl:= )
 	gtk? ( x11-libs/gtk+:2 )
 	java? ( virtual/jre:* )
 	libpfm? ( dev-libs/libpfm:= )
