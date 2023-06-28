@@ -28,7 +28,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="internal-tls ipv6 netlink sqlite +suiteb +wps +crda"
+IUSE="internal-tls ipv6 netlink selinux sqlite +suiteb +wps +crda"
 
 DEPEND="
 	internal-tls? ( dev-libs/libtommath )
@@ -38,8 +38,12 @@ DEPEND="
 		crda? ( net-wireless/crda )
 	)
 	netlink? ( net-libs/libnfnetlink )
-	sqlite? ( >=dev-db/sqlite-3 )"
-RDEPEND="${DEPEND}"
+	sqlite? ( >=dev-db/sqlite-3 )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-hostapd )
+"
 BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
