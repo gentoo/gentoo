@@ -53,13 +53,14 @@ BDEPEND="
 	)
 "
 
-RDEPEND="audit? ( sys-process/audit )
+RDEPEND="
+	audit? ( sys-process/audit )
 	babeltrace? ( dev-util/babeltrace )
-	crypt? ( virtual/libcrypt:= )
 	clang? (
 		sys-devel/clang:=
 		sys-devel/llvm:=
 	)
+	crypt? ( virtual/libcrypt:= )
 	gtk? ( x11-libs/gtk+:2 )
 	java? ( virtual/jre:* )
 	libpfm? ( dev-libs/libpfm )
@@ -73,7 +74,8 @@ RDEPEND="audit? ( sys-process/audit )
 	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd )
 	dev-libs/elfutils
-	sys-libs/binutils-libs:="
+	sys-libs/binutils-libs:=
+"
 
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-5.10
