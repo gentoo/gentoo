@@ -16,7 +16,7 @@ SRC_URI="https://downloads.lightbend.com/${MY_PN}/${PV}/${MY_P}.tgz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
