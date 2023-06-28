@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution https://gitlab.gnome.org/GNOME/e
 LICENSE="|| ( LGPL-2 LGPL-3 ) CC-BY-SA-3.0 FDL-1.3+ OPENLDAP"
 SLOT="2.0"
 
-IUSE="archive +bogofilter geolocation gtk-doc highlight ldap spamassassin spell ssl +weather ytnef"
+IUSE="archive +bogofilter geolocation gtk-doc highlight ldap selinux spamassassin spell ssl +weather ytnef"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
@@ -69,6 +69,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	highlight? ( app-text/highlight )
+	selinux? ( sec-policy/selinux-evolution )
 "
 BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
