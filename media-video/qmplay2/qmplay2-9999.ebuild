@@ -31,14 +31,11 @@ REQUIRED_USE="
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
+	dev-qt/qtgui:5[X(-),vulkan?]
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	media-video/ffmpeg
-	|| (
-		dev-qt/qtgui:5[X(-)]
-		dev-qt/qtgui:5[xcb(-)]
-	)
+	media-video/ffmpeg:=[vaapi?,vdpau?]
 	alsa? ( media-libs/alsa-lib )
 	cdio? ( dev-libs/libcdio[cddb] )
 	extensions? ( dev-qt/qtdeclarative:5 )
@@ -51,16 +48,9 @@ RDEPEND="
 	sid? ( media-libs/libsidplayfp )
 	shaders? ( >=media-libs/shaderc-2020.1 )
 	taglib? ( media-libs/taglib	)
-	vaapi? (
-		>=media-video/ffmpeg-4.1.3[vaapi]
-		media-libs/libva
-	)
-	vdpau? ( media-video/ffmpeg[vdpau] )
+	vaapi? ( media-libs/libva[X] )
 	videofilters? ( dev-qt/qtconcurrent:5 )
-	vulkan? (
-		>=dev-qt/qtgui-5.14.1:5[vulkan]
-		>=media-libs/vulkan-loader-1.2.133
-	)
+	vulkan? ( >=media-libs/vulkan-loader-1.2.133 )
 	xv? ( x11-libs/libXv )
 "
 DEPEND="${RDEPEND}"
@@ -78,6 +68,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_WITH_QT6=Off
 		# core
 		-DUSE_LINK_TIME_OPTIMIZATION=false
 		-DUSE_UPDATES=OFF
