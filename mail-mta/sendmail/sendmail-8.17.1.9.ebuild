@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ fi
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="ipv6 ldap mbox nis sasl sockets ssl tcpd"
+IUSE="ipv6 ldap mbox nis sasl selinux sockets ssl tcpd"
 
 DEPEND="
 	acct-group/smmsp
@@ -49,6 +49,7 @@ RDEPEND="
 	!mail-mta/qmail-ldap
 	!>=mail-mta/ssmtp-2.64-r2[mta]
 	!net-mail/vacation
+	selinux? ( sec-policy/selinux-sendmail )
 "
 BDEPEND="
 	sys-devel/m4
