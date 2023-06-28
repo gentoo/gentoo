@@ -20,8 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( qt5 qt6 )"
 
 # qt6 TODO:
-#  - add dev-qt/qt{gui,opengl}:6 once in the tree, test if qt6 deps okay then
-#  - instrument qmake6 (no eqmake6 in the eclass yet)
+#  - check if all qt6 deps are okay yet
 #  - multibuild for both qt5 and qt6 if requested
 RDEPEND="
 	${PYTHON_DEPS}
@@ -33,7 +32,7 @@ RDEPEND="
 		dev-qt/qtsvg:5
 	)
 	qt6? (
-		dev-qt/qtbase:6
+		dev-qt/qtbase:6[opengl]
 		dev-qt/qtdeclarative:6
 		dev-qt/qtsvg:6
 	)"
@@ -48,7 +47,7 @@ src_configure() {
 	if use qt5; then
 		eqmake5
 	elif use qt6; then
-		die "Qt6 support is not ready yet"
+		eqmake6
 	else
 		# This should never happen if REQUIRED_USE is enforced
 		die "Neither Qt5 nor Qt6 support enabled, aborting"
