@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ SLOT="0"
 KEYWORDS="~amd64 -riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="apidoc bitmap-later debug doc fuse kauth kerberos +modules +namei
-ncurses perl +pthreaded-ubik +supergroups tsm ubik-read-while-write"
+ncurses perl +pthreaded-ubik selinux +supergroups tsm ubik-read-while-write"
 
 BDEPEND="
 	dev-lang/perl
@@ -58,7 +58,9 @@ DEPEND="
 	kauth? ( sys-libs/pam )
 	kerberos? ( virtual/krb5 )
 	ncurses? ( sys-libs/ncurses:0= )"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-afs )"
 
 S="${WORKDIR}/${MY_P}"
 
