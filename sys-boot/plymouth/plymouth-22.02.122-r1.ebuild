@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug +drm +gtk +pango +split-usr static-libs +udev"
+IUSE="debug +drm +gtk +pango selinux +split-usr static-libs +udev"
 
 CDEPEND="
 	>=media-libs/libpng-1.2.16:=
@@ -41,6 +41,7 @@ DEPEND="${CDEPEND}
 "
 # Block due bug #383067
 RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-plymouthd )
 	udev? ( virtual/udev )
 	!<sys-kernel/dracut-0.37-r3
 "
