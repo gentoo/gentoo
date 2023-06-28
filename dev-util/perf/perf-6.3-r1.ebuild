@@ -70,7 +70,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	slang? ( sys-libs/slang )
 	systemtap? ( dev-util/systemtap )
-	unwind? ( sys-libs/libunwind )
+	unwind? ( sys-libs/libunwind:= )
 	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd:= )
 	dev-libs/elfutils
