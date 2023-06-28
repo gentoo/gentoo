@@ -37,7 +37,11 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-batik )"
+BDEPEND="
+	app-arch/zip
+	verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-batik )
+"
+
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/xmlgraphics-batik.apache.org.asc"
 
 DOCS=( CHANGES NOTICE README )
@@ -141,7 +145,7 @@ src_compile() {
 			else
 				# Create the JAR file (not possible without adding at least one file).
 				jar -cfe "${module}.jar" "${JAVA_MAIN_CLASS}" -C . README || die
-				zip -d "${module}.jar" "README"
+				zip -d "${module}.jar" "README" || die
 			fi
 		fi
 
