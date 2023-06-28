@@ -26,7 +26,7 @@ src_prepare() {
 
 src_install() {
 	elisp-install ${PN} ${PN}{,-flymake}.el{,c}
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-make-site-file "${SITEFILE}"
 
 	insinto ${SITEETC}/${PN}
 	doins -r data
