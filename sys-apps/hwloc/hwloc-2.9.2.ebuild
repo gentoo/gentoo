@@ -8,8 +8,10 @@ inherit autotools bash-completion-r1 cuda desktop flag-o-matic systemd toolchain
 MY_PV="v$(ver_cut 1-2)"
 DESCRIPTION="Displays the hardware topology in convenient formats"
 HOMEPAGE="https://www.open-mpi.org/projects/hwloc/"
-SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2
-	https://raw.githubusercontent.com/open-mpi/hwloc/master/contrib/android/assets/lstopo.png"
+SRC_URI="
+	https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2
+	https://raw.githubusercontent.com/open-mpi/hwloc/master/contrib/android/assets/lstopo.png
+"
 
 LICENSE="BSD"
 SLOT="0/15"
@@ -19,7 +21,8 @@ IUSE="cairo +cpuid cuda debug nvml +pci static-libs svg udev valgrind xml X vide
 # opencl: opencl support dropped with x11-drivers/ati-drivers being removed (bug #582406).
 #         anyone with hardware is welcome to step up and help test to get it re-added.
 # video-cards_nvidia: libXext/libX11 deps are only here, see HWLOC_GL_REQUIRES usage in config/hwloc.m4
-RDEPEND=">=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 	cairo? ( >=x11-libs/cairo-1.12.14-r4[X?,svg(+)?,${MULTILIB_USEDEP}] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	nvml? ( x11-drivers/nvidia-drivers[${MULTILIB_USEDEP}] )
@@ -33,12 +36,13 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 		x11-drivers/nvidia-drivers[static-libs]
 		x11-libs/libXext
 		x11-libs/libX11
-	)"
-DEPEND="${RDEPEND}
-	valgrind? ( dev-util/valgrind )"
-# 2.69-r5 for --runstatedir
-BDEPEND=">=sys-devel/autoconf-2.69-r5
-	virtual/pkgconfig"
+	)
+"
+DEPEND="
+	${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )
 
