@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="README"
 inherit ruby-fakegem
 
 DESCRIPTION="A pure Ruby library for generating podcasts from mp3 files"
-HOMEPAGE="http://podcast.rubyforge.org/"
+HOMEPAGE="https://github.com/boncey/ruby-podcast"
 
 LICENSE="GPL-2"
 SLOT="0"
