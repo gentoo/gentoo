@@ -246,7 +246,7 @@ python_install_all() {
 
 	if use emacs; then
 		elisp-install ${PN} contrib/mercurial.el* || die "elisp-install failed!"
-		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
+		elisp-make-site-file "${SITEFILE}"
 	fi
 
 	local RM_CONTRIB=( hgk hg-ssh bash_completion zsh_completion plan9 *.el )
