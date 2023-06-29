@@ -3,18 +3,25 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
+
 inherit distutils-r1
 
 DESCRIPTION="Tools to provide lightweight pipelining in Python"
-HOMEPAGE="https://joblib.readthedocs.io/en/latest/
-	https://github.com/joblib/joblib"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://joblib.readthedocs.io/en/latest/
+	https://github.com/joblib/joblib/
+	https://pypi.org/project/joblib/
+"
+SRC_URI="
+	https://github.com/joblib/joblib/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
@@ -30,17 +37,21 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+EPYTEST_DESELECT=(
+	# https://github.com/joblib/joblib/issues/1115
+	joblib/test/test_memory.py::test_parallel_call_cached_function_defined_in_jupyter
+	# unexpectedly pickleable?
+	joblib/test/test_hashing.py::test_hashing_pickling_error
+)
+
 python_prepare_all() {
 	# unbundle
 	rm -r joblib/externals || die
-	sed -e "s:'joblib.externals[^']*',\?::g" -i setup.py || die
+	sed -e "/joblib.externals/d" -i pyproject.toml || die
 	find -name '*.py' -exec \
 		sed -e 's:\(joblib\)\?\.externals\.::' \
 			-e 's:from \.externals ::' \
 			-i {} + || die
-
-	sed -e 's:test_parallel_call_cached_function_defined_in_jupyter:_&:' \
-		-i joblib/test/test_memory.py || die
 
 	distutils-r1_python_prepare_all
 }
