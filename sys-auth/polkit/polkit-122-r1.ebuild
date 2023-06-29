@@ -152,7 +152,7 @@ src_install() {
 		local unitdir="$(systemd_get_systemunitdir)"
 		unitdir="${unitdir#"${EPREFIX}"}"
 		insinto "${unitdir}/polkit.service.d"
-		doins "${FILESDIR}"/override.conf
+		doins "${FILESDIR}"/00-gentoo.conf
 	fi
 }
 
