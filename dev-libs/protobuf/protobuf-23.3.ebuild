@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib elisp-common flag-o-matic toolchain-funcs
+inherit cmake-multilib elisp-common toolchain-funcs
 
 if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
@@ -12,50 +12,34 @@ if [[ "${PV}" == *9999 ]]; then
 	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 DESCRIPTION="Google's Protocol Buffers - Extensible mechanism for serializing structured data"
-HOMEPAGE="https://developers.google.com/protocol-buffers/"
+HOMEPAGE="https://protobuf.dev/"
 
 LICENSE="BSD"
-SLOT=$(ver_cut 3)
-SLOT="0/$(ver_cut 1-2).${SLOT:-0}"
-IUSE="emacs examples static-libs test zlib"
+SLOT="0/$(ver_cut 1-2)"
+IUSE="emacs examples test zlib"
 RESTRICT="!test? ( test )"
 
 BDEPEND="emacs? ( app-editors/emacs:* )"
-CDEPEND="
+DEPEND="
 	dev-cpp/abseil-cpp:=[${MULTILIB_USEDEP}]
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
-"
-DEPEND="${CDEPEND}
 	test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 "
-RDEPEND="${CDEPEND}
+RDEPEND="
 	emacs? ( app-editors/emacs:* )
+	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-23.3-disable-32-bit-tests.patch"
+	"${FILESDIR}/${PN}-23.3-static_assert-failure.patch"
+)
+
 DOCS=( CONTRIBUTORS.txt README.md )
-
-src_prepare() {
-	cmake_src_prepare
-
-	# https://github.com/protocolbuffers/protobuf/issues/8082
-	sed -e "/^TEST_F(IoTest, LargeOutput) {$/,/^}$/d" -i src/google/protobuf/io/zero_copy_stream_unittest.cc || die
-
-	# https://github.com/protocolbuffers/protobuf/issues/8459
-	sed \
-		-e "/^TEST(ArenaTest, BlockSizeSmallerThanAllocation) {$/a\\  if (sizeof(void*) == 4) {\n    GTEST_SKIP();\n  }" \
-		-e "/^TEST(ArenaTest, SpaceAllocated_and_Used) {$/a\\  if (sizeof(void*) == 4) {\n    GTEST_SKIP();\n  }" \
-		-i src/google/protobuf/arena_unittest.cc || die
-
-	# https://github.com/protocolbuffers/protobuf/issues/8460
-	sed -e "/^TEST(AnyTest, TestPackFromSerializationExceedsSizeLimit) {$/a\\  if (sizeof(void*) == 4) {\n    GTEST_SKIP();\n  }" -i src/google/protobuf/any_test.cc || die
-
-	# https://github.com/protocolbuffers/protobuf/issues/9433
-	sed -e "/^[[:space:]]*static_assert(alignof(U) <= 8, \"\");$/d" -i src/google/protobuf/descriptor.cc || die
-}
 
 src_configure() {
 	if tc-ld-is-gold; then
@@ -69,10 +53,12 @@ src_configure() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-Dprotobuf_DISABLE_RTTI=ON
-		-Dprotobuf_BUILD_TESTS=$(usex test ON OFF)
-		$(usex test -Dprotobuf_USE_EXTERNAL_GTEST=ON '')
+		-Dprotobuf_BUILD_EXAMPLES=$(usex examples)
+		-Dprotobuf_WITH_ZLIB=$(usex zlib)
+		-Dprotobuf_BUILD_TESTS=$(usex test)
 		-Dprotobuf_ABSL_PROVIDER=package
 	)
+	use test && mycmakeargs+=(-Dprotobuf_USE_EXTERNAL_GTEST=ON)
 
 	cmake_src_configure
 }
