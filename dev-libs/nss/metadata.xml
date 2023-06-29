@@ -9,7 +9,7 @@
   <flag name="cacert">
     Include root/class3 certs from CAcert (https://www.cacert.org/)
   </flag>
-  <flag name="utils">Compile and install all extra binaries, such as certutil, modutil and tons more</flag>
+  <flag name="utils">Compile and install all extra binaries, such as certutil, modutil and few more</flag>
 </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:mozilla:nss</remote-id>
