@@ -35,7 +35,7 @@ else
 	LANGS=" de es fr he hu ja pl pt-BR sl sq uk zh-CN zh-TW"
 fi
 
-IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc flickr gamepad geolocation gmic keyring gphoto2 graphicsmagick heif jpeg2k kwallet lto lua midi nls opencl openmp openexr test tools webp
+IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc gamepad geolocation gmic keyring gphoto2 graphicsmagick heif jpeg2k kwallet lto lua midi nls opencl openmp openexr test tools webp
 	${LANGS// / l10n_}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -77,7 +77,6 @@ DEPEND="dev-db/sqlite:3
 	avif? ( >=media-libs/libavif-0.8.2:= )
 	colord? ( x11-libs/colord-gtk:= )
 	cups? ( net-print/cups )
-	flickr? ( media-libs/flickcurl )
 	gamepad? ( media-libs/libsdl2 )
 	geolocation? ( >=sci-geosciences/osm-gps-map-1.1.0 )
 	gmic? ( media-gfx/gmic )
@@ -145,7 +144,6 @@ src_configure() {
 		-DUSE_AVIF=$(usex avif)
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
 		-DUSE_COLORD=$(usex colord)
-		-DUSE_FLICKR=$(usex flickr)
 		-DUSE_GMIC=$(usex gmic)
 		-DUSE_GRAPHICSMAGICK=$(usex graphicsmagick)
 		-DUSE_KWALLET=$(usex kwallet)
