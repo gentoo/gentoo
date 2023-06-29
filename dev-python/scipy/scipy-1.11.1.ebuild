@@ -58,8 +58,11 @@ RDEPEND="
 	${DEPEND}
 	dev-python/pillow[${PYTHON_USEDEP}]
 "
+# Cython-3 fails if scipy is already installed
+# https://github.com/scipy/scipy/issues/18792
 BDEPEND="
 	dev-lang/swig
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.35[${PYTHON_USEDEP}]
 	>=dev-python/meson-python-0.12.1[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.10.4[${PYTHON_USEDEP}]
