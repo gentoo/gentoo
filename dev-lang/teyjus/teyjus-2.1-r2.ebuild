@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -88,10 +88,7 @@ src_install() {
 	dodoc README.md QUICKSTART
 	if use emacs ; then
 		elisp-install ${PN} emacs/*.{el,elc}
-		cp "${FILESDIR}"/${SITEFILE} "${S}"
-		sed -e "s@/usr/bin/tjcc@${EPREFIX}/usr/bin/tjcc@" -i ${SITEFILE} \
-			|| die "Could not set tjcc executable path in emacs site file"
-		elisp-site-file-install ${SITEFILE}
+		elisp-make-site-file "${SITEFILE}"
 	fi
 	if use examples; then
 		ins_example_dir "handbook/logic"
