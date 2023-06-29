@@ -165,8 +165,7 @@ gnome-base/gnome-extra-apps tracker
 >=app-misc/tracker-miners-3.4.0-r1 rss
 
 # Marek Szuba <marecki@gentoo.org> (2022-11-14)
-# Incomplete dependency tree, no qmake6 instrumentation in either
-# qmake-utils.eclass nor the ebuilds yet.
+# Still not ready.
 dev-python/pyotherside qt6
 
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
