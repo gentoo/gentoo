@@ -33,12 +33,13 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0/beta"
 KEYWORDS="~amd64 ~arm64"
-IUSE="+X component-build cups cpu_flags_arm_neon debug gtk4 +hangouts headless kerberos libcxx lto +official pax-kernel pgo pic +proprietary-codecs pulseaudio qt5 screencast selinux +suid +system-av1 +system-ffmpeg +system-harfbuzz +system-icu +system-png vaapi wayland widevine"
+IUSE="+X component-build cups cpu_flags_arm_neon debug gtk4 +hangouts headless kerberos libcxx lto +official pax-kernel pgo pic +proprietary-codecs pulseaudio qt5 qt6 screencast selinux +suid +system-av1 +system-ffmpeg +system-harfbuzz +system-icu +system-png vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid !libcxx )
 	screencast? ( wayland )
 	!headless? ( || ( X wayland ) )
 	pgo? ( X !wayland )
+	qt6? ( qt5 )
 "
 
 COMMON_X_DEPEND="
@@ -124,6 +125,7 @@ COMMON_DEPEND="
 			dev-qt/qtcore:5
 			dev-qt/qtwidgets:5
 		)
+		qt6? ( dev-qt/qtbase:6[gui,widgets] )
 	)
 "
 RDEPEND="${COMMON_DEPEND}
@@ -133,6 +135,7 @@ RDEPEND="${COMMON_DEPEND}
 			gui-libs/gtk:4[X?,wayland?]
 		)
 		qt5? ( dev-qt/qtgui:5[X?,wayland?] )
+		qt6? ( dev-qt/qtbase:6[X?,wayland?] )
 	)
 	virtual/ttf-fonts
 	selinux? ( sec-policy/selinux-chromium )
@@ -174,6 +177,7 @@ BDEPEND="
 	>=app-arch/gzip-1.7
 	!headless? (
 		qt5? ( dev-qt/qtcore:5 )
+		qt6? ( dev-qt/qtbase:6 )
 	)
 	libcxx? ( >=sys-devel/clang-16 )
 	lto? ( $(depend_clang_llvm_versions 16) )
@@ -281,7 +285,7 @@ pkg_pretend() {
 	pre_build_checks
 
 	if use headless; then
-		local headless_unused_flags=("cups" "kerberos" "pulseaudio" "qt5" "vaapi" "wayland")
+		local headless_unused_flags=("cups" "kerberos" "pulseaudio" "qt5" "qt6" "vaapi" "wayland")
 		for myiuse in ${headless_unused_flags[@]}; do
 			use ${myiuse} && ewarn "Ignoring USE=${myiuse} since USE=headless is set."
 		done
@@ -331,10 +335,12 @@ src_prepare() {
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-cross-compile.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
+		"${FILESDIR}/chromium-qt6.patch"
 		"${FILESDIR}/chromium-98-gtk4-build.patch"
 		"${FILESDIR}/chromium-108-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-109-system-zlib.patch"
 		"${FILESDIR}/chromium-111-InkDropHost-crash.patch"
+
 	)
 
 	if use ppc64 ; then
@@ -947,17 +953,30 @@ chromium_configure() {
 		myconf_gn+=" use_system_libdrm=true"
 		myconf_gn+=" use_system_minigbm=true"
 		myconf_gn+=" use_xkbcommon=true"
-		if use qt5; then
-			local moc_dir="$(qt5_get_bindir)"
+		if use qt5 || use qt6; then
+			local cbuild_libdir=$(get_libdir)
 			if tc-is-cross-compiler; then
 				# Hack to workaround get_libdir not being able to handle CBUILD, bug #794181
 				local cbuild_libdir=$($(tc-getBUILD_PKG_CONFIG) --keep-system-libs --libs-only-L libxslt)
 				cbuild_libdir=${cbuild_libdir:2}
-				moc_dir="${EPREFIX}"/${cbuild_libdir/% }/qt5/bin
+				cbuild_libdir=${cbuild_libdir/% }
 			fi
-			export PATH="${PATH}:${moc_dir}"
+			if use qt5; then
+				if tc-is-cross-compiler; then
+					myconf_gn+=" moc_qt5_path=\"${EPREFIX}/${cbuild_libdir}/qt5/bin\""
+				else
+					myconf_gn+=" moc_qt5_path=\"$(qt5_get_bindir)\""
+				fi
+			fi
+			if use qt6; then
+				myconf_gn+=" moc_qt6_path=\"${EPREFIX}/usr/${cbuild_libdir}/qt6/libexec\""
+			fi
+
+			myconf_gn+=" use_qt=true"
+			myconf_gn+=" use_qt6=$(usex qt6 true false)"
+		else
+			myconf_gn+=" use_qt=false"
 		fi
-		myconf_gn+=" use_qt=$(usex qt5 true false)"
 		myconf_gn+=" ozone_platform_x11=$(usex X true false)"
 		myconf_gn+=" ozone_platform_wayland=$(usex wayland true false)"
 		myconf_gn+=" ozone_platform=$(usex wayland \"wayland\" \"x11\")"
@@ -1239,6 +1258,12 @@ pkg_postinst() {
 			elog "Chromium prefers GTK3 over GTK4 at runtime. To override this"
 			elog "behavior you need to pass --gtk-version=4, e.g. by adding it"
 			elog "to CHROMIUM_FLAGS in /etc/chromium/default."
+		fi
+		if use qt5 && use qt6; then
+			elog "Chromium automatically selects Qt5 or Qt6 based on your desktop"
+			elog "environment. To override you need to pass --qt-version=5 or"
+			elog "--qt-version=6, e.g. by adding it to CHROMIUM_FLAGS in"
+			elog "/etc/chromium/default."
 		fi
 	fi
 }
