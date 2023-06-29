@@ -1,15 +1,15 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit linux-info toolchain-funcs
 
 DESCRIPTION="helper binary and library for sandboxing & restricting privs of service"
 HOMEPAGE="https://android.googlesource.com/platform/external/minijail"
-
 # Use GitHub mirror as Gitiles doesn't generate stable tarballs.
 SRC_URI="https://github.com/google/${PN}/archive/linux-v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-linux-v${PV}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,17 +18,17 @@ IUSE="+seccomp test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/libcap-ng:="
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	test? (
-		virtual/pkgconfig
 		>=dev-cpp/gtest-1.8.0:=
-	)"
-
-S="${WORKDIR}/${PN}-linux-v${PV}"
+	)
+"
+BDEPEND="test? ( virtual/pkgconfig )"
 
 PATCHES=(
-	"${FILESDIR}/minijail-12-makefile.patch"
-	"${FILESDIR}/minijail-17-no-werror.patch"
+	"${FILESDIR}/${PN}-18-makefile.patch"
+	"${FILESDIR}/${PN}-17-no-werror.patch"
 )
 
 pkg_pretend() {
