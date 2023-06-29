@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2023-06-29)
+# Needs <dev-libs/openssl-3 which is EOL beyond September 2023.
+net-misc/curl sslv3
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-05-04)
 # No suitable version of dev-libs/protobuf available.
 dev-java/protobuf-java system-protoc
