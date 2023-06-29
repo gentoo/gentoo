@@ -12,7 +12,8 @@ SRC_URI="https://mdocml.bsd.lv/snapshots/${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="cgi selinux system-man"
+IUSE="cgi selinux system-man test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/zlib
 	system-man? ( !sys-apps/man-db )
@@ -22,6 +23,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	cgi? ( app-text/highlight )
+	test? ( dev-lang/perl )
 "
 RDEPEND+=" selinux? ( sec-policy/selinux-makewhatis )"
 
@@ -105,6 +107,10 @@ src_prepare() {
 src_compile() {
 	default
 	use cgi && emake man.cgi
+}
+
+src_test() {
+	emake regress
 }
 
 src_install() {
