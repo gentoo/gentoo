@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic linux-mod
+inherit flag-o-matic linux-mod-r1
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
