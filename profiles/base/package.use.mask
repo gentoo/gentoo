@@ -7,6 +7,11 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Sam James <sam@gentoo.org> (2023-06-29)
+# Insecure old versions of the SSL/TLS protocol.
+net-libs/gnutls sslv2 sslv3
+dev-libs/openssl sslv2 sslv3
+
+# Sam James <sam@gentoo.org> (2023-06-29)
 # Needs <dev-libs/openssl-3 which is EOL beyond September 2023.
 net-misc/curl sslv3
 
