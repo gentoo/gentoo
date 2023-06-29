@@ -70,9 +70,6 @@ CONFIG_CHECK="~!AFS_FS KEYS"
 ERROR_AFS_FS="OpenAFS conflicts with the in-kernel AFS-support. Make sure not to load both at the same time!"
 ERROR_KEYS="OpenAFS needs CONFIG_KEYS option enabled"
 
-QA_TEXTRELS_x86_fbsd="/boot/modules/libafs.ko"
-QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
-
 pkg_pretend() {
 	if use modules && use kernel_linux && kernel_is -ge ${KERNEL_LIMIT/\./ } ; then
 		ewarn "Gentoo supports kernels which are supported by OpenAFS"
