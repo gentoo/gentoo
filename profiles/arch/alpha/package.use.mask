@@ -1,6 +1,16 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-06-29)
+# Test failures in dev-libs/weston, although not as bad as big-endian
+# (2 at the time of this writing)
+# Upstream has specifically indicated they do not care about niche arches.
+# Use Debian CI as a reference for checking if this succeeded, note that
+# they have test suite in nonfatal mode so Maybe-Successful does NOT
+# indicate a passing test suite, you must check the logs.
+# https://buildd.debian.org/status/logs.php?pkg=weston&arch=alpha
+gui-libs/gtk wayland
+
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # sci-physics/bullet not keyworded here (#908240)
 dev-libs/efl physics
