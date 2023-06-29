@@ -230,6 +230,7 @@ dev-perl/Gtk2-Notify
 >=app-misc/tracker-miners-3.6_alpha
 >=dev-libs/gjs-1.77
 >=dev-libs/libdex-0.3.0
+>=games-puzzle/gnome-sudoku-45_alpha
 >=gnome-base/gnome-settings-daemon-45_alpha
 >=gnome-base/gnome-shell-45_alpha
 >=gnome-base/gsettings-desktop-schemas-45_alpha
