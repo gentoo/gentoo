@@ -198,8 +198,8 @@ src_install() {
 		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libstdc++.so.6 || die
 
 		# unbundle openssl
-		rm "${ED}"/${cudadir}/${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/libssl.so* || die
-		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libssl.so* || die
+		rm "${ED}"/${cudadir}/${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/lib{crypto,ssl}.so* || die
+		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/lib{crypto,ssl}.so* || die
 
 		# unbundle libz
 		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libz.so* || die
