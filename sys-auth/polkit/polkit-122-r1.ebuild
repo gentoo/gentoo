@@ -149,7 +149,8 @@ src_install() {
 			diropts -m 0700 -o polkitd
 		fi
 		keepdir /etc/polkit-1/rules.d
-		install -D -m 0644 ${FILESDIR}/override.conf /etc/systemd/system/polkit.service.d/override.conf
+		insinto /etc/systemd/system/polkit.service.d
+		doins "${FILESDIR}"/override.conf
 	fi
 }
 
