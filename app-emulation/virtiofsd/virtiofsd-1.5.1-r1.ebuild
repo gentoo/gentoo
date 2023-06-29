@@ -124,3 +124,15 @@ src_unpack() {
 		cargo_src_unpack
 	fi
 }
+
+src_install() {
+	cargo_src_install
+
+	# Install 50-qemu-virtiofsd.json but to avoid conflicts with
+	# <app-emulation/qemu-8.0.0 install it under different name. In this case,
+	# smaller number means higher priority, but that's probably what users want
+	# anyway if they install this package on top of app-emulation/qemu.
+	# TODO: remove once old QEMUs are removed from the portage.
+	insinto "/usr/share/qemu/vhost-user"
+	newins "50-qemu-virtiofsd.json" "40-qemu-virtiofsd.json"
+}
