@@ -23,7 +23,7 @@ SLOT="3"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND+=" test? ( >=dev-libs/protobuf-3.21.0 )"
+DEPEND+=" >=dev-libs/protobuf-3.21.0"
 
 all_ruby_prepare() {
 	sed -e '/extensiontask/ s:^:#:' \
