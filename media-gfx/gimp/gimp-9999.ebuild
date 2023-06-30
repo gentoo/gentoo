@@ -215,6 +215,11 @@ _rename_plugins() {
 	)
 }
 
+src_test() {
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}/libgimp:${LD_LIBRARY_PATH}"
+	meson_src_test
+}
+
 src_install() {
 	meson_src_install
 
