@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Guilherme Amadio <amadio@gentoo.org> (2023-06-30)
+# sys-cluster/ceph not keyworded on x86
+>=net-libs/xrootd-5.6.0 ceph
+
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is not keyworded
 app-accessibility/at-spi2-core dbus-broker
