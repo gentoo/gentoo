@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}"
 DOCS=( AUTHORS.rst CHANGELOG.rst README.rst internals.txt )
 
 src_configure() {
-	local emasonargs=(
+	local emesonargs=(
 		-Ddisable-dbus=$(usex dbus false true)
 	)
 
