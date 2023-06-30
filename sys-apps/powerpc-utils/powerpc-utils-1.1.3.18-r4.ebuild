@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,9 +15,7 @@ SRC_URI="http://http.us.debian.org/debian/pool/main/p/powerpc-utils/${PN}_${BASE
 
 HOMEPAGE="http://http.us.debian.org/debian/pool/main/p/powerpc-utils/"
 KEYWORDS="-* ppc ppc64"
-IUSE=""
-DEPEND=""
-RDEPEND="${DEPEND}"
+
 SLOT="0"
 LICENSE="GPL-2"
 
