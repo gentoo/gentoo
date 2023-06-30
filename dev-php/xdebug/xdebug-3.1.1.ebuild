@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -31,8 +31,6 @@ IUSE=""
 # Tests are known to fail
 RESTRICT="test"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 DOCS=( README.rst CREDITS )
 PHP_EXT_ECONF_ARGS=()
 
