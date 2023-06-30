@@ -18,8 +18,8 @@ IUSE="doc examples"
 DEPEND="dev-python/pyparsing[${PYTHON_USEDEP}]"
 RDEPEND="
 	dev-python/pydot[${PYTHON_USEDEP}]
-	media-gfx/graphviz"
-DEPEND="${DEPEND}"
+	media-gfx/graphviz
+"
 BDEPEND="doc? ( dev-python/sphinx )"
 
 EPYTEST_DESELECT=(
