@@ -8,7 +8,8 @@ ECM_TEST="forceoptional"
 KFMIN=5.106.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.9
-inherit ecm plasma.kde.org
+VIRTUALX_REQUIRED="test" # bug 909312 (test fails)
+inherit ecm plasma.kde.org virtualx
 
 DESCRIPTION="Plugin-based system monitoring daemon"
 
