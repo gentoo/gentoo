@@ -62,6 +62,9 @@ python_prepare_all() {
 	append-flags -fno-strict-aliasing
 
 	distutils-r1_python_prepare_all
+
+	# TODO: Please drop once 1.25.0_rc1-meson-pyproject.toml.patch is gone
+	sed -i -e "s:version = \"2.0.0.dev0\":version = \"${PV}\":" pyproject.toml || die
 }
 
 python_configure_all() {
