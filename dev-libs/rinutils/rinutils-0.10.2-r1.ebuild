@@ -15,9 +15,7 @@ IUSE="test"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
 RESTRICT="!test? ( test )"
 
-DEPEND="${RDEPEND}
-	test? ( dev-util/cmocka )"
-BDEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		dev-perl/Env-Path
 		dev-perl/Path-Tiny
@@ -31,7 +29,9 @@ BDEPEND="${RDEPEND}
 		dev-perl/Test-Pod
 		dev-perl/Test-Pod-Coverage
 		dev-perl/Test-Trap
-	)"
+		dev-util/cmocka
+	)
+"
 
 src_configure() {
 	local mycmakeargs=(
