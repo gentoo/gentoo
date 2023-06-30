@@ -12,10 +12,6 @@ SRC_URI="https://github.com/grobian/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
 src_install() {
 	webapp_src_preinst
 
