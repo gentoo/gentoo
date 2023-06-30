@@ -63,6 +63,7 @@ pkg_setup() {
 		check_extra_config
 	fi
 
+	linux-mod-r1_pkg_setup
 }
 
 src_prepare() {
