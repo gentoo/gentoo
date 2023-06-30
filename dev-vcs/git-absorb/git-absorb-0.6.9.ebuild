@@ -86,10 +86,6 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 CC0-1.0 MIT MPL-2.
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
 DOCS=( README.md )
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
