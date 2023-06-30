@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,9 +18,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~riscv x86"
 IUSE="+xA4 +xA9 +x40 +x115"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 S="${DISTDIR}"
 
