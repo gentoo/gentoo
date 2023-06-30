@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	net-libs/zeromq:=
 "
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-ml/dune-configurator
 	test? ( dev-ml/ounit2 )
