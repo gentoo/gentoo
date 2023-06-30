@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,9 +13,6 @@ LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 PATCHES=(
 	# This patch was gained from the elfsign-0.2.2 release
