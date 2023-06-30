@@ -361,6 +361,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-114-gcc12.patch"
 		"${FILESDIR}/chromium-114-sigsegv-dom.patch"
 		"${FILESDIR}/chromium-114-iwyu-gcc-13.patch"
+		"${FILESDIR}/chromium-114-remove-evdev-dep.patch"
 	)
 
 	if use ppc64 ; then
