@@ -25,6 +25,6 @@ DOCS=(
 
 src_compile() {
 	local modlist=( ena=net )
-	local modargs=( BUILD_PARAMS="CONFIG_MODULE_SIG=n BUILD_KERNEL=${KV_DIR}" )
+	local modargs=( CONFIG_MODULE_SIG=n BUILD_KERNEL="${KV_FULL}" )
 	linux-mod-r1_src_compile
 }
