@@ -133,6 +133,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.10.3.0-fix-fmt-v9.patch" #858659
+	"${FILESDIR}/${PN}-3.10.6.0-fix-stdint.patch"
 )
 
 src_prepare() {
