@@ -154,10 +154,6 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
 QA_FLAGS_IGNORED="usr/bin/${PN}
 	/usr/libexec/podman/${PN}"
 
