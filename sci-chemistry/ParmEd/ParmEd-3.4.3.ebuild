@@ -15,8 +15,4 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
 distutils_enable_tests pytest
