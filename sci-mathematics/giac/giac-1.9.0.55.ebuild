@@ -50,7 +50,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.7.0.1-gsl_lapack.patch"
 	"${FILESDIR}/${PN}-1.6.0-pari-2.11.patch"
 	"${FILESDIR}/${PN}-1.9.0.21-pari-2.15.patch"
-	"${FILESDIR}/${PN}-1.9.0.55-disable-failing-tests.patch"
+	"${FILESDIR}/${PN}-1.9.0.55-pari-2.15-test.patch"
+	"${FILESDIR}/${PN}-1.9.0.55-undefined-behavior.patch"
 )
 
 REQUIRED_USE="test? ( gui )"
