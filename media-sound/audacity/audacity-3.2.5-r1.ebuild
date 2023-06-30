@@ -125,6 +125,9 @@ PATCHES=(
 
 	# GCC 13
 	"${FILESDIR}/${PN}-3.2.5-gcc13-deux.patch"
+
+	# gettext 0.22
+	"${FILESDIR}/${PN}-3.2.5-gettext-0.22.patch"
 )
 
 src_prepare() {
