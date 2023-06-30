@@ -17,6 +17,7 @@
     <remote-id type="github">xrootd/xrootd</remote-id>
   </upstream>
   <use>
+    <flag name="ceph">Enable suport for <pkg>sys-cluster/ceph</pkg> (XrdCeph plugin)</flag>
     <flag name="fuse">Enable the <pkg>sys-fs/fuse</pkg> filesystem driver</flag>
     <flag name="http">Enable http protocol support</flag>
     <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for XML parsing (preferred) instead of bundled tinyxml</flag>
