@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# William Hubbs <williamh@gentoo.org> (2023-06-30)
+# multiple repeated issues: Bug: #909394
+net-libs/nodejs lto
+
 # Sam James <sam@gentoo.org> (2023-06-29)
 # Insecure old versions of the SSL/TLS protocol.
 net-libs/gnutls sslv2 sslv3
