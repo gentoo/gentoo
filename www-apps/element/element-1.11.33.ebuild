@@ -12,8 +12,6 @@ SRC_URI="https://github.com/vector-im/element-web/releases/download/v${PV}/${PN}
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 need_httpd
 
 S=${WORKDIR}/${PN}-v${PV}
