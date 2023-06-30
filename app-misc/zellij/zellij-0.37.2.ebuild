@@ -476,8 +476,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 BDEPEND="
 	doc? ( app-text/lowdown )
 "
