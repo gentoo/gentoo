@@ -29,7 +29,7 @@ RDEPEND="
 	dev-ml/base:=
 	dev-ml/zmq:=
 "
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-ml/dune-configurator
 	test? ( dev-ml/ounit2 )
