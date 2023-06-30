@@ -12,5 +12,5 @@
 	</use>
 	<upstream>
 		<remote-id type="github">dynup/kpatch</remote-id>
-  	</upstream>
+	</upstream>
 </pkgmetadata>
