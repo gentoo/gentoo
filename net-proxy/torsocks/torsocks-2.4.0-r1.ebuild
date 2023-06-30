@@ -18,8 +18,6 @@ KEYWORDS="amd64 ~arm x86"
 IUSE="static-libs"
 
 # We do not depend on tor which might be running on a different box
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.0-clang16.patch
