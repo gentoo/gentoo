@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="media-libs/libjpeg-turbo:="
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.3-system-libjpeg-libm.patch
