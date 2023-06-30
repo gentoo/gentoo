@@ -1,0 +1,35 @@
+This patch removes the dependency on libevdev from remoting/host.
+
+According to sultan it's not (currently(?)) used so we can avoid that dependency.
+
+--- a/remoting/host/BUILD.gn
++++ b/remoting/host/BUILD.gn
+@@ -241,10 +241,6 @@ if (is_linux) {
+   pkg_config("xkbcommon") {
+     packages = [ "xkbcommon" ]
+   }
+-
+-  pkg_config("libevdev") {
+-    packages = [ "libevdev" ]
+-  }
+ }
+ 
+ # This must be a static library instead of a source set because
+@@ -572,7 +572,6 @@ static_library("common") {
+       "x11_display_util.cc",
+       "x11_display_util.h",
+     ]
+-    configs += [ ":libevdev" ]
+     libs += [ "//third_party/libei/lib64/libei.a" ]
+     public_deps += [
+       "//third_party/wayland:wayland_client",
+--- a/remoting/host/linux/remote_desktop_portal_injector.cc
++++ b/remoting/host/linux/remote_desktop_portal_injector.cc
+@@ -9,7 +9,6 @@
+ #include <glib-object.h>
+ #include <poll.h>
+ 
+-#include <libevdev/libevdev-uinput.h>
+ #include <utility>
+ 
+ #include "base/check.h"
