@@ -79,7 +79,7 @@ src_prepare() {
 	mv python/README.md python/README.python.md || die
 
 	# bug #662090
-	sed 's@README.md@README.python.md@' -i python/setup.py || die
+	sed -i 's@README.md@README.python.md@' python/setup.py || die
 }
 
 multilib_src_configure() {
