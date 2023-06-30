@@ -32,6 +32,7 @@ RDEPEND="
 "
 
 distutils_enable_sphinx docs \
+	dev-python/myst-parser \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
