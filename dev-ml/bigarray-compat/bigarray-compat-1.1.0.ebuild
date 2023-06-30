@@ -13,7 +13,3 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
