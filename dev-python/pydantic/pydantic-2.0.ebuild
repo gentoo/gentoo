@@ -35,10 +35,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	local EPYTEST_DESELECT=(
-		# expect -Werror
-		tests/test_deprecated.py::test_extra_used_as_enum
-	)
+	local EPYTEST_DESELECT=()
 	local EPYTEST_IGNORE=(
 		# require pytest-examples
 		tests/test_docs.py
