@@ -13,7 +13,7 @@ HOMEPAGE="http://gtk-gnutella.sourceforge.net/"
 
 SLOT="0"
 LICENSE="CC-BY-SA-4.0 GPL-2"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="
 	sys-libs/binutils-libs:=
