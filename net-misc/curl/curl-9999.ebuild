@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/danielstenberg.asc
-inherit autotools multilib-minimal multiprocessing prefix verify-sig
+inherit autotools multilib-minimal multiprocessing prefix toolchain-funcs verify-sig
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.se/"
@@ -137,7 +137,7 @@ multilib_src_configure() {
 	local myconf=()
 
 	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
-	if use ssl ; then
+	if use ssl; then
 		myconf+=( --without-gnutls --without-mbedtls --without-nss --without-rustls )
 
 		if use gnutls; then
@@ -241,7 +241,7 @@ multilib_src_configure() {
 		--without-amissl
 		--without-bearssl
 		$(use_with brotli)
-		--without-fish-functions-dir
+		--with-fish-functions-dir="${EPREFIX}"/usr/share/fish/vendor_completions.d
 		$(use_with http2 nghttp2)
 		--without-hyper
 		$(use_with idn libidn2)
@@ -263,6 +263,7 @@ multilib_src_configure() {
 		--without-wolfssl
 		--with-zlib
 		$(use_with zstd)
+		--with-zsh-functions-dir="${EPREFIX}"/usr/share/zsh/site-functions
 	)
 
 	if use test && multilib_is_native_abi && ( use http2 || use nghttp3 ); then
@@ -305,6 +306,15 @@ multilib_src_configure() {
 	echo "Requires.private: ${priv[*]}" >> libcurl.pc || die
 }
 
+multilib_src_compile() {
+	default
+
+	if multilib_is_native_abi; then
+		# Shell completions
+		! tc-is-cross-compiler && emake -C scripts
+	fi
+}
+
 # There is also a pytest harness that tests for bugs in some very specific
 # situations; we can rely on upstream for this rather than adding additional test deps.
 multilib_src_test() {
@@ -322,6 +332,15 @@ multilib_src_test() {
 	# The network sandbox causes tests 241 and 1083 to fail; these are typically skipped
 	# as most gentoo users don't have an 'ip6-localhost'
 	multilib_is_native_abi && emake test TFLAGS="-n -v -a -k -am -p -j$((7*$(makeopts_jobs))) !241 !1083"
+}
+
+multilib_src_install() {
+	emake DESTDIR="${D}" install
+
+	if multilib_is_native_abi; then
+		# Shell completions
+		! tc-is-cross-compiler && emake -C scripts DESTDIR="${D}" install
+	fi
 }
 
 multilib_src_install_all() {
