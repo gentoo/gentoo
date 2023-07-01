@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-01)
+# Unused Perl virtuals (no reverse deps). Removal in 30 days.
+virtual/perl-Dumpvalue
+virtual/perl-ExtUtils-Constant
+virtual/perl-I18N-LangTags
+virtual/perl-Thread-Queue
+
 # James Le Cuirot <chewi@gentoo.org> (2023-06-25)
 # Impossible to legally obtain the original native full game now. It freezes on
 # keyboard input, is incompatible with PipeWire, and requires gamescope to work
