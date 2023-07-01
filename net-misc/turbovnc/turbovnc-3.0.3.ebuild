@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+server +ssl +viewer"
 REQUIRED_USE="|| ( server viewer )"
 
@@ -66,7 +66,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-vgl-turbovnc )
 "
 
-PATCHES=( "${FILESDIR}"/"${PN}"-3.0-fix-musl-compilation.patch )
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-3.0-fix-musl-compilation.patch
+	"${FILESDIR}"/"${PN}"-3.0.3-java-launcher-32-bit.patch
+)
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/vgl-turbovnc.asc
 
