@@ -1,0 +1,13 @@
+This can use system zstd already but will not find it given
+it does not install cmake files, so use pkg-config.
+https://bugs.gentoo.org/872254
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -114,5 +114,2 @@
+-find_optional_system_library(zstd 3rdparty/zstd 1.4.5)
+-if (${zstd_TYPE} STREQUAL System)
+-	alias_library(Zstd::Zstd zstd::libzstd_shared)
+-	alias_library(pcsx2-zstd zstd::libzstd_shared)
+-endif()
++pkg_check_modules(zstd REQUIRED IMPORTED_TARGET libzstd)
++alias_library(Zstd::Zstd PkgConfig::zstd)

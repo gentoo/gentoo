@@ -55,7 +55,6 @@ COMMON_DEPEND="
 	media-libs/libglvnd
 	media-libs/libpng:=
 	>=media-libs/libsdl2-2.0.22[haptic,joystick]
-	media-libs/libsoundtouch:=
 	media-video/ffmpeg:=
 	net-libs/libpcap
 	net-misc/curl
@@ -85,9 +84,12 @@ FILECAPS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.3351-unbundle.patch
 	"${FILESDIR}"/${PN}-1.7.3468-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.3773-lto.patch
+	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
+	"${FILESDIR}"/${PN}-1.7.4667-system-chdr.patch
+	"${FILESDIR}"/${PN}-1.7.4667-system-gtest.patch
+	"${FILESDIR}"/${PN}-1.7.4667-system-zstd.patch
 )
 
 src_unpack() {
@@ -190,6 +192,9 @@ src_configure() {
 		# (see PCSX2Base.h) and it dies if no support at runtime (AppInit.cpp)
 		# https://github.com/PCSX2/pcsx2/pull/4329
 		-DARCH_FLAG=-msse4.1
+
+		# not packaged due to bug #885471, but still disable for no automagic
+		-DCMAKE_DISABLE_FIND_PACKAGE_Libbacktrace=yes
 
 		# bundled cubeb flags, see media-libs/cubeb and cubeb-automagic.patch
 		-DCHECK_ALSA=$(usex alsa)
