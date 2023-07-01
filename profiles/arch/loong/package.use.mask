@@ -180,7 +180,7 @@ mate-base/mate help
 # LSan: https://reviews.llvm.org/D139686 (LLVM 16 since 20230114)
 # MSan: https://reviews.llvm.org/D152692 (LLVM 17 since 20230629)
 >=sys-libs/compiler-rt-sanitizers-15 -asan
->=sys-libs/compiler-rt-sanitizers-16.0.0_rc1 -lsan -safestack -scudo -tsan -ubsan
+>=sys-libs/compiler-rt-sanitizers-16 -lsan -safestack -scudo -tsan -ubsan
 >=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230630 -msan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
