@@ -1,0 +1,14 @@
+diff --git a/src/test/Makefile.am b/src/test/Makefile.am
+index c12f15c..27d2124 100644
+--- a/src/test/Makefile.am
++++ b/src/test/Makefile.am
+@@ -4,7 +4,7 @@ $(GLIB_CFLAGS)  \
+ -I$(top_srcdir)/src \
+ -I$(top_srcdir)/src/public 
+ 
+-AM_CFLAGS = -Wall -Werror
++AM_CFLAGS = -Wall
+ 
+ CLEANFILES = \
+ *expand 
+
