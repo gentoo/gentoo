@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/pygame/pygame/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${P}.r1.gh.tar.gz
 "
 
 LICENSE="LGPL-2.1"
