@@ -1,6 +1,14 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-01)
+# Upstream accepted vector asm for loong before corresponding assembler
+# support is ready, leading to build failures. Disable asm for the time being
+# before a fix is created.
+#
+# See https://github.com/openssl/openssl/issues/21340
+>=dev-libs/openssl-3.1 asm
+
 # WANG Xuerui <xen0n@gentoo.org> (2023-06-03)
 # sys-cluster/knem not keyworded yet
 # sys-cluster/torque fails to build (seemingly because of incompatible hwloc)
