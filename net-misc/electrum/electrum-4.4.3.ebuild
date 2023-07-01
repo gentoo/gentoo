@@ -102,8 +102,6 @@ pkg_postinst() {
 	ewarn "2. Cryptocurrency ownership is determined solely by the access to"
 	ewarn "   the private key.  If the key is lost or stolen, BTC are unrevocably"
 	ewarn "   lost."
-	ewarn "3. Proof-of-work based cryptocurrencies have negative environmental"
-	ewarn "   impact.  BTC mining is consuming huge amounts of electricity."
 }
 
 pkg_postrm() {
