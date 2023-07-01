@@ -177,6 +177,7 @@ multilib_src_configure() {
 			myconf+=( --with-default-ssl-backend=rustls )
 		else
 			eerror "We can't be here because of REQUIRED_USE."
+			die "Please file a bug, hit impossible condition w/ USE=ssl handling."
 		fi
 
 	else
