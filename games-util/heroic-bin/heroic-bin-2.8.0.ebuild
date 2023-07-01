@@ -12,8 +12,9 @@ CHROMIUM_LANGS="
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
 	sw ta te th tr uk ur vi zh-CN zh-TW
 "
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit chromium-2 desktop xdg
+inherit chromium-2 desktop python-single-r1 xdg
 
 DESCRIPTION="GOG and Epic Games Launcher for Linux"
 HOMEPAGE="https://heroicgameslauncher.com/
@@ -33,8 +34,10 @@ S="${WORKDIR}"/${APP_NAME}
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	app-accessibility/at-spi2-core
 	app-arch/brotli
 	app-arch/bzip2
@@ -119,6 +122,9 @@ src_install() {
 	# see https://github.com/electron/electron/issues/17972
 	fowners root "${app_root}"/chrome-sandbox
 	fperms 4711 "${app_root}"/chrome-sandbox
+
+	dosym -r "${PYTHON}"	\
+		  "${app_root}"/resources/app.asar.unpacked/node_modules/register-scheme/build/node_gyp_bins/python3
 
 	find "${app_dest}" -type f -name "*.a" -exec rm {} + || die
 
