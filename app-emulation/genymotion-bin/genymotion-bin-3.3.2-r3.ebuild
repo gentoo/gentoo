@@ -19,9 +19,12 @@ KEYWORDS="-* ~amd64"
 
 RDEPEND="app-arch/lz4
 	app-crypt/mit-krb5
-	app-emulation/virtualbox
 	|| (
-		dev-libs/openssl-compat:1.1.0
+		app-emulation/qemu[qemu_softmmu_targets_x86_64]
+		app-emulation/virtualbox
+	)
+	|| (
+		dev-libs/openssl-compat:1.1.1
 		=dev-libs/openssl-1.1*:0
 	)
 	dev-libs/glib:2
@@ -39,7 +42,7 @@ RDEPEND="app-arch/lz4
 	x11-libs/libxcb
 	x11-libs/libXext
 	x11-libs/libXi
-	x11-libs/libxkbcommon
+	x11-libs/libxkbcommon[X]
 	x11-libs/libXmu
 	x11-libs/xcb-util
 	x11-libs/xcb-util-image
@@ -127,14 +130,31 @@ src_install() {
 	pax-mark -m "${ED}/opt/${MY_PN}/genymotion"
 	pax-mark -m "${ED}/opt/${MY_PN}/gmtool"
 
-	dosym ../"${MY_PN}"/genyshell /opt/bin/genyshell
-	dosym ../"${MY_PN}"/genymotion /opt/bin/genymotion
-	dosym ../"${MY_PN}"/gmtool /opt/bin/gmtool
+	dosym -r /opt/"${MY_PN}"/genyshell /opt/bin/genyshell
+	dosym -r /opt/"${MY_PN}"/genymotion /opt/bin/genymotion
+	dosym -r /opt/"${MY_PN}"/gmtool /opt/bin/gmtool
 
 	newbashcomp "${MY_PN}/completion/bash/gmtool.bash" gmtool
 
 	insinto /usr/share/zsh/site-functions
 	doins "${MY_PN}/completion/zsh/_gmtool"
 
+	if has_version app-emulation/qemu ; then
+		dodir /opt/"${MY_PN}"/qemu/bin
+		dosym  -r /usr/bin/qemu-system-x86_64 /opt/"${MY_PN}"/qemu/bin/qemu-system-x86_64
+		dosym -r /usr/bin/qemu-img /opt/"${MY_PN}"/qemu/bin/qemu-img
+	fi
+
 	domenu genymobile-genymotion.desktop
+}
+
+pkg_postinst() {
+	if has_version app-emulation/qemu && ! has_version app-emulation/virtualbox ; then
+		ewarn "By default Genymotion is configured to work with VirtualBox hypervisor."
+		ewarn "So you should run command:"
+		ewarn ""
+		ewarn "  gmtool config --hypervisor qemu"
+		ewarn ""
+		ewarn "to change hypervisor to QEMU."
+	fi
 }
