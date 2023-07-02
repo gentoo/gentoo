@@ -12,7 +12,7 @@ MY_PN="OpenSceneGraph"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Open source high performance 3D graphics toolkit"
-HOMEPAGE="http://www.openscenegraph.org/"
+HOMEPAGE="https://www.openscenegraph.org/"
 SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${MY_P}"
 
