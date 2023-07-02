@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="-* ~amd64"
 RESTRICT="bindist fetch"
 
 RDEPEND="dev-libs/expat
-	dev-libs/openssl-compat
+	dev-libs/openssl-compat:1.0.0
 	media-libs/openal
 	virtual/opengl
 	x11-libs/libX11"
