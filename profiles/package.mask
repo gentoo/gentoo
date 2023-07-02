@@ -227,6 +227,7 @@ dev-perl/Gtk2-Notify
 >=gui-libs/libadwaita-1.4_alpha
 >=media-gfx/gnome-font-viewer-45_alpha
 >=net-misc/gnome-remote-desktop-45_alpha
+>=sci-geosciences/gnome-maps-45_alpha
 >=sys-apps/baobab-45_alpha
 >=x11-themes/gnome-backgrounds-45_alpha
 >=x11-wm/mutter-45_alpha
