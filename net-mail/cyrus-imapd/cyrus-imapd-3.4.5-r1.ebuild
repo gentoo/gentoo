@@ -60,9 +60,7 @@ RDEPEND="${DEPEND}
 	acct-group/mail
 	acct-user/cyrus
 	!mail-mta/courier
-	!net-mail/bincimap
 	!net-mail/courier-imap
-	!net-mail/uw-imap
 	!app-arch/dump"
 DEPEND+=" test? ( dev-util/cunit )"
 BDEPEND="sys-devel/flex
