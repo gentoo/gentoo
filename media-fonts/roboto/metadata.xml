@@ -6,6 +6,6 @@
     <name>Fonts</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">google/roboto</remote-id>
+    <remote-id type="github">googlefonts/roboto</remote-id>
   </upstream>
 </pkgmetadata>
