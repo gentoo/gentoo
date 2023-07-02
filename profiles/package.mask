@@ -209,6 +209,7 @@ dev-perl/Gtk2-Notify
 
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
+>=app-editors/gnome-text-editor-45_alpha
 >=app-misc/tracker-3.6_alpha
 >=app-misc/tracker-miners-3.6_alpha
 >=dev-libs/gjs-1.77
