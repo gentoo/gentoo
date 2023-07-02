@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND="
-	dev-python/parse[${PYTHON_USEDEP}]
+	<dev-python/parse-1.19.1[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
