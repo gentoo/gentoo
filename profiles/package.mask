@@ -213,11 +213,6 @@ dev-java/logback-core
 dev-java/logback-classic
 dev-java/netty
 
-# Sam James <sam@gentoo.org> (2023-06-06)
-# Causes "illegal instruction" (SIGILL) errors for some users, pending investigation.
-# See bug #907932.
-=dev-libs/nss-3.90
-
 # Sam James <sam@gentoo.org> (2023-06-05)
 # Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
 =sys-devel/gcc-14.0.0_pre20230604
