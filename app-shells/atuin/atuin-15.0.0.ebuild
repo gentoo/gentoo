@@ -312,7 +312,7 @@ CRATES="
 
 inherit bash-completion-r1 cargo
 
-DESCRIPTION="Magical shell history"
+DESCRIPTION="Shell history manager supporting encrypted synchronisation"
 HOMEPAGE="https://github.com/ellie/atuin"
 SRC_URI="
 	https://github.com/ellie/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
