@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-07-02)
+# Obsolete slot only used by dev-util/cucumber. Use the newer slot
+# instead. Masked for removal on 2023-08-02.
+dev-ruby/multi_test:0
+
 # James Le Cuirot <chewi@gentoo.org> (2023-06-25)
 # Impossible to legally obtain the original native full game now. It freezes on
 # keyboard input, is incompatible with PipeWire, and requires gamescope to work
