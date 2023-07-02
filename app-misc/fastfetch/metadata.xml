@@ -6,7 +6,7 @@
 	<description>Primary maintainer</description>
 </maintainer>
 <upstream>
-	<remote-id type="github">LinusDierheimer/fastfetch</remote-id>
+	<remote-id type="github">fastfetch-cli/fastfetch</remote-id>
 </upstream>
 <use>
 	<flag name="chafa">Enables text/graphics renderer with <pkg>media-gfx/chafa</pkg></flag>
