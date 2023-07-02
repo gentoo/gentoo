@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ MY_P_TTF="LinLibertineTTF_${MY_PV}"
 inherit font
 
 DESCRIPTION="Fonts from the Linux Libertine Open Fonts Project"
-HOMEPAGE="http://libertine-fonts.org/"
+HOMEPAGE="https://libertine-fonts.org/"
 SRC_URI="mirror://sourceforge/linuxlibertine/${MY_P_OTF}.tgz
 	mirror://sourceforge/linuxlibertine/${MY_P_TTF}.tgz"
 S="${WORKDIR}"
