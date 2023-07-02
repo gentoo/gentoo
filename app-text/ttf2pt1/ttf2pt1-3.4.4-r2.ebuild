@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="True Type Font to Postscript Type 1 Converter"
-HOMEPAGE="http://ttf2pt1.sourceforge.net/"
+HOMEPAGE="https://ttf2pt1.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ttf2pt1/${P}.tgz"
 
 LICENSE="ttf2pt1"
