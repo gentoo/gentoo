@@ -217,6 +217,7 @@ dev-perl/Gtk2-Notify
 >=gnome-base/gnome-settings-daemon-45_alpha
 >=gnome-base/gnome-shell-45_alpha
 >=gnome-base/gsettings-desktop-schemas-45_alpha
+>=gnome-base/nautilus-45_alpha
 >=gnome-extra/gnome-calculator-45_alpha
 >=gnome-extra/gnome-characters-45_alpha
 >=gnome-extra/gnome-shell-extensions-45_alpha

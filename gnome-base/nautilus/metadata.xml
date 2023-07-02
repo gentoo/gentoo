@@ -6,6 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
+    <flag name="cloudproviders">Enable the cloudproviders support</flag>
     <flag name="gstreamer">Enable the Audio/Video file properties page</flag>
     <flag name="previewer">Use <pkg>gnome-extra/sushi</pkg> to preview files from the file mananger</flag>
     <flag name="sendto">Enable the nautilus-sendto extension to send files to various locations/devices</flag>
