@@ -33,6 +33,9 @@ src_configure() {
 		-DOPENPGL_ISA_NEON=$(usex cpu_flags_arm_neon)
 	)
 
+	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
+	use cpu_flags_arm_neon && append-flags -flax-vector-conversions
+
 	# Disable asserts
 	append-cppflags $(usex debug '' '-DNDEBUG')
 
