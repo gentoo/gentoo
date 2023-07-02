@@ -63,7 +63,7 @@ python_test() {
 		--verbosity=4 || die "Tests failed with ${EPYTHON}"
 
 	# Workaround for bug #790251
-	rm -r fail2ban.egg-info || die
+	rm -rf fail2ban.egg-info || die
 }
 
 python_install_all() {
