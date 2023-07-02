@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-02)
+# Unmaintained and obsolete package. Last release 10 years ago. Upstream
+# advises to use dev-ruby/memoizable or dev-ruby/memoist instead.
+# Masked for removal on 2023-08-02.
+dev-ruby/memoize
+
+# Hans de Graaff <graaff@gentoo.org> (2023-07-02)
 # Obsolete slot only used by dev-util/cucumber. Use the newer slot
 # instead. Masked for removal on 2023-08-02.
 dev-ruby/multi_test:0
