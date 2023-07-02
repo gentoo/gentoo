@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="A C++ implementation of the SciTokens library with a C library interface"
+DESCRIPTION="C++ implementation of the SciTokens library with a C library interface"
 HOMEPAGE="https://github.com/scitokens/scitokens-cpp"
 SRC_URI="https://github.com/scitokens/scitokens-cpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
