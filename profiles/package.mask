@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2023-07-02)
+# Obsolete package, replaced by dev-util/scap-driver.
+# https://bugs.gentoo.org/907486
+# Masked for removal on 2023-08-02.
+dev-util/sysdig-kmod
+
 # Hans de Graaff <graaff@gentoo.org> (2023-07-02)
 # Unmaintained and obsolete package. Last release 10 years ago. Upstream
 # advises to use dev-ruby/memoizable or dev-ruby/memoist instead.
