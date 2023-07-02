@@ -7,8 +7,8 @@ inherit cmake
 
 MY_PN="ZMusic"
 DESCRIPTION="GZDoom's music system as a standalone library"
-HOMEPAGE="https://github.com/coelckers/ZMusic"
-SRC_URI="https://github.com/coelckers/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/ZDoom/ZMusic"
+SRC_URI="https://github.com/ZDoom/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD DUMB-0.9.3 GPL-3 LGPL-2.1+ LGPL-3 MIT"
 SLOT="0"
