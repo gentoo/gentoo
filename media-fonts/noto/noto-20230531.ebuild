@@ -14,7 +14,7 @@ LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 # Extra allows to optionally reduce disk usage even returning to tofu
-# issue as described in https://www.google.com/get/noto/
+# issue as described in https://fonts.google.com/noto
 IUSE="cjk +extra"
 
 RDEPEND="cjk? ( media-fonts/noto-cjk )"
