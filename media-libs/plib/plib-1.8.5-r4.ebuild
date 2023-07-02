@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools flag-o-matic
 
 DESCRIPTION="Multimedia library used by many games"
-HOMEPAGE="http://plib.sourceforge.net/"
-SRC_URI="http://plib.sourceforge.net/dist/${P}.tar.gz"
+HOMEPAGE="https://plib.sourceforge.net/"
+SRC_URI="https://plib.sourceforge.net/dist/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
