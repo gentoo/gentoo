@@ -234,64 +234,6 @@ dev-python/ntlm-auth
 # Bug: #907211
 =dev-libs/imath-3.1.7
 
-# Andeas K. Hüttel <dilfridge@gentoo.org> (2023-06-02)
-# Work in progress
-=dev-lang/perl-5.38*
-~virtual/perl-Attribute-Handlers-1.30.0
-~virtual/perl-autodie-2.360.0
-~virtual/perl-bignum-0.660.0
-~virtual/perl-Carp-1.540.0
-~virtual/perl-Compress-Raw-Bzip2-2.204.1_rc
-~virtual/perl-Compress-Raw-Zlib-2.204.1_rc
-~virtual/perl-CPAN-2.360.0
-~virtual/perl-Data-Dumper-2.188.0
-~virtual/perl-DB_File-1.858.0
-~virtual/perl-Devel-PPPort-3.710.0
-~virtual/perl-Digest-MD5-2.580.100_rc
-~virtual/perl-Digest-SHA-6.40.0
-~virtual/perl-Encode-3.190.0
-~virtual/perl-ExtUtils-CBuilder-0.280.238
-~virtual/perl-ExtUtils-Install-2.220.0
-~virtual/perl-ExtUtils-MakeMaker-7.700.0
-~virtual/perl-ExtUtils-ParseXS-3.510.0
-~virtual/perl-File-Spec-3.880.0
-~virtual/perl-Getopt-Long-2.540.0
-~virtual/perl-HTTP-Tiny-0.82.0
-~virtual/perl-HTTP-Tiny-0.83.0_rc
-~virtual/perl-HTTP-Tiny-0.86.0
-~virtual/perl-IO-1.520.0
-~virtual/perl-IO-Compress-2.204.0
-~virtual/perl-IO-Socket-IP-0.410.100_rc
-~virtual/perl-IO-Zlib-1.140.0
-~virtual/perl-JSON-PP-4.160.0
-~virtual/perl-libnet-3.150.0
-~virtual/perl-Locale-Maketext-1.330.0
-~virtual/perl-Math-BigInt-1.999.837
-~virtual/perl-Math-BigInt-FastCalc-0.501.300
-~virtual/perl-Math-BigRat-0.262.400
-~virtual/perl-Math-Complex-1.620.0
-~virtual/perl-Memoize-1.160.0
-~virtual/perl-MIME-Base64-3.160.100_rc
-~virtual/perl-Module-CoreList-5.202.305.200
-~virtual/perl-Module-CoreList-5.202.306.170
-~virtual/perl-Module-CoreList-5.202.306.230
-~virtual/perl-Module-CoreList-5.202.307.20
-~virtual/perl-Net-Ping-2.760.0
-~virtual/perl-parent-0.241.0
-~virtual/perl-podlators-5.10.0
-~virtual/perl-Safe-2.440.0
-~virtual/perl-Scalar-List-Utils-1.630.0
-~virtual/perl-Socket-2.36.0
-~virtual/perl-Storable-3.320.0
-~virtual/perl-Test-Simple-1.302.194
-~virtual/perl-Text-Balanced-2.60.0
-~virtual/perl-threads-2.360.0
-~virtual/perl-threads-shared-1.680.0
-~virtual/perl-Time-HiRes-1.977.500
-~virtual/perl-Time-Piece-1.340.101_rc
-~virtual/perl-Unicode-Normalize-1.320.0
-~virtual/perl-XSLoader-0.320.0
-
 # Michał Górny <mgorny@gentoo.org> (2023-05-31)
 # Unmaintained.  Last commit in 2020.  Does not work with Python 3.12.
 # No revdeps.
