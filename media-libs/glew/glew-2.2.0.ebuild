@@ -6,7 +6,7 @@ EAPI=7
 inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="The OpenGL Extension Wrangler Library"
-HOMEPAGE="http://glew.sourceforge.net/"
+HOMEPAGE="https://glew.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="BSD MIT"
