@@ -1,13 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 inherit ruby-fakegem
 
 DESCRIPTION="An HTTP/1.1 pipelining implementation atop Net::HTTP"
-HOMEPAGE="http://docs.seattlerb.org/net-http-pipeline/"
+HOMEPAGE="https://docs.seattlerb.org/net-http-pipeline/"
 
 LICENSE="MIT"
 SLOT="1"
