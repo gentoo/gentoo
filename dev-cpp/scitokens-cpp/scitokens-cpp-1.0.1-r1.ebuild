@@ -13,7 +13,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION=" A C++ implementation of the SciTokens library with a C library interface"
+DESCRIPTION="C++ implementation of the SciTokens library with a C library interface"
 HOMEPAGE="https://scitokens.org/"
 
 LICENSE="Apache-2.0"
