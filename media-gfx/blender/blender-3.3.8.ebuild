@@ -282,6 +282,9 @@ src_configure() {
 		)
 	fi
 
+	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
+	use arm64 && append-flags -flax-vector-conversions
+
 	append-flags $(usex debug '-DDEBUG' '-DNDEBUG')
 
 	if tc-is-gcc ; then
