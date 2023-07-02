@@ -42,6 +42,7 @@ S="${WORKDIR}/${PN}-src-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-unbundle-fltk.patch
+	"${FILESDIR}"/${P}-master-fix.patch
 )
 
 src_prepare() {

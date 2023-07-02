@@ -1,0 +1,31 @@
+From 10beb4212625ee5e6d5b8a55e94d22d70d630217 Mon Sep 17 00:00:00 2001
+From: Jan200101 <sentrycraft123@gmail.com>
+Date: Wed, 19 Apr 2023 14:33:33 +0200
+Subject: [PATCH] include time.h on all platforms
+
+---
+ master/main.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/master/main.cpp b/master/main.cpp
+index a69af8dd0..3226792a7 100644
+--- a/master/main.cpp
++++ b/master/main.cpp
+@@ -38,16 +38,15 @@
+ #include <string.h>
+ 
+ #include <stdint.h>
++#include <time.h>
+ 
+ #ifdef UNIX
+ #include <netinet/in.h>
+ #include <unistd.h>
+-#include <sys/time.h>
+ #endif
+ 
+ #ifdef _WIN32
+ #include <winsock.h>
+-#include <time.h>
+ #define usleep(n) Sleep(n/1000)
+ #endif
+ 
