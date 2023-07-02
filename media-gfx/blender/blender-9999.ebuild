@@ -29,7 +29,7 @@ IUSE="+bullet +dds +fluid +openexr +tbb
 	alembic collada +color-management cuda +cycles cycles-bin-kernels
 	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k
 	man +nanovdb ndof nls openal +oidn +openmp +openpgl +opensubdiv
-	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl
+	+openvdb optix osl +pdf +potrace +pugixml pulseaudio sdl
 	+sndfile test +tiff valgrind wayland X"
 RESTRICT="!test? ( test )"
 
@@ -400,6 +400,14 @@ pkg_postinst() {
 	elog "home directory. This can be done by starting blender, then"
 	elog "changing the 'Temporary Files' directory in Blender preferences."
 	elog
+
+	if use osl; then
+		ewarn ""
+		ewarn "OSL is know to cause runtime segfaults if Mesa has been linked to"
+		ewarn "an other LLVM version than what OSL is linked to."
+		ewarn "See https://bugs.gentoo.org/880671 for more details"
+		ewarn ""
+	fi
 
 	if ! use python_single_target_python3_10; then
 		elog "You are building Blender with a newer python version than"
