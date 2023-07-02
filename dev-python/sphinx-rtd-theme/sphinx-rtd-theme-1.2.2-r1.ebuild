@@ -20,9 +20,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv 
 
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
-	<dev-python/sphinx-7[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.6[${PYTHON_USEDEP}]
-	<dev-python/sphinxcontrib-jquery-5[${PYTHON_USEDEP}]
 	>=dev-python/sphinxcontrib-jquery-4[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -34,8 +32,8 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
-	# unpin docutils
-	sed -i -e '/docutils/s:<0[.]19::' setup.cfg || die
+	# remove upper bounds
+	sed -i -e 's:,\?<[0-9.]*::' setup.cfg || die
 	distutils-r1_src_prepare
 
 	# CI=1 disables rebuilding webpack that requires npm use
