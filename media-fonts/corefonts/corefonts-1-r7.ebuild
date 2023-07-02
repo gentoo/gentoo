@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit font
 
 DESCRIPTION="Microsoft's TrueType core fonts"
-HOMEPAGE="http://corefonts.sourceforge.net/"
+HOMEPAGE="https://corefonts.sourceforge.net/"
 SRC_URI="mirror://gentoo/EUupdate.EXE
 	mirror://sourceforge/corefonts/andale32.exe
 	mirror://sourceforge/corefonts/arialb32.exe
