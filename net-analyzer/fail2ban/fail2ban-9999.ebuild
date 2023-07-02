@@ -50,8 +50,10 @@ python_prepare_all() {
 }
 
 python_test() {
+	# Skip testRepairDb for bug #907348 (didn't always fail..)
 	bin/fail2ban-testcases \
 		--no-network \
+		--ignore databasetestcase.DatabaseTest.testRepairDb \
 		--verbosity=4 || die "Tests failed with ${EPYTHON}"
 
 	# Workaround for bug #790251
