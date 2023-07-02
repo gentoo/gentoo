@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Create DateTime objects with sub-second current time resolution"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~loong ~ppc ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
