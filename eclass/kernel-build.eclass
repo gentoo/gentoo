@@ -39,6 +39,9 @@ BDEPEND="
 	sys-devel/flex
 	virtual/libelf
 	app-alternatives/yacc
+	arm? ( sys-apps/dtc )
+	arm64? ( sys-apps/dtc )
+	riscv? ( sys-apps/dtc )
 "
 
 IUSE="+strip"
