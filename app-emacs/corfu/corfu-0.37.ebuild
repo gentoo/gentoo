@@ -9,12 +9,18 @@ inherit elisp
 
 DESCRIPTION="Completion Overlay Region FUnction"
 HOMEPAGE="https://github.com/minad/corfu/"
-SRC_URI="https://github.com/minad/${PN}/archive/${PV}.tar.gz
-	-> ${P}.tar.gz"
+
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/minad/${PN}.git"
+else
+	SRC_URI="https://github.com/minad/${PN}/archive/${PV}.tar.gz
+		-> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=app-emacs/compat-29.1.3.4"
 BDEPEND="${RDEPEND}"
