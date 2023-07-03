@@ -165,6 +165,7 @@ acct-user_add_deps() {
 	fi
 
 	RDEPEND+=${ACCT_USER_GROUPS[*]/#/ acct-group/}
+	DEPEND+=${ACCT_USER_GROUPS[*]/#/ acct-group/}
 	_ACCT_USER_ADD_DEPS_CALLED=1
 }
 
