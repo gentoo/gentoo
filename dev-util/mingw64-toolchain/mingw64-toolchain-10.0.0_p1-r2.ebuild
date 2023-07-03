@@ -226,9 +226,9 @@ src_compile() {
 		pushd "${build_dir}" >/dev/null || die
 
 		edo "${conf[@]}"
-		emake
+		emake V=1
 		# -j1 to match bug #906155, other packages may be fragile too
-		emake -j1 DESTDIR="${MWT_D}" install
+		emake -j1 V=1 DESTDIR="${MWT_D}" install
 
 		declare -f mwt-${id} >/dev/null && edo mwt-${id}
 		declare -f mwt-${id}_${2} >/dev/null && edo mwt-${id}_${2}
