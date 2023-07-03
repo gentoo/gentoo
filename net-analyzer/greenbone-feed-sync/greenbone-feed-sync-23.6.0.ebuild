@@ -30,10 +30,6 @@ RDEPEND="
 	cron? ( virtual/cron )
 "
 
-python_compile() {
-	distutils-r1_python_compile
-}
-
 python_install() {
 	distutils-r1_python_install
 
@@ -43,7 +39,7 @@ python_install() {
 	gvm ALL = NOPASSWD: /usr/bin/greenbone-feed-sync
 EOF
 
-	if use cron ; then
+	if use cron; then
 		exeinto /etc/cron.daily
 		newexe "${FILESDIR}"/${PN}.cron ${PN}
 	fi
@@ -56,7 +52,7 @@ pkg_postinst() {
 		return
 	fi
 
-	if use cron ; then
+	if use cron; then
 		elog
 		elog "Edit ${EROOT}/etc/cron.weekly/greenbone-feed-sync to activate daily feed update!"
 		elog
