@@ -70,7 +70,6 @@ src_configure() {
 		"-DLOCALSTATEDIR=${EPREFIX}/var"
 		"-DSYSCONFDIR=${EPREFIX}/etc"
 		"-DSBINDIR=${EPREFIX}/usr/bin"
-		"-DGSAD_PID_DIR=/run/gsad"
 		"-DSYSTEMD_SERVICE_DIR=$(systemd_get_systemunitdir)"
 		"-DLOGROTATE_DIR=${EPREFIX}/etc/logrotate.d"
 	)
