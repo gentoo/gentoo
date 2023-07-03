@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-06-03)
+# Breaks dev-perl/Spreadsheet-ParseExcel, see bug #909564.
+# Please upgrade to >=dev-perl/dev-perl/OLE-StorageLite-0.22.0.
+=dev-perl/OLE-StorageLite-0.210.0
+
 # Hans de Graaff <graaff@gentoo.org> (2023-07-02)
 # Unmaintained and obsolete package. Last release 10 years ago. Upstream
 # advises to use dev-ruby/memoizable or dev-ruby/memoist instead.
