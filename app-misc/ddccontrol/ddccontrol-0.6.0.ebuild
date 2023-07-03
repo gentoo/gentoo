@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc gtk nls +pci static-libs"
 
+# Upstream doesn't seem to care about tests: failures for lack of translations,
+# and no real test targets.
+RESTRICT='test'
+
 RDEPEND="app-misc/ddccontrol-db
 	dev-libs/glib:2
 	dev-libs/libxml2:2
