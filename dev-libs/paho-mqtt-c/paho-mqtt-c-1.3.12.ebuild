@@ -24,7 +24,7 @@ IUSE="+high-performance +ssl doc test"
 
 BDEPEND="
 	doc? ( app-doc/doxygen
-	       media-gfx/graphviz )
+		   media-gfx/graphviz )
 	ssl? ( dev-libs/openssl )
 	test? ( dev-lang/python )
 "
@@ -38,11 +38,11 @@ BUILD_DIR="${S}_build"
 
 src_configure(){
 	local mycmakeargs=(
-	-DPAHO_BUILD_SHARED=TRUE
-	-DPAHO_HIGH_PERFORMANCE="$(usex high-performance "TRUE" "FALSE")"
-	-DPAHO_WITH_SSL="$(usex ssl "TRUE" "FALSE")"
-	-DPAHO_BUILD_DOCUMENTATION="$(usex doc "TRUE" "FALSE")"
-	-DPAHO_ENABLE_TESTING="$(usex test "TRUE" "FALSE")"
+		-DPAHO_BUILD_SHARED=TRUE
+		-DPAHO_HIGH_PERFORMANCE="$(usex high-performance "TRUE" "FALSE")"
+		-DPAHO_WITH_SSL="$(usex ssl "TRUE" "FALSE")"
+		-DPAHO_BUILD_DOCUMENTATION="$(usex doc "TRUE" "FALSE")"
+		-DPAHO_ENABLE_TESTING="$(usex test "TRUE" "FALSE")"
 	)
 	cmake_src_configure
 	if use test; then
@@ -58,13 +58,10 @@ src_test() {
 		elog "Disabling tests due to crosscompiling."
 		return
 	fi
-	if use test; then
-		echo "RUNNING TESTS"
 
-		${EPYTHON} "${BUILD_DIR}"/test/"${MY_TEST_UTILS}"/interoperability/startbroker.py -c \
-		"${BUILD_DIR}"/test/"${MY_TEST_UTILS}"/interoperability/localhost_testing.conf &
+	${EPYTHON} "${BUILD_DIR}"/test/"${MY_TEST_UTILS}"/interoperability/startbroker.py -c \
+			   "${BUILD_DIR}"/test/"${MY_TEST_UTILS}"/interoperability/localhost_testing.conf &
 
-		${EPYTHON} "${BUILD_DIR}"/test/mqttsas.py &
-		cmake_src_test
-	fi
+	${EPYTHON} "${BUILD_DIR}"/test/mqttsas.py &
+	cmake_src_test
 }
