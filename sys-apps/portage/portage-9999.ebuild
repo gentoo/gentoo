@@ -50,7 +50,6 @@ DEPEND="
 "
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
-# For compgen, require bash[readline] (bug #445576).
 # app-portage/gemato goes without PYTHON_USEDEP since we're calling
 # the executable.
 RDEPEND="
@@ -62,7 +61,7 @@ RDEPEND="
 	>=sys-apps/findutils-4.4
 	!build? (
 		>=app-admin/eselect-1.2
-		>=app-shells/bash-5.0:0[readline]
+		>=app-shells/bash-5.0:0
 		>=sys-apps/sed-4.0.5
 		>=sec-keys/openpgp-keys-gentoo-release-20230329
 		rsync-verify? (
