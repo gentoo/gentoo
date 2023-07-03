@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,31 +18,34 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa debug jack pulseaudio"
+IUSE="+alsa debug jack pulseaudio qt6"
 
 REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
 BDEPEND="
-	dev-qt/linguist-tools:5
+	qt6? ( dev-qt/qttools:6[linguist] )
+	!qt6? ( dev-qt/linguist-tools:5 )
 "
 DEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
+	qt6? (
+		dev-qt/qtbase:6[gui,network,widgets]
+		dev-qt/qtsvg:6
+	)
+	!qt6? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
+	)
 	media-sound/fluidsynth:=[jack?,alsa?,pulseaudio?]
 "
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	cmake_src_prepare
-
-	sed -e "/^find_package.*QT/s/Qt6 //" -i CMakeLists.txt || die
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DCONFIG_DEBUG=$(usex debug 1 0)
+		-DCONFIG_QT6=$(usex qt6 1 0)
 	)
 	cmake_src_configure
 }
