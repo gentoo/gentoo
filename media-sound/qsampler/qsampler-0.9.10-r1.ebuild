@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Graphical frontend to the LinuxSampler engine"
@@ -21,11 +21,8 @@ SLOT="0"
 IUSE="debug +libgig"
 
 DEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-qt/qtbase:6[gui,network,widgets]
+	dev-qt/qtsvg:6
 	media-libs/alsa-lib
 	media-libs/liblscp:=
 	x11-libs/libX11
@@ -34,24 +31,17 @@ DEPEND="
 RDEPEND="${DEPEND}
 	media-sound/linuxsampler
 "
-BDEPEND="dev-qt/linguist-tools:5"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-0.9.1-cmake-no-git.patch"
-)
+BDEPEND="
+	dev-qt/qttools:6[linguist]
+"
 
 DOCS=( ChangeLog README TRANSLATORS )
-
-src_prepare() {
-	cmake_src_prepare
-
-	sed -e "/^find_package.*QT/s/Qt6 //" -i CMakeLists.txt || die
-}
 
 src_configure() {
 	local mycmakeargs=(
 		-DCONFIG_DEBUG=$(usex debug 1 0)
 		-DCONFIG_LIBGIG=$(usex libgig 1 0)
+		-DCONFIG_QT6=1
 	)
 	cmake_src_configure
 }
