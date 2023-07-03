@@ -35,7 +35,7 @@
 
 # Sam James <sam@gentoo.org> (2023-06-03)
 # Breaks dev-perl/Spreadsheet-ParseExcel, see bug #909564.
-# Please upgrade to >=dev-perl/dev-perl/OLE-StorageLite-0.22.0.
+# Please upgrade to >=dev-perl/dev-perl/OLE-StorageLite-0.220.0.
 =dev-perl/OLE-StorageLite-0.210.0
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-02)
