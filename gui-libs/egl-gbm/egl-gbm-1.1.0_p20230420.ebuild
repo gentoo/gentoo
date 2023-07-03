@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${HASH_EGLGBM}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 	>=media-libs/mesa-21.2[gbm(+)]
