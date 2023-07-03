@@ -8,7 +8,7 @@ inherit multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minim
 MY_P="rust-${PV}"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
 MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2023-06-01/rust-src-${PV}.tar.xz"
-GENTOO_BIN_BASEURI="https://dev.gentoo.org/~gyakovlev/distfiles/${CATEGORY}/${PN}" # omit leading slash
+GENTOO_BIN_BASEURI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}" # omit leading slash
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
@@ -16,7 +16,7 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})
 	rust-src? ( ${MY_SRC_URI} )
 "
 # Keep this separate to allow easy commenting out if not yet built
-SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.xz ) "
+SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.xz -> ${MY_P}-sparc64-unknown-linux-gnu.sam.tar.xz ) "
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
