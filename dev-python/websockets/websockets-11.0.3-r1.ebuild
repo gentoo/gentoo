@@ -41,6 +41,10 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# very fragile to speed
 		tests/legacy/test_protocol.py::ServerTests::test_local_close_receive_close_frame_timeout
+		# requires DNS access
+		# https://bugs.gentoo.org/909567
+		tests/legacy/test_client_server.py::ClientServerTests::test_explicit_host_port
+		tests/legacy/test_client_server.py::SecureClientServerTests::test_explicit_host_port
 	)
 
 	epytest tests
