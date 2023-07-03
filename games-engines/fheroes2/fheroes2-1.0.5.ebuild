@@ -38,6 +38,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/fheroes2-1.0.4-scripts.patch"
+	"${FILESDIR}/fheroes2-1.0.5-gettext.patch"
 )
 
 src_configure() {
