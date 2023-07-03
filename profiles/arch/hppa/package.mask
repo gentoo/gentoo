@@ -8,12 +8,14 @@
 # Fix: https://github.com/torvalds/linux/commit/f66066bc5136f25e36a2daff4896c768f18c211e
 =sys-kernel/gentoo-kernel-6.1.37
 =sys-kernel/gentoo-kernel-6.3.11
-=sys-kernel/gentoo-sources-6.4.1
+=sys-kernel/gentoo-sources-6.1.37
 =sys-kernel/gentoo-sources-6.3.11
+=sys-kernel/gentoo-sources-6.4.1
 =sys-kernel/vanilla-kernel-6.1.37
 =sys-kernel/vanilla-kernel-6.3.11
-=sys-kernel/vanilla-sources-6.4.1
+=sys-kernel/vanilla-sources-6.1.37
 =sys-kernel/vanilla-sources-6.3.11
+=sys-kernel/vanilla-sources-6.4.1
 =virtual/dist-kernel-6.1.37
 =virtual/dist-kernel-6.3.11
 
