@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/906250
+https://github.com/mgieseki/dvisvgm/commit/b16a8d1c452d809118ceade4d2e8c6f9dfce48ac
+
+From b16a8d1c452d809118ceade4d2e8c6f9dfce48ac Mon Sep 17 00:00:00 2001
+From: Martin Gieseking <martin.gieseking@uos.de>
+Date: Fri, 5 May 2023 22:22:00 +0200
+Subject: [PATCH] added missing includes
+
+--- a/src/DVIActions.hpp
++++ b/src/DVIActions.hpp
+@@ -21,6 +21,7 @@
+ #ifndef DVIACTIONS_HPP
+ #define DVIACTIONS_HPP
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- a/src/Pair.hpp
++++ b/src/Pair.hpp
+@@ -22,6 +22,7 @@
+ #define PAIR_HPP
+ 
+ #include <cmath>
++#include <cstdint>
+ #include <ostream>
+ #include "macros.hpp"
+ 
+

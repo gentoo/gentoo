@@ -40,6 +40,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc13.patch
+)
+
 src_configure() {
 	local myargs=(
 		--disable-bundled-libs
