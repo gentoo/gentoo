@@ -26,6 +26,7 @@ BDEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
+	dev-util/wayland-scanner
 	man? ( >=app-text/scdoc-1.9.3 )
 "
 
