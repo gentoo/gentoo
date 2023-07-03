@@ -29,7 +29,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-libs/wayland-protocols-1.14
 "
-BDEPEND="man? ( app-text/scdoc )"
+BDEPEND="
+	dev-util/wayland-scanner
+	man? ( app-text/scdoc )
+"
 
 src_configure() {
 	local emesonargs=(
