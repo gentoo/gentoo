@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-misc/pax-utils
 	app-portage/portage-utils
-	>=app-shells/bash-5.1[readline]
+	>=app-shells/bash-5.1:0[readline]
 	dev-libs/libxml2:2
 	sys-apps/coreutils
 	sys-apps/diffutils
