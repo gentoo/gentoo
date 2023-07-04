@@ -12,19 +12,20 @@ EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
 LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="bmp fbcon truetype +gif +gtk +javascript +jpeg mng
+IUSE="bmp fbcon truetype +gif +gtk +javascript +jpeg
 	+png +psl rosprite +svg +svgtiny +webp"
 
 REQUIRED_USE="|| ( fbcon gtk )"
 
 RDEPEND="
 	>=dev-libs/libcss-9999
-	>=net-libs/libdom-9999
-	net-libs/libhubbub
 	>=dev-libs/libnsutils-9999
+	dev-libs/openssl:=
 	dev-libs/libutf8proc
 	dev-libs/libxml2:2
 	net-misc/curl
+	>=net-libs/libdom-9999
+	net-libs/libhubbub
 	bmp? ( media-libs/libnsbmp )
 	fbcon? (
 		dev-libs/libnsfb
@@ -43,7 +44,6 @@ RDEPEND="
 		dev-lang/duktape:=
 	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	mng? ( media-libs/libmng:= )
 	png? ( media-libs/libpng:0= )
 	psl? ( media-libs/libnspsl )
 	rosprite? ( media-libs/librosprite )
@@ -54,7 +54,6 @@ RDEPEND="
 	webp? ( media-libs/libwebp )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	javascript? ( app-editors/vim-core )
 	dev-libs/check
 	dev-perl/HTML-Parser
 	dev-util/netsurf-buildsystem
@@ -83,22 +82,21 @@ _emake() {
 	local netsurf_makeconf=(
 		"${NETSURF_MAKECONF[@]}"
 		COMPONENT_TYPE=binary
+		NETSURF_FB_FONTLIB=$(usex truetype freetype internal)
+		NETSURF_FB_FONTPATH="${EPREFIX}/usr/share/fonts/dejavu"
 		NETSURF_USE_BMP=$(usex bmp YES NO)
+		NETSURF_USE_DUKTAPE=$(usex javascript YES NO)
 		NETSURF_USE_GIF=$(usex gif YES NO)
 		NETSURF_USE_JPEG=$(usex jpeg YES NO)
 		NETSURF_USE_PNG=$(usex png YES NO)
 		NETSURF_USE_NSPSL=$(usex psl YES NO)
-		NETSURF_USE_MNG=$(usex mng YES NO)
-		NETSURF_USE_WEBP=$(usex webp YES NO)
-		NETSURF_USE_JS=NO
-		NETSURF_USE_DUKTAPE=$(usex javascript YES NO)
 		NETSURF_USE_NSSVG=$(usex svg $(usex svgtiny YES NO) NO)
-		NETSURF_USE_RSVG=$(usex svg $(usex svgtiny NO YES) NO)
+		NETSURF_USE_OPENSSL=YES
 		NETSURF_USE_ROSPRITE=$(usex rosprite YES NO)
-		PKG_CONFIG=$(tc-getPKG_CONFIG)
-		NETSURF_FB_FONTLIB=$(usex truetype freetype internal)
-		NETSURF_FB_FONTPATH="${EPREFIX}/usr/share/fonts/dejavu"
+		NETSURF_USE_RSVG=$(usex svg $(usex svgtiny NO YES) NO)
+		NETSURF_USE_WEBP=$(usex webp YES NO)
 		NETSURF_USE_VIDEO=NO
+		PKG_CONFIG=$(tc-getPKG_CONFIG)
 	)
 
 	emake "${netsurf_makeconf[@]}" $@
