@@ -1,17 +1,11 @@
 https://github.com/PyCQA/pyflakes/commit/836631f2f73d45baa4021453d89fc9fd6f52be58
 https://bugs.gentoo.org/909554
+
 From 836631f2f73d45baa4021453d89fc9fd6f52be58 Mon Sep 17 00:00:00 2001
 From: Anthony Sottile <asottile@umich.edu>
 Date: Mon, 12 Jun 2023 21:00:45 -0400
 Subject: [PATCH] fix error reporter and testsuite in 3.11.4+ (#775)
 
----
- pyflakes/reporter.py      | 3 ++-
- pyflakes/test/test_api.py | 8 ++++++--
- 2 files changed, 8 insertions(+), 3 deletions(-)
-
-diff --git a/pyflakes/reporter.py b/pyflakes/reporter.py
-index af834d1c..65ed4d8e 100644
 --- a/pyflakes/reporter.py
 +++ b/pyflakes/reporter.py
 @@ -56,8 +56,9 @@ def syntaxError(self, filename, msg, lineno, offset, text):
@@ -25,8 +19,6 @@ index af834d1c..65ed4d8e 100644
  
          if offset is not None:
              # some versions of python emit an offset of -1 for certain encoding errors
-diff --git a/pyflakes/test/test_api.py b/pyflakes/test/test_api.py
-index 5c1879c1..13e8f685 100644
 --- a/pyflakes/test/test_api.py
 +++ b/pyflakes/test/test_api.py
 @@ -621,8 +621,12 @@ def test_misencodedFileUTF16(self):
