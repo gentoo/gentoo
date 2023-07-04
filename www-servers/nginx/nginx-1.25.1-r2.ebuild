@@ -59,9 +59,9 @@ HTTP_FANCYINDEX_MODULE_URI="https://github.com/aperezdc/ngx-fancyindex/archive/v
 HTTP_FANCYINDEX_MODULE_WD="${WORKDIR}/ngx-fancyindex-${HTTP_FANCYINDEX_MODULE_PV}"
 
 # http_lua (https://github.com/openresty/lua-nginx-module, BSD license)
-HTTP_LUA_MODULE_PV="b6d167cf1a93c0c885c28db5a439f2404874cb26"
+HTTP_LUA_MODULE_PV="0.10.25"
 HTTP_LUA_MODULE_P="ngx_http_lua-${HTTP_LUA_MODULE_PV}"
-HTTP_LUA_MODULE_URI="https://github.com/openresty/lua-nginx-module/archive/${HTTP_LUA_MODULE_PV}.tar.gz"
+HTTP_LUA_MODULE_URI="https://github.com/openresty/lua-nginx-module/archive/v${HTTP_LUA_MODULE_PV}.tar.gz"
 HTTP_LUA_MODULE_WD="${WORKDIR}/lua-nginx-module-${HTTP_LUA_MODULE_PV}"
 LUA_COMPAT=( luajit )
 
