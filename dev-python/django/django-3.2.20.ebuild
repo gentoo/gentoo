@@ -55,6 +55,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-bashcomp.patch
 	"${FILESDIR}"/django-3.2.19-py311.patch
+	# needed for Python 3.11
+	"${FILESDIR}"/django-3.2.20-urlsplit.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc
