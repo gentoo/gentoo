@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit unpacker
 
 DESCRIPTION="Quake4 SDK"
-HOMEPAGE="https://www.iddevnet.com/quake4/"
+HOMEPAGE="https://iddevnet.dhewm3.org/quake4/Quake4SDK.html"
 SRC_URI="mirror://idsoftware/quake4/source/linux/quake4-linux-${PV}-sdk.x86.run"
 S="${WORKDIR}"
 
