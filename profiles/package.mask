@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-04)
+# Discontinued by upstream. No reverse dependencies. Upstream recommends
+# using dry-inflector. Please file a but if you would like us to package
+# this. Masked for removal on 2023-08-04.
+dev-ruby/inflecto
+
+# Hans de Graaff <graaff@gentoo.org> (2023-07-04)
 # Archived by upstream. No reverse dependencies. Does not work with
 # ruby32. Masked for removal on 2023-08-04.
 dev-ruby/instantiator
