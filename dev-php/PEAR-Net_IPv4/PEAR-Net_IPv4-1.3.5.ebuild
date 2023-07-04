@@ -9,5 +9,5 @@ DESCRIPTION="PEAR class for IP v4 calculations"
 
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
