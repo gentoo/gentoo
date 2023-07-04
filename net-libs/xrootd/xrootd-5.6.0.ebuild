@@ -101,7 +101,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_SYSTEM_ISAL=TRUE
-		-DINSTALL_PYTHON_BINDINGS=FALSE
+		$(usex python "-DINSTALL_PYTHON_BINDINGS=FALSE" "")
 		-DXRDCEPH_SUBMODULE=$(usex ceph)
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex libxml2 "no" "yes")
 		-DCMAKE_DISABLE_FIND_PACKAGE_systemd=$(usex systemd "no" "yes")
