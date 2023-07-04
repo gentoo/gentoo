@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="The notorious fortune program"
-HOMEPAGE="http://www.redellipse.net/code/fortune"
+HOMEPAGE="https://www.shlomifish.org/open-source/projects/fortune-mod/"
 SRC_URI="http://www.redellipse.net/code/downloads/${P}.tar.gz"
 
 LICENSE="BSD"
