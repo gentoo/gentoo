@@ -110,13 +110,13 @@ dist-kernel_install_kernel() {
 		# https://github.com/dracutdevs/dracut/pull/2405
 		shopt -s nullglob
 		local plugins=()
-		for file in "${EROOT}"/usr/lib/kernel/install.d/*.install; do
-			if ! has "${file##*/}" 50-dracut.install 51-dracut-rescue.install; then
-					plugins+=( "${file}" )
-			fi
-		done
 		for file in "${EROOT}"/etc/kernel/install.d/*.install; do
 			plugins+=( "${file}" )
+		done
+		for file in "${EROOT}"/usr/lib/kernel/install.d/*.install; do
+			if ! has "${file##*/}" 50-dracut.install 51-dracut-rescue.install "${plugins[@]##*/}"; then
+					plugins+=( "${file}" )
+			fi
 		done
 		shopt -u nullglob
 		export KERNEL_INSTALL_PLUGINS="${KERNEL_INSTALL_PLUGINS} ${plugins[@]}"
