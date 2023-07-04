@@ -12,7 +12,7 @@ DESCRIPTION="Mozo menu editor for MATE"
 LICENSE="GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}

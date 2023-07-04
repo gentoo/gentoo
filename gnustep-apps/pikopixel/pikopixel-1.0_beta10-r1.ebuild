@@ -6,8 +6,8 @@ inherit gnustep-2
 
 MY_P=${PN//p/P}.Sources.${PV/_beta/-b}a
 DESCRIPTION="a free application for drawing & editing pixel-art images"
-HOMEPAGE="http://twilightedge.com/mac/pikopixel/"
-SRC_URI="http://twilightedge.com/downloads/${MY_P}.tar.gz"
+HOMEPAGE="https://twilightedge.com/mac/pikopixel/"
+SRC_URI="https://twilightedge.com/downloads/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3+"
 SLOT="0"

@@ -24,10 +24,4 @@ x86-linux
 arm64-macos
 ppc-macos
 x64-macos
-sparc-solaris
-sparc64-solaris
 x64-solaris
-x86-solaris
-x64-winnt
-x86-winnt
-x64-cygwin

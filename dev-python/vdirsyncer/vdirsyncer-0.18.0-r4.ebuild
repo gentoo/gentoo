@@ -7,14 +7,13 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1 systemd
+inherit distutils-r1 pypi systemd
 
 DESCRIPTION="Synchronize calendars and contacts"
 HOMEPAGE="
 	https://github.com/pimutils/vdirsyncer/
 	https://pypi.org/project/vdirsyncer/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

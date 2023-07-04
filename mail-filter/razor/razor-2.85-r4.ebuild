@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="selinux"
 
 RDEPEND="
 	dev-perl/URI
@@ -25,6 +26,7 @@ RDEPEND="
 	virtual/perl-Time-HiRes
 	dev-perl/Digest-Nilsimsa
 	|| ( virtual/perl-Digest-SHA dev-perl/Digest-SHA1 )
+	selinux? ( sec-policy/selinux-razor )
 "
 
 PATCHES=(

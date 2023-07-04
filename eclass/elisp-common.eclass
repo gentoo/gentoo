@@ -132,6 +132,17 @@
 # "50${PN}-gentoo.el".  If your subdirectory is not named ${PN}, give
 # the differing name as second argument.
 #
+# For the simple case that only the package's subdirectory needs to be
+# added to the load-path, function elisp-make-site-file() will create
+# and install a site-init file that does just that:
+#
+# @CODE
+# 	elisp-make-site-file "${SITEFILE}"
+# @CODE
+#
+# Again, this must be called in src_install().  See the function's
+# documentation for more details on its usage.
+#
 # @SUBSECTION pkg_setup() usage:
 #
 # If your ebuild uses the elisp-compile eclass function to compile
@@ -599,6 +610,30 @@ elisp-site-file-install() {
 	ret=$?
 	rm -f "${sf}"
 	eend ${ret} "elisp-site-file-install: doins failed" || die
+}
+
+# @FUNCTION: elisp-make-site-file
+# @USAGE: <filename> [subdirectory] [line]...
+# @DESCRIPTION:
+# Create and install a site-init file for the package.  By default,
+# this will add the package's SITELISP subdirectory to Emacs' load-path:
+#
+# @CODE
+# 	(add-to-list 'load-path "@SITELISP@")
+# @CODE
+#
+# Additional arguments are appended as lines to the destination file.
+# Any @SITELISP@, @SITEETC@, and @EMACSMODULES@ tokens in these
+# arguments are replaced, as described for elisp-site-file-install.
+
+elisp-make-site-file() {
+	[[ $1 == [0-9][0-9]*-gentoo.el ]] \
+		|| die "elisp-make-site-file: bad name of site-init file"
+
+	local f="${T}/$1" my_pn="${2:-${PN}}"
+	shift; shift
+	printf "%s\n" "(add-to-list 'load-path \"@SITELISP@\")" "$@" >"${f}" || die
+	elisp-site-file-install "${f}" "${my_pn}"
 }
 
 # @FUNCTION: elisp-site-regen

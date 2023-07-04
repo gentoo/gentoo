@@ -5,11 +5,11 @@ EAPI=7
 
 DESCRIPTION="Tool that converts a PostScript type1 font into a corresponding TeX PK font"
 HOMEPAGE="http://tug.org/texlive/"
-SRC_URI="https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
+SRC_URI="https://dev.gentoo.org/~sam/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 DEPEND=">=dev-libs/kpathsea-6.2.1:="
 RDEPEND="${DEPEND}"

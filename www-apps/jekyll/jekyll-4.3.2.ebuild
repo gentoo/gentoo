@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby30"
 
 inherit ruby-fakegem
 
@@ -95,6 +95,10 @@ all_ruby_prepare() {
 	# Avoid a test failing due to TZ differences
 	sed -e '/contain the proper page data to mimic the post liquid/askip "TZ difference"' \
 		-i test/test_excerpt.rb || die
+
+	# Confused by network-sandbox
+	sed -e "/return true if there's internet/askip \"Confused by network-sandbox\"" \
+		-i test/test_utils.rb || die
 }
 
 src_test() {

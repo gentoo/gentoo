@@ -1,0 +1,39 @@
+https://github.com/ppp-project/ppp/pull/427
+
+From 0c9f2cb93f56d2a14ffcc97f53f4665b7728d8e4 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 28 May 2023 17:01:12 -0400
+Subject: [PATCH] Ensure there is a '/' between PPP_PATH_VARRUN and the PID
+ filename
+
+Bug: https://bugs.gentoo.org/907311
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ pppd/main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pppd/main.c b/pppd/main.c
+index 4455199..c207d10 100644
+--- a/pppd/main.c
++++ b/pppd/main.c
+@@ -888,7 +888,7 @@ create_pidfile(int pid)
+ {
+     FILE *pidfile;
+ 
+-    slprintf(pidfilename, sizeof(pidfilename), "%s%s.pid",
++    slprintf(pidfilename, sizeof(pidfilename), "%s/%s.pid",
+ 	     PPP_PATH_VARRUN, ifname);
+     if ((pidfile = fopen(pidfilename, "w")) != NULL) {
+ 	fprintf(pidfile, "%d\n", pid);
+@@ -907,7 +907,7 @@ create_linkpidfile(int pid)
+     if (linkname[0] == 0)
+ 	return;
+     ppp_script_setenv("LINKNAME", linkname, 1);
+-    slprintf(linkpidfile, sizeof(linkpidfile), "%sppp-%s.pid",
++    slprintf(linkpidfile, sizeof(linkpidfile), "%s/ppp-%s.pid",
+ 	     PPP_PATH_VARRUN, linkname);
+     if ((pidfile = fopen(linkpidfile, "w")) != NULL) {
+ 	fprintf(pidfile, "%d\n", pid);
+-- 
+2.40.1
+

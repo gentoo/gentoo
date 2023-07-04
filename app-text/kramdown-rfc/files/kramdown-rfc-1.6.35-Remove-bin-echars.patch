@@ -1,0 +1,27 @@
+From 4e64df2e00dec244fe1f44233553e1936004b98d Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Sun, 25 Jun 2023 17:32:52 +0200
+Subject: [PATCH] Remove bin/echars
+
+--- a/kramdown-rfc2629.gemspec
++++ b/kramdown-rfc2629.gemspec
+@@ -8,14 +8,10 @@ spec = Gem::Specification.new do |s|
+   s.add_dependency('kramdown-parser-gfm', '~> 1.1')
+   s.add_dependency('certified', '~> 1.0')
+   s.add_dependency('json_pure', '~> 2.0')
+-  s.add_dependency('unicode-name', '~> 1.0')
+-  s.add_dependency('unicode-blocks', '~> 1.0')
+-  s.add_dependency('unicode-scripts', '~> 1.0')
+   s.add_dependency('net-http-persistent', '~> 4.0')
+-  s.add_dependency('differ', '~>0.1')
+-  s.files = Dir['lib/**/*.rb'] + %w(README.md LICENSE kramdown-rfc2629.gemspec bin/kdrfc bin/kramdown-rfc bin/kramdown-rfc2629 bin/doilit bin/echars bin/kramdown-rfc-extract-markdown bin/kramdown-rfc-extract-sourcecode data/kramdown-rfc2629.erb data/encoding-fallbacks.txt data/math.json bin/kramdown-rfc-cache-subseries-bibxml bin/kramdown-rfc-autolink-iref-cleanup bin/de-gfm bin/kramdown-rfc-clean-svg-ids)
++  s.files = Dir['lib/**/*.rb'] + %w(README.md LICENSE kramdown-rfc2629.gemspec bin/kdrfc bin/kramdown-rfc bin/kramdown-rfc2629 bin/doilit bin/kramdown-rfc-extract-markdown bin/kramdown-rfc-extract-sourcecode data/kramdown-rfc2629.erb data/encoding-fallbacks.txt data/math.json bin/kramdown-rfc-cache-subseries-bibxml bin/kramdown-rfc-autolink-iref-cleanup bin/de-gfm bin/kramdown-rfc-clean-svg-ids)
+   s.require_path = 'lib'
+-  s.executables = ['kramdown-rfc', 'kramdown-rfc2629', 'doilit', 'echars',
++  s.executables = ['kramdown-rfc', 'kramdown-rfc2629', 'doilit',
+                    'kramdown-rfc-extract-markdown',
+                    'kramdown-rfc-extract-sourcecode',
+                    'kdrfc', 'kramdown-rfc-cache-i-d-bibxml',
+-- 
+2.39.3
+

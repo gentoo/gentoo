@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}/src"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="lua ods plots tmux wayland X xls xlsx"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DIST_AUTHOR=JBISBEE
 DIST_VERSION=2.4
 inherit perl-module
 
-DESCRIPTION="Persistant XML RSS Encapsulation"
+DESCRIPTION="Persistent XML RSS Encapsulation"
 SRC_URI+="  https://dev.gentoo.org/~tove/distfiles/dev-perl/XML-RSS-Feed/XML-RSS-Feed-2.320.0-patch.tar.bz2"
 
 SLOT="0"

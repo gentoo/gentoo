@@ -15,7 +15,7 @@ DESCRIPTION="Fast C metadata and tag reader for all common audio file formats"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

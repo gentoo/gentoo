@@ -1,0 +1,59 @@
+From 5567dc0ef9133df7cea5b9ae29c4fb642a8fbe83 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 8 Jun 2023 11:40:01 +0200
+Subject: [PATCH] Use CTest module and standard BUILD_TESTING switch
+
+Improves downstream package testing integration.
+
+See also:
+https://cmake.org/cmake/help/latest/command/enable_testing.html
+https://cmake.org/cmake/help/latest/module/CTest.html#module:CTest
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt       | 5 +++--
+ tests/CMakeLists.txt | 2 --
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a271b54..a62ea8f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.4)
+ 
+ project(olm VERSION 3.2.15 LANGUAGES CXX C)
+ 
+-option(OLM_TESTS "Build tests" ON)
+ option(BUILD_SHARED_LIBS "Build as a shared library" ON)
+ 
+ add_definitions(-DOLMLIB_VERSION_MAJOR=${PROJECT_VERSION_MAJOR})
+@@ -52,6 +51,8 @@ add_library(olm
+     lib/curve25519-donna/curve25519-donna.c)
+ add_library(Olm::Olm ALIAS olm)
+ 
++include(CTest)
++
+ # restrict the exported symbols
+ include(GenerateExportHeader)
+ generate_export_header(olm
+@@ -137,6 +138,6 @@ export(EXPORT olm-targets
+     NAMESPACE Olm::)
+ export(PACKAGE Olm)
+ 
+-if (OLM_TESTS)
++if (BUILD_TESTING)
+    add_subdirectory(tests)
+ endif()
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 0343abb..64585ca 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-enable_testing()
+-
+ set(TEST_LIST
+     base64
+     crypto
+-- 
+2.41.0
+

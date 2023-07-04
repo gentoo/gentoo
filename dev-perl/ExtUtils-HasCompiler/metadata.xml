@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">ExtUtils-HasCompiler</remote-id>
+    <remote-id type="cpan-module">ExtUtils::HasCompiler</remote-id>
+    <remote-id type="github">Leont/extutils-hascompiler</remote-id>
+  </upstream>
 </pkgmetadata>

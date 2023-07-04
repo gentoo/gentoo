@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Guilherme Amadio <amadio@gentoo.org> (2023-06-30)
+# sys-cluster/ceph not keyworded on x86
+>=net-libs/xrootd-5.6.0 ceph
+
 # Sam James <sam@gentoo.org> (2023-04-05)
 # x11-drivers/nvidia-drivers is not available for x32
 sys-apps/hwloc nvml

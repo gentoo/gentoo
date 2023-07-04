@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,9 +8,9 @@ inherit font
 
 DESCRIPTION="Vietnamese version of the standard PostScript fonts from URW++"
 # Check updates on:
-# http://vntex.sourceforge.net/fonts/urwvn-ttf/download/
+# https://vntex.sourceforge.net/fonts/urwvn-ttf/download/
 # https://sourceforge.net/projects/vntex/files
-HOMEPAGE="http://vntex.sourceforge.net/"
+HOMEPAGE="https://vntex.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/vntex/urwvn-ttf/${MY_P}-ttf.tar.bz2"
 S="${WORKDIR}/${MY_P}-ttf"
 

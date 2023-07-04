@@ -9,8 +9,8 @@ PYTHON_REQ_USE="threads(+)"
 inherit meson python-single-r1 git-r3
 
 DESCRIPTION="Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system"
-HOMEPAGE="https://github.com/linuxaudio/a2jmidid"
-EGIT_REPO_URI="https://github.com/linuxaudio/a2jmidid.git"
+HOMEPAGE="https://github.com/jackaudio/a2jmidid"
+EGIT_REPO_URI="https://github.com/jackaudio/a2jmidid.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}"
 DOCS=( AUTHORS.rst CHANGELOG.rst README.rst internals.txt )
 
 src_configure() {
-	local emasonargs=(
+	local emesonargs=(
 		-Ddisable-dbus=$(usex dbus false true)
 	)
 

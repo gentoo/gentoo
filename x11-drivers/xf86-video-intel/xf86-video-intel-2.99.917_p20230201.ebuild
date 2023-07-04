@@ -10,7 +10,7 @@ inherit linux-info xorg-3 flag-o-matic
 if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	COMMIT_ID="b74b67f0f321875492968f7097b9d6e82a66d7df"
 	SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/${COMMIT_ID}/${P}.tar.bz2"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
@@ -18,7 +18,7 @@ fi
 
 DESCRIPTION="X.Org driver for Intel cards"
 
-IUSE="debug +sna tools +udev uxa xvmc"
+IUSE="debug +sna tools +udev uxa valgrind xvmc"
 
 REQUIRED_USE="
 	|| ( sna uxa )
@@ -50,8 +50,11 @@ RDEPEND="
 		x11-libs/xcb-util
 	)
 "
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+	valgrind? ( dev-util/valgrind )
+"
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -72,6 +75,7 @@ src_configure() {
 		$(use_enable tools)
 		$(use_enable udev)
 		$(use_enable uxa)
+		$(use_enable valgrind)
 		$(use_enable xvmc)
 	)
 	xorg-3_src_configure

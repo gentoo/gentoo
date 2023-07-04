@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="debug doc exif ffmpegthumbnailer gpu-accel jpeg lcms lirc lua map nls pdf tiff xmp"
+IUSE="debug doc exif ffmpegthumbnailer gpu-accel jpeg jpegxl lcms lirc lua map nls pdf tiff xmp"
 
 RDEPEND="
 	virtual/libintl
@@ -22,6 +22,7 @@ RDEPEND="
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	gpu-accel? ( media-libs/clutter-gtk )
 	jpeg? ( media-libs/libjpeg-turbo:= )
+	jpegxl? ( >=media-libs/libjxl-0.3.7:= )
 	lcms? ( media-libs/lcms:2 )
 	lirc? ( app-misc/lirc )
 	lua? ( ${LUA_DEPS} )
@@ -60,6 +61,7 @@ src_configure() {
 		$(use_enable ffmpegthumbnailer)
 		$(use_enable gpu-accel)
 		$(use_enable jpeg)
+		$(use_enable jpegxl)
 		$(use_enable lcms)
 		$(use_enable lua)
 		$(use_enable lirc)

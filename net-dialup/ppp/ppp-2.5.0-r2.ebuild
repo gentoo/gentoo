@@ -13,7 +13,7 @@ SRC_URI="https://download.samba.org/pub/ppp/${P}.tar.gz
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="activefilter atm gtk pam systemd"
 
 DEPEND="
@@ -35,8 +35,29 @@ PATCHES=(
 )
 
 pkg_setup() {
-	# Avoid linux-info_pkg_setup
-	:
+	local CONFIG_CHECK="~PPP ~PPP_ASYNC ~PPP_SYNC_TTY"
+	local ERROR_PPP="CONFIG_PPP:\t missing PPP support (REQUIRED)"
+	local ERROR_PPP_ASYNC="CONFIG_PPP_ASYNC:\t missing asynchronous serial line discipline"
+	ERROR_PPP_ASYNC+=" (optional, but highly recommended)"
+	local WARNING_PPP_SYNC_TTY="CONFIG_PPP_SYNC_TTY:\t missing synchronous serial line discipline"
+	WARNING_PPP_SYNC_TTY+=" (optional; used by 'sync' pppd option)"
+	if use activefilter ; then
+		CONFIG_CHECK+=" ~PPP_FILTER"
+		local ERROR_PPP_FILTER="CONFIG_PPP_FILTER:\t missing PPP filtering support (REQUIRED)"
+	fi
+	CONFIG_CHECK+=" ~PPP_DEFLATE ~PPP_BSDCOMP ~PPP_MPPE"
+	local ERROR_PPP_DEFLATE="CONFIG_PPP_DEFLATE:\t missing Deflate compression (optional, but highly recommended)"
+	local ERROR_PPP_BSDCOMP="CONFIG_PPP_BSDCOMP:\t missing BSD-Compress compression (optional, but highly recommended)"
+	local WARNING_PPP_MPPE="CONFIG_PPP_MPPE:\t missing MPPE encryption (optional, mostly used by PPTP links)"
+	CONFIG_CHECK+=" ~PPPOE ~PACKET"
+	local WARNING_PPPOE="CONFIG_PPPOE:\t missing PPPoE support (optional, needed by pppoe plugin)"
+	local WARNING_PACKET="CONFIG_PACKET:\t missing AF_PACKET support (optional, used by pppoe plugin)"
+	if use atm ; then
+		CONFIG_CHECK+=" ~PPPOATM"
+		local WARNING_PPPOATM="CONFIG_PPPOATM:\t missing PPPoA support (optional, needed by pppoatm plugin)"
+	fi
+
+	linux-info_pkg_setup
 }
 
 src_configure() {
@@ -90,33 +111,4 @@ src_install() {
 
 pkg_postinst() {
 	tmpfiles_process pppd.conf
-
-	local CONFIG_CHECK="~PPP ~PPP_ASYNC ~PPP_SYNC_TTY"
-	local ERROR_PPP="CONFIG_PPP:\t missing PPP support (REQUIRED)"
-	local ERROR_PPP_ASYNC="CONFIG_PPP_ASYNC:\t missing asynchronous serial line discipline"
-	ERROR_PPP_ASYNC+=" (optional, but highly recommended)"
-	local WARNING_PPP_SYNC_TTY="CONFIG_PPP_SYNC_TTY:\t missing synchronous serial line discipline"
-	WARNING_PPP_SYNC_TTY+=" (optional; used by 'sync' pppd option)"
-	if use activefilter ; then
-		CONFIG_CHECK+=" ~PPP_FILTER"
-		local ERROR_PPP_FILTER="CONFIG_PPP_FILTER:\t missing PPP filtering support (REQUIRED)"
-	fi
-	CONFIG_CHECK+=" ~PPP_DEFLATE ~PPP_BSDCOMP ~PPP_MPPE"
-	local ERROR_PPP_DEFLATE="CONFIG_PPP_DEFLATE:\t missing Deflate compression (optional, but highly recommended)"
-	local ERROR_PPP_BSDCOMP="CONFIG_PPP_BSDCOMP:\t missing BSD-Compress compression (optional, but highly recommended)"
-	local WARNING_PPP_MPPE="CONFIG_PPP_MPPE:\t missing MPPE encryption (optional, mostly used by PPTP links)"
-	CONFIG_CHECK+=" ~PPPOE ~PACKET"
-	local WARNING_PPPOE="CONFIG_PPPOE:\t missing PPPoE support (optional, needed by pppoe plugin)"
-	local WARNING_PACKET="CONFIG_PACKET:\t missing AF_PACKET support (optional, used by pppoe plugin)"
-	if use atm ; then
-		CONFIG_CHECK+=" ~PPPOATM"
-		local WARNING_PPPOATM="CONFIG_PPPOATM:\t missing PPPoA support (optional, needed by pppoatm plugin)"
-	fi
-
-	linux-info_pkg_setup
-
-	echo
-	elog "pon, poff and plog scripts have been supplied for experienced users."
-	elog "Users needing particular scripts (ssh,rsh,etc.) should check out the"
-	elog "/usr/share/doc/${PF}/scripts directory."
 }

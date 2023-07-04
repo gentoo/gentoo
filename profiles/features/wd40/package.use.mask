@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-06-09)
+# Deps on several mkdocs plugins (#882593)
+dev-python/bracex doc
+
 # Matt Turner <mattst88@gentoo.org> (2023-05-12)
 # The Rusticl OpenCL state tracker requires rust
 >=media-libs/mesa-23.1 opencl
@@ -21,6 +25,7 @@ dev-util/gef doc
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi needs Rust.
 net-misc/curl rustls curl_ssl_rustls
+www-servers/apache apache2_modules_tls
 
 # matoro <matoro_gentoo@matoro.tk> (2022-12-01)
 # tree-sitter-grammar.eclass adds dev-util/tree-sitter-cli as test dep
@@ -64,7 +69,7 @@ net-vpn/networkmanager-vpnc gtk
 app-admin/salt keyring neutron
 dev-python/boto test
 dev-python/dask test
-dev-python/docker-py test
+dev-python/docker test
 dev-python/google-api-python-client test
 dev-python/httpx-socks test
 dev-python/hypercorn test

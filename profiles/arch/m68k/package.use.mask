@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
 # Stijn Tintel <stijn@linux-ipv6.be> (2023-02-02)
 # Dependency not keyworded
 # https://bugs.gentoo.org/show_bug.cgi?id=892389

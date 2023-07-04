@@ -124,7 +124,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	raspberry-pi? (
 		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl(+),gles2,video_cards_vc4] )
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	>=sys-libs/zlib-1.2.11
 	udf? ( >=dev-libs/libudfread-1.0.0 )
@@ -146,7 +146,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=dev-libs/wayland-protocols-1.7
 		>=x11-libs/libxkbcommon-0.4.1
 	)
-	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages(+)] )
+	webserver? ( >=net-libs/libmicrohttpd-0.9.55:=[messages(+)] )
 	X? (
 		media-libs/mesa[X]
 		!gles? ( media-libs/libglvnd[X] )

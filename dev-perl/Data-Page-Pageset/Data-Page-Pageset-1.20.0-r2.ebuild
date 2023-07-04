@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ DIST_VERSION=1.02
 
 inherit perl-module
 
-DESCRIPTION="change long page list to be shorter and well navigate"
+DESCRIPTION="Change long page list to be shorter and well navigate"
 
 SLOT="0"
 KEYWORDS="amd64 ~riscv ~x86"

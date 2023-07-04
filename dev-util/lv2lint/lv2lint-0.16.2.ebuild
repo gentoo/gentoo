@@ -11,7 +11,7 @@ SRC_URI="https://git.open-music-kontrollers.ch/~hp/lv2lint/archive/${PV}.tar.gz 
 
 LICENSE="Artistic-2 CC0-1.0 ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 DEPEND="
 	media-libs/lilv

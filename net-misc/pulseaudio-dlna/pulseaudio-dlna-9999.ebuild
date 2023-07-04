@@ -41,7 +41,7 @@ RDEPEND=">=dev-python/protobuf-python-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/zeroconf-0.17.4[${PYTHON_USEDEP}]
 	gnome-base/librsvg[introspection]
 	x11-libs/gtk+:3[introspection]
-	|| ( media-sound/pulseaudio-daemon media-sound/pulseaudio[daemon(+)] )
+	media-sound/pulseaudio-daemon
 	|| (
 		|| (
 			media-video/ffmpeg[encode,mp3,opus,vorbis]

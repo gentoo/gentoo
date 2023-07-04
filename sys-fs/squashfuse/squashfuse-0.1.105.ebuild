@@ -29,7 +29,8 @@ RDEPEND="${COMMON_DEPEND}"
 RESTRICT+=" test"
 
 src_configure() {
-	filter-flags -flto* -fwhole-program -fno-common
+	filter-lto
+	filter-flags -fwhole-program -fno-common
 	eautoreconf
 
 	local econfargs=(

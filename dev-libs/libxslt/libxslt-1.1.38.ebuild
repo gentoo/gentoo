@@ -5,7 +5,7 @@ EAPI=8
 
 # Note: Please bump this in sync with dev-libs/libxml2.
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit flag-o-matic python-r1 multilib-minimal
 
 DESCRIPTION="XSLT libraries and tools"
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	inherit libtool gnome.org
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="MIT"
@@ -94,7 +94,7 @@ multilib_src_test() {
 	default
 
 	if multilib_is_native_abi && use python ; then
-		python_foreach_impl run_in_build_dir libxslt_py_emake test
+		python_foreach_impl run_in_build_dir libxslt_py_emake check
 	fi
 }
 

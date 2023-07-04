@@ -52,6 +52,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/fontforge-doc-no-warn-error.patch
+	"${FILESDIR}"/${PN}-20230101-workaround-broken-translations.patch
 )
 
 pkg_setup() {

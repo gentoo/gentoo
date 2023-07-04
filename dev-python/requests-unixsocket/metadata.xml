@@ -6,6 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">msabramo/requests-unixsocket</remote-id>
 		<remote-id type="pypi">requests-unixsocket</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 # TODO: validate upnp-av dleyna deps
 RDEPEND="
 	>=dev-libs/glib-2.66:2
-	>=media-libs/grilo-0.3.13:${SLOT}=[playlist]
+	~media-libs/grilo-${PV}:${SLOT}=[playlist]
 	freebox? ( net-dns/avahi[dbus] )
 	>=dev-libs/gom-0.4
 	chromaprint? (

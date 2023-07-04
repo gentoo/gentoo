@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,10 +13,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${P}/src"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
 
 src_install() {
 	for i in *.bin; do

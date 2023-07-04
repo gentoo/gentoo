@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit elisp-common distutils-r1 optfeature
 
 if [[ ${PV} == *9999 ]] ; then
@@ -50,7 +50,9 @@ BDEPEND="${RDEPEND}
 	dev-python/wheel
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/requests[${PYTHON_USEDEP}]
+		' python3_{10..11} )
 		dev-vcs/git
 	)
 "
@@ -69,6 +71,16 @@ src_compile() {
 	   elisp-compile *.el
 	   popd >/dev/null || die
 	fi
+}
+
+python_test() {
+	if ! has_version -b "dev-python/requests[${PYTHON_USEDEP}]" ; then
+		EPYTEST_DESELECT=(
+			tests/checks/test_all.py::TestNetworkCheck::test_network_enabled
+		)
+	fi
+
+	epytest
 }
 
 python_install_all() {

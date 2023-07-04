@@ -5,7 +5,7 @@ EAPI=7
 
 inherit mate
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 
 DESCRIPTION="Applets for the MATE Desktop and Panel"
 LICENSE="CC-BY-SA-3.0 FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+"

@@ -21,6 +21,5 @@
     </flag>
     <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
     <flag name="doc">Build the doxygen-described API documentation.</flag>
-    <flag name="valgrind">Compile in valgrind memory hints</flag>
   </use>
 </pkgmetadata>

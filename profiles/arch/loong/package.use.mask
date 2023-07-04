@@ -1,6 +1,32 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-01)
+# Upstream accepted vector asm for loong before corresponding assembler
+# support is ready, leading to build failures. Disable asm for the time being
+# before a fix is created.
+#
+# See https://github.com/openssl/openssl/issues/21340
+>=dev-libs/openssl-3.1 asm
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-06-03)
+# sys-cluster/knem not keyworded yet
+# sys-cluster/torque fails to build (seemingly because of incompatible hwloc)
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_rm_pbs
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-06-03)
+# fails to build with 6.3.x kernel
+sys-cluster/knem modules
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Mike Gilbert <floppym@gentoo.org> (2023-05-27)
+# Newer sd-boot does not use gnuefi.
+>=sys-apps/systemd-254 -boot
+>=sys-apps/systemd-utils-254 -boot
+
 # WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
 # dev-python/pyopengl fails tests
 dev-python/sympy opengl
@@ -52,8 +78,8 @@ sys-apps/fwupd flashrom
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-boot/gnu-efi upstream hasn't merged the loong port yet
 sys-apps/fwupd uefi
-sys-apps/systemd gnuefi
-sys-apps/systemd-utils boot
+<sys-apps/systemd-254 gnuefi
+<sys-apps/systemd-utils-254 boot
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # The loong port of sys-boot/grub:2 isn't upstreamed yet.
@@ -160,8 +186,10 @@ mate-base/mate help
 # UBSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
 # SafeStack: https://reviews.llvm.org/D139494 (LLVM 16 since 20221210)
 # LSan: https://reviews.llvm.org/D139686 (LLVM 16 since 20230114)
+# MSan: https://reviews.llvm.org/D152692 (LLVM 17 since 20230629)
 >=sys-libs/compiler-rt-sanitizers-15 -asan
->=sys-libs/compiler-rt-sanitizers-16.0.0_rc1 -lsan -safestack -scudo -tsan -ubsan
+>=sys-libs/compiler-rt-sanitizers-16 -lsan -safestack -scudo -tsan -ubsan
+>=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230630 -msan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.

@@ -12,7 +12,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Plasma framework"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="gles2-only man wayland"
 
 RESTRICT="test"

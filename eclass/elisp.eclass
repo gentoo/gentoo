@@ -166,7 +166,11 @@ elisp_src_test() {
 elisp_src_install() {
 	elisp-install ${PN} *.el *.elc
 	if [[ -n ${SITEFILE} ]]; then
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+		if [[ -f "${FILESDIR}/${SITEFILE}" ]]; then
+			elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+		else
+			elisp-make-site-file "${SITEFILE}"
+		fi
 	fi
 	if [[ -n ${ELISP_TEXINFO} ]]; then
 		set -- ${ELISP_TEXINFO}

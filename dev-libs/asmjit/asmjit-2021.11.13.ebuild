@@ -15,8 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 

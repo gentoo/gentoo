@@ -16,7 +16,7 @@ SRC_URI="https://gitlab.freedesktop.org/libfprint/${PN}/-/archive/v${PV}/${MY_P}
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
-IUSE="doc pam systemd test"
+IUSE="doc pam selinux systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -53,6 +53,8 @@ BDEPEND="
 		dev-util/gtk-doc
 	)
 "
+
+RDEPEND+=" selinux? ( sec-policy/selinux-fprintd )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.90.7_0001-add-test-feature-and-make-tests-optional.patch"

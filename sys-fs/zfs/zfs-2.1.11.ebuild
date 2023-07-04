@@ -12,7 +12,7 @@ DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
 if [[ ${PV} == "9999" ]]; then
-	inherit git-r3 linux-mod
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openzfs.asc
@@ -24,7 +24,7 @@ else
 	S="${WORKDIR}/${P%_rc?}"
 
 	if [[ ${PV} != *_rc* ]]; then
-		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~sparc"
+		KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~sparc"
 	fi
 fi
 
@@ -292,12 +292,6 @@ pkg_postinst() {
 			elog "  sys-kernel/dracut ( preferred, module maintained by zfs developers )"
 			elog "  sys-kernel/genkernel"
 		fi
-	fi
-
-	if ! use kernel-builtin && [[ ${PV} == "9999" ]]; then
-		einfo "Adding ${P} to the module database to ensure that the"
-		einfo "kernel modules and userland utilities stay in sync."
-		update_moduledb
 	fi
 
 	if systemd_is_booted || has_version sys-apps/systemd; then

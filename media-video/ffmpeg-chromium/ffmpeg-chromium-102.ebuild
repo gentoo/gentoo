@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -166,7 +166,7 @@ src_configure() {
 
 	# LTO support, bug #566282, bug #754654
 	is-flagq "-flto*" && myconf+=( "--enable-lto" )
-	filter-flags "-flto*"
+	filter-lto
 
 	# Mandatory configuration
 	myconf=(
@@ -183,9 +183,6 @@ src_configure() {
 	if tc-is-cross-compiler ; then
 		myconf+=( --enable-cross-compile --arch=$(tc-arch-kernel) --cross-prefix=${CHOST}- --host-cc="$(tc-getBUILD_CC)" )
 		case ${CHOST} in
-			*freebsd*)
-				myconf+=( --target-os=freebsd )
-				;;
 			*mingw32*)
 				myconf+=( --target-os=mingw32 )
 				;;

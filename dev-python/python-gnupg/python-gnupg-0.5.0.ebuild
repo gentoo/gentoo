@@ -4,12 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/vinaysajip.asc
 inherit distutils-r1 verify-sig
 
 DESCRIPTION="A Python wrapper for GnuPG"
-HOMEPAGE="https://docs.red-dove.com/python-gnupg/"
+HOMEPAGE="
+	https://docs.red-dove.com/python-gnupg/
+	https://github.com/vsajip/python-gnupg/
+	https://pypi.org/project/python-gnupg/
+"
 SRC_URI="https://github.com/vsajip/python-gnupg/releases/download/${PV}/${P}.tar.gz"
 SRC_URI+=" verify-sig? ( https://github.com/vsajip/python-gnupg/releases/download/${PV}/${P}.tar.gz.asc )"
 

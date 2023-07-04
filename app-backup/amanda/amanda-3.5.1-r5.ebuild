@@ -11,9 +11,9 @@ SRC_URI="mirror://sourceforge/amanda/${P}.tar.gz"
 
 LICENSE="HPND BSD BSD-2 GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="curl gnuplot ipv6 kerberos minimal ndmp nls readline s3 samba systemd xfs"
-
+IUSE="curl gnuplot ipv6 kerberos minimal ndmp nls readline s3 samba selinux systemd xfs"
 KEYWORDS="amd64 ppc ppc64 ~sparc x86"
+
 DEPEND="
 	acct-group/amanda
 	acct-user/amanda
@@ -42,7 +42,10 @@ DEPEND="
 		virtual/mailx
 		gnuplot? ( sci-visualization/gnuplot )
 	)"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-amanda )
+"
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd

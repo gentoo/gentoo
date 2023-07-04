@@ -13,6 +13,7 @@
 		<changelog>http://ffdiaporama.tuxfamily.org/?page_id=7266&amp;lang=en</changelog>
 		<doc lang="en">http://ffdiaporama.tuxfamily.org/?page_id=6268</doc>
 		<bugs-to>http://ffdiaporama.tuxfamily.org/Forum/viewforum.php?id=4</bugs-to>
+		<remote-id type="github">laurantino/ffdiaporama</remote-id>
 	</upstream>
 	<longdescription lang="en">
 		ffDiaporama is an application for creating video sequences consisting of
@@ -38,6 +39,5 @@
 	</longdescription>
 	<use>
 		<flag name="openclipart">Support openclipart database</flag>
-		<flag name="texturemate">Install extra backgrounds</flag>
 	</use>
 </pkgmetadata>

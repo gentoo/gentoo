@@ -1,0 +1,63 @@
+From 91acf58e953fd6e609788e955d84eab9822d5aa4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 9 Jun 2023 09:58:11 +0100
+Subject: [PATCH 5/6] Respect Gentoo's Python eclasses
+
+[imported from 2.8.10.2-FindPythonLibs.patch]
+[imported from 3.9.0_rc2-FindPythonInterp.patch]
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Modules/FindPythonInterp.cmake
++++ b/Modules/FindPythonInterp.cmake
+@@ -91,6 +91,11 @@ if(PythonInterp_FIND_VERSION)
+ else()
+     set(_PYTHON_FIND_OTHER_VERSIONS ${_PYTHON3_VERSIONS} ${_PYTHON2_VERSIONS} ${_PYTHON1_VERSIONS})
+ endif()
++
++if (CMAKE_GENTOO_BUILD OR CMAKE_BUILD_TYPE STREQUAL Gentoo)
++    set(_Python_NAMES python)
++endif()
++
+ find_program(PYTHON_EXECUTABLE NAMES ${_Python_NAMES})
+ 
+ # Set up the versions we know about, in the order we will search. Always add
+@@ -115,12 +120,13 @@ unset(_PYTHON2_VERSIONS)
+ unset(_PYTHON3_VERSIONS)
+ 
+ # Search for newest python version if python executable isn't found
+-if(NOT PYTHON_EXECUTABLE)
++if(NOT PYTHON_EXECUTABLE AND NOT (CMAKE_GENTOO_BUILD OR CMAKE_BUILD_TYPE STREQUAL Gentoo))
+     foreach(_CURRENT_VERSION IN LISTS _Python_VERSIONS)
+       set(_Python_NAMES python${_CURRENT_VERSION})
+       if(CMAKE_HOST_WIN32)
+         list(APPEND _Python_NAMES python)
+       endif()
++
+       find_program(PYTHON_EXECUTABLE
+         NAMES ${_Python_NAMES}
+         PATHS
+--- a/Modules/FindPythonLibs.cmake
++++ b/Modules/FindPythonLibs.cmake
+@@ -130,6 +130,19 @@ if(DEFINED PYTHON_VERSION_MAJOR AND DEFINED PYTHON_VERSION_MINOR)
+ endif()
+ list(APPEND _Python_VERSIONS ${_PYTHON_FIND_OTHER_VERSIONS})
+ 
++# Gentoo portage requires that you use exactly the given python version
++if (CMAKE_GENTOO_BUILD OR CMAKE_BUILD_TYPE STREQUAL Gentoo)
++    execute_process(COMMAND python -c "import sys; sys.stdout.write('.'.join([str(x) for x in sys.version_info[:2]]))"
++                    OUTPUT_VARIABLE _Gentoo_Python_VERSION)
++    list(FIND _Python_VERSIONS "${_Gentoo_Python_VERSION}" _Gentoo_Python_INDEX)
++    if (_Gentoo_Python_INDEX EQUAL -1)
++       # the current Gentoo python version is not compatible with what is requested
++       set(_Python_VERSIONS)
++    else ()
++       set(_Python_VERSIONS "${_Gentoo_Python_VERSION}")
++    endif ()
++endif()
++
+ unset(_PYTHON_FIND_OTHER_VERSIONS)
+ unset(_PYTHON1_VERSIONS)
+ unset(_PYTHON2_VERSIONS)
+-- 
+2.41.0
+

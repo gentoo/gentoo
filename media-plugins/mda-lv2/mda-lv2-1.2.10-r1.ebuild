@@ -12,7 +12,7 @@ SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 # See README
 LICENSE="|| ( GPL-2+ MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="test"
 # Tests fail because of lvz_new_audioeffectx symbol in plugins, check
 # on new lv2lint release (>0.16.2). See https://gitlab.com/drobilla/mda-lv2/-/issues/2.

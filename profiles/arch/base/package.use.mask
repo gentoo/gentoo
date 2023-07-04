@@ -1,6 +1,18 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2023-06-24)
+# dev-db/mongodb builds practically only on the authors' computer.
+dev-python/pymongo test-full
+
+# Sam James <sam@gentoo.org> (2023-06-09)
+# dev-cpp/cppdap is not keyworded on most arches
+dev-util/cmake debugger
+
+# Sam James <sam@gentoo.org> (2023-05-15)
+# Unkeyworded dependencies
+www-servers/apache apache2_modules_tls
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-22)
 # snap only works on amd64
 kde-plasma/discover snap
@@ -233,10 +245,6 @@ net-vpn/strongswan strongswan_plugins_aesni strongswan_plugins_rdrand strongswan
 # Only available on amd64/x86
 net-analyzer/testssl bundled-openssl kerberos
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
-# Requires media-libs/libheif which is only keyworded for amd64 and x86
-media-gfx/imagemagick heif
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst only has support for assembling bootloader on some arches
 dev-util/catalyst system-bootloader
@@ -316,14 +324,15 @@ media-video/motion mmal
 media-video/ffmpeg mmal
 media-video/ffmpeg-chromium mmal
 media-video/mpv mmal
+net-misc/moonlight mmal
 
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 mroonga galera
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
-# sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd gnuefi
+# sd-boot is not supported on all archs.
+sys-apps/systemd boot gnuefi
 sys-apps/systemd-utils boot
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)

@@ -22,6 +22,7 @@ IUSE="branding pam"
 
 RDEPEND="media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
+	virtual/libcrypt:=
 	x11-apps/sessreg
 	x11-libs/libX11
 	x11-libs/libXft

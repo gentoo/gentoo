@@ -82,6 +82,7 @@ BDEPEND+="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3-cmake_lua_version.patch
+	"${FILESDIR}"/${PN}-3.8-gettext-0.22.patch
 )
 
 DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.adoc"

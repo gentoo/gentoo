@@ -21,6 +21,8 @@ dev-python/autobahn
 >=dev-python/bcrypt-4
 >=dev-python/cryptography-36
 dev-python/josepy
+dev-python/jsonschema-spec
+dev-python/jsonschema-specifications
 dev-python/keyring
 dev-python/libcloud
 dev-python/moto
@@ -32,7 +34,9 @@ dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-git-revision-date-localized-plugin
 dev-python/oauthlib
+dev-python/openapi-spec-validator
 dev-python/openstacksdk
+dev-python/orjson
 dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
@@ -49,11 +53,13 @@ dev-python/python-jose
 dev-python/python-neutronclient
 dev-python/python-openstackclient
 dev-python/python-sshpubkeys
+dev-python/referencing
 dev-python/requests-kerberos
 dev-python/requests-oauthlib
+dev-python/rpds-py
 dev-python/secretstorage
 dev-python/selenium
-dev-python/service_identity
+dev-python/service-identity
 dev-python/setuptools-rust
 dev-python/spur
 dev-python/sshtunnel
@@ -71,6 +77,7 @@ dev-util/git-delta
 dev-util/maturin
 dev-util/tree-sitter-cli
 >=dev-vcs/stgit-2
+>=games-board/gnome-mahjongg-3.40.0
 gnome-base/gdm
 >=gnome-base/gnome-core-apps-3.36.5
 >=gnome-base/gnome-core-libs-3.36.5

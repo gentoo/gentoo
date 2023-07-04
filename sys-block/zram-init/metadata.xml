@@ -9,6 +9,7 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<maintainer status="active">
 			<name>Martin Väth</name>

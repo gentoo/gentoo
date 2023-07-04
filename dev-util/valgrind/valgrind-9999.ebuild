@@ -57,7 +57,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--with-gdbscripts-dir="${EPREFIX}"/usr/share/gdb/auto-load
+	)
 
 	# Respect ar, bug #468114
 	tc-export AR

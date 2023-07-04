@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 MY_USE="perl python ruby"
 MY_USE_PHP="php7-4 php8-0 php8-1 php8-2"
-IUSE="${MY_USE} ${MY_USE_PHP} ssl"
+IUSE="${MY_USE} ${MY_USE_PHP} perl ssl"
 REQUIRED_USE="|| ( ${IUSE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -88,11 +88,17 @@ src_configure() {
 src_install() {
 	default
 
+	if use perl ; then
+		echo "1"
+		echo "D is ${D}"
+		emake DESTDIR="${D}/" perl-install
+	fi
+
 	rm -rf "${ED}"/usr/var
 
 	diropts -m 0770
 	keepdir /var/lib/${PN}
-	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}
 	newconfd "${FILESDIR}"/nginx-unit.confd nginx-unit
 	systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
 }

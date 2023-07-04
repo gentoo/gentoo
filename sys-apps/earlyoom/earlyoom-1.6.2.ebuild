@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ IUSE="docs systemd test"
 RDEPEND=""
 DEPEND=""
 BDEPEND="
-	docs? ( app-text/pandoc )
+	docs? ( virtual/pandoc )
 	test? ( dev-lang/go )
 "
 

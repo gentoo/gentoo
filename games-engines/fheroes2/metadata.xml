@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="tools">Install development tools like 82m2wav and xmi2midi.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ihhub/fheroes2</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		fheroes2 is a recreation of the Heroes of Might and Magic II game engine.
+		This open source multiplatform project, written from scratch, is
+		designed to reproduce the original game with significant improvements in
+		gameplay, graphics and logic (including support for high-resolution
+		graphics, improved AI, numerous fixes and user interface improvements),
+		breathing new life into one of the most addictive turn-based strategy
+		games.
+	</longdescription>
+</pkgmetadata>

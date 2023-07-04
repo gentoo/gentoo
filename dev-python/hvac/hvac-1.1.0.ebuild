@@ -33,7 +33,7 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
-		dev-python/semantic_version[${PYTHON_USEDEP}]
+		dev-python/semantic-version[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
 	)
 "

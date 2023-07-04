@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake xdg
 
 DESCRIPTION="Advanced drum machine"
-HOMEPAGE="http://www.hydrogen-music.org/"
+HOMEPAGE="http://hydrogen-music.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -48,7 +48,7 @@ CDEPEND="
 	osc? ( media-libs/liblo )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 "
 DEPEND="
 	${CDEPEND}

@@ -11,7 +11,7 @@ DESCRIPTION="Gregorian calendar date calculations"
 
 LICENSE="|| ( Artistic GPL-1+ ) LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	>=dev-perl/Bit-Vector-7.400.0

@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Compress-Raw-Lzma</remote-id>
+    <remote-id type="cpan-module">Compress::Raw::Lzma</remote-id>
+    <remote-id type="github">pmqs/Compress-Raw-Lzma</remote-id>
+  </upstream>
 </pkgmetadata>

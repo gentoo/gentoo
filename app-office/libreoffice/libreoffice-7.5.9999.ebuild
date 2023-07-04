@@ -84,7 +84,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility base bluetooth +branding clang coinmp +cups custom-cflags +dbus debug eds firebird
-googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test vulkan
+googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test valgrind vulkan
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -243,6 +243,7 @@ DEPEND="${COMMON_DEPEND}
 		media-fonts/dejavu
 		media-fonts/liberation-fonts
 	)
+	valgrind? ( dev-util/valgrind )
 "
 RDEPEND="${COMMON_DEPEND}
 	acct-group/libreoffice
@@ -437,10 +438,6 @@ src_configure() {
 	# Ensure we use correct toolchain
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
 
-	if use vulkan && ! use clang ; then
-		ewarn "Building skia with gcc may lead to performance issues. Disable vulkan or enable clang."
-	fi
-
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
 	# System python enablement:
@@ -534,6 +531,7 @@ src_configure() {
 		$(use_with googledrive gdrive-client-secret ${google_default_client_secret})
 		$(use_with java)
 		$(use_with odk doxygen)
+		$(use_with valgrind)
 	)
 
 	if use eds || use gtk; then

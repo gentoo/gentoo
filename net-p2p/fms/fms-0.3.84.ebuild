@@ -1,13 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit edos2unix cmake
 
-DESCRIPTION="A spam-resistant message board application for Freenet"
+DESCRIPTION="Spam-resistant message board application for Freenet"
 # FMS only has a homepage within freenet, so the closest is a wiki linking to it
-HOMEPAGE="https://github.com/freenet/wiki/wiki/FMS"
+HOMEPAGE="https://github.com/hyphanet/wiki/wiki/FMS"
 SRC_URI="https://dev.gentoo.org/~tommy/distfiles/${PN}-src-${PV}.zip"
 S="${WORKDIR}"
 

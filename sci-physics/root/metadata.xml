@@ -19,6 +19,9 @@
   classes for statistics, serialization, optimization, linear algebra,
   graphics, GUI toolkit, and a complete visualization framework.
   </longdescription>
+  <upstream>
+    <remote-id type="github">root-project/root</remote-id>
+  </upstream>
   <use>
     <flag name="asimage">Enable support for <pkg>media-libs/libafterimage</pkg></flag>
     <flag name="c++14">Build using the C++14 standard</flag>

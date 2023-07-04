@@ -28,7 +28,8 @@ IUSE="cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax-kernel +snapshot 
 REQUIRED_USE="inspector? ( icu ssl )
 	npm? ( ssl )
 	system-icu? ( icu )
-	system-ssl? ( ssl )"
+	system-ssl? ( ssl )
+	x86? ( cpu_flags_x86_sse2 )"
 
 RESTRICT="!test? ( test )"
 
@@ -41,6 +42,7 @@ RDEPEND=">=app-arch/brotli-1.0.9:=
 	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
 	sys-devel/gcc:*"
 BDEPEND="${PYTHON_DEPS}
+	dev-util/ninja
 	sys-apps/coreutils
 	virtual/pkgconfig
 	test? ( net-misc/curl )
@@ -58,9 +60,6 @@ CHECKREQS_MEMORY="8G"
 CHECKREQS_DISK_BUILD="22G"
 
 pkg_pretend() {
-	(use x86 && ! use cpu_flags_x86_sse2) && \
-		die "Your CPU doesn't support the required SSE2 instruction."
-
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
 			einfo "Checking for sufficient disk space and memory to build ${PN} with debugging CFLAGS"
@@ -112,7 +111,7 @@ src_configure() {
 	xdg_environment_reset
 
 	# LTO compiler flags are handled by configure.py itself
-	filter-flags '-flto*'
+	filter-lto
 	# nodejs unconditionally links to libatomic #869992
 	# specifically it requires __atomic_is_lock_free which
 	# is not yet implemented by sys-libs/compiler-rt (see
@@ -121,6 +120,7 @@ src_configure() {
 	tc-is-clang && append-ldflags "--rtlib=libgcc --unwindlib=libgcc"
 
 	local myconf=(
+	--ninja
 		--shared-brotli
 		--shared-cares
 		--shared-libuv
@@ -168,7 +168,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C out
+	emake
 }
 
 src_install() {

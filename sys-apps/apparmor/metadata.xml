@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:canonical:apparmor</remote-id>
 		<remote-id type="launchpad">apparmor</remote-id>
+		<remote-id type="gitlab">apparmor/apparmor</remote-id>
 	</upstream>
 </pkgmetadata>

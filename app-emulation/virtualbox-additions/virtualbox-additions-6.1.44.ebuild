@@ -13,7 +13,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2+ LGPL-2.1+ MIT SGI-B-2.0 CDDL"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 src_unpack() {
 	return 0

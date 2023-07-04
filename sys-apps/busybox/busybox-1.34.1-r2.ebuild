@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-${PV/_/-}"
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2" # GPL-2 only
@@ -355,7 +355,9 @@ pkg_postinst() {
 		cd "${T}" || die
 		mkdir _install
 		tar xf busybox-links.tar -C _install || die
-		echo n | cp -ivpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
+		# 907432: cp -n returns error if it skips any file, but that is expected here
+		# TODO: check if a new coreutils release has a replacement option
+		cp -nvpPR _install/* "${ROOT}"/
 	fi
 
 	if use sep-usr ; then

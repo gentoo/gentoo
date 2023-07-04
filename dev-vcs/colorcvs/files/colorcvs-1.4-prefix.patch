@@ -1,5 +1,5 @@
---- a/colorcvs	2008-01-26 20:04:54 +0100
-+++ b/colorcvs	2008-01-26 20:05:56 +0100
+--- a/colorcvs
++++ b/colorcvs
 @@ -54,7 +54,7 @@
  
  sub initDefaults
@@ -18,3 +18,12 @@
  	if (-f $configFile)
  	{
  		loadPreferences($configFile);
+@@ -176,7 +176,7 @@
+ }
+ 
+ # Get the return code of the compiler and exit with that.
+-waitpid($compiler_pid, 0);
++waitpid($cvs_pid, 0);
+ exit ($? >> 8);
+ 
+ # arch-tag: colorcvs

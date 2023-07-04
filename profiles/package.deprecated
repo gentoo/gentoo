@@ -17,10 +17,34 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2023-04-26)
-# Renamed upstream to dev-python/pypdf.  Since Python modules were
-# renamed as well, projects need to update their imports.
-dev-python/PyPDF2
+# Michał Górny <mgorny@gentoo.org> (2023-06-18)
+# Superseded by dev-python/pdm-backend.  The migration guide is at:
+# https://pdm-backend.fming.dev/migration/
+dev-python/pdm-pep517
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Merged into dev-perl/Type-Tiny. Please depend on that instead.
+dev-perl/Type-Tie
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
+# Obsolete transitional meta package. Switch to media-libs/libpulse
+# which ensures a sound server is installed via PDEPEND.
+media-sound/pulseaudio
+
+# Sam James <sam@gentoo.org> (2023-05-30)
+# Removed from GStreamer 1.20.
+# Dropped upstream in https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/9a4651e3879270292672f08a1f6ed2bffefc5aed.
+media-plugins/gst-plugins-libmms
+
+# Michał Górny <mgorny@gentoo.org> (2023-05-29)
+# Use the following snippet instead:
+#
+#   $(python_gen_cond_dep '
+#       dev-python/cffi[${PYTHON_USEDEP}]
+#   ' 'python*')
+#
+# Possibly adding version constraints if package declares them.
+virtual/python-cffi
 
 # Sam James <sam@gentoo.org> (2023-04-07)
 # Inactive upstream, doesn't support newer Rubies.
@@ -52,10 +76,6 @@ dev-python/setuptools_scm_git_archive
 # of packages (partially due to the limitations of wheel format), meson
 # and autotools are both much better choices.
 dev-python/python-distutils-extra
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-18)
-# Renamed to dev-python/pyproject-hooks (with upstream module name change).
-dev-python/pep517
 
 # Sam James <sam@gentoo.org> (2022-12-29)
 # Doesn't work correctly on newer kernels/hardware. Events may go unreported
@@ -89,12 +109,6 @@ dev-python/nose
 # and dev-python/tomlkit.  Please consult Guide for porting tips:
 # https://projects.gentoo.org/python/guide/porting.html#replacing-the-toml-package
 dev-python/toml
-
-# Petr Vaněk <arkamar@atlas.cz> (2022-10-06)
-# Obsolete virtual.
-# Only one provider is left (net-libs/c-client), please change dependency to
-# that instead.
-virtual/imap-c-client
 
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.

@@ -11,4 +11,3 @@ glibc - ELIBC setting for systems that use the GNU C library
 mingw - ELIBC setting for systems that use the Minimalist GNU for Windows library
 musl - ELIBC setting for systems that use the musl C library
 SunOS - ELIBC setting for systems that use the Sun Solaris C library
-Winnt - ELIBC setting for systems that use Winnt

@@ -6,7 +6,7 @@ EAPI=8
 inherit linux-info tmpfiles
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
-HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
+HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup"
 SRC_URI="https://www.kernel.org/pub/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
 S="${WORKDIR}"/${P/_/-}
 

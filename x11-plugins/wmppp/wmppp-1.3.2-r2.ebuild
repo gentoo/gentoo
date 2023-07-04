@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ inherit toolchain-funcs
 
 MY_P=${PN}.app-${PV}
 DESCRIPTION="PPP dial control and network load monitor with NeXTStep look"
-HOMEPAGE="http://www.dockapps.net/wmpppapp"
-SRC_URI="http://www.dockapps.net/download/${MY_P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmpppapp"
+SRC_URI="https://www.dockapps.net/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,6 +6,6 @@
     <name>Rick Farina</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">dockyard/pg_array_parser</remote-id>
+    <remote-id type="github">DavyJonesLocker/pg_array_parser</remote-id>
   </upstream>
 </pkgmetadata>

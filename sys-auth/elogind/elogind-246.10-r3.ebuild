@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-revert-polkit-automagic.patch"
 	"${FILESDIR}/${P}-clang-undefined-symbol.patch"
 	"${FILESDIR}/${P}-loong.patch"
+	"${FILESDIR}/${P}-musl-selinux.patch"
 )
 
 pkg_setup() {

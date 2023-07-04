@@ -19,9 +19,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
 IUSE="+xA4 +xA9 +x40 +x115"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 S="${DISTDIR}"
 
 src_unpack() {

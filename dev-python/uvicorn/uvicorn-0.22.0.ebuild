@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 optfeature
 
@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test-rust"
 
 RDEPEND="
@@ -65,6 +65,13 @@ python_test() {
 		# TODO
 		EPYTEST_DESELECT+=(
 			tests/middleware/test_logging.py::test_running_log_using_fd
+		)
+	fi
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			tests/supervisors/test_signal.py::test_sigint_abort_req
+			# hang
+			tests/protocols/test_websocket.py::test_send_close_on_server_shutdown
 		)
 	fi
 

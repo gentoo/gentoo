@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,18 +14,17 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="+async +klatt l10n_ru l10n_zh man mbrola +sound"
 
-COMMON_DEPEND="
-	!app-accessibility/espeak
+DEPEND="
 	mbrola? ( app-accessibility/mbrola )
 	sound? ( media-libs/pcaudiolib )
 "
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
+	!app-accessibility/espeak
 	sound? ( media-sound/sox )
 "
 BDEPEND="
 	virtual/pkgconfig
-	man? ( || ( app-text/ronn-ng app-text/ronn ) )
+	man? ( app-text/ronn-ng )
 "
 
 DOCS=( CHANGELOG.md README.md docs )

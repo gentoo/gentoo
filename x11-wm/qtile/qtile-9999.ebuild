@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="A full-featured, hackable tiling window manager written in Python"
-HOMEPAGE="http://qtile.org/"
+HOMEPAGE="http://www.qtile.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -26,21 +26,17 @@ IUSE="pulseaudio wayland"
 # See bug #895722 and https://github.com/qtile/qtile/pull/3985 regarding
 # pywlroots-0.15 dep.
 RDEPEND="
-	>=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/cairocffi-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
 	dev-python/dbus-next[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/xcffib-0.10.1[${PYTHON_USEDEP}]
+	>=dev-python/xcffib-1.4.0[${PYTHON_USEDEP}]
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libnotify[introspection]
 	x11-libs/pango
-	pulseaudio? (
-		media-sound/pulseaudio
-	)
-	wayland? (
-		=dev-python/pywlroots-0.15*[${PYTHON_USEDEP}]
-	)
+	pulseaudio? ( media-libs/libpulse )
+	wayland? ( =dev-python/pywlroots-0.15*[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]

@@ -6,8 +6,7 @@ EAPI=8
 inherit meson toolchain-funcs
 
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
-HOMEPAGE="https://github.com/hyprwm/Hyprland/releases"
-
+HOMEPAGE="https://github.com/hyprwm/Hyprland"
 SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${PF}.gh.tar.gz"
 S="${WORKDIR}/${PN}-source"
 
@@ -55,10 +54,14 @@ BDEPEND="
 "
 
 src_prepare() {
-	STDLIBVER=$(echo '#include <string>' | $(tc-getCXX) -x c++ -dM -E - | \
+	if [[ $(tc-is-gcc) ]]; then
+	   STDLIBVER=$(echo '#include <string>' | $(tc-getCXX) -x c++ -dM -E - | \
 					grep GLIBCXX_RELEASE | sed 's/.*\([1-9][0-9]\)/\1/')
-	if ! [[ ${STDLIBVER} -ge 12 ]]; then
-		die "Hyprland requires >=sys-devel/gcc-12.1.0 to build"
+	   if ! [[ ${STDLIBVER} -ge 12 ]]; then
+		   die "Hyprland requires >=sys-devel/gcc-12.1.0 to build"
+	   fi
+	elif [[ $(clang-major-version) -lt 16 ]]; then
+		die "Hyprland requires >=sys-devel/clang-16.0.3 to build";
 	fi
 
 	if use video_cards_nvidia; then

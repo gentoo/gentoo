@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Clone-Choose</remote-id>
+    <remote-id type="cpan-module">Clone::Choose</remote-id>
+    <remote-id type="github">perl5-utils/Clone-Choose</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -144,7 +144,7 @@ readonly ACCT_USER_NAME
 # << Boilerplate ebuild variables >>
 : "${DESCRIPTION:="System user: ${ACCT_USER_NAME}"}"
 : "${SLOT:=0}"
-: "${KEYWORDS:=~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}"
+: "${KEYWORDS:=~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris}"
 S=${WORKDIR}
 
 
@@ -165,6 +165,7 @@ acct-user_add_deps() {
 	fi
 
 	RDEPEND+=${ACCT_USER_GROUPS[*]/#/ acct-group/}
+	DEPEND+=${ACCT_USER_GROUPS[*]/#/ acct-group/}
 	_ACCT_USER_ADD_DEPS_CALLED=1
 }
 
@@ -362,7 +363,7 @@ acct-user_pkg_preinst() {
 		fi
 
 		elog "Adding user ${ACCT_USER_NAME}"
-		useradd "${opts[@]}" "${ACCT_USER_NAME}" || die
+		useradd "${opts[@]}" "${ACCT_USER_NAME}" || die "useradd failed with status $?"
 		_ACCT_USER_ADDED=1
 	fi
 
@@ -432,12 +433,30 @@ acct-user_pkg_postinst() {
 	fi
 
 	elog "Updating user ${ACCT_USER_NAME}"
-	if ! usermod "${opts[@]}" "${ACCT_USER_NAME}" 2>"${T}/usermod-error.log"; then
-		# usermod outputs a warning if unlocking the account would result in an
-		# empty password. Hide stderr in a text file and display it if usermod
-		# fails.
+	# usermod outputs a warning if unlocking the account would result in an
+	# empty password. Hide stderr in a text file and display it if usermod fails.
+	usermod "${opts[@]}" "${ACCT_USER_NAME}" 2>"${T}/usermod-error.log"
+	local status=$?
+	if [[ ${status} -ne 0 ]]; then
 		cat "${T}/usermod-error.log" >&2
-		die "usermod failed"
+		if [[ ${status} -eq 8 ]]; then
+			# usermod refused to update the home directory
+			# for a uid with active processes.
+			eerror "Failed to update user ${ACCT_USER_NAME}"
+			eerror "This user currently has one or more running processes."
+			eerror "Please update this user manually with the following command:"
+
+			# Surround opts with quotes.
+			# With bash-5 (EAPI 8), we can use "${opts[@]@Q}" instead.
+			local q="'"
+			local optsq=( "${opts[@]/#/${q}}" )
+			optsq=( "${optsq[@]/%/${q}}" )
+
+			eerror "  usermod ${optsq[*]} ${ACCT_USER_NAME}"
+		else
+			eerror "$(<"${T}/usermod-error.log")"
+			die "usermod failed with status ${status}"
+		fi
 	fi
 }
 
@@ -484,7 +503,7 @@ acct-user_pkg_prerm() {
 	fi
 
 	elog "Locking user ${ACCT_USER_NAME}"
-	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die
+	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die "usermod failed with status $?"
 }
 
 fi

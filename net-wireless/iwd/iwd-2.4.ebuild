@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	ELL_EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 	MYRST2MAN="RST2MAN=:"
 fi
 
@@ -22,7 +22,7 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +crda +monitor ofono standalone systemd wired"
+IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 crda +monitor ofono standalone systemd wired"
 
 DEPEND="
 	sys-apps/dbus

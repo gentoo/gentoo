@@ -1,6 +1,11 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2023-06-24)
+# Test failures on BE (#901391).
+# https://github.com/any1/neatvnc/issues/85
+gui-libs/neatvnc
+
 # matoro <matoro_gentoo@matoro.tk> (2023-05-05)
 # Test failures on BE (https://github.com/sekrit-twc/zimg/pull/156)
 media-libs/zimg

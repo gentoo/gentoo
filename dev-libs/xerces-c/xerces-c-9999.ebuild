@@ -71,7 +71,6 @@ src_configure() {
 	else
 		transcoder="gnuiconv"
 	fi
-	# for interix maybe: transcoder="windows"
 
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"

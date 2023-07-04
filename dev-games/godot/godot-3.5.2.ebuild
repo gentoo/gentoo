@@ -69,6 +69,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-musl.patch
 	"${FILESDIR}"/${PN}-3.5-scons.patch
+	"${FILESDIR}"/${PN}-3.5.2-gcc13.patch
 )
 
 src_prepare() {

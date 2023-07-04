@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Tool to create and manage NEWS blurbs for CPython"
-HOMEPAGE="https://github.com/python/core-workflow/tree/master/blurb"
+HOMEPAGE="
+	https://github.com/python/core-workflow/tree/master/blurb
+	https://pypi.org/project/blurb/
+"
 
 LICENSE="BSD"
 SLOT="0"

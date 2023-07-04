@@ -1,0 +1,30 @@
+
+Patch from:
+https://github.com/knorrie/python-btrfs/commit/59c8daca3a05f86001b1dc36b2ab2e5961bf7bc0
+
+From 59c8daca3a05f86001b1dc36b2ab2e5961bf7bc0 Mon Sep 17 00:00:00 2001
+From: Hans van Kranenburg <hans@knorrie.org>
+Date: Sun, 21 May 2023 18:48:55 +0200
+Subject: [PATCH] btrfs-search-metadata: use FileSystem block_groups
+
+Now that we have a helper for looking up Block Groups, let's use it, so
+that it can deal with Block Groups in either Extent or Block Group Tree
+automagically.
+--- a/bin/btrfs-search-metadata
++++ b/bin/btrfs-search-metadata
+@@ -37,14 +37,7 @@ def get_chunks(fs, **kwargs):
+ 
+ 
+ def get_block_groups(fs, **kwargs):
+-    for chunk in fs.chunks():
+-        try:
+-            yield fs.block_group(chunk.vaddr, chunk.length)
+-        except btrfs.ctree.ItemNotFoundError:
+-            # This is simply to prevent the program from aborting when a block
+-            # group is removed in between doing the chunks lookup and the block
+-            # group item lookup.
+-            pass
++    return fs.block_groups()
+ 
+ 
+ def get_dev_extents(fs, **kwargs):

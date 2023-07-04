@@ -9,4 +9,7 @@
 	<flag name="gdal">Add support for the <pkg>sci-libs/gdal</pkg> geospatial
 	raster library</flag>
 </use>
+<upstream>
+	<remote-id type="github">libLAS/libLAS</remote-id>
+</upstream>
 </pkgmetadata>

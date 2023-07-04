@@ -1,12 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -m68k
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-31)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # James Le Cuirot <chewi@gentoo.org> (2021-01-30)
 # GTK is not keyworded or tested.
@@ -105,6 +101,7 @@ audit
 # Masking these globally, since we don't have X
 gnome
 gnome-keyring
+keyring
 nas
 
 # Masking since net-dns/avahi and net-misc/mDNSResponder are masked
@@ -132,7 +129,6 @@ djbfft
 djvu
 emacs
 emf
-gnome-keyring
 graphite
 guile
 hardened

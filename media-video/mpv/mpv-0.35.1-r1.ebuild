@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit edo flag-o-matic lua-single meson optfeature pax-utils python-single-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -87,6 +87,7 @@ COMMON_DEPEND="
 	libcaca? ( media-libs/libcaca )
 	libplacebo? (
 		>=media-libs/libplacebo-4.202:=[opengl?,vulkan?]
+		<media-libs/libplacebo-6
 		egl? ( media-libs/libplacebo[opengl] )
 	)
 	lua? ( ${LUA_DEPS} )

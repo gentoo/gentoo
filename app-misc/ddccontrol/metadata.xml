@@ -7,6 +7,5 @@
   </use>
   <upstream>
     <remote-id type="github">ddccontrol/ddccontrol</remote-id>
-    <remote-id type="sourceforge">ddccontrol</remote-id>
   </upstream>
 </pkgmetadata>

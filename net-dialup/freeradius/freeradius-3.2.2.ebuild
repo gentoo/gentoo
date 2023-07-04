@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE="
 	debug firebird iodbc kerberos ldap memcached mysql mongodb odbc oracle pam
-	postgres python readline redis samba sqlite ssl systemd
+	postgres python readline redis samba selinux sqlite ssl systemd
 "
 
 RESTRICT="firebird? ( bindist )"
@@ -37,7 +37,8 @@ RESTRICT="firebird? ( bindist )"
 # TODO: unconditional json-c for now as automagic dep despite efforts to stop it
 # ditto libpcap. Can restore USE=rest, USE=pcap if/when fixed.
 
-RDEPEND="acct-group/radius
+DEPEND="
+	acct-group/radius
 	acct-user/radius
 	!net-dialup/cistronradius
 	dev-libs/libltdl
@@ -67,8 +68,12 @@ RDEPEND="acct-group/radius
 	samba? ( net-fs/samba )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( >=dev-libs/openssl-1.0.2:=[-bindist(-)] )
-	systemd? ( sys-apps/systemd:= )"
-DEPEND="${RDEPEND}"
+	systemd? ( sys-apps/systemd:= )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-radius )
+"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

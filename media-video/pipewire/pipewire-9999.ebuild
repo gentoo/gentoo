@@ -13,7 +13,7 @@ EAPI=8
 # continue to move quickly. It's not uncommon for fixes to be made shortly
 # after releases.
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
@@ -29,7 +29,7 @@ else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -38,8 +38,8 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="bluetooth dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings jack-client jack-sdk lv2
-modemmanager pipewire-alsa readline sound-server ssl system-service systemd test v4l X zeroconf"
+IUSE="bluetooth dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 lv2"
+IUSE+=" modemmanager pipewire-alsa readline sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -97,41 +97,30 @@ RDEPEND="
 	)
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	echo-cancel? ( media-libs/webrtc-audio-processing:0 )
-	extra? (
-		>=media-libs/libsndfile-1.0.20
-	)
+	extra? ( >=media-libs/libsndfile-1.0.20 )
 	ffmpeg? ( media-video/ffmpeg:= )
-	flatpak? (
-		dev-libs/glib
-	)
+	flatpak? ( dev-libs/glib )
 	gstreamer? (
 		>=dev-libs/glib-2.32.0:2
 		>=media-libs/gstreamer-1.10.0:1.0
 		media-libs/gst-plugins-base:1.0
 	)
-	gsettings? (
-		>=dev-libs/glib-2.26.0:2
-	)
+	gsettings? ( >=dev-libs/glib-2.26.0:2 )
+	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
 	jack-client? ( >=media-sound/jack2-1.9.10:2[dbus] )
 	jack-sdk? (
 		!media-sound/jack-audio-connection-kit
 		!media-sound/jack2
 	)
+	liblc3? ( media-sound/liblc3 )
 	lv2? ( media-libs/lilv )
 	modemmanager? ( >=net-misc/modemmanager-1.10.0 )
-	pipewire-alsa? (
-		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
-	)
-	sound-server? (
-		!media-sound/pulseaudio[daemon(+)]
-		!media-sound/pulseaudio-daemon
-	)
+	pipewire-alsa? ( >=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}] )
+	sound-server? ( !media-sound/pulseaudio-daemon )
 	readline? ( sys-libs/readline:= )
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
-	system-service? (
-		acct-user/pipewire
-	)
+	system-service? ( acct-user/pipewire )
 	v4l? ( media-libs/libv4l )
 	X? (
 		media-libs/libcanberra
@@ -187,6 +176,7 @@ multilib_src_configure() {
 		$(meson_native_enabled man)
 		$(meson_feature test tests)
 		-Dinstalled_tests=disabled # Matches upstream; Gentoo never installs tests
+		$(meson_feature ieee1394 libffado)
 		$(meson_native_use_feature gstreamer)
 		$(meson_native_use_feature gstreamer gstreamer-device-provider)
 		$(meson_native_use_feature gsettings)
@@ -217,10 +207,6 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-codec-opus)
 		$(meson_native_use_feature bluetooth libusb) # At least for now only used by bluez5 native (quirk detection of adapters)
 		$(meson_native_use_feature echo-cancel echo-cancel-webrtc) #807889
-		# Not yet packaged.
-		# http://www.bluez.org/le-audio-support-in-pipewire/
-		-Dbluez5-codec-lc3=disabled
-		-Dbluez5-codec-lc3plus=disabled
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
@@ -233,6 +219,8 @@ multilib_src_configure() {
 		-Dsupport=enabled # Miscellaneous/common plugins, such as null sink
 		-Devl=disabled # Matches upstream
 		-Dtest=disabled # fakesink and fakesource plugins
+		-Dbluez5-codec-lc3plus=disabled # unpackaged
+		$(meson_native_use_feature liblc3 bluez5-codec-lc3)
 		$(meson_native_use_feature lv2)
 		$(meson_native_use_feature v4l v4l2)
 		-Dlibcamera=disabled # libcamera is not in Portage tree
@@ -307,10 +295,12 @@ multilib_src_install_all() {
 
 	if ! use systemd; then
 		insinto /etc/xdg/autostart
-		newins "${FILESDIR}"/pipewire.desktop-r1 pipewire.desktop
+		newins "${FILESDIR}"/pipewire.desktop-r2 pipewire.desktop
 
 		exeinto /usr/bin
-		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r1 gentoo-pipewire-launcher
+		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r2 gentoo-pipewire-launcher
+
+		doman "${FILESDIR}"/gentoo-pipewire-launcher.1
 
 		# Disable pipewire-pulse if sound-server is disabled.
 		if ! use sound-server ; then
@@ -415,6 +405,8 @@ pkg_postinst() {
 
 	if [[ ${HAD_SOUND_SERVER} -eq 0 || -z ${REPLACING_VERSIONS} ]] ; then
 		# TODO: We could drop most of this if we set up systemd presets?
+		# They're worth looking into because right now, the out-of-the-box experience
+		# is automatic on OpenRC, while it needs manual intervention on systemd.
 		if use sound-server && use systemd ; then
 			elog
 			elog "When switching from PulseAudio, you may need to disable PulseAudio:"

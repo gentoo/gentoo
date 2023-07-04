@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MY_PN}/Project/GNU/Library
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="doc static-libs"
 
 BDEPEND="

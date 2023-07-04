@@ -15,9 +15,6 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 src_configure() {
 	local mycmakeargs=(
 		"-DBUILD_TESTING=$(usex test)"

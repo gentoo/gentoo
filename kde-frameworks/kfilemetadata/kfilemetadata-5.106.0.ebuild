@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org optfeature python-any-r1
 DESCRIPTION="Library for extracting file metadata"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="epub exif ffmpeg mobi pdf taglib"
 
 RESTRICT="test"
@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 	kernel_linux? ( sys-apps/attr )
 "
 BDEPEND="test? ( ${PYTHON_DEPS} )"
+
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.28.patch" ) # bug 906090
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

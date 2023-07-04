@@ -1,0 +1,11 @@
+--- a/lib/systemd/system/openfortivpn@.service.in
++++ b/lib/systemd/system/openfortivpn@.service.in
+@@ -9,7 +9,7 @@ Documentation=https://github.com/adrienverge/openfortivpn/wiki
+ [Service]
+ Type=notify
+ PrivateTmp=true
+-ExecStart=@BINDIR@/openfortivpn -c @SYSCONFDIR@/openfortivpn/%I.conf
++ExecStart=/usr/bin/openfortivpn -c /etc/openfortivpn/%I.conf
+ Restart=on-failure
+ OOMScoreAdjust=-100
+ 

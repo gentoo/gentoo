@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit gnustep-2 vcs-snapshot
 
 DESCRIPTION="Groupware server built around OpenGroupware.org and the SOPE application server"
-HOMEPAGE="http://www.sogo.nu"
-SRC_URI="https://github.com/inverse-inc/sogo/archive/SOGo-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.sogo.nu"
+SRC_URI="https://github.com/Alinto/sogo/archive/SOGo-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -90,7 +90,7 @@ src_install() {
 pkg_postinst() {
 	gnustep-base_pkg_postinst
 	elog "SOGo documentation is available online at:"
-	elog "http://www.sogo.nu/downloads/documentation.html"
+	elog "https://www.sogo.nu/support.html#/documentation"
 	elog
 	elog "Apache sample configuration file is available in:"
 	elog "/usr/share/doc/${PF}"

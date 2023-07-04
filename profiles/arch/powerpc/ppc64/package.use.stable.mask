@@ -57,10 +57,6 @@ mail-client/claws-mail gdata
 # Unstable test deps.
 dev-cpp/eigen test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
-# media-libs/libheif not stable, bugs #717242, #720438
-media-gfx/gimp heif
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not stable
 media-gfx/inkscape cdr visio wpg

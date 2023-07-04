@@ -8,4 +8,7 @@
 	<use>
 		<flag name="s3">Support for backing up to the Amazon S3 system</flag>
 	</use>
+	<upstream>
+		<remote-id type="pypi">duplicity</remote-id>
+	</upstream>
 </pkgmetadata>

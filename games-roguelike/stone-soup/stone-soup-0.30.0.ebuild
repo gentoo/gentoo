@@ -16,7 +16,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-1 )
 LUA_REQ_USE="deprecated"
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11,12} )
 VIRTUALX_REQUIRED="manual"
 inherit desktop python-any-r1 lua-single xdg-utils toolchain-funcs
 
@@ -24,19 +24,21 @@ DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in 
 HOMEPAGE="https://crawl.develz.org"
 SLOT="0.30"
 
-COMMITSHA="acf32f4bd3330cf0c882ac39c3e11ce40d587b49"
-MY_P="crawl-${COMMITSHA}/crawl-ref"
-IS_RELEASE=true
-
-if [ "${IS_RELEASE}" = true ]; then
+# Leave empty string if not a _pre release
+COMMITSHA=""
+if [ -z "${COMMITSHA}" ]; then
+	# This is a tagged release
+	# Note the archive URI and file layout changed upstream between 0.29.0 and 0.29.1
 	SRC_URI="
 		https://github.com/crawl/crawl/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	"
+	MY_P="crawl-${PV}/crawl-ref"
 else
 	# This is a _pre release
 	SRC_URI="
 		https://github.com/crawl/crawl/archive/${COMMITSHA}.tar.gz -> ${P}.tar.gz
 	"
+	MY_P="crawl-${COMMITSHA}/crawl-ref"
 fi
 SRC_URI="
 	${SRC_URI}
@@ -49,7 +51,7 @@ SRC_URI="
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="advpng debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"

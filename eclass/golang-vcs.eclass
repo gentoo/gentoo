@@ -20,7 +20,7 @@ esac
 if [[ -z ${_GOLANG_VCS_ECLASS} ]]; then
 _GOLANG_VCS_ECLASS=1
 
-inherit estack eutils golang-base
+inherit estack golang-base
 
 PROPERTIES+=" live"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ HOMEPAGE="http://gtk-gnutella.sourceforge.net/"
 
 SLOT="0"
 LICENSE="CC-BY-SA-4.0 GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="
 	sys-libs/binutils-libs:=
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	filter-flags -flto
+	filter-lto
 	strip-linguas -i po
 
 	echo "# Gentoo-selected LINGUAS" > po/LINGUAS

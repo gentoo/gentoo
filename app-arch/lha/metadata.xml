@@ -6,6 +6,7 @@
 		<name>James Le Cuirot</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">jca02266/lha</remote-id>
 		<remote-id type="osdn">lha</remote-id>
 	</upstream>
 </pkgmetadata>

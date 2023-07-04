@@ -54,7 +54,6 @@ COMMON_DEPEND="
 		x11-libs/libXfont2
 		x11-libs/libXtst
 		x11-libs/pixman
-		x11-libs/xtrans
 		x11-apps/xauth
 		x11-apps/xinit
 		x11-apps/xkbcomp
@@ -73,10 +72,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.8:* )
-	server? (
-		dev-lang/perl
-		sys-process/psmisc
-	)
+	server? ( dev-lang/perl )
 "
 DEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jdk-1.8:* )
@@ -88,6 +84,7 @@ DEPEND="${COMMON_DEPEND}
 		x11-libs/libXi
 		x11-libs/libxkbfile
 		x11-libs/libXrender
+		x11-libs/xtrans
 		x11-misc/util-macros
 		opengl? ( media-libs/mesa )
 	)
@@ -203,8 +200,8 @@ src_install() {
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 
-		newconfd "${FILESDIR}"/${PN}-1.12.0.confd ${PN}
-		newinitd "${FILESDIR}"/${PN}-1.12.0.initd ${PN}
+		newconfd "${FILESDIR}"/${PN}-1.13.1.confd ${PN}
+		newinitd "${FILESDIR}"/${PN}-1.13.1.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
 
@@ -219,6 +216,8 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+
+	use server && elog 'OpenRC users: please migrate to one service per display as documented here'	#FIXME: add link
 
 	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm x11-misc/sddm x11-misc/slim"
 	use server && \

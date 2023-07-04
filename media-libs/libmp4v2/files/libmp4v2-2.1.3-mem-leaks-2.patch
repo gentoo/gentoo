@@ -1,0 +1,30 @@
+From 0f97a87685c8fcf9d7b9b21167265b21b1c34cc5 Mon Sep 17 00:00:00 2001
+From: Robert Kausch <robert.kausch@freac.org>
+Date: Tue, 16 May 2023 00:11:53 +0200
+Subject: [PATCH] Fix memory leaks in MP4StringProperty and MP4BytesProperty
+ classes.
+
+--- a/src/mp4property.cpp
++++ b/src/mp4property.cpp
+@@ -343,6 +343,10 @@ void MP4StringProperty::SetCount(uint32_t count)
+ {
+     uint32_t oldCount = m_values.Size();
+ 
++    for (uint32_t i = count; i < oldCount; i++) {
++        MP4Free(m_values[i]);
++    }
++
+     m_values.Resize(count);
+ 
+     for (uint32_t i = oldCount; i < count; i++) {
+@@ -510,6 +514,10 @@ void MP4BytesProperty::SetCount(uint32_t count)
+ {
+     uint32_t oldCount = m_values.Size();
+ 
++    for (uint32_t i = count; i < oldCount; i++) {
++        MP4Free(m_values[i]);
++    }
++
+     m_values.Resize(count);
+     m_valueSizes.Resize(count);
+ 

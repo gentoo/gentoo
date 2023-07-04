@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/bacula/${MY_P}.tar.gz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 logwatch mysql postgres qt5 readline +sqlite ssl static tcpd vim-syntax X"
+IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 logwatch mysql postgres qt5 readline selinux +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="
 	!bacula-clientonly? (
@@ -64,6 +64,7 @@ RDEPEND="${DEPEND}
 			sys-block/mtx
 		)
 	)
+	selinux? ( sec-policy/selinux-bacula )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 "
 

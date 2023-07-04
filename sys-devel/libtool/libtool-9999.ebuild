@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A shared library tool for developers"
@@ -41,7 +41,6 @@ PATCHES=(
 	# bug #581314
 	"${FILESDIR}"/${PN}-2.4.6-ppc64le.patch
 
-	"${FILESDIR}"/${PN}-2.4.6-mint.patch
 	"${FILESDIR}"/${PN}-2.2.6a-darwin-module-bundle.patch
 	"${FILESDIR}"/${PN}-2.4.6-darwin-use-linux-version.patch
 	"${FILESDIR}"/${PN}-2.4.7-grep-3.8.patch

@@ -4,7 +4,7 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools edo flag-o-matic multilib multilib-build
 inherit python-any-r1 toolchain-funcs wrapper
 
@@ -312,6 +312,11 @@ src_configure() {
 				append-cflags '-fno-strict-aliasing'
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
+				# -mavx with mingw-gcc has a history of obscure issues and
+				# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+				# crashes with -march=skylake >=wine-8.10, similar issues with
+				# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+				append-cflags -mno-avx
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
 			: "${CROSSLDFLAGS:=$(
 				filter-flags '-fuse-ld=*'

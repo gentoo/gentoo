@@ -6,10 +6,13 @@ EAPI=8
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-PYTHON_COMPAT=( python3_{9..11} )
+# Please keep the python line in BDEPEND updated and do NOT use eclasses pr
+# ${PYTHON_DEPS} (since they are too strict and lead to problems with the
+# package order during upgrades).
+
 TMPFILES_OPTIONAL=1
 
-inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
+inherit prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing tmpfiles
 
 DESCRIPTION="GNU libc C library"
@@ -39,7 +42,7 @@ MIN_PAX_UTILS_VER="1.3.3"
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 fi
@@ -101,7 +104,7 @@ IDEPEND="
 	!compile-locales? ( sys-apps/locale-gen )
 "
 BDEPEND="
-	${PYTHON_DEPS}
+	|| ( dev-lang/python:3.11 dev-lang/python:3.10 dev-lang/python:3.9 )
 	>=app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	sys-devel/bison
 	compile-locales? ( sys-apps/locale-gen )
@@ -407,13 +410,13 @@ setup_flags() {
 		# relating to failed builds, we strip most CFLAGS out to ensure as few
 		# problems as possible.
 		strip-flags
-		filter-lto
 		# Lock glibc at -O2; we want to be conservative here.
 		filter-flags '-O?'
 		append-flags -O2
 	fi
 
 	strip-unsupported-flags
+	filter-lto
 	filter-flags -m32 -m64 '-mabi=*'
 
 	# glibc aborts if rpath is set by LDFLAGS
@@ -861,13 +864,6 @@ upgrade_warning() {
 
 pkg_pretend() {
 	upgrade_warning
-}
-
-# pkg_setup
-
-pkg_setup() {
-	# see bug 682570
-	[[ -z ${BOOTSTRAP_RAP} ]] && python-any-r1_pkg_setup
 }
 
 # src_unpack

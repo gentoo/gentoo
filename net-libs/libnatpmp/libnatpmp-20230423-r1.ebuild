@@ -15,7 +15,7 @@ SRC_URI="https://miniupnp.tuxfamily.org/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-20150609-gentoo.patch )
 

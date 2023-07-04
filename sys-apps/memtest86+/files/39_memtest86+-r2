@@ -30,7 +30,7 @@ ${submenu_indentation}if [ "x\$grub_platform" = xpc ]; then
 ${submenu_indentation}menuentry 'Memtest86+ 32bit' {
 EOF
 
-	if [ -n "{submenu_indentation}" ]; then
+	if [ -n "${submenu_indentation}" ]; then
 		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
 	else
 		prepare_grub_to_access_device "${device}" | grub_add_tab

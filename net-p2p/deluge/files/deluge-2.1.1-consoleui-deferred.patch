@@ -1,0 +1,13 @@
+Bug: https://dev.deluge-torrent.org/ticket/3582
+git: https://github.com/deluge-torrent/deluge/pull/408
+
+diff -ru a/deluge/ui/console/__init__.py b/deluge/ui/console/__init__.py
+--- a/deluge/ui/console/__init__.py	2022-06-28 11:57:49.000000000 -0700
++++ b/deluge/ui/console/__init__.py	2023-05-01 18:32:19.261457877 -0700
+@@ -12,5 +12,4 @@
+ 
+ 
+ def start():
+-
+-    return Console().start()
++    Console().start()

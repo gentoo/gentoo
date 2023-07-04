@@ -16,8 +16,6 @@ KEYWORDS="amd64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 BDEPEND="
 	test? ( >=dev-libs/mpfr-4.2 )
 "

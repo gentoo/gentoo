@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
 inherit bash-completion-r1 desktop distutils-r1 elisp-common flag-o-matic pax-utils toolchain-funcs xdg-utils
 
@@ -57,7 +57,9 @@ COMMON_DEPEND="
 	emacs? ( >=app-editors/emacs-${NEED_EMACS}:* )
 	python? (
 		${PYTHON_DEPS}
-		virtual/python-cffi[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/cffi[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 

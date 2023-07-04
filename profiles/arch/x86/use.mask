@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
+# Requires media-libs/opencolorio, broken on x86, bug #884115
+color-management
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
@@ -47,10 +51,6 @@ webengine
 # PyPy is keyworded on this arch.
 -python_targets_pypy3
 -python_single_target_pypy3
-
-# Michał Górny <mgorny@gentoo.org> (2013-05-04)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on x86

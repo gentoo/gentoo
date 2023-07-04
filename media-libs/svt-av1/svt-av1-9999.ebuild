@@ -23,6 +23,10 @@ SLOT="0"
 
 BDEPEND="amd64? ( dev-lang/yasm )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.0-fortify-no-override.patch
+)
+
 multilib_src_configure() {
 	append-ldflags -Wl,-z,noexecstack
 

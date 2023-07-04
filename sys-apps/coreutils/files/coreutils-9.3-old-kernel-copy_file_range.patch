@@ -1,0 +1,89 @@
+https://bugs.gentoo.org/907474
+
+From 87b95c17dc8611f9483b966d052eefc930f43927 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Mon, 5 Jun 2023 22:04:37 -0700
+Subject: [PATCH] copy-file-range: support building for older kernels
+
+* m4/copy-file-range.m4 (gl_FUNC_COPY_FILE_RANGE):
+Remove static check, to support the dubious practice of
+building for platforms that predate the build platform.
+On working kernels this adds an extra syscall the first time
+that copy_file_range is used.  Problem reported for Gentoo by
+Sam James <https://bugs.gnu.org/63850>.
+--- a/m4/copy-file-range.m4
++++ b/m4/copy-file-range.m4
+@@ -39,21 +39,9 @@ AC_DEFUN([gl_FUNC_COPY_FILE_RANGE],
+ 
+     case $host_os in
+       linux*)
+-        AC_CACHE_CHECK([whether copy_file_range is known to work],
+-          [gl_cv_copy_file_range_known_to_work],
+-          [AC_COMPILE_IFELSE(
+-             [AC_LANG_PROGRAM(
+-                [[#include <linux/version.h>
+-                ]],
+-                [[#if LINUX_VERSION_CODE < KERNEL_VERSION (5, 3, 0)
+-                   #error "copy_file_range is buggy"
+-                  #endif
+-                ]])],
+-             [gl_cv_copy_file_range_known_to_work=yes],
+-             [gl_cv_copy_file_range_known_to_work=no])])
+-        if test "$gl_cv_copy_file_range_known_to_work" = no; then
+-          REPLACE_COPY_FILE_RANGE=1
+-        fi;;
++        # See copy-file-range.c comment re pre-5.3 Linux kernel bugs.
++        # We should be able to remove this hack in 2025.
++        REPLACE_COPY_FILE_RANGE=1;;
+     esac
+   fi
+ ])
+
+--- a/configure
++++ b/configure
+@@ -39903,42 +39903,9 @@ printf "%s\n" "#define HAVE_COPY_FILE_RANGE 1" >>confdefs.h
+ 
+     case $host_os in
+       linux*)
+-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether copy_file_range is known to work" >&5
+-printf %s "checking whether copy_file_range is known to work... " >&6; }
+-if test ${gl_cv_copy_file_range_known_to_work+y}
+-then :
+-  printf %s "(cached) " >&6
+-else case e in #(
+-  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#include <linux/version.h>
+-
+-int
+-main (void)
+-{
+-#if LINUX_VERSION_CODE < KERNEL_VERSION (5, 3, 0)
+-                   #error "copy_file_range is buggy"
+-                  #endif
+-
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_compile "$LINENO"
+-then :
+-  gl_cv_copy_file_range_known_to_work=yes
+-else case e in #(
+-  e) gl_cv_copy_file_range_known_to_work=no ;;
+-esac
+-fi
+-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+-esac
+-fi
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $gl_cv_copy_file_range_known_to_work" >&5
+-printf "%s\n" "$gl_cv_copy_file_range_known_to_work" >&6; }
+-        if test "$gl_cv_copy_file_range_known_to_work" = no; then
+-          REPLACE_COPY_FILE_RANGE=1
+-        fi;;
++        # See copy-file-range.c comment re pre-5.3 Linux kernel bugs.
++        # We should be able to remove this hack in 2025.
++        REPLACE_COPY_FILE_RANGE=1;;
+     esac
+   fi
+ 

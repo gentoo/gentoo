@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}-legacy/56305/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 ~riscv x86 ~sparc-solaris"
+KEYWORDS="amd64 ppc ~ppc64 ~riscv x86"
 IUSE="perl static-libs"
 
 RDEPEND="virtual/libiconv"

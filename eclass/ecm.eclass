@@ -29,6 +29,9 @@ esac
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
 
+inherit cmake flag-o-matic toolchain-funcs
+
+if [[ ${EAPI} == 8 ]]; then
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass manpage.
@@ -36,7 +39,8 @@ _ECM_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : "${VIRTUALX_REQUIRED:=manual}"
 
-inherit cmake flag-o-matic toolchain-funcs virtualx
+inherit virtualx
+fi
 
 # @ECLASS_VARIABLE: ECM_NONGUI
 # @DEFAULT_UNSET
@@ -228,12 +232,21 @@ case ${ECM_QTHELP} in
 		COMMONDEPEND+=" doc? ( dev-qt/qt-docs:${KFSLOT} )"
 		BDEPEND+=" doc? (
 			>=app-doc/doxygen-1.8.13-r1
-			(
-				=dev-qt/qtcore-5.15.9*:5
-				=dev-qt/qtgui-5.15.9*:5
-				=dev-qt/qthelp-5.15.9*:5
-				=dev-qt/qtsql-5.15.9*:5
-				=dev-qt/qtwidgets-5.15.9*:5
+			|| (
+				(
+					=dev-qt/qtcore-5.15.10*:5
+					=dev-qt/qtgui-5.15.10*:5
+					=dev-qt/qthelp-5.15.10*:5
+					=dev-qt/qtsql-5.15.10*:5
+					=dev-qt/qtwidgets-5.15.10*:5
+				)
+				(
+					=dev-qt/qtcore-5.15.9*:5
+					=dev-qt/qtgui-5.15.9*:5
+					=dev-qt/qthelp-5.15.9*:5
+					=dev-qt/qtsql-5.15.9*:5
+					=dev-qt/qtwidgets-5.15.9*:5
+				)
 			)
 		)"
 		;;
@@ -587,13 +600,15 @@ ecm_src_test() {
 		KDE_DEBUG=1 cmake_src_test
 	}
 
+	local -x QT_QPA_PLATFORM=offscreen
+
 	# When run as normal user during ebuild development with the ebuild command,
 	# tests tend to access the session DBUS. This however is not possible in a
 	# real emerge or on the tinderbox.
 	# make sure it does not happen, so bad tests can be recognized and disabled
 	unset DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
 
-	if [[ ${VIRTUALX_REQUIRED} = always || ${VIRTUALX_REQUIRED} = test ]]; then
+	if [[ ${EAPI} == 8 ]] && [[ ${VIRTUALX_REQUIRED} = always || ${VIRTUALX_REQUIRED} = test ]]; then
 		virtx _test_runner
 	else
 		_test_runner

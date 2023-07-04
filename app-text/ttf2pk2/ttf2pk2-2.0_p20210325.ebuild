@@ -5,11 +5,11 @@ EAPI=7
 
 DESCRIPTION="Freetype 2 based TrueType font to TeX's PK format converter"
 HOMEPAGE="http://tug.org/texlive/"
-SRC_URI="https://dev.gentoo.org/~{zlogene,sam}/texlive/texlive-${PV#*_p}-source.tar.xz"
+SRC_URI="https://dev.gentoo.org/~sam/texlive/texlive-${PV#*_p}-source.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE=""
 
 # Note about blockers: it is a freetype2 based replacement for ttf2pk and

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -49,6 +49,10 @@ src_prepare() {
 	# the relevant tests
 	sed -e 's:test_redirect:_&:' \
 		-e 's:test_relative:_&:' \
+		-i test_httpbin.py || die
+	# broken
+	sed -e 's:test_digest_auth:_&:' \
+		-e 's:test_base64:_&:' \
 		-i test_httpbin.py || die
 
 	distutils-r1_src_prepare

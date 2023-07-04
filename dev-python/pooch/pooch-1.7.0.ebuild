@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 pypi
@@ -29,7 +29,6 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/paramiko[${PYTHON_USEDEP}]
-		dev-python/pytest-localftpserver[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
 	)
 "
@@ -39,6 +38,9 @@ EPYTEST_DESELECT=(
 	pooch/tests/test_core.py::test_check_availability_invalid_downloader
 	pooch/tests/test_core.py::test_load_registry_from_doi
 	pooch/tests/test_core.py::test_load_registry_from_doi_zenodo_with_slash
+	# dev-python/pytest-localftpserver -> dev-python/pyftpdlib has py3.12 issues
+	# https://github.com/giampaolo/pyftpdlib/issues/560#issuecomment-971377238
+	pooch/tests/test_core.py::test_check_availability_on_ftp
 	pooch/tests/test_downloaders.py::test_invalid_doi_repository
 	pooch/tests/test_downloaders.py::test_doi_url_not_found
 	pooch/tests/test_downloaders.py::test_figshare_url_file_not_found

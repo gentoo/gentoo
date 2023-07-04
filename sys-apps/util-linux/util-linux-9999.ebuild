@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
 	pam python-r1 multilib-minimal multiprocessing systemd
@@ -59,7 +59,10 @@ RDEPEND="
 	udev? ( virtual/libudev:= )"
 BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
+	nls? (
+		app-text/po4a
+		sys-devel/gettext
+	)
 	test? ( sys-devel/bc )
 "
 DEPEND="
@@ -85,7 +88,7 @@ if [[ ${PV} == 9999 ]] ; then
 	# Required for man-page generation
 	BDEPEND+=" dev-ruby/asciidoctor"
 else
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-karelzak )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-karelzak-20230517 )"
 fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
@@ -136,6 +139,9 @@ src_prepare() {
 		local known_failing_tests=(
 			# Subtest 'options-maximum-size-8192' fails
 			hardlink/options
+
+			# Fails in sandbox
+			lsns/ioctl_ns
 
 			lsfd/mkfds-symlink
 			lsfd/mkfds-rw-character-device
@@ -196,6 +202,8 @@ multilib_src_configure() {
 
 	# configure args shared by python and non-python builds
 	local commonargs=(
+		--localstatedir="${EPREFIX}/var"
+		--runstatedir="${EPREFIX}/run"
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
 	)
 
@@ -215,6 +223,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with audit)
 		$(tc-has-tls || echo --disable-tls)
 		$(use_enable nls)
+		$(use_enable nls poman)
 		$(use_enable unicode widechar)
 		$(use_enable static-libs static)
 		$(use_with ncurses tinfo)
@@ -263,6 +272,7 @@ multilib_src_configure() {
 			--disable-asciidoc
 			--disable-bash-completion
 			--without-systemdsystemunitdir
+			--disable-poman
 
 			# build libraries
 			--enable-libuuid

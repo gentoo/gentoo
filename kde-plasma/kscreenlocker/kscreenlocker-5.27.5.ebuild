@@ -14,11 +14,12 @@ DESCRIPTION="Library and components for secure lock screen architecture"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 RESTRICT="test"
 
+# slot op: private QtX11Extras header (private/qtx11extras_p.h)
 COMMON_DEPEND="
 	dev-libs/wayland
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -26,7 +27,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtx11extras-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5=
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5[qml]
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5

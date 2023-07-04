@@ -32,7 +32,7 @@ SLOT="0/5-9" # vlc - vlccore
 
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
-	fontconfig +gcrypt gme gnome-keyring gstreamer +gui ieee1394 jack jpeg kate
+	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate
 	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
 	macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses nfs ogg
 	omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba sdl-image
@@ -64,7 +64,7 @@ BDEPEND="
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
-	sys-libs/zlib[minizip]
+	sys-libs/zlib
 	virtual/libintl
 	virtual/opengl
 	a52? ( media-libs/a52dec )
@@ -111,7 +111,7 @@ RDEPEND="
 		dev-libs/libgpg-error
 	)
 	gme? ( media-libs/game-music-emu )
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	gui? (
 		dev-qt/qtcore:5
@@ -167,7 +167,7 @@ RDEPEND="
 		media-fonts/dejavu
 		>=media-libs/libprojectm-3.1.12:0=
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
+	"${FILESDIR}"/${PN}-3.0.18-drop-minizip-dep.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -338,7 +339,7 @@ src_configure() {
 		$(use_enable fontconfig)
 		$(use_enable gcrypt libgcrypt)
 		$(use_enable gme)
-		$(use_enable gnome-keyring secret)
+		$(use_enable keyring secret)
 		$(use_enable gstreamer gst-decode)
 		$(use_enable gui qt)
 		$(use_enable ieee1394 dv1394)

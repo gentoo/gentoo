@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
@@ -39,7 +39,6 @@ python_prepare_all() {
 			-e 's:from \.externals ::' \
 			-i {} + || die
 
-	# https://github.com/joblib/joblib/issues/1115
 	sed -e 's:test_parallel_call_cached_function_defined_in_jupyter:_&:' \
 		-i joblib/test/test_memory.py || die
 

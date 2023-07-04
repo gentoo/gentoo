@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -23,7 +23,7 @@ LICENSE="BSD MIT"
 SLOT="0"
 
 RDEPEND="
-	>=app-shells/bash-5.0
+	>=app-shells/bash-5.0[readline]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
 if [[ ${PV} == *9999 ]]; then
@@ -32,7 +32,7 @@ else
 	RDEPEND+=" >=dev-python/snakeoil-0.10.4[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
-	>=dev-python/flit_core-3.8[${PYTHON_USEDEP}]
+	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
 	test? (
 		dev-vcs/git
 	)

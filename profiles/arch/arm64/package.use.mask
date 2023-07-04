@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2023-06-24)
+# dev-db/mongodb miraculously got keyworded here.
+dev-python/pymongo -test-full
+
 # Sam James <sam@gentoo.org> (2023-04-17)
 # Ruby has several JITs available but they need porting to individual arches.
 # Unmask on specific arches where it's available.
@@ -66,10 +70,6 @@ sys-cluster/slurm ucx
 # Sam James <sam@gentoo.org> (2022-01-22)
 # Supports 64-bit NEON
 dev-libs/libgcrypt -cpu_flags_arm_neon
-
-# Sam James <sam@gentoo.org> (2021-10-31)
-# dev-python/pyilmbase isn't keyworded on arm64
-media-gfx/alembic python
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-07)
 # dev-libs/mongo-c-driver is not keyworded here
@@ -140,7 +140,7 @@ media-sound/bluez-alsa man
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm64
 # bug #729720
-sys-apps/systemd -gnuefi
+sys-apps/systemd -boot -gnuefi
 sys-apps/systemd-utils -boot
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)

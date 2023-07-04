@@ -250,6 +250,12 @@ llvm_pkg_setup() {
 		llvm_fix_tool_path ADDR2LINE AR AS LD NM OBJCOPY OBJDUMP RANLIB
 		llvm_fix_tool_path READELF STRINGS STRIP
 
+		# Set LLVM_CONFIG to help Meson (bug #907965) but only do it
+		# for empty ESYSROOT (as a proxy for "are we cross-compiling?").
+		if [[ -z ${ESYSROOT} ]] ; then
+			llvm_fix_tool_path LLVM_CONFIG
+		fi
+
 		local prefix=${ESYSROOT}
 		local llvm_path=${prefix}/usr/lib/llvm/${LLVM_SLOT}/bin
 		local IFS=:

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/wanderlust/apel/archive/${GITHUB_SHA1}.tar.gz -> ${P
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 
@@ -33,7 +33,7 @@ src_install() {
 		LISPDIR="${ED}/${SITELISP}" \
 		VERSION_SPECIFIC_LISPDIR="${ED}/${SITELISP}" \
 		install
-	elisp-site-file-install "${FILESDIR}/50apel-gentoo.el"
+	elisp-make-site-file "50apel-gentoo.el"
 	dodoc ChangeLog README*
 }
 

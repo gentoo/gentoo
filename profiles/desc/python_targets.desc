@@ -5,4 +5,5 @@
 
 python3_10 - Build with Python 3.10
 python3_11 - Build with Python 3.11
+python3_12 - Build with Python 3.12
 pypy3 - Build with PyPy3

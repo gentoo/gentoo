@@ -11,6 +11,7 @@
   </longdescription>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">ross/requests-futures</remote-id>
     <remote-id type="pypi">requests-futures</remote-id>
   </upstream>
 </pkgmetadata>

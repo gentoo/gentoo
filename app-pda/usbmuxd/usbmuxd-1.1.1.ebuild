@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/libimobiledevice/usbmuxd/releases/download/${PV}/${P
 LICENSE="GPL-2 GPL-3 LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
-IUSE="systemd"
+IUSE="selinux systemd"
 
 DEPEND="
 	acct-user/usbmux
@@ -24,6 +24,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	virtual/udev
+	selinux? ( sec-policy/selinux-usbmuxd )
 "
 
 BDEPEND="

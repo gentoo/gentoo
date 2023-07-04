@@ -64,7 +64,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -125,11 +125,16 @@ ARM_CPU_FEATURES=(
 )
 ARM_CPU_REQUIRED_USE="
 	arm64? ( cpu_flags_arm_v8 )
-	cpu_flags_arm_v8? (  cpu_flags_arm_vfpv3 cpu_flags_arm_neon )
-	cpu_flags_arm_neon? ( cpu_flags_arm_thumb2 cpu_flags_arm_vfp )
+	cpu_flags_arm_v8? ( cpu_flags_arm_vfpv3 cpu_flags_arm_neon )
+	cpu_flags_arm_neon? (
+		cpu_flags_arm_vfp
+		arm? ( cpu_flags_arm_thumb2 )
+	)
 	cpu_flags_arm_vfpv3? ( cpu_flags_arm_vfp )
 	cpu_flags_arm_thumb2? ( cpu_flags_arm_v6 )
-	cpu_flags_arm_v6? ( cpu_flags_arm_thumb )
+	cpu_flags_arm_v6? (
+		arm? ( cpu_flags_arm_thumb )
+	)
 "
 MIPS_CPU_FEATURES=( mipsdspr1:mipsdsp mipsdspr2 mipsfpu )
 PPC_CPU_FEATURES=( cpu_flags_ppc_altivec:altivec cpu_flags_ppc_vsx:vsx cpu_flags_ppc_vsx2:power8 )
@@ -336,6 +341,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.3-clang-14-ff_seek_frame_binary-crash.patch
 	"${FILESDIR}"/${PN}-4.4.3-get_cabac_inline_x86-32-bit.patch
 	"${FILESDIR}"/${PN}-4.4.4-wint-conversion-vulkan.patch
+	"${FILESDIR}"/${P}-fix-build-svt-av1-1.5.0.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -481,9 +487,6 @@ multilib_src_configure() {
 	if tc-is-cross-compiler ; then
 		myconf+=( --enable-cross-compile --arch=$(tc-arch-kernel) --cross-prefix=${CHOST}- --host-cc="$(tc-getBUILD_CC)" )
 		case ${CHOST} in
-			*freebsd*)
-				myconf+=( --target-os=freebsd )
-				;;
 			*mingw32*)
 				myconf+=( --target-os=mingw32 )
 				;;

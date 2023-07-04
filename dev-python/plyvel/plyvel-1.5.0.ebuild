@@ -27,9 +27,16 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+"
 
 distutils_enable_sphinx doc
 distutils_enable_tests pytest
+
+src_configure() {
+	emake cython
+}
 
 python_test() {
 	rm -rf plyvel || die

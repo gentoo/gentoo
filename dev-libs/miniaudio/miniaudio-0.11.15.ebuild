@@ -9,7 +9,7 @@ SRC_URI="https://github.com/mackron/miniaudio/archive/refs/tags/${PV}.tar.gz -> 
 
 LICENSE="|| ( public-domain MIT-0 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 src_install() {
 	insinto /usr/include/${PN}/

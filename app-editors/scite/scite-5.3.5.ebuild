@@ -13,7 +13,7 @@ SRC_URI="https://www.scintilla.org/${PN}${PV//./}.tgz -> ${P}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 ppc ~riscv x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="lua"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -33,6 +33,8 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( "../README" )
 
 S="${WORKDIR}/${PN}/gtk"
+
+PATCHES=( "${FILESDIR}"/scite-5.3.5-gcc-13-fix-bgo892431.patch )
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -72,7 +74,7 @@ src_prepare() {
 	# Bug #576162
 
 	cd "${WORKDIR}" || die "couldn't cd into ${WORKDIR}"
-	eapply_user
+	default
 }
 
 src_compile() {

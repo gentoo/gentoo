@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,13 +24,11 @@ RDEPEND="
 	media-libs/openal
 	sys-libs/zlib
 	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXrandr
+	x11-libs/libxcb
+	x11-libs/xcb-util-image
 	kernel_linux? ( virtual/libudev:= )
-	!kernel_Winnt? (
-		x11-libs/libX11
-		x11-libs/libXrandr
-		x11-libs/libxcb
-		x11-libs/xcb-util-image
-	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -59,9 +57,6 @@ src_configure() {
 		-DSFML_INSTALL_PKGCONFIG_FILES=TRUE
 	)
 
-	if use kernel_Winnt; then
-		mycmakeargs+=( -DSFML_USE_SYSTEM_DEPS=TRUE )
-	fi
 	cmake_src_configure
 }
 

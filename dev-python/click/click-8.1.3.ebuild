@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -27,7 +27,7 @@ IUSE="examples"
 distutils_enable_sphinx docs \
 	'>=dev-python/docutils-0.14' \
 	dev-python/pallets-sphinx-themes \
-	dev-python/sphinxcontrib-log_cabinet \
+	dev-python/sphinxcontrib-log-cabinet \
 	dev-python/sphinx-issues \
 	dev-python/sphinx-tabs
 distutils_enable_tests pytest

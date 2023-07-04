@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	PGIS="$(ver_cut 1-2)"
 	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
@@ -54,6 +54,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.3-try-other-cpp-names.patch"
+	# source: https://github.com/google/flatbuffers/pull/7897
+	"${FILESDIR}/${P}-flatbuffers-abseil-2023.patch" # bug 905378
 )
 
 src_prepare() {

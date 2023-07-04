@@ -4,8 +4,8 @@
 EAPI=8
 
 DESCRIPTION="C++ template image processing toolkit"
-HOMEPAGE="https://cimg.eu/ https://github.com/dtschump/CImg"
-SRC_URI="https://github.com/dtschump/CImg/archive/v.${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://cimg.eu/ https://github.com/GreycLab/CImg"
+SRC_URI="https://github.com/GreycLab/CImg/archive/v.${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/CImg-v.${PV}"
 
 LICENSE="CeCILL-2 CeCILL-C"

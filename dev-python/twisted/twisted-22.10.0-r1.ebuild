@@ -48,7 +48,7 @@ RDEPEND="
 	)
 	ssl? (
 		>=dev-python/pyopenssl-21.0.0[${PYTHON_USEDEP}]
-		>=dev-python/service_identity-18.1.0[${PYTHON_USEDEP}]
+		>=dev-python/service-identity-18.1.0[${PYTHON_USEDEP}]
 		>=dev-python/idna-2.4[${PYTHON_USEDEP}]
 	)
 "
@@ -71,7 +71,7 @@ BDEPEND="
 			)
 			ssl? (
 				>=dev-python/pyopenssl-21.0.0[${PYTHON_USEDEP}]
-				>=dev-python/service_identity-18.1.0[${PYTHON_USEDEP}]
+				>=dev-python/service-identity-18.1.0[${PYTHON_USEDEP}]
 			)
 		' python3_{8..10} pypy3)
 		$(python_gen_cond_dep '

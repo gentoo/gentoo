@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 
 LICENSE="BSD"
 SLOT="0/${PV##*pre}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="screencast +X"
 
 # This package's USE flags may change the ABI and require a rebuild of
@@ -63,6 +63,7 @@ DEPEND="${RDEPEND}
 		media-libs/mesa
 		x11-libs/libdrm
 	)
+	X? ( x11-base/xorg-proto )
 "
 BDEPEND="virtual/pkgconfig"
 

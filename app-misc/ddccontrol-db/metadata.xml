@@ -4,6 +4,5 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="github">ddccontrol/ddccontrol-db</remote-id>
-    <remote-id type="sourceforge">ddccontrol</remote-id>
   </upstream>
 </pkgmetadata>

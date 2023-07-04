@@ -13,11 +13,14 @@ HOMEPAGE="https://gitlab.freedesktop.org/slirp/libslirp"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="static-libs"
+IUSE="static-libs valgrind"
 
 RDEPEND="dev-libs/glib:="
-
-DEPEND="${RDEPEND}"
+# Valgrind usage is automagic but it's not so bad given it's a header-only dep.
+DEPEND="
+	${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+"
 
 S=${WORKDIR}/${MY_P}
 

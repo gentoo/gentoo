@@ -33,7 +33,7 @@ src_configure() {
 
 	# LTO currently causes various segfaults in dev-embedded/sdcc
 	# sys-devel/gcc-11.3.0 '-O3 -flto'
-	filter-flags '-flto*'
+	filter-lto
 
 	local myeconfargs=(
 		$(use_enable doc html-doc)

@@ -1,0 +1,56 @@
+https://gitlab.com/free-astro/siril/-/commit/de5030991caa9490c510651868783faae2530089
+From: Cyril Richard <cyril.richard42@gmail.com>
+Date: Sun, 11 Jun 2023 23:40:10 +0200
+Subject: [PATCH] Fixing compiler error with no libtiff
+Upstream: https://gitlab.com/free-astro/siril/-/issues/1129
+
+--- a/src/gui/preferences.c
++++ b/src/gui/preferences.c
+@@ -299,6 +299,7 @@ void initialize_path_directory(const gchar *path) {
+ }
+ 
+ void initialize_starnet_executable(const gchar *path) {
++#ifdef HAVE_LIBTIFF
+ 	GtkFileChooser *starnet_exe = GTK_FILE_CHOOSER(lookup_widget("filechooser_starnet"));
+ 	GtkWidget *starnet_weights_reset = GTK_WIDGET(lookup_widget("starnet_weights_clear"));
+ 	GtkWidget *starnet_weights = GTK_WIDGET(lookup_widget("filechooser_starnet_weights"));
+@@ -315,6 +316,7 @@ void initialize_starnet_executable(const gchar *path) {
+ 		gtk_widget_set_sensitive(starnet_weights, FALSE);
+ 		gtk_widget_set_sensitive(starnet_weights_reset, FALSE);
+ 	}
++#endif
+ }
+ 
+ void initialize_starnet_weights(const gchar *path) {
+@@ -404,6 +406,7 @@ void on_filechooser_swap_file_set(GtkFileChooserButton *fileChooser, gpointer us
+ }
+ 
+ void on_filechooser_starnet_file_set(GtkFileChooserButton *fileChooser, gpointer user_data) {
++#ifdef HAVE_LIBTIFF
+ 	GtkFileChooser *starnet_exe = GTK_FILE_CHOOSER(fileChooser);
+ 	gchar *path;
+ 
+@@ -429,7 +432,7 @@ void on_filechooser_starnet_file_set(GtkFileChooserButton *fileChooser, gpointer
+ 		gtk_widget_set_sensitive(starnet_weights, FALSE);
+ 		gtk_widget_set_sensitive(starnet_weights_reset, FALSE);
+ 	}
+-
++#endif
+ }
+ 
+ void on_starnet_weights_clear_clicked(GtkButton *button, gpointer user_data) {
+--- a/src/io/sequence_export.c
++++ b/src/io/sequence_export.c
+@@ -650,7 +650,9 @@ void on_buttonExportSeq_clicked(GtkButton *button, gpointer user_data) {
+ 		// add a trailing '_' for multiple-files sequences
+ 		args->basename = format_basename(args->basename, TRUE);
+ 		if (args->output == EXPORT_TIFF) {
++#ifdef HAVE_LIBTIFF
+ 			args->tiff_compression = get_tiff_compression();
++#endif
+ 		}
+ 	}
+ 	// Display a useful warning because I always forget to remove selection
+-- 
+GitLab
+

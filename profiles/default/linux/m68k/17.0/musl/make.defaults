@@ -1,0 +1,5 @@
+# Copyright 2022-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="m68k-unknown-linux-musl"
+CHOST_m68k="${CHOST}"

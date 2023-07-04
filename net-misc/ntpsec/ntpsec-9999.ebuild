@@ -74,7 +74,8 @@ src_prepare() {
 }
 
 src_configure() {
-	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
+	is-flagq -flto* && filter-flags -fuse-linker-plugin
+	filter-lto
 
 	local string_127=""
 	local rclocks="";

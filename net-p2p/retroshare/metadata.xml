@@ -18,7 +18,6 @@
 		RetroShare provides filesharing, chat, mails, forums and channels.
 	</longdescription>
 	<use>
-		<flag name="autologin">Enables potentially insecure autologin capability via <pkg>app-crypt/libsecret</pkg></flag>
 		<flag name="cli">Enables terminal login support for retroshare-service</flag>
 		<flag name="jsonapi">Enables the new RetroShare JSON API</flag>
 		<flag name="libupnp">Enables UPnP port forwarding via <pkg>net-libs/libupnp</pkg></flag>

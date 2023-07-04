@@ -15,7 +15,7 @@ USE_PHP="php7-4 php8-0 php8-1"
 inherit php-ext-pecl-r3
 
 HOMEPAGE="https://www.swoole.co.uk"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DESCRIPTION="Event-driven asynchronous & concurrent & coroutine networking engine"
 LICENSE="Apache-2.0"

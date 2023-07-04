@@ -12,12 +12,12 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-ppp-2.5.
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="static"
 
 DEPEND="dev-libs/libevent:=
 	dev-libs/openssl:=
-	net-dialup/ppp:="
+	net-dialup/ppp:=[ipv6(+)]"
 RDEPEND="${DEPEND}
 	acct-group/sstpc
 	acct-user/sstpc"

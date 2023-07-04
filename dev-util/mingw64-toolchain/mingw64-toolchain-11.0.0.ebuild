@@ -36,7 +36,7 @@ LICENSE="
 	LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 )
 	ZPL BSD BSD-2 ISC LGPL-2+ LGPL-2.1+ MIT public-domain"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="+abi_x86_32 custom-cflags debug"
 
 RDEPEND="
@@ -201,6 +201,13 @@ src_compile() {
 				CHOST=${CTARGET}
 				filter-flags '-fuse-ld=*'
 				filter-flags '-mfunction-return=thunk*' #878849
+
+				# -mavx with mingw-gcc has a history of obscure issues and
+				# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+				# crashes with -march=skylake >=wine-8.10, similar issues with
+				# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+				append-flags -mno-avx
+
 				strip-unsupported-flags
 				mwt-build "${@:2}"
 			)
@@ -227,8 +234,9 @@ src_compile() {
 		pushd "${build_dir}" >/dev/null || die
 
 		edo "${conf[@]}"
-		emake
-		emake DESTDIR="${MWT_D}" install
+		emake V=1
+		# -j1 to match bug #906155, other packages may be fragile too
+		emake -j1 V=1 DESTDIR="${MWT_D}" install
 
 		declare -f mwt-${id} >/dev/null && edo mwt-${id}
 		declare -f mwt-${id}_${2} >/dev/null && edo mwt-${id}_${2}

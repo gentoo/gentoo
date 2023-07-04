@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,12 +15,11 @@ EGIT_REPO_URI="https://git.code.sf.net/p/xineliboutput/git"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vdpau +X +xine xinerama"
+IUSE="bluray caps cec dbus fbcon jpeg nls opengl +vdr vdpau +X +xine xinerama"
 
 COMMON_DEPEND="
 	vdr? (
 		>=media-video/vdr-1.6.0
-		libextractor? ( >=media-libs/libextractor-0.5.20 )
 		caps? ( sys-libs/libcap )
 	)
 
@@ -103,7 +102,7 @@ src_configure() {
 		$(use_enable fbcon fb) \
 		$(use_enable vdr) \
 		$(use_enable xine libxine) \
-		$(use_enable libextractor) \
+		--disable-libextractor \
 		$(use_enable caps libcap) \
 		$(use_enable jpeg libjpeg) \
 		$(use_enable xinerama) \

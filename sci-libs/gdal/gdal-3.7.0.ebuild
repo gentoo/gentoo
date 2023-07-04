@@ -29,7 +29,6 @@ BDEPEND="
 	java? (
 		dev-java/ant-core
 		dev-lang/swig
-		>=virtual/jdk-1.8:*
 	)
 	python? (
 		dev-lang/swig
@@ -60,6 +59,9 @@ DEPEND="
 	gml? ( >=dev-libs/xerces-c-3.1 )
 	heif? ( media-libs/libheif:= )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[cxx,szip] )
+	java? (
+		>=virtual/jdk-1.8:*
+	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lzma? ( || (
@@ -260,10 +262,25 @@ src_test() {
 src_install() {
 	cmake_src_install
 	use python && python_optimize
+
+	if use java; then
+		# Move the native library into the proper place for Gentoo.  The
+		# library in ${D} has already had its RPATH fixed, so we use it
+		# rather than ${BUILD_DIR}/swig/java/libgdalalljni.so.
+		java-pkg_doso "${D}/usr/share/java/libgdalalljni.so"
+		rm "${D}/usr/share/java/libgdalalljni.so" || die
+	fi
+
 	# TODO: install docs?
 }
 
 pkg_postinst() {
 	elog "Check available image and data formats after building with"
 	elog "gdalinfo and ogrinfo (using the --formats switch)."
+
+	if use java; then
+		elog
+		elog "To use the Java bindings, you need to pass the following to java:"
+		elog "    -Djava.library.path=$(java-config -i gdal)"
+	fi
 }

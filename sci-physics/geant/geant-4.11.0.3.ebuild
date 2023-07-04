@@ -27,7 +27,7 @@ SRC_URI="https://geant4-data.web.cern.ch/geant4-data/releases/${MY_P}.tar.gz"
 
 LICENSE="geant4"
 SLOT="4"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+c++17 c++20 +data debug doc examples freetype gdml geant3 hdf5 inventor motif opengl
 	python qt5 raytracerx static-libs tbb threads vtk"
 

@@ -49,21 +49,14 @@ zig-set_EZIG() {
 		return
 	fi
 
-	local candidates candidate selected selected_ver
+	local candidate selected selected_ver ver
 
-	candidates=$(compgen -c zig-)
-
-	for candidate in ${candidates}; do
-		if [[ ! ${candidate} =~ zig(-bin)?-([.0-9]+) ]]; then
+	for candidate in "${BROOT}"/usr/bin/zig-*; do
+		if [[ ! -L ${candidate} || ${candidate} != */zig?(-bin)-+([0-9.]) ]]; then
 			continue
 		fi
 
-		local ver
-		if (( ${#BASH_REMATCH[@]} == 3 )); then
-			ver="${BASH_REMATCH[2]}"
-		else
-			ver="${BASH_REMATCH[1]}"
-		fi
+		ver=${candidate##*-}
 
 		if [[ -n ${EZIG_EXACT_VER} ]]; then
 			ver_test "${ver}" -ne "${EZIG_EXACT_VER}" && continue
@@ -96,11 +89,11 @@ zig-set_EZIG() {
 	done
 
 	if [[ -z ${selected} ]]; then
-		die "Could not find (suitable) zig installation in PATH"
+		die "Could not find (suitable) zig installation in ${BROOT}/usr/bin"
 	fi
 
 	export EZIG="${selected}"
-	export EZIG_VER="${ver}"
+	export EZIG_VER="${selected_ver}"
 }
 
 # Invoke zig with the optionally provided arguments.

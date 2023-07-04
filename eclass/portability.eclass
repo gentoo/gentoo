@@ -90,9 +90,8 @@ dlopen_lib() {
 	# - Darwin needs nothing
 	# - *BSD needs nothing
 	# - Linux needs -ldl (glibc and uclibc)
-	# - Interix needs -ldl
 	case "${CHOST}" in
-		*-linux-gnu*|*-linux-uclibc|*-interix*)
+		*-linux-gnu*|*-linux-uclibc)
 			echo "-ldl"
 		;;
 	esac

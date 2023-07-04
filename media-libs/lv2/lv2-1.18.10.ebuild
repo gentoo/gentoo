@@ -60,6 +60,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# XXX: Drop this > 1.18.10, -Dstrict=false should prevent it now, bug #906047.
+	sed -i -e "/codespell = /s:get_option('tests'):false:" test/meson.build || die
+
 	# fix doc installation path
 	sed -iE "s%lv2_docdir = .*%lv2_docdir = '"${EPREFIX}"/usr/share/doc/${PF}'%g" meson.build || die
 }
@@ -67,6 +70,7 @@ src_prepare() {
 multilib_src_configure() {
 	local emesonargs=(
 		-Dlv2dir="${EPREFIX}"/usr/$(get_libdir)/lv2
+		-Dstrict=false
 		$(meson_native_use_feature doc docs)
 		$(meson_feature plugins)
 		$(meson_feature test tests)

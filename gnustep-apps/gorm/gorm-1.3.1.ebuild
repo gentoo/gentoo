@@ -5,7 +5,7 @@ EAPI=7
 inherit gnustep-2
 
 DESCRIPTION="A clone of the NeXTstep Interface Builder application for GNUstep"
-HOMEPAGE="http://www.gnustep.org/experience/Gorm.html"
+HOMEPAGE="https://gnustep.github.io/experience/Gorm.html"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/dev-apps/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~ppc ~x86"

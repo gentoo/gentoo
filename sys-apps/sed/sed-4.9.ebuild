@@ -47,6 +47,13 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+src_test() {
+	# We don't want to automagically use Valgrind for tests.
+	sed -i -e 's:valgrind --error-exitcode=1:false:' init.cfg || die
+
+	emake VERBOSE=yes check
+}
+
 src_install() {
 	default
 

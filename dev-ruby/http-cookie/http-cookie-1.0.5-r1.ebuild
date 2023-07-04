@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/sparklemotion/http-cookie"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
 
 # See https://github.com/sparklemotion/http-cookie/issues/16 for dropping domain_name

@@ -1,0 +1,15 @@
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -96,6 +95,0 @@
+-if(ENABLE_TESTS)
+-	if(NOT EXISTS "${CMAKE_SOURCE_DIR}/3rdparty/gtest/CMakeLists.txt")
+-		message(WARNING "ENABLE_TESTS was on but gtest was not found, unit tests will not be enabled")
+-		set(ACTUALLY_ENABLE_TESTS Off)
+-	endif()
+-endif()
+--- a/tests/ctest/CMakeLists.txt
++++ b/tests/ctest/CMakeLists.txt
+@@ -20 +20,2 @@
+-add_subdirectory(gtest)
++find_package(GTest REQUIRED)
++alias_library(gtest_main GTest::gtest_main)

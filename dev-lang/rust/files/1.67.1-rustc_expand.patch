@@ -1,0 +1,1427 @@
+From 2f9f097cb8b6c27a7e0d7a916e6911fc1f5ecd81 Mon Sep 17 00:00:00 2001
+From: nils <48135649+Nilstrieb@users.noreply.github.com>
+Date: Tue, 15 Nov 2022 14:24:33 +0100
+Subject: [PATCH] Migrate parts of `rustc_expand` to session diagnostics
+
+This migrates everything but the `mbe` and `proc_macro` modules. It also
+contains a few cleanups and drive-by/accidental diagnostic improvements
+which can be seen in the diff for the UI tests.
+---
+ compiler/rustc_builtin_macros/src/concat.rs   |   2 +-
+ .../rustc_builtin_macros/src/concat_bytes.rs  |   2 +-
+ compiler/rustc_builtin_macros/src/env.rs      |   2 +-
+ .../locales/en-US/expand.ftl                  | 107 ++++++
+ compiler/rustc_errors/src/diagnostic_impls.rs |   6 +
+ compiler/rustc_expand/src/base.rs             |  90 +++--
+ compiler/rustc_expand/src/config.rs           | 106 +++---
+ compiler/rustc_expand/src/errors.rs           | 326 +++++++++++++++++-
+ compiler/rustc_expand/src/expand.rs           |  86 ++---
+ compiler/rustc_expand/src/lib.rs              |   6 +
+ compiler/rustc_expand/src/module.rs           |  80 ++---
+ compiler/rustc_expand/src/tests.rs            |   1 +
+ src/test/rustdoc-ui/doc-cfg.stderr            |   4 +-
+ .../cfg-attr-syntax-validation.stderr         |   2 +-
+ .../macros/macro-in-expression-context.stderr |   8 +-
+ .../ui/proc-macro/attr-invalid-exprs.stderr   |  16 +-
+ src/test/ui/proc-macro/attribute.rs           |   8 +-
+ src/test/ui/proc-macro/attribute.stderr       |   8 +-
+ src/test/ui/proc-macro/expand-expr.stderr     |  16 +-
+ 19 files changed, 640 insertions(+), 236 deletions(-)
+
+diff --git a/compiler/rustc_builtin_macros/src/concat.rs b/compiler/rustc_builtin_macros/src/concat.rs
+index e2d71825d556f..9ae65c641fd62 100644
+--- a/compiler/rustc_builtin_macros/src/concat.rs
++++ b/compiler/rustc_builtin_macros/src/concat.rs
+@@ -11,7 +11,7 @@ pub fn expand_concat(
+     sp: rustc_span::Span,
+     tts: TokenStream,
+ ) -> Box<dyn base::MacResult + 'static> {
+-    let Some(es) = base::get_exprs_from_tts(cx, sp, tts) else {
++    let Some(es) = base::get_exprs_from_tts(cx, tts) else {
+         return DummyResult::any(sp);
+     };
+     let mut accumulator = String::new();
+diff --git a/compiler/rustc_builtin_macros/src/concat_bytes.rs b/compiler/rustc_builtin_macros/src/concat_bytes.rs
+index d1124145dcbbb..70ce5a6c41929 100644
+--- a/compiler/rustc_builtin_macros/src/concat_bytes.rs
++++ b/compiler/rustc_builtin_macros/src/concat_bytes.rs
+@@ -137,7 +137,7 @@ pub fn expand_concat_bytes(
+     sp: rustc_span::Span,
+     tts: TokenStream,
+ ) -> Box<dyn base::MacResult + 'static> {
+-    let Some(es) = base::get_exprs_from_tts(cx, sp, tts) else {
++    let Some(es) = base::get_exprs_from_tts(cx, tts) else {
+         return DummyResult::any(sp);
+     };
+     let mut accumulator = Vec::new();
+diff --git a/compiler/rustc_builtin_macros/src/env.rs b/compiler/rustc_builtin_macros/src/env.rs
+index 0b4e545f7a3d0..a7283ea601b19 100644
+--- a/compiler/rustc_builtin_macros/src/env.rs
++++ b/compiler/rustc_builtin_macros/src/env.rs
+@@ -52,7 +52,7 @@ pub fn expand_env<'cx>(
+     sp: Span,
+     tts: TokenStream,
+ ) -> Box<dyn base::MacResult + 'cx> {
+-    let mut exprs = match get_exprs_from_tts(cx, sp, tts) {
++    let mut exprs = match get_exprs_from_tts(cx, tts) {
+         Some(exprs) if exprs.is_empty() => {
+             cx.span_err(sp, "env! takes 1 or 2 arguments");
+             return DummyResult::any(sp);
+diff --git a/compiler/rustc_error_messages/locales/en-US/expand.ftl b/compiler/rustc_error_messages/locales/en-US/expand.ftl
+index 5720591154f99..df0e8ae5dd8f5 100644
+--- a/compiler/rustc_error_messages/locales/en-US/expand.ftl
++++ b/compiler/rustc_error_messages/locales/en-US/expand.ftl
+@@ -20,3 +20,110 @@ expand_var_still_repeating =
+     variable '{$ident}' is still repeating at this depth
+ 
+ expand_meta_var_dif_seq_matchers = {$msg}
++
++expand_macro_const_stability =
++    macros cannot have const stability attributes
++    .label = invalid const stability attribute
++    .label2 = const stability attribute affects this macro
++
++expand_macro_body_stability =
++    macros cannot have body stability attributes
++    .label = invalid body stability attribute
++    .label2 = body stability attribute affects this macro
++
++expand_resolve_relative_path =
++    cannot resolve relative path in non-file source `{$path}`
++
++expand_attr_no_arguments =
++    attribute must have either one or two arguments
++
++expand_not_a_meta_item =
++    not a meta item
++
++expand_only_one_word =
++    must only be one word
++
++expand_cannot_be_name_of_macro =
++    `{$trait_ident}` cannot be a name of {$macro_type} macro
++
++expand_arg_not_attributes =
++    second argument must be `attributes`
++
++expand_attributes_wrong_form =
++    attribute must be of form: `attributes(foo, bar)`
++
++expand_attribute_meta_item =
++    attribute must be a meta item, not a literal
++
++expand_attribute_single_word =
++    attribute must only be a single word
++
++expand_helper_attribute_name_invalid =
++    `{$name}` cannot be a name of derive helper attribute
++
++expand_expected_comma_in_list =
++    expected token: `,`
++
++expand_only_one_argument =
++    {$name} takes 1 argument
++
++expand_takes_no_arguments =
++    {$name} takes no arguments
++
++expand_feature_included_in_edition =
++    the feature `{$feature}` is included in the Rust {$edition} edition
++
++expand_feature_removed =
++    feature has been removed
++    .label = feature has been removed
++    .reason = {$reason}
++
++expand_feature_not_allowed =
++    the feature `{$name}` is not in the list of allowed features
++
++expand_recursion_limit_reached =
++    recursion limit reached while expanding `{$descr}`
++    .help = consider increasing the recursion limit by adding a `#![recursion_limit = "{$suggested_limit}"]` attribute to your crate (`{$crate_name}`)
++
++expand_malformed_feature_attribute =
++    malformed `feature` attribute input
++    .expected = expected just one word
++
++expand_remove_expr_not_supported =
++    removing an expression is not supported in this position
++
++expand_invalid_cfg_no_parens = `cfg` is not followed by parentheses
++expand_invalid_cfg_no_predicate = `cfg` predicate is not specified
++expand_invalid_cfg_multiple_predicates = multiple `cfg` predicates are specified
++expand_invalid_cfg_predicate_literal = `cfg` predicate key cannot be a literal
++expand_invalid_cfg_expected_syntax = expected syntax is
++
++expand_wrong_fragment_kind =
++    non-{$kind} macro in {$kind} position: {$name}
++
++expand_unsupported_key_value =
++    key-value macro attributes are not supported
++
++expand_incomplete_parse =
++    macro expansion ignores token `{$token}` and any following
++    .label = caused by the macro expansion here
++    .note = the usage of `{$macro_path}!` is likely invalid in {$kind_name} context
++    .suggestion_add_semi = you might be missing a semicolon here
++
++expand_remove_node_not_supported =
++    removing {$descr} is not supported in this position
++
++expand_module_circular =
++    circular modules: {$modules}
++
++expand_module_in_block =
++    cannot declare a non-inline module inside a block unless it has a path attribute
++    .note = maybe `use` the module `{$name}` instead of redeclaring it
++
++expand_module_file_not_found =
++    file not found for module `{$name}`
++    .help = to create the module `{$name}`, create file "{$default_path}" or "{$secondary_path}"
++
++expand_module_multiple_candidates =
++    file for module `{$name}` found at both "{$default_path}" and "{$secondary_path}"
++    .help = delete or rename one of them to remove the ambiguity
+diff --git a/compiler/rustc_errors/src/diagnostic_impls.rs b/compiler/rustc_errors/src/diagnostic_impls.rs
+index 7155db32e53b7..cb39e997436e0 100644
+--- a/compiler/rustc_errors/src/diagnostic_impls.rs
++++ b/compiler/rustc_errors/src/diagnostic_impls.rs
+@@ -152,6 +152,12 @@ impl IntoDiagnosticArg for ast::Path {
+     }
+ }
+ 
++impl IntoDiagnosticArg for &ast::Path {
++    fn into_diagnostic_arg(self) -> DiagnosticArgValue<'static> {
++        DiagnosticArgValue::Str(Cow::Owned(pprust::path_to_string(self)))
++    }
++}
++
+ impl IntoDiagnosticArg for ast::token::Token {
+     fn into_diagnostic_arg(self) -> DiagnosticArgValue<'static> {
+         DiagnosticArgValue::Str(pprust::token_to_string(&self))
+diff --git a/compiler/rustc_expand/src/base.rs b/compiler/rustc_expand/src/base.rs
+index 9d6a4f9a1fd7d..6f159663e80cf 100644
+--- a/compiler/rustc_expand/src/base.rs
++++ b/compiler/rustc_expand/src/base.rs
+@@ -1,3 +1,11 @@
++#![deny(rustc::untranslatable_diagnostic)]
++
++use crate::errors::{
++    ArgumentNotAttributes, AttrNoArguments, AttributeMetaItem, AttributeSingleWord,
++    AttributesWrongForm, CannotBeNameOfMacro, ExpectedCommaInList, HelperAttributeNameInvalid,
++    MacroBodyStability, MacroConstStability, NotAMetaItem, OnlyOneArgument, OnlyOneWord,
++    ResolveRelativePath, TakesNoArguments,
++};
+ use crate::expand::{self, AstFragment, Invocation};
+ use crate::module::DirOwnership;
+ 
+@@ -789,26 +797,16 @@ impl SyntaxExtension {
+             .unwrap_or_else(|| (None, helper_attrs));
+         let (stability, const_stability, body_stability) = attr::find_stability(&sess, attrs, span);
+         if let Some((_, sp)) = const_stability {
+-            sess.parse_sess
+-                .span_diagnostic
+-                .struct_span_err(sp, "macros cannot have const stability attributes")
+-                .span_label(sp, "invalid const stability attribute")
+-                .span_label(
+-                    sess.source_map().guess_head_span(span),
+-                    "const stability attribute affects this macro",
+-                )
+-                .emit();
++            sess.emit_err(MacroConstStability {
++                span: sp,
++                head_span: sess.source_map().guess_head_span(span),
++            });
+         }
+         if let Some((_, sp)) = body_stability {
+-            sess.parse_sess
+-                .span_diagnostic
+-                .struct_span_err(sp, "macros cannot have body stability attributes")
+-                .span_label(sp, "invalid body stability attribute")
+-                .span_label(
+-                    sess.source_map().guess_head_span(span),
+-                    "body stability attribute affects this macro",
+-                )
+-                .emit();
++            sess.emit_err(MacroBodyStability {
++                span: sp,
++                head_span: sess.source_map().guess_head_span(span),
++            });
+         }
+ 
+         SyntaxExtension {
+@@ -1200,13 +1198,11 @@ pub fn resolve_path(
+                 .expect("attempting to resolve a file path in an external file"),
+             FileName::DocTest(path, _) => path,
+             other => {
+-                return Err(parse_sess.span_diagnostic.struct_span_err(
++                return Err(ResolveRelativePath {
+                     span,
+-                    &format!(
+-                        "cannot resolve relative path in non-file source `{}`",
+-                        parse_sess.source_map().filename_for_diagnostics(&other)
+-                    ),
+-                ));
++                    path: parse_sess.source_map().filename_for_diagnostics(&other).to_string(),
++                }
++                .into_diagnostic(&parse_sess.span_diagnostic));
+             }
+         };
+         result.pop();
+@@ -1222,6 +1218,8 @@ pub fn resolve_path(
+ /// The returned bool indicates whether an applicable suggestion has already been
+ /// added to the diagnostic to avoid emitting multiple suggestions. `Err(None)`
+ /// indicates that an ast error was encountered.
++// FIXME(Nilstrieb) Make this function setup translatable
++#[allow(rustc::untranslatable_diagnostic)]
+ pub fn expr_to_spanned_string<'a>(
+     cx: &'a mut ExtCtxt<'_>,
+     expr: P<ast::Expr>,
+@@ -1280,9 +1278,9 @@ pub fn expr_to_string(
+ /// compilation should call
+ /// `cx.parse_sess.span_diagnostic.abort_if_errors()` (this should be
+ /// done as rarely as possible).
+-pub fn check_zero_tts(cx: &ExtCtxt<'_>, sp: Span, tts: TokenStream, name: &str) {
++pub fn check_zero_tts(cx: &ExtCtxt<'_>, span: Span, tts: TokenStream, name: &str) {
+     if !tts.is_empty() {
+-        cx.span_err(sp, &format!("{} takes no arguments", name));
++        cx.emit_err(TakesNoArguments { span, name });
+     }
+ }
+ 
+@@ -1304,31 +1302,27 @@ pub fn parse_expr(p: &mut parser::Parser<'_>) -> Option<P<ast::Expr>> {
+ /// expect exactly one string literal, or emit an error and return `None`.
+ pub fn get_single_str_from_tts(
+     cx: &mut ExtCtxt<'_>,
+-    sp: Span,
++    span: Span,
+     tts: TokenStream,
+     name: &str,
+ ) -> Option<Symbol> {
+     let mut p = cx.new_parser_from_tts(tts);
+     if p.token == token::Eof {
+-        cx.span_err(sp, &format!("{} takes 1 argument", name));
++        cx.emit_err(OnlyOneArgument { span, name });
+         return None;
+     }
+     let ret = parse_expr(&mut p)?;
+     let _ = p.eat(&token::Comma);
+ 
+     if p.token != token::Eof {
+-        cx.span_err(sp, &format!("{} takes 1 argument", name));
++        cx.emit_err(OnlyOneArgument { span, name });
+     }
+     expr_to_string(cx, ret, "argument must be a string literal").map(|(s, _)| s)
+ }
+ 
+ /// Extracts comma-separated expressions from `tts`.
+ /// On error, emit it, and return `None`.
+-pub fn get_exprs_from_tts(
+-    cx: &mut ExtCtxt<'_>,
+-    sp: Span,
+-    tts: TokenStream,
+-) -> Option<Vec<P<ast::Expr>>> {
++pub fn get_exprs_from_tts(cx: &mut ExtCtxt<'_>, tts: TokenStream) -> Option<Vec<P<ast::Expr>>> {
+     let mut p = cx.new_parser_from_tts(tts);
+     let mut es = Vec::new();
+     while p.token != token::Eof {
+@@ -1343,7 +1337,7 @@ pub fn get_exprs_from_tts(
+             continue;
+         }
+         if p.token != token::Eof {
+-            cx.span_err(sp, "expected token: `,`");
++            cx.emit_err(ExpectedCommaInList { span: p.token.span });
+             return None;
+         }
+     }
+@@ -1353,64 +1347,58 @@ pub fn get_exprs_from_tts(
+ pub fn parse_macro_name_and_helper_attrs(
+     diag: &rustc_errors::Handler,
+     attr: &Attribute,
+-    descr: &str,
++    macro_type: &str,
+ ) -> Option<(Symbol, Vec<Symbol>)> {
+     // Once we've located the `#[proc_macro_derive]` attribute, verify
+     // that it's of the form `#[proc_macro_derive(Foo)]` or
+     // `#[proc_macro_derive(Foo, attributes(A, ..))]`
+     let list = attr.meta_item_list()?;
+     if list.len() != 1 && list.len() != 2 {
+-        diag.span_err(attr.span, "attribute must have either one or two arguments");
++        diag.emit_err(AttrNoArguments { span: attr.span });
+         return None;
+     }
+     let Some(trait_attr) = list[0].meta_item() else {
+-        diag.span_err(list[0].span(), "not a meta item");
++        diag.emit_err(NotAMetaItem {span: list[0].span()});
+         return None;
+     };
+     let trait_ident = match trait_attr.ident() {
+         Some(trait_ident) if trait_attr.is_word() => trait_ident,
+         _ => {
+-            diag.span_err(trait_attr.span, "must only be one word");
++            diag.emit_err(OnlyOneWord { span: trait_attr.span });
+             return None;
+         }
+     };
+ 
+     if !trait_ident.name.can_be_raw() {
+-        diag.span_err(
+-            trait_attr.span,
+-            &format!("`{}` cannot be a name of {} macro", trait_ident, descr),
+-        );
++        diag.emit_err(CannotBeNameOfMacro { span: trait_attr.span, trait_ident, macro_type });
+     }
+ 
+     let attributes_attr = list.get(1);
+     let proc_attrs: Vec<_> = if let Some(attr) = attributes_attr {
+         if !attr.has_name(sym::attributes) {
+-            diag.span_err(attr.span(), "second argument must be `attributes`");
++            diag.emit_err(ArgumentNotAttributes { span: attr.span() });
+         }
+         attr.meta_item_list()
+             .unwrap_or_else(|| {
+-                diag.span_err(attr.span(), "attribute must be of form: `attributes(foo, bar)`");
++                diag.emit_err(AttributesWrongForm { span: attr.span() });
+                 &[]
+             })
+             .iter()
+             .filter_map(|attr| {
+                 let Some(attr) = attr.meta_item() else {
+-                    diag.span_err(attr.span(), "not a meta item");
++                    diag.emit_err(AttributeMetaItem { span: attr.span() });
+                     return None;
+                 };
+ 
+                 let ident = match attr.ident() {
+                     Some(ident) if attr.is_word() => ident,
+                     _ => {
+-                        diag.span_err(attr.span, "must only be one word");
++                        diag.emit_err(AttributeSingleWord { span: attr.span });
+                         return None;
+                     }
+                 };
+                 if !ident.name.can_be_raw() {
+-                    diag.span_err(
+-                        attr.span,
+-                        &format!("`{}` cannot be a name of derive helper attribute", ident),
+-                    );
++                    diag.emit_err(HelperAttributeNameInvalid { span: attr.span, name: ident });
+                 }
+ 
+                 Some(ident.name)
+diff --git a/compiler/rustc_expand/src/config.rs b/compiler/rustc_expand/src/config.rs
+index 2510795c2e3ed..f4c6f3386ade2 100644
+--- a/compiler/rustc_expand/src/config.rs
++++ b/compiler/rustc_expand/src/config.rs
+@@ -1,5 +1,9 @@
+ //! Conditional compilation stripping.
+ 
++use crate::errors::{
++    FeatureIncludedInEdition, FeatureNotAllowed, FeatureRemoved, FeatureRemovedReason, InvalidCfg,
++    MalformedFeatureAttribute, MalformedFeatureAttributeHelp, RemoveExprNotSupported,
++};
+ use rustc_ast::ptr::P;
+ use rustc_ast::token::{Delimiter, Token, TokenKind};
+ use rustc_ast::tokenstream::{AttrTokenStream, AttrTokenTree};
+@@ -10,7 +14,6 @@ use rustc_ast::{self as ast, AttrStyle, Attribute, HasAttrs, HasTokens, MetaItem
+ use rustc_attr as attr;
+ use rustc_data_structures::fx::FxHashMap;
+ use rustc_data_structures::map_in_place::MapInPlace;
+-use rustc_errors::{error_code, struct_span_err, Applicability, Handler};
+ use rustc_feature::{Feature, Features, State as FeatureState};
+ use rustc_feature::{
+     ACCEPTED_FEATURES, ACTIVE_FEATURES, REMOVED_FEATURES, STABLE_REMOVED_FEATURES,
+@@ -33,18 +36,12 @@ pub struct StripUnconfigured<'a> {
+     pub lint_node_id: NodeId,
+ }
+ 
+-fn get_features(
+-    sess: &Session,
+-    span_handler: &Handler,
+-    krate_attrs: &[ast::Attribute],
+-) -> Features {
+-    fn feature_removed(span_handler: &Handler, span: Span, reason: Option<&str>) {
+-        let mut err = struct_span_err!(span_handler, span, E0557, "feature has been removed");
+-        err.span_label(span, "feature has been removed");
+-        if let Some(reason) = reason {
+-            err.note(reason);
+-        }
+-        err.emit();
++fn get_features(sess: &Session, krate_attrs: &[ast::Attribute]) -> Features {
++    fn feature_removed(sess: &Session, span: Span, reason: Option<&str>) {
++        sess.emit_err(FeatureRemoved {
++            span,
++            reason: reason.map(|reason| FeatureRemovedReason { reason }),
++        });
+     }
+ 
+     fn active_features_up_to(edition: Edition) -> impl Iterator<Item = &'static Feature> {
+@@ -117,34 +114,34 @@ fn get_features(
+             continue;
+         };
+ 
+-        let bad_input = |span| {
+-            struct_span_err!(span_handler, span, E0556, "malformed `feature` attribute input")
+-        };
+-
+         for mi in list {
+             let name = match mi.ident() {
+                 Some(ident) if mi.is_word() => ident.name,
+                 Some(ident) => {
+-                    bad_input(mi.span())
+-                        .span_suggestion(
+-                            mi.span(),
+-                            "expected just one word",
+-                            ident.name,
+-                            Applicability::MaybeIncorrect,
+-                        )
+-                        .emit();
++                    sess.emit_err(MalformedFeatureAttribute {
++                        span: mi.span(),
++                        help: MalformedFeatureAttributeHelp::Suggestion {
++                            span: mi.span(),
++                            suggestion: ident.name,
++                        },
++                    });
+                     continue;
+                 }
+                 None => {
+-                    bad_input(mi.span()).span_label(mi.span(), "expected just one word").emit();
++                    sess.emit_err(MalformedFeatureAttribute {
++                        span: mi.span(),
++                        help: MalformedFeatureAttributeHelp::Label { span: mi.span() },
++                    });
+                     continue;
+                 }
+             };
+ 
+-            if let Some(edition) = edition_enabled_features.get(&name) {
+-                let msg =
+-                    &format!("the feature `{}` is included in the Rust {} edition", name, edition);
+-                span_handler.struct_span_warn_with_code(mi.span(), msg, error_code!(E0705)).emit();
++            if let Some(&edition) = edition_enabled_features.get(&name) {
++                sess.emit_warning(FeatureIncludedInEdition {
++                    span: mi.span(),
++                    feature: name,
++                    edition,
++                });
+                 continue;
+             }
+ 
+@@ -159,7 +156,7 @@ fn get_features(
+                 if let FeatureState::Removed { reason } | FeatureState::Stabilized { reason } =
+                     state
+                 {
+-                    feature_removed(span_handler, mi.span(), *reason);
++                    feature_removed(sess, mi.span(), *reason);
+                     continue;
+                 }
+             }
+@@ -173,14 +170,7 @@ fn get_features(
+ 
+             if let Some(allowed) = sess.opts.unstable_opts.allow_features.as_ref() {
+                 if allowed.iter().all(|f| name.as_str() != f) {
+-                    struct_span_err!(
+-                        span_handler,
+-                        mi.span(),
+-                        E0725,
+-                        "the feature `{}` is not in the list of allowed features",
+-                        name
+-                    )
+-                    .emit();
++                    sess.emit_err(FeatureNotAllowed { span: mi.span(), name });
+                     continue;
+                 }
+             }
+@@ -221,7 +211,7 @@ pub fn features(
+         }
+         Some(attrs) => {
+             krate.attrs = attrs;
+-            let features = get_features(sess, diag, &krate.attrs);
++            let features = get_features(sess, &krate.attrs);
+             if err_count == diag.err_count() {
+                 // Avoid reconfiguring malformed `cfg_attr`s.
+                 strip_unconfigured.features = Some(&features);
+@@ -503,8 +493,7 @@ impl<'a> StripUnconfigured<'a> {
+         // N.B., this is intentionally not part of the visit_expr() function
+         //     in order for filter_map_expr() to be able to avoid this check
+         if let Some(attr) = expr.attrs().iter().find(|a| is_cfg(*a)) {
+-            let msg = "removing an expression is not supported in this position";
+-            self.sess.parse_sess.span_diagnostic.span_err(attr.span, msg);
++            self.sess.emit_err(RemoveExprNotSupported { span: attr.span });
+         }
+ 
+         self.process_cfg_attrs(expr);
+@@ -513,27 +502,26 @@ impl<'a> StripUnconfigured<'a> {
+ }
+ 
+ pub fn parse_cfg<'a>(meta_item: &'a MetaItem, sess: &Session) -> Option<&'a MetaItem> {
+-    let error = |span, msg, suggestion: &str| {
+-        let mut err = sess.parse_sess.span_diagnostic.struct_span_err(span, msg);
+-        if !suggestion.is_empty() {
+-            err.span_suggestion(
+-                span,
+-                "expected syntax is",
+-                suggestion,
+-                Applicability::HasPlaceholders,
+-            );
+-        }
+-        err.emit();
+-        None
+-    };
+     let span = meta_item.span;
+     match meta_item.meta_item_list() {
+-        None => error(span, "`cfg` is not followed by parentheses", "cfg(/* predicate */)"),
+-        Some([]) => error(span, "`cfg` predicate is not specified", ""),
+-        Some([_, .., l]) => error(l.span(), "multiple `cfg` predicates are specified", ""),
++        None => {
++            sess.emit_err(InvalidCfg::NotFollowedByParens { span });
++            None
++        }
++        Some([]) => {
++            sess.emit_err(InvalidCfg::NoPredicate { span });
++            None
++        }
++        Some([_, .., l]) => {
++            sess.emit_err(InvalidCfg::MultiplePredicates { span: l.span() });
++            None
++        }
+         Some([single]) => match single.meta_item() {
+             Some(meta_item) => Some(meta_item),
+-            None => error(single.span(), "`cfg` predicate key cannot be a literal", ""),
++            None => {
++                sess.emit_err(InvalidCfg::PredicateLiteral { span: single.span() });
++                None
++            }
+         },
+     }
+ }
+diff --git a/compiler/rustc_expand/src/errors.rs b/compiler/rustc_expand/src/errors.rs
+index d383f4832f699..afe5169d3f5c0 100644
+--- a/compiler/rustc_expand/src/errors.rs
++++ b/compiler/rustc_expand/src/errors.rs
+@@ -1,6 +1,10 @@
++use rustc_ast::ast;
+ use rustc_macros::Diagnostic;
+-use rustc_span::symbol::MacroRulesNormalizedIdent;
+-use rustc_span::Span;
++use rustc_session::Limit;
++use rustc_span::edition::Edition;
++use rustc_span::symbol::{Ident, MacroRulesNormalizedIdent};
++use rustc_span::{Span, Symbol};
++use std::borrow::Cow;
+ 
+ #[derive(Diagnostic)]
+ #[diag(expand_expr_repeat_no_syntax_vars)]
+@@ -46,3 +50,321 @@ pub(crate) struct MetaVarsDifSeqMatchers {
+     pub span: Span,
+     pub msg: String,
+ }
++
++#[derive(Diagnostic)]
++#[diag(expand_resolve_relative_path)]
++pub(crate) struct ResolveRelativePath {
++    #[primary_span]
++    pub span: Span,
++    pub path: String,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_macro_const_stability)]
++pub(crate) struct MacroConstStability {
++    #[primary_span]
++    #[label]
++    pub span: Span,
++    #[label(label2)]
++    pub head_span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_macro_body_stability)]
++pub(crate) struct MacroBodyStability {
++    #[primary_span]
++    #[label]
++    pub span: Span,
++    #[label(label2)]
++    pub head_span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_attr_no_arguments)]
++pub(crate) struct AttrNoArguments {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_not_a_meta_item)]
++pub(crate) struct NotAMetaItem {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_only_one_word)]
++pub(crate) struct OnlyOneWord {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_cannot_be_name_of_macro)]
++pub(crate) struct CannotBeNameOfMacro<'a> {
++    #[primary_span]
++    pub span: Span,
++    pub trait_ident: Ident,
++    pub macro_type: &'a str,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_arg_not_attributes)]
++pub(crate) struct ArgumentNotAttributes {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_attributes_wrong_form)]
++pub(crate) struct AttributesWrongForm {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_attribute_meta_item)]
++pub(crate) struct AttributeMetaItem {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_attribute_single_word)]
++pub(crate) struct AttributeSingleWord {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_helper_attribute_name_invalid)]
++pub(crate) struct HelperAttributeNameInvalid {
++    #[primary_span]
++    pub span: Span,
++    pub name: Ident,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_expected_comma_in_list)]
++pub(crate) struct ExpectedCommaInList {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_only_one_argument)]
++pub(crate) struct OnlyOneArgument<'a> {
++    #[primary_span]
++    pub span: Span,
++    pub name: &'a str,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_takes_no_arguments)]
++pub(crate) struct TakesNoArguments<'a> {
++    #[primary_span]
++    pub span: Span,
++    pub name: &'a str,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_feature_included_in_edition, code = "E0705")]
++pub(crate) struct FeatureIncludedInEdition {
++    #[primary_span]
++    pub span: Span,
++    pub feature: Symbol,
++    pub edition: Edition,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_feature_removed, code = "E0557")]
++pub(crate) struct FeatureRemoved<'a> {
++    #[primary_span]
++    #[label]
++    pub span: Span,
++    #[subdiagnostic]
++    pub reason: Option<FeatureRemovedReason<'a>>,
++}
++
++#[derive(Subdiagnostic)]
++#[note(reason)]
++pub(crate) struct FeatureRemovedReason<'a> {
++    pub reason: &'a str,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_feature_not_allowed, code = "E0725")]
++pub(crate) struct FeatureNotAllowed {
++    #[primary_span]
++    pub span: Span,
++    pub name: Symbol,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_recursion_limit_reached)]
++#[help]
++pub(crate) struct RecursionLimitReached<'a> {
++    #[primary_span]
++    pub span: Span,
++    pub descr: String,
++    pub suggested_limit: Limit,
++    pub crate_name: &'a str,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_malformed_feature_attribute, code = "E0556")]
++pub(crate) struct MalformedFeatureAttribute {
++    #[primary_span]
++    pub span: Span,
++    #[subdiagnostic]
++    pub help: MalformedFeatureAttributeHelp,
++}
++
++#[derive(Subdiagnostic)]
++pub(crate) enum MalformedFeatureAttributeHelp {
++    #[label(expected)]
++    Label {
++        #[primary_span]
++        span: Span,
++    },
++    #[suggestion(expected, code = "{suggestion}", applicability = "maybe-incorrect")]
++    Suggestion {
++        #[primary_span]
++        span: Span,
++        suggestion: Symbol,
++    },
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_remove_expr_not_supported)]
++pub(crate) struct RemoveExprNotSupported {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++pub(crate) enum InvalidCfg {
++    #[diag(expand_invalid_cfg_no_parens)]
++    NotFollowedByParens {
++        #[primary_span]
++        #[suggestion(
++            expand_invalid_cfg_expected_syntax,
++            code = "cfg(/* predicate */)",
++            applicability = "has-placeholders"
++        )]
++        span: Span,
++    },
++    #[diag(expand_invalid_cfg_no_predicate)]
++    NoPredicate {
++        #[primary_span]
++        #[suggestion(
++            expand_invalid_cfg_expected_syntax,
++            code = "cfg(/* predicate */)",
++            applicability = "has-placeholders"
++        )]
++        span: Span,
++    },
++    #[diag(expand_invalid_cfg_multiple_predicates)]
++    MultiplePredicates {
++        #[primary_span]
++        span: Span,
++    },
++    #[diag(expand_invalid_cfg_predicate_literal)]
++    PredicateLiteral {
++        #[primary_span]
++        span: Span,
++    },
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_wrong_fragment_kind)]
++pub(crate) struct WrongFragmentKind<'a> {
++    #[primary_span]
++    pub span: Span,
++    pub kind: &'a str,
++    pub name: &'a ast::Path,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_unsupported_key_value)]
++pub(crate) struct UnsupportedKeyValue {
++    #[primary_span]
++    pub span: Span,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_incomplete_parse)]
++#[note]
++pub(crate) struct IncompleteParse<'a> {
++    #[primary_span]
++    pub span: Span,
++    pub token: Cow<'a, str>,
++    #[label]
++    pub label_span: Span,
++    pub macro_path: &'a ast::Path,
++    pub kind_name: &'a str,
++
++    #[suggestion(
++        suggestion_add_semi,
++        style = "verbose",
++        code = ";",
++        applicability = "maybe-incorrect"
++    )]
++    pub add_semicolon: Option<Span>,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_remove_node_not_supported)]
++pub(crate) struct RemoveNodeNotSupported {
++    #[primary_span]
++    pub span: Span,
++    pub descr: &'static str,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_module_circular)]
++pub(crate) struct ModuleCircular {
++    #[primary_span]
++    pub span: Span,
++    pub modules: String,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_module_in_block)]
++pub(crate) struct ModuleInBlock {
++    #[primary_span]
++    pub span: Span,
++    #[subdiagnostic]
++    pub name: Option<ModuleInBlockName>,
++}
++
++#[derive(Subdiagnostic)]
++#[note(note)]
++pub(crate) struct ModuleInBlockName {
++    #[primary_span]
++    pub span: Span,
++    pub name: Ident,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_module_file_not_found, code = "E0583")]
++#[help]
++pub(crate) struct ModuleFileNotFound {
++    #[primary_span]
++    pub span: Span,
++    pub name: Ident,
++    pub default_path: String,
++    pub secondary_path: String,
++}
++
++#[derive(Diagnostic)]
++#[diag(expand_module_multiple_candidates, code = "E0761")]
++#[help]
++pub(crate) struct ModuleMultipleCandidates {
++    #[primary_span]
++    pub span: Span,
++    pub name: Ident,
++    pub default_path: String,
++    pub secondary_path: String,
++}
+diff --git a/compiler/rustc_expand/src/expand.rs b/compiler/rustc_expand/src/expand.rs
+index 1014ec2209c61..e26c16dcd7ee7 100644
+--- a/compiler/rustc_expand/src/expand.rs
++++ b/compiler/rustc_expand/src/expand.rs
+@@ -1,5 +1,9 @@
+ use crate::base::*;
+ use crate::config::StripUnconfigured;
++use crate::errors::{
++    IncompleteParse, RecursionLimitReached, RemoveExprNotSupported, RemoveNodeNotSupported,
++    UnsupportedKeyValue, WrongFragmentKind,
++};
+ use crate::hygiene::SyntaxContext;
+ use crate::mbe::diagnostics::annotate_err_with_kind;
+ use crate::module::{mod_dir_path, parse_external_mod, DirOwnership, ParsedExternalMod};
+@@ -18,7 +22,7 @@ use rustc_ast::{NestedMetaItem, NodeId, PatKind, StmtKind, TyKind};
+ use rustc_ast_pretty::pprust;
+ use rustc_data_structures::map_in_place::MapInPlace;
+ use rustc_data_structures::sync::Lrc;
+-use rustc_errors::{Applicability, PResult};
++use rustc_errors::PResult;
+ use rustc_feature::Features;
+ use rustc_parse::parser::{
+     AttemptLocalParseRecovery, CommaRecoveryMode, ForceCollect, Parser, RecoverColon, RecoverComma,
+@@ -606,29 +610,22 @@ impl<'a, 'b> MacroExpander<'a, 'b> {
+             Limit(0) => Limit(2),
+             limit => limit * 2,
+         };
+-        self.cx
+-            .struct_span_err(
+-                expn_data.call_site,
+-                &format!("recursion limit reached while expanding `{}`", expn_data.kind.descr()),
+-            )
+-            .help(&format!(
+-                "consider increasing the recursion limit by adding a \
+-                 `#![recursion_limit = \"{}\"]` attribute to your crate (`{}`)",
+-                suggested_limit, self.cx.ecfg.crate_name,
+-            ))
+-            .emit();
++
++        self.cx.emit_err(RecursionLimitReached {
++            span: expn_data.call_site,
++            descr: expn_data.kind.descr(),
++            suggested_limit,
++            crate_name: &self.cx.ecfg.crate_name,
++        });
++
+         self.cx.trace_macros_diag();
+     }
+ 
+     /// A macro's expansion does not fit in this fragment kind.
+     /// For example, a non-type macro in a type position.
+     fn error_wrong_fragment_kind(&mut self, kind: AstFragmentKind, mac: &ast::MacCall, span: Span) {
+-        let msg = format!(
+-            "non-{kind} macro in {kind} position: {path}",
+-            kind = kind.name(),
+-            path = pprust::path_to_string(&mac.path),
+-        );
+-        self.cx.span_err(span, &msg);
++        self.cx.emit_err(WrongFragmentKind { span, kind: kind.name(), name: &mac.path });
++
+         self.cx.trace_macros_diag();
+     }
+ 
+@@ -707,7 +704,7 @@ impl<'a, 'b> MacroExpander<'a, 'b> {
+                     };
+                     let attr_item = attr.unwrap_normal_item();
+                     if let AttrArgs::Eq(..) = attr_item.args {
+-                        self.cx.span_err(span, "key-value macro attributes are not supported");
++                        self.cx.emit_err(UnsupportedKeyValue { span });
+                     }
+                     let inner_tokens = attr_item.args.inner_tokens();
+                     let Ok(tok_result) = expander.expand(self.cx, span, inner_tokens, tokens) else {
+@@ -729,9 +726,7 @@ impl<'a, 'b> MacroExpander<'a, 'b> {
+                                 }
+                             };
+                             if fragment_kind == AstFragmentKind::Expr && items.is_empty() {
+-                                let msg =
+-                                    "removing an expression is not supported in this position";
+-                                self.cx.span_err(span, msg);
++                                self.cx.emit_err(RemoveExprNotSupported { span });
+                                 fragment_kind.dummy(span)
+                             } else {
+                                 fragment_kind.expect_from_annotatables(items)
+@@ -939,38 +934,32 @@ pub fn parse_ast_fragment<'a>(
+ }
+ 
+ pub fn ensure_complete_parse<'a>(
+-    this: &mut Parser<'a>,
++    parser: &mut Parser<'a>,
+     macro_path: &ast::Path,
+     kind_name: &str,
+     span: Span,
+ ) {
+-    if this.token != token::Eof {
+-        let token = pprust::token_to_string(&this.token);
+-        let msg = format!("macro expansion ignores token `{}` and any following", token);
++    if parser.token != token::Eof {
++        let token = pprust::token_to_string(&parser.token);
+         // Avoid emitting backtrace info twice.
+-        let def_site_span = this.token.span.with_ctxt(SyntaxContext::root());
+-        let mut err = this.struct_span_err(def_site_span, &msg);
+-        err.span_label(span, "caused by the macro expansion here");
+-        let msg = format!(
+-            "the usage of `{}!` is likely invalid in {} context",
+-            pprust::path_to_string(macro_path),
+-            kind_name,
+-        );
+-        err.note(&msg);
++        let def_site_span = parser.token.span.with_ctxt(SyntaxContext::root());
+ 
+-        let semi_span = this.sess.source_map().next_point(span);
+-        match this.sess.source_map().span_to_snippet(semi_span) {
++        let semi_span = parser.sess.source_map().next_point(span);
++        let add_semicolon = match parser.sess.source_map().span_to_snippet(semi_span) {
+             Ok(ref snippet) if &snippet[..] != ";" && kind_name == "expression" => {
+-                err.span_suggestion(
+-                    span.shrink_to_hi(),
+-                    "you might be missing a semicolon here",
+-                    ";",
+-                    Applicability::MaybeIncorrect,
+-                );
++                Some(span.shrink_to_hi())
+             }
+-            _ => {}
+-        }
+-        err.emit();
++            _ => None,
++        };
++
++        parser.sess.emit_err(IncompleteParse {
++            span: def_site_span,
++            token,
++            label_span: span,
++            macro_path,
++            kind_name,
++            add_semicolon,
++        });
+     }
+ }
+ 
+@@ -1766,9 +1755,8 @@ impl<'a, 'b> InvocationCollector<'a, 'b> {
+                         if self.expand_cfg_true(node, attr, pos) {
+                             continue;
+                         }
+-                        let msg =
+-                            format!("removing {} is not supported in this position", Node::descr());
+-                        self.cx.span_err(span, &msg);
++
++                        self.cx.emit_err(RemoveNodeNotSupported { span, descr: Node::descr() });
+                         continue;
+                     }
+                     sym::cfg_attr => {
+diff --git a/compiler/rustc_expand/src/lib.rs b/compiler/rustc_expand/src/lib.rs
+index b34de94fb7db4..897268566358a 100644
+--- a/compiler/rustc_expand/src/lib.rs
++++ b/compiler/rustc_expand/src/lib.rs
+@@ -10,6 +10,7 @@
+ #![feature(rustc_attrs)]
+ #![feature(try_blocks)]
+ #![recursion_limit = "256"]
++#![deny(rustc::untranslatable_diagnostic)]
+ 
+ #[macro_use]
+ extern crate rustc_macros;
+@@ -31,8 +32,13 @@ pub mod config;
+ pub mod errors;
+ pub mod expand;
+ pub mod module;
++
++// FIXME(Nilstrieb) Translate proc_macro diagnostics
++#[allow(rustc::untranslatable_diagnostic)]
+ pub mod proc_macro;
+ 
++// FIXME(Nilstrieb) Translate macro_rules diagnostics
++#[allow(rustc::untranslatable_diagnostic)]
+ pub(crate) mod mbe;
+ 
+ // HACK(Centril, #64197): These shouldn't really be here.
+diff --git a/compiler/rustc_expand/src/module.rs b/compiler/rustc_expand/src/module.rs
+index 9002a24e42f9d..07f47a9c3a4f2 100644
+--- a/compiler/rustc_expand/src/module.rs
++++ b/compiler/rustc_expand/src/module.rs
+@@ -1,13 +1,17 @@
+ use crate::base::ModuleData;
++use crate::errors::{
++    ModuleCircular, ModuleFileNotFound, ModuleInBlock, ModuleInBlockName, ModuleMultipleCandidates,
++};
+ use rustc_ast::ptr::P;
+ use rustc_ast::{token, AttrVec, Attribute, Inline, Item, ModSpans};
+-use rustc_errors::{struct_span_err, DiagnosticBuilder, ErrorGuaranteed};
++use rustc_errors::{DiagnosticBuilder, ErrorGuaranteed};
+ use rustc_parse::new_parser_from_file;
+ use rustc_parse::validate_attr;
+ use rustc_session::parse::ParseSess;
+ use rustc_session::Session;
+ use rustc_span::symbol::{sym, Ident};
+ use rustc_span::Span;
++use std::iter::once;
+ 
+ use std::path::{self, Path, PathBuf};
+ 
+@@ -242,57 +246,41 @@ pub fn default_submod_path<'a>(
+ 
+ impl ModError<'_> {
+     fn report(self, sess: &Session, span: Span) -> ErrorGuaranteed {
+-        let diag = &sess.parse_sess.span_diagnostic;
+         match self {
+             ModError::CircularInclusion(file_paths) => {
+-                let mut msg = String::from("circular modules: ");
+-                for file_path in &file_paths {
+-                    msg.push_str(&file_path.display().to_string());
+-                    msg.push_str(" -> ");
+-                }
+-                msg.push_str(&file_paths[0].display().to_string());
+-                diag.struct_span_err(span, &msg)
+-            }
+-            ModError::ModInBlock(ident) => {
+-                let msg = "cannot declare a non-inline module inside a block unless it has a path attribute";
+-                let mut err = diag.struct_span_err(span, msg);
+-                if let Some(ident) = ident {
+-                    let note =
+-                        format!("maybe `use` the module `{}` instead of redeclaring it", ident);
+-                    err.span_note(span, &note);
+-                }
+-                err
++                let path_to_string = |path: &PathBuf| path.display().to_string();
++
++                let paths = file_paths
++                    .iter()
++                    .map(path_to_string)
++                    .chain(once(path_to_string(&file_paths[0])))
++                    .collect::<Vec<_>>();
++
++                let modules = paths.join(" -> ");
++
++                sess.emit_err(ModuleCircular { span, modules })
+             }
+-            ModError::FileNotFound(ident, default_path, secondary_path) => {
+-                let mut err = struct_span_err!(
+-                    diag,
++            ModError::ModInBlock(ident) => sess.emit_err(ModuleInBlock {
++                span,
++                name: ident.map(|name| ModuleInBlockName { span, name }),
++            }),
++            ModError::FileNotFound(name, default_path, secondary_path) => {
++                sess.emit_err(ModuleFileNotFound {
+                     span,
+-                    E0583,
+-                    "file not found for module `{}`",
+-                    ident,
+-                );
+-                err.help(&format!(
+-                    "to create the module `{}`, create file \"{}\" or \"{}\"",
+-                    ident,
+-                    default_path.display(),
+-                    secondary_path.display(),
+-                ));
+-                err
++                    name,
++                    default_path: default_path.display().to_string(),
++                    secondary_path: secondary_path.display().to_string(),
++                })
+             }
+-            ModError::MultipleCandidates(ident, default_path, secondary_path) => {
+-                let mut err = struct_span_err!(
+-                    diag,
++            ModError::MultipleCandidates(name, default_path, secondary_path) => {
++                sess.emit_err(ModuleMultipleCandidates {
+                     span,
+-                    E0761,
+-                    "file for module `{}` found at both \"{}\" and \"{}\"",
+-                    ident,
+-                    default_path.display(),
+-                    secondary_path.display(),
+-                );
+-                err.help("delete or rename one of them to remove the ambiguity");
+-                err
++                    name,
++                    default_path: default_path.display().to_string(),
++                    secondary_path: secondary_path.display().to_string(),
++                })
+             }
+-            ModError::ParserError(err) => err,
+-        }.emit()
++            ModError::ParserError(mut err) => err.emit(),
++        }
+     }
+ }
+diff --git a/compiler/rustc_expand/src/tests.rs b/compiler/rustc_expand/src/tests.rs
+index 539b04535a0d0..8f3bea29ffd28 100644
+--- a/compiler/rustc_expand/src/tests.rs
++++ b/compiler/rustc_expand/src/tests.rs
+@@ -154,6 +154,7 @@ fn test_harness(file_text: &str, span_labels: Vec<SpanLabel>, expected_output: &
+             false,
+         );
+         let handler = Handler::with_emitter(true, None, Box::new(emitter));
++        #[allow(rustc::untranslatable_diagnostic)]
+         handler.span_err(msp, "foo");
+ 
+         assert!(
+diff --git a/src/test/rustdoc-ui/doc-cfg.stderr b/src/test/rustdoc-ui/doc-cfg.stderr
+index b379f6febe29f..14b7b17e04d3a 100644
+--- a/src/test/rustdoc-ui/doc-cfg.stderr
++++ b/src/test/rustdoc-ui/doc-cfg.stderr
+@@ -2,7 +2,7 @@ error: `cfg` predicate is not specified
+   --> $DIR/doc-cfg.rs:3:7
+    |
+ LL | #[doc(cfg(), cfg(foo, bar))]
+-   |       ^^^^^
++   |       ^^^^^ help: expected syntax is: `cfg(/* predicate */)`
+ 
+ error: multiple `cfg` predicates are specified
+   --> $DIR/doc-cfg.rs:3:23
+@@ -14,7 +14,7 @@ error: `cfg` predicate is not specified
+   --> $DIR/doc-cfg.rs:7:7
+    |
+ LL | #[doc(cfg())]
+-   |       ^^^^^
++   |       ^^^^^ help: expected syntax is: `cfg(/* predicate */)`
+ 
+ error: multiple `cfg` predicates are specified
+   --> $DIR/doc-cfg.rs:8:16
+diff --git a/src/test/ui/conditional-compilation/cfg-attr-syntax-validation.stderr b/src/test/ui/conditional-compilation/cfg-attr-syntax-validation.stderr
+index d4bd673b84e1b..d5b4349c00f6f 100644
+--- a/src/test/ui/conditional-compilation/cfg-attr-syntax-validation.stderr
++++ b/src/test/ui/conditional-compilation/cfg-attr-syntax-validation.stderr
+@@ -14,7 +14,7 @@ error: `cfg` predicate is not specified
+   --> $DIR/cfg-attr-syntax-validation.rs:7:1
+    |
+ LL | #[cfg()]
+-   | ^^^^^^^^
++   | ^^^^^^^^ help: expected syntax is: `cfg(/* predicate */)`
+ 
+ error: multiple `cfg` predicates are specified
+   --> $DIR/cfg-attr-syntax-validation.rs:10:10
+diff --git a/src/test/ui/macros/macro-in-expression-context.stderr b/src/test/ui/macros/macro-in-expression-context.stderr
+index 1023189eaa30f..36aba8aa08a0b 100644
+--- a/src/test/ui/macros/macro-in-expression-context.stderr
++++ b/src/test/ui/macros/macro-in-expression-context.stderr
+@@ -5,11 +5,13 @@ LL |         assert_eq!("B", "B");
+    |         ^^^^^^^^^
+ ...
+ LL |     foo!()
+-   |     ------- help: you might be missing a semicolon here: `;`
+-   |     |
+-   |     caused by the macro expansion here
++   |     ------ caused by the macro expansion here
+    |
+    = note: the usage of `foo!` is likely invalid in expression context
++help: you might be missing a semicolon here
++   |
++LL |     foo!();
++   |           +
+ 
+ warning: trailing semicolon in macro used in expression position
+   --> $DIR/macro-in-expression-context.rs:5:29
+diff --git a/src/test/ui/proc-macro/attr-invalid-exprs.stderr b/src/test/ui/proc-macro/attr-invalid-exprs.stderr
+index bcb54df0ecac7..f96939bb6efce 100644
+--- a/src/test/ui/proc-macro/attr-invalid-exprs.stderr
++++ b/src/test/ui/proc-macro/attr-invalid-exprs.stderr
+@@ -8,21 +8,25 @@ error: macro expansion ignores token `,` and any following
+   --> $DIR/attr-invalid-exprs.rs:15:13
+    |
+ LL |     let _ = #[duplicate] "Hello, world!";
+-   |             ^^^^^^^^^^^^- help: you might be missing a semicolon here: `;`
+-   |             |
+-   |             caused by the macro expansion here
++   |             ^^^^^^^^^^^^ caused by the macro expansion here
+    |
+    = note: the usage of `duplicate!` is likely invalid in expression context
++help: you might be missing a semicolon here
++   |
++LL |     let _ = #[duplicate]; "Hello, world!";
++   |                         +
+ 
+ error: macro expansion ignores token `,` and any following
+   --> $DIR/attr-invalid-exprs.rs:24:9
+    |
+ LL |         #[duplicate]
+-   |         ^^^^^^^^^^^^- help: you might be missing a semicolon here: `;`
+-   |         |
+-   |         caused by the macro expansion here
++   |         ^^^^^^^^^^^^ caused by the macro expansion here
+    |
+    = note: the usage of `duplicate!` is likely invalid in expression context
++help: you might be missing a semicolon here
++   |
++LL |         #[duplicate];
++   |                     +
+ 
+ error: aborting due to 3 previous errors
+ 
+diff --git a/src/test/ui/proc-macro/attribute.rs b/src/test/ui/proc-macro/attribute.rs
+index 5531b32362125..9e40e4d9ba63e 100644
+--- a/src/test/ui/proc-macro/attribute.rs
++++ b/src/test/ui/proc-macro/attribute.rs
+@@ -53,19 +53,19 @@ pub fn foo11(input: TokenStream) -> TokenStream { input }
+ pub fn foo12(input: TokenStream) -> TokenStream { input }
+ 
+ #[proc_macro_derive(d13, attributes("a"))]
+-//~^ ERROR: not a meta item
++//~^ ERROR: attribute must be a meta item, not a literal
+ pub fn foo13(input: TokenStream) -> TokenStream { input }
+ 
+ #[proc_macro_derive(d14, attributes(a = ""))]
+-//~^ ERROR: must only be one word
++//~^ ERROR: attribute must only be a single word
+ pub fn foo14(input: TokenStream) -> TokenStream { input }
+ 
+ #[proc_macro_derive(d15, attributes(m::a))]
+-//~^ ERROR: must only be one word
++//~^ ERROR: attribute must only be a single word
+ pub fn foo15(input: TokenStream) -> TokenStream { input }
+ 
+ #[proc_macro_derive(d16, attributes(a(b)))]
+-//~^ ERROR: must only be one word
++//~^ ERROR: attribute must only be a single word
+ pub fn foo16(input: TokenStream) -> TokenStream { input }
+ 
+ #[proc_macro_derive(d17, attributes(self))]
+diff --git a/src/test/ui/proc-macro/attribute.stderr b/src/test/ui/proc-macro/attribute.stderr
+index 021e7cad09b69..3269aaf7f917e 100644
+--- a/src/test/ui/proc-macro/attribute.stderr
++++ b/src/test/ui/proc-macro/attribute.stderr
+@@ -70,25 +70,25 @@ error: attribute must be of form: `attributes(foo, bar)`
+ LL | #[proc_macro_derive(d12, attributes)]
+    |                          ^^^^^^^^^^
+ 
+-error: not a meta item
++error: attribute must be a meta item, not a literal
+   --> $DIR/attribute.rs:55:37
+    |
+ LL | #[proc_macro_derive(d13, attributes("a"))]
+    |                                     ^^^
+ 
+-error: must only be one word
++error: attribute must only be a single word
+   --> $DIR/attribute.rs:59:37
+    |
+ LL | #[proc_macro_derive(d14, attributes(a = ""))]
+    |                                     ^^^^^^
+ 
+-error: must only be one word
++error: attribute must only be a single word
+   --> $DIR/attribute.rs:63:37
+    |
+ LL | #[proc_macro_derive(d15, attributes(m::a))]
+    |                                     ^^^^
+ 
+-error: must only be one word
++error: attribute must only be a single word
+   --> $DIR/attribute.rs:67:37
+    |
+ LL | #[proc_macro_derive(d16, attributes(a(b)))]
+diff --git a/src/test/ui/proc-macro/expand-expr.stderr b/src/test/ui/proc-macro/expand-expr.stderr
+index c6c4695fd9c43..0004f2fe17f01 100644
+--- a/src/test/ui/proc-macro/expand-expr.stderr
++++ b/src/test/ui/proc-macro/expand-expr.stderr
+@@ -26,21 +26,25 @@ error: macro expansion ignores token `hello` and any following
+   --> $DIR/expand-expr.rs:115:47
+    |
+ LL | expand_expr_is!("string", echo_tts!("string"; hello));
+-   |                           --------------------^^^^^-- help: you might be missing a semicolon here: `;`
+-   |                           |
+-   |                           caused by the macro expansion here
++   |                           --------------------^^^^^- caused by the macro expansion here
+    |
+    = note: the usage of `echo_tts!` is likely invalid in expression context
++help: you might be missing a semicolon here
++   |
++LL | expand_expr_is!("string", echo_tts!("string"; hello););
++   |                                                     +
+ 
+ error: macro expansion ignores token `;` and any following
+   --> $DIR/expand-expr.rs:116:44
+    |
+ LL | expand_expr_is!("string", echo_pm!("string"; hello));
+-   |                           -----------------^-------- help: you might be missing a semicolon here: `;`
+-   |                           |
+-   |                           caused by the macro expansion here
++   |                           -----------------^------- caused by the macro expansion here
+    |
+    = note: the usage of `echo_pm!` is likely invalid in expression context
++help: you might be missing a semicolon here
++   |
++LL | expand_expr_is!("string", echo_pm!("string"; hello););
++   |                                                    +
+ 
+ error: recursion limit reached while expanding `recursive_expand!`
+   --> $DIR/expand-expr.rs:124:16

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit flag-o-matic meson-multilib python-any-r1
 
@@ -27,7 +27,7 @@ else
 		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
 			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz
 		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/${PN}-libdisplay-info-${HASH_DISPLAYINFO::10}.tar.bz2"
-	KEYWORDS="-* ~amd64 ~x86"
+	KEYWORDS="-* amd64 x86"
 fi
 # setup_dxvk.sh is no longer provided, fetch old until a better solution
 SRC_URI+=" https://raw.githubusercontent.com/doitsujin/dxvk/cd21cd7fa3b0df3e0819e21ca700b7627a838d69/setup_dxvk.sh"
@@ -86,9 +86,10 @@ src_prepare() {
 src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
-	# AVX has a history of causing issues with this package, disable for safety
-	# https://bugs.winehq.org/show_bug.cgi?id=43516
-	# https://bugs.winehq.org/show_bug.cgi?id=45289
+	# -mavx with mingw-gcc has a history of obscure issues and
+	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+	# crashes with -march=skylake >=wine-8.10, similar issues with
+	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
 	append-flags -mno-avx
 
 	if [[ ${CHOST} != *-mingw* ]]; then

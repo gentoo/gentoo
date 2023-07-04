@@ -17,7 +17,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
 
-IUSE="aqbanking debug doc examples gnome-keyring +gui mysql nls ofx postgres python quotes register2 smartcard sqlite test"
+IUSE="aqbanking debug doc examples keyring +gui mysql nls ofx postgres python quotes register2 smartcard sqlite test"
 RESTRICT="!test? ( test )"
 
 # Examples doesn't build unless GUI is also built
@@ -43,7 +43,7 @@ RDEPEND="
 		>=sys-libs/gwenhywfar-4.20.0:=
 		smartcard? ( sys-libs/libchipcard )
 	)
-	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
+	keyring? ( >=app-crypt/libsecret-0.18 )
 	gui? (
 		>=x11-libs/gtk+-3.22.30:3
 		gnome-base/dconf

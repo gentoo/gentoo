@@ -12,14 +12,14 @@ SRC_URI="https://github.com/kjellmf/dot2tex/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="doc examples"
 
 DEPEND="dev-python/pyparsing[${PYTHON_USEDEP}]"
 RDEPEND="
 	dev-python/pydot[${PYTHON_USEDEP}]
-	media-gfx/graphviz"
-DEPEND="${DEPEND}"
+	media-gfx/graphviz
+"
 BDEPEND="doc? ( dev-python/sphinx )"
 
 EPYTEST_DESELECT=(

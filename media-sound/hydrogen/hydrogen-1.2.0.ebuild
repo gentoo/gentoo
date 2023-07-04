@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake xdg
 
 DESCRIPTION="Advanced drum machine"
-HOMEPAGE="http://www.hydrogen-music.org/"
+HOMEPAGE="http://hydrogen-music.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3

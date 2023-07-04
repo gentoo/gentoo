@@ -14,6 +14,6 @@ SRC_URI="https://github.com/qwertyquerty/pypresence/archive/refs/tags/${PV}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 distutils_enable_sphinx docs/sphinx dev-python/alabaster

@@ -13,9 +13,11 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/aacid.asc
 	inherit verify-sig
 
+	TEST_COMMIT="eea2a4a355eb49ca70d944afd5245b24578af287"
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
+	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	SLOT="0/128"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
@@ -23,10 +25,8 @@ DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="https://poppler.freedesktop.org/"
 
 LICENSE="GPL-2"
-IUSE="boost cairo cjk curl +cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt5 tiff +utils"
-
-# No test data provided
-RESTRICT="test"
+IUSE="boost cairo cjk curl +cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt5 test tiff +utils"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	>=media-libs/fontconfig-2.13
@@ -55,6 +55,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	boost? ( >=dev-libs/boost-1.71 )
+	test? ( qt5? ( dev-qt/qttest:5 ) )
 "
 BDEPEND="
 	>=dev-util/glib-utils-2.64
@@ -72,6 +73,16 @@ PATCHES=(
 	"${FILESDIR}/${PN}-21.09.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
 )
+
+src_unpack() {
+	if [[ ${PV} == *9999* ]] ; then
+		git-r3_src_unpack
+	elif use verify-sig ; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
+	fi
+
+	default
+}
 
 src_prepare() {
 	cmake_src_prepare
@@ -96,9 +107,10 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_GTK_TESTS=OFF
-		-DBUILD_QT5_TESTS=OFF
-		-DBUILD_CPP_TESTS=OFF
-		-DBUILD_MANUAL_TESTS=OFF
+		-DBUILD_QT5_TESTS=$(usex test $(usex qt5))
+		-DBUILD_CPP_TESTS=$(usex test)
+		-DBUILD_MANUAL_TESTS=$(usex test)
+		-DTESTDATADIR="${WORKDIR}"/test-${TEST_COMMIT}
 		-DRUN_GPERF_IF_PRESENT=OFF
 		-DENABLE_BOOST="$(usex boost)"
 		-DENABLE_ZLIB=ON

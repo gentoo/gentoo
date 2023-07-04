@@ -1,6 +1,24 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Arsen Arsenović <arsen@gentoo.org> (2023-05-17)
+# app-emulation/libguestfs pulls in a large amount of dependencies, most
+# of which aren't or can't be kw'd on SPARC.
+sys-block/nbdkit libguestfs
+
+# Arsen Arsenović <arsen@gentoo.org> (2023-05-14)
+# dev-lang/go doesn't work on SPARC.
+sys-libs/libnbd go
+
 # Sam James <sam@gentoo.org> (2023-05-10)
 # sys-cluster/ceph not keyworded here
 sys-block/tgt rbd
@@ -77,7 +95,7 @@ dev-lang/rust-bin clippy doc rustfmt rust-analyzer
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif
+media-libs/imlib2 svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -161,12 +179,11 @@ sys-apps/grep static
 media-libs/rubberband jni
 
 # Sam James <sam@gentoo.org> (2021-03-13)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
+media-libs/gd avif
 net-libs/webkit-gtk avif
-media-gfx/graphicsmagick heif
 www-client/links avif
+dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here

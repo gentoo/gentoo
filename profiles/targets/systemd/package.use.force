@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-01-03)
@@ -9,3 +9,5 @@ sys-fs/mdadm systemd
 # Mike Gilbert <floppym@gentoo.org> (2015-04-22)
 # Force systemd to avoid depgraph breakage, bug 547360.
 virtual/libudev systemd
+virtual/udev systemd
+virtual/tmpfiles systemd

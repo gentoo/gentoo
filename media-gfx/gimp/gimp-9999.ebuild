@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 VALA_USE_DEPEND=vapigen
 
 inherit git-r3 lua-single meson python-single-r1 vala xdg
@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-glib-0.7.16
-	>=dev-libs/glib-2.68.0:2
+	>=dev-libs/glib-2.70.0:2
 	>=dev-libs/json-glib-1.4.4
 	dev-libs/libxml2:2
 	dev-libs/libxslt
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	>=media-libs/babl-0.1.98[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.40:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.46:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.13.1:2
@@ -131,7 +131,10 @@ src_prepare() {
 	# Fix pygimp.interp python implementation path.
 	# Meson @PYTHON_PATH@ use sandbox path e.g.:
 	# '/var/tmp/portage/media-gfx/gimp-2.99.12/temp/python3.10/bin/python3'
-	sed -i -e 's:@PYTHON_PATH@:'${EPYTHON}':' plug-ins/python/pygimp.interp.in || die
+	sed -i -e 's/@PYTHON_PATH@/'${EPYTHON}'/' plug-ins/python/pygimp.interp.in || die
+
+	# Set proper intallation path of documentation logo
+	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" data/images/meson.build || die
 }
 
 _adjust_sandbox() {
@@ -154,7 +157,7 @@ src_configure() {
 	use vala && vala_setup
 
 	local emesonargs=(
-		-Denable-default-bin=true
+		-Denable-default-bin=enabled
 
 		-Dcheck-update=no
 		-Denable-multiproc=true
@@ -239,9 +242,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }

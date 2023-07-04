@@ -268,7 +268,7 @@ src_configure() {
 
 	# Set LINGUAS
 	[[ -n ${LINGUAS} ]] && LINGUAS="${LINGUAS/da/dk}"
-	[[ -n ${LINGUAS} ]] && LINGUAS="${LINGUAS/zh/zh_CN}" #482968
+	[[ -n ${LINGUAS} ]] && LINGUAS="${LINGUAS/zh/zh_CN}" # bug #482968
 
 	# mplayer ebuild uses "use foo || --disable-foo" to forcibly disable
 	# compilation in almost every situation. The reason for this is
@@ -461,6 +461,7 @@ src_configure() {
 	# Platform specific flags, hardcoded on amd64 (see below)
 	use cpudetection && myconf+=( --enable-runtime-cpudetection )
 
+	# TODO: refresh this list
 	uses="3dnow 3dnowext avx avx2 fma3 fma4 mmx mmxext sse sse2 sse3 ssse3 xop"
 	for i in ${uses}; do
 		myconf+=( $(use_enable cpu_flags_x86_${i} ${i}) )
@@ -603,7 +604,7 @@ src_install() {
 		_EOF_
 	fi
 
-	# bug 256203
+	# bug #256203
 	if use rar; then
 		cat >> "${ED}/etc/mplayer/mplayer.conf" <<- _EOF_
 		unrarexec=${EPREFIX}/usr/bin/unrar

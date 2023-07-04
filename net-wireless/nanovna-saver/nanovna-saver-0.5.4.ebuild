@@ -17,7 +17,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/mihtjel/nanovna-saver.git"
 else
 	SRC_URI="https://github.com/mihtjel/nanovna-saver/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 IUSE=""
 

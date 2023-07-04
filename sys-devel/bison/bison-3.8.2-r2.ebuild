@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="examples nls static test"
 RESTRICT="!test? ( test )"
 
@@ -91,7 +91,7 @@ pkg_postinst() {
 		if [[ -e ${EROOT}/usr/bin/yacc ]] ; then
 			# bug #886123
 			ewarn "${EROOT}/usr/bin/yacc exists but is not a symlink."
-			ewarn "This is expected during Prefix bootstrap and unsual otherwise."
+			ewarn "This is expected during Prefix bootstrap and unusual otherwise."
 			ewarn "Moving away unexpected ${EROOT}/usr/bin/yacc to .bak."
 			mv "${EROOT}/usr/bin/yacc" "${EROOT}/usr/bin/yacc.bak" || die
 		fi

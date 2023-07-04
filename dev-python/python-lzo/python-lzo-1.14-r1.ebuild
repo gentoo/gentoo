@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/jd-boyd/python-lzo"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-libs/lzo:2"
 DEPEND="${RDEPEND}"

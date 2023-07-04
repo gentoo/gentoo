@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dist-kernel-utils.eclass
@@ -104,12 +104,22 @@ dist-kernel_install_kernel() {
 	if [[ ${magic} == MZ ]]; then
 		einfo "Combined UEFI kernel+initramfs executable found"
 		# install the combined executable in place of kernel
-		image=${initrd}.uefi
+		image=${initrd}.efi
 		mv "${initrd}" "${image}" || die
-		# put an empty file in place of initrd.  installing a duplicate
-		# file would waste disk space, and removing it entirely provokes
-		# kernel-install to regenerate it via dracut.
-		> "${initrd}"
+		# We moved the generated initrd, prevent dracut from running again
+		# https://github.com/dracutdevs/dracut/pull/2405
+		shopt -s nullglob
+		local plugins=()
+		for file in "${EROOT}"/usr/lib/kernel/install.d/*.install; do
+			if ! has "${file##*/}" 50-dracut.install 51-dracut-rescue.install; then
+					plugins+=( "${file}" )
+			fi
+		done
+		for file in "${EROOT}"/etc/kernel/install.d/*.install; do
+			plugins+=( "${file}" )
+		done
+		shopt -u nullglob
+		export KERNEL_INSTALL_PLUGINS="${KERNEL_INSTALL_PLUGINS} ${plugins[@]}"
 	fi
 
 	ebegin "Installing the kernel via installkernel"

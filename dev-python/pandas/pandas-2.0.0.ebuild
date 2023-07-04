@@ -24,7 +24,7 @@ S=${WORKDIR}/${P/_/}
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -77,7 +77,6 @@ BDEPEND="
 	>=dev-python/versioneer-0.28[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
-		app-text/pandoc
 		>=dev-python/beautifulsoup4-4.9.3[${PYTHON_USEDEP}]
 		>=dev-python/html5lib-1.1[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
@@ -93,6 +92,7 @@ BDEPEND="
 		>=dev-python/xlrd-2.0.1[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
+		virtual/pandoc
 		x11-misc/xclip
 	)
 	test? (

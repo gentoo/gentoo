@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DIST_AUTHOR=FLORA
 DIST_VERSION=0.05
 inherit perl-module virtualx
 
-DESCRIPTION="A perl interface to the notification library"
+DESCRIPTION="Perl interface to the notification library"
 
 LICENSE="LGPL-2"
 SLOT="0"

@@ -59,17 +59,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-	else
-		if use verify-sig; then
-			verify-sig_verify_detached "${DISTDIR}/${P}.tar.xz"{,.sig}
-		fi
-		unpack "${P}.tar.xz"
-	fi
-}
-
 src_prepare() {
 	default
 	if [[ ${PV} == 9999 ]]; then

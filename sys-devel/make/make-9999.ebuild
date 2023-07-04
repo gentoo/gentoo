@@ -17,7 +17,7 @@ elif [[ $(ver_cut 3) -ge 90 || $(ver_cut 4) -ge 90 ]] ; then
 else
 	SRC_URI="mirror://gnu/make/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/make/${P}.tar.gz.sig )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-3+"
@@ -70,10 +70,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS NEWS README*
-	if [[ ${USERLAND} == "GNU" ]] ; then
-		# we install everywhere as 'gmake' but on GNU systems,
-		# symlink 'make' to 'gmake'
-		dosym gmake /usr/bin/make
-		dosym gmake.1 /usr/share/man/man1/make.1
-	fi
+
+	dosym gmake /usr/bin/make
+	dosym gmake.1 /usr/share/man/man1/make.1
 }

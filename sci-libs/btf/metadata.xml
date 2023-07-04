@@ -11,4 +11,7 @@
 		its block upper triangular form (more precisely, it computes a
 		Dulmage-Mendelsohn decomposition).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">DrTimothyAldenDavis/SuiteSparse</remote-id>
+	</upstream>
 </pkgmetadata>

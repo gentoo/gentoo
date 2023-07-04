@@ -19,7 +19,7 @@ else
 	S="${WORKDIR}/${P/_/}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~riscv ~x86"
+		KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc64 ~riscv x86"
 	fi
 fi
 
@@ -169,6 +169,8 @@ src_configure() {
 	if use gui ; then
 		append-cxxflags -fPIC -DPIC
 	fi
+
+	! use lto && filter-lto
 
 	mycmakeargs+=(
 		-DPython3_EXECUTABLE="${PYTHON}"

@@ -47,10 +47,7 @@ CDEPEND="acct-group/unbound
 BDEPEND="virtual/pkgconfig
 	python? ( dev-lang/swig )
 	test? (
-		|| (
-			net-libs/ldns[examples(-)]
-			net-dns/ldns-utils[examples(-)]
-		)
+		net-libs/ldns[examples(-)]
 		dev-util/splint
 		app-text/wdiff
 	)

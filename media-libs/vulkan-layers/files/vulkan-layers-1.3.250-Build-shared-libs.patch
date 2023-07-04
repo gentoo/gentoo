@@ -1,0 +1,13 @@
+diff --git a/layers/CMakeLists.txt b/layers/CMakeLists.txt
+index 06b53ff9b..97e388765 100644
+--- a/layers/CMakeLists.txt
++++ b/layers/CMakeLists.txt
+@@ -166,7 +166,7 @@ if (VVL_CODEGEN)
+     )
+ endif()
+ 
+-add_library(vvl MODULE)
++add_library(vvl SHARED)
+ 
+ target_sources(vvl PRIVATE
+     best_practices/best_practices_error_enums.h

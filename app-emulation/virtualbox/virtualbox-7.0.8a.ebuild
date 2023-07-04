@@ -35,7 +35,7 @@ S="${WORKDIR}/${MY_PN}-${BASE_PV}"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vde vnc"
 
 unset WATCOM #856769
@@ -206,6 +206,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.8-python3_11.patch
 	"${FILESDIR}"/${PN}-7.0.6-gcc-13.patch
 	"${FILESDIR}"/${PN}-7.0.8-mtune-keep-size.patch
+	"${FILESDIR}"/${PN}-7.0.6-fix-libxml2.patch
 
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-7.0.8/patches

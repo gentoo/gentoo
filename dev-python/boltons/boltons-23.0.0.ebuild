@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="Pure-python utilities in the same spirit as the standard library"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mahmoud/boltons/archive/${PV}.tar.gz -> ${P}.gh.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \

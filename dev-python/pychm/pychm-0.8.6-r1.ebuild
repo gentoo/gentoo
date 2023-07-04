@@ -3,20 +3,32 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for the chmlib library"
-HOMEPAGE="https://github.com/dottedmag/pychm"
-SRC_URI="https://github.com/dottedmag/pychm/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/dottedmag/pychm/
+	https://pypi.org/project/pychm/
+"
+SRC_URI="
+	https://github.com/dottedmag/pychm/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 
-RDEPEND="dev-libs/chmlib"
-DEPEND="${RDEPEND}"
+DEPEND="
+	dev-libs/chmlib
+"
+RDEPEND="
+	${DEPEND}
+"
 
 distutils_enable_tests pytest
 

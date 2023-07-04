@@ -17,8 +17,8 @@ if [[ ${PV} == 9999 ]]; then
 		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
 	)
 else
-	HASH_VKD3D=f125062ee1278ac8508ab5561e289ec4ce0f406e # match tag on bumps
-	HASH_DXIL=830106bc2393ba7e7af67863e1c7cfa856432ec5
+	HASH_VKD3D=6365efeba253807beecaed0eaa963295522c6b70 # match tag on bumps
+	HASH_DXIL=f20a0fb4e984a83743baa9d863eb7b26228bcca3
 	HASH_SPIRV=1d31a100405cf8783ca7a31e31cdd727c9fc54c3
 	HASH_SPIRV_DXIL=aa331ab0ffcb3a67021caa1a0c1c9017712f2f31
 	HASH_VULKAN=bd6443d28f2ebecedfb839b52d612011ba623d14
@@ -41,7 +41,7 @@ HOMEPAGE="https://github.com/HansKristian-Work/vkd3d-proton/"
 
 LICENSE="LGPL-2.1+ Apache-2.0 MIT"
 SLOT="0"
-IUSE="+abi_x86_32 crossdev-mingw debug extras"
+IUSE="+abi_x86_32 crossdev-mingw debug extras +strip"
 
 BDEPEND="
 	dev-util/glslang
@@ -105,6 +105,12 @@ src_prepare() {
 src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
+	# -mavx with mingw-gcc has a history of obscure issues and
+	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+	# crashes with -march=skylake >=wine-8.10, similar issues with
+	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+	append-flags -mno-avx
+
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP WIDL
@@ -149,7 +155,7 @@ multilib_src_configure() {
 		--{cross,native}-file="${T}"/widl.${ABI}.ini
 		$(meson_use {,enable_}extras)
 		$(meson_use debug enable_trace)
-		$(usev !debug --strip) # portage won't strip .dll, so allow it here
+		$(usev strip --strip) # portage won't strip .dll, so allow it here
 		-Denable_tests=false # needs wine/vulkan and is intended for manual use
 	)
 
@@ -169,6 +175,9 @@ pkg_postinst() {
 		elog
 		elog "	WINEPREFIX=/path/to/prefix setup_vkd3d_proton.sh install --symlink"
 		elog
+		elog "Should also ensure that >=app-emulation/dxvk-2.1's dxgi.dll is available"
+		elog "on it, not meant to function independently even if only using d3d12."
+		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
 	elif [[ ${REPLACING_VERSIONS##* } ]]; then
 		if ver_test ${REPLACING_VERSIONS##* } -lt 2.7; then
@@ -177,11 +186,13 @@ pkg_postinst() {
 			elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
 		fi
 
-		if ver_test ${REPLACING_VERSIONS##* } -lt 2.8_p20230510; then
+		if ver_test ${REPLACING_VERSIONS##* } -lt 2.9; then
 			elog
-			elog ">=${PN}-2.8_p20230510 has a new file to install (d3d12core.dll), old"
-			elog "Wine prefixes that relied on '--symlink' may need updates by using the"
-			elog "setup_vkd3d_proton.sh script again."
+			elog ">=${PN}-2.9 has a new file to install (d3d12core.dll), old Wine prefixes that"
+			elog "relied on '--symlink' may need updates by using the setup_vkd3d_proton.sh."
+			elog
+			elog "Furthermore, it may not function properly if >=app-emulation/dxvk-2.1's"
+			elog "dxgi.dll is not available on that prefix (even if only using d3d12)."
 		fi
 	fi
 }

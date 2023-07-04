@@ -7,6 +7,9 @@
   </maintainer>
   <use>
     <flag name="cuda">Use nvidia cuda toolkit for speeding up computations</flag>
+    <flag name="cholesky">
+      Enable sparse Cholesky factorisation
+    </flag>
     <flag name="matrixops">
       Support basic sparse and dense matrix operations (add, multiply,
       scale, et cetera)
@@ -17,7 +20,14 @@
     </flag>
     <flag name="partition">
       Enable graph partitioning and graph-partition-based orderings
-      through <pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg>
+      through <pkg>sci-libs/metis</pkg> (using a bundled fork in 4.0.0+)
+      or <pkg>sci-libs/parmetis</pkg>
+    </flag>
+    <flag name="supernodal">
+      supernodal cholesky factorisation
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">DrTimothyAldenDavis/SuiteSparse</remote-id>
+  </upstream>
 </pkgmetadata>

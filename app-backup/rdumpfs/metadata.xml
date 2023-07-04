@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">chneukirchen/rdumpfs</remote-id>
+    <remote-id type="github">leahneukirchen/rdumpfs</remote-id>
   </upstream>
 </pkgmetadata>

@@ -9,9 +9,6 @@
 		<flag name="gdal">Enable <pkg>sci-libs/gdal</pkg> library support</flag>
 		<flag name="geos">Enable <pkg>sci-libs/geos</pkg> library support</flag>
 		<flag name="gmttria">Non GNU triangulation method, more efficient</flag>
-		<flag name="htmldoc">Install html documentation</flag>
-		<flag name="pcre2">Use <pkg>dev-libs/libpcre2</pkg> for regular expressions</flag>
-		<flag name="tutorial">Install data files for tutorial</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">GenericMappingTools/gmt</remote-id>

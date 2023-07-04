@@ -5,15 +5,14 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
 
-inherit distutils-r1 multiprocessing optfeature
+inherit distutils-r1 multiprocessing optfeature pypi
 
 DESCRIPTION="Statistical computations and models for use with SciPy"
 HOMEPAGE="https://www.statsmodels.org/stable/index.html"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 DEPEND="

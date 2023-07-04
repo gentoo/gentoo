@@ -43,6 +43,7 @@ BDEPEND="
 		>=sys-devel/gettext-0.18.2
 	)
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-dpkg )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.18.12-flags.patch

@@ -23,7 +23,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="console gui libnotify sound webinterface"
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
 	libnotify? ( gui )
 	sound? ( gui )
 "

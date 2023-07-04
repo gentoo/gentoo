@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-        <maintainer type="project">
-                <email>perl@gentoo.org</email>
-                <name>Gentoo Perl Project</name>
-        </maintainer>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Archive-Any-Lite</remote-id>
+		<remote-id type="cpan-module">Archive::Any::Lite</remote-id>
+		<remote-id type="cpan-module">Archive::Any::Lite::Tar</remote-id>
+		<remote-id type="cpan-module">Archive::Any::Lite::Zip</remote-id>
+		<remote-id type="github">charsbar/archive-any-lite</remote-id>
+	</upstream>
 </pkgmetadata>

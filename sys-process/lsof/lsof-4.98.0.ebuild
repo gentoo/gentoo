@@ -48,8 +48,5 @@ pkg_postinst() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		einfo "Note: to use lsof on Solaris you need read permissions on"
 		einfo "/dev/kmem, i.e. you need to be root, or to be in the group sys"
-	elif [[ ${CHOST} == *-aix* ]] ; then
-		einfo "Note: to use lsof on AIX you need read permissions on /dev/mem and"
-		einfo "/dev/kmem, i.e. you need to be root, or to be in the group system"
 	fi
 }

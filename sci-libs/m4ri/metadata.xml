@@ -28,6 +28,6 @@
   </longdescription>
 
   <upstream>
-    <remote-id type="bitbucket">malb/m4ri</remote-id>
+    <remote-id type="github">malb/m4ri</remote-id>
   </upstream>
 </pkgmetadata>

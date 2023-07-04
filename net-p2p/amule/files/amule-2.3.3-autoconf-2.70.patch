@@ -1,0 +1,28 @@
+From 0d3e85ea46b52685c5b198fbade3a82f38071ca4 Mon Sep 17 00:00:00 2001
+From: Pablo Barciela <scow@riseup.net>
+Date: Sun, 19 Sep 2021 13:55:07 +0200
+Subject: [PATCH] allow to build with autoconf 2.70 and later
+
+Closes https://github.com/amule-project/amule/issues/232
+---
+ configure.ac | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 93a918c03..9c57668c6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,10 +30,6 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
+ 
+ AC_PREREQ(2.62)
+ 
+-# autoconf 2.70 introduced some incompatibilities that will make the build fail
+-# As a "workaround" reject 2.70 and above for now.
+-m4_if(m4_version_compare(m4_defn([AC_AUTOCONF_VERSION]), [2.70]), [-1],, [m4_fatal([autoconf ]m4_defn([AC_AUTOCONF_VERSION])[ is known to not work with aMule. Please use 2.69 instead.])])
+-
+ AC_CONFIG_SRCDIR([src/amule.cpp])
+ AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_MACRO_DIR([m4])
+-- 
+2.39.3
+

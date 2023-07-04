@@ -9,7 +9,7 @@ XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="X.Org Xpm library"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -18,7 +18,7 @@ RDEPEND="
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
 
-	app-arch/gzip
+	app-alternatives/gzip
 	app-arch/ncompress
 "
 DEPEND="${RDEPEND}

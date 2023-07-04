@@ -11,7 +11,7 @@ SRC_URI="https://github.com/civetweb/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="cxx +server ssl"
 
 DEPEND="ssl? ( dev-libs/openssl:0= )"

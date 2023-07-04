@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alexxy@gentoo.org</email>
+		<name>Alexey Shvetsov</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">executablebooks/sphinx-copybutton</remote-id>
+		<remote-id type="pypi">sphinx-copybutton</remote-id>
+		<doc>https://sphinx-copybutton.readthedocs.io</doc>
+		<bugs-to>https://github.com/executablebooks/sphinx-copybutton/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

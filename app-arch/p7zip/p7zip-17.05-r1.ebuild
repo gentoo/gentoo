@@ -12,8 +12,8 @@ SRC_URI="https://github.com/p7zip-project/p7zip/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
-IUSE="abi_x86_x32 doc natspec +pch rar static"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos"
+IUSE="abi_x86_x32 natspec +pch rar static"
 
 RDEPEND="natspec? ( dev-libs/libnatspec )"
 DEPEND="${RDEPEND}"
@@ -106,9 +106,7 @@ src_install() {
 	doman man1/7z.1 man1/7za.1 man1/7zr.1
 
 	dodoc ChangeLog README TODO
-	if use doc; then
-		dodoc DOC/*.txt
-		docinto html
-		dodoc -r DOC/MANUAL/.
-	fi
+	dodoc DOC/*.txt
+	docinto html
+	dodoc -r DOC/MANUAL/.
 }

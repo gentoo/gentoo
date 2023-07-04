@@ -13,7 +13,7 @@ QEMU_DOCS_VERSION=$(ver_cut 1-3)
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11,12} )
 PYTHON_REQ_USE="ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.2.0"
@@ -28,7 +28,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_SUBMODULES=(
 		tests/fp/berkeley-softfloat-3
 		tests/fp/berkeley-testfloat-3
-		ui/keycodemapdb
+		subprojects/keycodemapdb
 	)
 	inherit git-r3
 	SRC_URI=""
@@ -56,7 +56,7 @@ IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
 	+fdt fuse glusterfs +gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg
 	lzo multipath
-	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs
+	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs pipewire
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
 	smartcard snappy spice ssh static-user systemtap test udev usb
@@ -138,7 +138,7 @@ REQUIRED_USE="
 	plugins? ( !static-user )
 "
 for smname in ${IUSE_SOFTMMU_TARGETS} ; do
-	REQUIRED_USE+=" qemu_softmmu_targets_${smname}? ( seccomp ) "
+	REQUIRED_USE+=" qemu_softmmu_targets_${smname}? ( kernel_linux? ( seccomp ) )"
 done
 
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
@@ -159,7 +159,6 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
-	sys-libs/libcap-ng[static-libs(+)]
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -188,6 +187,7 @@ SOFTMMU_TOOLS_DEPEND="
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( media-libs/libjpeg-turbo:=[static-libs(+)] )
+	kernel_linux? ( sys-libs/libcap-ng[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	multipath? ( sys-fs/multipath-tools )
 	ncurses? (
@@ -203,6 +203,7 @@ SOFTMMU_TOOLS_DEPEND="
 		media-libs/mesa[egl(+),gbm(+)]
 	)
 	pam? ( sys-libs/pam )
+	pipewire? ( media-video/pipewire )
 	png? ( >=media-libs/libpng-1.6.34:=[static-libs(+)] )
 	pulseaudio? ( media-libs/libpulse )
 	rbd? ( sys-cluster/ceph )
@@ -301,10 +302,8 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.0-disable-keymap.patch
-	"${FILESDIR}"/${PN}-8.0.0-make.patch
-	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
-	"${FILESDIR}"/${PN}-8.0.0-remove-python-meson-check.patch
+	"${FILESDIR}"/${PN}-8.1.0-also-build-virtfs-proxy-helper.patch
 )
 
 QA_PREBUILT="
@@ -450,7 +449,7 @@ src_prepare() {
 	sed -i -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' configure || die
 
 	# Remove bundled modules
-	rm -r dtc meson roms/*/ || die
+	rm -r subprojects/dtc roms/*/ || die
 }
 
 ##
@@ -505,6 +504,7 @@ qemu_src_configure() {
 		$(use_enable jack)
 		$(use_enable nls gettext)
 		$(use_enable oss)
+		$(use_enable pipewire)
 		$(use_enable plugins)
 		$(use_enable pulseaudio pa)
 		$(use_enable selinux)
@@ -834,7 +834,7 @@ src_install() {
 	doins "${FILESDIR}/bridge.conf"
 
 	cd "${S}" || die
-	dodoc MAINTAINERS docs/specs/pci-ids.txt
+	dodoc MAINTAINERS
 	newdoc pc-bios/README README.pc-bios
 
 	# Disallow stripping of prebuilt firmware files.

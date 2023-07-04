@@ -9,7 +9,7 @@ SRC_URI="https://github.com/hanslub42/rlwrap/releases/download/v${PV}/${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~mips ~ppc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug"
 
 RDEPEND="

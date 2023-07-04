@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit font python-any-r1
 
 DESCRIPTION="A clean fixed font for the console and X11"
-HOMEPAGE="http://terminus-font.sourceforge.net/"
+HOMEPAGE="https://terminus-font.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}-$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="OFL-1.1 GPL-2"
@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390
 IUSE="a-like-o +center-tilde distinct-l +otf pcf-8bit +pcf-unicode +psf quote
 	ru-dv +ru-g ru-i ru-k"
 
-BDEPEND="app-arch/gzip
+BDEPEND="app-alternatives/gzip
 	${PYTHON_DEPS}
 	app-alternatives/awk
 	pcf-8bit? ( x11-apps/bdftopcf )

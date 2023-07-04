@@ -11,7 +11,7 @@ SRC_URI="https://www.pa3fwm.nl/software/xnecview/xnecview-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	>=media-libs/libpng-1.6

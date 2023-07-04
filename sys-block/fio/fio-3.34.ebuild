@@ -17,7 +17,7 @@ SRC_URI="https://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~ia64 ~loong ~ppc ppc64 ~riscv x86"
-IUSE="aio curl glusterfs gnuplot gtk io-uring nfs numa python rbd rdma static tcmalloc test zbc zlib"
+IUSE="aio curl glusterfs gnuplot gtk io-uring nfs numa python rbd rdma static tcmalloc test valgrind zbc zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	gnuplot? ( python )
 	io-uring? ( aio )"
@@ -48,7 +48,8 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	gtk? ( x11-libs/gtk+:2 )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
-	test? ( dev-util/cunit )"
+	test? ( dev-util/cunit )
+	valgrind? ( dev-util/valgrind )"
 RDEPEND+="
 	python? (
 		${PYTHON_DEPS}
@@ -74,6 +75,7 @@ src_prepare() {
 		-e '/if compile_prog "" "-lz" "zlib" *; *then/  '"s::if $(usex zlib true false) ; then:" \
 		-e '/if compile_prog "" "-laio" "libaio" *; *then/'"s::if $(usex aio true false) ; then:" \
 		-e '/if compile_prog "" "-lcunit" "CUnit" *; *then/'"s::if $(usex test true false) ; then:" \
+		-e '/if compile_prog "" "" "valgrind_dev" *; *then/'"s::if $(usex valgrind true false) ; then:" \
 		configure || die
 }
 

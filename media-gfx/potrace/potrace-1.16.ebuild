@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Transforming bitmaps into vector graphics"
-HOMEPAGE="http://potrace.sourceforge.net/"
-SRC_URI="http://potrace.sourceforge.net/download/${PV}/${P}.tar.gz"
+HOMEPAGE="https://potrace.sourceforge.net/"
+SRC_URI="https://potrace.sourceforge.net/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -16,7 +16,7 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.bz2"
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
-IUSE="+appindicator crypt cups examples gnome-keyring gvnc kwallet nls python spice ssh rdp vnc wayland webkit zeroconf"
+IUSE="+appindicator crypt cups examples keyring gvnc kwallet nls python spice ssh rdp vnc wayland webkit zeroconf"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	x11-libs/libxkbfile
 	appindicator? ( dev-libs/libayatana-appindicator )
 	crypt? ( dev-libs/libgcrypt:0= )
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	gvnc? ( net-libs/gtk-vnc )
 	kwallet? ( kde-frameworks/kwallet )
 	python? ( ${PYTHON_DEPS} )
@@ -87,7 +87,7 @@ src_configure() {
 		-DWITH_GETTEXT=$(usex nls)
 		-DWITH_ICON_CACHE=OFF
 		-DWITH_KF5WALLET=$(usex kwallet)
-		-DWITH_LIBSECRET=$(usex gnome-keyring)
+		-DWITH_LIBSECRET=$(usex keyring)
 		-DWITH_LIBSSH=$(usex ssh)
 		-DWITH_LIBVNCSERVER=$(usex vnc)
 		-DWITH_PYTHONLIBS=$(usex python ON OFF)

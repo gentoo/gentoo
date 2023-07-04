@@ -14,8 +14,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 BDEPEND="dev-util/nvidia-cuda-toolkit"
 
 src_prepare() {

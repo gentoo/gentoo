@@ -63,6 +63,22 @@ _PYPI_ECLASS=1
 # @CODE
 : "${PYPI_PN:=${PN}}"
 
+# @FUNCTION: _pypi_normalize_name
+# @INTERNAL
+# @USAGE: <name>
+# @DESCRIPTION:
+# Internal normalization function, returns the result
+# via _PYPI_NORMALIZED_NAME variable.
+_pypi_normalize_name() {
+	# NB: it's fine to alter it unconditionally since this function is
+	# always called from a subshell or in global scope
+	# (via _pypi_set_globals)
+	shopt -s extglob
+	local name=${1//+([._-])/_}
+	shopt -u extglob
+	_PYPI_NORMALIZED_NAME="${name,,}"
+}
+
 # @FUNCTION: pypi_normalize_name
 # @USAGE: <name>
 # @DESCRIPTION:
@@ -75,12 +91,22 @@ _PYPI_ECLASS=1
 pypi_normalize_name() {
 	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <name>"
 
-	local name=${1}
-	local shopt_save=$(shopt -p extglob)
-	shopt -s extglob
-	name=${name//+([._-])/_}
-	${shopt_save}
-	echo "${name,,}"
+	local _PYPI_NORMALIZED_NAME
+	_pypi_normalize_name "${@}"
+	echo "${_PYPI_NORMALIZED_NAME}"
+}
+
+# @FUNCTION: _pypi_translate_version
+# @USAGE: <version>
+# @DESCRIPTION:
+# Internal version translation function, returns the result
+# via _PYPI_TRANSLATED_VERSION variable.
+_pypi_translate_version() {
+	local version=${1}
+	version=${version/_alpha/a}
+	version=${version/_beta/b}
+	version=${version/_rc/rc}
+	_PYPI_TRANSLATED_VERSION=${version/_p/.post}
 }
 
 # @FUNCTION: pypi_translate_version
@@ -94,12 +120,34 @@ pypi_normalize_name() {
 pypi_translate_version() {
 	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <version>"
 
-	local version=${1}
-	version=${version/_alpha/a}
-	version=${version/_beta/b}
-	version=${version/_rc/rc}
-	version=${version/_p/.post}
-	echo "${version}"
+	local _PYPI_TRANSLATED_VERSION
+	_pypi_translate_version "${@}"
+	echo "${_PYPI_TRANSLATED_VERSION}"
+}
+
+# @FUNCTION: _pypi_sdist_url
+# @INTERNAL
+# @USAGE: [--no-normalize] [<project> [<version> [<suffix>]]]
+# @DESCRIPTION:
+# Internal sdist generated, returns the result via _PYPI_SDIST_URL
+# variable.
+_pypi_sdist_url() {
+	local normalize=1
+	if [[ ${1} == --no-normalize ]]; then
+		normalize=
+		shift
+	fi
+
+	if [[ ${#} -gt 3 ]]; then
+		die "Usage: ${FUNCNAME} [--no-normalize] <project> [<version> [<suffix>]]"
+	fi
+
+	local project=${1-"${PYPI_PN}"}
+	local version=${2-"$(pypi_translate_version "${PV}")"}
+	local suffix=${3-.tar.gz}
+	local _PYPI_NORMALIZED_NAME=${project}
+	[[ ${normalize} ]] && _pypi_normalize_name "${_PYPI_NORMALIZED_NAME}"
+	_PYPI_SDIST_URL="https://files.pythonhosted.org/packages/source/${project::1}/${project}/${_PYPI_NORMALIZED_NAME}-${version}${suffix}"
 }
 
 # @FUNCTION: pypi_sdist_url
@@ -124,23 +172,9 @@ pypi_translate_version() {
 # If <format> is unspecified, it defaults to ".tar.gz".  Another valid
 # value is ".zip" (please remember to add a BDEPEND on app-arch/unzip).
 pypi_sdist_url() {
-	local normalize=1
-	if [[ ${1} == --no-normalize ]]; then
-		normalize=
-		shift
-	fi
-
-	if [[ ${#} -gt 3 ]]; then
-		die "Usage: ${FUNCNAME} [--no-normalize] <project> [<version> [<suffix>]]"
-	fi
-
-	local project=${1-"${PYPI_PN}"}
-	local version=${2-"$(pypi_translate_version "${PV}")"}
-	local suffix=${3-.tar.gz}
-	local fn_project=${project}
-	[[ ${normalize} ]] && fn_project=$(pypi_normalize_name "${project}")
-	printf "https://files.pythonhosted.org/packages/source/%s" \
-		"${project::1}/${project}/${fn_project}-${version}${suffix}"
+	local _PYPI_SDIST_URL
+	_pypi_sdist_url "${@}"
+	echo "${_PYPI_SDIST_URL}"
 }
 
 # @FUNCTION: pypi_wheel_name
@@ -167,11 +201,12 @@ pypi_wheel_name() {
 		die "Usage: ${FUNCNAME} <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
 	fi
 
-	local project=$(pypi_normalize_name "${1-"${PYPI_PN}"}")
+	local _PYPI_NORMALIZED_NAME
+	_pypi_normalize_name "${1:-"${PYPI_PN}"}"
 	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local pytag=${3-py3}
 	local abitag=${4-none-any}
-	echo "${project}-${version}-${pytag}-${abitag}.whl"
+	echo "${_PYPI_NORMALIZED_NAME}-${version}-${pytag}-${abitag}.whl"
 }
 
 # @FUNCTION: pypi_wheel_url
@@ -221,12 +256,27 @@ pypi_wheel_url() {
 	fi
 }
 
-if [[ ${PYPI_NO_NORMALIZE} ]]; then
-	SRC_URI="$(pypi_sdist_url --no-normalize)"
-	S="${WORKDIR}/${PYPI_PN}-$(pypi_translate_version "${PV}")"
-else
-	SRC_URI="$(pypi_sdist_url)"
-	S="${WORKDIR}/$(pypi_normalize_name "${PYPI_PN}")-$(pypi_translate_version "${PV}")"
-fi
+# @FUNCTION: _pypi_set_globals
+# @INTERNAL
+# @DESCRIPTION:
+# Set global variables, SRC_URI and S.
+_pypi_set_globals() {
+	local _PYPI_SDIST_URL _PYPI_TRANSLATED_VERSION
+	_pypi_translate_version "${PV}"
+
+	if [[ ${PYPI_NO_NORMALIZE} ]]; then
+		_pypi_sdist_url --no-normalize "${PYPI_PN}" "${_PYPI_TRANSLATED_VERSION}"
+		S="${WORKDIR}/${PYPI_PN}-${_PYPI_TRANSLATED_VERSION}"
+	else
+		local _PYPI_NORMALIZED_NAME
+		_pypi_normalize_name "${PYPI_PN}"
+		_pypi_sdist_url "${PYPI_PN}" "${_PYPI_TRANSLATED_VERSION}"
+		S="${WORKDIR}/${_PYPI_NORMALIZED_NAME}-${_PYPI_TRANSLATED_VERSION}"
+	fi
+
+	SRC_URI=${_PYPI_SDIST_URL}
+}
+
+_pypi_set_globals
 
 fi

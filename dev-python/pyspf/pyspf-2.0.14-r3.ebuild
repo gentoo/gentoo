@@ -4,13 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="ipv6(+)"
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python implementation of the Sender Policy Framework (SPF)"
-HOMEPAGE="https://pypi.org/project/pyspf/"
+HOMEPAGE="
+	https://github.com/sdgathman/pyspf/
+	https://pypi.org/project/pyspf/
+"
 
 LICENSE="PSF-2"
 SLOT="0"

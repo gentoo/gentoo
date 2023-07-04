@@ -21,14 +21,14 @@ DESCRIPTION="Integrates commandline JDK tools and profiling capabilities"
 HOMEPAGE="https://visualvm.github.io"
 
 SRC_URI="https://github.com/oracle/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/oracle/${PN}/releases/download/2.1.5/${NBZ}
+	https://github.com/oracle/${PN}/releases/download/$(ver_cut 1-2).5/${NBZ}
 	https://repo1.maven.org/maven2/org/openjdk/jmc/flightrecorder/${FLIGHT_RECORDER_VERSION}/${FLIGHT_RECORDER_FILE}
 	https://repo1.maven.org/maven2/org/openjdk/jmc/common/${COMMON_VERSION}/${COMMON_FILE}
 	https://repo1.maven.org/maven2/org/owasp/encoder/encoder/${ENCODER_VERSION}/${ENCODER_FILE}"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="7"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 COMMON_DEPEND="
 	dev-java/lz4-java:0
@@ -85,7 +85,8 @@ src_prepare() {
 		ln -s "${DISTDIR}/${file}" jfr.generic/external/ || die "Failed to link file ${file}"
 	done
 
-	java-pkg_jar-from --into jfr.generic/external lz4-java lz4-java.jar ${LZ4_JAVA_FILE} || die "Failed to link lz4 java jar"
+	java-pkg_jar-from --into jfr.generic/external lz4-java lz4-java.jar ${LZ4_JAVA_FILE} \
+		|| die "Failed to link lz4 java jar"
 }
 
 src_install() {
@@ -96,9 +97,12 @@ src_install() {
 	# configuration file that can be used to tweak visualvm startup parameters
 	insinto /etc/${PN}
 	newins launcher/visualvm.conf ${PN}.conf
-	sed -i "s%visualvm_default_userdir=.*%visualvm_default_userdir=\"\${HOME}/.visualvm\"%g" "${ED}/etc/${PN}/visualvm.conf" || die "Failed to update userdir"
-	sed -i "s%visualvm_default_cachedir=.*%visualvm_default_cachedir=\"\${HOME}/.cache/visualvm\"%g" "${ED}/etc/${PN}/visualvm.conf" || die "Failed to update cachedir"
-	echo -e "\nvisualvm_jdkhome=\"\$(java-config -O)\"" >> "${ED}/etc/${PN}/visualvm.conf" || die "Failed to set jdk detection"
+	sed -i "s%visualvm_default_userdir=.*%visualvm_default_userdir=\"\${HOME}/.visualvm\"%g" "${ED}/etc/${PN}/visualvm.conf" \
+		|| die "Failed to update userdir"
+	sed -i "s%visualvm_default_cachedir=.*%visualvm_default_cachedir=\"\${HOME}/.cache/visualvm\"%g" "${ED}/etc/${PN}/visualvm.conf" \
+		|| die "Failed to update cachedir"
+	echo -e "\nvisualvm_jdkhome=\"\$(java-config -O)\"" >> "${ED}/etc/${PN}/visualvm.conf" \
+		|| die "Failed to set jdk detection"
 
 	# replace bundled stuff
 	pushd "${ED}/${INSTALL_DIR}/platform/core" > /dev/null || die

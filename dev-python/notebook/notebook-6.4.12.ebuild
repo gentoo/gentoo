@@ -7,11 +7,10 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r1 pypi xdg-utils
 
 DESCRIPTION="Jupyter Interactive Notebook"
 HOMEPAGE="https://jupyter.org"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -32,10 +31,10 @@ RDEPEND="
 	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	>=dev-python/send2trash-1.8.0[${PYTHON_USEDEP}]
-	dev-python/prometheus_client[${PYTHON_USEDEP}]"
+	dev-python/prometheus-client[${PYTHON_USEDEP}]"
 
 BDEPEND="
-	>=dev-python/jupyter_packaging-0.9[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-packaging-0.9[${PYTHON_USEDEP}]
 	test? (
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]

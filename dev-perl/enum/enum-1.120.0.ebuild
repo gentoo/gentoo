@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="C style enumerated types and bitmask flags in Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Carp

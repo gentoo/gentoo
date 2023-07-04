@@ -11,7 +11,7 @@ SRC_URI="https://www.udpcast.linux.lu/download/${P}.tar.gz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="hardened"
 
 BDEPEND="dev-lang/perl"

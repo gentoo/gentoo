@@ -13,7 +13,7 @@ EAPI=8
 # continue to move quickly. It's not uncommon for fixes to be made shortly
 # after releases.
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
@@ -29,7 +29,7 @@ else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2"
 	fi
 
-	KEYWORDS="~amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"

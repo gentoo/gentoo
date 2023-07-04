@@ -9,5 +9,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pydbus</remote-id>
+		<remote-id type="github">LEW21/pydbus</remote-id>
 	</upstream>
 </pkgmetadata>

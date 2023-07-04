@@ -23,6 +23,7 @@ else
 fi
 
 LICENSE="MIT Apache-2.0"
+LICENSE+=""
 SLOT="0"
 
 DEPEND="app-arch/xz-utils

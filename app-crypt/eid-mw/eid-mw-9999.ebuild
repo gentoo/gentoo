@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools desktop gnome2-utils xdg-utils git-r3
+inherit autotools desktop gnome2-utils git-r3
 
 DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
 HOMEPAGE="https://eid.belgium.be"
@@ -43,9 +43,10 @@ src_prepare() {
 		-e "s:get_lsb_info('c'):strdup(_(\"n/a\")):" \
 		plugins_tools/aboutmw/gtk/about-main.c || die
 
-	# Fix libdir for pkcs11_manifestdir
+	# Fix libdir for manifestdir
 	sed -i \
 		-e "/pkcs11_manifestdir/ s:prefix)/lib:libdir):" \
+		-e "/managed_storage_manifestdir/ s:prefix)/lib:libdir):" \
 		cardcomm/pkcs11/src/Makefile.am || die
 
 	# See bug #732994

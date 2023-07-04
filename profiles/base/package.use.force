@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2023-06-06)
+# 114 looks very broken regarding unified build. It has too many 
+# conditions when it works and when it doesn't. Bug #905780
+~www-client/firefox-114.0 jumbo-build
+
 # Patrick McLean <chutzpah@gentoo.org> (2022-06-27)
 # Doesn't build with boost installed on the system, some deps require boost
 # so force the flag on until problem fixed upstream
@@ -27,7 +32,7 @@ dev-java/openjdk:17 system-bootstrap
 # to find a clean way of resolving that.  Compared to the damage
 # potential, the increase of build time is a minor problem.  Users who
 # really insist of building a smaller system can un-force the flags
-# at their own responsibility.
+# at their own responsibility. See bug #767700.
 >=sys-devel/clang-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
 >=sys-devel/clang-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
 >=sys-devel/clang-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
@@ -209,6 +214,7 @@ app-shells/bash:0 readline
 # API. Please remember to keep it in sync with python_targets.desc.
 dev-lang/python-exec python_targets_python3_10
 dev-lang/python-exec python_targets_python3_11
+dev-lang/python-exec python_targets_python3_12
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

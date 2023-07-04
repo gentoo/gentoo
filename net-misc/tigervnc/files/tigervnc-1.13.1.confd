@@ -1,0 +1,13 @@
+# Config file for /etc/init.d/tigervnc
+
+# Add the user(s) Xvnc(1) should be run for to /etc/tigervnc/vncserver.users
+# DISPLAYS is no loger used.
+
+# Optionally override the default Xsession file
+# TIGERVNC_XSESSION_FILE="/usr/share/sddm/scripts/Xsession"
+# TIGERVNC_XSESSION_FILE="/etc/gdm/Xsession"
+# TIGERVNC_XSESSION_FILE="/etc/lightdm/Xsession"
+# TIGERVNC_XSESSION_FILE="/usr/share/slim/Xsession"
+
+# vncsession no longer supports VNC_OPTS
+# Use /etc/tigervnc/vncserver-config-defaults or $HOME/.vnc/config instead

@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTTP-Simple</remote-id>
+    <remote-id type="cpan-module">HTTP::Simple</remote-id>
+    <remote-id type="github">Grinnz/HTTP-Simple</remote-id>
+  </upstream>
 </pkgmetadata>

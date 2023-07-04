@@ -9,7 +9,7 @@ SRC_URI="https://kernel.org/.well-known/openpgpkey/hu/163ux8fk184q7f9reyj4huqggw
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 S=${WORKDIR}
 

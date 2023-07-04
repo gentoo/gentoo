@@ -12,7 +12,7 @@ LICENSE="GPL-2+ CC-BY-SA-3.0"
 # subslot = evd3.(suffix of libevdocument3)-evv3.(suffix of libevview3)
 SLOT="0/evd3.4-evv3.3"
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
-IUSE="cups djvu dvi gstreamer gnome gnome-keyring gtk-doc +introspection nautilus postscript spell tiff xps"
+IUSE="cups djvu dvi gstreamer gnome keyring gtk-doc +introspection nautilus postscript spell tiff xps"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
 # atk used in libview
@@ -39,7 +39,7 @@ DEPEND="
 		media-libs/gst-plugins-base:1.0
 		media-libs/gst-plugins-good:1.0 )
 	gnome? ( gnome-base/gnome-desktop:3= )
-	gnome-keyring? ( >=app-crypt/libsecret-0.5 )
+	keyring? ( >=app-crypt/libsecret-0.5 )
 	introspection? ( >=dev-libs/gobject-introspection-1:= )
 	nautilus? ( >=gnome-base/nautilus-3.28.0 <gnome-base/nautilus-42.20 )
 	postscript? ( >=app-text/libspectre-0.2:= )
@@ -99,7 +99,7 @@ src_configure() {
 		-Duser_doc=true
 		$(meson_use introspection)
 		-Ddbus=true
-		$(meson_feature gnome-keyring keyring)
+		$(meson_feature keyring)
 		$(meson_feature cups gtk_unix_print)
 		$(meson_feature gnome thumbnail_cache)
 		$(meson_feature gstreamer multimedia)

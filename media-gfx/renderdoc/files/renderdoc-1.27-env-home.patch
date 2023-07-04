@@ -1,0 +1,15 @@
+--- a/renderdoc/os/posix/linux/linux_stringio.cpp
++++ b/renderdoc/os/posix/linux/linux_stringio.cpp
+@@ -595,11 +595,7 @@ rdcstr GetTempRootPath()
+ 
+ rdcstr GetAppFolderFilename(const rdcstr &filename)
+ {
+-  passwd *pw = getpwuid(getuid());
+-  rdcstr homedir = pw ? pw->pw_dir : "";
+-
+-  if(homedir.empty())
+-    homedir = Process::GetEnvVariable("HOME");
++  rdcstr homedir = Process::GetEnvVariable("HOME");
+ 
+   if(homedir.empty())
+   {

@@ -17,7 +17,7 @@ LICENSE="LGPL-2+ BSD"
 SLOT="6/0" # soname version of libwebkit2gtk-6.0
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
 
-IUSE="aqua avif examples gamepad gles2-only gnome-keyring +gstreamer +introspection pdf +jpeg2k +jumbo-build lcms seccomp spell systemd wayland X"
+IUSE="aqua avif examples gamepad gles2-only keyring +gstreamer +introspection pdf +jpeg2k +jumbo-build lcms seccomp spell systemd wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
 
 # Tests do not run when built from tarballs
@@ -51,7 +51,7 @@ RDEPEND="
 	>=dev-libs/glib-2.70.0:2
 	>=dev-libs/libxslt-1.1.7
 	media-libs/woff2
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	introspection? ( >=dev-libs/gobject-introspection-1.59.1:= )
 	dev-libs/libtasn1:=
 	spell? ( >=app-text/enchant-0.22:2 )
@@ -230,7 +230,7 @@ src_configure() {
 		-DUSE_JPEGXL=OFF
 		-DUSE_LCMS=$(usex lcms)
 		-DUSE_LIBHYPHEN=ON
-		-DUSE_LIBSECRET=$(usex gnome-keyring)
+		-DUSE_LIBSECRET=$(usex keyring)
 		-DUSE_OPENGL_OR_ES=ON
 		-DUSE_OPENJPEG=$(usex jpeg2k)
 		-DUSE_SOUP2=OFF

@@ -59,7 +59,6 @@ if [[ -z "${JAVA_ANT_DISABLE_ANT_CORE_DEP}" ]]; then
 fi
 
 # add ant tasks specified in WANT_ANT_TASKS to DEPEND
-local ANT_TASKS_DEPEND;
 ANT_TASKS_DEPEND="$(java-pkg_ant-tasks-depend)"
 # check that java-pkg_ant-tasks-depend didn't fail
 if [[ $? != 0 ]]; then
@@ -72,6 +71,7 @@ fi
 JAVA_ANT_E_DEPEND="${JAVA_ANT_E_DEPEND}
 	${ANT_TASKS_DEPEND}
 	dev-java/javatoolkit"
+unset ANT_TASKS_DEPEND
 
 # this eclass must be inherited after java-pkg-2 or java-pkg-opt-2
 # if it's java-pkg-opt-2, ant dependencies are pulled based on USE flag

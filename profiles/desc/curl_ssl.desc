@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of CURL_SSL USE_EXPAND flags for net-misc/curl
@@ -9,4 +9,3 @@ mbedtls - Use mbed TLS
 nss - Use Mozilla's Network Security Services 
 openssl - Use OpenSSL
 rustls - Use Rustls
-winssl - Use WinSSL (only with elibc_Winnt)

@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+export \
+	MPD_HOST \
+	MPD_PORT \
+	MPD_TIMEOUT
+
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/bin/mpd-ynca"
+command_user="mpd"
+command_background="yes"
+
+depend() {
+	after mpd
+}

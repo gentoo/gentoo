@@ -9,5 +9,6 @@
 	<upstream>
 		<bugs-to>https://github.com/projg2/flaggie/issues/</bugs-to>
 		<remote-id type="github">projg2/flaggie</remote-id>
+		<remote-id type="pypi">flaggie</remote-id>
 	</upstream>
 </pkgmetadata>

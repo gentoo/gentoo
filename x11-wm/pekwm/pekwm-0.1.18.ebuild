@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,10 +8,10 @@ inherit autotools desktop
 DESCRIPTION="A lightweight window manager initially based on aewm++"
 HOMEPAGE="
 	https://www.pekwm.se/
-	https://github.com/pekdon/pekwm
+	https://github.com/pekwm/pekwm
 "
 SRC_URI="
-	https://github.com/pekdon/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/pekwm/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz
 	themes? ( https://dev.gentoo.org/~jsmolic/distfiles/${PN}-themes.tar.bz2 )
 "
 S="${WORKDIR}"/${PN}-release-${PV}

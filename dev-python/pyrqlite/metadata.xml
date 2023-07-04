@@ -5,6 +5,7 @@
     <email>zmedico@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">rqlite/pyrqlite</remote-id>
+     <remote-id type="github">rqlite/pyrqlite</remote-id>
+     <remote-id type="pypi">pyrqlite</remote-id>
   </upstream>
 </pkgmetadata>

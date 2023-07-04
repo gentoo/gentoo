@@ -1,0 +1,99 @@
+Qt Upstream: https://code.qt.io/cgit/qt/qtwebengine.git/commit/?h=6.5&id=281174f5e010d819a49562b48b2c2067255a41c6
+
+From 281174f5e010d819a49562b48b2c2067255a41c6 Mon Sep 17 00:00:00 2001
+From: Szabolcs David <davidsz@inf.u-szeged.hu>
+Date: Fri, 19 May 2023 01:00:41 +0200
+Subject: Normalize clipboard permissions
+
+Handle clipboard read and write permissions the same way everywhere.
+
+Fixes: QTBUG-113579
+Change-Id: If1f271e8591c54f4ee2f935486502df19d5f6b3e
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+(cherry picked from commit 79e4a37668a9176373e81fe4fc8dfe29f6c8c37b)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/core/permission_manager_qt.cpp | 46 +++++++++++++++++++-------------------
+ 1 file changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/src/core/permission_manager_qt.cpp b/src/core/permission_manager_qt.cpp
+index 9d98c0592..28e1c981d 100644
+--- a/src/core/permission_manager_qt.cpp
++++ b/src/core/permission_manager_qt.cpp
+@@ -84,6 +84,22 @@ static blink::mojom::PermissionStatus toBlink(ProfileAdapter::PermissionState re
+     }
+ }
+ 
++static blink::mojom::PermissionStatus getStatusFromSettings(blink::PermissionType type, WebEngineSettings *settings)
++{
++    switch (type) {
++    case blink::PermissionType::CLIPBOARD_READ_WRITE:
++        if (!settings->testAttribute(QWebEngineSettings::JavascriptCanPaste))
++            return blink::mojom::PermissionStatus::DENIED;
++         Q_FALLTHROUGH();
++    case blink::PermissionType::CLIPBOARD_SANITIZED_WRITE:
++        if (!settings->testAttribute(QWebEngineSettings::JavascriptCanAccessClipboard))
++            return blink::mojom::PermissionStatus::DENIED;
++        return blink::mojom::PermissionStatus::GRANTED;
++    default:
++        return blink::mojom::PermissionStatus::ASK;
++    }
++}
++
+ PermissionManagerQt::PermissionManagerQt()
+     : m_requestIdCount(0)
+ {
+@@ -179,13 +195,8 @@ void PermissionManagerQt::RequestPermission(blink::PermissionType permission,
+     Q_ASSERT(contentsDelegate);
+ 
+     ProfileAdapter::PermissionType permissionType = toQt(permission);
+-    if (permissionType == ProfileAdapter::ClipboardRead) {
+-        WebEngineSettings *settings = contentsDelegate->webEngineSettings();
+-        if (settings->testAttribute(QWebEngineSettings::JavascriptCanAccessClipboard)
+-            && settings->testAttribute(QWebEngineSettings::JavascriptCanPaste))
+-            std::move(callback).Run(blink::mojom::PermissionStatus::GRANTED);
+-        else
+-            std::move(callback).Run(blink::mojom::PermissionStatus::DENIED);
++    if (permissionType == ProfileAdapter::ClipboardRead || permissionType == ProfileAdapter::ClipboardWrite) {
++        std::move(callback).Run(getStatusFromSettings(permission, contentsDelegate->webEngineSettings()));
+         return;
+     } else if (!canRequestPermissionFor(permissionType)) {
+         std::move(callback).Run(blink::mojom::PermissionStatus::DENIED);
+@@ -220,14 +231,9 @@ void PermissionManagerQt::RequestPermissions(const std::vector<blink::Permission
+         const ProfileAdapter::PermissionType permissionType = toQt(permission);
+         if (permissionType == ProfileAdapter::UnsupportedPermission)
+             result.push_back(blink::mojom::PermissionStatus::DENIED);
+-        else if (permissionType == ProfileAdapter::ClipboardRead) {
+-            WebEngineSettings *settings = contentsDelegate->webEngineSettings();
+-            if (settings->testAttribute(QWebEngineSettings::JavascriptCanAccessClipboard)
+-                && settings->testAttribute(QWebEngineSettings::JavascriptCanPaste))
+-                result.push_back(blink::mojom::PermissionStatus::GRANTED);
+-            else
+-                result.push_back(blink::mojom::PermissionStatus::DENIED);
+-        } else {
++        else if (permissionType == ProfileAdapter::ClipboardRead || permissionType == ProfileAdapter::ClipboardWrite)
++            result.push_back(getStatusFromSettings(permission, contentsDelegate->webEngineSettings()));
++        else {
+             answerable = false;
+             break;
+         }
+@@ -280,14 +286,8 @@ blink::mojom::PermissionStatus PermissionManagerQt::GetPermissionStatusForCurren
+             permission == blink::PermissionType::CLIPBOARD_SANITIZED_WRITE) {
+         WebContentsDelegateQt *delegate = static_cast<WebContentsDelegateQt *>(
+                 content::WebContents::FromRenderFrameHost(render_frame_host)->GetDelegate());
+-        if (!delegate->webEngineSettings()->testAttribute(
+-                    QWebEngineSettings::JavascriptCanAccessClipboard))
+-            return blink::mojom::PermissionStatus::DENIED;
+-        if (permission == blink::PermissionType::CLIPBOARD_READ_WRITE
+-            && !delegate->webEngineSettings()->testAttribute(
+-                    QWebEngineSettings::JavascriptCanPaste))
+-            return blink::mojom::PermissionStatus::DENIED;
+-        return blink::mojom::PermissionStatus::GRANTED;
++        Q_ASSERT(delegate);
++        return getStatusFromSettings(permission, delegate->webEngineSettings());
+     }
+ 
+     return GetPermissionStatus(
+-- 
+cgit v1.2.3
+

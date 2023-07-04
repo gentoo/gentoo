@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -22,7 +22,7 @@ S=${WORKDIR}/${P#requests-}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 IUSE="test-rust"
 
 RDEPEND="
@@ -34,6 +34,7 @@ BDEPEND="
 		test-rust? (
 			dev-python/cryptography[${PYTHON_USEDEP}]
 			dev-python/pyopenssl[${PYTHON_USEDEP}]
+			dev-python/trustme[${PYTHON_USEDEP}]
 		)
 	)
 "
@@ -48,11 +49,15 @@ python_test() {
 		tests/test_multipart_encoder.py::TestFileFromURLWrapper::test_no_content_length_header
 		tests/test_multipart_encoder.py::TestFileFromURLWrapper::test_read_file
 		tests/test_multipart_encoder.py::TestMultipartEncoder::test_reads_file_from_url_wrapper
+		# tests themself are broken with newer urllib3
+		tests/test_dump.py::TestDumpRealResponses::test_dump_{all,response}
+		tests/test_sessions.py::TestBasedSession::test_{prepared_,}request_{with,override}_base
 	)
 	local EPYTEST_IGNORE=()
 
 	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]" ||
-		! has_version "dev-python/pyopenssl[${PYTHON_USEDEP}]"
+		! has_version "dev-python/pyopenssl[${PYTHON_USEDEP}]" ||
+		! has_version "dev-python/trustme[${PYTHON_USEDEP}]"
 	then
 		EPYTEST_IGNORE+=(
 			tests/test_x509_adapter.py

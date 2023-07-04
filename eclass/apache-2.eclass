@@ -162,6 +162,7 @@ RDEPEND="
 	apache2_modules_session_crypto? (
 		dev-libs/apr-util[openssl]
 	)
+	apache2_modules_tls? ( net-libs/rustls-ffi:= )
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( net-nds/openldap:= )
 	selinux? ( sec-policy/selinux-apache )
@@ -475,7 +476,7 @@ apache-2_src_prepare() {
 	# 03_all_gentoo-apache-tools.patch injects -Wl,-z,now, which is not a good
 	# idea for everyone
 	case ${CHOST} in
-		*-linux-gnu|*-solaris*|*-freebsd*)
+		*-linux-gnu|*-solaris*)
 			# do nothing, these use GNU binutils
 			:
 		;;

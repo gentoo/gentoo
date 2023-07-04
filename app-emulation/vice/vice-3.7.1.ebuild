@@ -54,7 +54,7 @@ RDEPEND="
 	pci? ( sys-apps/pciutils )
 	png? ( media-libs/libpng:= )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
+	pulseaudio? ( media-libs/libpulse )
 	sdl? (
 		media-libs/libsdl2[video]
 		media-libs/sdl2-image

@@ -34,14 +34,12 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 		arm64? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM64}-arm64-linux-binary.tar.bz2 )
 		x64-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
 		ppc-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
-		x86-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_SOLARIS}-x86-solaris-binary.tar.bz2 )
 		x64-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_SOLARIS}-x86-64-solaris-binary.tar.bz2 )
-		sparc-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC_SOLARIS}-sparc-solaris-binary.tar.bz2 )
 	)"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="-* ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="-* ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="system-bootstrap debug doc source +threads +unicode +zstd"
 
 CDEPEND=">=dev-lisp/asdf-3.3:= \

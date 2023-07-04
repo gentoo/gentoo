@@ -1,0 +1,99 @@
+https://bugs.gentoo.org/888912
+https://github.com/elogind/elogind/commit/ab72a46f3104f44a32ef7bec7439aa9d3b5f0fdc
+
+Rebased version to apply to 246.10 by concord@.
+
+From ab72a46f3104f44a32ef7bec7439aa9d3b5f0fdc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Fri, 9 Oct 2020 16:48:03 +0200
+Subject: [PATCH] basic/selinux: work around mallinfo deprecation
+
+Latest glibc has deprecated mallinfo(), so it might become unavailable at some point
+in the future. There is malloc_info(), but it returns XML, ffs. I think the information
+that we get from mallinfo() is quite useful, so let's use mallinfo() if available, and
+not otherwise.
+--- a/meson.build
++++ b/meson.build
+@@ -617,6 +617,7 @@ foreach ident : [
+                                  #include <unistd.h>
+                                  #include <signal.h>
+                                  #include <sys/wait.h>'''],
++        ['mallinfo',          '''#include <malloc.h>'''],
+ ]
+ 
+         have = cc.has_function(ident[0], prefix : ident[1], args : '-D_GNU_SOURCE')
+--- a/src/basic/macro.h
++++ b/src/basic/macro.h
+@@ -93,6 +93,10 @@
+ #endif
+ 
+ /* Temporarily disable some warnings */
++#define DISABLE_WARNING_DEPRECATED_DECLARATIONS                         \
++        _Pragma("GCC diagnostic push");                                 \
++        _Pragma("GCC diagnostic ignored \"-Wdeprecated-declarations\"")
++
+ #define DISABLE_WARNING_FORMAT_NONLITERAL                               \
+         _Pragma("GCC diagnostic push");                                 \
+         _Pragma("GCC diagnostic ignored \"-Wformat-nonliteral\"")
+--- a/src/basic/selinux-util.c
++++ b/src/basic/selinux-util.c
+@@ -72,12 +72,21 @@ void mac_selinux_retest(void) {
+ #endif
+ }
+ 
++#if HAVE_MALLINFO
++static struct mallinfo mallinfo_nowarn(void) {
++        /* glibc has deprecated mallinfo(), but the replacement malloc_info() returns an XML blob ;=[ */
++DISABLE_WARNING_DEPRECATED_DECLARATIONS
++        return mallinfo();
++REENABLE_WARNING
++}
++#else
++#	warning "mallinfo() is missing, add mallinfo2() support instead."
++#endif
++
+ int mac_selinux_init(void) {
+ #if HAVE_SELINUX
+         usec_t before_timestamp, after_timestamp;
+-        struct mallinfo before_mallinfo, after_mallinfo;
+         char timespan[FORMAT_TIMESPAN_MAX];
+-        int l;
+ 
+         selinux_set_callback(SELINUX_CB_POLICYLOAD, (union selinux_callback) mac_selinux_reload);
+ 
+@@ -87,7 +96,9 @@ int mac_selinux_init(void) {
+         if (!mac_selinux_use())
+                 return 0;
+ 
+-        before_mallinfo = mallinfo();
++#if HAVE_MALLINFO
++        struct mallinfo before_mallinfo = mallinfo_nowarn();
++#endif
+         before_timestamp = now(CLOCK_MONOTONIC);
+ 
+         label_hnd = selabel_open(SELABEL_CTX_FILE, NULL, 0);
+@@ -95,14 +107,17 @@ int mac_selinux_init(void) {
+                 return log_enforcing_errno(errno, "Failed to initialize SELinux labeling handle: %m");
+ 
+         after_timestamp = now(CLOCK_MONOTONIC);
+-        after_mallinfo = mallinfo();
+-
+-        l = after_mallinfo.uordblks > before_mallinfo.uordblks ? after_mallinfo.uordblks - before_mallinfo.uordblks : 0;
++#if HAVE_MALLINFO
++        struct mallinfo after_mallinfo = mallinfo_nowarn();
++        int l = after_mallinfo.uordblks > before_mallinfo.uordblks ? after_mallinfo.uordblks - before_mallinfo.uordblks : 0;
+ 
+         log_debug("Successfully loaded SELinux database in %s, size on heap is %iK.",
+                   format_timespan(timespan, sizeof(timespan), after_timestamp - before_timestamp, 0),
+-                  (l+1023)/1024);
+-
++                  DIV_ROUND_UP(l, 1024));
++#else
++        log_debug("Successfully loaded SELinux database in %s.",
++                  format_timespan(timespan, sizeof(timespan), after_timestamp - before_timestamp, 0));
++#endif
+ #endif
+         return 0;
+ }
+-- 
+2.40.1

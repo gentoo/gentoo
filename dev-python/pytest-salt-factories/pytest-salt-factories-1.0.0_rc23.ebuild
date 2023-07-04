@@ -20,7 +20,7 @@ IUSE="test"
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/pytest-tempdir[${PYTHON_USEDEP}]
-	dev-python/docker-py[${PYTHON_USEDEP}]
+	dev-python/docker[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	>=dev-python/pytest-6.0.0[${PYTHON_USEDEP}]
 	dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]

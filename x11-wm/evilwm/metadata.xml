@@ -14,7 +14,4 @@
 	real estate and provides good keyboard control. It is currently based on 
 	aewm.
 	</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">evilwm</remote-id>
-	</upstream>
 </pkgmetadata>

@@ -88,6 +88,16 @@ opencv"
 		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
 hls"
 	fi
+
+	# See bug #907483
+	if grep -q "option('qt5'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+qt5"
+	fi
+	if grep -q "option('qt6'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+qt6"
+	fi
 }
 
 # @FUNCTION: gstreamer_system_package
@@ -209,8 +219,6 @@ if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
 	# Export multilib phases used for split builds.
 	multilib_src_install_all() { gstreamer_multilib_src_install_all; }
 else
-	local extra_deps=""
-
 	IUSE="nls test"
 	RESTRICT="!test? ( test )"
 	if [[ "${PN}" != "gstreamer" ]]; then

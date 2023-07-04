@@ -14,9 +14,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="backtrace">Display a backtrace on crash using <pkg>sys-libs/libbacktrace</pkg></flag>
 		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
-		<flag name="vulkan">Enable support for Vulkan</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/PCSX2/pcsx2/issues</bugs-to>

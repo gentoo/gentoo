@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,11 +9,11 @@ DESCRIPTION="AWStats is short for Advanced Web Statistics"
 HOMEPAGE="https://www.awstats.org/"
 SRC_URI="https://www.awstats.org/files/${P}.tar.gz"
 S=${WORKDIR}/${MY_P}
-LICENSE="GPL-3"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
-IUSE="geoip ipv6"
 
+LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+IUSE="geoip ipv6 selinux"
 
 RDEPEND="
 	>=dev-lang/perl-5.6.1
@@ -26,8 +26,8 @@ RDEPEND="
 		dev-perl/Net-DNS
 		dev-perl/Net-IP
 	)
+	selinux? ( sec-policy/selinux-awstats )
 "
-DEPEND=""
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-7.1-gentoo.diff

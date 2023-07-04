@@ -77,6 +77,7 @@ DEPEND="
 		tiff? ( media-libs/tiff[jpeg] )
 	)"
 BDEPEND="
+	dev-util/glib-utils
 	sys-devel/gettext
 	doc? (
 		app-doc/doxygen

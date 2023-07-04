@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="epoll">Use epoll() system call</flag>
+		<flag name="epoll">Support epoll() system call</flag>
+		<flag name="eventfd">Use EventFD for efficient inter-thread communication</flag>
 		<flag name="thread-names">Assign thread names to internal threads, useful for dependent apps debugging</flag>
 	</use>
 	<upstream>

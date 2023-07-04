@@ -83,7 +83,7 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="postgres systemd test"
 RESTRICT="!test? ( test )"
 
@@ -108,14 +108,14 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/phonenumbers[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP},webp]
-	dev-python/prometheus_client[${PYTHON_USEDEP}]
+	dev-python/prometheus-client[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/pymacaroons[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/service_identity[${PYTHON_USEDEP}]
+	dev-python/service-identity[${PYTHON_USEDEP}]
 	dev-python/signedjson[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	dev-python/treq[${PYTHON_USEDEP}]

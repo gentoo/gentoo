@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
@@ -29,7 +29,7 @@ GPSD_PROTOCOLS=(
 	rtcm104v2 rtcm104v3 sirf skytraq superstar2 tnt tripmate tsip ublox
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/+gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp +python qt5 +shm +sockets static systemd test udev usb X"
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp +python qt5 selinux +shm +sockets static systemd test udev usb X"
 REQUIRED_USE="
 	X? ( python )
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
@@ -69,6 +69,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
 	test? ( sys-devel/bc )"
+RDEPEND+=" selinux? ( sec-policy/selinux-gpsd )"
 
 # asciidoctor package is for man page generation
 if [[ ${PV} == *9999* ]] ; then

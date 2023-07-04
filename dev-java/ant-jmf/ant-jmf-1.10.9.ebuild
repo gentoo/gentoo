@@ -13,4 +13,4 @@ inherit ant-tasks
 
 DESCRIPTION="Apache Ant's optional tasks for the Java Media Framework (JMF)"
 
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"

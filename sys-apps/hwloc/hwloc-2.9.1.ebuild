@@ -14,7 +14,7 @@ SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2
 LICENSE="BSD"
 SLOT="0/15"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="cairo +cpuid cuda debug nvml +pci static-libs svg udev xml X video_cards_nvidia"
+IUSE="cairo +cpuid cuda debug nvml +pci static-libs svg udev valgrind xml X video_cards_nvidia"
 
 # opencl: opencl support dropped with x11-drivers/ati-drivers being removed (bug #582406).
 #         anyone with hardware is welcome to step up and help test to get it re-added.
@@ -34,7 +34,8 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 		x11-libs/libXext
 		x11-libs/libX11
 	)"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	valgrind? ( dev-util/valgrind )"
 # 2.69-r5 for --runstatedir
 BDEPEND=">=sys-devel/autoconf-2.69-r5
 	virtual/pkgconfig"
@@ -64,6 +65,9 @@ multilib_src_configure() {
 		local -x LDFLAGS="${LDFLAGS}"
 		append-ldflags "-L${ESYSROOT}/opt/cuda/$(get_libdir)"
 	fi
+
+	export ac_cv_header_valgrind_valgrind_h=$(multilib_native_usex valgrind)
+	export ac_cv_have_decl_RUNNING_ON_VALGRIND=$(multilib_native_usex valgrind)
 
 	local myconf=(
 		--disable-opencl
@@ -108,5 +112,5 @@ multilib_src_install_all() {
 	bashcomp_alias hwloc-annotate lstopo{,-no-graphics}
 
 	find "${ED}" -name '*.la' -delete || die
-	doicon "${DISTDIR}/lstopo.png"
+	newicon "${DISTDIR}/lstopo.png" "${PN}"
 }

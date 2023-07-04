@@ -37,7 +37,7 @@ RDEPEND="
 	media-libs/tiff:=
 	media-libs/vigra[openexr]
 	sci-libs/gsl:=
-	debug? ( dev-libs/dmalloc )
+	debug? ( dev-libs/dmalloc[threads] )
 	tcmalloc? ( dev-util/google-perftools )
 "
 DEPEND="${RDEPEND}

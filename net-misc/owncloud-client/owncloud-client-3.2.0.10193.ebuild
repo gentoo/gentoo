@@ -8,7 +8,7 @@ inherit cmake xdg
 MY_PN="ownCloud"
 REGRAPHAPI_PV="1.0.1"
 DESCRIPTION="Synchronize files from ownCloud Server with your computer"
-HOMEPAGE="https://owncloud.org/"
+HOMEPAGE="https://owncloud.com/"
 SRC_URI="https://download.owncloud.com/desktop/${MY_PN}/stable/${PV}/source/${MY_PN}-${PV}.tar.xz
 	https://github.com/owncloud/libre-graph-api-cpp-qt-client/archive/refs/tags/v${REGRAPHAPI_PV}.tar.gz
 		-> libregraphapi-${REGRAPHAPI_PV}.tar.gz"
@@ -17,11 +17,11 @@ S=${WORKDIR}/${MY_PN}-${PV}
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="dolphin gnome-keyring nautilus test"
+IUSE="dolphin keyring nautilus test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-db/sqlite-3.4:3
-	dev-libs/qtkeychain[gnome-keyring?,qt5(+)]
+	dev-libs/qtkeychain[keyring?,qt5(+)]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5

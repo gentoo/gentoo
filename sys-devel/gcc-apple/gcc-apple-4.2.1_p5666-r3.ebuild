@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit toolchain flag-o-matic autotools prefix toolchain-funcs
+inherit flag-o-matic autotools prefix toolchain-funcs
 
 GCC_VERS=${PV/_p*/}
 APPLE_VERS="${PV/*_p/}.3"
@@ -41,6 +41,17 @@ S=${WORKDIR}/gcc-${APPLE_VERS}
 
 # TPREFIX is the prefix of the CTARGET installation
 export TPREFIX=${TPREFIX:-${EPREFIX}}
+
+export CTARGET=${CTARGET:-${CHOST}}
+if [[ ${CTARGET} = ${CHOST} ]] ; then
+	if [[ ${CATEGORY} == cross-* ]] ; then
+		export CTARGET=${CATEGORY#cross-}
+	fi
+fi
+
+is_crosscompile() {
+	[[ ${CHOST} != ${CTARGET} ]]
+}
 
 do_bootstrap() {
 	is_crosscompile && return 1

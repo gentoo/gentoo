@@ -24,9 +24,6 @@ SLOT="0/${PV%%.*}"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="+cxx17 test"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 BDEPEND="
 	${PYTHON_DEPS}
 	test? ( sys-libs/timezone-data )

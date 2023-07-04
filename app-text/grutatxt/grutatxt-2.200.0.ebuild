@@ -15,4 +15,4 @@ SRC_URI="https://triptico.com/download/${PN}.tar.gz -> ${P}.tar.gz"
 LICENSE="public-domain"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~x86-linux ~ppc-macos"

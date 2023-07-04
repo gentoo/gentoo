@@ -14,7 +14,7 @@ fi
 inherit meson-multilib multilib ${GIT_ECLASS}
 
 DESCRIPTION="Library that allows selection of GL API and of window system at runtime"
-HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
+HOMEPAGE="https://gitlab.freedesktop.org/mesa/waffle"
 
 LICENSE="BSD-2"
 SLOT="0"

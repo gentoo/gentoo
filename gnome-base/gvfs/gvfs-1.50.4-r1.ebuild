@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/gvfs"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="afp archive bluray cdda elogind fuse google gnome-keyring gnome-online-accounts gphoto2 +http ios mtp nfs policykit samba systemd test +udev udisks zeroconf"
+IUSE="afp archive bluray cdda elogind fuse google keyring gnome-online-accounts gphoto2 +http ios mtp nfs policykit samba systemd test +udev udisks zeroconf"
 RESTRICT="!test? ( test )"
 # elogind/systemd only relevant to udisks (in v1.38.1)
 REQUIRED_USE="
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	mtp? ( udev )
 	udisks? ( udev )
 "
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-libs/glib-2.70.0:2
@@ -53,7 +53,7 @@ RDEPEND="
 		>=app-pda/libplist-1:=
 	)
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.17.1:= )
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	bluray? ( media-libs/libbluray:= )
 	mtp? (
 		virtual/libusb:1
@@ -121,7 +121,7 @@ src_configure() {
 		-Dgcr=true
 		-Dgcrypt=${enable_gcrypt}
 		$(meson_use udev gudev)
-		$(meson_use gnome-keyring keyring)
+		$(meson_use keyring keyring)
 		-Dlogind=${enable_logind}
 		-Dlibusb=${enable_libusb}
 		-Ddevel_utils=false # wouldn't install any of it as of 1.38.1; some tests need it, but they aren't automated tests in v1.38.1

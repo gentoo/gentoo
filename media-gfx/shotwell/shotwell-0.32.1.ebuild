@@ -3,14 +3,14 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson vala xdg
+inherit gnome.org gnome2-utils meson optfeature vala xdg
 
 DESCRIPTION="Open source photo manager for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Shotwell"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~sparc x86"
 IUSE="opencv udev"
 
 DEPEND="
@@ -79,6 +79,11 @@ src_configure() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
+
+	optfeature "Enable support for the AVIF format" media-libs/libavif[gdk-pixbuf]
+	optfeature "Enable support for the HEIF format" media-libs/libheif[gdk-pixbuf]
+	optfeature "Enable support for the JPEG format" x11-libs/gdk-pixbuf[jpeg]
+	optfeature "Enable support for the TIFF format" x11-libs/gdk-pixbuf[tiff]
 }
 
 pkg_postrm() {

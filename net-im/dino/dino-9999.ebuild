@@ -10,7 +10,7 @@ HOMEPAGE="https://dino.im"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gpg +http +omemo +notification-sound test"
+IUSE="+gpg +http +omemo +notification-sound +rtp test"
 RESTRICT="!test? ( test )"
 
 MY_REPO_URI="https://github.com/dino/dino"
@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="${MY_REPO_URI}.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64"
 	SRC_URI="${MY_REPO_URI}/releases/download/v${PV}/${P}.tar.gz"
 fi
 
@@ -29,10 +29,12 @@ RDEPEND="
 	dev-libs/libgee:0.8=
 	gui-libs/gtk:4
 	>=gui-libs/libadwaita-1.2.0:1
+	media-libs/graphene
 	net-libs/glib-networking
+	net-libs/gnutls:=
 	>=net-libs/libnice-0.1.15
 	net-libs/libsignal-protocol-c
-	net-libs/libsrtp:2
+	net-libs/libsrtp:2=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango
@@ -42,6 +44,11 @@ RDEPEND="
 	omemo? (
 		dev-libs/libgcrypt:=
 		media-gfx/qrencode:=
+	)
+	rtp? (
+		media-libs/gst-plugins-base:1.0
+		media-libs/gstreamer:1.0
+		media-libs/webrtc-audio-processing:0
 	)
 "
 DEPEND="
@@ -61,6 +68,7 @@ src_configure() {
 		$(usex gpg "" "openpgp")
 		$(usex omemo "" "omemo")
 		$(usex http  "" "http-files")
+		$(usex rtp "" rtp)
 	)
 	local enabled_plugins=(
 		$(usex notification-sound "notification-sound" "")

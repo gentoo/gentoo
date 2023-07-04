@@ -1,5 +1,3 @@
-diff --git a/gtk2_ardour/wscript b/gtk2_ardour/wscript
-index f5d0533..a68cb3f 100644
 --- a/gtk2_ardour/wscript
 +++ b/gtk2_ardour/wscript
 @@ -943,7 +943,7 @@ def build(bld):

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://download.mono-project.com/sources/mono/${P}.tar.xz"
 LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv x86 ~amd64-linux"
-IUSE="doc minimal nls pax-kernel xen"
+IUSE="doc minimal nls pax-kernel selinux xen"
 
 # Note: mono works incorrect with older versions of libgdiplus
 # Details on dotnet overlay issue: https://github.com/gentoo/dotnet/issues/429
@@ -27,8 +27,11 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	app-misc/ca-certificates
+	selinux? ( sec-policy/selinux-mono )
 "
+# CMake is used for bundled deps
 BDEPEND="
+	dev-util/cmake
 	sys-devel/bc
 	app-alternatives/yacc
 	pax-kernel? ( sys-apps/elfix )
@@ -87,7 +90,7 @@ multilib_src_configure() {
 		--without-ikvm-native
 		--disable-dtrace
 		--enable-system-aot
-		$(use_with doc mcs-docs)
+		$(multilib_native_use_with doc mcs-docs)
 		$(use_enable nls)
 	)
 

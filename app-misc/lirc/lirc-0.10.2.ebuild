@@ -29,7 +29,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv x86"
-IUSE="audio +devinput doc ftdi gtk inputlirc static-libs systemd +uinput usb X"
+IUSE="audio +devinput doc ftdi gtk inputlirc selinux static-libs systemd +uinput usb X"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -75,6 +75,7 @@ RDEPEND="
 		')
 	)
 	inputlirc? ( app-misc/inputlircd )
+	selinux? ( sec-policy/selinux-lircd )
 "
 
 PATCHES=(

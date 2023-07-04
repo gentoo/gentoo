@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/gettext/gettext-${PV}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 S="${WORKDIR}/gettext-${PV}/gettext-tools/emacs"
 ELISP_REMOVE="start-po.el"

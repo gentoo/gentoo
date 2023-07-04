@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
@@ -15,7 +15,7 @@ HOMEPAGE="https://www.mdanalysis.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~amd64-linux"
 
 # TODO: fix this
 # ImportError: MDAnalysis not installed properly. This can happen if your C extensions have not been built.

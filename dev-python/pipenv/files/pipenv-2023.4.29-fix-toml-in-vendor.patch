@@ -1,5 +1,5 @@
 diff --git a/pipenv/project.py b/pipenv/project.py
-index ed43cf2bc..903667639 100644
+index ed43cf2bc..55251bc5f 100644
 --- a/pipenv/project.py
 +++ b/pipenv/project.py
 @@ -13,6 +13,13 @@ import urllib.parse
@@ -16,6 +16,15 @@ index ed43cf2bc..903667639 100644
  from pipenv.cmdparse import Script
  from pipenv.environment import Environment
  from pipenv.environments import Setting, is_in_virtualenv, normalize_pipfile_path
+@@ -43,8 +50,6 @@ from pipenv.utils.toml import cleanup_toml, convert_toml_outline_tables
+ from pipenv.vendor import plette
+ from pipenv.vendor.requirementslib.models.utils import get_default_pyproject_backend
+ 
+-import click, toml, tomlkit
+-
+ try:
+     # this is only in Python3.8 and later
+     from functools import cached_property
 diff --git a/pipenv/utils/toml.py b/pipenv/utils/toml.py
 index d4157d01c..27d9975ae 100644
 --- a/pipenv/utils/toml.py

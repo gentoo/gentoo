@@ -17,13 +17,13 @@ XSTS_TARBALL_2="xsts-2004-01-14.tar.gz"
 XMLCONF_TARBALL="xmlts20130923.tar.gz"
 
 DESCRIPTION="XML C parser and toolkit"
-HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxml2"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/libxml2"
 	inherit autotools git-r3
 else
 	inherit gnome.org libtool
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 SRC_URI+="

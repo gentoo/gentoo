@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,6 +13,7 @@ SRC_URI="http://postgrey.schweikert.ch/pub/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 x86"
+IUSE="selinux"
 
 DEPEND="
 	acct-group/postgrey
@@ -31,6 +32,7 @@ RDEPEND="
 	dev-perl/Parse-Syslog
 	virtual/perl-Digest-SHA
 	>=sys-libs/db-4.1
+	selinux? ( sec-policy/selinux-postgrey )
 "
 
 src_prepare() {

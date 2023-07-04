@@ -11,7 +11,7 @@ SRC_URI="https://github.com/marineam/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=">=sys-kernel/linux-headers-2.6.16"
 

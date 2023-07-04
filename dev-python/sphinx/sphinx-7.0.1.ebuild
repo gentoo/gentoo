@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -44,7 +44,7 @@ RDEPEND="
 	>=dev-python/packaging-21.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/importlib-metadata-4.8[${PYTHON_USEDEP}]
-	' 3.8 3.9)
+	' 3.9)
 	latex? (
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
@@ -104,6 +104,8 @@ python_test() {
 		tests/test_ext_autodoc.py::test_cython
 		tests/test_ext_autodoc_autoclass.py::test_classes
 		tests/test_ext_autodoc_autofunction.py::test_classes
+		tests/test_ext_math.py::test_imgmath_numfig_html
+		tests/test_ext_math.py::test_imgmath_png
 		tests/test_ext_inheritance_diagram.py::test_import_classes
 		# looks like a bug in lualatex
 		"tests/test_build_latex.py::test_build_latex_doc[lualatex-howto]"

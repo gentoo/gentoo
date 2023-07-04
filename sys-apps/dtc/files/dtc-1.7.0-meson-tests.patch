@@ -1,0 +1,27 @@
+https://git.kernel.org/pub/scm/utils/dtc/dtc.git/patch/?id=32174a66efa4ad19fc6a2a6422e4af2ae4f055cb
+
+From 32174a66efa4ad19fc6a2a6422e4af2ae4f055cb Mon Sep 17 00:00:00 2001
+From: David Gibson <david@gibson.dropbear.id.au>
+Date: Tue, 28 Feb 2023 10:33:58 +1100
+Subject: meson: Fix cell overflow tests when running from meson
+
+Because meson always builds out-of-tree we need to reference things in the
+original source tree via $SRCDIR from run_tests.sh.  We forgot a couple of
+cases for the cell overflow tests.  Fix them.
+
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+--- a/tests/run_tests.sh
++++ b/tests/run_tests.sh
+@@ -519,8 +519,8 @@ libfdt_tests () {
+     check_tests "$SRCDIR/phandle-args-overflow.dts" clocks_property
+ 
+     ## https://github.com/dgibson/dtc/issues/74
+-    run_dtc_test -I dts -O dtb -o cell-overflow-results.test.dtb cell-overflow-results.dts
+-    run_dtc_test -I dts -O dtb -o cell-overflow.test.dtb cell-overflow.dts
++    run_dtc_test -I dts -O dtb -o cell-overflow-results.test.dtb "$SRCDIR/cell-overflow-results.dts"
++    run_dtc_test -I dts -O dtb -o cell-overflow.test.dtb "$SRCDIR/cell-overflow.dts"
+     run_test dtbs_equal_ordered cell-overflow.test.dtb cell-overflow-results.test.dtb
+ 
+     # check full tests
+-- 
+cgit

@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/argon2-cffi[${PYTHON_USEDEP}]
@@ -30,7 +30,7 @@ RDEPEND="
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]
 	>=dev-python/notebook-shim-0.2.3[${PYTHON_USEDEP}]
-	dev-python/prometheus_client[${PYTHON_USEDEP}]
+	dev-python/prometheus-client[${PYTHON_USEDEP}]
 	>=dev-python/send2trash-1.8.0[${PYTHON_USEDEP}]
 	>=dev-python/terminado-0.8.3[${PYTHON_USEDEP}]
 	>=dev-python/tornado-6.1[${PYTHON_USEDEP}]

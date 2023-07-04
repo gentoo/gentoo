@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -33,4 +33,6 @@ distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	tests/test_benchmarks.py
+	# weird test for testing limits of runtime
+	tests/test_core.py::test_reify_recursion_limit
 )

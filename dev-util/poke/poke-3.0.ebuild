@@ -45,7 +45,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( nbd? ( sys-libs/libnbd[uri-support] ) )
+	test? ( nbd? ( sys-libs/libnbd[uri-support(+)] ) )
 "
 BDEPEND="
 	${REGEN_BDEPEND}

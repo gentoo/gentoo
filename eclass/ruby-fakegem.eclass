@@ -400,10 +400,10 @@ ruby_fakegem_binwrapper() {
 		# in the shebang, and we can actually avoid errors when
 		# calling the script by default.
 		local rubycmd=
-		for implementation in $(_ruby_get_all_impls); do
+		for implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 			# ignore non-enabled implementations
 			use ruby_targets_${implementation} || continue
-			if [ -z $rubycmd ]; then
+			if [[ -z ${rubycmd} ]]; then
 				# if no other implementation was set before, set it.
 				rubycmd="$(ruby_implementation_command ${implementation})"
 			else
@@ -441,7 +441,7 @@ each_fakegem_configure() {
 
 	tc-export PKG_CONFIG
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
-		CC=$(tc-getCC) ${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} --with-cflags="${CFLAGS}" --with-ldflags="${LDFLAGS}" ${RUBY_FAKEGM_EXTENSION_OPTIONS} || die
+		CC=$(tc-getCC) ${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} --with-cflags="${CFLAGS}" --with-ldflags="${LDFLAGS}" ${RUBY_FAKEGEM_EXTENSION_OPTIONS} || die
 	done
 }
 

@@ -1,0 +1,24 @@
+This file ends up included in
+src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR3LibRuntimeXF86.cpp which
+is compiled with -ffreestanding, so it shouldn't include math.h
+
+See also: https://bugs.gentoo.org/907597
+
+--- a/src/VBox/Additions/x11/x11include/XFree86-4.3/Xserver/misc.h
++++ b/src/VBox/Additions/x11/x11include/XFree86-4.3/Xserver/misc.h
+@@ -169,6 +169,7 @@
+ #ifndef IN_MODULE
+ /* XXX Not for modules */
+ #include <limits.h>
++#if defined __STDC_HOSTED__ && __STDC_HOSTED__ == 1
+ #if !defined(MAXSHORT) || !defined(MINSHORT) || \
+     !defined(MAXINT) || !defined(MININT)
+ /*
+@@ -178,6 +179,7 @@
+ 
+ #include <math.h>
+ #endif
++#endif	// defined __STDC_HOSTED__ && __STDC_HOSTED__ == 1
+ #undef MAXSHORT
+ #define MAXSHORT SHRT_MAX
+ #undef MINSHORT

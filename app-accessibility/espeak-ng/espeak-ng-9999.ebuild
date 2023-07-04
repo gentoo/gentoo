@@ -1,37 +1,36 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="Software speech synthesizer for English, and some other languages"
 HOMEPAGE="https://github.com/espeak-ng/espeak-ng"
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/espeak-ng/espeak-ng.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/espeak-ng/espeak-ng/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-3+ unicode"
 SLOT="0"
 IUSE="+async +klatt l10n_ru l10n_zh man mbrola +sound"
 
-COMMON_DEPEND="
-	!app-accessibility/espeak
+DEPEND="
 	mbrola? ( app-accessibility/mbrola )
 	sound? ( media-libs/pcaudiolib )
 "
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
+	!app-accessibility/espeak
 	sound? ( media-sound/sox )
 "
 BDEPEND="
 	virtual/pkgconfig
-	man? ( || ( app-text/ronn-ng app-text/ronn ) )
+	man? ( app-text/ronn-ng )
 "
 
 DOCS=( CHANGELOG.md README.md docs )
@@ -66,7 +65,6 @@ src_configure() {
 		--without-libfuzzer
 		--without-sonic
 		--disable-rpath
-		--disable-static
 	)
 	econf "${econf_args[@]}"
 }

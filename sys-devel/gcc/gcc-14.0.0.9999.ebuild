@@ -7,14 +7,14 @@ TOOLCHAIN_PATCH_DEV="sam"
 PATCH_GCC_VER="14.0.0"
 MUSL_GCC_VER="14.0.0"
 
-if [[ $(ver_cut 3) == 9999 ]] ; then
+if [[ ${PV} == *.9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
-	MY_PV_3=$(($(ver_cut 3) - 9998))
+	MY_PV_3=1
 	if [[ ${MY_PV_2} == 0 ]] ; then
 		MY_PV_2=0
 		MY_PV_3=0
 	else
-		MY_PV_2=$(($(ver_cut 2) - 1))
+		MY_PV_2=$((${MY_PV_2} - 1))
 	fi
 
 	# e.g. 12.2.9999 -> 12.1.1
@@ -30,12 +30,13 @@ fi
 
 inherit toolchain
 
-# Needs to be after inherit (for now?), bug #830908
-EGIT_BRANCH=master
-
-# Don't keyword live ebuilds
-if ! tc_is_live && [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+if tc_is_live ; then
+	# Needs to be after inherit (for now?), bug #830908
+	EGIT_BRANCH=master
+elif [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
+	# Don't keyword live ebuilds
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	:;
 fi
 
 if [[ ${CATEGORY} != cross-* ]] ; then

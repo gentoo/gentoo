@@ -27,7 +27,7 @@ BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/semantic_version[${PYTHON_USEDEP}]
+		dev-python/semantic-version[${PYTHON_USEDEP}]
 	')
 "
 

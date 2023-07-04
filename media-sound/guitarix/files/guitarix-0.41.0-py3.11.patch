@@ -4,12 +4,6 @@ Date: Wed, 11 Jan 2023 18:55:36 -0500
 Subject: [PATCH] waf: python 3.11 removed the 'U' open mode
 
 Python3 deprecated it already by making this the default behaviour.
----
- trunk/wscript | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/trunk/wscript b/trunk/wscript
-index 947fd3d1..3f1f5cf3 100644
 --- a/wscript
 +++ b/wscript
 @@ -537,7 +537,7 @@ def sub_file(task):

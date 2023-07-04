@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
 # Sam James <sam@gentoo.org> (2023-05-10)
 # sys-cluster/ceph not keyworded here
 sys-block/tgt rbd
@@ -83,10 +87,6 @@ app-emulation/qemu rbd slirp spice virgl vde
 app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 app-emulation/qemu qemu_softmmu_targets_ppc qemu_softmmu_targets_ppc64
 
-# Sam James <sam@gentoo.org> (2021-10-31)
-# dev-python/pyilmbase isn't keyworded on arm
-media-gfx/alembic python
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2021-09-25)
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
@@ -121,7 +121,7 @@ net-im/prosody selinux
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm
 # bug #729720
-sys-apps/systemd -gnuefi
+sys-apps/systemd -boot -gnuefi
 sys-apps/systemd-utils -boot
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
@@ -326,6 +326,7 @@ media-gfx/xsane ocr
 media-video/ffmpeg -mmal
 media-video/ffmpeg-chromium -mmal
 media-video/mpv -mmal
+net-misc/moonlight -mmal
 
 # Markus Meier <maekke@gentoo.org> (2015-10-10)
 # unkeyworded deps, bug #552330
@@ -438,7 +439,6 @@ dev-tex/tex4ht java
 dev-vcs/subversion java
 media-libs/libjpeg-turbo java
 net-misc/tigervnc java
-sys-devel/gettext java
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.

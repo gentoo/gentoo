@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 optfeature
 
@@ -27,9 +27,6 @@ RDEPEND="
 	<dev-python/markdown-it-py-3[${PYTHON_USEDEP}]
 	>=dev-python/markdown-it-py-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.13.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.8)
 "
 
 distutils_enable_tests pytest
@@ -44,6 +41,15 @@ python_test() {
 		tests/test_syntax.py::test_python_render_simple_indent_guides
 		tests/test_syntax.py::test_python_render_line_range_indent_guides
 	)
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			# version-specific output -- the usual deal
+			tests/test_inspect.py::test_inspect_builtin_function_except_python311
+			tests/test_inspect.py::test_inspect_integer_with_methods_python310only
+			tests/test_inspect.py::test_inspect_integer_with_methods_python311_and_above
+			tests/test_pretty.py::test_attrs_broken
+		)
+	fi
 	epytest -p no:pytest-qt
 }
 

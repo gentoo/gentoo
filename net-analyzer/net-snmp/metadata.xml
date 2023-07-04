@@ -12,6 +12,7 @@
 		<flag name="netlink">Use <pkg>dev-libs/libnl</pkg> to fetch TCP statistics instead of using /proc/net/tcp (Linux only).</flag>
 		<flag name="pcap">Install snmppcap which reads from PCAP files and writes to the SNMP transport</flag>
 		<flag name="pci">Use libpci (from <pkg>sys-apps/pciutils</pkg>) to look up network interface description. This feature is only available on Linux.</flag>
+		<flag name="pcre">Add support for Perl Compatible Regular Expressions in process table filtering.</flag>
 		<flag name="rpm">Enable monitoring of <pkg>app-arch/rpm</pkg>. This flag requires the bzip2 and zlib flags to be enabled as well.</flag>
 		<flag name="smux">Enable support for the legacy smux protocol (superseded by agentx)</flag>
 		<flag name="ucd-compat">Build UCD compatibility library. Increases significantly the install size.</flag>

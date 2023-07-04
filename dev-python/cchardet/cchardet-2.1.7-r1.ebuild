@@ -15,7 +15,7 @@ HOMEPAGE="
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]

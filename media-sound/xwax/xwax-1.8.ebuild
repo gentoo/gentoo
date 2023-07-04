@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://xwax.org/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="alsa jack oss cdda mp3 +fallback"
+IUSE="+alsa cdda +fallback jack mp3 oss"
 
 REQUIRED_USE="
 	|| ( cdda mp3 fallback )

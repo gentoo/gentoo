@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 COMMIT=07f67364e66b9f686a5b15d0c516310fcc3c7c9b
 MY_PV=$COMMIT
 
-DESCRIPTION="Ganeti OS provider for simple images "
+DESCRIPTION="Ganeti OS provider for simple images"
 HOMEPAGE="https://github.com/ganeti/instance-simpleimage"
 SRC_URI="https://github.com/ganeti/instance-simpleimage/archive/${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
 

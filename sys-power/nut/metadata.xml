@@ -8,8 +8,24 @@
 	<maintainer type="person">
 		<email>prometheanfire@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>web@inode64.com</email>
+		<name>Fco. Javier Félix</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name="ipmi">Support IPMI-based UPSes.</flag>
+		<flag name="gpio">Includes all UPS drivers that use GPIO.</flag>
+		<flag name="i2c">Includes all UPS drivers that use I2C.</flag>
+		<flag name="ipmi">Includes all UPS drivers that use ipmi.</flag>
+		<flag name="modbus">Includes all UPS drivers that use MODBUS.</flag>
+		<flag name="monitor">Add a QT5 gui monitor.</flag>
+		<flag name="serial">Includes all UPS drivers that use SERIAL.</flag>
+		<flag name="snmp">Includes all UPS drivers that use SNMP.</flag>
+		<flag name="usb">Includes all UPS drivers that use USB.</flag>
+		<flag name="xml">Includes all UPS drivers that use XML.</flag>
 		<flag name="ups_drivers_al175">Driver for Eltek UPS models with AL175 alarm module</flag>
 		<flag name="ups_drivers_bcmxcp">Driver for UPSes supporting the serial BCM/XCP protocol</flag>
 		<flag name="ups_drivers_belkin">Driver for Belkin serial UPS equipment</flag>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit flag-o-matic meson-multilib python-any-r1
 
@@ -37,7 +37,7 @@ HOMEPAGE="https://github.com/doitsujin/dxvk/"
 
 LICENSE="ZLIB Apache-2.0 MIT"
 SLOT="0"
-IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 debug +dxgi"
+IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 +dxgi +strip"
 REQUIRED_USE="
 	|| ( d3d9 d3d10 d3d11 dxgi )
 	d3d10? ( d3d11 )
@@ -86,9 +86,10 @@ src_prepare() {
 src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
-	# AVX has a history of causing issues with this package, disable for safety
-	# https://bugs.winehq.org/show_bug.cgi?id=43516
-	# https://bugs.winehq.org/show_bug.cgi?id=45289
+	# -mavx with mingw-gcc has a history of obscure issues and
+	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+	# crashes with -march=skylake >=wine-8.10, similar issues with
+	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
 	append-flags -mno-avx
 
 	if [[ ${CHOST} != *-mingw* ]]; then
@@ -126,7 +127,7 @@ multilib_src_configure() {
 		$(meson_use {,enable_}d3d10)
 		$(meson_use {,enable_}d3d11)
 		$(meson_use {,enable_}dxgi)
-		$(usev !debug --strip) # portage won't strip .dll, so allow it here
+		$(usev strip --strip) # portage won't strip .dll, so allow it here
 	)
 
 	meson_src_configure

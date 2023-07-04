@@ -4,13 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Simple SQLite-based object store"
-HOMEPAGE="https://thp.io/2010/minidb/"
+HOMEPAGE="
+	https://thp.io/2010/minidb/
+	https://pypi.org/project/minidb/
+"
 
 LICENSE="ISC"
 SLOT="0"

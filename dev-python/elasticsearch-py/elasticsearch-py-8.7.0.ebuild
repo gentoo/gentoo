@@ -17,16 +17,21 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/elastic/elasticsearch-py/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	test? (
-		  amd64? ( https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${PV}-linux-x86_64.tar.gz )
+		amd64? (
+			elibc_glibc? (
+				https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${PV}-linux-x86_64.tar.gz
+			)
+		)
 	)
 "
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RESTRICT="
 	!amd64? ( test )
+	!elibc_glibc? ( test )
 	!test? ( test )
 "
 

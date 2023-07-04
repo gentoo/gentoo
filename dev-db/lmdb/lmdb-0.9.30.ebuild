@@ -12,7 +12,7 @@ SRC_URI="https://git.openldap.org/openldap/openldap/-/archive/${MY_P}/openldap-$
 
 LICENSE="OPENLDAP"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="static-libs"
 
 DEPEND=""
@@ -44,11 +44,6 @@ multilib_src_configure() {
 		-e "/^libdir/s!lib\$!$(get_libdir)!" \
 		-e "s!shared!shared ${soname}!" \
 		"Makefile" || die
-
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		# fdatasync lives in -lrt on Solaris 10
-		[[ ${CHOST#*-solaris2.} -le 10 ]] && append-ldflags -lrt
-	fi
 }
 
 multilib_src_compile() {

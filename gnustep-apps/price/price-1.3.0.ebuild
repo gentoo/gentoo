@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit gnustep-2
 
 MY_P=PRICE-${PV}
 DESCRIPTION="Precision Raster Image Convolution Engine"
-HOMEPAGE="http://price.sourceforge.net/"
+HOMEPAGE="https://price.sourceforge.net/"
 SRC_URI="mirror://sourceforge/price/${MY_P}.tar.gz"
 KEYWORDS="amd64 ~ppc x86"
 SLOT="0"

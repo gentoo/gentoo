@@ -20,7 +20,7 @@ SRC_URI="https://cdn.mysql.com/Downloads/MySQLGUITools/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -51,7 +51,7 @@ CDEPEND="${PYTHON_DEPS}
 		dev-libs/tinyxml[stl]
 		>=dev-db/mysql-connector-c++-8.0.27-r1
 		dev-db/vsqlite++
-		|| ( dev-db/libiodbc dev-db/unixODBC )
+		|| ( dev-db/libiodbc >=dev-db/unixODBC-2.3.11 )
 		dev-python/pexpect
 		>=dev-python/paramiko-1.7.4
 "
@@ -62,7 +62,7 @@ RDEPEND="${CDEPEND}
 
 DEPEND="${CDEPEND}
 		dev-lang/swig
-		virtual/jre
+		>=virtual/jre-11
 		virtual/pkgconfig"
 
 S="${WORKDIR}"/"${MY_P}"
@@ -83,8 +83,6 @@ src_prepare() {
 	sed -i -e 's/-Werror//' CMakeLists.txt || die
 	## Fix doc install directory
 	sed -i -e "/WB_INSTALL_DOC_DIR/ s/mysql-workbench/${P}/ ; /WB_INSTALL_DOC_DIR/ s/-community//" CMakeLists.txt || die
-	## Look for an existing header file
-	sed -i -e 's/unixodbc.h/unixodbc_conf.h/' build/cmake/Modules/FindUNIXODBC.cmake || die
 
 	## package is very fragile...
 	strip-flags

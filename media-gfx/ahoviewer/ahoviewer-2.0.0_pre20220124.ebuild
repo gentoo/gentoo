@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ahodesuka/ahoviewer/archive/${MY_COMMIT}.tar.gz -> $
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="gnome-keyring gnutls +gstreamer plugins +rar +ssl +zip"
+IUSE="keyring gnutls +gstreamer plugins +rar +ssl +zip"
 
 DEPEND="dev-cpp/atkmm:0
 	dev-cpp/glibmm:2
@@ -28,7 +28,7 @@ DEPEND="dev-cpp/atkmm:0
 	net-misc/curl
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	gstreamer? (
 		media-libs/gst-plugins-bad:1.0
 		media-libs/gstreamer:1.0
@@ -70,7 +70,7 @@ S="${WORKDIR}/ahoviewer-${MY_COMMIT}"
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature gnome-keyring libsecret)
+		$(meson_feature keyring libsecret)
 		$(meson_feature gstreamer)
 		$(meson_feature plugins libpeas)
 		$(meson_feature rar libunrar)

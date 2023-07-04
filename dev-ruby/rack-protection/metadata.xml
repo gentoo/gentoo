@@ -10,6 +10,6 @@
   of software inbetween.
   </longdescription>
   <upstream>
-    <remote-id type="github">rkh/rack-protection</remote-id>
+    <remote-id type="github">sinatra/rack-protection</remote-id>
   </upstream>
 </pkgmetadata>

@@ -10,7 +10,7 @@ HOMEPAGE="http://www.gnucap.org/"
 IUSE="examples"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 RDEPEND="sys-libs/readline:="
 DEPEND="${RDEPEND}"

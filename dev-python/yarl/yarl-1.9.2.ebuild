@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/multidict-4.0[${PYTHON_USEDEP}]
@@ -38,6 +38,20 @@ src_configure() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			# tests for seemingly invalid addresses, unlikely to affect
+			# real world use
+			# https://github.com/aio-libs/yarl/issues/876
+			tests/test_url.py::test_ipv6_zone
+			tests/test_url.py::test_human_repr_delimiters
+			tests/test_url_parsing.py::TestHost::test_masked_ipv4
+			tests/test_url_parsing.py::TestHost::test_strange_ip
+			tests/test_url_parsing.py::TestUserInfo::test_weird_user3
+		)
+	fi
+
 	cd tests || die
 	epytest --override-ini=addopts=
 }

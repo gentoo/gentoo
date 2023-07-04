@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">execnet</remote-id>
+		<remote-id type="github">pytest-dev/execnet</remote-id>
 	</upstream>
 </pkgmetadata>

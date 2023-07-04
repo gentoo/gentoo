@@ -3,20 +3,26 @@
 
 EAPI=7
 
-inherit libtool multilib-minimal
+inherit libtool multilib-minimal verify-sig
 
+MY_P="${P}-stable"
 DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="
 	https://libevent.org/
 	https://github.com/libevent/libevent/
 "
+BASE_URI="https://github.com/libevent/libevent/releases/download/release-${MY_P#*-}"
 SRC_URI="
-	https://github.com/${PN}/${PN}/releases/download/release-${PV/_/-}-stable/${P/_/-}-stable.tar.gz -> ${P}.tar.gz
+	${BASE_URI}/${MY_P}.tar.gz
+	verify-sig? (
+		${BASE_URI}/${MY_P}.tar.gz.asc
+	)
 "
-LICENSE="BSD"
+S=${WORKDIR}/${MY_P}
 
+LICENSE="BSD"
 SLOT="0/2.1-7"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="
 	+clock-gettime debug malloc-replacement +ssl static-libs test
 	verbose-debug
@@ -32,15 +38,20 @@ RDEPEND="
 	${DEPEND}
 	!<=dev-libs/9libs-1.0
 "
+BDEPEND="
+	verify-sig? (
+		sec-keys/openpgp-keys-libevent
+	)
+"
+
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
 )
-S=${WORKDIR}/${P/_/-}-stable
-
 PATCHES=(
 	"${FILESDIR}"/${P}-clang16.patch #880381
 	"${FILESDIR}"/${P}-libressl.patch #903001
 )
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libevent.asc
 
 src_prepare() {
 	default

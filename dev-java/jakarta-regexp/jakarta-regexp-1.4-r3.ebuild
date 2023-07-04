@@ -14,7 +14,7 @@ HOMEPAGE="https://jakarta.apache.org/"
 SLOT="${PV}"
 IUSE=""
 LICENSE="Apache-1.1"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	>=virtual/jre-1.8:*"

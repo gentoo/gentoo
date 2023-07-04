@@ -10,14 +10,14 @@ SRC_URI="https://gitlab.com/coolreader-ng/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0/5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+png +jpeg +gif +svg +chm +harfbuzz +fontconfig +libunibreak +fribidi +zstd +libutf8proc lto static-libs"
 
 CDEPEND="sys-libs/zlib
 	png? ( media-libs/libpng:0 )
 	jpeg? ( media-libs/libjpeg-turbo )
 	>=media-libs/freetype-2.10.0
-	harfbuzz? ( media-libs/harfbuzz:= )
+	harfbuzz? ( media-libs/harfbuzz:=[truetype] )
 	libunibreak? ( dev-libs/libunibreak:= )
 	fribidi? ( dev-libs/fribidi )
 	zstd? ( app-arch/zstd:= )

@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 BDEPEND="dev-ml/dune-configurator"
 
 PATCHES=( "${FILESDIR}"/${P}-CC.patch )

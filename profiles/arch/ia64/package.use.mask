@@ -1,6 +1,19 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-04-17)
+# net-misc/pps-tools is not keyworded here
+net-misc/chrony pps
+
 # Sam James <sam@gentoo.org> (2023-05-01)
 # media-libs/libjxl is not keyworded
 # bug https://bugs.gentoo.org/853628
@@ -22,10 +35,6 @@ dev-python/nbval doc
 # Unkeyworded dependencies
 dev-util/diffoscope opendocument pascal pdf R
 
-# Florian Schmaus <flow@gentoo.org> (2022-11-23)
-# avoid larger deptree, bug #882593
-dev-python/bracex doc
-
 # matoro <matoro_gentoo@matoro.tk> (2022-09-30)
 # No ruby on ia64 for dev-ruby/asciidoctor
 net-misc/chrony html
@@ -40,7 +49,7 @@ net-misc/modemmanager qrtr
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif
+media-libs/imlib2 svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -85,11 +94,6 @@ dev-python/argon2-cffi doc
 # bug #807616
 media-libs/libsdl2 pipewire
 
-# Sam James <sam@gentoo.org> (2021-10-17)
-# media-libs/libheif not keyworded here
-sci-libs/gdal heif
-media-gfx/graphicsmagick heif
-
 # Sam James <sam@gentoo.org> (2021-09-14)
 # JACK2 isn't keyworded here
 # bug #807616
@@ -124,11 +128,10 @@ dev-python/diskcache test
 media-libs/rubberband jni
 
 # Sam James <sam@gentoo.org> (2021-03-11)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
-media-gfx/graphicsmagick heif
+media-libs/gd avif
 www-client/links avif
+dev-lang/php avif
 
 # Akinori Hattori <hattya@gentoo.org> (2021-03-03)
 # dev-lang/ruby is not keyworded
@@ -216,10 +219,6 @@ net-misc/openssh security-key
 # Joonas Niilola <juippis@gentoo.org> (2020-02-08)
 # Dependency not keyworded on this arch.
 dev-libs/dbus-c++ ecore
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
 
 # David Seifert <soap@gentoo.org> (2020-01-26)
 # media-libs/libkate is not keyworded on ia64 anymore
@@ -385,8 +384,8 @@ media-sound/pulseaudio-daemon ofono-headset
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd -gnuefi
-sys-apps/systemd-utils -boot
+<sys-apps/systemd-254 -gnuefi
+<sys-apps/systemd-utils-254 -boot
 
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108

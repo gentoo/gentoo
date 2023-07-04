@@ -53,7 +53,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 IUSE="berkdb debug doc gdbm ithreads minimal quadmath"
@@ -144,13 +144,8 @@ check_rebuild() {
 
 pkg_setup() {
 	case ${CHOST} in
-		*-freebsd*)   osname="freebsd" ;;
-		*-dragonfly*) osname="dragonfly" ;;
-		*-netbsd*)    osname="netbsd" ;;
-		*-openbsd*)   osname="openbsd" ;;
 		*-darwin*)    osname="darwin" ;;
 		*-solaris*)   osname="solaris" ;;
-		*-cygwin*)    osname="cygwin" ;;
 		*)            osname="linux" ;;
 	esac
 
@@ -627,10 +622,6 @@ src_configure() {
 	# apparently on more recent macOS releases is no longer necessary
 	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
 		append-cflags -Dinline=__inline__ -DPERL_DARWIN
-
-	# flock on 32-bit sparc Solaris is broken, fall back to fcntl
-	[[ ${CHOST} == sparc-*-solaris* ]] && \
-		myconf -Ud_flock
 
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find

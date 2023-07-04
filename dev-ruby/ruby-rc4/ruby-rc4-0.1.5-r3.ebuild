@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A pure Ruby implementation of the Rc4 algorithm"
+DESCRIPTION="A pure Ruby implementation of the RC4 algorithm"
 HOMEPAGE="https://github.com/caiges/Ruby-RC4"
 
 LICENSE="MIT"

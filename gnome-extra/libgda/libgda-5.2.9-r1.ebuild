@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ DESCRIPTION="GNOME database access library"
 HOMEPAGE="https://www.gnome-db.org/"
 LICENSE="GPL-2+ LGPL-2+"
 
-IUSE="berkdb canvas debug firebird gnome-keyring gtk graphviz http +introspection json ldap mdb mysql oci8 postgres sourceview ssl vala"
+IUSE="berkdb canvas debug firebird keyring gtk graphviz http +introspection json ldap mdb mysql oci8 postgres sourceview ssl vala"
 REQUIRED_USE="
 	canvas? ( gtk )
 	graphviz? ( gtk )
@@ -20,7 +20,7 @@ REQUIRED_USE="
 # firebird license is not GPL compatible
 
 SLOT="5/4" # subslot = libgda-5.0 soname version
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	app-text/iso-codes
@@ -31,7 +31,7 @@ RDEPEND="
 	sys-libs/ncurses:0=
 	berkdb? ( sys-libs/db:* )
 	firebird? ( dev-db/firebird )
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	gtk? (
 		>=x11-libs/gtk+-3.0.0:3
 		canvas? ( x11-libs/goocanvas:2.0= )
@@ -139,7 +139,7 @@ src_configure() {
 		$(use_with canvas goocanvas) \
 		$(use_enable debug) \
 		$(use_with firebird firebird /usr) \
-		$(use_with gnome-keyring libsecret) \
+		$(use_with keyring libsecret) \
 		$(use_with graphviz) \
 		$(use_with gtk ui) \
 		$(use_with http libsoup) \

@@ -15,8 +15,6 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 BDEPEND="test? (
 	dev-python/xarray
 	dev-python/pyproj

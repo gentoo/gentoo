@@ -1,0 +1,5 @@
+[Unit]
+Description=Greenbone Vulnerability Manager
+Requires=multi-user.target redis-openvas.service ospd-openvas.service gvmd.service gsad.service
+Wants=notus-scanner.service
+After=syslog.target network.target networking.service multi-user.target notus-scanner.service redis-openvas.service ospd-openvas.service gvmd.service gsad.service

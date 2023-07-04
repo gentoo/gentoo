@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="cpu_flags_x86_avx2 cpu_flags_x86_ssse3"
 
 RDEPEND="dev-libs/boost:="

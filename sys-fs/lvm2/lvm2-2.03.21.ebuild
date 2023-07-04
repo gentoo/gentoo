@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN^^}.${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="lvm readline sanlock selinux static static-libs systemd thin +udev valgrind"
 REQUIRED_USE="
 	static? ( !systemd !udev )
@@ -66,7 +66,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.20-example.conf.in.patch
 
 	# For upstream -- review and forward:
-	"${FILESDIR}"/${PN}-2.03.20-locale-muck.patch #330373
 	"${FILESDIR}"/${PN}-2.03.20-dmeventd-no-idle-exit.patch
 	"${FILESDIR}"/${PN}-2.03.20-freopen-musl.patch
 )
@@ -107,7 +106,7 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-flags -flto
+	filter-lto
 
 	# Workaround for bug #822210
 	tc-ld-disable-gold

@@ -16,7 +16,6 @@
 		<flag name="imagemagick">Enable support for additional image formats such as XCF, FITS, HEIC etc.</flag>
 		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg></flag>
 		<flag name="marble">Enable support for geolocation using <pkg>kde-apps/marble</pkg></flag>
-		<flag name="mediaplayer">Enable support for media player using <pkg>media-libs/qtav</pkg></flag>
 		<flag name="panorama">Build the panorama plugin which requires <pkg>media-gfx/hugin</pkg></flag>
 		<flag name="semantic-desktop">Enable <pkg>kde-frameworks/kfilemetadata</pkg> support</flag>
 	</use>

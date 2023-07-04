@@ -1,21 +1,21 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CARGO_OPTIONAL=1
 CRATES="
-	bitflags-1.3.2
-	cache-padded-1.2.0
-	cc-1.0.73
-	cmake-0.1.48
-	cubeb-backend-0.10.1
-	cubeb-core-0.10.1
-	cubeb-sys-0.10.1
-	libc-0.2.133
-	pkg-config-0.3.25
-	ringbuf-0.2.8
-	semver-1.0.14"
+	bitflags@1.3.2
+	cache-padded@1.2.0
+	cc@1.0.73
+	cmake@0.1.48
+	cubeb-backend@0.10.1
+	cubeb-core@0.10.1
+	cubeb-sys@0.10.1
+	libc@0.2.133
+	pkg-config@0.3.25
+	ringbuf@0.2.8
+	semver@1.0.14"
 inherit cargo cmake flag-o-matic
 
 HASH_CUBEB=93d1fa3fccdc22da37aa59f67b213591797db369
@@ -26,8 +26,9 @@ HOMEPAGE="https://github.com/mozilla/cubeb/"
 SRC_URI="
 	https://github.com/mozilla/cubeb/archive/${HASH_CUBEB}.tar.gz -> ${P}.tar.gz
 	pulseaudio? ( rust? (
-		https://github.com/mozilla/cubeb-pulse-rs/archive/${HASH_PULSERS}.tar.gz -> ${PN}-pulse-rs-${HASH_PULSERS::10}.tar.gz
-		$(cargo_crate_uris)
+		https://github.com/mozilla/cubeb-pulse-rs/archive/${HASH_PULSERS}.tar.gz
+			-> ${PN}-pulse-rs-${HASH_PULSERS::10}.tar.gz
+		${CARGO_CRATE_URIS}
 	) )"
 S="${WORKDIR}/${PN}-${HASH_CUBEB}"
 

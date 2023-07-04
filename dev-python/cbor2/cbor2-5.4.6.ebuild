@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -30,4 +30,14 @@ python_prepare_all() {
 	# remove pytest-cov dep
 	sed -i -e "s/--cov//" pyproject.toml || die
 	distutils-r1_python_prepare_all
+}
+
+python_compile() {
+	local -x CBOR2_BUILD_C_EXTENSION=1
+	# pypy3 not supported upstream
+	# py3.12: https://github.com/agronholm/cbor2/issues/171
+	if has "${EPYTHON}" pypy3 python3.12; then
+		CBOR2_BUILD_C_EXTENSION=0
+	fi
+	distutils-r1_python_compile
 }

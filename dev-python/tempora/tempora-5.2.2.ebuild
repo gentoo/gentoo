@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Objects and routines pertaining to date and time"
-HOMEPAGE="https://github.com/jaraco/tempora"
+HOMEPAGE="
+	https://github.com/jaraco/tempora/
+	https://pypi.org/project/tempora/
+"
 
 LICENSE="MIT"
 SLOT="0"

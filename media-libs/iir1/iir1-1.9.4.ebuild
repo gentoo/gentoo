@@ -14,10 +14,6 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
 src_configure() {
 	local mycmakeargs=(
 		-DIIR1_BUILD_DEMO=no

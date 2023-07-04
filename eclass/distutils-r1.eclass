@@ -107,7 +107,7 @@ esac
 # The variable specifies the build system used.  Currently,
 # the following values are supported:
 #
-# - flit - flit_core backend
+# - flit - flit-core backend
 #
 # - flit_scm - flit_scm backend
 #
@@ -124,6 +124,8 @@ esac
 # - pbr - pbr backend
 #
 # - pdm - pdm.pep517 backend
+#
+# - pdm-backend - pdm.backend backend
 #
 # - poetry - poetry-core backend
 #
@@ -210,7 +212,7 @@ _distutils_set_globals() {
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					>=dev-python/flit_core-3.8.0[${PYTHON_USEDEP}]
+					>=dev-python/flit-core-3.9.0[${PYTHON_USEDEP}]
 				'
 				;;
 			flit_scm)
@@ -220,17 +222,17 @@ _distutils_set_globals() {
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.12.2[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.17.0[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
 				bdep+='
-					>=dev-python/jupyter_packaging-0.12.3[${PYTHON_USEDEP}]
+					>=dev-python/jupyter-packaging-0.12.3[${PYTHON_USEDEP}]
 				'
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-0.14.10[${PYTHON_USEDEP}]
+					>=dev-util/maturin-1.0.1[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -239,7 +241,7 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.12.0[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.13.1[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
@@ -249,23 +251,33 @@ _distutils_set_globals() {
 				;;
 			pdm)
 				bdep+='
-					>=dev-python/pdm-pep517-1.0.6[${PYTHON_USEDEP}]
+					>=dev-python/pdm-pep517-1.1.4[${PYTHON_USEDEP}]
+				'
+				;;
+			pdm-backend)
+				bdep+='
+					>=dev-python/pdm-backend-2.1.0[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.4.0[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-1.6.1[${PYTHON_USEDEP}]
+				'
+				;;
+			scikit-build-core)
+				bdep+='
+					>=dev-python/scikit-build-core-0.4.6[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]
-					>=dev-python/wheel-0.38.4[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-67.7.2[${PYTHON_USEDEP}]
+					>=dev-python/wheel-0.40.0[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.7.5-r1[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.7.9[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -280,7 +292,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-65.7.0[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-67.7.2[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -600,12 +612,12 @@ distutils_enable_tests() {
 			test_pkg=">=dev-python/nose-1.3.7_p20221026"
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-7.2.1"
+			test_pkg=">=dev-python/pytest-7.3.1"
 			;;
 		setup.py)
 			;;
 		unittest)
-			test_pkg="dev-python/unittest-or-fail"
+			# dep handled below
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
@@ -623,6 +635,13 @@ distutils_enable_tests() {
 				${test_pkg}[\${PYTHON_USEDEP}]
 			")"
 		fi
+	elif [[ ${1} == unittest ]]; then
+		# unittest-or-fail is needed in py<3.12
+		test_deps+="
+			$(python_gen_cond_dep '
+				dev-python/unittest-or-fail[${PYTHON_USEDEP}]
+			' 3.{9..11})
+		"
 	fi
 	if [[ -n ${test_deps} ]]; then
 		IUSE+=" test"
@@ -918,15 +937,20 @@ _distutils-r1_print_package_versions() {
 			dev-python/gpep517
 			dev-python/installer
 		)
+		if [[ ${DISTUTILS_EXT} ]]; then
+			packages+=(
+				dev-python/cython
+			)
+		fi
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				packages+=(
-					dev-python/flit_core
+					dev-python/flit-core
 				)
 				;;
 			flit_scm)
 				packages+=(
-					dev-python/flit_core
+					dev-python/flit-core
 					dev-python/flit_scm
 					dev-python/setuptools-scm
 				)
@@ -940,7 +964,7 @@ _distutils-r1_print_package_versions() {
 				;;
 			jupyter)
 				packages+=(
-					dev-python/jupyter_packaging
+					dev-python/jupyter-packaging
 					dev-python/setuptools
 					dev-python/setuptools-scm
 					dev-python/wheel
@@ -972,14 +996,26 @@ _distutils-r1_print_package_versions() {
 					dev-python/setuptools
 				)
 				;;
+			pdm-backend)
+				packages+=(
+					dev-python/pdm-backend
+					dev-python/setuptools
+				)
+				;;
 			poetry)
 				packages+=(
 					dev-python/poetry-core
 				)
 				;;
+			scikit-build-core)
+				packages+=(
+					dev-python/scikit-build-core
+				)
+				;;
 			setuptools)
 				packages+=(
 					dev-python/setuptools
+					dev-python/setuptools-rust
 					dev-python/setuptools-scm
 					dev-python/wheel
 				)
@@ -1166,11 +1202,17 @@ _distutils-r1_backend_to_key() {
 		pbr.build)
 			echo pbr
 			;;
+		pdm.backend)
+			echo pdm-backend
+			;;
 		pdm.pep517.api)
 			echo pdm
 			;;
 		poetry.core.masonry.api|poetry.masonry.api)
 			echo poetry
+			;;
+		scikit_build_core.build)
+			echo scikit-build-core
 			;;
 		setuptools.build_meta|setuptools.build_meta:__legacy__)
 			echo setuptools
@@ -1318,44 +1360,40 @@ distutils_pep517_install() {
 
 	local config_settings=
 	case ${DISTUTILS_USE_PEP517} in
+		maturin)
+			# `maturin pep517 build-wheel --help` for options
+			local maturin_args=(
+				"${DISTUTILS_ARGS[@]}"
+				--jobs="$(makeopts_jobs)"
+				--skip-auditwheel # see bug #831171
+				$(in_iuse debug && usex debug '--profile=dev' '')
+			)
+
+			config_settings=$(
+				"${EPYTHON}" - "${maturin_args[@]}" <<-EOF || die
+					import json
+					import sys
+					print(json.dumps({"build-args": sys.argv[1:]}))
+				EOF
+			)
+			;;
 		meson-python)
 			local -x NINJAOPTS=$(get_NINJAOPTS)
-			if has_version -b '>=dev-python/meson-python-0.13'; then
-				config_settings=$(
-					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
-						import json
-						import os
-						import shlex
-						import sys
+			config_settings=$(
+				"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+					import json
+					import os
+					import shlex
+					import sys
 
-						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
-						print(json.dumps({
-							"builddir": "${BUILD_DIR}",
-							"setup-args": sys.argv[1:],
-							"compile-args": ["-v"] + ninjaopts,
-						}))
-					EOF
-				)
-			else
-				config_settings=$(
-					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
-						import json
-						import os
-						import shlex
-						import sys
-
-						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
-						print(json.dumps({
-							"builddir": "${BUILD_DIR}",
-							"setup-args": sys.argv[1:],
-							"compile-args": [
-								"-v",
-								f"--ninja-args={ninjaopts!r}",
-							],
-						}))
-					EOF
-				)
-			fi
+					ninjaopts = shlex.split(os.environ["NINJAOPTS"])
+					print(json.dumps({
+						"builddir": "${BUILD_DIR}",
+						"setup-args": sys.argv[1:],
+						"compile-args": ["-v"] + ninjaopts,
+					}))
+				EOF
+			)
 			;;
 		setuptools)
 			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
@@ -1491,15 +1529,6 @@ distutils-r1_python_compile() {
 			else
 				esetup.py build -j "${jobs}" "${@}"
 			fi
-			;;
-		maturin)
-			# auditwheel may auto-bundle libraries (bug #831171),
-			# also support cargo.eclass' IUSE=debug if available
-			local -x MATURIN_PEP517_ARGS="
-				--jobs=$(makeopts_jobs)
-				--skip-auditwheel
-				$(in_iuse debug && usex debug --profile=dev '')
-			"
 			;;
 		no)
 			return
@@ -1780,9 +1809,11 @@ distutils-r1_run_phase() {
 		# and _all() already localizes it
 		local -x PATH=${PATH}
 
-		# Undo the default switch in setuptools-60+ for the time being,
-		# to avoid replacing .egg-info file with directory in-place.
-		local -x SETUPTOOLS_USE_DISTUTILS="${SETUPTOOLS_USE_DISTUTILS:-stdlib}"
+		if _python_impl_matches "${EPYTHON}" 3.{9..11}; then
+			# Undo the default switch in setuptools-60+ for the time being,
+			# to avoid replacing .egg-info file with directory in-place.
+			local -x SETUPTOOLS_USE_DISTUTILS="${SETUPTOOLS_USE_DISTUTILS:-stdlib}"
+		fi
 
 		# Bug 559644
 		# using PYTHONPATH when the ${BUILD_DIR}/lib is not created yet might lead to
@@ -1799,13 +1830,15 @@ distutils-r1_run_phase() {
 
 	if [[ ${DISTUTILS_EXT} ]]; then
 		local -x CPPFLAGS="${CPPFLAGS} $(usex debug '-UNDEBUG' '-DNDEBUG')"
+		# always generate .c files from .pyx files to ensure we get latest
+		# bug fixes from Cython (this works only when setup.py is using
+		# cythonize() but it's better than nothing)
+		local -x CYTHON_FORCE_REGEN=1
 	fi
 
 	# How to build Python modules in different worlds...
 	local ldopts
 	case "${CHOST}" in
-		# provided by haubi, 2014-07-08
-		*-aix*) ldopts='-shared -Wl,-berok';; # good enough
 		# provided by grobian, 2014-06-22, bug #513664 c7
 		*-darwin*) ldopts='-bundle -undefined dynamic_lookup';;
 		*) ldopts='-shared';;

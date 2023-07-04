@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -39,11 +39,3 @@ BDEPEND="
 distutils_enable_sphinx docs \
 	dev-python/pallets-sphinx-themes
 distutils_enable_tests pytest
-
-src_prepare() {
-	# https://github.com/python-babel/flask-babel/pull/215
-	sed -i -e 's:^include:exclude:' pyproject.toml || die
-	# https://github.com/python-babel/flask-babel/pull/225
-	sed -i -e '/pytz/s:\^:>=:' pyproject.toml || die
-	distutils-r1_src_prepare
-}

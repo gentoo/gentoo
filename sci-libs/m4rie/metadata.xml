@@ -25,6 +25,6 @@
   </longdescription>
 
   <upstream>
-    <remote-id type="bitbucket">malb/m4rie</remote-id>
+    <remote-id type="github">malb/m4rie</remote-id>
   </upstream>
 </pkgmetadata>

@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Tracker https://gitlab.gnome.org/GNOME
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3/0" # libtracker-sparql-3.0 soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gtk-doc +miners stemmer test vala"
 RESTRICT="!test? ( test )"
 
@@ -44,6 +44,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 PDEPEND="miners? ( >=app-misc/tracker-miners-${PV_SERIES} )"
+
+PATCHES=(
+	"${FILESDIR}/${PV}-build-Define-_GNU_SOURCE-for-gmtime_r.patch"
+)
 
 python_check_deps() {
 	python_has_version -b \

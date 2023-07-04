@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -24,30 +24,22 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 # pypiserver is called as external executable
-# openpyxl installs invalid metadata that breaks distlib
 BDEPEND="
 	test? (
 		dev-python/pypiserver
-		!!<dev-python/openpyxl-3.0.3[${PYTHON_USEDEP}]
 	)
 "
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${P}-py312.patch"
+
+		# use system pypiserver instead of bundled one
+		"${FILESDIR}"/distlib-0.3.2-system-pypiserver.py
+	)
+
 	# make sure they're not used
 	rm tests/pypi-server-standalone.py || die
-
-	# use system pypiserver instead of broken bundled one
-	eapply "${FILESDIR}"/distlib-0.3.2-system-pypiserver.py || die
-
-	# doesn't work with our patched pip
-	sed -i -e '/PIP_AVAIL/s:True:False:' tests/test_wheel.py || die
-
-	# broken with pypy3
-	sed -i -e 's:test_custom_shebang:_&:' tests/test_scripts.py || die
-	# broken with py3.11, doesn't look important
-	sed -i -e 's:test_sequencer_basic:_&:' tests/test_util.py || die
-	# https://bugs.gentoo.org/843839
-	sed -i -e 's:test_interpreter_args:_&:' tests/test_scripts.py || die
 
 	distutils-r1_src_prepare
 }

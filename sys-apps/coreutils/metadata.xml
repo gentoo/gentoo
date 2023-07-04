@@ -17,5 +17,6 @@
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:gnu:coreutils</remote-id>
+	<remote-id type="savannah">coreutils</remote-id>
 </upstream>
 </pkgmetadata>

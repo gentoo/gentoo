@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,7 +46,7 @@ DEPEND="
 	mp4? ( media-libs/libmp4v2:0 )
 	musepack? ( media-sound/musepack-tools )
 	opus? ( media-libs/opusfile )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	systemd? ( sys-apps/systemd )
 	tremor? ( media-libs/tremor )
 	!tremor? ( vorbis? ( media-libs/libvorbis ) )

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -103,6 +103,8 @@ python_test() {
 		# TODO
 		tests/test_ext_autodoc_autoclass.py::test_classes
 		tests/test_ext_autodoc_autofunction.py::test_classes
+		tests/test_ext_math.py::test_imgmath_numfig_html
+		tests/test_ext_math.py::test_imgmath_png
 		tests/test_ext_inheritance_diagram.py::test_import_classes
 		# looks like a bug in lualatex
 		"tests/test_build_latex.py::test_build_latex_doc[lualatex-howto]"

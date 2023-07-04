@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>jakov.petrina@sartura.hr</email>
+		<name>Jakov Petrina</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jbruchon/libjodycode</remote-id>
+	</upstream>
+</pkgmetadata>

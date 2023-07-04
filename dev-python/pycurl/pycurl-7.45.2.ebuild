@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi toolchain-funcs
 
@@ -46,6 +46,10 @@ BDEPEND="
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.45.2-skip-http3-test.patch
+)
 
 distutils_enable_tests pytest
 

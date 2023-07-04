@@ -6,8 +6,8 @@ EAPI=8
 # please bump dev-python/ensurepip-pip along with this package!
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{9..11} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3 )
+PYTHON_TESTED=( python3_{10..11} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_12 pypy3 )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit bash-completion-r1 distutils-r1 multiprocessing
@@ -25,7 +25,7 @@ SRC_URI="
 LICENSE="MIT"
 # bundled deps
 LICENSE+=" Apache-2.0 BSD BSD-2 ISC LGPL-2.1+ MPL-2.0 PSF-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
 IUSE="test-rust"
 

@@ -11,7 +11,7 @@ SRC_URI="https://wimlib.net/downloads/${P}.tar.gz"
 
 LICENSE="|| ( GPL-3+ LGPL-3+ ) MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="fuse iso ntfs test yasm"
 RESTRICT="!test? ( test )"
 

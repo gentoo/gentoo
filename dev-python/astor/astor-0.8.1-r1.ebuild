@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Read/rewrite/write Python ASTs"
-HOMEPAGE="https://pypi.org/project/astor/"
+HOMEPAGE="
+	https://pypi.org/project/astor
+	https://github.com/berkerpeksag/astor
+"
 
 LICENSE="BSD"
 SLOT="0"

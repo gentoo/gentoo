@@ -10,7 +10,7 @@
 		<flag name="mpg123">Enable support for MPEG audio playback via <pkg>media-sound/mpg123</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>https://github.com/coelckers/ZMusic/issues</bugs-to>
-		<remote-id type="github">coelckers/ZMusic</remote-id>
+		<bugs-to>https://github.com/ZDoom/ZMusic/issues</bugs-to>
+		<remote-id type="github">ZDoom/ZMusic</remote-id>
 	</upstream>
 </pkgmetadata>

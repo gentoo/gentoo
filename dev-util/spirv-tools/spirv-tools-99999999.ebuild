@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_PN=SPIRV-Tools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit cmake-multilib python-any-r1
 
@@ -27,7 +27,7 @@ SLOT="0"
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
 
-DEPEND="~dev-util/spirv-headers-1.3.239"
+DEPEND="~dev-util/spirv-headers-99999999"
 RDEPEND=""
 BDEPEND="${PYTHON_DEPS}"
 

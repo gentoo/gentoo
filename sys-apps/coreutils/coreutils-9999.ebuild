@@ -23,7 +23,7 @@ if [[ ${PV} == 9999 ]] ; then
 elif [[ ${PV} == *_p* ]] ; then
 	# Note: could put this in devspace, but if it's gone, we don't want
 	# it in tree anyway. It's just for testing.
-	MY_SNAPSHOT="$(ver_cut 1-2).198-e68b1"
+	MY_SNAPSHOT="$(ver_cut 1-2).18-ffd62"
 	SRC_URI="https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
 	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
@@ -135,6 +135,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# On alpha at least, gnulib (as of 9.3) can't seem to figure out we need
+	# _F_O_B=64: https://debbugs.gnu.org/64123
+	append-lfs-flags
+
 	local myconf=(
 		--with-packager="Gentoo"
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})"

@@ -13,7 +13,7 @@ LICENSE="ISC"
 SLOT="0/4.9.1"
 KEYWORDS="~amd64 ~x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
-	seccomp sonmp snmp static-libs test readline xml"
+	seccomp sonmp snmp static-libs test readline valgrind xml"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -28,6 +28,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
+	valgrind? ( dev-util/valgrind )
 "
 BDEPEND="virtual/pkgconfig
 	doc? (
@@ -55,6 +56,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
+
 	econf \
 		--without-embedded-libevent \
 		--with-privsep-user=${PN} \

@@ -15,7 +15,7 @@ SRC_URI="https://www.openvswitch.org/releases/${P}.tar.gz"
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
-IUSE="debug modules monitor +ssl unwind"
+IUSE="debug modules monitor +ssl unwind valgrind"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Check python/ovs/version.py in tarball for dev-python/ovs dep
@@ -29,7 +29,8 @@ RDEPEND="${PYTHON_DEPS}
 	unwind? ( sys-libs/libunwind:= )
 	ssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}
-	sys-apps/util-linux[caps]"
+	sys-apps/util-linux[caps]
+	valgrind? ( dev-util/valgrind )"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
@@ -79,6 +80,8 @@ src_configure() {
 	# Only adds a diagram to the man page, just skip it as we don't
 	# want to add a BDEPEND on graphviz right now. bug #856286
 	export ovs_cv_dot="no"
+
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
 
 	local linux_config
 	use modules && linux_config="--with-linux=${KV_OUT_DIR}"

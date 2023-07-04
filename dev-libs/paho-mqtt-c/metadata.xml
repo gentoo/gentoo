@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="high-performance">
+			The debugging aids internal tracing and heap tracking are not included
+		</flag>
+	</use>
+	<longdescription lang="en">
+		These libraries enable applications to connect to an MQTT broker to publish messages, and to subscribe to topics and receive published messages.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">eclipse/paho.mqtt.c</remote-id>
+	</upstream>
+</pkgmetadata>

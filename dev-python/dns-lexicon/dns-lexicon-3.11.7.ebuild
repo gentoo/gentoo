@@ -54,6 +54,9 @@ EPYTEST_IGNORE=(
 	lexicon/tests/providers/test_auto.py
 	# All recordings seem to be broken
 	lexicon/tests/providers/test_namecheap.py
+	# Broken by minor vcrpy / urllib3-2 incompatibility
+	# https://github.com/kevin1024/vcrpy/issues/714
+	lexicon/tests/providers/test_route53.py
 )
 
 pkg_postinst() {

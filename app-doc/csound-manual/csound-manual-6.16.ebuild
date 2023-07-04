@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 MY_P=Csound${PV}.0
 
 DESCRIPTION="The Csound reference manual"
-HOMEPAGE="http://csounds.com/"
+HOMEPAGE="https://www.csounds.com/"
 SRC_URI="
 	https://github.com/csound/csound/releases/download/${PV}.0/${MY_P}_manual_pdf.zip
 	l10n_fr? ( https://github.com/csound/csound/releases/download/${PV}.0/${MY_P}_manual-fr_pdf.zip )

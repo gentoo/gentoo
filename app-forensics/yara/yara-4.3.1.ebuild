@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/virustotal/yara/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${PV/_/-}"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="Apache-2.0"

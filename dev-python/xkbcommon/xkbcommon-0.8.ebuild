@@ -5,20 +5,21 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
 inherit distutils-r1
 
+MY_P=python-xkbcommon-${PV}
 DESCRIPTION="Python bindings for libxkbcommon using cffi"
 HOMEPAGE="
-	https://github.com/sde1000/python-xkbcommon
+	https://github.com/sde1000/python-xkbcommon/
 	https://pypi.org/project/xkbcommon/
 "
 SRC_URI="
 	https://github.com/sde1000/python-xkbcommon/archive/refs/tags/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
-S="${WORKDIR}"/python-${P}
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,15 +28,16 @@ KEYWORDS="amd64 ~riscv ~x86"
 # x11-libs/libxkbcommon dep per README
 RDEPEND="
 	>=x11-libs/libxkbcommon-${PV}
-	virtual/python-cffi[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/cffi[${PYTHON_USEDEP}]
+	' 'python*')
 "
 DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
 
 python_test() {
-	# No die deliberately as sometimes it doesn't exist
-	rm -r xkbcommon
+	rm -rf xkbcommon || die
 
 	epytest
 }

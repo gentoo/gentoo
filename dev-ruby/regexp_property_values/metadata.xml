@@ -6,6 +6,6 @@
 	<name>Gentoo Ruby Project</name>
 </maintainer>
 <upstream>
-	<remote-id type="github">janosch-x/regexp_property_values</remote-id>
+	<remote-id type="github">jaynetics/regexp_property_values</remote-id>
 </upstream>
 </pkgmetadata>

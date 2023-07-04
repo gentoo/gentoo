@@ -12,4 +12,7 @@
 	<use>
 		<flag name="doc">Install html API documentation.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">adah1972/libunibreak</remote-id>
+	</upstream>
 </pkgmetadata>

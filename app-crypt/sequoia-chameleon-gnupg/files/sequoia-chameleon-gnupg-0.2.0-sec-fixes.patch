@@ -1,0 +1,104 @@
+https://lists.sequoia-pgp.org/hyperkitty/list/announce@lists.sequoia-pgp.org/thread/SN2E3QRT4DMQ5JNEK6VIN6DJ5SH766DI/
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -102,6 +102,12 @@ version = "0.13.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "9e1b586273c5702936fe7b7d6896644d8be71e6314cfe09d3167c95f712589e8"
+ 
++[[package]]
++name = "base64"
++version = "0.21.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "a4a4ddaa51a5bc52a6948f74c06d20aaaddb71924eab79b8c97a8c556e942d6a"
++
+ [[package]]
+ name = "bindgen"
+ version = "0.63.0"
+@@ -145,9 +151,9 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
+ 
+ [[package]]
+ name = "buffered-reader"
+-version = "1.1.4"
++version = "1.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d0dd286184b392a1ce6b3deecd073f0330df194bf935b87f852147d50d0d2d18"
++checksum = "66d3bea5bcc3ecc38fe5388e6bc35e6fe7bd665eb3ae9a44283e15b91ad3867d"
+ dependencies = [
+  "bzip2",
+  "flate2",
+@@ -1310,21 +1316,22 @@ dependencies = [
+ 
+ [[package]]
+ name = "nettle"
+-version = "7.2.0"
++version = "7.3.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f5d193a809310369c5d16e45bc0a88cb27935edd5d3375bcfc2371b167694035"
++checksum = "b9fdccf3eae7b161910d2daa2f0155ca35041322e8fe5c5f1f2c9d0b12356336"
+ dependencies = [
+  "getrandom 0.2.8",
+  "libc",
+  "nettle-sys",
+  "thiserror",
++ "typenum",
+ ]
+ 
+ [[package]]
+ name = "nettle-sys"
+-version = "2.1.1"
++version = "2.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5df7cd7e8d5d2997055f31318d1ec648c84886e662bbef7b4a60e3cbc899522b"
++checksum = "b5e81c347b9002da0b6b0c4060993c280e99eb14b42ecf65a2fefcd6eb3d8a73"
+ dependencies = [
+  "bindgen",
+  "cc",
+@@ -1873,7 +1880,7 @@ name = "sequoia-chameleon-gnupg"
+ version = "0.2.0"
+ dependencies = [
+  "anyhow",
+- "base64",
++ "base64 0.13.1",
+  "buffered-reader",
+  "chrono",
+  "diff",
+@@ -1937,7 +1944,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7cca7e201e65a2acd3fbbb6004f843e622959f00afbbe8f3308a7997c9784dfa"
+ dependencies = [
+  "anyhow",
+- "base64",
++ "base64 0.13.1",
+  "futures-util",
+  "http",
+  "hyper",
+@@ -1957,25 +1964,26 @@ dependencies = [
+ 
+ [[package]]
+ name = "sequoia-openpgp"
+-version = "1.13.0"
++version = "1.16.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "70af2f594bf5261eb87be5060db1e40d6445686d2bb3ec41c014cf53701130a2"
++checksum = "30efff3f9930e85b4284e76bbdad741f36412dfb1e370efd0de5866ae1a11dfc"
+ dependencies = [
+  "anyhow",
+- "base64",
++ "base64 0.21.0",
+  "buffered-reader",
+  "bzip2",
+  "chrono",
+  "dyn-clone",
+  "flate2",
+  "getrandom 0.2.8",
+- "idna 0.3.0",
++ "idna 0.2.3",
+  "lalrpop",
+  "lalrpop-util",
+  "lazy_static",
+  "libc",
+  "memsec",
+  "nettle",
++ "once_cell",
+  "rand 0.7.3",
+  "regex",
+  "regex-syntax",

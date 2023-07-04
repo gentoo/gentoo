@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{9..12} pypy3 )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Run a subprocess in a pseudo terminal"
-HOMEPAGE="https://github.com/pexpect/ptyprocess"
+HOMEPAGE="
+	https://github.com/pexpect/ptyprocess/
+	https://pypi.org/project/ptyprocess/
+"
 
 LICENSE="ISC"
 SLOT="0"

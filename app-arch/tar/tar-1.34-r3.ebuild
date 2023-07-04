@@ -18,7 +18,7 @@ SRC_URI+=" verify-sig? (
 LICENSE="GPL-3+"
 SLOT="0"
 if [[ -z "$(ver_cut 3)" ]] || [[ "$(ver_cut 3)" -lt 90 ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="acl minimal nls selinux xattr"
 
@@ -97,7 +97,7 @@ pkg_postinst() {
 		if [[ -e ${EROOT}/usr/bin/tar ]] ; then
 			# bug #904887
 			ewarn "${EROOT}/usr/bin/tar exists but is not a symlink."
-			ewarn "This is expected during Prefix bootstrap and unsual otherwise."
+			ewarn "This is expected during Prefix bootstrap and unusual otherwise."
 			ewarn "Moving away unexpected ${EROOT}/usr/bin/tar to .bak."
 			mv "${EROOT}/usr/bin/tar" "${EROOT}/usr/bin/tar.bak" || die
 		fi

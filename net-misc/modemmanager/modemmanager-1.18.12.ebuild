@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0/1" # subslot = dbus interface version, i.e. N in org.freedesktop.ModemManager${N}
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-IUSE="elogind +introspection mbim policykit +qmi +qrtr systemd test +udev vala"
+IUSE="elogind +introspection mbim policykit +qmi +qrtr selinux systemd test +udev vala"
 REQUIRED_USE="
 	?? ( elogind systemd )
 	qrtr? ( qmi )
@@ -34,6 +34,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	policykit? ( acct-group/plugdev )
+	selinux? ( sec-policy/selinux-modemmanager )
 "
 BDEPEND="
 	dev-util/gdbus-codegen

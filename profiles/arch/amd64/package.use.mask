@@ -17,6 +17,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2023-06-29)
+# Now that we globally unmask USE=qt6 for amd64, the mask set
+# in profiles/base/package.use.mask no longer has any effect on this arch.
+dev-python/pyotherside qt6
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-24)
+# dev-db/mongodb miraculously got keyworded here.
+dev-python/pymongo -test-full
+
+# Sam James <sam@gentoo.org> (2023-06-09)
+# dev-cpp/cppdap is not keyworded on most arches
+dev-util/cmake -debugger
+
+# Sam James <sam@gentoo.org> (2023-05-15)
+# net-libs/rustls-ffi is keyworded here
+www-servers/apache -apache2_modules_tls
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-22)
 # snap only works on amd64
 kde-plasma/discover -snap
@@ -250,10 +267,6 @@ net-vpn/strongswan -strongswan_plugins_aesni -strongswan_plugins_rdrand
 # Unmask arch-specific USE flags available on amd64
 net-analyzer/testssl -bundled-openssl -kerberos
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
-# Unmask libheif support where media-libs/libheif is keyworded
-media-gfx/imagemagick -heif
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
 # Dependency sys-cluster/ceph is keyworded for amd64
 net-fs/samba -ceph
@@ -334,8 +347,8 @@ sys-boot/grub:2 -grub_platforms_xen-32
 >=dev-db/mariadb-10.1.0 -mroonga -galera
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
-# sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd -gnuefi
+# sd-boot is not supported on all archs.
+sys-apps/systemd -boot -gnuefi
 sys-apps/systemd-utils -boot
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)

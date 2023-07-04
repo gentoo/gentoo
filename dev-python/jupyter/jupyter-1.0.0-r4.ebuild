@@ -22,7 +22,7 @@ KEYWORDS="amd64 x86"
 RDEPEND="
 	dev-python/notebook[${PYTHON_USEDEP}]
 	dev-python/qtconsole[${PYTHON_USEDEP}]
-	dev-python/jupyter_console[${PYTHON_USEDEP}]
+	dev-python/jupyter-console[${PYTHON_USEDEP}]
 	dev-python/nbconvert[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	dev-python/ipywidgets[${PYTHON_USEDEP}]"

@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools flag-o-matic prefix
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
 SRC_URI="https://www.zsh.org/pub/${P}.tar.xz
 	https://www.zsh.org/pub/old/${P}.tar.xz
@@ -22,6 +22,7 @@ LICENSE="ZSH gdbm? ( GPL-2 )"
 SLOT="0"
 IUSE="caps debug doc examples gdbm maildir pcre static valgrind"
 
+# Next release should use pcre2: https://github.com/zsh-users/zsh/commit/b62e911341c8ec7446378b477c47da4256053dc0
 RDEPEND="
 	>=sys-libs/ncurses-5.1:0=
 	static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] )

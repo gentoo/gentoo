@@ -6,12 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Tools for working with iterables. Complements itertools and more_itertools"
-HOMEPAGE="https://github.com/jaraco/jaraco.itertools"
+HOMEPAGE="
+	https://github.com/jaraco/jaraco.itertools/
+	https://pypi.org/project/jaraco.itertools/
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,10 +31,20 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			# prettier output in python3.12
+			# https://github.com/jaraco/jaraco.itertools/issues/17
+			jaraco/itertools.py::jaraco.itertools.partition_dict
+		)
+	fi
+
 	# create a pkgutil-style __init__.py in order to fix pytest's
 	# determination of package paths
 	cat > jaraco/__init__.py <<-EOF || die
 		__path__ = __import__('pkgutil').extend_path(__path__, __name__)
 	EOF
+
 	epytest --doctest-modules
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Instantiate an arbitrary Ruby class"
-HOMEPAGE="https://github.com/floehopper/introspection"
+HOMEPAGE="https://github.com/floehopper/instantiator"
 
 LICENSE="MIT"
 SLOT="0"

@@ -1,0 +1,35 @@
+From fbac17250d41c2f0316e8fd7a2da02dcf01852ed Mon Sep 17 00:00:00 2001
+From: Ben Kohler <bkohler@gentoo.org>
+Date: Thu, 15 Jun 2023 11:07:27 -0500
+Subject: [PATCH] Fix build where zstd is the only enabled compression
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If only zstd support is enabled, HAVE_ANY_COMPRESSION doesn't get
+defined and links fails to build.
+
+compress.c: In function ‘get_file_by_term’:
+error: label ‘return_decompressed’ used but not defined
+
+Signed-off-by: Ben Kohler <bkohler@gentoo.org>
+---
+ links.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/links.h b/links.h
+index 3a29a08..72a618e 100644
+--- a/links.h
++++ b/links.h
+@@ -2717,7 +2717,7 @@ void detach_object_connection(struct object_request *, off_t);
+ 
+ /* compress.c */
+ 
+-#if defined(HAVE_ZLIB) || defined(HAVE_BROTLI) || defined(HAVE_BZIP2) || defined(HAVE_LZMA) || defined(HAVE_LZIP)
++#if defined(HAVE_ZLIB) || defined(HAVE_BROTLI) || defined(HAVE_BZIP2) || defined(HAVE_LZMA) || defined(HAVE_LZIP) || defined(HAVE_ZSTD)
+ #define HAVE_ANY_COMPRESSION
+ #endif
+ 
+-- 
+2.41.0
+

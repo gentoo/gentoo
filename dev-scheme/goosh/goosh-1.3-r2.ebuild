@@ -12,4 +12,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv x86"
 
 RDEPEND=">=dev-scheme/guile-1.6"
-BEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"

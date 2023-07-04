@@ -10,6 +10,18 @@ index a626986..5f2d963 100644
  #include "AppConfig.hpp"
  #include "Exception.hpp"
  #include "LocalesUtils.hpp"
+diff --git a/src/libslic3r/CustomGCode.hpp b/src/libslic3r/CustomGCode.hpp
+index 633edc8..fcd26ff 100644
+--- a/src/libslic3r/CustomGCode.hpp
++++ b/src/libslic3r/CustomGCode.hpp
+@@ -3,6 +3,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace Slic3r {
+ 
 diff --git a/src/libslic3r/ExtrusionEntity.hpp b/src/libslic3r/ExtrusionEntity.hpp
 index 1c54588..c74df3a 100644
 --- a/src/libslic3r/ExtrusionEntity.hpp
@@ -34,6 +46,18 @@ index 34ef2ae..20fe8b7 100644
 +#include "Polyline.hpp"
  
  namespace Slic3r { namespace Geometry {
+ 
+diff --git a/src/libslic3r/PNGReadWrite.hpp b/src/libslic3r/PNGReadWrite.hpp
+index 01e1f47..1dce27a 100644
+--- a/src/libslic3r/PNGReadWrite.hpp
++++ b/src/libslic3r/PNGReadWrite.hpp
+@@ -2,6 +2,7 @@
+ #define PNGREAD_HPP
+ 
+ #include <vector>
++#include <cstdint>
+ #include <string>
+ #include <istream>
  
 diff --git a/src/libslic3r/PerimeterGenerator.hpp b/src/libslic3r/PerimeterGenerator.hpp
 index 34ec4e6..ed83b3e 100644
@@ -60,6 +84,18 @@ index f69d68f..1dd55f2 100644
  #include <float.h>
  
  #include <algorithm>
+diff --git a/src/slic3r/GUI/BitmapCache.hpp b/src/slic3r/GUI/BitmapCache.hpp
+index 34821c4..a74a850 100644
+--- a/src/slic3r/GUI/BitmapCache.hpp
++++ b/src/slic3r/GUI/BitmapCache.hpp
+@@ -3,6 +3,7 @@
+ 
+ #include <map>
+ #include <vector>
++#include <cstdint>
+ 
+ #include <wx/wxprec.h>
+ #ifndef WX_PRECOMP
 diff --git a/src/slic3r/GUI/CreateMMUTiledCanvas.cpp b/src/slic3r/GUI/CreateMMUTiledCanvas.cpp
 index 553a183..686630c 100644
 --- a/src/slic3r/GUI/CreateMMUTiledCanvas.cpp

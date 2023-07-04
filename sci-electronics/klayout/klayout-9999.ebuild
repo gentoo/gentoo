@@ -4,10 +4,10 @@
 EAPI=8
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby30"
+USE_RUBY="ruby31"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11,12} )
 
 inherit toolchain-funcs python-single-r1 ruby-ng
 

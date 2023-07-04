@@ -18,7 +18,7 @@ else
 	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig )"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 LICENSE="BSD"
@@ -88,10 +88,4 @@ multilib_src_install_all() {
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
-
-	# We need this to build pppd on G/FBSD systems
-	if [[ "${USERLAND}" == "BSD" ]]; then
-		insinto /usr/include
-		doins pcap-int.h portability.h
-	fi
 }

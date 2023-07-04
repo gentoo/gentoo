@@ -40,7 +40,7 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-flags '-flto*'
+	filter-lto
 
 	econf \
 		$(use_enable clock) \

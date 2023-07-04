@@ -48,6 +48,7 @@ DEPEND+="
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	dev-util/glib-utils
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]

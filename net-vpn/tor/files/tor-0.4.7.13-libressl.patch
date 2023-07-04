@@ -1,5 +1,7 @@
 Upstream-MR: https://gitlab.torproject.org/tpo/core/tor/-/merge_requests/598
 Upstream-Commit: https://gitlab.torproject.org/tpo/core/tor/-/commit/da52d7206a4a8e4fa8b5e80b5ed73de50fbe8692
+Upstream-MR: https://gitlab.torproject.org/tpo/core/tor/-/merge_requests/713
+Upstream-Commit: https://gitlab.torproject.org/tpo/core/tor/-/commit/9850dc59c0db5cbcadc314be8d324a992880fce1
 
 From f3dabd705f26c56076934323f24b5b05ecdfd39c Mon Sep 17 00:00:00 2001
 From: "Alex Xu (Hello71)" <alex_y_xu@yahoo.ca>
@@ -156,6 +158,45 @@ index 0000000000..faf04941b6
 +  o Minor features (portability, compilation):
 +    - Use OpenSSL 1.1 APIs for LibreSSL, fixing LibreSSL 3.5 compatibility.
 +      Fixes issue 40630; patch by Alex Xu (Hello71).
+-- 
+GitLab
+
+From 9850dc59c0db5cbcadc314be8d324a992880fce1 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 29 May 2023 12:56:37 -0700
+Subject: [PATCH] tls: Disable a warning with LibreSSL >= 3.8.0
+
+Skip a warning using EC_GFp_nist_method() which was removed in LibreSSL
+3.8.
+
+Based on a patch from OpenBSD.
+
+https://github.com/openbsd/ports/commit/33fe251a08cb11f30ce6094a2e0759c3bb63ed16
+
+These functions are deprecated since OpenSSL 3.0.
+
+https://www.openssl.org/docs/man3.1/man3/EC_GFp_nist_method.html
+---
+ src/lib/tls/tortls_openssl.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib/tls/tortls_openssl.c b/src/lib/tls/tortls_openssl.c
+index 12260c09d3..c0a89ac272 100644
+--- a/src/lib/tls/tortls_openssl.c
++++ b/src/lib/tls/tortls_openssl.c
+@@ -340,8 +340,10 @@ tor_tls_init(void)
+     SSL_load_error_strings();
+ #endif /* defined(OPENSSL_1_1_API) */
+ 
+-#if (SIZEOF_VOID_P >= 8 &&                              \
+-     OPENSSL_VERSION_NUMBER >= OPENSSL_V_SERIES(1,0,1))
++#if (SIZEOF_VOID_P >= 8 &&                                \
++     OPENSSL_VERSION_NUMBER >= OPENSSL_V_SERIES(1,0,1) && \
++     (!defined(LIBRESSL_VERSION_NUMBER) ||                \
++      LIBRESSL_VERSION_NUMBER < 0x3080000fL))
+     long version = tor_OpenSSL_version_num();
+ 
+     /* LCOV_EXCL_START : we can't test these lines on the same machine */
 -- 
 GitLab
 

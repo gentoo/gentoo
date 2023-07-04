@@ -11,7 +11,7 @@ DESCRIPTION="Pluma text editor for the MATE desktop"
 
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 IUSE="+introspection spell test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"

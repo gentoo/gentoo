@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc gdbm mysql pyzord redis test"
+IUSE="doc gdbm mysql pyzord redis selinux test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -24,7 +24,9 @@ RDEPEND="
 		gdbm? ( $(python_gen_impl_dep 'gdbm') )
 		mysql? ( dev-python/mysqlclient[${PYTHON_USEDEP}] )
 		redis? ( dev-python/redis[${PYTHON_USEDEP}] )
-	)"
+	)
+	selinux? ( sec-policy/selinux-pyzor )
+"
 DEPEND="
 	test? (
 		gdbm? ( $(python_gen_impl_dep 'gdbm') )

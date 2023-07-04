@@ -9,7 +9,12 @@ DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
 EGIT_REPO_URI="https://github.com/ruffle-rs/ruffle.git"
 
-LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB curl"
+LICENSE="|| ( MIT Apache-2.0 )"
+LICENSE+="
+	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0
+	CC0-1.0 ISC UbuntuFontLicense-1.0 MIT MPL-2.0 OFL-1.1
+	Unicode-DFS-2016 ZLIB" # crates
+LICENSE+=" curl" # non-automated extra
 SLOT="0"
 
 # dlopen: libX* (see winit+x11-dl crates)
@@ -29,7 +34,7 @@ DEPEND="
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.64
+	>=virtual/rust-1.70
 	test? (
 		media-libs/mesa[llvm]
 		x11-base/xorg-server[-minimal]
@@ -60,12 +65,15 @@ src_unpack() {
 src_configure() {
 	filter-lto # TODO: cleanup after bug #893658
 
-	if use test; then
-		# tests will be skipped if don't build everything
-		cargo_src_configure --workspace
-	else
-		cargo_src_configure --package={ruffle_{desktop,scanner},exporter}
-	fi
+	# see .cargo/config.toml, only needed if RUSTFLAGS is set by the user
+	[[ -v RUSTFLAGS ]] && RUSTFLAGS+=" --cfg=web_sys_unstable_apis"
+
+	local workspaces=(
+		ruffle_{desktop,scanner}
+		exporter
+		$(usev test tests)
+	)
+	cargo_src_configure ${workspaces[*]/#/--package=}
 }
 
 src_test() {

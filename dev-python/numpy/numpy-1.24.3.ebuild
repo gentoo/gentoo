@@ -22,7 +22,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="lapack"
 
 RDEPEND="
@@ -143,12 +143,17 @@ python_test() {
 			numpy/core/tests/test_einsum.py::TestEinsum::test_einsum_sums_int16
 		)
 	fi
-	if use arm || use x86 ; then
-		EPYTEST_DESELECT+=(
-			# too large for 32-bit platforms
-			numpy/core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
-		)
-	fi
+
+	case "${ABI}" in
+		alpha|arm|hppa|m68k|o32|ppc|s390|sh|sparc|x86)
+			EPYTEST_DESELECT+=(
+				# too large for 32-bit platforms
+				numpy/core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
+			)
+			;;
+		*)
+			;;
+	esac
 
 	distutils_install_for_testing --single-version-externally-managed \
 		--record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}

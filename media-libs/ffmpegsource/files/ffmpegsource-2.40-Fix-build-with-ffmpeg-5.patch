@@ -1,0 +1,106 @@
+From 586d87de3f896d0c4ff01b21f572375e11f9c3f1 Mon Sep 17 00:00:00 2001
+From: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+Date: Tue, 4 May 2021 14:20:47 +0100
+Subject: [PATCH] configure: Remove deprecated API use
+
+Signed-off-by: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b35ef80bcd..d19714d0f6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -102,10 +102,10 @@ CFLAGS="$_CFLAGS $FFMPEG_CFLAGS"
+ 
+ AC_DEFUN([TEST_FFMPEG],
+          [AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+-            #include <libavcodec/avcodec.h>
++            #include <libavformat/avformat.h>
+             #include <libswscale/swscale.h>
+             ]],[[
+-                avcodec_register_all();
++                avformat_network_init();
+                 swscale_version();
+             ]])], [eval $1=yes], [eval $1=no])
+         ])
+From 45673149e9a2f5586855ad472e3059084eaa36b1 Mon Sep 17 00:00:00 2001
+From: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+Date: Tue, 4 May 2021 14:41:21 +0100
+Subject: [PATCH] Use auto for AVCodec
+
+The geniuses over at FFmpeg decided to constify this API, so old
+versions of the library will return AVCodec *, while new versions
+of the libary will return const AVCodec *, which, in C++, are not
+OK to convert between.
+
+Rather than use some macro hell in ffmscompat.h, we can work around
+this by using auto.
+
+Gross.
+
+Signed-off-by: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+---
+ src/core/audiosource.cpp | 2 +-
+ src/core/indexing.cpp    | 6 +++---
+ src/core/videosource.cpp | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/core/audiosource.cpp b/src/core/audiosource.cpp
+index e4ce97cdb..ac0966636 100644
+--- a/src/core/audiosource.cpp
++++ b/src/core/audiosource.cpp
+@@ -469,7 +469,7 @@ void FFMS_AudioSource::OpenFile() {
+
+     LAVFOpenFile(SourceFile.c_str(), FormatContext, TrackNumber);
+
+-    AVCodec *Codec = avcodec_find_decoder(FormatContext->streams[TrackNumber]->codecpar->codec_id);
++    auto *Codec = avcodec_find_decoder(FormatContext->streams[TrackNumber]->codecpar->codec_id);
+     if (Codec == nullptr)
+         throw FFMS_Exception(FFMS_ERROR_DECODING, FFMS_ERROR_CODEC,
+             "Audio codec not found");
+diff --git a/src/core/indexing.cpp b/src/core/indexing.cpp
+index e547c5abf..59fb4e8ea 100644
+--- a/src/core/indexing.cpp
++++ b/src/core/indexing.cpp
+@@ -384,7 +384,7 @@ FFMS_TrackType FFMS_Indexer::GetTrackType(int Track) {
+ }
+
+ const char *FFMS_Indexer::GetTrackCodec(int Track) {
+-    AVCodec *codec = avcodec_find_decoder(FormatContext->streams[Track]->codecpar->codec_id);
++    auto *codec = avcodec_find_decoder(FormatContext->streams[Track]->codecpar->codec_id);
+     return codec ? codec->name : nullptr;
+ }
+
+@@ -402,7 +402,7 @@ FFMS_Index *FFMS_Indexer::DoIndexing() {
+             UseDTS);
+
+         if (IndexMask.count(i) && FormatContext->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
+-            AVCodec *VideoCodec = avcodec_find_decoder(FormatContext->streams[i]->codecpar->codec_id);
++            auto *VideoCodec = avcodec_find_decoder(FormatContext->streams[i]->codecpar->codec_id);
+             if (!VideoCodec) {
+                 FormatContext->streams[i]->discard = AVDISCARD_ALL;
+                 IndexMask.erase(i);
+@@ -433,7 +433,7 @@ FFMS_Index *FFMS_Indexer::DoIndexing() {
+                 IndexMask.insert(i);
+             }
+         } else if (IndexMask.count(i) && FormatContext->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_AUDIO) {
+-            AVCodec *AudioCodec = avcodec_find_decoder(FormatContext->streams[i]->codecpar->codec_id);
++            auto *AudioCodec = avcodec_find_decoder(FormatContext->streams[i]->codecpar->codec_id);
+             if (AudioCodec == nullptr)
+                 throw FFMS_Exception(FFMS_ERROR_CODEC, FFMS_ERROR_UNSUPPORTED,
+                     "Audio codec not found");
+diff --git a/src/core/videosource.cpp b/src/core/videosource.cpp
+index b889970e2..8956c2256 100644
+--- a/src/core/videosource.cpp
++++ b/src/core/videosource.cpp
+@@ -171,7 +171,7 @@ FFMS_VideoSource::FFMS_VideoSource(const char *SourceFile, FFMS_Index &Index, in
+
+         LAVFOpenFile(SourceFile, FormatContext, VideoTrack);
+
+-        AVCodec *Codec = avcodec_find_decoder(FormatContext->streams[VideoTrack]->codecpar->codec_id);
++        auto *Codec = avcodec_find_decoder(FormatContext->streams[VideoTrack]->codecpar->codec_id);
+         if (Codec == nullptr)
+             throw FFMS_Exception(FFMS_ERROR_DECODING, FFMS_ERROR_CODEC,
+                 "Video codec not found");

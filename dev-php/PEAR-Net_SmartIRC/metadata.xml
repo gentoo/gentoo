@@ -5,6 +5,7 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">pear/Net_SmartIRC</remote-id>
     <remote-id type="pear">Net_SmartIRC</remote-id>

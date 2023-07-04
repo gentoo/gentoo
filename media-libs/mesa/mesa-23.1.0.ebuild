@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://archive.mesa3d.org/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 fi
 
 LICENSE="MIT"
@@ -37,7 +37,16 @@ IUSE="${IUSE_VIDEO_CARDS}
 	vulkan-overlay wayland +X xa zink +zstd"
 
 REQUIRED_USE="
-	d3d9?   ( || ( video_cards_intel video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
+	d3d9? (
+		|| (
+			video_cards_intel
+			video_cards_r300
+			video_cards_r600
+			video_cards_radeonsi
+			video_cards_nouveau
+			video_cards_vmware
+		)
+	)
 	vulkan? ( video_cards_radeonsi? ( llvm ) )
 	vulkan-overlay? ( vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
@@ -78,7 +87,7 @@ RDEPEND="
 	vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
 	vulkan? (
 		video_cards_intel? (
-				amd64? (
+			amd64? (
 				dev-libs/libclc[spirv(-)]
 				>=dev-util/spirv-tools-1.3.231.0
 			)
@@ -159,7 +168,14 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
-	vulkan? ( dev-util/glslang )
+	vulkan? (
+		dev-util/glslang
+		video_cards_intel? (
+			amd64? (
+				$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
+			)
+		)
+	)
 	wayland? ( dev-util/wayland-scanner )
 "
 
@@ -238,7 +254,10 @@ pkg_pretend() {
 }
 
 python_check_deps() {
-	python_has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
+	python_has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]" || return 1
+	if use vulkan && use video_cards_intel && use amd64; then
+		python_has_version -b "dev-python/ply[${PYTHON_USEDEP}]" || return 1
+	fi
 }
 
 pkg_setup() {

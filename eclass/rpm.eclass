@@ -1,16 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rpm.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: convenience class for extracting RPMs
 
 case ${EAPI} in
-	5|6) inherit epatch eutils ;; # eutils for eqawarn
-	7) inherit eutils ;; # not needed, but ebuilds may still rely on it
-	8) ;;
+	6) inherit epatch eutils ;; # eutils for eqawarn
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -20,7 +19,7 @@ _RPM_ECLASS=1
 inherit estack
 
 case ${EAPI} in
-	5|6) DEPEND="app-arch/rpm2targz" ;;
+	6) DEPEND="app-arch/rpm2targz" ;;
 	*) BDEPEND="app-arch/rpm2targz" ;;
 esac
 
@@ -98,7 +97,7 @@ rpm_src_unpack() {
 # files around, well this won't handle that.
 rpm_spec_epatch() {
 	# no epatch in EAPI 7 and later
-	[[ ${EAPI} == [56] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
+	[[ ${EAPI} == 6 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
 
 	local p spec=$1
 	local dir

@@ -10,11 +10,11 @@ DIST_NAME=Image-ExifTool
 inherit perl-module
 
 DESCRIPTION="Read and write meta information in image, audio and video files"
-HOMEPAGE="https://exiftool.org/ http://exiftool.sourceforge.net"
+HOMEPAGE="https://exiftool.org/ https://exiftool.sourceforge.net"
 SRC_URI="https://exiftool.org/${DIST_P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="amd64 arm64 ppc ppc64 x86 ~x64-macos"
 IUSE="doc"
 
 src_install() {

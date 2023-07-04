@@ -5,4 +5,14 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">FCGI-Client</remote-id>
+    <remote-id type="cpan-module">FCGI::Client</remote-id>
+    <remote-id type="cpan-module">FCGI::Client::Connection</remote-id>
+    <remote-id type="cpan-module">FCGI::Client::Constant</remote-id>
+    <remote-id type="cpan-module">FCGI::Client::Record</remote-id>
+    <remote-id type="cpan-module">FCGI::Client::RecordFactory</remote-id>
+    <remote-id type="cpan-module">FCGI::Client::RecordHeader</remote-id>
+    <remote-id type="github">tokuhirom/p5-fcgi-client</remote-id>
+  </upstream>
 </pkgmetadata>

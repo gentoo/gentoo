@@ -77,7 +77,7 @@
 
 		<!-- portage variables - currently unused -->
 		<context id="portvars" style-ref="variable">
-			<match>\b((ARCH|HOMEPAGE|DESCRIPTION|IUSE|SRC_URI|LICENSE|SLOT|KEYWORDS|FILESDIR|WORKDIR|(P|R)?DEPEND|PROVIDE|DISTDIR|RESTRICT|USERLAND)|(S|D|T|PV|PF|P|PN|A)|C(XX)?FLAGS|LDFLAGS|C(HOST|TARGET|BUILD))\b</match>
+			<match>\b((ARCH|HOMEPAGE|DESCRIPTION|IUSE|SRC_URI|LICENSE|SLOT|KEYWORDS|FILESDIR|WORKDIR|(P|R)?DEPEND|PROVIDE|DISTDIR|RESTRICT)|(S|D|T|PV|PF|P|PN|A)|C(XX)?FLAGS|LDFLAGS|C(HOST|TARGET|BUILD))\b</match>
 		</context>
 
 		<!-- portage functions - currently unused -->

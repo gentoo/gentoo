@@ -36,7 +36,7 @@ RDEPEND="
 	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	crypt? (
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
-		dev-python/service_identity[${PYTHON_USEDEP}]
+		dev-python/service-identity[${PYTHON_USEDEP}]
 		|| (
 			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},ssl(-)]
 			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},crypt(-)]
@@ -47,7 +47,7 @@ RDEPEND="
 		dev-python/txrequests[${PYTHON_USEDEP}]
 	)
 	docker? (
-		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/docker-2.2.0[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "

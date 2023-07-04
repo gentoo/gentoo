@@ -9,22 +9,20 @@ inherit java-pkg-2 java-ant-2 prefix verify-sig
 
 MY_P="apache-${PN}-${PV}-src"
 
-# Currently we bundle binary versions of bnd.jar and bndlib.jar
+# Currently we bundle binary versions of bnd.jar
 # See bugs #203080 and #676116
 BND_VERSION="6.4.0"
 BND="biz.aQute.bnd-${BND_VERSION}.jar"
-BNDLIB="biz.aQute.bndlib-${BND_VERSION}.jar"
 
 DESCRIPTION="Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container"
 HOMEPAGE="https://tomcat.apache.org/"
 SRC_URI="mirror://apache/${PN}/tomcat-9/v${PV}/src/${MY_P}.tar.gz
 	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bnd/${BND_VERSION}/${BND}
-	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/${BND_VERSION}/${BNDLIB}
 	verify-sig? ( https://downloads.apache.org/tomcat/tomcat-$(ver_cut 1)/v${PV}/src/apache-tomcat-${PV}-src.tar.gz.asc )"
 
 LICENSE="Apache-2.0"
 SLOT="9"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
@@ -61,9 +59,7 @@ PATCHES=(
 )
 
 BND_HOME="${S}/tomcat-build-libs/bnd"
-BNDLIB_HOME="${S}/tomcat-build-libs/bndlib"
 BND_JAR="${BND_HOME}/${BND}"
-BNDLIB_JAR="${BNDLIB_HOME}/${BND_LIB}"
 
 src_unpack() {
 	if use verify-sig; then
@@ -72,9 +68,8 @@ src_unpack() {
 
 	unpack ${MY_P}.tar.gz
 
-	mkdir -p "${BND_HOME}" "${BNDLIB_HOME}" || die "Failed to create dir"
+	mkdir -p "${BND_HOME}" || die "Failed to create dir"
 	ln -s "${DISTDIR}/${BND}" "${BND_HOME}/" || die "Failed to symlink bnd-*.jar"
-	ln -s "${DISTDIR}/${BND}" "${BNDLIB_HOME}/" || die "Failed to symlink bndlib-*.jar"
 }
 
 src_prepare() {
@@ -97,7 +92,7 @@ EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},wsdl4j"
 EANT_TEST_GENTOO_CLASSPATH="easymock-3.2"
 EANT_GENTOO_CLASSPATH_EXTRA="${S}/output/classes"
 EANT_NEEDS_TOOLS="true"
-EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false -Dbnd.jar=${BND_JAR} -Dbndlib.jar=${BNDLIB_JAR}"
+EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false -Dbnd.jar=${BND_JAR}"
 
 # revisions of the scripts
 IM_REV="-r2"

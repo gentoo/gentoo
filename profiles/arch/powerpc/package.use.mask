@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-06-27)
+# Breaks test suite & SSL connections: https://github.com/openssl/openssl/issues/21301
+# See bug #909306.
+>=dev-libs/openssl-3.1 asm
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-03-07)
 # nbval/nbclassic docs require pandoc which is not keyworded here yet
 dev-python/nbval doc
@@ -22,10 +27,6 @@ dev-python/bracex doc
 # Sam James <sam@gentoo.org> (2022-10-29)
 # pandoc not keyworded here, bug #878355
 app-admin/conky doc
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2022-10-17)
-# media-libs/libheif not keyworded
-media-gfx/geeqie heif
 
 # Sam James <sam@gentoo.org> (2022-10-16)
 # dev-cpp/notcurses not keyworded here
@@ -178,7 +179,7 @@ app-emulation/qemu capstone
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
 # Requires unkeyworded deps
->=dev-python/ipython-5.4.1 qt5 smp
+>=dev-python/ipython-5.4.1 qt5
 
 # Amy Liffey <amynka@gentoo.org (2018-01-21)
 # dev-libs/cereal not keyworded for ppc

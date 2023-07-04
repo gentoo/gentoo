@@ -7,11 +7,17 @@ inherit bash-completion-r1 libtool
 
 DESCRIPTION="Libraries and applications to access smartcards"
 HOMEPAGE="https://github.com/OpenSC/OpenSC/wiki"
-SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/OpenSC/OpenSC.git"
+else
+	SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
+	KEYWORDS="amd64 ppc64 x86"
+fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86"
 IUSE="ctapi doc openct notify pace +pcsc-lite readline secure-messaging ssl test zlib"
 RESTRICT="!test? ( test )"
 
@@ -36,7 +42,12 @@ REQUIRED_USE="
 
 src_prepare() {
 	default
-	elibtoolize
+
+	if [[ ${PV} == *9999 ]]; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
 }
 
 src_configure() {

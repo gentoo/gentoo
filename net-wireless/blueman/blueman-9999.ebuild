@@ -67,14 +67,11 @@ RDEPEND="
 			>=net-misc/networkmanager-0.8[introspection]
 		)
 	)
-	policykit? (
-		sys-auth/polkit
-	)
+	policykit? ( sys-auth/polkit )
 	pulseaudio? (
 		|| (
-			media-sound/pulseaudio-daemon[bluetooth]
 			media-video/pipewire[bluetooth]
-			<media-sound/pulseaudio-15.99.1[bluetooth]
+			media-sound/pulseaudio-daemon[bluetooth]
 		)
 	)
 "

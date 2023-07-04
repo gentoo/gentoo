@@ -4,11 +4,15 @@
 # please keep this ebuild at EAPI 7 -- sys-apps/portage dep
 EAPI=7
 
+# no py3.12 yet because of:
+# 1. https://foss.heptapod.net/pypy/cffi/-/issues/562
+# 2. https://foss.heptapod.net/pypy/cffi/-/issues/563
+# 3. https://foss.heptapod.net/pypy/cffi/-/issues/564
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 # DO NOT ADD pypy to PYTHON_COMPAT
 # pypy bundles a modified version of cffi. Use python_gen_cond_dep instead.
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 toolchain-funcs pypi
 
@@ -17,10 +21,11 @@ HOMEPAGE="
 	https://cffi.readthedocs.io/
 	https://pypi.org/project/cffi/
 "
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-drop-deprecated-py.patch.xz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 # Needs recent libffi for HPPA fixes
 DEPEND="
@@ -42,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/cffi-1.14.0-darwin-no-brew.patch
 	"${FILESDIR}"/${P}-hppa.patch
 	"${FILESDIR}"/${P}-python3.11-tests.patch
+	"${WORKDIR}"/${P}-drop-deprecated-py.patch
 )
 
 src_prepare() {

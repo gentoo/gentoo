@@ -3,13 +3,6 @@ From: Alexander Tsoy <alexander@tsoy.me>
 Date: Fri, 5 Jun 2020 17:21:10 +0300
 Subject: [PATCH] Do not strip lv2 plugins
 
----
- waftools/lv2.py | 4 ++--
- wscript         | 1 -
- 2 files changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/waftools/lv2.py b/waftools/lv2.py
-index 7397f6b7..256d52b1 100644
 --- a/waftools/lv2.py
 +++ b/waftools/lv2.py
 @@ -40,7 +40,7 @@ def lv2_add_common(tg, target, install_path, defines=None, linkflags=None, cxxfl
@@ -30,8 +23,6 @@ index 7397f6b7..256d52b1 100644
      lv2_add_common(tg, lv2_base+'_gui', dst, ["LV2_GUI"], ['-fvisibility=hidden','-Wl,-z,relro,-z,now','-Wl,--exclude-libs,ALL'])
      return tg
  
-diff --git a/wscript b/wscript
-index 3e2114d3..0d49cd16 100644
 --- a/wscript
 +++ b/wscript
 @@ -375,7 +375,6 @@ def configure(conf):

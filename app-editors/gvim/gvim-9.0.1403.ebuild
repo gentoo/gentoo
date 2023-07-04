@@ -22,7 +22,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 S="${WORKDIR}"/vim-${PV}
 
@@ -246,13 +246,6 @@ src_configure() {
 
 	# keep prefix env contained within the EPREFIX
 	use prefix && myconf+=( --without-local-dir )
-
-	if [[ ${CHOST} == *-interix* ]]; then
-		# avoid finding of this function, to avoid having to patch either
-		# configure or the source, which would be much more hackish.
-		# after all vim does it right, only interix is badly broken (again)
-		export ac_cv_func_sigaction=no
-	fi
 
 	if tc-is-cross-compiler ; then
 		export vim_cv_getcwd_broken=no \

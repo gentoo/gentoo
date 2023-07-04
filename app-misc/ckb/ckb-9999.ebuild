@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	|| (
-		media-sound/pulseaudio
+		media-libs/libpulse
 		media-sound/apulse[sdk]
 	)
 	virtual/libudev:=

@@ -27,6 +27,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/attrs[${PYTHON_USEDEP}]
 		dev-python/click[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 	)

@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 2023Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="Greenbone Notus Scanner"
+command=/usr/bin/notus-scanner
+pidfile="/run/notus-scanner/${RC_SVCNAME}.pid"
+command_args="${NOTUS_SCANNER_OPTIONS} \
+	${NOTUS_SCANNER_MQTT_BROKER_ADDRESS} \
+	${NOTUS_SCANNER_MQTT_BROKER_PORT} \
+	${NOTUS_SCANNER_PRODUCTS_DIRECTORY} \
+	${NOTUS_DISABLE_HASHSUM_VERIFICATION} \
+	--pid-file ${pidfile} \
+	--config /etc/gvm/notus-scanner.toml"
+
+depend() {
+	after bootmisc
+	need localmount mosquitto
+}
+
+start_pre() {
+        checkpath -d /var/run/notus-scanner
+}

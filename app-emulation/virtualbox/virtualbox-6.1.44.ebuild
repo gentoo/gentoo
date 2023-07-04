@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +sdl +udev vboxwebsrv vnc"
 
 unset WATCOM #856769
@@ -179,6 +179,9 @@ PATCHES=(
 	# 865361
 	"${FILESDIR}"/${PN}-6.1.36-fcf-protection.patch
 
+	# 906309
+	"${FILESDIR}"/${PN}-6.1.44-fix-libxml2.patch
+
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-6.1.36/patches
 )
@@ -277,6 +280,14 @@ src_configure() {
 		append-cflags $(test-flags-CC -mno-$i)
 		append-cxxflags $(test-flags-CXX -mno-$i)
 	done
+
+	# replace xhtml names with numeric equivalents
+	find doc/manual -name \*.xml -exec sed -i \
+		-e 's/&nbsp;/\&#160;/g' \
+		-e 's/&ndash;/\&#8211;/g' \
+		-e 's/&larr;/\&#8592;/g' \
+		-e 's/&rarr;/\&#8594;/g' \
+		-e 's/&harr;/\&#8596;/g' {} \+ || die
 
 	tc-export AR CC CXX LD RANLIB
 	export HOST_CC="$(tc-getBUILD_CC)"

@@ -21,7 +21,7 @@ S="${WORKDIR}/oiio-${PV}"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
 
 X86_CPU_FEATURES=(
 	aes:aes sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2

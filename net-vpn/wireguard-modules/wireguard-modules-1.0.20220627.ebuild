@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,9 +22,6 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug +module module-src"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"

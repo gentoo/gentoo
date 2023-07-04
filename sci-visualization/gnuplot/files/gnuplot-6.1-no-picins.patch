@@ -1,0 +1,18 @@
+Do not require picins.sty.
+https://bugs.gentoo.org/577828#c4
+
+--- gnuplot/docs/Makefile.am
++++ gnuplot/docs/Makefile.am
+@@ -143,9 +143,10 @@
+ 	$(AM_V_at)GNUPLOT_LIB=$(top_srcdir)/demo $(GNUPLOT_EXE) $(srcdir)/plotstyles.gnu
+ 	rm -f gpinsetfigure.tex
+ 	printf '%s\n' '\usepackage{graphicx}' \
+-		'\usepackage{picins}' \
+ 		'\newcommand{\gpinsetfigure}[1]{' \
+-		'  \parpic[r][rt]{\includegraphics[width=3in,keepaspectratio]{#1}}' \
++		'  \begin{figure}[htb]' \
++		'  \centering\includegraphics[width=3in,keepaspectratio]{#1}' \
++		'  \end{figure}' \
+ 		'}' > gpinsetfigure.tex
+ 	$(AM_V_GEN)touch $@
+ 	$(AM_V_at)touch figurestyle

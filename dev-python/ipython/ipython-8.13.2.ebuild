@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc examples notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 
@@ -150,7 +150,7 @@ pkg_postinst() {
 	optfeature "%mprun magic command" dev-python/memory_profiler
 
 	if use nbconvert; then
-		if ! has_version app-text/pandoc ; then
+		if ! has_version virtual/pandoc ; then
 			einfo "Node.js will be used to convert notebooks to other formats"
 			einfo "like HTML. Support for that is still experimental. If you"
 			einfo "encounter any problems, please use app-text/pandoc instead."

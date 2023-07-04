@@ -10,7 +10,7 @@ inherit autotools toolchain-funcs
 NTOPNG_DIST_COMMIT="90d81ad0281eb6eb582a683ac321a3959abb1269"
 DESCRIPTION="Network traffic analyzer with web interface"
 HOMEPAGE="https://www.ntop.org/"
-SRC_URI="https://github.com/ntop/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ntop/ntopng/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://github.com/ntop/ntopng-dist/archive/${NTOPNG_DIST_COMMIT}.tar.gz -> ${P}-web-${NTOPNG_DIST_COMMIT}.tar.gz"
 
 LICENSE="GPL-3"

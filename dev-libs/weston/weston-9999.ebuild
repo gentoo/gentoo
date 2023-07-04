@@ -80,6 +80,7 @@ RDEPEND="
 		x11-libs/cairo[X,xcb(+)]
 		>=x11-libs/libxcb-1.9
 		x11-libs/libXcursor
+		>=x11-libs/xcb-util-cursor-0.1.4
 	)
 "
 DEPEND="${RDEPEND}
@@ -96,6 +97,7 @@ src_configure() {
 		$(meson_use drm backend-drm)
 		-Dbackend-drm-screencast-vaapi=false
 		$(meson_use headless backend-headless)
+		$(meson_use pipewire backend-pipewire)
 		$(meson_use rdp backend-rdp)
 		$(meson_use screen-sharing screenshare)
 		$(meson_use vnc backend-vnc)

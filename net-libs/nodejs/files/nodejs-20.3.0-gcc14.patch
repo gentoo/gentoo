@@ -1,0 +1,31 @@
+From ad0bbaf34aa3150b4f3507b9973b6f5e8ed47474 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@cmpct.info>
+Date: Fri, 9 Jun 2023 18:29:00 +0100
+Subject: [PATCH] test: add missing <algorithm> include for std::find
+
+GCC 14 drops some transitive includes within libstdc++.
+
+Explicitly include <algorithm> for std::find.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+PR-URL: https://github.com/nodejs/node/pull/48380
+Reviewed-By: LiviaMedeiros <livia@cirno.name>
+Reviewed-By: Luigi Pinca <luigipinca@gmail.com>
+Reviewed-By: Matthew Aitken <maitken033380023@gmail.com>
+---
+ test/embedding/embedtest.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/test/embedding/embedtest.cc b/test/embedding/embedtest.cc
+index 3592ccb98132..dbb420f34682 100644
+--- a/test/embedding/embedtest.cc
++++ b/test/embedding/embedtest.cc
+@@ -5,6 +5,8 @@
+ #include "uv.h"
+ #include <assert.h>
+ 
++#include <algorithm>
++
+ // Note: This file is being referred to from doc/api/embedding.md, and excerpts
+ // from it are included in the documentation. Try to keep these in sync.
+ // Snapshot support is not part of the embedder API docs yet due to its

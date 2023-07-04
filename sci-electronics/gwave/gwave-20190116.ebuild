@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="http://gwave.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/gwave3/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~x86"
 IUSE="gnuplot plotutils"
 SLOT="0"
 

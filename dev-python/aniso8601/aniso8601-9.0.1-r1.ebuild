@@ -3,13 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="A library for parsing ISO 8601 strings"
-HOMEPAGE="https://bitbucket.org/nielsenb/aniso8601/ https://pypi.org/project/aniso8601/"
+HOMEPAGE="
+	https://bitbucket.org/nielsenb/aniso8601/
+	https://pypi.org/project/aniso8601/
+"
 
 LICENSE="GPL-3+"
 SLOT="0"

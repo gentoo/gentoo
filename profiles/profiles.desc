@@ -215,10 +215,10 @@ mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd/merged-usr	exp
 
 # Deprecated PPC64 Profiles
 # @MAINTAINER: ppc64@gentoo.org
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland				stable
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop			stable
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome		stable
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd	stable
+ppc		default/linux/powerpc/ppc64/17.0/32bit-userland				exp
+ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop			exp
+ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome		exp
+ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd	exp
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/developer		exp
 
 # PPC profiles
@@ -351,6 +351,7 @@ arm64		default/linux/arm64/17.0/musl					dev
 arm64		default/linux/arm64/17.0/musl/llvm				exp
 arm64		default/linux/arm64/17.0/musl/hardened				exp
 arm64		default/linux/arm64/17.0/musl/hardened/selinux			exp
+m68k		default/linux/m68k/17.0/musl					exp
 mips		default/linux/mips/17.0/o32/musl				exp
 mips		default/linux/mips/17.0/n64/musl				exp
 mips		default/linux/mips/17.0/mipsel/o32/musl				exp
@@ -406,17 +407,7 @@ arm64-macos	prefix/darwin/macos/12.0/arm64/gcc				exp
 arm64-macos	prefix/darwin/macos/13.0/arm64/gcc				exp
 
 # Solaris Profiles
-sparc-solaris	prefix/sunos/solaris/5.11/sparc					exp
-sparc64-solaris	prefix/sunos/solaris/5.11/sparc64				exp
-x86-solaris	prefix/sunos/solaris/5.11/x86					exp
 x64-solaris	prefix/sunos/solaris/5.11/x64					exp
-
-# Windows Profiles
-x86-winnt	prefix/windows/winnt/x86					exp
-x64-winnt	prefix/windows/winnt/x64					exp
-
-# Cygwin Profiles
-x64-cygwin	prefix/windows/cygwin/x64					exp
 
 # vim: set ts=8 noet ft=conf:
 

@@ -1,0 +1,135 @@
+diff --git a/src/sc_containers.c b/src/sc_containers.c
+index 47c86d7..b9a1979 100644
+--- a/src/sc_containers.c
++++ b/src/sc_containers.c
+@@ -23,7 +23,7 @@
+ 
+ #include <sc_containers.h>
+ #ifdef SC_HAVE_ZLIB
+-#include <zlib.h>
++#include <zlib-ng.h>
+ #endif
+ 
+ /* array routines */
+@@ -636,13 +636,13 @@ sc_array_checksum (sc_array_t * array)
+   unsigned int        crc;
+   size_t              bytes;
+ 
+-  crc = adler32 (0, Z_NULL, 0);
++  crc = zng_adler32 (0, Z_NULL, 0);
+   if (array->elem_count == 0) {
+     return crc;
+   }
+ 
+   bytes = array->elem_count * array->elem_size;
+-  crc = adler32 (crc, (const Bytef *) array->array, bytes);
++  crc = zng_adler32 (crc, (const Bytef *) array->array, bytes);
+ 
+   return crc;
+ #else
+diff --git a/src/sc_io.c b/src/sc_io.c
+index a7ed413..bc2df7d 100644
+--- a/src/sc_io.c
++++ b/src/sc_io.c
+@@ -25,7 +25,7 @@
+ #include <sc_puff.h>
+ #include <libb64.h>
+ #ifdef SC_HAVE_ZLIB
+-#include <zlib.h>
++#include <zlib-ng.h>
+ #endif
+ 
+ #ifndef SC_ENABLE_MPIIO
+@@ -706,7 +706,7 @@ sc_io_encode_zlib (sc_array_t *data, sc_array_t *out,
+ #ifndef SC_HAVE_ZLIB
+   input_compress_bound = sc_io_noncompress_bound (input_size);
+ #else
+-  input_compress_bound = compressBound ((uLong) input_size);
++  input_compress_bound = zng_compressBound ((uLong) input_size);
+ #endif /* SC_HAVE_ZLIB */
+   sc_array_init_count (&compressed, 1,
+                        SC_IO_ENCODE_INFO_LEN + input_compress_bound);
+@@ -715,9 +715,9 @@ sc_io_encode_zlib (sc_array_t *data, sc_array_t *out,
+   sc_io_noncompress (compressed.array + SC_IO_ENCODE_INFO_LEN,
+                      input_compress_bound, data->array, input_size);
+ #else
+-  zrv = compress2 ((Bytef *) compressed.array + SC_IO_ENCODE_INFO_LEN,
+-                   &input_compress_bound, (Bytef *) data->array,
+-                   (uLong) input_size, zlib_compression_level);
++  zrv = zng_compress2 ((Bytef *) compressed.array + SC_IO_ENCODE_INFO_LEN,
++                       &input_compress_bound, (Bytef *) data->array,
++                       (uLong) input_size, zlib_compression_level);
+   SC_CHECK_ABORT (zrv == Z_OK, "Error on zlib compression");
+ #endif /* SC_HAVE_ZLIB */
+ 
+@@ -993,9 +993,9 @@ sc_io_decode (sc_array_t *data, sc_array_t *out,
+   }
+ #else
+   uncompsize = (uLong) encoded_size;
+-  zrv = uncompress ((Bytef *) out->array, &uncompsize,
+-                    (Bytef *) (compressed.array + SC_IO_ENCODE_INFO_LEN),
+-                    ocnt - SC_IO_ENCODE_INFO_LEN);
++  zrv = zng_uncompress ((Bytef *) out->array, &uncompsize,
++                        (Bytef *) (compressed.array + SC_IO_ENCODE_INFO_LEN),
++                        ocnt - SC_IO_ENCODE_INFO_LEN);
+   if (zrv != Z_OK) {
+     SC_LERROR ("zlib uncompress error\n");
+     goto decode_error;
+@@ -1120,9 +1120,9 @@ sc_vtk_write_compressed (FILE * vtkfile, char *numeric_data,
+   base64_init_encodestate (&encode_state);
+   for (theblock = 0; theblock < numregularblocks; ++theblock) {
+     comp_length = code_length;
+-    retval = compress2 ((Bytef *) comp_data, &comp_length,
+-                        (const Bytef *) (numeric_data + theblock * blocksize),
+-                        (uLong) blocksize, Z_BEST_COMPRESSION);
++    retval = zng_compress2 ((Bytef *) comp_data, &comp_length,
++                            (const Bytef *) (numeric_data + theblock * blocksize),
++                            (uLong) blocksize, Z_BEST_COMPRESSION);
+     SC_CHECK_ZLIB (retval);
+     compression_header[3 + theblock] = comp_length;
+     base_length = base64_encode_block (comp_data, comp_length,
+@@ -1135,9 +1135,9 @@ sc_vtk_write_compressed (FILE * vtkfile, char *numeric_data,
+   /* write odd-sized last block if necessary */
+   if (lastsize > 0) {
+     comp_length = code_length;
+-    retval = compress2 ((Bytef *) comp_data, &comp_length,
+-                        (const Bytef *) (numeric_data + theblock * blocksize),
+-                        (uLong) lastsize, Z_BEST_COMPRESSION);
++    retval = zng_compress2 ((Bytef *) comp_data, &comp_length,
++                            (const Bytef *) (numeric_data + theblock * blocksize),
++                            (uLong) lastsize, Z_BEST_COMPRESSION);
+     SC_CHECK_ZLIB (retval);
+     compression_header[3 + theblock] = comp_length;
+     base_length = base64_encode_block (comp_data, comp_length,
+diff --git a/test/test_builtin.c b/test/test_builtin.c
+index 371aff6..9a99c2d 100644
+--- a/test/test_builtin.c
++++ b/test/test_builtin.c
+@@ -27,7 +27,7 @@
+ 
+ /* truthfully, the libraries below are not builtin anymore */
+ #ifdef SC_HAVE_ZLIB
+-#include <zlib.h>
++#include <zlib-ng.h>
+ #endif
+ 
+ static int
+@@ -87,13 +87,13 @@ test_zlib (void)
+   char                b3[BUFSIZ];
+   uLong               adler0, adler1, adler2, adler3a, adler3b;
+ 
+-  adler0 = adler32 (0L, Z_NULL, 0);
+-  adler1 = adler32 (adler0, (const Bytef *) b1, l1);
+-  adler2 = adler32 (adler0, (const Bytef *) b2, l2);
+-  adler3a = adler32_combine (adler1, adler2, l2);
++  adler0 = zng_adler32 (0L, Z_NULL, 0);
++  adler1 = zng_adler32 (adler0, (const Bytef *) b1, l1);
++  adler2 = zng_adler32 (adler0, (const Bytef *) b2, l2);
++  adler3a = zng_adler32_combine (adler1, adler2, l2);
+ 
+   snprintf (b3, BUFSIZ, "%s%s", b1, b2);
+-  adler3b = adler32 (adler0, (const Bytef *) b3, l1 + l2);
++  adler3b = zng_adler32 (adler0, (const Bytef *) b3, l1 + l2);
+ 
+   return adler3a != adler3b;
+ }

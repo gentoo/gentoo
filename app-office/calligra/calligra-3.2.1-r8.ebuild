@@ -18,7 +18,7 @@ if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	PATCHSET="${P}-patchset-1"
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz
 		https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
-	KEYWORDS="amd64 ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 fi
 
 CAL_FTS=( karbon sheets stage words )

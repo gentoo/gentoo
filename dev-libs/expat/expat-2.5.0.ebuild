@@ -12,8 +12,9 @@ SRC_URI="https://github.com/libexpat/libexpat/releases/download/R_${PV//\./_}/ex
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="examples static-libs unicode"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+IUSE="examples static-libs test unicode"
+RESTRICT="!test? ( test )"
 BDEPEND="unicode? ( ${AUTOTOOLS_DEPEND} )"
 
 DOCS=( README.md )
@@ -37,7 +38,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf="$(use_enable static-libs static) --without-docbook"
+	local myconf="$(use_with test tests) $(use_enable static-libs static) --without-docbook"
 
 	mkdir -p "${BUILD_DIR}"w || die
 
