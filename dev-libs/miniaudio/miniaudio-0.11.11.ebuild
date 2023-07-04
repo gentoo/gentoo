@@ -4,8 +4,8 @@
 EAPI=8
 
 COMMIT="a0dc1037f99a643ff5fad7272cd3d6461f2d63fa"
-DESCRIPTION="A single file library for audio playback and capture"
-HOMEPAGE="https://miniaudio.io"
+DESCRIPTION="Single file library for audio playback and capture"
+HOMEPAGE="https://miniaud.io"
 SRC_URI="https://github.com/mackron/miniaudio/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
