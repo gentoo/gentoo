@@ -110,6 +110,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
 	"${FILESDIR}/${PN}-4.1.1-fix_lto.patch"
 	"${FILESDIR}/${P}-webkitgtk4.1.patch"
+	"${FILESDIR}/${P}-litehtml_gcc13.patch"
 )
 
 src_prepare() {
