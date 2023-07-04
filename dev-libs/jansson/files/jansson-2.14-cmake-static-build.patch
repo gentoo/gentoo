@@ -1,0 +1,55 @@
+Patch the build system to install shared libraries by default, and add an option for static libraries. Upstream's CMakeLists can only install either static or shared libraries, not both.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.1)
+ project(jansson C)
+ 
+ # Options
+-option(JANSSON_BUILD_SHARED_LIBS "Build shared libraries." OFF)
++option(JANSSON_BUILD_STATIC_LIBS "Build static libraries." OFF)
+ option(USE_URANDOM "Use /dev/urandom to seed the hash function." ON)
+ option(USE_WINDOWS_CRYPTOAPI "Use CryptGenRandom to seed the hash function." ON)
+ 
+@@ -301,7 +301,6 @@ source_group("Library Sources" FILES ${J
+ source_group("Library Private Headers" FILES ${JANSSON_HDR_PRIVATE})
+ source_group("Library Public Headers" FILES ${JANSSON_HDR_PUBLIC})
+ 
+-if(JANSSON_BUILD_SHARED_LIBS)
+    add_library(jansson SHARED
+       ${JANSSON_SRC}
+       ${JANSSON_HDR_PRIVATE}
+@@ -349,13 +348,14 @@ if(JANSSON_BUILD_SHARED_LIBS)
+    set_target_properties(jansson PROPERTIES
+       VERSION ${JANSSON_VERSION}
+       SOVERSION ${JANSSON_SOVERSION})
+-else()
+-   add_library(jansson STATIC
++if(JANSSON_BUILD_STATIC_LIBS)
++   add_library(jansson-static STATIC
+       ${JANSSON_SRC}
+       ${JANSSON_HDR_PRIVATE}
+       ${JANSSON_HDR_PUBLIC})
+-   set_target_properties(jansson PROPERTIES
+-      POSITION_INDEPENDENT_CODE true)
++   set_target_properties(jansson-static PROPERTIES
++      POSITION_INDEPENDENT_CODE true
++      OUTPUT_NAME jansson)
+ endif()
+ 
+ if (JANSSON_EXAMPLES)
+@@ -637,6 +637,14 @@ if (JANSSON_INSTALL)
+           ARCHIVE DESTINATION "lib"
+           RUNTIME DESTINATION "bin"
+           INCLUDES DESTINATION "include")
++  if(JANSSON_BUILD_STATIC_LIBS)
++    install(TARGETS jansson-static
++            EXPORT janssonTargets
++            LIBRARY DESTINATION "lib"
++            ARCHIVE DESTINATION "lib"
++            RUNTIME DESTINATION "bin"
++            INCLUDES DESTINATION "include")
++  endif()
+ 
+   install(FILES ${JANSSON_HDR_PUBLIC}
+           DESTINATION "include")
