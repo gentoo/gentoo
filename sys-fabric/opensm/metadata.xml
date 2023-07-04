@@ -13,4 +13,7 @@
 	<use>
 		<flag name="tools">Install ssld extra tool</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">linux-rdma/opensm</remote-id>
+	</upstream>
 </pkgmetadata>
