@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<use>
+		<flag name="legion-tools">Build and install legion_gui and legion_cli</flag>
+		<flag name="legion-acpi">Install acpi script (experimental feature)</flag>
+		<flag name="radeon-dgpu">Enable AMD GPU TDP control (systemd-service)</flag>
+		<flag name="downgrade-nvidia">Downgrade nvidia for 525 to enable TDP control (systemd-service)</flag>
+		<flag name="ryzenadj">CPU and APU control using ryzenadj (systemd-service)</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">johnfanv2/LenovoLegionLinux</remote-id>
 		<bugs-to>https://github.com/johnfanv2/LenovoLegionLinux/issues</bugs-to>
 		<changelog>https://github.com/johnfanv2/LenovoLegionLinux/blob/main/README.md</changelog>
 	</upstream>
 </pkgmetadata>
-

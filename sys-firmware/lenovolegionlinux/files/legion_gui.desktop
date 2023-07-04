@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Name=LenovoLegionLinux
-Icon=/usr/share/icons/legion_logo.png
-Exec=pkexec /usr/bin/legion_gui
+Icon=/usr/share/pixmaps/legion_logo.png
+Exec=legion_gui --use_legion_cli_to_write
 Comment=Control Lenovo Legion Laptops
-Categories=Application
+Categories=System
 Terminal=false

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Remove the comment for your configuration
+
+#RYZEN (Cpu TDP control using RyzenADJ)
+#INTEL (Cpu control using undervolt) [https://github.com/georgewhewell/undervolt]
+#Disable by default see the github from both project
+#CPU_Control=0
+#NVIDIA (nvidia-smi)
+#TEAM_GREEN=1
+#AMD (rocm-smi)
+TEAM_RED=1
