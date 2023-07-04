@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit desktop toolchain-funcs
 
-DESCRIPTION="A cellular automata setting the background of your X Windows desktop under water"
-HOMEPAGE="http://xdesktopwaves.sourceforge.net/"
+DESCRIPTION="Cellular automata setting the background of your X Windows desktop under water"
+HOMEPAGE="https://xdesktopwaves.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 
 SLOT="0"
 RDEPEND="
