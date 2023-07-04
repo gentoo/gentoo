@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Inadyn, or In-a-Dyn, is a small and simple Dynamic DNS,
+		DDNS, client with HTTPS support. Commonly available in
+		many GNU/Linux distributions, used in off the shelf routers
+		and Internet gateways to automate the task of keeping your
+		Internet name in sync with your public IP address.
+		It can also be used in installations with redundant (backup)
+		connections to the Internet.
+	</longdescription>
+	<use>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as tls provider.</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as tls provider.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/troglobit/inadyn/issues</bugs-to>
+		<remote-id type="github">troglobit/inadyn</remote-id>
+	</upstream>
+</pkgmetadata>

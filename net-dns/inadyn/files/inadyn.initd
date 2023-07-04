@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+config="/etc/inadyn.conf"
+description="Dynamic DNS client"
+name="In-a-Dyn"
+pidfile="/run/inadyn/inadyn.pid"
+
+command="/usr/sbin/inadyn"
+command_group="inadyn"
+command_user="inadyn"
+command_args="--drop-privs=${command_user}:${command_group} --pidfile=${pidfile} ${INADYN_OPTS}"
+
+start_pre() {
+	if [ ! -f "${config}" ]; then
+		eerror "Please create ${config} before starting In-a-Dyn!"
+		return 1
+	else
+		checkpath -f -m 600 -o "${command_user}:${command_group}" -q "${config}"
+		return 0
+	fi
+}
