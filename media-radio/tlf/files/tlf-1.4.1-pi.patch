@@ -1,0 +1,47 @@
+# As C standards does not define M_PI or M_PI_2 provide a fallback
+# bug 907442
+diff --git a/src/muf.c b/src/muf.c
+index 6671651..1f880fd 100644
+--- a/src/muf.c
++++ b/src/muf.c
+@@ -32,6 +32,10 @@
+ #include "tlf_panel.h"
+ #include "ui_utils.h"
+ 
++#ifndef M_PI_2
++	# define M_PI_2         1.57079632679489661923  /* pi/2 */
++#endif
++
+ 
+ // message splitters:
+ // line[0] - original line, content can be modified in-place
+diff --git a/src/qrb.h b/src/qrb.h
+index 89d3f30..0120de0 100644
+--- a/src/qrb.h
++++ b/src/qrb.h
+@@ -21,6 +21,10 @@
+ #ifndef QRB_H
+ #define QRB_H
+ 
++#ifndef M_PI
++	# define M_PI           3.14159265358979323846  /* pi */
++#endif
++
+ #define ARC_IN_KM 111.2
+ #define RADIAN  (180.0 / M_PI)
+ 
+diff --git a/src/sunup.c b/src/sunup.c
+index b1186dd..7412c06 100644
+--- a/src/sunup.c
++++ b/src/sunup.c
+@@ -23,6 +23,10 @@
+ 
+ #include "get_time.h"
+ 
++#ifndef M_PI
++        # define M_PI           3.14159265358979323846  /* pi */
++#endif
++
+ #define RADIAN  (180.0 / M_PI)
+ 
+ 
