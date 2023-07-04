@@ -6,10 +6,10 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="ACPI monitor for X11"
-HOMEPAGE="http://bbacpi.sourceforge.net"
+HOMEPAGE="https://bbacpi.sourceforge.net"
 SRC_URI="mirror://sourceforge/bbacpi/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 x86"
 
