@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-07-04)
+# Archived by upstream. No reverse dependencies. Does not work with
+# ruby32. Masked for removal on 2023-08-04.
+dev-ruby/instantiator
+
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2023-07-04)
 # Obsolete package, replaced by dev-util/scap-driver.
 # https://bugs.gentoo.org/907486
