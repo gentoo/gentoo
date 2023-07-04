@@ -26,8 +26,11 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples fuse http kerberos +libxml2 macaroons python readline scitokens +server systemd test xrdec"
 
 REQUIRED_USE="
-		macaroons? ( server )
-		scitokens? ( server )
+	http? ( kerberos )
+	macaroons? ( server )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	scitokens? ( server )
+	test? ( server )
 "
 
 RESTRICT="!test? ( test )"
@@ -62,11 +65,6 @@ BDEPEND="
 "
 RDEPEND="${CDEPEND}
 	dev-lang/perl
-"
-REQUIRED_USE="
-	http? ( kerberos )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( server )
 "
 
 PATCHES=(

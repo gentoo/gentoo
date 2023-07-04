@@ -26,12 +26,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SRC_URI="https://xrootd.slac.stanford.edu/download/v${PV}/${P}.tar.gz"
 
-REQUIRED_USE="
-		macaroons? ( server http )
-		scitokens? ( server )
-"
-
 RESTRICT="!test? ( test )"
+
+REQUIRED_USE="
+	http? ( kerberos )
+	macaroons? ( server http )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	scitokens? ( server )
+	test? ( server )
+"
 
 CDEPEND="acct-group/xrootd
 	acct-user/xrootd
@@ -67,11 +70,6 @@ BDEPEND="
 "
 RDEPEND="${CDEPEND}
 	dev-lang/perl
-"
-REQUIRED_USE="
-	http? ( kerberos )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( server )
 "
 
 PATCHES=(
