@@ -890,7 +890,7 @@ install_sources() {
 		done
 	fi
 
-	mv "${WORKDIR}"/linux* "${ED}"/usr/src || die
+	cp -R "${WORKDIR}"/linux* "${ED}"/usr/src || die
 
 	if [[ -n ${UNIPATCH_DOCS} ]]; then
 		for i in ${UNIPATCH_DOCS}; do
