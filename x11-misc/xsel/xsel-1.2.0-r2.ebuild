@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Command-line program for getting and setting the contents of the X selection"
-HOMEPAGE="http://www.vergenet.net/~conrad/software/xsel"
-SRC_URI="http://www.vergenet.net/~conrad/software/${PN}/download/${P}.tar.gz"
+HOMEPAGE="https://www.vergenet.net/~conrad/software/xsel"
+SRC_URI="https://www.vergenet.net/~conrad/software/${PN}/download/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
