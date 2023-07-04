@@ -49,4 +49,7 @@
   other objects. Supported platforms include various flavors of Linux,
   FreeBSD, and Mac OS.
 </longdescription>
+<upstream>
+  <remote-id type="github">polymake/polymake</remote-id>
+</upstream>
 </pkgmetadata>
