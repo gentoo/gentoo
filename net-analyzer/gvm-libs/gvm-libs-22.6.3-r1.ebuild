@@ -53,6 +53,8 @@ BDEPEND="
 
 src_prepare() {
 	cmake_src_prepare
+	# QA-Fix | Remove -Werror compiler flag
+	sed -i -e "s/-Werror//" "${S}"/CMakeLists.txt || die #909558
 	# QA-Fix | Remove doxygen warnings for !CLANG
 	if use doc; then
 		if ! tc-is-clang; then
