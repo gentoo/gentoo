@@ -21,8 +21,11 @@ SLOT="2"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-ruby_add_rdepend "=dev-ruby/pdf-core-0.9*
-	>=dev-ruby/ttfunk-1.7:*"
+ruby_add_rdepend "
+	=dev-ruby/matrix-0.4*
+	=dev-ruby/pdf-core-0.9*
+	>=dev-ruby/ttfunk-1.7:*
+"
 ruby_add_bdepend "test? ( dev-ruby/coderay
 	>=dev-ruby/pdf-inspector-1.2.1
 	>=dev-ruby/pdf-reader-1.4
