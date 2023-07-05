@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-115-patches-02.tar.xz"
+FIREFOX_PATCHSET="firefox-115-patches-03.tar.xz"
 
 LLVM_MAX_SLOT=16
 
@@ -57,7 +57,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
 
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 SLOT="rapid"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
