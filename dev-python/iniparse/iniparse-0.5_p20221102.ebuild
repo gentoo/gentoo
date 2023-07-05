@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
