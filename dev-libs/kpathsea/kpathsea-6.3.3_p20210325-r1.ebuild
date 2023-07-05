@@ -8,7 +8,7 @@ inherit texlive-common libtool prefix tmpfiles
 TEXMFD_VERSION="11"
 
 DESCRIPTION="Path searching library for TeX-related files"
-HOMEPAGE="http://tug.org/texlive/"
+HOMEPAGE="https://tug.org/texlive/"
 SRC_URI="https://dev.gentoo.org/~sam/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz
 	https://dev.gentoo.org/~sam/distfiles/texlive/${PN}-texmf.d-${TEXMFD_VERSION}.tar.xz"
 
