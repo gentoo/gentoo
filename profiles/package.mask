@@ -88,6 +88,7 @@ dev-perl/Gtk2-Notify
 >=dev-libs/gjs-1.77
 >=gnome-base/gnome-shell-45_alpha
 >=gnome-base/gsettings-desktop-schemas-45_alpha
+>=gnome-extra/gnome-characters-45_alpha
 >=gnome-extra/gnome-shell-extensions-45_alpha
 >=gnome-extra/gnome-system-monitor-45_alpha
 >=gnome-extra/gnome-weather-45_alpha
