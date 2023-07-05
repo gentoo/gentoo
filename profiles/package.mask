@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-07-05)
+# Doesn't install all needed files by e.g. kernelshark.
+# Need to either split into libtracecmd for the libraries or revert to Makefiles.
+# See bug #909439.
+=dev-util/trace-cmd-3.2
+
 # Hans de Graaff <graaff@gentoo.org> (2023-07-04)
 # Discontinued by upstream. No reverse dependencies. Upstream recommends
 # using dry-inflector. Please file a bug if you would like us to package
