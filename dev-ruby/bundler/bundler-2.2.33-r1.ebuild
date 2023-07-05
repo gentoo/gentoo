@@ -18,7 +18,7 @@ RUBY_FAKEGEM_BINDIR="exe"
 inherit ruby-fakegem
 
 DESCRIPTION="An easy way to vendor gem dependencies"
-HOMEPAGE="https://github.com/carlhuda/bundler"
+HOMEPAGE="https://github.com/rubygems/rubygems"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
