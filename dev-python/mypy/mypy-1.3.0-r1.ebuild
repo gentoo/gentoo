@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 multiprocessing
 
@@ -21,19 +21,17 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 # stubgen collides with this package: https://bugs.gentoo.org/585594
 RDEPEND="
 	!dev-util/stubgen
 	>=dev-python/psutil-4[${PYTHON_USEDEP}]
-	>=dev-python/typed-ast-1.4.0[${PYTHON_USEDEP}]
-	<dev-python/typed-ast-2[${PYTHON_USEDEP}]
-	>=dev-python/typing-extensions-4.1.0[${PYTHON_USEDEP}]
+	>=dev-python/typing-extensions-3.10[${PYTHON_USEDEP}]
 	>=dev-python/mypy_extensions-1.0.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.{9..10})
+	' pypy3 python3_{8..10})
 "
 BDEPEND="
 	test? (
@@ -45,11 +43,12 @@ BDEPEND="
 		>=dev-python/pytest-xdist-1.18[${PYTHON_USEDEP}]
 		>=dev-python/py-1.5.2[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
-		>=dev-python/typed-ast-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/virtualenv-16.0.0[${PYTHON_USEDEP}]
 	)
 "
 
+distutils_enable_sphinx docs/source \
+	dev-python/furo
 distutils_enable_tests pytest
 
 # this requires packaging a lot of type stubs
@@ -63,5 +62,5 @@ python_test() {
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
 	# fail with high COLUMNS values
 	local -x COLUMNS=80
-	epytest -n "$(makeopts_jobs)"
+	epytest -n "$(makeopts_jobs)" --dist=worksteal
 }
