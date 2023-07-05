@@ -11,7 +11,7 @@ DESCRIPTION="Fast, pure-Perl ordered hash class"
 
 LICENSE="Apache-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
