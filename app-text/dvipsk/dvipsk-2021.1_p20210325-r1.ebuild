@@ -6,7 +6,7 @@ EAPI=7
 inherit texlive-common
 
 DESCRIPTION="DVI-to-PostScript translator"
-HOMEPAGE="http://tug.org/texlive/"
+HOMEPAGE="https://tug.org/texlive/"
 SRC_URI="https://dev.gentoo.org/~sam/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
 
 TL_VERSION=2021
