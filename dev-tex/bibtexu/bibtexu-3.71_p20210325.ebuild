@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="8-bit Implementation of BibTeX 0.99 with a Very Large Capacity"
-HOMEPAGE="http://tug.org/texlive/"
+HOMEPAGE="https://tug.org/texlive/"
 SRC_URI="https://dev.gentoo.org/~sam/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
 
 LICENSE="GPL-2"
