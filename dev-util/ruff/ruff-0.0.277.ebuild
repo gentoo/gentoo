@@ -10,15 +10,15 @@ CRATES="
 	Inflector-0.11.4
 	adler-1.0.2
 	aho-corasick-0.7.20
-	aho-corasick-1.0.1
+	aho-corasick-1.0.2
 	android-tzdata-0.1.1
 	android_system_properties-0.1.5
 	anes-0.1.6
 	annotate-snippets-0.6.1
 	annotate-snippets-0.9.1
 	anstream-0.3.2
-	anstyle-1.0.0
-	anstyle-parse-0.2.0
+	anstyle-1.0.1
+	anstyle-parse-0.2.1
 	anstyle-query-1.0.0
 	anstyle-wincon-1.0.1
 	anyhow-1.0.71
@@ -26,11 +26,10 @@ CRATES="
 	assert_cmd-2.0.11
 	atty-0.2.14
 	autocfg-1.1.0
-	base64-0.13.1
 	base64-0.21.2
 	bincode-1.3.3
 	bitflags-1.3.2
-	bitflags-2.3.1
+	bitflags-2.3.2
 	bstr-1.5.0
 	bumpalo-3.13.0
 	cachedir-0.3.0
@@ -42,13 +41,13 @@ CRATES="
 	ciborium-0.2.1
 	ciborium-io-0.2.1
 	ciborium-ll-0.2.1
-	clap-4.3.1
-	clap_builder-4.3.1
+	clap-4.3.8
+	clap_builder-4.3.8
 	clap_complete-4.3.1
 	clap_complete_command-0.5.1
 	clap_complete_fig-4.3.1
 	clap_complete_nushell-0.1.11
-	clap_derive-4.3.1
+	clap_derive-4.3.2
 	clap_lex-0.5.0
 	clearscreen-2.0.1
 	colorchoice-1.0.0
@@ -64,8 +63,8 @@ CRATES="
 	criterion-plot-0.5.0
 	crossbeam-channel-0.5.8
 	crossbeam-deque-0.8.3
-	crossbeam-epoch-0.9.14
-	crossbeam-utils-0.8.15
+	crossbeam-epoch-0.9.15
+	crossbeam-utils-0.8.16
 	crunchy-0.2.2
 	ctor-0.1.26
 	darling-0.20.1
@@ -82,6 +81,8 @@ CRATES="
 	dyn-clone-1.0.11
 	either-1.8.1
 	encode_unicode-0.3.6
+	env_logger-0.10.0
+	equivalent-1.0.0
 	errno-0.3.1
 	errno-dragonfly-0.1.2
 	fastrand-1.9.0
@@ -89,36 +90,39 @@ CRATES="
 	filetime-0.2.21
 	flate2-1.0.26
 	fnv-1.0.7
-	form_urlencoded-1.1.0
+	form_urlencoded-1.2.0
 	fsevent-sys-4.1.0
-	getrandom-0.2.9
+	getrandom-0.2.10
 	glob-0.3.1
 	globset-0.4.10
 	half-1.8.2
 	hashbrown-0.12.3
+	hashbrown-0.14.0
 	heck-0.4.1
 	hermit-abi-0.1.19
 	hermit-abi-0.2.6
 	hermit-abi-0.3.1
 	hex-0.4.3
 	hexf-parse-0.2.1
-	iana-time-zone-0.1.56
+	humantime-2.1.0
+	iana-time-zone-0.1.57
 	iana-time-zone-haiku-0.1.2
 	ident_case-1.0.1
-	idna-0.3.0
+	idna-0.4.0
 	ignore-0.4.20
 	imperative-1.0.4
 	indexmap-1.9.3
+	indexmap-2.0.0
 	inotify-0.9.6
 	inotify-sys-0.1.5
-	insta-1.29.0
+	insta-1.30.0
 	instant-0.1.12
 	io-lifetimes-1.0.11
 	is-macro-0.2.2
 	is-terminal-0.4.7
 	itertools-0.10.5
 	itoa-1.0.6
-	js-sys-0.3.63
+	js-sys-0.3.64
 	kqueue-1.0.7
 	kqueue-sys-1.0.3
 	lalrpop-util-0.20.0
@@ -126,14 +130,14 @@ CRATES="
 	lexical-parse-float-0.8.5
 	lexical-parse-integer-0.8.6
 	lexical-util-0.8.5
-	libc-0.2.144
+	libc-0.2.147
 	libmimalloc-sys-0.1.33
 	linked-hash-map-0.5.6
 	linux-raw-sys-0.3.8
-	log-0.4.18
+	log-0.4.19
 	matches-0.1.10
 	memchr-2.5.0
-	memoffset-0.8.0
+	memoffset-0.9.0
 	mimalloc-0.1.37
 	minimal-lexical-0.2.1
 	miniz_oxide-0.7.1
@@ -148,10 +152,10 @@ CRATES="
 	num-integer-0.1.45
 	num-traits-0.2.15
 	num_cpus-1.15.0
-	once_cell-1.17.2
+	once_cell-1.18.0
 	oorandom-11.1.3
 	option-ext-0.2.0
-	os_str_bytes-6.5.0
+	os_str_bytes-6.5.1
 	output_vt100-0.1.3
 	paste-1.0.12
 	path-absolutize-3.1.0
@@ -160,18 +164,18 @@ CRATES="
 	peg-0.8.1
 	peg-macros-0.8.1
 	peg-runtime-0.8.1
-	pep440_rs-0.3.9
-	pep508_rs-0.1.5
-	percent-encoding-2.2.0
-	phf-0.11.1
-	phf_codegen-0.11.1
-	phf_generator-0.11.1
-	phf_macros-0.11.1
-	phf_shared-0.11.1
+	pep440_rs-0.3.11
+	pep508_rs-0.2.1
+	percent-encoding-2.3.0
+	phf-0.11.2
+	phf_codegen-0.11.2
+	phf_generator-0.11.2
+	phf_macros-0.11.2
+	phf_shared-0.11.2
 	pin-project-lite-0.2.9
-	plotters-0.3.4
-	plotters-backend-0.3.4
-	plotters-svg-0.3.3
+	plotters-0.3.5
+	plotters-backend-0.3.5
+	plotters-svg-0.3.5
 	pmutil-0.5.3
 	predicates-3.0.3
 	predicates-core-1.0.6
@@ -179,8 +183,8 @@ CRATES="
 	pretty_assertions-1.3.0
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
-	proc-macro2-1.0.59
-	pyproject-toml-0.6.0
+	proc-macro2-1.0.63
+	pyproject-toml-0.6.1
 	quick-junit-0.3.2
 	quick-xml-0.26.0
 	quote-1.0.28
@@ -191,7 +195,7 @@ CRATES="
 	redox_syscall-0.2.16
 	redox_syscall-0.3.5
 	redox_users-0.4.3
-	regex-1.8.3
+	regex-1.8.4
 	regex-automata-0.1.10
 	regex-syntax-0.7.2
 	result-like-0.4.6
@@ -199,8 +203,9 @@ CRATES="
 	ring-0.16.20
 	rust-stemmers-1.2.0
 	rustc-hash-1.1.0
-	rustix-0.37.19
-	rustls-0.20.8
+	rustix-0.37.20
+	rustls-0.21.2
+	rustls-webpki-0.100.1
 	rustversion-1.0.12
 	ryu-1.0.13
 	same-file-1.0.6
@@ -210,12 +215,12 @@ CRATES="
 	scopeguard-1.1.0
 	sct-0.7.0
 	semver-1.0.17
-	serde-1.0.163
+	serde-1.0.164
 	serde-wasm-bindgen-0.5.0
-	serde_derive-1.0.163
+	serde_derive-1.0.164
 	serde_derive_internals-0.26.0
-	serde_json-1.0.96
-	serde_spanned-0.6.2
+	serde_json-1.0.99
+	serde_spanned-0.6.3
 	serde_with-3.0.0
 	serde_with_macros-3.0.0
 	shellexpand-3.1.0
@@ -228,9 +233,10 @@ CRATES="
 	strum-0.24.1
 	strum_macros-0.24.3
 	syn-1.0.109
-	syn-2.0.18
+	syn-2.0.22
 	syn-ext-0.4.0
-	tempfile-3.5.0
+	tempfile-3.6.0
+	termcolor-1.2.0
 	terminfo-0.8.0
 	termtree-0.4.1
 	test-case-3.1.0
@@ -242,18 +248,18 @@ CRATES="
 	tikv-jemalloc-sys-0.5.3+5.3.0-patched
 	tikv-jemallocator-0.5.0
 	time-0.1.45
-	time-0.3.21
+	time-0.3.22
 	time-core-0.1.1
 	time-macros-0.2.9
 	tiny-keccak-2.0.2
 	tinytemplate-1.2.1
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.1
-	toml-0.7.4
-	toml_datetime-0.6.2
-	toml_edit-0.19.10
+	toml-0.7.5
+	toml_datetime-0.6.3
+	toml_edit-0.19.11
 	tracing-0.1.37
-	tracing-attributes-0.1.24
+	tracing-attributes-0.1.26
 	tracing-core-0.1.31
 	typed-arena-2.0.2
 	unic-char-property-0.9.0
@@ -268,26 +274,25 @@ CRATES="
 	unicode-normalization-0.1.22
 	unicode-width-0.1.10
 	untrusted-0.7.1
-	ureq-2.6.2
-	url-2.3.1
+	ureq-2.7.1
+	url-2.4.0
 	utf8parse-0.2.1
-	uuid-1.3.3
+	uuid-1.3.4
 	version_check-0.9.4
 	wait-timeout-0.2.0
 	walkdir-2.3.3
 	wasi-0.10.0+wasi-snapshot-preview1
 	wasi-0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-0.2.86
-	wasm-bindgen-backend-0.2.86
-	wasm-bindgen-futures-0.4.36
-	wasm-bindgen-macro-0.2.86
-	wasm-bindgen-macro-support-0.2.86
-	wasm-bindgen-shared-0.2.86
-	wasm-bindgen-test-0.3.36
-	wasm-bindgen-test-macro-0.3.36
-	web-sys-0.3.63
-	webpki-0.22.0
-	webpki-roots-0.22.6
+	wasm-bindgen-0.2.87
+	wasm-bindgen-backend-0.2.87
+	wasm-bindgen-futures-0.4.37
+	wasm-bindgen-macro-0.2.87
+	wasm-bindgen-macro-support-0.2.87
+	wasm-bindgen-shared-0.2.87
+	wasm-bindgen-test-0.3.37
+	wasm-bindgen-test-macro-0.3.37
+	web-sys-0.3.64
+	webpki-roots-0.23.1
 	which-4.4.0
 	wild-2.1.0
 	winapi-0.3.9
@@ -313,14 +318,14 @@ CRATES="
 	windows_x86_64_gnullvm-0.48.0
 	windows_x86_64_msvc-0.42.2
 	windows_x86_64_msvc-0.48.0
-	winnow-0.4.6
+	winnow-0.4.7
 	yaml-rust-0.4.5
 	yansi-0.5.1
 	yansi-term-0.1.2
 "
 
 LIBCST_COMMIT="80e4c1399f95e5beb532fdd1e209ad2dbb470438"
-RUSTPYTHON_COMMIT="f60e204b73b95bdb6ce87ccd0de34081b4a17c11"
+RUSTPYTHON_COMMIT="c174bbf1f29527edd43d432326327f16f47ab9e0"
 declare -A GIT_CRATES=(
 	[libcst]="https://github.com/charliermarsh/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst"
 	[ruff_text_size]="https://github.com/astral-sh/RustPython-Parser;${RUSTPYTHON_COMMIT};RustPython-Parser-%commit%/ruff_text_size"
