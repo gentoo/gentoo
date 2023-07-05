@@ -1,0 +1,36 @@
+From d79845f5e55a541761c513bba7894c644f53f331 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Wed, 5 Jul 2023 13:49:51 -0400
+Subject: [PATCH] disable broken HEVC packed header impacting AMD
+
+AMD's VAAPI driver doesn't support some packed headers required for
+progressive Mkv playback.
+---
+ src/gallium/frontends/va/config.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/gallium/frontends/va/config.c b/src/gallium/frontends/va/config.c
+index 1b3a48756cf..7b60a8999ef 100644
+--- a/src/gallium/frontends/va/config.c
++++ b/src/gallium/frontends/va/config.c
+@@ -234,7 +234,7 @@ vlVaGetConfigAttributes(VADriverContextP ctx, VAProfile profile, VAEntrypoint en
+             }
+             break;
+          case VAConfigAttribEncPackedHeaders:
+-            value = VA_ENC_PACKED_HEADER_NONE;
++            value = 0x0000001f;
+             if (u_reduce_video_profile(ProfileToPipe(profile)) == PIPE_VIDEO_FORMAT_HEVC)
+                value |= VA_ENC_PACKED_HEADER_SEQUENCE;
+             break;
+@@ -548,7 +548,7 @@ vlVaCreateConfig(VADriverContextP ctx, VAProfile profile, VAEntrypoint entrypoin
+             return VA_STATUS_ERROR_UNSUPPORTED_RT_FORMAT;
+          }
+       }
+-      if (attrib_list[i].type == VAConfigAttribEncPackedHeaders) {
++      if (0) {
+          if ((attrib_list[i].value > 1) ||
+              (attrib_list[i].value &&
+                u_reduce_video_profile(ProfileToPipe(profile)) !=
+-- 
+2.41.0
+
