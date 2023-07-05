@@ -21,10 +21,6 @@ IUSE="build +split-usr"
 
 RDEPEND="!sys-apps/baselayout-prefix"
 
-pkg_setup() {
-	multilib_layout
-}
-
 riscv_compat_symlink() {
 	# Here we apply some special sauce for riscv.
 	# Two multilib layouts exist for now:
@@ -191,29 +187,8 @@ multilib_layout() {
 	fi
 }
 
-pkg_preinst() {
-	# We need to install directories and maybe some dev nodes when building
-	# stages, but they cannot be in CONTENTS.
-	# Also, we cannot reference $S as binpkg will break so we do this.
+pkg_setup() {
 	multilib_layout
-	if use build ; then
-		if use split-usr ; then
-			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout
-		else
-			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
-		fi
-	fi
-	rm -f "${ED}"/usr/share/${PN}/Makefile || die
-
-	# Create symlinks in pkg_preinst to avoid Portage collision check.
-	# Create the symlinks in ${ED} via dosym so that we own it.
-	# Only create the symlinks if it wont cause a conflict in ${EROOT}.
-	if [[ -L ${EROOT}/var/lock || ! -e ${EROOT}/var/lock ]]; then
-		dosym ../run/lock /var/lock
-	fi
-	if [[ -L ${EROOT}/var/run || ! -e ${EROOT}/var/run ]]; then
-		dosym ../run /var/run
-	fi
 }
 
 src_prepare() {
@@ -288,6 +263,31 @@ src_install() {
 		EOF
 		chmod 755 "${ED}"/sbin/runscript || die
 		cp "${ED}"/sbin/{runscript,openrc-run} || die
+	fi
+}
+
+pkg_preinst() {
+	# We need to install directories and maybe some dev nodes when building
+	# stages, but they cannot be in CONTENTS.
+	# Also, we cannot reference $S as binpkg will break so we do this.
+	multilib_layout
+	if use build ; then
+		if use split-usr ; then
+			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout
+		else
+			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
+		fi
+	fi
+	rm -f "${ED}"/usr/share/${PN}/Makefile || die
+
+	# Create symlinks in pkg_preinst to avoid Portage collision check.
+	# Create the symlinks in ${ED} via dosym so that we own it.
+	# Only create the symlinks if it wont cause a conflict in ${EROOT}.
+	if [[ -L ${EROOT}/var/lock || ! -e ${EROOT}/var/lock ]]; then
+		dosym ../run/lock /var/lock
+	fi
+	if [[ -L ${EROOT}/var/run || ! -e ${EROOT}/var/run ]]; then
+		dosym ../run /var/run
 	fi
 }
 
