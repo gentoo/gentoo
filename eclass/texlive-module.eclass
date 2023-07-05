@@ -81,7 +81,7 @@ _TEXLIVE_MODULE_ECLASS=1
 
 inherit texlive-common
 
-HOMEPAGE="http://www.tug.org/texlive/"
+HOMEPAGE="https://www.tug.org/texlive/"
 
 COMMON_DEPEND=">=app-text/texlive-core-${TL_PV:-${PV}}"
 
