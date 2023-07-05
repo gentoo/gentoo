@@ -6,7 +6,7 @@ EAPI=8
 inherit bash-completion-r1 go-module linux-info optfeature systemd verify-sig
 
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
-HOMEPAGE="https://linuxcontainers.org/lxd/introduction/ https://github.com/lxc/lxd"
+HOMEPAGE="https://ubuntu.com/lxd https://github.com/canonical/lxd"
 SRC_URI="https://linuxcontainers.org/downloads/lxd/${P}.tar.gz
 	verify-sig? ( https://linuxcontainers.org/downloads/lxd/${P}.tar.gz.asc )"
 
