@@ -26,8 +26,8 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	>=net-analyzer/gvmd-${PV}
-	>=net-analyzer/gsa-22.5.0
+	>=net-analyzer/gvmd-22.4
+	>=net-analyzer/gsa-22.4
 	net-analyzer/ospd-openvas
 "
 BDEPEND="
@@ -70,6 +70,8 @@ src_configure() {
 		"-DLOCALSTATEDIR=${EPREFIX}/var"
 		"-DSYSCONFDIR=${EPREFIX}/etc"
 		"-DSBINDIR=${EPREFIX}/usr/bin"
+		"-DGSAD_RUN_DIR=${EPREFIX}/run/gsad"
+		"-DGVMD_RUN_DIR=${EPREFIX}/run/gvmd"
 		"-DSYSTEMD_SERVICE_DIR=$(systemd_get_systemunitdir)"
 		"-DLOGROTATE_DIR=${EPREFIX}/etc/logrotate.d"
 	)
