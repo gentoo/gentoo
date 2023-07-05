@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit latex-package
 
 DESCRIPTION="Hebrew support for TeX"
-HOMEPAGE="http://ivritex.sourceforge.net/"
+HOMEPAGE="https://ivritex.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ivritex/${P}.tar.gz"
 
 LICENSE="LPPL-1.2"
