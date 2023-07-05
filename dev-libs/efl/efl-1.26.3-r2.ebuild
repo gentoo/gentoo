@@ -128,6 +128,7 @@ DEPEND="${RDEPEND}
 	wayland? ( dev-libs/wayland-protocols )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
+	examples? ( <sys-devel/gettext-0.22 )
 	nls? ( sys-devel/gettext )
 	wayland? ( dev-util/wayland-scanner )"
 
