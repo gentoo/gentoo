@@ -1,6 +1,10 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-05)
+# rest of GNOME not keyworded yet
+gnome-online-accounts
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # media-libs/xine-lib not tested
 xine
@@ -28,11 +32,6 @@ xen
 # media-sound/nas currently not buildable due to x11-misc/xorg-cf-files
 # lacking arch-specific adaptation
 nas
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
-# net-libs/webkit-gtk is not available on loong yet.
-gnome-online-accounts
-webkit
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-01)
 # qtwebengine isn't available on loong yet
