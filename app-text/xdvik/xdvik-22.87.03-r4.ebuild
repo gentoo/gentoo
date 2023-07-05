@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools desktop elisp-common flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="DVI previewer for X Window System"
-HOMEPAGE="http://xdvi.sourceforge.net/"
+HOMEPAGE="https://xdvi.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xdvi/${P}.tar.gz"
 S="${WORKDIR}"/${P}/texk/xdvik
 
