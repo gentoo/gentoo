@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,8 +10,8 @@ inherit cdrom estack
 MY_EXE="setup_descent_1.4a_(16596).exe"
 
 DESCRIPTION="Data files for Descent 1"
-HOMEPAGE="http://www.interplay.com/games/descent.php"
-SRC_URI="cdinstall? ( http://www.dxx-rebirth.com/download/dxx/misc/descent-game-content-10to14a-patch.zip )
+HOMEPAGE="https://www.interplay.com"
+SRC_URI="cdinstall? ( https://www.dxx-rebirth.com/download/dxx/misc/descent-game-content-10to14a-patch.zip )
 	!cdinstall? ( ${MY_EXE} )"
 LICENSE="descent-data"
 SLOT="0"
