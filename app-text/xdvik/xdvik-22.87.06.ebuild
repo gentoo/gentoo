@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools desktop elisp-common flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="DVI previewer for X Window System"
-HOMEPAGE="http://xdvi.sourceforge.net/"
+HOMEPAGE="https://xdvi.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xdvi/${P}.tar.gz"
 S="${WORKDIR}"/${P}/texk/xdvik
 
