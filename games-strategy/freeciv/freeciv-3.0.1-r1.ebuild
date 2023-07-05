@@ -12,7 +12,7 @@ MY_PV="${MY_PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Multiplayer strategy game (Civilization Clone)"
-HOMEPAGE="http://www.freeciv.org/"
+HOMEPAGE="https://www.freeciv.org/"
 
 if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
 	SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.xz"

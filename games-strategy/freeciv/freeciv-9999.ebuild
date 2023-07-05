@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-4 )
 inherit desktop lua-single meson xdg
 
 DESCRIPTION="Multiplayer strategy game (Civilization Clone)"
-HOMEPAGE="http://www.freeciv.org/"
+HOMEPAGE="https://www.freeciv.org/"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="dedicated gtk3 gtk4 json mapimg modpack mysql nls +qt5 qt6 readline rule-editor sdl +sound +system-lua web-server "
+IUSE="dedicated gtk3 gtk4 json mapimg modpack mysql nls +qt5 qt6 readline rule-editor sdl +sound +system-lua web-server"
 
 # I'm pretty sure that you can't build both qt flavours at the same time
 REQUIRED_USE="
