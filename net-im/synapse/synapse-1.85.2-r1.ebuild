@@ -92,6 +92,8 @@ DEPEND="
 	acct-user/synapse
 	acct-group/synapse
 "
+# <pillow-10, see bug #909644
+# <pydantic-2, see https://github.com/matrix-org/synapse/issues/15858
 RDEPEND="
 	${DEPEND}
 	dev-python/attrs[${PYTHON_USEDEP}]
@@ -108,11 +110,11 @@ RDEPEND="
 	dev-python/netaddr[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/phonenumbers[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP},webp]
+	<dev-python/pillow-10[${PYTHON_USEDEP},webp]
 	dev-python/prometheus-client[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
-	dev-python/pydantic[${PYTHON_USEDEP}]
+	<dev-python/pydantic-2[${PYTHON_USEDEP}]
 	dev-python/pymacaroons[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
