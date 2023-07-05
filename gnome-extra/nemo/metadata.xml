@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">linuxmint/nemo</remote-id>
 	</upstream>
+	<use>
+		<flag name="tracker">Add support for <pkg>app-misc/tracker</pkg> search</flag>
+	</use>
 </pkgmetadata>
