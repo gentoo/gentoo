@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-07-05)
+# Discontinued in favor of built-in `ast` module on all supported
+# versions of Python.  No revdeps left.
+# Removal on 2023-08-04.
+dev-python/typed-ast
+
 # Sam James <sam@gentoo.org> (2023-07-05)
 # Doesn't install all needed files by e.g. kernelshark.
 # Need to either split into libtracecmd for the libraries or revert to Makefiles.
