@@ -1,11 +1,33 @@
 --- a/src/GNUmakefile	2022-01-21 11:40:00.957743804 +0300
 +++ b/src/GNUmakefile	2022-01-21 11:40:34.876741798 +0300
-@@ -21,8 +21,8 @@
- HAS_PYTHON_CONFIG := $(shell ${PYTHON}-config --ldflags ${PYTHON_EMBED} 2>/dev/null)
+@@ -14,6 +14,8 @@
+ OBJCOPY  = $(CROSS_COMPILE)objcopy
+ OBJDUMP  = $(CROSS_COMPILE)objdump
+ PYTHON   = python3
++LD_CMD   = $(CROSS_COMPILE)ld
++PKG_CONFIG = $(CROSS_COMPILE)pkg-config
+ 
+ HAS_SWIG := $(shell swig -version 2>/dev/null)
+ PYTHON_MAJOR_VERSION = $(shell ${PYTHON} -c "import sys; print(sys.version_info.major)" 2>/dev/null)
+@@ -22,9 +24,9 @@
  
  CPPFLAGS += -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -I. -I$(VPATH)
 -CFLAGS   += -g -Wall -Wextra -O2
+-CFLAGS   += $(shell pkg-config --cflags talloc libarchive)
 +CFLAGS   += -Wall -Wextra
- CFLAGS   += $(shell pkg-config --cflags talloc libarchive)
++CFLAGS   += $(shell ${PKG_CONFIG} --cflags talloc libarchive)
  LDFLAGS  += -Wl,-z,noexecstack
- LDFLAGS  += $(shell pkg-config --libs talloc libarchive)
+-LDFLAGS  += $(shell pkg-config --libs talloc libarchive)
++LDFLAGS  += $(shell ${PKG_CONFIG} --libs talloc libarchive)
+ 
+ CARE_LDFLAGS = -larchive
+ 
+@@ -159,7 +161,7 @@
+ 	$(Q)cat $^                      >> $@
+ 	$(Q)echo "#endif /* BUILD_H */" >> $@
+ 
+-BUILD_ID_NONE := $(shell if ld --build-id=none --version >/dev/null 2>&1; then echo ',--build-id=none'; fi)
++BUILD_ID_NONE := $(shell if ${LD_CMD} --build-id=none --version >/dev/null 2>&1; then echo ',--build-id=none'; fi)
+ 
+ ######################################################################
+ # Build rules
