@@ -6,11 +6,11 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="LaTeX to RTF converter"
-HOMEPAGE="http://latex2rtf.sourceforge.net/"
+HOMEPAGE="https://latex2rtf.sourceforge.net/"
 SRC_URI="mirror://sourceforge/latex2rtf/${P}.tar.gz"
 S="${WORKDIR}/${P%b}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="test"
