@@ -1,0 +1,24 @@
+diff --git a/meson_options.txt b/meson_options.txt
+index 4bdfe8a..17a436f 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -28,3 +28,7 @@ option('symbol-lookup', type: 'feature', value : 'auto',
+ # Documentation
+ option('gtk_doc', type : 'boolean', value : false,
+        description: 'Build the Cairo API reference (depends on gtk-doc)')
++
++# Gentoo specific
++option('malloc-stats', type : 'boolean', value : 'true',
++       description: 'Build util/malloc-stats.c (requires glibc)')
+diff --git a/util/meson.build b/util/meson.build
+index 5cc209c..ef096a9 100644
+--- a/util/meson.build
++++ b/util/meson.build
+@@ -59,6 +59,6 @@ foreach util : cairo_utils
+   )
+ endforeach
+ 
+-if conf.get('CAIRO_HAS_DLSYM', 0) == 1 and cc.has_header('execinfo.h')
++if conf.get('CAIRO_HAS_DLSYM', 0) == 1 and get_option('malloc-stats') 
+   libmallocstats = library('malloc-stats', 'malloc-stats.c', dependencies : dl_dep)
+ endif
