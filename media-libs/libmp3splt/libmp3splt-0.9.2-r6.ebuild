@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,10 +6,10 @@ EAPI=8
 inherit autotools flag-o-matic
 
 DESCRIPTION="Library for mp3splt to split mp3 and ogg files without decoding"
-HOMEPAGE="http://mp3splt.sourceforge.net/mp3splt_page/home.php"
+HOMEPAGE="https://mp3splt.sourceforge.net/mp3splt_page/home.php"
 SRC_URI="mirror://sourceforge/${PN:3}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 sparc x86"
 IUSE="doc flac pcre"
@@ -49,7 +49,7 @@ src_configure() {
 	append-libs -ldl
 
 	local myeconfargs=(
-		--disable-cutter # TODO package cutter <http://cutter.sourceforge.net/>
+		--disable-cutter # TODO package cutter <https://cutter.sourceforge.net/>
 		--disable-optimise
 		--disable-static
 		$(use_enable doc doxygen_doc)
