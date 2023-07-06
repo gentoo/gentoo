@@ -22,6 +22,7 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
+	<dev-python/pydantic-2[${PYTHON_USEDEP}]
 	>=dev-python/pydantic-1.10.2[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.21.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.28.1[${PYTHON_USEDEP}]
