@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	app-text/poppler:=
 	dev-perl/XML-LibXML
 	media-fonts/ipaex
-	media-libs/netpbm
+	media-libs/netpbm[png]
 	media-libs/opencv
 	l10n_fr? ( app-text/texlive[l10n_fr] )
 	l10n_ja? ( app-text/texlive[l10n_ja] )
