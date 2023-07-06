@@ -47,4 +47,7 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# Internet
 	tests/auth/expiring.py::TestCredentialsOnline::test_bad_arguments_raises_error
+	# minor mismatch due to pydantic-2
+	# https://github.com/felix-hilden/tekore/issues/293
+	tests/model.py::TestModel::test_enum_in_model
 )
