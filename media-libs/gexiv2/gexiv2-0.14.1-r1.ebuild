@@ -3,12 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit gnome.org meson python-r1 vala
 
 DESCRIPTION="GObject-based wrapper around the Exiv2 library"
 HOMEPAGE="https://wiki.gnome.org/Projects/gexiv2"
+SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${P}-Fix-compatibility-with-exiv2-main-branch.patch.xz"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gexiv2.git"
@@ -50,6 +51,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PV}-revert-default-cpp_stdto17.patch"
+	"${WORKDIR}/${P}-Fix-compatibility-with-exiv2-main-branch.patch"
 )
 
 src_prepare() {
