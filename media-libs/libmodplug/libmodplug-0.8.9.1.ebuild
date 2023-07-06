@@ -8,7 +8,7 @@ MY_PVR="${PV}.r461"
 inherit autotools multilib-minimal
 
 DESCRIPTION="Library for playing MOD-like music files"
-HOMEPAGE="http://modplug-xmms.sourceforge.net/"
+HOMEPAGE="https://modplug-xmms.sourceforge.net/"
 SRC_URI="https://github.com/ShiftMediaProject/modplug/archive/refs/tags/${MY_PVR}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/modplug-${MY_PVR}"
 
