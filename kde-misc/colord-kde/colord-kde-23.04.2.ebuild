@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X=]
 "
 RDEPEND="${COMMON_DEPEND}
 	dev-libs/kirigami-addons:5
