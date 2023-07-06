@@ -77,6 +77,9 @@ all_ruby_prepare() {
 	# This fails when localhost resolves to ::1 which may be a
 	# ruby regression in the drb/acl code.
 	rm -f spec/rspec/core/bisect/server_spec.rb || die
+
+	# Avoid old regression check (already fixed upstream)
+	sed -i -e '/uses only one thread local variable/askip "old safety check"' spec/rspec/core_spec.rb || die
 }
 
 each_ruby_prepare() {
