@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Implementation of Microsoft's Media Transfer Protocol (MTP)"
-HOMEPAGE="http://libmtp.sourceforge.net/"
+HOMEPAGE="https://libmtp.sourceforge.net/"
 
 LICENSE="LGPL-2.1" # LGPL-2+ and LGPL-2.1+ ?
 SLOT="0/9" # Based on SONAME of libmtp shared library
