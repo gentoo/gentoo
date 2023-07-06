@@ -34,7 +34,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit babeltrace bpf caps clang crypt debug +doc gtk java libpfm libtraceevent libtracefs lzma numa perl python slang systemtap tcmalloc unwind zstd"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	bpf? ( clang )
+	${PYTHON_REQUIRED_USE}
+"
 
 # setuptools (and Python) are always needed even if not building Python bindings
 BDEPEND="
@@ -197,7 +200,7 @@ src_prepare() {
 	find -name '*.S' -exec sed -i '$a.section .note.GNU-stack,"",%progbits' {} +
 }
 
-puse() { usex $1 "" no; }
+puse() { usex $1 "" 1; }
 perf_make() {
 	# The arch parsing is a bit funky.  The perf tools package is integrated
 	# into the kernel, so it wants an ARCH that looks like the kernel arch,
@@ -224,14 +227,13 @@ perf_make() {
 		BUILD_BPF_SKEL=$(usex bpf 1 "") \
 		BUILD_NONDISTRO=1
 		JDIR="${java_dir}"
-		LIBCLANGLLVM=$(usex clang 1 "")
-		LIBPFM4=$(usex libpfm 1 "")
-		NO_AUXTRACE=""
-		NO_BACKTRACE=""
 		CORESIGHT=
-		NO_DEMANGLE=
 		GTK2=$(usex gtk 1 "")
+		LIBCLANGLLVM=$(usex clang 1 "")
 		feature-gtk2-infobar=$(usex gtk 1 "")
+		NO_AUXTRACE=
+		NO_BACKTRACE=
+		NO_DEMANGLE=
 		NO_JEVENTS=$(puse python)
 		NO_JVMTI=$(puse java)
 		NO_LIBAUDIT=$(puse audit)
@@ -244,6 +246,7 @@ perf_make() {
 		NO_LIBELF=
 		NO_LIBNUMA=$(puse numa)
 		NO_LIBPERL=$(puse perl)
+		NO_LIBPFM4=$(puse libpfm)
 		NO_LIBPYTHON=$(puse python)
 		NO_LIBTRACEEVENT=$(puse libtraceevent)
 		NO_LIBUNWIND=$(puse unwind)
@@ -252,7 +255,7 @@ perf_make() {
 		NO_SLANG=$(puse slang)
 		NO_LZMA=$(puse lzma)
 		NO_ZLIB=
-		TCMALLOC=$(usex tcmalloc)
+		TCMALLOC=$(usex tcmalloc 1 "")
 		WERROR=0
 		LIBDIR="/usr/libexec/perf-core"
 		libdir="${EPREFIX}/usr/$(get_libdir)"
