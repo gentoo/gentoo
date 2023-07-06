@@ -5,7 +5,7 @@ EAPI=8
 inherit autotools flag-o-matic
 
 DESCRIPTION="TSE3 Sequencer library"
-HOMEPAGE="http://TSE3.sourceforge.net"
+HOMEPAGE="https://TSE3.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	mirror://gentoo/${P}-awe_voice.h.tbz2"
 
@@ -16,7 +16,6 @@ IUSE="alsa oss"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )"
 DEPEND="${RDEPEND}"
-BDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.2.7-size_t-64bit.patch"
