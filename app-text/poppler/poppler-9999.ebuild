@@ -18,7 +18,7 @@ else
 	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-	SLOT="0/129"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SLOT="0/130"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
@@ -114,7 +114,6 @@ src_configure() {
 		-DTESTDATADIR="${WORKDIR}"/test-${TEST_COMMIT}
 		-DRUN_GPERF_IF_PRESENT=OFF
 		-DENABLE_BOOST="$(usex boost)"
-		-DENABLE_ZLIB=ON
 		-DENABLE_ZLIB_UNCOMPRESS=OFF
 		-DENABLE_UNSTABLE_API_ABI_HEADERS=ON
 		-DUSE_FLOAT=OFF
