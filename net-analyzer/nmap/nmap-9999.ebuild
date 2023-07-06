@@ -27,7 +27,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-7.94-patches.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-7.95-patches.tar.xz"
 
 # https://github.com/nmap/nmap/issues/2199
 LICENSE="NPSL-0.95"
@@ -41,7 +41,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	dev-libs/liblinear:=
-	dev-libs/libpcre
+	dev-libs/libpcre2
 	net-libs/libpcap
 	ndiff? ( ${PYTHON_DEPS} )
 	libssh2? (
@@ -80,7 +80,7 @@ if [[ ${PV} != *9999* ]] ; then
 fi
 
 PATCHES=(
-	"${WORKDIR}"/${PN}-7.94-patches
+	"${WORKDIR}"/${PN}-7.95-patches
 )
 
 pkg_setup() {
