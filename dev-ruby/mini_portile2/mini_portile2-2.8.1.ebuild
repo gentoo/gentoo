@@ -15,6 +15,8 @@ SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
 
+BDEPEND="test? ( dev-util/cmake )"
+
 ruby_add_bdepend "test? (
 	dev-ruby/minitar
 	dev-ruby/minitest-hooks
