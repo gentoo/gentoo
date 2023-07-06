@@ -55,6 +55,9 @@ BDEPEND="
 # NOTE: Considering patching Botan?
 # Please see upstream's guidance:
 # https://botan.randombit.net/handbook/packaging.html#minimize-distribution-patches
+PATCHES=(
+	"${FILESDIR}"/${P}-getentropy-includes.patch
+)
 
 python_check_deps() {
 	use doc || return 0
