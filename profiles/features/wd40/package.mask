@@ -18,8 +18,13 @@ dev-lang/rust-bin
 >=dev-lang/spidermonkey-78
 >=dev-libs/gjs-1.66
 dev-python/autobahn
+dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
+dev-python/cfn-lint
 >=dev-python/cryptography-36
+dev-python/dirty-equals
+dev-python/inflect
+dev-python/jaraco-itertools
 dev-python/josepy
 dev-python/jsonschema-spec
 dev-python/jsonschema-specifications
@@ -41,6 +46,8 @@ dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
 dev-python/pooch
+dev-python/pydantic
+dev-python/pydantic-core
 dev-python/pyfuse3
 >=dev-python/pyopenssl-22
 dev-python/pymdown-extensions
@@ -90,6 +97,7 @@ gnome-extra/sushi
 >=media-gfx/libimagequant-4
 >=media-libs/libopenraw-0.3.2
 media-video/rav1e
+net-analyzer/wtfis
 net-im/gajim
 >=net-irc/polari-3.37
 net-libs/quiche

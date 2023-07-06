@@ -1,6 +1,13 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2023-06-06)
+# Packages needing dev-python/pydantic.
+dev-python/jaraco-itertools test
+dev-python/jaraco-text cli
+dev-python/versioningit test
+dev-python/zipp test
+
 # matoro <matoro_gentoo@matoro.tk> (2023-06-09)
 # Deps on several mkdocs plugins (#882593)
 dev-python/bracex doc
