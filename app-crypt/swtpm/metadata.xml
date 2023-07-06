@@ -15,6 +15,8 @@
 	</maintainer>
 	<use>
 		<flag name="fuse">Support <pkg>sys-fs/fuse</pkg> based /dev/tpm interface</flag>
+		<flag name="gnutls">Use <pkg>net-libs/gnutls</pkg> as crypto engine</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto engine</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">stefanberger/swtpm</remote-id>
