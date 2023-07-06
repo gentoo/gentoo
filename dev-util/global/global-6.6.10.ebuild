@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
 		app-text/texi2html
+		app-text/texlive-core
 		sys-apps/texinfo
 	)
 "
