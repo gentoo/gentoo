@@ -25,6 +25,7 @@
     <flag name="imaging">Building Imaging modules</flag>
     <flag name="las">Build support for LiDAR files</flag>
     <flag name="logging">Build the logging module</flag>
+    <flag name="opencascade">Enable OpenCASCADE support</flag>
     <flag name="openvdb">Build support to handle VDB data files</flag>
     <flag name="pdal">Build support to handle point cloud data files</flag>
     <flag name="qt6">Use Qt6 packages instead of Qt5</flag>
