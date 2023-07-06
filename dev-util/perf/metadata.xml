@@ -2,16 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <maintainer type="person">
     <email>naota@gentoo.org</email>
     <name>Naohiro Aota</name>
   </maintainer>
   <maintainer type="person">
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>amadio@gentoo.org</email>
-    <name>Guilherme Amadio</name>
   </maintainer>
   <use>
     <flag name="bpf">Enable support for eBPF features with <pkg>dev-libs/libbpf</pkg></flag>
