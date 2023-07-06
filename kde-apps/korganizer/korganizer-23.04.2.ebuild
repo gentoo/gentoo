@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/korganizer/"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="telemetry X"
+IUSE="telemetry"
 
 # testkodaymatrix is broken, akonadi* tests need DBus, bug #665686
 RESTRICT="test"
@@ -25,6 +25,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=kde-apps/akonadi-${PVCUT}:5
 	>=kde-apps/akonadi-calendar-${PVCUT}:5
 	>=kde-apps/akonadi-contacts-${PVCUT}:5
@@ -61,11 +62,8 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	x11-libs/libX11
 	telemetry? ( >=dev-libs/kuserfeedback-1.2.0:5 )
-	X? (
-		>=dev-qt/qtx11extras-${QTMIN}:5
-		x11-libs/libX11
-	)
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/designer-${QTMIN}:5
@@ -80,7 +78,6 @@ BDEPEND="test? ( >=kde-apps/akonadi-${PVCUT}:5[tools] )"
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package telemetry KUserFeedback)
-		$(cmake_use_find_package X X11)
 	)
 
 	ecm_src_configure
