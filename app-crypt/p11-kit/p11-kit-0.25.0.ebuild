@@ -24,6 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
 "
 
