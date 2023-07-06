@@ -24,7 +24,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	dev-python/pydantic[${PYTHON_USEDEP}]
+	<dev-python/pydantic-2[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2021.3[${PYTHON_USEDEP}]
 "
 BDEPEND="
