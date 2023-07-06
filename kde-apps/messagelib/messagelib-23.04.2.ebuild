@@ -41,7 +41,7 @@ DEPEND="
 	>=kde-apps/kmailtransport-${PVCUT}:5
 	>=kde-apps/kmbox-${PVCUT}:5
 	>=kde-apps/kmime-${PVCUT}:5
-	>=kde-apps/kpimtextedit-${PVCUT}:5[speech?]
+	>=kde-apps/kpimtextedit-${PVCUT}:5[speech=]
 	>=kde-apps/libgravatar-${PVCUT}:5
 	>=kde-apps/libkdepim-${PVCUT}:5
 	>=kde-apps/libkleo-${PVCUT}:5
