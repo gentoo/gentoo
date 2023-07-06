@@ -10,7 +10,7 @@ DESCRIPTION="Tag system to find an object location in various sources"
 HOMEPAGE="https://www.gnu.org/software/global/global.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc emacs"
