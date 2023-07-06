@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/konqueror/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="activities speech X"
+IUSE="activities speech"
 
 # 4 of 4 tests fail. Last checked for 4.0.3
 RESTRICT="test"
@@ -26,6 +26,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtscript-${QTMIN}:5
 	>=dev-qt/qtwebengine-${QTMIN}:5[widgets]
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
@@ -52,7 +53,6 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	sys-libs/zlib
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
-	X? ( >=dev-qt/qtx11extras-${QTMIN}:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
@@ -73,7 +73,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Hunspell=ON # requires fixing bug 634122
 		$(cmake_use_find_package activities KF5Activities)
 		$(cmake_use_find_package speech Qt5TextToSpeech)
-		-DWITHOUT_X11=$(usex !X)
+		-DWITHOUT_X11=OFF
 	)
 	ecm_src_configure
 }
