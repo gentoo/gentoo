@@ -36,6 +36,7 @@
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
 >=gui-libs/gtk-4.11
+>=gui-libs/libadwaita-1.4_alpha
 
 # Michael Orlitzky <mjo@gentoo.org> (2023-07-05)
 # I suspect I was its only user, and I'm not a user any more. Upstream
