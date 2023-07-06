@@ -247,7 +247,7 @@ openldap_find_versiontags() {
 			fail=1
 		fi
 		if has_version "${CATEGORY}/${PN}[berkdb]" || grep -sq '^backend.*(bdb|hdb)' /etc/openldap/slapd.conf; then
-			eerror "	OpenLDAP >= 2.6.x has dropped support for Berkeley DB."
+			eerror "	OpenLDAP >= 2.5.x has dropped support for Berkeley DB."
 			eerror "	You will need to migrate per upstream's migration notes"
 			eerror "	at https://www.openldap.org/doc/admin25/appendix-upgrading.html."
 			eerror "	Your existing database will not be accessible until it is"
