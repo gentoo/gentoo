@@ -12,7 +12,7 @@ COMMIT="42b3557e13e0fe01a83465b672d89faddbe65f49"
 MY_P="sox-code-${COMMIT}"
 
 DESCRIPTION="The swiss army knife of sound processing programs"
-HOMEPAGE="http://sox.sourceforge.net"
+HOMEPAGE="https://sox.sourceforge.net"
 # Source: https://sourceforge.net/code-snapshots/git/s/so/sox/code.git/${MY_P}.zip
 SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/${MY_P}.zip -> ${P}.zip"
 S="${WORKDIR}/${MY_P}"
