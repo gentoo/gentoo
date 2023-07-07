@@ -6,10 +6,10 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Program to convert abc files to Postscript files"
-HOMEPAGE="https://github.com/leesavide/abcm2ps"
-SRC_URI="https://github.com/leesavide/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/lewdlime/abcm2ps"
+SRC_URI="https://github.com/lewdlime/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="examples pango"
