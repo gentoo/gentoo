@@ -13,7 +13,7 @@ S="${S}"/src
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"  # Additionally arm64 is officially supported.
+KEYWORDS="amd64"  # Additionally arm64 is officially supported.
 IUSE="blowfish gdbm gui postgres"
 
 RDEPEND="
