@@ -20,10 +20,15 @@ SRC_URI="https://github.com/lostisland/faraday-multipart/archive/v${PV}.tar.gz -
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/multipart-post:0"
+
+ruby_add_bdepend "test? (
+	|| ( dev-ruby/faraday:2 dev-ruby/faraday:1 )
+	dev-ruby/multipart-parser
+)"
 
 all_ruby_prepare() {
 	sed -i -e "s:_relative ':'./:" ${RUBY_FAKEGEM_GEMSPEC} || die
