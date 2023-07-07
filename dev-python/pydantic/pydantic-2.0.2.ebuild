@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	>=dev-python/annotated-types-0.4.0[${PYTHON_USEDEP}]
