@@ -16,7 +16,7 @@ S="${WORKDIR}/${P^}"
 LICENSE="GPL-3+ Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="+plugins system-mathjax"
+IUSE="+plugins"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -41,7 +41,6 @@ RDEPEND="
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]') )
-	system-mathjax? ( dev-libs/mathjax )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -63,7 +62,7 @@ src_configure() {
 		-DUSE_SYSTEM_LIBS=1
 		-DUSE_QT6=0
 	)
-	use system-mathjax && mycmakeargs+=( -DMATHJAX_DIR="${EPREFIX}"/usr/share/mathjax )
+	# use system-mathjax && mycmakeargs+=( -DMATHJAX3_DIR="${EPREFIX}"/usr/share/mathjax )
 
 	cmake_src_configure
 }
