@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools flag-o-matic
 
 DESCRIPTION="An audio player, primarily for the console"
-HOMEPAGE="http://splay.sourceforge.net/"
-SRC_URI="http://splay.sourceforge.net/tgz/${P}.tar.gz"
+HOMEPAGE="https://splay.sourceforge.net/"
+SRC_URI="https://splay.sourceforge.net/tgz/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
