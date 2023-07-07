@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="True Audio Compressor Software"
-HOMEPAGE="http://tta.sourceforge.net"
+HOMEPAGE="https://tta.sourceforge.net"
 SRC_URI="mirror://sourceforge/tta/${P}-src.tgz"
 S="${WORKDIR}/${P}-src"
 
