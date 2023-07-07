@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/alsa-lib:0=
-	media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
+	media-video/ffmpeg:=[vorbis?,vpx?,x264?,mp3?,theora?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
