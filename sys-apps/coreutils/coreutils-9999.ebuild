@@ -220,7 +220,7 @@ src_test() {
 
 	addwrite /dev/full
 	#export RUN_EXPENSIVE_TESTS="yes"
-	#export FETISH_GROUPS="portage wheel"
+	#export COREUTILS_GROUPS="portage wheel"
 	env PATH="${T}/mount-wrappers:${PATH}" gl_public_submodule_commit= \
 		emake -k check VERBOSE=yes
 }
