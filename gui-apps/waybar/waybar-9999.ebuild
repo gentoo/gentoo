@@ -78,6 +78,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	local emesonargs=(
 		-Dman-pages=enabled
+		-Dcava=disabled
 		$(meson_feature evdev libevdev)
 		$(meson_feature jack)
 		$(meson_feature libinput)
