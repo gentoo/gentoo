@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools qmake-utils
 
 DESCRIPTION="QMidiRoute is a filter/router for MIDI events"
-HOMEPAGE="http://alsamodular.sourceforge.net"
+HOMEPAGE="https://alsamodular.sourceforge.net"
 SRC_URI="mirror://sourceforge/alsamodular/${P}.tar.bz2"
 
 LICENSE="GPL-2"
