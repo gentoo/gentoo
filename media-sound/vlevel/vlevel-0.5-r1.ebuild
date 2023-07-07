@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,10 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Dynamic compressor to amplify quiet parts of music"
-HOMEPAGE="http://vlevel.sourceforge.net/"
+HOMEPAGE="https://vlevel.sourceforge.net/"
 SRC_URI="mirror://sourceforge/vlevel/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 
