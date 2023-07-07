@@ -12,7 +12,7 @@ SRC_URI="https://github.com/containers/buildah/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="selinux"
 RESTRICT="test"
 
