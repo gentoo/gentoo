@@ -3,6 +3,11 @@
 
 EAPI=7
 
+# Packages sharing a common release tarball:
+# app-admin/eselect
+# app-emacs/eselect-mode
+# Please bump and mark them stable together!
+
 inherit elisp
 
 MY_P="eselect-${PV}"
