@@ -155,7 +155,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	linux-mod-r1_pkg_postrm
 	udev_reload
 
 	if use daemon ; then
