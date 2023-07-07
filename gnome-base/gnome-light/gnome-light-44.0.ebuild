@@ -19,29 +19,29 @@ KEYWORDS="amd64 ~arm ~ppc64 ~riscv x86"
 # any apps, but shouldn't be used by users unless they know what they are doing.
 # cantarell minimum version is ensured here as gnome-shell depends on it.
 RDEPEND="
-	>=gnome-base/gnome-core-libs-${PV}[cups?]
+	>=gnome-base/gnome-core-libs-40.0[cups?]
 
-	>=gnome-base/gnome-session-40.0
-	>=gnome-base/gnome-settings-daemon-40.0[cups?]
-	>=gnome-base/gnome-control-center-40.0[cups?]
+	>=gnome-base/gnome-session-${PV}
+	>=gnome-base/gnome-settings-daemon-${PV}[cups?]
+	>=gnome-base/gnome-control-center-${PV}[cups?]
 
-	>=gnome-base/nautilus-40.0
+	>=gnome-base/nautilus-${PV}
 
 	gnome-shell? (
 		>=x11-wm/mutter-${PV}
-		>=dev-libs/gjs-1.68.0
+		>=dev-libs/gjs-1.76.0
 		>=gnome-base/gnome-shell-${PV}
-		>=media-fonts/cantarell-0.301
+		>=media-fonts/cantarell-0.303.1
 	)
 
-	>=x11-themes/adwaita-icon-theme-40.0
+	>=x11-themes/adwaita-icon-theme-${PV}
 	>=x11-themes/gnome-themes-standard-3.28
-	>=x11-themes/gnome-backgrounds-${P_RELEASE}
+	>=x11-themes/gnome-backgrounds-${PV}
 
-	>=gui-apps/gnome-console-44.0
+	>=gui-apps/gnome-console-${PV}
 "
 DEPEND=""
-PDEPEND=">=gnome-base/gvfs-1.48.0"
+PDEPEND=">=gnome-base/gvfs-1.50.4"
 BDEPEND=""
 S="${WORKDIR}"
 
