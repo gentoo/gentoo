@@ -38,7 +38,7 @@ RDEPEND="
 	>=x11-themes/gnome-themes-standard-3.28
 	>=x11-themes/gnome-backgrounds-${P_RELEASE}
 
-	>=x11-terms/gnome-console-44.0
+	>=gui-apps/gnome-console-44.0
 "
 DEPEND=""
 PDEPEND=">=gnome-base/gvfs-1.48.0"
