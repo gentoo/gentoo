@@ -28,7 +28,7 @@ HOMEPAGE="https://www.cups.org/ https://github.com/OpenPrinting/cups"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="acl dbus debug kerberos openssl pam selinux static-libs systemd test usb X xinetd zeroconf"
+IUSE="acl dbus debug filters libpaper kerberos openssl pam selinux static-libs systemd test usb X xinetd zeroconf"
 
 # As of 2.4.2, they don't actually seem to be interactive (they pass some flags
 # by default to input for us), but they fail on some greyscale issue w/ poppler?
@@ -40,7 +40,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	app-text/libpaper:=
+	libpaper? ( app-text/libpaper:= )
 	sys-libs/zlib
 	acl? (
 		kernel_linux? (
@@ -66,7 +66,9 @@ RDEPEND="
 	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
 "
-PDEPEND=">=net-print/cups-filters-1.0.43"
+PDEPEND="
+	filters? ( >=net-print/cups-filters-1.0.43 )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.1-nostrip.patch"
@@ -168,7 +170,7 @@ multilib_src_configure() {
 		$(use_with systemd ondemand systemd)
 		$(multilib_native_use_enable usb libusb)
 		$(use_with zeroconf dnssd avahi)
-		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper)
+		$(multilib_is_native_abi && use_enable libpaper || echo --disable-libpaper)
 	)
 
 	# Handle empty LINGUAS properly, bug #771162
