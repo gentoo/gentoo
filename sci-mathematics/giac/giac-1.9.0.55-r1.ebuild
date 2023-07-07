@@ -22,23 +22,26 @@ done
 
 # nauty and cliquer are automagical dependencies
 RDEPEND="dev-libs/gmp:=[cxx(+)]
-	sys-libs/readline:=
-	gui? ( x11-libs/fltk[opengl]
-		media-libs/libpng:= )
-	ao? ( media-libs/libao )
 	dev-libs/mpfr:=
+	dev-libs/ntl:=
+	net-misc/curl
 	sci-libs/mpfi
 	sci-libs/gsl:=
-	sci-mathematics/pari:=[threads]
-	dev-libs/ntl:=
-	virtual/lapack
-	virtual/blas
-	net-misc/curl
 	sci-mathematics/cliquer
 	sci-mathematics/nauty
+	sci-mathematics/pari:=[threads]
+	sys-libs/readline:=
+	virtual/lapack
+	virtual/blas
+	ao? ( media-libs/libao )
 	ecm? ( sci-mathematics/gmp-ecm )
+	gc? ( dev-libs/boehm-gc )
 	glpk? ( sci-mathematics/glpk )
-	gc? ( dev-libs/boehm-gc )"
+	gui? (
+		media-libs/libpng:=
+		x11-libs/fltk[opengl]
+		x11-libs/gl2ps
+	)"
 
 DEPEND="${RDEPEND}"
 
@@ -52,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.0.21-pari-2.15.patch"
 	"${FILESDIR}/${PN}-1.9.0.55-pari-2.15-test.patch"
 	"${FILESDIR}/${PN}-1.9.0.55-undefined-behavior.patch"
+	"${FILESDIR}/${PN}-1.9.0.55-system-gl2ps.patch"
 )
 
 REQUIRED_USE="test? ( gui )"
@@ -68,6 +72,10 @@ src_prepare() {
 	# if you pass --enable-fltk but the system version isn't detected.
 	# We make sure that cannot happen under any circumstances.
 	rm fltk-1.3.8-source.tar.bz2 || die
+
+	# similar deal with gl2ps
+	rm src/gl2ps.[ch] || die
+
 	default
 	eautoreconf
 }
