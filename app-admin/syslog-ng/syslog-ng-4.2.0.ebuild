@@ -108,6 +108,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Needs bison/flex.
+	unset YACC LEX
+
 	local myconf=(
 		--disable-docs
 		--disable-java
