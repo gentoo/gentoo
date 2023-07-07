@@ -61,6 +61,7 @@ CHECKREQS_MEMORY="10G"
 
 PATCHES=(
 	"${FILESDIR}/zig-0.10.0-build-dir-install-stage3.patch"
+	"${FILESDIR}/zig-0.10.1-musl-1.2.4-lfs64.patch"
 )
 
 llvm_check_deps() {
