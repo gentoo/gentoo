@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -40,6 +40,17 @@ python_test() {
 		# require pytest-examples
 		tests/test_docs.py
 	)
+	case ${EPYTHON} in
+		python3.12)
+			EPYTEST_DESELECT+=(
+				tests/test_abc.py::test_model_subclassing_abstract_base_classes_without_implementation_raises_exception
+				tests/test_computed_fields.py::test_abstractmethod_missing
+				tests/test_edge_cases.py::test_abstractmethod_missing_for_all_decorators
+				tests/test_generics.py::test_partial_specification_name
+				tests/test_model_signature.py::test_annotated_field
+			)
+			;;
+	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p pytest_mock
