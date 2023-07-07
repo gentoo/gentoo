@@ -25,6 +25,11 @@ FILECAPS=(
 	cap_net_admin=eip usr/bin/iotop
 )
 
+src_prepare() {
+	sed -e 's/-D_FORTIFY_SOURCE=2//' -i Makefile || die
+	default
+}
+
 src_compile() {
 	emake V=1 CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)" NO_FLTO=1
 }
