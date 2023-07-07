@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Author a DVD-Audio DVD"
-HOMEPAGE="http://dvd-audio.sourceforge.net"
+HOMEPAGE="https://dvd-audio.sourceforge.net"
 SRC_URI="mirror://sourceforge/dvd-audio/${P}-300.tar.gz"
 
 LICENSE="GPL-3"
