@@ -82,7 +82,7 @@ src_install() {
 
 	# CGI needs to be able to read /etc/vpopmail.conf
 	# Which is 0640 root:vpopmail, as it contains passwords
-	cgi=/usr/share/webapps/${PN}/${PV}/hostroot/cgi-bin/qmailadmin
+	cgi="${MY_CGIBINDIR}"/qmailadmin
 	fowners root:vpopmail ${cgi}
 	fperms g+s ${cgi}
 }
