@@ -24,7 +24,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc"
 
-DEPEND+=" app-arch/gzip"
+BDEPEND+=" app-alternatives/gzip"
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.8 )
 	doc? ( dev-ruby/rdoc )"
