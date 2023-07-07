@@ -77,6 +77,7 @@ dev-perl/Gtk2-Notify
 >=media-gfx/gnome-font-viewer-45_alpha
 >=net-misc/gnome-remote-desktop-45_alpha
 >=sys-apps/baobab-45_alpha
+>=x11-wm/mutter-45_alpha
 
 # Michael Orlitzky <mjo@gentoo.org> (2023-07-05)
 # I suspect I was its only user, and I'm not a user any more. Upstream
