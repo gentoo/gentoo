@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake desktop xdg
 
 DESCRIPTION="FastTracker 2 inspired music tracker"
-HOMEPAGE="https://milkytracker.titandemo.org/"
+HOMEPAGE="https://milkytracker.org"
 SRC_URI="https://github.com/milkytracker/MilkyTracker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/MilkyTracker-${PV}"
 
