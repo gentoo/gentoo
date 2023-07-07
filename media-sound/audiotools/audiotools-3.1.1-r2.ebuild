@@ -8,11 +8,11 @@ PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
 
-DESCRIPTION="A collection of command line audio tools"
-HOMEPAGE="http://audiotools.sourceforge.net/"
+DESCRIPTION="Collection of command line audio tools"
+HOMEPAGE="https://audiotools.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="aac alsa cdda cdr cue dvda flac gui twolame mp3 opus pulseaudio vorbis wavpack"
