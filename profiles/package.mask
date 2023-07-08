@@ -284,7 +284,6 @@ dev-python/doctest-ignore-unicode
 # Reverse deps (logback-*, netty) are unused Java libraries.
 # Removal on 2023-07-06.
 dev-java/janino
-dev-java/logback-core
 
 # Sam James <sam@gentoo.org> (2023-06-05)
 # Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
