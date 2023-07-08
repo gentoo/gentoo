@@ -32,3 +32,9 @@ src_prepare() {
 
 	qt5-build_src_prepare
 }
+
+src_configure() {
+	# qt5_tools_configure() not enough here, needs another fix, bug 676948
+	qt5_configure_oos_quirk qtqdoc-config.pri src/qdoc
+	qt5-build_src_configure
+}
