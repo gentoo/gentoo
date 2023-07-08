@@ -23,6 +23,7 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
 RDEPEND="
+	dev-ml/dune-build-info:=
 	dev-ml/fix:=
 	dev-ml/menhir:=
 	dev-ml/merlin-extend:=
