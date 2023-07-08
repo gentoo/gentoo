@@ -282,11 +282,6 @@ dev-java/netty
 # Removal on 2023-07-04.
 sci-mathematics/flintqs
 
-# Michał Górny <mgorny@gentoo.org> (2023-06-03)
-# Obsoleted by dev-python/pyspnego.  No revdeps left.
-# Removal on 2023-07-03.  Bug #895004.
-dev-python/ntlm-auth
-
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2023-05-31)
 # Mask this version for uptime soversion issue. There will be an updated release
 # shortly which fixes this.
