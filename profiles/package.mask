@@ -292,11 +292,6 @@ dev-java/netty
 # Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
 =sys-devel/gcc-14.0.0_pre20230604
 
-# Michael Orlitzky <mjo@gentoo.org> (2023-06-04)
-# Obsolete and insecure SageMath (out of tree) dependency.
-# Removal on 2023-07-04.
-sci-mathematics/flintqs
-
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2023-05-31)
 # Mask this version for uptime soversion issue. There will be an updated release
 # shortly which fixes this.
