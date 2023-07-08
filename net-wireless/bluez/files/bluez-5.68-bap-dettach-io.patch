@@ -1,0 +1,101 @@
+From 7b10e72de6f41585f087e6fc338106b44d3e69c9 Mon Sep 17 00:00:00 2001
+From: Pauli Virtanen <pav@iki.fi>
+Date: Sun, 2 Jul 2023 21:43:04 +0300
+Subject: shared/bap: detach io for source ASEs only after Stop Ready
+
+The Client may terminate a CIS when sink is in QOS and source in
+Disabling states (BAP v1.0.1 Sec 5.6.5).  It may also terminate it when
+Receiver Stop Ready has completed successfully (BAP v1.0.1 Sec 5.6.5.1).
+
+It appears Samsung Galaxy Buds2 Pro (R510XXUOAWA5) ignores the Receiver
+Stop Ready command if CIS is already disconnected, and then gets stuck
+in disabling state. It works if CIS is disconnected after Receiver Stop
+Ready.
+
+For better compatibility as client for this device, and since it
+shouldn't matter for us in which order we do it, disconnect CIS after
+completion of Receiver Stop Ready, instead of immediately in Disabling.
+
+We disconnect also if Receiver Stop Ready fails, given that
+disconnecting in Disabled state should be OK.
+
+Link: https://github.com/bluez/bluez/issues/516
+---
+ src/shared/bap.c | 33 +++++++++++++++------------------
+ 1 file changed, 15 insertions(+), 18 deletions(-)
+
+diff --git a/src/shared/bap.c b/src/shared/bap.c
+index a0f5a0ae3c..72ce67c086 100644
+--- a/src/shared/bap.c
++++ b/src/shared/bap.c
+@@ -1168,18 +1168,6 @@ static bool match_stream_io(const void *data, const void *user_data)
+ 	return stream->io == io;
+ }
+ 
+-static void stream_stop_disabling(void *data, void *user_data)
+-{
+-	struct bt_bap_stream *stream = data;
+-
+-	if (stream->io || stream->ep->state != BT_ASCS_ASE_STATE_DISABLING)
+-		return;
+-
+-	DBG(stream->bap, "stream %p", stream);
+-
+-	bt_bap_stream_stop(stream, NULL, NULL);
+-}
+-
+ static bool bap_stream_io_detach(struct bt_bap_stream *stream)
+ {
+ 	struct bt_bap_stream *link;
+@@ -1198,9 +1186,6 @@ static bool bap_stream_io_detach(struct bt_bap_stream *stream)
+ 		/* Detach link if in QoS state */
+ 		if (link->ep->state == BT_ASCS_ASE_STATE_QOS)
+ 			bap_stream_io_detach(link);
+-	} else {
+-		/* Links without IO on disabling state shall be stopped. */
+-		queue_foreach(stream->links, stream_stop_disabling, NULL);
+ 	}
+ 
+ 	stream_io_unref(io);
+@@ -1244,6 +1229,15 @@ static struct bt_bap *bt_bap_ref_safe(struct bt_bap *bap)
+ 	return bt_bap_ref(bap);
+ }
+ 
++static void stream_stop_complete(struct bt_bap_stream *stream, uint8_t code,
++					uint8_t reason,	void *user_data)
++{
++	DBG(stream->bap, "stream %p stop 0x%02x 0x%02x", stream, code, reason);
++
++	if (stream->ep->state == BT_ASCS_ASE_STATE_DISABLING)
++		bap_stream_io_detach(stream);
++}
++
+ static void bap_stream_state_changed(struct bt_bap_stream *stream)
+ {
+ 	struct bt_bap *bap = stream->bap;
+@@ -1271,7 +1265,9 @@ static void bap_stream_state_changed(struct bt_bap_stream *stream)
+ 		bap_stream_update_io_links(stream);
+ 		break;
+ 	case BT_ASCS_ASE_STATE_DISABLING:
+-		bap_stream_io_detach(stream);
++		/* As client, we detach after Receiver Stop Ready */
++		if (!stream->client)
++			bap_stream_io_detach(stream);
+ 		break;
+ 	case BT_ASCS_ASE_STATE_QOS:
+ 		if (stream->io && !stream->io->connecting)
+@@ -1305,8 +1301,9 @@ static void bap_stream_state_changed(struct bt_bap_stream *stream)
+ 			bt_bap_stream_start(stream, NULL, NULL);
+ 		break;
+ 	case BT_ASCS_ASE_STATE_DISABLING:
+-		if (!bt_bap_stream_get_io(stream))
+-			bt_bap_stream_stop(stream, NULL, NULL);
++		/* Send Stop Ready, and detach IO after remote replies */
++		if (stream->client)
++			bt_bap_stream_stop(stream, stream_stop_complete, NULL);
+ 		break;
+ 	}
+ 
+-- 
+cgit 
+

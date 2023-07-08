@@ -1,0 +1,27 @@
+From 8fd0c76b41d35e24e10e45fcf57262482cb978a2 Mon Sep 17 00:00:00 2001
+From: Pauli Virtanen <pav@iki.fi>
+Date: Sun, 2 Jul 2023 22:34:19 +0300
+Subject: shared/bap: use only nonzero req->id
+
+In bap_req_new, use same pattern as elsewhere to not use zero as
+a valid id.
+---
+ src/shared/bap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/shared/bap.c b/src/shared/bap.c
+index cf5d810bba..a0f5a0ae3c 100644
+--- a/src/shared/bap.c
++++ b/src/shared/bap.c
+@@ -4306,7 +4306,7 @@ static struct bt_bap_req *bap_req_new(struct bt_bap_stream *stream,
+ 	static unsigned int id;
+ 
+ 	req = new0(struct bt_bap_req, 1);
+-	req->id = ++id;
++	req->id = ++id ? id : ++id;
+ 	req->stream = stream;
+ 	req->op = op;
+ 	req->iov = util_iov_dup(iov, len);
+-- 
+cgit 
+
