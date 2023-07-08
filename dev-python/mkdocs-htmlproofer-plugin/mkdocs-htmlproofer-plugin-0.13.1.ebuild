@@ -18,7 +18,7 @@ SRC_URI="https://github.com/manuzhang/${PN}/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
