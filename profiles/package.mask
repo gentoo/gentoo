@@ -286,7 +286,6 @@ dev-python/doctest-ignore-unicode
 dev-java/janino
 dev-java/logback-core
 dev-java/logback-classic
-dev-java/netty
 
 # Sam James <sam@gentoo.org> (2023-06-05)
 # Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
