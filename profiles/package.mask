@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-08)
+# Last release in 2010. Upstream is gone. No reverse dependencies.
+# Masked for removal on 2023-08-08
+dev-ruby/annoy
+
+# Hans de Graaff <graaff@gentoo.org> (2023-07-08)
 # Obsolete component for dev-util/cucumber. Discontinued upstream.
 # No reverse dependencies. Masked for removal on 2023-08-08.
 dev-ruby/c21e
