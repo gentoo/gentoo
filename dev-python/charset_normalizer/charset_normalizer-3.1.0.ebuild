@@ -9,6 +9,7 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
+MY_P=charset_normalizer-${PV}
 DESCRIPTION="The Real First Universal Charset Detector"
 HOMEPAGE="
 	https://pypi.org/project/charset-normalizer/
@@ -16,8 +17,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/Ousret/charset_normalizer/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
