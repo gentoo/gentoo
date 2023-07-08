@@ -27,7 +27,7 @@ RUBY_S="rails-${PV}/${PN}"
 
 ruby_add_rdepend "
 	~dev-ruby/actionpack-${PV}
-	~dev-ruby/activerecord-${PV}
+	~dev-ruby/activerecord-${PV}[sqlite]
 	~dev-ruby/activestorage-${PV}
 	~dev-ruby/activesupport-${PV}
 	>=dev-ruby/nokogiri-1.8.5
