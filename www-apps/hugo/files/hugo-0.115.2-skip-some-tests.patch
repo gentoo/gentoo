@@ -1,0 +1,138 @@
+From e1553fba06ef652c55d0d0775098aeae8dd4139c Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Thu, 15 Jun 2023 22:13:18 +0200
+Subject: [PATCH] skip some tests
+
+reasons:
+  - needs to be in a git repo
+  - needs special test dependencies
+  - requires network access
+---
+ hugo-0.113.0-skip-some-tests.patch            | 65 +++++++++++++++++++
+ modules/client_test.go                        |  4 ++
+ .../create/integration_test.go                |  1 +
+ 3 files changed, 70 insertions(+)
+ create mode 100644 hugo-0.113.0-skip-some-tests.patch
+
+diff --git a/hugo-0.113.0-skip-some-tests.patch b/hugo-0.113.0-skip-some-tests.patch
+new file mode 100644
+index 000000000..846d64c95
+--- /dev/null
++++ b/hugo-0.113.0-skip-some-tests.patch
+@@ -0,0 +1,65 @@
++From 6d1aed716addf79cc1148da704282f65bd0ab26f Mon Sep 17 00:00:00 2001
++From: tastytea <tastytea@tastytea.de>
++Date: Thu, 15 Jun 2023 22:13:18 +0200
++Subject: [PATCH] skip some tests
++
++reasons:
++  - needs to be in a git repo
++  - needs special test dependencies
++  - requires network access
++---
++ modules/client_test.go                        |  4 ++
++ .../create/integration_test.go                |  1 +
++ 3 files changed, 5 insertions(+), 44 deletions(-)
++
++diff --git a/modules/client_test.go b/modules/client_test.go
++index 75e3c2b08..235d6ed32 100644
++--- a/modules/client_test.go
+++++ b/modules/client_test.go
++@@ -68,6 +68,7 @@ github.com/gohugoio/hugoTestModules1_darwin/modh2_2@v1.4.0 github.com/gohugoio/h
++ 	}
++ 
++ 	c.Run("All", func(c *qt.C) {
+++		c.Skip("Test dependencies not available")
++ 		client, clean := newClient(c, func(cfg *ClientConfig) {
++ 			cfg.ModuleConfig = DefaultModuleConfig
++ 		}, defaultImport)
++@@ -107,6 +108,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
++ 	})
++ 
++ 	c.Run("IgnoreVendor", func(c *qt.C) {
+++		c.Skip("Test dependencies not available")
++ 		client, clean := newClient(
++ 			c, func(cfg *ClientConfig) {
++ 				cfg.ModuleConfig = DefaultModuleConfig
++@@ -125,6 +127,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
++ 	})
++ 
++ 	c.Run("NoVendor", func(c *qt.C) {
+++		c.Skip("Test dependencies not available")
++ 		mcfg := DefaultModuleConfig
++ 		mcfg.NoVendor = "**"
++ 		client, clean := newClient(
++@@ -144,6 +147,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
++ 	})
++ 
++ 	c.Run("VendorClosest", func(c *qt.C) {
+++		c.Skip("Test dependencies not available")
++ 		mcfg := DefaultModuleConfig
++ 		mcfg.VendorClosest = true
++ 
++diff --git a/resources/resource_factories/create/integration_test.go b/resources/resource_factories/create/integration_test.go
++index 2d9a700d3..42185d9f7 100644
++--- a/resources/resource_factories/create/integration_test.go
+++++ b/resources/resource_factories/create/integration_test.go
++@@ -20,6 +20,7 @@ import (
++ )
++ 
++ func TestGetResourceHead(t *testing.T) {
+++	t.Skip("Requires network access")
++ 
++ 	files := `
++ -- config.toml --
++-- 
++2.39.3
++
+diff --git a/modules/client_test.go b/modules/client_test.go
+index 75e3c2b08..235d6ed32 100644
+--- a/modules/client_test.go
++++ b/modules/client_test.go
+@@ -68,6 +68,7 @@ github.com/gohugoio/hugoTestModules1_darwin/modh2_2@v1.4.0 github.com/gohugoio/h
+ 	}
+ 
+ 	c.Run("All", func(c *qt.C) {
++		c.Skip("Test dependencies not available")
+ 		client, clean := newClient(c, func(cfg *ClientConfig) {
+ 			cfg.ModuleConfig = DefaultModuleConfig
+ 		}, defaultImport)
+@@ -107,6 +108,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
+ 	})
+ 
+ 	c.Run("IgnoreVendor", func(c *qt.C) {
++		c.Skip("Test dependencies not available")
+ 		client, clean := newClient(
+ 			c, func(cfg *ClientConfig) {
+ 				cfg.ModuleConfig = DefaultModuleConfig
+@@ -125,6 +127,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
+ 	})
+ 
+ 	c.Run("NoVendor", func(c *qt.C) {
++		c.Skip("Test dependencies not available")
+ 		mcfg := DefaultModuleConfig
+ 		mcfg.NoVendor = "**"
+ 		client, clean := newClient(
+@@ -144,6 +147,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
+ 	})
+ 
+ 	c.Run("VendorClosest", func(c *qt.C) {
++		c.Skip("Test dependencies not available")
+ 		mcfg := DefaultModuleConfig
+ 		mcfg.VendorClosest = true
+ 
+diff --git a/resources/resource_factories/create/integration_test.go b/resources/resource_factories/create/integration_test.go
+index 2d9a700d3..42185d9f7 100644
+--- a/resources/resource_factories/create/integration_test.go
++++ b/resources/resource_factories/create/integration_test.go
+@@ -20,6 +20,7 @@ import (
+ )
+ 
+ func TestGetResourceHead(t *testing.T) {
++	t.Skip("Requires network access")
+ 
+ 	files := `
+ -- config.toml --
+-- 
+2.39.3
+
