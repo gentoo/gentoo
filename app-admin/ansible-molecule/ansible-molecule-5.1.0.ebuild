@@ -60,6 +60,10 @@ BDEPEND="$(python_gen_cond_dep '
 	)
 ')"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.1.0-mkdocs_google_fonts.patch
+)
+
 # test_role.py doesn't play nicely with FEATURES=usersandbox. As for test_command.py:
 #  - quite a few of these tests use the network;
 #  - test_command_dependency[shell] only works if Molecule has previously been installed;
