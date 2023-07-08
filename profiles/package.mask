@@ -265,12 +265,6 @@ media-plugins/gst-plugins-va
 # Removal on 2023-07-10.  Bug #908227.
 dev-python/PyPDF2
 
-# Michał Górny <mgorny@gentoo.org> (2023-06-09)
-# Requires dev-python/nose.  Last activity in 2013.  No reverse
-# dependencies left.
-# Removal on 2023-07-09.  Bug #888245.
-dev-python/doctest-ignore-unicode
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-06-08)
 # May be broken on some arches due to weird LLVM interaction.
 # Masked for now.
