@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,7 @@ IUSE="ipv6 static +tools"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4-configure-clang16.patch
+	"${FILESDIR}"/${PN}-0.4-configure-pton-ntop-clang16.patch
 )
 
 src_configure() {
