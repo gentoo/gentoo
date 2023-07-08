@@ -70,6 +70,11 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable threads)
 	)
+
+	# macOS linker/libtool seems to automatically hide all the symbols.
+	# libintl only works with a symbol list and without -fvisibility=hidden.
+	[[ ${CHOST} == *-darwin* ]] && export gl_cv_cc_visibility=no
+
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
 
