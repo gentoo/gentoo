@@ -50,7 +50,7 @@ RDEPEND="
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
-	ensurepip? ( dev-python/ensurepip-wheels )
+	ensurepip? ( dev-python/ensurepip-pip )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
@@ -73,7 +73,9 @@ DEPEND="
 	bluetooth? ( net-wireless/bluez )
 	test? (
 		app-arch/xz-utils[extra-filters(+)]
-		dev-python/ensurepip-wheels
+		dev-python/ensurepip-pip
+		dev-python/ensurepip-setuptools
+		dev-python/ensurepip-wheel
 	)
 	valgrind? ( dev-util/valgrind )
 "
