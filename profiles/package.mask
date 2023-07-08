@@ -304,12 +304,6 @@ sci-mathematics/flintqs
 # Bug: #907211
 =dev-libs/imath-3.1.7
 
-# Michał Górny <mgorny@gentoo.org> (2023-05-31)
-# Unmaintained.  Last commit in 2020.  Does not work with Python 3.12.
-# No revdeps.
-# Removal on 2023-06-30.  Bug #907495.
-dev-python/http-parser
-
 # Sam James <sam@gentoo.org> (2023-05-24)
 # Breaks building C++ consumers at least: bug #906755, bug #906879, bug #906957.
 # Please upgrade to >=0.5.1.
