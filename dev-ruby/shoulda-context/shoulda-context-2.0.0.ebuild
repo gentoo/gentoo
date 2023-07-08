@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc test"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2
-	dev-ruby/mocha )"
+	>=dev-ruby/mocha-1.0 )"
 
 all_ruby_prepare() {
 	sed -e '/\(current_bundle\|CurrentBundle\)/ s:^:#:' \
