@@ -279,12 +279,6 @@ dev-python/doctest-ignore-unicode
 ~dev-lang/rust-bin-1.70.0
 ~virtual/rust-1.70.0
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-06-06)
-# Vulnerable CVE-2023-33546, Bug #907927.
-# Reverse deps (logback-*, netty) are unused Java libraries.
-# Removal on 2023-07-06.
-dev-java/janino
-
 # Sam James <sam@gentoo.org> (2023-06-05)
 # Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
 =sys-devel/gcc-14.0.0_pre20230604
