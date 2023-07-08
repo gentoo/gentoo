@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-07-08)
+# Obsolete component for dev-util/cucumber. Discontinued upstream.
+# No reverse dependencies. Masked for removal on 2023-08-08.
+dev-ruby/c21e
+
 # Hans de Graaff <graaff@gentoo.org> (2023-07-06)
 # Last release in 2012. Upstream is gone. No reverse dependencies.
 # Masked for removal on 2023-08-06.
