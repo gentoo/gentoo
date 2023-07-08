@@ -10,13 +10,14 @@ inherit perl-module
 DESCRIPTION="Parse informal natural language date/time strings"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
 	dev-perl/Clone
 	dev-perl/Date-Calc
 	dev-perl/DateTime
+	dev-perl/DateTime-HiRes
 	dev-perl/DateTime-TimeZone
 	virtual/perl-Exporter
 	virtual/perl-Getopt-Long
@@ -32,7 +33,7 @@ BDEPEND="
 	>=dev-perl/Module-Build-0.420.0
 	test? (
 		dev-perl/Module-Util
-		dev-perl/Test-MockTime
+		dev-perl/Test-MockTime-HiRes
 		virtual/perl-Test-Simple
 	)
 "
