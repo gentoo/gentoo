@@ -310,11 +310,6 @@ sci-mathematics/flintqs
 # Removal on 2023-06-30.  Bug #907495.
 dev-python/http-parser
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-05-28)
-# Causes only problems, at negligible gain. Removal in 30days.
-# Bugs 880573, 864157, 885471, 870454, 884571
-sys-libs/libbacktrace
-
 # Sam James <sam@gentoo.org> (2023-05-24)
 # Breaks building C++ consumers at least: bug #906755, bug #906879, bug #906957.
 # Please upgrade to >=0.5.1.
