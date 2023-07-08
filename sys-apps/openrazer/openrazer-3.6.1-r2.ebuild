@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit readme.gentoo-r1 systemd udev xdg-utils distutils-r1 linux-mod-r1
 
@@ -62,28 +63,30 @@ To automatically start up the OpenRazer daemon on session login copy
 distutils_enable_tests unittest
 
 python_compile() {
-	if use daemon ; then
-		( cd "${S}"/daemon || die ; distutils-r1_python_compile )
-	fi
+	cd "${S}"/daemon || die
+
+	distutils_pep517_install "${BUILD_DIR}"/install
+
 	if use client ; then
-		( cd "${S}"/pylib || die ; distutils-r1_python_compile )
+		cd "${S}"/pylib || die
+
+		distutils_pep517_install "${BUILD_DIR}"/install
 	fi
 }
 
 python_install() {
-	if use daemon ; then
-		( cd "${S}"/daemon || die ; distutils-r1_python_install )
-		python_scriptinto /usr/bin
-		python_newscript "${S}"/daemon/run_openrazer_daemon.py ${PN}-daemon
-	fi
-	if use client ; then
-		( cd "${S}"/pylib || die ; distutils-r1_python_install )
-	fi
+	distutils-r1_python_install
+
+	python_scriptinto /usr/bin
+	python_newscript "${S}"/daemon/run_openrazer_daemon.py ${PN}-daemon
 }
 
 src_prepare() {
 	xdg_environment_reset
-	distutils-r1_src_prepare
+
+	if use daemon ; then
+		distutils-r1_src_prepare
+	fi
 
 	# Remove bad tests.
 	rm "${S}"/daemon/tests/test_effect_sync.py || die
@@ -99,9 +102,9 @@ src_compile() {
 	)
 	linux-mod-r1_src_compile
 
-	distutils-r1_src_compile
-
 	if use daemon ; then
+		distutils-r1_src_compile
+
 		emake -C "${S}"/daemon PREFIX=/usr service
 	fi
 
@@ -109,12 +112,13 @@ src_compile() {
 }
 
 src_test() {
-	( cd "${S}"/daemon/tests || die ; distutils-r1_src_test )
+	cd "${S}"/daemon/tests || die
+
+	distutils-r1_src_test
 }
 
 src_install() {
 	linux-mod-r1_src_install
-	distutils-r1_src_install
 
 	udev_dorules "${S}"/install_files/udev/99-razer.rules
 	exeinto "$(get_udevdir)"
@@ -125,6 +129,9 @@ src_install() {
 	newins "${S}"/daemon/resources/razer.conf razer.conf.example
 
 	if use daemon ; then
+		# Python libraries/scripts, "client" also requires USE="daemon"
+		distutils-r1_src_install
+
 		# dbus service
 		insinto /usr/share/dbus-1/services
 		doins "${S}"/daemon/org.razer.service
