@@ -13,7 +13,7 @@ else
 fi
 
 PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}
 
@@ -90,7 +90,8 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
+# Build man pages here so as to not clobber default src_compile
+src_configure() {
 	# build the man pages and docs
 	emake
 }
@@ -113,4 +114,5 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		optfeature "ccache support" dev-util/ccache
 	fi
+	tmpfiles_process catalyst-tmpdir.conf
 }
