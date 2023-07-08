@@ -1974,7 +1974,7 @@ _distutils-r1_post_python_compile() {
 			die "${rscriptdir} should not exist!"
 		if [[ -d ${bindir} ]]; then
 			mkdir -p "${rscriptdir}" || die
-			cp -a --reflink=auto "${bindir}"/. "${rscriptdir}"/ || die
+			cp -a "${bindir}"/. "${rscriptdir}"/ || die
 		fi
 
 		# enable venv magic inside the install tree
