@@ -24,7 +24,7 @@ IUSE="socks5 test-rust"
 
 RDEPEND="
 	>=dev-python/certifi-2017.4.17[${PYTHON_USEDEP}]
-	<dev-python/charset_normalizer-4[${PYTHON_USEDEP}]
+	<dev-python/charset-normalizer-4[${PYTHON_USEDEP}]
 	<dev-python/idna-4[${PYTHON_USEDEP}]
 	<dev-python/urllib3-3[${PYTHON_USEDEP}]
 	socks5? ( >=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}] )

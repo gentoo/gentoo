@@ -42,7 +42,7 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			>=dev-python/cffi-1.14.0[${PYTHON_USEDEP}]
 		' 'python*')
-		dev-python/charset_normalizer[${PYTHON_USEDEP}]
+		dev-python/charset-normalizer[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-5.8.0[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
