@@ -23,7 +23,7 @@ RDEPEND="
 	dev-ml/base:=
 	dev-ml/cmdliner:=
 	>=dev-ml/core-0.15.0:=
-	>=dev-ml/core_unix-0.15.0:=
+	dev-ml/core_unix:0/0.15
 	dev-ml/duration:=
 	>=dev-ml/fmt-0.8.9:=
 	dev-ml/lwt:=
