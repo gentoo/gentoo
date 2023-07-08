@@ -255,11 +255,6 @@ dev-ruby/websocket-driver:0
 # Removal on 2023-07-12.  Bug #908378.
 dev-ruby/ruby-gtk2
 
-# Sam James <sam@gentoo.org> (2023-06-10)
-# Integrated into media-libs/gst-plugins-bad[vaapi]. Please use that instead.
-# Removal in 14 days.
-media-plugins/gst-plugins-va
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-10)
 # Renamed to dev-python/pypdf.  No revdeps left.
 # Removal on 2023-07-10.  Bug #908227.
