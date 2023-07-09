@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit fortran-2 toolchain-funcs
+inherit flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Optimized BLAS library based on GotoBLAS2"
 HOMEPAGE="https://github.com/xianyi/OpenBLAS"
@@ -52,6 +52,9 @@ pkg_setup() {
 	fortran-2_pkg_setup
 
 	# List of most configurable options - Makefile.rule
+
+	# not an easy fix, https://github.com/xianyi/OpenBLAS/issues/4128
+	filter-lto
 
 	# https://github.com/xianyi/OpenBLAS/pull/2663
 	tc-export CC FC LD AR AS RANLIB
