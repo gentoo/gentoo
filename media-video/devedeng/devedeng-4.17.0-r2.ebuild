@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit distutils-r1 xdg
 
@@ -32,7 +32,10 @@ DEPEND="${PYTHON_DEPS}"
 # src/unitests only works against system installed devedeng
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-4.14.0-no_compress_man.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.14.0-no_compress_man.patch
+	"${FILESDIR}"/${P}-locale_install.patch
+)
 
 src_prepare() {
 	default
