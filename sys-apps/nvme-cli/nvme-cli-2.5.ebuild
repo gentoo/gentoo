@@ -45,10 +45,6 @@ src_configure() {
 	meson_src_configure
 }
 
-src_install() {
-	meson_src_install
-}
-
 pkg_postinst() {
 	udev_reload
 }
