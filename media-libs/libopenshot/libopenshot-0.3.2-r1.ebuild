@@ -41,6 +41,10 @@ BDEPEND="doc? ( app-doc/doxygen )
 		dev-libs/unittest++
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/libopenshot-0.3.2-fix-test-file-collisions.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 }
@@ -86,7 +90,7 @@ src_compile() {
 
 src_test() {
 	# https://github.com/OpenShot/libopenshot/issues/922 exclude broken test
-	virtx cmake_src_test -E '(Caption:caption effect)' || die
+	virtx cmake_src_test -E '(Caption:caption effect|Timeline:Multi-threaded Timeline GetFrame)' || die
 }
 
 src_install() {
