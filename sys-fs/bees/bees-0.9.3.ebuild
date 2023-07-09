@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/Zygo/bees.git"
 else
 	SRC_URI="https://github.com/Zygo/bees/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="GPL-3"
@@ -28,6 +28,10 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~BTRFS_FS"
 ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
+
+PATCHES=(
+	"${FILESDIR}/0001-HACK-crucible-Work-around-kernel-memory-fragmentatio.patch"
+)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -66,13 +70,15 @@ pkg_pretend() {
 			ewarn "https://github.com/Zygo/bees/blob/master/docs/btrfs-kernel.md"
 			ewarn
 		fi
-		if kernel_is -ge 5 4 0; then
-			ewarn "With kernel version 5.4 or later, the kernel may hang when multiple threads"
-			ewarn "are running LOGICAL_INO and dedupe ioctl. This is not exclusively triggered"
-			ewarn "by bees but also other software running such operations, bees will just more"
-			ewarn "likely trigger this bug. You can work around this issue by reducing the"
-			ewarn "thread count of bees to 1."
-			ewarn
+		if kernel_is -gt 5 15 106; then
+			if kernel_is -lt 6 3 10; then
+				ewarn "With kernel versions 5.15.107 or later, there is a memory fragmentation"
+				ewarn "issue with LOGICAL_INO which can lead to cache thrashing and cause IO"
+				ewarn "latency spikes. This version ships with a work-around at the cost of not"
+				ewarn "handling highly duplicated filesystems that well. More details:"
+				ewarn "https://github.com/Zygo/bees/issues/260"
+				ewarn
+			fi
 		fi
 
 		elog "Bees recommends running the latest current kernel for performance and"
