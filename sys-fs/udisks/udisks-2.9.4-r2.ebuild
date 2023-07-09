@@ -25,7 +25,7 @@ BLOCKDEV_MIN_VER="2.25"
 
 COMMON_DEPEND="
 	>=sys-auth/polkit-0.114
-	>=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}[cryptsetup,lvm?,vdo(-)?]
+	>=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}:=[cryptsetup,lvm?,vdo(-)?]
 	virtual/udev
 	acl? ( virtual/acl )
 	daemon? (
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
 	lvm? ( sys-fs/lvm2 )
 	systemd? ( >=sys-apps/systemd-209 )
-	zram? ( >=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}[kbd] )
+	zram? ( >=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}[kbd(-)] )
 "
 # util-linux -> mount, umount, swapon, swapoff (see also #403073)
 RDEPEND="${COMMON_DEPEND}
