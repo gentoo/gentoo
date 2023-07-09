@@ -23,9 +23,11 @@ REQUIRED_USE="
 # See configure.ac file for the required min version
 BLOCKDEV_MIN_VER="2.25"
 
+# <libblockdev-3 dep for bug #910077, should go away with udisks-2.10
 COMMON_DEPEND="
 	>=sys-auth/polkit-0.114
 	>=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}:=[cryptsetup,lvm?,vdo(-)?]
+	<sys-libs/libblockdev-3[cryptsetup,lvm?,vdo(-)?]
 	virtual/udev
 	acl? ( virtual/acl )
 	daemon? (
