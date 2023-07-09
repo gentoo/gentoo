@@ -29,6 +29,10 @@ all_ruby_prepare() {
 	# Avoid test that require a proper TTY
 	sed -e '/test_\(bad_keyword\|failed_path\)/aomit "requires TTY"' \
 		-i test/io/console/test_io_console.rb || die
+
+	# Remove ruby and ffi files in accordance with the gemspec. These
+	# are only used when using a different ruby engine like jruby.
+	rm -fr lib/io/console.rb lib/io/console/ffi || die
 }
 
 each_ruby_test() {
