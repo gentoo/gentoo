@@ -14,7 +14,7 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
-R09DEPEND="
+RDEPEND="
 	>=dev-lang/ocaml-4.14
 	dev-ml/core:${SLOT}
 	dev-ml/ppx_jane:${SLOT}
