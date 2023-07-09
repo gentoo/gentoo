@@ -1,9 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Re-add SunOS libc
 -elibc_SunOS
 -kernel_SunOS
+
+# Benda Xu <heroxbd@gentoo.org> (2023-07-09)
+# xattr requires sys-apps/attr, which is masked.
+xattr
 
 # these will more than likely never work on solaris
 3dfx
