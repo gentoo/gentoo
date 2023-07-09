@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-07-09)
+# sys-libs/libhugetlbfs is broken w/ newer glibc, bug #806079
+sys-apps/nvme-cli hugepages
+
 # Michał Górny <mgorny@gentoo.org> (2023-06-24)
 # dev-db/mongodb builds practically only on the authors' computer.
 dev-python/pymongo test-full
