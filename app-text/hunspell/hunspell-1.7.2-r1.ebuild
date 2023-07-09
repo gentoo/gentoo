@@ -14,14 +14,17 @@ SRC_URI="https://github.com/hunspell/hunspell/releases/download/v${PV}/${P}.tar.
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="ncurses nls readline static-libs"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
+	virtual/libiconv
 	ncurses? ( sys-libs/ncurses:= )
 	readline? ( sys-libs/readline:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/gettext"
+BDEPEND="
+	>=sys-devel/gettext-0.18
+"
 
 PDEPEND=""
 for lang in ${LANGS}; do
@@ -60,23 +63,19 @@ src_configure() {
 	# You can do that, libreoffice can find them anywhere, just
 	# ping me when you do so ; -- scarabeus
 	local myeconfargs=(
-		$(use_enable nls)
-		$(use_with ncurses ui)
-		$(use_with readline readline)
-		$(use_enable static-libs static)
+		"$(use_enable nls)"
+		"$(use_with ncurses ui)"
+		"$(use_with readline readline)"
+		"$(use_enable static-libs static)"
 	)
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-
+	find "${ED}" -type f -name '*.la' -delete || die
 	einstalldocs
 
-	find "${ED}" -type f -name '*.la' -delete || die
-
-	# bug #342449
-	pushd "${ED}"/usr/$(get_libdir)/ >/dev/null || die
-	ln -s lib${PN}{-$(ver_cut 1).$(ver_cut 2).so.0.0.1,.so} || die
-	popd >/dev/null || die
+	# Bug #908872
+	keepdir "/usr/share/myspell"
 }
