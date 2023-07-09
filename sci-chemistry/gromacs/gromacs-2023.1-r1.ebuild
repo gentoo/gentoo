@@ -22,9 +22,9 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="
-		https://ftp.gromacs.org/gromacs/${P}.tar.gz
-		doc? ( https://ftp.gromacs.org/manual/manual-${PV}.pdf )
-		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV}.tar.gz )"
+		https://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
+		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
+		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
 	# since 2022 arm support was dropped (but not arm64)
 	KEYWORDS="~amd64 -arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
@@ -43,7 +43,7 @@ IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precis
 
 CDEPEND="
 	blas? ( virtual/blas )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-11[profiler] )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-11:=[profiler] )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
@@ -61,6 +61,10 @@ BDEPEND="${CDEPEND}
 		app-doc/doxygen
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-copybutton[${PYTHON_USEDEP}]
+			dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]
+			dev-python/sphinx-argparse[${PYTHON_USEDEP}]
+			dev-python/sphinxcontrib-autoprogram[${PYTHON_USEDEP}]
 		')
 		media-gfx/mscgen
 		media-gfx/graphviz
@@ -68,8 +72,7 @@ BDEPEND="${CDEPEND}
 		dev-texlive/texlive-latexextra
 		media-gfx/imagemagick
 	)"
-RDEPEND="${CDEPEND}
-	<sci-chemistry/dssp-4"
+RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="
 	|| ( single-precision double-precision )
@@ -226,7 +229,6 @@ src_configure() {
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
-		-DGMX_DSSP_PROGRAM_PATH="${EPREFIX}/usr/bin/dssp"
 		-DBUILD_TESTING=$(usex test)
 		-DGMX_BUILD_UNITTESTS=$(usex test)
 		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
@@ -303,7 +305,7 @@ src_install() {
 
 		if use doc; then
 			if [[ ${PV} != *9999* ]]; then
-				newdoc "${DISTDIR}/manual-${PV}.pdf" "${PN}-manual-${PV}.pdf"
+				newdoc "${DISTDIR}/manual-${PV/_/-}.pdf" "${PN}-manual-${PV}.pdf"
 			fi
 		fi
 	done

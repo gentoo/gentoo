@@ -25,10 +25,10 @@ else
 		https://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
 		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="amd64 arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
-ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
+ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2"
 
 DESCRIPTION="The ultimate molecular dynamics simulation package"
 HOMEPAGE="https://www.gromacs.org/"
@@ -47,7 +47,7 @@ CDEPEND="
 		x11-libs/libICE
 		)
 	blas? ( virtual/blas )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14[profiler] )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14:= )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
@@ -85,14 +85,11 @@ DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2021-musl-stdint.patch"
-	"${FILESDIR}/${PN}-2021-cuda-detection.patch"
-)
-
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
+
+PATCHES=( "${FILESDIR}/${PN}-2020-pytest.patch" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -166,23 +163,15 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs_pre=( ) extra fft_opts=( )
-	local acce="AUTO"
 
 	if use custom-cflags; then
 		#go from slowest to fastest acceleration
-		acce="None"
-		if (use amd64 || use x86); then
-			use cpu_flags_x86_sse2 && acce="SSE2"
-			use cpu_flags_x86_sse4_1 && acce="SSE4.1"
-			use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
-			use cpu_flags_x86_avx && acce="AVX_256"
-			use cpu_flags_x86_avx2 && acce="AVX2_256"
-			use cpu_flags_x86_avx512f && acce="AVX_512"
-		elif (use arm); then
-			use cpu_flags_arm_neon && acce="ARM_NEON"
-		elif (use arm64); then
-			use cpu_flags_arm_neon && acce="ARM_NEON_ASIMD"
-		fi
+		local acce="None"
+		use cpu_flags_x86_sse2 && acce="SSE2"
+		use cpu_flags_x86_sse4_1 && acce="SSE4.1"
+		use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
+		use cpu_flags_x86_avx && acce="AVX_256"
+		use cpu_flags_x86_avx2 && acce="AVX2_256"
 	else
 		strip-flags
 	fi
@@ -237,21 +226,24 @@ src_configure() {
 			[[ ${x} = "double" ]] && suffix="_d"
 		local p
 		[[ ${x} = "double" ]] && p="-DGMX_DOUBLE=ON" || p="-DGMX_DOUBLE=OFF"
-		local gpu=( "-DGMX_GPU=OFF" )
-		[[ ${x} = "float" ]] && use cuda && gpu=( "-DGMX_GPU=CUDA" )
-		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
+		local cuda=( "-DGMX_GPU=OFF" )
+		[[ ${x} = "float" ]] && use cuda && \
+			cuda=( "-DGMX_GPU=ON" )
+		local opencl=( "-DGMX_USE_OPENCL=OFF" )
+		use opencl && opencl=( "-DGMX_USE_OPENCL=ON" ) cuda=( "-DGMX_GPU=ON" )
 		local mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_MPI=OFF
 			-DGMX_THREAD_MPI=$(usex threads)
 			-DGMXAPI=$(usex gmxapi)
 			-DGMX_INSTALL_LEGACY_API=$(usex gmxapi-legacy)
-			"${gpu[@]}"
+			"${opencl[@]}"
+			"${cuda[@]}"
 			"$(use test && echo -DREGRESSIONTEST_PATH="${WORKDIR}/${P}_${x}/tests")"
 			-DGMX_BINARY_SUFFIX="${suffix}"
 			-DGMX_LIBS_SUFFIX="${suffix}"
 			-DGMX_PYTHON_PACKAGE=$(usex python)
-		)
+			)
 		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}/gentoo_rules.cmake" || die

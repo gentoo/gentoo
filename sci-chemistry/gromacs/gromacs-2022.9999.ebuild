@@ -43,7 +43,7 @@ IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precis
 
 CDEPEND="
 	blas? ( virtual/blas )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-11[profiler] )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-11:=[profiler] )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )

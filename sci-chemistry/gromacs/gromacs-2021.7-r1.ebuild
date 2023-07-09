@@ -25,8 +25,7 @@ else
 		https://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
 		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
-	# since 2022 arm support was dropped (but not arm64)
-	KEYWORDS="~amd64 -arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
@@ -39,32 +38,31 @@ HOMEPAGE="https://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="X blas cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
+	X? (
+		x11-libs/libX11
+		x11-libs/libSM
+		x11-libs/libICE
+		)
 	blas? ( virtual/blas )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-11[profiler] )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14:=[profiler] )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )
+	lmfit? ( sci-libs/lmfit:= )
 	mkl? ( sci-libs/mkl )
-	mpi? ( virtual/mpi[cxx] )
-	sci-libs/lmfit:=
-	>=dev-cpp/muParser-2.3:=
+	mpi? ( virtual/mpi )
 	${PYTHON_DEPS}
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
-	clang? ( >=sys-devel/clang-6:* )
 	build-manual? (
 		app-doc/doxygen
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
-			dev-python/sphinx-copybutton[${PYTHON_USEDEP}]
-			dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]
-			dev-python/sphinx-argparse[${PYTHON_USEDEP}]
-			dev-python/sphinxcontrib-autoprogram[${PYTHON_USEDEP}]
 		')
 		media-gfx/mscgen
 		media-gfx/graphviz
@@ -80,13 +78,17 @@ REQUIRED_USE="
 	cuda? ( single-precision )
 	opencl? ( single-precision )
 	cuda? ( !opencl )
-	clang-cuda? ( clang cuda )
 	mkl? ( !blas !fftw !lapack )
 	${PYTHON_REQUIRED_USE}"
 
 DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2021-musl-stdint.patch"
+	"${FILESDIR}/${PN}-2021-cuda-detection.patch"
+)
 
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
@@ -120,19 +122,6 @@ src_prepare() {
 	# -on apple: there is framework support
 
 	xdg_environment_reset #591952
-
-	# we can use clang as default
-	if use clang && ! tc-is-clang ; then
-		export CC=${CHOST}-clang
-		export CXX=${CHOST}-clang++
-	else
-		tc-export CXX CC
-	fi
-	# clang-cuda need to filter mfpmath
-	if use clang-cuda ; then
-		filter-mfpmath sse
-		filter-mfpmath i386
-	fi
 
 	cmake_src_prepare
 
@@ -214,11 +203,16 @@ src_configure() {
 		fft_opts=( -DGMX_FFT_LIBRARY=fftpack )
 	fi
 
+	if use lmfit; then
+		local lmfit_opts=( -DGMX_USE_LMFIT=EXTERNAL )
+	else
+		local lmfit_opts=( -DGMX_USE_LMFIT=INTERNAL )
+	fi
+
 	mycmakeargs_pre+=(
 		"${fft_opts[@]}"
 		"${lmfit_opts[@]}"
-		-DGMX_USE_LMFIT=EXTERNAL
-		-DGMX_USE_MUPARSER=EXTERNAL
+		-DGMX_X11=$(usex X)
 		-DGMX_EXTERNAL_BLAS=$(usex blas)
 		-DGMX_EXTERNAL_LAPACK=$(usex lapack)
 		-DGMX_OPENMP=$(usex openmp)
@@ -245,11 +239,10 @@ src_configure() {
 		[[ ${x} = "double" ]] && p="-DGMX_DOUBLE=ON" || p="-DGMX_DOUBLE=OFF"
 		local gpu=( "-DGMX_GPU=OFF" )
 		[[ ${x} = "float" ]] && use cuda && gpu=( "-DGMX_GPU=CUDA" )
-		[[ ${x} = "float" ]] && use clang-cuda && gpu=( "-DGMX_GPU=CUDA" "-DGMX_CLANG_CUDA=ON" )
 		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
 		local mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
-			-DGMX_MPI=$(usex mpi)
+			-DGMX_MPI=OFF
 			-DGMX_THREAD_MPI=$(usex threads)
 			-DGMXAPI=$(usex gmxapi)
 			-DGMX_INSTALL_LEGACY_API=$(usex gmxapi-legacy)
@@ -262,6 +255,25 @@ src_configure() {
 		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}/gentoo_rules.cmake" || die
+		use mpi || continue
+		einfo "Configuring for ${x} precision with mpi"
+		local mycmakeargs=(
+			${mycmakeargs_pre[@]} ${p}
+			-DGMX_THREAD_MPI=OFF
+			-DGMX_MPI=ON
+			-DGMX_OPENMM=OFF
+			-DGMXAPI=OFF
+			"${opencl[@]}"
+			"${cuda[@]}"
+			-DGMX_BUILD_MDRUN_ONLY=ON
+			-DBUILD_SHARED_LIBS=OFF
+			-DGMX_BUILD_MANUAL=OFF
+			-DGMX_BINARY_SUFFIX="_mpi${suffix}"
+			-DGMX_LIBS_SUFFIX="_mpi${suffix}"
+			)
+		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" CC="mpicc" cmake_src_configure
+		[[ ${CHOST} != *-darwin* ]] || \
+		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}_mpi/gentoo_rules.cmake" || die
 	done
 }
 
@@ -281,6 +293,10 @@ src_compile() {
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
 				cmake_src_compile manual
 		fi
+		use mpi || continue
+		einfo "Compiling for ${x} precision with mpi"
+		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
+			cmake_src_compile
 	done
 }
 
@@ -305,9 +321,13 @@ src_install() {
 
 		if use doc; then
 			if [[ ${PV} != *9999* ]]; then
-				newdoc "${DISTDIR}/manual-${PV/_/-}.pdf" "${PN}-manual-${PV}.pdf"
+				newdoc "${DISTDIR}/manual-${PV}.pdf" "${PN}-manual-${PV}.pdf"
 			fi
 		fi
+
+		use mpi || continue
+		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
+			cmake_src_install
 	done
 
 	if use tng; then

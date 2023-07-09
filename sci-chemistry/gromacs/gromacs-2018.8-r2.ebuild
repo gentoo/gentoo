@@ -23,7 +23,7 @@ HOMEPAGE="https://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="X blas cuda +doc double-precision +fftw +gmxapi +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="X blas cuda +doc double-precision +fftw +hwloc lapack mkl mpi +offensive opencl openmp +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	X? (
@@ -32,15 +32,13 @@ CDEPEND="
 		x11-libs/libICE
 		)
 	blas? ( virtual/blas )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14 )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0= )
-	hwloc? ( sys-apps/hwloc:= )
+	hwloc? ( <sys-apps/hwloc-2:= )
 	lapack? ( virtual/lapack )
-	lmfit? ( sci-libs/lmfit:= )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
-	${PYTHON_DEPS}
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -52,16 +50,13 @@ REQUIRED_USE="
 	cuda? ( single-precision )
 	opencl? ( single-precision )
 	cuda? ( !opencl )
-	mkl? ( !blas !fftw !lapack )
-	${PYTHON_REQUIRED_USE}"
+	mkl? ( !blas !fftw !lapack )"
 
 DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${PN}-${PV/_/-}"
-
-PATCHES=( "${FILESDIR}/${P}-missing-include.patch" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -122,15 +117,8 @@ src_configure() {
 		fft_opts=( -DGMX_FFT_LIBRARY=fftpack )
 	fi
 
-	if use lmfit; then
-		local lmfit_opts=( -DGMX_USE_LMFIT=EXTERNAL )
-	else
-		local lmfit_opts=( -DGMX_USE_LMFIT=INTERNAL )
-	fi
-
 	mycmakeargs_pre+=(
 		"${fft_opts[@]}"
-		"${lmfit_opts[@]}"
 		-DGMX_X11=$(usex X)
 		-DGMX_EXTERNAL_BLAS=$(usex blas)
 		-DGMX_EXTERNAL_LAPACK=$(usex lapack)
@@ -143,7 +131,6 @@ src_configure() {
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=$(usex test)
 		-DGMX_BUILD_UNITTESTS=$(usex test)
-		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		${extra}
 	)
 
@@ -164,7 +151,6 @@ src_configure() {
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_MPI=OFF
 			-DGMX_THREAD_MPI=$(usex threads)
-			-DGMXAPI=$(usex gmxapi)
 			"${opencl[@]}"
 			"${cuda[@]}"
 			"$(use test && echo -DREGRESSIONTEST_PATH="${WORKDIR}/${P}_${x}/tests")"
@@ -181,12 +167,11 @@ src_configure() {
 			-DGMX_THREAD_MPI=OFF
 			-DGMX_MPI=ON
 			-DGMX_OPENMM=OFF
-			-DGMXAPI=OFF
-			"${opencl[@]}"
-			"${cuda[@]}"
 			-DGMX_BUILD_MDRUN_ONLY=ON
 			-DBUILD_SHARED_LIBS=OFF
 			-DGMX_BUILD_MANUAL=OFF
+			"${opencl[@]}"
+			"${cuda[@]}"
 			-DGMX_BINARY_SUFFIX="_mpi${suffix}"
 			-DGMX_LIBS_SUFFIX="_mpi${suffix}"
 			)
