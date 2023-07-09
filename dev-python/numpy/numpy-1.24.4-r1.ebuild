@@ -22,7 +22,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 CPU_FLAGS_X86=( avx avx2 avx512dq avx512f avx512vl f16c fma4 popcnt sse sse2 sse3 sse4_1 sse4_2 ssse3 xop )
 IUSE="lapack $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
