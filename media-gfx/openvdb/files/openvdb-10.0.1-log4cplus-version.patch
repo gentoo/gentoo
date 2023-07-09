@@ -1,0 +1,14 @@
+auto_ptr was deprecated in C++11 and removed in C++17. This bug appears to step from log4cplus, where auto_ptr was replaced with unique_ptr in the 2.0 release. OpenVDB attempts to check for this with the LOG4CPLUS_VERSION macro, however it's defined in the log4cplus/version.h header, which is never included. This patch adds the missing include, which fixes the issue with std::auto_ptr.
+
+Bug: https://bugs.gentoo.org/901991
+
+--- a/openvdb/openvdb/util/logging.h
++++ b/openvdb/openvdb/util/logging.h
+@@ -14,6 +14,7 @@
+ #include <log4cplus/layout.h>
+ #include <log4cplus/logger.h>
+ #include <log4cplus/spi/loggingevent.h>
++#include <log4cplus/version.h>
+ #include <algorithm> // for std::remove()
+ #include <cstring> // for ::strrchr()
+ #include <memory>
