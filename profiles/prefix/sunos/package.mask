@@ -1,8 +1,0 @@
-# Copyright 1999-2023 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Benda Xu <heroxbd@gentoo.org> (2023-07-09)
-# Requires Glibc <sys/xattr.h> to work properly.
-# For example, 'lgetxattr' is not available on Solaris or gnulib.
-# https://www.gnu.org/software/gnulib/manual/html_node/lgetxattr.html
-sys-apps/attr

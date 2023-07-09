@@ -5,10 +5,6 @@
 -elibc_SunOS
 -kernel_SunOS
 
-# Benda Xu <heroxbd@gentoo.org> (2023-07-09)
-# xattr requires sys-apps/attr, which is masked.
-xattr
-
 # these will more than likely never work on solaris
 3dfx
 acpi
