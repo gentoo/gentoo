@@ -14,7 +14,6 @@ https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/app-text/hunspell/files
 ---
  src/tools/Makefile.am | 14 +++++++-------
  src/tools/chmorph.cxx |  6 +++---
- src/tools/example.cxx |  4 ++--
  src/tools/munch.cxx   |  4 ++--
  src/tools/unmunch.cxx |  4 ++--
  tests/Makefile.am     |  2 +-
@@ -77,22 +76,6 @@ index 6e5add6..163186d 100644
            " (convert informal Hungarian second person texts to formal third "
            "person texts)\n");
        exit(1);
-diff --git a/src/tools/example.cxx b/src/tools/example.cxx
-index 8213a5f..c3cc76a 100644
---- a/src/tools/example.cxx
-+++ b/src/tools/example.cxx
-@@ -48,9 +48,9 @@ int main(int argc, char** argv) {
-   /* first parse the command line options */
- 
-   if (argc < 4) {
--    fprintf(stderr, "example (now it works with more dictionary files):\n");
-+    fprintf(stderr, "hunspell-example (now it works with more dictionary files):\n");
-     fprintf(stderr,
--            "example affix_file dictionary_file(s) file_of_words_to_check\n");
-+            "hunspell-example affix_file dictionary_file(s) file_of_words_to_check\n");
-     exit(1);
-   }
- 
 diff --git a/src/tools/munch.cxx b/src/tools/munch.cxx
 index 5f51fc6..c8f8beb 100644
 --- a/src/tools/munch.cxx
