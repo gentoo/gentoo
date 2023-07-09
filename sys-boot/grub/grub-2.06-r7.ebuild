@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.06-gentpl.py-Remove-.interp-section-from-.img-files.patch
 	"${FILESDIR}"/grub-2.06-fs-ext2-ignore-checksum-seed.patch
 	"${FILESDIR}"/grub-2.06-riscv.patch
+	"${FILESDIR}"/grub-2.06-locale.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
