@@ -68,7 +68,7 @@ src_configure() {
 }
 
 src_test() {
-	virtx meson_src_test --timeout-multiplier=30
+	virtx meson_src_test
 }
 
 pkg_postinst() {
