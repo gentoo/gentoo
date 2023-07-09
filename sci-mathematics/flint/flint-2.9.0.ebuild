@@ -41,6 +41,7 @@ DEPEND="dev-libs/gmp:=
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/flint2-${PV}"
+PATCHES=( "${FILESDIR}/${PN}-2.9.0-remove-hardcoded-CFLAGS.patch" )
 
 src_prepare() {
 	# https://github.com/wbhart/flint2/issues/1140
