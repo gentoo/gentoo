@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user-info.eclass
@@ -64,7 +64,7 @@ egetent() {
 			getent "${db}" "${key}"
 		else
 			if [[ ${key} =~ ^[[:digit:]]+$ ]]; then
-				grep -E "^([^:]*:){2}${key}" "${ROOT}/etc/${db}"
+				grep -E "^([^:]*:){2}${key}:" "${ROOT}/etc/${db}"
 			else
 				grep "^${key}:" "${ROOT}/etc/${db}"
 			fi
