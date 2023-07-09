@@ -5,10 +5,10 @@ EAPI=8
 
 inherit systemd
 
-DESCRIPTION="Extensible continuous integration server"
+DESCRIPTION="The leading open source automation server"
 HOMEPAGE="https://jenkins.io/"
 LICENSE="MIT"
-SRC_URI="http://mirrors.jenkins-ci.org/war/${PV}/${PN/-bin/}.war -> ${P}.war"
+SRC_URI="https://get.jenkins.io/war/${PV}/${PN/-bin/}.war -> ${P}.war"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux"
 IUSE=""
