@@ -26,6 +26,7 @@ dev-python/dirty-equals
 dev-python/inflect
 dev-python/jaraco-itertools
 dev-python/josepy
+>=dev-python/jsonschema-4.18.0
 dev-python/jsonschema-spec
 dev-python/jsonschema-specifications
 dev-python/keyring
@@ -39,6 +40,7 @@ dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-git-revision-date-localized-plugin
 dev-python/oauthlib
+dev-python/openapi-schema-validator
 dev-python/openapi-spec-validator
 dev-python/openstacksdk
 dev-python/orjson
