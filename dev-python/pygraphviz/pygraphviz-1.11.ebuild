@@ -19,7 +19,7 @@ SRC_URI="$(pypi_sdist_url "${PN}" "${PV}" .zip)"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86 ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86 ~x86-linux ~ppc-macos ~x64-macos"
 
 # Note: only C API of graphviz is used, PYTHON_USEDEP unnecessary.
 DEPEND="
