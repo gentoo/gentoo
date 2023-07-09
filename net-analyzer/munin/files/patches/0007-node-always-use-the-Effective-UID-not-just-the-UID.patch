@@ -1,0 +1,139 @@
+From 50ca7989a481e31d2434f755812070ac8f4e14c5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diego=20Elio=20Petten=C3=B2?= <flameeyes@flameeyes.eu>
+Date: Sun, 11 Nov 2012 15:18:51 -0800
+Subject: [PATCH 7/7] node: always use the Effective UID not just the UID.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Diego Elio Pettenò <flameeyes@flameeyes.eu>
+---
+ common/lib/Munin/Common/Defaults.pm |  6 +++---
+ node/t/munin_node_config.t          | 12 ++++++------
+ node/t/munin_node_os.t              |  6 +++---
+ node/t/munin_node_service.t         | 14 +++++++-------
+ 4 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/common/lib/Munin/Common/Defaults.pm b/common/lib/Munin/Common/Defaults.pm
+index 787b596..0f7f292 100644
+--- a/common/lib/Munin/Common/Defaults.pm
++++ b/common/lib/Munin/Common/Defaults.pm
+@@ -32,9 +32,9 @@ our $MUNIN_SPOOLDIR   = '';
+ our $MUNIN_MANDIR     = '';
+ our $MUNIN_LOGDIR     = "$COMPONENT_ROOT/log/";
+ our $MUNIN_STATEDIR   = ''; 
+-our $MUNIN_USER       = getpwuid $UID;
+-our $MUNIN_GROUP      = getgrgid $GID;
+-our $MUNIN_PLUGINUSER = getpwuid $UID;
++our $MUNIN_USER       = getpwuid $EUID;
++our $MUNIN_GROUP      = getgrgid $EGID;
++our $MUNIN_PLUGINUSER = getpwuid $EUID;
+ our $MUNIN_VERSION    = 'svn';
+ our $MUNIN_PERL       = '/usr/bin/perl';
+ our $MUNIN_PERLLIB    = '';
+diff --git a/node/t/munin_node_config.t b/node/t/munin_node_config.t
+index b8b6564..3d5530f 100644
+--- a/node/t/munin_node_config.t
++++ b/node/t/munin_node_config.t
+@@ -43,13 +43,13 @@ isa_ok($conf, 'Munin::Node::Config');
+ 
+ ### Default user
+ {
+-    my $uname = getpwuid $UID;
++    my $uname = getpwuid $EUID;
+ 
+     my @res = $conf->_parse_line("default_client_user $uname");
+-    is_deeply(\@res, [defuser => $UID], 'Parsing default user name');
++    is_deeply(\@res, [defuser => $EUID], 'Parsing default user name');
+ 
+     @res = $conf->_parse_line("default_client_user $UID");
+-    is_deeply(\@res, [defuser => $UID], 'Parsing default user ID');
++    is_deeply(\@res, [defuser => $EUID], 'Parsing default user ID');
+     
+     eval { $conf->_parse_line("default_client_user xxxyyyzzz") };
+     like($@, qr{Default user does not exist}, "Default user exists");
+@@ -184,13 +184,13 @@ isa_ok($conf, 'Munin::Node::Config');
+ 
+ ### user
+ {
+-    my $uname = getpwuid $UID;
++    my $uname = getpwuid $EUID;
+ 
+     my @res = $conf->_parse_plugin_line("user $uname");
+     is_deeply(\@res, [user => $uname], 'Parsing plugin user name');
+ 
+-    @res = $conf->_parse_plugin_line("user $UID");
+-    is_deeply(\@res, [user => $UID], 'Parsing plugin user ID');
++    @res = $conf->_parse_plugin_line("user $EUID");
++    is_deeply(\@res, [user => $EUID], 'Parsing plugin user ID');
+ }
+ 
+ ### group
+diff --git a/node/t/munin_node_os.t b/node/t/munin_node_os.t
+index 96d7c74..e10d9e6 100644
+--- a/node/t/munin_node_os.t
++++ b/node/t/munin_node_os.t
+@@ -13,10 +13,10 @@ my $os = 'Munin::Node::OS';
+ 
+ ### get_uid
+ {
+-	my $uname = getpwuid $UID;
++	my $uname = getpwuid $EUID;
+ 
+-	is($os->get_uid($uname), $UID, 'Lookup by user name');
+-	is($os->get_uid($UID),   $UID, 'Lookup by user ID');
++	is($os->get_uid($uname), $EUID, 'Lookup by user name');
++	is($os->get_uid($EUID),  $EUID, 'Lookup by user ID');
+ 
+ 	is($os->get_uid('%%SSKK¤¤'), undef, 'Nonexistent user name');
+ 	is($os->get_uid(999999999),  undef, 'Nonexistent user ID');
+diff --git a/node/t/munin_node_service.t b/node/t/munin_node_service.t
+index 18bda89..7fa050e 100644
+--- a/node/t/munin_node_service.t
++++ b/node/t/munin_node_service.t
+@@ -12,8 +12,8 @@ use Munin::Node::Service;
+ 
+ use English qw(-no_match_vars);
+ 
+-my $uname = getpwuid $UID;
+-my $gid   = (split / /, $GID)[0];
++my $uname = getpwuid $EUID;
++my $gid   = (split / /, $EGID)[0];
+ my $gname = getgrgid $gid;
+ 
+ 
+@@ -39,7 +39,7 @@ $config->reinitialize({
+ 
+         # testing user resolution
+         uname => { user => $uname },
+-        uid   => { user => $UID   },
++        uid   => { user => $EUID   },
+         bad_uname => { user => '%%SSKK¤¤' },
+         bad_uid   => { user => 999999999  },
+ 
+@@ -155,7 +155,7 @@ $ENV{MUNIN_MASTER_IP} = '';
+ 
+ ### export_service_environment
+ {
+-  my $services = Munin::Node::Service->new(defuser => $UID);
++  my $services = Munin::Node::Service->new(defuser => $EUID);
+ 
+   $services->export_service_environment('test');
+   is($ENV{test_environment_variable}, 'fnord', 'Service-specific environment is exported');
+@@ -164,10 +164,10 @@ $ENV{MUNIN_MASTER_IP} = '';
+ 
+ ### _resolve_uid
+ {
+-    my $services = Munin::Node::Service->new(defuser => $UID);
++    my $services = Munin::Node::Service->new(defuser => $EUID);
+ 
+-    is($services->_resolve_uid('uname'), $UID, 'Lookup by service-specific username');
+-    is($services->_resolve_uid('uid'),   $UID, 'Lookup by service-specific username');
++    is($services->_resolve_uid('uname'), $EUID, 'Lookup by service-specific username');
++    is($services->_resolve_uid('uid'),   $EUID, 'Lookup by service-specific username');
+ 
+     $services->{defuser} = 0;
+ 
+-- 
+2.2.1
+
