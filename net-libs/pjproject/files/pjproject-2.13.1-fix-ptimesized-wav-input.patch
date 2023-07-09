@@ -1,0 +1,30 @@
+From dc4d4587cb8abe07513b9ae24cf62eaeeb6e8907 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Wed, 14 Jun 2023 16:39:41 +0200
+Subject: [PATCH] Fix wave port creation if the input wave file contains
+ exactly one frame.
+
+If for example we try to load a file with ptime=10 and there is exactly
+10 ms worth of PCM data in the wave file (160 bytes of PCM data) then
+the buff_size will be adjusted down to be of a size that matches exactly
+one frame, resulting in the check that the buffer size can hold at least
+one frame failing due to comparing >= instead of >.
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ pjmedia/src/pjmedia/wav_player.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pjmedia/src/pjmedia/wav_player.c b/pjmedia/src/pjmedia/wav_player.c
+index 84ba53d50..410cf2627 100644
+--- a/pjmedia/src/pjmedia/wav_player.c
++++ b/pjmedia/src/pjmedia/wav_player.c
+@@ -428,7 +428,7 @@ PJ_DEF(pj_status_t) pjmedia_wav_player_port_create( pj_pool_t *pool,
+     /* samples_per_frame must be smaller than bufsize (because get_frame()
+      * doesn't handle this case).
+      */
+-    if (samples_per_frame * fport->bytes_per_sample >= fport->bufsize) {
++    if (samples_per_frame * fport->bytes_per_sample > fport->bufsize) {
+         pj_file_close(fport->fd);
+         return PJ_EINVAL;
+     }
