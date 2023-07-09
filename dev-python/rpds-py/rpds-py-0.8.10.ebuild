@@ -64,7 +64,7 @@ LICENSE+="
 	Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 BDEPEND="
 	test? (
