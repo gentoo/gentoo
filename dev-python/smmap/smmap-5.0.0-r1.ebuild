@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/gitpython-developers/smmap/"
 
 LICENSE="BSD"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
 
 distutils_enable_tests unittest
