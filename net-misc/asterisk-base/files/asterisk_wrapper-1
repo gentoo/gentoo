@@ -1,0 +1,227 @@
+#! /bin/sh
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+progname="$(basename "$0")"
+
+T="$(getopt -o "h" --long "help,corecompress:,corerename:,crashemail:,dumpcore:,instance:,maxfd:,nicelevel:,restartdelay:,rundir:,syslog,tty:" -n "$progname" -- "$@")"
+eval set -- "${T}"
+
+# bash builtins are special ...
+echo_e="$([ "${SHELL}" = "/bin/bash" ] && echo "echo -e" || echo echo)"
+
+rundir=/run/asterisk
+restartdelay=5
+nicelevel=0
+maxfd=4096
+dumpcore=0
+unset tty instance syslog corecompress corerename crashemail
+
+usage() {
+	cat <<USAGE
+USAGE: $progname [options] -- asterisk options"
+OPTIONS:
+	-h|--help
+		Output this text and exit.
+	--corecompress[=tool]
+		asterisk's address space can get quite large, compressing the core dumps can
+		save significant space, especially if asterisk core dumps frequently.
+	--corerename pattern
+		It's assumed core files (if enabled) will go into PWD, this specifies a
+		rename pattern.  The following % codes are recognised:
+			%h - hostname
+			%D - date in format YYYYMMDD
+			%T - time in format HHMMSS
+		It must be mentioned that if kernel.core_pattern (sysctl) is modified
+		from the default 'core' value this option is unlikely to work.
+	--crashemail email@address
+		This will send an email whenver asterisk crashes (does not terminate
+		cleanly with a zero exit code).  You need a working sendmail binary.
+	--dumpcore sizelimit
+		Maximum size of core limit, or the word unlimited.  Default is disabled
+		(sizelimit of 0).
+	--instance name
+		Updated label for sylog logger.
+	--maxfd maxfd
+		Sets the maximum number of file descriptors (default 4096).
+	--nicelevel nicelevel
+		Will set the asterisk nice level to the specified value.
+	--restartdelay delay_in_seconds
+		Number of seconds to wait before attempting to restart asterisk.  This helps
+		to avoid tight-loop crashes.  Defaults to 5s. Minimum 1.
+	--rundir path
+		Where to store the asterisk asterisk_wrapper.pid file.  In order to terminate the
+		wrapper (when asterisk next terminates), remove this file.
+	--syslog
+		Pass to redirect output to syslog rather than using stdout and stderr.
+	--tty tty
+		If asterisk should be attached to a TTY device, then pass this, eg --tty /dev/tty8.
+		Use of this is not recommended in general.
+
+NOTE:  There are some quirks with bash getopt shunting non-options prior to --
+	to asterisk options, so be careful of this.  Typically stuff will break.
+USAGE
+}
+
+matchreg() {
+	local v=$1
+	shift
+	echo "$v" | grep -q "$@"
+}
+
+while [ "$1" != "--" ]; do
+	case "$1" in
+			--corecompress|--corerename|--crashemail|--dumpcore|--instance|--maxfd|--nicelevel|--restartdelay|--rundir|--tty)
+			eval "${1#--}=\"\${2}\""
+			shift 2
+			;;
+		--syslog)
+			eval "${1#--}=1"
+			shift
+			;;
+		--help|-h)
+			usage
+			exit 0
+			;;
+		*)
+			echo "BUG: Don't know how to process option $1." >&2
+			usage >&2
+			exit 1
+			;;
+	esac
+done
+shift # --
+
+if ! matchreg "${restartdelay}" "^[1-9][0-9]*$"; then
+	echo "Invalid --restartdelay value ${restartdelay}, resetting to 5." >&2
+	restartdelay=5
+fi
+
+if ! matchreg "${maxfd}" "^[1-9][0-9]*$"; then
+	echo "Invalid --maxfd value, resetting to 4096." >&2
+	maxfd=4096
+fi
+
+if [ $maxfd -lt 1024 ]; then
+	echo "maxfd is guaranteed too low, bumping to at least 1024" >&2
+	maxfd=1024
+fi
+
+if [ -n "${nicelevel}" ] && ! matchreg "${nicelevel}" -E "^-?[0-9]+$"; then
+	echo "Invalid --nicelevel which much be a valid integer (values from -20 to 20 makes sense)."
+	exit 1
+fi
+
+if [ -n "${corecompress}" -a ! -x "${corecompress}" ]; then
+	corecompress=$(which "${corecompress}" 2>/dev/null)
+	[ -z "${corecompress}" ] && echo "Error locating core compression tool, disabling core compression." >&2
+fi
+
+# Before here will still be output (potentially munged, to the terminal).
+if [ -n "${syslog}" ]; then
+	tdir="$(mktemp -d)"
+	tfifo="${tdir}/asterisk_wrapper.logger.fifo"
+	mkfifo "${tfifo}"
+	logger -t "asterisk_wrapper${instance:+:}${instance}" --id=$$ >/dev/null 2>&1 <"${tfifo}" &
+	exec 1>"${tfifo}"
+	exec 2>&1
+
+	rm "${tfifo}"
+	rmdir "${tdir}"
+fi
+
+echo "Initializing ${progname}"
+
+cleanup(){
+	# There is a tiny race here, if this gets replaced inbetween the read and the rm.
+	# To fix this is quite complex in that we need to keep an fd, compare inode numbers
+	# and manage flock's.
+	[ -r "${rundir}/${progname}.pid" ] && \
+		[ "$(cat "${rundir}/${progname}.pid")" = $$ ] && \
+		rm "${rundir}/${progname}.pid"
+}
+trap cleanup EXIT
+
+# We could be clobbering an old version's pid, in which case it'll just terminate on
+# it's next iteration.  Towards this end, if asterisk.pid exists, attempt to find it's
+# config file and request a core stop when convenient so that we can take over.
+echo $$ > "${rundir}/${progname}.pid"
+if [ -r "${rundir}/asterisk.pid" ]; then
+	ast_pid="$(cat "${rundir}/asterisk.pid")"
+	[ -r "/proc/${ast_pid}/cmdline" ] && ast_conf="$(tr '\0' '\n' < "/proc/${ast_pid}/cmdline" | grep -A1 '^-C$' | tail -n1)" && /usr/sbin/asterisk -C "${ast_conf:-/etc/asterisk/asterisk.conf}" -rx "core stop when convenient"
+	# We may hit a few (depending on how busy the server is a great many number) loop failures still ...
+fi
+
+prlimit --core=${dumpcore} --pid=$$
+prlimit --nofile=${maxfd} --pid=$$
+
+ast_cmd=/usr/sbin/asterisk
+if [ -n "${nicelevel}" ]; then
+	ast_cmd="nice -n ${nicelevel} ${ast_cmd}"
+fi
+
+while [ -r "${rundir}/${progname}.pid" ]; do
+	# Another instance is looking to replace us, so terminate.
+	if [ "$(cat "${rundir}/${progname}.pid")" != $$ ]; then
+		break
+	fi
+
+	echo "Starting asterisk with ${ast_cmd} $*"
+	if [ -n "${tty+yes}" ]; then
+		/bin/stty -F "${tty}" sane
+		${ast_cmd} "$@" >"${tty}" 2>&1 <"${tty}"
+		result=$?
+	else
+		# Purposefully leave stderr alone, this will under certain odd cases (like exceptions,
+		# and other odd cases logged from glibc) result in those logs at least being captured
+		# in syslog.
+		${ast_cmd} "$@" </dev/null >/dev/null
+		result=$?
+	fi
+
+	if [ "$result" -eq 0 ]; then
+		echo "Asterisk terminated normally."
+		break
+	fi
+
+	if [ "$result" -gt 128 ]; then
+		signal="$(( result - 128 ))"
+		signame="$(kill -l $signal 2>/dev/null)"
+		MSG="Asterisk terminated with Signal: $signal (SIG${signame:-???})"
+
+		# TODO: figure out how to use /proc/sys/kernel/core_pattern here, but if someone is using
+		# that, chances are they're already dealing with what we want here.
+		if [ -r core ]; then
+			if [ -n "${corerename+yes}" ]; then
+				core_target="$(echo "${core_pattern}" | sed -e "s/%h/$(hostname)/" \
+					-e "s/%D/$(date +%Y%m%d)/" -e "s/%T/$(date +%H%M%S)/")"
+				mv core "${core_target}"
+				core_target=$(readlink -f "${core_target}")
+			else
+				core_target=$(readlink -f core)
+			fi
+
+			if [ -n "${corecompress}" && -x "${corecompress}" ]; then
+				"${corecompress}" "${core_target}"
+			fi
+
+			MSG="${MSG}\r\nCore dumped: ${core_target}"
+		fi
+	else
+		MSG="Asterisk terminated with return code: $result"
+	fi
+
+	[ -n "${tty+yes}" ] \
+		&& echo "${MSG}" >"${tty}" \
+		|| echo "${MSG}"
+
+	if [ -n "${crashemail+yes}" && -x /usr/sbin/sendmail ]; then
+		$echo_e -n "Subject: Asterisk crashed\r\n${MSG}\r\n" |\
+			 /usr/sbin/sendmail "${crashemail}"
+	fi
+	echo "Restarting asterisk after ${restartdelay}s ..."
+	sleep "${restartdelay}"
+done
+
+echo "Terminating $progname."
+exit 0
