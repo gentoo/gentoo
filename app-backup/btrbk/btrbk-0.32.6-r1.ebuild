@@ -31,6 +31,7 @@ src_compile() {
 	emake clean
 	use doc && emake -C doc
 }
+
 src_install() {
 	local targets="install-bin install-etc install-share install-systemd"
 	use doc && targets="${targets} install-man install-doc"
@@ -41,6 +42,7 @@ src_install() {
 		SYSTEMDDIR="$(systemd_get_systemunitdir)" \
 		${targets}
 }
+
 pkg_preinst() {
 	if has_version "<${CATEGORY}/${PN}-0.26.0" ; then
 		upgrade_0_26_0_warning="1"
@@ -49,6 +51,7 @@ pkg_preinst() {
 		upgrade_0_27_0_warning="1"
 	fi
 }
+
 pkg_postinst() {
 	if [[ "${upgrade_0_26_0_warning}" == "1" ]]; then
 		ewarn "If you are using raw targets, make sure to run the"
