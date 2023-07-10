@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit bash-completion-r1 estack llvm toolchain-funcs python-r1 linux-info
+inherit bash-completion-r1 estack flag-o-matic llvm toolchain-funcs python-r1 linux-info
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
 HOMEPAGE="https://perf.wiki.kernel.org/"
@@ -231,6 +231,8 @@ perf_make() {
 }
 
 src_compile() {
+	filter-lto
+
 	# test-clang.bin not build with g++
 	if use clang; then
 		make -C "${S_K}/tools/build/feature" V=1 CXX=${CHOST}-clang++ test-clang.bin || die
