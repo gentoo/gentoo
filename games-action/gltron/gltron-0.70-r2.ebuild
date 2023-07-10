@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop
 
 DESCRIPTION="3d tron, just like the movie"
-HOMEPAGE="http://gltron.sourceforge.net/"
+HOMEPAGE="https://gltron.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.gz
 	mirror://gentoo/${PN}.png"
 
