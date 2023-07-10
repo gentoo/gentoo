@@ -16,7 +16,7 @@ fi
 inherit autotools ${GIT_ECLASS} flag-o-matic linux-info
 
 DESCRIPTION="tool to diagnose issues with power consumption and power management"
-HOMEPAGE="https://01.org/powertop/ https://github.com/fenrus75/powertop/"
+HOMEPAGE="https://github.com/fenrus75/powertop/"
 
 LICENSE="GPL-2"
 SLOT="0"
