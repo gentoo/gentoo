@@ -170,10 +170,6 @@ net-misc/openssh security-key
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
-# Jaco Kroon <jaco@uls.co.za> (2019-11-28)
-# Unfortunately net-libs/bcg729 isn't available for ppc
-net-libs/pjproject g729
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on ppc
 sys-firmware/seabios -debug
