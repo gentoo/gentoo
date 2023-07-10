@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~ppc64 ~riscv x86"
 # The tests seem to be written specifically for the libegit2 git repository.
 RESTRICT="test"
 
