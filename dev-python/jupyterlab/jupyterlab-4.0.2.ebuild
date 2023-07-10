@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=hatchling
 
-inherit distutils-r1 pypi
+inherit distutils-r1 pypi xdg
 
 DESCRIPTION="JupyterLab computational environment"
 HOMEPAGE="
