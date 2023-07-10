@@ -46,6 +46,10 @@ BDEPEND="
 	introspection? ( dev-util/glib-utils )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-arm-cast-align.patch
+)
+
 src_prepare() {
 	default
 
