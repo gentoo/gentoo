@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit desktop python-single-r1 wrapper
 
 DESCRIPTION="Side scrolling shooter game starring a steamboat on the sea"
-HOMEPAGE="http://funnyboat.sourceforge.net/"
+HOMEPAGE="https://funnyboat.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P/_p*}-src.zip
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz"
