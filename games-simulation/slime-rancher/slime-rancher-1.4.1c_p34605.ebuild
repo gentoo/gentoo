@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ MY_P="${P//[-.]/_}"
 MY_P="${MY_P//_p/_}"
 
 DESCRIPTION="Cute game where you cultivate slimes on a distant planet"
-HOMEPAGE="http://www.slimerancher.com/"
+HOMEPAGE="https://www.slimerancher.com/"
 SRC_URI="${MY_P}.sh"
 S="${WORKDIR}/data/noarch/game"
 
