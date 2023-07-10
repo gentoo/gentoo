@@ -6,6 +6,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Marek Szuba <marecki@gentoo.org> (2023-07-10)
+# dev-python/mkdocs-material is by design directly integrated with
+# Google Fonts and as such violates the network sandbox [1].
+# Upstream documentation mentions an option which supposedly prevents
+# this, however adding it to the Molecule mkdocs.yml has had no effect.
+# Looks like this will have to be addressed at the level of mkdocs-material.
+# [1] https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/
+app-admin/ansible-molecule doc
+
 # William Hubbs <williamh@gentoo.org> (2023-06-30)
 # multiple repeated issues: Bug: #909394
 net-libs/nodejs lto
