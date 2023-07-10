@@ -11,7 +11,7 @@ DESCRIPTION="Test environment setup for development with IDE"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
