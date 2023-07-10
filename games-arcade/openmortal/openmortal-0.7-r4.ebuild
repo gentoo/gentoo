@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools desktop
 
-DESCRIPTION="A spoof of the famous Mortal Kombat game"
-HOMEPAGE="http://openmortal.sourceforge.net/"
+DESCRIPTION="Spoof of the famous Mortal Kombat game"
+HOMEPAGE="https://openmortal.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
