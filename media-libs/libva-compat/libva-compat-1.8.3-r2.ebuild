@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,8 @@ MY_PN="${PN%-compat}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
-HOMEPAGE="https://01.org/linuxmedia/vaapi"
-SRC_URI="https://github.com/01org/libva/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/intel/libva"
+SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"
