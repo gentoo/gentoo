@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag corresponding to the default ABI
@@ -27,3 +27,22 @@
 -cpu_flags_x86_sse4a
 -cpu_flags_x86_ssse3
 -cpu_flags_x86_xop
+
+# Unmask x86 instruction sets
+-svga
+
+# Unmask nvidia XvMC support
+-nvidia
+
+# Unmask dev-db/oracle-instantclient-basic support
+-oci8-instant-client
+
+# Modular X: unmask for architectures on which they are available
+-input_devices_synaptics
+-input_devices_vmmouse
+-input_devices_wacom
+-video_cards_nvidia
+-video_cards_vmware
+
+# ibm is only used for ppc64 stuff
+ibm
