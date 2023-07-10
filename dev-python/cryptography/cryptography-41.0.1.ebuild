@@ -136,6 +136,10 @@ src_prepare() {
 	fi
 }
 
+python_configure_all() {
+	filter-lto # bug #903908
+}
+
 python_test() {
 	local -x PYTHONPATH="${PYTHONPATH}:${WORKDIR}/cryptography_vectors-${PV}"
 	local EPYTEST_IGNORE=(
