@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake desktop optfeature python-single-r1
 
 DESCRIPTION="Shane's Chess Information Database"
-HOMEPAGE="http://scid.sourceforge.net/"
+HOMEPAGE="https://scid.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/scid/${PN}-code-${PV}.zip
 	mirror://sourceforge/scid/${P}_x64_linux.tar.gz"
