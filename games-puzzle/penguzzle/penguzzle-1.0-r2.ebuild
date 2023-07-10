@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,13 +6,12 @@ EAPI=7
 inherit desktop
 
 DESCRIPTION="Tcl/Tk variant of the well-known 15-puzzle game"
-HOMEPAGE="http://www.naskita.com/linux/penguzzle/penguzzle.shtml"
-SRC_URI="http://www.naskita.com/linux/${PN}/${PN}.zip -> ${P}.zip"
+HOMEPAGE="https://www.naskita.com/linux/penguzzle/penguzzle.shtml"
+SRC_URI="https://www.naskita.com/linux/${PN}/${PN}.zip -> ${P}.zip"
 
 LICENSE="penguzzle"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-lang/tk:0=
