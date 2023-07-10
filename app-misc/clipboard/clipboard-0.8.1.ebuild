@@ -5,9 +5,11 @@ EAPI=8
 
 inherit cmake
 
+MY_PN="Clipboard"
+MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Cut, copy, and paste anything in your terminal"
 HOMEPAGE="https://getclipboard.app/ https://github.com/Slackadays/Clipboard"
-SRC_URI="https://github.com/Slackadays/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Slackadays/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -20,6 +22,8 @@ RDEPEND="X? ( x11-libs/libX11 )
 			dev-libs/wayland
 		)
 "
+S="${WORKDIR}/${MY_P}"
+
 PATCHES=(
 	"${FILESDIR}/disable-git-and-lto.patch"
 )
@@ -42,15 +46,4 @@ src_configure() {
 	"-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex X OFF ON)"
 	)
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	ewarn "The new history feature makes CB incompatible with how older versions stored clipboard contents."
-	ewarn "If you have existing content when you upgrade, then it might not appear in CB, although it won't be deleted."
-	ewarn "To fix this, take everything stored in the data folder of your existing clipboards"
-	ewarn "and move them to a \"0\" subfolder within data."
-	ewarn "So, if you have the file Foobar stored under data, the new setup will look like the folder 0 under data,"
-	ewarn "and 0 stores the file Foobar."
-	ewarn "To find where CB keeps your clipboards, use the cb info command and check the line that says Stored in...."
-	ewarn "If you don't already have content stored with CB, then this warning doesn't apply to you."
 }
