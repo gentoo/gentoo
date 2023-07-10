@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 inherit ruby-fakegem
 
 DESCRIPTION="A framework to implement robust multiprocess servers"
-HOMEPAGE="https://github.com/fluent/serverengine"
+HOMEPAGE="https://github.com/treasure-data/serverengine"
 LICENSE="Apache-2.0"
 
 KEYWORDS="~amd64"
