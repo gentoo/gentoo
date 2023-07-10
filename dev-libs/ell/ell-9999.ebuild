@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic linux-info
 
 DESCRIPTION="Embedded Linux Library provides core, low-level functionality for system daemons"
-HOMEPAGE="https://01.org/ell"
+HOMEPAGE="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 if [[ "${PV}" == *9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
