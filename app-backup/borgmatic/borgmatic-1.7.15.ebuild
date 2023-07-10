@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 
@@ -33,8 +33,8 @@ BDEPEND="
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.3-systemd_service_bin_path.patch
 	"${FILESDIR}"/${PN}-1.7.13-no_test_coverage.patch
+	"${FILESDIR}"/${PN}-1.7.14-systemd_service_bin_path.patch
 )
 
 # A fragile test whose only purpose is to make sure the NEWS file
@@ -54,7 +54,7 @@ src_install() {
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "To generate a sample configuration file, run:"
-		elog "    generate-borgmatic-config"
+		elog "    ${PN} config generate"
 	else
 		local oldver
 		for oldver in ${REPLACING_VERSIONS}; do
@@ -69,5 +69,5 @@ pkg_postinst() {
 		done
 	fi
 	elog
-	elog "Systemd users wishing to periodically run borgmatic can use the provided timer and service units."
+	elog "Systemd users wishing to periodically run ${PN} can use the provided timer and service units."
 }
