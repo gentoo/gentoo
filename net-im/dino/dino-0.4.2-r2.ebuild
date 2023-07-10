@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/icu:=
 	dev-libs/libgee:0.8=
 	gui-libs/gtk:4
-	>=gui-libs/libadwaita-1.2.0:1
+	>=gui-libs/libadwaita-1.2.0:1[vala]
 	media-libs/graphene
 	net-libs/glib-networking
 	net-libs/gnutls:=
