@@ -306,6 +306,7 @@ pkg_postinst() {
 			if ver_test -gt ${v}; then
 				ewarn
 				ewarn "Re-run grub-install to update installed boot code!"
+				ewarn "Re-run grub-mkconfig to update grub.cfg!"
 				ewarn
 				break
 			fi
