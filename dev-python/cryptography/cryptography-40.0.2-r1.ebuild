@@ -93,7 +93,7 @@ CRATES="
 	windows_x86_64_msvc-0.42.2
 "
 
-inherit cargo distutils-r1 multiprocessing pypi
+inherit cargo distutils-r1 flag-o-matic multiprocessing pypi
 
 VEC_P=cryptography_vectors-$(ver_cut 1-3)
 DESCRIPTION="Library providing cryptographic recipes and primitives"
