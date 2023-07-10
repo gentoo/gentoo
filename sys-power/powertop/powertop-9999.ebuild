@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ fi
 inherit autotools ${GIT_ECLASS} linux-info
 
 DESCRIPTION="tool to diagnose issues with power consumption and power management"
-HOMEPAGE="https://01.org/powertop/ https://github.com/fenrus75/powertop/"
+HOMEPAGE="https://github.com/fenrus75/powertop/"
 
 LICENSE="GPL-2"
 SLOT="0"
