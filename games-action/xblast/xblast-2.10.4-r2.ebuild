@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ MY_GAMEDATA=(
 )
 
 DESCRIPTION="Bomberman clone with network support for up to 6 players"
-HOMEPAGE="http://xblast.sourceforge.net/"
+HOMEPAGE="https://xblast.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/xblast/${P}.tar.gz
 	$(printf 'mirror://sourceforge/xblast/%s.tar.gz ' "${MY_GAMEDATA[@]%:*}")"
