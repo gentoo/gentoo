@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Retro-style, abstract, 2D shooter"
-HOMEPAGE="http://transcend.sourceforge.net/"
+HOMEPAGE="https://transcend.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/Transcend_${PV}_UnixSource.tar.gz"
 S="${WORKDIR}/Transcend_${PV}_UnixSource"
 
