@@ -65,11 +65,12 @@ RESTRICT="test"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/configobj[${PYTHON_USEDEP}]
-		dev-python/dulwich[${PYTHON_USEDEP}]
-		dev-python/fastimport[${PYTHON_USEDEP}]
-		dev-python/patiencediff[${PYTHON_USEDEP}]
 		dev-python/fastbencode[${PYTHON_USEDEP}]
+		dev-python/patiencediff[${PYTHON_USEDEP}]
+		dev-python/merge3[${PYTHON_USEDEP}]
+		dev-python/dulwich[${PYTHON_USEDEP}]
 		dev-python/urllib3[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	!dev-vcs/bzr
 "
@@ -84,7 +85,9 @@ BDEPEND="
 QA_FLAGS_IGNORED=".*"
 
 src_prepare() {
-	sed -e 's@man/man1@share/&@' -i setup.py || die
+	sed -e 's@man/man1@share/&@' \
+		-e 's@, strip=Strip\.All@@' \
+		-i setup.py || die
 
 	distutils-r1_src_prepare
 }
