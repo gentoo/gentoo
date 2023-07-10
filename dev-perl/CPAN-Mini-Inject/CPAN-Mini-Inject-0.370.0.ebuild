@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Inject modules into a CPAN::Mini mirror"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/CPAN-Checksums-2.130.0
