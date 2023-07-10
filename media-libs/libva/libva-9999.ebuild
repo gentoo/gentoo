@@ -6,7 +6,7 @@ EAPI=8
 inherit meson-multilib optfeature
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
-HOMEPAGE="https://01.org/linuxmedia/vaapi"
+HOMEPAGE="https://github.com/intel/libva"
 
 if [[ ${PV} = *9999 ]] ; then
 	inherit git-r3
