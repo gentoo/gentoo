@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -25,6 +25,8 @@ RESTRICT="!test? ( test )"
 DOCS=( ChangeLog.txt README.md )
 
 multilib_src_configure() {
+	append-lfs-flags
+
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 		-DBUILD_TESTING=$(usex test)
