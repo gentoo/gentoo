@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,8 @@ MY_PV="$(ver_rs 1 '' "${MY_PV}")"
 # 5.0_beta8_p8 -> 5.0beta8-8
 MY_DEB_PV="$(ver_cut 1-2)$(ver_cut 3-4)-$(ver_cut 6)"
 
-DESCRIPTION="A small, flexible, screen-oriented MUD client (aka TinyFugue)"
-HOMEPAGE="http://tinyfugue.sourceforge.net/"
+DESCRIPTION="Small, flexible, screen-oriented MUD client (aka TinyFugue)"
+HOMEPAGE="https://tinyfugue.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/tinyfugue/tf-${MY_PV}.tar.gz
 	mirror://debian/pool/main/t/tf5/tf5_${MY_DEB_PV}.debian.tar.xz
