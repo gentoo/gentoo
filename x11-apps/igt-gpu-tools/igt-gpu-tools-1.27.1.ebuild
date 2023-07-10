@@ -12,7 +12,7 @@ inherit ${GIT_ECLASS} meson python-any-r1
 
 DESCRIPTION="Intel GPU userland tools"
 
-HOMEPAGE="https://01.org/linuxgraphics https://gitlab.freedesktop.org/drm/igt-gpu-tools"
+HOMEPAGE="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
