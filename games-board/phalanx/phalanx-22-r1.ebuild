@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_P="${PN^}-XXII"
 
 DESCRIPTION="Chess engine suitable for beginner and intermediate players"
-HOMEPAGE="http://phalanx.sourceforge.net/"
+HOMEPAGE="https://phalanx.sourceforge.net/"
 SRC_URI="mirror://sourceforge/phalanx/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
