@@ -6,7 +6,7 @@ EAPI=7
 inherit qmake-utils xdg
 
 DESCRIPTION="Qt5-based Chess Database Utility"
-HOMEPAGE="http://chessx.sourceforge.net/"
+HOMEPAGE="https://chessx.sourceforge.net/"
 SRC_URI="https://sourceforge.net/projects/chessx/files/chessx/${PV}/${P}.tgz"
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ ZLIB"
