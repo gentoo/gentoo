@@ -6,7 +6,7 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="Collection of utilities and tests for VA-API"
-HOMEPAGE="https://01.org/linuxmedia/vaapi"
+HOMEPAGE="https://github.com/intel/libva-utils"
 if [[ ${PV} = *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/intel/libva-utils"
