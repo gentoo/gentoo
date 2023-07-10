@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Abstraction layer to simplify PKCS#11 API"
 HOMEPAGE="https://github.com/opensc/libp11/wiki"
 SRC_URI="https://github.com/OpenSC/${PN}/releases/download/${P}/${P}.tar.gz"
@@ -20,11 +22,21 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? ( dev-libs/opensc )"
 
+src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/libp11-0.4.12-openssl-3.1.patch
+	)
+	default
+	eautoreconf
+}
+
 src_configure() {
-	econf \
-		--enable-shared \
-		$(use_enable static-libs static) \
+	local args=(
+		--enable-shared
+		$(use_enable static-libs static)
 		$(use_enable doc api-doc)
+	)
+	econf "${args[@]}"
 }
 
 src_install() {

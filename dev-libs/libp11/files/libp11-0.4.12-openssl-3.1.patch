@@ -1,0 +1,25 @@
+https://github.com/OpenSC/libp11/pull/503
+https://bugs.gentoo.org/910203
+
+From 580c12b78b63d88010a6178d7c4c58186938c479 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Tue, 6 Jun 2023 14:27:46 +0200
+Subject: [PATCH] Detect openSSL 3.1; compatible to openSSL 3.0
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index d6b0ee91..b96979d9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,7 +33,7 @@ AC_C_BIGENDIAN
+ # issues with applications linking to new openssl, old libp11, and vice versa
+ case "`$PKG_CONFIG --modversion --silence-errors libcrypto || \
+ 	$PKG_CONFIG --modversion openssl`" in
+-	3.0.*) # Predicted engines directory prefix for OpenSSL 3.x
++	3.1.*|3.0.*) # Predicted engines directory prefix for OpenSSL 3.x
+ 	    LIBP11_LT_OLDEST="3"
+ 	    debian_ssl_prefix="openssl-3.0.0";;
+ 	1.1.*) # Predicted engines directory prefix for OpenSSL 1.1.x
