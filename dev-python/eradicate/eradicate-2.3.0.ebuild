@@ -10,11 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="Removes commented-out code from Python files"
 HOMEPAGE="
-	https://github.com/wemake-services/eradicate/
+	https://github.com/PyCQA/eradicate/
 	https://pypi.org/project/eradicate/
 "
 SRC_URI="
-	https://github.com/wemake-services/eradicate/archive/${PV}.tar.gz
+	https://github.com/PyCQA/eradicate/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
