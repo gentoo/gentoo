@@ -13,7 +13,7 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc x86 ~amd64-linux"
+KEYWORDS="~amd64 sparc x86 ~amd64-linux"
 
 need_apache2
 
