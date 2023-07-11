@@ -107,6 +107,7 @@ RDEPEND="
 	)
 	qemu? (
 		>=app-emulation/qemu-4.2
+		app-crypt/swtpm
 		>=dev-libs/yajl-2.0.3:=
 	)
 	rbd? ( sys-cluster/ceph )
