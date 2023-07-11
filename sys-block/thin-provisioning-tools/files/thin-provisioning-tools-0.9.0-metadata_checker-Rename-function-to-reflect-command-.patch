@@ -1,0 +1,66 @@
+From 9f3823c97dc0b5d4a94a6179d45a3b45c045cff8 Mon Sep 17 00:00:00 2001
+From: Ming-Hung Tsai <mtsai@redhat.com>
+Date: Wed, 12 Aug 2020 23:25:24 +0800
+Subject: [PATCH] [metadata_checker] Rename function to reflect command line
+ changes
+
+---
+ thin-provisioning/metadata_checker.cc | 6 +++---
+ thin-provisioning/metadata_checker.h  | 2 +-
+ thin-provisioning/thin_check.cc       | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/thin-provisioning/metadata_checker.cc b/thin-provisioning/metadata_checker.cc
+index e81e22c..0b26eca 100644
+--- a/thin-provisioning/metadata_checker.cc
++++ b/thin-provisioning/metadata_checker.cc
+@@ -603,8 +603,9 @@ void check_options::set_ignore_non_fatal() {
+ 	ignore_non_fatal_ = true;
+ }
+ 
+-void check_options::set_fix_metadata_leaks() {
++void check_options::set_auto_repair() {
+ 	fix_metadata_leaks_ = true;
++	clear_needs_check_ = true;
+ }
+ 
+ void check_options::set_clear_needs_check() {
+@@ -650,8 +651,7 @@ thin_provisioning::check_metadata(std::string const &path,
+ 	checker.check();
+ 	if (check_opts.fix_metadata_leaks_)
+ 		checker.fix_metadata_leaks(check_opts.open_transaction_);
+-	if (check_opts.fix_metadata_leaks_ ||
+-	    check_opts.clear_needs_check_)
++	if (check_opts.clear_needs_check_)
+ 		checker.clear_needs_check_flag();
+ 
+ 	return checker.get_status();
+diff --git a/thin-provisioning/metadata_checker.h b/thin-provisioning/metadata_checker.h
+index 5569d27..b4afbdc 100644
+--- a/thin-provisioning/metadata_checker.h
++++ b/thin-provisioning/metadata_checker.h
+@@ -45,7 +45,7 @@ namespace thin_provisioning {
+ 		void set_override_mapping_root(bcache::block_address b);
+ 		void set_metadata_snap();
+ 		void set_ignore_non_fatal();
+-		void set_fix_metadata_leaks();
++		void set_auto_repair();
+ 		void set_clear_needs_check();
+ 
+ 		bool use_metadata_snap_;
+diff --git a/thin-provisioning/thin_check.cc b/thin-provisioning/thin_check.cc
+index 60f7838..e3c9db3 100644
+--- a/thin-provisioning/thin_check.cc
++++ b/thin-provisioning/thin_check.cc
+@@ -166,7 +166,7 @@ thin_check_cmd::run(int argc, char **argv)
+ 
+ 		case 6:
+ 			// auto-repair
+-			fs.check_opts.set_fix_metadata_leaks();
++			fs.check_opts.set_auto_repair();
+ 			break;
+ 
+ 		default:
+-- 
+2.41.0.255.g8b1d071c50-goog
+
