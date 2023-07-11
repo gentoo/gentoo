@@ -25,6 +25,8 @@ RDEPEND="
 
 DEPEND="
 	test? (
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/pydantic[${PYTHON_USEDEP}]
 		>=dev-python/jsonpickle-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.23.5[${PYTHON_USEDEP}]
 		dev-python/tomli-w[${PYTHON_USEDEP}]
