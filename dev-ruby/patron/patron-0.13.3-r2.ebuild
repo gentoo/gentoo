@@ -24,7 +24,7 @@ IUSE=""
 DEPEND+=" net-misc/curl"
 RDEPEND+=" net-misc/curl"
 
-ruby_add_bdepend "test? ( dev-ruby/rack www-servers/puma )"
+ruby_add_bdepend "test? ( dev-ruby/rack:2.2 www-servers/puma )"
 
 all_ruby_prepare() {
 	# Fix Rakefile
@@ -37,4 +37,7 @@ all_ruby_prepare() {
 
 	# Avoid specs with failures. We were not running any specs before.
 	rm spec/session_ssl_spec.rb spec/session_spec.rb spec/response_spec.rb || die
+
+	# Ensure a compatible rack version
+	sed -i -e '1igem "rack", "~> 2.2.0"' spec/spec_helper.rb || die
 }
