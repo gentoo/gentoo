@@ -27,6 +27,8 @@ DEPEND="
 	test? (
 		>=dev-python/jsonpickle-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.23.5[${PYTHON_USEDEP}]
+		dev-python/pydantic[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/tomli-w[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/tomli[${PYTHON_USEDEP}]
