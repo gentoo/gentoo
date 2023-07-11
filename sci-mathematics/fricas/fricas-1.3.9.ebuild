@@ -5,10 +5,11 @@ EAPI=8
 inherit elisp-common
 
 DESCRIPTION="FriCAS is a fork of Axiom computer algebra system"
-HOMEPAGE="http://fricas.sourceforge.net/
+HOMEPAGE="https://fricas.sourceforge.net/
 	https://github.com/fricas/fricas
 	https://fricas.github.io/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.full.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-full.tar.bz2"
+
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
