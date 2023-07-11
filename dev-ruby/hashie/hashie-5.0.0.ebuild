@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -17,12 +17,14 @@ inherit ruby-fakegem
 
 DESCRIPTION="Hashie is a small collection of tools that make hashes more powerful"
 HOMEPAGE="https://www.mobomo.com/2009/11/hashie-the-hash-toolkit/"
-SRC_URI="https://github.com/intridea/hashie/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hashie/hashie/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE=""
+
+PATCHES=( "${FILESDIR}/${P}-ruby32-tests.patch" )
 
 ruby_add_bdepend "test? ( dev-ruby/activesupport )"
 
