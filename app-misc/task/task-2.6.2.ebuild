@@ -68,3 +68,7 @@ src_install() {
 	exeinto "/usr/share/${PN}/scripts"
 	doexe scripts/add-ons/*
 }
+
+pkg_postinst() {
+	einfo "To use XDG directories, please edit your .taskrc after issuing the first task command"
+}
