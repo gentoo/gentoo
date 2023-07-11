@@ -49,6 +49,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	append-lfs-flags
+
 	local mycmakeargs=(
 		-DBUILD_PKGCONFIG_FILES=ON # always build pkgconfig files, bug #539834
 		-DBUILD_TESTING="$(multilib_native_usex test)"
