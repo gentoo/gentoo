@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
+	"${FILESDIR}"/grub-2.12_rc1-util-grub.d-25_bli.in-fix-shebang-on-unmerged-usr.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
