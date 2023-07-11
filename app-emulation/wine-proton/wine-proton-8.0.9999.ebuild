@@ -9,7 +9,7 @@ inherit autotools flag-o-matic multilib multilib-build python-any-r1
 inherit readme.gentoo-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.3
-WINE_MONO=7.4.1
+WINE_MONO=8.0.0
 WINE_PV=$(ver_rs 2 -)
 
 if [[ ${PV} == *9999 ]]; then
@@ -213,6 +213,8 @@ src_configure() {
 		$(use_with v4l v4l2)
 		$(use_with xcomposite)
 		$(use_with xinerama)
+
+		--without-vosk # unpackaged, file a bug if you need this
 	)
 
 	tc-ld-force-bfd # builds with non-bfd but broken at runtime (bug #867097)
