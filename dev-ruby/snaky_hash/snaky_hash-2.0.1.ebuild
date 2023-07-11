@@ -19,7 +19,7 @@ IUSE=""
 SLOT="1"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 ruby_add_rdepend "
 	dev-ruby/hashie:*
