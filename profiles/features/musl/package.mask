@@ -116,20 +116,6 @@ sys-libs/libstdc++-v3
 # bug #713542
 net-misc/casync
 
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-03-14)
-# Doesn't build with musl, bug #832742
-app-doc/kicad-doc
-media-gfx/freecad
-media-gfx/prusaslicer
-media-gfx/superslicer
-sci-electronics/kicad
-sci-electronics/kicad-footprints
-sci-electronics/kicad-meta
-sci-electronics/kicad-packages3d
-sci-electronics/kicad-symbols
-sci-electronics/kicad-templates
-sci-libs/opencascade
-
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
 # Doesn't build on musl, bug #833028
 www-client/chromium
