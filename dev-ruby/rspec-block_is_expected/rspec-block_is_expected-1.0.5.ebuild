@@ -18,6 +18,6 @@ IUSE=""
 SLOT="1"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 
 ruby_add_depend "test? ( >=dev-ruby/rspec-pending_for-0.1:0 )"
