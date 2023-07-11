@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-ruby_add_bdepend "test? ( >=dev-ruby/test-unit-3 )"
+ruby_add_bdepend "test? ( >=dev-ruby/test-unit-3 dev-ruby/webrick )"
 ruby_add_rdepend "
 	dev-ruby/actionview
 	dev-ruby/htmlentities
