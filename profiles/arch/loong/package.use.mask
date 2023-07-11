@@ -1,6 +1,10 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-11)
+# Upstream lacks pmu-events definition file for loong.
+dev-util/perf python
+
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-01)
 # Upstream accepted vector asm for loong before corresponding assembler
 # support is ready, leading to build failures. Disable asm for the time being
