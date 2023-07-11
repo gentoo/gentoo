@@ -26,8 +26,8 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-inherit bash-completion-r1 linux-info meson-multilib pam
-inherit python-single-r1 systemd toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 linux-info meson-multilib pam python-single-r1
+inherit secureboot systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="http://systemd.io/"
@@ -230,7 +230,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	:
+	use boot && secureboot_pkg_setup
 }
 
 src_unpack() {
@@ -416,6 +416,7 @@ multilib_src_install_all() {
 
 	if use boot; then
 		python_fix_shebang "${ED}"
+		secureboot_auto_sign
 	fi
 }
 
