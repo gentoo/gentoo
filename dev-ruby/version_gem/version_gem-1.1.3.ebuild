@@ -19,7 +19,7 @@ RUBY_S="version_gem-v${PV}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 all_ruby_prepare() {
