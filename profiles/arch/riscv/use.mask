@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -riscv
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here
 -tcmalloc

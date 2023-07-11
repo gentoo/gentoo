@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
 # Requires media-libs/opencolorio, broken on x86, bug #884115
 color-management

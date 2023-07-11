@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
 # Jimi Huotari <chiitoo@gentoo.org> (2023-03-03)
 # Unmask on amd64 only for now.
 -qt6
