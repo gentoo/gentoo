@@ -1,6 +1,10 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-11)
+# dev-util/babeltrace fails tests on loong
+babeltrace
+
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-05)
 # rest of GNOME not keyworded yet
 gnome-online-accounts
