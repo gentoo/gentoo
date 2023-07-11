@@ -10,7 +10,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 inherit ruby-fakegem
 
 DESCRIPTION="Object oriented authorization for Rails applications"
-HOMEPAGE="https://github.com/elabs/pundit https://rubygems.org/gems/pundit"
+HOMEPAGE="https://github.com/varvet/pundit https://rubygems.org/gems/pundit"
 
 LICENSE="MIT"
 SLOT="2"
