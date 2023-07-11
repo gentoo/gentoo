@@ -21,7 +21,7 @@ SRC_URI="
 S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
-SLOT="0/2.2"
+SLOT="0/2.2.1-r2"
 KEYWORDS=""
 IUSE="
 	+clock-gettime debug malloc-replacement mbedtls +ssl static-libs
@@ -48,6 +48,12 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
 )
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libevent.asc
+
+PATCHES=(
+	# signalfd-by-default breaks at least app-misc/tmux
+	# https://github.com/libevent/libevent/pull/1486
+	"${FILESDIR}/${P}-disable-signalfd.patch"
+)
 
 multilib_src_configure() {
 	# fix out-of-source builds
