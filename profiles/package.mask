@@ -132,11 +132,6 @@ games-action/descent3-demo
 # https://github.com/scikit-build/scikit-build-core/issues/413
 <=dev-python/scikit-build-core-0.4.7
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-06-24)
-# This version is fine but it depends on >=virtual/rust-1.70 which is
-# currently masked. Feel free to unmask if you are using 1.70.
-~app-emulation/ruffle-0_p20230624
-
 # Hans de Graaff <graaff@gentoo.org> (2023-06-23)
 # Deprecated upstream, who recommends to use the Open3 method instead.
 # No reverse dependencies. Masked for removal on 2023-07-23.
@@ -259,14 +254,6 @@ dev-ruby/ruby-gtk2
 # Renamed to dev-python/pypdf.  No revdeps left.
 # Removal on 2023-07-10.  Bug #908227.
 dev-python/PyPDF2
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-06-08)
-# May be broken on some arches due to weird LLVM interaction.
-# Masked for now.
-# https://github.com/rust-lang/rust/issues/112286
-~dev-lang/rust-1.70.0
-~dev-lang/rust-bin-1.70.0
-~virtual/rust-1.70.0
 
 # Sam James <sam@gentoo.org> (2023-06-05)
 # Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
