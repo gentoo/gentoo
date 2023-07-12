@@ -1,0 +1,42 @@
+https://github.com/Grumbel/sdl-jstest/issues/15
+https://github.com/Grumbel/sdl-jstest/commit/62124aa8b9d4c3a8eec5206bf0fc09fade52b326
+
+From 62124aa8b9d4c3a8eec5206bf0fc09fade52b326 Mon Sep 17 00:00:00 2001
+From: Ingo Ruhnke <grumbel@gmail.com>
+Date: Wed, 12 Jul 2023 17:34:38 +0200
+Subject: [PATCH] Fix initial blank screen in sdl-jstest
+
+Screen was left blank due to only getting drawn once a new event
+arrived.
+
+Fixes #15
+---
+ src/sdl-jstest.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/sdl-jstest.c b/src/sdl-jstest.c
+index 388e84d..bc95024 100644
+--- a/src/sdl-jstest.c
++++ b/src/sdl-jstest.c
+@@ -192,11 +192,11 @@ int main(int argc, char** argv)
+ 
+         int quit = 0;
+         SDL_Event event;
++        bool something_new = TRUE;
+         while(!quit)
+         {
+           SDL_Delay(10);
+ 
+-          bool something_new = FALSE;
+           while (SDL_PollEvent(&event)) {
+             something_new = TRUE;
+             switch(event.type)
+@@ -302,6 +302,8 @@ int main(int argc, char** argv)
+             printw("Press Ctrl-c to exit\n");
+ 
+             refresh();
++
++            something_new = FALSE;
+           }
+ 
+           if ( getch() == 3 ) // Ctrl-c
