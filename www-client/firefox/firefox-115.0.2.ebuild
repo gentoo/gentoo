@@ -72,6 +72,7 @@ IUSE+=" geckodriver +gmp-autoupdate screencast"
 
 REQUIRED_USE="|| ( X wayland )
 	debug? ( !system-av1 )
+	!jumbo-build? ( clang )
 	pgo? ( lto )
 	wifi? ( dbus )"
 
