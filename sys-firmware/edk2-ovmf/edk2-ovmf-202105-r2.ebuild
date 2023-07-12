@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python3_{9,10,11} )
 
-inherit python-any-r1 readme.gentoo-r1
+inherit python-any-r1 readme.gentoo-r1 secureboot
 
 DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
@@ -90,6 +90,7 @@ In order to use the firmware you can run qemu the following way
 
 pkg_setup() {
 	[[ ${PV} != "999999" ]] && use binary || python-any-r1_pkg_setup
+	secureboot_pkg_setup
 }
 
 src_prepare() {
@@ -168,6 +169,8 @@ src_install() {
 	insinto /usr/share/qemu/firmware
 	doins qemu/*
 	rm "${ED}"/usr/share/qemu/firmware/40-edk2-ovmf-x64-sb-enrolled.json || die "rm failed"
+
+	secureboot_auto_sign --in-place
 
 	readme.gentoo_create_doc
 }
