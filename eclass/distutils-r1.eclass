@@ -191,6 +191,7 @@ esac
 if [[ -z ${_DISTUTILS_R1_ECLASS} ]]; then
 _DISTUTILS_R1_ECLASS=1
 
+inherit flag-o-matic
 inherit multibuild multilib multiprocessing ninja-utils toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
@@ -1834,6 +1835,12 @@ distutils-r1_run_phase() {
 		# bug fixes from Cython (this works only when setup.py is using
 		# cythonize() but it's better than nothing)
 		local -x CYTHON_FORCE_REGEN=1
+	fi
+
+	# Rust extensions are incompatible with C/C++ LTO compiler
+	# see e.g. https://bugs.gentoo.org/910220
+	if has cargo ${INHERITED}; then
+		filter-lto
 	fi
 
 	# How to build Python modules in different worlds...
