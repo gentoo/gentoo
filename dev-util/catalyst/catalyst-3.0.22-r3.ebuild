@@ -72,3 +72,11 @@ python_install_all() {
 		dodoc files/HOWTO.html files/docbook-xsl.css
 	fi
 }
+
+src_install() {
+	distutils-r1_src_install
+
+	doman files/catalyst.1 files/catalyst-config.5 files/catalyst-spec.5
+	insinto /etc/catalyst
+	doins etc/*
+}

@@ -108,6 +108,10 @@ src_install() {
 
 	echo 'd /var/tmp/catalyst 0755 root root' > "${T}"/catalyst-tmpdir.conf
 	dotmpfiles "${T}"/catalyst-tmpdir.conf
+
+	doman files/catalyst.1 files/catalyst-config.5 files/catalyst-spec.5
+	insinto /etc/catalyst
+	doins etc/*
 }
 
 pkg_postinst() {
