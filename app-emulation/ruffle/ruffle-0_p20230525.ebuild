@@ -554,7 +554,7 @@ LICENSE+="
 	Unicode-DFS-2016 ZLIB" # crates
 LICENSE+=" curl" # non-automated extra
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # dlopen: libX* (see winit+x11-dl crates)
 RDEPEND="
