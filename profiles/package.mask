@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-12)
+# The catalyst-3 branch is outdated and not used by Gentoo
+# Release Engineering anymore. Please either use git master
+# (9999) as all Release Engineering build machines or wait
+# for catalyst-4. Questions or bug reports about catalyst-3
+# may or may not lead to useful results.
+<dev-util/catalyst-4
+
 # Joonas Niilola <juippis@gentoo.org> (2023-07-12)
 # Testing. An upgrade from 102 isn't recommended due to downgrading
 # most likely not being possible. Back up your profile before
