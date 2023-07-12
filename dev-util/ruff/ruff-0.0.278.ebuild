@@ -24,13 +24,12 @@ CRATES="
 	anyhow-1.0.71
 	argfile-0.1.5
 	assert_cmd-2.0.11
-	atty-0.2.14
 	autocfg-1.1.0
 	base64-0.21.2
 	bincode-1.3.3
 	bitflags-1.3.2
-	bitflags-2.3.2
-	bstr-1.5.0
+	bitflags-2.3.3
+	bstr-1.6.0
 	bumpalo-3.13.0
 	cachedir-0.3.0
 	cast-0.3.0
@@ -41,9 +40,9 @@ CRATES="
 	ciborium-0.2.1
 	ciborium-io-0.2.1
 	ciborium-ll-0.2.1
-	clap-4.3.8
-	clap_builder-4.3.8
-	clap_complete-4.3.1
+	clap-4.3.11
+	clap_builder-4.3.11
+	clap_complete-4.3.2
 	clap_complete_command-0.5.1
 	clap_complete_fig-4.3.1
 	clap_complete_nushell-0.1.11
@@ -51,7 +50,7 @@ CRATES="
 	clap_lex-0.5.0
 	clearscreen-2.0.1
 	colorchoice-1.0.0
-	colored-2.0.0
+	colored-2.0.4
 	configparser-3.0.2
 	console-0.15.7
 	console_error_panic_hook-0.1.7
@@ -99,9 +98,7 @@ CRATES="
 	hashbrown-0.12.3
 	hashbrown-0.14.0
 	heck-0.4.1
-	hermit-abi-0.1.19
-	hermit-abi-0.2.6
-	hermit-abi-0.3.1
+	hermit-abi-0.3.2
 	hex-0.4.3
 	hexf-parse-0.2.1
 	humantime-2.1.0
@@ -113,15 +110,16 @@ CRATES="
 	imperative-1.0.4
 	indexmap-1.9.3
 	indexmap-2.0.0
+	indicatif-0.17.5
 	inotify-0.9.6
 	inotify-sys-0.1.5
 	insta-1.30.0
 	instant-0.1.12
 	io-lifetimes-1.0.11
 	is-macro-0.2.2
-	is-terminal-0.4.7
+	is-terminal-0.4.8
 	itertools-0.10.5
-	itoa-1.0.6
+	itoa-1.0.8
 	js-sys-0.3.64
 	kqueue-1.0.7
 	kqueue-sys-1.0.3
@@ -134,6 +132,7 @@ CRATES="
 	libmimalloc-sys-0.1.33
 	linked-hash-map-0.5.6
 	linux-raw-sys-0.3.8
+	linux-raw-sys-0.4.3
 	log-0.4.19
 	matches-0.1.10
 	memchr-2.5.0
@@ -151,13 +150,14 @@ CRATES="
 	num-bigint-0.4.3
 	num-integer-0.1.45
 	num-traits-0.2.15
-	num_cpus-1.15.0
+	num_cpus-1.16.0
+	number_prefix-0.4.0
 	once_cell-1.18.0
 	oorandom-11.1.3
 	option-ext-0.2.0
 	os_str_bytes-6.5.1
 	output_vt100-0.1.3
-	paste-1.0.12
+	paste-1.0.13
 	path-absolutize-3.1.0
 	path-dedot-3.1.0
 	pathdiff-0.2.1
@@ -172,11 +172,12 @@ CRATES="
 	phf_generator-0.11.2
 	phf_macros-0.11.2
 	phf_shared-0.11.2
-	pin-project-lite-0.2.9
+	pin-project-lite-0.2.10
 	plotters-0.3.5
 	plotters-backend-0.3.5
 	plotters-svg-0.3.5
 	pmutil-0.5.3
+	portable-atomic-1.3.3
 	predicates-3.0.3
 	predicates-core-1.0.6
 	predicates-tree-1.0.9
@@ -187,7 +188,7 @@ CRATES="
 	pyproject-toml-0.6.1
 	quick-junit-0.3.2
 	quick-xml-0.26.0
-	quote-1.0.28
+	quote-1.0.29
 	rand-0.8.5
 	rand_core-0.6.4
 	rayon-1.7.0
@@ -195,19 +196,20 @@ CRATES="
 	redox_syscall-0.2.16
 	redox_syscall-0.3.5
 	redox_users-0.4.3
-	regex-1.8.4
-	regex-automata-0.1.10
-	regex-syntax-0.7.2
+	regex-1.9.0
+	regex-automata-0.3.0
+	regex-syntax-0.7.3
 	result-like-0.4.6
 	result-like-derive-0.4.6
 	ring-0.16.20
 	rust-stemmers-1.2.0
 	rustc-hash-1.1.0
-	rustix-0.37.20
+	rustix-0.37.23
+	rustix-0.38.3
 	rustls-0.21.2
 	rustls-webpki-0.100.1
-	rustversion-1.0.12
-	ryu-1.0.13
+	rustversion-1.0.13
+	ryu-1.0.14
 	same-file-1.0.6
 	schemars-0.8.12
 	schemars_derive-0.8.12
@@ -215,11 +217,11 @@ CRATES="
 	scopeguard-1.1.0
 	sct-0.7.0
 	semver-1.0.17
-	serde-1.0.164
+	serde-1.0.166
 	serde-wasm-bindgen-0.5.0
-	serde_derive-1.0.164
+	serde_derive-1.0.166
 	serde_derive_internals-0.26.0
-	serde_json-1.0.99
+	serde_json-1.0.100
 	serde_spanned-0.6.3
 	serde_with-3.0.0
 	serde_with_macros-3.0.0
@@ -233,7 +235,7 @@ CRATES="
 	strum-0.24.1
 	strum_macros-0.24.3
 	syn-1.0.109
-	syn-2.0.22
+	syn-2.0.23
 	syn-ext-0.4.0
 	tempfile-3.6.0
 	termcolor-1.2.0
@@ -242,8 +244,8 @@ CRATES="
 	test-case-3.1.0
 	test-case-core-3.1.0
 	test-case-macros-3.1.0
-	thiserror-1.0.40
-	thiserror-impl-1.0.40
+	thiserror-1.0.43
+	thiserror-impl-1.0.43
 	thread_local-1.1.7
 	tikv-jemalloc-sys-0.5.3+5.3.0-patched
 	tikv-jemallocator-0.5.0
@@ -270,14 +272,14 @@ CRATES="
 	unic-ucd-ident-0.9.0
 	unic-ucd-version-0.9.0
 	unicode-bidi-0.3.13
-	unicode-ident-1.0.9
+	unicode-ident-1.0.10
 	unicode-normalization-0.1.22
 	unicode-width-0.1.10
 	untrusted-0.7.1
 	ureq-2.7.1
 	url-2.4.0
 	utf8parse-0.2.1
-	uuid-1.3.4
+	uuid-1.4.0
 	version_check-0.9.4
 	wait-timeout-0.2.0
 	walkdir-2.3.3
@@ -303,7 +305,7 @@ CRATES="
 	windows-sys-0.45.0
 	windows-sys-0.48.0
 	windows-targets-0.42.2
-	windows-targets-0.48.0
+	windows-targets-0.48.1
 	windows_aarch64_gnullvm-0.42.2
 	windows_aarch64_gnullvm-0.48.0
 	windows_aarch64_msvc-0.42.2
@@ -324,10 +326,10 @@ CRATES="
 	yansi-term-0.1.2
 "
 
-LIBCST_COMMIT="80e4c1399f95e5beb532fdd1e209ad2dbb470438"
+LIBCST_COMMIT="3cacca1a1029f05707e50703b49fe3dd860aa839"
 RUSTPYTHON_COMMIT="c174bbf1f29527edd43d432326327f16f47ab9e0"
 declare -A GIT_CRATES=(
-	[libcst]="https://github.com/charliermarsh/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst"
+	[libcst]="https://github.com/Instagram/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst"
 	[ruff_text_size]="https://github.com/astral-sh/RustPython-Parser;${RUSTPYTHON_COMMIT};RustPython-Parser-%commit%/ruff_text_size"
 	[rustpython-ast]="https://github.com/astral-sh/RustPython-Parser;${RUSTPYTHON_COMMIT};RustPython-Parser-%commit%/ast"
 	[rustpython-format]="https://github.com/astral-sh/RustPython-Parser;${RUSTPYTHON_COMMIT};RustPython-Parser-%commit%/format"
