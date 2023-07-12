@@ -1,0 +1,81 @@
+Bug: https://bugs.gentoo.org/887331
+--- a/buffer_1.c
++++ b/buffer_1.c
+@@ -2,6 +2,6 @@
+ #include "buffer.h"
+ 
+ char buffer_1_space[BUFFER_INSIZE];
+-static buffer it = BUFFER_INIT(write,1,buffer_1_space,sizeof buffer_1_space);
++static buffer it = BUFFER_INIT((void *)write,1,buffer_1_space,sizeof buffer_1_space);
+ buffer *buffer_1 = &it;
+ 
+--- a/buffer_2.c
++++ b/buffer_2.c
+@@ -2,6 +2,6 @@
+ #include "buffer.h"
+ 
+ char buffer_2_space[BUFFER_INSIZE];
+-static buffer it = BUFFER_INIT(write,2,buffer_2_space,sizeof buffer_2_space);
++static buffer it = BUFFER_INIT((void *)write,2,buffer_2_space,sizeof buffer_2_space);
+ buffer *buffer_2 = &it;
+ 
+--- a/byte.h
++++ b/byte.h
+@@ -1,7 +1,9 @@
+ #ifndef BYTE_H
+ #define BYTE_H
+ 
+-#include <sys/cdefs.h>
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ #ifndef __pure__
+ #define __pure__
+@@ -36,3 +38,6 @@ void byte_zero(void* out, unsigned len);
+ #define byte_equal(s,n,t) (!byte_diff((s),(n),(t)))
+ 
+ #endif
++#ifdef __cplusplus
++}
++#endif
+--- a/scan.h
++++ b/scan.h
+@@ -1,7 +1,9 @@
+ #ifndef SCAN_H
+ #define SCAN_H
+ 
+-#include <sys/cdefs.h>
++#ifdef __cplusplus
++extern "C" {
++#endif
+ #ifndef __pure__
+ #define __pure__
+ #endif
+@@ -59,3 +61,6 @@ extern unsigned int scan_charsetnskip(const char *in,const char *charset,unsigne
+ extern unsigned int scan_noncharsetnskip(const char *in,const char *charset,unsigned int limit) __pure__;
+ 
+ #endif
++#ifdef __cplusplus
++}
++#endif
+--- a/str.h
++++ b/str.h
+@@ -1,7 +1,9 @@
+ #ifndef STR_H
+ #define STR_H
+ 
+-#include <sys/cdefs.h>
++#ifdef __cplusplus
++extern "C" {
++#endif
+ #ifndef __pure__
+ #define __pure__
+ #endif
+@@ -41,3 +43,6 @@ extern int str_start(const char *a,const char *b) __pure__;
+ #define str_equal(s,t) (!str_diff((s),(t)))
+ 
+ #endif
++#ifdef __cplusplus
++}
++#endif
