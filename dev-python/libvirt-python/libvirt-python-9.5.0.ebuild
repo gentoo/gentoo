@@ -31,7 +31,7 @@ S="${WORKDIR}/${P%_rc*}"
 DESCRIPTION="libvirt Python bindings"
 HOMEPAGE="https://www.libvirt.org"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
