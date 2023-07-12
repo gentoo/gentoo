@@ -247,11 +247,6 @@ dev-ruby/websocket-driver:0
 =dev-db/mariadb-10.11.2
 =dev-db/mariadb-10.11.3
 
-# Sam James <sam@gentoo.org> (2023-06-12)
-# Installs no files with newer versions because GTK 2 support was dropped upstream.
-# Removal on 2023-07-12.  Bug #908378.
-dev-ruby/ruby-gtk2
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-10)
 # Renamed to dev-python/pypdf.  No revdeps left.
 # Removal on 2023-07-10.  Bug #908227.
