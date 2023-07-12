@@ -50,6 +50,7 @@ DEPEND="
 BDEPEND="
 	dev-util/glslang
 	dev-util/wayland-scanner
+	virtual/pkgconfig
 "
 
 S="${WORKDIR}/${PN}-${MY_PV}"
