@@ -25,6 +25,8 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	# don't fix debian bugs if they break gentoo
 	"${FILESDIR}/${PN}-4.3.4-depmod.patch"
+	# https://sourceforge.net/p/linux-gpib/code/2053/
+	"${FILESDIR}/${PN}-4.3.4-kernel-6.4.patch"
 )
 
 MODULES_KERNEL_MIN=2.6.8

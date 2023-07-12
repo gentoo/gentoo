@@ -1,0 +1,27 @@
+--- linux-gpib-kernel/compat/include/linux/device.h	(revision 2052)
++++ linux-gpib-kernel/compat/include/linux/device.h	(revision 2053)
+@@ -47,6 +47,13 @@
+  * for kernel versions prior to 2.6.26, so the 'drvdata' parameter of
+  * CLASS_DEVICE_CREATE() is pretty useless.
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
++#define CLASS_CREATE(owner, name) \
++	class_create(owner, name)
++#else
++#define CLASS_CREATE(owner, name) \
++	class_create(name)
++#endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,5,0)
+ #include <pcmcia/cs_types.h>
+--- linux-gpib-kernel/drivers/gpib/sys/osinit.c	(revision 2052)
++++ linux-gpib-kernel/drivers/gpib/sys/osinit.c	(revision 2053)
+@@ -207,7 +207,7 @@
+ 		printk( "gpib: can't get major %d\n", GPIB_CODE );
+ 		return -EIO;
+ 	}
+-	gpib_class = class_create(THIS_MODULE, "gpib_common");
++	gpib_class = CLASS_CREATE(THIS_MODULE, "gpib_common");
+ 	if(IS_ERR(gpib_class))
+ 	{
+ 		printk("gpib: failed to create gpib class\n");
