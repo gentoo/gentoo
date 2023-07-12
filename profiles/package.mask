@@ -127,11 +127,6 @@ dev-ruby/multi_test:0
 games-action/descent3
 games-action/descent3-demo
 
-# Michał Górny <mgorny@gentoo.org> (2023-06-24)
-# Breaks dev-python/setuptools-rust.
-# https://github.com/scikit-build/scikit-build-core/issues/413
-<=dev-python/scikit-build-core-0.4.7
-
 # Hans de Graaff <graaff@gentoo.org> (2023-06-23)
 # Deprecated upstream, who recommends to use the Open3 method instead.
 # No reverse dependencies. Masked for removal on 2023-07-23.
