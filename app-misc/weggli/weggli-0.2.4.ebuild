@@ -125,7 +125,7 @@ CRATES="
 # tree-sitter grammar. Patching the .so to need the system's
 # libtree-sitter-cpp seems to work, but it is not correct because the
 # weggli grammar has some minor modifications.
-inherit cargo flag-o-matic
+inherit cargo
 
 DESCRIPTION="a fast and robust semantic search tool for C and C++ codebases"
 HOMEPAGE="https://github.com/googleprojectzero/weggli"
@@ -139,10 +139,3 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
-
-src_prepare() {
-	default
-
-	# 854741
-	filter-lto
-}
