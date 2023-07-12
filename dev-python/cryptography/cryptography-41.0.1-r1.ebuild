@@ -65,7 +65,7 @@ CRATES="
 	windows_x86_64_msvc@0.42.2
 "
 
-inherit cargo distutils-r1 flag-o-matic multiprocessing pypi
+inherit cargo distutils-r1 multiprocessing pypi
 
 VEC_P=cryptography_vectors-$(ver_cut 1-3)
 DESCRIPTION="Library providing cryptographic recipes and primitives"
@@ -134,10 +134,6 @@ src_prepare() {
 		sed -i -e 's/__builtin_available(macOS 10\.12, \*)/'"${darwinok}"'/' \
 			src/_cffi_src/openssl/src/osrandom_engine.c || die
 	fi
-}
-
-python_configure_all() {
-	filter-lto # bug #903908
 }
 
 python_test() {
