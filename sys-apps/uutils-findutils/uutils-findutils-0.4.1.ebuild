@@ -164,15 +164,11 @@ if [[ ${PV} == 9999 ]] ; then
 elif [[ ${PV} == *_p* ]] ; then
 	FINDUTILS_COMMIT="59301c788aa610bd9b35d8715af72d87528d07dc"
 	SRC_URI="https://github.com/uutils/findutils/archive/${FINDUTILS_COMMIT}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+="
-		$(cargo_crate_uris)
-	"
+	SRC_URI+=" ${CARGO_CRATE_URIS}"
 	S="${WORKDIR}"/findutils-${FINDUTILS_COMMIT}
 else
 	SRC_URI="https://github.com/uutils/findutils/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+="
-		$(cargo_crate_uris)
-	"
+	SRC_URI+=" ${CARGO_CRATE_URIS}"
 	S="${WORKDIR}"/findutils-${PV}
 fi
 
