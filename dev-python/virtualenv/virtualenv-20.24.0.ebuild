@@ -48,14 +48,6 @@ BDEPEND="
 		>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
 	)
 "
-# https://github.com/pypa/virtualenv/issues/2554
-BDEPEND+="
-	test? (
-		$(python_gen_cond_dep '
-			!!<dev-python/virtualenv-20.22[${PYTHON_USEDEP}]
-		' 3.9)
-	)
-"
 
 distutils_enable_tests pytest
 
