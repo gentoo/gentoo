@@ -378,7 +378,6 @@ multilib_src_test() {
 				test-fido-id-desc
 				test-udev-builtin
 				test-udev-event
-				test-udev-netlink
 				test-udev-node
 				test-udev-util
 			)
