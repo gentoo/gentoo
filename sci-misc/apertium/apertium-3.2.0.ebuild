@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Shallow-transfer machine Translation engine and toolbox"
-HOMEPAGE="http://apertium.sourceforge.net/"
+HOMEPAGE="https://apertium.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
