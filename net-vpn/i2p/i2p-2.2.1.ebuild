@@ -60,7 +60,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PV}-fix-junit-classpath.patch"
+	"${FILESDIR}/fix-junit-classpath.patch"
 )
 
 EANT_BUILD_TARGET="preppkg-base"
