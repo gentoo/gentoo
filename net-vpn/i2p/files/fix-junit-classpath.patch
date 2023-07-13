@@ -1,5 +1,3 @@
-diff --git a/apps/i2ptunnel/java/build.xml b/apps/i2ptunnel/java/build.xml
-index b8d8b24a9..cfcf2d5a1 100644
 --- a/apps/i2ptunnel/java/build.xml
 +++ b/apps/i2ptunnel/java/build.xml
 @@ -465,7 +465,7 @@
@@ -11,8 +9,6 @@ index b8d8b24a9..cfcf2d5a1 100644
                  <pathelement location="./build/obj" />
                  <pathelement location="../../../core/java/build/i2p.jar" />
              </classpath>
-diff --git a/apps/ministreaming/java/build.xml b/apps/ministreaming/java/build.xml
-index 72944b25c..cef8a091f 100644
 --- a/apps/ministreaming/java/build.xml
 +++ b/apps/ministreaming/java/build.xml
 @@ -310,22 +310,12 @@
@@ -39,8 +35,6 @@ index 72944b25c..cef8a091f 100644
              </classpath>
              <batchtest todir="../../../reports/ministreaming/junit/">
                  <fileset dir="./test/junit">
-diff --git a/apps/streaming/java/build.xml b/apps/streaming/java/build.xml
-index ecfa0ebfd..395bc5aeb 100644
 --- a/apps/streaming/java/build.xml
 +++ b/apps/streaming/java/build.xml
 @@ -126,23 +126,13 @@
@@ -68,8 +62,6 @@ index ecfa0ebfd..395bc5aeb 100644
              </classpath>
              <batchtest todir="../../../reports/streaming/junit/">
                  <fileset dir="./test/junit">
-diff --git a/core/java/build.xml b/core/java/build.xml
-index 8b36ce5f0..305ddd6ee 100644
 --- a/core/java/build.xml
 +++ b/core/java/build.xml
 @@ -469,22 +469,12 @@
@@ -96,8 +88,6 @@ index 8b36ce5f0..305ddd6ee 100644
              </classpath>
              <batchtest todir="../../reports/core/junit/">
                  <fileset dir="./test/junit/">
-diff --git a/router/java/build.xml b/router/java/build.xml
-index 4b0cedf2b..0385926ac 100644
 --- a/router/java/build.xml
 +++ b/router/java/build.xml
 @@ -419,18 +419,11 @@
