@@ -26,6 +26,10 @@ RDEPEND="
 	jack? ( virtual/jack )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-wreturn-type.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 }
