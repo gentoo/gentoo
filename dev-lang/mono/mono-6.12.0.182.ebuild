@@ -4,7 +4,7 @@
 EAPI=7
 
 CHECKREQS_DISK_BUILD="4500M"
-inherit autotools check-reqs linux-info mono-env pax-utils multilib-minimal
+inherit autotools check-reqs flag-o-matic linux-info mono-env pax-utils multilib-minimal toolchain-funcs
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
 HOMEPAGE="https://mono-project.com"
@@ -85,6 +85,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	tc-ld-is-lld && filter-lto
+
 	local myeconfargs=(
 		$(use_with xen xen_opt)
 		--without-ikvm-native
