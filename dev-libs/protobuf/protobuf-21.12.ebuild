@@ -19,13 +19,12 @@ DESCRIPTION="Google's Protocol Buffers - Extensible mechanism for serializing st
 HOMEPAGE="https://protobuf.dev/"
 
 LICENSE="BSD"
-SLOT="0/$(ver_cut 1-2).0"
+SLOT="0/3.$(ver_cut 1-2).0"
 IUSE="emacs examples test zlib"
 RESTRICT="!test? ( test )"
 
 BDEPEND="emacs? ( app-editors/emacs:* )"
 DEPEND="
-	dev-cpp/abseil-cpp:=[${MULTILIB_USEDEP}]
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 	test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 "
@@ -56,7 +55,6 @@ multilib_src_configure() {
 		-Dprotobuf_BUILD_EXAMPLES=$(usex examples)
 		-Dprotobuf_WITH_ZLIB=$(usex zlib)
 		-Dprotobuf_BUILD_TESTS=$(usex test)
-		-Dprotobuf_ABSL_PROVIDER=package
 	)
 	use test && mycmakeargs+=(-Dprotobuf_USE_EXTERNAL_GTEST=ON)
 
