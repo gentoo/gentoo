@@ -100,7 +100,10 @@ BDEPEND="${PYTHON_DEPS}
 	ppc64? ( >=dev-util/gn-0.1807 )
 "
 
-PATCHES=( "${WORKDIR}/${PN}-5.15.8_p20230313-patchset" )
+PATCHES=(
+	"${WORKDIR}/${PN}-5.15.8_p20230313-patchset"
+	"${FILESDIR}/${PN}-5.15.10_p20230623-clang16.patch"
+)
 
 qtwebengine_check-reqs() {
 	# bug #307861
