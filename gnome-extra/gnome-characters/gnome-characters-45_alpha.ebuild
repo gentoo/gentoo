@@ -12,6 +12,9 @@ LICENSE="GPL-2+ BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
+IUSE="test"
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	>=dev-libs/gjs-1.50
 	>=dev-libs/glib-2.32:2
