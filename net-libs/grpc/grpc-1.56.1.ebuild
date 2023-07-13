@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 # format is 0/${CORE_SOVERSION//./}.${CPP_SOVERSION//./} , check top level CMakeLists.txt
-SLOT="0/32.155"
+SLOT="0/33.156"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="doc examples test"
 
@@ -22,13 +22,13 @@ RDEPEND="
 	=dev-cpp/abseil-cpp-20230125.2*:=
 	>=dev-libs/re2-0.2021.11.01:=
 	>=dev-libs/openssl-1.1.1:0=[-bindist(-)]
-	>=dev-libs/protobuf-22:=
+	>=dev-libs/protobuf-23.3:=
 	dev-libs/xxhash
 	>=net-dns/c-ares-1.15.0:=
 	sys-libs/zlib:=
 "
-
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	test? (
 		dev-cpp/benchmark
 		dev-cpp/gflags
@@ -72,20 +72,19 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DgRPC_INSTALL=ON
+		-DgRPC_ABSL_PROVIDER=package
+		-DgRPC_BACKWARDS_COMPATIBILITY_MODE=OFF
+		-DgRPC_CARES_PROVIDER=package
 		-DgRPC_INSTALL_CMAKEDIR="$(get_libdir)/cmake/${PN}"
 		-DgRPC_INSTALL_LIBDIR="$(get_libdir)"
-		-DgRPC_BACKWARDS_COMPATIBILITY_MODE=OFF
-		-DgRPC_ABSL_PROVIDER=package
-		-DgRPC_CARES_PROVIDER=package
 		-DgRPC_PROTOBUF_PROVIDER=package
 		-DgRPC_RE2_PROVIDER=package
 		-DgRPC_SSL_PROVIDER=package
 		-DgRPC_ZLIB_PROVIDER=package
 		-DgRPC_BUILD_TESTS=$(usex test)
-		$(usex test '-DgRPC_BENCHMARK_PROVIDER=package' '')
 		-DCMAKE_CXX_STANDARD=17
+		$(usex test '-DgRPC_BENCHMARK_PROVIDER=package' '')
 	)
-
 	cmake_src_configure
 }
 
