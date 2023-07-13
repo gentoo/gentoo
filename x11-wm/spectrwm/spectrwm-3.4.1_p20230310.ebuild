@@ -11,7 +11,7 @@ SRC_URI="https://github.com/conformal/spectrwm/archive/${COMMIT}.tar.gz -> ${PN}
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 DEPEND="
 	elibc_musl? ( sys-libs/queue-standalone )
