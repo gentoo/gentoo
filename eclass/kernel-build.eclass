@@ -29,6 +29,11 @@ if [[ ! ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
 
 PYTHON_COMPAT=( python3_{10..12} )
+if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+	# If we have enabled module signing IUSE
+	# then we can also enable secureboot IUSE
+	KERNEL_IUSE_SECUREBOOT=1
+fi
 
 inherit multiprocessing python-any-r1 savedconfig toolchain-funcs kernel-install
 
@@ -86,7 +91,18 @@ IUSE="+strip"
 
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
+	REQUIRED_USE="secureboot? ( modules-sign )"
 fi
+
+# @FUNCTION: kernel-build_pkg_setup
+# @DESCRIPTION:
+# Call python-any-r1 and secureboot pkg_setup
+kernel-build_pkg_setup() {
+	python-any-r1_pkg_setup
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+		secureboot_pkg_setup
+	fi
+}
 
 # @FUNCTION: kernel-build_src_configure
 # @DESCRIPTION:
@@ -395,4 +411,4 @@ kernel-build_merge_configs() {
 
 fi
 
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install pkg_postinst
+EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_postinst
