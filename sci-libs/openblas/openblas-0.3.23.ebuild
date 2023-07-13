@@ -122,8 +122,7 @@ src_prepare() {
 
 src_compile() {
 	default
-	cd interface || die
-	emake shared-blas-lapack
+	use eselect-ldso && emake -C interface shared-blas-lapack
 
 	if use index-64bit; then
 		emake -C"${S}-index-64bit" \
@@ -133,7 +132,8 @@ src_compile() {
 }
 
 src_test() {
-	emake tests
+	# https://github.com/xianyi/OpenBLAS/issues/4139
+	emake -j1 tests
 }
 
 src_install() {
