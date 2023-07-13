@@ -455,6 +455,7 @@ setup_flags() {
 
 	# glibc's headers disallow -O0 and fail at build time:
 	#  include/libc-symbols.h:75:3: #error "glibc cannot be compiled without optimization"
+	# https://sourceware.org/glibc/wiki/FAQ#Why_do_I_get:.60.23error_.22glibc_cannot_be_compiled_without_optimization.22.27.2C_when_trying_to_compile_GNU_libc_with_GNU_CC.3F
 	replace-flags -O0 -O1
 
 	# glibc handles this internally already where it's appropriate;
