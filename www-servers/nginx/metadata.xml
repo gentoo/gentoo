@@ -8,6 +8,7 @@
     <flag name="http2">Enable HTTP2 module support</flag>
     <flag name="http3">Enable HTTP3 module support</flag>
     <flag name="http-cache">Enable HTTP cache support</flag>
+    <flag name="ktls">Enable Kernel TLS offload (kTLS)</flag>
     <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
     <flag name="pcre-jit">Enable JIT for pcre</flag>
     <flag name="pcre2">Enable support for pcre2</flag>
