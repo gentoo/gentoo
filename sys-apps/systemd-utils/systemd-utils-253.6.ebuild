@@ -120,6 +120,8 @@ src_prepare() {
 	)
 
 	if use elibc_musl; then
+		# Applied upstream
+		rm "${WORKDIR}/${MUSL_PATCHSET}/0015-test-sizeof.c-Disable-tests-for-missing-typedefs-in-.patch" || die
 		PATCHES+=(
 			"${WORKDIR}/${MUSL_PATCHSET}"
 		)
