@@ -20,9 +20,10 @@ mono opendocument pascal pdf postscript R rpm sqlite squashfs
 ssh tar test tcpdump zip zlib zstd"
 RESTRICT="!test? ( test )"
 
+# <libarchive-c-5: https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/344
 RDEPEND="
 	dev-python/python-magic[${PYTHON_USEDEP}]
-	dev-python/libarchive-c[${PYTHON_USEDEP}]
+	<dev-python/libarchive-c-5[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/tlsh[${PYTHON_USEDEP}]
 	acl? ( sys-apps/acl )
