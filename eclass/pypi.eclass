@@ -105,6 +105,7 @@ _pypi_translate_version() {
 	local version=${1}
 	version=${version/_alpha/a}
 	version=${version/_beta/b}
+	version=${version/_pre/.dev}
 	version=${version/_rc/rc}
 	_PYPI_TRANSLATED_VERSION=${version/_p/.post}
 }
