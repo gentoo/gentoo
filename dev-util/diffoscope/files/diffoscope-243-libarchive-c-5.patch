@@ -1,0 +1,49 @@
+https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/344
+https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/3c4e378df315a4182da60e50769f1760cc561c2d
+
+From 3c4e378df315a4182da60e50769f1760cc561c2d Mon Sep 17 00:00:00 2001
+From: Chris Lamb <lamby@debian.org>
+Date: Thu, 13 Jul 2023 13:39:42 +0100
+Subject: [PATCH] Attempt compatibility with libarchive-5. (Re: 344)
+
+--- a/diffoscope/comparators/utils/libarchive.py
++++ b/diffoscope/comparators/utils/libarchive.py
+@@ -122,6 +122,13 @@ libarchive.ArchiveEntry.pathname = property(
+ 
+ 
+ def list_libarchive(path, ignore_errors=False):
++    def force_str(val):
++        # libarchive ~5 began to return uname and gname as UTF-8 whilst
++        # previous versions returned bytes that required decoding.
++        if not isinstance(val, str):
++            val = val.decode("utf-8", errors="surrogateescape")
++        return val
++
+     try:
+         with libarchive.file_reader(path) as archive:
+             for entry in archive:
+@@ -146,18 +153,14 @@ def list_libarchive(path, ignore_errors=False):
+                 ) + ".{:06d}".format(entry.mtime_nsec // 1000)
+                 if entry.uname:
+                     user = "{user:<8} {uid:>7}".format(
+-                        user=entry.uname.decode(
+-                            "utf-8", errors="surrogateescape"
+-                        ),
++                        user=force_str(entry.uname),
+                         uid="({})".format(entry.uid),
+                     )
+                 else:
+                     user = entry.uid
+                 if entry.gname:
+                     group = "{group:<8} {gid:>7}".format(
+-                        group=entry.gname.decode(
+-                            "utf-8", errors="surrogateescape"
+-                        ),
++                        group=force_str(entry.gname),
+                         gid="({})".format(entry.gid),
+                     )
+                 else:
+-- 
+GitLab
+
+
