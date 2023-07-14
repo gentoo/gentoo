@@ -56,7 +56,6 @@ COMMON_X_DEPEND="
 
 COMMON_SNAPSHOT_DEPEND="
 	system-icu? ( >=dev-libs/icu-71.1:= )
-	dev-libs/libevdev
 	>=dev-libs/libxml2-2.9.4-r3:=[icu]
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.26:=
@@ -262,17 +261,17 @@ llvm_check_deps() {
 pre_build_checks() {
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="4G"
-	CHECKREQS_DISK_BUILD="12G"
-	tc-is-cross-compiler && CHECKREQS_DISK_BUILD="14G"
+	CHECKREQS_DISK_BUILD="14G"
+	tc-is-cross-compiler && CHECKREQS_DISK_BUILD="16G"
 	if use lto || use pgo; then
 		CHECKREQS_MEMORY="9G"
-		CHECKREQS_DISK_BUILD="13G"
-		tc-is-cross-compiler && CHECKREQS_DISK_BUILD="16G"
-		use pgo && CHECKREQS_DISK_BUILD="20G"
+		CHECKREQS_DISK_BUILD="15G"
+		tc-is-cross-compiler && CHECKREQS_DISK_BUILD="18G"
+		use pgo && CHECKREQS_DISK_BUILD="22G"
 	fi
 	if is-flagq '-g?(gdb)?([1-9])'; then
 		if use custom-cflags || use component-build; then
-			CHECKREQS_DISK_BUILD="25G"
+			CHECKREQS_DISK_BUILD="27G"
 		fi
 		if ! use component-build; then
 			CHECKREQS_MEMORY="16G"
@@ -341,7 +340,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-109-system-zlib.patch"
 		"${FILESDIR}/chromium-111-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-114-gcc12.patch"
-
+		"${FILESDIR}/chromium-114-remove-evdev-dep.patch"
 	)
 
 	if use ppc64 ; then
