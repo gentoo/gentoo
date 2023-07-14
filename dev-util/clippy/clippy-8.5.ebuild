@@ -31,6 +31,11 @@ BDEPEND="
 	sys-devel/flex
 "
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	mallinfo	# check in configure is fallback is needed
+	mallinfo2	# check in configure is fallback is needed
+)
+
 src_prepare() {
 	default
 	eautoreconf
