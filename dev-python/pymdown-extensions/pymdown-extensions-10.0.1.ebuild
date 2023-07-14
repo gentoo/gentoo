@@ -6,17 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{10..12} )
 
-DOCS_BUILDER="mkdocs"
-DOCS_DEPEND="
-	dev-python/mkdocs-git-revision-date-localized-plugin
-	dev-python/mkdocs-minify-plugin
-	dev-python/mkdocs-material
-	dev-python/pymdown-lexers
-	dev-python/pyspelling
-"
-DOCS_INITIALIZE_GIT=1
-
-inherit distutils-r1 docs
+inherit distutils-r1
 
 DESCRIPTION="Extensions for Python Markdown"
 HOMEPAGE="
@@ -44,16 +34,3 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-python_compile_all() {
-	default
-	# We need to do this manually instead of relying on docs_compile
-	# https://bytemeta.vip/repo/facelessuser/pymdown-extensions/issues/1446
-	# https://bugs.gentoo.org/859637
-	if use doc; then
-		python -m mkdocs build || die "Failed to make docs"
-		# Colliding files found by ecompress:
-		rm site/sitemap.xml.gz || die
-		HTML_DOCS=( "site/." )
-	fi
-}
