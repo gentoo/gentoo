@@ -50,6 +50,7 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/wheel[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	test? (
 		${RDEPEND}
