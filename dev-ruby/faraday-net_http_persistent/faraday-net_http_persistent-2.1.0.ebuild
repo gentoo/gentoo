@@ -30,4 +30,6 @@ ruby_add_rdepend "
 
 all_ruby_prepare() {
 	sed -i -e "s:_relative ':'./:" ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e '/simplecov/I s:^:#:' spec/spec_helper.rb || die
 }
