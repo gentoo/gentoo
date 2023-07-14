@@ -143,6 +143,15 @@ pkg_postinst() {
 		ewarn ""
 	fi
 
+	optfeature "gzip compression" app-arch/gzip
+	optfeature "bzip2 compression" app-arch/bzip2
+	optfeature "lzma compression" app-arch/lzma
+	optfeature "xz compession" app-arch/xz-utils
+	optfeature "lzo compression" app-arch/lzop
+	optfeature "lz4 compression" app-arch/lz4
+	optfeature "zstd compression" app-arch/zstd
+	optfeature "Parallel bzip2 compession" app-arch/lbzip2
+	optfeature "Parallel gzip compession" app-arch/pigz
 	optfeature "Networking support" net-misc/networkmanager
 	optfeature "Legacy networking support" net-misc/curl "net-misc/dhcp[client]" \
 		sys-apps/iproute2 "net-misc/iputils[arping]"
@@ -165,7 +174,7 @@ pkg_postinst() {
 	optfeature "Support MD devices, also known as software RAID devices" \
 		sys-fs/mdadm sys-fs/dmraid
 	optfeature "Support Device Mapper multipathing" sys-fs/multipath-tools
-	optfeature "Plymouth boot splash"  '>=sys-boot/plymouth-0.8.5-r5'
+	optfeature "Plymouth boot splash" '>=sys-boot/plymouth-0.8.5-r5'
 	optfeature "Support network block devices" sys-block/nbd
 	optfeature "Support NFS" net-fs/nfs-utils net-nds/rpcbind
 	optfeature \
