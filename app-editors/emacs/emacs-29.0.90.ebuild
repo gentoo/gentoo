@@ -55,9 +55,9 @@ X_DEPEND="x11-libs/libICE
 	xft? (
 		media-libs/fontconfig
 		media-libs/freetype
-		x11-libs/libXft
 		x11-libs/libXrender
 		cairo? ( >=x11-libs/cairo-1.12.18[X] )
+		!cairo? ( x11-libs/libXft )
 		harfbuzz? ( media-libs/harfbuzz:0= )
 		m17n-lib? (
 			>=dev-libs/libotf-0.9.4
