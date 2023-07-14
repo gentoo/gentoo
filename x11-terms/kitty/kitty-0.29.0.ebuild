@@ -70,6 +70,10 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.29.0-musl-1.2.4.patch"
+)
+
 QA_FLAGS_IGNORED="usr/bin/kitten" # written in Go
 
 src_unpack() {
