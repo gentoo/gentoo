@@ -1,0 +1,8 @@
+Use $(PKG_CONFIG), and also avoid repeating the calls for every objects.
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -2,2 +2,2 @@
+-CXXFLAGS+=-Wall -std=c++14 `pkg-config --cflags gtest_main`
+-LDFLAGS+=`pkg-config --libs gtest_main`
++CXXFLAGS:=-Wall -std=c++14 $(shell $(PKG_CONFIG) --cflags gtest_main) $(CXXFLAGS)
++LDFLAGS:=$(LDFLAGS) $(shell $(PKG_CONFIG) --libs gtest_main)
