@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools cmake flag-o-matic python-any-r1 toolchain-funcs xdg
 
 # TODO: try unbundling, albeit compatibility with (and between) these
