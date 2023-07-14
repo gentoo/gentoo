@@ -28,6 +28,10 @@ ruby_add_rdepend "
 	dev-ruby/net-http-persistent:4
 "
 
+ruby_add_depend "test? (
+	>=dev-ruby/webmock-3.4
+)"
+
 all_ruby_prepare() {
 	sed -i -e "s:_relative ':'./:" ${RUBY_FAKEGEM_GEMSPEC} || die
 
