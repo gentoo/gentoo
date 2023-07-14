@@ -12,7 +12,7 @@ EAPI=8
 # changes its ABI then this package will be rebuilt needlessly. Hence, such a
 # package is free _not_ to := depend on FFmpeg but I would strongly encourage
 # doing so since such a case is unlikely.
-FFMPEG_SUBSLOT=57.59.59
+FFMPEG_SUBSLOT=58.60.60
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -84,7 +84,7 @@ FFMPEG_FLAG_MAP=(
 		# decoders
 		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 +dav1d:libdav1d fdk:libfdk-aac
 		jpeg2k:libopenjpeg jpegxl:libjxl bluray:libbluray gme:libgme gsm:libgsm
-		libaribb24 mmal modplug:libmodplug opus:libopus qsv:libmfx libilbc librtmp ssh:libssh
+		libaribb24 mmal modplug:libmodplug opus:libopus qsv:libvpl libilbc librtmp ssh:libssh
 		speex:libspeex srt:libsrt svg:librsvg nvenc:ffnvcodec
 		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
@@ -238,7 +238,7 @@ RDEPEND="
 	libcaca? ( >=media-libs/libcaca-0.99_beta18-r1[${MULTILIB_USEDEP}] )
 	libdrm? ( x11-libs/libdrm[${MULTILIB_USEDEP}] )
 	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
-	libplacebo? ( >=media-libs/libplacebo-4.192.0[$MULTILIB_USEDEP] )
+	libplacebo? ( >=media-libs/libplacebo-4.192.0:=[$MULTILIB_USEDEP] )
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
 	libtesseract? ( >=app-text/tesseract-4.1.0-r1[${MULTILIB_USEDEP}] )
@@ -253,7 +253,7 @@ RDEPEND="
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
-	qsv? ( media-libs/intel-mediasdk[${MULTILIB_USEDEP}] )
+	qsv? ( media-libs/oneVPL[${MULTILIB_USEDEP}] )
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[client,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
@@ -341,9 +341,8 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${FILESDIR}"/${P}-DECLARE_ALIGNED.patch
 	"${FILESDIR}"/${PN}-5.1.2-get_cabac_inline_x86-32-bit.patch
-	"${FILESDIR}"/${P}-fix-build-svt-av1-1.5.0.patch
-	"${FILESDIR}"/${P}-svt-av1.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
