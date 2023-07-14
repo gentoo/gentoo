@@ -34,8 +34,9 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-14)
-# Obsolete slot specifically for cucumber 7 which is no longer
-# available. Masked for removal on 2023-08-14
+# Obsolete slots or packages specifically for cucumber 7 which is no
+# longer available. Masked for removal on 2023-08-14
+dev-util/cucumber-create-meta
 dev-util/cucumber-html-formatter:17
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2023-07-13)
