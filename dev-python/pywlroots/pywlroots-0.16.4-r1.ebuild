@@ -27,6 +27,7 @@ DEPEND="
 	>=dev-python/pywayland-0.4.14[${PYTHON_USEDEP}]
 	>=dev-python/xkbcommon-0.2[${PYTHON_USEDEP}]
 	=gui-libs/wlroots-$(ver_cut 1-2)*:=
+	x11-base/xwayland
 "
 RDEPEND="
 	${DEPEND}
