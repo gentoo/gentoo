@@ -109,3 +109,12 @@ src_install() {
 		dosym $(ocamlc -where)/${sym} /usr/$(get_libdir)/${sym}
 	done
 }
+
+pkg_preinst() {
+	# bug https://bugs.gentoo.org/910236
+	if has_version "sci-mathematics/coq:0/8.12.0" && [[ ! -L /usr/lib64/coq ]]
+	then
+		einfo "Removing colliding directory from version 8.12: /usr/lib64/coq"
+		rm -rf /usr/lib64/coq
+	fi
+}
