@@ -1,0 +1,11 @@
+--- a/magit-libgit.el
++++ b/magit-libgit.el
+@@ -51,7 +51,7 @@
+ 
+ (require 'magit-git)
+ 
+-(require 'libgit)
++(require 'libgit nil t)
+ 
+ ;;; Utilities
+ 

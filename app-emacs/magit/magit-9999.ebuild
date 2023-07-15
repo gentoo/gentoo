@@ -22,6 +22,8 @@ S="${S}/lisp"
 LICENSE="GPL-3+"
 SLOT="0"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.3.0-magit-libgit.patch )
+
 DOCS=( ../README.md ../docs/AUTHORS.md ../docs/RelNotes )
 ELISP_TEXINFO="../docs/*.texi"
 SITEFILE="50${PN}-gentoo.el"
