@@ -56,7 +56,7 @@ SRC_URI="https://launchpad.net/brz/$(ver_cut 1-2)/${PV}/+download/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 # I've got tired of all the test failures. It definitely mostly works.
 # We have ~29000 tests successfully passing from ~30000 tests.
