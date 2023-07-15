@@ -86,7 +86,7 @@ COMMON_DEPEND="
 	lcms? ( media-libs/lcms:2 )
 	libcaca? ( media-libs/libcaca )
 	libplacebo? (
-		>=media-libs/libplacebo-5.266:=[opengl?,vulkan?]
+		>=media-libs/libplacebo-4.157:=[opengl?,vulkan?]
 		egl? ( media-libs/libplacebo[opengl] )
 	)
 	lua? ( ${LUA_DEPS} )
@@ -204,7 +204,6 @@ src_configure() {
 		$(meson_feature jpeg)
 		$(meson_feature libcaca caca)
 		$(meson_feature libplacebo)
-		$(meson_feature libplacebo libplacebo-next)
 		$(meson_feature mmal rpi-mmal)
 		$(meson_feature sdl sdl2-video)
 		$(meson_feature sixel)
@@ -242,9 +241,13 @@ src_configure() {
 
 		# notable options left to automagic
 		#dmabuf-wayland: USE="drm wayland" + plus memfd_create support
+		#libplacebo-next: USE="libplacebo" + >=libplacebo-5.266
 		#vulkan-interop: USE="libplacebo vulkan" + ffmpeg-9999 currently
 		# TODO?: perhaps few more similar compound options should be left auto
 	)
+
+	has_version '>=media-libs/libplacebo-5.266' ||
+		ewarn "${PN}'s gpu-next video output requires ${_} to be used"
 
 	meson_src_configure
 }
