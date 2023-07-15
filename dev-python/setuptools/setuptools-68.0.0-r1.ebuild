@@ -56,7 +56,6 @@ BDEPEND="
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			>=dev-python/tomli-w-1.0.0[${PYTHON_USEDEP}]
 			>=dev-python/virtualenv-20[${PYTHON_USEDEP}]
-			dev-python/wheel[${PYTHON_USEDEP}]
 		' "${PYTHON_TESTED[@]}")
 	)
 "
