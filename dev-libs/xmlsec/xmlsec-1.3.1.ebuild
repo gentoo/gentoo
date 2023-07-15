@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}1-${PV}"
 LICENSE="MIT"
 # Upstream consider major version bumps to be changes in either X or Y in X.Y.Z
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc gcrypt gnutls http nss +openssl static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
