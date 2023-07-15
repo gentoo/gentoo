@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kig/ https://edu.kde.org/kig/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="geogebra scripting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
