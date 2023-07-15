@@ -241,7 +241,7 @@ SEABIOS_VERSION="1.16.0"
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
 		~sys-firmware/edk2-ovmf-bin-${EDK2_OVMF_VERSION}
-		~sys-firmware/ipxe-1.21.1_p20230601[binary,qemu]
+		~sys-firmware/ipxe-1.21.1[binary,qemu]
 		~sys-firmware/seabios-bin-${SEABIOS_VERSION}
 		~sys-firmware/sgabios-0.1_pre10[binary]
 	)
