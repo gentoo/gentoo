@@ -38,6 +38,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/bundler
 	=dev-ruby/minitest-5.15*:*
 	dev-ruby/mocha
+	dev-ruby/rails
 )"
 
 all_ruby_prepare() {
