@@ -5,7 +5,7 @@ EAPI=8
 
 inherit systemd
 
-DESCRIPTION="The leading ope source automation server"
+DESCRIPTION="The leading open source automation server"
 HOMEPAGE="https://jenkins.io/"
 LICENSE="MIT"
 SRC_URI="https://get.jenkins.io/war-stable/${PV}/${PN/-bin/}.war -> ${P}.war"
