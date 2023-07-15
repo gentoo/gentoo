@@ -5,7 +5,7 @@ EAPI=7
 inherit toolchain-funcs systemd
 
 DESCRIPTION="Linux SCSI target framework (tgt)"
-HOMEPAGE="http://stgt.sourceforge.net"
+HOMEPAGE="https://github.com/fujita/tgt"
 SRC_URI="https://github.com/fujita/tgt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
