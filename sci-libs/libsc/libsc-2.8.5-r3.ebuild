@@ -47,6 +47,10 @@ pkg_setup() {
 }
 
 src_configure() {
+	# avoid using debug codepaths that are manually enabled with the
+	# RelWithDebInfo build type
+	local CMAKE_BUILD_TYPE="Release"
+
 	local mycmakeargs=(
 		-Dmpi="$(usex mpi)"
 		-Dopenmp="$(usex openmp)"
