@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 
 pidfile="/run/readarr.pid"
-command="/opt/readarr/Radarr"
+command="/opt/readarr/Readarr"
 command_user="readarr:readarr"
 command_background=true
-
