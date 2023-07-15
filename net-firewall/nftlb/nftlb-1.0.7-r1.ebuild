@@ -7,14 +7,14 @@ inherit linux-info autotools
 
 DESCRIPTION="nftables load balancer"
 HOMEPAGE="https://github.com/zevenet/nftlb"
-SRC_URI="https://github.com/zevenet/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/zevenet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	net-firewall/nftables:=[modern-kernel]
+	net-firewall/nftables:=[modern-kernel(+)]
 	dev-libs/jansson:=
 	dev-libs/libev:=
 "
@@ -24,8 +24,8 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/nftlb-1.0.8-tests.patch"
-	"${FILESDIR}/nftlb-1.0.8-musl.patch"
+	"${FILESDIR}/nftlb-1.0-tests.patch"
+	"${FILESDIR}/nftlb-1.0-musl.patch"
 )
 
 pkg_setup() {
@@ -45,9 +45,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# there are some compiler artifacts in the tarball
-	find "${S}" -name '*.o' -delete || die
-
 	default
 	eautoreconf
 }
