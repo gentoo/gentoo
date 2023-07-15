@@ -10,6 +10,21 @@
 # Third generation eclass for easing maintenance of live ebuilds using
 # git as remote repository.
 
+# @ECLASS_VARIABLE: EGIT_LFS
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set, git lfs support will be enabled.
+# Set before inheriting this eclass.
+
+# @ECLASS_VARIABLE: _NUM_LFS_FILTERS_FOUND
+# @INTERNAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# This is used to provide QA warnings if a repo has git lfs filters
+# defined but EGIT_LFS is not turned on and vice versa.
+# If non-empty, then the repo likely needs EGIT_LFS to clone properly.
+
 case ${EAPI} in
 	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -22,8 +37,10 @@ PROPERTIES+=" live"
 
 if [[ ${EAPI} != 6 ]]; then
 	BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
+	[[ ${EGIT_LFS} ]] && BDEPEND+=" dev-vcs/git-lfs"
 else
 	DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
+	[[ ${EGIT_LFS} ]] && DEPEND+=" dev-vcs/git-lfs"
 fi
 
 # @ECLASS_VARIABLE: EGIT_CLONE_TYPE
@@ -80,6 +97,28 @@ fi
 # and fetching tags along with commits. Please use sparingly, and to fix
 # fatal errors rather than 'non-pretty versions'.
 : "${EGIT_MIN_CLONE_TYPE:=shallow}"
+
+# @ECLASS_VARIABLE: EGIT_LFS_CLONE_TYPE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Type of lfs clone that should be used against the remote repository.
+# This can be either of: 'mirror', 'single', 'shallow'.
+#
+# This works a bit differently than EGIT_CLONE_TYPE.
+#
+# The 'mirror' type clones all LFS files that is available from the
+# cloned repo. Is is mostly useful for backup or rehosting purposes as
+# the disk usage will be excessive.
+#
+# The 'single' type clones only the LFS files from the current commit.
+# However unlike 'shallow', it will not cleanup stale LFS files.
+#
+# The 'shallow' type clones only the LFS files from the current commit.
+# LFS files that are not referenced by the current commit and more than
+# a few days old will be automatically removed to save disk space.
+# This is the recommended mode for LFS repos to prevent excessive disk
+# usage.
+: "${EGIT_LFS_CLONE_TYPE:=shallow}"
 
 # @ECLASS_VARIABLE: EGIT3_STORE_DIR
 # @USER_VARIABLE
@@ -760,6 +799,35 @@ git-r3_fetch() {
 			fi
 		fi
 
+		if [[ ${EGIT_LFS} ]]; then
+			# Fetch the LFS files from the current ref (if any)
+			local lfs_fetch_command=( git lfs fetch "${r}" )
+
+			case "${EGIT_LFS_CLONE_TYPE}" in
+				shallow)
+					lfs_fetch_command+=(
+						--prune
+					)
+					;;
+				single)
+					;;
+				mirror)
+					lfs_fetch_command+=(
+						--all
+					)
+					;;
+				*)
+					die "Invalid EGIT_LFS_CLONE_TYPE=${EGIT_LFS_CLONE_TYPE}"
+			esac
+
+			set -- "${lfs_fetch_command[@]}"
+			echo "${@}" >&2
+			"${@}" || die
+		elif [[ -d ${GIT_DIR}/lfs && ${EGIT_LFS_CLONE_TYPE} == shallow ]]; then
+			# Cleanup the LFS files from old checkouts if LFS support has been turned off.
+			rm -fr ${GIT_DIR}/lfs || die
+		fi
+
 		success=1
 		break
 	done
@@ -875,6 +943,11 @@ git-r3_checkout() {
 		# non-empty directories.
 
 		git init --quiet -b __init__ || die
+		if [[ ${EGIT_LFS} ]]; then
+			# The "skip-repo" flag will just skip the installation of the pre-push hooks.
+			# We don't use these hook as we don't do any pushes
+			git lfs install --local --skip-repo || die
+		fi
 		# setup 'alternates' to avoid copying objects
 		echo "${orig_repo}/objects" > "${GIT_DIR}"/objects/info/alternates || die
 		# now copy the refs
@@ -905,6 +978,16 @@ git-r3_checkout() {
 		fi
 		echo "${@}" >&2
 		"${@}" || die "git checkout ${remote_ref:-${new_commit_id}} failed"
+
+		# If any filters in any of the ".gitattributes" files specifies lfs,
+		# then this repo is most likely storing files with git lfs.
+		local has_git_lfs_filters=$(
+			git grep "filter=lfs" -- ".gitattributes" "**/.gitattributes"
+		)
+		if [[ $has_git_lfs_filters ]]; then
+			# This is used for issuing QA warnings regarding LFS files in the repo (or lack thereof)
+			_EGIT_LFS_FILTERS_FOUND="yes"
+		fi
 	}
 	git-r3_sub_checkout
 	unset -f git-r3_sub_checkout
@@ -1054,6 +1137,13 @@ git-r3_src_unpack() {
 	_git-r3_env_setup
 	git-r3_src_fetch
 	git-r3_checkout
+
+	if [[ ! ${EGIT_LFS} && ${_EGIT_LFS_FILTERS_FOUND} ]]; then
+		eqawarn "QA Notice: There are Git LFS filters setup in the cloned repo, consider using EGIT_LFS!"
+	fi
+	if [[ ${EGIT_LFS} && ! ${_EGIT_LFS_FILTERS_FOUND} ]]; then
+		eqawarn "QA Notice: There are no Git LFS filters setup in the cloned repo. EGIT_LFS will do nothing!"
+	fi
 }
 
 # https://bugs.gentoo.org/show_bug.cgi?id=482666
