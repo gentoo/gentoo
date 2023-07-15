@@ -48,6 +48,10 @@ RDEPEND="${COMMON_DEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.5.0-fix-build-with-musl-1.2.4.patch"
+)
+
 src_prepare() {
 	default
 
