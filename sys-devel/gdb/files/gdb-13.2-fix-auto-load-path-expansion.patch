@@ -1,0 +1,229 @@
+https://inbox.sourceware.org/gdb-patches/87351qo3n2.fsf@tromey.com/
+https://sourceware.org/cgit/binutils-gdb/commit/?id=02601231fdd91a7bd4837ce2029
+From 23e46b680f6fa6fce45aaf6c004cab6be322fbf1 Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tromey@adacore.com>
+Date: Fri, 14 Jul 2023 09:35:03 -0600
+Subject: Revert "Simplify auto_load_expand_dir_vars and remove
+ substitute_path_component"
+
+This reverts commit 02601231fdd91a7bd4837ce202906ea2ce661489.
+
+This commit was a refactoring to remove an xrealloc and simplify
+utils.[ch].  However, it has a flaw -- it mishandles a substitution
+like "$datadir/subdir".
+
+I am backing out the patch in the interests of fixing the regression
+before GDB 14.  It can be reinstated (with modifications) later if we
+like.
+
+Regression tested on x86-64 Fedora 36.
+---
+ gdb/Makefile.in                 |  1 +
+ gdb/auto-load.c                 | 33 +++++++++--------------
+ gdb/unittests/utils-selftests.c | 60 +++++++++++++++++++++++++++++++++++++++++
+ gdb/utils.c                     | 45 +++++++++++++++++++++++++++++++
+ gdb/utils.h                     |  3 +++
+ 5 files changed, 121 insertions(+), 21 deletions(-)
+ create mode 100644 gdb/unittests/utils-selftests.c
+
+diff --git a/gdb/Makefile.in b/gdb/Makefile.in
+index d909786792c..8521e8d11c8 100644
+--- a/gdb/Makefile.in
++++ b/gdb/Makefile.in
+@@ -490,6 +490,7 @@ SELFTESTS_SRCS = \
+ 	unittests/ui-file-selftests.c \
+ 	unittests/unique_xmalloc_ptr_char.c \
+ 	unittests/unpack-selftests.c \
++	unittests/utils-selftests.c \
+ 	unittests/vec-utils-selftests.c \
+ 	unittests/xml-utils-selftests.c
+ 
+diff --git a/gdb/auto-load.c b/gdb/auto-load.c
+index 9d6fabe6bbc..5267cb4e64d 100644
+--- a/gdb/auto-load.c
++++ b/gdb/auto-load.c
+@@ -173,33 +173,24 @@ static std::string auto_load_safe_path = AUTO_LOAD_SAFE_PATH;
+    counterpart.  */
+ static std::vector<gdb::unique_xmalloc_ptr<char>> auto_load_safe_path_vec;
+ 
+-/* Expand $datadir and $debugdir in STRING.  */
++/* Expand $datadir and $debugdir in STRING according to the rules of
++   substitute_path_component.  */
+ 
+ static std::vector<gdb::unique_xmalloc_ptr<char>>
+ auto_load_expand_dir_vars (const char *string)
+ {
+-  std::vector<gdb::unique_xmalloc_ptr<char>> result
+-    = dirnames_to_char_ptr_vec (string);
++  char *s = xstrdup (string);
++  substitute_path_component (&s, "$datadir", gdb_datadir.c_str ());
++  substitute_path_component (&s, "$debugdir", debug_file_directory.c_str ());
+ 
+-  for (auto &elt : result)
+-    {
+-      if (strcmp (elt.get (), "$datadir") == 0)
+-	{
+-	  elt = make_unique_xstrdup (gdb_datadir.c_str ());
+-	  if (debug_auto_load)
+-	    auto_load_debug_printf ("Expanded $datadir to \"%s\".",
+-				    gdb_datadir.c_str ());
+-	}
+-      else if (strcmp (elt.get (), "$debugdir") == 0)
+-	{
+-	  elt = make_unique_xstrdup (debug_file_directory.c_str ());
+-	  if (debug_auto_load)
+-	    auto_load_debug_printf ("Expanded $debugdir to \"%s\".",
+-				    debug_file_directory.c_str ());
+-	}
+-    }
++  if (debug_auto_load && strcmp (s, string) != 0)
++    auto_load_debug_printf ("Expanded $-variables to \"%s\".", s);
++
++  std::vector<gdb::unique_xmalloc_ptr<char>> dir_vec
++    = dirnames_to_char_ptr_vec (s);
++  xfree(s);
+ 
+-  return result;
++  return dir_vec;
+ }
+ 
+ /* Update auto_load_safe_path_vec from current AUTO_LOAD_SAFE_PATH.  */
+diff --git a/gdb/unittests/utils-selftests.c b/gdb/unittests/utils-selftests.c
+new file mode 100644
+index 00000000000..70609aa4294
+--- /dev/null
++++ b/gdb/unittests/utils-selftests.c
+@@ -0,0 +1,60 @@
++/* Unit tests for the utils.c file.
++
++   Copyright (C) 2018-2023 Free Software Foundation, Inc.
++
++   This file is part of GDB.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include "defs.h"
++#include "utils.h"
++#include "gdbsupport/selftest.h"
++
++namespace selftests {
++namespace utils {
++
++static void
++test_substitute_path_component ()
++{
++  auto test = [] (std::string s, const char *from, const char *to,
++		  const char *expected)
++    {
++      char *temp = xstrdup (s.c_str ());
++      substitute_path_component (&temp, from, to);
++      SELF_CHECK (strcmp (temp, expected) == 0);
++      xfree (temp);
++    };
++
++  test ("/abc/$def/g", "abc", "xyz", "/xyz/$def/g");
++  test ("abc/$def/g", "abc", "xyz", "xyz/$def/g");
++  test ("/abc/$def/g", "$def", "xyz", "/abc/xyz/g");
++  test ("/abc/$def/g", "g", "xyz", "/abc/$def/xyz");
++  test ("/abc/$def/g", "ab", "xyz", "/abc/$def/g");
++  test ("/abc/$def/g", "def", "xyz", "/abc/$def/g");
++  test ("/abc/$def/g", "abc", "abc", "/abc/$def/g");
++  test ("/abc/$def/g", "abc", "", "//$def/g");
++  test ("/abc/$def/g", "abc/$def", "xyz", "/xyz/g");
++  test ("/abc/$def/abc", "abc", "xyz", "/xyz/$def/xyz");
++}
++
++}
++}
++
++void _initialize_utils_selftests ();
++void
++_initialize_utils_selftests ()
++{
++  selftests::register_test ("substitute_path_component",
++			    selftests::utils::test_substitute_path_component);
++}
+diff --git a/gdb/utils.c b/gdb/utils.c
+index 46bfd9a5bbb..cacd6cbd23e 100644
+--- a/gdb/utils.c
++++ b/gdb/utils.c
+@@ -3346,6 +3346,51 @@ parse_pid_to_attach (const char *args)
+   return pid;
+ }
+ 
++/* Substitute all occurrences of string FROM by string TO in *STRINGP.  *STRINGP
++   must come from xrealloc-compatible allocator and it may be updated.  FROM
++   needs to be delimited by IS_DIR_SEPARATOR or DIRNAME_SEPARATOR (or be
++   located at the start or end of *STRINGP.  */
++
++void
++substitute_path_component (char **stringp, const char *from, const char *to)
++{
++  char *string = *stringp, *s;
++  const size_t from_len = strlen (from);
++  const size_t to_len = strlen (to);
++
++  for (s = string;;)
++    {
++      s = strstr (s, from);
++      if (s == NULL)
++	break;
++
++      if ((s == string || IS_DIR_SEPARATOR (s[-1])
++	   || s[-1] == DIRNAME_SEPARATOR)
++	  && (s[from_len] == '\0' || IS_DIR_SEPARATOR (s[from_len])
++	      || s[from_len] == DIRNAME_SEPARATOR))
++	{
++	  char *string_new;
++
++	  string_new
++	    = (char *) xrealloc (string, (strlen (string) + to_len + 1));
++
++	  /* Relocate the current S pointer.  */
++	  s = s - string + string_new;
++	  string = string_new;
++
++	  /* Replace from by to.  */
++	  memmove (&s[to_len], &s[from_len], strlen (&s[from_len]) + 1);
++	  memcpy (s, to, to_len);
++
++	  s += to_len;
++	}
++      else
++	s++;
++    }
++
++  *stringp = string;
++}
++
+ #ifdef HAVE_WAITPID
+ 
+ #ifdef SIGALRM
+diff --git a/gdb/utils.h b/gdb/utils.h
+index 3faac20ec0f..ad0a86746b8 100644
+--- a/gdb/utils.h
++++ b/gdb/utils.h
+@@ -136,6 +136,9 @@ private:
+ extern int gdb_filename_fnmatch (const char *pattern, const char *string,
+ 				 int flags);
+ 
++extern void substitute_path_component (char **stringp, const char *from,
++				       const char *to);
++
+ std::string ldirname (const char *filename);
+ 
+ extern int count_path_elements (const char *path);
+-- 
+cgit 
+

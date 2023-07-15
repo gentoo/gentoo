@@ -111,6 +111,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
 	"${FILESDIR}"/${P}-fix-sparc-debugging.patch
+	"${FILESDIR}"/${P}-fix-auto-load-path-expansion.patch
 )
 
 pkg_setup() {
