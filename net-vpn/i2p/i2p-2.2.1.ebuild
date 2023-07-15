@@ -14,7 +14,7 @@ SRC_URI="https://files.i2p-projekt.de/${PV}/i2psource_${PV}.tar.bz2"
 LICENSE="Apache-2.0 Artistic BSD CC-BY-2.5 CC-BY-3.0 CC-BY-SA-3.0 EPL-1.0 GPL-2 GPL-3 LGPL-2.1 LGPL-3 MIT public-domain WTFPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 LANGS=(
 	ar az bg ca cs da de el en es es-AR et fa fi fr gl he hi hr hu id it ja ko ku mg nb nl nn pl pt pt-BR ro ru sk sl sq
 	sr sv tk tr uk vi zh zh-TW
