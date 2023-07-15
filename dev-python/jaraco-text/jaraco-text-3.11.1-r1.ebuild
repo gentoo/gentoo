@@ -25,13 +25,6 @@ RDEPEND="
 	>=dev-python/jaraco-context-4.1.1-r1[${PYTHON_USEDEP}]
 	>=dev-python/jaraco-functools-3.5.0-r1[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/pathlib2[${PYTHON_USEDEP}]
-		' 3.9)
-	)
-"
 
 distutils_enable_tests pytest
 
