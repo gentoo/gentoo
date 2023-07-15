@@ -239,6 +239,11 @@ src_configure() {
 		$(mpv_feature_multi vdpau opengl vdpau-gl-x11)
 
 		$(mpv_feature_multi aqua opengl videotoolbox-gl)
+
+		# notable options left to automagic
+		#dmabuf-wayland: USE="drm wayland" + plus memfd_create support
+		#vulkan-interop: USE="libplacebo vulkan" + ffmpeg-9999 currently
+		# TODO?: perhaps few more similar compound options should be left auto
 	)
 
 	meson_src_configure
