@@ -23,3 +23,8 @@ RDEPEND=">=dev-python/markdown-3.0[${PYTHON_USEDEP}]"
 BDEPEND=">=dev-python/setuptools-scm-6.2[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i "s/description-file/description_file/" setup.cfg || die
+	distutils-r1_src_prepare
+}
