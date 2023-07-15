@@ -23,12 +23,11 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
+	test? ( dev-cpp/catch:0 )
 "
-
 DEPEND="
 	dev-libs/libfmt
 "
-
 RDEPEND="${DEPEND}"
 
 PATCHES=(

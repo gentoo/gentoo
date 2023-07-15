@@ -23,6 +23,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
+	test? ( dev-cpp/catch:0 )
 "
 DEPEND="
 	>=dev-libs/libfmt-8.0.0:=
