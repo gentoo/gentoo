@@ -30,7 +30,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/hiera-eyaml-plaintext
 )"
 
-BDEPEND+=" test? ( || ( app-admin/puppet-agent app-admin/puppet ) )"
+BDEPEND+=" test? ( || ( app-admin/puppet-agent app-admin/puppet ) dev-tcltk/expect )"
 
 all_ruby_prepare() {
 	# Fix highline dependency to be compatible with more versions.
