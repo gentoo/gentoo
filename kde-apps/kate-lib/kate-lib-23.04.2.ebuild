@@ -16,7 +16,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${KDE_ORG_NAME}-23.04.1-cmak
 
 LICENSE="LGPL-2 LGPL-2+ MIT"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="activities telemetry"
 
 DEPEND="
