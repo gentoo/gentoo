@@ -34,6 +34,7 @@ RDEPEND="!games-engines/zoom
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-libs/glibc
+	sys-libs/zlib
 	virtual/opengl
 	x11-libs/cairo
 	x11-libs/libdrm
