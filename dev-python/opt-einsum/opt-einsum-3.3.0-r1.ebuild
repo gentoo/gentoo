@@ -13,7 +13,7 @@ HOMEPAGE="https://pypi.org/project/opt-einsum/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]"
 
