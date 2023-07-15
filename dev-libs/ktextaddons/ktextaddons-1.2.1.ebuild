@@ -16,7 +16,7 @@ HOMEPAGE="https://invent.kde.org/libraries/ktextaddons"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-2+"
