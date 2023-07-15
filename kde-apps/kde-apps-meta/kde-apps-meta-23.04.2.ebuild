@@ -8,7 +8,7 @@ HOMEPAGE="https://apps.kde.org/"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="accessibility +admin +education +games +graphics +multimedia +network pim sdk +utils"
 
 RDEPEND="
