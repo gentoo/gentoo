@@ -17,7 +17,7 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0/1"
+SLOT="0/$(ver_cut 1-2)"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
