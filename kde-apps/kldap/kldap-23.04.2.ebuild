@@ -15,7 +15,7 @@ HOMEPAGE="https://api.kde.org/kdepim/kldap/html/index.html"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE=""
 
 DEPEND="
