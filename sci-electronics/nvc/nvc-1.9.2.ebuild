@@ -91,6 +91,10 @@ src_configure() {
 	export V=1          # Verbose compilation and install.
 }
 
+src_compile() {
+	emake -j1
+}
+
 src_test() {
 	emake check
 }
