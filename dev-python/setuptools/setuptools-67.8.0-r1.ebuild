@@ -33,13 +33,13 @@ RDEPEND="
 	>=dev-python/packaging-21.3-r2[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.6.2-r1[${PYTHON_USEDEP}]
 	>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
+	>=dev-python/wheel-0.37.1-r1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/importlib-metadata-4.11.1[${PYTHON_USEDEP}]
 	' 3.9)
 "
 BDEPEND="
 	${RDEPEND}
-	>=dev-python/wheel-0.37.1-r1[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/build[${PYTHON_USEDEP}]
@@ -56,7 +56,6 @@ BDEPEND="
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			>=dev-python/tomli-w-1.0.0[${PYTHON_USEDEP}]
 			>=dev-python/virtualenv-20[${PYTHON_USEDEP}]
-			dev-python/wheel[${PYTHON_USEDEP}]
 		' "${PYTHON_TESTED[@]}")
 	)
 "
