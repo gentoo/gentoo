@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gthumb"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="cdr colord exif keyring gstreamer heif jpegxl lcms raw slideshow svg tiff webkit webp"
 
 # libX11 dep is a workaround. See files/3.12.2-link-with-x11.patch
