@@ -446,14 +446,12 @@ _python_export() {
 			PYTHON_PKG_DEP)
 				local d
 				case ${impl} in
-					python3.10)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.10.12:3.10";;
-					python3.11)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.11.4:3.11";;
-					python3.12)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.12.0_beta3:3.12";;
+					python*)
+						PYTHON_PKG_DEP="dev-lang/python:${impl#python}"
+						;;
 					pypy3)
-						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.12:0=';;
+						PYTHON_PKG_DEP="dev-python/${impl}:="
+						;;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac
