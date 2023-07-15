@@ -159,7 +159,7 @@ GEOIP2_MODULE_URI="https://github.com/leev/ngx_http_geoip2_module/archive/${GEOI
 GEOIP2_MODULE_WD="${WORKDIR}/ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
 
 # njs-module (https://github.com/nginx/njs, as-is)
-NJS_MODULE_PV="5b463b8050377216ad4197cd1e35bb69b35b77e9"
+NJS_MODULE_PV="0.8.0"
 NJS_MODULE_P="njs-${NJS_MODULE_PV}"
 NJS_MODULE_URI="https://github.com/nginx/njs/archive/${NJS_MODULE_PV}.tar.gz"
 NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
@@ -384,6 +384,12 @@ src_prepare() {
 	if use nginx_modules_http_auth_ldap; then
 		cd "${HTTP_LDAP_MODULE_WD}" || die
 		eapply "${FILESDIR}/${PN}-1.23.2-mod_auth_ldap-fix.patch"
+		cd "${S}" || die
+	fi
+
+	if use nginx_modules_http_javascript; then
+		cd "${NJS_MODULE_WD}" || die
+		sed -e 's/-Werror//g' -i auto/cc || die
 		cd "${S}" || die
 	fi
 
