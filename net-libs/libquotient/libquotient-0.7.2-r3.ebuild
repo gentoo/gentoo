@@ -12,7 +12,7 @@ S="${WORKDIR}/libQuotient-${PV}"
 
 LICENSE="LGPL-2+"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
