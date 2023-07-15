@@ -45,6 +45,8 @@ python_test() {
 	local EPYTEST_IGNORE=(
 		# require pytest-examples
 		tests/test_docs.py
+		# benchmarks
+		tests/benchmarks
 	)
 	case ${EPYTHON} in
 		python3.12)
