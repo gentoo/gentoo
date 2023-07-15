@@ -133,9 +133,9 @@ src_install() {
 	rmdir "${ED}"/etc/nftables || die
 
 	exeinto /usr/libexec/${PN}
-	newexe "${FILESDIR}"/libexec/${PN}.sh ${PN}.sh
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}.init-r1 ${PN}
+	newexe "${FILESDIR}"/libexec/${PN}-mk.sh ${PN}.sh
+	newconfd "${FILESDIR}"/${PN}-mk.confd ${PN}
+	newinitd "${FILESDIR}"/${PN}-mk.init-r1 ${PN}
 	keepdir /var/lib/nftables
 
 	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
