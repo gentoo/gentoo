@@ -296,7 +296,7 @@ else
 	SRC_URI+=" ${CARGO_CRATE_URIS}"
 	S="${WORKDIR}"/coreutils-${PV}
 
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="MIT"
