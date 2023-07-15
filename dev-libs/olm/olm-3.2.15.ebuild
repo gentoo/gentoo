@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.matrix.org/matrix-org/${PN}/-/archive/${PV}/${P}.tar.bz2
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
