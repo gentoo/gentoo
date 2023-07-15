@@ -5,6 +5,10 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>torokhov-s-a@yandex.ru</email>
+		<name>Sergey Torokhov</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">markdown-include</remote-id>
