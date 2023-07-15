@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.freedesktop.org/wayland/${PN}/-/archive/${PV}/${P}.tar.b
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-libs/wayland-1.20.0
