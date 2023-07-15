@@ -26,7 +26,7 @@ BDEPEND="
 	test? ( dev-cpp/catch:0 )
 "
 DEPEND="
-	dev-libs/libfmt
+	>=dev-libs/libfmt-8.0.0:=
 "
 RDEPEND="${DEPEND}"
 
