@@ -32,9 +32,9 @@
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# If you need anything different from Emacs 23, use the NEED_EMACS
-# variable before inheriting elisp.eclass.  Set it to the version your
-# package uses and the dependency will be adjusted.
+# If you need anything different from Emacs 25.3 (or newer), use the
+# NEED_EMACS variable before inheriting elisp.eclass.  Set it to the
+# version your package uses and the dependency will be adjusted.
 
 # @ECLASS_VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
