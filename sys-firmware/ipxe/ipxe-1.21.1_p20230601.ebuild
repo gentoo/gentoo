@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit savedconfig toolchain-funcs
+inherit savedconfig secureboot toolchain-funcs
 
 # for 1.21.1_p20230601
 COMMIT_SHA1="4fa4052c7ebb59e4d4aa396f1563c89118623ec7"
@@ -33,6 +33,12 @@ BDEPEND="
 		amd64? ( ${SOURCE_DEPEND} )
 		x86? ( ${SOURCE_DEPEND} )
 	)"
+
+pkg_setup() {
+	if use efi || use efi64; then
+		secureboot_pkg_setup
+	fi
+}
 
 src_configure() {
 	use binary && return
@@ -122,6 +128,10 @@ src_install() {
 	use undi && doins bin/*.kpxe
 	use usb && doins bin/*.usb
 	use lkrn && doins bin/*.lkrn
+
+	if use efi || use efi64; then
+		secureboot_auto_sign --in-place
+	fi
 
 	save_config config/local/general.h
 }
