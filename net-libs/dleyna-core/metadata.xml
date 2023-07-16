@@ -6,6 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <upstream>
+    <remote-id type="gnome-gitlab">World/dLeyna</remote-id>
     <remote-id type="github">phako/dleyna-core</remote-id>
   </upstream>
 </pkgmetadata>
