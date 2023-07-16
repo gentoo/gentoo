@@ -323,7 +323,7 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 ISC MIT MPL-2.
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND=">=dev-lang/rust-1.67.1"
+BDEPEND=">=virtual/rust-1.67.1"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
