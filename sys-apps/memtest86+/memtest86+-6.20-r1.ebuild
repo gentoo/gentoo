@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit mount-boot toolchain-funcs
+inherit mount-boot secureboot toolchain-funcs
 
 MY_PV=${PV/_/-}
 
@@ -27,6 +27,12 @@ BDEPEND="
 "
 
 S=${WORKDIR}/memtest86plus-${MY_PV}
+
+pkg_setup() {
+	if use efi32 || use efi64; then
+		secureboot_pkg_setup
+	fi
+}
 
 src_prepare() {
 	sed -i \
@@ -75,6 +81,10 @@ src_install() {
 	install_memtest_images
 	use iso32 && newins build32/memtest.iso memtest32.iso
 	use iso64 && newins build64/memtest.iso memtest64.iso
+
+	if use efi32 || use efi64; then
+		secureboot_auto_sign --in-place
+	fi
 }
 
 pkg_pretend() {
