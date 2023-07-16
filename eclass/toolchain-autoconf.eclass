@@ -51,7 +51,7 @@ toolchain-autoconf_src_configure() {
 			--infodir="${TC_AUTOCONF_INFOPATH}"
 		)
 	fi
-	econf "${myconf[@]}" || die
+	econf "${myconf[@]}" "${@}" || die
 	# econf updates config.{sub,guess} which forces the manpages
 	# to be regenerated which we dont want to do #146621
 	touch man/*.1
