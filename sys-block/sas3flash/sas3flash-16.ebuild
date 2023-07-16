@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit mount-boot
+inherit mount-boot secureboot
 
 DESCRIPTION="Flash utility for LSI MPT-SAS3 controller"
 HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8e#downloads"
@@ -47,6 +47,10 @@ pkg_nofetch() {
 	einfo "${SRC_URI}"
 }
 
+pkg_setup() {
+	use efi && secureboot_pkg_setup
+}
+
 supportedcards() {
 	elog "This binary supports should support ALL cards, including, but not"
 	elog "limited to the following series:"
@@ -88,6 +92,7 @@ src_install() {
 		if use amd64; then
 			doexe Installer_P"${PV}"_for_UEFI/sas3flash_udk_uefi_x64_rel/sas3flash.efi
 		fi
+		secureboot_auto_sign --in-place
 	fi
 
 	default
