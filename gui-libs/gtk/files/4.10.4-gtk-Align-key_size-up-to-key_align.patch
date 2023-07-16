@@ -1,0 +1,50 @@
+From a3582031576783fbc644fdd2ad914820d0ba4863 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 19 Jun 2023 15:50:04 -0400
+Subject: [PATCH] gtk: Align key_size up to key_align
+
+Avoids unaligned accesses when e.g. the key_size is 12 and key_align is
+8. We need to round the key size up to 16 to ensure that all keys are
+appropriately aligned.
+
+This manifested as a failure in the `gtk:gtk / sorter` unit test on
+sparc.
+
+Closes: https://gitlab.gnome.org/GNOME/gtk/-/issues/5907
+(cherry picked from commit 3f360aa883dc51ad986c721be01b494020e5ac9d)
+---
+ gtk/gtkmultisorter.c   | 3 ++-
+ gtk/gtksortlistmodel.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gtk/gtkmultisorter.c b/gtk/gtkmultisorter.c
+index ddbdb440cb..e8744015af 100644
+--- a/gtk/gtkmultisorter.c
++++ b/gtk/gtkmultisorter.c
+@@ -186,7 +186,8 @@ gtk_multi_sort_keys_new (GtkMultiSorter *self)
+     {
+       result->keys[i].keys = gtk_sorter_get_keys (gtk_sorters_get (&self->sorters, i));
+       result->keys[i].offset = GTK_SORT_KEYS_ALIGN (keys->key_size, gtk_sort_keys_get_key_align (result->keys[i].keys));
+-      keys->key_size = result->keys[i].offset + gtk_sort_keys_get_key_size (result->keys[i].keys);
++      keys->key_size = result->keys[i].offset + GTK_SORT_KEYS_ALIGN (gtk_sort_keys_get_key_size (result->keys[i].keys),
++                                                                     gtk_sort_keys_get_key_align (result->keys[i].keys));
+       keys->key_align = MAX (keys->key_align, gtk_sort_keys_get_key_align (result->keys[i].keys));
+     }
+ 
+diff --git a/gtk/gtksortlistmodel.c b/gtk/gtksortlistmodel.c
+index c2feb9e250..44414c1fd4 100644
+--- a/gtk/gtksortlistmodel.c
++++ b/gtk/gtksortlistmodel.c
+@@ -439,7 +439,8 @@ gtk_sort_list_model_create_keys (GtkSortListModel *self)
+   g_assert (self->key_size == 0);
+ 
+   self->sort_keys = gtk_sorter_get_keys (self->sorter);
+-  self->key_size = gtk_sort_keys_get_key_size (self->sort_keys);
++  self->key_size = GTK_SORT_KEYS_ALIGN (gtk_sort_keys_get_key_size (self->sort_keys),
++                                        gtk_sort_keys_get_key_align (self->sort_keys));
+   self->keys = g_malloc_n (self->n_items, self->key_size);
+   self->missing_keys = gtk_bitset_new_range (0, self->n_items);
+ }
+-- 
+2.41.0
+

@@ -96,6 +96,11 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-gtk-Pass-G_ALIGNOF-.-to-gtk_sort_keys_new.patch
+	"${FILESDIR}"/${PV}-gtk-Align-key_size-up-to-key_align.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
 }
