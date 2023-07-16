@@ -12,7 +12,7 @@ SRC_URI="https://github.com/JohnCremona/${PN}/releases/download/v${PV}/${P}.tar.
 LICENSE="GPL-2"
 
 SLOT="0/12"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="boost flint minimal test"
 RESTRICT="!test? ( test )"
 
