@@ -21,8 +21,7 @@ S="${WORKDIR}/${P}/lisp"
 
 LICENSE="GPL-3+"
 SLOT="0"
-
-PATCHES=( "${FILESDIR}"/${PN}-3.3.0-magit-libgit.patch )
+IUSE="libgit"
 
 DOCS=( ../README.md ../docs/AUTHORS.md ../docs/RelNotes )
 ELISP_TEXINFO="../docs/*.texi"
@@ -43,7 +42,7 @@ RDEPEND+="
 
 src_prepare() {
 	default
-
+	use libgit || rm magit-libgit.el || die
 	echo "(setq magit-version \"${PV}\")" > magit-version.el || die
 }
 
