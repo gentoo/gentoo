@@ -25,7 +25,7 @@
 # When relying on the emacs USE flag, you need to add
 #
 # @CODE
-# 	emacs? ( >=app-editors/emacs-23.1:* )
+# 	emacs? ( >=app-editors/emacs-25.3:* )
 # @CODE
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to
