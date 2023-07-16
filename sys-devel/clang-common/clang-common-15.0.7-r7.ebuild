@@ -10,7 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="
 	default-compiler-rt default-libcxx default-lld llvm-libunwind
 	hardened stricter
@@ -24,7 +24,7 @@ PDEPEND="
 		!llvm-libunwind? ( sys-libs/libunwind[static-libs] )
 	)
 	!default-compiler-rt? ( sys-devel/gcc )
-	default-libcxx? ( >=sys-libs/libcxx-${PV} )
+	default-libcxx? ( >=sys-libs/libcxx-${PV}[static-libs] )
 	!default-libcxx? ( sys-devel/gcc )
 	default-lld? ( sys-devel/lld )
 	!default-lld? ( sys-devel/binutils )
@@ -92,10 +92,11 @@ src_install() {
 	EOF
 
 	# Baseline hardening (bug #851111)
+	# (-fstack-clash-protection is omitted because of a possible Clang bug,
+	# see bug #892537 and bug #865339.)
 	newins - gentoo-hardened.cfg <<-EOF
 		# Some of these options are added unconditionally, regardless of
 		# USE=hardened, for parity with sys-devel/gcc.
-		-fstack-clash-protection
 		-fstack-protector-strong
 		-fPIE
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
@@ -155,12 +156,6 @@ src_install() {
 			-Werror=implicit-function-declaration
 			-Werror=implicit-int
 			-Werror=incompatible-function-pointer-types
-
-			# constructs banned by C2x
-			-Werror=deprecated-non-prototype
-
-			# deprecated but large blast radius
-			#-Werror=strict-prototypes
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die

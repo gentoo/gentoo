@@ -24,7 +24,7 @@ PDEPEND="
 		!llvm-libunwind? ( sys-libs/libunwind[static-libs] )
 	)
 	!default-compiler-rt? ( sys-devel/gcc )
-	default-libcxx? ( >=sys-libs/libcxx-${PV} )
+	default-libcxx? ( >=sys-libs/libcxx-${PV}[static-libs] )
 	!default-libcxx? ( sys-devel/gcc )
 	default-lld? ( sys-devel/lld )
 	!default-lld? ( sys-devel/binutils )
