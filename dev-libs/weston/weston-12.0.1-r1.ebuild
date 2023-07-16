@@ -92,6 +92,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/weston-12.0.1-issue757.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use drm backend-drm)
