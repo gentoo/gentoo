@@ -12,14 +12,15 @@ else
 	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${PV}/OpenRGB-release_${PV}.tar.bz2"
 	S="${WORKDIR}/OpenRGB-release_${PV}"
 	KEYWORDS="~amd64 ~loong ~x86"
-	PATCHES=( "${FILESDIR}"/OpenRGB-0.5-build-system.patch )
+	PATCHES=( "${FILESDIR}"/OpenRGB-0.9-build-system.patch )
 fi
 
 DESCRIPTION="Open source RGB lighting control"
 HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
 LICENSE="GPL-2"
-# subslot is OPENRGB_PLUGIN_API_VERSION from https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
-SLOT="0/2"
+# subslot is OPENRGB_PLUGIN_API_VERSION from
+# https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
+SLOT="0/3"
 
 RDEPEND="
 	dev-cpp/cpp-httplib:=
@@ -42,6 +43,7 @@ BDEPEND="
 
 PATCHES+=(
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
+	"${FILESDIR}"/OpenRGB-0.9-udev-check.patch
 )
 
 src_prepare() {
@@ -52,8 +54,8 @@ src_prepare() {
 
 src_configure() {
 	# Some plugins require symbols defined in the main binary.
-	# The official build system bundles OpenRGB as a submodule instead, and
-	# compiles the .cpp file again.
+	# The upstream build system of plugins bundles OpenRGB as a submodule
+	# instead, and compiles the .cpp file again.
 	append-ldflags -Wl,--export-dynamic
 
 	# > warning: ‘-pipe’ ignored because ‘-save-temps’ specified
@@ -70,8 +72,8 @@ src_install() {
 
 	dodoc README.md OpenRGB.patch
 
-	udev_dorules 60-openrgb.rules
 	rm -r "${ED}"/usr/lib/udev/ || die
+	udev_dorules 60-openrgb.rules
 
 	# This is for plugins. Upstream doesn't install any headers at all.
 	insinto /usr/include/OpenRGB
