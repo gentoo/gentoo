@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-07-16)
+# Last reverse dependency was gnome-base/gnome-vfs, dropped more than a year ago.
+# Removal on 2023-08-16.
+gnome-base/gnome-mime-data
+
 # Matt Turner <mattst88@gentoo.org> (2023-07-15)
 # Unmaintained upstream. Depends on deprecated packages libsoup:2.4 and
 # old versions of grilo and grilo-plugins.
