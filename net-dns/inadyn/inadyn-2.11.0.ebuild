@@ -11,7 +11,7 @@ SRC_URI="https://github.com/troglobit/inadyn/releases/download/v${PV}/${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="gnutls mbedtls openssl"
 REQUIRED_USE="?? ( gnutls mbedtls openssl )"
 
