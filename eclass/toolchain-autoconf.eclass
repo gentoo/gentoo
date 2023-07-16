@@ -30,7 +30,7 @@ _TOOLCHAIN_AUTOCONF_ECLASS=1
 # @ECLASS_VARIABLE: TC_AUTOCONF_INFOPATH
 # @DESCRIPTION:
 # Where to install info files if not slotting.
-TC_AUTOCONF_INFOPATH="${EPREFIX}/usr/share/autoconf-${PV}/info"
+TC_AUTOCONF_INFOPATH="${EPREFIX}/usr/share/${P}/info"
 
 toolchain-autoconf_src_prepare() {
 	find -name Makefile.in -exec sed -i '/^pkgdatadir/s:$:-@VERSION@:' {} + || die
@@ -40,8 +40,11 @@ toolchain-autoconf_src_prepare() {
 toolchain-autoconf_src_configure() {
 	# Disable Emacs in the build system since it is in a separate package.
 	export EMACS=no
+
+	MY_P="${P#autoconf-}"
+
 	local myconf=(
-		--program-suffix="-${PV}"
+		--program-suffix="-${MY_P}"
 	)
 	if [[ -z "${TC_AUTOCONF_BREAK_INFOS}" && "${SLOT}" != 0 ]]; then
 		myconf+=(
