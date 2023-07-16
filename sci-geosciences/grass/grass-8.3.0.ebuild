@@ -240,33 +240,10 @@ src_install() {
 	dodir /usr/include/
 	dosym ../$(get_libdir)/${MY_PM}/include/grass /usr/include/grass
 
-	# fix paths in addons makefile includes
-	local scriptMakeDir="${ED}"/usr/$(get_libdir)/${MY_PM}/include/Make/
-	for f in "${scriptMakeDir}"/*; do
-		file="${f##*/}"
-		echo sed -i "s|${ED}|/|g" "${scriptMakeDir}/${file}" || die
-		sed -i "s|${ED}|/|g" "${scriptMakeDir}/${file}" || die
-	done
-
-	# get proper folder for grass path in script
-	local gisbase=/usr/$(get_libdir)/${MY_PM}
-	sed -e "s:GISBASE = os.path.normpath(\"${D}/usr/$(get_libdir)/${MY_PM}\"):\
-GISBASE = os.path.normpath(\"${gisbase}\"):" \
-		-i "${ED}"/usr/bin/grass || die
-
-	# get proper fonts path for fontcap
-	sed -i \
-		-e "s|${ED}/usr/${MY_PM}|${EPREFIX}/usr/$(get_libdir)/${MY_PM}|" \
-		"${ED}"${gisbase}/etc/fontcap || die
-
 	# set proper python interpreter
 	sed -e "s:os.environ\[\"GRASS_PYTHON\"\] = \"python3\":\
 os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 		-i "${ED}"/usr/bin/grass || die
-
-	# set proper GISDBASE directory path in the demolocation .grassrc${GVERSION//.} file
-	sed -e "s:GISDBASE\:.*$:GISDBASE\: ${gisbase}:" \
-		-i "${ED}"${gisbase}/demolocation/.grassrc${GVERSION//.} || die
 
 	if use X; then
 		local GUI="--gui"
