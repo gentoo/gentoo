@@ -1,0 +1,18 @@
+newer gcc versions don't provide g77, so if it doesn't exist,
+don't bother trying to test it (and failing)
+
+http://bugs.gentoo.org/146592
+
+--- autoconf-2.13/testsuite/autoconf.s/syntax.exp
++++ autoconf-2.13/testsuite/autoconf.s/syntax.exp
+@@ -5,6 +5,10 @@
+ set macros [exec sed -n $script $srcdir/../acspecific.m4]
+ 
+ foreach mac $macros {
++    if { [string match "*F77*" "$mac"] && [catch {exec which g77} ignore_output] } then {
++        send_user "XFAIL: $mac\n"
++        continue
++    }
+     send_user "$mac\n"
+     autoconf_test $mac $mac
+ }

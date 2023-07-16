@@ -1,0 +1,35 @@
+https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=b27bc3e230bb12fdd9a813e38e82bc4c3e22b4cc
+
+Note: we drop the comma from the comment because some packages
+have bad quoting, and while that will need to be sorted when/if
+autoconf 2.72 is released, we've got our hands full with the
+Clang situation right now (bug #871753).
+
+From b27bc3e230bb12fdd9a813e38e82bc4c3e22b4cc Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Tue, 31 Aug 2021 16:30:46 -0700
+Subject: Port AC_LANG_CALL(C) to C++
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* lib/autoconf/c.m4 (AC_LANG_CALL(C)): Add an extern "C" if C++.
+Problem reported by Vincent Lefèvre (sr #110532).
+--- a/lib/autoconf/c.m4
++++ b/lib/autoconf/c.m4
+@@ -126,7 +126,13 @@ m4_define([AC_LANG_CALL(C)],
+ m4_if([$2], [main], ,
+ [/* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
+ char $2 ();])], [return $2 ();])])
+ 
+ 
+cgit v1.1

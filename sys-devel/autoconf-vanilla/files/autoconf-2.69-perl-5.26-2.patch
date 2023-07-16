@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/625576
+
+--- autoconf-2.69/bin/autoheader.in
++++ autoconf-2.69/bin/autoheader.in
+@@ -173,6 +173,12 @@
+ # Source what the traces are trying to tell us.
+ verb "$me: running $autoconf to trace from $ARGV[0]";
+ my $quoted_tmp = shell_quote ($tmp);
++my $perl_tmp;
++if ( $tmp =~ /^\// ) {
++  $perl_tmp=$tmp;
++} else {
++  $perl_tmp="./".$tmp;
++}
+ xsystem ("$autoconf"
+ 	 # If you change this list, update the
+ 	 # `Autoheader-preselections' section of autom4te.in.
+@@ -182,9 +188,9 @@
+ 	 . " " . shell_quote ($ARGV[0]) . " >$quoted_tmp/traces.pl");
+ 
+ local (%verbatim, %symbol);
+-debug "$me: \`do'ing $tmp/traces.pl:\n" . `sed 's/^/| /' $quoted_tmp/traces.pl`;
+-do "$tmp/traces.pl";
+-warn "couldn't parse $tmp/traces.pl: $@" if $@;
++debug "$me: \`do'ing $perl_tmp/traces.pl:\n" . `sed 's/^/| /' $quoted_tmp/traces.pl`;
++do "$perl_tmp/traces.pl";
++warn "couldn't parse $perl_tmp/traces.pl: $@" if $@;
+ unless ($config_h)
+   {
+     error "error: AC_CONFIG_HEADERS not found in $ARGV[0]";
