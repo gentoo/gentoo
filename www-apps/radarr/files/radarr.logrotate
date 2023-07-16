@@ -1,4 +1,4 @@
-/var/lib/radarr/.config/radarr/logs/*.log{
+/var/lib/radarr/.config/Radarr/logs/*.txt{
     missingok
     su radarr radarr
 }
