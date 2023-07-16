@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit flag-o-matic mount-boot python-any-r1 toolchain-funcs
+inherit flag-o-matic mount-boot python-any-r1 secureboot toolchain-funcs
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -78,6 +78,7 @@ pkg_setup() {
 			die "Unsupported architecture!"
 		fi
 	fi
+	use efi && secureboot_pkg_setup
 }
 
 src_prepare() {
@@ -169,6 +170,11 @@ src_install() {
 
 	xen_make DESTDIR="${D}" -C xen install
 
-	# make install likes to throw in some extra EFI bits if it built
-	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
+	if use efi; then
+		secureboot_auto_sign --in-place
+	else
+		# make install likes to throw in some extra EFI bits if it built
+		rm -rf "${D}/usr/$(get_libdir)/efi"
+	fi
+
 }
