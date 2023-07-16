@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ppc64 ~riscv ~x86"
 IUSE="dbus nls test"
 RESTRICT="!test? ( test )"
 
