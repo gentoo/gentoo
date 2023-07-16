@@ -15,7 +15,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm arm64 ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x64-macos"
 IUSE="
 	debug default-compiler-rt default-libcxx default-lld doc
 	llvm-libunwind +pie +static-analyzer test xml
