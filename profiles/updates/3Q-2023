@@ -1,1 +1,2 @@
 move dev-python/charset_normalizer dev-python/charset-normalizer
+move dev-python/reedsolomon dev-python/reedsolo

@@ -23,7 +23,7 @@ RDEPEND="
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		>=dev-python/ecdsa-0.16.0[${PYTHON_USEDEP}]
 		dev-python/pyserial[${PYTHON_USEDEP}]
-		dev-python/reedsolomon[${PYTHON_USEDEP}]
+		dev-python/reedsolo[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="
