@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit mount-boot
+inherit mount-boot secureboot
 
 DESCRIPTION="LSI MPT-SAS3 controller management tool"
 HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8e#downloads"
@@ -40,6 +40,10 @@ pkg_nofetch() {
 		elog "and also place it into your DISTDIR directory"
 	fi
 	einfo "${SRC_URI}"
+}
+
+pkg_setup() {
+	use efi && secureboot_pkg_setup
 }
 
 supportedcards() {
@@ -84,5 +88,6 @@ src_install() {
 		elif use arm64; then
 			doexe sas3ircu_rel/sas3ircu/sas3ircu_udk_uefi_arm_rel/sas3ircu.efi
 		fi
+		secureboot_auto_sign --in-place
 	fi
 }
