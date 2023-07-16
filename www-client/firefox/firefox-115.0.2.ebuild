@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-115-patches-04.tar.xz"
+FIREFOX_PATCHSET="firefox-115-patches-05.tar.xz"
 
 LLVM_MAX_SLOT=16
 
@@ -1456,4 +1456,11 @@ pkg_postinst() {
 	optfeature_header "Optional programs for extra features:"
 	optfeature "desktop notifications" x11-libs/libnotify
 	optfeature "fallback mouse cursor theme e.g. on WMs" gnome-base/gsettings-desktop-schemas
+
+	if ! has_version "sys-libs/glibc"; then
+		elog
+		elog "glibc not found! You won't be able to play DRM content."
+		elog "See Gentoo bug #910309 or upstream bug #1843683."
+		elog
+	fi
 }
