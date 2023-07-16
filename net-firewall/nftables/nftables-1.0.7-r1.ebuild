@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 inherit edo linux-info distutils-r1 systemd verify-sig
 
-DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
+DESCRIPTION="Linux kernel firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
 
 if [[ ${PV} =~ ^[9]{4,}$ ]]; then
