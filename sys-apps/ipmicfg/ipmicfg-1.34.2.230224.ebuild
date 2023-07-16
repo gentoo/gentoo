@@ -7,6 +7,8 @@ MY_DATE="$(ver_cut 4)"
 MY_PN="${PN^^}"
 MY_PV="$(ver_cut 1-3)"
 
+inherit secureboot
+
 DESCRIPTION="An in-band utility for configuring Supermicro IPMI devices"
 HOMEPAGE="https://www.supermicro.com"
 SRC_URI="https://www.supermicro.com/Bios/sw_download/551/${MY_PN}_${MY_PV}_build.${MY_DATE}.zip"
@@ -23,12 +25,17 @@ RESTRICT="bindist mirror"
 
 QA_PREBUILT="usr/bin/ipmicfg"
 
+pkg_setup() {
+	use uefi && secureboot_pkg_setup
+}
+
 src_install() {
 	newbin Linux/$(usex amd64 '64bit' '32bit')/IPMICFG-Linux.x86$(usex amd64 '_64' '') ipmicfg
 
 	if use uefi; then
 		insinto /usr/share/ipmicfg
 		newins UEFI/IPMICFG.efi ipmicfg.efi
+		secureboot_auto_sign --in-place
 	fi
 
 	# Install docs
