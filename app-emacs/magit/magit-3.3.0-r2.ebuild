@@ -21,7 +21,7 @@ S="${WORKDIR}/${P}/lisp"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="libgit"
+IUSE="+libgit"	# drop the IUSE default for next upstream release
 
 DOCS=( ../README.md ../Documentation/AUTHORS.md ../Documentation/RelNotes )
 ELISP_TEXINFO="../Documentation/*.texi"
