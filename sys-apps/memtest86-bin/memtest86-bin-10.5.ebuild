@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit mount-boot
+inherit mount-boot secureboot
 
 DESCRIPTION="Stand alone memory testing software for x86 EFI hardware"
 HOMEPAGE="http://www.memtest86.com/"
@@ -33,6 +33,8 @@ src_install() {
 	newexe "${FILESDIR}"/${PN}-grub.d 39_memtest86-bin
 
 	dodoc MemTest86_User_Guide_UEFI.pdf
+
+	secureboot_auto_sign --in-place
 }
 
 pkg_postinst() {
