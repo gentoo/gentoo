@@ -25,10 +25,6 @@ BDEPEND="
 	test? ( dev-lang/ruby )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.14.0-musl-strerror_r.patch
-)
-
 src_prepare() {
 	default
 	eautoreconf
