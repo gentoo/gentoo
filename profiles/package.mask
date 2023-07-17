@@ -33,6 +33,63 @@
 
 #--- END OF EXAMPLES ---
 
+# Florian Schmaus <flow@gentoo.org> (2023-07-17)
+# Obsolete acct-* packages which became leaf packages.
+# Removal on 2023-08-17.
+acct-user/artifactory
+acct-group/artifactory
+acct-user/cinder
+acct-group/cinder
+acct-user/glance
+acct-group/glance
+acct-user/heat
+acct-group/heat
+acct-user/keystone
+acct-group/keystone
+acct-user/litecoin
+acct-group/litecoin
+acct-user/logcheck
+acct-group/logcheck
+acct-user/minbif
+acct-group/minbif
+acct-user/minio
+acct-group/minio
+acct-user/netbox
+acct-group/netbox
+acct-user/neutron
+acct-group/neutron
+acct-user/nova
+acct-group/nova
+acct-user/placement
+acct-group/placement
+acct-user/quagga
+acct-group/quagga
+acct-user/rplayd
+acct-group/rplayd
+acct-user/rstudio-server
+acct-group/rstudio-server
+acct-user/rundeck
+acct-group/rundeck
+acct-user/sguil
+acct-group/sguil
+acct-user/sigh
+acct-group/sigh
+acct-user/smokeping
+acct-group/smokeping
+acct-user/sobby
+acct-group/sobby
+acct-user/spread
+acct-group/spread
+acct-user/stg
+acct-group/stg
+acct-user/swift
+acct-group/swift
+acct-user/thttpd
+acct-group/thttpd
+acct-group/gpio
+acct-group/simplevirt
+acct-group/spi
+
 # Matt Turner <mattst88@gentoo.org> (2023-07-16)
 # Last reverse dependency was gnome-base/gnome-vfs, dropped more than a year ago.
 # Removal on 2023-08-16.
