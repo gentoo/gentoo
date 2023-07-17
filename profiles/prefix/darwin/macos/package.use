@@ -1,0 +1,12 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (2023-07-17)
+# scientific python related use flags.  The Prefix/macos is widely
+# used in scientific and HPC applications.  Maintain some reasonable
+# defaults in the profile.
+
+dev-python/numpy lapack
+dev-python/pillow webp
+virtual/imagemagick-tools tiff jpeg
+media-gfx/imagemagick tiff jpeg
