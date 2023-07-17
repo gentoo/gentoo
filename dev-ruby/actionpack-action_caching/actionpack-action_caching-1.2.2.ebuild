@@ -19,7 +19,7 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/actionpack-4.0.0:*"
 
 ruby_add_bdepend "test? ( >=dev-ruby/activerecord-4.0.0
-	|| ( dev-ruby/railties:6.1 dev-ruby/railties:6.0 )
+	|| ( dev-ruby/railties:6.1 )
 	dev-ruby/mocha )"
 
 all_ruby_prepare() {
