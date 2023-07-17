@@ -651,6 +651,10 @@ cmake_build() {
 			;;
 		ninja)
 			[[ -e build.ninja ]] || die "build.ninja not found. Error during configure stage."
+			case ${CMAKE_VERBOSE} in
+				OFF) NINJA_VERBOSE=OFF eninja "$@" ;;
+				*) eninja "$@" ;;
+			esac
 			eninja "$@"
 			;;
 	esac
