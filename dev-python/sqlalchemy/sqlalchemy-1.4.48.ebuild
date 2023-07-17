@@ -92,7 +92,6 @@ pkg_postinst() {
 	optfeature "asyncio support" dev-python/greenlet
 	optfeature "MySQL support" \
 		dev-python/mysqlclient \
-		dev-python/pymysql \
-		dev-python/mysql-connector-python
+		dev-python/pymysql
 	optfeature "postgresql support" dev-python/psycopg:2
 }
