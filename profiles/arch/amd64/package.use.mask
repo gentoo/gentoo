@@ -372,11 +372,6 @@ dev-vcs/git -mediawiki
 # Boost.Context can be built on amd64
 dev-libs/boost -context
 
-# Michał Górny <mgorny@gentoo.org> (2013-12-15)
-# mupen64plus' 2.0 new dynamic recompiler is supported on x86 and arm
-# only.
-games-emulation/mupen64plus-core new-dynarec
-
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for amd64 (masked in base)
 # dev-scheme/racket keyworded for amd64 (masked in base)
