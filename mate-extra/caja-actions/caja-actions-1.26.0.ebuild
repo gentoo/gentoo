@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Caja Actions"
-HOMEPAGE="https://github.com/infirit/caja-admin"
+HOMEPAGE="https://github.com/mate-desktop/caja-actions"
 
 LICENSE="GPL-2+"
 SLOT="0"
