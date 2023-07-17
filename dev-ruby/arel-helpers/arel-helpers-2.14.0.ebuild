@@ -23,7 +23,6 @@ ruby_add_rdepend "
 	|| (
 		dev-ruby/activerecord:7.0
 		dev-ruby/activerecord:6.1
-		dev-ruby/activerecord:6.0
 	)
 "
 
