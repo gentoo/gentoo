@@ -17,10 +17,13 @@ IUSE="+ocamlopt"
 DEPEND="
 	dev-ml/base_quickcheck:${SLOT}
 	dev-ml/ppx_assert:${SLOT}
+	dev-ml/ppx_base:${SLOT}
 	dev-ml/ppx_bench:${SLOT}
 	dev-ml/ppx_bin_prot:${SLOT}
+	dev-ml/ppx_compare:=
 	dev-ml/ppx_disable_unused_warnings:${SLOT}
 	dev-ml/ppx_expect:${SLOT}
+	dev-ml/ppx_fields_conv:${SLOT}
 	dev-ml/ppx_fixed_literal:${SLOT}
 	dev-ml/ppx_ignore_instrumentation:${SLOT}
 	dev-ml/ppx_inline_test:${SLOT}
