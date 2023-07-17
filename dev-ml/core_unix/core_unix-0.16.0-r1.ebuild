@@ -21,6 +21,7 @@ DEPEND="
 	dev-ml/expect_test_helpers_core:${SLOT}
 	dev-ml/ocaml_intrinsics:${SLOT}
 	>=dev-ml/spawn-0.15:=
+	dev-ml/re:=
 	dev-ml/timezone:${SLOT}
 "
 RDEPEND="${DEPEND}"
