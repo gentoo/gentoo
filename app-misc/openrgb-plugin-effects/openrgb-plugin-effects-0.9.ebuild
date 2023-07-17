@@ -51,7 +51,7 @@ src_prepare() {
 
 	# Because of -Wl,--export-dynamic in app-misc/openrgb, this resources.qrc
 	# conflicts with the openrgb's one. So rename it.
-	sed -e 's/resources.qrc/resources_effects_plugin.qrc/' -i *.pro || die
+	sed -e 's/ resources.qrc/ resources_effects_plugin.qrc/' -i *.pro || die
 	mv --no-clobber resources.qrc resources_effects_plugin.qrc || die
 }
 
