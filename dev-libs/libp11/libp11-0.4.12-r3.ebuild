@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/softhsm )"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	test? ( dev-libs/opensc )"
+	test? ( >=dev-libs/opensc-0.23.0-r2 )"
 
 src_prepare() {
 	local PATCHES=(
