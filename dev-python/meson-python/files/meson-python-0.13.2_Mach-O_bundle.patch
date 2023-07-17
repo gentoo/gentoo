@@ -1,0 +1,21 @@
+Support .bundle python modules at Prefix/macOS.
+
+Not forwarding to upstream because we are reflecting on the naming
+scheme of plugin modules on Prefix/macOS.
+
+Bug: https://bugs.gentoo.org/910401
+Signed-off-by: Benda Xu <heroxbd@gentoo.org>
+
+Index: meson-python-0.13.2/mesonpy/__init__.py
+===================================================================
+--- meson-python-0.13.2.orig/mesonpy/__init__.py
++++ meson-python-0.13.2/mesonpy/__init__.py
+@@ -129,7 +129,7 @@ _STYLES = _init_colors()  # holds the co
+ 
+ _SUFFIXES = importlib.machinery.all_suffixes()
+ _EXTENSION_SUFFIXES = importlib.machinery.EXTENSION_SUFFIXES
+-_EXTENSION_SUFFIX_REGEX = re.compile(r'^\.(?:(?P<abi>[^.]+)\.)?(?:so|pyd|dll)$')
++_EXTENSION_SUFFIX_REGEX = re.compile(r'^\.(?:(?P<abi>[^.]+)\.)?(?:so|pyd|dll|bundle)$')
+ assert all(re.match(_EXTENSION_SUFFIX_REGEX, x) for x in _EXTENSION_SUFFIXES)
+ 
+ 
