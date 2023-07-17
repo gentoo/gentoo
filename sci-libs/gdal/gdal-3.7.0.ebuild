@@ -60,7 +60,7 @@ DEPEND="
 	heif? ( media-libs/libheif:= )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[cxx,szip] )
 	java? (
-		>=virtual/jdk-1.8:*
+		>=virtual/jdk-1.8:*[-headless-awt]
 	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
