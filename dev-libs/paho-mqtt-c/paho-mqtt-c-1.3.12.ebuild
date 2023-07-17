@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="EPL-2.0"
 SLOT="1.3"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples +high-performance +ssl doc test"
+IUSE="doc examples +high-performance +ssl test"
 
 BDEPEND="
 	doc? ( app-doc/doxygen
