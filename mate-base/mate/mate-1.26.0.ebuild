@@ -79,5 +79,4 @@ pkg_postinst() {
 	elog "		mate-extra/caja-dropbox"
 	elog "		mate-extra/mate-user-share"
 	elog "		mate-extra/caja-admin"
-	elog "		mate-extra/caja-hide"
 }
