@@ -9,7 +9,7 @@ SRC_URI="http://jon.oberheide.org/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~sparc x86"
+KEYWORDS="amd64 ~sparc"
 IUSE=""
 
 RDEPEND="net-im/pidgin
