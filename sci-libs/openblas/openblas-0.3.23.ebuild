@@ -122,7 +122,7 @@ src_prepare() {
 }
 
 src_compile() {
-	default
+	emake shared
 	use eselect-ldso && emake -C interface shared-blas-lapack
 
 	if use index-64bit; then
