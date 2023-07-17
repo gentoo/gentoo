@@ -14,6 +14,6 @@ HOMEPAGE="https://pypi.org/project/sphinx-epytext/ https://github.com/jayvdb/sph
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND=">=dev-python/sphinx-1.7.5[${PYTHON_USEDEP}]"
