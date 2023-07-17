@@ -25,7 +25,7 @@ PATCHES=( "${FILESDIR}/${P}-test-directories.patch" "${FILESDIR}/${P}-test-isola
 ruby_add_rdepend "
 	>=dev-ruby/sassc-2.0
 	dev-ruby/tilt:*
-	|| ( dev-ruby/railties:7.0 dev-ruby/railties:6.0 dev-ruby/railties:6.1 )
+	|| ( dev-ruby/railties:7.0 dev-ruby/railties:6.1 )
 	>=dev-ruby/sprockets-3.0:*
 	dev-ruby/sprockets-rails:*
 "
