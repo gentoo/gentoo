@@ -1,0 +1,301 @@
+#!/sbin/openrc-run
+#
+# FRR OpenRC init script.
+#
+# Copyright (C) 2020 Rafael F. Zalamena
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; only version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+description="FRR initialization script."
+
+# FRR variables.
+frr_dir="/usr/lib/frr"
+frr_state_dir="/run/frr"
+config_file="/etc/frr/frr.conf"
+daemon_file="/etc/frr/daemons"
+daemon_db="/run/frrdb"
+vty_config_file="/etc/frr/vtysh.conf"
+frr_reload="$frr_dir/frr-reload.py"
+frr_reload_log="$frr_state_dir/reload.log"
+
+# Don't change profile here, use $daemon_file. This is the default.
+frr_profile="traditional"
+
+# watchfrr variables.
+watchfrr_daemons=''
+watchfrr_pidfile="$frr_state_dir/watchfrr.pid"
+
+#
+# Helpers.
+#
+_check_daemon_binary() {
+  local daemon=$1
+
+  [ -x "$frr_dir/$daemon" ] && return 0
+
+  eerror "No binary found for $daemon in $frr_dir"
+  return 1
+}
+
+_load_daemon_list() {
+  # Load FRR daemons configuration file.
+  while read line <&3 ; do
+    case $line in
+      ""|"#"*)
+        # Skip empty/commented lines.
+        continue
+        ;;
+
+      *d=*|*_instances=*|*_options=*|*_wrap=*)
+        # Load daemon options.
+        eval "$line"
+        ;;
+
+      MAX_FDS=*|frr_profile=*|vtysh_enable=*)
+        # Load misc configuration.
+        eval "$line"
+        ;;
+    esac
+  done 3< $daemon_file
+
+  # `zebra` and `staticd` are mandatory.
+  _check_daemon_binary 'zebra' || return 1
+  _check_daemon_binary 'staticd' || return 1
+  watchfrr_daemons='zebra staticd'
+
+  # Create the watchfrr command line.
+  for daemon in \
+    babeld bfdd bgpd eigrpd fabricd isisd ldpd nhrpd ospfd ospf6d pbrd \
+    pimd ripd ripngd sharpd vrrpd \
+  ; do
+    # Trick to read variable name with variable.
+    cdaemon=$(eval echo \$$daemon)
+    cdaemon_instances=$(eval echo \$${daemon}_instances)
+
+    # Add daemon to command line if specified.
+    if [ ! -z $cdaemon ] && [ $cdaemon = 'yes' ]; then
+      _check_daemon_binary $daemon || return 1
+
+      # Multi instance daemon handling.
+      if [ ! -z $cdaemon_instances ]; then
+        for instance in $(echo $cdaemon_instances | tr ',' ' '); do
+          watchfrr_daemons="$watchfrr_daemons $daemon-$instance"
+        done
+	continue
+      fi
+
+      # Single instance daemon handling.
+      watchfrr_daemons="$watchfrr_daemons $daemon"
+      continue
+    fi
+  done
+}
+
+_frr_start() {
+  # Apply MAX_FDS configuration if set.
+  if [ ! -z $MAX_FDS ]; then
+    veinfo "  Setting maximum file descriptors to ${MAX_FDS}"
+    prlimit -n $MAX_FDS >/dev/null 2>/dev/null
+  fi
+
+  # Save started daemons to state database.
+  rm -f -- $daemon_db
+  for daemon in $watchfrr_daemons; do
+    echo $daemon >> $daemon_db
+    veinfo "  Starting $daemon..."
+  done
+
+  veinfo "  Starting watchfrr..."
+
+  # Start watchfrr which will start all configured daemons.
+  eval $all_wrap $frr_dir/watchfrr -d -F $frr_profile $watchfrr_daemons
+
+  veinfo "  Loading configuration..."
+
+  # After starting the daemons, lets load the configuration.
+  if [ $vtysh_enable = 'yes' ]; then
+    vtysh -b -n
+  else
+    veinfo "  Configuration loading disabled (vtysh_enable=$vtysh_enable)"
+  fi
+}
+
+_get_pid() {
+  local daemon=$1
+  local pid_file="$frr_state_dir/$daemon.pid"
+
+  # Test for file existence.
+  if [ ! -r "$pid_file" ]; then
+    eerror "Failed to find or read $daemon pid file"
+    return 1
+  fi
+
+  # Get PID if any.
+  pid=$(cat $pid_file)
+  if [ -z $pid ]; then
+    eerror "$daemon PID file empty"
+    return 1
+  fi
+
+  return 0
+}
+
+_stop_daemon() {
+  local daemon=$1
+  local pid_file="$frr_state_dir/$daemon.pid"
+
+  # Get daemon pid.
+  _get_pid $daemon
+
+  # Ask daemon to quit.
+  kill -2 "$pid"
+
+  # Test if daemon is still running.
+  attempts=1200
+  while kill -0 "$pid" 2>/dev/null; do
+    sleep 0.5
+    [ $((attempts - 1)) -gt 0 ] || break
+  done
+
+  # Tell user about our situation.
+  if kill -0 "$pid" 2>/dev/null ; then
+    eerror "Failed to stop $daemon (PID=${pid})"
+    return 1
+  else
+    rm -f -- $pid_file
+  fi
+}
+
+_frr_stop() {
+  local failures=0
+
+  # Stop watchfrr first so it doesn't restart anyone.
+  veinfo "  Stopping watchfrr..."
+  _stop_daemon watchfrr || failures=1
+
+  # Read started daemon database.
+  while read line <&3 ; do
+    case $line in
+      ""|"#"*)
+        # Skip empty/commented lines.
+        continue
+        ;;
+
+      *)
+        # Get daemon name.
+        veinfo "  Stopping $line..."
+        _stop_daemon $line || failures=1
+        ;;
+    esac
+  done 3< $daemon_db
+
+  # Remove daemon database file.
+  rm -f -- $daemon_db
+
+  return $failures
+}
+
+_check_watchfrr() {
+  _get_pid watchfrr || return 1
+  return 0
+}
+
+#
+# Main.
+#
+depend() {
+  # We need root to write logs.
+  need localmount
+  # Optionally wait for network to start.
+  use net
+  # Expect /run to be ready.
+  after bootmisc
+}
+
+start_pre() {
+  # Check configuration file readability.
+  checkpath -f -m 0640 -o frr:frr $vty_config_file
+  checkpath -f -m 0640 -o frr:frr $daemon_file
+  checkpath -f -m 0640 -o frr:frr $config_file
+
+  # Check run state directory.
+  checkpath -d -o frr $frr_state_dir
+
+  # Load daemon list and peform checks.
+  _load_daemon_list
+}
+
+start() {
+  # Load daemon list.
+  _load_daemon_list
+
+  # Handle restarts.
+  if [ "$RC_CMD" = 'restart' ]; then
+    ebegin 'Reloading FRR configuration'
+  else
+    ebegin 'Starting FRR'
+  fi
+
+  # Start FRR.
+  _frr_start
+
+  # New daemons and watchfrr started, apply new configuration.
+  if [ "$RC_CMD" = 'restart' ]; then
+    "$frr_reload" --reload "$config_file" 2>/run/frr/reload.log
+    [ $? -ne 0 ] && ewarn "  Failed to reload (check $frr_reload_log)"
+    # NOTE: we can't return bad status otherwise OpenRC will think we
+    # failed to start, lets print a helpful message instead.
+  fi
+
+  eend 0
+}
+
+stop() {
+  local failures=0
+
+  # Handle restarts.
+  if [ "$RC_CMD" = 'restart' ]; then
+    # Load daemon list.
+    _load_daemon_list
+
+    # We must restart 'watchfrr' in order to start new daemons.
+    veinfo "  Stopping watchfrr..."
+    _stop_daemon watchfrr
+
+    # Stop daemons that are no longer in configuration file.
+    for daemon in $(ls -1 /run/frr/*.pid | cut -d '.' -f 1); do
+      # Filter daemon name.
+      daemon=$(basename "$daemon")
+
+      # Skip watchfrr.
+      [ "$daemon" = 'watchfrr' ] && continue
+
+      echo "$watchfrr_daemons" | grep "$daemon" >/dev/null
+      if [ $? -ne 0 ]; then
+        veinfo "  Stopping $daemon..."
+        _stop_daemon $daemon
+      fi
+    done
+
+    return 0
+  fi
+
+  ebegin 'Stopping FRR'
+  _frr_stop || failures=1
+  eend $failures 'some daemons failed to stop'
+}
+
+status() {
+  _check_watchfrr || return 1
+}

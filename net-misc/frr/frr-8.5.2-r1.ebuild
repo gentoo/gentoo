@@ -48,6 +48,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
 	!net-misc/quagga
+	sys-apps/util-linux
 "
 
 PATCHES=(
@@ -142,7 +143,7 @@ src_install() {
 
 	# Install init scripts
 	systemd_dounit tools/frr.service
-	newinitd "${FILESDIR}"/frr-openrc-v1 frr
+	newinitd "${FILESDIR}"/frr-openrc-v2 frr
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
 	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
