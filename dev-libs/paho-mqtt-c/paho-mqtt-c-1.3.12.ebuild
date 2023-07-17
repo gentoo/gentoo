@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="EPL-2.0"
 SLOT="1.3"
 KEYWORDS="~amd64 ~x86"
-IUSE="+high-performance +ssl doc test"
+IUSE="examples +high-performance +ssl doc test"
 
 BDEPEND="
 	doc? ( app-doc/doxygen
@@ -55,6 +55,7 @@ src_configure(){
 		-DPAHO_HIGH_PERFORMANCE="$(usex high-performance "TRUE" "FALSE")"
 		-DPAHO_WITH_SSL="$(usex ssl "TRUE" "FALSE")"
 		-DPAHO_BUILD_DOCUMENTATION="$(usex doc "TRUE" "FALSE")"
+		-DPAHO_BUILD_SAMPLES="$(usex examples "TRUE" "FALSE")"
 		-DPAHO_ENABLE_TESTING="$(usex test "TRUE" "FALSE")"
 	)
 	cmake_src_configure
