@@ -39,6 +39,10 @@ BDEPEND="
 
 S="${WORKDIR}"/dLeyna-v${PV}
 
+PATCHES=(
+	"${FILESDIR}"/meson-1.2.0.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Ddbus_service_dir="${EPREFIX}/usr/share/dbus-1/services"
