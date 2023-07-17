@@ -19,8 +19,8 @@ SLOT="2"
 IUSE=""
 
 ruby_add_rdepend "
-	|| ( dev-ruby/actionpack:6.1 dev-ruby/actionpack:6.0 )
-	|| ( dev-ruby/railties:6.1 dev-ruby/railties:6.0 )
+	|| ( dev-ruby/actionpack:6.1 )
+	|| ( dev-ruby/railties:6.1 )
 "
 
 ruby_add_bdepend "test? ( =dev-ruby/railties-6* )"
