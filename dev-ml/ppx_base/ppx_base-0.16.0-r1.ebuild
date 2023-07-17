@@ -20,5 +20,6 @@ DEPEND="
 	dev-ml/ppx_globalize:${SLOT}
 	dev-ml/ppx_enumerate:${SLOT}
 	dev-ml/ppx_hash:${SLOT}
+	dev-ml/ppx_sexp_conv:${SLOT}
 "
 RDEPEND="${DEPEND}"
