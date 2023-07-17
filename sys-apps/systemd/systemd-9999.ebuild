@@ -23,11 +23,11 @@ else
 	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 inherit bash-completion-r1 linux-info meson-multilib pam
-inherit python-any-r1 systemd toolchain-funcs udev usr-ldscript
+inherit python-single-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="http://systemd.io/"
@@ -41,6 +41,7 @@ IUSE="
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
 "
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	dns-over-tls? ( || ( gnutls openssl ) )
 	fido2? ( cryptsetup openssl )
 	homed? ( cryptsetup pam openssl )
@@ -92,6 +93,8 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-${MINKV}
 "
 
+PEFILE_DEPEND="$(python_gen_cond_dep 'dev-python/pefile[${PYTHON_USEDEP}]')"
+
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
 	>=acct-group/adm-0-r1
@@ -121,6 +124,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-resolve-0-r1
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
+	boot? (
+		${PYTHON_DEPS}
+		${PEFILE_DEPEND}
+	)
 	selinux? (
 		sec-policy/selinux-base-policy[systemd]
 		sec-policy/selinux-ntp
@@ -159,18 +166,14 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
-	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
-	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
-	boot? ( $(python_gen_any_dep 'dev-python/pyelftools[${PYTHON_USEDEP}]') )
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
+	boot? (
+		$(python_gen_cond_dep 'dev-python/pyelftools[${PYTHON_USEDEP}]')
+		test? ( ${PEFILE_DEPEND} )
+	)
 "
-
-python_check_deps() {
-	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" || return
-	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]" || return
-	if use boot; then
-		python_has_version "dev-python/pyelftools[${PYTHON_USEDEP}]" || return
-	fi
-}
 
 QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
@@ -408,6 +411,10 @@ multilib_src_install_all() {
 	fi
 
 	gen_usr_ldscript -a systemd udev
+
+	if use boot; then
+		python_fix_shebang "${ED}"
+	fi
 }
 
 migrate_locale() {
