@@ -1,0 +1,23 @@
+Break the toolchain assumption of LLVM on Prefix/macOS.
+
+At Prefix/macOS, the system compiler is GCC with libstdc++.
+
+This patch is only useful to Gentoo Prefix.  We don't have plans to
+forward it upstream.
+
+Signed-off-by: Benda Xu <heroxbd@gentoo.org>
+
+Index: pybind11-2.10.4/pybind11/setup_helpers.py
+===================================================================
+--- pybind11-2.10.4.orig/pybind11/setup_helpers.py
++++ pybind11-2.10.4/pybind11/setup_helpers.py
+@@ -154,9 +154,6 @@ class Pybind11Extension(_Extension):  #
+             c_cpp_flags = shlex.split(env_cflags) + shlex.split(env_cppflags)
+             if not any(opt.startswith("-g") for opt in c_cpp_flags):
+                 cflags += ["-g0"]
+-            if MACOS:
+-                cflags += ["-stdlib=libc++"]
+-                ldflags += ["-stdlib=libc++"]
+         self._add_cflags(cflags)
+         self._add_ldflags(ldflags)
+ 
