@@ -40,7 +40,7 @@ BDEPEND="dev-lang/perl
 RDEPEND+=" selinux? ( sec-policy/selinux-irc )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-fix-usage-of-\$type-in-ExtUtils.patch"
+	"${FILESDIR}"/${PN}-1.4.4-fix-usage-of-type-in-ExtUtils.patch
 )
 
 src_configure() {
