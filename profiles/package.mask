@@ -461,11 +461,6 @@ x11-drivers/nvidia-drivers:0/390
 # https://gitlab.gnome.org/GNOME/gimp/-/issues/9175
 =media-libs/babl-0.1.100
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-25)
-# Major update.  Multiple packages are known to be broken.
-# Masked for further testing.
->=dev-python/cython-3
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
