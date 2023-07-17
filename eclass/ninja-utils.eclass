@@ -47,6 +47,12 @@ _NINJA_UTILS_ECLASS=1
 # supposed to be set in make.conf. If unset, eninja() will convert
 # MAKEOPTS instead.
 
+# @ECLASS_VARIABLE: NINJA_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Set to OFF to disable verbose messages during compilation
+: "${NINJA_VERBOSE:=ON}"
+
 inherit multiprocessing
 
 case "${NINJA}" in
@@ -79,7 +85,12 @@ get_NINJAOPTS() {
 # also supports being called via 'nonfatal'.
 eninja() {
 	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
-	set -- "${NINJA}" -v $(get_NINJAOPTS) "$@"
+	local v
+	case "${NINJA_VERBOSE}" in
+		OFF) ;;
+		*) v="-v"
+	esac
+	set -- "${NINJA}" ${v} $(get_NINJAOPTS) "$@"
 	echo "$@" >&2
 	"$@" || die -n "${*} failed"
 }
