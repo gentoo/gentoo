@@ -21,11 +21,12 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+IUSE="kernel_Darwin"
 
 RDEPEND="
 	>=dev-python/pyproject-metadata-0.7.1[${PYTHON_USEDEP}]
 	>=dev-util/meson-0.63.0[${PYTHON_USEDEP}]
-	dev-util/patchelf
+	!kernel_Darwin? ( dev-util/patchelf )
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
 	' 3.9 3.10)
