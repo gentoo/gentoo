@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,6 +42,8 @@ BDEPEND="
 "
 
 PATCHES=(
+	# https://github.com/mupen64plus/mupen64plus-core/pull/1015
+	"${FILESDIR}"/${P}-debugger-fix-binutils-2.39-compat.patch
 	"${FILESDIR}"/${P}-fix-gcc10-fno-common.patch
 	"${FILESDIR}"/${P}-pitch.patch
 )
