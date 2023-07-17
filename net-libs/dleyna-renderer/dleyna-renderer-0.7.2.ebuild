@@ -29,3 +29,7 @@ BDEPEND="
 	dev-libs/libxslt
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/meson-1.2.0.patch
+)
