@@ -43,6 +43,12 @@ gnome-base/gnome-mime-data
 # old versions of grilo and grilo-plugins.
 # Removal on 2023-08-15. Bug #910105.
 media-sound/pragha
+<media-libs/grilo-0.3.16
+<media-plugins/grilo-plugins-0.3.16
+net-libs/dleyna-connector-dbus
+net-libs/dleyna-core
+net-libs/dleyna-renderer
+net-misc/dleyna-server
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-14)
 # Obsolete slots or packages specifically for cucumber 7 which is no
