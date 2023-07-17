@@ -1,0 +1,38 @@
+https://gitlab.gnome.org/GNOME/gupnp/-/commit/884639bd29323cbb8fbd36bc69d08097a2ae2cd1
+https://gitlab.gnome.org/GNOME/gupnp/-/commit/a10c57bd32fbd0dc59eb6703454360ea564e2ffc
+
+From 884639bd29323cbb8fbd36bc69d08097a2ae2cd1 Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Sun, 9 Jul 2023 03:30:47 +0000
+Subject: [PATCH] build: properly spell [provide] in *.wrap files
+
+meson.build:1:0: ERROR: Unexpected "[provides]" section, did you mean "[provide]"?
+--- a/subprojects/gssdp-1.6.wrap
++++ b/subprojects/gssdp-1.6.wrap
+@@ -3,6 +3,6 @@ url = https://gitlab.gnome.org/GNOME/gssdp.git
+ revision = master
+ depth = 1
+  
+-[provides]
++[provide]
+ dependency_name = gssdp-1.6
+ 
+-- 
+GitLab
+
+From a10c57bd32fbd0dc59eb6703454360ea564e2ffc Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Sun, 9 Jul 2023 21:49:47 +0200
+Subject: [PATCH] build: Add missing "s" to wrap file syntax
+
+--- a/subprojects/gssdp-1.6.wrap
++++ b/subprojects/gssdp-1.6.wrap
+@@ -4,5 +4,5 @@ revision = master
+ depth = 1
+  
+ [provide]
+-dependency_name = gssdp-1.6
++dependency_names = gssdp-1.6
+ 
+-- 
+GitLab

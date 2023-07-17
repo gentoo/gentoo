@@ -44,6 +44,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-1.2.0-fix.patch
+)
+
 src_prepare() {
 	default
 	use vala && vala_setup
