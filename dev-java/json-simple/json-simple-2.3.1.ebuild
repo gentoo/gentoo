@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="2.3"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
