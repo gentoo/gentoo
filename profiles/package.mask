@@ -37,12 +37,27 @@
 # Mask impacted kernels vulnerable to StackRot and
 # ones with a memory corruption bug
 # Bug #909829, #794547.
-=sys-kernel/gentoo-sources-6.4.2
-=sys-kernel/gentoo-sources-6.4.1*
-=sys-kernel/gentoo-sources-6.4.0
-=sys-kernel/gentoo-sources-6.3*
-=sys-kernel/gentoo-sources-6.1.37*
+=sys-kernel/gentoo-kernel-6.1.28
+=sys-kernel/gentoo-kernel-6.1.37*
+=sys-kernel/gentoo-kernel-6.3*
 =sys-kernel/gentoo-sources-6.1.28
+=sys-kernel/gentoo-sources-6.1.37*
+=sys-kernel/gentoo-sources-6.3*
+=sys-kernel/gentoo-sources-6.4.0
+=sys-kernel/gentoo-sources-6.4.1*
+=sys-kernel/gentoo-sources-6.4.2
+=sys-kernel/vanilla-kernel-6.1.28
+=sys-kernel/vanilla-kernel-6.1.37*
+=sys-kernel/vanilla-kernel-6.3*
+=sys-kernel/vanilla-sources-6.1.28
+=sys-kernel/vanilla-sources-6.1.37*
+=sys-kernel/vanilla-sources-6.3*
+=sys-kernel/vanilla-sources-6.4.0
+=sys-kernel/vanilla-sources-6.4.1*
+=sys-kernel/vanilla-sources-6.4.2
+=virtual/dist-kernel-6.1.28
+=virtual/dist-kernel-6.1.37*
+=virtual/dist-kernel-6.3*
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-18)
 # Obsolete rubu30-only package, previously a dependency of nanoc. No
