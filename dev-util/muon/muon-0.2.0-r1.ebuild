@@ -45,6 +45,10 @@ python_check_deps() {
 	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
+pkg_setup() {
+	use man && python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 
