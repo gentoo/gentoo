@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>williamh@gentoo.org</email>
-	<name>William Hubbs</name>
-</maintainer>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<stabilize-allarches/>
-<upstream>
-	<remote-id type="gentoo">proj/baselayout</remote-id>
-	<remote-id type="github">gentoo/baselayout</remote-id>
-</upstream>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gentoo">proj/baselayout</remote-id>
+		<remote-id type="github">gentoo/baselayout</remote-id>
+	</upstream>
 </pkgmetadata>
