@@ -14,7 +14,7 @@ HOMEPAGE="https://www.eclipse.org/"
 SRC_URI="https://archive.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${PV}.jar"
 
 LICENSE="EPL-1.0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 SLOT="4.15"
 IUSE=""
 
