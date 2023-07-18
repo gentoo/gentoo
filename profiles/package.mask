@@ -305,11 +305,6 @@ x11-themes/gtk-engines-quartz
 # Removal on 2023-07-18.  Bug #768960, #794547.
 app-crypt/tpm-emulator
 
-# Hans de Graaff <graaff@gentoo.org> (2023-06-18)
-# Obsolete slot. Use the newer slot instead.
-# Masked for removal on 2023-07-18.
-dev-ruby/database_cleaner-active_record:2.0
-
 # Sam James <sam@gentoo.org> (2023-06-16)
 # Please upgrade to >=app-admin/eselect-1.4.22-r1 for a fix to env-update
 # and the files it generates in /etc/env.d: bug #908401, then run env-update
