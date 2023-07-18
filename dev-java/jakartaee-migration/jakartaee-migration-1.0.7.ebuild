@@ -14,7 +14,7 @@ HOMEPAGE="https://tomcat.apache.org"
 SRC_URI="mirror://apache/tomcat/${PN}/v${PV}/source/${P}-src.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 
 # Common dependencies
 # POM: pom.xml
