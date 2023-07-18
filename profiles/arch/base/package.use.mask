@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-07-18)
+# dev-cpp/cppdap is not keyworded in most places
+dev-util/cmake dap
+
 # Sam James <sam@gentoo.org> (2023-07-09)
 # sys-libs/libhugetlbfs is broken w/ newer glibc, bug #806079
 sys-apps/nvme-cli hugepages
@@ -8,10 +12,6 @@ sys-apps/nvme-cli hugepages
 # Michał Górny <mgorny@gentoo.org> (2023-06-24)
 # dev-db/mongodb builds practically only on the authors' computer.
 dev-python/pymongo test-full
-
-# Sam James <sam@gentoo.org> (2023-06-09)
-# dev-cpp/cppdap is not keyworded on most arches
-dev-util/cmake debugger
 
 # Sam James <sam@gentoo.org> (2023-05-15)
 # Unkeyworded dependencies

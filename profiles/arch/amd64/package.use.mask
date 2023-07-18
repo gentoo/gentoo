@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-07-18)
+# dev-cpp/cppdap is not keyworded in most places
+dev-util/cmake -dap
+
 # Marek Szuba <marecki@gentoo.org> (2023-06-29)
 # Now that we globally unmask USE=qt6 for amd64, the mask set
 # in profiles/base/package.use.mask no longer has any effect on this arch.
@@ -25,10 +29,6 @@ dev-python/pyotherside qt6
 # Michał Górny <mgorny@gentoo.org> (2023-06-24)
 # dev-db/mongodb miraculously got keyworded here.
 dev-python/pymongo -test-full
-
-# Sam James <sam@gentoo.org> (2023-06-09)
-# dev-cpp/cppdap is not keyworded on most arches
-dev-util/cmake -debugger
 
 # Sam James <sam@gentoo.org> (2023-05-15)
 # net-libs/rustls-ffi is keyworded here
