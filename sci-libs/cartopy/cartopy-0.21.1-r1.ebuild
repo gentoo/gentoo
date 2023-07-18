@@ -4,10 +4,11 @@
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{9..11} )
 
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 multibuild virtualx
+inherit distutils-r1 multibuild multiprocessing virtualx
 
 MY_PV=${PV/_beta/b}
 MY_P=${PN}-${MY_PV}
