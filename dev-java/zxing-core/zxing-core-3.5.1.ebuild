@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/zxing/zxing/core"
 SRC_URI="https://github.com/zxing/zxing/archive/zxing-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="3"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
