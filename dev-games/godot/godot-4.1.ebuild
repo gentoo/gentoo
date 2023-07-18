@@ -8,7 +8,9 @@ inherit bash-completion-r1 desktop python-any-r1 scons-utils toolchain-funcs xdg
 
 DESCRIPTION="Multi-platform 2D and 3D game engine with a feature-rich editor"
 HOMEPAGE="https://godotengine.org/"
-SRC_URI="https://downloads.tuxfamily.org/godotengine/${PV}/${P}-stable.tar.xz"
+SRC_URI="
+	https://downloads.tuxfamily.org/godotengine/${PV}/${P}-stable.tar.xz
+	https://github.com/godotengine/godot/releases/download/${PV}-stable/${P}-stable.tar.xz"
 S="${WORKDIR}/${P}-stable"
 
 LICENSE="
