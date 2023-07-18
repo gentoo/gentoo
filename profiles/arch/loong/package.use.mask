@@ -188,11 +188,14 @@ mate-base/mate help
 # MSan: https://reviews.llvm.org/D152692 (LLVM 17 since 20230629)
 # DFSan: https://reviews.llvm.org/D140690 (LLVM 17 since 20230703)
 # Profile: https://reviews.llvm.org/D154405 (LLVM 17 since 20230706)
+# XRay: https://reviews.llvm.org/D140727 (LLVM 17 since 20230714)
+# libFuzzer: https://reviews.llvm.org/D140601 (LLVM 17 since 20230718)
 >=sys-libs/compiler-rt-sanitizers-15 -asan
 >=sys-libs/compiler-rt-sanitizers-16 -lsan -safestack -scudo -tsan -ubsan
 >=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230630 -msan
 >=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230705 -dfsan
->sys-libs/compiler-rt-sanitizers-17.0.0_pre20230705 -profile
+>=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230717 -profile -xray
+>sys-libs/compiler-rt-sanitizers-17.0.0_pre20230717 -libfuzzer
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.
