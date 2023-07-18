@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-07-18)
+# Obsolete slot without reverse dependencies. Use the newer slot
+# instead. Masked for removal on 2023-08-18.
+dev-ruby/vcr:5
+
 # Florian Schmaus <flow@gentoo.org> (2023-07-17)
 # Obsolete acct-* packages which became leaf packages.
 # Removal on 2023-08-17.
