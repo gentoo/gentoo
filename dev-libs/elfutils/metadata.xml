@@ -8,6 +8,7 @@
 	<use>
 		<flag name="lzma">Support automatic decompression of LZMA-compressed files and kernel images</flag>
 		<flag name="utils">Install command-line utilities (all the eu-* programs)</flag>
+		<flag name="debuginfod">Enable debuginfod support, both the debuginfod server and the libdebuginfod client library</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:elfutils_project:elfutils</remote-id>
