@@ -14,9 +14,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>I2P is an anonymous network, exposing a simple layer that applications can use to anonymously and securely send messages to each other.</longdescription>
-	<use>
-		<flag name="nls">Adds Native Language Support using GNU gettext.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">i2p/i2p.i2p</remote-id>
 	</upstream>
