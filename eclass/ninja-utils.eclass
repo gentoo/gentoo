@@ -3,8 +3,7 @@
 
 # @ECLASS: ninja-utils.eclass
 # @MAINTAINER:
-# Michał Górny <mgorny@gentoo.org>
-# Mike Gilbert <floppym@gentoo.org>
+# base-system@gentoo.org
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
