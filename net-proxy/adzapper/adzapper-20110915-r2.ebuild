@@ -6,8 +6,8 @@ EAPI=7
 MY_P=${P/zapper/zap}
 
 DESCRIPTION="Redirector for squid to intercept advertising, page counters and web bugs"
-HOMEPAGE="http://adzapper.sourceforge.net/"
-SRC_URI="http://adzapper.sourceforge.net/${MY_P}.tar.gz"
+HOMEPAGE="https://adzapper.sourceforge.net/"
+SRC_URI="https://adzapper.sourceforge.net/${MY_P}.tar.gz"
 S="${WORKDIR}"/${P/per/}
 
 LICENSE="BSD"
