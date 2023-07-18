@@ -3,11 +3,18 @@
 
 EAPI=8
 
-inherit git-r3 bash-completion-r1
+inherit bash-completion-r1
 
-EGIT_REPO_URI="https://github.com/gentoo-perl/genlop.git"
-DESCRIPTION="A nice emerge.log parser"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Perl"
+DESCRIPTION="Nice emerge.log parser"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Perl https://github.com/gentoo-perl/genlop"
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/gentoo-perl/genlop"
+	inherit git-r3
+else
+	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,7 +22,8 @@ SLOT="0"
 DEPEND="
 	dev-lang/perl
 	dev-perl/Date-Manip
-	dev-perl/libwww-perl"
+	dev-perl/libwww-perl
+"
 RDEPEND="${DEPEND}"
 
 src_install() {
