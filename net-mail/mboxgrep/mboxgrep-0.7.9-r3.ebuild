@@ -36,7 +36,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_with dmalloc no yes)
+		$(use_with dmalloc dmalloc $(usex dmalloc yes no))
 }
 
 src_install() {
