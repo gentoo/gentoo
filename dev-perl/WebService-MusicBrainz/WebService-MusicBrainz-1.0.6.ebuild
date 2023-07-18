@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Web service API to MusicBrainz database"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ppc ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-perl/Mojolicious-7.130.0
