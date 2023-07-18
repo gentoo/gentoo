@@ -34,7 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-18)
-# Obsolote slots (for sinatra the slot is ruby30 only) without reverse
+# Obsolete rubu30-only package, previously a dependency of nanoc. No
+# longer maintained upstream. Masked for removal on 2023-08-18.
+dev-ruby/hamster
+
+# Hans de Graaff <graaff@gentoo.org> (2023-07-18)
+# Obsolete slots (for sinatra the slot is ruby30 only) without reverse
 # dependencies. Use the newer slot instead. Masked for removal on
 # 2023-08-18.
 dev-ruby/sinatra:2
