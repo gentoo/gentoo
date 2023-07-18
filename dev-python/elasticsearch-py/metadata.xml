@@ -13,4 +13,5 @@
 		<remote-id type="github">elastic/elasticsearch-py</remote-id>
 		<remote-id type="pypi">elasticsearch</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

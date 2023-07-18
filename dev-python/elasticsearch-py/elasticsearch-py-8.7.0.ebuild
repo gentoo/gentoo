@@ -13,27 +13,13 @@ HOMEPAGE="
 	https://github.com/elastic/elasticsearch-py
 	https://pypi.org/project/elasticsearch/
 "
-# Use bundled jdk for the test elasticsearch as there is no convenient way to ensure system jdk17 is used
-SRC_URI="
-	https://github.com/elastic/elasticsearch-py/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
-	test? (
-		amd64? (
-			elibc_glibc? (
-				https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${PV}-linux-x86_64.tar.gz
-			)
-		)
-	)
-"
+SRC_URI="https://github.com/elastic/elasticsearch-py/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="amd64 ~x86"
 
-RESTRICT="
-	!amd64? ( test )
-	!elibc_glibc? ( test )
-	!test? ( test )
-"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/aiohttp-3[${PYTHON_USEDEP}] <dev-python/aiohttp-4[${PYTHON_USEDEP}]
@@ -60,6 +46,9 @@ EPYTEST_IGNORE=(
 	# Counting deprecation warnings from python is bound to fail even if all are fixed in this package
 	# Not worth it
 	"test_elasticsearch/test_client/test_deprecated_options.py"
+	# Running daemon for tests is finicky and upstream CI fails at it as well
+	"test_elasticsearch/test_server/"
+	"test_elasticsearch/test_async/test_server/"
 )
 
 distutils_enable_sphinx docs/sphinx dev-python/sphinx-rtd-theme
@@ -71,74 +60,4 @@ src_prepare() {
 	sed -i '/[tool:pytest]/,/^$/ { s/addopts.*/asyncio_mode = auto/ }' setup.cfg || die
 
 	default
-}
-
-src_test() {
-	local es_port="25124"
-
-	export ES_DIR="${WORKDIR}/elasticsearch-${PV}"
-	export ES_INSTANCE="gentoo-es-py-test"
-	export ELASTIC_PASSWORD="changeme"
-	export ELASTICSEARCH_URL="https://elastic:${ELASTIC_PASSWORD}@localhost:${es_port}"
-
-	# Default behavior sets these depending on available memory.
-	# On my system its not reliable and leads to an instant OOM :D
-	# So lets add a reasonable limit
-	export ES_JAVA_OPTS="-Xmx4g"
-
-	cat > "${ES_DIR}/config/elasticsearch.yml" <<-EOF || die
-		# Run elasticsearch on custom port
-		http.port: ${es_port}
-		cluster.routing.allocation.disk.threshold_enabled: false
-		bootstrap.memory_lock: true
-		node.attr.testattr: test
-		repositories.url.allowed_urls: http://snapshot.test*
-		action.destructive_requires_name: false
-		ingest.geoip.downloader.enabled: false
-
-		xpack.license.self_generated.type: basic
-		xpack.security.enabled: true
-		xpack.security.http.ssl.enabled: false
-	EOF
-
-	# Set password in keystore
-	printf "y\n${ELASTIC_PASSWORD}\n" | ${ES_DIR}/bin/elasticsearch-keystore add "bootstrap.password" || die
-
-	local es_instance="gentoo-py-test"
-	local es_log="${ES_DIR}/logs/${es_instance}.log"
-	local es_temp="${T}/es_temp"
-	local pid="${ES_DIR}/elasticsearch.pid"
-
-	mkdir ${es_temp} || die
-
-	ebegin "Starting Elasticsearch for ${EPYTHON}"
-
-	# start local instance of elasticsearch
-	"${ES_DIR}"/bin/elasticsearch -d -p "${pid}" \
-			   -Ecluster.name="${es_instance}" -Epath.repo="${es_temp}" || die
-
-	local i es_started=0
-	for i in {1..20}; do
-		grep -q "started" ${es_log} 2> /dev/null
-		if [[ $? -eq 0 ]]; then
-			einfo "Elasticsearch started"
-			es_started=1
-			eend 0
-			break
-		elif grep -q 'BindException\[Address already in use\]' "${es_log}" 2>/dev/null; then
-			eend 1
-			eerror "Elasticsearch already running"
-			die "Cannot start Elasticsearch for tests"
-		else
-			einfo "Waiting for Elasticsearch"
-			sleep 2
-			continue
-		fi
-	done
-
-	[[ ${es_started} -eq 0 ]] && die "Elasticsearch failed to start"
-
-	distutils-r1_src_test
-
-	pkill -F ${pid} || die
 }
