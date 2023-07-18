@@ -9,4 +9,7 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">gentoo-perl/genlop</remote-id>
+	</upstream>
 </pkgmetadata>
