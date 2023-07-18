@@ -3,8 +3,7 @@
 
 # @ECLASS: meson.eclass
 # @MAINTAINER:
-# William Hubbs <williamh@gentoo.org>
-# Mike Gilbert <floppym@gentoo.org>
+# base-system@gentoo.org
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
