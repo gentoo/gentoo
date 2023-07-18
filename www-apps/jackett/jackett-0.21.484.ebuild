@@ -6,9 +6,18 @@ EAPI=8
 inherit systemd
 
 SRC_URI="
-	amd64? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxAMDx64.tar.gz -> "${PV}-amd64.tar.gz" )
-	arm? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxARM32.tar.gz -> "${PV}-amd.tar.gz" )
-	arm64? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxARM64.tar.gz -> "${PV}-arm64.tar.gz" )
+	amd64? (
+		elibc_glibc? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxAMDx64.tar.gz -> ${P}-x64.tar.gz )
+		elibc_musl? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxMuslAMDx64.tar.gz -> ${P}-musl-x64.tar.gz )
+	)
+	arm? (
+		elibc_glibc? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxARM32.tar.gz -> ${P}-arm.tar.gz )
+		elibc_musl? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxMuslARM32.tar.gz -> ${P}-musl-arm.tar.gz )
+	)
+	arm64? (
+		elibc_glibc? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxARM64.tar.gz -> ${P}-arm64.tar.gz )
+		elibc_musl? ( https://github.com/Jackett/Jackett/releases/download/v${PV}/Jackett.Binaries.LinuxMuslARM64.tar.gz -> ${P}-musl-arm64.tar.gz )
+	)
 "
 
 DESCRIPTION="API Support for your favorite torrent trackers"
