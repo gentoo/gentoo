@@ -22,6 +22,7 @@ IUSE="doc lzma"
 
 RDEPEND="
 	app-arch/bzip2
+	dev-libs/openssl:=
 	dev-libs/tinyxml
 	lzma? ( app-arch/xz-utils )
 	media-libs/freetype:2
