@@ -6,8 +6,8 @@ EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="Encrypts data from stdin to stdout"
-HOMEPAGE="http://loop-aes.sourceforge.net"
-SRC_URI="http://loop-aes.sourceforge.net/aespipe/${PN}-v${PV}.tar.bz2"
+HOMEPAGE="https://loop-aes.sourceforge.net"
+SRC_URI="https://loop-aes.sourceforge.net/aespipe/${PN}-v${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
