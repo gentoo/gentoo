@@ -13,7 +13,7 @@ HOMEPAGE="https://cache2k.org"
 SRC_URI="https://github.com/cache2k/cache2k/archive/v${PV}.tar.gz -> cache2k-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
