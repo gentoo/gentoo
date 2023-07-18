@@ -6,9 +6,18 @@ EAPI=8
 inherit systemd
 
 SRC_URI="
-	amd64? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-core-x64.tar.gz )
-	arm? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-core-arm.tar.gz )
-	arm64? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-core-arm64.tar.gz )
+	amd64? (
+		elibc_glibc? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-core-x64.tar.gz )
+		elibc_musl? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-musl-core-x64.tar.gz )
+	)
+	arm? (
+		elibc_glibc? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-core-arm.tar.gz )
+		elibc_musl? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-musl-core-arm.tar.gz )
+	)
+	arm64? (
+		elibc_glibc? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-core-arm64.tar.gz )
+		elibc_musl? ( https://github.com/Readarr/Readarr/releases/download/v${PV}/Readarr.develop.${PV}.linux-musl-core-arm64.tar.gz )
+	)
 "
 
 DESCRIPTION="An ebook and audiobook collection manager for Usenet and BitTorrent users"
