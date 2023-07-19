@@ -50,8 +50,6 @@ DEPEND="
 "
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
-# app-portage/gemato goes without PYTHON_USEDEP since we're calling
-# the executable.
 RDEPEND="
 	acct-user/portage
 	app-arch/zstd
