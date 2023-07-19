@@ -46,7 +46,13 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	verify-sig? ( >=sec-keys/openpgp-keys-libarchive-20221209 )
+	elibc_musl? ( sys-libs/queue-standalone )
 "
+
+# Bug #910552 Only required for version 3.7.0
+PATCHES=(
+	"${FILEDIR}/{P}-f_namemax-fix.patch"
+)
 
 # false positives (checks for libc-defined hash functions)
 QA_CONFIG_IMPL_DECL_SKIP=(
