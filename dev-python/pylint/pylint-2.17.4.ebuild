@@ -37,11 +37,8 @@ RDEPEND="
 	>=dev-python/platformdirs-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/tomlkit-0.10.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.9)
-	$(python_gen_cond_dep '
 		>=dev-python/tomli-1.1.0[${PYTHON_USEDEP}]
-	' 3.9 3.10)
+	' 3.10)
 "
 BDEPEND="
 	test? (
