@@ -13,7 +13,7 @@ SLOT="0"
 # pkcs11 default enabled as it's a small dep often already present by libnma users, and it was default enabled as IUSE=+gcr in nm-applet before
 IUSE="gtk-doc +introspection +pkcs11 vala"
 REQUIRED_USE="vala? ( introspection )"
-KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 DEPEND="
 	>=gui-libs/gtk-4.0:4
