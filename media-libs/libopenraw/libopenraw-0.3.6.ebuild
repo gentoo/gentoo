@@ -13,7 +13,7 @@ SRC_URI="https://${PN}.freedesktop.org/download/${P}.tar.xz"
 # MPL-2.0 for mp4parse (https://gitlab.freedesktop.org/libopenraw/libopenraw/-/issues/15)
 LICENSE="GPL-3 LGPL-3 MPL-2.0"
 SLOT="0/9"
-KEYWORDS="amd64 arm arm64 ~mips ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~mips ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="gtk test"
 RESTRICT="!test? ( test )"
 
