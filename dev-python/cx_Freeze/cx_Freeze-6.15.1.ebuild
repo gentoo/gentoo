@@ -24,9 +24,6 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 
 RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/importlib-metadata[${PYTHON_USEDEP}]
-	' 3.9)
 	dev-util/patchelf
 	virtual/libcrypt:=
 "
