@@ -41,9 +41,6 @@ RDEPEND="
 	>=dev-python/sphinxcontrib-serializinghtml-1.1.5[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-qthelp[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib-metadata-4.8[${PYTHON_USEDEP}]
-	' 3.8 3.9)
 	latex? (
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
