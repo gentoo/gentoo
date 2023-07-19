@@ -15,6 +15,8 @@
 		instead of downloading binary blob from Mozilla at runtime</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
 		for faster binaries. This option will double the compile time.</flag>
+	<flag name="pulseaudio">Add sound server support via media-libs/libpulse (may be PulseAudio or
+		Pipewire, or apulse if installed)</flag>
 	<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg>
 		and <pkg>media-libs/libaom</pkg> library instead of bundled.</flag>
