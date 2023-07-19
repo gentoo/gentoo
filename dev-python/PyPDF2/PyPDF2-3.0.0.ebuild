@@ -31,11 +31,6 @@ RESTRICT="test"
 # 150+ tests require network, too many to deselect
 PROPERTIES="test_network"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.8 3.9)
-"
 BDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	test? (
