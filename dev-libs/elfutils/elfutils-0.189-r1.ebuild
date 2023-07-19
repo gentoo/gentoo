@@ -78,10 +78,6 @@ src_configure() {
 	# bug #407135
 	use test && append-flags -g
 
-	# Symbol aliases are implemented as asm statements.
-	# Will require porting: https://gcc.gnu.org/PR48200
-	filter-lto
-
 	multilib-minimal_src_configure
 }
 
