@@ -44,9 +44,6 @@ PDEPEND="
 BDEPEND="
 	test? (
 		${PDEPEND}
-		$(python_gen_cond_dep '
-			dev-python/pathlib2[${PYTHON_USEDEP}]
-		' 3.9)
 	)
 "
 
