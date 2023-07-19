@@ -29,10 +29,7 @@ RDEPEND="
 
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
-	' 3.{9..10})
-	$(python_gen_cond_dep '
-		>=dev-python/importlib-metadata-3.6[${PYTHON_USEDEP}]
-	' 3.9)
+	' 3.10)
 "
 BDEPEND="
 	${RDEPEND}
