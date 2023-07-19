@@ -27,10 +27,7 @@ RDEPEND="
 	>=dev-python/platformdirs-2[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-1.1.0[${PYTHON_USEDEP}]
-	' 3.{9..10})
-	$(python_gen_cond_dep '
-		>=dev-python/typing-extensions-3.10.0.0[${PYTHON_USEDEP}]
-	' 3.9)
+	' 3.10)
 "
 BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
