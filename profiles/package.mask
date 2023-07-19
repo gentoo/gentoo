@@ -54,6 +54,9 @@ dev-util/cucumber-cucumber-expressions:14
 =sys-kernel/gentoo-kernel-6.1.28
 =sys-kernel/gentoo-kernel-6.1.37*
 =sys-kernel/gentoo-kernel-6.3*
+=sys-kernel/gentoo-kernel-bin-6.1.28
+=sys-kernel/gentoo-kernel-bin-6.1.37*
+=sys-kernel/gentoo-kernel-bin-6.3*
 =sys-kernel/gentoo-sources-6.1.28
 =sys-kernel/gentoo-sources-6.1.37*
 =sys-kernel/gentoo-sources-6.4.0
