@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="lto">Build with Link Time Optimization (LTO)</flag>
-		<flag name="pipewire">Enable support for the <pkg>media-video/pipewire</pkg> audio backend</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Genymobile/scrcpy</remote-id>
