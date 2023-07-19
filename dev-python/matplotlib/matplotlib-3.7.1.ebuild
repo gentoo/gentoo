@@ -53,9 +53,6 @@ RDEPEND="
 	media-libs/libpng:0
 	>=media-libs/qhull-2013:=
 	virtual/imagemagick-tools[jpeg,tiff]
-	$(python_gen_cond_dep '
-		dev-python/importlib-resources[${PYTHON_USEDEP}]
-	' 3.9)
 	cairo? (
 		dev-python/cairocffi[${PYTHON_USEDEP}]
 	)
