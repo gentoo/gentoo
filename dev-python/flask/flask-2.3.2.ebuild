@@ -34,9 +34,6 @@ RDEPEND="
 	>=dev-python/itsdangerous-2.1.2[${PYTHON_USEDEP}]
 	>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
 	>=dev-python/werkzeug-2.3.3[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib-metadata-3.6.0[${PYTHON_USEDEP}]
-	' 3.9)
 "
 BDEPEND="
 	test? (
