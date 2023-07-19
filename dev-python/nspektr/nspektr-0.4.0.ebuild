@@ -24,9 +24,6 @@ RDEPEND="
 	>=dev-python/jaraco-functools-3.5.0-r2[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-8.12.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3-r2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib-metadata-4.11.2[${PYTHON_USEDEP}]
-	' 3.8 3.9)
 "
 
 distutils_enable_tests pytest
