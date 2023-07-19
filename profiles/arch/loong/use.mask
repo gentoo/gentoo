@@ -1,6 +1,11 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
+# Temporary masks; to be lifted after leaving wd40 status.
+imagequant
+gnome-shell
+
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-11)
 # dev-util/babeltrace fails tests on loong
 babeltrace
