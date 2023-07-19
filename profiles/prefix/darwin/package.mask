@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Benda Xu <heroxbd@gentoo.org> (2023-07-19)
+# Darwin does not use ELF.
+dev-util/patchelf
+
 # Fabian Groffen <grobian@gentoo.org> (2014-01-14)
 # util-linux has no business on Darwin systems
 sys-apps/util-linux
