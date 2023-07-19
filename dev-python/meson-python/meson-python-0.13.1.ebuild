@@ -28,15 +28,12 @@ RDEPEND="
 	dev-util/patchelf
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
-	' 3.9 3.10)
+	' 3.10)
 "
 BDEPEND="
 	>=dev-python/cython-0.29.34[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/typing-extensions-3.7.4[${PYTHON_USEDEP}]
-		' 3.9)
 	)
 "
 
