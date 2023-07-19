@@ -5,6 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_EXT=1
 
 inherit desktop flag-o-matic xdg distutils-r1
 
@@ -56,24 +57,25 @@ python_prepare_all() {
 
 	append-cxxflags -std=c++0x
 
-	use !netcdf && mydistutilsargs=( --no-vmd-plugins )
-
 	distutils-r1_python_prepare_all
+}
+
+python_configure_all() {
+	use !netcdf && DISTUTILS_ARGS=( --no-vmd-plugins )
 }
 
 python_install() {
 	distutils-r1_python_install \
 		--pymol-path="${EPREFIX}/usr/share/pymol"
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
 
 	sed \
 		-e '1i#!/usr/bin/env python' \
 		"${D}/$(python_get_sitedir)"/pymol/__init__.py > "${T}"/${PN} || die
+	python_doscript "${T}"/${PN}
+}
 
-	python_foreach_impl python_doscript "${T}"/${PN}
+python_install_all() {
+	distutils-r1_python_install_all
 
 	# These environment variables should not go in the wrapper script, or else
 	# it will be impossible to use the PyMOL libraries from Python.
