@@ -28,9 +28,6 @@ RDEPEND="
 	>=dev-python/requests-2.28[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-1.21[${PYTHON_USEDEP}]
 	<dev-python/jupyter-server-3[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib-metadata-4.8.3[${PYTHON_USEDEP}]
-	' 3.9)
 "
 
 BDEPEND="
