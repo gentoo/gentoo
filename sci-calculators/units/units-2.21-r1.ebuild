@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="FDL-1.3 GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+units-cur"
 REQUIRED_USE="units-cur? ( ${PYTHON_REQUIRED_USE} )"
 
