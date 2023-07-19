@@ -33,6 +33,7 @@ src_configure() {
 
 	[[ ${CHOST} == *-solaris2.11 ]] && append-cppflags -DHAS_PAD_MUTEX
 
+	append-cppflags -DHAS_STRFTIME
 	local myeconfargs=(
 		$(use_with rpc libtirpc)
 	)
