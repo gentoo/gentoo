@@ -24,9 +24,6 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc 
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.8 3.9)
 "
 BDEPEND="
 	test? (
