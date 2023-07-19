@@ -1,0 +1,18 @@
+Virtualbox 7.x will only build a lib named VBoxPython3.so, regardless of the
+actual python version used when compiling.  Remove VBoxPython3m.so, we don't
+use it.
+
+--- a/src/libs/xpcom18a4/python/Makefile.kmk
++++ b/src/libs/xpcom18a4/python/Makefile.kmk
+@@ -693,11 +693,6 @@
+    VBoxPython3_EXTENDS   = VBoxPythonBase
+    VBoxPython3_DEFS      = $(filter-out VBOX_PYXPCOM_VERSIONED,$(VBoxPythonBase_DEFS)) Py_LIMITED_API=0x03030000
+    VBoxPython3_INCS      = $(VBoxPythonBase_INCS) $(VBOX_PYTHON$(VBOX_PYTHON_LIMITED_API_VER)_INC)
+-
+-   DLLS += VBoxPython3m
+-   VBoxPython3m_EXTENDS  = VBoxPythonBase_m
+-   VBoxPython3m_DEFS     = $(filter-out VBOX_PYXPCOM_VERSIONED,$(VBoxPythonBase_m_DEFS)) Py_LIMITED_API=0x03030000
+-   VBoxPython3m_INCS     = $(VBoxPythonBase_m_INCS) $(VBOX_PYTHON$(VBOX_PYTHON_LIMITED_API_VER)_INC)
+   endif
+  endif # VBOX_WITH_PYTHON_LIMITED_API
+ 
