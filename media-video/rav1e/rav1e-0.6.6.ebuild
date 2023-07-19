@@ -248,7 +248,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/xiph/rav1e/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="BSD-2"
