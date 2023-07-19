@@ -11,7 +11,7 @@ SRC_URI="https://github.com/M0Rf30/android-udev-rules/archive/refs/tags/${PV}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 # No tests
 RESTRICT="test"
