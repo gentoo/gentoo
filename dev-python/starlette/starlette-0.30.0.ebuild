@@ -34,9 +34,6 @@ RDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/python-multipart[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/typing-extensions-3.10.0[${PYTHON_USEDEP}]
-	' 3.8 3.9)
 "
 BDEPEND="
 	test? (
