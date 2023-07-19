@@ -64,7 +64,7 @@ BDEPEND="
 	>=dev-python/meson-python-0.12.1[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.10.4[${PYTHON_USEDEP}]
 	>=dev-util/meson-1.1.0
-	dev-util/patchelf
+	!kernel_Darwin? ( dev-util/patchelf )
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
 	fortran? ( dev-python/pythran[${PYTHON_USEDEP}] )
