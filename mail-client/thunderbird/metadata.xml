@@ -34,5 +34,7 @@
 	<flag name="system-python-libs">Use system's python site instead of bundled python libraries</flag>
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
 		instead of bundled.</flag>
+	<flag name="wifi">Enable necko-wifi for NetworkManager integration, and access point MAC
+		address scanning for better precision with opt-in geolocation services</flag>
 </use>
 </pkgmetadata>
