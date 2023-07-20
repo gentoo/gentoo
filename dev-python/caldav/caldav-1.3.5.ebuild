@@ -29,5 +29,10 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/tzlocal[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
