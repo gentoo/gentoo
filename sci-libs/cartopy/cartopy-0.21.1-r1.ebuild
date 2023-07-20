@@ -81,5 +81,5 @@ python_test() {
 	cd "${BUILD_DIR}" || die
 
 	# Drop all tests needing network access
-	virtx epytest -m "not network and not natural_earth" || die "test failed"
+	virtx epytest -n "$(makeopts_jobs)" -m "not network and not natural_earth" || die "test failed"
 }
