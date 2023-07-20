@@ -13,6 +13,6 @@
 	</longdescription>
 	<upstream>
 		<doc>https://github.com/alacritty/alacritty/wiki</doc>
-		<remote-id type="github">jwilm/alacritty</remote-id>
+		<remote-id type="github">alacritty/alacritty</remote-id>
 	</upstream>
 </pkgmetadata>
