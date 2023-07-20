@@ -60,13 +60,15 @@ src_prepare() {
 src_compile() {
 	tc-export CC
 
+	# do not pass in array to keep the makefile.inc's += flags
+	local -x CPUOPTIMIZATIONS=${CFLAGS}
+
 	local emakeargs=(
 		-C source/darkplaces
 		DEFAULT_SNDAPI=$(usex alsa ALSA OSS)
 		DP_FS_BASEDIR="${EPREFIX}"/usr/share/${PN}
 		DP_LINK_ODE=$(usex ode shared no)
 		STRIP=:
-		CPUOPTIMIZATIONS="${CFLAGS}"
 		GENTOO_LDFLAGS="${LDFLAGS}"
 	)
 
