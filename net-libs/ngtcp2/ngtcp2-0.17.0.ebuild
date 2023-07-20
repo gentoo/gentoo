@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/ngtcp2/ngtcp2/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~hppa ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~riscv ~x86"
 fi
 
 DESCRIPTION="Implementation of the IETF QUIC Protocol"
