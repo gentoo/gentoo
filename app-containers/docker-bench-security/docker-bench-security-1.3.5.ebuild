@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,11 +14,11 @@ KEYWORDS="~amd64"
 RDEPEND=">=app-containers/docker-1.10"
 
 src_install() {
-dobin "${FILESDIR}/docker-bench-security"
-exeinto /usr/lib/${PN}
-doexe ${PN}.sh
-insinto /usr/lib/${PN}
-doins -r *lib.sh tests
+	dobin "${FILESDIR}/docker-bench-security"
+	exeinto /usr/lib/${PN}
+	doexe ${PN}.sh
+	insinto /usr/lib/${PN}
+	doins -r *lib.sh tests
 	dodoc -r benchmark_log.png CONTRIBUTING.md distros docker-compose.yml \
 		Dockerfile MAINTAINERS README.md
 }
