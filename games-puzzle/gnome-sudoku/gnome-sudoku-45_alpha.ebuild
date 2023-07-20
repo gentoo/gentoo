@@ -15,10 +15,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 RDEPEND="
 	>=dev-libs/glib-2.40:2
 	dev-libs/libgee:0.8=[introspection]
-	dev-libs/json-glib
-	>=dev-libs/qqwing-1.3.4:=
 	>=gui-libs/gtk-4.10.0[introspection]
 	>=gui-libs/libadwaita-1.4_alpha[introspection]
+	dev-libs/json-glib
+	>=dev-libs/qqwing-1.3.4:=
 	x11-libs/gdk-pixbuf:2[introspection]
 	x11-libs/pango[introspection]
 "

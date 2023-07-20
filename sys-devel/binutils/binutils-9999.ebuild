@@ -9,7 +9,7 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 LICENSE="GPL-3+"
-IUSE="cet doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla zstd"
+IUSE="cet debuginfod doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla zstd"
 
 # Variables that can be set here  (ignored for live ebuilds)
 # PATCH_VER          - the patchset version
@@ -52,6 +52,9 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 RDEPEND="
 	>=sys-devel/binutils-config-3
 	sys-libs/zlib
+	debuginfod? (
+		dev-libs/elfutils[debuginfod(-)]
+	)
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}"
@@ -287,9 +290,7 @@ src_configure() {
 		# {native,cross}/binutils, binutils-libs. bug #666100
 		--with-extra-soversion-suffix=gentoo-${CATEGORY}-${PN}-$(usex multitarget mt st)
 
-		# Avoid automagic dependency on (currently prefix) systems
-		# systems with debuginfod library, bug #754753
-		--without-debuginfod
+		$(use_with debuginfod)
 
 		# Avoid automagic dev-libs/msgpack dep, bug #865875
 		--without-msgpack

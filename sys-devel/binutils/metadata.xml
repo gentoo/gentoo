@@ -13,6 +13,7 @@
 		<flag name="pgo">Build binutils with Profile Guided Optimization (PGO) and LTO</flag>
 		<flag name="plugins">Enable plugin support in tools</flag>
 		<flag name="multitarget">Adds support to binutils for cross compiling (does not work with gas)</flag>
+		<flag name="debuginfod">Enable debuginfod support via <pkg>dev-libs/elfutils</pkg> libdebuginfod</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:binutils</remote-id>

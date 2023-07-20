@@ -39,7 +39,6 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "test? (
 	dev-ruby/bundler
-	dev-ruby/mail
 	<dev-ruby/minitest-5.16
 	dev-ruby/mocha
 	dev-ruby/propshaft

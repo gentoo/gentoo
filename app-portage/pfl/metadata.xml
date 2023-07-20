@@ -11,6 +11,7 @@
 			<email>bugs@portagefilelist.de</email>
 			<name>Daniel Buschke</name>
 		</maintainer>
+		<remote-id type="github">portagefilelist/client</remote-id>
 	</upstream>
 	<use>
 		<flag name="network-cron">Adds a cron job which does a weekly submit of the package database</flag>

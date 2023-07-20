@@ -136,7 +136,7 @@ S="${WORKDIR}"/${MY_P}/cli
 
 LICENSE="Apache-2.0 BSD-2 CC0-1.0 ISC MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 # Test seems to require files (grammar definitions) that we don't have.
 RESTRICT="test"

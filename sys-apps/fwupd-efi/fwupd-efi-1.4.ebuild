@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit meson python-any-r1 toolchain-funcs
+inherit meson python-any-r1 secureboot toolchain-funcs
 
 DESCRIPTION="EFI executable for fwupd"
 HOMEPAGE="https://fwupd.org"
@@ -39,6 +39,11 @@ python_check_deps() {
 	python_has_version "dev-python/pefile[${PYTHON_USEDEP}]"
 }
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+	secureboot_pkg_setup
+}
+
 src_prepare() {
 	default
 
@@ -57,4 +62,9 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+	secureboot_auto_sign
 }

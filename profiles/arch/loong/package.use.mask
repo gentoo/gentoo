@@ -1,6 +1,27 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
+# Temporary masks; to be lifted after leaving wd40 status.
+gnome-base/nautilus previewer
+mate-extra/caja-extensions gajim
+x11-misc/xscreensaver gdm
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
+# dev-lang/spidermonkey still waiting on upstream lld support
+app-crypt/libsecret test-rust
+dev-util/glade gjs
+
+# dev-python/watchfiles has too old target-lexicon without loong support
+dev-python/uvicorn test-rust
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
+# Examples used by tests have their libc crate Cargo.locked to 0.2.121, that
+# predated Rust's loong support. The package itself works as intended.
+# The atom should be made more accurate once a newer version is released that
+# contains bumped libc deps.
+dev-python/setuptools-rust test
+
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-11)
 # Upstream lacks pmu-events definition file for loong.
 dev-util/perf python

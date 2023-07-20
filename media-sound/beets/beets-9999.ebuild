@@ -54,7 +54,7 @@ BDEPEND="
 			dev-db/sqlite[icu]
 			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 			dev-python/bluelet[${PYTHON_USEDEP}]
-			dev-python/discogs-client[${PYTHON_USEDEP}]
+			dev-python/python3-discogs-client[${PYTHON_USEDEP}]
 			dev-python/flask[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/pyacoustid[${PYTHON_USEDEP}]
@@ -108,7 +108,7 @@ python_install_all() {
 
 	optfeature "badfiles support" "media-libs/flac media-sound/mp3val"
 	optfeature "chromaprint support" "dev-python/pyacoustid media-libs/chromaprint[tools]"
-	optfeature "discogs support" dev-python/discogs-client
+	optfeature "discogs support" dev-python/python3-discogs-client
 	optfeature "ffmpeg support" media-video/ffmpeg[encode]
 	optfeature "gstreamer support" "media-libs/gst-plugins-bad media-libs/gst-plugins-good"
 	optfeature "icu support" dev-db/sqlite[icu]

@@ -12,12 +12,23 @@
 # This eclass provides various utility functions related to Distribution
 # Kernels.
 
+# @ECLASS_VARIABLE: KERNEL_IUSE_SECUREBOOT
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-null value, inherits secureboot.eclass
+# and allows signing of generated kernel images.
+
 if [[ ! ${_DIST_KERNEL_UTILS} ]]; then
 
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+	inherit secureboot
+fi
 
 # @FUNCTION: dist-kernel_build_initramfs
 # @USAGE: <output> <version>
@@ -104,7 +115,7 @@ dist-kernel_install_kernel() {
 	if [[ ${magic} == MZ ]]; then
 		einfo "Combined UEFI kernel+initramfs executable found"
 		# install the combined executable in place of kernel
-		image=${initrd}.efi
+		image=${initrd%/*}/uki.efi
 		mv "${initrd}" "${image}" || die
 		# We moved the generated initrd, prevent dracut from running again
 		# https://github.com/dracutdevs/dracut/pull/2405
@@ -120,6 +131,11 @@ dist-kernel_install_kernel() {
 		done
 		shopt -u nullglob
 		export KERNEL_INSTALL_PLUGINS="${KERNEL_INSTALL_PLUGINS} ${plugins[@]}"
+	fi
+
+	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+		# Kernel-install requires uki's are named uki.efi, sign in-place
+		secureboot_sign_efi_file "${image}" "${image}"
 	fi
 
 	ebegin "Installing the kernel via installkernel"

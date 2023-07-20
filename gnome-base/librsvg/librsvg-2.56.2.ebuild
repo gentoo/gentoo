@@ -320,7 +320,7 @@ SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 LICENSE="Apache-2.0 BSD CC0-1.0 LGPL-2.1+ ISC MIT MPL-2.0 Unicode-DFS-2016"
 
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 IUSE="gtk-doc +introspection +vala"
 REQUIRED_USE="

@@ -13,7 +13,7 @@ SRC_URI="https://github.com/stuarthayhurst/alphabetical-grid-extension/archive/r
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

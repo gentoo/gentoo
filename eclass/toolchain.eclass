@@ -998,7 +998,13 @@ toolchain_src_configure() {
 			fi
 		fi
 
-		confgcc+=( --disable-bootstrap )
+		confgcc+=(
+			# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100289
+			# TOOD: Find a way to disable this just for stage1 cross?
+			--disable-gcov
+
+			--disable-bootstrap
+		)
 	else
 		if tc-is-static-only ; then
 			confgcc+=( --disable-shared )
@@ -1298,6 +1304,7 @@ toolchain_src_configure() {
 		)
 	fi
 
+	# TODO: Ignore RCs here (but TOOLCHAIN_IS_RC isn't yet an eclass var)
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
 		# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
 		# without corresponding ebuild changes.

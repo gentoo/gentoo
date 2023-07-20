@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-01-01)
 # unmask synaptics input driver
 -input_devices_synaptics

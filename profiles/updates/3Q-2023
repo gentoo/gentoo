@@ -1,2 +1,3 @@
 move dev-python/charset_normalizer dev-python/charset-normalizer
 move dev-python/reedsolomon dev-python/reedsolo
+move dev-python/discogs-client dev-python/python3-discogs-client

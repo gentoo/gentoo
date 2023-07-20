@@ -16,7 +16,7 @@ DESCRIPTION="Module for reading tags of MP3 Audio files"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="
 	dev-perl/MP3-Info

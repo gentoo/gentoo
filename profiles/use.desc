@@ -278,6 +278,7 @@ screencast - Enable support for remote desktop and screen cast using PipeWire
 sctp - Support for Stream Control Transmission Protocol
 sdl - Add support for Simple Direct Layer (media library)
 seccomp - Enable seccomp (secure computing mode) to perform system call filtering at runtime to increase security of programs
+secureboot - Automatically sign efi executables using user specified key
 selinux - !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
 semantic-desktop - Cross-KDE support for semantic search and information retrieval
 session - Add persistent session support
@@ -327,6 +328,7 @@ tk - Add support for Tk GUI toolkit
 truetype - Add support for FreeType and/or FreeType2 fonts
 udev - Enable virtual/udev integration (device discovery, power and storage device support, etc)
 udisks - Enable storage management support (automounting, volume monitoring, etc)
+uefi - Enable support for the Unified Extensible Firmware Interface
 unicode - Add support for Unicode
 unwind - Add support for call stack unwinding and function name resolution
 upnp - Enable UPnP port mapping support

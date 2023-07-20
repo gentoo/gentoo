@@ -59,7 +59,7 @@ CDEPEND="
 		dev-python/websockets[${PYTHON_USEDEP}]
 	')
 	lm-sensors? ( sys-apps/lm-sensors:= )
-	pcre? ( dev-libs/libpcre )
+	pcre? ( dev-libs/libpcre2:= )
 	suid? ( sys-libs/libcap )
 	ubertooth? ( net-wireless/ubertooth )
 	"
@@ -119,6 +119,7 @@ src_configure() {
 		$(use_enable libusb libusb) \
 		$(use_enable libusb wifi-coconut) \
 		$(use_enable pcre) \
+		$(use_enable pcre require-pcre2) \
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
 		$(use_enable ubertooth) \
