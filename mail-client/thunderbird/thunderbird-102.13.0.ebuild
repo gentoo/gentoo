@@ -5,7 +5,7 @@ EAPI=8
 
 FIREFOX_PATCHSET="firefox-102esr-patches-10tb.tar.xz"
 
-LLVM_MAX_SLOT=15
+LLVM_MAX_SLOT=16
 
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ncurses,sqlite,ssl"
@@ -82,6 +82,18 @@ TB_ONLY_DEPEND="!<x11-plugins/enigmail-2.2
 	system-librnp? ( dev-util/librnp )"
 BDEPEND="${PYTHON_DEPS}
 	|| (
+	(
+			sys-devel/clang:16
+			sys-devel/llvm:16
+			clang? (
+				|| (
+					sys-devel/lld:16
+					sys-devel/mold
+				)
+				virtual/rust:0/llvm-16
+				pgo? ( =sys-libs/compiler-rt-sanitizers-16*[profile] )
+			)
+		)
 		(
 			sys-devel/clang:15
 			sys-devel/llvm:15
