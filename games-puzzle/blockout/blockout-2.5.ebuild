@@ -28,8 +28,10 @@ PATCHES="${FILESDIR}"/${P}-datadir.patch
 
 src_compile() {
 	GAME_DATADIR="/usr/share/${PN}"
-	emake DESTDIR="${D}" -C ImageLib/src
-	emake DESTDIR="${D}" -C BlockOut GAME_DATA_PREFIX="${GAME_DATADIR}"
+	#emake DESTDIR="${D}" -C ImageLib/src
+	emake -C ImageLib/src
+	#emake DESTDIR="${D}" -C BlockOut GAME_DATA_PREFIX="${GAME_DATADIR}"
+	emake -C BlockOut GAME_DATA_PREFIX="${GAME_DATADIR}"
 }
 
 src_install() {
