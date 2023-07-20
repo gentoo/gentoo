@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="openssl" restrict="&lt;net-fs/s3fs-1.92">Enable <pkg>dev-libs/openssl</pkg> crypto backend</flag>
 		<flag name="nss">Enable <pkg>dev-libs/nss</pkg> crypto backend</flag>
 		<flag name="gnutls">Enable <pkg>net-libs/gnutls</pkg> crypto backend</flag>
 		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> network functions with GnuTLS.</flag>
