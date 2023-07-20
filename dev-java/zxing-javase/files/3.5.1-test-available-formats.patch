@@ -1,3 +1,5 @@
+https://github.com/zxing/zxing/pull/1668
+https://bugs.gentoo.org/910497
 --- a/src/test/java/com/google/zxing/client/j2se/MatrixToImageWriterTestCase.java
 +++ b/src/test/java/com/google/zxing/client/j2se/MatrixToImageWriterTestCase.java
 @@ -17,7 +17,9 @@
