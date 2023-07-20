@@ -23,12 +23,15 @@ dev-python/aws-sam-translator
 dev-python/cfn-lint
 >=dev-python/cryptography-36
 dev-python/dirty-equals
+dev-python/hatch-jupyter-builder
 dev-python/inflect
 dev-python/jaraco-itertools
 dev-python/josepy
 >=dev-python/jsonschema-4.18.0
 dev-python/jsonschema-spec
 dev-python/jsonschema-specifications
+dev-python/jupyterlab-server
+dev-python/jupyterlab
 dev-python/keyring
 dev-python/libcloud
 dev-python/moto
@@ -39,6 +42,7 @@ dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-git-revision-date-localized-plugin
+>=dev-python/notebook-7
 dev-python/oauthlib
 dev-python/openapi-core
 dev-python/openapi-schema-validator
