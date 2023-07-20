@@ -299,6 +299,7 @@ src_prepare() {
 		sed -i 's@^.*VBOX_WITH_PAM@#VBOX_WITH_PAM@' Config.kmk || die
 		sed -i 's@\(.*/auth/Makefile.kmk.*\)@#\1@' \
 			src/VBox/HostServices/Makefile.kmk || die
+		echo -e "\nIPRT_WITHOUT_PAM=1" >> LocalConfig.kmk || die
 	fi
 
 	# add correct java path
