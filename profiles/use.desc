@@ -328,6 +328,7 @@ tk - Add support for Tk GUI toolkit
 truetype - Add support for FreeType and/or FreeType2 fonts
 udev - Enable virtual/udev integration (device discovery, power and storage device support, etc)
 udisks - Enable storage management support (automounting, volume monitoring, etc)
+uefi - Enable support for the Unified Extensible Firmware Interface
 unicode - Add support for Unicode
 unwind - Add support for call stack unwinding and function name resolution
 upnp - Enable UPnP port mapping support
