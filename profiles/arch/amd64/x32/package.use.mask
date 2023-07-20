@@ -4,7 +4,11 @@
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-20)
 # depends on dev-python/notebook which depends on nodejs
 dev-python/ipython notebook
+dev-python/iminuit test
 dev-python/nbdime test
+dev-python/nbclient test
+dev-python/nbconvert test
+dev-python/qiskit-terra visualization
 sci-mathematics/cadabra jupyter
 sci-mathematics/yacas jupyter
 sci-physics/hepmc root
