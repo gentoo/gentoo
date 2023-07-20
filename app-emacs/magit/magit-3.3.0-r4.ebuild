@@ -23,7 +23,10 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="libgit"
 
-PATCHES=( "${FILESDIR}"/${P}-inhibit-libgit.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-inhibit-libgit.patch
+	"${FILESDIR}"/${P}-libgit-unavail.patch
+)
 DOCS=( ../README.md ../Documentation/AUTHORS.md ../Documentation/RelNotes )
 ELISP_TEXINFO="../Documentation/*.texi"
 SITEFILE="50${PN}-gentoo.el"
