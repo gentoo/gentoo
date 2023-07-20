@@ -1,0 +1,29 @@
+From https://github.com/intel/libva/pull/732/commits/48a1674e9d5b0ea33bc1677c88743c59f087ffde Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Wed, 19 Jul 2023 22:12:59 -0400
+Subject: [PATCH] va: fix configure check for --version-script with
+ --no-undefined-version
+
+In the upcoming LLD 17 (and previously in LLD 16.0.0, but reverted in 16.0.1),
+--no-undefined-version is becoming the default behavior. This causes the
+configure check for --version-scripts support to fail due to the symbols
+in the version script not being defined, which will cause the version
+script to not be used, and the build will fail due to
+--no-undefined-version. This commit adds '-Wl,--undefined-version' to
+the args of the configure check.
+
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
+--- a/va/meson.build
++++ b/va/meson.build
+@@ -60,7 +60,7 @@ libva_sym_arg = '-Wl,-version-script,' + '@0@/@1@'.format(meson.current_source_d
+ 
+ libva_link_args = []
+ libva_link_depends = []
+-if cc.links('', name: '-Wl,--version-script', args: ['-shared', libva_sym_arg])
++if cc.links('', name: '-Wl,--version-script', args: ['-shared', '-Wl,--undefined-version', libva_sym_arg])
+   libva_link_args = libva_sym_arg
+   libva_link_depends = libva_sym
+ endif
+-- 
+2.41.0
+

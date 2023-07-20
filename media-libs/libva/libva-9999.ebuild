@@ -39,6 +39,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.19.0-undefined-version.patch"
+)
+
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/va/va_x11.h
 	/usr/include/va/va_dri2.h
