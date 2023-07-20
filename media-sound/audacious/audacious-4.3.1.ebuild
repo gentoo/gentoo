@@ -33,6 +33,10 @@ PDEPEND="~media-plugins/audacious-plugins-${PV}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-enum-backporting.patch
+)
+
 src_prepare() {
 	default
 	if ! use nls; then
