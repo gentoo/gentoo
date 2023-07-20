@@ -54,6 +54,8 @@ src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Correct FHS/Gentoo policy paths for 7.0.0
 	sed -i -e "s*/doc/openvas-scanner/*/doc/openvas-scanner-${PV}/*g" "${S}"/src/CMakeLists.txt || die
+	# QA-Fix | Remove -Werror compiler flag
+	sed -i -e "s/-Werror//" "${S}"/CMakeLists.txt || die #909560
 	# QA-Fix | Remove !CLANG doxygen warnings for 7.0.0
 	if use doc; then
 		if ! tc-is-clang; then
@@ -80,8 +82,7 @@ src_configure() {
 		"-DSYSCONFDIR=${EPREFIX}/etc"
 		"-DSBINDIR=${EPREFIX}/usr/bin"
 		"-DOPENVAS_FEED_LOCK_PATH=${EPREFIX}/var/lib/openvas/feed-update.lock"
-		"-DBUILD_WITH_SNMP=$(usex snmp)"
-		"-DPENVAS_RUN_DIR=/run/ospd"
+		"-DOPENVAS_RUN_DIR=/run/ospd"
 		"-DINSTALL_OLD_SYNC_SCRIPT=OFF"
 	)
 	cmake_src_configure
