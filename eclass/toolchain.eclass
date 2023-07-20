@@ -1304,6 +1304,7 @@ toolchain_src_configure() {
 		)
 	fi
 
+	# TODO: Ignore RCs here (but TOOLCHAIN_IS_RC isn't yet an eclass var)
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
 		# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
 		# without corresponding ebuild changes.
