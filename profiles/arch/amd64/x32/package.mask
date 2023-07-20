@@ -31,8 +31,13 @@ sci-visualization/jupyter-dash
 dev-python/spyder-notebook
 app-emacs/emacs-ipython-notebook
 dev-python/jupyter
+dev-python/vpython
 dev-python/widgetsnbextension
+dev-python/ipywidgets
 sci-physics/root
+sci-physics/geant4_vmc
+sci-physics/vmc
+sci-libs/spr
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine

@@ -5,6 +5,13 @@
 # depends on dev-python/notebook which depends on nodejs
 dev-python/ipython notebook
 dev-python/nbdime test
+sci-mathematics/cadabra jupyter
+sci-mathematics/yacas jupyter
+sci-physics/hepmc root
+sci-physics/pythia root
+sci-physics/qmeq examples
+sci-physics/vgm root test
+sci-physics/yoda root
 
 # Guilherme Amadio <amadio@gentoo.org> (2023-06-30)
 # sys-cluster/ceph not keyworded on x86
