@@ -44,6 +44,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.3-meson-1.2.0-fix.patch
+)
+
 src_prepare() {
 	use introspection && vala_src_prepare
 	xdg_src_prepare

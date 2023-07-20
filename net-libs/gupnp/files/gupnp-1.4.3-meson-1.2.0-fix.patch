@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/910492
+--- a/subprojects/gssdp-1.2.wrap
++++ b/subprojects/gssdp-1.2.wrap
+@@ -3,6 +3,6 @@ url = https://gitlab.gnome.org/GNOME/gssdp.git
+ revision = gssdp-1.4
+ depth = 1
+  
+-[provides]
+-dependency_name = gssdp-1.2
++[provide]
++dependency_names = gssdp-1.2
+ 
