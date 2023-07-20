@@ -83,7 +83,7 @@ python_install_all() {
 
 	# Move data to correct location
 	dodir /usr/share/pymol
-	mv "${D}/$(python_get_sitedir)"/pymol/pymol_path/* "${D}/usr/share/pymol" || die
+	mv "${D}/$(python_get_sitedir)"/pymol/pymol_path/* "${ED}/usr/share/pymol" || die
 
 	# These environment variables should not go in the wrapper script, or else
 	# it will be impossible to use the PyMOL libraries from Python.
