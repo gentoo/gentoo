@@ -27,8 +27,12 @@ dev-python/plotly-geo
 dev-python/chart-studio
 sci-visualization/dash
 sci-visualization/jupyter-dash
-dev-python/notebook
+>=dev-python/notebook-7
 dev-python/spyder-notebook
+app-emacs/emacs-ipython-notebook
+dev-python/jupyter
+dev-python/widgetsnbextension
+sci-physics/root
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine
