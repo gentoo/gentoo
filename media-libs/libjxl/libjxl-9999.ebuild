@@ -9,7 +9,10 @@ DESCRIPTION="JPEG XL image format reference implementation"
 HOMEPAGE="https://github.com/libjxl/libjxl"
 
 EGIT_REPO_URI="https://github.com/libjxl/libjxl.git"
-EGIT_SUBMODULES=(third_party/testdata third_party/skcms)
+EGIT_SUBMODULES=(third_party/libjpeg-turbo
+	third_party/skcms
+	third_party/testdata
+)
 
 LICENSE="BSD"
 SLOT="0"
@@ -17,7 +20,7 @@ IUSE="gdk-pixbuf openexr test"
 RESTRICT="!test? ( test )"
 
 DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
-	>=dev-cpp/highway-1.0.0[${MULTILIB_USEDEP}]
+	>=dev-cpp/highway-1.0.5[${MULTILIB_USEDEP}]
 	media-libs/giflib:=[${MULTILIB_USEDEP}]
 	>=media-libs/lcms-2.13:2[${MULTILIB_USEDEP}]
 	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
