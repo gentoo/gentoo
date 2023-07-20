@@ -10,7 +10,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Core barcode encoding/decoding library"
-HOMEPAGE="https://github.com/zxing/zxing/core"
+HOMEPAGE="https://github.com/zxing/zxing"
 SRC_URI="https://github.com/zxing/zxing/archive/zxing-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="3"
@@ -31,7 +31,16 @@ RDEPEND="
 
 S="${WORKDIR}/zxing-zxing-${PV}/javase"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-test-available-formats.patch"
+)
+
 JAVA_AUTOMATIC_MODULE_NAME="com.google.zxing.javase"
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
+
+src_prepare() {
+	default # apply PATCHES
+	java-pkg-2_src_prepare
+}

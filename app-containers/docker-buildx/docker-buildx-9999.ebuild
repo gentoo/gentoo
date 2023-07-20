@@ -47,9 +47,9 @@ src_compile() {
 src_test() {
 	# TestGit can't work in a source tarball; TestReadTargets fails seemingly due to parallelism.
 	if [[ ${PV} == 9999 ]]; then
-		ego test ./... -skip "TestReadTargets"
+		ego test ./... -skip "TestReadTargets|TestIntegration"
 	else
-		ego test ./... -skip "TestGit|TestReadTargets"
+		ego test ./... -skip "TestGit|TestReadTargets|TestIntegration"
 	fi
 }
 

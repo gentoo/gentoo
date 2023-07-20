@@ -1,0 +1,13 @@
+diff --git a/metalog.conf b/metalog.conf
+index 8f53b87..54332c6 100644
+--- a/metalog.conf
++++ b/metalog.conf
+@@ -44,6 +44,8 @@ maxfiles = 5
+ # merely write $@ to some device (your console for messages):
+ # echo "$@" > /dev/tty10
+ #
++# Hint: you can control the consolelog.sh behavior in /etc/conf.d/metalog
++#
+ #console logging:
+ #  facility  = "*"
+ #  command   = "/sbin/consolelog.sh"

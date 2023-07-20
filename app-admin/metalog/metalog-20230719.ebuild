@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools systemd
 
@@ -18,14 +18,16 @@ IUSE="unicode"
 RDEPEND="
 	dev-libs/libpcre2
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
 	sys-devel/autoconf-archive
 	virtual/pkgconfig
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.9-metalog-conf.patch
+	"${FILESDIR}"/metalog-20230719-metalog-conf.patch
 )
 
 src_prepare() {
