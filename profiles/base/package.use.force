@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2023-07-21)
+# -system-librnp is currently broken with upstream package.
+>=mail-client/thunderbird-115.0 system-librnp
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-08)
 # Uses attr even if disabling is requested, bug 910070
 # Workaround that should fix some stage builds
