@@ -202,7 +202,7 @@ dev-util/cucumber-html-formatter:17
 # Testing. An upgrade from 102 isn't recommended due to downgrading
 # most likely not being possible. Back up your profile before
 # attempting. Fresh install should be fine. Bug #910229
-~mail-client/thunderbird-115.0
+>=mail-client/thunderbird-115.0
 
 # Michał Górny <mgorny@gentoo.org> (2023-07-12)
 # Having scikit-build-core installed still breaks building setuptools
