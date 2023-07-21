@@ -111,14 +111,10 @@ _LINUX_MOD_R1_ECLASS=1
 
 inherit edo linux-info multiprocessing toolchain-funcs
 
-IUSE="dist-kernel modules-sign +strip ${MODULES_OPTIONAL_IUSE}"
+IUSE="modules-sign +strip ${MODULES_OPTIONAL_IUSE}"
 
 RDEPEND="
 	sys-apps/kmod[tools]
-	dist-kernel? ( virtual/dist-kernel:= )
-"
-DEPEND="
-	virtual/linux-sources
 "
 BDEPEND="
 	sys-apps/kmod[tools]
@@ -130,6 +126,15 @@ BDEPEND="
 IDEPEND="
 	sys-apps/kmod[tools]
 "
+if [[ ! ${MODULES_NO_KERNEL_DEPS} ]]; then
+	IUSE+=" dist-kernel"
+	RDEPEND+="
+		dist-kernel? ( virtual/dist-kernel:= )
+	"
+	DEPEND="
+		virtual/linux-sources
+	"
+fi
 
 if [[ -n ${MODULES_OPTIONAL_IUSE} ]]; then
 	: "${MODULES_OPTIONAL_IUSE#+}? ( | )"
@@ -259,6 +264,15 @@ fi
 # in the tree.
 #
 # If used, must be set before linux-mod-r1_pkg_setup is called.
+
+# @ECLASS_VARIABLE: MODULES_NO_KERNEL_DEPS
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, no dependencies on virtual/linux-sources
+# or virtual/dist-kernel will be set by the eclass.
+#
+# Note: intended to avoid circular dependencies when used by a kernel
 
 # @ECLASS_VARIABLE: MODULES_OPTIONAL_IUSE
 # @PRE_INHERIT
@@ -1089,7 +1103,7 @@ _modules_sanity_kernelversion() {
 			ewarn
 			# fwiw we do not know what is *actually* used or wanted even with
 			# the USE, so stay a bit vague and always mention both dist+sources
-			if use dist-kernel; then
+			if in_iuse dist-kernel && use dist-kernel; then
 				ewarn "    <=virtual/dist-kernel-${max} or"
 			else
 				ewarn "    <=sys-kernel/gentoo-kernel-${max} or"
