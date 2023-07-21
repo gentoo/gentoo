@@ -39,6 +39,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/minitest:5.15
 	dev-ruby/mocha
 	dev-ruby/propshaft
+	>=dev-ruby/sqlite3-1.4.0
 )"
 
 all_ruby_prepare() {
