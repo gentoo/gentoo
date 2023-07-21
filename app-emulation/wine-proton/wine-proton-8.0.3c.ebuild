@@ -28,10 +28,10 @@ HOMEPAGE="https://github.com/ValveSoftware/wine/"
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
 IUSE="
-	+abi_x86_32 +abi_x86_64 +alsa crossdev-mingw custom-cflags debug
+	+abi_x86_32 +abi_x86_64 +alsa crossdev-mingw custom-cflags
 	+fontconfig +gecko +gstreamer llvm-libunwind +mono nls osmesa
-	perl pulseaudio +sdl selinux +ssl udev udisks +unwind usb v4l
-	+xcomposite xinerama"
+	perl pulseaudio +sdl selinux +ssl +strip udev udisks +unwind
+	usb v4l +xcomposite xinerama"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
@@ -256,7 +256,8 @@ src_configure() {
 
 		# use *FLAGS for mingw, but strip unsupported
 		: "${CROSSCFLAGS:=$(
-			# >=wine-7.21 configure.ac no longer adds -fno-strict by mistake
+			# >=wine-7.21 <8.10's configure.ac does not pass -fno-strict when
+			# it should (can be removed when proton is rebased on >=8.10)
 			append-cflags '-fno-strict-aliasing'
 			filter-flags '-fstack-protector*' #870136
 			filter-flags '-mfunction-return=thunk*' #878849
@@ -310,9 +311,13 @@ src_install() {
 	# don't let portage try to strip PE files with the wrong
 	# strip executable and instead handle it here (saves ~120MB)
 	dostrip -x ${WINE_PREFIX}/wine/{i386,x86_64}-windows
-	use debug ||
+
+	if use strip; then
+		ebegin "Stripping Windows (PE) binaries"
 		find "${ED}"${WINE_PREFIX}/wine/*-windows -regex '.*\.\(a\|dll\|exe\)' \
-			-exec $(usex abi_x86_64 x86_64 i686)-w64-mingw32-strip --strip-unneeded {} + || die
+			-exec $(usex abi_x86_64 x86_64 i686)-w64-mingw32-strip --strip-unneeded {} +
+		eend ${?} || die
+	fi
 
 	dodoc ANNOUNCE AUTHORS README* documentation/README*
 	readme.gentoo_create_doc

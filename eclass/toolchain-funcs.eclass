@@ -710,7 +710,7 @@ tc-ninja_magic_to_arch() {
 		score*)		echo score;;
 		sh64*)		_tc_echo_kernel_alias sh64 sh;;
 		sh*)		echo sh;;
-		sparc64*)	ninj sparc64 sparc;;
+		sparc64*)	_tc_echo_kernel_alias sparc64 sparc;;
 		sparc*)		[[ ${PROFILE_ARCH} == "sparc64" ]] \
 						&& _tc_echo_kernel_alias sparc64 sparc \
 						|| echo sparc
