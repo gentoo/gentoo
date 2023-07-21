@@ -57,7 +57,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${P}-fix-test.patch )
+PATCHES=( "${FILESDIR}"/${P}-fix-test.patch
+		# backports to fix tests with >=PROJ9.2
+		  "${FILESDIR}"/${PN}-0.21.1-fix-test_proj92.patch
+		  "${FILESDIR}"/${PN}-0.21.1-fix-test_proj92_1.patch )
 
 EPYTEST_IGNORE=(
 	# Require network access, not covered by markers

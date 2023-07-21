@@ -1,0 +1,126 @@
+diff --git a/lib/cartopy/tests/crs/test_equidistant_conic.py b/lib/cartopy/tests/crs/test_equidistant_conic.py
+index 045c87e5d..9f50b4f04 100644
+--- a/lib/cartopy/tests/crs/test_equidistant_conic.py
++++ b/lib/cartopy/tests/crs/test_equidistant_conic.py
+@@ -10,6 +10,7 @@
+ 
+ import numpy as np
+ from numpy.testing import assert_almost_equal, assert_array_almost_equal
++import pyproj
+ import pytest
+ 
+ import cartopy.crs as ccrs
+@@ -23,11 +24,16 @@ def test_default(self):
+                       'y_0=0.0', 'lat_1=20.0', 'lat_2=50.0'}
+         check_proj_params('eqdc', eqdc, other_args)
+ 
++        expected_x = (-22784919.35600352, 22784919.35600352)
++        expected_y = (-10001965.729313632, 17558791.85156368)
++        if pyproj.__proj_version__ >= '9.2.0':
++            expected_x = (-22784919.3559981,  22784919.3559981)
++            expected_y = (-10001965.72931272,  17558791.85157471)
+         assert_almost_equal(np.array(eqdc.x_limits),
+-                            (-22784919.35600352, 22784919.35600352),
++                            expected_x,
+                             decimal=7)
+         assert_almost_equal(np.array(eqdc.y_limits),
+-                            (-10001965.729313632, 17558791.85156368),
++                            expected_y,
+                             decimal=7)
+ 
+     def test_eccentric_globe(self):
+@@ -37,12 +43,16 @@ def test_eccentric_globe(self):
+         other_args = {'a=1000', 'b=500', 'lon_0=0.0', 'lat_0=0.0', 'x_0=0.0',
+                       'y_0=0.0', 'lat_1=20.0', 'lat_2=50.0'}
+         check_proj_params('eqdc', eqdc, other_args)
+-
++        expected_x = (-3016.869847713461, 3016.869847713461)
++        expected_y = (-1216.6029342241113, 2511.0574375797723)
++        if pyproj.__proj_version__ >= '9.2.0':
++            expected_x = (-2960.1009481,  2960.1009481)
++            expected_y = (-1211.05573766,  2606.04249537)
+         assert_almost_equal(np.array(eqdc.x_limits),
+-                            (-3016.869847713461, 3016.869847713461),
++                            expected_x,
+                             decimal=7)
+         assert_almost_equal(np.array(eqdc.y_limits),
+-                            (-1216.6029342241113, 2511.0574375797723),
++                            expected_y,
+                             decimal=7)
+ 
+     def test_eastings(self):
+@@ -127,12 +137,16 @@ def test_ellipsoid_transform(self):
+                       'lat_0=23.0', 'x_0=0.0', 'y_0=0.0', 'lat_1=29.5',
+                       'lat_2=45.5'}
+         check_proj_params('eqdc', eqdc, other_args)
+-
++        expected_x = (-22421870.719894886, 22421870.719894886)
++        expected_y = (-12546277.778958388, 17260638.403203618)
++        if pyproj.__proj_version__ >= '9.2.0':
++            expected_x = (-22421870.71988974,  22421870.71988976)
++            expected_y = (-12546277.77895742,  17260638.403216)
+         assert_almost_equal(np.array(eqdc.x_limits),
+-                            (-22421870.719894886, 22421870.719894886),
++                            expected_x,
+                             decimal=7)
+         assert_almost_equal(np.array(eqdc.y_limits),
+-                            (-12546277.778958388, 17260638.403203618),
++                            expected_y,
+                             decimal=7)
+ 
+         result = eqdc.transform_point(-75.0, 35.0, geodetic)
+diff --git a/lib/cartopy/tests/crs/test_sinusoidal.py b/lib/cartopy/tests/crs/test_sinusoidal.py
+index 2f2a1821a..9347260a1 100644
+--- a/lib/cartopy/tests/crs/test_sinusoidal.py
++++ b/lib/cartopy/tests/crs/test_sinusoidal.py
+@@ -6,6 +6,7 @@
+ 
+ import numpy as np
+ from numpy.testing import assert_almost_equal
++import pyproj
+ import pytest
+ 
+ import cartopy.crs as ccrs
+@@ -32,10 +33,15 @@ def test_eccentric_globe(self):
+         other_args = {'a=1000', 'b=500', 'lon_0=0.0', 'x_0=0.0', 'y_0=0.0'}
+         check_proj_params('sinu', crs, other_args)
+ 
++        expected_x = [-3141.59, 3141.59]
++        expected_y = [-1216.60, 1216.60]
++        if pyproj.__proj_version__ >= '9.2.0':
++            expected_x = [-3141.60, 3141.60]
++            expected_y = [-1211.05,  1211.05]
+         assert_almost_equal(np.array(crs.x_limits),
+-                            [-3141.59, 3141.59], decimal=2)
++                            expected_x, decimal=2)
+         assert_almost_equal(np.array(crs.y_limits),
+-                            [-1216.60, 1216.60], decimal=2)
++                            expected_y, decimal=2)
+ 
+     def test_offset(self):
+         crs = ccrs.Sinusoidal()
+diff --git a/lib/cartopy/tests/test_crs.py b/lib/cartopy/tests/test_crs.py
+index c1a5d11da..b6c38ced3 100644
+--- a/lib/cartopy/tests/test_crs.py
++++ b/lib/cartopy/tests/test_crs.py
+@@ -90,9 +90,17 @@ def test_osgb(self, approx):
+     def test_epsg(self):
+         uk = ccrs.epsg(27700)
+         assert uk.epsg_code == 27700
+-        assert_almost_equal(uk.x_limits, (-104009.357, 688806.007), decimal=3)
+-        assert_almost_equal(uk.y_limits, (-8908.37, 1256558.45), decimal=2)
+-        assert_almost_equal(uk.threshold, 7928.15, decimal=2)
++        expected_x = (-104009.357, 688806.007)
++        expected_y = (-8908.37, 1256558.45)
++        expected_threshold = 7928.15
++        if pyproj.__proj_version__ >= '9.2.0':
++            expected_x = (-104728.764, 688806.007)
++            expected_y = (-8908.36, 1256616.32)
++            expected_threshold = 7935.34
++        assert_almost_equal(uk.x_limits,
++                            expected_x, decimal=3)
++        assert_almost_equal(uk.y_limits, expected_y, decimal=2)
++        assert_almost_equal(uk.threshold, expected_threshold, decimal=2)
+         self._check_osgb(uk)
+ 
+     def test_epsg_compound_crs(self):
