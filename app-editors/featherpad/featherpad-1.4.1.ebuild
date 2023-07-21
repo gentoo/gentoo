@@ -26,7 +26,8 @@ RDEPEND="app-text/hunspell:=
 		dev-qt/qtx11extras:5
 		x11-libs/libX11
 	)"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 BDEPEND="dev-qt/linguist-tools:5"
 
 src_configure() {
