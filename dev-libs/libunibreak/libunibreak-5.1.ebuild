@@ -16,7 +16,7 @@ SRC_URI+="
 
 LICENSE="ZLIB"
 SLOT="0/5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="doc +man static-libs test"
 RESTRICT="!test? ( test )"
 
