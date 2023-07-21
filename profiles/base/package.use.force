@@ -10,11 +10,6 @@
 # Workaround that should fix some stage builds
 >=sys-devel/gettext-0.22-r1 xattr
 
-# Joonas Niilola <juippis@gentoo.org> (2023-06-06)
-# 114 looks very broken regarding unified build. It has too many 
-# conditions when it works and when it doesn't. Bug #905780
-~www-client/firefox-114.0 jumbo-build
-
 # Patrick McLean <chutzpah@gentoo.org> (2022-06-27)
 # Doesn't build with boost installed on the system, some deps require boost
 # so force the flag on until problem fixed upstream
