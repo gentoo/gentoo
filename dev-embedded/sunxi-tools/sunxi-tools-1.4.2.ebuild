@@ -8,10 +8,21 @@ inherit toolchain-funcs
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/linux-sunxi/sunxi-tools"
+	PROPERTIES="test_network"
+	RESTRICT="test"
+	RDEPEND="sys-apps/dtc
+			sys-libs/zlib"
 else
 	KEYWORDS="~amd64"
+	# We need this as zip, it is used during src_test
 	SRC_URI="https://github.com/linux-sunxi/sunxi-tools/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	test? ( https://github.com/linux-sunxi/sunxi-boards/archive/bc7410fed9e5d9b31cd1d6ae90462d06b513660e.zip -> ${P}-test.zip )"
+	test? ( https://github.com/linux-sunxi/sunxi-boards/archive/bc7410fed9e5d9b31cd1d6ae90462d06b513660e.zip \
+		-> ${P}-test.zip )"
+	RESTRICT="!test? ( test )"
+
+	PATCHES=(
+		"${FILESDIR}/${PN}-1.4.1-fix-strncpy-compiler-warning.patch"
+	)
 fi
 
 DESCRIPTION="A collection of command line tools for ARM devices with Allwinner SoCs"
@@ -20,9 +31,8 @@ HOMEPAGE="https://linux-sunxi.org/Main_Page"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="acct-group/plugdev
+RDEPEND+=" acct-group/plugdev
 	virtual/libusb:1
 	virtual/udev"
 
@@ -30,22 +40,22 @@ DEPEND="${RDEPEND}
 "
 
 BDEPEND="virtual/pkgconfig
-test? ( app-arch/unzip )"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.4.1-fix-strncpy-compiler-warning.patch"
-)
+	test? ( app-arch/unzip )"
 
 src_unpack() {
-	unpack ${P}.tar.gz
-	# No need to unpack testdata twice
+	if [[ ${PV} = *9999* ]]; then
+		git-r3_src_unpack
+	else
+		unpack ${P}.tar.gz
+		# No need to unpack testdata twice
+	fi
 }
 
 src_prepare() {
 	default
 
-	if use test; then
-		cp "${DISTDIR}/${P}-test.zip" "${S}/tests/sunxi-boards.zip"
+	if [[ ${PV} != *9999* ]] && use test; then
+		cp "${DISTDIR}/${P}-test.zip" "${S}/tests/sunxi-boards.zip" || die
 		sed -i 's$sunxi-boards-master$sunxi-boards-bc7410fed9e5d9b31cd1d6ae90462d06b513660e$' tests/Makefile || die
 		sed -i 's|^coverage:.*|coverage: $(BOARDS_DIR)/README|' tests/Makefile || die
 	fi
