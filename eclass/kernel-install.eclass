@@ -150,26 +150,11 @@ kernel-install_get_qemu_arch() {
 		x86)
 			echo i386
 			;;
-		arm)
-			echo arm
-			;;
+		arm|ppc|ppc64|riscv|sparc|sparc64)
+			echo ${ARCH}
+		;;
 		arm64)
 			echo aarch64
-			;;
-		ppc)
-			echo ppc
-			;;
-		ppc64)
-			echo ppc64
-			;;
-		riscv)
-			echo riscv
-			;;
-		sparc)
-			echo sparc
-			;;
-		sparc64)
-			echo sparc64
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
