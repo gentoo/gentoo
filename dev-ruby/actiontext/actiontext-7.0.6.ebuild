@@ -36,6 +36,7 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "test? (
 	dev-ruby/bundler
+	dev-ruby/minitest:5.15
 	dev-ruby/mocha
 	dev-ruby/propshaft
 )"

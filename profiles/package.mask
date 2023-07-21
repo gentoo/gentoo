@@ -33,6 +33,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-07-21)
+# Obsolete slot for a package that should not have been slotted. Please
+# use the newer 1.2.3 slot instead. Masked for removal on 2023-08-21.
+dev-ruby/openssl-ccm:1.2.2
+
+# Michał Górny <mgorny@gentoo.org> (2023-07-21)
+# Fragile package requiring custom patching.  The maintainer resigned.
+# No reverse dependencies.
+# Removal on 2023-08-20.  Bug #910619.
+dev-python/cx_Freeze
+
+# Michał Górny <mgorny@gentoo.org> (2023-07-21)
+# The ebuild has not been bumped for a year now.  It doesn't have
+# working tests.  No reverse dependencies.
+# Removal on 2023-08-20.  Bug #907460.
+dev-python/ansible-runner
+
 # Michał Górny <mgorny@gentoo.org> (2023-07-19)
 # Backport package specific to Python 3.9.  No longer necessary now
 # that pypy3 is 3.10.
@@ -40,7 +57,6 @@
 dev-python/importlib-resources
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-19)
-
 # Obsolete components for older, removed, cucumber versions that have no
 # value on their own. Masked for removal on 2023-08-19.
 dev-util/cucumber-wire
@@ -162,6 +178,7 @@ gnome-base/gnome-mime-data
 media-sound/pragha
 <media-libs/grilo-0.3.16
 <media-plugins/grilo-plugins-0.3.16
+net-libs/libdmapsharing:3.0
 net-libs/dleyna-connector-dbus
 net-libs/dleyna-core
 net-libs/dleyna-renderer
@@ -189,7 +206,7 @@ dev-util/cucumber-html-formatter:17
 # Testing. An upgrade from 102 isn't recommended due to downgrading
 # most likely not being possible. Back up your profile before
 # attempting. Fresh install should be fine. Bug #910229
-~mail-client/thunderbird-115.0
+>=mail-client/thunderbird-115.0
 
 # Michał Górny <mgorny@gentoo.org> (2023-07-12)
 # Having scikit-build-core installed still breaks building setuptools
@@ -348,11 +365,6 @@ media-sound/gmusicbrowser
 # Causes segfaults in dependent dev-util/conf2struct.
 # See bug #908989 and related bug #908982.
 =dev-perl/Conf-Libconfig-1.0.0
-
-# Fabian Groffen <grobian@gentoo.org> (2023-06-21)
-# Ancient OSX integration package, not keyworded for any current arch
-# Removal on 2023-07-21.  Bug #908938.
-x11-themes/gtk-engines-quartz
 
 # Michał Górny <mgorny@gentoo.org> (2023-06-21)
 # suitesparseconfig-7.0.0 fails to build with multilib enabled
