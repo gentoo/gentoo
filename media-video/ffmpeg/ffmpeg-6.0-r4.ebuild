@@ -344,6 +344,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-DECLARE_ALIGNED.patch
 	"${FILESDIR}"/${PN}-5.1.2-get_cabac_inline_x86-32-bit.patch
 	"${FILESDIR}"/${P}-wint-conversion-vulkan.patch
+	"${FILESDIR}"/${P}-libplacebo-remove-deprecated-field.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
