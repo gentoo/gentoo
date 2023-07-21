@@ -32,7 +32,8 @@ DEPEND="
 	dev-qt/qtwidgets:5
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	virtual/opengl"
 
 src_prepare() {
 	default
