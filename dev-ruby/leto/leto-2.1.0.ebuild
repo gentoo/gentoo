@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jaynetics/leto/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~sparc"
+KEYWORDS="~amd64 ~ppc ~sparc"
 IUSE=""
 
 all_ruby_prepare() {
