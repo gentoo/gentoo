@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/907285
+https://github.com/LMMS/lmms/issues/5884
+https://src.fedoraproject.org/rpms/lmms/blob/rawhide/f/lmms-1.2.2_lib_suffix.patch
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -564,6 +564,9 @@ IF(USE_CCACHE)
+     ENDIF()
+ ENDIF()
+ 
++# pass LIB_SUFFIX
++add_definitions(-DLIB_SUFFIX="${LIB_SUFFIX}")
++
+ # make sub-directories
+ ADD_SUBDIRECTORY(cmake)
+ ADD_SUBDIRECTORY(src)
+--- a/src/core/PluginFactory.cpp
++++ b/src/core/PluginFactory.cpp
+@@ -64,7 +64,7 @@ PluginFactory::PluginFactory()
+ 	//           plugins at "C:/Program Files/LMMS/plugins/"
+ 
+ #ifndef LMMS_BUILD_WIN32
+-	addRelativeIfExists("../lib/lmms"); // Installed
++	addRelativeIfExists("../lib" LIB_SUFFIX "/lmms"); // Installed
+ #endif
+ 	addRelativeIfExists("plugins"); // Portable
+ #ifdef PLUGIN_DIR // We may also have received a relative directory via a define

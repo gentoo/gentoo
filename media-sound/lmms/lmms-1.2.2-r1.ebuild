@@ -12,8 +12,8 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${PN}_${PV/_/-}.tar.xz"
-	S="${WORKDIR}/${PN}"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${P/_/-}"
 fi
 
 LICENSE="GPL-2 LGPL-2"
@@ -66,9 +66,11 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( README.md doc/AUTHORS )
 
+S="${WORKDIR}/${PN}"
+
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-no_compress_man.patch" #733284
-	"${FILESDIR}/${PN}-9999-plugin-path.patch" #907285
+	"${FILESDIR}/${PN}-1.2.2-no_compress_man.patch" #733284
+	"${FILESDIR}/${PN}-1.2.2-plugin-path.patch" #907285
 )
 
 src_configure() {
