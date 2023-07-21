@@ -39,7 +39,7 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="-* ~amd64 ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="-* ~amd64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="system-bootstrap debug doc source +threads +unicode +zstd"
 
 CDEPEND=">=dev-lisp/asdf-3.3:= \
