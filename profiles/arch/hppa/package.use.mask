@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# David Roman <davidroman96@gmail.com> (2024-10-04)
+# dev-libs/libunibreak is not keyworded
+media-libs/libass libunibreak
+
 # Sam James <sam@gentoo.org> (2024-08-23)
 # dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
 sys-apps/systemd bpf
