@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit kernel-install toolchain-funcs unpacker
+KERNEL_IUSE_SECUREBOOT=1
+MODULES_NO_KERNEL_DEPS=1
+inherit kernel-install linux-mod-r1 toolchain-funcs secureboot unpacker
 
 MY_P=linux-${PV%.*}
 GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 2 ))
@@ -36,6 +38,7 @@ S=${WORKDIR}
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+REQUIRED_USE="secureboot? ( modules-sign )"
 
 RDEPEND="
 	!sys-kernel/gentoo-kernel:${SLOT}
@@ -54,6 +57,10 @@ QA_PREBUILT='*'
 
 KV_LOCALVERSION='-gentoo-dist'
 KPV=${PV}${KV_LOCALVERSION}
+
+pkg_setup() {
+	secureboot_pkg_setup
+}
 
 src_prepare() {
 	local PATCHES=(
@@ -86,7 +93,7 @@ src_configure() {
 		LD="${LD}"
 		AR="$(tc-getAR)"
 		NM="$(tc-getNM)"
-		STRIP=":"
+		STRIP="$(tc-getSTRIP)"
 		OBJCOPY="$(tc-getOBJCOPY)"
 		OBJDUMP="$(tc-getOBJDUMP)"
 
@@ -99,6 +106,10 @@ src_configure() {
 	mkdir modprep || die
 	cp "${BINPKG}/image/usr/src/linux-${KPV}/.config" modprep/ || die
 	emake -C "${MY_P}" "${makeargs[@]}" modules_prepare
+}
+
+src_compile() {
+	:
 }
 
 src_test() {
@@ -124,4 +135,14 @@ src_install() {
 		')' -delete || die
 	rm modprep/source || die
 	cp -p -R modprep/. "${ED}/usr/src/linux-${KPV}"/ || die
+
+	# We can only call linux-mod-r1_pkg_setup after we have
+	# setup our kernel sources
+	local KERNEL_DIR="${ED}/usr/src/linux-${KPV}"
+	linux-mod-r1_pkg_setup
+	modules_post_process
+}
+
+pkg_postinst() {
+	kernel-install_pkg_postinst
 }
