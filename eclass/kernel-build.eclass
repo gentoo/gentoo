@@ -257,6 +257,14 @@ kernel-build_src_install() {
 	local kern_arch=$(tc-arch-kernel)
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	local kernel_dir=/usr/src/linux-${dir_ver}
+
+	if use sparc ; then
+		# We don't want tc-arch-kernel's sparc64, even though we do
+		# need to pass ARCH=sparc64 to the build system. It's a quasi-alias
+		# in Kbuild.
+		kern_arch=sparc
+	fi
+
 	dodir "${kernel_dir}/arch/${kern_arch}"
 	mv include scripts "${ED}${kernel_dir}/" || die
 	mv "arch/${kern_arch}/include" \
