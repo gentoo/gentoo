@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~kennylevinsen/seatd"
 else
-	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://git.sr.ht/~kennylevinsen/seatd/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 LICENSE="MIT"
@@ -21,7 +21,7 @@ REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
 	elogind? ( sys-auth/elogind )
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd:= )
 "
 RDEPEND="${DEPEND}
 	server? ( acct-group/seat )
