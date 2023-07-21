@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Cristian Othón Martínez Vera (2023-07-21)
+# dev-libs/libunibreak is not keyworded
+media-libs/libass libunibreak
+
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is not keyworded
 app-accessibility/at-spi2-core dbus-broker

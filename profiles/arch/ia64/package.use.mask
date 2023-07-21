@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2023-07-21)
+# dev-libs/libunibreak is not keyworded
+media-libs/libass libunibreak
+
 # Sam James <sam@gentoo.org> (2023-06-18)
 # Qt 5 not keyworded here
 app-text/ansifilter gui
