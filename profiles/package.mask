@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-07-21)
+# Broken runtime with ncurses version since last 2 years (unusable at
+# all), no upstream activity of any sort since 2016.
+# Removal on 2023-08-20.  Bug #910649.
+app-cdr/cdw
+
 # Hans de Graaff <graaff@gentoo.org> (2023-07-21)
 # Obsolete slot for a package that should not have been slotted. Please
 # use the newer 1.2.3 slot instead. Masked for removal on 2023-08-21.
@@ -497,7 +503,7 @@ media-gfx/curaengine
 # Quite broken, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109672.
 =sys-devel/gcc-14.0.0_pre20230430
 
-# Andreas Sturmlechner <asturm@gentoo.org> 2023-04-30
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-04-30)
 # Breaking even latest ~arch version of KDE PIM, bug #905352.
 =dev-libs/ktextaddons-1.3*
 

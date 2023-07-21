@@ -54,6 +54,7 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 # https://bugs.gentoo.org/748984 https://github.com/etcd-io/etcd/pull/12552
 PATCHES=(
 	"${FILESDIR}/0001-Openrc-Depend-on-containerd-init-script.patch"
+	"${FILESDIR}/${P}-client-define-a-dummy-hostname-for-local-connections.patch"
 )
 
 pkg_setup() {
@@ -263,7 +264,7 @@ src_compile() {
 		fi
 	done
 
-	# build daemon
+	# build binaries
 	./hack/make.sh dynbinary || die 'dynbinary failed'
 }
 
@@ -272,7 +273,8 @@ src_install() {
 	dosym containerd-shim /usr/bin/docker-containerd-shim
 	dosym runc /usr/bin/docker-runc
 	use container-init && dosym tini /usr/bin/docker-init
-	newbin bundles/dynbinary-daemon/dockerd dockerd
+	dobin bundles/dynbinary-daemon/dockerd
+	dobin bundles/dynbinary-daemon/docker-proxy
 
 	newinitd contrib/init/openrc/docker.initd docker
 	newconfd contrib/init/openrc/docker.confd docker

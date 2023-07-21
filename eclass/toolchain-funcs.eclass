@@ -666,7 +666,7 @@ tc-has-tls() {
 # Parse information from CBUILD/CHOST/CTARGET rather than
 # use external variables from the profile.
 tc-ninja_magic_to_arch() {
-	ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
+	_tc_echo_kernel_alias() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 
 	local type=$1
 	local host=$2
@@ -676,16 +676,16 @@ tc-ninja_magic_to_arch() {
 		aarch64*)	echo arm64;;
 		alpha*)		echo alpha;;
 		arm*)		echo arm;;
-		avr*)		ninj avr32 avr;;
-		bfin*)		ninj blackfin bfin;;
+		avr*)		_tc_echo_kernel_alias avr32 avr;;
+		bfin*)		_tc_echo_kernel_alias blackfin bfin;;
 		c6x*)		echo c6x;;
 		cris*)		echo cris;;
 		frv*)		echo frv;;
 		hexagon*)	echo hexagon;;
-		hppa*)		ninj parisc hppa;;
+		hppa*)		_tc_echo_kernel_alias parisc hppa;;
 		i?86*)		echo x86;;
 		ia64*)		echo ia64;;
-		loongarch*)	ninj loongarch loong;;
+		loongarch*)	_tc_echo_kernel_alias loongarch loong;;
 		m68*)		echo m68k;;
 		metag*)		echo metag;;
 		microblaze*)	echo microblaze;;
@@ -708,11 +708,11 @@ tc-ninja_magic_to_arch() {
 		riscv*)		echo riscv;;
 		s390*)		echo s390;;
 		score*)		echo score;;
-		sh64*)		ninj sh64 sh;;
+		sh64*)		_tc_echo_kernel_alias sh64 sh;;
 		sh*)		echo sh;;
 		sparc64*)	ninj sparc64 sparc;;
 		sparc*)		[[ ${PROFILE_ARCH} == "sparc64" ]] \
-						&& ninj sparc64 sparc \
+						&& _tc_echo_kernel_alias sparc64 sparc \
 						|| echo sparc
 					;;
 		tile*)		echo tile;;

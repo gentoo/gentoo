@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Hans de Graaff <graaff@gentoo.org> (2023-07-21)
+
+# jemalloc has been a source of sometimes hard to track bugs in the
+# past. It is now masked with the intention to remove it altogether at a
+# later date.
+# See e.g. bugs 617518, 638522, 711302, 802435, 904987
+dev-lang/ruby jemalloc
+
 # Joonas Niilola <juippis@gentoo.org> (2023-07-14)
 # Calendar is broken with some languages on 115.0 release. Bug #910229
 >=mail-client/thunderbird-115.0 system-icu
