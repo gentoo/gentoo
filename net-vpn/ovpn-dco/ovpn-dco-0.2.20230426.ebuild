@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic linux-mod
+inherit flag-o-matic linux-mod-r1
 
 DESCRIPTION="OpenVPN Data Channel Offload in the linux kernel"
 HOMEPAGE="https://github.com/OpenVPN/ovpn-dco"
@@ -20,9 +20,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug"
 
-MODULE_NAMES="ovpn-dco-v2(updates:.:drivers/net/ovpn-dco)"
-BUILD_TARGETS="all"
-
 pkg_setup() {
 	CONFIG_CHECK="
 		INET
@@ -34,7 +31,7 @@ pkg_setup() {
 		CRYPTO_GCM
 		CRYPTO_CHACHA20POLY1305"
 
-	linux-mod_pkg_setup
+	linux-mod-r1_pkg_setup
 }
 
 src_configure() {
@@ -45,14 +42,16 @@ src_configure() {
 }
 
 src_compile() {
-	BUILD_PARAMS+=" KERNEL_SRC='${KERNEL_DIR}'"
-	[[ ${PV} != 9999 ]] && BUILD_PARAMS+=" REVISION='${PV}'"
-	use debug && BUILD_PARAMS+=" DEBUG=1"
-	linux-mod_src_compile
+	local modlist=( "ovpn-dco-v2=updates:.:drivers/net/ovpn-dco" )
+	local modargs=( KERNEL_SRC="${KERNEL_DIR}" )
+	[[ ${PV} != 9999 ]] && modargs+=( REVISION="${PV}" )
+	use debug && modargs+=( DEBUG=1 )
+
+	linux-mod-r1_src_compile
 }
 
 src_install() {
-	linux-mod_src_install
+	linux-mod-r1_src_install
 
 	insinto /usr/share/${PN}
 	doins -r include
