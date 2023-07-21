@@ -11,7 +11,7 @@ SRC_URI+=" test? ( mirror://gnu/freefont/freefont-otf-20120503.tar.gz )"
 
 LICENSE="GPL-2+"
 SLOT="0/5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+png +jpeg +gif +svg +chm +harfbuzz +fontconfig +libunibreak +fribidi +zstd +libutf8proc lto static-libs test"
 
 RESTRICT="!test? ( test )"
