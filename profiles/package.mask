@@ -350,11 +350,6 @@ media-sound/gmusicbrowser
 # See bug #908989 and related bug #908982.
 =dev-perl/Conf-Libconfig-1.0.0
 
-# Fabian Groffen <grobian@gentoo.org> (2023-06-21)
-# Ancient OSX integration package, not keyworded for any current arch
-# Removal on 2023-07-21.  Bug #908938.
-x11-themes/gtk-engines-quartz
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-21)
 # suitesparseconfig-7.0.0 fails to build with multilib enabled
 # because of dependencies that cannot be satisfied.  All the other
