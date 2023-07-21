@@ -18,11 +18,12 @@ KEYWORDS="~amd64 ~riscv"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	dev-cpp/expected-lite
+RDEPEND="
 	dev-libs/boost:=
 	dev-libs/libfmt:=
 "
+DEPEND="${RDEPEND}
+	dev-cpp/expected-lite"
 BDEPEND="
 	doc? ( app-text/ronn-ng )
 	test? ( dev-libs/glib )
