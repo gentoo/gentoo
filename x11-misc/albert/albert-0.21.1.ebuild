@@ -30,6 +30,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	app-arch/libarchive:=
 	dev-cpp/muParser
 	dev-libs/qhotkey[qt6]
 	dev-qt/qtbase:6[concurrent,dbus,gui,network,sql,sqlite,widgets]
