@@ -69,6 +69,7 @@ BDEPEND="
 		arm64? ( app-emulation/qemu[qemu_softmmu_targets_aarch64] )
 		ppc? ( app-emulation/qemu[qemu_softmmu_targets_ppc] )
 		ppc64? ( app-emulation/qemu[qemu_softmmu_targets_ppc64] )
+		sparc? ( app-emulation/qemu[qemu_softmmu_targets_sparc,qemu_softmmu_targets_sparc64] )
 		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
 	)"
 
