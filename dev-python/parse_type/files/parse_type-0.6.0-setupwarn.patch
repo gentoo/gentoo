@@ -1,7 +1,0 @@
---- a/setup.cfg
-+++ b/setup.cfg
-@@ -17,3 +17,3 @@
- [upload_docs]
--upload-dir = build/docs/html
-+upload_dir = build/docs/html
- 
