@@ -153,7 +153,7 @@ TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
 
 # Aaron W. Swenson <titanofold@gentoo.org> (2017-07-09)
 # Default target(s) for postgres{,-multi}.eclass
-POSTGRES_TARGETS="postgres12 postgres13"
+POSTGRES_TARGETS="postgres15"
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-11-17)
 #
