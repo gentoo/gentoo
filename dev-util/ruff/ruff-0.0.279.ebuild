@@ -90,6 +90,7 @@ CRATES="
 	flate2-1.0.26
 	fnv-1.0.7
 	form_urlencoded-1.2.0
+	fs-err-2.9.0
 	fsevent-sys-4.1.0
 	getrandom-0.2.10
 	glob-0.3.1
@@ -111,9 +112,10 @@ CRATES="
 	indexmap-1.9.3
 	indexmap-2.0.0
 	indicatif-0.17.5
+	indoc-2.0.3
 	inotify-0.9.6
 	inotify-sys-0.1.5
-	insta-1.30.0
+	insta-1.31.0
 	instant-0.1.12
 	io-lifetimes-1.0.11
 	is-macro-0.2.2
@@ -134,6 +136,7 @@ CRATES="
 	linux-raw-sys-0.3.8
 	linux-raw-sys-0.4.3
 	log-0.4.19
+	matchers-0.1.0
 	matches-0.1.10
 	memchr-2.5.0
 	memoffset-0.9.0
@@ -147,6 +150,7 @@ CRATES="
 	nohash-hasher-0.2.0
 	nom-7.1.3
 	notify-5.2.0
+	nu-ansi-term-0.46.0
 	num-bigint-0.4.3
 	num-integer-0.1.45
 	num-traits-0.2.15
@@ -157,6 +161,7 @@ CRATES="
 	option-ext-0.2.0
 	os_str_bytes-6.5.1
 	output_vt100-0.1.3
+	overload-0.1.1
 	paste-1.0.13
 	path-absolutize-3.1.0
 	path-dedot-3.1.0
@@ -197,7 +202,9 @@ CRATES="
 	redox_syscall-0.3.5
 	redox_users-0.4.3
 	regex-1.9.0
+	regex-automata-0.1.10
 	regex-automata-0.3.0
+	regex-syntax-0.6.29
 	regex-syntax-0.7.3
 	result-like-0.4.6
 	result-like-derive-0.4.6
@@ -225,7 +232,9 @@ CRATES="
 	serde_spanned-0.6.3
 	serde_with-3.0.0
 	serde_with_macros-3.0.0
+	sharded-slab-0.1.4
 	shellexpand-3.1.0
+	shlex-1.1.0
 	similar-2.2.1
 	siphasher-0.3.10
 	smallvec-1.10.0
@@ -263,6 +272,8 @@ CRATES="
 	tracing-0.1.37
 	tracing-attributes-0.1.26
 	tracing-core-0.1.31
+	tracing-log-0.1.3
+	tracing-subscriber-0.3.17
 	typed-arena-2.0.2
 	unic-char-property-0.9.0
 	unic-char-range-0.9.0
@@ -280,6 +291,7 @@ CRATES="
 	url-2.4.0
 	utf8parse-0.2.1
 	uuid-1.4.0
+	valuable-0.1.0
 	version_check-0.9.4
 	wait-timeout-0.2.0
 	walkdir-2.3.3
@@ -321,13 +333,14 @@ CRATES="
 	windows_x86_64_msvc-0.42.2
 	windows_x86_64_msvc-0.48.0
 	winnow-0.4.7
+	wsl-0.1.0
 	yaml-rust-0.4.5
 	yansi-0.5.1
 	yansi-term-0.1.2
 "
 
 LIBCST_COMMIT="3cacca1a1029f05707e50703b49fe3dd860aa839"
-RUSTPYTHON_COMMIT="c174bbf1f29527edd43d432326327f16f47ab9e0"
+RUSTPYTHON_COMMIT="4d03b9b5b212fc869e4cfda151414438186a7779"
 declare -A GIT_CRATES=(
 	[libcst]="https://github.com/Instagram/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst"
 	[ruff_text_size]="https://github.com/astral-sh/RustPython-Parser;${RUSTPYTHON_COMMIT};RustPython-Parser-%commit%/ruff_text_size"
@@ -358,7 +371,7 @@ SLOT="0"
 
 BDEPEND="
 	dev-util/patchelf
-	>=virtual/rust-1.70
+	>=virtual/rust-1.71
 "
 
 # rust does not use *FLAGS from make.conf, silence portage warning
