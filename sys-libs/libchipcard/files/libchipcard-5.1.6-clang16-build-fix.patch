@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/742428
+--- a/src/tools/cardcommander/cardcommander.cpp
++++ b/src/tools/cardcommander/cardcommander.cpp
+@@ -45,7 +45,7 @@
+ using namespace std;
+ 
+ #define k_PRG_VERSION_INFO \
+-  "cardcommander v0.4  (part of libchipcard v"k_CHIPCARD_VERSION_STRING")\n"\
++  "cardcommander v0.4  (part of libchipcard v" k_CHIPCARD_VERSION_STRING ")\n"\
+   "(c) 2006 Martin Preuss<martin@libchipcard.de>\n" \
+   "This program is free software licensed under GPL.\n"\
+   "See COPYING for details.\n"
