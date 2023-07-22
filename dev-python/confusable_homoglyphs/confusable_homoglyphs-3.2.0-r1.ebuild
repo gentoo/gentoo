@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 CommitId=14f43ddd74099520ddcda29fac557c27a28190e6
@@ -20,6 +20,8 @@ SRC_URI="https://github.com/vhf/${PN}/archive/${CommitId}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+
+RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}"/${PN}-${CommitId}
 
