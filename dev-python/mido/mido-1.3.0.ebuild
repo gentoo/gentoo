@@ -25,5 +25,6 @@ RDEPEND="
 	rtmidi? ( dev-python/python-rtmidi[${PYTHON_USEDEP}] )
 "
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs \
+	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
