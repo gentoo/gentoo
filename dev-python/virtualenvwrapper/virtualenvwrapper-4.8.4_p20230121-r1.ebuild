@@ -51,7 +51,7 @@ src_prepare() {
 
 	# specify default python interpeter to align with PYTHON_SINGLE_TARGET
 	sed -i -e \
-		"s|\(_virtualenvwrapper_python_executable=\"\)\$(.*)\(\"\)|\1${EPYTHON}\2|" \
+		"s|\(_virtualenvwrapper_python_executable=\"\$(\).\w\((\"\)|\1command -v ${EPYTHON}\2|" \
 		virtualenvwrapper.sh || die
 
 	# remove tests which require an internet connection
