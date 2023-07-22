@@ -8,8 +8,6 @@
 		<flag name="duktape">Use <pkg>dev-lang/duktape</pkg> for PAC parsing</flag>
 		<flag name="gnome">Enable support for reading proxy settings from GNOME</flag>
 		<flag name="kde">Enable support for reading proxy settings from KDE</flag>
-		<flag name="spidermonkey">Use libmozjs from <pkg>dev-lang/spidermonkey</pkg> for PAC parsing</flag>
-		<flag name="webkit">Use libjavascriptcoregtk from <pkg>net-libs/webkit-gtk</pkg> for PAC parsing</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">libproxy/libproxy</remote-id>
