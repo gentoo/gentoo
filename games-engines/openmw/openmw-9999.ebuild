@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-{1,3,4} luajit )
+LUA_COMPAT=( luajit )
 inherit cmake lua-single readme.gentoo-r1 xdg
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
 else
 	SRC_URI="https://github.com/OpenMW/openmw/archive/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="${LUA_DEPS}
 	app-arch/lz4:=
-	>=dev-games/mygui-3.4.1
+	dev-games/mygui
 	dev-cpp/yaml-cpp:=
 	dev-db/sqlite:3
 	dev-games/recastnavigation:=
@@ -105,6 +105,8 @@ src_configure() {
 			-DUSE_LUAJIT=ON
 		)
 	else
+		# 5.1 (and other 5.x) are supported in theory, but don't work well (eg. test fails)
+		# In a future version consider adding it back to LUA_COMPAT or dropping this branch
 		mycmakeargs+=(
 			-DUSE_LUAJIT=OFF
 			-DLua_FIND_VERSION_MAJOR=$(ver_cut 1 $(lua_get_version))
@@ -116,7 +118,8 @@ src_configure() {
 
 	if use test ; then
 		mkdir -p "${BUILD_DIR}"/apps/openmw_test_suite/data || die
-		cp "${DISTDIR}"/openmw-template-${MY_TEMPLATE_COMMIT}.omwgame "${BUILD_DIR}"/apps/openmw_test_suite/data/template.omwgame || die
+		cp "${DISTDIR}"/openmw-template-${MY_TEMPLATE_COMMIT}.omwgame \
+			"${BUILD_DIR}"/apps/openmw_test_suite/data/template.omwgame || die
 	fi
 
 	cmake_src_configure
@@ -134,7 +137,9 @@ src_compile() {
 }
 
 src_test() {
-	"${BUILD_DIR}/openmw_test_suite" || die
+	pushd "${BUILD_DIR}" > /dev/null || die
+	./openmw_test_suite || die
+	popd > /dev/null || die
 }
 
 src_install() {
