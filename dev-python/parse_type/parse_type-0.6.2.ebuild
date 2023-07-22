@@ -12,7 +12,7 @@ HOMEPAGE="https://pypi.org/project/parse-type/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/parse[${PYTHON_USEDEP}]
