@@ -1,0 +1,766 @@
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/ansi-tests/ensure-directories-exist.lsp gcl/ansi-tests/ensure-directories-exist.lsp
+--- ../gcl-Version_2_6_15pre3.orig/gcl/ansi-tests/ensure-directories-exist.lsp	2023-02-14 20:20:46.000000000 +0700
++++ gcl/ansi-tests/ensure-directories-exist.lsp	2023-07-22 20:42:36.142346806 +0700
+@@ -108,7 +108,7 @@
+ 
+ ;;; Case where directory shouldn't exist
+ 
+-;; The directort ansi-tests/scratch must not exist before this
++;; The directory ansi-tests/scratch must not exist before this
+ ;; test is run
+ (deftest ensure-directories-exist.8
+   (let* ((subdir (make-pathname :directory '(:relative "scratch")
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/ansi-tests/iteration.lsp gcl/ansi-tests/iteration.lsp
+--- ../gcl-Version_2_6_15pre3.orig/gcl/ansi-tests/iteration.lsp	2023-02-14 20:20:46.000000000 +0700
++++ gcl/ansi-tests/iteration.lsp	2023-07-22 20:42:36.142346806 +0700
+@@ -121,7 +121,7 @@
+ 	(%f))))
+   45)
+ 
+-;;; Confirm that the variables in succesive iterations are
++;;; Confirm that the variables in successive iterations are
+ ;;; identical
+ (deftest do.15
+   (mapcar #'funcall
+@@ -240,7 +240,7 @@
+ 	(%f))))
+   45)
+ 
+-;;; Confirm that the variables in succesive iterations are
++;;; Confirm that the variables in successive iterations are
+ ;;; identical
+ (deftest do*.15
+   (mapcar #'funcall
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/ansi-tests/loop1.lsp gcl/ansi-tests/loop1.lsp
+--- ../gcl-Version_2_6_15pre3.orig/gcl/ansi-tests/loop1.lsp	2023-02-14 20:20:46.000000000 +0700
++++ gcl/ansi-tests/loop1.lsp	2023-07-22 20:42:36.142346806 +0700
+@@ -211,7 +211,7 @@
+   (loop for x from 1 to 5 do nil finally (return x))
+   5)
+ 
+-;;; Test that the index variable acheives the exclusive
++;;; Test that the index variable achieves the exclusive
+ ;;; upper bound, but does not exceed it.
+ (deftest loop.1.41
+   (loop for x from 1 below 5 do nil finally (return x))
+@@ -224,4 +224,4 @@
+ (deftest loop.1.43
+   (loop for x from 10 above 0 do nil finally (return x))
+   1)
+-|#
+\ В конце файла нет новой строки
++|#
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-10.texi gcl/info/chap-10.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-10.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/chap-10.texi	2023-07-22 20:42:36.142346806 +0700
+@@ -996,7 +996,7 @@
+ 
+ @b{setf} of @b{get} may be used to associate a new @i{object}
+ with an existing indicator already on the @i{symbol}'s @i{property list},
+-or to create a new assocation if none exists.
++or to create a new association if none exists.
+ 
+ If there are multiple @i{properties}_1 with that @i{property indicator},
+ @b{setf} of @b{get} associates the @i{new-value} 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-14.texi gcl/info/chap-14.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-14.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/chap-14.texi	2023-07-22 20:42:36.143346806 +0700
+@@ -160,7 +160,7 @@
+ @w{  assoc  assoc-if-not  rassoc   rassoc-if-not  }
+ 
+ @noindent
+-@w{  Figure 14--4: Some defined names related to assocation lists.}
++@w{  Figure 14--4: Some defined names related to association lists.}
+ 
+ @end group
+ @end format
+@@ -3046,7 +3046,7 @@
+ 
+ @b{setf} of @b{getf} may be used to associate a new @i{object}
+ with an existing indicator in the @i{property list} held by @i{place},
+-or to create a new assocation if none exists.
++or to create a new association if none exists.
+ 
+ If there are multiple @i{properties}_1 with that @i{property indicator},
+ @b{setf} of @b{getf} associates the @i{new-value} 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-19.texi gcl/info/chap-19.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-19.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/chap-19.texi	2023-07-22 20:42:36.143346806 +0700
+@@ -2119,7 +2119,7 @@
+ 
+ @b{translate-logical-pathname} might perform additional translations,
+     typically to provide translation of file types to local naming
+-    conventions, to accomodate physical file systems with limited length
++    conventions, to accommodate physical file systems with limited length
+     names, or to deal with special character requirements such as
+     translating hyphens to underscores or uppercase letters to lowercase.
+     Any such additional translations are @i{implementation-defined}.  Some
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-21.texi gcl/info/chap-21.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-21.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/chap-21.texi	2023-07-22 20:42:36.143346806 +0700
+@@ -867,9 +867,9 @@
+ @subsubheading  Examples::
+ 
+ @example
+-;; Note that the stream must accomodate at least the specified type,
+-;; but might accomodate other types.  Further note that even if it does
+-;; accomodate exactly the specified type, the type might be specified in
++;; Note that the stream must accommodate at least the specified type,
++;; but might accommodate other types.  Further note that even if it does
++;; accommodate exactly the specified type, the type might be specified in
+ ;; any of several ways.
+  (with-open-file (s "test" :element-type '(integer 0 1)
+                            :if-exists :error
+@@ -2180,7 +2180,7 @@
+ to define.  A given @i{implementation} might not be able to support all of these options 
+ in exactly the manner stated.  An @i{implementation} is required to recognize all of 
+ these option keywords and to try to do something ``reasonable'' in the context of the 
+-host @i{file system}.  Where necessary to accomodate the @i{file system},
++host @i{file system}.  Where necessary to accommodate the @i{file system},
+ an @i{implementation} deviate slightly from the semantics specified here without 
+ being disqualified for consideration as a @i{conforming implementation}.
+ If it is utterly impossible for an @i{implementation} to handle some option
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-26.texi gcl/info/chap-26.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-26.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/chap-26.texi	2023-07-22 20:42:36.144346806 +0700
+@@ -2218,7 +2218,7 @@
+   and that is one of:
+       the @i{symbol} @t{:default} 
+          (denoting an @i{implementation-dependent} default 
+-          @i{external file format} that can accomodate at least
++          @i{external file format} that can accommodate at least
+           the @i{base characters}),
+       some other @i{object} defined by the @i{implementation} to be
+       an @i{external file format designator}
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-5.texi gcl/info/chap-5.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-5.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/chap-5.texi	2023-07-22 20:42:36.145346806 +0700
+@@ -3595,7 +3595,7 @@
+ @subsubheading  Description::
+ 
+ The value of @b{eql} is @i{true} of two objects, @i{x} and
+-@i{y}, in the folowing cases:
++@i{y}, in the following cases:
+ @table @asis
+ 
+ @item 1.  
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-9.texi gcl/info/chap-9.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/chap-9.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/chap-9.texi	2023-07-22 20:42:36.145346806 +0700
+@@ -681,7 +681,7 @@
+ 
+ A @i{restart} can be ``associated with'' a @i{condition} explicitly
+ by @b{with-condition-restarts}, or implicitly by @b{restart-case}.
+-Such an assocation has @i{dynamic extent}.
++Such an association has @i{dynamic extent}.
+ 
+ A single @i{restart} may be associated with several @i{conditions} 
+ at the same time.
+@@ -2075,7 +2075,7 @@
+ differences between @b{break} and @b{cerror}.
+ 
+ The user interface aspects of @b{break} and @b{cerror} are
+-permitted to vary more widely, in order to accomodate the interface
++permitted to vary more widely, in order to accommodate the interface
+ needs of the @i{implementation}. For example, it is permissible for a
+ @i{Lisp read-eval-print loop} to be entered by @b{break} rather
+ than the conventional debugger.
+@@ -3464,7 +3464,7 @@
+ to @b{invoke-restart}.
+ 
+ By default, @b{invoke-restart-interactively} passes no arguments and
+-all arguments must be optional in order to accomodate interactive
++all arguments must be optional in order to accommodate interactive
+ restarting.  However, the arguments need not be optional if the
+ @t{:interactive} 
+ keyword has been used to inform @b{invoke-restart-interactively}
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/compile.texi gcl/info/compile.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/compile.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/compile.texi	2023-07-22 20:42:36.146346806 +0700
+@@ -260,22 +260,22 @@
+ 
+ 
+ @defvar *DEFAULT-SYSTEM-P*
+-Pakcage:COMPILER
++Package:COMPILER
+ Specifies the default setting of :SYSTEM-P used by COMPILE.  Defaults to NIL.
+ @end defvar
+ 
+ @defvar *DEFAULT-C-FILE*
+-Pakcage:COMPILER
++Package:COMPILER
+ Specifies the default setting of :C-FILE used by COMPILE.  Defaults to NIL.
+ @end defvar
+ 
+ @defvar *DEFAULT-H-FILE*
+-Pakcage:COMPILER
++Package:COMPILER
+ Specifies the default setting of :H-FILE used by COMPILE.  Defaults to NIL.
+ @end defvar
+ 
+ @defvar *DEFAULT-DATA-FILE*
+-Pakcage:COMPILER
++Package:COMPILER
+ Specifies the default setting of :DATA-FILE used by COMPILE.  Defaults to NIL.
+ @end defvar
+ 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl/eql.html gcl/info/gcl/eql.html
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl/eql.html	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/gcl/eql.html	2023-07-22 20:42:36.147346806 +0700
+@@ -57,7 +57,7 @@
+ <span id="Description_003a_003a-87"></span><h4 class="subsubheading">Description::</h4>
+ 
+ <p>The value of <b>eql</b> is <i>true</i> of two objects, <i>x</i> and
+-<i>y</i>, in the folowing cases:
++<i>y</i>, in the following cases:
+ </p><dl compact="compact">
+ <dt>1.</dt>
+ <dd><p>If <i>x</i> and <i>y</i> are <b>eq</b>.
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl/get.html gcl/info/gcl/get.html
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl/get.html	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/gcl/get.html	2023-07-22 20:42:36.147346806 +0700
+@@ -78,7 +78,7 @@
+ </p>
+ <p><b>setf</b> of <b>get</b> may be used to associate a new <i>object</i>
+ with an existing indicator already on the <i>symbol</i>&rsquo;s <i>property list</i>,
+-or to create a new assocation if none exists.
++or to create a new association if none exists.
+ </p>
+ <p>If there are multiple <i>properties</i>_1 with that <i>property indicator</i>,
+ <b>setf</b> of <b>get</b> associates the <i>new-value</i> 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl/intersection.html gcl/info/gcl/intersection.html
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl/intersection.html	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/gcl/intersection.html	2023-07-22 20:42:36.147346806 +0700
+@@ -99,7 +99,7 @@
+ If <tt>:key</tt> is not supplied or <b>nil</b>, the <i>list-1</i> and
+ <i>list-2</i> elements are used.
+ </p>
+-<p>For every pair that <i>satifies the test</i>,
++<p>For every pair that <i>satisfies the test</i>,
+ exactly one of the two elements of the pair will be put in the result.
+ No element from either <i>list</i> appears in the result that does not 
+ <i>satisfy the test</i> for
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl-si/Compilation.html gcl/info/gcl-si/Compilation.html
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl-si/Compilation.html	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/gcl-si/Compilation.html	2023-07-22 20:42:36.147346806 +0700
+@@ -312,32 +312,32 @@
+ address range.  By default, the range is set to begin at the starting
+ address of the .text section, and to end at the current end of the
+ running core.  These default values can be restored by calling
+-GPROF-SET with both argments set to 0.
++GPROF-SET with both arguments set to 0.
+ </p>
+ </dd></dl>
+ 
+ 
+ <dl>
+ <dt id="index-_002aDEFAULT_002dSYSTEM_002dP_002a">Variable: <strong>*DEFAULT-SYSTEM-P*</strong></dt>
+-<dd><p>Pakcage:COMPILER
++<dd><p>Package:COMPILER
+ Specifies the default setting of :SYSTEM-P used by COMPILE.  Defaults to NIL.
+ </p></dd></dl>
+ 
+ <dl>
+ <dt id="index-_002aDEFAULT_002dC_002dFILE_002a">Variable: <strong>*DEFAULT-C-FILE*</strong></dt>
+-<dd><p>Pakcage:COMPILER
++<dd><p>Package:COMPILER
+ Specifies the default setting of :C-FILE used by COMPILE.  Defaults to NIL.
+ </p></dd></dl>
+ 
+ <dl>
+ <dt id="index-_002aDEFAULT_002dH_002dFILE_002a">Variable: <strong>*DEFAULT-H-FILE*</strong></dt>
+-<dd><p>Pakcage:COMPILER
++<dd><p>Package:COMPILER
+ Specifies the default setting of :H-FILE used by COMPILE.  Defaults to NIL.
+ </p></dd></dl>
+ 
+ <dl>
+ <dt id="index-_002aDEFAULT_002dDATA_002dFILE_002a">Variable: <strong>*DEFAULT-DATA-FILE*</strong></dt>
+-<dd><p>Pakcage:COMPILER
++<dd><p>Package:COMPILER
+ Specifies the default setting of :DATA-FILE used by COMPILE.  Defaults to NIL.
+ </p></dd></dl>
+ 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl-si/User-Interface.html gcl/info/gcl-si/User-Interface.html
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl-si/User-Interface.html	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/gcl-si/User-Interface.html	2023-07-22 20:42:36.147346806 +0700
+@@ -114,7 +114,7 @@
+ <dl>
+ <dt id="index-_002aBREAK_002dENABLE_002a">Variable: <strong>*BREAK-ENABLE*</strong></dt>
+ <dd><p>Package:LISP
+-GCL specific:  When an error occurrs, control enters to the break loop only
++GCL specific:  When an error occurs, control enters to the break loop only
+ if the value of this variable is non-NIL.
+ </p>
+ 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl-si.info gcl/info/gcl-si.info
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/gcl-si.info	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/gcl-si.info	2023-07-22 20:42:36.147346806 +0700
+@@ -4228,19 +4228,19 @@
+      restored by calling GPROF-SET with both argments set to 0.
+ 
+  -- Variable: *DEFAULT-SYSTEM-P*
+-     Pakcage:COMPILER Specifies the default setting of :SYSTEM-P used by
++     Package:COMPILER Specifies the default setting of :SYSTEM-P used by
+      COMPILE. Defaults to NIL.
+ 
+  -- Variable: *DEFAULT-C-FILE*
+-     Pakcage:COMPILER Specifies the default setting of :C-FILE used by
++     Package:COMPILER Specifies the default setting of :C-FILE used by
+      COMPILE. Defaults to NIL.
+ 
+  -- Variable: *DEFAULT-H-FILE*
+-     Pakcage:COMPILER Specifies the default setting of :H-FILE used by
++     Package:COMPILER Specifies the default setting of :H-FILE used by
+      COMPILE. Defaults to NIL.
+ 
+  -- Variable: *DEFAULT-DATA-FILE*
+-     Pakcage:COMPILER Specifies the default setting of :DATA-FILE used
++     Package:COMPILER Specifies the default setting of :DATA-FILE used
+      by COMPILE. Defaults to NIL.
+ 
+  -- Variable: *FEATURES*
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/info/si-defs.texi gcl/info/si-defs.texi
+--- ../gcl-Version_2_6_15pre3.orig/gcl/info/si-defs.texi	2023-02-14 20:20:46.000000000 +0700
++++ gcl/info/si-defs.texi	2023-07-22 20:42:36.147346806 +0700
+@@ -507,7 +507,7 @@
+ @defun TOP-LEVEL ()
+ Package:SI
+ 
+-GCL specific: Starts the standard top-level listner of GCL.  When the GCL
++GCL specific: Starts the standard top-level listener of GCL.  When the GCL
+ process is invoked, it calls SI:TOP-LEVEL by (FUNCALL 'SI:TOP-LEVEL).
+      To change the top-level of GCL, redefine SI:TOP-LEVEL and save the core
+ imange in a file.  When the saved imange is invoked, it will start the
+@@ -926,7 +926,7 @@
+ Package: SI
+ Match regexp PATTERN in STRING starting in string starting at START
+ and ending at END.  Return -1 if match not found, otherwise
+-return the start index  of the first matchs.  The variable
++return the start index  of the first matches.  The variable
+ *MATCH-DATA* will be set to a fixnum array of sufficient size to hold
+ the matches, to be obtained with match-beginning and match-end.
+ If it already contains such an array, then the contents of it will
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/readme gcl/readme
+--- ../gcl-Version_2_6_15pre3.orig/gcl/readme	2023-02-14 20:20:46.000000000 +0700
++++ gcl/readme	2023-07-22 20:42:36.147346806 +0700
+@@ -160,7 +160,7 @@
+ and provides some other benefits.   It will be in a future release.
+ We will need people willing to beta test and isolate any bugs.
+ 
+-Additonal work planned or desired:
++Additional work planned or desired:
+ 
+   * Clean up distribution and installation.  Make it easier to link in
+ C code such as Novak's window stuff.   Faslink is not portable (since
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/RELEASE-2.5.1 gcl/RELEASE-2.5.1
+--- ../gcl-Version_2_6_15pre3.orig/gcl/RELEASE-2.5.1	2023-02-14 20:20:46.000000000 +0700
++++ gcl/RELEASE-2.5.1	2023-07-22 20:42:36.142346806 +0700
+@@ -133,6 +133,6 @@
+ 	1) Full ANSI compliance
+ 	2) Native optimized blas support
+ 	3) Integrate MPI support
+-	4) GCL as a suported GCC front end.
++	4) GCL as a supported GCC front end.
+ 	5) Performance/memory optimization
+ 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/xgcl-2/gcl_sysinit.lsp gcl/xgcl-2/gcl_sysinit.lsp
+--- ../gcl-Version_2_6_15pre3.orig/gcl/xgcl-2/gcl_sysinit.lsp	2023-02-14 20:20:46.000000000 +0700
++++ gcl/xgcl-2/gcl_sysinit.lsp	2023-07-22 20:42:36.148346806 +0700
+@@ -61,7 +61,7 @@
+ 
+ ;; invoke this to initialize maxima.
+ 
+-;; make this if you dont want the invocation done automatically.
++;; make this if you don't want the invocation done automatically.
+ ;(defentry user::user-init () "user_init")
+ 
+ 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/xgcl-2/gcl_Xakcl.example.lsp gcl/xgcl-2/gcl_Xakcl.example.lsp
+--- ../gcl-Version_2_6_15pre3.orig/gcl/xgcl-2/gcl_Xakcl.example.lsp	2023-02-14 20:20:46.000000000 +0700
++++ gcl/xgcl-2/gcl_Xakcl.example.lsp	2023-07-22 20:42:36.148346806 +0700
+@@ -227,7 +227,7 @@
+ ;;the drawing goes so fast that you can't see the text invert, so the
+ ;;function wiats for for about .2 seconds.  but it would be better to
+ ;;keep the text inverted until the button is released this is done by
+-;;setting the quit window to have buton release events as well and
++;;setting the quit window to have button release events as well and
+ ;;handling it appropriately
+ 
+ 			(dotimes (i 1500))
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/xgcl-2/gcl_Xinit.lsp gcl/xgcl-2/gcl_Xinit.lsp
+--- ../gcl-Version_2_6_15pre3.orig/gcl/xgcl-2/gcl_Xinit.lsp	2023-02-14 20:20:46.000000000 +0700
++++ gcl/xgcl-2/gcl_Xinit.lsp	2023-07-22 20:42:36.148346806 +0700
+@@ -27,10 +27,10 @@
+ ;;large extent.  it would be beneficial to use a X 11 version 4, manual
+ ;;in order to look up functions.  the only unique functions of Xakcl are those
+ ;;that involove manipulating C structs. all functions involved in creating
+-;;a C struct in X starts with a 'make' followed by the structure name.  all
++;;a C struct in X starts with a 'make' followed by the structure name.  All
+ ;;functions involved in getting a field of a C struct strats with the
+ ;;name of the C struct followed by the name of the field.  the
+-;;parameters it excepts is the variable contaning the structure.  all
++;;parameters it excepts is the variable containing the structure.  All
+ ;;functions to set a field of a C struct starts with 'set' followed by
+ ;;the C struct name followed by the field name.  these functions accept
+ ;;as parameter, the variable containing the struct and the value to be
+@@ -102,8 +102,8 @@
+ 
+ 
+ ;;;;;;;;;;;;;;;;;;;;;;
+-;;this is an example of creating a window.  this function takes care of
+-;;positioning, size and other attirbutes of the window.
++;;This is an example of creating a window.  This function takes care of
++;;positioning, size and other attributes of the window.
+ 
+ (defun open-window(&key (pos-x  *pos-x* ) (pos-y  *pos-y*) (win-width *win-width*) 
+ 			(win-height *win-height* ) 
+@@ -134,7 +134,7 @@
+     (Xmapwindow *default-display* a-window)
+ 
+ ;;the X server needs to have the output buffer sent to it before it can
+-;;process requests.  this is acomplished with XFlush or functions that
++;;process requests.  this is accomplished with XFlush or functions that
+ ;;read and manipulate the event queue.  remember to do this after
+ ;;operations that won't be calling an eventhandling function
+ 
+diff -r -U3 ../gcl-Version_2_6_15pre3.orig/gcl/xgcl-2/Xakcl.paper gcl/xgcl-2/Xakcl.paper
+--- ../gcl-Version_2_6_15pre3.orig/gcl/xgcl-2/Xakcl.paper	2023-02-14 20:20:46.000000000 +0700
++++ gcl/xgcl-2/Xakcl.paper	2023-07-22 20:42:36.148346806 +0700
+@@ -23,7 +23,7 @@
+ 		B. Creating and Using Windows
+ 
+ 			1. Creating Windows 
+-			2. Controling Window attributes
++			2. Controlling Window attributes
+ 			3. Getting Window Geometry
+ 
+ 		C. How to Use the Graphics Context
+@@ -64,11 +64,11 @@
+ 	Xakcl is the basic Xwindows library for Akcl lisp (the C
+ header files for the library correspond to Xlib.h, Xutil.h, and X.h).
+ Since Xakcl supports only the basic Xwindows library, Xakcl
+-programming is intended to be a low level programming aproach to
++programming is intended to be a low level programming approach to
+ graphics.  As a consequence, any Xwindows program written in C can
+ also be written in Xakcl, with little cost in performance.  The
+-primitive operations range from controling minute details in color, to
+-creating pixmaps, and configuring windows.  Thus a programer using
++primitive operations range from controlling minute details in color, to
++creating pixmaps, and configuring windows.  Thus a programmer using
+ xakcl can exploit both the extensibility of Xwindows graphics
+ capabilities and the ease of lisp programming.
+ 
+@@ -80,12 +80,12 @@
+ not required.  All X functions in Xakcl begin with the letter 'X' ,
+ unless otherwise mentioned.  The Syntax and names of Xakcl functions
+ are kept as closely to the X library functions as possible, so that a
+-user of the Xwindows' C libary will have no trouble in learning how to
++user of the Xwindows' C library will have no trouble in learning how to
+ use Xakcl.  Of course this also makes translation of X programs in C,
+ into Lisp easier.  For an introduction to X programming in C 'Xlib
+ Programming Manual for version 11' by Adrian Nye is suggested.  Also,
+ any reference manual on the X library would be helpful, since the
+-names of Xakcl functions are identical to those of the C libararies'
++names of Xakcl functions are identical to those of the C libraries'
+ functions.
+ 
+ 
+@@ -107,7 +107,7 @@
+ 
+ 
+ In the X windows system, a display on which graphics is being
+-done must be specified.  The display is initilized by calling the X
++done must be specified.  The display is initialised by calling the X
+ function XOpenDisplay.  For example,
+ 
+ 
+@@ -123,7 +123,7 @@
+ 
+ 	Creating many displays could be useful for applications with
+ many different windows, but there is a performance cost.  It usually
+-takes the X serever some time to return a display ID.
++takes the X server some time to return a display ID.
+ 
+ 
+ 
+@@ -144,7 +144,7 @@
+ 
+ 
+ The default screen is the screen on which graphics will be
+-drawn, and the root window, is the window that the X serever creates
++drawn, and the root window, is the window that the X server creates
+ from which all other windows are created.  This is the window that is
+ created with the call to xstart, and resides in the background.
+ 
+@@ -187,7 +187,7 @@
+ the graphics context, as well as the color and the way lines join (if
+ they join at a rounded edge or at an angle.)  For now, only the
+ creation of the graphics context will be of concern.  XDefaultGC will
+-get a default grapics context.  For example:
++get a default graphics context.  For example:
+ 
+ 
+ (setq *default-GC* (XDefaultGC  *default-display*  *default-screen*))
+@@ -211,7 +211,7 @@
+ this case, Black in the GC to draw the string.  Also, XDrawImageString
+ could be used.  This routine, X draws the string in the foreground
+ pixel and fills the background with the background pixel.  If the
+-foregorund and background pixels were switched than the string would
++foreground and background pixels were switched than the string would
+ be white letters on a black background.  This is an example of
+ highlighting text.
+ 
+@@ -226,7 +226,7 @@
+ black pixel created by XBlackPixel is an example of a pixel value.  A
+ colormap may or may not have the exact color that is being requested.
+ The closest pixel value is given to the user.  In order to get a set
+-of specific colors it is necesary to create a unique colormap, however
++of specific colors it is necessary to create a unique colormap, however
+ for most applications, the default colormap will do.  An example of
+ creating a default colormap is shown below.
+ 
+@@ -296,7 +296,7 @@
+ 
+ 	Like all Xwindows structures in Xakcl, XSizeHints can be
+ created using the function make followed by the type name of the
+-struture (note however that unlike Xsizehints, the graphics context is
++structure (note however that unlike Xsizehints, the graphics context is
+ created using the X function XCreateGC.  The reason is that X provides
+ a means of creating this structure, while the 'make' facility is
+ provided to make C's struct in lisp).  The fields in the structure is
+@@ -319,7 +319,7 @@
+ the display, the window being managed, the window name, and the icon
+ name.  XSetStandardProperties also expects three other parameters, an
+ icon_pixmap, which will represent the window when it is iconized, and
+-two arguments coressponding to resource information. Both these
++two arguments corresponding to resource information. Both these
+ featrues are beyond the scope of this paper (see 'Xlib Programming
+ Manual for version 11' for more information).  After
+ XSetStandardProperties tells the window manager what to do, the window
+@@ -329,7 +329,7 @@
+ (Xmapwindow *default-display* a-window)
+ 
+ 	The above function will map the window.  Only one last
+-function needs to be caled for a window to appear on the screen.  This
++function needs to be called for a window to appear on the screen.  This
+ function is XFlush.  This function, or another function that affects
+ the event queue (discussed later) must be called whenever there is a
+ drawing request for the X server.
+@@ -344,8 +344,8 @@
+ to change window attributes.  The attributes could be changed directly
+ by calling XChangeWindowAttributes with one of the parameters being a
+ C structure, with the new information, and another parameter to
+-specifiy which attribute is being changed.  This could be clumbersome
+-and inefficeint in lisp, but fortunately X usually provides a
++specify which attribute is being changed.  This could be clumbersome
++and inefficient in lisp, but fortunately X usually provides a
+ functional way of doing a task.  Some functions for changing the
+ window attributes are listed.  Like most functions in X the names are
+ self descriptive of the function.
+@@ -362,10 +362,10 @@
+ 
+ 
+ 	As can be seen, the regularity in nameing conventions of X
+-routines.  Only the function XSelectInput will be discussd in this
++routines.  Only the function XSelectInput will be discussed in this
+ report (see section E).  The list shown is meant to demonstrate how X
+-names functions, and how X can provid for functional equivalents for
+-most operations.  (Ofcourse any function that is not provided by X can
++names functions, and how X can provide for functional equivalents for
++most operations.  (Of course any function that is not provided by X can
+ be written in lisp using primitive operations like
+ XChangeWindowAttributes.  The same applies for all objects in X.)
+ 
+@@ -386,16 +386,16 @@
+ 	*height-return* *border-width-return* *depth-return*) 
+ 
+ 	The values that are returned by XGetGeometry is pointed to by
+-the parameters that are denoted by teh word 'return'.  A root of a
++the parameters that are denoted by the word 'return'.  A root of a
+ window can be extracted, along with it's position, and size. Its
+ border width can also be returned, along with it's depth ( a depth
+ tells X how many colors can be drawn for a drawble).  This functions
+-also demonstrates how poitners are used in Xakcl to return multiple
++also demonstrates how pointers are used in Xakcl to return multiple
+ values.  It is necessary to allocate an area of memory in order to
+ write into that memory locations.  The functions int-array and
+ char-array will create a C array of integers and characters
+ respectively.  A pointer to the array is returned. XGetGemoetry
+-expects pointers to integers so it is necessary to alocate integer
++expects pointers to integers so it is necessary to allocate integer
+ arrays of one element.  For example:
+ 
+ 
+@@ -449,7 +449,7 @@
+ 	XSetForeground and XSetBackground sets the foreground and
+ background pixel as mentioned in section A.  In order to Allocate a
+ pixel besides black and white, a call to XAllocNamedColor must be
+-done.  XAllocNamedColor needs two Xcolor structrues, so they must be
++done.  XAllocNamedColor needs two Xcolor structures, so they must be
+ created as well. For example:
+ 
+ (setq pixel-xcolor (make-Xcolor))	
+@@ -457,7 +457,7 @@
+ (XAllocNamedColor display colormap  (get-c-string color) pixel-xcolor exact-rgb)
+ 
+ 	The above function will return a pixel value in the structure
+-pixel-color.  this informaion can be extracted with (Xcolor-pixel
++pixel-color.  this information can be extracted with (Xcolor-pixel
+ pixel-xcolor).  XAllocNamedColo also expects a colormap (the default
+ colormap will do), a display, and a String specifying the color (for a
+ list of colors see the file rgb.txt in /usr/lib/X11). Thus the
+@@ -466,8 +466,8 @@
+ 
+ (Xsetforeground display GC (Xcolor-pixel  pixel-xcolor))
+ 
+-	Similair to Xsetforeground, XSetBackGround will cause all
+-drawings needing the background color to use the sepcified pixel
++	Similar to Xsetforeground, XSetBackGround will cause all
++drawings needing the background color to use the specified pixel
+ value.
+ 
+ 
+@@ -486,7 +486,7 @@
+ cap-style and join-style are constants.  The default styles are
+ LineSolid, CapButt, and JoinMitter.  This will make lines appear
+ solid.  They will join at a sharp angle and the lines will end in a
+-flat edge.  See any X refernce manual for the complete options on the
++flat edge.  See any X reference manual for the complete options on the
+ line styles.
+ 
+ 
+@@ -514,7 +514,7 @@
+ 
+ iv. XSetFunction
+ 
+-	Xwindows draws by applying bit operations on the pixel vlaues
++	Xwindows draws by applying bit operations on the pixel values
+ on the screen along with a mask that it creates called the plan_mask.
+ Most often only the pixel already on the screen is manipulated.  This
+ default logical operation is GXcopy (which is the default).  However
+@@ -528,9 +528,9 @@
+ 	The above function will make X draw ghost images in mono color
+ screens using the function Xor.  The pixel value on the screen is
+ Xored with the pixel value of the plan_mask (which is derived from the
+-foregroudn color).  On color screens the foregorund color must be set
++foreground color).  On color screens the foreground color must be set
+ to (logxor foreground-pixel background-pixel) in order for ghosting
+-effects to occurr.  Below is the complete function for ghosting
++effects to occur.  Below is the complete function for ghosting
+ effects.
+ 
+ (Xsetforeground  *default-display* *default-GC* (logxor foreground-pixel background-pixel ))
+@@ -541,7 +541,7 @@
+ 
+ 	In the above function, the foreground-pixel and
+ background-pixel must be extracted from the graphics context.  In
+-order to get information from the graphcis context the function
++order to get information from the graphics context the function
+ XGetGCVlues must be used.  XGetGCVlues is an example of a X function
+ that expects a structure, and a value mask.  Below are functions for
+ extracted the foreground color from the graphics context.  Other
+@@ -591,7 +591,7 @@
+ II. Drawing Rectangles
+ 
+ 	Drawing Rectangles is similar to drawing lines.  The only
+-difference is that the size of the recatangle must be specified.
++difference is that the size of the rectangle must be specified.
+ 
+ 
+ 	 (XDrawRectangle *default-display* a-window *default-GC* 
+@@ -604,7 +604,7 @@
+ 
+ II. Drawing Arcs.
+ 
+-	Arcs can form enclosed areas such as elipses or cirlces or
++	Arcs can form enclosed areas such as ellipses or circles or
+ they could be a curved line.  The function XDrawArc will draw arcs.
+ 
+ 
+@@ -613,7 +613,7 @@
+ 
+ 	This function call will draw a circle.  The Arc will be
+ bounded by a rectangle.  The points 100 100 correspond to the upper
+-left edge of the recatangle. 10 and 10 specifies the width and height
++left edge of the rectangle. 10 and 10 specifies the width and height
+ respectively.  The starting and ending position of the arc must also
+ be specified.  These two points are in sixty-fourths of a degrees.
+ The first angle is relative to the three-o'clock position and the
+@@ -630,18 +630,18 @@
+ 
+ 	With the font loaded in the Graphics Context as shown in
+ Section C, several functions can be called in order to draw text.
+-Only XDrawString will be dicussed here, but the other functions are
++Only XDrawString will be discussed here, but the other functions are
+ similar.
+ 
+ (XDrawString  *default-display*   a-window  *default-GC*  10 15 (get-c-string "hello") 4)
+ (Xflush *default-display*)
+ 
+ 	The above function will draw the string 'hello' at positions
+-10, 15 with the font specified in the default grpahics context.
++10, 15 with the font specified in the default graphics context.
+ XDrawString also expects the length of the string (in this case 4),
+ and the display.
+ 
+-	Often it is necesssary to the size of the string (the
++	Often it is necessary to the size of the string (the
+ rectangle that bounds the string). This can be done with a call to
+ XTextExtents.
+ 
+@@ -664,9 +664,9 @@
+ while the descent tells how far below).  After a call to XTextExtents,
+ the ascent will be have the maximum ascent of all the characters in
+ the string.  Likewise the descent will have the maximum descent of all
+-the characters.  The width will be the sum of the characer width of
++the characters.  The width will be the sum of the character width of
+ all the characters in the string (thus the width of the string in
+-number of pixels).  From this information, the user shouldbe able to
++number of pixels).  From this information, the user should be able to
+ position text precisely on the screen.
+ 
+ 
+@@ -677,15 +677,15 @@
+ 
+ 	So far only request to the X server to do output on the screen
+ have been discussed.  X also has a means of getting information about
+-what is inputed by a user as well.  The inputs can range from moving
++what is inputted by a user as well.  The inputs can range from moving
+ or clicking the mouse to keys being pressed on the keyboard.  The
+-input also encompases events like a window being uncovered or exposed
++input also encompasses events like a window being uncovered or exposed
+ by another window, or a window being resized.  
+ 
+ 
+ I.  Setting the Input
+ 
+-	These inputs are called Events.  The Events themseleves only
++	These inputs are called events.  The events themselves only
+ have meaning when they pertain to a window.  In other words, events
+ occur in windows.  Thus an attribute of the window must be set.  The
+ function XSelectInput must be used.
+@@ -698,7 +698,7 @@
+ seen this is specified using mask (for other mask see a Xlib manual or
+ the file X.lsp or X.h).
+ 
+-	After Specifiying the input, all events that occur in that
++	After specifying the input, all events that occur in that
+ will go on the event queue.  The event queue is a queue of what events
+ have occurred, the first one being on top.  The client can both get
+ information form the queue and manipulate the queue.  
+@@ -762,12 +762,12 @@
+ 
+ 		F. Conclusion
+ 
+-	With the commands demonstarted in this tutorial, most
++	With the commands demonstrated in this tutorial, most
+ applications can be managed.  Windows can be created, and graphics
+ operations can be performed.  For more complex applications a widget
+ set can be created similar to the X Intrinsics library and the Athena
+ Widget Set.  For a lisp like implementation of widgets and an advance
+-aplications see the GWM application, in the GWM Manual by Colas
++applications see the GWM application, in the GWM Manual by Colas
+ Nahaboo.  GWM is a generic window manager, that is similar to Xakcl.
+ It supports objects that are similar to Widgets in most C Xwindows
+ libraries.

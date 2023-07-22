@@ -20,8 +20,13 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test" # Tests are not working here
 
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/django[${PYTHON_USEDEP}]
+	dev-python/confusable_homoglyphs[${PYTHON_USEDEP}]
+"
 
-distutils_enable_tests pytest
+python_test() {
+	"${EPYTHON}" runtests.py \
+		|| die "Tests failed with ${EPYTHON}"
+}

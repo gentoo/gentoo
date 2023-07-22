@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-07-22)
+# Upstream unresponsive and package is pretty much dead. dev-python/tqdm
+# is a modern and fast replacement for dev-python/progressbar.
+# Removal on 2023-08-21. Bug #909929, #910031.
+dev-python/progressbar
+sys-apps/gcp
+
+# Hans de Graaff <graaff@gentoo.org> (2023-07-22)
+# Does not compile with modern compilers. Last upstream release in
+# 2011. No activity upstream. No reverse dependencies. Masked for
+# removal on 2023-08-22.
+dev-ruby/fast_xs
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-07-21)
 # Broken runtime with ncurses version since last 2 years (unusable at
 # all), no upstream activity of any sort since 2016.

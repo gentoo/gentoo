@@ -1,11 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-# The order is important here! Both, cmake and xdg define src_prepare.
-# We need the one from cmake
-inherit bash-completion-r1 xdg cmake
+inherit cmake
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -13,9 +11,9 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/LMMS/lmms.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${P/_/-}.tar.xz -> ${P}.tar.xz"
+	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${PN}_${PV/_/-}.tar.xz"
+	S="${WORKDIR}/${PN}"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${P/_/-}"
 fi
 
 LICENSE="GPL-2 LGPL-2"
@@ -68,9 +66,13 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( README.md doc/AUTHORS )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-9999-no_compress_man.patch" #733284
+	"${FILESDIR}/${PN}-9999-plugin-path.patch" #907285
+)
+
 src_configure() {
-	local mycmakeargs+=(
-		-DBASHCOMP_PKG_PATH="$(get_bashcompdir)"
+	local mycmakeargs=(
 		-DUSE_WERROR=FALSE
 		-DWANT_CAPS=FALSE
 		-DWANT_TAP=FALSE
@@ -91,5 +93,6 @@ src_configure() {
 		-DWANT_VST=$(usex vst)
 		-DWANT_SF2=$(usex fluidsynth)
 	)
+
 	cmake_src_configure
 }

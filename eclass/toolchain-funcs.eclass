@@ -338,7 +338,7 @@ tc-is-static-only() {
 tc-stack-grows-down() {
 	# List the few that grow up.
 	case ${ARCH} in
-	hppa|metag) return 1 ;;
+		hppa|metag) return 1 ;;
 	esac
 
 	# Assume all others grow down.
@@ -535,7 +535,7 @@ tc-ld-force-bfd() {
 
 	# Set up LD to point directly to bfd if it's available.
 	# We need to extract the first word in case there are flags appended
-	# to its value (like multilib).  #545218
+	# to its value (like multilib), bug #545218.
 	local ld=$(tc-getLD "$@")
 	local bfd_ld="${ld%% *}.bfd"
 	local path_ld=$(type -P "${bfd_ld}" 2>/dev/null)
@@ -543,24 +543,17 @@ tc-ld-force-bfd() {
 
 	# Set up LDFLAGS to select bfd based on the gcc / clang version.
 	local fallback="true"
-	if tc-is-gcc; then
-		local major=$(gcc-major-version "$@")
-		local minor=$(gcc-minor-version "$@")
-		if [[ ${major} -gt 4 ]] || [[ ${major} -eq 4 && ${minor} -ge 8 ]]; then
-			# gcc-4.8+ supports -fuse-ld directly.
-			export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
-			fallback="false"
-		fi
-	elif tc-is-clang; then
-		local major=$(clang-major-version "$@")
-		local minor=$(clang-minor-version "$@")
-		if [[ ${major} -gt 3 ]] || [[ ${major} -eq 3 && ${minor} -ge 5 ]]; then
-			# clang-3.5+ supports -fuse-ld directly.
-			export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
-			fallback="false"
-		fi
+	if tc-is-gcc || tc-is-clang ; then
+		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
 	fi
+
 	if [[ ${fallback} == "true" ]] ; then
+		# TODO: Clean this up, or is it useful for when the compiler can't
+		# be detected or for rubbish shims? Might be helpful for cases like
+		# when porting to new linker which GCC doesn't yet recognise (less
+		# of a problem for Clang as it accepts absolute paths), like was
+		# the case for mold.
+		#
 		# <=gcc-4.7 and <=clang-3.4 require some coercion.
 		# Only works if bfd exists.
 		if [[ -e ${path_ld} ]] ; then
@@ -647,6 +640,7 @@ tc-has-tls() {
 		return *i ? j : *i;
 	}
 	EOF
+
 	local flags
 	case $1 in
 		-s) flags="-S";;
@@ -654,6 +648,7 @@ tc-has-tls() {
 		-l) ;;
 		-*) die "Usage: tc-has-tls [-c|-l] [toolchain prefix]";;
 	esac
+
 	: "${flags:=-fPIC -shared -Wl,-z,defs}"
 	[[ $1 == -* ]] && shift
 	$(tc-getCC "$@") ${flags} "${base}.c" -o "${base}" >&/dev/null
@@ -731,7 +726,7 @@ tc-ninja_magic_to_arch() {
 		# since our usage of tc-arch is largely concerned with
 		# normalizing inputs for testing ${CTARGET}, let's filter
 		# other cross targets (mingw and such) into the unknown.
-		*)			echo unknown;;
+		*)		echo unknown;;
 	esac
 }
 # @FUNCTION: tc-arch-kernel
@@ -781,7 +776,7 @@ tc-endian() {
 		sh*)		echo little;;
 		sparc*)		echo big;;
 		x86_64*)	echo little;;
-		*)			echo wtf;;
+		*)		echo wtf;;
 	esac
 }
 
@@ -1058,18 +1053,17 @@ gen_usr_ldscript() {
 
 	tc-is-static-only && return
 
-	# We only care about stuffing / for the native ABI. #479448
+	# We only care about stuffing / for the native ABI, bug #479448
 	if [[ $(type -t multilib_is_native_abi) == "function" ]] ; then
 		multilib_is_native_abi || return 0
 	fi
 
-	# Eventually we'd like to get rid of this func completely #417451
+	# Eventually we'd like to get rid of this func completely, bug #417451
 	case ${CTARGET:-${CHOST}} in
-	*-darwin*) ;;
-	*-android*) return 0 ;;
-	*linux*)
-		use prefix && return 0 ;;
-	*) return 0 ;;
+		*-darwin*) ;;
+		*-android*) return 0 ;;
+		*linux*) use prefix && return 0 ;;
+		*) return 0 ;;
 	esac
 
 	# Just make sure it exists
