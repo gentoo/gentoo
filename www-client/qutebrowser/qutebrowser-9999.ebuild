@@ -88,11 +88,9 @@ src_prepare() {
 			-i ${PN}/config/qtargs.py || die
 	fi
 
-	# default to the requested Qt backend, current default is PyQt5 but
-	# sed unconditionally for safety in 9999 given this is going to change
-	# (note that using sed is the suggested solution by upstream for now)
-	sed -e "/^_DEFAULT_WRAPPER =/s/=.*/= \"PyQt$(usex qt6 6 5)\"/" \
-		-i ${PN}/qt/machinery.py || die
+	# ensure the requested backend is used in case multiple are available
+	sed -e "/^_WRAPPER_OVERRIDE =/s/None/\"PyQt$(usex qt6 6 5)\"/" \
+		-i qutebrowser/qt/machinery.py || die
 
 	# let eclass handle python
 	sed -i '/setup.py/d' misc/Makefile || die
@@ -130,9 +128,12 @@ python_test() {
 		# not worth running dbus over
 		tests/unit/browser/test_notification.py::TestDBus
 		# bug 819393
-		tests/unit/commands/test_userscripts.py::test_custom_env[_POSIXUserscriptRunner]
-		# tests that don't know about our newer qtwebengine:5
+		tests/unit/commands/test_userscripts.py::test_custom_env\[_POSIXUserscriptRunner\]
+		# test does not know about our newer fixed qtwebengine:5
 		tests/unit/browser/webengine/test_webenginedownloads.py::TestDataUrlWorkaround
+		# needs _WRAPPER_OVERRIDE = None, but we have changed it
+		tests/unit/test_qt_machinery.py::TestSelectWrapper::test_autoselect_by_default
+		tests/unit/test_qt_machinery.py::TestInit::test_none_available_{implicit,explicit}
 	)
 	# qtargs are mangled with widevine+prefix
 	use widevine && use prefix && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
