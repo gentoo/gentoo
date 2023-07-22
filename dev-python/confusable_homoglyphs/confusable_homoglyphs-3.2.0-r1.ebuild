@@ -21,6 +21,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
+
 S="${WORKDIR}"/${PN}-${CommitId}
 
 distutils_enable_tests pytest
