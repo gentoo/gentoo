@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.3.0-libdir.patch
 	"${FILESDIR}"/${PN}-5.18.0-docdir.patch
 	"${FILESDIR}"/${PN}-6.3.0-gettext-0.22.patch
+	"${FILESDIR}"/${PN}-6.4.0-lfs64.patch
 )
 
 src_prepare() {

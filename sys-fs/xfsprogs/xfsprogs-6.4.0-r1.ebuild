@@ -28,6 +28,7 @@ RDEPEND+=" selinux? ( sec-policy/selinux-xfs )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.3.0-libdir.patch
 	"${FILESDIR}"/${PN}-5.18.0-docdir.patch
+	"${FILESDIR}"/${PN}-6.4.0-lfs64.patch
 )
 
 src_prepare() {
