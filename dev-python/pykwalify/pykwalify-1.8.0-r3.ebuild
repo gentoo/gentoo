@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python lib/cli for JSON/YAML schema validation"
-HOMEPAGE="https://pypi.org/project/pykwalify/ https://github.com/Grokzen/pykwalify"
+HOMEPAGE="
+	https://github.com/Grokzen/pykwalify/
+	https://pypi.org/project/pykwalify/
+"
 
 SLOT="0"
 LICENSE="MIT"
