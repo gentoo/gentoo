@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/910739
+https://github.com/numpy/numpy/issues/24239
+https://github.com/numpy/numpy/pull/24240
+
+From f5eb12cafc99bb33dad6535dacab2f592aafb2b0 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 23 Jul 2023 21:31:08 +0100
+Subject: [PATCH] BUG: Fix C types in scalartypes
+
+https://github.com/numpy/numpy/pull/23746 introduced a fast path for scalar
+int conversions, but the map between Python types and C types was subtly
+wrong.
+
+This fixes tests on at least ppc32 (big-endian).
+
+Many thanks to Sebastian Berg for debugging this with me and pointing out
+what needed to be fixed.
+
+Closes #24239.
+
+Fixes: 81caed6e3c34c4bf4b22b4f6167e816ba2a3f73c
+--- a/numpy/core/src/multiarray/scalartypes.c.src
++++ b/numpy/core/src/multiarray/scalartypes.c.src
+@@ -301,10 +301,10 @@ genint_type_str(PyObject *self)
+             item = PyLong_FromUnsignedLong(*(uint32_t *)val);
+             break;
+         case NPY_LONG:
+-            item = PyLong_FromLong(*(int64_t *)val);
++            item = PyLong_FromLong(*(long *)val);
+             break;
+         case NPY_ULONG:
+-            item = PyLong_FromUnsignedLong(*(uint64_t *)val);
++            item = PyLong_FromUnsignedLong(*(unsigned long *)val);
+             break;
+         case NPY_LONGLONG:
+             item = PyLong_FromLongLong(*(long long *)val);
