@@ -6,8 +6,16 @@ EAPI=7
 inherit acct-user
 
 DESCRIPTION="User for app-admin/logcheck"
+IUSE="systemd"
 
 ACCT_USER_GROUPS=( "logcheck" )
 ACCT_USER_ID="284"
 
 acct-user_add_deps
+
+pkg_setup() {
+	# Allow the 'logcheck' user to view the systemd journal.
+	if use systemd; then
+		ACCT_USER_GROUPS+=( systemd-journal )
+	fi
+}
