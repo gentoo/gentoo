@@ -11,7 +11,7 @@ HOMEPAGE="https://gcmd.github.io/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc exif gsf pdf samba taglib test +unique"
+IUSE="doc exif gsf pdf samba taglib test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -23,7 +23,6 @@ RDEPEND="
 	pdf? ( >=app-text/poppler-0.18 )
 	samba? ( gnome-base/gvfs[samba] )
 	taglib? ( >=media-libs/taglib-1.4 )
-	unique? ( >=dev-libs/libunique-0.9.3:1 )
 "
 BDEPEND="
 	doc? ( app-text/yelp-tools )
@@ -45,7 +44,6 @@ src_configure() {
 		$(meson_feature pdf poppler)
 		$(meson_feature samba)
 		$(meson_feature taglib)
-		$(meson_feature unique)
 		$(meson_feature test tests)
 		$(meson_use doc help)
 	)
