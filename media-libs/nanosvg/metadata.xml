@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>slashbeast@gentoo.org</email>
+		<name>Piotr Karbowski</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">fltk/nanosvg</remote-id>
+	</upstream>
+</pkgmetadata>
