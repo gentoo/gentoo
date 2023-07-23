@@ -347,16 +347,6 @@ dev-ruby/multi_test:0
 games-action/descent3
 games-action/descent3-demo
 
-# Hans de Graaff <graaff@gentoo.org> (2023-06-23)
-# Deprecated upstream, who recommends to use the Open3 method instead.
-# No reverse dependencies. Masked for removal on 2023-07-23.
-dev-ruby/subexec
-
-# Hans de Graaff <graaff@gentoo.org> (2023-06-23)
-# Deprecated package. Renamed to dev-ruby/optimist by upstream. No
-# reverse dependencies. Masked for removal on 2023-07-23.
-dev-ruby/trollop
-
 # Sam James <sam@gentoo.org> (2023-06-23)
 # Segfaults with non-bison yacc.
 =app-shells/bash-5.2_p15-r4
