@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -39,9 +39,22 @@ python_test() {
 
 	local EPYTEST_DESELECT=(
 		# TODO
+		docs/comparing.txt::line:642,column:1
 		testfixtures/tests/test_shouldwarn.py::ShouldWarnTests::test_filter_missing
 		testfixtures/tests/test_shouldwarn.py::ShouldWarnTests::test_filter_present
 	)
+
+	case ${EPYTHON} in
+		python3.12)
+			EPYTEST_DESELECT+=(
+				# https://github.com/simplistix/testfixtures/issues/183
+				docs/comparing.txt::line:784,column:1
+				docs/comparing.txt::line:823,column:1
+				testfixtures/tests/test_tempdirectory.py::TempDirectoryTests::test_as_path_relative_sequence
+				testfixtures/tests/test_tempdirectory.py::TempDirectoryTests::test_as_path_relative_string
+			)
+			;;
+	esac
 
 	epytest
 }

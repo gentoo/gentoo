@@ -54,6 +54,9 @@ DEPEND="${RDEPEND}
 	)"
 BDEPEND="virtual/pkgconfig"
 
+# bug #898362, gnulib check explicitly looks for MIN in some headers
+QA_CONFIG_IMPL_DECL_SKIP="MIN"
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }

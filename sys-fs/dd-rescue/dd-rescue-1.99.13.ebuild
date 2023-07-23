@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.99.13-musl.patch
+)
+
 src_prepare() {
 	default
 

@@ -10,6 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gitlab">warsaw/flufl.lock</remote-id>
-		<remote-id type="pypi">flufl-lock</remote-id>
+		<remote-id type="pypi">flufl.lock</remote-id>
 	</upstream>
 </pkgmetadata>

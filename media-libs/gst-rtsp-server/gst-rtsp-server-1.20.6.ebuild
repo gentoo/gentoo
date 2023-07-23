@@ -9,7 +9,7 @@ DESCRIPTION="A GStreamer based RTSP server"
 HOMEPAGE="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="examples +introspection static-libs"
 
 # gst-plugins-base for many used elements and API

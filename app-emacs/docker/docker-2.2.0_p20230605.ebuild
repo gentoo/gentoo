@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/Silex/${PN}.el/archive/${COMMIT}.tar.gz
 		-> ${PN}.el-${PV}.tar.gz"
 	S="${WORKDIR}"/${PN}.el-${COMMIT}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"

@@ -6,7 +6,8 @@ inherit elisp-common flag-o-matic
 
 DESCRIPTION="GNU Common Lisp"
 HOMEPAGE="https://www.gnu.org/software/gcl/gcl.html"
-SRC_URI="http://git.savannah.gnu.org/cgit/gcl.git/snapshot/${PN}-Version_2_6_15pre3.tar.gz"
+SRC_URI="http://git.savannah.gnu.org/cgit/gcl.git/snapshot/${PN}-Version_2_6_15pre3.tar.gz
+	https://dev.gentoo.org/~grozin/${PF}-spelling.patch.gz"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
@@ -26,7 +27,7 @@ DEPEND="${RDEPEND}
 	app-text/texi2html
 	>=sys-devel/autoconf-2.52"
 
-PATCHES=( "${FILESDIR}"/${PF}-spelling.patch )
+PATCHES=( "${WORKDIR}"/${PF}-spelling.patch )
 S="${WORKDIR}"/${PN}-Version_2_6_15pre3/${PN}
 
 src_configure() {
