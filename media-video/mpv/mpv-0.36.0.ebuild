@@ -245,12 +245,12 @@ src_configure() {
 
 		# notable options left to automagic
 		#dmabuf-wayland: USE="drm wayland" + plus memfd_create support
-		#libplacebo-next: USE="libplacebo" + >=libplacebo-5.266
+		#libplacebo-next: USE="libplacebo" + >=libplacebo-5.264
 		#vulkan-interop: USE="libplacebo vulkan" + ffmpeg-9999 currently
 		# TODO?: perhaps few more similar compound options should be left auto
 	)
 
-	has_version '>=media-libs/libplacebo-5.266' ||
+	has_version '>=media-libs/libplacebo-5.264' ||
 		ewarn "${PN}'s gpu-next video output requires ${_} to be used"
 
 	meson_src_configure
