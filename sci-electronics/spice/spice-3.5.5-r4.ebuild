@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit flag-o-matic toolchain-funcs
 
@@ -42,6 +42,7 @@ src_prepare() {
 		conf/linux || die
 	sed -i -e "s:head -1:head -n 1:" util/build || die
 	eapply "${FILESDIR}"/${P}-gcc-4.1.patch
+	eapply "${FILESDIR}"/${P}-arlocal.patch
 
 	# fix possible buffer overflow (bug #339539)
 	sed -i -e "s:fgets(buf, BSIZE_SP:fgets(buf, sizeof(buf):g" \
