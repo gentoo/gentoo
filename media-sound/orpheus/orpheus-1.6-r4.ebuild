@@ -11,7 +11,7 @@ SRC_URI="http://konst.org.ua/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="sys-libs/ncurses:0=
 	media-libs/libvorbis
