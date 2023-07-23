@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 virtualx
@@ -36,5 +36,10 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# hangs
+		tests/test_mpv.py::TestLifecycle::test_wait_for_property_event_overflow
+	)
+
 	virtx epytest
 }
