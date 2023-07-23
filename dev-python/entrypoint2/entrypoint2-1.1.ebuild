@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
 DESCRIPTION="Easy to use command-line interface for python modules"
-HOMEPAGE="https://github.com/ponty/entrypoint2"
+HOMEPAGE="
+	https://github.com/ponty/entrypoint2/
+	https://pypi.org/project/entrypoint2/
+"
 SRC_URI="
 	https://github.com/ponty/entrypoint2/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
