@@ -1,6 +1,10 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2023-07-23)
+# www-apache/passenger not available for riscv yet
+www-servers/nginx nginx_modules_http_passenger
+
 # Mike Gilbert <floppym@gentoo.org> (2023-05-27)
 # sd-boot should work here.
 sys-apps/systemd -boot -gnuefi
