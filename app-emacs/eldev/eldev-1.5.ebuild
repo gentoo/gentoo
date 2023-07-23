@@ -7,10 +7,17 @@ inherit elisp
 
 DESCRIPTION="Emacs Lisp Development Tool"
 HOMEPAGE="https://github.com/doublep/eldev/"
-SRC_URI="https://github.com/doublep/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/doublep/${PN}.git"
+else
+	SRC_URI="https://github.com/doublep/${PN}/archive/${PV}.tar.gz
+		-> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86"
+fi
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86"
 SLOT="0"
 
 DOCS=( README.adoc )
