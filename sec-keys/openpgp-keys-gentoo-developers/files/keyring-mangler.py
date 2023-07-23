@@ -53,6 +53,7 @@ with open(active_devs, "r", encoding="utf8") as keyring:
 
 good_keys = []
 
+# TODO: Use new 'problems' key from python-gnupg-0.5.1?
 for key in gpg.list_keys(sigs=True):
     print(f"Checking key={key['keyid']}, uids={key['uids']}")
 
