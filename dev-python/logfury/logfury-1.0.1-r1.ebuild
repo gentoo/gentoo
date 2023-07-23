@@ -23,6 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/testfixtures[${PYTHON_USEDEP}]
 	)
