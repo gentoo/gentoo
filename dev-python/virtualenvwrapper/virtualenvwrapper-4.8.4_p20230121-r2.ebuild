@@ -44,15 +44,14 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/virtualenvwrapper-${PV}-remove-use-of-which.patch"
+	"${FILESDIR}/virtualenvwrapper-${PV}-override-default-python-executable.patch"
 )
 
 src_prepare() {
 	default
 
 	# specify default python interpeter to align with PYTHON_SINGLE_TARGET
-	sed -i -e \
-		"s|\(_virtualenvwrapper_python_executable=\"\$(\).\w\((\"\)|\1command -v ${EPYTHON}\2|" \
-		virtualenvwrapper.sh || die
+	sed -i -e "s:@@GENTOO_PYTHON_EXECUTABLE@@:${PYTHON}:" virtualenvwrapper.sh || die
 
 	# remove tests which require an internet connection
 	rm tests/test_mkvirtualenv_install.sh || die
