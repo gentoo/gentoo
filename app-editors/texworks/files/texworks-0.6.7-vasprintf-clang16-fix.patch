@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/882461
+Reverting commit ccf692bb38c43a38f8e9f755dd48451c6f6ad430
+--- a/modules/synctex/CMakeLists.txt
++++ b/modules/synctex/CMakeLists.txt
+@@ -26,6 +26,4 @@ endif()
+ 
+ # SyncTeX uses vasprintf which is not in POSIX; thus gcc prints a warning unless
+ # _GNU_SOURCE is defined. Other compilers seem to be fine.
+-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+-  target_compile_definitions(SyncTeX PRIVATE _GNU_SOURCE)
+-endif()
++target_compile_definitions(SyncTeX PRIVATE _GNU_SOURCE)
