@@ -13,7 +13,7 @@ DESCRIPTION="Backend implementation for xdg-desktop-portal that is using Qt/KDE 
 
 LICENSE="LGPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 # dev-qt/qtgui: QtXkbCommonSupport is provided by either IUSE libinput or X
