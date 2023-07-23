@@ -9,4 +9,7 @@
     <flag name="rar">Rar archive support</flag>
     <flag name="zip">Zip archive support</flag>
   </use>
+  <upstream>
+    <remote-id type="github">ahodesuka/ahoviewer</remote-id>
+  </upstream>
 </pkgmetadata>
