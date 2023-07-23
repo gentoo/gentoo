@@ -37,6 +37,7 @@ RDEPEND="
 	')
 	dev-qt/qtcore:5[icu]
 	dev-qt/qtgui:5[png]
+	dev-qt/qtsql:5[sqlite]
 	pdf? ( <www-plugins/pdfjs-3 )
 	widevine? ( www-plugins/chrome-binary-plugins )"
 BDEPEND="

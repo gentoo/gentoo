@@ -34,7 +34,7 @@ RDEPEND="
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
 	')
 	qt6? (
-		dev-qt/qtbase:6[icu]
+		dev-qt/qtbase:6[icu,sqlite]
 		$(python_gen_cond_dep '
 			dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
 			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
@@ -44,6 +44,7 @@ RDEPEND="
 	!qt6? (
 		dev-qt/qtcore:5[icu]
 		dev-qt/qtgui:5[png]
+		dev-qt/qtsql:5[sqlite]
 		$(python_gen_cond_dep '
 			dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,gui,network,opengl,printsupport,sql,widgets]
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
