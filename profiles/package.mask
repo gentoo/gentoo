@@ -176,8 +176,6 @@ acct-user/keystone
 acct-group/keystone
 acct-user/litecoin
 acct-group/litecoin
-acct-user/logcheck
-acct-group/logcheck
 acct-user/minbif
 acct-group/minbif
 acct-user/minio
