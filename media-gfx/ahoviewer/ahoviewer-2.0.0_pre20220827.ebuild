@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="keyring gnutls +gstreamer plugins +rar +ssl +zip"
 
-DEPEND="dev-cpp/atkmm:0
+COMMON_DEPEND="dev-cpp/atkmm:0
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0
 	dev-cpp/pangomm:1.4
@@ -51,7 +51,9 @@ DEPEND="dev-cpp/atkmm:0
 	)
 	zip? ( dev-libs/libzip:= )
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto"
+RDEPEND="${COMMON_DEPEND}
 	gstreamer? (
 		media-libs/gst-plugins-base:1.0[X]
 		media-libs/gst-plugins-good:1.0
