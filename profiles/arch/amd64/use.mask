@@ -68,6 +68,7 @@
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on amd64
 -clisp
+-clozurecl64
 -ecls
 -gcl
 -sbcl

@@ -206,6 +206,7 @@ abi_s390_64
 # These lisps are available only on some arches
 clisp
 clozurecl
+clozurecl64
 cmucl
 ecls
 gcl
