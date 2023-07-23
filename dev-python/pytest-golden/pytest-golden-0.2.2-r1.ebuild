@@ -33,6 +33,12 @@ RDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# poetry, sigh
+	sed -i -e 's:\^:>=:' pyproject.toml || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_golden.plugin
