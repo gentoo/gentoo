@@ -1,6 +1,12 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2023-06-23)
+# Fails to compile due to lchmod, fixed upstream so wait for next
+# release
+# https://github.com/libarchive/libarchive/commit/89712ffa6ede364f261dcd9208adabf068e2e21c
+=app-arch/libarchive-3.7.0
+
 # Benda Xu <heroxbd@gentoo.org> (2023-07-09)
 # Requires Glibc <sys/xattr.h> to work properly.
 # For example, 'lgetxattr' is not available on Solaris or gnulib.
