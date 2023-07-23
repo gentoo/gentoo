@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-07-23)
+# Package with no maintainer and tests restricted (also test deps look
+# suspicious).  It was only needed for tests
+# in dev-python/pyvirtualdisplay, and that package didn't support
+# the newest version anyway.  No revdeps left.
+# Removal on 2023-08-22.  Bug #910708.
+dev-python/vncdotool
+
 # David Seifert <soap@gentoo.org> (2023-07-22)
 # Upstream unresponsive and package is pretty much dead. dev-python/tqdm
 # is a modern and fast replacement for dev-python/progressbar.
