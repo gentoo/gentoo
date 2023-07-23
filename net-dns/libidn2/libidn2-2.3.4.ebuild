@@ -51,6 +51,7 @@ multilib_src_configure() {
 		--disable-doc
 		--disable-gcc-warnings
 		--disable-gtk-doc
+		--disable-valgrind-tests
 	)
 
 	local ECONF_SOURCE=${S}
