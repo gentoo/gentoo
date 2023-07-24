@@ -558,10 +558,6 @@ media-gfx/curaengine
 # Mask experimental software
 =mail-mta/postfix-3.9*
 
-# Ulrich Müller <ulm@gentoo.org> (2023-04-10)
-# Pretest versions, masked for testing.
-<app-editors/emacs-29.0.9999:29-vcs
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
 #
