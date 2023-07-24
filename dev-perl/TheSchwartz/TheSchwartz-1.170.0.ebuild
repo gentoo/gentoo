@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Reliable job queue"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 
 RDEPEND="
 	dev-perl/Class-Accessor
