@@ -7,10 +7,10 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
 PYPI_NO_NORMALIZE=1
 PYPI_PN=${PN/-/_}
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
-QT_PV="$(ver_cut 1-2):6"
+QT_PV=$(ver_cut 1-2):6
 
 DESCRIPTION="Python bindings for QtWebEngine"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
@@ -26,11 +26,13 @@ RDEPEND="
 	>=dev-qt/qtbase-${QT_PV}=
 	>=dev-qt/qtwebengine-${QT_PV}[widgets]
 	quick? ( dev-python/PyQt6[qml] )
-	widgets? ( dev-python/PyQt6[network,printsupport,webchannel,widgets] )"
+	widgets? ( dev-python/PyQt6[network,printsupport,webchannel,widgets] )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-python/PyQt-builder-1.15[${PYTHON_USEDEP}]
-	>=dev-qt/qtbase-${QT_PV}"
+	>=dev-qt/qtbase-${QT_PV}
+"
 
 src_prepare() {
 	default
@@ -47,10 +49,10 @@ src_prepare() {
 
 python_configure_all() {
 	append-cxxflags -std=c++17 # for old gcc / clang that use <17 (bug #892331)
-	append-cxxflags ${CPPFLAGS} # respect CPPFLAGS
+	append-cxxflags ${CPPFLAGS} # respect CPPFLAGS notably for DISTUTILS_EXT=1
 
 	DISTUTILS_ARGS=(
-		--jobs=$(makeopts_jobs)
+		--jobs="$(makeopts_jobs)"
 		--qmake="$(qt6_get_bindir)"/qmake
 		--qmake-setting="$(qt6_get_qmake_args)"
 		--verbose
