@@ -69,10 +69,6 @@ BDEPEND+="
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		escrow? ( cryptsetup )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.1-sh_tests.patch
-)
-
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
