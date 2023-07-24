@@ -20,7 +20,7 @@ inherit ruby-fakegem
 DESCRIPTION="Native Language Support Library and Tools modeled after GNU gettext package"
 HOMEPAGE="https://ruby-gettext.github.io/"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc test"
 SLOT="0"
 LICENSE="|| ( GPL-2 Ruby-BSD LGPL-3+ )"
