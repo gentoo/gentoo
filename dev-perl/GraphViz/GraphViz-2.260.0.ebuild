@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Interface to AT&T's GraphViz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~riscv x86"
 
 RDEPEND="
 	media-gfx/graphviz
