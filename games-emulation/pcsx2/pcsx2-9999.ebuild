@@ -27,7 +27,8 @@ else
 				-> ${PN}-glslang-${HASH_GLSLANG::10}.tar.gz
 			https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
 				-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz
-		)"
+		)
+	"
 	KEYWORDS="-* ~amd64"
 fi
 
@@ -36,7 +37,8 @@ HOMEPAGE="https://pcsx2.net/"
 
 LICENSE="
 	GPL-3+ Apache-2.0 BSD BSD-2 BSD-4 Boost-1.0 CC0-1.0 GPL-2+
-	ISC LGPL-2.1+ LGPL-3+ MIT OFL-1.1 ZLIB public-domain"
+	ISC LGPL-2.1+ LGPL-3+ MIT OFL-1.1 ZLIB public-domain
+"
 SLOT="0"
 IUSE="alsa cpu_flags_x86_sse4_1 dbus jack pulseaudio sndio test vulkan wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
@@ -67,22 +69,26 @@ COMMON_DEPEND="
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
 	vulkan? ( media-libs/vulkan-loader )
-	wayland? ( dev-libs/wayland )"
+	wayland? ( dev-libs/wayland )
+"
 # patches is a optfeature but always pull given PCSX2 complaints if it
 # is missing and it is fairly small (installs a ~1.5MB patches.zip)
 RDEPEND="
 	${COMMON_DEPEND}
-	games-emulation/pcsx2_patches"
+	games-emulation/pcsx2_patches
+"
 DEPEND="
 	${COMMON_DEPEND}
 	x11-base/xorg-proto
-	test? ( dev-cpp/gtest )"
+	test? ( dev-cpp/gtest )
+"
 BDEPEND="
 	dev-qt/qttools:6[linguist]
 	wayland? (
 		dev-util/wayland-scanner
 		kde-frameworks/extra-cmake-modules
-	)"
+	)
+"
 
 FILECAPS=(
 	-m 0755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
@@ -95,6 +101,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-system-chdr.patch
 	"${FILESDIR}"/${PN}-1.7.4667-system-gtest.patch
 	"${FILESDIR}"/${PN}-1.7.4667-system-zstd.patch
+	"${FILESDIR}"/${PN}-1.7.4795-rapidyaml-0.5.patch
 )
 
 src_unpack() {
@@ -118,7 +125,8 @@ src_unpack() {
 			# also keep vulkan-headers to stay in sync
 			$(usev vulkan '
 				3rdparty/glslang/glslang
-				3rdparty/vulkan-headers')
+				3rdparty/vulkan-headers
+			')
 		)
 
 		git-r3_src_unpack
@@ -158,7 +166,7 @@ src_prepare() {
 			# TODO?: rapidjson and xbyak are packaged and could be unbundlable
 			# w/ patch, and discord-rpc be optional w/ dependency on rapidjson
 			cpuinfo cubeb demangler discord-rpc fmt glad imgui include jpgd
-			lzma rapidjson rapidyaml rcheevos simpleini xbyak zydis
+			lzma rapidjson rapidyaml rcheevos simpleini soundtouch xbyak zydis
 			$(usev vulkan 'glslang vulkan-headers')
 		)
 		find 3rdparty -mindepth 1 -maxdepth 1 -type d \
