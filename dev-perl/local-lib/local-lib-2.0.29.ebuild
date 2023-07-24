@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Create and use a local lib/ for perl modules with PERL5LIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
 RDEPEND="
 	>=virtual/perl-CPAN-1.820.0
