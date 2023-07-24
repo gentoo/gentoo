@@ -1018,16 +1018,6 @@ glibc_do_configure() {
 		# https://bugs.gentoo.org/753740
 		libc_cv_complocaledir='${exec_prefix}/lib/locale'
 
-		# -march= option tricks build system to infer too
-		# high ISA level: https://sourceware.org/PR27318
-		libc_cv_include_x86_isa_level=no
-
-		# Explicit override of https://sourceware.org/PR27991
-		# exposes a bug in glibc's configure:
-		# https://sourceware.org/PR27991
-		libc_cv_have_x86_lahf_sahf=no
-		libc_cv_have_x86_movbe=no
-
 		# On aarch64 there is no way to override -mcpu=native, and if
 		# the current cpu does not support SVE configure fails.
 		# Let's boldly assume our toolchain can always build SVE instructions.
