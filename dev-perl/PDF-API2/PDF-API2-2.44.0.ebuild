@@ -12,7 +12,7 @@ DESCRIPTION="Facilitates the creation and modification of PDF files"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="
 	>=virtual/perl-IO-Compress-1.0.0
