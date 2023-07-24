@@ -16,7 +16,7 @@ SRC_URI="https://github.com/test-unit/test-unit/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="|| ( Ruby-BSD BSD-2 ) PSF-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 
 ruby_add_rdepend "dev-ruby/power_assert"
