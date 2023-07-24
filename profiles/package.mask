@@ -365,11 +365,6 @@ games-action/descent3-demo
 # Segfaults with non-bison yacc.
 =app-shells/bash-5.2_p15-r4
 
-# Matt Turner <mattst88@gentoo.org> (2023-06-22)
-# Dead slot. Depends on x11-libs/gtk+:2.
-# Removal on 2023-07-22.  Bug #769500.
-x11-libs/libwnck:1
-
 # Sam James <sam@gentoo.org> (2023-06-22)
 # Causes segfaults in dependent dev-util/conf2struct.
 # See bug #908989 and related bug #908982.
