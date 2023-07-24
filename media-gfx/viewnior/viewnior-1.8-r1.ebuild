@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN^}-${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE=""
 
 RDEPEND="
