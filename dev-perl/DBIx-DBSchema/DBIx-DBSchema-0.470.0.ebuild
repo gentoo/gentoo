@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Database-independent schema objects"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~riscv x86"
+KEYWORDS="amd64 ~hppa ~ppc ~riscv x86"
 
 RDEPEND="
 	dev-perl/DBI
