@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+ GPL-2+"
 SLOT="0/0.2"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="debug infiniband +tcp rdma systemd"
 REQUIRED_USE="infiniband? ( rdma ) || ( rdma tcp )"
 # Tries to write to /run/lock/iscsi etc
