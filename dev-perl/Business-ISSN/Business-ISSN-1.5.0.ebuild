@@ -11,7 +11,7 @@ DESCRIPTION="Object and functions to work with International Standard Serial Num
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-Exporter
