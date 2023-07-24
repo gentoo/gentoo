@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Thing that takes a string of Perl and rewrites its documentation"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Encode
