@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/sbin/kresd
+command_args="-n /var/run/kresd/"
+description="knot-resolver, scaleable caching DNS resolver"
+required_files=/etc/knot-resolver/kresd.conf
+
+pidfile="/var/run/${RC_SVCNAME}.pid"
+command_background=true
+
+depend() {
+    need net
+    use logger
+    provide dns
+}
+
+start() {
+    ebegin "Starting kresd"
+    checkpath --directory "/var/run/kresd"
+    start-stop-daemon --start -bm \
+                      --pidfile $pidfile --exec $command -- $command_args
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping kresd"
+    [ -f $pidfile ] && start-stop-daemon --stop --pidfile $pidfile
+    ewend $?
+}
