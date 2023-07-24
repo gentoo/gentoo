@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Encapsulate install info for HDF4"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc x86"
 
 RDEPEND="
 	sci-libs/hdf
