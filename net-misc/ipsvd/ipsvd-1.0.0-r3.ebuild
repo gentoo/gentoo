@@ -3,9 +3,9 @@
 
 EAPI=8
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
-DESCRIPTION="ipsvd is a set of internet protocol service daemons for Unix"
+DESCRIPTION="Set of internet protocol service daemons for Unix"
 HOMEPAGE="http://smarden.org/ipsvd/"
 SRC_URI="http://smarden.org/ipsvd/${P}.tar.gz"
 
