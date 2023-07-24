@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Net::OpenSSH, Perl wrapper for OpenSSH secure shell client"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~sparc x86"
 IUSE="minimal"
 
 RDEPEND="
