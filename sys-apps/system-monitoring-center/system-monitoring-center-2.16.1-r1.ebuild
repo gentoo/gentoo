@@ -9,23 +9,18 @@ inherit meson python-single-r1 xdg
 
 DESCRIPTION="Multi-featured system monitor GUI written in Python"
 HOMEPAGE="https://github.com/hakandundar34coding/system-monitoring-center/"
-
-if [[ ${PV} == *9999* ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/hakandundar34coding/${PN}.git"
-else
-	SRC_URI="https://github.com/hakandundar34coding/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://github.com/hakandundar34coding/${PN}/archive/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
 	gui-libs/gtk:4[introspection]
+	gui-libs/libadwaita:1
 	sys-apps/dmidecode
 	sys-apps/hwdata
 	$(python_gen_cond_dep '

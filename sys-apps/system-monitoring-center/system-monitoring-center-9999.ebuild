@@ -26,6 +26,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	gui-libs/gtk:4[introspection]
+	gui-libs/libadwaita:1
 	sys-apps/dmidecode
 	sys-apps/hwdata
 	$(python_gen_cond_dep '

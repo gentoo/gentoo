@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit meson python-single-r1 xdg
 
@@ -14,12 +14,13 @@ SRC_URI="https://github.com/hakandundar34coding/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
 	gui-libs/gtk:4[introspection]
+	gui-libs/libadwaita:1
 	sys-apps/dmidecode
 	sys-apps/hwdata
 	$(python_gen_cond_dep '
