@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-07-24)
+# Unmaintained. Looks pretty dead upstream (last commit 1.5 years ago, last tag
+# 3 years ago, last non-alpha release in 2015). Depends on app-text/enchant:0.
+# Removal on 2023-08-24. Bug #905956.
+net-im/vacuum
+
 # Michał Górny <mgorny@gentoo.org> (2023-07-24)
 # Incompatible with modern dev-python/matplotlib versions.  No upstream
 # activity since 2022-02.  No revdeps.
