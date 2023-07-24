@@ -1028,6 +1028,11 @@ glibc_do_configure() {
 		libc_cv_have_x86_lahf_sahf=no
 		libc_cv_have_x86_movbe=no
 
+		# On aarch64 there is no way to override -mcpu=native, and if
+		# the current cpu does not support SVE configure fails.
+		# Let's boldly assume our toolchain can always build SVE instructions.
+		libc_cv_aarch64_sve_asm=yes
+
 		${EXTRA_ECONF}
 	)
 
