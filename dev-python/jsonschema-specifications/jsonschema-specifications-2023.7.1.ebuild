@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/referencing-0.28.0[${PYTHON_USEDEP}]
