@@ -18,7 +18,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~riscv ~sparc x86"
 IUSE="test xbr"
 RESTRICT="!test? ( test )"
 
