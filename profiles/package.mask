@@ -375,15 +375,6 @@ x11-libs/libwnck:1
 # Removal on 2023-07-22.  Bug #774906.
 dev-perl/gnome2-wnck
 
-# Matt Turner <mattst88@gentoo.org> (2023-06-22)
-# Depends on deprecated packages:
-#    - dev-perl/Gtk2
-#    - dev-perl/Gtk2-Notify
-#    - dev-perl/gnome2-wnck
-# No maintainer in Gentoo. Seems unmaintained upstream as well.
-# Removal on 2023-07-22.  Bug #774909.
-media-sound/gmusicbrowser
-
 # Sam James <sam@gentoo.org> (2023-06-22)
 # Causes segfaults in dependent dev-util/conf2struct.
 # See bug #908989 and related bug #908982.
