@@ -8,7 +8,4 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
-	<use>
-		<flag name="barcode">Enable support for PDF417 and Aztec barcode decoding using <pkg>media-libs/zxing-cpp</pkg></flag>
-	</use>
 </pkgmetadata>
