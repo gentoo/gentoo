@@ -13,7 +13,10 @@ MY_PN="sabctools"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Module providing raw yEnc encoding/decoding for SABnzbd"
-HOMEPAGE="https://github.com/sabnzbd/sabctools"
+HOMEPAGE="
+	https://github.com/sabnzbd/sabctools/
+	https://pypi.org/project/sabctools/
+"
 SRC_URI="
 	https://github.com/sabnzbd/${MY_PN}/archive/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
