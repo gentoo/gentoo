@@ -42,7 +42,7 @@ DEPEND="
 		dev-python/notify2[${PYTHON_USEDEP}]
 		dev-python/portend[${PYTHON_USEDEP}]
 		dev-python/puremagic[${PYTHON_USEDEP}]
-		~dev-python/sabyenc-7.0.2[${PYTHON_USEDEP}]
+		~dev-python/sabctools-7.0.2[${PYTHON_USEDEP}]
 	')
 		test? ( $(python_gen_cond_dep '
 				dev-python/tavalidate[${PYTHON_USEDEP}]
