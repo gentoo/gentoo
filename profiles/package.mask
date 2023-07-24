@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-07-24)
+# Incompatible with modern dev-python/matplotlib versions.  No upstream
+# activity since 2022-02.  No revdeps.
+# Removal on 2023-08-23.  Bug #904734.
+dev-python/tikzplotlib
+
 # Michał Górny <mgorny@gentoo.org> (2023-07-23)
 # Package with no maintainer and tests restricted (also test deps look
 # suspicious).  It was only needed for tests
