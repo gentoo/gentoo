@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Getopt::Long with usage text"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm ~ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="minimal"
 
 CONFLICTS="!<dev-perl/MooseX-Getopt-0.660.0"
