@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Framework to automate HTML forms"
 
 SLOT="0"
-KEYWORDS="amd64 ~sparc x86"
+KEYWORDS="amd64 sparc x86"
 
 RDEPEND="
 	>=dev-perl/Data-Random-0.50.0
