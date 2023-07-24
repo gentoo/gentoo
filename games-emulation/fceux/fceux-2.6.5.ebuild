@@ -42,6 +42,11 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
+	sed -i \
+		-e 's;OpenGL REQUIRED;OpenGL COMPONENTS OpenGL REQUIRED;' \
+		-e 's;set( OPENGL_LDFLAGS  ${OPENGL_LIBRARIES} );set( OPENGL_LDFLAGS  OpenGL::OpenGL );' \
+		src/CMakeLists.txt || die
+
 	use x264 || sed -i '/pkg_check_modules.*X264/d' src/CMakeLists.txt || die
 	use x265 || sed -i '/pkg_check_modules.*X265/d' src/CMakeLists.txt || die
 	use ffmpeg || sed -i '/pkg_check_modules.*LIBAV/d' src/CMakeLists.txt || die
