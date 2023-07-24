@@ -8,6 +8,8 @@
 <stabilize-allarches/>
 <use>
   <flag name="games">Support shared score files for games</flag>
+  <flag name="gsettings">Install schema file for gsettings
+  (<pkg>dev-libs/glib</pkg>)</flag>
 </use>
 <upstream>
   <remote-id type="gentoo">proj/emacs-tools</remote-id>
