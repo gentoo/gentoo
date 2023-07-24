@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Write your linewise code for handles; this does the rest"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="minimal"
 
 RDEPEND="
