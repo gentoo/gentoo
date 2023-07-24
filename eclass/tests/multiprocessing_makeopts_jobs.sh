@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,13 @@ inherit multiprocessing
 
 test-makeopts_jobs() {
 	local exp=$1; shift
-	tbegin "makeopts_jobs($1${2+; inf=${2}}) == ${exp}"
+	local targs
+	if [[ -v 1 ]]; then
+		targs="$1${2+; inf=${2}}"
+	else
+		targs="MAKEOPTS=\"${MAKEOPTS}\" GNUMAKEFLAGS=\"${GNUMAKEFLAGS}\" MAKEFLAGS=\"${MAKEFLAGS}\""
+	fi
+	tbegin "makeopts_jobs(${targs}) == ${exp}"
 	local indirect=$(MAKEOPTS="$*" makeopts_jobs)
 	local direct=$(makeopts_jobs "$@")
 	if [[ "${direct}" != "${indirect}" ]] ; then
@@ -48,6 +54,20 @@ tests=(
 )
 for (( i = 0; i < ${#tests[@]}; i += 2 )) ; do
 	test-makeopts_jobs "${tests[i]}" "${tests[i+1]}"
+done
+
+tests=(
+	7 "" "--jobs 7" ""
+	# MAKEFLAGS override GNUMAKEFLAGS
+	8 "" "--jobs 7" "--jobs 8"
+)
+
+for (( i = 0; i < ${#tests[@]}; i += 4 )) ; do
+	MAKEOPTS="${tests[i+1]}"
+	GNUMAKEFLAGS="${tests[i+2]}"
+	MAKEFLAGS="${tests[i+3]}"
+	test-makeopts_jobs "${tests[i]}"
+	unset MAKEOPTS GNUMAKEFLAGS MAKEFLAGS
 done
 
 # test custom inf value
