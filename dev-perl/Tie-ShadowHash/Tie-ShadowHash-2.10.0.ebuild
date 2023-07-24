@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Merge multiple data sources into a hash"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	>=dev-perl/Module-Build-0.280.0
