@@ -14,13 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gtk2"
 
-DEPEND="
+RDEPEND="
 	dev-libs/glib
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	gtk2? ( x11-libs/gtk+:2 )
 	!gtk2? ( x11-libs/gtk+:3 )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="sys-devel/gettext
 	virtual/pkgconfig"
 
