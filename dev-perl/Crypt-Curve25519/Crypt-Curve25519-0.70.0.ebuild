@@ -11,6 +11,6 @@ DESCRIPTION="Shared secret elliptic-curve Diffie-Hellman generator"
 
 LICENSE="|| ( Artistic GPL-1+ ) BSD CC-PD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 BDEPEND="virtual/perl-ExtUtils-MakeMaker"
