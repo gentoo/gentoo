@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Get, unpack, build and install modules from CPAN"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ppc ~riscv x86"
