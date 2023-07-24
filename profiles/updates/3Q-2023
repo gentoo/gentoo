@@ -3,3 +3,4 @@ move dev-python/reedsolomon dev-python/reedsolo
 move dev-python/discogs-client dev-python/python3-discogs-client
 move dev-python/hcloud-python dev-python/hcloud
 move dev-python/sabyenc dev-python/sabctools
+move dev-python/elasticsearch-py dev-python/elasticsearch
