@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-1 )
+LUA_COMPAT=( lua5-1 luajit )
 inherit cmake lua-single xdg
 
 DESCRIPTION="Portable Famicom/NES emulator, an evolution of the original FCE Ultra"
@@ -45,13 +45,16 @@ src_prepare() {
 	sed -i \
 		-e 's;OpenGL REQUIRED;OpenGL COMPONENTS OpenGL REQUIRED;' \
 		-e 's;set( OPENGL_LDFLAGS  ${OPENGL_LIBRARIES} );set( OPENGL_LDFLAGS  OpenGL::OpenGL );' \
+		-e "s;pkg_search_module(.*LUA.*);pkg_search_module( LUA ${ELUA} );" \
 		src/CMakeLists.txt || die
+	sed -i '/<lauxlib.h>/a#define luaL_reg	luaL_Reg' src/lua-engine.cpp || die
 
 	use x264 || sed -i '/pkg_check_modules.*X264/d' src/CMakeLists.txt || die
 	use x265 || sed -i '/pkg_check_modules.*X265/d' src/CMakeLists.txt || die
 	use ffmpeg || sed -i '/pkg_check_modules.*LIBAV/d' src/CMakeLists.txt || die
 
 	rm output/lua5{1,.1}.dll || die
+	rm -r src/lua src/drivers/win/zlib src/drivers/win/lua || die
 }
 
 src_configure() {
