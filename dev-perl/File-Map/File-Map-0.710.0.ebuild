@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Memory mapping made simple and safe"
 
 SLOT="0"
-KEYWORDS="~amd64 arm ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~ppc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-perl/Sub-Exporter-Progressive-0.1.5
