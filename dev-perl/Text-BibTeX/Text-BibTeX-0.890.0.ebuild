@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="A Perl library for reading, parsing, and processing BibTeX files"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 
 RDEPEND="
 	!dev-libs/btparse
