@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Stream TAP from pgTAP test scripts"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	virtual/perl-Test-Harness
