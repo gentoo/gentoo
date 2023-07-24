@@ -45,6 +45,8 @@ src_prepare() {
 	use x264 || sed -i '/pkg_check_modules.*X264/d' src/CMakeLists.txt || die
 	use x265 || sed -i '/pkg_check_modules.*X265/d' src/CMakeLists.txt || die
 	use ffmpeg || sed -i '/pkg_check_modules.*LIBAV/d' src/CMakeLists.txt || die
+
+	rm output/lua5{1,.1}.dll || die
 }
 
 src_configure() {
@@ -61,7 +63,7 @@ src_install() {
 	cmake_src_install
 
 	# remove unused/duplicate files
-	rm "${ED}"/usr/share/fceux/{lua5{1,.1}.dll,{fceux,taseditor}.chm} \
+	rm "${ED}"/usr/share/fceux/{fceux,taseditor}.chm \
 		"${ED}"/usr/share/doc/${PF}/fceux{,-net-server}.6 \
 		"${ED}"/usr/share/man/man6/fceux-net-server.6 || die
 }
