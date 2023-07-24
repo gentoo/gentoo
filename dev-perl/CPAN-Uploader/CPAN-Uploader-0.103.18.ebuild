@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Upload things to the CPAN"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test minimal"
 RESTRICT="!test? ( test )"
 
