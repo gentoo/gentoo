@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Interact with a t/test_manifest file"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 LICENSE="Artistic-2"
 
 RDEPEND="
