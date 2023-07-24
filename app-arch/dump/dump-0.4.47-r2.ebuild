@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ppc64 sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ppc64 sparc x86"
 # We keep uuid USE flag default dsiabled for this version. Don't forget
 # to default enable it for later versions as this is the upstream default.
 IUSE="bzip2 debug ermt lzo readline selinux sqlite ssl static test uuid zlib"
