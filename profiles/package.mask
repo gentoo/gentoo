@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2023-07-24)
+# Migrate to sys-apps/systemd-utils.
+# Removal on 2023-08-24.
+sys-apps/systemd-tmpfiles
+sys-boot/systemd-boot
+sys-fs/udev
+
 # Michał Górny <mgorny@gentoo.org> (2023-07-24)
 # Incompatible with modern dev-python/matplotlib versions.  No upstream
 # activity since 2022-02.  No revdeps.
