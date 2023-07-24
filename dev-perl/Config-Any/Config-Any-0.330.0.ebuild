@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Load configuration from different file formats, transparently"
 
 SLOT="0"
-KEYWORDS="~amd64 arm ~ppc x86"
+KEYWORDS="amd64 arm ~ppc x86"
 IUSE="+conf +ini +json +xml +yaml"
 
 RDEPEND="
