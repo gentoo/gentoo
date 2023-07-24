@@ -39,6 +39,6 @@ src_install() {
 	doman man/ipsvd-instruct.5 man/ipsvd.7 man/udpsvd.8 \
 		man/tcpsvd.8 man/ipsvd-cdb.8
 
-	insinto html
-	dohtml doc/*.html
+	local HTML_DOCS=( doc/ )
+	einstalldocs
 }
