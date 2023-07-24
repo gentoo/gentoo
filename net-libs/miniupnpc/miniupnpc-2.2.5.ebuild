@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/17"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="ipv6"
 
 BDEPEND="
