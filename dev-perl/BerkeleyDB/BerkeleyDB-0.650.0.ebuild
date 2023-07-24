@@ -12,7 +12,7 @@ inherit perl-module db-use
 DESCRIPTION="This module provides Berkeley DB interface for Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~sparc x86"
 
 # Install DB_File if you want older support. BerkleyDB no longer
 # supports less than 2.0.
