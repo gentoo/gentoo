@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Lightweight exporting of variables"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86 ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	virtual/perl-Carp
