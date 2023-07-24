@@ -7,13 +7,16 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1
 
+MY_P="elasticsearch-py-${PV}"
+
 DESCRIPTION="Official Elasticsearch client library for Python"
 HOMEPAGE="
 	https://ela.st/es-python
 	https://github.com/elastic/elasticsearch-py
 	https://pypi.org/project/elasticsearch/
 "
-SRC_URI="https://github.com/elastic/elasticsearch-py/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/elastic/elasticsearch-py/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)"
