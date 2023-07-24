@@ -12,7 +12,7 @@ DESCRIPTION="Log4j implementation for Perl"
 HOMEPAGE="https://github.com/mschilli/log4perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	>=virtual/perl-File-Path-2.70.0
