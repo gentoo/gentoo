@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Tool to scan your Perl code for its prerequisites"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="minimal"
 
 RDEPEND="
