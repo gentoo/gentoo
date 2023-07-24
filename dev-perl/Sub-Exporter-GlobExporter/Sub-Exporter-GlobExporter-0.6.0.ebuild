@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Export shared globs with Sub::Exporter collectors"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-perl/Sub-Exporter

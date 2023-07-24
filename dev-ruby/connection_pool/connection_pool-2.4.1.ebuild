@@ -17,7 +17,7 @@ SRC_URI="https://github.com/mperham/connection_pool/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5 )"

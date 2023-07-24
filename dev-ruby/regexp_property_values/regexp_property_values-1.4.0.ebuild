@@ -23,7 +23,7 @@ SRC_URI="https://github.com/jaynetics/regexp_property_values/archive/v${PV}.tar.
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
 
 all_ruby_prepare() {

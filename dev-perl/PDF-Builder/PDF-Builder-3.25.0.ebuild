@@ -12,7 +12,7 @@ DESCRIPTION="Facilitates the creation and modification of PDF files"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/Font-TTF-1.40.0

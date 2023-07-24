@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Find the path to your perl"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="minimal"
 
 RDEPEND="

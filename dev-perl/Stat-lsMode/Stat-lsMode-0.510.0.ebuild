@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl Stat-lsMode Module"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	virtual/perl-Carp

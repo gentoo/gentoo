@@ -20,7 +20,7 @@ SRC_URI="
 "
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 SLOT="0"
 
 RDEPEND="

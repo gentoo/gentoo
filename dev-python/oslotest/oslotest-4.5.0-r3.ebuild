@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	>=dev-python/pbr-1.8[${PYTHON_USEDEP}]

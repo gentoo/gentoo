@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple interface for generating and using globally unique identifiers"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="
 	virtual/perl-Carp

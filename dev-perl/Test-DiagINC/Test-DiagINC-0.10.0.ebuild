@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="List modules and versions loaded if tests fail"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-File-Spec

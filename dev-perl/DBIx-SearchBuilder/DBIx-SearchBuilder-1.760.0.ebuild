@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Encapsulate SQL queries and rows in simple Perl objects"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/Cache-Simple-TimedExpiry-0.210.0

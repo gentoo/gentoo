@@ -11,7 +11,7 @@ DESCRIPTION="Interface to FITS headers"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~hppa ~mips ppc x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	>=dev-perl/Module-Build-0.300.0

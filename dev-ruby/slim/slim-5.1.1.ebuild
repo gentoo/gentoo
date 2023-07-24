@@ -20,7 +20,7 @@ HOMEPAGE="https://slim-template.github.io/"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~riscv x86"
 IUSE="doc"
 
 ruby_add_rdepend "
