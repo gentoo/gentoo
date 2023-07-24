@@ -13,7 +13,7 @@ HOMEPAGE="https://www.fvwm.org/"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/fvwmorg/fvwm3.git"
-	EGIT_BRANCH="master"
+	EGIT_BRANCH="main"
 else
 	SRC_URI="https://github.com/fvwmorg/fvwm3/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~riscv"
@@ -155,8 +155,9 @@ src_install() {
 pkg_postinst() {
 	if use go; then
 		ewarn "FvwmPrompt has been installed, it provides the functionality of both FvwmCommand and FvwmConsole."
-		ewarn "For compatibility with the existing fvwm2 configurations, the ebuild will install a FvwmCommand wrapper script."
-		ewarn "If you need FvwmConsole, install ${PN} with USE=\"-go\", but FvwmPrompt and FvwmCommand will not be installed."
+		ewarn "For compatibility with the existing fvwm2 configurations, the ebuild will install a FvwmCommand wrapper."
+		ewarn "If you need FvwmConsole, install ${PN} with USE=\"-go\";"
+		ewarn "however FvwmPrompt and FvwmCommand will not be installed."
 	else
 		ewarn "FvwmConsole has been installed, but FvwmCommand and FvwmPrompt are no longer included in this ebuild."
 		ewarn "If you need FvwmPrompt or FvwmCommand, install ${PN} with USE=\"go\"."
