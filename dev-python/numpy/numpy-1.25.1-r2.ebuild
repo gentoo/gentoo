@@ -113,6 +113,17 @@ python_test() {
 		)
 	fi
 
+	if use hppa ; then
+		EPYTEST_DESELECT+=(
+			# TODO: Get selectedrealkind updated!
+			# bug #907228
+			# https://github.com/numpy/numpy/issues/3424 (https://github.com/numpy/numpy/issues/3424#issuecomment-412369029)
+			# https://github.com/numpy/numpy/pull/21785
+			f2py/tests/test_kind.py::TestKind::test_real
+			f2py/tests/test_kind.py::TestKind::test_quad_precision
+		)
+	fi
+
 	if [[ $(tc-endian) == "big" ]] ; then
 		# https://github.com/numpy/numpy/issues/11831 and bug #707116
 		EPYTEST_DESELECT+=(
@@ -120,7 +131,7 @@ python_test() {
 			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f90[t1]'
 			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f90[s1]'
 			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f77[t1]'
-			'f2py/tests/test_kind.py::TestKind::test_int'
+			f2py/tests/test_kind.py::TestKind::test_int
 		)
 	fi
 
