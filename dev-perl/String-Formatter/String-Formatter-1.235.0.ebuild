@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Build sprintf-like functions of your own"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-perl/Params-Util
