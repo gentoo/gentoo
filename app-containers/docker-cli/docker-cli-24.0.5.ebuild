@@ -14,17 +14,13 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-man.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="hardened selinux"
 
 RDEPEND="!<app-containers/docker-20.10.1
 	selinux? ( sec-policy/selinux-docker )"
 BDEPEND="
 	>=dev-lang/go-1.16.6"
-
-PATCHES=(
-#	"${FILESDIR}/${P}-vendor.patch"
-)
 
 RESTRICT="installsources strip test"
 
