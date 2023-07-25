@@ -399,6 +399,10 @@ app-crypt/heimdal afs
 # Only available on some architectures.
 dev-java/icedtea -shenandoah
 
+# Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
+# Unkeyworded dependencies
+app-admin/rsyslog mongodb
+
 # Michael Weber <xmw@gentoo.org> (2017-03-01)
 # untested dependencies
 net-libs/libpcap bluetooth
