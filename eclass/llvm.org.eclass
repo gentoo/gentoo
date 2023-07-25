@@ -52,12 +52,12 @@ LLVM_VERSION=$(ver_cut 1-3)
 
 # == internal control bits ==
 
-# @ECLASS_VARIABLE: _LLVM_MASTER_MAJOR
+# @ECLASS_VARIABLE: _LLVM_MAIN_MAJOR
 # @INTERNAL
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MASTER_MAJOR=18
+_LLVM_MAIN_MAJOR=18
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -89,8 +89,8 @@ fi
 
 [[ ${_LLVM_SOURCE_TYPE} == git ]] && inherit git-r3
 
-[[ ${LLVM_MAJOR} == ${_LLVM_MASTER_MAJOR} && ${_LLVM_SOURCE_TYPE} == tar ]] &&
-	die "${ECLASS}: Release ebuild for master branch?!"
+[[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} && ${_LLVM_SOURCE_TYPE} == tar ]] &&
+	die "${ECLASS}: Release ebuild for main branch?!"
 
 inherit multiprocessing
 
@@ -205,7 +205,7 @@ ALL_LLVM_TARGET_FLAGS=(
 # as a subslot.  This is equal to LLVM_MAJOR for releases, and to PV
 # for the main branch.
 LLVM_SOABI=${LLVM_MAJOR}
-[[ ${LLVM_MAJOR} == ${_LLVM_MASTER_MAJOR} ]] && LLVM_SOABI=${PV}
+[[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]] && LLVM_SOABI=${PV}
 
 # == global scope logic ==
 
@@ -227,7 +227,7 @@ llvm.org_set_globals() {
 		git)
 			EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
 
-			[[ ${LLVM_MAJOR} != ${_LLVM_MASTER_MAJOR} ]] &&
+			[[ ${LLVM_MAJOR} != ${_LLVM_MAIN_MAJOR} ]] &&
 				EGIT_BRANCH="release/${LLVM_MAJOR}.x"
 			;;
 		tar)
