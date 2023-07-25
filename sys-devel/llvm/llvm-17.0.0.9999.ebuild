@@ -459,7 +459,7 @@ multilib_src_configure() {
 
 	grep -q -E "^CMAKE_PROJECT_VERSION_MAJOR(:.*)?=${LLVM_MAJOR}$" \
 			CMakeCache.txt ||
-		die "Incorrect version, did you update _LLVM_MASTER_MAJOR?"
+		die "Incorrect version, did you update _LLVM_MAIN_MAJOR?"
 	multilib_is_native_abi && check_distribution_components
 }
 
