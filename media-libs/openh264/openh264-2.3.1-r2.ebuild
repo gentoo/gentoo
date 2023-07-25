@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,6 +54,7 @@ emakecmd() {
 		INCLUDES_DIR="${EPREFIX}/usr/include/${PN}" \
 		HAVE_AVX2=$(usex cpu_flags_x86_avx2 Yes No) \
 		ARCH="$(tc-arch)" \
+		ENABLEPIC="Yes" \
 		$@
 }
 
