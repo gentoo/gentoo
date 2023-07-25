@@ -92,7 +92,7 @@ X_DEPEND="x11-libs/libICE
 		)
 	)"
 
-RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
+RDEPEND="app-emacs/emacs-common[games?,gsettings(-)?,gui(-)?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -450,6 +450,7 @@ src_install() {
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
 	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 

@@ -6,13 +6,10 @@ EAPI=8
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-# Please keep the python line in BDEPEND updated and do NOT use eclasses pr
-# ${PYTHON_DEPS} (since they are too strict and lead to problems with the
-# package order during upgrades).
-
+PYTHON_COMPAT=( python3_{9..11} )
 TMPFILES_OPTIONAL=1
 
-inherit prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
+inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing tmpfiles
 
 DESCRIPTION="GNU libc C library"
@@ -104,7 +101,7 @@ IDEPEND="
 	!compile-locales? ( sys-apps/locale-gen )
 "
 BDEPEND="
-	|| ( dev-lang/python:3.11 dev-lang/python:3.10 dev-lang/python:3.9 )
+	${PYTHON_DEPS}
 	>=app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	sys-devel/bison
 	compile-locales? ( sys-apps/locale-gen )
@@ -865,6 +862,13 @@ upgrade_warning() {
 
 pkg_pretend() {
 	upgrade_warning
+}
+
+# pkg_setup
+
+pkg_setup() {
+	# see bug 682570
+	[[ -z ${BOOTSTRAP_RAP} ]] && python-any-r1_pkg_setup
 }
 
 # src_unpack

@@ -5,7 +5,10 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+# py3.12 should work (no tests regressions), but waiting on the last dep
+# (pytest-qt) to properly have py3.12 which gets more complicated with
+# QtPy + pyside* that we don't actually use here
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then

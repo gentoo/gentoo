@@ -9,12 +9,12 @@ DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
 EGIT_REPO_URI="https://github.com/ruffle-rs/ruffle.git"
 
-LICENSE="|| ( MIT Apache-2.0 )"
+LICENSE="|| ( Apache-2.0 MIT )"
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0
 	CC0-1.0 ISC UbuntuFontLicense-1.0 MIT MPL-2.0 OFL-1.1
-	Unicode-DFS-2016 ZLIB" # crates
-LICENSE+=" curl" # non-automated extra
+	Unicode-DFS-2016 ZLIB curl
+" # crates
 SLOT="0"
 
 # dlopen: libX* (see winit+x11-dl crates)
@@ -27,10 +27,12 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXcursor
 	x11-libs/libXrandr
-	x11-libs/libXrender"
+	x11-libs/libXrender
+"
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
@@ -38,7 +40,8 @@ BDEPEND="
 	test? (
 		media-libs/mesa[llvm]
 		x11-base/xorg-server[-minimal]
-	)"
+	)
+"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"
 

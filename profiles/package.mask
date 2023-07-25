@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2023-07-24)
+# Migrated to sys-apps/systemd-utils.
+# Removal on 2023-08-24.
+sys-apps/systemd-tmpfiles
+sys-boot/systemd-boot
+sys-fs/udev
+
+# Matt Turner <mattst88@gentoo.org> (2023-07-24)
+# Unmaintained. Looks pretty dead upstream (last commit 1.5 years ago, last tag
+# 3 years ago, last non-alpha release in 2015). Depends on app-text/enchant:0.
+# Removal on 2023-08-24. Bug #905956.
+net-im/vacuum
+
 # Michał Górny <mgorny@gentoo.org> (2023-07-24)
 # Incompatible with modern dev-python/matplotlib versions.  No upstream
 # activity since 2022-02.  No revdeps.
@@ -365,25 +378,6 @@ games-action/descent3-demo
 # Segfaults with non-bison yacc.
 =app-shells/bash-5.2_p15-r4
 
-# Matt Turner <mattst88@gentoo.org> (2023-06-22)
-# Dead slot. Depends on x11-libs/gtk+:2.
-# Removal on 2023-07-22.  Bug #769500.
-x11-libs/libwnck:1
-
-# Matt Turner <mattst88@gentoo.org> (2023-06-22)
-# Dead package. Depends on x11-libs/libwnck:1.
-# Removal on 2023-07-22.  Bug #774906.
-dev-perl/gnome2-wnck
-
-# Matt Turner <mattst88@gentoo.org> (2023-06-22)
-# Depends on deprecated packages:
-#    - dev-perl/Gtk2
-#    - dev-perl/Gtk2-Notify
-#    - dev-perl/gnome2-wnck
-# No maintainer in Gentoo. Seems unmaintained upstream as well.
-# Removal on 2023-07-22.  Bug #774909.
-media-sound/gmusicbrowser
-
 # Sam James <sam@gentoo.org> (2023-06-22)
 # Causes segfaults in dependent dev-util/conf2struct.
 # See bug #908989 and related bug #908982.
@@ -557,10 +551,6 @@ media-gfx/curaengine
 # Eray Aslan <eras@gentoo.org> (2023-04-12)
 # Mask experimental software
 =mail-mta/postfix-3.9*
-
-# Ulrich Müller <ulm@gentoo.org> (2023-04-10)
-# Pretest versions, masked for testing.
-<app-editors/emacs-29.0.9999:29-vcs
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].

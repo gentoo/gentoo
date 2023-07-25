@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/LEW21/pydbus"
 SRC_URI="https://github.com/LEW21/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 SLOT="0"
 
 RDEPEND="
