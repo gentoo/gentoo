@@ -16,7 +16,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mysql nis pam postgres sasl selinux sqlite ssl"
+IUSE="berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND="
 	acct-group/postfix
@@ -260,15 +260,11 @@ src_install() {
 	insinto /usr/include/postfix
 	doins include/*.h
 
-	if has_version mail-mta/postfix; then
-		# let the sysadmin decide when to change the compatibility_level
-		sed -i -e /^compatibility_level/"s/^/#/" "${D}"/etc/postfix/main.cf || die
-	fi
-
 	systemd_dounit "${FILESDIR}/${PN}.service"
 }
 
 pkg_postinst() {
+	# warn if no aliases database
 	# do not assume berkdb
 	if [[ ! -e /etc/mail/aliases.db \
 	   && ! -e /etc/mail/aliases.cdb \
@@ -279,6 +275,9 @@ pkg_postinst() {
 		ewarn "work correctly without it."
 		ewarn
 	fi
+	# run newaliases anyway. otherwise, we might break when switching
+	# default database implementation - from berkdb to cdb for example
+	"${EROOT}"/usr/bin/newaliases
 
 	# check and fix file permissions
 	"${EROOT}"/usr/sbin/postfix set-permissions
