@@ -46,10 +46,10 @@ COMMON_DEPEND="
 	>=kde-frameworks/kplotting-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	sci-libs/gsl:=
 	sys-libs/zlib
 	fits? ( sci-libs/cfitsio:= )
 	indi? (
-		sci-libs/gsl:=
 		>=sci-libs/indilib-2.0.2
 		sci-libs/libnova:=
 		>=sci-libs/stellarsolver-2.2
