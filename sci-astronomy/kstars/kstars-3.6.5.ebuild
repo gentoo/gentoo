@@ -74,8 +74,11 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 "
 
-# https://invent.kde.org/education/kstars/-/issues/251
-PATCHES=( "${FILESDIR}/${P}-buildfix.patch" )
+PATCHES=(
+	# https://invent.kde.org/education/kstars/-/issues/251
+	"${FILESDIR}/${P}-buildfix.patch"
+	"${FILESDIR}/${P}-gsl.patch" # bug 911199
+)
 
 src_configure() {
 	local mycmakeargs=(
