@@ -25,7 +25,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial test"
+IUSE="3d doc examples +georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	mapserver? ( python )
@@ -83,18 +83,13 @@ COMMON_DEPEND="
 		${PYTHON_DEPS}
 		>=sci-libs/gdal-2.2.3[python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/httplib2[${PYTHON_USEDEP}]
 			dev-python/jinja[${PYTHON_USEDEP}]
-			dev-python/markupsafe[${PYTHON_USEDEP}]
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/owslib[${PYTHON_USEDEP}]
 			dev-python/pygments[${PYTHON_USEDEP}]
 			dev-python/PyQt5[designer,gui,network,positioning,printsupport,sql,svg,widgets,${PYTHON_USEDEP}]
-			dev-python/python-dateutil[${PYTHON_USEDEP}]
-			dev-python/pytz[${PYTHON_USEDEP}]
 			dev-python/pyyaml[${PYTHON_USEDEP}]
 			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_USEDEP}]
-			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/sip:=[${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		')
@@ -112,6 +107,7 @@ BDEPEND="${PYTHON_DEPS}
 	dev-qt/linguist-tools:5
 	sys-devel/bison
 	sys-devel/flex
+	doc? ( app-doc/doxygen )
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/PyQt5[${PYTHON_USEDEP},testlib]
@@ -120,6 +116,8 @@ BDEPEND="${PYTHON_DEPS}
 		')
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.28.patch" ) # 3.34.0; bug 906470
 
 src_prepare() {
 	cmake_src_prepare
@@ -146,7 +144,7 @@ src_configure() {
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
 		-DWITH_ANALYSIS=ON
-		-DWITH_APIDOC=OFF
+		-DWITH_APIDOC=$(usex doc)
 		-DWITH_GUI=ON
 		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
@@ -216,6 +214,8 @@ src_configure() {
 	fi
 
 	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
+
+	CMAKE_BUILD_TYPE=Release  # RelWithDebInfo enables debug logging
 
 	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
