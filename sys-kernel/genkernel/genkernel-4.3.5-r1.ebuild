@@ -133,6 +133,7 @@ if [[ ${PV} == 9999* ]]; then
 fi
 
 PATCHES=(
+	"${FILESDIR}"/${P}-no-asciidoc-on-cryptsetup.patch
 )
 
 src_unpack() {
