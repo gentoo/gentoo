@@ -109,7 +109,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-fix-config-for-scaling-high-res-icons.patch" # 8.2.0, KDE-bug #457272
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
