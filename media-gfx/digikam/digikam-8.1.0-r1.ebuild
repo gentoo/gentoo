@@ -23,7 +23,7 @@ HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="addressbook calendar gphoto2 heif +imagemagick +lensfun marble mysql opengl openmp +panorama scanner semantic-desktop spell X"
+IUSE="addressbook calendar gphoto2 heif +imagemagick +lensfun marble mysql opengl openmp +panorama scanner semantic-desktop spell"
 
 # bug 366505
 RESTRICT="test"
@@ -39,6 +39,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtsql-${QTMIN}:5[mysql?]
 	>=dev-qt/qtwebengine-${QTMIN}:5[widgets]
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=dev-qt/qtxmlpatterns-${QTMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -61,6 +62,7 @@ COMMON_DEPEND="
 	media-libs/libpng:=
 	>=media-libs/opencv-3.3.0:=[contrib,contribdnn,features2d]
 	media-libs/tiff:=
+	x11-libs/libX11
 	addressbook? (
 		>=kde-apps/akonadi-contacts-19.04.3:5
 		>=kde-frameworks/kcontacts-${KFMIN}:5
@@ -86,10 +88,6 @@ COMMON_DEPEND="
 	scanner? ( >=kde-apps/libksane-19.04.3:5 )
 	semantic-desktop? ( >=kde-frameworks/kfilemetadata-${KFMIN}:5 )
 	spell? ( >=kde-frameworks/sonnet-${KFMIN}:5 )
-	X? (
-		>=dev-qt/qtx11extras-${QTMIN}:5
-		x11-libs/libX11
-	)
 "
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/eigen:3
@@ -148,7 +146,6 @@ src_configure() {
 		$(cmake_use_find_package scanner KF5Sane)
 		$(cmake_use_find_package spell KF5Sonnet)
 		-DENABLE_KFILEMETADATASUPPORT=$(usex semantic-desktop)
-		$(cmake_use_find_package X X11)
 	)
 
 	ecm_src_configure
