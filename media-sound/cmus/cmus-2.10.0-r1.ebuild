@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ HOMEPAGE="https://cmus.github.io/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="aac alsa ao cddb cdio debug discid elogind examples ffmpeg +flac jack libsamplerate
-	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio systemd tremor +unicode
+	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio sndio systemd tremor +unicode
 	+vorbis wavpack"
 
 REQUIRED_USE="?? ( elogind systemd )"
@@ -47,6 +47,7 @@ DEPEND="
 	musepack? ( media-sound/musepack-tools )
 	opus? ( media-libs/opusfile )
 	pulseaudio? ( media-sound/pulseaudio )
+	sndio? ( media-sound/sndio )
 	systemd? ( sys-apps/systemd )
 	tremor? ( media-libs/tremor )
 	!tremor? ( vorbis? ( media-libs/libvorbis ) )
@@ -108,6 +109,7 @@ src_configure() {
 	my_config pulseaudio CONFIG_PULSE
 	my_config alsa CONFIG_ALSA
 	my_config jack CONFIG_JACK
+	my_config sndio CONFIG_SNDIO
 	my_config libsamplerate CONFIG_SAMPLERATE
 	my_config ao CONFIG_AO
 	my_config oss CONFIG_OSS
