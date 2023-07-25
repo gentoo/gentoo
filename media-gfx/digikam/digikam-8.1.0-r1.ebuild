@@ -97,6 +97,7 @@ DEPEND="${COMMON_DEPEND}
 	addressbook? ( >=kde-apps/akonadi-19.04.3:5 )
 "
 RDEPEND="${COMMON_DEPEND}
+	media-libs/exiftool
 	mysql? ( virtual/mysql[server(+)] )
 	panorama? ( media-gfx/hugin )
 "
