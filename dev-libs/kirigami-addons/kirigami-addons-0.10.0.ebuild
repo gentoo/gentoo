@@ -21,6 +21,10 @@ LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) LGPL-2.1+"
 SLOT="5"
 IUSE=""
 
+# would profit from VIRTUALX_REQUIRED=test, but then still requires
+# org.qt-project.qt.mediaplayer service and fails, bug 911186
+RESTRICT="test"
+
 COMMON_DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
