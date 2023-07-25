@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{9..12} )
 inherit cmake lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux64"
-OBS_BROWSER_COMMIT="995ad53cf3b774928a690d9de813fc8cb43175fe"
+OBS_BROWSER_COMMIT="291464d6988083411e7369fc53eba6d5ef07ff67"
 OBS_WEBSOCKET_COMMIT="6fd18a7ef1ecb149e8444154af1daab61d4241a9"
 QR_COMMIT="8518684c0f33d004fa93971be2c6a8eca3167d1e"
 
@@ -80,6 +80,7 @@ DEPEND="
 			>=app-accessibility/at-spi2-core-2.46.0:2
 			( app-accessibility/at-spi2-atk dev-libs/atk )
 		)
+		dev-cpp/nlohmann_json
 		dev-libs/expat
 		dev-libs/glib
 		dev-libs/nspr
