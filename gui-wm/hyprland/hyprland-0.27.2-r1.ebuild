@@ -8,7 +8,7 @@ inherit meson toolchain-funcs
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
 
-SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${PF}.gh.tar.gz"
+SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${PN}-source"
 
 KEYWORDS="~amd64"
@@ -94,4 +94,10 @@ src_configure() {
 
 src_install() {
 	meson_src_install --skip-subprojects wlroots
+
+	# FIXME: undo this in next release if meson is fixed (https://github.com/hyprwm/Hyprland/pull/2820)
+	# https://github.com/hyprwm/Hyprland/commit/70dae78c1b5b17288a3e343b87ca6d10244ee937
+	# upstream added new backgrounds but didnt add them to be installed by meson.
+	insinto /usr/share/hyprland
+	doins assets/wall_anime_{2,4,8}K.png
 }
