@@ -40,13 +40,15 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	if use sodium
 	then
 		emake \
-			CC="$(tc-getCC)"
-			LIBS="-lsodium" \
-			CFLAGS="${CFLAGS} -I/usr/include/sodium" \
-			LDFLAGS="${LDFLAGS} -L/usr/lib"
+			CC="$(tc-getCC)" \
+			LIBS="$("${PKG_CONFIG}" --libs libsodium)" \
+			CFLAGS="${CFLAGS} $("${PKG_CONFIG}" --cflags libsodium)" \
+			LDFLAGS="${LDFLAGS}"
 	else
 		emake CC="$(tc-getCC)"
 	fi
