@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>henning@hennsch.de</email>
-		<name>Henning Schild</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="hdx">Install and enable hdx-realtime-media-engine plugin</flag>
 		<flag name="usb">Allow connecting USB devices to virtual desktops</flag>
