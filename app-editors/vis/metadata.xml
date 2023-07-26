@@ -14,4 +14,7 @@ Vis aims to be a modern, legacy free, simple yet efficient editor combining the 
 <use>
 	<flag name="tre">more memory efficient regex search using <pkg>dev-libs/tre</pkg></flag>
 </use>
+<upstream>
+	<remote-id type="github">martanne/vis</remote-id>
+</upstream>
 </pkgmetadata>
