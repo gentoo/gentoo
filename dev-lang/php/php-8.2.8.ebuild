@@ -67,6 +67,7 @@ REQUIRED_USE="
 	mysql? ( || ( mysqli pdo ) )
 	firebird? ( pdo )
 	mssql? ( pdo )
+	test? ( cli )
 "
 
 RESTRICT="!test? ( test )"
@@ -148,6 +149,7 @@ PHP_MV="$(ver_cut 1)"
 PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
 	"${FILESDIR}/php-capstone-optional.patch"
+	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
 )
 
 php_install_ini() {
@@ -224,19 +226,85 @@ src_prepare() {
 	eautoconf --force
 	eautoheader
 
-	# Remove false positive test failures
-	# stream_isatty fails due to portage redirects
-	# curl tests here fail for network sandbox issues
-	# session tests here fail because we set the session directory to $T
-	rm tests/output/stream_isatty_err.phpt \
-	   tests/output/stream_isatty_out-err.phpt \
-	   tests/output/stream_isatty_out.phpt \
-	   ext/curl/tests/bug76675.phpt \
-	   ext/curl/tests/bug77535.phpt \
-	   ext/curl/tests/curl_error_basic.phpt \
-	   ext/session/tests/bug74514.phpt \
-	   ext/session/tests/bug74936.phpt || die
+	# missing skipif; fixed upstream already
+	rm sapi/cgi/tests/005.phpt || die
 
+	# These three get BORKED on no-ipv6 systems,
+	#
+	#   https://github.com/php/php-src/pull/11651
+	#
+	rm ext/sockets/tests/mcast_ipv6_recv.phpt \
+	   ext/sockets/tests/mcast_ipv6_recv_limited.phpt \
+	   ext/sockets/tests/mcast_ipv6_send.phpt \
+	   || die
+
+	# fails in a network sandbox,
+	#
+	#   https://github.com/php/php-src/issues/11662
+	#
+	rm ext/sockets/tests/bug63000.phpt || die
+
+	# expected output needs to be updated,
+	#
+	#   https://github.com/php/php-src/pull/11648
+	#
+	rm ext/dba/tests/dba_tcadb.phpt || die
+
+	# Two IMAP tests missing SKIPIFs,
+	#
+	#   https://github.com/php/php-src/pull/11654
+	#
+	rm ext/imap/tests/imap_mutf7_to_utf8.phpt \
+	   ext/imap/tests/imap_utf8_to_mutf7_basic.phpt \
+	   || die
+
+	# broken upstream with icu-73.x,
+	#
+	#   https://github.com/php/php-src/issues/11128
+	#
+	rm ext/intl/tests/calendar_clear_variation1.phpt || die
+
+	# overly sensitive to INI values; fixes sent upstream:
+	#
+	#  https://github.com/php/php-src/pull/11631
+	#
+	rm ext/session/tests/{bug74514,bug74936,gh7787}.phpt || die
+
+	# This is sensitive to the current "nice" level:
+	#
+	#   https://github.com/php/php-src/issues/11630
+	#
+	rm ext/standard/tests/general_functions/proc_nice_basic.phpt || die
+
+	# Tests ignoring the "-n" flag we pass to run-tests.php,
+	#
+	#   https://github.com/php/php-src/pull/11669
+	#
+	rm ext/standard/tests/file/bug60120.phpt \
+	   ext/standard/tests/general_functions/proc_open_null.phpt \
+	   ext/standard/tests/general_functions/proc_open_redirect.phpt \
+	   ext/standard/tests/general_functions/proc_open_sockets1.phpt \
+	   ext/standard/tests/general_functions/proc_open_sockets2.phpt \
+	   ext/standard/tests/general_functions/proc_open_sockets3.phpt \
+	   ext/standard/tests/ini_info/php_ini_loaded_file.phpt \
+	   sapi/cli/tests/016.phpt \
+	   sapi/cli/tests/023.phpt \
+	   sapi/cli/tests/bug65275.phpt \
+	   sapi/cli/tests/bug74600.phpt \
+	   sapi/cli/tests/bug78323.phpt \
+	   || die
+
+	# Same TEST_PHP_EXTRA_ARGS (-n) issue with this one, but it's
+	# already been fixed upstream.
+	rm sapi/cli/tests/017.phpt || die
+
+	# Most Oracle tests are borked,
+	#
+	#  * https://github.com/php/php-src/issues/11804
+	#  * https://github.com/php/php-src/pull/11820
+	#  * https://github.com/php/php-src/issues/11819
+	#
+	rm ext/oci8/tests/*.phpt || die
 }
 
 src_configure() {
@@ -442,10 +510,18 @@ src_configure() {
 	# Support the Apache2 extras, they must be set globally for all
 	# SAPIs to work correctly, especially for external PHP extensions
 
+	# Create separate build trees for each enabled SAPI. The upstream
+	# build system doesn't do this, but we have to do it to use a
+	# different php.ini for each SAPI (see --with-config-file-path and
+	# --with-config-file-scan-dir below). The path winds up define'd
+	# in main/build-defs.h which is included in main/php.h which is
+	# included by basically everything; so, avoiding a rebuild after
+	# changing it is not an easy job.
 	local one_sapi
 	local sapi
 	mkdir -p "${WORKDIR}/sapis-build" || die
 	for one_sapi in $SAPIS ; do
+		einfo "Current SAPI: ${one_sapi}"
 		use "${one_sapi}" || continue
 		php_set_ini_dir "${one_sapi}"
 
@@ -453,8 +529,8 @@ src_configure() {
 		# the files that autotools creates. This was all originally
 		# based on the autotools-utils eclass.
 		BUILD_DIR="${WORKDIR}/sapis-build/${one_sapi}"
+		einfo "Copying sources to ${BUILD_DIR}"
 		cp -a "${S}" "${BUILD_DIR}" || die
-		cd "${BUILD_DIR}" || die
 
 		local sapi_conf=(
 			--with-config-file-path="${PHP_INI_DIR}"
@@ -493,6 +569,7 @@ src_configure() {
 		myeconfargs+=( "${sapi_conf[@]}" )
 
 		pushd "${BUILD_DIR}" > /dev/null || die
+		einfo "Running ./configure in ${BUILD_DIR}"
 		econf "${myeconfargs[@]}"
 		popd > /dev/null || die
 	done
@@ -505,11 +582,7 @@ src_compile() {
 
 	local sapi
 	for sapi in ${SAPIS} ; do
-		if use "${sapi}"; then
-			cd "${WORKDIR}/sapis-build/$sapi" || \
-				die "Failed to change dir to ${WORKDIR}/sapis-build/$1"
-			emake
-		fi
+		use "${sapi}" && emake -C "${WORKDIR}/sapis-build/${sapi}"
 	done
 }
 
@@ -632,14 +705,13 @@ src_install() {
 }
 
 src_test() {
-	echo ">>> Test phase [test]: ${CATEGORY}/${PF}"
-	PHP_BIN="${WORKDIR}/sapis-build/cli/sapi/cli/php"
-	if [[ ! -x "${PHP_BIN}" ]] ; then
-		ewarn "Test phase requires USE=cli, skipping"
-		return
-	else
-		export TEST_PHP_EXECUTABLE="${PHP_BIN}"
-	fi
+	export TEST_PHP_EXECUTABLE="${WORKDIR}/sapis-build/cli/sapi/cli/php"
+
+	# Sometimes when the sub-php launches a sub-sub-php, it uses these.
+	# Without an "-n" in all instances, the *live* php.ini can be loaded,
+	# pulling in *live* zend extensions. And those can be incompatible
+	# with the thing we just built.
+	export TEST_PHP_EXTRA_ARGS="-n"
 
 	if [[ -x "${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi" ]] ; then
 		export TEST_PHP_CGI_EXECUTABLE="${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi"
@@ -649,40 +721,22 @@ src_test() {
 		export TEST_PHPDBG_EXECUTABLE="${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg"
 	fi
 
-	SKIP_ONLINE_TESTS=1 REPORT_EXIT_STATUS=1 "${TEST_PHP_EXECUTABLE}" -n  -d \
-					  "session.save_path=${T}" \
-					  "${WORKDIR}/sapis-build/cli/run-tests.php" -n -q -d \
-					  "session.save_path=${T}"
-
-	for name in ${EXPECTED_TEST_FAILURES}; do
-		mv "${name}.out" "${name}.out.orig" 2>/dev/null || die
-	done
-
-	local failed="$(find -name '*.out')"
-	if [[ ${failed} != "" ]] ; then
-		ewarn "The following test cases failed unexpectedly:"
-		for name in ${failed}; do
-			ewarn "  ${name/.out/}"
-		done
-	else
-		einfo "No unexpected test failures, all fine"
-	fi
-
-	if [[ ${PHP_SHOW_UNEXPECTED_TEST_PASS} == "1" ]] ; then
-		local passed=""
-		for name in ${EXPECTED_TEST_FAILURES}; do
-			[[ -f "${name}.diff" ]] && continue
-			passed="${passed} ${name}"
-		done
-		if [[ ${passed} != "" ]] ; then
-			einfo "The following test cases passed unexpectedly:"
-			for name in ${passed}; do
-				ewarn "  ${passed}"
-			done
-		else
-			einfo "None of the known-to-fail tests passed, all fine"
-		fi
-	fi
+	# The sendmail override prevents ext/imap/tests/bug77020.phpt from
+	# actually trying to send mail, and will be fixed upstream soon:
+	#
+	#   https://github.com/php/php-src/issues/11629
+	#
+	# The IO capture tests need to be disabled because they fail when
+	# std{in,out,err} are redirected (as they are within portage).
+	#
+	# One -n applies to the top-level "php", while the other applies
+	# to any sub-php that get invoked by the test runner.
+	SKIP_IO_CAPTURE_TESTS=1 SKIP_PERF_SENSITIVE=1 REPORT_EXIT_STATUS=1 \
+		"${TEST_PHP_EXECUTABLE}" -n \
+		"${WORKDIR}/sapis-build/cli/run-tests.php" --offline -n -q \
+		-d "session.save_path=${T}" \
+		-d "sendmail_path=echo >/dev/null" \
+		|| die "tests failed"
 }
 
 pkg_postinst() {

@@ -1,0 +1,21 @@
+commit 5a4083181b970411d6f3b1c1e3bdd199d5cd1a5e
+Author: Jakub Holubansky <jakub.holubansky@team.bumble.com>
+Date:   Fri Mar 31 17:20:35 2023 +0200
+
+    ext/openssl: pass ini options to extra processes in tests
+
+diff --git a/ext/openssl/tests/ServerClientTestCase.inc b/ext/openssl/tests/ServerClientTestCase.inc
+index 753366df6f..1b140b63f6 100644
+--- a/ext/openssl/tests/ServerClientTestCase.inc
++++ b/ext/openssl/tests/ServerClientTestCase.inc
+@@ -72,8 +72,9 @@ class ServerClientTestCase
+             );
+         } else {
+             $cmd = sprintf(
+-                '%s "%s" %s %s',
++                '%s %s "%s" %s %s',
+                 PHP_BINARY,
++                getenv('TEST_PHP_EXTRA_ARGS'),
+                 __FILE__,
+                 WORKER_ARGV_VALUE,
+                 $worker
