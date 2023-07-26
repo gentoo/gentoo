@@ -19,7 +19,12 @@
   <use>
     <flag name="fastjet">Build jets using the <pkg>sci-physics/fastjet</pkg> package</flag>
     <flag name="hepmc">Adds support for High Energy Physics Monte Carlo Generators <pkg>sci-physics/hepmc</pkg></flag>
+    <flag name="hepmc2">Adds support for High Energy Physics Monte Carlo Generators 2 <pkg>sci-physics/hepmc</pkg></flag>
+    <flag name="hepmc3">Adds support for High Energy Physics Monte Carlo Generators 3 <pkg>sci-physics/hepmc</pkg></flag>
     <flag name="lhapdf">Support the use of external PDF sets via <pkg>sci-physics/lhapdf</pkg></flag>
     <flag name="root">Use <pkg>sci-physics/root</pkg> trees and histograms (in examples only)</flag>
   </use>
+  <upstream>
+    <remote-id type="gitlab">Pythia8/releases</remote-id>
+  </upstream>
 </pkgmetadata>
