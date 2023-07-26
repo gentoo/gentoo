@@ -3,14 +3,12 @@
 
 EAPI=8
 
-# Please don't add pypy support before testing if it's actually supported. The
-# old compat matrix is no longer accessible as of 2021-02-13 but stated back
-# in 2020-07-05 that PyQt5 was explicitly not supported.
+DISTUTILS_USE_PEP517="setuptools"
 PYTHON_COMPAT=( python3_{9..11} )
 PYPI_NO_NORMALIZE=1
 PYPI_PN="ReText"
 
-inherit distutils-r1 optfeature qmake-utils virtualx xdg
+inherit desktop distutils-r1 optfeature qmake-utils virtualx xdg
 
 DESCRIPTION="Simple editor for Markdown and reStructuredText"
 HOMEPAGE="https://github.com/retext-project/retext https://github.com/retext-project/retext/wiki"
@@ -49,6 +47,13 @@ pkg_setup() {
 	export PATH="$(qt5_get_bindir):${PATH}"
 }
 
+python_install() {
+	distutils-r1_python_install
+
+	newicon data/retext-kde5.png retext.png
+	make_desktop_entry ${PN} "ReText" ${PN} "Office;WordProcessor"
+}
+
 src_test() {
 	virtx distutils-r1_src_test
 }
@@ -61,11 +66,13 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "dictionary support" dev-python/pyenchant
-	# See https://bugs.gentoo.org/772197.
-	optfeature "rendering with webengine" dev-python/PyQt6-WebEngine
 
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."
 	einfo "For more details take a look at:"
 	einfo "https://github.com/mitya57/python-markdown-math#math-delimiters"
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
