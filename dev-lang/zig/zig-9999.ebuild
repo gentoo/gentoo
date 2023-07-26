@@ -126,8 +126,8 @@ src_compile() {
 
 	if use doc; then
 		cd "${BUILD_DIR}" || die
-		edo ./stage3/bin/zig run ../doc/docgen.zig -- --zig ./stage3/bin/zig ../doc/langref.html.in "${S}/langref.html"
-		edo ./stage3/bin/zig test ../lib/std/std.zig --zig-lib-dir ../lib -fno-emit-bin -femit-docs="${S}/std"
+		edo ./stage3/bin/zig build std-docs --prefix "${S}/docgen/"
+		edo ./stage3/bin/zig build langref --prefix "${S}/docgen/"
 	fi
 }
 
@@ -148,7 +148,7 @@ src_test() {
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( "langref.html" "std" )
+	use doc && local HTML_DOCS=( "docgen/doc/langref.html" "docgen/doc/std" )
 	cmake_src_install
 
 	cd "${ED}/usr/$(get_libdir)/zig/${PV}/" || die
