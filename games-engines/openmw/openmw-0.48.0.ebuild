@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( luajit )
+LUA_COMPAT=( lua5-{1,3,4} luajit )
 inherit cmake lua-single readme.gentoo-r1 xdg
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
@@ -105,8 +105,6 @@ src_configure() {
 			-DUSE_LUAJIT=ON
 		)
 	else
-		# 5.1 (and other 5.x) are supported in theory, but don't work well (eg. test fails)
-		# In a future version consider adding it back to LUA_COMPAT or dropping this branch
 		mycmakeargs+=(
 			-DUSE_LUAJIT=OFF
 			-DLua_FIND_VERSION_MAJOR=$(ver_cut 1 $(lua_get_version))
@@ -137,6 +135,12 @@ src_compile() {
 }
 
 src_test() {
+	# Lua 5.x is supported in theory, but don't work as well, the test fails
+	# Upstream recommends luajit, but it has less arch coverage
+	if [[ ${ELUA} != luajit ]]; then
+		elog "Skipping tests on ${ELUA}"
+		return
+	fi
 	pushd "${BUILD_DIR}" > /dev/null || die
 	./openmw_test_suite || die
 	popd > /dev/null || die
