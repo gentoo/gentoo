@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>quincyf467@protonmail.com</email>
+    <name>Quincy Fleming</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="lto">Enable Link Time Optimization (LTO)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">Slackadays/Clipboard</remote-id>
+    <doc lang="en">https://github.com/Slackadays/Clipboard/blob/main/README.md</doc>
+    <bugs-to>https://github.com/Slackadays/Clipboard/issues</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+    CB (or Clipboard) is a ridonkulously easy-to-use data remembrance tool bursting with oodles of useful features and absolutely gorgeous eye candy.
+
+    That's underselling it a bit.	
+
+    This is your one-way golden ticket to saving time and effort anytime and anywhere. Have a telepath with an infallible memory always by your side. Feel the sheer power flowing through your commanding body as you cut, copy, paste, add, remove, load, and make note of anything that dares lay in your terminal at the mere press of a button. In no time, you'll be reclined back on a sunny beach in the Caribbean sipping a succulent papaya smoothie with the love of your life all while you watch dolphins leaping from the shimmering waves of the soft blue water. Ok, so maybe that last part won't actually happen, but you get the idea
+  </longdescription>
+</pkgmetadata>
