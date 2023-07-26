@@ -7,7 +7,6 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-21)
-
 # jemalloc has been a source of sometimes hard to track bugs in the
 # past. It is now masked with the intention to remove it altogether at a
 # later date.
