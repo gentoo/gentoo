@@ -45,6 +45,7 @@ multilib_src_install() {
 	# TODO: Fix this properly, see bug #907470 and bug #909079.
 	insinto /usr/$(get_libdir)
 	doins "${BUILD_DIR}"/ext/webrtc/libgstwebrtc.so
+	doins "${BUILD_DIR}"/gst-libs/gst/webrtc/nice/libgstwebrtcnice-1.0.so*
 	insinto /usr/include/gstreamer-1.0/gst/webrtc/nice
 	doins "${S}"/gst-libs/gst/webrtc/nice/*.h
 	gstreamer_multilib_src_install
