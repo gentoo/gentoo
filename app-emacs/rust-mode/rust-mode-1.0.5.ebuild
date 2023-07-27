@@ -13,11 +13,9 @@ LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+PATCHES=( "${FILESDIR}"/${P}-tests.patch )
+
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
 
-src_test() {
-	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS} \
-		-l rust-mode.el -l rust-mode-tests.el \
-		-f ert-run-tests-batch-and-exit || die "tests failed"
-}
+elisp-enable-tests ert "${S}" -l ${PN}-tests.el
