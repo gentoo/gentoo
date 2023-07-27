@@ -49,7 +49,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	net-misc/curl[ssl]
 	charset? ( virtual/libiconv )
-	guile? ( >=dev-scheme/guile-2.0 )
+	guile? ( >=dev-scheme/guile-2.0:12= )
 	lua? ( ${LUA_DEPS} )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
@@ -58,7 +58,6 @@ RDEPEND="
 		|| (
 			dev-lang/ruby:3.1
 			dev-lang/ruby:3.0
-			dev-lang/ruby:2.7
 		)
 	)
 	selinux? ( sec-policy/selinux-irc )
@@ -107,17 +106,21 @@ src_prepare() {
 	done
 
 	# install only required documentation ; en always
-	for i in $(grep add_subdirectory doc/CMakeLists.txt \
-			| sed -e 's/.*add_subdirectory(\(..\)).*/\1/' -e '/en/d'); do
-		if ! has ${i} ${LINGUAS-${i}} ; then
-			sed -i \
-				-e '/add_subdirectory('${i}')/d' \
-				doc/CMakeLists.txt || die
-		fi
+	local j
+	for i in $(grep -e 'set(.*en.*)$' doc/CMakeLists.txt \
+			| sed -e 's/.*set(\(\w\+\).*/\1/'); do
+		for j in $(grep set.${i} doc/CMakeLists.txt \
+				| sed -e "s/.*${i}\(.*\)).*/\1/" -e 's/ en//'); do
+			if ! has ${j} ${LINGUAS-${j}} ; then
+				sed -i \
+					-e "s/\(set(${i}.*\) ${j}/\1/" \
+					doc/CMakeLists.txt || die
+			fi
+		done
 	done
 
 	# install docs in correct directory
-	sed -i "s#\${DATAROOTDIR}/doc/\${PROJECT_NAME}#\0-${PVR}/html#" doc/*/CMakeLists.txt || die
+	sed -i "s#\${DATAROOTDIR}/doc/\${PROJECT_NAME}#\0-${PVR}/html#" doc/CMakeLists.txt || die
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		# fix linking error on Darwin
@@ -139,7 +142,11 @@ src_configure() {
 		-DENABLE_ALIAS=$(usex alias)
 		-DENABLE_BUFLIST=$(usex buflist)
 		-DENABLE_CHARSET=$(usex charset)
-		-DENABLE_DOC=$(usex doc)
+		# -DENABLE_DOC requires all plugins (except javascript).
+		# https://github.com/weechat/weechat/blob/v4.0.2/CMakeLists.txt#L144
+		# Impossible since php was dropped in net-irc/weechat-3.5.r1.ebuild. bug #705702
+		-DENABLE_DOC=OFF
+		-DENABLE_DOC_INCOMPLETE=$(usex doc)
 		-DENABLE_ENCHANT=$(usex enchant)
 		-DENABLE_EXEC=$(usex exec)
 		-DENABLE_FIFO=$(usex fifo)
