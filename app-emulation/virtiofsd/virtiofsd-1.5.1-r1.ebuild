@@ -128,6 +128,9 @@ src_unpack() {
 src_install() {
 	cargo_src_install
 
+	mkdir "${ED}/usr/libexec" || die
+	mv "${ED}/usr/"{bin,libexec}/${PN} || die
+
 	# Install 50-qemu-virtiofsd.json but to avoid conflicts with
 	# <app-emulation/qemu-8.0.0 install it under different name. In this case,
 	# smaller number means higher priority, but that's probably what users want
