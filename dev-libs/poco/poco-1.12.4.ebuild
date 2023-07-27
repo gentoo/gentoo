@@ -17,6 +17,7 @@ KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 IUSE="7z activerecord cppparser +data examples +file2pagecompiler iodbc +json jwt mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc postgres prometheus sqlite +ssl test +util +xml +zip"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
+	activerecord? ( util )
 	7z? ( xml )
 	file2pagecompiler? ( pagecompiler )
 	iodbc? ( odbc )
