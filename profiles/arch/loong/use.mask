@@ -5,10 +5,6 @@
 # dev-util/babeltrace fails tests on loong
 babeltrace
 
-# WANG Xuerui <xen0n@gentoo.org> (2023-07-05)
-# rest of GNOME not keyworded yet
-gnome-online-accounts
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # media-libs/xine-lib not tested
 xine
