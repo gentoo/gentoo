@@ -33,6 +33,32 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
+# php-7.x is End Of Life (EOL) upstream and no longer receives security
+# fixes. We lose phpunit because it depends on CodeCoverage which
+# depends on TokenStream, and TokenStream is limited to 7.x. Bug 887739
+# to upgrade moodle is seven months old, which I think is long enough to
+# have waited. Selfoss has a newer version. Removal after 2023-09-11.
+dev-lang/php:7.4
+dev-php/PHP_TokenStream
+dev-php/PHP_CodeCoverage
+dev-php/phpspec-prophecy
+dev-php/phpunit
+dev-php/phpunit-mock-objects
+dev-php/sebastian-comparator
+dev-php/sebastian-exporter
+dev-php/sebastian-global-state
+dev-php/sebastian-object-enumerator
+dev-php/sebastian-object-reflector
+dev-php/sebastian-recursion-context
+=mail-client/roundcube-1.4.11
+=virtual/httpd-php-7.4
+=www-apps/moodle-3.11.15
+=www-apps/moodle-4.0.9
+=www-apps/moodle-4.1.4
+=www-apps/moodle-4.2.1
+=www-apps/selfoss-2.19
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
 # Removal on 2023-08-05.

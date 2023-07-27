@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
+# PHP 7.x is end-of-life. Please upgrade to a newer slot.
+php_targets_php7-3
+php_targets_php7-4
+
 # Hans de Graaff <graaff@gentoo.org> (2023-04-10)
 # Ruby 2.7 is masked for removal.
 ruby_targets_ruby27
@@ -18,11 +23,6 @@ pyside6
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet
 sysprof
-
-# Brian Evans <grknight@gentoo.org> (2022-01-21)
-# PHP 7.3 is end-of-life
-# Please upgrade to a newer slot
-php_targets_php7-3
 
 # Sam James <sam@gentoo.org> (2022-01-12)
 # PCH has proven itself to be unreliable and lead to spurious build
