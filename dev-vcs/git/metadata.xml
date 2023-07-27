@@ -25,6 +25,7 @@
     <flag name="curl">Support fetching and pushing (requires webdav too) over http:// and https:// protocols</flag>
     <flag name="gpg">Pull in gnupg for signing -- without gnupg, attempts at signing will fail at runtime!</flag>
     <flag name="highlight">GitWeb support for <pkg>app-text/highlight</pkg></flag>
+    <flag name="make-symlinks">Install symbolic links to git binary instead hard links</flag>
     <flag name="mediawiki">Support pulling and pushing from MediaWiki</flag>
     <flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
     <flag name="safe-directory">Respect the safe.directory setting</flag>
