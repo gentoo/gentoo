@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 SLOT="0"
 
 RDEPEND="
-	>=dev-python/signature_dispatch-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/signature-dispatch-1.0.0[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
