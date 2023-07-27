@@ -45,6 +45,7 @@ BDEPEND=">=dev-python/cython-0.27[${PYTHON_USEDEP}]
 
 PATCHES=(
 	"${FILESDIR}"/0001-__init__.py-Make-NetworkX-dep-optional.patch
+	"${FILESDIR}"/${P}-cython3.patch
 )
 
 distutils_enable_tests setup.py
