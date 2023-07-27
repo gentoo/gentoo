@@ -24,7 +24,7 @@ else
 	S="${WORKDIR}/node-v${PV}"
 fi
 
-IUSE="cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
+IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_2 cpu_flags_x86_avx2 cpu_flags_x86_avx512dq cpu_flags_x86_avx512f cpu_flags_x86_avx512vl debug doc +icu inspector lto +npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
 REQUIRED_USE="inspector? ( icu ssl )
 	npm? ( ssl )
 	system-icu? ( icu )
@@ -108,6 +108,32 @@ src_prepare() {
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
 	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-18.16.0-paxmarking.patch )
+
+	if use amd64; then
+	# Configure instruction set to use
+	local NODE_CPU_ISA=""
+		if use cpu_flags_x86_avx2 && \
+				use cpu_flags_x86_avx512dq && \
+				use cpu_flags_x86_avx512f && \
+				use cpu_flags_x86_avx512vl; then
+			NODE_CPU_ISA+=" 'SIMDUTF_IMPLEMENTATION_ICELAKE=1',"
+		else
+			NODE_CPU_ISA+=" 'SIMDUTF_IMPLEMENTATION_ICELAKE=0',"
+		fi
+		if use cpu_flags_x86_avx2; then
+			NODE_CPU_ISA+=" 'SIMDUTF_IMPLEMENTATION_HASWELL=1',"
+		else
+			NODE_CPU_ISA+=" 'SIMDUTF_IMPLEMENTATION_HASWELL=0',"
+		fi
+		if use cpu_flags_x86_sse4_2; then
+			NODE_CPU_ISA+=" 'SIMDUTF_IMPLEMENTATION_WESTMERE=1',"
+		else
+			NODE_CPU_ISA+=" 'SIMDUTF_IMPLEMENTATION_WESTMERE=0',"
+		fi
+
+		# Patch simdutf to respect cpu_flags_x86_*
+		sed -i -e "s|'sources'|'defines': [${NODE_CPU_ISA}], 'sources'|g" deps/simdutf/simdutf.gyp || die
+	fi
 
 	default
 }
