@@ -41,6 +41,10 @@ BDEPEND=">=dev-python/cython-0.27[${PYTHON_USEDEP}]
 		sys-apps/checkpolicy
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.4.1-cython3.patch
+)
+
 distutils_enable_tests pytest
 
 python_prepare_all() {
