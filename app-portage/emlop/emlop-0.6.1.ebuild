@@ -75,7 +75,7 @@ CRATES="
 	winapi-x86_64-pc-windows-gnu-0.4.0
 "
 
-inherit cargo bash-completion-r1
+inherit cargo shell-completion
 
 DESCRIPTION="A fast, accurate, ergonomic emerge.log parser"
 HOMEPAGE="https://github.com/vincentdephily/emlop"
@@ -104,10 +104,8 @@ src_install() {
 	dobashcomp emlop
 	# zsh
 	./target/$(usex debug debug release)/emlop complete zsh > _emlop || die
-	insinto /usr/share/zsh/site-functions
-	doins _emlop
+	dozshcomp _emlop
 	# fish
 	./target/$(usex debug debug release)/emlop complete fish > emlop.fish || die
-	insinto /usr/share/fish/vendor_completions.d
-	doins emlop.fish
+	dofishcomp emlop.fish
 }
