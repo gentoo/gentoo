@@ -31,7 +31,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 DOCS=( CHANGELOG.md README.org etc )
-PATCHES=( "${FILESDIR}"/${PN}-dashboard-widgets.el-banners.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.8.0-dashboard-widgets.el-banners.patch )
 
 ELISP_REMOVE=( .dir-locals.el )
 SITEFILE="50${PN}-gentoo.el"
