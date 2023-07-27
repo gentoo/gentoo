@@ -28,7 +28,7 @@ CDEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	sys-devel/gcc:*
+	ppc? ( sys-devel/gcc:* )
 "
 DEPEND="${CDEPEND}"
 BDEPEND="test? ( dev-libs/boost[${MULTILIB_USEDEP}] )"
