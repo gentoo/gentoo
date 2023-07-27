@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
+# php-7.x is End-of-Life (EOL) and masked.
+www-servers/nginx-unit php7-4
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit
 # the only choice for maintained lua. Apply mask/force to override
@@ -466,18 +470,45 @@ www-client/seamonkey lto
 # http://httpd.apache.org/docs/current/mod/mod_lua.html
 www-servers/apache apache2_modules_lua
 
-# Brian Evans <grknight@gentoo.org> (2021-01-07)
-# Block test deps on packages until they can be updated
-# Old phpunit does not work with new PHP and last is vulnerable
-<dev-php/PEAR-Crypt_GPG-1.6.4 test
+# Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
+# Our PHPUnit (or at least one of its dependencies) doesn't work with
+# modern versions of PHP itself.
+dev-php/PEAR-Console_Getargs test
+dev-php/PEAR-Crypt_GPG test
+dev-php/PEAR-Crypt_HMAC2 test
+dev-php/PEAR-Exception test
+dev-php/PEAR-File_Fortune test
+dev-php/PEAR-HTML_CSS test
+dev-php/PEAR-HTML_Template_Sigma test
+dev-php/PEAR-HTTP_Request2 test
+dev-php/PEAR-Image_Color2 test
+dev-php/PEAR-Image_Text test
+dev-php/PEAR-Net_IPv6 test
+dev-php/PEAR-Net_LDAP2 test
+dev-php/PEAR-Numbers_Words test
+dev-php/PEAR-Text_Password test
+dev-php/PEAR-Text_Wiki test
 dev-php/PEAR-Text_Wiki_Mediawiki test
+dev-php/PEAR-XML_RSS test
+dev-php/PHP_CodeCoverage test
 dev-php/PHP_CodeSniffer test
+dev-php/PHP_TokenStream test
+dev-php/awl test
+dev-php/fedora-autoloader test
+dev-php/json-schema test
+dev-php/jsonlint test
 dev-php/php-redmine-api test
 dev-php/recaptcha test
 dev-php/symfony-config test
+dev-php/symfony-dependency-injection test
 dev-php/symfony-event-dispatcher test
 dev-php/symfony-filesystem test
 dev-php/symfony-finder test
+dev-php/symfony-process test
+dev-php/symfony-yaml test
+dev-php/theseer-Autoload test
+dev-php/twig test
+
 
 # Sam James <sam@gentoo.org> (2021-01-04)
 # Doc generation is broken, needs gtkdoc-mktmpl (gone from gtk-doc)
