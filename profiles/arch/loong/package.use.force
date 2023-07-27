@@ -9,10 +9,6 @@
 # [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
 media-video/mpv lua_single_target_lua5-1 -lua_single_target_luajit
 
-# WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
-# dev-lang/spidermonkey still waiting on upstream lld support
-sys-auth/polkit duktape
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-08-13)
 # Force the host target
 #

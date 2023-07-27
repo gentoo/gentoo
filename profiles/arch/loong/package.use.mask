@@ -14,10 +14,6 @@ dev-lang/spidermonkey clang lto
 media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
-# dev-lang/spidermonkey still waiting on upstream lld support
-app-crypt/libsecret test-rust
-dev-util/glade gjs
-
 # dev-python/watchfiles has too old target-lexicon without loong support
 dev-python/uvicorn test-rust
 
