@@ -41,6 +41,9 @@ src_prepare() {
 	# Set version from PV, without using dpkg
 	sed -i -e "s/^VERSION=unknown/VERSION=\"${PV}\"/" "${S}/src/logcheck" || die
 
+	# QA-fix remove call to non existent command | Bug: #911281
+	sed -i "/dpkg-parsechangelog/d" "${S}/Makefile" || die
+
 	# Add /var/log/messages to checked logs
 	echo "/var/log/messages" >> "${S}/etc/logcheck.logfiles.d/syslog.logfiles" || die
 
