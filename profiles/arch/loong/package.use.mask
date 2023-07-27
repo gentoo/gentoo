@@ -14,12 +14,6 @@ dev-lang/spidermonkey clang lto
 media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
-# Temporary masks; to be lifted after leaving wd40 status.
-gnome-base/nautilus previewer
-mate-extra/caja-extensions gajim
-x11-misc/xscreensaver gdm
-
-# WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
 # dev-lang/spidermonkey still waiting on upstream lld support
 app-crypt/libsecret test-rust
 dev-util/glade gjs
