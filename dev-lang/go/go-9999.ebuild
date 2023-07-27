@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,6 +6,8 @@ EAPI=7
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 
+# See "Bootstrap" in release notes
+GO_BOOTSTRAP_MIN=1.17.13
 MY_PV=${PV/_/}
 
 inherit toolchain-funcs
@@ -21,7 +23,7 @@ case ${PV}  in
 	case ${PV} in
 	*_beta*|*_rc*) ;;
 	*)
-		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+		KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 		;;
 	esac
 esac
@@ -31,11 +33,14 @@ HOMEPAGE="https://go.dev"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE="cpu_flags_x86_sse2"
+IUSE="abi_mips_o32 abi_mips_n64 cpu_flags_x86_sse2"
 
+RDEPEND="
+arm? ( sys-devel/binutils[gold] )
+arm64? ( sys-devel/binutils[gold] )"
 BDEPEND="|| (
-		dev-lang/go
-		dev-lang/go-bootstrap )"
+		>=dev-lang/go-${GO_BOOTSTRAP_MIN}
+		>=dev-lang/go-bootstrap-${GO_BOOTSTRAP_MIN} )"
 
 # the *.syso files have writable/executable stacks
 QA_EXECSTACK='*.syso'
@@ -67,6 +72,12 @@ go_arch() {
 	case "${tc_arch}" in
 		x86)	echo 386;;
 		x64-*)	echo amd64;;
+		loong)	echo loong64;;
+		mips) if use abi_mips_o32; then
+				[[ $(tc-endian $@) = big ]] && echo mips || echo mipsle
+			elif use abi_mips_n64; then
+				[[ $(tc-endian $@) = big ]] && echo mips64 || echo mips64le
+			fi ;;
 		ppc64) [[ $(tc-endian $@) = big ]] && echo ppc64 || echo ppc64le ;;
 		riscv) echo riscv64 ;;
 		s390) echo s390x ;;
@@ -111,9 +122,9 @@ go_cross_compile() {
 }
 
 src_compile() {
-	if has_version -b dev-lang/go; then
+	if has_version -b ">=dev-lang/go-${GO_BOOTSTRAP_MIN}"; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go"
-	elif has_version -b dev-lang/go-bootstrap; then
+	elif has_version -b ">=dev-lang/go-bootstrap-${GO_BOOTSTRAP_MIN}"; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go-bootstrap"
 	else
 		eerror "Go cannot be built without go or go-bootstrap installed"
@@ -144,6 +155,10 @@ src_test() {
 	go_cross_compile && return 0
 
 	cd src
+
+	# https://github.com/golang/go/issues/42005
+	rm cmd/link/internal/ld/fallocate_test.go || true
+
 	PATH="${GOBIN}:${PATH}" \
 	./run.bash -no-rebuild || die "tests failed"
 	cd ..

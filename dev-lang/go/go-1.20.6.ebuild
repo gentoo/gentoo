@@ -6,6 +6,8 @@ EAPI=7
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 
+# See "Bootstrap" in release notes
+GO_BOOTSTRAP_MIN=1.17.13
 MY_PV=${PV/_/}
 
 inherit toolchain-funcs
@@ -37,8 +39,8 @@ RDEPEND="
 arm? ( sys-devel/binutils[gold] )
 arm64? ( sys-devel/binutils[gold] )"
 BDEPEND="|| (
-		dev-lang/go
-		dev-lang/go-bootstrap )"
+		>=dev-lang/go-${GO_BOOTSTRAP_MIN}
+		>=dev-lang/go-bootstrap-${GO_BOOTSTRAP_MIN} )"
 
 # the *.syso files have writable/executable stacks
 QA_EXECSTACK='*.syso'
@@ -120,9 +122,9 @@ go_cross_compile() {
 }
 
 src_compile() {
-	if has_version -b dev-lang/go; then
+	if has_version -b ">=dev-lang/go-${GO_BOOTSTRAP_MIN}"; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go"
-	elif has_version -b dev-lang/go-bootstrap; then
+	elif has_version -b ">=dev-lang/go-bootstrap-${GO_BOOTSTRAP_MIN}"; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go-bootstrap"
 	else
 		eerror "Go cannot be built without go or go-bootstrap installed"
