@@ -7,17 +7,11 @@ inherit cmake xdg
 
 DESCRIPTION="Full featured webcam capture application"
 HOMEPAGE="https://webcamoid.github.io"
-if [[ ${PV} = 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/webcamoid/webcamoid.git"
-	EGIT_BRANCH="master"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/webcamoid/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
-fi
+SRC_URI="https://github.com/webcamoid/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="alsa ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers v4l"
 
 REQUIRED_USE="v4lutils? ( v4l )"
@@ -49,6 +43,9 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_configure() {
+	#Disable git in package source. If not disabled the cmake configure process will show a lot of "fatal not a git repository" errors
+	sed -i 's|find_program(GIT_BIN git)|#find_program(GIT_BIN git)|' libAvKys/cmake/ProjectCommons.cmake || die
+
 	local mycmakeargs=(
 		"-DNOMEDIAFOUNDATION=1"
 		"-DNODSHOW=1"
@@ -69,6 +66,6 @@ src_configure() {
 }
 
 src_install() {
-	docompress -x /usr/share/man1/${PN}.1.gz
+	docompress -x /usr/share/man/${PN}.1.gz
 	cmake_src_install
 }
