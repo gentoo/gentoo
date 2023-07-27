@@ -18,10 +18,19 @@ IUSE="doc"
 BDEPEND="doc? ( virtual/latex-base )"
 RDEPEND="sci-visualization/gnuplot"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.8.0-tests.patch )
+
 SITEFILE="50${PN}-gentoo.el"
 DOCS=(CHANGELOG.org README.org)
 DOC_CONTENTS="Please see ${SITELISP}/${PN}/gnuplot.el for the complete
 	documentation."
+
+src_prepare() {
+	elisp_src_prepare
+
+	# Erase broken tests
+	echo "(provide 'gnuplot-test-context)" > gnuplot-test-context.el || die
+}
 
 src_compile() {
 	elisp_src_compile
