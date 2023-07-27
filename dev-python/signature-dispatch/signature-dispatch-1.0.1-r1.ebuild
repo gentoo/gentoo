@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 pypi
 
@@ -23,6 +23,12 @@ distutils_enable_tests pytest
 RDEPEND="
 	>=dev-python/typeguard-3.0.0[${PYTHON_USEDEP}]
 "
+
+src_prepare() {
+	# unpin deps
+	sed -i -e 's:~=:>=:' pyproject.toml || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
