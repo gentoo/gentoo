@@ -31,7 +31,7 @@ IUSE="${IUSE}
 	threads"
 
 IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
-	cdb cjk coverage +ctype curl debug
+	cdb cjk +ctype curl debug
 	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
 	intl iodbc +jit kerberos ldap ldap-sasl libedit lmdb
@@ -86,7 +86,6 @@ COMMON_DEPEND="
 	berkdb? ( || (	sys-libs/db:5.3 sys-libs/db:4.8 ) )
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
-	coverage? ( dev-util/lcov )
 	curl? ( >=net-misc/curl-7.29.0 )
 	enchant? ( app-text/enchant:2 )
 	ffi? ( >=dev-libs/libffi-3.0.11:= )
@@ -313,6 +312,11 @@ src_configure() {
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
 
+	# Don't allow ./configure to detect and use an existing version
+	# of PHP; this can lead to all sorts of weird unpredictability
+	# as in bug 900210.
+	export ac_cv_prog_PHP=""
+
 	# The php-fpm config file wants localstatedir to be ${EPREFIX}/var
 	# and not the Gentoo default ${EPREFIX}/var/lib. See bug 572002.
 	local our_conf=(
@@ -335,7 +339,6 @@ src_configure() {
 		$(use_enable bcmath)
 		$(use_with bzip2 bz2 "${EPREFIX}/usr")
 		$(use_enable calendar)
-		$(use_enable coverage gcov)
 		$(use_enable ctype)
 		$(use_with curl)
 		$(use_enable xml dom)
@@ -519,9 +522,8 @@ src_configure() {
 	# changing it is not an easy job.
 	local one_sapi
 	local sapi
-	mkdir -p "${WORKDIR}/sapis-build" || die
+	mkdir "${WORKDIR}/sapis-build" || die
 	for one_sapi in $SAPIS ; do
-		einfo "Current SAPI: ${one_sapi}"
 		use "${one_sapi}" || continue
 		php_set_ini_dir "${one_sapi}"
 
@@ -529,7 +531,6 @@ src_configure() {
 		# the files that autotools creates. This was all originally
 		# based on the autotools-utils eclass.
 		BUILD_DIR="${WORKDIR}/sapis-build/${one_sapi}"
-		einfo "Copying sources to ${BUILD_DIR}"
 		cp -a "${S}" "${BUILD_DIR}" || die
 
 		local sapi_conf=(
@@ -569,7 +570,7 @@ src_configure() {
 		myeconfargs+=( "${sapi_conf[@]}" )
 
 		pushd "${BUILD_DIR}" > /dev/null || die
-		einfo "Running ./configure in ${BUILD_DIR}"
+		einfo "Running econf in ${BUILD_DIR}"
 		econf "${myeconfargs[@]}"
 		popd > /dev/null || die
 	done
