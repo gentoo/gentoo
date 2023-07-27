@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-07-27)
+# php-7.x is End Of Life (EOL) upstream and no longer receives security
+# fixes. We don't have the manpower to keep it working. In the process,
+# we lose phpunit because it depends on CodeCoverage which depends on
+# TokenStream, and TokenStream is limited to 7.x. The upgrade bug
+# (887739) for moodle is seven months old, so I'm sorry, but it has to
+# be masked too. This really should have happened sooner.
+dev-lang/php:7.4
+dev-php/PHP_TokenStream
+dev-php/PHP_CodeCoverage
+dev-php/phpunit
+www-apps/moodle
+
 # William Hubbs <williamh@gentoo.org> (2023-07-25)
 # This package has been replaced by app-accessibility/espeak-ng.
 # Please transition to the new package.
