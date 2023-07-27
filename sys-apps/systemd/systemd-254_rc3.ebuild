@@ -241,6 +241,7 @@ src_unpack() {
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/systemd-253-initrd-generators.patch"
+		"${FILESDIR}/systemd-254-dt_relr.patch"
 	)
 
 	if ! use vanilla; then
