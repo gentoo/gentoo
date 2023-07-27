@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-07-27)
+# Obsolete as of dev-php/swoole-4.3.0, according to
+# its github README. Stuck on php-7.4. Removal on or
+# after 30 days.
+dev-php/swoole-async
+
 # William Hubbs <williamh@gentoo.org> (2023-07-25)
 # This package has been replaced by app-accessibility/espeak-ng.
 # Please transition to the new package.
