@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic font optfeature pam strip-linguas xdg-utils
+inherit autotools flag-o-matic font optfeature pam strip-linguas systemd xdg-utils
 
 DESCRIPTION="Modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
@@ -220,10 +220,13 @@ src_install() {
 	#if ! use gtk; then
 	#	rm "${ED}/usr/bin/xscreensaver-demo" || die
 	#fi
-	# Makefile installs xscreensaver.service regardless of --without-systemd
-	if ! use systemd; then
-		rm "${ED}/usr/share/${PN}/xscreensaver.service" || die
+	if use systemd; then
+		systemd_douserunit "${ED}/usr/share/${PN}/xscreensaver.service"
 	fi
+	# Makefile installs xscreensaver.service regardless of
+	# --without-systemd, and if USE=systemd, we will have installed the
+	# unit file already.
+	rm "${ED}/usr/share/${PN}/xscreensaver.service" || die
 
 	# bug #885989
 	fperms 4755 /usr/$(get_libdir)/misc/xscreensaver/xscreensaver-auth
