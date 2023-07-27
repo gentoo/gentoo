@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,8 +17,8 @@ RESTRICT="!test? ( test )"
 
 DEPEND="!dev-lisp/cl-${PN}
 	!<dev-lisp/asdf-2.33-r3
-	doc? ( virtual/texi2dvi )
 	test? ( virtual/commonlisp )"
+BDEPEND="doc? ( sys-apps/texinfo )"
 PDEPEND="virtual/commonlisp
 	~dev-lisp/uiop-${PV}"
 
@@ -31,15 +31,14 @@ install_docs() {
 	(
 		cd doc || die
 		dodoc *.{html,css,ico,png} ${PN}.pdf
-		dodoc -r asdf
-	)
+		doinfo ${PN}.info
 
-	if has_version ">=dev-lisp/sbcl-1.4.0" ; then
-		(
-			cd doc || die
-			doinfo ${PN}.info
-		)
-	fi
+		if has_version -b '<sys-apps/texinfo-7'; then
+			dodoc -r asdf
+		else
+			dodoc -r asdf_html
+		fi
+	)
 }
 
 src_compile() {
