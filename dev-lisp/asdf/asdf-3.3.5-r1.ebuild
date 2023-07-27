@@ -6,8 +6,8 @@ EAPI=7
 inherit prefix common-lisp-3
 
 DESCRIPTION="ASDF is Another System Definition Facility for Common Lisp"
-HOMEPAGE="http://common-lisp.net/project/asdf/"
-SRC_URI="http://common-lisp.net/project/${PN}/archives/${P}.tar.gz"
+HOMEPAGE="https://asdf.common-lisp.dev/"
+SRC_URI="https://asdf.common-lisp.dev/archives/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PVR}"
@@ -15,10 +15,8 @@ KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="!dev-lisp/cl-${PN}
-	!<dev-lisp/asdf-2.33-r3
+BDEPEND="doc? ( virtual/texi2dvi )
 	test? ( virtual/commonlisp )"
-BDEPEND="doc? ( sys-apps/texinfo )"
 PDEPEND="virtual/commonlisp
 	~dev-lisp/uiop-${PV}"
 
@@ -33,10 +31,12 @@ install_docs() {
 		dodoc *.{html,css,ico,png} ${PN}.pdf
 		doinfo ${PN}.info
 
-		if has_version -b '<sys-apps/texinfo-7'; then
-			dodoc -r asdf
-		else
+		# texinfo-7 renamed the dir from asdf to asdf_html #883439
+		if [[ -d asdf_html ]]; then
 			dodoc -r asdf_html
+		else
+			docinto asdf_html
+			dodoc -r asdf/.
 		fi
 	)
 }
