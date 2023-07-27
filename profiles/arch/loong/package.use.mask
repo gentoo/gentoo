@@ -139,11 +139,6 @@ app-accessibility/espeak-ng man
 # inline asm, so we have no dev-libs/criterion
 app-admin/syslog-ng test
 
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-03)
-# Things requiring net-libs/gnome-online-accounts, which depends on
-# net-libs/webkit-gtk.
-gnome-base/gvfs google
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # sys-cluster/ceph is not keyworded yet.
 net-analyzer/rrdtool rados
@@ -192,12 +187,6 @@ app-office/libreoffice clang
 # - sys-devel/lld: port is still under review
 dev-util/lldb test
 sys-devel/clang-common default-lld
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
-# net-libs/webkit-gtk is not available on loong yet.
-app-text/atril epub
-gnome-extra/evolution-data-server oauth
-mate-base/mate help
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-04)
 # Sanitizers partially supported on this architecture.
