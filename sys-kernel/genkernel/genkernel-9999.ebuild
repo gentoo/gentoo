@@ -69,7 +69,7 @@ COMMON_URI="
 	https://releases.pagure.org/libaio/libaio-${VERSION_LIBAIO}.tar.gz
 	mirror://gnupg/libgcrypt/libgcrypt-${VERSION_LIBGCRYPT}.tar.bz2
 	mirror://gnupg/libgpg-error/libgpg-error-${VERSION_LIBGPGERROR}.tar.bz2
-	https://github.com/besser82/libxcrypt/archive/v${VERSION_LIBXCRYPT}.tar.gz -> libxcrypt-${VERSION_LIBXCRYPT}.tar.gz
+	https://github.com/besser82/libxcrypt/releases/download/v${VERSION_LIBXCRYPT}/libxcrypt-${VERSION_LIBXCRYPT}.tar.xz
 	https://mirrors.kernel.org/sourceware/lvm2/LVM2.${VERSION_LVM}.tgz
 	https://www.oberhumer.com/opensource/lzo/download/lzo-${VERSION_LZO}.tar.gz
 	https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz
