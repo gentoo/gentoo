@@ -91,8 +91,6 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
-RDEPEND=""
 BDEPEND=">=virtual/rust-1.65.0"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
