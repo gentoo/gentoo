@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-07-28)
+# media-libs/libffado not marked stable here
+media-video/pipewire ieee1394
+
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # Needs unkeyworded dev-python/sympy
 dev-python/nbval test
