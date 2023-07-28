@@ -25,8 +25,8 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.1.1-fix-magic-quotes.patch"
-    "${FILESDIR}/${PN}-1.2.6.2-r1-default-templates.patch"
-    "${FILESDIR}/${PN}-1.2.6.4-getDN-htmlspecialchars.patch"
+	"${FILESDIR}/${PN}-1.2.6.2-r1-default-templates.patch"
+	"${FILESDIR}/${PN}-1.2.6.4-getDN-htmlspecialchars.patch"
 )
 
 need_httpd_cgi
