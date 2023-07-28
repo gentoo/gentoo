@@ -20,3 +20,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+src_prepare() {
+	#sed -i -e "s#DESTINATION lib#DESTINATION $(get_libdir)#" -e "s#/lib/#/$(get_libdir)/#" CMakeLists.txt
+	sed -i "s#/lib#/$(get_libdir)#" sigutils.pc.in
+	cmake_src_prepare
+}
