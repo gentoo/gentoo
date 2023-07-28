@@ -615,7 +615,16 @@ src_configure() {
 }
 
 src_test() {
-	virtx cargo_src_test
+	xdg_environment_reset
+
+	local skip=(
+		# this should be fine on real hardware, but currently fails with mesa's
+		# software rendering (bug #911320) -- note they are auto-skipped if
+		# USE=-gles2 on mesa, and this just forces to skip regardless
+		--skip visual/filters/displacement_map
+	)
+
+	virtx cargo_src_test -- "${skip[@]}"
 }
 
 src_install() {
