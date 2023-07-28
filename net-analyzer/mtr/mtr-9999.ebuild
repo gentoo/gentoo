@@ -38,7 +38,6 @@ FILECAPS=( cap_net_raw usr/sbin/mtr-packet )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.88-tinfo.patch
-	"${FILESDIR}"/${P}-fortify-source-3.patch
 )
 
 src_prepare() {
