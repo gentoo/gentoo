@@ -177,6 +177,7 @@ loong		default/linux/loong/22.0/la64v100/lp64d/desktop/plasma/systemd			stable
 loong		default/linux/loong/22.0/la64v100/lp64d/desktop/plasma/systemd/merged-usr	stable
 loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd				stable
 loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd/merged-usr		stable
+loong		default/linux/loong/22.0/la64v100/lp64d/developer				exp
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd					stable
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr			stable
 
