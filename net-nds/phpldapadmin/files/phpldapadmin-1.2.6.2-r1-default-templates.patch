@@ -36,8 +36,8 @@ This is a fix for the upstream issue https://github.com/leenooks/phpLDAPadmin/is
  		} else {
  			if (DEBUGTMP) printf('<font size=-2>%s:<u>%s</u></font><br />',__METHOD__,'SELECT a template to use.');
  
---- phpldapadmin/lib/Template.php_orig	2020-11-20 11:57:35.276875606 +0100
-+++ phpldapadmin/lib/Template.php	2021-11-18 15:50:05.381355470 +0100
+--- a/lib/Template.php
++++ b/lib/Template.php
 @@ -37,6 +37,8 @@
  	private $invalid_reason;
  	# The TEMPLATE structural objectclasses
