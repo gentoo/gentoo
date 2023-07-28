@@ -195,7 +195,6 @@ app-admin/syslog-ng test
 # Marek Szuba <marecki@gentoo.org> (2021-07-27)
 # dev-db/mongodb does not support riscv, fails src_configure
 dev-libs/mongo-c-driver test
-<dev-python/pymongo-4.4 test
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
 # hdf5-1.10 always fails tests with these 2 use flags enabled, otherwise
