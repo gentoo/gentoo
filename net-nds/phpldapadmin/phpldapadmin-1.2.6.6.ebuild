@@ -12,19 +12,21 @@ SRC_URI="https://github.com/leenooks/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-lang/php-8.0[hash(+),ldap,session,xml,nls]
-	dev-libs/openssl
+	dev-libs/openssl:=
 	virtual/httpd-php
+"
+BDEPEND="
+	media-libs/libpng
 "
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.1.1-fix-magic-quotes.patch"
-	"${FILESDIR}/${PN}-1.2.6.2-r1-default-templates.patch"
-	"${FILESDIR}/${PN}-1.2.6.4-getDN-htmlspecialchars.patch"
+    "${FILESDIR}/${PN}-1.2.6.2-r1-default-templates.patch"
+    "${FILESDIR}/${PN}-1.2.6.4-getDN-htmlspecialchars.patch"
 )
 
 need_httpd_cgi
@@ -32,12 +34,12 @@ need_httpd_cgi
 src_prepare() {
 	has_version "dev-libs/openssl:0/1.1" && \
 		eapply "${FILESDIR}/${PN}-1.2.6.5-openssl-1.patch"
-	mv config/config.php.example config/config.php
+	mv config/config.php.example config/config.php || die
 	default
 	# fix QA notice about broken IDAT window length
-	pngfix --out=network.png htdocs/images/default/network.png
-	pngfix --out=document.png htdocs/images/default/document.png
-	mv -f network.png document.png htdocs/images/default/
+	pngfix --out=network.png htdocs/images/default/network.png || die
+	pngfix --out=document.png htdocs/images/default/document.png || die
+	mv -f network.png document.png htdocs/images/default/ || die
 }
 
 src_install() {
