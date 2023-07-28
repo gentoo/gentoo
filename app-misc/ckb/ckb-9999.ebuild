@@ -31,7 +31,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	|| (
-		media-sound/libpulse
+		media-libs/libpulse
 		media-sound/apulse[sdk]
 	)
 	virtual/libudev:=
