@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-CLI_COMPAT=( python3_{10..11} )
-PYTHON_COMPAT=( "${CLI_COMPAT[@]}" python3_12 pypy3 )
+CLI_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( "${CLI_COMPAT[@]}" pypy3 )
 PYTHON_REQ_USE="threads(+),sqlite"
 
 inherit distutils-r1 multiprocessing optfeature
