@@ -27,4 +27,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.2-exclude-tests.patch
 )
 
+BDEPEND="
+	test? (
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	)
+"
+
 distutils_enable_tests unittest
