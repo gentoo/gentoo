@@ -260,7 +260,8 @@ SRC_URI="https://git.sr.ht/~alip/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
 
 # rocksdb needs clang
-DEPEND+="sys-devel/clang"
+DEPEND+="sys-devel/clang
+	sys-libs/liburing"
 RDEPEND=${DEPEND}
 LICENSE="GPL-3+"
 # Dependent crate licenses
