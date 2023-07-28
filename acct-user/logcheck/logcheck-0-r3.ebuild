@@ -11,6 +11,8 @@ IUSE="systemd"
 ACCT_USER_GROUPS=( "logcheck" )
 ACCT_USER_ID="284"
 
+RDEPEND="systemd? ( acct-group/systemd-journal )"
+
 acct-user_add_deps
 
 pkg_setup() {
