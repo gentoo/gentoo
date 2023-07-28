@@ -1,5 +1,8 @@
---- phpldapadmin/lib/functions.php_orig	2023-02-25 12:43:16.092405870 +0100
-+++ phpldapadmin/lib/functions.php	2023-02-25 12:54:31.603864311 +0100
+https://bugs.gentoo.org/897680
+
+This fixes upstream issue https://github.com/leenooks/phpLDAPadmin/issues/183
+--- a/lib/functions.php
++++ b/lib/functions.php
 @@ -21,7 +21,7 @@
  define('DOCDIR',sprintf('%s/',realpath(LIBDIR.'../doc/')));
  define('HOOKSDIR',sprintf('%s/',realpath(LIBDIR.'../hooks/')));

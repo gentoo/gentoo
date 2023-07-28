@@ -1,5 +1,8 @@
---- phpldapadmin/lib/PageRender.php_orig	2020-11-20 11:57:35.293875838 +0100
-+++ phpldapadmin/lib/PageRender.php	2021-11-18 15:50:43.242593777 +0100
+https://bugs.gentoo.org/897680
+
+This is a fix for the upstream issue https://github.com/leenooks/phpLDAPadmin/issues/49
+--- a/lib/PageRender.php
++++ b/lib/PageRender.php
 @@ -360,6 +360,32 @@
  			else
  				$this->drawTemplateChoice();
