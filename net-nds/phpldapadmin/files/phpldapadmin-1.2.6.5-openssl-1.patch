@@ -1,0 +1,11 @@
+--- phpldapadmin/lib/functions.php_orig	2023-02-25 12:43:16.092405870 +0100
++++ phpldapadmin/lib/functions.php	2023-02-25 12:54:31.603864311 +0100
+@@ -21,7 +21,7 @@
+ define('DOCDIR',sprintf('%s/',realpath(LIBDIR.'../doc/')));
+ define('HOOKSDIR',sprintf('%s/',realpath(LIBDIR.'../hooks/')));
+ define('JSDIR','js/');
+-define('SESSION_CIPHER','aes-256-gcm');
++define('SESSION_CIPHER','bf-ecb');
+ 
+ /**
+  * Supplimental functions

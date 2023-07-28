@@ -1,0 +1,102 @@
+--- phpldapadmin/lib/PageRender.php_orig	2020-11-20 11:57:35.293875838 +0100
++++ phpldapadmin/lib/PageRender.php	2021-11-18 15:50:43.242593777 +0100
+@@ -360,6 +360,32 @@
+ 			else
+ 				$this->drawTemplateChoice();
+ 
++		# If mode is modification, use a DefaultForObjectClass template if exaclty 1 matches. Propose the template choice otherwise.
++		} elseif (($this->getMode() == 'modification') && (! isset($_REQUEST['template']))) {
++			if (DEBUGTMP) printf('<font size=-2>%s:<u>%s</u></font><br />',__METHOD__,'DEFAULTFOROBJECTCLASS template if only 1 template matches.');
++
++			$dn = $this->getModeContainer();
++			$server = $this->getServer();
++			$dnojcs = $server->getDNAttrValue($dn,'objectClass');
++			$matchingtmplIDs = array();
++			$unmatchingtmplIDs = array();
++			$tpldefojc = array();
++			foreach ($templates->getTemplates($this->getMode(),$this->getModeContainer(),true) as $tpl) {
++				$tpldefojc = $tpl->getDefaultForObjectClass();
++				if (array_intersect($tpldefojc,$dnojcs)) {
++					array_push($matchingtmplIDs,$tpl->getID());
++				} else {
++					array_push($unmatchingtmplIDs,$tpl->getID());
++				}
++			}
++			if (count($matchingtmplIDs) == 0)       # No matching DefaultForObjectClass found,
++				return 'none';                      # so we use the default template.
++			elseif (count($matchingtmplIDs) == 1)   # Exactly 1 matching DefaultForObjectClass found,
++				return $matchingtmplIDs[0];         # so we use it.
++			elseif (count($unmatchingtmplIDs) == 0) # No template found at all,
++				return 'none';                      # so we use the default template.
++			else                                    # Multiple templates found,
++				$this->drawTemplateChoice();        # so propose the template choice.
+ 		} else {
+ 			if (DEBUGTMP) printf('<font size=-2>%s:<u>%s</u></font><br />',__METHOD__,'SELECT a template to use.');
+ 
+--- phpldapadmin/lib/Template.php_orig	2020-11-20 11:57:35.276875606 +0100
++++ phpldapadmin/lib/Template.php	2021-11-18 15:50:05.381355470 +0100
+@@ -37,6 +37,8 @@
+ 	private $invalid_reason;
+ 	# The TEMPLATE structural objectclasses
+ 	protected $structural_oclass = array();
++	# The objectclasses for which this template is the default
++	protected $defaultfor_oclass = array();
+ 	protected $description = '';
+ 	# Is this a read-only template (only valid in modification templates)
+ 	private $readonly = false;
+@@ -124,6 +126,31 @@
+ 
+ 					break;
+ 
++				# Record our defaultFor object Classes from the Template.
++				case ('defaultforobjectclasses'):
++					if (DEBUG_ENABLED)
++						debug_log('Case [%s]',4,0,__FILE__,__LINE__,__METHOD__,$xml_key);
++
++					if (isset($xmldata['template'][$xml_key]['defaultforobjectclass']))
++						if (is_array($xmldata['template'][$xml_key]['defaultforobjectclass'])) {
++							foreach ($xmldata['template'][$xml_key]['defaultforobjectclass'] as $index => $details) {
++
++								# If we havent recorded this objectclass already, do so now.
++								if (! in_array($details,$this->defaultfor_oclass))
++									array_push($this->defaultfor_oclass,$details);
++							}
++
++						} else {
++							# XML files with only 1 objectClass dont have a numeric index.
++							$soc = $xmldata['template'][$xml_key]['defaultforobjectclass'];
++
++							# If we havent recorded this objectclass already, do so now.
++							if (! in_array($soc,$this->defaultfor_oclass))
++								array_push($this->defaultfor_oclass,$soc);
++						}
++
++					break;
++
+ 				# Build our attribute list from the DN and Template.
+ 				case ('attributes'):
+ 					if (DEBUG_ENABLED)
+@@ -179,6 +206,7 @@
+ 
+ 					if ($xml_key == 'invalid' && $xml_value)
+ 						$this->setInvalid(_('Disabled by XML configuration'),true);
++
+ 			}
+ 		}
+ 
+@@ -921,6 +949,15 @@
+ 		$this->visible = false;
+ 	}
+ 
++	/**
++	 * Get the objectclasses for which this template is the default
++	 *
++	 * @return array The objectclasses
++	 */
++	public function getDefaultForObjectClass() {
++		return $this->defaultfor_oclass;
++	}
++
+ 	public function getRegExp() {
+ 		if (DEBUG_ENABLED && (($fargs=func_get_args())||$fargs='NOARGS'))
+ 			debug_log('Entered (%%)',5,1,__FILE__,__LINE__,__METHOD__,$fargs,$this->regexp);
