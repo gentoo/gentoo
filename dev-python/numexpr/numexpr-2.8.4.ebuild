@@ -5,13 +5,16 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
 DESCRIPTION="Fast numerical array expression evaluator for Python and NumPy"
-HOMEPAGE="https://github.com/pydata/numexpr"
+HOMEPAGE="
+	https://github.com/pydata/numexpr/
+	https://pypi.org/project/numexpr/
+"
 SRC_URI="https://github.com/pydata/numexpr/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
@@ -21,7 +24,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~
 DEPEND="
 	>=dev-python/numpy-1.13.3[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	dev-python/packaging[${PYTHON_USEDEP}]
 "
 
