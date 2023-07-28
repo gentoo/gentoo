@@ -349,7 +349,7 @@ dev-python/wsgiproxy2 test
 # Test phase requires dev-db/mongodb which requires dev-util/google-perftools
 # which has not been ported to HPPA (bug #517880, bug #525246)
 dev-libs/mongo-c-driver test
-dev-python/pymongo test
+<dev-python/pymongo-4.4 test
 
 # Jeroen Roovers <jer@gentoo.org> (2014-03-06)
 # USE=gui requires x11-libs/qscintilla,

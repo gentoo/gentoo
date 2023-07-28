@@ -296,7 +296,7 @@ net-analyzer/testssl -bundled-openssl
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-09-28)
 # Requires dev-db/mongodb which has dropped x86 support
-dev-python/pymongo test
+<dev-python/pymongo-4.4 test
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
