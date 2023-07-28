@@ -22,9 +22,12 @@ RDEPEND="
 	>=dev-python/poetry-core-1.6.1[${PYTHON_USEDEP}]
 	>=dev-python/poetry-plugin-export-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/build-0.10.0[${PYTHON_USEDEP}]
+	>=dev-python/cachecontrol-0.12.9[${PYTHON_USEDEP}]
 	>=dev-python/cleo-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/crashtest-0.4.1[${PYTHON_USEDEP}]
 	>=dev-python/dulwich-0.21.2[${PYTHON_USEDEP}]
+	>=dev-python/filelock-3.8.0[${PYTHON_USEDEP}]
+	>=dev-python/html5lib-1.0[${PYTHON_USEDEP}]
 	>=dev-python/installer-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.10.0[${PYTHON_USEDEP}]
 	>=dev-python/keyring-23.9.0[${PYTHON_USEDEP}]
@@ -35,14 +38,16 @@ RDEPEND="
 	>=dev-python/requests-2.18[${PYTHON_USEDEP}]
 	>=dev-python/requests-toolbelt-0.10.1[${PYTHON_USEDEP}]
 	>=dev-python/shellingham-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/tomlkit-0.11.6[${PYTHON_USEDEP}]
 	>=dev-python/trove-classifiers-2022.5.19[${PYTHON_USEDEP}]
+	>=dev-python/urllib3-1.26.0[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-20.22.0[${PYTHON_USEDEP}]
-	>=dev-python/cachecontrol-0.12.9[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
+	' 3.10)
 "
 
-DEPEND="
+BDEPEND="
 	test? (
 			>=dev-python/deepdiff-6.3.1[${PYTHON_USEDEP}]
 			>=dev-python/httpretty-1.0[${PYTHON_USEDEP}]
