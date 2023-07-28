@@ -50,10 +50,6 @@ BDEPEND="
 
 S="${WORKDIR}/${P}/host"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.3.0.0-gcc-13.patch
-)
-
 src_unpack() {
 	default
 	mv "uhd-images_${PV}" images || die
