@@ -40,7 +40,7 @@ RDEPEND="
 	dev-libs/libxslt
 	aqbanking? (
 		>=net-libs/aqbanking-6[ofx?]
-		>=sys-libs/gwenhywfar-4.20.0:=
+		>=sys-libs/gwenhywfar-5.6.0:=
 		smartcard? ( sys-libs/libchipcard )
 	)
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
