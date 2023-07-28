@@ -13,7 +13,8 @@ SRC_URI="https://github.com/ocaml-community/zed/archive/${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-ml/dune-3
@@ -25,3 +26,6 @@ RDEPEND="
 	dev-ml/uutf:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="test? (
+	dev-ml/alcotest
+)"
