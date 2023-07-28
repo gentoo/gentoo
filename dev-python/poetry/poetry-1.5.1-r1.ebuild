@@ -66,6 +66,9 @@ src_prepare() {
 	sed -e 's:"cachy_file_cache", ::g' \
 		-i tests/utils/test_cache.py || die
 
+	# unpin
+	sed -i -e 's:\^:>=:' pyproject.toml || die
+
 	distutils-r1_src_prepare
 }
 
