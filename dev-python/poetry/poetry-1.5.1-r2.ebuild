@@ -31,6 +31,7 @@ RDEPEND="
 	>=dev-python/installer-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.10.0[${PYTHON_USEDEP}]
 	>=dev-python/keyring-23.9.0[${PYTHON_USEDEP}]
+	>=dev-python/lockfile-0.12.2[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.7.0[${PYTHON_USEDEP}]
 	>=dev-python/pkginfo-1.9.4[${PYTHON_USEDEP}]
