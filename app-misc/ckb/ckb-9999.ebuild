@@ -31,11 +31,10 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	|| (
-		media-libs/libpulse
+		media-sound/libpulse
 		media-sound/apulse[sdk]
 	)
 	virtual/libudev:=
-	x11-libs/libX11
 	x11-libs/libxcb:=
 	x11-libs/xcb-util-wm"
 DEPEND="${RDEPEND}"
