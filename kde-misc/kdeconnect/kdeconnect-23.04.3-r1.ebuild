@@ -65,6 +65,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/wayland-protocols
 "
 RDEPEND="${COMMON_DEPEND}
+	dev-libs/kirigami-addons:5
 	dev-libs/kpeoplevcard
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtmultimedia-${QTMIN}:5[qml]
