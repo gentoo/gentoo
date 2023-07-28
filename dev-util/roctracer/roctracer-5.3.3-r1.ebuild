@@ -20,8 +20,8 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/rocr-runtime:${SLOT}
-	dev-util/hip:${SLOT}"
+RDEPEND="dev-libs/rocr-runtime
+	dev-util/hip"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_any_dep '
