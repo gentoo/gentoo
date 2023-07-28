@@ -28,6 +28,12 @@ src_prepare() {
 	default
 	# We will use pre-generated npm stuff.
 	mv "${WORKDIR}/${MY_NODE_N}" "${MY_NODE_DIR}" || die "couldn't move node_modules"
+
+	# Make SVGR not traverse the path up to / looking for a
+	# configuration file. Fixes
+	# Error: EACCES: permission denied, open '/.config/svgrrc'
+	# in case a directory /.config exists, see https://bugs.gentoo.org/909731
+	echo "runtimeConfig: false" > .svgrrc.yml || die
 }
 
 src_compile() {
