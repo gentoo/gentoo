@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,8 +19,8 @@ IUSE="test benchmark"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
 RDEPEND="dev-util/hip
-	sci-libs/rocBLAS:${SLOT}[${ROCM_USEDEP}]
-	=dev-libs/libfmt-8*
+	sci-libs/rocBLAS[${ROCM_USEDEP}]
+	dev-libs/libfmt
 	benchmark? ( virtual/blas )"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest
