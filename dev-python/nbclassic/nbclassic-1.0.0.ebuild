@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-python/jupyter-core-4.6.1[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-5[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
-	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]
+	>=dev-python/nest-asyncio-1.5[${PYTHON_USEDEP}]
 	>=dev-python/notebook-shim-0.2.3[${PYTHON_USEDEP}]
 	dev-python/prometheus-client[${PYTHON_USEDEP}]
 	>=dev-python/send2trash-1.8.0[${PYTHON_USEDEP}]

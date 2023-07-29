@@ -31,7 +31,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 # BDEPEND="
 # 	doc? (
 # 		$(python_gen_any_dep '
-# 			dev-python/mdx_gh_links[${PYTHON_USEDEP}]
+# 			dev-python/mdx-gh-links[${PYTHON_USEDEP}]
 # 			dev-python/mkdocs-redirects[${PYTHON_USEDEP}]
 # 		')
 # 	)
