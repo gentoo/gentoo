@@ -3,13 +3,11 @@
 
 EAPI=7
 
-DISTUTILS_EXT=1
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
-SETUPTOOLS_USE_DISTUTILS=local
 TMPFILES_OPTIONAL=1
 
-inherit distutils-r1 linux-info toolchain-funcs tmpfiles prefix
+inherit meson linux-info python-r1 tmpfiles
 
 DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -28,13 +26,19 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
+# setuptools is still needed as a workaround for Python 3.12+ for now.
+# https://github.com/mesonbuild/meson/issues/7702
+
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}
+	python_targets_python3_12? ( dev-python/setuptools[${PYTHON_USEDEP}] )
 	test? ( dev-vcs/git )
 "
 DEPEND="
+	${PYTHON_DEPS}
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
 	>=sys-apps/sed-4.0.5 sys-devel/patch
@@ -51,6 +55,7 @@ DEPEND="
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
 RDEPEND="
+	${PYTHON_DEPS}
 	acct-user/portage
 	app-arch/zstd
 	>=app-arch/tar-1.27
@@ -90,154 +95,78 @@ PDEPEND="
 	)
 "
 
-distutils_enable_tests pytest
-
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
-
-	if use native-extensions && tc-is-cross-compiler; then
-		einfo "Disabling USE=native-extensions for cross-compilation (bug #612158)"
-	fi
 
 	check_extra_config
 }
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
+src_prepare() {
+	default
 
-	if [[ ${PV} != 9999 ]] ; then
-		sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
-	fi
-
-	if use gentoo-dev; then
-		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
-		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
-			-i lib/_emerge/create_depgraph_params.py || \
-			die "failed to patch create_depgraph_params.py"
-
-		einfo "Enabling additional FEATURES for gentoo-dev..."
-		echo 'FEATURES="${FEATURES} ipc-sandbox network-sandbox strict-keepdir warn-on-large-env"' \
-			>> cnf/make.globals || die
-	fi
-
-	if use native-extensions && ! tc-is-cross-compiler; then
-		printf "[build_ext]\nportage_ext_modules=true\n" >> \
-			setup.cfg || die
-	fi
-
-	if ! use ipc ; then
-		einfo "Disabling ipc..."
-		sed -e "s:_enable_ipc_daemon = True:_enable_ipc_daemon = False:" \
-			-i lib/_emerge/AbstractEbuildProcess.py || \
-			die "failed to patch AbstractEbuildProcess.py"
-	fi
-
-	if use xattr && use kernel_linux ; then
-		einfo "Adding FEATURES=xattr to make.globals ..."
-		echo -e '\nFEATURES="${FEATURES} xattr"' >> cnf/make.globals \
-			|| die "failed to append to make.globals"
-	fi
-
-	if use build || ! use rsync-verify; then
-		sed -e '/^sync-rsync-verify-metamanifest/s|yes|no|' \
-			-e '/^sync-webrsync-verify-signature/s|yes|no|' \
+	if use prefix-guest; then
+		sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
+			-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
+			-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
 			-i cnf/repos.conf || die "sed failed"
 	fi
+}
 
-	if [[ -n ${EPREFIX} ]] ; then
-		einfo "Setting portage.const.EPREFIX ..."
-		hprefixify -e "s|^(EPREFIX[[:space:]]*=[[:space:]]*\").*|\1${EPREFIX}\"|" \
-			-w "/_BINARY/" lib/portage/const.py
+src_configure() {
+	local code_only=false
+	python_foreach_impl my_src_configure
+}
 
-		einfo "Prefixing shebangs ..."
-		> "${T}/shebangs" || die
-		while read -r -d $'\0' ; do
-			local shebang=$(head -n1 "$REPLY")
-			if [[ ${shebang} == "#!"* && ! ${shebang} == "#!${EPREFIX}/"* ]] ; then
-				echo "${REPLY}" >> "${T}/shebangs" || die
-			fi
-		done < <(find . -type f -executable ! -name etc-update -print0)
+my_src_configure() {
+	local emesonargs=(
+		-Dcode-only=${code_only}
+		-Deprefix="${EPREFIX}"
+		-Dportage-bindir="${EPREFIX}/usr/lib/portage/${EPYTHON}"
+		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		$(meson_use doc)
+		$(meson_use apidoc)
+		$(meson_use native-extensions)
+		$(meson_use gentoo-dev)
+		$(meson_use ipc)
+		$(meson_use xattr)
+	)
 
-		if [[ -s ${T}/shebangs ]]; then
-			xargs sed -i -e "1s:^#!:#!${EPREFIX}:" < "${T}/shebangs" || die "sed failed"
-		fi
-
-		einfo "Adjusting make.globals, repos.conf and etc-update ..."
-		hprefixify cnf/{make.globals,repos.conf} bin/etc-update
-
-		if use prefix-guest ; then
-			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
-				-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
-				-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
-				-i cnf/repos.conf || die "sed failed"
-		fi
-	fi
-
-	cd "${S}/cnf" || die
-	if [[ -f "make.conf.example.${ARCH}".diff ]] ; then
-		patch make.conf.example "make.conf.example.${ARCH}".diff || \
-			die "Failed to patch make.conf.example"
+	if use build; then
+		emesonargs+=( -Drsync-verify=false )
 	else
-		eerror ""
-		eerror "Portage does not have an arch-specific configuration for this arch."
-		eerror "Please notify the arch maintainer about this issue. Using generic."
-		eerror ""
-	fi
-}
-
-python_compile_all() {
-	local targets=()
-	use doc && targets+=( docbook )
-	use apidoc && targets+=( apidoc )
-
-	if [[ ${targets[@]} ]]; then
-		esetup.py "${targets[@]}"
-	fi
-}
-
-python_install() {
-	# Install sbin scripts to bindir for python-exec linking
-	# they will be relocated in pkg_preinst()
-	distutils-r1_python_install \
-		--system-prefix="${EPREFIX}/usr" \
-		--bindir="$(python_get_scriptdir)" \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html" \
-		--portage-bindir="${EPREFIX}/usr/lib/portage/${EPYTHON}" \
-		--sbindir="$(python_get_scriptdir)" \
-		--sysconfdir="${EPREFIX}/etc" \
-		"${@}"
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-
-	local targets=()
-	use doc && targets+=(
-		install_docbook
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
-	)
-	use apidoc && targets+=(
-		install_apidoc
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
-	)
-
-	# install docs
-	if [[ ${targets[@]} ]]; then
-		esetup.py "${targets[@]}"
+		emesonargs+=( $(meson_use rsync-verify) )
 	fi
 
+	meson_src_configure
+	code_only=true
+}
+
+src_compile() {
+	python_foreach_impl meson_src_compile
+}
+
+src_install() {
+	python_foreach_impl my_src_install
 	dotmpfiles "${FILESDIR}"/portage-{ccache,tmpdir}.conf
 
-	# Due to distutils/python-exec limitations
-	# these must be installed to /usr/bin.
-	local sbin_relocations='archive-conf dispatch-conf emaint env-update etc-update fixpackages regenworld'
-	einfo "Moving admin scripts to the correct directory"
-	dodir /usr/sbin
-	for target in ${sbin_relocations}; do
-		einfo "Moving /usr/bin/${target} to /usr/sbin/${target}"
-		mv "${ED}/usr/bin/${target}" "${ED}/usr/sbin/${target}" || die "sbin scripts move failed!"
-	done
+	local scripts
+	mapfile -t scripts < <(awk '/^#!.*python/ {print FILENAME} {nextfile}' "${ED}"/usr/{bin,sbin}/* || die)
+	python_replicate_script "${scripts[@]}"
+}
+
+my_src_install() {
+	local pydirs=(
+		"${D}$(python_get_sitedir)"
+		"${D}/usr/lib/portage/${EPYTHON}"
+	)
+
+	meson_src_install
+	python_optimize "${pydirs[@]}"
+	python_fix_shebang "${pydirs[@]}"
+}
+
+src_test() {
+	python_foreach_impl meson_src_test --no-rebuild --verbose
 }
 
 pkg_preinst() {
