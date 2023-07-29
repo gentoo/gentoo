@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 USE_RUBY="ruby30 ruby31 ruby32"
 
 inherit check-reqs flag-o-matic gnome2 optfeature python-any-r1 ruby-single toolchain-funcs cmake
@@ -17,7 +17,7 @@ LICENSE="LGPL-2+ BSD"
 SLOT="6/0" # soname version of libwebkit2gtk-6.0
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="aqua avif examples gamepad gles2-only keyring +gstreamer +introspection pdf +jpeg2k +jumbo-build lcms seccomp spell systemd wayland X"
+IUSE="aqua avif examples gamepad keyring +gstreamer +introspection jpegxl pdf +jpeg2k +jumbo-build lcms seccomp spell systemd wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
 
 # Tests do not run when built from tarballs
@@ -60,8 +60,7 @@ RDEPEND="
 	gstreamer? (
 		>=media-libs/gstreamer-1.20:1.0
 		>=media-libs/gst-plugins-base-1.20:1.0[egl,X?]
-		gles2-only? ( media-libs/gst-plugins-base:1.0[gles2] )
-		!gles2-only? ( media-libs/gst-plugins-base:1.0[opengl] )
+		media-libs/gst-plugins-base:1.0[opengl]
 		>=media-plugins/gst-plugins-opus-1.20:1.0
 		>=media-libs/gst-plugins-bad-1.20:1.0
 	)
@@ -76,6 +75,7 @@ RDEPEND="
 
 	dev-libs/hyphen
 	jpeg2k? ( >=media-libs/openjpeg-2.2.0:2= )
+	jpegxl? ( media-libs/libjxl )
 	avif? ( >=media-libs/libavif-0.9.0:= )
 	lcms? ( media-libs/lcms:2 )
 
@@ -195,8 +195,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DPython_EXECUTABLE="${PYTHON}"
 		${ruby_interpreter}
-		$(cmake_use_find_package gles2-only OpenGLES2)
-		$(cmake_use_find_package !gles2-only OpenGL)
 		# If bubblewrap[suid] then portage makes it go-r and cmake find_program fails with that
 		-DBWRAP_EXECUTABLE:FILEPATH="${EPREFIX}"/usr/bin/bwrap
 		-DDBUS_PROXY_EXECUTABLE:FILEPATH="${EPREFIX}"/usr/bin/xdg-dbus-proxy
@@ -218,7 +216,6 @@ src_configure() {
 		-DENABLE_WEB_AUDIO=$(usex gstreamer)
 		-DUSE_AVIF=$(usex avif)
 		# Source/cmake/OptionsGTK.cmake
-		-DENABLE_GLES2=$(usex gles2-only)
 		-DENABLE_DOCUMENTATION=OFF
 		-DENABLE_INTROSPECTION=$(usex introspection)
 		-DENABLE_JOURNALD_LOG=$(usex systemd)
@@ -227,7 +224,7 @@ src_configure() {
 		-DENABLE_X11_TARGET=$(usex X)
 		-DUSE_GBM=ON
 		-DUSE_GTK4=ON # webkit2gtk-6.0
-		-DUSE_JPEGXL=OFF
+		-DUSE_JPEGXL=$(usex jpegxl)
 		-DUSE_LCMS=$(usex lcms)
 		-DUSE_LIBHYPHEN=ON
 		-DUSE_LIBSECRET=$(usex keyring)
