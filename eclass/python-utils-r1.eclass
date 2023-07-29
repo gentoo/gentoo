@@ -338,7 +338,7 @@ _python_export() {
 				debug-print "${FUNCNAME}: EPYTHON = ${EPYTHON}"
 				;;
 			PYTHON)
-				export PYTHON=${BROOT-${EPREFIX}}/usr/bin/${impl}
+				export PYTHON=${BROOT}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
 			PYTHON_SITEDIR)
