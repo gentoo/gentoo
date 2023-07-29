@@ -14,13 +14,13 @@ HOMEPAGE="https://pythia.org/"
 
 # just data
 SRC_URI="test? ( lhapdf? (
-		https://www.hepforge.org/downloads/lhapdf/pdfsets/v6.backup/${LHA_VER}/CT10.tar.gz
-		https://www.hepforge.org/downloads/lhapdf/pdfsets/v6.backup/${LHA_VER}/MRST2007lomod.tar.gz
-		https://www.hepforge.org/downloads/lhapdf/pdfsets/v6.backup/${LHA_VER}/NNPDF23_nlo_as_0119_qed_mc.tar.gz
-		https://www.hepforge.org/downloads/lhapdf/pdfsets/v6.backup/${LHA_VER}/NNPDF23_nnlo_as_0119_qed_mc.tar.gz
-		https://www.hepforge.org/downloads/lhapdf/pdfsets/v6.backup/${LHA_VER}/cteq66.tar.gz
-		https://www.hepforge.org/downloads/lhapdf/pdfsets/v6.backup/${LHA_VER}/cteq6l1.tar.gz
-		https://www.hepforge.org/downloads/lhapdf/pdfsets/v6.backup/${LHA_VER}/unvalidated/MRST2004qed.tar.gz
+		https://lhapdfsets.web.cern.ch/lhapdfsets/current/CT10.tar.gz
+		https://lhapdfsets.web.cern.ch/lhapdfsets/current/MRST2007lomod.tar.gz
+		https://lhapdfsets.web.cern.ch/lhapdfsets/current/NNPDF23_nlo_as_0119_qed_mc.tar.gz
+		https://lhapdfsets.web.cern.ch/lhapdfsets/current/NNPDF23_nnlo_as_0119_qed_mc.tar.gz
+		https://lhapdfsets.web.cern.ch/lhapdfsets/current/cteq66.tar.gz
+		https://lhapdfsets.web.cern.ch/lhapdfsets/current/cteq6l1.tar.gz
+		https://www.hepforge.org/downloads/lhapdf/pdfsets/v6.backup/${LHA_VER}/MRST2004qed.tar.gz
 		) )"
 
 if [[ ${PV} == 9999 ]]; then
