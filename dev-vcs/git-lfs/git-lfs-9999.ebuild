@@ -4,7 +4,7 @@
 EAPI=8
 EGO_PN=github.com/git-lfs/git-lfs
 # Update the ID as it's included in each build.
-COMMIT_ID="77deabdf9a18f8a07ecfd3e0f4aa572ffbbab8d4"
+COMMIT_ID="d06d6e9efd78ff4f958b072146ce167d87f60285"
 
 inherit go-module
 
@@ -18,9 +18,15 @@ if [[ "${PV}" = 9999* ]]; then
 	EGIT_REPO_URI="https://${EGO_PN}"
 	inherit git-r3
 else
-	SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://${EGO_PN}/releases/download/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
 	# Add the manually vendored tarball.
-	# Compress the tarball with: xz -9kT0 --memlimit-decompress=256M
+	# 1) Create a tar archive optimized to reproduced by other users or devs.
+	# 2) Compress the archive using XZ limiting decompression memory for
+	#    pretty constraint systems.
+	# Use something like:
+	# tar cf $P-deps.tar go-mod \
+	#	--mtime="1970-01-01" --sort=name --owner=portage --group=portage
+	# xz -k -9eT0 --memlimit-decompress=256M $P-deps.tar
 	SRC_URI+=" https://files.holgersson.xyz/gentoo/distfiles/golang-pkg-deps/${P}-deps.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
