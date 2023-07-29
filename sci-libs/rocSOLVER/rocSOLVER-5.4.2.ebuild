@@ -33,14 +33,6 @@ RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/${PN}-rocm-${PV}
 
-src_prepare() {
-	sed -e "s: PREFIX rocsolver:# PREFIX rocsolver:" -i library/src/CMakeLists.txt
-	sed -e "s:\$<INSTALL_INTERFACE\:include>:\$<INSTALL_INTERFACE\:include/rocsolver>:" -i library/src/CMakeLists.txt
-	sed -e "s:rocm_install_symlink_subdir( rocsolver ):#rocm_install_symlink_subdir( rocsolver ):" -i library/src/CMakeLists.txt
-
-	cmake_src_prepare
-}
-
 src_configure() {
 	# avoid sandbox violation
 	addpredict /dev/kfd
@@ -50,7 +42,8 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=On
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-Wno-dev
-		-DCMAKE_INSTALL_INCLUDEDIR="${EPREFIX}/usr/include/rocsolver"
+		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
+		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_CLIENTS_SAMPLES=NO
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
 		-DBUILD_CLIENTS_BENCHMARKS=$(usex benchmark ON OFF)
