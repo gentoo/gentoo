@@ -550,7 +550,7 @@ declare -A GIT_CRATES=(
 	[nihav_core]="https://github.com/ruffle-rs/nihav-vp6;9416fcc9fc8aab8f4681aa9093b42922214abbd3;nihav-vp6-%commit%/nihav-core"
 	[nihav_duck]="https://github.com/ruffle-rs/nihav-vp6;9416fcc9fc8aab8f4681aa9093b42922214abbd3;nihav-vp6-%commit%/nihav-duck"
 )
-inherit cargo desktop flag-o-matic virtualx xdg
+inherit cargo desktop flag-o-matic xdg
 
 MY_PV="nightly-${PV:3:4}-${PV:7:2}-${PV:9:2}"
 MY_P="${PN}-${MY_PV}"
@@ -571,6 +571,8 @@ LICENSE+="
 " # crates
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # dlopen: libX* (see winit+x11-dl crates)
 RDEPEND="
@@ -592,13 +594,13 @@ BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
 	>=virtual/rust-1.70
-	test? (
-		media-libs/mesa[llvm]
-		x11-base/xorg-server[-minimal]
-	)
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0_p20230724-skip-render-tests.patch
+)
 
 src_configure() {
 	filter-lto # TODO: cleanup after bug #893658
@@ -612,10 +614,6 @@ src_configure() {
 		$(usev test tests)
 	)
 	cargo_src_configure ${workspaces[*]/#/--package=}
-}
-
-src_test() {
-	virtx cargo_src_test
 }
 
 src_install() {

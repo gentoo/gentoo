@@ -48,6 +48,11 @@ VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libvirt.org.asc
 
 distutils_enable_tests pytest
 
+python_compile() {
+	# setuptools is broken for C extensions, bug #907718
+	distutils-r1_python_compile -j1
+}
+
 python_install_all() {
 	if use examples; then
 		dodoc -r examples

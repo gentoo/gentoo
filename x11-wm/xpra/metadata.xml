@@ -15,6 +15,7 @@
 </maintainer>
 <upstream>
 	<remote-id type="pypi">xpra</remote-id>
+	<remote-id type="github">Xpra-org/xpra</remote-id>
 	<bugs-to>https://www.xpra.org/trac/report</bugs-to>
 </upstream>
 <use>

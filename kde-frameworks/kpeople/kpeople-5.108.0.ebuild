@@ -5,13 +5,14 @@ EAPI=8
 
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.9
+VIRTUALX_REQUIRED="test" # bug 816588 (test fails)
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="KDE contact person abstraction library"
 HOMEPAGE="https://invent.kde.org/frameworks/kpeople"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 DEPEND="

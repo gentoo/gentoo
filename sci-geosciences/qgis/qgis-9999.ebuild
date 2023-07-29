@@ -53,16 +53,16 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtpositioning:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsvg:5
 	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/exiv2:=
 	>=sci-libs/gdal-3.0.4:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
-	sys-libs/zlib
 	>=sci-libs/proj-4.9.3:=
+	sys-libs/zlib
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
 	3d? ( dev-qt/qt3d:5 )
@@ -104,13 +104,11 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qttest:5
-	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
 	sci-geosciences/gpsbabel
 "
-BDEPEND="
-	${PYTHON_DEPS}
+BDEPEND="${PYTHON_DEPS}
 	dev-qt/linguist-tools:5
 	sys-devel/bison
 	sys-devel/flex

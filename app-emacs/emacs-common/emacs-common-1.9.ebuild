@@ -16,9 +16,9 @@ IUSE="games gsettings gui"
 
 DEPEND="games? ( acct-group/gamestat )"
 RDEPEND="!=app-editors/emacs-29.1_rc1-r0
-	${DEPEND}
-	gui? ( gsettings? ( dev-libs/glib ) )"
+	${DEPEND}"
 PDEPEND=">=app-editors/emacs-23.1:*"
+IDEPEND="gui? ( gsettings? ( dev-libs/glib ) )"
 
 src_install() {
 	insinto "${SITELISP}"

@@ -77,6 +77,7 @@ src_configure() {
 		"-DENABLED_PLUGINS=$(local IFS=";"; echo "${enabled_plugins[*]}")"
 		"-DDISABLED_PLUGINS=$(local IFS=";"; echo "${disabled_plugins[*]}")"
 		"-DVALA_EXECUTABLE=${VALAC}"
+		"-DSOUP_VERSION=2"
 		"-DBUILD_TESTS=$(usex test)"
 	)
 

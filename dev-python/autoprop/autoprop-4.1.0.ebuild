@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 SLOT="0"
 
 RDEPEND="
-	>=dev-python/signature_dispatch-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/signature-dispatch-1.0.0[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

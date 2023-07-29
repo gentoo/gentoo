@@ -50,7 +50,7 @@ RDEPEND="
 	dev-cpp/robin-map
 	dev-libs/libfmt:=
 	dev-libs/pugixml:=
-	>=media-libs/libheif-1.7.0:=
+	>=media-libs/libheif-1.13.0:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.2.1:=

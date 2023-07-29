@@ -24,8 +24,9 @@ IUSE="
 	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
 	+libplacebo +lua mmal nvenc openal opengl pipewire pulseaudio
-	raspberry-pi rubberband sdl selinux sixel sndio test tools +uchardet
-	vaapi vdpau vulkan wayland +xv zimg zlib"
+	raspberry-pi rubberband sdl selinux sixel sndio test tools
+	+uchardet vaapi vdpau vulkan wayland xv zimg zlib
+"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( cli libmpv )
@@ -37,13 +38,11 @@ REQUIRED_USE="
 	test? ( cli )
 	tools? ( cli )
 	uchardet? ( iconv )
-	vaapi? (
-		|| ( X egl libplacebo wayland )
-		wayland? ( drm )
-	)
+	vaapi? ( || ( X drm wayland ) )
 	vdpau? ( X )
 	vulkan? ( || ( X wayland ) libplacebo )
-	xv? ( X )"
+	xv? ( X )
+"
 RESTRICT="!test? ( test )"
 
 # raspberry-pi: default to -bin given non-bin is known broken (bug #893422)
@@ -67,8 +66,8 @@ COMMON_DEPEND="
 		dev-libs/libcdio:=
 	)
 	drm? (
-		media-libs/mesa[gbm(+)]
 		x11-libs/libdrm
+		egl? ( media-libs/mesa[gbm(+)] )
 	)
 	dvd? (
 		media-libs/libdvdnav
@@ -116,22 +115,26 @@ COMMON_DEPEND="
 		x11-libs/libxkbcommon
 	)
 	zimg? ( media-libs/zimg )
-	zlib? ( sys-libs/zlib:= )"
+	zlib? ( sys-libs/zlib:= )
+"
 RDEPEND="
 	${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
-	tools? ( ${PYTHON_DEPS} )"
+	tools? ( ${PYTHON_DEPS} )
+"
 DEPEND="
 	${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	nvenc? ( media-libs/nv-codec-headers )
-	wayland? ( dev-libs/wayland-protocols )"
+	wayland? ( dev-libs/wayland-protocols )
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	cli? ( dev-python/docutils )
-	wayland? ( dev-util/wayland-scanner )"
+	wayland? ( dev-util/wayland-scanner )
+"
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -200,7 +203,6 @@ src_configure() {
 		$(meson_feature X x11)
 		$(meson_feature aqua cocoa)
 		$(meson_feature drm)
-		$(meson_feature drm gbm)
 		$(meson_feature jpeg)
 		$(meson_feature libcaca caca)
 		$(meson_feature libplacebo)
@@ -214,6 +216,7 @@ src_configure() {
 			echo enabled || echo disabled)
 		$(meson_feature egl)
 		$(mpv_feature_multi egl X egl-x11)
+		$(mpv_feature_multi egl drm gbm) # gbm is only used by egl-drm
 		$(mpv_feature_multi egl drm egl-drm)
 		$(mpv_feature_multi egl wayland egl-wayland)
 		$(meson_feature libmpv plain-gl)
@@ -230,9 +233,8 @@ src_configure() {
 
 		$(meson_feature vaapi)
 		$(mpv_feature_multi vaapi X vaapi-x11)
-		$(mpv_feature_multi 'vaapi X' egl vaapi-x-egl)
-		$(mpv_feature_multi 'vaapi egl' drm vaapi-drm)
-		$(mpv_feature_multi 'vaapi egl' wayland vaapi-wayland)
+		$(mpv_feature_multi vaapi drm vaapi-drm)
+		$(mpv_feature_multi vaapi wayland vaapi-wayland)
 
 		$(meson_feature vdpau)
 		$(mpv_feature_multi vdpau opengl vdpau-gl-x11)

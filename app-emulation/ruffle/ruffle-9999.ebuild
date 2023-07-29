@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cargo desktop flag-o-matic git-r3 virtualx xdg
+inherit cargo desktop flag-o-matic git-r3 xdg
 
 DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
@@ -16,6 +16,8 @@ LICENSE+="
 	Unicode-DFS-2016 ZLIB curl
 " # crates
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # dlopen: libX* (see winit+x11-dl crates)
 RDEPEND="
@@ -37,13 +39,13 @@ BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
 	>=virtual/rust-1.70
-	test? (
-		media-libs/mesa[llvm]
-		x11-base/xorg-server[-minimal]
-	)
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0_p20230724-skip-render-tests.patch
+)
 
 src_unpack() {
 	git-r3_src_unpack
@@ -77,10 +79,6 @@ src_configure() {
 		$(usev test tests)
 	)
 	cargo_src_configure ${workspaces[*]/#/--package=}
-}
-
-src_test() {
-	virtx cargo_src_test
 }
 
 src_install() {

@@ -78,6 +78,7 @@ COMMON_DEPEND="
 "
 BDEPEND="
 	${COMMON_DEPEND}
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.32[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}

@@ -55,18 +55,6 @@ src_configure() {
 }
 
 src_test() {
-	local myctestargs=()
-
-	if use ppc || use ppc64 || use sparc ; then
-		# Broken on big endian for quite some time.
-		# Reported upstream: file needs to be replaced w/ a normal library
-		# for b64.
-		# bug #763126
-		myctestargs+=(
-			-E "(test_base64)"
-		)
-	fi
-
 	# Unit tests
 	BUILD_DIR="${BUILD_DIR}"/test cmake_src_test
 

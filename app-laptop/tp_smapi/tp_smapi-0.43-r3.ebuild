@@ -15,6 +15,8 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="hdaps"
 
+PATCHES=( "${FILESDIR}/${P}-linux-6.4.patch" )
+
 pkg_setup() {
 	if use hdaps; then
 		local CONFIG_CHECK="~INPUT_UINPUT"

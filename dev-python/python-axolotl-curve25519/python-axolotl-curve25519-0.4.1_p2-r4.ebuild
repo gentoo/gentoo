@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="BSD GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 
 PATCHES=( "${FILESDIR}/python-axolotl-curve25519-fix-type.patch"
 	"${FILESDIR}/${P}-fix-setuptools-warning.diff" )

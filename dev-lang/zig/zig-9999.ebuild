@@ -116,7 +116,6 @@ src_configure() {
 		-DZIG_USE_LLVM_CONFIG=ON
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
-		-DZIG_NO_LANGREF="$(usex !doc ON OFF)"
 	)
 
 	cmake_src_configure
@@ -127,8 +126,8 @@ src_compile() {
 
 	if use doc; then
 		cd "${BUILD_DIR}" || die
-		mv ./stage3/doc/langref.html "${S}" || die
-		edo ./stage3/bin/zig test ../lib/std/std.zig --zig-lib-dir ../lib -fno-emit-bin -femit-docs="${S}/std"
+		edo ./stage3/bin/zig build std-docs --prefix "${S}/docgen/"
+		edo ./stage3/bin/zig build langref --prefix "${S}/docgen/"
 	fi
 }
 
@@ -149,7 +148,7 @@ src_test() {
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( "langref.html" "std" )
+	use doc && local HTML_DOCS=( "docgen/doc/langref.html" "docgen/doc/std" )
 	cmake_src_install
 
 	cd "${ED}/usr/$(get_libdir)/zig/${PV}/" || die
