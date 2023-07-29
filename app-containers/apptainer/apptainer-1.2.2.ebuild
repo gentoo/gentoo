@@ -18,7 +18,7 @@ IUSE="examples +network suid systemd"
 QA_FLAGS_IGNORED='.*'
 
 DEPEND="app-crypt/gpgme
-	>=dev-lang/go-1.17.6
+	>=dev-lang/go-1.19.0
 	dev-libs/openssl
 	sys-apps/util-linux
 	sys-fs/cryptsetup
