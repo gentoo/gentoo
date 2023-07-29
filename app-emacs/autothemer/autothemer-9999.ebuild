@@ -16,6 +16,8 @@ else
 	# Recompressed from NonGNU ELPA.
 	SRC_URI="https://dev.gentoo.org/~arsen/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
+
+	ELISP_REMOVE="${PN}-pkg.el"
 fi
 
 LICENSE="GPL-3+"
@@ -26,7 +28,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-ELISP_REMOVE="${PN}-pkg.el"
 SITEFILE="50${PN}-gentoo.el"
 
 DOCS=(
