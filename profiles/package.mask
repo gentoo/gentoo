@@ -415,12 +415,6 @@ games-action/descent3-demo
 =sci-libs/suitesparseconfig-7.0.0
 =sci-libs/umfpack-6.1.0
 
-# Mike Pagano <mpagano@gentoo.org> (2023-06-18)
-# Last upstream activity in 2018, EAPI 7.
-# See app-crypt/swtpm for an alternative.
-# Removal on 2023-07-18.  Bug #768960, #794547.
-app-crypt/tpm-emulator
-
 # Sam James <sam@gentoo.org> (2023-06-16)
 # Please upgrade to >=app-admin/eselect-1.4.22-r1 for a fix to env-update
 # and the files it generates in /etc/env.d: bug #908401, then run env-update
