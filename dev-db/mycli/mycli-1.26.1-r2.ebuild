@@ -72,3 +72,11 @@ EPYTEST_IGNORE=(
 distutils_enable_tests pytest
 
 PATCHES=( "${FILESDIR}/mycli-1.21.1-fix-test-install.patch" )
+
+src_prepare() {
+	default
+
+	# Remove unnecessary pin, we have paramiko 3.2.0.
+	# https://github.com/dbcli/mycli/commit/eaddc5ca3e208d66fd4f400b90eb76089dd35e4c
+	sed -i -e 's:==:>=:' setup.py || die
+}
