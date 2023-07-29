@@ -12,7 +12,7 @@ MY_P="FileZilla_${MY_PV}"
 
 DESCRIPTION="FTP client with lots of useful features and an intuitive interface"
 HOMEPAGE="https://filezilla-project.org/"
-SRC_URI="https://download.filezilla-project.org/client/${MY_P}_src.tar.bz2"
+SRC_URI="https://download.filezilla-project.org/client/${MY_P}_src.tar.xz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/nettle-3.1:=
 	>=dev-db/sqlite-3.7
-	>=dev-libs/libfilezilla-0.40.0:=
+	>=dev-libs/libfilezilla-0.44.0:=
 	>=dev-libs/pugixml-1.7
 	>=net-libs/gnutls-3.5.7
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
@@ -44,7 +44,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.47.0-disable-shellext_conf.patch
 	"${FILESDIR}"/${PN}-3.52.2-slibtool.patch
 	"${FILESDIR}"/${PN}-3.60.1-desktop.patch
-	"${FILESDIR}"/${PN}-3.63.1-wxversion.patch
 )
 
 src_prepare() {

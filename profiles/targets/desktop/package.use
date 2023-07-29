@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-07-29)
+# Required by dev-python/PyQt5[multimedia]
+dev-qt/qtmultimedia:5 widgets
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2022-12-27)
 # On desktops it's common to use browser to browse internet, which these
 # days is full of emojis, which wouldn't render properly without the fonts.

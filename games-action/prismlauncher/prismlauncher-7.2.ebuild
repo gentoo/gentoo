@@ -118,6 +118,7 @@ src_configure(){
 		-DCMAKE_INSTALL_PREFIX="/usr"
 		# Resulting binary is named prismlauncher
 		-DLauncher_APP_BINARY_NAME="${PN}"
+		-DLauncher_BUILD_PLATFORM="Gentoo"
 		-DLauncher_QT_VERSION_MAJOR=$(usex qt6 6 5)
 
 		-DENABLE_LTO=$(usex lto)

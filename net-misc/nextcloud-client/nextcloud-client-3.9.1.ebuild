@@ -9,14 +9,12 @@ DESCRIPTION="Desktop Syncing Client for Nextcloud"
 HOMEPAGE="https://github.com/nextcloud/desktop"
 SRC_URI="
 	https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz
-	https://github.com/nextcloud/desktop/commit/31c3aee447bba3627a824cfa11bb318ab5fdf523.patch
-		-> ${PN}-3.8.0-Fix-unit-tests-SecureFileDrop.patch
 "
 S="${WORKDIR}/desktop-${PV/_/-}"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc dolphin nautilus test webengine"
 RESTRICT="!test? ( test )"
 
@@ -68,7 +66,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.6-no-redefine-fortify-source.patch
-	"${DISTDIR}"/${PN}-3.8.0-Fix-unit-tests-SecureFileDrop.patch
 )
 
 src_prepare() {
