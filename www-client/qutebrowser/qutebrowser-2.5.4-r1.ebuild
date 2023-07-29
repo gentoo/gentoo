@@ -60,6 +60,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests-python-3.11.4.patch
+)
+
 src_prepare() {
 	distutils-r1_src_prepare
 

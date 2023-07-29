@@ -51,7 +51,7 @@ S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+#KEYWORDS="~amd64"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit debug hpn kerberos ldns libedit livecd pam +pie sctp security-key selinux +ssl static test X X509 xmss"
 

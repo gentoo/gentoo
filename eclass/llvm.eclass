@@ -78,7 +78,7 @@ DEPEND="!!sys-devel/llvm:0"
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {17..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( {18..8} )
 
 # @FUNCTION: get_llvm_slot
 # @USAGE: [-b|-d] [<max_slot>]

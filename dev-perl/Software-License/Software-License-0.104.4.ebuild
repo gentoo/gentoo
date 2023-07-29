@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Packages that provide templated software licenses"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	virtual/perl-Carp

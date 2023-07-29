@@ -27,13 +27,15 @@ DEPEND="
 	${RDEPEND}
 	sys-apps/attr
 "
+# <cython-3: bug #911373
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 "
 
 PATCHES=(
 	"${FILESDIR}"/llfuse-1.3.5-cflags.patch
+	"${FILESDIR}"/llfuse-1.4.4-cython3.patch
 )
 
 distutils_enable_sphinx rst

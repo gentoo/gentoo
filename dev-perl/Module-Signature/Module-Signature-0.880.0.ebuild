@@ -11,7 +11,7 @@ DESCRIPTION="Module signature file manipulation"
 
 LICENSE="CC0-1.0 || ( Artistic GPL-2+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	app-crypt/gnupg

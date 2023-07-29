@@ -11,7 +11,7 @@ DESCRIPTION="Parse a X.509 certificate"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="
 	>=dev-perl/Convert-ASN1-0.190.0

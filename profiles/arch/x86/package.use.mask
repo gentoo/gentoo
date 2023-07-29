@@ -294,10 +294,6 @@ net-analyzer/zmap mongo
 # Unmask arch-specific USE flag available on x86
 net-analyzer/testssl -bundled-openssl
 
-# Tomáš Mózes <hydrapolic@gmail.com> (2018-09-28)
-# Requires dev-db/mongodb which has dropped x86 support
-dev-python/pymongo test
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
 dev-util/catalyst -system-bootloader

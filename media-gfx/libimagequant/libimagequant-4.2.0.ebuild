@@ -46,7 +46,7 @@ S="${WORKDIR}"/${P}/imagequant-sys
 
 LICENSE="GPL-3"
 SLOT="0/0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~s390 sparc"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~s390 sparc"
 
 BDEPEND="
 	>=dev-util/cargo-c-0.9.11

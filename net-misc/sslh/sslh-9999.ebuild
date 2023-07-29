@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -39,6 +39,8 @@ src_prepare() {
 }
 
 src_compile() {
+	append-lfs-flags
+
 	# On older versions of GCC, the default gnu89 variant
 	# will reject within-for-loop initializers, bug #595426
 	# Furthermore, we need to use the gnu variant (gnu99) instead

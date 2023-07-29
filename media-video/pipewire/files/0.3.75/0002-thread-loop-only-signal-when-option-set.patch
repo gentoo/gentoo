@@ -1,0 +1,68 @@
+https://github.com/mpv-player/mpv/issues/11995
+https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3374
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/920bb7160e0be0ce5729d9538f6dea966f297603
+
+From 920bb7160e0be0ce5729d9538f6dea966f297603 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Sun, 23 Jul 2023 18:16:00 +0200
+Subject: [PATCH] thread-loop: only signal when option is set
+
+Add a thead-loop.start-signal option that will do a signal before
+entering the thread loop. Doing the signal in all cases can confuse
+apps that don't expect the signal.
+
+Make module-rt use the thread-loop.start-signal.
+
+Fixes #3374
+--- a/src/modules/module-rt.c
++++ b/src/modules/module-rt.c
+@@ -1085,10 +1085,14 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ #ifdef HAVE_DBUS
+ 	impl->use_rtkit = use_rtkit;
+ 	if (impl->use_rtkit) {
++		struct spa_dict_item items[] = {
++			{ "thread-loop.start-signal", "true" }
++		};
+ 		if ((res = rtkit_get_bus(impl)) < 0)
+ 			goto error;
+ 
+-		impl->thread_loop = pw_thread_loop_new("module-rt", NULL);
++		impl->thread_loop = pw_thread_loop_new("module-rt",
++			&SPA_DICT_INIT_ARRAY(items));
+ 		if (impl->thread_loop == NULL) {
+ 			res = -errno;
+ 			goto error;
+--- a/src/pipewire/thread-loop.c
++++ b/src/pipewire/thread-loop.c
+@@ -43,6 +43,7 @@ struct pw_thread_loop {
+ 	int n_waiting_for_accept;
+ 	unsigned int created:1;
+ 	unsigned int running:1;
++	unsigned int start_signal:1;
+ };
+ /** \endcond */
+ 
+@@ -143,6 +144,11 @@ static struct pw_thread_loop *loop_new(struct pw_loop *loop,
+ 		return NULL;
+ 
+ 	pw_log_debug("%p: new name:%s", this, name);
++	if (props != NULL) {
++		const char *str = spa_dict_lookup(props, "thread-loop.start-signal");
++		if (str != NULL)
++			this->start_signal = spa_atob(str);
++	}
+ 
+ 	if (loop == NULL) {
+ 		loop = pw_loop_new(props);
+@@ -282,7 +288,8 @@ static void *do_loop(void *user_data)
+ 	pw_log_debug("%p: enter thread", this);
+ 	pw_loop_enter(this->loop);
+ 
+-	pw_thread_loop_signal(this, false);
++	if (this->start_signal)
++		pw_thread_loop_signal(this, false);
+ 
+ 	while (this->running) {
+ 		if ((res = pw_loop_iterate(this->loop, -1)) < 0) {
+-- 
+GitLab

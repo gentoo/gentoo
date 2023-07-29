@@ -72,7 +72,7 @@ if [[ ${PV} == 9999 ]] ; then
 	BDEPEND+=" >=x11-misc/util-macros-1.18"
 fi
 
-CHECKREQS_DISK_BUILD="1.2G"
+CHECKREQS_DISK_BUILD="1500M"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.0-werror.patch

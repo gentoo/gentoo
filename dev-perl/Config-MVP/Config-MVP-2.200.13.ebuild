@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Multivalue-property package-oriented configuration"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="minimal"
 
 # r: Module::Pluggable::Object -> Module-Pluggable

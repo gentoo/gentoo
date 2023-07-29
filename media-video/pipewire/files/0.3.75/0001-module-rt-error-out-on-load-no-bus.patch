@@ -1,0 +1,83 @@
+https://bugs.gentoo.org/910714
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/55812195ce3b77317e7a2dc642b78271f3a45c8e
+
+From 55812195ce3b77317e7a2dc642b78271f3a45c8e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sat, 22 Jul 2023 01:20:58 +0000
+Subject: [PATCH] module-rt: error out on load if no bus is available
+
+Since the recent changes to the RT module in Pipewire 0.3.75, some
+applications such as those using OpenAL-Soft crash on startup if
+neither the session nor the system bus is available. For example:
+
+    bwrap --dev-bind / / \
+          --bind /dev/null /run/dbus/system_bus_socket \
+          --bind /dev/null $XDG_RUNTIME_DIR/bus \
+          openal-info
+
+Will result in a crash with the following error message:
+
+    dbus[1626147]: arguments to dbus_message_new_method_call() were
+    incorrect, assertion "path != NULL" failed in file dbus-message.c
+    line 1373.
+    This is normally a bug in some application using the D-Bus library.
+
+The RT module previously failed to load if no bus was available, but
+after the recent changes, the init. logic runs in a thread, and failing
+to obtain the bus no longer causes the module to fail to load.
+
+Then, functions called later such as `pw_rtkit_make_realtime` assume
+the bus is available and try to use it, causing the error above.
+
+Put the logic for obtaining and checking the bus back to `module_init`,
+so the module fails to load again if no bus is available.
+--- a/src/modules/module-rt.c
++++ b/src/modules/module-rt.c
+@@ -923,14 +923,11 @@ static int check_rtkit(struct impl *impl, struct pw_context *context, bool *can_
+ 	return 0;
+ }
+ 
+-static int do_rtkit_setup(struct spa_loop *loop, bool async, uint32_t seq,
+-		const void *data, size_t size, void *user_data)
++static int rtkit_get_bus(struct impl *impl)
+ {
+-	struct impl *impl = user_data;
+ 	int res;
+-	long long retval;
+ 
+-	pw_log_debug("enter rtkit setup");
++	pw_log_debug("enter rtkit get bus");
+ 
+ 	/* Checking xdg-desktop-portal. It works fine in all situations. */
+ 	if (impl->rtportal_enabled)
+@@ -967,6 +964,18 @@ static int do_rtkit_setup(struct spa_loop *loop, bool async, uint32_t seq,
+ 			return res;
+ 		}
+ 	}
++
++	return 0;
++}
++
++static int do_rtkit_setup(struct spa_loop *loop, bool async, uint32_t seq,
++		const void *data, size_t size, void *user_data)
++{
++	struct impl *impl = user_data;
++	long long retval;
++
++	pw_log_debug("enter rtkit setup");
++
+ 	/* get some properties */
+ 	if (rtkit_get_int_property(impl, "MaxRealtimePriority", &retval) < 0) {
+ 		retval = 1;
+@@ -1076,6 +1085,9 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ #ifdef HAVE_DBUS
+ 	impl->use_rtkit = use_rtkit;
+ 	if (impl->use_rtkit) {
++		if ((res = rtkit_get_bus(impl)) < 0)
++			goto error;
++
+ 		impl->thread_loop = pw_thread_loop_new("module-rt", NULL);
+ 		if (impl->thread_loop == NULL) {
+ 			res = -errno;
+-- 
+GitLab

@@ -48,7 +48,7 @@ src_install() {
 		torm_path="${S}"/build/${torm}
 
 		if [[ -e "${torm_path}" ]] ; then
-			rm -r "${torm_path}" || die "failed to remove ${toremove_path}"
+			rm -r "${torm_path}" || die "failed to remove ${torm_path}"
 		fi
 	done
 

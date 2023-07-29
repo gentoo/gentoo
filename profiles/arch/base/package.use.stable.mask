@@ -1,6 +1,10 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-07-28)
+# media-libs/libffado not marked stable on most arches
+media-video/pipewire -ieee1394
+
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # pandoc is stable on amd64 only.
 dev-python/nbclassic doc

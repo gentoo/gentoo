@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic linux-info
+inherit cmake flag-o-matic linux-info toolchain-funcs
 
 DESCRIPTION="Collection of high-performance ray tracing kernels"
 HOMEPAGE="https://github.com/embree/embree"
@@ -65,6 +65,9 @@ src_configure() {
 	# https://github.com/embree/embree/issues/115
 
 	filter-flags -m*
+
+	# https://bugs.gentoo.org/910164
+	tc-is-clang && filter-lto
 
 	local mycmakeargs=(
 		# Currently Intel only host their test files on their internal network.

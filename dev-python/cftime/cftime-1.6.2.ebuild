@@ -5,20 +5,29 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Time-handling functionality from netcdf4-python"
-HOMEPAGE="https://pypi.org/project/cftime/"
+HOMEPAGE="
+	https://github.com/Unidata/cftime/
+	https://pypi.org/project/cftime/
+"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
-DEPEND=">=dev-python/numpy-1.13.4[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
-BDEPEND=">=dev-python/cython-0.26.2[${PYTHON_USEDEP}]"
+DEPEND="
+	>=dev-python/numpy-1.13.4[${PYTHON_USEDEP}]
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	<dev-python/cython-3[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl Archive Toolkit"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/Archive-Zip-1.0.0

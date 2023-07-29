@@ -171,8 +171,8 @@ dist-kernel_reinstall_initramfs() {
 		eerror "Initramfs will not be updated.  Please reinstall your kernel."
 		return
 	fi
-	if [[ ! -f ${initramfs_path} ]]; then
-		einfo "No initramfs found at ${initramfs_path}"
+	if [[ ! -f ${initramfs_path} && ! -f ${initramfs_path%/*}/uki.efi ]]; then
+		einfo "No initramfs or uki found at ${image_path}"
 		return
 	fi
 

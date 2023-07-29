@@ -91,7 +91,7 @@ net-misc/spice-gtk smartcard
 
 # Sam James <sam@gentoo.org> (2020-06-29)
 # Deps not yet stable
-dev-python/pymongo test
+dev-python/pymongo test-full
 net-misc/ntpsec rclock_oncore rclock_pps
 dev-util/bcc test
 dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional

@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Simple wrapper around Log::Dispatch"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="minimal"
 
 # r: Log::Dispatch::File -> Log-Dispatch

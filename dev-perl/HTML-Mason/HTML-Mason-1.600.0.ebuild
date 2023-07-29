@@ -11,7 +11,7 @@ DESCRIPTION="A HTML development and delivery Perl Module"
 HOMEPAGE="http://www.masonhq.com/ https://metacpan.org/release/HTML-Mason"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 IUSE="modperl test"
 RESTRICT="!test? ( test )"
 

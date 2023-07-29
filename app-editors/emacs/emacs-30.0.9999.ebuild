@@ -127,7 +127,10 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 		webp? ( media-libs/libwebp:0= )
 		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		!aqua? (
-			gsettings? ( >=dev-libs/glib-2.28.6 )
+			gsettings? (
+				app-emacs/emacs-common[gsettings(-)]
+				>=dev-libs/glib-2.28.6
+			)
 			gtk? ( !X? (
 				media-libs/fontconfig
 				media-libs/freetype
@@ -450,6 +453,7 @@ src_install() {
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
 	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 

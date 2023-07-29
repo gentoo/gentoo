@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer-meson
 
 DESCRIPTION="WebRTC plugins for GStreamer"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # == ext/webrtc/meson.build
 # dev-libs/glib (eclass): gio_dep

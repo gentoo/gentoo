@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/comm-0.1.1[${PYTHON_USEDEP}]
@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/jupyter-client-8[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-4.12[${PYTHON_USEDEP}]
 	>=dev-python/matplotlib-inline-0.1[${PYTHON_USEDEP}]
-	dev-python/nest_asyncio[${PYTHON_USEDEP}]
+	dev-python/nest-asyncio[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-20[${PYTHON_USEDEP}]

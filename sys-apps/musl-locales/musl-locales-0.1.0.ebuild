@@ -11,7 +11,7 @@ SRC_URI="https://git.adelielinux.org/adelie/musl-locales/uploads/7e855b894b18ca4
 
 LICENSE="LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="!sys-libs/glibc"
 

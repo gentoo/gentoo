@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/894204
+--- a/src/main.c
++++ b/src/main.c
+@@ -17,6 +17,7 @@
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
+   USA */
++#include <locale.h>
+ 
+ #include "configure.h"
+ #include "interface.h"

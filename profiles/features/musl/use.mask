@@ -1,13 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Select the correct ELIBC
 -elibc_musl
 elibc_glibc
-
-# Andrey Grozin <grozin@gentoo.org> (2022-12-01)
-# dev-lisp/sbcl is masked
-sbcl
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # sci-libs/opencascade is masked on musl

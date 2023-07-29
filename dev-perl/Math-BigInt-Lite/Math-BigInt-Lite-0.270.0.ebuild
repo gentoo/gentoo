@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="What BigInts are before they become big"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="
 	>=virtual/perl-Carp-1.220.0

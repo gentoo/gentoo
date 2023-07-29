@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/projg2/${PN}.git"
 inherit autotools git-r3
 
 DESCRIPTION="dev-util/squashdelta delta merge tool"
-HOMEPAGE="https://github.com/mgorny/squashmerge/"
+HOMEPAGE="https://github.com/projg2/squashmerge/"
 SRC_URI=""
 
 LICENSE="BSD"

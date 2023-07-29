@@ -13,7 +13,7 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/aacid.asc
 	inherit verify-sig
 
-	TEST_COMMIT="eea2a4a355eb49ca70d944afd5245b24578af287"
+	TEST_COMMIT="e3cdc82782941a8d7b8112f83b4a81b3d334601a"
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
@@ -56,7 +56,10 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	boost? ( >=dev-libs/boost-1.71 )
-	test? ( qt5? ( dev-qt/qttest:5 ) )
+	test? ( qt5? (
+		dev-qt/qttest:5
+		dev-qt/qtwidgets:5
+	) )
 "
 BDEPEND="
 	>=dev-util/glib-utils-2.64

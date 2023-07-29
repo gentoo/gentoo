@@ -39,6 +39,7 @@ python_test() {
 
 	local EPYTEST_DESELECT=(
 		# TODO
+		docs/comparing.txt::line:642,column:1
 		testfixtures/tests/test_shouldwarn.py::ShouldWarnTests::test_filter_missing
 		testfixtures/tests/test_shouldwarn.py::ShouldWarnTests::test_filter_present
 	)
@@ -47,7 +48,6 @@ python_test() {
 		python3.12)
 			EPYTEST_DESELECT+=(
 				# https://github.com/simplistix/testfixtures/issues/183
-				docs/comparing.txt::line:642,column:1
 				docs/comparing.txt::line:784,column:1
 				docs/comparing.txt::line:823,column:1
 				testfixtures/tests/test_tempdirectory.py::TempDirectoryTests::test_as_path_relative_sequence

@@ -31,7 +31,7 @@ else
 		KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
 	fi
 
-	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20220216 )"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20230727 )"
 fi
 
 LICENSE="BSD GPL-2"

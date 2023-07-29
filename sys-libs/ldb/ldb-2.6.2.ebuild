@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv 
 IUSE="doc ldap +lmdb python test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	test? ( lmdb python )"
+	test? ( lmdb )"
 
 RESTRICT="!test? ( test )"
 
@@ -98,6 +98,12 @@ src_prepare() {
 	default
 
 	check_samba_dep_versions
+
+	if use test && ! use python ; then
+		# We want to be able to run tests w/o Python as it makes
+		# automated testing much easier (as USE=python isn't default-enabled).
+		truncate -s0 tests/python/{repack,index,api,crash}.py || die
+	fi
 
 	multilib_copy_sources
 }

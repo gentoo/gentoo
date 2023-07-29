@@ -8,13 +8,14 @@ ECM_QTHELP="false"
 ECM_TEST="true"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.9
+VIRTUALX_REQUIRED="test" # bug 910062 (tests fail)
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="QtQuick plugin providing high-performance charts"
 HOMEPAGE="https://invent.kde.org/frameworks/kquickcharts"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 DEPEND="

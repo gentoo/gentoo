@@ -1,17 +1,19 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
-# Temporary masks; to be lifted after leaving wd40 status.
-gnome-base/nautilus previewer
-mate-extra/caja-extensions gajim
-x11-misc/xscreensaver gdm
+# WANG Xuerui <xen0n@gentoo.org> (2023-07-26)
+# missing llvm:16 and keyworded lld
+dev-lang/spidermonkey clang lto
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
+# MPV currently[1] has no plans to support >=lua5-3 making luajit
+# the only choice for maintained lua. Apply mask/force to override
+# the profile's defaults, and invert on arches where not keyworded.
+# Done this way also avoids conflicts for users using another default.
+# [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
+media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-19)
-# dev-lang/spidermonkey still waiting on upstream lld support
-app-crypt/libsecret test-rust
-dev-util/glade gjs
-
 # dev-python/watchfiles has too old target-lexicon without loong support
 dev-python/uvicorn test-rust
 
@@ -137,11 +139,6 @@ app-accessibility/espeak-ng man
 # inline asm, so we have no dev-libs/criterion
 app-admin/syslog-ng test
 
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-03)
-# Things requiring net-libs/gnome-online-accounts, which depends on
-# net-libs/webkit-gtk.
-gnome-base/gvfs google
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # sys-cluster/ceph is not keyworded yet.
 net-analyzer/rrdtool rados
@@ -190,12 +187,6 @@ app-office/libreoffice clang
 # - sys-devel/lld: port is still under review
 dev-util/lldb test
 sys-devel/clang-common default-lld
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
-# net-libs/webkit-gtk is not available on loong yet.
-app-text/atril epub
-gnome-extra/evolution-data-server oauth
-mate-base/mate help
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-04)
 # Sanitizers partially supported on this architecture.

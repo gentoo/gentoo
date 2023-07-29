@@ -1,0 +1,21 @@
+https://github.com/parona-source/virtualenvwrapper/commit/9cb7bcab244c3e49d7b25b73e82566d0adce3282
+
+From 9cb7bcab244c3e49d7b25b73e82566d0adce3282 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 23 Jul 2023 05:05:59 +0300
+Subject: [PATCH] virtualenvwrapper.sh: Override default python executable
+
+--- a/virtualenvwrapper.sh
++++ b/virtualenvwrapper.sh
+@@ -47,7 +47,7 @@
+ # Locate the global Python where virtualenvwrapper is installed.
+ if [ "${VIRTUALENVWRAPPER_PYTHON:-}" = "" ]
+ then
+-    _virtualenvwrapper_python_executable="$(command -v python3)"
++    _virtualenvwrapper_python_executable="@@GENTOO_PYTHON_EXECUTABLE@@"
+     if [ -n "$_virtualenvwrapper_python_executable" ] && $_virtualenvwrapper_python_executable -m 'virtualenvwrapper.hook_loader' --help >/dev/null 2>&1
+     then
+         VIRTUALENVWRAPPER_PYTHON=$_virtualenvwrapper_python_executable
+-- 
+2.41.0
+

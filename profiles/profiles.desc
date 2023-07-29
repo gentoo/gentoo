@@ -167,12 +167,19 @@ ia64		default/linux/ia64/17.0/systemd/merged-usr			exp
 
 # LoongArch Profiles
 # @MAINTAINER: loong@gentoo.org
-loong		default/linux/loong/22.0/la64v100/lp64d					stable
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop				dev
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd			dev
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd/merged-usr	dev
-loong		default/linux/loong/22.0/la64v100/lp64d/systemd				stable
-loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr		stable
+loong		default/linux/loong/22.0/la64v100/lp64d						stable
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop					stable
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/gnome				dev
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/gnome/systemd			dev
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/gnome/systemd/merged-usr	dev
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/plasma				stable
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/plasma/systemd			stable
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/plasma/systemd/merged-usr	stable
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd				stable
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd/merged-usr		stable
+loong		default/linux/loong/22.0/la64v100/lp64d/developer				exp
+loong		default/linux/loong/22.0/la64v100/lp64d/systemd					stable
+loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr			stable
 
 # M68K Profiles
 # @MAINTAINER: m68k@gentoo.org

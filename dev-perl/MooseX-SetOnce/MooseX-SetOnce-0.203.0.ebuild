@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Write-once, read-many attributes for Moose"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Moose-0.900.0

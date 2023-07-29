@@ -5,5 +5,8 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">ArtifexSoftware/urw-base35-fonts</remote-id>
+	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

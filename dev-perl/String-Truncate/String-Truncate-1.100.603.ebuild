@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Module for when strings are too long to be displayed in..."
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Carp

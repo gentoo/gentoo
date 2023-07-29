@@ -1,0 +1,102 @@
+Backports for tests broken by python-3.11.4.
+https://bugs.gentoo.org/910742
+
+IPv6 tests are notably related to https://bugs.gentoo.org/909747
+
+https://github.com/qutebrowser/qutebrowser/commit/e1d0b3c543fc470a0459a18be3dee5a151ed79ed
+https://github.com/qutebrowser/qutebrowser/commit/5d890f14d093689e53fcbdec3d739daf04a8aae4
+...was for 3.12 but change was backported to 3.11.4 which led to:
+https://github.com/qutebrowser/qutebrowser/commit/8b058389b7db591fb52b99fe9f7afbacfeabd901
+--- a/tests/unit/config/test_configfiles.py
++++ b/tests/unit/config/test_configfiles.py
+@@ -1102,7 +1102,14 @@
+         error = excinfo.value.errors[0]
+-        assert isinstance(error.exception, ValueError)
+-        assert error.text == "Error while compiling"
++
++        if sys.version_info >= (3, 11, 4):
++            assert isinstance(error.exception, SyntaxError)
++            assert error.text == "Unhandled exception"
++            assert error.traceback is not None  # tested in more detail by test below
++        else:
++            assert isinstance(error.exception, ValueError)
++            assert error.text == "Error while compiling"
++            assert error.traceback is None
++
+         exception_text = 'source code string cannot contain null bytes'
+         assert str(error.exception) == exception_text
+-        assert error.traceback is None
+ 
+--- a/tests/unit/utils/test_urlmatch.py
++++ b/tests/unit/utils/test_urlmatch.py
+@@ -42,2 +42,8 @@
+ 
++_INVALID_IP_MESSAGE = (
++    r'Invalid IPv6 address; source was ".*"; host = ""|'
++    r"'.*' does not appear to be an IPv4 or IPv6 address"  # Python 3.11.4+
++)
++
++
+ @pytest.mark.parametrize('pattern, error', [
+@@ -62,3 +68,7 @@
+     ## TEST(ExtensionURLPatternTest, IPv6Patterns)
+-    pytest.param("http://[]:8888/*", "Pattern without host", id='host-ipv6'),
++    pytest.param(
++        "http://[]:8888/*",
++        "Pattern without host|'' does not appear to be an IPv4 or IPv6 address",
++        id='host-ipv6',
++    ),
+ 
+@@ -89,3 +99,6 @@
+         "http://[[2607:f8b0:4005:805::200e]/*",
+-        r"""Expected '\]' to match '\[' in hostname; source was "\[2607:f8b0:4005:805::200e"; host = """"",
++        (
++            r'''Expected '\]' to match '\[' in hostname; source was "\[2607:f8b0:4005:805::200e"; host = ""|'''
++            r"'\[2607:f8b0:4005:805::200e' does not appear to be an IPv4 or IPv6 address"
++        ),
+         id='host-ipv6-two-open',
+@@ -95,3 +108,3 @@
+         "http://[2607:f8b0:4005:805:200e]/*",
+-        'Invalid IPv6 address; source was "2607:f8b0:4005:805:200e"; host = ""',
++        _INVALID_IP_MESSAGE,
+         id='host-ipv6-colons',
+@@ -101,3 +114,3 @@
+         "http://[2607:f8b0:4005:805:200e:12:bogus]/*",
+-        'Invalid IPv6 address; source was "2607:f8b0:4005:805:200e:12:bogus"; host = ""',
++        _INVALID_IP_MESSAGE,
+         id='host-ipv6-non-hex',
+@@ -155,3 +168,3 @@
+         "http://[fc2e::bb88::edac]",
+-        'Invalid IPv6 address; source was "fc2e::bb88::edac"; host = ""',
++        _INVALID_IP_MESSAGE,
+         id='ipv6-double-double',
+@@ -160,3 +173,3 @@
+         "http://[fc2e:0e35:bb88::edac:fc2e:0e35:bb88:edac]",
+-        'Invalid IPv6 address; source was "fc2e:0e35:bb88::edac:fc2e:0e35:bb88:edac"; host = ""',
++        _INVALID_IP_MESSAGE,
+         id='ipv6-long-double',
+@@ -165,3 +178,3 @@
+         "http://[fc2e:0e35:bb88:af:edac:fc2e:0e35:bb88:edac]",
+-        'Invalid IPv6 address; source was "fc2e:0e35:bb88:af:edac:fc2e:0e35:bb88:edac"; host = ""',
++        _INVALID_IP_MESSAGE,
+         id='ipv6-long',
+@@ -170,3 +183,3 @@
+         "http://[127.0.0.1:fc2e::bb88:edac]",
+-        r'Invalid IPv6 address; source was "127\.0\.0\.1:fc2e::bb88:edac',
++        _INVALID_IP_MESSAGE,
+         id='ipv6-ipv4',
+@@ -176,3 +189,3 @@
+         "http://[fc2e:bb88:edac]",
+-        'Invalid IPv6 address; source was "fc2e:bb88:edac"; host = ""',
++        _INVALID_IP_MESSAGE,
+         id='ipv6-short',
+@@ -181,3 +194,3 @@
+         "http://[fc2e:bb88:edac::z]",
+-        'Invalid IPv6 address; source was "fc2e:bb88:edac::z"; host = ""',
++        _INVALID_IP_MESSAGE,
+         id='ipv6-z',
+@@ -192,3 +205,3 @@
+ def test_invalid_patterns(pattern, error):
+-    with pytest.raises(urlmatch.ParseError, match=error):
++    with pytest.raises(urlmatch.ParseError, match=f"^{error}$"):
+         urlmatch.UrlPattern(pattern)
