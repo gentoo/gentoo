@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/jupyter-client-5.3.4[${PYTHON_USEDEP}]
 	>=dev-python/nbclassic-0.4.7[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
-	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]
+	>=dev-python/nest-asyncio-1.5[${PYTHON_USEDEP}]
 	dev-python/prometheus-client[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17[${PYTHON_USEDEP}]
 	>=dev-python/send2trash-1.8.0[${PYTHON_USEDEP}]
