@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/wwmm/easyeffects"
 else
 	SRC_URI="https://github.com/wwmm/easyeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -30,10 +30,10 @@ COMMON="dev-cpp/nlohmann_json
 	media-libs/libbs2b
 	>=media-libs/libebur128-1.2.0
 	media-libs/libsndfile
+	media-libs/libsoundtouch
 	>=media-libs/lilv-0.22
 	>=media-libs/lv2-1.18.2
 	media-libs/rnnoise
-	media-libs/rubberband[ladspa]
 	media-libs/speexdsp
 	>=media-libs/zita-convolver-3.0.0
 	>=media-video/pipewire-0.3.41
