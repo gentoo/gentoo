@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.xxiivv.com/site/uxn.html
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.sr.ht/~rabbits/uxn.git"
+	EGIT_REPO_URI="https://git.sr.ht/~rabbits/uxn"
 elif [[ ${PV} == *_p20230501 ]] ; then
 	COMMIT=0dcc3b4c2e12bf2a61e682e9168e8bdb469caae0
 	SRC_URI="https://git.sr.ht/~rabbits/uxn/archive/${COMMIT}.tar.gz
