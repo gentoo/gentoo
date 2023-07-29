@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SLOT="0/$(ver_cut 1-2)"
 
 RESTRICT="test"
 
-RDEPEND="dev-util/hip:${SLOT}
+RDEPEND="dev-util/hip
 	sci-libs/rocFFT:${SLOT}[${ROCM_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND=""
@@ -26,25 +26,19 @@ BDEPEND=""
 S="${WORKDIR}/hipFFT-rocm-${PV}"
 
 PATCHES=(
+	"${FILESDIR}/${PN}-5.1.3_hip-config.patch"
 	"${FILESDIR}/${PN}-5.1.3-gentoo-install-locations.patch"
 	"${FILESDIR}/${PN}-5.0.2-remove-git-dependency.patch"
 	"${FILESDIR}/${PN}-4.3.0-add-complex-header.patch"
 )
 
-src_prepare() {
-	sed -e "/CMAKE_INSTALL_LIBDIR/d" -i CMakeLists.txt || die
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DCMAKE_INSTALL_INCLUDEDIR="include/hipfft"
-		-DCMAKE_MODULE_PATH="${EPREFIX}/usr/$(get_libdir)/cmake"
-		-DHIP_ROOT_DIR="${EPREFIX}/usr"
+		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_CLIENTS_TESTS=OFF
 		-DBUILD_CLIENTS_RIDER=OFF
 	)
 
-	cmake_src_configure
+	CXX=hipcc cmake_src_configure
 }
