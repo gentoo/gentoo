@@ -434,11 +434,6 @@ app-crypt/tpm-emulator
 =dev-db/mariadb-10.11.2
 =dev-db/mariadb-10.11.3
 
-# Michał Górny <mgorny@gentoo.org> (2023-06-10)
-# Renamed to dev-python/pypdf.  No revdeps left.
-# Removal on 2023-07-10.  Bug #908227.
-dev-python/PyPDF2
-
 # Sam James <sam@gentoo.org> (2023-06-05)
 # Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
 =sys-devel/gcc-14.0.0_pre20230604
