@@ -65,6 +65,10 @@ distutils_enable_tests pytest
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
 
+PATCHES=(
+	"${FILESDIR}/${P}-find-eselected-wine.patch"
+)
+
 python_test() {
 	virtx epytest
 }
