@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 ROCM_VERSION=${PV}
 
 inherit cmake check-reqs edo multiprocessing python-r1 rocm
@@ -36,7 +36,7 @@ BDEPEND="
 	test? ( dev-cpp/gtest dev-libs/boost
 	>=sci-libs/fftw-3 sys-libs/libomp )
 	>=dev-util/cmake-3.22
-	dev-util/rocm-cmake:${SLOT}
+	dev-util/rocm-cmake
 "
 
 CHECKREQS_DISK_BUILD="7G"
