@@ -92,6 +92,10 @@ src_configure() {
 	else
 		emesonargs+=(-Dsystemd_suspend_resume=false)
 	fi
+	# 911416
+	if ! use systemd; then
+		emesonargs+=(-Dsystemdsystemunitdir=no)
+	fi
 	meson_src_configure
 }
 
