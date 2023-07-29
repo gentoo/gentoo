@@ -23,6 +23,7 @@ fi
 
 PYTHON_COMPAT=( python3_{9..11} )
 WANT_LIBTOOL=none
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/dkiper.gpg
 
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 	inherit python-any-r1
@@ -32,16 +33,23 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs verify-sig
 
+MY_P=${P}
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
-		SRC_URI="https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz"
+		SRC_URI="
+			https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz
+			verify-sig? ( https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz.sig )
+		"
 		S=${WORKDIR}/${MY_P}
 	else
-		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
+		SRC_URI="
+			mirror://gnu/${PN}/${P}.tar.xz
+			verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
+		"
 		S=${WORKDIR}/${P%_*}
 	fi
 	#KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
@@ -107,6 +115,7 @@ BDEPEND="
 		virtual/pkgconfig
 	)
 	truetype? ( virtual/pkgconfig )
+	verify-sig? ( sec-keys/openpgp-keys-danielkiper )
 "
 DEPEND="
 	app-arch/xz-utils
@@ -150,6 +159,8 @@ src_unpack() {
 		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
 		git-r3_checkout "${GNULIB_URI}" gnulib
 		popd >/dev/null || die
+	elif use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig}
 	fi
 	default
 }
