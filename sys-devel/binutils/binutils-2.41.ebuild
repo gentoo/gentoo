@@ -301,28 +301,32 @@ src_configure() {
 		$(use_enable gprofng)
 	)
 
-	if use amd64 || use arm64 || use x86 ; then
-		# These hardening options are available from 2.39+ but
-		# they unconditionally enable the behaviour even on arches
-		# where e.g. execstacks can't be avoided.
-		# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
-		#
-		# TODO: Get the logic for this fixed upstream so it doesn't
-		# create impossible broken combinations on some arches, like mips.
-		#
-		# TODO: Get the logic for this fixed upstream so --disable-* works
-		# as expected.
-		myconf+=(
-			--enable-warn-execstack=yes
-			--enable-warn-rwx-segments=yes
-		)
-
-		if use hardened ; then
+	case ${CTARGET} in
+		x86_64-*|aarch64*|arm64*|i[3456]*)
+			# These hardening options are available from 2.39+ but
+			# they unconditionally enable the behaviour even on arches
+			# where e.g. execstacks can't be avoided.
+			# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
+			#
+			# TODO: Get the logic for this fixed upstream so it doesn't
+			# create impossible broken combinations on some arches, like mips.
+			#
+			# TODO: Get the logic for this fixed upstream so --disable-* works
+			# as expected.
 			myconf+=(
-				--enable-default-execstack=no
+				--enable-warn-execstack=yes
+				--enable-warn-rwx-segments=yes
 			)
-		fi
-	fi
+
+			if use hardened ; then
+				myconf+=(
+					--enable-default-execstack=no
+				)
+			fi
+			;;
+		*)
+			;;
+	esac
 
 	if use elibc_musl ; then
 		# Override our earlier setting for musl, as textrels don't
