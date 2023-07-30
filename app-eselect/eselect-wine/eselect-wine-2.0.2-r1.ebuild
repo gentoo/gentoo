@@ -72,17 +72,21 @@ pkg_postinst() {
 		elog
 		[[ ${REPLACING_VERSIONS} ]] &&
 			elog "${PN} changed a bit, suggest reviewing 'eselect wine help' (and list)."
-		elog "Please run '. ${EROOT}/etc/profile' to update PATH in current shells."
-		elog "Wine can otherwise be executed directly at '${EROOT}/etc/eselect/wine/bin/wine'."
+		elog "Please run '. ${EROOT}/etc/profile' to update PATH in current shells"
+		elog "(PATH should have ':${EPREFIX}/etc/eselect/wine/bin'). Wine can otherwise"
+		elog "be executed directly from '${EPREFIX}/etc/eselect/wine/bin/wine'."
 	fi
 
 	if [[ ${REPLACING_VERSIONS##* } ]] &&
 		ver_test ${REPLACING_VERSIONS##* } -lt 2.0.2-r1; then
 		elog
 		elog "Be warned that >=${PN}-2.0.2-r1 no longer installs the"
-		elog "'${EROOT}/usr/bin/wine' symbolic link. wine(1) can still be found"
+		elog "'${EPREFIX}/usr/bin/wine' symbolic link. wine(1) can still be found"
 		elog "in PATH but, if using the direct location for scripts and/or binfmt,"
-		elog "then please update these to use: '${EROOT}/etc/eselect/wine/bin/wine'"
+		elog "then please update these to use: '${EPREFIX}/etc/eselect/wine/bin/wine'"
+		elog
+		elog "If wine is not found in PATH, please ensure that not overriding the"
+		elog "default PATH value that should include ':${EPREFIX}/etc/eselect/wine/bin'"
 	fi
 }
 
