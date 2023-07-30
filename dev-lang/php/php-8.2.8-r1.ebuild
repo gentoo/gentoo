@@ -581,6 +581,17 @@ src_compile() {
 	addpredict /usr/share/snmp/mibs/.index #nowarn
 	addpredict /var/lib/net-snmp/mib_indexes #nowarn
 
+	if use oci8-instant-client && use kerberos && use imap && use phar; then
+		# A conspiracy takes place when the first three of these flags
+		# are set together, causing the newly-built "php" to open
+		# /dev/urandom with mode rw when it starts. That's not actually
+		# a problem... unless you also have USE=phar, which runs that
+		# "php" to build some phar thingy in src_compile(). Later in
+		# src_test(), portage (at least) sets "addpredict /" so the
+		# problem does not repeat.
+		addpredict /dev/urandom #nowarn
+	fi
+
 	local sapi
 	for sapi in ${SAPIS} ; do
 		use "${sapi}" && emake -C "${WORKDIR}/sapis-build/${sapi}"
