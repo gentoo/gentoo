@@ -545,25 +545,6 @@ tc-ld-force-bfd() {
 	if tc-is-gcc || tc-is-clang ; then
 		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
 	fi
-
-	if false ; then
-		# TODO: Clean this up, or is it useful for when the compiler can't
-		# be detected or for rubbish shims? Might be helpful for cases like
-		# when porting to new linker which GCC doesn't yet recognise (less
-		# of a problem for Clang as it accepts absolute paths), like was
-		# the case for mold.
-		#
-		# <=gcc-4.7 and <=clang-3.4 require some coercion.
-		# Only works if bfd exists.
-		if [[ -e ${path_ld} ]] ; then
-			local d="${T}/bfd-linker"
-			mkdir -p "${d}"
-			ln -sf "${path_ld}" "${d}"/ld
-			export LDFLAGS="${LDFLAGS} -B${d}"
-		else
-			die "unable to locate a BFD linker"
-		fi
-	fi
 }
 
 # @FUNCTION: _tc-has-openmp
