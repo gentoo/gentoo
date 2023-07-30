@@ -25,7 +25,10 @@ RDEPEND="
 	raw? ( media-libs/libraw:= )
 "
 DEPEND="${RDEPEND}
-	test? ( heif? ( media-libs/libheif[x265] ) )
+	test? (
+		>=dev-qt/qtimageformats-${QTMIN}:5
+		heif? ( media-libs/libheif[x265] )
+	)
 "
 
 DOCS=( src/imageformats/AUTHORS )
