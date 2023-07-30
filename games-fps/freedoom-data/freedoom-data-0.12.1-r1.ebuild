@@ -20,6 +20,10 @@ BDEPEND="
 	app-text/asciidoc
 	games-util/deutex[png]"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.12.1-Python-PIL-10.0.0-support.patch
+)
+
 S="${WORKDIR}/freedoom-${PV}"
 
 DOOMWADPATH=share/doom

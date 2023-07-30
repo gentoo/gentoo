@@ -1,0 +1,39 @@
+From d64ddc6ea90406e21b4b93f5a1e7f99abfaac0d9 Mon Sep 17 00:00:00 2001
+From: Steven Elliott <selliott512@gmail.com>
+Date: Sun, 16 Jul 2023 14:52:04 -0400
+Subject: [PATCH] create_caption: Python PIL 10.0.0 support (#1027)
+
+To support Python PIL 10.0.0 this change uses newer API textbbox() when
+available, and older API textsize() when not.
+---
+ graphics/text/create_caption | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/graphics/text/create_caption b/graphics/text/create_caption
+index 7ddbd8d66..22bc0507d 100755
+--- a/graphics/text/create_caption
++++ b/graphics/text/create_caption
+@@ -18,8 +18,21 @@ background_image.load()
+ background_image = background_image.convert("RGBA")
+ image = Image.new("RGBA", background_image.size, (0, 0, 0, 0))
+ draw = ImageDraw.Draw(image)
+-txt1_size = draw.textsize(txt1, font=font)
+-txt2_size = draw.textsize(txt2, font=font)
++
++# Getting the text size is tricky since for newer PIL, such as 10.0.0, only
++# textbbox() is supported, but for older PIL, such 7.2.0, only textsize()
++# is supported. The solution is to default to the newer API, but fallback to
++# the older one when it is not available.
++try:
++    # This newer API returns a four item tuple. The "xy" kwarg is returned in
++    # the first two items, and last two items is the size needed, but with "xy"
++    # added, so passing "(0, 0)" returns the size needed.
++    txt1_size = draw.textbbox(xy=(0, 0), text=txt1, font=font)[2:]
++    txt2_size = draw.textbbox(xy=(0, 0), text=txt2, font=font)[2:]
++except:
++    # This older API simply returns the size needed.
++    txt1_size = draw.textsize(txt1, font=font)
++    txt2_size = draw.textsize(txt2, font=font)
+ 
+ draw.text(
+     (5, int(image.height - txt1_size[1] - 5)),
