@@ -273,7 +273,6 @@ dev-util/cucumber-html-formatter:17
 # Having scikit-build-core installed still breaks building setuptools
 # extensions in some scenarios.
 # https://github.com/scikit-build/scikit-build-core/issues/426
->=dev-python/iminuit-2.22
 =dev-python/scikit-build-core-0.4.7-r1
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-08)
