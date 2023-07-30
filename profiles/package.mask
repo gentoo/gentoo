@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-07-29)
+# EAPI 6, fetch restrictions require annoying registration, no other
+# distro packages this, over 10 years old. Removal on 2023-08-28.
+sci-libs/rosetta-db
+
 # Michael Orlitzky <mjo@gentoo.org> (2023-07-27)
 # Obsolete as of dev-php/swoole-4.3.0, according to
 # its github README. Stuck on php-7.4. Removal on or
@@ -268,7 +273,6 @@ dev-util/cucumber-html-formatter:17
 # Having scikit-build-core installed still breaks building setuptools
 # extensions in some scenarios.
 # https://github.com/scikit-build/scikit-build-core/issues/426
->=dev-python/iminuit-2.22
 =dev-python/scikit-build-core-0.4.7-r1
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-08)
@@ -410,12 +414,6 @@ games-action/descent3-demo
 =sci-libs/suitesparseconfig-7.0.0
 =sci-libs/umfpack-6.1.0
 
-# Mike Pagano <mpagano@gentoo.org> (2023-06-18)
-# Last upstream activity in 2018, EAPI 7.
-# See app-crypt/swtpm for an alternative.
-# Removal on 2023-07-18.  Bug #768960, #794547.
-app-crypt/tpm-emulator
-
 # Sam James <sam@gentoo.org> (2023-06-16)
 # Please upgrade to >=app-admin/eselect-1.4.22-r1 for a fix to env-update
 # and the files it generates in /etc/env.d: bug #908401, then run env-update
@@ -428,11 +426,6 @@ app-crypt/tpm-emulator
 =dev-db/mariadb-10.6.13
 =dev-db/mariadb-10.11.2
 =dev-db/mariadb-10.11.3
-
-# Michał Górny <mgorny@gentoo.org> (2023-06-10)
-# Renamed to dev-python/pypdf.  No revdeps left.
-# Removal on 2023-07-10.  Bug #908227.
-dev-python/PyPDF2
 
 # Sam James <sam@gentoo.org> (2023-06-05)
 # Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.

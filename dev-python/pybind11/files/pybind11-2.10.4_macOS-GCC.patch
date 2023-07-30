@@ -2,8 +2,7 @@ Break the toolchain assumption of LLVM on Prefix/macOS.
 
 At Prefix/macOS, the system compiler is GCC with libstdc++.
 
-This patch is only useful to Gentoo Prefix.  We don't have plans to
-forward it upstream.
+Reference: https://github.com/pybind/pybind11/pull/4639
 
 Signed-off-by: Benda Xu <heroxbd@gentoo.org>
 

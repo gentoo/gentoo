@@ -534,36 +534,16 @@ tc-ld-force-bfd() {
 	ewarn "Forcing usage of the BFD linker"
 
 	# Set up LD to point directly to bfd if it's available.
+	local ld=$(tc-getLD "$@")
 	# We need to extract the first word in case there are flags appended
 	# to its value (like multilib), bug #545218.
-	local ld=$(tc-getLD "$@")
 	local bfd_ld="${ld%% *}.bfd"
 	local path_ld=$(type -P "${bfd_ld}" 2>/dev/null)
 	[[ -e ${path_ld} ]] && export LD=${bfd_ld}
 
 	# Set up LDFLAGS to select bfd based on the gcc / clang version.
-	local fallback="true"
 	if tc-is-gcc || tc-is-clang ; then
 		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
-	fi
-
-	if [[ ${fallback} == "true" ]] ; then
-		# TODO: Clean this up, or is it useful for when the compiler can't
-		# be detected or for rubbish shims? Might be helpful for cases like
-		# when porting to new linker which GCC doesn't yet recognise (less
-		# of a problem for Clang as it accepts absolute paths), like was
-		# the case for mold.
-		#
-		# <=gcc-4.7 and <=clang-3.4 require some coercion.
-		# Only works if bfd exists.
-		if [[ -e ${path_ld} ]] ; then
-			local d="${T}/bfd-linker"
-			mkdir -p "${d}"
-			ln -sf "${path_ld}" "${d}"/ld
-			export LDFLAGS="${LDFLAGS} -B${d}"
-		else
-			die "unable to locate a BFD linker"
-		fi
 	fi
 }
 

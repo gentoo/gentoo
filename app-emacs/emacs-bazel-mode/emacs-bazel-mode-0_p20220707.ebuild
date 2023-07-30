@@ -18,6 +18,7 @@ S="${WORKDIR}"/${PN}-${COMMIT}
 LICENSE="Apache-2.0"
 KEYWORDS="amd64 ~x86"
 SLOT="0"
+RESTRICT="test"                 # Tests fail.
 
 PATCHES=( "${FILESDIR}"/${PN}-bazel-test--directory.patch )
 

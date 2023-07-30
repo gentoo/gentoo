@@ -75,7 +75,8 @@ src_configure() {
 		$(meson_use introspection)
 
 		$(meson_use udev)
-		-Dudevdir="$(get_udevdir)"
+		-Dudevdir="${EPREFIX}$(get_udevdir)"
+		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 
 		$(meson_use systemd systemd_journal)
 

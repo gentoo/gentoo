@@ -32,8 +32,9 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+# <cython-3 for bug #911412
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx docs
