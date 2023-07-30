@@ -542,12 +542,11 @@ tc-ld-force-bfd() {
 	[[ -e ${path_ld} ]] && export LD=${bfd_ld}
 
 	# Set up LDFLAGS to select bfd based on the gcc / clang version.
-	local fallback="true"
 	if tc-is-gcc || tc-is-clang ; then
 		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
 	fi
 
-	if [[ ${fallback} == "true" ]] ; then
+	if false ; then
 		# TODO: Clean this up, or is it useful for when the compiler can't
 		# be detected or for rubbish shims? Might be helpful for cases like
 		# when porting to new linker which GCC doesn't yet recognise (less
