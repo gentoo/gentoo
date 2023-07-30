@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,6 +42,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.13-configure.in-fix-PAM-automagick-dep.patch
 	# Fix parallel make issue (bug #408375)
 	"${FILESDIR}"/${PN}-3.1.13-parallel-make-fix.patch
+	# Fix permissions (bug #711598)
+	"${FILESDIR}"/${P}-Makefile.binary-permission-fix.patch
 )
 
 src_prepare() {
@@ -75,6 +77,8 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}/atd.service"
 	keepdir /var/spool/at/atspool
+	# Fix permission since keepdir changes it (bug #658460)
+	fperms 1770 /var/spool/at/atspool
 }
 
 pkg_preinst() {
@@ -84,15 +88,4 @@ pkg_preinst() {
 		einfo "Preserving existing .SEQ file (bug #386625)."
 		cp -p "${seq_file}" "${ED}"/var/spool/at/atjobs/ || die
 	fi
-}
-
-pkg_postinst() {
-	einfo "Forcing correct permissions on /var/spool/at"
-	local atspooldir="${EROOT}/var/spool/at"
-	chown at:at "${atspooldir}/atjobs"
-	chmod 1770  "${atspooldir}/atjobs"
-	chown at:at "${atspooldir}/atjobs/.SEQ"
-	chmod 0600  "${atspooldir}/atjobs/.SEQ"
-	chown at:at "${atspooldir}/atspool"
-	chmod 1770  "${atspooldir}/atspool"
 }
