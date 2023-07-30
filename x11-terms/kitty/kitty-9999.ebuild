@@ -14,7 +14,8 @@ else
 	SRC_URI="
 		https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz
 		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
-		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )"
+		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
+	"
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/kovidgoyal.gpg"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
@@ -29,19 +30,20 @@ IUSE="+X test wayland"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( X wayland )
-	test? ( X wayland )"
+	test? ( X wayland )
+"
 RESTRICT="!test? ( test )"
 
 # dlopen: fontconfig,libglvnd
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/openssl:=
+	dev-libs/xxhash
 	media-libs/fontconfig
 	media-libs/harfbuzz:=
 	media-libs/lcms:2
 	media-libs/libglvnd[X?]
 	media-libs/libpng:=
-	net-libs/librsync:=
 	sys-apps/dbus
 	sys-libs/zlib:=
 	x11-libs/libxkbcommon[X?]
@@ -50,7 +52,8 @@ RDEPEND="
 	~x11-terms/kitty-terminfo-${PV}
 	X? ( x11-libs/libX11 )
 	wayland? ( dev-libs/wayland )
-	!sci-mathematics/kissat"
+	!sci-mathematics/kissat
+"
 DEPEND="
 	${RDEPEND}
 	X? (
@@ -60,14 +63,16 @@ DEPEND="
 		x11-libs/libXinerama
 		x11-libs/libXrandr
 	)
-	wayland? ( dev-libs/wayland-protocols )"
+	wayland? ( dev-libs/wayland-protocols )
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-lang/go-1.20
 	sys-libs/ncurses
 	virtual/pkgconfig
 	test? ( $(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]') )
-	wayland? ( dev-util/wayland-scanner )"
+	wayland? ( dev-util/wayland-scanner )
+"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
 QA_FLAGS_IGNORED="usr/bin/kitten" # written in Go
