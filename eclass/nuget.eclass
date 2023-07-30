@@ -11,6 +11,8 @@
 # @BLURB: common functions and variables for handling .NET NuGets
 # @DESCRIPTION:
 # This eclass is designed to provide support for .NET NuGet's ".nupkg" files.
+# It is used to handle NuGets installation and usage.
+# "dotnet-pkg" and "dotnet-pkg-utils" inherit this eclass.
 #
 # This eclass does not export any phase functions, for that see
 # the "dotnet-pkg" eclass.
@@ -23,16 +25,19 @@ esac
 if [[ -z ${_NUGET_ECLASS} ]] ; then
 _NUGET_ECLASS=1
 
-# @ECLASS_VARIABLE: SYSTEM_NUGETS
+# @ECLASS_VARIABLE: NUGET_SYSTEM_NUGETS
 # @DESCRIPTION:
 # Location of the system NuGet packages directory.
-SYSTEM_NUGETS=/opt/dotnet-nugets
+readonly NUGET_SYSTEM_NUGETS=/opt/dotnet-nugets
 
 # @ECLASS_VARIABLE: NUGET_APIS
 # @DESCRIPTION:
 # NuGet API URLs to use for precompiled NuGet package ".nupkg" downloads.
 # Set or append to this variable post-inherit, but before calling
 # the "nuget_uris" function, preferably just before "SRC_URI".
+#
+# Defaults to an array of one item:
+# "https://api.nuget.org/v3-flatcontainer"
 #
 # Example:
 # @CODE
@@ -47,10 +52,12 @@ NUGET_APIS=( "https://api.nuget.org/v3-flatcontainer" )
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Path from where NuGets will be restored from.
+# This is a special variable that modifies the behavior of "dotnet".
+#
 # Defaults to ${T}/nugets for use with "nuget_uris" but may be set to a custom
-# location to, for example, restore NuGets extracted form a prepared archive.
+# location to, for example, restore NuGets extracted from a prepared archive.
 # Do not set this variable in conjunction with non-empty "NUGETS".
-if [[ "${NUGETS}" ]] || [[ ! "${NUGET_PACKAGES}" ]] ; then
+if [[ -n "${NUGETS}" || -z "${NUGET_PACKAGES}" ]] ; then
 	NUGET_PACKAGES="${T}"/nugets
 fi
 export NUGET_PACKAGES
@@ -140,7 +147,7 @@ nuget_link() {
 	local nuget_name="${1##*/}"
 
 	if [[ -f "${NUGET_PACKAGES}"/${nuget_name} ]] ; then
-		ewarn "${FUNCNAME}: ${nuget_name} already exists"
+		ewarn "${FUNCNAME}: \"${nuget_name}\" already exists, not linking it"
 	else
 		ln -s "${1}" "${NUGET_PACKAGES}"/${nuget_name} || die
 	fi
@@ -162,7 +169,7 @@ nuget_link() {
 # from the "dotnet-pkg" eclass.
 nuget_link-system-nugets() {
 	local runtime_nuget
-	for runtime_nuget in "${EPREFIX}${SYSTEM_NUGETS}"/*.nupkg ; do
+	for runtime_nuget in "${EPREFIX}${NUGET_SYSTEM_NUGETS}"/*.nupkg ; do
 		if [[ -f "${runtime_nuget}" ]] ; then
 			nuget_link "${runtime_nuget}"
 		fi
@@ -181,7 +188,7 @@ nuget_link-system-nugets() {
 # }
 # @CODE
 nuget_donuget() {
-	insinto "${SYSTEM_NUGETS}"
+	insinto "${NUGET_SYSTEM_NUGETS}"
 	doins "${@}"
 }
 
