@@ -23,7 +23,7 @@ REQUIRED_USE="${ROCM_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	dev-util/rocm-cmake:${SLOT}
+	dev-util/rocm-cmake
 	dev-util/Tensile:${SLOT}
 "
 
