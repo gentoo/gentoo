@@ -5,8 +5,7 @@ EAPI=8
 
 inherit cmake systemd tmpfiles toolchain-funcs readme.gentoo-r1 optfeature
 
-MY_PN="openvas"
-MY_DN="openvassd"
+MY_DN="openvas"
 
 DESCRIPTION="Open Vulnerability Assessment Scanner"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/openvas-scanner/"
