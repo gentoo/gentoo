@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 PORTAGE_LIBC="musl"
@@ -6,7 +6,7 @@ ELIBC="musl"
 
 FEATURES="sandbox sfperms strict"
 
-USE="nptl unicode -berkdb -gdbm"
+USE="nptl pic unicode -berkdb -gdbm"
 BOOTSTRAP_USE="${BOOTSTRAP_USE} nptl -berkdb -gdbm"
 
 # All libraries are in /lib or /usr/lib
