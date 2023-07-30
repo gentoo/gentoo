@@ -9,9 +9,7 @@ inherit cmake rocm
 
 DESCRIPTION="Generate pseudo-random and quasi-random numbers"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/rocRAND"
-HIPRAND_COMMIT_HASH=de941a7eb9ede2a862d719cd3ca23234a3692d07
-SRC_URI="https://github.com/ROCmSoftwarePlatform/${PN}/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz
-https://github.com/ROCmSoftwarePlatform/hipRAND/archive/${HIPRAND_COMMIT_HASH}.tar.gz -> hipRAND-${HIPRAND_COMMIT_HASH}.tar.gz"
+SRC_URI="https://github.com/ROCmSoftwarePlatform/${PN}/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64"
@@ -20,8 +18,7 @@ IUSE="benchmark test"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${PN}-5.1.3_stdint-gcc13.patch
-	"${FILESDIR}"/${PN}-5.1.3_no-symlink.patch )
+PATCHES=( "${FILESDIR}"/${PN}-5.4.2_stdint-gcc13.patch )
 
 RDEPEND="dev-util/hip"
 DEPEND="${RDEPEND}
@@ -32,21 +29,6 @@ BDEPEND="dev-util/rocm-cmake
 
 S="${WORKDIR}/rocRAND-rocm-${PV}"
 
-src_prepare() {
-	rmdir hipRAND || die
-	mv -v ../hipRAND-${HIPRAND_COMMIT_HASH} hipRAND || die
-	# change installed include and lib dir, and avoid symlink overwrite the installed headers
-	# avoid setting RPATH
-	sed -r -e "s:(hip|roc)rand/lib:\${CMAKE_INSTALL_LIBDIR}:" \
-		-e "/INSTALL_RPATH/d" -i library/CMakeLists.txt || die
-
-	# remove GIT dependency
-	sed -e "/find_package(Git/,+4d" -i cmake/Dependencies.cmake || die
-
-	eapply_user
-	cmake_src_prepare
-}
-
 src_configure() {
 	addpredict /dev/kfd
 	addpredict /dev/dri/
@@ -54,7 +36,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=On
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
-		-DBUILD_HIPRAND=ON
+		-DBUILD_HIPRAND=OFF
+		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DBUILD_BENCHMARK=$(usex benchmark ON OFF)

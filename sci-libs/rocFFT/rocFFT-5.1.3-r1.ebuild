@@ -108,6 +108,7 @@ src_configure() {
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-Wno-dev
 		-DCMAKE_INSTALL_INCLUDEDIR="include/rocfft/"
+		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
 		-DBUILD_CLIENTS_SELFTEST=$(usex test ON OFF)
 		-DPYTHON3_EXE=${EPYTHON}
