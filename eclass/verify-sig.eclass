@@ -16,7 +16,7 @@
 # the developer's work.
 #
 # To use the eclass, start by packaging the upstream's key
-# as app-crypt/openpgp-keys-*.  Then inherit the eclass, add detached
+# as sec-keys/openpgp-keys-*.  Then inherit the eclass, add detached
 # signatures to SRC_URI and set VERIFY_SIG_OPENPGP_KEY_PATH.  The eclass
 # provides verify-sig USE flag to toggle the verification.
 #
@@ -35,7 +35,7 @@
 # SRC_URI="https://example.org/${P}.tar.gz
 #   verify-sig? ( https://example.org/${P}.tar.gz.sig )"
 # BDEPEND="
-#   verify-sig? ( app-crypt/openpgp-keys-example )"
+#   verify-sig? ( sec-keys/openpgp-keys-example )"
 #
 # VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/example.asc
 # @CODE
