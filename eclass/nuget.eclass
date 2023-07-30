@@ -67,7 +67,8 @@ export NUGET_PACKAGES
 # @PRE_INHERIT
 # @DESCRIPTION:
 # String containing all NuGet packages that need to be downloaded.
-# Used by "nuget_uris".
+#
+# Used by "_nuget_uris".
 #
 # Example:
 # @CODE
@@ -80,30 +81,29 @@ export NUGET_PACKAGES
 #
 # ...
 #
-# SRC_URI+=" $(nuget_uris) "
+# SRC_URI+=" ${NUGET_URIS} "
 # @CODE
 
-# @FUNCTION: nuget_uris
-# @USAGE: <nuget...>
+# @ECLASS_VARIABLE: NUGET_URIS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# List of URIs to put in SRC_URI created from NUGETS variable.
+
+# @FUNCTION: _nuget_set_nuget_uris
+# @USAGE: <nugets>
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
-# If no arguments provided, uses the "NUGETS" variable.
-nuget_uris() {
-	debug-print-function ${FUNCNAME} "${@}"
-
+# Constructs a list of NuGets from its arguments.
+# The value is set as "NUGET_URIS".
+_nuget_set_nuget_uris() {
 	local -r regex='^([a-zA-Z0-9_.-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
-	local nugets
+	local nugets="${1}"
 
-	if (( ${#} != 0 )) ; then
-		nugets="${@}"
-	elif [[ ${NUGETS} ]] ; then
-		nugets="${NUGETS}"
-	else
-		eerror "NUGETS variable is not defined and nothing passed as argument"
-		die "${FUNCNAME}: Can't generate SRC_URI from empty input"
-	fi
+	NUGET_URIS=""
 
-	local nuget name version nuget_api url
+	local nuget
+	local name version
+	local nuget_api url
 	for nuget in ${nugets} ; do
 		[[ ${nuget} =~ ${regex} ]] ||
 			die "${FUNCNAME}: Could not parse given nuget: ${nuget}"
@@ -121,10 +121,13 @@ nuget_uris() {
 					url="${nuget_api}/${name}/${version}/${name}.${version}.nupkg"
 					;;
 			esac
-			echo "${url}"
+
+			NUGET_URIS+="${url} "
 		done
 	done
 }
+
+_nuget_set_nuget_uris "${NUGETS}"
 
 # @FUNCTION: nuget_link
 # @USAGE: <nuget-path>
