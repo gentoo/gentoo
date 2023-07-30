@@ -28,7 +28,7 @@ inherit dotnet-pkg-utils
 
 DESCRIPTION=".NET runtime nugets"
 HOMEPAGE="https://dotnet.microsoft.com/"
-SRC_URI="$(nuget_uris)"
+SRC_URI="${NUGET_URIS}"
 S="${WORKDIR}"
 
 LICENSE="MIT"
