@@ -140,6 +140,10 @@ multilib_src_configure() {
 		# --with-pic forces static libraries to be built as PIC
 		# and without TEXTRELs. musl does not support TEXTRELs: bug #707332
 		$(use pic && echo --with-pic)
+
+		# XXX: In the past, we had PGO support with upstream's 'tuneup' script
+		# per https://gmplib.org/manual/Performance-optimization, but we had
+		# a variety of issues with it: bug #454912, bug #650558, and bug #658688.
 	)
 
 	# Move the wrappers from GMP back into place (may have been destroyed by previous econf run)
