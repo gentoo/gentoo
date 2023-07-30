@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~ia64 ~sparc ~x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
 IUSE="captcha debug full-xml ldap mssql mysql odbc pam postgres redis
-	roster-gw selinux sip sqlite +stun zlib"
+	roster-gw selinux sip sqlite +stun +tools zlib"
 
 RESTRICT="test"
 
@@ -129,6 +129,7 @@ src_configure() {
 		$(use_enable roster-gw roster-gateway-workaround) \
 		$(use_enable sqlite) \
 		$(use_enable sip) \
+		$(use_enable tools) \
 		$(use_enable stun) \
 		$(use_enable zlib)
 
