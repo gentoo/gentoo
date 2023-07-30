@@ -534,9 +534,9 @@ tc-ld-force-bfd() {
 	ewarn "Forcing usage of the BFD linker"
 
 	# Set up LD to point directly to bfd if it's available.
+	local ld=$(tc-getLD "$@")
 	# We need to extract the first word in case there are flags appended
 	# to its value (like multilib), bug #545218.
-	local ld=$(tc-getLD "$@")
 	local bfd_ld="${ld%% *}.bfd"
 	local path_ld=$(type -P "${bfd_ld}" 2>/dev/null)
 	[[ -e ${path_ld} ]] && export LD=${bfd_ld}
