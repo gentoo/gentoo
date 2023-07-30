@@ -50,9 +50,7 @@ BDEPEND="${RDEPEND}
 	dev-python/wheel
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/requests[${PYTHON_USEDEP}]
-		' python3_{10..11} )
+		dev-python/requests[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
 "
@@ -71,16 +69,6 @@ src_compile() {
 	   elisp-compile *.el
 	   popd >/dev/null || die
 	fi
-}
-
-python_test() {
-	if ! has_version -b "dev-python/requests[${PYTHON_USEDEP}]" ; then
-		EPYTEST_DESELECT=(
-			tests/checks/test_all.py::TestNetworkCheck::test_network_enabled
-		)
-	fi
-
-	epytest
 }
 
 python_install_all() {
