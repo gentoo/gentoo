@@ -9,7 +9,7 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 LICENSE="GPL-3+"
-IUSE="cet debuginfod doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla zstd"
+IUSE="cet debuginfod doc gold gprofng hardened multitarget +nls pgo +plugins static-libs test vanilla zstd"
 
 # Variables that can be set here  (ignored for live ebuilds)
 # PATCH_VER          - the patchset version
@@ -258,15 +258,7 @@ src_configure() {
 		# Newer versions (>=2.24) make this an explicit option, bug #497268
 		--enable-install-libiberty
 		# Available from 2.35 on
-		--enable-textrel-check=warning
-
-		# These hardening options are available from 2.39+ but
-		# they unconditionally enable the behaviour even on arches
-		# where e.g. execstacks can't be avoided.
-		# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
-		#--enable-warn-execstack
-		#--enable-warn-rwx-segments
-		#--disable-default-execstack (or is it --enable-default-execstack=no? docs are confusing)
+		--enable-textrel-check=$(usex hardened error warning)
 
 		# Things to think about
 		#--enable-deterministic-archives
@@ -308,6 +300,37 @@ src_configure() {
 		# - binutils-config (and this ebuild?) needs adaptation first (https://bugs.gentoo.org/865113)
 		$(use_enable gprofng)
 	)
+
+	if use amd64 || use arm64 || use x86 ; then
+		# These hardening options are available from 2.39+ but
+		# they unconditionally enable the behaviour even on arches
+		# where e.g. execstacks can't be avoided.
+		# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
+		#
+		# TODO: Get the logic for this fixed upstream so it doesn't
+		# create impossible broken combinations on some arches, like mips.
+		#
+		# TODO: Get the logic for this fixed upstream so --disable-* works
+		# as expected.
+		myconf+=(
+			--enable-warn-execstack=yes
+			--enable-warn-rwx-segments=yes
+		)
+
+		if use hardened ; then
+			myconf+=(
+				--enable-default-execstack=no
+			)
+		fi
+	fi
+
+	if use elibc_musl ; then
+		# Override our earlier setting for musl, as textrels don't
+		# work there at all. See bug #707660.
+		myconf+=(
+			--enable-textrel-check=error
+		)
+	fi
 
 	if ! is_cross ; then
 		myconf+=( $(use_enable pgo pgo-build lto) )
