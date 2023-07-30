@@ -39,8 +39,8 @@ IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets sodium spell sqlite ssl
-	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode webp
-	+xml xmlreader xmlwriter xpm xslt zip zlib"
+	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode
+	valgrind webp +xml xmlreader xmlwriter xpm xslt zip zlib"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 # The Oracle instant client provides its own incompatible ldap library.
@@ -118,6 +118,7 @@ COMMON_DEPEND="
 	tokyocabinet? ( dev-db/tokyocabinet )
 	truetype? ( =media-libs/freetype-2* )
 	unicode? ( dev-libs/oniguruma:= )
+	valgrind? ( dev-util/valgrind )
 	webp? ( media-libs/libwebp:0= )
 	xml? ( >=dev-libs/libxml2-2.9.0 )
 	xpm? ( x11-libs/libXpm )
@@ -385,6 +386,7 @@ src_configure() {
 		$(use_with zip)
 		$(use_with zlib zlib "${EPREFIX}/usr")
 		$(use_enable debug)
+		$(use_with valgrind)
 	)
 
 	# DBA support
