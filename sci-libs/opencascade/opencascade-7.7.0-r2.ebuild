@@ -49,6 +49,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	x11-base/xorg-proto
 	json? ( dev-libs/rapidjson )
 	vtk? ( dev-libs/utfcpp )
 "
