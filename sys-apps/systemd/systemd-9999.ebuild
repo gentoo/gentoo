@@ -182,6 +182,8 @@ QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 pkg_pretend() {
 	if use split-usr; then
+		eerror "Please complete the migration to merged-usr."
+		eerror "https://wiki.gentoo.org/wiki/Merge-usr"
 		die "systemd no longer supports split-usr"
 	fi
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
