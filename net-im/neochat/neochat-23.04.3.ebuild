@@ -49,3 +49,5 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/purpose-${KFMIN}:5
 "
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-libquotient-0.8-{1,2}.patch )
