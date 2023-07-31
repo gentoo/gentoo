@@ -40,6 +40,8 @@ DEPEND="${RDEPEND}
 	websocket? ( dev-cpp/websocketpp )
 "
 
+PATCHES=( "${FILESDIR}/${P}-musl.patch" ) # git master, bug 873403
+
 src_configure() {
 	local mycmakeargs=(
 		-DINDI_BUILD_QT5_CLIENT=OFF
