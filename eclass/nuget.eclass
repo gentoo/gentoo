@@ -143,14 +143,14 @@ _nuget_set_nuget_uris "${NUGETS}"
 # This function is used inside "dotnet-pkg_src_unpack"
 # from the "dotnet-pkg" eclass.
 nuget_link() {
-	[[ ! "${1}" ]] && die "${FUNCNAME}: no nuget path given"
+	[[ -z "${1}" ]] && die "${FUNCNAME}: no nuget path given"
 
 	mkdir -p "${NUGET_PACKAGES}" || die
 
 	local nuget_name="${1##*/}"
 
 	if [[ -f "${NUGET_PACKAGES}"/${nuget_name} ]] ; then
-		ewarn "${FUNCNAME}: \"${nuget_name}\" already exists, not linking it"
+		ewarn "QA Notice: \"${nuget_name}\" already exists, not linking it"
 	else
 		ln -s "${1}" "${NUGET_PACKAGES}"/${nuget_name} || die
 	fi
