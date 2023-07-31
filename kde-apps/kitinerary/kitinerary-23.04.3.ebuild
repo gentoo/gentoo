@@ -18,6 +18,8 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
+RESTRICT="test" # bug 907957, 851000, 739732...
+
 DEPEND="
 	app-text/poppler:=[qt5]
 	dev-libs/libphonenumber
