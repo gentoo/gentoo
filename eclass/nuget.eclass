@@ -96,7 +96,6 @@ export NUGET_PACKAGES
 # Constructs a list of NuGets from its arguments.
 # The value is set as "NUGET_URIS".
 _nuget_set_nuget_uris() {
-	local -r regex='^([a-zA-Z0-9_.-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
 	local nugets="${1}"
 
 	NUGET_URIS=""
@@ -105,11 +104,8 @@ _nuget_set_nuget_uris() {
 	local name version
 	local nuget_api url
 	for nuget in ${nugets} ; do
-		[[ ${nuget} =~ ${regex} ]] ||
-			die "${FUNCNAME}: Could not parse given nuget: ${nuget}"
-
-		name="${BASH_REMATCH[1]}"
-		version="${BASH_REMATCH[2]}"
+		name="${nuget%@*}"
+		version="${nuget##*@}"
 
 		for nuget_api in "${NUGET_APIS[@]}" ; do
 			case "${nuget_api}" in
