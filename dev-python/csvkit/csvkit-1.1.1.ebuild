@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	>=dev-python/agate-1.6.1[${PYTHON_USEDEP}]

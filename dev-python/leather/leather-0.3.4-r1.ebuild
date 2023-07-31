@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	dev-python/cssselect[${PYTHON_USEDEP}]
