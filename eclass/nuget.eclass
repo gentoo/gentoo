@@ -150,7 +150,7 @@ nuget_link() {
 	local nuget_name="${1##*/}"
 
 	if [[ -f "${NUGET_PACKAGES}"/${nuget_name} ]] ; then
-		ewarn "QA Notice: \"${nuget_name}\" already exists, not linking it"
+		eqawarn "QA Notice: \"${nuget_name}\" already exists, not linking it"
 	else
 		ln -s "${1}" "${NUGET_PACKAGES}"/${nuget_name} || die
 	fi
