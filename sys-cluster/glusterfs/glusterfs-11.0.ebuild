@@ -126,7 +126,13 @@ src_install() {
 	local bashcompdir=$(get_bashcompdir)
 	bashcompdir="${bashcompdir}" default
 
-	mv "${ED}/${bashcompdir}/gluster.bash" "${ED}/${bashcompdir}/gluster" || die
+	# XXX: Quick hack to fix bug #911523
+	if [[ -f "${ED}"/${bashcompdir}/gluster.bash ]] ; then
+		mv "${ED}/${bashcompdir}/gluster.bash" "${ED}/${bashcompdir}/gluster" || die
+	else
+		newbashcomp "${ED}"/etc/bash_completion.d/gluster.bash ${PN}
+		rm -rf "${ED}"/etc/bash_completion.d || die
+	fi
 
 	rm \
 		"${ED}"/etc/glusterfs/glusterfs-{georep-,}logrotate \
