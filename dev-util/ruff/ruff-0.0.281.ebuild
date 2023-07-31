@@ -23,10 +23,13 @@ CRATES="
 	anstyle-wincon-1.0.1
 	anyhow-1.0.71
 	argfile-0.1.5
+	ascii-canvas-3.0.0
 	assert_cmd-2.0.11
 	autocfg-1.1.0
 	base64-0.21.2
 	bincode-1.3.3
+	bit-set-0.5.3
+	bit-vec-0.6.3
 	bitflags-1.3.2
 	bitflags-2.3.3
 	bstr-1.6.0
@@ -73,12 +76,15 @@ CRATES="
 	difflib-0.4.0
 	dirs-4.0.0
 	dirs-5.0.1
+	dirs-next-2.0.0
 	dirs-sys-0.3.7
 	dirs-sys-0.4.1
+	dirs-sys-next-0.1.2
 	doc-comment-0.3.3
 	drop_bomb-0.1.5
 	dyn-clone-1.0.11
 	either-1.8.1
+	ena-0.14.2
 	encode_unicode-0.3.6
 	env_logger-0.10.0
 	equivalent-1.0.0
@@ -87,6 +93,7 @@ CRATES="
 	fastrand-1.9.0
 	fern-0.6.2
 	filetime-0.2.21
+	fixedbitset-0.4.2
 	flate2-1.0.26
 	fnv-1.0.7
 	form_urlencoded-1.2.0
@@ -125,6 +132,7 @@ CRATES="
 	js-sys-0.3.64
 	kqueue-1.0.7
 	kqueue-sys-1.0.3
+	lalrpop-0.20.0
 	lalrpop-util-0.20.0
 	lazy_static-1.4.0
 	lexical-parse-float-0.8.5
@@ -135,6 +143,7 @@ CRATES="
 	linked-hash-map-0.5.6
 	linux-raw-sys-0.3.8
 	linux-raw-sys-0.4.3
+	lock_api-0.4.10
 	log-0.4.19
 	matchers-0.1.0
 	matches-0.1.10
@@ -145,9 +154,9 @@ CRATES="
 	miniz_oxide-0.7.1
 	mio-0.8.8
 	natord-1.0.9
+	new_debug_unreachable-1.0.4
 	nextest-workspace-hack-0.1.0
 	nix-0.26.2
-	nohash-hasher-0.2.0
 	nom-7.1.3
 	notify-5.2.0
 	nu-ansi-term-0.46.0
@@ -162,6 +171,8 @@ CRATES="
 	os_str_bytes-6.5.1
 	output_vt100-0.1.3
 	overload-0.1.1
+	parking_lot-0.12.1
+	parking_lot_core-0.9.8
 	paste-1.0.13
 	path-absolutize-3.1.0
 	path-dedot-3.1.0
@@ -172,10 +183,11 @@ CRATES="
 	pep440_rs-0.3.11
 	pep508_rs-0.2.1
 	percent-encoding-2.3.0
+	petgraph-0.6.3
 	phf-0.11.2
 	phf_codegen-0.11.2
 	phf_generator-0.11.2
-	phf_macros-0.11.2
+	phf_shared-0.10.0
 	phf_shared-0.11.2
 	pin-project-lite-0.2.10
 	plotters-0.3.5
@@ -183,6 +195,8 @@ CRATES="
 	plotters-svg-0.3.5
 	pmutil-0.5.3
 	portable-atomic-1.3.3
+	ppv-lite86-0.2.17
+	precomputed-hash-0.1.1
 	predicates-3.0.3
 	predicates-core-1.0.6
 	predicates-tree-1.0.9
@@ -195,6 +209,7 @@ CRATES="
 	quick-xml-0.26.0
 	quote-1.0.29
 	rand-0.8.5
+	rand_chacha-0.3.1
 	rand_core-0.6.4
 	rayon-1.7.0
 	rayon-core-1.11.0
@@ -230,6 +245,7 @@ CRATES="
 	serde_derive_internals-0.26.0
 	serde_json-1.0.100
 	serde_spanned-0.6.3
+	serde_test-1.0.176
 	serde_with-3.0.0
 	serde_with_macros-3.0.0
 	sharded-slab-0.1.4
@@ -240,6 +256,7 @@ CRATES="
 	smallvec-1.10.0
 	spin-0.5.2
 	static_assertions-1.1.0
+	string_cache-0.8.7
 	strsim-0.10.0
 	strum-0.24.1
 	strum_macros-0.24.3
@@ -247,6 +264,7 @@ CRATES="
 	syn-2.0.23
 	syn-ext-0.4.0
 	tempfile-3.6.0
+	term-0.7.0
 	termcolor-1.2.0
 	terminfo-0.8.0
 	termtree-0.4.1
@@ -286,6 +304,7 @@ CRATES="
 	unicode-ident-1.0.10
 	unicode-normalization-0.1.22
 	unicode-width-0.1.10
+	unicode-xid-0.2.4
 	untrusted-0.7.1
 	ureq-2.7.1
 	url-2.4.0
@@ -359,7 +378,7 @@ DESCRIPTION="An extremely fast Python linter, written in Rust"
 HOMEPAGE="https://github.com/charliermarsh/ruff"
 
 SRC_URI="
-	$(cargo_crate_uris)
+	${CARGO_CRATE_URIS}
 	https://github.com/charliermarsh/ruff/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
