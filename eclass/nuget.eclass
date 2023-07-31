@@ -73,8 +73,8 @@ export NUGET_PACKAGES
 # Example:
 # @CODE
 # NUGETS="
-#	ImGui.NET-1.87.2
-#	Config.Net-4.19.0
+#	ImGui.NET@1.87.2
+#	Config.Net@4.19.0
 # "
 #
 # inherit dotnet-pkg
