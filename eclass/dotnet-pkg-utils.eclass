@@ -11,7 +11,9 @@
 # @PROVIDES: nuget
 # @BLURB: common functions and variables for builds using .NET SDK
 # @DESCRIPTION:
-# This eclass is designed to provide common definitions for .NET packages.
+# This eclass is designed to provide required definitions for .NET packages.
+# In ebuilds for software that only utilize the .NET SDK, without special cases,
+# the "dotnet-pkg.eclass" is probably better suited.
 #
 # This eclass does not export any phase functions, for that see
 # the "dotnet-pkg" eclass.
@@ -44,6 +46,8 @@ if [[ ${CATEGORY}/${PN} != dev-dotnet/dotnet-runtime-nugets ]] ; then
 	RDEPEND+=" virtual/dotnet-sdk:${DOTNET_COMPAT} "
 	BDEPEND+=" ${RDEPEND} "
 
+	# Special package "dev-dotnet/csharp-gentoodotnetinfo" used for information
+	# gathering, example for usage see the "dotnet-pkg-utils_info" function.
 	if [[ ${CATEGORY}/${PN} != dev-dotnet/csharp-gentoodotnetinfo ]] ; then
 		BDEPEND+=" dev-dotnet/csharp-gentoodotnetinfo "
 	fi
