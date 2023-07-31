@@ -12,7 +12,7 @@ HOMEPAGE="https://pypi.org/project/howdoi/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 # bug 818580
 RESTRICT="test"
 
