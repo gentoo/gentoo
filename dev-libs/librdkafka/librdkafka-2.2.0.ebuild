@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit python-any-r1 toolchain-funcs
 
@@ -39,7 +39,8 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 
-RDEPEND="!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+RDEPEND="net-misc/curl
+	!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 
 DEPEND="
 	${RDEPEND}
