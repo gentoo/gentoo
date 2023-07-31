@@ -39,7 +39,7 @@ inherit edo multiprocessing nuget
 # In case multiple .NET versions are specified in the project, then the highest
 # should be picked by the maintainer.
 if [[ ${CATEGORY}/${PN} != dev-dotnet/dotnet-runtime-nugets ]] ; then
-	if [[ ! ${DOTNET_COMPAT} ]] ; then
+	if [[ -z ${DOTNET_COMPAT} ]] ; then
 		die "${ECLASS}: DOTNET_COMPAT not set"
 	fi
 
@@ -103,7 +103,7 @@ export UseSharedCompilation=false
 #
 # This variable is set automatically by the "dotnet-pkg-utils_setup" function.
 
-# @VARIABLE: DOTNET_LAUNCHERDEST
+# @VARIABLE: _DOTNET_LAUNCHERDEST
 # @INTERNAL
 # @DESCRIPTION:
 # Sets the path that .NET launchers are installed into by
@@ -113,7 +113,7 @@ export UseSharedCompilation=false
 # variable.
 #
 # Defaults to "/usr/bin".
-DOTNET_LAUNCHERDEST=/usr/bin
+_DOTNET_LAUNCHERDEST=/usr/bin
 
 # @VARIABLE: DOTNET_LAUNCHERVARS
 # @INTERNAL
@@ -155,7 +155,7 @@ dotnet-pkg-utils_get-configuration() {
 dotnet-pkg-utils_get-output() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ! ${DOTNET_CONFIGURATION} ]] &&
+	[[ -z ${DOTNET_CONFIGURATION} ]] &&
 		die "${FUNCNAME}: DOTNET_CONFIGURATION is not set."
 
 	echo "${WORKDIR}"/${1}_net${DOTNET_COMPAT}_${DOTNET_CONFIGURATION}
@@ -195,9 +195,9 @@ dotnet-pkg-utils_setup() {
 	local dotnet_compat_impl
 	local dotnet_compat_impl_path
 	for dotnet_compat_impl in dotnet{,-bin}-${DOTNET_COMPAT} ; do
-		dotnet_compat_impl_path="$(type -P type ${dotnet_compat_impl})"
+		dotnet_compat_impl_path="$(type -P "${dotnet_compat_impl}")"
 
-		if [[ "${dotnet_compat_impl_path}" ]] ; then
+		if [[ -n ${dotnet_compat_impl_path} ]] ; then
 			DOTNET_EXECUTABLE=${dotnet_compat_impl}
 			DOTNET_EXECUTABLE_PATH="${dotnet_compat_impl_path}"
 
@@ -255,7 +255,7 @@ dotnet-pkg-utils_remove-global-json() {
 edotnet() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ! "${DOTNET_EXECUTABLE}" ]] ; then
+	if [[ -z ${DOTNET_EXECUTABLE} ]] ; then
 	   die "${FUNCNAME}: DOTNET_EXECUTABLE not set. Was dotnet-pkg-utils_setup called?"
 	fi
 
@@ -459,13 +459,13 @@ dotnet-pkg-utils_install() {
 # Changes the path .NET launchers are installed into via subsequent
 # "dotnet-pkg-utils_dolauncher" calls.
 #
-# For more info see the "DOTNET_LAUNCHERDEST" variable.
+# For more info see the "_DOTNET_LAUNCHERDEST" variable.
 dotnet-pkg-utils_launcherinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ! "${1}" ]] && die "${FUNCNAME}: no directory specified"
+	[[ -z ${1} ]] && die "${FUNCNAME}: no directory specified"
 
-	DOTNET_LAUNCHERDEST="${1}"
+	_DOTNET_LAUNCHERDEST="${1}"
 }
 
 # @FUNCTION: dotnet-pkg-utils_append_launchervar
@@ -487,7 +487,7 @@ dotnet-pkg-utils_launcherinto() {
 dotnet-pkg-utils_append_launchervar() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ! "${1}" ]] && die "${FUNCNAME}: no variable setting specified"
+	[[ -z ${1} ]] && die "${FUNCNAME}: no variable setting specified"
 
 	DOTNET_LAUNCHERVARS+=( "${1}" )
 }
@@ -522,7 +522,7 @@ dotnet-pkg-utils_dolauncher() {
 		die "${FUNCNAME}: No executable path given."
 	fi
 
-	if [[ ${#} = 0 ]] ; then
+	if [[ ${#} -eq 0 ]] ; then
 		executable_name="$(basename "${executable_path}")"
 	else
 		executable_name="${1}"
@@ -555,8 +555,7 @@ dotnet-pkg-utils_dolauncher() {
 	exec "${EPREFIX}${executable_path}" "\${@}"
 	EOF
 
-	dodir "${DOTNET_LAUNCHERDEST}"
-	exeinto "${DOTNET_LAUNCHERDEST}"
+	exeinto "${_DOTNET_LAUNCHERDEST}"
 	doexe "${executable_target}"
 }
 
@@ -598,8 +597,7 @@ dotnet-pkg-utils_dolauncher_portable() {
 	exec dotnet exec "${EPREFIX}${dll_path}" "\${@}"
 	EOF
 
-	dodir "${DOTNET_LAUNCHERDEST}"
-	exeinto "${DOTNET_LAUNCHERDEST}"
+	exeinto "${_DOTNET_LAUNCHERDEST}"
 	doexe "${executable_target}"
 }
 
