@@ -245,6 +245,6 @@ dotnet-pkg_src_install() {
 	einstalldocs
 }
 
-EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install
-
 fi
+
+EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install
