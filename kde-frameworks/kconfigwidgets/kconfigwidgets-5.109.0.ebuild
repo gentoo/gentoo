@@ -38,3 +38,12 @@ src_configure() {
 
 	ecm_src_configure
 }
+
+src_test() {
+	# bugs: 864250
+	local myctestargs=(
+		-E "(kstandardactiontest)"
+	)
+
+	ecm_src_test
+}
