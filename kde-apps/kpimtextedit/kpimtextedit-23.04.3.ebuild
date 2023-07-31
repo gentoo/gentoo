@@ -34,7 +34,7 @@ RDEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
-	speech? ( dev-libs/ktextaddons:5[speech] )
+	speech? ( dev-libs/ktextaddons:5[speech=] )
 "
 DEPEND="${RDEPEND}
 	test? ( >=kde-frameworks/ktextwidgets-${KFMIN}:5 )
