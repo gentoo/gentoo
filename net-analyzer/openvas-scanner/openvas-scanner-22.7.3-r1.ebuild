@@ -5,12 +5,15 @@ EAPI=8
 
 inherit cmake systemd tmpfiles toolchain-funcs readme.gentoo-r1 optfeature
 
-MY_PN="openvas"
-MY_DN="openvassd"
+MY_DN="openvas"
 
 DESCRIPTION="Open Vulnerability Assessment Scanner"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/openvas-scanner/"
-SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/greenbone/openvas-scanner/commit/c9ba348e1a7fa99a0b41a0e53f251309f2768187.patch
+		-> ${PN}-22.7.3-fix-automagic-dep-on-snmp.patch
+"
 
 SLOT="0"
 LICENSE="GPL-2 GPL-2+"
@@ -50,6 +53,11 @@ BDEPEND="
 	test? ( dev-libs/cgreen )
 "
 
+PATCHES=(
+	# Fix https://bugs.gentoo.org/911114
+	"${DISTDIR}"/${PN}-22.7.3-fix-automagic-dep-on-snmp.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Correct FHS/Gentoo policy paths for 7.0.0
@@ -84,6 +92,7 @@ src_configure() {
 		"-DOPENVAS_FEED_LOCK_PATH=${EPREFIX}/var/lib/openvas/feed-update.lock"
 		"-DOPENVAS_RUN_DIR=/run/ospd"
 		"-DINSTALL_OLD_SYNC_SCRIPT=OFF"
+		"-DBUILD_WITH_NETSNMP=$(usex snmp)"
 	)
 	cmake_src_configure
 }

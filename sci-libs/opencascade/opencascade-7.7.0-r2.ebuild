@@ -49,6 +49,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	x11-base/xorg-proto
 	json? ( dev-libs/rapidjson )
 	vtk? ( dev-libs/utfcpp )
 "
@@ -64,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.7.0-fix-installation-of-cmake-config-files.patch
 	"${FILESDIR}"/${PN}-7.7.0-avoid-pre-stripping-binaries.patch
 	"${FILESDIR}"/${PN}-7.7.0-build-against-vtk-9.2.patch
+	"${FILESDIR}"/${PN}-7.7.0-musl.patch
 )
 
 src_prepare() {

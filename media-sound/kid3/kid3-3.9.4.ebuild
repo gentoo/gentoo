@@ -80,6 +80,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WITH_QT6=OFF
+		-DWITH_QAUDIODECODER=ON # bug 855281
 		-DWITH_CHROMAPRINT=$(usex acoustid)
 		-DWITH_DBUS=$(usex mpris)
 		-DWITH_FLAC=$(usex flac)

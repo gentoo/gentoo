@@ -189,10 +189,11 @@ python_test() {
 	)
 
 	rm -rf qiskit || die
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# Run the Python test suite rather than everything under test/ which
 	# includes the 'randomized' suite. Upstream run that in a separate CI job.
 	# Note: use -p timeout --timeout 500 if debugging hanging tests.
-	epytest -p xdist -n "$(makeopts_jobs)" test/python
+	epytest -p xdist -n "$(makeopts_jobs)" --dist=worksteal test/python
 }
 
 pkg_postinst() {

@@ -24,14 +24,15 @@ RDEPEND="
 	app-crypt/libsecret
 	dev-libs/expat
 	dev-libs/glib
-	sys-libs/glibc
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/wayland
 	media-libs/alsa-lib
 	media-libs/mesa
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
+	sys-libs/glibc
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3

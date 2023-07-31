@@ -25,6 +25,8 @@ RDEPEND="
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
+	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 	)

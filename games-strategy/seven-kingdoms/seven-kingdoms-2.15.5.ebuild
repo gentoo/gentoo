@@ -26,6 +26,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-c++17.patch"
+)
+
 src_unpack() {
 	unpack ${MY_P}.tar.xz
 }

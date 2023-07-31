@@ -68,6 +68,9 @@ python_install() {
 			${PN}.service
 	fi
 
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/ospd-openvas.logrotate" ospd-openvas
+
 	# OSPD OpenVAS attempts to call openvas via sudo as network security
 	# scanning often requires priviliged operations.
 	insinto /etc/sudoers.d
