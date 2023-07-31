@@ -1320,8 +1320,8 @@ toolchain_src_configure() {
 
 	confgcc+=( "$@" ${EXTRA_ECONF} )
 
-	if [[ -n ${build_config_targets} ]] ; then
-		# ./configure --with-build-config='bootstrap-lto bootstrap-cet'
+	if ! is_crosscompile && ! tc-is-cross-compiler && [[ -n ${build_config_targets} ]] ; then
+		# e.g. ./configure --with-build-config='bootstrap-lto bootstrap-cet'
 		confgcc+=( --with-build-config="${build_config_targets[*]}" )
 	fi
 
