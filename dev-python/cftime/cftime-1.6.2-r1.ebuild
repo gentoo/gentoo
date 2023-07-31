@@ -26,12 +26,16 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	<dev-python/cython-3[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.29.20[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}/${P}-cython-3.patch"
+	)
+
 	# remove pytest-cov dep
 	sed -e "/--cov/d" -i setup.cfg || die
 
