@@ -49,13 +49,16 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/acl
-	test? ( >=dev-util/cmocka-1.0.1
+	test? (
+		>=dev-util/cmocka-1.0.1
 		app-benchmarks/dbench
+		dev-libs/xxhash
 		dev-vcs/git
 		virtual/perl-Test-Harness
 		dev-libs/yajl
 		sys-fs/xfsprogs
-		sys-apps/attr )
+		sys-apps/attr
+	)
 "
 BDEPEND="
 	sys-devel/bison
