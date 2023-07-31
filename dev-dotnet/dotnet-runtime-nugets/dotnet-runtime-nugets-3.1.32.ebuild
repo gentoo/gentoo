@@ -5,23 +5,23 @@ EAPI=8
 
 DOTNET_COMPAT=$(ver_cut 1-2)
 NUGETS="
-microsoft.aspnetcore.app.ref-3.1.10
-microsoft.aspnetcore.app.runtime.linux-arm-${PV}
-microsoft.aspnetcore.app.runtime.linux-arm64-${PV}
-microsoft.aspnetcore.app.runtime.linux-musl-arm64-${PV}
-microsoft.aspnetcore.app.runtime.linux-musl-x64-${PV}
-microsoft.aspnetcore.app.runtime.linux-x64-${PV}
-microsoft.netcore.app.host.linux-arm-${PV}
-microsoft.netcore.app.host.linux-arm64-${PV}
-microsoft.netcore.app.host.linux-musl-arm64-${PV}
-microsoft.netcore.app.host.linux-musl-x64-${PV}
-microsoft.netcore.app.host.linux-x64-${PV}
-microsoft.netcore.app.ref-3.1.0
-microsoft.netcore.app.runtime.linux-arm-${PV}
-microsoft.netcore.app.runtime.linux-arm64-${PV}
-microsoft.netcore.app.runtime.linux-musl-arm64-${PV}
-microsoft.netcore.app.runtime.linux-musl-x64-${PV}
-microsoft.netcore.app.runtime.linux-x64-${PV}
+microsoft.aspnetcore.app.ref@3.1.10
+microsoft.aspnetcore.app.runtime.linux-arm@${PV}
+microsoft.aspnetcore.app.runtime.linux-arm64@${PV}
+microsoft.aspnetcore.app.runtime.linux-musl-arm64@${PV}
+microsoft.aspnetcore.app.runtime.linux-musl-x64@${PV}
+microsoft.aspnetcore.app.runtime.linux-x64@${PV}
+microsoft.netcore.app.host.linux-arm@${PV}
+microsoft.netcore.app.host.linux-arm64@${PV}
+microsoft.netcore.app.host.linux-musl-arm64@${PV}
+microsoft.netcore.app.host.linux-musl-x64@${PV}
+microsoft.netcore.app.host.linux-x64@${PV}
+microsoft.netcore.app.ref@3.1.0
+microsoft.netcore.app.runtime.linux-arm@${PV}
+microsoft.netcore.app.runtime.linux-arm64@${PV}
+microsoft.netcore.app.runtime.linux-musl-arm64@${PV}
+microsoft.netcore.app.runtime.linux-musl-x64@${PV}
+microsoft.netcore.app.runtime.linux-x64@${PV}
 "
 
 inherit dotnet-pkg-utils
