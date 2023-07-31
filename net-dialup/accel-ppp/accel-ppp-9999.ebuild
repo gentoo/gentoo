@@ -77,7 +77,7 @@ src_configure() {
 }
 
 src_compile() {
-	local modlist=( ipoe=accel-ppp:"${BUILD_DIR}/drivers/ipoe/driver" vlan_mon=accel-ppp:"${BUILD_DIR}/drivers/vlan_mon/driver" )
+	local modlist=( ipoe=accel-ppp:drivers/ipoe vlan_mon=accel-ppp:drivers/vlan_mon )
 	MODULES_MAKEARGS+=(
 		KDIR="${KV_OUT_DIR}"
 	)
