@@ -123,16 +123,11 @@ src_test() {
 }
 
 src_install() {
-	local bashcompdir=$(get_bashcompdir)
-	bashcompdir="${bashcompdir}" default
+	default
 
-	# XXX: Quick hack to fix bug #911523
-	if [[ -f "${ED}"/${bashcompdir}/gluster.bash ]] ; then
-		mv "${ED}/${bashcompdir}/gluster.bash" "${ED}/${bashcompdir}/gluster" || die
-	else
-		newbashcomp "${ED}"/etc/bash_completion.d/gluster.bash ${PN}
-		rm -rf "${ED}"/etc/bash_completion.d || die
-	fi
+	# Path changes based on whether app-shells/bash-completion is installed, bug #911523
+	rm -rf "${ED}"/etc/bash_completion.d || die
+	newbashcomp extras/command-completion/gluster.bash ${PN}
 
 	rm \
 		"${ED}"/etc/glusterfs/glusterfs-{georep-,}logrotate \
