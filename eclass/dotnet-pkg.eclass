@@ -13,20 +13,24 @@
 # @DESCRIPTION:
 # This eclass is designed to help with building and installing packages that
 # use the .NET SDK.
+# It provides the required phase functions and special variables that make
+# it easier to write ebuilds for .NET packages.
+# If you do not use the exported phase functions, then consider using
+# the "dotnet-pkg-utils.eclass" instead.
 #
 # .NET SDK is a open-source framework from Microsoft, it is a cross-platform
 # successor to .NET Framework.
 #
 # .NET packages require proper inspection before packaging:
 # - the compatible .NET SDK version has to be declared,
-#   this can be done by inspecting the package's "*proj" files,
+#   this can be done by inspecting the package's "*.proj" files,
 #   unlike JAVA, .NET packages tend to lock onto one selected .NET SDK
 #   version, so building with other .NET versions will be mostly unsupported,
 # - nugets, which are similar to JAVA's JARs (package .NET dependencies),
 #   have to be listed using either the "NUGETS" variable or bundled inside
 #   a "prebuilt" archive, in second case also the "NUGET_PACKAGES" variable
 #   has to be explicitly set.
-# - the main project file (.*proj) that builds the project has to be specified
+# - the main project file (*.proj) that builds the project has to be specified
 #   by the "DOTNET_PROJECT" variable.
 
 case ${EAPI} in
