@@ -6,7 +6,7 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <upstream>
+    <remote-id type="gitlab">team-simpy/simpy</remote-id>
     <remote-id type="pypi">simpy</remote-id>
-    <remote-id type="sourceforge">simpy</remote-id>
   </upstream>
 </pkgmetadata>
