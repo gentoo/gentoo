@@ -45,7 +45,9 @@ DEPEND="${RDEPEND}
 		gnome-base/librsvg
 	)
 	X? ( x11-base/xorg-proto )"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-respect-fontconfig.patch
