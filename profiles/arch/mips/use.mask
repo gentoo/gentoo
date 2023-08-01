@@ -105,10 +105,6 @@ clamav
 # Untested on mips, masking for now.
 cdb
 
-# Until someone actually needs fuse, we'll mask it as
-# it holds up stablizing ntfsprogs
-fuse
-
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
 # Modular X: mask for architectures lacking direct rendering
 dri
