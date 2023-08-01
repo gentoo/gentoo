@@ -26,7 +26,7 @@ RDEPEND="gnome-extra/zenity
 	heif? ( >=media-libs/libheif-1.3.2 )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.0:2= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	jpegxl? ( >=media-libs/libjxl-0.3.7 )
+	jpegxl? ( >=media-libs/libjxl-0.3.7:= )
 	lcms? ( media-libs/lcms:2 )
 	lua? ( ${LUA_DEPS} )
 	map? ( media-libs/clutter-gtk
@@ -35,7 +35,7 @@ RDEPEND="gnome-extra/zenity
 	raw? ( >=media-libs/libraw-0.20:= )
 	spell? ( app-text/gspell )
 	tiff? ( media-libs/tiff:= )
-	webp? ( >=media-libs/libwebp-0.6.1:= )
+	webp? ( gui-libs/gdk-pixbuf-loader-webp:= )
 	zip? ( >=app-arch/libarchive-3.4.0 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -54,14 +54,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Fix xxdi.pl support
-	sed -e 's/"$build_dir/> \0/' scripts/generate-ClayRGB1998-icc-h.sh || die
-
 	# Disable doc build - not useful most of the time per upstream
 	sed -e "/subdir('doc')/d" -i meson.build || die
-
-	# Lua version
-	sed -e "s/lua5.[0-9]/${LUA_SINGLE_TARGET/-/.}/" -i meson.build || die
 }
 
 src_configure() {
@@ -83,7 +77,6 @@ src_configure() {
 		$(meson_feature raw libraw)
 		$(meson_feature spell)
 		$(meson_feature tiff)
-		$(meson_feature webp)
 		$(meson_feature zip archive)
 	)
 
