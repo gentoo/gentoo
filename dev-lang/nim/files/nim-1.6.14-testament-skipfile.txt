@@ -1,11 +1,13 @@
 # broken
 tests/assert/tassert_c.nim
 tests/async/tasync_traceback.nim
+tests/coroutines/twait.nim
 tests/errmsgs/t14444.nim
 tests/errmsgs/tcall_with_default_arg.nim
 tests/errmsgs/tproper_stacktrace.nim
 tests/errmsgs/tproper_stacktrace2.nim
 tests/errmsgs/tproper_stacktrace3.nim
+tests/exception/t13115.nim
 tests/js/tmangle.nim
 tests/js/twritestacktrace.nim
 tests/lent/tbasic_lent_check.nim
@@ -21,6 +23,22 @@ tests/stdlib/tstackframes.nim
 tests/stdlib/tstats.nim
 tests/system/talloc.nim
 tests/testament/tshould_not_work.nim
+# broken on musl + llvm
+tests/coroutines/tgc.nim
+tests/coroutines/twait.nim
+tests/misc/t18077.nim
+tests/misc/temit.nim
+tests/nimdoc/t15916.nim
+tests/nimdoc/trunnableexamples.nim
+tests/nimdoc/trunnableexamples2.nim
+tests/objects/tobjcov.nim
+tests/objects/toop1.nim
+tests/stdlib/tencodings.nim
+tests/stdlib/tgetaddrinfo.nim
+tests/stdlib/tstdlib_various.nim
+tests/stdlib/tstreams.nim
+tests/stdlib/ttimes.nim
+tests/vm/tvmmisc.nim
 # require network
 tests/stdlib/thttpclient.nim
 tests/stdlib/tnetconnect.nim
