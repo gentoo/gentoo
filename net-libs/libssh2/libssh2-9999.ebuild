@@ -62,5 +62,4 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" -name '*.a' -delete || die
 }
