@@ -30,6 +30,11 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.1.2 )
 "
 
+PATCHES=(
+	# bugs 877451, 889820
+	"${FILESDIR}/libnice-0.1.19-remove-graphviz-dependency.patch"
+)
+
 src_prepare() {
 	default
 

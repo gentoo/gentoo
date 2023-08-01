@@ -1,0 +1,30 @@
+From 42b2ca76d0b3b044ca3ada05f5200becc61aeedd Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 2 Aug 2023 00:16:29 +0300
+Subject: [PATCH] Remove unnecessary target with unecessary dependency
+
+* The generated file is included in the repository and the source files
+  hasn't been modified since it was added.
+
+https://bugs.gentoo.org/877451
+https://bugs.gentoo.org/889820
+--- a/docs/reference/libnice/meson.build
++++ b/docs/reference/libnice/meson.build
+@@ -63,14 +63,3 @@ gnome.gtkdoc('libnice',
+              ],
+              install: true,
+              check: true)
+-
+-# If we ever need to regenerate this diagram.
+-# Since it’s not expected to change much, let’s not depend on GraphViz to
+-# build the docs (that's also why we don't use find_program('dot') here)
+-run_target('update-states.png',
+-  command: ['dot',
+-            '-Tpng',
+-            '-o', join_paths(meson.current_source_dir(), 'states.png'),
+-            '-Gsize=9.6,2.9!',
+-            '-Gdpi=200',
+-            files('states.gv')])
+-- 
+2.41.0
+
