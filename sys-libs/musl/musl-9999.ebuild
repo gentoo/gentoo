@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit eapi8-dosym flag-o-matic toolchain-funcs prefix
+inherit crossdev flag-o-matic toolchain-funcs prefix
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
 	inherit git-r3
@@ -13,7 +13,7 @@ else
 
 	SRC_URI="https://musl.libc.org/releases/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://musl.libc.org/releases/${P}.tar.gz.asc )"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-musl )"
 fi
@@ -24,14 +24,6 @@ SRC_URI+="
 	https://gitlab.alpinelinux.org/alpine/aports/-/raw/${GETENT_COMMIT}/main/musl/getent.c -> ${GETENT_FILE}
 	https://dev.gentoo.org/~blueness/musl-misc/iconv.c
 "
-
-export CBUILD=${CBUILD:-${CHOST}}
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
-	fi
-fi
 
 DESCRIPTION="Light, fast and simple C library focused on standards-conformance and safety"
 HOMEPAGE="https://musl.libc.org"
@@ -49,19 +41,15 @@ QA_PRESTRIPPED="usr/lib/crtn.o"
 # built as part as crossdev. Also, elide the blockers when in cross-*,
 # as it doesn't make sense to block the normal CBUILD libxcrypt at all
 # there when we're installing into /usr/${CHOST} anyway.
-if [[ ${CATEGORY} == cross-* ]] ; then
+if is_crosspkg ; then
 	IUSE="${IUSE/crypt/+crypt}"
 else
 	RDEPEND="crypt? ( !sys-libs/libxcrypt[system] )"
 	PDEPEND="!crypt? ( sys-libs/libxcrypt[system] )"
 fi
 
-is_crosscompile() {
-	[[ ${CHOST} != ${CTARGET} ]]
-}
-
 just_headers() {
-	use headers-only && is_crosscompile
+	use headers-only && target_is_not_host
 }
 
 pkg_setup() {
@@ -74,7 +62,7 @@ pkg_setup() {
 
 	# fix for #667126, copied from glibc ebuild
 	# make sure host make.conf doesn't pollute us
-	if is_crosscompile || tc-is-cross-compiler ; then
+	if target_is_not_host || tc-is-cross-compiler ; then
 		CHOST=${CTARGET} strip-unsupported-flags
 	fi
 }
@@ -86,7 +74,7 @@ src_unpack() {
 		# We only verify the release; not the additional (fixed, safe) files
 		# we download.
 		# (Seem to get IPC error on verifying in cross?)
-		! is_crosscompile && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
+		! target_is_not_host && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
 	fi
 
 	default
@@ -108,7 +96,7 @@ src_configure() {
 	just_headers && export CC=true
 
 	local sysroot
-	is_crosscompile && sysroot=/usr/${CTARGET}
+	target_is_not_host && sysroot=/usr/${CTARGET}
 	./configure \
 		--target=${CTARGET} \
 		--prefix="${EPREFIX}${sysroot}/usr" \
@@ -121,7 +109,7 @@ src_compile() {
 	just_headers && return 0
 
 	emake
-	if [[ ${CATEGORY} != cross-* ]] ; then
+	if ! is_crosspkg ; then
 		emake -C "${T}" getconf getent iconv \
 			CC="$(tc-getCC)" \
 			CFLAGS="${CFLAGS}" \
@@ -142,9 +130,9 @@ src_install() {
 
 	# musl provides ldd via a sym link to its ld.so
 	local sysroot=
-	is_crosscompile && sysroot=/usr/${CTARGET}
+	target_is_not_host && sysroot=/usr/${CTARGET}
 	local ldso=$(basename "${ED}${sysroot}"/lib/ld-musl-*)
-	dosym8 -r "${sysroot}/lib/${ldso}" "${sysroot}/usr/bin/ldd"
+	dosym -r "${sysroot}/lib/${ldso}" "${sysroot}/usr/bin/ldd"
 
 	if ! use crypt ; then
 		# Allow sys-libs/libxcrypt[system] to provide it instead
@@ -152,7 +140,7 @@ src_install() {
 		rm "${ED}/usr/$(get_libdir)/libcrypt.a" || die
 	fi
 
-	if [[ ${CATEGORY} != cross-* ]] ; then
+	if ! is_crosspkg ; then
 		# Fish out of config:
 		#   ARCH = ...
 		#   SUBARCH = ...
@@ -187,7 +175,7 @@ src_install() {
 		doenvd "${T}"/00musl
 	fi
 
-	if is_crosscompile ; then
+	if target_is_not_host ; then
 		into /usr/${CTARGET}
 		dolib.a libssp_nonshared.a
 	else
@@ -204,7 +192,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	is_crosscompile && return 0
+	target_is_not_host && return 0
 
 	[ -n "${ROOT}" ] && return 0
 
