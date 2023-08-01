@@ -47,6 +47,10 @@ src_configure() {
 		-DPREFER_EXTERNAL_ZLIB=ON
 		-DPREFER_EXTERNAL_ZSTD=ON
 
+		# force regular zlib, zlib-ng support is broken anyway
+		# https://bugs.gentoo.org/911566
+		-DCMAKE_DISABLE_FIND_PACKAGE_ZLIB_NG=ON
+
 		# upstream overrides CMAKE_C_FLAGS, preventing ${CFLAGS} defaults
 		# from applying, https://github.com/Blosc/c-blosc2/issues/433
 		-DCMAKE_C_FLAGS="${CFLAGS}"
