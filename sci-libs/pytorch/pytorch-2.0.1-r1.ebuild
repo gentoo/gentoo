@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_EXT=1
-inherit distutils-r1
+inherit distutils-r1 prefix
 
 DESCRIPTION="Tensors and Dynamic neural networks in Python"
 HOMEPAGE="https://pytorch.org/"
@@ -49,6 +49,8 @@ src_prepare() {
 		tools/setup_helpers/env.py \
 		|| die
 	distutils-r1_src_prepare
+
+	hprefixify tools/setup_helpers/env.py
 }
 
 src_compile() {
