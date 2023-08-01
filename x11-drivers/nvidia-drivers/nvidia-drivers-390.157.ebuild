@@ -73,6 +73,8 @@ BDEPEND="
 QA_PREBUILT="opt/bin/* usr/lib*"
 
 PATCHES=(
+	# note: no plans to add patches for newer kernels here, when the last
+	# working 6.1.x LTS is EOL then 390 will simply be removed from the tree
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.141-fno-common.patch
 	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
