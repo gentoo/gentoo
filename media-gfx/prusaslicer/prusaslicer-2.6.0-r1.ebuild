@@ -53,6 +53,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-libexpat-double-definition-fix.patch"
 	"${FILESDIR}/${P}-disable-noisy-asserts.patch"
+	"${FILESDIR}/${P}-dont-force-link-to-wayland-and-x11.patch"
 )
 
 S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
