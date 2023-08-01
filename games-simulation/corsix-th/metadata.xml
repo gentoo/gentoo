@@ -13,6 +13,7 @@
 	</longdescription>
 	<use>
 		<flag name="midi">Adds support for background MIDI music via SDL_mixer</flag>
+		<flag name="tools">Build tools for decoding RNC files</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">CorsixTH/CorsixTH</remote-id>
