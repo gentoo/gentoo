@@ -63,7 +63,7 @@ inherit dotnet-pkg-utils
 # Example:
 # @CODE
 # SRC_URI="..."
-# S="${S}"/src
+# S="${WORKDIR}/${P}/src"
 #
 # LICENSE="MIT"
 # SLOT="0"
@@ -119,7 +119,7 @@ DOTNET_BUILD_EXTRA_ARGS=()
 #
 # Calls "dotnet-pkg-utils_pkg_setup".
 dotnet-pkg_pkg_setup() {
-	dotnet-pkg-utils_setup
+	[[ ${MERGE_TYPE} != binary ]] && dotnet-pkg-utils_setup
 }
 
 # @FUNCTION: dotnet-pkg_src_unpack
@@ -134,12 +134,12 @@ dotnet-pkg_src_unpack() {
 
 	local archive
 	for archive in ${A} ; do
-		case ${archive} in
+		case "${archive}" in
 			*.nupkg )
-				nuget_link "${DISTDIR}"/${archive}
+				nuget_link "${DISTDIR}/${archive}"
 				;;
 			* )
-				unpack ${archive}
+				unpack "${archive}"
 				;;
 		esac
 	done
@@ -169,7 +169,7 @@ dotnet-pkg_foreach-project() {
 
 	local dotnet_project
 	for dotnet_project in "${DOTNET_PROJECTS[@]}" ; do
-		ebegin "Running \"${@}\" for project: \"$(basename "${dotnet_project}")\""
+		ebegin "Running \"${*}\" for project: \"${dotnet_project##*/}\""
 		"${@}" "${dotnet_project}"
 		eend $? "${FUNCNAME}: failed for project: \"${dotnet_project}\"" || die
 	done
@@ -226,21 +226,29 @@ dotnet-pkg_src_test() {
 # Default "src_install" for the "dotnet-pkg" eclass.
 # Install the package.
 #
-# This is the default package install function for the "dotnet-pkg" eclass.
+# This is the default package install:
+#   - install the compiled .NET package artifacts,
+#	  for more info see "dotnet-pkg-utils_install" and "DOTNET_OUTPUT",
+#   - create launcher from the .NET package directory to "/usr/bin",
+#     phase will detect to choose either executable with capital letter
+#     (common among .NET packages) or not,
+#   - call "einstalldocs".
 #
 # It is very likely that this function is either insufficient or has to be
 # redefined in a ebuild.
 dotnet-pkg_src_install() {
-	# Install the compiled .NET package artifacts,
-	# for more info see "dotnet-pkg-utils_install" and "DOTNET_OUTPUT".
 	dotnet-pkg-utils_install
 
-	# Create launcher from the .NET package directory to "/usr/bin".
-	# For example: /usr/bin/Nake -> /usr/share/nake-3.0.0/Nake
-	dotnet-pkg-utils_dolauncher /usr/share/${P}/${PN^}
+	# /usr/bin/Nake -> /usr/share/nake-3.0.0/Nake
+	if [[ -f "${D}/usr/share/${P}/${PN^}" ]] ; then
+		dotnet-pkg-utils_dolauncher /usr/share/${P}/${PN^}
 
-	# Create a compatibility symlink and also for ease of use from CLI.
-	dosym -r /usr/bin/${PN^} /usr/bin/${PN}
+		# Create a compatibility symlink and also for ease of use from CLI.
+		dosym -r /usr/bin/${PN^} /usr/bin/${PN}
+
+	elif [[ -f "${D}/usr/share/${P}/${PN}" ]] ; then
+		dotnet-pkg-utils_dolauncher /usr/share/${P}/${PN}
+	fi
 
 	einstalldocs
 }
