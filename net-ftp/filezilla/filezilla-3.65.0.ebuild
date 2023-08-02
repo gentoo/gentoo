@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-db/sqlite-3.7
 	>=dev-libs/libfilezilla-0.44.0:=
 	>=dev-libs/pugixml-1.7
+	>=dev-libs/boost-1.76.0:=
 	>=net-libs/gnutls-3.5.7
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	x11-misc/xdg-utils
