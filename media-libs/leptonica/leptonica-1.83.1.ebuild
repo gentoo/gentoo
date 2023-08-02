@@ -11,7 +11,7 @@ SRC_URI="https://github.com/DanBloomberg/${PN}/releases/download/${PV}/${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0/6"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
 IUSE="gif jpeg jpeg2k png static-libs test tiff utils webp zlib"
 # N.B. Tests need some features enabled:
 REQUIRED_USE="test? ( jpeg png tiff zlib )"
