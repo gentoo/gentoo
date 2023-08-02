@@ -11,7 +11,8 @@ media-video/mpv lua_single_target_luajit
 
 # Joonas Niilola <juippis@gentoo.org> (2023-07-21)
 # -system-librnp is currently broken with upstream package.
->=mail-client/thunderbird-115.0 system-librnp
+~mail-client/thunderbird-115.0 system-librnp
+~mail-client/thunderbird-115.0.1 system-librnp
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-08)
 # Uses attr even if disabling is requested, bug 910070
