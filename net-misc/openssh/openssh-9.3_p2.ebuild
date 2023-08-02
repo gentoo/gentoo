@@ -100,6 +100,9 @@ pkg_pretend() {
 	done
 
 	if [[ -n ${enabled_eol_flags} && ${OPENSSH_EOL_USE_FLAGS_I_KNOW_WHAT_I_AM_DOING} != yes ]]; then
+		# Skip for binary packages entirely because of environment saving, bug #907892
+		[[ ${MERGE_TYPE} == binary ]] && return
+
 		ewarn "net-misc/openssh does not support USE='${enabled_eol_flags%,}' anymore."
 		ewarn "The Base system team *STRONGLY* recommends you not rely on this functionality,"
 		ewarn "since these USE flags required third-party patches that often trigger bugs"
