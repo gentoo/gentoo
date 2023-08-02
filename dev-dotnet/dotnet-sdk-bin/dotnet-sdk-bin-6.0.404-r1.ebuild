@@ -27,7 +27,7 @@ SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~arm ~arm64"
-RESTRICT+=" splitdebug "
+RESTRICT="splitdebug"
 
 RDEPEND="
 	app-crypt/mit-krb5:0/0
