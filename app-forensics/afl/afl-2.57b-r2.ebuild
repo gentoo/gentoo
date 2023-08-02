@@ -1,12 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
 # See https://github.com/google/AFL/pull/117
-PATCHES=( "${FILESDIR}/${P}-install-readmemd.diff" )
+PATCHES=(
+	"${FILESDIR}/${P}-install-readmemd.diff"
+	"${FILESDIR}/${P}-implicit-int-clang16.patch"
+)
 
 DESCRIPTION="american fuzzy lop - compile-time instrumentation fuzzer"
 HOMEPAGE="https://lcamtuf.coredump.cx/afl/"
