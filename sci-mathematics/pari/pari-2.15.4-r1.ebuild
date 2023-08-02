@@ -16,6 +16,7 @@ LICENSE="GPL-2"
 SLOT="0/8"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="data doc examples fltk gmp test threads X"
+REQUIRED_USE="fltk? ( !X )" # mutually exclusive plot implementations
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -31,6 +32,9 @@ DEPEND="
 	X? ( x11-libs/libX11:0= )"
 RDEPEND="${DEPEND}"
 
+# Both of these should be obsolete in the next version. I've sent the
+# fltk CXXFLAGS bit upstream, and using --graphic=<foo> hopefully works
+# around the automagic parts.
 PATCHES=(
 	"${FILESDIR}/${PN}"-2.9.4-fltk-detection.patch
 	"${FILESDIR}/${PN}"-2.11.2-no-automagic.patch
@@ -71,6 +75,13 @@ src_configure() {
 	# expecting a compiler driver. See bugs 722090 and 871117.
 	# DLLDFLAGS, on the other hand, is used exactly like LDFLAGS would
 	# be in a less-weird build system.
+	#
+	# There's a lot of automagic involved in the graphics detection.  We
+	# first pass --graphic=none, which disables some of it. We then pass
+	# --graphic=fltk (or --graphic=X11) only if USE=fltk (or USE=X) is
+	# set. This is a stronger hint to the build system than --with-fltk
+	# would be, and importantly does not rely on the corresponding but
+	# nonexistent(!) option option for X11.
 	LD="" DLLD="$(tc-getCC)" DLLDFLAGS="${LDFLAGS}" ./Configure \
 		--prefix="${EPREFIX}"/usr \
 		--datadir="${EPREFIX}/usr/share/${PN}" \
@@ -80,9 +91,10 @@ src_configure() {
 		--with-readline="${EPREFIX}"/usr \
 		--with-readline-lib="${EPREFIX}/usr/$(get_libdir)" \
 		--with-ncurses-lib="${EPREFIX}/usr/$(get_libdir)" \
-		$(use_with fltk) \
+		--graphic=none \
+		$(usex X --graphic=X11 "" "" "") \
+		$(usex fltk --graphic=fltk "" "" "") \
 		$(use_with gmp) \
-		--without-qt \
 		$(usex threads "--mt=pthread" "" "" "") \
 		|| die "./Configure failed"
 }
