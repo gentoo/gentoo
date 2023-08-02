@@ -6,7 +6,10 @@ EAPI=7
 inherit multilib toolchain-funcs flag-o-matic
 
 # See https://github.com/google/AFL/pull/117
-PATCHES=( "${FILESDIR}/${P}-install-readmemd.diff" )
+PATCHES=(
+	"${FILESDIR}/${P}-install-readmemd.diff"
+	"${FILESDIR}/${P}-implicit-int-clang16.patch"
+)
 
 DESCRIPTION="american fuzzy lop - compile-time instrumentation fuzzer"
 HOMEPAGE="https://lcamtuf.coredump.cx/afl/"
