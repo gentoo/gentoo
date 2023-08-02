@@ -76,6 +76,10 @@ src_prepare() {
 	if use video_cards_nvidia; then
 		cd "${S}/subprojects/wlroots" || die
 		eapply "${S}/nix/wlroots-nvidia.patch"
+		# https://bugs.gentoo.org/911597
+		# https://github.com/hyprwm/Hyprland/pull/2874
+		# https://github.com/hyprwm/Hyprland/blob/main/nix/wlroots.nix#L54
+		sed -i -e 's/glFlush();/glFinish();/' render/gles2/renderer.c || die
 		cd "${S}" || die
 	fi
 
