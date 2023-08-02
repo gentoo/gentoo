@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: shell-completion.eclass
-# @SUPPORTED_EAPIS: 8
-# @PROVIDES: bash-completion-r1
-# @AUTHOR:
-# Alfred Wingate <parona@protonmail.com>
 # @MAINTAINER:
 # Jonas Frei <freijon@pm.me>
 # Florian Schmaus <flow@gentoo.org>
+# @AUTHOR:
+# Alfred Wingate <parona@protonmail.com>
+# @SUPPORTED_EAPIS: 8
+# @PROVIDES: bash-completion-r1
 # @BLURB: a few quick functions to install various shell completion files
 # @DESCRIPTION:
 # This eclass provides a standardised way to install shell completions
