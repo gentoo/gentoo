@@ -60,9 +60,10 @@ src_configure() {
 }
 
 src_test() {
-	# drkonqi process interferes. bug 702690
+	# DBusTest: drkonqi process interferes. bug 702690
+	# TerminalInterfaceTest: unbelievably flaky, bug 862594 and bug 662756
 	local myctestargs=(
-		-E "(DBusTest)"
+		-E "(DBusTest|TerminalInterfaceTest)"
 	)
 
 	ecm_src_test
