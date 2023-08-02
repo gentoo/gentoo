@@ -24,7 +24,7 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libICE
 	x11-libs/libSM
-	>=xfce-base/libxfce4util-4.17.2:=[introspection?]
+	>=xfce-base/libxfce4util-4.17.2:=[introspection?,vala?]
 	>=xfce-base/xfconf-4.12:=
 	glade? ( dev-util/glade:3.10 )
 	introspection? ( >=dev-libs/gobject-introspection-1.66:= )
