@@ -14,7 +14,7 @@ else
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64"
 fi
-inherit cmake flag-o-matic python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="Paints monochrome images into the waterfall of a receiver"
 HOMEPAGE="https://github.com/drmpeg/gr-paint"
@@ -46,8 +46,6 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-#https://github.com/drmpeg/gr-paint/issues/21
-append-cxxflags -U_GLIBCXX_ASSERTIONS
 
 src_configure() {
 	local mycmakeargs=(
