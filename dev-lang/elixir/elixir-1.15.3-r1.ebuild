@@ -14,8 +14,10 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
+# https://hexdocs.pm/elixir/compatibility-and-deprecations.html#compatibility-between-elixir-and-erlang-otp
 DEPEND="
 	>=dev-lang/erlang-24:0=[ssl]
+	<dev-lang/erlang-27
 "
 # 'mix' tool collides with sci-biology/phylip, bug #537514
 RDEPEND="${DEPEND}
