@@ -50,9 +50,14 @@ src_install() {
 	# Create a magic workloads file, bug #841896
 	local featureband="$(ver_cut 3 | sed "s/[0-9]/0/2g")"
 	local workloads="metadata/workloads/${SDK_SLOT}.${featureband}"
-	{ mkdir -p "${S}/${workloads}" && touch "${S}/${workloads}/userlocal"; } || die
 
-	{ mv "${S}" "${ED}/${dest}" && mkdir "${S}" && fperms 0755 "/${dest}"; } || die
+	mkdir -p "${S}/${workloads}" || die
+	touch "${S}/${workloads}/userlocal" || die
+
+	mv "${S}" "${ED}/${dest}" || die
+	mkdir "${S}" || die
+
+	fperms 0755 "/${dest}"
 	dosym ../../${dest}/dotnet /usr/bin/dotnet-bin-${SDK_SLOT}
 }
 
