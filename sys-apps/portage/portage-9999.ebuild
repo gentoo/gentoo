@@ -34,7 +34,9 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
-	python_targets_python3_12? ( dev-python/setuptools[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' python3_12)
 	test? ( dev-vcs/git )
 "
 DEPEND="
