@@ -11,9 +11,9 @@ SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
-IUSE=""
+IUSE="accountsservice"
 
-RDEPEND="
+DEPEND="
 	virtual/libintl
 	x11-libs/gtk+:3
 	xfce-base/exo:=
@@ -21,9 +21,12 @@ RDEPEND="
 	xfce-base/libxfce4ui:=
 	xfce-base/libxfce4util:=
 	xfce-base/xfce4-panel:=
+	accountsservice? (
+		sys-apps/accountsservice
+	)
 "
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	${DEPEND}
 "
 BDEPEND="
 	sys-devel/gettext
@@ -39,6 +42,7 @@ src_configure() {
 		-DENABLE_LINKER_OPTIMIZED_HASH_TABLES=OFF
 		-DENABLE_DEVELOPER_MODE=OFF
 		-DENABLE_LINK_TIME_OPTIMIZATION=OFF
+		-DENABLE_ACCOUNTSSERVICE=$(usex accountsservice)
 	)
 
 	cmake_src_configure

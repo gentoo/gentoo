@@ -37,4 +37,9 @@
 		<changelog>https://gottcode.org/xfce4-whiskermenu-plugin/#releasenotes</changelog>
 		<remote-id type="github">gottcode/xfce4-whiskermenu-plugin</remote-id>
 	</upstream>
+	<use>
+		<flag name="accountsservice">
+			Enable support for AccountsService.
+		</flag>
+	</use>
 </pkgmetadata>
