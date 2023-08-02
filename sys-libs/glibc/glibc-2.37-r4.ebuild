@@ -187,6 +187,11 @@ XFAIL_NSPAWN_TEST_LIST=(
 	tst-adjtime-time64
 	tst-clock2
 	tst-clock2-time64
+
+	# These fail if --suppress-sync and/or low priority is set
+	tst-sync_file_range
+	tst-sched1
+	test-errno
 )
 
 #
