@@ -31,8 +31,10 @@ RDEPEND="
 	kerberos? ( dev-python/pykerberos[${PYTHON_USEDEP}] )
 "
 BDEPEND="
-	test-full? (
-		>=dev-db/mongodb-2.6.0
+	test? (
+		test-full? (
+			>=dev-db/mongodb-2.6.0
+		)
 	)
 "
 
@@ -40,7 +42,7 @@ distutils_enable_sphinx doc
 distutils_enable_tests unittest
 
 reqcheck() {
-	if use test-full; then
+	if use test && use test-full; then
 		# During the tests, database size reaches 1.5G.
 		local CHECKREQS_DISK_BUILD=1536M
 
