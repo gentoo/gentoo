@@ -1,0 +1,41 @@
+From 46d3ea167e7b6eab24f35354f44822981bc76767 Mon Sep 17 00:00:00 2001
+From: Oleg Hoefling <oleg.hoefling@ionos.com>
+Date: Tue, 23 Aug 2022 15:56:17 +0200
+Subject: [PATCH] add placeholder to each extlinks caption
+
+https://github.com/celery/sphinx_celery/pull/40
+Signed-off-by: Oleg Hoefling <oleg.hoefling@ionos.com>
+---
+ sphinx_celery/conf.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/sphinx_celery/conf.py b/sphinx_celery/conf.py
+index b35bc2b..8a6895b 100644
+--- a/sphinx_celery/conf.py
++++ b/sphinx_celery/conf.py
+@@ -158,20 +158,20 @@
+ 
+     extlinks.setdefault('sha', (
+         'https://github.com/{0}/commit/%s'.format(github_project),
+-        'GitHub SHA@',
++        'GitHub SHA@%s',
+     ))
+     extlinks.setdefault('github_branch', (
+         'https://github.com/{0}/tree/%s'.format(github_project),
+-        'GitHub branch',
++        'GitHub branch %s',
+     ))
+     extlinks.setdefault('github_user', (
+-        'https://github.com/%s/', '@',
++        'https://github.com/%s/', '@%s',
+     ))
+     extlinks.setdefault('pypi', (
+-        'https://pypi.python.org/pypi/%s/', '',
++        'https://pypi.python.org/pypi/%s/', None,
+     ))
+     extlinks.setdefault('wikipedia', (
+-        'https://en.wikipedia.org/wiki/%s', '',
++        'https://en.wikipedia.org/wiki/%s', None,
+     ))
+ 
+     if not canonical_dev_url:

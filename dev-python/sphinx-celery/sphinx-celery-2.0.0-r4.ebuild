@@ -22,3 +22,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-2.0.0[${PYTHON_USEDEP}]
 "
+
+# https://bugs.gentoo.org/show_bug.cgi?id=911637
+PATCHES=( "${FILESDIR}/${P}-extlinks.patch" )
