@@ -1,9 +1,0 @@
-Issues seem(?) to only trigger when gcc13 is combined with musl.
-
-https://bugs.gentoo.org/906363
---- a/thirdparty/vhacd/inc/vhacdManifoldMesh.h
-+++ b/thirdparty/vhacd/inc/vhacdManifoldMesh.h
-@@ -17,2 +17,3 @@
- #define VHACD_MANIFOLD_MESH_H
-+#include <cstdint>
- #include "vhacdCircularList.h"
