@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+alsa audiofile dbus debug +dialogs doc examples gnome
 libhack modules nls no-container opengl +pango +poll player
 pulseaudio select +sndfile sound +themes xcomposite +xft xi2
