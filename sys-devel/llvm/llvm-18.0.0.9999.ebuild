@@ -287,8 +287,8 @@ get_distribution_components() {
 			llvm-rc
 			llvm-readelf
 			llvm-readobj
+			llvm-readtapi
 			llvm-reduce
-			llvm-remark-size-diff
 			llvm-remarkutil
 			llvm-rtdyld
 			llvm-sim
@@ -298,7 +298,6 @@ get_distribution_components() {
 			llvm-strings
 			llvm-strip
 			llvm-symbolizer
-			llvm-tapi-diff
 			llvm-tli-checker
 			llvm-undname
 			llvm-windres
