@@ -1,0 +1,21 @@
+Bug: https://bugs.gentoo.org/894448
+--- a/netifaces.c
++++ b/netifaces.c
+@@ -370,7 +370,7 @@ string_from_sockaddr (struct sockaddr *addr,
+ 
+   failure = getnameinfo (gniaddr, gnilen,
+                          buffer, buflen,
+-                         NULL, 0,
++                         0, 0,
+                          NI_NUMERICHOST);
+ 
+   if (bigaddr) {
+@@ -1805,7 +1805,7 @@ gateways (PyObject *self)
+         sizeof(sanl_from),
+         &iov,
+         1,
+-        NULL,
++        0,
+         0,
+         0
+       };
