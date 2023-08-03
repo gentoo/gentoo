@@ -1,0 +1,39 @@
+https://github.com/p11-glue/p11-kit/commit/d1d4b0ac316a27c739ff91e6c4153f1154e96e5a
+
+From d1d4b0ac316a27c739ff91e6c4153f1154e96e5a Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Thu, 27 Jul 2023 12:18:15 +0800
+Subject: [PATCH] Fix probing of C_GetInterface
+
+`p11_dl_symbol (dl, "C_GetInterface")` uses dlsym() to find
+C_GetInterface in the loaded pkcs11 module.  For legacy (pre-3.0) pkcs11
+modules, C_GetInterface is not defined in the module.  But according to
+the documentation of dlsym():
+
+    The search performed by dlsym() is breadth first through the
+    dependency tree of these shared objects.
+
+So if a pkcs11 module links to libp11-kit.so, the C_GetInterface
+implementation in libp11-kit.so itself will be found.  This
+C_GetInterface will return the metadata of p11-kit-proxy.so, causing
+"Refuse to load the p11-kit-proxy.so as a registered module".
+
+To solve the issue, if p11_dl_symbol() returns the C_GetInterface in
+libp11-kit.so itself, we should ignore it and continue trying
+C_GetFunctionList.
+--- a/p11-kit/modules.c
++++ b/p11-kit/modules.c
+@@ -383,6 +383,12 @@ dlopen_and_get_function_list (Module *mod,
+ 	mod->loaded_module = dl;
+ 
+ 	gi = p11_dl_symbol (dl, "C_GetInterface");
++
++#ifndef OS_WIN32
++	if (gi == C_GetInterface)
++		gi = NULL;
++#endif
++
+ 	if (gi) {
+ 		/* Get the default standard interface */
+ 		rv = gi ((unsigned char *)"PKCS 11", NULL, &interface, 0);
+
