@@ -1,0 +1,28 @@
+--- a/sphinx_celery/conf.py	2019-02-13 13:00:38.000000000 +0100
++++ b/sphinx_celery/conf.py	2023-08-03 17:37:08.528068057 +0200
+@@ -158,20 +158,20 @@
+ 
+     extlinks.setdefault('sha', (
+         'https://github.com/{0}/commit/%s'.format(github_project),
+-        'GitHub SHA@',
++        'GitHub SHA@%s',
+     ))
+     extlinks.setdefault('github_branch', (
+         'https://github.com/{0}/tree/%s'.format(github_project),
+-        'GitHub branch',
++        'GitHub branch %s',
+     ))
+     extlinks.setdefault('github_user', (
+-        'https://github.com/%s/', '@',
++        'https://github.com/%s/', '@%s',
+     ))
+     extlinks.setdefault('pypi', (
+-        'https://pypi.python.org/pypi/%s/', '',
++        'https://pypi.python.org/pypi/%s/', None,
+     ))
+     extlinks.setdefault('wikipedia', (
+-        'https://en.wikipedia.org/wiki/%s', '',
++        'https://en.wikipedia.org/wiki/%s', None,
+     ))
+ 
+     if not canonical_dev_url:
