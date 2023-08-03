@@ -65,7 +65,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-arch/libarchive-3.3.3:=
-	app-crypt/rhash
+	app-crypt/rhash:0=
 	>=dev-libs/expat-2.0.1
 	>=dev-libs/jsoncpp-1.9.2-r2:0=
 	>=dev-libs/libuv-1.10.0:=

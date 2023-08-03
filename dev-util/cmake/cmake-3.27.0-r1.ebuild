@@ -48,7 +48,7 @@ else
 			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt.asc
 		)"
 
-		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
 		BDEPEND="verify-sig? ( sec-keys/openpgp-keys-bradking )"
 	fi
@@ -60,18 +60,19 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="CMake"
 SLOT="0"
-IUSE="${CMAKE_DOCS_USEFLAG} emacs ncurses qt5 test"
+IUSE="${CMAKE_DOCS_USEFLAG} dap emacs ncurses qt5 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-arch/libarchive-3.3.3:=
-	app-crypt/rhash
+	app-crypt/rhash:0=
 	>=dev-libs/expat-2.0.1
 	>=dev-libs/jsoncpp-1.9.2-r2:0=
 	>=dev-libs/libuv-1.10.0:=
 	>=net-misc/curl-7.21.5[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
+	dap? ( dev-cpp/cppdap )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	ncurses? ( sys-libs/ncurses:0= )
 	qt5? (
@@ -93,23 +94,15 @@ SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
 	# Prefix
-	"${FILESDIR}"/${PN}-3.16.0_rc4-darwin-bundle.patch
-	"${FILESDIR}"/${PN}-3.14.0_rc3-prefix-dirs.patch
-	"${FILESDIR}"/${PN}-3.19.1-darwin-gcc.patch
+	"${FILESDIR}"/${PN}-3.27.0_rc1-0001-Don-t-use-.so-for-modules-on-darwin-macos.-Use-.bund.patch
+	"${FILESDIR}"/${PN}-3.27.0_rc1-0002-Set-some-proper-paths-to-make-cmake-find-our-tools.patch
+	# Misc
+	"${FILESDIR}"/${PN}-3.27.0_rc1-0003-Prefer-pkgconfig-in-FindBLAS.patch
+	"${FILESDIR}"/${PN}-3.27.0_rc1-0004-Ensure-that-the-correct-version-of-Qt-is-always-used.patch
+	"${FILESDIR}"/${PN}-3.27.0_rc1-0005-Respect-Gentoo-s-Python-eclasses.patch
+	"${FILESDIR}"/${PN}-3.27.0_rc1-0006-Filter-out-distcc-warnings-to-avoid-confusing-CMake.patch
 
-	# Handle gentoo packaging in find modules
-	"${FILESDIR}"/${PN}-3.17.0_rc1-FindBLAS.patch
-	# Next patch needs to be reworked
-	#"${FILESDIR}"/${PN}-3.17.0_rc1-FindLAPACK.patch
-	"${FILESDIR}"/${PN}-3.5.2-FindQt4.patch
-
-	# Respect python eclasses
-	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
-	"${FILESDIR}"/${PN}-3.9.0_rc2-FindPythonInterp.patch
-
-	"${FILESDIR}"/${PN}-3.18.0-filter_distcc_warning.patch # bug 691544
-
-	# upstream fixes (can usually be removed with a version bump)
+	# Upstream fixes (can usually be removed with a version bump)
 )
 
 cmake_src_bootstrap() {
@@ -200,6 +193,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_USE_SYSTEM_LIBRARIES=ON
+		-DCMake_ENABLE_DEBUGGER=$(usex dap)
 		-DCMAKE_DOC_DIR=/share/doc/${PF}
 		-DCMAKE_MAN_DIR=/share/man
 		-DCMAKE_DATA_DIR=/share/${PN}
