@@ -68,5 +68,5 @@ src_install() {
 		cmd="qsynth -a oss"
 	fi
 
-	make_desktop_entry "${cmd}" Qsynth qsynth
+	make_desktop_entry "${cmd}" Qsynth org.rncbc.qsynth
 }
