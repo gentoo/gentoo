@@ -193,8 +193,26 @@ python_test() {
 		# deprecation warning
 		pandas/tests/io/pytables/test_retain_attributes.py::test_retain_index_attributes2
 
-		# TODO
+		# Needs 64-bit time_t (TODO: split into 32-bit arch only section)
 		pandas/tests/tseries/offsets/test_year.py::test_add_out_of_pydatetime_range
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BusinessDay]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BusinessHour]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BusinessMonthEnd]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BusinessMonthBegin]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BQuarterEnd]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BQuarterBegin]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-CustomBusinessDay]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-CustomBusinessHour]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-CustomBusinessMonthEnd]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-CustomBusinessMonthBegin]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-MonthEnd]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-MonthBegin]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-SemiMonthBegin]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-SemiMonthEnd]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-QuarterEnd]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-LastWeekOfMonth]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-WeekOfMonth]'
+		'pandas/tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-Week]'
 	)
 
 	local -x LC_ALL=C.UTF-8
