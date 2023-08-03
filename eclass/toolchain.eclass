@@ -614,14 +614,11 @@ toolchain_src_prepare() {
 		done
 	fi
 
-	# >=gcc-4
-	if [[ -x contrib/gcc_update ]] ; then
-		einfo "Touching generated files"
-		./contrib/gcc_update --touch | \
-			while read f ; do
-				einfo "  ${f%%...}"
-			done
-	fi
+	einfo "Touching generated files"
+	./contrib/gcc_update --touch | \
+		while read f ; do
+			einfo "  ${f%%...}"
+		done
 }
 
 do_gcc_gentoo_patches() {
@@ -742,16 +739,10 @@ setup_multilib_osdirnames() {
 	config+="/t-linux64"
 
 	local sed_args=()
-	if tc_version_is_at_least 4.6 ; then
-		sed_args+=( -e 's:$[(]call if_multiarch[^)]*[)]::g' )
-	fi
+	sed_args+=( -e 's:$[(]call if_multiarch[^)]*[)]::g' )
 	if [[ ${SYMLINK_LIB} == "yes" ]] ; then
 		einfo "Updating multilib directories to be: ${libdirs}"
-		if tc_version_is_at_least 4.6.4 || tc_version_is_at_least 4.7 ; then
-			sed_args+=( -e '/^MULTILIB_OSDIRNAMES.*lib32/s:[$][(]if.*):../lib32:' )
-		else
-			sed_args+=( -e "/^MULTILIB_OSDIRNAMES/s:=.*:= ${libdirs}:" )
-		fi
+		sed_args+=( -e '/^MULTILIB_OSDIRNAMES.*lib32/s:[$][(]if.*):../lib32:' )
 	else
 		einfo "Using upstream multilib; disabling lib32 autodetection"
 		sed_args+=( -r -e 's:[$][(]if.*,(.*)[)]:\1:' )
@@ -869,8 +860,7 @@ toolchain_src_configure() {
 			# - After discussing in #gcc, we concluded that =yes,extra,rtl makes
 			#   more sense when a user explicitly requests USE=debug. If rtl is too slow,
 			#   we can change this to yes,extra.
-			local off=$(tc_version_is_at_least 4.0 && echo release || echo no)
-			confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes,extra,rtl ${off})}" )
+			confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes,extra,rtl release)}" )
 		fi
 	fi
 
@@ -1879,7 +1869,7 @@ toolchain_src_install() {
 	if ! is_crosscompile; then
 		# Rename the main go binaries as we don't want to clobber dev-lang/go
 		# when gcc-config runs. bug #567806
-		if tc_version_is_at_least 5 && is_go ; then
+		if is_go ; then
 			for x in go gofmt; do
 				mv ${x} ${x}-${GCCMAJOR} || die
 			done
