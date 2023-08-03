@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit udev linux-info linux-mod-r1
+inherit linux-mod-r1 udev
 
 DESCRIPTION="r8152 driver for Realtek USB FE / GBE / 2.5G Gaming Ethernet Family Controller"
 HOMEPAGE="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-usb-3-0-software"
