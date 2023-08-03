@@ -50,7 +50,7 @@ RDEPEND="
 		!libidn2? ( net-dns/libidn:0= !net-dns/libidn2 )
 		libidn2? ( net-dns/libidn2:= )
 	)
-	quic? ( net-libs/ngtcp2:=[gnutls] )
+	quic? ( >=net-libs/ngtcp2-0.13.1:=[gnutls] )
 	systemd? ( sys-apps/systemd:= )
 	xdp? (
 		 dev-libs/libbpf:=
