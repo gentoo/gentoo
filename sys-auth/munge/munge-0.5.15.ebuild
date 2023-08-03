@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dun/munge/releases/download/${P}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="debug gcrypt static-libs"
 # TODO: still tries to use ${S}?
 RESTRICT="test"
