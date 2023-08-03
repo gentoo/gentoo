@@ -135,6 +135,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.36.0-tests-odr.patch
+	"${FILESDIR}"/${PN}-0.36.0-sub-match-audio.patch
 )
 
 pkg_setup() {
