@@ -10,7 +10,7 @@ SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv x86"
 IUSE="xinerama"
 
 RDEPEND="
