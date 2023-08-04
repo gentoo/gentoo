@@ -9,14 +9,14 @@ PYTHON_COMPAT=( python3_{9..12} pypy3 )
 
 inherit distutils-r1 pypi
 
-TEST_PATCH=psutil-5.9.5-tests-r1.patch
+TEST_PATCH=psutil-5.9.5-tests-r2.patch
 DESCRIPTION="Retrieve information on running processes and system utilization"
 HOMEPAGE="
 	https://github.com/giampaolo/psutil/
 	https://pypi.org/project/psutil/
 "
 SRC_URI+="
-	https://dev.gentoo.org/~mgorny/dist/${TEST_PATCH}.xz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${TEST_PATCH}.xz
 "
 
 LICENSE="BSD"
