@@ -13,7 +13,11 @@ else
 	GLAD_PV=2.0.4
 	SRC_URI="
 		https://code.videolan.org/videolan/libplacebo/-/archive/v${PV}/libplacebo-v${PV}.tar.bz2
-		opengl? ( https://github.com/Dav1dde/glad/archive/refs/tags/v${GLAD_PV}.tar.gz -> ${PN}-glad-${GLAD_PV}.tar.gz )"
+		opengl? (
+			https://github.com/Dav1dde/glad/archive/refs/tags/v${GLAD_PV}.tar.gz
+				-> ${PN}-glad-${GLAD_PV}.tar.gz
+		)
+	"
 	S="${WORKDIR}/${PN}-v${PV}"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
@@ -37,14 +41,17 @@ RDEPEND="
 		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
-	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )"
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
+"
 # vulkan-headers is required even with USE=-vulkan (bug #882065)
 DEPEND="
 	${RDEPEND}
-	dev-util/vulkan-headers"
+	dev-util/vulkan-headers
+"
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
