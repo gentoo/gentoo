@@ -9,10 +9,8 @@ DESCRIPTION="An eselect library to manage executable symlinks"
 HOMEPAGE="https://github.com/projg2/eselect-lib-bin-symlink/"
 EGIT_REPO_URI="https://github.com/projg2/eselect-lib-bin-symlink.git"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="app-admin/eselect"
 
