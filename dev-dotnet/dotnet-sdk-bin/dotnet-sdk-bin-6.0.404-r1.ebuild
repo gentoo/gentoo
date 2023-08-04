@@ -48,7 +48,9 @@ src_install() {
 	dodir "${dest%/*}"
 
 	# Create a magic workloads file, bug #841896
-	local featureband="$(ver_cut 3 | sed "s/[0-9]/0/2g")"
+	local featureband
+	featureband="$(ver_cut 3)"          # e.g. 404
+	featureband="${featureband:0:1}00"  # e.g. 404 -> 400
 	local workloads="metadata/workloads/${SDK_SLOT}.${featureband}"
 
 	mkdir -p "${S}/${workloads}" || die
