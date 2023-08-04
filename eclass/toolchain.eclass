@@ -791,7 +791,18 @@ toolchain_src_configure() {
 		--mandir="${DATAPATH}/man"
 		--infodir="${DATAPATH}/info"
 		--with-gxx-include-dir="${STDCXX_INCDIR}"
+
+		# portage's econf() does not detect presence of --d-s-r
+		# because it greps only top-level ./configure. But not
+		# libiberty's or gcc's configure.
+		--disable-silent-rules
 	)
+
+	if tc_version_is_at_least 10 ; then
+		confgcc+=(
+			--disable-dependency-tracking
+		)
+	fi
 
 	# Stick the python scripts in their own slotted directory (bug #279252)
 	#
