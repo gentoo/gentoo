@@ -152,8 +152,9 @@ src_configure() {
 	local myconf=(
 		# portage's econf() does not detect presence of --d-d-t
 		# because it greps only top-level ./configure. But not
-		# gnulib's or gdb's configure.
+		# libiberty's or gdb's configure.
 		--disable-dependency-tracking
+		--disable-silent-rules
 
 		--with-pkgversion="$(gdb_branding)"
 		--with-bugurl='https://bugs.gentoo.org/'
@@ -233,10 +234,6 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
-src_compile() {
-	emake V=1
-}
-
 src_test() {
 	# Run the unittests (nabbed invocation from Fedora's spec file) at least
 	emake -k -C gdb run GDBFLAGS='-batch -ex "maintenance selftest"'
@@ -250,7 +247,7 @@ src_test() {
 }
 
 src_install() {
-	emake V=1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	find "${ED}"/usr -name libiberty.a -delete || die
 
