@@ -22,7 +22,11 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
+DEPEND="
+	dev-python/pybind11[${PYTHON_USEDEP}]
+"
 BDEPEND="
+	${BDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		dev-python/ipython[${PYTHON_USEDEP}]
