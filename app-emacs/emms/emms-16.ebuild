@@ -21,6 +21,7 @@ BDEPEND="${RDEPEND}"
 # possibilities are so broad that we refrain from setting anything explicitly
 # in DEPEND/RDEPEND.
 
+DOCS=( AUTHORS NEWS README )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
@@ -36,5 +37,6 @@ src_install() {
 
 	doinfo doc/emms.info*
 	doman emms-print-metadata.1
-	dodoc AUTHORS NEWS README THANKGNU
+
+	einstalldocs
 }
