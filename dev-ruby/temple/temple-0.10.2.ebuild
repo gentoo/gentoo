@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/judofyr/temple"
 
 LICENSE="MIT"
 SLOT="0.7"
-KEYWORDS="amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 ruby_add_bdepend "test? (
