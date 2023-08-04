@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-08-04)
+# Stricter behavior which causes some packages to fail, see bug #911721.
+=dev-util/pkgconf-2.0.0
+
 # David Seifert <soap@gentoo.org> (2023-07-29)
 # EAPI 6, fetch restrictions require annoying registration, no other
 # distro packages this, over 10 years old. Removal on 2023-08-28.
