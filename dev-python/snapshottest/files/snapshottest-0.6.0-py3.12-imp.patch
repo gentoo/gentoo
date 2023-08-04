@@ -1,0 +1,41 @@
+https://github.com/syrusakbary/snapshottest/pull/168
+From: MarcellPerger1 <102254594+MarcellPerger1@users.noreply.github.com>
+Date: Tue, 18 Jul 2023 19:28:22 +0100
+Subject: [PATCH] Use importlib instead of imp
+
+--- a/snapshottest/module.py
++++ b/snapshottest/module.py
+@@ -1,7 +1,8 @@
+ import codecs
+ import errno
+ import os
+-import imp
++import sys
++import importlib.util
+ from collections import defaultdict
+ import logging
+
+@@ -17,6 +18,14 @@ def _escape_quotes(text):
+     return text.replace("'", "\\'")
+
+
++def _load_source(module_name, filepath):
++    spec = importlib.util.spec_from_file_location(module_name, filepath)
++    module = importlib.util.module_from_spec(spec)
++    sys.modules[module_name] = module
++    spec.loader.exec_module(module)
++    return module
++
++
+ class SnapshotModule(object):
+     _snapshot_modules = {}
+
+@@ -33,7 +42,7 @@ def __init__(self, module, filepath):
+
+     def load_snapshots(self):
+         try:
+-            source = imp.load_source(self.module, self.filepath)
++            source = _load_source(self.module, self.filepath)
+         # except FileNotFoundError:  # Python 3
+         except (IOError, OSError) as err:
+             if err.errno == errno.ENOENT:
