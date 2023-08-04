@@ -28,7 +28,7 @@ fi
 # BSD for bundled pybind
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
-IUSE="doc examples +ngspice nls openmp"
+IUSE="doc examples nls openmp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -47,15 +47,13 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.8.8:=
 	>=x11-libs/pixman-0.30
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+	>sci-electronics/ngspice-27[shared]
 	sys-libs/zlib
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		~dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}
-	ngspice? (
-		>sci-electronics/ngspice-27[shared]
-	)
 	nls? (
 		sys-devel/gettext
 	)
@@ -72,7 +70,7 @@ if [[ ${PV} == 9999 ]] ; then
 	BDEPEND+=" >=x11-misc/util-macros-1.18"
 fi
 
-CHECKREQS_DISK_BUILD="900M"
+CHECKREQS_DISK_BUILD="1500M"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.0-werror.patch
@@ -101,7 +99,10 @@ src_configure() {
 		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
-		-DKICAD_USE_EGL=ON
+		# wxWidgets does not support runtime selection of backends (GLX vs EGL),
+		# if enabled it can break KiCad depending on what wxGTK was compiled
+		# with, see bug #911120
+		-DKICAD_USE_EGL=OFF
 
 		-DKICAD_BUILD_I18N="$(usex nls)"
 		-DKICAD_I18N_UNIX_STRICT_PATH="$(usex nls)"
@@ -110,8 +111,6 @@ src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
-
-		-DKICAD_SPICE="$(usex ngspice)"
 
 		-DKICAD_INSTALL_DEMOS="$(usex examples)"
 		-DCMAKE_SKIP_RPATH="ON"
