@@ -9,7 +9,7 @@ DESCRIPTION="Console utility and library for computing and verifying file hash s
 HOMEPAGE="http://rhash.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
 
-LICENSE="MIT"
+LICENSE="0BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="debug nls ssl static-libs"
