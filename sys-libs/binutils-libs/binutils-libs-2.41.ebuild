@@ -74,6 +74,11 @@ pkgversion() {
 
 multilib_src_configure() {
 	local myconf=(
+		# portage's econf() does not detect presence of --d-d-t
+		# because it greps only top-level ./configure. But not
+		# libiberty's or bfd's configure.
+		--disable-dependency-tracking
+		--disable-silent-rules
 		--enable-obsolete
 		--enable-shared
 		--enable-threads
@@ -144,12 +149,8 @@ multilib_src_configure() {
 		Makefile || die
 }
 
-multilib_src_compile() {
-	emake V=1
-}
-
 multilib_src_install() {
-	emake V=1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	# Provided by sys-devel/gdb instead
 	rm "${ED}"/usr/share/info/sframe-spec.info || die
