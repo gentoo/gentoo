@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	app-admin/eselect
