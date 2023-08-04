@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 	fi
 fi
 
@@ -101,7 +101,10 @@ src_configure() {
 		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
-		-DKICAD_USE_EGL=ON
+		# wxWidgets does not support runtime selection of backends (GLX vs EGL),
+		# if enabled it can break KiCad depending on what wxGTK was compiled
+		# with, see bug #911120
+		-DKICAD_USE_EGL=OFF
 
 		-DKICAD_BUILD_I18N="$(usex nls)"
 		-DKICAD_I18N_UNIX_STRICT_PATH="$(usex nls)"
