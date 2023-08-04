@@ -28,7 +28,7 @@ REQUIRED_USE="
 	autocrypt?        ( gpgme )"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 # yes, we overdepend on the backend impls here, hopefully one day we can
 # have REQUIRED_USE do what it is made for again. bug #607360
 CDEPEND="
