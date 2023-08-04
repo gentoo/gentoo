@@ -7,14 +7,14 @@ inherit elisp-common toolchain-funcs
 
 DESCRIPTION="Lisp-flavoured Erlang"
 HOMEPAGE="http://lfe.github.io/"
-SRC_URI="https://github.com/rvirding/lfe/archive/v${PV}.zip -> ${P}.zip"
 
 if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
 	EGIT_BRANCH="develop"
 	EGIT_REPO_URI="https://github.com/rvirding/${PN}.git"
 else
-	SRC_URI="https://github.com/rvirding/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/rvirding/${PN}/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -23,7 +23,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc emacs"
 
-BDEPEND="app-arch/unzip"
 RDEPEND="
 	dev-lang/erlang
 "
