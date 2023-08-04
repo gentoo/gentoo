@@ -40,8 +40,7 @@ LICENSE="
 	ZPL BSD BSD-2 ISC LGPL-2+ LGPL-2.1+ MIT public-domain
 "
 SLOT="0"
-# unkeyworded for testing binutils-2.41+gcc-13.2.0
-#KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="+abi_x86_32 custom-cflags debug"
 
 RDEPEND="
