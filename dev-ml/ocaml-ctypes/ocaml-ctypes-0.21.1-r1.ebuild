@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DUNE_PKG_NAME=ctypes
 inherit dune
 
 DESCRIPTION="Library for binding to C libraries using pure OCaml"
@@ -20,6 +21,7 @@ RDEPEND="
 	>=dev-libs/libffi-3.3_rc0:=
 	dev-ml/bigarray-compat:=
 	dev-ml/integers:=
+	dev-ml/dune-configurator:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 dev-ml/lwt )"
