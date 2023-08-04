@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test zlib zstd"
 REQUIRED_USE="test? ( zlib zstd )"
 RESTRICT="!test? ( test )"
@@ -30,6 +30,10 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.3-no-unaligned.patch
+)
 
 src_configure() {
 	# remove bundled libs (just in case)
@@ -46,9 +50,6 @@ src_configure() {
 		-DPREFER_EXTERNAL_LZ4=ON
 		-DPREFER_EXTERNAL_ZLIB=ON
 		-DPREFER_EXTERNAL_ZSTD=ON
-
-		# force regular zlib, at least for  the time being
-		-DCMAKE_DISABLE_FIND_PACKAGE_ZLIB_NG=ON
 
 		# upstream overrides CMAKE_C_FLAGS, preventing ${CFLAGS} defaults
 		# from applying, https://github.com/Blosc/c-blosc2/issues/433
