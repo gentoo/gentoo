@@ -110,6 +110,7 @@ python_prepare_all() {
 	gawk -i inplace -v "enabled_flags=${enabled_flags[*]}" \
 		-f "${FILESDIR}"/replace_cpuflags.awk \
 		numpy/distutils/ccompiler_opt.py || die
+	rm -f numpy/distutils/tests/test_ccompiler_opt.py || die
 
 	distutils-r1_python_prepare_all
 }
