@@ -18,10 +18,6 @@ media-gfx/graphicsmagick jpegxl
 media-gfx/imagemagick jpegxl
 media-libs/imlib2 jpegxl
 
-# Conrad Kostecki <conikost@gentoo.org> (2023-04-23)
-# Needs dev-perl/Math-Int64 which is not keyworded
-dev-perl/IP-Country-DB_File test
-
 # Sam James <sam@gentoo.org> (2023-04-14)
 # Needs dev-python/sympy which is not keyworded
 dev-python/nbval test
