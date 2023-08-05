@@ -1231,6 +1231,55 @@ _python_check_EPYTHON() {
 	fi
 }
 
+# @FUNCTION: _python_check_occluded_packages
+# @INTERNAL
+# @DESCRIPTION:
+# Check if the current directory does not contain any incomplete
+# package sources that would block installed packages from being used
+# (and effectively e.g. make it impossible to load compiled extensions).
+_python_check_occluded_packages() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	# DO NOT ENABLE THIS unless you're going to check for false
+	# positives before filing bugs.
+	[[ ! ${PYTHON_EXPERIMENTAL_QA} ]] && return
+
+	type -P diff &>/dev/null || return
+	[[ -z ${BUILD_DIR} || ! -d ${BUILD_DIR}/install ]] && return
+
+	local sitedir="${BUILD_DIR}/install$(python_get_sitedir)"
+	# avoid unnecessarily checking if we are inside install dir
+	[[ ${sitedir} -ef . ]] && return
+
+	local f fn diff
+	for f in "${sitedir}"/*/; do
+		f=${f%/}
+		fn=${f##*/}
+
+		# skip metadata directories
+		[[ ${fn} == *.dist-info || ${fn} == *.egg-info ]] && continue
+
+		if [[ -d ${fn} ]]; then
+			diff=$(diff -dupr -x "__pycache__" "${fn}" "${sitedir}/${fn}")
+			if [[ -n ${diff} ]]; then
+				eqawarn "The directory ${fn} occludes package installed for ${EPYTHON}."
+				echo
+				echo ">>> Diff:"
+				echo "${diff}"
+				echo "<<< End-of-diff"
+				echo
+
+				if [[ ! ${_PYTHON_WARNED_OCCLUDED_PACKAGES} ]]; then
+					eqawarn "The complete build log includes diffs."
+					eqawarn "For more information on occluded packages, please see:"
+					eqawarn "https://projects.gentoo.org/python/guide/test.html#importerrors-for-c-extensions"
+					_PYTHON_WARNED_OCCLUDED_PACKAGES=1
+				fi
+			fi
+		fi
+	done
+}
+
 # @VARIABLE: EPYTEST_DESELECT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -1261,6 +1310,7 @@ epytest() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	_python_check_EPYTHON
+	_python_check_occluded_packages
 
 	local color
 	case ${NOCOLOR} in
@@ -1345,6 +1395,7 @@ eunittest() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	_python_check_EPYTHON
+	_python_check_occluded_packages
 
 	# unittest fails with "no tests" correctly since Python 3.12
 	local runner=unittest
