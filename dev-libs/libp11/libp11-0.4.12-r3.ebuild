@@ -11,7 +11,7 @@ SRC_URI="https://github.com/OpenSC/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
