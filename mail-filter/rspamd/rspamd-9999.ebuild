@@ -68,9 +68,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/rspamd-3.0-cmake-lua-version.patch"
-	"${FILESDIR}/rspamd-3.2-unbundle-lua.patch"
-	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
+	"${FILESDIR}/rspamd-3.6-cmake-lua-version.patch"
+	"${FILESDIR}/rspamd-3.6-unbundle-lua.patch"
+	"${FILESDIR}/rspamd-3.6-unbundle-snowball.patch"
 )
 
 src_prepare() {
