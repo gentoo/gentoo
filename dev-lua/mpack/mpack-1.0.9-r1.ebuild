@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -102,7 +102,10 @@ lua_src_install() {
 		# we only want the major version (e.g. 5.1)
 		local luamv=${luav:0:3}
 		local file="lua/${luamv}/mpack.so"
-		install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
+		install_name_tool \
+			-id "${EPREFIX}/usr/$(get_libdir)/${file}" \
+			"${ED}/usr/$(get_libdir)/${file}" \
+			|| die "Failed to adjust install_name"
 	fi
 }
 
