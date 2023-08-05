@@ -105,7 +105,10 @@ src_install() {
 		doman ../clamtk-gnome.1
 
 		docinto nautilus
-		dodoc ../clamtk-gnome-${MY_PV_NAUTILUS}/CHANGES ../clamtk-gnome-${MY_PV_NAUTILUS}/DISCLAIMER ../clamtk-gnome-${MY_PV_NAUTILUS}/README.md
+		dodoc \
+			../clamtk-gnome-${MY_PV_NAUTILUS}/CHANGES \
+			../clamtk-gnome-${MY_PV_NAUTILUS}/DISCLAIMER \
+			../clamtk-gnome-${MY_PV_NAUTILUS}/README.md
 	fi
 
 	if use nemo; then
@@ -115,7 +118,10 @@ src_install() {
 		doman ../nemo-sendto-clamtk.1
 
 		docinto nemo
-		dodoc ../nemo-sendto-clamtk-${MY_PV_NEMO}/CHANGES ../nemo-sendto-clamtk-${MY_PV_NEMO}/DISCLAIMER ../nemo-sendto-clamtk-${MY_PV_NEMO}/README.md
+		dodoc \
+			../nemo-sendto-clamtk-${MY_PV_NEMO}/CHANGES \
+			../nemo-sendto-clamtk-${MY_PV_NEMO}/DISCLAIMER \
+			../nemo-sendto-clamtk-${MY_PV_NEMO}/README.md
 	fi
 
 	if use thunar; then
@@ -125,7 +131,10 @@ src_install() {
 		doman ../thunar-sendto-clamtk.1
 
 		docinto thunar
-		dodoc ../thunar-sendto-clamtk-${MY_PV_THUNAR}/CHANGES ../thunar-sendto-clamtk-${MY_PV_THUNAR}/DISCLAIMER ../thunar-sendto-clamtk-${MY_PV_THUNAR}/README.md
+		dodoc \
+			../thunar-sendto-clamtk-${MY_PV_THUNAR}/CHANGES \
+			../thunar-sendto-clamtk-${MY_PV_THUNAR}/DISCLAIMER \
+			../thunar-sendto-clamtk-${MY_PV_THUNAR}/README.md
 	fi
 
 	einstalldocs
