@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A few really fast tools to convert, filter and update OSM data files"
 HOMEPAGE="https://gitlab.com/osm-c-tools"
-SRC_URI="https://gitlab.com/osm-c-tools/${PN}/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/osm-c-tools/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="AGPL-3"
 SLOT="0"
