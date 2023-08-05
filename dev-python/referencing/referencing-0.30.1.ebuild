@@ -25,6 +25,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
+		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/pytest-subtests[${PYTHON_USEDEP}]
 	)
 "
