@@ -332,6 +332,7 @@ dev-perl/Gtk2-Notify
 >=gui-libs/gtk-4.11
 >=gui-libs/libadwaita-1.4_alpha
 >=media-gfx/gnome-font-viewer-45_alpha
+>=net-misc/gnome-connections-45_alpha
 >=net-misc/gnome-remote-desktop-45_alpha
 >=sci-geosciences/gnome-maps-45_alpha
 >=sys-apps/baobab-45_alpha
