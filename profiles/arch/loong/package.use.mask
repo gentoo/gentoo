@@ -5,10 +5,6 @@
 # no keyworded lld
 dev-lang/rust wasm
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-07-31)
-# missing test dependency dev-qt/qtimageformats, bug #911517
-kde-frameworks/kimageformats test
-
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-26)
 # missing llvm:16 and keyworded lld
 dev-lang/spidermonkey clang lto
