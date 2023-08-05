@@ -1,6 +1,10 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-08-05)
+# no keyworded lld
+dev-lang/rust wasm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-07-31)
 # missing test dependency dev-qt/qtimageformats, bug #911517
 kde-frameworks/kimageformats test
