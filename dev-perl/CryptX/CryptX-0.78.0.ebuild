@@ -14,7 +14,7 @@ DESCRIPTION="Self-contained crypto toolkit"
 
 LICENSE="|| ( Artistic GPL-1+ ) public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="minimal"
 
 RDEPEND="
