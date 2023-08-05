@@ -33,5 +33,7 @@ src_prepare() {
 	default
 
 	# Spectrum2 must be lower case
-	sed -e 's/Spectrum2/spectrum2/g' -i transWhat/{buddy,group,registersession,session,transwhat,whatsappbackend}.py || die
+	sed \
+		-e 's/Spectrum2/spectrum2/g'
+		-i transWhat/{buddy,group,registersession,session,transwhat,whatsappbackend}.py || die
 }
