@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-re
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+cairo devil doc examples gtk2 gts guile lasi nls pdf perl postscript python qt5 ruby svg tcl webp X"
 
 REQUIRED_USE="
