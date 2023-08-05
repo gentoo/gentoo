@@ -4,7 +4,7 @@
 # WANG Xuerui <xen0n@gentoo.org> (2023-08-05)
 # 1.71.0 is the first Rust version with loong support, so there's no previous
 # version to bootstrap from
-=dev-lang/rust-1.71.* system-bootstrap
+dev-lang/rust:stable/1.71 system-bootstrap
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit
