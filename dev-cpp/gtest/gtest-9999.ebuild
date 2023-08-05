@@ -53,8 +53,9 @@ multilib_src_configure() {
 		# tests
 		-Dgmock_build_tests=$(usex test)
 		-Dgtest_build_tests=$(usex test)
-		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
+	use test && mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )
+
 	cmake_src_configure
 }
 
