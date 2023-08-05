@@ -18,10 +18,10 @@ IUSE="wayland X"
 DEPEND="
 	dev-libs/glib:2
 	gnome-base/gnome-desktop:4=
-	gui-libs/libadwaita:1
+	>=gui-libs/libadwaita-1.2.0:1
 	media-libs/fontconfig
 	sys-apps/dbus
-	>=sys-apps/xdg-desktop-portal-1.16.0-r1
+	>=sys-apps/xdg-desktop-portal-1.17.0
 	>=sys-apps/xdg-desktop-portal-gtk-1.14.0
 	gui-libs/gtk:4[wayland?,X?]
 	X? ( x11-libs/libX11 )
