@@ -83,7 +83,11 @@ src_install() {
 	dosym ../../../var/log/unifi /usr/lib/unifi/logs
 
 	java-pkg_regjar "${D}"/usr/lib/unifi/lib/*.jar
-	java-pkg_dolauncher unifi --java_args '-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -Djava.library.path=' --jar ace.jar --pwd '/usr/lib/unifi'
+	java-pkg_dolauncher \
+		unifi \
+		--java_args '-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -Djava.library.path=' \
+		--jar ace.jar \
+		--pwd '/usr/lib/unifi'
 
 	if use system-mongodb; then
 		systemd_newunit "${FILESDIR}"/unifi-mongodb.service unifi.service
