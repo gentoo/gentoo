@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/DNSSEC-Tools-dnssec-tools-${PV}/dnssec-tools/validator"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86"
-IUSE="dlv +ipv6 +nsec3 static-libs +threads"
+IUSE="dlv +nsec3 static-libs +threads"
 
 RDEPEND=">=dev-libs/openssl-1.1.0:0="
 DEPEND="${RDEPEND}"
@@ -37,11 +37,11 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_with dlv)
-		$(use_with ipv6)
 		$(use_with nsec3)
 		$(use_enable static-libs static)
 		$(use_with threads)
 		--with-dnsval-conf="${EPREFIX}/etc/dnssec-tools/dnsval.conf"
+		--with-ipv6
 		--with-resolv-conf="${EPREFIX}/etc/dnssec-tools/resolv.conf"
 		--with-root-hints="${EPREFIX}/etc/dnssec-tools/root.hints"
 	)
