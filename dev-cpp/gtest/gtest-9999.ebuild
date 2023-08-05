@@ -38,13 +38,6 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	cmake_src_prepare
-
-	sed -i -e '/set(cxx_base_flags /s:-Werror::' \
-		googletest/cmake/internal_utils.cmake || die "sed failed!"
-}
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GMOCK=ON
