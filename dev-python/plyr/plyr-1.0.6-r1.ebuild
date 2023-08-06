@@ -19,7 +19,8 @@ HOMEPAGE="
 	https://pypi.org/project/plyr/
 "
 SRC_URI="
-	https://github.com/sahib/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz
+	https://github.com/sahib/${MY_PN}/archive/${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
 S="${WORKDIR}/${MY_P}"
 
