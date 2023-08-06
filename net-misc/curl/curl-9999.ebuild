@@ -54,7 +54,7 @@ RDEPEND="
 	http2? ( >=net-libs/nghttp2-1.15.0:=[${MULTILIB_USEDEP}] )
 	idn? ( net-dns/libidn2:=[static-libs?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
+	ldap? ( net-nds/openldap:=[static-libs?,${MULTILIB_USEDEP}] )
 	nghttp3? (
 		net-libs/nghttp3[${MULTILIB_USEDEP}]
 		net-libs/ngtcp2[ssl,${MULTILIB_USEDEP}]
