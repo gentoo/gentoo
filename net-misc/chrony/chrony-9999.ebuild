@@ -6,17 +6,17 @@ EAPI=8
 inherit edo systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
-HOMEPAGE="https://chrony.tuxfamily.org/ https://git.tuxfamily.org/chrony/chrony.git"
+HOMEPAGE="https://chrony-project.org/"
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
+	EGIT_REPO_URI="https://gitlab.com/chrony/chrony.git"
 	inherit git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/mlichvar.asc
 	inherit verify-sig
 
-	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
-	SRC_URI+=" verify-sig? ( https://download.tuxfamily.org/chrony/${P/_/-}-tar-gz-asc.txt -> ${P/_/-}.tar.gz.asc )"
+	SRC_URI="https://chrony-project.org/releases/${P/_/-}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://chrony-project.org/releases/${P/_/-}-tar-gz-asc.txt -> ${P/_/-}.tar.gz.asc )"
 
 	if [[ ${PV} != *_pre* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
