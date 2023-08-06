@@ -328,6 +328,7 @@ dev-ruby/deprecated
 >=gui-apps/gnome-console-45_alpha
 >=gui-libs/gtk-4.11
 >=gui-libs/libadwaita-1.4_alpha
+>=media-gfx/eog-45_alpha
 >=media-gfx/gnome-font-viewer-45_alpha
 >=net-misc/gnome-connections-45_alpha
 >=net-misc/gnome-remote-desktop-45_alpha
