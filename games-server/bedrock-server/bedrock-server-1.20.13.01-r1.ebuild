@@ -18,8 +18,7 @@ RDEPEND="
 	acct-group/bedrock
 	acct-user/bedrock
 	app-misc/dtach
-	dev-libs/openssl:0/1.1
-	sys-libs/zlib
+	net-misc/curl
 "
 
 BDEPEND="app-arch/unzip"
