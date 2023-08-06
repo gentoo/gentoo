@@ -32,3 +32,8 @@ python_prepare_all() {
 
 	distutils-r1_python_prepare_all
 }
+
+python_test() {
+	rm -rf multidict || die
+	epytest
+}
