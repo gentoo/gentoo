@@ -43,3 +43,9 @@ python_configure() {
 		emake cythonize
 	fi
 }
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	rm -rf frozenlist || die
+	epytest
+}
