@@ -56,7 +56,7 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="
 	dev-util/cmake
-	>=virtual/rust-1.57.0
+	>=virtual/rust-1.65.0
 	app-text/scdoc
 "
 
@@ -130,7 +130,7 @@ pkg_postinst() {
 		einfo "Configuration files for ${CATEGORY}/${PN}"
 		einfo "in \$HOME often need to be updated after a version change"
 		einfo ""
-		einfo "An up-to-date sample configuration file always can be found at"
-		einfo "${ROOT}/usr/share/doc/${PF}/alacritty.yml.*"
+		einfo "For information on how to configure alacritty, see the manpage:"
+		einfo "man 5 alacritty"
 	fi
 }
