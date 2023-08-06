@@ -22,11 +22,14 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="+native-extensions"
 
 BDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/cython[${PYTHON_USEDEP}]
-	' 'python*')
+	native-extensions? (
+		$(python_gen_cond_dep '
+			dev-python/cython[${PYTHON_USEDEP}]
+		' 'python*')
+	)
 "
 
 distutils_enable_tests pytest
@@ -36,12 +39,16 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-python_configure() {
+python_compile() {
 	# pypy is not using the C extension
-	if [[ ${EPYTHON} == python* ]]; then
+	if use native-extensions && [[ ${EPYTHON} == python* ]]; then
 		> .install-cython || die
 		emake cythonize
+	else
+		local -x FROZENLIST_NO_EXTENSIONS=1
 	fi
+
+	distutils-r1_python_compile
 }
 
 python_test() {

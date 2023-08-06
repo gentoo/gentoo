@@ -8,4 +8,10 @@
 		<remote-id type="pypi">frozenlist</remote-id>
 		<remote-id type="github">aio-libs/frozenlist</remote-id>
 	</upstream>
+	<use>
+		<flag name="native-extensions">
+			Compile native C extensions (speedups, instead of using Python
+			fallback code).
+		</flag>
+	</use>
 </pkgmetadata>
