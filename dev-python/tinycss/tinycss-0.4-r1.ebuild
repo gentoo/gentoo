@@ -38,6 +38,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	export TINYCSS_SKIP_SPEEDUPS_TESTS=1
-	epytest ${PN}/tests/test_*.py
+	rm -rf tinycss || die
+	epytest --pyargs tinycss
 }
