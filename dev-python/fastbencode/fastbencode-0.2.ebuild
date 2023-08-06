@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Implementation of bencode with optional fast C extensions"
 HOMEPAGE="
-	https://github.com/breezy-team/fastbencode
+	https://github.com/breezy-team/fastbencode/
 	https://pypi.org/project/fastbencode/
 "
 
@@ -24,3 +24,13 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://github.com/breezy-team/fastbencode/commit/23e8cadcc81c6649d96742f235a98bd3047e5d8a
+	"${FILESDIR}"/${P}-py312.patch
+)
+
+python_test() {
+	cd fastbencode/tests || die
+	eunittest
+}

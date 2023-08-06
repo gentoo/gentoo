@@ -199,9 +199,7 @@ src_configure() {
 	# modified GCC to set 3).
 	#
 	# bug #891259
-	if is-flagq '-O[23]' || is-flagq '-Ofast' ; then
-		# We can't unconditionally do this b/c we fortify needs
-		# some level of optimisation.
+	if tc-enables-fortify-source ; then
 		filter-flags -D_FORTIFY_SOURCE=3
 		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 	fi

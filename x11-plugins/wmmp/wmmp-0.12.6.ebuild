@@ -11,7 +11,7 @@ SRC_URI="https://github.com/yogsothoth/wmmp/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="amd64 sparc x86"
 
 RDEPEND="x11-libs/libXext
 	x11-libs/libXpm"

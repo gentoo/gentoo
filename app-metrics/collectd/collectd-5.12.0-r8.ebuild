@@ -55,7 +55,7 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	buddyinfo capabilities ceph cgroups check_uptime chrony connectivity
 	conntrack contextswitch cpu cpufreq cpusleep csv curl curl_json
 	curl_xml dbi df disk dns drbd email entropy ethstat exec fhcount
-	filecount fscache gmond gps gpu_nvidia hddtemp hugepages interface ipc
+	filecount fscache gps gpu_nvidia hddtemp hugepages interface ipc
 	ipmi iptables ipvs irq java lua load logfile logparser log_logstash
 	madwifi match_empty_counter match_hashed match_regex match_timediff
 	match_value mbmon mcelog md memcachec memcached memory modbus mqtt
@@ -104,7 +104,6 @@ COMMON_DEPEND="
 	collectd_plugins_curl_xml?		( net-misc/curl:0= dev-libs/libxml2:2= )
 	collectd_plugins_dbi?			( dev-db/libdbi )
 	collectd_plugins_dns?			( net-libs/libpcap )
-	collectd_plugins_gmond?			( sys-cluster/ganglia )
 	collectd_plugins_gps?			( sci-geosciences/gpsd:= )
 	collectd_plugins_gpu_nvidia?		( dev-util/nvidia-cuda-toolkit )
 	collectd_plugins_ipmi?			( >=sys-libs/openipmi-2.0.16-r1 )
@@ -476,10 +475,18 @@ src_install() {
 
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
 
-	sed -i -e 's:^.*PIDFile     "/var/run/collectd.pid":#PIDFile     "/run/collectd.pid":' "${ED}"/etc/collectd.conf || die
-	sed -i -e 's:^#	SocketFile "/var/run/collectd-unixsock":#	SocketFile "/run/collectd/collectd.socket":' "${ED}"/etc/collectd.conf || die
-	sed -i -e 's:^.*LoadPlugin perl$:# The new, correct way to load the perl plugin -- \n# <LoadPlugin perl>\n#   Globals true\n# </LoadPlugin>:' "${ED}"/etc/collectd.conf || die
-	sed -i -e 's:^.*LoadPlugin python$:# The new, correct way to load the python plugin -- \n# <LoadPlugin python>\n#   Globals true\n# </LoadPlugin>:' "${ED}"/etc/collectd.conf || die
+	sed \
+		-e 's:^.*PIDFile     "/var/run/collectd.pid":#PIDFile     "/run/collectd.pid":' \
+		-i "${ED}"/etc/collectd.conf || die
+	sed \
+		-e 's:^#	SocketFile "/var/run/collectd-unixsock":#	SocketFile "/run/collectd/collectd.socket":' \
+		-i "${ED}"/etc/collectd.conf || die
+	sed \
+		-e 's:^.*LoadPlugin perl$:# The new, correct way to load the perl plugin -- \n# <LoadPlugin perl>\n#   Globals true\n# </LoadPlugin>:' \
+		-i "${ED}"/etc/collectd.conf || die
+	sed \
+		-e 's:^.*LoadPlugin python$:# The new, correct way to load the python plugin -- \n# <LoadPlugin python>\n#   Globals true\n# </LoadPlugin>:' \
+		-i "${ED}"/etc/collectd.conf || die
 }
 
 pkg_postinst() {

@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="The Perl Image-Info Module"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="

@@ -102,7 +102,10 @@ lua_src_install() {
 		# we only want the major version (e.g. 5.1)
 		local luamv=${luav:0:3}
 		local file="lua/${luamv}/mpack.so"
-		install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
+		install_name_tool \
+			-id "${EPREFIX}/usr/$(get_libdir)/${file}" \
+			"${ED}/usr/$(get_libdir)/${file}" \
+			|| die "Failed to adjust install_name"
 	fi
 }
 

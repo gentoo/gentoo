@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
@@ -28,11 +28,14 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	dev-python/wheel[${PYTHON_USEDEP}]
-	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/joblib[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/threadpoolctl[${PYTHON_USEDEP}]
+"
+# <cython-3: https://bugs.gentoo.org/911369
+BDEPEND="
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

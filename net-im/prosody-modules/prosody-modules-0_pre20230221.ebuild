@@ -51,5 +51,6 @@ pkg_postinst() {
 	einfo "'/usr/$(get_libdir)/prosody/community-modules' into 'plugin_paths'"
 	einfo "into your prosody configuration file '/etc/jabber/prosody.cfg.lua.'"
 	einfo ""
-	einfo "Example: plugin_paths = { \"/usr/$(get_libdir)/prosody/modules\", \"/usr/$(get_libdir)/prosody/community-modules\" };"
+	einfo "Example: plugin_paths = { \"/usr/$(get_libdir)/prosody/modules\","
+	einfo "\"/usr/$(get_libdir)/prosody/community-modules\" };"
 }

@@ -30,8 +30,9 @@ RDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 	${DEPEND}
 "
+# <cython-3: https://bugs.gentoo.org/911736
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]

@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
@@ -27,8 +27,9 @@ RDEPEND="
 	dev-python/ply[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
+# <cython-3: https://bugs.gentoo.org/898722
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/tornado[${PYTHON_USEDEP}]

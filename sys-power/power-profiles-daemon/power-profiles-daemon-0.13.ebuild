@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.freedesktop.org/hadess/${PN}/-/archive/${PV}/${P}.tar.bz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong x86"
 
 IUSE="gtk-doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

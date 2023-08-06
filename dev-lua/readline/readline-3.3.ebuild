@@ -66,7 +66,8 @@ src_compile() {
 
 lua_src_test() {
 	pushd "${BUILD_DIR}" || die
-	LUA_CPATH="./?.so;${ESYSROOT}/usr/$(get_libdir)/lua/$(ver_cut 1-2 $(lua_get_version))/?.so" ${ELUA} test/test_rl.lua || die
+	LUA_CPATH="./?.so;${ESYSROOT}/usr/$(get_libdir)/lua/$(ver_cut 1-2 $(lua_get_version))/?.so" \
+		${ELUA} test/test_rl.lua || die
 	popd || die
 }
 

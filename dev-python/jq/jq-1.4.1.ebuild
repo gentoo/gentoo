@@ -25,8 +25,9 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+# cython<3: https://bugs.gentoo.org/898684
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

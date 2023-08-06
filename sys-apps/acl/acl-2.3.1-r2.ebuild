@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic libtool multilib-minimal usr-ldscript
+inherit flag-o-matic libtool multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="Access control list utilities, libraries, and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
@@ -46,9 +46,7 @@ multilib_src_configure() {
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=104964
 	# https://savannah.nongnu.org/bugs/index.php?62519
 	# bug #847280
-	if is-flagq '-O[23]' || is-flagq '-Ofast' ; then
-		# We can't unconditionally do this b/c we fortify needs
-		# some level of optimisation.
+	if tc-enables-fortify-source ; then
 		filter-flags -D_FORTIFY_SOURCE=3
 		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 	fi

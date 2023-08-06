@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
@@ -32,8 +32,10 @@ RDEPEND="
 	${DEPEND}
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
+# <cython-3: https://bugs.gentoo.org/898708
 BDEPEND="
 	${DEPEND}
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.32[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 "

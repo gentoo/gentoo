@@ -121,7 +121,7 @@ BDEPEND="${PYTHON_DEPS}
 			x11-base/xorg-server[xvfb]
 			x11-apps/xhost
 		)
-		wayland? (
+		!X? (
 			>=gui-libs/wlroots-0.15.1-r1[tinywl]
 			x11-misc/xkeyboard-config
 		)
