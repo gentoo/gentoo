@@ -67,7 +67,8 @@ CRATES="
 	windows_i686_gnu@0.36.1
 	windows_i686_msvc@0.36.1
 	windows_x86_64_gnu@0.36.1
-	windows_x86_64_msvc@0.36.1"
+	windows_x86_64_msvc@0.36.1
+"
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{10..12} )
@@ -78,13 +79,15 @@ HOMEPAGE="https://github.com/ArniDagur/python-adblock"
 SRC_URI="
 	https://github.com/ArniDagur/python-adblock/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
-	${CARGO_CRATE_URIS}"
+	${CARGO_CRATE_URIS}
+"
 S="${WORKDIR}/python-${P}"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT MPL-2.0
-	Unicode-DFS-2016" # crates
+	Unicode-DFS-2016
+" # crates
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 
@@ -98,16 +101,18 @@ PATCHES=(
 	"${FILESDIR}"/${P}-maturin-0.14.13.patch
 )
 
-EPYTEST_IGNORE=(
-	# not very meaningful here (e.g. validates changelog),
-	# and needs the deprecated dev-python/toml
-	tests/test_metadata.py
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# unimportant (for us) test that uses the dir that we delete below
+		# so pytest does not try to load it while lacking extensions
+		tests/test_typestubs.py::test_functions_and_methods_exist_in_rust
+	)
+	local EPYTEST_IGNORE=(
+		# not very meaningful here (e.g. validates changelog),
+		# and needs the deprecated dev-python/toml
+		tests/test_metadata.py
+	)
 
-src_compile() {
-	distutils-r1_src_compile
-
-	# prevent pytest from using ./adblock that lack the built module
-	# but the keep directory given tests check ./adblock/adblock.pyi
-	rm adblock/__init__.py || die
+	rm -rf adblock || die
+	epytest
 }
