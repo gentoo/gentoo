@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Library that allows a direct access to a USB device"
-HOMEPAGE="https://www.ftdichip.com/drivers/d2xx-drivers/"
+HOMEPAGE="https://ftdichip.com/drivers/d2xx-drivers/"
 # NOTE: We could include other arm versions here too.
 SRC_URI="
 	amd64? ( https://ftdichip.com/wp-content/uploads/2022/07/${PN}-x86_64-${PV}.tgz -> ${PN}-x86_64-${PV}.tar.gz )
