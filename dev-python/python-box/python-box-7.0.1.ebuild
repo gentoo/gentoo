@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
@@ -38,3 +38,15 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# looks like broken tests
+		# https://github.com/cdgriffith/Box/issues/257
+		test/test_box.py::TestBox::test_box_kwargs_should_not_be_included
+		test/test_box.py::TestBox::test_box_namespace
+	)
+
+	rm -rf box || die
+	epytest
+}
