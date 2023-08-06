@@ -36,3 +36,8 @@ RDEPEND="
 "
 
 distutils_enable_tests unittest
+
+python_test() {
+	rm -rf slixmpp || die
+	eunittest
+}
