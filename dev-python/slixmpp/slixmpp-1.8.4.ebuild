@@ -34,6 +34,9 @@ RDEPEND="
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	${DEPEND}
 "
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests unittest
 
