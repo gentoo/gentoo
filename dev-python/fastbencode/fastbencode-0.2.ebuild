@@ -5,13 +5,13 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Implementation of bencode with optional fast C extensions"
 HOMEPAGE="
-	https://github.com/breezy-team/fastbencode
+	https://github.com/breezy-team/fastbencode/
 	https://pypi.org/project/fastbencode/
 "
 
@@ -24,3 +24,8 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+python_test() {
+	cd fastbencode/tests || die
+	eunittest
+}
