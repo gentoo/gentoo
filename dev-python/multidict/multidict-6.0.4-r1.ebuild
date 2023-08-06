@@ -22,6 +22,7 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+IUSE="+native-extensions"
 
 distutils_enable_sphinx docs --no-autodoc
 distutils_enable_tests pytest
@@ -36,7 +37,7 @@ python_prepare_all() {
 python_compile() {
 	# the C extension segfaults on py3.12
 	# https://github.com/aio-libs/multidict/issues/868
-	if [[ ${EPYTHON} == python3.12 ]]; then
+	if ! use native-extensions || [[ ${EPYTHON} == python3.12 ]]; then
 		local -x MULTIDICT_NO_EXTENSIONS=1
 	fi
 
