@@ -102,9 +102,10 @@ pkg_setup() {
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
 
-	local ERROR_X86_KERNEL_IBT="CONFIG_X86_KERNEL_IBT: is set, should be fine but *if* modules
-	fail to load with ENDBR errors, then try to either unset or pass ibt=off
-	to the kernel (default if no CPU support). Ignore this otherwise." # bug 911142
+	local ERROR_X86_KERNEL_IBT="CONFIG_X86_KERNEL_IBT: is set and, if the CPU supports the feature,
+	this *could* lead to modules load failure with ENDBR errors, or to
+	broken CUDA/NVENC. Please ignore if not having issues, but otherwise
+	try to unset or pass ibt=off to the kernel's command line." #911142
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
