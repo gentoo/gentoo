@@ -33,6 +33,16 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+python_compile() {
+	# the C extension segfaults on py3.12
+	# https://github.com/aio-libs/multidict/issues/868
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		local -x MULTIDICT_NO_EXTENSIONS=1
+	fi
+
+	distutils-r1_python_compile
+}
+
 python_test() {
 	rm -rf multidict || die
 	epytest
