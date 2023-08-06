@@ -1246,14 +1246,13 @@ _python_check_occluded_packages() {
 	# positives before filing bugs.
 	[[ ! ${PYTHON_EXPERIMENTAL_QA} ]] && return
 
-	type -P diff &>/dev/null || return
 	[[ -z ${BUILD_DIR} || ! -d ${BUILD_DIR}/install ]] && return
 
 	local sitedir="${BUILD_DIR}/install$(python_get_sitedir)"
 	# avoid unnecessarily checking if we are inside install dir
 	[[ ${sitedir} -ef . ]] && return
 
-	local f fn diff
+	local f fn diff l
 	for f in "${sitedir}"/*/; do
 		f=${f%/}
 		fn=${f##*/}
@@ -1262,17 +1261,29 @@ _python_check_occluded_packages() {
 		[[ ${fn} == *.dist-info || ${fn} == *.egg-info ]] && continue
 
 		if [[ -d ${fn} ]]; then
-			diff=$(diff -dupr -x "__pycache__" "${fn}" "${sitedir}/${fn}")
+			diff=$(
+				comm -1 -3 <(
+					find "${fn}" -type f -not -path '*/__pycache__/*' |
+						sort
+					assert
+				) <(
+					cd "${sitedir}" &&
+						find "${fn}" -type f -not -path '*/__pycache__/*' |
+						sort
+					assert
+				)
+			)
+
 			if [[ -n ${diff} ]]; then
 				eqawarn "The directory ${fn} occludes package installed for ${EPYTHON}."
-				echo
-				echo ">>> Diff:"
-				echo "${diff}"
-				echo "<<< End-of-diff"
-				echo
+				eqawarn "The installed package includes additional files:"
+				eqawarn
+				while IFS= read -r l; do
+					eqawarn "    ${l}"
+				done <<<"${diff}"
+				eqawarn
 
 				if [[ ! ${_PYTHON_WARNED_OCCLUDED_PACKAGES} ]]; then
-					eqawarn "The complete build log includes diffs."
 					eqawarn "For more information on occluded packages, please see:"
 					eqawarn "https://projects.gentoo.org/python/guide/test.html#importerrors-for-c-extensions"
 					_PYTHON_WARNED_OCCLUDED_PACKAGES=1
