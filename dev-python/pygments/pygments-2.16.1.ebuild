@@ -33,6 +33,9 @@ BDEPEND="
 EPYTEST_DESELECT=(
 	# fuzzing tests, very slow
 	tests/test_basic_api.py::test_random_input
+	# incompatibility with python-ctags3, apparently
+	# https://github.com/pygments/pygments/issues/2486
+	tests/test_html_formatter.py::test_ctags
 )
 
 distutils_enable_tests pytest
