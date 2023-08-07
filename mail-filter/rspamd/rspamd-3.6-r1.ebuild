@@ -72,6 +72,9 @@ PATCHES=(
 	"${FILESDIR}/rspamd-3.6-unbundle-lua.patch"
 	"${FILESDIR}/rspamd-3.6-unbundle-snowball.patch"
 	"${FILESDIR}/rspamd-3.6-fix-tests.patch"
+
+	# see https://github.com/rspamd/rspamd/issues/4564
+	"${FILESDIR}/${P}-memleak-fix.patch"
 )
 
 src_prepare() {
