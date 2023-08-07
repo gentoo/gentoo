@@ -9,12 +9,13 @@ HOMEPAGE="https://jgemu.gitlab.io/"
 LICENSE="metapackage"
 SLOT="1"
 KEYWORDS="~amd64"
-IUSE="+bsnes +cega +gambatte +jollycv +mednafen melonds +mgba +nestopia +prosystem sameboy +vecx"
+IUSE="+bsnes +cega +gambatte +geolith +jollycv +mednafen melonds +mgba +nestopia +prosystem sameboy +vecx"
 
 RDEPEND="
 	bsnes? ( games-emulation/bsnes-jg:1 )
 	cega? ( games-emulation/cega-jg:1 )
 	gambatte? ( games-emulation/gambatte-jg:1 )
+	geolith? ( games-emulation/geolith-jg:1 )
 	jollycv? ( games-emulation/jollycv-jg:1 )
 	mednafen? ( games-emulation/mednafen-jg:1 )
 	melonds? ( games-emulation/melonds-jg:1 )
