@@ -18,7 +18,7 @@ IUSE="X legacy-renderer systemd video_cards_nvidia"
 
 # bundled wlroots has the following dependency string according to included headers.
 # wlroots[drm,gles2-renderer,libinput,x11-backend?,X?]
-# lets enable x11-backend by default
+# enable x11-backend with X and vice versa
 WLROOTS_RDEPEND="
 	>=dev-libs/libinput-1.14.0:=
 	dev-libs/libliftoff
@@ -103,7 +103,7 @@ src_prepare() {
 		cd "${S}" || die
 	fi
 
-	eapply "${FILESDIR}/hyprland-0.28.0-no-wlroots-automagic.patch"
+	eapply "${FILESDIR}/hyprland-0.28.0-no-wlroots-automagic-r1.patch"
 
 	default
 }
