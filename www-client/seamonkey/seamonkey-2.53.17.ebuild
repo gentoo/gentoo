@@ -59,6 +59,8 @@ BDEPEND="
 	dev-lang/perl
 	dev-util/cbindgen
 	>=sys-devel/binutils-2.16.1
+	sys-devel/clang:15
+	sys-devel/llvm:15
 	virtual/pkgconfig
 	virtual/rust
 	amd64? ( >=dev-lang/yasm-1.1 )
