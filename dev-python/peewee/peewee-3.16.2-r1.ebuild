@@ -43,6 +43,8 @@ PATCHES=(
 distutils_enable_sphinx docs
 
 src_compile() {
+	# native-extensions are always disabled on PyPy
+	# https://github.com/coleifer/peewee/blob/master/setup.py#L35..L37
 	if ! use native-extensions; then
 		local -x NO_SQLITE=1
 	fi
