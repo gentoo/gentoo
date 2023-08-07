@@ -1,0 +1,19 @@
+--- a/renpy.py
++++ b/renpy.py
+@@ -30,6 +30,7 @@ from __future__ import print_function, absolute_import
+ import os
+ import sys
+ import warnings
++import sysconfig
+ 
+ # Functions to be customized by distributors. ################################
+ 
+@@ -209,7 +209,7 @@ def path_to_renpy_base():
+     Returns the absolute path to thew Ren'Py base directory.
+     """
+ 
+-    renpy_base = os.path.dirname(os.path.abspath(__file__))
++    renpy_base = sysconfig.get_path('platlib')
+     renpy_base = os.path.abspath(renpy_base)
+ 
+     return renpy_base

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Ren'Py is a free and cross-platform visual novel engine that
+		helps you use words,
+		pictures, and sounds to tell stories with the computer.
+		It`s easy and efficient script language makes it possible for
+		non-programmers to make visual novels,
+		while its Python support allows for complex simulation games.
+	</longdescription>
+	<use>
+		<flag name="development">Install IDE for game developers and an empty game template</flag>
+	</use>
+	<maintainer type="person" proxied="yes">
+		<email>contact@hacktivis.me</email>
+		<name>Haelwenn (lanodan) Monnier</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>pytom@bishoujo.us</email>
+			<name>Tom Rothamel</name>
+		</maintainer>
+		<changelog>http://www.renpy.org/latest.html</changelog>
+		<bugs-to>https://github.com/renpy/renpy/issues</bugs-to>
+		<doc>http://renpy.org/wiki/renpy/doc</doc>
+		<remote-id type="github">renpy/renpy</remote-id>
+	</upstream>
+</pkgmetadata>
