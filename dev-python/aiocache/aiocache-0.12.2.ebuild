@@ -21,6 +21,7 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="
 	test? (
 		dev-db/redis
+		dev-python/marshmallow[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-0.5.5[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		>=dev-python/redis-4.2.0[${PYTHON_USEDEP}]
