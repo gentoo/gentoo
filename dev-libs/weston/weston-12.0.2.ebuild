@@ -93,6 +93,10 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 "
 
+python_check_deps() {
+	python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
+}
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use drm backend-drm)
