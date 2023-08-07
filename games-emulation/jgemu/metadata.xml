@@ -13,6 +13,7 @@
 		<flag name="bsnes">Install bsnes for Super Nintendo</flag>
 		<flag name="cega">Install Cega for SG-1000, Sega Master System and Game Gear</flag>
 		<flag name="gambatte">Install Gambatte for Game Boy and Game Boy Color</flag>
+		<flag name="geolith">Install Geolith for Neo Geo AES/MVS</flag>
 		<flag name="jollycv">Install JollyCV for ColecoVision</flag>
 		<flag name="mednafen">Install Mednafen for Atari Lynx, Nintendo Virtual Boy, NEC PC Engine, NEC SuperGrafx, Sony PlayStation, Sega Saturn, Super Nintendo, Neo Geo Pocket and WonderSwan</flag>
 		<flag name="melonds">Install MelonDS for Nintendo DS</flag>
