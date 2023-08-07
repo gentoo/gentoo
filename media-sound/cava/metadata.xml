@@ -6,6 +6,7 @@
 		<name>Ionen Wolkens</name>
 	</maintainer>
 	<use>
+		<flag name="pipewire">Enable support for the <pkg>media-video/pipewire</pkg> backend</flag>
 		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	</use>
 	<upstream>
