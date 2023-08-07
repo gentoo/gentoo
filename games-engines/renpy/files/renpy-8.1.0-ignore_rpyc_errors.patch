@@ -1,0 +1,23 @@
+Better way would probably be to have renpy not even try to write to system paths in the first place.
+
+13: EACCES (no write permission)
+30: EROFS (read-only filesystem)
+
+diff --git a/renpy/script.py b/renpy/script.py
+index 3e5dae8..8f103c1 100644
+--- a/renpy/script.py
++++ b/renpy/script.py
+@@ -656,6 +656,10 @@ class Script(object):
+                                 rpydigest = hashlib.md5(fullf.read()).digest()
+ 
+                             self.write_rpyc_md5(f, rpydigest)
++                    except OSError as e:
++                        if e.errno not in [13, 30]:
++                            import traceback
++                            traceback.print_exc()
+                     except Exception:
+                         import traceback
+                         traceback.print_exc()
+-- 
+2.37.1
+
