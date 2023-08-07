@@ -5,4 +5,4 @@ products-directory = "/var/lib/notus/products"
 pid-file = "/run/notus-scanner/notus-scanner.pid"
 log-file = "/var/log/gvm/notus-scanner.log"
 log-level = "INFO"
-disable-hashsum-verification = false
+disable-hashsum-verification = true

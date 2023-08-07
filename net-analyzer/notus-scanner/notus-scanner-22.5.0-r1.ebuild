@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_11 )
 DISTUTILS_USE_PEP517=poetry
-inherit distutils-r1 systemd
+inherit distutils-r1 readme.gentoo-r1 systemd
 
 DESCRIPTION="Notus is a vulnerability scanner for creating results from local security checks"
 HOMEPAGE="https://github.com/greenbone/notus-scanner"
@@ -32,6 +32,18 @@ RDEPEND="
 	${DEPEND}
 	app-misc/mosquitto
 "
+FORCE_PRINT_ELOG="yes"
+DOC_CONTENTS="
+For validating the feed content, a GnuPG keychain with the Greenbone Community Feed integrity key needs to be created.
+Please, read here on how to create it:
+https://greenbone.github.io/docs/latest/22.4/source-build/index.html#feed-validation
+https://wiki.gentoo.org/wiki/Greenbone_Vulnerability_Management#Notus_Scanner
+
+To enable feed validation, edit /etc/gvm/${PN}.toml
+and set
+disable-hashsum-verification = false"
+
+DISABLE_AUTOFORMATTING=true
 
 distutils_enable_tests unittest
 
@@ -41,9 +53,11 @@ python_compile() {
 
 python_install() {
 	distutils-r1_python_install
+
 	insinto /etc/gvm
-	doins "${FILESDIR}/${PN}.toml"
-	fowners gvm:gvm "/etc/gvm/${PN}.toml"
+	use prefix || fowners -R gvm:gvm /etc/gvm
+	newins "${FILESDIR}/${PN}.toml" "${PN}.toml"
+	use prefix || fowners gvm:gvm "/etc/gvm/${PN}.toml"
 
 	# Set proper permissions on required files/directories
 	keepdir /var/lib/notus
@@ -54,10 +68,14 @@ python_install() {
 	fi
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
-	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	systemd_dounit config/${PN}.service
 
 	systemd_install_serviced "${FILESDIR}/notus-scanner.service.conf" \
 			${PN}.service
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

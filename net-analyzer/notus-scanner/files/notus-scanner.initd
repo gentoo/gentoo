@@ -1,17 +1,19 @@
 #!/sbin/openrc-run
-# Copyright 2023Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+: ${GVM_USER:=gvm}
+: ${GVM_GROUP:=$(id -ng ${GVM_USER})}
+: ${NOTUS_TIMEOUT:=30}
 
 name="Greenbone Notus Scanner"
 command=/usr/bin/notus-scanner
+command_user="${GVM_USER}:${GVM_GROUP}"
 pidfile="/run/notus-scanner/${RC_SVCNAME}.pid"
-command_args="${NOTUS_SCANNER_OPTIONS} \
-	${NOTUS_SCANNER_MQTT_BROKER_ADDRESS} \
-	${NOTUS_SCANNER_MQTT_BROKER_PORT} \
-	${NOTUS_SCANNER_PRODUCTS_DIRECTORY} \
-	${NOTUS_DISABLE_HASHSUM_VERIFICATION} \
-	--pid-file ${pidfile} \
-	--config /etc/gvm/notus-scanner.toml"
+configfile="/etc/gvm/notus-scanner.toml"
+command_args="--pid-file ${pidfile} \
+	--config ${configfile}"
+retry="${NOTUS_TIMEOUT}"
 
 depend() {
 	after bootmisc
@@ -19,5 +21,6 @@ depend() {
 }
 
 start_pre() {
-        checkpath -d /var/run/notus-scanner
+        checkpath -d --owner ${GVM_USER} /var/run/notus-scanner
 }
+
