@@ -13,8 +13,11 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="self-hosting">Build the feature to self-host a sync server</flag>
+	</use>
 	<upstream>
-		<remote-id type="github">ellie/atuin</remote-id>
-		<bugs-to>https://github.com/ellie/atuin/issues</bugs-to>
+		<remote-id type="github">atuinsh/atuin</remote-id>
+		<bugs-to>https://github.com/atuinsh/atuin/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
