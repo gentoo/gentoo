@@ -127,11 +127,16 @@ my_src_configure() {
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		$(meson_use doc)
 		$(meson_use apidoc)
-		$(meson_use native-extensions)
 		$(meson_use gentoo-dev)
 		$(meson_use ipc)
 		$(meson_use xattr)
 	)
+
+	if use native-extensions && [[ "${EPYTHON}" != "pypy3" ]] ; then
+		emesonargs+=( -Dnative-extensions=true )
+	else
+		emesonargs+=( -Dnative-extensions=false )
+	fi
 
 	if use build; then
 		emesonargs+=( -Drsync-verify=false )
