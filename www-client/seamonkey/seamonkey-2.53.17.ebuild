@@ -134,7 +134,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-    pthread_cond_timedwait_monotonic_np # Doesn't exist on Linux. Bug #905825
+	pthread_cond_timedwait_monotonic_np # Doesn't exist on Linux. Bug #905825
 )
 
 # allow GMP_PLUGIN_LIST to be set in an eclass or
