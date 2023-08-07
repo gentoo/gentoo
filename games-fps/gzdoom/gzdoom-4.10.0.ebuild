@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,7 @@ S="${WORKDIR}/${PN}-g${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.1-Introduce-the-BUILD_NONFREE-option.patch
 	"${FILESDIR}"/${P}-gcc-13.patch
+	"${FILESDIR}"/${P}-headers.patch
 )
 
 src_prepare() {
