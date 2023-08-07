@@ -25,6 +25,8 @@ DOCS=( README.rst CHANGES.txt )
 distutils_enable_tests unittest
 
 src_configure() {
+	# native-extensions are always disabled on PyPy
+	# https://github.com/simplejson/simplejson/blob/master/setup.py#L121
 	export DISABLE_SPEEDUPS=$(usex native-extensions 0 1)
 	use native-extensions && export REQUIRE_SPEEDUPS=1
 }
