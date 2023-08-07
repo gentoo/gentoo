@@ -338,7 +338,9 @@ _python_export() {
 				debug-print "${FUNCNAME}: EPYTHON = ${EPYTHON}"
 				;;
 			PYTHON)
-				export PYTHON=${BROOT}/usr/bin/${impl}
+				# Under EAPI 7+, this should just use ${BROOT}, but Portage
+				# <3.0.50 was buggy, and prefix users need this to update.
+				export PYTHON=${BROOT-${EPREFIX}}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
 			PYTHON_SITEDIR)
