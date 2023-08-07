@@ -32,7 +32,7 @@ else
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	# Patchset from proj/emacs-patches.git
-	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-2.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-3.tar.xz"
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
