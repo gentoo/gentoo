@@ -29,7 +29,7 @@ HOMEPAGE="https://github.com/google/brotli/"
 
 LICENSE="MIT python? ( Apache-2.0 )"
 SLOT="0/$(ver_cut 1)"
-IUSE="python static-libs test"
+IUSE="python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -51,8 +51,6 @@ BDEPEND="
 "
 
 DOCS=( README.md CONTRIBUTING.md )
-
-PATCHES=( "${FILESDIR}/${PV}-linker.patch" )
 
 src_prepare() {
 	cmake_src_prepare
@@ -89,9 +87,6 @@ src_test() {
 
 multilib_src_install() {
 	cmake_src_install
-	if ! use static-libs; then
-		rm "${ED}"/usr/$(get_libdir)/*.a || die
-	fi
 }
 
 multilib_src_install_all() {
