@@ -8,6 +8,8 @@ WANT_AUTOCONF="2.1"
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
 
+LLVM_MAX_SLOT=16
+
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
 # note - could not roll langpacks for: ca fi
 #MOZ_LANGS=(ca cs de en-GB es-AR es-ES fi fr gl hu it ja lt nb-NO nl pl pt-PT
@@ -37,7 +39,7 @@ S="${WORKDIR}/${MY_MOZ_P}"
 
 MOZ_GENERATE_LANGPACKS=1
 MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
-inherit autotools check-reqs desktop edos2unix flag-o-matic mozcoreconf-v6 mozlinguas-v2 pax-utils toolchain-funcs xdg-utils
+inherit autotools check-reqs desktop edos2unix flag-o-matic llvm mozcoreconf-v6 mozlinguas-v2 pax-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="https://www.seamonkey-project.org/"
@@ -59,8 +61,16 @@ BDEPEND="
 	dev-lang/perl
 	dev-util/cbindgen
 	>=sys-devel/binutils-2.16.1
-	sys-devel/clang:15
-	sys-devel/llvm:15
+	|| (
+		(
+			sys-devel/clang:16
+			sys-devel/llvm:16
+		)
+		(
+			sys-devel/clang:15
+			sys-devel/llvm:15
+		)
+	)
 	virtual/pkgconfig
 	virtual/rust
 	amd64? ( >=dev-lang/yasm-1.1 )
@@ -145,6 +155,15 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 BUILD_OBJ_DIR="${S}/seamonk"
 
+llvm_check_deps() {
+	if ! has_version -b "sys-devel/clang:${LLVM_SLOT}" ; then
+		einfo "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+		return 1
+	fi
+
+	einfo "Using LLVM slot ${LLVM_SLOT} to build." >&2
+}
+
 pkg_setup() {
 	if [[ ${PV} == *_beta* ]] || [[ ${PV} == *_pre* ]] ; then
 		ewarn
@@ -152,6 +171,8 @@ pkg_setup() {
 		ewarn "Gentoo's Bugtracker against this package in case it breaks for you."
 		ewarn "Those belong to upstream: https://bugzilla.mozilla.org"
 	fi
+
+	llvm_pkg_setup
 
 	moz_pkgsetup
 }
