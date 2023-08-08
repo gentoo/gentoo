@@ -92,7 +92,7 @@ SLOT="0"
 # @INTERNAL
 # @DESCRIPTION:
 # This variable defines the path to Vim spell files.
-: "${VIM_SPELL_DIRECTORY:="${EPREFIX}/usr/share/vim/vimfiles/spell/"}"
+: "${VIM_SPELL_DIRECTORY:=/usr/share/vim/vimfiles/spell}"
 
 # @ECLASS_VARIABLE: DESCRIPTION
 # @DESCRIPTION:
