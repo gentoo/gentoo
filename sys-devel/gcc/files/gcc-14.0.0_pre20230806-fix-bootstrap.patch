@@ -1,0 +1,105 @@
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=af6cfd7b663909688c6ca55b6e9f859cdde4310f
+https://gcc.gnu.org/PR110926
+
+From af6cfd7b663909688c6ca55b6e9f859cdde4310f Mon Sep 17 00:00:00 2001
+From: liuhongt <hongtao.liu@intel.com>
+Date: Mon, 7 Aug 2023 11:10:52 +0800
+Subject: [PATCH] Fix ICE in rtl check when bootstrap.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+/var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/libgfortran/generated/matmul_i1.c: In function âmatmul_i1_avx512fâ:
+/var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/libgfortran/generated/matmul_i1.c:1781:1: internal compiler error: RTL check: expected elt 0 type 'i' or 'n', have 'w' (rtx const_int) in vpternlog_redundant_operand_mask, at config/i386/i386.cc:19460
+ 1781 | }
+      | ^
+0x5559de26dc2d rtl_check_failed_type2(rtx_def const*, int, int, int, char const*, int, char const*)
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/rtl.cc:761
+0x5559de340bfe vpternlog_redundant_operand_mask(rtx_def**)
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/config/i386/i386.cc:19460
+0x5559dfec67a6 split_44
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/config/i386/sse.md:12730
+0x5559dfec67a6 split_63
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/config/i386/sse.md:28428
+0x5559deb8a682 try_split(rtx_def*, rtx_insn*, int)
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/emit-rtl.cc:3800
+0x5559deb8adf2 try_split(rtx_def*, rtx_insn*, int)
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/emit-rtl.cc:3972
+0x5559def69194 split_insn
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/recog.cc:3385
+0x5559def70c57 split_all_insns()
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/recog.cc:3489
+0x5559def70d0c execute
+        /var/tmp/portage/sys-devel/gcc-14.0.0_pre20230806/work/gcc-14-20230806/gcc/recog.cc:4413
+
+Use INTVAL (imm_op) instead of XINT (imm_op, 0).
+
+gcc/ChangeLog:
+
+	PR target/110926
+	* config/i386/i386-protos.h
+	(vpternlog_redundant_operand_mask): Adjust parameter type.
+	* config/i386/i386.cc (vpternlog_redundant_operand_mask): Use
+	INTVAL instead of XINT, also adjust parameter type from rtx*
+	to rtx since the function only needs operands[4] in vpternlog
+	pattern.
+	(substitute_vpternlog_operands): Pass operands[4] instead of
+	operands to vpternlog_redundant_operand_mask.
+	* config/i386/sse.md: Ditto.
+--- a/gcc/config/i386/i386-protos.h
++++ b/gcc/config/i386/i386-protos.h
+@@ -70,7 +70,7 @@ extern machine_mode ix86_cc_mode (enum rtx_code, rtx, rtx);
+ extern int avx_vpermilp_parallel (rtx par, machine_mode mode);
+ extern int avx_vperm2f128_parallel (rtx par, machine_mode mode);
+ 
+-extern int vpternlog_redundant_operand_mask (rtx[]);
++extern int vpternlog_redundant_operand_mask (rtx);
+ extern void substitute_vpternlog_operands (rtx[]);
+ 
+ extern bool ix86_expand_strlen (rtx, rtx, rtx, rtx);
+--- a/gcc/config/i386/i386.cc
++++ b/gcc/config/i386/i386.cc
+@@ -19454,10 +19454,10 @@ avx_vperm2f128_parallel (rtx par, machine_mode mode)
+ /* Return a mask of VPTERNLOG operands that do not affect output.  */
+ 
+ int
+-vpternlog_redundant_operand_mask (rtx *operands)
++vpternlog_redundant_operand_mask (rtx pternlog_imm)
+ {
+   int mask = 0;
+-  int imm8 = XINT (operands[4], 0);
++  int imm8 = INTVAL (pternlog_imm);
+ 
+   if (((imm8 >> 4) & 0x0F) == (imm8 & 0x0F))
+     mask |= 1;
+@@ -19475,7 +19475,7 @@ vpternlog_redundant_operand_mask (rtx *operands)
+ void
+ substitute_vpternlog_operands (rtx *operands)
+ {
+-  int mask = vpternlog_redundant_operand_mask (operands);
++  int mask = vpternlog_redundant_operand_mask (operands[4]);
+ 
+   if (mask & 1) /* The first operand is redundant.  */
+     operands[1] = operands[2];
+--- a/gcc/config/i386/sse.md
++++ b/gcc/config/i386/sse.md
+@@ -12751,7 +12751,7 @@
+ 	   (match_operand:V 3 "memory_operand")
+ 	   (match_operand:SI 4 "const_0_to_255_operand")]
+ 	  UNSPEC_VTERNLOG))]
+-  "!reload_completed && vpternlog_redundant_operand_mask (operands) == 3"
++  "!reload_completed && vpternlog_redundant_operand_mask (operands[4]) == 3"
+   [(set (match_dup 0)
+ 	(match_dup 3))
+    (set (match_dup 0)
+@@ -12772,7 +12772,7 @@
+ 	   (match_operand:V 3 "nonimmediate_operand")
+ 	   (match_operand:SI 4 "const_0_to_255_operand")]
+ 	  UNSPEC_VTERNLOG))]
+-  "!reload_completed && vpternlog_redundant_operand_mask (operands) != 0"
++  "!reload_completed && vpternlog_redundant_operand_mask (operands[4]) != 0"
+   [(set (match_dup 0)
+ 	(unspec:V
+ 	  [(match_dup 1)
+-- 
+2.39.3

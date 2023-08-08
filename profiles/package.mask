@@ -33,10 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2023-07-07)
-# Fails to boostrap: https://gcc.gnu.org/PR110926
-=sys-devel/gcc-14.0.0_pre20230806
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
 # Removal on 2023-08-05.
