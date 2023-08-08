@@ -305,11 +305,6 @@ dev-ruby/c21e
 dev-ruby/deprecated
 
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
-# Dead package. No reverse dependencies.
-# Removal on 2023-08-06.
-dev-perl/Gtk2-Notify
-
-# Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
 >=app-editors/gnome-text-editor-45_alpha
 >=app-misc/gnote-45_alpha
