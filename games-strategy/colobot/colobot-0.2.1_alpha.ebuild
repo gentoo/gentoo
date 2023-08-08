@@ -3,19 +3,20 @@
 
 EAPI=8
 
-inherit cmake git-r3 xdg-utils
+inherit cmake xdg-utils
 
+MY_P=colobot-gold-${PV/_/-}
 DESCRIPTION="A real-time strategy game, where you can program your bots"
 HOMEPAGE="
 	https://colobot.info/
 	https://github.com/colobot/colobot/
 "
-EGIT_REPO_URI="https://github.com/colobot/colobot"
-EGIT_SUBMODULES=()
+SRC_URI="https://github.com/colobot/colobot/archive/${MY_P}.tar.gz"
+S=${WORKDIR}/${PN}-${MY_P}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64"
 IUSE="devbuild doc +openal test tools"
 RESTRICT="!test? ( test )"
 
@@ -42,7 +43,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	games-strategy/colobot-data
+	~games-strategy/colobot-data-${PV}
 "
 DEPEND+="
 	test? ( dev-cpp/gtest )
