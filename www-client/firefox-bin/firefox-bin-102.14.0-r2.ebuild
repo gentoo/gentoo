@@ -266,8 +266,8 @@ src_install() {
 	# Install menu
 	local app_name="Mozilla ${MOZ_PN^} (bin)"
 	local desktop_file="${FILESDIR}/${PN}-r3.desktop"
-	local desktop_filename="${PN}-esr.desktop"
-	local exec_command="${PN}"
+	local desktop_filename="${PN}.desktop"
+	local exec_command="${PN} --name=firefox"
 	local icon="${PN}"
 	local use_wayland="false"
 
