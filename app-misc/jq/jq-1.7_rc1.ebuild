@@ -5,20 +5,19 @@ EAPI=8
 
 inherit autotools
 
-COMMIT_HASH="cff5336ec71b6fee396a95bb0e4bea365e0cd1e8"
-
+MY_PV="${PV/_/}"
+MY_P="${PN}-${MY_PV}"
 DESCRIPTION="A lightweight and flexible command-line JSON processor"
 HOMEPAGE="https://stedolan.github.io/jq/"
-#SRC_URI="https://github.com/stedolan/jq/releases/download/${P}/${P}.tar.gz"
-SRC_URI="https://github.com/stedolan/jq/archive/${COMMIT_HASH}.tar.gz -> ${P}.gh.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT_HASH}"
+SRC_URI="https://github.com/jqlang/jq/archive/refs/tags/${MY_P}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="MIT CC-BY-3.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="+oniguruma static-libs test"
 
-ONIGURUMA_MINPV='>=dev-libs/oniguruma-6.1.3' # Keep this in sync with bundled modules/oniguruma/
+ONIGURUMA_MINPV='>=dev-libs/oniguruma-6.9.3' # Keep this in sync with bundled modules/oniguruma/
 DEPEND="
 	>=sys-devel/bison-3.0
 	sys-devel/flex
@@ -32,11 +31,6 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/jq-1.6-r3-never-bundle-oniguruma.patch
 	"${FILESDIR}"/jq-1.7-runpath.patch
-	"${FILESDIR}"/jq-1.7-warnings-r1.patch
-	"${FILESDIR}"/jq-1.7-visible-null.patch
-	# https://bugs.gentoo.org/776385
-	"${FILESDIR}"/jq-1.7_pre20201109-no-git-bdep.patch
-	"${FILESDIR}"/jq-1.7_pre20201109-fix-configure-test.patch
 )
 
 RESTRICT="!test? ( test )"
@@ -52,11 +46,11 @@ src_prepare() {
 	# exists; save the cycles by nuking it.
 	sed -e '/modules\/oniguruma/d' -i Makefile.am || die
 	rm -rf "${S}"/modules/oniguruma || die
-	sed -i "s/^jq_version: .*/jq_version: \"${PV}\"/" docs/site.yml || die
+	sed -i "s/^jq_version: .*/jq_version: \"${MY_PV}\"/" docs/site.yml || die
 
 	default
 
-	sed -i "s/\[jq_version\]/[${PV}]/" configure.ac || die
+	sed -i "s/\[jq_version\]/[${MY_PV}]/" configure.ac || die
 
 	eautoreconf
 }
@@ -85,7 +79,7 @@ src_test() {
 }
 
 src_install() {
-	local DOCS=( AUTHORS NEWS README.md )
+	local DOCS=( AUTHORS NEWS.md README.md SECURITY.md )
 	default
 
 	use static-libs || { find "${D}" -name '*.la' -delete || die; }
