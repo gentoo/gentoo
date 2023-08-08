@@ -46,6 +46,7 @@ BDEPEND="
 	)
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	test? ( sys-apps/dbus )
 "
 PDEPEND="
 	gnome? ( x11-themes/adwaita-icon-theme )

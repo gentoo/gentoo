@@ -46,6 +46,7 @@ BDEPEND="
 	)
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	test? ( sys-apps/dbus )
 "
 PDEPEND="
 	gnome? ( x11-themes/adwaita-icon-theme )
@@ -99,7 +100,7 @@ src_test() {
 	gnome2_environment_reset
 	# TODO: Tests require tracker testutils (e.g. tracker-sandbox), which may
 	# need some sorting out with tracker use flag deps
-	virtx meson_src_test
+	virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
 }
 
 pkg_postinst() {
