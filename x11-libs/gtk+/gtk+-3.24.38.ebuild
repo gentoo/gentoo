@@ -89,6 +89,7 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.3
 		>=dev-util/gtk-doc-1.20
 	)
+	test? ( sys-apps/dbus )
 "
 
 MULTILIB_CHOST_TOOLS=(
@@ -131,7 +132,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	virtx meson_src_test
+	virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
 }
 
 multilib_src_install() {
