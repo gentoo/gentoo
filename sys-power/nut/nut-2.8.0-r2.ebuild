@@ -108,6 +108,7 @@ src_configure() {
 		--with-altpidpath=/run/nut
 		--with-pidpath=/run/nut
 		$(use_enable test cppunit)
+		$(use_with cgi)
 		$(use_with i2c linux_i2c)
 		$(use_with ipmi freeipmi)
 		$(use_with ipmi)

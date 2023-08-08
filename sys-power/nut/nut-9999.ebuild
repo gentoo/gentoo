@@ -132,6 +132,7 @@ src_configure() {
 		--without-python2
 		--with-altpidpath=/run/nut
 		--with-pidpath=/run/nut
+		$(use_with cgi)
 		$(use_with gpio)
 		$(use_with i2c linux_i2c)
 		$(use_with ipmi freeipmi)
