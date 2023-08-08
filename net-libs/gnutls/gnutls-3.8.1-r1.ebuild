@@ -60,6 +60,10 @@ DOCS=( README.md doc/certtool.cfg )
 
 HTML_DOCS=()
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-gnutls-header.patch
+)
+
 src_prepare() {
 	default
 
