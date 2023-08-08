@@ -52,7 +52,7 @@ BDEPEND="
 
 DOCS=( README.md CONTRIBUTING.md )
 
-PATCHES=( "${FILESDIR}/${PV}-linker.patch" )
+# PATCHES=( "${FILESDIR}/${PV}-linker.patch" )
 
 src_prepare() {
 	cmake_src_prepare
@@ -89,9 +89,9 @@ src_test() {
 
 multilib_src_install() {
 	cmake_src_install
-	if ! use static-libs; then
-		rm "${ED}"/usr/$(get_libdir)/*.a || die
-	fi
+	# if ! use static-libs; then
+	# 	rm "${ED}"/usr/$(get_libdir)/*.a || die
+	# fi
 }
 
 multilib_src_install_all() {
