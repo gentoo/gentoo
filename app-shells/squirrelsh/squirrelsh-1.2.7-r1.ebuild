@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit edo toolchain-funcs
 
 DESCRIPTION="Cross-platform object-oriented scripting shell using the squirrel language"
 HOMEPAGE="http://squirrelsh.sourceforge.net/"
@@ -29,15 +29,15 @@ PATCHES=(
 )
 
 src_configure() {
-	#This package uses a custom written configure script
-	./configure --prefix="${D}"/usr \
+	# This package uses a custom written configure script
+	edo ./configure --prefix="${D}"/usr \
 		--with-cc="$(tc-getCC)" \
 		--with-cpp="$(tc-getCXX)" \
 		--with-linker="$(tc-getCXX)" \
 		--libdir=/usr/"$(get_libdir)" \
 		--with-pcre="system" \
 		--with-squirrel="local" \
-		--with-mime=no || die "configure failed"
+		--with-mime=no
 }
 
 src_install() {
