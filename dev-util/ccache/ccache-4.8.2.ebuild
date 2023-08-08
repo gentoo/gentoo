@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
 	"${FILESDIR}"/${PN}-4.0-objdump.patch
 	"${FILESDIR}"/${PN}-4.8-avoid-run-user.patch
+	"${FILESDIR}"/${P}-gcc-ice-workaround.patch
 )
 
 src_unpack() {
