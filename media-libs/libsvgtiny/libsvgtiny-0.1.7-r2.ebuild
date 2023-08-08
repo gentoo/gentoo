@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,8 +21,6 @@ DEPEND="${RDEPEND}
 	dev-util/gperf
 	dev-util/netsurf-buildsystem
 	virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}"/${PN}-0.1.3-parallel-build.patch )
 
 _emake() {
 	netsurf_define_makeconf
