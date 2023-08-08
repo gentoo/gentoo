@@ -310,6 +310,7 @@ dev-ruby/deprecated
 >=app-misc/gnote-45_alpha
 >=app-misc/tracker-3.6_alpha
 >=app-misc/tracker-miners-3.6_alpha
+>=dev-cpp/gtkmm-4.11
 >=dev-libs/gjs-1.77
 >=dev-libs/libdex-0.3.0
 >=games-puzzle/gnome-sudoku-45_alpha
