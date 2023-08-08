@@ -324,6 +324,7 @@ dev-perl/Gtk2-Notify
 >=gnome-base/nautilus-45_alpha
 >=gnome-extra/gnome-calculator-45_alpha
 >=gnome-extra/gnome-characters-45_alpha
+>=gnome-extra/gnome-logs-45_alpha
 >=gnome-extra/gnome-shell-extensions-45_alpha
 >=gnome-extra/gnome-software-45_alpha
 >=gnome-extra/gnome-system-monitor-45_alpha
