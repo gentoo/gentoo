@@ -70,6 +70,7 @@ src_configure() {
 	local myconf=(
 		# The top-level configure doesn't utilize this flag, but subdirs do,
 		# so autodetection for econf doesn't work.  Add ourselves.
+		--disable-dependency-tracking
 		--disable-silent-rules
 		# Disable legacy syscall stub code in newlib.  These have been
 		# moved to libgloss for a long time now, so the code in newlib
