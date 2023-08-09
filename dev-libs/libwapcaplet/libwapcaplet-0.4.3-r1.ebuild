@@ -21,11 +21,6 @@ DEPEND="
 BDEPEND="
 	>=dev-util/netsurf-buildsystem-1.7-r1"
 
-PATCHES=(
-	# bug 664288
-	"${FILESDIR}/${PN}-0.4.1-makefile.patch"
-)
-
 _emake() {
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
