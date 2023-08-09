@@ -123,6 +123,10 @@ S="${WORKDIR}/${MY_P}"
 
 CHECKREQS_DISK_BUILD="18G" # and even this might not be enough, bug #417307
 
+# We cannot use PATCHES because src_prepare() calls cmake_src_prepare and
+# gnome2_src_prepare, and both apply ${PATCHES[@]}
+PATCHES=()
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] ; then
 		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
@@ -147,6 +151,8 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+
+	eapply "${FILESDIR}/${PV}-Fix-build-failure-when-gstreamer-support-is-disabled.patch"
 }
 
 src_configure() {
