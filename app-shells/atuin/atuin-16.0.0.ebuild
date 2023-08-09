@@ -368,10 +368,12 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+client server +sync"
+IUSE="+client server test +sync"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( client server )
 	sync? ( client )
+	test? ( client server sync )
 "
 BDEPEND=">=virtual/rust-1.71.0"
 
