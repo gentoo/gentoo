@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/911872
+https://gitlab.com/gnutls/gnutls/-/commit/abfa8634db940115a11a07596ce53c8f9c4f87d2
+
+From abfa8634db940115a11a07596ce53c8f9c4f87d2 Mon Sep 17 00:00:00 2001
+From: Adrian Bunk <bunk@debian.org>
+Date: Sun, 6 Aug 2023 22:46:22 +0300
+Subject: [PATCH] Move the GNUTLS_NO_EXTENSIONS compatibility #define to
+ gnutls.h
+
+Signed-off-by: Adrian Bunk <bunk@debian.org>
+--- a/lib/ext/ext_master_secret.h
++++ b/lib/ext/ext_master_secret.h
+@@ -23,9 +23,6 @@
+ #ifndef GNUTLS_LIB_EXT_EXT_MASTER_SECRET_H
+ #define GNUTLS_LIB_EXT_EXT_MASTER_SECRET_H
+ 
+-/* Keep backward compatibility */
+-#define GNUTLS_NO_EXTENSIONS GNUTLS_NO_DEFAULT_EXTENSIONS
+-
+ #include <hello_ext.h>
+ 
+ extern const hello_ext_entry_st ext_mod_ext_master_secret;
+--- a/lib/includes/gnutls/gnutls.h.in
++++ b/lib/includes/gnutls/gnutls.h.in
+@@ -542,6 +542,9 @@ typedef enum {
+ #define GNUTLS_ENABLE_CERT_TYPE_NEG 0
+ // Here for compatibility reasons
+ 
++/* Keep backward compatibility */
++#define GNUTLS_NO_EXTENSIONS GNUTLS_NO_DEFAULT_EXTENSIONS
++
+ /**
+  * gnutls_alert_level_t:
+  * @GNUTLS_AL_WARNING: Alert of warning severity.
+--- a/lib/state.h
++++ b/lib/state.h
+@@ -110,7 +110,4 @@ inline static int _gnutls_PRF(gnutls_session_t session, const uint8_t *secret,
+ 
+ #define DEFAULT_CERT_TYPE GNUTLS_CRT_X509
+ 
+-/* Keep backward compatibility */
+-#define GNUTLS_NO_EXTENSIONS GNUTLS_NO_DEFAULT_EXTENSIONS
+-
+ #endif /* GNUTLS_LIB_STATE_H */
+-- 
+GitLab

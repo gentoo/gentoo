@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit meson
 
 DESCRIPTION="utility library for higher level dLeyna libraries"
-HOMEPAGE="https://github.com/phako/dleyna-core"
+HOMEPAGE="https://gitlab.gnome.org/World/dLeyna https://github.com/phako/dleyna-core"
 SRC_URI="https://github.com/phako/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

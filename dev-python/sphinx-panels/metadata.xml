@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">sphinx-panels</remote-id>
+		<remote-id type="github">executablebooks/sphinx-panels</remote-id>
 	</upstream>
 </pkgmetadata>

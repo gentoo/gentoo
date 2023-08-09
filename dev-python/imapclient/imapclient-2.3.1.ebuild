@@ -4,13 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="easy-to-use, pythonic, and complete IMAP client library"
-HOMEPAGE="https://github.com/mjs/imapclient"
-SRC_URI="https://github.com/mjs/imapclient/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/mjs/imapclient/
+	https://pypi.org/project/IMAPClient/
+"
+SRC_URI="
+	https://github.com/mjs/imapclient/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"

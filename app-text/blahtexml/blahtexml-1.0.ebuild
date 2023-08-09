@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gvanas/blahtexml/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="BSD CC-BY-3.0 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 x86"
 IUSE="doc"
 
 RDEPEND="dev-libs/xerces-c"

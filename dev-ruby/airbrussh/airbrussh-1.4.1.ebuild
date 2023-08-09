@@ -26,6 +26,8 @@ ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/mocha:1.0 )"
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
+	sed -i -e '2igem "mocha", "~> 1.0"' test/minitest_helper.rb || die
+
 	rm -f test/support/minitest_reporters.rb || die
 
 	# Add missing require

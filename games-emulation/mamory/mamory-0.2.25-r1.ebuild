@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit autotools flag-o-matic
 
 DESCRIPTION="ROM management tools and library"
-HOMEPAGE="http://mamory.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/mamory/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="dev-libs/expat"
 RDEPEND="${DEPEND}"
@@ -40,8 +40,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--includedir=/usr/include \
-		--disable-static
+		--includedir="${EPREFIX}"/usr/include
 }
 
 src_install() {

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Least-Recently Used cache"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/enum

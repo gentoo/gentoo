@@ -29,5 +29,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">libsdl-org/SDL-1.2</remote-id>
+		<remote-id type="github">libsdl-org/sdl12-compat</remote-id>
 	</upstream>
 </pkgmetadata>

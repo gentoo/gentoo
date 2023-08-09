@@ -1,0 +1,11 @@
+diff --git a/setup.py b/setup.py
+index 61bc3da..39c2ea5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,5 +1,5 @@
+ import ast
+-from distutils.command.build_py import build_py as _build_py
++from setuptools.command.build_py import build_py as _build_py
+ import os
+ import pathlib
+ import shutil

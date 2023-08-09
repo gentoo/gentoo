@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit qmake-utils xdg
 
 DESCRIPTION="Qt5-based Chess Database Utility"
-HOMEPAGE="http://chessx.sourceforge.net/"
+HOMEPAGE="https://chessx.sourceforge.net/"
 SRC_URI="https://sourceforge.net/projects/chessx/files/chessx/${PV}/${P}.tgz"
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-libs/quazip-0.9.1:0=[qt5(+)]

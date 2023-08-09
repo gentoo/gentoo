@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
@@ -15,7 +15,7 @@ else
 		https://code.videolan.org/videolan/libplacebo/-/archive/v${PV}/libplacebo-v${PV}.tar.gz
 		opengl? ( https://github.com/Dav1dde/glad/archive/refs/tags/v${GLAD_PV}.tar.gz -> ${PN}-glad-${GLAD_PV}.tar.gz )"
 	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ppc64 x86"
 fi
 
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"

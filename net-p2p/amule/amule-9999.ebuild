@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 WX_GTK_VER="3.0-gtk3"
 
-inherit wxwidgets xdg-utils
+inherit flag-o-matic wxwidgets xdg-utils
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/amule-project/amule"
@@ -45,6 +45,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
+	>=sys-devel/boost-m4-0.4_p20221019
 	nls? ( sys-devel/gettext )
 "
 
@@ -59,13 +60,18 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	rm m4/boost.m4 || die
 
 	if [[ ${PV} == 9999 ]]; then
 		./autogen.sh || die
+	else
+		eautoreconf
 	fi
 }
 
 src_configure() {
+	append-cxxflags -std=gnu++14
+
 	local myconf=(
 		--with-denoise-level=0
 		--with-wx-config="${WX_CONFIG}"

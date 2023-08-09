@@ -20,9 +20,11 @@ else
 	#     LIBAOM_TEST_DATA_PATH=../libaom-1.2.3-testdata make testdata
 	#     This will download the test data from the internet.
 	# 4.  Create a tarball out of that directory.
-	#     cd .. && tar cvzf libaom-1.2.3-testdata.tar.gz libaom-1.2.3-testdata
-	SRC_URI="https://storage.googleapis.com/aom-releases/${P}.tar.gz
-		test? ( https://dev.gentoo.org/~ionen/distfiles/${P}-testdata.tar.gz )"
+	#     cd .. && tar cvaf libaom-1.2.3-testdata.tar.xz libaom-1.2.3-testdata
+	SRC_URI="
+		https://storage.googleapis.com/aom-releases/${P}.tar.gz
+		test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-testdata.tar.xz )
+	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 

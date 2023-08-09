@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -17,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 # disable mpi until mpi4py gets python3_8
 #IUSE="examples mpi"
 IUSE="examples"
@@ -51,6 +52,10 @@ distutils_enable_sphinx docs \
 #}
 
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}/${P}-cython3.patch"
+	)
+
 	# avoid pytest-mpi dep, we do not use mpi anyway
 	sed -i -e 's:pytest-mpi::' pytest.ini || die
 	distutils-r1_python_prepare_all

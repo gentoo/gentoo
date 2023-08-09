@@ -1,0 +1,10 @@
+--- a/src/lib/dune
++++ b/src/lib/dune
+@@ -21,7 +21,6 @@
+ 
+   ; external dependencies
+   (libraries
+-    seq
+     unix
+     num
+     str

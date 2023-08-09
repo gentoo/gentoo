@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
-	>=dev-python/importlib_metadata-3.6[${PYTHON_USEDEP}]
+	>=dev-python/importlib-metadata-3.6[${PYTHON_USEDEP}]
 	>=dev-python/pybtex-0.24[${PYTHON_USEDEP}]
 	>=dev-python/pybtex-docutils-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-2.1[${PYTHON_USEDEP}]

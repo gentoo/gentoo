@@ -13,6 +13,8 @@
 
 command=/usr/bin/motion
 command_user="${MOTION_USER}:${MOTION_GROUP}"
+extra_started_commands="reload"
+description_reload="Reread the config file"
 
 start_pre() {
   if [ "${MOTION_DIR}" ] ; then
@@ -20,7 +22,7 @@ start_pre() {
     directory="${MOTION_DIR}"
   fi
   if [ "${MOTION_LOGFILE}" ] ; then
-    checkpath -f -o "${MOTION_USER}":"${MOTION_GROUP}" "${LOGFILE}"
+    checkpath -f -o "${MOTION_USER}":"${MOTION_GROUP}" "${MOTION_LOGFILE}"
   fi
   if [ "${MOTION_PIDFILE}" ] ; then
     pidfile="${MOTION_PIDFILE}"
@@ -34,4 +36,14 @@ depend() {
   need localmount
   after bootmisc
   use mysql postgresq
+}
+
+reload() {
+  ebegin "Reloading ${RC_SVCNAME}"
+  if [ "${MOTION_PIDFILE}" ] ; then
+    start-stop-daemon --signal SIGHUP --pidfile "${MOTION_PIDFILE}"
+  else
+    supervise-daemon ${RC_SVCNAME} --signal SIGHUP
+  fi
+  eend $?
 }

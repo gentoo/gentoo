@@ -65,7 +65,7 @@ pkg_postinst() {
 	#optfeature "Action script feature" dev-python/pystache
 	optfeature "Autodiscover mode" dev-python/zeroconf
 	optfeature "Cloud support" dev-python/requests
-	optfeature "Docker monitoring support" dev-python/docker-py
+	optfeature "Docker monitoring support" dev-python/docker
 	#optfeature "Export module" \
 	#	unpackaged/bernhard \
 	#	unpackaged/cassandra-driver \
@@ -76,7 +76,7 @@ pkg_postinst() {
 	#	dev-python/kafka-python \
 	#	dev-python/pika \
 	#	dev-python/paho-mqtt \
-	#	dev-python/prometheus_client \
+	#	dev-python/prometheus-client \
 	#	dev-python/pyzmq \
 	#	dev-python/statsd
 	#optfeature "Nvidia GPU monitoring" unpackaged/nvidia-ml-py3

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,13 +13,13 @@ SRC_URI="https://github.com/mhogomchungu/zuluCrypt/archive/${EGIT_COMMIT}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnome kwallet +qt5 udev"
+IUSE="keyring kwallet +qt5 udev"
 REQUIRED_USE="kwallet? ( qt5 )"
 
 DEPEND="
 	dev-libs/libgcrypt:0=
 	sys-fs/cryptsetup:=
-	gnome? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	qt5? (
 		dev-libs/libpwquality
 		dev-qt/qtcore:5
@@ -39,7 +39,7 @@ PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 src_configure() {
 	local mycmakeargs=(
 		-DLIB_SUFFIX="$(get_libdir)"
-		-DNOGNOME=$(usex !gnome)
+		-DNOGNOME=$(usex !keyring)
 		-DNOKDE=$(usex !kwallet)
 		-DNOGUI=$(usex !qt5)
 		-DQT5=true

@@ -11,4 +11,7 @@
 		integers, and for vectors, matrices, and polynomials over the
 		integers and over finite fields.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">libntl/ntl</remote-id>
+	</upstream>
 </pkgmetadata>

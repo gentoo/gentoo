@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>media-video@gentoo.org</email>
-</maintainer>
-<upstream>
-<remote-id type="sourceforge">bluray-info</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="mpv">Build bluray_player, powered by <pkg>media-video/mpv</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">bluray-info</remote-id>
+		<remote-id type="github">beandog/bluray_info</remote-id>
+	</upstream>
 </pkgmetadata>

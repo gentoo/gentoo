@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/908401
+https://bugs.astron.com/view.php?id=457
+https://github.com/file/file/commit/1fc9175166fc5c5117838a1dcfb309b7c595eb56
+
+From 1fc9175166fc5c5117838a1dcfb309b7c595eb56 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Sun, 30 Jul 2023 16:31:47 +0000
+Subject: [PATCH] Comment out weak magic
+
+--- a/magic/Magdir/printer
++++ b/magic/Magdir/printer
+@@ -1,6 +1,6 @@
+ 
+ #------------------------------------------------------------------------------
+-# $File: printer,v 1.34 2023/06/16 19:27:12 christos Exp $
++# $File: printer,v 1.35 2023/07/30 16:31:47 christos Exp $
+ # printer:  file(1) magic for printer-formatted files
+ #
+ 
+@@ -230,8 +230,9 @@
+ 0	string	PS4
+ >0		use		hpgl
+ # la.hp
+-0	string	BP
+->0		use		hpgl
++# Too weak
++#0	string	BP
++#>0		use		hpgl
+ # miter.hp
+ # Plot Absolute x,y{,x,y{...}}; x and y in range between -32767 and 32768 like: PA4000,3000;
+ 0	string	PA
+@@ -241,8 +242,9 @@
+ #>2	regex	\^([-]{0,1}[0-9]{1,5})	COORDINATE=%s
+ >>0		use		hpgl
+ # pw.hpg	number of pens x
+-0	string	NP
+->0		use		hpgl
++# Too weak
++#0	string	NP
++#>0		use		hpgl
+ # win_1.hp
+ #0	string	\003INCA		WHAT_IS_THAT
+ #>0		use		hpgl

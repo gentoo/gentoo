@@ -6,11 +6,11 @@ EAPI=8
 inherit autotools desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="X Window block dropping game in 3 Dimension"
-HOMEPAGE="http://perso.univ-lyon1.fr/thierry.excoffier/XBL/"
-SRC_URI="http://perso.univ-lyon1.fr/thierry.excoffier/XBL/xbl-${PV}.tar.gz"
+HOMEPAGE="https://perso.univ-lyon1.fr/thierry.excoffier/XBL/"
+SRC_URI="https://perso.univ-lyon1.fr/thierry.excoffier/XBL/xbl-${PV}.tar.gz"
 S="${WORKDIR}/xbl-${PV}"
 
-LICENSE="GPL-1"
+LICENSE="GPL-1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

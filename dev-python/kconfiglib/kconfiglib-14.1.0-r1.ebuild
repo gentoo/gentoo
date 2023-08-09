@@ -4,13 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="ncurses"
+
 inherit distutils-r1
 
 DESCRIPTION="A flexible Python Kconfig implementation"
-HOMEPAGE="https://github.com/ulfalizer/Kconfiglib https://pypi.org/project/kconfiglib/"
-SRC_URI="https://github.com/ulfalizer/Kconfiglib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/ulfalizer/Kconfiglib/
+	https://pypi.org/project/kconfiglib/
+"
+SRC_URI="
+	https://github.com/ulfalizer/Kconfiglib/archive/v${PV}.tar.gz
+		-> ${P^}.gh.tar.gz
+"
 S=${WORKDIR}/${P^}
 
 LICENSE="ISC"

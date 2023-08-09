@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 # Disable PyPy3 for now because it is not stable enough:
 # https://github.com/wbolster/plyvel/issues/140
@@ -26,9 +27,16 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+"
 
 distutils_enable_sphinx doc
 distutils_enable_tests pytest
+
+src_configure() {
+	emake cython
+}
 
 python_test() {
 	rm -rf plyvel || die

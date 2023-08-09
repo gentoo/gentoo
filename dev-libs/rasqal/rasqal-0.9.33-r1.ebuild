@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Library that handles Resource Description Framework (RDF)"
-HOMEPAGE="http://librdf.org/rasqal/"
-SRC_URI="http://download.librdf.org/source/${P}.tar.gz"
+HOMEPAGE="https://librdf.org/rasqal/"
+SRC_URI="https://download.librdf.org/source/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"

@@ -5,6 +5,6 @@
     <email>java@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge">apgdiff</remote-id>
+    <remote-id type="github">fordfrog/apgdiff</remote-id>
   </upstream>
 </pkgmetadata>

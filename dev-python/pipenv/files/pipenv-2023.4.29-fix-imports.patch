@@ -1,0 +1,31 @@
+diff --git a/pipenv/project.py b/pipenv/project.py
+index 75ee7d401..ed43cf2bc 100644
+--- a/pipenv/project.py
++++ b/pipenv/project.py
+@@ -40,9 +40,11 @@ from pipenv.utils.shell import (
+     system_which,
+ )
+ from pipenv.utils.toml import cleanup_toml, convert_toml_outline_tables
+-from pipenv.vendor import click, plette, toml, tomlkit
++from pipenv.vendor import plette
+ from pipenv.vendor.requirementslib.models.utils import get_default_pyproject_backend
+ 
++import click, toml, tomlkit
++
+ try:
+     # this is only in Python3.8 and later
+     from functools import cached_property
+diff --git a/pipenv/utils/environment.py b/pipenv/utils/environment.py
+index 2e066eef2..9385689bf 100644
+--- a/pipenv/utils/environment.py
++++ b/pipenv/utils/environment.py
+@@ -1,7 +1,8 @@
+ import os
++import dotenv
++import click
+ 
+ from pipenv import environments
+-from pipenv.vendor import click, dotenv
+ 
+ 
+ def load_dot_env(project, as_dict=False, quiet=False):

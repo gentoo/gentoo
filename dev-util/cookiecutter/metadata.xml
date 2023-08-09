@@ -11,6 +11,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">audreyr/cookiecutter</remote-id>
+		<remote-id type="github">cookiecutter/cookiecutter</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -88,7 +88,8 @@ pkg_setup() {
 	# to prevent bugs like:
 	# https://bugzilla.kernel.org/show_bug.cgi?id=196621
 	CONFIG_CHECK="~NET ~BT ~BT_RFCOMM ~BT_RFCOMM_TTY ~BT_BNEP ~BT_BNEP_MC_FILTER
-		~BT_BNEP_PROTO_FILTER ~BT_HIDP ~CRYPTO_USER_API_HASH ~CRYPTO_USER_API_SKCIPHER ~RFKILL"
+		~BT_BNEP_PROTO_FILTER ~BT_HIDP ~CRYPTO_USER_API_HASH ~CRYPTO_USER_API_SKCIPHER
+		~UHID ~RFKILL"
 	# https://bugzilla.kernel.org/show_bug.cgi?id=196621
 	# https://bugzilla.kernel.org/show_bug.cgi?id=206815
 	if use mesh || use test; then

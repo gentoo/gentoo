@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit python-single-r1 xdg desktop
 
 DESCRIPTION="Collection of tools useful for audio production"
-HOMEPAGE="https://kxstudio.linuxaudio.org/Applications:Cadence"
+HOMEPAGE="https://kx.studio//Applications:Cadence"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3

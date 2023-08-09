@@ -5,10 +5,6 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>slashbeast@gentoo.org</email>
-		<name>Piotr Karbowski</name>
-	</maintainer>
 	<use>
 		<flag name="archive">Use <pkg>app-arch/libarchive</pkg> for archives support</flag>
 		<flag name="amt">Build and install Intel AMT plugin</flag>

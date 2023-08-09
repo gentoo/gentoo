@@ -20,6 +20,6 @@
     * hardware not only for the computer
   </longdescription>
   <upstream>
-    <remote-id type="gnome-gitlab">GNOME/mousetweaks</remote-id>
+    <remote-id type="gnome-gitlab">Archive/mousetweaks</remote-id>
   </upstream>
 </pkgmetadata>

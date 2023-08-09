@@ -36,7 +36,7 @@ S="${WORKDIR}"
 
 # handle dependencies for testing frameworks
 if has test ${JAVA_PKG_IUSE}; then
-	local test_deps
+	test_deps=
 	for framework in ${JAVA_TESTING_FRAMEWORKS}; do
 		case ${framework} in
 			junit)
@@ -51,6 +51,7 @@ if has test ${JAVA_PKG_IUSE}; then
 		esac
 	done
 	[[ ${test_deps} ]] && DEPEND="test? ( ${test_deps} )"
+	unset test_deps
 fi
 
 # @ECLASS_VARIABLE: JAVA_GENTOO_CLASSPATH

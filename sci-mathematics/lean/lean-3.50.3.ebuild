@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/leanprover-community/lean.git"
 else
 	SRC_URI="https://github.com/leanprover-community/lean/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 S="${S}/src"
 
@@ -27,7 +27,10 @@ IUSE="debug +threads"
 RDEPEND="dev-libs/gmp:="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-CMakeLists-fix_flags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.50.3-gcc-13.patch
+	"${FILESDIR}"/${PN}-CMakeLists-fix_flags.patch
+)
 
 src_configure() {
 	local CMAKE_BUILD_TYPE
@@ -39,7 +42,7 @@ src_configure() {
 
 	filter-lto
 
-	local mycmakeargs=(
+	local -a mycmakeargs=(
 		-DALPHA=ON
 		-DAUTO_THREAD_FINALIZATION=ON
 		-DJSON=ON  # bug 833900
@@ -51,7 +54,7 @@ src_configure() {
 }
 
 src_test() {
-	local myctestargs=(
+	local -a myctestargs=(
 		# Disable problematic "style_check" cpplint test,
 		# this also removes the python test dependency
 		--exclude-regex style_check

@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
@@ -16,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="OPENLDAP"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 # cffi is used only on pypy, so no dep
 DEPEND="

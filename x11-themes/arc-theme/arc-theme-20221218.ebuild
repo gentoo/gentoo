@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jnsh/${PN}/releases/download/${PV}/arc-theme-${PV}.t
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="cinnamon gnome-shell +gtk2 +gtk3 +gtk4 mate +transparency xfce"
 
 GLIB_DEPEND="dev-libs/glib"

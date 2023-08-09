@@ -29,7 +29,7 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
-	berkdb bluetooth build examples gdbm hardened +ncurses +readline
+	berkdb bluetooth build examples gdbm +ncurses +readline
 	+sqlite +ssl tk valgrind wininst +xml
 "
 RESTRICT="test"

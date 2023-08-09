@@ -338,7 +338,7 @@ tc-is-static-only() {
 tc-stack-grows-down() {
 	# List the few that grow up.
 	case ${ARCH} in
-	hppa|metag) return 1 ;;
+		hppa|metag) return 1 ;;
 	esac
 
 	# Assume all others grow down.
@@ -534,43 +534,16 @@ tc-ld-force-bfd() {
 	ewarn "Forcing usage of the BFD linker"
 
 	# Set up LD to point directly to bfd if it's available.
-	# We need to extract the first word in case there are flags appended
-	# to its value (like multilib).  #545218
 	local ld=$(tc-getLD "$@")
+	# We need to extract the first word in case there are flags appended
+	# to its value (like multilib), bug #545218.
 	local bfd_ld="${ld%% *}.bfd"
 	local path_ld=$(type -P "${bfd_ld}" 2>/dev/null)
 	[[ -e ${path_ld} ]] && export LD=${bfd_ld}
 
 	# Set up LDFLAGS to select bfd based on the gcc / clang version.
-	local fallback="true"
-	if tc-is-gcc; then
-		local major=$(gcc-major-version "$@")
-		local minor=$(gcc-minor-version "$@")
-		if [[ ${major} -gt 4 ]] || [[ ${major} -eq 4 && ${minor} -ge 8 ]]; then
-			# gcc-4.8+ supports -fuse-ld directly.
-			export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
-			fallback="false"
-		fi
-	elif tc-is-clang; then
-		local major=$(clang-major-version "$@")
-		local minor=$(clang-minor-version "$@")
-		if [[ ${major} -gt 3 ]] || [[ ${major} -eq 3 && ${minor} -ge 5 ]]; then
-			# clang-3.5+ supports -fuse-ld directly.
-			export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
-			fallback="false"
-		fi
-	fi
-	if [[ ${fallback} == "true" ]] ; then
-		# <=gcc-4.7 and <=clang-3.4 require some coercion.
-		# Only works if bfd exists.
-		if [[ -e ${path_ld} ]] ; then
-			local d="${T}/bfd-linker"
-			mkdir -p "${d}"
-			ln -sf "${path_ld}" "${d}"/ld
-			export LDFLAGS="${LDFLAGS} -B${d}"
-		else
-			die "unable to locate a BFD linker"
-		fi
+	if tc-is-gcc || tc-is-clang ; then
+		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
 	fi
 }
 
@@ -647,6 +620,7 @@ tc-has-tls() {
 		return *i ? j : *i;
 	}
 	EOF
+
 	local flags
 	case $1 in
 		-s) flags="-S";;
@@ -654,6 +628,7 @@ tc-has-tls() {
 		-l) ;;
 		-*) die "Usage: tc-has-tls [-c|-l] [toolchain prefix]";;
 	esac
+
 	: "${flags:=-fPIC -shared -Wl,-z,defs}"
 	[[ $1 == -* ]] && shift
 	$(tc-getCC "$@") ${flags} "${base}.c" -o "${base}" >&/dev/null
@@ -666,7 +641,7 @@ tc-has-tls() {
 # Parse information from CBUILD/CHOST/CTARGET rather than
 # use external variables from the profile.
 tc-ninja_magic_to_arch() {
-	ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
+	_tc_echo_kernel_alias() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 
 	local type=$1
 	local host=$2
@@ -676,25 +651,16 @@ tc-ninja_magic_to_arch() {
 		aarch64*)	echo arm64;;
 		alpha*)		echo alpha;;
 		arm*)		echo arm;;
-		avr*)		ninj avr32 avr;;
-		bfin*)		ninj blackfin bfin;;
+		avr*)		_tc_echo_kernel_alias avr32 avr;;
+		bfin*)		_tc_echo_kernel_alias blackfin bfin;;
 		c6x*)		echo c6x;;
 		cris*)		echo cris;;
 		frv*)		echo frv;;
 		hexagon*)	echo hexagon;;
-		hppa*)		ninj parisc hppa;;
-		i?86*)
-			# Starting with linux-2.6.24, the 'x86_64' and 'i386'
-			# trees have been unified into 'x86'.
-			# FreeBSD still uses i386
-			if [[ ${type} == "kern" && ${host} == *freebsd* ]] ; then
-				echo i386
-			else
-				echo x86
-			fi
-			;;
+		hppa*)		_tc_echo_kernel_alias parisc hppa;;
+		i?86*)		echo x86;;
 		ia64*)		echo ia64;;
-		loongarch*)	ninj loongarch loong;;
+		loongarch*)	_tc_echo_kernel_alias loongarch loong;;
 		m68*)		echo m68k;;
 		metag*)		echo metag;;
 		microblaze*)	echo microblaze;;
@@ -717,16 +683,15 @@ tc-ninja_magic_to_arch() {
 		riscv*)		echo riscv;;
 		s390*)		echo s390;;
 		score*)		echo score;;
-		sh64*)		ninj sh64 sh;;
+		sh64*)		_tc_echo_kernel_alias sh64 sh;;
 		sh*)		echo sh;;
-		sparc64*)	ninj sparc64 sparc;;
+		sparc64*)	_tc_echo_kernel_alias sparc64 sparc;;
 		sparc*)		[[ ${PROFILE_ARCH} == "sparc64" ]] \
-						&& ninj sparc64 sparc \
+						&& _tc_echo_kernel_alias sparc64 sparc \
 						|| echo sparc
 					;;
 		tile*)		echo tile;;
 		vax*)		echo vax;;
-		x86_64*freebsd*) echo amd64;;
 		x86_64*)
 			# Starting with linux-2.6.24, the 'x86_64' and 'i386'
 			# trees have been unified into 'x86'.
@@ -741,7 +706,7 @@ tc-ninja_magic_to_arch() {
 		# since our usage of tc-arch is largely concerned with
 		# normalizing inputs for testing ${CTARGET}, let's filter
 		# other cross targets (mingw and such) into the unknown.
-		*)			echo unknown;;
+		*)		echo unknown;;
 	esac
 }
 # @FUNCTION: tc-arch-kernel
@@ -791,7 +756,7 @@ tc-endian() {
 		sh*)		echo little;;
 		sparc*)		echo big;;
 		x86_64*)	echo little;;
-		*)			echo wtf;;
+		*)		echo wtf;;
 	esac
 }
 
@@ -1068,18 +1033,17 @@ gen_usr_ldscript() {
 
 	tc-is-static-only && return
 
-	# We only care about stuffing / for the native ABI. #479448
+	# We only care about stuffing / for the native ABI, bug #479448
 	if [[ $(type -t multilib_is_native_abi) == "function" ]] ; then
 		multilib_is_native_abi || return 0
 	fi
 
-	# Eventually we'd like to get rid of this func completely #417451
+	# Eventually we'd like to get rid of this func completely, bug #417451
 	case ${CTARGET:-${CHOST}} in
-	*-darwin*) ;;
-	*-android*) return 0 ;;
-	*linux*|*-freebsd*|*-openbsd*|*-netbsd*)
-		use prefix && return 0 ;;
-	*) return 0 ;;
+		*-darwin*) ;;
+		*-android*) return 0 ;;
+		*linux*) use prefix && return 0 ;;
+		*) return 0 ;;
 	esac
 
 	# Just make sure it exists

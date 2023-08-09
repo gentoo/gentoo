@@ -15,7 +15,7 @@
 			<email>mgorny@gentoo.org</email>
 			<name>Michał Górny</name>
 		</maintainer>
-		<bugs-to>https://github.com/mgorny/uam/issues/</bugs-to>
-		<remote-id type="github">mgorny/uam</remote-id>
+		<bugs-to>https://github.com/projg2/uam/issues/</bugs-to>
+		<remote-id type="github">projg2/uam</remote-id>
 	</upstream>
 </pkgmetadata>

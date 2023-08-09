@@ -10,7 +10,8 @@
 		<remote-id type="cpe">cpe:/a:kde:kdeconnect</remote-id>
 	</upstream>
 	<use>
-		<flag name="pulseaudio">Enable system volume control plugin using <pkg>media-sound/pulseaudio</pkg></flag>
+		<flag name="pulseaudio">Enable system volume control plugin using <pkg>media-libs/libpulse</pkg></flag>
+		<flag name="telephony">Enable telephony plugin using <pkg>kde-frameworks/modemmanager-qt</pkg></flag>
 		<flag name="X">Enable remote input mousepad plugin using <pkg>x11-libs/libfakekey</pkg></flag>
 	</use>
 </pkgmetadata>

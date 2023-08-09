@@ -5,4 +5,9 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpan">ExtUtils-MakeMaker-CPANfile</remote-id>
+		<remote-id type="cpan-module">ExtUtils::MakeMaker::CPANfile</remote-id>
+		<remote-id type="github">charsbar/ExtUtils-MakeMaker-CPANfile</remote-id>
+	</upstream>
 </pkgmetadata>

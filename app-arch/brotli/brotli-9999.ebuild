@@ -3,11 +3,12 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit cmake-multilib distutils-r1
+inherit cmake-multilib distutils-r1 flag-o-matic
 
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/google/${PN}.git"
@@ -28,7 +29,7 @@ HOMEPAGE="https://github.com/google/brotli/"
 
 LICENSE="MIT python? ( Apache-2.0 )"
 SLOT="0/$(ver_cut 1)"
-IUSE="python static-libs test"
+IUSE="python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -41,13 +42,15 @@ DEPEND="
 BDEPEND="
 	python? (
 		${DISTUTILS_DEPS}
-		test? ( dev-python/unittest-or-fail[${PYTHON_USEDEP}] )
+		test? (
+			$(python_gen_cond_dep '
+				dev-python/unittest-or-fail[${PYTHON_USEDEP}]
+			' 3.{9..11})
+		)
 	)
 "
 
 DOCS=( README.md CONTRIBUTING.md )
-
-PATCHES=( "${FILESDIR}/${PV}-linker.patch" )
 
 src_prepare() {
 	cmake_src_prepare
@@ -62,6 +65,8 @@ multilib_src_configure() {
 }
 
 src_configure() {
+	append-lfs-flags
+
 	cmake-multilib_src_configure
 	use python && distutils-r1_src_configure
 }
@@ -82,9 +87,6 @@ src_test() {
 
 multilib_src_install() {
 	cmake_src_install
-	if ! use static-libs; then
-		rm "${ED}"/usr/$(get_libdir)/*.a || die
-	fi
 }
 
 multilib_src_install_all() {

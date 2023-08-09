@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Combinators for executing IO actions in parallel on a thread pool"
-HOMEPAGE="https://batterseapower.github.com/parallel-io"
+HOMEPAGE="https://batterseapower.github.io/parallel-io/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

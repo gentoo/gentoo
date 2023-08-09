@@ -6,13 +6,13 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="The notorious fortune program"
-HOMEPAGE="https://www.shlomifish.org/open-source/projects/fortune-mod/ http://www.redellipse.net/code/fortune"
+HOMEPAGE="https://www.shlomifish.org/open-source/projects/fortune-mod/"
 SRC_URI="https://www.shlomifish.org/open-source/projects/${PN}/arcs/${P}.tar.xz
 	https://github.com/shlomif/fortune-mod/releases/download/${P}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~sparc ~x86"
 IUSE="offensive test"
 RESTRICT="!test? ( test )"
 

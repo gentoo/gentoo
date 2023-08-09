@@ -7,7 +7,7 @@ USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby Pango bindings"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 IUSE=""
 DEPEND+=" dev-libs/glib
 	>=x11-libs/pango-1.14.0[introspection]"

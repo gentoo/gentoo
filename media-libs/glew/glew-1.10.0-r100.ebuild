@@ -1,16 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit multilib-minimal toolchain-funcs versionator
 
 DESCRIPTION="The OpenGL Extension Wrangler Library"
-HOMEPAGE="http://glew.sourceforge.net/"
+HOMEPAGE="https://glew.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="BSD MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 
 RDEPEND=">=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 	!=media-libs/glew-1.10*:0"
@@ -32,8 +32,6 @@ src_prepare() {
 
 	# don't do stupid Solaris specific stuff that won't work in Prefix
 	cp config/Makefile.linux config/Makefile.solaris || die
-	# and let freebsd be built as on linux too
-	cp config/Makefile.linux config/Makefile.freebsd || die
 
 	multilib_copy_sources
 }
@@ -42,7 +40,6 @@ glew_system() {
 	# Set the SYSTEM variable instead of probing. #523444 #595280
 	case ${CHOST} in
 	*linux*)          echo "linux" ;;
-	*-freebsd*)       echo "freebsd" ;;
 	*-darwin*)        echo "darwin" ;;
 	*-solaris*)       echo "solaris" ;;
 	mingw*|*-mingw*)  echo "mingw" ;;

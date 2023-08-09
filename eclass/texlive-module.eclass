@@ -81,7 +81,7 @@ _TEXLIVE_MODULE_ECLASS=1
 
 inherit texlive-common
 
-HOMEPAGE="http://www.tug.org/texlive/"
+HOMEPAGE="https://www.tug.org/texlive/"
 
 COMMON_DEPEND=">=app-text/texlive-core-${TL_PV:-${PV}}"
 
@@ -99,31 +99,38 @@ TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge sam }
 BDEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils"
 
-for i in ${TEXLIVE_MODULE_CONTENTS}; do
-	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
-	done
+tl_uri_prefix="https://dev.gentoo.org/~@dev@/distfiles/texlive/tl-"
+tl_uri_suffix="-${PV}.${PKGEXT}"
+
+tl_uri=( ${TEXLIVE_MODULE_CONTENTS} )
+tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
+for tldev in ${TEXLIVE_DEVS}; do
+	SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 done
 
 # Forge doc SRC_URI
-[[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} doc? ("
-for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
+if [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]]; then
+	SRC_URI+=" doc? ("
+	tl_uri=( ${TEXLIVE_MODULE_DOC_CONTENTS} )
+	tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
 	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
+		SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 	done
-done
-[[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} )"
+	SRC_URI+=" )"
+fi
 
 # Forge source SRC_URI
-if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]] ; then
-	SRC_URI="${SRC_URI} source? ("
-	for i in ${TEXLIVE_MODULE_SRC_CONTENTS}; do
-		for tldev in ${TEXLIVE_DEVS}; do
-			SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
-		done
+if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]]; then
+	SRC_URI+=" source? ("
+	tl_uri=( ${TEXLIVE_MODULE_SRC_CONTENTS} )
+	tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
+	for tldev in ${TEXLIVE_DEVS}; do
+		SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 	done
-	SRC_URI="${SRC_URI} )"
+	SRC_URI+=" )"
 fi
+
+unset tldev tl_uri tl_uri_prefix tl_uri_suffix
 
 RDEPEND="${COMMON_DEPEND}"
 
@@ -157,10 +164,18 @@ texlive-module_src_unpack() {
 	sed -e 's/\/[^/]*$//' -e "s:^:${RELOC_TARGET}/:" "${T}/reloclist" |
 		sort -u |
 		xargs mkdir -p || die
-	local i
+	local i dir="" files=()
 	while read i; do
-		mv "${i}" "${RELOC_TARGET}/${i%/*}" || die
+		if [[ ${RELOC_TARGET}/${i%/*} != "${dir}" ]]; then
+			# new dir, do the previous move
+			[[ -z ${dir} ]] || mv "${files[@]}" "${dir}" || die
+			dir="${RELOC_TARGET}/${i%/*}"
+			files=()
+		fi
+		# collect files with same destination dir
+		files+=( "${i}" )
 	done < "${T}/reloclist"
+	mv "${files[@]}" "${dir}" || die
 }
 
 # @FUNCTION: texlive-module_add_format
@@ -326,8 +341,8 @@ texlive-module_src_compile() {
 	done
 
 	# Determine texlive-core version for fmtutil call
-        fmt_call="$(has_version '>=app-text/texlive-core-2019' \
-         && echo "fmtutil-user" || echo "fmtutil")"
+	fmt_call="$(has_version '>=app-text/texlive-core-2019' \
+		&& echo "fmtutil-user" || echo "fmtutil")"
 
 	# Build format files
 	for i in texmf-dist/fmtutil/format*.cnf; do
@@ -386,7 +401,6 @@ texlive-module_src_install() {
 	if [[ -d tlpkg ]] && use source; then
 		cp -pR tlpkg "${ED}/usr/share/" || die
 	fi
-
 
 	if [[ -d texmf-var ]]; then
 		insinto /var/lib/texmf

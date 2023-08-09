@@ -380,7 +380,7 @@ CRATES="
 	zvariant_derive-3.10.0
 "
 
-inherit cargo flag-o-matic
+inherit cargo
 
 DESCRIPTION="The minimal, blazing-fast, and infinitely customizable prompt for any shell"
 HOMEPAGE="https://starship.rs/"
@@ -392,7 +392,7 @@ SRC_URI="
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 ISC MIT MIT-0 MPL-2.0 Unicode-DFS-2016 Unlicense WTFPL-2 ZLIB"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND=">=virtual/rust-1.65"
 
@@ -404,9 +404,6 @@ PATCHES=(
 QA_FLAGS_IGNORED="usr/bin/starship"
 
 src_configure() {
-	# See https://bugs.gentoo.org/869758
-	filter-lto
-
 	export PKG_CONFIG_ALLOW_CROSS=1
 	export OPENSSL_NO_VENDOR=true
 

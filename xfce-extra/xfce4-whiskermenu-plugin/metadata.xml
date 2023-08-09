@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>christian.tietz@mailbox.org</email>
-		<name>Christian Tietz</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>xfce@gentoo.org</email>
 		<name>XFCE Team</name>
@@ -45,4 +37,9 @@
 		<changelog>https://gottcode.org/xfce4-whiskermenu-plugin/#releasenotes</changelog>
 		<remote-id type="github">gottcode/xfce4-whiskermenu-plugin</remote-id>
 	</upstream>
+	<use>
+		<flag name="accountsservice">
+			Enable support for AccountsService.
+		</flag>
+	</use>
 </pkgmetadata>

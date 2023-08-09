@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="python test"
 RESTRICT="!test? ( test )"
 
@@ -55,7 +55,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with python) \
-		--with-check=$(usex test "${ESYSROOT}/usr")
+		$(use_with test check "${ESYSROOT}/usr")
 }
 
 src_compile() {

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="Changelog README.md"
 
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 inherit ruby-fakegem
 
 DESCRIPTION="A framework to implement robust multiprocess servers"
-HOMEPAGE="https://github.com/fluent/serverengine"
+HOMEPAGE="https://github.com/treasure-data/serverengine"
 LICENSE="Apache-2.0"
 
 KEYWORDS="~amd64"

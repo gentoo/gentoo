@@ -15,6 +15,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 BDEPEND="dev-ml/dune-configurator"

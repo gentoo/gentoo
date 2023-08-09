@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/lib/}"
 
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="amd64 ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~ppc ppc64 ~riscv ~x86"
 IUSE="ogg rtlsdr test websocket"
 
 RESTRICT="!test? ( test )"
@@ -55,18 +55,6 @@ src_configure() {
 }
 
 src_test() {
-	local myctestargs=()
-
-	if use ppc || use ppc64 || use sparc ; then
-		# Broken on big endian for quite some time.
-		# Reported upstream: file needs to be replaced w/ a normal library
-		# for b64.
-		# bug #763126
-		myctestargs+=(
-			-E "(test_base64)"
-		)
-	fi
-
 	# Unit tests
 	BUILD_DIR="${BUILD_DIR}"/test cmake_src_test
 

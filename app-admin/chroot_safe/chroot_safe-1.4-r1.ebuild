@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Chroot any dynamically linked application in a safe and sane manner"
-HOMEPAGE="http://chrootsafe.sourceforge.net/"
+HOMEPAGE="https://chrootsafe.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN//_}/${P}.tgz"
 
 LICENSE="MIT"

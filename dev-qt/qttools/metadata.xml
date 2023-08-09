@@ -11,11 +11,11 @@
 		<flag name="distancefieldgenerator">Build Qt Distance Field Generator</flag>
 		<flag name="linguist">Build Qt Linguist</flag>
 		<flag name="pixeltool">Build Qt Pixeltool</flag>
+		<flag name="qattributionsscanner">Build Qt Source Code Attribution Scanner</flag>
 		<flag name="qdbus">Build the Qt D-Bus Interface and D-Bus Viewer</flag>
 		<flag name="qdoc">Build Qt Documentation Generator</flag>
-		<flag name="qtattributionsscanner">Build Qt Source Code Attribution Scanner</flag>
-		<flag name="qtdiag">Build Qt Diag</flag>
-		<flag name="qtplugininfo">Build Qt Plugin Info</flag>
+		<flag name="qdiag">Build Qt Diag</flag>
+		<flag name="qplugininfo">Build Qt Plugin Info</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>

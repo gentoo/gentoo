@@ -1,0 +1,65 @@
+https://bugs.gentoo.org/907479
+https://bugs.gentoo.org/907481
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/55ee0635d3f63c408067dd904f8e8b718983ba0e
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/479f0175b51ea74b07084c8a508b7a7224445a02
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/4428
+
+From 864a329f7946460f9bb9dac171d0d80b2ff09a07 Mon Sep 17 00:00:00 2001
+From: Nirbheek Chauhan <nirbheek@centricular.com>
+Date: Fri, 14 Apr 2023 13:18:52 +0530
+Subject: [PATCH 1/2] meson: Fix libdrm and vaapi configure checks
+
+We do not need fallback: for libdrm checks because the wrap file
+already has a [provide] section.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/4428>
+--- a/gst-libs/gst/va/meson.build
++++ b/gst-libs/gst/va/meson.build
+@@ -31,17 +31,26 @@ if host_system != 'linux'
+   subdir_done()
+ endif
+ 
++va_opt = get_option('va')
++msdk_opt = get_option('msdk')
++qsv_opt = get_option('qsv')
++if va_opt.disabled() and msdk_opt.disabled() and qsv_opt.disabled()
++  subdir_done()
++endif
++
++va_required = va_opt.enabled() or msdk_opt.enabled() or qsv_opt.enabled()
++
+ libva_req = ['>= 1.6']
+-libva_dep = dependency('libva', version: libva_req, required: false,
++libva_dep = dependency('libva', version: libva_req, required: va_required,
+     fallback: ['libva', 'libva_dep'])
+-libva_drm_dep = dependency('libva-drm', version: libva_req, required: false,
++libva_drm_dep = dependency('libva-drm', version: libva_req, required: va_required,
+     fallback: ['libva', 'libva_drm_dep'])
+ 
+ if not (libva_dep.found() and libva_drm_dep.found())
+   subdir_done()
+ endif
+ 
+-libdrm_dep = dependency('libdrm', required: false, fallback: ['libdrm', 'ext_libdrm'])
++libdrm_dep = dependency('libdrm', version: '>=2.4', required: false)
+ cdata.set10('HAVE_LIBDRM', libdrm_dep.found())
+ 
+ va_enums = gnome.mkenums_simple('va-enumtypes',
+--- a/sys/kms/meson.build
++++ b/sys/kms/meson.build
+@@ -11,11 +11,9 @@ if host_system != 'linux'
+ endif
+ 
+ libdrm_dep = dependency('libdrm', version : '>= 2.4.98',
+-                        required : get_option('kms'),
+-                        fallback: ['libdrm', 'ext_libdrm'])
++                        required : get_option('kms'))
+ libdrm_hdr_dep = dependency('libdrm', version : '>= 2.4.104',
+-                            required : false,
+-                            fallback: ['libdrm', 'ext_libdrm'])
++                            required : false)
+ mathlib = cc.find_library('m', required : false)
+ 
+ if libdrm_hdr_dep.found() and mathlib.found()
+-- 
+2.40.1

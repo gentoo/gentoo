@@ -1,15 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake xdg udev
 
+MY_PV=$(ver_cut 1-2)
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
-HOMEPAGE="https://www.mixxx.org/"
-if [[ "${PV}" == *9999 ]] ; then
+HOMEPAGE="https://mixxx.org/"
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
-	if [[ "${PV}" == ?.?.9999 ]] ; then
+	if [[ ${PV} == ?.?.9999 ]] ; then
 		EGIT_BRANCH=${PV%.9999}
 	fi
 	EGIT_REPO_URI="https://github.com/mixxxdj/${PN}.git"
@@ -25,7 +26,7 @@ IUSE="aac ffmpeg hid keyfinder lv2 modplug mp3 mp4 opus qtkeychain shout wavpack
 RDEPEND="
 	dev-db/sqlite
 	dev-libs/glib:2
-	dev-libs/protobuf:0=
+	dev-libs/protobuf:=
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -70,9 +71,9 @@ RDEPEND="
 	mp3? ( media-libs/libmad )
 	mp4? ( media-libs/libmp4v2:= )
 	opus? (	media-libs/opusfile )
-	qtkeychain? ( dev-libs/qtkeychain )
+	qtkeychain? ( dev-libs/qtkeychain:=[qt5(+)] )
 	wavpack? ( media-sound/wavpack )
-	"
+"
 	# libshout-idjc-2.4.6 is required. Please check and re-add once it's
 	# available in ::gentoo
 	# Meanwhile we're using the bundled libshout-idjc. See bug #775443
@@ -81,13 +82,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
 "
-BDEPEND="virtual/pkgconfig
+BDEPEND="
 	dev-qt/qttest:5
-	dev-qt/qtxmlpatterns:5"
+	dev-qt/qtxmlpatterns:5
+	virtual/pkgconfig
+"
 
 PATCHES=(
-	"${FILESDIR}"/mixxx-9999-docs.patch
-	)
+	"${FILESDIR}"/${PN}-9999-docs.patch
+)
 
 PLOCALES="
 	ca cs de en es fi fr gl id it ja kn nl pl pt ro ru sl sq sr tr zh-CN zh-TW
@@ -95,18 +98,14 @@ PLOCALES="
 
 mixxx_set_globals() {
 	local lang
-	local MANUAL_URI_BASE="https://downloads.mixxx.org/manual/$(ver_cut 1-2)"
+	local MANUAL_URI_BASE="https://downloads.mixxx.org/manual/${MY_PV}"
 	for lang in ${PLOCALES} ; do
-		SRC_URI+=" l10n_${lang}? ( ${MANUAL_URI_BASE}/${PN}-manual-$(ver_cut 1-2)-${lang/ja/ja-JP}.pdf )"
+		SRC_URI+=" l10n_${lang}? ( ${MANUAL_URI_BASE}/${PN}-manual-${MY_PV}-${lang/ja/ja-JP}.pdf )"
 		IUSE+=" l10n_${lang/ en/ +en}"
 	done
-	SRC_URI+=" ${MANUAL_URI_BASE}/${PN}-manual-$(ver_cut 1-2)-en.pdf"
+	SRC_URI+=" ${MANUAL_URI_BASE}/${PN}-manual-${MY_PV}-en.pdf"
 }
 mixxx_set_globals
-
-src_prepare() {
-	cmake_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -129,17 +128,12 @@ src_configure() {
 		-DWAVPACK="$(usex wavpack on off)"
 	)
 
-	if [[ "${PV}" == 9999 ]] ; then
+	if [[ ${PV} == 9999 ]] ; then
 		mycmakeargs+=(
 			-DENGINEPRIME="OFF"
-
 		)
 	fi
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
 }
 
 src_install() {
@@ -149,7 +143,7 @@ src_install() {
 	local locale
 	for locale in ${PLOCALES} ; do
 		if use l10n_${locale} ; then
-			dodoc "${DISTDIR}"/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
+			dodoc "${DISTDIR}"/${PN}-manual-${MY_PV}-${locale/ja/ja-JP}.pdf
 		fi
 	done
 }

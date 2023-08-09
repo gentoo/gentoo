@@ -14,5 +14,6 @@
   </use>
   <upstream>
     <remote-id type="gitlab">lv2/suil</remote-id>
+    <remote-id type="github">lv2/suil</remote-id>
   </upstream>
 </pkgmetadata>

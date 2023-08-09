@@ -12,7 +12,7 @@ HOMEPAGE="http://sdl.perl.org/ https://search.cpan.org/dist/SDL/ https://github.
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa ~x86"
 
 RDEPEND="
 	>=dev-perl/Alien-SDL-1.446
@@ -43,6 +43,11 @@ BDEPEND="${RDEPEND}
 "
 
 mydoc='CHANGELOG README TODO'
+
+PERL_RM_FILES=(
+	# Hangs, see bug #892011 and https://aur.archlinux.org/packages/perl-sdl#comment-903413.
+	t/core_video.t
+)
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.546-pointer.patch

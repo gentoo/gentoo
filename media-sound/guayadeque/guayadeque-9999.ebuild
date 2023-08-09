@@ -21,7 +21,7 @@ HOMEPAGE="https://guayadeque.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="appindicator ipod +minimal"
+IUSE="ipod +minimal"
 
 # No test available, Making src_test fail
 RESTRICT="test"
@@ -50,7 +50,6 @@ RDEPEND="
 	net-misc/curl
 	sys-apps/dbus
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	appindicator? ( dev-libs/libindicate )
 	ipod? ( media-libs/libgpod )
 	!minimal? ( ${GST_DEPS} )"
 DEPEND="${RDEPEND}"
@@ -83,7 +82,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_IPOD=$(usex ipod)
-		-DENABLE_LIBINDICATE=$(usex appindicator)
 	)
 	cmake_src_configure
 }

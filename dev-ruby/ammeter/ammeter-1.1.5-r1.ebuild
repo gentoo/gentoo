@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -32,8 +32,6 @@ ruby_add_bdepend "
 		>=dev-ruby/rails-4.0
 		>=dev-ruby/uglifier-1.3
 		>=dev-ruby/rake-0.10
-		>=dev-ruby/coffee-rails-4.0
-		>=dev-ruby/sass-rails-4.0
 		>=dev-ruby/jquery-rails-3.0
 		dev-util/cucumber
 		dev-util/aruba
@@ -51,8 +49,8 @@ all_ruby_prepare() {
 		-e '/\(cucumber\|aruba\)/s:,.*$::' \
 		${RUBY_FAKEGEM_GEMSPEC} || die
 
-	# haml-rails is not packaged
-	sed -i -e '/haml-rails/d' ${RUBY_FAKEGEM_GEMSPEC} Gemfile || die
+	# haml-rails is not packaged, coffee-rails and sass-rails are no longer maintained
+	sed -i -e '/\(coffee\|haml\|sass\)-rails/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} Gemfile || die
 	rm -f spec/ammeter/rspec/generator/matchers/have_correct_syntax_spec.rb || die
 }
 

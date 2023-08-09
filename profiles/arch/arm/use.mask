@@ -121,10 +121,6 @@ video_cards_radeonsi
 # media-libs/xine-lib is not keyworded
 xine
 
-# Michał Górny <mgorny@gentoo.org> (2013-05-04)
-# Unmask systemd since it is keyworded here.
--systemd
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl

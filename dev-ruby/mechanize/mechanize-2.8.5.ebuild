@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/sparklemotion/mechanize"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 ruby_add_bdepend ">=dev-ruby/hoe-3.7
@@ -26,7 +26,7 @@ ruby_add_rdepend "
 	>=dev-ruby/http-cookie-1.0.3:0
 	dev-ruby/mime-types:3
 	>=dev-ruby/net-http-digest_auth-1.4.1:0
-	|| ( dev-ruby/net-http-persistent:4 dev-ruby/net-http-persistent:3 )
+	dev-ruby/net-http-persistent:4
 	>=dev-ruby/nokogiri-1.11.2:0
 	>=dev-ruby/rubyntlm-0.6.3:0
 	>=dev-ruby/webrick-1.7:0

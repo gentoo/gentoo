@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit gnome2-utils xdg
 
-DESCRIPTION="A simple MTP client for MP3 players"
-HOMEPAGE="http://gmtp.sourceforge.net/"
+DESCRIPTION="Simple MTP client for MP3 players"
+HOMEPAGE="https://gmtp.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

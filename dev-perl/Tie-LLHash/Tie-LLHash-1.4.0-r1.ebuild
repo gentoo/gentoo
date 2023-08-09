@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Implements an ordered hash-like object"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="virtual/perl-Carp"
 BDEPEND="${RDEPEND}

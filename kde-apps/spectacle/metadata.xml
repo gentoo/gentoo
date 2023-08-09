@@ -9,7 +9,6 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="annotate">Enable support for screenshot annotations using <pkg>media-libs/kimageannotator</pkg></flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
 	</use>
 </pkgmetadata>

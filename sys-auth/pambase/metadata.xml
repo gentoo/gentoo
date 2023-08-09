@@ -39,7 +39,7 @@
 		</flag>
 		<flag name="pwquality">
 			Enable pam_pwquality module on system auth stack for passwd
-			quality validation. It is used be dafault by Fedora GNU/*/Linux.
+			quality validation. It is used by default by Fedora GNU/*/Linux.
 		</flag>
 		<flag name="mktemp">
 			Enable pam_mktemp module on system auth stack for session

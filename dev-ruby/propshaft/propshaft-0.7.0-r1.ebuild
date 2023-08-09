@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rails/propshaft/archive/v${PV}.tar.gz -> ${P}-git.tg
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 IUSE=""
 

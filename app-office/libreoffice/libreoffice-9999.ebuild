@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 
 MY_PV="${PV/_alpha/.alpha}"
@@ -83,13 +83,12 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility base bluetooth +branding clang coinmp +cups custom-cflags +dbus debug eds firebird
-googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test vulkan
+googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test valgrind vulkan
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	base? ( firebird java )
 	bluetooth? ( dbus )
-	gtk? ( dbus )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -101,8 +100,8 @@ RESTRICT="!test? ( test )"
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
-#[[ ${MY_PV} == *9999* ]] || \
-#KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux"
+[[ ${MY_PV} == *9999* ]] || \
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -143,7 +142,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/nspr
 	dev-libs/nss
 	>=dev-libs/redland-1.0.16
-	>=dev-libs/xmlsec-1.2.28[nss]
+	>=dev-libs/xmlsec-1.2.35:=[nss]
 	>=games-engines/box2d-2.4.1:0
 	media-gfx/fontforge
 	media-gfx/graphite2
@@ -180,7 +179,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	coinmp? ( sci-libs/coinor-mp )
 	cups? ( net-print/cups )
-	dbus? ( sys-apps/dbus[X] )
+	dbus? ( sys-apps/dbus )
 	eds? (
 		dev-libs/glib:2
 		gnome-base/dconf
@@ -243,6 +242,7 @@ DEPEND="${COMMON_DEPEND}
 		media-fonts/dejavu
 		media-fonts/liberation-fonts
 	)
+	valgrind? ( dev-util/valgrind )
 "
 RDEPEND="${COMMON_DEPEND}
 	acct-group/libreoffice
@@ -434,10 +434,6 @@ src_configure() {
 	# Ensure we use correct toolchain
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
 
-	if use vulkan && ! use clang ; then
-		ewarn "Building skia with gcc may lead to performance issues. Disable vulkan or enable clang."
-	fi
-
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
 	# System python enablement:
@@ -531,6 +527,7 @@ src_configure() {
 		$(use_with googledrive gdrive-client-secret ${google_default_client_secret})
 		$(use_with java)
 		$(use_with odk doxygen)
+		$(use_with valgrind)
 	)
 
 	if use eds || use gtk; then

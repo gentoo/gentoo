@@ -1,0 +1,247 @@
+diff -r 79b97f01064f cffi/vengine_cpy.py
+--- a/cffi/vengine_cpy.py	Thu Feb 23 05:42:01 2023 +0100
++++ b/cffi/vengine_cpy.py	Sat May 27 11:03:01 2023 +0200
+@@ -1,10 +1,16 @@
+ #
+ # DEPRECATED: implementation for ffi.verify()
+ #
+-import sys, imp
++import sys
+ from . import model
+ from .error import VerificationError
+ 
++if sys.version_info >= (3, 12):
++    import importlib.machinery
++    import importlib.util
++else:
++    import imp
++
+ 
+ class VCPythonEngine(object):
+     _class_key = 'x'
+@@ -20,16 +26,22 @@
+         pass
+ 
+     def find_module(self, module_name, path, so_suffixes):
+-        try:
+-            f, filename, descr = imp.find_module(module_name, path)
+-        except ImportError:
+-            return None
+-        if f is not None:
+-            f.close()
++        if sys.version_info >= (3, 12):
++            spec = importlib.machinery.PathFinder.find_spec(module_name, path)
++            if spec is None:
++                return None
++            filename = spec.origin
++        else:
++            try:
++                f, filename, descr = imp.find_module(module_name, path)
++            except ImportError:
++                return None
++            if f is not None:
++                f.close()
+         # Note that after a setuptools installation, there are both .py
+         # and .so files with the same basename.  The code here relies on
+         # imp.find_module() locating the .so in priority.
+-        if descr[0] not in so_suffixes:
++        if not filename.endswith(tuple(so_suffixes)):
+             return None
+         return filename
+ 
+@@ -145,15 +157,23 @@
+     def load_library(self, flags=None):
+         # XXX review all usages of 'self' here!
+         # import it as a new extension module
+-        imp.acquire_lock()
++        if sys.version_info < (3, 12):
++            imp.acquire_lock()
+         try:
+             if hasattr(sys, "getdlopenflags"):
+                 previous_flags = sys.getdlopenflags()
+             try:
+                 if hasattr(sys, "setdlopenflags") and flags is not None:
+                     sys.setdlopenflags(flags)
+-                module = imp.load_dynamic(self.verifier.get_module_name(),
+-                                          self.verifier.modulefilename)
++                if sys.version_info >= (3, 12):
++                    spec = importlib.util.spec_from_file_location(
++                        self.verifier.get_module_name(),
++                        self.verifier.modulefilename)
++                    module = importlib.util.module_from_spec(spec)
++                    spec.loader.exec_module(module)
++                else:
++                    module = imp.load_dynamic(self.verifier.get_module_name(),
++                                              self.verifier.modulefilename)
+             except ImportError as e:
+                 error = "importing %r: %s" % (self.verifier.modulefilename, e)
+                 raise VerificationError(error)
+@@ -161,7 +181,8 @@
+                 if hasattr(sys, "setdlopenflags"):
+                     sys.setdlopenflags(previous_flags)
+         finally:
+-            imp.release_lock()
++            if sys.version_info < (3, 12):
++                imp.release_lock()
+         #
+         # call loading_cpy_struct() to get the struct layout inferred by
+         # the C compiler
+diff -r 79b97f01064f testing/cffi0/test_verify.py
+--- a/testing/cffi0/test_verify.py	Thu Feb 23 05:42:01 2023 +0100
++++ b/testing/cffi0/test_verify.py	Sat May 27 11:03:01 2023 +0200
+@@ -1575,10 +1575,16 @@
+ def test_callback_in_thread():
+     if sys.platform == 'win32':
+         pytest.skip("pthread only")
+-    import os, subprocess, imp
++    import os, subprocess
+     arg = os.path.join(os.path.dirname(__file__), 'callback_in_thread.py')
+-    g = subprocess.Popen([sys.executable, arg,
+-                          os.path.dirname(imp.find_module('cffi')[1])])
++    if sys.version_info >= (3, 12):
++        import importlib.util
++        spec = importlib.util.find_spec('cffi')
++        cffi_path = os.path.dirname(spec.origin)
++    else:
++        import imp
++        cffi_path = imp.find_module('cffi')[1]
++    g = subprocess.Popen([sys.executable, arg, os.path.dirname(cffi_path)])
+     result = g.wait()
+     assert result == 0
+ 
+diff -r 79b97f01064f testing/cffi0/test_zdistutils.py
+--- a/testing/cffi0/test_zdistutils.py	Thu Feb 23 05:42:01 2023 +0100
++++ b/testing/cffi0/test_zdistutils.py	Sat May 27 11:03:01 2023 +0200
+@@ -1,8 +1,9 @@
+-import sys, os, imp, math, shutil
++import sys, os, math, shutil
+ import pytest
+ from cffi import FFI, FFIError
+ from cffi.verifier import Verifier, _locate_engine_class, _get_so_suffixes
+ from cffi.ffiplatform import maybe_relative_path
++from testing.support import load_dynamic
+ from testing.udir import udir
+ 
+ 
+@@ -80,7 +81,7 @@
+         v.compile_module()
+         assert v.get_module_name().startswith('_cffi_')
+         if v.generates_python_module():
+-            mod = imp.load_dynamic(v.get_module_name(), v.modulefilename)
++            mod = load_dynamic(v.get_module_name(), v.modulefilename)
+             assert hasattr(mod, '_cffi_setup')
+ 
+     def test_compile_module_explicit_filename(self):
+@@ -95,7 +96,7 @@
+         assert filename == v.modulefilename
+         assert v.get_module_name() == basename
+         if v.generates_python_module():
+-            mod = imp.load_dynamic(v.get_module_name(), v.modulefilename)
++            mod = load_dynamic(v.get_module_name(), v.modulefilename)
+             assert hasattr(mod, '_cffi_setup')
+ 
+     def test_name_from_checksum_of_cdef(self):
+diff -r 79b97f01064f testing/cffi1/test_new_ffi_1.py
+--- a/testing/cffi1/test_new_ffi_1.py	Thu Feb 23 05:42:01 2023 +0100
++++ b/testing/cffi1/test_new_ffi_1.py	Sat May 27 11:03:01 2023 +0200
+@@ -1,5 +1,5 @@
+ import pytest
+-import platform, imp
++import platform
+ import sys, os, ctypes
+ import cffi
+ from testing.udir import udir
+@@ -91,7 +91,7 @@
+ 
+     outputfilename = recompile(ffi1, "test_new_ffi_1", CCODE,
+                                tmpdir=str(udir))
+-    module = imp.load_dynamic("test_new_ffi_1", outputfilename)
++    module = load_dynamic("test_new_ffi_1", outputfilename)
+     ffi = module.ffi
+     construction_params = (ffi1, CCODE)
+ 
+@@ -1619,8 +1619,8 @@
+         ffi2 = cffi.FFI(); ffi2.cdef(CDEF2)
+         outputfilename = recompile(ffi2, "test_multiple_independent_structs",
+                                    CDEF2, tmpdir=str(udir))
+-        module = imp.load_dynamic("test_multiple_independent_structs",
+-                                  outputfilename)
++        module = load_dynamic("test_multiple_independent_structs",
++                              outputfilename)
+         ffi1 = module.ffi
+         foo1 = ffi1.new("struct ab *", [10])
+         foo2 = ffi .new("struct ab *", [20, 30])
+@@ -1635,8 +1635,8 @@
+         outputfilename = recompile(ffi2,
+                                    "test_include_struct_union_enum_typedef",
+                                    CCODE, tmpdir=str(udir))
+-        module = imp.load_dynamic("test_include_struct_union_enum_typedef",
+-                                  outputfilename)
++        module = load_dynamic("test_include_struct_union_enum_typedef",
++                              outputfilename)
+         ffi2 = module.ffi
+         #
+         p = ffi2.new("struct nonpacked *", [b'A', -43141])
+@@ -1783,7 +1783,7 @@
+                                    "int myfunc(int x) { return x + 1; }\n"
+                                    "int myvar = -5;\n"
+                                    "#define MYFOO 42", tmpdir=str(udir))
+-        imp.load_dynamic("_test_import_from_lib", outputfilename)
++        load_dynamic("_test_import_from_lib", outputfilename)
+         from _test_import_from_lib.lib import myfunc, myvar, MYFOO
+         assert MYFOO == 42
+         assert myfunc(43) == 44
+diff -r 79b97f01064f testing/support.py
+--- a/testing/support.py	Thu Feb 23 05:42:01 2023 +0100
++++ b/testing/support.py	Sat May 27 11:03:01 2023 +0200
+@@ -1,5 +1,11 @@
+ import sys, os
+ 
++if sys.version_info >= (3, 12):
++    import importlib.util
++else:
++    import imp
++
++
+ if sys.version_info < (3,):
+     __all__ = ['u', 'arraytostring']
+ 
+@@ -16,7 +22,7 @@
+         return a.tostring()
+ 
+ else:
+-    __all__ = ['u', 'unicode', 'long', 'arraytostring']
++    __all__ = ['u', 'unicode', 'long', 'arraytostring', 'load_dynamic']
+     u = ""
+     unicode = str
+     long = int
+@@ -71,15 +77,27 @@
+     def getvalue(self):
+         return self._value
+ 
++
++def load_dynamic(module_name, outputfilename):
++    if sys.version_info >= (3, 12):
++        import importlib.util
++        spec = importlib.util.spec_from_file_location(module_name,
++                                                      outputfilename)
++        module = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(module)
++        return module
++    else:
++        return imp.load_dynamic(module_name, outputfilename)
++
++
+ def _verify(ffi, module_name, preamble, *args, **kwds):
+-    import imp
+     from cffi.recompiler import recompile
+     from .udir import udir
+     assert module_name not in sys.modules, "module name conflict: %r" % (
+         module_name,)
+     kwds.setdefault('tmpdir', str(udir))
+     outputfilename = recompile(ffi, module_name, preamble, *args, **kwds)
+-    module = imp.load_dynamic(module_name, outputfilename)
++    module = load_dynamic(module_name, outputfilename)
+     #
+     # hack hack hack: copy all *bound methods* from module.ffi back to the
+     # ffi instance.  Then calls like ffi.new() will invoke module.ffi.new().

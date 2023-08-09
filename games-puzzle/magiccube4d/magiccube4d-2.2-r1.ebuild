@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,9 @@ inherit desktop
 
 MY_PV="${PV/./_}"
 DESCRIPTION="Four-dimensional analog of Rubik's cube"
-HOMEPAGE="http://www.superliminal.com/cube/cube.htm"
-SRC_URI="http://www.superliminal.com/cube/mc4d-src-${MY_PV}.tgz
-	http://superliminal.com/cube/cube_transp.gif -> ${PN}.gif"
+HOMEPAGE="https://www.superliminal.com/cube/cube.htm"
+SRC_URI="https://www.superliminal.com/cube/mc4d-src-${MY_PV}.tgz
+	https://superliminal.com/cube/cube_transp.gif -> ${PN}.gif"
 
 LICENSE="free-noncomm"
 SLOT="0"

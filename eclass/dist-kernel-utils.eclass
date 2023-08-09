@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dist-kernel-utils.eclass
@@ -12,12 +12,23 @@
 # This eclass provides various utility functions related to Distribution
 # Kernels.
 
+# @ECLASS_VARIABLE: KERNEL_IUSE_SECUREBOOT
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-null value, inherits secureboot.eclass
+# and allows signing of generated kernel images.
+
 if [[ ! ${_DIST_KERNEL_UTILS} ]]; then
 
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+	inherit secureboot
+fi
 
 # @FUNCTION: dist-kernel_build_initramfs
 # @USAGE: <output> <version>
@@ -66,7 +77,7 @@ dist-kernel_get_image_path() {
 		arm)
 			echo arch/arm/boot/zImage
 			;;
-		hppa|ppc|ppc64)
+		hppa|ppc|ppc64|sparc)
 			# https://www.kernel.org/doc/html/latest/powerpc/bootwrapper.html
 			# ./ is required because of ${image_path%/*}
 			# substitutions in the code
@@ -104,12 +115,27 @@ dist-kernel_install_kernel() {
 	if [[ ${magic} == MZ ]]; then
 		einfo "Combined UEFI kernel+initramfs executable found"
 		# install the combined executable in place of kernel
-		image=${initrd}.uefi
+		image=${initrd%/*}/uki.efi
 		mv "${initrd}" "${image}" || die
-		# put an empty file in place of initrd.  installing a duplicate
-		# file would waste disk space, and removing it entirely provokes
-		# kernel-install to regenerate it via dracut.
-		> "${initrd}"
+		# We moved the generated initrd, prevent dracut from running again
+		# https://github.com/dracutdevs/dracut/pull/2405
+		shopt -s nullglob
+		local plugins=()
+		for file in "${EROOT}"/etc/kernel/install.d/*.install; do
+			plugins+=( "${file}" )
+		done
+		for file in "${EROOT}"/usr/lib/kernel/install.d/*.install; do
+			if ! has "${file##*/}" 50-dracut.install 51-dracut-rescue.install "${plugins[@]##*/}"; then
+					plugins+=( "${file}" )
+			fi
+		done
+		shopt -u nullglob
+		export KERNEL_INSTALL_PLUGINS="${KERNEL_INSTALL_PLUGINS} ${plugins[@]}"
+	fi
+
+	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+		# Kernel-install requires uki's are named uki.efi, sign in-place
+		secureboot_sign_efi_file "${image}" "${image}"
 	fi
 
 	ebegin "Installing the kernel via installkernel"
@@ -145,8 +171,8 @@ dist-kernel_reinstall_initramfs() {
 		eerror "Initramfs will not be updated.  Please reinstall your kernel."
 		return
 	fi
-	if [[ ! -f ${initramfs_path} ]]; then
-		einfo "No initramfs found at ${initramfs_path}"
+	if [[ ! -f ${initramfs_path} && ! -f ${initramfs_path%/*}/uki.efi ]]; then
+		einfo "No initramfs or uki found at ${image_path}"
 		return
 	fi
 

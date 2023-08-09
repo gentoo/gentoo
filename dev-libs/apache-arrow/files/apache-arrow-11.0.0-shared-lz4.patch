@@ -1,0 +1,14 @@
+Index: cpp/cmake_modules/Findlz4Alt.cmake
+===================================================================
+--- cpp.orig/cmake_modules/Findlz4Alt.cmake
++++ cpp/cmake_modules/Findlz4Alt.cmake
+@@ -32,8 +32,8 @@ if(lz4_FOUND)
+   # Conan uses lz4::lz4 not LZ4::lz4
+   if(NOT TARGET LZ4::lz4 AND TARGET lz4::lz4)
+     add_library(LZ4::lz4 ALIAS lz4::lz4)
++    return()
+   endif()
+-  return()
+ endif()
+ 
+ if(MSVC_TOOLCHAIN AND NOT DEFINED LZ4_MSVC_LIB_PREFIX)

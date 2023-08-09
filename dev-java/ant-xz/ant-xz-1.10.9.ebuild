@@ -11,7 +11,7 @@ inherit ant-tasks
 
 DESCRIPTION="Apache Ant's optional tasks for XZ compression"
 
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 DEPEND="dev-java/xz-java"
 RDEPEND="${DEPEND}"

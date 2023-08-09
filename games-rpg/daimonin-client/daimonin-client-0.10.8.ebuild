@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools desktop
 
-DESCRIPTION="A graphical 2D tile-based MMORPG"
-HOMEPAGE="http://daimonin.sourceforge.net/"
+DESCRIPTION="Graphical 2D tile-based MMORPG"
+HOMEPAGE="https://daimonin.sourceforge.net/"
 SRC_URI="
 	https://dev.gentoo.org/~soap/distfiles/${P}.zip
 	music? ( mirror://sourceforge/daimonin/daimoninMusicLQ20100827.zip )"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug music"

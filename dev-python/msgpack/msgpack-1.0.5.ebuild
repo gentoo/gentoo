@@ -3,8 +3,9 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -40,4 +41,9 @@ python_prepare_all() {
 	fi
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	rm -rf msgpack || die
+	epytest
 }

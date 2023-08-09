@@ -16,10 +16,14 @@ HOMEPAGE="https://daid.github.io/EmptyEpsilon/"
 # a separate SeriousProton instance (and currently EmptyEpsilon seems to
 # be the only consumer).
 SRC_URI="
-	https://github.com/daid/EmptyEpsilon/archive/EE-${PV}.tar.gz -> EmptyEpsilon-${PV}.tar.gz
+	https://github.com/daid/${PN}/archive/EE-${PV}.tar.gz -> ${PN}-${PV}.tar.gz
 	https://github.com/daid/SeriousProton/archive/EE-${PV}.tar.gz -> SeriousProton-${PV}.tar.gz
 	https://github.com/BinomialLLC/basis_universal/archive/refs/tags/v${MY_BU_VER}.tar.gz -> basis_universal_${MY_BU_VER}.tar.gz
 	https://github.com/zeux/meshoptimizer/archive/refs/tags/v${MY_MO_VER}.tar.gz -> meshoptimizer-${MY_MO_VER}.tar.gz
+	https://github.com/Flowdalic/SeriousProton/commit/dc9dccf6c802b9c55ac4eccad424d2b1af9f4b93.patch ->
+		SeriousProton-2022.10.28-add-missing-cstdint-include.patch
+	https://github.com/void-linux/void-packages/raw/bfb212a0ca0f9dda6f34f837e723156f46813d4d/srcpkgs/${PN}/patches/musl_and_ppc.patch ->
+		${PN}-2022.10.28-musl-and-ppc.patch
 "
 
 # EmptyEpsilon is mostly licensed under GPL, however the art ressources
@@ -72,9 +76,14 @@ src_prepare() {
 
 	local serious_proton_patches=(
 		"${FILESDIR}/SeriousProton-cmake.patch"
+		# https://github.com/daid/SeriousProton/pull/236
+		"${DISTDIR}/SeriousProton-2022.10.28-add-missing-cstdint-include.patch"
 	)
 	eapply --directory="${WORKDIR}/SeriousProton-EE-${PV}" \
 		   "${serious_proton_patches[@]}"
+
+	# https://bugs.gentoo.org/895994
+	eapply -p2 "${DISTDIR}/EmptyEpsilon-2022.10.28-musl-and-ppc.patch"
 }
 
 src_configure() {

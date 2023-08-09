@@ -1,0 +1,11 @@
+--- a/util/dvbdate/dvbdate.c
++++ b/util/dvbdate/dvbdate.c
+@@ -310,7 +310,7 @@
+ int set_time(time_t * new_time)
+ {
+ 	struct timespec s = {0};
+-	s.tv_sec = new_time;
++	s.tv_sec = *new_time;
+ 
+ 	if (clock_settime(CLOCK_REALTIME, &s)) {
+ 		perror("Unable to set time");

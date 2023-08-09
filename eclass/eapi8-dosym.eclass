@@ -31,7 +31,7 @@ esac
 _dosym8_canonicalize() {
 	local path slash i prev out IFS=/
 
-	path=( $1 )
+	read -r -d '' -a path < <(printf '%s\0' "$1")
 	[[ $1 == /* ]] && slash=/
 
 	while true; do
@@ -39,7 +39,7 @@ _dosym8_canonicalize() {
 		# or as a special case, "/.." at the beginning of the path.
 		# Also drop empty and "." path components as we go along.
 		prev=
-		for i in ${!path[@]}; do
+		for i in "${!path[@]}"; do
 			if [[ -z ${path[i]} || ${path[i]} == . ]]; then
 				unset "path[i]"
 			elif [[ ${path[i]} != .. ]]; then
@@ -56,7 +56,7 @@ _dosym8_canonicalize() {
 	done
 
 	out="${slash}${path[*]}"
-	echo "${out:-.}"
+	printf "%s\n" "${out:-.}"
 }
 
 # @FUNCTION: dosym8

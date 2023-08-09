@@ -1,0 +1,17 @@
+diff --git a/configure.ac b/configure.ac
+index 4bb9380..38e2cf6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -133,7 +134,11 @@ AC_CHECK_LIB(socket, connect)
+ # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ AC_CACHE_CHECK([if libc defines __progname], ac_cv_libc_defines___progname, [
+ 	AC_TRY_LINK([],
+-		[ extern char *__progname; printf("%s", __progname); ],
++		[
++			#include <stdio.h>;
++			extern char *__progname;
++			printf("%s", __progname);
++		],
+ 		[ ac_cv_libc_defines___progname="yes" ],
+ 		[ ac_cv_libc_defines___progname="no" ]
+ 	)

@@ -1,0 +1,13 @@
+diff -urEbw codespell-2.2.5/pyproject.toml codespell-2.2.5.new/pyproject.toml
+--- codespell-2.2.5/pyproject.toml	2023-06-14 19:28:54.000000000 +0200
++++ codespell-2.2.5.new/pyproject.toml	2023-07-03 16:19:11.225597607 +0200
+@@ -99,7 +99,7 @@
+ strict = true
+ 
+ [tool.pytest.ini_options]
+-addopts = "--cov=codespell_lib -rs --cov-report= --tb=short --junit-xml=junit-results.xml"
++addopts = "-rs --cov-report= --tb=short --junit-xml=junit-results.xml"
+ 
+ [tool.ruff]
+ extend-ignore = [
+

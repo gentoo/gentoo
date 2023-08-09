@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,8 +39,10 @@ unset i j k l m tb345 tb6
 
 LICENSE="public-domain" # machine-generated tables
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="6-pieces"
+# fetch restriction only for the 6-pieces tables, by selective
+# URI restriction ("mirror+" in SRC_URI)
 RESTRICT="fetch"
 
 RDEPEND="!${CATEGORY}/${PN}:nofetch"

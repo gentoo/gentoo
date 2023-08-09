@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">configclass</remote-id>
+		<remote-id type="pypi">mergedict</remote-id>
 		<remote-id type="github">schettino72/mergedict</remote-id>
 	</upstream>
 </pkgmetadata>

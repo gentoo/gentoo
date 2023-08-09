@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,9 +20,6 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="+promisc"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
 PDEPEND="dev-embedded/arduino
 		dev-embedded/freaklabs-boards"
 

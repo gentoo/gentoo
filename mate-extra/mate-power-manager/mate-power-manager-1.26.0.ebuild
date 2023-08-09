@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,11 +9,11 @@ if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
-DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop or desktop"
+DESCRIPTION="Session daemon for MATE that makes it easy to manage your laptop or desktop"
 
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+applet +elogind libsecret policykit systemd test"
+IUSE="+applet +elogind keyring policykit systemd test"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	>=x11-libs/libnotify-0.7:0
 	x11-libs/pango
 	applet? ( >=mate-base/mate-panel-1.17.0 )
-	libsecret? ( >=app-crypt/libsecret-0.11 )
+	keyring? ( >=app-crypt/libsecret-0.11 )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -59,7 +59,7 @@ BDEPEND="${COMMON_DEPEND}
 src_configure() {
 	mate_src_configure \
 		--enable-compile-warnings=minimum \
-		$(use_with libsecret) \
+		$(use_with keyring libsecret) \
 		$(use_enable applet applets) \
 		$(use_enable test tests)
 }

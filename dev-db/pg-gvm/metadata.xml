@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Greenbone Library for ical functions. This library contains functionality for ical object manipulation.
+		This is a PostgreSQL server extension that adds several functions used by gvmd, e.g., iCalendar and host
+		range evaluation. In previous versions, of GVM these functions were managed directly by gvmd while
+		pg-gvm uses the extension management built into PostgreSQL.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/pg-gvm</remote-id>
+	</upstream>
+</pkgmetadata>

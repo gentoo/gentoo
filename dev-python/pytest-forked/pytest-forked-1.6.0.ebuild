@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{9..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -32,5 +32,15 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	[[ ${PV} != 1.6.0 ]] && die "Recheck the deselect, please"
+	local EPYTEST_DESELECT=()
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			# failing due to warnings coming from pytest
+			# https://github.com/gentoo/gentoo/pull/31151
+			testing/test_xfail_behavior.py::test_xfail
+		)
+	fi
+
 	epytest -p no:flaky
 }

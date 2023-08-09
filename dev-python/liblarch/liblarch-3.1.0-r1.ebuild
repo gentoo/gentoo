@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]

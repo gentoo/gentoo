@@ -1,0 +1,21 @@
+Bug: https://bugs.gentoo.org/894320
+--- a/src/common.h
++++ b/src/common.h
+@@ -35,6 +35,7 @@
+ 
+ /* Tracing, useful in debugging, but not officially supported. */
+ #ifdef ENABLE_TRACING
++#include "main.h" /* Needed for info */
+ #define Trace(x) info x
+ #else
+ #define Trace(x)
+--- a/src/main.h
++++ b/src/main.h
+@@ -20,6 +20,7 @@
+   along with lbzip2.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#pragma once
+ #include <limits.h>             /* CHAR_BIT */
+ 
+ #if 8 != CHAR_BIT

@@ -41,12 +41,6 @@ src_prepare() {
 	# Don't force multiarch stuff on OSX, bug #306467
 	sed -i -e 's:-arch \(i386\|x86_64\)::g' Makefile.all.am || die
 
-	if use elibc_musl ; then
-		PATCHES+=(
-			"${FILESDIR}"/${PN}-3.13.0-malloc.patch
-		)
-	fi
-
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# upstream doesn't support this, but we don't build with
 		# Sun/Oracle ld, we have a GNU toolchain, so get some things
@@ -63,7 +57,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--with-gdbscripts-dir="${EPREFIX}"/usr/share/gdb/auto-load
+	)
 
 	# Respect ar, bug #468114
 	tc-export AR
@@ -132,7 +128,7 @@ pkg_postinst() {
 	elog "Valgrind will not work if libc (e.g. glibc) does not have debug symbols."
 	elog "To fix this you can add splitdebug to FEATURES in make.conf"
 	elog "and remerge glibc. See:"
-	elog "https://bugs.gentoo.org/show_bug.cgi?id=214065"
-	elog "https://bugs.gentoo.org/show_bug.cgi?id=274771"
-	elog "https://bugs.gentoo.org/show_bug.cgi?id=388703"
+	elog "https://bugs.gentoo.org/214065"
+	elog "https://bugs.gentoo.org/274771"
+	elog "https://bugs.gentoo.org/388703"
 }

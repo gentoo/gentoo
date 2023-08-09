@@ -1,0 +1,87 @@
+From 8a2b7c043fe86916d56044d7489f8dce6ed2d479 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 27 Feb 2022 14:01:33 +0000
+Subject: [PATCH 3/3] Allow building against the system FLTK library
+
+`USE_INTERNAL_FLTK` defaults to true and ignores `USE_INTERNAL_LIBS`
+because users are unlikely to have it installed.
+
+Odamex makes of use screen scaling features in FLTK that have not yet
+been released. This change therefore checks for the Fl::screen_scale
+symbol and skips the associated code if it is absent. In practise, this
+only affects the size of the dialog window on HiDPI screens. The game
+window is unaffected.
+
+Tested against FLTK 1.3.5 on Gentoo Linux.
+
+--- a/CMakeLists.txt	2022-11-24 21:02:08.000000000 -0600
++++ b/CMakeLists.txt	2023-05-12 14:08:26.838832213 -0500
+@@ -43,6 +43,7 @@
+ cmake_dependent_option( USE_INTERNAL_ZLIB "Use internal zlib" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
+ cmake_dependent_option( USE_INTERNAL_PNG "Use internal libpng" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
+ cmake_dependent_option( USE_INTERNAL_CURL "Use internal libcurl" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
++cmake_dependent_option( USE_INTERNAL_FLTK "Use internal FLTK" 1 BUILD_CLIENT 0 )
+ cmake_dependent_option( USE_INTERNAL_JSONCPP "Use internal JsonCpp" 1 BUILD_SERVER 0 )
+ cmake_dependent_option( USE_INTERNAL_WXWIDGETS "Use internal wxWidgets" ${USE_INTERNAL_LIBS} BUILD_LAUNCHER 0 )
+ cmake_dependent_option( ENABLE_PORTMIDI "Enable portmidi support" 1 BUILD_CLIENT 0 )
+--- a/client/CMakeLists.txt	2022-11-24 21:02:08.000000000 -0600
++++ b/client/CMakeLists.txt	2023-05-12 14:10:01.895750073 -0500
+@@ -206,8 +206,28 @@
+   target_link_libraries(odamex ${PNG_LIBRARY} ${ZLIB_LIBRARY} CURL::libcurl)
+   if(NOT GCONSOLE)
+     target_include_directories(odamex PRIVATE gui)
+-    target_link_libraries(odamex fltk fltk_images)
+-  endif()
++    if(USE_INTERNAL_FLTK)
++      set(FLTK_LIBRARIES fltk fltk_images)
++      set(HAVE_FLTK_SCREEN_SCALE TRUE)
++    else()
++      set(FLTK_SKIP_OPENGL 1)
++      set(FLTK_SKIP_FORMS 1)
++      set(FLTK_SKIP_FLUID 1)
++      find_package(FLTK REQUIRED)
++      target_include_directories(odamex SYSTEM PRIVATE ${FLTK_INCLUDE_DIR})
++
++      include(CheckCXXSymbolExists)
++      set(CMAKE_REQUIRED_INCLUDES ${FLTK_INCLUDE_DIR})
++      set(CMAKE_REQUIRED_LIBRARIES ${FLTK_LIBRARIES})
++      check_cxx_symbol_exists(Fl::screen_scale "FL/Fl.H" HAVE_FLTK_SCREEN_SCALE)
++    endif()
++
++    if(HAVE_FLTK_SCREEN_SCALE)
++      target_compile_definitions(odamex PRIVATE HAVE_FLTK_SCREEN_SCALE)
++    endif()
++
++    target_link_libraries(odamex ${FLTK_LIBRARIES})
++   endif()
+ 
+   if(ENABLE_PORTMIDI)
+     target_link_libraries(odamex ${PORTMIDI_LIBRARY})
+--- a/client/gui/gui_boot.cpp	2022-11-24 21:02:08.000000000 -0600
++++ b/client/gui/gui_boot.cpp	2023-05-12 14:11:19.362517260 -0500
+@@ -537,12 +537,14 @@
+  */
+ scannedWADs_t GUI_BootWindow()
+ {
++#ifdef HAVE_FLTK_SCREEN_SCALE
+ 	// Scale according to 1600x900.
+ 	Fl::screen_scale(0, MAX(Fl::h() / 900.0f, 1.0f));
+ 
+ 	// This feature is too clever by half, and in my experience just
+ 	// deforms the window.
+ 	Fl::keyboard_screen_scaling(0);
++#endif
+ 
+ 	BootWindow* win = MakeBootWindow();
+ 	win->initWADDirs();
+--- a/libraries/CMakeLists.txt	2022-11-24 21:02:08.000000000 -0600
++++ b/libraries/CMakeLists.txt	2023-05-12 14:11:46.463789831 -0500
+@@ -264,7 +264,7 @@
+ 
+ ### FLTK (dep: libpng) ###
+ 
+-if(BUILD_CLIENT)
++if(BUILD_CLIENT AND USE_INTERNAL_FLTK)
+   set(_FLTK_BUILDGEN_PARAMS
+     "-DOPTION_USE_SYSTEM_LIBJPEG=OFF"
+     "-DOPTION_PRINT_SUPPORT=OFF"

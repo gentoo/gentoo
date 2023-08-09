@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
+	<use>
+		<flag name="keybinder">
+			Enable support for global hotkeys using
+			<pkg>dev-libs/keybinder</pkg>.
+		</flag>
+		<flag name="sndio">
+			Enable <pkg>media-sound/sndio</pkg> backend.
+		</flag>
+	</use>
+</pkgmetadata>

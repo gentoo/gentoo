@@ -13,13 +13,15 @@ S="${WORKDIR}"/${P}/lisp
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DOCS=( ../AUTHORS.md ../CHANGELOG.md ../CONTRIBUTING.md ../README{,.ja}.md ../docs )
 SITEFILE="50${PN}-gentoo.el"
 
+elisp-enable-tests ert "${S}" -L ../tests -l ../tests/php-mode-test.el
+
 src_test() {
 	touch ../tests/project/1/.git || die
-	${EMACS} ${EMACSFLAGS} -L . -L ../tests -l ../tests/php-mode-test.el \
-		-f ert-run-tests-batch-and-exit || die "tests run failed"
+
+	elisp_src_test
 }

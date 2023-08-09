@@ -10,13 +10,13 @@ MY_P="${MY_PN}-${PV}"
 inherit cmake
 
 DESCRIPTION="A user mode library that provides access to GPU performance data"
-HOMEPAGE="https://github.com/intel/metrics-library"
+HOMEPAGE="https://github.com/intel/compute-runtime"
 SRC_URI="https://github.com/intel/${MY_PN}/archive/refs/tags/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${MY_P}"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="x11-libs/libdrm"
 RDEPEND="${DEPEND}"

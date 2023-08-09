@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -105,13 +105,23 @@ src_prepare() {
 src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
+	# -mavx with mingw-gcc has a history of obscure issues and
+	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+	# crashes with -march=skylake >=wine-8.10, similar issues with
+	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+	append-flags -mno-avx
+
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP WIDL
-			filter-flags '-fstack-clash-protection' #758914
-			filter-flags '-fstack-protector*' #870136
 			filter-flags '-fuse-ld=*'
 			filter-flags '-mfunction-return=thunk*' #878849
+			if has_version '<dev-util/mingw64-toolchain-11' ||
+				{ use crossdev-mingw &&
+					has_version "<cross-$(usex x86 i686 x86_64)-w64-mingw32/mingw64-runtime-11"; }
+			then
+				filter-flags '-fstack-protector*' #870136
+			fi
 		fi
 
 		CHOST_amd64=x86_64-w64-mingw32

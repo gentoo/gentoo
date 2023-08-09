@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}"/usr LIBDIR="$(get_libdir)" DESTDIR="${ED}" install
+	emake PREFIX="${EPREFIX}"/usr LIBDIR="$(get_libdir)" DESTDIR="${D}" install
 
 	mkdir -p "${ED}"/usr/share || die
 	mv "${ED}/usr/$(get_libdir)/pkgconfig" "${ED}"/usr/share/ || die

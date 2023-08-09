@@ -1,0 +1,285 @@
+Backported upstream commit
+https://github.com/flashrom/flashrom/commit/e1f30bbce7a603d518ecec9d7e6885719f396719
+
+--- a/bitbang_spi.c
++++ b/bitbang_spi.c
+@@ -148,7 +148,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= bitbang_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ int register_spi_bitbang_master(const struct bitbang_spi_master *master, void *spi_data)
+--- a/buspirate_spi.c
++++ b/buspirate_spi.c
+@@ -183,7 +183,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= buspirate_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static const struct buspirate_speeds spispeeds[] = {
+--- a/ch341a_spi.c
++++ b/ch341a_spi.c
+@@ -418,7 +418,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= ch341a_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int ch341a_spi_init(const struct programmer_cfg *cfg)
+--- a/dediprog.c
++++ b/dediprog.c
+@@ -1038,7 +1038,6 @@
+ 	.write_256	= dediprog_spi_write_256,
+ 	.write_aai	= dediprog_spi_write_aai,
+ 	.shutdown	= dediprog_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ /*
+--- a/digilent_spi.c
++++ b/digilent_spi.c
+@@ -338,7 +338,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= digilent_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static bool default_reset(struct libusb_device_handle *handle)
+--- a/dirtyjtag_spi.c
++++ b/dirtyjtag_spi.c
+@@ -198,7 +198,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= dirtyjtag_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int dirtyjtag_spi_init(const struct programmer_cfg *cfg)
+--- a/ft2232_spi.c
++++ b/ft2232_spi.c
+@@ -301,7 +301,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= ft2232_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ /* Returns 0 upon success, a negative number upon errors. */
+--- a/include/chipdrivers.h
++++ b/include/chipdrivers.h
+@@ -26,6 +26,7 @@
+ int spi_aai_write(struct flashctx *flash, const uint8_t *buf, unsigned int start, unsigned int len);
+ int spi_chip_write_256(struct flashctx *flash, const uint8_t *buf, unsigned int start, unsigned int len);
+ int spi_chip_read(struct flashctx *flash, uint8_t *buf, unsigned int start, int unsigned len);
++bool spi_probe_opcode(const struct flashctx *flash, uint8_t opcode);
+ 
+ /* spi25.c */
+ int probe_spi_rdid(struct flashctx *flash);
+--- a/include/programmer.h
++++ b/include/programmer.h
+@@ -312,7 +312,7 @@
+ 	int (*write_256)(struct flashctx *flash, const uint8_t *buf, unsigned int start, unsigned int len);
+ 	int (*write_aai)(struct flashctx *flash, const uint8_t *buf, unsigned int start, unsigned int len);
+ 	int (*shutdown)(void *data);
+-	bool (*probe_opcode)(struct flashctx *flash, uint8_t opcode);
++	bool (*probe_opcode)(const struct flashctx *flash, uint8_t opcode); /* NULL func implies true. */
+ 	void *data;
+ };
+ 
+@@ -322,7 +322,6 @@
+ int default_spi_read(struct flashctx *flash, uint8_t *buf, unsigned int start, unsigned int len);
+ int default_spi_write_256(struct flashctx *flash, const uint8_t *buf, unsigned int start, unsigned int len);
+ int default_spi_write_aai(struct flashctx *flash, const uint8_t *buf, unsigned int start, unsigned int len);
+-bool default_spi_probe_opcode(struct flashctx *flash, uint8_t opcode);
+ int register_spi_master(const struct spi_master *mst, void *data);
+ 
+ /* The following enum is needed by ich_descriptor_tool and ich* code as well as in chipset_enable.c. */
+--- a/it87spi.c
++++ b/it87spi.c
+@@ -320,7 +320,6 @@
+ 	.write_256	= it8716f_spi_chip_write_256,
+ 	.write_aai	= spi_chip_write_1,
+ 	.shutdown	= it8716f_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static uint16_t it87spi_probe(const struct programmer_cfg *cfg, uint16_t port)
+--- a/jlink_spi.c
++++ b/jlink_spi.c
+@@ -190,7 +190,6 @@
+ 	.write_aai	= default_spi_write_aai,
+ 	.features	= SPI_MASTER_4BA,
+ 	.shutdown	= jlink_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int jlink_spi_init(const struct programmer_cfg *cfg)
+--- a/linux_spi.c
++++ b/linux_spi.c
+@@ -121,7 +121,6 @@
+ 	.write_256	= linux_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= linux_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ /* Read max buffer size from sysfs, or use page size as fallback. */
+--- a/mediatek_i2c_spi.c
++++ b/mediatek_i2c_spi.c
+@@ -461,7 +461,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= mediatek_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int get_params(const struct programmer_cfg *cfg, bool *allow_brick)
+--- a/mstarddc_spi.c
++++ b/mstarddc_spi.c
+@@ -147,7 +147,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= mstarddc_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ /* Returns 0 upon success, a negative number upon errors. */
+--- a/ni845x_spi.c
++++ b/ni845x_spi.c
+@@ -537,7 +537,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= ni845x_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int ni845x_spi_init(const struct programmer_cfg *cfg)
+--- a/parade_lspcon.c
++++ b/parade_lspcon.c
+@@ -435,7 +435,6 @@
+ 	.write_256	= parade_lspcon_write_256,
+ 	.write_aai	= parade_lspcon_write_aai,
+ 	.shutdown	= parade_lspcon_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int get_params(const struct programmer_cfg *cfg, bool *allow_brick)
+--- a/pickit2_spi.c
++++ b/pickit2_spi.c
+@@ -385,7 +385,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= pickit2_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int pickit2_spi_init(const struct programmer_cfg *cfg)
+--- a/raiden_debug_spi.c
++++ b/raiden_debug_spi.c
+@@ -1325,7 +1325,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= raiden_debug_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int match_endpoint(struct libusb_endpoint_descriptor const *descriptor,
+--- a/realtek_mst_i2c_spi.c
++++ b/realtek_mst_i2c_spi.c
+@@ -440,7 +440,6 @@
+ 	.write_256	= realtek_mst_i2c_spi_write_256,
+ 	.write_aai	= realtek_mst_i2c_spi_write_aai,
+ 	.shutdown	= realtek_mst_i2c_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int get_params(const struct programmer_cfg *cfg, bool *reset, bool *enter_isp, bool *allow_brick)
+--- a/sb600spi.c
++++ b/sb600spi.c
+@@ -581,7 +581,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= sb600spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static const struct spi_master spi_master_yangtze = {
+@@ -595,7 +594,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= sb600spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ int sb600_probe_spi(const struct programmer_cfg *cfg, struct pci_dev *dev)
+--- a/serprog.c
++++ b/serprog.c
+@@ -463,7 +463,6 @@
+ 	.read		= default_spi_read,
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int sp_check_opbuf_usage(int bytes_to_be_added)
+--- a/spi.c
++++ b/spi.c
+@@ -131,9 +131,11 @@
+ 	return flash->mst->spi.write_aai(flash, buf, start, len);
+ }
+ 
+-bool default_spi_probe_opcode(struct flashctx *flash, uint8_t opcode)
++bool spi_probe_opcode(const struct flashctx *flash, uint8_t opcode)
+ {
+-	return true;
++	if (!flash->mst->spi.probe_opcode)
++		return true; /* no probe_opcode implies default of supported. */
++	return flash->mst->spi.probe_opcode(flash, opcode);
+ }
+ 
+ int register_spi_master(const struct spi_master *mst, void *data)
+@@ -148,7 +150,7 @@
+ 	}
+ 
+ 	if (!mst->write_aai || !mst->write_256 || !mst->read || !mst->command ||
+-	    !mst->multicommand || !mst->probe_opcode ||
++	    !mst->multicommand ||
+ 	    ((mst->command == default_spi_send_command) &&
+ 	     (mst->multicommand == default_spi_send_multicommand))) {
+ 		msg_perr("%s called with incomplete master definition. "
+--- a/stlinkv3_spi.c
++++ b/stlinkv3_spi.c
+@@ -471,7 +471,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= stlinkv3_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ static int stlinkv3_spi_init(const struct programmer_cfg *cfg)
+--- a/usbblaster_spi.c
++++ b/usbblaster_spi.c
+@@ -173,7 +173,6 @@
+ 	.write_256	= default_spi_write_256,
+ 	.write_aai	= default_spi_write_aai,
+ 	.shutdown	= usbblaster_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ /* Returns 0 upon success, a negative number upon errors. */
+--- a/wbsio_spi.c
++++ b/wbsio_spi.c
+@@ -193,7 +193,6 @@
+ 	.write_256	= spi_chip_write_1,
+ 	.write_aai	= spi_chip_write_1,
+ 	.shutdown	= wbsio_spi_shutdown,
+-	.probe_opcode	= default_spi_probe_opcode,
+ };
+ 
+ int wbsio_check_for_spi(void)

@@ -12,4 +12,7 @@
 	<use>
 		<flag name="pcap">Enable functionality to replay RTP data from a pcap file</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">SIPp/sipp</remote-id>
+	</upstream>
 </pkgmetadata>

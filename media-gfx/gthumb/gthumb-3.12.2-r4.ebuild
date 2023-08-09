@@ -10,8 +10,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gthumb"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="cdr colord exif gnome-keyring gstreamer heif http jpegxl lcms raw slideshow svg tiff webp"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+IUSE="cdr colord exif keyring gstreamer heif http jpegxl lcms raw slideshow svg tiff webp"
 
 # libX11 dep is a workaround. See files/3.12.2-link-with-x11.patch
 RDEPEND="
@@ -37,7 +37,7 @@ RDEPEND="
 		>=dev-libs/json-glib-0.15.0
 		>=net-libs/webkit-gtk-1.10.0:4
 	)
-	gnome-keyring? ( >=app-crypt/libsecret-0.11 )
+	keyring? ( >=app-crypt/libsecret-0.11 )
 	cdr? ( >=app-cdr/brasero-3.2.0 )
 	svg? ( >=gnome-base/librsvg-2.34:2 )
 	webp? ( >=media-libs/libwebp-0.2.0:= )
@@ -86,7 +86,7 @@ src_configure() {
 		$(meson_use heif libheif)
 		$(meson_use raw libraw)
 		$(meson_use svg librsvg)
-		$(meson_use gnome-keyring libsecret)
+		$(meson_use keyring libsecret)
 		$(meson_use http webservices)
 		$(meson_use cdr libbrasero)
 	)

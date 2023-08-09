@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-any-r1
 
 DESCRIPTION="Shallow-transfer machine Translation engine and toolbox"
-HOMEPAGE="http://apertium.sourceforge.net/"
+HOMEPAGE="https://apertium.sourceforge.net/"
 SRC_URI="https://github.com/apertium/apertium/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ fi
 LICENSE="GPL-3+"
 SLOT="0"
 # tests require network access
-RESTRICT="strip test"
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-scheme/guile-2.0.11:=
@@ -45,4 +45,13 @@ src_compile() {
 	touch bootstrap.db || die
 
 	emake
+}
+
+src_install() {
+	default
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
+	dostrip -x "/usr/$(get_libdir)/akku"
 }

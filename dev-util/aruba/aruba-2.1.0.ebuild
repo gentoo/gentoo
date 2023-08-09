@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="cucumber"
 RUBY_FAKEGEM_RECIPE_DOC="none"
@@ -49,11 +49,13 @@ all_ruby_prepare() {
 	sed -e 's:_relative ": "./:' \
 		-e 's/git ls-files -z/find * -print0/' \
 		-e '/\(pry-doc\|rake-manifest\|rubocop\|yard-junk\)/ s:^:#:' \
+		-e '/simplecov/ s/22/23/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid features with minor output differences
 	sed -i -e '/Use .aruba. with .Minitest./i\  @wip' features/01_getting_started_with_aruba/supported_testing_frameworks.feature || die
 	sed -i -e '/Create files for Minitest/i\  @wip' features/06_use_aruba_cli/initialize_project_with_aruba.feature || die
+	rm -f features/03_testing_frameworks/cucumber/steps/command/wait_for_output_of_command.feature || die
 
 	# Avoid feature that requires aruba to be installed already
 	rm -r features/03_testing_frameworks/cucumber/disable_bundler.feature || die

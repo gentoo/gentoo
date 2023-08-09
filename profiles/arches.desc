@@ -37,13 +37,7 @@ x86-linux	testing
 arm64-macos	testing
 ppc-macos	testing
 x64-macos	testing
-sparc-solaris	testing
-sparc64-solaris	testing
 x64-solaris	testing
-x86-solaris	testing
-x64-winnt	testing
-x86-winnt	testing
-x64-cygwin	testing
 
 # vim: set ts=8 noet ft=conf:
 

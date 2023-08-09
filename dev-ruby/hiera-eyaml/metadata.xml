@@ -10,6 +10,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">TomPoulton/hiera-eyaml</remote-id>
+    <remote-id type="github">voxpupuli/hiera-eyaml</remote-id>
   </upstream>
 </pkgmetadata>

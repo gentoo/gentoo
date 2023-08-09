@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit flag-o-matic lua-single meson optfeature pax-utils python-single-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 else
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
 fi
 
 DESCRIPTION="Media player for the command line"
@@ -24,8 +24,9 @@ IUSE="
 	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
 	+libplacebo +lua mmal nvenc openal opengl pipewire pulseaudio
-	raspberry-pi rubberband sdl selinux sixel sndio test tools +uchardet
-	vaapi vdpau vulkan wayland +xv zimg zlib"
+	raspberry-pi rubberband sdl selinux sixel sndio test tools
+	+uchardet vaapi vdpau vulkan wayland xv zimg zlib
+"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( cli libmpv )
@@ -37,13 +38,11 @@ REQUIRED_USE="
 	test? ( cli )
 	tools? ( cli )
 	uchardet? ( iconv )
-	vaapi? (
-		|| ( X egl libplacebo wayland )
-		wayland? ( drm )
-	)
+	vaapi? ( || ( X drm wayland ) )
 	vdpau? ( X )
 	vulkan? ( || ( X wayland ) libplacebo )
-	xv? ( X )"
+	xv? ( X )
+"
 RESTRICT="!test? ( test )"
 
 # raspberry-pi: default to -bin given non-bin is known broken (bug #893422)
@@ -67,8 +66,8 @@ COMMON_DEPEND="
 		dev-libs/libcdio:=
 	)
 	drm? (
-		media-libs/mesa[gbm(+)]
 		x11-libs/libdrm
+		egl? ( media-libs/mesa[gbm(+)] )
 	)
 	dvd? (
 		media-libs/libdvdnav
@@ -86,7 +85,7 @@ COMMON_DEPEND="
 	lcms? ( media-libs/lcms:2 )
 	libcaca? ( media-libs/libcaca )
 	libplacebo? (
-		>=media-libs/libplacebo-5.264:=[opengl?,vulkan?]
+		>=media-libs/libplacebo-4.157:=[opengl?,vulkan?]
 		egl? ( media-libs/libplacebo[opengl] )
 	)
 	lua? ( ${LUA_DEPS} )
@@ -116,22 +115,26 @@ COMMON_DEPEND="
 		x11-libs/libxkbcommon
 	)
 	zimg? ( media-libs/zimg )
-	zlib? ( sys-libs/zlib:= )"
+	zlib? ( sys-libs/zlib:= )
+"
 RDEPEND="
 	${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
-	tools? ( ${PYTHON_DEPS} )"
+	tools? ( ${PYTHON_DEPS} )
+"
 DEPEND="
 	${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	nvenc? ( media-libs/nv-codec-headers )
-	wayland? ( dev-libs/wayland-protocols )"
+	wayland? ( dev-libs/wayland-protocols )
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	cli? ( dev-python/docutils )
-	wayland? ( dev-util/wayland-scanner )"
+	wayland? ( dev-util/wayland-scanner )
+"
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -200,11 +203,9 @@ src_configure() {
 		$(meson_feature X x11)
 		$(meson_feature aqua cocoa)
 		$(meson_feature drm)
-		$(meson_feature drm gbm)
 		$(meson_feature jpeg)
 		$(meson_feature libcaca caca)
 		$(meson_feature libplacebo)
-		$(meson_feature libplacebo libplacebo-next)
 		$(meson_feature mmal rpi-mmal)
 		$(meson_feature sdl sdl2-video)
 		$(meson_feature sixel)
@@ -215,6 +216,7 @@ src_configure() {
 			echo enabled || echo disabled)
 		$(meson_feature egl)
 		$(mpv_feature_multi egl X egl-x11)
+		$(mpv_feature_multi egl drm gbm) # gbm is only used by egl-drm
 		$(mpv_feature_multi egl drm egl-drm)
 		$(mpv_feature_multi egl wayland egl-wayland)
 		$(meson_feature libmpv plain-gl)
@@ -231,15 +233,23 @@ src_configure() {
 
 		$(meson_feature vaapi)
 		$(mpv_feature_multi vaapi X vaapi-x11)
-		$(mpv_feature_multi 'vaapi X' egl vaapi-x-egl)
-		$(mpv_feature_multi 'vaapi egl' drm vaapi-drm)
-		$(mpv_feature_multi 'vaapi egl' wayland vaapi-wayland)
+		$(mpv_feature_multi vaapi drm vaapi-drm)
+		$(mpv_feature_multi vaapi wayland vaapi-wayland)
 
 		$(meson_feature vdpau)
 		$(mpv_feature_multi vdpau opengl vdpau-gl-x11)
 
 		$(mpv_feature_multi aqua opengl videotoolbox-gl)
+
+		# notable options left to automagic
+		#dmabuf-wayland: USE="drm wayland" + plus memfd_create support
+		#libplacebo-next: USE="libplacebo" + >=libplacebo-5.266
+		#vulkan-interop: USE="libplacebo vulkan" + ffmpeg-9999 currently
+		# TODO?: perhaps few more similar compound options should be left auto
 	)
+
+	has_version '>=media-libs/libplacebo-5.266' ||
+		ewarn "${PN}'s gpu-next video output requires ${_} to be used"
 
 	meson_src_configure
 }

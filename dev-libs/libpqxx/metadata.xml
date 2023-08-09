@@ -11,4 +11,7 @@
     about any platform — then libpqxx is the library you use. Supersedes the now
     defunct libpq++ (AKA, libpqpp) API.
   </longdescription>
+  <upstream>
+    <remote-id type="github">jtv/libpqxx</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -38,6 +38,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/gobject-introspection
+	dev-util/glib-utils
 	gtk-doc? (
 		dev-libs/glib[gtk-doc]
 		dev-util/gtk-doc

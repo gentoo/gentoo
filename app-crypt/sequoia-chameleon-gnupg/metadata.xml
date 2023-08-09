@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
+		<email>sam@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
 	</maintainer>
 	<upstream>
 		<remote-id type="gitlab">sequoia-pgp/sequoia-chameleon-gnupg</remote-id>

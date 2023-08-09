@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -46,8 +46,8 @@ python_prepare_all() {
 	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@" "${S}"/setup.py || \
 		die "failed to set lib_dirs"
 
-	local PATCHES=( "${FILESDIR}"/0001-__init__.py-Make-NetworkX-dep-optional.patch )
-	use X || local PATCHES+=( "${FILESDIR}"/setools-4.4.0-remove-gui.patch )
+	PATCHES=( "${FILESDIR}"/0001-__init__.py-Make-NetworkX-dep-optional.patch )
+	use X || PATCHES+=( "${FILESDIR}"/setools-4.4.0-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 

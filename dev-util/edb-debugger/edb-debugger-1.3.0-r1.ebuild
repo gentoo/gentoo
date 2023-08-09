@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc12.patch
 	"${FILESDIR}"/${PN}-1.3.0-capstone-5.patch
+	"${FILESDIR}"/${PN}-1.3.0-gcc13.patch
 )
 
 src_prepare() {

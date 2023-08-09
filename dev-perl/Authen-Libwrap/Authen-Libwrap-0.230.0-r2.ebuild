@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DIST_VERSION=0.23
 DIST_EXAMPLES=("example.pl")
 inherit perl-module
 
-DESCRIPTION="A Perl access to the TCP Wrappers interface"
+DESCRIPTION="Perl access to the TCP Wrappers interface"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

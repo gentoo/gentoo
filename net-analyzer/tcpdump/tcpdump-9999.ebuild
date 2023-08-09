@@ -58,6 +58,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-libdir.patch
+	"${FILESDIR}"/${PN}-9999-lfs.patch
 )
 
 src_prepare() {

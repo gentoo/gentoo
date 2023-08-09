@@ -6,7 +6,7 @@ EAPI=8
 # See https://sourceware.org/gdb/wiki/DistroAdvice for general packaging
 # tips & notes.
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit flag-o-matic python-single-r1 strip-linguas toolchain-funcs
 
 export CTARGET=${CTARGET:-${CHOST}}
@@ -32,6 +32,7 @@ case ${PV} in
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-weekly-${MY_PV}.tar.xz
 			https://sourceware.org/pub/gdb/snapshots/current/gdb-weekly-${MY_PV}.tar.xz
+			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/gdb-weekly-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -45,6 +46,7 @@ case ${PV} in
 		MY_PV="${PV/_p/.}"
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-${MY_PV}.tar.xz
+			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/gdb-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 		;;
@@ -70,9 +72,9 @@ SRC_URI="
 
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
-IUSE="cet guile lzma multitarget nls +python +server sim source-highlight test vanilla xml xxhash zstd"
+IUSE="cet debuginfod guile lzma multitarget nls +python +server sim source-highlight test vanilla xml xxhash zstd"
 if [[ -n ${REGULAR_RELEASE} ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 fi
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -84,6 +86,9 @@ RDEPEND="
 	>=sys-libs/readline-7:=
 	sys-libs/zlib
 	elibc_glibc? ( net-libs/libnsl:= )
+	debuginfod? (
+		dev-libs/elfutils[debuginfod(-)]
+	)
 	lzma? ( app-arch/xz-utils )
 	python? ( ${PYTHON_DEPS} )
 	guile? ( >=dev-scheme/guile-2.0 )
@@ -147,8 +152,9 @@ src_configure() {
 	local myconf=(
 		# portage's econf() does not detect presence of --d-d-t
 		# because it greps only top-level ./configure. But not
-		# gnulib's or gdb's configure.
+		# libiberty's or gdb's configure.
 		--disable-dependency-tracking
+		--disable-silent-rules
 
 		--with-pkgversion="$(gdb_branding)"
 		--with-bugurl='https://bugs.gentoo.org/'
@@ -156,9 +162,7 @@ src_configure() {
 		# Disable modules that are in a combined binutils/gdb tree. bug #490566
 		--disable-{binutils,etc,gas,gold,gprof,gprofng,ld}
 
-		# avoid automagic dependency on (currently prefix) systems
-		# systems with debuginfod library, bug #754753
-		--without-debuginfod
+		$(use_with debuginfod)
 
 		$(use_enable test unit-tests)
 
@@ -219,12 +223,6 @@ src_configure() {
 		--without-lib{babeltrace,expat,gmp,iconv,ipt,lzma,mpfr,xxhash}-prefix
 	)
 
-	if use sparc-solaris || use x86-solaris ; then
-		# Disable largefile support
-		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
-		myconf+=( --disable-largefile )
-	fi
-
 	# source-highlight is detected with pkg-config: bug #716558
 	export ac_cv_path_pkg_config_prog_path="$(tc-getPKG_CONFIG)"
 
@@ -234,10 +232,6 @@ src_configure() {
 	export GCC_FOR_TARGET="${CC_FOR_TARGET:-$(tc-getCC)}"
 
 	econf "${myconf[@]}"
-}
-
-src_compile() {
-	emake V=1
 }
 
 src_test() {
@@ -253,7 +247,7 @@ src_test() {
 }
 
 src_install() {
-	emake V=1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	find "${ED}"/usr -name libiberty.a -delete || die
 

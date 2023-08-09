@@ -15,12 +15,15 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND=""
-RDEPEND="app-shells/bash
-	app-arch/tar"
+RDEPEND="
+	app-shells/bash
+	app-arch/tar
+"
 
 src_install() {
-	newbin mkstage4.sh mkstage4
+	newbin cpstage4.sh cpstage4
 	newbin exstage4.sh exstage4
+	newbin mkstage4.sh mkstage4
 	einstalldocs
 }
 

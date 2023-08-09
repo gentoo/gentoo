@@ -14,5 +14,6 @@
     <remote-id type="cpan-module">XML::LibXSLT</remote-id>
     <remote-id type="cpan-module">XML::LibXSLT::Security</remote-id>
     <remote-id type="cpan-module">XML::LibXSLT::StylesheetWrapper</remote-id>
+    <remote-id type="github">shlomif/perl-XML-LibXSLT</remote-id>
   </upstream>
 </pkgmetadata>

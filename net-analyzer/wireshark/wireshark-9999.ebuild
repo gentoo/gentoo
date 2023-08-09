@@ -4,7 +4,8 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} )
-PYTHON_COMPAT=( python3_{9..10} )
+# TODO: check cmake/modules/UseAsn2Wrs.cmake for 3.12
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg cmake
 
@@ -167,6 +168,8 @@ src_configure() {
 	if use gui ; then
 		append-cxxflags -fPIC -DPIC
 	fi
+
+	! use lto && filter-lto
 
 	mycmakeargs+=(
 		-DPython3_EXECUTABLE="${PYTHON}"

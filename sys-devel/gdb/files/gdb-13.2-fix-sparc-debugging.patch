@@ -1,0 +1,126 @@
+https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=31a56a22c45d76df4c597439f337e3f75ac3065c
+https://sourceware.org/bugzilla/show_bug.cgi?id=30525
+https://bugs.gentoo.org/907906
+
+From 31a56a22c45d76df4c597439f337e3f75ac3065c Mon Sep 17 00:00:00 2001
+From: Pedro Alves <pedro@palves.net>
+Date: Wed, 7 Jun 2023 10:38:14 +0100
+Subject: [PATCH] Linux: Avoid pread64/pwrite64 for high memory addresses (PR
+ gdb/30525)
+
+Since commit 05c06f318fd9 ("Linux: Access memory even if threads are
+running"), GDB prefers pread64/pwrite64 to access inferior memory
+instead of ptrace.  That change broke reading shared libraries on
+SPARC64 Linux, as reported by PR gdb/30525 ("gdb cannot read shared
+libraries on SPARC64").
+
+On SPARC64 Linux, surprisingly (to me), userspace shared libraries are
+mapped at high 64-bit addresses:
+
+   (gdb) info sharedlibrary
+   Cannot access memory at address 0xfff80001002011e0
+   Cannot access memory at address 0xfff80001002011d8
+   Cannot access memory at address 0xfff80001002011d8
+   From                To                  Syms Read   Shared Object Library
+   0xfff80001000010a0  0xfff8000100021f80  Yes (*)     /lib64/ld-linux.so.2
+   (*): Shared library is missing debugging information.
+
+Those addresses are 64-bit addresses with the high bits set.  When
+interpreted as signed, they're negative.
+
+The Linux kernel rejects pread64/pwrite64 if the offset argument of
+type off_t (a signed type) is negative, which happens if the memory
+address we're accessing has its high bit set.  See
+linux/fs/read_write.c sys_pread64 and sys_pwrite64 in Linux.
+
+Thankfully, lseek does not fail in that situation.  So the fix is to
+use the 'lseek + read|write' path if the offset would be negative.
+
+Fix this in both native GDB and GDBserver.
+
+Tested on a SPARC64 GNU/Linux and x86-64 GNU/Linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30525
+Change-Id: I79c724f918037ea67b7396fadb521bc9d1b10dc5
+--- a/gdb/linux-nat.c
++++ b/gdb/linux-nat.c
+@@ -3909,18 +3909,26 @@ linux_proc_xfer_memory_partial_fd (int fd, int pid,
+ 
+   gdb_assert (fd != -1);
+ 
+-  /* Use pread64/pwrite64 if available, since they save a syscall and can
+-     handle 64-bit offsets even on 32-bit platforms (for instance, SPARC
+-     debugging a SPARC64 application).  */
++  /* Use pread64/pwrite64 if available, since they save a syscall and
++     can handle 64-bit offsets even on 32-bit platforms (for instance,
++     SPARC debugging a SPARC64 application).  But only use them if the
++     offset isn't so high that when cast to off_t it'd be negative, as
++     seen on SPARC64.  pread64/pwrite64 outright reject such offsets.
++     lseek does not.  */
+ #ifdef HAVE_PREAD64
+-  ret = (readbuf ? pread64 (fd, readbuf, len, offset)
+-	 : pwrite64 (fd, writebuf, len, offset));
+-#else
+-  ret = lseek (fd, offset, SEEK_SET);
+-  if (ret != -1)
+-    ret = (readbuf ? read (fd, readbuf, len)
+-	   : write (fd, writebuf, len));
++  if ((off_t) offset >= 0)
++    ret = (readbuf != nullptr
++	   ? pread64 (fd, readbuf, len, offset)
++	   : pwrite64 (fd, writebuf, len, offset));
++  else
+ #endif
++    {
++      ret = lseek (fd, offset, SEEK_SET);
++      if (ret != -1)
++	ret = (readbuf != nullptr
++	       ? read (fd, readbuf, len)
++	       : write (fd, writebuf, len));
++    }
+ 
+   if (ret == -1)
+     {
+--- a/gdbserver/linux-low.cc
++++ b/gdbserver/linux-low.cc
+@@ -5377,21 +5377,26 @@ proc_xfer_memory (CORE_ADDR memaddr, unsigned char *readbuf,
+     {
+       int bytes;
+ 
+-      /* If pread64 is available, use it.  It's faster if the kernel
+-	 supports it (only one syscall), and it's 64-bit safe even on
+-	 32-bit platforms (for instance, SPARC debugging a SPARC64
+-	 application).  */
++      /* Use pread64/pwrite64 if available, since they save a syscall
++	 and can handle 64-bit offsets even on 32-bit platforms (for
++	 instance, SPARC debugging a SPARC64 application).  But only
++	 use them if the offset isn't so high that when cast to off_t
++	 it'd be negative, as seen on SPARC64.  pread64/pwrite64
++	 outright reject such offsets.  lseek does not.  */
+ #ifdef HAVE_PREAD64
+-      bytes = (readbuf != nullptr
+-	       ? pread64 (fd, readbuf, len, memaddr)
+-	       : pwrite64 (fd, writebuf, len, memaddr));
+-#else
+-      bytes = -1;
+-      if (lseek (fd, memaddr, SEEK_SET) != -1)
++      if ((off_t) memaddr >= 0)
+ 	bytes = (readbuf != nullptr
+-		 ? read (fd, readbuf, len)
+-		 : write (fd, writebuf, len));
++		 ? pread64 (fd, readbuf, len, memaddr)
++		 : pwrite64 (fd, writebuf, len, memaddr));
++      else
+ #endif
++	{
++	  bytes = -1;
++	  if (lseek (fd, memaddr, SEEK_SET) != -1)
++	    bytes = (readbuf != nullptr
++		     ? read (fd, readbuf, len)
++		     : write (fd, writebuf, len));
++	}
+ 
+       if (bytes < 0)
+ 	return errno;
+-- 
+2.39.3

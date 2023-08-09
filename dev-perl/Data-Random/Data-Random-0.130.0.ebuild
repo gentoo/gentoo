@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ DIST_AUTHOR=BAREFOOT
 DIST_VERSION=0.13
 inherit perl-module
 
-DESCRIPTION="A module used to generate random data"
+DESCRIPTION="Module used to generate random data"
 
 SLOT="0"
 KEYWORDS="amd64 sparc x86"

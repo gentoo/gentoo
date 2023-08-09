@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 SITEFILE="50apel-gentoo.el"
 
@@ -34,6 +34,6 @@ src_install() {
 		LISPDIR="${ED}/${SITELISP}" \
 		VERSION_SPECIFIC_LISPDIR="${ED}/${SITELISP}" \
 		install
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-make-site-file "${SITEFILE}"
 	dodoc ChangeLog* README*
 }

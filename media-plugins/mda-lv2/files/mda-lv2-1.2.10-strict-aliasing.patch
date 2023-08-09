@@ -1,0 +1,37 @@
+https://gitlab.com/drobilla/mda-lv2/-/commit/ac0590c5a8f84f9edcd6817e44976ad75fccb252
+
+From ac0590c5a8f84f9edcd6817e44976ad75fccb252 Mon Sep 17 00:00:00 2001
+From: David Robillard <d@drobilla.net>
+Date: Tue, 16 Aug 2022 17:04:16 -0400
+Subject: [PATCH] Fix strict aliasing violation
+
+Generally, I maintain this as a faithful port with minimal changes, but in this
+case, it's just filling a float up with garbage anyway, so the worst case can't
+be that bad.
+--- a/meson/suppressions/meson.build
++++ b/meson/suppressions/meson.build
+@@ -82,11 +82,5 @@ if is_variable('cpp')
+     endif
+   endif
+ 
+-  if cpp.get_id() == 'gcc'
+-    cpp_suppressions += [
+-      '-Wno-strict-aliasing',
+-    ]
+-  endif
+-  
+   cpp_suppressions = cpp.get_supported_arguments(cpp_suppressions)
+ endif
+--- a/src/mdaJX10.cpp
++++ b/src/mdaJX10.cpp
+@@ -468,7 +468,7 @@ void mdaJX10::processReplacing(float **inputs, float **outputs, int32_t sampleFr
+         
+         noise = (noise * 196314165) + 907633515;
+         r = (noise & 0x7FFFFF) + 0x40000000; //generate noise + fast convert to float
+-        w = *(float *)&r;
++        memcpy(&w, &r, sizeof(float));
+         w = ww * (w - 3.0f);
+ 
+         if(--k<0)
+-- 
+GitLab

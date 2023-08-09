@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: usr-ldscript.eclass
@@ -55,7 +55,7 @@ gen_usr_ldscript() {
 	case ${CTARGET:-${CHOST}} in
 	*-darwin*) ;;
 	*-android*) return 0 ;;
-	*linux*|*-freebsd*|*-openbsd*|*-netbsd*)
+	*linux*)
 		use split-usr || return 0
 		;;
 	*) return 0 ;;

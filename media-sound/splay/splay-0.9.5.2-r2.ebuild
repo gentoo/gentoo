@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="An audio player, primarily for the console"
-HOMEPAGE="http://splay.sourceforge.net/"
-SRC_URI="http://splay.sourceforge.net/tgz/${P}.tar.gz"
+HOMEPAGE="https://splay.sourceforge.net/"
+SRC_URI="https://splay.sourceforge.net/tgz/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,4 +27,10 @@ src_prepare() {
 	default
 	mv configure.{in,ac} || die
 	eautoreconf
+}
+
+src_configure() {
+	append-cxxflags -std=c++14
+
+	default
 }

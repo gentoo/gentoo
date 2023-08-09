@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]];then
 	EGIT_REPO_URI="https://github.com/ozmartian/vidcutter"
 else
 	SRC_URI="https://github.com/ozmartian/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3"

@@ -20,11 +20,10 @@ KEYWORDS="amd64 x86"
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="debug doc geoip ldap lmdb lua-records mydns mysql postgres remote sodium sqlite systemd tools tinydns test"
+IUSE="debug doc geoip ldap lmdb lua-records mysql postgres remote sodium sqlite systemd tools tinydns test"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="${LUA_REQUIRED_USE}
-	mydns? ( mysql )"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 DEPEND="${LUA_DEPS}
 	dev-libs/openssl:=
@@ -64,7 +63,6 @@ src_configure() {
 	#use db2 && cnf_dynmodules+=" db2"
 	use ldap && cnf_dynmodules+=" ldap"
 	use lmdb && cnf_dynmodules+=" lmdb"
-	use mydns && cnf_dynmodules+=" mydns"
 	use mysql && cnf_dynmodules+=" gmysql"
 	#use oracle && cnf_dynmodules+=" goracle oracle"
 	use postgres && cnf_dynmodules+=" gpgsql"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
-DESCRIPTION="Python bindings to y-crdt "
+DESCRIPTION="Python bindings to y-crdt"
 HOMEPAGE="
 	https://pypi.org/project/ypy-websocket/
 	https://github.com/y-crdt/ypy-websocket/

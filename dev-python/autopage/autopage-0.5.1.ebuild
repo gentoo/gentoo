@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -29,6 +29,14 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	sed -e 's/test_short_streaming_output/_&/' \
+		-e 's/test_interrupt_early/_&/' \
+		-i autopage/tests/test_end_to_end.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	unset LESS PAGER

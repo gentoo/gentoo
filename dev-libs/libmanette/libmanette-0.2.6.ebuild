@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/aplazas/libmanette"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="gtk-doc +introspection +udev +vala test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"

@@ -326,7 +326,7 @@ src_configure() {
 	fi
 
 	# LTO flag was handled via configure
-	filter-flags '-flto*'
+	filter-lto
 
 	if tc-is-gcc ; then
 		if ver_test $(gcc-fullversion) -ge 10 ; then

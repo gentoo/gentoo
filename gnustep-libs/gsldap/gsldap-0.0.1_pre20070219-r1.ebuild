@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit gnustep-2
 
 DESCRIPTION="GNUstep LDAP library for openldap C libraries"
-HOMEPAGE="http://www.gnustep.org/"
+HOMEPAGE="https://gnustep.github.io/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

@@ -3,8 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="High speed universal character encoding detector"
@@ -15,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]

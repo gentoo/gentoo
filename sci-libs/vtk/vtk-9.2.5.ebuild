@@ -162,8 +162,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.2.2-VTKm-respect-user-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-9.2.2-link-with-glut-library-for-freeglut.patch
 	"${FILESDIR}"/${PN}-9.2.5-Add-include-cstdint-to-compile-with-gcc-13.patch
-	"${FILESDIR}"/${PN}-9.2.5-Add-include-cstdint-for-gcc-13.patch
 	"${FILESDIR}"/${PN}-9.2.5-Fix-compilation-error-with-CUDA-12.patch
+	"${FILESDIR}"/${PN}-9.2.5-More-include-cstdint-to-compile-with-gcc13.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
@@ -186,7 +186,7 @@ vtk_check_reqs() {
 			jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
 		fi
 	fi
-	mem=$(( ${mem} * ${jobs} ))
+	mem=$(( ${mem} * $(( ${jobs} > 4 ? 4 : ${jobs} )) ))
 
 	use cuda && export CHECKREQS_MEMORY=${mem}M
 	export CHECKREQS_DISK_BUILD=${dsk}M

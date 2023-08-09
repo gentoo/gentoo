@@ -14,7 +14,7 @@ HOMEPAGE="https://grass.osgeo.org/"
 LICENSE="GPL-2"
 
 if [[ ${PV} =~ "9999" ]]; then
-	SLOT="0/8.3"
+	SLOT="0/8.4"
 else
 	SLOT="0/$(ver_cut 1-2 ${PV})"
 fi
@@ -30,7 +30,7 @@ else
 	MY_P="${P/_rc/RC}"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~x86"
+		KEYWORDS="~amd64 ~ppc ~x86"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
@@ -46,6 +46,8 @@ RDEPEND="
 	>=app-admin/eselect-1.2
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/ply[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	')
 	sci-libs/gdal:=
@@ -77,7 +79,11 @@ RDEPEND="
 	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
-		>=dev-python/wxpython-4.1:4.0
+		$(python_gen_cond_dep '
+			>=dev-python/matplotlib-1.2[wxwidgets,${PYTHON_USEDEP}]
+			dev-python/pillow[${PYTHON_USEDEP}]
+			>=dev-python/wxpython-4.1:4.0[${PYTHON_USEDEP}]
+		')
 		x11-libs/cairo[X]
 		x11-libs/libICE
 		x11-libs/libSM
@@ -165,7 +171,7 @@ src_configure() {
 		--with-proj-share="${EPREFIX}"/usr/share/proj/
 		$(use_with cxx)
 		$(use_with tiff)
-		$(use_with png)
+		$(use_with png libpng "${EPREFIX}"/usr/bin/libpng-config)
 		$(use_with postgres)
 		$(use_with mysql)
 		$(use_with mysql mysql-includes "${EPREFIX}"/usr/include/mysql)
@@ -229,33 +235,10 @@ src_install() {
 	dodir /usr/include/
 	dosym ../$(get_libdir)/${MY_PM}/include/grass /usr/include/grass
 
-	# fix paths in addons makefile includes
-	local scriptMakeDir="${ED}"/usr/$(get_libdir)/${MY_PM}/include/Make/
-	for f in "${scriptMakeDir}"/*; do
-		file="${f##*/}"
-		echo sed -i "s|${ED}|/|g" "${scriptMakeDir}/${file}" || die
-		sed -i "s|${ED}|/|g" "${scriptMakeDir}/${file}" || die
-	done
-
-	# get proper folder for grass path in script
-	local gisbase=/usr/$(get_libdir)/${MY_PM}
-	sed -e "s:GISBASE = os.path.normpath(\"${D}/usr/$(get_libdir)/${MY_PM}\"):\
-GISBASE = os.path.normpath(\"${gisbase}\"):" \
-		-i "${ED}"/usr/bin/grass || die
-
-	# get proper fonts path for fontcap
-	sed -i \
-		-e "s|${ED}/usr/${MY_PM}|${EPREFIX}/usr/$(get_libdir)/${MY_PM}|" \
-		"${ED}"${gisbase}/etc/fontcap || die
-
 	# set proper python interpreter
 	sed -e "s:os.environ\[\"GRASS_PYTHON\"\] = \"python3\":\
 os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 		-i "${ED}"/usr/bin/grass || die
-
-	# set proper GISDBASE directory path in the demolocation .grassrc${GVERSION//.} file
-	sed -e "s:GISDBASE\:.*$:GISDBASE\: ${gisbase}:" \
-		-i "${ED}"${gisbase}/demolocation/.grassrc${GVERSION//.} || die
 
 	if use X; then
 		local GUI="--gui"

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person" proxied="yes">
-    <email>mathy@vanvoorden.be</email>
-    <name>Mathy Vanvoorden</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
+  <!-- maintainer-needed -->
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/NetworkManager-fortisslvpn</remote-id>
+  </upstream>
 </pkgmetadata>

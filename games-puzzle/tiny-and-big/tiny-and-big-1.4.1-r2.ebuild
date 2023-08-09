@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop wrapper
 
 DESCRIPTION="Combines elements of adventure, jump&run and physical puzzles"
-HOMEPAGE="http://www.tinyandbig.com/"
+HOMEPAGE="https://www.blackpants.de/project-tiny-big/"
 SRC_URI="tinyandbig_grandpasleftovers-retail-linux-${PV}_1370968537.tar.bz2"
 S="${WORKDIR}"/tinyandbig
 

@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -14,7 +14,7 @@ else
 	S="${WORKDIR}/PAmix-${PV}"
 fi
 
-DESCRIPTION="A PulseAudio NCurses mixer"
+DESCRIPTION="PulseAudio NCurses mixer"
 HOMEPAGE="https://github.com/patroclos/PAmix"
 
 LICENSE="MIT"
@@ -22,13 +22,11 @@ SLOT="0"
 IUSE="+unicode"
 
 RDEPEND="
-	media-sound/pulseaudio
+	media-libs/libpulse
 	sys-libs/ncurses:=[unicode(+)?]
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	cmake_src_prepare

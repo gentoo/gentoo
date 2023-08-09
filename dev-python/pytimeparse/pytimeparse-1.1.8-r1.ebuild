@@ -12,6 +12,6 @@ HOMEPAGE="https://github.com/wroberts/pytimeparse https://pypi.org/project/pytim
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~arm64-macos ~x64-macos"
 
 distutils_enable_tests unittest

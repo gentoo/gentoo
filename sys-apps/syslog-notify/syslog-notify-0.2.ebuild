@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit readme.gentoo-r1
+inherit autotools readme.gentoo-r1
 
 DESCRIPTION="Notifications for syslog entries via libnotify"
-HOMEPAGE="https://jtniehof.github.com/syslog-notify/"
-SRC_URI="https://github.com/downloads/jtniehof/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://jtniehof.github.io/syslog-notify/"
+SRC_URI="https://github.com/jtniehof/syslog-notify/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,6 +20,12 @@ RDEPEND="
 		app-admin/syslog-ng
 		app-admin/rsyslog
 	)"
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_install() {
 	default

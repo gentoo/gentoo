@@ -44,7 +44,7 @@ if [[ ${PV} != 9999 ]]; then
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
@@ -57,7 +57,7 @@ PATCHES=(
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
-UNIFONT=unifont-12.1.02
+UNIFONT=unifont-15.0.06
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
 
@@ -129,7 +129,7 @@ RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )
 "
 
-RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test ) test? ( userpriv )"
 
 QA_EXECSTACK="usr/bin/grub-emu* usr/lib/grub/*"
 QA_PRESTRIPPED="usr/lib/grub/.*"
@@ -280,7 +280,9 @@ src_compile() {
 src_test() {
 	# The qemu dependency is a bit complex.
 	# You will need to adjust QEMU_SOFTMMU_TARGETS to match the cpu/platform.
-	grub_do emake check
+	local SANDBOX_WRITE=${SANDBOX_WRITE}
+	addwrite /dev
+	grub_do emake -j1 check
 }
 
 src_install() {
@@ -306,6 +308,7 @@ pkg_postinst() {
 			if ver_test -gt ${v}; then
 				ewarn
 				ewarn "Re-run grub-install to update installed boot code!"
+				ewarn "Re-run grub-mkconfig to update grub.cfg!"
 				ewarn
 				break
 			fi

@@ -9,11 +9,11 @@ DESCRIPTION="Hardware detection tool used in SuSE Linux"
 HOMEPAGE="https://github.com/openSUSE/hwinfo/"
 #Using srpms from SUSE to get pregenerated changelog, otherwise we could use GH
 #SRC_URI="https://github.com/openSUSE/hwinfo/archive/${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI="http://download.opensuse.org/tumbleweed/repo/src-oss/src/${P}-1.1.src.rpm"
+SRC_URI="http://download.opensuse.org/tumbleweed/repo/src-oss/src/${P}-1.2.src.rpm"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ppc ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="

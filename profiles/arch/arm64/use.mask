@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-01-01)
 # unmask synaptics input driver
 -input_devices_synaptics
@@ -46,11 +50,6 @@ mono
 cpu_flags_arm_neon
 
 # Unmask arm specific USE flags
--cpu_flags_arm_v4
--cpu_flags_arm_v4
--cpu_flags_arm_v5
--cpu_flags_arm_v6
--cpu_flags_arm_v7
 -cpu_flags_arm_v8
 
 -cpu_flags_arm_aes
@@ -58,8 +57,6 @@ cpu_flags_arm_neon
 -cpu_flags_arm_edsp
 -cpu_flags_arm_sha1
 -cpu_flags_arm_sha2
--cpu_flags_arm_thumb
--cpu_flags_arm_thumb2
 -cpu_flags_arm_vfp
 -cpu_flags_arm_vfpv3
 -cpu_flags_arm_vfpv4
@@ -72,10 +69,6 @@ opencl
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # net-libs/libsmi not tested on arm64 yet
 smi
-
-# Mart Raudsepp <leio@gentoo.org> (2017-02-01)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # Markus Meier <maekke@gentoo.org> (2010-08-22)
 # net-wireless/wimax not tested

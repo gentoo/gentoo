@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Educational car crash simulator"
-HOMEPAGE="http://www.stolk.org/crashtest/"
-SRC_URI="http://www.stolk.org/crashtest/${P}.tar.gz"
+HOMEPAGE="https://www.stolk.org/crashtest/"
+SRC_URI="https://www.stolk.org/crashtest/${P}.tar.gz"
 S="${WORKDIR}/${P}/src-${PN}"
 
 LICENSE="GPL-2"

@@ -3,10 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_EXT=1
 # TODO: Find out exactly where this error comes from
 # error: '<' not supported between instances of 'str' and 'int'
 #DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1

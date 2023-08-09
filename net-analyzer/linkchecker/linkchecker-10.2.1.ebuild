@@ -13,7 +13,7 @@ inherit bash-completion-r1 distutils-r1 multiprocessing optfeature
 DESCRIPTION="Check websites for broken links"
 HOMEPAGE="https://github.com/linkcheck/linkchecker"
 SRC_URI="https://github.com/linkchecker/linkchecker/releases/download/v${PV}/LinkChecker-${PV}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 LICENSE="GPL-2"
 SLOT="0"

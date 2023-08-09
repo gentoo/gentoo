@@ -1,0 +1,57 @@
+From f5463f314886016fb40199d1265cacddf64ea357 Mon Sep 17 00:00:00 2001
+From: Jean Boussier <jean.boussier@gmail.com>
+Date: Mon, 5 Dec 2022 11:59:45 +0100
+Subject: [PATCH] Merge pull request #46643 from ghiculescu/mail-28
+
+Fix CI for Mail 2.8+
+---
+ .../lib/action_mailbox/mail_ext/addresses.rb  | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/actionmailbox/lib/action_mailbox/mail_ext/addresses.rb b/actionmailbox/lib/action_mailbox/mail_ext/addresses.rb
+index 5eab1feb3d563..7da7ee2586a62 100644
+--- a/lib/action_mailbox/mail_ext/addresses.rb
++++ b/lib/action_mailbox/mail_ext/addresses.rb
+@@ -3,7 +3,7 @@
+ module Mail
+   class Message
+     def from_address
+-      header[:from]&.address_list&.addresses&.first
++      address_list(header[:from])&.addresses&.first
+     end
+ 
+     def recipients_addresses
+@@ -11,19 +11,30 @@ def recipients_addresses
+     end
+ 
+     def to_addresses
+-      Array(header[:to]&.address_list&.addresses)
++      Array(address_list(header[:to])&.addresses)
+     end
+ 
+     def cc_addresses
+-      Array(header[:cc]&.address_list&.addresses)
++      Array(address_list(header[:cc])&.addresses)
+     end
+ 
+     def bcc_addresses
+-      Array(header[:bcc]&.address_list&.addresses)
++      Array(address_list(header[:bcc])&.addresses)
+     end
+ 
+     def x_original_to_addresses
+       Array(header[:x_original_to]).collect { |header| Mail::Address.new header.to_s }
+     end
++
++    private
++      def address_list(obj)
++        if obj&.respond_to?(:element)
++          # Mail 2.8+
++          obj.element
++        else
++          # Mail <= 2.7.x
++          obj&.address_list
++        end
++      end
+   end
+ end

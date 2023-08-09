@@ -4,7 +4,7 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools flag-o-matic multilib multilib-build python-any-r1
 inherit readme.gentoo-r1 toolchain-funcs wrapper
 
@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/ValveSoftware/wine/archive/refs/tags/proton-wine-${WINE_PV}.tar.gz"
 	S="${WORKDIR}/${PN}-wine-${WINE_PV}"
-	KEYWORDS="-* ~amd64 ~x86"
+	KEYWORDS="-* amd64 ~x86"
 fi
 
 DESCRIPTION="Valve Software's fork of Wine"
@@ -39,7 +39,6 @@ RESTRICT="test"
 
 # `grep WINE_CHECK_SONAME configure.ac` + if not directly linked
 WINE_DLOPEN_DEPEND="
-	dev-libs/gmp:=[${MULTILIB_USEDEP}]
 	dev-libs/libgcrypt:=[${MULTILIB_USEDEP}]
 	media-libs/freetype[${MULTILIB_USEDEP}]
 	media-libs/libglvnd[X,${MULTILIB_USEDEP}]
@@ -53,7 +52,10 @@ WINE_DLOPEN_DEPEND="
 	fontconfig? ( media-libs/fontconfig[${MULTILIB_USEDEP}] )
 	osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
-	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	ssl? (
+		dev-libs/gmp:=[${MULTILIB_USEDEP}]
+		net-libs/gnutls:=[${MULTILIB_USEDEP}]
+	)
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
@@ -115,6 +117,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.0.4-restore-menubuilder.patch
 	"${FILESDIR}"/${PN}-7.0.4-unwind.patch
+	"${FILESDIR}"/${PN}-7.0.6-mingw64-11.0.0.patch
 )
 
 pkg_pretend() {
@@ -254,9 +257,13 @@ src_configure() {
 
 		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
 		: "${CROSSCFLAGS:=$(
-			filter-flags '-fstack-clash-protection' #758914
 			filter-flags '-fstack-protector*' #870136
 			filter-flags '-mfunction-return=thunk*' #878849
+			# -mavx with mingw-gcc has a history of obscure issues and
+			# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+			# crashes with -march=skylake >=wine-8.10, similar issues with
+			# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+			append-cflags -mno-avx
 			CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
 		: "${CROSSLDFLAGS:=$(
 			filter-flags '-fuse-ld=*'

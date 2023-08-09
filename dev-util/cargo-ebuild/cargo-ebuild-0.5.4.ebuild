@@ -134,7 +134,7 @@ CRATES="
 	winapi-x86_64-pc-windows-gnu-0.4.0
 "
 
-inherit cargo flag-o-matic
+inherit cargo
 
 DESCRIPTION="Generates an ebuild for a package using the in-tree eclasses."
 # Double check the homepage as the cargo_metadata crate
@@ -162,7 +162,6 @@ RDEPEND="
 QA_FLAGS_IGNORED="usr/bin/cargo-ebuild"
 
 src_configure() {
-	filter-flags '-flto*' # https://bugs.gentoo.org/858332
 	export LIBGIT2_SYS_USE_PKG_CONFIG=1 LIBSSH2_SYS_USE_PKG_CONFIG=1 PKG_CONFIG_ALLOW_CROSS=1
 	cargo_src_configure
 }

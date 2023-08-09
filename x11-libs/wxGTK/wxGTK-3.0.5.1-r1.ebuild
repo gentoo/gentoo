@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,7 +62,8 @@ PATCHES=(
 	"${WORKDIR}"/wxGTK-3.0.5_p20210214/
 	"${FILESDIR}"/wxGTK-${SLOT}-translation-domain.patch
 	"${FILESDIR}"/wxGTK-ignore-c++-abi.patch #676878
-	"${FILESDIR}/${PN}-configure-tests.patch"
+	"${FILESDIR}"/${PN}-configure-tests.patch
+	"${FILESDIR}"/${PN}-3.0.5.1-configure-modern-c.patch
 )
 
 src_prepare() {

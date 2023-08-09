@@ -6,7 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="glslang">Build support for slang-type shaders</flag>
 		<flag name="libretro">Build libretro port</flag>
 		<flag name="netplay">Enable playing ROMs over the network (not recommended)</flag>
 	</use>

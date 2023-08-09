@@ -96,7 +96,7 @@ src_install() {
 			-i "${D}"/usr/bin/efricas \
 			|| die "sed efricas failed"
 		elisp-install ${PN} "${D}"/usr/$(get_libdir)/${PN}/emacs/*.el
-		elisp-site-file-install "${FILESDIR}"/64${PN}-gentoo.el
+		elisp-make-site-file 64${PN}-gentoo.el
 	else
 		rm "${D}"/usr/bin/efricas || die "rm efricas failed"
 	fi

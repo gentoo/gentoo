@@ -20,8 +20,8 @@ S="${WORKDIR}/wxWidgets-${PV}"
 LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 SLOT="${WXRELEASE}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+X curl doc debug gnome-keyring gstreamer libnotify +lzma opengl pch sdl +spell test tiff wayland webkit"
-REQUIRED_USE="test? ( tiff ) tiff? ( X ) spell? ( X ) gnome-keyring? ( X )"
+IUSE="+X curl doc debug keyring gstreamer libnotify +lzma opengl pch sdl +spell test tiff wayland webkit"
+REQUIRED_USE="test? ( tiff ) tiff? ( X ) spell? ( X ) keyring? ( X )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -45,7 +45,7 @@ RDEPEND="
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
 		media-libs/fontconfig
 		x11-libs/pango[${MULTILIB_USEDEP}]
-		gnome-keyring? ( app-crypt/libsecret )
+		keyring? ( app-crypt/libsecret )
 		gstreamer? (
 			media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
 			media-libs/gst-plugins-base:1.0[${MULTILIB_USEDEP}]
@@ -172,7 +172,7 @@ multilib_src_configure() {
 		$(use_with libnotify)
 		$(use_with opengl)
 		$(use_with tiff libtiff sys)
-		$(use_enable gnome-keyring secretstore)
+		$(use_enable keyring secretstore)
 		$(use_enable spell spellcheck)
 		$(use_enable test tests)
 		$(use_enable wayland)

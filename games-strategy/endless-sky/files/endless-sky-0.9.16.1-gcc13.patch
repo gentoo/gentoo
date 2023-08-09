@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/894782
+https://github.com/endless-sky/endless-sky/commit/a85df936c24feba6eb5f7f484c160aff0a60d6cb
+https://github.com/endless-sky/endless-sky/commit/7483f72cc72511786ba3aac13b4cbe0848a2aefc
+
+From a85df936c24feba6eb5f7f484c160aff0a60d6cb Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Sat, 28 Jan 2023 16:29:40 +0100
+Subject: [PATCH] chore: Fix build with gcc 13 by including <cstdint> (#8235)
+
+--- a/source/ImageBuffer.h
++++ b/source/ImageBuffer.h
+@@ -16,6 +16,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
+ #ifndef IMAGE_BUFFER_H_
+ #define IMAGE_BUFFER_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ 
+--- a/source/Sound.cpp
++++ b/source/Sound.cpp
+@@ -20,6 +20,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+ #include <AL/al.h>
+ 
++#include <cstdint>
+ #include <cstdio>
+ #include <vector>
+ 
+
+From 7483f72cc72511786ba3aac13b4cbe0848a2aefc Mon Sep 17 00:00:00 2001
+From: Nick <quyykk@protonmail.com>
+Date: Wed, 8 Mar 2023 19:41:40 +0100
+Subject: [PATCH] chore: Add a missing #include, caught by gcc 13 (#8511)
+
+--- a/source/Preferences.h
++++ b/source/Preferences.h
+@@ -16,6 +16,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
+ #ifndef PREFERENCES_H_
+ #define PREFERENCES_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ 

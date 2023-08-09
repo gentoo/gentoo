@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ymattw/ydiff"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="sys-apps/less"
 

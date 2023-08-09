@@ -1,0 +1,24 @@
+diff -up kmix-21.04.0/core/settings.kcfg.autostart_disable kmix-21.04.0/core/settings.kcfg
+--- kmix-21.04.0/core/settings.kcfg.autostart_disable	2021-04-28 16:34:04.623152452 -0500
++++ kmix-21.04.0/core/settings.kcfg	2021-04-28 16:31:03.076698930 -0500
+@@ -57,7 +57,7 @@
+     <!-- Set by KMixPrefDlg, read by kmix_autostart.desktop	-->
+ 
+     <entry name="AutoStart" type="Bool">
+-      <default>true</default>
++      <default>false</default>
+     </entry>
+ 
+     <!-- Saved by KMixWindow::saveBaseConfig() and loaded	-->
+diff -up kmix-21.04.0/desktop/kmix_autostart.desktop.autostart_disable kmix-21.04.0/desktop/kmix_autostart.desktop
+--- kmix-21.04.0/desktop/kmix_autostart.desktop.autostart_disable	2021-04-28 16:34:18.456263203 -0500
++++ kmix-21.04.0/desktop/kmix_autostart.desktop	2021-04-28 16:32:58.722624829 -0500
+@@ -8,7 +8,7 @@ X-KDE-autostart-after=panel
+ X-KDE-autostart-after=pulseaudio
+ X-KDE-StartupNotify=false
+ X-DBUS-StartupType=Unique
+-X-KDE-autostart-condition=kmixrc:Global:AutoStart:true
++X-KDE-autostart-condition=kmixrc:Global:AutoStart:false
+ Icon=kmix
+ GenericName=Sound Mixer
+ GenericName[bg]=Звуков смесител

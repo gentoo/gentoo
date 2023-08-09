@@ -64,7 +64,7 @@ RDEPEND="
 	g15? ( app-misc/g15daemon:= )
 	jack? ( virtual/jack )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	pipewire? ( media-video/pipewire )
 	speech? ( >=app-accessibility/speech-dispatcher-0.8.0 )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )

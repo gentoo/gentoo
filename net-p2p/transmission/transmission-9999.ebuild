@@ -51,8 +51,8 @@ COMMON_DEPEND="
 	sys-libs/zlib:=
 	nls? ( virtual/libintl )
 	gtk? (
-		>=dev-cpp/gtkmm-3.24.0:3.0
-		>=dev-cpp/glibmm-2.60.0:2
+		>=dev-cpp/gtkmm-3.24.0:4.0
+		>=dev-cpp/glibmm-2.60.0:2.68
 		appindicator? ( dev-libs/libayatana-appindicator )
 	)
 	qt5? (
@@ -89,7 +89,7 @@ src_configure() {
 
 		-DRUN_CLANG_TIDY=OFF
 
-		-DUSE_GTK_VERSION=3
+		-DUSE_GTK_VERSION=4
 		-DUSE_SYSTEM_EVENT2=ON
 		-DUSE_SYSTEM_DEFLATE=OFF
 		-DUSE_SYSTEM_DHT=OFF

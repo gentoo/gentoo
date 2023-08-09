@@ -16,6 +16,6 @@
 		<flag name="themes">Install additional themes</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">pekdon/pekwm</remote-id>
+		<remote-id type="github">pekwm/pekwm</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,11 +4,11 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit distutils-r1 git-r3 optfeature xdg
 
 DESCRIPTION="GTK image viewer for comic book archives"
-HOMEPAGE="http://mcomix.sourceforge.net"
+HOMEPAGE="https://mcomix.sourceforge.net"
 EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/git"
 
 LICENSE="GPL-2"

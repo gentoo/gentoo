@@ -1,0 +1,48 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -669,7 +669,7 @@ ADD_SUBDIRECTORY(doc)
+ ADD_SUBDIRECTORY(cmake/install)
+ 
+ FIND_PACKAGE(UnixCommands)
+-IF(GZIP)
++IF(FALSE)
+ 	ADD_CUSTOM_COMMAND(OUTPUT "${CMAKE_BINARY_DIR}/lmms.1.gz"
+ 					COMMAND ${GZIP} -c ${CMAKE_SOURCE_DIR}/doc/lmms.1 > ${CMAKE_BINARY_DIR}/lmms.1.gz
+ 					DEPENDS "${CMAKE_SOURCE_DIR}/doc/lmms.1"
+@@ -680,7 +680,6 @@ IF(GZIP)
+ 	ADD_CUSTOM_TARGET(manpage ALL
+ 					DEPENDS "${CMAKE_BINARY_DIR}/lmms.1.gz")
+ ELSEIF(UNIX)
+-	MESSAGE(FATAL_ERROR "Can't find gzip required for generating lmms.1.gz")
+ ENDIF()
+ 
+ # install headers
+@@ -698,7 +697,7 @@ ENDIF(LMMS_BUILD_LINUX)
+ #
+ ADD_CUSTOM_TARGET(distclean
+ 			COMMAND make clean
+-			COMMAND rm -rf `find -name cmake_install.cmake` `find -name Makefile` `find -type d -name CMakeFiles` CMakeCache.txt lmmsconfig.h lmms.1.gz)
++			COMMAND rm -rf `find -name cmake_install.cmake` `find -name Makefile` `find -type d -name CMakeFiles` CMakeCache.txt lmmsconfig.h lmms.1)
+ 
+ #
+ # add tarball-target
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -140,7 +140,7 @@ IF(NOT CMAKE_VERSION VERSION_LESS 3.6)
+ 	SET_PROPERTY(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT lmms)
+ ENDIF()
+ 
+-SET_DIRECTORY_PROPERTIES(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${LMMS_RCC_OUT} ${LMMS_UI_OUT} lmmsconfig.h lmms.1.gz")
++SET_DIRECTORY_PROPERTIES(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${LMMS_RCC_OUT} ${LMMS_UI_OUT} lmmsconfig.h lmms.1")
+ 
+ IF(LMMS_BUILD_WIN32)
+ 	SET(EXTRA_LIBRARIES "winmm")
+@@ -233,7 +233,7 @@ ELSE()
+ 	ELSE(CMAKE_INSTALL_MANDIR)
+ 		SET(INSTALL_MANDIR ${CMAKE_INSTALL_PREFIX}/share/man)
+ 	ENDIF(CMAKE_INSTALL_MANDIR)
+-	INSTALL(FILES "${CMAKE_BINARY_DIR}/lmms.1.gz"
++	INSTALL(FILES "${CMAKE_SOURCE_DIR}/doc/lmms.1"
+ 			DESTINATION "${INSTALL_MANDIR}/man1/"
+ 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+ ENDIF()

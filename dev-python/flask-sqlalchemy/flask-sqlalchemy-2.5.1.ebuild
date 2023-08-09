@@ -3,16 +3,14 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
+PYPI_PN="Flask-SQLAlchemy"
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
-inherit distutils-r1
 
-MY_PN="Flask-SQLAlchemy"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="SQLAlchemy support for Flask applications"
 HOMEPAGE="https://pypi.org/project/Flask-SQLAlchemy/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"

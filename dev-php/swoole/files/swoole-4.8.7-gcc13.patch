@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/895232
+https://github.com/swoole/swoole-src/issues/4983
+https://github.com/swoole/swoole-src/commit/402eec43ec385b63307b3ba772f871f0f86fa299
+
+From 402eec43ec385b63307b3ba772f871f0f86fa299 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Sun, 19 Feb 2023 13:00:01 +0100
+Subject: [PATCH] Fix #4983 Add missing header for GCC 13 (#4985)
+
+--- a/include/swoole_proxy.h
++++ b/include/swoole_proxy.h
+@@ -17,6 +17,7 @@
+ #pragma once
+ 
+ #include <string>
++#include <cstdint>
+ 
+ #define SW_SOCKS5_VERSION_CODE 0x05
+ 

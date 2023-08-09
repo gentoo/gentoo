@@ -6,4 +6,8 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/mortenivar/aspell-da/issues</bugs-to>
+		<remote-id type="github">mortenivar/aspell-da</remote-id>
+	</upstream>
 </pkgmetadata>

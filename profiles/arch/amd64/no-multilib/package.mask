@@ -48,6 +48,8 @@ games-action/heretic2
 games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
+games-action/psychonauts-gog
+games-action/psychonauts-hb
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/solar2

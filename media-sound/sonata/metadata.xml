@@ -10,4 +10,7 @@
     (MPD). It aims to be efficient (no toolbar, main menu, or statusbar),
     user-friendly, and clean.
   </longdescription>
+  <upstream>
+    <remote-id type="github">multani/sonata</remote-id>
+  </upstream>
 </pkgmetadata>

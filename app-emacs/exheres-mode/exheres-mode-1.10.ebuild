@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Major mode for editing files in exheres format"
 HOMEPAGE="https://www.exherbo.org/
 	https://gitlab.exherbo.org/exherbo-misc/exheres-mode/"
 SRC_URI="https://dev.exherbo.org/distfiles/${PN}/${P}.tar.xz"
-S="${S}"/src
+S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-2+"
 SLOT="0"

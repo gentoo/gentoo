@@ -12,4 +12,7 @@
 	<use>
 		<flag name="fuse">Enable bcachefs FUSE support (experimental!)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">koverstreet/bcachefs-tools</remote-id>
+	</upstream>
 </pkgmetadata>

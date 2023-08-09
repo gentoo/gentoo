@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
 	"${FILESDIR}"/openmw-0.47.0-sigstksz.patch
 	"${FILESDIR}"/openmw-0.47.0-gcc12.patch
+	"${FILESDIR}"/openmw-0.47.0-gcc13.patch
 )
 
 src_prepare() {

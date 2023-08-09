@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ DIST_AUTHOR=CHORNY
 DIST_VERSION=1.94
 inherit perl-module
 
-DESCRIPTION="A persistence framework for session data"
+DESCRIPTION="Persistence framework for session data"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ~riscv x86"

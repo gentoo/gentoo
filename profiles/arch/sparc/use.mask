@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
+
 # matoro <matoro_gentoo@matoro.tk> (2023-03-07)
 # dev-db/mariadb fails tests disastrously.
 mariadb
@@ -241,10 +245,6 @@ unwind
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
 # sys-devel/llvm is not keyworded, bug #320221
 llvm
-
-# Pacho Ramos <pacho@gentoo.org> (2014-01-19)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp

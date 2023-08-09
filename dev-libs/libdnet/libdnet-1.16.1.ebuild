@@ -55,7 +55,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with python) \
-		--with-check=$(usex test "${ESYSROOT}/usr")
+		$(use_with test check "${ESYSROOT}/usr")
 }
 
 src_compile() {

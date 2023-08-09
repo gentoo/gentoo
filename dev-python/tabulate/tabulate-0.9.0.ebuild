@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/wcwidth[${PYTHON_USEDEP}]

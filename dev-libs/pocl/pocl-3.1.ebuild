@@ -52,6 +52,7 @@ llvm_check_deps() {
 
 PATCHES=(
 	"${FILESDIR}"/${P}-nodebug.patch
+	"${FILESDIR}"/${P}-c++11.patch
 )
 
 pkg_setup() {

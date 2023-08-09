@@ -1,4 +1,4 @@
-# Copyright 2018-2022 Gentoo Authors
+# Copyright 2018-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,9 @@ IUSE=""
 DEPEND="!elibc_glibc? ( sys-libs/argp-standalone )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/fatcat-include-getopt.patch )
+PATCHES=(
+	"${FILESDIR}/fatcat-1.1.1-musl-1.2.4-fixes.patch"
+)
 
 src_install() {
 	cmake_src_install

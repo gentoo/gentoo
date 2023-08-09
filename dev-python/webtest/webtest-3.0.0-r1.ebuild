@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN="WebTest"
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -37,6 +37,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/webtest-2.0.33-no-pylons-theme.patch"
+	"${FILESDIR}/webtest-3.0.0-python3.12-unittest.patch"
 )
 
 distutils_enable_sphinx docs

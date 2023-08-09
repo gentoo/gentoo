@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit gnustep-2 vcs-snapshot
 
 DESCRIPTION="A set of frameworks forming a complete Web application server environment"
-HOMEPAGE="http://www.sogo.nu/"
+HOMEPAGE="https://www.sogo.nu/"
 SRC_URI="https://github.com/inverse-inc/sope/archive/SOPE-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"

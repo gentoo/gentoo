@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
@@ -24,12 +24,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	dev-util/patchelf
 	virtual/libcrypt:=
-	$(python_gen_cond_dep '
-		dev-python/backports-zoneinfo[${PYTHON_USEDEP}]
-	' 3.8)
 "
 BDEPEND="
 	test? (

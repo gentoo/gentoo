@@ -80,7 +80,7 @@ case ${EAPI} in
 			yes|noslotop)
 				DEPEND="dev-lang/perl"
 				BDEPEND="dev-lang/perl
-					 test? ( virtual/perl-Test-Simple )"
+					 test? ( >=virtual/perl-Test-Simple-1 )"
 				IUSE="test"
 				RESTRICT="!test? ( test )"
 				;;&

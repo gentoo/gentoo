@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9,10,11} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 pypi
@@ -13,7 +13,7 @@ HOMEPAGE="https://opendev.org/opendev/glean"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-python/pbr[${PYTHON_USEDEP}]"

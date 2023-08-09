@@ -6,6 +6,7 @@
 		<name>William Hubbs</name>
 	</maintainer>
 	<use>
+		<flag name="corepack">Enable the experimental corepack package management tool</flag>
 		<flag name="inspector">Enable V8 inspector</flag>
 		<flag name="lto">Build with link-time optimisation</flag>
 		<flag name="npm">Enable NPM package manager</flag>

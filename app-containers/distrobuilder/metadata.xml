@@ -13,4 +13,7 @@
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">lxc/distrobuilder</remote-id>
+	</upstream>
 </pkgmetadata>

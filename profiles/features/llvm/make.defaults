@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # this is for now highly experimental -dilfridge
@@ -53,7 +53,7 @@ CXXSTDLIB="c++"
 BOOTSTRAP_USE="${BOOTSTRAP_USE} ssl curl_ssl_openssl"
 
 # Clang needs this
-BOOTSTRAP_USE="${BOOTSTRAP_USE} python_single_target_python3_10"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} python_single_target_python3_11"
 
 # sys-devel/llvm
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -binutils-plugin"

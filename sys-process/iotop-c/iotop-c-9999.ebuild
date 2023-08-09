@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,11 @@ CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS ~VM_EVENT_COUNTERS
 FILECAPS=(
 	cap_net_admin=eip usr/bin/iotop
 )
+
+src_prepare() {
+	sed -e 's/-D_FORTIFY_SOURCE=2//' -i Makefile || die
+	default
+}
 
 src_compile() {
 	emake V=1 CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)" NO_FLTO=1

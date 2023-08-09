@@ -1,9 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit java-pkg-2 java-ant-2
+JAVA_PKG_IUSE="doc source test"
+MAVEN_ID="com.gitlab.pdftk-java:pdftk-java:3.3.3"
+JAVA_TESTING_FRAMEWORKS="junit-4"
+
+inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="gcj-free version of pdftk written in Java"
 HOMEPAGE="https://gitlab.com/pdftk-java/pdftk"
@@ -11,6 +15,7 @@ HOMEPAGE="https://gitlab.com/pdftk-java/pdftk"
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/pdftk-java/pdftk/"
+	S="${WORKDIR}/pdftk-${PV}"
 else
 	SRC_URI="https://gitlab.com/pdftk-java/pdftk/-/archive/v${PV}/pdftk-v${PV}.tar.bz2"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
@@ -20,23 +25,64 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-JAVA_PKG_STRICT="yes"
-EANT_GENTOO_CLASSPATH="bcprov,commons-lang-3.6"
-JAVA_ANT_REWRITE_CLASSPATH="true"
-
-CDEPEND="
+CP_DEPEND="
 	dev-java/bcprov:0
-	dev-java/commons-lang:3.6"
+	dev-java/commons-lang:3.6
+"
 
-RDEPEND="
-	${CDEPEND}
-	>=virtual/jre-1.8:*"
+# Compile dependencies
+# POM: pom.xml
+# test? com.github.stefanbirkner:system-rules:1.19.0 -> !!!groupId-not-found!!!
+# test? junit:junit:4.12 -> >=dev-java/junit-4.13.2:4
 
 DEPEND="
-	${CDEPEND}
-	>=virtual/jdk-1.8:*"
+	>=virtual/jdk-1.8:*
+	${CP_DEPEND}
+	test? (
+		app-text/poppler[cairo]
+		dev-java/system-rules:0
+	)
+"
 
-src_install() {
-	java-pkg_newjar "build/jar/pdftk.jar"
-	java-pkg_dolauncher ${PN} --main com.gitlab.pdftk_java.pdftk
+RDEPEND="
+	>=virtual/jre-1.8:*
+	${CP_DEPEND}"
+
+DOCS=( CHANGELOG.md README.md )
+
+JAVA_LAUNCHER_FILENAME="${PN}"
+JAVA_MAIN_CLASS="com.gitlab.pdftk_java.pdftk"
+JAVA_SRC_DIR="java"
+JAVA_RESOURCE_DIRS="resources/java"
+
+JAVA_TEST_GENTOO_CLASSPATH="junit-4,system-rules"
+JAVA_TEST_SRC_DIR="test"
+
+src_prepare() {
+	default
+	mkdir resources || die
+	cp -r {,resources/}java || die
+	rm -r resources/java/com/gitlab/pdftk_java/com/lowagie/text/pdf/codec || die
+	find resources/java -type f \( -name '*.java' -o -name '*.sh' \) -exec rm -rf {} + || die
+}
+
+src_test() {
+	# some tests seem to need special treatment
+	einfo "Runnig first test"
+	JAVA_TEST_RUN_ONLY=(
+		com.gitlab.pdftk_java.CatTest
+		com.gitlab.pdftk_java.DataTest
+		com.gitlab.pdftk_java.FormTest
+		com.gitlab.pdftk_java.MultipleTest
+	)
+	java-pkg-simple_src_test
+	einfo "Running second test"
+	JAVA_TEST_RUN_ONLY=()
+	JAVA_TEST_EXCLUDES=(
+		com.gitlab.pdftk_java.CatTest
+		com.gitlab.pdftk_java.DataTest
+		com.gitlab.pdftk_java.FormTest
+		com.gitlab.pdftk_java.MultipleTest
+	)
+	java-pkg-simple_src_test
 }

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
@@ -27,7 +27,7 @@ RDEPEND="
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/flit_core-3.8[${PYTHON_USEDEP}]
+	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

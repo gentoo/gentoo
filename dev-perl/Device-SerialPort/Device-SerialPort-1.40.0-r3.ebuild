@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DIST_VERSION=1.04
 DIST_EXAMPLES=("eg/*")
 inherit perl-module
 
-DESCRIPTION="A Serial port Perl Module"
+DESCRIPTION="Serial port Perl Module"
 # https://bugs.gentoo.org/734728
 LICENSE="GPL-2+"
 SLOT="0"

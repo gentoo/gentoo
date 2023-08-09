@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ MY_P=${MY_PN}-${PV}
 inherit cmake
 
 DESCRIPTION="Qt support for OpenSceneGraph"
-HOMEPAGE="http://www.openscenegraph.org/"
+HOMEPAGE="https://www.openscenegraph.com/"
 SRC_URI="https://github.com/openscenegraph/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="wxWinLL-3 LGPL-2.1"

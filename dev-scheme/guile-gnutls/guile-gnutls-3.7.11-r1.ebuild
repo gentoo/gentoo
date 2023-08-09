@@ -11,7 +11,6 @@ SRC_URI="https://gitlab.com/gnutls/guile/uploads/56e18069ab63ca67d61aecb6b2697ec
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
 
 RDEPEND="
 	>=dev-scheme/guile-2.0.0:=
@@ -38,4 +37,8 @@ src_install() {
 	default
 
 	find "${ED}" -type f -name "*.la" -delete || die
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }

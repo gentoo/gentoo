@@ -9,4 +9,8 @@
 <use>
   <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
 </use>
+<upstream>
+  <bugs-to>https://github.com/emacs-w3m/emacs-w3m/issues/</bugs-to>
+  <remote-id type="github">emacs-w3m/emacs-w3m</remote-id>
+</upstream>
 </pkgmetadata>

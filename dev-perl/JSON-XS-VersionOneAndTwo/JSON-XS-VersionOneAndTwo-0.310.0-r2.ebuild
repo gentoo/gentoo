@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Support versions 1 and 2 of JSON::XS"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-perl/JSON-XS"
 BDEPEND="${RDEPEND}

@@ -1,0 +1,30 @@
+[Unit]
+Description=Looks and smells like Sonarr but made for music.
+After=syslog.target network.target
+
+[Service]
+User=lidarr
+Group=lidarr
+
+Type=simple
+ExecStart=/opt/lidarr/Lidarr
+TimeoutStopSec=20
+KillMode=process
+Restart=always
+
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateMounts=yes
+ProtectHome=yes
+ProtectSystem=full
+NoNewPrivileges=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+
+[Install]
+WantedBy=multi-user.target

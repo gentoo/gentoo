@@ -7,7 +7,7 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bzip2.gpg
-inherit toolchain-funcs multilib-minimal usr-ldscript verify-sig
+inherit toolchain-funcs multilib multilib-minimal usr-ldscript verify-sig
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="https://sourceware.org/bzip2/"
@@ -91,9 +91,9 @@ multilib_src_install() {
 	if multilib_is_native_abi ; then
 		gen_usr_ldscript -a bz2
 
-		dobin bzip2recover
+		dobin bzip2recover$(get_exeext)
 		into /
-		newbin bzip2 bzip2-reference
+		newbin bzip2$(get_exeext) bzip2-reference$(get_exeext)
 	fi
 }
 
@@ -129,7 +129,7 @@ pkg_postinst() {
 	local x
 	for x in bzip2 bunzip2 bzcat; do
 		if [[ ! -h ${EROOT}/bin/${x} ]]; then
-			ln -s bzip2-reference "${EROOT}/bin/${x}" || die
+			ln -s bzip2-reference$(get_exeext) "${EROOT}/bin/${x}$(get_exeext)" || die
 		fi
 	done
 }

@@ -10,5 +10,3 @@ move dev-python/u-msgpack dev-python/u-msgpack-python
 move sci-physics/geant-vmc sci-physics/geant4_vmc
 move dev-python/beautifulsoup dev-python/beautifulsoup4
 slotmove dev-python/beautifulsoup4 4 0
-move dev-python/pyro dev-python/Pyro4
-slotmove dev-python/Pyro4 4 0

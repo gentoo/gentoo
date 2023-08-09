@@ -1,26 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit desktop
 
 DESCRIPTION="A frantic 3D space shooter"
-HOMEPAGE="http://jeuxlibres.net/showgame/sable.html"
+HOMEPAGE="https://jeuxlibres.net/showgame/sable.html"
 SRC_URI="mirror://gentoo/${P}-src.tgz
 	mirror://gentoo/${PN}.png"
+S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="virtual/opengl
 	media-libs/libsdl[joystick,opengl,sound,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}"
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 

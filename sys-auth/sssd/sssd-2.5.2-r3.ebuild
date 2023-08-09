@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools linux-info multilib-minimal python-single-r1 pam systemd toolchain-funcs optfeature
 
@@ -15,13 +15,12 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-CVE-2021
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
-IUSE="acl doc +locator +netlink nfsv4 nls +man pac python samba selinux sudo systemd systemtap test valgrind"
+IUSE="acl doc +locator +netlink nfsv4 nls +man pac python samba selinux sudo systemd systemtap test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	pac? ( samba )
-	test? ( sudo )
-	valgrind? ( test )"
+	test? ( sudo )"
 
 BDEPEND=">=sys-devel/autoconf-2.69-r5
 	virtual/pkgconfig
@@ -36,7 +35,6 @@ BDEPEND=">=sys-devel/autoconf-2.69-r5
 		sys-libs/nss_wrapper
 		sys-libs/pam_wrapper
 		sys-libs/uid_wrapper
-		valgrind? ( dev-util/valgrind )
 	)
 	man? (
 		app-text/docbook-xml-dtd:4.4
@@ -158,6 +156,8 @@ multilib_src_configure() {
 		--with-unicode-lib="glib2"
 		--disable-rpath
 		--disable-static
+		# Valgrind is only used for tests
+		--disable-valgrind
 		--sbindir=/usr/sbin
 		--enable-local-provider
 		$(multilib_native_use_with systemd kcm)
@@ -177,7 +177,6 @@ multilib_src_configure() {
 		$(multilib_native_with autofs)
 		$(multilib_native_with ssh)
 		$(use_enable systemtap)
-		$(use_enable valgrind)
 		--without-python2-bindings
 		$(multilib_native_use_with python python3-bindings)
 	)

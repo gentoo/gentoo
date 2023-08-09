@@ -5,4 +5,7 @@
 	<email>radio@gentoo.org</email>
 	<name>Radio</name>
 	</maintainer>
+	<upstream>
+	<remote-id type="github">xtrx-sdr/libxtrxdsp</remote-id>
+	</upstream>
 </pkgmetadata>

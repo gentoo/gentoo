@@ -25,5 +25,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">fricas</remote-id>
+    <remote-id type="github">fricas/fricas</remote-id>
   </upstream>
 </pkgmetadata>

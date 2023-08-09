@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -23,6 +23,6 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 ruby_add_rdepend "
-	|| ( dev-ruby/activerecord:6.1 dev-ruby/activerecord:6.0 )
+	|| ( dev-ruby/activerecord:6.1 )
 	dev-ruby/database_cleaner-core:2.0
 "

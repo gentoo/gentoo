@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit git-r3 linux-info linux-mod toolchain-funcs
+inherit git-r3 linux-mod-r1 toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
 HOMEPAGE="
@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/aabc/ipt-netflow"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug natevents snmp"
+IUSE="natevents snmp"
 
 RDEPEND="
 	net-firewall/iptables:0=
@@ -32,10 +32,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	linux-info_pkg_setup
-
 	local CONFIG_CHECK="BRIDGE_NETFILTER ~IP_NF_IPTABLES VLAN_8021Q"
-	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
 	if use natevents; then
 		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
 		if kernel_is lt 5 2; then
@@ -45,11 +42,8 @@ pkg_setup() {
 		fi
 	fi
 
-	BUILD_TARGETS="all"
-	MODULE_NAMES="ipt_NETFLOW(ipt_netflow)"
 	IPT_LIB="/usr/$(get_libdir)/xtables"
-
-	linux-mod_pkg_setup
+	linux-mod-r1_pkg_setup
 }
 
 src_prepare() {
@@ -87,17 +81,18 @@ src_configure() {
 		--ipt-ver="${IPT_VERSION}" \
 		--kdir="${KV_DIR}" \
 		--kver="${KV_FULL}" \
-		$(use debug && echo '--enable-debugfs') \
 		$(use natevents && echo '--enable-natevents') \
 		$(use snmp && echo '--enable-snmp-rules' || echo '--disable-snmp-agent')
 }
 
 src_compile() {
+	local modlist=( ipt_NETFLOW=ipt_netflow )
+	linux-mod-r1_src_compile
 	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" LD="$(tc-getLD)" OBJDUMP="$(tc-getOBJDUMP)" all
 }
 
 src_install() {
-	linux-mod_src_install
+	linux-mod-r1_src_install
 
 	use snmp && emake DESTDIR="${D}" SNMPTGSO="/usr/$(get_libdir)/snmp/dlmod/snmp_NETFLOW.so" sinstall
 
@@ -105,5 +100,4 @@ src_install() {
 	doexe libip{,6}t_NETFLOW.so
 
 	doheader ipt_NETFLOW.h
-	dodoc README*
 }

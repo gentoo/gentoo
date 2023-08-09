@@ -16,7 +16,7 @@ SRC_URI="https://github.com/rack-test/rack-test/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rack-1.3:*"

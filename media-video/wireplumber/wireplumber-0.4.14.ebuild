@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Replacement for pipewire-media-session"
@@ -44,6 +44,7 @@ BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	sys-devel/gettext
+	test? ( sys-apps/dbus )
 "
 
 DEPEND="
@@ -70,6 +71,7 @@ DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.10-config-disable-sound-server-parts.patch # defer enabling sound server parts to media-video/pipewire
+	"${FILESDIR}"/${PN}-0.4.14-backport-pr505.patch # bug 902445
 )
 
 src_configure() {

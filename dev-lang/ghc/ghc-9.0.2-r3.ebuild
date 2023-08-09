@@ -502,7 +502,6 @@ src_prepare() {
 		[[ -e "${f}" ]] || ln -sf "$($(tc-getPKG_CONFIG) --cflags-only-I libffi | sed "s/-I//g" | tr -d " ")/$(basename "${f}")" "${f}" || die
 	done
 
-
 	eapply "${FILESDIR}"/${PN}-9.0.2-sphinx-6.patch
 
 	if use binary; then
@@ -520,9 +519,6 @@ src_prepare() {
 				# UPDATE ME for ghc-7
 				mkdir "${WORKDIR}"/ghc-bin-installer || die
 				pushd "${WORKDIR}"/ghc-bin-installer > /dev/null || die
-				use sparc-solaris && unpack ghc-6.10.4-sparc-sun-solaris2.tar.bz2
-				use x86-solaris && unpack ghc-7.0.3-i386-unknown-solaris2.tar.bz2
-				use x86-macos && unpack ghc-7.4.1-i386-apple-darwin.tar.bz2
 				use x64-macos && unpack ghc-7.4.1-x86_64-apple-darwin.tar.bz2
 				popd > /dev/null
 

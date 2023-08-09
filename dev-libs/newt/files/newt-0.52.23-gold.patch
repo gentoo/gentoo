@@ -1,0 +1,13 @@
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2022-11-21 07:58:11.000000000 -0600
++++ b/configure.ac	2022-11-21 20:56:42.211913050 -0600
+@@ -24,7 +24,8 @@
+ AC_MSG_CHECKING([for GNU ld])
+ LD=$($CC -print-prog-name=ld 2>&5)
+ 
+-if test $($LD -v 2>&1 | $ac_cv_path_GREP -c "GNU ld") = 0; then
++if test $($LD -v 2>&1 | $ac_cv_path_GREP -c "GNU ld") = 0 -a \
++   $($LD -v 2>&1 | $ac_cv_path_GREP -c "GNU gold") = 0; then
+   # Not
+   GNU_LD=""
+   AC_MSG_RESULT([no])

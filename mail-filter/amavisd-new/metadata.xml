@@ -11,4 +11,7 @@
 		<flag name="rspamd-https">Add support for <pkg>mail-filter/rspamd</pkg> extension (both HTTP and HTTPS)</flag>
 		<flag name="spamassassin">Add support for <pkg>mail-filter/spamassassin</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">amavis/amavis</remote-id>
+	</upstream>
 </pkgmetadata>

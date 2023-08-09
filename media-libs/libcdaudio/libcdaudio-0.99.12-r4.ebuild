@@ -1,16 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Library of cd audio related routines"
-HOMEPAGE="http://libcdaudio.sourceforge.net/"
+HOMEPAGE="https://libcdaudio.sourceforge.net/"
 SRC_URI="mirror://sourceforge/libcdaudio/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.99-CAN-2005-0706.patch

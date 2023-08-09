@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit gnome.org lua-single meson python-single-r1 vala virtualx xdg
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Libpeas https://gitlab.gnome.org/GNOME
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="glade +gtk gtk-doc lua +python vala"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )

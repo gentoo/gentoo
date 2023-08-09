@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!--maintainer-needed-->
-	<use>
-		<flag name="opencl">Enable OpenCL</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">ammen99/wf-recorder</remote-id>
 	</upstream>

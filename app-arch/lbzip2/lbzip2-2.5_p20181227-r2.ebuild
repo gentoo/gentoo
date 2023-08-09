@@ -18,6 +18,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-s_isreg.patch
 	"${FILESDIR}"/${P}-fix-unaligned.patch
 	"${FILESDIR}"/${P}-clang16.patch
+	"${FILESDIR}"/${P}-clang16-musl-info.patch
 )
 
 src_prepare() {

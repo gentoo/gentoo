@@ -1,5 +1,7 @@
-Upstream bundles python deps and uses same interpreter as meson,
-but we don't and need this to use the eclass' python3 instead.
+Ensure we get the interpreter from python-any-r1 rather than same
+as meson. Plus find_program() is quicker than find_installation(),
+and the latter also needs distutils that is unavailable with
+python3_12 without setuptools.
 
 https://bugs.gentoo.org/731728
 --- a/meson.build
@@ -7,5 +9,5 @@ https://bugs.gentoo.org/731728
 @@ -323,3 +323,3 @@
  thirdparty = meson.project_source_root()/'3rdparty'
 -python = import('python').find_installation()
-+python = import('python').find_installation('python3')
++python = find_program('python3')
  python_env = environment()

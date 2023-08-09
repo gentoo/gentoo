@@ -16,10 +16,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="gnome-keyring">
-			Build secretservice helper which works with gnome-keyring or kwallet
-			using D-Bus.
-		</flag>
 		<flag name="pass">
 			Build pass helper for the pass utility.
 		</flag>

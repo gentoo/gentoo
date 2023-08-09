@@ -1,0 +1,13 @@
+Force -mtune=i386.  Random -mtune can lead to iPxeBiosBin.rom getting too
+large (larger than 56k).  This can happen because we support custom CFLAGS.
+
+--- a/src/VBox/Devices/PC/ipxe/Makefile.kmk
++++ b/src/VBox/Devices/PC/ipxe/Makefile.kmk
+@@ -125,6 +125,7 @@
+ 	-ffreestanding \
+ 	-ffunction-sections \
+ 	-march=i386 \
++	-mtune=i386 \
+ 	-fomit-frame-pointer \
+ 	-fstrength-reduce \
+ 	-falign-jumps=1 \

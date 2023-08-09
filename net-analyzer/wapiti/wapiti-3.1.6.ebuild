@@ -12,7 +12,7 @@ inherit distutils-r1
 
 MY_P=${PN}3-${PV}
 DESCRIPTION="Web-application vulnerability scanner"
-HOMEPAGE="http://wapiti.sourceforge.net/"
+HOMEPAGE="https://wapiti.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

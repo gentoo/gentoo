@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools desktop xdg
 
-DESCRIPTION="a board game, up to 4 players, with AI and network"
-HOMEPAGE="http://biloba.sourceforge.net/"
+DESCRIPTION="Board game, up to 4 players, with AI and network"
+HOMEPAGE="https://biloba.sourceforge.net/"
 SRC_URI="mirror://sourceforge/biloba/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

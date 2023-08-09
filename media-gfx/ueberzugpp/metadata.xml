@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<use>
+		<flag name="opencv">Use <pkg>media-libs/opencv</pkg> for additional image formats and OpenCL accelerated scaling</flag>
+		<flag name="wayland">Enable wayland support (proper window positioning is only supported with some compositors)</flag>
+		<flag name="xcb-errors">Use <pkg>x11-libs/xcb-util-errors</pkg> for better error reporting with X</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jstkdng/ueberzugpp</remote-id>
+	</upstream>
+</pkgmetadata>

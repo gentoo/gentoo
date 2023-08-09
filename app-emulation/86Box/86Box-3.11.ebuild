@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="dinput +dynarec experimental +fluidsynth +munt new-dynarec +openal +qt5 +threads"
+IUSE="dinput experimental +fluidsynth +munt new-dynarec +openal +qt5 +threads"
 
 DEPEND="
 	app-emulation/faudio
@@ -55,7 +55,7 @@ src_configure() {
 		-DCPPTHREADS="$(usex threads)"
 		-DDEV_BRANCH="$(usex experimental)"
 		-DDINPUT="$(usex dinput)"
-		-DDYNAREC="$(usex dynarec)"
+		-DDYNAREC="ON"
 		-DSLIRP_EXTERNAL="ON"
 		-DMUNT_EXTERNAL="$(usex munt)"
 		-DFLUIDSYNTH="$(usex fluidsynth)"

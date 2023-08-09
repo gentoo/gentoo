@@ -33,7 +33,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-python/cython-0.27[${PYTHON_USEDEP}]
+BDEPEND="<dev-python/cython-3[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/networkx-2.0[${PYTHON_USEDEP}]

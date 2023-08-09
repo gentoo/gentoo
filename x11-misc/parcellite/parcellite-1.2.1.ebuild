@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,12 +7,12 @@ inherit autotools xdg
 
 MY_P=${PN}-${PV/_}
 
-DESCRIPTION="A lightweight GTK+ based clipboard manager"
-HOMEPAGE="http://parcellite.sourceforge.net/"
+DESCRIPTION="Lightweight GTK+ based clipboard manager"
+HOMEPAGE="https://parcellite.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="nls"

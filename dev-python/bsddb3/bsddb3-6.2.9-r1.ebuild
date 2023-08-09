@@ -3,9 +3,11 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+DISTUTILS_IN_SOURCE_BUILD=1
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
-DISTUTILS_IN_SOURCE_BUILD=1
+
 inherit db-use distutils-r1 pypi
 
 DESCRIPTION="Python bindings for Berkeley DB"

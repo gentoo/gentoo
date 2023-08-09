@@ -11,7 +11,7 @@ DESCRIPTION="Extends Tie::Cache::LRU with expiring"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-perl/Tie-Cache-LRU"
 BDEPEND="${RDEPEND}

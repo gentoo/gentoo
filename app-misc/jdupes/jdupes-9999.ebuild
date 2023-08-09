@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,9 @@ else
 fi
 LICENSE="MIT"
 SLOT="0"
+
+DEPEND="dev-libs/libjodycode"
+RDEPEND="${DEPEND}"
 
 IUSE="+dedupe lowmem hardened"
 

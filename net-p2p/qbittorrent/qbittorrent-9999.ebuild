@@ -24,7 +24,6 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( gui webui )"
 
 RDEPEND="
-	dev-libs/boost:=
 	>=dev-libs/openssl-1.1.1:=
 	>=net-libs/libtorrent-rasterbar-1.2.18:=
 	>=sys-libs/zlib-1.2.11
@@ -49,7 +48,9 @@ RDEPEND="
 		dev-qt/qtsql:5[sqlite]
 		dev-qt/qtxml:5
 	)"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost
 	test? (
 		!qt6? ( dev-qt/qttest:5 )
 		qt6? ( dev-qt/qtbase:6[test] )

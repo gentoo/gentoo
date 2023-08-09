@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ DIST_AUTHOR=RJRAY
 DIST_VERSION=3.300
 inherit perl-module
 
-DESCRIPTION="A library to extract height/width from images"
+DESCRIPTION="Library to extract height/width from images"
 
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"

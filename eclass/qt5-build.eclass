@@ -126,11 +126,11 @@ fi
 
 if [[ ${QT5_MODULE} == qtbase ]]; then
 	case ${PV} in
-		5.15.7)
-			_QT5_GENTOOPATCHSET_REV=2
+		5.15.8)
+			_QT5_GENTOOPATCHSET_REV=3
 			;;
 		*)
-			_QT5_GENTOOPATCHSET_REV=3
+			_QT5_GENTOOPATCHSET_REV=4
 			;;
 	esac
 	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
@@ -189,20 +189,9 @@ qt5-build_src_prepare() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_symlink_tools_to_build_dir
 
-		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
-
 		# Avoid unnecessary qmake recompilations
 		sed -i -e "/Creating qmake/i if [ '!' -e \"\$outpath/bin/qmake\" ]; then" \
 			-e '/echo "Done."/a fi' configure || die "sed failed (skip qmake bootstrap)"
-
-		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
-		sed -i -e "/outpath\/qmake\".*\"*\$MAKE\"*)/ s|)| \
-			${MAKEOPTS} ${EXTRA_EMAKE} 'CC=$(tc-getCC)' 'CXX=$(tc-getCXX)' \
-			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&|" \
-			-e 's/\(setBootstrapVariable\s\+\|EXTRA_C\(XX\)\?FLAGS=.*\)QMAKE_C\(XX\)\?FLAGS_\(DEBUG\|RELEASE\).*/:/' \
-			configure || die "sed failed (respect env for qmake build)"
-		sed -i -e '/^CPPFLAGS\s*=/ s/-g //' \
-			qmake/Makefile.unix || die "sed failed (CPPFLAGS for qmake build)"
 
 		# Respect CXX in bsymbolic_functions, fvisibility, precomp, and a few other tests
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
@@ -213,6 +202,19 @@ qt5-build_src_prepare() {
 	fi
 
 	[[ -n ${QT5_KDEPATCHSET_REV} ]] && eapply "${WORKDIR}/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}"
+
+	if [[ ${QT5_MODULE} == qtbase ]]; then
+		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
+
+		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
+		sed -i -e "/outpath\/qmake\".*\"*\$MAKE\"*)/ s|)| \
+			${MAKEOPTS} ${EXTRA_EMAKE} 'CC=$(tc-getCC)' 'CXX=$(tc-getCXX)' \
+			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&|" \
+			-e 's/\(setBootstrapVariable\s\+\|EXTRA_C\(XX\)\?FLAGS=.*\)QMAKE_C\(XX\)\?FLAGS_\(DEBUG\|RELEASE\).*/:/' \
+			configure || die "sed failed (respect env for qmake build)"
+		sed -i -e '/^CPPFLAGS\s*=/ s/-g //' \
+			qmake/Makefile.unix || die "sed failed (CPPFLAGS for qmake build)"
+	fi
 
 	default
 }
@@ -323,6 +325,47 @@ qt5-build_pkg_postrm() {
 
 
 ######  Public helpers  ######
+
+# @FUNCTION: qt5_configure_oos_quirk
+# @USAGE: <file> or <file> <path>
+# @DESCRIPTION:
+# Quirk for out-of-source builds. Runs qmake in root directory, copies
+# generated pri <file> from source <path> to build dir <path>.
+# If no <path> is given, <file> is copied to ${QT5_BUILD_DIR}.
+qt5_configure_oos_quirk() {
+	if [[ "$#" == 2 ]]; then
+		local source="${2}/${1}"
+		local dest="${QT5_BUILD_DIR}/${2}"
+	elif [[ "$#" == 1 ]]; then
+		local source="${1}"
+		local dest="${QT5_BUILD_DIR}"
+	else
+		die "${FUNCNAME[0]} must be passed either one or two arguments"
+	fi
+
+	mkdir -p "${dest}" || die
+	qt5_qmake "${QT5_BUILD_DIR}"
+	cp "${source}" "${dest}" || die
+}
+
+# @FUNCTION: qt5_syncqt_version
+# @DESCRIPTION:
+# Wrapper for Qt5 syncqt.pl to sync header files for ${PV} (required to run if
+# headers are added/removed by patching)
+qt5_syncqt_version() {
+	if [[ ${PV} == *9999* ]]; then
+		return
+	fi
+
+	local syncqt
+	if [[ ${PN} == qtcore ]]; then
+		syncqt=bin/syncqt.pl
+	else
+		syncqt=${QT5_BINDIR}/syncqt.pl
+	fi
+
+	perl ${syncqt} -version ${PV} || die
+}
 
 # @FUNCTION: qt5_symlink_binary_to_path
 # @USAGE: <target binary name> [suffix]
@@ -718,9 +761,7 @@ qt5_tools_configure() {
 	# allow the ebuild to override what we set here
 	myqmakeargs=( "${qmakeargs[@]}" "${myqmakeargs[@]}" )
 
-	mkdir -p "${QT5_BUILD_DIR}" || die
-	qt5_qmake "${QT5_BUILD_DIR}"
-	cp qttools-config.pri "${QT5_BUILD_DIR}" || die
+	qt5_configure_oos_quirk qttools-config.pri
 }
 
 # @FUNCTION: qt5_qmake_args

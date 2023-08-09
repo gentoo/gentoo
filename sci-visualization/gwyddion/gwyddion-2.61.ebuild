@@ -11,7 +11,7 @@ SRC_URI="http://gwyddion.net/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 doc fits jansson hdf5 nls openexr openmp perl ruby sourceview unique xml X zlib"
 
 RDEPEND="
@@ -28,7 +28,7 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	fits? ( sci-libs/cfitsio[bzip2?] )
 	jansson? ( dev-libs/jansson )
-	hdf5? ( sci-libs/hdf5[zlib?] )
+	hdf5? ( sci-libs/hdf5[hl,zlib?] )
 	openexr? ( media-libs/openexr:= )
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-ruby/narray )

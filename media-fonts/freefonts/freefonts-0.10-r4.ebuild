@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit font
 
 DESCRIPTION="A Collection of Free Type1 Fonts"
-HOMEPAGE="http://www.gimp.org"
+HOMEPAGE="https://www.gimp.org"
 SRC_URI="mirror://gimp/fonts/${P}.tar.gz"
 
 LICENSE="freedist free-noncomm all-rights-reserved"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris"
+KEYWORDS="~alpha amd64 arm ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="X"
 RESTRICT="mirror bindist"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: postgres.eclass
@@ -6,7 +6,7 @@
 # PostgreSQL <pgsql-bugs@gentoo.org>
 # @AUTHOR:
 # Aaron W. Swenson <titanofold@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass for PostgreSQL-related packages
 # @DESCRIPTION:
 # This eclass provides common utility functions that many
@@ -15,7 +15,7 @@
 # user to the postgres system group, and generating dependencies.
 
 case ${EAPI} in
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -27,7 +27,7 @@ _POSTGRES_ECLASS=1
 # @DESCRIPTION:
 # List of versions to reverse sort POSTGRES_COMPAT slots
 
-_POSTGRES_ALL_VERSIONS=( 9999 15 14 13 12 11 10 )
+_POSTGRES_ALL_VERSIONS=( 9999 16 15 14 13 12 11 )
 
 
 
@@ -64,6 +64,17 @@ declare -p POSTGRES_USEDEP &>/dev/null && POSTGRES_DEP+="[${POSTGRES_USEDEP}]"
 # POSTGRES_COMPAT. REQUIRED_USE="... ${POSTGRES_REQ_USE}" is only
 # required if the package must build against one of the PostgreSQL slots
 # declared in POSTGRES_COMPAT.
+
+# @ECLASS_VARIABLE: PG_SLOT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# PG_SLOT is the chosen PostgreSQL slot that is used for the build.
+
+# @ECLASS_VARIABLE: PG_CONFIG
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# PG_CONFIG is the path to pg_config for the chosen PostgreSQL slot.
+# For example, PG_CONFIG="pg_config15"
 
 # @ECLASS_VARIABLE: _POSTGRES_COMPAT
 # @INTERNAL
@@ -149,6 +160,10 @@ postgres_pkg_setup() {
 
 	export PG_SLOT=${best_slot}
 	export PG_CONFIG=$(type -P pg_config${best_slot//./})
+
+	if [[ -z ${PG_CONFIG} ]] ; then
+		die "Could not find pg_config for ${PG_SLOT}. Is dev-db/postgresql:${PG_SLOT} installed?"
+	fi
 
 	local pg_pkg_config_path="$(${PG_CONFIG} --libdir)/pkgconfig"
 	if [[ -n "${PKG_CONFIG_PATH}" ]]; then

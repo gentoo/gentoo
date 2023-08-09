@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">defunkt/fakefs</remote-id>
+    <remote-id type="github">fakefs/fakefs</remote-id>
+    <remote-id type="rubygems">fakefs</remote-id>
   </upstream>
 </pkgmetadata>

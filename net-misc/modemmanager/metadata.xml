@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>gnome@gentoo.org</email>
-    <name>Gentoo GNOME Desktop</name>
+    <email>freedesktop-bugs@gentoo.org</email>
   </maintainer>
   <use>
     <flag name="mbim">Enable MBIM modem protocol</flag>

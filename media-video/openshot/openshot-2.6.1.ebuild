@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
-PYTHON_REQ_USE=xml
+PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_REQ_USE="xml(+)"
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 xdg
@@ -44,12 +44,12 @@ python_compile_all() {
 	use doc && emake -C doc html
 }
 
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/_build/html/. )
-	distutils-r1_python_install_all
-}
-
 python_test() {
 	distutils_install_for_testing
 	"${EPYTHON}" src/tests/query_tests.py -v --platform minimal || die
+}
+
+python_install_all() {
+	use doc && local HTML_DOCS=( doc/_build/html/. )
+	distutils-r1_python_install_all
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,12 +21,14 @@ IUSE_LCD_DEVICES=(
 	rs232 sed133x sed153x sed156x ssdoled stv8105 t6963 vssdcp
 )
 
+printf -v mangled_lcd_devices 'lcd_devices_%s ' ${IUSE_LCD_DEVICES[@]}
+
 # Add supported drivers from 'IUSE_LCD_DEVICES' to 'IUSE' and 'REQUIRED_USE'.
 # Also enable 'lcd_devices_directgfx' as default.
-IUSE+=" $(printf 'lcd_devices_%s ' ${IUSE_LCD_DEVICES[@]}) "
+IUSE+=" ${mangled_lcd_devices}"
 IUSE="${IUSE/lcd_devices_directgfx/+lcd_devices_directgfx}"
 REQUIRED_USE+="
-	|| ( $(printf 'lcd_devices_%s ' ${IUSE_LCD_DEVICES[@]}) )
+	|| ( ${mangled_lcd_devices} )
 	lcd_devices_framebuffer? ( threads )
 "
 
@@ -90,7 +92,7 @@ src_configure() {
 		--with-drivers="${myeconfargs_lcd_devices#,}"
 	)
 
-	econf "${myeconfargs[@]}"
+	CONFIG_SHELL="${BROOT}/bin/bash" econf "${myeconfargs[@]}"
 }
 
 src_install() {

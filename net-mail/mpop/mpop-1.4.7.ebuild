@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,11 +10,11 @@ SRC_URI="https://marlam.de/mpop/releases/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="gnutls idn gnome-keyring nls sasl ssl vim-syntax"
+IUSE="gnutls idn keyring nls sasl ssl vim-syntax"
 
 RDEPEND="
 	idn? ( net-dns/libidn2 )
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	nls? ( virtual/libintl )
 	sasl? ( virtual/gsasl )
 	ssl? (
@@ -37,7 +37,7 @@ src_configure() {
 		$(use_with ssl tls $(usex gnutls "gnutls" "openssl")) \
 		$(use_with sasl libgsasl) \
 		$(use_with idn libidn) \
-		$(use_with gnome-keyring libsecret)
+		$(use_with keyring libsecret)
 }
 
 src_install() {

@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="google-code">dot2tex</remote-id>
-		<remote-id type="github">kjellmf/dot2tex</remote-id>
+		<remote-id type="github">xyz2tex/dot2tex</remote-id>
 	</upstream>
 </pkgmetadata>

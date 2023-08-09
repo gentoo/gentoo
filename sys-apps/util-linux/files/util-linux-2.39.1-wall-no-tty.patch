@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/911336
+https://github.com/util-linux/util-linux/pull/2412
+
+From 7d3713a6d541be0bac0bb78cc8fea1620583fd08 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 29 Jul 2023 17:32:57 -0400
+Subject: [PATCH] wall: do not error for ttys that do not exist
+
+Some wayland display managers (GDM) put strings like "seat0" in the
+ut_line field of utmp entries. These are not valid tty devices.
+
+Avoid writing a confusing error message for ttys that do not exist.
+
+Bug: https://bugs.gentoo.org/911336
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+--- a/term-utils/ttymsg.c
++++ b/term-utils/ttymsg.c
+@@ -100,7 +100,7 @@ ttymsg(struct iovec *iov, size_t iovcnt, char *line, int tmout) {
+ 	 * if not running as root; not an error.
+ 	 */
+ 	if ((fd = open(device, O_WRONLY|O_NONBLOCK, 0)) < 0) {
+-		if (errno == EBUSY || errno == EACCES)
++		if (errno == EBUSY || errno == EACCES || errno == ENOENT)
+ 			return NULL;
+ 
+ 		len = snprintf(errbuf, sizeof(errbuf), "%s: %m", device);

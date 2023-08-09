@@ -12,7 +12,6 @@ SRC_URI="mirror://gnu/guile-ncurses/${P}.tar.gz"
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
 
 RDEPEND="
 	>=dev-scheme/guile-2.0.0:=
@@ -71,4 +70,8 @@ src_install() {
 	default
 
 	find "${ED}" -type f -name '*.la' -delete || die
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }

@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools desktop
 
 DESCRIPTION="City simulation game for X"
-HOMEPAGE="http://lincity.sourceforge.net/"
+HOMEPAGE="https://lincity.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/lincity/${P}.tar.gz
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"

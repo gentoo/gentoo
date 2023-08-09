@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,12 +15,11 @@ SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vaapi vdpau +X +xine xinerama"
+IUSE="bluray caps cec dbus fbcon jpeg nls opengl +vdr vaapi vdpau +X +xine xinerama"
 
 COMMON_DEPEND="
 	vdr? (
 		media-video/vdr
-		libextractor? ( >=media-libs/libextractor-0.5.20 )
 		caps? ( sys-libs/libcap )
 	)
 
@@ -100,7 +99,7 @@ src_configure() {
 		$(use_enable fbcon fb) \
 		$(use_enable vdr) \
 		$(use_enable xine libxine) \
-		$(use_enable libextractor) \
+		--disable-libextractor \
 		$(use_enable caps libcap) \
 		$(use_enable cec libcec) \
 		$(use_enable jpeg libjpeg) \

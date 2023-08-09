@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ LICENSE="GPL-2+ LGPL-2.1"
 SLOT="0/5.0.0"
 
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
-IUSE="contrib sensord static-libs"
+IUSE="contrib selinux sensord static-libs"
 
 COMMON_DEPS="
 	sensord? (
@@ -33,7 +33,8 @@ COMMON_DEPS="
 
 RDEPEND="${COMMON_DEPS}
 	dev-lang/perl
-	!<sys-apps/openrc-0.36"
+	!<sys-apps/openrc-0.36
+	selinux? ( sec-policy/selinux-sensord )"
 
 DEPEND="${COMMON_DEPS}
 	sys-devel/bison

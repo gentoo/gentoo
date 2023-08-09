@@ -1,0 +1,19 @@
+https://github.com/markokr/rarfile/commit/cd9e650e5294f9c5cd4effcd9705c38a760afde6
+
+From cd9e650e5294f9c5cd4effcd9705c38a760afde6 Mon Sep 17 00:00:00 2001
+From: Marko Kreen <markokr@gmail.com>
+Date: Fri, 5 Aug 2022 19:02:09 +0300
+Subject: [PATCH] nsdatetime: support pypy internal use
+
+--- a/rarfile.py
++++ b/rarfile.py
+@@ -3121,7 +3121,7 @@ class nsdatetime(datetime):
+     __slots__ = ("nanosecond",)
+     nanosecond: int     #: Number of nanoseconds, 0 <= nanosecond < 999999999
+ 
+-    def __new__(cls, year, month, day, hour=0, minute=0, second=0,
++    def __new__(cls, year, month=None, day=None, hour=0, minute=0, second=0,
+                 microsecond=0, tzinfo=None, *, fold=0, nanosecond=0):
+         usec, mod = divmod(nanosecond, 1000) if nanosecond else (microsecond, 0)
+         if mod == 0:
+

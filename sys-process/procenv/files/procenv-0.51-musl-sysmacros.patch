@@ -1,0 +1,53 @@
+https://github.com/jamesodhunt/procenv/pull/27
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Mon, 5 Jun 2023 14:10:48 +0000
+Subject: [PATCH] Fix build on musl libc
+
+On util.c the guard around #include sys/sysmacros.h prevents musl libc
+from including the file, even though musl provides the header file, thus
+failing with errors such as "call to undeclared function makedev".
+
+In procenv.c although the function makedev is used but the file
+sysmacros.h was never included, thus resulting in similar "call to
+undeclared function makedev" error hence moving inclusion sysmacros.h to
+source file from header file.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/procenv.c
++++ b/src/procenv.c
+@@ -27,6 +27,8 @@
+  */
+ 
+ #include <procenv.h>
++/* major(3) / minor(3) */
++#include <sys/sysmacros.h>
+ 
+ /**
+  * doc:
+--- a/src/procenv.h
++++ b/src/procenv.h
+@@ -103,9 +103,6 @@
+ #define PACKAGE_STRING PACKAGE_NAME
+ #endif
+ 
+-/* major(3) / minor(3) */
+-#include <sys/sysmacros.h>
+-
+ #endif /* PROCENV_PLATFORM_ANDROID */
+ 
+ /*********************************************************************/
+--- a/src/util.c
++++ b/src/util.c
+@@ -17,9 +17,7 @@
+  */
+ 
+ #include "util.h"
+-#if __GLIBC__
+ #include <sys/sysmacros.h>
+-#endif
+ 
+ // FIXME
+ extern struct procenv_user user;
+-- 
+2.40.1
+

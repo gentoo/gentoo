@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-06-06)
+# Needs linux-only dev-libs/libaio.
+app-emulation/qemu -aio
+
 # Peter Levine <plevine457@gmail.com> (2019-10-01)
 # Native inotify support is preferred on linux.
 # bug #697476

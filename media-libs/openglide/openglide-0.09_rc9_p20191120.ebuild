@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ COMMIT="c300160d0a8292bc04e79dd59e6cc178aa648dec"
 inherit autotools multilib-minimal
 
 DESCRIPTION="Glide to OpenGL wrapper"
-HOMEPAGE="http://openglide.sourceforge.net/"
+HOMEPAGE="https://openglide.sourceforge.net/"
 SRC_URI="https://github.com/voyageur/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

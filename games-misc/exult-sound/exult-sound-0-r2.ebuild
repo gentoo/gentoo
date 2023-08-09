@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Sound data for games-engines/exult"
-HOMEPAGE="http://exult.sourceforge.net/"
+HOMEPAGE="https://exult.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/exult/exult-data/exult_audio.zip"
 
 LICENSE="GPL-2"

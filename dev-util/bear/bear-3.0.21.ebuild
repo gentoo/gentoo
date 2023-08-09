@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rizsotto/Bear/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -44,6 +44,11 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${P^}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.21-clang16-tests.patch
+	"${FILESDIR}"/${PN}-3.0.21-libfmt-10.0.0.patch
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

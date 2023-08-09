@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~mips ~x86"
 
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
-	>=dev-python/flit_core-${PV}[${PYTHON_USEDEP}]
+	>=dev-python/flit-core-${PV}[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/requests_download[${PYTHON_USEDEP}]
 	dev-python/tomli[${PYTHON_USEDEP}]

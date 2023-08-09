@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -25,7 +25,7 @@ PATCHES=( "${FILESDIR}/${P}-test-directories.patch" "${FILESDIR}/${P}-test-isola
 ruby_add_rdepend "
 	>=dev-ruby/sassc-2.0
 	dev-ruby/tilt:*
-	|| ( dev-ruby/railties:7.0 dev-ruby/railties:6.0 dev-ruby/railties:6.1 )
+	|| ( dev-ruby/railties:7.0 dev-ruby/railties:6.1 )
 	>=dev-ruby/sprockets-3.0:*
 	dev-ruby/sprockets-rails:*
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ LICENSE="BSD GPL-2"
 
 SLOT="0"
 IUSE="X debug deprecated doc examples fftw openmp +readline +shared tcl"
-KEYWORDS="amd64 ~arm64 ~ppc ~riscv ~sparc x86 ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~ppc ~riscv ~sparc ~x86 ~x64-macos"
 
 RESTRICT="!test? ( test )"
 

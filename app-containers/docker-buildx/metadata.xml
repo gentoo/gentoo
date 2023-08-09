@@ -9,6 +9,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>containers@gentoo.org</email>
+		<name>Containers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">docker/buildx</remote-id>
 	</upstream>

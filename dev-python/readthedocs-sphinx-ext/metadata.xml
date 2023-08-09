@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">readthedocs-sphinx-ext</remote-id>
+		<remote-id type="github">readthedocs/readthedocs-sphinx-ext</remote-id>
 	</upstream>
 </pkgmetadata>

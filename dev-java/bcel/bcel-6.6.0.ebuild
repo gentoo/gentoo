@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri mirror://apache/commons/bcel/source/bcel-6.6.0-src.tar.gz --slot 0 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris" --ebuild bcel-6.6.0.ebuild
+# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri mirror://apache/commons/bcel/source/bcel-6.6.0-src.tar.gz --slot 0 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris" --ebuild bcel-6.6.0.ebuild
 
 EAPI=8
 
@@ -19,7 +19,7 @@ SRC_URI="https://archive.apache.org/dist/commons/bcel/source/bcel-${PV}-src.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 # Common dependencies
 # POM: pom.xml

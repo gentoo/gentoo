@@ -170,8 +170,7 @@ multibuild_copy_sources() {
 
 	_multibuild_create_source_copy() {
 		einfo "${MULTIBUILD_VARIANT}: copying to ${BUILD_DIR}"
-		# enable reflinking if possible to make this faster
-		cp -p -R --reflink=auto \
+		cp -p -R \
 			"${_MULTIBUILD_INITIAL_BUILD_DIR}" "${BUILD_DIR}" || die
 	}
 
@@ -190,8 +189,7 @@ multibuild_merge_root() {
 	local src=${1}
 	local dest=${2}
 
-	# enable reflinking if possible to make this faster
-	cp -a --reflink=auto "${src}"/. "${dest}"/ || die "${MULTIBUILD_VARIANT:-(unknown)}: merging image failed"
+	cp -a "${src}"/. "${dest}"/ || die "${MULTIBUILD_VARIANT:-(unknown)}: merging image failed"
 	rm -rf "${src}" || die
 }
 

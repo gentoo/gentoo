@@ -4,12 +4,6 @@ Date: Fri, 12 Mar 2021 23:55:09 +0100
 Subject: [PATCH] [Gentoo specific] Remove ccache usage
 
 Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
----
- CMakeLists.txt | 5 -----
- 1 file changed, 5 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5b17736..38e482a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -8,11 +8,6 @@ if (POLICY CMP0072)

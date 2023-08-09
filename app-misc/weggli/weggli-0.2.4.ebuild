@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -125,7 +125,7 @@ CRATES="
 # tree-sitter grammar. Patching the .so to need the system's
 # libtree-sitter-cpp seems to work, but it is not correct because the
 # weggli grammar has some minor modifications.
-inherit cargo flag-o-matic
+inherit cargo
 
 DESCRIPTION="a fast and robust semantic search tool for C and C++ codebases"
 HOMEPAGE="https://github.com/googleprojectzero/weggli"
@@ -136,13 +136,6 @@ SRC_URI="
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
-
-src_prepare() {
-	default
-
-	# 854741
-	filter-lto
-}

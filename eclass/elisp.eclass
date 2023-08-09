@@ -9,6 +9,7 @@
 # Jeremy Maitin-Shepard <jbms@attbi.com>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
+# Maciej Barć <xgqt@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: elisp-common
 # @BLURB: Eclass for Emacs Lisp packages
@@ -31,9 +32,9 @@
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# If you need anything different from Emacs 23, use the NEED_EMACS
-# variable before inheriting elisp.eclass.  Set it to the version your
-# package uses and the dependency will be adjusted.
+# If you need anything different from Emacs 25.3 (or newer), use the
+# NEED_EMACS variable before inheriting elisp.eclass.  Set it to the
+# version your package uses and the dependency will be adjusted.
 
 # @ECLASS_VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
@@ -142,6 +143,19 @@ elisp_src_compile() {
 	fi
 }
 
+# @FUNCTION: elisp_src_test
+# @DESCRIPTION:
+# Call "elisp-test" to test the package if "elisp-enable-tests" was called
+# beforehand, otherwise execute the default test function - "src_test".
+
+elisp_src_test() {
+	if [[ ${_ELISP_TEST_FUNCTION} ]]; then
+		elisp-test
+	else
+		default_src_test
+	fi
+}
+
 # @FUNCTION: elisp_src_install
 # @DESCRIPTION:
 # Call elisp-install to install all Emacs Lisp (*.el and *.elc) files.
@@ -152,7 +166,11 @@ elisp_src_compile() {
 elisp_src_install() {
 	elisp-install ${PN} *.el *.elc
 	if [[ -n ${SITEFILE} ]]; then
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+		if [[ -f "${FILESDIR}/${SITEFILE}" ]]; then
+			elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+		else
+			elisp-make-site-file "${SITEFILE}"
+		fi
 	fi
 	if [[ -n ${ELISP_TEXINFO} ]]; then
 		set -- ${ELISP_TEXINFO}
@@ -187,5 +205,5 @@ elisp_pkg_postrm() {
 	elisp-site-regen
 }
 
-EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,test,install} \
 	pkg_{setup,postinst,postrm}

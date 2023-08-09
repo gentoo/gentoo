@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour" # Broken test-suite: needs 
 inherit haskell-cabal
 
 DESCRIPTION="Ed25519 cryptographic signatures"
-HOMEPAGE="http://thoughtpolice.github.com/hs-ed25519"
+HOMEPAGE="https://github.com/thoughtpolice/hs-ed25519"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"

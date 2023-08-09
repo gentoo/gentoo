@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="An FM radio tuner app from the people who brought you GQmpeg"
-HOMEPAGE="http://gqmpeg.sourceforge.net/radio.html"
+HOMEPAGE="https://gqmpeg.sourceforge.net/radio.html"
 SRC_URI="mirror://sourceforge/gqmpeg/${P}.tar.gz"
 
 LICENSE="GPL-2"

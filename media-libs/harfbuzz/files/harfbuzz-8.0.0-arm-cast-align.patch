@@ -1,0 +1,31 @@
+https://github.com/harfbuzz/harfbuzz/commit/db3aeeb547c1a2cad46ea03e162593d22f700cb4
+
+From db3aeeb547c1a2cad46ea03e162593d22f700cb4 Mon Sep 17 00:00:00 2001
+From: Behdad Esfahbod <behdad@behdad.org>
+Date: Sun, 9 Jul 2023 12:32:49 -0600
+Subject: [PATCH] [subset] Fix cast-align issue
+
+Fixes https://github.com/harfbuzz/harfbuzz/issues/4316
+--- a/src/hb-serialize.hh
++++ b/src/hb-serialize.hh
+@@ -266,7 +266,7 @@ struct hb_serialize_context_t
+ 	   propagate_error (std::forward<Ts> (os)...); }
+ 
+   /* To be called around main operation. */
+-  template <typename Type>
++  template <typename Type=char>
+   __attribute__((returns_nonnull))
+   Type *start_serialize ()
+   {
+--- a/src/hb-subset.cc
++++ b/src/hb-subset.cc
+@@ -273,7 +273,7 @@ _try_subset (const TableType *table,
+              hb_vector_t<char>* buf,
+              hb_subset_context_t* c /* OUT */)
+ {
+-  c->serializer->start_serialize<TableType> ();
++  c->serializer->start_serialize ();
+   if (c->serializer->in_error ()) return false;
+ 
+   bool needed = table->subset (c);
+

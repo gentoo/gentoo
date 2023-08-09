@@ -1,17 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools multilib-minimal
 
-DESCRIPTION="A library for accessing a CDDB server"
-HOMEPAGE="http://libcddb.sourceforge.net/"
+DESCRIPTION="Library for accessing a CDDB server"
+HOMEPAGE="https://libcddb.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
 RDEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"

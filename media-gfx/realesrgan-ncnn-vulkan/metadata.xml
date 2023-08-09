@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>slashbeast@gentoo.org</email>
-		<name>Piotr Karbowski</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>

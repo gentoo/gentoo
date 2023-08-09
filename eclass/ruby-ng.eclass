@@ -75,7 +75,7 @@ if [[ -z ${_RUBY_NG_ECLASS} ]]; then
 _RUBY_NG_ECLASS=1
 
 [[ ${EAPI} == 6 ]] && inherit eqawarn toolchain-funcs
-inherit estack multilib ruby-utils
+inherit multilib ruby-utils
 
 # S is no longer automatically assigned when it doesn't exist.
 S="${WORKDIR}"
@@ -103,15 +103,20 @@ ruby_implementation_depend() {
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
 _ruby_get_all_impls() {
+	_RUBY_GET_ALL_IMPLS=()
+
+	# XXX: Please update _ruby_get_use_targets if adding a non-'ruby*'
+	# target.
 	local i found_valid_impl
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
-			ruby19|ruby20|ruby21|ruby22|ruby23|ruby24|ruby25|ruby26|jruby)
+			ruby19|ruby2[0-7]|jruby)
 				;;
 			*)
 				found_valid_impl=1
-				echo ${i};;
+				_RUBY_GET_ALL_IMPLS+=( ${i} )
+				;;
 		esac
 	done
 
@@ -130,30 +135,15 @@ _ruby_get_all_impls() {
 ruby_samelib() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	_ruby_set_globals_invalidate_if_stale
+
 	local res=
-	for _ruby_implementation in $(_ruby_get_all_impls); do
+	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		has -${_ruby_implementation} $@ || \
 			res="${res}ruby_targets_${_ruby_implementation}(-)?,"
 	done
 
 	echo "[${res%,}]"
-}
-
-_ruby_atoms_samelib_generic() {
-	eshopts_push -o noglob
-	echo "RUBYTARGET? ("
-	for token in $*; do
-		case "$token" in
-			"||" | "(" | ")" | *"?")
-				echo "${token}" ;;
-			*])
-				echo "${token%[*}[RUBYTARGET(-),${token/*[}" ;;
-			*)
-				echo "${token}[RUBYTARGET(-)]" ;;
-		esac
-	done
-	echo ")"
-	eshopts_pop
 }
 
 # @FUNCTION: ruby_implementation_command
@@ -171,11 +161,31 @@ ruby_implementation_command() {
 	echo $(type -p ${_ruby_name} 2>/dev/null)
 }
 
+_RUBY_ATOMS_SAMELIB_RESULT=""
 _ruby_atoms_samelib() {
-	local atoms=$(_ruby_atoms_samelib_generic "$*")
+	_RUBY_ATOMS_SAMELIB_RESULT=""
 
-	for _ruby_implementation in $(_ruby_get_all_impls); do
-		echo "${atoms//RUBYTARGET/ruby_targets_${_ruby_implementation}}"
+	local shopt_save=$(shopt -p -o noglob)
+	set -f
+	local token
+	local atoms=" RUBYTARGET? ("
+	for token in $*; do
+		case "${token}" in
+			"||" | "(" | ")" | *"?")
+				atoms+=" ${token}" ;;
+			*])
+				atoms+=" ${token%[*}[RUBYTARGET(-),${token/*[}" ;;
+			*)
+				atoms+=" ${token}[RUBYTARGET(-)]" ;;
+		esac
+	done
+	atoms+=" ) "
+	${shopt_save}
+
+	_ruby_set_globals_invalidate_if_stale
+	local _ruby_implementation
+	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
+		_RUBY_ATOMS_SAMELIB_RESULT+="${atoms//RUBYTARGET/ruby_targets_${_ruby_implementation}}"
 	done
 }
 
@@ -183,11 +193,11 @@ _ruby_wrap_conditions() {
 	local conditions="$1"
 	local atoms="$2"
 
-	for condition in $conditions; do
+	for condition in ${conditions}; do
 		atoms="${condition}? ( ${atoms} )"
 	done
 
-	echo "$atoms"
+	echo "${atoms}"
 }
 
 # @FUNCTION: ruby_add_rdepend
@@ -224,15 +234,16 @@ ruby_add_rdepend() {
 			;;
 	esac
 
-	local dependency=$(_ruby_atoms_samelib "$1")
+	_ruby_set_globals_invalidate_if_stale
+	_ruby_atoms_samelib "$1"
 
-	RDEPEND="${RDEPEND} $dependency"
+	RDEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}"
 
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
 	case ${EAPI} in
-		6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
-		*) BDEPEND="${BDEPEND} test? ( ${dependency} )" ;;
+		6) DEPEND+=" test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
+		*) BDEPEND+=" test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
 	esac
 	if ! has test "$IUSE"; then
 		IUSE+=" test"
@@ -271,13 +282,13 @@ ruby_add_bdepend() {
 			;;
 	esac
 
-	local dependency=$(_ruby_atoms_samelib "$1")
+	_ruby_set_globals_invalidate_if_stale
+	_ruby_atoms_samelib "$1"
 
 	case ${EAPI} in
-		6) DEPEND="${DEPEND} $dependency" ;;
-		*) BDEPEND="${BDEPEND} $dependency" ;;
+		6) DEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
+		*) BDEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
 	esac
-	RDEPEND="${RDEPEND}"
 }
 
 # @FUNCTION: ruby_add_depend
@@ -298,9 +309,10 @@ ruby_add_depend() {
 		*) die "bad number of arguments to $0" ;;
 	esac
 
-	local dependency=$(_ruby_atoms_samelib "$1")
+	_ruby_set_globals_invalidate_if_stale
+	_ruby_atoms_samelib "$1"
 
-	DEPEND="${DEPEND} $dependency"
+	DEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}"
 }
 
 # @FUNCTION: ruby_get_use_implementations
@@ -309,8 +321,10 @@ ruby_add_depend() {
 ruby_get_use_implementations() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	_ruby_set_globals_invalidate_if_stale
+
 	local i implementation
-	for implementation in $(_ruby_get_all_impls); do
+	for implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		use ruby_targets_${implementation} && i+=" ${implementation}"
 	done
 	echo $i
@@ -322,11 +336,24 @@ ruby_get_use_implementations() {
 ruby_get_use_targets() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local t implementation
-	for implementation in $(_ruby_get_all_impls); do
-		t+=" ruby_targets_${implementation}"
-	done
-	echo $t
+	_ruby_set_globals_invalidate_if_stale
+	_ruby_get_use_targets
+	echo "${_RUBY_GET_USE_TARGETS}"
+}
+
+# @FUNCTION: _ruby_get_use_targets
+# @INTERNAL
+# @DESCRIPTION:
+# Gets an array of ruby use targets that the ebuild sets
+_RUBY_GET_USE_TARGETS=""
+_ruby_get_use_targets() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	_ruby_set_globals_invalidate_if_stale
+
+	local impls="${_RUBY_GET_ALL_IMPLS[@]}"
+	# XXX: This assumes all targets begin with 'ruby'.
+	_RUBY_GET_USE_TARGETS="${impls//ruby/ruby_targets_ruby}"
 }
 
 # @FUNCTION: ruby_implementations_depend
@@ -345,32 +372,60 @@ ruby_get_use_targets() {
 # ...
 # DEPEND="ruby? ( $(ruby_implementations_depend) )"
 # RDEPEND="${DEPEND}"
+_RUBY_IMPLEMENTATIONS_DEPEND=""
 ruby_implementations_depend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local depend
-	for _ruby_implementation in $(_ruby_get_all_impls); do
-		depend="${depend}${depend+ }ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
-	done
-	echo "${depend}"
+	_ruby_set_globals_invalidate_if_stale
+	_ruby_implementations_depend
+	echo "${_RUBY_IMPLEMENTATIONS_DEPEND}"
 }
 
-IUSE+=" $(ruby_get_use_targets)"
+_ruby_implementations_depend() {
+	_ruby_set_globals_invalidate_if_stale
+
+	local depend _ruby_implementation
+	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
+		depend="${depend}${depend+ }ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
+	done
+	_RUBY_IMPLEMENTATIONS_DEPEND="${depend}"
+}
+
+_ruby_set_globals() {
+	_RUBY_SET_GLOBALS_USE_RUBY="${USE_RUBY}"
+	_ruby_get_all_impls
+	_ruby_get_use_targets
+	_ruby_implementations_depend
+}
+
+_ruby_set_globals_invalidate_if_stale() {
+	# Packages may try to restrict their test dependencies to ease bootstrapping/porting
+	# if they're not yet available for a newer Ruby implementation by setting
+	# USE_RUBY="<some subset of original USE_RUBY>" ruby_add_bdepend ...
+	if [[ ${_RUBY_SET_GLOBALS_USE_RUBY} != ${USE_RUBY} && -z ${_RUBY_SET_GLOBALS_INVALIDATING} ]] ; then
+		local _RUBY_SET_GLOBALS_INVALIDATING=1
+		_ruby_set_globals
+	fi
+}
+
+_ruby_set_globals
+
+IUSE+=" ${_RUBY_GET_USE_TARGETS}"
 # If you specify RUBY_OPTIONAL you also need to take care of
 # ruby useflag and dependency.
 if [[ ${RUBY_OPTIONAL} != yes ]]; then
-	DEPEND="${DEPEND} $(ruby_implementations_depend)"
-	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
-	REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
+	DEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}"
+	RDEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}"
+	REQUIRED_USE+=" || ( ${_RUBY_GET_USE_TARGETS} )"
 	case ${EAPI} in
 		6) ;;
-		*) BDEPEND="${BDEPEND} $(ruby_implementations_depend)" ;;
+		*) BDEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}" ;;
 	esac
 fi
 
 _ruby_invoke_environment() {
 	old_S=${S}
-	if [ -z "${RUBY_S}" ]; then
+	if [[ -z ${RUBY_S} ]]; then
 		sub_S=${P}
 	else
 		sub_S=${RUBY_S}
@@ -413,8 +468,10 @@ _ruby_invoke_environment() {
 }
 
 _ruby_each_implementation() {
+	_ruby_set_globals_invalidate_if_stale
+
 	local invoked=no
-	for _ruby_implementation in $(_ruby_get_all_impls); do
+	for _ruby_implementation in "${_RUBY_GET_ALL_IMPLS[@]}"; do
 		# only proceed if it's requested
 		use ruby_targets_${_ruby_implementation} || continue
 
@@ -437,7 +494,7 @@ _ruby_each_implementation() {
 
 	if [[ ${invoked} == "no" ]]; then
 		eerror "You need to select at least one compatible Ruby installation target via RUBY_TARGETS in make.conf."
-		eerror "Compatible targets for this package are: $(_ruby_get_all_impls)"
+		eerror "Compatible targets for this package are: ${_RUBY_GET_ALL_IMPLS[@]}"
 		eerror
 		eerror "See https://www.gentoo.org/proj/en/prog_lang/ruby/index.xml#doc_chap3 for more information."
 		eerror
@@ -706,7 +763,7 @@ ruby-ng_rspec() {
 
 	# Explicitly pass the expected spec directory since the versioned
 	# rspec wrappers don't handle this automatically.
-	if [ ${#@} -eq 0 ]; then
+	if [[ $# -eq 0 ]]; then
 		files="spec"
 	fi
 

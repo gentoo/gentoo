@@ -3,8 +3,7 @@
 
 # @ECLASS: meson.eclass
 # @MAINTAINER:
-# William Hubbs <williamh@gentoo.org>
-# Mike Gilbert <floppym@gentoo.org>
+# base-system@gentoo.org
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
@@ -54,6 +53,12 @@ BDEPEND=">=dev-util/meson-0.62.2
 # @DESCRIPTION:
 # Build directory, location where all generated files should be placed.
 # If this isn't set, it defaults to ${WORKDIR}/${P}-build.
+
+# @ECLASS_VARIABLE: MESON_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Set to OFF to disable verbose messages during compilation
+: "${MESON_VERBOSE:=ON}"
 
 # @ECLASS_VARIABLE: EMESON_BUILDTYPE
 # @DESCRIPTION:
@@ -112,10 +117,7 @@ _meson_get_machine_info() {
 
 	# system roughly corresponds to uname -s (lowercase)
 	case ${tuple} in
-		*-aix*)          system=aix ;;
-		*-cygwin*)       system=cygwin ;;
 		*-darwin*)       system=darwin ;;
-		*-freebsd*)      system=freebsd ;;
 		*-linux*)        system=linux ;;
 		mingw*|*-mingw*) system=windows ;;
 		*-solaris*)      system=sunos ;;
@@ -388,9 +390,14 @@ meson_src_compile() {
 		-C "${BUILD_DIR}"
 		--jobs "$(makeopts_jobs "${MAKEOPTS}" 0)"
 		--load-average "$(makeopts_loadavg "${MAKEOPTS}" 0)"
-		--verbose
-		"$@"
 	)
+
+	case ${MESON_VERBOSE} in
+		OFF) ;;
+		*) mesoncompileargs+=( --verbose ) ;;
+	esac
+
+	mesoncompileargs+=( "$@" )
 
 	set -- meson compile "${mesoncompileargs[@]}"
 	echo "$@" >&2

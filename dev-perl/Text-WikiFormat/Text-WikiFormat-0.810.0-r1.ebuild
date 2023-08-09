@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Translate Wiki formatted text into other formats"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	dev-perl/URI

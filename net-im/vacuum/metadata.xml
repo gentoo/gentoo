@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>reagentoo@gmail.com</email>
-		<name>Dmitry Baranov</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="annotations">Enable adding comments to the contacts in the roster</flag>
 		<flag name="autostatus">Change the status in accordance with the time of inactivity</flag>

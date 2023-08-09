@@ -12,7 +12,7 @@ SRC_URI="https://github.com/lsof-org/lsof/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="lsof"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="rpc selinux"
 
 RDEPEND="
@@ -48,8 +48,5 @@ pkg_postinst() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		einfo "Note: to use lsof on Solaris you need read permissions on"
 		einfo "/dev/kmem, i.e. you need to be root, or to be in the group sys"
-	elif [[ ${CHOST} == *-aix* ]] ; then
-		einfo "Note: to use lsof on AIX you need read permissions on /dev/mem and"
-		einfo "/dev/kmem, i.e. you need to be root, or to be in the group system"
 	fi
 }

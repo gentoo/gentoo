@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,7 +42,7 @@ src_prepare() {
 
 pkg_postinst() {
 	xdg_icon_cache_update
-	optfeature "instructions via synthesized speech" app-accessibility/espeak
+	optfeature "instructions via synthesized speech" app-accessibility/espeak-ng
 }
 
 pkg_postrm() {

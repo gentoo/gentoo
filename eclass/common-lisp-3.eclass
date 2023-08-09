@@ -18,8 +18,6 @@ esac
 if [[ -z ${_COMMON_LISP_3_ECLASS} ]]; then
 _COMMON_LISP_3_ECLASS=1
 
-inherit eutils
-
 # @ECLASS_VARIABLE: CLIMPLEMENTATIONS
 # @DESCRIPTION:
 # Common Lisp implementations
@@ -128,8 +126,16 @@ common-lisp-install-sources() {
 			common-lisp-install-one-source ${fpredicate} "${path}" "$(dirname "${path}")"
 		elif [[ -d ${path} ]] ; then
 			local files
-			readarray -d '' files < <(find "${path}" -type f -print0 || die "cannot traverse ${path}" )
-			common-lisp-install-sources -t ${ftype} "${files[@]}" || die
+			# test can be dropped in EAPI 8 which guarantees bash-5.0
+			if [[ ${BASH_VERSINFO[0]} -ge 5 ]]; then
+				readarray -d '' files < <(find "${path}" -type f -print0 \
+											|| die "cannot traverse ${path}")
+			else
+				# readarray has no -d option in bash-4.2
+				readarray -t files < <(find "${path}" -type f -print \
+											|| die "cannot traverse ${path}")
+			fi
+			common-lisp-install-sources -t ${ftype} "${files[@]}"
 		else
 			die "${path} is neither a regular file nor a directory"
 		fi

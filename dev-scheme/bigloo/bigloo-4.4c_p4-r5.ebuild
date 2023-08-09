@@ -142,11 +142,11 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	emake -j1
 
-	emake -C bdl
-	emake -C bdb
-	emake -C cigloo
+	emake -C bdl -j1
+	emake -C bdb -j1
+	emake -C cigloo -j1
 
 	use emacs && emake -C bmacs
 }

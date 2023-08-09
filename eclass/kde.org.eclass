@@ -161,7 +161,7 @@ case ${KDE_BUILD_TYPE} in
 		EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
 		EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
 
-		if [[ ${PV} == 5.??.?.9999 && ${CATEGORY} == dev-qt ]]; then
+		if [[ ${PV} == 5.15.*.9999 && ${CATEGORY} == dev-qt ]]; then
 			EGIT_BRANCH="kde/$(ver_cut 1-2)"
 		fi
 		;;

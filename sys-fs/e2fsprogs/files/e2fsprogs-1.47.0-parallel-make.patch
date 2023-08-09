@@ -1,0 +1,68 @@
+From 711ed1823c7676533d5f6d5e4d1558a792d43837 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Tue, 25 Apr 2023 21:53:19 +0200
+Subject: [PATCH] Add missing Makefile dependencies
+
+* With very high -j parallelism, we get failures in Gentoo:
+
+  In file included from lib/ext2fs/blknum.c:15:
+  lib/ext2fs/ext2fs.h:105:10: fatal error: ext2fs/ext2_err.h: No such file or directory
+    105 | #include <ext2fs/ext2_err.h>
+        |          ^~~~~~~~~~~~~~~~~~~
+  compilation terminated.
+  In file included from lib/ext2fs/fallocate.c:19:
+  lib/ext2fs/ext2fs.h:105:10: fatal error: ext2fs/ext2_err.h: No such file or directory
+    105 | #include <ext2fs/ext2_err.h>
+        |          ^~~~~~~~~~~~~~~~~~~
+
+Bug: https://bugs.gentoo.org/806875#c17
+Signed-off-by: David Seifert <soap@gentoo.org>
+---
+ lib/ext2fs/Makefile.in | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/lib/ext2fs/Makefile.in b/lib/ext2fs/Makefile.in
+index 798ff609..2c4e0277 100644
+--- a/lib/ext2fs/Makefile.in
++++ b/lib/ext2fs/Makefile.in
+@@ -731,6 +731,12 @@ blkmap64_rb.o: $(srcdir)/blkmap64_rb.c $(top_builddir)/lib/config.h \
+  $(top_builddir)/lib/ext2fs/ext2_err.h $(srcdir)/ext2_ext_attr.h \
+  $(srcdir)/hashmap.h $(srcdir)/bitops.h $(srcdir)/bmap64.h $(srcdir)/rbtree.h \
+  $(srcdir)/compiler.h
++blknum.o: $(srcdir)/blknum.c $(top_builddir)/lib/config.h \
++ $(srcdir)/ext2_fs.h $(top_builddir)/lib/ext2fs/ext2_types.h \
++ $(srcdir)/ext2fs.h $(srcdir)/ext2_fs.h $(srcdir)/ext3_extents.h \
++ $(top_srcdir)/lib/et/com_err.h $(srcdir)/ext2_io.h \
++ $(top_builddir)/lib/ext2fs/ext2_err.h $(srcdir)/ext2_ext_attr.h \
++ $(srcdir)/hashmap.h $(srcdir)/bitops.h $(srcdir)/bmap64.h
+ block.o: $(srcdir)/block.c $(top_builddir)/lib/config.h \
+  $(top_builddir)/lib/dirpaths.h $(srcdir)/ext2_fs.h \
+  $(top_builddir)/lib/ext2fs/ext2_types.h $(srcdir)/ext2fs.h \
+@@ -842,6 +848,12 @@ extent.o: $(srcdir)/extent.c $(top_builddir)/lib/config.h \
+  $(top_srcdir)/lib/et/com_err.h $(srcdir)/ext2_io.h \
+  $(top_builddir)/lib/ext2fs/ext2_err.h $(srcdir)/ext2_ext_attr.h \
+  $(srcdir)/hashmap.h $(srcdir)/bitops.h $(srcdir)/e2image.h
++fallocate.o: $(srcdir)/fallocate.c $(top_builddir)/lib/config.h \
++ $(srcdir)/ext2_fs.h $(top_builddir)/lib/ext2fs/ext2_types.h \
++ $(srcdir)/ext2fs.h $(srcdir)/ext2_fs.h $(srcdir)/ext3_extents.h \
++ $(top_srcdir)/lib/et/com_err.h $(srcdir)/ext2_io.h \
++ $(top_builddir)/lib/ext2fs/ext2_err.h $(srcdir)/ext2_ext_attr.h \
++ $(srcdir)/hashmap.h $(srcdir)/bitops.h $(srcdir)/bmap64.h
+ fileio.o: $(srcdir)/fileio.c $(top_builddir)/lib/config.h \
+  $(top_builddir)/lib/dirpaths.h $(srcdir)/ext2_fs.h \
+  $(top_builddir)/lib/ext2fs/ext2_types.h $(srcdir)/ext2fs.h \
+@@ -1049,6 +1061,12 @@ openfs.o: $(srcdir)/openfs.c $(top_builddir)/lib/config.h \
+  $(srcdir)/ext2_io.h $(top_builddir)/lib/ext2fs/ext2_err.h \
+  $(srcdir)/ext2_ext_attr.h $(srcdir)/hashmap.h $(srcdir)/bitops.h \
+  $(srcdir)/e2image.h
++orphan.o: $(srcdir)/orphan.c $(top_builddir)/lib/config.h \
++ $(srcdir)/ext2_fs.h $(top_builddir)/lib/ext2fs/ext2_types.h \
++ $(srcdir)/ext2fs.h $(srcdir)/ext2_fs.h $(srcdir)/ext3_extents.h \
++ $(top_srcdir)/lib/et/com_err.h $(srcdir)/ext2_io.h \
++ $(top_builddir)/lib/ext2fs/ext2_err.h $(srcdir)/ext2_ext_attr.h \
++ $(srcdir)/hashmap.h $(srcdir)/bitops.h $(srcdir)/bmap64.h
+ progress.o: $(srcdir)/progress.c $(top_builddir)/lib/config.h \
+  $(top_builddir)/lib/dirpaths.h $(srcdir)/ext2fs.h \
+  $(top_builddir)/lib/ext2fs/ext2_types.h $(srcdir)/ext2_fs.h \
+-- 
+2.40.0

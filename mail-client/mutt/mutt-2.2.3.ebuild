@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -28,7 +28,7 @@ REQUIRED_USE="
 	autocrypt?        ( gpgme )"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 # yes, we overdepend on the backend impls here, hopefully one day we can
 # have REQUIRED_USE do what it is made for again. bug #607360
 CDEPEND="
@@ -158,12 +158,6 @@ src_configure() {
 		"--without-bundled-regex"     # use the implementation from libc
 		"--with-exec-shell=${EPREFIX}/bin/sh"
 	)
-
-	if [[ ${CHOST} == *-solaris2.* && ${CHOST#*-solaris2.} -le 10 ]] ; then
-		# arrows in index view do not show when using wchar_t
-		# or misalign due to wrong computations
-		myconf+=( "--without-wc-funcs" )
-	fi
 
 	# note: REQUIRED_USE should have selected only one of these, but for
 	# bug #607360 we're forced to allow multiple.  For that reason, this

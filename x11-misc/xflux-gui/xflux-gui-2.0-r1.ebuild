@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517="setuptools"
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1 gnome2-utils xdg-utils
+inherit distutils-r1 gnome2-utils
 
 DESCRIPTION="A GUI for f.lux"
 HOMEPAGE="https://github.com/xflux-gui/fluxgui/"

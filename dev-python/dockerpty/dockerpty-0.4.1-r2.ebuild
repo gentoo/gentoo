@@ -17,7 +17,7 @@ KEYWORDS="amd64 arm64"
 
 BDEPEND="
 	test? (
-		>=dev-python/docker-py-0.7.0_rc2[${PYTHON_USEDEP}]
+		>=dev-python/docker-0.7.0_rc2[${PYTHON_USEDEP}]
 		>=dev-python/expects-0.4[${PYTHON_USEDEP}]
 	)
 "

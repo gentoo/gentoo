@@ -36,14 +36,14 @@ else
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
@@ -64,6 +64,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
+	valgrind? ( dev-util/valgrind )
 	zlib? ( sys-libs/zlib )
 	gui? ( !aqua? (
 		x11-libs/libICE
@@ -86,9 +87,9 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
-			x11-libs/libXft
 			x11-libs/libXrender
 			cairo? ( >=x11-libs/cairo-1.12.18[X] )
+			!cairo? ( x11-libs/libXft )
 			harfbuzz? ( media-libs/harfbuzz:0= )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
@@ -287,6 +288,8 @@ src_configure() {
 }
 
 src_compile() {
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
+
 	if tc-is-cross-compiler; then
 		# Build native tools for compiling lisp etc.
 		emake -C "${S}-build" src

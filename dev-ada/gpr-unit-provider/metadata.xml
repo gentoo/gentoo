@@ -6,6 +6,7 @@
 	</maintainer>
 	<use>
 		<flag name="shared">Build shared library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">AdaCore/gpr-unit-provider</remote-id>

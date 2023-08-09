@@ -12,7 +12,7 @@ SRC_URI="https://github.com/PJK/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+custom-alloc doc test"
 
 BDEPEND="
@@ -55,7 +55,7 @@ src_compile() {
 	if use doc; then
 		mkdir -p doc/build || die
 		pushd doc >/dev/null || die
-		emake html man
+		emake -j1 html man
 		popd >/dev/null || die
 	fi
 }

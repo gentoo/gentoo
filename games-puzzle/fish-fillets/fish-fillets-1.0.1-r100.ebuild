@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,12 +9,12 @@ inherit autotools desktop lua-single
 
 DATA_PV="1.0.0"
 DESCRIPTION="Underwater puzzle game - find a safe way out"
-HOMEPAGE="http://fillets.sourceforge.net/"
+HOMEPAGE="https://fillets.sourceforge.net/"
 SRC_URI="mirror://sourceforge/fillets/fillets-ng-${PV}.tar.gz
 	mirror://sourceforge/fillets/fillets-ng-data-${DATA_PV}.tar.gz"
 S="${WORKDIR}/fillets-ng-${PV}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

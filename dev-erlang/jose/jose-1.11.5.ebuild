@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
 DEPEND=">=dev-lang/erlang-19.0"
 RDEPEND="${DEPEND}"

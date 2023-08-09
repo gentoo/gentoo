@@ -27,6 +27,17 @@ dev-python/plotly-geo
 dev-python/chart-studio
 sci-visualization/dash
 sci-visualization/jupyter-dash
+>=dev-python/notebook-7
+dev-python/spyder-notebook
+app-emacs/emacs-ipython-notebook
+dev-python/jupyter
+dev-python/vpython
+dev-python/widgetsnbextension
+dev-python/ipywidgets
+sci-physics/root
+sci-physics/geant4_vmc
+sci-physics/vmc
+sci-libs/spr
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine
@@ -42,7 +53,6 @@ dev-python/PyQtWebEngine
 app-admin/calamares
 app-doc/zeal
 app-editors/ghostwriter
-app-editors/notepadqq
 app-editors/retext
 app-misc/anki
 app-office/kalendar:5
@@ -172,7 +182,6 @@ dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/deckar01-task_list
 dev-ruby/execjs
-dev-ruby/turbolinks
 dev-ruby/uglifier
 dev-util/uglifyjs
 net-libs/nodejs

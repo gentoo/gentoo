@@ -25,15 +25,16 @@ SLOT="0/${PV%%.*}"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="test"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 BDEPEND="
 	${PYTHON_DEPS}
 	test? ( sys-libs/timezone-data )
 "
 
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-20230125.2-musl-1.2.4.patch #906218
+)
 
 src_prepare() {
 	cmake_src_prepare

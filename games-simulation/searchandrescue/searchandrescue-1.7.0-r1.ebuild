@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop flag-o-matic prefix toolchain-funcs xdg
 
 MY_PN=SearchAndRescue
 DESCRIPTION="Helicopter based air rescue flight simulator"
-HOMEPAGE="http://searchandrescue.sourceforge.net/"
+HOMEPAGE="https://searchandrescue.sourceforge.net/"
 SRC_URI="mirror://sourceforge/searchandrescue/${MY_PN}-${PV}.tar.gz -> ${MY_PN}-${PV}.tar
 	mirror://sourceforge/searchandrescue/${MY_PN}-data-${PV}.tar.gz -> ${MY_PN}-data-${PV}.tar
 	mirror://sourceforge/searchandrescue/${MY_PN}-data-guadarrama-${PV}.tar.gz -> ${MY_PN}-data-guadarrama-${PV}.tar"

@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	dev-python/docopt[${PYTHON_USEDEP}]

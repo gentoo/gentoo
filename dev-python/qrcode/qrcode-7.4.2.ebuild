@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 
 # optional deps:
 # - pillow and lxml for svg backend, set as hard deps
@@ -32,6 +32,8 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# TODO
 	qrcode/tests/test_script.py::ScriptTest::test_factory
+	# release process-specific tests, broken on py3.12
+	qrcode/tests/test_release.py
 )
 
 src_install() {

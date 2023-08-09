@@ -1,15 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools
 
-DESCRIPTION="A library for porting blocked I/O OSS/ALSA audio applications to JACK"
-HOMEPAGE="http://bio2jack.sourceforge.net/"
+DESCRIPTION="Library for porting blocked I/O OSS/ALSA audio applications to JACK"
+HOMEPAGE="https://bio2jack.sourceforge.net/"
 SRC_URI="mirror://sourceforge/bio2jack/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="static-libs"
@@ -21,8 +22,6 @@ DEPEND="
 	media-libs/libsamplerate
 	virtual/jack"
 RDEPEND="${DEPEND}"
-
-S=${WORKDIR}/${PN}
 
 src_prepare() {
 	default

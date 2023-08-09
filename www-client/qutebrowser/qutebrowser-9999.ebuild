@@ -5,7 +5,10 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+# py3.12 should work (no tests regressions), but waiting on the last dep
+# (pytest-qt) to properly have py3.12 which gets more complicated with
+# QtPy + pyside* that we don't actually use here
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -34,7 +37,7 @@ RDEPEND="
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
 	')
 	qt6? (
-		dev-qt/qtbase:6[icu]
+		dev-qt/qtbase:6[icu,sqlite]
 		$(python_gen_cond_dep '
 			dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
 			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
@@ -44,6 +47,7 @@ RDEPEND="
 	!qt6? (
 		dev-qt/qtcore:5[icu]
 		dev-qt/qtgui:5[png]
+		dev-qt/qtsql:5[sqlite]
 		$(python_gen_cond_dep '
 			dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,gui,network,opengl,printsupport,sql,widgets]
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
@@ -88,11 +92,9 @@ src_prepare() {
 			-i ${PN}/config/qtargs.py || die
 	fi
 
-	# default to the requested Qt backend, current default is PyQt5 but
-	# sed unconditionally for safety in 9999 given this is going to change
-	# (note that using sed is the suggested solution by upstream for now)
-	sed -e "/^_DEFAULT_WRAPPER =/s/=.*/= \"PyQt$(usex qt6 6 5)\"/" \
-		-i ${PN}/qt/machinery.py || die
+	# ensure the requested backend is used in case multiple are available
+	sed -e "/^_WRAPPER_OVERRIDE =/s/None/\"PyQt$(usex qt6 6 5)\"/" \
+		-i qutebrowser/qt/machinery.py || die
 
 	# let eclass handle python
 	sed -i '/setup.py/d' misc/Makefile || die
@@ -130,9 +132,12 @@ python_test() {
 		# not worth running dbus over
 		tests/unit/browser/test_notification.py::TestDBus
 		# bug 819393
-		tests/unit/commands/test_userscripts.py::test_custom_env[_POSIXUserscriptRunner]
-		# tests that don't know about our newer qtwebengine:5
+		tests/unit/commands/test_userscripts.py::test_custom_env\[_POSIXUserscriptRunner\]
+		# test does not know about our newer fixed qtwebengine:5
 		tests/unit/browser/webengine/test_webenginedownloads.py::TestDataUrlWorkaround
+		# needs _WRAPPER_OVERRIDE = None, but we have changed it
+		tests/unit/test_qt_machinery.py::TestSelectWrapper::test_autoselect_by_default
+		tests/unit/test_qt_machinery.py::TestInit::test_none_available_{implicit,explicit}
 	)
 	# qtargs are mangled with widevine+prefix
 	use widevine && use prefix && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )

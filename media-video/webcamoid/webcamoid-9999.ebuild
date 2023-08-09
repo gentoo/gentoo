@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake xdg-utils
+inherit cmake xdg
 
-DESCRIPTION="A full featured webcam capture application"
+DESCRIPTION="Full featured webcam capture application"
 HOMEPAGE="https://webcamoid.github.io"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/webcamoid/webcamoid.git"
@@ -15,13 +15,13 @@ else
 	SRC_URI="https://github.com/webcamoid/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
-RESTRICT="mirror"
+
 LICENSE="GPL-3"
 SLOT="0"
-
 IUSE="alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers v4l"
 
 REQUIRED_USE="v4lutils? ( v4l )"
+RESTRICT="mirror"
 
 COMMON_DEPEND="
 	dev-qt/qtconcurrent:5
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	gstreamer? ( >=media-libs/gstreamer-1.6.0 )
 	jack? ( virtual/jack )
 	libuvc? ( media-libs/libuvc )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	qtaudio? ( dev-qt/qtmultimedia:5 )
 	v4l? ( media-libs/libv4l )
 "
@@ -77,12 +77,4 @@ src_configure() {
 src_install() {
 	docompress -x /usr/share/man1/${PN}.1.gz
 	cmake_src_install
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

@@ -13,4 +13,7 @@
 	especially suited for parallel AMR computations and large scale
 	numerical simulations.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">KarypisLab/ParMETIS</remote-id>
+	</upstream>
 </pkgmetadata>

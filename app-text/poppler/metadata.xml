@@ -19,9 +19,11 @@
 </maintainer>
 <upstream>
 	<remote-id type="cpe">cpe:/a:freedesktop:poppler</remote-id>
+	<remote-id type="freedesktop-gitlab">poppler/poppler</remote-id>
 </upstream>
 <use>
 	<flag name="boost">Use boost::small_vector for a serious performance gain</flag>
+	<flag name="gpgme">Enable signatures handling with <pkg>app-crypt/gpgme</pkg></flag>
 	<flag name="nss">Enable signatures handling with <pkg>dev-libs/nss</pkg></flag>
 	<flag name="utils">Install command-line PDF converters and various utilities.</flag>
 </use>

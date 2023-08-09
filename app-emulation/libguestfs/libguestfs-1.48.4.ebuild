@@ -16,7 +16,7 @@ MY_PV_2="$(ver_cut 2)"
 
 DESCRIPTION="Tools for accessing, inspecting, and modifying virtual machine (VM) disk images"
 HOMEPAGE="https://libguestfs.org/"
-SRC_URI="https://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz"
+SRC_URI="https://download.libguestfs.org/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
@@ -227,6 +227,8 @@ src_install() {
 		doman "${ED}"/usr/man/man3/Sys::Guestfs.3pm
 		rm -rf "${ED}"/usr/man || die
 	fi
+
+	use python && python_optimize
 }
 
 pkg_postinst() {

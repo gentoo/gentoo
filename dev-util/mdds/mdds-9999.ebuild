@@ -17,7 +17,7 @@ HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
 SLOT="1/2.1" # Check API version on version bumps!
-IUSE="doc openmp valgrind test"
+IUSE="doc openmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/boost:="
@@ -27,7 +27,6 @@ BDEPEND="
 		app-doc/doxygen
 		dev-python/sphinx
 	)
-	valgrind? ( dev-util/valgrind )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-1.5.0-buildsystem.patch" )
@@ -47,9 +46,9 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-memory_tests
 		$(use_enable doc docs)
 		$(use_enable openmp)
-		$(use_enable valgrind memory_tests)
 	)
 	econf "${myeconfargs[@]}"
 }

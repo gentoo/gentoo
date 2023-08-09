@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit toolchain-funcs secureboot
 
 DESCRIPTION="The UEFI Boot Manager by Rod Smith"
 HOMEPAGE="https://www.rodsbooks.com/refind/"
@@ -39,6 +39,7 @@ pkg_setup() {
 		export EFIARCH=x64
 		export BUILDARCH=x86_64
 	fi
+	secureboot_pkg_setup
 }
 
 src_prepare() {
@@ -111,6 +112,8 @@ src_install() {
 	dosbin "mkrlconf"
 	dosbin "mvrefind"
 	dosbin "refind-mkdefault"
+
+	secureboot_auto_sign --in-place
 }
 
 pkg_postinst() {

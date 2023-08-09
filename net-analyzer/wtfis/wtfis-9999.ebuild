@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1
 
 DESCRIPTION="Passive hostname, domain and IP lookup tool for non-robots"
@@ -22,7 +22,7 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
-	>=dev-python/pydantic-1.10.2[${PYTHON_USEDEP}]
+	>=dev-python/pydantic-2.0.3[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.21.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.28.1[${PYTHON_USEDEP}]
 	>=dev-python/rich-12.6.0[${PYTHON_USEDEP}]

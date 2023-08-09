@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,11 +19,15 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
+ELISP_REMOVE="test/go-fill-paragraph-test.el"
+
 SITEFILE="50${PN}-1.6.0-gentoo.el"
 DOCS=( README.md )
 
+elisp-enable-tests ert test
+
 src_prepare() {
-	default
+	elisp_src_prepare
 
 	# fix path to testdata directory when running tests
 	sed -i 's|testdata|test/&|g' \
@@ -33,15 +37,4 @@ src_prepare() {
 src_compile() {
 	elisp_src_compile
 	elisp-make-autoload-file
-}
-
-src_test() {
-	for suite in test/*-test.el; do
-		${EMACS} ${EMACSFLAGS} \
-				 -L . \
-				 -l ert \
-				 -l go-mode \
-				 -l "${suite}" \
-				 -f ert-run-tests-batch-and-exit || die "test ${suite} failed"
-	done
 }

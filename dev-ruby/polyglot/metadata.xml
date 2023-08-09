@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>ruby@gentoo.org</email>
-		<name>Gentoo Ruby Project</name>
-	</maintainer>
-	<longdescription>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <longdescription>
 Polyglot provides support for fully-custom DSLs by providing a
 registry of file types that can be loaded by its improved version of
 'require', using a custom loader for each file type.
-	</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">cjheath/polyglot</remote-id>
+  </upstream>
 </pkgmetadata>

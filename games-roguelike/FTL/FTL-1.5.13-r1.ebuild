@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop wrapper
 
 DESCRIPTION="Faster Than Light: A spaceship simulation real-time roguelike-like game"
-HOMEPAGE="http://www.ftlgame.com/"
+HOMEPAGE="https://subsetgames.com/ftl.html"
 SRC_URI="FTL.${PV}.tar.gz"
 S="${WORKDIR}"/${PN}
 

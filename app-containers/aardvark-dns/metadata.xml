@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<longdescription lang="en">
+		Aardvark-dns is an authoritative dns server for A/AAAA container
+		records. It can forward other requests to configured resolvers.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">containers/aardvark-dns</remote-id>
+	</upstream>
+</pkgmetadata>

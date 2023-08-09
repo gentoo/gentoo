@@ -1,0 +1,42 @@
+From 2ef10e8ccbd16a67a1585ebb627af0f1ae172e0f Mon Sep 17 00:00:00 2001
+From: Evgeny Grin <k2k@narod.ru>
+Date: Tue, 27 Jun 2023 11:16:26 +0300
+Subject: [PATCH] Patched PTP functionality for Linux 6.2+
+
+---
+ src/r8125_ptp.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/r8125_ptp.c b/src/r8125_ptp.c
+index 6010a18..b92fb18 100644
+--- a/src/r8125_ptp.c
++++ b/src/r8125_ptp.c
+@@ -195,6 +195,13 @@ static int rtl8125_phc_adjfreq(struct ptp_clock_info *ptp, s32 delta)
+         return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,2,0)
++static int rtl8125_phc_adjfine(struct ptp_clock_info *ptp, long scaled_ppm)
++{
++        return rtl8125_phc_adjfreq(ptp, scaled_ppm_to_ppb(scaled_ppm));
++}
++#endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(6,2,0) */
++
+ static int rtl8125_phc_gettime(struct ptp_clock_info *ptp, struct timespec64 *ts64)
+ {
+         struct rtl8125_private *tp = container_of(ptp, struct rtl8125_private, ptp_clock_info);
+@@ -296,7 +303,11 @@ static const struct ptp_clock_info rtl_ptp_clock_info = {
+         .n_per_out  = 0,
+         .n_pins     = 0,
+         .pps        = 1,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,2,0)
+         .adjfreq    = rtl8125_phc_adjfreq,
++#else  /* LINUX_VERSION_CODE >= KERNEL_VERSION(6,2,0) */
++        .adjfine    = rtl8125_phc_adjfine,
++#endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(6,2,0) */
+         .adjtime    = rtl8125_phc_adjtime,
+         .gettime64  = rtl8125_phc_gettime,
+         .settime64  = rtl8125_phc_settime,
+-- 
+2.41.0.windows.1
+

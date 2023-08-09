@@ -4,20 +4,30 @@
 EAPI=8
 
 DISTUTILS_IN_SOURCE_BUILD=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python wrapper around the reflink system calls"
-HOMEPAGE="https://gitlab.com/rubdos/pyreflink"
+HOMEPAGE="
+	https://gitlab.com/rubdos/pyreflink/
+	https://pypi.org/project/reflink/
+"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 ~x86"
 
-RDEPEND="virtual/python-cffi[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
-BDEPEND="${RDEPEND}
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/cffi[${PYTHON_USEDEP}]
+	' 'python*')
+"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
+	${RDEPEND}
 	test? ( sys-fs/btrfs-progs )
 "
 

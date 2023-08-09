@@ -14,7 +14,7 @@ SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.xz
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv"
 IUSE="+bpf +caps criu +seccomp selinux systemd static-libs"
 
 DEPEND="
@@ -67,4 +67,7 @@ src_install() {
 	emake "DESTDIR=${D}" install-exec
 	doman crun.1
 	einstalldocs
+
+	einfo "Cleaning up .la files"
+	find "${ED}" -name '*.la' -delete || die
 }

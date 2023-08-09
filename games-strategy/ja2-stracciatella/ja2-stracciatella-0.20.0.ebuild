@@ -141,7 +141,7 @@ SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 
 LICENSE="public-domain SFI-SCLA"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="cdinstall editor ru-gold test"
 # ./ja2 -unittest can't find save files
 RESTRICT="!test? ( test ) test"

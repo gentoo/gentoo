@@ -41,13 +41,13 @@ REQUIRED_USE="?? ( tcmalloc jemalloc )
 	router? ( server )
 	tcmalloc? ( server )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
 S="${WORKDIR}/mysql"
 
-# Be warned, *DEPEND are version-dependant
+# Be warned, *DEPEND are version-dependent
 # These are used for both runtime and compiletime
 # openldap < dep for bug #835647 (we need ldap_r)
 COMMON_DEPEND="
@@ -177,6 +177,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${WORKDIR}"/mysql-patches
 	eapply "${FILESDIR}"/${PN}-8.0.26.16-gcc-12.patch
+	eapply "${FILESDIR}"/${PN}-8.0.26.16-gcc-13.patch
 
 	# Avoid rpm call which would trigger sandbox, #692368
 	sed -i \
@@ -252,6 +253,7 @@ src_configure() {
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
+		-DUSE_LD_LLD=OFF
 		-DWITH_CURL=system
 		-DWITH_BOOST="${WORKDIR}/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION})"
 		-DWITH_ROUTER=$(usex router ON OFF)

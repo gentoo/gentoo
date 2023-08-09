@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit prefix readme.gentoo-r1
 
@@ -12,12 +12,13 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
 else
-	SRC_URI="https://github.com/vaeth/zram-init/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
+RESTRICT="binchecks strip test"
 
 BDEPEND="sys-devel/gettext"
 
@@ -30,14 +31,18 @@ RDEPEND="
 DISABLE_AUTOFORMATTING=true
 DOC_CONTENTS="\
 To use zram-init, activate it in your kernel and add it to the default
-runlevel: rc-update add zram-init default
+runlevel:
+	rc-update add zram-init default
 If you use systemd enable zram_swap, zram_tmp, and/or zram_var_tmp with
 systemctl. You might need to modify the following file depending on the number
-of devices that you want to create: /etc/modprobe.d/zram.conf.
+of devices that you want to create:
+	/etc/modprobe.d/zram.conf.
 If you use the \$TMPDIR as zram device with OpenRC, you should add zram-init to
-the boot runlevel: rc-update add zram-init boot
+the boot runlevel:
+	rc-update add zram-init boot
 Still for the same case, you should add in the OpenRC configuration file for
-the services using \$TMPDIR the following line: rc_need=\"zram-init\""
+the services using \$TMPDIR the following line:
+	rc_need=\"zram-init\""
 
 src_prepare() {
 	default
@@ -60,8 +65,8 @@ src_install() {
 	einstalldocs
 	readme.gentoo_create_doc
 
-	emake DESTDIR="${ED}" PREFIX="/usr" SYSCONFDIR="/etc" \
-		BINDIR="${ED}/sbin" SYSTEMDDIR="${ED}/lib/systemd/system" install
+	emake DESTDIR="${ED}" PREFIX="/usr" BINDIR="${ED}/sbin" SYSCONFDIR="/etc" \
+		SYSTEMDDIR="${ED}/lib/systemd/system" install
 }
 
 pkg_postinst() {

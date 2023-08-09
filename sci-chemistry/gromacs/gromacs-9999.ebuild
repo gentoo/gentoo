@@ -43,7 +43,7 @@ IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precis
 
 CDEPEND="
 	blas? ( virtual/blas )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-11[profiler] )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-11:=[profiler] )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
@@ -61,6 +61,10 @@ BDEPEND="${CDEPEND}
 		app-doc/doxygen
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-copybutton[${PYTHON_USEDEP}]
+			dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]
+			dev-python/sphinx-argparse[${PYTHON_USEDEP}]
+			dev-python/sphinxcontrib-autoprogram[${PYTHON_USEDEP}]
 		')
 		media-gfx/mscgen
 		media-gfx/graphviz

@@ -23,4 +23,4 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND="media-sound/pulseaudio"
+RDEPEND="media-libs/libpulse"

@@ -1,6 +1,19 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Maciej Barć <xgqt@gentoo.org> (2023-07-01)
+# Binary package, which is compiled against glibc
+games-util/heroic-bin
+
+# Brahmajit Das <brahmajit.xyz@gmail.com> (2023-06-15)
+# The package uses innetgr which is not available in musl, bug 898556
+# The package is only for long-obsolete polkit policies anyway.
+sys-auth/polkit-pkla-compat
+
+# Mike Gilbert <floppym@gentoo.org> (2023-06-15)
+# Reverse entry from base profile.
+-sys-apps/musl-locales
+
 # Maciej Barć <xgqt@gentoo.org> (2023-04-03)
 # Mask until execinfo.h use can be properly patched, bug #877721 and #903689.
 dev-scheme/guile-ssh
@@ -14,7 +27,7 @@ sys-block/arcconf
 sys-apps/smcipmitool
 
 # Alfredo Tupone <tupone@gentoo.org> (2023-02-27)
-# Uses dev-util/nvidia-cuda-toolkit
+# Uses dev-util/nvidia-cuda-sdk
 dev-libs/cutlass
 
 # Sam James <sam@gentoo.org> (2023-01-02)
@@ -34,16 +47,6 @@ dev-libs/intel-compute-runtime
 =sys-devel/gcc-11.3.1_p20221223:11
 =sys-devel/gcc-12.2.1_p20221231:12
 =sys-devel/gcc-12.2.1_p20230121:12
-
-# Andrey Grozin <grozin@gentoo.org> (2022-12-01)
-# sbcl upstream supports only glibc Linux systems, bug #712626
-# and these packages depend on dev-lisp/sbcl unconditionally
-dev-lisp/sbcl
-app-emacs/sly
-dev-lisp/alexandria
-sci-mathematics/acl2
-x11-wm/stumpwm
-x11-wm/stumpwm-contrib
 
 # Sam James <sam@gentoo.org> (2022-10-17)
 # Needs porting to musl
@@ -66,6 +69,12 @@ net-misc/grive
 net-print/pnm2ppa
 net-wireless/neard
 sys-apps/noexec
+
+# Giuseppe Foti <foti.giuseppe@gmail.com> (2023-05-19)
+# New packages that require packages masked by the previous block.
+dev-db/pg-gvm
+net-analyzer/notus-scanner
+net-analyzer/greenbone-feed-sync
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-09-23)
 # Musl does not implement rresvport function, bugs #713810 and #713376.
@@ -106,20 +115,6 @@ sys-libs/libstdc++-v3
 # Needs strndupa, upstream not interested in supporting musl
 # bug #713542
 net-misc/casync
-
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-03-14)
-# Doesn't build with musl, bug #832742
-app-eselect/eselect-opencascade
-app-doc/kicad-doc
-media-gfx/freecad
-media-gfx/prusaslicer
-sci-electronics/kicad
-sci-electronics/kicad-footprints
-sci-electronics/kicad-meta
-sci-electronics/kicad-packages3d
-sci-electronics/kicad-symbols
-sci-electronics/kicad-templates
-sci-libs/opencascade
 
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
 # Doesn't build on musl, bug #833028
@@ -169,6 +164,8 @@ games-action/brutal-legend-hb
 games-action/descent3
 games-action/descent3-demo
 games-action/minecraft-launcher
+games-action/psychonauts-gog
+games-action/psychonauts-hb
 games-action/psychonauts2-hb
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
@@ -232,7 +229,6 @@ net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
 net-im/skypeforlinux
 net-im/slack
-net-im/teams
 net-im/telegram-desktop-bin
 net-im/wazzapp-bin
 net-im/whatsapp-desktop-bin
@@ -258,7 +254,6 @@ sys-apps/ipmicfg
 sys-apps/tas
 sys-block/hpssacli
 sys-block/megacli
-sys-power/dptfxtract
 www-apps/chromedriver-bin
 www-apps/grafana-bin
 www-apps/jellyfin
@@ -266,7 +261,6 @@ www-apps/kibana-bin
 www-apps/prowlarr
 www-apps/radarr
 www-apps/readarr
-www-client/chromium-bin
 www-client/google-chrome
 www-client/google-chrome-beta
 www-client/google-chrome-unstable
@@ -322,7 +316,6 @@ net-misc/netkit-rsh
 dev-libs/cudnn
 dev-libs/cudnn-frontend
 dev-python/pycuda
-dev-util/nvidia-cuda-sdk
 dev-util/nvidia-cuda-toolkit
 dev-libs/optix
 x11-drivers/nvidia-drivers

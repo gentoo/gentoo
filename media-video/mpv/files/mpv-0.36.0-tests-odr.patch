@@ -1,0 +1,30 @@
+Quickfix for USE=test with -Werror=odr (stubs, so have no real consequences).
+
+timer.h gets indirectly included and can declare these differently, have not
+looked closer yet.
+--- a/test/test_utils.c
++++ b/test/test_utils.c
+@@ -110,6 +110,6 @@
+ #ifndef WIN32_TESTS
+-void mp_add_timeout(void) {};
+-void mp_rel_time_to_timespec(void) {};
+-void mp_time_us(void) {};
+-void mp_time_us_to_timespec(void) {};
++void mp_add_timeout(int64_t time_us, double timeout_sec) {};
++struct timespec mp_rel_time_to_timespec(double timeout_sec) {return (struct timespec){0};};
++int64_t mp_time_us(void) {return 0;};
++struct timespec mp_time_us_to_timespec(int64_t time_us) {return (struct timespec){0};};
+ #endif
+--- a/test/test_utils.h
++++ b/test/test_utils.h
+@@ -61,6 +61,6 @@
+ #ifndef WIN32_TESTS
+-void mp_add_timeout(void);
+-void mp_rel_time_to_timespec(void);
+-void mp_time_us(void);
+-void mp_time_us_to_timespec(void);
++void mp_add_timeout(int64_t time_us, double timeout_sec);
++struct timespec mp_rel_time_to_timespec(double timeout_sec);
++int64_t mp_time_us(void);
++struct timespec mp_time_us_to_timespec(int64_t time_us);
+ #endif

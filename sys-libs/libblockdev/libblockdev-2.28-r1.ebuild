@@ -17,10 +17,10 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	MY_PV="${PV}-1"
 	SRC_URI="https://github.com/storaged-project/${PN}/releases/download/${MY_PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 fi
 LICENSE="LGPL-2+"
-SLOT="0"
+SLOT="0/2"	# subslot is SOVERSION
 IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd test +tools vdo"
 # Tests require root. In a future release, we may be able to run a smaller
 # subset with new run_tests.py arguments.

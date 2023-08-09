@@ -1,4 +1,5 @@
 https://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-security/audit/audit/0001-Replace-__attribute_malloc__-with-__attribute__-__ma.patch?id=ad978133a1a10d609bb2545882a2f720a2572f3d
+https://github.com/linux-audit/audit-userspace/pull/311
 https://bugs.gentoo.org/837275
 
 From 79c8d6a2755c9dfa00a5e86378e89a94eef0504d Mon Sep 17 00:00:00 2001

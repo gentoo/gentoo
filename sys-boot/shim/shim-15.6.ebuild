@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit rpm
+inherit rpm secureboot
 
 DESCRIPTION="Fedora's signed UEFI shim"
 HOMEPAGE="https://src.fedoraproject.org/rpms/shim"
@@ -23,4 +23,8 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins BOOT/BOOT*.EFI
 	doins fedora/mm*.efi
+
+	# Shim is already signed with Microsoft keys, but MokManager still needs
+	# signing with our key otherwise we have to enrol the Fedora key in Mok list
+	secureboot_auto_sign --in-place
 }

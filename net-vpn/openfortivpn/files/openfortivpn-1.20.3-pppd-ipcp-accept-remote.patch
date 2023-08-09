@@ -1,0 +1,33 @@
+https://github.com/adrienverge/openfortivpn/pull/1111
+https://bugs.gentoo.org/907404
+
+From 3b54df0a84b755fc8d35e8081b2fc6152b006a5b Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 30 May 2023 16:28:52 -0400
+Subject: [PATCH] Pass ipcp-accept-remote to pppd
+
+Since https://github.com/ppp-project/ppp/commit/9fe8923419a954fedf8b6d1a6cc07b45f165c1ab,
+pppd refuses to accept a different remote IP if we explictly pass one on
+the command line. This results in an error like:
+
+pppd: Peer refused to agree to his IP address
+
+Passing ipcp-accept-remote disables this behavior.
+
+Bug: https://bugs.gentoo.org/907404
+---
+ src/tunnel.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/tunnel.c b/src/tunnel.c
+index 2b063edd..30a09597 100644
+--- a/src/tunnel.c
++++ b/src/tunnel.c
+@@ -236,6 +236,7 @@ static int pppd_run(struct tunnel *tunnel)
+ 				":169.254.2.1", // <local_IP_address>:<remote_IP_address>
+ 				"noipdefault",
+ 				"ipcp-accept-local",
++				"ipcp-accept-remote",
+ 				"noaccomp",
+ 				"noauth",
+ 				"default-asyncmap",

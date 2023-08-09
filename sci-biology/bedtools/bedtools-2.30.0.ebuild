@@ -34,6 +34,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.29.2-buildsystem.patch
 	"${FILESDIR}"/${PN}-2.29.2-python.patch
+	"${FILESDIR}"/${PN}-2.30.0-gcc13.patch
 )
 
 src_configure() {

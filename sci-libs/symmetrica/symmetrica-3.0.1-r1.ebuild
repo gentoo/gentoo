@@ -9,7 +9,7 @@ SRC_URI="https://gitlab.com/sagemath/symmetrica/uploads/b3d8e1ad5ab2449c30bbc314
 
 LICENSE="ISC"
 SLOT="0/2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc"
 
 DOCS=( README.md )

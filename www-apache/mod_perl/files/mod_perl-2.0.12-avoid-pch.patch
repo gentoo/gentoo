@@ -1,0 +1,22 @@
+Avoid sandbox denial while attempting to generate PCH:
+```
+F: fopen_wr
+S: deny
+P: /usr/include/apr-1/apr.h.gch
+A: /usr/include/apr-1/apr.h.gch
+R: /usr/include/apr-1/apr.h.gch
+C: /usr/libexec/gcc/x86_64-pc-linux-gnu/13/cc1 -quiet /usr/include/apr-1/apr.h -quiet -dM -dumpdir a- -dumpbase apr.h -dumpbase-ext .h -mtune=generic -march=x86-64 -o /tmp/ccfl5N0L.s --output-pch /usr/include/apr-1/apr.h.gch
+```
+
+Sent upstream by email on 2023-07-05.
+--- a/lib/Apache2/Build.pm
++++ b/lib/Apache2/Build.pm
+@@ -1502,7 +1502,7 @@ sub get_apr_config {
+         };
+     }
+     else {
+-        my @command = ($self->perl_config('cpp'), '-dM', $header);
++        my @command = ($self->perl_config('cpp'), '-E', '-dM', $header);
+         open $fh, '-|', @command or do {
+             error "Unable to preprocess $header with @command: $!";
+             return undef;

@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">hassox/warden</remote-id>
+    <remote-id type="github">wardencommunity/warden</remote-id>
   </upstream>
 </pkgmetadata>

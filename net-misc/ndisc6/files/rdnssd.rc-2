@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+	before net
+	use logger
+}
+
+command="rdnssd"
+pidfile="/var/run/rdnssd.pid"
+command_args="${RDNSSD_OPTS}"
+command_args_foreground="-f"
+
+start_pre() {
+	checkpath -d -o nobody /var/run/rdnssd
+}
+
+stop_post() {
+	if command -v resolvconf >/dev/null; then
+		resolvconf -f -d rdnssd
+	fi
+}

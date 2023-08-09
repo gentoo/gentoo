@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://github.com/MaskRay/${PN}"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
-	LLVM_MAX_SLOT=15
+	LLVM_MAX_SLOT=16
 else
 	LLVM_MAX_SLOT=15
 fi
@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/MaskRay/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~riscv"
+	KEYWORDS="amd64 ~arm64 ~riscv"
 fi
 
 LICENSE="Apache-2.0"

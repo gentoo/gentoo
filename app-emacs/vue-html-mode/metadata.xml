@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    The main features of this mode are syntax highlighting (enabled with
+    font-lock-mode or global-font-lock-mode), and html-mode integration. Vue
+    component files are best edited with the excellent vue-mode, which the
+    author of this package also contributes to. This mode is included in
+    vue-mode, and is the default mode for editing template blocks.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/AdamNiederer/vue-html-mode/issues/</bugs-to>
+    <remote-id type="github">AdamNiederer/vue-html-mode</remote-id>
+  </upstream>
+</pkgmetadata>

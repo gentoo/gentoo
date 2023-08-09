@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,9 +12,6 @@ SRC_URI="
 	x86? ( https://ds-plugin.gosuslugi.ru/plugin/upload/assets/distrib/IFCPlugin-i386.deb -> ${P}_x86.deb )
 	x64-macos? ( https://ds-plugin.gosuslugi.ru/plugin/upload/assets/distrib/IFCPlugin.pkg -> ${P}_mac.pkg )
 "
-#	x86-macos? ( https://ds-plugin.gosuslugi.ru/plugin/upload/assets/distrib/IFCPlugin.pkg -> ${P}_mac.pkg )
-#	x86-winnt? ( https://ds-plugin.gosuslugi.ru/plugin/htdocs/plugin/IFCPlugin.msi )
-#	x64-winnt? ( https://ds-plugin.gosuslugi.ru/plugin/htdocs/plugin/IFCPlugin-x64.msi )
 
 HOMEPAGE="http://gosuslugi.ru/"
 LICENSE="all-rights-reserved"

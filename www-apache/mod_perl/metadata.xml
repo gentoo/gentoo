@@ -8,4 +8,7 @@
 	<use>
 		<flag name="ithreads">Build for use with thread-capable perl, needs same setting as in <pkg>dev-lang/perl</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">apache/mod_perl</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -10,5 +10,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">greenridge</remote-id>
+    <remote-id type="github">keithfancher/Bomns-for-Linux</remote-id>
   </upstream>
 </pkgmetadata>

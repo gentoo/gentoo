@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Extensions to PPI"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	>=dev-perl/PPI-1.208

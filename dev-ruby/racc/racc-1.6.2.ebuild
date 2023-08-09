@@ -22,7 +22,7 @@ SRC_URI="https://github.com/tenderlove/racc/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 
 ruby_add_rdepend "virtual/ruby-ssl"
@@ -40,12 +40,10 @@ all_ruby_prepare() {
 	sed -i -e '/ExtensionTask/,/^  end/ s:^:#:' Rakefile || die
 
 	# ...which means we need to generate the parser file here
-	for ruby in ${USE_RUBY} ; do
-		if use ruby_targets_${ruby} ; then
-			if has_version -b "virtual/rubygems[ruby_targets_${ruby}(-)]" && has_version -b "dev-ruby/rake[ruby_targets_${ruby}(-)]" ; then
-				${ruby} -S rake lib/racc/parser-text.rb || die
-				break
-			fi
+	for ruby in $(ruby_get_use_implementations) ; do
+		if has_version -b "virtual/rubygems[ruby_targets_${ruby}(-)]" && has_version -b "dev-ruby/rake[ruby_targets_${ruby}(-)]" ; then
+			${ruby} -S rake lib/racc/parser-text.rb || die
+			break
 		fi
 	done
 

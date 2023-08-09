@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
@@ -22,16 +22,13 @@ S=${WORKDIR}/${P}/psycopg
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 DEPEND="
 	>=dev-db/postgresql-8.1:*
 "
 RDEPEND="
 	${DEPEND}
-	$(python_gen_cond_dep '
-		>=dev-python/backports-zoneinfo-0.2.0[${PYTHON_USEDEP}]
-	' 3.8)
 	>=dev-python/typing-extensions-4.1[${PYTHON_USEDEP}]
 "
 BDEPEND="

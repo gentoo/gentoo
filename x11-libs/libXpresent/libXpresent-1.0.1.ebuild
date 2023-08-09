@@ -10,7 +10,7 @@ inherit xorg-3
 
 DESCRIPTION="X Present Extension C Library"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 
 RDEPEND="
 	x11-libs/libX11[${MULTILIB_USEDEP}]

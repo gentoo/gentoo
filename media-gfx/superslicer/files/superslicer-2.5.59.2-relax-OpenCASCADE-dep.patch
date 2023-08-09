@@ -1,0 +1,13 @@
+diff --git a/src/occt_wrapper/CMakeLists.txt b/src/occt_wrapper/CMakeLists.txt
+index ed75531..16de4e0 100644
+--- a/src/occt_wrapper/CMakeLists.txt
++++ b/src/occt_wrapper/CMakeLists.txt
+@@ -19,7 +19,7 @@ include(GenerateExportHeader)
+ 
+ generate_export_header(OCCTWrapper)
+ 
+-find_package(OpenCASCADE 7.6.2 REQUIRED)
++find_package(OpenCASCADE REQUIRED)
+ 
+ set(OCCT_LIBS
+     TKXDESTEP

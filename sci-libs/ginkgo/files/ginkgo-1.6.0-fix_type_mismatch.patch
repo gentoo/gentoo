@@ -1,0 +1,12 @@
+diff --git a/core/base/timer.cpp b/core/base/timer.cpp
+index bc1c716..0185567 100644
+--- a/core/base/timer.cpp
++++ b/core/base/timer.cpp
+@@ -124,7 +124,7 @@ void CpuTimer::wait(time_point& time) {}
+ std::chrono::nanoseconds CpuTimer::difference_async(const time_point& start,
+                                                     const time_point& stop)
+ {
+-    return std::chrono::duration_cast<std::chrono::nanoseconds, int64>(
++    return std::chrono::duration_cast<std::chrono::nanoseconds>(
+         stop.data_.chrono - start.data_.chrono);
+ }

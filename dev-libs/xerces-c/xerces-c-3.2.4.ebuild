@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit subversion
 else
 	SRC_URI="mirror://apache/xerces/c/3/sources/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 LICENSE="Apache-2.0"
@@ -71,7 +71,6 @@ src_configure() {
 	else
 		transcoder="gnuiconv"
 	fi
-	# for interix maybe: transcoder="windows"
 
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"

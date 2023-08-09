@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="A command line editor for id3v2 tags"
-HOMEPAGE="http://id3v2.sourceforge.net/"
+DESCRIPTION="Command line editor for id3v2 tags"
+HOMEPAGE="https://id3v2.sourceforge.net/"
 SRC_URI="mirror://sourceforge/id3v2/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

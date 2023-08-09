@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="8ball, 9ball, snooker and carambol game"
-HOMEPAGE="http://foobillard.sourceforge.net/"
+HOMEPAGE="https://foobillard.sourceforge.net/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

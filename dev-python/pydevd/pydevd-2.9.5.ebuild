@@ -3,8 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
+
 inherit distutils-r1 toolchain-funcs
 
 MY_P="pydev_debugger_${PV//./_}"

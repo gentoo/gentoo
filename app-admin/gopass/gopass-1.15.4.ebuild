@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gopasspw/gopass/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT Apache-2.0 BSD MPL-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc64 ~riscv ~x86"
 
 DEPEND=">=dev-lang/go-1.18"
 RDEPEND="

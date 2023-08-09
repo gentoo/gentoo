@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,9 +10,10 @@ SRC_URI="https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libst
 LICENSE="|| ( GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ppc ~riscv x86"
-IUSE="examples"
+IUSE="examples test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog PLATFORMS NEWS AUTHORS README )
@@ -23,6 +24,7 @@ src_configure() {
 		--disable-setuid-binaries
 		--with-ncurses
 		--disable-static
+		$(use_enable test tests)
 	)
 
 	econf "${myeconfargs[@]}"

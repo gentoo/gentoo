@@ -9,11 +9,10 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Python filtering architecture for the Courier MTA"
 HOMEPAGE="https://pypi.org/project/courier-pythonfilter/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="mail-mta/courier"

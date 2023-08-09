@@ -46,7 +46,7 @@ if [[ ${PV} == 9999 ]] ; then
 	DEPEND+="
 		system-wfconfig? ( ~gui-libs/wf-config-9999:= )
 		!system-wfconfig? ( !gui-libs/wf-config )
-		system-wlroots? ( ~gui-libs/wlroots-9999:=[X?] )
+		system-wlroots? ( ~gui-libs/wlroots-9999:=[drm(+),libinput(+),x11-backend,X?] )
 		!system-wlroots? ( !gui-libs/wlroots )
 	"
 else
@@ -57,7 +57,7 @@ else
 		)
 		!system-wfconfig? ( !gui-libs/wf-config )
 		system-wlroots? (
-			>=gui-libs/wlroots-0.16.0:0/16[X?]
+			>=gui-libs/wlroots-0.16.0:0/16[drm(+),libinput(+),x11-backend,X?]
 		)
 		!system-wlroots? ( !gui-libs/wlroots )
 	"

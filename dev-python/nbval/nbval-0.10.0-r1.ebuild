@@ -12,12 +12,12 @@ HOMEPAGE="https://github.com/computationalmodelling/nbval"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/coverage[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
-	dev-python/jupyter_client[${PYTHON_USEDEP}]
+	dev-python/jupyter-client[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 "
 BDEPEND="

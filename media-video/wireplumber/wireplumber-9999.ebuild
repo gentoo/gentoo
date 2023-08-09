@@ -44,6 +44,7 @@ BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	sys-devel/gettext
+	test? ( sys-apps/dbus )
 "
 
 DEPEND="

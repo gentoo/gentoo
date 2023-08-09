@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/httpauth[${PYTHON_USEDEP}]
 	dev-python/humanize[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	ctags? ( dev-python/python-ctags[${PYTHON_USEDEP}] )
+	ctags? ( dev-python/python-ctags3[${PYTHON_USEDEP}] )
 "
 
 # The tests can only be run from a git repository

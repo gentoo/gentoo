@@ -1,23 +1,22 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="extract PNG frames from an APNG"
+DESCRIPTION="Extract PNG frames from an APNG"
 HOMEPAGE="https://sourceforge.net/projects/apngdis/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
+S="${WORKDIR}"
 
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-libs/libpng:0="
-DEPEND="${RDEPEND}
-	app-arch/unzip"
-
-S=${WORKDIR}
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch

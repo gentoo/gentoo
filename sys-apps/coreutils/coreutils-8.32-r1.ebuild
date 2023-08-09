@@ -171,7 +171,7 @@ src_test() {
 
 	addwrite /dev/full
 	#export RUN_EXPENSIVE_TESTS="yes"
-	#export FETISH_GROUPS="portage wheel"
+	#export COREUTILS_GROUPS="portage wheel"
 	env PATH="${T}/mount-wrappers:${PATH}" \
 	emake -j1 -k check
 }

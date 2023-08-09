@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.sr.ht/~technomancy/${PN}"
 else
 	SRC_URI="https://git.sr.ht/~technomancy/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -26,6 +26,13 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="${LUA_DEPS}"
 BDEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+
+	# Turn off broken(?) tests. bug https://bugs.gentoo.org/906351
+	sed -i -e 's|"failures",||' -e 's|"repl",||' test/init.lua || die
+}
 
 src_install() {
 	emake LUA_LIB_DIR="${ED}/$(lua_get_lmod_dir)" PREFIX="${ED}/usr" install

@@ -1,0 +1,89 @@
+Fixes test file collisions with high concurrency builds
+Fix by Ninpo <ninpo@qap.la>
+https://bugs.gentoo.org/909759, https://github.com/OpenShot/libopenshot/issues/933
+
+--- a/tests/FFmpegWriter.cpp
++++ b/tests/FFmpegWriter.cpp
+@@ -34,7 +34,7 @@ TEST_CASE( "Webm", "[libopenshot][ffmpegwriter]" )
+ 	r.Open();
+ 
+ 	/* WRITER ---------------- */
+-	FFmpegWriter w("output1.webm");
++	FFmpegWriter w("Webm-output1.webm");
+ 
+ 	// Set options
+ 	w.SetAudioOptions(true, "libvorbis", 44100, 2, LAYOUT_STEREO, 188000);
+@@ -50,7 +50,7 @@ TEST_CASE( "Webm", "[libopenshot][ffmpegwriter]" )
+ 	w.Close();
+ 	r.Close();
+ 
+-	FFmpegReader r1("output1.webm");
++	FFmpegReader r1("Webm-output1.webm");
+ 	r1.Open();
+ 
+ 	// Verify various settings on new MP4
+@@ -81,7 +81,7 @@ TEST_CASE( "Options_Overloads", "[libopenshot][ffmpegwriter]" )
+ 	r.Open();
+ 
+ 	/* WRITER ---------------- */
+-	FFmpegWriter w("output1.mp4");
++	FFmpegWriter w("Options_Overloads-output1.mp4");
+ 
+ 	// Set options
+ 	w.SetAudioOptions("aac", 48000, 192000);
+@@ -97,7 +97,7 @@ TEST_CASE( "Options_Overloads", "[libopenshot][ffmpegwriter]" )
+ 	w.Close();
+ 	r.Close();
+ 
+-	FFmpegReader r1("output1.mp4");
++	FFmpegReader r1("Options_Overloads-output1.mp4");
+ 	r1.Open();
+ 
+ 	// Verify implied settings
+@@ -123,7 +123,7 @@ TEST_CASE( "DisplayInfo", "[libopenshot][ffmpegwriter]" )
+ 	r.Open();
+ 
+ 	/* WRITER ---------------- */
+-	FFmpegWriter w("output1.webm");
++	FFmpegWriter w("DisplayInfo-output1.webm");
+ 
+ 	// Set options
+ 	w.SetAudioOptions(true, "libvorbis", 44100, 2, LAYOUT_STEREO, 188000);
+@@ -203,7 +203,7 @@ TEST_CASE( "Gif", "[libopenshot][ffmpegwriter]" )
+     t.Open();
+ 
+     /* WRITER ---------------- */
+-    FFmpegWriter w("output1.gif");
++    FFmpegWriter w("Gif-output1.gif");
+ 
+     // Set options (no audio options are set)
+     w.SetVideoOptions(true, "gif", Fraction(24,1), 1280, 720, Fraction(1,1), false, false, 15000000);
+@@ -221,7 +221,7 @@ TEST_CASE( "Gif", "[libopenshot][ffmpegwriter]" )
+     w.Close();
+     t.Close();
+ 
+-    FFmpegReader r1("output1.gif");
++    FFmpegReader r1("Gif-output1.gif");
+     r1.Open();
+ 
+     // Verify various settings on new Gif
+--- a/tests/ImageWriter.cpp
++++ b/tests/ImageWriter.cpp
+@@ -64,7 +64,7 @@ TEST_CASE( "Gif", "[libopenshot][imagewriter]" )
+ 	r.Open();
+ 
+ 	/* WRITER ---------------- */
+-	ImageWriter w("output1.gif");
++	ImageWriter w("ImageWriter-Gif-output1.gif");
+ 
+ 	CHECK_FALSE(w.IsOpen());
+ 
+@@ -87,7 +87,7 @@ TEST_CASE( "Gif", "[libopenshot][imagewriter]" )
+ 	r.Close();
+ 
+ 	// Open up the 5th frame from the newly created GIF
+-	ImageReader r1("output1.gif[4]");
++	ImageReader r1("ImageWriter-Gif-output1.gif[4]");
+ 
+ 	// Basic Reader state queries
+ 	CHECK(r1.Name() == "ImageReader");

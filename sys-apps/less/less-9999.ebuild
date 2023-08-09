@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 fi
 
-inherit autotools
+inherit autotools flag-o-matic optfeature
 
 # Releases are usually first a beta then promoted to stable if no
 # issues were found. Upstream explicitly ask "to not generally distribute"
@@ -28,12 +28,9 @@ S="${WORKDIR}"/${MY_P/?beta}
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
 if [[ ${PV} != 9999 && ${PV} != *_beta* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="pcre"
-# As of 623_beta, lesstest is not included in dist tarballs
-# https://github.com/gwsw/less/issues/344
-RESTRICT="test"
 
 DEPEND="
 	>=app-misc/editor-wrapper-3
@@ -41,6 +38,10 @@ DEPEND="
 	pcre? ( dev-libs/libpcre2 )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-633-tinfow.patch
+)
 
 src_prepare() {
 	default
@@ -52,6 +53,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-lfs-flags # bug #896316
+
 	local myeconfargs=(
 		--with-regex=$(usex pcre pcre2 posix)
 		--with-editor="${EPREFIX}"/usr/libexec/editor
@@ -66,15 +69,15 @@ src_test() {
 src_install() {
 	default
 
-	newbin "${FILESDIR}"/lesspipe-r1.sh lesspipe
+	newbin "${FILESDIR}"/lesspipe-r2.sh lesspipe
 	newenvd "${FILESDIR}"/less.envd 70less
 }
 
 pkg_preinst() {
+	optfeature "Colorized output supprt" dev-python/pygments
+
 	if has_version "<${CATEGORY}/${PN}-483-r1" ; then
 		elog "The lesspipe.sh symlink has been dropped.  If you are still setting"
 		elog "LESSOPEN to that, you will need to update it to '|lesspipe %s'."
-		elog "Colorization support has been dropped.  If you want that, check out"
-		elog "the new app-text/lesspipe package."
 	fi
 }

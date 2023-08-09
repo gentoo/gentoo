@@ -1,0 +1,15 @@
+http://lists.schmorp.de/pipermail/rxvt-unicode/2023q2/002652.html
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -95,7 +95,8 @@ check_function_exists(setreuid HAVE_SETREUID)
+ check_function_exists(setresuid HAVE_SETRESUID)
+ 
+ check_c_source_compiles(
+-  "#include <stdlib.h>
++  "#define _XOPEN_SOURCE 500
++   #include <stdlib.h>
+ 
+    int main ()
+    {
+

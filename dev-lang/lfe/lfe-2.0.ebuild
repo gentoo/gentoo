@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,14 +7,14 @@ inherit elisp-common toolchain-funcs
 
 DESCRIPTION="Lisp-flavoured Erlang"
 HOMEPAGE="http://lfe.github.io/"
-SRC_URI="https://github.com/rvirding/lfe/archive/v${PV}.zip -> ${P}.zip"
 
 if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
 	EGIT_BRANCH="develop"
 	EGIT_REPO_URI="https://github.com/rvirding/${PN}.git"
 else
-	SRC_URI="https://github.com/rvirding/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/rvirding/${PN}/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -23,13 +23,12 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc emacs"
 
-BDEPEND="app-arch/unzip"
 RDEPEND="
 	dev-lang/erlang
 "
 DEPEND="
 	${RDEPEND}
-	doc? ( app-text/pandoc )
+	doc? ( virtual/pandoc )
 "
 
 SITEFILE="70${PN}-gentoo.el"

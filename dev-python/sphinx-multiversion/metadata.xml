@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">sphinx-multiversion</remote-id>
+		<remote-id type="github">Holzhaus/sphinx-multiversion</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

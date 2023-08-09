@@ -16,7 +16,7 @@ else
 	inherit pypi
 	MY_PV=${PV/_beta/-beta.}
 	MY_P=${PN}-${MY_PV}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -54,13 +54,13 @@ BDEPEND="
 			dev-db/sqlite[icu]
 			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 			dev-python/bluelet[${PYTHON_USEDEP}]
-			dev-python/discogs-client[${PYTHON_USEDEP}]
+			dev-python/python3-discogs-client[${PYTHON_USEDEP}]
 			dev-python/flask[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/pyacoustid[${PYTHON_USEDEP}]
 			dev-python/pylast[${PYTHON_USEDEP}]
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
-			dev-python/python-mpd[${PYTHON_USEDEP}]
+			dev-python/python-mpd2[${PYTHON_USEDEP}]
 			dev-python/pyxdg[${PYTHON_USEDEP}]
 			dev-python/reflink[${PYTHON_USEDEP}]
 			|| (
@@ -115,12 +115,12 @@ python_install_all() {
 
 	optfeature "badfiles support" "media-libs/flac media-sound/mp3val"
 	optfeature "chromaprint support" "dev-python/pyacoustid media-libs/chromaprint[tools]"
-	optfeature "discogs support" dev-python/discogs-client
+	optfeature "discogs support" dev-python/python3-discogs-client
 	optfeature "ffmpeg support" media-video/ffmpeg[encode]
 	optfeature "gstreamer support" "media-libs/gst-plugins-bad media-libs/gst-plugins-good"
 	optfeature "icu support" dev-db/sqlite[icu]
 	optfeature "lastfm support" dev-python/pylast
-	optfeature "mpd support" "dev-python/bluelet dev-python/python-mpd"
+	optfeature "mpd support" "dev-python/bluelet dev-python/python-mpd2"
 	optfeature "replaygain with gstreamer support" "dev-python/pygobject media-plugins/gst-plugins-libav"
 	optfeature "replaygain without gstreamer support" media-sound/mp3gain
 	optfeature "thumbnail support" dev-python/pyxdg "dev-python/pillow media-gfx/imagemagick"

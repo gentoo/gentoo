@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools toolchain-funcs flag-o-matic
 
 DESCRIPTION="DVI to plain text translator"
-HOMEPAGE="http://catdvi.sourceforge.net"
+HOMEPAGE="https://catdvi.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"

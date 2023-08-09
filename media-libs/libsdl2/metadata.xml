@@ -35,7 +35,6 @@
 		<flag name="pipewire">Enable support for the <pkg>media-video/pipewire</pkg> audio backend</flag>
 		<flag name="sound">Control audio support (disable at your own risk)</flag>
 		<flag name="video">Control video support (disable at your own risk)</flag>
-		<flag name="vulkan">Enable Vulkan support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">libsdl-org/SDL</remote-id>

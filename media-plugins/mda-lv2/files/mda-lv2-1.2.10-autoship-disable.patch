@@ -1,0 +1,38 @@
+https://gitlab.com/drobilla/mda-lv2/-/commit/e85a6c7fc8e0bccbe23691a6bf10bbbd2ce048bf
+
+From e85a6c7fc8e0bccbe23691a6bf10bbbd2ce048bf Mon Sep 17 00:00:00 2001
+From: David Robillard <d@drobilla.net>
+Date: Mon, 22 Aug 2022 10:50:10 -0400
+Subject: [PATCH] Only run autoship test in strict mode
+
+--- a/meson.build
++++ b/meson.build
+@@ -61,15 +61,17 @@ subdir('mda.lv2')
+ #########
+ 
+ if not get_option('tests').disabled() and not meson.is_subproject()
+-  # Check release metadata
+-  autoship = find_program('autoship', required: get_option('tests'))
+-  if autoship.found()
+-    test(
+-      'autoship',
+-      autoship,
+-      args: ['test', meson.current_source_dir()],
+-      suite: 'data',
+-    )
++  if get_option('strict')
++    # Check release metadata
++    autoship = find_program('autoship', required: get_option('tests'))
++    if autoship.found()
++      test(
++        'autoship',
++        autoship,
++        args: ['test', meson.current_source_dir()],
++        suite: 'data',
++      )
++    endif
+   endif
+ 
+   # Check licensing metadata
+-- 
+GitLab

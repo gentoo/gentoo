@@ -4,10 +4,14 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Hans de Graaff <graaff@gentoo.org> (2023-01-15)
+# Sam James <sam@gentoo.org> (2023-05-29)
 # Currently in testing and not ready to go stable yet.
-ruby_targets_ruby31
 ruby_targets_ruby32
+
+# Michał Górny <mgorny@gentoo.org> (2023-05-23)
+# Mask until dev-lang/python:3.12 becomes stable.
+python_targets_python3_12
+python_single_target_python3_12
 
 # Brian Evans <grknight@gentoo.org> (2022-12-09)
 # PHP 8.2 is in testing

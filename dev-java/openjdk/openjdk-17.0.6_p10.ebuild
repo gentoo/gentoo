@@ -194,7 +194,7 @@ src_configure() {
 	# Strip lto related flags, we rely on USE=lto and --with-jvm-features=link-time-opt
 	# https://bugs.gentoo.org/833097
 	# https://bugs.gentoo.org/833098
-	filter-flags '-flto*'
+	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
 	# Enabling full docs appears to break doc building. If not
@@ -258,6 +258,10 @@ src_configure() {
 }
 
 src_compile() {
+	# Too brittle - gets confused by e.g. -Oline
+	export MAKEOPTS="-j$(makeopts_jobs) -l$(makeopts_loadavg)"
+	unset GNUMAKEFLAGS MAKEFLAGS
+
 	local myemakeargs=(
 		JOBS=$(makeopts_jobs)
 		LOG=debug

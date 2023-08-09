@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,10 +28,7 @@ src_prepare() {
 }
 
 src_compile() {
-	# i wonder how this works on other platforms if CFLAGS from makefile are
-	# overridden, see bug #218082
-	[[ ${CHOST} == *-interix* ]] && append-flags -DIS_SYSV -DHAS_RENAME -DHAS_DIRENT
-	[[ ${CHOST} == *-interix* ]] || append-lfs-flags
+	append-lfs-flags
 
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }

@@ -1,5 +1,33 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2023-06-23)
+# Fails to link due to missing libintl, already fixed upstream:
+# https://git.savannah.gnu.org/cgit/tar.git/commit/?id=8632df398b2f548465ebe68b8f494c0d6f8d913d
+=app-arch/tar-1.35
+
+# Fabian Groffen <grobian@gentoo.org> (2023-06-23)
+# Fails to compile due to lchmod, fixed upstream so wait for next
+# release
+# https://github.com/libarchive/libarchive/commit/89712ffa6ede364f261dcd9208adabf068e2e21c
+=app-arch/libarchive-3.7.0
+
+# Benda Xu <heroxbd@gentoo.org> (2023-07-09)
+# Requires Glibc <sys/xattr.h> to work properly.
+# For example, 'lgetxattr' is not available on Solaris or gnulib.
+# https://www.gnu.org/software/gnulib/manual/html_node/lgetxattr.html
+sys-apps/attr
+
+# Fabian Groffen <grobian@gentoo.org> (2023-06-09)
+# Fails to compile due to missing DT_* symbols
+# fix: https://lore.kernel.org/git/20230606205935.3183276-1-asedeno@google.com/
+~dev-vcs/git-2.41.0
+
+# Fabian Groffen <grobian@gentoo.org> (2023-06-07)
+# Fails to compile, epoll missing:
+# https://github.com/chriskohlhoff/asio/issues/1289
+# patch: https://bugs.gentoo.org/908025
+~dev-libs/boost-1.82.0
 
 # Fabian Groffen <grobian@gentoo.org> (2014-01-14)
 # util-linux has no business on Solaris systems

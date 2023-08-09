@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/apcupsd/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ~riscv x86"
-IUSE="snmp +usb +modbus cgi"
+IUSE="selinux snmp +usb +modbus cgi"
 
 DEPEND=">=sys-apps/util-linux-2.23[tty-helpers(-)]
 	cgi? ( >=media-libs/gd-1.8.4 )
@@ -20,7 +20,8 @@ DEPEND=">=sys-apps/util-linux-2.23[tty-helpers(-)]
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )"
 
 RDEPEND="${DEPEND}
-	virtual/mailx"
+	virtual/mailx
+	selinux? ( sec-policy/selinux-apcupsd )"
 
 CONFIG_CHECK="~USB_HIDDEV ~HIDRAW"
 ERROR_USB_HIDDEV="CONFIG_USB_HIDDEV:	needed to access USB-attached UPSes"

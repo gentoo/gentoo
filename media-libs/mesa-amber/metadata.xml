@@ -8,7 +8,6 @@
   <use>
     <flag name="gles1">Enable GLESv1 support.</flag>
     <flag name="gles2">Enable GLESv2 support.</flag>
-    <flag name="valgrind">Compile in valgrind memory hints</flag>
     <flag name="wayland">Enable support for <pkg>dev-libs/wayland</pkg></flag>
   </use>
   <upstream>

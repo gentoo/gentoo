@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools xdg
 
 DESCRIPTION="A set of open source instruments and effects for digital audio workstations"
-HOMEPAGE="http://calf-studio-gear.org/"
+HOMEPAGE="https://calf-studio-gear.org/"
 
 if [[ "${PV}" = "9999" ]] ; then
 	inherit git-r3

@@ -1,5 +1,5 @@
---- a/libkineto/CMakeLists.txt	2022-05-24 11:16:18.537610972 +0200
-+++ b/libkineto/CMakeLists.txt	2022-05-24 11:19:15.011073535 +0200
+--- a/CMakeLists.txt	2022-05-24 11:16:18.537610972 +0200
++++ b/CMakeLists.txt	2022-05-24 11:19:15.011073535 +0200
 @@ -78,10 +78,10 @@
  set_target_properties(kineto_base kineto_api PROPERTIES
        CXX_STANDARD 14
@@ -57,8 +57,8 @@
  
  install(TARGETS kineto EXPORT kinetoLibraryConfig
    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
---- a/libkineto/libkineto_defs.bzl	2022-05-24 22:06:17.324000422 +0200
-+++ b/libkineto/libkineto_defs.bzl	2022-05-24 22:07:08.326419268 +0200
+--- a/libkineto_defs.bzl	2022-05-24 22:06:17.324000422 +0200
++++ b/libkineto_defs.bzl	2022-05-24 22:07:08.326419268 +0200
 @@ -46,6 +46,7 @@
          "src/init.cpp",
          "src/output_csv.cpp",

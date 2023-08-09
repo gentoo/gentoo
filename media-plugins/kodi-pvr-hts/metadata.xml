@@ -5,10 +5,6 @@
 		<email>candrews@gentoo.org</email>
 		<name>Craig Andrews</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>fordfrog@gentoo.org</email>
-		<name>Miroslav Šulc</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">kodi-pvr/pvr.hts</remote-id>
 	</upstream>

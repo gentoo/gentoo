@@ -17,6 +17,7 @@
     <flag name="fdk">Build with LibFDK AAC support.</flag>
     <flag name="pipewire">Build with PipeWire support.</flag>
     <flag name="python">Build with scripting support for Python 3.</flag>
+    <flag name="qsv">Build with Intel Quick Sync Video support.</flag>
     <flag name="speex">Build with Speex noise suppression filter support.</flag>
     <flag name="ssl">Build with TLS/SSL support for RTMPS connections.</flag>
     <flag name="vlc">Build with VLC media source support.</flag>

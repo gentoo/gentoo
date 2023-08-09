@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
 
 inherit cmake distutils-r1
@@ -51,7 +52,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 BDEPEND="
-	${PYTHON_DEPS}
+	${DISTUTILS_DEPS}
 	virtual/pkgconfig
 "
 

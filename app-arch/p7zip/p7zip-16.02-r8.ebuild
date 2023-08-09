@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,8 @@ S="${WORKDIR}/${PN}_${PV}"
 
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
-IUSE="abi_x86_x32 doc kde +pch rar static wxwidgets"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="abi_x86_x32 kde +pch rar static wxwidgets"
 REQUIRED_USE="kde? ( wxwidgets )"
 
 RDEPEND="wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
@@ -143,9 +143,7 @@ src_install() {
 	doman man1/7z.1 man1/7za.1 man1/7zr.1
 
 	dodoc ChangeLog README TODO
-	if use doc; then
-		dodoc DOC/*.txt
-		docinto html
-		dodoc -r DOC/MANUAL/.
-	fi
+	dodoc DOC/*.txt
+	docinto html
+	dodoc -r DOC/MANUAL/.
 }

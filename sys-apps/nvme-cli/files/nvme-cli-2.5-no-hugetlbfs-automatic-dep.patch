@@ -1,0 +1,30 @@
+diff --git a/meson.build b/meson.build
+index af79bd4d..90c4d6ad 100644
+--- a/meson.build
++++ b/meson.build
+@@ -69,9 +69,9 @@ endif
+ conf.set('CONFIG_JSONC', json_c_dep.found(), description: 'Is json-c available?')
+ 
+ # Check for libhugetlbfs availability (optional)
+-if cc.has_header('hugetlbfs.h')
++if get_option('hugepages') and cc.has_header('hugetlbfs.h')
+   libhugetlbfs_dep = cc.find_library('hugetlbfs',
+-                                     required : false)
++                                     required : true)
+ else
+   libhugetlbfs_dep = dependency('', required: false)
+ endif
+diff --git a/meson_options.txt b/meson_options.txt
+index c61dae0f..a05a7e0f 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -70,3 +70,9 @@ option(
+   type : 'string',
+   description : 'override the git version string'
+ )
++option(
++  'hugepages',
++  type: 'boolean',
++  value : false,
++  description : 'Enable support for hugetlbfs'
++)

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/infozip/${MY_P}.tar.gz
 
 LICENSE="Info-ZIP"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="bzip2 natspec unicode"
 
 DEPEND="bzip2? ( app-arch/bzip2 )
@@ -64,13 +64,9 @@ src_configure() {
 	case ${CHOST} in
 		i?86*-*linux*)       TARGET="linux_asm" ;;
 		*linux*)             TARGET="linux_noasm" ;;
-		i?86*-*bsd* | \
-		i?86*-dragonfly*)    TARGET="freebsd" ;; # mislabelled bsd with x86 asm
-		*bsd* | *dragonfly*) TARGET="bsd" ;;
 		*-darwin*)           TARGET="macosx" ;;
 		*-solaris*)          TARGET="generic" ;;
-		*-cygwin*)           TARGET="generic" ;;
-		*) die "Unknown target; please update the ebuild to handle ${CHOST}	" ;;
+		*) die "Unknown target; please update the ebuild to handle ${CHOST}" ;;
 	esac
 
 	# Needed for Clang 16

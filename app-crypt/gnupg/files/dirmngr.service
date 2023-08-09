@@ -1,0 +1,8 @@
+[Unit]
+Description=GnuPG network certificate management daemon
+Documentation=man:dirmngr(8)
+Requires=dirmngr.socket
+
+[Service]
+ExecStart=/usr/bin/dirmngr --supervised
+ExecReload=/usr/bin/gpgconf --reload dirmngr

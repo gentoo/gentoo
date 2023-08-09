@@ -73,6 +73,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.5-gcc13.patch
+)
+
 src_configure() {
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
 	    "${FILESDIR}"/wayfire-session > "${T}"/wayfire-session || die

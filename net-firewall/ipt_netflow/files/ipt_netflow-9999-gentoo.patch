@@ -1,6 +1,6 @@
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -11,7 +11,7 @@ CARGS = @CARGS@
+@@ -13,7 +13,7 @@ CARGS = @CARGS@
  SNMPTGSO = /usr/lib/snmp/dlmod/snmp_NETFLOW.so
  SNMPCONF = /etc/snmp/snmpd.conf
  SNMPLINE = dlmod netflow $(SNMPTGSO)
@@ -9,15 +9,16 @@
  
  # https://www.kernel.org/doc/Documentation/kbuild/modules.txt
  # https://www.kernel.org/doc/Documentation/kbuild/makefiles.txt
-@@ -22,31 +22,31 @@ all: ipt_NETFLOW.ko libipt_NETFLOW.so libip6t_NETFLOW.so @SNMPTARGET@
+@@ -24,7 +24,7 @@
  
  ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat_def.h compat.h Makefile
- 	@echo Compiling for kernel $(KVERSION)
--	make -C $(KDIR) M=$(CURDIR) modules CONFIG_DEBUG_INFO=y
-+	$(MAKE) -C $(KDIR) M=$(CURDIR) modules CONFIG_DEBUG_INFO=y
+ 	@echo Compiling $(shell ./version.sh) for kernel $(KVERSION)
+-	make -C $(KDIR) M=$(CURDIR) modules
++	$(MAKE) -C $(KDIR) M=$(CURDIR) modules
  	@touch $@
  compat_def.h: gen_compat_def
- 	./gen_compat_def > $@
+ 	./gen_compat_def > $@-
+@@ -32,24 +32,24 @@
  sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
  	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
  	@echo Compiling for kernel $(KVERSION)
@@ -46,7 +47,7 @@
  
  sinstall: | snmp_NETFLOW.so IPT-NETFLOW-MIB.my
  	@echo " *"
-@@ -66,7 +66,7 @@ sinstall: | snmp_NETFLOW.so IPT-NETFLOW-MIB.my
+@@ -69,7 +69,7 @@
  	fi
  
  %_sh.o: libipt_NETFLOW.c

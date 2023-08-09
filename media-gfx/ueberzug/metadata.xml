@@ -5,4 +5,7 @@
 		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">ueber-devel/ueberzug</remote-id>
+	</upstream>
 </pkgmetadata>

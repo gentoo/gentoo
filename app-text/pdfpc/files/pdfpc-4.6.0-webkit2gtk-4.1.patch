@@ -1,0 +1,22 @@
+--- pdfpc-4.6.0/src/CMakeLists.txt
++++ pdfpc-4.6.0/src/CMakeLists.txt
+@@ -30,8 +30,8 @@
+ endif ()
+ 
+ if (MDVIEW)
+-    pkg_check_modules(WEBKIT REQUIRED webkit2gtk-4.0)
+-    set(MDVIEW_PACKAGES webkit2gtk-4.0)
++    pkg_check_modules(WEBKIT REQUIRED webkit2gtk-4.1)
++    set(MDVIEW_PACKAGES webkit2gtk-4.1)
+     set(EXTRA_VALA_OPTIONS ${EXTRA_VALA_OPTIONS} -D MDVIEW)
+ endif ()
+ 
+@@ -136,7 +136,7 @@
+ vala_precompile(VALA_C
+     ${VALA_SRC}
+ PACKAGES
+-    webkit2gtk-4.0
++    webkit2gtk-4.1
+     json-glib-1.0
+     gio-2.0
+     gee-0.8

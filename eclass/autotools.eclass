@@ -389,7 +389,6 @@ eautoconf() {
 		die "No configure.{ac,in} present!"
 	fi
 
-
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
 		case ${EAPI} in
 			6|7)
@@ -400,7 +399,7 @@ eautoconf() {
 		*)
 				# Move configure file to the new location only on newer EAPIs to ensure
 				# checks are done rather than retroactively breaking ebuilds.
-				eqawarn "Moving configure.in to configure.ac (bug #426262)"
+				einfo "Moving configure.in to configure.ac (bug #426262)"
 				mv configure.{in,ac} || die
 			;;
 		esac
@@ -560,7 +559,7 @@ autotools_run_tool() {
 		shift
 	done
 
-	if [[ ${EBUILD_PHASE_FUNC} != "src_unpack" && ${EBUILD_PHASE_FUNC} != "src_prepare" ]] ; then
+	if [[ ${EBUILD_PHASE_FUNC} != "src_prepare" ]] ; then
 		eqawarn "Running '${1}' in ${EBUILD_PHASE_FUNC} phase"
 	fi
 

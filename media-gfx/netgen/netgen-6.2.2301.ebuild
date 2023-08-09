@@ -12,7 +12,7 @@ SRC_URI="https://github.com/NGSolve/netgen/archive/refs/tags/v${PV}.tar.gz -> ${
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="ffmpeg gui jpeg logging mpi opencascade python test"
 RESTRICT="!test? ( test )"

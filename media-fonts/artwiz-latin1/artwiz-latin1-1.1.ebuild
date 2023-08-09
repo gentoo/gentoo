@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit font
 
 DESCRIPTION="A set of improved Artwiz fonts with bold and full ISO-8859-1 support"
-HOMEPAGE="http://artwiz-latin1.sourceforge.net/"
+HOMEPAGE="https://artwiz-latin1.sourceforge.net/"
 SRC_URI="mirror://sourceforge/artwiz-latin1/${P}.tgz"
 
 LICENSE="GPL-2"

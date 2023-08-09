@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit udev
 
 DESCRIPTION="Simple udev-based automounter for removable USB media"
-HOMEPAGE="https://github.com/mgorny/uam/"
-SRC_URI="https://github.com/mgorny/uam/releases/download/${P}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/uam/"
+SRC_URI="https://github.com/projg2/uam/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

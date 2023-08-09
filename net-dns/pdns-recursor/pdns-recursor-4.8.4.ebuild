@@ -14,7 +14,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
-IUSE="debug dnstap snmp sodium systemd test"
+IUSE="debug dnstap snmp sodium systemd test valgrind"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -33,6 +33,8 @@ RDEPEND="${DEPEND}
 	!<net-dns/pdns-2.9.20-r1
 	acct-user/pdns
 	acct-group/pdns"
+DEPEND="${DEPEND}
+	valgrind? ( dev-util/valgrind )"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${P/_/-}
@@ -55,6 +57,7 @@ src_configure() {
 		$(use_enable systemd) \
 		$(use_enable dnstap dnstap) \
 		$(use_enable test unit-tests) \
+		$(use_enable valgrind) \
 		$(use_with sodium libsodium) \
 		$(use_with snmp net-snmp)
 }

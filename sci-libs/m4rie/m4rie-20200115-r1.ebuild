@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16"
-HOMEPAGE="https://bitbucket.org/malb/m4rie/"
+HOMEPAGE="https://github.com/malb/m4rie"
 SRC_URI="https://bitbucket.org/malb/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2+"

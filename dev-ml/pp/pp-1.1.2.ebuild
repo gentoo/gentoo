@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml-dune/pp/releases/download/${PV}/${P}.tbz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
 DEPEND="dev-ml/ppx_expect:=

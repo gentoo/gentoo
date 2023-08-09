@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit desktop flag-o-matic toolchain-funcs
 MY_COMMIT="80e33b15cfa6d7d288b4b3db4dcca0349f13691f"
 
 DESCRIPTION="SDL clone of Gladiator, a classic RPG game"
-HOMEPAGE="http://snowstorm.sourceforge.net/"
+HOMEPAGE="https://snowstorm.sourceforge.net/"
 SRC_URI="
 	https://github.com/openglad/openglad/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz
 	mirror://gentoo/${PN}.png"

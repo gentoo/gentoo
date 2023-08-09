@@ -26,7 +26,7 @@ export CFLAGS_default
 export LDFLAGS_default
 export CHOST_default=${CHOST_default:-${CHOST}}
 export CTARGET_default=${CTARGET_default:-${CTARGET:-${CHOST_default}}}
-export LIBDIR_default=${CONF_LIBDIR:-"lib"}
+export LIBDIR_default="lib"
 export KERNEL_ABI=${KERNEL_ABI:-${DEFAULT_ABI}}
 
 # @FUNCTION: has_multilib_profile
@@ -213,7 +213,7 @@ number_abis() {
 #     Returns: null string (almost everywhere) || .exe (mingw*) || ...
 get_exeext() {
 	case ${CHOST} in
-		*-cygwin*|mingw*|*-mingw*)  echo ".exe";;
+		mingw*|*-mingw*)  echo ".exe";;
 	esac
 }
 
@@ -230,11 +230,8 @@ get_libname() {
 	local libname
 	local ver=$1
 	case ${CHOST} in
-		*-cygwin*)       libname="dll.a";; # import lib
 		mingw*|*-mingw*) libname="dll";;
 		*-darwin*)       libname="dylib";;
-		*-mint*)         libname="irrelevant";;
-		hppa*-hpux*)     libname="sl";;
 		*)               libname="so";;
 	esac
 
@@ -243,9 +240,7 @@ get_libname() {
 	else
 		for ver in "$@" ; do
 			case ${CHOST} in
-				*-cygwin*) echo ".${ver}.${libname}";;
 				*-darwin*) echo ".${ver}.${libname}";;
-				*-mint*)   echo ".${libname}";;
 				*)         echo ".${libname}.${ver}";;
 			esac
 		done

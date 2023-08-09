@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol‑‑Laruelle</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		<pkg>x11-terms/cool-retro-term</pkg> is a terminal emulator which tries
+		to mimic the look and feel of the old cathode tube screens. It has been
+		designed to be eye-candy, customizable, and reasonably lightweight.
+	</longdescription>
+	<longdescription lang="fr">
+		<pkg>x11-terms/cool-retro-term</pkg> est un émulateur de terminal qui
+		tente d'imiter l'aspect et le comportement des anciens écrans à tube
+		cathodique. Il a été conçu pour être agréable à regarder,
+		personnalisable et raisonablement léger.
+	</longdescription>
 	<upstream>
+		<maintainer status="active">
+			<name>Filippo Scognamiglio</name>
+			<email>flscogna@gmail.com</email>
+		</maintainer>
+		<doc>https://github.com/Swordfish90/cool-retro-term/wiki/</doc>
+		<bugs-to>https://github.com/Swordfish90/cool-retro-term/issues/</bugs-to>
 		<remote-id type="github">Swordfish90/cool-retro-term</remote-id>
 	</upstream>
 </pkgmetadata>

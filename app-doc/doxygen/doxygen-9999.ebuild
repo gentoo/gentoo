@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit cmake flag-o-matic llvm python-any-r1
@@ -13,13 +13,14 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://doxygen.nl/files/${P}.src.tar.gz"
 	SRC_URI+=" mirror://sourceforge/doxygen/rel-${PV}/${P}.src.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
 HOMEPAGE="https://www.doxygen.nl/"
 
-LICENSE="GPL-2"
+# GPL-2 also for bundled libmscgen, MIT for bundled spdlog
+LICENSE="GPL-2 MIT"
 SLOT="0"
 IUSE="clang debug doc dot doxysearch qt5 sqlite test"
 # We need TeX for tests, bug #765472
@@ -35,6 +36,7 @@ BDEPEND="sys-devel/bison
 "
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
+	dev-libs/spdlog:=
 	media-libs/libpng:0=
 	virtual/libiconv
 	clang? ( >=sys-devel/clang-10:= )
@@ -56,7 +58,6 @@ RDEPEND="app-text/ghostscript-gpl
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	sqlite? ( dev-db/sqlite:3 )
 "
 DEPEND="${RDEPEND}"
 
@@ -64,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.4-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
 	"${FILESDIR}/${PN}-1.9.1-do_not_force_libcxx.patch"
+	"${FILESDIR}/${PN}-1.9.7-musl-1.2.4.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
@@ -104,7 +106,8 @@ src_configure() {
 		-Dbuild_doc=$(usex doc)
 		-Dbuild_search=$(usex doxysearch)
 		-Dbuild_wizard=$(usex qt5)
-		-Duse_sqlite3=$(usex sqlite)
+		-Duse_sys_spdlog=ON
+		-DBUILD_SHARED_LIBS=OFF
 		-DGIT_EXECUTABLE="false"
 	)
 
@@ -123,7 +126,7 @@ src_compile() {
 
 		if ! use dot; then
 			sed -i -e "s/HAVE_DOT               = YES/HAVE_DOT    = NO/" \
-				{Doxyfile,doc/Doxyfile} \
+				{testing/Doxyfile,doc/Doxyfile} \
 				|| die "disabling dot failed"
 		fi
 

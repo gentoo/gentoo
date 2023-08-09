@@ -1,0 +1,183 @@
+https://gitlab.freedesktop.org/wayland/weston/-/issues/757
+https://gitlab.freedesktop.org/wayland/weston/-/merge_requests/1257
+
+From 6d8e3c569cf7e9ad80569768871e1ed30bf4d2a8 Mon Sep 17 00:00:00 2001
+From: Leandro Ribeiro <leandro.ribeiro@collabora.com>
+Date: Thu, 1 Jun 2023 18:51:34 -0300
+Subject: [PATCH 1/3] drm: drop disable_planes being false as a condition to
+ support writeback
+
+In 2d70bdfdcdb236ee3e466b1a24df494da43c8a68 "drm-backend: add support to
+output capture writeback source" we've ensured that disable_planes
+should be false in order to support writeback capture tasks.
+
+But this was wrong; disable_planes is transient (it is true when
+there's some sort of content recording happening), and we enable/disable
+that during compositor's lifetime.
+
+This is dangerous and may result in a crash. Imagine the following
+sequence:
+
+        1. screen recording starts, disable_planes is set to true.
+
+        2. for whatever reason the output size changes, and we end up
+        not updating capture info because we think that writeback is not
+        supported by the device.
+
+        3. screen recording stops, disable_planes is set to false.
+
+        4. user tries to take a writeback screenshot, and the
+        DRM-backend will pull a writeback capture task with
+        weston_output_pull_capture_task().
+
+        5. this function has an assert to ensure that the DRM-backend
+        did not forget to update the capture info, and we hit that
+        assert.
+
+With this patch we drop disable_planes being false as a condition to
+support writeback. So now we keep the capture info up-to-date even when
+screen recording is happening, and we gracefully fail writeback tasks.
+
+Signed-off-by: Leandro Ribeiro <leandro.ribeiro@collabora.com>
+---
+ libweston/backend-drm/drm.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/libweston/backend-drm/drm.c b/libweston/backend-drm/drm.c
+index 1078b89bf..a1e61df8c 100644
+--- a/libweston/backend-drm/drm.c
++++ b/libweston/backend-drm/drm.c
+@@ -561,6 +561,12 @@ drm_output_pick_writeback_capture_task(struct drm_output *output)
+ 
+ 	assert(output->device->atomic_modeset);
+ 
++	if (output->base.disable_planes > 0) {
++		msg = "drm: KMS planes usage is disabled for now, so " \
++		      "writeback capture tasks are rejected";
++		goto err;
++	}
++
+ 	wb = drm_output_find_compatible_writeback(output);
+ 	if (!wb) {
+ 		msg = "drm: could not find writeback connector for output";
+@@ -948,7 +954,7 @@ drm_output_apply_mode(struct drm_output *output)
+ 		}
+ 	}
+ 
+-	if (device->atomic_modeset && !output->base.disable_planes)
++	if (device->atomic_modeset)
+ 		weston_output_update_capture_info(&output->base,
+ 						  WESTON_OUTPUT_CAPTURE_SOURCE_WRITEBACK,
+ 						  output->base.current_mode->width,
+@@ -2138,7 +2144,7 @@ drm_output_enable(struct weston_output *base)
+ 	output->base.switch_mode = drm_output_switch_mode;
+ 	output->base.set_gamma = drm_output_set_gamma;
+ 
+-	if (device->atomic_modeset && !base->disable_planes)
++	if (device->atomic_modeset)
+ 		weston_output_update_capture_info(base, WESTON_OUTPUT_CAPTURE_SOURCE_WRITEBACK,
+ 						  base->current_mode->width,
+ 						  base->current_mode->height,
+-- 
+GitLab
+
+
+From 3226417573ac12e7d41823335bcb3036bf442cbc Mon Sep 17 00:00:00 2001
+From: Leandro Ribeiro <leandro.ribeiro@collabora.com>
+Date: Fri, 2 Jun 2023 14:44:44 -0300
+Subject: [PATCH 2/3] drm: do not pull writeback task if KMS atomic API is not
+ supported
+
+Since 2d70bdfdcdb236ee3e466b1a24df494da43c8a68 "drm-backend: add support
+to output capture writeback source", the DRM-backend was broken for KMS
+devices that do not support the atomic API. This fixes that.
+
+We don't support writeback screenshots without atomic modeset support.
+So for such devices, we never update the output capture info
+(weston_output_update_capture_info()) for the writeback source.
+
+The function that we use to pull writeback tasks
+(weston_output_pull_capture_task()) asserts that the capture providers
+(renderers, DRM-backend) did not forget to update the capture info
+(size/format) if something changed. But as we've never updated the
+capture info for such devices, it is zeroed, leading to an assert hit.
+
+With this patch we only pull the capture task for KMS devices that
+support the atomic API.
+
+Signed-off-by: Leandro Ribeiro <leandro.ribeiro@collabora.com>
+---
+ libweston/backend-drm/drm.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/libweston/backend-drm/drm.c b/libweston/backend-drm/drm.c
+index a1e61df8c..b43791db5 100644
+--- a/libweston/backend-drm/drm.c
++++ b/libweston/backend-drm/drm.c
+@@ -553,14 +553,14 @@ drm_output_pick_writeback_capture_task(struct drm_output *output)
+ 	int32_t height = output->base.current_mode->height;
+ 	uint32_t format = output->format->format;
+ 
++	assert(output->device->atomic_modeset);
++
+ 	ct = weston_output_pull_capture_task(&output->base,
+ 					     WESTON_OUTPUT_CAPTURE_SOURCE_WRITEBACK,
+ 					     width, height, pixel_format_get_info(format));
+ 	if (!ct)
+ 		return;
+ 
+-	assert(output->device->atomic_modeset);
+-
+ 	if (output->base.disable_planes > 0) {
+ 		msg = "drm: KMS planes usage is disabled for now, so " \
+ 		      "writeback capture tasks are rejected";
+@@ -642,7 +642,8 @@ drm_output_repaint(struct weston_output *output_base, pixman_region32_t *damage)
+ 	if (drm_output_ensure_hdr_output_metadata_blob(output) < 0)
+ 		goto err;
+ 
+-	drm_output_pick_writeback_capture_task(output);
++	if (device->atomic_modeset)
++		drm_output_pick_writeback_capture_task(output);
+ 
+ 	drm_output_render(state, damage);
+ 	scanout_state = drm_output_state_get_plane(state,
+-- 
+GitLab
+
+
+From cf64fbe7847859ca11d4722f056d2ebfa8d10177 Mon Sep 17 00:00:00 2001
+From: Leandro Ribeiro <leandro.ribeiro@collabora.com>
+Date: Thu, 1 Jun 2023 17:04:56 -0300
+Subject: [PATCH 3/3] tests: assert that capture info was received before
+ trying screenshot
+
+If the source is not supported, we won't receive the capture
+information. So the capture info (size/format) will be zeroed, and we
+fail while trying to create a buffer for the screenshot with size/format
+zeroed.
+
+With this patch we fail if we don't receive the capture info, what makes
+the failure reason more explicit.
+
+Signed-off-by: Leandro Ribeiro <leandro.ribeiro@collabora.com>
+---
+ tests/weston-test-client-helper.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/weston-test-client-helper.c b/tests/weston-test-client-helper.c
+index 3e24a0310..2a7f938d3 100644
+--- a/tests/weston-test-client-helper.c
++++ b/tests/weston-test-client-helper.c
+@@ -1705,6 +1705,9 @@ client_capture_output(struct client *client,
+ 
+ 	client_roundtrip(client);
+ 
++	assert(capt.width != 0 && capt.height != 0 && capt.drm_format != 0 &&
++	       "capture source not available");
++
+ 	buf = create_shm_buffer(client,
+ 				capt.width, capt.height, capt.drm_format);
+ 
+-- 
+GitLab
+

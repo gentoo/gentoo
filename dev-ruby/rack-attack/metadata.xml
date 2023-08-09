@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">kickstarter/rack-attack</remote-id>
+    <remote-id type="github">rack/rack-attack</remote-id>
   </upstream>
 </pkgmetadata>

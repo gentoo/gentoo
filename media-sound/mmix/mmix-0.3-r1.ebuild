@@ -1,17 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit toolchain-funcs
 
-DESCRIPTION="A soundcard mixer for the OSS driver"
-HOMEPAGE="http://www.mcmilk.de/projects/mmix/"
-SRC_URI="http://www.mcmilk.de/projects/${PN}/dl/${P}.tar.bz2"
+DESCRIPTION="Soundcard mixer for the OSS driver"
+HOMEPAGE="https://www.mcmilk.de/projects/mmix/"
+SRC_URI="https://www.mcmilk.de/projects/${PN}/dl/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 # media-sound/mmix and dev-lang/mmix both install 'mmix' binary, bug #426874
 RDEPEND=""

@@ -11,8 +11,8 @@
 # packages
 
 case ${EAPI} in
-	6|7) inherit eutils ;;
-	8) ;;
+	6) inherit eutils ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -127,7 +127,6 @@ egnustep_env() {
 			sed -e "s#\(GNUSTEP_USER_.*DIR.*=\)#\1${WORKDIR}/#" \
 				-i "${WORKDIR}"/GNUstep.conf || die "GNUstep.conf sed failed"
 		fi
-
 
 		if [[ ! -d ${EPREFIX}/usr/share/GNUstep/Makefiles ]]; then
 			# Set rpath in ldflags when available

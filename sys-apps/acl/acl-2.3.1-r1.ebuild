@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic libtool multilib-minimal usr-ldscript
+inherit flag-o-matic libtool multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="Access control list utilities, libraries, and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
@@ -30,7 +30,7 @@ src_prepare() {
 multilib_src_configure() {
 	# Filter out -flto flags as they break getfacl/setfacl binaries
 	# bug #667372
-	filter-flags -flto*
+	filter-lto
 
 	# Broken with FORTIFY_SOURCE=3
 	# Our toolchain sets F_S=2 by default w/ >= -O2, so we need
@@ -42,9 +42,7 @@ multilib_src_configure() {
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=104964
 	# https://savannah.nongnu.org/bugs/index.php?62519
 	# bug #847280
-	if is-flagq '-O[23]' || is-flagq '-Ofast' ; then
-		# We can't unconditionally do this b/c we fortify needs
-		# some level of optimisation.
+	if tc-enables-fortify-source ; then
 		filter-flags -D_FORTIFY_SOURCE=3
 		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 	fi

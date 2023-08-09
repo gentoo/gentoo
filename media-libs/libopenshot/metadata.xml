@@ -17,5 +17,8 @@
 		<flag name="opencv">
 			Enable <pkg>media-libs/opencv</pkg> support
 		</flag>
+		<flag name="babl">
+			Enable <pkg>media-libs/babl</pkg> support
+		</flag>
 	</use>
 </pkgmetadata>

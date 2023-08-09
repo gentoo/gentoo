@@ -25,9 +25,6 @@ KEYWORDS="amd64 ~arm64 ~riscv x86"
 RDEPEND="
 	>=dev-python/Arpeggio-1.7[${PYTHON_USEDEP}]
 	>=dev-python/attrs-19.2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.9)
 "
 
 BDEPEND="

@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors.
+# Copyright 1999-2023 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
+
+# Violet Purcell <vimproved@inventati.org> (2023-04-25)
+# SBCL Upstream does not provide musl binaries for bootstrap, use CLisp.
+dev-lisp/sbcl system-bootstrap
 
 # Sam James <sam@gentoo.org> (2022-11-02)
 # The libxcrypt migration is optional for musl.

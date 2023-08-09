@@ -21,7 +21,7 @@ S="${WORKDIR}/PyrateLimiter-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]

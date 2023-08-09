@@ -1,0 +1,27 @@
+--- a/test/CMakeLists.txt	2023-05-17 19:59:34.023146040 +0200
++++ b/test/CMakeLists.txt	2023-05-17 20:01:23.021505635 +0200
+@@ -50,20 +50,11 @@
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wunused-parameter -Wextra -Wreorder")
+         # Users may override the c++ standard:
+         if(NOT DEFINED CMAKE_CXX_STANDARD OR "${CMAKE_CXX_STANDARD}" STREQUAL "")
+-            if (ENABLE_XTL_COMPLEX)
+-                CHECK_CXX_COMPILER_FLAG("-std=c++14" HAS_CPP14_FLAG)
+-                if (NOT HAS_CPP14_FLAG)
+-                    message(FATAL_ERROR "Unsupported compiler -- xsimd requires C++14 support when xtl complex support is enabled")
+-                endif()
+-                set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+-            else()
+-                CHECK_CXX_COMPILER_FLAG("-std=c++11" HAS_CPP11_FLAG)
+-                if (NOT HAS_CPP11_FLAG)
+-                    message(FATAL_ERROR "Unsupported compiler -- xsimd requires C++11 support!")
+-                else()
+-                    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+-                endif()
++            CHECK_CXX_COMPILER_FLAG("-std=c++17" HAS_CPP17_FLAG)
++            if (NOT HAS_CPP17_FLAG)
++                message(FATAL_ERROR "Unsupported compiler -- xsimd requires C++17 support")
+             endif()
++            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+         endif()
+ 
+         if (NOT CROSS_COMPILE_ARM)

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit toolchain-funcs
 MY_PN="rRootage"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Abstract shooter - defeat auto-created huge battleships"
-HOMEPAGE="http://www.asahi-net.or.jp/~cs8k-cyu/windows/rr_e.html
-	http://rrootage.sourceforge.net/"
+HOMEPAGE="https://www.asahi-net.or.jp/~cs8k-cyu/windows/rr_e.html
+	https://rrootage.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_PN}/src
 

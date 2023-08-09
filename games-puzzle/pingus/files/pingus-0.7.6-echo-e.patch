@@ -1,5 +1,5 @@
 # Work around Gentoo's crippled dash
-
+# Also add "$@" to accept options
 --- pingus-0.7.6/Makefile
 +++ pingus-0.7.6/Makefile
 @@ -39,7 +39,7 @@
@@ -7,7 +7,7 @@
  
  	install -D build/pingus "$(DESTDIR)$(BINDIR)/pingus.bin"
 -	echo -e "#!/bin/sh\nexec \"$(BINDIR)/pingus.bin\" --datadir \"$(DATADIR)\"" > "$(DESTDIR)$(BINDIR)/pingus"
-+	printf '%s\n%s' "#!/bin/sh" "exec \"$(BINDIR)/pingus.bin\" --datadir \"$(DATADIR)\"" > "$(DESTDIR)$(BINDIR)/pingus"
++	printf '%s\n%s' "#!/bin/sh" "exec \"$(BINDIR)/pingus.bin\" --datadir \"$(DATADIR)\" \"\$$@\"" > "$(DESTDIR)$(BINDIR)/pingus"
  	chmod 755 "$(DESTDIR)$(BINDIR)/pingus"
  
  install-data:

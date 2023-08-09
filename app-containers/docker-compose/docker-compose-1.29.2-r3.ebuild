@@ -14,11 +14,11 @@ SRC_URI="https://github.com/docker/compose/archive/${MY_PV}.tar.gz -> ${P}.gh.ta
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 RDEPEND="
 	>=dev-python/distro-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/docker-py-5[${PYTHON_USEDEP}]
+	>=dev-python/docker-5[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
 	>=dev-python/docopt-0.6.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.13.0[${PYTHON_USEDEP}]

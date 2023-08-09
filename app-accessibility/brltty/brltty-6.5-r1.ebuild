@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 FINDLIB_USE="ocaml"
 JAVA_PKG_WANT_SOURCE="1.8"
 JAVA_PKG_WANT_TARGET="1.8"
@@ -75,6 +75,7 @@ HTML_DOCS=( "${S}"/Documents/Manual-BrlAPI/. )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.4-respect-AR.patch
+	"${FILESDIR}"/${PN}-6.5-gettext-0.22.patch
 )
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools
 MY_PV="${PV/_/-}"
 
 DESCRIPTION="file integrity verification program"
-HOMEPAGE="http://integrit.sourceforge.net/"
+HOMEPAGE="https://integrit.sourceforge.net/"
 SRC_URI="https://github.com/integrit/integrit/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

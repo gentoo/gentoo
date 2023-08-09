@@ -1,0 +1,32 @@
+--- a/Makefile
++++ b/Makefile
+@@ -698,16 +698,16 @@
+ 	@ln -sf $(SHARED_LIB_NAME_SO) $@
+ 
+ $(INCLUDE_PATH)/oidc-agent/%.h: $(SRCDIR)/api/%.h $(INCLUDE_PATH)/oidc-agent
+-	@install -p $< $@
++	@install -p -m 644 $< $@
+ 
+ $(INCLUDE_PATH)/oidc-agent/ipc_values.h: $(SRCDIR)/defines/ipc_values.h $(INCLUDE_PATH)/oidc-agent
+-	@install -p $< $@
++	@install -p -m 644 $< $@
+ 
+ $(INCLUDE_PATH)/oidc-agent/oidc_error.h: $(SRCDIR)/utils/oidc_error.h $(INCLUDE_PATH)/oidc-agent
+-	@install -p $< $@
++	@install -p -m 644 $< $@
+ 
+ $(LIBDEV_PATH)/liboidc-agent.a: $(APILIB)/liboidc-agent.a $(LIBDEV_PATH)
+-	@install -p $< $@
++	@install -p -m 644 $< $@
+ 
+ endif
+ 
+@@ -715,7 +715,7 @@
+ 
+ ## scheme handler
+ $(DESKTOP_APPLICATION_PATH)/oidc-gen.desktop: $(CONFDIR)/scheme_handler/oidc-gen.desktop
+-	@install -p -D $< $@
++	@install -p -m 644 -D $< $@
+ 	@echo "Exec=x-terminal-emulator -e bash -c \"$(BIN_AFTER_INST_PATH)/bin/$(GEN) --codeExchange=%u; exec bash\"" >> $@
+ 
+ ## Xsession

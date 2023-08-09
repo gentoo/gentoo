@@ -10,6 +10,7 @@
 		<flag name="discid">Enable reading the ID of the inserted CD</flag>
 		<flag name="elogind">Enable MPRIS support via <pkg>sys-auth/elogind</pkg></flag>
 		<flag name="pidgin">Install support script for <pkg>net-im/pidgin</pkg></flag>
+		<flag name="sndio">Add support for <pkg>media-sound/sndio</pkg></flag>
 		<flag name="systemd">Enable MPRIS support via <pkg>sys-apps/systemd</pkg></flag>
 		<flag name="tremor">Use libivorbis from <pkg>media-libs/tremor</pkg> instead of <pkg>media-libs/libvorbis</pkg></flag>
 	</use>

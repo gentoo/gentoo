@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit meson
 
-KEYWORDS="~amd64 ~arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~m68k ~ppc ppc64 ~riscv x86"
 MY_P="${PN}-v${PV}"
 SRC_URI="https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A TCP-IP emulator used to provide virtual networking services"
@@ -13,11 +13,14 @@ HOMEPAGE="https://gitlab.freedesktop.org/slirp/libslirp"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="static-libs"
+IUSE="static-libs valgrind"
 
 RDEPEND="dev-libs/glib:="
-
-DEPEND="${RDEPEND}"
+# Valgrind usage is automagic but it's not so bad given it's a header-only dep.
+DEPEND="
+	${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+"
 
 S=${WORKDIR}/${MY_P}
 

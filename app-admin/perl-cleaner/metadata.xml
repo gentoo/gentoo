@@ -11,4 +11,7 @@
 			and <pkg>app-portage/portage-utils</pkg>.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">gentoo-perl/perl-cleaner</remote-id>
+	</upstream>
 </pkgmetadata>

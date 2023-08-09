@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -24,9 +24,9 @@ KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend "
-	|| ( dev-ruby/activesupport:6.1 dev-ruby/activesupport:6.0 )
-	|| ( dev-ruby/actionpack:6.1 dev-ruby/actionpack:6.0 )
-	|| ( dev-ruby/railties:6.1 dev-ruby/railties:6.0 )
+	|| ( dev-ruby/activesupport:6.1 )
+	|| ( dev-ruby/actionpack:6.1 )
+	|| ( dev-ruby/railties:6.1 )
 	>=dev-ruby/rspec-3.10:3"
 
 # Depend on the package being already installed for tests, because

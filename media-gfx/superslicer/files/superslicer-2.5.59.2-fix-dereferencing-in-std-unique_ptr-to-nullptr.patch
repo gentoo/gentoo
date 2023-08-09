@@ -1,0 +1,82 @@
+diff --git a/src/libslic3r/GCode.cpp b/src/libslic3r/GCode.cpp
+index 68ec2ce..cd828a6 100644
+--- a/src/libslic3r/GCode.cpp
++++ b/src/libslic3r/GCode.cpp
+@@ -2081,31 +2081,30 @@ void GCode::process_layers(
+             }
+         });
+     const auto spiral_vase = tbb::make_filter<LayerResult, LayerResult>(slic3r_tbb_filtermode::serial_in_order,
+-        [&spiral_vase = *this->m_spiral_vase](LayerResult in) -> LayerResult {
++        [spiral_vase = this->m_spiral_vase.get()](LayerResult in) -> LayerResult {
+             if (in.nop_layer_result)
+                 return in;
+ 
+             CNumericLocalesSetter locales_setter;
+-            spiral_vase.enable(in.spiral_vase_enable);
+-            return LayerResult{ spiral_vase.process_layer(std::move(in.gcode)), in.layer_id, in.spiral_vase_enable, in.cooling_buffer_flush };
++            spiral_vase->enable(in.spiral_vase_enable);
++            return { spiral_vase->process_layer(std::move(in.gcode)), in.layer_id, in.spiral_vase_enable, in.cooling_buffer_flush};
+         });
+     const auto pressure_equalizer = tbb::make_filter<LayerResult, LayerResult>(slic3r_tbb_filtermode::serial_in_order,
+-        [&pressure_equalizer = *this->m_pressure_equalizer](LayerResult in) -> LayerResult {
+-            return pressure_equalizer.process_layer(std::move(in));
++        [pressure_equalizer = this->m_pressure_equalizer.get()](LayerResult in) -> LayerResult {
++             return pressure_equalizer->process_layer(std::move(in));
+         });
+     const auto cooling = tbb::make_filter<LayerResult, std::string>(slic3r_tbb_filtermode::serial_in_order,
+-        [&cooling_buffer = *this->m_cooling_buffer](LayerResult in) -> std::string {
++        [cooling_buffer = this->m_cooling_buffer.get()](LayerResult in)->std::string {
+              if (in.nop_layer_result)
+                 return in.gcode;
+ 
+             CNumericLocalesSetter locales_setter;
+-            return cooling_buffer.process_layer(std::move(in.gcode), in.layer_id, in.cooling_buffer_flush);
++            return cooling_buffer->process_layer(std::move(in.gcode), in.layer_id, in.cooling_buffer_flush);
+         });
+     const auto find_replace = tbb::make_filter<std::string, std::string>(slic3r_tbb_filtermode::serial_in_order,
+-        [&self = *this->m_find_replace](std::string s) -> std::string {
+-            CNumericLocalesSetter locales_setter;
+-            return self.process_layer(std::move(s));
+-        });
++        [find_replace = this->m_find_replace.get()](std::string s) -> std::string {
++            return find_replace->process_layer(std::move(s));
++});
+     const auto output = tbb::make_filter<std::string, void>(slic3r_tbb_filtermode::serial_in_order,
+         [&output_stream](std::string s) {
+             CNumericLocalesSetter locales_setter;
+@@ -2183,25 +2182,26 @@ void GCode::process_layers(
+             }
+         });
+     const auto spiral_vase = tbb::make_filter<LayerResult, LayerResult>(slic3r_tbb_filtermode::serial_in_order,
+-        [&spiral_vase = *this->m_spiral_vase](LayerResult in)->LayerResult {
++       [spiral_vase = this->m_spiral_vase.get()](LayerResult in) -> LayerResult {
+             if (in.nop_layer_result)
+                 return in;
+-        spiral_vase.enable(in.spiral_vase_enable);
+-        return { spiral_vase.process_layer(std::move(in.gcode)), in.layer_id, in.spiral_vase_enable, in.cooling_buffer_flush };
++            spiral_vase->enable(in.spiral_vase_enable);
++            return { spiral_vase->process_layer(std::move(in.gcode)), in.layer_id, in.spiral_vase_enable, in.cooling_buffer_flush};
+     });
+     const auto pressure_equalizer = tbb::make_filter<LayerResult, LayerResult>(slic3r_tbb_filtermode::serial_in_order,
+-        [&pressure_equalizer = *this->m_pressure_equalizer](LayerResult in) -> LayerResult {
+-             return pressure_equalizer.process_layer(std::move(in));
++        [pressure_equalizer = this->m_pressure_equalizer.get()](LayerResult in) -> LayerResult {
++            return pressure_equalizer->process_layer(std::move(in));
+         });
+     const auto cooling = tbb::make_filter<LayerResult, std::string>(slic3r_tbb_filtermode::serial_in_order,
+-        [&cooling_buffer = *this->m_cooling_buffer](LayerResult in)->std::string {
++        [cooling_buffer = this->m_cooling_buffer.get()](LayerResult in) -> std::string {
+             if (in.nop_layer_result)
+                 return in.gcode;
+-            return cooling_buffer.process_layer(std::move(in.gcode), in.layer_id, in.cooling_buffer_flush);
++             return cooling_buffer->process_layer(std::move(in.gcode), in.layer_id, in.cooling_buffer_flush);
++
+         });
+     const auto find_replace = tbb::make_filter<std::string, std::string>(slic3r_tbb_filtermode::serial_in_order,
+-        [&self = *this->m_find_replace](std::string s) -> std::string {
+-            return self.process_layer(std::move(s));
++        [find_replace = this->m_find_replace.get()](std::string s) -> std::string {
++            return find_replace->process_layer(std::move(s));
+         });
+     const auto output = tbb::make_filter<std::string, void>(slic3r_tbb_filtermode::serial_in_order,
+         [&output_stream](std::string s) { 

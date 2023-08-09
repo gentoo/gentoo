@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 optfeature pypi
 
@@ -34,10 +34,25 @@ DEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# needs network
-	tests/test_pyquery.py::TestWebScrappingEncoding::test_get
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# needs network
+		tests/test_pyquery.py::TestWebScrappingEncoding::test_get
+		# known breakage, can't do much about it unless we force old
+		# libxml2 for everyone, sigh
+		# https://github.com/gawel/pyquery/issues/248
+		tests/test_pyquery.py::TestXMLNamespace::test_selector_html
+	)
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			# doctest failing because of changed repr()
+			# https://github.com/gawel/pyquery/issues/249
+			pyquery/pyquery.py::pyquery.pyquery.PyQuery.serialize_dict
+		)
+	fi
+
+	epytest
+}
 
 pkg_postinst() {
 	optfeature "Support for BeautifulSoup3 as a parser backend" dev-python/beautifulsoup4

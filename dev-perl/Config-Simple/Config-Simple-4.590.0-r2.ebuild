@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Simple configuration file class"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"

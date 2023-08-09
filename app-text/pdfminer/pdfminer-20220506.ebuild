@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
-RDEPEND=">=dev-python/charset_normalizer-2.0.0[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/charset-normalizer-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-36.0.0[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest

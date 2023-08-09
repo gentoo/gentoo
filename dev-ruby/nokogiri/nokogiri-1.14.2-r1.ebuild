@@ -18,17 +18,17 @@ HOMEPAGE="https://nokogiri.org/"
 LICENSE="MIT"
 SRC_URI="https://github.com/sparklemotion/nokogiri/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos"
 SLOT="0"
 IUSE=""
 
 RDEPEND="${RDEPEND}
-	>=dev-libs/libxml2-2.10.3:=
+	>=dev-libs/libxml2-2.10.3:= =dev-libs/libxml2-2.10*
 	>=dev-libs/libxslt-1.1.37
 	sys-libs/zlib
 	virtual/libiconv"
 DEPEND="${DEPEND}
-	>=dev-libs/libxml2-2.10.3
+	>=dev-libs/libxml2-2.10.3 =dev-libs/libxml2-2.10*
 	>=dev-libs/libxslt-1.1.37
 	>=sys-libs/zlib-1.2.13
 	virtual/libiconv"

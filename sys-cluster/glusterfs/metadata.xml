@@ -28,4 +28,7 @@
 		<flag name="rsyslog">Install configuration snippet for <pkg>app-admin/rsyslog</pkg></flag>
 		<flag name="uring">Control whether or not glusterfs is compiled with uring support or not.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">gluster/glusterfs</remote-id>
+	</upstream>
 </pkgmetadata>

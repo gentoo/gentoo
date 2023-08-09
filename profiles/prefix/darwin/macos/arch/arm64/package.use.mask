@@ -1,5 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (2023-07-10)
+# SSP seems to cause asm/assembly errors with GCC, so disable it
+# commit a1d7199cec8a296bae885481931ddea824262d88
+# Author: Fabian Groffen <grobian@gentoo.org>
+# Date:   Sun Feb 7 20:09:02 2021 +0100
+sys-devel/gcc ssp
 
 # Sam James <sam@gentoo.org> (2021-11-09)
 # Older GMP releases have a bug in their arm64 Darwin ASM

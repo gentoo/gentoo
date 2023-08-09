@@ -6,12 +6,12 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="https://github.com/ArcticaProject/nx-libs"
-
 SRC_URI="https://github.com/ArcticaProject/nx-libs/archive/${PV}.tar.gz -> nx-libs-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86"
+IUSE="selinux"
 
 RDEPEND="dev-libs/libxml2
 	media-libs/libjpeg-turbo:*
@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig
 	x11-misc/gccmakedep
 	x11-misc/imake"
+
+RDEPEND+=" selinux? ( sec-policy/selinux-nx )"
 
 S="${WORKDIR}/nx-libs-${PV}"
 

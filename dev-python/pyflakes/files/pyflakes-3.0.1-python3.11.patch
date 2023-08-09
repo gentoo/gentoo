@@ -1,0 +1,38 @@
+https://github.com/PyCQA/pyflakes/commit/836631f2f73d45baa4021453d89fc9fd6f52be58
+https://bugs.gentoo.org/909554
+
+From 836631f2f73d45baa4021453d89fc9fd6f52be58 Mon Sep 17 00:00:00 2001
+From: Anthony Sottile <asottile@umich.edu>
+Date: Mon, 12 Jun 2023 21:00:45 -0400
+Subject: [PATCH] fix error reporter and testsuite in 3.11.4+ (#775)
+
+--- a/pyflakes/reporter.py
++++ b/pyflakes/reporter.py
+@@ -56,8 +56,9 @@ def syntaxError(self, filename, msg, lineno, offset, text):
+         else:
+             line = text.splitlines()[-1]
+ 
++        # lineno might be None if the error was during tokenization
+         # lineno might be 0 if the error came from stdin
+-        lineno = max(lineno, 1)
++        lineno = max(lineno or 0, 1)
+ 
+         if offset is not None:
+             # some versions of python emit an offset of -1 for certain encoding errors
+--- a/pyflakes/test/test_api.py
++++ b/pyflakes/test/test_api.py
+@@ -621,8 +621,12 @@ def test_misencodedFileUTF16(self):
+ x = "%s"
+ """ % SNOWMAN).encode('utf-16')
+         with self.makeTempFile(source) as sourcePath:
+-            self.assertHasErrors(
+-                sourcePath, [f"{sourcePath}: problem decoding source\n"])
++            if sys.version_info < (3, 11, 4):
++                expected = f"{sourcePath}: problem decoding source\n"
++            else:
++                expected = f"{sourcePath}:1: source code string cannot contain null bytes\n"  # noqa: E501
++
++            self.assertHasErrors(sourcePath, [expected])
+ 
+     def test_checkRecursive(self):
+         """

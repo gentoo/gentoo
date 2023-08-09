@@ -10,7 +10,7 @@
 			<email>mgorny@gentoo.org</email>
 			<name>Michał Górny</name>
 		</maintainer>
-		<bugs-to>https://github.com/mgorny/libh2oxx/issues/</bugs-to>
-		<remote-id type="github">mgorny/libh2oxx</remote-id>
+		<bugs-to>https://github.com/projg2/libh2oxx/issues/</bugs-to>
+		<remote-id type="github">projg2/libh2oxx</remote-id>
 	</upstream>
 </pkgmetadata>

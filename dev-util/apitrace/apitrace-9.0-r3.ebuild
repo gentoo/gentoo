@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit cmake-multilib multilib python-single-r1
 
 DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-disable-multiarch.patch
 	"${FILESDIR}"/${P}-brotli-unbundle.patch
 	"${FILESDIR}"/${P}-libc-dlopen-glibc-2.34.patch
+	"${FILESDIR}"/${P}-pkgconfig-waffle.patch
 )
 
 src_prepare() {

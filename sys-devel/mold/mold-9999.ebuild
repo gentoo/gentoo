@@ -12,12 +12,12 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/rui314/mold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
-# mold (AGPL-3)
+# mold (MIT)
 #  - xxhash (BSD-2)
-LICENSE="AGPL-3 BSD-2"
+LICENSE="MIT BSD-2"
 SLOT="0"
 
 RDEPEND="

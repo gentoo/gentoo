@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.0.0-fix-atomic.patch"
 	"${FILESDIR}/${PN}-10.0.1-fix-linking-of-vdb_tool-with-OpenEXR.patch"
 	"${FILESDIR}/${PN}-10.0.1-drop-failing-tests.patch"
+	"${FILESDIR}/${PN}-10.0.1-log4cplus-version.patch"
 )
 
 pkg_setup() {

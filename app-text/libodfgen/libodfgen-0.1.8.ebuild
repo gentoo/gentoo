@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit edo
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/libwpd/libodfgen"
@@ -16,7 +18,8 @@ HOMEPAGE="http://libwpd.sourceforge.net/"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"
-IUSE="doc"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/librevenge
@@ -36,7 +39,17 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-static \
-		$(use_with doc docs)
+		$(use_with doc docs) \
+		$(use_enable test)
+}
+
+src_test() {
+	cd test || die
+
+	# TODO: send patch upstream to have 'make check' run these
+	while read -r test_name ; do
+		edo "${test_name}"
+	done < <(find . -maxdepth 1  -type f -executable || die)
 }
 
 src_install() {

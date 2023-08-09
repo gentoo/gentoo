@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Method of four russian for inversion (M4RI)"
-HOMEPAGE="https://bitbucket.org/malb/m4ri"
+HOMEPAGE="https://github.com/malb/m4ri"
 SRC_URI="https://bitbucket.org/malb/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug openmp cpu_flags_x86_sse2 png static-libs"
 
 BDEPEND="virtual/pkgconfig"

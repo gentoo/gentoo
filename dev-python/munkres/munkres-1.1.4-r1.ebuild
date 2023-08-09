@@ -4,13 +4,21 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
+MY_P=munkres-release-${PV}
 DESCRIPTION="Module implementing munkres algorithm for the Assignment Problem"
-HOMEPAGE="https://pypi.org/project/munkres/ https://github.com/bmc/munkres"
-SRC_URI="https://github.com/bmc/munkres/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-release-${PV}"
+HOMEPAGE="
+	https://github.com/bmc/munkres/
+	https://pypi.org/project/munkres/
+"
+SRC_URI="
+	https://github.com/bmc/munkres/archive/release-${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"

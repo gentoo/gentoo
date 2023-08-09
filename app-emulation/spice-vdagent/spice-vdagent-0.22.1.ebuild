@@ -67,3 +67,7 @@ pkg_postinst() {
 	udev_reload
 	tmpfiles_process spice-vdagentd.conf
 }
+
+pkg_postrm() {
+	udev_reload
+}

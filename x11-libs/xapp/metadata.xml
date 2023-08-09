@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">linuxmint/xapp</remote-id>
 	</upstream>
+	<use>
+		<flag name="mate">Install status applet for <pkg>mate-base/mate</pkg></flag>
+	</use>
 </pkgmetadata>

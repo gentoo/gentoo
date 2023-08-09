@@ -16,8 +16,8 @@ PHP_EXT_SKIP_PHPIZE="yes"
 inherit lua php-ext-source-r3 python-single-r1 autotools
 
 DESCRIPTION="Language bindings for Redland"
-HOMEPAGE="http://librdf.org/bindings/"
-SRC_URI="http://download.librdf.org/source/${P}.tar.gz"
+HOMEPAGE="https://librdf.org/bindings/"
+SRC_URI="https://download.librdf.org/source/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"

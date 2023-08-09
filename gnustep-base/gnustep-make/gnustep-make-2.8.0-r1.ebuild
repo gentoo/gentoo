@@ -1,16 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit gnustep-base prefix toolchain-funcs
 
 DESCRIPTION="GNUstep Makefile Package"
-HOMEPAGE="http://www.gnustep.org"
+HOMEPAGE="https://gnustep.github.io"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="libobjc2 native-exceptions"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}

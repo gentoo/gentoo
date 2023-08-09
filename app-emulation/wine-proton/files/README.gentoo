@@ -7,7 +7,7 @@ To keep a low maintenance cost, these changes are not reverted in Gentoo
 with the exception of re-enabling winemenubuilder for desktop entries.
 
 Also, given this Wine variant is oriented toward running games, some
-normally unrelated features (e.g. ldap) may not have real upstream
+normally unrelated features (e.g. cups) may not have real upstream
 (Valve) support. Because of this, some are left always disabled.
 
 If needed, use other variants for the more expected Wine behavior.
@@ -32,6 +32,7 @@ To (optionally) setup some notable defaults of Proton:
 - WINEPREFIX=/path/to setup_vkd3d_proton.sh install --symlink
 .    Like above, but for d3d12. Wine also supports vkd3d as-is but this
 .    is the modified fork used by Proton (may or may not be better).
+.    Intended to work with dxvk's dxgi.dll so, if used, install both.
 .   >Requires app-emulation/vkd3d-proton
 
 For some applications it may be better to disable these or do other

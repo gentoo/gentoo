@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/importlib_metadata-4.12[${PYTHON_USEDEP}]
+	>=dev-python/importlib-metadata-4.12[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	>=dev-python/pydiffx-1.1[${PYTHON_USEDEP}]
 	=dev-python/pydiffx-1.1*[${PYTHON_USEDEP}]

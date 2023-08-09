@@ -1,0 +1,38 @@
+From 67bdba4e63cad218c02dbb3171ddd53353cc0b48 Mon Sep 17 00:00:00 2001
+From: Javier Jimenez <javiyu7@gmail.com>
+Date: Thu, 5 Jan 2023 21:34:37 +0100
+Subject: [PATCH] Backports ruby 3.2 compatibility fixes for rails 6.1
+
+---
+ actionmailer/lib/action_mailer/base.rb            |  2 +-
+ actionmailer/lib/action_mailer/rescuable.rb       | 12 ++++++++----
+ actionpack/lib/abstract_controller/base.rb        | 10 +++++++---
+ actionpack/lib/abstract_controller/callbacks.rb   |  6 +++++-
+ actionview/lib/action_view/rendering.rb           |  6 +++++-
+ activemodel/lib/active_model/attribute_methods.rb |  2 +-
+ activerecord/lib/active_record/relation.rb        |  8 ++++++--
+ 7 files changed, 33 insertions(+), 13 deletions(-)
+
+diff --git a/activerecord/lib/active_record/relation.rb b/activerecord/lib/active_record/relation.rb
+index 6ea5876eda1b8..9c0efb800efd0 100644
+--- a/lib/active_record/relation.rb
++++ b/lib/active_record/relation.rb
+@@ -406,12 +406,16 @@ def scoping
+       already_in_scope? ? yield : _scoping(self) { yield }
+     end
+ 
+-    def _exec_scope(*args, &block) # :nodoc:
++    all_args = RUBY_VERSION < "2.7" ? "*args, &block" : "..."
++
++    class_eval <<-RUBY
++    def _exec_scope(#{all_args}) # :nodoc:
+       @delegate_to_klass = true
+-      _scoping(nil) { instance_exec(*args, &block) || self }
++      _scoping(nil) { instance_exec(#{all_args}) || self }
+     ensure
+       @delegate_to_klass = false
+     end
++    RUBY
+ 
+     # Updates all records in the current relation with details given. This method constructs a single SQL UPDATE
+     # statement and sends it straight to the database. It does not instantiate the involved models and it does not

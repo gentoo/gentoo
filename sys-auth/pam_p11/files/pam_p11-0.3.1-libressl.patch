@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/903001
+https://github.com/OpenSC/pam_p11/pull/26
+https://github.com/OpenSC/pam_p11/commit/cb2f0c318c94e30addfce3b432ed91496a43e411
+
+From b307045a93d042ac9e3871e35f8495e8bb201574 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 11 Apr 2023 07:29:12 -0700
+Subject: [PATCH] match_openssh: Fix the build for LibreSSL >= 3.0.0
+
+Newer LibreSSL versions no longer need the older OpenSSL APIs.
+---
+ src/match_openssh.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/match_openssh.c b/src/match_openssh.c
+index 89cbd73..fb59308 100644
+--- a/src/match_openssh.c
++++ b/src/match_openssh.c
+@@ -22,7 +22,8 @@
+ 
+ #define OPENSSH_LINE_MAX 16384	/* from openssh SSH_MAX_PUBKEY_BYTES */
+ 
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined (LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || \
++    (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x3000000L)
+ void RSA_get0_key(const RSA *r,
+                  const BIGNUM **n, const BIGNUM **e, const BIGNUM **d)
+ {

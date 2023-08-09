@@ -1,0 +1,99 @@
+From 24092946ed95b4ddf7e7f4c0f5bd9000e45fecad Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 19 Apr 2023 21:16:59 +0200
+Subject: [PATCH] Make KAccounts optional
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                    | 2 +-
+ src/CMakeLists.txt                | 1 +
+ src/contents/ui/main.qml          | 4 +++-
+ src/controller.cpp                | 9 +++++++++
+ src/controller.h                  | 1 +
+ src/kuserfeedbacksettings.h.cmake | 1 +
+ 6 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 772d79e..86db439 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,7 @@ ecm_setup_version(${PROJECT_VERSION}
+ find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Core Gui Network Qml QuickControls2 Svg)
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 CoreAddons ConfigWidgets DBusAddons Declarative I18n KIO NewStuff Notifications Plasma Service WindowSystem)
+ find_package(KUserFeedback)
+-find_package(KAccounts REQUIRED)
++find_package(KAccounts)
+ 
+ ecm_set_disabled_deprecation_versions(QT 5.15.2
+     KF 5.101
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4eab33d..e0cc179 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,6 +3,7 @@
+ # SPDX-FileCopyrightText: 2022 Nate Graham <nate@kde.org>
+ 
+ set(HAVE_KUSERFEEDBACK ${KUserFeedback_FOUND})
++set(HAVE_KACCOUNTS ${KAccounts_FOUND})
+ configure_file(kuserfeedbacksettings.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/kuserfeedbacksettings.h)
+ 
+ add_executable(plasma-welcome main.cpp controller.cpp resources.qrc module.cpp)
+diff --git a/src/contents/ui/main.qml b/src/contents/ui/main.qml
+index 380c074..86da39b 100644
+--- a/src/contents/ui/main.qml
++++ b/src/contents/ui/main.qml
+@@ -124,7 +124,9 @@ Kirigami.ApplicationWindow {
+                 pageStack.push(kcm_feedback);
+             }
+ 
+-            pageStack.push(kcm_kaccounts);
++            if (Controller.kAccountsAvailable()) {
++                pageStack.push(kcm_kaccounts);
++            }
+ 
+             // Append any distro-specific pages that were found
+             let distroPages = Controller.distroPages()
+diff --git a/src/controller.cpp b/src/controller.cpp
+index 7586c23..de8fa85 100644
+--- a/src/controller.cpp
++++ b/src/controller.cpp
+@@ -50,6 +50,15 @@ bool Controller::networkAlreadyConnected()
+     return false;
+ }
+ 
++bool Controller::kAccountsAvailable()
++{
++#if HAVE_KACCOUNTS
++    return true;
++#else
++    return false;
++#endif
++}
++
+ bool Controller::userFeedbackAvailable()
+ {
+ #if HAVE_KUSERFEEDBACK
+diff --git a/src/controller.h b/src/controller.h
+index 20ba44c..97a9d1c 100644
+--- a/src/controller.h
++++ b/src/controller.h
+@@ -15,6 +15,7 @@ public:
+     Q_INVOKABLE static void runCommand(const QString &command, const QString &desktopFilename);
+     Q_INVOKABLE bool networkAlreadyConnected();
+     Q_INVOKABLE bool userFeedbackAvailable();
++    Q_INVOKABLE bool kAccountsAvailable();
+     Q_INVOKABLE QStringList distroPages();
+ 
+     Q_PROPERTY(QString newPlasmaVersion MEMBER m_newPlasmaVersion NOTIFY newPlasmaVersionChanged)
+diff --git a/src/kuserfeedbacksettings.h.cmake b/src/kuserfeedbacksettings.h.cmake
+index f30924f..a76aedf 100644
+--- a/src/kuserfeedbacksettings.h.cmake
++++ b/src/kuserfeedbacksettings.h.cmake
+@@ -5,3 +5,4 @@
+  */
+ 
+ #cmakedefine01 HAVE_KUSERFEEDBACK
++#cmakedefine01 HAVE_KACCOUNTS
+-- 
+2.40.0
+

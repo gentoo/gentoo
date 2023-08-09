@@ -32,7 +32,3 @@ battery
 
 # Unmask the flag for Playstation 3
 -ps3
-
-# Michał Górny <mgorny@gentoo.org> (2013-05-04)
-# Unmask systemd since it is keyworded here.
--systemd

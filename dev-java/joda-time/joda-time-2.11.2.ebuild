@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/JodaOrg/joda-time/archive/v2.11..tar.gz --slot 0 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris" --ebuild joda-time-2.11..ebuild
+# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/JodaOrg/joda-time/archive/v2.11..tar.gz --slot 0 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos" --ebuild joda-time-2.11..ebuild
 
 EAPI=8
 
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/JodaOrg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 # Common dependencies
 # POM: pom.xml

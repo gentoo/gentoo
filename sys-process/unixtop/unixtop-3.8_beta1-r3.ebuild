@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="top for UNIX systems"
-HOMEPAGE="http://unixtop.sourceforge.net/"
+HOMEPAGE="https://unixtop.sourceforge.net/"
 SRC_URI="mirror://sourceforge/unixtop/top-${PV/_/}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64-linux ~x64-solaris"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses"

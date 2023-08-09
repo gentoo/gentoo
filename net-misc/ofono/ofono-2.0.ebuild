@@ -6,7 +6,7 @@ EAPI=8
 inherit systemd
 
 DESCRIPTION="Open Source mobile telephony (GSM/UMTS) daemon"
-HOMEPAGE="https://git.kernel.org/pub/scm/network/ofono/ofono"
+HOMEPAGE="https://git.kernel.org/pub/scm/network/ofono/ofono.git"
 SRC_URI="https://mirrors.edge.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"

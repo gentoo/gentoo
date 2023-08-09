@@ -1,0 +1,86 @@
+https://git.savannah.gnu.org/cgit/coreutils.git/commit/?id=c6b1fe43474b48a6bf5793e11cc1d0d6e895fdf4
+
+From c6b1fe43474b48a6bf5793e11cc1d0d6e895fdf4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?P=C3=A1draig=20Brady?= <P@draigBrady.com>
+Date: Wed, 3 May 2023 17:01:37 +0100
+Subject: cp: -p --parents: fix failure to preserve permissions for absolute
+ paths
+
+* src/cp.c (re_protect): Ensure copy_acl() is passed an absolute path.
+* tests/cp/cp-parents.sh: Add a test case.
+* NEWS: Mention the bug.
+Fixes https://bugs.gnu.org/63245
+--- a/src/cp.c
++++ b/src/cp.c
+@@ -296,15 +296,19 @@ regular file.\n\
+    when done.  */
+ 
+ static bool
+-re_protect (char const *const_dst_name, int dst_dirfd, char const *dst_relname,
++re_protect (char const *const_dst_name, int dst_dirfd, char const *dst_fullname,
+             struct dir_attr *attr_list, const struct cp_options *x)
+ {
+   struct dir_attr *p;
+   char *dst_name;		/* A copy of CONST_DST_NAME we can change. */
+-  char *src_name;		/* The source name in 'dst_name'. */
++  char *src_name;		/* The relative source name in 'dst_name'. */
++  char *full_src_name;		/* The full source name in 'dst_name'. */
+ 
+   ASSIGN_STRDUPA (dst_name, const_dst_name);
+-  src_name = dst_name + (dst_relname - const_dst_name);
++  full_src_name = dst_name + (dst_fullname - const_dst_name);
++  src_name = full_src_name;
++  while (*src_name == '/')
++    src_name++;
+ 
+   for (p = attr_list; p; p = p->next)
+     {
+@@ -347,7 +351,7 @@ re_protect (char const *const_dst_name, int dst_dirfd, char const *dst_relname,
+ 
+       if (x->preserve_mode)
+         {
+-          if (copy_acl (src_name, -1, dst_name, -1, p->st.st_mode) != 0)
++          if (copy_acl (full_src_name, -1, dst_name, -1, p->st.st_mode) != 0)
+             return false;
+         }
+       else if (p->restore_mode)
+@@ -687,6 +691,7 @@ do_copy (int n_files, char **file, char const *target_directory,
+           bool parent_exists = true;  /* True if dir_name (dst_name) exists. */
+           struct dir_attr *attr_list;
+           char *arg_in_concat = NULL;
++          char *full_arg_in_concat = NULL;
+           char *arg = file[i];
+ 
+           /* Trailing slashes are meaningful (i.e., maybe worth preserving)
+@@ -719,6 +724,7 @@ do_copy (int n_files, char **file, char const *target_directory,
+                   (x->verbose ? "%s -> %s\n" : NULL),
+                   &attr_list, &new_dst, x));
+ 
++              full_arg_in_concat = arg_in_concat;
+               while (*arg_in_concat == '/')
+                 arg_in_concat++;
+             }
+@@ -747,7 +753,7 @@ do_copy (int n_files, char **file, char const *target_directory,
+                           new_dst, x, &copy_into_self, NULL);
+ 
+               if (parents_option)
+-                ok &= re_protect (dst_name, target_dirfd, arg_in_concat,
++                ok &= re_protect (dst_name, target_dirfd, full_arg_in_concat,
+                                   attr_list, x);
+             }
+ 
+--- a/tests/cp/cp-parents.sh
++++ b/tests/cp/cp-parents.sh
+@@ -66,4 +66,10 @@ p=$(ls -ld g/sym/b/c|cut -b-10); case $p in drwxr-xr-x);; *) fail=1;; esac
+ cp --parents --no-preserve=mode np/b/file np_dest/ || fail=1
+ p=$(ls -ld np_dest/np|cut -b-10); case $p in drwxr-xr-x);; *) fail=1;; esac
+ 
++# coreutils 9.1-9.3 inclusive would fail to copy acls for absolute dirs
++mkdir dest || framework_failure_
++if test -f /bin/ls; then
++  cp -t dest --parents -p /bin/ls || fail=1
++fi
++
+ Exit $fail
+-- 
+cgit v1.1

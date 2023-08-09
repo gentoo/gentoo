@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ClementJ18/moddb/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 # Connects to moddb.com
 PROPERTIES="test_network"

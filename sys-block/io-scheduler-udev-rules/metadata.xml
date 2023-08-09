@@ -4,4 +4,8 @@
 	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">pachoramos/io-scheduler-udev-rules</remote-id>
+		<remote-id type="github">openSUSE/udev-extra-rules</remote-id>
+	</upstream>
 </pkgmetadata>

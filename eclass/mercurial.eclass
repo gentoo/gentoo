@@ -3,7 +3,7 @@
 
 # @ECLASS: mercurial.eclass
 # @MAINTAINER:
-# No maintainer <maintainer-needed@gentoo.org.
+# No maintainer <maintainer-needed@gentoo.org>
 # @AUTHOR:
 # Next gen author: Krzysztof Pawlik <nelchael@gentoo.org>
 # Original author: Aron Griffis <agriffis@gentoo.org>
@@ -24,14 +24,6 @@ if [[ -z ${_MERCURIAL_ECLASS} ]] ; then
 _MERCURIAL_ECLASS=1
 
 PROPERTIES+=" live"
-
-case ${EAPI:-0} in
-	7)
-		# For compatibiilty only (indirect inherits).
-		# Eclass itself doesn't need it.
-		inherit eutils
-		;;
-esac
 
 BDEPEND="dev-vcs/mercurial"
 

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/xrootd/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~amd64-linux"
+KEYWORDS="amd64 ~amd64-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

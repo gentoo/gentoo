@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,9 +12,7 @@ SRC_URI=""
 LICENSE="GPL-2" # actually, we don't know, the wrapper is
 SLOT="0"
 
-AIX_V='aix-2'
-
-KEYWORDS="~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
 IUSE=""
 
@@ -39,17 +37,8 @@ src_install() {
 		*-solaris*)
 			nativepath=/usr/sfw/bin
 		;;
-		*-aix*)
-			nativepath=/usr/ccs/bin
-			wrappers=("${wrappers[@]}" "ld=${FILESDIR}/${AIX_V}/ld")
-			wrappers=("${wrappers[@]}" "nm=${FILESDIR}/${AIX_V}/nm")
-			wrappers=("${wrappers[@]}" "mkexpfile=${FILESDIR}/${AIX_V}/mkexpfile")
-		;;
-		*-apple-darwin*|*-netbsd*|*-openbsd*)
+		*-apple-darwin*)
 			nativepath=/usr/bin
-		;;
-		*-interix*)
-			nativepath=/opt/gcc.3.3/bin
 		;;
 		*)
 			die "Don't know where the native linker for your platform is"

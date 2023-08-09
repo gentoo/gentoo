@@ -1,0 +1,28 @@
+From 519609d844f1e5bbf37407de8e43fa2d2be03262 Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 7 May 2023 00:03:40 +0530
+Subject: [PATCH] Fix undeclared library function strcmp
+
+Bug: https://bugs.gentoo.org/885609
+--- a/tests/fntests.c
++++ b/tests/fntests.c
+@@ -1,5 +1,6 @@
+ #include "../src/argtable2.h"
+ #include <assert.h>
++#include <string.h>
+
+ /* for memory leak debugging */
+ #ifdef DMALLOC
+--- a/tests/test_file.c
++++ b/tests/test_file.c
+@@ -21,6 +21,7 @@ USA.
+
+ #include "../src/argtable2.h"
+ #include <stdlib.h>
++#include <string.h>
+
+ /* for memory leak debugging */
+ #ifdef DMALLOC
+--
+2.40.1
+

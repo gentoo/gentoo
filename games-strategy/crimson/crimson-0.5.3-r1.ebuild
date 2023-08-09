@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit desktop
 
 DESCRIPTION="Tactical war game in the tradition of Battle Isle"
-HOMEPAGE="http://crimson.seul.org/"
-SRC_URI="http://crimson.seul.org/files/${P}.tar.bz2"
+HOMEPAGE="https://crimson.seul.org/"
+SRC_URI="https://crimson.seul.org/files/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test zlib"

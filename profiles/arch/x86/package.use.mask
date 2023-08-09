@@ -1,9 +1,33 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Guilherme Amadio <amadio@gentoo.org> (2023-06-30)
+# sys-cluster/ceph not keyworded on x86
+>=net-libs/xrootd-5.6.0 ceph
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Anna Vyalkova <cyber+gentoo@sysrq.in> (2023-05-20)
+# net-libs/libomemo-c is not keyworded for ~x86.
+net-libs/qxmpp omemo
+
+# Joonas Niilola <juippis@gentoo.org> (2023-05-16)
+# Doesn't work on x86. #878445
+net-libs/pjproject webrtc
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-12)
+# Likely untested upstream. Not worth the hassle.
+>=media-libs/mesa-23.1 opencl
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # Needs x11-drivers/nvidia-drivers which is no longer available here.
 media-tv/mythtv nvdec
+
+# Craig Andrews <candrews@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is keyworded here
+media-video/ffmpeg -libplacebo
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
@@ -151,7 +175,7 @@ net-misc/asterisk -blocks
 
 # Nils Freydank <holgersson@posteo.de> (2021-01-18)
 # Depends on media-plugins/gst-plugins-cairo, which isn't keyworded on x86.
-app-misc/pdfpc gstreamer
+app-text/pdfpc gstreamer
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
@@ -184,10 +208,6 @@ sys-block/fio -io-uring -zbc
 # Marek Szuba <marecki@gentoo.org> (2020-06-17)
 # Unmask globally-masked flashrom drivers and tools which do work on x86
 sys-apps/flashrom -atahpt -atapromise -atavia -drkaiser -gfxnvidia -internal -it8212 -nic3com -nicintel -nicintel-eeprom -nicintel-spi -nicnatsemi -nicrealtek -ogp-spi -rayer-spi -satamv -satasii -tools
-
-# Christopher Head <chead@chead.ca> (2020-06-10)
-# Requires dev-db/influxdb which is amd64-only
-dev-python/influxdb test
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on x86
@@ -273,14 +293,6 @@ net-analyzer/zmap mongo
 # Michael Palimaka <kensington@gentoo.org> (2018-10-12)
 # Unmask arch-specific USE flag available on x86
 net-analyzer/testssl -bundled-openssl
-
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
-# Unmask libheif support where media-libs/libheif is keyworded
-media-gfx/imagemagick -heif
-
-# Tomáš Mózes <hydrapolic@gmail.com> (2018-09-28)
-# Requires dev-db/mongodb which has dropped x86 support
-dev-python/pymongo test
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
@@ -371,7 +383,7 @@ app-emulation/libvirt xen
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd -gnuefi
+sys-apps/systemd -boot -gnuefi
 sys-apps/systemd-utils -boot
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
@@ -456,7 +468,3 @@ media-gfx/iscan -X
 
 # Steve Dibb <beandog@gentoo.org> (2008-09-29)
 media-video/mplayer -cpudetection
-
-# Craig Andrews <candrews@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is keyworded here
-media-video/ffmepg -libplacebo

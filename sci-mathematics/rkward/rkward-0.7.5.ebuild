@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,7 +50,7 @@ BDEPEND="sys-devel/gettext"
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "kate plugins support" "kde-apps/kate-addons:${SLOT}"
-		optfeature "prendering (or previewing) R markdown (.Rmd) files" "app-text/pandoc"
+		optfeature "prendering (or previewing) R markdown (.Rmd) files" "virtual/pandoc"
 		optfeature "managing citations while writing articles" "app-text/kbibtex"
 	fi
 	ecm_pkg_postinst

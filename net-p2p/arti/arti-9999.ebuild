@@ -23,6 +23,7 @@ else
 fi
 
 LICENSE="MIT Apache-2.0"
+LICENSE+=""
 SLOT="0"
 
 DEPEND="app-arch/xz-utils
@@ -45,14 +46,6 @@ src_compile() {
 	for crate in crates/*; do
 		pushd crates/arti || die
 		cargo_src_compile
-		popd >/dev/null || die
-	done
-}
-
-src_test() {
-	for crate in crates/*; do
-		pushd "${crate}" >/dev/null || die
-		cargo_src_test
 		popd >/dev/null || die
 	done
 }

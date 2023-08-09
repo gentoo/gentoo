@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools flag-o-matic python-single-r1 desktop
 
 DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"

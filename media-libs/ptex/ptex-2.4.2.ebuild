@@ -11,7 +11,7 @@ SRC_URI="https://github.com/wdas/ptex/archive/refs/tags/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="static-libs"
 
 RDEPEND="sys-libs/zlib"

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>henning@hennsch.de</email>
+		<name>Henning Schild</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>

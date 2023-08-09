@@ -24,9 +24,6 @@ SLOT="0/${PV%%.*}"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="+cxx17 test"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 BDEPEND="
 	${PYTHON_DEPS}
 	test? ( sys-libs/timezone-data )
@@ -36,6 +33,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20200923-arm_no_crypto.patch"
+	"${FILESDIR}/${PN}-20211102.0-r2-gcc-13.patch"
 	"${FILESDIR}/${PN}-20210324.1-glibc-2.34.patch"
 )
 

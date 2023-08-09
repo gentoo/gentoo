@@ -9,6 +9,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="dap">Build debugger for CMake with Debug Adapter Protocol support via <pkg>dev-cpp/cppdap</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:cmake_project:cmake</remote-id>
 	</upstream>

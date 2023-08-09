@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/895818
+https://github.com/mysql/mysql-server/pull/456
+
+From 2e5614c4ec50c60fbadbd57f213c1c7d6b959be9 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 12 Apr 2023 16:16:13 +0300
+Subject: [PATCH] sql/binlog/group_commit: include header for std::uint64_t
+
+GCC 13 changed default header dependencies for C++ necessitating
+including cstdint explicitly.
+--- a/sql/binlog/group_commit/bgc_ticket.h
++++ b/sql/binlog/group_commit/bgc_ticket.h
+@@ -23,6 +23,7 @@
+ #ifndef BINLOG_BCG_TICKET_H
+ #define BINLOG_BCG_TICKET_H
+ 
++#include <cstdint>
+ #include <functional>
+ #include <limits>
+ #include <memory>
+

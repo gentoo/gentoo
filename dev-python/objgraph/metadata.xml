@@ -11,6 +11,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">mgedmin/objgraph</remote-id>
     <remote-id type="pypi">objgraph</remote-id>
   </upstream>
 </pkgmetadata>

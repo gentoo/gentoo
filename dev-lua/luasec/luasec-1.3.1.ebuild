@@ -13,7 +13,7 @@ SRC_URI="https://github.com/brunoos/luasec/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-lua/luasocket-3.0_rc1_p20200328-r103[${LUA_USEDEP}]

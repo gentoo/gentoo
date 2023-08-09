@@ -138,8 +138,9 @@ waf-utils_src_install() {
 
 	export PYTHONHASHSEED=1
 
-	echo "\"${WAF_BINARY}\" --jobs=1 --destdir=\"${D}\" ${*} install"
-	"${WAF_BINARY}" --jobs=1 --destdir="${D}" "${@}" install || die "Make install failed"
+	local jobs="--jobs=$(makeopts_jobs)"
+	echo "\"${WAF_BINARY}\" ${jobs} --destdir=\"${D}\" ${*} install"
+	"${WAF_BINARY}" ${jobs} --destdir="${D}" "${@}" install || die "Make install failed"
 
 	# Manual document installation
 	einstalldocs

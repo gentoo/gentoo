@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/chess/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.9-c++17.patch

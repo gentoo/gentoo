@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_PV=${PV//./}
 DESCRIPTION="save the world from Morgoth and battle evil (or become evil ;])"
-HOMEPAGE="http://t-o-m-e.net/"
+HOMEPAGE="https://t-o-m-e.net/"
 SRC_URI="http://t-o-m-e.net/dl/src/tome-${MY_PV}-src.tar.bz2"
 S="${WORKDIR}"/tome-${MY_PV}-src/src
 

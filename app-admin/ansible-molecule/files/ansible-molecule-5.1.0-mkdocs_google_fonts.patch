@@ -1,0 +1,10 @@
+--- a/mkdocs.yml
++++ b/mkdocs.yml
+@@ -19,6 +19,7 @@
+     - navigation.indexes
+     - navigation.tracking
+     - toc.integrate
++  font: false
+   palette:
+     - media: "(prefers-color-scheme: light)"
+       primary: teal

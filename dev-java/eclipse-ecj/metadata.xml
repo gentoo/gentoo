@@ -12,6 +12,9 @@ as a batch-compiler by running the ecj-3.x script, or it can be
 used with Ant by using the -lib option to and and setting
 -Dbuild.compiler=ecj
 </longdescription>
+<upstream>
+	<remote-id type="github">eclipse-jdt/eclipse.jdt.core</remote-id>
+</upstream>
 <use>
 	<flag name="ant">Support using ecj in Ant builds via <pkg>dev-java/ant-eclipse-ecj</pkg></flag>
 </use>

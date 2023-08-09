@@ -680,7 +680,8 @@ if [[ ${ETYPE} == sources ]]; then
 			# Reflect that kernels contain firmware blobs unless otherwise
 			# stripped. Starting with version 4.14, the whole firmware
 			# tree has been dropped from the kernel.
-			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
+			kernel_is lt 4 14 &&
+				LICENSE+=" !deblob? ( linux-fw-redistributable all-rights-reserved )"
 
 			if [[ -n KV_MINOR ]]; then
 				DEBLOB_PV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
@@ -710,7 +711,7 @@ if [[ ${ETYPE} == sources ]]; then
 		elif kernel_is lt 4 14; then
 			# Deblobbing is not available, so just mark kernels older
 			# than 4.14 as tainted with non-libre materials.
-			LICENSE+=" linux-firmware"
+			LICENSE+=" linux-fw-redistributable all-rights-reserved"
 		fi
 	fi
 
@@ -890,7 +891,7 @@ install_sources() {
 		done
 	fi
 
-	mv "${WORKDIR}"/linux* "${ED}"/usr/src || die
+	cp -R "${WORKDIR}"/linux* "${ED}"/usr/src || die
 
 	if [[ -n ${UNIPATCH_DOCS} ]]; then
 		for i in ${UNIPATCH_DOCS}; do

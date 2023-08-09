@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 XORG_DRI=dri
 XORG_EAUTORECONF=yes
@@ -18,7 +18,7 @@ fi
 
 DESCRIPTION="X.Org driver for Intel cards"
 
-IUSE="debug +sna tools +udev uxa xvmc"
+IUSE="debug +sna tools +udev uxa valgrind xvmc"
 
 REQUIRED_USE="
 	|| ( sna uxa )
@@ -50,8 +50,11 @@ RDEPEND="
 		x11-libs/xcb-util
 	)
 "
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+	valgrind? ( dev-util/valgrind )
+"
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -72,6 +75,7 @@ src_configure() {
 		$(use_enable tools)
 		$(use_enable udev)
 		$(use_enable uxa)
+		$(use_enable valgrind)
 		$(use_enable xvmc)
 	)
 	xorg-3_src_configure

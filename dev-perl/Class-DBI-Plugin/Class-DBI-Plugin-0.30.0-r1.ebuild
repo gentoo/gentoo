@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Abstract base class for Class::DBI plugins"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Class-DBI-0.900.0

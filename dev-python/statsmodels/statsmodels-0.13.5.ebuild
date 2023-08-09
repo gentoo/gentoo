@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
@@ -17,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 DEPEND="
@@ -42,7 +43,7 @@ BDEPEND="
 
 distutils_enable_sphinx docs \
 	'dev-python/ipykernel' \
-	'dev-python/jupyter_client' \
+	'dev-python/jupyter-client' \
 	'dev-python/matplotlib' \
 	'dev-python/nbconvert' \
 	'dev-python/numpydoc'

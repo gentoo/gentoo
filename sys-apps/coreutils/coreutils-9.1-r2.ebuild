@@ -4,7 +4,7 @@
 EAPI=7
 
 # Try to keep an eye on Fedora's packaging: https://src.fedoraproject.org/rpms/coreutils
-# The upstream coreutils maintianers also maintain the package in Fedora and may
+# The upstream coreutils maintainers also maintain the package in Fedora and may
 # backport fixes which we want to pick up.
 
 PYTHON_COMPAT=( python3_{9..11} )
@@ -200,7 +200,7 @@ src_test() {
 
 	addwrite /dev/full
 	#export RUN_EXPENSIVE_TESTS="yes"
-	#export FETISH_GROUPS="portage wheel"
+	#export COREUTILS_GROUPS="portage wheel"
 	env PATH="${T}/mount-wrappers:${PATH}" emake -k check VERBOSE=yes
 }
 

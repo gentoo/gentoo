@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -15,7 +15,7 @@ inherit php-ext-pecl-r3
 
 USE_PHP="php7-4"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="Extended HTTP Support for PHP"
 LICENSE="BSD-2 MIT"

@@ -1,0 +1,11 @@
+[Unit]
+Description=Mails anomalies in the system logfiles to the administrator
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/logcheck
+SyslogIdentifier=logcheck
+User=logcheck
+
+[Install]
+WantedBy=multi-user.target

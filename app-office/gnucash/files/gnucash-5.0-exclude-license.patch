@@ -1,0 +1,32 @@
+diff -Naruw gnucash-5.0.orig/CMakeLists.txt gnucash-5.0/CMakeLists.txt
+--- gnucash-5.0.orig/CMakeLists.txt	2023-04-13 10:23:18.271128349 -0400
++++ gnucash-5.0/CMakeLists.txt	2023-04-13 10:25:38.531172952 -0400
+@@ -665,7 +665,6 @@
+     ChangeLog.2022
+     DOCUMENTERS
+     HACKING
+-    LICENSE
+     NEWS
+     README.dependencies
+ )
+@@ -928,20 +927,7 @@
+   )
+ endif()
+ 
+-#Link LICENSE to COPYING so that people expecting to find it,
+-#will. COPYING is normally linked by autogen.sh to the latest
+-#automake-provided version.
+-set (_CMD create_symlink)
+-if (WIN32)
+-  set(_CMD copy)
+-endif()
+ 
+-install(CODE
+-" execute_process(
+-      COMMAND ${CMAKE_COMMAND} -E ${_CMD} LICENSE COPYING
+-      WORKING_DIRECTORY ${CMAKE_INSTALL_DOCDIR}
+-  )"
+-)
+ 
+ #For windows, copy in some DLLs from Mingw
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop xdg
 
 DESCRIPTION="Updated clone of Westood Studios' Dune II"
-HOMEPAGE="http://dunelegacy.sourceforge.net"
+HOMEPAGE="https://dunelegacy.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"

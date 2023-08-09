@@ -431,6 +431,13 @@ src_install() {
 multilib_src_install() {
 	DESTDIR=${D} cmake_build install-distribution
 
+	if multilib_is_native_abi; then
+		# install clang-*-wrapper tools
+		# https://bugs.gentoo.org/904143
+		exeinto "/usr/lib/llvm/${LLVM_MAJOR}/bin"
+		doexe "${BUILD_DIR}"/bin/clang-{linker,nvlink}-wrapper
+	fi
+
 	# move headers to /usr/include for wrapping & ABI mismatch checks
 	# (also drop the version suffix from runtime headers)
 	rm -rf "${ED}"/usr/include || die

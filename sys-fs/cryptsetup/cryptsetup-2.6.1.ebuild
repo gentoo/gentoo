@@ -6,14 +6,14 @@ EAPI=8
 inherit linux-info tmpfiles
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
-HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
+HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup"
 SRC_URI="https://www.kernel.org/pub/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
 S="${WORKDIR}"/${P/_/-}
 
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 CRYPTO_BACKENDS="gcrypt kernel nettle +openssl"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Port of the Atari Missile Command game for Linux"
-HOMEPAGE="http://missile.sourceforge.net/"
+HOMEPAGE="https://missile.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"

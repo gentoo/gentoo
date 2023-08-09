@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person"><!-- for 2.x.x (Golang) -->
+	<maintainer restrict="&gt;=app-containers/docker-compose-2" type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
+		<description>Version 2.x.x (Golang)</description>
 	</maintainer>
-	<maintainer type="person"><!-- for 1.x.x (Python) -->
+	<maintainer restrict="&lt;app-containers/docker-compose-2" type="person">
 		<email>sping@gentoo.org</email>
 		<name>Sebastian Pipping</name>
+		<description>Version 1.x.x (Python)</description>
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">docker-compose</remote-id>

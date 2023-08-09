@@ -155,18 +155,26 @@ pkg_postinst() {
 	optfeature \
 		"Allows use of dash instead of default bash (on your own risk)" \
 		app-shells/dash
+	optfeature \
+		"Allows use of busybox instead of default bash (on your own risk)" \
+		sys-apps/busybox
 	optfeature "Support iSCSI" sys-block/open-iscsi
 	optfeature "Support Logical Volume Manager" sys-fs/lvm2[lvm]
 	optfeature "Support MD devices, also known as software RAID devices" \
-		sys-fs/mdadm
+		sys-fs/mdadm sys-fs/dmraid
 	optfeature "Support Device Mapper multipathing" sys-fs/multipath-tools
 	optfeature "Plymouth boot splash"  '>=sys-boot/plymouth-0.8.5-r5'
 	optfeature "Support network block devices" sys-block/nbd
 	optfeature "Support NFS" net-fs/nfs-utils net-nds/rpcbind
 	optfeature \
 		"Install ssh and scp along with config files and specified keys" \
-		net-misc/openssh
+		virtual/openssh
 	optfeature "Enable logging with rsyslog" app-admin/rsyslog
+	optfeature "Support Squashfs" sys-fs/squashfs-tools
+	optfeature "Support TPM 2.0 TSS" app-crypt/tpm2-tools
+	optfeature "Support Bluetooth (experimental)" net-wireless/bluez
+	optfeature "Support BIOS-given device names" sys-apps/biosdevname
+	optfeature "Support network NVMe" sys-apps/nvme-cli app-misc/jq
 	optfeature \
 		"Enable rngd service to help generating entropy early during boot" \
 		sys-apps/rng-tools

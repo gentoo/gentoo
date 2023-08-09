@@ -8,7 +8,7 @@ CRATES="
 
 MY_PV="${PV//_rc/-rc}"
 # https://bugs.gentoo.org/725962
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit bash-completion-r1 cargo desktop python-any-r1
 
@@ -56,7 +56,8 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="
 	dev-util/cmake
-	>=virtual/rust-1.57.0
+	>=virtual/rust-1.65.0
+	app-text/scdoc
 "
 
 QA_FLAGS_IGNORED="usr/bin/alacritty"
@@ -81,6 +82,11 @@ src_configure() {
 }
 
 src_compile() {
+	scdoc < ./extra/man/alacritty.1.scd > ./alacritty.1 || die
+	scdoc < ./extra/man/alacritty.5.scd > ./alacritty.5 || die
+	scdoc < ./extra/man/alacritty-msg.1.scd > ./alacritty-msg.1 || die
+	scdoc < ./extra/man/alacritty-bindings.5.scd > ./alacritty-bindings.5 || die
+
 	cd alacritty || die
 	cargo_src_compile
 }
@@ -88,8 +94,7 @@ src_compile() {
 src_install() {
 	cargo_src_install --path alacritty
 
-	newman extra/alacritty.man alacritty.1
-	newman extra/alacritty-msg.man alacritty-msg.1
+	doman alacritty.1 alacritty.5 alacritty-msg.1 alacritty-bindings.5
 
 	newbashcomp extra/completions/alacritty.bash alacritty
 
@@ -109,7 +114,6 @@ src_install() {
 	doins -r scripts/*
 
 	local DOCS=(
-		alacritty.yml
 		CHANGELOG.md INSTALL.md README.md
 		docs/{ansicode.txt,escape_support.md,features.md}
 	)
@@ -126,7 +130,7 @@ pkg_postinst() {
 		einfo "Configuration files for ${CATEGORY}/${PN}"
 		einfo "in \$HOME often need to be updated after a version change"
 		einfo ""
-		einfo "An up-to-date sample configuration file always can be found at"
-		einfo "${ROOT}/usr/share/doc/${PF}/alacritty.yml.*"
+		einfo "For information on how to configure alacritty, see the manpage:"
+		einfo "man 5 alacritty"
 	fi
 }

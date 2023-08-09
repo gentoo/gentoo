@@ -19,6 +19,5 @@
 		<flag name="smime">Build plugin for S/MIME support</flag>
 		<flag name="spam-report">Enable plugin for spam reporting to various services</flag>
 		<flag name="spamassassin">Build <pkg>mail-filter/spamassassin</pkg> plugin</flag>
-		<flag name="valgrind">Add support for memory debugging using valgrind</flag>
 	</use>
 </pkgmetadata>

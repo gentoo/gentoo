@@ -1,14 +1,5 @@
 --- a/Makefile	2023-04-08 18:39:09.818483802 -0500
 +++ b/Makefile	2023-04-08 18:44:54.509321177 -0500
-@@ -92,7 +92,7 @@
- # processes. Not supported for MSYS2/cygwin builds, and will be overridden for
- # mac universal builds. This does not count as a change in build flags.
- ifndef GAME
--	GAME = crawl
-+	GAME = crawl-0.30
- endif
- 
- # Disable GNU Make implicit rules and variables. Leaving them enabled will slow
 @@ -206,7 +206,7 @@
  uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
  uname_M := $(shell sh -c 'uname -m 2>/dev/null || echo not')

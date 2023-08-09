@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,14 +38,6 @@ src_configure() {
 			OS=solaris;;
 		*-darwin*)
 			OS=osx;;
-		*-freebsd*)
-			OS=freebsd;;
-		*-netbsd*)
-			OS=netbsd;;
-		*-cygwin*)
-			OS=cygwin;;
-		**-irix**)
-			OS=irix;;
 	esac
 	export OS="${OS}"
 	elog "Detected OS is: ${OS}"

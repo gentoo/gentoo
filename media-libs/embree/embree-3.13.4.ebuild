@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake flag-o-matic linux-info
+inherit cmake flag-o-matic linux-info toolchain-funcs
 
 DESCRIPTION="Collection of high-performance ray tracing kernels"
 HOMEPAGE="https://github.com/embree/embree"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/embree/embree/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="3"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 X86_CPU_FLAGS=( sse2:sse2 sse4_2:sse4_2 avx:avx avx2:avx2 avx512dq:avx512dq )
 CPU_FLAGS=( cpu_flags_arm_neon ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
 IUSE="+compact-polys ispc +raymask ssp +tbb tutorial ${CPU_FLAGS[@]%:*}"
@@ -66,6 +66,9 @@ src_configure() {
 	# https://github.com/embree/embree/issues/115
 
 	filter-flags -m*
+
+	# https://bugs.gentoo.org/910164
+	tc-is-clang && filter-lto
 
 	local mycmakeargs=(
 		# Currently Intel only host their test files on their internal network.

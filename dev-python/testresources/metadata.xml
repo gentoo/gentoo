@@ -21,7 +21,8 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">testresources</remote-id>
+		<remote-id type="github">testing-cabal/testresources</remote-id>
 		<remote-id type="launchpad">testresources</remote-id>
+		<remote-id type="pypi">testresources</remote-id>
 	</upstream>
 </pkgmetadata>

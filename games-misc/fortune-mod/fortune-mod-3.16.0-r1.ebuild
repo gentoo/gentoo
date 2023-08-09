@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="The notorious fortune program"
-HOMEPAGE="https://www.shlomifish.org/open-source/projects/fortune-mod/ http://www.redellipse.net/code/fortune"
+HOMEPAGE="https://www.shlomifish.org/open-source/projects/fortune-mod/"
 SRC_URI="https://www.shlomifish.org/open-source/projects/${PN}/arcs/${P}.tar.xz
 	https://github.com/shlomif/fortune-mod/releases/download/${P}/${P}.tar.xz"
 

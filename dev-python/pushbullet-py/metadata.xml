@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pushbullet.py</remote-id>
-		<remote-id type="github">randomchars/pushbullet.py</remote-id>
-		<bugs-to>https://github.com/randomchars/pushbullet.py/issues</bugs-to>
+		<remote-id type="github">richard-better/pushbullet.py</remote-id>
+		<bugs-to>https://github.com/richard-better/pushbullet.py/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

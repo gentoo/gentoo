@@ -6,7 +6,7 @@ EAPI=7
 inherit multilib-minimal
 
 DESCRIPTION="A low-latency audio server"
-HOMEPAGE="http://www.jackaudio.org"
+HOMEPAGE="https://jackaudio.org"
 SRC_URI="https://github.com/jackaudio/jack1/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"

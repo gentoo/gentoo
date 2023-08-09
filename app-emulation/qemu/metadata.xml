@@ -35,6 +35,7 @@
 		<flag name="pin-upstream-blobs">Pin the versions of BIOS firmware to the version included in the upstream release.
 		This is needed to sanely support migration/suspend/resume/snapshotting/etc... of instances.
 		When the blobs are different, random corruption/bugs/crashes/etc... may be observed.</flag>
+		<flag name="pipewire">Enable pipewire output for sound emulation</flag>
 		<flag name="plugins">Enable qemu plugin API via shared library loading.</flag>
 		<flag name="pulseaudio">Enable pulseaudio output for sound emulation</flag>
 		<flag name="rbd">Enable rados block device backend support, see https://docs.ceph.com/en/mimic/rbd/qemu-rbd/</flag>

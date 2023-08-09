@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,8 +50,8 @@ LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
-# We only need yacc when the .y files get patched (bash42-005)
-BDEPEND="app-alternatives/yacc"
+# We only need bison (yacc) when the .y files get patched (bash42-005)
+BDEPEND="sys-devel/bison"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -97,6 +97,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream only test with Bison and require GNUisms like YYEOF and
+	# YYERRCODE. The former at least may be in POSIX soon:
+	# https://www.austingroupbugs.net/view.php?id=1269.
+	# configure warns on use of non-Bison but doesn't abort. The result
+	# may misbehave at runtime.
+	unset YACC
+
 	local myconf=(
 		--with-installed-readline=.
 

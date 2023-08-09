@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">candlepin/python-iniparse</remote-id>
 		<remote-id type="pypi">iniparse</remote-id>
 	</upstream>
 </pkgmetadata>

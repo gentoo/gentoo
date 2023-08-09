@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/899748
+https://github.com/opentoonz/opentoonz/issues/4738
+https://github.com/opentoonz/opentoonz/pull/4739
+
+From d28d005d2a8fcb81461516a37e30526063aba448 Mon Sep 17 00:00:00 2001
+From: Grillo <11585030+grillo-delmal@users.noreply.github.com>
+Date: Mon, 6 Feb 2023 20:48:32 -0300
+Subject: [PATCH] Clarify size_t origin for tgc::hash::BucketNode
+
+--- a/toonz/sources/include/tcg/hash.h
++++ b/toonz/sources/include/tcg/hash.h
+@@ -21,6 +21,11 @@ class hash {
+   typedef T value_type;
+   typedef Hash_functor hash_type;
+ 
++  struct BucketNode;
++  typedef typename tcg::list<BucketNode>::size_t size_t;
++  typedef typename tcg::list<BucketNode>::iterator iterator;
++  typedef typename tcg::list<BucketNode>::const_iterator const_iterator;
++
+   struct BucketNode {
+     K m_key;
+     T m_val;
+@@ -34,11 +39,6 @@ class hash {
+     ~BucketNode() {}
+   };
+ 
+-  typedef typename tcg::list<BucketNode>::size_t size_t;
+-
+-  typedef typename tcg::list<BucketNode>::iterator iterator;
+-  typedef typename tcg::list<BucketNode>::const_iterator const_iterator;
+-
+ private:
+   std::vector<size_t> m_bucketsIdx;
+   tcg::list<BucketNode> m_items;
+

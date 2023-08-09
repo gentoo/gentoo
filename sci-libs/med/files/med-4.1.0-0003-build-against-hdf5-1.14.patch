@@ -1,0 +1,117 @@
+From 5c9c1ce9911290283d39e16b1ed4c1d4ea5a5678 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Tue, 24 Aug 2021 08:32:13 +0200
+Subject: [PATCH] build against hdf5-1.12
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ config/cmake_files/medMacros.cmake | 4 ++--
+ src/ci/MEDfileCompatibility.c      | 2 +-
+ src/hdfi/_MEDfileCreate.c          | 2 +-
+ src/hdfi/_MEDfileOpen.c            | 2 +-
+ src/hdfi/_MEDmemFileOpen.c         | 2 +-
+ src/hdfi/_MEDparFileCreate.c       | 2 +-
+ src/hdfi/_MEDparFileOpen.c         | 2 +-
+ 7 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/config/cmake_files/medMacros.cmake b/config/cmake_files/medMacros.cmake
+index 957c59b..d73c7af 100644
+--- a/config/cmake_files/medMacros.cmake
++++ b/config/cmake_files/medMacros.cmake
+@@ -447,13 +447,13 @@ MACRO(MED_FIND_HDF5)
+     ##
+     ## Requires 1.10.x version
+     ##
+-    IF (NOT HDF_VERSION_MAJOR_REF EQUAL 1 OR NOT HDF_VERSION_MINOR_REF EQUAL 10 OR NOT HDF_VERSION_RELEASE_REF GREATER 1)
++    IF(HDF5_VERSION VERSION_LESS 1.10.2)
+         MESSAGE(FATAL_ERROR "HDF5 version is ${HDF_VERSION_REF}. Only versions >= 1.10.2 are supported.")
+     ENDIF()
+     ##
+     ##
+ 
+-    ADD_DEFINITIONS(-DH5_USE_16_API)  
++    ADD_DEFINITIONS(-DH5_USE_18_API -DH5_USE_16_API)
+     IF(WIN32 AND MEDFILE_BUILD_SHARED_LIBS)
+       ADD_DEFINITIONS(-D_HDF5USEDLL_ -DH5_BUILT_AS_DYNAMIC_LIB=1)   
+     ENDIF()
+diff --git a/src/ci/MEDfileCompatibility.c b/src/ci/MEDfileCompatibility.c
+index 1d6cabf..43b5b50 100644
+--- a/src/ci/MEDfileCompatibility.c
++++ b/src/ci/MEDfileCompatibility.c
+@@ -113,7 +113,7 @@ MEDfileCompatibility(const char* const filename,
+ #if MED_NUM_MAJEUR != 4
+ #error "Don't forget to update the test version here when you change the major version of the library !"
+ #endif
+-#if H5_VERS_MINOR > 10
++#if H5_VERS_MINOR > 14
+ #error "Don't forget to check the compatibility version of the library, depending on the internal hdf model choice !"
+ #error "Cf. _MEDfileCreate ..."
+ #endif
+diff --git a/src/hdfi/_MEDfileCreate.c b/src/hdfi/_MEDfileCreate.c
+index 4bc9551..b670c92 100644
+--- a/src/hdfi/_MEDfileCreate.c
++++ b/src/hdfi/_MEDfileCreate.c
+@@ -159,7 +159,7 @@ med_idt _MEDfileCreate(const char * const filename, const med_access_mode access
+    * En HDF5-1.10.0p1 cela n'a aucun effet ! 
+    * Un test autoconf permet de fixer un intervalle de version HDF à MED.
+    */
+-#if H5_VERS_MINOR > 10
++#if H5_VERS_MINOR > 14
+ #error "Don't forget to change the compatibility version of the library !"
+ #endif
+    
+diff --git a/src/hdfi/_MEDfileOpen.c b/src/hdfi/_MEDfileOpen.c
+index 8ace00e..ebd875b 100644
+--- a/src/hdfi/_MEDfileOpen.c
++++ b/src/hdfi/_MEDfileOpen.c
+@@ -72,7 +72,7 @@ med_idt _MEDfileOpen(const char * const filename,const med_access_mode accessmod
+ 
+    •   The creation order tracking property, H5P_CRT_ORDER_TRACKED, has been set in the group creation property list (see H5Pset_link_creation_order). 
+   */
+-#if H5_VERS_MINOR > 10
++#if H5_VERS_MINOR > 14
+ #error "Don't forget to change the compatibility version of the library !"
+ #endif
+ /* L'avantage de bloquer le modèle interne HDF5 
+diff --git a/src/hdfi/_MEDmemFileOpen.c b/src/hdfi/_MEDmemFileOpen.c
+index ae92ba7..4a929ff 100644
+--- a/src/hdfi/_MEDmemFileOpen.c
++++ b/src/hdfi/_MEDmemFileOpen.c
+@@ -434,7 +434,7 @@ med_idt _MEDmemFileOpen(const char * const filename, med_memfile * const memfile
+     goto ERROR;
+   }
+ 
+-#if H5_VERS_MINOR > 10
++#if H5_VERS_MINOR > 14
+ #error "Don't forget to change the compatibility version of the library !"
+ #endif
+   if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_18, H5F_LIBVER_18) ) {
+diff --git a/src/hdfi/_MEDparFileCreate.c b/src/hdfi/_MEDparFileCreate.c
+index f0b77be..b7d1b78 100644
+--- a/src/hdfi/_MEDparFileCreate.c
++++ b/src/hdfi/_MEDparFileCreate.c
+@@ -64,7 +64,7 @@ med_idt _MEDparFileCreate(const char * const filename, const med_access_mode acc
+    * En HDF5-1.10.0p1 cela n'a aucun effet ! 
+    * Un test autoconf permet de fixer un intervalle de version HDF à MED.
+    */
+-#if H5_VERS_MINOR > 10
++#if H5_VERS_MINOR > 14
+ #error "Don't forget to change the compatibility version of the library !"
+ #endif
+    
+diff --git a/src/hdfi/_MEDparFileOpen.c b/src/hdfi/_MEDparFileOpen.c
+index 0a9700d..4933692 100644
+--- a/src/hdfi/_MEDparFileOpen.c
++++ b/src/hdfi/_MEDparFileOpen.c
+@@ -55,7 +55,7 @@ med_idt _MEDparFileOpen(const char * const filename,const med_access_mode access
+     MED_ERR_(_fid,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_PARALLEL_MSG);
+     goto ERROR;
+   }
+-#if H5_VERS_MINOR > 10
++#if H5_VERS_MINOR > 14
+ #error "Don't forget to change the compatibility version of the library !"
+ #endif
+   if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_18, H5F_LIBVER_18 ) ) {
+-- 
+2.32.0
+

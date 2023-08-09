@@ -1,0 +1,19 @@
+From: https://github.com/libarchive/libarchive/commit/bd074c2531e867078788fe8539376c31119e4e55.patch
+From: Wong Hoi Sing Edison <hswong3i@gmail.com>
+Date: Wed, 19 Jul 2023 16:59:32 +0800
+Subject: [PATCH] Replace `svfs.f_namelen` with `svfs.f_namemax` (#1924)
+
+The equivalent for `f_namelen` in struct statvfs is `f_namemax`.
+
+Signed-off-by: Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+--- a/libarchive/archive_read_disk_posix.c
++++ b/libarchive/archive_read_disk_posix.c
+@@ -1866,7 +1866,7 @@ setup_current_filesystem(struct archive_read_disk *a)
+ #if defined(USE_READDIR_R)
+ 	/* Set maximum filename length. */
+ #if defined(HAVE_STATVFS)
+-	t->current_filesystem->name_max = svfs.f_namelen;
++	t->current_filesystem->name_max = svfs.f_namemax;
+ #else
+ 	t->current_filesystem->name_max = sfs.f_namelen;
+ #endif

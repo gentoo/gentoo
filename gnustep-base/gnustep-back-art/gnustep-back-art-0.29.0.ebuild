@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnustep-base
 
 DESCRIPTION="libart_lgpl back-end component for the GNUstep GUI Library"
-HOMEPAGE="http://www.gnustep.org"
+HOMEPAGE="https://gnustep.github.io"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"

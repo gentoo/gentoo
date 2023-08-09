@@ -17,7 +17,7 @@ SRC_URI="https://github.com/voxpupuli/hiera-eyaml/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/highline-1.6.19:*"
@@ -30,7 +30,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/hiera-eyaml-plaintext
 )"
 
-BDEPEND+=" test? ( || ( app-admin/puppet-agent app-admin/puppet ) )"
+BDEPEND+=" test? ( || ( app-admin/puppet-agent app-admin/puppet ) dev-tcltk/expect )"
 
 all_ruby_prepare() {
 	# Fix highline dependency to be compatible with more versions.

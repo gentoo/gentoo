@@ -20,4 +20,7 @@
 	<use>
 		<flag name="cryptopp">Build algorithms that need Crypto++ support <pkg>dev-libs/crypto++</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">exaexa/codecrypt</remote-id>
+	</upstream>
 </pkgmetadata>

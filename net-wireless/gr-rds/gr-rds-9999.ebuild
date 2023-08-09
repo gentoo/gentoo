@@ -35,16 +35,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/swig:0
 "
-#cppunit is listed in cmake, but only needed for tests and there are no tests
-#	dev-util/cppunit"
-
-src_prepare() {
-	cmake_src_prepare
-	#although cppunit is not used, it fails if it isn't there, fix it
-	sed -i 's#FATAL_ERROR "CppUnit#MESSAGE "CppUnit#' CMakeLists.txt || die
-	sed -i '/${CPPUNIT_INCLUDE_DIRS}/d' CMakeLists.txt || die
-	sed -i '/${CPPUNIT_LIBRARY_DIRS}/d' CMakeLists.txt || die
-}
 
 src_configure() {
 	local mycmakeargs=( -DPYTHON_EXECUTABLE="${PYTHON}" )

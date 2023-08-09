@@ -40,7 +40,7 @@ RDEPEND="
 		virtual/opengl
 	)
 	png? ( media-libs/libpng:0= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	theora? ( media-libs/libtheora )
 	truetype? ( media-libs/freetype:2 )
 	sdl? ( media-libs/libsdl )

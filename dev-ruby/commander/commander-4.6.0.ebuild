@@ -10,7 +10,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 inherit ruby-fakegem
 
 DESCRIPTION="The complete solution for Ruby command-line executables"
-HOMEPAGE="https://visionmedia.github.com/commander/"
+HOMEPAGE="https://github.com/commander-rb/commander"
 
 LICENSE="MIT"
 SLOT="0"

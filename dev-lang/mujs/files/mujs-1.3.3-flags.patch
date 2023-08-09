@@ -1,0 +1,12 @@
+diff --git a/Makefile.oirg b/Makefile
+index 24049d3..5d5d58d 100644
+--- a/Makefile.oirg
++++ b/Makefile
+@@ -5,6 +5,7 @@
+ default: build/debug/mujs build/debug/mujs-pp
+ 
+ CFLAGS = -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter
++CFLAGS += $(XCFLAGS) $(XLDFLAGS)
+ 
+ OPTIM = -O3
+ 

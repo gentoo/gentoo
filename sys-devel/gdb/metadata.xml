@@ -15,6 +15,7 @@
 		<flag name="source-highlight">Enable listing highlighting via <pkg>dev-util/source-highlight</pkg></flag>
 		<flag name="xml">Support parsing XML data files needed (at least) for cpu features, memory maps, and syscall tracing</flag>
 		<flag name="xxhash">Use <pkg>dev-libs/xxhash</pkg> to speed up internal hashing.</flag>
+		<flag name="debuginfod">Enable debuginfod support via <pkg>dev-libs/elfutils</pkg> libdebuginfod</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:gdb</remote-id>

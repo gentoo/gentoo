@@ -6,7 +6,8 @@ EAPI=8
 CMAKE_IN_SOURCE_BUILD=1
 inherit autotools cmake flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
-XSERVER_VERSION="21.1.1"
+XSERVER_VERSION="21.1.8"
+XSERVER_PATCH_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="https://tigervnc.org"
@@ -53,7 +54,6 @@ COMMON_DEPEND="
 		x11-libs/libXfont2
 		x11-libs/libXtst
 		x11-libs/pixman
-		x11-libs/xtrans
 		x11-apps/xauth
 		x11-apps/xinit
 		x11-apps/xkbcomp
@@ -71,13 +71,11 @@ COMMON_DEPEND="
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	java? ( virtual/jre:1.8 )
-	server? (
-		dev-lang/perl
-		sys-process/psmisc
-	)
+	java? ( >=virtual/jre-1.8:* )
+	server? ( dev-lang/perl )
 "
 DEPEND="${COMMON_DEPEND}
+	java? ( >=virtual/jdk-1.8:* )
 	drm? ( x11-libs/libdrm )
 	server? (
 		media-fonts/font-util
@@ -86,6 +84,7 @@ DEPEND="${COMMON_DEPEND}
 		x11-libs/libXi
 		x11-libs/libxkbfile
 		x11-libs/libXrender
+		x11-libs/xtrans
 		x11-misc/util-macros
 		opengl? ( media-libs/mesa )
 	)
@@ -101,7 +100,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.0-xsession-path.patch
 	"${FILESDIR}"/${PN}-1.12.80-disable-server-and-pam.patch
 )
-[[ ${PV} == *9999 ]] && PATCHES+=( "${FILESDIR}"/${PN}-1.13.80-depend-po-files.patch )
 
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then
@@ -121,7 +119,7 @@ src_prepare() {
 
 	if use server; then
 		cd unix/xserver || die
-		eapply ../xserver${XSERVER_VERSION}.patch
+		eapply ../xserver${XSERVER_PATCH_VERSION}.patch
 		eautoreconf
 		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
 		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die
@@ -202,8 +200,8 @@ src_install() {
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 
-		newconfd "${FILESDIR}"/${PN}-1.12.0.confd ${PN}
-		newinitd "${FILESDIR}"/${PN}-1.12.0.initd ${PN}
+		newconfd "${FILESDIR}"/${PN}-1.13.1.confd ${PN}
+		newinitd "${FILESDIR}"/${PN}-1.13.1.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
 
@@ -218,6 +216,8 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+
+	use server && elog 'OpenRC users: please migrate to one service per display as documented here'	#FIXME: add link
 
 	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm x11-misc/sddm x11-misc/slim"
 	use server && \

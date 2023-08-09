@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 # Note: greenlet is built-in in pypy
 PYTHON_COMPAT=( python3_{9..11} )

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ src_prepare() {
 
 	# lto not supported yet
 	# gcc-9 with -flto leads to link failures: #692254
-	filter-flags -flto*
+	filter-lto
 
 	eautoreconf
 	# We need to copy the sources or else tests will fail

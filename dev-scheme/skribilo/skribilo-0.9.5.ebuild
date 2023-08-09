@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
-RESTRICT="strip test"  # tests fail, seem broken
+RESTRICT="test"  # tests fail, seem broken
 
 RDEPEND="
 	app-text/ghostscript-gpl
@@ -67,6 +67,10 @@ src_install() {
 			rm -r "${emacsd}" || die
 		fi
 	fi
+
+	# Workaround llvm-strip problem of mangling guile ELF debug
+	# sections: https://bugs.gentoo.org/905898
+	dostrip -x "/usr/$(get_libdir)/guile"
 }
 
 pkg_postinst() {

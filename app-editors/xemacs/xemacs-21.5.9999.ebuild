@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -17,7 +17,7 @@ EHG_REPO_URI="https://foss.heptapod.net/xemacs/xemacs"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="alsa debug gif gpm pop postgres ldap xface nas dnd X jpeg tiff png mule motif freewnn xft xim athena neXt Xaw3d gdbm berkdb"
+IUSE="alsa debug gif gpm pop postgres ldap xface nas dnd X jpeg tiff png motif freewnn xft xim athena neXt Xaw3d gdbm berkdb +bignum"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
@@ -45,13 +45,14 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	freewnn? ( app-i18n/freewnn )
 	>=sys-libs/ncurses-5.2:=
-	>=app-eselect/eselect-emacs-1.15"
+	>=app-eselect/eselect-emacs-1.15
+	bignum? ( dev-libs/openssl )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PDEPEND="app-xemacs/xemacs-base
-	mule? ( app-xemacs/mule-base )"
+	app-xemacs/mule-base"
 
 src_unpack() {
 	mercurial_src_unpack
@@ -62,6 +63,7 @@ src_unpack() {
 src_prepare() {
 	use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
+	eapply "${FILESDIR}/${PN}-21.5.35-mule-tests.patch"
 
 	eapply_user
 
@@ -123,21 +125,17 @@ src_configure() {
 			--with-gif=no"
 	fi
 
-	if use mule ; then
-		myconf="${myconf} --with-mule"
-
-		if use xim ; then
-			if use motif ; then
-				myconf="${myconf} --with-xim=motif"
-			else
-				myconf="${myconf} --with-xim=xlib"
-			fi
+	if use xim ; then
+		if use motif ; then
+			myconf="${myconf} --with-xim=motif"
 		else
-			myconf="${myconf} --with-xim=no"
+			myconf="${myconf} --with-xim=xlib"
 		fi
-
-		myconf="${myconf} $(use_with freewnn wnn )"
+	else
+		myconf="${myconf} --with-xim=no"
 	fi
+
+	myconf="${myconf} $(use_with freewnn wnn )"
 
 	# This determines the type of sounds we are playing
 	local soundconf="native"
@@ -160,6 +158,11 @@ src_configure() {
 	use debug && myconf="${myconf} --with-debug" ||
 		myconf="${myconf} --with-optimization --with-cflags-debugging="
 
+	use bignum && myconf="${myconf} --with-bignum=openssl" ||
+		myconf="${myconf} --with-bignum=no"
+
+	use freewnn && append-cppflags "-I. -I${ESYSROOT}/usr/include/wnn"
+
 	econf ${myconf} \
 		$(use_with gif ) \
 		$(use_with gpm ) \
@@ -167,6 +170,8 @@ src_configure() {
 		$(use_with ldap ) \
 		$(use_with pop ) \
 		--prefix=/usr \
+		--with-mule \
+		--with-unicode-internal \
 		--without-canna \
 		--with-ncurses \
 		--with-msw=no \
@@ -207,11 +212,7 @@ src_install() {
 	dodir /usr/lib/xemacs/site-packages/
 	dodir /usr/lib/xemacs/site-modules/
 	dodir /usr/lib/xemacs/site-lisp/
-
-	if use mule;
-	then
-		dodir /usr/lib/xemacs/mule-packages
-	fi
+	dodir /usr/lib/xemacs/mule-packages
 
 	# remove extraneous info files
 	cd "${ED}"/usr/share/info

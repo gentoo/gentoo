@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.9-libuuid.patch" #844073
 	"${FILESDIR}/${PN}-1.0.9-popt_segv.patch" #872131
+	"${FILESDIR}"/${PN}-1.0.9-musl-1.2.4.patch
 )
 
 src_prepare() {

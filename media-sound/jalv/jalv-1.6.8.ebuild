@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,9 @@ SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="gtk +jack portaudio qt5"
+IUSE="gtk +jack portaudio qt5 test"
 REQUIRED_USE="^^ ( jack portaudio )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/serd
@@ -49,6 +50,7 @@ src_configure() {
 		$(meson_feature jack)
 		$(meson_feature portaudio)
 		$(meson_feature qt5)
+		$(meson_feature test tests)
 	)
 	meson_src_configure
 }

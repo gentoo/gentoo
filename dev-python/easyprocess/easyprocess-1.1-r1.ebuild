@@ -3,13 +3,20 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
+
 inherit distutils-r1
 
 DESCRIPTION="Easy to use Python subprocess interface"
-HOMEPAGE="https://github.com/ponty/EasyProcess"
-SRC_URI="https://github.com/ponty/EasyProcess/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/ponty/EasyProcess/
+	https://pypi.org/project/EasyProcess/
+"
+SRC_URI="
+	https://github.com/ponty/EasyProcess/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 S="${WORKDIR}/EasyProcess-${PV}"
 
 LICENSE="BSD-2"
@@ -22,7 +29,8 @@ BDEPEND="
 		dev-python/pyvirtualdisplay[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		x11-base/xorg-server[xvfb]
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 

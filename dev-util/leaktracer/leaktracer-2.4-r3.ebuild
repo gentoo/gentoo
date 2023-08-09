@@ -1,15 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit toolchain-funcs
 
 # Upstream-package has no version in it's name.
 # We therefore repackage it directly, together with the patches.
 PATCH_LEVEL="2"
 
-DESCRIPTION="trace and analyze memory leaks in C++ programs"
-HOMEPAGE="http://www.andreasen.org/LeakTracer/"
+DESCRIPTION="Trace and analyze memory leaks in C++ programs"
+HOMEPAGE="https://andreasen.org/LeakTracer/"
 SRC_URI="mirror://gentoo/${P}-gentoo_p${PATCH_LEVEL}.tbz2"
 
 LICENSE="public-domain"

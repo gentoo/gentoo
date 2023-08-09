@@ -12,7 +12,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD"
 SLOT="0/6" # subslot = soname version
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples unicode"
 
 DEPEND="sys-libs/ncurses:=[unicode(+)?]"

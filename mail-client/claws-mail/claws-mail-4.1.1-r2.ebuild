@@ -15,7 +15,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 fi
 
 SLOT="0"
@@ -110,6 +110,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
 	"${FILESDIR}/${PN}-4.1.1-fix_lto.patch"
 	"${FILESDIR}/${P}-webkitgtk4.1.patch"
+	"${FILESDIR}/${P}-litehtml_gcc13.patch"
 )
 
 src_prepare() {

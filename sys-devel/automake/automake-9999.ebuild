@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit python-any-r1
 
@@ -15,7 +15,7 @@ else
 		MY_P="${P}"
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 			https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	else
 		MY_PV="$(ver_cut 1).$(($(ver_cut 2)-1))b"
 		MY_P="${PN}-${MY_PV}"
@@ -42,7 +42,7 @@ RDEPEND=">=dev-lang/perl-5.6
 	sys-devel/gnuconfig"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-arch/gzip
+	app-alternatives/gzip
 	sys-apps/help2man
 	test? ( ${PYTHON_DEPS} )
 "

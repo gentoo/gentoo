@@ -7,6 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">sdgathman/pyspf</remote-id>
     <remote-id type="pypi">pyspf</remote-id>
   </upstream>
 </pkgmetadata>

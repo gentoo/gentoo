@@ -1,0 +1,25 @@
+From b52736180b6966f24398f8a5ad179a58173473ec Mon Sep 17 00:00:00 2001
+From: Thomas W Rodgers <rodgert@twrodgers.com>
+Date: Tue, 31 Jan 2023 12:00:58 -0800
+Subject: [PATCH] Do not depend on <cstdint> via transitive inclusion
+
+Guitarix fails to compile with the upcoming version of GCC (GCC13) due
+to a change that removes the transitive inclusion of <cstdint> from
+other standard headers.
+
+See also -
+  https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/message/HLHKK7P5RB3BLQ5CV4STJGUYBFPC2VTB/
+--- a/src/LV2/DSP/gx_common.h
++++ b/src/LV2/DSP/gx_common.h
+@@ -22,7 +22,7 @@
+ #ifndef SRC_HEADERS_GX_COMMON_H_
+ #define SRC_HEADERS_GX_COMMON_H_
+ 
+-
++#include <cstdint>
+ #include <cstdlib>
+ #include <cmath>
+ #include <iostream>
+-- 
+2.39.3
+

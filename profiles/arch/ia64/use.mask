@@ -1,8 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -ia64
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
 
 # Sam James <sam@gentoo.org> (2022-07-21)
 # Untested.
@@ -197,10 +201,6 @@ opencl
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
 # sys-devel/llvm s not keyworded, bug #320221
 llvm
-
-# Pacho Ramos <pacho@gentoo.org> (2014-01-08)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp

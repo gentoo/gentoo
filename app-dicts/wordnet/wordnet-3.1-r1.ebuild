@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}/WordNet-3.0"
 
 LICENSE="Princeton"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 # In contrast to what the configure script seems to imply, Tcl/Tk is NOT
 # optional. cf. bug 163478 for details. (Yes, it's about 2.1 but it's

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -30,7 +30,8 @@ RDEPEND="
 distutils_enable_tests pytest
 
 PATCHES=(
-	"${FILESDIR}/snapshottest-0.6.0-remove-fastdiff.patch"
+	"${FILESDIR}/${PN}-0.6.0-remove-fastdiff.patch"
+	"${FILESDIR}/${PN}-0.6.0-py3.12-imp.patch"
 )
 
 python_prepare_all() {

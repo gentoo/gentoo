@@ -3,9 +3,15 @@
 
 EAPI=8
 
-CRATES=""
+# CRATES="
+# "
 
-PYTHON_COMPAT=( python3_{9..11} )
+# Upstream have a fork of bindgen and use cgit
+# declare -A GIT_CRATES=(
+# 	[bindgen]="https://gitlab.com/Matt.Jolly/rust-bindgen-bcachefs;f773267b090bf16b9e8375fcbdcd8ba5e88806a8;rust-bindgen-bcachefs-%commit%/bindgen"
+# )
+
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cargo flag-o-matic multiprocessing python-any-r1 toolchain-funcs unpacker
 
@@ -15,8 +21,8 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://evilpiepirate.org/git/bcachefs-tools.git"
 else
-	MY_COMMIT=f1f88825c371f84edb85a156de5e1962503d23b2
-	SRC_URI="https://evilpiepirate.org/git/bcachefs-tools.git/snapshot/bcachefs-tools-${MY_COMMIT}.tar.zst
+	MY_COMMIT=1f78fed4693a5361f56508daac59bebd5b556379
+	SRC_URI="https://github.com/koverstreet/bcachefs-tools/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris ${CRATES})"
 	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 	KEYWORDS="~amd64"
@@ -29,7 +35,6 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/lz4
-	app-arch/zstd
 	dev-libs/libaio
 	dev-libs/libsodium
 	dev-libs/userspace-rcu
@@ -69,12 +74,9 @@ python_check_deps() {
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
 		git-r3_src_unpack
-		local module
-		for module in bch_bindgen mount; do
-			S="${S}/rust-src/${module}" cargo_live_src_unpack
-		done
+		S="${S}/rust-src" cargo_live_src_unpack
 	else
-		unpacker bcachefs-tools-${MY_COMMIT}.tar.zst
+		default
 		cargo_src_unpack
 	fi
 }
@@ -85,8 +87,12 @@ src_prepare() {
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
 		-e '/^CFLAGS/s:-g::' \
-		-e 's:pytest-3:/bin/true:g' \
 		-i Makefile || die
+	# Patch our cargo-ebuild patch definition to pretend that our GIT_CRATE is upstream's URI.
+	if ! [[ ${PV} == "9999" ]]; then
+		sed -e 's https://gitlab.com/Matt.Jolly/rust-bindgen-bcachefs https://evilpiepirate.org/git/rust-bindgen.git ' \
+			-i "${WORKDIR}/cargo_home/config" || die
+	fi
 	append-lfs-flags
 }
 
@@ -96,16 +102,6 @@ src_compile() {
 	export VERSION=${PV}
 
 	default
-
-	# Rust UUID-based mounter isn't in 'all' target, may as well use ebuild functions
-	local module
-	for module in bch_bindgen mount; do
-		pushd "${S}/rust-src/${module}" > /dev/null || die
-			LIBBCACHEFS_LIB="${S}" LIBBCACHEFS_INCLUDE="${S}" cargo_src_compile
-		popd > /dev/null || die
-	done
-
-	ln -f "${S}/rust-src/mount/target/release/bcachefs-mount" "${S}/mount.bcachefs" || die
 
 	use test && emake tests
 }
@@ -132,17 +128,12 @@ src_test() {
 	epytest -v -n "$(makeopts_jobs)"
 }
 
-QA_FLAGS_IGNORED="usr/bin/mount.bcachefs"
-# Raised upstream; we don't expect anything to link against this outside of bcachefs-tools bins, for now
-QA_SONAME=".*libbcachefs.so"
-
 src_install() {
 	exeinto /usr/bin
 	local file
-	for file in bcachefs fsck.bcachefs mkfs.bcachefs mount.bcachefs mount.bcachefs.sh; do
+	for file in bcachefs fsck.bcachefs mkfs.bcachefs mount.bcachefs; do
 		doexe $file
 	done
-	dolib.so libbcachefs.so
 	doman bcachefs.8
 }
 

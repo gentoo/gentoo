@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,10 +8,10 @@ inherit cmake desktop optfeature
 DESCRIPTION="A lightweight window manager initially based on aewm++"
 HOMEPAGE="
 	https://www.pekwm.se/
-	https://github.com/pekdon/pekwm
+	https://github.com/pekwm/pekwm
 "
 SRC_URI="
-	https://github.com/pekdon/${PN}/releases/download/release-${PV}/pekwm-${PV}.tar.gz
+	https://github.com/pekwm/${PN}/releases/download/release-${PV}/pekwm-${PV}.tar.gz
 "
 
 LICENSE="GPL-2"

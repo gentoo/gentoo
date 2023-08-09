@@ -1,0 +1,53 @@
+https://github.com/OLSR/olsrd/pull/124
+--- a/lib/filtergw/src/olsrd_filtergw.c
++++ b/lib/filtergw/src/olsrd_filtergw.c
+@@ -54,6 +54,7 @@
+ #include "log.h"
+ #include "routing_table.h"
+ #include "olsr_cfg.h"
++#include "parser.h"
+ 
+ #include <stdio.h>
+ #include <string.h>
+@@ -75,11 +76,19 @@ struct originator_list {
+ 
+ struct filter_group {
+   struct originator_list *  originator_list;
+-  struct hna_group *        next;
++  struct filter_group *        next;
+ };
+ 
+ static struct filter_group * filter_groups = NULL;
+ 
++/*
++ * Delcaring function prototype here, fixes build error with clang-16.
++ * Clang 16 enables -Wimplicit-function-declaration by default, hence the
++ * error.
++ * Refer: https://bugs.gentoo.org/898090
++ */
++int should_filter(union olsr_ip_addr * originator);
++
+ /* -------------------------------------------------------------------------
+  * Function   : add_to_originator_list
+  * Description: Add a new ip to originator list
+@@ -304,4 +313,4 @@ int should_filter(union olsr_ip_addr * originator)
+     }
+   }
+   return is_allowlist ? !found : found;
+-}
+\ No newline at end of file
++}
+--- a/src/linux/kernel_routes_nl.c
++++ b/src/linux/kernel_routes_nl.c
+@@ -161,7 +161,11 @@ static void rtnetlink_read(int sock, void *data __attribute__ ((unused)), unsign
+     sizeof(nladdr),
+     &iov,
+     1,
++#ifndef __GLIBC__
++	0,
++#else
+     NULL,
++#endif
+     0,
+     0
+   };

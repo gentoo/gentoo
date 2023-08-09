@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ DESCRIPTION="Library for retrieval of weather information including forecasts an
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 x86"
 fi
 LICENSE="LGPL-2+"
 SLOT="5"

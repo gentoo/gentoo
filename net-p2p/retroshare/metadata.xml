@@ -18,17 +18,12 @@
 		RetroShare provides filesharing, chat, mails, forums and channels.
 	</longdescription>
 	<use>
-		<flag name="autologin">Enables potentially insecure autologin capability via <pkg>app-crypt/libsecret</pkg></flag>
 		<flag name="cli">Enables terminal login support for retroshare-service</flag>
-		<flag name="control-socket">Enables API via Unix socket support</flag>
-		<flag name="gnome-keyring">Enables potentially insecure autologin capability via <pkg>gnome-base/gnome-keyring</pkg></flag>
 		<flag name="jsonapi">Enables the new RetroShare JSON API</flag>
 		<flag name="libupnp">Enables UPnP port forwarding via <pkg>net-libs/libupnp</pkg></flag>
 		<flag name="miniupnp">Enables UPnP port forwarding via <pkg>net-libs/miniupnpc</pkg></flag>
 		<flag name="service">Enables the new RetroShare service</flag>
 		<flag name="sqlcipher">Enables GXS database encryption via SQLCipher</flag>
-		<flag name="webui">Enables Web interface and API support</flag>
-		<flag name="xapian">Enables GXS content indexing and search via <pkg>dev-libs/xapian</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/RetroShare/RetroShare/issues</bugs-to>

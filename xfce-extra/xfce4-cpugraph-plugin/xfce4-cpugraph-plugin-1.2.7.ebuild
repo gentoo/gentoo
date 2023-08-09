@@ -31,6 +31,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/gcc13.patch )
+
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die

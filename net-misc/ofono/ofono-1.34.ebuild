@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit systemd
 
 DESCRIPTION="Open Source mobile telephony (GSM/UMTS) daemon"
-HOMEPAGE="https://01.org/ofono"
+HOMEPAGE="https://git.kernel.org/pub/scm/network/ofono/ofono.git"
 SRC_URI="https://www.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"

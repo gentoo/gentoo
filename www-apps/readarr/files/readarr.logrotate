@@ -1,4 +1,4 @@
-/var/lib/readarr/.config/readarr/logs/*.log{
+/var/lib/readarr/.config/Readarr/logs/*.txt{
     missingok
     su readarr readarr
 }

@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/mkdocs-material-5.0.0[${PYTHON_USEDEP}]
@@ -30,5 +30,9 @@ BDEPEND="
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.1-fix-tests.patch
+)
 
 distutils_enable_tests pytest

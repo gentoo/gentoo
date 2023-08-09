@@ -1,0 +1,35 @@
+https://github.com/dracutdevs/dracut/pull/2436
+
+From 77214c229dadd1441f0d6243221ceed0708cbfcf Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 20 Jul 2023 04:36:01 +0100
+Subject: [PATCH] fix(dracut.sh): use gawk for strtonum
+
+strtonum is a gawkism and is not available in all awks, e.g. mawk. Use gawk
+to avoid failure.
+
+Fixes: f32e95bcadbc5158843530407adc1e7b700561b1
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/dracut-functions.sh
++++ b/dracut-functions.sh
+@@ -1047,7 +1047,7 @@ pe_file_format() {
+     if [[ $# -eq 1 ]]; then
+         local magic
+         magic=$(objdump -p "$1" \
+-            | awk '{if ($1 == "Magic"){print strtonum("0x"$2)}}')
++            | gawk '{if ($1 == "Magic"){print strtonum("0x"$2)}}')
+         magic=$(printf "0x%x" "$magic")
+         # 0x10b (PE32), 0x20b (PE32+)
+         [[ $magic == 0x20b || $magic == 0x10b ]] && return 0
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -2467,7 +2467,7 @@ if [[ $uefi == yes ]]; then
+         fi
+     fi
+ 
+-    offs=$(objdump -h "$uefi_stub" 2> /dev/null | awk 'NF==7 {size=strtonum("0x"$3);\
++    offs=$(objdump -h "$uefi_stub" 2> /dev/null | gawk 'NF==7 {size=strtonum("0x"$3);\
+                 offset=strtonum("0x"$4)} END {print size + offset}')
+     if [[ $offs -eq 0 ]]; then
+         dfatal "Failed to get the size of $uefi_stub to create UEFI image file"
+

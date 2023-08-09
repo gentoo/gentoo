@@ -31,7 +31,7 @@ src_test() {
 
 src_install() {
 	elisp-install ${PN} websocket.{el,elc}
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-make-site-file "${SITEFILE}"
 
 	einstalldocs
 }

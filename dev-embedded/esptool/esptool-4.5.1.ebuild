@@ -15,7 +15,7 @@ SRC_URI="https://github.com/espressif/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -23,7 +23,7 @@ RDEPEND="
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		>=dev-python/ecdsa-0.16.0[${PYTHON_USEDEP}]
 		dev-python/pyserial[${PYTHON_USEDEP}]
-		dev-python/reedsolomon[${PYTHON_USEDEP}]
+		dev-python/reedsolo[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="

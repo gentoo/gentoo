@@ -6,7 +6,7 @@ EAPI=8
 inherit bash-completion-r1 go-module linux-info optfeature systemd verify-sig
 
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
-HOMEPAGE="https://linuxcontainers.org/lxd/introduction/ https://github.com/lxc/lxd"
+HOMEPAGE="https://ubuntu.com/lxd https://github.com/canonical/lxd"
 SRC_URI="https://linuxcontainers.org/downloads/lxd/${P}.tar.gz
 	verify-sig? ( https://linuxcontainers.org/downloads/lxd/${P}.tar.gz.asc )"
 
@@ -177,6 +177,7 @@ pkg_postinst() {
 	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
 	optfeature "ipv6 support" net-dns/dnsmasq[ipv6]
+	optfeature "full lxd-migrate support"
 	optfeature "lvm2 storage backend" sys-fs/lvm2
 	optfeature "zfs storage backend" sys-fs/zfs
 	elog
