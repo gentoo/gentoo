@@ -1,0 +1,45 @@
+From 3451462230082e6eae9d82833a547a3a73df5ef9 Mon Sep 17 00:00:00 2001
+From: zhaozg <zhaozg@gmail.com>
+Date: Mon, 7 Aug 2023 17:47:23 +0800
+Subject: [PATCH] partially fix #265
+
+---
+ src/ocsp.c    | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/src/ocsp.c b/src/ocsp.c
+index 29f5b153..e1672fcf 100644
+--- a/src/ocsp.c
++++ b/src/ocsp.c
+@@ -183,8 +183,15 @@ static int openssl_ocsp_request_read(lua_State *L)
+   BIO *bio = load_bio_object(L, 1);
+   int pem = lua_gettop(L) > 1 ? auxiliar_checkboolean(L, 2) : 0;
+ 
++#if defined(__clang__)
++#pragma clang diagnostic push
++#pragma clang diagnostic ignored"-Wincompatible-function-pointer-types"
++#endif
+   OCSP_REQUEST *req = pem ? PEM_read_bio_OCSP_REQUEST(bio, NULL, NULL)
+                           : d2i_OCSP_REQUEST_bio(bio, NULL);
++#if defined(__clang__)
++#pragma clang diagnostic pop
++#endif
+   BIO_free(bio);
+ 
+   if (req)
+@@ -352,8 +359,15 @@ static int openssl_ocsp_response_read(lua_State *L)
+   int pem = lua_gettop(L) > 1 ? auxiliar_checkboolean(L, 2) : 0;
+   int ret = 0;
+ 
++#if defined(__clang__)
++#pragma clang diagnostic push
++#pragma clang diagnostic ignored"-Wincompatible-function-pointer-types"
++#endif
+   OCSP_RESPONSE *res = pem ? PEM_read_bio_OCSP_RESPONSE(bio, NULL, NULL)
+                            : d2i_OCSP_RESPONSE_bio(bio, NULL);
++#if defined(__clang__)
++#pragma clang diagnostic pop
++#endif
+   if (res)
+   {
+     PUSH_OBJECT(res, "openssl.ocsp_response");

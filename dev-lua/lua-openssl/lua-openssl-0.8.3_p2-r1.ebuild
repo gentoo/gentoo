@@ -26,7 +26,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 RDEPEND="
 	!dev-lua/luaossl
@@ -39,6 +39,8 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( ${RDEPEND} )
 "
+
+PATCHES=( "${FILESDIR}/${PN}-0.8.3-clang16.patch" )
 
 src_prepare() {
 	default
