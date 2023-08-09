@@ -1,0 +1,26 @@
+diff --git a/defs.h b/defs.h
+index 8f7d1fa..26afe23 100644
+--- a/defs.h
++++ b/defs.h
+@@ -5553,7 +5553,7 @@ uint32_t swap32(uint32_t, int);
+ uint64_t swap64(uint64_t, int);
+ ulong *get_cpumask_buf(void);
+ int make_cpumask(char *, ulong *, int, int *);
+-size_t strlcpy(char *, char *, size_t);
++size_t strlcpy(char *, const char *, size_t) __attribute__ ((__weak__));
+ struct rb_node *rb_first(struct rb_root *);
+ struct rb_node *rb_parent(struct rb_node *, struct rb_node *);
+ struct rb_node *rb_right(struct rb_node *, struct rb_node *);
+diff --git a/tools.c b/tools.c
+index 392a797..0f2db10 100644
+--- a/tools.c
++++ b/tools.c
+@@ -6795,7 +6795,7 @@ make_cpumask_error:
+  * always be NULL-terminated.
+  */
+ size_t 
+-strlcpy(char *dest, char *src, size_t size)
++strlcpy(char *dest, const char *src, size_t size)
+ {
+ 	size_t ret = strlen(src);
+ 
