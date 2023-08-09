@@ -229,7 +229,7 @@ src_install() {
 				"${find_name[@]}" \
 			\) \) -exec rm -rf "{}" \;
 	fi
- 
+
 	use corepack &&
 		"${D}"/usr/bin/corepack enable --install-directory "${D}"/usr/bin
 
