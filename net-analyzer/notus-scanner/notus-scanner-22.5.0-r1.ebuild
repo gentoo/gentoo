@@ -32,7 +32,7 @@ RDEPEND="
 	${DEPEND}
 	app-misc/mosquitto
 "
-FORCE_PRINT_ELOG="yes"
+
 DOC_CONTENTS="
 For validating the feed content, a GnuPG keychain with the Greenbone Community Feed integrity key needs to be created.
 Please, read here on how to create it:
@@ -42,7 +42,6 @@ https://wiki.gentoo.org/wiki/Greenbone_Vulnerability_Management#Notus_Scanner
 To enable feed validation, edit /etc/gvm/${PN}.toml
 and set
 disable-hashsum-verification = false"
-
 DISABLE_AUTOFORMATTING=true
 
 distutils_enable_tests unittest
