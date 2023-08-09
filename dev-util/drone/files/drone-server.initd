@@ -3,12 +3,23 @@
 # Distributed under the terms of the GNU General Public License v2
 
 description="Drone CI"
-pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}/${RC_SVCNAME}.pid"}
 user=${user:-drone}
 group=${group:-drone}
 
 command="/usr/bin/drone-server"
 command_background="true"
-start_stop_daemon_args="--user ${user} --group ${group} \
-	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
-	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
+command_args="-env-file /etc/${RC_SVCNAME}.conf"
+start_stop_daemon_args="
+	--user ${user}
+	--group ${group}
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+	"
+
+start_pre() {
+	[ -e /etc/${RC_SVCNAME}.conf ] && return
+	eerror "You need to create /etc/${RC_SVCNAME}.conf"
+	eerror "See http://docs.drone.io/server/reference/ for information."
+	return 1
+}
