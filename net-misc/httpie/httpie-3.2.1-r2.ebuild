@@ -15,7 +15,7 @@ SRC_URI="https://github.com/httpie/httpie/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-python/charset-normalizer[${PYTHON_USEDEP}]
