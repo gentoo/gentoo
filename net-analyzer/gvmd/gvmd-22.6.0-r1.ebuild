@@ -112,9 +112,6 @@ src_install() {
 		fowners -R gvm:gvm /var/lib/gvm
 	fi
 
-	dosbin "${FILESDIR}"/gvm-sync-all
-	systemd_dounit "${FILESDIR}"/gvm-sync-all.{service,timer}
-
 	systemd_install_serviced "${FILESDIR}/gvmd.service.conf" \
 			${PN}.service
 }

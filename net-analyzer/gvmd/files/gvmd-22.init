@@ -3,14 +3,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 : ${GVMD_USER:=gvm}
-: ${GVMD_GROUP:=gvm}
+: ${GVMD_GROUP:=$(id -ng ${GVMD_USER})}
 : ${GVMD_TIMEOUT:=30}
 
 name="Greenbone Vulnerability Manager"
 command=/usr/bin/gvmd
-command_args="${GVMD_OPTIONS} ${GVMD_LISTEN_ADDRESS_TCP} ${GVMD_PORT} ${GVMD_SCANNER_HOST} ${GVMD_GNUTLS_PRIORITIES}"
+command_args="${GVMD_VT_UPDATE} ${GVMD_OPTIONS} ${GVMD_LISTEN_ADDRESS_TCP} ${GVMD_PORT} ${GVMD_SCANNER_HOST} ${GVMD_GNUTLS_PRIORITIES}"
 command_user="${GVMD_USER}:${GVMD_GROUP}"
-pidfile="/run/gvmd/gvmd.pid"
+pidfile="/var/run/gvmd/gvmd.pid"
 retry="${GVMD_TIMEOUT}"
 
 depend() {
@@ -19,12 +19,5 @@ depend() {
 }
 
 start_pre() {
-	mkdir /run/gvmd
-	for p in gvm-checking gvm-create-functions gvm-helping gvm-migrating gvm-serving; do
-		touch /run/gvmd/${p}
-	done
-	chown -R gvm:gvm /run/gvmd/
-
-	touch /run/feed-update.lock
-	chown gvm:gvm /run/feed-update.lock
+	checkpath -d --owner ${GVMD_USER} /var/run/gvmd
 }
