@@ -59,7 +59,7 @@ RDEPEND="${CDEPEND}"
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.md )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.1.0-gnuinstalldirs.patch"
+	"${FILESDIR}/${PN}-1.2.1-gnuinstalldirs.patch"
 )
 
 src_prepare() {

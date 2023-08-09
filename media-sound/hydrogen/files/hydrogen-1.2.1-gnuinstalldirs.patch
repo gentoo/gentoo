@@ -1,0 +1,29 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dc368f7..b764d7c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -418,10 +418,10 @@ IF(EXISTS ${CMAKE_SOURCE_DIR}/data/doc/CMakeLists.txt)
+ ENDIF()
+ INSTALL(DIRECTORY data DESTINATION ${H2_DATA_PATH} PATTERN ".git" EXCLUDE PATTERN "i18n" EXCLUDE PATTERN doc EXCLUDE)
+ IF(NOT MINGW AND NOT APPLE)
+-	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/org.hydrogenmusic.Hydrogen.metainfo.xml DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/metainfo")
+-	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/org.hydrogenmusic.Hydrogen.desktop DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/org.hydrogenmusic.Hydrogen.metainfo.xml DESTINATION "${CMAKE_INSTALL_FULL_DATAROOTDIR}/metainfo")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/org.hydrogenmusic.Hydrogen.desktop DESTINATION "${CMAKE_INSTALL_FULL_DATAROOTDIR}/applications")
+ 	INSTALL(FILES ${CMAKE_SOURCE_DIR}/data/img/gray/h2-icon.svg DESTINATION "${CMAKE_INSTALL_FULL_DATAROOTDIR}/icons/hicolor/scalable/apps" RENAME "org.hydrogenmusic.Hydrogen.svg")
+-	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.1 DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
++	INSTALL(FILES ${CMAKE_SOURCE_DIR}/linux/hydrogen.1 DESTINATION "${CMAKE_INSTALL_FULL_MANDIR}/man1")
+ ENDIF()
+ 
+ #
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index e96d7ed..79b74e0 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -77,5 +77,5 @@ ENDIF()
+ 
+ IF(NOT APPLE AND NOT WIN32)
+     INSTALL(DIRECTORY ${CMAKE_SOURCE_DIR}/src/core DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/hydrogen" FILES_MATCHING PATTERN "*.h" PATTERN ".svn" EXCLUDE)
+-    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/config.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/hydrogen" )
++    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/config.h" DESTINATION "${CMAKE_INSTALL_FULL_INCLUDEDIR}/hydrogen" )
+ ENDIF()
