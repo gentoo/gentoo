@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit gnome.org gnome2-utils meson optfeature python-any-r1 virtualx xdg
+inherit gnome.org gnome2-utils meson optfeature python-any-r1 toolchain-funcs virtualx xdg
 
 DESCRIPTION="GTK is a multi-platform toolkit for creating graphical user interfaces"
 HOMEPAGE="https://www.gtk.org/ https://gitlab.gnome.org/GNOME/gtk/"
@@ -113,6 +113,15 @@ src_prepare() {
 	# Workaround RWX ELF sections, https://gitlab.gnome.org/GNOME/gtk/-/issues/4598
 	sed -i -e 's/^ld =.*/ld = disabler()/g' gtk/meson.build demos/gtk-demo/meson.build demos/widget-factory/meson.build || die
 	sed -i -e 's/^objcopy =.*/objcopy = disabler()/g' gtk/meson.build demos/gtk-demo/meson.build demos/widget-factory/meson.build || die
+
+	# The border-image-excess-size.ui test is known to fail on big-endian platforms
+	# See https://gitlab.gnome.org/GNOME/gtk/-/issues/5904
+	if [[ $(tc-endian) == big ]]; then
+		sed -i \
+			-e "/border-image-excess-size.ui/d" \
+			-e "/^xfails =/a 'border-image-excess-size.ui'," \
+			testsuite/reftests/meson.build || die
+	fi
 }
 
 src_configure() {
