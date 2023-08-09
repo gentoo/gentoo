@@ -359,6 +359,8 @@ HOMEPAGE="https://github.com/atuinsh/atuin"
 SRC_URI="
 	https://github.com/atuinsh/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
+	https://github.com/atuinsh/atuin/commit/613218f0d80e7dd9bd688d6a30d06d33fd83d0c4.patch ->
+		${PN}-16.0.0-fix-client-only-builds.patch
 "
 
 LICENSE="MIT"
@@ -366,8 +368,11 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="self-hosting"
-
+IUSE="+client server +sync"
+REQUIRED_USE="
+	|| ( client server )
+	sync? ( client )
+"
 BDEPEND=">=virtual/rust-1.71.0"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
@@ -378,11 +383,15 @@ DOCS=(
 	docs/docs
 )
 
+PATCHES=(
+	"${DISTDIR}/${PN}-16.0.0-fix-client-only-builds.patch"
+)
+
 src_configure() {
 	local myfeatures=(
-		client
-		sync
-		$(usex self-hosting server "")
+		$(usev client)
+		$(usev server)
+		$(usev sync)
 	)
 	cargo_src_configure --no-default-features
 }
@@ -407,8 +416,7 @@ src_install() {
 	exeinto "/usr/bin"
 	doexe "${ATUIN_BIN}"
 
-	if ! use self-hosting
-	then
+	if ! use server; then
 		rm -r "docs/docs/self-hosting" || die
 	fi
 
