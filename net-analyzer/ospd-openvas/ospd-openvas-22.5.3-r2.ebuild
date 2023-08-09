@@ -56,7 +56,7 @@ python_install() {
 	fi
 
 	newinitd "${FILESDIR}/${PN}-22.initd" "${PN}"
-	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
+	newconfd "${FILESDIR}/${PN}-22.confd" "${PN}"
 
 	systemd_dounit config/${PN}.service
 
