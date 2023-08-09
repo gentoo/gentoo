@@ -164,7 +164,7 @@ src_install() {
 my_src_install() {
 	local pydirs=(
 		"${D}$(python_get_sitedir)"
-		"${D}/usr/lib/portage/${EPYTHON}"
+		"${ED}/usr/lib/portage/${EPYTHON}"
 	)
 
 	meson_src_install
