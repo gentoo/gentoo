@@ -98,7 +98,7 @@ src_install() {
 			${PN}.service
 
 	insinto /etc/gvm/sysconfig
-	doins "${FILESDIR}/${PN}-daemon.conf"
+	newins "${FILESDIR}/${PN}-daemon.conf" "${PN}-daemon.conf"
 
 	newinitd "${FILESDIR}/${PN}-22.init" "${PN}"
 	newconfd "${FILESDIR}/${PN}-daemon.conf" "${PN}"

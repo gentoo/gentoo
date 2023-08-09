@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 : ${GSAD_USER:=gvm}
@@ -8,10 +8,8 @@
 
 name="Greenbone Security Assistant (GSA)"
 command="/usr/bin/gsad"
-command_args="--foreground ${GSAD_OPTIONS} ${GSAD_LISTEN_ADDRESS} ${GSAD_LISTEN_PORT} ${GVMD_LISTEN_ADDRESS} ${GVMD_LISTEN_PORT} ${GSAD_GNUTLS_PRIORITIES}"
-command_background="true"
 command_user="${GSAD_USER}:${GSAD_GROUP}"
-pidfile="/run/gsad/gsad.pid"
+command_args="${GSAD_OPTIONS} ${GSAD_LISTEN_ADDRESS} ${GSAD_LISTEN_PORT} ${GVMD_LISTEN_ADDRESS} ${GVMD_LISTEN_PORT} ${GSAD_GNUTLS_PRIORITIES}"
 retry="${GSAD_TIMEOUT}"
 
 depend() {
@@ -20,5 +18,5 @@ depend() {
 }
 
 start_pre() {
-        checkpath -d /run/gsad
+        checkpath -d --owner ${GSAD_USER} /var/run/gsad
 }
