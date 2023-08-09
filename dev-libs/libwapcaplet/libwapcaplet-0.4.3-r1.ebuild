@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit netsurf
 
 DESCRIPTION="string internment library, written in C"
-HOMEPAGE="http://www.netsurf-browser.org/projects/libwapcaplet/"
+HOMEPAGE="https://www.netsurf-browser.org/projects/libwapcaplet/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
