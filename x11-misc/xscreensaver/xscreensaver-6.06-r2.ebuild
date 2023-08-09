@@ -86,6 +86,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.05-remove-update-icon-cache.patch
 #	"${FILESDIR}"/${PN}-6.05-r2-configure-exit-codes.patch
 #	"${FILESDIR}"/${PN}-6.05-get-dirs-from-gtk3.0-in-configure.patch
+	"${FILESDIR}"/${PN}-6.06-service-remove-Alias-org.jwz.xscreensav.patch
+	"${FILESDIR}"/${PN}-6.06-service-start-xscreensaver-with-no-splash.patch
 )
 
 DOCS=( README{,.hacking} )
