@@ -65,6 +65,11 @@ src_prepare() {
 src_compile() {
 	tc-export CC CXX AR PKG_CONFIG
 	use static && append-ldflags -static
+	# Some toolchains are defaulting to C++17, which causes
+	# `<sys-apps/lshw-02.19.2b_p20220831` to break due to its use of the
+	# `register` keyword. Just pin it at 14, since future versions don't
+	# have this issue.
+	append-cxxflags '-std=c++14'
 
 	# Need two sep make statements to avoid parallel build issues. #588174
 	local sqlite=$(usex sqlite 1 0)
