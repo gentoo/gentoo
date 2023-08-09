@@ -1,0 +1,1920 @@
+From https://bugs.gentoo.org/903876
+From: "David C. Manuelda" <StormByte@gmail.com>
+Date: Fri, 16 Jun 2023 15:57:46 +0200
+Subject: [PATCH 1/2] Fixed autoconf for Clang16
+
+This solves some tests failing due:
+* implicit int functions
+* missing includes (like stdlib.h for exit)
+--- a/autoconf/acgeneral.m4
++++ b/autoconf/acgeneral.m4
+@@ -1673,7 +1673,7 @@ AC_MSG_CHECKING([for -l[]AC_LIB_NAME])
+ AC_CACHE_VAL(AC_CV_NAME,
+ [ac_save_LIBS="$LIBS"
+ LIBS="-l[]AC_LIB_NAME[] $4 $LIBS"
+-AC_TRY_LINK( , [main()], AC_CV_NAME=yes, AC_CV_NAME=no)
++AC_TRY_LINK( , [int main()], AC_CV_NAME=yes, AC_CV_NAME=no)
+ LIBS="$ac_save_LIBS"
+ ])dnl
+ AC_MSG_RESULT($AC_CV_NAME)
+@@ -2105,10 +2105,13 @@ AC_CACHE_VAL(AC_CV_NAME,
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+--- a/autoconf/aclocal.m4
++++ b/autoconf/aclocal.m4
+@@ -1179,6 +1179,9 @@ dnl Defines HAVE_VAR_TIMEZONE on success.
+ AC_DEFUN([AC_VAR_TIMEZONE],
+ [AC_CACHE_CHECK([for working extern long timezone ], ac_cv_var_timezone,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	long	timezone;
+ 
+ int
+@@ -1197,6 +1200,9 @@ dnl Defines HAVE_VAR___PROGNAME on success.
+ AC_DEFUN([AC_VAR___PROGNAME],
+ [AC_CACHE_CHECK([for working extern char *__progname ], ac_cv_var___progname,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char	*__progname;
+ 
+ int
+@@ -1215,6 +1221,9 @@ dnl Defines HAVE_VAR___PROGNAME_FULL on success.
+ AC_DEFUN([AC_VAR___PROGNAME_FULL],
+ [AC_CACHE_CHECK([for working extern char *__progname_full ], ac_cv_var___progname_full,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char	*__progname_full;
+ 
+ int
+@@ -1364,6 +1373,9 @@ AC_MSG_CHECKING(size of time_t)
+ AC_CACHE_VAL(AC_CV_NAME,
+ [AC_TRY_RUN([#include <stdio.h>
+ #include <sys/types.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifdef	TIME_WITH_SYS_TIME_H
+ #	include <sys/time.h>
+ #	include <time.h>
+@@ -1374,7 +1386,7 @@ AC_CACHE_VAL(AC_CV_NAME,
+ #	include <time.h>
+ #endif
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -1398,7 +1410,10 @@ changequote([, ])dnl
+ AC_MSG_CHECKING(size of wchar)
+ AC_CACHE_VAL(AC_CV_NAME,
+ [AC_TRY_RUN([#include <stdio.h>
+-main()
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -1431,7 +1446,7 @@ AC_CACHE_VAL(AC_CV_NAME,
+ #ifdef	HAVE_WCHAR_H
+ #include <wchar.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -1609,6 +1624,9 @@ dnl Defines BITFIELDS_HTOL on success.
+ AC_DEFUN([AC_C_BITFIELDS],
+ [AC_CACHE_CHECK([whether bitorder in bitfields is htol], ac_cv_c_bitfields_htol,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ struct {
+ 	unsigned char	x1:4;
+ 	unsigned char	x2:4;
+@@ -1675,6 +1693,9 @@ dnl Defines CHAR_IS_UNSIGNED on success.
+ AC_DEFUN([AC_TYPE_CHAR],
+ [AC_CACHE_CHECK([if char is unsigned], ac_cv_type_char_unsigned,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ {
+@@ -1783,6 +1804,9 @@ AC_DEFUN([AC_FUNC_DTOA_R],
+ [AC_REQUIRE([AC_FUNC_DTOA])dnl
+ AC_CACHE_CHECK([for __dtoa that needs result ptr], ac_cv_func_dtoa_r,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char *__dtoa();
+ int
+ main()
+@@ -1811,6 +1835,9 @@ dnl Defines HAVE_ECVT on success.
+ AC_DEFUN([AC_FUNC_ECVT],
+ [AC_CACHE_CHECK([for working ecvt() ], ac_cv_func_ecvt,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char *ecvt();
+ 
+ sprintf(s)
+@@ -1838,6 +1865,9 @@ dnl Defines HAVE_FCVT on success.
+ AC_DEFUN([AC_FUNC_FCVT],
+ [AC_CACHE_CHECK([for working fcvt() ], ac_cv_func_fcvt,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char *fcvt();
+ 
+ sprintf(s)
+@@ -1865,6 +1895,9 @@ dnl Defines HAVE_GCVT on success.
+ AC_DEFUN([AC_FUNC_GCVT],
+ [AC_CACHE_CHECK([for working gcvt() ], ac_cv_func_gcvt,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char *gcvt();
+ 
+ sprintf(s)
+@@ -1909,11 +1942,14 @@ AC_CACHE_CHECK([for mlock], ac_cv_func_mlock,
+                 [AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <errno.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifndef	HAVE_ERRNO_DEF
+ extern	int	errno;
+ #endif
+ 
+-main()
++int main()
+ {
+ 	if (mlock(0, 0) < 0) {
+ 		if (errno == EINVAL || errno ==  ENOMEM ||
+@@ -1940,6 +1976,9 @@ AC_CACHE_CHECK([for mlockall], ac_cv_func_mlockall,
+ #include <sys/types.h>
+ #include <sys/mman.h>
+ #include <errno.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifndef	HAVE_ERRNO_DEF
+ extern	int	errno;
+ #endif
+@@ -1994,6 +2033,9 @@ AC_CACHE_CHECK(for working mmap, ac_cv_func_mmap_fixed_mapped,
+ #include <fcntl.h>
+ #include <sys/mman.h>
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ /*
+  * Needed for Apollo Domain/OS and may be for others?
+  */
+@@ -2130,6 +2172,9 @@ AC_CACHE_CHECK(for mmap that needs ptr to size, ac_cv_func_mmap_sizep,
+ #include <signal.h>
+ #include <setjmp.h>
+ #include <sys/mman.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ #ifndef MAP_FILE
+ #define MAP_FILE   0		/* Needed on Apollo Domain/OS */
+@@ -2275,6 +2320,9 @@ AC_DEFUN([AC_FUNC_SMMAP],
+                 [AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/mman.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ #ifndef	MAP_ANONYMOUS
+ #	ifdef	MAP_ANON
+@@ -2356,6 +2404,9 @@ AC_DEFUN([AC_FUNC_SHMGET],
+ #include <sys/types.h>
+ #include <sys/ipc.h>
+ #include <sys/shm.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ {
+@@ -2380,6 +2431,9 @@ dnl Defines HAVE_SYS_SIGLIST on success.
+ AC_DEFUN([AC_FUNC_SYS_SIGLIST],
+ [AC_CACHE_CHECK([for sys_siglist], ac_cv_func_sys_siglist,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ { extern char *sys_siglist[];
+@@ -2404,6 +2458,9 @@ AC_MSG_CHECKING(bits in minor device number)
+ AC_CACHE_VAL(AC_CV_NAME,
+ [AC_TRY_RUN([#include <stdio.h>
+ #include <sys/types.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifdef major
+ #	define _FOUND_MAJOR_
+ #endif
+@@ -2469,6 +2526,9 @@ AC_DEFUN([AC_CHECK_MINOR_NONCONTIG],
+ AC_CACHE_CHECK([whether bits in minor device numbers are non contiguous], ac_cv_dev_minor_noncontig,
+                 [AC_TRY_RUN([
+ #include <sys/types.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifdef major
+ #	define _FOUND_MAJOR_
+ #endif
+@@ -2527,6 +2587,9 @@ dnl Defines NO_USER_MALLOC if we cannot.
+ AC_DEFUN([AC_USER_MALLOC],
+ [AC_CACHE_CHECK([if we may not define our own malloc()], ac_cv_no_user_malloc,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if !defined(__CYGWIN32__) && !defined(__CYGWIN__)
+ static int mcalled;
+ char *
+@@ -2548,7 +2611,7 @@ malloc(s)
+ free(p) char *p;{}
+ #endif	/* !defined(__CYGWIN32__) && !defined(__CYGWIN__) */
+ 	
+-main()
++int main()
+ {
+ #if !defined(__CYGWIN32__) && !defined(__CYGWIN__)
+ #ifdef	HAVE_STRDUP
+@@ -2571,6 +2634,9 @@ AC_DEFUN([AC_USER_XCVT],
+ [AC_CACHE_CHECK([if we may not define our own ecvt()/fcvt()/gcvt()], ac_cv_no_user_xcvt,
+                 [AC_TRY_LINK([
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ char *
+ ecvt(value, ndig, decpt, sign)
+@@ -2639,6 +2705,9 @@ AC_DEFUN([AC_FUNC_BSD_SETPGRP],
+ [AC_REQUIRE([AC_HEADER_ERRNO_DEF])dnl
+ AC_CACHE_CHECK([for BSD compliant setpgrp], ac_cv_func_bsd_setpgrp,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <errno.h>
+ #ifndef	HAVE_ERRNO_DEF
+ extern	int	errno;
+@@ -2664,6 +2733,9 @@ AC_DEFUN([AC_FUNC_PRINTF_J],
+ [AC_CACHE_CHECK([whether *printf() supports %jd], ac_cv_func_printf_j,
+                 [AC_TRY_RUN([
+ #include <inttypes.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ { intmax_t m = 123456789012LL;
+@@ -2684,6 +2756,9 @@ AC_DEFUN([AC_FUNC_PRINTF_Z],
+ [AC_CACHE_CHECK([whether *printf() supports %zd], ac_cv_func_printf_z,
+                 [AC_TRY_RUN([
+ #include <sys/types.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ { size_t m = 1234567890;
+@@ -2703,6 +2778,9 @@ dnl Defines HAVE_PRINTF_LL on success.
+ AC_DEFUN([AC_FUNC_PRINTF_LL],
+ [AC_CACHE_CHECK([whether *printf() supports %lld], ac_cv_func_printf_ll,
+                 [AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ { long long ll = 123456789012LL;
+@@ -2852,7 +2930,10 @@ dnl Defines HAVE_HARD_SYMLINKS on success.
+ AC_DEFUN([AC_HARD_SYMLINKS],
+ [AC_CACHE_CHECK([if link() allows hard links on symlinks], ac_cv_hard_symlinks,
+                 [AC_TRY_RUN([
+-main()
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++int main()
+ {
+ 	int	ret = 0;
+ 
+@@ -2884,8 +2965,11 @@ AC_DEFUN([AC_LINK_NOFOLLOW],
+                 [AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+-main()
++int main()
+ {
+ 	int	ret = 0;
+ 	int	f;
+@@ -2947,12 +3031,15 @@ AC_CACHE_CHECK([if access() does implement E_OK], ac_cv_access_e_ok,
+ #endif
+ #endif
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <errno.h>
+ #ifndef	HAVE_ERRNO_DEF
+ extern	int	errno;
+ #endif
+ 
+-main()
++int main()
+ {
+ #ifdef	_MSC_VER
+ /*
+@@ -2989,6 +3076,9 @@ AC_CACHE_CHECK([if fnmatch() does implement FNM_IGNORECASE or FNM_CASEFOLD], ac_
+ #ifdef	HAVE_FNMATCH
+ #include <fnmatch.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ #ifndef	FNM_IGNORECASE
+ #ifdef	FNM_CASEFOLD
+@@ -2996,7 +3086,7 @@ AC_CACHE_CHECK([if fnmatch() does implement FNM_IGNORECASE or FNM_CASEFOLD], ac_
+ #endif
+ #endif
+ 
+-main()
++int main()
+ {
+ 	int	ret;
+ 
+@@ -3468,6 +3558,9 @@ AC_CACHE_VAL(ac_cv_file_$ac_safe,
+                 [AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int
+ main()
+--- a/autoconf/acspecific.m4
++++ b/autoconf/acspecific.m4
+@@ -204,7 +204,7 @@ AC_DEFUN(AC_PROG_CC_WORKS,
+ [AC_MSG_CHECKING([whether the C compiler ($CC $CFLAGS $LDFLAGS) works])
+ AC_LANG_SAVE
+ AC_LANG_C
+-AC_TRY_COMPILER([main(){return(0);}], ac_cv_prog_cc_works, ac_cv_prog_cc_cross)
++AC_TRY_COMPILER([int main(){return(0);}], ac_cv_prog_cc_works, ac_cv_prog_cc_cross)
+ AC_LANG_RESTORE
+ AC_MSG_RESULT($ac_cv_prog_cc_works)
+ if test $ac_cv_prog_cc_works = no; then
+@@ -872,7 +872,8 @@ esac
+ AC_CACHE_CHECK(whether closedir returns void, ac_cv_func_closedir_void,
+ [AC_TRY_RUN([#include <sys/types.h>
+ #include <$ac_header_dirent>
+-int closedir(); main() { exit(closedir(opendir(".")) != 0); }],
++#include <stdlib.h>
++int closedir(); int main() { exit(closedir(opendir(".")) != 0); }],
+   ac_cv_func_closedir_void=no, ac_cv_func_closedir_void=yes, ac_cv_func_closedir_void=yes)])
+ if test $ac_cv_func_closedir_void = yes; then
+   AC_DEFINE(VOID_CLOSEDIR)
+@@ -958,12 +959,13 @@ AC_CACHE_CHECK(type of array argument to getgroups, ac_cv_type_getgroups,
+ [AC_TRY_RUN(
+ changequote(<<, >>)dnl
+ <<
++#include <stdlib.h>
+ /* Thanks to Mike Rendell for this test.  */
+ #include <sys/types.h>
+ #define NGID 256
+ #undef MAX
+ #define MAX(x, y) ((x) > (y) ? (x) : (y))
+-main()
++int main()
+ {
+   gid_t gidset[NGID];
+   int i, n;
+@@ -1041,7 +1043,8 @@ AC_DEFUN(AC_FUNC_CLOSEDIR_VOID,
+ AC_CACHE_CHECK(whether closedir returns void, ac_cv_func_closedir_void,
+ [AC_TRY_RUN([#include <sys/types.h>
+ #include <$ac_header_dirent>
+-int closedir(); main() { exit(closedir(opendir(".")) != 0); }],
++#include <stdlib.h>
++int closedir(); int main() { exit(closedir(opendir(".")) != 0); }],
+   ac_cv_func_closedir_void=no, ac_cv_func_closedir_void=yes, ac_cv_func_closedir_void=yes)])
+ if test $ac_cv_func_closedir_void = yes; then
+   AC_DEFINE(CLOSEDIR_VOID)
+@@ -1053,7 +1056,8 @@ AC_DEFUN(AC_FUNC_FNMATCH,
+ # Some versions of Solaris or SCO have a broken fnmatch function.
+ # So we run a test program.  If we are cross-compiling, take no chance.
+ # Thanks to John Oleynick and Franc,ois Pinard for this test.
+-[AC_TRY_RUN([main() { exit (fnmatch ("a*", "abc", 0) != 0); }],
++[AC_TRY_RUN([#include <stdlib.h>
++int main() { exit (fnmatch ("a*", "abc", 0) != 0); }],
+ ac_cv_func_fnmatch_works=yes, ac_cv_func_fnmatch_works=no,
+ ac_cv_func_fnmatch_works=no)])
+ if test $ac_cv_func_fnmatch_works = yes; then
+@@ -1090,6 +1094,9 @@ AC_CACHE_CHECK(for working mmap, ac_cv_func_mmap_fixed_mapped,
+ #include <sys/types.h>
+ #include <fcntl.h>
+ #include <sys/mman.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ /* This mess was copied from the GNU getpagesize.h.  */
+ #ifndef HAVE_GETPAGESIZE
+@@ -1219,12 +1226,15 @@ AC_DEFUN(AC_FUNC_GETPGRP,
+  */
+ #include <stdio.h>
+ #include <sys/types.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int     pid;
+ int     pg1, pg2, pg3, pg4;
+ int     ng, np, s, child;
+ 
+-main()
++int main()
+ {
+         pid = getpid();
+         pg1 = getpgrp(0);
+@@ -1275,12 +1285,15 @@ AC_TRY_RUN([
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ /*
+  * If this system has a BSD-style setpgrp, which takes arguments, exit
+  * successfully.
+  */
+-main()
++int main()
+ {
+     if (setpgrp(1,1) == -1)
+ 	exit(0);
+@@ -1456,8 +1469,11 @@ AC_DEFUN(AC_FUNC_WAIT3,
+ #include <sys/time.h>
+ #include <sys/resource.h>
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ /* HP-UX has wait3 but does not fill in rusage at all.  */
+-main() {
++int main() {
+   struct rusage r;
+   int i;
+   /* Use a field that we can force nonzero --
+@@ -1683,7 +1699,10 @@ AC_DEFUN(AC_FUNC_UTIME_NULL,
+ # Sequent interprets utime(file, 0) to mean use start of epoch.  Wrong.
+ AC_TRY_RUN([#include <sys/types.h>
+ #include <sys/stat.h>
+-main() {
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++int main() {
+ struct stat s, t;
+ exit(!(stat ("conftestdata", &s) == 0 && utime("conftestdata", (long *)0) == 0
+ && stat("conftestdata", &t) == 0 && t.st_mtime >= s.st_mtime
+@@ -1748,7 +1767,10 @@ LIBS="-lintl $LIBS"])])])
+ AC_DEFUN(AC_FUNC_MEMCMP,
+ [AC_CACHE_CHECK(for 8-bit clean memcmp, ac_cv_func_memcmp_clean,
+ [AC_TRY_RUN([
+-main()
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++int main()
+ {
+   char c0 = 0x40, c1 = 0x80, c2 = 0x81;
+   exit(memcmp(&c0, &c2, 1) < 0 && memcmp(&c1, &c2, 1) < 0 ? 0 : 1);
+@@ -1902,11 +1924,14 @@ AC_EGREP_CPP(yes,
+ ], ac_cv_c_char_unsigned=yes, ac_cv_c_char_unsigned=no)
+ else
+ AC_TRY_RUN(
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ [/* volatile prevents gcc2 from optimizing the test away on sparcs.  */
+ #if !defined(__STDC__) || __STDC__ != 1
+ #define volatile
+ #endif
+-main() {
++int main() {
+   volatile char c = 255; exit(c < 0);
+ }], ac_cv_c_char_unsigned=yes, ac_cv_c_char_unsigned=no)
+ fi])
+@@ -1920,7 +1945,11 @@ AC_DEFUN(AC_C_LONG_DOUBLE,
+ [if test "$GCC" = yes; then
+   ac_cv_c_long_double=yes
+ else
+-AC_TRY_RUN([int main() {
++AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++int main() {
+ /* The Stardent Vistra knows sizeof(long double), but does not support it.  */
+ long double foo = 0.0;
+ /* On Ultrix 4.3 cc, long double is 4 and double is 8.  */
+@@ -1935,7 +1964,11 @@ fi
+ AC_DEFUN(AC_INT_16_BITS,
+ [AC_OBSOLETE([$0], [; instead use AC_CHECK_SIZEOF(int)])dnl
+ AC_MSG_CHECKING(whether int is 16 bits)
+-AC_TRY_RUN([main() { exit(sizeof(int) != 2); }],
++AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++int main() { exit(sizeof(int) != 2); }],
+  [AC_MSG_RESULT(yes)
+  AC_DEFINE(INT_16_BITS)], AC_MSG_RESULT(no))
+ ])
+@@ -1943,7 +1976,11 @@ AC_TRY_RUN([main() { exit(sizeof(int) != 2); }],
+ AC_DEFUN(AC_LONG_64_BITS,
+ [AC_OBSOLETE([$0], [; instead use AC_CHECK_SIZEOF(long)])dnl
+ AC_MSG_CHECKING(whether long int is 64 bits)
+-AC_TRY_RUN([main() { exit(sizeof(long int) != 8); }],
++AC_TRY_RUN([
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++int main() { exit(sizeof(long int) != 8); }],
+  [AC_MSG_RESULT(yes)
+  AC_DEFINE(LONG_64_BITS)], AC_MSG_RESULT(no))
+ ])
+--- a/autoconf/config.guess
++++ b/autoconf/config.guess
+@@ -327,8 +327,9 @@ EOF
+ 	if grep bos325 /usr/include/stdio.h >/dev/null 2>&1; then
+ 		sed 's/^		//' << EOF >dummy.c
+ 		#include <sys/systemcfg.h>
++		#include <stdlib.h>
+ 
+-		main()
++		int main()
+ 			{
+ 			if (!__power_pc())
+ 				exit(1);
+--- a/autoconf/configure
++++ b/autoconf/configure
+@@ -1216,7 +1216,7 @@ cat > conftest.$ac_ext << EOF
+ #line 1217 "configure"
+ #include "confdefs.h"
+ 
+-main(){return(0);}
++int main(){return(0);}
+ EOF
+ if { eval echo configure:1222: \"$ac_link\" 1>&5; eval $ac_link 2>&5; } && test -s conftest${ac_exeext}; then
+   ac_cv_prog_cc_works=yes
+@@ -2033,6 +2033,7 @@ else
+ #line 2034 "configure"
+ #include "confdefs.h"
+ #include <ctype.h>
++#include <stdlib.h>
+ #define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ #define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+ #define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
+@@ -4997,6 +4998,9 @@ else
+ #line 4998 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++# include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #ifdef major
+ #	define _FOUND_MAJOR_
+@@ -5082,6 +5086,9 @@ else
+ #line 5083 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++# include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #ifdef major
+ #	define _FOUND_MAJOR_
+@@ -5378,6 +5385,10 @@ else
+ #line 5379 "configure"
+ #include "confdefs.h"
+ #include <signal.h>
++#ifdef	HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++
+ int main() {
+ char *cp = (char *)sys_siglist[0]; exit (cp != (char *)0 && *cp != 0);
+ ; return 0; }
+@@ -5835,6 +5846,9 @@ else
+ #line 5836 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ struct {
+ 	unsigned char	x1:4;
+ 	unsigned char	x2:4;
+@@ -5918,7 +5932,7 @@ for ac_kw in inline __inline__ __inline; do
+ #include "confdefs.h"
+ 
+ int main() {
+-} $ac_kw foo() {
++} int $ac_kw foo() {
+ ; return 0; }
+ EOF
+ if { eval echo configure:5925: \"$ac_compile\" 1>&5; eval $ac_compile 2>&5; }; then
+@@ -6044,12 +6058,19 @@ else
+ #line 6045 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#ifdef	HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++
+ /* Thanks to Mike Rendell for this test.  */
+ #include <sys/types.h>
+ #define NGID 256
+ #undef MAX
+ #define MAX(x, y) ((x) > (y) ? (x) : (y))
+-main()
++int main()
+ {
+   gid_t gidset[NGID];
+   int i, n;
+@@ -6210,8 +6231,11 @@ else
+   cat > conftest.$ac_ext <<EOF
+ #line 6212 "configure"
+ #include "confdefs.h"
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+-doit(int i, ...)
++int doit(int i, ...)
+ {return 0;}
+ int
+ main(int ac, char *av[])
+@@ -7151,6 +7175,9 @@ else
+ #else
+ #include <sys/wait.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ idtype_t idt; idt = P_ALL; idt = P_PGID; idt = P_PID; exit (idt == P_PID);
+ ; return 0; }
+@@ -7220,6 +7247,9 @@ else
+ #line 7221 "configure"
+ #include "confdefs.h"
+ #include <signal.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ stack_t ss; ss.ss_size = 0; exit (ss.ss_size == 0);
+ ; return 0; }
+@@ -7259,6 +7289,9 @@ else
+ #include <sys/siginfo.h>
+ #endif
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ siginfo_t si; si.si_signo = 0; exit (si.si_signo == 0);
+ ; return 0; }
+@@ -8125,13 +8158,16 @@ else
+ #line 8126 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8170,13 +8206,16 @@ else
+ #line 8171 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8215,13 +8254,16 @@ else
+ #line 8216 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8260,13 +8302,16 @@ else
+ #line 8261 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8305,13 +8350,16 @@ else
+ #line 8306 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8350,13 +8398,16 @@ else
+ #line 8351 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8395,13 +8446,16 @@ else
+ #line 8396 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8441,13 +8495,16 @@ else
+ #line 8442 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8486,13 +8543,16 @@ else
+ #line 8487 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8531,13 +8591,16 @@ else
+ #line 8532 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8576,13 +8639,16 @@ else
+ #line 8577 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8621,13 +8687,16 @@ else
+ #line 8622 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8666,13 +8735,16 @@ else
+ #line 8667 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8711,13 +8783,16 @@ else
+ #line 8712 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8756,13 +8831,16 @@ else
+ #line 8757 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8801,13 +8879,16 @@ else
+ #line 8802 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8846,13 +8927,16 @@ else
+ #line 8847 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8892,13 +8976,16 @@ else
+ #line 8893 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8937,13 +9024,16 @@ else
+ #line 8938 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -8982,13 +9072,16 @@ else
+ #line 8983 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9028,13 +9121,16 @@ else
+ #line 9029 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9073,13 +9169,16 @@ else
+ #line 9074 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9118,13 +9217,16 @@ else
+ #line 9119 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9163,13 +9265,16 @@ else
+ #line 9164 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9209,13 +9314,16 @@ else
+ #line 9210 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9254,13 +9362,16 @@ else
+ #line 9255 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9299,13 +9410,16 @@ else
+ #line 9300 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #if	HAVE_STDDEF_H || STDC_HEADERS
+ #include <stddef.h>	/* For ptrdiff_t, wchar_t, size_t */
+ #endif
+ #ifdef	HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9345,6 +9459,9 @@ else
+ #line 9346 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #ifdef	TIME_WITH_SYS_TIME_H
+ #	include <sys/time.h>
+@@ -9356,7 +9473,7 @@ else
+ #	include <time.h>
+ #endif
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9395,7 +9512,10 @@ else
+ #line 9396 "configure"
+ #include "confdefs.h"
+ #include <stdio.h>
+-main()
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9443,7 +9563,7 @@ else
+ #ifdef	HAVE_WCHAR_H
+ #include <wchar.h>
+ #endif
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+@@ -9483,6 +9603,9 @@ else
+ #line 9484 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ {
+@@ -10225,6 +10348,9 @@ else
+ #line 10226 "configure"
+ #include "confdefs.h"
+ #include <sys/socket.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ struct  sockaddr_storage ss; ss.ss_family = 0; exit (ss.ss_family == 0);
+ ; return 0; }
+@@ -10930,6 +11056,9 @@ else
+ #line 10931 "configure"
+ #include "confdefs.h"
+ #include <dirent.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ DIR d; d.dd_fd = 0; exit (d.dd_fd == 0);
+ ; return 0; }
+@@ -11148,6 +11277,9 @@ else
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+  char *p = (char *) stat; exit (p != (char *)0 && *p != 0); 
+ ; return 0; }
+@@ -11183,6 +11315,9 @@ else
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+  char *p = (char *) lstat; exit (p != (char *)0 && *p != 0); 
+ ; return 0; }
+@@ -11223,8 +11358,13 @@ else
+ #include <sys/time.h>
+ #include <sys/resource.h>
+ #include <stdio.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#include <sys/wait.h>
++#include <unistd.h>
+ /* HP-UX has wait3 but does not fill in rusage at all.  */
+-main() {
++int main() {
+   struct rusage r;
+   int i;
+   /* Use a field that we can force nonzero --
+@@ -11288,11 +11428,15 @@ else
+ 
+ #include <sys/types.h>
+ #include <errno.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifndef	HAVE_ERRNO_DEF
+ extern	int	errno;
+ #endif
++#include <sys/mman.h>
+ 
+-main()
++int main()
+ {
+ 	if (mlock(0, 0) < 0) {
+ 		if (errno == EINVAL || errno ==  ENOMEM ||
+@@ -11340,6 +11484,9 @@ else
+ #include <sys/types.h>
+ #include <sys/mman.h>
+ #include <errno.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifndef	HAVE_ERRNO_DEF
+ extern	int	errno;
+ #endif
+@@ -11471,9 +11618,14 @@ else
+ #line 11472 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#include <string.h>
++
+ extern	char *ecvt();
+ 
+-sprintf(s)
++int sprintf(s)
+ 	char	*s;
+ {
+ 	strcpy(s, "DEAD");
+@@ -11521,9 +11673,13 @@ else
+ #line 11522 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#include <string.h>
+ extern	char *fcvt();
+ 
+-sprintf(s)
++int sprintf(s)
+ 	char	*s;
+ {
+ 	strcpy(s, "DEAD");
+@@ -11571,9 +11727,13 @@ else
+ #line 11572 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#include <string.h>
+ extern	char *gcvt();
+ 
+-sprintf(s)
++int sprintf(s)
+ 	char	*s;
+ {
+ 	strcpy(s, "DEAD");
+@@ -11654,6 +11814,9 @@ else
+ #line 11655 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char *__dtoa();
+ int
+ main()
+@@ -11705,6 +11868,9 @@ else
+ #ifdef	HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -11786,6 +11952,9 @@ else
+ #line 11787 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #include <fcntl.h>
+ #include <signal.h>
+@@ -12021,6 +12190,9 @@ else
+ #include <sys/types.h>
+ #include <fcntl.h>
+ #include <sys/mman.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ /*
+  * Needed for Apollo Domain/OS and may be for others?
+@@ -12221,6 +12393,9 @@ else
+ #include <signal.h>
+ #include <setjmp.h>
+ #include <sys/mman.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ #ifndef MAP_FILE
+ #define MAP_FILE   0		/* Needed on Apollo Domain/OS */
+@@ -12390,6 +12565,9 @@ else
+ 
+ #include <sys/types.h>
+ #include <sys/mman.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ #ifndef	MAP_ANONYMOUS
+ #	ifdef	MAP_ANON
+@@ -12490,6 +12668,9 @@ else
+ #line 12491 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/ipc.h>
+ #include <sys/shm.h>
+@@ -13188,6 +13369,9 @@ else
+ #line 13189 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ { extern char *sys_siglist[];
+@@ -13228,6 +13412,9 @@ else
+ #line 13229 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int
+ main()
+ { long p;
+@@ -13272,6 +13459,9 @@ else
+ #line 13273 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <errno.h>
+ #ifndef	HAVE_ERRNO_DEF
+ extern	int	errno;
+@@ -13464,7 +13654,12 @@ else
+ #line 13465 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <inttypes.h>
++#include <stdio.h>
++#include <string.h>
+ int
+ main()
+ { intmax_t m = 123456789012LL;
+@@ -13507,7 +13702,12 @@ else
+ #line 13508 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
++#include <stdio.h>
++#include <string.h>
+ int
+ main()
+ { size_t m = 1234567890;
+@@ -13550,6 +13750,11 @@ else
+ #line 13551 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#include <stdio.h>
++#include <string.h>
+ int
+ main()
+ { long long ll = 123456789012LL;
+@@ -17544,6 +17749,9 @@ else
+ #ifdef	HAVE_TERMIOS_H
+ #include <termios.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -17586,6 +17794,9 @@ else
+ #ifdef	HAVE_TERMIOS_H
+ #include <termios.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -17851,6 +18062,9 @@ else
+ #ifdef	HAVE_STRING_H
+ #include <string.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -17896,6 +18110,9 @@ else
+ #ifdef	HAVE_WCHAR_H
+ #include <wchar.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -18902,6 +19119,9 @@ else
+ #line 18903 "configure"
+ #include "confdefs.h"
+ #include <dirent.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef dirfd
+@@ -18947,6 +19167,9 @@ else
+ #ifdef	HAVE_WCTYPE_H
+ #include <wctype.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -18993,6 +19216,9 @@ else
+ #ifdef	HAVE_WCTYPE_H
+ #include <wctype.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -19036,6 +19262,9 @@ else
+ #ifdef	HAVE_CTYPE_H
+ #include <ctype.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -19082,6 +19311,9 @@ else
+ #ifdef	HAVE_WCTYPE_H
+ #include <wctype.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -19214,6 +19446,9 @@ else
+ #ifdef	HAVE_WCTYPE_H
+ #include <wctype.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -19260,6 +19495,9 @@ else
+ #ifdef	HAVE_WCTYPE_H
+ #include <wctype.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -19300,6 +19538,9 @@ else
+ #line 19301 "configure"
+ #include "confdefs.h"
+ #include <ieeefp.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef finite
+@@ -19338,6 +19579,9 @@ else
+ #line 19339 "configure"
+ #include "confdefs.h"
+ #include <ieeefp.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef isnand
+@@ -19380,6 +19624,10 @@ else
+ #line 19381 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#include <unistd.h>
+ #if !defined(__CYGWIN32__) && !defined(__CYGWIN__)
+ static int mcalled;
+ char *
+@@ -19398,10 +19646,10 @@ malloc(s)
+ 	return (sbrk(s));
+ }
+ 
+-free(p) char *p;{}
++int free(p) char *p;{}
+ #endif	/* !defined(__CYGWIN32__) && !defined(__CYGWIN__) */
+ 	
+-main()
++int main()
+ {
+ #if !defined(__CYGWIN32__) && !defined(__CYGWIN__)
+ #ifdef	HAVE_STRDUP
+@@ -19445,6 +19693,9 @@ else
+ #line 19446 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	long	timezone;
+ 
+ int
+@@ -19529,6 +19780,9 @@ else
+ #line 19530 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char	*__progname;
+ 
+ int
+@@ -19570,6 +19824,9 @@ else
+ #line 19571 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ extern	char	*__progname_full;
+ 
+ int
+@@ -19612,7 +19869,13 @@ else
+ #line 19613 "configure"
+ #include "confdefs.h"
+ 
+-main()
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#include <unistd.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++int main()
+ {
+ 	int	ret = 0;
+ 
+@@ -19664,10 +19927,15 @@ else
+ #line 19665 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <fcntl.h>
++#include <unistd.h>
+ 
+-main()
++int main()
+ {
+ 	int	ret = 0;
+ 	int	f;
+@@ -19768,6 +20036,9 @@ else
+ #line 19769 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ # ifdef HAVE_UNISTD_H
+ #  include <unistd.h>
+ # endif
+@@ -19795,7 +20066,7 @@ else
+ extern	int	errno;
+ #endif
+ 
+-main()
++int main()
+ {
+ #ifdef	_MSC_VER
+ /*
+@@ -19891,6 +20162,9 @@ else
+ #line 19892 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #ifdef	HAVE_FNMATCH
+ #include <fnmatch.h>
+ #endif
+@@ -19901,7 +20175,7 @@ else
+ #endif
+ #endif
+ 
+-main()
++int main()
+ {
+ 	int	ret;
+ 
+@@ -20214,6 +20488,9 @@ else
+ #undef	u_long
+ #include <windows.h>
+ #endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ 
+ int main() {
+ 
+@@ -21338,6 +21615,9 @@ else
+ #line 21339 "configure"
+ #include "confdefs.h"
+ #include <libintl.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef gettext
+@@ -21467,6 +21747,9 @@ else
+ #line 21468 "configure"
+ #include "confdefs.h"
+ #include <iconv.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef iconv
+@@ -21505,6 +21788,9 @@ else
+ #line 21506 "configure"
+ #include "confdefs.h"
+ #include <iconv.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef iconv_open
+@@ -21543,6 +21829,9 @@ else
+ #line 21544 "configure"
+ #include "confdefs.h"
+ #include <iconv.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef iconv_close
+@@ -21581,6 +21870,9 @@ else
+ #line 21582 "configure"
+ #include "confdefs.h"
+ #include <iconv.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef libiconv
+@@ -21619,6 +21911,9 @@ else
+ #line 21620 "configure"
+ #include "confdefs.h"
+ #include <iconv.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef libiconv_open
+@@ -21657,6 +21952,9 @@ else
+ #line 21658 "configure"
+ #include "confdefs.h"
+ #include <iconv.h>
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ int main() {
+ 
+ #ifndef libiconv_close
+@@ -23990,6 +24288,9 @@ else
+ #line 23991 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+@@ -24044,6 +24345,9 @@ else
+ #line 24045 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+@@ -24098,6 +24402,9 @@ else
+ #line 24099 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+@@ -24152,6 +24459,9 @@ else
+ #line 24153 "configure"
+ #include "confdefs.h"
+ 
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+-- 
+2.41.0
+
+

@@ -1,0 +1,22 @@
+From https://bugs.gentoo.org/903876
+From: "David C. Manuelda" <StormByte@gmail.com>
+Date: Fri, 16 Jun 2023 15:59:38 +0200
+Subject: [PATCH 2/2] Added a missing include
+
+--- a/cdrecord/cdrecord.c
++++ b/cdrecord/cdrecord.c
+@@ -61,6 +61,10 @@ static	UConst char sccsid[] =
+ #include <vms_init.h>
+ #endif
+ 
++#if defined(HAVE_MLOCKALL)
++#include <sys/mman.h>
++#endif
++
+ #include "version.h"
+ 
+ char	cdr_version[] = VERSION;
+-- 
+2.41.0
+
+
