@@ -1,15 +1,17 @@
 #!/sbin/openrc-run
-# Copyright 2020 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+: ${GVM_USER:=gvm}
+: ${GVM_GROUP:=$(id -ng ${GVM_USER})}
+: ${OSPD_TIMEOUT:=30}
 
 name="remotely control an OpenVAS Scanner"
 command=/usr/bin/ospd-openvas
-pidfile="/run/${RC_SVCNAME}.pid"
+command_user="${GVM_USER}:${GVM_GROUP}"
 command_args="${OSPD_OPENVAS_OPTIONS} \
-	${OSPD_OPENVAS_UNIX_SOCKET} \
-	${OSPD_OPENVAS_SOCKET_MODE} \
-	--pid-file ${pidfile} \
-	--config /etc/openvas/ospd.conf"
+	--config /etc/gvm/ospd-openvas.conf"
+retry="${OSPD_TIMEOUT}"
 
 depend() {
 	after bootmisc
@@ -17,5 +19,5 @@ depend() {
 }
 
 start_pre() {
-        checkpath -d /var/run/ospd
+        checkpath -d --owner ${GVM_USER} /var/run/ospd
 }
