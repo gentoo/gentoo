@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools systemd
 DESCRIPTION="protects hosts from brute force attacks against ssh"
@@ -12,7 +12,7 @@ if [[ "${PV}" == 99999 ]] ; then
 	EGIT_REPO_URI="https://bitbucket.org/${PN}/${PN}"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="BSD"
