@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 
 RDEPEND="
 	>=dev-lang/php-8.0[hash(+),ldap,session,xml,nls]
-	dev-libs/openssl:=
+	dev-libs/openssl
 	virtual/httpd-php
 "
 BDEPEND="
@@ -25,20 +25,17 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.1.1-fix-magic-quotes.patch"
-	"${FILESDIR}/${PN}-1.2.6.2-r1-default-templates.patch"
 	"${FILESDIR}/${PN}-1.2.6.4-getDN-htmlspecialchars.patch"
 )
 
 need_httpd_cgi
 
 src_prepare() {
-	has_version "dev-libs/openssl:0/1.1" && \
-		eapply "${FILESDIR}/${PN}-1.2.6.5-openssl-1.patch"
 	mv config/config.php.example config/config.php || die
 	default
 	# fix QA notice about broken IDAT window length
-	pngfix --out=network.png htdocs/images/default/network.png || die
-	pngfix --out=document.png htdocs/images/default/document.png || die
+	pngfix --out=network.png htdocs/images/default/network.png; [[ $? -lt 16 ]] || die
+	pngfix --out=document.png htdocs/images/default/document.png; [[ $? -lt 16 ]] || die
 	mv -f network.png document.png htdocs/images/default/ || die
 }
 
