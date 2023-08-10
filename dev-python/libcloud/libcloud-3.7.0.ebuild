@@ -4,15 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
 
+MY_P=apache-libcloud-${PV}
 DESCRIPTION="Unified Interface to the Cloud - python support libs"
 HOMEPAGE="https://libcloud.apache.org/"
-SRC_URI="mirror://apache/${PN}/apache-${P}.tar.bz2"
-S="${WORKDIR}/apache-${P}"
+SRC_URI="mirror://apache/libcloud/${MY_P}.tar.bz2"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
