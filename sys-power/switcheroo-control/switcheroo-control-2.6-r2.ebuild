@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="gtk-doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="amd64 ~arm ~arm64 ~loong"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
