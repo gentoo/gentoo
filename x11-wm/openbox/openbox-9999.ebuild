@@ -104,7 +104,7 @@ src_install() {
 	exeinto /etc/X11/Sessions
 	newexe - ${PN} <<-EOF
 	#!/bin/sh
-	${PN}
+	openbox-session
 	EOF
 
 	emake DESTDIR="${D}" install
