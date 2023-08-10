@@ -6,7 +6,7 @@ EAPI=8
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools edo flag-o-matic multilib multilib-build
-inherit python-any-r1 toolchain-funcs wrapper
+inherit prefix python-any-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
 WINE_MONO=8.0.0
@@ -223,6 +223,9 @@ src_prepare() {
 
 	# ensure .desktop calls this variant + slot
 	sed -i "/^Exec=/s/wine /${P} /" loader/wine.desktop || die
+
+	# datadir is not where wine-mono is installed, so prefixy alternate paths
+	hprefixify -w /get_mono_path/ dlls/mscoree/metahost.c
 
 	# always update for patches (including user's wrt #432348)
 	eautoreconf
