@@ -10,7 +10,7 @@
 		<name>David Seifert</name>
 	</maintainer>
 	<use>
-		<flag name="kernel-open">Use the open source variant of drivers (Turing/Ampere+ GPUs only, aka GTX 1650+, very experimental)</flag>
+		<flag name="kernel-open">Use the open source variant of drivers (Turing/Ampere+ GPUs only, aka GTX 1650+, experimental)</flag>
 		<flag name="persistenced">Install the persistence daemon for keeping devices state when unused (e.g. for headless)</flag>
 		<flag name="static-libs">Install the XNVCtrl static library for accessing sensors and other features</flag>
 		<flag name="tools">Install additional tools such as nvidia-settings</flag>

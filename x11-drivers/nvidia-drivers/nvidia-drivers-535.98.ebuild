@@ -492,12 +492,8 @@ pkg_postinst() {
 	if use kernel-open; then
 		ewarn
 		ewarn "Open source variant of ${PN} was selected, be warned it is experimental"
-		ewarn "and only usable with Turing / Ampere and later GPUs, aka GTX 1650+."
+		ewarn "and only for modern GPUs (e.g. GTX 1650+). Try to disable if run into issues."
 		ewarn "Please also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
-		ewarn
-		ewarn "Many features are not yet implemented in the drivers and limitations are"
-		ewarn "to be expected. Please do not report non-build/packaging bugs to Gentoo."
-		ewarn "Switch back to USE=-kernel-open to restore functionality if needed for now."
 	fi
 
 	if use wayland && use modules && [[ ! -v NV_HAD_WAYLAND ]]; then
