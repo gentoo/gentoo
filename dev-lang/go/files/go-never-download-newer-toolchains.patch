@@ -1,0 +1,13 @@
+diff --git a/go.env b/go.env
+index 6ff2b921d4..1112a19c9b 100644
+--- a/go.env
++++ b/go.env
+@@ -7,6 +7,6 @@
+ GOPROXY=https://proxy.golang.org,direct
+ GOSUMDB=sum.golang.org
+ 
+-# Automatically download newer toolchains as directed by go.mod files.
++# Never download newer toolchains.
+ # See https://go.dev/doc/toolchain for details.
+-GOTOOLCHAIN=auto
++GOTOOLCHAIN=local
