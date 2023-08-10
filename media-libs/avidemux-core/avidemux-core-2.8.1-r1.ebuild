@@ -40,7 +40,10 @@ BDEPEND="
 	!system-ffmpeg? ( dev-lang/yasm[nls=] )
 "
 
-PATCHES=( "${FILESDIR}"/avidemux-core-2.7.6-ffmpeg-flags.patch )
+PATCHES=(
+	"${FILESDIR}"/avidemux-core-2.7.6-ffmpeg-flags.patch
+	"${FILESDIR}"/avidemux-core-2.8.1-ffmpeg-2.41.patch
+)
 
 S="${WORKDIR}/avidemux2-${PV}"
 CMAKE_USE_DIR="${S}/${PN/-/_}"
