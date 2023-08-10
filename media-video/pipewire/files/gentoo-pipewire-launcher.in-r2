@@ -11,7 +11,7 @@
 
 DATE_FORMAT='+%Y-%m-%dT%H:%M:%S%Z'
 
-CONF="${XDG_CONFIG_HOME}/gentoo-pipewire-launcher.conf"
+CONF="${XDG_CONFIG_HOME:-${HOME}/.config}/gentoo-pipewire-launcher.conf"
 if [ -f "${CONF}" ]
 then
     . "${CONF}"

@@ -23,6 +23,10 @@ However, a restart can be forced by calling
 with an argument of \(oqrestart\(cq.
 .PP
 .B ${XDG_CONFIG_HOME}/gentoo\-pipewire\-launcher.conf
+(or, if
+.B ${XDG_CONFIG_HOME}
+is not set,
+.BR ${HOME}/.config/gentoo\-pipewire\-launcher.conf )
 can be used to specify absolute paths of files to which log output
 should be sent, by specifying values for one or more of the
 .B GENTOO_PIPEWIRE_LOG\fR,
@@ -36,6 +40,11 @@ Please report bugs via https://bugs.gentoo.org/
 .TP
 .B ${XDG_CONFIG_HOME}/gentoo\-pipewire\-launcher.conf
 configures locations of files for log output.
+.TP
+.B ${HOME}/.config/gentoo\-pipewire\-launcher.conf
+configures locations of files for log output if
+.B ${XDG_CONFIG_HOME}
+is not set.
 .SH "SEE ALSO"
 .BR pipewire (1),
 .BR pipewire-pulse (1),
