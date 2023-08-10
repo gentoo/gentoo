@@ -3,6 +3,7 @@
 
 EAPI=8
 
+MULTILIB_ABIS="amd64 x86" # allow usage on /no-multilib/
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit flag-o-matic meson-multilib
 
