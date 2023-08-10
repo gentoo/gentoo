@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2023-08-10)
+# Requires 64bit support.
+app-emulation/wine-staging wow64
+app-emulation/wine-vanilla wow64
+
 # Guilherme Amadio <amadio@gentoo.org> (2023-06-30)
 # sys-cluster/ceph not keyworded on x86
 >=net-libs/xrootd-5.6.0 ceph
