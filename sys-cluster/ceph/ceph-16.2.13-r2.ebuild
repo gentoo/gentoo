@@ -47,7 +47,6 @@ DEPEND="
 	dev-cpp/gflags:=
 	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
-	<dev-libs/libfmt-9:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
 	dev-libs/libevent:=
@@ -318,6 +317,8 @@ ceph_src_configure() {
 		-DWITH_RDMA:BOOL=$(usex rdma)
 		-DCMAKE_INSTALL_DOCDIR:PATH="${EPREFIX}/usr/share/doc/${PN}-${PVR}"
 		-DCMAKE_INSTALL_SYSCONFDIR:PATH="${EPREFIX}/etc"
+		# use the bundled libfmt for now since they seem to constantly break their API
+		-DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON
 		-Wno-dev
 	)
 

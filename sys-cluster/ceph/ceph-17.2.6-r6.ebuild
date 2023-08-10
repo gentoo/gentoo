@@ -33,8 +33,6 @@ IUSE="
 
 IUSE+="$(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
-# <dev-libs/libfmt-10 because we're using -DFMT_DEPRECATED_OSTREAM for bug #895254
-# See https://github.com/ceph/ceph/pull/49768 for a fix for newer versions.
 DEPEND="
 	${LUA_DEPS}
 	${PYTHON_DEPS}
@@ -51,7 +49,6 @@ DEPEND="
 	dev-cpp/gflags:=
 	dev-lang/jsonnet:=
 	dev-libs/libaio:=
-	<dev-libs/libfmt-10:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
 	dev-libs/libevent:=
@@ -257,10 +254,6 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 
-	# Add compatibility hack for fmt-9, this won't work with fmt-10 though.
-	# See bug #895254. Should be fixed upstream properly by https://github.com/ceph/ceph/pull/49768.
-	append-cppflags -DFMT_DEPRECATED_OSTREAM
-
 	if use system-boost; then
 		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
 			| xargs --null sed -r \
@@ -336,6 +329,8 @@ ceph_src_configure() {
 		-DWITH_RDMA:BOOL=$(usex rdma)
 		-DCMAKE_INSTALL_DOCDIR:PATH="${EPREFIX}/usr/share/doc/${PN}-${PVR}"
 		-DCMAKE_INSTALL_SYSCONFDIR:PATH="${EPREFIX}/etc"
+		# use the bundled libfmt for now since they seem to constantly break their API
+		-DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON
 		-Wno-dev
 	)
 
