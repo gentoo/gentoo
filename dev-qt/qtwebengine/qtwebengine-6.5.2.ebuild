@@ -87,6 +87,10 @@ DEPEND="${RDEPEND}
 	media-libs/libglvnd
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.15.10_p20230623-ffmpeg-binutils-2.41.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/html5lib[${PYTHON_USEDEP}]"
 }
