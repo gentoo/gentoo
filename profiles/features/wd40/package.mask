@@ -34,7 +34,7 @@ dev-python/jsonschema-specifications
 dev-python/jupyterlab-server
 dev-python/jupyterlab
 dev-python/keyring
-dev-python/libcloud
+dev-python/apache-libcloud
 dev-python/moto
 dev-python/mkdocs-redirects
 dev-python/mkdocs-material

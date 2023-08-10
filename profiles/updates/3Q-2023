@@ -8,3 +8,4 @@ move dev-python/indexed_gzip dev-python/indexed-gzip
 move dev-python/signature_dispatch dev-python/signature-dispatch
 move dev-python/mdx_gh_links dev-python/mdx-gh-links
 move dev-python/nest_asyncio dev-python/nest-asyncio
+move dev-python/libcloud dev-python/apache-libcloud

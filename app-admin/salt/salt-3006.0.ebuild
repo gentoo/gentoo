@@ -48,8 +48,8 @@ RDEPEND="
 	libcloud? (
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/aiosignal[${PYTHON_USEDEP}]
+		>=dev-python/apache-libcloud-2.5.0[${PYTHON_USEDEP}]
 		dev-python/async-timeout[${PYTHON_USEDEP}]
-		>=dev-python/libcloud-2.5.0[${PYTHON_USEDEP}]
 	)
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
@@ -88,6 +88,7 @@ BDEPEND="
 	dev-python/build[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
+		dev-python/apache-libcloud[${PYTHON_USEDEP}]
 		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
 		>=dev-python/certifi-2022.12.07[${PYTHON_USEDEP}]
 		dev-python/cherrypy[${PYTHON_USEDEP}]
@@ -109,7 +110,6 @@ BDEPEND="
 		dev-python/pytest-system-statistics[${PYTHON_USEDEP}]
 		dev-python/pytest-custom-exit-code[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/libcloud[${PYTHON_USEDEP}]
 		net-dns/bind-tools
 		>=dev-python/virtualenv-20.3.0[${PYTHON_USEDEP}]
 		dev-util/yamllint[${PYTHON_USEDEP}]
