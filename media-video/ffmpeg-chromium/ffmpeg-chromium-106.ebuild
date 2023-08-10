@@ -114,6 +114,7 @@ RESTRICT="
 PATCHES=(
 	"${FILESDIR}"/${PN}-100.patch
 	"${FILESDIR}"/${PN}-vk-headers.patch
+	"${FILESDIR}"/${PN}-binutils-2.41.patch
 	"${FILESDIR}"/chromium.patch
 )
 
