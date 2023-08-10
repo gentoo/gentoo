@@ -7,8 +7,8 @@ DUNE_PKG_NAME=ctypes
 inherit dune
 
 DESCRIPTION="Library for binding to C libraries using pure OCaml"
-HOMEPAGE="https://github.com/ocamllabs/ocaml-ctypes/"
-SRC_URI="https://github.com/ocamllabs/ocaml-ctypes/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/yallop/ocaml-ctypes/"
+SRC_URI="https://github.com/yallop/ocaml-ctypes/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
