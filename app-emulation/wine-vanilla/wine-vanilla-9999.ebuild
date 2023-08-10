@@ -370,6 +370,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use !abi_x86_32 && use !wow64; then
+		ewarn "32bit support is disabled. While 64bit applications themselves will"
+		ewarn "work, be warned that it is not unusual that installers or other helpers"
+		ewarn "will attempt to use 32bit and fail. If do not want full USE=abi_x86_32,"
+		ewarn "note that the experimental USE=wow64 can allow 32bit without multilib."
+	fi
+
 	eselect wine update --if-unset || die
 }
 
