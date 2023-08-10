@@ -26,3 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 dev-ml/lwt )"
 REQUIRED_USE="ocamlopt"
+
+src_install() {
+	dune-install ctypes ctypes-foreign
+}
