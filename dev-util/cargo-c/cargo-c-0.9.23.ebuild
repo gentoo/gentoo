@@ -13,12 +13,12 @@ CRATES="
 	${MY_P}
 	adler-1.0.2
 	ahash-0.8.3
-	aho-corasick-1.0.2
+	aho-corasick-1.0.3
 	anstream-0.3.2
 	anstyle-1.0.1
 	anstyle-parse-0.2.1
 	anstyle-query-1.0.0
-	anstyle-wincon-1.0.1
+	anstyle-wincon-1.0.2
 	anyhow-1.0.72
 	arc-swap-1.6.0
 	arrayvec-0.5.2
@@ -35,19 +35,19 @@ CRATES="
 	bumpalo-3.13.0
 	bytes-1.4.0
 	bytesize-1.2.0
-	cargo-0.72.1
+	cargo-0.72.2
 	cargo-platform-0.1.3
 	cargo-util-0.2.4
 	cbindgen-0.24.5
-	cc-1.0.79
+	cc-1.0.82
 	cfg-if-1.0.0
-	clap-4.3.15
-	clap_builder-4.3.15
+	clap-4.3.21
+	clap_builder-4.3.21
 	clap_derive-4.3.12
 	clap_lex-0.5.0
 	clru-0.6.1
 	colorchoice-1.0.0
-	const-oid-0.9.4
+	const-oid-0.9.5
 	core-foundation-0.9.3
 	core-foundation-sys-0.8.4
 	cpufeatures-0.2.9
@@ -59,23 +59,23 @@ CRATES="
 	crypto-common-0.1.6
 	ct-codecs-1.1.1
 	curl-0.4.44
-	curl-sys-0.4.63+curl-8.1.2
-	der-0.7.7
+	curl-sys-0.4.65+curl-8.2.1
+	der-0.7.8
+	deranged-0.3.7
 	digest-0.10.7
 	dunce-1.0.4
-	ecdsa-0.16.7
+	ecdsa-0.16.8
 	ed25519-compact-2.0.4
-	either-1.8.1
+	either-1.9.0
 	elliptic-curve-0.13.5
 	env_logger-0.10.0
 	equivalent-1.0.1
-	errno-0.3.1
+	errno-0.3.2
 	errno-dragonfly-0.1.2
-	fastrand-1.9.0
 	fastrand-2.0.0
 	ff-0.13.0
 	fiat-crypto-0.1.20
-	filetime-0.2.21
+	filetime-0.2.22
 	flate2-1.0.26
 	fnv-1.0.7
 	foreign-types-0.3.2
@@ -89,11 +89,11 @@ CRATES="
 	gix-0.44.1
 	gix-actor-0.20.0
 	gix-attributes-0.12.0
-	gix-bitmap-0.2.5
-	gix-chunk-0.4.3
-	gix-command-0.2.6
+	gix-bitmap-0.2.6
+	gix-chunk-0.4.4
+	gix-command-0.2.8
 	gix-config-0.22.0
-	gix-config-value-0.12.3
+	gix-config-value-0.12.5
 	gix-credentials-0.14.0
 	gix-date-0.5.1
 	gix-diff-0.29.0
@@ -101,8 +101,8 @@ CRATES="
 	gix-features-0.29.0
 	gix-fs-0.1.1
 	gix-glob-0.7.0
-	gix-hash-0.11.3
-	gix-hashtable-0.2.3
+	gix-hash-0.11.4
+	gix-hashtable-0.2.4
 	gix-ignore-0.2.0
 	gix-index-0.16.1
 	gix-lock-5.0.1
@@ -110,25 +110,25 @@ CRATES="
 	gix-object-0.29.2
 	gix-odb-0.45.0
 	gix-pack-0.35.0
-	gix-packetline-0.16.3
-	gix-path-0.8.3
-	gix-prompt-0.5.2
+	gix-packetline-0.16.4
+	gix-path-0.8.4
+	gix-prompt-0.5.5
 	gix-protocol-0.32.0
-	gix-quote-0.4.5
+	gix-quote-0.4.6
 	gix-ref-0.29.1
 	gix-refspec-0.10.1
 	gix-revision-0.13.0
-	gix-sec-0.8.3
+	gix-sec-0.8.4
 	gix-tempfile-5.0.3
-	gix-trace-0.1.2
+	gix-trace-0.1.3
 	gix-transport-0.31.0
 	gix-traverse-0.25.0
 	gix-url-0.18.0
-	gix-utils-0.1.4
-	gix-validate-0.7.6
+	gix-utils-0.1.5
+	gix-validate-0.7.7
 	gix-worktree-0.17.1
 	glob-0.3.1
-	globset-0.4.11
+	globset-0.4.13
 	group-0.13.0
 	hashbrown-0.12.3
 	hashbrown-0.14.0
@@ -146,7 +146,6 @@ CRATES="
 	imara-diff-0.1.5
 	indexmap-1.9.3
 	indexmap-2.0.0
-	instant-0.1.12
 	io-close-0.3.7
 	io-lifetimes-1.0.11
 	is-terminal-0.4.9
@@ -160,11 +159,11 @@ CRATES="
 	lazycell-1.3.0
 	libc-0.2.147
 	libgit2-sys-0.15.2+1.6.4
-	libnghttp2-sys-0.1.7+1.45.0
+	libnghttp2-sys-0.1.8+1.55.1
 	libssh2-sys-0.3.0
-	libz-sys-1.1.9
+	libz-sys-1.1.12
 	linux-raw-sys-0.3.8
-	linux-raw-sys-0.4.3
+	linux-raw-sys-0.4.5
 	lock_api-0.4.10
 	log-0.4.19
 	maybe-async-0.2.7
@@ -174,15 +173,15 @@ CRATES="
 	miniz_oxide-0.7.1
 	miow-0.5.0
 	nom-7.1.3
-	num-traits-0.2.15
+	num-traits-0.2.16
 	num_threads-0.1.6
 	once_cell-1.18.0
 	opener-0.5.2
-	openssl-0.10.55
+	openssl-0.10.56
 	openssl-macros-0.1.1
 	openssl-probe-0.1.5
-	openssl-src-111.26.0+1.1.1u
-	openssl-sys-0.9.90
+	openssl-src-111.27.0+1.1.1v
+	openssl-sys-0.9.91
 	ordered-float-2.10.0
 	orion-0.17.5
 	os_info-3.7.0
@@ -199,31 +198,30 @@ CRATES="
 	primeorder-0.13.2
 	proc-macro2-1.0.66
 	prodash-23.1.2
-	quote-1.0.31
+	quote-1.0.32
 	rand-0.8.5
 	rand_chacha-0.3.1
 	rand_core-0.6.4
 	rand_xoshiro-0.6.0
-	redox_syscall-0.2.16
 	redox_syscall-0.3.5
-	regex-1.9.1
-	regex-automata-0.3.3
+	regex-1.9.3
+	regex-automata-0.3.6
 	regex-syntax-0.7.4
 	rfc6979-0.4.0
 	rustfix-0.6.1
 	rustix-0.37.23
-	rustix-0.38.4
+	rustix-0.38.8
 	ryu-1.0.15
 	same-file-1.0.6
 	schannel-0.1.22
 	scopeguard-1.2.0
 	sec1-0.7.3
 	semver-1.0.18
-	serde-1.0.171
+	serde-1.0.183
 	serde-value-0.7.0
-	serde_derive-1.0.171
+	serde_derive-1.0.183
 	serde_ignored-0.1.9
-	serde_json-1.0.103
+	serde_json-1.0.104
 	serde_spanned-0.6.3
 	sha1-0.10.5
 	sha1_smol-1.0.0
@@ -241,17 +239,17 @@ CRATES="
 	strsim-0.10.0
 	subtle-2.5.0
 	syn-1.0.109
-	syn-2.0.26
-	tar-0.4.39
-	tempfile-3.6.0
+	syn-2.0.28
+	tar-0.4.40
+	tempfile-3.7.1
 	termcolor-1.2.0
 	terminal_size-0.2.6
-	thiserror-1.0.43
-	thiserror-impl-1.0.43
+	thiserror-1.0.44
+	thiserror-impl-1.0.44
 	thread_local-1.1.7
-	time-0.3.23
+	time-0.3.25
 	time-core-0.1.1
-	time-macros-0.2.10
+	time-macros-0.2.11
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.1
 	toml-0.5.11
@@ -302,7 +300,7 @@ CRATES="
 	windows_x86_64_gnullvm-0.48.0
 	windows_x86_64_msvc-0.42.2
 	windows_x86_64_msvc-0.48.0
-	winnow-0.5.0
+	winnow-0.5.7
 	zeroize-1.6.0
 "
 
