@@ -1,0 +1,15 @@
+Patch Source: https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/wine/rpath.patch
+Alpine Bug: https://gitlab.alpinelinux.org/alpine/aports/-/issues/13249
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -784,6 +784,9 @@ case $host_os in
+                         [WINELOADER_LDFLAGS="$WINELOADER_LDFLAGS -Wl,-z,max-page-size=0x1000"])
+         ;;
+     esac
++
++    # do this at the end because it needs double dollar for makefile
++    WINE_TRY_CFLAGS([-Wl,-rpath,\\\$ORIGIN],[UNIXLDFLAGS="$UNIXLDFLAGS '-Wl,-rpath,\$\$ORIGIN'"])
+     ;;
+ esac
+ 
