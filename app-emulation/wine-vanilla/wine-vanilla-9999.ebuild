@@ -271,7 +271,7 @@ src_configure() {
 			ac_cv_prog_x86_64_CC="${mingwcc_amd64}"
 			ac_cv_prog_i386_CC="${mingwcc_x86}"
 
-			CROSSCFLAGS="$(
+			CROSSCFLAGS="${CROSSCFLAGS:-$(
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
 
@@ -282,13 +282,13 @@ src_configure() {
 				use custom-cflags || append-cflags -mno-avx
 
 				CC=${mingwcc} test-flags-CC ${CFLAGS:--O2}
-			)"
+			)}"
 
-			CROSSLDFLAGS="$(
+			CROSSLDFLAGS="${CROSSLDFLAGS:-$(
 				filter-flags '-fuse-ld=*'
 
 				CC=${mingwcc} test-flags-CCLD ${LDFLAGS}
-			)"
+			)}"
 		)
 	fi
 
