@@ -148,7 +148,8 @@ src_configure() {
 	filter-flags -malign-double
 
 	# https://bugs.gentoo.org/700012
-	if is-flagq -flto || is-flagq '-flto=*'; then
+	# Only append -ffat-lto-objects with gcc, https://bugs.gentoo.org/912036.
+	if is-flagq -flto || is-flagq '-flto=*' && tc-is-gcc; then
 		append-cflags $(test-flags-CC -ffat-lto-objects)
 	fi
 
