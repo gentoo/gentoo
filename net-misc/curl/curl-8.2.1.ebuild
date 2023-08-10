@@ -30,6 +30,7 @@ RESTRICT="!test? ( test )"
 
 # Only one default ssl provider can be enabled
 # The default ssl provider needs its USE satisfied
+# nghttp3 = https://bugs.gentoo.org/912029
 REQUIRED_USE="
 	ssl? (
 		^^ (
@@ -45,6 +46,7 @@ REQUIRED_USE="
 	curl_ssl_nss? ( nss )
 	curl_ssl_openssl? ( openssl )
 	curl_ssl_rustls? ( rustls )
+	nghttp3? ( !openssl )
 "
 
 RDEPEND="
@@ -57,7 +59,7 @@ RDEPEND="
 	ldap? ( net-nds/openldap:=[static-libs?,${MULTILIB_USEDEP}] )
 	nghttp3? (
 		net-libs/nghttp3[${MULTILIB_USEDEP}]
-		net-libs/ngtcp2[ssl,${MULTILIB_USEDEP}]
+		net-libs/ngtcp2[gnutls,ssl,-openssl,${MULTILIB_USEDEP}]
 	)
 	rtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh2[${MULTILIB_USEDEP}] )
