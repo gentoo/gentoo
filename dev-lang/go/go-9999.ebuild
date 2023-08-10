@@ -121,6 +121,10 @@ go_cross_compile() {
 	[[ $(go_tuple ${CBUILD}) != $(go_tuple) ]]
 }
 
+PATCHES=(
+	"${FILESDIR}"/go-never-download-newer-toolchains.patch
+)
+
 src_compile() {
 	if has_version -b ">=dev-lang/go-${GO_BOOTSTRAP_MIN}"; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go"
@@ -167,14 +171,13 @@ src_test() {
 }
 
 src_install() {
-	# There is a known issue which requires the source tree to be installed [1].
-	# Once this is fixed, we can consider using the doc use flag to control
-	# installing the doc and src directories.
-	# The use of cp is deliberate in order to retain permissions
-	# [1] https://golang.org/issue/2775
 	dodir /usr/lib/go
+	# The use of cp is deliberate in order to retain permissions
 	cp -R api bin doc lib pkg misc src test "${ED}"/usr/lib/go
 	einstalldocs
+
+	insinto /usr/lib/go
+doins go.env VERSION
 
 	# testdata directories are not needed on the installed system
 	rm -fr $(find "${ED}"/usr/lib/go -iname testdata -type d -print)
