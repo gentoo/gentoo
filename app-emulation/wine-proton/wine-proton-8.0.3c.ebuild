@@ -5,8 +5,8 @@ EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{10..12} )
-inherit autotools flag-o-matic multilib multilib-build python-any-r1
-inherit readme.gentoo-r1 toolchain-funcs wrapper
+inherit autotools flag-o-matic multilib multilib-build prefix
+inherit python-any-r1 readme.gentoo-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.3
 WINE_MONO=7.4.1
@@ -154,6 +154,9 @@ src_prepare() {
 
 	# similarly to staging, append to `wine --version` for identification
 	sed -i "s/wine_build[^1]*1/& (Proton-${WINE_PV})/" configure.ac || die
+
+	# datadir is not where wine-mono is installed, so prefixy alternate paths
+	hprefixify -w /get_mono_path/ dlls/mscoree/metahost.c
 
 	# always update for patches (including user's wrt #432348)
 	eautoreconf
