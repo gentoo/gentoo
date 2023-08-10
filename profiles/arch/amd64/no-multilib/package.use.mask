@@ -1,5 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-08-10)
+# These use 32bit PE libraries (mingw) and are usable on no-multilib.
+# TODO?: this profile hides this USE, as such it is difficult to tell
+# if it is enabled or not outside build logs and may ideally need to
+# be renamed (they are however all enabled by default)
+app-emulation/dxvk -abi_x86_32
+app-emulation/vkd3d-proton -abi_x86_32
+app-emulation/wine-gecko -abi_x86_32
+dev-util/mingw64-toolchain -abi_x86_32
 
 # James Le Cuirot <chewi@gentoo.org> (2022-06-25)
 # This flag concerns a 32-bit x86-specific problem.
