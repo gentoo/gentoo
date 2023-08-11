@@ -23,8 +23,6 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="pulseaudio wayland"
 
-# See bug #895722 and https://github.com/qtile/qtile/pull/3985 regarding
-# pywlroots-0.15 dep.
 RDEPEND="
 	>=dev-python/cairocffi-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
@@ -36,7 +34,7 @@ RDEPEND="
 	x11-libs/libnotify[introspection]
 	x11-libs/pango
 	pulseaudio? ( media-libs/libpulse )
-	wayland? ( =dev-python/pywlroots-0.15*[${PYTHON_USEDEP}] )
+	wayland? ( dev-python/pywlroots[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
