@@ -124,6 +124,7 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/pydantic_core/_pydantic_core.*.so
 
 src_prepare() {
 	sed -i -e '/--benchmark/d' pyproject.toml || die
+	sed -i -e '/^strip/d' Cargo.toml || die
 	distutils-r1_src_prepare
 }
 
