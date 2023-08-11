@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
@@ -81,9 +81,9 @@ all_ruby_prepare() {
 	# about the local network environment.
 	rm -f test/checking/checks/test_{css,html}.rb spec/nanoc/cli/commands/view_spec.rb || die
 
-	# Avoid tests for unpackaged dependencies
+	# Avoid tests for unpackaged or obsolete dependencies
 	rm spec/nanoc/filters/less_spec.rb \
-	   test/filters/test_{markaby,rainpress}.rb || die
+	   test/filters/test_{erubis,markaby,rainpress}.rb || die
 
 	# Avoid tests that are specific to haml 6.x which is currently not packaged
 	sed -i -e '/test_filter_\(with_proper_indentation\|error\)/askip "haml 6"' test/filters/test_haml.rb || die
@@ -93,6 +93,9 @@ all_ruby_prepare() {
 		-i spec/nanoc/data_sources/filesystem_spec.rb || die
 	sed -e '/def test_default_encoding/,/^  end/ s:^:#:' \
 		-i test/orig_cli/commands/test_create_site.rb || die
+
+	# Fix deprecated minitest constant
+	sed -i -e 's/MiniTest/Minitest/' test/rule_dsl/test_rules_collection.rb || die
 }
 
 each_ruby_test() {
