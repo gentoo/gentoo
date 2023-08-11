@@ -284,26 +284,6 @@ dev-util/cucumber-html-formatter:17
 # https://github.com/scikit-build/scikit-build-core/issues/426
 =dev-python/scikit-build-core-0.4.7-r1
 
-# Hans de Graaff <graaff@gentoo.org> (2023-07-08)
-# Obsolete component for dev-util/cucumber. Discontinued upstream.
-# No reverse dependencies. Masked for removal on 2023-08-08.
-dev-util/cucumber-wire
-
-# Hans de Graaff <graaff@gentoo.org> (2023-07-08)
-# Last release in 2010. Upstream is gone. No reverse dependencies.
-# Masked for removal on 2023-08-08
-dev-ruby/annoy
-
-# Hans de Graaff <graaff@gentoo.org> (2023-07-08)
-# Obsolete component for dev-util/cucumber. Discontinued upstream.
-# No reverse dependencies. Masked for removal on 2023-08-08.
-dev-ruby/c21e
-
-# Hans de Graaff <graaff@gentoo.org> (2023-07-06)
-# Last release in 2012. Upstream is gone. No reverse dependencies.
-# Masked for removal on 2023-08-06.
-dev-ruby/deprecated
-
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
 >=app-editors/gnome-text-editor-45_alpha
@@ -357,17 +337,6 @@ dev-python/typed-ast
 # See bug #909439.
 =dev-util/trace-cmd-3.2
 
-# Hans de Graaff <graaff@gentoo.org> (2023-07-04)
-# Discontinued by upstream. No reverse dependencies. Upstream recommends
-# using dry-inflector. Please file a bug if you would like us to package
-# this. Masked for removal on 2023-08-04.
-dev-ruby/inflecto
-
-# Hans de Graaff <graaff@gentoo.org> (2023-07-04)
-# Archived by upstream. No reverse dependencies. Does not work with
-# ruby32. Masked for removal on 2023-08-04.
-dev-ruby/instantiator
-
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2023-07-04)
 # Obsolete package, replaced by dev-util/scap-driver.
 # https://bugs.gentoo.org/907486
@@ -378,17 +347,6 @@ dev-util/sysdig-kmod
 # Breaks dev-perl/Spreadsheet-ParseExcel, see bug #909564.
 # Please upgrade to >=dev-perl/dev-perl/OLE-StorageLite-0.220.0.
 =dev-perl/OLE-StorageLite-0.210.0
-
-# Hans de Graaff <graaff@gentoo.org> (2023-07-02)
-# Unmaintained and obsolete package. Last release 10 years ago. Upstream
-# advises to use dev-ruby/memoizable or dev-ruby/memoist instead.
-# Masked for removal on 2023-08-02.
-dev-ruby/memoize
-
-# Hans de Graaff <graaff@gentoo.org> (2023-07-02)
-# Obsolete slot only used by dev-util/cucumber. Use the newer slot
-# instead. Masked for removal on 2023-08-02.
-dev-ruby/multi_test:0
 
 # James Le Cuirot <chewi@gentoo.org> (2023-06-25)
 # Impossible to legally obtain the original native full game now. It freezes on
