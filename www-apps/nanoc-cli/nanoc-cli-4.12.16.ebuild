@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
@@ -38,6 +38,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/tty-command
 	dev-ruby/yard
 	www-apps/nanoc-spec
+	www-servers/adsf
 )
 "
 
