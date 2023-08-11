@@ -23,6 +23,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="examples"
 
 RDEPEND="
+	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.26.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
