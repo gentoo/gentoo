@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~s390"
+KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~sparc"
 
 RDEPEND="
 	dev-python/brotlicffi[${PYTHON_USEDEP}]
