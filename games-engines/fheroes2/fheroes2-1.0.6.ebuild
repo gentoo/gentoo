@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Recreation of HoMM2 game engine"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPEND="
+DEPEND="
 	media-libs/libpng:=
 	media-libs/libsdl2[video]
 	media-libs/sdl2-image
@@ -24,13 +24,12 @@ COMMON_DEPEND="
 	sys-libs/zlib
 "
 RDEPEND="
-	${COMMON_DEPEND}
+	${DEPEND}
 	${PYTHON_DEPS}
 	app-arch/libarchive
 	dev-lang/python
 	virtual/libintl
 "
-DEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
