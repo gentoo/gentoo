@@ -39,8 +39,8 @@ _POSTGRES_ALL_VERSIONS=( 9999 16 15 14 13 12 11 )
 # defined by the developer. If declared, must be declared before
 # inheriting this eclass. Example:
 #@CODE
-#POSTGRES_COMPAT=( 9.2 9.3 9.4 9.5 9.6 10 )
-#POSTGRES_COMPAT=( 9.{2,3} 9.{4..6} 10 ) # Same as previous
+#POSTGRES_COMPAT=( 12.2 12.3 12.4 12.5 12.6 13 )
+#POSTGRES_COMPAT=( 12.{2,3} 12.{4..6} 13 ) # Same as previous
 #@CODE
 
 # @ECLASS_VARIABLE: POSTGRES_DEP
