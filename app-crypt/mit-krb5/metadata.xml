@@ -17,7 +17,7 @@
   <flag name="openldap">Enable support for ldap as a database backend</flag>
 </use>
 <upstream>
-  <remote-id type="cpe">cpe:/a:mit:kerberos</remote-id>
+  <remote-id type="cpe">cpe:/a:mit:kerberos_5</remote-id>
   <remote-id type="github">krb5/krb5</remote-id>
 </upstream>
 </pkgmetadata>
