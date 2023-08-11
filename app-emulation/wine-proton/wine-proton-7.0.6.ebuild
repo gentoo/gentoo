@@ -152,6 +152,13 @@ src_prepare() {
 
 	default
 
+	if tc-is-clang; then
+		# -mabi=ms was ignored by <clang:16 then turned error in :17
+		# and it still gets used in install phase despite --with-mingw,
+		# drop as a quick fix for now which hopefully should be safe
+		sed -i '/MSVCRTFLAGS=/s/-mabi=ms//' configure.ac || die
+	fi
+
 	# ensure .desktop calls this variant + slot
 	sed -i "/^Exec=/s/wine /${P} /" loader/wine.desktop || die
 
