@@ -23,7 +23,8 @@ MOZ_PV="${MOZ_PV/_beta/b}"
 MOZ_PV="${MOZ_PV/_rc/rc}"
 MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
-PATCH="${PF}-patches"
+PATCH="${PF}-patches-2"
+PATCH_S="${WORKDIR}/gentoo-${PN}-patches-${PV}-2"
 
 if [[ ${PV} == *_pre* ]] ; then
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
@@ -33,13 +34,14 @@ fi
 
 SRC_URI="${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
 	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz
-	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}.tar.gz -> ${PATCH}.tar.gz"
+	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}-2.tar.gz -> ${PATCH}.tar.gz"
 
 S="${WORKDIR}/${MY_MOZ_P}"
 
 MOZ_GENERATE_LANGPACKS=1
 MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
-inherit autotools check-reqs desktop edos2unix flag-o-matic llvm mozcoreconf-v6 mozlinguas-v2 pax-utils toolchain-funcs xdg-utils
+inherit autotools check-reqs desktop edos2unix flag-o-matic llvm mozcoreconf-v6 mozlinguas-v2 pax-utils \
+	toolchain-funcs xdg-utils
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="https://www.seamonkey-project.org/"
@@ -79,7 +81,7 @@ BDEPEND="
 "
 COMMON_DEPEND="
 	app-arch/bzip2
-	dev-libs/atk
+	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.26:2
 	>=dev-libs/libffi-3.0.10:=
 	>=dev-libs/nspr-4.23
@@ -110,7 +112,7 @@ COMMON_DEPEND="
 	jack? ( virtual/jack )
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	pulseaudio? ( || (
-		media-sound/pulseaudio
+		media-libs/libpulse
 		>=media-sound/apulse-0.1.9
 	) )
 	startup-notification? ( >=x11-libs/startup-notification-0.8 )
@@ -208,7 +210,7 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	eapply "${WORKDIR}"/gentoo-${PN}-patches-${PV}/${PN}
+	eapply "${PATCH_S}/${PN}"
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889
 	grep -rlZ --include="*.sh" $'\r$' . |
@@ -217,7 +219,9 @@ src_prepare() {
 		edos2unix "${file}"
 	done
 
-	use system-libvpx && eapply -p2 "${WORKDIR}"/gentoo-${PN}-patches-${PV}/USE_flag/1009_seamonkey-2.53.3-system_libvpx-1.8.patch
+	if use system-libvpx ; then
+		eapply -p2 "${PATCH_S}/USE_flag/1009_seamonkey-2.53.3-system_libvpx-1.8.patch"
+	fi
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
