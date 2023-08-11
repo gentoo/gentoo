@@ -51,13 +51,13 @@ RDEPEND="
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	adns? ( net-dns/c-ares:=[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
-	http2? ( net-libs/nghttp2:=[${MULTILIB_USEDEP}] )
+	http2? ( >=net-libs/nghttp2-1.12.0:=[${MULTILIB_USEDEP}] )
 	idn? ( net-dns/libidn2:=[static-libs?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
+	ldap? ( net-nds/openldap:=[static-libs?,${MULTILIB_USEDEP}] )
 	nghttp3? (
-		net-libs/nghttp3[${MULTILIB_USEDEP}]
-		net-libs/ngtcp2[ssl,${MULTILIB_USEDEP}]
+		>=net-libs/nghttp3-0.11.0[${MULTILIB_USEDEP}]
+		>=net-libs/ngtcp2-0.15.0[gnutls,ssl,-openssl,${MULTILIB_USEDEP}]
 	)
 	rtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh2[${MULTILIB_USEDEP}] )
