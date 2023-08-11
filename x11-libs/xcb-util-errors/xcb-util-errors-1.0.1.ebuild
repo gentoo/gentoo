@@ -11,7 +11,7 @@ inherit python-any-r1 xorg-3
 DESCRIPTION="Library that gives human readable names to XCB error, event, & request codes"
 HOMEPAGE="https://xcb.freedesktop.org/ https://gitlab.freedesktop.org/xorg/lib/libxcb-errors"
 
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND=">=x11-libs/libxcb-1.9.1:="
 DEPEND="${RDEPEND}
