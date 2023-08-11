@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Statistical analysis and machine learning library"
-HOMEPAGE="http://statpatrec.sourceforge.net/"
+HOMEPAGE="https://statpatrec.sourceforge.net/"
 SRC_URI="mirror://sourceforge/statpatrec/${P^^}.tar.gz"
 
 LICENSE="GPL-2"
