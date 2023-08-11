@@ -202,7 +202,7 @@ SRC_URI="
 "
 S="${WORKDIR}"/ZeroTierOne-${PV}
 
-LICENSE="BSL-1.1"
+LICENSE="BUSL-1.1"
 # Crate licenses
 LICENSE+=" sso? ( Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-DFS-2016 )"
 SLOT="0"

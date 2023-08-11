@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ HOMEPAGE="https://www.zerotier.com/"
 DESCRIPTION="A software-based managed Ethernet switch for planet Earth"
 SRC_URI="https://github.com/zerotier/ZeroTierOne/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSL-1.1"
+LICENSE="BUSL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="clang cpu_flags_arm_neon"
