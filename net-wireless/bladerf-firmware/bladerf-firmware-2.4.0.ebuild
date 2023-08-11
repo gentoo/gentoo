@@ -4,12 +4,12 @@
 EAPI=7
 
 DESCRIPTION="bladeRF FX3 firmware images"
-HOMEPAGE="http://nuand.com/fx3.php"
+HOMEPAGE="https://nuand.com/fx3.php"
 
 #firmware is open source, but uses a proprietary toolchain to build
 #automated builds from git are available, but likely unneeded
 #http://hoopycat.com/bladerf_builds/
-SRC_URI="http://nuand.com/fx3/bladeRF_fw_v${PV}.img"
+SRC_URI="https://nuand.com/fx3/bladeRF_fw_v${PV}.img"
 
 LICENSE="MIT"
 SLOT="0"
