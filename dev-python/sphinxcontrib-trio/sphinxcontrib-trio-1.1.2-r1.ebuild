@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 
 LICENSE="|| ( Apache-2.0 MIT )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
