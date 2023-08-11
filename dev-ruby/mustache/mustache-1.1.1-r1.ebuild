@@ -32,7 +32,7 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:. -e "Dir['test/*.rb'].each{|f| require f}" || die
+	MT_NO_PLUGINS=1 ${RUBY} -Ilib:. -e "Dir['test/*.rb'].each{|f| require f}" || die
 }
 
 all_ruby_install() {
