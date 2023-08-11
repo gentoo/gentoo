@@ -230,11 +230,7 @@ src_configure() {
 		$(use_with xinerama)
 	)
 
-	# builds with non-bfd but broken at runtime (bug #867097)
-	# TODO: retest mold and lld, and figure out what's wrong if
-	# still broken given (at least) lld is supposed to work
-	tc-ld-force-bfd
-
+	tc-ld-force-bfd # builds with non-bfd but broken at runtime (bug #867097)
 	filter-lto # build failure
 	use custom-cflags || strip-flags # can break in obscure ways at runtime
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
