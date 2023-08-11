@@ -47,17 +47,24 @@ REQUIRED_USE="
 	curl_ssl_rustls? ( rustls )
 "
 
+# cURL's docs and CI/CD are great resources for confirming supported versions
+# particulary for fast-moving targets like HTTP/2 and TCP/2 e.g.:
+# - https://github.com/curl/curl/blob/master/docs/HTTP3.md
+# - https://github.com/curl/curl/blob/master/.github/workflows/quiche-linux.yml
+# However 'supported' vs 'works' are two entirely different things; be sane but
+# don't be afraid to require a later version.
+
 RDEPEND="
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	adns? ( net-dns/c-ares:=[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
-	http2? ( >=net-libs/nghttp2-1.15.0:=[${MULTILIB_USEDEP}] )
+	http2? ( >=net-libs/nghttp2-1.12.0:=[${MULTILIB_USEDEP}] )
 	idn? ( net-dns/libidn2:=[static-libs?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[static-libs?,${MULTILIB_USEDEP}] )
 	nghttp3? (
-		net-libs/nghttp3[${MULTILIB_USEDEP}]
-		net-libs/ngtcp2[ssl,${MULTILIB_USEDEP}]
+		>=net-libs/nghttp3-0.14.0[${MULTILIB_USEDEP}]
+		>=net-libs/ngtcp2-0.18.0[gnutls,ssl,-openssl,${MULTILIB_USEDEP}]
 	)
 	rtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh2[${MULTILIB_USEDEP}] )
@@ -85,7 +92,9 @@ RDEPEND="
 	)
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
 "
+
 DEPEND="${RDEPEND}"
+
 BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
