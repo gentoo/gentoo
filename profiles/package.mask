@@ -331,6 +331,7 @@ dev-util/cucumber-html-formatter:17
 >=app-misc/tracker-miners-3.6_alpha
 >=dev-cpp/gtkmm-4.11
 >=dev-libs/gjs-1.77
+>=dev-libs/glib-2.77
 >=dev-libs/libdex-0.3.0
 >=games-puzzle/gnome-sudoku-45_alpha
 >=gnome-base/gnome-settings-daemon-45_alpha
