@@ -36,7 +36,7 @@ RDEPEND+="
 	dev-python/rfc3339-validator[${PYTHON_USEDEP}]
 	dev-python/rfc3986-validator[${PYTHON_USEDEP}]
 	dev-python/rfc3987[${PYTHON_USEDEP}]
-	dev-python/uri_template[${PYTHON_USEDEP}]
+	dev-python/uri-template[${PYTHON_USEDEP}]
 	>=dev-python/webcolors-1.11[${PYTHON_USEDEP}]
 "
 
