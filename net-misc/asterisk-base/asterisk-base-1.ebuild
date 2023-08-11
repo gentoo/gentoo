@@ -21,8 +21,7 @@ RDEPEND="
 	!<=net-misc/asterisk-20.3.0:0/20
 "
 
-src_install()
-{
+src_install() {
 	newinitd "${FILESDIR}/initd-1" asterisk
 	newconfd "${FILESDIR}/confd-1" asterisk
 	newsbin "${FILESDIR}/asterisk_wrapper-1" asterisk_wrapper
@@ -36,7 +35,6 @@ src_install()
 	newins "${FILESDIR}/logrotate-1" asterisk
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	tmpfiles_process asterisk.conf
 }
