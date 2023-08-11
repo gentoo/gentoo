@@ -5,6 +5,7 @@
     <email>bkohler@gentoo.org</email>
     <name>Ben Kohler</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">joeyespo/path-and-address</remote-id>
     <remote-id type="pypi">path-and-address</remote-id>
