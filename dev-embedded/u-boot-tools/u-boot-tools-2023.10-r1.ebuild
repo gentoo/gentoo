@@ -19,11 +19,16 @@ IUSE="envtools"
 RDEPEND="dev-libs/openssl:="
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-lang/swig
 	app-alternatives/yacc
 	app-alternatives/lex
+	sys-apps/which
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/disable-unused-mkeficapsule.patch"
+	"${FILESDIR}/disable-unused-pylibfdt.patch"
+)
 
 src_prepare() {
 	default
