@@ -20,4 +20,8 @@
   yanking text into the current buffer.
 </longdescription>
 <stabilize-allarches/>
+<upstream>
+  <bugs-to>https://github.com/davep/boxquote</bugs-to>
+  <remote-id type="github">davep/boxquote</remote-id>
+</upstream>
 </pkgmetadata>
