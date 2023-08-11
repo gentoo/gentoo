@@ -60,8 +60,10 @@ WINE_DLOPEN_DEPEND="
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )"
+# gcc: for -latomic with clang
 WINE_COMMON_DEPEND="
 	${WINE_DLOPEN_DEPEND}
+	sys-devel/gcc:*
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
@@ -154,6 +156,9 @@ src_prepare() {
 		# and it still gets used in install phase despite --with-mingw,
 		# drop as a quick fix for now which hopefully should be safe
 		sed -i '/MSVCRTFLAGS=/s/-mabi=ms//' configure.ac || die
+
+		# needed by Valve's fsync patches if using clang (undef atomic_load_8)
+		sed -i '/^UNIX_LIBS.*=/s/$/ -latomic/' dlls/ntdll/Makefile.in || die
 	fi
 
 	# ensure .desktop calls this variant + slot
