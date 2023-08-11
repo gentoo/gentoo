@@ -11,7 +11,7 @@ DISTUTILS_USE_PEP517="setuptools"
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings for PortAudio"
-HOMEPAGE="http://people.csail.mit.edu/hubert/pyaudio/"
+HOMEPAGE="https://people.csail.mit.edu/hubert/pyaudio/"
 
 LICENSE="MIT"
 SLOT="0"
