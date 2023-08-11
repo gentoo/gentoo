@@ -24,7 +24,8 @@ USE_EXPAND_UNPREFIXED="ARCH"
 USE_EXPAND_IMPLICIT="ARCH ELIBC KERNEL"
 USE_EXPAND_VALUES_ARCH="alpha amd64 amd64-linux arm arm64 hppa ia64 loong m68k mips ppc ppc64 ppc64-linux ppc-macos riscv s390 sparc x64-macos x64-solaris x86 x86-linux"
 USE_EXPAND_VALUES_ELIBC="bionic Darwin glibc mingw musl SunOS"
-USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS"
+# Note that we keep Winnt here for cross, especially for cmake.eclass (bug #910605)
+USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS Winnt"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@lists.gentoo.org.
