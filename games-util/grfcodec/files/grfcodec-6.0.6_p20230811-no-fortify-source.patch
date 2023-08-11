@@ -1,0 +1,19 @@
+From a6e90d5121cfd312df535d90d1b939d9f9c616a1 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Fri, 11 Aug 2023 07:59:54 +0100
+Subject: [PATCH] build: Remove -D_FORTIFY_SOURCE=2
+
+Bug: https://bugs.gentoo.org/894648
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,7 +47,6 @@ endif()
+ # it does not appear to support the $<> tags.
+ add_compile_options(
+     "$<$<CONFIG:Debug>:-D_DEBUG>"
+-    "$<$<NOT:$<CONFIG:Debug>>:-D_FORTIFY_SOURCE=2>" # FORTIFY_SOURCE should only be used in non-debug builds (requires -O1+)
+ )
+ if(MINGW)
+     add_link_options(
+-- 
+2.41.0
+
