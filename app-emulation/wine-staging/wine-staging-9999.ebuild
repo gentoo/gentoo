@@ -137,8 +137,11 @@ BDEPEND="
 			sys-apps/util-linux
 		)
 	)
+	|| (
+		sys-devel/binutils
+		sys-devel/lld
+	)
 	dev-lang/perl
-	sys-devel/binutils
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
@@ -296,18 +299,18 @@ src_configure() {
 		$(use_with xinerama)
 	)
 
-	# builds with non-bfd but broken at runtime (bug #867097)
-	# TODO: retest mold and lld, and figure out what's wrong if
-	# still broken given (at least) lld is supposed to work
-	tc-ld-force-bfd
-
 	filter-lto # build failure
 	use custom-cflags || strip-flags # can break in obscure ways at runtime
 
-	# temporary workaround for tc-ld-force-bfd not yet enforcing with mold
-	# https://github.com/gentoo/gentoo/pull/28355
-	[[ $($(tc-getCC) ${LDFLAGS} -Wl,--version 2>/dev/null) == mold* ]] &&
-		append-ldflags -fuse-ld=bfd
+	# wine uses linker tricks unlikely to work with non-bfd/lld (bug #867097)
+	# (do self test until https://github.com/gentoo/gentoo/pull/28355)
+	if [[ $(LC_ALL=C $(tc-getCC) ${LDFLAGS} -Wl,--version 2>/dev/null) != @(LLD|GNU\ ld)* ]]
+	then
+		has_version -b sys-devel/binutils &&
+			append-ldflags -fuse-ld=bfd ||
+			append-ldflags -fuse-ld=lld
+		strip-unsupported-flags
+	fi
 
 	if use mingw; then
 		use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
