@@ -14,7 +14,7 @@ S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DOCS=( README.md snapshots )
 SITEFILE="50${PN}-gentoo.el"
