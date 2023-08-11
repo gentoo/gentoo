@@ -136,7 +136,7 @@ src_configure() {
 		-DUSE_CUDNN=$(usex cuda)
 		-DUSE_FAST_NVCC=$(usex cuda)
 		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
-		-DBUILD_NVFUSER=OFF
+		-DBUILD_NVFUSER=$(usex cuda)
 		-DUSE_DISTRIBUTED=$(usex distributed)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_FAKELOWP=OFF
@@ -195,6 +195,8 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
+
+	use cuda && dolib.so "${BUILD_DIR}"/lib/libnvfuser_codegen.so
 
 	insinto "/var/lib/${PN}"
 	doins "${BUILD_DIR}"/CMakeCache.txt
