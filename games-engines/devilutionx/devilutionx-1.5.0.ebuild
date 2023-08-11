@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/diasurgical/devilutionX/"
 SRC_URI="https://github.com/diasurgical/devilutionX/releases/download/${PV}/devilutionx-src.tar.xz -> ${P}.tar.xz"
 S="${WORKDIR}/${PN}-src-${PV}"
 
-LICENSE="Unlicense CC-BY-4.0 GPL-2+ LGPL-2.1+ MIT OFL-1.1 zerotier? ( BSL-1.1 )"
+LICENSE="Unlicense CC-BY-4.0 GPL-2+ LGPL-2.1+ MIT OFL-1.1 zerotier? ( BUSL-1.1 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +sodium test zerotier"
