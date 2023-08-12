@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Fanael/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 SITEFILE="50${PN}-gentoo.el"
 DOC_CONTENTS="To start the mode automatically in foo-mode,
