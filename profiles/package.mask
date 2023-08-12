@@ -488,7 +488,6 @@ acct-user/ultimaker
 dev-libs/libarcus
 dev-libs/clipper
 dev-libs/libcharon
-dev-libs/libnest2d
 
 # Sam James <sam@gentoo.org> (2023-05-03)
 # Broken pkgconfig file, please upgrade to -r1.
