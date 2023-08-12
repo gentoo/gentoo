@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_TEST="test spec NO_CONNECTION=true"
 
@@ -30,6 +30,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/rspec:3
 	>=dev-ruby/test-unit-3.0.0
 	dev-ruby/rack
+	dev-ruby/webrick
 )"
 
 all_ruby_prepare() {
