@@ -497,7 +497,6 @@ dev-php/awl test
 dev-php/fedora-autoloader test
 dev-php/json-schema test
 dev-php/jsonlint test
-dev-php/php-redmine-api test
 dev-php/recaptcha test
 dev-php/symfony-config test
 dev-php/symfony-dependency-injection test

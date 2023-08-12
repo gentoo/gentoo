@@ -345,12 +345,6 @@ dev-util/cucumber-html-formatter:17
 >=x11-themes/gnome-backgrounds-45_alpha
 >=x11-wm/mutter-45_alpha
 
-# Michael Orlitzky <mjo@gentoo.org> (2023-07-05)
-# I suspect I was its only user, and I'm not a user any more. Upstream
-# has deleted its autoloader for the second time, making an update more
-# trouble than removal, so: removal on or after 2023-08-05.
-dev-php/php-redmine-api
-
 # Sam James <sam@gentoo.org> (2023-07-05)
 # Doesn't install all needed files by e.g. kernelshark.
 # Need to either split into libtracecmd for the libraries or revert to Makefiles.
