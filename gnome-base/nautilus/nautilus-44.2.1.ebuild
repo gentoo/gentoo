@@ -13,7 +13,7 @@ SLOT="0"
 IUSE="gnome +gstreamer gtk-doc +introspection +previewer selinux sendto"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.72.0:2
