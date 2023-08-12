@@ -22,7 +22,10 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux"
 
-ruby_add_bdepend "doc? ( >=dev-ruby/yard-0.5.3 )"
+ruby_add_bdepend "
+	doc? ( >=dev-ruby/yard-0.5.3 )
+	test? ( dev-ruby/minitest:5.15 )
+"
 
 ruby_add_rdepend "
 	!!<dev-ruby/sass-3.4.25-r1:3.4
