@@ -32,5 +32,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:test:. -e 'Dir["test/**/test_*.rb"].each { require _1 }' || die
+	MT_NO_PLUGINS=1 ${RUBY} -Ilib:test:. -e 'Dir["test/**/test_*.rb"].each { require _1 }' || die
 }
