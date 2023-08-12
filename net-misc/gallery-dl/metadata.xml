@@ -11,6 +11,7 @@
     <remote-id type="github">mikf/gallery-dl</remote-id>
     <remote-id type="pypi">gallery-dl</remote-id>
   </upstream>
+  <stabilize-allarches/>
   <longdescription>
     gallery-dl is a command-line program to download image-galleries
     and -collections from several image hosting sites.
