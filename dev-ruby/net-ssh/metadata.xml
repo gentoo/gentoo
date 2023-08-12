@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>ruby@gentoo.org</email>
-		<name>Gentoo Ruby Project</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="github">net-ssh/net-ssh</remote-id>
-	</upstream>
-	<use>
-		<flag name="ed25519">Use <pkg>dev-ruby/ed25519</pkg> for Ed25519 support</flag>
-	</use>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">net-ssh/net-ssh</remote-id>
+  </upstream>
+  <use>
+    <flag name="chacha20">Use <pkg>dev-ruby/rbnacl</pkg> for chacha20-poly1305@openssh.com support</flag>
+    <flag name="ed25519">Use <pkg>dev-ruby/ed25519</pkg> for Ed25519 support</flag>
+  </use>
 </pkgmetadata>
