@@ -486,7 +486,6 @@ media-gfx/cura
 acct-group/ultimaker
 acct-user/ultimaker
 dev-libs/libarcus
-dev-libs/clipper
 
 # Sam James <sam@gentoo.org> (2023-05-03)
 # Broken pkgconfig file, please upgrade to -r1.
