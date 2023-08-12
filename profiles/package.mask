@@ -33,6 +33,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-08-12)
+# More php:7.4 casualties that I missed the first time around.
+# They'll be removed whenever php:7.4 is removed.
+#
+#   * pecl-apcu_bc dead since 2019
+#   * pecl-http:7 is the old slot
+#   * pecl-ncurses dead since 2012
+#   * pecl-propro dead since 2020
+#   * pecl-taint dead in 2021
+#
+dev-php/pecl-apcu_bc
+dev-php/pecl-http:7
+dev-php/pecl-ncurses
+dev-php/pecl-propro
+dev-php/pecl-taint
+
+
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
 # php-7.x is End Of Life (EOL) upstream and no longer receives security
 # fixes. We lose phpunit because it depends on CodeCoverage which

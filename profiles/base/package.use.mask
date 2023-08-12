@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-08-12)
+# php-7.x is End-of-Life (EOL) and masked, but these packages don't
+# support any newer versions with USE=php. Bugs 912183, 912184,
+# and 912185.
+dev-libs/redland-bindings php
+media-gfx/exact-image php
+sci-geosciences/mapserver php
+
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
 # php-7.x is End-of-Life (EOL) and masked.
 www-servers/nginx-unit php7-4
