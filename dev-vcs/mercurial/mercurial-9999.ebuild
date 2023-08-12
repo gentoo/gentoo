@@ -6,7 +6,7 @@ EAPI=8
 CARGO_OPTIONAL=1
 DISTUTILS_USE_PEP517="setuptools"
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 cargo elisp-common distutils-r1 mercurial flag-o-matic multiprocessing
