@@ -16,6 +16,11 @@
   completion based on previous input (tab-key).
   wxMaxima provides 2d formated display of maxima output.
   </longdescription>
+  <use>
+    <flag name="webkit">Use <pkg>net-libs/webkit-gtk</pkg> to show help
+    (for maxima and wxmaxima) inside wxmaxima
+    </flag>
+  </use>
   <upstream>
     <remote-id type="github">wxMaxima-developers/wxmaxima</remote-id>
   </upstream>
