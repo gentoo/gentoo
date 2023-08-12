@@ -42,7 +42,6 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	virtual/libintl
-	!!media-gfx/mate-image-viewer
 "
 
 BDEPEND="${COMMON_DEPEND}
