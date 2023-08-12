@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~s390 ~sparc"
 
 RDEPEND="
 	>=dev-python/flask-0.10[${PYTHON_USEDEP}]
