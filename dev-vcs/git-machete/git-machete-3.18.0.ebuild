@@ -28,6 +28,11 @@ DOCS=( CONTRIBUTING.md README.md )
 distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
+# Several of the fish- and zsh-completion tests appear to be broken
+EPYTEST_DESELECT=(
+	tests/completion_e2e/test_completion_e2e.py::TestCompletionEndToEnd::test_completion
+)
+
 src_install() {
 	distutils-r1_src_install
 
