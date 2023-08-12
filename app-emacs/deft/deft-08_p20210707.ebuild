@@ -14,7 +14,7 @@ S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
