@@ -57,7 +57,8 @@ IUSE="+strip"
 # @DESCRIPTION:
 # If set to a non-null value, adds IUSE=modules-sign and required
 # logic to manipulate the kernel config while respecting the
-# MODULES_SIGN_HASH and MODULES_SIGN_KEY user variables.
+# MODULES_SIGN_HASH, MODULES_SIGN_CERT, and MODULES_SIGN_KEY  user
+# variables.
 
 # @ECLASS_VARIABLE: MODULES_SIGN_HASH
 # @USER_VARIABLE
@@ -88,6 +89,14 @@ IUSE="+strip"
 # for shared binary packages), but use this with care.
 #
 # Default if unset: certs/signing_key.pem
+
+# @ECLASS_VARIABLE: MODULES_SIGN_CERT
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used with USE=modules-sign.  Can be set to the path of the public
+# key in PEM format to use. Must be specified if MODULES_SIGN_KEY
+# is set to a path of a file that only contains the private key.
 
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
@@ -394,6 +403,13 @@ kernel-build_merge_configs() {
 				CONFIG_MODULE_SIG_FORCE=y
 				CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
 			EOF
+			if [[ -e ${MODULES_SIGN_KEY} && -e ${MODULES_SIGN_CERT} &&
+				${MODULES_SIGN_KEY} != ${MODULES_SIGN_CERT} &&
+				${MODULES_SIGN_KEY} != pkcs11:* ]]
+			then
+				cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" > "${T}/kernel_key.pem" || die
+				MODULES_SIGN_KEY="${T}/kernel_key.pem"
+			fi
 			if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -e ${MODULES_SIGN_KEY} ]]; then
 				echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
 					>> "${WORKDIR}/modules-sign.config"
