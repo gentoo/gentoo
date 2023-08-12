@@ -50,6 +50,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/python-attrs/cattrs/pull/415
+		"${FILESDIR}/${P}-32bit-time_t.patch"
+	)
+
 	sed -e 's:--benchmark.*::' \
 		-e '/addopts/d' \
 		-i pyproject.toml || die
