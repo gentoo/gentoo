@@ -33,6 +33,7 @@ ruby_add_rdepend "
 # requiring ammeter will load it, and we need a consistent set of rspec
 # and rspec-rails for that to work.
 ruby_add_bdepend "test? (
+	|| ( dev-ruby/activerecord:7.0[sqlite] dev-ruby/activerecord:6.1[sqlite] )
 	>=dev-ruby/capybara-2.2.0
 	>=dev-ruby/ammeter-1.1.5
 	~dev-ruby/rspec-rails-${PV}
