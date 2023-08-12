@@ -585,9 +585,12 @@ each_fakegem_test() {
 # @DESCRIPTION:
 # Run the tests for this package.
 if [[ ${RUBY_FAKEGEM_RECIPE_TEST} != none ]]; then
-		each_ruby_test() {
-			each_fakegem_test
-		}
+	# Avoid autoloading all minitest plugins present in any gem.
+	export MT_NO_PLUGINS=true
+
+	each_ruby_test() {
+		each_fakegem_test
+	}
 fi
 
 # @FUNCTION: ruby_fakegem_extensions_installed
