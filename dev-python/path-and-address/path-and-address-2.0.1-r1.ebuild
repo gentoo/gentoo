@@ -15,6 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 SRC_URI="$(pypi_sdist_url --no-normalize ${PN} ${PV} .zip)"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="app-arch/unzip"
