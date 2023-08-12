@@ -1,0 +1,10 @@
+--- a/Analysis/include/Luau/LinterConfig.h
++++ b/Analysis/include/Luau/LinterConfig.h
+@@ -5,6 +5,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <stdint.h>
+ 
+ namespace Luau
+ {
