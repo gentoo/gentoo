@@ -374,13 +374,6 @@ dev-util/sysdig-kmod
 # Please upgrade to >=dev-perl/dev-perl/OLE-StorageLite-0.220.0.
 =dev-perl/OLE-StorageLite-0.210.0
 
-# James Le Cuirot <chewi@gentoo.org> (2023-06-25)
-# Impossible to legally obtain the original native full game now. It freezes on
-# keyboard input, is incompatible with PipeWire, and requires gamescope to work
-# under Wayland. In short, it's a lost cause. Removal in 30 days. Bug #436140.
-# There is a modern SDL2-based port, but it is only available from Steam.
-games-action/descent3
-
 # Sam James <sam@gentoo.org> (2023-06-23)
 # Segfaults with non-bison yacc.
 =app-shells/bash-5.2_p15-r4

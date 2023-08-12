@@ -41,7 +41,6 @@ games-action/beathazardultra
 games-action/brutal-legend-gog
 games-action/brutal-legend-hb
 games-action/crimsonland
-games-action/descent3
 games-action/guacamelee
 games-action/heretic2
 games-action/heretic2-demo
