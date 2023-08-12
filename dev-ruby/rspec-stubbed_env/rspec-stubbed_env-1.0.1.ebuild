@@ -22,8 +22,8 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 ruby_add_rdepend ">=dev-ruby/rspec-3.0"
 
+ruby_add_bdepend "test? ( dev-ruby/rspec-block_is_expected )"
+
 all_ruby_prepare() {
-	# Avoid spec depending on unpackaged block_is_expected
-	sed -i -e '/block_is_expected/ s:^:#:' spec/spec_helper.rb || die
-	sed -i -e '/describe "stubbing"/,/^  end/ s:^:#:' spec/rspec/stubbed_env/test_helpers_spec.rb || die
+	sed -i -e '/simplecov/ s:^:#:' spec/spec_helper.rb || die
 }
