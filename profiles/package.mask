@@ -492,7 +492,6 @@ dev-libs/libnest2d
 dev-libs/libsavitar
 dev-python/pynest2d
 dev-python/uranium
-media-gfx/fdm-materials
 
 # Sam James <sam@gentoo.org> (2023-05-03)
 # Broken pkgconfig file, please upgrade to -r1.
