@@ -41,6 +41,7 @@ all_ruby_prepare() {
 	sed -i -e '/pry/ s:^:#:' test/test_helper.rb || die
 	sed -e '/test_line_comments_active_in_dev/askip "Fails for unknown reason"' \
 		-e '/test_globbed_imports_work_when_globbed_file_is_added/askip "Fails intermittently, similar to test above"' \
+		-e 's/MiniTest/Minitest/' \
 		-i test/sassc_rails_test.rb || die
 }
 
