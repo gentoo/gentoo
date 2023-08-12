@@ -28,7 +28,7 @@ IUSE="doc kerberos +test-full"
 
 RDEPEND="
 	<dev-python/dnspython-3.0.0[${PYTHON_USEDEP}]
-	kerberos? ( dev-python/pykerberos[${PYTHON_USEDEP}] )
+	kerberos? ( dev-python/kerberos[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? (
