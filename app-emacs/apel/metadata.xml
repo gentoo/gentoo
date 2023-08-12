@@ -6,4 +6,7 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <stabilize-allarches/>
+<upstream>
+  <remote-id type="github">wanderlust/apel</remote-id>
+</upstream>
 </pkgmetadata>
