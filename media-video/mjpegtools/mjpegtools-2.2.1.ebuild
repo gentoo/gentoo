@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib-minimal toolchain-funcs
+inherit autotools multilib-minimal
 
 DESCRIPTION="Tools for MJPEG video"
 HOMEPAGE="http://mjpeg.sourceforge.net/"
@@ -20,7 +20,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	virtual/jpeg:0=[${MULTILIB_USEDEP}]
+	media-libs/libjpeg-turbo:0[static-libs?,${MULTILIB_USEDEP}]
 	dv? ( >=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:2 )
 	png? ( media-libs/libpng:0= )
