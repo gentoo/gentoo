@@ -1,8 +1,0 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -15,7 +15,7 @@
-     find_package(Threads QUIET)
- endif()
-
--add_subdirectory(pugixml)
-+find_package(pugixml REQUIRED)
