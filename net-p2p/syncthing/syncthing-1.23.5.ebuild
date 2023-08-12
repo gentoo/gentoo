@@ -19,6 +19,7 @@ RDEPEND="acct-group/syncthing
 	tools? ( >=acct-user/stdiscosrv-1
 		>=acct-user/strelaysrv-1 )
 	selinux? ( sec-policy/selinux-syncthing )"
+BDEPEND="<dev-lang/go-1.21"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
 
