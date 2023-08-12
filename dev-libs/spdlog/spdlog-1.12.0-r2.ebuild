@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
+	"${FILESDIR}/${P}-fix-tests.patch"
 )
 
 src_prepare() {

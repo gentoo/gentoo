@@ -1,0 +1,13 @@
+diff --git a/tests/test_misc.cpp b/tests/test_misc.cpp
+index 9f3cb1744..6199641ff 100644
+--- a/tests/test_misc.cpp
++++ b/tests/test_misc.cpp
+@@ -43,7 +43,7 @@ TEST_CASE("log_levels", "[log_levels]")
+     REQUIRE(log_info("Hello", spdlog::level::trace) == "Hello");
+ }
+ 
+-TEST_CASE("level_to_string_view", "[convert_to_string_view")
++TEST_CASE("level_to_string_view", "[convert_to_string_view]")
+ {
+     REQUIRE(spdlog::level::to_string_view(spdlog::level::trace) == "trace");
+     REQUIRE(spdlog::level::to_string_view(spdlog::level::debug) == "debug");
