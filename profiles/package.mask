@@ -380,7 +380,6 @@ dev-util/sysdig-kmod
 # under Wayland. In short, it's a lost cause. Removal in 30 days. Bug #436140.
 # There is a modern SDL2-based port, but it is only available from Steam.
 games-action/descent3
-games-action/descent3-demo
 
 # Sam James <sam@gentoo.org> (2023-06-23)
 # Segfaults with non-bison yacc.

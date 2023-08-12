@@ -162,7 +162,6 @@ games-action/badland
 games-action/brutal-legend-gog
 games-action/brutal-legend-hb
 games-action/descent3
-games-action/descent3-demo
 games-action/minecraft-launcher
 games-action/psychonauts-gog
 games-action/psychonauts-hb

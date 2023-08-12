@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-04)
@@ -42,7 +42,6 @@ games-action/brutal-legend-gog
 games-action/brutal-legend-hb
 games-action/crimsonland
 games-action/descent3
-games-action/descent3-demo
 games-action/guacamelee
 games-action/heretic2
 games-action/heretic2-demo
