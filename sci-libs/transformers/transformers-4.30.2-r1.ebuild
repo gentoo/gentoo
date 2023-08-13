@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	sci-libs/safetensors[${PYTHON_USEDEP}]
 	sci-libs/tokenizers[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 "
