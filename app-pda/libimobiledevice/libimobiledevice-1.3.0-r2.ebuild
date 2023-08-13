@@ -37,10 +37,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+# <cython-3 for bug #898666
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	python? ( >=dev-python/cython-0.17[${PYTHON_USEDEP}] )
+	python? ( <dev-python/cython-3[${PYTHON_USEDEP}] )
 "
 
 BUILD_DIR="${S}_build"
