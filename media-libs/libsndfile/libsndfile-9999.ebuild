@@ -35,20 +35,13 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} )"
+	${PYTHON_DEPS}
+	virtual/pkgconfig"
 if [[ ${PV} == *9999 ]]; then
 	BDEPEND+="
-		${PYTHON_DEPS}
 		sys-devel/autogen
 	"
 fi
-
-pkg_setup() {
-	if use test || [[ ${PV} == *9999 ]]; then
-		python-any-r1_pkg_setup
-	fi
-}
 
 src_prepare() {
 	default
