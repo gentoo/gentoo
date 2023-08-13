@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 RDEPEND=">=app-containers/docker-cli-23.0.0"
 
