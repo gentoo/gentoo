@@ -14,7 +14,7 @@ if [[ ${PV} != *_rc* ]] ; then
 	# Only the final releases are available here.
 	SRC_URI="https://github.com/PCRE2Project/pcre2/releases/download/${MY_P}/${MY_P}.tar.bz2
 		https://ftp.pcre.org/pub/pcre/${MY_P}.tar.bz2
-		verify-sig? ( https://github.com/PhilipHazel/pcre2/releases/download/${MY_P}/${MY_P}.tar.bz2.sig )"
+		verify-sig? ( https://github.com/PCRE2Project/pcre2/releases/download/${MY_P}/${MY_P}.tar.bz2.sig )"
 else
 	SRC_URI="https://ftp.pcre.org/pub/pcre/Testing/${MY_P}.tar.bz2"
 fi
