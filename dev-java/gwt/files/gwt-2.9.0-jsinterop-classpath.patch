@@ -1,6 +1,6 @@
 # It's unclear how upstream gets their "dev.compile.test" target to compile
 # without this - it could be that their testing is done with the local tools/
-# dir, and that some assumptions are made somewhere in the bulid system that
+# dir, and that some assumptions are made somewhere in the build system that
 # don't apply when the tools dir is elsewhere. Either way, this fixes it.
 #
 # a Pull Request (of sorts) has been issued with upstream to incorporate this
