@@ -190,6 +190,8 @@ src_configure() {
 		# upstream (Valve) doesn't really support misc configurations (e.g.
 		# adds vulkan code not always guarded by --with-vulkan), so force
 		# some major options that are typically needed by games either way
+		# TODO?: --without-mingw could make sense *if* using clang, assuming
+		# bug #912237 is resolved (consider when do USE=wow64 in proton-9)
 		--with-freetype
 		--with-mingw # needed by many, notably Blizzard titles
 		--with-opengl
