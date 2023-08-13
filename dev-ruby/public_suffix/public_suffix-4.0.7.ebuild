@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRAINSTALL="data"
 
@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/mocha:1.0 )"
+ruby_add_bdepend "test? ( dev-ruby/mocha:2 )"
 
 all_ruby_prepare() {
 	sed -i -e '/rubocop/I s:^:#:' \

@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/mocha:1.0 )"
+ruby_add_bdepend "test? ( dev-ruby/mocha:2 )"
 
 all_ruby_prepare() {
 	sed -i -e '/rubocop/I s:^:#:' \
