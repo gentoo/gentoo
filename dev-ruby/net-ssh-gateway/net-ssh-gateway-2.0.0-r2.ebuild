@@ -19,7 +19,7 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 ruby_add_depend "dev-ruby/minitest:5
-	dev-ruby/mocha:1.0"
+	dev-ruby/mocha:2"
 
 ruby_add_rdepend ">=dev-ruby/net-ssh-4.0.0:*"
 
