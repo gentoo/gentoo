@@ -145,6 +145,9 @@ gdb_branding() {
 src_configure() {
 	strip-unsupported-flags
 
+	# https://sourceware.org/PR22395, bug #853898
+	filter-lto
+
 	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
 	# Avoid really confusing logs from subconfigure spam, makes logs far
 	# more legible.
