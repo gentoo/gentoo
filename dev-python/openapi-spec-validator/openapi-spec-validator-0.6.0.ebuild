@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/jsonschema-4.18.0[${PYTHON_USEDEP}]
