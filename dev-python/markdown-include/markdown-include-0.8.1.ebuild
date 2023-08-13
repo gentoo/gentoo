@@ -22,4 +22,8 @@ KEYWORDS="~amd64 ~riscv"
 RDEPEND=">=dev-python/markdown-3.0[${PYTHON_USEDEP}]"
 BDEPEND=">=dev-python/setuptools-scm-6.2[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.1-setup.patch
+)
+
 distutils_enable_tests pytest
