@@ -208,7 +208,7 @@ src_prepare() {
 			# drop as a quick fix for now which hopefully should be safe
 			sed -i '/MSVCRTFLAGS=/s/-mabi=ms//' configure.ac || die
 		else
-			# ./configure will abort looking for -mabi=ms, so do it early
+			# known broken due to bug #912237, require mingw for now
 			die "building ${PN} with clang requires USE=mingw to be enabled"
 		fi
 	fi

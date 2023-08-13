@@ -41,6 +41,7 @@ IUSE="
 	+truetype udev udisks +unwind usb v4l +vulkan wayland wow64
 	+xcomposite xinerama"
 # bug #551124 for truetype
+# TODO: wow64 can be done without mingw if using clang (needs bug #912237)
 REQUIRED_USE="
 	X? ( truetype )
 	crossdev-mingw? ( mingw )
@@ -233,7 +234,7 @@ src_prepare() {
 			# drop as a quick fix for now which hopefully should be safe
 			sed -i '/MSVCRTFLAGS=/s/-mabi=ms//' configure.ac || die
 		else
-			# ./configure will abort looking for -mabi=ms, so do it early
+			# known broken due to bug #912237, require mingw for now
 			die "building ${PN} with clang requires USE=mingw to be enabled"
 		fi
 	fi
