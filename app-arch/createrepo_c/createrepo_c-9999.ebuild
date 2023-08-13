@@ -18,7 +18,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="legacy test"
+IUSE="legacy test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -35,6 +35,7 @@ DEPEND="
 	sys-apps/file
 	sys-libs/libmodulemd
 	sys-libs/zlib:=
+	zstd? ( app-arch/zstd:= )
 "
 
 RDEPEND="${DEPEND}"
@@ -49,6 +50,7 @@ src_configure() {
 		-DWITH_LEGACY_HASHES=$(usex legacy ON OFF)
 		-DWITH_LIBMODULEMD=ON
 		-DWITH_ZCHUNK=ON
+		-DWITH_ZSTD=$(usex zstd)
 	)
 
 	cmake_src_configure
