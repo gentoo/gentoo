@@ -96,6 +96,9 @@ src_prepare() {
 }
 
 my_src_configure() {
+	# Upstream don't support LTO, bug #854222.
+	filter-lto
+
 	local myconf=(
 		$(use_enable bzip2)
 		$(use_enable nls)
