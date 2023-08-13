@@ -21,6 +21,7 @@ ruby_add_bdepend "test? ( dev-ruby/chronic )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundle/ s:^:#:' Rakefile || die
+	sed -i -e 's/MiniTest/Minitest/' test/*_test.rb test/optimist/*_test.rb || die
 }
 
 each_ruby_test() {
