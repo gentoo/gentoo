@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools toolchain-funcs
 
@@ -18,7 +18,7 @@ RDEPEND="
 	app-cdr/dvd+rw-tools
 	dev-libs/libburn
 	dev-libs/libcdio:=[-minimal]
-	sys-libs/ncurses:=[unicode(+)]
+	sys-libs/ncurses:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -33,5 +33,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf LIBS="$( $(tc-getPKG_CONFIG) --libs ncurses )"
+	econf LIBS="$( $(tc-getPKG_CONFIG) --libs ncursesw )"
 }

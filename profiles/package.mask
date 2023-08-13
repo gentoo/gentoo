@@ -142,12 +142,6 @@ sys-apps/gcp
 # removal on 2023-08-22.
 dev-ruby/fast_xs
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2023-07-21)
-# Broken runtime with ncurses version since last 2 years (unusable at
-# all), no upstream activity of any sort since 2016.
-# Removal on 2023-08-20.  Bug #910649.
-app-cdr/cdw
-
 # Hans de Graaff <graaff@gentoo.org> (2023-07-21)
 # Obsolete slot for a package that should not have been slotted. Please
 # use the newer 1.2.3 slot instead. Masked for removal on 2023-08-21.
