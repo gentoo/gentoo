@@ -3,6 +3,8 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+
 CRATES="
 	autocfg-1.1.0
 	bitflags-1.3.2
@@ -65,7 +67,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-QA_FLAGS_IGNORED="usr/bin/${PN}"
+QA_FLAGS_IGNORED="usr/lib/.*"
 
 RDEPEND="
 "
