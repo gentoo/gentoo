@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -37,4 +37,8 @@ all_ruby_prepare() {
 	# Fix specs confused by ruby30 keyword arguments
 	sed -i -e 's/with(/with({/' -e '/with/ s/)$/})/' spec/unit/resource_spec.rb || die
 	sed -i -e '508 s/1 => 2/{1 => 2}/' spec/unit/request_spec.rb || die
+
+	# Avoid spec where ruby semantics changed with ruby31
+	sed -e '/should reject valid URIs with no hostname/askip "different in ruby30 and ruby31"' \
+		-i spec/unit/request_spec.rb || die
 }
