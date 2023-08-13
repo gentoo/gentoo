@@ -50,7 +50,6 @@ CRATES="
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 cargo
 
@@ -68,18 +67,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 QA_FLAGS_IGNORED="usr/lib/.*"
+RESTRICT="test" #depends on single pkg ( pytorch )
 
 RDEPEND="
 "
 BDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/setuptools-rust[${PYTHON_USEDEP}]
-		test? (
-			dev-python/h5py[${PYTHON_USEDEP}]
-		)
-	')
+	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	test? (
-		sci-libs/pytorch[${PYTHON_SINGLE_USEDEP}]
+		dev-python/h5py[${PYTHON_USEDEP}]
 	)
 "
 
