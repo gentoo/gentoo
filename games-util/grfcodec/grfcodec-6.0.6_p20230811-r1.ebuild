@@ -22,6 +22,9 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Bug #894648
 	"${FILESDIR}"/${P}-no-fortify-source.patch
+
+	# Bug #912189
+	"${FILESDIR}"/${P}-action-5.patch
 )
 
 src_configure() {
