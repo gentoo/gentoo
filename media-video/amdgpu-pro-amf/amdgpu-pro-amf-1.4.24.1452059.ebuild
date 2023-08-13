@@ -15,12 +15,11 @@ MY_PV_FULL="${MY_PV}-${MY_PV_REV}"
 
 MY_PN="amf-amdgpu-pro"
 
-PRO_VULKAN_PKG_VER="22.20.3"
-UBUNTU_VER="22.04"
+PRO_VULKAN_PKG_VER="22.10.4"
 
 DESCRIPTION="AMD's closed source Advanced Media Framework (AMF) driver"
 HOMEPAGE="https://www.amd.com/en/support"
-SRC_URI="https://repo.radeon.com/amdgpu/${PRO_VULKAN_PKG_VER}/ubuntu/pool/proprietary/a/${MY_PN}/${MY_PN}_${MY_PV_FULL}~${UBUNTU_VER}_amd64.deb -> ${P}.deb"
+SRC_URI="https://repo.radeon.com/amdgpu/${PRO_VULKAN_PKG_VER}/ubuntu/pool/proprietary/a/${MY_PN}/${MY_PN}_${MY_PV_FULL}_amd64.deb -> ${P}.deb"
 
 S="${WORKDIR}"
 
