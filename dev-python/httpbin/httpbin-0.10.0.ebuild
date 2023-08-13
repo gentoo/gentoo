@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="HTTP Request and Response Service"
 HOMEPAGE="
-	https://github.com/postmanlabs/httpbin/
+	https://github.com/psf/httpbin/
 	https://pypi.org/project/httpbin/
 "
 
