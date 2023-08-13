@@ -58,7 +58,7 @@ LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 x86"
 
 BDEPEND="
 	test? (
