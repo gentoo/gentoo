@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-08-11)
-# Currently required to build with clang, and disabling is generally
-# not recommended either way even if switch compiler.
+# Currently required to build with clang due to bug #912237.
 app-emulation/wine-staging mingw
 app-emulation/wine-vanilla mingw
 
