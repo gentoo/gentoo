@@ -24,15 +24,13 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE=""
 
-# Missing testdep activesupport
-ruby_add_bdepend "test? ( dev-ruby/mocha )"
+ruby_add_bdepend "test? ( dev-ruby/activesupport dev-ruby/mocha )"
 
 all_ruby_prepare() {
-	sed -i -e '/bundler/ s:^:#:' -e '/History.rdoc/d' Rakefile test/test_helper.rb || die
+	sed -e '/bundler/ s:^:#:' -e '/History.rdoc/d' \
+		-i Rakefile test/test_helper.rb test/timecop_with_active_support_test.rb || die
 	sed -i -e '/rubygems/ a\gem "test-unit"' \
 		-e '/minitest\/rg/ s:^:#:' -e '/pry/ s:^:#:' test/test_helper.rb || die
-	# FIXME after activesupport gained ruby22 support
-	rm test/time_stack_item_test.rb || die
 }
 
 each_ruby_test() {
