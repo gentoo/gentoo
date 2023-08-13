@@ -18,8 +18,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
+# <cython-3 for bug #911781
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]"
+	<dev-python/cython-3[${PYTHON_USEDEP}]
+"
 DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	media-libs/libjpeg-turbo:=
