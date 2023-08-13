@@ -36,6 +36,7 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/capybara-2.2.0
 	>=dev-ruby/ammeter-1.1.5
 	~dev-ruby/rspec-rails-${PV}
+	dev-ruby/rails:6.1
 )"
 
 all_ruby_prepare() {
