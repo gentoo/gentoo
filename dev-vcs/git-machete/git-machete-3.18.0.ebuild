@@ -25,7 +25,6 @@ BDEPEND="test? (
 
 DOCS=( CONTRIBUTING.md README.md )
 
-distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 # Several of the fish- and zsh-completion tests appear to be broken
