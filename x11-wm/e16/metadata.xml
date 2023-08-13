@@ -6,7 +6,6 @@
     <name>Andrew Savchenko</name>
   </maintainer>
   <use>
-    <flag name="container">Use container window</flag>
     <flag name="debug">Build libtrip debugging library</flag>
     <flag name="dialogs">Enable support for configuration dialogs</flag>
     <flag name="libhack">Build libhack window mode helper library</flag>
