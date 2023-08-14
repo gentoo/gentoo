@@ -16,7 +16,7 @@ SRC_URI="https://github.com/amietn/vcsi/archive/${MY_COMMIT}.tar.gz -> ${P}-r1.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
