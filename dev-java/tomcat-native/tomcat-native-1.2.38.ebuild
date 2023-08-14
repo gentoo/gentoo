@@ -37,10 +37,6 @@ JAVA_SRC_DIR="../java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="../test"
 
-PATCHES=(
-	"${FILESDIR}"/tomcat-native-2.0.3-slibtool.patch #778914
-)
-
 DOCS=( ../{CHANGELOG.txt,NOTICE,README.txt} )
 
 src_prepare() {
@@ -50,22 +46,6 @@ src_prepare() {
 		../build.xml \
 		| sed "s:\${version}:${PV}:" \
 		> "${JAVA_RESOURCE_DIRS}/META-INF/MANIFEST.MF" || die
-	default
-
-	# Needed for the slibtool patch
-	sed -i 's/configure.in/configure.ac/' configure.in || die
-	eautoreconf
-
-	# There was 1 failure:
-	# 1) testInfoGet(org.apache.tomcat.jni.TestFile)
-	# java.lang.AssertionError: File test/org/apache/tomcat/jni/TestFile.java does not exist!
-	#         at org.junit.Assert.fail(Assert.java:89)
-	#         at org.junit.Assert.assertTrue(Assert.java:42)
-	#         at org.apache.tomcat.jni.TestFile.testInfoGet(TestFile.java:29)
-	# 
-	# FAILURES!!!
-	# Tests run: 1,  Failures: 1
-	rm ../test/org/apache/tomcat/jni/TestFile.java || die
 }
 
 src_configure() {
@@ -82,9 +62,12 @@ src_compile() {
 }
 
 src_test() {
+	# Adjusting "String testFile =" path in TestFile.java:29 to match ${S}
+	sed \
+		-e '/String testFile =/s&test/&../test/&' \
+		-i ../test/org/apache/tomcat/jni/TestFile.java || die
+
 	JAVA_TEST_EXTRA_ARGS=( -Djava.library.path=".libs" )
-#	jar cf test.jar ../test/org/apache/tomcat/jni/TestFile.java || die
-#	JAVA_GENTOO_CLASSPATH_EXTRA="test.jar"
 	java-pkg-simple_src_test
 }
 
