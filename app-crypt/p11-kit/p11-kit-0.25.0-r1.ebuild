@@ -23,6 +23,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-text/docbook-xsl-stylesheets
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
