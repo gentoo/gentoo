@@ -25,7 +25,7 @@ RDEPEND="
 	>=net-misc/networkmanager-1.16.0[wifi]
 	net-dns/dnsmasq
 	net-wireless/wpa_supplicant[p2p]
-	sys-apps/xdg-desktop-portal[screencast]
+	sys-apps/xdg-desktop-portal[screencast(+)]
 	x11-libs/gtk+:3
 	firewalld? ( net-firewall/firewalld )
 "
