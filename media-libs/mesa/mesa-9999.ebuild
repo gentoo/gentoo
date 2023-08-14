@@ -200,11 +200,6 @@ llvm_check_deps() {
 	has_version "sys-devel/llvm:${LLVM_SLOT}[${LLVM_USE_DEPS}]"
 }
 
-PATCHES=(
-	# Temporary rusticl workaround: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7717#note_1832122
-	"${FILESDIR}/clang_resource_dir.patch"
-)
-
 pkg_pretend() {
 	if use vulkan; then
 		if ! use video_cards_d3d12 &&
