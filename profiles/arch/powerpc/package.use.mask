@@ -252,7 +252,7 @@ media-sound/rhythmbox upnp-av
 x11-base/xorg-drivers video_cards_amdgpu
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-10)
-# net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634
+# net-libs/dleyna lack ppc/ppc64 keyword, bug #551634
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
 
 # Pacho Ramos <pacho@gentoo.org> (2015-05-15)

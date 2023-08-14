@@ -278,19 +278,6 @@ acct-group/spi
 # Removal on 2023-08-16.
 gnome-base/gnome-mime-data
 
-# Matt Turner <mattst88@gentoo.org> (2023-07-15)
-# Unmaintained upstream. Depends on deprecated packages libsoup:2.4 and
-# old versions of grilo and grilo-plugins.
-# Removal on 2023-08-15. Bug #910105.
-media-sound/pragha
-<media-libs/grilo-0.3.16
-<media-plugins/grilo-plugins-0.3.16
-net-libs/libdmapsharing:3.0
-net-libs/dleyna-connector-dbus
-net-libs/dleyna-core
-net-libs/dleyna-renderer
-net-misc/dleyna-server
-
 # Hans de Graaff <graaff@gentoo.org> (2023-07-14)
 # Obsolete slots or packages specifically for cucumber 7 which is no
 # longer available. Masked for removal on 2023-08-14

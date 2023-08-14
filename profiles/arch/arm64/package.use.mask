@@ -349,7 +349,7 @@ dev-ruby/haml test
 net-libs/gnutls test-full
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
-# USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
+# USE=upnp-av requires net-libs/dleyna that is not keyworded yet.
 media-sound/rhythmbox upnp-av
 >=media-plugins/grilo-plugins-0.3.5 upnp-av
 
