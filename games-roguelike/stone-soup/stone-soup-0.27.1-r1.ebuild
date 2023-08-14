@@ -87,6 +87,7 @@ S=${WORKDIR}/${MY_P}/source
 PATCHES=(
 	"${FILESDIR}"/make.patch
 	"${FILESDIR}"/rltiles-make.patch
+	"${FILESDIR}"/avoid-musl-execinfo.patch
 )
 
 python_check_deps() {
