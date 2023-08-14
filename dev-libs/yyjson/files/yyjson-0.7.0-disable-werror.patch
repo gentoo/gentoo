@@ -1,0 +1,12 @@
+Upstream sets -Werror by default, this is not recommended in Gentoo.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -325,7 +325,6 @@
+         set(YYJSON_BASE_FLAGS
+             -pedantic
+             -pedantic-errors
+-            -Werror
+             -Wall
+             -Wextra
+             -Wconversion
