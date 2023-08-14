@@ -23,7 +23,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	MY_COMMIT=1f78fed4693a5361f56508daac59bebd5b556379
 	SRC_URI="https://github.com/koverstreet/bcachefs-tools/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz
-		$(cargo_crate_uris ${CRATES})"
+		${CARGO_CRATE_URIS}"
 	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 	KEYWORDS="~amd64"
 fi
@@ -129,11 +129,15 @@ src_test() {
 }
 
 src_install() {
-	exeinto /usr/bin
-	local file
-	for file in bcachefs fsck.bcachefs mkfs.bcachefs mount.bcachefs; do
-		doexe $file
-	done
+	into /
+	dosbin bcachefs fsck.bcachefs mkfs.bcachefs mount.bcachefs
+
+	if use fuse; then
+		dosbin mount.fuse.bcachefs
+		newsbin fsck.bcachefs fsck.fuse.bcachefs
+		newsbin mkfs.bcachefs mkfs.fuse.bcachefs
+	fi
+
 	doman bcachefs.8
 }
 
