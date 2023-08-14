@@ -3,15 +3,15 @@
 
 # @ECLASS: netsurf.eclass
 # @MAINTAINER:
-# maintainer-needed@gentoo.org
+# mjo@gentoo.org
 # @SUPPORTED_EAPIS: 7
 # @BLURB: Handle buildsystem of www.netsurf-browser.org components
 # @DESCRIPTION:
 # Handle settings build environment for netsurf build system
 
 case ${EAPI} in
-    7) ;;
-    *) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit toolchain-funcs
