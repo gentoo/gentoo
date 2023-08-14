@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${PV}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="
 	dev-util/spirv-llvm-translator:${SLOT}=
