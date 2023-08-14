@@ -58,9 +58,10 @@ BDEPEND="dev-libs/appstream-glib
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] ; then
 		if ! tc-is-gcc; then
-			die "Since version 6.3.0 ${PN} only supports GCC due to required level of C++20 support"
-		fi
-		if [[ $(gcc-major-version) -lt 11 ]] ; then
+			if ! tc-is-clang || [[ $(clang-major-version) -lt 16 ]]; then
+				die "${PN} can only be built with GCC or >=Clang-16 due to required level of C++20 support"
+			fi
+		elif [[ $(gcc-major-version) -lt 11 ]] ; then
 			die "Since version 6.2.5 ${PN} requires GCC 11 or newer to build (Bug #848072)"
 		fi
 	fi
