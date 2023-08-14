@@ -4,13 +4,13 @@
 # @ECLASS: netsurf.eclass
 # @MAINTAINER:
 # mjo@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Handle buildsystem of www.netsurf-browser.org components
 # @DESCRIPTION:
 # Handle settings build environment for netsurf build system
 
 case ${EAPI} in
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
