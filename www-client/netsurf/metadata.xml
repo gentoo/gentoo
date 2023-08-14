@@ -20,7 +20,6 @@
       <pkg>media-libs/libnsbmp</pkg>
     </flag>
     <flag name="gtk">Build GTK3 GUI</flag>
-    <flag name="gtk2">Build GTK2 GUI</flag>
     <flag name="psl">
       Use public suffix list from <pkg>media-libs/libnspsl</pkg> to
       detect supercookies (recommended)
