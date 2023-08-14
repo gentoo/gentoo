@@ -297,7 +297,7 @@ src_configure() {
 				# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
 				# crashes with -march=skylake >=wine-8.10, similar issues with
 				# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
-				use custom-cflags || append-cflags -mno-avx
+				append-cflags -mno-avx #912268
 
 				CC=${mingwcc} test-flags-CC ${CFLAGS:--O2}
 			)}"
