@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake-multilib python-any-r1
 
@@ -46,6 +46,15 @@ src_prepare() {
 		-e '/"-mfpu=neon"/d' \
 		-e '/"-march=armv8-a+crypto"/d' \
 		absl/copts/copts.py || die
+
+	# Starting with abseil-2023xxyy abseil will start to delegate various absl:: types
+	# to their std:: equivalents by default when built with >=std=c++17.
+	# This older release still defaults to creating an absl/base/options.h file where this
+	# delegation is configured to happen at build time, creating ABI problems for consumers.
+	# In order to be consistent with future releases we therefore enforce the delegation to
+	# std::* implementations in this release as well.
+	sed -i -r -e 's/ABSL_OPTION_USE_STD_(.*) 2/ABSL_OPTION_USE_STD_\1 1/g' \
+		absl/base/options.h || die
 
 	# now generate cmake files
 	python_fix_shebang absl/copts/generate_copts.py
