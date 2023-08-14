@@ -1,0 +1,36 @@
+From bf2685a3628f213e930743676a6d713e630c6a59 Mon Sep 17 00:00:00 2001
+From: Maciej Stanczew <maciej.stanczew@gmail.com>
+Date: Sun, 6 Aug 2023 20:23:01 +0200
+Subject: [PATCH] sensors: Correctly handle the return value of
+ QCollator::compare
+
+QCollator::compare() can return any integer, not just [-1, 0, 1].
+Comparing the result with -1 happened to work with most locales,
+but it broke with the C locale. As a result, when sensors were put
+into std::map, they were sometimes erroneously treated as duplicates,
+leading to a randomly incomplete and garbled sensor list.
+
+BUG: 461070
+
+
+(cherry picked from commit 0a7efca4b331eb9619a2a88fe9093cbbbd351b6e)
+---
+ sensors/SensorTreeModel.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sensors/SensorTreeModel.cpp b/sensors/SensorTreeModel.cpp
+index 6f318035..8487730b 100644
+--- a/sensors/SensorTreeModel.cpp
++++ b/sensors/SensorTreeModel.cpp
+@@ -44,7 +44,7 @@ struct Compare {
+             collator->setCaseSensitivity(Qt::CaseInsensitive);
+         }
+ 
+-        return collator->compare(first, second) == -1;
++        return collator->compare(first, second) < 0;
+     }
+ 
+     // This uses thread-local storage because QCollator may not be thread safe.
+-- 
+GitLab
+
