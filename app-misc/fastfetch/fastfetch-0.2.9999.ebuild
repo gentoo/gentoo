@@ -20,14 +20,16 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X chafa dbus gnome imagemagick networkmanager opencl opengl osmesa pci pulseaudio sqlite vulkan wayland xcb xfce xrandr"
+IUSE="X chafa dbus ddcutil gnome imagemagick networkmanager opencl opengl osmesa pci pulseaudio sqlite vulkan wayland xcb xfce xrandr"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
 RDEPEND="
+	dev-libs/yyjson
 	sys-libs/zlib
 	X? ( x11-libs/libX11 )
 	chafa? ( media-gfx/chafa )
 	dbus? ( sys-apps/dbus )
+	ddcutil? ( app-misc/ddcutil:= )
 	gnome? (
 		dev-libs/glib
 		gnome-base/dconf
@@ -54,6 +56,8 @@ REQUIRED_USE="
 	chafa? ( imagemagick )
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-2.0.0-dont-fetch-yyjson.patch )
+
 src_configure() {
 	local fastfetch_enable_imagemagick7=no
 	local fastfetch_enable_imagemagick6=no
@@ -63,12 +67,12 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DENABLE_LIBCJSON=no
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
 
 		-DENABLE_CHAFA=$(usex chafa)
 		-DENABLE_DBUS=$(usex dbus)
+		-DENABLE_DDCUTIL=$(usex ddcutil)
 		-DENABLE_DCONF=$(usex gnome)
 		-DENABLE_EGL=$(usex opengl)
 		-DENABLE_GIO=$(usex gnome)
