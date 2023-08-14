@@ -10,6 +10,7 @@
 </upstream>
 <use>
 	<flag name="chafa">Enables text/graphics renderer with <pkg>media-gfx/chafa</pkg></flag>
+	<flag name="ddcutil">Use <pkg>app-misc/ddcutil</pkg> to query monitor settings</flag>
 	<flag name="opencl">Enables OpenCL support</flag>
 	<flag name="osmesa">Enables offscreen rendering support from <pkg>media-libs/mesa</pkg></flag>
 	<flag name="pci">Enables reading GPU via <pkg>sys-apps/pciutils</pkg></flag>
