@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2023-08-14)
+# Dead slot depending on libsoup:2.4
+# Removal on 2023-09-14.
+net-libs/rest:0.7
+
+# Matt Turner <mattst88@gentoo.org> (2023-08-14)
 # Unmaintained in Gentoo and upstream. Last release was 2018, last commit
 # upstream was 2021. Only reverse dependency of dead net-libs/rest:0.7.
 # Removal on 2023-09-14.
