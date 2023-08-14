@@ -339,6 +339,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-111-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-114-remove-evdev-dep.patch"
 		"${FILESDIR}/chromium-115-binutils-2.41.patch"
+		"${FILESDIR}/chromium-116-abseil-arm64.patch"
 	)
 
 	if use ppc64 ; then
