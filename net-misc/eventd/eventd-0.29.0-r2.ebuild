@@ -12,7 +12,7 @@ SRC_URI="https://www.eventd.org/download/eventd/${P}.tar.xz"
 LICENSE="GPL-3+ LGPL-3+ ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug fbcon +introspection ipv6 libcanberra libnotify +notification
+IUSE="debug fbcon +introspection libcanberra libnotify +notification
 	pulseaudio purple speech systemd test upnp webhook websocket +X zeroconf"
 
 RESTRICT="!test? ( test )"
@@ -69,13 +69,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-pkg_setup() {
-	if use ipv6; then
-		CONFIG_CHECK=$(usex test 'IPV6' '~IPV6')
-		linux-info_pkg_setup
-	fi
-}
-
 src_configure() {
 	# wayland disabled due to missing dep in ::gentoo, wayland-wall
 	local emesonargs=(
@@ -87,7 +80,7 @@ src_configure() {
 		$(meson_feature websocket)
 		$(meson_feature zeroconf dns-sd)
 		$(meson_feature upnp ssdp)
-		$(meson_use ipv6)
+		-Dipv6=true
 		$(meson_use systemd)
 		$(meson_use notification notification-daemon)
 		$(meson_use X nd-xcb)
