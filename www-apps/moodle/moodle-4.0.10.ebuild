@@ -8,7 +8,8 @@ inherit webapp
 DESCRIPTION="The Moodle Course Management System"
 HOMEPAGE="https://moodle.org"
 
-MY_BRANCH="stable$(ver_cut 1)0$(ver_cut 2)"
+MY_BRANCH="stable$(ver_cut 1)$(ver_cut 2)0"
+#SRC_URI="https://download.moodle.org/download.php/direct/stable400/moodle-4.0.tgz"
 SRC_URI="https://download.moodle.org/download.php/direct/${MY_BRANCH}/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
@@ -25,7 +26,7 @@ AUTHENTICATION_MODES=${AUTHENTICATION_FLAGS//\?/}
 AUTHENTICATION_MODES=${AUTHENTICATION_MODES//,/ }
 
 PHP_REQUIRED_FLAGS="ctype,curl,iconv,json(+),session,simplexml,xml,zip"
-PHP_OPTIONAL_FLAGS="gd,intl,soap,ssl,tokenizer,xmlrpc"
+PHP_OPTIONAL_FLAGS="gd,intl,soap,ssl,tokenizer"
 PHP_FLAGS="${PHP_REQUIRED_FLAGS},${PHP_OPTIONAL_FLAGS}"
 
 IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
@@ -39,7 +40,7 @@ IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
 # and the moodle documentation for other possibilities.
 DEPEND=""
 RDEPEND="
-	dev-lang/php:7.4[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+	dev-lang/php:8.0[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 	virtual/httpd-php
 	virtual/cron"
 
