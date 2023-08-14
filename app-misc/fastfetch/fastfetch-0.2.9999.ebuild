@@ -24,7 +24,6 @@ IUSE="X chafa dbus ddcutil gnome imagemagick networkmanager opencl opengl osmesa
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
 RDEPEND="
-	dev-libs/yyjson
 	sys-libs/zlib
 	X? ( x11-libs/libX11 )
 	chafa? ( media-gfx/chafa )
@@ -55,8 +54,6 @@ REQUIRED_USE="
 	xrandr? ( X )
 	chafa? ( imagemagick )
 "
-
-PATCHES=( "${FILESDIR}"/${PN}-2.0.0-dont-fetch-yyjson.patch )
 
 src_configure() {
 	local fastfetch_enable_imagemagick7=no
