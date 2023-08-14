@@ -46,7 +46,7 @@ DEPEND="
 	mp4? ( media-libs/libmp4v2:0 )
 	musepack? ( media-sound/musepack-tools )
 	opus? ( media-libs/opusfile )
-	pulseaudio? ( media-libs/libpulse )
+	pulseaudio? ( media-sound/pulseaudio )
 	sndio? ( media-sound/sndio )
 	systemd? ( sys-apps/systemd )
 	tremor? ( media-libs/tremor )
