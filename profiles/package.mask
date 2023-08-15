@@ -399,6 +399,7 @@ acct-group/spi
 
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
+>=app-accessibility/orca-45_alpha
 >=app-crypt/libsecret-0.21
 >=app-editors/ghex-45_alpha
 >=app-editors/gnome-text-editor-45_alpha
