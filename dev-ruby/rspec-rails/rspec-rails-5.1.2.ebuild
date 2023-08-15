@@ -24,6 +24,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend "
+	|| ( dev-ruby/activerecord:6.1[sqlite] )
 	|| ( dev-ruby/activesupport:6.1 )
 	|| ( dev-ruby/actionpack:6.1 )
 	|| ( dev-ruby/railties:6.1 )
