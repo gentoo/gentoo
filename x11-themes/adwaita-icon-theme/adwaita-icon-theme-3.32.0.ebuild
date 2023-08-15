@@ -17,7 +17,7 @@ LICENSE="
 "
 SLOT="0"
 IUSE="branding"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 
 # gtk+:3 is needed for build for the gtk-encode-symbolic-svg utility
 # librsvg is needed for gtk-encode-symbolic-svg to be able to read the source SVG via its pixbuf loader and at runtime for rendering scalable icons shipped by the theme
