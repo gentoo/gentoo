@@ -25,7 +25,9 @@ CDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
 	systemd? ( >=sys-apps/systemd-186:0= )
 "
-DEPEND="${CDEPEND}"
+DEPEND="${CDEPEND}
+	sys-apps/dbus
+"
 BDEPEND="
 	dev-libs/libxslt
 	dev-util/gdbus-codegen
