@@ -8,4 +8,10 @@
 		<remote-id type="pypi">immutables</remote-id>
 		<remote-id type="github">MagicStack/immutables</remote-id>
 	</upstream>
+	<use>
+		<flag name="native-extensions">
+			Compiles native "C" extensions (speedups, instead of using Python
+			fallback code).
+		</flag>
+	</use>
 </pkgmetadata>
