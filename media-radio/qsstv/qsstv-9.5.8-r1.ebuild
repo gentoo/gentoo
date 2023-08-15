@@ -18,7 +18,7 @@ IUSE=""
 
 CDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-libs/hamlib:=
