@@ -48,6 +48,10 @@ BDEPEND="
 	dev-util/glslang
 	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.6-wow64-setup.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
