@@ -13,7 +13,7 @@ SRC_URI="https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.t
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+brotli dbi gnutls kerberos ldap +lua maxminddb mbedtls mmap mysql +nettle nss +pcre php postgres rrdtool sasl selinux ssl sqlite +system-xxhash test unwind webdav xattr +zlib zstd"
 RESTRICT="!test? ( test )"
 
