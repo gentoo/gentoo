@@ -16,6 +16,8 @@ IUSE="nls"
 
 DEPEND="nls? ( virtual/libintl )"
 
+BDEPEND="sys-devel/gettext"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-autotools.patch
 	"${FILESDIR}"/${PN}-implicit-decl.patch
