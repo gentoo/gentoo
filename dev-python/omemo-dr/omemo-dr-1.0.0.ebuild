@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
