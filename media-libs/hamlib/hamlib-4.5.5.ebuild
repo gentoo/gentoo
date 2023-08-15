@@ -9,10 +9,11 @@ MY_P=${P/_rc2/~rc2}
 inherit autotools python-single-r1
 
 DESCRIPTION="Ham radio backend rig control libraries"
-HOMEPAGE="http://www.hamlib.org"
+HOMEPAGE="https://www.hamlib.github.io"
 SRC_URI="mirror://sourceforge/hamlib/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
-LICENSE="LGPL-2 GPL-2"
+LICENSE="LGPL-2+ GPL-2+"
 SLOT="0/4.2"
 KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="doc perl python tcl"
@@ -27,7 +28,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	tcl? ( dev-lang/tcl:0= )"
 
-DEPEND=" ${RDEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-lang/swig
 	>=sys-devel/libtool-2.2
@@ -37,8 +38,6 @@ DEPEND=" ${RDEPEND}
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=(AUTHORS NEWS PLAN README README.betatester README.developer)
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
