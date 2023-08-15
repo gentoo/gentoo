@@ -14,11 +14,14 @@ LICENSE="netperf"
 SLOT="0"
 IUSE="demo sctp"
 
-DEPEND="
+RDEPEND="
 	acct-group/netperf
 	acct-user/netperf
 "
-RDEPEND="${DEPEND}"
+BDEPEND="
+	sys-devel/gnuconfig
+	${RDEPEND}
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-fix-scripts.patch
