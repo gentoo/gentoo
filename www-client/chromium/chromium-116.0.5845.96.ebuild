@@ -18,7 +18,7 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 toolchain-funcs virtualx xdg-
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
-PATCHSET="1"
+PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 PATCHSET_PPC64="115.0.5790.102-1raptor0~deb11u2"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
@@ -339,7 +339,6 @@ src_prepare() {
 		"${FILESDIR}/chromium-111-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-114-remove-evdev-dep.patch"
 		"${FILESDIR}/chromium-115-binutils-2.41.patch"
-		"${FILESDIR}/chromium-116-abseil-arm64.patch"
 	)
 
 	if use ppc64 ; then
