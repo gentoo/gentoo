@@ -6,14 +6,14 @@ EAPI=8
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-qemu-docs
 # Set to 1 if prebuilt, 0 if not
 # (the construct below is to allow overriding from env for script)
-QEMU_DOCS_PREBUILT=${QEMU_DOCS_PREBUILT:-0}
+QEMU_DOCS_PREBUILT=${QEMU_DOCS_PREBUILT:-1}
 QEMU_DOCS_PREBUILT_DEV=sam
-QEMU_DOCS_VERSION=$(ver_cut 1-3)
+QEMU_DOCS_VERSION="8.0.0"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{9,10,11,12} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.2.0"
@@ -28,7 +28,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_SUBMODULES=(
 		tests/fp/berkeley-softfloat-3
 		tests/fp/berkeley-testfloat-3
-		subprojects/keycodemapdb
+		ui/keycodemapdb
 	)
 	inherit git-r3
 	SRC_URI=""
@@ -56,7 +56,7 @@ IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
 	+fdt fuse glusterfs +gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg
 	lzo multipath
-	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs pipewire
+	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
 	smartcard snappy spice ssh static-user systemtap test udev usb
@@ -179,7 +179,10 @@ SOFTMMU_TOOLS_DEPEND="
 		dev-libs/nettle:=[static-libs(+)]
 	)
 	gtk? (
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3
+		x11-libs/libX11
 		vte? ( x11-libs/vte:2.91 )
 	)
 	infiniband? ( sys-cluster/rdma-core[static-libs(+)] )
@@ -204,7 +207,6 @@ SOFTMMU_TOOLS_DEPEND="
 		media-libs/mesa[egl(+),gbm(+)]
 	)
 	pam? ( sys-libs/pam )
-	pipewire? ( media-video/pipewire )
 	png? ( >=media-libs/libpng-1.6.34:=[static-libs(+)] )
 	pulseaudio? ( media-libs/libpulse )
 	rbd? ( sys-cluster/ceph )
@@ -308,8 +310,11 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.0-disable-keymap.patch
+	"${FILESDIR}"/${PN}-8.0.0-make.patch
+	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
-	"${FILESDIR}"/${PN}-8.1.0-also-build-virtfs-proxy-helper.patch
+	"${FILESDIR}"/${PN}-7.2.0-disable-gmp.patch
+	"${FILESDIR}"/${PN}-8.0.0-remove-python-meson-check.patch
 )
 
 QA_PREBUILT="
@@ -456,7 +461,7 @@ src_prepare() {
 	sed -i -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' configure || die
 
 	# Remove bundled modules
-	rm -r subprojects/dtc roms/*/ || die
+	rm -r dtc meson roms/*/ || die
 }
 
 ##
@@ -511,7 +516,6 @@ qemu_src_configure() {
 		$(use_enable jack)
 		$(use_enable nls gettext)
 		$(use_enable oss)
-		$(use_enable pipewire)
 		$(use_enable plugins)
 		$(use_enable pulseaudio pa)
 		$(use_enable selinux)
@@ -841,7 +845,7 @@ src_install() {
 	doins "${FILESDIR}/bridge.conf"
 
 	cd "${S}" || die
-	dodoc MAINTAINERS
+	dodoc MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
 
 	# Disallow stripping of prebuilt firmware files.
