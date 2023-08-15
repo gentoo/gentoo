@@ -7,7 +7,13 @@ inherit autotools flag-o-matic font optfeature pam strip-linguas systemd xdg-uti
 
 DESCRIPTION="Modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
-SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
+SRC_URI="
+	https://www.jwz.org/xscreensaver/${P}.tar.gz
+	logind-idle-hint? (
+		https://github.com/Flowdalic/xscreensaver/commit/59e7974c42dc08411c9af2a3a644a582c2116f46.patch ->
+			${PN}-6.06-logind-idle-hint.patch
+	)
+"
 
 # Font license mapping for folder ./hacks/fonts/ as following:
 #   clacon.ttf       -- MIT
@@ -18,11 +24,12 @@ SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
 LICENSE="BSD fonts? ( MIT Apache-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="elogind fonts gdm gles glx jpeg +locking new-login offensive pam +perl selinux suid systemd xinerama"
+IUSE="elogind fonts gdm gles glx jpeg +locking logind-idle-hint new-login offensive pam +perl selinux suid systemd xinerama"
 REQUIRED_USE="
 	gles? ( !glx )
 	?? ( elogind systemd )
 	pam? ( locking )
+	logind-idle-hint? ( || ( elogind systemd ) )
 "
 
 COMMON_DEPEND="
@@ -127,6 +134,10 @@ src_prepare() {
 			hacks/glx/covid19.man \
 			hacks/config/covid19.xml || die
 		eapply "${FILESDIR}/xscreensaver-6.05-teach-handsy-some-manners.patch"
+	fi
+
+	if use logind-idle-hint; then
+		eapply "${DISTDIR}/${PN}-6.06-logind-idle-hint.patch"
 	fi
 
 	config_rpath_update "${S}"/config.rpath
