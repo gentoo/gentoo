@@ -1,4 +1,4 @@
-From fa9eb6da5af8f55c49e4594b490d8af5904835f7 Mon Sep 17 00:00:00 2001
+From 639005a81abf915e7b6450baacf40ede01121cb7 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Fri, 27 Jan 2023 06:40:05 -0800
 Subject: [PATCH] Disable things we don't want
@@ -16,7 +16,7 @@ v3: Enable most of libutil to fix undefined references in es2gears
  7 files changed, 4 insertions(+), 89 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index bc3278e1..66433403 100644
+index 3e39b5a2..6d064ef6 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -87,16 +87,7 @@ endif
@@ -37,15 +37,15 @@ index bc3278e1..66433403 100644
  
  dep_glx = dependency('glx', required: false, disabler : true)
  if not dep_glx.found()
-@@ -145,6 +136,8 @@ else
+@@ -165,6 +156,8 @@ else
    dep_glut = dependency('', required : false)
  endif
  
 +dep_glut = disabler()
 +
- if dep_glut.found() and cc.has_function('glutInitContextProfile',
-                                         dependencies: [dep_glut],
-                                         prefix : '#include <GL/freeglut.h>')
+ if dep_glut.found() and (dep_glut.type_name() == 'internal' or
+    cc.has_function('glutInitContextProfile',
+                    dependencies: [dep_glut],
 diff --git a/src/egl/opengl/meson.build b/src/egl/opengl/meson.build
 index 9bca049c..e7122027 100644
 --- a/src/egl/opengl/meson.build
