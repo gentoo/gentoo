@@ -1,0 +1,7 @@
+# Here you can specify options that are passed directly to tgt daemon
+#tgtd_opts=""
+
+# Config file for automatic configuration with tgt-admin
+#tgtd_conf="/etc/tgt/targets.conf"
+
+# vim: ft=gentoo-conf-d
