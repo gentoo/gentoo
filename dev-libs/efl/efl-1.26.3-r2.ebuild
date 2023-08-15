@@ -128,12 +128,13 @@ DEPEND="${RDEPEND}
 	wayland? ( dev-libs/wayland-protocols )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
-	examples? ( <sys-devel/gettext-0.22 )
+	examples? ( sys-devel/gettext )
 	nls? ( sys-devel/gettext )
 	wayland? ( dev-util/wayland-scanner )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.3-libressl.patch #903001
+	"${FILESDIR}"/efl-1.26.3-gettext-0.22-fix.patch
 )
 
 pkg_setup() {
