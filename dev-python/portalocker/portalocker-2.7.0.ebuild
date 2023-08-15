@@ -5,7 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_11 )
-inherit distutils-r1
+
+inherit distutils-r1 optfeature
 
 DESCRIPTION="A library for Python file locking"
 HOMEPAGE="
@@ -24,6 +25,7 @@ KEYWORDS="~amd64"
 
 BDEPEND="
 	test? (
+		dev-python/redis[${PYTHON_USEDEP}]
 		>=dev-python/pytest-timeout-2.1.0[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-6.0.0[${PYTHON_USEDEP}]
 	)
@@ -36,4 +38,8 @@ src_prepare() {
 
 	# Disable code coverage in tests.
 	sed -i '/^ *--cov.*$/d' pytest.ini || die
+}
+
+pkg_postinst() {
+	optfeature "redis support" dev-python/redis
 }
