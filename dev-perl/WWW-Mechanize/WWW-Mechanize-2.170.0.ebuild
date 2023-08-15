@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Handy web browsing in a Perl object"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ~riscv x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	virtual/perl-Carp
