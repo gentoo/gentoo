@@ -1,0 +1,24 @@
+https://github.com/ibireme/yyjson/commit/841a8c5603a1e393d95300a55b44ebc324497e82
+
+From: ibireme <ibireme@gmail.com>
+Date: Mon, 14 Aug 2023 21:33:31 +0800
+Subject: [PATCH] Fix clang-16 valgrind fail: #134
+
+--- a/src/yyjson.c
++++ b/src/yyjson.c
+@@ -2670,6 +2670,7 @@ yyjson_mut_val *yyjson_merge_patch(yyjson_mut_doc *doc,
+     builder = yyjson_mut_obj(doc);
+     if (unlikely(!builder)) return NULL;
+     
++    memset(&local_orig, 0, sizeof(local_orig));
+     if (!yyjson_is_obj(orig)) {
+         orig = &local_orig;
+         orig->tag = builder->tag;
+@@ -2721,6 +2722,7 @@ yyjson_mut_val *yyjson_mut_merge_patch(yyjson_mut_doc *doc,
+     builder = yyjson_mut_obj(doc);
+     if (unlikely(!builder)) return NULL;
+     
++    memset(&local_orig, 0, sizeof(local_orig));
+     if (!yyjson_mut_is_obj(orig)) {
+         orig = &local_orig;
+         orig->tag = builder->tag;

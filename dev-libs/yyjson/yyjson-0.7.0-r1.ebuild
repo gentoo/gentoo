@@ -19,15 +19,17 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( app-doc/doxygen )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.7.0-disable-werror.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.0-disable-werror.patch
+	"${FILESDIR}"/${PN}-0.7.0-fix-clang-16-valgrind.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-DYYJSON_BUILD_DOC=$(usex doc)
 		-DYYJSON_BUILD_TESTS=$(usex test)
+		-DYYJSON_ENABLE_VALGRIND=$(usex test)
 	)
-	# TODO: -DYYJSON_ENABLE_VALGRIND=$(usex test)
-	# https://github.com/ibireme/yyjson/issues/134
 
 	cmake_src_configure
 }
