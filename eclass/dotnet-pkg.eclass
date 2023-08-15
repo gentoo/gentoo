@@ -8,7 +8,7 @@
 # Anna Figueiredo Gomes <navi@vlhl.dev>
 # Maciej Barć <xgqt@gentoo.org>
 # @SUPPORTED_EAPIS: 8
-# @PROVIDES: dotnet-pkg-utils nuget
+# @PROVIDES: dotnet-pkg-base nuget
 # @BLURB: common functions and variables for .NET packages
 # @DESCRIPTION:
 # This eclass is designed to help with building and installing packages that
@@ -16,7 +16,7 @@
 # It provides the required phase functions and special variables that make
 # it easier to write ebuilds for .NET packages.
 # If you do not use the exported phase functions, then consider using
-# the "dotnet-pkg-utils.eclass" instead.
+# the "dotnet-pkg-base.eclass" instead.
 #
 # .NET SDK is a open-source framework from Microsoft, it is a cross-platform
 # successor to .NET Framework.
@@ -41,7 +41,7 @@ esac
 if [[ -z ${_DOTNET_PKG_ECLASS} ]] ; then
 _DOTNET_PKG_ECLASS=1
 
-inherit dotnet-pkg-utils
+inherit dotnet-pkg-base
 
 # @ECLASS_VARIABLE: DOTNET_PROJECTS
 # @DEFAULT_UNSET
@@ -52,11 +52,11 @@ inherit dotnet-pkg-utils
 # In .NET version 6.0 and lower it was possible to build a project solution
 # (".sln") immediately with output to a specified directory ("--output DIR"),
 # but versions >= 7.0 deprecated this behavior. This means that
-# "dotnet-pkg-utils_build" will fail when pointed to a solution or a directory
+# "dotnet-pkg-base_build" will fail when pointed to a solution or a directory
 # containing a solution file.
 #
 # It is up to the maintainer if this variable is set before inheriting
-# "dotnet-pkg-utils" eclass, but it is advised that it is set after
+# "dotnet-pkg-base" eclass, but it is advised that it is set after
 # the variable "${S}" is set, it should also integrate with it
 # (see the example below).
 #
@@ -84,7 +84,7 @@ inherit dotnet-pkg-utils
 #
 # It is up to the maintainer if this variable is set before inheriting
 # "dotnet-pkg.eclass", but it is advised that it is set after the variable
-# "DOTNET_PROJECT" (from "dotnet-pkg-utils" eclass) is set.
+# "DOTNET_PROJECT" (from "dotnet-pkg-base" eclass) is set.
 #
 # Default value is an empty array.
 #
@@ -100,7 +100,7 @@ DOTNET_RESTORE_EXTRA_ARGS=()
 #
 # It is up to the maintainer if this variable is set before inheriting
 # "dotnet-pkg.eclass", but it is advised that it is set after the variable
-# "DOTNET_PROJECT" (from "dotnet-pkg-utils" eclass) is set.
+# "DOTNET_PROJECT" (from "dotnet-pkg-base" eclass) is set.
 #
 # Default value is an empty array.
 #
@@ -117,9 +117,9 @@ DOTNET_BUILD_EXTRA_ARGS=()
 # Default "pkg_setup" for the "dotnet-pkg" eclass.
 # Pre-build configuration and checks.
 #
-# Calls "dotnet-pkg-utils_pkg_setup".
+# Calls "dotnet-pkg-base_pkg_setup".
 dotnet-pkg_pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && dotnet-pkg-utils_setup
+	[[ ${MERGE_TYPE} != binary ]] && dotnet-pkg-base_setup
 }
 
 # @FUNCTION: dotnet-pkg_src_unpack
@@ -150,9 +150,9 @@ dotnet-pkg_src_unpack() {
 # Default "src_prepare" for the "dotnet-pkg" eclass.
 # Prepare the package sources.
 #
-# Run "dotnet-pkg-utils_remove-global-json".
+# Run "dotnet-pkg-base_remove-global-json".
 dotnet-pkg_src_prepare() {
-	dotnet-pkg-utils_remove-global-json
+	dotnet-pkg-base_remove-global-json
 
 	default
 }
@@ -184,12 +184,12 @@ dotnet-pkg_foreach-project() {
 # then restore the project file specified by "DOTNET_PROJECT",
 # afterwards restore any found solutions.
 dotnet-pkg_src_configure() {
-	dotnet-pkg-utils_info
+	dotnet-pkg-base_info
 
 	dotnet-pkg_foreach-project \
-		dotnet-pkg-utils_restore "${DOTNET_RESTORE_EXTRA_ARGS[@]}"
+		dotnet-pkg-base_restore "${DOTNET_RESTORE_EXTRA_ARGS[@]}"
 
-	dotnet-pkg-utils_foreach-solution dotnet-pkg-utils_restore "$(pwd)"
+	dotnet-pkg-base_foreach-solution dotnet-pkg-base_restore "$(pwd)"
 }
 
 # @FUNCTION: dotnet-pkg_src_compile
@@ -201,10 +201,10 @@ dotnet-pkg_src_configure() {
 # "DOTNET_PROJECT" or "S" (temporary build directory) variables.
 #
 # For more info see: "DOTNET_PROJECT" variable
-# and "dotnet-pkg-utils_get-project" function.
+# and "dotnet-pkg-base_get-project" function.
 dotnet-pkg_src_compile() {
 	dotnet-pkg_foreach-project \
-		dotnet-pkg-utils_build "${DOTNET_BUILD_EXTRA_ARGS[@]}"
+		dotnet-pkg-base_build "${DOTNET_BUILD_EXTRA_ARGS[@]}"
 }
 
 # @FUNCTION: dotnet-pkg_src_test
@@ -218,7 +218,7 @@ dotnet-pkg_src_compile() {
 # will execute wrong or incomplete test suite. Maintainers should inspect if
 # any and/or correct tests are ran.
 dotnet-pkg_src_test() {
-	dotnet-pkg-utils_foreach-solution dotnet-pkg-utils_test "$(pwd)"
+	dotnet-pkg-base_foreach-solution dotnet-pkg-base_test "$(pwd)"
 }
 
 # @FUNCTION: dotnet-pkg_src_install
@@ -228,7 +228,7 @@ dotnet-pkg_src_test() {
 #
 # This is the default package install:
 #   - install the compiled .NET package artifacts,
-#	  for more info see "dotnet-pkg-utils_install" and "DOTNET_OUTPUT",
+#	  for more info see "dotnet-pkg-base_install" and "DOTNET_OUTPUT",
 #   - create launcher from the .NET package directory to "/usr/bin",
 #     phase will detect to choose either executable with capital letter
 #     (common among .NET packages) or not,
@@ -237,17 +237,17 @@ dotnet-pkg_src_test() {
 # It is very likely that this function is either insufficient or has to be
 # redefined in a ebuild.
 dotnet-pkg_src_install() {
-	dotnet-pkg-utils_install
+	dotnet-pkg-base_install
 
 	# /usr/bin/Nake -> /usr/share/nake-3.0.0/Nake
 	if [[ -f "${D}/usr/share/${P}/${PN^}" ]] ; then
-		dotnet-pkg-utils_dolauncher /usr/share/${P}/${PN^}
+		dotnet-pkg-base_dolauncher /usr/share/${P}/${PN^}
 
 		# Create a compatibility symlink and also for ease of use from CLI.
 		dosym -r /usr/bin/${PN^} /usr/bin/${PN}
 
 	elif [[ -f "${D}/usr/share/${P}/${PN}" ]] ; then
-		dotnet-pkg-utils_dolauncher /usr/share/${P}/${PN}
+		dotnet-pkg-base_dolauncher /usr/share/${P}/${PN}
 	fi
 
 	einstalldocs

@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: dotnet-pkg-utils.eclass
+# @ECLASS: dotnet-pkg-base.eclass
 # @MAINTAINER:
 # Gentoo Dotnet project <dotnet@gentoo.org>
 # @AUTHOR:
@@ -12,8 +12,8 @@
 # @BLURB: common functions and variables for builds using .NET SDK
 # @DESCRIPTION:
 # This eclass is designed to provide required definitions for .NET packages.
-# In ebuilds for software that only utilize the .NET SDK, without special cases,
-# the "dotnet-pkg.eclass" is probably better suited.
+# In ebuilds for software that only utilizes the .NET SDK,
+# without special cases, the "dotnet-pkg.eclass" is probably better suited.
 #
 # This eclass does not export any phase functions, for that see
 # the "dotnet-pkg" eclass.
@@ -47,7 +47,7 @@ if [[ ${CATEGORY}/${PN} != dev-dotnet/dotnet-runtime-nugets ]] ; then
 	BDEPEND+=" ${RDEPEND} "
 
 	# Special package "dev-dotnet/csharp-gentoodotnetinfo" used for information
-	# gathering, example for usage see the "dotnet-pkg-utils_info" function.
+	# gathering, example for usage see the "dotnet-pkg-base_info" function.
 	if [[ ${CATEGORY}/${PN} != dev-dotnet/csharp-gentoodotnetinfo ]] ; then
 		BDEPEND+=" dev-dotnet/csharp-gentoodotnetinfo "
 	fi
@@ -78,14 +78,14 @@ export UseSharedCompilation=false
 # @DESCRIPTION:
 # Sets the runtime used to build a package.
 #
-# This variable is set automatically by the "dotnet-pkg-utils_setup" function.
+# This variable is set automatically by the "dotnet-pkg-base_setup" function.
 
 # @ECLASS_VARIABLE: DOTNET_EXECUTABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Sets path of a "dotnet" executable.
 #
-# This variable is set automatically by the "dotnet-pkg-utils_setup" function.
+# This variable is set automatically by the "dotnet-pkg-base_setup" function.
 
 # @ECLASS_VARIABLE: DOTNET_CONFIGURATION
 # @DEFAULT_UNSET
@@ -93,23 +93,23 @@ export UseSharedCompilation=false
 # Configuration value passed to "dotnet" in the compile phase.
 # Is either Debug or Release, depending on the "debug" USE flag.
 #
-# This variable is set automatically by the "dotnet-pkg-utils_setup" function.
+# This variable is set automatically by the "dotnet-pkg-base_setup" function.
 
 # @ECLASS_VARIABLE: DOTNET_OUTPUT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Path of the output directory, where the package artifacts are placed during
-# the building of packages with "dotnet-pkg-utils_build" function.
+# the building of packages with "dotnet-pkg-base_build" function.
 #
-# This variable is set automatically by the "dotnet-pkg-utils_setup" function.
+# This variable is set automatically by the "dotnet-pkg-base_setup" function.
 
 # @VARIABLE: _DOTNET_LAUNCHERDEST
 # @INTERNAL
 # @DESCRIPTION:
 # Sets the path that .NET launchers are installed into by
-# the "dotnet-pkg-utils_dolauncher" function.
+# the "dotnet-pkg-base_dolauncher" function.
 #
-# The function "dotnet-pkg-utils_launcherinto" is able to manipulate this
+# The function "dotnet-pkg-base_launcherinto" is able to manipulate this
 # variable.
 #
 # Defaults to "/usr/bin".
@@ -119,23 +119,23 @@ _DOTNET_LAUNCHERDEST=/usr/bin
 # @INTERNAL
 # @DESCRIPTION:
 # Sets additional variables for .NET launchers created by
-# the "dotnet-pkg-utils_dolauncher" function.
+# the "dotnet-pkg-base_dolauncher" function.
 #
-# The function "dotnet-pkg-utils_append_launchervar" is able to manipulate this
+# The function "dotnet-pkg-base_append_launchervar" is able to manipulate this
 # variable.
 #
 # Defaults to a empty array.
 DOTNET_LAUNCHERVARS=()
 
-# @FUNCTION: dotnet-pkg-utils_get-configuration
+# @FUNCTION: dotnet-pkg-base_get-configuration
 # @DESCRIPTION:
 # Return .NET configuration type of the current package.
 #
 # It is advised to refer to the "DOTNET_CONFIGURATION" variable instead of
 # calling this function if necessary.
 #
-# Used by "dotnet-pkg-utils_setup".
-dotnet-pkg-utils_get-configuration() {
+# Used by "dotnet-pkg-base_setup".
+dotnet-pkg-base_get-configuration() {
 	if in_iuse debug && use debug ; then
 		echo Debug
 	else
@@ -143,16 +143,16 @@ dotnet-pkg-utils_get-configuration() {
 	fi
 }
 
-# @FUNCTION: dotnet-pkg-utils_get-output
+# @FUNCTION: dotnet-pkg-base_get-output
 # @USAGE: <name>
 # @DESCRIPTION:
 # Return a specially constructed name of a directory for output of
-# "dotnet build" artifacts ("--output" flag, see "dotnet-pkg-utils_build").
+# "dotnet build" artifacts ("--output" flag, see "dotnet-pkg-base_build").
 #
 # It is very rare that a maintainer would use this function in an ebuild.
 #
-# This function is used inside "dotnet-pkg-utils_setup".
-dotnet-pkg-utils_get-output() {
+# This function is used inside "dotnet-pkg-base_setup".
+dotnet-pkg-base_get-output() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ -z ${DOTNET_CONFIGURATION} ]] &&
@@ -161,12 +161,12 @@ dotnet-pkg-utils_get-output() {
 	echo "${WORKDIR}"/${1}_net${DOTNET_COMPAT}_${DOTNET_CONFIGURATION}
 }
 
-# @FUNCTION: dotnet-pkg-utils_get-runtime
+# @FUNCTION: dotnet-pkg-base_get-runtime
 # @DESCRIPTION:
 # Return the .NET runtime used for the current package.
 #
-# Used by "dotnet-pkg-utils_setup".
-dotnet-pkg-utils_get-runtime() {
+# Used by "dotnet-pkg-base_setup".
+dotnet-pkg-base_get-runtime() {
 	local libc="$(usex elibc_musl "-musl" "")"
 
 	if use amd64 ; then
@@ -182,7 +182,7 @@ dotnet-pkg-utils_get-runtime() {
 	fi
 }
 
-# @FUNCTION: dotnet-pkg-utils_setup
+# @FUNCTION: dotnet-pkg-base_setup
 # @DESCRIPTION:
 # Sets up "DOTNET_EXECUTABLE" variable for later use in "edotnet".
 # Also sets up "DOTNET_CONFIGURATION" and "DOTNET_OUTPUT"
@@ -191,7 +191,7 @@ dotnet-pkg-utils_get-runtime() {
 # This functions should be called by "pkg_setup".
 #
 # Used by "dotnet-pkg_pkg_setup" from the "dotnet-pkg" eclass.
-dotnet-pkg-utils_setup() {
+dotnet-pkg-base_setup() {
 	local dotnet_compat_impl
 	local dotnet_compat_impl_path
 	for dotnet_compat_impl in dotnet{,-bin}-${DOTNET_COMPAT} ; do
@@ -221,12 +221,12 @@ dotnet-pkg-utils_setup() {
 	unset DOTNET_DATA
 	unset NUGET_DATA
 
-	DOTNET_RUNTIME=$(dotnet-pkg-utils_get-runtime)
-	DOTNET_CONFIGURATION=$(dotnet-pkg-utils_get-configuration)
-	DOTNET_OUTPUT="$(dotnet-pkg-utils_get-output ${P})"
+	DOTNET_RUNTIME=$(dotnet-pkg-base_get-runtime)
+	DOTNET_CONFIGURATION=$(dotnet-pkg-base_get-configuration)
+	DOTNET_OUTPUT="$(dotnet-pkg-base_get-output ${P})"
 }
 
-# @FUNCTION: dotnet-pkg-utils_remove-global-json
+# @FUNCTION: dotnet-pkg-base_remove-global-json
 # @USAGE: [directory]
 # @DESCRIPTION:
 # Remove the "global.json" if it exists.
@@ -236,7 +236,7 @@ dotnet-pkg-utils_setup() {
 # Optional "directory" argument defaults to the current directory path.
 #
 # Used by "dotnet-pkg_src_prepare" from the "dotnet-pkg" eclass.
-dotnet-pkg-utils_remove-global-json() {
+dotnet-pkg-base_remove-global-json() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local file="${1:-.}"/global.json
@@ -256,13 +256,13 @@ edotnet() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ -z ${DOTNET_EXECUTABLE} ]] ; then
-	   die "${FUNCNAME}: DOTNET_EXECUTABLE not set. Was dotnet-pkg-utils_setup called?"
+	   die "${FUNCNAME}: DOTNET_EXECUTABLE not set. Was dotnet-pkg-base_setup called?"
 	fi
 
 	edo "${DOTNET_EXECUTABLE}" "${@}"
 }
 
-# @FUNCTION: dotnet-pkg-utils_info
+# @FUNCTION: dotnet-pkg-base_info
 # @DESCRIPTION:
 # Show information about current .NET SDK that is being used.
 #
@@ -270,9 +270,9 @@ edotnet() {
 # the "dev-dotnet/csharp-gentoodotnetinfo" package.
 #
 # Used by "dotnet-pkg_src_configure" from the "dotnet-pkg" eclass.
-dotnet-pkg-utils_info() {
+dotnet-pkg-base_info() {
 	if [[ ${CATEGORY}/${PN} == dev-dotnet/csharp-gentoodotnetinfo ]] ; then
-		debug-print-function "${FUNCNAME}: ${P} is a special package, skipping dotnet-pkg-utils_info"
+		debug-print-function "${FUNCNAME}: ${P} is a special package, skipping dotnet-pkg-base_info"
 	elif ! command -v gentoo-dotnet-info >/dev/null ; then
 		ewarn "${FUNCNAME}: gentoo-dotnet-info not available"
 	else
@@ -280,7 +280,7 @@ dotnet-pkg-utils_info() {
 	fi
 }
 
-# @FUNCTION: dotnet-pkg-utils_foreach-solution
+# @FUNCTION: dotnet-pkg-base_foreach-solution
 # @USAGE: <function> [directory]
 # @DESCRIPTION:
 # Execute a function for each solution file (.sln) in a specified directory.
@@ -290,7 +290,7 @@ dotnet-pkg-utils_info() {
 # Optional "directory" argument defaults to the current directory path.
 #
 # Used by "dotnet-pkg_src_configure" from the "dotnet-pkg" eclass.
-dotnet-pkg-utils_foreach-solution() {
+dotnet-pkg-base_foreach-solution() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local dotnet_solution
@@ -304,7 +304,7 @@ dotnet-pkg-utils_foreach-solution() {
 	done < <(find "${2:-.}" -maxdepth 1 -type f -name "*.sln")
 }
 
-# @FUNCTION: dotnet-pkg-utils_restore
+# @FUNCTION: dotnet-pkg-base_restore
 # @USAGE: [directory] [args] ...
 # @DESCRIPTION:
 # Restore the package using "dotnet restore" in a specified directory.
@@ -315,7 +315,7 @@ dotnet-pkg-utils_foreach-solution() {
 # the "dotnet" command invocation.
 #
 # Used by "dotnet-pkg_src_configure" from the "dotnet-pkg" eclass.
-dotnet-pkg-utils_restore() {
+dotnet-pkg-base_restore() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local directory
@@ -336,7 +336,7 @@ dotnet-pkg-utils_restore() {
 	edotnet restore "${restore_args[@]}" "${directory}"
 }
 
-# @FUNCTION: dotnet-pkg-utils_restore_tools
+# @FUNCTION: dotnet-pkg-base_restore_tools
 # @USAGE: [config-file] [args] ...
 # @DESCRIPTION:
 # Restore dotnet tools for a project in the current directory.
@@ -346,7 +346,7 @@ dotnet-pkg-utils_restore() {
 #
 # Additionally any number of "args" maybe be given, they are appended to
 # the "dotnet" command invocation.
-dotnet-pkg-utils_restore_tools() {
+dotnet-pkg-base_restore_tools() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local -a tool_restore_args=(
@@ -363,7 +363,7 @@ dotnet-pkg-utils_restore_tools() {
 	edotnet tool restore "${tool_restore_args[@]}"
 }
 
-# @FUNCTION: dotnet-pkg-utils_build
+# @FUNCTION: dotnet-pkg-base_build
 # @USAGE: [directory] [args] ...
 # @DESCRIPTION:
 # Build the package using "dotnet build" in a specified directory.
@@ -374,7 +374,7 @@ dotnet-pkg-utils_restore_tools() {
 # the "dotnet" command invocation.
 #
 # Used by "dotnet-pkg_src_compile" from the "dotnet-pkg" eclass.
-dotnet-pkg-utils_build() {
+dotnet-pkg-base_build() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local directory
@@ -405,7 +405,7 @@ dotnet-pkg-utils_build() {
 	edotnet build "${build_args[@]}" "${directory}"
 }
 
-# @FUNCTION: dotnet-pkg-utils_test
+# @FUNCTION: dotnet-pkg-base_test
 # @USAGE: [directory] [args] ...
 # @DESCRIPTION:
 # Test the package using "dotnet test" in a specified directory.
@@ -416,7 +416,7 @@ dotnet-pkg-utils_build() {
 # the "dotnet" command invocation.
 #
 # Used by "dotnet-pkg_src_test" from the "dotnet-pkg" eclass.
-dotnet-pkg-utils_test() {
+dotnet-pkg-base_test() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local directory
@@ -437,14 +437,14 @@ dotnet-pkg-utils_test() {
 	edotnet test "${test_args[@]}" "${directory}"
 }
 
-# @FUNCTION: dotnet-pkg-utils_install
+# @FUNCTION: dotnet-pkg-base_install
 # @USAGE: [directory]
 # @DESCRIPTION:
 # Install the contents of "DOTNET_OUTPUT" into a directory, defaults to
 # "/usr/share/${P}".
 #
 # Installation directory is relative to "ED".
-dotnet-pkg-utils_install() {
+dotnet-pkg-base_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local installation_directory="${1:-/usr/share/${P}}"
@@ -453,14 +453,14 @@ dotnet-pkg-utils_install() {
 	cp -r "${DOTNET_OUTPUT}"/* "${ED}/${installation_directory}/" || die
 }
 
-# @FUNCTION: dotnet-pkg-utils_launcherinto
+# @FUNCTION: dotnet-pkg-base_launcherinto
 # @USAGE: <directory>
 # @DESCRIPTION:
 # Changes the path .NET launchers are installed into via subsequent
-# "dotnet-pkg-utils_dolauncher" calls.
+# "dotnet-pkg-base_dolauncher" calls.
 #
 # For more info see the "_DOTNET_LAUNCHERDEST" variable.
-dotnet-pkg-utils_launcherinto() {
+dotnet-pkg-base_launcherinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ -z ${1} ]] && die "${FUNCNAME}: no directory specified"
@@ -468,23 +468,23 @@ dotnet-pkg-utils_launcherinto() {
 	_DOTNET_LAUNCHERDEST="${1}"
 }
 
-# @FUNCTION: dotnet-pkg-utils_append_launchervar
+# @FUNCTION: dotnet-pkg-base_append_launchervar
 # @USAGE: <variable-setting>
 # @DESCRIPTION:
 # Appends a given variable setting to the "DOTNET_LAUNCHERVARS".
 #
 # WARNING: This functions modifies a global variable permanently!
 # This means that all launchers created in subsequent
-# "dotnet-pkg-utils_dolauncher" calls of a given package will have
+# "dotnet-pkg-base_dolauncher" calls of a given package will have
 # the given variable set.
 #
 # Example:
 # @CODE
-# dotnet-pkg-utils_append_launchervar "DOTNET_EnableAlternateStackCheck=1"
+# dotnet-pkg-base_append_launchervar "DOTNET_EnableAlternateStackCheck=1"
 # @CODE
 #
 # For more info see the "DOTNET_LAUNCHERVARS" variable.
-dotnet-pkg-utils_append_launchervar() {
+dotnet-pkg-base_append_launchervar() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ -z ${1} ]] && die "${FUNCNAME}: no variable setting specified"
@@ -492,7 +492,7 @@ dotnet-pkg-utils_append_launchervar() {
 	DOTNET_LAUNCHERVARS+=( "${1}" )
 }
 
-# @FUNCTION: dotnet-pkg-utils_dolauncher
+# @FUNCTION: dotnet-pkg-base_dolauncher
 # @USAGE: <executable-path> [filename]
 # @DESCRIPTION:
 # Make a wrapper script to launch an executable built from a .NET package.
@@ -505,12 +505,12 @@ dotnet-pkg-utils_append_launchervar() {
 #
 # Example:
 # @CODE
-# dotnet-pkg-utils_install
-# dotnet-pkg-utils_dolauncher /usr/share/${P}/${PN^}
+# dotnet-pkg-base_install
+# dotnet-pkg-base_dolauncher /usr/share/${P}/${PN^}
 # @CODE
 #
 # The path is prepended by "EPREFIX".
-dotnet-pkg-utils_dolauncher() {
+dotnet-pkg-base_dolauncher() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local executable_path executable_name
@@ -559,7 +559,7 @@ dotnet-pkg-utils_dolauncher() {
 	doexe "${executable_target}"
 }
 
-# @FUNCTION: dotnet-pkg-utils_dolauncher_portable
+# @FUNCTION: dotnet-pkg-base_dolauncher_portable
 # @USAGE: <dll-path> <filename>
 # @DESCRIPTION:
 # Make a wrapper script to launch a .NET DLL file built from a .NET package.
@@ -570,12 +570,12 @@ dotnet-pkg-utils_dolauncher() {
 #
 # Example:
 # @CODE
-# dotnet-pkg-utils_dolauncher_portable \
+# dotnet-pkg-base_dolauncher_portable \
 #     /usr/share/${P}/GentooDotnetInfo.dll gentoo-dotnet-info
 # @CODE
 #
 # The path is prepended by "EPREFIX".
-dotnet-pkg-utils_dolauncher_portable() {
+dotnet-pkg-base_dolauncher_portable() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local dll_path="${1}"

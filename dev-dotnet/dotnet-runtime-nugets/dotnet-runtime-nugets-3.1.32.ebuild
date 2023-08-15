@@ -24,7 +24,7 @@ microsoft.netcore.app.runtime.linux-musl-x64@${PV}
 microsoft.netcore.app.runtime.linux-x64@${PV}
 "
 
-inherit dotnet-pkg-utils
+inherit dotnet-pkg-base
 
 DESCRIPTION=".NET runtime nugets"
 HOMEPAGE="https://dotnet.microsoft.com/"
@@ -43,7 +43,7 @@ src_install() {
 	nuget_donuget "${DISTDIR}/microsoft.aspnetcore.app.ref.3.1.10.nupkg"
 	nuget_donuget "${DISTDIR}/microsoft.netcore.app.ref.3.1.0.nupkg"
 
-	local runtime=$(dotnet-pkg-utils_get-runtime)
+	local runtime=$(dotnet-pkg-base_get-runtime)
 	local -a nuget_namespaces=(
 		microsoft.aspnetcore.app.runtime
 		microsoft.netcore.app.host
