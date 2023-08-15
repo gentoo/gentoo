@@ -50,10 +50,11 @@ RDEPEND="
 	>=dev-build/autoconf-2.69:*
 	sys-devel/gnuconfig
 "
-DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/gzip
 	sys-apps/help2man
+	dev-build/autoconf-wrapper
+	dev-build/autoconf
 	test? (
 		${PYTHON_DEPS}
 		dev-util/dejagnu
