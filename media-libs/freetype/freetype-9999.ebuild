@@ -28,7 +28,7 @@ fi
 
 LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
-IUSE="X +adobe-cff brotli bzip2 +cleartype-hinting debug doc fontforge harfbuzz infinality +png static-libs svg utils"
+IUSE="X +adobe-cff brotli bzip2 +cleartype-hinting debug doc fontforge harfbuzz +png static-libs svg utils"
 
 RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
@@ -137,15 +137,8 @@ src_prepare() {
 			|| die "unable to disable option $1"
 	}
 
-	# Will be the new default for >=freetype-2.7.0
-	disable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
-
-	if use infinality && use cleartype-hinting ; then
-		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 )"
-	elif use infinality ; then
-		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  1"
-	elif use cleartype-hinting ; then
-		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
+	if ! use cleartype-hinting ; then
+		disable_option TT_CONFIG_OPTION_SUBPIXEL_HINTING
 	fi
 
 	# Can be disabled with FREETYPE_PROPERTIES="pcf:no-long-family-names=1"
