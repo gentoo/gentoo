@@ -9,7 +9,7 @@ inherit edo perl-module toolchain-funcs
 
 DESCRIPTION="Fast, compact, powerful binary serialization"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86"
 
 # Note: bundled zstd fails to compile
 RDEPEND="
