@@ -177,7 +177,7 @@ src_test() {
 }
 
 pkg_preinst() {
-	if ! use build; then
+	if ! use build && [[ -z ${ROOT} ]]; then
 		python_setup
 		local sitedir=$(python_get_sitedir)
 		[[ -d ${D}${sitedir} ]] || die "${D}${sitedir}: No such directory"
