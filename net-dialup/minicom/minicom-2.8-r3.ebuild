@@ -23,7 +23,7 @@ RDEPEND="
 
 BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
+	sys-devel/gettext
 "
 
 PATCHES=(
