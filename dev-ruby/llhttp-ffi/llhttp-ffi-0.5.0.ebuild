@@ -11,10 +11,10 @@ inherit ruby-fakegem
 
 MY_PV="2023-03-29"
 DESCRIPTION="Ruby FFI bindings for llhttp"
-HOMEPAGE="https://github.com/metabahn/llhttp"
+HOMEPAGE="https://github.com/bryanp/llhttp"
 # Use -> ${MY_PV} in SRC_URI here to help spot forgotten MY_PV updates
 # (pkgcheck will warn on matching checksums)
-SRC_URI="https://github.com/metabahn/llhttp/archive/refs/tags/${MY_PV}.tar.gz -> llhttp-${MY_PV}.tar.gz"
+SRC_URI="https://github.com/bryanp/llhttp/archive/refs/tags/${MY_PV}.tar.gz -> llhttp-${MY_PV}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
@@ -28,6 +28,8 @@ ruby_add_bdepend "test? (
 	dev-ruby/async-io
 	dev-ruby/rspec:3
 )"
+
+DEPEND+=" test? ( net-misc/curl )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0-fix-rake-clean.patch
