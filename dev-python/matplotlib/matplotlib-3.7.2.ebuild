@@ -114,9 +114,11 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		>=dev-python/pygobject-3.40.1-r1:3[cairo?,${PYTHON_USEDEP}]
 		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
-		x11-libs/gtk+:3[introspection]
+		gtk3? (
+			>=dev-python/pygobject-3.40.1-r1:3[cairo?,${PYTHON_USEDEP}]
+			x11-libs/gtk+:3[introspection]
+		)
 	)
 "
 
