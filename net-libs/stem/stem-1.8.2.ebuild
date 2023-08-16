@@ -13,7 +13,7 @@ HOMEPAGE="https://stem.torproject.org"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
