@@ -1,0 +1,24 @@
+From 96fda91da2df356a7e0897187822e27125a3e40b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim=20R=C3=BChsen?= <tim.ruehsen@gmx.de>
+Date: Mon, 22 May 2023 19:56:35 +0200
+Subject: * libwget/decompressor.c: Explicitly include stdint.h before lzlib.h
+
+---
+ libwget/decompressor.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libwget/decompressor.c b/libwget/decompressor.c
+index 53ed884..69ce5dd 100644
+--- a/libwget/decompressor.c
++++ b/libwget/decompressor.c
+@@ -60,6 +60,7 @@
+ #endif
+ 
+ #ifdef WITH_LZIP
++#include <stdint.h>
+ #include <lzlib.h>
+ #endif
+ 
+-- 
+cgit v1.1
+
