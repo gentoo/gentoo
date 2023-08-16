@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib multibuild
+inherit cmake-multilib multibuild prefix
 
 MY_PN="OpenCL-ICD-Loader"
 MY_P="${MY_PN}-${PV}"
@@ -24,6 +24,11 @@ DEPEND="${RDEPEND}
 	>=dev-util/opencl-headers-${PV}"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	hprefixify loader/icd_platform.h
+	cmake_src_prepare
+}
 
 multilib_src_configure() {
 	local mycmakeargs=(
