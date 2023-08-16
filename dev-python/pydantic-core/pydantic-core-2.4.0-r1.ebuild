@@ -122,6 +122,12 @@ distutils_enable_tests pytest
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/pydantic_core/_pydantic_core.*.so"
 
+DISTUTILS_ARGS=(
+	# disable mimalloc since it fails due to -latomic underlinking on some
+	# platforms, https://bugs.gentoo.org/912341
+	--no-default-features
+)
+
 src_prepare() {
 	sed -i -e '/--benchmark/d' pyproject.toml || die
 	distutils-r1_src_prepare
