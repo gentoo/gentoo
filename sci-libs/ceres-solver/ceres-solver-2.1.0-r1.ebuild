@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="${PYTHON_DEPS}
 	>=dev-cpp/eigen-3.3.4:3
 	lapack? ( virtual/pkgconfig )
-	doc? ( dev-libs/mathjax )
+	doc? ( <dev-libs/mathjax-3 )
 "
 RDEPEND="
 	dev-cpp/glog[gflags?,${MULTILIB_USEDEP}]
