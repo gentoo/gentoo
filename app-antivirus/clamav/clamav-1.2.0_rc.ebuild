@@ -174,7 +174,7 @@ if [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
-IUSE="doc clamonacc +clamapp experimental jit libclamav-only milter rar selinux systemd test"
+IUSE="doc clamonacc +clamapp experimental jit libclamav-only milter rar selinux +system-mspack systemd test"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamapp !milter )
 	clamonacc? ( clamapp )
@@ -192,7 +192,6 @@ COMMON_DEPEND="
 	app-arch/bzip2
 	dev-libs/json-c:=
 	dev-libs/libltdl
-	dev-libs/libmspack
 	dev-libs/libpcre2:=
 	dev-libs/libxml2
 	dev-libs/openssl:=
@@ -204,12 +203,14 @@ COMMON_DEPEND="
 	jit? ( <sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
 	milter? ( mail-filter/libmilter:= )
 	rar? ( app-arch/unrar )
+	system-mspack? ( dev-libs/libmspack )
 	test? ( dev-python/pytest )
 "
-
+# rust-bin < 1.71 has an executable stack
+# which is not supported on selinux #911589
 BDEPEND="
 	virtual/pkgconfig
-	>=virtual/rust-1.61
+	>=virtual/rust-1.71
 	doc? ( app-doc/doxygen )
 	test? (
 		${PYTHON_DEPS}
@@ -246,7 +247,7 @@ src_configure() {
 		-DENABLE_CLAMONACC=$(usex clamonacc ON OFF)
 		-DENABLE_DOXYGEN=$(usex doc)
 		-DENABLE_EXPERIMENTAL=$(usex experimental ON OFF)
-		-DENABLE_EXTERNAL_MSPACK=ON
+		-DENABLE_EXTERNAL_MSPACK=$(usex system-mspack ON OFF)
 		-DENABLE_JSON_SHARED=ON
 		-DENABLE_MAN_PAGES=ON
 		-DENABLE_MILTER=$(usex milter ON OFF)
@@ -352,10 +353,8 @@ src_install() {
 				fi
 			done
 
-			# These both need to be writable by the clamav user;
-			# remove the installer-created empty directories
+			# These both need to be writable by the clamav user
 			# TODO: use syslog by default; that's what it's for.
-			rm -r "${ED}"/var/lib/clamav || die
 			diropts -o clamav -g clamav
 			keepdir /var/lib/clamav
 			keepdir /var/log/clamav
