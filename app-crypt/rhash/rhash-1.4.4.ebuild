@@ -29,6 +29,10 @@ BDEPEND="
 
 S="${WORKDIR}/RHash-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-prefix.patch
+)
+
 src_prepare() {
 	default
 
