@@ -41,7 +41,7 @@ COMMON_DEPEND="
 		t1lib? ( >=media-libs/t1lib-5:5 )
 	)
 	epub? (
-		dev-libs/mathjax
+		<dev-libs/mathjax-3
 		>=net-libs/webkit-gtk-2.6.0:4.1
 	)
 	keyring? ( >=app-crypt/libsecret-0.5 )
