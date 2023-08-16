@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,7 +48,7 @@ src_compile() {
 	# The static lib re-uses the same objects as the shared lib, so
 	# overhead is low w/creating it all the time.  It's also needed
 	# by the tests.
-	_build dynamic static hiredis.pc
+	_build dynamic static hiredis{,_ssl}.pc
 }
 
 src_test() {
