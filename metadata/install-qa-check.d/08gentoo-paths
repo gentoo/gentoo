@@ -53,7 +53,11 @@ gentoo_path_check() {
 		fi
 	done
 
-	# 3. check for unexpected /usr/share/doc subdirectories
+	# 3. check for unexpected subdirectories in bin and sbin
+	local bin_subdirs=( "${ED%/}"{,/usr}/{bin,sbin}/*/ )
+	bad_paths+=( "${bin_subdirs[@]%/}" )
+
+	# 4. check for unexpected /usr/share/doc subdirectories
 	local doc_dirs=( "${ED%/}"/usr/share/doc/* )
 	for x in "${doc_dirs[@]##*/}"; do
 		if [[ ${x} != ${PF} ]]; then
