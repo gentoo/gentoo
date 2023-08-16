@@ -17,7 +17,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug doc gui +ocamlopt test"
 RESTRICT="!test? ( test )"
 
