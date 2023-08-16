@@ -256,6 +256,17 @@ python_test() {
 		"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtcairo', 'QT_API': 'PyQt5'}]"
 	)
 
+	case "${ABI}" in
+		alpha|arm|hppa|m68k|o32|ppc|s390|sh|sparc|x86)
+			EPYTEST_DESELECT+=(
+				# too large for 32-bit platforms
+				'tests/test_axes.py::test_psd_csd[png]'
+			)
+			;;
+		*)
+			;;
+	esac
+
 	# we need to rebuild mpl against bundled freetype, otherwise
 	# over 1000 tests will fail because of mismatched font rendering
 	grep -v system_freetype "${BUILD_DIR}"/setup.cfg \

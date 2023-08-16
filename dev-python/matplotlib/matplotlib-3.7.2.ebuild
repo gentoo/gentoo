@@ -254,11 +254,23 @@ python_test() {
 		# unhappy about xdist
 		tests/test_widgets.py::test_span_selector_animated_artists_callback
 	)
+
 	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
 		# https://github.com/matplotlib/matplotlib/issues/23384
 		"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtagg', 'QT_API': 'PyQt5'}]"
 		"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtcairo', 'QT_API': 'PyQt5'}]"
 	)
+
+	case "${ABI}" in
+		alpha|arm|hppa|m68k|o32|ppc|s390|sh|sparc|x86)
+			EPYTEST_DESELECT+=(
+				# too large for 32-bit platforms
+				'tests/test_axes.py::test_psd_csd[png]'
+			)
+			;;
+		*)
+			;;
+	esac
 
 	# we need to rebuild mpl against bundled freetype, otherwise
 	# over 1000 tests will fail because of mismatched font rendering
