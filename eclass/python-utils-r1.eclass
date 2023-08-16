@@ -351,6 +351,7 @@ _python_export() {
 						print(sysconfig.get_path("purelib"))
 					EOF
 				)
+				PYTHON_SITEDIR=${EPREFIX}${PYTHON_SITEDIR#"${BROOT-${EPREFIX}}"}
 				export PYTHON_SITEDIR
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
@@ -362,6 +363,7 @@ _python_export() {
 						print(sysconfig.get_path("platinclude"))
 					EOF
 				)
+				PYTHON_INCLUDEDIR=${ESYSROOT}${PYTHON_INCLUDEDIR#"${BROOT-${EPREFIX}}"}
 				export PYTHON_INCLUDEDIR
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
 
