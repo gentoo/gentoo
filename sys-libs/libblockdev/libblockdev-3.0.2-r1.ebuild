@@ -48,6 +48,9 @@ RDEPEND="
 	)
 	nvme? ( sys-libs/libnvme )
 	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+	')
 "
 
 DEPEND="
