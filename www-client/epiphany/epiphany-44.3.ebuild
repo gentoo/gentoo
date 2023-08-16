@@ -12,7 +12,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 DEPEND="
 	>=x11-libs/cairo-1.2
