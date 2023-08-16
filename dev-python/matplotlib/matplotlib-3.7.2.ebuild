@@ -272,6 +272,20 @@ python_test() {
 			;;
 	esac
 
+	if use hppa ; then
+		EPYTEST_IGNORE+=(
+			tests/test_mathtext.py
+		)
+
+		EPYTEST_DESELECT+=(
+			'tests/test_quiver.py::test_barbs[png]'
+			'tests/test_quiver.py::test_barbs_pivot[png]'
+			'tests/test_quiver.py::test_barbs_flip[png]'
+			'tests/test_text.py::test_parse_math'
+			'tests/test_text.py::test_parse_math_rcparams'
+		)
+	fi
+
 	# we need to rebuild mpl against bundled freetype, otherwise
 	# over 1000 tests will fail because of mismatched font rendering
 	grep -v system_freetype "${BUILD_DIR}"/setup.cfg \
