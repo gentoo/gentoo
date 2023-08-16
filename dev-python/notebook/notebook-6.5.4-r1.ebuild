@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	>=dev-libs/mathjax-2.7.4
+	<dev-libs/mathjax-3
 	dev-python/argon2-cffi[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
