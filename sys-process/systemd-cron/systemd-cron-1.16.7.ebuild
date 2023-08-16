@@ -30,18 +30,14 @@ DEPEND="sys-process/cronbase
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
+	[[ -L /bin ]] || die "systemd-cron requires a merged /usr"
+
 	python_fix_shebang --force "${S}/src/bin"
 
 	sed -i \
 		-e 's/^crontab/crontab-systemd/' \
 		-e 's/^CRONTAB/CRONTAB-SYSTEMD/' \
 		-- "${S}/src/man/crontab."{1,5}".in" || die
-
-	sed -i \
-		-e 's!/crontab$!/crontab-systemd!' \
-		-e 's!/crontab\(\.[15]\)$!/crontab-systemd\1!' \
-		-e 's/pyflakes3/pyflakes/' \
-		-- "${S}/Makefile.in" || die
 
 	if use etc-crontab-systemd
 	then	sed -i \
@@ -65,7 +61,6 @@ src_configure() {
 	./configure \
 		--prefix="${EPREFIX}/usr" \
 		--confdir="${EPREFIX}/etc" \
-		--runparts="${EPREFIX}/bin/run-parts" \
 		--mandir="${EPREFIX}/usr/share/man" \
 		--unitdir="$(systemd_get_systemunitdir)" \
 		--generatordir="$(systemd_get_systemgeneratordir)" \
@@ -75,8 +70,9 @@ src_configure() {
 		$(my_use_enable yearly) \
 		$(my_use_enable yearly quarterly) \
 		$(my_use_enable yearly semi_annually) \
-		$(my_use_enable setgid) \
-		--enable-persistent=yes
+		$(my_use_enable setgid)
+
+		export CRONTAB=crontab-systemd
 }
 
 src_install() {
