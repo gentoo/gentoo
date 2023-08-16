@@ -11,7 +11,7 @@ SRC_URI="https://github.com/intel/cmrt/archive/refs/tags/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
