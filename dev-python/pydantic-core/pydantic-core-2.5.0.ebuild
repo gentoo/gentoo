@@ -101,7 +101,7 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/typing-extensions-4.7.1[${PYTHON_USEDEP}]
