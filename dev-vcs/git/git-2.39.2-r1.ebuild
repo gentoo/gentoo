@@ -120,6 +120,7 @@ BDEPEND="
 		app-text/xmlto
 		sys-apps/texinfo
 	)
+	curl? ( net-misc/curl )
 	keyring? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
 	test? (	app-crypt/gnupg	)
