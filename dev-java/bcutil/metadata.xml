@@ -4,6 +4,9 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">bcgit/bc-java</remote-id>
+	</upstream>
 	<longdescription>
 		The Bouncy Castle Java APIs for ASN.1 extension and utility APIs used to support bcpkix and bctls. This jar contains APIs for JDK 1.8 and up.
 	</longdescription>
