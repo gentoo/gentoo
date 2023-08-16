@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-08-16)
+# Broken and installs no files, bug #912334.
+=sys-process/systemd-cron-1.16.7
+
 # Matt Turner <mattst88@gentoo.org> (2023-08-14)
 # Dead slot depending on libsoup:2.4
 # Removal on 2023-09-14.
