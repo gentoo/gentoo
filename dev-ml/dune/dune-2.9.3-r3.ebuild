@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv x86"
 IUSE="emacs test"
 RESTRICT="strip !test? ( test )"
 
