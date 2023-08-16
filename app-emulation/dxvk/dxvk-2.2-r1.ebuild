@@ -81,7 +81,7 @@ src_prepare() {
 		mv ../Vulkan-Headers-${HASH_VULKAN} include/vulkan || die
 		mv ../libdisplay-info-${HASH_DISPLAYINFO} subprojects/libdisplay-info || die
 	fi
-	cp -p -- "${DISTDIR}"/setup_dxvk.sh . || die
+	cp -- "${DISTDIR}"/setup_dxvk.sh . || die
 
 	default
 
