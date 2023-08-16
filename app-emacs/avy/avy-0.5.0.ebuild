@@ -11,7 +11,7 @@ SRC_URI="https://github.com/abo-abo/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 SITEFILE="50${PN}-gentoo.el"
 
