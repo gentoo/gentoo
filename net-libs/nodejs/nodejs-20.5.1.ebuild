@@ -241,6 +241,7 @@ src_test() {
 		test/parallel/test-dns-setserver-when-querying.js
 		test/parallel/test-fs-mkdir.js
 		test/parallel/test-fs-utimes-y2K38.js
+		test/parallel/test-fs-watch-recursive-add-file.js
 		test/parallel/test-release-npm.js
 		test/parallel/test-socket-write-after-fin-error.js
 		test/parallel/test-strace-openat-openssl.js
