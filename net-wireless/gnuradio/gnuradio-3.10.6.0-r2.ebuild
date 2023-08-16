@@ -122,7 +122,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
-		dev-libs/mathjax
+		<dev-libs/mathjax-3
 	)
 	grc? ( x11-misc/xdg-utils )
 	modtool? ( $(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]') )

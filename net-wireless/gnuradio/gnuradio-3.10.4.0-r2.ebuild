@@ -5,7 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake desktop python-single-r1 virtualx xdg-utils
+inherit cmake python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -119,13 +119,13 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
-		dev-libs/mathjax
+		<dev-libs/mathjax-3
 	)
 	grc? ( x11-misc/xdg-utils )
-	modtool? ( $(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]') )
 	oss? ( virtual/os-headers )
 	test? ( >=dev-util/cppunit-1.9.14 )
 	zeromq? ( net-libs/cppzmq )
@@ -133,6 +133,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.10.3.0-fix-fmt-v9.patch" #858659
+	"${FILESDIR}/${PN}-3.10.4.0-fix-blockinterleaving.patch"
+	"${FILESDIR}/${PN}-3.10.6.0-fix-stdint.patch"
 )
 
 src_prepare() {
@@ -210,16 +212,14 @@ src_install() {
 	rm -f "${ED}"/usr/libexec/${PN}/grc_setup_freedesktop || die
 
 	# Install icons, menu items and mime-types for GRC
-	if use grc ; then
-		local fd_path="${S}/grc/scripts/freedesktop"
-		insinto /usr/share/mime/packages
-		doins "${fd_path}/${PN}-grc.xml"
+	#if use grc ; then
+	#	local fd_path="${S}/grc/scripts/freedesktop"
+	#	insinto /usr/share/mime/packages
+	#	doins "${fd_path}/${PN}-grc.xml"
 
-		domenu "${fd_path}/${PN}-grc.desktop"
-		for size in 16 24 32 48 64 128 256; do
-			newicon -s $size "${fd_path}/"grc-icon-$size.png ${PN}-grc.png
-		done
-	fi
+	#	domenu "${fd_path}/"*.desktop
+	#	doicon "${fd_path}/"*.png
+	#fi
 
 	python_fix_shebang "${ED}"
 	# Remove incorrectly byte-compiled Python files and replace
