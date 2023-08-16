@@ -76,7 +76,7 @@ src_configure() {
 		$(my_use_enable yearly) \
 		$(my_use_enable yearly quarterly) \
 		$(my_use_enable yearly semi_annually) \
-		$(my_use_enable setgid)
+		$(my_use_enable setgid) || die
 
 		export CRONTAB=crontab-systemd
 }
