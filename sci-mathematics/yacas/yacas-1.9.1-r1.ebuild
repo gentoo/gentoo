@@ -25,9 +25,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gui +jupyter static-libs test"
 RESTRICT="!test? ( test )"
 
+# Upstream bundles MathJax-2.x
 DEPEND="
 	gui? (
-		dev-libs/mathjax
+		<dev-libs/mathjax-3
 		dev-qt/qtcore:5[icu]
 		dev-qt/qtgui:5
 		dev-qt/qtmultimedia:5
