@@ -54,7 +54,7 @@ JAVA_CLASSPATH_EXTRA="felix-resolver,osgi-annotation"
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
 
-JAVA_TEST_GENTOO_CLASSPATH="asm-4,junit-4,easymock-2.5,mockito"
+JAVA_TEST_GENTOO_CLASSPATH="asm-9,junit-4,easymock-2.5,mockito"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_prepare() {
