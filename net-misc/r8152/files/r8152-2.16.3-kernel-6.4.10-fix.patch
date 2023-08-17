@@ -1,0 +1,27 @@
+From: https://github.com/wget/realtek-r8152-linux/pull/33.patch
+From ea0387211368754fb1d3fe9f72ddc766ba2dacce Mon Sep 17 00:00:00 2001
+From: Martin Pecka <peckama2@fel.cvut.cz>
+Date: Mon, 14 Aug 2023 13:44:36 +0200
+Subject: [PATCH] Fixed compatibility with Linux 6.4.10+
+
+---
+ r8152.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/r8152.c b/r8152.c
+index c3ba2ca..47aad6d 100644
+--- a/r8152.c
++++ b/r8152.c
+@@ -25,6 +25,12 @@
+ #include <linux/ip.h>
+ #include <linux/ipv6.h>
+ #include <net/ip6_checksum.h>
++// Linux 6.4.10 added net/gso.h
++#if defined __has_include
++#if __has_include (<net/gso.h>)
++#include <net/gso.h>
++#endif
++#endif
+ #include <linux/usb/cdc.h>
+ #include <linux/suspend.h>
+ #include <linux/atomic.h>
