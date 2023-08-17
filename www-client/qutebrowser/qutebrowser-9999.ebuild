@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="Keyboard-driven, vim-like browser based on Python and Qt"
-HOMEPAGE="https://www.qutebrowser.org/"
+HOMEPAGE="https://qutebrowser.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -105,14 +105,19 @@ src_prepare() {
 		"${EPYTHON}" scripts/asciidoc2html.py || die
 	fi
 
-	# disable tests/plugins that are unncessary for us and need extras
-	sed -e '/pytest-benchmark/d' -e 's/--benchmark[^ ]*//' \
-		-e '/pytest-instafail/d' -e 's/--instafail//' \
-		-i pytest.ini || die
-	if [[ ${PV} == 9999 ]]; then
-		rm tests/unit/scripts/test_run_vulture.py || die
-	else
-		rm tests/unit/scripts/test_problemmatchers.py || die
+	if use test; then
+		# unnecessary here, and would require extra deps
+		sed -e '/pytest-benchmark/d' -e 's/--benchmark[^ ]*//' \
+			-e '/pytest-instafail/d' -e 's/--instafail//' \
+			-i pytest.ini || die
+
+		if [[ ${PV} == 9999 ]]; then
+			# likewise, needs vulture
+			rm tests/unit/scripts/test_run_vulture.py || die
+		else
+			# needs dev scripts not included in release tarballs
+			rm tests/unit/scripts/test_problemmatchers.py || die
+		fi
 	fi
 }
 
@@ -122,14 +127,15 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# end2end/IPC tests are broken with "Name error" if socket path is over
 		# ~108 characters (>124 in /var/tmp/portage) due to Linux limitations,
-		# skip rather than bother using /tmp+cleanup over ${T}
+		# skip rather than bother using /tmp+cleanup over ${T} (end2end tests
+		# are important, but the other tests should be enough for downstream)
 		tests/end2end
 		tests/unit/misc/test_ipc.py
 		# python eclasses provide a fake "failing" python2 and trips this test
 		tests/unit/misc/test_checkpyver.py::test_old_python
 		# not worth running dbus over
 		tests/unit/browser/test_notification.py::TestDBus
-		# fails in ebuild, seems due to saving fake downloads in wrong location
+		# fails in ebuild, seems due to saving fake downloads in the wrong location
 		tests/unit/browser/webengine/test_webenginedownloads.py::TestDataUrlWorkaround
 		# may fail if environment is very large (bug #819393)
 		tests/unit/commands/test_userscripts.py::test_custom_env\[_POSIXUserscriptRunner\]
@@ -190,6 +196,5 @@ pkg_postinst() {
 		ewarn "USE=qt6 is disabled, be warned that Qt5's WebEngine uses an older"
 		ewarn "chromium version. While it is relatively maintained for security, it will"
 		ewarn "cause issues for sites/features designed with a newer version in mind."
-		ewarn "When Qt6 support is stable enough, ebuild's Qt5 support may get removed."
 	fi
 }
