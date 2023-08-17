@@ -66,6 +66,7 @@ src_install() {
 	cmake_src_install
 
 	rm "${ED}"/usr/lib/libopensmt.a || die
-	dodir /usr/$(get_libdir)
-	mv "${ED}"/usr/lib/libopensmt.* "${ED}"/usr/$(get_libdir)/ || die
+
+	dolib.so "${ED}"/usr/lib/libopensmt.*
+	rm "${ED}"/usr/lib/libopensmt.* || die
 }
