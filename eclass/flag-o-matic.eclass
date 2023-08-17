@@ -181,6 +181,16 @@ _filter-hardened() {
 
 				is-flagq -fstrict-overflow || append-flags $(test-flags -fstrict-overflow)
 				;;
+			-D_GLIBCXX_ASSERTIONS|-D_LIBCPP_ENABLE_ASSERTIONS|-D_LIBCPP_ENABLE_HARDENED_MODE)
+				tc-enables-cxx-assertions || continue
+
+				append-cppflags -U_GLIBCXX_ASSERTIONS -U_LIBCPP_ENABLE_ASSERTIONS -U_LIBCPP_ENABLE_HARDENED_MODE
+				;;
+			-D_FORTIFY_SOURCE=*)
+				tc-enables-fortify-source || continue
+
+				append-cppflags -U_FORTIFY_SOURCE
+				;;
 		esac
 	done
 }
