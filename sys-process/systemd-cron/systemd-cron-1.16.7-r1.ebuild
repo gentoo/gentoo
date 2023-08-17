@@ -12,7 +12,7 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid split-usr test yearly"
+IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid test yearly"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=sys-apps/systemd-217
@@ -30,10 +30,10 @@ DEPEND="sys-process/cronbase
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 pkg_pretend() {
-	if use split-usr; then
+	if use runparts && ! [ -x /usr/bin/run-parts ] ; then
 			eerror "Please complete the migration to merged-usr."
 			eerror "https://wiki.gentoo.org/wiki/Merge-usr"
-			die "systemd no longer supports split-usr"
+			die "systemd-cron no longer supports split-usr"
 	fi
 }
 
