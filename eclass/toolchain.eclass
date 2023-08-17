@@ -1395,6 +1395,7 @@ downgrade_arch_flags() {
 
 	# "added" "arch" "replacement"
 	local archlist=(
+		12.3 znver4 znver3
 		10 znver3 znver2
 		9 znver2 znver1
 		4.9 bdver4 bdver3
