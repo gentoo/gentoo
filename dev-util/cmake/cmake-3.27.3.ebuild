@@ -10,7 +10,7 @@ EAPI=8
 
 CMAKE_DOCS_PREBUILT_DEV=sam
 #CMAKE_DOCS_VERSION=$(ver_cut 1-3)
-CMAKE_DOCS_VERSION=${PV}
+CMAKE_DOCS_VERSION=3.27.0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 # See bug #784815
 CMAKE_DOCS_USEFLAG="+doc"
