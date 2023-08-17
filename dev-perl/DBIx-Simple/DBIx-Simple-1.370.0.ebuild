@@ -12,7 +12,7 @@ DESCRIPTION="Very complete easy-to-use OO interface to DBI"
 # Upstream says "Any OSI approved license from https://opensource.org/licenses/alphabetical"
 LICENSE="|| ( AFL-3.0 AGPL-3 APL-1.0 Apache-2.0 BSD-2 Boost-1.0 CDDL CPAL-1.0
 	EPL-1.0 ECL-2.0 EUPL-1.1 GPL-2 GPL-3 LGPL-2.1 LGPL-3 HPND IBM IPAfont ISC
-	LPPL-1.3c 9base MIT MPL-2.0 NOSA nethack PHP-3 POSTGRESQL PYTHON CNRI
+	LPPL-1.3c LPL-1.2 MIT MPL-2.0 NOSA nethack PHP-3 POSTGRESQL PYTHON CNRI
 	QPL-1.0 OFL-1.1 Sleepycat Watcom-1.0 W3C wxWinLL-3 ZLIB libpng
 )"
 SLOT="0"

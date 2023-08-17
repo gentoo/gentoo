@@ -10,7 +10,7 @@ HOMEPAGE="https://heirloom.sourceforge.net/tools.html"
 SRC_URI="mirror://sourceforge/heirloom/heirloom/${PV}/heirloom-${PV}.tar.bz2"
 S="${WORKDIR}/heirloom-${PV}"
 
-LICENSE="CDDL GPL-2+ LGPL-2.1+ 9base ZLIB"
+LICENSE="CDDL GPL-2+ LGPL-2.1+ LPL-1.2 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # slightly broken
