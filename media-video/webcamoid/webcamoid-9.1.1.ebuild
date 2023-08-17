@@ -79,6 +79,6 @@ src_configure() {
 }
 
 src_install() {
-	docompress -x /usr/share/man1/${PN}.1.gz
+	docompress -x /usr/share/man/man1/${PN}.1.gz
 	cmake_src_install
 }
