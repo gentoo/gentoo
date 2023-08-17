@@ -4,6 +4,11 @@ and the latter also needs distutils that is unavailable with
 python3_12 without setuptools.
 
 https://bugs.gentoo.org/731728
+
+Update: former should no longer be an issue since [1], but keeping
+patch given [2] is still an issue
+[1] https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=0686381dfc3d
+[2] https://github.com/mesonbuild/meson/issues/7702
 --- a/meson.build
 +++ b/meson.build
 @@ -323,3 +323,3 @@
