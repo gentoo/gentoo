@@ -1248,6 +1248,10 @@ src_install() {
 			pref("gfx.x11-egl.force-enabled",          true);
 			EOF
 		fi
+
+		# Install vaapitest binary
+		exeinto "${MOZILLA_FIVE_HOME}"
+		doexe "${BUILD_DIR}"/dist/bin/vaapitest
 	fi
 
 	if ! use gmp-autoupdate ; then
