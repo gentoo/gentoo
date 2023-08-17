@@ -20,6 +20,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug"
 
+PATCHES=(
+	"${FILESDIR}"/0001-ovpn-dco-include-new-GSO-header-file.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="
 		INET
