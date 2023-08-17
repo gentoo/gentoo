@@ -30,6 +30,10 @@ BDEPEND="
 
 DOCS=( ChangeLog )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.12.3-allow-tests-when-static.patch"
+)
+
 src_configure() {
 	# shellcheck disable=SC2207
 	local myeconf=(
