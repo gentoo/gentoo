@@ -25,6 +25,7 @@ IUSE="+center-tap-short"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.16.3-kernel-5.19-fix.patch
 	"${FILESDIR}"/${PN}-2.16.3-kernel-6.1-fix.patch
+	"${FILESDIR}"/${PN}-2.16.3-kernel-6.4.10-fix.patch
 )
 
 pkg_setup() {
