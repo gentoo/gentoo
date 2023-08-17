@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="A simple, lightweight C library for writing XMPP clients"
 HOMEPAGE="https://strophe.im/libstrophe/"
 SRC_URI="
