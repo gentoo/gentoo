@@ -25,6 +25,8 @@ ruby_add_rdepend "
 	dev-ruby/multi_json
 "
 
+ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
+
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files/find */' ${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i -e '/bundler/ s:^:#:' -e '/formatter/ s:^:#:' spec/spec_helper.rb || die
