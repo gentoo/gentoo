@@ -95,19 +95,10 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# these tests require Internet access
 		tests/test_build_latex.py::test_latex_images
-		tests/test_build_linkcheck.py::test_defaults
-		tests/test_build_linkcheck.py::test_defaults_json
-		tests/test_build_linkcheck.py::test_anchors_ignored
-		tests/test_build_linkcheck.py::test_check_link_response_only
-		tests/test_build_linkcheck.py::test_linkcheck_allowed_redirects
-		tests/test_build_linkcheck.py::test_linkcheck_exclude_documents
 		# TODO
 		tests/test_ext_autodoc.py::test_cython
 		tests/test_ext_autodoc_autoclass.py::test_classes
 		tests/test_ext_autodoc_autofunction.py::test_classes
-		tests/test_ext_math.py::test_imgmath_numfig_html
-		tests/test_ext_math.py::test_imgmath_png
-		tests/test_ext_inheritance_diagram.py::test_import_classes
 		# looks like a bug in lualatex
 		"tests/test_build_latex.py::test_build_latex_doc[lualatex-howto-None]"
 		"tests/test_build_latex.py::test_build_latex_doc[lualatex-manual-None]"
@@ -117,20 +108,19 @@ python_test() {
 	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
 		tests/test_ext_autodoc.py::test_autodoc_inherited_members_None
 		tests/test_ext_autodoc.py::test_automethod_for_builtin
-		tests/test_ext_autodoc.py::test_cython
 		tests/test_ext_autodoc.py::test_partialfunction
-		tests/test_ext_autodoc_autoclass.py::test_autodoc_process_bases
-		tests/test_ext_autodoc_autoclass.py::test_show_inheritance_for_decendants_of_generic_type
-		tests/test_ext_autodoc_autoclass.py::test_show_inheritance_for_subclass_of_generic_type
+#		tests/test_ext_autodoc_autoclass.py::test_autodoc_process_bases
+#		tests/test_ext_autodoc_autoclass.py::test_show_inheritance_for_decendants_of_generic_type
+#		tests/test_ext_autodoc_autoclass.py::test_show_inheritance_for_subclass_of_generic_type
 		tests/test_ext_autodoc_autofunction.py::test_builtin_function
 		tests/test_ext_autodoc_autofunction.py::test_methoddescriptor
-		tests/test_ext_autodoc_automodule.py::test_automodule_inherited_members
+#		tests/test_ext_autodoc_automodule.py::test_automodule_inherited_members
 		tests/test_ext_autodoc_preserve_defaults.py::test_preserve_defaults_special_constructs
 		tests/test_ext_autosummary.py::test_autosummary_generate_content_for_module
 		tests/test_ext_autosummary.py::test_autosummary_generate_content_for_module_skipped
 		tests/test_util_inspect.py::test_isattributedescriptor
 		tests/test_util_typing.py::test_is_invalid_builtin_class
-		tests/test_util_typing.py::test_stringify_type_hints_pep_585
+#		tests/test_util_typing.py::test_stringify_type_hints_pep_585
 	)
 
 	# note: pytest-xdist causes random test failures
