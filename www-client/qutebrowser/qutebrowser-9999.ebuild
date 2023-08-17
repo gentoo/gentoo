@@ -15,7 +15,12 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/qutebrowser/qutebrowser.git"
 else
-	SRC_URI="https://github.com/qutebrowser/qutebrowser/releases/download/v${PV}/${P}.tar.gz"
+	inherit verify-sig
+	SRC_URI="
+		https://github.com/qutebrowser/qutebrowser/releases/download/v${PV}/${P}.tar.gz
+		verify-sig? ( https://github.com/qutebrowser/qutebrowser/releases/download/v${PV}/${P}.tar.gz.asc )
+	"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/qutebrowser.gpg"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
@@ -70,7 +75,12 @@ BDEPEND="
 		)
 	')
 "
-[[ ${PV} == 9999 ]] && BDEPEND+=" app-text/asciidoc"
+
+if [[ ${PV} == 9999 ]]; then
+	BDEPEND+=" app-text/asciidoc"
+else
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-qutebrowser )"
+fi
 
 distutils_enable_tests pytest
 
