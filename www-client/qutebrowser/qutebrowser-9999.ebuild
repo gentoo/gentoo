@@ -29,32 +29,29 @@ IUSE="+adblock pdf +qt6 widevine"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/colorama[${PYTHON_USEDEP}]
-		>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
-		>=dev-python/markupsafe-2.1.1[${PYTHON_USEDEP}]
+		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/markupsafe[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/zipp[${PYTHON_USEDEP}]
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
-	')
-	qt6? (
-		dev-qt/qtbase:6[icu,sqlite]
-		$(python_gen_cond_dep '
+		qt6? (
+			dev-qt/qtbase:6[icu,sqlite]
 			dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
 			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
-		')
-		pdf? ( www-plugins/pdfjs )
-	)
-	!qt6? (
-		dev-qt/qtcore:5[icu]
-		dev-qt/qtgui:5[png]
-		dev-qt/qtsql:5[sqlite]
-		$(python_gen_cond_dep '
+			pdf? ( www-plugins/pdfjs )
+		)
+		!qt6? (
+			dev-qt/qtcore:5[icu]
+			dev-qt/qtgui:5[png]
+			dev-qt/qtsql:5[sqlite]
 			dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,gui,network,opengl,printsupport,sql,widgets]
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-		')
-		pdf? ( <www-plugins/pdfjs-3 )
-	)
-	widevine? ( www-plugins/chrome-binary-plugins )"
+			pdf? ( <www-plugins/pdfjs-3 )
+		)
+		widevine? ( www-plugins/chrome-binary-plugins )
+	')
+"
 BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
@@ -71,7 +68,8 @@ BDEPEND="
 			qt6? ( dev-python/PyQt6[testlib] )
 			!qt6? ( dev-python/PyQt5[testlib] )
 		)
-	')"
+	')
+"
 [[ ${PV} == 9999 ]] && BDEPEND+=" app-text/asciidoc"
 
 distutils_enable_tests pytest
@@ -80,7 +78,7 @@ src_prepare() {
 	distutils-r1_src_prepare
 
 	if use pdf; then
-		# doesn't hurt to enable by default if was explicitly requested
+		# does not hurt to enable by default if it was explicitly requested
 		sed -e '/^content.pdfjs:/,+1s/false/true/' \
 			-i ${PN}/config/configdata.yml || die
 	fi
@@ -122,25 +120,33 @@ python_test() {
 	local -x PYTEST_QT_API=pyqt$(usex qt6 6 5)
 
 	local EPYTEST_DESELECT=(
-		# end2end and other IPC tests are broken with "Name error" if
-		# socket path is over ~104 characters (=124 in /var/tmp/portage)
-		# https://github.com/qutebrowser/qutebrowser/issues/888 (not just OSX)
+		# end2end/IPC tests are broken with "Name error" if socket path is over
+		# ~108 characters (>124 in /var/tmp/portage) due to Linux limitations,
+		# skip rather than bother using /tmp+cleanup over ${T}
 		tests/end2end
 		tests/unit/misc/test_ipc.py
-		# calls eclass' python2 "failure" wrapper
+		# python eclasses provide a fake "failing" python2 and trips this test
 		tests/unit/misc/test_checkpyver.py::test_old_python
 		# not worth running dbus over
 		tests/unit/browser/test_notification.py::TestDBus
-		# bug 819393
-		tests/unit/commands/test_userscripts.py::test_custom_env\[_POSIXUserscriptRunner\]
-		# test does not know about our newer fixed qtwebengine:5
+		# fails in ebuild, seems due to saving fake downloads in wrong location
 		tests/unit/browser/webengine/test_webenginedownloads.py::TestDataUrlWorkaround
+		# may fail if environment is very large (bug #819393)
+		tests/unit/commands/test_userscripts.py::test_custom_env\[_POSIXUserscriptRunner\]
 		# needs _WRAPPER_OVERRIDE = None, but we have changed it
 		tests/unit/test_qt_machinery.py::TestSelectWrapper::test_autoselect_by_default
 		tests/unit/test_qt_machinery.py::TestInit::test_none_available_{implicit,explicit}
 	)
-	# qtargs are mangled with widevine+prefix
-	use widevine && use prefix && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
+
+	# we mangle qtargs with widevine+prefix leading to unexpected results
+	use widevine && use prefix &&
+		EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
+
+	# tests known failing with Qt5 which is considered a 2nd class citizen
+	# and, unless completely broken, new tests issues may not be pursued
+	use qt6 || EPYTEST_DESELECT+=(
+		tests/unit/mainwindow/test_tabwidget.py::TestTabWidget::test_tab_text_not_edlided_for_wide_tabs
+	)
 
 	# skip benchmarks (incl. _tree), and warning tests broken by -Wdefault
 	epytest -p xvfb -k 'not _bench and not _matches_tree and not _warning'
@@ -172,18 +178,18 @@ pkg_postinst() {
 	fi
 
 	if [[ ! -v QUTEBROWSER_HAD_QT6 && ${REPLACING_VERSIONS} ]] && use qt6; then
+		ewarn
 		ewarn "Be warned that starting the Qt6 version of ${PN} performs a one-way"
 		ewarn "conversion of ~/.local/share/${PN}/webengine to Qt6. There will also"
 		ewarn "be a warning on startup, and may optionally want to backup first."
 	fi
 
-	# only show qt6 warning on arches where USE=qt6 is unmasked
-	# TODO: uncomment after https://github.com/gentoo/gentoo/pull/29181 albeit
-	# may need to comment it out again when stabling if don't stable Qt6 (yet).
-#	if use amd64 && use !qt6; then
-#		ewarn "USE=qt6 is disabled, be warned that Qt5's WebEngine uses an older"
-#		ewarn "chromium version. While it is relatively maintained for security, it may"
-#		ewarn "cause issues for sites/features designed with a newer version in mind."
-#		ewarn "When Qt6 support is stable enough, ebuild's Qt5 support may get removed."
-#	fi
+	# only show Qt6 warning on arches where USE=qt6 is unmasked
+	if use amd64 && use !qt6; then
+		ewarn
+		ewarn "USE=qt6 is disabled, be warned that Qt5's WebEngine uses an older"
+		ewarn "chromium version. While it is relatively maintained for security, it will"
+		ewarn "cause issues for sites/features designed with a newer version in mind."
+		ewarn "When Qt6 support is stable enough, ebuild's Qt5 support may get removed."
+	fi
 }
