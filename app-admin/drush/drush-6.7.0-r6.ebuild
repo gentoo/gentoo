@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-php8.0.patch"
 	"${FILESDIR}/${P}-gzip-mime.patch"
 	"${FILESDIR}/${P}-dont-pass-null-to-strtoupper.patch"
+	"${FILESDIR}/${P}-batch-signature-fix.patch"
 )
 
 src_prepare() {
