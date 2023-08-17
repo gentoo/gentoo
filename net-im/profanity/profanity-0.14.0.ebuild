@@ -10,15 +10,14 @@ SRC_URI="https://github.com/profanity-im/profanity/releases/download/${PV}/${P}.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="libnotify omemo otr gpg test xscreensaver"
+IUSE="libnotify omemo omemo-qrcode otr gpg test xscreensaver"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="omemo-qrcode? ( omemo )"
 
 RDEPEND="
+	>=app-accessibility/at-spi2-core-2.46.0
 	dev-db/sqlite:3
-	|| ( app-accessibility/at-spi2-core:2 dev-libs/atk )
 	dev-libs/glib:2
-	dev-libs/libassuan
-	dev-libs/libgpg-error
 	>=dev-libs/libstrophe-0.12.3:=
 	media-libs/harfbuzz:=
 	net-misc/curl
@@ -29,13 +28,13 @@ RDEPEND="
 	x11-libs/gtk+:3
 	x11-libs/pango
 	x11-misc/shared-mime-info
-	virtual/libcrypt:=
 	gpg? ( app-crypt/gpgme:= )
 	libnotify? ( x11-libs/libnotify )
 	omemo? (
 		dev-libs/libgcrypt:=
 		net-libs/libsignal-protocol-c
 	)
+	omemo-qrcode? ( media-gfx/qrencode:= )
 	otr? ( net-libs/libotr )
 	xscreensaver? (
 		x11-libs/libXScrnSaver
@@ -52,6 +51,7 @@ src_configure() {
 		--enable-gdk-pixbuf
 		$(use_enable libnotify notifications)
 		$(use_enable omemo)
+		$(use_enable omemo-qrcode)
 		$(use_enable otr)
 		$(use_enable gpg pgp)
 		$(use_with xscreensaver)

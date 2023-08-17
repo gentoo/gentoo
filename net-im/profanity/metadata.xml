@@ -16,6 +16,7 @@
 	<use>
 		<flag name="gpg">Enable OpenPGP encryption</flag>
 		<flag name="omemo">Enable OMEMO encryption</flag>
+		<flag name="omemo-qrcode">Enable exchanging OMEMO information via QR code</flag>
 		<flag name="otr">Enable encrypted conversations using Off-The-Records messaging</flag>
 	</use>
 	<upstream>
