@@ -291,10 +291,18 @@ kernel-build_src_install() {
 		')' -delete || die
 	rm modprep/source || die
 	cp -p -R modprep/. "${ED}${kernel_dir}"/ || die
+	# If CONFIG_MODULES=y, then kernel.release will be found in modprep as well, but not
+	# in case of CONFIG_MODULES is not set.
+	# The one in build is exactly the same as the one in modprep, but the one in build
+	# always exists, so it can just be copied unconditionally.
+	cp "${WORKDIR}/build/include/config/kernel.release" \
+		"${ED}${kernel_dir}/include/config/" || die
 
 	# install the kernel and files needed for module builds
 	insinto "${kernel_dir}"
-	doins build/{System.map,Module.symvers}
+	doins build/System.map
+	# build/Module.symvers does not exist if CONFIG_MODULES is not set.
+	[[ -f build/Module.symvers ]] && doins build/Module.symvers
 	local image_path=$(dist-kernel_get_image_path)
 	cp -p "build/${image_path}" "${ED}${kernel_dir}/${image_path}" || die
 
