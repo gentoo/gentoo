@@ -30,6 +30,7 @@ ruby_add_bdepend "
 		>=dev-ruby/rack-2.2.7-r1:2.2
 		dev-ruby/rdoc
 		dev-ruby/sinatra
+		dev-ruby/webrick
 	)
 "
 all_ruby_prepare() {
