@@ -26,7 +26,7 @@ DEPEND="
 	>=dev-python/psutil-5.7.0[${PYTHON_USEDEP}]
 	>=dev-python/redis-3.5.3[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.5.0[${PYTHON_USEDEP}]
-	dev-libs/paho-mqtt-c
+	net-libs/paho-mqtt-c
 	app-misc/mosquitto
 "
 RDEPEND="
