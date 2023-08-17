@@ -147,7 +147,10 @@ _filter-hardened() {
 			# not -fPIC or -fpic, but too many places filter -fPIC without
 			# thinking about -fPIE.
 			-fPIC|-fpic|-fPIE|-fpie|-Wl,pie|-pie)
-				gcc-specs-pie || continue
+				if ! gcc-specs-pie && ! tc-enables-pie ; then
+					continue
+				fi
+
 				if ! is-flagq -nopie && ! is-flagq -no-pie ; then
 					# Support older Gentoo form first (-nopie) before falling
 					# back to the official gcc-6+ form (-no-pie).
@@ -158,15 +161,26 @@ _filter-hardened() {
 					fi
 				fi
 				;;
+
 			-fstack-protector)
-				gcc-specs-ssp || continue
-				is-flagq -fno-stack-protector || append-flags $(test-flags -fno-stack-protector);;
+				if ! gcc-specs-ssp && ! tc-enables-ssp ; then
+					continue
+				fi
+
+				is-flagq -fno-stack-protector || append-flags $(test-flags -fno-stack-protector)
+				;;
 			-fstack-protector-all)
-				gcc-specs-ssp-to-all || continue
-				is-flagq -fno-stack-protector-all || append-flags $(test-flags -fno-stack-protector-all);;
+				if ! gcc-specs-ssp-to-all && ! tc-enables-ssp-all ; then
+					continue
+				fi
+
+				is-flagq -fno-stack-protector-all || append-flags $(test-flags -fno-stack-protector-all)
+				;;
 			-fno-strict-overflow)
 				gcc-specs-nostrict || continue
-				is-flagq -fstrict-overflow || append-flags $(test-flags -fstrict-overflow);;
+
+				is-flagq -fstrict-overflow || append-flags $(test-flags -fstrict-overflow)
+				;;
 		esac
 	done
 }
