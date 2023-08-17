@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2023-08-17)
+# Upstream warns that it is broken and there is no fix since 2010
+# Removal after 2023-10-01.  Bug #912363.
+app-dicts/edictionary
+
 # Hans de Graaff <graaff@gentoo.org> (2023-08-17)
 # The ruby project no longer maintains the elisp ruby-mode with the last
 # changed upstream 5 years ago. ruby-mode is also included in Emacs
