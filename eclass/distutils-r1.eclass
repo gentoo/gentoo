@@ -129,6 +129,8 @@ esac
 #
 # - poetry - poetry-core backend
 #
+# - scikit-build-core - scikit-build-core backend
+#
 # - setuptools - distutils or setuptools (incl. legacy mode)
 #
 # - sip - sipbuild backend
