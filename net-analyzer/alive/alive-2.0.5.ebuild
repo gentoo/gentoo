@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools unpacker
 
-DESCRIPTION="A periodic ping program"
+DESCRIPTION="Periodic ping program"
 HOMEPAGE="https://www.gnu.org/software/alive/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.lz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 
