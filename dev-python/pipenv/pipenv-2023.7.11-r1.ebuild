@@ -95,8 +95,12 @@ src_prepare() {
 			-e "s/from pipenv\.vendor import plette, toml, tomlkit, vistir/from pipenv\.vendor import plette, toml, vistir\\nimport tomlkit/g"
 
 	# remove python ruaml yaml
-	sed --in-place -e "s/from pipenv\.vendor\.ruamel\.yaml import YAML/from ruamel\.yaml import YAML/g" pipenv/patched/safety/util.py || die "Failed sed in ruaml-yaml"
-	sed --in-place -e "s/from pipenv\.vendor\.ruamel\.yaml\.error import MarkedYAMLError/from ruamel\.yaml\.error import MarkedYAMLError/g" pipenv/patched/safety/util.py || die "Failed sed in ruamel-yaml"
+	sed --in-place -e \
+		"s/from pipenv\.vendor\.ruamel\.yaml import YAML/from ruamel\.yaml import YAML/g" \
+		pipenv/patched/safety/util.py || die "Failed sed in ruaml-yaml"
+	sed --in-place -e \
+		"s/from pipenv\.vendor\.ruamel\.yaml\.error import MarkedYAMLError/from ruamel\.yaml\.error import MarkedYAMLError/g" \
+		pipenv/patched/safety/util.py || die "Failed sed in ruamel-yaml"
 
 	rm -vR pipenv/vendor/ruamel || die "Failed removing ruamel-yaml from vendor"
 
