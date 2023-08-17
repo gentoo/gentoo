@@ -62,7 +62,7 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 # I've got tired of all the test failures. It definitely mostly works.
 # We have ~29000 tests successfully passing from ~30000 tests.
