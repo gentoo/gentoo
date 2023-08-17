@@ -162,8 +162,8 @@ _filter-hardened() {
 				fi
 				;;
 
-			-fstack-protector)
-				if ! gcc-specs-ssp && ! tc-enables-ssp ; then
+			-fstack-protector|-fstack-protector-strong)
+				if ! gcc-specs-ssp && ! tc-enables-ssp && ! tc-enables-ssp-strong ; then
 					continue
 				fi
 
