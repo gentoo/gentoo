@@ -20,3 +20,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+
+ruby_add_bdepend "test? (
+	dev-ruby/activemodel
+	dev-ruby/minitest
+	dev-ruby/minitest-global_expectations
+	dev-ruby/minitest-hooks
+	dev-ruby/nokogiri
+	dev-ruby/tzinfo
+)"
