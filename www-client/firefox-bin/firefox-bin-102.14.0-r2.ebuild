@@ -372,6 +372,7 @@ pkg_postinst() {
 	fi
 
 	optfeature_header "Optional programs for extra features:"
-	optfeature "desktop notifications" x11-libs/libnotify
+	optfeature "speech syntesis (text-to-speech) support" app-accessibility/speech-dispatcher
 	optfeature "fallback mouse cursor theme e.g. on WMs" gnome-base/gsettings-desktop-schemas
+	optfeature "desktop notifications" x11-libs/libnotify
 }
