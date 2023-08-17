@@ -20,3 +20,5 @@ DEPEND="
 	x11-libs/libxkbcommon
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-drag-drop-segfault.patch" )
