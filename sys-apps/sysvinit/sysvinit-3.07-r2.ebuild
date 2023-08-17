@@ -187,4 +187,13 @@ pkg_postinst() {
 	if [[ ! -e "${EROOT}/var/log/boot" ]] ; then
 		touch "${EROOT}/var/log/boot"
 	fi
+
+	local ver
+	for ver in ${REPLACING_VERSIONS}; do
+		ver_test ${ver} -ge 3.07-r2 && continue
+		ewarn "Previously, the 'halt' command caused the system to power off"
+		ewarn "even if option -p was not given. This long-standing bug has"
+		ewarn "been fixed, and the command now behaves as documented."
+		break
+	done
 }
