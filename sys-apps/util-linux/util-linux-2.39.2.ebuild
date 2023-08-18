@@ -200,6 +200,10 @@ multilib_src_configure() {
 		--localstatedir="${EPREFIX}/var"
 		--runstatedir="${EPREFIX}/run"
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
+
+		# Temporary workaround until ~2.39.2. 2.39.x introduced a big rewrite.
+		# https://github.com/util-linux/util-linux/issues/2287#issuecomment-1576640373
+		--disable-libmount-mountfd-support
 	)
 
 	local myeconfargs=(
