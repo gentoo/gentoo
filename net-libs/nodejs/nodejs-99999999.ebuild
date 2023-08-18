@@ -24,8 +24,9 @@ else
 	S="${WORKDIR}/node-v${PV}"
 fi
 
-IUSE="cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
-REQUIRED_USE="inspector? ( icu ssl )
+IUSE="corepack cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
+REQUIRED_USE="corepack? ( !npm )
+	inspector? ( icu ssl )
 	npm? ( ssl )
 	system-icu? ( icu )
 	system-ssl? ( ssl )
@@ -38,6 +39,7 @@ RDEPEND=">=app-arch/brotli-1.0.9:=
 	>=net-dns/c-ares-1.18.1:=
 	>=net-libs/nghttp2-1.41.0:=
 	sys-libs/zlib
+	corepack? ( !sys-apps/yarn )
 	system-icu? ( >=dev-libs/icu-67:= )
 	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
 	sys-devel/gcc:*"
@@ -120,7 +122,7 @@ src_configure() {
 	tc-is-clang && append-ldflags "--rtlib=libgcc --unwindlib=libgcc"
 
 	local myconf=(
-	--ninja
+		--ninja
 		--shared-brotli
 		--shared-cares
 		--shared-libuv
@@ -136,6 +138,7 @@ src_configure() {
 	else
 		myconf+=( --with-intl=none )
 	fi
+	use corepack || myconf+=( --without-corepack )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
@@ -223,6 +226,9 @@ src_install() {
 			\) \) -exec rm -rf "{}" \;
 	fi
 
+	use corepack &&
+		"${D}"/usr/bin/corepack enable --install-directory "${D}"/usr/bin
+
 	mv "${ED}"/usr/share/doc/node "${ED}"/usr/share/doc/${PF} || die
 }
 
@@ -231,12 +237,13 @@ src_test() {
 		test/parallel/test-dns-setserver-when-querying.js
 		test/parallel/test-fs-mkdir.js
 		test/parallel/test-fs-utimes-y2K38.js
+		test/parallel/test-fs-watch-recursive-add-file.js
 		test/parallel/test-release-npm.js
 		test/parallel/test-socket-write-after-fin-error.js
 		test/parallel/test-strace-openat-openssl.js
 		test/sequential/test-util-debug.js
 	)
-	rm "${drop_tests[@]}" || die "disabling tests failed"
+	rm -f "${drop_tests[@]}" || die "disabling tests failed"
 
 	out/${BUILDTYPE}/cctest || die
 	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} --flaky-tests=dontcare -J message parallel sequential || die
