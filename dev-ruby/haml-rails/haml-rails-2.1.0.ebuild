@@ -27,4 +27,5 @@ ruby_add_bdepend "test? ( >=dev-ruby/rails-5.1 )"
 
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile test/test_helper.rb || die
+	sed -i -e 's/MiniTest/Minitest/' test/test_helper.rb || die
 }
