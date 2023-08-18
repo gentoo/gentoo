@@ -161,13 +161,10 @@ src_test() {
 	cd src
 
 	# https://github.com/golang/go/issues/42005
-	rm cmd/link/internal/ld/fallocate_test.go || true
+	rm cmd/link/internal/ld/fallocate_test.go || die
 
 	PATH="${GOBIN}:${PATH}" \
 	./run.bash -no-rebuild -k || die "tests failed"
-	cd ..
-	rm -fr pkg/*_race || die
-	rm -fr pkg/obj/go-build || die
 }
 
 src_install() {
