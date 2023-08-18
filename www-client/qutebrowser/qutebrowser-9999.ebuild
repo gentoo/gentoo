@@ -125,7 +125,7 @@ src_prepare() {
 			# likewise, needs vulture
 			rm tests/unit/scripts/test_run_vulture.py || die
 		else
-			# needs dev scripts not included in release tarballs
+			# https://github.com/qutebrowser/qutebrowser/issues/7620
 			rm tests/unit/scripts/test_problemmatchers.py || die
 		fi
 	fi
