@@ -16,11 +16,11 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
-IUSE="garbd test"
+IUSE="garbd test ssl"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/openssl:=
+	ssl? ( dev-libs/openssl:= )
 	dev-libs/boost:=
 "
 DEPEND="
@@ -40,6 +40,14 @@ src_prepare() {
 		rm -r garb || die "Failed to remove garbd daemon"
 		sed -i '/add_subdirectory(garb)/d' CMakeLists.txt || die
 	fi
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DGALERA_WITH_SSL=$(usex ssl)
+	)
+
+	cmake_src_configure
 }
 
 src_install() {
