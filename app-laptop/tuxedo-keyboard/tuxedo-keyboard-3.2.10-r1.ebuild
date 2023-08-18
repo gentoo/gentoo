@@ -4,7 +4,7 @@
 EAPI=8
 CONFIG_CHECK="ACPI_WMI INPUT_SPARSEKMAP"
 
-inherit linux-mod-r1 toolchain-funcs
+inherit linux-mod-r1
 
 DESCRIPTION="Kernel Module for Tuxedo Keyboard"
 HOMEPAGE="https://github.com/tuxedocomputers/tuxedo-keyboard"
@@ -24,7 +24,7 @@ src_compile() {
 		tuxedo_keyboard=tuxedo::src
 		tuxedo_io=tuxedo::src/tuxedo_io
 	)
-	local modargs="CC=$(tc-getBUILD_CC) KDIR=${KV_DIR} V=1 KBUILD_VERBOSE=1"
+	local modargs=( KDIR=${KV_OUT_DIR} )
 
 	linux-mod-r1_src_compile
 }
