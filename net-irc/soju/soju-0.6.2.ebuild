@@ -11,7 +11,7 @@ SRC_URI+=" https://github.com/alfredfo/${PN}-deps/raw/master/${P}-deps.tar.xz"
 
 LICENSE="AGPL-3 Apache-2.0 MIT BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 IUSE="moderncsqlite +sqlite pam"
 REQUIRED_USE="?? ( moderncsqlite sqlite )"
 
