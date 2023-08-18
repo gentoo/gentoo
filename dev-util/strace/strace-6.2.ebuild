@@ -16,9 +16,10 @@ fi
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
 HOMEPAGE="https://strace.io/"
 
-LICENSE="BSD"
+LICENSE="LGPL-2.1+ test? ( GPL-2+ )"
 SLOT="0"
-IUSE="aio perl selinux static unwind elfutils"
+IUSE="aio perl selinux static test unwind elfutils"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="?? ( unwind elfutils )"
 
 BDEPEND="virtual/pkgconfig"
