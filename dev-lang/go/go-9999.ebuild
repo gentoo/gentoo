@@ -164,7 +164,7 @@ src_test() {
 	rm cmd/link/internal/ld/fallocate_test.go || true
 
 	PATH="${GOBIN}:${PATH}" \
-	./run.bash -no-rebuild || die "tests failed"
+	./run.bash -no-rebuild -k || die "tests failed"
 	cd ..
 	rm -fr pkg/*_race || die
 	rm -fr pkg/obj/go-build || die
