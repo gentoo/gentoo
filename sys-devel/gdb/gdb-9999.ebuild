@@ -144,7 +144,12 @@ gdb_branding() {
 src_configure() {
 	strip-unsupported-flags
 
-	# https://sourceware.org/PR22395, bug #853898
+	# Originally added for bug #853898.
+	# During 14 development (not yet released as of writing), there's active
+	# work ongoing here:
+	# * https://sourceware.org/PR22395 (general/catchall/tracker)
+	# * https://sourceware.org/PR30751 (btrace)
+	# * https://sourceware.org/PR30757 (opcodes)
 	filter-lto
 
 	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
