@@ -142,7 +142,8 @@ src_install() {
 
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
-			-D_LIBCPP_ENABLE_ASSERTIONS=1
+			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
+			-D_LIBCPP_ENABLE_HARDENED_MODE=1
 		EOF
 	fi
 
