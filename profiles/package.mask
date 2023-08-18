@@ -313,10 +313,6 @@ acct-group/gpio
 acct-group/simplevirt
 acct-group/spi
 
-# Tomáš Mózes <hydrapolic@gmail.com> (2023-07-13)
-# Incompatible with OpenSSL-3, update to MariaDB 10.6.
-<dev-db/mariadb-10.6
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-12)
 # The catalyst-3 branch is outdated and not used by Gentoo
 # Release Engineering anymore. Please either use git master
