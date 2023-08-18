@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/rails:7.0 dev-ruby/activerecord:7.0[sqlite] dev-ruby/temple )"
+ruby_add_bdepend "test? ( dev-ruby/rails:7.0 dev-ruby/activerecord:7.0[sqlite] dev-ruby/temple dev-ruby/ruby-gettext )"
 ruby_add_rdepend ">=dev-ruby/fast_gettext-0.9.0:*"
 
 all_ruby_prepare() {
