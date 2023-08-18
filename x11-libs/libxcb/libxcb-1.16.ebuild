@@ -26,19 +26,19 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-	>=x11-base/xcb-proto-1.15.2
+	>=x11-base/xcb-proto-1.16.0
 	elibc_Darwin? ( dev-libs/libpthread-stubs )
 	test? ( dev-libs/check[${MULTILIB_USEDEP}] )
 "
 # Note: ${PYTHON_USEDEP} needs to go verbatim
 BDEPEND="${PYTHON_DEPS}
-	$(python_gen_any_dep '>=x11-base/xcb-proto-1.15[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep '>=x11-base/xcb-proto-1.16.0[${PYTHON_USEDEP}]')
 	doc? ( app-doc/doxygen[dot] )
 	test? ( dev-libs/libxslt )
 "
 
 python_check_deps() {
-	python_has_version ">=x11-base/xcb-proto-1.15[${PYTHON_USEDEP}]"
+	python_has_version ">=x11-base/xcb-proto-1.16.0[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
