@@ -58,7 +58,7 @@ fi
 
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="CMake"
+LICENSE="BSD"
 SLOT="0"
 IUSE="${CMAKE_DOCS_USEFLAG} dap emacs ncurses qt5 test"
 RESTRICT="!test? ( test )"
