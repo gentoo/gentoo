@@ -46,7 +46,7 @@ BDEPEND="
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.2 )
 	test? (
 		$(python_gen_any_dep '
 			dev-python/dbus-python[${PYTHON_USEDEP}]
@@ -55,7 +55,7 @@ BDEPEND="
 	)
 "
 DEPEND="
-	dev-libs/glib:2
+	>=dev-libs/glib-2.32:2
 	dev-libs/expat
 	daemon? (
 		duktape? ( dev-lang/duktape:= )
@@ -69,7 +69,8 @@ DEPEND="
 	systemd? ( sys-apps/systemd:0=[policykit] )
 	!systemd? ( sys-auth/elogind )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	acct-user/polkitd
 	selinux? ( sec-policy/selinux-policykit )
 "
