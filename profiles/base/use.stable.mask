@@ -21,10 +21,6 @@ php_targets_php8-2
 # sys-devel/gcc:12 is not stable yet
 ada_target_gcc_12_2_0
 
-# Patrick Lauer <patrick@gentoo.org> (2022-10-13)
-# Postgres:15 is not stable yet
-postgres_targets_postgres15
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
 darcs
