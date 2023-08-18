@@ -26,11 +26,16 @@ SRC_URI_AMD64="
 SRC_URI_X86="
 	${BASE_X86_URI}libreoffice-${PVR}.tar.xz
 	kde? (
-		${BASE_X86_URI}libreoffice-kde-${PVR}.xd3
+		!java? ( ${BASE_X86_URI}libreoffice-kde-${PVR}.xd3 )
+		java? ( ${BASE_X86_URI}libreoffice-kde-java-${PVR}.xd3 )
 	)
 	gnome? (
-		${BASE_X86_URI}libreoffice-gnome-${PVR}.xd3
+		!java? ( ${BASE_X86_URI}libreoffice-gnome-${PVR}.xd3 )
+		java? ( ${BASE_X86_URI}libreoffice-gnome-java-${PVR}.xd3 )
 	)
+	!kde? ( !gnome? (
+		java? ( ${BASE_X86_URI}libreoffice-java-${PVR}.xd3 )
+	) )
 "
 
 SRC_URI="
@@ -57,8 +62,6 @@ QA_PREBUILT="/usr/*"
 src_unpack() {
 	einfo "Uncompressing distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar.xz"
 	xz -cd "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar.xz" > "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" || die
-
-	use x86 && use java && die "There is no build for x86 with Java support."
 
 	local patchname
 	use kde && patchname="-kde"
