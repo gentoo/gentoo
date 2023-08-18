@@ -6,7 +6,7 @@ EAPI=8
 JAVA_PKG_OPT_USE=viewer
 inherit cmake desktop java-pkg-opt-2 verify-sig
 
-MY_PV="3.0.90%20%283.1%20beta1%29"
+MY_PV="3.0.91%20%283.1%20beta2%29"
 
 DESCRIPTION="A fast replacement for TigerVNC"
 HOMEPAGE="https://www.turbovnc.org/"
