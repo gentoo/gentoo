@@ -16,17 +16,17 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
-IUSE="garbd test ssl"
-RESTRICT="!test? ( test )"
+IUSE="garbd ssl"
 
 RDEPEND="
 	ssl? ( dev-libs/openssl:= )
 	dev-libs/boost:=
 "
+# TODO: Make check dep optional
 DEPEND="
 	${RDEPEND}
 	>=dev-cpp/asio-1.22
-	test? ( dev-libs/check )
+	dev-libs/check
 "
 
 src_prepare() {
