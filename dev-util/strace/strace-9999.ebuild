@@ -16,9 +16,10 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
-LICENSE="BSD"
+LICENSE="LGPL-2.1+ test? ( GPL-2+ )"
 SLOT="0"
-IUSE="aio perl selinux static unwind elfutils"
+IUSE="aio perl selinux static test unwind elfutils"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="?? ( unwind elfutils )"
 
 BDEPEND="virtual/pkgconfig"
