@@ -28,7 +28,12 @@ all_ruby_prepare() {
 	sed -i \
 		-e "/[Bb]undler/d" \
 		-e "/memcheck/Id" \
+		-e '/extensiontask/ s:^:#:' \
 		Rakefile || die
+	sed -i -e 's/unit: :compile/:unit/' rakelib/unit_test.rake || die
+	rm -r rakelib/compile.rake || die
+
+	sed -i -e 's/MiniTest/Minitest/' test/unit/*_test.rb || die
 
 	# ruby_memcheck is a gem just for running w/ valgrind.
 	# We don't run tests in ebuilds with Valgrind because it's
