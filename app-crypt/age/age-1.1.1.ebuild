@@ -14,7 +14,7 @@ S="${WORKDIR}/age-${PV}"
 LICENSE="BSD"
 #RESTRICT+=" test"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 
 BDEPEND="dev-go/gox"
 
