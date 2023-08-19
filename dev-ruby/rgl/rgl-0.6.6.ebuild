@@ -28,4 +28,5 @@ ruby_add_bdepend "dev-ruby/yard test? ( dev-ruby/test-unit )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile || die
+	sed -i -e '/simplecov/I s:^:#:' test/test_helper.rb || die
 }
