@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 pypi
 
@@ -31,7 +31,6 @@ RDEPEND="
 	>dev-python/requests-2.12.2[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-2.0.1[${PYTHON_USEDEP}]
 "
-# Tests fail with dev-python/prettytable-3.4.0
 BDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	test? (
@@ -47,7 +46,6 @@ BDEPEND="
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
 		dev-python/tempest[${PYTHON_USEDEP}]
-		<dev-python/prettytable-3.4.0[${PYTHON_USEDEP}]
 	)
 "
 
