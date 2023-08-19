@@ -15,20 +15,22 @@ SLOT="0"
 KEYWORDS="amd64 ~hppa ~ppc ~sparc x86"
 IUSE="gnutls sasl"
 
-RDEPEND="dev-libs/popt
+RDEPEND="
+	dev-libs/popt
 	dev-libs/glib:2
 	sys-libs/readline:=
-	sys-libs/ncurses:0=
+	sys-libs/ncurses:=
 	virtual/libcrypt:=
 	gnutls? (
-		net-libs/gnutls
+		net-libs/gnutls:=
 		net-nds/openldap[gnutls]
 	)
 	!gnutls? (
-		dev-libs/openssl:0
+		dev-libs/openssl:=
 		net-nds/openldap[ssl]
 	)
-	sasl? ( dev-libs/cyrus-sasl:2[ssl] )"
+	sasl? ( dev-libs/cyrus-sasl:2[ssl] )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
