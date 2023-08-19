@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # qt@gentoo.org
 # @SUPPORTED_EAPIS: 8
+# @PROVIDES: cmake
 # @BLURB: Eclass for Qt6 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt6.
