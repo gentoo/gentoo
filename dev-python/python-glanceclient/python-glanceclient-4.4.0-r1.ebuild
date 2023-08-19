@@ -29,7 +29,6 @@ RDEPEND="
 	>=dev-python/pyopenssl-17.1.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
 	>=dev-python/warlock-1.2.0[${PYTHON_USEDEP}]
-	<dev-python/warlock-2[${PYTHON_USEDEP}]
 	>=dev-python/wrapt-1.7.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
