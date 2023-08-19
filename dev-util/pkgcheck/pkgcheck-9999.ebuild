@@ -34,7 +34,7 @@ else
 fi
 RDEPEND+="
 	dev-libs/tree-sitter
-	dev-libs/tree-sitter-bash
+	<dev-libs/tree-sitter-bash-0.20.0
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
