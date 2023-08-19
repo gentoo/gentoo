@@ -18,24 +18,28 @@ RDEPEND="
 	media-libs/flac:=
 	media-libs/freetype:2
 	media-libs/libjpeg-turbo:=
-	media-libs/libpng:=
 	media-libs/libogg
+	media-libs/libpng:=
 	media-libs/libvorbis
 	media-libs/openal
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libX11
+	x11-libs/libXcursor
 	x11-libs/libXrandr
 	x11-libs/libxcb
 	x11-libs/xcb-util-image
 	kernel_linux? ( virtual/libudev:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 
 DOCS=( changelog.md readme.md )
+
+PATCHES=( "${FILESDIR}"/libsfml-2.6.0-supress-werror.patch )
 
 S="${WORKDIR}/SFML-${PV}"
 
