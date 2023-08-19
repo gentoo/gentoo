@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Hans de Graaff <graaff@gentoo.org> (2023-08-19)
+# Ruby 3.0 is not compatible with OpenSSL 3. Please upgrade to a newer
+# Ruby version.
+ruby_targets_ruby30
+
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
 # PHP 7.x is end-of-life. Please upgrade to a newer slot.
 php_targets_php7-3
