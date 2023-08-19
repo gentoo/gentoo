@@ -31,19 +31,20 @@ _NUGET_ECLASS=1
 readonly NUGET_SYSTEM_NUGETS=/opt/dotnet-nugets
 
 # @ECLASS_VARIABLE: NUGET_APIS
+# @PRE_INHERIT
 # @DESCRIPTION:
 # NuGet API URLs to use for precompiled NuGet package ".nupkg" downloads.
-# Set or append to this variable post-inherit, but before calling
-# the "nuget_uris" function, preferably just before "SRC_URI".
+# Set this variable pre-inherit.
 #
 # Defaults to an array of one item:
 # "https://api.nuget.org/v3-flatcontainer"
 #
 # Example:
 # @CODE
-# SRC_URI="https://example.com/example.tar.xz"
 # NUGET_APIS+=( "https://api.nuget.org/v3-flatcontainer" )
-# SRC_URI+=" $(nuget_uris) "
+# inherit nuget
+# SRC_URI="https://example.com/example.tar.xz"
+# SRC_URI+=" ${NUGET_URIS} "
 # @CODE
 NUGET_APIS=( "https://api.nuget.org/v3-flatcontainer" )
 
@@ -54,7 +55,7 @@ NUGET_APIS=( "https://api.nuget.org/v3-flatcontainer" )
 # Path from where NuGets will be restored from.
 # This is a special variable that modifies the behavior of "dotnet".
 #
-# Defaults to ${T}/nugets for use with "nuget_uris" but may be set to a custom
+# Defaults to ${T}/nugets for use with "NUGETS" but may be set to a custom
 # location to, for example, restore NuGets extracted from a prepared archive.
 # Do not set this variable in conjunction with non-empty "NUGETS".
 if [[ -n "${NUGETS}" || -z "${NUGET_PACKAGES}" ]] ; then
