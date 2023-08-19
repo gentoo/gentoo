@@ -39,6 +39,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/webmock:3
 	dev-ruby/json
 	>=dev-ruby/multi_xml-0.5.3
+	dev-ruby/rack:2.2
 	>=dev-ruby/rack-cache-1.1
 	>=dev-ruby/simple_oauth-0.1
 	>=dev-ruby/hashie-1.2
