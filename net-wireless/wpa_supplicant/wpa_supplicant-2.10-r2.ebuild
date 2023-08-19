@@ -98,13 +98,6 @@ src_prepare() {
 		-e "s:\(#include <pcap\.h>\):#include <net/bpf.h>\n\1:" \
 		../src/l2_packet/l2_packet_freebsd.c || die
 
-	# People seem to take the example configuration file too literally (bug #102361)
-	sed -i \
-		-e "s:^\(opensc_engine_path\):#\1:" \
-		-e "s:^\(pkcs11_engine_path\):#\1:" \
-		-e "s:^\(pkcs11_module_path\):#\1:" \
-		wpa_supplicant.conf || die
-
 	# Change configuration to match Gentoo locations (bug #143750)
 	sed -i \
 		-e "s:/usr/lib/opensc:/usr/$(get_libdir):" \
