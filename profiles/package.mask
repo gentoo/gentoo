@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-08-19)
+# Obsolete slot with its last release in 2018. Fails tests. Use the
+# newer slot instead. Masked for removal on 2023-09-19.
+dev-ruby/fast_gettext:0
+
 # Sam James <sam@gentoo.org> (2023-08-18)
 # Masked for testing.
 =sys-libs/zlib-1.3-r1
