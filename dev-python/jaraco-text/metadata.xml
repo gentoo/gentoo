@@ -11,9 +11,4 @@
 		<remote-id type="github">jaraco/jaraco.text</remote-id>
 		<bugs-to>https://github.com/jaraco/jaraco.text/issues</bugs-to>
 	</upstream>
-	<use>
-		<flag name="cli">
-			Install dependencies needed for CLI tools (Rust warning!)
-		</flag>
-	</use>
 </pkgmetadata>
