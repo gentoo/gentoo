@@ -3,11 +3,12 @@
 
 EAPI=8
 
+# py3.12 blocked by the massive dependency tree of dev-python/pocketlint
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools python-r1
 
-DESCRIPTION="Tiny library providing a C \"class\" for working with arbitrary big sizes in bytes"
+DESCRIPTION="Tiny library providing a C \"class\" for working with arbitrary big byte sizes"
 HOMEPAGE="https://github.com/storaged-project/libbytesize"
 SRC_URI="https://github.com/storaged-project/libbytesize/releases/download/${PV}/${P}.tar.gz"
 
