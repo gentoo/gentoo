@@ -8,7 +8,6 @@
 # @BLURB: Eclass for Qt6 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt6.
-# Requires EAPI 8.
 
 case ${EAPI} in
 	8) ;;
@@ -19,13 +18,13 @@ if [[ -z ${_QT6_BUILD_ECLASS} ]]; then
 _QT6_BUILD_ECLASS=1
 
 [[ ${CATEGORY} != dev-qt ]] &&
-	die "${ECLASS} is only to be used for building Qt 6"
+	die "${ECLASS} is only to be used for building Qt6"
 
 # @ECLASS_VARIABLE: QT6_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
-# The upstream name of the module this package belongs to. Used for
-# SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
+# The upstream name of the module this package belongs to.
+# Used for SRC_URI and EGIT_REPO_URI.
 : "${QT6_MODULE:=${PN}}"
 
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED
@@ -37,52 +36,53 @@ _QT6_BUILD_ECLASS=1
 
 inherit cmake virtualx
 
-HOMEPAGE="https://www.qt.io/"
-LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-SLOT=6/$(ver_cut 1-2)
-
-QT6_MINOR_VERSION=$(ver_cut 2)
-readonly QT6_MINOR_VERSION
+readonly QT6_MINOR_VERSION=$(ver_cut 2)
 
 case ${PV} in
 	6.9999)
 		# git dev branch
-		QT6_BUILD_TYPE="live"
-		EGIT_BRANCH="dev"
+		readonly QT6_BUILD_TYPE=live
+		EGIT_BRANCH=dev
 		;;
-	6.?.9999|6.??.9999)
+	6.*.9999)
 		# git stable branch
-		QT6_BUILD_TYPE="live"
+		readonly QT6_BUILD_TYPE=live
 		EGIT_BRANCH=${PV%.9999}
 		;;
 	*_alpha*|*_beta*|*_rc*)
 		# development release
-		QT6_BUILD_TYPE="release"
-		MY_P=${QT6_MODULE}-everywhere-src-${PV/_/-}
-		SRC_URI="https://download.qt.io/development_releases/qt/${PV%.*}/${PV/_/-}/submodules/${MY_P}.tar.xz"
-		S=${WORKDIR}/${MY_P}
+		readonly QT6_BUILD_TYPE=release
+		QT6_P=${QT6_MODULE}-everywhere-src-${PV/_/-}
+		SRC_URI="https://download.qt.io/development_releases/qt/${PV%.*}/${PV/_/-}/submodules/${QT6_P}.tar.xz"
+		S=${WORKDIR}/${QT6_P}
 		;;
 	*)
 		# official stable release
-		QT6_BUILD_TYPE="release"
-		MY_P=${QT6_MODULE}-everywhere-src-${PV}
-		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
-		S=${WORKDIR}/${MY_P}
+		readonly QT6_BUILD_TYPE=release
+		QT6_P=${QT6_MODULE}-everywhere-src-${PV}
+		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${QT6_P}.tar.xz"
+		S=${WORKDIR}/${QT6_P}
 		;;
 esac
-readonly QT6_BUILD_TYPE
+unset QT6_P
 
-EGIT_REPO_URI=(
-	"https://code.qt.io/qt/${QT6_MODULE}.git"
-	"https://github.com/qt/${QT6_MODULE}.git"
-)
-[[ ${QT6_BUILD_TYPE} == live ]] && inherit git-r3
+if [[ ${QT6_BUILD_TYPE} == live ]]; then
+	inherit git-r3
+	EGIT_REPO_URI=(
+		"https://code.qt.io/qt/${QT6_MODULE}.git"
+		"https://github.com/qt/${QT6_MODULE}.git"
+	)
+fi
 
 # @ECLASS_VARIABLE: QT6_BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
 : "${QT6_BUILD_DIR:=${S}_build}"
+
+HOMEPAGE="https://www.qt.io/"
+LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
+SLOT=6/${PV%.*}
 
 IUSE="debug test"
 
@@ -105,23 +105,25 @@ BDEPEND="
 
 # @FUNCTION: qt6-build_src_prepare
 # @DESCRIPTION:
-# Prepares the environment and patches the sources if necessary.
+# Run cmake_src_prepare, prepare the environment (such as set
+# QT6_PREFIX, QT6_LIBDIR, and others), and handle anything else
+# generic as needed.
 qt6-build_src_prepare() {
-	qt6_prepare_env
-
 	cmake_src_prepare
+
+	_qt6-build_prepare_env
 }
 
 # @FUNCTION: qt6-build_src_configure
 # @DESCRIPTION:
-# Configures sources.
+# Run cmake_src_configure and handle anything else generic as needed.
 qt6-build_src_configure() {
 	cmake_src_configure
 }
 
 # @FUNCTION: qt6-build_src_install
 # @DESCRIPTION:
-# Runs cmake_src_install and anything else that might be needed here.
+# Run cmake_src_install and handle anything else generic as needed.
 qt6-build_src_install() {
 	cmake_src_install
 }
@@ -133,48 +135,48 @@ qt6-build_src_install() {
 # @DESCRIPTION:
 # <flag> is the name of a flag in IUSE.
 qt_feature() {
-	[[ $# -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
-	echo "-DQT_FEATURE_${2:-$1}=$(usex $1 ON OFF)"
+	[[ ${#} -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
+
+	echo "-DQT_FEATURE_${2:-${1}}=$(usex ${1} ON OFF)"
 }
 
 # @FUNCTION: qt6_symlink_binary_to_path
 # @USAGE: <target binary name> [suffix]
 # @DESCRIPTION:
-# Symlink a given binary from QT6_BINDIR to QT6_PREFIX/bin, with optional suffix
+# Symlink a given binary from QT6_BINDIR to QT6_PREFIX/bin, with
+# optional suffix.
 qt6_symlink_binary_to_path() {
-	[[ $# -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
+	[[ ${#} -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
 
 	dosym -r "${QT6_BINDIR}"/${1} /usr/bin/${1}${2}
 }
 
 ######  Internal functions  ######
 
-# @FUNCTION: qt6_prepare_env
+# @FUNCTION: _qt6-build_prepare_env
 # @INTERNAL
 # @DESCRIPTION:
 # Prepares the environment for building Qt.
-qt6_prepare_env() {
+_qt6-build_prepare_env() {
 	# setup installation directories
 	# note: keep paths in sync with qmake-utils.eclass
-	QT6_PREFIX=${EPREFIX}/usr
-	QT6_HEADERDIR=${QT6_PREFIX}/include/qt6
-	QT6_LIBDIR=${QT6_PREFIX}/$(get_libdir)
-	QT6_ARCHDATADIR=${QT6_PREFIX}/$(get_libdir)/qt6
-	QT6_BINDIR=${QT6_ARCHDATADIR}/bin
-	QT6_PLUGINDIR=${QT6_ARCHDATADIR}/plugins
-	QT6_LIBEXECDIR=${QT6_ARCHDATADIR}/libexec
-	QT6_IMPORTDIR=${QT6_ARCHDATADIR}/imports
-	QT6_QMLDIR=${QT6_ARCHDATADIR}/qml
-	QT6_DATADIR=${QT6_PREFIX}/share/qt6
-	QT6_DOCDIR=${QT6_PREFIX}/share/qt6-doc
-	QT6_TRANSLATIONDIR=${QT6_DATADIR}/translations
-	QT6_EXAMPLESDIR=${QT6_DATADIR}/examples
-	QT6_TESTSDIR=${QT6_DATADIR}/tests
-	QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
-	readonly QT6_PREFIX QT6_HEADERDIR QT6_LIBDIR QT6_ARCHDATADIR \
-		QT6_BINDIR QT6_PLUGINDIR QT6_LIBEXECDIR QT6_IMPORTDIR \
-		QT6_QMLDIR QT6_DATADIR QT6_DOCDIR QT6_TRANSLATIONDIR \
-		QT6_EXAMPLESDIR QT6_TESTSDIR QT6_SYSCONFDIR
+	readonly QT6_PREFIX=${EPREFIX}/usr
+	readonly QT6_DATADIR=${QT6_PREFIX}/share/qt6
+	readonly QT6_LIBDIR=${QT6_PREFIX}/$(get_libdir)
+
+	readonly QT6_ARCHDATADIR=${QT6_LIBDIR}/qt6
+
+	readonly QT6_BINDIR=${QT6_ARCHDATADIR}/bin
+	readonly QT6_DOCDIR=${QT6_PREFIX}/share/qt6-doc
+	readonly QT6_EXAMPLESDIR=${QT6_DATADIR}/examples
+	readonly QT6_HEADERDIR=${QT6_PREFIX}/include/qt6
+	readonly QT6_IMPORTDIR=${QT6_ARCHDATADIR}/imports
+	readonly QT6_LIBEXECDIR=${QT6_ARCHDATADIR}/libexec
+	readonly QT6_PLUGINDIR=${QT6_ARCHDATADIR}/plugins
+	readonly QT6_QMLDIR=${QT6_ARCHDATADIR}/qml
+	readonly QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
+	readonly QT6_TESTSDIR=${QT6_DATADIR}/tests
+	readonly QT6_TRANSLATIONDIR=${QT6_DATADIR}/translations
 }
 
 fi
