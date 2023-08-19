@@ -394,8 +394,10 @@ KEYWORDS="~amd64 ~arm64"
 RESTRICT="test"
 
 DEPEND="
+	dev-db/sqlite:3
 	dev-libs/gmp:=
 	dev-libs/nettle:=
+	dev-libs/openssl:=
 "
 RDEPEND="${DEPEND}"
 # Needed for bindgen
