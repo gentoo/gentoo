@@ -152,11 +152,8 @@ multilib_src_install() {
 			;;
 	esac
 
-	sed_macros "${ED}"/usr/include/*.h
-
 	if use minizip ; then
 		emake -C contrib/minizip install DESTDIR="${D}"
-		sed_macros "${ED}"/usr/include/minizip/*.h
 
 		# This might not exist if slibtool is used.
 		# bug #816756
