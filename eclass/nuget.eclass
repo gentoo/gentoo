@@ -46,7 +46,9 @@ readonly NUGET_SYSTEM_NUGETS=/opt/dotnet-nugets
 # SRC_URI="https://example.com/example.tar.xz"
 # SRC_URI+=" ${NUGET_URIS} "
 # @CODE
-NUGET_APIS=( "https://api.nuget.org/v3-flatcontainer" )
+if [[ -z "${NUGET_APIS}" ]] ; then
+	NUGET_APIS=( "https://api.nuget.org/v3-flatcontainer" )
+fi
 
 # @ECLASS_VARIABLE: NUGET_PACKAGES
 # @DEFAULT_UNSET
