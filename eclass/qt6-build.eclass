@@ -36,8 +36,6 @@ _QT6_BUILD_ECLASS=1
 
 inherit cmake virtualx
 
-readonly QT6_MINOR_VERSION=$(ver_cut 2)
-
 case ${PV} in
 	6.9999)
 		# git dev branch
@@ -74,17 +72,11 @@ if [[ ${QT6_BUILD_TYPE} == live ]]; then
 	)
 fi
 
-# @ECLASS_VARIABLE: QT6_BUILD_DIR
-# @OUTPUT_VARIABLE
-# @DESCRIPTION:
-# Build directory for out-of-source builds.
-: "${QT6_BUILD_DIR:=${S}_build}"
-
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
 SLOT=6/${PV%.*}
 
-IUSE="debug test"
+IUSE="test"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	RESTRICT="test" # bug 457182
