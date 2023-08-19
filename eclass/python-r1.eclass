@@ -692,7 +692,8 @@ python_foreach_impl() {
 #	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
 #
 # python_check_deps() {
-# 	use !doc || python_has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
+# 	! use doc && return 0
+# 	python_has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
 # }
 #
 # src_compile() {
