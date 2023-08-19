@@ -35,6 +35,9 @@ pkg_pretend() {
 				ewarn "  With CONFIG_CFG80211 unset, the driver(s) won't be able to load the regulatory.db from"
 				ewarn "  /lib/firmware, resulting in broken regulatory domain support. Please set CONFIG_CFG80211=m."
 			fi
+			if linux_chkconfig_present EXPERT && linux_chkconfig_present CFG80211_CRDA_SUPPORT; then
+				ewarn "You can safely disable CFG80211_CRDA_SUPPORT"
+			fi
 		fi
 
 		if has_version net-wireless/crda || use crda; then
@@ -42,8 +45,6 @@ pkg_pretend() {
 			ewarn "The crda USE flag will be removed on or after Feb 01, 2024"
 		fi
 
-		CONFIG_CHECK="EXPERT ~!CFG80211_CRDA_SUPPORT"
-		WARNING_CFG80211_CRDA_SUPPORT="You can safely disable CFG80211_CRDA_SUPPORT"
 	else
 		CONFIG_CHECK="~CFG80211_CRDA_SUPPORT"
 		WARNING_CFG80211_CRDA_SUPPORT="REGULATORY DOMAIN PROBLEM: \
