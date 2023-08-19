@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -22,8 +22,8 @@ IUSE="pulseaudio X"
 
 DEPEND="pulseaudio? ( media-libs/libpulse )
 		X? ( x11-libs/libX11 )"
-RDEPEND="${DEPEND}"
-PDEPEND="media-sound/sox"
+RDEPEND="${DEPEND}
+		media-sound/sox"
 
 src_prepare() {
 	use pulseaudio || sed -i '/find_package( PulseAudio )/d' CMakeLists.txt
