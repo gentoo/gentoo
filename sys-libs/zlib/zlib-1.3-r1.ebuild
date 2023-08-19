@@ -130,12 +130,6 @@ multilib_src_compile() {
 	use minizip && emake -C contrib/minizip
 }
 
-sed_macros() {
-	# Clean up namespace a little, bug #383179
-	# We do it here so we only have to tweak 2 files
-	sed -i -r 's:\<(O[FN])\>:_Z_\1:g' "$@" || die
-}
-
 multilib_src_install() {
 	case ${CHOST} in
 		*-mingw*|mingw*)
