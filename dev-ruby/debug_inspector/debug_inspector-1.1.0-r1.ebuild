@@ -25,4 +25,6 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/extensiontask/,$ s:^:#:' Rakefile || die
+
+	sed -i -e 's/MiniTest/Minitest/' test/basic_test.rb || die
 }
