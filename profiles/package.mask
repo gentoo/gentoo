@@ -34,8 +34,8 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2023-08-18)
-# Masked for testing. Breaks pigz at least: https://github.com/madler/pigz/issues/111.
-=sys-libs/zlib-1.3
+# Masked for testing.
+=sys-libs/zlib-1.3-r1
 
 # Jonas Stein <jstein@gentoo.org> (2023-08-17)
 # Upstream warns that it is broken and there is no fix since 2010
