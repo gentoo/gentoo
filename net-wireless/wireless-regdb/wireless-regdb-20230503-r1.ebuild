@@ -22,22 +22,25 @@ REQUIRED_USE="kernel_linux"
 
 pkg_pretend() {
 	if kernel_is -ge 4 15; then
-		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
-			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
-		then
-			ewarn "REGULATORY DOMAIN PROBLEM:"
-			ewarn "  With CONFIG_CFG80211=y (built-in), the driver won't be able to load regulatory.db from"
-			ewarn "  /lib/firmware, resulting in broken regulatory domain support. Please set CONFIG_CFG80211=m"
-			ewarn "  or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
-		fi
-		if linux_config_exists && ! linux_chkconfig_present CFG80211; then
-			ewarn "REGULARTORY DOMAIN PROBLEM:"
-			ewarn "  With CONFIG_CFG80211 unset the wireless dirvers won't be able to load the regulatory.db"
-			ewarn "  which this ebuild installs.  Please set CONFIG_CFG80211=m."
+		if linux_config_exists; then
+			if linux_chkconfig_builtin CFG80211 &&
+				[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]; then
+				ewarn "REGULATORY DOMAIN PROBLEM:"
+				ewarn "  With CONFIG_CFG80211=y (built-in), the driver(s) won't be able to load regulatory.db from"
+				ewarn "  /lib/firmware, resulting in broken regulatory domain support. Please set CONFIG_CFG80211=m"
+				ewarn "  or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
+			fi
+			if ! linux_chkconfig_present CFG80211; then
+				ewarn "REGULARTORY DOMAIN PROBLEM:"
+				ewarn "  With CONFIG_CFG80211 unset, the driver(s) won't be able to load the regulatory.db from"
+				ewarn "  /lib/firmware, resulting in broken regulatory domain support. Please set CONFIG_CFG80211=m."
+			fi
 		fi
 
-		has_version net-wireless/crda && \
+		if has_version net-wireless/crda || use crda; then
 			ewarn "Starting from kernel version 4.15 net-wireless/crda is no longer needed."
+			ewarn "The crda USE flag will be removed on or after Feb 01, 2024"
+		fi
 
 		CONFIG_CHECK="EXPERT ~!CFG80211_CRDA_SUPPORT"
 		WARNING_CFG80211_CRDA_SUPPORT="You can safely disable CFG80211_CRDA_SUPPORT"
@@ -51,7 +54,8 @@ please enable CFG80211_CRDA_SUPPORT for proper regulatory domain support"
 }
 
 src_compile() {
-	einfo "Recompiling regulatory.bin from db.txt would break CRDA verify. Installing unmodified binary version."
+	einfo "Recompiling regulatory database(s) from db.txt would break signature verification."
+	einfo "Installing unmodified binary version."
 }
 
 src_install() {
@@ -63,13 +67,13 @@ src_install() {
 
 		insinto /etc/wireless-regdb/pubkeys
 		doins sforshee.key.pub.pem
-		doman -i18n= regulatory.bin.5
 	fi
 	# install the files the kernel needs unconditionally,
 	# they are small and kernels get upgraded
 	insinto /lib/firmware
 	doins regulatory.db regulatory.db.p7s
 
-	doman -i18n= regulatory.db.5
+	# regulatory.db.5 is a reference to regulatory.bin.5 so you need both unconditionally
+	doman -i18n= regulatory.db.5 regulatory.bin.5
 	dodoc README db.txt
 }
