@@ -70,22 +70,19 @@ HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
 SLOT=6/${PV%.*}
 
-IUSE="test"
-
-if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	RESTRICT="test" # bug 457182
-else
+if [[ ${PN} != qttranslations ]]; then
+	IUSE="test"
 	RESTRICT="!test? ( test )"
+
+	# testlib is currently enabled by USE=gui
+	[[ ${PN} != qtbase ]] &&
+		DEPEND="test? ( =dev-qt/qtbase-${PV}*:6[gui] )"
 fi
 
 BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
-# TODO: Tests have not been split from qtbase.
-#if [[ ${PN} != qttest ]]; then
-#	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
-#fi
 
 ######  Phase functions  ######
 
@@ -97,6 +94,13 @@ BDEPEND="
 qt6-build_src_prepare() {
 	cmake_src_prepare
 
+	if in_iuse test && use test && [[ -e tests/auto/CMakeLists.txt ]]; then
+		# upstream seems to install before running tests, and cmake
+		# subdir that is present in about half of the Qt6 components
+		# cause a dependency on itself and sometimes install test junk
+		sed -i '/add_subdirectory(cmake)/d' tests/auto/CMakeLists.txt || die
+	fi
+
 	_qt6-build_prepare_env
 }
 
@@ -104,7 +108,35 @@ qt6-build_src_prepare() {
 # @DESCRIPTION:
 # Run cmake_src_configure and handle anything else generic as needed.
 qt6-build_src_configure() {
+	if [[ ${mycmakeargs@a} == *a* ]]; then
+		local mycmakeargs=("${mycmakeargs[@]}")
+	else
+		local mycmakeargs=()
+	fi
+
+	mycmakeargs+=(
+		# note that if qtbase was built with tests, this is default ON
+		-DQT_BUILD_TESTS=$(in_iuse test && usev test ON || echo OFF)
+	)
+
 	cmake_src_configure
+}
+
+# @FUNCTION: qt6-build_src_test
+# @USAGE: [<cmake_src_test argument>...]
+# @DESCRIPTION:
+# Run cmake_src_test and handle anything else generic as-needed.
+qt6-build_src_test() {
+	# helps a few tests but is not always respected
+	local -x QML_IMPORT_PATH=${BUILD_DIR}${QT6_QMLDIR#"${QT6_PREFIX}"}
+
+	local -x QT_QPA_PLATFORM=offscreen
+
+	# TODO?: CMAKE_SKIP_TESTS skips a whole group of tests and, when
+	# only want to skip a sepcific sub-test, the BLACKLIST files
+	# could potentially be modified by implementing a QT6_SKIP_TESTS
+
+	cmake_src_test "${@}"
 }
 
 # @FUNCTION: qt6-build_src_install
@@ -112,6 +144,12 @@ qt6-build_src_configure() {
 # Run cmake_src_install and handle anything else generic as needed.
 qt6-build_src_install() {
 	cmake_src_install
+
+	# hack: trim typical junk with currently no known "proper" way
+	# to avoid that primarily happens with tests (e.g. qt5compat and
+	# qtsvg tests, but qtbase[gui,-test] currently does some too)
+	rm -rf -- "${D}${QT6_PREFIX}"/tests \
+		"${D}${QT6_LIBDIR}/objects-${CMAKE_BUILD_TYPE}" || die
 }
 
 ######  Public helpers  ######
@@ -167,4 +205,4 @@ _qt6-build_prepare_env() {
 
 fi
 
-EXPORT_FUNCTIONS src_prepare src_configure
+EXPORT_FUNCTIONS src_prepare src_configure src_test src_install
