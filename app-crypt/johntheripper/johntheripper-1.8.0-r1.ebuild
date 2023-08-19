@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cuda flag-o-matic toolchain-funcs
 
@@ -19,9 +19,9 @@ KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-lin
 CPU_FLAGS="cpu_flags_x86_mmx cpu_flags_x86_sse2 cpu_flags_x86_avx cpu_flags_x86_xop"
 IUSE="custom-cflags openmp ${CPU_FLAGS}"
 
-RDEPEND="sys-libs/zlib
+DEPEND="sys-libs/zlib
 	virtual/libcrypt:="
-DEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	!app-crypt/johntheripper-jumbo"
 
 S="${WORKDIR}/${MY_P}"
