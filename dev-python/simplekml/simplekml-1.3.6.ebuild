@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Enables you to generate KML with as little effort as possible"
