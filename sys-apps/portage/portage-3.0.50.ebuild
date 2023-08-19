@@ -152,6 +152,10 @@ src_compile() {
 	python_foreach_impl meson_src_compile
 }
 
+src_test() {
+	python_foreach_impl meson_src_test --no-rebuild --verbose
+}
+
 src_install() {
 	python_foreach_impl my_src_install
 	dotmpfiles "${FILESDIR}"/portage-{ccache,tmpdir}.conf
@@ -170,10 +174,6 @@ my_src_install() {
 	meson_src_install
 	python_optimize "${pydirs[@]}"
 	python_fix_shebang "${pydirs[@]}"
-}
-
-src_test() {
-	python_foreach_impl meson_src_test --no-rebuild --verbose
 }
 
 pkg_preinst() {
