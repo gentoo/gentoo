@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2023-08-19)
-# Tests depend on currently unkeyworded dev-libs/pocl.
+# dev-libs/pocl needs some work before it can be keyworded here (Bug #907333).
 dev-python/pyopencl test
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
@@ -57,7 +57,7 @@ app-i18n/fcitx-libpinyin dictionary-manager
 sys-devel/gcc -sanitize
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
-# Mask nvml use flag for slurm
+# Requires proprietary binary-only libraries only available for a handful of arches
 sys-cluster/slurm nvml
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-09-07)
@@ -74,7 +74,7 @@ app-admin/rsyslog jemalloc
 dev-util/bcc lua
 
 # Yu Gu <guyu2876@gmail.com> (2022-07-26)
-# Xen does not work on riscv, ceph not tested, bug #859625
+# Xen does not work on riscv, Ceph has dependencies which do not. Bug #859625.
 app-emulation/libvirt xen rbd
 
 # Sam James <sam@gentoo.org> (2022-07-02)
