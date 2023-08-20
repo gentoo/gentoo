@@ -21,7 +21,7 @@ _QT6_BUILD_ECLASS=1
 [[ ${CATEGORY} != dev-qt ]] &&
 	die "${ECLASS} is only to be used for building Qt6"
 
-inherit cmake
+inherit cmake flag-o-matic
 
 # @ECLASS_VARIABLE: QT6_MODULE
 # @PRE_INHERIT
@@ -118,6 +118,17 @@ qt6-build_src_configure() {
 		# note that if qtbase was built with tests, this is default ON
 		-DQT_BUILD_TESTS=$(in_iuse test && usev test ON || echo OFF)
 	)
+
+	# LTO cause test failures in several components (e.g. qtcharts,
+	# multimedia, scxml, wayland, webchannel, ...).
+	#
+	# Exact extent/causes unknown, but for some related-sounding bugs:
+	# https://bugreports.qt.io/browse/QTBUG-112332
+	# https://bugreports.qt.io/browse/QTBUG-115731
+	#
+	# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
+	# still assumed to be generally unsafe either way in current state.
+	filter-lto
 
 	cmake_src_configure
 }
