@@ -15,7 +15,7 @@ SRC_URI="https://salsa.debian.org/blade/${PN}/-/archive/debian/${MY_PV}/${MY_P}.
 
 LICENSE="BSD-4 ZLIB public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc fuse systemd tcpd"
 
 DEPEND="acct-user/apt-cacher-ng
