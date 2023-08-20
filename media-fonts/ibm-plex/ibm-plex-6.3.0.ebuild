@@ -11,10 +11,10 @@ SRC_URI="https://github.com/IBM/plex/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~alpha ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~loong ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="eot otf +ttf woff woff2"
 
-REQUIRED_USE="|| ( eot otf ttf woff woff2 )"
+REQUIRED_USE="^^ ( eot otf ttf woff woff2 )"
 
 S="${WORKDIR}/${P/ibm-}"
 
@@ -34,11 +34,10 @@ if use eot; then
 		IBM-Plex-Sans-Condensed/fonts/complete/eot
 		IBM-Plex-Sans-Devanagari/fonts/complete/eot
 		IBM-Plex-Sans-Hebrew/fonts/complete/eot
-		IBM-Plex-Sans-JP/fonts/complete/eot
-		IBM-Plex-Sans-KR/fonts/complete/eot
+		IBM-Plex-Sans-KR/fonts/complete/eot/hinted
+		IBM-Plex-Sans-KR/fonts/complete/eot/unhinted
 		IBM-Plex-Sans-Thai-Looped/fonts/complete/eot
 		IBM-Plex-Sans-Thai/fonts/complete/eot
-		IBM-Plex-Sans-Variable/fonts/complete/eot
 		IBM-Plex-Sans/fonts/complete/eot
 		IBM-Plex-Serif/fonts/complete/eot )
 fi
@@ -53,11 +52,11 @@ if use otf; then
 		IBM-Plex-Sans-Condensed/fonts/complete/otf
 		IBM-Plex-Sans-Devanagari/fonts/complete/otf
 		IBM-Plex-Sans-Hebrew/fonts/complete/otf
-		IBM-Plex-Sans-JP/fonts/complete/otf
+		IBM-Plex-Sans-JP/fonts/complete/otf/hinted
+		IBM-Plex-Sans-JP/fonts/complete/otf/unhinted
 		IBM-Plex-Sans-KR/fonts/complete/otf
 		IBM-Plex-Sans-Thai-Looped/fonts/complete/otf
 		IBM-Plex-Sans-Thai/fonts/complete/otf
-		IBM-Plex-Sans-Variable/fonts/complete/otf
 		IBM-Plex-Sans/fonts/complete/otf
 		IBM-Plex-Serif/fonts/complete/otf )
 fi
@@ -72,7 +71,8 @@ if use ttf; then
 		IBM-Plex-Sans-Condensed/fonts/complete/ttf
 		IBM-Plex-Sans-Devanagari/fonts/complete/ttf
 		IBM-Plex-Sans-Hebrew/fonts/complete/ttf
-		IBM-Plex-Sans-JP/fonts/complete/ttf
+		IBM-Plex-Sans-JP/fonts/complete/ttf/hinted
+		IBM-Plex-Sans-JP/fonts/complete/ttf/unhinted
 		IBM-Plex-Sans-KR/fonts/complete/ttf/hinted
 		IBM-Plex-Sans-KR/fonts/complete/ttf/unhinted
 		IBM-Plex-Sans-Thai-Looped/fonts/complete/ttf
@@ -92,7 +92,8 @@ if use woff; then
 		IBM-Plex-Sans-Condensed/fonts/complete/woff
 		IBM-Plex-Sans-Devanagari/fonts/complete/woff
 		IBM-Plex-Sans-Hebrew/fonts/complete/woff
-		IBM-Plex-Sans-JP/fonts/complete/woff
+		IBM-Plex-Sans-JP/fonts/complete/woff/hinted
+		IBM-Plex-Sans-JP/fonts/complete/woff/unhinted
 		IBM-Plex-Sans-KR/fonts/complete/woff/hinted
 		IBM-Plex-Sans-KR/fonts/complete/woff/unhinted
 		IBM-Plex-Sans-Thai-Looped/fonts/complete/woff
@@ -112,7 +113,8 @@ if use woff2; then
 		IBM-Plex-Sans-Condensed/fonts/complete/woff2
 		IBM-Plex-Sans-Devanagari/fonts/complete/woff2
 		IBM-Plex-Sans-Hebrew/fonts/complete/woff2
-		IBM-Plex-Sans-JP/fonts/complete/woff2
+		IBM-Plex-Sans-JP/fonts/complete/woff2/hinted
+		IBM-Plex-Sans-JP/fonts/complete/woff2/unhinted
 		IBM-Plex-Sans-KR/fonts/complete/woff2/hinted
 		IBM-Plex-Sans-KR/fonts/complete/woff2/unhinted
 		IBM-Plex-Sans-Thai-Looped/fonts/complete/woff2
