@@ -13,7 +13,7 @@ EAPI=8
 # continue to move quickly. It's not uncommon for fixes to be made shortly
 # after releases.
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
