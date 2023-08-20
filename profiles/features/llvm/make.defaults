@@ -13,20 +13,6 @@ LD="ld.lld"
 # linker flags
 LDFLAGS="${LDFLAGS} -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind -Wl,--as-needed"
 
-## hardening flags
-#SOME_HARDENING_CFLAGS="-fPIC -fstack-protector-strong -D_FORTIFY_SOURCE=2"
-#SOME_HARDENING_LDFLAGS="-Wl,-z,relro,-z,now -pie"
-#
-# we need to eventually do this the same way as in gcc, for now let's
-# keep it to a minimum
-SOME_HARDENING_CFLAGS="-D_FORTIFY_SOURCE=2"
-SOME_HARDENING_LDFLAGS=""
-
-# enable hardening by default, cf. gcc[pie,ssp]
-CFLAGS="${CFLAGS} ${SOME_HARDENING_FLAGS}"
-CXXFLAGS="${CXXFLAGS} ${SOME_HARDENING_FLAGS}"
-LDFLAGS="${LDFLAGS} ${SOME_HARDENING_LDFLAGS}"
-
 # use LLVM-provided binutils
 AR="llvm-ar"
 AS="clang -c"
