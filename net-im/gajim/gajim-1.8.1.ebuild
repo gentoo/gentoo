@@ -20,7 +20,7 @@ SLOT="0"
 # Gajim depends now on omemo-dr. Add KEYWORDS again,
 # when https://bugs.gentoo.org/912285 is fixed.
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="+crypt geolocation jingle remote rst +spell upnp +webp"
 
 COMMON_DEPEND="
