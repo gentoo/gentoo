@@ -62,8 +62,7 @@ DEPEND="
 	dev-util/gperf
 "
 PATCHES=(
-	"${FILESDIR}"/sdcc-3.8.0-override-override.patch
-	"${FILESDIR}"/sdcc-4.2.0-link-tinfo.patch
+	"${FILESDIR}"/sdcc-4.3.2-override-override.patch
 )
 
 src_prepare() {
@@ -83,6 +82,8 @@ src_prepare() {
 
 	# Make sure timestamps don't get messed up.
 	[[ ${PV} == "9999" ]] && find "${S}" -type f -exec touch -r . {} +
+
+	mkdir -p support/sdbinutils/bfd/doc || die
 
 	default
 	eautoreconf
