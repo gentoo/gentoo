@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
+MY_P=rapidfuzz_capi-${PV}
 DESCRIPTION="C-API of RapidFuzz, which can be used to extend RapidFuzz"
 HOMEPAGE="
 	https://github.com/maxbachmann/rapidfuzz_capi/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/maxbachmann/rapidfuzz_capi/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
