@@ -18,3 +18,29 @@ RDEPEND="
 	=dev-qt/qtshadertools-${PV}*:6
 "
 DEPEND="${RDEPEND}"
+
+CMAKE_SKIP_TESTS=(
+	# ignores QML_IMPORT_PATH (unlike other tests) and looks in
+	# the missing builddir/qml, skip rather than work around
+	tst_declarative_ui
+)
+
+src_install() {
+	qt6-build_src_install
+
+	if use test; then
+		local delete=( # sigh
+			"${D}${QT6_LIBDIR}"/cmake/Qt6Location/*TestGeoServicePlugin*.cmake
+			"${D}${QT6_LIBDIR}"/cmake/Qt6Location/*TestGeoServicePlugin*.cmake
+			"${D}${QT6_LIBDIR}"/cmake/Qt6Location/*UnsupportedPlacesGeoServicePlugin*.cmake
+			"${D}${QT6_LIBDIR}"/cmake/Qt6Qml/QmlPlugins/*declarative_location_test*.cmake
+			"${D}${QT6_PLUGINDIR}"/geoservices/libqtgeoservices_geocodingplugin.so
+			"${D}${QT6_PLUGINDIR}"/geoservices/libqtgeoservices_placesplugin_unsupported.so
+			"${D}${QT6_PLUGINDIR}"/geoservices/libqtgeoservices_qmltestplugin.so
+			"${D}${QT6_PLUGINDIR}"/geoservices/libqtgeoservices_routingplugin.so
+			"${D}${QT6_QMLDIR}"/QtLocation/Test
+		)
+		# using -f given not tracking which tests may be skipped or not
+		rm -rf -- "${delete[@]}" || die
+	fi
+}
