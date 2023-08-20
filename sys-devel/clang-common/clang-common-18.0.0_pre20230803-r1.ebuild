@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 llvm.org
+inherit bash-completion-r1 llvm.org multilib
 
 DESCRIPTION="Common files shared between multiple slots of clang"
 HOMEPAGE="https://llvm.org/"
@@ -169,15 +169,21 @@ src_install() {
 		EOF
 	fi
 
-	# We only install config files for ${CHOST} because unprefixed tools
+	# We only install config files for supported ABIs because unprefixed tools
 	# might be used for crosscompilation where e.g. PIE may not be supported.
 	# See bug #912237 and bug #901247.
-	local tool
-	for tool in ${CHOST}-clang{,++,-cpp}; do
-		newins - "${tool}.cfg" <<-EOF
-			# This configuration file is used by ${tool} driver.
-			@gentoo-common.cfg
-		EOF
+	# Just ${CHOST} won't do due to bug #912685.
+	local abi
+	for abi in $(get_all_abis); do
+		local abi_chost=$(get_abi_CHOST "${abi}")
+
+		local tool
+		for tool in ${abi_chost}-clang{,++,-cpp}; do
+			newins - "${tool}.cfg" <<-EOF
+				# This configuration file is used by ${tool} driver.
+				@gentoo-common.cfg
+			EOF
+		done
 	done
 }
 
