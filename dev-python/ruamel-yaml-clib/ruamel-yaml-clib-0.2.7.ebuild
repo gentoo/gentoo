@@ -30,6 +30,10 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.7_cython_pointer_types.patch
+)
+
 src_unpack() {
 	default
 	mv "${MY_P}" ruamel_yaml_clib || die
