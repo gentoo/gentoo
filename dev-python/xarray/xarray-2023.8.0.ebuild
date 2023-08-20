@@ -50,6 +50,10 @@ EPYTEST_DESELECT=(
 	xarray/tests/test_backends.py::TestDask::test_save_mfdataset_compute_false_roundtrip
 	# hangs
 	xarray/tests/test_backends.py::TestDask::test_dask_roundtrip
+	# mismatches when pyarrow is installed
+	# https://github.com/pydata/xarray/issues/8092
+	xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_2D
+	xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_not_daskarray
 )
 
 python_test() {
