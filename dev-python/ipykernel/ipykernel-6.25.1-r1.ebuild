@@ -17,11 +17,11 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	>=dev-python/comm-0.1.1[${PYTHON_USEDEP}]
-	>=dev-python/debugpy-1.6.5[${PYTHON_USEDEP}]
+	!elibc_Darwin? ( >=dev-python/debugpy-1.6.5[${PYTHON_USEDEP}] )
 	>=dev-python/ipython-7.23.1[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-client-8[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-4.12[${PYTHON_USEDEP}]
