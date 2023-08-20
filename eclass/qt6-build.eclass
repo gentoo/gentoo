@@ -119,6 +119,9 @@ qt6-build_src_configure() {
 		-DQT_BUILD_TESTS=$(in_iuse test && usev test ON || echo OFF)
 	)
 
+	[[ ${PN} != qttranslations ]] && # compiles nothing (unused option)
+		mycmakeargs+=( -DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON ) #911822
+
 	# LTO cause test failures in several components (e.g. qtcharts,
 	# multimedia, scxml, wayland, webchannel, ...).
 	#
