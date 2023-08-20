@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-DEPEND="
-	=dev-qt/qtbase-${PV}*[network,widgets]
+RDEPEND="
+	=dev-qt/qtbase-${PV}*:6[network,widgets]
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"

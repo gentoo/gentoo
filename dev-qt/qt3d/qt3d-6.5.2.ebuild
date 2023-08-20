@@ -11,16 +11,15 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-IUSE=""
-
 RDEPEND="
-	=dev-qt/qtbase-${PV}*[concurrent,gui,network,opengl,vulkan,widgets]
-	=dev-qt/qtdeclarative-${PV}*[widgets]
-	=dev-qt/qtmultimedia-${PV}*
-	=dev-qt/qtshadertools-${PV}*
+	=dev-qt/qtbase-${PV}*:6[concurrent,gui,network,opengl,vulkan,widgets]
+	=dev-qt/qtdeclarative-${PV}*:6[widgets]
+	=dev-qt/qtmultimedia-${PV}*:6
+	=dev-qt/qtshadertools-${PV}*:6
 	media-libs/assimp:=
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-util/vulkan-headers
 "
 

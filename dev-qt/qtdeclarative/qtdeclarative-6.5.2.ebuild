@@ -13,11 +13,11 @@ fi
 
 IUSE="opengl +sql +widgets"
 
-DEPEND="
-	=dev-qt/qtbase-${PV}*[network,opengl=,sql=,widgets=]
-	=dev-qt/qtshadertools-${PV}*
+RDEPEND="
+	=dev-qt/qtbase-${PV}*:6[network,opengl=,sql=,widgets=]
+	=dev-qt/qtshadertools-${PV}*:6
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(

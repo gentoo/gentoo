@@ -11,9 +11,9 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-DEPEND="
-	=dev-qt/qtbase-${PV}*[concurrent]
-	=dev-qt/qtdeclarative-${PV}*
-	=dev-qt/qtwebsockets-${PV}*
+RDEPEND="
+	=dev-qt/qtbase-${PV}*:6[concurrent]
+	=dev-qt/qtdeclarative-${PV}*:6
+	=dev-qt/qtwebsockets-${PV}*:6
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"

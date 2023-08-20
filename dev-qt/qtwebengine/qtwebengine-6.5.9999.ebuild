@@ -3,12 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="xml(+)"
-CHROMIUM_VER="108.0.5359.181"
-CHROMIUM_PATCHES_VER="113.0.5672.126"
-
 inherit check-reqs estack flag-o-matic multiprocessing python-any-r1 qt6-build
+
+CHROMIUM_VER=108.0.5359.181
+CHROMIUM_PATCHES_VER=113.0.5672.126
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 
@@ -17,20 +17,11 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	alsa bindist designer geolocation +jumbo-build kerberos pulseaudio screencast
-	+system-icu widgets
+	alsa bindist designer geolocation +jumbo-build kerberos
+	pulseaudio screencast +system-icu widgets
 "
 REQUIRED_USE="designer? ( widgets )"
 
-BDEPEND="
-	$(python_gen_any_dep 'dev-python/html5lib[${PYTHON_USEDEP}]')
-	dev-util/gperf
-	dev-util/ninja
-	dev-util/re2c
-	net-libs/nodejs[ssl]
-	sys-devel/bison
-	sys-devel/flex
-"
 RDEPEND="
 	app-arch/snappy:=
 	dev-libs/glib:2
@@ -41,8 +32,8 @@ RDEPEND="
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
 	dev-libs/re2:=
-	=dev-qt/qtdeclarative-${PV}*
-	=dev-qt/qtwebchannel-${PV}*
+	=dev-qt/qtdeclarative-${PV}*:6
+	=dev-qt/qtwebchannel-${PV}*:6
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
@@ -74,17 +65,27 @@ RDEPEND="
 	x11-libs/libxshmfence:=
 	x11-libs/libXtst
 	alsa? ( media-libs/alsa-lib )
-	geolocation? ( =dev-qt/qtpositioning-${PV}* )
+	geolocation? ( =dev-qt/qtpositioning-${PV}*:6 )
 	kerberos? ( virtual/krb5 )
 	pulseaudio? ( media-libs/libpulse:= )
 	screencast? ( media-video/pipewire:= )
 	system-icu? ( >=dev-libs/icu-69.1:= )
 	widgets? (
-		=dev-qt/qtbase-${PV}*[widgets]
+		=dev-qt/qtbase-${PV}*:6[widgets]
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	media-libs/libglvnd
+"
+BDEPEND="
+	$(python_gen_any_dep 'dev-python/html5lib[${PYTHON_USEDEP}]')
+	dev-util/gperf
+	dev-util/ninja
+	dev-util/re2c
+	net-libs/nodejs[ssl]
+	sys-devel/bison
+	sys-devel/flex
 "
 
 python_check_deps() {
@@ -92,6 +93,8 @@ python_check_deps() {
 }
 
 qtwebengine_check-reqs() {
+	[[ ${MERGE_TYPE} == binary ]] && return
+
 	# bug #307861
 	eshopts_push -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
@@ -100,8 +103,6 @@ qtwebengine_check-reqs() {
 		ewarn "If compilation fails, please try removing -g/-ggdb before reporting a bug."
 	fi
 	eshopts_pop
-
-	[[ ${MERGE_TYPE} == binary ]] && return
 
 	# (check-reqs added for bug #570534)
 	#
@@ -186,8 +187,8 @@ src_prepare() {
 }
 
 src_configure() {
-	export NINJA_PATH="${BROOT}"/usr/bin/ninja
-	export NINJAFLAGS="${NINJAFLAGS:--j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0) -v}"
+	export NINJA_PATH=${BROOT}/usr/bin/ninja
+	export NINJAFLAGS=${NINJAFLAGS:--j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0) -v}
 
 	local mycmakeargs=(
 		#-DQT_FEATURE_accessibility=off

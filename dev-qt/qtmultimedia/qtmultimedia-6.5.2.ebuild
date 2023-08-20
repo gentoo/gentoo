@@ -12,18 +12,17 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="alsa +ffmpeg gstreamer pulseaudio v4l vaapi"
-
 REQUIRED_USE="
 	|| ( ffmpeg gstreamer )
 	vaapi? ( ffmpeg )
 "
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*[gui,network,widgets]
-	=dev-qt/qtdeclarative-${PV}*
-	=dev-qt/qtquick3d-${PV}*
-	=dev-qt/qtshadertools-${PV}*
-	=dev-qt/qtsvg-${PV}*
+	=dev-qt/qtbase-${PV}*:6[gui,network,widgets]
+	=dev-qt/qtdeclarative-${PV}*:6
+	=dev-qt/qtquick3d-${PV}*:6
+	=dev-qt/qtshadertools-${PV}*:6
+	=dev-qt/qtsvg-${PV}*:6
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? (
 		media-libs/libva:=
@@ -34,19 +33,20 @@ RDEPEND="
 	)
 	gstreamer? (
 		dev-libs/glib:2
-		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-bad:1.0
 		media-libs/gst-plugins-base:1.0
+		media-libs/gstreamer:1.0
 		media-libs/libglvnd
 	)
 	pulseaudio? ( media-libs/libpulse[glib] )
 	vaapi? (
-		=dev-qt/qtbase-${PV}*[opengl]
+		=dev-qt/qtbase-${PV}*:6[opengl]
 		media-libs/libglvnd
 		media-libs/libva:=
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	gstreamer? ( x11-base/xorg-proto )
 	v4l? ( sys-kernel/linux-headers )
 "
@@ -56,8 +56,8 @@ src_configure() {
 		$(qt_feature alsa)
 		$(qt_feature ffmpeg)
 		$(qt_feature gstreamer)
-		$(qt_feature v4l linux_v4l)
 		$(qt_feature pulseaudio)
+		$(qt_feature v4l linux_v4l)
 		$(qt_feature vaapi)
 	)
 
