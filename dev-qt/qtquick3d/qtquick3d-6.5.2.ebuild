@@ -23,6 +23,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+CMAKE_SKIP_TESTS=(
+	# collada support is disabled in system media-libs/assimp (bug #891787)
+	tst_qquick3dassetimport
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DQT_FEATURE_system_assimp=ON
