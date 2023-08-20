@@ -43,7 +43,7 @@ fi
 
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-3+"
 # This is a critical package; if SONAME changes, bump subslot but also add
 # preserve-libs.eclass usage to pkg_*inst! See e.g. the readline ebuild.
 SLOT="0/6" # libmpfr.so version
