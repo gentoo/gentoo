@@ -174,11 +174,6 @@ dev-lang/ruby xemacs
 # dependencies not keyworded/tested
 kde-plasma/plasma-meta plymouth
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# Currently requires dev-lang/spidermonkey:68, which explicitly
-# does not support riscv. Hopefully temporary, see Bug #807772.
-net-libs/libproxy spidermonkey
-
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
 # These USE flags depend on java, not (sustainably) supported yet
