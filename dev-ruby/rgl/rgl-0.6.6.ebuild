@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+DEPEND+=" test? ( media-gfx/graphviz )"
+
 ruby_add_rdepend "
 	dev-ruby/pairing_heap:0
 	>=dev-ruby/rexml-3.2.4:3
