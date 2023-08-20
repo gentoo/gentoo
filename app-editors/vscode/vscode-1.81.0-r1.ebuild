@@ -37,7 +37,6 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm ~arm64"
-IUSE="kerberos"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
@@ -65,10 +64,23 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libxshmfence
 	x11-libs/pango
-	kerberos? ( app-crypt/mit-krb5 )
 "
 
-QA_PREBUILT="*"
+QA_PREBUILT="
+	/opt/vscode/bin/code-tunnel
+	/opt/vscode/chrome_crashpad_handler
+	/opt/vscode/chrome-sandbox
+	/opt/vscode/code
+	/opt/vscode/libEGL.so
+	/opt/vscode/libffmpeg.so
+	/opt/vscode/libGLESv2.so
+	/opt/vscode/libvk_swiftshader.so
+	/opt/vscode/libvulkan.so*
+	/opt/vscode/resources/app/extensions/*
+	/opt/vscode/resources/app/node_modules.asar.unpacked/*
+	/opt/vscode/swiftshader/libEGL.so
+	/opt/vscode/swiftshader/libGLESv2.so
+"
 
 src_install() {
 	if use amd64; then
@@ -87,10 +99,6 @@ src_install() {
 	# Disable update server
 	sed -e "/updateUrl/d" -i ./resources/app/product.json || die
 
-	if ! use kerberos; then
-		rm -r ./resources/app/node_modules.asar.unpacked/kerberos || die
-	fi
-
 	# Install
 	pax-mark m code
 	mkdir -p "${ED}/opt/${PN}" || die
@@ -99,7 +107,6 @@ src_install() {
 
 	dosym -r "/opt/${PN}/bin/code" "usr/bin/vscode"
 	dosym -r "/opt/${PN}/bin/code" "usr/bin/code"
-	dosym -r "/opt/${PN}/bin/code-tunnel" "usr/bin/code-tunnel"
 	domenu "${FILESDIR}/vscode.desktop"
 	domenu "${FILESDIR}/vscode-url-handler.desktop"
 	domenu "${FILESDIR}/vscode-wayland.desktop"
