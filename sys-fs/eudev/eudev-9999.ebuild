@@ -42,6 +42,21 @@ RDEPEND="
 	acct-group/input
 	acct-group/kvm
 	acct-group/render
+	acct-group/audio
+	acct-group/cdrom
+	acct-group/dialout
+	acct-group/disk
+	acct-group/floppy
+	acct-group/input
+	acct-group/kmem
+	acct-group/kvm
+	acct-group/lp
+	acct-group/render
+	acct-group/sgx
+	acct-group/tape
+	acct-group/tty
+	acct-group/usb
+	acct-group/video
 	!sys-apps/systemd-utils[udev]
 	!sys-fs/udev
 	!sys-apps/systemd
