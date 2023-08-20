@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-08-20)
+# Broken for a long time.  Barely any activity upstream, does not
+# manage to follow dev-python/numpy releases.  It was only an optional
+# test dep for one package.
+# Removal on 2023-09-19.  Bug #880415.
+dev-python/nptyping
+
 # Sam James <sam@gentoo.org> (2023-08-19)
 # Still broken, unfortunately. See bug #911721.
 =dev-util/pkgconf-2*
