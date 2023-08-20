@@ -20,21 +20,14 @@ _QT6_BUILD_ECLASS=1
 [[ ${CATEGORY} != dev-qt ]] &&
 	die "${ECLASS} is only to be used for building Qt6"
 
+inherit cmake
+
 # @ECLASS_VARIABLE: QT6_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to.
 # Used for SRC_URI and EGIT_REPO_URI.
 : "${QT6_MODULE:=${PN}}"
-
-# @ECLASS_VARIABLE: VIRTUALX_REQUIRED
-# @DESCRIPTION:
-# For proper description see virtualx.eclass man page.
-# Here we redefine default value to be manual, if your package needs virtualx
-# for tests you should proceed with setting VIRTUALX_REQUIRED=test.
-: "${VIRTUALX_REQUIRED:=manual}"
-
-inherit cmake virtualx
 
 case ${PV} in
 	6.9999)
