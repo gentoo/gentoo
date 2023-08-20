@@ -25,7 +25,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/rspec:3
 	>=dev-ruby/launchy-2.4.0
 	dev-ruby/selenium-webdriver:4
-	|| ( dev-ruby/sinatra:3 dev-ruby/sinatra:2 )
+	dev-ruby/sinatra:3
 	www-servers/puma
 )"
 
