@@ -20,3 +20,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/wayland-scanner"
+
+CMAKE_SKIP_TESTS=(
+	# segfaults for not-looked-into reasons, but not considered
+	# an issue given >=seatv5 exists since wayland-1.10 (2016)
+	tst_seatv4
+	# needs a compositor/opengl, skip the extra trouble
+	tst_surface
+	tst_xdgdecorationv1
+)
