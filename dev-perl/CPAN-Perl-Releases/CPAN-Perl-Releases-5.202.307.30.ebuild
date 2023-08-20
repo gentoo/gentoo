@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Mapping Perl releases on CPAN to the location of the tarballs"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	virtual/perl-ExtUtils-MakeMaker
