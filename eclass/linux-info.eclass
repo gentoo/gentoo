@@ -712,6 +712,7 @@ linux-info_get_any_version() {
 # @DESCRIPTION:
 # This function verifies that the current kernel sources have been already prepared otherwise it dies.
 check_kernel_built() {
+	[[ ${MERGE_TYPE} == buildonly ]] && return
 	if ! use kernel_linux; then
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
@@ -747,6 +748,7 @@ check_kernel_built() {
 # @DESCRIPTION:
 # This function verifies that the current kernel support modules (it checks CONFIG_MODULES=y) otherwise it dies.
 check_modules_supported() {
+	[[ ${MERGE_TYPE} == buildonly ]] && return
 	if ! use kernel_linux; then
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
@@ -767,6 +769,7 @@ check_modules_supported() {
 # It checks the kernel config options specified by CONFIG_CHECK. It dies only when a required config option (i.e.
 # the prefix ~ is not used) doesn't satisfy the directive. Ignored on non-Linux systems.
 check_extra_config() {
+	[[ ${MERGE_TYPE} == buildonly ]] && return
 	use kernel_linux || return
 
 	local config negate die error reworkmodulenames
@@ -917,6 +920,7 @@ check_extra_config() {
 # @DESCRIPTION:
 # Function to make sure a ZLIB_INFLATE configuration has the required symbols.
 check_zlibinflate() {
+	[[ ${MERGE_TYPE} == buildonly ]] && return
 	if ! use kernel_linux; then
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
