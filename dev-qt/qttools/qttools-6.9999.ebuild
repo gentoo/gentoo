@@ -13,23 +13,23 @@ fi
 
 IUSE="
 	assistant designer distancefieldgenerator +linguist pixeltool
-	qattributionsscanner qdbus qdoc qdiag qplugininfo
+	qattributionsscanner qdbus qdiag qdoc qplugininfo
 "
 
-DEPEND="
-	=dev-qt/qtbase-${PV}*[network]
-	assistant? ( =dev-qt/qtbase-${PV}*[sql,widgets] )
-	designer? ( =dev-qt/qtbase-${PV}*[widgets] )
+RDEPEND="
+	=dev-qt/qtbase-${PV}*:6[network]
+	assistant? ( =dev-qt/qtbase-${PV}*:6[sql,widgets] )
+	designer? ( =dev-qt/qtbase-${PV}*:6[widgets] )
 	distancefieldgenerator? (
-		=dev-qt/qtbase-${PV}*[widgets]
-		=dev-qt/qtdeclarative-${PV}*
+		=dev-qt/qtbase-${PV}*:6[widgets]
+		=dev-qt/qtdeclarative-${PV}*:6
 	)
-	pixeltool? ( =dev-qt/qtbase-${PV}*[widgets] )
-	qdbus? ( =dev-qt/qtbase-${PV}*[widgets] )
+	pixeltool? ( =dev-qt/qtbase-${PV}*:6[widgets] )
+	qdbus? ( =dev-qt/qtbase-${PV}*:6[widgets] )
+	qdiag? ( =dev-qt/qtbase-${PV}*:6[opengl,widgets] )
 	qdoc? ( sys-devel/clang:= )
-	qdiag? ( =dev-qt/qtbase-${PV}*[opengl,widgets] )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
@@ -41,8 +41,8 @@ src_configure() {
 		$(qt_feature pixeltool)
 		$(qt_feature qattributionsscanner qtattributionsscanner)
 		$(qt_feature qdbus)
-		$(qt_feature qdoc clang)
 		$(qt_feature qdiag qtdiag)
+		$(qt_feature qdoc clang)
 		$(qt_feature qplugininfo qtplugininfo)
 		-DQT_FEATURE_thread=ON
 	)
@@ -60,7 +60,7 @@ src_install() {
 	use pixeltool && qt6_symlink_binary_to_path pixeltool 6
 	use qdbus && qt6_symlink_binary_to_path qdbus 6
 	use qdbus && qt6_symlink_binary_to_path qdbusviewer 6
-	use qdoc && qt6_symlink_binary_to_path qdoc 6
 	use qdiag && qt6_symlink_binary_to_path qtdiag 6
+	use qdoc && qt6_symlink_binary_to_path qdoc 6
 	use qplugininfo && qt6_symlink_binary_to_path qtplugininfo 6
 }

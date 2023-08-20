@@ -14,14 +14,14 @@ elif [[ ${QT6_BUILD_TYPE} == live ]]; then
 	EGIT_SUBMODULES=()
 fi
 
-DEPEND="
-	=dev-qt/qtbase-${PV}*[concurrent,network,widgets]
-	=dev-qt/qtdeclarative-${PV}*
-	=dev-qt/qtshadertools-${PV}*
-	=dev-qt/qtquicktimeline-${PV}*
+RDEPEND="
+	=dev-qt/qtbase-${PV}*:6[concurrent,network,widgets]
+	=dev-qt/qtdeclarative-${PV}*:6
+	=dev-qt/qtquicktimeline-${PV}*:6
+	=dev-qt/qtshadertools-${PV}*:6
 	media-libs/assimp:=
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
