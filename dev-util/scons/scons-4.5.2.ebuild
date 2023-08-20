@@ -139,6 +139,9 @@ python_test() {
 	# and returns "2" if there are any tests with "no result"
 	# (i.e. in case if some tools are not installed or it's Windows specific tests)
 	[[ ${?} == [02] ]] || die "Tests fail with ${EPYTHON}"
+
+	# sigh
+	rm "${BUILD_DIR}/install/usr/bin/.sconsign" || die
 }
 
 python_install_all() {
