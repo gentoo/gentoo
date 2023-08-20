@@ -5,7 +5,7 @@ EAPI=8
 
 BV=${PV}-1
 BV_AMD64=${BV}-linux-x86_64
-LLVM_MAX_SLOT=15
+LLVM_MAX_SLOT=16
 
 inherit bash-completion-r1 llvm multiprocessing toolchain-funcs
 
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/crystal-lang/crystal/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc debug llvm-libunwind"
 
 # Upstream test suite not reliable
