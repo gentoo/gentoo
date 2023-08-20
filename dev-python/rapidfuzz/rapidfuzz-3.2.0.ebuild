@@ -27,7 +27,7 @@ DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/rapidfuzz_capi[${PYTHON_USEDEP}]
+	dev-python/rapidfuzz-capi[${PYTHON_USEDEP}]
 	>=dev-python/scikit-build-0.16.2[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
