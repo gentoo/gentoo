@@ -51,6 +51,17 @@ DEPEND="
 	v4l? ( sys-kernel/linux-headers )
 "
 
+CMAKE_SKIP_TESTS=(
+	# tries to use real alsa or pulseaudio and fails in sandbox
+	tst_qaudiosink
+	tst_qaudiosource
+	tst_qmediacapturesession
+	tst_qmediaplayerbackend
+	tst_qsoundeffect
+	# may try to use hardware acceleration for encoding
+	tst_qscreencapture_integration
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(qt_feature alsa)
