@@ -388,8 +388,8 @@ meson_src_compile() {
 
 	local mesoncompileargs=(
 		-C "${BUILD_DIR}"
-		--jobs "$(makeopts_jobs "${MAKEOPTS}" 0)"
-		--load-average "$(makeopts_loadavg "${MAKEOPTS}" 0)"
+		--jobs "$(get_makeopts_jobs 0)"
+		--load-average "$(get_makeopts_loadavg 0)"
 	)
 
 	case ${MESON_VERBOSE} in
