@@ -72,7 +72,7 @@ esac
 # Get the value of NINJAOPTS, inferring them from MAKEOPTS if unset.
 get_NINJAOPTS() {
 	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j$(makeopts_jobs "${MAKEOPTS}" 999) -l$(makeopts_loadavg "${MAKEOPTS}" 0)"
+		NINJAOPTS="-j$(get_makeopts_jobs 999) -l$(get_makeopts_loadavg 0)"
 	fi
 	echo "${NINJAOPTS}"
 }
