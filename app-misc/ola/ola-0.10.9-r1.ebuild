@@ -22,7 +22,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/protobuf:=
+RDEPEND="<dev-libs/protobuf-23:=
 	sys-apps/util-linux
 	sys-libs/ncurses
 	ftdi? ( dev-embedded/libftdi:1 )
