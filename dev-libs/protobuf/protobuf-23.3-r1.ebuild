@@ -30,6 +30,7 @@ DEPEND="
 	test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
+	dev-cpp/abseil-cpp:=[${MULTILIB_USEDEP}]
 	emacs? ( app-editors/emacs:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 "
