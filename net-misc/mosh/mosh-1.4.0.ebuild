@@ -58,7 +58,7 @@ src_configure() {
 	MAKEOPTS+=" V=1"
 
 	# protobuf needs >=c++14
-	append-flags -std=gnu++14
+	append-cxxflags -std=gnu++14
 
 	local myeconfargs=(
 		# We install it ourselves in src_install
