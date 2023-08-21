@@ -64,6 +64,8 @@ BDEPEND="
 	aprs? ( dev-lang/perl )
 "
 
+PATCHES=( "${FILESDIR}/${P}-cxx17-for-protobuf-23.patch" ) # bug 909081, in 23.08.0
+
 src_prepare() {
 	ecm_src_prepare
 
