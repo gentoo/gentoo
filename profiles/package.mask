@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-08-21)
+# Broken install.
+=net-libs/grpc-1.52.1-r1
+
 # Marek Szuba <marecki@gentoo.org> (2023-08-21)
 # Does not work with recent versions of Sphinx. In the process of being
 # phased out of the Ansible ecosystem in favour of an mkdocs-based
