@@ -12,7 +12,6 @@ DESCRIPTION="Serves ProtonMail to IMAP/SMTP clients"
 HOMEPAGE="https://proton.me/mail/bridge https://github.com/ProtonMail/proton-bridge/"
 SRC_URI="https://github.com/ProtonMail/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~marecki/dists/${CATEGORY}/${PN}/${P}-deps.tar.xz"
-# FIXME: default telemetry to off!
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-3+ ISC LGPL-3+ MIT MPL-2.0 Unlicense"
 SLOT="0"
