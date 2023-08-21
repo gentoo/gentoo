@@ -26,6 +26,7 @@ BDEPEND="doc? ( app-doc/doxygen )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2-fix-lld-tests.patch
 	"${FILESDIR}"/${PN}-0.2-libdir-pkgconfig.patch
+	"${FILESDIR}"/${PN}-0.3-cmake-gnuinstalldirs.patch
 )
 
 src_configure() {
