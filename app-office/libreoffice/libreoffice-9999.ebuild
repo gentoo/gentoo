@@ -48,8 +48,10 @@ ADDONS_SRC=(
 	"${ADDONS_URI}/dragonbox-1.1.3.tar.gz"
 	# not packaged in Gentoo, https://www.netlib.org/fp/dtoa.c
 	"${ADDONS_URI}/dtoa-20180411.tgz"
+	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
+	"${ADDONS_URI}/frozen-1.1.1.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m103-b301ff025004c9cd82816c86c547588e6c24b466.tar.xz"
+	"${ADDONS_URI}/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz"
 	"base? (
 		${ADDONS_URI}/commons-logging-1.2-src.tar.gz
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -500,6 +502,7 @@ src_configure() {
 		--with-system-gpgmepp
 		--without-system-abseil
 		--without-system-dragonbox
+		--without-system-frozen
 		--without-system-jfreereport
 		--without-system-libfixmath
 		--without-system-sane
