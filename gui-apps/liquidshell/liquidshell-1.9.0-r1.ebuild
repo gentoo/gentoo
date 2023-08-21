@@ -21,7 +21,7 @@ IUSE=""
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5[jpeg]
+	>=dev-qt/qtgui-${QTMIN}:5[dbus,jpeg]
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
