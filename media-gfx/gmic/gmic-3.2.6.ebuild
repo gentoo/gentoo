@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.0-grep38.patch
 	"${FILESDIR}"/${PN}-3.2.4-makefile_automagic.patch
 	"${FILESDIR}"/${PN}-3.2.5-relative_rpath.patch
+	"${FILESDIR}"/${PN}-3.2.6-makefile_target_deps.patch
 )
 
 pkg_pretend() {
