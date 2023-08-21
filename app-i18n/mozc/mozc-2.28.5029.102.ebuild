@@ -118,6 +118,7 @@ SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
 	"${WORKDIR}"/mozc-2.28.5029.102-patches
+	"${FILESDIR}"/mozc-2.28.5029.102-abseil.patch
 )
 
 python_check_deps() {
