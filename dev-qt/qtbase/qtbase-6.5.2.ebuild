@@ -179,6 +179,7 @@ src_configure() {
 		$(qt_feature freetds sql_tds)
 		$(qt_feature mysql sql_mysql)
 		$(qt_feature oci8 sql_oci)
+		$(usev oci8 -DOracle_ROOT="${ESYSROOT}"/usr/$(get_libdir)/oracle/client)
 		$(qt_feature odbc sql_odbc)
 		$(qt_feature postgres sql_psql)
 		$(qt_feature sqlite sql_sqlite)
