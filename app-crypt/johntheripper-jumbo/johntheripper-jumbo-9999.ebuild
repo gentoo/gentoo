@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic toolchain-funcs pax-utils
 
@@ -22,7 +22,7 @@ else
 	SRC_URI="https://github.com/openwall/john/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/john-${HASH_COMMIT}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 LICENSE="GPL-2"
@@ -48,6 +48,7 @@ RDEPEND="${DEPEND}
 	dev-perl/Digest-SHA3
 	dev-perl/Digest-GOST
 	!app-crypt/johntheripper"
+RESTRICT="test"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -90,22 +91,26 @@ src_compile() {
 	emake LD="$(tc-getCC)" -C src
 }
 
-#src_test() {
-#	pax-mark -mr run/john
+src_test() {
+	pax-mark -mr run/john
 
-	#if use opencl; then
+	# this probably causes the following failure:
+	# Testing: as400-des, AS/400 DES [DES 32/64]... PASS
+	# Error, Invalid signature line trying to link to dynamic format.
+	# Original format=as400-ssha1
+	sed '/.include /d' run/john.conf > run/john-test.conf
+	if use opencl; then
 		# GPU tests fail in portage, so run cpu only tests
-	#	./run/john --device=cpu --test=0 --verbosity=2 || die
-	#else
+		./run/john --config=run/john-test.conf --device=cpu --test=0 --verbosity=2 || die
+	else
 		# Weak tests
-		#./run/john --test=0 --verbosity=2 || die
+		./run/john --config=run/john-test.conf --test=0 --verbosity=2 || die
 		# Strong tests
 		#./run/john --test=1 --verbosity=2 || die
-	#fi
+	fi
 
-#	ewarn "When built systemwide, john can't run tests without reading files in /etc."
-#	ewarn "Don't bother opening a bug for this unless you include a patch to fix it"
-#}
+	rm john-test.conf || die
+}
 
 src_install() {
 	# Executables
