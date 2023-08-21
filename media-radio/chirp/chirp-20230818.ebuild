@@ -39,9 +39,12 @@ PATCHES=(
 
 distutils_enable_tests pytest
 
-# The alias map is an internal developer file not included in release tarballs
+# The alias map is an internal developer file not included in release tarballs.
+# Other disabled tests require Internet access.
 EPYTEST_DESELECT=(
 	tests/unit/test_directory.py::TestAliasMap
+	tests/unit/test_network_sources.py
+	tests/unit/test_repeaterbook.py
 )
 
 python_test() {
