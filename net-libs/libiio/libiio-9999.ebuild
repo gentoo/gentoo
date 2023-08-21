@@ -27,6 +27,7 @@ RDEPEND="python? ( ${PYTHON_DEPS} )
 	aio? ( dev-libs/libaio )
 	zeroconf? ( net-dns/avahi[dbus] )"
 DEPEND="${RDEPEND}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 src_configure() {
 	local mycmakeargs=(
