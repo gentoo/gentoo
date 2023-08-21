@@ -7,7 +7,7 @@ inherit qmake-utils
 
 SRC_URI="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin/-/archive/release_${PV}/OpenRGBSkinPlugin-release_${PV}.tar.bz2"
 S="${WORKDIR}/OpenRGBSkinPlugin-release_${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Plugin for OpenRGB that allows you to customize the look and feel of OpenRGB"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin"
