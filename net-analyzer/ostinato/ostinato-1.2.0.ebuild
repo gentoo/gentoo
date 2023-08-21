@@ -27,6 +27,7 @@ RDEPEND="
 	>=net-libs/libpcap-1.8.1-r2
 "
 DEPEND="${RDEPEND}
+	dev-qt/qtsvg:5
 	dev-qt/qtxml:5"
 
 PATCHES=(
