@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+# py3.12 blocked by protobuf-python
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools python-single-r1
 
@@ -60,6 +61,10 @@ BDEPEND="sys-devel/bison
 			')
 		)
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.10.9-nullptr.patch
+)
 
 src_prepare() {
 	default
