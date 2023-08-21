@@ -5,6 +5,10 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">kk7ds/chirp</remote-id>
