@@ -33,9 +33,9 @@ DEPEND="${PYTHON_DEPS}
 		audio? ( dev-python/pyaudio[${PYTHON_USEDEP}] )
 		bladerf? ( net-wireless/bladerf:= )
 		hackrf? ( net-libs/libhackrf:= )
-		limesdr? ( net-wireless/limesuite:= )
+		limesdr? ( net-wireless/limesuite )
 		plutosdr? ( net-libs/libiio:= )
-		rtlsdr? ( net-wireless/rtl-sdr:= )
+		rtlsdr? ( net-wireless/rtl-sdr )
 		sdrplay? ( <net-wireless/sdrplay-3.0.0:= )
 		uhd?    ( net-wireless/uhd:= )"
 RDEPEND="${DEPEND}
@@ -45,6 +45,8 @@ RDEPEND="${DEPEND}
 distutils_enable_tests pytest
 
 python_configure_all() {
+	# Using sed in the live ebuild to avoid patch failure
+	sed -i '/__NUMPY_SETUP__/d' setup.py || die
 	DISTUTILS_ARGS=(
 			$(use_with airspy)
 			$(use_with bladerf)
