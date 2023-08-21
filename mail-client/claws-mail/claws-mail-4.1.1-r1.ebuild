@@ -19,7 +19,6 @@ else
 fi
 
 SLOT="0"
-QA_PKGCONFIG_VERSION="${PV}.0"
 LICENSE="GPL-3"
 
 IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
