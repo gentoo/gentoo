@@ -91,6 +91,7 @@ RDEPEND="
 
 BDEPEND="
 	${RDEPEND}
+	dev-python/pybind11[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-scm-7[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
