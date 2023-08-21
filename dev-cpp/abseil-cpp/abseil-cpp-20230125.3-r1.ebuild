@@ -12,7 +12,7 @@ HOMEPAGE="https://abseil.io/"
 SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0/${PV%%.*}"
+SLOT="0/${PV%%.*}.0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 
@@ -51,7 +51,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_CXX_STANDARD=17
+		# We use -std=c++14 here so that abseil-cpp's string_view is used
+		# See the discussion in https://github.com/gentoo/gentoo/pull/32281.
+		-DCMAKE_CXX_STANDARD=14
 		-DABSL_ENABLE_INSTALL=TRUE
 		-DABSL_USE_EXTERNAL_GOOGLETEST=ON
 		-DABSL_PROPAGATE_CXX_STD=TRUE
