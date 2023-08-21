@@ -43,6 +43,10 @@ RESTRICT="test"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.57.0-fix-cmake.patch
+)
+
 soversion_check() {
 	local core_sover cpp_sover
 	# extract quoted number. line we check looks like this: 'set(gRPC_CPP_SOVERSION    "1.37")'
