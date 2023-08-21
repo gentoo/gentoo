@@ -33,9 +33,9 @@ DEPEND="${PYTHON_DEPS}
 		audio? ( dev-python/pyaudio[${PYTHON_USEDEP}] )
 		bladerf? ( net-wireless/bladerf:= )
 		hackrf? ( net-libs/libhackrf:= )
-		limesdr? ( net-wireless/limesuite:= )
+		limesdr? ( net-wireless/limesuite )
 		plutosdr? ( net-libs/libiio:= )
-		rtlsdr? ( net-wireless/rtl-sdr:= )
+		rtlsdr? ( net-wireless/rtl-sdr )
 		sdrplay? ( <net-wireless/sdrplay-3.0.0:= )
 		uhd?    ( net-wireless/uhd:= )"
 RDEPEND="${DEPEND}
@@ -43,6 +43,8 @@ RDEPEND="${DEPEND}
 		net-wireless/gr-osmosdr"
 
 distutils_enable_tests pytest
+
+PATCHES=( "${FILESDIR}/${P}-no-numpy-setup.patch" )
 
 python_configure_all() {
 	DISTUTILS_ARGS=(
