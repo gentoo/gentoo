@@ -22,11 +22,12 @@ HPN_PATCHES=(
 HPN_GLUE_PATCH="openssh-9.3_p2-hpn-${HPN_VER}-glue.patch"
 HPN_PATCH_DIR="HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}"
 
-X509_VER="14.2"
+X509_VER="14.2.1"
 X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 X509_PATCH="${X509_PATCH/p2/p1}"
 X509_GLUE_PATCH="openssh-${PV}-X509-glue-${X509_VER}.patch"
-X509_HPN_GLUE_PATCH="${MY_P}-hpn-${HPN_VER}-X509-${X509_VER}-glue.patch"
+#X509_HPN_GLUE_PATCH="${MY_P}-hpn-${HPN_VER}-X509-${X509_VER}-glue.patch"
+X509_HPN_GLUE_PATCH="${MY_P}-hpn-${HPN_VER}-X509-${X509_VER%.1}-glue.patch"
 
 DESCRIPTION="Port of OpenBSD's free SSH release with HPN/X509 patches"
 HOMEPAGE="https://www.openssh.com/"
@@ -118,6 +119,7 @@ PATCHES=(
 	"${FILESDIR}/openssh-8.0_p1-fix-putty-tests.patch"
 	"${FILESDIR}/openssh-9.3_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
 	"${FILESDIR}/openssh-8.9_p1-allow-ppoll_time64.patch" #834019
+	"${FILESDIR}/openssh-9.3_p2-zlib-1.3.patch" #912767
 )
 
 pkg_pretend() {
