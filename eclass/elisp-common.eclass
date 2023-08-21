@@ -590,7 +590,13 @@ elisp-modules-install() {
 
 elisp-site-file-install() {
 	local sf="${1##*/}" my_pn="${2:-${PN}}" modules ret
-	local header=";;; ${PN} site-lisp configuration"
+	local add_header="1 {
+		# Find first non-empty line
+		:x; /^\$/ { n; bx; }
+		# Insert a header, unless we already look at one
+		/^;.*${PN}/I! s/^/;;; ${PN} site-lisp configuration\n\n/
+		1 s/^/\n/
+	}"
 
 	[[ ${sf} == [0-9][0-9]*-gentoo*.el ]] \
 		|| ewarn "elisp-site-file-install: bad name of site-init file"
@@ -599,7 +605,7 @@ elisp-site-file-install() {
 	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 == "${sf}" ]] || cp "$1" "${sf}"
 	modules=${EMACSMODULES//@libdir@/$(get_libdir)}
-	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
+	sed -i -e "${add_header}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g" \
 		-e "s:@EMACSMODULES@:${EPREFIX}${modules}/${my_pn}:g;\$q" "${sf}"
