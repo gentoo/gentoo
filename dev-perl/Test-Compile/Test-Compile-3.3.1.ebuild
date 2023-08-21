@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Check whether Perl files compile correctly"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ppc sparc x86"
+KEYWORDS="amd64 ~ia64 ppc sparc x86"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.680.0
