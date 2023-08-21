@@ -25,10 +25,13 @@ SLOT="0"
 
 # Need newer Portage for XML fix, bug #857537
 DEPEND="
-	>=sys-apps/portage-3.0.32[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}
+	>=sys-apps/portage-3.0.52[${PYTHON_USEDEP}]
+"
+RDEPEND="
+	${DEPEND}
 	app-alternatives/awk
-	sys-apps/gentoo-functions"
+	sys-apps/gentoo-functions
+"
 
 distutils_enable_tests setup.py
 
