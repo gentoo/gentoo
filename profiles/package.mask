@@ -324,6 +324,7 @@ acct-group/spi
 
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
+>=app-crypt/libsecret-0.21
 >=app-editors/gnome-text-editor-45_alpha
 >=app-misc/gnote-45_alpha
 >=app-misc/tracker-3.6_alpha
