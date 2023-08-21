@@ -50,7 +50,7 @@ src_prepare() {
 
 src_configure() {
 	# protobuf needs >=c++14
-	append-flags -std=gnu++14
+	append-cxxflags -std=gnu++14
 
 	econf \
 		--disable-completion \
