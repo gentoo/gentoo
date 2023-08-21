@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2023-08-21)
+# Does not work with recent versions of Sphinx. In the process of being
+# phased out of the Ansible ecosystem in favour of an mkdocs-based
+# approach. No revdeps.
+# Removal on 2023-09-21. Bug #912743.
+dev-python/sphinx_ansible_theme
+
 # Michał Górny <mgorny@gentoo.org> (2023-08-20)
 # Broken for a long time.  Barely any activity upstream, does not
 # manage to follow dev-python/numpy releases.  It was only an optional
