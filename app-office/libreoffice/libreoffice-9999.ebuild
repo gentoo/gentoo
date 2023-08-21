@@ -124,7 +124,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
 	app-text/mythes
-	dev-cpp/abseil-cpp:=
 	>=dev-cpp/clucene-2.3.3.4-r2
 	>=dev-cpp/libcmis-0.5.2-r2
 	dev-db/unixODBC
@@ -490,7 +489,6 @@ src_configure() {
 		--with-external-tar="${DISTDIR}"
 		--with-lang=""
 		--with-parallelism=$(makeopts_jobs)
-		--with-system-abseil
 		--with-system-openjpeg
 		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
@@ -500,6 +498,7 @@ src_configure() {
 		--with-help="html"
 		--without-helppack-integration
 		--with-system-gpgmepp
+		--without-system-abseil
 		--without-system-dragonbox
 		--without-system-jfreereport
 		--without-system-libfixmath
