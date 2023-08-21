@@ -32,14 +32,17 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_CXX_STANDARD=14 # needed by protobuf
 		-DBLOATY_ENABLE_CMAKETARGETS=OFF
 		-DBUILD_SHARED_LIBS=OFF
 	)
+
 	if [[ ${PV} == 9999 ]]; then
 		mycmakeargs+=(
 			-DBUILD_TESTING=$(usex test)
 			$(usex test -DINSTALL_GTEST=OFF "")
 		)
 	fi
+
 	cmake_src_configure
 }

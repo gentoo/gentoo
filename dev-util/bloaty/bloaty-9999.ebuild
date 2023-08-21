@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 	RESTRICT="!test? ( test )"
 else
 	SRC_URI="https://github.com/google/${PN}/releases/download/v${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 BDEPEND="
@@ -32,12 +32,17 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_CXX_STANDARD=14 # needed by protobuf
 		-DBLOATY_ENABLE_CMAKETARGETS=OFF
+		-DBUILD_SHARED_LIBS=OFF
 	)
+
 	if [[ ${PV} == 9999 ]]; then
 		mycmakeargs+=(
 			-DBUILD_TESTING=$(usex test)
+			$(usex test -DINSTALL_GTEST=OFF "")
 		)
 	fi
+
 	cmake_src_configure
 }
