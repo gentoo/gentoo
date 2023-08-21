@@ -41,6 +41,10 @@ REQUIRED_USE+="
 	gui? ( || ( X eglfs ) || ( X libinput ) )
 	libinput? ( udev )
 	sql? ( || ( freetds mysql oci8 odbc postgres sqlite ) )
+	test? (
+		gui jpeg icu
+		sql? ( sqlite )
+	)
 	vnc? ( gui )
 "
 
@@ -110,7 +114,18 @@ PDEPEND="wayland? ( =dev-qt/qtwayland-${PV}*:6 )" #864509
 
 PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2023-38197.patch
+	"${FILESDIR}"/${P}-tests-gcc13.patch
 )
+
+src_prepare() {
+	qt6-build_src_prepare
+
+	if use test; then
+		# test itself has -Werror=strict-aliasing issues, drop for simplicity
+		sed -e '/add_subdirectory(qsharedpointer)/d' \
+			-i tests/auto/corelib/tools/CMakeLists.txt || die
+	fi
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -174,6 +189,7 @@ src_configure() {
 		$(qt_feature sctp)
 		$(qt_feature ssl openssl)
 		$(qt_feature vnc)
+		$(usev test -DQT_SKIP_DOCKER_COMPOSE=ON)
 	)
 	use sql && mycmakeargs+=(
 		$(qt_feature freetds sql_tds)
@@ -189,8 +205,65 @@ src_configure() {
 	qt6-build_src_configure
 }
 
+src_test() {
+	local -x TZ=UTC
+	local -x LC_TIME=C
+
+	local CMAKE_SKIP_TESTS=(
+		# broken with out-of-source + if qtbase is not already installed
+		tst_moc
+		tst_qmake
+		# needs x11/opengl, we *could* run these but tend to be flaky
+		# when opengl rendering is involved (even if software-only)
+		tst_qopengl{,config,widget,window}
+		tst_qgraphicsview
+		tst_qx11info
+		# fails with network sandbox
+		tst_qdnslookup
+		# typical to lack SCTP support on non-generic kernels
+		tst_qsctpsocket
+		# these can be flaky depending on the environment/toolchain
+		tst_qlogging # backtrace log test can easily vary
+		tst_qrawfont # can be affected by available fonts
+		tst_qstorageinfo # checks mounted filesystems
+		# flaky due to using different test framework and fails with USE=-gui
+		tst_selftests
+		# known failing when using clang+glibc+stdc++, needs looking into
+		tst_qthread
+		# partially failing on x86 chroots and seemingly(?) harmless (dev-qt
+		# revdeps tests pass), skip globally to avoid keywording flakiness
+		tst_json
+		tst_qcolorspace
+		tst_qdoublevalidator
+		tst_qglobal
+		tst_qglyphrun
+		tst_qvectornd
+		tst_rcc
+		# note: for linux, upstream only really runs+maintains tests for amd64
+		# https://doc.qt.io/qt-6/supported-platforms.html
+	)
+
+	qt6-build_src_test
+}
+
 src_install() {
 	qt6-build_src_install
 
 	qt6_symlink_binary_to_path qmake 6 #863395
+
+	if use test; then
+		local delete_bins=( # need a better way to handle this
+			clientserver copier crashingServer desktopsettingsaware_helper
+			echo fileWriterProcess modal_helper nospace 'one space'
+			paster qcommandlineparser_test_helper qfileopeneventexternal
+			socketprocess syslocaleapp tst_qhashseed_helper 'two space s'
+			write-read-write
+		)
+		local delete=( # sigh
+			"${D}${QT6_BINDIR}"/test*
+			"${delete_bins[@]/#/${D}${QT6_BINDIR}/}"
+		)
+		# using -f given not tracking which tests may be skipped or not
+		rm -rf -- "${delete[@]}" || die
+	fi
 }
