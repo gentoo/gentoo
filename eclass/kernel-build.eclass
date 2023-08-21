@@ -101,6 +101,9 @@ IUSE="+strip"
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
 	REQUIRED_USE="secureboot? ( modules-sign )"
+	BDEPEND+="
+		modules-sign? ( dev-libs/openssl )
+	"
 fi
 
 # @FUNCTION: kernel-build_pkg_setup
