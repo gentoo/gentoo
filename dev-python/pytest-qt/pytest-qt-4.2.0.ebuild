@@ -5,8 +5,9 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{9..11} )
-PYSIDE2_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..12} )
+PYSIDE2_COMPAT=( python3_{10..11} )
+PYSIDE6_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 virtualx pypi
 
@@ -26,9 +27,17 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/PyQt5[gui,testlib,widgets,${PYTHON_USEDEP}]
+		amd64? (
+			dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
+		)
 		$(python_gen_cond_dep '
 			dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]
 		' "${PYSIDE2_COMPAT[@]}")
+		amd64? (
+			$(python_gen_cond_dep '
+				dev-python/pyside6[gui,testlib,widgets,${PYTHON_USEDEP}]
+			' "${PYSIDE6_COMPAT[@]}")
+		)
 	)
 "
 
@@ -57,9 +66,17 @@ python_test() {
 
 	einfo "Testing with PyQt5"
 	PYTEST_QT_API="pyqt5" epytest || die
-	# Pyside2 is not compatible with python3.11
+	if use amd64; then
+		einfo "Testing with PyQt6"
+		PYTEST_QT_API="pyqt6" epytest || die
+	fi
+	# Pyside{2,6} is not compatible with python3.12
 	if has "${EPYTHON}" "${PYSIDE2_COMPAT[@]/_/.}"; then
 		einfo "Testing with PySide2"
 		PYTEST_QT_API="pyside2" epytest || die
+	fi
+	if use amd64 && has "${EPYTHON}" "${PYSIDE6_COMPAT[@]/_/.}"; then
+		einfo "Testing with PySide6"
+		PYTEST_QT_API="pyside6" epytest || die
 	fi
 }
