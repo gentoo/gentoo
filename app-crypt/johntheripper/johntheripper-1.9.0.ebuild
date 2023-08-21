@@ -16,7 +16,7 @@ SRC_URI="https://www.openwall.com/john/k/${MY_P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-CPU_FLAGS="cpu_flags_x86_mmx cpu_flags_x86_sse2 cpu_flags_x86_avx cpu_flags_x86_xop"
+CPU_FLAGS="cpu_flags_x86_mmx cpu_flags_x86_sse2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_x86_xop"
 IUSE="custom-cflags openmp ${CPU_FLAGS}"
 
 DEPEND="virtual/libcrypt:="
@@ -29,7 +29,11 @@ get_target() {
 	if use alpha; then
 		echo "linux-alpha"
 	elif use amd64; then
-		if use cpu_flags_x86_xop; then
+		if use cpu_flags_x86_avx512f; then
+			echo "linux-x86-64-avx512"
+		elif use cpu_flags_x86_avx2; then
+			echo "linux-x86-64-avx2"
+		elif use cpu_flags_x86_xop; then
 			echo "linux-x86-64-xop"
 		elif use cpu_flags_x86_avx; then
 			echo "linux-x86-64-avx"
@@ -43,7 +47,11 @@ get_target() {
 	elif use sparc; then
 		echo "linux-sparc"
 	elif use x86; then
-		if use cpu_flags_x86_xop; then
+		if use cpu_flags_x86_avx512f; then
+			echo "linux-x86-64-avx512"
+		elif use cpu_flags_x86_avx2; then
+			echo "linux-x86-64-avx2"
+		elif use cpu_flags_x86_xop; then
 			echo "linux-x86-xop"
 		elif use cpu_flags_x86_avx; then
 			echo "linux-x86-avx"
