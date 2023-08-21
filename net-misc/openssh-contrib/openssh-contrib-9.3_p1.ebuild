@@ -125,6 +125,7 @@ PATCHES=(
 	"${FILESDIR}/openssh-8.9_p1-allow-ppoll_time64.patch" #834019
 	"${FILESDIR}/openssh-8.9_p1-gss-use-HOST_NAME_MAX.patch" #834044
 	"${FILESDIR}/openssh-9.3_p1-openssl-version-compat-check.patch"
+	"${FILESDIR}/openssh-9.3_p2-zlib-1.3.patch" #912767
 )
 
 pkg_pretend() {
