@@ -243,3 +243,31 @@ src_configure() {
 
 	qt6-build_src_configure
 }
+
+src_test() {
+	if [[ ${EUID} == 0 ]]; then
+		# almost every tests fail, so skip entirely
+		ewarn "Skipping tests due to running as root (chromium refuses this configuration)."
+		return
+	fi
+
+	local CMAKE_SKIP_TESTS=(
+		# fails with network sandbox
+		tst_loadsignals
+		tst_qquickwebengineview
+		tst_qwebengineview
+		# certs verfication seems flaky and gives expiration warnings
+		tst_qwebengineclientcertificatestore
+	)
+
+	# prevent using the system's qtwebengine
+	# (use glob to avoid unnecessary complications with arch dir)
+	local resources=( "${BUILD_DIR}/src/core/${CMAKE_BUILD_TYPE}/"* )
+	[[ -d ${resources[0]} ]] || die "invalid resources path: ${resources[0]}"
+	local -x QTWEBENGINEPROCESS_PATH=${BUILD_DIR}${QT6_LIBEXECDIR#"${QT6_PREFIX}"}/QtWebEngineProcess
+	local -x QTWEBENGINE_LOCALES_PATH=${resources[0]}/qtwebengine_locales
+	local -x QTWEBENGINE_RESOURCES_PATH=${resources[0]}
+
+	# random failures in several tests without -j1
+	qt6-build_src_test -j1
+}
