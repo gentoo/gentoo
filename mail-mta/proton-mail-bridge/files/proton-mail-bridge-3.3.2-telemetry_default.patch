@@ -1,0 +1,14 @@
+Such things really should be opt-in rather than opt-out, and doubly so given
+Gentoo does not package the bridge GUI yet.
+
+--- a/internal/vault/types_settings.go
++++ b/internal/vault/types_settings.go
+@@ -96,7 +96,7 @@
+ 		ShowAllMail:       true,
+ 		Autostart:         true,
+ 		AutoUpdate:        true,
+-		TelemetryDisabled: false,
++		TelemetryDisabled: true,
+ 
+ 		LastVersion: "0.0.0",
+ 		FirstStart:  true,
