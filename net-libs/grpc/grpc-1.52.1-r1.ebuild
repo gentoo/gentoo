@@ -3,13 +3,20 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PV="${PV//_pre/-pre}"
+# Check third_party/abseil-cpp's commit for each tag of ${PN}
+# It may correspond to a commit of abseil-cpp - if so, use the tarball for it
+# and not an arbitrary commit.
+ABSEIL_COMMIT="20220623.1"
 
 DESCRIPTION="Modern open source high performance RPC framework"
 HOMEPAGE="https://www.grpc.io"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/abseil/abseil-cpp/archive/refs/tags/${ABSEIL_COMMIT}.tar.gz -> abseil-cpp-${ABSEIL_COMMIT}.tar.gz
+"
 
 LICENSE="Apache-2.0"
 # format is 0/${CORE_SOVERSION//./}.${CPP_SOVERSION//./} , check top level CMakeLists.txt
@@ -19,7 +26,6 @@ IUSE="doc examples test"
 
 # look for submodule versions in third_party dir
 RDEPEND="
-	=dev-cpp/abseil-cpp-20220623.1*:=
 	>=dev-libs/re2-0.2021.11.01:=
 	>=dev-libs/openssl-1.1.1:0=[-bindist(-)]
 	>=dev-libs/protobuf-3.18.1:=
@@ -72,7 +78,10 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DgRPC_INSTALL=ON
-		-DgRPC_ABSL_PROVIDER=package
+		-DgRPC_ABSL_PROVIDER=module
+		-DgRPC_INSTALL=OFF
+		-DABSL_ENABLE_INSTALL=OFF
+		-DABSL_ROOT_DIR="${WORKDIR}"/abseil-cpp-${ABSEIL_COMMIT}
 		-DgRPC_BACKWARDS_COMPATIBILITY_MODE=OFF
 		-DgRPC_CARES_PROVIDER=package
 		-DgRPC_INSTALL_CMAKEDIR="$(get_libdir)/cmake/${PN}"
