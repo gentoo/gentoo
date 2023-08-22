@@ -17,7 +17,7 @@ SRC_URI="https://trac.chirp.danplanet.com/${PN}_next/next-${PV}/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+gui"
+IUSE="+gui radioreference"
 
 RDEPEND="$(python_gen_cond_dep '
 	dev-python/pyserial[${PYTHON_USEDEP}]
@@ -27,6 +27,7 @@ RDEPEND="$(python_gen_cond_dep '
 		dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 		dev-python/yattag[${PYTHON_USEDEP}]
 	)
+	radioreference? ( dev-python/suds-community[${PYTHON_USEDEP}] )
 ')"
 BDEPEND="test? ( $(python_gen_cond_dep '
 	dev-python/pytest-xdist[${PYTHON_USEDEP}]
