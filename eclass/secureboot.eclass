@@ -52,7 +52,7 @@ BDEPEND="secureboot? ( app-crypt/sbsigntools )"
 # @DESCRIPTION:
 # Used with USE=secureboot.  Should be set to the path of the private
 # key in PEM format to use, or a PKCS#11 URI.
-#
+
 # @ECLASS_VARIABLE: SECUREBOOT_SIGN_CERT
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -75,11 +75,11 @@ _secureboot_die_if_unset() {
 	if [[ -z ${SECUREBOOT_SIGN_KEY} || -z ${SECUREBOOT_SIGN_CERT} ]]; then
 		die "USE=secureboot enabled but SECUREBOOT_SIGN_KEY and/or SECUREBOOT_SIGN_CERT not set."
 	fi
-	if [[ ! ${SECUREBOOT_SIGN_KEY} == pkcs11:* && ! -f ${SECUREBOOT_SIGN_KEY} ]]; then
-		die "SECUREBOOT_SIGN_KEY=${SECUREBOOT_SIGN_KEY} not found"
+	if [[ ! ${SECUREBOOT_SIGN_KEY} == pkcs11:* && ! -r ${SECUREBOOT_SIGN_KEY} ]]; then
+		die "SECUREBOOT_SIGN_KEY=${SECUREBOOT_SIGN_KEY} not found or not readable!"
 	fi
-	if [[ ! -f ${SECUREBOOT_SIGN_CERT} ]];then
-		die "SECUREBOOT_SIGN_CERT=${SECUREBOOT_SIGN_CERT} not found"
+	if [[ ! -r ${SECUREBOOT_SIGN_CERT} ]]; then
+		die "SECUREBOOT_SIGN_CERT=${SECUREBOOT_SIGN_CERT} not found or not readable!"
 	fi
 }
 
