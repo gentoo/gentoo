@@ -37,7 +37,7 @@ RDEPEND="
 	>=media-libs/freetype-2.9.0:2
 	>=dev-libs/libgcrypt-1.7.0:0=
 	>=x11-libs/gtk+-3.22.0:3[aqua?,introspection?,wayland?,X?]
-	gui-libs/gtk:4
+	gui-libs/gtk:4[introspection?]
 	>=media-libs/harfbuzz-1.4.2:=[icu(+)]
 	>=dev-libs/icu-61.2:=
 	media-libs/libjpeg-turbo:0=
