@@ -34,7 +34,7 @@ IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	cdb cjk +ctype curl debug
 	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
-	intl iodbc +jit kerberos ldap ldap-sasl libedit lmdb
+	intl iodbc ipv6 +jit kerberos ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline selinux +session session-mm sharedmem
@@ -333,6 +333,11 @@ src_configure() {
 		$(use_enable threads zts)
 	)
 
+	if is-flagq -flto; then
+		# https://bugs.gentoo.org/866683
+		our_conf+=( --disable-gcc-global-regs )
+	fi
+
 	our_conf+=(
 		$(use_with apparmor fpm-apparmor)
 		$(use_with argon2 password-argon2 "${EPREFIX}/usr")
@@ -355,6 +360,7 @@ src_configure() {
 		$(use_with iconv iconv \
 			$(use elibc_glibc || use elibc_musl || echo "${EPREFIX}/usr"))
 		$(use_enable intl)
+		$(use_enable ipv6)
 		$(use_with kerberos)
 		$(use_with xml libxml)
 		$(use_enable unicode mbstring)
