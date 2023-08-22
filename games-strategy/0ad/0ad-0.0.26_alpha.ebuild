@@ -1,4 +1,4 @@
-# Copyright 2014-2022 Gentoo Authors
+# Copyright 2014-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -97,6 +97,8 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.0.24b_alpha-respect-tc.patch
 	"${FILESDIR}"/${PN}-0.0.25b_alpha-fix-setuptools.patch
+	# https://code.wildfiregames.com/D4997
+	"${FILESDIR}"/${P}-add-missing-cstdint-include.patch
 )
 
 pkg_setup() {

@@ -421,11 +421,11 @@ kernel-build_merge_configs() {
 				cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" > "${T}/kernel_key.pem" || die
 				MODULES_SIGN_KEY="${T}/kernel_key.pem"
 			fi
-			if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -e ${MODULES_SIGN_KEY} ]]; then
+			if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
 				echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
 					>> "${WORKDIR}/modules-sign.config"
 			elif [[ -n ${MODULES_SIGN_KEY} ]]; then
-				die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found!"
+				die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
 			fi
 			merge_configs+=( "${WORKDIR}/modules-sign.config" )
 		fi
