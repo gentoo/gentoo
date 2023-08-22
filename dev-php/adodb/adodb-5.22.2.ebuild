@@ -31,8 +31,8 @@ src_install() {
 	DOCS+=" session/*.txt session/*.xml pear/auth_adodb_example.php"
 	DOCS+=" pear/readme.Auth.txt"
 
-	dodoc $DOCS
-	rm -f $DOCS || die "failed to remove docs before installation"
+	dodoc ${DOCS}
+	rm -f ${DOCS} || die "failed to remove docs before installation"
 
 	insinto "/usr/share/php/${PN}"
 	doins *.php
