@@ -343,23 +343,6 @@ pkg_postinst() {
 			ewarn "You should reboot now to get /run mounted with tmpfs!"
 	fi
 
-	for x in ${REPLACING_VERSIONS}; do
-		if ver_test 2.4 -lt ${x}; then
-			ewarn "After updating ${EROOT}/etc/profile, please run"
-			ewarn "env-update && . /etc/profile"
-		fi
-
-		if ver_test 2.6 -lt ${x}; then
-			ewarn "Please run env-update then log out and back in to"
-			ewarn "update your path."
-		fi
-		# clean up after 2.5 typos
-		# https://bugs.gentoo.org/show_bug.cgi?id=656380
-		if [[ ${x} == 2.5 ]]; then
-			rm -fr "${EROOT}/{,usr" || die
-		fi
-	done
-
 	if [[ -e "${EROOT}"/etc/env.d/00basic ]]; then
 		ewarn "${EROOT}/etc/env.d/00basic is now ${EROOT}/etc/env.d/50baselayout"
 		ewarn "Please migrate your changes."
