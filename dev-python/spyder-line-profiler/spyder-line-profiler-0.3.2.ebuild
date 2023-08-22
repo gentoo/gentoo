@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	dev-python/line_profiler[${PYTHON_USEDEP}]
+	dev-python/line-profiler[${PYTHON_USEDEP}]
 	dev-python/qtawesome[${PYTHON_USEDEP}]
 	>=dev-python/spyder-5.2.0[${PYTHON_USEDEP}]
 	<dev-python/spyder-6.0.0[${PYTHON_USEDEP}]
