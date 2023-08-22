@@ -16,3 +16,8 @@ RDEPEND="
 	=dev-qt/qtdeclarative-${PV}*:6
 "
 DEPEND="${RDEPEND}"
+
+src_test() {
+	# tst_qxmlinputsource sometimes hang without -j1
+	qt6-build_src_test -j1
+}
