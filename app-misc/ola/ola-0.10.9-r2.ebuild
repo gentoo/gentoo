@@ -22,7 +22,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="<dev-libs/protobuf-23:=
+RDEPEND="dev-libs/protobuf:=
 	sys-apps/util-linux
 	sys-libs/ncurses
 	ftdi? ( dev-embedded/libftdi:1 )
@@ -64,6 +64,7 @@ BDEPEND="sys-devel/bison
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.9-nullptr.patch
+	"${FILESDIR}"/${PN}-0.10.9-protobuf_versioning.patch
 )
 
 src_prepare() {
