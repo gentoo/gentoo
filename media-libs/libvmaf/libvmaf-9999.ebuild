@@ -31,7 +31,11 @@ BDEPEND="
 
 RDEPEND="${BDEPEND}"
 
-S="${WORKDIR}/vmaf-${PV}"
+if [[ ${PV} == "9999" ]]; then
+	S="${WORKDIR}/libvmaf-${PV}"
+else
+	S="${WORKDIR}/vmaf-${PV}"
+fi
 
 src_prepare() {
 	default
