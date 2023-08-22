@@ -50,13 +50,6 @@ distutils_enable_sphinx docs \
 distutils_enable_tests pytest
 
 python_test() {
-	local EPYTEST_DESELECT=()
-	if [[ ${EPYTHON} == python3.12 ]]; then
-		EPYTEST_DESELECT+=(
-			tests/test_basic.py::test_max_cookie_size
-		)
-	fi
-
 	epytest -p no:httpbin
 }
 
