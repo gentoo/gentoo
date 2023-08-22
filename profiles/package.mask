@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-08-22)
+# Broken with new net-analyzer/net-snmp, no reverse dependencies in Gentoo,
+# no other distros package this, and upstream have discontinued development.
+# Removal on 2023-09-21.  Bug #912582.
+app-emulation/libvirt-snmp
+
 # Sam James <sam@gentoo.org> (2023-08-21)
 # Broken install.
 =net-libs/grpc-1.52.1-r1
