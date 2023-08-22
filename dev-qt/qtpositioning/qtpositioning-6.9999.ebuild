@@ -17,3 +17,18 @@ RDEPEND="
 	=dev-qt/qtserialport-${PV}*:6
 "
 DEPEND="${RDEPEND}"
+
+src_install() {
+	qt6-build_src_install
+
+	if use test; then
+		local delete=( # sigh
+			"${D}${QT6_LIBDIR}"/cmake/Qt6Positioning/*DummyPlugin*.cmake
+			"${D}${QT6_LIBDIR}"/cmake/Qt6Positioning/*TestPlugin*.cmake
+			"${D}${QT6_PLUGINDIR}"/position/libqtposition_satellitesourcetest.so
+			"${D}${QT6_PLUGINDIR}"/position/libqtposition_testplugin{,2}.so
+		)
+		# using -f given not tracking which tests may be skipped or not
+		rm -f -- "${delete[@]}" || die
+	fi
+}
