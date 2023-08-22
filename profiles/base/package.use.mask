@@ -558,14 +558,6 @@ app-office/abiword ots
 <sys-devel/clang-17 llvm_targets_Xtensa
 <sys-devel/llvm-17 llvm_targets_Xtensa
 
-# Marek Szuba <marecki@gentoo.org> (2020-11-30)
-# 3.0.0+ use currently unpackaged Qt6
-# Older versions: vendored therecipe/qt violates network sandbox + uses external binary
-# Qt libraries; see https://github.com/ProtonMail/proton-bridge/issues/16
-# The qt module itself apparently can be made to build against system Qt5
-# but making it do so while vendored is a non-trivial task.
-mail-mta/proton-mail-bridge gui
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
 net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
