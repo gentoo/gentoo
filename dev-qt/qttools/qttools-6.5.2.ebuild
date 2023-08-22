@@ -16,6 +16,11 @@ IUSE="
 	qattributionsscanner qdbus qdiag qdoc qplugininfo
 "
 
+# behaves very badly when qttools is not already installed, also
+# other more minor issues (clang tests flaky depending on version,
+# and 3rdparty/ tries to FetchContent gtest)
+RESTRICT="test"
+
 RDEPEND="
 	=dev-qt/qtbase-${PV}*:6[network]
 	assistant? ( =dev-qt/qtbase-${PV}*:6[sql,widgets] )
