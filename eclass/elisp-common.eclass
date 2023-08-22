@@ -348,6 +348,39 @@ elisp-make-autoload-file() {
 	eend $? "elisp-make-autoload-file: batch-update-autoloads failed" || die
 }
 
+# @FUNCTION: elisp-org-export-to
+# @USAGE: <export file type> <Org file path>
+# @DESCRIPTION:
+# Use Emacs Org "export-to" functions to convert a given Org file to a picked
+# format.
+#
+# Example:
+# @CODE
+# 	elisp-org-export-to texinfo README.org
+# 	mv README.texi ${PN}.texi || die
+# @CODE
+
+elisp-org-export-to() {
+	local export_format="${1}"
+	local org_file_path="${2}"
+
+	local export_group
+	case ${export_format} in
+		info) export_group=texinfo ;;  # Straight to ".info".
+		markdown) export_group=md ;;
+		pdf) export_group=latex ;;
+		*) export_group=${export_format} ;;
+	esac
+
+	# export_format = texinfo    =>  org-texinfo-export-to-texinfo
+	# export_format = pdf        =>  org-latex-export-to-pdf
+
+	local export_function=org-${export_group}-export-to-${export_format}
+
+	${EMACS} ${EMACSFLAGS} "${org_file_path}" -f "${export_function}" \
+		|| die "Org export to ${export_format} failed"
+}
+
 # @FUNCTION: elisp-test-buttercup
 # @USAGE: [test-subdirectory] [test-runner-opts] ...
 # @DESCRIPTION:
