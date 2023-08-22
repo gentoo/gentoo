@@ -144,7 +144,7 @@ pkg_postinst() {
 	optfeature "sympyprinting" dev-python/sympy
 	optfeature "cythonmagic" dev-python/cython
 	optfeature "%lprun magic command" dev-python/line-profiler
-	optfeature "%mprun magic command" dev-python/memory_profiler
+	optfeature "%mprun magic command" dev-python/memory-profiler
 
 	if use nbconvert; then
 		if ! has_version virtual/pandoc ; then

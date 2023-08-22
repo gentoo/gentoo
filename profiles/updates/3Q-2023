@@ -13,3 +13,4 @@ move dev-python/uri_template dev-python/uri-template
 move dev-python/pykerberos dev-python/kerberos
 move dev-python/rapidfuzz_capi dev-python/rapidfuzz-capi
 move dev-python/line_profiler dev-python/line-profiler
+move dev-python/memory_profiler dev-python/memory-profiler
