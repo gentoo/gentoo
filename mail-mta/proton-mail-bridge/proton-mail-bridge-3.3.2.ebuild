@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module systemd xdg-utils
+inherit cmake go-module systemd xdg-utils
 
 MY_PN="${PN/-mail/}"
 MY_P="${MY_PN}-${PV}"
@@ -22,11 +22,21 @@ IUSE="gui"
 PROPERTIES="test_network"
 RESTRICT="test"
 
-RDEPEND="app-crypt/libsecret"
+RDEPEND="app-crypt/libsecret
+	gui? (
+		>=dev-libs/protobuf-21.12:=
+		dev-libs/sentry-native
+		dev-qt/qtbase:6=[gui,icu,widgets]
+		dev-qt/qtdeclarative:6=[widgets]
+		dev-qt/qtsvg:6=
+		media-libs/mesa
+		net-libs/grpc:=
+	)
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.3.2-telemetry_default.patch
+	"${FILESDIR}"/${PN}-3.3.2-gui_gentoo.patch
 )
 
 S="${WORKDIR}"/${MY_P}
@@ -34,14 +44,39 @@ S="${WORKDIR}"/${MY_P}
 src_prepare() {
 	xdg_environment_reset
 	default
+	if use gui; then
+		local PATCHES=()
+		BUILD_DIR="${WORKDIR}"/gui_build \
+			CMAKE_USE_DIR="${S}"/internal/frontend/bridge-gui/bridge-gui \
+			cmake_src_prepare
+	fi
+}
+
+src_configure() {
+	if use gui; then
+		# TODO:
+		#  - auto-sync version number between the two executables
+		#  - can we leave BRIDGE_TAG unset? Seems it gets displayed in some info box
+		local mycmakeargs=(
+			-DBRIDGE_APP_FULL_NAME="Proton Mail Bridge"
+			-DBRIDGE_APP_VERSION="${PV}+git"
+			-DBRIDGE_REPO_ROOT="${S}"
+			-DBRIDGE_TAG="NOTAG"
+			-DBRIDGE_VENDOR="Gentoo Linux"
+		)
+		BUILD_DIR="${WORKDIR}"/gui_build \
+			CMAKE_USE_DIR="${S}"/internal/frontend/bridge-gui/bridge-gui \
+			cmake_src_configure
+	fi
 }
 
 src_compile() {
+	emake build-nogui
+
 	if use gui; then
-		eerror "Since version 3.0.0, GUI support in ${PN} requires Qt6 and is therefore currently not available"
-		die "USE=gui requires Qt6"
-	else
-		emake build-nogui
+		BUILD_DIR="${WORKDIR}"/gui_build \
+			CMAKE_USE_DIR="${S}"/internal/frontend/bridge-gui/bridge-gui \
+			cmake_src_compile
 	fi
 }
 
@@ -53,31 +88,32 @@ src_install() {
 	exeinto /usr/bin
 	newexe bridge ${PN}
 
+	if use gui; then
+		BUILD_DIR="${WORKDIR}"/gui_build \
+			CMAKE_USE_DIR="${S}"/internal/frontend/bridge-gui/bridge-gui \
+			cmake_src_install
+		mv "${ED}"/usr/bin/bridge-gui "${ED}"/usr/bin/${PN}-gui || die
+	fi
+
 	systemd_newuserunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
 
 	einstalldocs
 }
 
 pkg_postinst() {
-	use gui && xdg_icon_cache_update
-
 	if [[ -n "${REPLACING_VERSIONS}" ]]; then
 		local oldver
 		for oldver in ${REPLACING_VERSIONS}; do
 			if ver_test "${oldver}" -lt 3.2.0; then
-				ewarn "Please note that since version 3.2.0, ${PN} can share usage statistics with upstream."
+				ewarn "Please note that since version 3.2.0, ${PN} by default shares usage statistics with upstream."
 				ewarn "For details, please see"
 				ewarn
 				ewarn "	https://proton.me/support/share-usage-statistics"
 				ewarn
-				ewarn "Gentoo ebuilds change the default value of the 'send telemetry' setting to disabled."
+				ewarn "This behaviour can be disabled through ${PN}-gui, under Advanced Settings."
 				ewarn
 				break
 			fi
 		done
 	fi
-}
-
-pkg_postrm() {
-	use gui && xdg_icon_cache_update
 }
