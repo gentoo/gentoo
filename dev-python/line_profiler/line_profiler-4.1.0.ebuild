@@ -9,6 +9,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
+MY_P=line_profiler-${PV}
 DESCRIPTION="Line-by-line profiler"
 HOMEPAGE="
 	https://github.com/pyutils/line_profiler/
@@ -16,8 +17,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/pyutils/line_profiler/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="BSD"
