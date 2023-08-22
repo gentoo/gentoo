@@ -13,7 +13,7 @@ SRC_URI="https://github.com/laurantino/${PN}/archive/${COMMIT}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="openclipart"
 
 RDEPEND="

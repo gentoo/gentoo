@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2023-08-19)
-# Tests depend on currently unkeyworded dev-libs/pocl.
+# dev-libs/pocl needs some work before it can be keyworded here (Bug #907333).
 dev-python/pyopencl test
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
@@ -30,10 +30,6 @@ sys-libs/compiler-rt-sanitizers -asan -lsan
 # USE=java depend on virtual/jdk:1.8 which is not support on RISC-V
 app-office/libreoffice java libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
 
-# Sam James <sam@gentoo.org> (2023-01-27)
-# media-libs/shaderc not keyworded here
-games-action/supertuxkart vulkan
-
 # Mike Rivnak <rivnakm1@gmail.com> (2022-11-30)
 # luajit is currently not supported on riscv
 app-editors/neovim lua_single_target_luajit
@@ -57,7 +53,7 @@ app-i18n/fcitx-libpinyin dictionary-manager
 sys-devel/gcc -sanitize
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
-# Mask nvml use flag for slurm
+# Requires proprietary binary-only libraries only available for a handful of arches
 sys-cluster/slurm nvml
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-09-07)
@@ -74,7 +70,7 @@ app-admin/rsyslog jemalloc
 dev-util/bcc lua
 
 # Yu Gu <guyu2876@gmail.com> (2022-07-26)
-# Xen does not work on riscv, ceph not tested, bug #859625
+# Xen does not work on riscv, Ceph has dependencies which do not. Bug #859625.
 app-emulation/libvirt xen rbd
 
 # Sam James <sam@gentoo.org> (2022-07-02)
@@ -173,11 +169,6 @@ dev-lang/ruby xemacs
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
 kde-plasma/plasma-meta plymouth
-
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# Currently requires dev-lang/spidermonkey:68, which explicitly
-# does not support riscv. Hopefully temporary, see Bug #807772.
-net-libs/libproxy spidermonkey
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)

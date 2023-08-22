@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml/tuareg/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+ ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 S="${WORKDIR}/tuareg-${PV}"
 ELISP_REMOVE="dot-emacs.el"

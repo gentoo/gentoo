@@ -86,6 +86,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.3_p1-disable-conch-interop-tests.patch"
 	"${FILESDIR}/${PN}-9.3_p1-fix-putty-tests.patch"
 	"${FILESDIR}/${PN}-9.3_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
+	"${FILESDIR}/${PN}-9.3_p2-zlib-1.3.patch" #912766
 )
 
 pkg_pretend() {

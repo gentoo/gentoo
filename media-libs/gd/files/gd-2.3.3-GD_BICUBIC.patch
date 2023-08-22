@@ -1,0 +1,31 @@
+From a5f5698a6832fc1f8179a9257f0b91c9a8ef496b Mon Sep 17 00:00:00 2001
+From: Cyprien Nicolas <cyprien@octopuce.fr>
+Date: Thu, 27 Oct 2022 14:36:33 +0200
+Subject: [PATCH] Fix #847: enable back GD_BICUBIC* interpolation methods
+
+(cherry picked from commit 39abd7238cea2ba8baa4bcac1d6fc01c6cb8afab)
+---
+ src/gd_interpolation.c                               |  5 +++++
+ tests/gdimagesetinterpolationmethod/.gitignore       |  1 +
+ tests/gdimagesetinterpolationmethod/CMakeLists.txt   |  1 +
+ tests/gdimagesetinterpolationmethod/Makemodule.am    |  3 ++-
+ .../gdimagesetinterpolationmethod/github_bug_00847.c | 12 ++++++++++++
+ 5 files changed, 21 insertions(+), 1 deletion(-)
+ create mode 100644 tests/gdimagesetinterpolationmethod/github_bug_00847.c
+
+diff --git a/src/gd_interpolation.c b/src/gd_interpolation.c
+index 1f625dd22..cf77da7c8 100644
+--- a/src/gd_interpolation.c
++++ b/src/gd_interpolation.c
+@@ -2257,6 +2257,11 @@ BGD_DECLARE(int) gdImageSetInterpolationMethod(gdImagePtr im, gdInterpolationMet
+ 		case GD_BESSEL:
+ 			im->interpolation = filter_bessel;
+ 			break;
++		case GD_BICUBIC_FIXED:
++		case GD_BICUBIC:
++			/* no interpolation as gdImageScale calls a dedicated function */
++			im->interpolation = NULL;
++			break;
+ 		case GD_BLACKMAN:
+ 			im->interpolation = filter_blackman;
+ 			break;

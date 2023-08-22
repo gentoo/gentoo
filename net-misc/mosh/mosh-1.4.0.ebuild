@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1
+inherit autotools bash-completion-r1 flag-o-matic
 
 MY_P=${PN}-${PV/_rc/rc}
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
@@ -56,6 +56,9 @@ src_prepare() {
 
 src_configure() {
 	MAKEOPTS+=" V=1"
+
+	# protobuf needs >=c++14
+	append-cxxflags -std=gnu++14
 
 	local myeconfargs=(
 		# We install it ourselves in src_install

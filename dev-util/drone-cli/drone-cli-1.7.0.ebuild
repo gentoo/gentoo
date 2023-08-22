@@ -14,6 +14,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="!<net-analyzer/ostinato-2"
+
 RESTRICT+=" test"
 
 src_compile() {

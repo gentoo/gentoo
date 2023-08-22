@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-08-21)
+# Broken install.
+=net-libs/grpc-1.52.1-r1
+
+# Marek Szuba <marecki@gentoo.org> (2023-08-21)
+# Does not work with recent versions of Sphinx. In the process of being
+# phased out of the Ansible ecosystem in favour of an mkdocs-based
+# approach. No revdeps.
+# Removal on 2023-09-21. Bug #912743.
+dev-python/sphinx_ansible_theme
+
 # Michał Górny <mgorny@gentoo.org> (2023-08-20)
 # Broken for a long time.  Barely any activity upstream, does not
 # manage to follow dev-python/numpy releases.  It was only an optional
@@ -324,6 +335,7 @@ acct-group/spi
 
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
+>=app-crypt/libsecret-0.21
 >=app-editors/gnome-text-editor-45_alpha
 >=app-misc/gnote-45_alpha
 >=app-misc/tracker-3.6_alpha
@@ -454,11 +466,6 @@ dev-python/pyGPG
 # Abandoned, replaced by 'eselect repository' (app-eselect/eselect-repository),
 # tons of open bugs. Removal on 2023-08-17. Bug #761199.
 app-portage/layman
-
-# Sam James <sam@gentoo.org> (2023-05-10)
-# A major reverse depndency (kde-apps/libkexiv2) does not yet build against this
-# so mask for now, see bug #906087 and bug #906090.
-=media-gfx/exiv2-0.28.0
 
 # Sam James <sam@gentoo.org> (2023-05-10)
 # Lots of package breakage as usual for new versions. Masked until most/all
@@ -726,7 +733,9 @@ app-office/texmacs
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-libs/glibc-2.36-r5
-<sys-devel/binutils-2.38
+<sys-libs/binutils-libs-2.40
+<sys-devel/binutils-2.40
+<sys-devel/binutils-hppa64-2.40
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
 # This package has some dangerous quality and security issues, but

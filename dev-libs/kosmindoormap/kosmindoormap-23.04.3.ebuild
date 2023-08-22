@@ -38,6 +38,8 @@ BDEPEND="
 	sys-devel/flex
 "
 
+PATCHES=( "${FILESDIR}"/${P}-protobuf-23-{1,2}.patch ) # bug 909081, in 23.08.0
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_OsmTools=ON # we have no use for it

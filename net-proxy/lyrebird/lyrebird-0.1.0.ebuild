@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/
 
 LICENSE="BSD CC0-1.0 BZIP2 GPL-3+ MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv ~x86"
+KEYWORDS="amd64 arm ~riscv x86"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-obfs4proxy )"

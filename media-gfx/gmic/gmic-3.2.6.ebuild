@@ -11,7 +11,7 @@ SRC_URI="https://gmic.eu/files/source/${PN}_${PV}.tar.gz"
 
 LICENSE="CeCILL-2 GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="cli curl ffmpeg fftw gimp graphicsmagick jpeg opencv openexr openmp png qt5 tiff X"
 
 REQUIRED_USE="
@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.0-grep38.patch
 	"${FILESDIR}"/${PN}-3.2.4-makefile_automagic.patch
 	"${FILESDIR}"/${PN}-3.2.5-relative_rpath.patch
+	"${FILESDIR}"/${PN}-3.2.6-makefile_target_deps.patch
 )
 
 pkg_pretend() {

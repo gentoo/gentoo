@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/emacs-geiser/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="app-emacs/transient"
 BDEPEND="

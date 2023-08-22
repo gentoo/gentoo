@@ -48,8 +48,10 @@ ADDONS_SRC=(
 	"${ADDONS_URI}/dragonbox-1.1.3.tar.gz"
 	# not packaged in Gentoo, https://www.netlib.org/fp/dtoa.c
 	"${ADDONS_URI}/dtoa-20180411.tgz"
+	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
+	"${ADDONS_URI}/frozen-1.1.1.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m103-b301ff025004c9cd82816c86c547588e6c24b466.tar.xz"
+	"${ADDONS_URI}/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz"
 	"base? (
 		${ADDONS_URI}/commons-logging-1.2-src.tar.gz
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -87,7 +89,7 @@ googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test valgrin
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	base? ( firebird java )
+	base? ( java )
 	bluetooth? ( dbus )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
@@ -124,7 +126,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
 	app-text/mythes
-	dev-cpp/abseil-cpp:=
 	>=dev-cpp/clucene-2.3.3.4-r2
 	>=dev-cpp/libcmis-0.5.2-r2
 	dev-db/unixODBC
@@ -490,7 +491,6 @@ src_configure() {
 		--with-external-tar="${DISTDIR}"
 		--with-lang=""
 		--with-parallelism=$(makeopts_jobs)
-		--with-system-abseil
 		--with-system-openjpeg
 		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
@@ -500,7 +500,9 @@ src_configure() {
 		--with-help="html"
 		--without-helppack-integration
 		--with-system-gpgmepp
+		--without-system-abseil
 		--without-system-dragonbox
+		--without-system-frozen
 		--without-system-jfreereport
 		--without-system-libfixmath
 		--without-system-sane

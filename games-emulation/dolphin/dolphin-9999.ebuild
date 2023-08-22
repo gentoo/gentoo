@@ -45,7 +45,7 @@ RDEPEND="
 	dev-libs/pugixml:=
 	media-libs/cubeb:=
 	media-libs/libpng:=
-	media-libs/libsfml
+	media-libs/libsfml:=
 	media-libs/mesa[egl(+)]
 	net-libs/enet:1.3
 	net-libs/mbedtls:=

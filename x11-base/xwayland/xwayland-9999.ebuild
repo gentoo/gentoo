@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	dev-libs/libbsd
 	dev-libs/openssl:=
 	>=dev-libs/wayland-1.21.0
-	>=dev-libs/wayland-protocols-1.28
+	>=dev-libs/wayland-protocols-1.30
 	media-fonts/font-util
 	>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	media-libs/libglvnd[X]
@@ -82,6 +82,7 @@ src_configure() {
 		-Dxace=true
 		-Dxdmcp=true
 		-Dxinerama=true
+		-Dxwayland_ei=false
 		-Dxvfb=true
 		-Dxv=true
 		-Dxwayland-path="${EPREFIX}"/usr/bin

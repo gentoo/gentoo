@@ -3,6 +3,8 @@
 
 EAPI="8"
 
+inherit autotools
+
 DESCRIPTION="Various tables for IBus-Table"
 HOMEPAGE="https://github.com/moebiuscurve/ibus-table-others"
 SRC_URI="https://github.com/moebiuscurve/${PN}/releases/download/${PV}/${P}.tar.gz"
@@ -19,3 +21,10 @@ RDEPEND="app-i18n/ibus-table
 	!app-i18n/ibus-table-tv"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	sed -i '/AM_PATH_PYTHON/d' configure.ac
+
+	default
+	eautoreconf
+}

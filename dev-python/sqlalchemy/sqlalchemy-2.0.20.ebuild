@@ -52,27 +52,23 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# warning tests are unreliable
 		test/base/test_warnings.py
-		# TODO
-		test/orm/test_versioning.py::ServerVersioningTest_sqlite+pysqlite_3_40_1::test_sql_expr_w_mods_bump
-		test/sql/test_resultset.py::CursorResultTest_sqlite+pysqlite_3_41_0::test_pickle_rows_other_process
 	)
 	local sqlite_version=$(sqlite3 --version | cut -d' ' -f1)
-	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
-		test/ext/test_associationproxy.py::ProxyHybridTest::test_msg_fails_on_cls_access
-		test/ext/test_associationproxy.py::DictOfTupleUpdateTest::test_update_multi_elem_varg
-		test/ext/test_associationproxy.py::DictOfTupleUpdateTest::test_update_one_elem_varg
-		test/engine/test_pool.py::QueuePoolTest::test_recycle_pool_no_race
-		test/engine/test_processors.py::PyDateProcessorTest::test_date_invalid_string
-		test/engine/test_processors.py::PyDateProcessorTest::test_datetime_invalid_string
-		test/engine/test_processors.py::PyDateProcessorTest::test_time_invalid_string
-		"test/dialect/test_sqlite.py::TestTypes_sqlite+pysqlite_${sqlite_version//./_}::test_cant_parse_datetime_message"
-		"test/dialect/test_suite.py::ReturningGuardsTest_sqlite+pysqlite_${sqlite_version//./_}"::test_{delete,insert,update}_single
-		test/base/test_utils.py::ImmutableDictTest::test_pep584
-	)
-	[[ ${EPYTHON} == python3.12 ]] && EPYTEST_DESELECT+=(
-		# see https://github.com/sqlalchemy/sqlalchemy/issues/9819
-		test/base/test_result.py::ResultTupleTest::test_slices_arent_in_mappings
-	)
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				test/ext/test_associationproxy.py::ProxyHybridTest::test_msg_fails_on_cls_access
+				test/ext/test_associationproxy.py::DictOfTupleUpdateTest::test_update_multi_elem_varg
+				test/ext/test_associationproxy.py::DictOfTupleUpdateTest::test_update_one_elem_varg
+				test/engine/test_processors.py::PyDateProcessorTest::test_date_invalid_string
+				test/engine/test_processors.py::PyDateProcessorTest::test_datetime_invalid_string
+				test/engine/test_processors.py::PyDateProcessorTest::test_time_invalid_string
+				"test/dialect/test_sqlite.py::TestTypes_sqlite+pysqlite_${sqlite_version//./_}::test_cant_parse_datetime_message"
+				"test/dialect/test_suite.py::ReturningGuardsTest_sqlite+pysqlite_${sqlite_version//./_}"::test_{delete,insert,update}_single
+				test/base/test_utils.py::ImmutableDictTest::test_pep584
+			)
+			;;
+	esac
 	if ! has_version "dev-python/greenlet[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			test/ext/asyncio/test_engine_py3k.py::TextSyncDBAPI::test_sync_driver_execution
