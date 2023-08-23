@@ -12,7 +12,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[network]
+	=dev-qt/qtbase-${PV}*:6[network,ssl]
 	=dev-qt/qtdeclarative-${PV}*:6
 "
 DEPEND="${RDEPEND}"
