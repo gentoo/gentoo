@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson-multilib multilib xdg
+inherit gnome.org gnome2-utils meson-multilib multilib xdg plocale
+
+PLOCALES="ab af ang ar as ast az be be@latin bg bn bn_IN br bs ca ca@valencia crh cs csb cy da de dz el en_CA en_GB en@shaw eo es et eu fa fi fr fur ga gl gu he hi hr hu hy ia id io is it ja ka kk km kn ko ku li lt lv mai mi mk ml mn mr ms my nb nds ne nl nn nso oc or pa pl ps pt pt_BR ro ru si sk sl sq sr sr@ije sr@latin sv ta te tg th tk tr tt ug uk uz uz@cyrillic vi wa xh yi zh_CN zh_HK zh_TW"
 
 DESCRIPTION="Image loading library for GTK+"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
@@ -11,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
 LICENSE="LGPL-2.1+"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="gtk-doc +introspection jpeg test tiff"
+IUSE="gtk-doc +introspection jpeg man test tiff"
 RESTRICT="!test? ( test )"
 
 # TODO: For windows/darwin support: shared-mime-info conditional, native_windows_loaders option review
@@ -26,11 +28,13 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	gtk-doc? ( >=dev-util/gi-docgen-2021.1 )
-	app-text/docbook-xsl-stylesheets
-	app-text/docbook-xml-dtd:4.3
+	man? (
+		app-text/docbook-xsl-stylesheets
+		app-text/docbook-xml-dtd:4.3
+		dev-libs/libxslt
+		dev-python/docutils
+	)
 	dev-libs/glib:2
-	dev-libs/libxslt
-	dev-python/docutils
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
@@ -42,6 +46,7 @@ MULTILIB_CHOST_TOOLS=(
 
 src_prepare() {
 	default
+	plocale_get_locales > po/LINGUAS || die
 	xdg_environment_reset
 }
 
@@ -58,7 +63,7 @@ multilib_src_configure() {
 		-Dgio_sniffing=true
 		$(meson_native_use_bool gtk-doc gtk_doc)
 		$(meson_native_use_feature introspection)
-		$(meson_native_true man)
+		$(meson_native_use_bool man)
 	)
 
 	meson_src_configure
