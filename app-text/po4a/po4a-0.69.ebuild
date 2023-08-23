@@ -13,11 +13,11 @@ SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="test"
+IUSE="+man test"
+REQUIRED_USE="test? ( man )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="app-text/opensp
-	dev-libs/libxslt
 	dev-perl/Locale-gettext
 	dev-perl/Pod-Parser
 	dev-perl/SGMLSpm
@@ -28,8 +28,12 @@ RDEPEND="app-text/opensp
 	dev-perl/YAML-Tiny
 	sys-devel/gettext"
 DEPEND="${RDEPEND}"
-BDEPEND="app-text/docbook-xml-dtd:4.1.2
-	app-text/docbook-xsl-stylesheets
+BDEPEND="
+	man? (
+		dev-libs/libxslt
+		app-text/docbook-xml-dtd:4.1.2
+		app-text/docbook-xsl-stylesheets
+	)
 	dev-perl/Module-Build
 	sys-devel/gettext
 	test? (
@@ -49,6 +53,11 @@ src_prepare() {
 		PERL_RM_FILES+=( po/{bin,pod}/${1}.po )
 	}
 	plocale_for_each_disabled_locale rm_locale
+
+	if ! use man; then
+		# Omit man generation
+		sed -i -e 's/$^O ne '"'MSWin32'"'/0/;s/$self->install_path(man => $mandir)\;//' 'Po4aBuilder.pm'
+	fi
 
 	perl-module_src_prepare
 }
