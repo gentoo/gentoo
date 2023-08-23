@@ -45,6 +45,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.16.8-gcc-13.patch
+	"${FILESDIR}"/${PN}-1.16.10-boost-1.83.patch
 )
 
 src_prepare() {
