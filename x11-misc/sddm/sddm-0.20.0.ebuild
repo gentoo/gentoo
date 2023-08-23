@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/sddm/sddm"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
-IUSE="+elogind systemd test"
+IUSE="+elogind man systemd test"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 RESTRICT="!test? ( test )"
@@ -47,7 +47,7 @@ RDEPEND="${COMMON_DEPEND}
 	!systemd? ( gui-libs/display-manager-init )
 "
 BDEPEND="
-	dev-python/docutils
+	man? ( dev-python/docutils )
 	>=dev-qt/linguist-tools-${QTMIN}:5
 	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig
@@ -87,7 +87,7 @@ EOF
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_MAN_PAGES=ON
+		-DBUILD_MAN_PAGES=$(usex man)
 		-DDBUS_CONFIG_FILENAME="org.freedesktop.sddm.conf"
 		-DRUNTIME_DIR=/run/sddm
 		-DSYSTEMD_TMPFILES_DIR="/usr/lib/tmpfiles.d"
