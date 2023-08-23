@@ -4,7 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-inherit meson pam pax-utils python-any-r1 systemd xdg-utils
+inherit meson pam pax-utils python-any-r1 systemd xdg-utils plocale
+
+PLOCALES="cs da de hr hu id it ka nl nn pl pt pt_BR ro ru sk sv tr uk zh_CN zh_TW"
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit https://gitlab.freedesktop.org/polkit/polkit"
@@ -23,7 +25,7 @@ fi
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="+daemon +duktape examples gtk +introspection kde pam selinux systemd test"
+IUSE="+daemon +duktape examples gtk +introspection kde man pam selinux systemd test"
 # https://gitlab.freedesktop.org/polkit/polkit/-/issues/181 for test restriction
 RESTRICT="!test? ( test ) test"
 
@@ -38,11 +40,13 @@ RESTRICT="!test? ( test ) test"
 
 BDEPEND="
 	acct-user/polkitd
-	app-text/docbook-xml-dtd:4.1.2
-	app-text/docbook-xsl-stylesheets
+	man? (
+		app-text/docbook-xml-dtd:4.1.2
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
 	dev-libs/glib
 	dev-libs/gobject-introspection-common
-	dev-libs/libxslt
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -105,6 +109,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	plocale_get_locales > po/LINGUAS || die
 
 	# bug #401513
 	sed -i -e 's|unix-group:wheel|unix-user:0|' src/polkitbackend/*-default.rules || die
@@ -118,7 +123,7 @@ src_configure() {
 		-Dauthfw="$(usex pam pam shadow)"
 		-Dexamples=false
 		-Dgtk_doc=false
-		-Dman=true
+		$(meson_use man)
 		-Dos_type=gentoo
 		-Dsession_tracking="$(usex systemd libsystemd-login libelogind)"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
