@@ -90,14 +90,6 @@ src_prepare() {
 			-i ${PN}/config/configdata.yml || die
 	fi
 
-	if use widevine && use prefix; then
-		# hack: QtWebEngine knows Gentoo's widevine, but not with ${EPREFIX}
-		# TODO: prefixify QtWebEngine itself
-		local widevine=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
-		sed -e "/yield from _qtwebengine_settings_args/a\    yield '--widevine-path=${widevine}'" \
-			-i ${PN}/config/qtargs.py || die
-	fi
-
 	# ensure the requested backend is used in case multiple are available
 	sed -e "/^_WRAPPER_OVERRIDE =/s/None/\"PyQt$(usex qt6 6 5)\"/" \
 		-i qutebrowser/qt/machinery.py || die
@@ -151,10 +143,6 @@ python_test() {
 		tests/unit/test_qt_machinery.py::TestSelectWrapper::test_autoselect_by_default
 		tests/unit/test_qt_machinery.py::TestInit::test_none_available_{implicit,explicit}
 	)
-
-	# we mangle qtargs with widevine+prefix leading to unexpected results
-	use widevine && use prefix &&
-		EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
 
 	# tests known failing with Qt5 which is considered a 2nd class citizen
 	# and, unless completely broken, new tests issues may not be pursued
