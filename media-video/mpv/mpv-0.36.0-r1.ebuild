@@ -21,9 +21,9 @@ HOMEPAGE="https://mpv.io/"
 LICENSE="LGPL-2.1+ GPL-2+ BSD ISC MIT" #506946
 SLOT="0/2" # soname
 IUSE="
-	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
+	+X +alsa aqua archive bluray cdda +cli coreaudio debug doc +drm dvb
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
-	+libplacebo +lua mmal nvenc openal opengl pipewire pulseaudio
+	+libplacebo +lua man mmal nvenc openal opengl pipewire pulseaudio
 	raspberry-pi rubberband sdl selinux sixel sndio test tools +uchardet
 	vaapi vdpau vulkan wayland xv zimg zlib"
 REQUIRED_USE="
@@ -130,7 +130,7 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
-	cli? ( dev-python/docutils )
+	cli? ( man? ( dev-python/docutils ) )
 	wayland? ( dev-util/wayland-scanner )"
 
 PATCHES=(
@@ -165,8 +165,8 @@ src_configure() {
 		$(meson_use libmpv)
 		$(meson_use test tests)
 
-		$(meson_feature cli html-build)
-		$(meson_feature cli manpage-build)
+		$(mpv_feature_multi cli doc html-build)
+		$(mpv_feature_multi cli man manpage-build)
 		-Dpdf-build=disabled
 
 		-Dbuild-date=false
@@ -275,14 +275,14 @@ src_install() {
 		python_fix_shebang "${ED}"/usr/bin/umpv
 	fi
 
-	if use cli; then
+	if use cli && use doc; then
 		dodir /usr/share/doc/${PF}/html
 		mv "${ED}"/usr/share/doc/{mpv,${PF}/html}/mpv.html || die
 		mv "${ED}"/usr/share/doc/{mpv,${PF}/examples} || die
 	fi
 
 	local GLOBIGNORE=*/*build*:*/*policy*
-	dodoc RELEASE_NOTES DOCS/*.{md,rst}
+	use doc && dodoc RELEASE_NOTES DOCS/*.{md,rst}
 }
 
 pkg_postinst() {
