@@ -5,14 +5,16 @@ EAPI=8
 PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
+inherit gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg plocale
+
+PLOCALES="ab af am an ar as ast az be be@latin bg bn bn_IN bs ca ca@valencia cs cy da de dz el en_CA en_GB en@shaw eo es et eu fa fi fr fur ga gd gl gu he hi hr hu hy id ie is it ja ka kk kn ko ku lt lv mai mg mk ml mn mr ms nb nds ne nl nn oc or pa pl ps pt pt_BR ro ru rw si sk sl sq sr sr@latin sr@ije sv ta te tg th tl tr ug  tt uk vi wa xh yi zh_CN zh_HK zh_TW"
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-IUSE="dbus debug +elf gtk-doc +mime selinux static-libs sysprof systemtap test utils xattr"
+IUSE="dbus debug +elf gtk-doc man +mime selinux static-libs sysprof systemtap test utils xattr"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( test )" # Bug #777636
 
@@ -43,8 +45,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 # libxml2 used for optional tests that get automatically skipped
 BDEPEND="
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
+	man? (
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
 	>=sys-devel/gettext-0.19.8
 	gtk-doc? ( >=dev-util/gtk-doc-1.33
 		app-text/docbook-xml-dtd:4.2
@@ -160,6 +164,8 @@ src_prepare() {
 		-e '/AvailabilityMacros.h/d' \
 		gio/giomodule.c || die
 
+	plocale_get_locales > po/LINGUAS || die
+
 	default
 	gnome2_environment_reset
 	# TODO: python_name sedding for correct python shebang? Might be relevant mainly for glib-utils only
@@ -185,7 +191,7 @@ multilib_src_configure() {
 		$(meson_feature selinux)
 		$(meson_use xattr)
 		-Dlibmount=enabled # only used if host_system == 'linux'
-		-Dman=true
+		$(meson_use man)
 		$(meson_use systemtap dtrace)
 		$(meson_use systemtap)
 		$(meson_feature sysprof)
@@ -231,13 +237,15 @@ multilib_src_install_all() {
 	# and removals, and test depend on glib-utils instead; revisit now with
 	# meson
 	rm "${ED}/usr/bin/glib-genmarshal" || die
-	rm "${ED}/usr/share/man/man1/glib-genmarshal.1" || die
 	rm "${ED}/usr/bin/glib-mkenums" || die
-	rm "${ED}/usr/share/man/man1/glib-mkenums.1" || die
 	rm "${ED}/usr/bin/gtester-report" || die
-	rm "${ED}/usr/share/man/man1/gtester-report.1" || die
-	# gdbus-codegen manpage installed by dev-util/gdbus-codegen
-	rm "${ED}/usr/share/man/man1/gdbus-codegen.1" || die
+	if use man; then
+		rm "${ED}/usr/share/man/man1/glib-genmarshal.1" || die
+		rm "${ED}/usr/share/man/man1/glib-mkenums.1" || die
+		rm "${ED}/usr/share/man/man1/gtester-report.1" || die
+		# gdbus-codegen manpage installed by dev-util/gdbus-codegen
+		rm "${ED}/usr/share/man/man1/gdbus-codegen.1" || die
+	fi
 }
 
 pkg_preinst() {
