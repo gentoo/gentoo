@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/gwenview/ https://userbase.kde.org/Gwenview"
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
-IUSE="activities fits +mpris raw semantic-desktop share X"
+IUSE="activities +annotator fits +mpris raw semantic-desktop share +tiff X"
 
 # requires running environment
 RESTRICT="test"
@@ -47,13 +47,15 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	media-gfx/exiv2:=
-	media-libs/kcolorpicker
-	>=media-libs/kimageannotator-0.5.0
+	annotator? (
+		media-libs/kcolorpicker
+		>=media-libs/kimageannotator-0.5.0
+	)
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	>=media-libs/phonon-4.11.0
-	media-libs/tiff:=
+	tiff? ( media-libs/tiff:= )
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
 	fits? ( sci-libs/cfitsio )
 	mpris? ( >=dev-qt/qtdbus-${QTMIN}:5 )
@@ -73,10 +75,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 "
-RDEPEND="${COMMON_DEPEND}
-	>=dev-qt/qtimageformats-${QTMIN}:5
-	>=kde-frameworks/kimageformats-${KFMIN}:5
-"
+RDEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	>=dev-qt/qtwaylandscanner-${QTMIN}:5
 	dev-util/wayland-scanner
@@ -97,6 +96,8 @@ src_configure() {
 		$(cmake_use_find_package raw KF5KDcraw)
 		-DGWENVIEW_SEMANTICINFO_BACKEND=$(usex semantic-desktop Baloo None)
 		$(cmake_use_find_package share KF5Purpose)
+		$(cmake_use_find_package annotator kImageAnnotator)
+		$(cmake_use_find_package tiff TIFF)
 		-DWITHOUT_X11=$(usex !X)
 	)
 	ecm_src_configure
@@ -105,6 +106,8 @@ src_configure() {
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "SVG support" "kde-apps/svgpart:${SLOT}"
+		optfeature "WEBP and more image formats" ">=dev-qt/qtimageformats-${QTMIN}:${SLOT}"
+		optfeature "DDS, XCF, EXR, PSD and more image formats" ">=kde-frameworks/kimageformats-${KFMIN}:${SLOT}"
 	fi
 	ecm_pkg_postinst
 }
