@@ -17,12 +17,16 @@ IUSE="+breakpad +curl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	breakpad? ( dev-util/breakpad )
+	breakpad? (
+		dev-util/breakpad
+		virtual/pkgconfig
+	)
 	curl? ( net-misc/curl )
 "
 DEPEND="${RDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.5_cmake-breakpad.patch
 	"${FILESDIR}"/${PN}-0.6.5_no-fuzz-test.patch
 )
 
