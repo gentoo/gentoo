@@ -13,7 +13,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-IUSE="debug +introspection sysprof test X"
+IUSE="debug gtk-doc +introspection man sysprof test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	dev-util/glib-utils
-	sys-apps/help2man
+	man? ( sys-apps/help2man )
 	virtual/pkgconfig
 	test? ( media-fonts/cantarell )
 "
@@ -49,6 +49,9 @@ src_prepare() {
 	# False positive with GCC 13 and -O3 at least, see bug #903259
 	# https://gitlab.gnome.org/GNOME/pango/-/issues/740
 	sed -i -e '/\-Werror=array-bounds/d' meson.build || die
+
+	# Ensure help2man is disabled
+	use man || sed -i -e 's/help2man.found()/false/' utils/meson.build || die
 }
 
 multilib_src_configure() {
@@ -76,6 +79,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
+	use gtk-doc || return
 	insinto /usr/share/gtk-doc/html
 	# This will install PangoXft API docs regardless of USE=-X, but this is intentional
 	doins -r "${S}"/docs/Pango*
