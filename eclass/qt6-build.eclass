@@ -196,10 +196,10 @@ _qt6-build_prepare_env() {
 	readonly QT6_HEADERDIR=${QT6_PREFIX}/include/qt6
 	readonly QT6_IMPORTDIR=${QT6_ARCHDATADIR}/imports
 	readonly QT6_LIBEXECDIR=${QT6_ARCHDATADIR}/libexec
+	readonly QT6_MKSPECSDIR=${QT6_ARCHDATADIR}/mkspecs
 	readonly QT6_PLUGINDIR=${QT6_ARCHDATADIR}/plugins
 	readonly QT6_QMLDIR=${QT6_ARCHDATADIR}/qml
 	readonly QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
-	readonly QT6_TESTSDIR=${QT6_DATADIR}/tests
 	readonly QT6_TRANSLATIONDIR=${QT6_DATADIR}/translations
 }
 
