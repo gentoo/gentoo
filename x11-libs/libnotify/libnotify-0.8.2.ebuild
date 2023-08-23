@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="gtk-doc +introspection test"
+IUSE="gtk-doc man +introspection test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
@@ -25,8 +25,10 @@ BDEPEND="
 	>=dev-libs/gobject-introspection-common-1.32
 	dev-util/glib-utils
 	virtual/pkgconfig
-	app-text/docbook-xsl-ns-stylesheets
-	dev-libs/libxslt
+	man? (
+		app-text/docbook-xsl-ns-stylesheets
+		dev-libs/libxslt
+	)
 	gtk-doc? (
 		dev-util/gi-docgen
 		app-text/docbook-xml-dtd:4.1.2
@@ -46,6 +48,7 @@ multilib_src_configure() {
 		$(meson_use test tests)
 		$(meson_native_use_feature introspection)
 		$(meson_native_use_bool gtk-doc gtk_doc)
+		$(meson_native_use_bool man)
 		-Ddocbook_docs=disabled
 	)
 	meson_src_configure
