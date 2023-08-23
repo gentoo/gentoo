@@ -11,7 +11,7 @@ SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86"
-IUSE="acl +daemon debug elogind +introspection lvm nls selinux systemd"
+IUSE="acl +daemon debug elogind gtk-doc +introspection lvm man nls selinux systemd"
 
 REQUIRED_USE="
 	?? ( elogind systemd )
@@ -47,9 +47,9 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-3.1
 "
 BDEPEND="
-	app-text/docbook-xsl-stylesheets
+	man? ( app-text/docbook-xsl-stylesheets )
 	>=dev-util/gdbus-codegen-2.32
-	>=dev-util/gtk-doc-am-1.3
+	gtk-doc? ( >=dev-util/gtk-doc-am-1.3 )
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.8 )
 	dev-libs/gobject-introspection-common
@@ -73,6 +73,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	use gtk-doc || sed  -i -e 's: doc::' Makefile.am || die
 	xdg_environment_reset
 	default
 
@@ -87,7 +88,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--enable-btrfs
-		--disable-gtk-doc
 		--disable-static
 		--localstatedir="${EPREFIX}"/var
 		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html
@@ -100,6 +100,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable introspection)
 		$(use_enable lvm lvm2)
+		$(use_enable man)
 		$(use_enable nls)
 	)
 	econf "${myeconfargs[@]}"
