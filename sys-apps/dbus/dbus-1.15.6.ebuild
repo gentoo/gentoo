@@ -23,15 +23,17 @@ SRC_URI="https://dbus.freedesktop.org/releases/dbus/${P}.tar.xz"
 LICENSE="|| ( AFL-2.1 GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="debug doc elogind selinux static-libs systemd test valgrind X"
+IUSE="debug doc elogind man selinux static-libs systemd test valgrind X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( elogind systemd )"
 
 BDEPEND="
 	acct-user/messagebus
-	app-text/xmlto
-	app-text/docbook-xml-dtd:4.4
+	man? (
+		app-text/xmlto
+		app-text/docbook-xml-dtd:4.4
+	)
 	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
@@ -161,7 +163,7 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi; then
 		docconf=(
-			--enable-xml-docs
+			$(use_enable man xml-docs)
 			$(use_enable doc doxygen-docs)
 		)
 	else
