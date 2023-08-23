@@ -16,12 +16,15 @@ HOMEPAGE="https://www.gtk.org/"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+IUSE="doc"
 
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-libs/libxslt
-	app-text/docbook-xsl-stylesheets
+	doc? (
+		dev-libs/libxslt
+		app-text/docbook-xsl-stylesheets
+	)
 "
 
 S="${WORKDIR}/glib-${PV}/gio/gdbus-2.0/codegen"
@@ -58,7 +61,7 @@ do_xsltproc_command() {
 
 src_compile() {
 	distutils-r1_src_compile
-	do_xsltproc_command \
+	use doc && do_xsltproc_command \
 		"${WORKDIR}/glib-${PV}/docs/reference/gio/gdbus-codegen.xml" \
 		"${WORKDIR}/glib-${PV}/docs/reference/gio/gdbus-codegen.1"
 }
@@ -70,5 +73,5 @@ src_test() {
 
 python_install_all() {
 	distutils-r1_python_install_all # no-op, but prevents QA warning
-	doman "${WORKDIR}/glib-${PV}/docs/reference/gio/gdbus-codegen.1"
+	use doc && doman "${WORKDIR}/glib-${PV}/docs/reference/gio/gdbus-codegen.1"
 }
