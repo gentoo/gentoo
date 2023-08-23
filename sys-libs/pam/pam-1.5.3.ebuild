@@ -26,7 +26,6 @@ IUSE="audit berkdb debug nis selinux"
 
 BDEPEND="
 	app-alternatives/yacc
-	dev-libs/libxslt
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
