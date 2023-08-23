@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/dconf"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux"
-IUSE="gtk-doc"
+IUSE="gtk-doc man"
 RESTRICT="!test? ( test )" # IUSE=test comes from virtualx.eclass
 
 RDEPEND="
@@ -19,9 +19,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-text/docbook-xml-dtd:4.2
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
+	man? (
+		app-text/docbook-xml-dtd:4.2
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
 	dev-util/gdbus-codegen
 	gtk-doc? ( >=dev-util/gtk-doc-1.15 )
 	>=sys-devel/gettext-0.19.8
@@ -36,7 +38,7 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		-Dbash_completion_dir="$(get_bashcompdir)"
-		-Dman=true
+		$(meson_use man)
 		$(meson_use gtk-doc gtk_doc)
 		-Dvapi=true
 		-Dsystemduserunitdir=$(systemd_get_userunitdir)
