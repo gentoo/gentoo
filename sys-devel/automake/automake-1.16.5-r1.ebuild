@@ -33,7 +33,7 @@ HOMEPAGE="https://www.gnu.org/software/automake/"
 LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
-IUSE="test"
+IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-lang/perl-5.6
@@ -43,7 +43,7 @@ RDEPEND=">=dev-lang/perl-5.6
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/gzip
-	sys-apps/help2man
+	doc? ( sys-apps/help2man )
 	test? ( ${PYTHON_DEPS} )
 "
 
@@ -62,6 +62,7 @@ src_prepare() {
 	default
 
 	export WANT_AUTOCONF=2.5
+	use doc || export MAKEINFO=true
 	# Don't try wrapping the autotools - this thing runs as it tends
 	# to be a bit esoteric, and the script does `set -e` itself.
 	./bootstrap || die
