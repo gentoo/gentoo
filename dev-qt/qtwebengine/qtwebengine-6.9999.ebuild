@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="xml(+)"
 inherit check-reqs estack flag-o-matic multiprocessing
-inherit python-any-r1 qt6-build toolchain-funcs
+inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 CHROMIUM_VER=108.0.5359.181
 CHROMIUM_PATCHES_VER=114.0.5735.133
@@ -149,6 +149,8 @@ pkg_preinst() {
 }
 
 src_prepare() {
+	qt6-build_src_prepare
+
 	# bug 620444 - ensure local headers are used
 	find . -type f -name "*.pr[fio]" -exec \
 		sed -i -e 's|INCLUDEPATH += |&$${QTWEBENGINE_ROOT}_build/include $${QTWEBENGINE_ROOT}/include |' {} + || die
@@ -169,7 +171,8 @@ src_prepare() {
 		)
 	fi
 
-	qt6-build_src_prepare
+	# for www-plugins/chrome-binary-plugins (widevine) search paths on prefix
+	hprefixify -w /Gentoo/ src/core/content_client_qt.cpp
 }
 
 src_configure() {
