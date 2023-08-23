@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2 handbook? ( FDL-1.2 )"
 SLOT="5"
-IUSE="crypt"
+IUSE="crypt +kparts"
 
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
@@ -45,7 +45,7 @@ DEPEND="
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kjobwidgets-${KFMIN}:5
 	>=kde-frameworks/knewstuff-${KFMIN}:5
-	>=kde-frameworks/kparts-${KFMIN}:5
+	kparts? ( >=kde-frameworks/kparts-${KFMIN}:5 )
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
@@ -54,9 +54,16 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	if ! use handbook; then
+		cmake_comment_add_subdirectory doc
+		sed -e 's/DocTools//;s/kdoctools_install(po)//' -i CMakeLists.txt
+	fi
+
 	local mycmakeargs=(
 		-DOMIT_EXAMPLES=ON
 		$(cmake_use_find_package crypt Qca-qt5)
+		-DBUILD_DESIGNERPLUGIN=$(usex designer)
+		-DBUILD_KPARTSPLUGIN=$(usex kparts)
 	)
 
 	ecm_src_configure
