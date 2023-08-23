@@ -29,7 +29,6 @@ DEPEND="
 "
 BDEPEND="
 	dev-lang/perl
-	sys-apps/help2man
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-libidn )
 "
