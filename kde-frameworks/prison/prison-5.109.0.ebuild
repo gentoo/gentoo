@@ -11,14 +11,15 @@ HOMEPAGE="https://invent.kde.org/frameworks/prison"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv"
-IUSE="qml"
+IUSE="+dtmx qml +video +zxing"
+REQUIRED_USE="video? ( zxing )"
 
 RDEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtmultimedia-${QTMIN}:5
+	video? ( >=dev-qt/qtmultimedia-${QTMIN}:5 )
 	media-gfx/qrencode:=
-	media-libs/libdmtx
-	media-libs/zxing-cpp:=
+	dtmx? ( media-libs/libdmtx )
+	zxing? ( media-libs/zxing-cpp:= )
 	qml? ( >=dev-qt/qtdeclarative-${QTMIN}:5 )
 "
 DEPEND="${RDEPEND}
@@ -27,7 +28,10 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake_use_find_package dtmx Dmtx)
 		$(cmake_use_find_package qml Qt5Quick)
+		$(cmake_use_find_package video Qt5Multimedia)
+		$(cmake_use_find_package zxing ZXing)
 	)
 
 	ecm_src_configure

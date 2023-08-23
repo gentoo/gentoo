@@ -9,7 +9,10 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
+		<flag name="dtmx">Enable generation of Data Matrix barcodes via <pkg>media-libs/libdmtx</pkg></flag>
 		<flag name="qml">Enable QML/QtQuick support via <pkg>dev-qt/qtdeclarative</pkg></flag>
+		<flag name="video">Enable scanning of barcodes from live video feed via <pkg>dev-qt/qtmultimedia</pkg></flag>
+		<flag name="zxing">Enable generation of PDF417 barcodes via <pkg>media-libs/zxing-cpp</pkg></flag>
 	</use>
 	<slots>
 		<subslots>
