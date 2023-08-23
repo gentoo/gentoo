@@ -15,7 +15,9 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
+inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev plocale
+
+PLOCALES="af as be bg bn_IN ca cs da de de_CH el eo es fi fr gl gu he hi hr hu id it ja ka kk kn ko lt ml mr my nl nn oc or pa pl pt pt_BR ro ru si sk sr sr@latin sv ta te tr uk zh_CN zh_TW"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
@@ -38,8 +40,8 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="bluetooth dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 lv2"
-IUSE+=" modemmanager pipewire-alsa readline sound-server ssl system-service systemd test v4l X zeroconf"
+IUSE="bluetooth dbus doc echo-cancel examples extra ffmpeg flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 lv2"
+IUSE+=" man modemmanager pipewire-alsa readline sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -68,8 +70,10 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	>=dev-util/meson-0.59
 	virtual/pkgconfig
-	${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
+	man? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
+	)
 	dbus? ( dev-util/gdbus-codegen )
 	doc? (
 		app-doc/doxygen
@@ -152,11 +156,13 @@ PATCHES=(
 )
 
 python_check_deps() {
+	use doc || return 0
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
 	default
+	plocale_get_locales > po/LINGUAS || die
 
 	# Used for upstream backports
 	[[ -d "${FILESDIR}"/${PV} ]] && eapply "${FILESDIR}"/${PV}
@@ -172,8 +178,8 @@ multilib_src_configure() {
 		$(meson_feature dbus)
 		$(meson_native_use_feature zeroconf avahi)
 		$(meson_native_use_feature doc docs)
-		$(meson_native_enabled examples) # TODO: Figure out if this is still important now that media-session gone
-		$(meson_native_enabled man)
+		$(meson_native_use_feature examples) # TODO: Figure out if this is still important now that media-session gone
+		$(meson_native_use_feature man)
 		$(meson_feature test tests)
 		-Dinstalled_tests=disabled # Matches upstream; Gentoo never installs tests
 		$(meson_feature ieee1394 libffado)
