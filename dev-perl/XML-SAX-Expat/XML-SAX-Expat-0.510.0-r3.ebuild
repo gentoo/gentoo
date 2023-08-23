@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,14 +25,14 @@ BDEPEND="${RDEPEND}
 	)
 "
 
-src_test() {
-	perl_rm_files t/98podsyn.t t/99podcov.t
-	perl-module_src_test
-}
-
 src_compile() {
 	export SKIP_SAX_INSTALL=1
 	perl-module_src_compile
+}
+
+src_test() {
+	perl_rm_files t/98podsyn.t t/99podcov.t
+	perl-module_src_test
 }
 
 pkg_postinst() {
