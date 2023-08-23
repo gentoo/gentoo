@@ -3,7 +3,9 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
-inherit meson python-any-r1 systemd
+inherit meson python-any-r1 systemd plocale
+
+PLOCALES="af ar as ast az be bg bn_IN ca ca@valencia cs cy da de el en_GB en eo es et eu fa fi fo fr fur ga gl gu he hi hr hu ia id it ja ka kk kn ko ky lt lv ml mr ms nb nl nn oc or pa pl pt_BR pt ro ru sk sl sq sr@latin sr sv ta te th tr uk vi wa zh_CN zh_HK zh_TW"
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/AccountsService/"
@@ -29,12 +31,12 @@ DEPEND="${CDEPEND}
 	sys-apps/dbus
 "
 BDEPEND="
-	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? (
+		dev-libs/libxslt
 		app-text/docbook-xml-dtd:4.1.2
 		app-text/xmlto
 	)
@@ -61,6 +63,11 @@ python_check_deps() {
 	if use test; then
 		python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 	fi
+}
+
+src_prepare() {
+	default
+	plocale_get_locales > po/LINGUAS || die
 }
 
 src_configure() {
