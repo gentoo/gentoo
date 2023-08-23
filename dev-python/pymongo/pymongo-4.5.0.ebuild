@@ -39,7 +39,7 @@ BDEPEND="
 "
 
 distutils_enable_sphinx doc
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 reqcheck() {
 	if use test && use test-full; then
