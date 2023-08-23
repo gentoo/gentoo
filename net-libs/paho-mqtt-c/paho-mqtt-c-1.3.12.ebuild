@@ -24,6 +24,9 @@ SLOT="1.3"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples +high-performance +ssl test"
 
+# Building samples needs ssl: #912262
+REQUIRED_USE="examples? ( ssl )"
+
 BDEPEND="
 	doc? ( app-doc/doxygen
 		   media-gfx/graphviz )
