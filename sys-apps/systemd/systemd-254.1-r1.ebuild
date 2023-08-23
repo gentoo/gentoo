@@ -10,6 +10,8 @@ UDEV_OPTIONAL=1
 
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
+PLOCALES="be be@latin bg ca cs da de el es et fi fr gl hr hu id it ja ka kab ko lt nl pa pl pt pt_BR ro ru si sk sr sv tr uk zh_CN zh_TW eu"
+
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
@@ -27,7 +29,7 @@ else
 fi
 
 inherit bash-completion-r1 linux-info meson-multilib pam python-single-r1
-inherit secureboot systemd toolchain-funcs udev usr-ldscript
+inherit secureboot systemd toolchain-funcs udev usr-ldscript plocale
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="http://systemd.io/"
@@ -35,9 +37,9 @@ HOMEPAGE="http://systemd.io/"
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
-	acl apparmor audit boot cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
+	acl apparmor audit boot cgroup-hybrid cryptsetup curl doc +dns-over-tls elfutils
 	fido2 +gcrypt gnutls homed http idn importd iptables +kmod
-	+lz4 lzma +openssl pam pcre pkcs11 policykit pwquality qrcode
+	+lz4 lzma man +openssl pam pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
 "
 REQUIRED_USE="
@@ -162,14 +164,16 @@ BDEPEND="
 		dev-lang/perl
 		sys-apps/dbus
 	)
-	app-text/docbook-xml-dtd:4.2
-	app-text/docbook-xml-dtd:4.5
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt:0
+	man? (
+		app-text/docbook-xml-dtd:4.2
+		app-text/docbook-xml-dtd:4.5
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt:0
+	)
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep "
 		dev-python/jinja[\${PYTHON_USEDEP}]
-		dev-python/lxml[\${PYTHON_USEDEP}]
+		man? ( dev-python/lxml[\${PYTHON_USEDEP}] )
 		boot? (
 			dev-python/pyelftools[\${PYTHON_USEDEP}]
 			test? ( ${PEFILE_DEPEND} )
@@ -254,6 +258,8 @@ src_prepare() {
 	# Fails with split-usr.
 	sed -i -e '2i exit 77' test/test-rpm-macros.sh || die
 
+	plocale_get_locales > po/LINGUAS || die
+
 	default
 }
 
@@ -336,7 +342,7 @@ multilib_src_configure() {
 		$(meson_native_true hostnamed)
 		$(meson_native_true ldconfig)
 		$(meson_native_true localed)
-		$(meson_native_true man)
+		$(meson_native_use_bool man)
 		$(meson_native_true networkd)
 		$(meson_native_true quotacheck)
 		$(meson_native_true randomseed)
@@ -364,8 +370,10 @@ multilib_src_install_all() {
 	# meson doesn't know about docdir
 	mv "${ED}"/usr/share/doc/{systemd,${PF}} || die
 
-	einstalldocs
-	dodoc "${FILESDIR}"/nsswitch.conf
+	if use doc; then
+		einstalldocs
+		dodoc "${FILESDIR}"/nsswitch.conf
+	fi
 
 	insinto /usr/lib/tmpfiles.d
 	doins "${FILESDIR}"/legacy.conf
@@ -374,7 +382,7 @@ multilib_src_install_all() {
 		rm -f "${ED}${rootprefix}/${sbin}"/resolvconf || die
 	fi
 
-	if ! use sysv-utils; then
+	if ! use sysv-utils && use man; then
 		rm "${ED}${rootprefix}/${sbin}"/{halt,init,poweroff,reboot,shutdown} || die
 		rm "${ED}"/usr/share/man/man1/init.1 || die
 		rm "${ED}"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8 || die
