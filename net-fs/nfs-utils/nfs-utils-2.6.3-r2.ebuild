@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 sasl selinux tcpd +uuid"
+IUSE="caps junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 +rpcbind sasl selinux tcpd +uuid"
 REQUIRED_USE="kerberos? ( nfsv4 )"
 # bug #315573
 RESTRICT="test"
@@ -31,7 +31,6 @@ RESTRICT="test"
 COMMON_DEPEND="
 	dev-libs/libxml2
 	net-libs/libtirpc:=
-	>=net-nds/rpcbind-0.2.4
 	sys-fs/e2fsprogs
 	dev-db/sqlite:3
 	dev-libs/libevent:=
@@ -60,6 +59,7 @@ DEPEND="${COMMON_DEPEND}
 	elibc_musl? ( sys-libs/queue-standalone )
 "
 RDEPEND="${COMMON_DEPEND}
+	rpcbind? ( >=net-nds/rpcbind-0.2.4 )
 	!net-libs/libnfsidmap
 	selinux? (
 		sec-policy/selinux-rpc

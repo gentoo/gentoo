@@ -13,6 +13,7 @@
     <flag name="nfsidmap">Enable support for newer nfsidmap helper</flag>
     <flag name="nfsv4">Enable support for NFSv4</flag>
     <flag name="nfsv41">Enable support for NFSv4.1</flag>
+    <flag name="rpcbind">Enable rpcbind.service required by NFSv2 and NFSv3 servers</flag>
     <flag name="uuid">Support UUID lookups in rpc.mountd</flag>
   </use>
   <upstream>
