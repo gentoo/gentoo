@@ -16,7 +16,7 @@ inherit toolchain-funcs flag-o-matic
 DESCRIPTION="Base functions required by all Gentoo systems"
 HOMEPAGE="https://gitweb.gentoo.org/proj/gentoo-functions.git"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 public-domain"
 SLOT="0"
 
 # Specifically needs GNU find, as well.
