@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/rfjakob/earlyoom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz )"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="MIT-with-advertising"
