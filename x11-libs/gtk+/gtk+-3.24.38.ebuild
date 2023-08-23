@@ -3,14 +3,16 @@
 
 EAPI=8
 
-inherit gnome2 meson-multilib multilib toolchain-funcs virtualx
+inherit gnome2 meson-multilib multilib toolchain-funcs virtualx plocale
+
+PLOCALES="ab af am an ang ar as ast az az_IR be be@latin bg bn bn_IN br bs ca ca@valencia ckb crh cs cy da de dz el en en_CA en_GB en@shaw eo es et eu fa fi fr fur ga gd gl gu he hi hr hu hy ia id ie io is it ja ka kg kk km kn ko ku ky lg li lt lv mai mi mk ml mn mr ms my nb nds ne nl nn nso oc or pa pl ps pt pt_BR ro ru rw si sk sl sq sr sr@ije sr@latin sv ta te tg th tk tr tt ug uk ur uz uz@cyrillic vi wa xh yi zh_CN zh_HK zh_TW"
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="3"
-IUSE="aqua broadway cloudproviders colord cups examples gtk-doc +introspection sysprof test vim-syntax wayland +X xinerama"
+IUSE="aqua broadway cloudproviders colord cups examples gtk-doc +introspection man sysprof test vim-syntax wayland +X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	test? ( X )
@@ -74,13 +76,14 @@ PDEPEND="
 	vim-syntax? ( app-vim/gtk-syntax )
 "
 BDEPEND="
-	app-text/docbook-xml-dtd:4.1.2
-	app-text/docbook-xsl-stylesheets
+	man? (
+		app-text/docbook-xml-dtd:4.1.2
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
 	dev-libs/gobject-introspection-common
-	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.48
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.20
 	wayland? ( dev-util/wayland-scanner )
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
@@ -88,6 +91,7 @@ BDEPEND="
 	gtk-doc? (
 		app-text/docbook-xml-dtd:4.3
 		>=dev-util/gtk-doc-1.20
+		>=dev-util/gtk-doc-am-1.20
 	)
 	test? ( sys-apps/dbus )
 "
@@ -103,6 +107,10 @@ PATCHES=(
 
 src_prepare() {
 	default
+	local locales
+	locales="$(plocale_get_locales)" || die
+	echo "${locales}" > po/LINGUAS || die
+	echo "${locales}" > po-properties/LINGUAS || die
 
 	# The border-image-excess-size.ui test is known to fail on big-endian platforms
 	# See https://gitlab.gnome.org/GNOME/gtk/-/issues/5904
@@ -133,7 +141,7 @@ multilib_src_configure() {
 		# https://gitlab.gnome.org/GNOME/gnome-shell/issues/109 from a
 		# user overridden GTK_IM_MODULE envvar
 		-Dbuiltin_immodules=backend
-		-Dman=true
+		$(meson_use man)
 		$(meson_use test tests)
 		-Dtracker3=false
 	)
