@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson toolchain-funcs xdg-utils
+inherit meson toolchain-funcs xdg-utils plocale
+
+PLOCALES="af ar as ast az be be@latin bg bn_IN ca ca@valencia cs cy da de el en_GB eo es et eu fa fi fo fr fur ga gl gu he hi hr hu ia id is it ja ka kk kn ko ky lt lv ml mr ms nb nl nn oc or pa pl pt pt_BR ro ru rw sk si sl sq sr sr@latin sv ta te th tr uk vi wa zh_CN zh_HK zh_TW"
 
 # Keep an eye on https://gitlab.freedesktop.org/xdg/xdgmime/-/merge_requests/25!
 # xdgmime is used for tests but doesn't make releases nowadays; do what
@@ -17,12 +19,14 @@ SRC_URI+=" test? ( https://gitlab.freedesktop.org/xdg/xdgmime/-/archive/${MY_XDG
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="test"
+IUSE="doc man test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	app-text/docbook-xml-dtd:4.1.2
-	app-text/xmlto
+	doc? (
+		app-text/docbook-xml-dtd:4.1.2
+		app-text/xmlto
+	)
 	sys-devel/gettext
 	virtual/pkgconfig
 "
@@ -45,6 +49,18 @@ src_prepare() {
 		# Don't break parallel make
 		sed -i -e 's:make:$(MAKE):' xdgmime/Makefile || die
 	fi
+
+	if ! use doc ; then
+		# Make sure xmlto is disabled
+		sed -i -e 's:xmlto\.found():false:g' data/meson.build || die
+	fi
+
+	if ! use man ; then
+		# Remove the man
+		sed -i -e 's:install_man(.\+)::g' data/meson.build || die
+	fi
+
+	plocale_get_locales > po/LINGUAS || die
 }
 
 src_configure() {
