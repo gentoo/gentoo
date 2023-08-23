@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/spectacle/"
 LICENSE="LGPL-2+ handbook? ( FDL-1.3 )"
 SLOT="5"
 KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="share"
+IUSE="share +video-preview"
 
 COMMON_DEPEND="
 	dev-libs/wayland
@@ -55,7 +55,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qdbus-${QTMIN}:*
-	>=dev-qt/qtmultimedia-${QTMIN}:5[qml]
+	video-preview? ( >=dev-qt/qtmultimedia-${QTMIN}:5[qml] )
 	>=dev-qt/qtsvg-${QTMIN}:5
 "
 BDEPEND="
