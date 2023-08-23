@@ -21,7 +21,7 @@ else
 fi
 LICENSE="LGPL-2+"
 SLOT="0/3"	# subslot is SOVERSION
-IUSE="+cryptsetup device-mapper escrow gtk-doc introspection lvm +nvme test +tools"
+IUSE="+cryptsetup device-mapper escrow gtk-doc introspection lvm +nvme +python test +tools"
 # Tests require root. In a future release, we may be able to run a smaller
 # subset with new run_tests.py arguments.
 RESTRICT="!test? ( test ) test"
@@ -47,10 +47,12 @@ RDEPEND="
 		virtual/udev
 	)
 	nvme? ( sys-libs/libnvme )
-	${PYTHON_DEPS}
-	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
-	')
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 DEPEND="
@@ -58,8 +60,10 @@ DEPEND="
 "
 
 BDEPEND+="
-	dev-util/gtk-doc-am
-	gtk-doc? ( dev-util/gtk-doc )
+	gtk-doc? (
+		dev-util/gtk-doc-am
+		dev-util/gtk-doc
+	)
 	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 	test? (
 		$(python_gen_cond_dep '
@@ -73,6 +77,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		escrow? ( cryptsetup )"
 
 pkg_setup() {
+	use python || return 0
 	python-single-r1_pkg_setup
 }
 
@@ -97,7 +102,6 @@ src_configure() {
 		--with-btrfs
 		--with-fs
 		--with-part
-		--with-python3
 		--without-mpath
 		--without-nvdimm
 		$(use_enable introspection)
@@ -109,6 +113,7 @@ src_configure() {
 		$(use_with lvm lvm)
 		$(use_with lvm lvm-dbus)
 		$(use_with nvme)
+		$(use_with python python3)
 		$(use_with tools)
 	)
 	econf "${myeconfargs[@]}"
@@ -129,5 +134,5 @@ src_install() {
 	if ! use lvm ; then
 		rm -f "${ED}"/usr/bin/lvm-cache-stats || die
 	fi
-	python_optimize #718576
+	use python && python_optimize #718576
 }
