@@ -5,7 +5,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="xml(+)"
-inherit check-reqs estack flag-o-matic multiprocessing python-any-r1 qt6-build
+inherit check-reqs estack flag-o-matic multiprocessing
+inherit python-any-r1 qt6-build toolchain-funcs
 
 CHROMIUM_VER=108.0.5359.181
 CHROMIUM_PATCHES_VER=114.0.5735.133
@@ -147,24 +148,6 @@ pkg_preinst() {
 	elog "tldr: Your web browsing experience will be compromised."
 }
 
-src_unpack() {
-	# bug 307861
-	eshopts_push -s extglob
-	if is-flagq '-g?(gdb)?([1-9])'; then
-		ewarn
-		ewarn "You have enabled debug info (probably have -g or -ggdb in your CFLAGS/CXXFLAGS)."
-		ewarn "You may experience really long compilation times and/or increased memory usage."
-		ewarn "If compilation fails, please try removing -g/-ggdb before reporting a bug."
-		ewarn
-	fi
-	eshopts_pop
-
-	case ${QT6_BUILD_TYPE} in
-		live)    git-r3_src_unpack ;&
-		release) default ;;
-	esac
-}
-
 src_prepare() {
 	# bug 620444 - ensure local headers are used
 	find . -type f -name "*.pr[fio]" -exec \
@@ -180,7 +163,10 @@ src_prepare() {
 		local file
 		while read file; do
 			echo "#error This file should not be used!" > "${file}" || die
-		done < <(find src/3rdparty/chromium/third_party/icu -type f "(" -name "*.c" -o -name "*.cpp" -o -name "*.h" ")" 2>/dev/null)
+		done < <(
+			find src/3rdparty/chromium/third_party/icu -type f \
+				\( -name '*.c' -o -name '*.cpp' -o -name '*.h' \) 2>/dev/null
+		)
 	fi
 
 	qt6-build_src_prepare
