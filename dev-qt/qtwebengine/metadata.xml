@@ -20,6 +20,8 @@
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
+		<remote-id type="github">qt/qtwebengine</remote-id>
+		<remote-id type="github">qt/qtwebengine-chromium</remote-id>
 	</upstream>
 	<slots>
 		<subslots>
