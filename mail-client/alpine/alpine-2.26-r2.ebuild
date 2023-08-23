@@ -29,7 +29,11 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 	use chappa && eapply "${WORKDIR}/${CHAPPA_PATCH_NAME}"
-	eapply "${FILESDIR}/${PN}-2.26-fix-clang16-build.patch"
+	if use chappa; then
+		eapply "${FILESDIR}/${PN}-2.26-fix-clang16-build.patch"
+	else
+		eapply "${FILESDIR}/${PN}-2.26-fix-clang16-build-no-chappa.patch"
+	fi
 	eautoreconf
 	tc-export CC RANLIB AR
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
