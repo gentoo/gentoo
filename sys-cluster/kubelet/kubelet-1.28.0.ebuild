@@ -20,7 +20,7 @@ RESTRICT+=" test "
 S="${WORKDIR}/kubernetes-${PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-make-install-gomaxprocs-optional.patch
+	"${FILESDIR}"/${P}-make-gomaxprocs-install-optional.patch
 )
 
 src_compile() {
