@@ -31,7 +31,7 @@ DEPEND="
 	sys-apps/util-linux
 	sys-libs/libxcrypt:=
 	sys-libs/zlib
-	dev-libs/paho-mqtt-c:1.3
+	net-libs/paho-mqtt-c:1.3
 	ldap? ( net-nds/openldap:= )
 	radius? ( net-dialup/freeradius-client )
 "
