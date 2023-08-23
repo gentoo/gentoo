@@ -38,19 +38,6 @@
 # Removal sometime after 2023-09-23.
 sci-mathematics/polymake
 
-# William Hubbs <williamh@gentoo.org> (2023-08-23)
-# Upstream bug opened since this didn't compile.
-# My tests were done via "sudo ebuild" instead of emerge so my tests
-# passed, but emerge didn't work.
-# Bug #912781.
-=sys-cluster/kubeadm-1.28.0
-=sys-cluster/kube-apiserver-1.28.0
-=sys-cluster/kube-controller-manager-1.28.0
-=sys-cluster/kubectl-1.28.0
-=sys-cluster/kubelet-1.28.0
-=sys-cluster/kube-proxy-1.28.0
-=sys-cluster/kube-scheduler-1.28.0
-
 # Sam James <sam@gentoo.org> (2023-08-22)
 # Broken with new net-analyzer/net-snmp, no reverse dependencies in Gentoo,
 # no other distros package this, and upstream have discontinued development.
