@@ -3,8 +3,10 @@
 
 EAPI=8
 
+PLOCALES="af ar az bg ca crh cs da de el en_GB eo es fi fr fur gl he hr hu id it ja ka ko ky lt nb nl pl pt pt_BR ro ru rw sk sl sq sr sv tr uk vi zh_CN zh_TW"
+
 PYTHON_COMPAT=( python3_{10..12} )
-inherit meson python-any-r1
+inherit meson python-any-r1 plocale
 
 DESCRIPTION="X keyboard configuration database"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
@@ -19,21 +21,33 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="man"
 
 DEPEND=""
 RDEPEND=""
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	dev-libs/libxslt
+	man? ( dev-libs/libxslt )
 	sys-devel/gettext
 "
+
+src_prepare() {
+	default
+	plocale_get_locales > po/LINGUAS || die
+}
 
 pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
 src_configure() {
+	if ! use man; then
+		# Make sure xslt is disabled
+		sed -i -e 's/if xsltproc\.found()/if false/' 'meson.build'
+	fi
+	# Make sure pytest is disabled
+	sed -i -e 's/if enable_pytest/if false/' 'meson.build'
 	local emesonargs=(
 		-Dxkb-base="${EPREFIX}/usr/share/X11/xkb"
 		-Dcompat-rules=true
