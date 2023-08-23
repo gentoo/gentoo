@@ -25,7 +25,7 @@ RESTRICT="test"
 RDEPEND="app-crypt/libsecret
 	gui? (
 		>=dev-libs/protobuf-21.12:=
-		dev-libs/sentry-native
+		>=dev-libs/sentry-native-0.6.5-r1
 		dev-qt/qtbase:6=[gui,icu,widgets]
 		dev-qt/qtdeclarative:6=[widgets]
 		dev-qt/qtsvg:6=
