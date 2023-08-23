@@ -214,7 +214,6 @@ dev-python/vncdotool
 # is a modern and fast replacement for dev-python/progressbar.
 # Removal on 2023-08-21. Bug #909929, #910031.
 dev-python/progressbar
-sys-apps/gcp
 
 # Hans de Graaff <graaff@gentoo.org> (2023-07-22)
 # Does not compile with modern compilers. Last upstream release in
