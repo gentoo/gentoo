@@ -318,7 +318,7 @@ LICENSE="Apache-2.0 BSD CC0-1.0 LGPL-2.1+ ISC MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="2"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="gtk-doc +introspection +vala"
+IUSE="gtk-doc +introspection man +vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
@@ -339,8 +339,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	>=virtual/rust-1.65.0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf
-	${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
+	man? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
+	)
 	gtk-doc? ( dev-util/gi-docgen )
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
@@ -369,6 +371,8 @@ multilib_src_configure() {
 		$(multilib_native_use_enable vala)
 		--enable-pixbuf-loader
 	)
+
+	use man || export RST2MAN=no
 
 	if ! multilib_is_native_abi; then
 		myconf+=(
