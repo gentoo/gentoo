@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="crda"
 
-RDEPEND="crda? ( net-wireless/crda )"
+#PDEPEND is required here or crda test dep causes circular deps
+PDEPEND="crda? ( net-wireless/crda )"
 
 REQUIRED_USE="kernel_linux"
 
