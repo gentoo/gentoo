@@ -16,7 +16,7 @@ S="${WORKDIR}"/xdg-utils-${MY_COMMIT}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="dbus doc gnome"
+IUSE="dbus doc gnome man"
 REQUIRED_USE="gnome? ( dbus )"
 
 RDEPEND="
@@ -34,7 +34,8 @@ RDEPEND="
 	x11-apps/xset
 "
 BDEPEND="
-	>=app-text/xmlto-0.0.28-r3[text(+)]
+	doc? ( >=app-text/xmlto-0.0.28-r3[text(+)] )
+	man? ( >=app-text/xmlto-0.0.28-r3[text(+)] )
 	app-alternatives/awk
 "
 
@@ -60,15 +61,25 @@ src_prepare() {
 }
 
 src_configure() {
-	export ac_cv_path_XMLTO="$(type -P xmlto) --skip-validation" #502166
+	if use man; then
+		export ac_cv_path_XMLTO="$(type -P xmlto) --skip-validation" #502166
+	else
+		# Omit help generation
+		export ac_cv_path_XMLTO=true
+		sed -e 's/txtfile = FILENAME.*/next/g' -i scripts/generate-help-script.awk || die
+	fi
 	default
 	emake -C scripts scripts-clean
+}
+
+src_compile() {
+	emake -C scripts scripts "$(usev man)" "$(usex doc html '')"
 }
 
 src_install() {
 	default
 
-	newdoc scripts/xsl/README README.xsl
+	use man && newdoc scripts/xsl/README README.xsl
 	use doc && dodoc -r scripts/html
 
 	# Install default XDG_DATA_DIRS, bug #264647
