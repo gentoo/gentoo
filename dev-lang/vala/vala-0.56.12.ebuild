@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Vala https://gitlab.gnome.org/GNOME/va
 LICENSE="LGPL-2.1+"
 SLOT="0.56"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
-IUSE="test valadoc"
+IUSE="doc test valadoc"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -27,13 +27,19 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	dev-libs/libxslt
+	doc? (
+		dev-libs/libxslt
+		sys-apps/help2man
+	)
 	sys-devel/flex
 	virtual/pkgconfig
 	app-alternatives/yacc
 "
 
 src_configure() {
+	# Omit generation of default docs
+	use doc || sed -e 's/[[:blank:]]doc \\//' -i Makefile.am || die
+
 	# weasyprint enables generation of PDF from HTML
 	gnome2_src_configure \
 		--disable-unversioned \
