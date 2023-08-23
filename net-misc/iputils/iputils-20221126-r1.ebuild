@@ -27,7 +27,7 @@ LICENSE="
 	tracepath? ( GPL-2+ )
 "
 SLOT="0"
-IUSE="+arping caps clockdiff doc idn nls test tracepath"
+IUSE="+arping caps clockdiff doc idn man nls test tracepath"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -40,11 +40,13 @@ DEPEND="
 	virtual/os-headers
 "
 BDEPEND="
-	app-text/docbook-xml-dtd:4.2
-	app-text/docbook-xml-dtd:4.5
-	app-text/docbook-xsl-ns-stylesheets
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
+	man? (
+		app-text/docbook-xml-dtd:4.2
+		app-text/docbook-xml-dtd:4.5
+		app-text/docbook-xsl-ns-stylesheets
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
 	virtual/pkgconfig
 	test? ( sys-apps/iproute2 )
 	nls? ( sys-devel/gettext )
@@ -69,7 +71,7 @@ src_configure() {
 		-DUSE_GETTEXT=$(usex nls true false)
 		$(meson_use !test SKIP_TESTS)
 		-DBUILD_HTML_MANS=$(usex doc true false)
-		-DBUILD_MANS=true
+		-DBUILD_MANS=$(usex man true false)
 	)
 
 	meson_src_configure
