@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-user/gvm
-	dev-libs/paho-mqtt-c
+	net-libs/paho-mqtt-c
 	dev-python/psutil[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.5.0[${PYTHON_USEDEP}]
 	<dev-python/packaging-23.2[${PYTHON_USEDEP}]
