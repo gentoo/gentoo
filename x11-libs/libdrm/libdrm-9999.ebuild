@@ -26,7 +26,7 @@ for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
 
-IUSE="${IUSE_VIDEO_CARDS} udev valgrind"
+IUSE="${IUSE_VIDEO_CARDS} man udev valgrind"
 RESTRICT="test" # see bug #236845
 LICENSE="MIT"
 SLOT="0"
@@ -38,9 +38,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	udev? ( virtual/udev )"
 BDEPEND="${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')"
+	man? ( $(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]') )"
 
 python_check_deps() {
+	use man || return 0
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
 }
 
@@ -62,6 +63,7 @@ multilib_src_configure() {
 		# valgrind installs its .pc file to the pkgconfig for the primary arch
 		-Dvalgrind=$(usex valgrind auto disabled)
 		-Dtests=false # Tests are restricted
+		$(meson_feature man man-pages)
 	)
 	meson_src_configure
 }
