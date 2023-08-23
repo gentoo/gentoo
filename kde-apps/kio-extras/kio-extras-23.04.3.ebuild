@@ -15,7 +15,7 @@ HOMEPAGE="https://invent.kde.org/network/kio-extras"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="activities ios +man mtp nfs openexr phonon samba +sftp taglib X"
+IUSE="activities +exiv ios +man mtp nfs openexr phonon samba +sftp taglib X"
 
 # requires running Plasma environment
 RESTRICT="test"
@@ -27,7 +27,7 @@ DEPEND="
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
-	kde-apps/libkexiv2:5
+	exiv? ( kde-apps/libkexiv2:5 )
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
 	>=kde-frameworks/kcodecs-${KFMIN}:5
@@ -92,6 +92,7 @@ src_configure() {
 		$(cmake_use_find_package samba Samba)
 		$(cmake_use_find_package sftp libssh)
 		$(cmake_use_find_package taglib Taglib)
+		$(cmake_use_find_package exiv KF5KExiv2)
 		-DWITHOUT_X11=$(usex !X)
 	)
 	use samba && mycmakeargs+=(
