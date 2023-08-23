@@ -15,12 +15,15 @@ SLOT="0" # /usr/bin utilities that can't be parallel installed by their nature
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+IUSE="man"
 
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-libs/libxslt
-	app-text/docbook-xsl-stylesheets
+	man? (
+		dev-libs/libxslt
+		app-text/docbook-xsl-stylesheets
+	)
 "
 
 src_configure() { :; }
@@ -43,9 +46,11 @@ src_compile() {
 	sed -e "s:@VERSION@:${PV}:g;s:@PYTHON@:python:g" gobject/glib-genmarshal.in > gobject/glib-genmarshal || die
 	sed -e "s:@VERSION@:${PV}:g;s:@PYTHON@:python:g" gobject/glib-mkenums.in > gobject/glib-mkenums || die
 	sed -e "s:@GLIB_VERSION@:${PV}:g;s:@PYTHON@:python:g" glib/gtester-report.in > glib/gtester-report || die
-	do_xsltproc_command docs/reference/gobject/glib-genmarshal.xml docs/reference/gobject/glib-genmarshal.1
-	do_xsltproc_command docs/reference/gobject/glib-mkenums.xml docs/reference/gobject/glib-mkenums.1
-	do_xsltproc_command docs/reference/glib/gtester-report.xml docs/reference/glib/gtester-report.1
+	if use man; then
+		do_xsltproc_command docs/reference/gobject/glib-genmarshal.xml docs/reference/gobject/glib-genmarshal.1
+		do_xsltproc_command docs/reference/gobject/glib-mkenums.xml docs/reference/gobject/glib-mkenums.1
+		do_xsltproc_command docs/reference/glib/gtester-report.xml docs/reference/glib/gtester-report.1
+	fi
 }
 
 src_install() {
@@ -56,7 +61,9 @@ src_install() {
 	doexe gobject/glib-genmarshal
 	doexe gobject/glib-mkenums
 	doexe glib/gtester-report
-	doman docs/reference/gobject/glib-genmarshal.1
-	doman docs/reference/gobject/glib-mkenums.1
-	doman docs/reference/glib/gtester-report.1
+	if use man; then
+		doman docs/reference/gobject/glib-genmarshal.1
+		doman docs/reference/gobject/glib-mkenums.1
+		doman docs/reference/glib/gtester-report.1
+	fi
 }
