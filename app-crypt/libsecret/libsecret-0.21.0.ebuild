@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
 LICENSE="LGPL-2.1+ Apache-2.0" # Apache-2.0 license is used for tests only
 SLOT="0"
 
-IUSE="+crypt gtk-doc +introspection test test-rust tpm +vala"
+IUSE="+crypt gtk-doc +introspection man test test-rust tpm +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	vala? ( introspection )
@@ -30,8 +30,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PDEPEND="virtual/secret-service"
 BDEPEND="
-	app-text/docbook-xml-dtd:4.2
-	dev-libs/libxslt
+	man? (
+		app-text/docbook-xml-dtd:4.2
+		dev-libs/libxslt
+	)
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
@@ -133,7 +135,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		$(meson_native_true manpage)
+		$(meson_native_use_bool man manpage)
 		$(meson_use crypt gcrypt)
 		$(meson_native_use_bool vala vapi)
 		$(meson_native_use_bool gtk-doc gtk_doc)
