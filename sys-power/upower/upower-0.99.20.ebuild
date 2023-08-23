@@ -4,7 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit meson python-any-r1 systemd udev xdg-utils
+inherit meson python-any-r1 systemd udev xdg-utils plocale
+
+PLOCALES="fr it sv pl"
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
 HOMEPAGE="https://upower.freedesktop.org/"
@@ -15,7 +17,7 @@ SLOT="0/3" # based on SONAME of libupower-glib.so
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
 # gtk-doc files are not available as prebuilt in the tarball
-IUSE="doc +introspection ios selinux test"
+IUSE="doc +introspection ios man selinux test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -35,8 +37,10 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-devicekit )
 "
 BDEPEND="
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
+	man? (
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
 	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
@@ -65,6 +69,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	plocale_get_locales > po/LINGUAS || die
 	xdg_environment_reset
 }
 
@@ -80,7 +85,7 @@ src_configure() {
 	local emesonargs=(
 		--localstatedir "${EPREFIX}"/var
 
-		-Dman=true
+		$(meson_use man)
 		$(meson_use doc gtk-doc)
 		$(meson_feature introspection)
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
