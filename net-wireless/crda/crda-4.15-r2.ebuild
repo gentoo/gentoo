@@ -13,7 +13,8 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/mcgrof/crda.git/snapsho
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="gcrypt"
+IUSE="gcrypt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libnl:3
@@ -27,6 +28,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/m2crypto[${PYTHON_USEDEP}]')
+	test? ( net-wireless/wireless-regdb[crda(+)] )
 	virtual/pkgconfig
 "
 
