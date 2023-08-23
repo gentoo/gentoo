@@ -52,7 +52,10 @@ RDEPEND="
 	guile? ( >=dev-scheme/guile-2.0:12= )
 	lua? ( ${LUA_DEPS} )
 	nls? ( virtual/libintl )
-	perl? ( dev-lang/perl:= )
+	perl? (
+		dev-lang/perl:=
+		virtual/libcrypt:=
+	)
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		|| (
