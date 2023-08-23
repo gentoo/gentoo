@@ -20,6 +20,10 @@ RDEPEND="app-containers/cri-tools
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make-gomaxprocs-install-optional.patch
+	)
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" FORCE_HOST_GO=yes \
 		emake -j1 GOFLAGS=-v GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
