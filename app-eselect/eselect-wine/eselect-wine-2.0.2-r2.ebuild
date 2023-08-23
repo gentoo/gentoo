@@ -30,11 +30,10 @@ src_install() {
 		XDG_DATA_DIRS=\"${EPREFIX}/etc/eselect/wine/share\"")
 	EOF
 
-	# links for building, e.g. wineasio (bug #657748), albeit this
-	# should be rarely used directly nowadays and could be removable
-	# (removing would also solve the one-time QA issue described below)
+	# links to help building, e.g. wineasio (bug #657748),
+	# albeit in general these are not particularly important
 	dosym -r /etc/eselect/wine/wine /usr/lib/wine
-	dosym -r /etc/eselect/wine/include /usr/include/wine
+	dosym -r /etc/eselect/wine/include/wine /usr/include/wine
 
 	einstalldocs
 }
