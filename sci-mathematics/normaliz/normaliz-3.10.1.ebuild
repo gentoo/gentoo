@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Tool for computations in affine monoids and more"
 HOMEPAGE="https://www.normaliz.uni-osnabrueck.de/"
-SRC_URI="https://github.com/Normaliz/Normaliz/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/Normaliz/Normaliz/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/3"
