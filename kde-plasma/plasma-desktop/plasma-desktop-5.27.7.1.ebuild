@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	>=kde-frameworks/kded-${KFMIN}:5
-	>=kde-frameworks/kdelibs4support-${KFMIN}:5
+	>=kde-frameworks/kdelibs4support-${KFMIN}:5[handbook?]
 	>=kde-frameworks/kglobalaccel-${KFMIN}:5
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
@@ -111,8 +111,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
-	>=kde-plasma/oxygen-${PVCUT}:5
-	media-fonts/noto-emoji
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	x11-misc/xdg-user-dirs
@@ -122,6 +120,8 @@ RDEPEND="${COMMON_DEPEND}
 BDEPEND="
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	virtual/pkgconfig
+	dev-util/wayland-scanner
+	handbook? ( >=kde-frameworks/kdoctools-${KFMIN}:5 )
 "
 
 PATCHES=(
@@ -139,6 +139,11 @@ src_prepare() {
 	# TODO: try to get a build switch upstreamed
 	if ! use scim; then
 		sed -e "s/^pkg_check_modules.*SCIM/#&/" -i CMakeLists.txt || die
+	fi
+
+	if ! use handbook; then
+		sed -e "s/DocTools//;s/kdoctools_install(po)//" -i CMakeLists.txt || die
+		cmake_comment_add_subdirectory doc
 	fi
 }
 
