@@ -12,7 +12,7 @@ DESCRIPTION="Automatic documentation from sources, for MkDocs"
 HOMEPAGE="
 	https://mkdocstrings.github.io/
 	https://github.com/mkdocstrings/mkdocstrings/
-	https://pypi.org/project/mkdocs-autorefs/
+	https://pypi.org/project/mkdocstrings/
 "
 # Tests require files absent from PyPI tarballs
 SRC_URI="
