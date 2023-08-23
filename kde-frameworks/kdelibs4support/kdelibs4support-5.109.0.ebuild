@@ -13,12 +13,11 @@ DESCRIPTION="Framework easing the development transition from KDELibs 4 to KF 5"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv"
-IUSE="X"
+IUSE="X network-status"
 
 RESTRICT="test"
 
 COMMON_DEPEND="
-	app-text/docbook-xml-dtd:4.2
 	dev-libs/openssl:0
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -36,7 +35,6 @@ COMMON_DEPEND="
 	=kde-frameworks/kcrash-${PVCUT}*:5
 	=kde-frameworks/kdbusaddons-${PVCUT}*:5
 	>=kde-frameworks/kded-${PVCUT}:5
-	=kde-frameworks/kdoctools-${PVCUT}*:5
 	=kde-frameworks/kemoticons-${PVCUT}*:5
 	=kde-frameworks/kglobalaccel-${PVCUT}*:5
 	=kde-frameworks/kguiaddons-${PVCUT}*:5
@@ -76,6 +74,13 @@ RDEPEND="${COMMON_DEPEND}
 BDEPEND="
 	dev-lang/perl
 	dev-perl/URI
+	handbook? (
+		app-text/docbook-xml-dtd:4.2
+		=kde-frameworks/kdoctools-${PVCUT}*:5
+	)
+	network-status? (
+		net-misc/networkmanager
+	)
 "
 
 PATCHES=(
@@ -88,7 +93,10 @@ src_prepare() {
 	ecm_src_prepare
 
 	if ! use handbook; then
-		sed -e "/kdoctools_install/ s/^/#DONT/" -i CMakeLists.txt || die
+		sed -e "/kdoctools_install/ s/^/#DONT/;/find_package(KF5DocTools/ s/^/#DONT/" -i CMakeLists.txt || die
+		cmake_comment_add_subdirectory docs
+		sed -e "s/find_dependency(KF5DocTools.*//" -i KF5KDELibs4SupportConfig.cmake.in || die
+		sed -e 's/include("${KF5DocTools.*//' -i cmake/modules/KDE4Macros.cmake || die
 	fi
 
 	cmake_run_in src cmake_comment_add_subdirectory l10n
@@ -97,6 +105,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_X11=$(usex X)
+		$(cmake_use_find_package network-status NetworkManager)
 	)
 
 	ecm_src_configure
