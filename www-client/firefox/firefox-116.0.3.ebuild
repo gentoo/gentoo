@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-116-patches-04.tar.xz"
+FIREFOX_PATCHSET="firefox-116-patches-05.tar.xz"
 
 LLVM_MAX_SLOT=16
 
@@ -1249,9 +1249,17 @@ src_install() {
 			EOF
 		fi
 
-		# Install vaapitest binary
-		exeinto "${MOZILLA_FIVE_HOME}"
-		doexe "${BUILD_DIR}"/dist/bin/vaapitest
+		# Install the vaapitest binary on supported arches (+arm when keyworded)
+		if use amd64 || use arm64 || use x86 ; then
+			exeinto "${MOZILLA_FIVE_HOME}"
+			doexe "${BUILD_DIR}"/dist/bin/vaapitest
+		fi
+
+		# Install the v4l2test on supported arches (+ arm, + riscv64 when keyworded)
+		if use arm64 ; then
+			exeinto "${MOZILLA_FIVE_HOME}"
+			doexe "${BUILD_DIR}"/dist/bin/v4l2test
+		fi
 	fi
 
 	if ! use gmp-autoupdate ; then
