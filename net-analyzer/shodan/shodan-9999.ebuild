@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1
 
 DESCRIPTION="The official Python library for Shodan"
@@ -16,9 +16,8 @@ if [[ ${PV} = "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/achillean/shodan-python.git"
 else
-	SRC_URI="https://github.com/achillean/shodan-python/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
-	S="${WORKDIR}/${MY_PN}-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	inherit pypi
+	KEYWORDS="~amd64 ~loong ~x86"
 fi
 
 LICENSE="MIT"
@@ -29,6 +28,7 @@ RDEPEND="
 	dev-python/click-plugins[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.2.1[${PYTHON_USEDEP}]
+	dev-python/tldextract[${PYTHON_USEDEP}]
 	dev-python/xlsxwriter[${PYTHON_USEDEP}]
 "
 
