@@ -349,6 +349,7 @@ multilib_src_configure() {
 	# ===================================================
 		-DENABLE_DOWNLOAD=$(usex download)
 		-DWITH_QUIRC=OFF # Do not have dependencies
+		-DWITH_FLATBUFFERS=$(usex contribdnn)
 		-DWITH_1394=$(usex ieee1394)
 	#	-DWITH_AVFOUNDATION=OFF # IOS
 		-DWITH_VTK=$(multilib_native_usex vtk)
