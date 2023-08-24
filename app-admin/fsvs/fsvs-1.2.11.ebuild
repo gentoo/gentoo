@@ -3,15 +3,16 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic git-r3 toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Backup/restore for subversion backends"
 HOMEPAGE="https://github.com/phmarek/fsvs"
 SRC_URI="https://github.com/phmarek/fsvs/archive/refs/tags/${P}.tar.gz"
-EGIT_REPO_URI="https://github.com/phmarek/fsvs.git"
+S="${WORKDIR}/fsvs-${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-vcs/subversion
 	dev-libs/libpcre
