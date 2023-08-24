@@ -23,10 +23,10 @@ SLOT="0"
 
 RDEPEND="
 	>=dev-python/pydantic-2.0.3[${PYTHON_USEDEP}]
-	>=dev-python/python-dotenv-0.21.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.28.1[${PYTHON_USEDEP}]
-	>=dev-python/rich-12.6.0[${PYTHON_USEDEP}]
-	>=net-analyzer/shodan-1.28.0[${PYTHON_USEDEP}]
+	>=dev-python/python-dotenv-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.31.0[${PYTHON_USEDEP}]
+	>=dev-python/rich-13.4.2[${PYTHON_USEDEP}]
+	>=net-analyzer/shodan-1.29.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
