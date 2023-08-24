@@ -45,6 +45,7 @@ DEPEND="
 "
 BDEPEND="
 	dev-libs/check
+	sys-devel/bison
 	sys-devel/flex
 "
 
