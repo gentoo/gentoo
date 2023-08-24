@@ -10,8 +10,7 @@ DESCRIPTION="Qt module and API for defining 3D content in Qt QuickTools"
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 elif [[ ${QT6_BUILD_TYPE} == live ]]; then
-	# Don't clone qtquick3d-assimp.
-	EGIT_SUBMODULES=()
+	EGIT_SUBMODULES=() # skip qtquick3d-assimp
 fi
 
 RDEPEND="
@@ -20,6 +19,7 @@ RDEPEND="
 	=dev-qt/qtquicktimeline-${PV}*:6
 	=dev-qt/qtshadertools-${PV}*:6
 	media-libs/assimp:=
+	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}"
 
