@@ -11,17 +11,15 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-IUSE="opengl +sql +widgets"
+IUSE="opengl +sql vulkan +widgets"
 
 # behaves very badly when qtdeclarative is not already installed, also
 # other more minor issues (installs junk, sandbox/offscreen issues)
 RESTRICT="test"
 
-RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[network,opengl=,sql=,widgets=]
-	=dev-qt/qtshadertools-${PV}*:6
-"
+RDEPEND="=dev-qt/qtbase-${PV}*:6[network,opengl=,sql?,vulkan=,widgets=]"
 DEPEND="${RDEPEND}"
+BDEPEND="=dev-qt/qtshadertools-${PV}*:6"
 
 src_configure() {
 	local mycmakeargs=(
