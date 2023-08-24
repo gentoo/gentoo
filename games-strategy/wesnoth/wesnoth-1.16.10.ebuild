@@ -43,6 +43,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.16.10-boost-1.83.patch #912385
+)
+
 src_prepare() {
 	cmake_src_prepare
 
