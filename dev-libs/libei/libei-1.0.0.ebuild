@@ -14,7 +14,7 @@ SRC_URI+=" https://github.com/nemequ/munit/archive/${MUNIT_COMMIT}.tar.gz -> mun
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 IUSE="elogind systemd test"
 RESTRICT="!test? ( test )"
 
