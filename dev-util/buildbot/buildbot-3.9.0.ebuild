@@ -6,36 +6,34 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python3_{10..11} )
-EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
-inherit readme.gentoo-r1 git-r3 systemd distutils-r1
+inherit readme.gentoo-r1 systemd distutils-r1 pypi
 
 DESCRIPTION="BuildBot build automation system"
 HOMEPAGE="https://buildbot.net/
 	https://github.com/buildbot/buildbot
 	https://pypi.org/project/buildbot/"
-S="${S}/master"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~riscv ~amd64-linux ~x86-linux"
+
 IUSE="crypt docker examples irc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/buildbot
+	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	>=dev-python/alembic-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
-	dev-python/crontiter[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	dev-python/markdown[${PYTHON_USEDEP}]
-	dev-python/pyjwt[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
+	dev-python/pyjwt[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
 	<dev-python/sqlalchemy-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.7.0[${PYTHON_USEDEP}]
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
-	dev-util/buildbot-worker[${PYTHON_USEDEP}]
 	crypt? (
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/service-identity[${PYTHON_USEDEP}]
