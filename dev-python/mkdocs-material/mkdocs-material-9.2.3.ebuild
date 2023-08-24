@@ -27,7 +27,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
 IUSE="social"
 
 RDEPEND="

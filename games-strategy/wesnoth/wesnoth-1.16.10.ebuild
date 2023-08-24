@@ -43,10 +43,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.16.8-gcc-13.patch
-)
-
 src_prepare() {
 	cmake_src_prepare
 
