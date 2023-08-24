@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/rui314/mold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64"
 fi
 
 # mold (MIT)
@@ -23,10 +23,10 @@ SLOT="0"
 RDEPEND="
 	app-arch/zstd:=
 	>=dev-cpp/tbb-2021.7.0-r1:=
+	dev-libs/blake3:=
 	sys-libs/zlib
 	!kernel_Darwin? (
 		>=dev-libs/mimalloc-2:=
-		dev-libs/openssl:=
 	)
 "
 DEPEND="${RDEPEND}"
