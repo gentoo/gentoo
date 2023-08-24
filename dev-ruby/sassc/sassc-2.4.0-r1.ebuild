@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -39,6 +39,9 @@ all_ruby_prepare() {
 
 	# Avoid version-specific test so newer libsass versions can be used.
 	sed -i -e '/test_it_reports_the_libsass_version/,/end/ s:^:#:' test/native_test.rb || die
+
+	# Fix minitest deprecation
+	sed -i -e 's/MiniTest/Minitest/' test/*_test.rb || die
 
 	sed -i -e '/pry/ s:^:#:' test/test_helper.rb || die
 }

@@ -42,7 +42,7 @@ distutils_enable_tests pytest
 # For some reason this wants to use urllib to fetch things from the internet
 # distutils_enable_sphinx doc \
 # 	dev-python/matplotlib \
-# 	dev-python/memory_profiler \
+# 	dev-python/memory-profiler \
 # 	dev-python/numpydoc \
 # 	dev-python/pandas \
 # 	dev-python/pillow \

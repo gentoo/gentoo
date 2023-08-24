@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic qmake-utils udev xdg-utils
+inherit check-reqs flag-o-matic qmake-utils udev xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -46,6 +46,8 @@ PATCHES+=(
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
 	"${FILESDIR}"/OpenRGB-0.8-includes.patch
 )
+
+CHECKREQS_DISK_BUILD="2G"
 
 src_prepare() {
 	default

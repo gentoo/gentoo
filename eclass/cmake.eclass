@@ -125,6 +125,12 @@ fi
 # read-only. This is a user flag and should under _no circumstances_ be set in
 # the ebuild. Helps in improving QA of build systems that write to source tree.
 
+# @ECLASS_VARIABLE: CMAKE_SKIP_TESTS
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of tests that should be skipped when running CTest.
+
 [[ ${CMAKE_MIN_VERSION} ]] && die "CMAKE_MIN_VERSION is banned; if necessary, set BDEPEND=\">=dev-util/cmake-${CMAKE_MIN_VERSION}\" directly"
 [[ ${CMAKE_BUILD_DIR} ]] && die "The ebuild must be migrated to BUILD_DIR"
 [[ ${CMAKE_REMOVE_MODULES} ]] && die "CMAKE_REMOVE_MODULES is banned, set CMAKE_REMOVE_MODULES_LIST array instead"
@@ -655,7 +661,6 @@ cmake_build() {
 				OFF) NINJA_VERBOSE=OFF eninja "$@" ;;
 				*) eninja "$@" ;;
 			esac
-			eninja "$@"
 			;;
 	esac
 
@@ -681,6 +686,7 @@ cmake_src_test() {
 	[[ -e CTestTestfile.cmake ]] || { echo "No tests found. Skipping."; return 0 ; }
 
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
+	[[ -n ${CMAKE_SKIP_TESTS} ]] && myctestargs+=( -E '('$( IFS='|'; echo "${CMAKE_SKIP_TESTS[*]}")')'  )
 
 	set -- ctest -j "$(makeopts_jobs "${MAKEOPTS}" 999)" \
 		--test-load "$(makeopts_loadavg)" "${myctestargs[@]}" "$@"

@@ -78,6 +78,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-bap-ebusy-fix.patch
 	"${FILESDIR}"/${P}-monitor-decoding.patch
 	"${FILESDIR}"/${P}-heap-use-after-free.patch
+	"${FILESDIR}"/${P}-clang-midi.patch
 )
 
 pkg_setup() {

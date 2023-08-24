@@ -23,8 +23,12 @@ BDEPEND=">=dev-lang/go-1.20"
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make-gomaxprocs-install-optional.patch
+	)
+
 src_compile() {
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
+	CGO_LDFLAGS="$(usex hardened '-fNO-PIC ' '')" FORCE_HOST_GO="yes" \
 		emake -j1 GOFLAGS=-v GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
 }
 

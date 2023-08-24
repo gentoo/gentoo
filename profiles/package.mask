@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-08-23)
+# Incompatible with perl-5.38 and no fix forthcoming (bug 909570).
+# Removal sometime after 2023-09-23.
+sci-mathematics/polymake
+
 # Sam James <sam@gentoo.org> (2023-08-22)
 # Broken with new net-analyzer/net-snmp, no reverse dependencies in Gentoo,
 # no other distros package this, and upstream have discontinued development.
@@ -196,13 +201,6 @@ dev-python/tikzplotlib
 # Removal on 2023-08-22.  Bug #910708.
 dev-python/vncdotool
 
-# David Seifert <soap@gentoo.org> (2023-07-22)
-# Upstream unresponsive and package is pretty much dead. dev-python/tqdm
-# is a modern and fast replacement for dev-python/progressbar.
-# Removal on 2023-08-21. Bug #909929, #910031.
-dev-python/progressbar
-sys-apps/gcp
-
 # Hans de Graaff <graaff@gentoo.org> (2023-07-22)
 # Does not compile with modern compilers. Last upstream release in
 # 2011. No activity upstream. No reverse dependencies. Masked for
@@ -342,6 +340,7 @@ acct-group/spi
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
 >=app-crypt/libsecret-0.21
+>=app-editors/ghex-45_alpha
 >=app-editors/gnome-text-editor-45_alpha
 >=app-misc/gnote-45_alpha
 >=app-misc/tracker-3.6_alpha
@@ -353,11 +352,13 @@ acct-group/spi
 >=dev-util/gdbus-codegen-2.77
 >=dev-util/glib-utils-2.77
 >=games-puzzle/gnome-sudoku-45_alpha
+>=gnome-base/gnome-control-center-45_alpha
 >=gnome-base/gnome-settings-daemon-45_alpha
 >=gnome-base/gnome-shell-45_alpha
 >=gnome-base/gsettings-desktop-schemas-45_alpha
 >=gnome-base/nautilus-45_alpha
 >=gnome-extra/gnome-calculator-45_alpha
+>=gnome-extra/gnome-calendar-45_alpha
 >=gnome-extra/gnome-characters-45_alpha
 >=gnome-extra/gnome-logs-45_alpha
 >=gnome-extra/gnome-shell-extensions-45_alpha
@@ -365,6 +366,7 @@ acct-group/spi
 >=gnome-extra/gnome-system-monitor-45_alpha
 >=gnome-extra/gnome-weather-45_alpha
 >=gnome-extra/sushi-45_alpha
+gnome-extra/tecla
 >=gui-apps/gnome-console-45_alpha
 >=gui-libs/gtk-4.11
 >=gui-libs/libadwaita-1.4_alpha

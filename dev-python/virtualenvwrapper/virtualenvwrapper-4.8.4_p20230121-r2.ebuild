@@ -26,7 +26,7 @@ export PBR_VERSION="${PV/_p/.post}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '

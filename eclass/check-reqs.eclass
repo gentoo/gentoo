@@ -291,9 +291,11 @@ _check-reqs_output() {
 	[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && msg="eerror"
 	if [[ -n ${CHECKREQS_FAILED} ]]; then
 		${msg}
-		${msg} "Space constraints set in the ebuild were not met!"
-		${msg} "The build will most probably fail, you should enhance the space"
-		${msg} "as per failed tests."
+		${msg} "Memory or space constraints set in the ebuild were not met!"
+		${msg} "The build will most probably fail, you should:"
+		${msg} "- enhance the memory (reduce MAKEOPTS, add swap), or"
+		${msg} "- add more space"
+		${msg} "as required depending on the failed tests."
 		${msg}
 
 		[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && \

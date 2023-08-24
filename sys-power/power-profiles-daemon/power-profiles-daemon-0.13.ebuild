@@ -28,6 +28,7 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-util/glib-utils
 	gtk-doc? (
 		dev-util/gi-docgen
 		dev-util/gtk-doc

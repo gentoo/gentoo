@@ -19,6 +19,10 @@ RDEPEND="selinux? ( sec-policy/selinux-kubernetes )"
 RESTRICT+=" test "
 S="${WORKDIR}/kubernetes-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make-gomaxprocs-install-optional.patch
+)
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
 	emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}

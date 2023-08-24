@@ -18,6 +18,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="brain video_cards_nvidia"
+RESTRICT=test
 
 DEPEND="app-arch/lzma
 	app-arch/unrar

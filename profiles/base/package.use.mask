@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-08-23)
+# Polymake itself is masked for removal (bug 909570).
+sci-mathematics/singular polymake
+
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-12)
 # php-7.x is End-of-Life (EOL) and masked, but these packages don't
 # support any newer versions with USE=php. Bugs 912183, 912184,
@@ -226,7 +230,7 @@ gnome-base/gnome-extra-apps tracker
 >=app-misc/tracker-miners-3.4.0-r1 rss
 
 # Marek Szuba <marecki@gentoo.org> (2022-11-14)
-# Still not ready.
+# As of August 2023, does not support qt-6.5+ yet.
 dev-python/pyotherside qt6
 
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
@@ -557,14 +561,6 @@ app-office/abiword ots
 <dev-ml/llvm-ocaml-17 llvm_targets_Xtensa
 <sys-devel/clang-17 llvm_targets_Xtensa
 <sys-devel/llvm-17 llvm_targets_Xtensa
-
-# Marek Szuba <marecki@gentoo.org> (2020-11-30)
-# 3.0.0+ use currently unpackaged Qt6
-# Older versions: vendored therecipe/qt violates network sandbox + uses external binary
-# Qt libraries; see https://github.com/ProtonMail/proton-bridge/issues/16
-# The qt module itself apparently can be made to build against system Qt5
-# but making it do so while vendored is a non-trivial task.
-mail-mta/proton-mail-bridge gui
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.

@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	sys-libs/zlib:=
 	nls? ( virtual/libintl )
 	gtk? (
-		>=dev-cpp/gtkmm-3.24.0:4.0
+		>=dev-cpp/gtkmm-4.11.1:4.0
 		>=dev-cpp/glibmm-2.60.0:2.68
 		appindicator? ( dev-libs/libayatana-appindicator )
 	)

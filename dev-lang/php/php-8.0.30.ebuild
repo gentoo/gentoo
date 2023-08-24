@@ -255,6 +255,11 @@ src_configure() {
 		$(use_enable threads zts)
 	)
 
+	if is-flagq -flto; then
+		# https://bugs.gentoo.org/866683
+		our_conf+=( --disable-gcc-global-regs )
+	fi
+
 	our_conf+=(
 		$(use_with apparmor fpm-apparmor)
 		$(use_with argon2 password-argon2 "${EPREFIX}/usr")

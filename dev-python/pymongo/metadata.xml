@@ -9,10 +9,13 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
-	<longdescription lang="en">PyMongo is a Python distribution containing tools 
-	for working with MongoDB, and is the recommended way to work 
-	with MongoDB from Python.</longdescription>
+	<longdescription lang="en">
+		PyMongo is a Python distribution containing tools for working
+		with MongoDB, and is the recommended way to work with MongoDB
+		from Python.
+	</longdescription>
 	<use>
+		<flag name="native-extensions">Compiles native C extensions</flag>
 		<flag name="test-full">
 			Run test suite in full, including tests that run a local
 			database instance.

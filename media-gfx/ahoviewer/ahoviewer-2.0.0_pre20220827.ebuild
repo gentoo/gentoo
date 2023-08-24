@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ahodesuka/ahoviewer/archive/${MY_COMMIT}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="keyring gnutls +gstreamer plugins +rar +ssl +zip"
 
 COMMON_DEPEND="dev-cpp/atkmm:0

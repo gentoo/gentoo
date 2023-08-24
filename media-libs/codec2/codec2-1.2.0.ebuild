@@ -11,8 +11,8 @@ SRC_URI="https://github.com/drowe67/codec2/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="LGPL-2.1"
 SLOT="0/1.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="examples test"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+IUSE="test"
 
 # Not yet passing, but infrastructure added to run
 # Needs Octave dependencies like "signal"?
@@ -29,7 +29,6 @@ multilib_src_configure() {
 		# for now, don't flip this configure flag
 		# -DUNITTEST=$(usex test) # reenable once tests wired up
 		-DUNITTEST=OFF
-		-DINSTALL_EXAMPLES=$(usex examples)
 	)
 
 	cmake_src_configure

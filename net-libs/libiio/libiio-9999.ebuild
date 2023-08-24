@@ -41,8 +41,10 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	python_fix_shebang "${ED}"
-	python_optimize
+	if use python; then
+		python_fix_shebang "${ED}"
+		python_optimize
+	fi
 }
 
 pkg_postinst() {

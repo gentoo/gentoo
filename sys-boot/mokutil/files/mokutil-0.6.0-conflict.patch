@@ -1,0 +1,38 @@
+From dd55c28236809fc30a7f079882914cde45560277 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 30 Jun 2023 10:36:54 +0800
+Subject: [PATCH] Avoid conflicting efi_char16_t type definitions
+
+It's not necessary to define 'efi_char16_t' as 'wchar_t' since we don't
+need any wchar functions. Besides, it may conflict with efivar-38. This
+commit defines 'efi_char16_t' as 'uint16_t' and adds the conditional
+check to avoid the potential conflict.
+
+Fixes: https://github.com/lcp/mokutil/issues/66
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/mokutil.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/mokutil.h b/src/mokutil.h
+index d47a380..bd02608 100644
+--- a/src/mokutil.h
++++ b/src/mokutil.h
+@@ -33,13 +33,14 @@
+ #define __MOKUTIL_H__
+ 
+ #include <ctype.h>
+-#include <wchar.h>
+ 
+ #include "signature.h"
+ 
+ typedef unsigned long efi_status_t;
+ typedef uint8_t efi_bool_t;
+-typedef wchar_t efi_char16_t;		/* UNICODE character */
++#ifndef efi_char16_t
++typedef uint16_t efi_char16_t;		/* UNICODE character */
++#endif
+ 
+ typedef enum {
+ 	DELETE_MOK = 0,
