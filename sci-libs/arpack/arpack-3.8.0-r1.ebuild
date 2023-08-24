@@ -35,6 +35,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-static \
+		--enable-icb \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
 		$(use_enable mpi)
