@@ -152,10 +152,7 @@ python_configure_all() {
 		$(usev !opengl --disabled-feature=PyQt_OpenGL)
 		$(usev !ssl --disabled-feature=PyQt_SSL)
 
-		# TODO: drop this when depend on a >=qtbase-<ver> which enables
-		# -DQT_FEATURE_permissions=ON (currently missing, and the feature
-		# is furthermore broken with gcc-13 on qtbase's end)
-		--disabled-feature=PyQt_Permissions
+		--disabled-feature=PyQt_Permissions # disabled in qtbase on this target
 	)
 }
 
