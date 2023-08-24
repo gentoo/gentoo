@@ -36,6 +36,9 @@ all_ruby_prepare() {
 	# Don't set up bundler: it doesn't understand our setup.
 	sed -i -e '/[Bb]undler/d' Rakefile || die
 
+	# Fix minitest deprecation
+	sed -i -e 's/MiniTest/Minitest/' spec/rspec/expectations/minitest_integration_spec.rb || die
+
 	# Remove the Gemfile to avoid running through 'bundle exec'
 	rm -f Gemfile || die
 
