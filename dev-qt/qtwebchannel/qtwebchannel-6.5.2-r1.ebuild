@@ -14,6 +14,5 @@ fi
 RDEPEND="
 	=dev-qt/qtbase-${PV}*:6[concurrent]
 	=dev-qt/qtdeclarative-${PV}*:6
-	=dev-qt/qtwebsockets-${PV}*:6
 "
 DEPEND="${RDEPEND}"
