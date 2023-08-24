@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake fortran-2
 
 DESCRIPTION="BLAS,CBLAS,LAPACK,LAPACKE reference implementations"
 HOMEPAGE="https://www.netlib.org/lapack/"

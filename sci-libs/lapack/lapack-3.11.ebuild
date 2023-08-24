@@ -5,7 +5,7 @@ EAPI=8
 
 # Some additional tests are run if Python is found
 PYTHON_COMPAT=( python3_{9..11} )
-inherit cmake python-any-r1
+inherit cmake fortran-2 python-any-r1
 
 DESCRIPTION="BLAS,CBLAS,LAPACK,LAPACKE reference implementations"
 HOMEPAGE="https://www.netlib.org/lapack/"
@@ -34,6 +34,7 @@ BDEPEND="
 "
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
