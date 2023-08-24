@@ -14,8 +14,7 @@ fi
 RDEPEND="
 	=dev-qt/qtbase-${PV}*:6[network]
 	=dev-qt/qtdeclarative-${PV}*:6
-	=dev-qt/qtpositioning-${PV}*:6
-	=dev-qt/qtshadertools-${PV}*:6
+	=dev-qt/qtpositioning-${PV}*:6[qml(+)]
 "
 DEPEND="${RDEPEND}"
 
