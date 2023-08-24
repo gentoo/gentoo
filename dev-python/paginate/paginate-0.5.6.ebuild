@@ -20,6 +20,6 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~arm ~ppc"
 
 distutils_enable_tests pytest
