@@ -141,6 +141,7 @@ app-text/nuspell doc
 dev-ruby/capybara test
 #  - dev-qt/qtwebengine (bdepend)
 dev-python/ipython qt5
+kde-apps/k3b webengine
 kde-apps/marble webengine
 kde-plasma/discover webengine
 kde-plasma/kdeplasma-addons webengine
