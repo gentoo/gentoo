@@ -8,9 +8,6 @@ PYTHON_REQ_USE="xml(+)"
 inherit check-reqs estack flag-o-matic multiprocessing
 inherit prefix python-any-r1 qt6-build toolchain-funcs
 
-CHROMIUM_VER=108.0.5359.181
-CHROMIUM_PATCHES_VER=113.0.5672.126
-
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -137,17 +134,6 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-pkg_preinst() {
-	elog "This version of Qt WebEngine is based on Chromium version ${CHROMIUM_VER}, with"
-	elog "additional security fixes up to ${CHROMIUM_PATCHES_VER}. Extensive as it is, the"
-	elog "list of backports is impossible to evaluate, but always bound to be behind"
-	elog "Chromium's release schedule."
-	elog "In addition, various online services may deny service based on an outdated"
-	elog "user agent version (and/or other checks). Google is already known to do so."
-	elog
-	elog "tldr: Your web browsing experience will be compromised."
-}
-
 src_prepare() {
 	qt6-build_src_prepare
 
@@ -173,6 +159,14 @@ src_prepare() {
 
 	# for www-plugins/chrome-binary-plugins (widevine) search paths on prefix
 	hprefixify -w /Gentoo/ src/core/content_client_qt.cpp
+
+	# store chromium versions, only used in postinst for a warning
+	local chromium
+	mapfile -t chromium < CHROMIUM_VERSION || die
+	[[ ${chromium[1]} =~ ^Based.*:[^0-9]+([0-9.]+$) ]] &&
+		QT6_CHROMIUM_VER=${BASH_REMATCH[1]} || die
+	[[ ${chromium[2]} =~ ^Patched.+:[^0-9]+([0-9.]+$) ]] &&
+		QT6_CHROMIUM_PATCHES_VER=${BASH_REMATCH[1]} || die
 }
 
 src_configure() {
@@ -262,4 +256,16 @@ src_test() {
 
 	# random failures in several tests without -j1
 	qt6-build_src_test -j1
+}
+
+pkg_postinst() {
+	elog "This version of Qt WebEngine is based on Chromium version ${QT6_CHROMIUM_VER}, with"
+	elog "additional security fixes up to ${QT6_CHROMIUM_PATCHES_VER}. Extensive as it is, the"
+	elog "list of backports is impossible to evaluate, but always bound to be behind"
+	elog "Chromium's release schedule."
+	elog
+	elog "In addition, various online services may deny service based on an outdated"
+	elog "user agent version (and/or other checks). Google is already known to do so."
+	elog
+	elog "tl;dr your web browsing experience will be compromised."
 }
