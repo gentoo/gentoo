@@ -232,6 +232,9 @@ src_configure() {
 		-DQT_FEATURE_webengine_webrtc=on
 		-DQT_FEATURE_webengine_webrtc_pipewire=$(usex screencast on off)
 		#-DQT_FEATURE_xcb=off
+
+		# TODO: fix gn cross build or split + depend on dev-qt/qtwebengine-gn
+		-DINSTALL_GN=off
 	)
 
 	qt6-build_src_configure
