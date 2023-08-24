@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qt6-build
+inherit flag-o-matic qt6-build
 
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt6 framework"
 
@@ -63,6 +63,9 @@ CMAKE_SKIP_TESTS=(
 )
 
 src_configure() {
+	# normally passed by the build system, but needed for 32-on-64 chroots
+	use x86 && append-cppflags -DPFFFT_SIMD_DISABLE
+
 	local mycmakeargs=(
 		$(qt_feature alsa)
 		$(qt_feature ffmpeg)
