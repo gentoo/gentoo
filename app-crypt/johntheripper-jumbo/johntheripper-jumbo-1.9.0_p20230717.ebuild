@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools flag-o-matic toolchain-funcs pax-utils
 
-DESCRIPTION="Fast password cracker"
+DESCRIPTION="Fast password cracker, community enhanced version"
 HOMEPAGE="http://www.openwall.com/john/"
 
 if [[ ${PV} == "9999" ]] ; then
