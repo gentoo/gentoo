@@ -5,6 +5,10 @@
 		<email>dolsen@gentoo.org</email>
 		<name>Brian Dolbec</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zorry@gentoo.org</email>
+		<name>Magnus Granberg</name>
+	</maintainer>
 	<longdescription lang="en">
 		The buildbot-waterfall-view plugin is the user interface code used to
 		generate the web pages used to display information about the builds.
