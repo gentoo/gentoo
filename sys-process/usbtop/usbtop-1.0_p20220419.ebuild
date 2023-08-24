@@ -13,7 +13,7 @@ SRC_URI="https://github.com/aguinet/usbtop/archive/${COMMIT}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE=""
 
 RDEPEND="net-libs/libpcap[usb]"
