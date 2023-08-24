@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
 
 RDEPEND="
 	>=dev-python/beautifulsoup4-4.0.1[${PYTHON_USEDEP}]
