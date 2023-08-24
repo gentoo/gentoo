@@ -11,14 +11,19 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
+IUSE="vulkan"
+
 RDEPEND="
 	dev-libs/wayland
-	=dev-qt/qtbase-${PV}*:6[egl,gui,opengl]
+	=dev-qt/qtbase-${PV}*:6[egl,gui,opengl,vulkan=]
 	=dev-qt/qtdeclarative-${PV}*:6
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
+"
 BDEPEND="dev-util/wayland-scanner"
 
 CMAKE_SKIP_TESTS=(
