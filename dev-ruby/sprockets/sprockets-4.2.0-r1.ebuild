@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -50,6 +50,8 @@ all_ruby_prepare() {
 	# Fails only within Gentoo test environment, not clear why
 	sed -i -e '/extension exporters/a skip' test/test_exporting.rb || die
 	sed -i -e "/bundler/d" Rakefile || die
+
+	sed -i -e 's/MiniTest/Minitest/' test/sprockets_test.rb test/test*.rb || die
 }
 
 each_ruby_prepare() {
