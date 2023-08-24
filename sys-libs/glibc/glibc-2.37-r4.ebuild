@@ -864,6 +864,8 @@ sanity_prechecks() {
 }
 
 upgrade_warning() {
+	is_crosscompile && return
+
 	if [[ ${MERGE_TYPE} != buildonly && -n ${REPLACING_VERSIONS} && -z ${ROOT} ]]; then
 		local oldv newv=$(ver_cut 1-2 ${PV})
 		for oldv in ${REPLACING_VERSIONS}; do
