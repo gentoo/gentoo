@@ -11,11 +11,25 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
+IUSE="icu qml"
+
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[gui,network]
-	=dev-qt/qtdeclarative-${PV}*:6
+	=dev-qt/qtbase-${PV}*:6[gui,icu=,network,xml]
+	icu? ( dev-libs/icu:= )
+	qml? (
+		=dev-qt/qtdeclarative-${PV}*:6
+		=dev-qt/qtshadertools-${PV}*:6
+	)
 "
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_find_package qml Qt6Qml)
+	)
+
+	qt6-build_src_configure
+}
 
 src_test() {
 	# tst_qxmlinputsource sometimes hang without -j1
