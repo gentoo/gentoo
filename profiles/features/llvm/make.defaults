@@ -11,7 +11,10 @@ CXX="clang++"
 LD="ld.lld"
 
 # linker flags
-LDFLAGS="${LDFLAGS} -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind -Wl,--as-needed"
+# We don't set LDFLAGS here for linker, rtlib, etc because clang-common enforces
+# the needed bits for us and it confuses clang->gcc for stuff like Fortran,
+# see bug #908798.
+LDFLAGS="${LDFLAGS} -Wl,--as-needed"
 
 # use LLVM-provided binutils
 AR="llvm-ar"
