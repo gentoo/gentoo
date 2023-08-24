@@ -11,8 +11,18 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
+IUSE="qml"
+
 RDEPEND="
 	=dev-qt/qtbase-${PV}*:6[gui,opengl,widgets]
-	=dev-qt/qtdeclarative-${PV}*:6
+	qml? ( =dev-qt/qtdeclarative-${PV}*:6 )
 "
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_find_package qml Qt6Qml)
+	)
+
+	qt6-build_src_configure
+}
