@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Extract structure of quoted HTML mail message"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-perl/HTML-Parser-3.0.0
