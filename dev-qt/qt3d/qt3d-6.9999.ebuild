@@ -11,32 +11,23 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
+IUSE="qml vulkan"
+
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[concurrent,gui,network,opengl,vulkan,widgets]
-	=dev-qt/qtdeclarative-${PV}*:6[widgets]
-	=dev-qt/qtmultimedia-${PV}*:6
+	=dev-qt/qtbase-${PV}*:6[concurrent,gui,network,opengl,vulkan=,widgets]
 	=dev-qt/qtshadertools-${PV}*:6
 	media-libs/assimp:=
+	qml? ( =dev-qt/qtdeclarative-${PV}*:6[widgets] )
 "
 DEPEND="
 	${RDEPEND}
-	dev-util/vulkan-headers
+	vulkan? ( dev-util/vulkan-headers )
 "
 
-# No qtgamepad branching since 6.3.
 src_configure() {
 	local mycmakeargs=(
-		-DQT_FEATURE_opengl=ON
-		-DQT_FEATURE_qt3d_animation=ON
-		-DQT_FEATURE_qt3d_extras=ON
-		-DQT_FEATURE_qt3d_input=ON
-		-DQT_FEATURE_qt3d_logic=ON
-		-DQT_FEATURE_qt3d_render=ON
-		-DQT_FEATURE_qt3d_rhi_renderer=ON
+		$(cmake_use_find_package qml Qt6Qml)
 		-DQT_FEATURE_qt3d_system_assimp=ON
-		-DQT_FEATURE_regularexpression=ON
-		-DQT_FEATURE_system_zlib=ON
-		-DQT_FEATURE_vulkan=ON
 	)
 
 	qt6-build_src_configure
