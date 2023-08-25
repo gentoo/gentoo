@@ -73,10 +73,6 @@ SLOT=6/${PV%.*}
 if [[ ${PN} != qttranslations ]]; then
 	IUSE="test"
 	RESTRICT="!test? ( test )"
-
-	# testlib is currently enabled by USE=gui
-	[[ ${PN} != qtbase ]] &&
-		DEPEND="test? ( =dev-qt/qtbase-${PV}*:6[gui] )"
 fi
 
 BDEPEND="
