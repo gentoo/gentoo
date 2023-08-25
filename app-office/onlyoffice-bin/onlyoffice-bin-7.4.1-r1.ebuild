@@ -38,7 +38,6 @@ RDEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/harfbuzz
 	media-libs/libglvnd
-	media-libs/libpulse
 	net-print/cups
 	sys-apps/dbus
 	x11-libs/cairo
@@ -60,11 +59,23 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-libs/pango
+	|| (
+		media-libs/libpulse
+		media-sound/apulse
+	)
 "
 
 S="${WORKDIR}"
 
 QA_PREBUILT="*"
+
+src_prepare() {
+	default
+
+	# Allow launching the ONLYOFFICE on ALSA systems via media-sound/apuls
+	sed -i -e 's|\(export LD_LIBRARY_PATH=$DIR$LDLPATH\)|\1:'"${EPREFIX}"'/usr/'$(get_libdir)'/apulse|' \
+		"${S}"/usr/bin/onlyoffice-desktopeditors || die
+}
 
 src_install() {
 	domenu usr/share/applications/onlyoffice-desktopeditors.desktop
