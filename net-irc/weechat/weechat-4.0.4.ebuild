@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..4} )
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake lua-single python-single-r1 xdg-utils
+inherit cmake lua-single python-single-r1 xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -183,16 +183,4 @@ src_test() {
 		eerror "en_US.UTF-8 locale is required to run ${PN}'s ${FUNCNAME}"
 		die "required locale missing"
 	fi
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
