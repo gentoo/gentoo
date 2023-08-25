@@ -11,8 +11,8 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Simple mime type detection using magic numbers, filenames, and extensions"
-HOMEPAGE="https://github.com/basecamp/marcel"
-SRC_URI="https://github.com/basecamp/marcel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/rails/marcel"
+SRC_URI="https://github.com/rails/marcel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="$(ver_cut 1-2)"
