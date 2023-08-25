@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for fancy k3bdiskinfoview</flag>
+	</use>
 </pkgmetadata>
