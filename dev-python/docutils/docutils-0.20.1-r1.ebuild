@@ -14,7 +14,8 @@ HOMEPAGE="
 	https://pypi.org/project/docutils/
 "
 
-LICENSE="BSD-2 GPL-3 public-domain"
+# GPL-3+ only for emacs/rst.el
+LICENSE="BSD BSD-2 GPL-3+ PSF-2.4 public-domain"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
