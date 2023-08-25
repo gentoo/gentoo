@@ -9,7 +9,6 @@
 		<flag name="brotli">Enable support for Brotli decompression</flag>
 		<flag name="concurrent">Build Qt6Concurrent module</flag>
 		<flag name="dbus">Build Qt6DBus module</flag>
-		<flag name="egl">Enable EGL integration</flag>
 		<flag name="eglfs">Build the EGL Full Screen/Single Surface platform plugin</flag>
 		<flag name="evdev">Enable support for input devices via evdev</flag>
 		<flag name="gssapi">Enable support for GSSAPI (<pkg>virtual/krb5</pkg>)</flag>
@@ -21,7 +20,6 @@
 		<flag name="sql">Build Qt6Sql module</flag>
 		<flag name="systemd">Enable native journald logging support</flag>
 		<flag name="tslib">Enable support for touchscreen devices via <pkg>x11-libs/tslib</pkg></flag>
-		<flag name="tuio">Build plugin to receive touch events over the TUIO protocol</flag>
 		<flag name="widgets">Build Qt6Widgets module</flag>
 		<flag name="X">Build the XCB platform plugin and enable X11 integration</flag>
 	</use>

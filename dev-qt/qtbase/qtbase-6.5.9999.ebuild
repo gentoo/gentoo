@@ -11,106 +11,119 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-# Qt Modules
-IUSE="+concurrent +dbus +gui +network +sql opengl +widgets +xml zstd"
-REQUIRED_USE="
-	opengl? ( gui )
-	widgets? ( gui )
-"
+declare -A QT6_IUSE=(
+	[global]="+ssl +udev zstd"
+	[core]="icu systemd"
+	[modules]="+concurrent +dbus +gui +network +sql +xml"
 
-QTGUI_IUSE="accessibility egl eglfs evdev gles2-only +jpeg +libinput tslib tuio vulkan +X"
-QTNETWORK_IUSE="brotli gssapi libproxy sctp +ssl vnc"
-QTSQL_IUSE="freetds mysql oci8 odbc postgres +sqlite"
-IUSE+=" ${QTGUI_IUSE} ${QTNETWORK_IUSE} ${QTSQL_IUSE} cups gtk icu systemd +udev wayland"
-# QtPrintSupport = QtGui + QtWidgets enabled.
-# ibus = xkbcommon + dbus, and xkbcommon needs either X or libinput
-REQUIRED_USE+="
+	[gui]="
+		+X accessibility eglfs evdev gles2-only +libinput
+		opengl tslib vulkan +widgets
+	"
+	[network]="brotli gssapi libproxy sctp"
+	[sql]="mysql oci8 odbc postgres +sqlite"
+	[widgets]="cups gtk"
+
+	[optfeature]="wayland" #864509
+)
+IUSE="${QT6_IUSE[*]}"
+REQUIRED_USE="
 	$(
-		printf '%s? ( gui ) ' ${QTGUI_IUSE//+/}
-		printf '%s? ( network ) ' ${QTNETWORK_IUSE//+/}
-		printf '%s? ( sql ) ' ${QTSQL_IUSE//+/}
-	)
-	X? (
-		|| ( evdev libinput )
-		gles2-only? ( egl )
+		printf '%s? ( gui ) ' ${QT6_IUSE[gui]//+/}
+		printf '%s? ( network ) ' ${QT6_IUSE[network]//+/}
+		printf '%s? ( sql ) ' ${QT6_IUSE[sql]//+/}
+		printf '%s? ( gui widgets ) ' ${QT6_IUSE[widgets]//+/}
 	)
 	accessibility? ( X dbus )
-	cups? ( gui widgets )
-	eglfs? ( egl )
-	gtk? ( widgets )
-	gui? ( || ( X eglfs ) || ( X libinput ) )
+	eglfs? ( opengl )
+	gui? ( || ( X eglfs wayland ) )
 	libinput? ( udev )
-	sql? ( || ( freetds mysql oci8 odbc postgres sqlite ) )
+	sql? ( || ( ${QT6_IUSE[sql]//+/} ) )
 	test? (
-		gui jpeg icu
+		gui icu
 		sql? ( sqlite )
 	)
-	vnc? ( gui )
 "
 
-# TODO:
-# qtimageformats: mng not done yet, qtimageformats.git upstream commit 9443239c
-# qtnetwork: connman, networkmanager
+# groups:
+# - global (configure.cmake)
+# - qtcore (src/corelib/configure.cmake)
+# - qtgui (src/gui/configure.cmake)
+# - qtnetwork (src/network/configure.cmake)
+# - qtprintsupport (src/printsupport/configure.cmake) [gui+widgets]
+# - qtsql (src/plugins/sqldrivers/configure.cmake)
 RDEPEND="
+	sys-libs/zlib:=
+	ssl? ( dev-libs/openssl:= )
+	udev? ( virtual/libudev:= )
+	zstd? ( app-arch/zstd:= )
+
 	app-crypt/libb2
 	dev-libs/double-conversion:=
 	dev-libs/glib:2
-	dev-libs/libpcre2:=[pcre16,unicode]
-	dev-util/gtk-update-icon-cache
-	media-libs/fontconfig
-	>=media-libs/freetype-2.6.1:2
-	>=media-libs/harfbuzz-1.6.0:=
-	media-libs/tiff:=
-	>=sys-apps/dbus-1.4.20
-	sys-libs/zlib:=
-	X? (
-		x11-libs/libdrm
-		x11-libs/libICE
-		x11-libs/libSM
-		x11-libs/libX11
-		>=x11-libs/libxcb-1.12:=
-		>=x11-libs/libxkbcommon-0.5.0[X]
-		x11-libs/xcb-util-cursor
-		x11-libs/xcb-util-image
-		x11-libs/xcb-util-keysyms
-		x11-libs/xcb-util-renderutil
-		x11-libs/xcb-util-wm
-	)
-	brotli? ( app-arch/brotli:= )
-	evdev? ( sys-libs/mtdev )
-	freetds? ( dev-db/freetds )
-	gles2-only? ( media-libs/libglvnd )
-	!gles2-only? ( media-libs/libglvnd[X] )
-	gssapi? ( virtual/krb5 )
-	gtk? (
-		x11-libs/gtk+:3
-		x11-libs/libX11
-		x11-libs/pango
-	)
-	gui? ( media-libs/libpng:= )
+	dev-libs/libpcre2:=[pcre16,unicode(+)]
 	icu? ( dev-libs/icu:= )
-	!icu? ( virtual/libiconv )
-	jpeg? ( media-libs/libjpeg-turbo:= )
-	libinput? (
-		dev-libs/libinput:=
-		>=x11-libs/libxkbcommon-0.5.0
-	)
-	libproxy? ( net-libs/libproxy )
-	mysql? ( dev-db/mysql-connector-c:= )
-	oci8? ( dev-db/oracle-instantclient:=[sdk] )
-	odbc? ( dev-db/unixODBC )
-	postgres? ( dev-db/postgresql:* )
-	sctp? ( kernel_linux? ( net-misc/lksctp-tools ) )
-	sqlite? ( dev-db/sqlite:3 )
-	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd:= )
-	tslib? ( >=x11-libs/tslib-1.21 )
-	udev? ( virtual/libudev:= )
-	vulkan? ( dev-util/vulkan-headers )
-	zstd? ( app-arch/zstd:= )
+
+	dbus? ( sys-apps/dbus )
+	gui? (
+		media-libs/fontconfig
+		media-libs/freetype:2
+		media-libs/harfbuzz:=
+		media-libs/libjpeg-turbo:=
+		media-libs/libpng:=
+		x11-libs/libdrm
+		x11-libs/libxkbcommon[X?]
+		X? (
+			x11-libs/libICE
+			x11-libs/libSM
+			x11-libs/libX11
+			x11-libs/libxcb:=
+			x11-libs/xcb-util-cursor
+			x11-libs/xcb-util-image
+			x11-libs/xcb-util-keysyms
+			x11-libs/xcb-util-renderutil
+			x11-libs/xcb-util-wm
+		)
+		accessibility? ( app-accessibility/at-spi2-core:2 )
+		eglfs? ( media-libs/mesa[gbm(+)] )
+		evdev? ( sys-libs/mtdev )
+		libinput? ( dev-libs/libinput:= )
+		opengl? ( media-libs/libglvnd[X?] )
+		tslib? ( x11-libs/tslib )
+		widgets? (
+			cups? ( net-print/cups )
+			gtk? (
+				x11-libs/gdk-pixbuf:2
+				x11-libs/gtk+:3
+				x11-libs/pango
+			)
+		)
+	)
+	network? (
+		brotli? ( app-arch/brotli:= )
+		gssapi? ( virtual/krb5 )
+		libproxy? ( net-libs/libproxy )
+	)
+	sql? (
+		mysql? ( dev-db/mysql-connector-c:= )
+		oci8? ( dev-db/oracle-instantclient:=[sdk] )
+		odbc? ( dev-db/unixODBC )
+		postgres? ( dev-db/postgresql:* )
+		sqlite? ( dev-db/sqlite:3 )
+	)
 "
-DEPEND="${RDEPEND}"
-PDEPEND="wayland? ( =dev-qt/qtwayland-${PV}*:6 )" #864509
+DEPEND="
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )
+	gui? (
+		vulkan? ( dev-util/vulkan-headers )
+	)
+	network? (
+		sctp? ( net-misc/lksctp-tools )
+	)
+"
+PDEPEND="wayland? ( =dev-qt/qtwayland-${PV}*:6 )"
 
 src_prepare() {
 	qt6-build_src_prepare
@@ -137,57 +150,62 @@ src_configure() {
 		-DINSTALL_QMLDIR="${QT6_QMLDIR}"
 		-DINSTALL_SYSCONFDIR="${QT6_SYSCONFDIR}"
 		-DINSTALL_TRANSLATIONSDIR="${QT6_TRANSLATIONDIR}"
+
+		-DQT_FEATURE_precompile_header=OFF
+		$(qt_feature ssl openssl)
+		$(qt_feature ssl openssl_linked)
+		$(qt_feature udev libudev)
+		$(qt_feature zstd)
+
+		# qtcore
+		$(qt_feature icu)
+		$(qt_feature systemd journald)
+
+		# tools
 		-DQT_FEATURE_androiddeployqt=OFF
+
+		# modules
 		$(qt_feature concurrent)
 		$(qt_feature dbus)
 		$(qt_feature gui)
-		$(qt_feature gui testlib)
-		$(qt_feature icu)
+		$(qt_feature gui testlib) # shared w/ gui
 		$(qt_feature network)
 		$(qt_feature sql)
-		$(qt_feature systemd journald)
-		$(qt_feature udev libudev)
 		$(qt_feature xml)
-		$(qt_feature zstd)
 	)
+
 	use gui && mycmakeargs+=(
 		$(qt_feature X xcb)
-		$(qt_feature X xcb_xlib)
+		$(qt_feature X system_xcb_xinput)
+		$(qt_feature X xkbcommon_x11)
+		$(cmake_use_find_package X X11) # needed for truly no automagic
 		$(qt_feature accessibility accessibility_atspi_bridge)
-		$(qt_feature egl)
-		$(qt_feature egl xcb_egl_plugin)
-		$(qt_feature eglfs eglfs_egldevice)
-		$(qt_feature eglfs eglfs_gbm)
+		$(qt_feature eglfs)
 		$(qt_feature evdev)
 		$(qt_feature evdev mtdev)
-		-DQT_FEATURE_gif=ON
 		$(qt_feature gles2-only opengles2)
-		$(qt_feature jpeg)
 		$(qt_feature libinput)
 		$(qt_feature opengl)
 		$(qt_feature tslib)
-		$(qt_feature tuio tuiotouch)
 		$(qt_feature vulkan)
 		$(qt_feature widgets)
-	)
-	use widgets && mycmakeargs+=(
-		$(qt_feature cups)
+		-DQT_FEATURE_system_textmarkdownreader=OFF # TODO?: package md4c
+	) && use widgets && mycmakeargs+=(
+		$(qt_feature cups) # qtprintsupport is enabled w/ gui+widgets
 		$(qt_feature gtk gtk3)
 	)
-	if use X || use libinput; then
-		mycmakeargs+=( -DQT_FEATURE_xkbcommon=ON )
-	fi
+
 	use network && mycmakeargs+=(
 		$(qt_feature brotli)
 		$(qt_feature gssapi)
 		$(qt_feature libproxy)
 		$(qt_feature sctp)
-		$(qt_feature ssl openssl)
-		$(qt_feature vnc)
 		$(usev test -DQT_SKIP_DOCKER_COMPOSE=ON)
 	)
+
 	use sql && mycmakeargs+=(
-		$(qt_feature freetds sql_tds)
+		-DQT_FEATURE_sql_db2=OFF # unpackaged
+		-DQT_FEATURE_sql_ibase=OFF # unpackaged
 		$(qt_feature mysql sql_mysql)
 		$(qt_feature oci8 sql_oci)
 		$(usev oci8 -DOracle_ROOT="${ESYSROOT}"/usr/$(get_libdir)/oracle/client)
@@ -195,6 +213,7 @@ src_configure() {
 		$(qt_feature postgres sql_psql)
 		$(qt_feature sqlite sql_sqlite)
 		$(qt_feature sqlite system_sqlite)
+		-DQT_FEATURE_sql_tds=OFF # currently a no-op in CMakeLists.txt
 	)
 
 	qt6-build_src_configure
