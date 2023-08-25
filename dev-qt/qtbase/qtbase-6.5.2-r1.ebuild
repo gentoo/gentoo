@@ -39,10 +39,7 @@ REQUIRED_USE="
 	gui? ( || ( X eglfs wayland ) )
 	libinput? ( udev )
 	sql? ( || ( ${QT6_IUSE[sql]//+/} ) )
-	test? (
-		gui icu
-		sql? ( sqlite )
-	)
+	test? ( icu sql? ( sqlite ) )
 "
 
 # groups:
@@ -173,9 +170,9 @@ src_configure() {
 		$(qt_feature concurrent)
 		$(qt_feature dbus)
 		$(qt_feature gui)
-		$(qt_feature gui testlib) # shared w/ gui
 		$(qt_feature network)
 		$(qt_feature sql)
+		-DQT_FEATURE_testlib=ON # trivial and often needed to build revdeps
 		$(qt_feature xml)
 	)
 
