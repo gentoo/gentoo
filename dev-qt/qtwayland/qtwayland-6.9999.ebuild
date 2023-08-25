@@ -15,7 +15,7 @@ IUSE="vulkan"
 
 RDEPEND="
 	dev-libs/wayland
-	=dev-qt/qtbase-${PV}*:6[egl,gui,opengl,vulkan=]
+	=dev-qt/qtbase-${PV}*:6[gui,opengl,vulkan=]
 	=dev-qt/qtdeclarative-${PV}*:6
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
