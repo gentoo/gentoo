@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/arma/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0/12"
-KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="arpack blas doc examples lapack mkl superlu test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( arpack lapack superlu )"
