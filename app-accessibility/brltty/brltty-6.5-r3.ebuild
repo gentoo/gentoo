@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 FINDLIB_USE="ocaml"
 JAVA_PKG_WANT_SOURCE="1.8"
 JAVA_PKG_WANT_TARGET="1.8"
@@ -16,7 +16,7 @@ SRC_URI="https://brltty.app/archive/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+api +beeper bluetooth doc +fm gpm iconv icu
 		java louis +midi ncurses nls ocaml +pcm policykit python
 		usb systemd +speech tcl xml X"
@@ -49,7 +49,7 @@ DEPEND="
 		app-accessibility/speech-dispatcher
 	)
 	systemd? ( sys-apps/systemd )
-	tcl? ( >=dev-lang/tcl-8.4.15:0= )
+	tcl? ( >=dev-lang/tcl-8.6.13-r1:= )
 	usb? ( virtual/libusb:1 )
 	xml? ( dev-libs/expat )
 	X? (
@@ -64,17 +64,21 @@ DEPEND="
 RDEPEND="${DEPEND}
 	java? ( >=virtual/jre-1.8:* )
 "
+# <cython-3:
+# * see https://brltty.app/pipermail/brltty/2023-August/020046.html
+# * https://discourse.gnome.org/t/psa-for-distros-brltty-should-be-built-using-cython-0-29-x-not-cython-3/16715
 BDEPEND="
 	virtual/pkgconfig
 	java? ( >=virtual/jdk-1.8:* )
 	nls? ( virtual/libintl )
-	python? ( >=dev-python/cython-0.16[${PYTHON_USEDEP}] )
+	python? ( <dev-python/cython-3[${PYTHON_USEDEP}] )
 "
 
 HTML_DOCS=( "${S}"/Documents/Manual-BrlAPI/. )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.4-respect-AR.patch
+	"${FILESDIR}"/${PN}-6.5-gettext-0.22.patch
 )
 
 src_prepare() {
