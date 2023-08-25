@@ -10,7 +10,7 @@ DOCS_DIR="${S}/doc"
 LUA_REQ_USE="deprecated(+)"
 LUA_COMPAT=( lua5-{1,2} luajit )
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit docs lua-single meson python-any-r1 xdg
 
