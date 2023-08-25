@@ -65,7 +65,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 PATCHES=(
 	"${FILESDIR}/qwt2.patch"
 	"${FILESDIR}/cmake.patch"
-	"${FILESDIR}/ffmpeg6.patch"
+	"${FILESDIR}/protobuf.patch"
 )
 
 src_configure() {
