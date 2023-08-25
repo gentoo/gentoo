@@ -269,8 +269,18 @@ sphinx_compile() {
 	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
 		"${DOCS_DIR}"/conf.py || die
 	# not all packages include the Makefile in pypi tarball
-	sphinx-build -b html -d "${DOCS_OUTDIR}"/_build/doctrees "${DOCS_DIR}" \
-	"${DOCS_OUTDIR}" || die "${FUNCNAME}: sphinx-build failed"
+	local command=( "${EPYTHON}" -m sphinx.cmd.build )
+	if ! "${EPYTHON}" -c "import sphinx.cmd.build" 2>/dev/null; then
+		command=( sphinx-build )
+	fi
+	command+=(
+		-b html
+		-d "${DOCS_OUTDIR}"/_build/doctrees
+		"${DOCS_DIR}"
+		"${DOCS_OUTDIR}"
+	)
+	echo "${command[@]}" >&2
+	"${command[@]}" || die "${FUNCNAME}: sphinx-build failed"
 
 	HTML_DOCS+=( "${DOCS_OUTDIR}" )
 
@@ -316,9 +326,17 @@ mkdocs_compile() {
 	[[ -f ${mkdocsyml} ]] ||
 		die "${FUNCNAME}: ${mkdocsyml} not found, DOCS_DIR=${DOCS_DIR} wrong"
 
-	pushd "${DOCS_DIR}" || die
-	mkdocs build -d "${DOCS_OUTDIR}" || die "${FUNCNAME}: mkdocs build failed"
-	popd || die
+	pushd "${DOCS_DIR}" >/dev/null || die
+	local command=( "${EPYTHON}" -m mkdocs build )
+	if ! "${EPYTHON}" -c "import mkdocs" 2>/dev/null; then
+		command=( mkdocs build )
+	fi
+	command+=(
+		-d "${DOCS_OUTDIR}"
+	)
+	echo "${command[@]}" >&2
+	"${command[@]}" || die "${FUNCNAME}: mkdocs build failed"
+	popd >/dev/null || die
 
 	# remove generated .gz variants
 	# mkdocs currently has no option to disable this
