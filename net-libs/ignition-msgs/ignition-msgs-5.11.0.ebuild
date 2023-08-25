@@ -23,3 +23,4 @@ DEPEND="${RDEPEND}
 BDEPEND="dev-util/ignition-cmake:2"
 CMAKE_BUILD_TYPE=RelWithDebInfo
 S="${WORKDIR}/gz-msgs-ignition-msgs5_${PV}"
+PATCHES=( "${FILESDIR}/protobuf.patch" )
