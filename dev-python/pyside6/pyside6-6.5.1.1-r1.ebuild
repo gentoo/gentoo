@@ -5,7 +5,7 @@ EAPI=8
 
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake python-r1 virtualx
 
@@ -83,7 +83,7 @@ RDEPEND="${PYTHON_DEPS}
 	charts? ( =dev-qt/qtcharts-${QT_PV} )
 	designer? ( =dev-qt/qttools-${QT_PV}[designer] )
 	gui? (
-		=dev-qt/qtbase-${QT_PV}[gui,jpeg]
+		=dev-qt/qtbase-${QT_PV}[gui,jpeg(+)]
 		x11-libs/libxkbcommon
 	)
 	help? ( =dev-qt/qttools-${QT_PV}[assistant] )
