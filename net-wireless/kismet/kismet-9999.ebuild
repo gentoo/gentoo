@@ -33,13 +33,14 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="libusb lm-sensors networkmanager +pcre rtlsdr selinux +suid ubertooth udev"
+IUSE="libusb lm-sensors mqtt networkmanager +pcre rtlsdr selinux +suid ubertooth udev"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
 	${PYTHON_DEPS}
 	acct-user/kismet
 	acct-group/kismet
+	mqtt? ( app-misc/mosquitto )
 	networkmanager? ( net-misc/networkmanager )
 	dev-libs/glib:2
 	dev-libs/elfutils
@@ -114,6 +115,7 @@ src_configure() {
 	econf \
 		$(use_enable libusb libusb) \
 		$(use_enable libusb wifi-coconut) \
+		$(use_enable mqtt mosquitto) \
 		$(use_enable pcre) \
 		$(use_enable pcre require-pcre2) \
 		$(use_enable lm-sensors lmsensors) \
