@@ -100,8 +100,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.4667-system-chdr.patch
 	"${FILESDIR}"/${PN}-1.7.4667-system-gtest.patch
-	"${FILESDIR}"/${PN}-1.7.4667-system-zstd.patch
 	"${FILESDIR}"/${PN}-1.7.4795-rapidyaml-0.5.patch
+	"${FILESDIR}"/${PN}-1.7.4943-system-libzip-zstd.patch
 )
 
 src_unpack() {
