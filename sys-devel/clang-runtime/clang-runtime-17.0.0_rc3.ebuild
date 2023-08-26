@@ -13,7 +13,6 @@ SLOT="${PV%%.*}"
 KEYWORDS=""
 IUSE="+compiler-rt libcxx openmp +sanitize"
 REQUIRED_USE="sanitize? ( compiler-rt )"
-PROPERTIES="live"
 
 RDEPEND="
 	compiler-rt? (
