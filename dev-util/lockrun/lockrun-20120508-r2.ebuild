@@ -11,7 +11,7 @@ S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa ~x86"
 
 src_unpack() {
 	cp -v "${FILESDIR}"/${PN}.c-${PV} "${S}"/${PN}.c || die
