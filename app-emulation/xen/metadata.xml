@@ -16,6 +16,6 @@
 	<use>
 		<flag name="boot-symlinks">Symlink xen.gz variants in /boot, disable on fat filesystems</flag>
 		<flag name="flask">Enable the Flask XSM module from NSA</flag>
-		<flag name="efi">Adds efi boot support, requires LDFLAG -melf_x86_64 for amd64</flag>
+		<flag name="uefi">Adds UEFI boot support, requires LDFLAG -melf_x86_64 for amd64</flag>
 	</use>
 </pkgmetadata>
