@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Utility functions for PPI"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-perl/B-Keywords-1.90.0
