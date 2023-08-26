@@ -22,13 +22,19 @@ fi
 LICENSE="GPL-3+"
 SLOT="0"
 
-RDEPEND=">=app-emacs/compat-29.1.4.0"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	>=app-emacs/compat-29.1.4.0
+"
+DEPEND="
+	${RDEPEND}
+"
 
 DOCS=( CHANGELOG.org README.org )
+ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
 
-src_install() {
+src_compile() {
+	elisp-org-export-to texinfo README.org
+	elisp_src_compile
 	elisp-make-autoload-file
-	elisp_src_install
 }
