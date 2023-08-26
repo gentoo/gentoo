@@ -25,7 +25,7 @@ SLOT="0"
 RESTRICT="test"         # Only validations, appdata one fails.
 
 RDEPEND="
-	app-text/poppler:=
+	app-text/poppler:=[cairo,introspection]
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
 	dev-libs/libportal:=
