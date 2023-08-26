@@ -11,7 +11,7 @@ DESCRIPTION="Extra modules and scripts for CMake"
 HOMEPAGE="https://invent.kde.org/frameworks/extra-cmake-modules"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv"
 IUSE="doc test"
 
 RESTRICT="!test? ( test )"
