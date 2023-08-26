@@ -188,6 +188,7 @@ src_compile() {
 
 			# environment flags are normally unused for modules, but nvidia
 			# uses it for building the "blob" and it is a bit fragile
+			filter-flags -fno-plt #912949
 			filter-lto
 			CC=${KERNEL_CC} CXX=${KERNEL_CXX} strip-unsupported-flags
 		fi
