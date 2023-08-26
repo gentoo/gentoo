@@ -131,11 +131,11 @@ dist-kernel_install_kernel() {
 		done
 		shopt -u nullglob
 		export KERNEL_INSTALL_PLUGINS="${KERNEL_INSTALL_PLUGINS} ${plugins[@]}"
-	fi
 
-	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-		# Kernel-install requires uki's are named uki.efi, sign in-place
-		secureboot_sign_efi_file "${image}" "${image}"
+		if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+			# Ensure the uki is signed if dracut hasn't already done so.
+			secureboot_sign_efi_file "${image}"
+		fi
 	fi
 
 	ebegin "Installing the kernel via installkernel"
