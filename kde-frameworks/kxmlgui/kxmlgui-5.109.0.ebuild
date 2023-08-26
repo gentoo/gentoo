@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for managing menu and toolbar actions in an abstract way"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
 LICENSE="LGPL-2+"
 IUSE=""
 
