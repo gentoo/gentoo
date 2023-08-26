@@ -12,7 +12,7 @@ S="${WORKDIR}/listSerialPortsC-${PV}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 COMMON_DEPEND=">=dev-libs/libserialport-0.1.1"
 DEPEND="${COMMON_DEPEND}
