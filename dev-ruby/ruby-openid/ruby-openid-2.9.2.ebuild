@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md NOTICE UPGRADE.md"
@@ -20,8 +20,16 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="test"
 
+ruby_add_bdepend "test? ( dev-ruby/webrick )"
+
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
+
+	# Avoid test failing due to new sematics in ruby 3
+	sed -i -e '/test_no_host/askip "Ruby 3 incompatibility"' test/test_discover.rb || die
+
+	# Fix Bignum deprecation in tests
+	sed -i -e 's/Bignum/Integer/' test/test_cryptutil.rb || die
 }
 
 all_ruby_install() {
