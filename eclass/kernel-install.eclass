@@ -301,6 +301,10 @@ kernel-install_test() {
 			;;
 	esac
 
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+		use modules-sign && qemu_extra_append+=" module.sig_enforce=1"
+	fi
+
 	cat > run.sh <<-EOF || die
 		#!/bin/sh
 		exec qemu-system-${qemu_arch} \
