@@ -122,6 +122,18 @@ pkg_setup() {
 	ecm_pkg_setup
 }
 
+src_prepare() {
+	ecm_src_prepare
+	if has_version ">=kde-apps/akonadi-contacts-23.08.0"; then
+		sed -e "/KF5[:]*Akonadi/s/KF5/KPim5/" \
+			-i core/CMakeLists.txt \
+				core/utilities/extrasupport/CMakeLists.txt \
+				core/utilities/extrasupport/addressbook/CMakeLists.txt \
+				core/app/DigikamCoreTarget.cmake \
+				core/cmake/rules/RulesKDEFramework.cmake || die
+	fi
+}
+
 # FIXME: Unbundle libraw (libs/rawengine/libraw)
 src_configure() {
 	local mycmakeargs=(

@@ -1,20 +1,20 @@
-From 05b6e81bd4ceca8d6166aa0a000919cde2bfde3e Mon Sep 17 00:00:00 2001
+From 5171575601ebc553cb747a2757caf63b433820b3 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
 Date: Sun, 17 Feb 2019 23:51:03 +0100
 Subject: [PATCH] Un-break optional Qt/KF5 detection
 
 And if we enable an option, make the necessary libraries REQUIRED.
 ---
- core/cmake/rules/RulesKDEFramework.cmake | 34 +++-----------
+ core/cmake/rules/RulesKDEFramework.cmake | 41 +++--------------
  core/cmake/rules/RulesQtFramework.cmake  | 58 +++++-------------------
  core/cmake/rules/RulesX11.cmake          |  7 +--
- 3 files changed, 18 insertions(+), 81 deletions(-)
+ 3 files changed, 19 insertions(+), 87 deletions(-)
 
 diff --git a/core/cmake/rules/RulesKDEFramework.cmake b/core/cmake/rules/RulesKDEFramework.cmake
-index 610033425c..2d8acc7956 100644
+index 610033425c..3ea9b1351d 100644
 --- a/core/cmake/rules/RulesKDEFramework.cmake
 +++ b/core/cmake/rules/RulesKDEFramework.cmake
-@@ -26,19 +26,15 @@ find_package(KF5 ${KF5_MIN_VERSION} QUIET
+@@ -26,35 +26,20 @@ find_package(KF5 ${KF5_MIN_VERSION} QUIET
  )
  
  if(ENABLE_KFILEMETADATASUPPORT)
@@ -30,16 +30,17 @@ index 610033425c..2d8acc7956 100644
  
  
  if(ENABLE_AKONADICONTACTSUPPORT)
- 
+-
 -    find_package(KF5 ${AKONADI_MIN_VERSION} QUIET
 -                                            OPTIONAL_COMPONENTS
-+    find_package(KF5 ${AKONADI_MIN_VERSION} REQUIRED
-+                                            COMPONENTS
-                                             Akonadi
-                                             AkonadiContact      # For KDE Mail Contacts support.
-                                             Contacts            # API for contacts/address book data.
-@@ -46,15 +42,9 @@ if(ENABLE_AKONADICONTACTSUPPORT)
- 
+-                                            Akonadi
+-                                            AkonadiContact      # For KDE Mail Contacts support.
+-                                            Contacts            # API for contacts/address book data.
+-    )
+-
++    find_package(KF5Akonadi ${AKONADI_MIN_VERSION} REQUIRED)
++    find_package(KF5AkonadiContact ${AKONADI_MIN_VERSION} REQUIRED) # For KDE Mail Contacts support.
++    find_package(KF5Contacts ${AKONADI_MIN_VERSION} REQUIRED)       # API for contacts/address book data.
  endif()
  
 -find_package(KF5 ${KSANE_MIN_VERSION} QUIET
@@ -56,7 +57,7 @@ index 610033425c..2d8acc7956 100644
  
  if ("${KF5CalendarCore_VERSION}" VERSION_GREATER 5.6.40)
  
-@@ -62,18 +52,6 @@ if ("${KF5CalendarCore_VERSION}" VERSION_GREATER 5.6.40)
+@@ -62,18 +47,6 @@ if ("${KF5CalendarCore_VERSION}" VERSION_GREATER 5.6.40)
  
  endif()
  
@@ -175,5 +176,5 @@ index d7659eed34..9c145970b2 100644
  
      set(HAVE_X11 TRUE)
 -- 
-2.41.0
+2.42.0
 
