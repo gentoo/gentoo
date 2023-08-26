@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit mount-boot secureboot
 
 DESCRIPTION="LSI MPT-SAS3 controller management tool"
@@ -10,7 +11,7 @@ HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8
 LICENSE="LSI"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~x64-solaris"
-IUSE="doc efi"
+IUSE="doc uefi"
 
 RESTRICT="strip fetch mirror"
 BDEPEND="app-arch/unzip"
@@ -81,7 +82,7 @@ src_install() {
 		doexe sas3ircu_rel/sas3ircu/sas3ircu_solaris_x86_rel/sas3ircu
 	fi
 
-	if use efi; then
+	if use uefi; then
 		exeinto /boot/efi/
 		if use amd64; then
 			doexe sas3ircu_rel/sas3ircu/sas3ircu_udk_uefi_x64_rel/sas3ircu.efi
