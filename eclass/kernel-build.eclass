@@ -33,6 +33,7 @@ if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	# If we have enabled module signing IUSE
 	# then we can also enable secureboot IUSE
 	KERNEL_IUSE_SECUREBOOT=1
+	inherit secureboot
 fi
 
 inherit multiprocessing python-any-r1 savedconfig toolchain-funcs kernel-install
@@ -347,6 +348,10 @@ kernel-build_src_install() {
 	# fix source tree and build dir symlinks
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
+
+	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+		secureboot_sign_efi_file "${ED}${kernel_dir}/${image_path}"
+	fi
 
 	# unset to at least be out of the environment file in, e.g. shared binpkgs
 	unset KBUILD_SIGN_PIN
