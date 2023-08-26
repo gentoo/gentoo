@@ -24,9 +24,6 @@ SRC_URI="https://github.com/tree-sitter/${PN}/archive/${TS_PV:-v${PV}}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${TS_PV:-${PV}}/src
 
-# Needed for tree_sitter/parser.h
-DEPEND="dev-libs/tree-sitter"
-
 BDEPEND+=" test? ( dev-util/tree-sitter-cli )"
 IUSE+=" test"
 RESTRICT+=" !test? ( test )"
@@ -61,8 +58,10 @@ tree-sitter-grammar_src_compile() {
 	# or scanner.cc.
 
 	tc-export CC CXX
-	export CFLAGS="${CFLAGS} -fPIC"
-	export CXXFLAGS="${CXXFLAGS} -fPIC"
+	# We want to use the bundled parser.h, not anything lurking on the system, hence -I
+	# See https://github.com/tree-sitter/tree-sitter-bash/issues/199#issuecomment-1694416505
+	export CFLAGS="${CFLAGS} -fPIC -I. -Itree_sitter"
+	export CXXFLAGS="${CXXFLAGS} -fPIC -I. -Itree_sitter"
 
 	local objects=( parser.o )
 	if [[ -f "${S}"/scanner.c || -f "${S}"/scanner.cc ]]; then
