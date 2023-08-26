@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 
 DESCRIPTION="Library for interfacing with calendars"
 LICENSE="GPL-2+ test? ( LGPL-3+ )"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
 IUSE=""
 
 RESTRICT="test" # multiple tests fail or hang indefinitely
