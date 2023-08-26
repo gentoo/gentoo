@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/rest-client/rest-client"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="amd64 ~arm64 ~ppc"
+KEYWORDS="amd64 ~arm64 ~ppc ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/webmock:3 )"
