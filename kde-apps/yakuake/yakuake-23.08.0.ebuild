@@ -47,6 +47,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package absolute-position KF5Wayland)
