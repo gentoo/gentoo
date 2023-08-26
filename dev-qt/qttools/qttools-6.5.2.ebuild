@@ -54,18 +54,3 @@ src_configure() {
 
 	qt6-build_src_configure
 }
-
-src_install() {
-	qt6-build_src_install
-
-	use assistant && qt6_symlink_binary_to_path assistant 6
-	use designer && qt6_symlink_binary_to_path designer 6
-	use distancefieldgenerator && qt6_symlink_binary_to_path qdistancefieldgenerator 6
-	use linguist && qt6_symlink_binary_to_path linguist 6
-	use pixeltool && qt6_symlink_binary_to_path pixeltool 6
-	use qdbus && qt6_symlink_binary_to_path qdbus 6
-	use qdbus && qt6_symlink_binary_to_path qdbusviewer 6
-	use qdiag && qt6_symlink_binary_to_path qtdiag 6
-	use qdoc && qt6_symlink_binary_to_path qdoc 6
-	use qplugininfo && qt6_symlink_binary_to_path qtplugininfo 6
-}
