@@ -265,8 +265,6 @@ src_test() {
 src_install() {
 	qt6-build_src_install
 
-	qt6_symlink_binary_to_path qmake 6 #863395
-
 	if use test; then
 		local delete_bins=( # need a better way to handle this
 			clientserver copier crashingServer desktopsettingsaware_helper
