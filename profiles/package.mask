@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-08-26)
+# Does not compile with Ruby 3.2. Last release 10 years ago. No activity
+# upstream since. No reverse dependencies. Masked for removal on
+# 2023-09-26.
+dev-ruby/state_machine
+
+# Hans de Graaff <graaff@gentoo.org> (2023-08-26)
 # The totori.dip.jp website is no longer available. Last release in
 # 2015. No reverse dependencies. Masked for removal on 2023-09-26.
 dev-ruby/totoridipjp
