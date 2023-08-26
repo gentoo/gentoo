@@ -136,6 +136,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
+	"${FILESDIR}"/${PN}-6.28.04_gcc-13.patch
 )
 
 pkg_setup() {

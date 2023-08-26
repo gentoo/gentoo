@@ -1,0 +1,32 @@
+From 568d000debb478decea0f2b9d5b9abb2ee88029c Mon Sep 17 00:00:00 2001
+From: Sergey Linev <S.Linev@gsi.de>
+Date: Fri, 5 May 2023 15:38:01 +0200
+Subject: [PATCH] Fix std.modulemap for gcc13
+
+This is needed also in v6-28-00-patches for building with GCC 13 since
+adding the memory_resource header in commit f7adbd2b04.
+
+Co-authored-by: Vassil Vassilev <v.g.vassilev@gmail.com>
+Co-authored-by: Jonas Hahnfeld <jonas.hahnfeld@cern.ch>
+
+(cherry picked from commit e9a8c48e4f207d7015bbd212116486bbecbac066
+and commit aae1cd064679f440ad80f39e4ee56bb0c1d9d396)
+---
+ interpreter/cling/include/cling/std.modulemap | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/interpreter/cling/include/cling/std.modulemap b/interpreter/cling/include/cling/std.modulemap
+index ad479fbb0281..09f26cfe1ed4 100644
+--- a/interpreter/cling/include/cling/std.modulemap
++++ b/interpreter/cling/include/cling/std.modulemap
+@@ -556,6 +556,10 @@ module "std" [system] {
+     export bits_stl_algobase_h
+     header "bits/uniform_int_dist.h"
+   }
++  module "bits/utility.h" [optional] {
++    export *
++    header "bits/utility.h"
++  }
+   module "bits/uses_allocator_args.h" [optional] {
+     requires cplusplus17
+     export *
