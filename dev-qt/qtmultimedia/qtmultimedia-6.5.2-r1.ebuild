@@ -11,45 +11,49 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-IUSE="alsa +ffmpeg gstreamer pulseaudio v4l vaapi"
+IUSE="+X alsa +ffmpeg gstreamer opengl pulseaudio qml v4l vaapi vulkan"
+# tst_qmediaplayerbackend hard requires qml, review in case becomes optional
 REQUIRED_USE="
 	|| ( ffmpeg gstreamer )
 	vaapi? ( ffmpeg )
+	test? ( qml )
 "
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[gui,network,widgets]
-	=dev-qt/qtdeclarative-${PV}*:6
-	=dev-qt/qtquick3d-${PV}*:6
-	=dev-qt/qtshadertools-${PV}*:6
-	=dev-qt/qtsvg-${PV}*:6
+	=dev-qt/qtbase-${PV}*:6[gui,network,opengl=,vulkan=,widgets]
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? (
-		media-libs/libva:=
-		media-video/ffmpeg:=
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXrandr
+		=dev-qt/qtbase-${PV}*:6[X=]
+		media-video/ffmpeg:=[vaapi?]
+		X? (
+			x11-libs/libX11
+			x11-libs/libXext
+			x11-libs/libXrandr
+		)
+		vaapi? (
+			media-libs/libglvnd
+			media-libs/libva:=
+		)
 	)
 	gstreamer? (
 		dev-libs/glib:2
 		media-libs/gst-plugins-bad:1.0
-		media-libs/gst-plugins-base:1.0
+		media-libs/gst-plugins-base:1.0[X=,opengl?]
 		media-libs/gstreamer:1.0
-		media-libs/libglvnd
+		opengl? ( media-libs/libglvnd )
 	)
-	pulseaudio? ( media-libs/libpulse[glib] )
-	vaapi? (
-		=dev-qt/qtbase-${PV}*:6[opengl]
-		media-libs/libglvnd
-		media-libs/libva:=
+	pulseaudio? ( media-libs/libpulse )
+	qml? (
+		=dev-qt/qtdeclarative-${PV}*:6
+		=dev-qt/qtquick3d-${PV}*:6
 	)
 "
 DEPEND="
 	${RDEPEND}
-	gstreamer? ( x11-base/xorg-proto )
+	X? ( x11-base/xorg-proto )
 	v4l? ( sys-kernel/linux-headers )
 "
+BDEPEND="=dev-qt/qtshadertools-${PV}*:6"
 
 CMAKE_SKIP_TESTS=(
 	# tries to use real alsa or pulseaudio and fails in sandbox
@@ -67,9 +71,11 @@ src_configure() {
 	use x86 && append-cppflags -DPFFFT_SIMD_DISABLE
 
 	local mycmakeargs=(
+		$(cmake_use_find_package qml Qt6Qml)
 		$(qt_feature alsa)
 		$(qt_feature ffmpeg)
 		$(qt_feature gstreamer)
+		$(usev gstreamer $(qt_feature opengl gstreamer_gl))
 		$(qt_feature pulseaudio)
 		$(qt_feature v4l linux_v4l)
 		$(qt_feature vaapi)
