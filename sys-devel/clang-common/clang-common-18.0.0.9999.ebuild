@@ -99,6 +99,8 @@ src_install() {
 		-fstack-protector-strong
 		-fPIE
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
+
+		-Wl,-z,relro
 	EOF
 
 	dodir /usr/include/gentoo
@@ -144,6 +146,8 @@ src_install() {
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
 			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
 			-D_LIBCPP_ENABLE_HARDENED_MODE=1
+
+			-Wl,-z,now
 		EOF
 	fi
 
