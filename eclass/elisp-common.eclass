@@ -501,7 +501,7 @@ elisp-test-ert() {
 # some project that optionally enables GNU Emacs support.  This will
 # correctly set up the test and Emacs dependencies.
 #
-# Notice that the fist option passed to the "test-runner" is the
+# Notice that the first option passed to the "test-runner" is the
 # directory and the rest are miscellaneous options applicable to that
 # given runner.
 #
