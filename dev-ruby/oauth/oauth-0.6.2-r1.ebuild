@@ -18,7 +18,7 @@ RUBY_S="${PN}-ruby-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
 ruby_add_rdepend "
