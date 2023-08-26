@@ -122,16 +122,6 @@ rust_all_arch_uris()
 		elibc_glibc? ( $(rust_arch_uri aarch64-unknown-linux-gnu  "$@") )
 		elibc_musl?  ( $(rust_arch_uri aarch64-unknown-linux-musl "$@") )
 	)
-	mips? (
-		abi_mips_o32? (
-			big-endian?  ( $(rust_arch_uri mips-unknown-linux-gnu   "$@") )
-			!big-endian? ( $(rust_arch_uri mipsel-unknown-linux-gnu "$@") )
-		)
-		abi_mips_n64? (
-			big-endian?  ( $(rust_arch_uri mips64-unknown-linux-gnuabi64   "$@") )
-			!big-endian? ( $(rust_arch_uri mips64el-unknown-linux-gnuabi64 "$@") )
-		)
-	)
 	ppc? ( $(rust_arch_uri powerpc-unknown-linux-gnu "$@") )
 	ppc64? (
 		big-endian?  ( $(rust_arch_uri powerpc64-unknown-linux-gnu   "$@") )
@@ -145,7 +135,23 @@ rust_all_arch_uris()
 	# NOTE: Merge this into the block above after every <1.71.0 version is
 	# gone from tree.
 	local arg_version="${1##*-}"
-	if ver_test "${arg_version:-$PV}" -ge 1.71.0; then
+	arg_version="${arg_version:-$PV}"
+	if ver_test "${arg_version}" -ge 1.71.0; then
 		echo "loong? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "$@") )"
+	fi
+
+	# until https://github.com/rust-lang/rust/pull/113274 is resolved, there
+	# will not be upstream-built mips artifacts
+	if ver_test "${arg_version}" -lt 1.72.0; then
+		echo "mips? (
+			abi_mips_o32? (
+				big-endian?  ( $(rust_arch_uri mips-unknown-linux-gnu   "$@") )
+				!big-endian? ( $(rust_arch_uri mipsel-unknown-linux-gnu "$@") )
+			)
+			abi_mips_n64? (
+				big-endian?  ( $(rust_arch_uri mips64-unknown-linux-gnuabi64   "$@") )
+				!big-endian? ( $(rust_arch_uri mips64el-unknown-linux-gnuabi64 "$@") )
+			)
+		)"
 	fi
 }
