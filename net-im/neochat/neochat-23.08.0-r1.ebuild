@@ -47,6 +47,7 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtlocation-${QTMIN}:5
 	>=dev-qt/qtmultimedia-${QTMIN}:5[qml]
+	>=dev-qt/qtpositioning-${QTMIN}:5[qml]
 	>=kde-frameworks/kquickcharts-${KFMIN}:5
 	>=kde-frameworks/purpose-${KFMIN}:5
 "
