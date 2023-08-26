@@ -10,7 +10,7 @@
 	</maintainer>
 	<use>
 		<flag name="bios">Enable BIOS support</flag>
-		<flag name="efi">Enable EFI support</flag>
+		<flag name="uefi">Enable UEFI support</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gentoo:syslinux</remote-id>
