@@ -104,6 +104,12 @@ qt6-build_src_prepare() {
 # @DESCRIPTION:
 # Run cmake_src_configure and handle anything else generic as needed.
 qt6-build_src_configure() {
+	if [[ ${PN} == qttranslations ]]; then
+		# does not compile anything, further options would be unrecognized
+		cmake_src_configure
+		return
+	fi
+
 	if [[ ${mycmakeargs@a} == *a* ]]; then
 		local mycmakeargs=("${mycmakeargs[@]}")
 	else
@@ -111,12 +117,13 @@ qt6-build_src_configure() {
 	fi
 
 	mycmakeargs+=(
+		# see _qt6-build_create_user_facing_links
+		-DINSTALL_PUBLICBINDIR="${QT6_PREFIX}"/bin
 		# note that if qtbase was built with tests, this is default ON
-		-DQT_BUILD_TESTS=$(in_iuse test && usev test ON || echo OFF)
+		-DQT_BUILD_TESTS=$(usex test ON OFF)
+		# avoid appending -O2 after user's C(XX)FLAGS (bug #911822)
+		-DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON
 	)
-
-	[[ ${PN} != qttranslations ]] && # compiles nothing (unused option)
-		mycmakeargs+=( -DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON ) #911822
 
 	# LTO cause test failures in several components (e.g. qtcharts,
 	# multimedia, scxml, wayland, webchannel, ...).
@@ -155,6 +162,8 @@ qt6-build_src_test() {
 qt6-build_src_install() {
 	cmake_src_install
 
+	_qt6-build_create_user_facing_links
+
 	# hack: trim typical junk with currently no known "proper" way
 	# to avoid that primarily happens with tests (e.g. qt5compat and
 	# qtsvg tests, but qtbase[gui,-test] currently does some too)
@@ -179,6 +188,9 @@ qt_feature() {
 # @DESCRIPTION:
 # Symlink a given binary from QT6_BINDIR to QT6_PREFIX/bin, with
 # optional suffix.
+#
+# Note: deprecated, will be removed when no consumers left in-tree,
+# see internal the _qt6-build_create_user_facing_links
 qt6_symlink_binary_to_path() {
 	[[ ${#} -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
 
@@ -186,6 +198,32 @@ qt6_symlink_binary_to_path() {
 }
 
 ######  Internal functions  ######
+
+# @FUNCTION: _qt6-build_create_user_facing_links
+# @INTERNAL
+# @DESCRIPTION:
+# Create links for user facing tools (bug #863395) as suggested in:
+# https://doc.qt.io/qt-6/packaging-recommendations.html
+_qt6-build_create_user_facing_links() {
+	# user_facing_tool_links.txt is always created (except for qttranslations)
+	# even if no links (empty), if missing will assume that it is an error
+	[[ ${PN} == qttranslations ]] && return
+
+	# loop and match using paths (upstream suggests `xargs ln -s < ${links}`
+	# but, for what it is worth, that will fail if paths have spaces)
+	local link
+	while IFS= read -r link; do
+		if [[ -z ${link} ]]; then
+			continue
+		elif [[ ${link} =~ ^("${QT6_PREFIX}"/.+)\ ("${QT6_PREFIX}"/bin/.+) ]]
+		then
+			dosym -r "${BASH_REMATCH[1]#"${EPREFIX}"}" \
+				"${BASH_REMATCH[2]#"${EPREFIX}"}"
+		else
+			die "unrecognized line '${link}' in '${links}'"
+		fi
+	done < "${BUILD_DIR}"/user_facing_tool_links.txt || die
+}
 
 # @FUNCTION: _qt6-build_prepare_env
 # @INTERNAL
