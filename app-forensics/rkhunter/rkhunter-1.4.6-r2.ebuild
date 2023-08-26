@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-grep-3.8
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~mips ppc x86"
+KEYWORDS="~alpha amd64 ~arm ~mips ppc x86"
 IUSE=""
 
 RDEPEND="
