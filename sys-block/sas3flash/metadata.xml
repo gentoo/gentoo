@@ -6,6 +6,6 @@
 		<name>Zac Medico</name>
 	</maintainer>
 	<use>
-		<flag name="efi">Install EFI variant as well</flag>
+		<flag name="uefi">Install UEFI variant as well</flag>
 	</use>
 </pkgmetadata>
