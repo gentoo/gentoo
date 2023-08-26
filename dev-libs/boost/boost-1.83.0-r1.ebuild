@@ -3,6 +3,12 @@
 
 EAPI=8
 
+# Keep an eye on both of these after releases for patches:
+# * https://www.boost.org/patches/
+# * https://www.boost.org/users/history/version_${MY_PV}.html
+# (e.g. https://www.boost.org/users/history/version_1_83_0.html)
+# Note that the latter may sometimes feature patches not on the former too.
+
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
