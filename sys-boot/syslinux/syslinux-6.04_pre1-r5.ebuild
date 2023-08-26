@@ -13,9 +13,9 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/${MY_
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-IUSE="abi_x86_32 abi_x86_64 +bios +efi"
-REQUIRED_USE="|| ( bios efi )
-	efi? ( || ( abi_x86_32 abi_x86_64 ) )"
+IUSE="abi_x86_32 abi_x86_64 +bios +uefi"
+REQUIRED_USE="|| ( bios uefi )
+	uefi? ( || ( abi_x86_32 abi_x86_64 ) )"
 
 BDEPEND="
 	dev-lang/perl
@@ -61,7 +61,7 @@ src_compile() {
 	if use bios; then
 		emake bios DATE="${DATE}" HEXDATE="${HEXDATE}"
 	fi
-	if use efi; then
+	if use uefi; then
 		if use abi_x86_32; then
 			emake efi32 DATE="${DATE}" HEXDATE="${HEXDATE}"
 		fi
@@ -73,7 +73,7 @@ src_compile() {
 
 src_install() {
 	local firmware=( $(usev bios) )
-	if use efi; then
+	if use uefi; then
 		use abi_x86_32 && firmware+=( efi32 )
 		use abi_x86_64 && firmware+=( efi64 )
 	fi
