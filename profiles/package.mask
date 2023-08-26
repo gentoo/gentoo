@@ -40,6 +40,11 @@
 =dev-python/cython-3.0.1
 
 # Hans de Graaff <graaff@gentoo.org> (2023-08-26)
+# Obsolete slot. Use the newer shoulda slot instead.
+# Masked for removal on 2023-09-26
+dev-ruby/shoulda:0
+
+# Hans de Graaff <graaff@gentoo.org> (2023-08-26)
 # Does not compile with Ruby 3.2. Last release 10 years ago. No activity
 # upstream since. No reverse dependencies. Masked for removal on
 # 2023-09-26.
