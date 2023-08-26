@@ -47,12 +47,12 @@ S="${WORKDIR}/xen-$(ver_cut 1-3 ${XEN_BASE_PV})"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+boot-symlinks debug efi flask"
+IUSE="+boot-symlinks debug uefi flask"
 REQUIRED_USE="arm? ( debug )"
 
 DEPEND="${PYTHON_DEPS}
-	efi? ( >=sys-devel/binutils-2.22[multitarget] )
-	!efi? ( >=sys-devel/binutils-2.22 )
+	uefi? ( >=sys-devel/binutils-2.22[multitarget] )
+	!uefi? ( >=sys-devel/binutils-2.22 )
 	flask? ( sys-apps/checkpolicy )"
 RDEPEND=""
 PDEPEND="~app-emulation/xen-tools-${PV}"
@@ -78,7 +78,7 @@ pkg_setup() {
 			die "Unsupported architecture!"
 		fi
 	fi
-	use efi && secureboot_pkg_setup
+	use uefi && secureboot_pkg_setup
 }
 
 src_prepare() {
@@ -91,7 +91,7 @@ src_prepare() {
 	fi
 
 	# Symlinks do not work on fat32 volumes # 829765
-	if ! use boot-symlinks || use efi; then
+	if ! use boot-symlinks || use uefi; then
 		eapply "${XEN_GENTOO_PATCHES_DIR}"/no-boot-symlinks/${PN}-4.16-no-symlinks.patch
 	fi
 
@@ -101,7 +101,7 @@ src_prepare() {
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
 
-	if use efi; then
+	if use uefi; then
 		export EFI_VENDOR="gentoo"
 		export EFI_MOUNTPOINT="/boot"
 	fi
@@ -164,17 +164,16 @@ src_compile() {
 
 src_install() {
 	# The 'make install' doesn't 'mkdir -p' the subdirs
-	if use efi; then
+	if use uefi; then
 		mkdir -p "${D}"${EFI_MOUNTPOINT}/efi/${EFI_VENDOR} || die
 	fi
 
 	xen_make DESTDIR="${D}" -C xen install
 
-	if use efi; then
+	if use uefi; then
 		secureboot_auto_sign --in-place
 	else
 		# make install likes to throw in some extra EFI bits if it built
 		rm -rf "${D}/usr/$(get_libdir)/efi"
 	fi
-
 }
