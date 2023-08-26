@@ -33,6 +33,8 @@ BDEPEND="
 
 DOCS=( CREDITS KEYS NOTICE README )
 
+PATCHES=( "${FILESDIR}"/${PN}-3.2.2-fix-XERCESC-2163.patch )
+
 pkg_setup() {
 	export ICUROOT="${EPREFIX}/usr"
 
