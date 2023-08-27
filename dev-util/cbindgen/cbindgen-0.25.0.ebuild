@@ -26,7 +26,7 @@ CRATES="
 	os_str_bytes@6.5.0
 	parking_lot@0.11.2
 	parking_lot_core@0.8.6
-	proc-macro2@1.0.58
+	proc-macro2@1.0.66
 	quote@1.0.27
 	redox_syscall@0.2.16
 	remove_dir_all@0.5.3
@@ -54,11 +54,11 @@ CRATES="
 
 inherit cargo
 
-DESCRIPTION="A tool for generating C bindings to Rust code"
+DESCRIPTION="A tool for generating C bindings to Rust code."
 HOMEPAGE="https://github.com/mozilla/cbindgen/"
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/eqrion/cbindgen/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mozilla/cbindgen/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 # License set may be more restrictive as OR is not respected
