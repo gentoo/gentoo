@@ -144,7 +144,7 @@ src_install() {
 
 	# Install init scripts
 	systemd_dounit tools/frr.service
-	newinitd "${FILESDIR}"/frr-openrc-v1 frr
+	newinitd "${FILESDIR}"/frr-openrc-v2 frr
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
 	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
