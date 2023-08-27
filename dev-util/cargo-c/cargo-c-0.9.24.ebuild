@@ -13,38 +13,38 @@ CRATES="
 	${MY_P}
 	adler-1.0.2
 	ahash-0.8.3
-	aho-corasick-1.0.3
-	anstream-0.3.2
-	anstyle-1.0.1
+	aho-corasick-1.0.4
+	anstream-0.5.0
+	anstyle-1.0.2
 	anstyle-parse-0.2.1
 	anstyle-query-1.0.0
-	anstyle-wincon-1.0.2
-	anyhow-1.0.72
+	anstyle-wincon-2.1.0
+	anyhow-1.0.75
 	arc-swap-1.6.0
 	arrayvec-0.5.2
 	autocfg-1.1.0
 	base16ct-0.2.0
-	base64-0.21.2
+	base64-0.21.3
 	base64ct-1.6.0
 	bitflags-1.3.2
-	bitflags-2.3.3
+	bitflags-2.4.0
 	bitmaps-2.1.0
 	block-buffer-0.10.4
 	bstr-1.6.0
 	btoi-0.4.3
 	bumpalo-3.13.0
 	bytes-1.4.0
-	bytesize-1.2.0
-	cargo-0.72.2
+	bytesize-1.3.0
+	cargo-0.73.1
 	cargo-platform-0.1.3
-	cargo-util-0.2.4
-	cbindgen-0.24.5
-	cc-1.0.82
+	cargo-util-0.2.5
+	cbindgen-0.25.0
+	cc-1.0.83
 	cfg-if-1.0.0
-	clap-4.3.21
-	clap_builder-4.3.21
-	clap_derive-4.3.12
-	clap_lex-0.5.0
+	clap-4.4.0
+	clap_builder-4.4.0
+	clap_derive-4.4.0
+	clap_lex-0.5.1
 	clru-0.6.1
 	colorchoice-1.0.0
 	const-oid-0.9.5
@@ -61,7 +61,7 @@ CRATES="
 	curl-0.4.44
 	curl-sys-0.4.65+curl-8.2.1
 	der-0.7.8
-	deranged-0.3.7
+	deranged-0.3.8
 	digest-0.10.7
 	dunce-1.0.4
 	ecdsa-0.16.8
@@ -72,11 +72,12 @@ CRATES="
 	equivalent-1.0.1
 	errno-0.3.2
 	errno-dragonfly-0.1.2
+	faster-hex-0.8.0
 	fastrand-2.0.0
 	ff-0.13.0
 	fiat-crypto-0.1.20
 	filetime-0.2.22
-	flate2-1.0.26
+	flate2-1.0.27
 	fnv-1.0.7
 	foreign-types-0.3.2
 	foreign-types-shared-0.1.1
@@ -86,47 +87,50 @@ CRATES="
 	getrandom-0.2.10
 	git2-0.17.2
 	git2-curl-0.18.0
-	gix-0.44.1
-	gix-actor-0.20.0
-	gix-attributes-0.12.0
-	gix-bitmap-0.2.6
+	gix-0.45.1
+	gix-actor-0.21.0
+	gix-attributes-0.13.1
+	gix-bitmap-0.2.7
 	gix-chunk-0.4.4
-	gix-command-0.2.8
-	gix-config-0.22.0
+	gix-command-0.2.9
+	gix-commitgraph-0.16.0
+	gix-config-0.23.0
 	gix-config-value-0.12.5
-	gix-credentials-0.14.0
+	gix-credentials-0.15.0
 	gix-date-0.5.1
-	gix-diff-0.29.0
-	gix-discover-0.18.1
-	gix-features-0.29.0
-	gix-fs-0.1.1
-	gix-glob-0.7.0
+	gix-diff-0.30.1
+	gix-discover-0.19.0
+	gix-features-0.30.0
+	gix-fs-0.2.0
+	gix-glob-0.8.0
 	gix-hash-0.11.4
 	gix-hashtable-0.2.4
-	gix-ignore-0.2.0
-	gix-index-0.16.1
-	gix-lock-5.0.1
-	gix-mailmap-0.12.0
-	gix-object-0.29.2
-	gix-odb-0.45.0
-	gix-pack-0.35.0
-	gix-packetline-0.16.4
+	gix-ignore-0.3.0
+	gix-index-0.17.0
+	gix-lock-6.0.0
+	gix-mailmap-0.13.0
+	gix-negotiate-0.2.1
+	gix-object-0.30.0
+	gix-odb-0.46.0
+	gix-pack-0.36.0
+	gix-packetline-0.16.5
 	gix-path-0.8.4
 	gix-prompt-0.5.5
-	gix-protocol-0.32.0
-	gix-quote-0.4.6
-	gix-ref-0.29.1
-	gix-refspec-0.10.1
-	gix-revision-0.13.0
+	gix-protocol-0.33.2
+	gix-quote-0.4.7
+	gix-ref-0.30.0
+	gix-refspec-0.11.0
+	gix-revision-0.15.2
+	gix-revwalk-0.1.0
 	gix-sec-0.8.4
-	gix-tempfile-5.0.3
+	gix-tempfile-6.0.0
 	gix-trace-0.1.3
-	gix-transport-0.31.0
-	gix-traverse-0.25.0
-	gix-url-0.18.0
+	gix-transport-0.32.0
+	gix-traverse-0.26.0
+	gix-url-0.19.0
 	gix-utils-0.1.5
 	gix-validate-0.7.7
-	gix-worktree-0.17.1
+	gix-worktree-0.18.0
 	glob-0.3.1
 	globset-0.4.13
 	group-0.13.0
@@ -165,7 +169,7 @@ CRATES="
 	linux-raw-sys-0.3.8
 	linux-raw-sys-0.4.5
 	lock_api-0.4.10
-	log-0.4.19
+	log-0.4.20
 	maybe-async-0.2.7
 	memchr-2.5.0
 	memmap2-0.5.10
@@ -197,31 +201,32 @@ CRATES="
 	ppv-lite86-0.2.17
 	primeorder-0.13.2
 	proc-macro2-1.0.66
-	prodash-23.1.2
-	quote-1.0.32
+	prodash-25.0.2
+	pulldown-cmark-0.9.3
+	quote-1.0.33
 	rand-0.8.5
 	rand_chacha-0.3.1
 	rand_core-0.6.4
 	rand_xoshiro-0.6.0
 	redox_syscall-0.3.5
-	regex-1.9.3
-	regex-automata-0.3.6
-	regex-syntax-0.7.4
+	regex-1.9.4
+	regex-automata-0.3.7
+	regex-syntax-0.7.5
 	rfc6979-0.4.0
 	rustfix-0.6.1
 	rustix-0.37.23
-	rustix-0.38.8
+	rustix-0.38.9
 	ryu-1.0.15
 	same-file-1.0.6
 	schannel-0.1.22
 	scopeguard-1.2.0
 	sec1-0.7.3
 	semver-1.0.18
-	serde-1.0.183
+	serde-1.0.188
 	serde-value-0.7.0
-	serde_derive-1.0.183
+	serde_derive-1.0.188
 	serde_ignored-0.1.9
-	serde_json-1.0.104
+	serde_json-1.0.105
 	serde_spanned-0.6.3
 	sha1-0.10.5
 	sha1_smol-1.0.0
@@ -239,17 +244,17 @@ CRATES="
 	strsim-0.10.0
 	subtle-2.5.0
 	syn-1.0.109
-	syn-2.0.28
+	syn-2.0.29
 	tar-0.4.40
-	tempfile-3.7.1
+	tempfile-3.8.0
 	termcolor-1.2.0
 	terminal_size-0.2.6
-	thiserror-1.0.44
-	thiserror-impl-1.0.44
+	thiserror-1.0.47
+	thiserror-impl-1.0.47
 	thread_local-1.1.7
-	time-0.3.25
+	time-0.3.28
 	time-core-0.1.1
-	time-macros-0.2.11
+	time-macros-0.2.14
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.1
 	toml-0.5.11
@@ -257,6 +262,7 @@ CRATES="
 	toml_datetime-0.6.3
 	toml_edit-0.19.14
 	typenum-1.16.0
+	unicase-2.7.0
 	unicode-bidi-0.3.13
 	unicode-bom-2.0.2
 	unicode-ident-1.0.11
@@ -282,25 +288,23 @@ CRATES="
 	winapi-x86_64-pc-windows-gnu-0.4.0
 	windows-0.48.0
 	windows-sys-0.42.0
-	windows-sys-0.45.0
 	windows-sys-0.48.0
-	windows-targets-0.42.2
-	windows-targets-0.48.1
+	windows-targets-0.48.5
 	windows_aarch64_gnullvm-0.42.2
-	windows_aarch64_gnullvm-0.48.0
+	windows_aarch64_gnullvm-0.48.5
 	windows_aarch64_msvc-0.42.2
-	windows_aarch64_msvc-0.48.0
+	windows_aarch64_msvc-0.48.5
 	windows_i686_gnu-0.42.2
-	windows_i686_gnu-0.48.0
+	windows_i686_gnu-0.48.5
 	windows_i686_msvc-0.42.2
-	windows_i686_msvc-0.48.0
+	windows_i686_msvc-0.48.5
 	windows_x86_64_gnu-0.42.2
-	windows_x86_64_gnu-0.48.0
+	windows_x86_64_gnu-0.48.5
 	windows_x86_64_gnullvm-0.42.2
-	windows_x86_64_gnullvm-0.48.0
+	windows_x86_64_gnullvm-0.48.5
 	windows_x86_64_msvc-0.42.2
-	windows_x86_64_msvc-0.48.0
-	winnow-0.5.7
+	windows_x86_64_msvc-0.48.5
+	winnow-0.5.15
 	zeroize-1.6.0
 "
 
