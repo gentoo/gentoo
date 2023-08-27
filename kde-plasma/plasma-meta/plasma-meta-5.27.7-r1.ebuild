@@ -10,7 +10,7 @@ LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="accessibility bluetooth +browser-integration colord +crash-handler crypt
-+desktop-portal discover +display-manager +elogind +firewall grub gtk +handbook
++desktop-portal discover +display-manager +elogind +firewall +fonts grub gtk +handbook
 +kwallet +legacy-systray +networkmanager plymouth pulseaudio +sddm sdk +smart
 systemd thunderbolt +wallpapers"
 
@@ -65,6 +65,11 @@ RDEPEND="
 		!sddm? ( x11-misc/lightdm )
 	)
 	elogind? ( sys-auth/elogind[pam] )
+	fonts? (
+		media-fonts/hack
+		media-fonts/noto
+		media-fonts/noto-emoji
+	)
 	grub? ( >=kde-plasma/breeze-grub-${PV}:${SLOT} )
 	gtk? (
 		>=kde-plasma/breeze-gtk-${PV}:${SLOT}
@@ -82,7 +87,10 @@ RDEPEND="
 		>=kde-plasma/breeze-plymouth-${PV}:${SLOT}
 		>=kde-plasma/plymouth-kcm-${PV}:${SLOT}
 	)
-	pulseaudio? ( >=kde-plasma/plasma-pa-${PV}:${SLOT} )
+	pulseaudio? (
+		>=kde-plasma/plasma-pa-${PV}:${SLOT}
+		x11-themes/sound-theme-freedesktop
+	)
 	sdk? ( >=kde-plasma/plasma-sdk-${PV}:${SLOT} )
 	smart? ( >=kde-plasma/plasma-disks-${PV}:${SLOT} )
 	systemd? (
