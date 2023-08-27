@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson-multilib multilib xdg
+inherit gnome.org gnome2-utils meson-multilib multilib plocale xdg
+
+PLOCALES="ab af ang ar as ast az be be@latin bg bn bn_IN br bs ca ca@valencia crh cs csb cy da de dz el en@shaw en_CA en_GB eo es et eu fa fi fr fur ga gl gu he hi hr hu hy ia id io is it ja ka kk km kn ko ku li lt lv mai mi mk ml mn mr ms my nb nds ne nl nn nso oc or pa pl ps pt pt_BR ro ru si sk sl sq sr sr@ije sr@latin sv ta te tg th tk tr tt ug uk uz uz@cyrillic vi wa xh yi zh_CN zh_HK zh_TW"
 
 DESCRIPTION="Image loading library for GTK+"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
@@ -41,6 +43,7 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 src_prepare() {
+	plocale_get_locales > po/LINGUAS || die
 	default
 	xdg_environment_reset
 }
