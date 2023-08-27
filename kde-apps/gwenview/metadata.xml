@@ -10,8 +10,10 @@
 	</upstream>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
+		<flag name="annotator">Enable annotation tools using <pkg>media-libs/kimageannotator</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="mpris">Enable support for MPRIS2 interface, requiring <pkg>dev-qt/qtdbus</pkg> as dependency.</flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
+		<flag name="tiff">Enable TIFF support using <pkg>media-libs/tiff</pkg></flag>
 	</use>
 </pkgmetadata>
