@@ -16,7 +16,7 @@ SRC_URI="https://github.com/mhib/pairing_heap/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/minitest )"
