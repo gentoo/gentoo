@@ -28,9 +28,9 @@ RDEPEND="
 	app-text/poppler:=[cairo,introspection]
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
-	dev-libs/libportal:=
+	dev-libs/libportal:=[gtk,introspection,vala]
 	gui-libs/gtk:4
-	gui-libs/libadwaita:1
+	gui-libs/libadwaita:1[introspection,vala]
 "
 DEPEND="
 	${RDEPEND}
