@@ -5,7 +5,9 @@ EAPI=8
 PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
+inherit gnome.org gnome2-utils linux-info meson-multilib multilib plocale python-any-r1 toolchain-funcs xdg
+
+PLOCALES="ab af am an ar as ast az be be@latin bg bn bn_IN bs ca ca@valencia cs cy da de dz el en@shaw en_CA en_GB eo es et eu fa fi fr fur ga gd gl gu he hi hr hu hy id ie is it ja ka kk kn ko ku lt lv mai mg mk ml mn mr ms nb nds ne nl nn oc or pa pl ps pt pt_BR ro ru rw si sk sl sq sr sr@ije sr@latin sv ta te tg th tl tr tt ug uk vi wa xh yi zh_CN zh_HK zh_TW"
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
@@ -159,6 +161,8 @@ src_prepare() {
 	sed -i \
 		-e '/AvailabilityMacros.h/d' \
 		gio/giomodule.c || die
+
+	plocale_get_locales > po/LINGUAS || die
 
 	default
 	gnome2_environment_reset
