@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson toolchain-funcs xdg-utils
+inherit meson plocale toolchain-funcs xdg-utils
+
+PLOCALES="af ar as ast az be be@latin bg bn_IN ca ca@valencia cs cy da de el en_GB eo es et eu fa fi fo fr fur ga gl gu he hi hr hu ia id is it ja ka kk kn ko ky lt lv ml mr ms nb nl nn oc or pa pl pt pt_BR ro ru rw si sk sl sq sr sr@latin sv ta te th tr uk vi wa zh_CN zh_HK zh_TW"
 
 # Keep an eye on https://gitlab.freedesktop.org/xdg/xdgmime/-/merge_requests/25!
 # xdgmime is used for tests but doesn't make releases nowadays; do what
@@ -35,6 +37,7 @@ DEPEND="${RDEPEND}"
 DOCS=( HACKING.md NEWS README.md )
 
 src_prepare() {
+	plocale_get_locales > po/LINGUAS || die
 	default
 
 	if use test ; then
