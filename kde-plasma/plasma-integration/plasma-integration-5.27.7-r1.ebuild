@@ -45,8 +45,5 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.6.0
 "
-RDEPEND="${COMMON_DEPEND}
-	media-fonts/hack
-	media-fonts/noto
-"
+RDEPEND="${COMMON_DEPEND}"
 BDEPEND=">=dev-qt/qtwaylandscanner-${QTMIN}:5"
