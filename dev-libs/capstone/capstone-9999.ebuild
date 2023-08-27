@@ -35,6 +35,13 @@ DEPEND="${RDEPEND}
 BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	# Currently "-Werror" is only added in the `next`-development branch, but
+	# not merged into 5.* releases. Eventually this patch may be needed in
+	# version 5 releas line. See bug #911481.
+	"${FILESDIR}/${P}-werror.patch"
+)
+
 distutils_enable_tests setup.py
 
 if [[ ${PV} == *_rc* ]]; then
