@@ -15,7 +15,9 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
+inherit flag-o-matic meson-multilib optfeature plocale prefix python-any-r1 systemd tmpfiles udev
+
+PLOCALES="af as be bg bn_IN ca cs da de de_CH el eo es fi fr gl gu he hi hr hu id it ja ka kk kn ko lt ml mr my nl nn oc or pa pl pt pt_BR ro ru si sk sr sr@latin sv ta te tr uk zh_CN zh_TW"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
@@ -156,6 +158,7 @@ python_check_deps() {
 }
 
 src_prepare() {
+	plocale_get_locales > po/LINGUAS || die
 	default
 
 	# Used for upstream backports
