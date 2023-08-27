@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib git-r3
+inherit cmake-multilib git-r3 multibuild
 
 DESCRIPTION="A JSON implementation in C"
 HOMEPAGE="https://github.com/json-c/json-c/wiki"
@@ -21,11 +21,14 @@ MULTILIB_WRAPPED_HEADERS=(
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DDISABLE_WERROR=ON
-		-DDISABLE_EXTRA_LIBS=ON
-		-DENABLE_THREADING=$(usex threads)
-		-DENABLE_RDRAND=$(usex cpu_flags_x86_rdrand)
+		# apps are not installed, so disable unconditionally.
+		# https://github.com/json-c/json-c/blob/json-c-0.17-20230812/apps/CMakeLists.txt#L119...L121
+		-DBUILD_APPS=OFF
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
+		-DDISABLE_EXTRA_LIBS=ON
+		-DDISABLE_WERROR=ON
+		-DENABLE_RDRAND=$(usex cpu_flags_x86_rdrand)
+		-DENABLE_THREADING=$(usex threads)
 	)
 
 	cmake_src_configure
@@ -33,14 +36,18 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake_src_compile
-	use doc && doxygen doc/Doxyfile
+	if use doc && multilib_is_native_abi; then
+		cmake_build doc
+	fi
 }
 
 multilib_src_test() {
 	multilib_is_native_abi && cmake_src_test
 }
 
-multilib_src_install_all() {
-	use doc && HTML_DOCS=( "${BUILD_DIR}-abi_x86_64.amd64"/doc/html/. )
-	einstalldocs
+multilib_src_install() {
+	if multilib_is_native_abi; then
+		use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+		einstalldocs
+	fi
 }
