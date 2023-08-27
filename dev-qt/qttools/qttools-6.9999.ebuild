@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qt6-build
+inherit llvm qt6-build
 
 DESCRIPTION="Qt Tools Collection"
 
@@ -12,8 +12,18 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	assistant designer distancefieldgenerator +linguist pixeltool
-	qattributionsscanner qdbus qdiag qdoc qplugininfo
+	assistant clang designer distancefieldgenerator +linguist
+	opengl pixeltool qdbus qdoc qml qtattributionsscanner qtdiag
+	qtplugininfo vulkan +widgets
+"
+# note that some tools do not *require* widgets but will skip a sub-tool
+# if not enabled (e.g. linguist gives lrelease but not the GUI linguist6)
+REQUIRED_USE="
+	assistant? ( widgets )
+	designer? ( qml widgets )
+	distancefieldgenerator? ( qml widgets )
+	pixeltool? ( widgets )
+	qdoc? ( clang )
 "
 
 # behaves very badly when qttools is not already installed, also
@@ -21,35 +31,38 @@ IUSE="
 # and 3rdparty/ tries to FetchContent gtest)
 RESTRICT="test"
 
+LLVM_MAX_SLOT=17
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[network]
-	assistant? ( =dev-qt/qtbase-${PV}*:6[sql,widgets] )
-	designer? ( =dev-qt/qtbase-${PV}*:6[widgets] )
-	distancefieldgenerator? (
-		=dev-qt/qtbase-${PV}*:6[widgets]
-		=dev-qt/qtdeclarative-${PV}*:6
-	)
-	pixeltool? ( =dev-qt/qtbase-${PV}*:6[widgets] )
-	qdbus? ( =dev-qt/qtbase-${PV}*:6[widgets] )
-	qdiag? ( =dev-qt/qtbase-${PV}*:6[opengl,widgets] )
-	qdoc? ( sys-devel/clang:= )
+	=dev-qt/qtbase-${PV}*:6[network,widgets?]
+	assistant? ( =dev-qt/qtbase-${PV}*:6[sql,sqlite] )
+	clang? ( <sys-devel/clang-$((LLVM_MAX_SLOT+1)):= )
+	designer? ( =dev-qt/qtbase-${PV}*:6[xml] )
+	qdbus? ( =dev-qt/qtbase-${PV}*:6[dbus,xml] )
+	qml? ( =dev-qt/qtdeclarative-${PV}*:6[widgets?] )
+	qtdiag? ( =dev-qt/qtbase-${PV}*:6[vulkan=] )
+	widgets? ( =dev-qt/qtbase-${PV}*:6[opengl=] )
 "
 DEPEND="${RDEPEND}"
 
+pkg_setup() {
+	use clang && llvm_pkg_setup
+}
+
 src_configure() {
 	local mycmakeargs=(
+		$(cmake_use_find_package qml Qt6Qml)
+		$(cmake_use_find_package widgets Qt6Widgets)
 		$(qt_feature assistant)
-		-DQT_FEATURE_commandlineparser=ON
+		$(qt_feature clang clangcpp)
 		$(qt_feature designer)
 		$(qt_feature distancefieldgenerator)
 		$(qt_feature linguist)
 		$(qt_feature pixeltool)
-		$(qt_feature qattributionsscanner qtattributionsscanner)
 		$(qt_feature qdbus)
-		$(qt_feature qdiag qtdiag)
 		$(qt_feature qdoc clang)
-		$(qt_feature qplugininfo qtplugininfo)
-		-DQT_FEATURE_thread=ON
+		$(qt_feature qtattributionsscanner)
+		$(qt_feature qtdiag)
+		$(qt_feature qtplugininfo)
 	)
 
 	qt6-build_src_configure
