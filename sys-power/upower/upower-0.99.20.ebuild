@@ -4,7 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit meson python-any-r1 systemd udev xdg-utils
+inherit meson plocale python-any-r1 systemd udev xdg-utils
+
+PLOCALES="fr it pl sv"
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
 HOMEPAGE="https://upower.freedesktop.org/"
@@ -64,6 +66,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	plocale_get_locales > po/LINGUAS || die
 	default
 	xdg_environment_reset
 }
