@@ -4,7 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-inherit meson pam pax-utils python-any-r1 systemd xdg-utils
+inherit meson pam pax-utils plocale python-any-r1 systemd xdg-utils
+
+PLOCALES="cs da de hr hu id it ka nl nn pl pt pt_BR ro ru sk sv tr uk zh_CN zh_TW"
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit https://gitlab.freedesktop.org/polkit/polkit"
@@ -104,6 +106,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	plocale_get_locales > po/LINGUAS || die
 	default
 
 	# bug #401513
