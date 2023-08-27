@@ -13,4 +13,7 @@
 		<remote-id type="github">cdgriffith/Box</remote-id>
 		<remote-id type="pypi">python-box</remote-id>
 	</upstream>
+	<use>
+		<flag name="native-extensions">Compiles native C extensions</flag>
+	</use>
 </pkgmetadata>

@@ -24,6 +24,7 @@ S=${WORKDIR}/${MY_P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+native-extensions"
 
 RDEPEND="
 	dev-python/msgpack[${PYTHON_USEDEP}]
@@ -34,10 +35,22 @@ RDEPEND="
 	dev-python/tomli-w[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	native-extensions? (
+		dev-python/cython[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	if ! use native-extensions; then
+		# a cheap hack, extensions are auto-disabled if Cython.Build
+		# is not importable
+		> Cython.py || die
+	fi
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	rm -rf box || die
