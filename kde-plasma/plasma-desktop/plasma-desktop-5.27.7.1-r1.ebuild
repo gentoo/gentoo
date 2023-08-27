@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	>=kde-frameworks/kded-${KFMIN}:5
-	>=kde-frameworks/kdelibs4support-${KFMIN}:5
+	>=kde-frameworks/kdelibs4support-${KFMIN}:5[handbook?]
 	>=kde-frameworks/kglobalaccel-${KFMIN}:5
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
@@ -111,8 +111,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
-	>=kde-plasma/oxygen-${PVCUT}:5
-	media-fonts/noto-emoji
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	x11-misc/xdg-user-dirs
@@ -120,6 +118,7 @@ RDEPEND="${COMMON_DEPEND}
 	screencast? ( >=kde-plasma/kpipewire-${PVCUT}:5 )
 "
 BDEPEND="
+	dev-util/wayland-scanner
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	virtual/pkgconfig
 "
