@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1 tmpfiles
@@ -23,7 +23,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 LICENSE="GPL-2"
 SLOT="0"
 
-# Need newer Portage for XML fix, bug #857537
+# Need newer Portage for eclean-pkg API, bug #900224
 DEPEND="
 	>=sys-apps/portage-3.0.52[${PYTHON_USEDEP}]
 "
