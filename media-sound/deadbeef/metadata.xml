@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">DeaDBeeF-Player/deadbeef</remote-id>
+		<remote-id type="sourceforge">deadbeef</remote-id>
 	</upstream>
 	<use>
 		<flag name="converter">File format converter</flag>
