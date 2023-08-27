@@ -26,8 +26,10 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-inherit bash-completion-r1 linux-info meson-multilib pam python-single-r1
+inherit bash-completion-r1 linux-info meson-multilib pam plocale python-single-r1
 inherit secureboot systemd toolchain-funcs udev
+
+PLOCALES="be be@latin bg ca cs da de el es et eu fi fr gl hr hu id it ja ka kab ko lt nl pa pl pt pt_BR ro ru si sk sr sv tr uk zh_CN zh_TW"
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="http://systemd.io/"
@@ -254,6 +256,7 @@ src_prepare() {
 		)
 	fi
 
+	plocale_get_locales > po/LINGUAS || die
 	default
 }
 
