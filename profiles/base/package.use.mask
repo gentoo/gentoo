@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-08-28)
+# Breaks multiple high-profile packages depending on outdated proc-macro2 when
+# USE=nightly and using an affected Rust version; keep until revdep problems
+# are gone.
+# See https://github.com/rust-lang/rust/issues/113152
+>=dev-lang/rust-1.72.0 nightly
+
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-23)
 # Polymake itself is masked for removal (bug 909570).
 sci-mathematics/singular polymake
