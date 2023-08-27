@@ -98,16 +98,18 @@ secureboot_pkg_setup() {
 }
 
 # @FUNCTION: secureboot_sign_efi_file
-# @USAGE: <input file> <output file>
+# @USAGE: <input file> [<output file>]
 # @DESCRIPTION:
 # Sign a file using sbsign and the requested key/certificate.
-# If the file is already signed with our key then skip.
+# If the file is already signed with our key then the file is skipped.
+# If no output file is specified the output file will be the same
+# as the input file, i.e. the file will be overwritten.
 secureboot_sign_efi_file() {
 	debug-print-function ${FUNCNAME[0]} "${@}"
 	use secureboot || return
 
 	local input_file=${1}
-	local output_file=${2}
+	local output_file=${2:-${1}}
 
 	_secureboot_die_if_unset
 
