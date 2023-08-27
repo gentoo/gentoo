@@ -3,7 +3,8 @@
 
 EAPI=8
 
-ECM_HANDBOOK="true"
+ECM_HANDBOOK="forceoptional"
+ECM_HANDBOOK_DIR="docs"
 ECM_QTHELP="false"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.9
@@ -13,12 +14,11 @@ DESCRIPTION="Framework easing the development transition from KDELibs 4 to KF 5"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="X"
+IUSE="X network-status"
 
 RESTRICT="test"
 
 COMMON_DEPEND="
-	app-text/docbook-xml-dtd:4.2
 	dev-libs/openssl:0
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -36,7 +36,6 @@ COMMON_DEPEND="
 	=kde-frameworks/kcrash-${PVCUT}*:5
 	=kde-frameworks/kdbusaddons-${PVCUT}*:5
 	>=kde-frameworks/kded-${PVCUT}:5
-	=kde-frameworks/kdoctools-${PVCUT}*:5
 	=kde-frameworks/kemoticons-${PVCUT}*:5
 	=kde-frameworks/kglobalaccel-${PVCUT}*:5
 	=kde-frameworks/kguiaddons-${PVCUT}*:5
@@ -64,6 +63,7 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
+	network-status? ( net-misc/networkmanager )
 	test? ( >=dev-qt/qtconcurrent-${QTMIN}:5 )
 	X? ( x11-base/xorg-proto )
 "
@@ -88,7 +88,11 @@ src_prepare() {
 	ecm_src_prepare
 
 	if ! use handbook; then
-		sed -e "/kdoctools_install/ s/^/#DONT/" -i CMakeLists.txt || die
+		# kdelibs4support has a weird implementation.
+		# It includes KF5DocTools dependency unconditionally into cmake macros,
+		# causing some other packages (like plasma-desktop) build to crash if KDocTools is not installed.
+		sed -e "/find_dependency(KF5DocTools/ s/^/# /" -i KF5KDELibs4SupportConfig.cmake.in || die
+		sed -e '/include("${KF5DocTools/ s/^/# /' -i cmake/modules/KDE4Macros.cmake || die
 	fi
 
 	cmake_run_in src cmake_comment_add_subdirectory l10n
@@ -97,6 +101,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_X11=$(usex X)
+		$(cmake_use_find_package network-status NetworkManager)
 	)
 
 	ecm_src_configure
