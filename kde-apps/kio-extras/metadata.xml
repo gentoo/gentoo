@@ -11,6 +11,7 @@
 	</upstream>
 	<use>
 		<flag name="activities">Enable activities KIO worker and fileitem plugin</flag>
+		<flag name="exiv">Enable extraction of JPEG thumbnails via <pkg>kde-apps/libkexiv2</pkg></flag>
 		<flag name="ios">Enable AFC (Apple File Conduit) KIO worker for iOS devices support</flag>
 		<flag name="man">Enable manpages KIO worker</flag>
 		<flag name="nfs">Enable NFS support using <pkg>net-libs/libtirpc</pkg></flag>
