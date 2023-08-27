@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2 handbook? ( FDL-1.2 )"
 SLOT="5"
-IUSE="crypt"
+IUSE="crypt kparts"
 
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
@@ -45,18 +45,28 @@ DEPEND="
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kjobwidgets-${KFMIN}:5
 	>=kde-frameworks/knewstuff-${KFMIN}:5
-	>=kde-frameworks/kparts-${KFMIN}:5
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	crypt? ( >=app-crypt/qca-2.3.0:2[qt5(+)] )
+	kparts? ( >=kde-frameworks/kparts-${KFMIN}:5 )
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	if ! use handbook; then
+		# ecm.eclass is unable to find this piece, patching manually
+		sed -e 's/DocTools//' -i CMakeLists.txt || die
+	fi
+
+	ecm_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DOMIT_EXAMPLES=ON
 		$(cmake_use_find_package crypt Qca-qt5)
+		-DBUILD_KPARTSPLUGIN=$(usex kparts)
 	)
 
 	ecm_src_configure
