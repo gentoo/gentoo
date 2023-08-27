@@ -15,7 +15,7 @@ SRC_URI="https://github.com/monora/stream/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 ruby_add_bdepend "dev-ruby/bundler dev-ruby/yard test? ( dev-ruby/test-unit )"
