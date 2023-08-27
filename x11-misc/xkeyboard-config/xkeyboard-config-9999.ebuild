@@ -4,7 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit meson python-any-r1
+inherit meson plocale python-any-r1
+
+PLOCALES="af ar az bg ca crh cs da de el en_GB eo es fi fr fur gl he hr hu id it ja ka ko ky lt nb nl pl pt pt_BR ro ru rw sk sl sq sr sv tr uk vi zh_CN zh_TW"
 
 DESCRIPTION="X keyboard configuration database"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
@@ -28,6 +30,11 @@ BDEPEND="
 	dev-libs/libxslt
 	sys-devel/gettext
 "
+
+src_prepare() {
+	plocale_get_locales > po/LINGUAS || die
+	default
+}
 
 pkg_setup() {
 	python-any-r1_pkg_setup
