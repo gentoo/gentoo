@@ -18,6 +18,7 @@
 		<flag name="omemo">Enable OMEMO encryption</flag>
 		<flag name="omemo-qrcode">Enable exchanging OMEMO information via QR code</flag>
 		<flag name="otr">Enable encrypted conversations using Off-The-Records messaging</flag>
+		<flag name="python">Enable Python plugins support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">profanity-im/profanity</remote-id>
