@@ -19,8 +19,6 @@ IUSE="acl +handbook kerberos +kwallet X"
 RESTRICT="test"
 
 RDEPEND="
-	dev-libs/libxml2
-	dev-libs/libxslt
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -54,7 +52,6 @@ RDEPEND="
 		sys-apps/attr
 		virtual/acl
 	)
-	handbook? ( =kde-frameworks/kdoctools-${PVCUT}*:5 )
 	kerberos? ( virtual/krb5 )
 	kwallet? ( =kde-frameworks/kwallet-${PVCUT}*:5 )
 	X? ( >=dev-qt/qtx11extras-${QTMIN}:5 )
@@ -64,6 +61,13 @@ DEPEND="${RDEPEND}
 	test? ( sys-libs/zlib )
 "
 PDEPEND=">=kde-frameworks/kded-${PVCUT}:5"
+BDEPEND="
+	handbook? (
+		dev-libs/libxml2
+		dev-libs/libxslt
+		=kde-frameworks/kdoctools-${PVCUT}*:5
+	)
+"
 
 src_configure() {
 	local mycmakeargs=(
