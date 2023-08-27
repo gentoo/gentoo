@@ -20,7 +20,7 @@ RUBY_S="protobuf-${PV}/ruby"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND+=" >=dev-libs/protobuf-3.21.0"
