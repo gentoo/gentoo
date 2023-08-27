@@ -3,12 +3,18 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit python-single-r1
 
 DESCRIPTION="A console based XMPP client inspired by Irssi"
 HOMEPAGE="https://profanity-im.github.io"
-SRC_URI="https://github.com/profanity-im/profanity/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="
+    https://github.com/profanity-im/profanity/releases/download/${PV}/${P}.tar.gz
+    https://github.com/profanity-im/profanity/commit/122434a.patch
+        -> ${PN}-0.14.0-ox-carbons.patch
+    https://github.com/profanity-im/profanity/commit/2ed6211c.patch
+        -> ${PN}-0.14.0-xscreensaver.patch
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -54,6 +60,11 @@ DEPEND="
       ')
    )
 "
+
+PATCHES=(
+	"${DISTDIR}/${PN}-0.14.0-ox-carbons.patch"
+	"${DISTDIR}/${PN}-0.14.0-xscreensaver.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
