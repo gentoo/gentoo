@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/googleapis/common-protos-ruby"
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 ruby_add_rdepend "
