@@ -8,7 +8,7 @@ ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.106.0
 QTMIN=5.15.9
-inherit ecm gear.kde.org
+inherit ecm gear.kde.org optfeature
 
 DESCRIPTION="Screenshot capture utility"
 HOMEPAGE="https://apps.kde.org/spectacle/"
@@ -55,7 +55,6 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qdbus-${QTMIN}:*
-	>=dev-qt/qtmultimedia-${QTMIN}:5[qml]
 	>=dev-qt/qtsvg-${QTMIN}:5
 "
 BDEPEND="
@@ -68,4 +67,11 @@ src_configure() {
 		$(cmake_use_find_package share KF5Purpose)
 	)
 	ecm_src_configure
+}
+
+pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		optfeature "preview of recorded video" ">=dev-qt/qtmultimedia-${QTMIN}:5[qml]"
+	fi
+	ecm_pkg_postinst
 }
