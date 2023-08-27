@@ -11,19 +11,23 @@ DESCRIPTION="Breeze SVG icon theme"
 
 LICENSE="LGPL-3"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-IUSE="test"
+IUSE="+24px test"
 
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-qt/qttest:5 )"
-BDEPEND="${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
+BDEPEND="
 	dev-qt/qtcore:5
 	>=kde-frameworks/extra-cmake-modules-${PVCUT}:5
+	24px? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
+	)
 	test? ( app-misc/fdupes )
 "
 
 python_check_deps() {
+	use 24px || return 0
 	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
@@ -36,6 +40,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DPython_EXECUTABLE="${PYTHON}"
 		-DBINARY_ICONS_RESOURCE=OFF
+		$(cmake_use_find_package 24px Python)
 	)
 	cmake_src_configure
 }
