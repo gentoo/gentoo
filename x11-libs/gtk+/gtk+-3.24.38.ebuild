@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit gnome2 meson-multilib multilib toolchain-funcs virtualx
+inherit gnome2 meson-multilib multilib plocale toolchain-funcs virtualx
+
+PLOCALES="ab af am an ang ar as ast az az_IR be be@latin bg bn bn_IN br bs ca ca@valencia ckb crh cs cy da de dz el en en@shaw en_CA en_GB eo es et eu fa fi fr fur ga gd gl gu he hi hr hu hy ia id ie io is it ja ka kg kk km kn ko ku ky lg li lt lv mai mi mk ml mn mr ms my nb nds ne nl nn nso oc or pa pl ps pt pt_BR ro ru rw si sk sl sq sr sr@ije sr@latin sv ta te tg th tk tr tt ug uk ur uz uz@cyrillic vi wa xh yi zh_CN zh_HK zh_TW"
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
@@ -102,6 +104,10 @@ PATCHES=(
 )
 
 src_prepare() {
+	local locales
+	locales="$(plocale_get_locales)" || die
+	echo "${locales}" > po/LINGUAS || die
+	echo "${locales}" > po-properties/LINGUAS || die
 	default
 
 	# The border-image-excess-size.ui test is known to fail on big-endian platforms
