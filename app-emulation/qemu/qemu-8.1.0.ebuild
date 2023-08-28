@@ -268,10 +268,12 @@ PPC_FIRMWARE_DEPEND="
 	)
 "
 
+# See bug #913084 for pip dep
 BDEPEND="
 	$(python_gen_impl_dep)
 	dev-lang/perl
 	>=dev-util/meson-0.63.0
+	dev-python/pip[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
 		>=dev-python/sphinx-1.6.0[${PYTHON_USEDEP}]
