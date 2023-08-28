@@ -25,11 +25,7 @@ if [[ ${PV} == *9999* ]]; then
 	QEMU_DOCS_PREBUILT=0
 
 	EGIT_REPO_URI="https://gitlab.com/qemu-project/qemu.git/"
-	EGIT_SUBMODULES=(
-		tests/fp/berkeley-softfloat-3
-		tests/fp/berkeley-testfloat-3
-		subprojects/keycodemapdb
-	)
+	EGIT_SUBMODULES=()
 	inherit git-r3
 	SRC_URI=""
 else
@@ -440,6 +436,14 @@ check_targets() {
 	popd >/dev/null
 }
 
+if [[ ${PV} == 9999 ]]; then
+src_unpack() {
+	git-r3_src_unpack
+	cd "${P}" || die
+	meson subprojects download keycodemapdb berkeley-softfloat-3 berkeley-testfloat-3 || die
+}
+fi
+
 src_prepare() {
 	check_targets IUSE_SOFTMMU_TARGETS softmmu
 	check_targets IUSE_USER_TARGETS linux-user
@@ -454,7 +458,7 @@ src_prepare() {
 	MAKEOPTS+=" V=1"
 
 	# Remove bundled modules
-	rm -r subprojects/dtc roms/*/ || die
+	rm -r roms/*/ || die
 }
 
 ##
