@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/912343
+--- a/Makefile
++++ b/Makefile
+@@ -21,15 +21,15 @@ all: memtest.bin memtest
+ # symbols and then link it dynamically so I have full
+ # relocation information
+ memtest_shared: $(OBJS) memtest_shared.lds Makefile
+-	$(LD) --warn-constructors --warn-common -static -T memtest_shared.lds -m elf_i386 \
++	$(LD) --warn-constructors --warn-common -static -z notext --no-warn-rwx-segments -T memtest_shared.lds -m elf_i386 \
+ 	-o $@ $(OBJS) && \
+-	$(LD) -shared -Bsymbolic -T memtest_shared.lds -o $@ $(OBJS)
++	$(LD) -shared -Bsymbolic -z notext --no-warn-rwx-segments -T memtest_shared.lds -o $@ $(OBJS)
+ 
+ memtest_shared.bin: memtest_shared
+ 	objcopy -O binary $< memtest_shared.bin
+ 
+ memtest: memtest_shared.bin memtest.lds
+-	$(LD) -s -T memtest.lds -b binary memtest_shared.bin -o $@
++	$(LD) -s -z notext --no-warn-rwx-segments -T memtest.lds -b binary memtest_shared.bin -o $@
+ 
+ head.s: head.S config.h defs.h test.h
+ 	$(CC) -E -traditional $< -o $@
+@@ -41,7 +41,7 @@ setup.s: setup.S config.h defs.h
+ 	$(CC) -E -traditional $< -o $@
+ 
+ memtest.bin: memtest_shared.bin bootsect.o setup.o memtest.bin.lds
+-	$(LD) -T memtest.bin.lds bootsect.o setup.o -b binary \
++	$(LD) -z notext --no-warn-rwx-segments -T memtest.bin.lds bootsect.o setup.o -b binary \
+ 	memtest_shared.bin -o memtest.bin
+ 
+ reloc.o: reloc.c

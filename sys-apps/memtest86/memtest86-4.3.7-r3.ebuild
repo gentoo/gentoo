@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -19,6 +19,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.7-io-extern-inline.patch #548312 #568292
 	"${FILESDIR}"/${PN}-4.3.7-reboot-def.patch #548312 #568292
 	"${FILESDIR}"/${PN}-4.3.7-no-clean.patch #557890
+	"${FILESDIR}"/${PN}-4.3.7-binutils-2.41-textrels.patch #912343
 )
 
 S="${WORKDIR}/src"
