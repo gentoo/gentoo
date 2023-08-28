@@ -26,9 +26,10 @@ RDEPEND="
 	>=dev-python/patsy-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.3[${PYTHON_USEDEP}]
 "
+# https://github.com/statsmodels/statsmodels/issues/8868 for <cython-3
 BDEPEND="
 	${DEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
