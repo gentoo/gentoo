@@ -14,7 +14,8 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="
-		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
+		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://cdn.turret.cyou/354c6d33bfd3bbc67c0047af1328498978eef352/${P}-manpages.tar.xz"
 	KEYWORDS="amd64 arm ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -26,8 +27,8 @@ RESTRICT="!test? ( test )"
 
 DEPEND=">=dev-libs/girara-0.3.7
 	>=dev-libs/glib-2.50:2
-	>=sys-devel/gettext-0.19.8
 	sys-apps/file
+	>=sys-devel/gettext-0.19.8
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	seccomp? ( sys-libs/libseccomp )
@@ -37,7 +38,6 @@ DEPEND=">=dev-libs/girara-0.3.7
 RDEPEND="${DEPEND}"
 
 BDEPEND="
-	doc? ( dev-python/sphinx )
 	test? ( dev-libs/appstream-glib
 		dev-libs/check
 		x11-base/xorg-server[xvfb] )
@@ -50,7 +50,7 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dmanpages=$(usex doc enabled disabled)
+		-Dmanpages=disabled
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsqlite=$(usex sqlite enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
@@ -58,10 +58,11 @@ src_configure() {
 	meson_src_configure
 }
 
-src_install() {
-	meson_src_install
-}
-
 src_test() {
 	virtx meson_src_test
+}
+
+src_install() {
+	meson_src_install
+	doman "${WORKDIR}"/man/zathura*
 }

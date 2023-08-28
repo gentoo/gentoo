@@ -8,15 +8,9 @@ inherit meson virtualx xdg
 DESCRIPTION="A highly customizable and functional document viewer"
 HOMEPAGE="https://pwmt.org/projects/zathura/"
 
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
-	EGIT_BRANCH="develop"
-else
-	SRC_URI="
-		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm ~riscv x86 ~amd64-linux ~x86-linux"
-fi
+inherit git-r3
+EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
+EGIT_BRANCH="develop"
 
 LICENSE="ZLIB"
 SLOT="0/$(ver_cut 1-2)"
@@ -26,8 +20,8 @@ RESTRICT="!test? ( test )"
 
 DEPEND=">=dev-libs/girara-0.3.7
 	>=dev-libs/glib-2.50:2
-	>=sys-devel/gettext-0.19.8
 	sys-apps/file
+	>=sys-devel/gettext-0.19.8
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	seccomp? ( sys-libs/libseccomp )
@@ -37,11 +31,11 @@ DEPEND=">=dev-libs/girara-0.3.7
 RDEPEND="${DEPEND}"
 
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	dev-python/sphinx
+	virtual/pkgconfig
 	test? ( dev-libs/appstream-glib
 		dev-libs/check
-		x11-base/xorg-server[xvfb] )
-	virtual/pkgconfig"
+		x11-base/xorg-server[xvfb] ) "
 
 PATCHES=(
 	"${FILESDIR}"/zathura-disable-seccomp-tests.patch
@@ -50,16 +44,12 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dmanpages=$(usex doc enabled disabled)
+		-Dmanpages=enabled
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsqlite=$(usex sqlite enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
 		)
 	meson_src_configure
-}
-
-src_install() {
-	meson_src_install
 }
 
 src_test() {
