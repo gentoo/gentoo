@@ -15,18 +15,17 @@ DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
 SRC_URI="
 	https://github.com/linux-pam/linux-pam/releases/download/v${PV}/${MY_P}.tar.xz
-	https://github.com/linux-pam/linux-pam/releases/download/v${PV}/${MY_P}-docs.tar.xz
+	doc? ( https://github.com/linux-pam/linux-pam/releases/download/v${PV}/${MY_P}-docs.tar.xz )
 "
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="audit berkdb debug nis selinux"
+IUSE="audit berkdb debug doc nis selinux"
 
 BDEPEND="
 	app-alternatives/yacc
-	dev-libs/libxslt
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -81,7 +80,6 @@ multilib_src_configure() {
 		--enable-pie
 		--enable-unix
 		--disable-prelude
-		--disable-doc
 		--disable-regenerate-docu
 		--disable-static
 		--disable-Werror
@@ -98,6 +96,7 @@ multilib_src_configure() {
 		$(use_enable audit)
 		$(use_enable berkdb db)
 		$(use_enable debug)
+		$(use_enable doc)
 		$(use_enable nis)
 		$(use_enable selinux)
 		--enable-isadir='.' # bug #464016
