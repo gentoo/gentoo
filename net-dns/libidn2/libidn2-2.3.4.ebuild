@@ -29,7 +29,6 @@ DEPEND="
 "
 BDEPEND="
 	dev-lang/perl
-	sys-apps/help2man
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-libidn )
 "
@@ -48,7 +47,7 @@ multilib_src_configure() {
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		$(use_enable static-libs static)
 		$(multilib_native_use_enable nls)
-		--disable-doc
+		--enable-doc
 		--disable-gcc-warnings
 		--disable-gtk-doc
 		--disable-valgrind-tests
