@@ -4,6 +4,7 @@
 EAPI=8
 
 ECM_HANDBOOK="true"
+ECM_HANDBOOK_DIR="docs"
 ECM_QTHELP="false"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.9
@@ -86,11 +87,6 @@ PATCHES=(
 
 src_prepare() {
 	ecm_src_prepare
-
-	if ! use handbook; then
-		sed -e "/kdoctools_install/ s/^/#DONT/" -i CMakeLists.txt || die
-	fi
-
 	cmake_run_in src cmake_comment_add_subdirectory l10n
 }
 
