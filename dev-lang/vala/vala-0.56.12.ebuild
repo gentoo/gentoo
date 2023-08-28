@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	dev-libs/libxslt
+	sys-apps/help2man
 	sys-devel/flex
 	virtual/pkgconfig
 	app-alternatives/yacc
