@@ -348,6 +348,13 @@ pkg_preinst() {
 pkg_postinst() {
 	[[ -v WINE_HAD_ANY_SLOT ]] || readme.gentoo_print_elog
 
+	if use abi_x86_32 && has_version 'x11-drivers/nvidia-drivers[-abi_x86_32]'
+	then
+		ewarn "x11-drivers/nvidia-drivers is installed but is built without"
+		ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
+		ewarn "applications under ${PN} will likely not be usable."
+	fi
+
 	eselect wine update --if-unset || die
 }
 
