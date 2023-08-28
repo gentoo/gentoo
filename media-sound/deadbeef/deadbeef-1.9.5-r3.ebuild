@@ -69,6 +69,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/deadbeef-1.9.2-drop-Werror.patch"
 	"${FILESDIR}/${P}-clang-strict.patch"
+	"${FILESDIR}/${P}-musl-1.2.4.patch"
 )
 
 src_prepare() {

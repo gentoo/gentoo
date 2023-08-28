@@ -1,0 +1,66 @@
+https://bugs.gentoo.org/913163
+https://github.com/DeaDBeeF-Player/deadbeef/pull/2957
+https://github.com/DeaDBeeF-Player/deadbeef/commit/8fa263e32d7aee22c3ea1bcea7e93ca285f00930
+
+From 8fa263e32d7aee22c3ea1bcea7e93ca285f00930 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 12 Jun 2023 09:29:52 -0700
+Subject: [PATCH] configure: Use AC_SYS_LARGEFILE
+
+With musl-1.2.4 LFS support is being disabled and will later be entirely
+removed where it is expected to use off_t and lseek rather than off64_t
+and lseek64.
+
+With glibc these types are also obsolete where it is expected to use the
+_FILE_OFFSET_BITS define where off_t and lseek will become 64-bit
+compatible versions when needed. This is set by AC_SYS_LARGEFILE.
+---
+ configure.ac    | 1 +
+ src/vfs_stdio.c | 8 +++-----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1fd1b205c..6641265e8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13,6 +13,7 @@ AC_PROG_CXX
+ AC_PROG_OBJC
+ AC_STDC_HEADERS
+ AC_PROG_INSTALL
++AC_SYS_LARGEFILE
+ dnl AC_PROG_LIBTOOL
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_C_BIGENDIAN
+diff --git a/vfs_stdio.c b/vfs_stdio.c
+index 9c577f7d6..26d0842bb 100644
+--- a/vfs_stdio.c
++++ b/vfs_stdio.c
+@@ -35,8 +35,6 @@
+ #include <unistd.h>
+ 
+ #ifndef __linux__
+-#define off64_t off_t
+-#define lseek64 lseek
+ #define O_LARGEFILE 0
+ #endif
+ 
+@@ -169,7 +167,7 @@ stdio_seek (DB_FILE *stream, int64_t offset, int whence) {
+         whence = SEEK_SET;
+         offset = ((STDIO_FILE*)stream)->offs + offset;
+     }
+-    off64_t res = lseek64 (((STDIO_FILE *)stream)->stream, offset, whence);
++    off_t res = lseek (((STDIO_FILE *)stream)->stream, offset, whence);
+     if (res == -1) {
+         return -1;
+     }
+@@ -214,8 +212,8 @@ stdio_getlength (DB_FILE *stream) {
+     return l;
+ #else
+     if (!f->have_size) {
+-        int64_t size = lseek64 (f->stream, 0, SEEK_END);
+-        lseek64 (f->stream, f->offs, SEEK_SET);
++        int64_t size = lseek (f->stream, 0, SEEK_END);
++        lseek (f->stream, f->offs, SEEK_SET);
+ #ifdef USE_BUFFERING
+         f->bufremaining = 0;
+ #endif
