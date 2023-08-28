@@ -31,6 +31,7 @@ RDEPEND="
 	>=dev-python/pyparsing-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/tzdata[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pbr-2.2.0[${PYTHON_USEDEP}]
@@ -44,11 +45,6 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
-
-src_prepare() {
-	sed -i -e '/tzdata/d' requirements.txt || die
-	distutils-r1_src_prepare
-}
 
 python_compile() {
 	distutils-r1_python_compile
