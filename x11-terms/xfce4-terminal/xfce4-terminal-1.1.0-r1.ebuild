@@ -37,6 +37,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-menu-accel.patch"
+)
+
 src_configure() {
 	local myconf=(
 		$(use_with utempter)
