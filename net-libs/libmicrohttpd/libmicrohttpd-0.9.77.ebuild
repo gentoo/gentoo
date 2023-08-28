@@ -33,7 +33,7 @@ pkg_pretend() {
 		use epoll && CONFIG_CHECK+=" ~EPOLL"
 		ERROR_EPOLL="EPOLL is not enabled in kernel, but enabled in libmicrohttpd."
 		ERROR_EPOLL+=" libmicrohttpd will fail to start with 'automatic' configuration."
-		use eventfd && CONFIG_CHECK+=" EVENTFD"
+		use eventfd && CONFIG_CHECK+=" ~EVENTFD"
 		ERROR_EVENTFD="EVENTFD is not enabled in kernel, but enabled in libmicrohttpd."
 		ERROR_EVENTFD+=" libmicrohttpd will not work."
 		check_extra_config
