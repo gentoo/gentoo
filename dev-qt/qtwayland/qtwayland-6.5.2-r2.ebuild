@@ -11,14 +11,14 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-IUSE="vulkan"
+IUSE="qml vulkan"
 
 RDEPEND="
 	dev-libs/wayland
 	=dev-qt/qtbase-${PV}*:6[egl(+),gui,opengl,vulkan=]
-	=dev-qt/qtdeclarative-${PV}*:6
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
+	qml? ( =dev-qt/qtdeclarative-${PV}*:6 )
 "
 DEPEND="
 	${RDEPEND}
@@ -38,3 +38,11 @@ CMAKE_SKIP_TESTS=(
 PATCHES=(
 	"${FILESDIR}"/${P}-drag-drop-segfault.patch
 )
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_find_package qml Qt6Qml)
+	)
+
+	qt6-build_src_configure
+}
