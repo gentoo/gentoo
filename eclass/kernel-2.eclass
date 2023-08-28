@@ -281,17 +281,19 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
+# Added by Daniel Ostrow <dostrow@gentoo.org>
+# This is an ugly hack to get around an issue with a 32-bit userland on ppc64.
+# I will remove it when I come up with something more reasonable.
+# Alfred Persson Forsberg <cat@catcream.org>
+# Moved this above inherit as crossdev.eclass uses CHOST internally.
+[[ ${PROFILE_ARCH} == ppc64 ]] && CHOST="powerpc64-${CHOST#*-}"
+
 inherit crossdev estack multiprocessing toolchain-funcs
 
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-# Added by Daniel Ostrow <dostrow@gentoo.org>
-# This is an ugly hack to get around an issue with a 32-bit userland on ppc64.
-# I will remove it when I come up with something more reasonable.
-[[ ${PROFILE_ARCH} == ppc64 ]] && CHOST="powerpc64-${CHOST#*-}"
 
 HOMEPAGE="https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel ${HOMEPAGE}"
 : "${LICENSE:="GPL-2"}"
