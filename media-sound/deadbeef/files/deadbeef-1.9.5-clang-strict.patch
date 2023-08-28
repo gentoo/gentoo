@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/908414
+https://github.com/DeaDBeeF-Player/deadbeef/issues/2987
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,7 +16,7 @@ AC_PROG_INSTALL
+ dnl AC_PROG_LIBTOOL
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_C_BIGENDIAN
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
+ PKG_PROG_PKG_CONFIG
+ AM_PROG_CC_C_O
+ AM_ICONV
