@@ -29,6 +29,7 @@ RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	elibc_musl? ( sys-libs/fts-standalone )
 	pam? ( sys-libs/pam )
+	!mail-client/mailx-support
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
