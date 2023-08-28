@@ -3,6 +3,11 @@
 
 EAPI=8
 
+# The Valgrind upstream maintainer also maintains it in Fedora and will
+# backport fixes there which haven't yet made it into a release. Keep an eye
+# on it for fixes we should cherry-pick too:
+# https://src.fedoraproject.org/rpms/valgrind/tree/rawhide
+
 inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
 
 DESCRIPTION="An open-source memory debugger for GNU/Linux"
