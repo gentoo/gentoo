@@ -43,6 +43,7 @@ RDEPEND="
 	lapack? ( >=sci-libs/sundials-6.5.0:0=[lapack?] )
 "
 
+# <cython-3 for bug #913141
 DEPEND="
 	${RDEPEND}
 	dev-cpp/eigen:3
@@ -50,7 +51,7 @@ DEPEND="
 	dev-libs/libfmt
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_USEDEP}]
+			<dev-python/cython-3[${PYTHON_USEDEP}]
 			dev-python/pip[${PYTHON_USEDEP}]
 		')
 	)
