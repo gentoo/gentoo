@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator"
 HOMEPAGE="https://www.leonerd.org.uk/code/libvterm/"
 SRC_URI="https://www.leonerd.org.uk/code/${PN}/${P}.tar.gz"
@@ -17,11 +19,23 @@ BDEPEND="
 "
 
 src_compile() {
-	emake VERBOSE=1 PREFIX="${EPREFIX}"/usr LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+	MYMAKEARGS=(
+		VERBOSE=1
+		PREFIX="${EPREFIX}"/usr
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+
+		CC="$(tc-getCC)"
+	)
+
+	emake "${MYMAKEARGS[@]}"
+}
+
+src_test() {
+	emake "${MYMAKEARGS[@]}" test
 }
 
 src_install() {
-	emake VERBOSE=1 DESTDIR="${D}" PREFIX="${EPREFIX}"/usr LIBDIR="${EPREFIX}/usr/$(get_libdir)" install
+	emake "${MYMAKEARGS[@]}" DESTDIR="${D}" install
 
 	find "${ED}" -name '*.la' -delete || die "Failed to prune libtool files"
 	find "${ED}" -name '*.a' -delete || die
