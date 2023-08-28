@@ -93,6 +93,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_X11=$(usex X)
+		-DCMAKE_DISABLE_FIND_PACKAGE_NetworkManager=ON
 	)
 
 	ecm_src_configure
