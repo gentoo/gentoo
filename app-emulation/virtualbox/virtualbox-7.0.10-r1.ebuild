@@ -206,6 +206,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.6-gcc-13.patch
 	"${FILESDIR}"/${PN}-7.0.8-mtune-keep-size.patch
 	"${FILESDIR}"/${PN}-7.0.6-fix-libxml2.patch
+	# 913109
+	"${FILESDIR}"/${PN}-7.0.10-fix-binutils-hardened.patch
 
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-7.0.8/patches

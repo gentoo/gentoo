@@ -1,0 +1,35 @@
+Fix building with sys-devel/binutils-2.41-r1[hardened]: read-only segment has dynamic relocations.
+https://bugs.gentoo.org/913109
+
+--- a/src/VBox/Runtime/Makefile.kmk
++++ b/src/VBox/Runtime/Makefile.kmk
+@@ -3238,6 +3238,7 @@
+  endif
+ endif
+ RuntimeR0_INCS          = include
++RuntimeR0_LDFLAGS.linux = -z notext
+ RuntimeR0_SOURCES      := \
+ 	$(if $(VBOX_ONLY_VALIDATIONKIT),,../VMM/VBoxVMM.d) \
+ 	common/checksum/crc32c.cpp \
+--- a/src/VBox/VMM/Makefile.kmk
++++ b/src/VBox/VMM/Makefile.kmk
+@@ -603,6 +603,8 @@
+   VMMR0_DEFS.darwin.amd64    += VBOX_WITH_NATIVE_NEM VBOX_WITH_NEM_R0
+  endif
+ 
++ VMMR0_LDFLAGS.linux += -z notext
++
+  $(call VBOX_SET_VER_INFO_R0,VMMR0,VirtualBox VMM - ring-0 context parts) # Version info / description.
+ 
+  if "$(USERNAME)" == "bird" && "$(KBUILD_TARGET)" == "win"
+--- a/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
++++ b/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
+@@ -258,7 +258,7 @@
+  VBoxDTraceR0_TEMPLATE = VBoxR0ExtPackDTrace
+  VBoxDTraceR0_DEFS = IN_VBOXDTRACE_R0 IN_RT_R0
+  ifeq ($(VBOX_LDR_FMT),elf)
+-  VBoxDTraceR0_LDFLAGS = -e ModuleInit
++  VBoxDTraceR0_LDFLAGS = -e ModuleInit -z notext
+  endif
+  VBoxDTraceR0_INCS = \
+  	include \
