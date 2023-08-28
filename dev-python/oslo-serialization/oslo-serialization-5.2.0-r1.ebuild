@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-python/msgpack-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]
+	dev-python/tzdata[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pbr-2.2.0[${PYTHON_USEDEP}]
@@ -40,7 +41,7 @@ distutils_enable_sphinx doc/source \
 	dev-python/openstackdocstheme
 
 python_prepare_all() {
-	# remove spurious rdeps on pbr and tzdata
-	sed -i -e '/pbr/d' -e '/tzdata/d' requirements.txt || die
+	# remove spurious rdep on pbr
+	sed -i -e '/pbr/d' requirements.txt || die
 	distutils-r1_python_prepare_all
 }
