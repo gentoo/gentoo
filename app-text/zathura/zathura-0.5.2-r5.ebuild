@@ -21,11 +21,12 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="doc seccomp sqlite synctex test"
+IUSE="seccomp sqlite synctex test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-libs/girara-0.3.7
+DEPEND="
+	>=dev-libs/girara-0.3.7
 	>=dev-libs/glib-2.50:2
 	sys-apps/file
 	>=sys-devel/gettext-0.19.8
@@ -33,14 +34,17 @@ DEPEND=">=dev-libs/girara-0.3.7
 	>=x11-libs/gtk+-3.22:3
 	seccomp? ( sys-libs/libseccomp )
 	sqlite? ( >=dev-db/sqlite-3.5.9:3 )
-	synctex? ( app-text/texlive-core )"
+	synctex? ( app-text/texlive-core )
+"
 
 RDEPEND="${DEPEND}"
 
 BDEPEND="
-	test? ( dev-libs/appstream-glib
+	test? (
+		dev-libs/appstream-glib
 		dev-libs/check
-		x11-base/xorg-server[xvfb] )
+		x11-base/xorg-server[xvfb]
+	)
 	virtual/pkgconfig"
 
 PATCHES=(
@@ -64,5 +68,5 @@ src_test() {
 
 src_install() {
 	meson_src_install
-	doman "${WORKDIR}"/man/zathura*
+	[[ ${PV} != *9999 ]] && doman "${WORKDIR}"/man/zathura*
 }
