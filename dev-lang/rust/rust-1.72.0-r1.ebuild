@@ -22,7 +22,9 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).1"
+# Temporarily set to 1.72.0 since it fixed issues in the stdlib that prevented bootstrapping on musl 1.2.4. Set back to
+# normal in 1.73.0.
+RUST_STAGE0_VERSION="${PV}"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
@@ -162,12 +164,17 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
+	"${FILESDIR}"/1.72.0-bump-libc-deps-to-0.2.146.patch
 	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.62.1-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
+
+clear_vendor_checksums() {
+	sed -i 's/\("files":{\)[^}]*/\1/' "vendor/${1}/.cargo-checksum.json" || die
+}
 
 toml_usex() {
 	usex "${1}" true false
@@ -282,6 +289,12 @@ esetup_unwind_hack() {
 }
 
 src_prepare() {
+	# Clear vendor checksums for crates that we patched to bump libc.
+	for i in addr2line-0.20.0 bstr cranelift-jit crossbeam-channel elasticlunr-rs handlebars icu_locid libffi \
+		terminal_size tracing-tree; do
+		clear_vendor_checksums "${i}"
+	done
+
 	if ! use system-bootstrap; then
 		has_version sys-devel/gcc || esetup_unwind_hack
 		local rust_stage0_root="${WORKDIR}"/rust-stage0
