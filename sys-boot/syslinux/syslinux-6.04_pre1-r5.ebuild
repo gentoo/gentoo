@@ -46,6 +46,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/syslinux-6.03-sysmacros.patch"
 		"${FILESDIR}/${PV}"
+		"${FILESDIR}/syslinux-6.04-binutils-2.41.patch"
 	)
 	default
 }

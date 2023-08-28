@@ -49,6 +49,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/6.04_pre1"
 		"${FILESDIR}/6.04_pre3"
+		"${FILESDIR}/syslinux-6.04-binutils-2.41.patch"
 	)
 	default
 }
