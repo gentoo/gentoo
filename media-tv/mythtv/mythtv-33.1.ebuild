@@ -146,6 +146,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-33.1-libva.patch
+	"${FILESDIR}"/${PN}-33.1-ffmpeg-binutils-2.41.patch
 )
 
 python_check_deps() {
