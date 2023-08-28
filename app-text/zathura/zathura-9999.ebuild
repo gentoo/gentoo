@@ -27,9 +27,9 @@ RESTRICT="!test? ( test )"
 DEPEND=">=dev-libs/girara-0.3.7
 	>=dev-libs/glib-2.50:2
 	>=sys-devel/gettext-0.19.8
+	sys-apps/file
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
-	sys-apps/file
 	seccomp? ( sys-libs/libseccomp )
 	sqlite? ( >=dev-db/sqlite-3.5.9:3 )
 	synctex? ( app-text/texlive-core )"
@@ -37,10 +37,11 @@ DEPEND=">=dev-libs/girara-0.3.7
 RDEPEND="${DEPEND}"
 
 BDEPEND="
+	doc? ( dev-python/sphinx )
 	test? ( dev-libs/appstream-glib
-		dev-libs/check )
-	virtual/pkgconfig
-	doc? ( dev-python/sphinx )"
+		dev-libs/check
+		x11-base/xorg-server[xvfb] )
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/zathura-disable-seccomp-tests.patch
