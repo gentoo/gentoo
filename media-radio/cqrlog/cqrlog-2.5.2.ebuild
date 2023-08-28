@@ -29,7 +29,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.4.0-makefile.patch"
+	"${FILESDIR}/${PN}-2.5.2-makefile.patch"
 )
 
 pkg_postist() {
