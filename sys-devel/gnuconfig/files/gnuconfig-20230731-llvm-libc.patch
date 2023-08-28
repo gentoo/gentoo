@@ -1,0 +1,44 @@
+From b0fbd0b9c6cc4453e37fd2253221473a34549437 Mon Sep 17 00:00:00 2001
+From: Alfred Persson Forsberg <cat@catcream.org>
+Date: Wed, 2 Aug 2023 02:37:38 +0200
+Subject: [PATCH] config.sub: add LLVM libc support
+
+Signed-off-by: Alfred Persson Forsberg <cat@catcream.org>
+---
+ config.sub | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/config.sub b/config.sub
+index 6ae2502..631ff8b 100755
+--- a/config.sub
++++ b/config.sub
+@@ -1694,7 +1694,7 @@ fi
+ # Now, validate our (potentially fixed-up) OS.
+ case $os in
+ 	# Sometimes we do "kernel-libc", so those need to count as OSes.
+-	musl* | newlib* | relibc* | uclibc*)
++	llvm* | musl* | newlib* | relibc* | uclibc*)
+ 		;;
+ 	# Likewise for "kernel-abi"
+ 	eabi* | gnueabi*)
+@@ -1757,7 +1757,7 @@ esac
+ # (given a valid OS), if there is a kernel.
+ case $kernel-$os in
+ 	linux-gnu* | linux-dietlibc* | linux-android* | linux-newlib* \
+-		   | linux-musl* | linux-relibc* | linux-uclibc* | linux-mlibc* )
++		   | linux-llvm* | linux-musl* | linux-relibc* | linux-uclibc* | linux-mlibc* )
+ 		;;
+ 	uclinux-uclibc* )
+ 		;;
+@@ -1765,7 +1765,7 @@ case $kernel-$os in
+ 		;;
+ 	windows*-gnu* | windows*-msvc*)
+ 		;;
+-	-dietlibc* | -newlib* | -musl* | -relibc* | -uclibc* | -mlibc* )
++	-dietlibc* | -llvm* | -newlib* | -musl* | -relibc* | -uclibc* | -mlibc* )
+ 		# These are just libc implementations, not actual OSes, and thus
+ 		# require a kernel.
+ 		echo "Invalid configuration '$1': libc '$os' needs explicit kernel." 1>&2
+-- 
+2.41.0
+
