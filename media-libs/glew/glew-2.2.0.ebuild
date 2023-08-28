@@ -12,15 +12,17 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 LICENSE="BSD MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
-IUSE="doc static-libs"
+IUSE="wayland-only doc static-libs"
 
 DEPEND="
+	!wayland-only? (
 	>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
 	>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
+)
 "
 RDEPEND="${DEPEND}"
 
@@ -52,6 +54,8 @@ src_prepare() {
 
 glew_system() {
 	# Set the SYSTEM variable instead of probing. #523444 #595280
+	if use wayland-only; then
+	echo "linux-egl"; else
 	case ${CHOST} in
 	*linux*)          echo "linux" ;;
 	*-darwin*)        echo "darwin" ;;
@@ -59,6 +63,7 @@ glew_system() {
 	mingw*|*-mingw*)  echo "mingw" ;;
 	*) die "Unknown system ${CHOST}" ;;
 	esac
+	fi
 }
 
 set_opts() {
