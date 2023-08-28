@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson virtualx xdg
 
@@ -14,24 +14,22 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="
-		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}-manpages.tar.xz
-	"
+		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 arm ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="ZLIB"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="seccomp sqlite synctex test"
+IUSE="doc seccomp sqlite synctex test"
 
 RESTRICT="!test? ( test )"
 
 DEPEND=">=dev-libs/girara-0.3.7
 	>=dev-libs/glib-2.50:2
 	>=sys-devel/gettext-0.19.8
+	sys-apps/file
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
-	sys-apps/file
 	seccomp? ( sys-libs/libseccomp )
 	sqlite? ( >=dev-db/sqlite-3.5.9:3 )
 	synctex? ( app-text/texlive-core )"
@@ -39,8 +37,10 @@ DEPEND=">=dev-libs/girara-0.3.7
 RDEPEND="${DEPEND}"
 
 BDEPEND="
+	doc? ( dev-python/sphinx )
 	test? ( dev-libs/appstream-glib
-		dev-libs/check )
+		dev-libs/check
+		x11-base/xorg-server[xvfb] )
 	virtual/pkgconfig"
 
 PATCHES=(
@@ -50,7 +50,7 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dmanpages=disabled
+		-Dmanpages=$(usex doc enabled disabled)
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsqlite=$(usex sqlite enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
@@ -60,7 +60,6 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-	doman "${WORKDIR}"/man/zathura*
 }
 
 src_test() {

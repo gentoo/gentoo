@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson virtualx xdg
 
@@ -13,13 +13,14 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
 else
-	SRC_URI="https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="
+		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="amd64 arm ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="ZLIB"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="seccomp sqlite synctex test"
+IUSE="doc seccomp sqlite synctex test"
 
 RESTRICT="!test? ( test )"
 
@@ -35,10 +36,11 @@ DEPEND=">=dev-libs/girara-0.3.7
 
 RDEPEND="${DEPEND}"
 
-BDEPEND="dev-python/sphinx
+BDEPEND="
 	test? ( dev-libs/appstream-glib
 		dev-libs/check )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	doc? ( dev-python/sphinx )"
 
 PATCHES=(
 	"${FILESDIR}"/zathura-disable-seccomp-tests.patch
@@ -47,12 +49,16 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dmanpages=enabled
+		-Dmanpages=$(usex doc enabled disabled)
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsqlite=$(usex sqlite enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
 		)
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
 }
 
 src_test() {
