@@ -37,7 +37,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/openssl:=
 	media-libs/fontconfig
-	media-libs/harfbuzz:=
+	media-libs/harfbuzz:=[truetype]
 	media-libs/lcms:2
 	media-libs/libglvnd[X?]
 	media-libs/libpng:=
