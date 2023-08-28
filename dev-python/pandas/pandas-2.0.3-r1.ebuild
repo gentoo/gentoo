@@ -120,6 +120,7 @@ BDEPEND="
 #  hence rm from doc? ( ), again
 RDEPEND="
 	${COMMON_DEPEND}
+	dev-python/tzdata[${PYTHON_USEDEP}]
 	!minimal? ( ${RECOMMENDED_DEPEND} )
 	full-support? ( ${OPTIONAL_DEPEND} )
 "
@@ -128,9 +129,6 @@ python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^              'sphinx.ext.intersphinx',/d" \
 		-i doc/source/conf.py || die
-
-	# unnecessary with system tzdata
-	sed -i -e '/tzdata/d' pyproject.toml || die
 
 	distutils-r1_python_prepare_all
 }
