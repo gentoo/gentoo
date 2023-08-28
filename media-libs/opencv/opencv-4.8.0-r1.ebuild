@@ -294,6 +294,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.5.0-link-with-cblas-for-lapack.patch
 	"${FILESDIR}"/${PN}-4.8.0-fix-protobuf.patch
 	"${FILESDIR}"/${PN}-4.8.0-fix-flatbuffer.patch
+	"${FILESDIR}"/${PN}-4.8.0-arm64-fp16.patch
 )
 
 pkg_pretend() {
