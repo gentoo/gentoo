@@ -12,4 +12,7 @@
 <use>
 	<flag name="binary">Use pre-built binaries</flag>
 </use>
+<upstream>
+	<remote-id type="github">tianocore/edk2</remote-id>
+</upstream>
 </pkgmetadata>
