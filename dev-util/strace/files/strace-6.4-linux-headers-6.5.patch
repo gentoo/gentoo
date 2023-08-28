@@ -1,0 +1,160 @@
+https://bugs.gentoo.org/913170
+https://github.com/strace/strace/issues/262
+https://github.com/strace/strace/commit/a8cec18845220cc82e45014ffdcab449ad664584
+https://github.com/strace/strace/commit/e0da3633669fcb829dd8d902d15443a755bd10fb
+
+From a8cec18845220cc82e45014ffdcab449ad664584 Mon Sep 17 00:00:00 2001
+From: "Dmitry V. Levin" <ldv@strace.io>
+Date: Tue, 4 Jul 2023 08:00:00 +0000
+Subject: [PATCH] ptp: add max_phase_adj field and update rsv field of struct
+ ptp_clock_caps
+
+* bundled/linux/include/uapi/linux/ptp_clock.h (struct ptp_clock_caps):
+Add max_phase_adj field and update rsv field following the change
+introduced by Linux kernel commit v6.5-rc1~163^2~65^2~4.
+* src/ptp.c (ptp_ioctl): Likewise.
+* tests/ioctl_ptp.c (test_no_device): Update expected output.
+--- a/bundled/linux/include/uapi/linux/ptp_clock.h
++++ b/bundled/linux/include/uapi/linux/ptp_clock.h
+@@ -95,7 +95,8 @@ struct ptp_clock_caps {
+ 	int cross_timestamping;
+ 	/* Whether the clock supports adjust phase */
+ 	int adjust_phase;
+-	int rsv[12];   /* Reserved for future use. */
++	int max_phase_adj; /* Maximum phase adjustment in nanoseconds. */
++	int rsv[11];       /* Reserved for future use. */
+ };
+ 
+ struct ptp_extts_request {
+--- a/src/ptp.c
++++ b/src/ptp.c
+@@ -78,7 +78,7 @@ ptp_ioctl(struct tcb *const tcp, const unsigned int code,
+ 	case PTP_CLOCK_GETCAPS:
+ 	case PTP_CLOCK_GETCAPS2: {
+ 		struct ptp_clock_caps caps;
+-		CHECK_TYPE_SIZE(caps.rsv, sizeof(unsigned int) * 12);
++		CHECK_TYPE_SIZE(caps.rsv, sizeof(unsigned int) * 11);
+ 		CHECK_IOCTL_SIZE(PTP_CLOCK_GETCAPS, 80);
+ 		CHECK_IOCTL_SIZE(PTP_CLOCK_GETCAPS2, 80);
+ 
+@@ -106,6 +106,8 @@ ptp_ioctl(struct tcb *const tcp, const unsigned int code,
+ 		PRINT_FIELD_D(caps, cross_timestamping);
+ 		tprint_struct_next();
+ 		PRINT_FIELD_D(caps, adjust_phase);
++		tprint_struct_next();
++		PRINT_FIELD_D(caps, max_phase_adj);
+ 		PRINT_RSV(caps, rsv);
+ 		tprint_struct_end();
+ 		break;
+--- a/tests/ioctl_ptp.c
++++ b/tests/ioctl_ptp.c
+@@ -151,7 +151,7 @@ test_no_device(void)
+ 		if (rc >= 0) {
+ 			printf("{max_adj=0, n_alarm=0, n_ext_ts=0, n_per_out=0"
+ 			       ", pps=0, n_pins=0, cross_timestamping=0"
+-			       ", adjust_phase=0}");
++			       ", adjust_phase=0, max_phase_adj=0}");
+ 		} else {
+ 			printf("%p", caps);
+ 		}
+@@ -166,7 +166,8 @@ test_no_device(void)
+ 			       ", pps=-2136948508, n_pins=-2136948507"
+ 			       ", cross_timestamping=-2136948506"
+ 			       ", adjust_phase=-2136948505"
+-			       ", rsv=[0x80a0c0e8, 0x80a0c0e9, 0x80a0c0ea"
++			       ", max_phase_adj=-2136948504"
++			       ", rsv=[0x80a0c0e9, 0x80a0c0ea"
+ 			       ", 0x80a0c0eb, 0x80a0c0ec, 0x80a0c0ed"
+ 			       ", 0x80a0c0ee, 0x80a0c0ef, 0x80a0c0f0"
+ 			       ", 0x80a0c0f1, 0x80a0c0f2, 0x80a0c0f3]}");
+
+From e0da3633669fcb829dd8d902d15443a755bd10fb Mon Sep 17 00:00:00 2001
+From: "Dmitry V. Levin" <ldv@strace.io>
+Date: Mon, 3 Jul 2023 08:00:00 +0000
+Subject: [PATCH] io_uring: rename resv2 fields of io_[cs]qring_offsets to
+ user_addr
+
+* bundled/linux/include/uapi/linux/io_uring.h (struct io_sqring_offsets,
+struct io_cqring_offsets): Rename resv2 to user_addr following
+the change introduced by Linux kernel commit v6.5-rc1~235^2~32.
+* src/io_uring.c (print_io_sqring_offsets, print_io_cqring_offsets):
+Likewise.
+* tests/io_uring_setup.c (main): Update expected output.
+--- a/bundled/linux/include/uapi/linux/io_uring.h
++++ b/bundled/linux/include/uapi/linux/io_uring.h
+@@ -406,7 +406,7 @@ struct io_sqring_offsets {
+ 	__u32 dropped;
+ 	__u32 array;
+ 	__u32 resv1;
+-	__u64 resv2;
++	__u64 user_addr;
+ };
+ 
+ /*
+@@ -425,7 +425,7 @@ struct io_cqring_offsets {
+ 	__u32 cqes;
+ 	__u32 flags;
+ 	__u32 resv1;
+-	__u64 resv2;
++	__u64 user_addr;
+ };
+ 
+ /*
+--- a/src/io_uring.c
++++ b/src/io_uring.c
+@@ -45,10 +45,8 @@ print_io_sqring_offsets(const struct io_sqring_offsets *const p)
+ 		tprint_struct_next();
+ 		PRINT_FIELD_X(*p, resv1);
+ 	}
+-	if (p->resv2) {
+-		tprint_struct_next();
+-		PRINT_FIELD_X(*p, resv2);
+-	}
++	tprint_struct_next();
++	PRINT_FIELD_X(*p, user_addr);
+ 	tprint_struct_end();
+ }
+ 
+@@ -73,10 +71,8 @@ print_io_cqring_offsets(const struct io_cqring_offsets *const p)
+ 		tprint_struct_next();
+ 		PRINT_FIELD_X(*p, resv1);
+ 	}
+-	if (p->resv2) {
+-		tprint_struct_next();
+-		PRINT_FIELD_X(*p, resv2);
+-	}
++	tprint_struct_next();
++	PRINT_FIELD_X(*p, user_addr);
+ 	tprint_struct_end();
+ }
+ 
+--- a/tests/io_uring_setup.c
++++ b/tests/io_uring_setup.c
+@@ -113,10 +113,9 @@ main(void)
+ 			       params->sq_off.array);
+ 			if (params->sq_off.resv1)
+ 				printf(", resv1=%#x", params->sq_off.resv1);
+-			if (params->sq_off.resv2)
+-				printf(", resv1=%#llx",
+-				       (unsigned long long)
+-						params->sq_off.resv2);
++			printf(", user_addr=%#llx",
++			       (unsigned long long)
++					params->sq_off.user_addr);
+ 
+ 			printf("}, cq_off={head=%u, tail=%u, ring_mask=%u"
+ 			       ", ring_entries=%u, overflow=%u, cqes=%u"
+@@ -130,10 +129,9 @@ main(void)
+ 			       params->cq_off.flags);
+ 			if (params->cq_off.resv1)
+ 				printf(", resv1=%#x", params->cq_off.resv1);
+-			if (params->cq_off.resv2)
+-				printf(", resv2=%#llx",
+-				       (unsigned long long)
+-						params->cq_off.resv2);
++			printf(", user_addr=%#llx",
++			       (unsigned long long)
++					params->cq_off.user_addr);
+ 
+ 			printf("}}) = %ld<anon_inode:[io_uring]>\n", rc);
+ 		}
