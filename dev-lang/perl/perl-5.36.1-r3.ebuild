@@ -533,7 +533,7 @@ src_configure() {
 	filter-flags "-malign-double"
 
 	# Generic LTO broken since 5.28, triggers EUMM failures
-	filter-flags "-flto"
+	filter-lto
 
 	use sparc && myconf -Ud_longdbl
 
@@ -583,6 +583,9 @@ src_configure() {
 	# modifying 'optimize' prevents cross configure script from appending required flags
 	if tc-is-cross-compiler; then
 		append-cflags "-fwrapv"
+
+		# bug #913171
+		export HOSTCFLAGS="${CFLAGS_FOR_BUILD} -D_GNU_SOURCE"
 	fi
 
 	# bug #877659, bug #821577
