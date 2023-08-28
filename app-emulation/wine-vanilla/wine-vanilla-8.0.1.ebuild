@@ -349,6 +349,14 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use abi_x86_32 && { use opengl || use vulkan; } &&
+		has_version 'x11-drivers/nvidia-drivers[-abi_x86_32]'
+	then
+		ewarn "x11-drivers/nvidia-drivers is installed but is built without"
+		ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
+		ewarn "applications under ${PN} will likely not be usable."
+	fi
+
 	eselect wine update --if-unset || die
 }
 
