@@ -391,9 +391,11 @@ multilib_src_configure() {
 	use vulkan-overlay && vulkan_layers+=",overlay"
 	emesonargs+=(-Dvulkan-layers=${vulkan_layers#,})
 
-	if use vulkan && use video_cards_intel; then
+	if use llvm && use vulkan && use video_cards_intel; then
 		PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
-		emesonargs+=($(meson_feature llvm intel-clc))
+		emesonargs+=(-Dintel-clc=enabled)
+	else
+		emesonargs+=(-Dintel-clc=disabled)
 	fi
 
 	emesonargs+=(
