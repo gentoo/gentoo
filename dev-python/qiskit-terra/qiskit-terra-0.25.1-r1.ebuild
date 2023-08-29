@@ -166,7 +166,6 @@ python_test() {
 		test/python/circuit/test_equivalence.py::TestEquivalenceLibraryVisualization::test_equivalence_draw
 		test/python/primitives/test_backend_estimator.py::TestBackendEstimator::test_bound_pass_manager
 		test/python/primitives/test_backend_sampler.py::TestBackendSampler::test_bound_pass_manager
-		test/python/pulse/test_block.py::TestBlockOperation::test_execute_block
 		test/python/transpiler/test_unitary_synthesis_plugin.py::TestUnitarySynthesisPlugin
 		test/python/visualization/test_dag_drawer.py::TestDagDrawer::test_dag_drawer_no_register
 	)
