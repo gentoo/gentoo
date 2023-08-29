@@ -74,6 +74,8 @@ multilib_src_configure() {
 		$(use_enable ldap zos-remote)
 		$(use_enable static-libs static)
 		$(use_with io-uring io_uring)
+		$(use_with arm)
+		$(use_with arm64 aarch64)
 		--enable-systemd
 		--without-golang
 		--without-libwrap
@@ -89,6 +91,7 @@ multilib_src_configure() {
 			pushd "${BUILD_DIR}" &>/dev/null || die
 
 			ECONF_SOURCE="${S}" econf "${myeconfargs[@]}" --with-python3
+			find . -type f -name 'Makefile' -exec sed -i "s;-I/usr/include/python;-I${SYSROOT}/usr/include/python;g" {} +
 
 			popd &>/dev/null || die
 		}
