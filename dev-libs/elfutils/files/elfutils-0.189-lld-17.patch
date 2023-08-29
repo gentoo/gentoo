@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/913112
+https://sourceware.org/PR30729
+https://sourceware.org/git/?p=elfutils.git;a=commit;h=09e61a65953ed814d9e970f7f9ffb9c2d8cda477
+
+From 09e61a65953ed814d9e970f7f9ffb9c2d8cda477 Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Mon, 28 Aug 2023 20:23:41 +0200
+Subject: [PATCH] libelf: Remove elf_scncnt from libelf.map
+
+elf_scncnt was never implemented. It was probably an old name for
+elf_getshnum (which was the deprecated name of the elf_getshdrnum
+alias). Just remove it from the map file
+
+	* libelf/libelf.map (ELFUTILS_1.0): Remove elf_scncnt.
+
+https://sourceware.org/PR30729
+
+Reported-by: Kostadin Shishmanov <kocelfc@tutanota.com>
+Signed-off-by: Mark Wielaard <mark@klomp.org>
+--- a/libelf/libelf.map
++++ b/libelf/libelf.map
+@@ -50,7 +50,6 @@ ELFUTILS_1.0 {
+     elf_rand;
+     elf_rawdata;
+     elf_rawfile;
+-    elf_scncnt;
+     elf_strptr;
+     elf_update;
+     elf_version;
+-- 
+2.39.3
