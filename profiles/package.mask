@@ -32,6 +32,14 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Olivier Laurantin <olivier.laurantin@laposte.net> (2023-08-29)
+# Masked for removal on 2023-10-01
+# net-wireless/blueberry will never work with recent gnome-bluetooth versions
+# and is the only package requiring net-wireless/gnome-bluetooth:2
+net-wireless/blueberry
+net-wireless/gnome-bluetooth:2
+
 # Hans de Graaff <graaff@gentoo.org> (2023-08-29)
 # Use the newer slot instead.  Masked for removal on 2023-09-29.
 dev-ruby/twitter:7
