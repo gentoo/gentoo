@@ -389,6 +389,7 @@ acct-group/spi
 >=dev-util/gdbus-codegen-2.77
 >=dev-util/glib-utils-2.77
 >=games-puzzle/gnome-sudoku-45_alpha
+>=gnome-base/gdm-45_beta
 >=gnome-base/gnome-control-center-45_alpha
 >=gnome-base/gnome-settings-daemon-45_alpha
 >=gnome-base/gnome-shell-45_alpha
