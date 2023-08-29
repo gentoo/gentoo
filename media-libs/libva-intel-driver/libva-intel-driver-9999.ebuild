@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,12 +21,17 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="wayland X"
+IUSE="hybrid wayland X"
 RESTRICT="test" # No tests
 
 RDEPEND="
 	>=x11-libs/libdrm-2.4.52[video_cards_intel,${MULTILIB_USEDEP}]
 	>=media-libs/libva-2.4.0:=[X?,wayland?,${MULTILIB_USEDEP}]
+
+	hybrid? (
+		>=media-libs/intel-hybrid-codec-driver-2.0.0[X?,wayland?]
+	)
+
 	wayland? (
 		>=dev-libs/wayland-1.11[${MULTILIB_USEDEP}]
 		>=media-libs/mesa-9.1.6[egl(+),${MULTILIB_USEDEP}]
@@ -43,6 +48,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=(
+		$(use_enable hybrid hybrid-codec)
 		$(use_enable wayland)
 		$(use_enable X x11)
 	)
