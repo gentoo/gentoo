@@ -29,6 +29,8 @@ RDEPEND="
 	virtual/krb5
 "
 
+# cython-3 produces a broken extension still
+# https://github.com/pythongssapi/python-gssapi/issues/327
 BDEPEND="
 	<dev-python/cython-3[${PYTHON_USEDEP}]
 	virtual/krb5
