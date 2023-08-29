@@ -28,7 +28,7 @@ RDEPEND="
 # the build system uses custom build script that uses distutils to build
 # C extensions, sigh
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	>=dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-65.6.3[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
