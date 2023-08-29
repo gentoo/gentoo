@@ -154,6 +154,12 @@ QA_FLAGS_IGNORED="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# strip forcing -Werror from tests that also leaks to other packages
+	sed -i -e '/filterwarnings.*error/d' qiskit/test/base.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
