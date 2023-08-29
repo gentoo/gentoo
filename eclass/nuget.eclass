@@ -111,8 +111,8 @@ _nuget_set_nuget_uris() {
 		version="${nuget##*@}"
 
 		for nuget_api in "${NUGET_APIS[@]}" ; do
-			case "${nuget_api}" in
-				*/v2 | */v2/ )
+			case ${nuget_api%/} in
+				*/v2 )
 					url="${nuget_api}/package/${name}/${version}
 							-> ${name}.${version}.nupkg"
 					;;
