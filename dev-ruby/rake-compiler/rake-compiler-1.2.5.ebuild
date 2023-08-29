@@ -27,7 +27,7 @@ ruby_add_rdepend "dev-ruby/rake"
 
 ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 
-USE_RUBY="ruby27 ruby30 ruby31" ruby_add_bdepend "test? ( dev-util/cucumber )"
+USE_RUBY="ruby30 ruby31 ruby32" ruby_add_bdepend "test? ( dev-util/cucumber )"
 
 all_ruby_prepare() {
 	# Avoid failing features for native gems, this also fails with rubygems
@@ -44,7 +44,7 @@ all_ruby_prepare() {
 each_ruby_test() {
 	# Skip cucumber for new ruby versions (not ready yet due to rspec 2 usage)
 	case ${RUBY} in
-		*ruby27|*ruby30|*ruby31)
+		*ruby30|*ruby31|*ruby32)
 			RSPEC_VERSION=3 ruby-ng_rspec
 			ruby-ng_cucumber
 			;;
