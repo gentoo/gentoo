@@ -48,6 +48,8 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_with !minimal libtool) \
 		--with-libtool-opts='-shared' \
+		--with-shared \
+		--with-shlib-version=abi \
 		--with-ncurses$(usev unicode w)
 }
 
