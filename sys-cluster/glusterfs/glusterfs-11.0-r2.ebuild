@@ -147,8 +147,7 @@ src_install() {
 
 	if use emacs ; then
 		elisp-install ${PN} extras/glusterfs-mode.el*
-		elisp-site-file-install "50${PN}-mode-gentoo.el"
-
+		elisp-site-file-install "${FILESDIR}/50glusterfs-mode-gentoo.el"
 	fi
 
 	insinto /usr/share/vim/vimfiles/ftdetect; doins "${FILESDIR}"/${PN}.vim
