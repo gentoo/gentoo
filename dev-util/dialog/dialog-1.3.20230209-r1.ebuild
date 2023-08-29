@@ -22,10 +22,10 @@ RDEPEND=">=sys-libs/ncurses-5.2-r5:=[unicode(+)?]"
 DEPEND="
 	${RDEPEND}
 	nls? ( sys-devel/gettext )
+	!minimal? ( sys-devel/libtool )
 "
 BDEPEND="
 	virtual/pkgconfig
-	!minimal? ( sys-devel/libtool )
 	verify-sig? ( sec-keys/openpgp-keys-thomasdickey )
 "
 
@@ -44,6 +44,7 @@ src_configure() {
 	econf \
 		--disable-rpath-hack \
 		--with-pkg-config \
+		--with-pkg-config-libdir="${EPREFIX}/usr/$(get_libdir)/pkgconfig" \
 		--enable-pc-files \
 		$(use_enable nls) \
 		$(use_with !minimal libtool) \
@@ -51,10 +52,28 @@ src_configure() {
 		--with-shared \
 		--with-shlib-version=abi \
 		--with-ncurses$(usev unicode w)
+	# --with-libtool accepts an argument for the libtool executable path
+	# but since the build script is broken any value that is not 'yes' will
+	# be treated as no, so we have to specify LIBTOOL= to emake below.
+	MYMAKEARGS=(
+		LIBTOOL="${ESYSROOT}/usr/bin/libtool"
+	)
+}
+
+src_compile () {
+	# Generate the .pc file during src_compile, not src_install
+	emake "${MYMAKEARGS[@]}" all dialog.pc
+
+	# dialog.pc includes -I args from $CFLAGS and -L args from $LDFLAGS from when the library was built.
+	# If $ESYSROOT is not `/` these values become invalid.
+	if [[ -n ${ESYSROOT} && ${ESYSROOT} != / ]]; then
+		sed -i "s,${ESYSROOT},,g" dialog.pc || die "Could not fix the dialog.pc file"
+	fi
 }
 
 src_install() {
-	use minimal && emake DESTDIR="${D}" install || emake DESTDIR="${D}" install-full
+	MYMAKEARGS+=( DESTDIR="${D}" )
+	use minimal && emake "${MYMAKEARGS[@]}" install || emake "${MYMAKEARGS[@]}" install-full
 
 	use examples && dodoc -r samples
 
