@@ -6,7 +6,7 @@ EAPI=8
 inherit vim-plugin git-r3
 
 DESCRIPTION="vim plugin: exheres format highlighting"
-HOMEPAGE="https://www.exherbo.org/"
+HOMEPAGE="https://www.exherbolinux.org/"
 EGIT_REPO_URI="https://git.exherbo.org/git/exheres-syntax.git"
 
 LICENSE="vim"

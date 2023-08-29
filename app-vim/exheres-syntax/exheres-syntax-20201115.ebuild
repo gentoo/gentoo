@@ -6,7 +6,7 @@ EAPI=8
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: exheres format highlighting"
-HOMEPAGE="https://www.exherbo.org/"
+HOMEPAGE="https://www.exherbolinux.org/"
 SRC_URI="https://dev.exherbo.org/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="vim"
