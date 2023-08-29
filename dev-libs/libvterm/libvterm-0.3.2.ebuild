@@ -15,6 +15,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
 
 BDEPEND="
 	dev-lang/perl
+"
+
+DEPEND="
 	sys-devel/libtool
 "
 
@@ -25,6 +28,7 @@ src_compile() {
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 
 		CC="$(tc-getCC)"
+		LIBTOOL="${ESYSROOT}/usr/bin/libtool"
 	)
 
 	emake "${MYMAKEARGS[@]}"
