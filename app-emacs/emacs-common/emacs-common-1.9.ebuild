@@ -15,8 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="games gsettings gui"
 
 DEPEND="games? ( acct-group/gamestat )"
-RDEPEND="!=app-editors/emacs-29.1_rc1-r0
-	${DEPEND}"
+RDEPEND="${DEPEND}"
 PDEPEND=">=app-editors/emacs-23.1:*"
 IDEPEND="gui? ( gsettings? ( dev-libs/glib ) )"
 
