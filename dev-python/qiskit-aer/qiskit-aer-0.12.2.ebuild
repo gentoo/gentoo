@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 
@@ -86,7 +87,7 @@ pkg_setup() {
 python_prepare_all() {
 	export DISABLE_CONAN="ON"
 	export DISABLE_DEPENDENCY_INSTALL="ON"
-	#export SKBUILD_CONFIGURE_OPTIONS=""
+	export SKBUILD_CONFIGURE_OPTIONS="-DTEST_JSON=1"
 
 	distutils-r1_python_prepare_all
 }
