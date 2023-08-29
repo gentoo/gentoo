@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -36,6 +36,7 @@ ruby_add_bdepend "test? (
 		dev-ruby/rack-test
 		=dev-ruby/coffee-script-2*
 		=dev-ruby/execjs-2*
+		dev-ruby/nokogiri
 		=dev-ruby/sass-3* >=dev-ruby/sass-3.1
 		dev-ruby/uglifier
 	)"
@@ -50,6 +51,8 @@ all_ruby_prepare() {
 	sed -i -e "/bundler/d" Rakefile || die
 
 	sed -i -e 's/MiniTest/Minitest/' test/sprockets_test.rb test/test*.rb || die
+	sed -i -e '2igem "rack", "<3"' test/sprockets_test.rb || die
+	sed -i -e '5irequire "rack/lint"' test/test_server.rb || die
 }
 
 each_ruby_prepare() {
