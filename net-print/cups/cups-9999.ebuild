@@ -117,6 +117,9 @@ src_prepare() {
 	# Remove ".SILENT" rule for verbose output (bug #524338).
 	sed 's#^.SILENT:##g' -i Makedefs.in || die
 
+	# Remove redefinition of _FORTIFY_SOURCE (bug #907683)
+	sed 's#-D_FORTIFY_SOURCE=3##g' -i config-scripts/cups-compiler.m4 || die
+
 	AT_M4DIR="config-scripts" eautoreconf
 
 	# Custom Makefiles
