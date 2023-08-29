@@ -22,7 +22,7 @@ src_prepare() {
 	default
 
 	# Unclear what the background to this is, perhaps
-	# https://git.exherbo.org/arbor.git/commit/?id=5545d22d3493279acf7a55246179f818ef22f5fa
+	# https://gitlab.exherbo.org/exherbo/arbor/-/commit/5545d22d3493279acf7a55246179f818ef22f5fa
 	sed -i -e 's:lt-test1:test1:' tests/testit.sh || die
 
 	elibtoolize
