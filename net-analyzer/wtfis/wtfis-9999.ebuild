@@ -26,6 +26,7 @@ RDEPEND="
 	>=dev-python/python-dotenv-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.31.0[${PYTHON_USEDEP}]
 	>=dev-python/rich-13.4.2[${PYTHON_USEDEP}]
+	<dev-python/rich-13.5.0[${PYTHON_USEDEP}]
 	>=net-analyzer/shodan-1.29.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
