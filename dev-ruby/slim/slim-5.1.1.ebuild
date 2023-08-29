@@ -28,7 +28,8 @@ ruby_add_rdepend "
 	>=dev-ruby/tilt-2.1.0:*
 	>=dev-ruby/temple-0.10.0:0.7
 "
-# sass tests are currently disabled: https://github.com/slim-template/slim/commit/bd9d4601cd8142aa9fdbc0d87c9f9132a9a56cda
+# sass tests are currently disabled:
+# https://github.com/slim-template/slim/commit/bd9d4601cd8142aa9fdbc0d87c9f9132a9a56cda
 ruby_add_bdepend "
 	doc? (
 		dev-ruby/yard
@@ -38,6 +39,7 @@ ruby_add_bdepend "
 		dev-ruby/minitest:5
 		dev-ruby/kramdown:2
 		dev-ruby/redcarpet
+		dev-ruby/sassc
 		>=dev-ruby/test-unit-3.5
 	)
 "
@@ -61,6 +63,9 @@ all_ruby_prepare() {
 	# Avoid test failing due to tilt providing yet another markdown implementation
 	sed -i -e '/test_render_with_markdown/askip "new tilt version"' test/core/test_embedded_engines.rb || die
 	sed -i -e '/test_no_translation_of_embedded/askip "new tilt version"' test/translator/test_translator.rb || die
+
+	# Fix minitest deprecation
+	sed -i -e 's/MiniTest/Minitest/' test/literate/helper.rb || die
 
 	sed -i -e '/s\.files/ s/git ls-files/find . -type f -print/' \
 		-e '/s\.executables/ s:git ls-files -- bin/\*:find bin -type f -print:' ${RUBY_FAKEGEM_GEMSPEC} || die
