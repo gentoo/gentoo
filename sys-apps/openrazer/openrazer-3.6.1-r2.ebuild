@@ -86,6 +86,8 @@ src_prepare() {
 
 	if use daemon ; then
 		distutils-r1_src_prepare
+	else
+		default
 	fi
 
 	# Remove bad tests.
