@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.4
+MODULES_KERNEL_MAX=6.5
 NV_PIN=535.98
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
