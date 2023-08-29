@@ -6,8 +6,8 @@ EAPI=8
 inherit elisp
 
 DESCRIPTION="Major mode for editing files in exheres format"
-HOMEPAGE="https://www.exherbo.org/
-	https://gitlab.exherbo.org/exherbo-misc/exheres-mode/"
+HOMEPAGE="https://www.exherbolinux.org/
+	https://gitlab.exherbolinux.org/exherbo-misc/exheres-mode/"
 SRC_URI="https://dev.exherbo.org/distfiles/${PN}/${P}.tar.xz"
 S="${WORKDIR}/${P}/src"
 
