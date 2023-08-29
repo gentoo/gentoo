@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit llvm meson-multilib python-any-r1 linux-info
 
@@ -169,11 +169,13 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
-	vulkan? (
-		dev-util/glslang
-		video_cards_intel? (
-			amd64? (
-				$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
+	llvm? (
+		vulkan? (
+			dev-util/glslang
+			video_cards_intel? (
+				amd64? (
+					$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
+				)
 			)
 		)
 	)
