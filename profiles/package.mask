@@ -32,6 +32,9 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+# Hans de Graaff <graaff@gentoo.org> (2023-08-29)
+# Use the newer slot instead.  Masked for removal on 2023-09-29.
+dev-ruby/twitter:7
 
 # Sam James <sam@gentoo.org> (2023-08-29)
 # Obsolete as of September 2021 when legacy Tor hidden services stopped
