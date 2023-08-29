@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-08-29)
+# Fails to build with new protobuf. Deprecated by upstream which recommend
+# sci-biology/kallisto as a replacement.
+# Removal on 2023-09-28.  Bug #912828.
+sci-biology/express
+
 # Michał Górny <mgorny@gentoo.org> (2023-08-28)
 # A shim that is no longer needed.  No reverse dependencies.
 # Removal on 2023-09-27.  Bug #906516.
