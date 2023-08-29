@@ -3,8 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1 tmpfiles
@@ -32,6 +31,7 @@ RDEPEND="
 	app-alternatives/awk
 	sys-apps/gentoo-functions
 "
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests setup.py
 
