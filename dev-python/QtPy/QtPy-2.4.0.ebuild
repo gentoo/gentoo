@@ -159,10 +159,10 @@ src_prepare() {
 	sed -i -e 's:--cov=qtpy --cov-report=term-missing::' pytest.ini || die
 	# Disable Qt for Python implementations that are not selected
 	if ! use pyqt5; then
-		sed -i -e "s/from PyQt5.QtCore import/raise ImportError #/" qtpy/__init__.py || die
+		sed -i -e '/from PyQt5.QtCore import/,/)/c\ \ \ \ \ \ \ \ raise ImportError #/' qtpy/__init__.py || die
 	fi
 	if ! use pyqt6; then
-		sed -i -e "s/from PyQt6.QtCore import/raise ImportError #/" qtpy/__init__.py || die
+		sed -i -e '/from PyQt6.QtCore import/,/)/c\ \ \ \ \ \ \ \ raise ImportError #/' qtpy/__init__.py || die
 	fi
 	if ! use pyside2; then
 		sed -i -e "s/from PySide2 import/raise ImportError #/" qtpy/__init__.py || die
