@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-08-30)
+# Used to be a dependency of dev-python/qiskit-aer but is now being phased
+# out. Fails to build with modern setuptools and >= Python 3.11. No upstream
+# activity.
+# Removal on 2023-09-29.  Bug #911840, bug #896900.
+dev-python/tweedledum
+
 # Hans de Graaff <graaff@gentoo.org> (2023-08-29)
 # Obsolete slots that are no longer used by any sinatra version. Use the
 # newer slot instead. Masked for removal on 2023-09-29.
