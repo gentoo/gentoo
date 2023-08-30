@@ -299,6 +299,7 @@ DEPEND="${RDEPEND}
 	amf? ( media-libs/amf-headers )
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
+	vulkan? ( >=dev-util/vulkan-headers-1.3.255 )
 "
 
 # += for verify-sig above
