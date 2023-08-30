@@ -38,15 +38,13 @@ REQUIRED_USE="test? ( oniguruma )"
 
 src_prepare() {
 	sed -e '/^dist_doc_DATA/d; s:-Wextra ::' -i Makefile.am || die
-	sed -r -e "s:(m4_define\(\[jq_version\],) .+\):\1 \[${PV}\]):" \
-		-i configure.ac || die
+	printf "#!/bin/sh\\nprintf '%s'\\n\n" "${MY_PV}" > scripts/version || die
 
 	# jq-1.6-r3-never-bundle-oniguruma makes sure we build with the system oniguruma,
 	# but the bundled copy of oniguruma still gets eautoreconf'd since it
 	# exists; save the cycles by nuking it.
 	sed -e '/modules\/oniguruma/d' -i Makefile.am || die
 	rm -rf "${S}"/modules/oniguruma || die
-	sed -i "s/^jq_version: .*/jq_version: \"${MY_PV}\"/" docs/site.yml || die
 
 	default
 
