@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KERNEL_IUSE_SECUREBOOT=1
 inherit kernel-install toolchain-funcs unpacker
 
 MY_P=linux-${PV%.*}
@@ -86,7 +87,7 @@ src_configure() {
 		LD="${LD}"
 		AR="$(tc-getAR)"
 		NM="$(tc-getNM)"
-		STRIP=":"
+		STRIP="$(tc-getSTRIP)"
 		OBJCOPY="$(tc-getOBJCOPY)"
 		OBJDUMP="$(tc-getOBJDUMP)"
 
@@ -124,4 +125,7 @@ src_install() {
 		')' -delete || die
 	rm modprep/source || die
 	cp -p -R modprep/. "${ED}/usr/src/linux-${KPV}"/ || die
+
+	# Modules were already stripped before signing
+	dostrip -x /lib/modules
 }
