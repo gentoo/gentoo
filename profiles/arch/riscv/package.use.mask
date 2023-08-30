@@ -3,7 +3,7 @@
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org (2023-08-30)
 # Avoid keywording more Qt stuff
-dev-python/pyside2 datavis
+dev-python/pyside2 datavis webengine
 
 # Marek Szuba <marecki@gentoo.org> (2023-08-19)
 # dev-libs/pocl needs some work before it can be keyworded here (Bug #907333).
