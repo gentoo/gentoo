@@ -172,7 +172,7 @@ src_compile() {
 src_install() {
 	einstalldocs
 
-	FONT_SUFFIX="pfa afm $((use fancy || use taamey) && echo ttf)" \
+	FONT_SUFFIX="pfa afm $(use fancy || use taamey && echo ttf)" \
 		font_src_install
 
 	rm -rf "${FONT_S}" || die
