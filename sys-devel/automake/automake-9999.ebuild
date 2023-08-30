@@ -36,15 +36,20 @@ SLOT="${PV:0:4}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-lang/perl-5.6
+RDEPEND="
+	>=dev-lang/perl-5.6
 	>=sys-devel/automake-wrapper-11
 	>=sys-devel/autoconf-2.69:*
-	sys-devel/gnuconfig"
+	sys-devel/gnuconfig
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/gzip
 	sys-apps/help2man
-	test? ( ${PYTHON_DEPS} )
+	test? (
+		${PYTHON_DEPS}
+		dev-util/dejagnu
+	)
 "
 
 pkg_setup() {
