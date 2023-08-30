@@ -16,7 +16,7 @@ description_checkconfig="Check for valid config file"
 description_reload="Reload the configuration"
 
 checkconfig() {
-	${command} --verify-config --hush -f ${torrc} > /dev/null 2>&1
+	${command} --verify-config --hush -f ${torrc}
 	if [ $? -ne 0 ] ; then
 		eerror "Tor configuration (${torrc}) is not valid."
 		eerror "Example is in /etc/tor/torrc.sample"
