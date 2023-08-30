@@ -43,6 +43,7 @@ DEPEND="
 BDEPEND="
 	>=sys-devel/flex-2.5.4a
 	sys-devel/m4
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-elfutils )
 "
