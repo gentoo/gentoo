@@ -98,8 +98,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+# XXX: Drop explicit >=virtual/rust-1.56.0 dep once that's the minimum in cargo.eclass
+# and replace it with ${RUST_DEPEND}
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
+	>=virtual/rust-1.56.0
 	test? (
 		>=dev-python/hypothesis-1.11.4[${PYTHON_USEDEP}]
 		dev-python/iso8601[${PYTHON_USEDEP}]
