@@ -48,6 +48,14 @@ src_compile() {
 	if use debug; then
 		export INDEXED_GZIP_TESTING=1
 	fi
+	# Fix implicit dependency on numpy that is used to build test
+	# extensions.
+	if ! use test; then
+		local -x PYTHONPATH="${T}:${PYTHONPATH}"
+		cat >> "${T}"/numpy.py <<-EOF || die
+			raise ImportError("I am not here!")
+		EOF
+	fi
 	distutils-r1_src_compile
 }
 
