@@ -25,6 +25,7 @@ BDEPEND="
 		app-doc/doxygen
 		dev-python/sphinx
 	)
+	test? ( dev-util/dejagnu )
 "
 DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"

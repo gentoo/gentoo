@@ -27,6 +27,7 @@ BDEPEND="
 		app-doc/doxygen
 		dev-python/sphinx
 	)
+	test? ( dev-util/dejagnu )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-1.5.0-buildsystem.patch" )
