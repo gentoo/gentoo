@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa x86"
 
 RDEPEND=">=app-editors/xemacs-21.4.20-r5
 	app-xemacs/sh-script"
