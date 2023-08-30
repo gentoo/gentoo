@@ -17,4 +17,7 @@
     <flag name="rav1e">Enable support for the rav1e codec encoding</flag>
     <flag name="svt-av1">Enable support for the SVT-AV1 encoder</flag>
   </use>
+  <upstream>
+    <remote-id type="github">AOMediaCodec/libavif</remote-id>
+  </upstream>
 </pkgmetadata>
