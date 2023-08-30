@@ -50,7 +50,7 @@ CRATES="
 	zoneinfo_compiled@0.5.1
 "
 
-inherit bash-completion-r1 cargo
+inherit shell-completion cargo
 
 DESCRIPTION="A modern replacement for 'ls' written in Rust"
 HOMEPAGE="https://the.exa.website/"
@@ -98,12 +98,8 @@ src_install() {
 	cargo_src_install $(usex git "" --no-default-features)
 
 	newbashcomp completions/completions.bash exa
-
-	insinto /usr/share/zsh/site-functions
-	newins completions/completions.zsh _exa
-
-	insinto /usr/share/fish/vendor_completions.d
-	newins completions/completions.fish exa.fish
+	newzshcomp completions/completions.zsh _exa
+	newfishcomp completions/completions.fish exa.fish
 
 	if use man; then
 		doman contrib/man/*
