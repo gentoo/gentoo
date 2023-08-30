@@ -62,4 +62,7 @@ src_compile() {
 python_test() {
 	cd "${BUILD_DIR}/install$(python_get_sitedir)/indexed_gzip/tests" || die
 	epytest -n "$(makeopts_jobs)" --dist=worksteal
+	# temporary files and test extensions
+	# (to achieve equivalence with USE=-test)
+	rm ctest*.{c,gz,so,tmp} || die
 }
