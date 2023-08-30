@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -112,7 +112,7 @@ src_compile() {
 etc_courier() {
 	# Import existing /etc/courier/file if it exists.
 	# Add option only if it was not already set or even commented out
-	file="${1}" ; word="`echo \"${2}\" | sed -e\"s|=.*$||\" -e\"s|^.*opt ||\"`"
+	local file="${1}" word=$(echo "${2}" | sed -e "s|=.*$||" -e "s|^.*opt ||")
 	[ ! -e "${D}/etc/courier/${file}" ] && [ -e "/etc/courier/${file}" ] && \
 			cp "/etc/courier/${file}" "${D}/etc/courier/${file}"
 	grep -q "${word}" "${D}/etc/courier/${file}" || \
@@ -120,7 +120,7 @@ etc_courier() {
 }
 
 etc_courier_chg() {
-	file="${1}" ; key="${2}" ; value="${3}" ; section="${4}"
+	local file="${1}" key="${2}" value="${3}" section="${4}"
 	[ -z "${section}" ] && section="${2}"
 	grep -q "${key}" "${file}" && elog "Changing ${file}: ${key} to ${value}"
 	sed -i -e"/\#\#NAME: ${section}/,+30 s|${key}=.*|${key}=\"${value}\"|g" ${file}
