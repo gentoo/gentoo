@@ -44,7 +44,8 @@ src_prepare() {
 }
 
 src_compile() {
-	if use test; then
+	# This actually enables line tracing, so it fits USE=debug more.
+	if use debug; then
 		export INDEXED_GZIP_TESTING=1
 	fi
 	distutils-r1_src_compile
