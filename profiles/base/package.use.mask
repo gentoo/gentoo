@@ -377,11 +377,6 @@ sci-libs/flann doc
 # Gentoo bug #821253
 media-video/mjpg-streamer http-management
 
-# Wolfgang E. Sanyer <ezzieyguywuf@gmail.com> (2021-12-01)
-# Requires pandoc, which is unstable due to various haskell dependencies
-# (including ghc)
->=sys-apps/exa-0.10.1 man
-
 # Sam James <sam@gentoo.org> (2021-11-26)
 # Needs unpackaged asciidoctor-pdf for now
 # bug #827290
