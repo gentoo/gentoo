@@ -1,0 +1,21 @@
+diff --git a/www-servers/apache/apache-2.4.57.ebuild b/www-servers/apache/apache-2.4.57.ebuild
+index c5ef6767c8fe..70d6949d8b58 100644
+--- a/www-servers/apache/apache-2.4.57.ebuild
++++ b/www-servers/apache/apache-2.4.57.ebuild
+@@ -111,12 +111,14 @@ MODULE_DEFINES="
+ 	proxy_ajp:PROXY
+ 	proxy_balancer:PROXY
+ 	proxy_connect:PROXY
++	proxy_fcgi:PROXY
+ 	proxy_ftp:PROXY
++	proxy_hcheck:PROXY
+ 	proxy_html:PROXY
++	proxy_http2:PROXY
+ 	proxy_http:PROXY
+-	proxy_hcheck:PROXY
+-	proxy_fcgi:PROXY
+ 	proxy_scgi:PROXY
++	proxy_uwsgi:PROXY
+ 	proxy_wstunnel:PROXY
+ 	socache_shmcb:SSL
+ 	socache_memcache:CACHE
