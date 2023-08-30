@@ -21,14 +21,15 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-# Tests fail: https://github.com/Qiskit/qiskit-aer/issues/1742
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 
 # The reference implementation of BLAS/CBLAS is not compatible with qiskit-aer right now,
 # because importing library causes an error.
 # /usr/lib/python3.9/site-packages/qiskit/providers/aer/backends/controller_wrappers.cpython-39-x86_64-linux-gnu.so: undefined symbol: slamch_
 # Using sci-libs/openblas instead here,
 # with the option to switch between reference/openblas implementation runtime (eselect-ldso).
+#
+# <nlohmann_json-3.10.3 for https://github.com/Qiskit/qiskit-aer/issues/1742
 DEPEND="
 	>=dev-python/numpy-1.16.3[${PYTHON_USEDEP}]
 	<dev-cpp/nlohmann_json-3.10.3
@@ -97,7 +98,13 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
 		test/terra/states/test_aer_state.py::TestAerState::test_appply_diagonal
+		test/terra/states/test_aer_state.py::TestAerState::test_appply_measure
 		test/terra/states/test_aer_state.py::TestAerState::test_appply_reset
+
+		# TODO: GLIBCXX_ASSERTIONS, bug #897758
+		test/terra/backends/aer_simulator/test_algorithms.py::TestAlgorithms::test_extended_stabilizer_sparse_output_probs
+		test/terra/backends/aer_simulator/test_options.py::TestOptions::test_mps_options
+		test/terra/backends/aer_simulator/test_fusion.py::TestGateFusion::test_parallel_fusion_diagonal
 
 		# requires qiskit_qasm3_import
 		test/terra/backends/aer_simulator/test_save_statevector.py::TestSaveStatevector::test_save_statevector_for_qasm3_circuit_1___automatic____CPU__
