@@ -69,7 +69,7 @@ DEPEND="git? ( dev-libs/libgit2:= )"
 RDEPEND="${DEPEND}"
 BDEPEND+="man? ( virtual/pandoc )"
 
-QA_FLAGS_IGNORED="/usr/bin/exa"
+QA_FLAGS_IGNORED="usr/bin/exa"
 
 src_prepare() {
 	default
