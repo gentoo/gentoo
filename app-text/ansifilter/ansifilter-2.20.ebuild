@@ -3,12 +3,16 @@
 
 EAPI=8
 
-inherit desktop toolchain-funcs qmake-utils xdg-utils
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/andresimon.asc
+inherit desktop toolchain-funcs qmake-utils verify-sig xdg-utils
 
 DESCRIPTION="Handles text files containing ANSI terminal escape codes"
 HOMEPAGE="http://www.andre-simon.de/"
-SRC_URI="http://www.andre-simon.de/zip/${P}.tar.bz2
-	gui? ( https://gitlab.com/uploads/-/system/project/avatar/6678914/ansifilter2_logo_256.png )"
+SRC_URI="
+	http://www.andre-simon.de/zip/${P}.tar.bz2
+	gui? ( https://gitlab.com/uploads/-/system/project/avatar/6678914/ansifilter2_logo_256.png )
+	verify-sig? ( http://www.andre-simon.de/zip/${P}.tar.bz2.asc )
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -23,6 +27,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-andresimon )"
 
 DOCS=( ChangeLog.adoc README.adoc  )
 
