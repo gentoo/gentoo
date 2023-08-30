@@ -76,7 +76,7 @@ src_prepare() {
 	if use man; then
 		mkdir -p contrib/man || die "failed to create man directory"
 		pandoc --standalone -f markdown -t man man/exa_colors.5.md \
-		-o contrib/man/exa_colors.1 || die "failed to create colored man pages"
+			-o contrib/man/exa_colors.5 || die "failed to create colored man pages"
 		pandoc --standalone -f markdown -t man man/exa.1.md -o \
 			contrib/man/exa.1 || die "failed to create man pages"
 	fi
