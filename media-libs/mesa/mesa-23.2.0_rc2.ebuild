@@ -165,7 +165,6 @@ BDEPEND="
 	opencl? (
 		>=virtual/rust-1.62.0
 		>=dev-util/bindgen-0.58.0
-		>=dev-util/meson-1.2.0
 	)
 	sys-devel/bison
 	sys-devel/flex
@@ -203,6 +202,11 @@ llvm_check_deps() {
 	fi
 	has_version "sys-devel/llvm:${LLVM_SLOT}[${LLVM_USE_DEPS}]"
 }
+
+PATCHES=(
+	# Temporary rusticl workaround: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7717#note_1832122
+	"${FILESDIR}/clang_resource_dir.patch"
+)
 
 pkg_pretend() {
 	if use vulkan; then
