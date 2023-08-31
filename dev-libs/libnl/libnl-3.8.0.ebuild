@@ -61,6 +61,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/${P}-python-decorator-syntax.patch
 	"${FILESDIR}"/${PN}-3.8.0-printf-non-bash.patch
 )
 
