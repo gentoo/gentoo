@@ -89,6 +89,7 @@ dev-util/pkgcheck emacs
 # Sam James <sam@gentoo.org> (2022-07-27)
 # sys-devel/lld is not keyworded on sparc
 >=dev-lang/spidermonkey-78 lto
+>=dev-lang/spidermonkey-115 clang
 
 # Matt Turner <mattst88@gentoo.org> (2022-06-25)
 # net-libs/libqrtr-glib not keyworded
