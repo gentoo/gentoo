@@ -82,6 +82,16 @@ BDEPEND="
 
 ######  Phase functions  ######
 
+# @FUNCTION: qt6-build_src_unpack
+# @DESCRIPTION:
+# Run git-r3_src_unpack if needed (live), then default to unpack
+# e.g. patchsets in live ebuilds.
+qt6-build_src_unpack() {
+	[[ ${QT6_BUILD_TYPE} == live ]] && git-r3_src_unpack
+
+	default
+}
+
 # @FUNCTION: qt6-build_src_prepare
 # @DESCRIPTION:
 # Run cmake_src_prepare, prepare the environment (such as set
@@ -253,4 +263,4 @@ _qt6-build_prepare_env() {
 
 fi
 
-EXPORT_FUNCTIONS src_prepare src_configure src_test src_install
+EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_test src_install
