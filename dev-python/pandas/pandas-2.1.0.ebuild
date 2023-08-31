@@ -27,7 +27,9 @@ SLOT="0"
 LICENSE="BSD"
 # new meson build that:
 # 1) sometimes fails on .pxi.in → .pyx ordering
+#    https://github.com/pandas-dev/pandas/issues/54889
 # 2) creates a broken wheel with two pandas/_libs/__init__.py files
+#    https://github.com/pandas-dev/pandas/issues/54888
 KEYWORDS=""
 IUSE="full-support minimal test X"
 RESTRICT="!test? ( test )"
