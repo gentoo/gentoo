@@ -75,10 +75,7 @@ BDEPEND="${PYTHON_DEPS}
 		(
 			sys-devel/llvm:16
 			clang? (
-				|| (
-					sys-devel/lld:16
-					sys-devel/mold
-				)
+				sys-devel/lld:16
 				sys-devel/clang:16
 				virtual/rust:0/llvm-16
 			)
@@ -86,10 +83,7 @@ BDEPEND="${PYTHON_DEPS}
 		(
 			sys-devel/llvm:15
 			clang? (
-				|| (
-					sys-devel/lld:15
-					sys-devel/mold
-				)
+				sys-devel/lld:15
 				sys-devel/clang:15
 				virtual/rust:0/llvm-15
 			)
