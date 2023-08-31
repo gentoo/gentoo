@@ -3,88 +3,105 @@
 
 EAPI=8
 
+# py3.12: uses imp and distutils among potentially more issues, refer to
+# www-client/chromium for when adding/backporting support may be viable
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="xml(+)"
-inherit check-reqs estack flag-o-matic multiprocessing
+inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
+SRC_URI+="
+	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.5-patchset-1.tar.xz
+"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
 IUSE="
-	alsa bindist designer geolocation +jumbo-build kerberos
-	pulseaudio screencast +system-icu widgets
+	+alsa bindist custom-cflags designer geolocation +jumbo-build kerberos
+	opengl pulseaudio qml screencast +system-icu vulkan +widgets
 "
-REQUIRED_USE="designer? ( widgets )"
+REQUIRED_USE="
+	designer? ( qml widgets )
+"
 
+# dlopen: krb5, pciutils, udev
 RDEPEND="
 	app-arch/snappy:=
-	dev-libs/glib:2
-	dev-libs/nspr
-	dev-libs/nss
 	dev-libs/expat
 	dev-libs/libevent:=
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
-	dev-libs/re2:=
-	=dev-qt/qtdeclarative-${PV}*:6
-	=dev-qt/qtwebchannel-${PV}*:6
+	dev-libs/nspr
+	dev-libs/nss
+	=dev-qt/qtbase-${PV}*:6[X,gui,opengl=,vulkan?,widgets?]
+	=dev-qt/qtwebchannel-${PV}*:6[qml?]
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	>=media-libs/libvpx-1.5:=[svc(+)]
+	media-libs/libvpx:=
 	media-libs/libwebp:=
 	media-libs/openjpeg:2=
 	media-libs/opus
 	sys-apps/dbus
 	sys-apps/pciutils
-	sys-libs/zlib[minizip]
+	sys-libs/zlib:=[minizip]
 	virtual/libudev
-	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libXcomposite
-	x11-libs/libXcursor
-	x11-libs/libxcb:=
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libXi
+	x11-libs/libXrandr
+	x11-libs/libXtst
+	x11-libs/libxcb:=
 	x11-libs/libxkbcommon
 	x11-libs/libxkbfile
-	x11-libs/libXrandr
-	x11-libs/libXrender
-	x11-libs/libXScrnSaver
-	x11-libs/libxshmfence:=
-	x11-libs/libXtst
 	alsa? ( media-libs/alsa-lib )
+	designer? ( =dev-qt/qttools-${PV}*:6[designer] )
 	geolocation? ( =dev-qt/qtpositioning-${PV}*:6 )
 	kerberos? ( virtual/krb5 )
-	pulseaudio? ( media-libs/libpulse:= )
-	screencast? ( media-video/pipewire:= )
-	system-icu? ( >=dev-libs/icu-69.1:= )
-	widgets? (
-		=dev-qt/qtbase-${PV}*:6[widgets]
+	pulseaudio? ( media-libs/libpulse[glib] )
+	qml? ( =dev-qt/qtdeclarative-${PV}*:6 )
+	screencast? (
+		dev-libs/glib:2
+		media-libs/mesa[gbm(+)]
+		media-video/pipewire:=
+		x11-libs/libdrm
 	)
+	system-icu? ( dev-libs/icu:= )
+	widgets? ( =dev-qt/qtdeclarative-${PV}*:6[widgets] )
 "
 DEPEND="
 	${RDEPEND}
 	media-libs/libglvnd
+	x11-base/xorg-proto
+	x11-libs/libxshmfence
+	screencast? ( media-libs/libepoxy[egl(+)] )
+	test? (
+		widgets? ( app-text/poppler[cxx(+)] )
+	)
 "
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/html5lib[${PYTHON_USEDEP}]')
 	dev-util/gperf
-	dev-util/ninja
-	dev-util/re2c
 	net-libs/nodejs[ssl]
 	sys-devel/bison
 	sys-devel/flex
 "
+
+PATCHES=( "${WORKDIR}"/patches/${PN} )
+[[ ${PV} == 6.9999 ]] || # keep for 6.x.9999
+	PATCHES+=( "${WORKDIR}"/patches/chromium )
+
+PATCHES+=(
+	# add extras as needed here, may merge in set if carries across versions
+)
 
 python_check_deps() {
 	python_has_version "dev-python/html5lib[${PYTHON_USEDEP}]"
@@ -93,36 +110,25 @@ python_check_deps() {
 qtwebengine_check-reqs() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	# bug #307861
-	eshopts_push -s extglob
-	if is-flagq '-g?(gdb)?([1-9])'; then
-		ewarn "You have enabled debug info (probably have -g or -ggdb in your CFLAGS/CXXFLAGS)."
-		ewarn "You may experience really long compilation times and/or increased memory usage."
-		ewarn "If compilation fails, please try removing -g/-ggdb before reporting a bug."
-	fi
-	eshopts_pop
-
-	# (check-reqs added for bug #570534)
-	#
-	# Estimate the amount of RAM required
-	# Multiplier is *10 because Bash doesn't do floating point maths.
-	# Let's crudely assume ~2GB per compiler job for GCC.
-	local multiplier=20
-
-	# And call it ~1.5GB for Clang.
-	if tc-is-clang ; then
-		multiplier=15
+	if is-flagq '-g?(gdb)?([1-9])'; then #307861
+		ewarn "Used CFLAGS/CXXFLAGS seem to enable debug info (-g or -ggdb),"
+		ewarn "which is non-trivial with ${PN}. May experience extended"
+		ewarn "compilation times and increased disk/memory usage. If run into"
+		ewarn "issues, please disable before reporting a bug."
 	fi
 
-	local CHECKREQS_DISK_BUILD="7G"
-	local CHECKREQS_DISK_USR="150M"
-	if ! has "distcc" ${FEATURES} ; then
-		# bug #830661
-		# Not super realistic to come up with good estimates for distcc right now
-		local CHECKREQS_MEMORY=$(($(makeopts_jobs)*multiplier/10))G
+	local CHECKREQS_DISK_BUILD=7G
+	local CHECKREQS_DISK_USR=220M
+
+	if ! has distcc ${FEATURES}; then #830661
+		# assume ~2GB per job or 1.5GB if clang, possible with less
+		# depending on free memory and *FLAGS, but prefer being safe as
+		# users having OOM issues with qtwebengine been rather common
+		tc-is-clang && : 15 || : 20
+		local CHECKREQS_MEMORY=$(($(makeopts_jobs)*_/10))G
 	fi
 
-	check-reqs_${EBUILD_PHASE_FUNC}
+	check-reqs_${EBUILD_PHASE_FUNC} #570534
 }
 
 pkg_pretend() {
@@ -137,26 +143,6 @@ pkg_setup() {
 src_prepare() {
 	qt6-build_src_prepare
 
-	# bug 620444 - ensure local headers are used
-	find . -type f -name "*.pr[fio]" -exec \
-		sed -i -e 's|INCLUDEPATH += |&$${QTWEBENGINE_ROOT}_build/include $${QTWEBENGINE_ROOT}/include |' {} + || die
-
-	if use system-icu; then
-		# Sanity check to ensure that bundled copy of ICU is not used.
-		# Whole src/3rdparty/chromium/third_party/icu directory cannot be deleted because
-		# src/3rdparty/chromium/third_party/icu/BUILD.gn is used by build system.
-		# If usage of headers of bundled copy of ICU occurs, then lists of shim headers in
-		# shim_headers("icui18n_shim") and shim_headers("icuuc_shim") in
-		# src/3rdparty/chromium/third_party/icu/BUILD.gn should be updated.
-		local file
-		while read file; do
-			echo "#error This file should not be used!" > "${file}" || die
-		done < <(
-			find src/3rdparty/chromium/third_party/icu -type f \
-				\( -name '*.c' -o -name '*.cpp' -o -name '*.h' \) 2>/dev/null
-		)
-	fi
-
 	# for www-plugins/chrome-binary-plugins (widevine) search paths on prefix
 	hprefixify -w /Gentoo/ src/core/content_client_qt.cpp
 
@@ -170,62 +156,66 @@ src_prepare() {
 }
 
 src_configure() {
-	export NINJA_PATH=${BROOT}/usr/bin/ninja
-	export NINJAFLAGS=${NINJAFLAGS:--j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0) -v}
-
 	local mycmakeargs=(
-		#-DQT_FEATURE_accessibility=off
-		#-DQT_FEATURE_force_asserts=off
-		#-DQT_FEATURE_opengl=off
-		#-DQT_FEATURE_printer=off
-		-DQT_FEATURE_qtpdf_build=off
-		-DQT_FEATURE_qtpdf_quick_build=off
-		-DQT_FEATURE_qtpdf_widgets_build=off
-		-DQT_FEATURE_qtwebengine_build=on
-		-DQT_FEATURE_qtwebengine_quick_build=on
-		-DQT_FEATURE_qtwebengine_widgets_build=on
-		#-DQT_FEATURE_ssl=off
-		#-DQT_FEATURE_static=off
-		#-DQT_FEATURE_system_zlib=off
-		#-DQT_FEATURE_system_png=off
-		#-DQT_FEATURE_system_jpeg=off
-		#-DQT_FEATURE_system_freetype=off
-		#-DQT_FEATURE_system_harfbuzz=off
-		#-DQT_FEATURE_use_gold_linker=off
-		#-DQT_FEATURE_use_lld_linker=off
-		-DQT_FEATURE_webengine_embedded_build=off
-		-DQT_FEATURE_webengine_extensions=on
-		#-DQT_FEATURE_webengine_full_debug_info=$(usex debug)
-		-DQT_FEATURE_webengine_geolocation=$(usex geolocation on off)
-		-DQT_FEATURE_webengine_jumbo_build=$(usex jumbo-build)
-		#-DQT_FEATURE_webengine_jumbo_file_merge_limit
-		-DQT_FEATURE_webengine_kerberos=$(usex kerberos on off)
-		-DQT_FEATURE_webengine_native_spellchecker=off
-		-DQT_FEATURE_webengine_ozone_x11=on
-		-DQT_FEATURE_webengine_pepper_plugins=on
-		-DQT_FEATURE_webengine_proprietary_codecs=$(usex bindist off on)
-		-DQT_FEATURE_webengine_printing_and_pdf=on
-		-DQT_FEATURE_webengine_sanitizer=on
-		-DQT_FEATURE_webengine_spellchecker=on
-		-DQT_FEATURE_webengine_system_opus=on
-		-DQT_FEATURE_webengine_system_libwebp=on
-		-DQT_FEATURE_webengine_system_alsa=$(usex alsa on off)
-		-DQT_FEATURE_webengine_system_ffmpeg=off # https://bugs.gentoo.org/831487
-		-DQT_FEATURE_webengine_system_icu=$(usex system-icu)
-		-DQT_FEATURE_webengine_system_libevent=on
-		-DQT_FEATURE_webengine_system_libopenjpeg2=on
-		-DQT_FEATURE_webengine_system_libpci=on
-		-DQT_FEATURE_webengine_system_libpng=on
-		-DQT_FEATURE_webengine_system_pulseaudio=$(usex pulseaudio on off)
-		-DQT_FEATURE_webengine_system_zlib=on
-		-DQT_FEATURE_webengine_webchannel=on
-		-DQT_FEATURE_webengine_webrtc=on
-		-DQT_FEATURE_webengine_webrtc_pipewire=$(usex screencast on off)
-		#-DQT_FEATURE_xcb=off
+		-DQT_FEATURE_qtpdf_build=OFF # TODO?
+		-DQT_FEATURE_qtpdf_quick_build=OFF
+		-DQT_FEATURE_qtpdf_widgets_build=OFF
 
-		# TODO: fix gn cross build or split + depend on dev-qt/qtwebengine-gn
-		-DINSTALL_GN=off
+		-DQT_FEATURE_qtwebengine_build=ON
+		$(qt_feature qml qtwebengine_quick_build)
+		$(qt_feature widgets qtwebengine_widgets_build)
+
+		$(cmake_use_find_package designer Qt6Designer)
+
+		$(qt_feature alsa webengine_system_alsa)
+		$(qt_feature !bindist webengine_proprietary_codecs)
+		$(qt_feature geolocation webengine_geolocation)
+		$(qt_feature jumbo-build webengine_jumbo_build)
+		$(qt_feature kerberos webengine_kerberos)
+		$(qt_feature pulseaudio webengine_system_pulseaudio)
+		$(qt_feature screencast webengine_webrtc_pipewire)
+		$(qt_feature system-icu webengine_system_icu)
+		$(qt_feature vulkan webengine_vulkan)
+		-DQT_FEATURE_webengine_embedded_build=OFF
+		-DQT_FEATURE_webengine_extensions=ON
+		-DQT_FEATURE_webengine_ozone_x11=ON # needed, cannot do optional X yet
+		-DQT_FEATURE_webengine_pepper_plugins=ON
+		-DQT_FEATURE_webengine_printing_and_pdf=ON
+		-DQT_FEATURE_webengine_spellchecker=ON
+		-DQT_FEATURE_webengine_webchannel=ON
+		-DQT_FEATURE_webengine_webrtc=ON
+
+		# needs a modified ffmpeg to be usable, and even then it may not
+		# cooperate with new major ffmpeg versions (bug #831487)
+		-DQT_FEATURE_webengine_system_ffmpeg=OFF
+
+		# preemptively using bundled to avoid complications, may revisit
+		# (see discussions in https://github.com/gentoo/gentoo/pull/32281)
+		-DQT_FEATURE_webengine_system_re2=OFF
+
+		# not necessary to pass these (default), but in case detection fails
+		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
+			freetype glib harfbuzz lcms2 libevent libjpeg \
+			libopenjpeg2 libpci libpng libvpx libwebp libxml \
+			minizip opus poppler snappy zlib)
+
+		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
+		-DINSTALL_GN=OFF
 	)
+
+	local mygnargs=(
+		# prefer no dlopen where possible
+		link_pulseaudio=true
+		rtc_link_pipewire=true
+	)
+
+	use custom-cflags || strip-flags # fragile
+
+	export NINJA NINJAFLAGS=$(get_NINJAOPTS)
+	[[ ${NINJA_VERBOSE^^} == OFF ]] || NINJAFLAGS+=" -v"
+
+	local -x EXTRA_GN="${mygnargs[*]} ${EXTRA_GN}"
+	einfo "Extra Gn args: ${EXTRA_GN}"
 
 	qt6-build_src_configure
 }
@@ -259,6 +249,12 @@ src_test() {
 }
 
 pkg_postinst() {
+	# plugin may also be found in $HOME if provided by chrome or firefox
+	use amd64 &&
+		optfeature "Widevine DRM support (protected media playback)" \
+			www-plugins/chrome-binary-plugins
+
+	elog
 	elog "This version of Qt WebEngine is based on Chromium version ${QT6_CHROMIUM_VER}, with"
 	elog "additional security fixes up to ${QT6_CHROMIUM_PATCHES_VER}. Extensive as it is, the"
 	elog "list of backports is impossible to evaluate, but always bound to be behind"
