@@ -71,8 +71,12 @@ dist-kernel_get_image_path() {
 		amd64|x86)
 			echo arch/x86/boot/bzImage
 			;;
-		arm64)
-			echo arch/arm64/boot/Image.gz
+		arm64|riscv)
+			if [[ ${KERNEL_IUSE_SECUREBOOT} ]] && use secureboot; then
+				echo arch/${ARCH}/boot/vmlinuz.efi
+			else
+				echo arch/${ARCH}/boot/Image.gz
+			fi
 			;;
 		arm)
 			echo arch/arm/boot/zImage
@@ -82,9 +86,6 @@ dist-kernel_get_image_path() {
 			# ./ is required because of ${image_path%/*}
 			# substitutions in the code
 			echo ./vmlinux
-			;;
-		riscv)
-			echo arch/riscv/boot/Image.gz
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
