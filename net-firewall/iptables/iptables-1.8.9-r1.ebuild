@@ -48,6 +48,7 @@ IDEPEND=">=app-eselect/eselect-iptables-20220320"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.4-no-symlinks.patch
 	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${PN}-1.8.9-fix-checking-existence-of-rule.patch
 )
 
 src_prepare() {
