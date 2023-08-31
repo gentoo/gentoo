@@ -40,6 +40,8 @@ src_install() {
 	insinto "/usr/share/${PN}"
 
 	# Start the install beneath the "es5" directory for compatibility with
-	# Arch, Solus, and Void Linux.
+	# Arch, Solus, and Void Linux, but leave a fake "es5" symlink for
+	# packages (like doxygen) that expect it.
 	doins -r es5/*
+	dosym -r "/usr/share/${PN}" "/usr/share/${PN}/es5"
 }
