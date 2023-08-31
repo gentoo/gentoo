@@ -24,6 +24,7 @@ IUSE="test"
 # Need to audit licenses of the binaries used for testing
 RESTRICT="test? ( fetch ) !test? ( test )"
 
+# TODO: unbundle dev-libs/blake3
 RDEPEND="
 	app-arch/lz4:0=
 	app-arch/xz-utils
