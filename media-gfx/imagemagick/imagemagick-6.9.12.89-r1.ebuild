@@ -14,7 +14,7 @@ else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -91,6 +91,16 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Apply hardening, bug #664236
+	cp "${FILESDIR}"/policy-hardening.snippet "${S}" || die
+	sed -i -e '/^<policymap>$/ {
+			r policy-hardening.snippet
+			d
+		}' \
+		config/policy.xml || \
+		die "Failed to apply hardening of policy.xml"
+	einfo "policy.xml hardened"
 
 	# for Darwin modules
 	elibtoolize
@@ -226,4 +236,36 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins config/*icm
+}
+
+pkg_postinst() {
+	local _show_policy_xml_notice=
+
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+		_show_policy_xml_notice=yes
+	else
+		local v
+		for v in ${REPLACING_VERSIONS}; do
+			if ! ver_test "${v}" -gt "6.9.10.10-r2"; then
+				# This is an upgrade
+				_show_policy_xml_notice=yes
+
+				# Show this elog only once
+				break
+			fi
+		done
+	fi
+
+	if [[ -n "${_show_policy_xml_notice}" ]]; then
+		elog "For security reasons, a policy.xml file was installed in /etc/ImageMagick-6"
+		elog "which will prevent the usage of the following coders by default:"
+		elog ""
+		elog "  - PS"
+		elog "  - PS2"
+		elog "  - PS3"
+		elog "  - EPS"
+		elog "  - PDF"
+		elog "  - XPS"
+	fi
 }
