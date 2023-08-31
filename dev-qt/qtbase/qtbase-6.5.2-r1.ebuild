@@ -120,6 +120,7 @@ DEPEND="
 		sctp? ( net-misc/lksctp-tools )
 	)
 "
+BDEPEND="zstd? ( app-arch/libarchive[zstd] )" #910392
 PDEPEND="wayland? ( =dev-qt/qtwayland-${PV}*:6 )"
 
 PATCHES=(
