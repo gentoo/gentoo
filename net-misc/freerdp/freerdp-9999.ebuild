@@ -23,12 +23,13 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg kerberos openh264 pkcs11 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
+IUSE="aad alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg kerberos openh264 pkcs11 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/openssl:0=
 	sys-libs/zlib:0
+	aad? ( dev-libs/cJSON )
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	usb? (
@@ -104,6 +105,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DCHANNEL_URBDRC=$(usex usb ON OFF)
+		-DWITH_AAD=$(usex aad ON OFF)
 		-DWITH_ALSA=$(usex alsa ON OFF)
 		-DWITH_CCACHE=OFF
 		-DWITH_CLIENT_SDL=$(usex sdl ON OFF)
