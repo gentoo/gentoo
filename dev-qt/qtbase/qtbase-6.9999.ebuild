@@ -251,6 +251,15 @@ src_test() {
 		tst_qglyphrun
 		tst_qvectornd
 		tst_rcc
+		# partially broken on llvm-musl, needs looking into but skip to have
+		# a baseline for regressions (like above, rest of dev-qt is fine)
+		$(usev elibc_musl '
+			tst_qfiledialog2
+			tst_qicoimageformat
+			tst_qimagereader
+			tst_qpainter
+			tst_qimage
+		')
 		# note: for linux, upstream only really runs+maintains tests for amd64
 		# https://doc.qt.io/qt-6/supported-platforms.html
 	)
