@@ -119,6 +119,9 @@ DEPEND="
 	network? (
 		sctp? ( net-misc/lksctp-tools )
 	)
+	test? (
+		elibc_musl? ( sys-libs/timezone-data )
+	)
 "
 BDEPEND="zstd? ( app-arch/libarchive[zstd] )" #910392
 PDEPEND="wayland? ( =dev-qt/qtwayland-${PV}*:6 )"
