@@ -1,0 +1,53 @@
+From 2e8e37e495b85856bb440e67db9a6a72a37cfedd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 31 Aug 2023 18:21:26 +0200
+Subject: [PATCH] Fix build system problems
+
+Fix missing dependency for interval library, and workaround duplicate
+__init__.py files.
+
+https://github.com/pandas-dev/pandas/issues/54888
+https://github.com/pandas-dev/pandas/issues/54889
+---
+ pandas/_libs/meson.build        | 7 ++-----
+ pandas/_libs/tslibs/meson.build | 4 ----
+ 2 files changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/pandas/_libs/meson.build b/pandas/_libs/meson.build
+index f302c64..07d2d8a 100644
+--- a/pandas/_libs/meson.build
++++ b/pandas/_libs/meson.build
+@@ -69,7 +69,8 @@ libs_sources = {
+     'index': {'sources': ['index.pyx', _index_class_helper]},
+     'indexing': {'sources': ['indexing.pyx']},
+     'internals': {'sources': ['internals.pyx']},
+-    'interval': {'sources': ['interval.pyx', _intervaltree_helper]},
++    'interval': {'sources': ['interval.pyx', _intervaltree_helper],
++                 'deps': _khash_primitive_helper_dep},
+     'join': {'sources': ['join.pyx', _khash_primitive_helper],
+              'deps': _khash_primitive_helper_dep},
+     'lib': {'sources': ['lib.pyx', 'src/parser/tokenizer.c']},
+@@ -113,8 +114,4 @@ foreach ext_name, ext_dict : libs_sources
+     )
+ endforeach
+ 
+-py.install_sources('__init__.py',
+-                    pure: false,
+-                    subdir: 'pandas/_libs')
+-
+ subdir('window')
+diff --git a/pandas/_libs/tslibs/meson.build b/pandas/_libs/tslibs/meson.build
+index 14d2eef..a862345 100644
+--- a/pandas/_libs/tslibs/meson.build
++++ b/pandas/_libs/tslibs/meson.build
+@@ -30,7 +30,3 @@ foreach ext_name, ext_dict : tslibs_sources
+         install: true
+     )
+ endforeach
+-
+-py.install_sources('__init__.py',
+-                    pure: false,
+-                    subdir: 'pandas/_libs/tslibs')
+-- 
+2.42.0
+

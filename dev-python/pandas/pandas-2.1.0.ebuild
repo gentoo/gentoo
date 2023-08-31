@@ -10,7 +10,7 @@ PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
 
-inherit distutils-r1 multiprocessing optfeature virtualx
+inherit distutils-r1 multiprocessing optfeature pypi virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
 HOMEPAGE="
@@ -18,19 +18,10 @@ HOMEPAGE="
 	https://github.com/pandas-dev/pandas/
 	https://pypi.org/project/pandas/
 "
-SRC_URI="
-	https://github.com/pandas-dev/pandas/releases/download/v${PV}/${P}.tar.gz
-"
-S=${WORKDIR}/${P/_/}
 
 SLOT="0"
 LICENSE="BSD"
-# new meson build that:
-# 1) sometimes fails on .pxi.in → .pyx ordering
-#    https://github.com/pandas-dev/pandas/issues/54889
-# 2) creates a broken wheel with two pandas/_libs/__init__.py files
-#    https://github.com/pandas-dev/pandas/issues/54888
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
 IUSE="full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -97,6 +88,7 @@ BDEPEND="
 		>=dev-python/pytest-xdist-2.2.0[${PYTHON_USEDEP}]
 		>=dev-python/psycopg-2.9.3:2[${PYTHON_USEDEP}]
 		>=dev-python/xlsxwriter-3.0.3[${PYTHON_USEDEP}]
+		sys-apps/which
 		x11-misc/xclip
 		x11-misc/xsel
 	)
@@ -108,16 +100,92 @@ RDEPEND="
 	full-support? ( ${OPTIONAL_DEPEND} )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-build-system.patch"
+)
+
 src_test() {
 	virtx distutils-r1_src_test
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# test for rounding errors, fails if we have better precision
+		# e.g. on amd64 with FMA or on arm64
+		# https://github.com/pandas-dev/issues/38921
+		tests/window/test_rolling.py::test_rolling_var_numerical_issues
+
+		# TODO; unhappy about DISPLAY?
+		tests/test_downstream.py::test_seaborn
+		
+		# OOMs
+		tests/io/parser/test_c_parser_only.py::test_bytes_exceed_2gb
+
+		# TODO: numexpr says "forbidden control characters"
+		tests/computation/test_eval.py::TestOperations::test_multi_line_expression_local_variable
+		'tests/computation/test_eval.py::test_query_token[numexpr-Temp(\xb0C)]'
+		tests/frame/test_query_eval.py::TestDataFrameQueryBacktickQuoting::test_lots_of_operators_string
+		tests/frame/test_query_eval.py::TestDataFrameQueryBacktickQuoting::test_multiple_spaces
+		tests/frame/test_query_eval.py::TestDataFrameQueryBacktickQuoting::test_parenthesis
+		tests/frame/test_query_eval.py::TestDataFrameQueryBacktickQuoting::test_start_with_spaces
+		tests/frame/test_query_eval.py::TestDataFrameQueryNumExprPandas::test_local_syntax
+		tests/frame/test_query_eval.py::TestDataFrameQueryNumExprPandas::test_local_variable_with_in
+		tests/frame/test_query_eval.py::TestDataFrameQueryNumExprPandas::test_nested_scope
+		tests/frame/test_query_eval.py::TestDataFrameQueryNumExprPandas::test_query_scope
+
+		# TODO: missing data not covered by --no-strict-data-files?
+		tests/io/xml/test_xml.py::test_empty_stylesheet
+		tests/io/xml/test_xml.py::test_wrong_file_path
+
+		# TODO
+		tests/frame/test_arithmetic.py::TestFrameFlexArithmetic::test_floordiv_axis0_numexpr_path
+
+		# deprecation warning
+		tests/io/pytables/test_retain_attributes.py::test_retain_index_attributes2
+
+		# Needs 64-bit time_t (TODO: split into 32-bit arch only section)
+		tests/tseries/offsets/test_year.py::test_add_out_of_pydatetime_range
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BusinessDay]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BusinessHour]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BusinessMonthEnd]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BusinessMonthBegin]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BQuarterEnd]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-BQuarterBegin]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-CustomBusinessDay]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-CustomBusinessHour]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-CustomBusinessMonthEnd]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-CustomBusinessMonthBegin]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-MonthEnd]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-MonthBegin]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-SemiMonthBegin]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-SemiMonthEnd]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-QuarterEnd]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-LastWeekOfMonth]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-WeekOfMonth]'
+		'tests/tseries/offsets/test_common.py::test_apply_out_of_range[tzlocal()-Week]'
+
+		# alignment issues: bug #911660 (fixed upstream but not yet in a release)
+		# https://github.com/pandas-dev/issues/54391
+		tests/io/sas/test_byteswap.py::test_float_byteswap
+
+		# hdf / pytables have alignment problems: bug #911660
+		# https://github.com/pandas-dev/issues/54396
+		tests/io/pytables/test_append.py::test_append_frame_column_oriented
+		tests/io/pytables/test_store.py::test_select_filter_corner
+	)
+
 	local -x LC_ALL=C.UTF-8
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
-	epytest pandas --skip-slow --skip-network -m "not single" \
-		-n "$(makeopts_jobs)" || die "Tests failed with ${EPYTHON}"
+	# --no-strict-data-files is necessary since upstream prevents data
+	# files from even being included in GitHub archives, sigh
+	epytest pandas/tests \
+		--no-strict-data-files \
+		--maxfail=32 \
+		-m "not single and not slow and not network" \
+		-n "$(makeopts_jobs)" --dist=worksteal ||
+		die "Tests failed with ${EPYTHON}"
+	rm test-data.xml || die
 }
 
 pkg_postinst() {
