@@ -12,7 +12,7 @@ SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
-IUSE="geolocation screencast systemd"
+IUSE="geolocation +screencast systemd"
 
 DEPEND="
 	>=dev-libs/glib-2.66:2
