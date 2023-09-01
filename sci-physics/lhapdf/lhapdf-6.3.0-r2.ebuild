@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="
 	dev-texlive/texlive-bibtexextra
@@ -14,7 +14,8 @@ DOCS_DEPEND="
 "
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1 docs
+DISTUTILS_EXT=1
+inherit distutils-r1 docs autotools
 
 MY_PV=$(ver_cut 1-3)
 MY_PF=LHAPDF-${MY_PV}
@@ -23,6 +24,7 @@ DESCRIPTION="Les Houches Parton Density Function unified library"
 HOMEPAGE="https://lhapdf.hepforge.org/"
 SRC_URI="https://www.hepforge.org/downloads/lhapdf/${MY_PF}.tar.gz"
 S="${WORKDIR}/${MY_PF}"
+DOCS_DIR="${S}/doc"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -38,10 +40,15 @@ BDEPEND="
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-egg.patch
+)
+
 src_prepare() {
 	default
 	# Let cython reproduce this for more recent python versions
 	rm wrappers/python/lhapdf.cpp || die
+	eautoreconf
 }
 
 src_configure() {
