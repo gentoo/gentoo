@@ -12,6 +12,7 @@
 		<flag name="bittorrent">Pull in <pkg>net-p2p/ktorrent</pkg> for BitTorrent protocol support</flag>
 		<flag name="dropbox">Enable support for Dropbox in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-dropbox</pkg></flag>
 		<flag name="samba">Enable support for <pkg>net-fs/samba</pkg> file sharing plugin from within file properties</flag>
+		<flag name="screencast">Pull in <pkg>kde-apps/krfb</pkg> for Plasma desktop sharing support</flag>
 		<flag name="webengine">Enable support for Google Drive integration via <pkg>kde-misc/kio-gdrive</pkg></flag>
 	</use>
 </pkgmetadata>
