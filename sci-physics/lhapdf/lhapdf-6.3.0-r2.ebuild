@@ -14,7 +14,7 @@ DOCS_DEPEND="
 "
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1 docs
+inherit distutils-r1 docs autotools
 
 MY_PV=$(ver_cut 1-3)
 MY_PF=LHAPDF-${MY_PV}
@@ -38,10 +38,15 @@ BDEPEND="
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-egg.patch
+)
+
 src_prepare() {
 	default
 	# Let cython reproduce this for more recent python versions
 	rm wrappers/python/lhapdf.cpp || die
+	eautoreconf
 }
 
 src_configure() {
