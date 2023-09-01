@@ -31,6 +31,14 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-andresimon )"
 
 DOCS=( ChangeLog.adoc README.adoc  )
 
+src_unpack() {
+	if use verify-sig ; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.bz2{,.asc}
+	fi
+
+	default
+}
+
 src_prepare() {
 	default
 
