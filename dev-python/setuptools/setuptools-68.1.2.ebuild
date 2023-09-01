@@ -56,6 +56,8 @@ BDEPEND="
 		' "${PYTHON_TESTED[@]}")
 	)
 "
+# setuptools-scm is here because installing plugins apparently breaks stuff at
+# runtime, so let's pull it early. See bug #663324.
 PDEPEND="
 	>=dev-python/certifi-2016.9.26[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
