@@ -14,7 +14,7 @@ else
 	MY_PN=${PN}
 fi
 
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 MY_P="${MY_PN}_${PV}-1"
 
