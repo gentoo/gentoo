@@ -16,3 +16,9 @@ RDEPEND="
 	=dev-qt/qtdeclarative-${PV}*:6
 "
 DEPEND="${RDEPEND}"
+
+CMAKE_SKIP_TESTS=(
+	# may fail with pid-sandbox, or at least musl/hardened+gcc (exact
+	# conditions unknown but passes without pid, consider flaky)
+	tst_qstatemachine
+)
