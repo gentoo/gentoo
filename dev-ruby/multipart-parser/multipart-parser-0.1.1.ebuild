@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/danabr/multipart-parser"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 PATCHES=( "${FILESDIR}"/${P}-fix-tests.patch )
