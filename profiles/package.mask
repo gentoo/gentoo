@@ -417,6 +417,7 @@ gnome-extra/tecla
 >=gui-libs/libadwaita-1.4_alpha
 >=media-gfx/eog-45_alpha
 >=media-gfx/gnome-font-viewer-45_alpha
+>=media-libs/libshumate-1.1_alpha
 >=net-misc/gnome-connections-45_alpha
 >=net-misc/gnome-remote-desktop-45_alpha
 >=sci-geosciences/gnome-maps-45_alpha
