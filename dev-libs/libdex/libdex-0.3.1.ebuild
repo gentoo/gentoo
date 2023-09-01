@@ -44,7 +44,7 @@ src_configure() {
 		-Dexamples=false
 		$(meson_use vala vapi)
 		$(meson_feature introspection)
-		-Dsysprof=false
+		$(meson_use sysprof)
 		$(meson_use test tests)
 	)
 	meson_src_configure
