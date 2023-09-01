@@ -24,7 +24,6 @@ RDEPEND="
 	acct-user/buildbot
 	>=dev-python/alembic-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
-	dev-python/crontiter[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
