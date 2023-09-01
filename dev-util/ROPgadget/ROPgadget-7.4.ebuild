@@ -23,10 +23,6 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-# Tests are not stable with respect to different capstone releases. We have to
-# disable tests until this is fixed upstream. See bug #912164.
-RESTRICT="test"
-
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/capstone-5.0.1[python,${PYTHON_USEDEP}]
