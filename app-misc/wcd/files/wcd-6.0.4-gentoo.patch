@@ -77,8 +77,6 @@ Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
 
  %.o: %.c
  	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(DEFS) -c $< -o $@
-diff --git a/src/Makefile b/src/Makefile
-index fc317de..c5cff96 100644
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -359,7 +359,7 @@ endif
