@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,13 +12,15 @@ SRC_URI="https://github.com/mongodb/mongo-tools/archive/r${MY_PV}.tar.gz -> mong
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="sasl ssl"
 
-DEPEND="dev-lang/go:=
+DEPEND="
 	net-libs/libpcap
 	sasl? ( dev-libs/cyrus-sasl )
-	ssl? ( dev-libs/openssl:0= )"
+	ssl? ( dev-libs/openssl:0= )
+"
+BDEPEND="dev-lang/go"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
