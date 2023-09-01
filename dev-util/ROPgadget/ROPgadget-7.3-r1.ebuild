@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -23,13 +23,12 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-# Tests are not stable with respect to different capstone releases. We have to
-# disable tests until this is fixed upstream. See bug #912164.
-RESTRICT="test"
-
+# Version 7.3 and older is incompatible to >=dev-libs/capstone-5.0_rc3.
+# See https://bugs.gentoo.org/912164 and
+# https://github.com/JonathanSalwan/ROPgadget/issues/190.
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-libs/capstone-5[python,${PYTHON_USEDEP}]
+	~dev-libs/capstone-5.0_rc2[python,${PYTHON_USEDEP}]
 "
 
 src_test() {
