@@ -8,7 +8,6 @@
 	<use>
 		<flag name="aad">Enable login via Azure AD</flag>
 		<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
-		<flag name="pkcs11">Enable pkcs11 for NLA smartcard logon support</flag>
 		<flag name="server">Build server binaries</flag>
 	</use>
 	<upstream>

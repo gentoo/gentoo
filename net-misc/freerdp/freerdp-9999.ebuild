@@ -23,7 +23,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="aad alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg kerberos openh264 pkcs11 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
+IUSE="aad alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -58,7 +58,6 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	kerberos? ( virtual/krb5 )
 	openh264? ( media-libs/openh264:0= )
-	pkcs11? ( dev-libs/pkcs11-helper )
 	pulseaudio? ( media-libs/libpulse )
 	sdl? (
 		media-libs/libsdl2
@@ -75,7 +74,10 @@ RDEPEND="
 			xinerama? ( x11-libs/libXinerama )
 		)
 	)
-	smartcard? ( sys-apps/pcsc-lite )
+	smartcard? (
+		dev-libs/pkcs11-helper
+		sys-apps/pcsc-lite
+	)
 	systemd? ( sys-apps/systemd:0= )
 	wayland? (
 		dev-libs/wayland
@@ -121,10 +123,10 @@ src_configure() {
 		-DWITH_KRB5=$(usex kerberos ON OFF)
 		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
 		-DWITH_OPENH264=$(usex openh264 ON OFF)
-		-DWITH_PKCS11=$(usex pkcs11 ON OFF)
+		-DWITH_PCSC=$(usex smartcard ON OFF)
+		-DWITH_PKCS11=$(usex smartcard ON OFF)
 		-DWITH_PULSE=$(usex pulseaudio ON OFF)
 		-DWITH_SERVER=$(usex server ON OFF)
-		-DWITH_PCSC=$(usex smartcard ON OFF)
 		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
 		-DWITH_VALGRIND_MEMCHECK=$(usex valgrind ON OFF)
 		-DWITH_X11=$(usex X ON OFF)
