@@ -179,6 +179,7 @@ python_test() {
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
 	# --no-strict-data-files is necessary since upstream prevents data
 	# files from even being included in GitHub archives, sigh
+	# https://github.com/pandas-dev/pandas/issues/54907
 	epytest pandas/tests \
 		--no-strict-data-files \
 		--maxfail=32 \
