@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake systemd
+inherit cmake flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="RandomX, CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner"
 HOMEPAGE="https://xmrig.com https://github.com/xmrig/xmrig"
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/xmrig/xmrig/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 LICENSE="Apache-2.0 GPL-3+ MIT"
@@ -33,6 +33,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.2-nonotls.patch
+	"${FILESDIR}"/${PN}-6.18.1-gcc-13.patch
 )
 
 src_prepare() {
@@ -44,6 +45,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# JIT broken with FORTIFY_SOURCE=3
+	# Bug #913420
+	if tc-enables-fortify-source; then
+		filter-flags -D_FORTIFY_SOURCE=3
+		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+	fi
+
 	local mycmakeargs=(
 		-DWITH_SSE4_1=$(usex cpu_flags_x86_sse4_1)
 		-DWITH_HWLOC=$(usex hwloc)
