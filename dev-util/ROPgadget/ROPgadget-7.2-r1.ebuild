@@ -25,7 +25,7 @@ SLOT="0"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-libs/capstone-5[python,${PYTHON_USEDEP}]
+	~dev-libs/capstone-5.0_rc2[python,${PYTHON_USEDEP}]
 "
 
 src_test() {
