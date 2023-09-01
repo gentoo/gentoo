@@ -117,7 +117,7 @@ python_test() {
 
 		# TODO; unhappy about DISPLAY?
 		tests/test_downstream.py::test_seaborn
-		
+
 		# OOMs
 		tests/io/parser/test_c_parser_only.py::test_bytes_exceed_2gb
 
