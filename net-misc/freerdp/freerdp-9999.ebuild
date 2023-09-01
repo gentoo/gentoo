@@ -133,6 +133,7 @@ src_configure() {
 		-DWITH_XINERAMA=$(usex xinerama ON OFF)
 		-DWITH_XV=$(usex xv ON OFF)
 		-DWITH_WAYLAND=$(usex wayland ON OFF)
+		-DWITH_WEBVIEW=OFF
 	)
 	cmake_src_configure
 }
