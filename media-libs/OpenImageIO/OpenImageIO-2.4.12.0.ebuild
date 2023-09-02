@@ -3,7 +3,6 @@
 
 EAPI=8
 
-FONT_PN=OpenImageIO
 PYTHON_COMPAT=( python3_{9..11} )
 
 TEST_OIIO_IMAGE_COMMIT="aae37a54e31c0e719edcec852994d052ecf6541e"
@@ -12,12 +11,13 @@ inherit cmake font python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
 HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
-SRC_URI="https://github.com/OpenImageIO/oiio/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" test? (
-	https://github.com/OpenImageIO/oiio-images/archive/${TEST_OIIO_IMAGE_COMMIT}.tar.gz -> ${PN}-oiio-test-image-${TEST_OIIO_IMAGE_COMMIT}.tar.gz
-	https://github.com/AcademySoftwareFoundation/openexr-images/archive/${TEST_OEXR_IMAGE_COMMIT}.tar.gz -> ${PN}-oexr-test-image-${TEST_OEXR_IMAGE_COMMIT}.tar.gz
-)"
-S="${WORKDIR}/oiio-${PV}"
+SRC_URI="
+	https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	test? (
+		https://github.com/AcademySoftwareFoundation/OpenImageIO-images/archive/${TEST_OIIO_IMAGE_COMMIT}.tar.gz -> ${PN}-oiio-test-image-${TEST_OIIO_IMAGE_COMMIT}.tar.gz
+		https://github.com/AcademySoftwareFoundation/openexr-images/archive/${TEST_OEXR_IMAGE_COMMIT}.tar.gz -> ${PN}-oexr-test-image-${TEST_OEXR_IMAGE_COMMIT}.tar.gz
+	)
+"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
@@ -109,8 +109,8 @@ src_prepare() {
 
 	if use test ; then
 		mkdir -p "${BUILD_DIR}"/testsuite || die
-		mv "${WORKDIR}"/oiio-images-${TEST_OIIO_IMAGE_COMMIT} "${BUILD_DIR}"/testsuite/oiio-images || die
-		mv "${WORKDIR}"/openexr-images-${TEST_OEXR_IMAGE_COMMIT} "${BUILD_DIR}"/testsuite/openexr-images || die
+		mv "${WORKDIR}/${PN}-images-${TEST_OIIO_IMAGE_COMMIT}" "${BUILD_DIR}"/testsuite/oiio-images || die
+		mv "${WORKDIR}/openexr-images-${TEST_OEXR_IMAGE_COMMIT}" "${BUILD_DIR}"/testsuite/openexr-images || die
 	fi
 }
 
