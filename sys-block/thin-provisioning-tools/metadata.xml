@@ -8,6 +8,9 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<use>
+		<flag name="io-uring">Enable experimental support for io-uring.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">jthornber/thin-provisioning-tools</remote-id>
 	</upstream>

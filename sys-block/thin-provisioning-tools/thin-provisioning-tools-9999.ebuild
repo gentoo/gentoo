@@ -151,6 +151,7 @@ fi
 
 LICENSE="Apache-2.0 BSD GPL-3 MIT Unicode-DFS-2016"
 SLOT="0"
+IUSE="io-uring"
 
 # Rust
 QA_FLAGS_IGNORED="usr/sbin/pdata_tools"
@@ -162,6 +163,11 @@ src_unpack() {
 	else
 		cargo_src_unpack
 	fi
+}
+
+src_configure() {
+	local myfeatures=( $(usev io-uring io_uring) )
+	cargo_src_configure
 }
 
 src_compile() {
