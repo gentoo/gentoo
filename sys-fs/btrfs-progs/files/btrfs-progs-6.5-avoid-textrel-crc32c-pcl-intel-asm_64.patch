@@ -1,0 +1,44 @@
+See https://github.com/kdave/btrfs-progs/commit/992be8b50a65974e52a484911e72bc5a5e1b412c.
+
+With binutils-2.41[hardened], one gets:
+```
+/usr/lib/gcc/x86_64-pc-linux-gnu/13/../../../../x86_64-pc-linux-gnu/bin/ld: crypto/crc32c-pcl-intel-asm_64.o: warning: relocation in read-only section `.rodata'
+/usr/lib/gcc/x86_64-pc-linux-gnu/13/../../../../x86_64-pc-linux-gnu/bin/ld: read-only segment has dynamic relocations
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:660: btrfs-map-logical] Error 1
+```
+
+But it's a textrel and a warning anyway even without hardened.
+
+Disable it for now until it gets fixed properly upstream.
+--- a/Makefile
++++ b/Makefile
+@@ -387,7 +387,7 @@ endif
+ 
+ ifeq ($(TARGET_CPU),x86_64)
+ # FIXME: linkage is broken on musl for some reason
+-ifeq ($(HAVE_GLIBC),1)
++ifeq (0,1)
+ CRYPTO_OBJECTS += crypto/crc32c-pcl-intel-asm_64.o
+ ASFLAGS += -fPIC
+ endif
+--- a/crypto/crc32c.c
++++ b/crypto/crc32c.c
+@@ -18,7 +18,7 @@ static uint32_t (*crc_function)(uint32_t crc, unsigned char const *data, uint32_
+ 
+ #ifdef __x86_64__
+ 
+-#ifdef __GLIBC__
++#if 0
+ 
+ /* asmlinkage */ unsigned int crc_pcl(const unsigned char *buffer, int len, unsigned int crc_init);
+ static unsigned int crc32c_pcl(uint32_t crc, unsigned char const *data, uint32_t len) {
+@@ -95,7 +95,7 @@ void crc32c_init_accel(void)
+ 	 * now.
+ 	 */
+ 	if (0) {
+-#ifdef __GLIBC__
++#if 0
+ 	} else if (cpu_has_feature(CPU_FLAG_SSE42)) {
+ 		/* printf("CRC32C: pcl\n"); */
+ 		crc_function = crc32c_pcl;
