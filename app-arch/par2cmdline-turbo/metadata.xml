@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="openmp">Enable OpenMP parallel version</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">animetosho/par2cmdline-turbo</remote-id>
 	</upstream>
