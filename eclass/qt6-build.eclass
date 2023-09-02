@@ -21,7 +21,7 @@ _QT6_BUILD_ECLASS=1
 [[ ${CATEGORY} != dev-qt ]] &&
 	die "${ECLASS} is only to be used for building Qt6"
 
-inherit cmake flag-o-matic
+inherit cmake flag-o-matic toolchain-funcs
 
 # @ECLASS_VARIABLE: QT6_MODULE
 # @PRE_INHERIT
@@ -108,6 +108,7 @@ qt6-build_src_prepare() {
 	fi
 
 	_qt6-build_prepare_env
+	_qt6-build_match_cpu_flags
 }
 
 # @FUNCTION: qt6-build_src_configure
@@ -233,6 +234,38 @@ _qt6-build_create_user_facing_links() {
 			die "unrecognized line '${link}' in '${links}'"
 		fi
 	done < "${BUILD_DIR}"/user_facing_tool_links.txt || die
+}
+
+# @FUNCTION: _qt6-build_match_cpu_flags
+# @INTERNAL
+# @DESCRIPTION:
+# Try to adjust -m* cpu CXXFLAGS so that they match a configuration
+# accepted by Qt's headers, see bug #908420.
+_qt6-build_match_cpu_flags() {
+	use amd64 || use x86 || return 0
+
+	local flags=() intrin intrins
+	while IFS=' ' read -ra intrins; do
+		[[ ${intrins[*]} == *=[^_]* && ${intrins[*]} == *=_* ]] &&
+			for intrin in "${intrins[@]}"; do
+				[[ ${intrin} == *?=[^_]* ]] && flags+=(-mno-${intrin%=*})
+			done
+	done < <(
+		# TODO: review if can drop fma= matching after QTBUG-116357
+		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 2
+			#if defined(__GNUC__) && (defined(__x86_64__) || defined(__i386__))
+			#include <x86intrin.h>
+			#endif
+			avx2=__AVX2__ =__BMI__ =__BMI2__ =__F16C__ fma=__FMA__ =__LZCNT__ =__POPCNT__
+			avx512f=__AVX512F__ avx512bw=__AVX512BW__ avx512cd=__AVX512CD__ avx512dq=__AVX512DQ__ avx512vl=__AVX512VL__
+		EOF
+		assert
+	)
+
+	if (( ${#flags[@]} )); then
+		einfo "Adjusting CXXFLAGS for https://bugs.gentoo.org/908420 with: ${flags[*]}"
+		append-cxxflags "${flags[@]}"
+	fi
 }
 
 # @FUNCTION: _qt6-build_prepare_env
