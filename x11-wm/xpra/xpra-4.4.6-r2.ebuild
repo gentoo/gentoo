@@ -121,18 +121,19 @@ PATCHES=(
 )
 
 python_prepare_all() {
+	if use minimal; then
+		sed -r -e '/pam_ENABLED/s/DEFAULT/False/' \
+			-e 's/^(xdg_open)_ENABLED = .*/\1_ENABLED = False/' \
+			-i setup.py || die
+		PATCHES+=( "${FILESDIR}"/${PN}-4.4.6_xpra-4.4.6_minimal-features.patch )
+	fi
+
 	distutils-r1_python_prepare_all
 
 	hprefixify xpra/scripts/config.py
 
 	sed -r -e "/\bdoc_dir =/s:/${PN}/\":/${PF}/html\":" \
 		-i setup.py || die
-
-	if use minimal; then
-		sed -r -e '/pam_ENABLED/s/DEFAULT/False/' \
-			-e 's/^(xdg_open)_ENABLED = .*/\1_ENABLED = False/' \
-			-i setup.py || die
-	fi
 }
 
 python_configure_all() {
