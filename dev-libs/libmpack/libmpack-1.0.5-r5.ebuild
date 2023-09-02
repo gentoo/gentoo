@@ -21,7 +21,7 @@ src_prepare() {
 	default
 
 	# Respect users CFLAGS
-	sed -e 's/-ggdb//g' -i Makefile.in || die
+	sed -e 's/-ggdb//g' -i .config/debug.mk || die
 	sed -e 's/-O3//g' -i .config/release.mk || die
 
 	eautoreconf
