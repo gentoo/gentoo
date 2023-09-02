@@ -116,6 +116,7 @@ src_configure() {
 		-DWITH_GSSAPI=$(usex kerberos ON OFF)
 		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
 		-DWITH_OPENH264=$(usex openh264 ON OFF)
+		-DWITH_OSS=OFF
 		-DWITH_PULSE=$(usex pulseaudio ON OFF)
 		-DWITH_SERVER=$(usex server ON OFF)
 		-DWITH_PCSC=$(usex smartcard ON OFF)

@@ -125,6 +125,7 @@ src_configure() {
 		-DWITH_KRB5=$(usex kerberos ON OFF)
 		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
 		-DWITH_OPENH264=$(usex openh264 ON OFF)
+		-DWITH_OSS=OFF
 		-DWITH_PCSC=$(usex smartcard ON OFF)
 		-DWITH_PKCS11=$(usex smartcard ON OFF)
 		-DWITH_PULSE=$(usex pulseaudio ON OFF)
