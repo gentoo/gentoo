@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
-HOMEPAGE="http://www.freerdp.com/"
+HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
