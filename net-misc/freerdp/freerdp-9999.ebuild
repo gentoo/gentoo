@@ -106,6 +106,7 @@ src_configure() {
 	filter-lto
 
 	local mycmakeargs=(
+		-Wno-dev
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DCHANNEL_URBDRC=$(usex usb ON OFF)
 		-DWITH_AAD=$(usex aad ON OFF)
