@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -31,10 +31,9 @@ RDEPEND="
 	>=dev-python/traitlets-5.2.2_p1[${PYTHON_USEDEP}]
 	>=dev-python/QtPy-2.0.1[${PYTHON_USEDEP},gui,printsupport,svg]
 "
-# The test suite tests both against pyqt5 *and* pyside2
 BDEPEND="
 	test? (
-		dev-python/QtPy[pyqt5,pyside2,${PYTHON_USEDEP},svg,testlib]
+		dev-python/QtPy[${PYTHON_USEDEP},svg,testlib]
 	)
 "
 # required by the tests that are removed:
@@ -51,9 +50,16 @@ distutils_enable_tests pytest
 python_test() {
 	# TODO: these tests require virtx; however, running under virtx
 	# causes pytest to segv on exit (even though tests pass)
-	EPYTEST_IGNORE=(
+	local EPYTEST_IGNORE=(
 		qtconsole/tests/test_00_console_widget.py
 		qtconsole/tests/test_jupyter_widget.py
 	)
-	epytest
+	local -x QT_API
+	for QT_API in pyqt5 pyqt6 pyside2 pyside6; do
+		if has_version "dev-python/QtPy[${QT_API}]"; then
+			local -x PYTEST_QT_API=${QT_API}
+			einfo "Testing with ${QT_API}"
+			epytest
+		fi
+	done
 }
