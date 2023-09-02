@@ -117,9 +117,10 @@ declare -A GIT_CRATES=(
 	[bindgen]="https://gitlab.com/Matt.Jolly/rust-bindgen-bcachefs;f773267b090bf16b9e8375fcbdcd8ba5e88806a8;rust-bindgen-bcachefs-%commit%/bindgen"
 )
 
+LLVM_MAX_SLOT=17
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cargo flag-o-matic multiprocessing python-any-r1 toolchain-funcs unpacker
+inherit cargo flag-o-matic llvm multiprocessing python-any-r1 toolchain-funcs unpacker
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="https://bcachefs.org/"
@@ -153,6 +154,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
+# Clang is required for bindgen
 BDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
@@ -163,9 +165,14 @@ BDEPEND="
 		)
 	')
 	$(unpacker_src_uri_depends)
-	sys-devel/clang
+	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
+	virtual/pkgconfig
 	virtual/rust
 "
+
+llvm_check_deps() {
+	has_version -b "sys-devel/clang:${LLVM_SLOT}"
+}
 
 python_check_deps() {
 	if use test; then
@@ -177,12 +184,17 @@ python_check_deps() {
 
 }
 
+pkg_setup() {
+	llvm_pkg_setup
+	python-any-r1_pkg_setup
+}
+
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
 		git-r3_src_unpack
 		S="${S}/rust-src" cargo_live_src_unpack
 	else
-		default
+		unpack ${P}.tar.gz
 		cargo_src_unpack
 	fi
 }
