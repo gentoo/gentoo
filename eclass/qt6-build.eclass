@@ -109,6 +109,17 @@ qt6-build_src_prepare() {
 
 	_qt6-build_prepare_env
 	_qt6-build_match_cpu_flags
+
+	# LTO cause test failures in several components (e.g. qtcharts,
+	# multimedia, scxml, wayland, webchannel, ...).
+	#
+	# Exact extent/causes unknown, but for some related-sounding bugs:
+	# https://bugreports.qt.io/browse/QTBUG-112332
+	# https://bugreports.qt.io/browse/QTBUG-115731
+	#
+	# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
+	# still assumed to be generally unsafe either way in current state.
+	filter-lto
 }
 
 # @FUNCTION: qt6-build_src_configure
@@ -135,17 +146,6 @@ qt6-build_src_configure() {
 		# avoid appending -O2 after user's C(XX)FLAGS (bug #911822)
 		-DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON
 	)
-
-	# LTO cause test failures in several components (e.g. qtcharts,
-	# multimedia, scxml, wayland, webchannel, ...).
-	#
-	# Exact extent/causes unknown, but for some related-sounding bugs:
-	# https://bugreports.qt.io/browse/QTBUG-112332
-	# https://bugreports.qt.io/browse/QTBUG-115731
-	#
-	# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
-	# still assumed to be generally unsafe either way in current state.
-	filter-lto
 
 	cmake_src_configure
 }
