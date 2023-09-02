@@ -116,16 +116,16 @@ multilib_src_configure() {
 
 		$(meson_native_true tools)
 
-		$(meson_feature elogind)
-		$(meson_feature systemd)
+		$(meson_native_use_feature elogind)
+		$(meson_native_use_feature systemd)
 		$(meson_use systemd user_session)
-		$(meson_feature X x11_autolaunch)
+		$(meson_native_use_feature X x11_autolaunch)
 		$(meson_native_use_feature valgrind)
 
 		# libaudit is *only* used in DBus wrt SELinux support, so disable it if
 		# not on an SELinux profile.
-		$(meson_feature selinux)
-		$(meson_feature selinux libaudit)
+		$(meson_native_use_feature selinux)
+		$(meson_native_use_feature selinux libaudit)
 
 		-Dsession_socket_dir="${EPREFIX}"/tmp
 		-Dsystem_pid_file="${EPREFIX}${rundir}"/dbus.pid
