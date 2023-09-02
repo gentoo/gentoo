@@ -149,7 +149,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
-LICENSE="GPL-3"
+LICENSE="Apache-2.0 BSD GPL-3 MIT Unicode-DFS-2016"
 SLOT="0"
 
 # Rust
