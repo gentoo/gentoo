@@ -154,6 +154,13 @@ SLOT="0"
 IUSE="io-uring"
 
 PATCHES=( "${FILESDIR}/${PN}-1.0.6-build-with-cargo.patch" )
+DOCS=(
+	CHANGES
+	COPYING
+	README.md
+	doc/TODO.md
+	doc/thinp-version-2/notes.md
+)
 
 # Rust
 QA_FLAGS_IGNORED="usr/sbin/pdata_tools"
@@ -178,4 +185,6 @@ src_install() {
 		DATADIR="${ED}/usr/share" \
 		PDATA_TOOLS="target/$(usex debug debug release)/pdata_tools" \
 		install
+
+	einstalldocs
 }
