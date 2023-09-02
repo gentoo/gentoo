@@ -100,7 +100,7 @@ multilib_src_install() {
 			mv "${ED}"/usr/bin/kill "${ED}"/bin/ || die
 		fi
 
-		gen_usr_ldscript -a procps
+		gen_usr_ldscript -a proc2
 	fi
 }
 
