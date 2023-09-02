@@ -71,6 +71,10 @@ BDEPEND="
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
 
+PATCHES=(
+	"${FILESDIR}/${P}-find-eselected-wine.patch"
+)
+
 src_test() {
 	virtx epytest
 }
