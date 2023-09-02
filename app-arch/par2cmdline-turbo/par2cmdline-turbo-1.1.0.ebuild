@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
