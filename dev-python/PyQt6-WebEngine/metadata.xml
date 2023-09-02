@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>ionen@gentoo.org</email>
-		<name>Ionen Wolkens</name>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
 		<flag name="quick">Build bindings for the QtWebEngineQuick module</flag>
