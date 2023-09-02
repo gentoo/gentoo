@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qt6-build
+inherit flag-o-matic qt6-build toolchain-funcs
 
 DESCRIPTION="Cross-platform application development framework"
 
@@ -221,6 +221,38 @@ src_configure() {
 		$(qt_feature sqlite system_sqlite)
 		-DQT_FEATURE_sql_tds=OFF # currently a no-op in CMakeLists.txt
 	)
+
+	if use amd64 || use x86; then
+		# see #913400 for explanations
+		mycmakeargs+=( -DTEST_x86intrin=ON )
+
+		local cpufeats=(
+			# list of checked cpu features in configure.cmake
+			avx avx2 avx512{bw,cd,dq,er,f,ifma,pf,vbmi,vbmi2,vl}
+			f16c rdrnd rdseed sse2 sse3 sse4_1 sse4_2 ssse3 vaes
+		)
+		# handle odd ones out not matching -m* and macros (keep same order)
+		local cpuflags=( "${cpufeats[@]}" aes sha )
+		local cpufeats+=( aesni shani )
+
+		local -a intrins
+		IFS=' ' read -ra intrins < <(
+			: "$(test-flags-CXX "${cpuflags[@]/#/-m}")"
+			$(tc-getCXX) -E -P ${_} ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 1
+				#if defined(__GNUC__) && (defined(__x86_64__) || defined(__i386__))
+				#include <x86intrin.h>
+				#endif
+				$(printf '__%s__ ' "${cpuflags[@]^^}")
+			EOF
+			assert
+		)
+
+		local -i i
+		for ((i=0; i<${#cpufeats[@]}; i++)); do
+			[[ ${intrins[i]} == __* ]] &&
+				mycmakeargs+=( -DQT_FEATURE_${cpufeats[i]}=OFF )
+		done
+	fi
 
 	qt6-build_src_configure
 }
