@@ -9,7 +9,7 @@ particularly required. The only known consumer at the moment is hplip.
  #ifdef HAVE_SYSTEMD
  #include <systemd/sd-login.h>
  #endif
-+#if HAVE_ELOGIND
++#ifdef HAVE_ELOGIND
 +#include <elogind/sd-login.h>
 +#endif
  
@@ -40,7 +40,7 @@ particularly required. The only known consumer at the moment is hplip.
      endif
  endif
  
-+elogind = dependency('elogind', version: '>=209', required: get_option('elogind'))
++elogind = dependency('libelogind', version: '>=209', required: get_option('elogind'))
 +use_elogind = elogind.found()
 +config.set('HAVE_ELOGIND', use_elogind)
 +
