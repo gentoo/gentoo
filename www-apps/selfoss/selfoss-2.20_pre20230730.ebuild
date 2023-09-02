@@ -11,7 +11,7 @@ SRC_URI="https://dl.cloudsmith.io/public/fossar/${PN}-git/raw/names/${PN}.zip/ve
 S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~arm arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~x86"
 
 BDEPEND="app-arch/unzip"
 RDEPEND="
