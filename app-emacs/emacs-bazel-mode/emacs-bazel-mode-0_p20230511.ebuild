@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/bazelbuild/${PN}/archive/${COMMIT}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="Apache-2.0"
