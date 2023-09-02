@@ -19,8 +19,8 @@ else
 	#printf -v DOC_PV "%u%02u%02u00" $(ver_rs 1-3 " ")
 
 	SRC_URI="
-		https://sqlite.org/2022/${PN}-src-${SRC_PV}.zip
-		doc? ( https://sqlite.org/2022/${PN}-doc-${DOC_PV}.zip )
+		https://sqlite.org/2023/${PN}-src-${SRC_PV}.zip
+		doc? ( https://sqlite.org/2023/${PN}-doc-${DOC_PV}.zip )
 	"
 	S="${WORKDIR}/${PN}-src-${SRC_PV}"
 
@@ -362,7 +362,7 @@ multilib_src_test() {
 	local SANDBOX_PREDICT=${SANDBOX_PREDICT}
 	addpredict "/test.db:/ÿ.db"
 
-	emake HAVE_TCL="$(usex tcl 1 "")" $(usex debug 'fulltest' 'test')
+	emake -Onone HAVE_TCL="$(usex tcl 1 "")" $(usex debug 'fulltest' 'test')
 }
 
 multilib_src_install() {
