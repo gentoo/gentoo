@@ -34,7 +34,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/pugixml
 	>=media-libs/openexr-3:0=
-	>=media-libs/openimageio-2.3.12.0:=
+	>=media-libs/OpenImageIO-2.3.12.0:=
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	sys-libs/zlib:=
 	python? (

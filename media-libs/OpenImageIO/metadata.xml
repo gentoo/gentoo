@@ -15,6 +15,6 @@
 		<flag name="tools">Build the command-line tools</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">OpenImageIO/oiio</remote-id>
+		<remote-id type="github">AcademySoftwareFoundation/OpenImageIO</remote-id>
 	</upstream>
 </pkgmetadata>

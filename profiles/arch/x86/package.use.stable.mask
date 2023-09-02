@@ -33,7 +33,7 @@ kde-plasma/plasma-workspace gps
 media-gfx/graphviz gts
 media-libs/libpano13 suitesparse
 media-libs/opencv gdal lapack
-media-libs/openimageio dicom
+media-libs/OpenImageIO dicom
 sci-libs/cholmod partition
 sci-libs/gdal armadillo fits geos hdf5 netcdf ogdi
 sci-libs/gsl cblas-external
