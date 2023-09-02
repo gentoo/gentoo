@@ -3,11 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit python-any-r1 meson cmake flag-o-matic
 
-SDP="systemd-stable-252.6"
-MUSL_PATCHSET="systemd-musl-patches-252.4"
+SDP="systemd-stable-253.7"
+MUSL_PATCHSET="systemd-musl-patches-253.3"
 
 DESCRIPTION="High-level C++ D-Bus library"
 HOMEPAGE="https://github.com/Kistler-Group/sdbus-cpp"
