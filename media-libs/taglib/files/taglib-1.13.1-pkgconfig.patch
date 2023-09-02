@@ -1,0 +1,42 @@
+From b5d07842d27e61d01c7f2cd0e0c61bc354ebf618 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 2 Sep 2023 19:53:13 +0200
+Subject: [PATCH] Revert pkgconfig file path mangling
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ bindings/c/taglib_c.pc.cmake | 4 ++--
+ taglib.pc.cmake              | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/bindings/c/taglib_c.pc.cmake b/bindings/c/taglib_c.pc.cmake
+index 178f1e50..7918d558 100644
+--- a/bindings/c/taglib_c.pc.cmake
++++ b/bindings/c/taglib_c.pc.cmake
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ Name: TagLib C Bindings
+ Description: Audio meta-data library (C bindings)
+diff --git a/taglib.pc.cmake b/taglib.pc.cmake
+index 3800f078..575cb310 100644
+--- a/taglib.pc.cmake
++++ b/taglib.pc.cmake
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ Name: TagLib
+ Description: Audio meta-data library
+-- 
+2.42.0
+
