@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/emacs-dashboard/emacs-${PN}/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}"/emacs-${PN}-${PV}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 LICENSE="GPL-3+"
