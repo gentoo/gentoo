@@ -14,10 +14,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 RDEPEND="!<media-libs/alsa-lib-1.2.1"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-sof-essx8336.patch
-)
-
 src_install() {
 	insinto /usr/share/alsa
 	doins -r ucm{,2}
