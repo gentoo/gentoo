@@ -184,6 +184,10 @@ src_prepare() {
 		rm ${VIVALDI_HOME}/libqt5_shim.so || die
 	fi
 
+	if ! false; then # use qt6; then (TODO)
+		rm ${VIVALDI_HOME}/libqt6_shim.so || die
+	fi
+
 	eapply_user
 }
 
