@@ -170,10 +170,6 @@ src_configure() {
 	cargo_src_configure
 }
 
-src_compile() {
-	emake V= STRIP=true
-}
-
 src_install() {
 	emake V= DESTDIR="${D}" DATADIR="${ED}/usr/share" STRIP=true install
 }
