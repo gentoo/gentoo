@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit bash-completion-r1 toolchain-funcs
 
 MY_P=${P/-/_}
 DESCRIPTION="Improved Whois Client"
@@ -73,7 +73,7 @@ src_compile() {
 }
 
 src_install() {
-	emake BASEDIR="${ED}" prefix=/usr install
+	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" BASHCOMPDIR="$(get_bashcompdir)" install
 
 	insinto /etc
 	doins whois.conf
