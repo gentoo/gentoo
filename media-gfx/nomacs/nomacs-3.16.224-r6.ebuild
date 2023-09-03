@@ -16,7 +16,7 @@ CMAKE_USE_DIR="${S}/ImageLounge"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86 ~amd64-linux"
-IUSE="+jpeg +opencv plugins raw +tiff zip"
+IUSE="+opencv plugins raw +tiff zip"
 
 REQUIRED_USE="
 	raw? ( opencv )
@@ -26,7 +26,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[jpeg?]
+	dev-qt/qtgui:5[jpeg]
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
