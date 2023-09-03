@@ -252,6 +252,7 @@ verify-sig_verify_unsigned_checksums() {
 
 	[[ ${checksum_file} == - ]] && checksum_file=/dev/stdin
 	local line checksum filename junk ret=0 count=0
+	local -A verified
 	while read -r line; do
 		if [[ ${line} == "-----BEGIN"* ]]; then
 			die "${FUNCNAME}: PGP armor found, use verify-sig_verify_signed_checksums instead"
@@ -278,7 +279,7 @@ verify-sig_verify_unsigned_checksums() {
 		fi
 
 		if "${algo,,}sum" -c --strict - <<<"${checksum} ${filename}"; then
-			(( count++ ))
+			verified["${filename}"]=1
 		else
 			ret=1
 		fi
@@ -286,7 +287,7 @@ verify-sig_verify_unsigned_checksums() {
 
 	[[ ${ret} -eq 0 ]] ||
 		die "${FUNCNAME}: at least one file did not verify successfully"
-	[[ ${count} -eq ${#files[@]} ]] ||
+	[[ ${#verified[@]} -eq ${#files[@]} ]] ||
 		die "${FUNCNAME}: checksums for some of the specified files were missing"
 }
 
