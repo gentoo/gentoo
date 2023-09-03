@@ -51,7 +51,7 @@ src_configure() {
 	local opt=(
 		--control=unix:/run/${PN}.sock
 		--log=/var/log/${PN}
-		--modules=$(get_libdir)/${PN}
+		--modules=/usr/$(get_libdir)/${PN}
 		--pid=/run/${PN}.pid
 		--prefix=/usr
 		--state=/var/lib/${PN}
