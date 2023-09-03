@@ -20,5 +20,5 @@ src_prepare() {
 
 src_install() {
 	default
-	rm "${ED}"/usr/lib*/*.la || die
+	rm -f "${ED}"/usr/lib*/*.la || die
 }
