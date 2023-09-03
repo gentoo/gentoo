@@ -14,11 +14,11 @@ fi
 IUSE="icu qml"
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[gui,icu=,network,xml]
+	~dev-qt/qtbase-${PV}:6[gui,icu=,network,xml]
 	icu? ( dev-libs/icu:= )
 	qml? (
-		=dev-qt/qtdeclarative-${PV}*:6
-		=dev-qt/qtshadertools-${PV}*:6
+		~dev-qt/qtdeclarative-${PV}:6
+		~dev-qt/qtshadertools-${PV}:6
 	)
 "
 DEPEND="${RDEPEND}"

@@ -20,10 +20,10 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[gui,network,opengl=,vulkan=,widgets]
+	~dev-qt/qtbase-${PV}:6[gui,network,opengl=,vulkan=,widgets]
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? (
-		=dev-qt/qtbase-${PV}*:6[X=]
+		~dev-qt/qtbase-${PV}:6[X=]
 		media-video/ffmpeg:=[vaapi?]
 		X? (
 			x11-libs/libX11
@@ -44,8 +44,8 @@ RDEPEND="
 	)
 	pulseaudio? ( media-libs/libpulse )
 	qml? (
-		=dev-qt/qtdeclarative-${PV}*:6
-		=dev-qt/qtquick3d-${PV}*:6
+		~dev-qt/qtdeclarative-${PV}:6
+		~dev-qt/qtquick3d-${PV}:6
 	)
 "
 DEPEND="
@@ -53,7 +53,7 @@ DEPEND="
 	X? ( x11-base/xorg-proto )
 	v4l? ( sys-kernel/linux-headers )
 "
-BDEPEND="=dev-qt/qtshadertools-${PV}*:6"
+BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 
 CMAKE_SKIP_TESTS=(
 	# tries to use real alsa or pulseaudio and fails in sandbox

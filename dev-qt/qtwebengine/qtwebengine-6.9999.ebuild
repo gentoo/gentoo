@@ -36,8 +36,8 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
-	=dev-qt/qtbase-${PV}*:6[X,gui,opengl=,vulkan?,widgets?]
-	=dev-qt/qtwebchannel-${PV}*:6[qml?]
+	~dev-qt/qtbase-${PV}:6[X,gui,opengl=,vulkan?,widgets?]
+	~dev-qt/qtwebchannel-${PV}:6[qml?]
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
@@ -63,11 +63,11 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/libxkbfile
 	alsa? ( media-libs/alsa-lib )
-	designer? ( =dev-qt/qttools-${PV}*:6[designer] )
-	geolocation? ( =dev-qt/qtpositioning-${PV}*:6 )
+	designer? ( ~dev-qt/qttools-${PV}:6[designer] )
+	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
 	kerberos? ( virtual/krb5 )
 	pulseaudio? ( media-libs/libpulse[glib] )
-	qml? ( =dev-qt/qtdeclarative-${PV}*:6 )
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 	screencast? (
 		dev-libs/glib:2
 		media-libs/mesa[gbm(+)]
@@ -75,7 +75,7 @@ RDEPEND="
 		x11-libs/libdrm
 	)
 	system-icu? ( dev-libs/icu:= )
-	widgets? ( =dev-qt/qtdeclarative-${PV}*:6[widgets] )
+	widgets? ( ~dev-qt/qtdeclarative-${PV}:6[widgets] )
 "
 DEPEND="
 	${RDEPEND}

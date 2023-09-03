@@ -30,8 +30,8 @@ RDEPEND="
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
 	dev-libs/re2:=
-	=dev-qt/qtdeclarative-${PV}*:6
-	=dev-qt/qtwebchannel-${PV}*:6
+	~dev-qt/qtdeclarative-${PV}:6
+	~dev-qt/qtwebchannel-${PV}:6
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
@@ -63,13 +63,13 @@ RDEPEND="
 	x11-libs/libxshmfence:=
 	x11-libs/libXtst
 	alsa? ( media-libs/alsa-lib )
-	geolocation? ( =dev-qt/qtpositioning-${PV}*:6 )
+	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
 	kerberos? ( virtual/krb5 )
 	pulseaudio? ( media-libs/libpulse:= )
 	screencast? ( media-video/pipewire:= )
 	system-icu? ( >=dev-libs/icu-69.1:= )
 	widgets? (
-		=dev-qt/qtbase-${PV}*:6[widgets]
+		~dev-qt/qtbase-${PV}:6[widgets]
 	)
 "
 DEPEND="

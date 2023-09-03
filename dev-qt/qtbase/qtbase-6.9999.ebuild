@@ -124,7 +124,7 @@ DEPEND="
 	)
 "
 BDEPEND="zstd? ( app-arch/libarchive[zstd] )" #910392
-PDEPEND="wayland? ( =dev-qt/qtwayland-${PV}*:6 )"
+PDEPEND="wayland? ( ~dev-qt/qtwayland-${PV}:6 )"
 
 src_prepare() {
 	qt6-build_src_prepare

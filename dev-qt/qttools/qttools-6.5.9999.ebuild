@@ -33,14 +33,14 @@ RESTRICT="test"
 
 LLVM_MAX_SLOT=17
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[network,widgets?]
-	assistant? ( =dev-qt/qtbase-${PV}*:6[sql,sqlite] )
+	~dev-qt/qtbase-${PV}:6[network,widgets?]
+	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
 	clang? ( <sys-devel/clang-$((LLVM_MAX_SLOT+1)):= )
-	designer? ( =dev-qt/qtbase-${PV}*:6[xml] )
-	qdbus? ( =dev-qt/qtbase-${PV}*:6[dbus,xml] )
-	qml? ( =dev-qt/qtdeclarative-${PV}*:6[widgets?] )
-	qtdiag? ( =dev-qt/qtbase-${PV}*:6[vulkan=] )
-	widgets? ( =dev-qt/qtbase-${PV}*:6[opengl=] )
+	designer? ( ~dev-qt/qtbase-${PV}:6[xml] )
+	qdbus? ( ~dev-qt/qtbase-${PV}:6[dbus,xml] )
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets?] )
+	qtdiag? ( ~dev-qt/qtbase-${PV}:6[vulkan=] )
+	widgets? ( ~dev-qt/qtbase-${PV}:6[opengl=] )
 "
 DEPEND="${RDEPEND}"
 

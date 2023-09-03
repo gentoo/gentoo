@@ -14,10 +14,10 @@ fi
 IUSE="geoclue +qml"
 
 DEPEND="
-	=dev-qt/qtbase-${PV}*:6[gui,widgets]
-	=dev-qt/qtserialport-${PV}*:6
-	geoclue? ( =dev-qt/qtbase-${PV}*:6[dbus] )
-	qml? ( =dev-qt/qtdeclarative-${PV}*:6 )
+	~dev-qt/qtbase-${PV}:6[gui,widgets]
+	~dev-qt/qtserialport-${PV}:6
+	geoclue? ( ~dev-qt/qtbase-${PV}:6[dbus] )
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 RDEPEND="
 	${DEPEND}

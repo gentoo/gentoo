@@ -14,10 +14,10 @@ elif [[ ${QT6_BUILD_TYPE} == live ]]; then
 fi
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[concurrent,network,widgets]
-	=dev-qt/qtdeclarative-${PV}*:6
-	=dev-qt/qtquicktimeline-${PV}*:6
-	=dev-qt/qtshadertools-${PV}*:6
+	~dev-qt/qtbase-${PV}:6[concurrent,network,widgets]
+	~dev-qt/qtdeclarative-${PV}:6
+	~dev-qt/qtquicktimeline-${PV}:6
+	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
 	sys-libs/zlib:=
 "

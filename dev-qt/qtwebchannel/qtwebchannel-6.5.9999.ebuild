@@ -14,8 +14,8 @@ fi
 IUSE="qml"
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[concurrent]
-	qml? ( =dev-qt/qtdeclarative-${PV}*:6 )
+	~dev-qt/qtbase-${PV}:6[concurrent]
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 DEPEND="${RDEPEND}"
 
