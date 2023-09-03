@@ -48,7 +48,10 @@ BDEPEND="
 
 DOCS=( src/changelog.txt )
 
-PATCHES=( "${FILESDIR}"/${P}-libdir.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-libdir.patch
+	"${FILESDIR}"/${P}-exiv2-0.28.patch # bug 906488
+)
 
 src_prepare() {
 	if use plugins ; then
