@@ -153,6 +153,8 @@ LICENSE="Apache-2.0 BSD GPL-3 MIT Unicode-DFS-2016"
 SLOT="0"
 IUSE="io-uring"
 
+PATCHES=( "${FILESDIR}/${PN}-1.0.6-build-with-cargo.patch" )
+
 # Rust
 QA_FLAGS_IGNORED="usr/sbin/pdata_tools"
 
@@ -171,5 +173,9 @@ src_configure() {
 }
 
 src_install() {
-	emake V= DESTDIR="${D}" DATADIR="${ED}/usr/share" STRIP=true install
+	emake \
+		DESTDIR="${D}" \
+		DATADIR="${ED}/usr/share" \
+		PDATA_TOOLS="target/$(usex debug debug release)/pdata_tools" \
+		install
 }
