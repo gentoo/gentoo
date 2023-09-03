@@ -62,4 +62,22 @@ EOF
 test_verify_unsigned_checksums sha256
 eoutdent
 
+einfo "Testing openssl-dgst format."
+eindent
+
+> "annoying ( filename )= yes ).txt" || die
+
+cat > checksums.txt <<-EOF || die
+	junk text that ought to be ignored
+
+	SHA256(empty)=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	SHA256(text)= b47cc0f104b62d4c7c30bcd68fd8e67613e287dc4ad8c310ef10cbadea9c4380
+	SHA256(fail)=b47cc0f104b62d4c7c30bcd68fd8e67613e287dc4ad8c310ef10cbadea9c4380
+
+	SHA256(annoying ( filename )= yes )= e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+EOF
+
+test_verify_unsigned_checksums openssl-dgst
+eoutdent
+
 texit
