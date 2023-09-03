@@ -127,10 +127,6 @@ dev-python/sphinx_ansible_theme
 # Removal on 2023-09-19.  Bug #880415.
 dev-python/nptyping
 
-# Sam James <sam@gentoo.org> (2023-08-19)
-# Still broken, unfortunately. See bug #911721.
-=dev-util/pkgconf-2*
-
 # Hans de Graaff <graaff@gentoo.org> (2023-08-19)
 # ruby30-only package without any reverse dependencies. Use
 # dev-ruby/psych if you want to safely load YAML files.
