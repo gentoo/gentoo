@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,8 +15,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="sys-libs/libcap-ng
-	sys-process/procps:="
+# <procps-4 for bug #913523
+DEPEND="
+	sys-libs/libcap-ng
+	<sys-process/procps-4:=
+"
 RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~KSM"
