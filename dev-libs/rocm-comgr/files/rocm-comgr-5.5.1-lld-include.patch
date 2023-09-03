@@ -1,0 +1,22 @@
+From 271fddf65f43675e675f0cb4e9aaa3d27d34c58a Mon Sep 17 00:00:00 2001
+From: Ron Lieberman <ron.lieberman@amd.com>
+Date: Thu, 29 Dec 2022 05:17:41 -0600
+Subject: [PATCH] [llvm merge] add include of lld/Common/CommonLinkerContext.h
+
+Change-Id: I5767b4c1e683e9df9146804ba23ef3c0c0b6c07a
+---
+ lib/comgr/src/comgr-compiler.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/comgr/src/comgr-compiler.cpp b/lib/comgr/src/comgr-compiler.cpp
+index 2a7362a..bb1c9d3 100644
+--- comgr/src/comgr-compiler.cpp
++++ comgr/src/comgr-compiler.cpp
+@@ -39,6 +39,7 @@
+ #include "comgr-compiler.h"
+ #include "comgr-device-libs.h"
+ #include "comgr-env.h"
++#include "lld/Common/CommonLinkerContext.h"
+ #include "lld/Common/Driver.h"
+ #include "clang/Basic/Version.h"
+ #include "clang/CodeGen/CodeGenAction.h"
