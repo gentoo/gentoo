@@ -14,7 +14,7 @@ fi
 IUSE="mng"
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[gui]
+	~dev-qt/qtbase-${PV}:6[gui]
 	media-libs/libwebp:=
 	media-libs/tiff:=
 	mng? ( media-libs/libmng:= )

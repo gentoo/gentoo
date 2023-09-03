@@ -124,7 +124,7 @@ DEPEND="
 	)
 "
 BDEPEND="zstd? ( app-arch/libarchive[zstd] )" #910392
-PDEPEND="wayland? ( =dev-qt/qtwayland-${PV}*:6 )"
+PDEPEND="wayland? ( ~dev-qt/qtwayland-${PV}:6 )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2023-38197.patch

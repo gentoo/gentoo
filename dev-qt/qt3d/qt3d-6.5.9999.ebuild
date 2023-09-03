@@ -14,10 +14,10 @@ fi
 IUSE="qml vulkan"
 
 RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[concurrent,gui,network,opengl,vulkan=,widgets]
-	=dev-qt/qtshadertools-${PV}*:6
+	~dev-qt/qtbase-${PV}:6[concurrent,gui,network,opengl,vulkan=,widgets]
+	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
-	qml? ( =dev-qt/qtdeclarative-${PV}*:6[widgets] )
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets] )
 "
 DEPEND="
 	${RDEPEND}

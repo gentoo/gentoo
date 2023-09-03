@@ -15,10 +15,10 @@ IUSE="qml vulkan"
 
 RDEPEND="
 	dev-libs/wayland
-	=dev-qt/qtbase-${PV}*:6[gui,opengl,vulkan=]
+	~dev-qt/qtbase-${PV}:6[gui,opengl,vulkan=]
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
-	qml? ( =dev-qt/qtdeclarative-${PV}*:6 )
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 DEPEND="
 	${RDEPEND}
