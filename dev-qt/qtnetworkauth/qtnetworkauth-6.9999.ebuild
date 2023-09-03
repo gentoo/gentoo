@@ -11,7 +11,5 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-RDEPEND="
-	=dev-qt/qtbase-${PV}*:6[network,widgets]
-"
+RDEPEND="=dev-qt/qtbase-${PV}*:6[network]"
 DEPEND="${RDEPEND}"
