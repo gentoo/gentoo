@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Florian Schmaus <flow@gentoo.org> (2023-09-03)
+# Became a leaf package after dev-erlang/riak_pb was removed (989c0f55e0).
+# Unmaintained in ::gentoo and upstream since multiple years. Alternative at
+# https://github.com/tomas-abrahamsson/gpb.
+# Two open bugs: #725584 and #793236.
+# Removal on 2023-10-03.
+dev-erlang/protobuffs
+
 # Sam James <sam@gentoo.org> (2023-08-30)
 # Used to be a dependency of dev-python/qiskit-terra but is now being phased
 # out. Fails to build with modern setuptools and >= Python 3.11. No upstream
