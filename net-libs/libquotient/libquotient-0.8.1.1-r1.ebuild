@@ -11,7 +11,7 @@ SRC_URI="https://github.com/quotient-im/libQuotient/archive/${PV}.tar.gz -> ${P}
 S="${WORKDIR}/libQuotient-${PV}"
 
 LICENSE="LGPL-2+"
-SLOT="0/$(ver_cut 1-2)"
+SLOT="0/${PV}" # FIXME: check soname on next version bump
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
