@@ -1,0 +1,47 @@
+https://codeberg.org/pf-kernel/uksmd/pulls/5
+
+From 0ed68078ed829ff03f95d01f0079485966e3c07a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 3 Sep 2023 07:21:56 +0100
+Subject: [PATCH] meson: add systemd option
+
+We may not always want to link against systemd even if installed - consider
+the case where a user is switching from systemd->another init system, systemd
+may still be installed temporarily but the user wants to rebuild without it.
+
+This perserves the default behaviour of using systemd if available.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ meson.build       | 2 +-
+ meson_options.txt | 6 ++++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+ create mode 100644 meson_options.txt
+
+diff --git a/meson.build b/meson.build
+index 7170db8..bf0b119 100644
+--- a/meson.build
++++ b/meson.build
+@@ -18,7 +18,7 @@ build_args = [
+   '-DPROJECT_VERSION="' + meson.project_version() + '"',
+ ]
+ 
+-systemd = dependency('systemd', required: false)
++systemd = dependency('systemd', required: get_option('systemd'))
+ 
+ if systemd.found()
+   systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir')
+diff --git a/meson_options.txt b/meson_options.txt
+new file mode 100644
+index 0000000..3a8cdd4
+--- /dev/null
++++ b/meson_options.txt
+@@ -0,0 +1,6 @@
++option(
++  'systemd',
++  type: 'feature',
++  value: 'auto',
++  description: 'sd-notify support via libsystemd and install systemd unit files'
++)
+-- 
+2.30.8
