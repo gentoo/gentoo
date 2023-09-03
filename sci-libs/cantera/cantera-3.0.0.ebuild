@@ -17,7 +17,7 @@ SRC_URI="https://github.com/Cantera/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="fortran lapack +python test"
+IUSE="fortran hdf5 lapack +python test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -34,6 +34,7 @@ RDEPEND="
 		')
 	)
 	dev-cpp/yaml-cpp
+	hdf5? ( sci-libs/HighFive )
 	!lapack? ( sci-libs/sundials:0= )
 	lapack? ( >=sci-libs/sundials-6.5.0:0=[lapack?] )
 "
@@ -93,11 +94,12 @@ src_configure() {
 		system_sundials="y"
 		system_eigen="y"
 		system_yamlcpp="y"
-		hdf_support="n"
+		hdf_support=$(usex hdf5 y n)
 		system_blas_lapack=$(usex lapack y n)
 		env_vars="all"
 		extra_inc_dirs="/usr/include/eigen3"
 	)
+	use hdf5 && scons_vars+=( system_highfive="y" )
 	use lapack && scons_vars+=( blas_lapack_libs="lapack,blas" )
 	use test || scons_vars+=( googletest="none" )
 
