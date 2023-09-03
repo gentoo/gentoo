@@ -30,10 +30,25 @@ DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	eapply ../debian/patches
+python_prepare_all() {
+	PATCHES=(
+		../debian/patches/0001-vtsite.py-use-debian-doc-and-icons-paths.patch
+		../debian/patches/0002-setup.py-no-icons-htmldocs-or-license.patch
+		../debian/patches/0004-tests-conftest.py-prepare-the-testfile-if-necessary.patch
+		../debian/patches/0005-Update-collection-path-for-Python-3.8.patch
+		../debian/patches/0006-Fix-version-information-display.patch
+		../debian/patches/0007-tests-migrate-from-nose-to-pytest.patch
+	)
+
+	distutils-r1_python_prepare_all
 	sed -e '/QtTest/d' -i tests/test_samples.py || die
-	default
+}
+
+python_install_all() {
+	insinto /usr/share/${PN}
+	doins -r vitables/icons
+	dodoc -r doc/*
+	distutils-r1_python_install_all
 }
 
 python_test() {
