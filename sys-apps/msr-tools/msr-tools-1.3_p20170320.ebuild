@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 src_prepare() {
 	default
