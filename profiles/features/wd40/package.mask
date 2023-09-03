@@ -85,11 +85,13 @@ dev-python/trio-websocket
 dev-python/twine
 dev-python/watchfiles
 dev-python/wcmatch
+dev-ruby/selenium-webdriver
 dev-util/buildbot-worker
 dev-util/cargo-c
 dev-util/cbindgen
 dev-util/git-delta
 dev-util/maturin
+dev-util/selenium-manager
 dev-util/tree-sitter-cli
 >=dev-vcs/stgit-2
 >=games-board/gnome-mahjongg-3.40.0

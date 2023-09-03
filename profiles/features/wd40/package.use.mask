@@ -1,6 +1,12 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hans de Graaff <graaff@gentoo.org> (2023-09-03)
+# selenium-webdriver is needed for these tests but that requires
+# selenium-manager which requires rust (#912999)
+dev-ruby/actionpack test
+dev-ruby/capybara test
+
 # Alfred Wingate <parona@protonmail.com> (2023-07-22)
 # SSO feature in ZeroTier requires rust.
 net-misc/zerotier sso
