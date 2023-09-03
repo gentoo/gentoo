@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KERNEL_EFI_ZBOOT=1
 KERNEL_IUSE_SECUREBOOT=1
 inherit kernel-install toolchain-funcs unpacker
 
