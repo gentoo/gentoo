@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Adel Kara Slimane</name>
+		<email>adel.ks@zegrapher.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">rncbc/qpwgraph</remote-id>
+		<bugs-to>https://gitlab.freedesktop.org/rncbc/qpwgraph/-/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="trayicon">Build support for tray icon</flag>
+	</use>
+</pkgmetadata>
