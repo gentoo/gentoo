@@ -12,9 +12,9 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	assistant clang designer distancefieldgenerator +linguist
-	opengl pixeltool qdbus qdoc qml qtattributionsscanner qtdiag
-	qtplugininfo vulkan +widgets
+	assistant clang designer distancefieldgenerator gles2-only
+	+linguist opengl pixeltool qdbus qdoc qml qtattributionsscanner
+	qtdiag qtplugininfo vulkan +widgets
 "
 # note that some tools do not *require* widgets but will skip a sub-tool
 # if not enabled (e.g. linguist gives lrelease but not the GUI linguist6)
@@ -39,7 +39,7 @@ RDEPEND="
 	designer? ( ~dev-qt/qtbase-${PV}:6[xml] )
 	qdbus? ( ~dev-qt/qtbase-${PV}:6[dbus,xml] )
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets?] )
-	qtdiag? ( ~dev-qt/qtbase-${PV}:6[vulkan=] )
+	qtdiag? ( ~dev-qt/qtbase-${PV}:6[gles2-only=,vulkan=] )
 	widgets? ( ~dev-qt/qtbase-${PV}:6[opengl=] )
 "
 DEPEND="${RDEPEND}"
