@@ -1,9 +1,8 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_IN_SOURCE_BUILD="YES_PLEASE_OMG"
 LUA_COMPAT=( lua5-{2,3} )
 LUA_REQ_USE="deprecated"
 
@@ -20,14 +19,13 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-CDEPEND="${LUA_DEPS}"
-DEPEND="${CDEPEND}
-	app-text/asciidoc
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+DEPEND="${LUA_DEPS}"
+RDEPEND="${LUA_DEPS}
 	net-misc/rsync"
 # Both lua and luac are invoked at build time
-BDEPEND="${CDEPEND}"
+BDEPEND="${LUA_DEPS}
+	app-text/asciidoc
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.3-cmake_lua_version.patch
