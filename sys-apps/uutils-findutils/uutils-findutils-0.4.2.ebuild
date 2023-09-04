@@ -192,8 +192,7 @@ LLVM_MAX_SLOT=15
 inherit cargo llvm
 
 DESCRIPTION="GNU findutils rewritten in Rust"
-# https://uutils.github.io/user/ doesn't yet mention findutils
-HOMEPAGE="https://github.com/uutils/findutils"
+HOMEPAGE="https://uutils.github.io/findutils/ https://github.com/uutils/findutils"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/uutils/findutils"
