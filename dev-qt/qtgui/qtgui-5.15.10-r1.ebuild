@@ -17,7 +17,7 @@ SLOT=5/${QT5_PV} # bug 707658
 IUSE="accessibility dbus egl eglfs evdev gles2-only ibus jpeg +libinput
 	linuxfb +png tslib tuio +udev vnc vulkan wayland +X"
 REQUIRED_USE="
-	|| ( eglfs linuxfb vnc X )
+	|| ( eglfs linuxfb vnc wayland X )
 	accessibility? ( dbus X )
 	eglfs? ( egl )
 	ibus? ( dbus )
