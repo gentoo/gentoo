@@ -21,9 +21,10 @@ KEYWORDS="~amd64"
 # defaults match what is provided with qtbase by default (except testlib),
 # reduces the need to set flags but does increase build time a fair amount
 IUSE="
-	+dbus debug qml designer examples gles2-only +gui help multimedia
-	+network opengl positioning +printsupport quick quick3d serialport
-	spatialaudio +sql +ssl svg testlib webchannel websockets +widgets +xml
+	bluetooth +dbus debug designer examples gles2-only +gui help
+	multimedia +network nfc opengl positioning +printsupport qml
+	quick quick3d serialport sensors spatialaudio speech +sql +ssl
+	svg testlib webchannel websockets +widgets +xml
 "
 # see `grep -r "%Import " sip` and `grep qmake_QT project.py`
 REQUIRED_USE="
@@ -47,6 +48,7 @@ REQUIRED_USE="
 # can use parts of the Qt private api and "sometimes" needs rebuilds wrt :=
 DEPEND="
 	>=dev-qt/qtbase-${QT_PV}=[dbus?,gles2-only=,gui?,network?,opengl?,sql?,ssl=,widgets?,xml?]
+	bluetooth? ( >=dev-qt/qtconnectivity-${QT_PV}[bluetooth] )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		sys-apps/dbus
@@ -54,11 +56,16 @@ DEPEND="
 	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
 	help? ( >=dev-qt/qttools-${QT_PV}[assistant] )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV} )
-	opengl? ( gles2-only? ( media-libs/libglvnd ) )
+	nfc? ( >=dev-qt/qtconnectivity-${QT_PV}[nfc] )
+	opengl? (
+		gles2-only? ( media-libs/libglvnd )
+	)
 	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
 	qml? ( >=dev-qt/qtdeclarative-${QT_PV} )
 	quick3d? ( >=dev-qt/qtquick3d-${QT_PV} )
+	sensors? ( >=dev-qt/qtsensors-${QT_PV} )
 	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
+	speech? ( >=dev-qt/qtspeech-${QT_PV} )
 	svg? ( >=dev-qt/qtsvg-${QT_PV} )
 	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV} )
 	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
@@ -103,10 +110,9 @@ python_configure_all() {
 		--verbose
 		--confirm-license
 
-		# TODO: enable more as new qt6 packages get added
-		--disable=QAxContainer
-		--disable=QtBluetooth
 		--enable=QtCore
+
+		$(pyqt_use_enable bluetooth QtBluetooth)
 		$(pyqt_use_enable dbus QtDBus)
 		$(pyqt_use_enable designer QtDesigner)
 		$(pyqt_use_enable help QtHelp)
@@ -115,7 +121,7 @@ python_configure_all() {
 		$(pyqt_use_enable multimedia QtMultimedia \
 			$(usev widgets QtMultimediaWidgets))
 		$(pyqt_use_enable network QtNetwork)
-		--disable=QtNfc
+		$(pyqt_use_enable nfc QtNfc)
 		$(pyqt_use_enable opengl QtOpenGL \
 			$(usev widgets QtOpenGLWidgets))
 		--disable=QtPdf #+QtPdfWidgets (QtPdf is disabled in qtwebengine:6)
@@ -125,15 +131,15 @@ python_configure_all() {
 		$(pyqt_use_enable quick QtQuick \
 			$(usev widgets QtQuickWidgets))
 		$(pyqt_use_enable quick3d QtQuick3D)
-		--disable=QtRemoteObjects
-		--disable=QtSensors
+		--disable=QtRemoteObjects # not packaged
+		$(pyqt_use_enable sensors QtSensors)
 		$(pyqt_use_enable serialport QtSerialPort)
 		$(pyqt_use_enable spatialaudio QtSpatialAudio)
 		$(pyqt_use_enable sql QtSql)
 		$(pyqt_use_enable svg QtSvg \
 			$(usev widgets QtSvgWidgets))
 		$(pyqt_use_enable testlib QtTest)
-		--disable=QtTextToSpeech
+		$(pyqt_use_enable speech QtTextToSpeech)
 		$(pyqt_use_enable webchannel QtWebChannel)
 		$(pyqt_use_enable websockets QtWebSockets)
 		$(pyqt_use_enable widgets QtWidgets)
@@ -152,7 +158,9 @@ python_configure_all() {
 		$(usev !opengl --disabled-feature=PyQt_OpenGL)
 		$(usev !ssl --disabled-feature=PyQt_SSL)
 
-		--disabled-feature=PyQt_Permissions # disabled in qtbase on this target
+		# intended for Windows / Android or others
+		--disable=QAxContainer
+		--disabled-feature=PyQt_Permissions
 	)
 }
 
