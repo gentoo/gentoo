@@ -24,6 +24,10 @@ CMAKE_SKIP_TESTS=(
 	tst_declarative_ui
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-missing-memory.patch
+)
+
 src_install() {
 	qt6-build_src_install
 
