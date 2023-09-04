@@ -59,7 +59,7 @@ RDEPEND="
 	cameras_st2205? ( >=media-libs/gd-2.0.35-r4:=[${MULTILIB_USEDEP}] )
 	exif? ( >=media-libs/libexif-0.6.21-r1[${MULTILIB_USEDEP}] )
 	gd? ( >=media-libs/gd-2.0.35-r4:=[jpeg=,${MULTILIB_USEDEP}] )
-	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	serial? ( >=dev-libs/lockdev-1.0.3.1.2-r2[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
