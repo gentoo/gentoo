@@ -1,14 +1,14 @@
 # Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools bash-completion-r1 flag-o-matic go-module linux-info readme.gentoo-r1 systemd tmpfiles xdg-utils
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
 
-SRC_URI="https://github.com/snapcore/snapd/releases/download/${PV}/snapd_${PV}.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://github.com/snapcore/snapd/releases/download/${PV}/snapd_${PV}.vendor.tar.xz -> ${P}.tar.xz"
 MY_PV=${PV}
 KEYWORDS="~amd64"
 
