@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 DESCRIPTION="Init script to setup Amazon EC2 instance parameters"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI=""
+S="${WORKDIR}"
 
 # Amazon only provides x86 and amd64 Linux Xen guests, possibly FreeBSD,
 # so just don't go adding further keywords.
@@ -13,13 +13,8 @@ KEYWORDS="-* ~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 RDEPEND="net-misc/wget"
-DEPEND=""
-
-# EAPI 4+ requires $S to be set
-S="${WORKDIR}"
 
 src_install() {
 	newinitd "${FILESDIR}/amazon-ec2.init" amazon-ec2
