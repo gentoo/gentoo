@@ -13,10 +13,10 @@ elif [[ ${QT6_BUILD_TYPE} == live ]]; then
 	EGIT_SUBMODULES=() # skip qtquick3d-assimp
 fi
 
-IUSE="qml vulkan"
+IUSE="gles2-only qml vulkan"
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[concurrent,gui,network,opengl,vulkan=,widgets]
+	~dev-qt/qtbase-${PV}:6[concurrent,gles2-only=,gui,network,opengl,vulkan=,widgets]
 	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets] )
