@@ -1,14 +1,15 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit xdg cmake
+inherit cmake xdg
 
 DESCRIPTION="Front end to cryptsetup"
 HOMEPAGE="https://mhogomchungu.github.io/zuluCrypt/"
 EGIT_COMMIT="76637bb05af13744bf1734b56f67d6d5cc2343b1"
 SRC_URI="https://github.com/mhogomchungu/zuluCrypt/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/zuluCrypt-${EGIT_COMMIT}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -31,8 +32,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	udev? ( virtual/udev )"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/zuluCrypt-${EGIT_COMMIT}"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
