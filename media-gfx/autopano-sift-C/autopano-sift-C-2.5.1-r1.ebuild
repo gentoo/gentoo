@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
 DESCRIPTION="SIFT algorithm for automatic panorama creation in C"
-HOMEPAGE="http://hugin.sourceforge.net/ http://user.cs.tu-berlin.de/~nowozin/autopano-sift/"
+HOMEPAGE="https://hugin.sourceforge.net/ http://user.cs.tu-berlin.de/~nowozin/autopano-sift/"
 SRC_URI="mirror://sourceforge/hugin/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -20,7 +20,8 @@ DEPEND="
 	media-libs/libpano13:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	sys-libs/zlib"
+	sys-libs/zlib
+"
 RDEPEND="${DEPEND}
 	!media-gfx/autopano-sift
 "
