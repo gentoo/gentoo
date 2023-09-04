@@ -286,7 +286,7 @@ CRATES="
 inherit cargo
 
 DESCRIPTION="GNU coreutils rewritten in Rust"
-HOMEPAGE="https://uutils.github.io/user/"
+HOMEPAGE="https://uutils.github.io/coreutils/ https://github.com/uutils/coreutils"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/uutils/coreutils"
