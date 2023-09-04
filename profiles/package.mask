@@ -406,6 +406,7 @@ acct-group/spi
 >=gnome-base/gnome-shell-45_alpha
 >=gnome-base/gsettings-desktop-schemas-45_alpha
 >=gnome-base/nautilus-45_alpha
+>=gnome-extra/gnome-boxes-45_alpha
 >=gnome-extra/gnome-calculator-45_alpha
 >=gnome-extra/gnome-calendar-45_alpha
 >=gnome-extra/gnome-characters-45_alpha
