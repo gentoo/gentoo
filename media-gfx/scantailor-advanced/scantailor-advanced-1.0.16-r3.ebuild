@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake virtualx xdg
 
@@ -14,9 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
-BDEPEND="
-	dev-qt/linguist-tools:5
-"
 COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -34,6 +31,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	dev-qt/qtsvg:5
 "
+BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-tests.patch # bug 662004
@@ -41,10 +39,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-desktopfile.patch
 	"${FILESDIR}"/${P}-bogus-dep.patch
 )
-
-src_prepare() {
-	cmake_src_prepare
-}
 
 src_test() {
 	cd "${CMAKE_BUILD_DIR}" || die
