@@ -1,22 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Serves as the client interface to the Elastic Load Balancing web service"
-HOMEPAGE="http://aws.amazon.com/developertools/Amazon-EC2/2536"
+HOMEPAGE="https://aws.amazon.com/developertools/Amazon-EC2/2536"
 SRC_URI="mirror://sabayon/${CATEGORY}/ElasticLoadBalancing-${PV}.zip"
+S="${WORKDIR}/ElasticLoadBalancing-${PV}"
 
 LICENSE="Amazon"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
 RESTRICT="mirror"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND="virtual/jre"
-
-S="${WORKDIR}/ElasticLoadBalancing-${PV}"
 
 src_prepare() {
 	default
