@@ -411,8 +411,12 @@ src_prepare() {
 	distutils-r1_src_prepare
 
 	if use test; then
-		# used to prevent use of network during tests
+		# used to prevent use of network during tests, and silence pip
+		# if it finds unrelated issues with system packages (bug #913613)
 		cat > "${T}"/pip.conf <<-EOF || die
+			[global]
+			quiet = 2
+
 			[install]
 			no-index = yes
 			no-dependencies = yes
