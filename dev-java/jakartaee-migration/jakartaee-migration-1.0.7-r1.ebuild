@@ -36,7 +36,7 @@ CDEPEND="
 # test? junit:junit:4.13.2 -> >=dev-java/junit-4.13.2:4
 
 DEPEND="
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	${CDEPEND}
 "
 
