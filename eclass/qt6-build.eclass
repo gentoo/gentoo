@@ -30,41 +30,39 @@ inherit cmake flag-o-matic toolchain-funcs
 # Used for SRC_URI and EGIT_REPO_URI.
 : "${QT6_MODULE:=${PN}}"
 
-case ${PV} in
-	6.9999)
-		# git dev branch
-		readonly QT6_BUILD_TYPE=live
-		EGIT_BRANCH=dev
-		;;
-	6.*.9999)
-		# git stable branch
-		readonly QT6_BUILD_TYPE=live
-		EGIT_BRANCH=${PV%.9999}
-		;;
-	*_alpha*|*_beta*|*_rc*)
-		# development release
-		readonly QT6_BUILD_TYPE=release
-		QT6_P=${QT6_MODULE}-everywhere-src-${PV/_/-}
-		SRC_URI="https://download.qt.io/development_releases/qt/${PV%.*}/${PV/_/-}/submodules/${QT6_P}.tar.xz"
-		S=${WORKDIR}/${QT6_P}
-		;;
-	*)
-		# official stable release
-		readonly QT6_BUILD_TYPE=release
-		QT6_P=${QT6_MODULE}-everywhere-src-${PV}
-		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${QT6_P}.tar.xz"
-		S=${WORKDIR}/${QT6_P}
-		;;
-esac
-unset QT6_P
+# @ECLASS_VARIABLE: QT6_BUILD_TYPE
+# @DESCRIPTION:
+# Read only variable set based on PV to one of:
+#  - release: official 6.x.x releases
+#  - pre-release: development 6.x.x_rc/beta/alpha releases
+#  - live: *.9999 (dev branch), 6.x.9999 (stable branch)
 
-if [[ ${QT6_BUILD_TYPE} == live ]]; then
+if [[ ${PV} == *.9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI=(
 		"https://code.qt.io/qt/${QT6_MODULE}.git"
 		"https://github.com/qt/${QT6_MODULE}.git"
 	)
+
+	QT6_BUILD_TYPE=live
+	EGIT_BRANCH=dev
+	[[ ${PV} == 6.*.9999 ]] && EGIT_BRANCH=${PV%.9999}
+else
+	QT6_BUILD_TYPE=release
+	_QT6_SRC=official
+
+	if [[ ${PV} == *_@(alpha|beta|rc)* ]]; then
+		QT6_BUILD_TYPE=pre-release
+		_QT6_SRC=development
+	fi
+
+	_QT6_P=${QT6_MODULE}-everywhere-src-${PV/_/-}
+	SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/submodules/${_QT6_P}.tar.xz"
+	S=${WORKDIR}/${_QT6_P}
+
+	unset _QT6_P _QT6_SRC
 fi
+readonly QT6_BUILD_TYPE
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
