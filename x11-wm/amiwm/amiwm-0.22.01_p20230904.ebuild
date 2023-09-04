@@ -1,13 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
-COMMIT="8b8c956a904fa73edb02d4dc6d45bc0358bff3b3"
+COMMIT="de6456b0aeca16243ed4c54fdc241be746274bcd"
 DESCRIPTION="Amiga Workbench inspired window manager for Xorg"
-HOMEPAGE="https://github.com/redsPL/amiwm"
+HOMEPAGE="https://github.com/sdomi/amiwm"
 SRC_URI="https://github.com/chewi/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="amiwm"
