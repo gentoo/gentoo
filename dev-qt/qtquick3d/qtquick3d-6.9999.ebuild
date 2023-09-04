@@ -13,8 +13,10 @@ elif [[ ${QT6_BUILD_TYPE} == live ]]; then
 	EGIT_SUBMODULES=() # skip qtquick3d-assimp
 fi
 
+IUSE="opengl vulkan"
+
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[concurrent,network,widgets]
+	~dev-qt/qtbase-${PV}:6[concurrent,network,opengl=,vulkan=,widgets]
 	~dev-qt/qtdeclarative-${PV}:6
 	~dev-qt/qtquicktimeline-${PV}:6
 	~dev-qt/qtshadertools-${PV}:6
