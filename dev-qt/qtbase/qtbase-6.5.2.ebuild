@@ -33,7 +33,7 @@ REQUIRED_USE+="
 	cups? ( gui widgets )
 	eglfs? ( egl )
 	gtk? ( widgets )
-	gui? ( || ( eglfs X ) || ( libinput X ) )
+	gui? ( || ( eglfs wayland X ) || ( libinput X ) )
 	libinput? ( udev )
 	sql? ( || ( freetds mysql oci8 odbc postgres sqlite ) )
 	vnc? ( gui )
