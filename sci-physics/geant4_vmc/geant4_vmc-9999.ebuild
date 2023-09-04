@@ -23,6 +23,7 @@ SLOT="4"
 IUSE="doc examples geant3 +g4root vgm test"
 
 RDEPEND="
+	sci-physics/clhep:=
 	sci-physics/geant:=[c++17,opengl,geant3?]
 	sci-physics/root:=[c++17,-vmc(-)]
 	sci-physics/vmc:=[c++17]
