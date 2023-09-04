@@ -116,10 +116,10 @@ src_install() {
 		postgres-multi_foreach emake DESTDIR="${D}" comments-install
 
 		docinto html
-		postgres-multi_forbest dodoc doc/html/{postgis.html,style.css}
+		postgres-multi_forbest dodoc doc/html/{postgis-en.html,style.css}
 
 		docinto html/images
-		postgres-multi_forbest dodoc doc/html/images/*
+		postgres-multi_forbest dodoc -r doc/html/images/*
 	fi
 
 	use static-libs || find "${ED}" -name '*.a' -delete
