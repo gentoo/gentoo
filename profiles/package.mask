@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-09-06)
+# dev-libs/sink is unmaintained upstream, in Gentoo, fails to build.
+# Masked for removal on 2023-10-06, together with mail-client/kube and
+# would-be orphan libraries. Bugs #907499, #904876, #872062, #856094
+net-libs/kdav2
+net-libs/kimap2
+dev-libs/kasync
+dev-libs/sink
+mail-client/kube
+
 # Hans de Graaff <graaff@gentoo.org> (2023-09-05)
 
 # Upstream snapshotm masked for testing. Some known defects, but it
