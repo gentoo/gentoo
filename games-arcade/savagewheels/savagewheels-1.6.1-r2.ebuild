@@ -1,15 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+GAMEDATA="${PN}-gamedata-1.4.0"
 inherit cmake
 
 DESCRIPTION="2D car crashing game similar to the old classic Destruction Derby"
 HOMEPAGE="https://github.com/kenamick/savagewheels"
-
-GAMEDATA="${PN}-gamedata-1.4.0"
-
 SRC_URI="
 	https://github.com/kenamick/savagewheels/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/kenamick/savagewheels/releases/download/v1.4/${PN}-gamedata.tar.gz -> ${GAMEDATA}.tar.gz
@@ -30,10 +28,8 @@ src_unpack() {
 	unpack ${P}.tar.gz
 
 	cp "${FILESDIR}/${PN}.in" "${S}" || die
-	mkdir "${WORKDIR}/${GAMEDATA}" ||
-		die "Failed to make directory: ${WORKDIR}/${GAMEDATA}"
-	cd "${WORKDIR}/${GAMEDATA}" ||
-		die "Unable to change into directory: ${WORKDIR}/${GAMEDATA}"
+	mkdir "${WORKDIR}/${GAMEDATA}" || die
+	cd "${WORKDIR}/${GAMEDATA}" || die
 	unpack "${GAMEDATA}.tar.gz"
 }
 
