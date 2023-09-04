@@ -1,32 +1,26 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="${PN}"-core
 MY_P="${MY_PN}"-"${PV}"
-
 inherit cmake
 
 DESCRIPTION="High-performance, full-featured text search engine based off of lucene in C++"
 HOMEPAGE="https://clucene.sourceforge.net"
 SRC_URI="mirror://sourceforge/clucene/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1 )"
 SLOT="1"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-
 IUSE="debug doc static-libs"
-
-BDEPEND="
-	doc? ( >=app-doc/doxygen-1.4.2 )
-"
-
 RESTRICT="test"
 
-DOCS=(AUTHORS ChangeLog README README.PACKAGE REQUESTS)
+BDEPEND="doc? ( >=app-doc/doxygen-1.4.2 )"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+DOCS=(AUTHORS ChangeLog README README.PACKAGE REQUESTS)
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-clang.patch"
@@ -57,7 +51,7 @@ src_configure() {
 		-DENABLE_PACKAGING=OFF
 		-DDISABLE_MULTITHREADING=OFF
 		-DBUILD_CONTRIBS_LIB=ON
-		"-DLIB_DESTINATION=${EPREFIX}/usr/$(get_libdir)"
+		-DLIB_DESTINATION="${EPREFIX}/usr/$(get_libdir)"
 		-DENABLE_DEBUG=$(usex debug)
 		-DENABLE_CLDOCS=$(usex doc)
 		-DBUILD_STATIC_LIBRARIES=$(usex static-libs)
