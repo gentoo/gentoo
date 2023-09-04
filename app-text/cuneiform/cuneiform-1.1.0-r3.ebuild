@@ -1,16 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake flag-o-matic
 
 PV_MAJ=$(ver_cut 1-2)
 MY_P=${PN}-linux-${PV}
 
-DESCRIPTION="An enterprise quality OCR engine by Cognitive Technologies"
+DESCRIPTION="Enterprise quality OCR engine by Cognitive Technologies"
 HOMEPAGE="https://launchpad.net/cuneiform-linux"
 SRC_URI="https://launchpad.net/${PN}-linux/${PV_MAJ}/${PV_MAJ}/+download/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,8 +22,6 @@ RDEPEND="
 	!graphicsmagick? ( media-gfx/imagemagick:= )
 	graphicsmagick? ( media-gfx/graphicsmagick:= )"
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	# From Fedora
