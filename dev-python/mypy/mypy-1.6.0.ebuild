@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
@@ -22,6 +23,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="+native-extensions"
 
 # stubgen collides with this package: https://bugs.gentoo.org/585594
 RDEPEND="
@@ -34,6 +36,10 @@ RDEPEND="
 	' 3.{9..10})
 "
 BDEPEND="
+	native-extensions? (
+		dev-python/types-psutil[${PYTHON_USEDEP}]
+		dev-python/types-setuptools[${PYTHON_USEDEP}]
+	)
 	test? (
 		>=dev-python/attrs-18.0[${PYTHON_USEDEP}]
 		>=dev-python/filelock-3.3.0[${PYTHON_USEDEP}]
@@ -45,8 +51,15 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-# this requires packaging a lot of type stubs
-export MYPY_USE_MYPYC=0
+# frustratingly, mypyc produces non-deterministic output. If ccache is enabled it will be a waste of time,
+# but simultaneously it might trash your system and fill up the cache with a giant wave of non-reproducible
+# test files
+export CCACHE_DISABLE=1
+
+src_compile() {
+	local -x MYPY_USE_MYPYC=$(usex native-extensions 1 0)
+	distutils-r1_src_compile
+}
 
 python_test() {
 	local EPYTEST_DESELECT=(
@@ -56,5 +69,17 @@ python_test() {
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
 	# fail with high COLUMNS values
 	local -x COLUMNS=80
+
+	# The tests depend on having in-source compiled extensions if you want to
+	# test those compiled extensions. Various crucial test dependencies aren't
+	# installed. Even pyproject.toml is needed because that's where pytest args
+	# are in. Hack them into the build directory and delete them afterwards.
+	# See: https://github.com/python/mypy/issues/16143
+	local -x MYPY_TEST_PREFIX="${S}"
+	cd "${BUILD_DIR}"/build/lib.*/ || die
+	cp -r "${S}"/conftest.py ${S}/pyproject.toml . || die
+
 	epytest -n "$(makeopts_jobs)" --dist=worksteal
+
+	rm conftest.py pyproject.toml || die
 }
