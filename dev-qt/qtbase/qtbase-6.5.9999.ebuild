@@ -185,6 +185,7 @@ src_configure() {
 		$(qt_feature evdev)
 		$(qt_feature evdev mtdev)
 		$(qt_feature gles2-only opengles2)
+		$(usev !opengl -DINPUT_opengl=no) #913691
 		$(qt_feature libinput)
 		$(qt_feature opengl)
 		$(qt_feature tslib)

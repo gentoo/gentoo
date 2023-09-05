@@ -192,6 +192,7 @@ src_configure() {
 		$(qt_feature gles2-only opengles2)
 		$(qt_feature libinput)
 		$(qt_feature opengl)
+		$(usev !opengl -DINPUT_opengl=no) #913691
 		$(qt_feature tslib)
 		$(qt_feature vulkan)
 		$(qt_feature widgets)
