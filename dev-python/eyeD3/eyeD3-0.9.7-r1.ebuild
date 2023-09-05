@@ -58,6 +58,8 @@ src_prepare() {
 
 	# don't install everything to site-packages
 	sed -i -e '/^include = /,/\]/d' pyproject.toml || die
+	# optional without putting it in extra group == non-optional, sigh
+	sed -i -e '/coverage/d' pyproject.toml || die
 
 	distutils-r1_src_prepare
 }
