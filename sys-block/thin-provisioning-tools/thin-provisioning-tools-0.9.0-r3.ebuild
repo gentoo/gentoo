@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/0.9.0-remove-boost_iostreams.patch
 	"${FILESDIR}"/${PN}-0.9.0-metadata_checker-Rename-function-to-reflect-command-.patch
 	"${FILESDIR}"/${PN}-0.9.0-thin_check-Allow-using-clear-needs-check-and-skip-ma.patch
+	"${FILESDIR}"/${PN}-0.9.0-boost-gtest.patch
 )
 
 src_prepare() {
