@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Code shared by the MaxMind DB reader and writer modules"
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
