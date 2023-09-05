@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Base for all cron ebuilds"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Cron"
 S="${WORKDIR}"
 
 LICENSE="GPL-2"
@@ -26,4 +26,13 @@ src_install() {
 	keepdir /var/spool/cron/lastrun
 	diropts -m0750 -o root -g cron
 	keepdir /var/spool/cron
+}
+
+pkg_postinst() {
+	einfo "To add a user to the cron group so it can create cron jobs, run:"
+	einfo
+	einfo "    usermod -a -G cron <user>"
+	einfo
+	einfo "For more information, visit the wiki page:                      "
+	einfo "https://wiki.gentoo.org/wiki/Cron                               "
 }
