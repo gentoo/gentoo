@@ -119,7 +119,7 @@ qt6-build_src_prepare() {
 	#
 	# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
 	# still assumed to be generally unsafe either way in current state.
-	filter-lto
+	in_iuse custom-cflags && use custom-cflags || filter-lto
 }
 
 # @FUNCTION: qt6-build_src_configure
