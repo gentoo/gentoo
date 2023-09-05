@@ -378,7 +378,7 @@ llvm.org_src_unpack() {
 		local IFS='|'
 		grep -E -r -L "^Gentoo-Component:.*(${components[*]})" \
 			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}" |
-			xargs rm
+			xargs -r rm
 		local status=( "${PIPESTATUS[@]}" )
 		[[ ${status[1]} -ne 0 ]] && die "rm failed"
 		[[ ${status[0]} -ne 0 ]] &&
