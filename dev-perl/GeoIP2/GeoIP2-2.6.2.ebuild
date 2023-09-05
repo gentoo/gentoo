@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="API for MaxMind's GeoIP2 web services and databases"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~loong ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
