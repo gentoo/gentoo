@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,11 +9,11 @@ PHP_EXT_NEEDED_USE="session(-)?"
 DOCS=( README example.php )
 HTML_DOCS=( memcache.php )
 
-USE_PHP="php7-3 php7-4 php8-0 php8-1"
+USE_PHP="php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
-USE_PHP="php7-3 php7-4"
+USE_PHP="php7-4"
 
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 
@@ -22,7 +22,7 @@ LICENSE="PHP-3"
 SLOT="7"
 IUSE="+session"
 
-DEPEND="php_targets_php7-3? ( sys-libs/zlib ) php_targets_php7-4? ( sys-libs/zlib )"
+DEPEND="php_targets_php7-4? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
 	php_targets_php8-0? ( dev-php/pecl-memcache:8[php_targets_php8-0(-)?] )
 	php_targets_php8-1? ( dev-php/pecl-memcache:8[php_targets_php8-1(-)?] )
@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}
 RESTRICT='test'
 
 src_prepare() {
-	if use php_targets_php7-3 || use php_targets_php7-4 ; then
+	if use php_targets_php7-4 ; then
 		php-ext-source-r3_src_prepare
 	else
 		default
@@ -40,14 +40,14 @@ src_prepare() {
 }
 
 src_configure() {
-	if use php_targets_php7-3 || use php_targets_php7-4 ; then
+	if use php_targets_php7-4 ; then
 		local PHP_EXT_ECONF_ARGS=( --enable-memcache --with-zlib-dir="${EPREFIX}/usr" $(use_enable session memcache-session) )
 		php-ext-source-r3_src_configure
 	fi
 }
 
 src_install() {
-	if use php_targets_php7-3 || use php_targets_php7-4 ; then
+	if use php_targets_php7-4 ; then
 		php-ext-pecl-r3_src_install
 
 		php-ext-source-r3_addtoinifiles "memcache.allow_failover" "true"

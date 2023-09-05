@@ -11,7 +11,6 @@ ruby_targets_ruby30
 
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
 # PHP 7.x is end-of-life. Please upgrade to a newer slot.
-php_targets_php7-3
 php_targets_php7-4
 
 # Hans de Graaff <graaff@gentoo.org> (2023-04-10)
@@ -36,11 +35,6 @@ sysprof
 # Please speak to <toolchain@gentoo.org> and/or <qa@gentoo.org> before dropping.
 # See e.g. bug #753323, bug #822690.
 pch
-
-# Brian Evans <grknight@gentoo.org> (2021-01-07)
-# PHP 7.2 is security vulnerable and end-of-life
-# Please upgrade to a newer slot
-php_targets_php7-2
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # app-office/texmacs is package.mask'd. Bug #436400
