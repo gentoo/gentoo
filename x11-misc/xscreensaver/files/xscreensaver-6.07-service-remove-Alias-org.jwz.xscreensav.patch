@@ -1,0 +1,13 @@
+$ systemctl --user enable xscreensaver
+Failed to enable unit: Cannot alias xscreensaver.service as org.jwz.xscreensaver.
+
+# Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/driver/xscreensaver.service.in
++++ b/driver/xscreensaver.service.in
+@@ -14,5 +14,4 @@ Restart=on-failure
+ OOMScoreAdjust=-1000
+ 
+ [Install]
+-Alias=org.jwz.xscreensaver.service
+ WantedBy=graphical-session.target
