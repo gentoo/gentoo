@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Read MaxMind DB files and look up IP addresses"
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
