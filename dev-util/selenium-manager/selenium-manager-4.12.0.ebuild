@@ -285,12 +285,13 @@ src_prepare() {
 	default
 
 	# Avoid tests requiring a network
-	rm -f tests/{chrome_download,grid}_tests.rs || die
+	rm -f tests/{browser_download,chrome_download,grid}_tests.rs || die
 
 	# Avoid tests requiring a specific browser to be installed to keep
 	# the dependency tree manageable.
 	rm -f tests/{cli,iexplorer,output,safari,stable_browser}_tests.rs || die
-	sed -i -e '/case.*\(chrome\|edge\|iexplorer\)/ s:^://:' tests/exec_driver_tests.rs || die
+	sed -i -e '/case.*\(chrome\|edge\|iexplorer\)/ s:^://:' tests/{browser,exec_driver}_tests.rs || die
+	sed -i -e '/browser_version_test/,/^}/ s:^://:' tests/browser_tests.rs || die
 }
 
 src_install() {
