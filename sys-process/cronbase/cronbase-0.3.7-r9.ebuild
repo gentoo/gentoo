@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,4 @@ src_install() {
 	keepdir /etc/cron.{hourly,daily,weekly,monthly}
 
 	keepdir /var/spool/cron/lastrun
-	diropts -m0750 -o root -g cron
-	keepdir /var/spool/cron
 }
