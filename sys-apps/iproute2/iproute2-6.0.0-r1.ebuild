@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,8 +19,6 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iproute2"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="atm berkdb bpf caps elf +iptables minimal nfs selinux split-usr"
-# Needs root
-RESTRICT="test"
 
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
@@ -49,8 +47,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch # bug #291907
-	"${FILESDIR}"/${PN}-5.12.0-configure-nomagic-nolibbsd.patch # bug #643722 & 911727
+	"${FILESDIR}"/${PN}-5.12.0-configure-nomagic-nolibbsd.patch # bug #643722 & #911727
 	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
+	"${FILESDIR}"/${PN}-default-color-auto.patch
 	"${FILESDIR}"/${PN}-6.4.0-disable-libbsd-fallback.patch # bug #911727
 )
 
@@ -160,10 +159,6 @@ src_configure() {
 
 src_compile() {
 	emake V=1 NETNS_RUN_DIR=/run/netns
-}
-
-src_test() {
-	emake check
 }
 
 src_install() {

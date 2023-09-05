@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+    KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="kernel routing and traffic control utilities"
@@ -19,8 +19,6 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iproute2"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="atm berkdb bpf caps elf +iptables minimal nfs selinux split-usr"
-# Needs root
-RESTRICT="test"
 
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
@@ -49,8 +47,10 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch # bug #291907
-	"${FILESDIR}"/${PN}-5.12.0-configure-nomagic-nolibbsd.patch # bug #643722 & 911727
+	"${FILESDIR}"/${PN}-5.12.0-configure-nomagic-nolibbsd.patch # bug #643722 & #911727
 	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
+	"${FILESDIR}"/${PN}-default-color-auto.patch
+	"${FILESDIR}"/${PN}-6.1.0-strncpy-overlap.patch
 	"${FILESDIR}"/${PN}-6.4.0-disable-libbsd-fallback.patch # bug #911727
 )
 
@@ -160,10 +160,6 @@ src_configure() {
 
 src_compile() {
 	emake V=1 NETNS_RUN_DIR=/run/netns
-}
-
-src_test() {
-	emake check
 }
 
 src_install() {
