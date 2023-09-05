@@ -51,6 +51,11 @@ EPYTEST_IGNORE=(
 	tests/test_factory.py
 )
 
+EPYTEST_DESELECT=(
+	# broken by formatting / line wrapping
+	tests/test_jsonyaml_plugin.py::testYamlPlugin
+)
+
 src_prepare() {
 	if use test; then
 		mv "${WORKDIR}"/eyeD3-test-data tests/data || die
