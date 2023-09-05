@@ -35,6 +35,11 @@ CDEPEND="
 # POM: pom.xml
 # test? junit:junit:4.13.2 -> >=dev-java/junit-4.13.2:4
 
+# we need jdk-11 just for some tests as those need stuff from newer jdk,
+# otherwise the package as of version 1.0.7 compiles fine with jdk 1.8
+# with tests disabled
+# see bug https://bugs.gentoo.org/910499
+
 DEPEND="
 	>=virtual/jdk-11:*
 	${CDEPEND}
