@@ -27,10 +27,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "To add a user to the cron group so it can create cron jobs, run:"
-	einfo
-	einfo "    usermod -a -G cron <user>"
-	einfo
-	einfo "For more information, visit the wiki page:                      "
-	einfo "https://wiki.gentoo.org/wiki/Cron                               "
+	elog "To add a user to the cron group so it can create cron jobs, run:"
+	elog
+	elog "    usermod -a -G cron <user>"
+	elog
+	elog "For more information, visit the wiki page:"
+	elog "https://wiki.gentoo.org/wiki/Cron"
 }
