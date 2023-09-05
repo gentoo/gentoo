@@ -21,11 +21,13 @@ HOMEPAGE="https://www.chromium.org/"
 PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 PATCHSET_PPC64="116.0.5845.140-1raptor0~deb12u1"
+# ^ = https://quickbuild.io/~raptor-engineering-public/+archive/ubuntu/chromium
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
 	ppc64? (
 		https://quickbuild.io/~raptor-engineering-public/+archive/ubuntu/chromium/+files/chromium_${PATCHSET_PPC64}.debian.tar.xz
 		https://dev.gentoo.org/~sultan/distfiles/www-client/chromium/chromium-ppc64le-gentoo-patches-1.tar.xz
+		https://raw.githubusercontent.com/darkbasic/gentoo-files/master/chromium-116-0001-Add-PPC64-support-for-boringssl.patch.gz
 	)
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )"
 
@@ -344,11 +346,13 @@ src_prepare() {
 	if use ppc64 ; then
 		local p
 		for p in $(grep -v "^#" "${WORKDIR}"/debian/patches/series | grep "^ppc64le" || die); do
-			if [[ ! $p =~ "fix-breakpad-compile.patch" ]]; then
+			# Revert to Raptor's bundled 0001-Add-PPC64-support-for-boringssl.patch starting from 117
+			if [[ ! ($p =~ "fix-breakpad-compile.patch" || $p =~ "Add-PPC64-support-for-boringssl.patch") ]]; then
 				eapply "${WORKDIR}/debian/patches/${p}"
 			fi
 		done
 		PATCHES+=( "${WORKDIR}/ppc64le" )
+		PATCHES+=( "${WORKDIR}/chromium-116-0001-Add-PPC64-support-for-boringssl.patch" )
 	fi
 
 	default
