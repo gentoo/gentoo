@@ -24,3 +24,7 @@ BDEPEND="${RDEPEND}
 		dev-perl/Test-NoWarnings
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch
+)
