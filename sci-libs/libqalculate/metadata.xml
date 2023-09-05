@@ -11,7 +11,7 @@
     </flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">qalculate-0.9.7</remote-id>
+    <remote-id type="sourceforge">qalculate</remote-id>
     <remote-id type="github">Qalculate/libqalculate</remote-id>
   </upstream>
 </pkgmetadata>
