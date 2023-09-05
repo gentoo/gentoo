@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	RESTRICT="!test? ( test )"
 else
 	SRC_URI="https://github.com/google/${PN}/releases/download/v${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 LICENSE="Apache-2.0"
