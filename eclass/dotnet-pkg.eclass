@@ -24,9 +24,9 @@
 # .NET packages require proper inspection before packaging:
 # - the compatible .NET SDK version has to be declared,
 #   this can be done by inspecting the package's "*.proj" files,
-#   unlike JAVA, .NET packages tend to lock onto one selected .NET SDK
+#   unlike JAVA, .NET packages tend to lock onto one exact selected .NET SDK
 #   version, so building with other .NET versions will be mostly unsupported,
-# - nugets, which are similar to JAVA's JARs (package .NET dependencies),
+# - Nugets, packages' .NET dependencies, which are similar to JAVA's JARs,
 #   have to be listed using either the "NUGETS" variable or bundled inside
 #   a "prebuilt" archive, in second case also the "NUGET_PACKAGES" variable
 #   has to be explicitly set.

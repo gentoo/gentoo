@@ -11,9 +11,13 @@
 # @PROVIDES: nuget
 # @BLURB: common functions and variables for builds using .NET SDK
 # @DESCRIPTION:
-# This eclass is designed to provide required definitions for .NET packages.
-# In ebuilds for software that only utilizes the .NET SDK,
-# without special cases, the "dotnet-pkg.eclass" is probably better suited.
+# This eclass is designed to provide required ebuild definitions for .NET
+# packages. Beware that in addition to Gentoo-specific concepts also terms that
+# should be known to people familiar with the .NET ecosystem are used through
+# this one and similar eclasses.
+#
+# In ebuilds for software that only utilizes the .NET SDK, without special
+# cases, the "dotnet-pkg.eclass" is probably better suited.
 #
 # This eclass does not export any phase functions, for that see
 # the "dotnet-pkg" eclass.
