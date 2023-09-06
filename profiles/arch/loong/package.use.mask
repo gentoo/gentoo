@@ -59,8 +59,12 @@ app-accessibility/at-spi2-core dbus-broker
 
 # Mike Gilbert <floppym@gentoo.org> (2023-05-27)
 # Newer sd-boot does not use gnuefi.
->=sys-apps/systemd-254 -boot
->=sys-apps/systemd-utils-254 -boot
+#
+# (xen0n: keep USE=boot masked before fixed dev-python/pyelftools is tagged
+# and packaged, so we can have systemd-254 keyworded on loong a bit earlier.
+# The systemd-boot feature was never available before anyway.)
+#>=sys-apps/systemd-254 -boot
+#>=sys-apps/systemd-utils-254 -boot
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
 # dev-python/pyopengl fails tests
