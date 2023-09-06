@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit llvm qt6-build
+inherit llvm optfeature qt6-build
 
 DESCRIPTION="Qt Tools Collection"
 
@@ -66,4 +66,10 @@ src_configure() {
 	)
 
 	qt6-build_src_configure
+}
+
+pkg_postinst() {
+	use assistant &&
+		optfeature "Qt documentation viewable in assistant" \
+			dev-qt/qt-docs:6 #602296
 }
