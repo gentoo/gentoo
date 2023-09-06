@@ -26,11 +26,14 @@ SRC_URI="
 		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_6_2v0_1.cat
 		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_7_2v0_1.cat
 		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_8_2v0_1.cat
+	)
+	telescope? (
+		https://github.com/indilib/indi/archive/v1.8.5.tar.gz -> indilib-1.8.5.tar.gz
 	)"
 
 LICENSE="GPL-2+ SGI-B-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="debug deep-sky doc gps media nls qt6 +scripting +show-my-sky stars telescope test webengine +xlsx"
 
 # Python interpreter is used while building RemoteControl plugin
@@ -85,7 +88,6 @@ RDEPEND="
 		webengine? ( dev-qt/qtwebengine:6[widgets] )
 		xlsx? ( dev-libs/qxlsx:=[qt6] )
 	)
-	telescope? ( sci-libs/indilib:= )
 "
 DEPEND="${RDEPEND}
 	!qt6? (
@@ -149,6 +151,11 @@ src_configure() {
 		-DUSE_PLUGIN_TELESCOPECONTROL="$(usex telescope)"
 		"$(cmake_use_find_package doc Doxygen)"
 	)
+	if use telescope; then
+		mycmakeargs+=(
+			-DCPM_indiclient_SOURCE="${WORKDIR}/indi-1.8.5"
+		)
+	fi
 	cmake_src_configure
 }
 
