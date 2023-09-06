@@ -40,7 +40,7 @@ RDEPEND="
 	>=sys-apps/baselayout-2.2
 	lvm? (
 		virtual/tmpfiles
-		thin? ( sys-block/thin-provisioning-tools )
+		thin? ( <sys-block/thin-provisioning-tools-1.0.0 )
 	)
 "
 # note: thin-0.3.0 is required to avoid --disable-thin_check_needs_check

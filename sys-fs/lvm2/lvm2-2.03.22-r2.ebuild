@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN^^}.${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="lvm readline sanlock selinux static static-libs systemd thin +udev valgrind"
 REQUIRED_USE="
 	static? ( !systemd !udev )
@@ -40,7 +40,7 @@ RDEPEND="
 	>=sys-apps/baselayout-2.2
 	lvm? (
 		virtual/tmpfiles
-		thin? ( sys-block/thin-provisioning-tools )
+		thin? ( >=sys-block/thin-provisioning-tools-1.0.6 )
 	)
 "
 # note: thin-0.3.0 is required to avoid --disable-thin_check_needs_check
