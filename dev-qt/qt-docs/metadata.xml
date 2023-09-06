@@ -5,6 +5,7 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="3d">Install documentation for <pkg>dev-qt/qt3d</pkg></flag>
 		<flag name="activeqt">Install documentation for ActiveQt (unpackaged, Windows-only)</flag>
