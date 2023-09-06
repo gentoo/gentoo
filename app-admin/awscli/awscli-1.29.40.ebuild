@@ -66,9 +66,7 @@ python_test() {
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# integration tests require AWS credentials and Internet access
-	epytest tests/{functional,unit} \
-		-p xdist -n "$(makeopts_jobs)" \
-		-p pytest_forked --forked
+	epytest tests/{functional,unit} -p xdist -n "$(makeopts_jobs)"
 }
 
 python_install_all() {
