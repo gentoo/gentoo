@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-09-06)
+# sys-block/thin-provisioning-tools now needs Rust.
+sys-fs/lvm2 thin
+
 # Hans de Graaff <graaff@gentoo.org> (2023-09-03)
 # selenium-webdriver is needed for these tests but that requires
 # selenium-manager which requires rust (#912999)
