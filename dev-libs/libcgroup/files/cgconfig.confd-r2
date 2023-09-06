@@ -1,0 +1,8 @@
+# /etc/conf.d/cgconfig: config file for /etc/init.d/cgconfig
+
+# Configuration file location
+CG_CONFIGFILE="/etc/cgroup/cgconfig.conf"
+CG_CONFIGDIR="/etc/cgroup/cgconfig.d"
+
+# Enable calssifying pid according to rules if necessary
+CG_CLASSIFY=No
