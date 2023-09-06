@@ -56,14 +56,6 @@ src_prepare() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=(
-		# TODO
-		tests/functional/eks/test_kubeconfig.py::TestKubeconfigLoader::test_load_simple
-		tests/unit/customizations/eks/test_update_kubeconfig.py::TestKubeconfigSelector::test_choose_env_only
-		tests/unit/customizations/eks/test_update_kubeconfig.py::TestKubeconfigSelector::test_choose_existing
-		tests/unit/customizations/eks/test_kubeconfig.py::TestKubeconfigValidator::test_valid
-	)
-
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# integration tests require AWS credentials and Internet access
 	epytest tests/{functional,unit} -p xdist -n "$(makeopts_jobs)"
