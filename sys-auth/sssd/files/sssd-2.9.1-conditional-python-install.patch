@@ -1,0 +1,19 @@
+diff --git a/src/tools/analyzer/Makefile.am b/src/tools/analyzer/Makefile.am
+index b40043d04..dce6b9d36 100644
+--- a/src/tools/analyzer/Makefile.am
++++ b/src/tools/analyzer/Makefile.am
+@@ -5,7 +5,9 @@ dist_sss_analyze_python_SCRIPTS = \
+     $(NULL)
+ 
+ pkgpythondir = $(python3dir)/sssd
++modulesdir = $(pkgpythondir)/modules
+ 
++if BUILD_PYTHON_BINDINGS
+ dist_pkgpython_DATA = \
+     __init__.py \
+     source_files.py \
+@@ -20,3 +22,4 @@ dist_modules_DATA = \
+     modules/__init__.py \
+     modules/request.py \
+     $(NULL)
++endif
