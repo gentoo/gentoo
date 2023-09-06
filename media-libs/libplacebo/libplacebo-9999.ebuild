@@ -64,7 +64,10 @@ python_check_deps() {
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
-		local EGIT_SUBMODULES=( $(usev opengl 3rdparty/glad) 3rdparty/fast_float )
+		local EGIT_SUBMODULES=(
+			3rdparty/fast_float
+			$(usev opengl 3rdparty/glad)
+		)
 		git-r3_src_unpack
 	else
 		default
