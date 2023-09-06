@@ -24,6 +24,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/autoconf-archive"
 
 src_prepare() {
 	default
