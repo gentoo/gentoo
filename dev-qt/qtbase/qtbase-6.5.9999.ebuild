@@ -24,7 +24,7 @@ declare -A QT6_IUSE=(
 	[sql]="mysql oci8 odbc postgres +sqlite"
 	[widgets]="cups gtk"
 
-	[optfeature]="wayland" #864509
+	[optfeature]="nls wayland" #810802,864509
 )
 IUSE="${QT6_IUSE[*]}"
 REQUIRED_USE="
@@ -124,7 +124,10 @@ DEPEND="
 	)
 "
 BDEPEND="zstd? ( app-arch/libarchive[zstd] )" #910392
-PDEPEND="wayland? ( ~dev-qt/qtwayland-${PV}:6 )"
+PDEPEND="
+	nls? ( ~dev-qt/qttranslations-${PV}:6 )
+	wayland? ( ~dev-qt/qtwayland-${PV}:6 )
+"
 
 src_prepare() {
 	qt6-build_src_prepare
