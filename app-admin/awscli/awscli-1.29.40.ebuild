@@ -64,8 +64,11 @@ python_test() {
 		tests/unit/customizations/eks/test_kubeconfig.py::TestKubeconfigValidator::test_valid
 	)
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# integration tests require AWS credentials and Internet access
-	epytest tests/{functional,unit} -n "$(makeopts_jobs)" --forked
+	epytest tests/{functional,unit} \
+		-p xdist -n "$(makeopts_jobs)" \
+		-p pytest_forked --forked
 }
 
 python_install_all() {
