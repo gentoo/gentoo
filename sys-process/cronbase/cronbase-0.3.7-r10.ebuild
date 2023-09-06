@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit readme.gentoo-r1
+
 DESCRIPTION="Base for all cron ebuilds"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Cron"
 S="${WORKDIR}"
@@ -17,6 +19,15 @@ RDEPEND="
 	acct-user/cron
 "
 
+DOC_CONTENTS="
+	To add a user to the cron group so it can create cron jobs, run:
+
+	    usermod -a -G cron <user>
+
+	For more information, visit the wiki page:
+	https://wiki.gentoo.org/wiki/Cron
+"
+
 src_install() {
 	newsbin "${FILESDIR}"/run-crons-${PV} run-crons
 
@@ -24,13 +35,9 @@ src_install() {
 	keepdir /etc/cron.{hourly,daily,weekly,monthly}
 
 	keepdir /var/spool/cron/lastrun
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog "To add a user to the cron group so it can create cron jobs, run:"
-	elog
-	elog "    usermod -a -G cron <user>"
-	elog
-	elog "For more information, visit the wiki page:"
-	elog "https://wiki.gentoo.org/wiki/Cron"
+	readme.gentoo_print_elog
 }
