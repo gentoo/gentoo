@@ -11,14 +11,16 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-IUSE="qml vulkan"
+IUSE="compositor qml vulkan"
 
 RDEPEND="
 	dev-libs/wayland
 	~dev-qt/qtbase-${PV}:6[gui,opengl,vulkan=]
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
-	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
+	compositor? (
+		qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -38,6 +40,7 @@ CMAKE_SKIP_TESTS=(
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qml Qt6Quick)
+		$(qt_feature compositor wayland_server)
 	)
 
 	qt6-build_src_configure

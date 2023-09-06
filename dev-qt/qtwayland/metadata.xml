@@ -6,6 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
+		<flag name="compositor">Enable support for the wayland compositor / server APIs</flag>
 		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
 		<flag name="vulkan">Enable support for Vulkan-based server buffer integration</flag>
 	</use>
