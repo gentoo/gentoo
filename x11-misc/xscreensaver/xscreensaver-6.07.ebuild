@@ -110,6 +110,12 @@ src_prepare() {
 	iconv -f ISO-8859-15 -t UTF-8 po/ca.po.old >po/ca.po || die
 
 	sed -i configure.ac -e '/^ALL_LINGUAS=/d' || die
+
+	# Causes "Failed to enable unit: Cannot alias xscreensaver.service as org.jwz.xscreensaver."
+	# after "systemctl --user enable xscreensaver".
+	sed -i -e '/^Alias=org.jwz.xscreensaver.service/d' \
+		 driver/xscreensaver.service.in || die
+
 	strip-linguas -i po/
 	export ALL_LINGUAS="${LINGUAS}"
 
