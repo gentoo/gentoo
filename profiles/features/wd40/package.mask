@@ -117,7 +117,7 @@ net-news/newsboat
 net-p2p/deluge
 sci-geosciences/gnome-maps
 >=sys-apps/bat-0.18.1
-sys-block/thin-provisioning-tools
+>=sys-block/thin-provisioning-tools-1.0.6
 sys-fs/bcachefs-tools
 virtual/rust
 www-apps/radicale
