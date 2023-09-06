@@ -25,7 +25,11 @@ fi
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
 HOMEPAGE="https://code.videolan.org/videolan/libplacebo/"
 
-LICENSE="LGPL-2.1+ opengl? ( MIT )"
+LICENSE="
+	LGPL-2.1+
+	|| ( Apache-2.0 Boost-1.0 MIT )
+	opengl? ( MIT )
+"
 SLOT="0/$(ver_cut 2 ${PV}.9999)" # soname
 IUSE="glslang lcms llvm-libunwind +opengl +shaderc test unwind +vulkan"
 RESTRICT="!test? ( test )"
