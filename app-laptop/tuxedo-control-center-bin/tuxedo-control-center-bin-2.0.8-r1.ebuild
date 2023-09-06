@@ -18,7 +18,25 @@ KEYWORDS="-* ~amd64"
 RESTRICT="strip splitdebug"
 
 DEPEND=">=app-laptop/tuxedo-keyboard-3.1.3"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	app-accessibility/at-spi2-core
+	dev-libs/nss
+	dev-libs/nspr
+	media-libs/alsa-lib
+	media-libs/mesa[X(+)]
+	net-print/cups
+	x11-libs/gdk-pixbuf
+	x11-libs/gtk+:3[X]
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXfixes
+	x11-libs/libXrandr
+	x11-libs/libdrm
+	x11-libs/libxkbcommon
+	x11-libs/libxshmfence
+	x11-libs/pango
+"
 # See bug #827729
 BDEPEND="app-arch/xz-utils[extra-filters]"
 
