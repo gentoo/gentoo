@@ -98,6 +98,12 @@ qt6-build_src_unpack() {
 qt6-build_src_prepare() {
 	cmake_src_prepare
 
+	if [[ -e CMakeLists.txt ]]; then
+		# build may be skipped entirely and install nothing without errors
+		# if checking for a major dependency/condition failed
+		sed -i '/message(NOTICE.*Skipping/s/NOTICE/ERROR/' CMakeLists.txt || die
+	fi
+
 	if in_iuse test && use test && [[ -e tests/auto/CMakeLists.txt ]]; then
 		# upstream seems to install before running tests, and cmake
 		# subdir that is present in about half of the Qt6 components
