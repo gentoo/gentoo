@@ -25,3 +25,12 @@ src_install() {
 
 	keepdir /var/spool/cron/lastrun
 }
+
+pkg_postinst() {
+	elog "To add a user to the cron group so it can create cron jobs, run:"
+	elog
+	elog "    usermod -a -G cron <user>"
+	elog
+	elog "For more information, visit the wiki page:"
+	elog "https://wiki.gentoo.org/wiki/Cron"
+}
