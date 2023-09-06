@@ -54,6 +54,7 @@ efimake() {
 		AS="${AS}"
 		LD="${LD}"
 		AR="${AR}"
+		OBJCOPY="${OBJCOPY}"
 		PREFIX="${EPREFIX}/usr"
 		LIBDIR='$(PREFIX)'/$(get_libdir)
 	)
@@ -61,7 +62,7 @@ efimake() {
 }
 
 src_compile() {
-	tc-export BUILD_CC AR AS CC LD
+	tc-export BUILD_CC AR AS CC LD OBJCOPY
 
 	if ! use custom-cflags; then
 		unset CFLAGS CPPFLAGS LDFLAGS
