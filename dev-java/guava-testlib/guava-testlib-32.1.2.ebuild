@@ -19,7 +19,7 @@ S="${WORKDIR}/guava-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	dev-java/checker-framework-qual:0
