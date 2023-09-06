@@ -38,6 +38,7 @@ BDEPEND="
 	${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 	python? (
 		${DISTUTILS_DEPS}
 		dev-lang/swig
