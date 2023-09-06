@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Base for all cron ebuilds"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Cron"
 S="${WORKDIR}"
 
 LICENSE="GPL-2"
