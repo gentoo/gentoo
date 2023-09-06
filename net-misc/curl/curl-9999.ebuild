@@ -282,6 +282,12 @@ multilib_src_configure() {
 		)
 	fi
 
+	if [[ ${CHOST} == *mingw* ]] ; then
+		myconf+=(
+			--disable-pthreads
+		)
+	fi
+
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 
 	if ! multilib_is_native_abi; then
