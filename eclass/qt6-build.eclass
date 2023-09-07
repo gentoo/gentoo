@@ -99,15 +99,14 @@ qt6-build_src_prepare() {
 	cmake_src_prepare
 
 	if [[ -e CMakeLists.txt ]]; then
-		# build may be skipped entirely and install nothing without errors
-		# if checking for a major dependency/condition failed
-		sed -i '/message(NOTICE.*Skipping/s/NOTICE/FATAL_ERROR/' CMakeLists.txt || die
+		# throw an error rather than skip if *required* conditions are not met
+		sed -e '/message(NOTICE.*Skipping/s/NOTICE/FATAL_ERROR/' \
+			-i CMakeLists.txt || die
 	fi
 
 	if in_iuse test && use test && [[ -e tests/auto/CMakeLists.txt ]]; then
-		# upstream seems to install before running tests, and cmake
-		# subdir that is present in about half of the Qt6 components
-		# cause a dependency on itself and sometimes install test junk
+		# .cmake files tests causing a self-dependency in many modules,
+		# and that sometimes install additional test junk
 		sed -i '/add_subdirectory(cmake)/d' tests/auto/CMakeLists.txt || die
 	fi
 
@@ -251,8 +250,8 @@ _qt6-build_match_cpu_flags() {
 	local flags=() intrin intrins
 	while IFS=' ' read -ra intrins; do
 		[[ ${intrins[*]} == *=[^_]* && ${intrins[*]} == *=_* ]] &&
-			for intrin in "${intrins[@]}"; do
-				[[ ${intrin} == *?=* ]] && flags+=( -mno-${intrin%=*} )
+			for intrin in "${intrins[@]%=*}"; do
+				[[ ${intrin} ]] && flags+=( -mno-${intrin} )
 			done
 	done < <(
 		# TODO: review if can drop fma= matching after QTBUG-116357
