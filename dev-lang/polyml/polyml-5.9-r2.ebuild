@@ -48,5 +48,12 @@ src_test() {
 
 src_install() {
 	default
-	rm "${D}"/usr/lib*/libpolyml.la || die
+
+	if [[ -f "${ED}"/usr/$(get_libdir)/libpolymain.la ]] ; then
+		rm "${ED}"/usr/$(get_libdir)/libpolymain.la || die
+	fi
+
+	if [[ -f "${ED}"/usr/$(get_libdir)/libpolyml.la ]] ; then
+		rm "${ED}"/usr/$(get_libdir)/libpolyml.la || die
+	fi
 }
