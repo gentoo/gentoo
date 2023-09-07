@@ -162,7 +162,11 @@ fi
 # If ${JAVA_MAIN_CLASS} is set, we will create a launcher to
 # execute the jar, and ${JAVA_LAUNCHER_FILENAME} will be the
 # name of the script.
-: "${JAVA_LAUNCHER_FILENAME:=${PN}-${SLOT}}"
+if [[ ${SLOT} = 0 ]]; then
+	: "${JAVA_LAUNCHER_FILENAME:=${PN}}"
+else
+	: "${JAVA_LAUNCHER_FILENAME:=${PN}-${SLOT}}"
+fi
 
 # @ECLASS_VARIABLE: JAVA_TESTING_FRAMEWORKS
 # @DEFAULT_UNSET
