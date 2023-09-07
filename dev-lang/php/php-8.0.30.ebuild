@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 
-inherit flag-o-matic systemd autotools
+inherit flag-o-matic multilib systemd autotools
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
