@@ -1,0 +1,28 @@
+https://gitlab.gnome.org/GNOME/zenity/-/commit/8a76b35828b7354f042684afa65ea696c7349af7
+https://gitlab.gnome.org/GNOME/zenity/-/merge_requests/33
+
+From 8a76b35828b7354f042684afa65ea696c7349af7 Mon Sep 17 00:00:00 2001
+From: Guillermo Joandet <gjoandet@gmail.com>
+Date: Wed, 13 Sep 2023 17:17:51 +0000
+Subject: [PATCH] build: Make building manpage dependent upon manpage option.
+
+---
+ data/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index 41b94add..9042de80 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -27,7 +27,7 @@ endif
+ help2man = find_program('help2man', required: get_option('manpage'))
+ # help2man has to run zenity to generate the man page, which it can't do if
+ # we're cross building. We also can't tell help2man what exe wrapper to use.
+-if help2man.found() and not meson.is_cross_build()
++if help2man.found() and not meson.is_cross_build() and get_option('manpage')
+   help2man_opts = [
+     '--no-info',
+     '--section=1',
+-- 
+2.42.0
+
