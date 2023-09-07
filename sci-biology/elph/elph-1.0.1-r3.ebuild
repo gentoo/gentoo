@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,10 @@ LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.1-fix-build-system.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.1-fix-build-system.patch
+	"${FILESDIR}"/${PN}-1.0.1-drop-register-keyword.patch
+)
 
 src_configure() {
 	tc-export CC CXX
