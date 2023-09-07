@@ -135,13 +135,7 @@ qt6-build_src_configure() {
 		return
 	fi
 
-	if [[ ${mycmakeargs@a} == *a* ]]; then
-		local mycmakeargs=("${mycmakeargs[@]}")
-	else
-		local mycmakeargs=()
-	fi
-
-	mycmakeargs+=(
+	local defaultcmakeargs=(
 		# see _qt6-build_create_user_facing_links
 		-DINSTALL_PUBLICBINDIR="${QT6_PREFIX}"/bin
 		# note that if qtbase was built with tests, this is default ON
@@ -149,6 +143,12 @@ qt6-build_src_configure() {
 		# avoid appending -O2 after user's C(XX)FLAGS (bug #911822)
 		-DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON
 	)
+
+	if [[ ${mycmakeargs@a} == *a* ]]; then
+		local mycmakeargs=("${defaultcmakeargs[@]}" "${mycmakeargs[@]}")
+	else
+		local mycmakeargs=("${defaultcmakeargs[@]}")
+	fi
 
 	cmake_src_configure
 }
