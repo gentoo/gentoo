@@ -19,7 +19,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcraft/pkgcraft-python.git"
 	inherit git-r3
 
-	PKGCRAFT_VERSION_MAX="9999"
+	PKGCRAFT_VERSION_MAX="99999" # extra 9 here or 9999 isn't mergable per DEPEND below
 	PKGCRAFT_VERSION_MIN="9999"
 else
 	SRC_URI="https://github.com/pkgcraft/pkgcraft-python/releases/download/v${PV}/${P/-python}.tar.gz"
