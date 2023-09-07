@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">HyperionGray/trio-websocket</remote-id>
+		<remote-id type="github">python-trio/trio-websocket</remote-id>
 		<remote-id type="pypi">trio-websocket</remote-id>
 	</upstream>
 </pkgmetadata>
