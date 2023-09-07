@@ -1,0 +1,13 @@
+diff --git a/configure.in b/configure.in
+index b25f195..7a7e320 100644
+--- a/configure.in
++++ b/configure.in
+@@ -25,7 +25,7 @@ AC_MSG_RESULT($cache_sys_os)
+ if test "x$cache_sys_os" = "xSolaris"; then
+ 	SHAREDEXEC="ld -dy -r -o libmelf.so \${OBJS}"
+ else
+-	SHAREDEXEC="\${CC} \${FLAGS} -shared \${OBJS} -o libmelf.so"
++	SHAREDEXEC="\${CC} \${FLAGS} \${LDFLAGS} -shared \${OBJS} -Wl,-soname,libmelf.so  -o libmelf.so"
+ fi
+
+ AC_C_BIGENDIAN()
