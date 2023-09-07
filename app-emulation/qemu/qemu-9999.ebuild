@@ -28,6 +28,16 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 	SRC_URI=""
+	declare -A SUBPROJECTS=(
+		[keycodemapdb]="f5772a62ec52591ff6870b7e8ef32482371f22c6"
+		[berkeley-softfloat-3]="b64af41c3276f97f0e181920400ee056b9c88037"
+		[berkeley-testfloat-3]="40619cbb3bf32872df8c53cc457039229428a263"
+	)
+
+	for proj in "${!SUBPROJECTS[@]}"; do
+		c=${SUBPROJECTS[${proj}]}
+		SRC_URI+=" https://gitlab.com/qemu-project/${proj}/-/archive/${c}/${proj}-${c}.tar.gz"
+	done
 else
 	MY_P="${PN}-${PV/_rc/-rc}"
 	SRC_URI="https://download.qemu.org/${MY_P}.tar.xz"
@@ -439,8 +449,15 @@ check_targets() {
 if [[ ${PV} == 9999 ]]; then
 src_unpack() {
 	git-r3_src_unpack
-	cd "${P}" || die
-	meson subprojects download keycodemapdb berkeley-softfloat-3 berkeley-testfloat-3 || die
+	for file in ${A}; do
+		unpack "${file}"
+	done
+	cd ${WORKDIR} || die
+	for proj in "${!SUBPROJECTS[@]}"; do
+		mv "${proj}-${SUBPROJECTS[${proj}]}" "${S}/subprojects/${proj}" || die
+	done
+	cd "${S}" || die
+	meson subprojects packagefiles --apply || die
 }
 fi
 
