@@ -311,6 +311,9 @@ src_configure() {
 	addpredict /usr/share/snmp/mibs/.index #nowarn
 	addpredict /var/lib/net-snmp/mib_indexes #nowarn
 
+	# https://bugs.gentoo.org/866683, https://bugs.gentoo.org/913527
+	filter-lto
+
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
 
 	# Don't allow ./configure to detect and use an existing version
@@ -332,11 +335,6 @@ src_configure() {
 		--enable-ipv6
 		$(use_enable threads zts)
 	)
-
-	if is-flagq -flto; then
-		# https://bugs.gentoo.org/866683
-		our_conf+=( --disable-gcc-global-regs )
-	fi
 
 	our_conf+=(
 		$(use_with apparmor fpm-apparmor)

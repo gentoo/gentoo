@@ -245,6 +245,9 @@ src_configure() {
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
 
+	# https://bugs.gentoo.org/866683, https://bugs.gentoo.org/913527
+	filter-lto
+
 	# The php-fpm config file wants localstatedir to be ${EPREFIX}/var
 	# and not the Gentoo default ${EPREFIX}/var/lib. See bug 572002.
 	local our_conf=(
@@ -258,11 +261,6 @@ src_configure() {
 		--without-valgrind
 		$(use_enable threads zts)
 	)
-
-	if is-flagq -flto; then
-		# https://bugs.gentoo.org/866683
-		our_conf+=( --disable-gcc-global-regs )
-	fi
 
 	our_conf+=(
 		$(use_with apparmor fpm-apparmor)
