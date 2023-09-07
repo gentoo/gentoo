@@ -19,6 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="net-firewall/nftables"
+BDEPEND=">=dev-lang/go-1.21"
 
 src_prepare() {
 	default
