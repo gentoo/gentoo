@@ -1,0 +1,30 @@
+https://github.com/wummel/patool/pull/130
+
+From e8a1eea1d273b278a1b6f5029d2e21cb18bc9ffd Mon Sep 17 00:00:00 2001
+From: Theodore Ni <3806110+tjni@users.noreply.github.com>
+Date: Sat, 26 Aug 2023 23:42:15 -0700
+Subject: [PATCH] Map application/vnd.android.package-archive to zip
+
+This was added to file 5.45 in https://github.com/file/file/commit/b29519e7dc572d85f757314d3bfc7461ceb7709c
+and the test .apk file is sometimes detected with that mime type.
+--- a/patoolib/__init__.py
++++ b/patoolib/__init__.py
+@@ -84,6 +84,7 @@
+     'application/x-xz': 'xz',
+     'application/x-zip-compressed': 'zip',
+     'application/x-zoo': 'zoo',
++    'application/vnd.android.package-archive': 'zip',
+     'application/zip': 'zip',
+     'application/zpaq': 'zpaq',
+     "application/zstd": "zstd",
+--- a/tests/test_mime.py
++++ b/tests/test_mime.py
+@@ -137,7 +137,7 @@ def test_mime_file (self):
+         self.mime_test_file("t.chm.foo", "application/x-chm")
+         self.mime_test_file("t.iso", "application/x-iso9660-image")
+         self.mime_test_file("t.epub", "application/zip")
+-        self.mime_test_file("t.apk", ("application/zip", "application/java-archive", "application/jar"))
++        self.mime_test_file("t.apk", ("application/zip", "application/java-archive", "application/jar", "application/vnd.android.package-archive"))
+         self.mime_test_file("t.zpaq", "application/zpaq")
+         self.mime_test_file("t.zpaq.foo", "application/zpaq")
+ 

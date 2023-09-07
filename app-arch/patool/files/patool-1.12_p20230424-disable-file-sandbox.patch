@@ -1,0 +1,28 @@
+https://github.com/wummel/patool/pull/131
+https://github.com/wummel/patool/issues/75
+
+From abe06b7d8fbcd177d44f8eb8e3ac195badc70d25 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Thu, 7 Sep 2023 01:12:26 +0300
+Subject: [PATCH] Disable sandbox for file(1) to allow correct output for
+ compressed tar's
+
+* Otherwise file(1) will refuse with
+  "Fork-is-required-to-uncompress--but-disabled"
+
+Closes: https://github.com/wummel/patool/issues/75
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/patoolib/util.py
++++ b/patoolib/util.py
+@@ -240,7 +240,7 @@ def guess_mime_file (filename):
+                 encoding = None
+     if mime in Mime2Encoding:
+         # try to look inside compressed archives
+-        cmd = [file_prog, "--brief", "--mime", "--uncompress", filename]
++        cmd = [file_prog, "--brief", "--mime", "--uncompress", "--no-sandbox", filename]
+         try:
+             outparts = backtick(cmd).strip().split(";")
+             mime2 = outparts[0].split(" ", 1)[0]
+-- 
+2.42.0
+
