@@ -13,6 +13,7 @@
 	<use>
 		<flag name="designer">Install the QWebEngineView plugin used to add widgets in <pkg>dev-qt/designer</pkg> forms that display web pages.</flag>
 		<flag name="jumbo-build">Combine source files to speed up build process.</flag>
+		<flag name="pdf">Build the QtPdf module</flag>
 		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
 		<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg> instead of bundled.</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
