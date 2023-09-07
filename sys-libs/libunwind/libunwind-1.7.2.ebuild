@@ -26,7 +26,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0/8" # libunwind.so.8
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 -sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug debug-frame ${LIBUNWIND_DOCS_USEFLAG} libatomic lzma static-libs test zlib"
 
 RESTRICT="test !test? ( test )" # some tests are broken (toolchain version dependent, rely on external binaries)
