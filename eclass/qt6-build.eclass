@@ -252,7 +252,7 @@ _qt6-build_match_cpu_flags() {
 	while IFS=' ' read -ra intrins; do
 		[[ ${intrins[*]} == *=[^_]* && ${intrins[*]} == *=_* ]] &&
 			for intrin in "${intrins[@]}"; do
-				[[ ${intrin} == *?=[^_]* ]] && flags+=(-mno-${intrin%=*})
+				[[ ${intrin} == *?=* ]] && flags+=( -mno-${intrin%=*} )
 			done
 	done < <(
 		# TODO: review if can drop fma= matching after QTBUG-116357
