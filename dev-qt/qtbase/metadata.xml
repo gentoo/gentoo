@@ -18,7 +18,6 @@
 		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for automatic HTTP/SOCKS proxy configuration</flag>
 		<flag name="network">Build Qt6Network module</flag>
 		<flag name="sql">Build Qt6Sql module</flag>
-		<flag name="systemd">Enable native journald logging support</flag>
 		<flag name="tslib">Enable support for touchscreen devices via <pkg>x11-libs/tslib</pkg></flag>
 		<flag name="widgets">Build Qt6Widgets module</flag>
 		<flag name="X">Build the XCB platform plugin and enable X11 integration</flag>

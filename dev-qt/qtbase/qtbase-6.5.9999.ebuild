@@ -13,7 +13,7 @@ fi
 
 declare -A QT6_IUSE=(
 	[global]="+ssl +udev zstd"
-	[core]="icu systemd"
+	[core]="icu"
 	[modules]="+concurrent +dbus +gui +network +sql +xml"
 
 	[gui]="
@@ -60,7 +60,6 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libpcre2:=[pcre16,unicode(+)]
 	icu? ( dev-libs/icu:= )
-	systemd? ( sys-apps/systemd:= )
 
 	dbus? ( sys-apps/dbus )
 	gui? (
@@ -163,7 +162,6 @@ src_configure() {
 
 		# qtcore
 		$(qt_feature icu)
-		$(qt_feature systemd journald)
 
 		# tools
 		-DQT_FEATURE_androiddeployqt=OFF
@@ -188,9 +186,9 @@ src_configure() {
 		$(qt_feature evdev)
 		$(qt_feature evdev mtdev)
 		$(qt_feature gles2-only opengles2)
-		$(usev !opengl -DINPUT_opengl=no) #913691
 		$(qt_feature libinput)
 		$(qt_feature opengl)
+		$(usev !opengl -DINPUT_opengl=no) #913691
 		$(qt_feature tslib)
 		$(qt_feature vulkan)
 		$(qt_feature widgets)
