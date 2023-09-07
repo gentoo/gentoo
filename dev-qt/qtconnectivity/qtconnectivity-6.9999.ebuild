@@ -27,7 +27,13 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 CMAKE_SKIP_TESTS=(
-	# most hardware tests are skipped, but seems(?) this one detects and fails
+	# most hardware tests are auto-skipped, but some still misbehave
+	# if bluez/hardware is available (generally tests here may not be
+	# very relevant without hardware, lists may need to be extended)
+	tst_qbluetoothlocaldevice
+	tst_qbluetoothserver
+	tst_qbluetoothservicediscoveryagent
+	tst_qbluetoothserviceinfo
 	tst_qlowenergycontroller
 )
 
