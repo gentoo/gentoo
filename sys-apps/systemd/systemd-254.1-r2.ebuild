@@ -171,7 +171,7 @@ BDEPEND="
 		dev-python/jinja[\${PYTHON_USEDEP}]
 		dev-python/lxml[\${PYTHON_USEDEP}]
 		boot? (
-			dev-python/pyelftools[\${PYTHON_USEDEP}]
+			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
 			test? ( ${PEFILE_DEPEND} )
 		)
 	")
