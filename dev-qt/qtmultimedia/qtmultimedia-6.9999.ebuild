@@ -30,10 +30,7 @@ RDEPEND="
 			x11-libs/libXext
 			x11-libs/libXrandr
 		)
-		vaapi? (
-			media-libs/libglvnd
-			media-libs/libva:=
-		)
+		vaapi? ( media-libs/libglvnd )
 	)
 	gstreamer? (
 		dev-libs/glib:2
