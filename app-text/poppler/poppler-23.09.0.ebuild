@@ -67,7 +67,7 @@ BDEPEND="
 "
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-aacid-20230313 )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-aacid-20230907 )"
 fi
 
 DOCS=( AUTHORS NEWS README.md README-XPDF )
