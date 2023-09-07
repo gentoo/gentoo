@@ -101,7 +101,7 @@ qt6-build_src_prepare() {
 	if [[ -e CMakeLists.txt ]]; then
 		# build may be skipped entirely and install nothing without errors
 		# if checking for a major dependency/condition failed
-		sed -i '/message(NOTICE.*Skipping/s/NOTICE/ERROR/' CMakeLists.txt || die
+		sed -i '/message(NOTICE.*Skipping/s/NOTICE/FATAL_ERROR/' CMakeLists.txt || die
 	fi
 
 	if in_iuse test && use test && [[ -e tests/auto/CMakeLists.txt ]]; then
