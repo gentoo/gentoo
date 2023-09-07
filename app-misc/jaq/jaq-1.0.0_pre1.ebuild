@@ -10,6 +10,7 @@ CRATES="
 	aho-corasick@1.0.2
 	ariadne@0.1.5
 	atty@0.2.14
+	base64@0.21.2
 	bincode@1.3.3
 	bitflags@1.3.2
 	cc@1.0.79
@@ -64,6 +65,7 @@ CRATES="
 	time-macros@0.2.9
 	time@0.3.22
 	unicode-ident@1.0.10
+	urlencoding@2.1.3
 	version_check@0.9.4
 	wasi@0.11.0+wasi-snapshot-preview1
 	winapi-i686-pc-windows-gnu@0.4.0
@@ -78,7 +80,7 @@ inherit cargo
 DESCRIPTION="Just another JSON query tool"
 HOMEPAGE="https://github.com/01mf02/jaq"
 
-MY_PV="${PV//_/-}"
+MY_PV="${PV//_*/-gamma}"
 MY_P="${PN}-${MY_PV}"
 SRC_URI="
 	https://github.com/01mf02/jaq/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz
@@ -100,6 +102,7 @@ BDEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/jaq"
+QA_PRESTRIPPED="usr/bin/jaq"
 
 DOCS=(
 	README.md
