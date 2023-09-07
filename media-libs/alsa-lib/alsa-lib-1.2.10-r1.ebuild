@@ -35,6 +35,7 @@ BDEPEND="doc? ( >=app-doc/doxygen-1.2.6 )"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
 	"${FILESDIR}/${P}-musl-string.patch" # bug #913573, backport
+	"${FILESDIR}/${P}-ump-header-detection.patch" # bug #913573, backport
 )
 
 pkg_setup() {
