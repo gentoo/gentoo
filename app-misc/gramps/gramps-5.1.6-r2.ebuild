@@ -69,6 +69,13 @@ src_prepare() {
 	default
 }
 
+python_install() {
+	distutils-r1_python_install
+
+	# setup.py option --resourcepath appears to have problems at the moment
+	echo -n "/usr/share" > "${ED}"$(python_get_sitedir)/${PN}/gen/utils/resource-path || die
+}
+
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
