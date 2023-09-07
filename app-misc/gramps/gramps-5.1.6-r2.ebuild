@@ -51,7 +51,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.6-pep517_setup.patch
 )
 
-DISTUTILS_ARGS="--no-compress-manpages"
+DISTUTILS_ARGS=(
+	--no-compress-manpages
+)
 
 distutils_enable_tests pytest
 
