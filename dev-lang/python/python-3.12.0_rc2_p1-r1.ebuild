@@ -231,12 +231,12 @@ src_configure() {
 	cat > Modules/Setup.local <<-EOF || die
 		*disabled*
 		nis
-		$(usex gdbm '' '_gdbm _dbm')
-		$(usex sqlite '' '_sqlite3')
-		$(usex ssl '' '_hashlib _ssl')
-		$(usex ncurses '' '_curses _curses_panel')
-		$(usex readline '' 'readline')
-		$(usex tk '' '_tkinter')
+		$(usev !gdbm '_gdbm _dbm')
+		$(usev !sqlite '_sqlite3')
+		$(usev !ssl '_hashlib _ssl')
+		$(usev !ncurses '_curses _curses_panel')
+		$(usev !readline 'readline')
+		$(usev !tk '_tkinter')
 	EOF
 
 	# disable implicit optimization/debugging flags
