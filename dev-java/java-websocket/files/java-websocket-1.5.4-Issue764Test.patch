@@ -1,0 +1,12 @@
+This test occasionally timeouts for unclear reason. Most time it works.
+--- a/src/test/java/org/java_websocket/issues/Issue764Test.java
++++ b/src/test/java/org/java_websocket/issues/Issue764Test.java
+@@ -52,7 +52,7 @@ public class Issue764Test {
+   private CountDownLatch countClientDownLatch = new CountDownLatch(2);
+   private CountDownLatch countServerDownLatch = new CountDownLatch(1);
+ 
+-  @Test(timeout = 2000)
++  @Test(timeout = 20000)
+   public void testIssue()
+       throws IOException, URISyntaxException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException, UnrecoverableKeyException, CertificateException, InterruptedException {
+     int port = SocketUtil.getAvailablePort();

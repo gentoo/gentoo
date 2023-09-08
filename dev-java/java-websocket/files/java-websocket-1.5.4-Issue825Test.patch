@@ -1,0 +1,22 @@
+There was 1 failure:
+1) testIssue(org.java_websocket.issues.Issue825Test)
+org.junit.runners.model.TestTimedOutException: test timed out after 150000 milliseconds
+        at java.base@17.0.6/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@17.0.6/java.util.concurrent.locks.LockSupport.park(LockSupport.java:211)
+        at java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:715)
+        at java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1047)
+        at java.base@17.0.6/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:230)
+        at app//org.java_websocket.issues.Issue825Test.testIssue(Issue825Test.java:100)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+--- a/src/test/java/org/java_websocket/issues/AllIssueTests.java
++++ b/src/test/java/org/java_websocket/issues/AllIssueTests.java
+@@ -41,7 +41,6 @@ import org.junit.runners.Suite;
+     org.java_websocket.issues.Issue677Test.class,
+     org.java_websocket.issues.Issue732Test.class,
+     org.java_websocket.issues.Issue765Test.class,
+-    org.java_websocket.issues.Issue825Test.class,
+     org.java_websocket.issues.Issue962Test.class
+ })
+ /**

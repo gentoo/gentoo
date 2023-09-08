@@ -1,0 +1,14 @@
+Two tests have to run separately, otherwise would fail.
+--- a/src/test/java/org/java_websocket/issues/AllIssueTests.java
++++ b/src/test/java/org/java_websocket/issues/AllIssueTests.java
+@@ -40,10 +40,8 @@ import org.junit.runners.Suite;
+     org.java_websocket.issues.Issue666Test.class,
+     org.java_websocket.issues.Issue677Test.class,
+     org.java_websocket.issues.Issue732Test.class,
+-    org.java_websocket.issues.Issue764Test.class,
+     org.java_websocket.issues.Issue765Test.class,
+     org.java_websocket.issues.Issue825Test.class,
+-    org.java_websocket.issues.Issue834Test.class,
+     org.java_websocket.issues.Issue962Test.class
+ })
+ /**
