@@ -462,6 +462,7 @@ acct-group/spi
 >=dev-libs/gobject-introspection-1.77
 >=dev-libs/gobject-introspection-common-1.77
 >=dev-libs/libdex-0.3.0
+>=dev-libs/libportal-0.7
 >=dev-util/gdbus-codegen-2.77
 >=dev-util/glib-utils-2.77
 >=games-puzzle/gnome-sudoku-45_alpha
