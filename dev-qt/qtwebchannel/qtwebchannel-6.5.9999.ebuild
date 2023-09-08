@@ -20,9 +20,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	local mycmakeargs=(
-		$(cmake_use_find_package qml Qt6Quick)
-	)
+	has_version dev-qt/qtdeclarative:6 && #913692
+		local mycmakeargs=( $(cmake_use_find_package qml Qt6Qml) )
 
 	qt6-build_src_configure
 }
