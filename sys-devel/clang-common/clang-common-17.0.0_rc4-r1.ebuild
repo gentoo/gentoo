@@ -63,6 +63,30 @@ pkg_pretend() {
 	fi
 }
 
+doclang_cfg() {
+	local triple="${1}"
+
+	local tool
+	for tool in ${triple}-clang{,++,-cpp}; do
+		newins - "${tool}.cfg" <<-EOF
+			# This configuration file is used by ${tool} driver.
+			@gentoo-common.cfg
+		EOF
+	done
+
+	# Install symlinks for triples with other vendor strings since some
+	# programs insist on mangling the triple.
+	local vendor
+	for vendor in gentoo pc unknown; do
+		local vendor_triple="${triple%%-*}-${vendor}-${triple#*-*-}"
+		for tool in clang{,++,-cpp}; do
+			if [[ ! -f "${ED}/etc/clang/${vendor_triple}-${tool}.cfg" ]]; then
+				dosym "${triple}-${tool}.cfg" "/etc/clang/${vendor_triple}-${tool}.cfg"
+			fi
+		done
+	done
+}
+
 src_install() {
 	newbashcomp bash-autocomplete.sh clang
 
@@ -176,18 +200,13 @@ src_install() {
 	# We only install config files for supported ABIs because unprefixed tools
 	# might be used for crosscompilation where e.g. PIE may not be supported.
 	# See bug #912237 and bug #901247.
+	doclang_cfg "${CHOST}"
+
 	# Just ${CHOST} won't do due to bug #912685.
 	local abi
 	for abi in $(get_all_abis); do
 		local abi_chost=$(get_abi_CHOST "${abi}")
-
-		local tool
-		for tool in ${abi_chost}-clang{,++,-cpp}; do
-			newins - "${tool}.cfg" <<-EOF
-				# This configuration file is used by ${tool} driver.
-				@gentoo-common.cfg
-			EOF
-		done
+		doclang_cfg "${abi_chost}"
 	done
 }
 
