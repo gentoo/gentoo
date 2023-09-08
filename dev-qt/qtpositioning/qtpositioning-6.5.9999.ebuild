@@ -11,12 +11,15 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-IUSE="geoclue +qml"
+IUSE="geoclue nmea +qml"
 
 DEPEND="
-	~dev-qt/qtbase-${PV}:6[gui,widgets]
-	~dev-qt/qtserialport-${PV}:6
+	~dev-qt/qtbase-${PV}:6
 	geoclue? ( ~dev-qt/qtbase-${PV}:6[dbus] )
+	nmea? (
+		~dev-qt/qtbase-${PV}:6[network]
+		~dev-qt/qtserialport-${PV}:6
+	)
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 RDEPEND="
@@ -27,10 +30,12 @@ RDEPEND="
 src_prepare() {
 	qt6-build_src_prepare
 
-	# would use $(cmake_use_find_package geoclue Qt6DBus) but doing
-	# this side-disables gui+qml if do have qtbase[dbus]
+	# unfortunately cmake_use_find_package would break things with qtbase
 	use geoclue ||
 		sed -e 's/TARGET Qt::DBus/FALSE/' \
+			-i src/plugins/position/CMakeLists.txt || die
+	use nmea ||
+		sed -e 's/TARGET Qt::Network/FALSE/' \
 			-i src/plugins/position/CMakeLists.txt || die
 }
 
