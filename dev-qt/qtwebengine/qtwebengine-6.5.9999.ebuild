@@ -21,7 +21,7 @@ fi
 
 IUSE="
 	+alsa bindist custom-cflags designer geolocation +jumbo-build kerberos
-	opengl pdf pulseaudio qml screencast +system-icu vulkan +widgets
+	opengl pdfium pulseaudio qml screencast +system-icu vulkan +widgets
 "
 REQUIRED_USE="
 	designer? ( qml widgets )
@@ -83,7 +83,7 @@ DEPEND="
 	x11-base/xorg-proto
 	x11-libs/libxshmfence
 	screencast? ( media-libs/libepoxy[egl(+)] )
-	pdf? ( net-print/cups )
+	pdfium? ( net-print/cups )
 	test? (
 		widgets? ( app-text/poppler[cxx(+)] )
 	)
@@ -159,7 +159,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(qt_feature pdf qtpdf_build)
+		$(qt_feature pdfium qtpdf_build)
 		$(qt_feature qml qtpdf_quick_build)
 		$(qt_feature widgets qtpdf_widgets_build)
 
