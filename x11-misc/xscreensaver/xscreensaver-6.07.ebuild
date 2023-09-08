@@ -221,7 +221,7 @@ src_install() {
 
 	if use fonts; then
 		# Do not install fonts with unclear licensing
-		rm -v "${ED}${FONTDIR}"/{gallant12x22.ttf,OCRAStd.otf} || die
+		rm -v "${ED}${FONTDIR}"/{gallant12x22.ttf} || die
 
 		# Do not duplicate font Luxi Mono (of package media-fonts/font-bh-ttf)
 		rm -v "${ED}${FONTDIR}"/luximr.ttf || die
