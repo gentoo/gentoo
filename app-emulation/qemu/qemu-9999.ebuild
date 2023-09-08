@@ -613,6 +613,7 @@ qemu_src_configure() {
 			# Note: backend order matters here: #716202
 			# We iterate from higher-level to lower level.
 			$(usex pulseaudio pa "")
+			$(usev pipewire)
 			$(usev jack)
 			$(usev sdl)
 			$(usev alsa)
