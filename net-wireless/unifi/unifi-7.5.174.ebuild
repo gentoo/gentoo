@@ -35,23 +35,15 @@ QA_PREBUILT="usr/lib/unifi/lib/native/Linux/x86_64/*.so"
 
 src_prepare() {
 	if [[ ${CHOST} != aarch64* ]]; then
-		rm -r lib/native/Linux/aarch64 || die "Failed in removing aarch64 native libraries"
-	fi
-	if [[ ${CHOST} != armv7* ]]; then
-		rm -r lib/native/Linux/armv7 || die "Failed in removing armv7 native libraries"
+		rm -r lib/native/Linux/aarch64 || die
 	fi
 	if [[ ${CHOST} != x86_64* ]]; then
-		rm -r lib/native/Linux/x86_64 || die "Failed in removing x86_64 native libraries"
+		rm -r lib/native/Linux/x86_64 || die
 	fi
 
 	if [[ ${CHOST} == aarch64* ]]; then
 		if ! use systemd; then
 			rm lib/native/Linux/aarch64/libubnt_sdnotify_jni.so || die
-		fi
-	fi
-	if [[ ${CHOST} == armv7* ]]; then
-		if ! use systemd; then
-			rm lib/native/Linux/armv7/libubnt_sdnotify_jni.so || die
 		fi
 	fi
 	if [[ ${CHOST} == x86_64* ]]; then
