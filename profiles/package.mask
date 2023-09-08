@@ -43,12 +43,6 @@ dev-libs/kasync
 dev-libs/sink
 mail-client/kube
 
-# Hans de Graaff <graaff@gentoo.org> (2023-09-05)
-
-# Upstream snapshotm masked for testing. Some known defects, but it
-# compiles against openssl-3.
-~app-crypt/xca-2.4.0_p20230526
-
 # David Seifert <soap@gentoo.org> (2023-09-05)
 # OpenSSL 1.1 based, does not work with 3.0+. tpm2-openssl is the
 # spiritual successor for OpenSSL 3.0+, but isn't packaged.
