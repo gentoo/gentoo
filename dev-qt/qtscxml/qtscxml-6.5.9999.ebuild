@@ -11,14 +11,24 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
+IUSE="qml"
+
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[gui,network,opengl,widgets]
-	~dev-qt/qtdeclarative-${PV}:6
+	~dev-qt/qtbase-${PV}:6[gui]
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 DEPEND="${RDEPEND}"
 
 CMAKE_SKIP_TESTS=(
 	# may fail with pid-sandbox, or at least musl/hardened+gcc (exact
-	# conditions unknown but passes without pid, consider flaky)
+	# conditions unknown but passes without pid, considering this flaky)
 	tst_qstatemachine
 )
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_find_package qml Qt6Qml)
+	)
+
+	qt6-build_src_configure
+}
