@@ -15,5 +15,6 @@
 	</upstream>
 	<use>
 		<flag name="minimal">Don't install any PakSets (scenario data)</flag>
+		<flag name="midi">support for background MIDI music via <pkg>media-sound/fluidsynth</pkg></flag>
 	</use>
 </pkgmetadata>
