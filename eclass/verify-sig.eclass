@@ -55,8 +55,8 @@ IUSE="verify-sig"
 # @DESCRIPTION:
 # Signature verification method to use.  The allowed value are:
 #
-# - openpgp -- verify PGP signatures using app-crypt/gnupg (the default)
-# - signify -- verify signatures with Ed25519 public key using app-crypt/signify
+#  - openpgp -- verify PGP signatures using app-crypt/gnupg (the default)
+#  - signify -- verify signatures with Ed25519 public key using app-crypt/signify
 : "${VERIFY_SIG_METHOD:=openpgp}"
 
 case ${VERIFY_SIG_METHOD} in
