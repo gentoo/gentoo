@@ -26,7 +26,6 @@ _MOZCORECONF_V6_ECLASS=1
 inherit toolchain-funcs flag-o-matic python-any-r1
 
 BDEPEND="virtual/pkgconfig
-	dev-lang/python:2.7[ncurses,sqlite,ssl,threads(+)]
 	${PYTHON_DEPS}"
 
 IUSE="${IUSE} custom-cflags custom-optimization"
@@ -99,12 +98,6 @@ moz_pkgsetup() {
 	export QA_CONFIGURE_OPTIONS=".*"
 
 	python-any-r1_pkg_setup
-	# workaround to set python3 into PYTHON3 until mozilla doesn't need py2
-	if [[ "${PYTHON_COMPAT[@]}" != "${PYTHON_COMPAT[@]#python3*}" ]]; then
-		export PYTHON3=${PYTHON}
-		export PYTHON=python2.7
-		export EPYTHON="${EPREFIX}"/usr/bin/python2.7
-	fi
 }
 
 # @FUNCTION: mozconfig_init
