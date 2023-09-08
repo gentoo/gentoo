@@ -19,6 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )"
 
 BDEPEND="dev-db/sqlite:3
+	sys-devel/gettext
 	virtual/pkgconfig"
 
 DEPEND="${PYTHON_DEPS}
