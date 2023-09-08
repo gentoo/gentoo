@@ -16,14 +16,17 @@ fi
 IUSE="opengl vulkan"
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[concurrent,network,opengl=,vulkan=,widgets]
+	~dev-qt/qtbase-${PV}:6[concurrent,gui,opengl=,vulkan=,widgets]
 	~dev-qt/qtdeclarative-${PV}:6
 	~dev-qt/qtquicktimeline-${PV}:6
 	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
 	sys-libs/zlib:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? ( ~dev-qt/qtbase-${PV}:6[network] )
+"
 
 CMAKE_SKIP_TESTS=(
 	# collada support is disabled in system media-libs/assimp (bug #891787)
