@@ -16,10 +16,10 @@ fi
 IUSE="gles2-only qml vulkan"
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[concurrent,gles2-only=,gui,network,opengl,vulkan=,widgets]
+	~dev-qt/qtbase-${PV}:6[concurrent,gles2-only=,gui,network,opengl,vulkan=]
 	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
-	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets] )
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 DEPEND="
 	${RDEPEND}
