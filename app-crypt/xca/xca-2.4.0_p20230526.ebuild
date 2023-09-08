@@ -50,9 +50,12 @@ src_install() {
 	insinto /etc/xca
 	doins misc/*.txt
 
-	ewarn "Make a backup copy of your database!"
-	ewarn "Version 2 completely changes the database format to SQL(ite)"
-	ewarn "Don't try to open it with older versions of XCA (< 1.4.0). They will corrupt the database."
+	dosym xca /usr/bin/xca-console
+
+	ewarn "This is an unofficial snapshot that is compatible with openssl 3."
+	ewarn "One known flaw is that starting xca without a database will no longer open"
+	ewarn "the GUI. Provide either a new or existing database as an argument on the"
+	ewarn "command line."
 }
 
 pkg_postinst() {
