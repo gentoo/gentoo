@@ -13,6 +13,12 @@ LICENSE="LGPL-2.1+ GPL-3+ public-domain"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# Gnulib false positives #898346
+	# These are all tested without an #include first
+	MIN alignof static_assert
+)
+
 src_configure() {
 	econf --enable-relocatable
 }
