@@ -413,7 +413,6 @@ LICENSE+="
 	ISC SSLeay openssl MIT
 "
 
-
 BDEPEND="
 	dev-util/patchelf
 	>=virtual/rust-1.71
