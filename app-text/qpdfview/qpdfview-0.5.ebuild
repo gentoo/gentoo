@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES CONTRIBUTORS README TODO )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5-poppler-23.08.0-cxx17.patch
+)
+
 src_prepare() {
 	default
 
