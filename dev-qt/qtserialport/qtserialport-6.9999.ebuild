@@ -12,7 +12,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[gui,widgets]
+	~dev-qt/qtbase-${PV}:6
 	virtual/libudev:=
 "
 DEPEND="${RDEPEND}"
