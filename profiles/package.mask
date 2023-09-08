@@ -541,11 +541,6 @@ gnome-extra/tecla
 # supported gpg library. Removal on 2023-08-17.
 dev-python/pyGPG
 
-# David Seifert <soap@gentoo.org> (2023-05-19)
-# Abandoned, replaced by 'eselect repository' (app-eselect/eselect-repository),
-# tons of open bugs. Removal on 2023-08-17. Bug #761199.
-app-portage/layman
-
 # Sam James <sam@gentoo.org> (2023-05-10)
 # Lots of package breakage as usual for new versions. Masked until most/all
 # reverse dependencies are fixed. Tracker bug is bug #906077.
