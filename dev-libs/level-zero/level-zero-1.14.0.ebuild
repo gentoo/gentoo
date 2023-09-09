@@ -14,6 +14,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 
 src_prepare() {
+	# Don't hardcore -Werror
+	sed -e 's/-Werror//g' -i CMakeLists.txt || die
+
 	cmake_src_prepare
 
 	# According to upstream, release tarballs should contain this file but at least
