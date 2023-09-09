@@ -71,5 +71,5 @@ src_configure() {
 pkg_postinst() {
 	use assistant &&
 		optfeature "Qt documentation viewable in assistant" \
-			dev-qt/qt-docs:6 #602296
+			'dev-qt/qt-docs:6[qch]' #602296
 }
