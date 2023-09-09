@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-09-09)
+# OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
+# https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/
+# https://www.openssl.org/blog/blog/2023/06/15/1.1.1-EOL-Reminder/
+# Please run a full world upgrade, especially checking /etc/portage and your world file
+# for old PHP or Ruby references.
+<dev-libs/openssl-3
+<app-crypt/xca-2.4.0_p20230526
+
 # Conrad Kostecki <conikost@gentoo.org> (2023-09-09)
 # Release causes problems, upstream degrated to RC back.
 # See #913884 for more information
