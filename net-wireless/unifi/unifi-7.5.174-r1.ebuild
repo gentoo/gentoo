@@ -24,7 +24,7 @@ RDEPEND="
 	acct-group/unifi
 	acct-user/unifi
 	dev-db/mongodb
-	virtual/jre:11
+	virtual/jre:17
 "
 
 BDEPEND="app-arch/unzip"
