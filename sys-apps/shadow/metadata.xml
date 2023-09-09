@@ -8,6 +8,7 @@
 	<use>
 		<flag name="bcrypt">build the bcrypt password encryption algorithm</flag>
 		<flag name="su">build the su program</flag>
+		<flag name="yescrypt">build the yescrypt password encryption algorithm</flag>
 	</use>
 	<slots>
 		<subslots>Reflect ABI of libsubids.so</subslots>
