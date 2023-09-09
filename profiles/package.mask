@@ -34,6 +34,10 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-09-09)
+# Depends on PHP 8.0. Removal on 2023-10-09.
+~www-apps/tt-rss-20220218
+
+# David Seifert <soap@gentoo.org> (2023-09-09)
 # Unmaintained, depends on PHP 8.0. Removal on 2023-10-09.
 www-apps/icingaweb2-module-director
 www-apps/icingaweb2-module-incubator
