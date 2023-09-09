@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-09-09)
+# EOL upstream in 2 months, causes major headaches for OpenSSL 1.1
+# masking. Removal on 2023-10-09.
+dev-lang/php:8.0
+virtual/httpd-php:8.0
+
+# David Seifert <soap@gentoo.org> (2023-09-09)
 # Depends on PHP 8.0. Removal on 2023-10-09.
 ~www-apps/tt-rss-20220218
 
