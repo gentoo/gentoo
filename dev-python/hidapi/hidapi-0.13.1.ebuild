@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 DEPEND=">=dev-libs/hidapi-$(ver_cut 1-3)"
 RDEPEND="${DEPEND}"
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+# <cython-3 for bug #898678
+BDEPEND="<dev-python/cython-3[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
