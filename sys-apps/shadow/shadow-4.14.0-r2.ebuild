@@ -19,7 +19,7 @@ LICENSE="BSD GPL-2"
 # Subslot is for libsubid's SONAME.
 SLOT="0/4"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="acl audit bcrypt cracklib nls pam selinux skey split-usr su systemd xattr yescrypt"
+IUSE="acl audit cracklib nls pam selinux skey split-usr su systemd xattr"
 # Taken from the man/Makefile.am file.
 LANGS=( cs da de es fi fr hu id it ja ko pl pt_BR ru sv tr zh_CN zh_TW )
 
@@ -82,12 +82,13 @@ src_configure() {
 		--with-libbsd
 		--without-group-name-max-length
 		--without-tcb
+		--with-bcrypt
+		--with-yescrypt
 		$(use_enable nls)
 		# TODO: wire up upstream for elogind too
 		$(use_enable systemd logind)
 		$(use_with acl)
 		$(use_with audit)
-		$(use_with bcrypt)
 		$(use_with cracklib libcrack)
 		$(use_with elibc_glibc nscd)
 		$(use_with pam libpam)
@@ -95,7 +96,6 @@ src_configure() {
 		$(use_with skey)
 		$(use_with su)
 		$(use_with xattr attr)
-		$(use_with yescrypt)
 	)
 
 	econf "${myeconfargs[@]}"
