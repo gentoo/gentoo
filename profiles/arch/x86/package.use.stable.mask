@@ -100,10 +100,6 @@ app-admin/sudo -sssd
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-21)
-# Requires not yet stabilised media-libs/qtav
-media-gfx/digikam mediaplayer
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-10-01)
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test

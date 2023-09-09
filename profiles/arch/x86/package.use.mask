@@ -334,10 +334,6 @@ dev-ruby/asciidoctor test
 # dep tree that is unkeyworded at this time.
 >=net-irc/weechat-1.7 doc
 
-# Johannes Huber <johu@gentoo.org> (2017-08-07)
-# Requires media-libs/qtav, which is not keyworded on x86.
-media-gfx/digikam mediaplayer
-
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=cuda that is masked in this profile.
 media-gfx/blender opensubdiv
