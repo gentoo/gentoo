@@ -1,0 +1,97 @@
+diff -ur scummvm-tools-2.7.0/Makefile scummvm-tools-2.7.0-guisuffix/Makefile
+--- scummvm-tools-2.7.0/Makefile	2023-02-15 20:41:02.000000000 +0000
++++ scummvm-tools-2.7.0-guisuffix/Makefile	2023-08-08 11:07:17.100560993 +0100
+@@ -130,7 +130,7 @@
+ 	$(STRIP) grim_til2bmp$(EXEEXT) -o $(WIN32PATH)/tools/grim_til2bmp$(EXEEXT)
+ 	$(STRIP) grim_vima$(EXEEXT) -o $(WIN32PATH)/tools/grim_vima$(EXEEXT)
+ ifeq "$(USE_WXWIDGETS)" "1"
+-	$(STRIP) scummvm-tools$(EXEEXT) -o $(WIN32PATH)/tools/scummvm-tools$(EXEEXT)
++	$(STRIP) scummvm-tools-gui$(EXEEXT) -o $(WIN32PATH)/tools/scummvm-tools-gui$(EXEEXT)
+ endif
+ 	$(STRIP) scummvm-tools-cli$(EXEEXT) -o $(WIN32PATH)/tools/scummvm-tools-cli$(EXEEXT)
+ 	cp $(srcdir)/*.bat $(WIN32PATH)/tools
+@@ -194,7 +194,7 @@
+ 	$(STRIP) grim_til2bmp$(EXEEXT)       -o $(srcdir)/$(WIN32BUILD)/tools/grim_til2bmp$(EXEEXT)
+ 	$(STRIP) grim_vima$(EXEEXT)          -o $(srcdir)/$(WIN32BUILD)/tools/grim_vima$(EXEEXT)
+ ifeq "$(USE_WXWIDGETS)" "1"
+-	$(STRIP) scummvm-tools$(EXEEXT)      -o $(srcdir)/$(WIN32BUILD)/scummvm-tools$(EXEEXT)
++	$(STRIP) scummvm-tools-gui$(EXEEXT)      -o $(srcdir)/$(WIN32BUILD)/scummvm-tools-gui$(EXEEXT)
+ endif
+ 	$(STRIP) scummvm-tools-cli$(EXEEXT)  -o $(srcdir)/$(WIN32BUILD)/scummvm-tools-cli$(EXEEXT)
+ 	makensis -V2 -Dtop_srcdir="../.." -Dtext_dir="../../$(WIN32BUILD)" -Dbuild_dir="../../$(WIN32BUILD)" $(srcdir)/dists/win32/scummvm-tools.nsi
+@@ -226,8 +226,8 @@
+ 
+ 
+ # Special target to create a static linked binaries for Mac OS X.
+-scummvm-tools-static: $(scummvm-tools_OBJS)
+-	$(CXX) $(LDFLAGS) -o scummvm-tools-static $(scummvm-tools_OBJS) \
++scummvm-tools-gui-static: $(scummvm-tools-gui_OBJS)
++	$(CXX) $(LDFLAGS) -o scummvm-tools-gui-static $(scummvm-tools-gui_OBJS) \
+ 		-framework AudioUnit -framework AudioToolbox -framework Carbon -framework CoreMIDI \
+ 		$(WXSTATICLIBS) $(OSX_STATIC_LIBS)
+ 
+@@ -237,7 +237,7 @@
+ 		$(OSX_STATIC_LIBS)
+ 
+ bundle_name = ScummVM\ Tools.app
+-bundle: scummvm-tools-static
++bundle: scummvm-tools-gui-static
+ 	mkdir -p $(bundle_name)
+ 	mkdir -p $(bundle_name)/Contents
+ 	mkdir -p $(bundle_name)/Contents/MacOS
+@@ -245,7 +245,7 @@
+ 	echo "APPL????" > $(bundle_name)/Contents/PkgInfo
+ 	cp $(srcdir)/dists/macosx/Info.plist $(bundle_name)/Contents/
+ 	cp $(srcdir)/gui/media/*.* $(bundle_name)/Contents/Resources
+-	cp scummvm-tools-static $(bundle_name)/Contents/MacOS/scummvm-tools
++	cp scummvm-tools-gui-static $(bundle_name)/Contents/MacOS/scummvm-tools-gui
+ 
+ # Special target to create a snapshot disk image for Mac OS X
+ osxsnap: bundle scummvm-tools-cli-static
+@@ -312,7 +312,7 @@
+ 	$(STRIP) extract_ngi$(EXEEXT) -o $(AMIGAOSPATH)/extract_ngi$(EXEEXT)
+ 	$(STRIP) gob_loadcalc$(EXEEXT) -o $(AMIGAOSPATH)/gob_loadcalc$(EXEEXT)
+ ifeq "$(USE_WXWIDGETS)" "1"
+-	$(STRIP) scummvm-tools$(EXEEXT) -o $(AMIGAOSPATH)/scummvm-tools$(EXEEXT)
++	$(STRIP) scummvm-tools-gui$(EXEEXT) -o $(AMIGAOSPATH)/scummvm-tools-gui$(EXEEXT)
+ endif
+ 	$(STRIP) scummvm-tools-cli$(EXEEXT) -o $(AMIGAOSPATH)/scummvm-tools-cli$(EXEEXT)
+ 	$(STRIP) extract_hadesch$(EXEEXT) -o $(AMIGAOSPATH)/extract_hadesch$(EXEEXT)
+diff -ur scummvm-tools-2.7.0/Makefile.common scummvm-tools-2.7.0-guisuffix/Makefile.common
+--- scummvm-tools-2.7.0/Makefile.common	2023-02-15 20:41:02.000000000 +0000
++++ scummvm-tools-2.7.0-guisuffix/Makefile.common	2023-08-08 11:04:15.106859869 +0100
+@@ -76,7 +76,7 @@
+ 
+ ifdef USE_WXWIDGETS
+ PROGRAMS += \
+-	scummvm-tools
++	scummvm-tools-gui
+ endif
+ 
+ ifdef MACOSX
+@@ -386,14 +386,14 @@
+ 	encode_dxa.o
+ endif
+ 
+-scummvm-tools_OBJS := \
++scummvm-tools-gui_OBJS := \
+ 	gui/configuration.o \
+ 	gui/gui_tools.o \
+ 	gui/main.o \
+ 	gui/pages.o \
+ 	$(tools_OBJS) \
+ 	$(OBJS)
+-scummvm-tools_LIBS := $(WXLIBS) $(LIBS)
++scummvm-tools-gui_LIBS := $(WXLIBS) $(LIBS)
+ 
+ # Set custom build flags for various files
+ gui/configuration.o: CPPFLAGS+=$(WXINCLUDES)
+@@ -448,7 +448,7 @@
+ version.o: $(filter-out version.o,$(degob_OBJS))
+ version.o: $(filter-out version.o,$(scummvm-tools-cli_OBJS))
+ ifdef USE_WXWIDGETS
+-version.o: $(filter-out version.o,$(scummvm-tools_OBJS))
++version.o: $(filter-out version.o,$(scummvm-tools-gui_OBJS))
+ endif
+ version.o: $(filter-out version.o,$(detwine_OBJS))
+ 
