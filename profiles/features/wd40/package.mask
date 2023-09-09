@@ -93,6 +93,7 @@ dev-util/git-delta
 dev-util/maturin
 dev-util/selenium-manager
 dev-util/tree-sitter-cli
+dev-vcs/breezy
 >=dev-vcs/stgit-2
 >=games-board/gnome-mahjongg-3.40.0
 gnome-base/gdm
