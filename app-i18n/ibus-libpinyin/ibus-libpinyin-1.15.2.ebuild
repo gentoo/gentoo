@@ -23,7 +23,7 @@ BDEPEND="dev-db/sqlite:3
 	virtual/pkgconfig"
 
 DEPEND="${PYTHON_DEPS}
-	>=app-i18n/libpinyin-2.2.1:=
+	>=app-i18n/libpinyin-2.7.91:=
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	virtual/libintl
