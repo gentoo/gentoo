@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.10-boost-1.79.patch"
 	"${FILESDIR}/${PN}-4.4.10-no-force-lld.patch"
 	"${FILESDIR}/${PN}-4.4.10-boost-1.81.patch"
+	"${FILESDIR}/${PN}-4.4.8-gcc-13.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
