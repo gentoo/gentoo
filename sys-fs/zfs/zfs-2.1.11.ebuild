@@ -313,8 +313,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	udev_reload
-
-	if ! use kernel-builtin && [[ ${PV} == "9999" ]]; then
-		remove_moduledb
-	fi
 }

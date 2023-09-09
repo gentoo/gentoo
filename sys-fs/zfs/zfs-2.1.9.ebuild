@@ -12,7 +12,7 @@ DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
 if [[ ${PV} == "9999" ]]; then
-	inherit git-r3 linux-mod
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openzfs.asc
@@ -294,12 +294,6 @@ pkg_postinst() {
 		fi
 	fi
 
-	if ! use kernel-builtin && [[ ${PV} == "9999" ]]; then
-		einfo "Adding ${P} to the module database to ensure that the"
-		einfo "kernel modules and userland utilities stay in sync."
-		update_moduledb
-	fi
-
 	if systemd_is_booted || has_version sys-apps/systemd; then
 		einfo "Please refer to ${EROOT}/$(systemd_get_systempresetdir)/50-zfs.preset"
 		einfo "for default zfs systemd service configuration"
@@ -319,8 +313,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	udev_reload
-
-	if ! use kernel-builtin && [[ ${PV} == "9999" ]]; then
-		remove_moduledb
-	fi
 }
