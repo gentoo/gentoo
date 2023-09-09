@@ -877,7 +877,7 @@ install_sources() {
 	dodir /usr/src
 	einfo ">>> Copying sources ..."
 
-	file="$(find ${WORKDIR} -iname "docs" -type d)"
+	file="$(find "${WORKDIR}" -iname "docs" -type d)"
 	if [[ -n ${file} ]]; then
 		for file in $(find ${file} -type f); do
 			echo "${file//*docs\/}" >> "${S}"/patches.txt
