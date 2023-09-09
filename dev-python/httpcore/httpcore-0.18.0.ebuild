@@ -31,6 +31,7 @@ RDEPEND="
 	=dev-python/sniffio-1*[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
