@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-09-10)
+# Upstream has marked this packaged as unmaintained[0] and recommends usage of
+# the active fork eza[1] available as sys-apps/eza
+# Please transition to the new package.
+# Removal: 2023-10-10.  Bug #913737.
+# [0]: https://github.com/ogham/exa/commit/fb05c421ae98e076989eb6e8b1bcf42c07c1d0fe
+# [1]: https://github.com/eza-community/eza
+sys-apps/exa
+
 # Hans de Graaff <graaff@gentoo.org> (2023-09-10)
 # Obsolete slot that no longer has any reverse dependencies. Not
 # compatible with openssl 3. Use the newer slot instead. Masked for
