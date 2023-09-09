@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-09-09)
+# Depends on PHP 8.0, which in turn depends on OpenSSL 1.1, which in
+# turn is to be masked and removed soon. Removal on 2023-10-09.
+www-apps/moodle:3.11.16
+www-apps/moodle:4.0.10
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-09-06)
 # dev-libs/sink is unmaintained upstream, in Gentoo, fails to build.
 # Masked for removal on 2023-10-06, together with mail-client/kube and
