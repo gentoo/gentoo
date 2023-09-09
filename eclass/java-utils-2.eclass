@@ -577,7 +577,7 @@ java-pkg_regso() {
 			java-pkg_append_ JAVA_PKG_LIBRARY "/${target_dir#${D}}"
 		# Check the path of the lib relative to ${D}
 		elif [[ -e "${D}${lib}" ]]; then
-			target_dir="$(java-pkg_expand_dir_ ${D}${lib})"
+			target_dir="$(java-pkg_expand_dir_ "${D}${lib}")"
 			java-pkg_append_ JAVA_PKG_LIBRARY "${target_dir}"
 		else
 			die "${lib} does not exist"
@@ -924,7 +924,7 @@ java-pkg_recordjavadoc()
 	debug-print-function ${FUNCNAME} $*
 	# the find statement is important
 	# as some packages include multiple trees of javadoc
-	JAVADOC_PATH="$(find ${D}/usr/share/doc/ -name allclasses-frame.html -printf '%h:')"
+	JAVADOC_PATH="$(find "${D}"/usr/share/doc/ -name allclasses-frame.html -printf '%h:')"
 	# remove $D - TODO: check this is ok with all cases of the above
 	JAVADOC_PATH="${JAVADOC_PATH//${D}}"
 	if [[ -n "${JAVADOC_PATH}" ]] ; then
