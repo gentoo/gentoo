@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
