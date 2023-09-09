@@ -27,7 +27,7 @@
 		<flag name="designer">Enable designer for QtWidgets-based UIs</flag>
 		<flag name="docker">Build plugin for Docker support</flag>
 		<flag name="glsl">Build the GLSL editor plugin</flag>
-		<flag name="help">Enable the integrated documentation viewer</flag>
+		<flag name="help">Enable the integrated <pkg>dev-qt/qt-docs</pkg> viewer (also needed for examples)</flag>
 		<flag name="imageviewer">Build plugin to open and view image files</flag>
 		<flag name="incredibuild">Enable integration with Incredibuild</flag>
 		<flag name="lsp">Add support for the Language Server Protocol (LSP)</flag>
@@ -49,12 +49,15 @@
 		<flag name="serialterminal">Build the serial terminal plugin</flag>
 		<flag name="silversearcher">Enable integration with <pkg>sys-apps/the_silver_searcher</pkg></flag>
 		<flag name="systemd">Add support for retrieving application output from journald</flag>
+		<flag name="qmldesigner">Build QmlDesigner and related plugins (Insight, StudioWelcome)</flag>
+		<flag name="tracing">Build plugins requiring tracing capabilities (CtfVisualizer, PerfProfiler, QmlProfiler)</flag>
 		<flag name="valgrind">Enable integration with <pkg>dev-util/valgrind</pkg></flag>
 		<flag name="webassembly">Build WebAssembly plugin</flag>
-		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> to view documentation</flag>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> with the help USE rather than bundled litehtml</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/qtcreator/</doc>
+		<remote-id type="github">qt-creator/qt-creator</remote-id>
 	</upstream>
 </pkgmetadata>
