@@ -286,7 +286,7 @@ _qt6-build_prepare_env() {
 
 	readonly QT6_BINDIR=${QT6_ARCHDATADIR}/bin
 	readonly QT6_DOCDIR=${QT6_PREFIX}/share/qt6-doc
-	readonly QT6_EXAMPLESDIR=${QT6_ARCHDATADIR}/examples
+	readonly QT6_EXAMPLESDIR=${QT6_DATADIR}/examples
 	readonly QT6_HEADERDIR=${QT6_PREFIX}/include/qt6
 	readonly QT6_IMPORTDIR=${QT6_ARCHDATADIR}/imports
 	readonly QT6_LIBEXECDIR=${QT6_ARCHDATADIR}/libexec
