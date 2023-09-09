@@ -13,12 +13,11 @@ S="${WORKDIR}/FeatherPad-${PV}"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="+qt5 qt6 +X"
-REQUIRED_USE="^^ ( qt5 qt6 )"
+IUSE="qt6 +X"
 
 RDEPEND="
 	app-text/hunspell:=
-	qt5? (
+	!qt6? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
 		dev-qt/qtgui:5
@@ -37,14 +36,14 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
-	qt5? ( dev-qt/linguist-tools:5 )
+	!qt6? ( dev-qt/linguist-tools:5 )
 	qt6? ( dev-qt/qttools:6[linguist] )
 "
 
 src_configure() {
 	local mycmakeargs=(
 		-DWITHOUT_X11=$(usex !X)
-		-DENABLE_QT5=$(usex qt5)
+		-DENABLE_QT5=$(usex !qt6)
 	)
 	cmake_src_configure
 }
