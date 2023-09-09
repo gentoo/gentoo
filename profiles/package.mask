@@ -467,11 +467,6 @@ gnome-extra/tecla
 # Segfaults with non-bison yacc.
 =app-shells/bash-5.2_p15-r4
 
-# Sam James <sam@gentoo.org> (2023-06-22)
-# Causes segfaults in dependent dev-util/conf2struct.
-# See bug #908989 and related bug #908982.
-=dev-perl/Conf-Libconfig-1.0.0
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-21)
 # suitesparseconfig-7.0.0 fails to build with multilib enabled
 # because of dependencies that cannot be satisfied.  All the other
