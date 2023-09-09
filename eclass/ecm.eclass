@@ -222,23 +222,13 @@ case ${ECM_HANDBOOK} in
 		;;
 esac
 
-# Unfortunately, Portage has no concept of BDEPEND=dev-qt/qthelp being broken
-# by having only partially updated Qt dependencies, which means it will order
-# dev-qt/qthelp revdeps in build queue before its own Qt dependencies, leaving
-# qhelpgenerator broken. This is an attempt to help with that. Bug #836726
 case ${ECM_QTHELP} in
 	true)
 		IUSE+=" doc"
 		COMMONDEPEND+=" doc? ( dev-qt/qt-docs:${KFSLOT} )"
 		BDEPEND+=" doc? (
 			>=app-doc/doxygen-1.8.13-r1
-			(
-				=dev-qt/qtcore-5.15.10*:5
-				=dev-qt/qtgui-5.15.10*:5
-				=dev-qt/qthelp-5.15.10*:5
-				=dev-qt/qtsql-5.15.10*:5
-				=dev-qt/qtwidgets-5.15.10*:5
-			)
+			dev-qt/qthelp:${KFSLOT}
 		)"
 		;;
 	false) ;;
