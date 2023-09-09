@@ -1,0 +1,30 @@
+From 032d5342430f4c5dfbc34a2817d67386a14fd51b Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sun, 19 May 2013 11:40:49 +0100
+Subject: [PATCH 03/15] Get coordinates from previous vertex if last command is
+ path_cmd_end_poly
+
+---
+ include/agg_path_storage.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/include/agg_path_storage.h b/include/agg_path_storage.h
+index 7be7393..8922fc8 100644
+--- a/include/agg_path_storage.h
++++ b/include/agg_path_storage.h
+@@ -878,6 +878,12 @@ namespace agg
+                 *x += x2;
+                 *y += y2;
+             }
++            else if (!is_stop(m_vertices.last_command()) &&
++                     is_vertex(m_vertices.prev_vertex(&x2, &y2)))
++            {
++                *x += x2;
++                *y += y2;
++            }
+         }
+     }
+ 
+-- 
+1.8.1.4
+
