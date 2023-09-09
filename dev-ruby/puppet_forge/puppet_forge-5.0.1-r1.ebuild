@@ -20,6 +20,8 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 IUSE=""
 
+PATCHES=( "${FILESDIR}/${P}-typhoeus.patch" )
+
 ruby_add_rdepend "
 	dev-ruby/faraday:2
 	>=dev-ruby/faraday-follow_redirects-0.3.0:0.3
@@ -32,7 +34,4 @@ all_ruby_prepare() {
 	rm -rf spec/integration spec/unit/forge/v3/user_spec.rb || die
 
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
-
-	# Avoid specs that are broken when typhoeus is installed
-	rm -f spec/unit/forge/connection_spec.rb spec/unit/forge/v3/{base,release}_spec.rb || die
 }
