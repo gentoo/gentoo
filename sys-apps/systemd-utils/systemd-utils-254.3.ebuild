@@ -23,7 +23,7 @@ else
 fi
 
 MUSL_PATCHSET="systemd-musl-patches-254.3"
-SRC_URI+=" elibc_musl? ( https://github.com/vimproved/systemd-musl-patches/archive/refs/tags/${MUSL_PATCHSET##*-}.tar.gz -> ${MUSL_PATCHSET}.tar.gz )"
+SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.tar.gz )"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
