@@ -164,10 +164,6 @@ media-plugins/grilo-plugins chromaprint
 # sssd is only stable for amd64 and x86
 app-admin/sudo sssd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-10-16)
-# app-misc/ddcutil is not yet stable.
-kde-plasma/powerdevil brightness-control
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
