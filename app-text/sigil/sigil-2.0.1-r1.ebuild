@@ -3,16 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="tk"
 
 inherit xdg cmake python-single-r1
 
-DESCRIPTION="Multi-platform WYSIWYG ebook editor for ePub format"
-HOMEPAGE="https://sigil-ebook.com/ https://github.com/Sigil-Ebook/Sigil"
-IUSE="doc +plugins +qt5 qt6"
 DOC_VERSION="2022.05.17"
 DOC_FILE="Sigil_User_Guide_${DOC_VERSION}.epub"
+
+DESCRIPTION="Multi-platform WYSIWYG ebook editor for ePub format"
+HOMEPAGE="https://sigil-ebook.com/ https://github.com/Sigil-Ebook/Sigil"
 SRC_URI="https://github.com/Sigil-Ebook/Sigil/archive/${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( https://github.com/Sigil-Ebook/sigil-user-guide/releases/download/${DOC_VERSION}/${DOC_FILE} )"
 S="${WORKDIR}/${P^}"
@@ -20,7 +20,8 @@ S="${WORKDIR}/${P^}"
 LICENSE="GPL-3+ Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-REQUIRED_USE="${PYTHON_REQUIRED_USE} ^^ ( qt5 qt6 )"
+IUSE="doc +plugins qt6"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -37,9 +38,9 @@ RDEPEND="
 		dev-python/dulwich[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/regex[${PYTHON_USEDEP}]'
-	) )
-	qt5? (
+		dev-python/regex[${PYTHON_USEDEP}]
+	') )
+	!qt6? (
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -58,9 +59,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	qt5? ( dev-qt/linguist-tools:5 )
-	qt6? ( dev-qt/qttools:6[linguist] )
 	virtual/pkgconfig
+	!qt6? ( dev-qt/linguist-tools:5 )
+	qt6? ( dev-qt/qttools:6[linguist] )
 "
 
 DOCS=( ChangeLog.txt README.md )
