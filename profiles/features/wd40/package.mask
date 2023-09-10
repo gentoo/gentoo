@@ -43,6 +43,7 @@ dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-git-revision-date-localized-plugin
+dev-python/nh3
 >=dev-python/notebook-7
 dev-python/oauthlib
 dev-python/openapi-core
@@ -68,6 +69,7 @@ dev-python/python-jose
 dev-python/python-neutronclient
 dev-python/python-openstackclient
 dev-python/python-sshpubkeys
+dev-python/readme-renderer
 dev-python/referencing
 dev-python/requests-kerberos
 dev-python/requests-oauthlib
