@@ -6,7 +6,7 @@ EAPI=7
 inherit systemd udev
 
 DESCRIPTION="Gentoo Network Interface Management Scripts"
-HOMEPAGE="https://www.gentoo.org/proj/en/base/openrc/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Netifrc"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/netifrc.git"
