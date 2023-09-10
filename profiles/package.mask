@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-09-10)
+# Obsolete slot that no longer has any reverse dependencies. Not
+# compatible with openssl 3. Use the newer slot instead. Masked for
+# removal on 2023-10-10.
+dev-ruby/net-ssh:6
+
+# Hans de Graaff <graaff@gentoo.org> (2023-09-10)
 # Obsolete slot that no longer has any reverse dependencies. Use the
 # newer slot instead. Masked for removal on 2023-10-10.
 dev-ruby/mail:2.7
