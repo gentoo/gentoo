@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md doc/*.md"
@@ -42,4 +42,7 @@ all_ruby_prepare() {
 	sed -i -e '/\(assert\|refute\)_similar/ s:^:#:' test/*_test.rb || die
 
 	sed -i -e '/\(bundler\|phashion\|vips\)/ s:^:#:' Rakefile test/test_helper.rb || die
+
+	# Fix minitest deprecation
+	sed -i -e 's/MiniTest/Minitest/' test/test_helper.rb || die
 }
