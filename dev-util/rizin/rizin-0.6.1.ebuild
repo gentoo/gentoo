@@ -77,7 +77,8 @@ src_configure() {
 		-Duse_sys_lz4=enabled
 		-Duse_sys_lzma=enabled
 		-Duse_sys_magic=enabled
-		-Duse_sys_openssl=enabled
+		# https://github.com/rizinorg/rizin/issues/3841
+		# -Duse_sys_openssl=enabled
 		-Duse_sys_tree_sitter=enabled
 		-Duse_sys_xxhash=enabled
 		-Duse_sys_zlib=enabled
