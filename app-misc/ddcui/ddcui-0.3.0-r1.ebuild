@@ -25,6 +25,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.2.1-drop-qthelp-dep.patch"
+)
+
 src_prepare() {
 	# move docs to correct dir
 	sed -i -e "s%share/doc/ddcui%share/doc/${PF}%g" CMakeLists.txt || die

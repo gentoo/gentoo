@@ -27,6 +27,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-drop-qthelp-dep.patch"
 )
 
 src_prepare() {
