@@ -51,6 +51,7 @@ PATCHES=(
 	#"${FILESDIR}/${PN}-4.0.6-skip-broken-tests.patch"
 	"${FILESDIR}/${PN}-4.2.0-no-attrdict.patch"
 	"${FILESDIR}/${PN}-4.2.0-flags.patch"
+	"${FILESDIR}/${PN}-4.2.0-cython-3.patch"
 )
 
 python_prepare_all() {
