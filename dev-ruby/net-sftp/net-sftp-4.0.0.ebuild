@@ -19,7 +19,7 @@ SLOT="2"
 KEYWORDS="amd64 ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 IUSE=""
 
-ruby_add_rdepend "|| ( dev-ruby/net-ssh:7 dev-ruby/net-ssh:6 )"
+ruby_add_rdepend "dev-ruby/net-ssh:7"
 
 ruby_add_bdepend "
 	test? (
