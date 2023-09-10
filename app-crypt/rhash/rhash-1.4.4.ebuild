@@ -42,6 +42,14 @@ src_prepare() {
 			librhash/util.h || die
 	fi
 
+	# upstream fix for BSD and others, but was only applied for BSD
+	# we need support for Solaris, where we use a GNU toolchain, so use
+	# the original hack, hopefully next release has this fixed
+	# https://github.com/rhash/RHash/issues/238
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		sed -i -e 's/^elif linux; then/else/' configure || die
+	fi
+
 	multilib_copy_sources
 }
 
