@@ -338,14 +338,12 @@ multilib_src_compile() {
 			)
 			if use test; then
 				targets+=(
-					# Used by udev-test.pl
-					systemd-detect-virt
-
 					test-fido-id-desc
 					test-udev-builtin
 					test-udev-event
 					test-udev-node
 					test-udev-util
+					udev-rule-runner
 				)
 			fi
 		fi
@@ -386,16 +384,12 @@ multilib_src_test() {
 			tests+=(
 				rule-syntax-check
 				test-fido-id-desc
+				test-udev
 				test-udev-builtin
 				test-udev-event
 				test-udev-node
 				test-udev-util
 			)
-			if [[ -w /dev ]]; then
-				tests+=( udev-test )
-			else
-				ewarn "Skipping udev-test (needs write access to /dev)"
-			fi
 		fi
 	fi
 	if use udev; then
@@ -447,6 +441,7 @@ multilib_src_install() {
 			exeinto "${rootprefix}"/lib/udev
 			doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
 
+			rm -f rules.d/99-systemd.rules
 			insinto "${rootprefix}"/lib/udev/rules.d
 			doins rules.d/*.rules
 
