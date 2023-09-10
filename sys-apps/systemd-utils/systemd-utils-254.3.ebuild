@@ -310,7 +310,7 @@ multilib_src_compile() {
 				tmpfiles.d/{etc,static-nodes-permissions,var}.conf
 			)
 			if use test; then
-				targets+=( test-tmpfiles )
+				targets+=( test-tmpfile-util )
 			fi
 		fi
 		if use udev; then
@@ -340,8 +340,6 @@ multilib_src_compile() {
 				targets+=(
 					# Used by udev-test.pl
 					systemd-detect-virt
-					test/sys
-					test-udev
 
 					test-fido-id-desc
 					test-udev-builtin
@@ -381,7 +379,7 @@ multilib_src_test() {
 		if use tmpfiles; then
 			tests+=(
 				test-systemd-tmpfiles.standalone
-				test-tmpfiles
+				test-tmpfile-util
 			)
 		fi
 		if use udev; then
