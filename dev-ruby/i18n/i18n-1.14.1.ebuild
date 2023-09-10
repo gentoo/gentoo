@@ -19,13 +19,12 @@ KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-l
 
 ruby_add_rdepend "dev-ruby/concurrent-ruby:1"
 
-# We need mocha:1.0 which corresponds to the Gemfiles used in each_ruby_test
 ruby_add_bdepend "
 	test? (
 		>=dev-ruby/activesupport-5.1
 		dev-ruby/bundler
 		>=dev-ruby/minitest-5.14:5
-		>=dev-ruby/mocha-1.7.0:1.0
+		dev-ruby/mocha:2
 		dev-ruby/test_declarative
 	)
 "
@@ -37,7 +36,10 @@ all_ruby_prepare() {
 	sed -i -e '/oj/ s:^:#:' gemfiles/* || die
 
 	# Update old test dependencies
-	sed -i -e '/rake/ s/~>/>=/' -e 's/1.7.0/1.7/' -e '3igem "json"' gemfiles/* || die
+	sed -i -e '/rake/ s/~>/>=/' -e '/mocha/ s/1.7.0/2.0/' -e '3igem "json"' gemfiles/* || die
+
+	# Use mocha 2 to avoid minitest deprecation issues.
+	sed -i -e 's:mocha/setup:mocha/minitest:' test/test_helper.rb || die
 }
 
 each_ruby_test() {
