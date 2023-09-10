@@ -5,8 +5,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake llvm.org multilib-minimal pax-utils python-any-r1
-inherit toolchain-funcs
+inherit cmake llvm.org multilib multilib-minimal pax-utils prefix
+inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
@@ -16,13 +16,23 @@ HOMEPAGE="https://llvm.org/"
 # 2. xxhash: BSD.
 # 3. MD5 code: public-domain.
 # 4. ConvertUTF.h: TODO.
+# 5. MSVCSetupApi.h: MIT
+# 6. sorttable.js: MIT
 
-LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
+LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD MIT public-domain rc"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
 KEYWORDS=""
 IUSE="
-	+binutils-plugin +debug debuginfod doc exegesis libedit +libffi
-	ncurses test xar xml z3 zstd
+	+binutils-plugin +debug debuginfod doc exegesis ieee-long-double libedit
+	+libffi ncurses +pie +static-analyzer test xar xml z3 zstd
+"
+for project in clang clang-tools-extra lld; do
+	IUSE+=" llvm_projects_${project}"
+done
+REQUIRED_USE+="
+	${PYTHON_REQUIRED_USE}
+	static-analyzer? ( llvm_projects_clang )
+	llvm_projects_clang-tools-extra? ( llvm_projects_clang )
 "
 RESTRICT="!test? ( test )"
 
@@ -36,10 +46,12 @@ RDEPEND="
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=dev-libs/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
+	static-analyzer? ( dev-lang/perl:* )
 	xar? ( app-arch/xar )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	z3? ( >=sci-mathematics/z3-4.7.1:0=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
+	llvm_projects_clang? ( ${PYTHON_DEPS} )
 "
 DEPEND="
 	${RDEPEND}
@@ -54,7 +66,7 @@ BDEPEND="
 		<sys-libs/libcxx-${LLVM_VERSION}.9999
 		>=sys-devel/binutils-apple-5.1
 	)
-	doc? ( $(python_gen_any_dep '
+	doc? ( $(python_gen_cond_dep '
 		dev-python/recommonmark[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	') )
@@ -65,14 +77,20 @@ BDEPEND="
 RDEPEND="
 	${RDEPEND}
 	!sys-devel/llvm:0
+	llvm_projects_clang? ( ${PYTHON_DEPS} )
 "
 PDEPEND="
 	sys-devel/llvm-common
 	sys-devel/llvm-toolchain-symlinks:${LLVM_MAJOR}
 	binutils-plugin? ( >=sys-devel/llvmgold-${LLVM_MAJOR} )
+	llvm_projects_clang? (
+		>=sys-devel/clang-common-${PV}
+		~sys-devel/clang-runtime-${PV}
+		sys-devel/clang-toolchain-symlinks:${LLVM_MAJOR}
+	)
 "
 
-LLVM_COMPONENTS=( llvm cmake third-party )
+LLVM_COMPONENTS=( llvm clang clang-tools-extra cmake libunwind/include/mach-o lld third-party )
 LLVM_MANPAGES=1
 LLVM_USE_TARGETS=provide
 llvm.org_set_globals
@@ -134,16 +152,19 @@ check_distribution_components() {
 					# testing libraries
 					LLVMTestingAnnotations|LLVMTestingSupport)
 						;;
-					# static libs
-					LLVM*)
+					# meta-targets
+					clang-libraries|distribution|llvm-libraries)
 						continue
 						;;
-					# meta-targets
-					distribution|llvm-libraries)
+					# tools
+					clang|clangd|clang-*)
+						;;
+					# static libs
+					clang*|findAllSymbols|LLVM*)
 						continue
 						;;
 					# used only w/ USE=doc
-					docs-llvm-html)
+					docs-clang-html|docs-clang-tools-html|docs-lld-html|docs-llvm-html)
 						use doc || continue
 						;;
 				esac
@@ -187,7 +208,20 @@ src_prepare() {
 	# Verify that the ebuild is up-to-date
 	check_uptodate
 
+	# create extra parent dir for relative CLANG_RESOURCE_DIR access
+	mkdir -p x/y || die
+	BUILD_DIR=${WORKDIR}/x/y/llvm
+
 	llvm.org_src_prepare
+
+	# add Gentoo Portage Prefix for Darwin (see prefix-dirs.patch)
+	eprefixify \
+		"${WORKDIR}/clang/lib/Lex/InitHeaderSearch.cpp" \
+		"${WORKDIR}/clang/lib/Driver/ToolChains/Darwin.cpp" || die
+
+	if ! use prefix-guest && [[ -n ${EPREFIX} ]]; then
+		sed -i "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX}/\"@" "${WORKDIR}/clang/lib/Driver/ToolChains/Linux.cpp" || die
+	fi
 }
 
 get_distribution_components() {
@@ -217,6 +251,41 @@ get_distribution_components() {
 		LLVMTestingAnnotations
 		LLVMTestingSupport
 	)
+
+	if use llvm_projects_clang; then
+		out+=(
+			# common stuff
+			clang-cmake-exports
+			clang-headers
+			clang-resource-headers
+			libclang-headers
+
+			aarch64-resource-headers
+			arm-common-resource-headers
+			arm-resource-headers
+			core-resource-headers
+			cuda-resource-headers
+			hexagon-resource-headers
+			hip-resource-headers
+			hlsl-resource-headers
+			mips-resource-headers
+			opencl-resource-headers
+			openmp-resource-headers
+			ppc-htm-resource-headers
+			ppc-resource-headers
+			riscv-resource-headers
+			systemz-resource-headers
+			utility-resource-headers
+			ve-resource-headers
+			webassembly-resource-headers
+			windows-resource-headers
+			x86-resource-headers
+
+			# libs
+			clang-cpp
+			libclang
+		)
+	fi
 
 	if multilib_is_native_abi; then
 		out+=(
@@ -250,6 +319,7 @@ get_distribution_components() {
 			llvm-cxxfilt
 			llvm-cxxmap
 			llvm-debuginfo-analyzer
+			llvm-debuginfod
 			llvm-debuginfod-find
 			llvm-diff
 			llvm-dis
@@ -314,6 +384,61 @@ get_distribution_components() {
 			opt-viewer
 		)
 
+		if use llvm_projects_clang; then
+			out+=(
+				# common stuff
+				bash-autocomplete
+				libclang-python-bindings
+
+				# tools
+				amdgpu-arch
+				c-index-test
+				clang
+				clang-format
+				clang-linker-wrapper
+				clang-offload-bundler
+				clang-offload-packager
+				clang-refactor
+				clang-repl
+				clang-rename
+				clang-scan-deps
+				diagtool
+				hmaptool
+				nvptx-arch
+
+				# needed for cross-compiling Clang
+				clang-tblgen
+			)
+		fi
+
+		if use llvm_projects_clang-tools-extra; then
+			out+=(
+				# extra tools
+				clang-apply-replacements
+				clang-change-namespace
+				clang-doc
+				clang-include-cleaner
+				clang-include-fixer
+				clang-move
+				clang-pseudo
+				clang-query
+				clang-reorder-fields
+				clang-tidy
+				clang-tidy-headers
+				clangd
+				find-all-symbols
+				modularize
+				pp-trace
+			)
+		fi
+
+		if use llvm_projects_lld; then
+			out+=(
+				lld-cmake-exports
+				lld
+			)
+		fi
+
 		if llvm_are_manpages_built; then
 			out+=(
 				# manpages
@@ -321,16 +446,41 @@ get_distribution_components() {
 				docs-llvm-dwarfdump-man
 				docs-llvm-man
 			)
+
+			if use llvm_projects_clang; then
+				out+=( docs-clang-man )
+			fi
+
+			if use llvm_projects_clang-tools-extra; then
+				out+=( docs-clang-tools-man )
+			fi
 		fi
-		use doc && out+=(
-			docs-llvm-html
-		)
+
+		if use doc; then
+			out+=( docs-llvm-html )
+
+			if use llvm_projects_clang; then
+				out+=( docs-clang-html )
+			fi
+
+			if use llvm_projects_clang-tools-extra; then
+				out+=( docs-clang-tools-html )
+			fi
+
+			if use llvm_projects_lld; then
+				out+=( docs-lld-html )
+			fi
+		fi
 
 		use binutils-plugin && out+=(
 			LLVMgold
 		)
-		use debuginfod && out+=(
-			llvm-debuginfod
+		use static-analyzer && out+=(
+			clang-check
+			clang-extdef-mapping
+			scan-build
+			scan-build-py
+			scan-view
 		)
 	fi
 
@@ -344,8 +494,16 @@ multilib_src_configure() {
 		ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
 	fi
 
+	local ENABLE_PROJECTS="${LLVM_PROJECTS// /;}"
+	if ! multilib_is_native_abi; then
+		# Disable projects that are only relevant with native ABI
+		ENABLE_PROJECTS="${ENABLE_PROJECTS//;lld/}"
+	fi
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DLLVM_ENABLE_PROJECTS="${ENABLE_PROJECTS}"
+
 		# disable appending VCS revision to the version to improve
 		# direct cache hit ratio
 		-DLLVM_APPEND_VC_REV=OFF
@@ -354,7 +512,6 @@ multilib_src_configure() {
 
 		-DBUILD_SHARED_LIBS=OFF
 		-DLLVM_BUILD_LLVM_DYLIB=ON
-		-DLLVM_LINK_LLVM_DYLIB=ON
 		-DLLVM_DISTRIBUTION_COMPONENTS=$(get_distribution_components)
 
 		# cheap hack: LLVM combines both anyway, and the only difference
@@ -411,6 +568,27 @@ multilib_src_configure() {
 		-DLLVM_VERSION_SUFFIX="${suffix}"
 	)
 
+	if use llvm_projects_clang; then
+		mycmakeargs+=(
+			-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
+			-DCLANG_CONFIG_FILE_SYSTEM_DIR="${EPREFIX}/etc/clang"
+			# relative to bindir
+			-DCLANG_RESOURCE_DIR="../../../../lib/clang/${LLVM_MAJOR}"
+			-DCLANG_INCLUDE_TESTS=$(usex test)
+
+			# libgomp support fails to find headers without explicit -I
+			# furthermore, it provides only syntax checking
+			-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
+
+			-DCLANG_DEFAULT_PIE_ON_LINUX=$(usex pie)
+
+			-DCLANG_ENABLE_LIBXML2=$(usex xml)
+			-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
+			-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
+			# TODO: CLANG_ENABLE_HLSL?
+		)
+	fi
+
 	use test && mycmakeargs+=(
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
@@ -424,6 +602,18 @@ multilib_src_configure() {
 				-DLLVM_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 				-DSPHINX_WARNINGS_AS_ERRORS=OFF
 			)
+
+			if use llvm_projects_clang; then
+				mycmakeargs+=(
+					-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
+				)
+			fi
+
+			if use llvm_projects_clang-tools-extra; then
+				mycmakeargs+=(
+					-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
+				)
+			fi
 		fi
 
 		mycmakeargs+=(
@@ -436,6 +626,22 @@ multilib_src_configure() {
 		use binutils-plugin && mycmakeargs+=(
 			-DLLVM_BINUTILS_INCDIR="${EPREFIX}"/usr/include
 		)
+
+		if use llvm_projects_clang; then
+			mycmakeargs+=(
+				-DCLANG_INCLUDE_DOCS=${build_docs}
+			)
+		fi
+
+		if use llvm_projects_clang-tools-extra; then
+			mycmakeargs+=(
+				-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=${build_docs}
+			)
+		fi
+
+		if [[ -n "${LLVM_SANITIZERS}" ]]; then
+			want_sanitizer=ON
+		fi
 	fi
 
 	# workaround BMI bug in gcc-7 (fixed in 7.4)
@@ -446,6 +652,24 @@ multilib_src_configure() {
 	then
 		local CFLAGS="${CFLAGS} -mno-bmi"
 		local CXXFLAGS="${CXXFLAGS} -mno-bmi"
+	fi
+
+	if use llvm_projects_clang; then
+		if [[ -n ${EPREFIX} ]]; then
+			mycmakeargs+=(
+				-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
+			)
+		fi
+
+		if tc-is-cross-compiler; then
+			has_version -b sys-devel/clang:${LLVM_MAJOR} ||
+				die "sys-devel/llvm:${LLVM_MAJOR}[llvm_projects_clang] is required on the build host."
+			local tools_bin=${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin
+			mycmakeargs+=(
+				-DLLVM_TOOLS_BINARY_DIR="${tools_bin}"
+				-DCLANG_TABLEGEN="${tools_bin}"/clang-tblgen
+			)
+		fi
 	fi
 
 	# LLVM can have very high memory consumption while linking,
@@ -479,7 +703,24 @@ multilib_src_compile() {
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	cmake_build check
+	local test_targets=( check )
+
+	if use llvm_projects_clang; then
+		test_targets+=( check-clang )
+	fi
+
+	if multilib_native_use llvm_projects_clang-tools-extra; then
+		test_targets+=(
+			check-clang-tools
+			check-clangd
+		)
+	fi
+
+	if multilib_native_use llvm_projects_lld; then
+		test_targets+=( check-lld )
+	fi
+
+	cmake_build "${test_targets[@]}"
 }
 
 src_install() {
@@ -491,19 +732,74 @@ src_install() {
 		/usr/include/llvm/Config/llvm-config.h
 	)
 
+	if use llvm_projects_clang; then
+		MULTILIB_WRAPPED_HEADERS+=(
+			/usr/include/clang/Config/config.h
+		)
+	fi
+
 	local LLVM_LDPATHS=()
 	multilib-minimal_src_install
 
-	# move wrapped headers back
+	# Move runtime headers to /usr/lib/clang, where they belong
+	mv "${ED}"/usr/include/clangrt "${ED}"/usr/lib/clang || die
+
+	# move (remaining) wrapped headers back
+	if use llvm_projects_clang-tools-extra; then
+		mv "${T}"/clang-tidy "${ED}"/usr/include/ || die
+	fi
 	mv "${ED}"/usr/include "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include || die
+
+	if use llvm_projects_clang; then
+		# Apply CHOST and version suffix to clang tools
+		local clang_tools=( clang clang++ clang-cl clang-cpp )
+		local abi i
+
+		# cmake gives us:
+		# - clang-X
+		# - clang -> clang-X
+		# - clang++, clang-cl, clang-cpp -> clang
+		# we want to have:
+		# - clang-X
+		# - clang++-X, clang-cl-X, clang-cpp-X -> clang-X
+		# - clang, clang++, clang-cl, clang-cpp -> clang*-X
+		# also in CHOST variant
+		for i in "${clang_tools[@]:1}"; do
+			rm "${ED}/usr/lib/llvm/${LLVM_MAJOR}/bin/${i}" || die
+			dosym  "clang-${LLVM_MAJOR}" "/usr/lib/llvm/${LLVM_MAJOR}/bin/${i}-${LLVM_MAJOR}"
+			dosym "${i}-${LLVM_MAJOR}" "/usr/lib/llvm/${LLVM_MAJOR}/bin/${i}"
+		done
+
+		# now create target symlinks for all supported ABIs
+		for abi in $(get_all_abis); do
+			local abi_chost=$(get_abi_CHOST "${abi}")
+			for i in "${clang_tools[@]}"; do
+				dosym "${i}-${LLVM_MAJOR}" \
+					"/usr/lib/llvm/${LLVM_MAJOR}/bin/${abi_chost}-${i}-${LLVM_MAJOR}"
+				dosym "${abi_chost}-${i}-${LLVM_MAJOR}" \
+					"/usr/lib/llvm/${LLVM_MAJOR}/bin/${abi_chost}-${i}"
+			done
+		done
+	fi
 }
 
 multilib_src_install() {
 	DESTDIR=${D} cmake_build install-distribution
 
-	# move headers to /usr/include for wrapping
+	# move headers to /usr/include for wrapping & ABI mismatch checks
+	# (also drop the version suffix from runtime headers)
 	rm -rf "${ED}"/usr/include || die
 	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include "${ED}"/usr/include || die
+
+	if use llvm_projects_clang; then
+		mv "${ED}"/usr/lib/clang "${ED}"/usr/include/clangrt || die
+	fi
+
+	if multilib_native_use llvm_projects_clang-tools-extra; then
+		# don't wrap clang-tidy headers, the list is too long
+		# (they're fine for non-native ABI but enabling the targets is problematic)
+		mv "${ED}"/usr/include/clang-tidy "${T}/" || die
+	fi
 
 	LLVM_LDPATHS+=( "${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)" )
 }
@@ -518,8 +814,23 @@ multilib_src_install_all() {
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
 	_EOF_
 
+	if use llvm_projects_clang; then
+		python_fix_shebang "${ED}"
+	fi
+
+	if use static-analyzer; then
+		python_optimize "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/share/scan-view
+	fi
+
 	docompress "/usr/lib/llvm/${LLVM_MAJOR}/share/man"
 	llvm_install_manpages
+
+	if use llvm_projects_clang-tools-extra; then
+		# match 'html' non-compression
+		use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
+	fi
+	# +x for some reason; TODO: investigate
+	use static-analyzer && fperms a-x "/usr/lib/llvm/${LLVM_MAJOR}/share/man/man1/scan-build.1"
 }
 
 pkg_postinst() {
@@ -529,4 +840,26 @@ pkg_postinst() {
 	elog "packages:"
 	elog "  dev-python/pygments (for opt-viewer)"
 	elog "  dev-python/pyyaml (for all of them)"
+
+	if use llvm_projects_clang; then
+		if [[ -z ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+			eselect compiler-shadow update all
+		fi
+
+		elog "You can find additional utility scripts in:"
+		elog "  ${EROOT}/usr/lib/llvm/${LLVM_MAJOR}/share/clang"
+		if use llvm_projects_clang-tools-extra; then
+			elog "Some of them are vim integration scripts (with instructions inside)."
+			elog "The run-clang-tidy.py script requires the following additional package:"
+			elog "  dev-python/pyyaml"
+		fi
+	fi
+}
+
+pkg_postrm() {
+	if use llvm_projects_clang; then
+		if [[ -z ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+			eselect compiler-shadow clean all
+		fi
+	fi
 }
