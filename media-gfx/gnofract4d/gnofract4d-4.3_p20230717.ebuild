@@ -46,7 +46,6 @@ src_prepare() {
 }
 
 python_test() {
-	ln -s "${BUILD_DIR}"/lib/fract4d/*.so fract4d/ || die
 	local EPYTEST_IGNORE=(
 		# test_regress.py does not provide pytest with any tests and inspecting it requires dev-python/pillow
 		test_regress.py
