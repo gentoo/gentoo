@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGES.md README.md"
@@ -22,11 +22,9 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/ffi-1.15.0"
 
-#ruby_add_bdepend "test? ( dev-ruby/mkmf-lite )"
+ruby_add_bdepend "test? ( dev-ruby/mkmf-lite )"
 
 all_ruby_prepare() {
-	:
-	#sed -e 's/__dir__/"."/' \
-	#	-e 's/__FILE__/"'${RUBY_FAKEGEM_GEMSPEC}'"/' \
-	#	-i "${RUBY_FAKEGEM_GEMSPEC}" || die
+	sed -e '/stat fragment_size is a plausible value/askip "Fails with e.g. ZFS"' \
+		-i spec/sys_filesystem_unix_spec.rb || die
 }
