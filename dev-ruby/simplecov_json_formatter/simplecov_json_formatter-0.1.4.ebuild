@@ -14,7 +14,7 @@ DESCRIPTION="JSON formatter for SimpleCov"
 HOMEPAGE="https://github.com/codeclimate-community/simplecov_json_formatter"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 SLOT="$(ver_cut 1)"
 IUSE="doc"
 
