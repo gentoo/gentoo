@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 MY_PN=xdot.py
 EGIT_REPO_URI="https://github.com/jrfonseca/${MY_PN}"
@@ -27,16 +26,14 @@ HOMEPAGE="https://github.com/jrfonseca/xdot.py"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-RDEPEND="
+DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	media-gfx/graphviz
-"
-DEPEND="
-	${RDEPEND}
 	test? ( x11-libs/gtk+:3[X] )
 "
+RDEPEND="${DEPEND}"
 
 run_test() {
 	cd tests && "${EPYTHON}" ../test.py *.dot graphs/*.gv
