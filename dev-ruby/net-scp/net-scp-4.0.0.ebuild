@@ -24,12 +24,12 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 ruby_add_bdepend "
-	doc? ( || ( dev-ruby/net-ssh:7 dev-ruby/net-ssh:6 ) )
+	doc? ( dev-ruby/net-ssh:7 )
 	test? (
 		dev-ruby/mocha:1.0
 	)"
 
-ruby_add_rdepend "|| ( dev-ruby/net-ssh:7 dev-ruby/net-ssh:6 )"
+ruby_add_rdepend "dev-ruby/net-ssh:7"
 
 all_ruby_prepare() {
 	sed -e "s:_relative ': './:" \
