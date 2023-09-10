@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 # This is the commit that the CI for the release commit used
 BINS_COMMIT="e959eb18182724809b78ad94cb7a9cdfbc5e3a6f"
