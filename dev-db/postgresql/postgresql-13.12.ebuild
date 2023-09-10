@@ -392,7 +392,14 @@ pkg_config() {
 	einfo "Initializing the database ..."
 
 	if [[ ${EUID} == 0 ]] ; then
-		su - postgres -c "${EROOT}/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -D \"${DATA_DIR}\" ${PG_INITDB_OPTS}"
+		local initdb_cmd="${EROOT}/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -D \"${DATA_DIR}\" ${PG_INITDB_OPTS}"
+		if command -v su >/dev/null 2>&1; then
+			su - postgres -c $initdb_cmd
+		elif command -v sudo >/dev/null 2>&1; then
+			sudo -iu postgres $initdb_cmd
+		else
+			die "Could not execute su or sudo"
+		fi
 	else
 		"${EROOT}"/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -U postgres -D "${DATA_DIR}" ${PG_INITDB_OPTS}
 	fi
