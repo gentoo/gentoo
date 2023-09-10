@@ -27,7 +27,7 @@ fi
 
 #RESTRICT="!test? ( test )"
 
-ruby_add_rdepend "dev-ruby/hocon <dev-ruby/thor-2.0 dev-ruby/ffi"
+ruby_add_rdepend "dev-ruby/hocon <dev-ruby/thor-2.0 dev-ruby/ffi dev-ruby/sys-filesystem"
 #ruby_add_bdepend "test? ( dev-ruby/simplecov dev-ruby/timecop dev-ruby/webmock )"
 
 src_unpack() {
