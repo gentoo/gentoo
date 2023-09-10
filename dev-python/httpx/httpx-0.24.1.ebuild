@@ -42,6 +42,7 @@ BDEPEND="
 		app-arch/brotli[python,${PYTHON_USEDEP}]
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
+		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/h2[${PYTHON_USEDEP}]
 		dev-python/socksio[${PYTHON_USEDEP}]
