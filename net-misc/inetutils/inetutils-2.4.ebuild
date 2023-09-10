@@ -17,7 +17,6 @@ SERVERS="ftpd inetd rexecd rlogind rshd syslogd talkd telnetd tftpd uucpd"
 CLIENTS="ftp dnsdomainname hostname ping ping6 rcp rexec rlogin rsh logger telnet tftp whois ifconfig traceroute"
 PROGRAMS="${SERVERS} ${CLIENTS}"
 IUSE="idn kerberos pam tcpd ${PROGRAMS}"
-REQUIRED_USE="|| ( ${PROGRAMS} )"
 
 DEPEND="
 	sys-libs/readline:0=
