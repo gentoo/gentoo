@@ -42,6 +42,7 @@ src_prepare() {
 	cp "${DISTDIR}"/adv_cmds-md-${MD_VER}.c md/md.c || die
 	cp "${DISTDIR}"/adv_cmds-md-${MD_VER}.1 md/md.1 || die
 	eapply "${DISTDIR}"/adv_cmds-md-${MD_VER}-compile.patch
+	eapply "${FILESDIR}"/${PN}-12-md-register.patch
 
 	cd "${S}"
 	eapply_user
