@@ -48,7 +48,7 @@ CDEPEND="
 
 	nls?           ( virtual/libintl )
 	sasl? (
-		gsasl?     ( virtual/gsasl )
+		gsasl?     ( >=net-misc/gsasl-2.0.0 )
 		!gsasl?    ( >=dev-libs/cyrus-sasl-2 )
 	)
 	kerberos?      ( virtual/krb5 )
