@@ -21,5 +21,6 @@
 <upstream>
   <remote-id type="cpe">cpe:/a:bluez:bluez</remote-id>
   <remote-id type="cpe">cpe:/a:bluez:bluez-libs</remote-id>
+  <remote-id type="github">bluez/bluez</remote-id>
 </upstream>
 </pkgmetadata>
