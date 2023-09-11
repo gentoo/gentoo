@@ -49,6 +49,11 @@ src_prepare() {
 
 	# QA-fix Remove install of empty dirs to be created at runtime
 	sed -i "/install -d \$(DESTDIR)\/var\/lock\/logcheck/d" "${S}/Makefile" || die
+
+	# Comment systemd journal check if systemd use flag is not set | Bug: #913857
+	if ! use systemd; then
+		sed -i -e "s/^journal/#journal/" "${S}/etc/logcheck.logfiles.d/journal.logfiles" || die
+	fi
 }
 
 src_install() {
