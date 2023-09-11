@@ -20,7 +20,7 @@ elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; 
 
     for f in libio/iopopen.c \
 		 shadow/lckpwdf.c resolv/{netdb,resolv}.h elf/rtld.c \
-		 nis/nss_compat/compat-{grp,initgroups,{,s}pwd}.c \
+		 n[is]s/nss_compat/compat-{grp,initgroups,{,s}pwd}.c \
 		 nss/{bug-erange,nss_files/files-{XXX,init{,groups}}}.c \
 		 sysdeps/{{generic,unix/sysv/linux}/paths.h,posix/system.c}
     do
