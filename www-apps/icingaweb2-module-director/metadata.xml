@@ -2,7 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>prometheanfire@gentoo.org</email>
-		<name>Matthew Thode</name>
+		<email>github@fischl-online.de</email>
+		<name>Anton Fischl</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Icinga/icingaweb2-module-director</remote-id>
+	</upstream>
 </pkgmetadata>
