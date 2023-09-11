@@ -18,7 +18,7 @@ SRC_URI="https://github.com/bblimke/webmock/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="GPL-2"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc"
 IUSE=""
 
 ruby_add_rdepend "
