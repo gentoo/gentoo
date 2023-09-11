@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-09-11)
+# Dead project accumulating open bugs and incompatibilities.
+# No maintainer commits since February 2021.
+# Bugs 673834, 713106, 753134, 667686, 771705, 668880, 770358, 851255,
+# 711462, 904741, ... Removal in 30 days.
+sys-fs/eudev
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-09-10)
 # Upstream has marked this packaged as unmaintained[0] and recommends usage of
 # the active fork eza[1] available as sys-apps/eza
