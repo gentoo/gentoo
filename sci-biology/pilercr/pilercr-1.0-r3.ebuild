@@ -6,8 +6,8 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Analysis of Clustered Regularly Interspaced Short Palindromic Repeats (CRISPRs)"
-HOMEPAGE="http://www.drive5.com/pilercr/"
-SRC_URI="http://www.drive5.com/pilercr/pilercr1.06.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.drive5.com/pilercr/"
+SRC_URI="https://www.drive5.com/pilercr/pilercr1.06.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"
 
 LICENSE="public-domain"
