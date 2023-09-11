@@ -17,7 +17,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
 # in-source builds are not supported:
 # * https://dev.gnupg.org/T6313#166339
 # * https://dev.gnupg.org/T6673#174545
-inherit distutils-r1 libtool flag-o-matic out-of-source qmake-utils toolchain-funcs verify-sig
+inherit autotools distutils-r1 flag-o-matic out-of-source qmake-utils toolchain-funcs verify-sig
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="https://www.gnupg.org/related_software/gpgme"
@@ -66,7 +66,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	elibtoolize
+	eautoreconf
 
 	# bug #697456
 	addpredict /run/user/$(id -u)/gnupg
