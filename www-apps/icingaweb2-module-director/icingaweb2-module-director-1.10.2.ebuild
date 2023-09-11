@@ -39,7 +39,7 @@ RDEPEND="
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/${PN##*-}/"
-	doins -r "${S}"/*
+	doins -r .
 
 	exeinto /usr/share/icingaweb2/bin/
 	doexe "${FILESDIR}/icinga-director.sh"

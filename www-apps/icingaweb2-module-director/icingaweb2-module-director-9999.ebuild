@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/director/"
-	doins -r "${S}"/*
+	doins -r .
 	keepdir /var/lib/${PN}
 	fowners icingadirector:icingaweb2 /var/lib/${PN}
 	fperms 0750 /var/lib/${PN}
