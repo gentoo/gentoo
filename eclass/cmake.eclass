@@ -126,7 +126,6 @@ fi
 # the ebuild. Helps in improving QA of build systems that write to source tree.
 
 # @ECLASS_VARIABLE: CMAKE_SKIP_TESTS
-# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array of tests that should be skipped when running CTest.
