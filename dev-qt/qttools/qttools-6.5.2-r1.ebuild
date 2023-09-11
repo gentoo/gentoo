@@ -42,7 +42,12 @@ RDEPEND="
 	qtdiag? ( ~dev-qt/qtbase-${PV}:6[gles2-only=,vulkan=] )
 	widgets? ( ~dev-qt/qtbase-${PV}:6[opengl=] )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	qtdiag? (
+		vulkan? ( dev-util/vulkan-headers )
+	)
+"
 
 pkg_setup() {
 	use clang && llvm_pkg_setup
