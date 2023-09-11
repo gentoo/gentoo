@@ -241,6 +241,13 @@ fi
 # EGIT_SUBMODULES=( '*' '-test-*' test-lib )
 # @CODE
 
+# @ECLASS_VARIABLE: EGIT_NO_FETCH
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Don't fetch data from remote repository
+#
+# EGIT_NO_FETCH=1|yes|true
+
 # @FUNCTION: _git-r3_env_setup
 # @INTERNAL
 # @DESCRIPTION:
@@ -596,6 +603,7 @@ git-r3_fetch() {
 	local branch_name=${EGIT_BRANCH}
 	local commit_id=${2:-${EGIT_COMMIT}}
 	local commit_date=${4:-${EGIT_COMMIT_DATE}}
+	local no_fetch=${EGIT_NO_FETCH}
 
 	# get the name and do some more processing:
 	# 1) kill .git suffix,
@@ -612,6 +620,7 @@ git-r3_fetch() {
 		BRANCH:branch_name
 		COMMIT:commit_id
 		COMMIT_DATE:commit_date
+		NO_FETCH:no_fetch
 	)
 
 	local localvar livevar live_warn= override_vars=()
@@ -627,6 +636,11 @@ git-r3_fetch() {
 			declare "${localvar}=${!livevar}"
 		fi
 	done
+
+	if [[ :1:yes:true: == *:"${no_fetch}":* ]]; then
+		einfo "Not fetching ${r}"
+		return
+	fi
 
 	if [[ ${live_warn} ]]; then
 		ewarn "No support will be provided."
