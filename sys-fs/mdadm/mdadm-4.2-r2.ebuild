@@ -17,19 +17,13 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="static systemd +udev"
 
-# Only sys-fs/eudev provides static-libs right now, so if you have systemd,
-# you need to choose between static or udev, as your udev won't have static libs.
-# bug #830485
-REQUIRED_USE="systemd? ( ?? ( static udev ) )"
+REQUIRED_USE="static? ( !udev )"
 
 BDEPEND="app-arch/xz-utils
 	virtual/pkgconfig"
-DEPEND="udev? (
-		static? ( !systemd? ( sys-fs/eudev[static-libs] ) )
-		!static? ( virtual/libudev:= )
-	)"
-RDEPEND=">=sys-apps/util-linux-2.16
-	udev? ( !static? ( virtual/libudev:= ) )"
+DEPEND="udev? ( virtual/libudev:= )"
+RDEPEND="${DEPEND}
+	>=sys-apps/util-linux-2.16"
 
 # The tests edit values in /proc and run tests on software raid devices.
 # Thus, they shouldn't be run on systems with active software RAID devices.
