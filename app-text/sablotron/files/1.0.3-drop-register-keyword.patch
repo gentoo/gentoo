@@ -1,0 +1,14 @@
+Bug: https://bugs.gentoo.org/894710
+--- a/src/engine/hash.cpp
++++ b/src/engine/hash.cpp
+@@ -305,8 +305,8 @@ void HashTable::report(Sit S, MsgType type, MsgCode code, const Str& arg1, const
+ 
+ oolong hash(const Str& key)
+ {
+-   register oolong a, b, c, len;
+-   register const char *k = (const char*) key;
++   oolong a, b, c, len;
++   const char *k = (const char*) key;
+ 
+    /* Set up the internal state */
+    len = key.length();
