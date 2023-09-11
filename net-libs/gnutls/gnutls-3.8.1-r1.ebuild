@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnutls.asc
-inherit libtool multilib-minimal verify-sig
+inherit autotools multilib-minimal verify-sig
 
 DESCRIPTION="A secure communications library implementing the SSL, TLS and DTLS protocols"
 HOMEPAGE="https://www.gnutls.org/"
@@ -78,7 +78,7 @@ src_prepare() {
 	sed -i -e 's/__APPLE__/__NO_APPLE__/' lib/system/certs.c || die
 
 	# Use sane .so versioning on FreeBSD.
-	elibtoolize
+	eautoreconf
 }
 
 multilib_src_configure() {
