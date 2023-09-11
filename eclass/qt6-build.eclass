@@ -66,7 +66,11 @@ readonly QT6_BUILD_TYPE
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-SLOT=6/${PV%.*}
+if ver_test ${PV} -ge 6.5.3; then
+	SLOT=6/${PV%%_*}
+else
+	SLOT=6/${PV%.*} # TODO: remove this after <6.5.3 is gone
+fi
 
 if [[ ${PN} != qttranslations ]]; then
 	IUSE="test"
