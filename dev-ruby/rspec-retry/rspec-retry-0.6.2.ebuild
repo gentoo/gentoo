@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/NoRedInk/rspec-retry"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rspec-core-3.3"
