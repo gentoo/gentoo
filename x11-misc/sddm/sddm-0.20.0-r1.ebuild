@@ -97,8 +97,6 @@ src_configure() {
 		-DSYSTEMD_TMPFILES_DIR="/usr/lib/tmpfiles.d"
 		-DNO_SYSTEMD=$(usex !systemd)
 		-DUSE_ELOGIND=$(usex elogind)
-		# User can override this, bug 913898.
-		-DSDDM_INITIAL_VT="${SDDM_INITIAL_VT:-1}"
 	)
 	cmake_src_configure
 }
