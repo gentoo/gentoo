@@ -8,7 +8,7 @@ EAPI=7
 # bug #225559
 LIBTOOLIZE="true"
 WANT_LIBTOOL="none"
-inherit autotools prefix
+inherit autotools prefix toolchain-funcs
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/libtool.git"
@@ -76,6 +76,11 @@ src_prepare() {
 		# return the correct result for -print-search-dirs (doesn't
 		# include prefix dirs ...).
 		eapply "${FILESDIR}"/${PN}-2.2.10-eprefix.patch
+		if use kernel_Darwin && tc-is-clang; then
+			# TODO: Perhaps the check for darwin/clang should be done inside
+			# the m4 file instead
+			eapply "${FILESDIR}"/libtool-2.4.7-darwin.patch
+		fi
 		eprefixify m4/libtool.m4
 	fi
 
