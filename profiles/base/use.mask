@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-09-11)
+# eudev is masked for removal
+eudev
+
 # David Seifert <soap@gentoo.org> (2023-09-09)
 # EOL upstream in 2 months, causes major headaches for OpenSSL 1.1
 # masking. Removal on 2023-10-09.
