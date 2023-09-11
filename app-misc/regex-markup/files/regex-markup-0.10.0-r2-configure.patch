@@ -1,0 +1,15 @@
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 0b98557..3e24e2e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,6 +19,7 @@ AC_DEFINE_DIR(PKGDATADIR, datadir/$PACKAGE, [Directory where system-wide rule fi
+ # Checks for programs.
+ AC_PROG_CC
+ AC_PROG_INSTALL
++AM_PROG_AR
+ #AC_PROG_MAKE_SET
+ AC_PROG_RANLIB
+ AM_PROG_LEX
