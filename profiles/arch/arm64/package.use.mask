@@ -86,6 +86,7 @@ dev-games/mygui ogre
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-08-02)
 # pandoc not keyworded on arm64
 sys-apps/exa man
+sys-apps/eza man
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-24)
 # not supported on arm64
