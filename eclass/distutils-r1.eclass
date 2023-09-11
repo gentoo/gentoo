@@ -1461,12 +1461,6 @@ distutils_pep517_install() {
 	[[ -n ${wheel} ]] || die "No wheel name returned"
 
 	distutils_wheel_install "${root}" "${WHEEL_BUILD_DIR}/${wheel}"
-
-	# clean the build tree; otherwise we may end up with PyPy3
-	# extensions duplicated into CPython dists
-	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-		rm -rf build || die
-	fi
 }
 
 # @FUNCTION: distutils-r1_python_compile
@@ -1478,9 +1472,6 @@ distutils_pep517_install() {
 #
 # If DISTUTILS_USE_PEP517 is set to any other value, builds a wheel
 # using the PEP517 backend and installs it into ${BUILD_DIR}/install.
-# May additionally call build_ext prior to that when using setuptools
-# and the eclass detects a potential benefit from parallel extension
-# builds.
 #
 # In legacy mode, runs 'esetup.py build'. Any parameters passed to this
 # function will be appended to setup.py invocation, i.e. passed
@@ -1495,40 +1486,21 @@ distutils-r1_python_compile() {
 			# call setup.py build when using setuptools (either via PEP517
 			# or in legacy mode)
 
-			if [[ ${DISTUTILS_USE_PEP517} ]]; then
-				if [[ -d build ]]; then
-					eqawarn "A 'build' directory exists already.  Artifacts from this directory may"
-					eqawarn "be picked up by setuptools when building for another interpreter."
-					eqawarn "Please remove this directory prior to building."
-				fi
-			else
-				_distutils-r1_copy_egg_info
-			fi
-
 			# distutils is parallel-capable since py3.5
 			local jobs=$(makeopts_jobs "${MAKEOPTS} ${*}")
 
 			if [[ ${DISTUTILS_USE_PEP517} ]]; then
-				# issue build_ext only if it looks like we have at least
-				# two source files to build; setuptools is expensive
-				# to start and parallel builds can only benefit us if we're
-				# compiling at least two files
-				#
-				# see extension.py for list of suffixes
-				# .pyx is added for Cython
-				#
-				# esetup.py does not respect SYSROOT, so skip it there
-				if [[ -z ${SYSROOT} && ${DISTUTILS_EXT} && 1 -ne ${jobs}
-					&& 2 -eq $(
-						find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
-							-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
-							-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
-							head -n 2 | wc -l
-					)
-				]]; then
-					esetup.py build_ext -j "${jobs}" "${@}"
-				fi
+				mkdir -p "${BUILD_DIR}" || die
+				local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
+				cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
+					[build]
+					build_base = ${BUILD_DIR}/build
+
+					[build_ext]
+					parallel = ${jobs}
+				EOF
 			else
+				_distutils-r1_copy_egg_info
 				esetup.py build -j "${jobs}" "${@}"
 			fi
 			;;
