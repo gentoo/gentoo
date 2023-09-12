@@ -57,12 +57,6 @@ diff --git a/setup.py b/setup.py
 index e45512a02..cfb3b504f 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -29,7 +29,7 @@
-     # install enum34 to support 2.7. enum34 only works up to python version 3.3.
-     'enum34>=1.1.10; python_version < "3.4"',
-     "six>=1.9.0",
+@@ -32,1 +32,1 @@
 -    "urllib3<2.0",
 +    "urllib3>=2.0",
- )
- 
- extras = {
