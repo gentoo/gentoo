@@ -309,7 +309,7 @@ kernel-install_test() {
 		#!/bin/sh
 		exec qemu-system-${qemu_arch} \
 			${qemu_extra_args} \
-			-m 512M \
+			-m 2G \
 			-nographic \
 			-no-reboot \
 			-kernel '${image}' \
