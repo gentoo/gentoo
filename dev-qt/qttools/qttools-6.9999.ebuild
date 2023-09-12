@@ -14,7 +14,7 @@ fi
 IUSE="
 	assistant clang designer distancefieldgenerator gles2-only
 	+linguist opengl pixeltool qdbus qdoc qml qtattributionsscanner
-	qtdiag qtplugininfo vulkan +widgets
+	qtdiag qtplugininfo vulkan +widgets zstd
 "
 # note that some tools do not *require* widgets but will skip a sub-tool
 # if not enabled (e.g. linguist gives lrelease but not the GUI linguist6)
@@ -36,7 +36,10 @@ RDEPEND="
 	~dev-qt/qtbase-${PV}:6[network,widgets?]
 	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
 	clang? ( <sys-devel/clang-$((LLVM_MAX_SLOT+1)):= )
-	designer? ( ~dev-qt/qtbase-${PV}:6[xml] )
+	designer? (
+		app-arch/zstd:=
+		~dev-qt/qtbase-${PV}:6[xml,zstd=]
+	)
 	qdbus? ( ~dev-qt/qtbase-${PV}:6[dbus,xml] )
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets?] )
 	qtdiag? ( ~dev-qt/qtbase-${PV}:6[gles2-only=,vulkan=] )
