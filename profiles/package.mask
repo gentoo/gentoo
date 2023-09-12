@@ -472,6 +472,7 @@ acct-group/spi
 >=app-misc/gnote-45_alpha
 >=app-misc/tracker-3.6_alpha
 >=app-misc/tracker-miners-3.6_alpha
+>=dev-cpp/glibmm-2.77
 >=dev-cpp/gtkmm-4.11
 >=dev-libs/gjs-1.77
 >=dev-libs/glib-2.77
