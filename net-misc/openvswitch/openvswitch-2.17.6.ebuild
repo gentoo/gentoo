@@ -6,7 +6,7 @@ EAPI=8
 MODULES_OPTIONAL_USE="modules"
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit autotools linux-info linux-mod python-single-r1 systemd tmpfiles
+inherit autotools linux-mod python-single-r1 systemd tmpfiles
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="https://www.openvswitch.org"
@@ -31,8 +31,11 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	sys-apps/util-linux[caps]
 	valgrind? ( dev-util/valgrind )"
-BDEPEND="virtual/pkgconfig"
-
+BDEPEND="virtual/pkgconfig
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	')"
 PATCHES=(
 	"${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch"
 )
