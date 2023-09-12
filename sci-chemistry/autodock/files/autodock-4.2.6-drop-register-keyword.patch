@@ -1,0 +1,1140 @@
+Bug: https://bugs.gentoo.org/898130
+--- a/autodock/analysis.cc
++++ b/autodock/analysis.cc
+@@ -107,7 +107,7 @@ void analysis( const int   Nnb,
+               )
+ 
+ {
+-    /* register int   imol = 0; */
++    /* int   imol = 0; */
+     char  filename[PATH_MAX];
+     char  *label;
+ 
+@@ -135,10 +135,10 @@ void analysis( const int   Nnb,
+     int   kmax = 0;
+     int   n_rms_atoms = 0;
+ 
+-    register int   i = 0;
+-    register int   j = 0;
+-    register int   k = 0;
+-    register int   t = 0;
++    int   i = 0;
++    int   j = 0;
++    int   k = 0;
++    int   t = 0;
+ 
+     State save;
+ 
+--- a/autodock/autocomm.h
++++ b/autodock/autocomm.h
+@@ -159,11 +159,11 @@ const Real  ONE_PLUS_EPSILON=1.001;
+ /*
+  * void assertQuatOK( const Quat q )
+  * {
+- *     register double mag4 = hypotenuse4( q.x, q.y, q.z, q.w );
++ *     double mag4 = hypotenuse4( q.x, q.y, q.z, q.w );
+  *     assert((mag4 > ONE_MINUS_EPSILON) && (mag4 < ONE_PLUS_EPSILON));
+  * }
+  */
+-#define assertQuatOK( q ) {fflush(logFile);register double aQOK_mag4 = hypotenuse4( (q).x, (q).y, (q).z, (q).w ); assert((aQOK_mag4 > ONE_MINUS_EPSILON) && (aQOK_mag4 < ONE_PLUS_EPSILON)); }
++#define assertQuatOK( q ) {fflush(logFile);double aQOK_mag4 = hypotenuse4( (q).x, (q).y, (q).z, (q).w ); assert((aQOK_mag4 > ONE_MINUS_EPSILON) && (aQOK_mag4 < ONE_PLUS_EPSILON)); }
+ 
+ 
+ #endif /*_AUTOCOMM*/
+--- a/autodock/bestpdb.cc
++++ b/autodock/bestpdb.cc
+@@ -55,7 +55,7 @@ void bestpdb( const int ncluster,
+ 	      FILE *const logFile)
+ 
+ {
+-    register int  i=0,
++    int  i=0,
+ 	          j=0,
+ 	          k=0,
+ 		  confnum=0;
+--- a/autodock/call_cpso.cc
++++ b/autodock/call_cpso.cc
+@@ -24,7 +24,7 @@ extern Eval evaluate;
+ 
+ Representation **cnv_state_to_rep2(const State &state)
+ {
+-   register int i;
++   int i;
+    Representation **retval;
+ 
+    retval = new Representation *[5];
+--- a/autodock/call_glss.cc
++++ b/autodock/call_glss.cc
+@@ -256,8 +256,8 @@ State call_glss(/* not const */ Global_Search *global_method,
+                 const GridMapSetInfo *info, const char *const FN_pop_file,
+                 /* not const */ int end_of_branch[MAX_TORS])
+ {
+-    register unsigned int i;
+-    register int j;
++    unsigned int i;
++    int j;
+     int allEnergiesEqual = 1, numTries = 0;
+     int indiv = 0; // Number of Individual in Population to set initial state variables for.
+     int max_numTries = 1000;
+--- a/autodock/call_gs.cc
++++ b/autodock/call_gs.cc
+@@ -53,7 +53,7 @@ State call_gs(Global_Search *global_method, State& now, unsigned int num_evals,
+               GridMapSetInfo *info,
+               int end_of_branch[MAX_TORS], int outlev, FILE * logFile)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+    global_method->reset(extOutput_pop_stats);
+    evaluate->reset();
+--- a/autodock/call_ls.cc
++++ b/autodock/call_ls.cc
+@@ -47,7 +47,7 @@ Copyright (C) 2009 The Scripps Research Institute. All rights reserved.
+ 
+ Representation **cnv_state_to_rep(const State &state)
+ {
+-   register int i;
++   int i;
+    Representation **retval;
+ 
+    retval = new Representation *[5];
+--- a/autodock/changeState.cc
++++ b/autodock/changeState.cc
+@@ -43,7 +43,7 @@ State  changeState( const State& last,      /* ...must be a normalized quaternio
+                     const int   N_con[MAX_TORS])
+ 
+ {
+-    register int i;
++    int i;
+     double t;
+     int I_ranCon;
+     double x0, r1, r2, t1, t2;
+--- a/autodock/clmode.cc
++++ b/autodock/clmode.cc
+@@ -59,7 +59,7 @@ void  clmode( const int   num_atm_maps,
+ 
+ {
+     FILE *clusFile;
+-    register int xyz = 0;
++    int xyz = 0;
+     int   anum = 0;
+     char  atomstuff[MAX_ATOMS][MAX_CHARS];
+     Real econf[MAX_RUNS];
+@@ -86,8 +86,8 @@ void  clmode( const int   num_atm_maps,
+     static Real crdSave[MAX_RUNS][MAX_ATOMS][SPACE];
+     static Real clu_rms[MAX_RUNS][MAX_RUNS];
+     static int   cluster[MAX_RUNS][MAX_RUNS];
+-    register int i = 0;
+-    register int j = 0;
++    int i = 0;
++    int j = 0;
+     int   irunmax = -1;
+     int   isort[MAX_RUNS];
+     int   ncluster = 0;
+--- a/autodock/cluster_analysis.cc
++++ b/autodock/cluster_analysis.cc
+@@ -58,7 +58,7 @@ int cluster_analysis( ConstReal   clus_rms_tol,
+   |  Compares atoms with same type, not atom name, to find propellers.       |
+   |__________________________________________________________________________|*/
+ 
+-    register int compare = 0,
++    int compare = 0,
+                  i = 0;
+ 
+     int          nClusters = 1,
+--- a/autodock/dimLibrary.cc
++++ b/autodock/dimLibrary.cc
+@@ -14,7 +14,7 @@ extern FILE *logFile;
+ 
+ void copyDimension( /* not const */ State *const S, const Position& R)
+ {
+-        register int i, j;
++        int i, j;
+         S->T.x = R.x[0];
+         S->T.y = R.x[1];
+         S->T.z = R.x[2];
+@@ -31,7 +31,7 @@ void copyDimension( /* not const */ State *const S, const Position& R)
+ 
+ void copyState2Dimension(Position *const R , const State& S)
+ {
+-        register int i, j;
++        int i, j;
+ 	R->x[0] = S.T.x;
+ 	R->x[1] = S.T.y;
+         R->x[2] = S.T.z;
+--- a/autodock/eintcal.cc
++++ b/autodock/eintcal.cc
+@@ -203,7 +203,7 @@ Real eintcalPrint( const NonbondParam * const nonbondlist,
+ #endif
+ 
+ 	    double dx, dy, dz;
+-	    register double r2;
++	    double r2;
+ 
+ 	    int nonbond_type; // if = 4, it is a 1_4;  otherwise it is another kind of nonbond
+ 
+--- a/autodock/eval.cc
++++ b/autodock/eval.cc
+@@ -69,7 +69,7 @@ void make_state_from_rep(const Representation *const *const rep, /* not const */
+     to the chromosome.  
+ */
+ {
+-   register int i;
++   int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "eval.cc/make_state_from_rep(Representation **rep, State *stateNow)\n");
+@@ -132,7 +132,7 @@ double Eval::eval(const int term)
+ //           term=3 as total energy if invoked by eval()
+ 
+ {
+-   register int i;
++   int i;
+    int   B_outside = 0;
+    int   I_tor = 0;
+    int   indx = 0;
+--- a/autodock/eval.h
++++ b/autodock/eval.h
+@@ -192,7 +192,7 @@ inline void Eval::setup(/* not const */ Real init_crd[MAX_ATOMS][SPACE], // not
+                        )
+ 
+ {
+-    register int i;
++    int i;
+ 
+     crd = init_crd;
+     charge = init_charge;
+--- a/autodock/getInitialState.cc
++++ b/autodock/getInitialState.cc
+@@ -108,7 +108,7 @@ void getInitialState(
+     Real e0intra = 0.;
+     Real e0min = BIG;
+     int   retries = 0;
+-    register int i = 0;
++    int i = 0;
+     Clock  initStart;
+     Clock  initEnd;
+     struct tms tms_initStart;
+--- a/autodock/getrms.cc
++++ b/autodock/getrms.cc
+@@ -45,7 +45,7 @@ Real getrms ( const Real Crd[MAX_ATOMS][SPACE],
+ {
+     double sqrSum, sqrMin, dc[SPACE];
+     Boole is_available[MAX_ATOMS]; // available to be chosen as atom i's symmetry mate 
+-    register int i, j, xyz;
++    int i, j, xyz;
+     int nhydrogen = 0;
+     int num_atoms = natom;
+ 
+--- a/autodock/gs.cc
++++ b/autodock/gs.cc
+@@ -70,7 +70,7 @@ extern int debug;//debug
+ static double
+ worst_in_window(const double *const window, const int size, int outlev, FILE *logFile) 
+ {
+-   register int i;
++   int i;
+ 
+    double worst = window[0];
+ 
+@@ -104,7 +104,7 @@ worst_in_window(const double *const window, const int size, int outlev, FILE *lo
+ static double
+ avg_in_window(const double *const window, const int size, FILE *logFile) 
+ {
+-   register int i;
++   int i;
+    double mysum = 0.0;
+ 
+ #ifdef DEBUG2
+@@ -127,7 +127,7 @@ avg_in_window(const double *const window, const int size, FILE *logFile)
+ //  Also set avg -- and because of avg this is not a const function
+ double Genetic_Algorithm::worst_this_generation(const Population &pop, int outlev, FILE *logFile)
+ {
+-   register unsigned int i;
++   unsigned int i;
+    double worstval, avgval;
+ 
+ #ifdef DEBUG2
+@@ -284,7 +284,7 @@ M_mode Genetic_Algorithm::m_type(const RepType type) const
+ 
+ void Genetic_Algorithm::make_table(const int size, ConstReal  prob, int outlev, FILE *logFile)
+ {
+-   register int i, j;
++   int i, j;
+    double L = 0.0L;
+ 
+ #ifdef DEBUG
+@@ -393,7 +393,7 @@ int Genetic_Algorithm::check_table(ConstReal  prob, int outlev, FILE *logFile)
+ 
+ void Genetic_Algorithm::initialize(const unsigned int pop_size, const unsigned int num_poss_mutations, int outlev, FILE *logFile)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "gs.cc/void Genetic_Algorithm::initialize(unsigned int pop_size=%d, ",pop_size);
+@@ -593,7 +593,7 @@ void Genetic_Algorithm::mutation(Population &pure, int outlev, FILE *logFile)
+ 
+ void Genetic_Algorithm::crossover(Population &original_population, int outlev, FILE *logFile)
+ {
+-   register unsigned int i;
++   unsigned int i;
+    int first_point, second_point, temp_index, temp_ordering;
+    Real alpha = 0.5;
+    
+@@ -874,7 +874,7 @@ void Genetic_Algorithm::crossover_uniform(Genotype &father, Genotype &mother, co
+ 
+ void Genetic_Algorithm::crossover_arithmetic(Genotype &A, Genotype &B, ConstReal  alpha, int outlev, FILE *logFile)
+ {
+-   register unsigned int i;
++   unsigned int i;
+    Element temp_A, temp_B;
+    Real one_minus_alpha;
+ 
+@@ -980,7 +980,7 @@ void Genetic_Algorithm::crossover_arithmetic(Genotype &A, Genotype &B, ConstReal
+ /* not static */
+ void Genetic_Algorithm::selection_proportional(Population &original_population, Individual *const new_pop, int outlev, FILE *logFile)
+ {
+-   register unsigned int i=0, start_index = 0;
++   unsigned int i=0, start_index = 0;
+    int temp_ordering, temp_index;
+ #ifdef DEBUG2
+    int allzero = 1;//debug
+@@ -1259,7 +1259,7 @@ void Genetic_Algorithm::selection_proportional(Population &original_population,
+  */
+ void Genetic_Algorithm::selection_tournament(Population &original_population, Individual *const new_pop, int outlev, FILE *logFile)
+ {
+-   register unsigned int i = 0, start_index = 0;
++   unsigned int i = 0, start_index = 0;
+    int temp_ordering, temp_index;
+ //#define DEBUG
+ #ifdef DEBUG
+@@ -1324,7 +1324,7 @@ void Genetic_Algorithm::selection_linear_ranking(/* not const (msort) */ Populat
+ 						 /* not const */ Individual *const new_pop,
+ 						int outlev, FILE *logFile) 
+ {
+-   register unsigned int i = 0, start_index = 0;
++   unsigned int i = 0, start_index = 0;
+ //#define DEBUG
+ #ifdef DEBUG
+    (void)fprintf(logFile, "gs.cc/void Genetic_Algorithm::");
+@@ -1417,7 +1417,7 @@ Individual *Genetic_Algorithm::selection(Population &solutions, int outlev, FILE
+ //
+ int Genetic_Algorithm::search(Population &solutions, Eval *evaluate, int outlev, FILE *logFile)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+ #ifdef DEBUG /* DEBUG { */
+    (void)fprintf(logFile, "gs.cc/int Genetic_Algorithm::search(Population &solutions)\n");
+--- a/autodock/initautodock.cc
++++ b/autodock/initautodock.cc
+@@ -73,8 +73,8 @@ void initautodock(  const char  atomstuff[MAX_ATOMS][MAX_CHARS],
+     int   ip_max[SPACE];
+     int   ip_min[SPACE];
+ 
+-    register int   xyz = 0;
+-    register int   i = 0;
++    int   xyz = 0;
++    int   i = 0;
+ 
+ /*
+ **  Initialize the automated docking simulation,
+--- a/autodock/intnbtable.cc
++++ b/autodock/intnbtable.cc
+@@ -80,7 +80,7 @@ void intnbtable( Boole *const P_B_havenbp,
+     double r;
+     double minus_inv_two_sigma_sqd = -0.5L / (sigma * sigma);
+ 
+-    register int i;
++    int i;
+ 
+     Clock  nbeStart; // can be made static to keep lint quiet
+     struct tms tms_nbeStart; // can be made static to keep lint quiet
+@@ -265,8 +265,8 @@ void setup_distdepdiel( FILE *logFile,
+                         EnergyTables *const ptr_ad_energy_tables  // Holds vdw+Hb, desolvation & dielectric lookup tables
+                       )
+ {
+-    register int i=0;
+-    register double distance=0.0L;
++    int i=0;
++    double distance=0.0L;
+ 
+     if (outlev >= LOGETABLES ) {
+         pr(logFile, "Calculating distance-dependent dielectric function using the method of Mehler & Solmajer\n\n\n");
+--- a/autodock/investigate.cc
++++ b/autodock/investigate.cc
+@@ -100,11 +100,11 @@ void investigate( const int   Nnb, int Nnb_array[3], GroupEnergy *group_energy,
+     Boole B_outside = FALSE;
+ 
+     int Itor = 0;
+-    register int Test = -1;
++    int Test = -1;
+     int indx;
+     int ref_natoms = -1;
+-    register int i = 0;
+-    //register int XYZ = 0;
++    int i = 0;
++    //int XYZ = 0;
+ 
+     Real e = 0.;
+     Real ref_crds[MAX_ATOMS][SPACE];
+@@ -117,8 +117,8 @@ void investigate( const int   Nnb, int Nnb_array[3], GroupEnergy *group_energy,
+     int   NumberChangeInRmsBin[NUMRMSBINS];
+     int   RmsBinNum = 0;
+     //int   NumMaxRms = 0;
+-    register int NumOutside = 0;
+-    register int LocalTest = 0;
++    int NumOutside = 0;
++    int LocalTest = 0;
+     int   mode;
+ 
+     State sNow; /* qtnNow, torNow */
+--- a/autodock/ls.cc
++++ b/autodock/ls.cc
+@@ -43,7 +43,7 @@ Copyright (C) 2009 The Scripps Research Institute. All rights reserved.
+ Phenotype genPh(const Phenotype &original, ConstReal sign, const Real *const deviates, Real *const bias, int outlev, FILE *logFile)
+ {
+    RepType genetype;
+-   register unsigned int i, index = 0;
++   unsigned int i, index = 0;
+    Phenotype retval(original);
+ 
+ #ifdef DEBUG2
+@@ -85,8 +85,8 @@ Phenotype genPh(const Phenotype &original, ConstReal sign, const Real *const dev
+ // SW returns TRUE if it modifies the individual
+ Boole Solis_Wets::SW(/* not const */ Phenotype &vector, int outlev, FILE *logFile)
+ {
+-   register unsigned int i, j, num_successes = 0, num_failures = 0;
+-   register Real temp_rho = rho;
++   unsigned int i, j, num_successes = 0, num_failures = 0;
++   Real temp_rho = rho;
+    Phenotype newPh;
+    Boole modified = FALSE;
+    Quat thisQuat, prevQuat, startQuat;
+@@ -245,7 +245,7 @@ void printDState(FILE *const logFile, const char *const msg, Phenotype &newPh, c
+ // PSW returns TRUE if it modifies the individual
+ Boole Pseudo_Solis_Wets::SW(/* not const */ Phenotype &vector, int outlev, FILE *logFile)
+ {
+-   register unsigned int i, j, num_successes = 0, num_failures = 0,  all_rho_stepsizes_too_small = 1;
++   unsigned int i, j, num_successes = 0, num_failures = 0,  all_rho_stepsizes_too_small = 1;
+     
+    Phenotype newPh;
+    Boole modified = FALSE;
+--- a/autodock/main.cc
++++ b/autodock/main.cc
+@@ -477,11 +477,11 @@ unsigned short US_tD;
+ unsigned short US_torBarrier = TORBARMAX;
+ unsigned short US_min = TORBARMAX;
+ 
+-register int i = 0;
+-register int j = 0;
+-register int k = 0;
+-//register int m = 0;
+-register int xyz = 0;
++int i = 0;
++int j = 0;
++int k = 0;
++//int m = 0;
++int xyz = 0;
+ 
+ State sInit;            /* Real qtn0[QUAT], tor0[MAX_TORS]; */
+ 
+--- a/autodock/mdist.h
++++ b/autodock/mdist.h
+@@ -42,7 +42,7 @@ double maxdist[NUM_ENUM_ATOMTYPES][NUM_ENUM_ATOMTYPES];
+ 
+ void mdist() {
+ 
+-	register int i,j;
++	int i,j;
+ 
+     // Set all the mindist and maxdist elements to the defaults for AutoDock versions 1 - 3...
+ 	for (i=0; i<   NUM_ENUM_ATOMTYPES; i++) {
+--- a/autodock/minmeanmax.cc
++++ b/autodock/minmeanmax.cc
+@@ -48,7 +48,7 @@ void minmeanmax( FILE *const fp, const Population &pop, const int num_generation
+ #ifdef DEBUG
+    fprintf( fp, "minmeanmax.cc/minmeanmax(); initialization\n" );
+ #endif
+-   register int i=0, g=0, b=0;
++   int i=0, g=0, b=0;
+    int     num_indvs=1, num_genes=1;
+    int last_bin = NUM_BINS - 1;
+    // double  value=0., *minimum, *sum, *maximum, *best;
+--- a/autodock/mkNewState.cc
++++ b/autodock/mkNewState.cc
+@@ -53,7 +53,7 @@ void mkNewState( /* not const */ State *const now,
+ 		FILE *logFile)
+     // Create a new state, based on the current state
+ {
+-    register int i;
++    int i;
+     double t;
+     int I_ranCon;
+     Real a, b;
+--- a/autodock/mkRandomState.cc
++++ b/autodock/mkRandomState.cc
+@@ -41,7 +41,7 @@ State mkRandomState( int   ntor,
+ 
+ {
+     State now;
+-    register int i;
++    int i;
+     double t;
+     int I_ranCon;
+     double x0, r1, r2, t1, t2;
+--- a/autodock/mkTorTree.cc
++++ b/autodock/mkTorTree.cc
+@@ -85,9 +85,9 @@ void mkTorTree( const int   atomnumber[ MAX_RECORDS ],
+     int   natoms = 0;
+     Boole   found_first_res=false;
+ 
+-    register int   i = 0;
+-    register int   j = 0;
+-    register int   k = 0;
++    int   i = 0;
++    int   j = 0;
++    int   k = 0;
+ 
+ 
+     Real lower = 0.;
+--- a/autodock/nbe.cc
++++ b/autodock/nbe.cc
+@@ -61,9 +61,9 @@ void nbe( const GridMapSetInfo *const info,
+ {
+  
+     static int NUMPTS = 640; // MPique - arbitrary limit for output table
+-    register int i = 0;
+-    register int j = 0;
+-    register int k = 0;
++    int i = 0;
++    int j = 0;
++    int k = 0;
+     Real r = 0.;
+ 
+     pr( logFile,"SUMMARY OF PAIRWISE-ATOMIC NON-BONDED INTERNAL ENERGIES\n" );
+--- a/autodock/prClusterHist.cc
++++ b/autodock/prClusterHist.cc
+@@ -48,7 +48,7 @@ void prClusterHist( const int ncluster,
+     Real          etot = 0.,
+                   eavg = 0.;
+ 
+-    register int  Rank=0,
++    int  Rank=0,
+                   j=0;
+ 
+     int           num_multi_mem_clu=0,
+--- a/autodock/prInitialState.cc
++++ b/autodock/prInitialState.cc
+@@ -56,7 +56,7 @@ void prInitialState(
+ 
+ {
+     char *descriptor = "INITIAL STATE:  ";
+-    register int i = 0;
++    int i = 0;
+     int a = 0;
+     Real emap_total = 0.0;
+     Real elec_total = 0.0;
+--- a/autodock/prTorConList.cc
++++ b/autodock/prTorConList.cc
+@@ -61,7 +61,7 @@ void prTorConList( const int    ntor,
+     char graph[NROWS][LINE_LEN];
+ 
+     int col = 0;
+-    register int i = 0;
++    int i = 0;
+     int iCon = 0;
+     int inc;
+     int j = 0;
+--- a/autodock/qmultiply.cc
++++ b/autodock/qmultiply.cc
+@@ -39,8 +39,8 @@ static AxisAngle sidentityAxisAngle = { 1., 0., 0., 0.}; // x,y,z,angle  const
+ 
+ 
+ void qmultiply( /* not const */  Quat *const q, //result
+-                register const Quat *const ql,   //left
+-                register const Quat *const qr )  //right
++                const Quat *const ql,   //left
++                const Quat *const qr )  //right
+ 
+ /******************************************************************************/
+ /*      Name: qmultiply                                                       */
+@@ -63,7 +63,7 @@ void qmultiply( /* not const */  Quat *const q, //result
+ /* 12/03/92 GMM     Replaced rqtot by inv_qag; was '/rqtot', now '*inv_qag'   */
+ /******************************************************************************/
+ { 
+-    register double x,y,z,w;
++    double x,y,z,w;
+ #ifdef ASSERTQUATOK
+     assertQuatOK(*ql);
+     assertQuatOK(*qr);
+@@ -167,12 +167,12 @@ Quat normQuat( Quat q )
+ 
+ void assertQuatOK( const Quat q )
+ {
+-    register double mag4 = hypotenuse4( q.x, q.y, q.z, q.w );
++    double mag4 = hypotenuse4( q.x, q.y, q.z, q.w );
+     assert((mag4 > ONE_MINUS_EPSILON) && (mag4 < ONE_PLUS_EPSILON));
+ }
+ */
+ /* this is in another header
+-#define assertQuatOK( q ) {register double aQOK_mag4 = hypotenuse4( (q).x, (q).y, (q).z, (q).w ); assert((aQOK_mag4 > ONE_MINUS_EPSILON) && (aQOK_mag4 < ONE_PLUS_EPSILON)); }
++#define assertQuatOK( q ) {double aQOK_mag4 = hypotenuse4( (q).x, (q).y, (q).z, (q).w ); assert((aQOK_mag4 > ONE_MINUS_EPSILON) && (aQOK_mag4 < ONE_PLUS_EPSILON)); }
+ */
+ 
+ AxisAngle normAxisAngle( const AxisAngle& aa )
+@@ -221,7 +221,7 @@ QuatToAxisAngle( const Quat& q )
+ 
+     if ( input.w == 1. ||  input.w == -1 ) return sidentityAxisAngle;
+     else {
+-        register double angle = 2. * acos( input.w );
++        double angle = 2. * acos( input.w );
+         double inv_sin_half_angle =  1. / sin( angle / 2. );
+ 
+         retval.nx = input.x * inv_sin_half_angle;
+@@ -353,8 +353,8 @@ Quat conjugate( const Quat& q )
+ 
+ Quat inverse( const Quat& q )
+ {
+-    register Quat conj, inv;
+-    register double inv_squared_magnitude;
++    Quat conj, inv;
++    double inv_squared_magnitude;
+ 
+     conj = conjugate( q );
+ 
+--- a/autodock/qmultiply.h
++++ b/autodock/qmultiply.h
+@@ -50,8 +50,8 @@ Quat axisRadianToQuat( ConstReal ax, ConstReal ay, ConstReal az, ConstReal angle
+ Quat axisDegreeToQuat( ConstReal ax, ConstReal ay, ConstReal az, ConstReal angle );
+ Quat quatComponentsToQuat( ConstReal qx, ConstReal qy, ConstReal qz, ConstReal qw );
+ 
+-void qmultiply( Quat *const q, register const Quat *const ql, register const Quat *const qr );
+-void qconjmultiply( Quat *const q, register const Quat *const ql, register const Quat *const qr );
++void qmultiply( Quat *const q, const Quat *const ql,const Quat *const qr );
++void qconjmultiply( Quat *const q, const Quat *const ql,const Quat *const qr );
+ void printQuat_q( FILE *const fp, const Quat& q );
+ void printQuat_r( FILE *const fp, const Quat& q );
+ void printQuat( FILE *const fp, const Quat& q );
+--- a/autodock/qtransform.cc
++++ b/autodock/qtransform.cc
+@@ -62,7 +62,7 @@ void qtransform( const Coord& T,
+ /* 11/23/92 GMM     Introduced h and inv_qmag, since * is faster than /.      */
+ /******************************************************************************/
+ {
+-    register int a;
++    int a;
+     Coord  tmp;
+     double w, x, y, z;
+     double tx, ty, tz;
+--- a/autodock/readPDBQT.cc
++++ b/autodock/readPDBQT.cc
+@@ -135,8 +135,8 @@ Molecule readPDBQT(char input_line[LINE_LEN],
+ 	Boole           B_is_in_flexres = FALSE;
+ 
+ 
+-	register int    i = 0;
+-	register int    j = 0;
++	int    i = 0;
++	int    j = 0;
+ 
+ 	const static Real QTOL = 0.050;//rh increased from 0.005 4/2009
+ 
+--- a/autodock/read_parameter_library.cc
++++ b/autodock/read_parameter_library.cc
+@@ -204,7 +204,7 @@ void setup_parameter_library( FILE *logFile, const int outlev,
+     int nfields;
+     int param_keyword = -1;
+     int int_hbond_type = 0;
+-    register int counter = 0;
++    int counter = 0;
+     char msg[1000]; // for error messages
+ 
+     if ( outlev >= LOGETABLES )
+--- a/autodock/readfield.cc
++++ b/autodock/readfield.cc
+@@ -46,7 +46,7 @@ void readfield( /* not const */ GridMapSetInfo *const info,
+     FILE *fldFile;
+     char rec9[9], inputline[LINE_LEN];
+     double localSpacing;
+-    register int i = 0;
++    int i = 0;
+ 
+     /*
+     ** GRID_DATA_FILE
+--- a/autodock/readmap.cc
++++ b/autodock/readmap.cc
+@@ -79,10 +79,10 @@ Statistics readmap( char           line[LINE_LEN],
+     int nv=0;
+     int nvExpected;
+ 
+-    register int xyz = 0;
+-    register int i = 0;
+-    register int j = 0;
+-    register int k = 0;
++    int xyz = 0;
++    int i = 0;
++    int j = 0;
++    int k = 0;
+ 
+     struct tms tms_jobEnd;
+     struct tms tms_loadEnd;
+--- a/autodock/rep.cc
++++ b/autodock/rep.cc
+@@ -74,7 +74,7 @@ Real BitVector::one_prob = 0.5;
+ IntVector::IntVector(const int number_of_els)
+ : Representation(number_of_els)
+ {
+-   register int i;
++   int i;
+ 
+ #ifdef DEBUG
+     (void)fprintf(logFile, "rep.cc/IntVector::IntVector(int number_of_els=%d) \n",number_of_els);
+@@ -92,7 +92,7 @@ IntVector::IntVector(const int number_of_els)
+ IntVector::IntVector(const int num_els, const int init_low, const int init_high)
+ : Representation(num_els)
+ {
+-   register int i;
++   int i;
+ 
+ #ifdef DEBUG
+     (void)fprintf(logFile, "rep.cc/IntVector::IntVector(int num_els=%d, int init_low=%d, int init_high=%d) \n",num_els,init_low,init_high);
+@@ -126,7 +126,7 @@ IntVector::IntVector(const IntVector &original)
+       vector = NULL;
+    }
+ 
+-   for (register unsigned int i=0; i<number_of_pts; i++) {
++   for (unsigned int i=0; i<number_of_pts; i++) {
+       vector[i] = original.vector[i];
+    }
+ }
+@@ -234,7 +234,7 @@ const void *IntVector::internals(void) const
+ //
+ Representation &IntVector::operator=(const Representation &original)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+ #ifdef DEBUG
+     (void)fprintf(logFile, "\nrep.cc/Representation &IntVector::operator=(const Representation &original) \n");
+@@ -326,7 +326,7 @@ RealVector::RealVector(const int num_els, ConstDouble init_low, ConstDouble init
+ #ifdef DEBUG
+     (void)fprintf(logFile, "rep.cc/RealVector::RealVector(int num_els=%d, double init_low=%lf, double init_high=%lf, double init_first_value=%lf) \n",num_els,init_low,init_high,init_first_value);
+ #endif /* DEBUG */
+-   register int i=0;
++   int i=0;
+    mytype = T_RealV;
+    low = init_low;
+    high = init_high;
+@@ -425,7 +425,7 @@ RealVector::RealVector(const RealVector &original)
+       vector = NULL;
+    }
+ 
+-   for (register unsigned int i=0; i<original.number_of_pts; i++) {
++   for (unsigned int i=0; i<original.number_of_pts; i++) {
+       vector[i] = original.vector[i];
+ #ifdef DEBUG
+     (void)fprintf(logFile, "rep.cc/i=%d, original.number_of_pts=%d, vector[%d]= %.3f\n",i, original.number_of_pts, i, vector[i]);
+@@ -550,7 +550,7 @@ Representation &RealVector::operator=(const Representation &original)
+     (void)fprintf(logFile, "\nrep.cc/Representation &RealVector::operator=(const Representation &original) \n");
+ #endif /* DEBUG */
+ 
+-   register unsigned int i;
++   unsigned int i;
+    double *array;
+ 
+    if (original.type()==T_RealV) {
+@@ -638,7 +638,7 @@ ConstrainedRealVector::ConstrainedRealVector(const ConstrainedRealVector &origin
+       vector = NULL;
+    }
+ 
+-   for (register unsigned int i=0; i<original.number_of_pts; i++) {
++   for (unsigned int i=0; i<original.number_of_pts; i++) {
+       vector[i] = original.vector[i];
+    }
+ }
+@@ -750,8 +750,8 @@ void ConstrainedRealVector::normalize(void) /* not const */
+ #endif /* DEBUG */
+ 
+    if (!normalized) {
+-      register unsigned int i;
+-      register double tempsum = 0.0, hypotenuse;
++      unsigned int i;
++      double tempsum = 0.0, hypotenuse;
+ 
+       for (i=0; i<number_of_pts; i++) {
+          tempsum += vector[i] * vector[i];
+@@ -809,7 +809,7 @@ const void *ConstrainedRealVector::internals(void) const
+ //
+ Representation &ConstrainedRealVector::operator=(const Representation &original)
+ {
+-   register unsigned int i;
++   unsigned int i;
+    double *array;
+ 
+ #ifdef DEBUG
+@@ -897,7 +897,7 @@ BitVector::BitVector(const BitVector &original)
+       vector = NULL;
+    }
+ 
+-   for (register unsigned int i=0; i<number_of_pts; i++) {
++   for (unsigned int i=0; i<number_of_pts; i++) {
+       vector[i] = original.vector[i];
+    }
+ }
+@@ -991,7 +991,7 @@ const void *BitVector::internals(void) const
+ //
+ Representation &BitVector::operator=(const Representation &original)
+ {
+-   register unsigned int i;
++   unsigned int i;
+    unsigned char *array;
+ 
+ #ifdef DEBUG
+--- a/autodock/scauchy.cc
++++ b/autodock/scauchy.cc
+@@ -78,7 +78,7 @@ return (y / x);
+ 
+ Real scauchy2()
+ {
+-register Real x, y, r1, r2;
++Real x, y, r1, r2;
+  
+ 			/* These four lines generate the tangent of a random
+ 			 *	angle;  this is equivalent to 
+--- a/autodock/simanneal.cc
++++ b/autodock/simanneal.cc
+@@ -185,12 +185,12 @@ void simanneal ( int   *const Addr_nconf, /* absolute serial number of "run", mo
+     int irun;
+     int indx;
+ 
+-    register int i = 0;
+-    register int nacc = 0;
+-    register int nAcc = 0;
+-    register int nAccProb = 0;
+-    register int nedge = 0;
+-    register int nrej = 0;
++    int i = 0;
++    int nacc = 0;
++    int nAcc = 0;
++    int nAccProb = 0;
++    int nedge = 0;
++    int nrej = 0;
+ 
+     struct tms tms_cycStart;
+     struct tms tms_cycEnd;
+--- a/autodock/stateLibrary.cc
++++ b/autodock/stateLibrary.cc
+@@ -37,7 +37,7 @@ static void writeStateAQ( FILE *const fp, /* not const */ State S, const char);
+ 
+ void initialiseState( /* not const */ State *const S )
+ {
+-    register int i;
++    int i;
+     S->T.x = 0.0;
+     S->T.y = 0.0;
+     S->T.z = 0.0;
+@@ -58,7 +58,7 @@ void initialiseQuat ( Quat *Q )
+ void copyState( /* not const */ State *const D,  /* Destination -- copy to here */
+                 const State& S ) /* Source      -- copy this.   */
+ {
+-    register int i;
++    int i;
+         
+     D->T = S.T;
+     
+@@ -87,7 +87,7 @@ void printState( FILE *const fp,
+                  /* not const */ State S, 
+                  const int detail )
+ {
+-    register int i;
++    int i;
+     AxisAngle aa;
+ 
+     switch( detail ) {
+@@ -196,7 +196,7 @@ void writeState( FILE *const fp, /* not const */ State S )
+ int checkState( FILE *const logFile, const State *const D)
+ {
+ // return 0 if failure   1 if OK
+-    register int i;
++    int i;
+     int retval = 1;
+     double magnitude_q;
+         
+@@ -248,7 +248,7 @@ int checkState( FILE *const logFile, const State *const D)
+ 
+ Molecule copyStateToMolecule(const State *const S, /* not const */ Molecule *const mol) /* S is the source */
+ {
+-    register int i;
++    int i;
+     mol->S.T = S->T;
+     mol->S.Q = S->Q;
+     mol->S.ntor = S->ntor;
+--- a/autodock/strindex.cc
++++ b/autodock/strindex.cc
+@@ -51,7 +51,7 @@ int strindex( const char s[], const char t[] )
+ /******************************************************************************/
+ 
+ {
+-    register int i,c1,c2;
++    int i,c1,c2;
+ 
+     for (i=0; s[i] != '\0'; i++) {
+         for (c1=i, c2=0; s[c1]==t[c2] && t[c2]!='\0'; c1++, c2++)
+--- a/autodock/support.cc
++++ b/autodock/support.cc
+@@ -49,7 +49,7 @@ extern int outlev;
+ Population::Population(const Population &original)
+ : lhb(original.lhb), size(original.size), evaluate(original.evaluate)
+ {
+-   register int i;
++   int i;
+ 
+ //MP #ifdef DEBUG
+    (void)fprintf(logFile, 
+@@ -144,7 +144,7 @@ void Population::SiftDown(void) /* not const */
+ 
+ void Population::msort(const int m) /* not const */
+ {
+-   register int i;
++   int i;
+    char error_message[200];
+ 
+ #ifdef DEBUG
+@@ -184,7 +184,7 @@ void Population::msort(const int m) /* not const */
+ }
+ 
+ void Population::print(FILE *const output, const int num) const {
+-   register int i;
++   int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(output, "support.cc/void Population::print(FILE *const output, int num=%d)\n", num);
+@@ -345,9 +345,9 @@ int returnCode=0;
+  	
+ 
+ void Population::printPopulationAsStates(FILE *const output, const int num, const int ntor) const {
+-   register int i;
++   int i;
+ #ifdef DEBUG2
+-   register int j;
++   int j;
+    char resstr[LINE_LEN];
+ #endif /* DEBUG2 */
+    double thisValue;
+@@ -385,7 +385,7 @@ void Population::printPopulationAsStates(FILE *const output, const int num, cons
+ }
+ 
+ void Population::printPopulationAsCoordsEnergies(FILE *const output, const int num, const int ntor) const {
+-   register int i;
++   int i;
+    double thisValue;
+ 
+ #ifdef DEBUG
+@@ -430,7 +430,7 @@ void Population::printPopulationAsCoordsEnergies(FILE *const output, const int n
+ void Population::set_eob(/* not const */ int init_end_of_branch[MAX_TORS])
+ // Set the end_of_branch[MAX_TORS] array
+ {
+-   for (register int i=0; i<MAX_TORS; i++) {
++   for (int i=0; i<MAX_TORS; i++) {
+        end_of_branch[i] = init_end_of_branch[i];
+    }
+ }
+@@ -453,7 +453,7 @@ const init_rep_vector)
+ : number_of_vectors(init_number_of_vectors), rep_vector(init_rep_vector), 
+   modified(0)
+ {
+-   register unsigned int i, j, k;
++   unsigned int i, j, k;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "support.cc/Genotype::Genotype(unsigned int init_number_of_vectors=%d, Representation **init_rep_vector)\n", init_number_of_vectors);
+@@ -481,7 +481,7 @@ const init_rep_vector)
+ 
+ Genotype::Genotype(const Genotype &original)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "support.cc/Genotype::Genotype(Genotype const &original)\n");
+@@ -509,7 +509,7 @@ Genotype::Genotype(const Genotype &original)
+ 
+ Genotype::~Genotype(void)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "support.cc/Genotype::~Genotype(void)\n");
+@@ -671,7 +671,7 @@ Phenotype::Phenotype(const unsigned int init_number_of_dimensions, Representatio
+ : number_of_dimensions(init_number_of_dimensions), value_vector(init_value_vector), 
+   value(0.0), evalflag(0), pevaluate(init_pevaluate)
+ {
+-   register unsigned int i, j, k;
++   unsigned int i, j, k;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "support.cc/Phenotype::Phenotype(unsigned int init_number_of_dimensions=%d, Representation **init_value_vector)\n", init_number_of_dimensions);
+@@ -697,7 +697,7 @@ Phenotype::Phenotype(const unsigned int init_number_of_dimensions, Representatio
+ 
+ Phenotype::Phenotype(const Phenotype &original)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "support.cc/Phenotype::Phenotype(const Phenotype &original)\n");
+@@ -728,7 +728,7 @@ Phenotype::Phenotype(const Phenotype &original)
+ 
+ Phenotype &Phenotype::operator=(const Phenotype &original)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "\nsupport.cc/Phenotype &Phenotype::operator=(const Phenotype &original): this==original is %d\n\n", this==&original);
+@@ -778,7 +778,7 @@ Phenotype &Phenotype::operator=(const Phenotype &original)
+ 
+ Phenotype::~Phenotype(void)
+ {
+-   register unsigned int i;
++   unsigned int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "support.cc/Phenotype::~Phenotype(void)\n");
+@@ -965,7 +965,7 @@ void Individual::incrementAge(void) /* not const */
+ 
+ Population &Population::operator=(const Population &original)
+ {
+-   register int i;
++   int i;
+ 
+ #ifdef DEBUG
+    (void)fprintf(logFile, "\nsupport.cc/Population &Population::operator=(const Population &original):this=original is %d\n\n", this==&original);
+--- a/autodock/torNorVec.cc
++++ b/autodock/torNorVec.cc
+@@ -44,8 +44,8 @@ void torNorVec( const Real crdpdb[MAX_ATOMS][SPACE],
+ 		FILE *logFile)
+ {
+ 
+-    register int xyz = 0;
+-    register int j = 0;
++    int xyz = 0;
++    int j = 0;
+ 
+     Real magVec = 0.;
+     Real imagVec = 0.;
+@@ -101,7 +101,7 @@ void update_torsion_vectors( const Real crdpdb[MAX_ATOMS][SPACE],
+ 			     const int outlev,
+ 			     FILE *logFile)
+ { // Update the unit vectors for the torsion rotations
+-    register int i=0, j=0;
++    int i=0, j=0;
+     if (debug > 0) {
+         pr(logFile, "Calculating unit vectors for each torsion.\n\n");
+     }
+--- a/autodock/torsion.cc
++++ b/autodock/torsion.cc
+@@ -59,13 +59,13 @@ void torsion( const State& now,
+ /******************************************************************************/
+ 
+ {
+-    register double crdtemp[SPACE];
+-    register double  d[SPACE];
+-    register double sv[SPACE];
+-    register double ov[SPACE];
+-    register double  k[SPACE][SPACE];
+-    register double s, c, o, vni, this_tor;                /* "o" is: 1. - c, "One minus c". */
+-    register int n, a, mvatm, atmnum, numatmmoved;
++    double crdtemp[SPACE];
++    double  d[SPACE];
++    double sv[SPACE];
++    double ov[SPACE];
++    double  k[SPACE][SPACE];
++    double s, c, o, vni, this_tor;                /* "o" is: 1. - c, "One minus c". */
++    int n, a, mvatm, atmnum, numatmmoved;
+ 
+     for (n = 0;  n < ntor;  n++) {                /* "n"-th Torsion */
+           s = sin(this_tor = ModRad(now.tor[n]));
+--- a/autodock/trilinterp.cc
++++ b/autodock/trilinterp.cc
+@@ -85,18 +85,18 @@ Real trilinterp(
+ 
+ {
+     double elec_total=0, emap_total=0, dmap_total=0, vdW_Hb_total=0, desolv_total=0;
+-    register int i;               /* i-th atom */
++    int i;               /* i-th atom */
+     static EnergyComponent ECzero; // const
+ 
+     for (i=first_atom; i<last_atom; i++) {
+-        register double e, m, d; 
+-        register double u,   v,   w;
++        double e, m, d; 
++        double u,   v,   w;
+         float p0u, p0v, p0w;
+         float p1u, p1v, p1w;
+-        register int AtomType;        /* atom type */
+-        register int u0,  v0,  w0;
+-        register int u1,  v1,  w1;
+-	register double x,y,z;
++        int AtomType;        /* atom type */
++        int u0,  v0,  w0;
++        int u1,  v1,  w1;
++	double x,y,z;
+ 
+         if (ignore_inter[i]) {
+             if (peratomE != NULL) peratomE[i] = ECzero;
+@@ -145,7 +145,7 @@ Real trilinterp(
+         p1w = 1.0L - (p0w = w - (double) w0);
+ 
+ #ifdef MINPOINT
+-        register int ix,iy,iz;                      /*MINPOINT*/
++        int ix,iy,iz;                      /*MINPOINT*/
+         ix = (p0u < p1u)? u0 : u1;				    /*MINPOINT*/
+         iy = (p0v < p1v)? v0 : v1;				    /*MINPOINT*/
+         iz = (p0w < p1w)? w0 : w1;				    /*MINPOINT*/
+--- a/autodock/weedbonds.cc
++++ b/autodock/weedbonds.cc
+@@ -62,9 +62,9 @@ void weedbonds( const int natom,
+     int p = 0;
+     int Nnb = 0;
+ 
+-    register int i = 0;
+-    register int j = 0;
+-    register int k = 0;
++    int i = 0;
++    int j = 0;
++    int k = 0;
+ 
+     char error_msg[LINE_LEN];
+ 
+@@ -249,9 +249,9 @@ void print_nonbonds(
+ 		FILE *logFile)
+ 
+ {
+-    register int i = 0;
+-    register int j = 0;
+-    register int k = 0;
++    int i = 0;
++    int j = 0;
++    int k = 0;
+     int i_atmnum = 0;
+     int j_atmnum = 0;
+     int Nnbonds[MAX_ATOMS];
+--- a/autogrid/main.cpp
++++ b/autogrid/main.cpp
+@@ -424,9 +424,9 @@ int outlev = -1;
+ 
+ #define INIT_NUM_GRID_PTS -1
+ int num_grid_points_per_map = INIT_NUM_GRID_PTS;
+-register int i = 0, ii = 0, j = 0, k = 0, indx_r = 0, i_smooth;
+-register int ia = 0, ib = 0, ic = 0, map_index = -1, iat = 0, i1 = 0, i2 = 0, i3 = 0;
+-register int closestH = 0;
++int i = 0, ii = 0, j = 0, k = 0, indx_r = 0, i_smooth;
++int ia = 0, ib = 0, ic = 0, map_index = -1, iat = 0, i1 = 0, i2 = 0, i3 = 0;
++int closestH = 0;
+ 
+ static int num_receptor_atoms;
+ static long clktck = 0;
