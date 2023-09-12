@@ -122,7 +122,10 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.5 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	test? ( x11-wm/mutter[test] )
+	test? (
+		sys-apps/dbus
+		x11-wm/mutter[test]
+	)
 "
 # These are not needed from tarballs, unless stylesheets or manpage get patched with patchset:
 # dev-lang/sassc
@@ -158,7 +161,7 @@ src_configure() {
 
 src_test() {
 	gnome2_environment_reset # Avoid dconf that looks at XDG_DATA_DIRS, which can sandbox fail if flatpak is installed
-	virtx meson_src_test
+	virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
 }
 
 pkg_postinst() {
