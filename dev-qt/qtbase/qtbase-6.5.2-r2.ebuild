@@ -145,6 +145,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_WITH_PCH=OFF
+
 		-DINSTALL_ARCHDATADIR="${QT6_ARCHDATADIR}"
 		-DINSTALL_BINDIR="${QT6_BINDIR}"
 		-DINSTALL_DATADIR="${QT6_DATADIR}"
@@ -159,7 +161,6 @@ src_configure() {
 		-DINSTALL_SYSCONFDIR="${QT6_SYSCONFDIR}"
 		-DINSTALL_TRANSLATIONSDIR="${QT6_TRANSLATIONDIR}"
 
-		-DQT_FEATURE_precompile_header=OFF
 		$(qt_feature ssl openssl)
 		$(qt_feature ssl openssl_linked)
 		$(qt_feature udev libudev)
