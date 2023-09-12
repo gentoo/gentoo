@@ -35,14 +35,21 @@
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-09-11)
 # Dead project accumulating open bugs and incompatibilities.
+#
+# For more detail, please see the '2021-08-24-eudev-retirement' news item
+# as well as the '2022-04-19-systemd-utils' news item.
+#
 # No Gentoo maintainer commits since February 2021.
+#
 # Many Gentoo packaging issues (some may need to go upstream):
 #  bug #713106, #753134, bug #667686, bug #771705, bug #668880, #770358, bug #851255
 #  bug #711462, #904741
+#
 # But more pressingly, lacks support for the udev 'tags' API which libgudev now
 # requires. No fix has been committed upstream and other software like Plymouth
 # has been broken with eudev for some time because of this missing support.
 # See bug #913702.
+#
 # Removal on 2023-10-11.
 sys-fs/eudev
 
