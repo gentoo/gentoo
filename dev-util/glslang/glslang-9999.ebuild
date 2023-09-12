@@ -32,6 +32,7 @@ PATCHES=( "${FILESDIR}/${PN}-1.3.236-Install-static-libs.patch" )
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PCH=OFF
+		-DALLOW_EXTERNAL_SPIRV_TOOLS=1
 	)
 	cmake_src_configure
 }
