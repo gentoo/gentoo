@@ -112,7 +112,7 @@ BDEPEND="
 	x86? ( dev-lang/yasm )
 	app-arch/cpio
 	>=dev-util/cmake-3.5.0
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/gperf
@@ -403,6 +403,7 @@ python_compile() {
 	ceph_src_configure
 
 	cmake_build src/pybind/CMakeFiles/cython_modules
+	cmake_build cephadm
 }
 
 src_install() {
@@ -466,6 +467,7 @@ src_install() {
 python_install() {
 	local CMAKE_USE_DIR="${S}"
 	DESTDIR="${ED}" cmake_build src/pybind/install
+	DESTDIR="${ED}" cmake_build src/cephadm/install
 
 	python_optimize
 }
