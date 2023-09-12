@@ -102,7 +102,7 @@ BDEPEND="
 	x86? ( dev-lang/yasm )
 	app-arch/cpio
 	>=dev-util/cmake-3.5.0
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/gperf
@@ -211,6 +211,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.0-gcc12-header.patch"
 	"${FILESDIR}/ceph-16.2.10-flags.patch"
 	"${FILESDIR}/ceph-17.2.5-boost-1.81.patch"
+	"${FILESDIR}/ceph-16.2.14-gcc13.patch"
 )
 
 check-reqs_export_vars() {
@@ -457,6 +458,9 @@ python_install() {
 	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
 	DESTDIR="${ED}" cmake_build VERBOSE=1 install
 	popd >/dev/null || die
+
+	python_scriptinto /usr/sbin
+	python_doscript src/cephadm/cephadm
 
 	python_optimize
 }
