@@ -300,7 +300,6 @@ src_test() {
 			tst_qfiledialog2
 			tst_qicoimageformat
 			tst_qimagereader
-			tst_qpainter
 			tst_qimage
 		')
 		# note: for linux, upstream only really runs+maintains tests for amd64
