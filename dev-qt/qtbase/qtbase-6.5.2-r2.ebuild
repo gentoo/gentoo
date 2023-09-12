@@ -295,6 +295,9 @@ src_test() {
 		tst_qglyphrun
 		tst_qvectornd
 		tst_rcc
+		# similarly, but on armv7 (bug #914028)
+		tst_qlineedit
+		tst_qpainter
 		# partially broken on llvm-musl, needs looking into but skip to have
 		# a baseline for regressions (like above, rest of dev-qt is fine)
 		$(usev elibc_musl '
