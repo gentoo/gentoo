@@ -1242,10 +1242,6 @@ _python_check_EPYTHON() {
 _python_check_occluded_packages() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	# DO NOT ENABLE THIS unless you're going to check for false
-	# positives before filing bugs.
-	[[ ! ${PYTHON_EXPERIMENTAL_QA} ]] && return
-
 	[[ -z ${BUILD_DIR} || ! -d ${BUILD_DIR}/install ]] && return
 
 	local sitedir="${BUILD_DIR}/install$(python_get_sitedir)"
