@@ -1,0 +1,14 @@
+diff --git a/src/slic3r/GUI/GUI_App.cpp b/src/slic3r/GUI/GUI_App.cpp
+index e855b6290..2479bf054 100644
+--- a/src/slic3r/GUI/GUI_App.cpp
++++ b/src/slic3r/GUI/GUI_App.cpp
+@@ -1128,6 +1128,9 @@ bool GUI_App::OnInit()
+ 
+ bool GUI_App::on_init_inner()
+ {
++    // Disable the wxWidgets asserts breakpoints, end users have no use for them.
++    wxSizerFlags::DisableConsistencyChecks();
++
+     // Set initialization of image handlers before any UI actions - See GH issue #7469
+     wxInitAllImageHandlers();
+ 
