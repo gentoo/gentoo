@@ -23,7 +23,10 @@ else
 fi
 
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
-HOMEPAGE="https://code.videolan.org/videolan/libplacebo/"
+HOMEPAGE="
+	https://libplacebo.org/
+	https://code.videolan.org/videolan/libplacebo/
+"
 
 LICENSE="LGPL-2.1+ opengl? ( MIT )"
 SLOT="0/$(ver_cut 2 ${PV}.9999)" # soname
