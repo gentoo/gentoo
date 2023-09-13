@@ -15,7 +15,7 @@ else
 		https://code.videolan.org/videolan/libplacebo/-/archive/v${PV}/libplacebo-v${PV}.tar.bz2
 		opengl? (
 			https://github.com/Dav1dde/glad/archive/refs/tags/v${GLAD_PV}.tar.gz
-				-> ${PN}-glad-${GLAD_PV}.tar.gz
+				-> glad-${GLAD_PV}.tar.gz
 		)
 	"
 	S="${WORKDIR}/${PN}-v${PV}"
