@@ -1,0 +1,816 @@
+Bug: https://bugs.gentoo.org/896246
+--- a/basics/npixel.h
++++ b/basics/npixel.h
+@@ -104,7 +104,7 @@
+ 
+   inline  NPixel::NPixel(const Pixel& pix)
+   { 
+-    register unsigned32 newColor = *((unsigned32 *)(&pix));
++    unsigned32 newColor = *((unsigned32 *)(&pix));
+ #ifdef __bigEndian
+     itsColor = newColor;                    // Simple copy
+ #else
+--- a/fpx/buffdesc.cpp
++++ b/fpx/buffdesc.cpp
+@@ -108,7 +108,7 @@ static void Shift8BitsRight (unsigned char* buffer, long size)
+ // Copy a byte and erase its ancient address be 2 bytes on the right (don't move the rest)
+ static void MoveByteRightBy2(unsigned char* buffer, long size)
+ {
+-  register unsigned char* next;
++  unsigned char* next;
+   next = buffer + 2;
+   while (size--) {
+     *next = *buffer;
+@@ -121,7 +121,7 @@ static void MoveByteRightBy2(unsigned char* buffer, long size)
+ // Copy a byte and erase its ancient address be 2 bytes on the left (don't move the rest)
+ static void MoveByteLeftBy2(unsigned char* buffer, long size)
+ {
+-  register unsigned char* next;
++  unsigned char* next;
+   next = buffer - 2;
+   while (size--) {
+     *next = *buffer;
+@@ -451,16 +451,16 @@ void FPXBufferDesc::UpdateBuffer ()
+   // If the pixels are stored in a local buffer, they have to be transfered from the
+   // image descriptor to the buffer
+   if (localBuffer) {
+-    register long i, j;
++    long i, j;
+     
+-    register long incLine0 = FPXdesc->components[0].lineStride;
+-    register long incLine1 = FPXdesc->components[1].lineStride;
+-    register long incLine2 = FPXdesc->components[2].lineStride;
+-    register long incLine3 = FPXdesc->components[3].lineStride;
+-    register long incCol0  = FPXdesc->components[0].columnStride;
+-    register long incCol1  = FPXdesc->components[1].columnStride;
+-    register long incCol2  = FPXdesc->components[2].columnStride;
+-    register long incCol3  = FPXdesc->components[3].columnStride;
++    long incLine0 = FPXdesc->components[0].lineStride;
++    long incLine1 = FPXdesc->components[1].lineStride;
++    long incLine2 = FPXdesc->components[2].lineStride;
++    long incLine3 = FPXdesc->components[3].lineStride;
++    long incCol0  = FPXdesc->components[0].columnStride;
++    long incCol1  = FPXdesc->components[1].columnStride;
++    long incCol2  = FPXdesc->components[2].columnStride;
++    long incCol3  = FPXdesc->components[3].columnStride;
+     
+     unsigned char* pt0;
+     unsigned char* pt1;
+@@ -469,7 +469,7 @@ void FPXBufferDesc::UpdateBuffer ()
+ 
+     unsigned char* pix;
+     long  nbChan = FPXdesc->numberOfComponents;
+-    register long  incCol;
++    long  incCol;
+     
+     if (nbChan == 1) {
+       pix    = buffer + 3;
+@@ -526,16 +526,16 @@ void FPXBufferDesc::UpdateDescriptor ()
+   // If the pixels are stored in a local buffer, they have to be transfered to the
+   // image descriptor
+   if (localBuffer) {
+-    register long i, j;
++    long i, j;
+     
+-    register long incLine0 = FPXdesc->components[0].lineStride;
+-    register long incLine1 = FPXdesc->components[1].lineStride;
+-    register long incLine2 = FPXdesc->components[2].lineStride;
+-    register long incLine3 = FPXdesc->components[3].lineStride;
+-    register long incCol0  = FPXdesc->components[0].columnStride;
+-    register long incCol1  = FPXdesc->components[1].columnStride;
+-    register long incCol2  = FPXdesc->components[2].columnStride;
+-    register long incCol3  = FPXdesc->components[3].columnStride;
++    long incLine0 = FPXdesc->components[0].lineStride;
++    long incLine1 = FPXdesc->components[1].lineStride;
++    long incLine2 = FPXdesc->components[2].lineStride;
++    long incLine3 = FPXdesc->components[3].lineStride;
++    long incCol0  = FPXdesc->components[0].columnStride;
++    long incCol1  = FPXdesc->components[1].columnStride;
++    long incCol2  = FPXdesc->components[2].columnStride;
++    long incCol3  = FPXdesc->components[3].columnStride;
+     
+     unsigned char* pt0;
+     unsigned char* pt1;
+@@ -544,7 +544,7 @@ void FPXBufferDesc::UpdateDescriptor ()
+ 
+     unsigned char* pix;
+     long  nbChan = FPXdesc->numberOfComponents;
+-    register long  incCol;
++    long  incCol;
+     
+     if (nbChan == 1) {
+       pix    = buffer + 3;
+@@ -915,7 +915,7 @@ Boolean IsASupportedDescriptor(FPXImageDesc& desc, long width)
+ // Check to see if all pixels in a tile are same and return the pixel value
+ Boolean IsTileAllSamePixel(Pixel *entireTile, short width, short height, Pixel* singleColorPixel)
+ {
+-  register unsigned long numofpixel = width * height;
++  unsigned long numofpixel = width * height;
+   
+   *singleColorPixel = entireTile[0];
+   for ( unsigned long i = 1; i< numofpixel; i++ )
+@@ -1545,7 +1545,7 @@ Boolean CreateThumbnail(unsigned char* buf, FPXBaselineColorSpace baseSpace,
+ // Create window DIB default palette, which is grayscale ramp of 256 RGBQUAD
+ void SetDefaultPalette(unsigned char *palBuffer)
+ {
+-  register unsigned long *all; 
++  unsigned long *all; 
+   
+   // Set the grayscale ramp of RGBQUADs
+   all = (unsigned long *)(palBuffer); 
+--- a/fpx/coltwist.cpp
++++ b/fpx/coltwist.cpp
+@@ -284,7 +284,7 @@ void PColorTwist::UsePortfolioLut(void)
+ 
+ void PColorTwist::ApplyToBuffer(unsigned char* buffer, long size)
+ {
+-  register int c1, c2, c3;
++  int c1, c2, c3;
+   float alpha_scale;
+   unsigned char *red_pixel,*green_pixel,*blue_pixel;
+   unsigned char *alpha_pixel;
+@@ -373,8 +373,8 @@ void PColorTwist::ApplyToBuffer(unsigned char* buffer, long size)
+ // This routine assumes that T44 is equal to 1 and that a pixel is 4 bytes wide.
+ void PColorTwist::ApplyRGBtoYCCLut(unsigned char* buffer, long size)
+ {
+-  register int  c1, c2, c3;
+-  register int  rInt, gInt, bInt;     // PTCH_LUTCLIP - allow values > 255 from LUT
++  int  c1, c2, c3;
++  int  rInt, gInt, bInt;     // PTCH_LUTCLIP - allow values > 255 from LUT
+   float       alpha_scale;
+   unsigned char   *red_pixel, *green_pixel, *blue_pixel;
+   unsigned char   *alpha_pixel;
+@@ -418,7 +418,7 @@ void PColorTwist::ApplyRGBtoYCCLut(unsigned char* buffer, long size)
+ /**
+ Boolean PColorTwist::ApplyToPixelBuffer(Pixel* pixels, FPXBaselineColorSpace colorSpace, long size)
+ {
+-  register int c1, c2, c3;
++  int c1, c2, c3;
+   unsigned char *red_pixel,*green_pixel,*blue_pixel;
+ 
+   switch (colorSpace) {
+@@ -475,7 +475,7 @@ Boolean PColorTwist::ApplyToPixelBuffer(Pixel* pixels, FPXBaselineColorSpace col
+ **/
+ Boolean PColorTwist::ApplyToPixelBuffer(Pixel* pixels, FPXBaselineColorSpace colorSpace, long size)
+ {
+-  register int c1, c2, c3;
++  int c1, c2, c3;
+   unsigned char *red_pixel,*green_pixel,*blue_pixel;
+   unsigned char *alpha_pixel;
+   unsigned char clampLimit;
+--- a/fpx/pres_fpx.cpp
++++ b/fpx/pres_fpx.cpp
+@@ -753,7 +753,7 @@ FPXStatus PResolutionFlashPix::Read ()
+ // Write the tile header of a sub-image :
+ FPXStatus PResolutionFlashPix::Write()
+ {
+-  register int   TILE_WIDTH = fatherFile->tileWidth;
++  int   TILE_WIDTH = fatherFile->tileWidth;
+   FPXStatus   status = FPX_OK;
+ 
+   // If nothing has never been writen or read from this resolution level,
+--- a/fpx/ptil_fpx.cpp
++++ b/fpx/ptil_fpx.cpp
+@@ -286,7 +286,7 @@ FPXStatus PTileFlashPix::WriteRawTile (FPXCompressionOption   compressOption,
+ //
+ FPXStatus PTileFlashPix::Write()
+ {
+-  register long   TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
++  long   TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
+   long      sizeCompressed;       // Size of data after compression
+ 
+   ptr_Compresseur monCompresseur; 
+@@ -728,7 +728,7 @@ FPXStatus PTileFlashPix::ReadRawPixels()
+   ptr_Compresseur monDecompresseur; 
+   PFlashPixFile *fileFPX;
+   Pixel       *entireTile;
+-  register long   TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
++  long   TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
+   Boolean     wasLocked = false;
+   FPXStatus   status = FPX_OK;
+   OLEHeaderStream *subStreamData = NULL;
+--- a/ri_image/cp_jpeg.cpp
++++ b/ri_image/cp_jpeg.cpp
+@@ -268,8 +268,8 @@ int PCompressorJPEG::Compress(unsigned char * uncompressedData,
+                     long* sizeCompressed)
+ {
+   int status = FPX_OK;      // CHG_FILE_ERR - init to no error
+-  register long   numberofpixel = width * height;
+-  register long   buflen = numberofpixel * bytesPerPixel;
++  long   numberofpixel = width * height;
++  long   buflen = numberofpixel * bytesPerPixel;
+ 
+   // Verify the parameters
+   assert(uncompressedData != NULL);
+@@ -302,8 +302,8 @@ int PCompressorJPEG::Decompress(unsigned char* uncompressedData,
+                     long sizeCompressed)
+ {
+   int       status = FPX_OK;      // CHG_FILE_ERR - init to no error
+-  register long   numberofpixel = width * height;
+-  register long   buflen = numberofpixel * bytesPerPixel;
++  long   numberofpixel = width * height;
++  long   buflen = numberofpixel * bytesPerPixel;
+ 
+   // Verify the parameters
+   assert(uncompressedData != NULL);
+@@ -421,7 +421,7 @@ Boolean PCompressorSinColor::Decompress(unsigned char* uncompressedData,
+                       unsigned char* compressedData, 
+                       long sizeCompressed)
+ {
+-  register long   numberofpixel = width * height;
++  long   numberofpixel = width * height;
+   unsigned char alphaValue = 0; 
+   
+   if ( sizeCompressed == 4 ) {
+@@ -430,7 +430,7 @@ Boolean PCompressorSinColor::Decompress(unsigned char* uncompressedData,
+   }
+   
+   // Rebuild the pixel buffer
+-  for ( register long i= 0; i< numberofpixel; i++ )
++  for ( long i= 0; i< numberofpixel; i++ )
+   {
+     uncompressedData[4*i] = alphaValue; 
+     uncompressedData[4*i + 1] = compressedData[0]; 
+--- a/ri_image/matrix.cpp
++++ b/ri_image/matrix.cpp
+@@ -72,8 +72,8 @@ Pixel CombinMat::operator()(const Pixel& pixIn) const
+   {
+     Pixel  pixOut;
+   
+-    register unsigned char r, v, b;
+-    register long val;
++    unsigned char r, v, b;
++    long val;
+ 
+     r = pixIn.rouge;
+     v = pixIn.vert;
+@@ -104,8 +104,8 @@ NPixel CombinMat::operator()(const NPixel& pixIn) const
+   {
+     NPixel  pixOut;
+   
+-    register unsigned char r, v, b;
+-    register long val;
++    unsigned char r, v, b;
++    long val;
+ 
+     r = pixIn.Red();
+     v = pixIn.Green();
+--- a/ri_image/ph_image.cpp
++++ b/ri_image/ph_image.cpp
+@@ -335,8 +335,8 @@ FPXStatus PHierarchicalImage::WriteLine (Pixel* pix, short plan)
+     } else {
+       // The buffer contain only the active channel
+       // we must create a temporary buffer to send to the image file
+-      register int j;
+-      register unsigned char *src, *dst;
++      int j;
++      unsigned char *src, *dst;
+ 
+       src = (unsigned char *)(pix);
+       dst = (unsigned char *)(source)  + plan;
+@@ -366,8 +366,8 @@ FPXStatus PHierarchicalImage::WriteRectangle (int x0, int y0, int x1, int y1, Pi
+     int subX0, subY0, subX1, subY1;  // corners of the temporary buffer
+     int bufSize = 0;         // size of temporary buffer
+     int bufWidth, bufHeight;     // width ans height of temporary buffer
+-    register int i, j;
+-    register unsigned char *src, *dst, *ptrPix;
++    int i, j;
++    unsigned char *src, *dst, *ptrPix;
+ 
+     src = dst = ptrPix = 0;
+     // cut the rectangle in sub-rectangles to avoid to create a big buffer
+@@ -488,8 +488,8 @@ FPXStatus PHierarchicalImage::ReadRectangle (int x0, int y0, int x1, int y1, Pix
+     int subX0, subY0, subX1, subY1;  // corners of the temporary buffer
+     int bufSize = 0;         // size of temporary buffer
+     int bufWidth, bufHeight;     // width ans height of temporary buffer
+-    register int i, j;
+-    register unsigned char *src, *dst, *ptrPix;
++    int i, j;
++    unsigned char *src, *dst, *ptrPix;
+ 
+     short plan = Toolkit_ActiveChannel();
+     int incrRow = tileWidth;
+@@ -716,7 +716,7 @@ FPXStatus PHierarchicalImage::ReadInARectangle (Pixel* bufferOut, short pixelsPe
+                   const CorrectLut* correctLut, Boolean useAlphaChannel, const CombinMat* combinaisonMatrix)
+ {
+   Pixel *bufferTemp, *ptrBufferTemp, *ptrBufferOut;
+-  register int i;
++  int i;
+ 
+   // allocate an intermediate buffer to read the rectangle
+   unsigned int size = (unsigned int)(pixelsPerLine * rectHeight);
+@@ -747,8 +747,8 @@ FPXStatus PHierarchicalImage::ReadInARectangle (Pixel* bufferOut, short pixelsPe
+   short plan = Toolkit_ActiveChannel();
+   if ((plan != ActiveChannel_All) && (GtheSystemToolkit->interleaving == Interleaving_Channel)) {
+     // Copy Pixel by pixel if planes specified, the destination contains only the choosen channel
+-    register int j;
+-    register unsigned char *src, *dst, *ptrCharBufferOut;
++    int j;
++    unsigned char *src, *dst, *ptrCharBufferOut;
+     ptrCharBufferOut = (unsigned char *)(bufferOut);
+     for (i = 0; i < rectHeight; i++, bufferTemp += pixelsPerLine, ptrCharBufferOut += pixelsPerLine ) {
+       src = (unsigned char *)(bufferTemp)  + plan;
+--- a/ri_image/pr_level.cpp
++++ b/ri_image/pr_level.cpp
+@@ -76,8 +76,8 @@
+   posFic      = 0;            // Position at the begining os the file
+   identifier  = *whatImage;
+   
+-  register int TILE_WIDTH = fatherFile->tileWidth;
+-  register int TILE_SHIFT = fatherFile->log2TileWidth;
++  int TILE_WIDTH = fatherFile->tileWidth;
++  int TILE_SHIFT = fatherFile->log2TileWidth;
+ 
+   // Compute number of tiles in height and width
+   nbTilesH    = (short)((height + TILE_WIDTH - 1) >> TILE_SHIFT);
+@@ -165,9 +165,9 @@ PResolutionLevel* PResolutionLevel::Previous()
+ // Allocate resolution levels array and compute resolution information
+ FPXStatus PResolutionLevel::Allocation ()
+ {
+-  register int TILE_WIDTH = fatherFile->tileWidth;
+-  register int TILE_SHIFT = fatherFile->log2TileWidth;
+-  register int TILE_MASK  = fatherFile->maskTileWidth;
++  int TILE_WIDTH = fatherFile->tileWidth;
++  int TILE_SHIFT = fatherFile->log2TileWidth;
++  int TILE_MASK  = fatherFile->maskTileWidth;
+ 
+   short   i;
+   short   j;
+@@ -243,8 +243,8 @@ FPXStatus PResolutionLevel::InverseAlpha()
+   if (!HasBeenUsed())
+     return FPX_OK;
+     
+-  register int i = nbTilesH * nbTilesW;
+-  register PTile* tile = tiles;
++  int i = nbTilesH * nbTilesW;
++  PTile* tile = tiles;
+   
+   while (i--)
+     tile++->InverseAlpha();
+@@ -303,9 +303,9 @@ FPXStatus PResolutionLevel::WriteRectangle (int x0, int y0, int x1, int y1, Pixe
+   int    h, w;
+   int    rowOffset = x1 - x0 + 1;
+     
+-  register int TILE_WIDTH  = fatherFile->tileWidth;
+-  register int TILE_SHIFT  = fatherFile->log2TileWidth;
+-  register int TILE_MASK   = fatherFile->maskTileWidth;
++  int TILE_WIDTH  = fatherFile->tileWidth;
++  int TILE_SHIFT  = fatherFile->log2TileWidth;
++  int TILE_MASK   = fatherFile->maskTileWidth;
+ 
+   // Test input values
+   if ((x1 < x0) || (y1 < y0))
+@@ -417,9 +417,9 @@ FPXStatus PResolutionLevel::ReadRectangle (int x0, int y0, int x1, int y1, Pixel
+   int    h, w;
+   int    rowOffset = x1 - x0 + 1;
+ 
+-  register int TILE_WIDTH  = fatherFile->tileWidth;
+-  register int TILE_SHIFT  = fatherFile->log2TileWidth;
+-  register int TILE_MASK   = fatherFile->maskTileWidth;
++  int TILE_WIDTH  = fatherFile->tileWidth;
++  int TILE_SHIFT  = fatherFile->log2TileWidth;
++  int TILE_MASK   = fatherFile->maskTileWidth;
+        Pixel BACKGROUND   = fatherFile->backgroundUsed;
+ 
+   // Test input values
+@@ -526,9 +526,9 @@ FPXStatus PResolutionLevel::Convolution (int x, int y, Pixel* pix, int width, in
+ //
+ FPXStatus PResolutionLevel::Read(int* px, int* py, Pixel* table)
+ {
+-  register int TILE_WIDTH  = fatherFile->tileWidth;
+-  register int TILE_SHIFT  = fatherFile->log2TileWidth;
+-  register int TILE_MASK   = fatherFile->maskTileWidth;
++  int TILE_WIDTH  = fatherFile->tileWidth;
++  int TILE_SHIFT  = fatherFile->log2TileWidth;
++  int TILE_MASK   = fatherFile->maskTileWidth;
+        Pixel BACKGROUND = fatherFile->backgroundUsed;
+        Boolean useAlpha = fatherFile->useAlphaChannel | (isAlpha & premultiplied);
+   unsigned char alphaOffset = fatherFile->alphaOffset;
+@@ -731,8 +731,8 @@ FPXStatus PResolutionLevel::Read(int* px, int* py, Pixel* table)
+ //  ----------------------------------------------------------------------------
+ FPXStatus PResolutionLevel::ReadInterpolated (int* px, int* py, Pixel* table)
+ {
+-  register int TILE_SHIFT  = fatherFile->log2TileWidth;
+-  register int TILE_MASK   = fatherFile->maskTileWidth;
++  int TILE_SHIFT  = fatherFile->log2TileWidth;
++  int TILE_MASK   = fatherFile->maskTileWidth;
+        Pixel  BACKGROUND = fatherFile->backgroundUsed;
+ 
+   PTile     * tile;
+@@ -902,8 +902,8 @@ FPXStatus PResolutionLevel::ReadMeanInterpolated (int xi, int yi, Pixel& pixel)
+   Boolean     useAlpha = fatherFile->useAlphaChannel | (isAlpha & premultiplied);
+   FPXStatus   status = FPX_OK;
+   
+-  register int  TILE_SHIFT = fatherFile->log2TileWidth;
+-  register int  TILE_MASK  = fatherFile->maskTileWidth;
++  int  TILE_SHIFT = fatherFile->log2TileWidth;
++  int  TILE_MASK  = fatherFile->maskTileWidth;
+        Pixel BACKGROUND = fatherFile->backgroundUsed;
+   unsigned char alphaOffset = fatherFile->alphaOffset;
+ 
+@@ -1173,8 +1173,8 @@ FPXStatus PResolutionLevel::ReadMean (int xi, int yi, Pixel& pixel)
+   Boolean     useAlpha      = fatherFile->useAlphaChannel | (isAlpha & premultiplied);
+   unsigned char   alphaOffset     = fatherFile->alphaOffset;
+   
+-  register int  TILE_SHIFT = fatherFile->log2TileWidth;
+-  register int  TILE_MASK  = fatherFile->maskTileWidth;
++  int  TILE_SHIFT = fatherFile->log2TileWidth;
++  int  TILE_MASK  = fatherFile->maskTileWidth;
+        Pixel BACKGROUND = fatherFile->backgroundUsed;
+ 
+   // Compute cropping for this scale :
+@@ -1227,8 +1227,8 @@ FPXStatus PResolutionLevel::ReadSampledRectangle(int x0, int y0,int x1, int y1,
+   int  i, j, k;
+   Pixel*  bufferPtr = map;
+ 
+-  register int  TILE_WIDTH = fatherFile->tileWidth;
+-  register int  TILE_SHIFT = fatherFile->log2TileWidth;
++  int  TILE_WIDTH = fatherFile->tileWidth;
++  int  TILE_SHIFT = fatherFile->log2TileWidth;
+        Pixel BACKGROUND = fatherFile->backgroundUsed;
+   unsigned char alphaOffset = fatherFile->alphaOffset;
+   BACKGROUND.rouge  = 0xFF;
+@@ -1395,8 +1395,8 @@ FPXStatus PResolutionLevel::ReadSampledRectangle(int x0, int y0,int x1, int y1,
+ // This function is used when 1 image pixel is represented by more than 1 screen pixel
+ FPXStatus PResolutionLevel::SearchPixelTopLeftCorner(int* x1, int* y1, float ratio)
+ {
+-  register int  TILE_WIDTH = fatherFile->tileWidth;
+-  register int  TILE_SHIFT = fatherFile->log2TileWidth;
++  int  TILE_WIDTH = fatherFile->tileWidth;
++  int  TILE_SHIFT = fatherFile->log2TileWidth;
+       
+   short   *pixToTile;
+   FPXStatus status;
+@@ -1469,7 +1469,7 @@ FPXStatus PResolutionLevel::ReadInARectangle(Pixel* bufferOut, short pixelsPerLi
+   float   ratio;
+   FPXStatus   status = FPX_OK;
+ 
+-  register int  TILE_WIDTH = fatherFile->tileWidth;
++  int  TILE_WIDTH = fatherFile->tileWidth;
+        Pixel BACKGROUND = fatherFile->backgroundUsed;
+   unsigned char alphaOffset = fatherFile->alphaOffset;
+   BACKGROUND.rouge  = 0xFF;
+--- a/ri_image/ptile.cpp
++++ b/ri_image/ptile.cpp
+@@ -98,8 +98,8 @@
+ static void ConvolStandard (Pixel* source, long width, long height, Pixel* dest, long pixelsPerLine)
+ 
+ {
+-  register Pixel *pt, *pSE, *pSW, *pNE, *pNW;
+-  register long i, j, lineWidth;
++  Pixel *pt, *pSE, *pSW, *pNE, *pNW;
++  long i, j, lineWidth;
+ 
+   // Compute loop control values
+   long oddLine    = width & 0x01;
+@@ -322,7 +322,7 @@ static void ConvolGaussian3 (Pixel* source, long width, long height,
+     return;
+   }
+ 
+-  register Pixel *pt, *pSE, *pSW, *pNE, *pNW, *pC, *pS, *pN, *pE, *pW;
++  Pixel *pt, *pSE, *pSW, *pNE, *pNW, *pC, *pS, *pN, *pE, *pW;
+   long i, j, lineWidth;
+ 
+   // Compute loop control values
+@@ -397,7 +397,7 @@ static void ConvolGaussSimplified (Pixel* source, long width, long height, Pixel
+     return;
+   }
+ 
+-  register Pixel *pt, *pC, *pS, *pN, *pE, *pW;
++  Pixel *pt, *pC, *pS, *pN, *pE, *pW;
+   long i, j, lineWidth;
+ 
+   // Compute loop control values
+@@ -552,8 +552,8 @@ void PTile::InitializeRead (PResolutionLevel* father, long offset, long sizetile
+   previous      = NULL;
+   next        = NULL;
+   
+-  register long TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
+-  register long TILE_MASK  = fatherSubImage->fatherFile->maskTileWidth;
++  long TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
++  long TILE_MASK  = fatherSubImage->fatherFile->maskTileWidth;
+ 
+   long curLine = id/fatherSubImage->nbTilesW;
+   long curCol =  id%fatherSubImage->nbTilesW;
+@@ -1018,8 +1018,8 @@ void PTile::Insert()
+ //
+ long PTile::Free (Boolean forced, Boolean freeIncomplete)
+ {
+-  register long TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
+-  register long size = 0;
++  long TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
++  long size = 0;
+ 
+ #ifdef Memoire_Debug
+   VISU2 "Free the tile: %d:%d, forced = %d\n", fatherSubImage->identifier, identifier, forced FIN
+@@ -1171,8 +1171,8 @@ TLC_IdCodec PTile::ConvertCompressionOption ()
+ FPXStatus PTile::WriteRectangle (Pixel* pix, long width, long height, long rowOffset, 
+         long x0, long y0, short plan)
+ {
+-  register Pixel* pt;
+-  register long   i;
++  Pixel* pt;
++  long   i;
+   FPXStatus   status = FPX_OK;
+   
+   // Read or allocate the tile if necessary
+@@ -1191,8 +1191,8 @@ FPXStatus PTile::WriteRectangle (Pixel* pix, long width, long height, long rowOf
+       BlockMove(pix,pt,width*sizeof(Pixel));
+   } else {
+     // Pixel by pixel if planes specified
+-    register long j;
+-    register unsigned char *src, *dst;
++    long j;
++    unsigned char *src, *dst;
+     for (i = 0; i < height; i++, pt += this->width, pix += rowOffset) {
+       src = (unsigned char *)(pix) + plan; 
+       dst = (unsigned char *)(pt)  + plan;
+@@ -1384,8 +1384,8 @@ FPXStatus PTile::ReadRectangleRawData (Pixel* pix, long width, long height, long
+ FPXStatus PTile::ReadRectangle (Pixel* pix, long width, long height, long rowOffset, 
+           long x0, long y0)
+ {
+-  register  Pixel *pt;
+-  register  long  i;
++   Pixel *pt;
++   long  i;
+   FPXStatus     status;
+   
+   // Read the tile if necessary
+@@ -1404,8 +1404,8 @@ FPXStatus PTile::ReadRectangle (Pixel* pix, long width, long height, long rowOff
+       BlockMove(pt,pix,width*sizeof(Pixel));
+   } else {
+     // Pixel by pixel if planes specified
+-    register long j;
+-    register unsigned char *src, *dst;
++    long j;
++    unsigned char *src, *dst;
+     for (i = 0; i < height; i++, pt += this->width, pix += rowOffset) {
+       src = (unsigned char *)(pt)  + plan;
+       dst = (unsigned char *)(pix) + plan; 
+--- a/ri_image/ri_page.cpp
++++ b/ri_image/ri_page.cpp
+@@ -286,8 +286,8 @@ FPXStatus PageImage::ReadPage (Pixel* image)
+           break;
+         }
+         // Pixel by pixel if planes specified, the destination contains only the choosed channel
+-        register long j;
+-        register unsigned char *src, *dst;
++        long j;
++        unsigned char *src, *dst;
+         src = (unsigned char *)(pt)  + plan;
+         dst = dest; 
+         for (j=0; j<pixWidth;j++,src+=sizeof(Pixel),dst++)
+@@ -325,8 +325,8 @@ FPXStatus PageImage::ReadPageLine (long lineNumber, Pixel* pixLine)
+     short plan = GtheSystemToolkit->activeChannel;
+     if ((plan != ActiveChannel_All) && (GtheSystemToolkit->interleaving == Interleaving_Channel)) {
+       // Pixel by pixel if planes specified, the destination contains only the choosen channel
+-      register long j;
+-      register unsigned char *src, *dst;
++      long j;
++      unsigned char *src, *dst;
+       src = (unsigned char *)(pt)  + plan;
+       dst = (unsigned char *)pixLine; 
+       for (j=0; j<pixWidth;j++,src+=sizeof(Pixel),dst++)
+@@ -338,8 +338,8 @@ FPXStatus PageImage::ReadPageLine (long lineNumber, Pixel* pixLine)
+         BlockMove(pt,pixLine,pixWidth*sizeof(Pixel));
+       } else {
+         // Pixel by pixel if planes specified
+-        register long j;
+-        register unsigned char *src, *dst;
++        long j;
++        unsigned char *src, *dst;
+         src = (unsigned char *)(pt)  + plan;
+         dst = (unsigned char *)(pixLine) + plan; 
+         for (j=0; j<pixWidth;j++,src+=sizeof(Pixel),dst+=sizeof(Pixel))
+--- a/ri_image/ri_sys.cpp
++++ b/ri_image/ri_sys.cpp
+@@ -186,7 +186,7 @@ void PErrorsList::AddErrorToList(OSErr err, FicNom file)
+ 
+ PSystemToolkit::PSystemToolkit ()
+ {
+-  register int i, n;
++  int i, n;
+   
+   tousLesCodecs     = new obj_TousLesCodecs;  // Allocate standard compressors
+ 
+@@ -299,7 +299,7 @@ long PSystemToolkit::PurgeSystemWithAmount (long memoryToBePurged)
+ 
+ long PSystemToolkit::SetTileSize(long newTileSize)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (newTileSize < MIN_TILE_SIZE)
+     status = 1;
+@@ -320,7 +320,7 @@ long PSystemToolkit::SetTileSize(long newTileSize)
+ 
+ long PSystemToolkit::SetWaitFunc (Typ_WaitFunc newWaitFunc)
+ {
+-  register long status = 0;
++  long status = 0;
+ 
+   if (newWaitFunc == NULL)
+     status = -1;
+@@ -333,7 +333,7 @@ long PSystemToolkit::SetWaitFunc (Typ_WaitFunc newWaitFunc)
+ 
+ long PSystemToolkit::SetProgFunc (FPXProgressFunction newProgFunc)
+ {
+-  register long status = 0;
++  long status = 0;
+ 
+   if (newProgFunc == NULL)
+     status = -1;
+@@ -371,7 +371,7 @@ long PSystemToolkit::GetUnit (Typ_Unit* newUnit)
+ 
+ long PSystemToolkit::SetConvolution (Typ_Convolution newConvolution, Typ_Filter newFilter)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (newConvolution == Convolution_Other) {
+     if (newFilter == NULL)
+@@ -390,7 +390,7 @@ long PSystemToolkit::SetConvolution (Typ_Convolution newConvolution, Typ_Filter
+ 
+ long PSystemToolkit::SetConvolution (Typ_Convolution newConvolution)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (newConvolution == Convolution_Other)
+     status = 1;
+@@ -441,7 +441,7 @@ void PSystemToolkit::SetUsedColorSpace (FPXBaselineColorSpace colorSpace)
+ 
+ void PSystemToolkit::SetToBackground(ptr_Pixel buffer, long width, long height)
+ {
+-  register long i = width * height;
++  long i = width * height;
+   
+   // Set a pixel buffer to background color
+   while (i--)
+@@ -452,7 +452,7 @@ void PSystemToolkit::SetToBackground(ptr_Pixel buffer, long width, long height)
+ long PSystemToolkit::SetColorConversion (Typ_ColorCode colorCode,   Typ_ModeltoRGB modeltoRGB, 
+                                 Typ_RGBtoModel RGBtoModel)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (colorCode == ColorCode_RGB)
+     status = 1;
+@@ -469,7 +469,7 @@ long PSystemToolkit::SetColorConversion (Typ_ColorCode colorCode,   Typ_ModeltoR
+ 
+ long PSystemToolkit::SetCompression (Typ_Compression newidCompressor, Typ_Compressor newCompressor, Typ_Decompressor newDecompressor)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (newidCompressor == Compression_Other) {
+     if ((newCompressor == NULL) || (newDecompressor == NULL))
+@@ -489,7 +489,7 @@ long PSystemToolkit::SetCompression (Typ_Compression newidCompressor, Typ_Compre
+ 
+ long PSystemToolkit::SetCompressionHandle(void* newCompressionHandle, long newHandleSize)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (newCompressionHandle == NULL)
+     status = -1;
+@@ -742,7 +742,7 @@ Boolean Toolkit_CopyInterleaved (Pixel* image,     long imageWidth, long imageHe
+         }
+       } else {
+         for (i = 0; i < rectHeight; i++) {
+-          register unsigned char *src, *dst;
++          unsigned char *src, *dst;
+           src = (unsigned char *)(rectangle)  + plan;
+           dst = (unsigned char *)(image) + plan; 
+           for (j = 0; j < cropWidth; j++, src += sizeof(Pixel), dst += sizeof(Pixel))
+--- a/ri_image/viewimg.cpp
++++ b/ri_image/viewimg.cpp
+@@ -103,7 +103,7 @@ ViewWorld::~ViewWorld ()
+ 
+ FPXStatus ViewWorld::AddImage (ref_FicNom refNom)
+ {
+-  register FPXStatus status = FPX_OK;
++  FPXStatus status = FPX_OK;
+   ViewImage* image;
+ 
+   // Open Image file (among other thingsÐ)
+@@ -143,7 +143,7 @@ end:
+ 
+ FPXStatus ViewWorld::AddImage (PRIImage* theImage)
+ {
+-  register FPXStatus status = FPX_OK;
++  FPXStatus status = FPX_OK;
+   ViewImage* image;
+ 
+   // Open image file (among other thingsÐ)
+@@ -184,7 +184,7 @@ end:
+ 
+ FPXStatus ViewWorld::AddImage (ViewImage* image)
+ {
+-  register FPXStatus status = FPX_OK;
++  FPXStatus status = FPX_OK;
+ 
+   // Test if the image file is successfully opened, exit if not
+   if (image->FileStatus() != 0) {
+@@ -216,7 +216,7 @@ end:
+ 
+ FPXStatus ViewWorld::DeleteImage (ViewImage* theImage, Boolean doNotCloseFile)
+ {
+-  register FPXStatus status = FPX_OK;
++  FPXStatus status = FPX_OK;
+   ViewImage* image;
+ 
+   // Error if list empty
+@@ -276,7 +276,7 @@ end:
+ 
+ long ViewWorld::First (ViewImage** theImage)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   *theImage = first;  // Get first element of the list
+   current = first;  // Set current pointer
+@@ -289,7 +289,7 @@ long ViewWorld::First (ViewImage** theImage)
+ 
+ long ViewWorld::Last (ViewImage** theImage)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   *theImage = last; // Get last element of the list
+   current = last;   // Set current pointer
+@@ -302,7 +302,7 @@ long ViewWorld::Last (ViewImage** theImage)
+ 
+ long ViewWorld::Next (ViewImage** theImage)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (!first)           // Warning if list empty
+     status = 1;
+@@ -320,7 +320,7 @@ long ViewWorld::Next (ViewImage** theImage)
+ 
+ long ViewWorld::Previous (ViewImage** theImage)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (!first)             // Warning if list empty
+     status = 1;
+@@ -338,7 +338,7 @@ long ViewWorld::Previous (ViewImage** theImage)
+ 
+ long ViewWorld::Current (ViewImage** theImage)
+ {
+-  register long status = 0;
++  long status = 0;
+   
+   if (!current)       // Warning if list empty
+     status = 1;
+@@ -484,7 +484,7 @@ ViewImage::~ViewImage ()
+ 
+ FPXStatus ViewImage::FileStatus ()
+ {
+-  register FPXStatus status = FPX_OK;
++  FPXStatus status = FPX_OK;
+   
+   // test if image exist (has been opened)
+   if (image == NULL)
+@@ -497,7 +497,7 @@ FPXStatus ViewImage::FileStatus ()
+ 
+ FPXStatus ViewImage::UseAlphaChannel (Boolean useAlpha)
+ {
+-  register FPXStatus status = FPX_OK;
++  FPXStatus status = FPX_OK;
+   
+   // test if image exist (has been opened)  
+   if (!(status = FileStatus())) {
+@@ -518,7 +518,7 @@ FPXStatus ViewImage::UseAlphaChannel (Boolean useAlpha)
+ 
+ FPXStatus ViewImage::InvertAlphaChannel (Boolean inverseAlpha)
+ {
+-  register FPXStatus status = FPX_OK;
++  FPXStatus status = FPX_OK;
+   
+   // test if image exist (has been opened)  
+   if (!(status = FileStatus())) {
+@@ -1275,16 +1275,16 @@ FPXStatus ViewWindow::ReadSample (long i0, long j0, Pixel* sample, FPXBaselineCo
+   } else {
+     if (GtheSystemToolkit->interleaving == Interleaving_Channel) {
+       // Pixel by pixel if planes specified and there is only one channel in the output buffer
+-      register long j;
+-      register unsigned char *src, *dst;
++      long j;
++      unsigned char *src, *dst;
+       src = (unsigned char *)(sampleTmp) + plan; 
+       dst = (unsigned char *)(sample);
+       for (j=0; j<SAMPLE_WIDTH*SAMPLE_WIDTH;j++,dst++,src+=sizeof(Pixel))
+         *dst = *src;
+     } else {
+       // Pixel by pixel if planes specified
+-      register long j;
+-      register unsigned char *src, *dst;
++      long j;
++      unsigned char *src, *dst;
+       src = (unsigned char *)(sampleTmp) + plan; 
+       dst = (unsigned char *)(sample)  + plan;
+       for (j=0; j<SAMPLE_WIDTH*SAMPLE_WIDTH;j++,src+=sizeof(Pixel),dst+=sizeof(Pixel))
