@@ -210,6 +210,7 @@ src_configure() {
 	use sql && mycmakeargs+=(
 		-DQT_FEATURE_sql_db2=OFF # unpackaged
 		-DQT_FEATURE_sql_ibase=OFF # unpackaged
+		-DQT_FEATURE_sql_mimer=OFF # unpackaged
 		$(qt_feature mysql sql_mysql)
 		$(qt_feature oci8 sql_oci)
 		$(usev oci8 -DOracle_ROOT="${ESYSROOT}"/usr/$(get_libdir)/oracle/client)
@@ -217,7 +218,6 @@ src_configure() {
 		$(qt_feature postgres sql_psql)
 		$(qt_feature sqlite sql_sqlite)
 		$(qt_feature sqlite system_sqlite)
-		-DQT_FEATURE_sql_tds=OFF # currently a no-op in CMakeLists.txt
 	)
 
 	if use amd64 || use x86; then
