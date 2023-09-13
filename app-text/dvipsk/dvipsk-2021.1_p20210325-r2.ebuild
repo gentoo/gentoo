@@ -29,7 +29,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 
 IUSE="doc source"
 
 DEPEND=">=dev-libs/kpathsea-6.2.1:="
-
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}
