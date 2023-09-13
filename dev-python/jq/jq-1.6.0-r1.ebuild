@@ -25,10 +25,12 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
-	app-misc/jq:=
-	dev-libs/oniguruma:=
+# Minimum versions of jq + onigurama are from setup.py's bundled versions
+RDEPEND="
+	>=app-misc/jq-1.7:=
+	>=dev-libs/oniguruma-6.9.8:=
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 "
