@@ -1,26 +1,23 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit optfeature prefix
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://github.com/dylanaraps/${PN}/archive/${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/hykilpikonna/hyfetch/archive/refs/tags/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
 else
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/dylanaraps/neofetch.git"
+	EGIT_REPO_URI="https://github.com/hykilpikonna/hyfetch.git"
 fi
 
 DESCRIPTION="Simple information system script"
-HOMEPAGE="https://github.com/dylanaraps/neofetch"
+HOMEPAGE="https://github.com/hykilpikonna/hyfetch"
+
 LICENSE="MIT-with-advertising"
 SLOT="0"
-
-PATCHES=(
-	"${FILESDIR}"/neofetch-7.1.0-fix-arm-riscv-loongarch-cpu-model-detection.patch
-)
 
 src_prepare() {
 	if use prefix; then
@@ -34,7 +31,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install-neofetch
 }
 
 pkg_postinst() {
