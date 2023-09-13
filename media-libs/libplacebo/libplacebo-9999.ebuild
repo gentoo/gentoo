@@ -11,8 +11,11 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	GLAD_PV=2.0.4
+	FASTFLOAT_PV=5.2.0
 	SRC_URI="
 		https://code.videolan.org/videolan/libplacebo/-/archive/v${PV}/libplacebo-v${PV}.tar.bz2
+		https://github.com/fastfloat/fast_float/archive/refs/tags/v${FASTFLOAT_PV}.tar.gz
+			-> fast_float-${FASTFLOAT_PV}.tar.gz
 		opengl? (
 			https://github.com/Dav1dde/glad/archive/refs/tags/v${GLAD_PV}.tar.gz
 				-> ${PN}-glad-${GLAD_PV}.tar.gz
@@ -34,11 +37,11 @@ LICENSE="
 	opengl? ( MIT )
 "
 SLOT="0/$(ver_cut 2 ${PV}.9999)" # soname
-IUSE="glslang lcms llvm-libunwind +opengl +shaderc test unwind +vulkan"
+IUSE="glslang lcms llvm-libunwind +opengl +shaderc test unwind +vulkan +xxhash"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 
-# libglvnd is used with dlopen() through glad (inc. egl/gles)
+# dlopen: libglvnd (glad)
 RDEPEND="
 	lcms? ( media-libs/lcms:2[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP}] )
@@ -49,6 +52,7 @@ RDEPEND="
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
+	xxhash? ( dev-libs/xxhash[${MULTILIB_USEDEP}] )
 "
 # vulkan-headers is required even with USE=-vulkan (bug #882065)
 DEPEND="
@@ -78,6 +82,10 @@ src_unpack() {
 		git-r3_src_unpack
 	else
 		default
+
+		rmdir "${S}"/3rdparty/fast_float || die
+		mv fast_float-${FASTFLOAT_PV} "${S}"/3rdparty/fast_float || die
+
 		if use opengl; then
 			rmdir "${S}"/3rdparty/glad || die
 			mv glad-${GLAD_PV} "${S}"/3rdparty/glad || die
@@ -107,6 +115,7 @@ multilib_src_configure() {
 		$(meson_feature vulkan)
 		$(meson_feature vulkan vk-proc-addr)
 		-Dvulkan-registry="${ESYSROOT}"/usr/share/vulkan/registry/vk.xml
+		$(meson_feature xxhash)
 	)
 
 	meson_src_configure
