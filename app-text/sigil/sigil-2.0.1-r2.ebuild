@@ -49,11 +49,19 @@ RDEPEND="
 		dev-qt/qtwebengine:5[widgets]
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
+		plugins? ( $(python_gen_cond_dep '
+			dev-python/PyQt5[${PYTHON_USEDEP}]
+			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+		') )
 	)
 	qt6? (
 		dev-qt/qtbase:6[concurrent,cups,network,widgets,xml]
 		dev-qt/qt5compat:6
 		dev-qt/qtwebengine:6[widgets]
+		plugins? ( $(python_gen_cond_dep '
+			dev-python/PyQt6[${PYTHON_USEDEP}]
+			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP}]
+		') )
 	)
 "
 DEPEND="${RDEPEND}"
