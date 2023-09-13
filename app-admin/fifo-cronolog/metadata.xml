@@ -8,4 +8,7 @@
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/fifo-cronolog</remote-id>
+	</upstream>
 </pkgmetadata>
