@@ -261,6 +261,7 @@ src_configure() {
 		local myeconfargs_cbuild=(
 			"${myeconfargs[@]}"
 
+			--prefix="${BROOT}"/usr
 			--libdir="${cbuild_libdir:2}"
 
 			# Avoid needing to load the right libpython.so.
