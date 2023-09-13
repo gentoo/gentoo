@@ -137,6 +137,70 @@ src_prepare() {
 	eautoreconf
 }
 
+build_cbuild_python() {
+	# Hack to workaround get_libdir not being able to handle CBUILD, bug #794181
+	local cbuild_libdir=$(unset PKG_CONFIG_PATH ; $(tc-getBUILD_PKG_CONFIG) --keep-system-libs --libs-only-L libffi)
+
+	# pass system CFLAGS & LDFLAGS as _NODIST, otherwise they'll get
+	# propagated to sysconfig for built extensions
+	#
+	# -fno-lto to avoid bug #700012 (not like it matters for mini-CBUILD Python anyway)
+	local -x CFLAGS_NODIST="${BUILD_CFLAGS} -fno-lto"
+	local -x LDFLAGS_NODIST=${BUILD_LDFLAGS}
+	local -x CFLAGS= LDFLAGS=
+	local -x BUILD_CFLAGS="${CFLAGS_NODIST}"
+	local -x BUILD_LDFLAGS=${LDFLAGS_NODIST}
+
+	# We need to build our own Python on CBUILD first, and feed it in.
+	# bug #847910
+	local myeconfargs_cbuild=(
+		"${myeconfargs[@]}"
+
+		--prefix="${BROOT}"/usr
+		--libdir="${cbuild_libdir:2}"
+
+		# Avoid needing to load the right libpython.so.
+		--disable-shared
+
+		# As minimal as possible for the mini CBUILD Python
+		# we build just for cross to satisfy --with-build-python.
+		--without-lto
+		--without-readline
+		--disable-optimizations
+	)
+
+	mkdir "${WORKDIR}"/${P}-${CBUILD} || die
+	pushd "${WORKDIR}"/${P}-${CBUILD} &> /dev/null || die
+
+	# Avoid as many dependencies as possible for the cross build.
+	mkdir Modules || die
+	cat > Modules/Setup.local <<-EOF || die
+		*disabled*
+		nis
+		_dbm _gdbm
+		_sqlite3
+		_hashlib _ssl
+		_curses _curses_panel
+		readline
+		_tkinter
+		pyexpat
+		zlib
+		# We disabled these for CBUILD because Python's setup.py can't handle locating
+		# libdir correctly for cross. This should be rechecked for the pure Makefile approach,
+		# and uncommented if needed.
+		#_ctypes _crypt
+	EOF
+
+	ECONF_SOURCE="${S}" econf_build "${myeconfargs_cbuild[@]}"
+
+	# Unfortunately, we do have to build this immediately, and
+	# not in src_compile, because CHOST configure for Python
+	# will check the existence of the --with-build-python value
+	# immediately.
+	emake
+	popd &> /dev/null || die
+}
+
 src_configure() {
 	local disable
 	# disable automagic bluetooth headers detection
@@ -243,72 +307,12 @@ src_configure() {
 	local -x OPT=
 
 	if tc-is-cross-compiler ; then
-		# Hack to workaround get_libdir not being able to handle CBUILD, bug #794181
-		local cbuild_libdir=$(unset PKG_CONFIG_PATH ; $(tc-getBUILD_PKG_CONFIG) --keep-system-libs --libs-only-L libffi)
-
-		# pass system CFLAGS & LDFLAGS as _NODIST, otherwise they'll get
-		# propagated to sysconfig for built extensions
-		#
-		# -fno-lto to avoid bug #700012 (not like it matters for mini-CBUILD Python anyway)
-		local -x CFLAGS_NODIST="${BUILD_CFLAGS} -fno-lto"
-		local -x LDFLAGS_NODIST=${BUILD_LDFLAGS}
-		local -x CFLAGS= LDFLAGS=
-		local -x BUILD_CFLAGS="${CFLAGS_NODIST}"
-		local -x BUILD_LDFLAGS=${LDFLAGS_NODIST}
-
-		# We need to build our own Python on CBUILD first, and feed it in.
-		# bug #847910
-		local myeconfargs_cbuild=(
-			"${myeconfargs[@]}"
-
-			--libdir="${cbuild_libdir:2}"
-
-			# Avoid needing to load the right libpython.so.
-			--disable-shared
-
-			# As minimal as possible for the mini CBUILD Python
-			# we build just for cross to satisfy --with-build-python.
-			--without-lto
-			--without-readline
-			--disable-optimizations
-		)
-
+		build_cbuild_python
 		myeconfargs+=(
 			# Point the imminent CHOST build to the Python we just
 			# built for CBUILD.
 			--with-build-python="${WORKDIR}"/${P}-${CBUILD}/python
 		)
-
-		mkdir "${WORKDIR}"/${P}-${CBUILD} || die
-		pushd "${WORKDIR}"/${P}-${CBUILD} &> /dev/null || die
-
-		# Avoid as many dependencies as possible for the cross build.
-		mkdir Modules || die
-		cat > Modules/Setup.local <<-EOF || die
-			*disabled*
-			nis
-			_dbm _gdbm
-			_sqlite3
-			_hashlib _ssl
-			_curses _curses_panel
-			readline
-			_tkinter
-			pyexpat
-			zlib
-			# We disabled these for CBUILD because Python's setup.py can't handle locating
-			# libdir correctly for cross. This should be rechecked for the pure Makefile approach,
-			# and uncommented if needed.
-			#_ctypes _crypt
-		EOF
-
-		ECONF_SOURCE="${S}" econf_build "${myeconfargs_cbuild[@]}"
-
-		# Unfortunately, we do have to build this immediately, and
-		# not in src_compile, because CHOST configure for Python
-		# will check the existence of the --with-build-python value
-		# immediately.
-		emake
-		popd &> /dev/null || die
 	fi
 
 	# pass system CFLAGS & LDFLAGS as _NODIST, otherwise they'll get
