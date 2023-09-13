@@ -25,10 +25,8 @@ RESTRICT="test"
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6
-	flite? (
-		app-accessibility/flite
-		~dev-qt/qtmultimedia-${PV}:6
-	)
+	~dev-qt/qtmultimedia-${PV}:6
+	flite? ( app-accessibility/flite )
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 	speechd? ( app-accessibility/speech-dispatcher )
 "
