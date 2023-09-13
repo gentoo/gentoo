@@ -107,6 +107,7 @@ DEPEND="
 	zbd? ( sys-block/libzbd:= )
 	zfs? ( sys-fs/zfs:= )
 "
+# <cython-3: bug #907739
 BDEPEND="
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
