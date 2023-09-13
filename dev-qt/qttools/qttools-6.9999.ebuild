@@ -23,7 +23,7 @@ REQUIRED_USE="
 	designer? ( qml widgets )
 	distancefieldgenerator? ( qml widgets )
 	pixeltool? ( widgets )
-	qdoc? ( clang )
+	qdoc? ( clang qml )
 "
 
 # behaves very badly when qttools is not already installed, also
@@ -61,13 +61,13 @@ src_configure() {
 		$(cmake_use_find_package qml Qt6Qml)
 		$(cmake_use_find_package widgets Qt6Widgets)
 		$(qt_feature assistant)
-		$(qt_feature clang clangcpp)
+		$(qt_feature clang)
 		$(qt_feature designer)
 		$(qt_feature distancefieldgenerator)
 		$(qt_feature linguist)
 		$(qt_feature pixeltool)
 		$(qt_feature qdbus)
-		$(qt_feature qdoc clang)
+		$(qt_feature qdoc)
 		$(qt_feature qtattributionsscanner)
 		$(qt_feature qtdiag)
 		$(qt_feature qtplugininfo)
