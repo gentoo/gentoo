@@ -13,7 +13,7 @@ RDEPEND="
 		dev-lisp/clisp
 		dev-lisp/clozurecl
 		dev-lisp/cmucl
-		dev-lisp/ecls
+		dev-lisp/ecl
 		dev-lisp/gcl
 		dev-lisp/abcl
 	)"

@@ -28,8 +28,8 @@
     (<pkg>dev-lisp/clozurecl</pkg>)</flag>
     <flag name="cmucl">Compile maxima with CMU Common Lisp
     (<pkg>dev-lisp/cmucl</pkg>)</flag>
-    <flag name="ecls">Compile maxima with Embeddable Common Lisp
-    (<pkg>dev-lisp/ecls</pkg>)</flag>
+    <flag name="ecl">Compile maxima with Embeddable Common Lisp
+    (<pkg>dev-lisp/ecl</pkg>)</flag>
     <flag name="gcl">Compile maxima with GNU Common Lisp
     (<pkg>dev-lisp/gcl</pkg>)</flag>
     <flag name="sbcl">Compile maxima with Steel Bank Common Lisp

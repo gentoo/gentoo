@@ -5,17 +5,15 @@ EAPI=7
 
 inherit readme.gentoo-r1
 
-MY_P=ecl-${PV}
 DESCRIPTION="ECL is an embeddable Common Lisp implementation"
 HOMEPAGE="https://common-lisp.net/project/ecl/"
-SRC_URI="https://common-lisp.net/project/ecl/static/files/release/${MY_P}.tgz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://common-lisp.net/project/ecl/static/files/release/${P}.tgz"
 
 LICENSE="BSD-2 LGPL-2.1+"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~ppc ppc64 ~sparc x86 ~amd64-linux"
 IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode X"
-# test phase only works if ecls already installed #516876
+# test phase only works if ecl already installed #516876
 RESTRICT="test"
 
 RDEPEND="dev-libs/gmp:0=
@@ -33,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-16.1.3-headers-gentoo.patch"
 	"${FILESDIR}/${PN}-16.1.3-build.patch"
 	"${FILESDIR}/${PN}-21.2.1-donotcompressinfo.patch"
+	"${FILESDIR}/${PN}-21.2.1-ldflags.patch"
 )
 
 src_prepare() {

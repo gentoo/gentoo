@@ -208,7 +208,7 @@ clisp
 clozurecl
 clozurecl64
 cmucl
-ecls
+ecl
 gcl
 sbcl
 

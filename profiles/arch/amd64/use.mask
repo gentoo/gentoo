@@ -69,7 +69,7 @@
 # keyworded on amd64
 -clisp
 -clozurecl64
--ecls
+-ecl
 -gcl
 -sbcl
 

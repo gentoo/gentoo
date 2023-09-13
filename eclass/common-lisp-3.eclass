@@ -21,7 +21,7 @@ _COMMON_LISP_3_ECLASS=1
 # @ECLASS_VARIABLE: CLIMPLEMENTATIONS
 # @DESCRIPTION:
 # Common Lisp implementations
-CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecls gcl abcl"
+CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecl gcl abcl"
 
 # @ECLASS_VARIABLE: CLSOURCEROOT
 # @DESCRIPTION:

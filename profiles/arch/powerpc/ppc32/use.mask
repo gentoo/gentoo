@@ -37,5 +37,5 @@ java
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on ppc
 -clisp
--ecls
+-ecl
 -sbcl

@@ -15,7 +15,7 @@ LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="clisp clozurecl clozurecl64 cmucl ecls emacs gcl gui nls +sbcl vtk X test"
+IUSE="clisp clozurecl clozurecl64 cmucl ecl emacs gcl gui nls +sbcl vtk X test"
 RESTRICT="test" # bug 838202
 
 # Languages
@@ -29,7 +29,7 @@ LISP_DEPEND="
 	clozurecl? ( dev-lisp/clozurecl app-misc/rlwrap )
 	clozurecl64? ( dev-lisp/clozurecl app-misc/rlwrap )
 	cmucl? ( dev-lisp/cmucl app-misc/rlwrap )
-	ecls? ( dev-lisp/ecls:= app-misc/rlwrap )
+	ecl? ( dev-lisp/ecl:= app-misc/rlwrap )
 	gcl? ( >=dev-lisp/gcl-2.6.14[ansi,readline] )
 	sbcl? ( dev-lisp/sbcl:= app-misc/rlwrap )
 "
@@ -82,7 +82,7 @@ RDEPEND="
 # viewer) from the console, but you can't use the xmaxima GUI without X.
 REQUIRED_USE="
 	vtk? ( ${PYTHON_REQUIRED_USE} )
-	|| ( clisp clozurecl clozurecl64 cmucl ecls gcl sbcl )
+	|| ( clisp clozurecl clozurecl64 cmucl ecl gcl sbcl )
 	gui? ( X )"
 
 TEXMF="${EPREFIX}"/usr/share/texmf-site
@@ -151,7 +151,7 @@ src_configure() {
 		$(use_enable clozurecl64 ccl64) \
 		$(usex clozurecl64 "--with-ccl64=ccl" "") \
 		$(use_enable cmucl) \
-		$(use_enable ecls ecl) \
+		$(use_enable ecl) \
 		$(use_enable emacs) \
 		$(use_enable gcl) \
 		$(use_with gui wish) \
@@ -203,7 +203,7 @@ src_install() {
 		fi
 	fi
 
-	if use ecls; then
+	if use ecl; then
 		# Use ECL to find the path where it expects to load packages from.
 		ECLLIB=$(ecl -eval "(princ (SI:GET-LIBRARY-PATHNAME))" -eval "(quit)")
 		insinto "${ECLLIB#${EPREFIX}}"

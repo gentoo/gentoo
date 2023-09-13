@@ -25,7 +25,7 @@ clamav
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # no stable version on sparc
-ecls
+ecl
 sbcl
 
 # Pacho Ramos <pacho@gentoo.org> (2014-04-17)

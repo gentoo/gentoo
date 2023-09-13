@@ -61,7 +61,7 @@ webengine
 -clisp
 -clozurecl
 -cmucl
--ecls
+-ecl
 -gcl
 -sbcl
 
