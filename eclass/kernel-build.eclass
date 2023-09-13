@@ -224,8 +224,16 @@ kernel-build_src_test() {
 		targets+=( dtbs_install )
 	fi
 
+	# Use the kernel build system to strip, this ensures the modules
+	# are stripped *before* they are signed or compressed.
+	local strip_args
+	if use strip; then
+		strip_args="--strip-unneeded"
+	fi
+
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${T}" "${targets[@]}"
+		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
+		"${targets[@]}"
 
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	local relfile=${WORKDIR}/build/include/config/kernel.release
