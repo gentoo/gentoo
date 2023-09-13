@@ -28,7 +28,7 @@ REQUIRED_USE="
 	designer? ( qml widgets )
 "
 
-# dlopen: krb5, pciutils, udev
+# dlopen: krb5, libva, pciutils, udev
 RDEPEND="
 	app-arch/snappy:=
 	dev-libs/expat
