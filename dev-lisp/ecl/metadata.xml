@@ -16,6 +16,6 @@
 		<flag name="precisegc">Use type information during garbage collection (experimental)</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">ecls</remote-id>
+		<remote-id type="gitlab">embeddable-common-lisp/ecl</remote-id>
 	</upstream>
 </pkgmetadata>
