@@ -447,6 +447,10 @@ setup_flags() {
 	# https://sourceware.org/PR27837
 	filter-ldflags '-Wl,--relax'
 
+	# Flag added for cross-prefix, but causes ldconfig to segfault. Not needed
+	# anyway because glibc already handles this by itself.
+	filter-ldflags '-Wl,--dynamic-linker=*'
+
 	# some weird software relies on sysv hashes in glibc, bug 863863, bug 864100
 	# we have to do that here already so mips can filter it out again :P
 	if use hash-sysv-compat ; then
