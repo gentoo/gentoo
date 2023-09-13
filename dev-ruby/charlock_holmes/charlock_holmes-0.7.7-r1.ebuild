@@ -35,6 +35,9 @@ all_ruby_prepare() {
 
 	# Avoid dependency on rake-compiler
 	sed -i -e '/rake-compiler/,$ s:^:#:' Rakefile || die
+
+	# Avoid minitest deprecation
+	sed -i -e 's/MiniTest/Minitest/' test/converter_test.rb || die
 }
 
 each_ruby_test() {
