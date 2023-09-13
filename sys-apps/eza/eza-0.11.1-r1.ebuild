@@ -118,7 +118,7 @@ IUSE="+git man"
 DEPEND="git? ( dev-libs/libgit2:= )"
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=virtual/rust-1.70.0
+	>=virtual/rust-1.65.0
 	man? ( virtual/pandoc )
 "
 
