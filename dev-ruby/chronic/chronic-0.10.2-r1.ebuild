@@ -23,4 +23,6 @@ ruby_add_bdepend "test? ( >=dev-ruby/minitest-5 )"
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' chronic.gemspec || die
+
+	sed -i -e 's/MiniTest/Minitest/' test/helper.rb || die
 }
