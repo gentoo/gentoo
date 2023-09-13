@@ -20,8 +20,9 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	+alsa bindist custom-cflags designer geolocation +jumbo-build kerberos
-	opengl pdfium pulseaudio qml screencast +system-icu vulkan +widgets
+	+alsa bindist custom-cflags designer geolocation +jumbo-build
+	kerberos opengl pdfium pulseaudio qml screencast +system-icu
+	vaapi vulkan +widgets
 "
 REQUIRED_USE="
 	designer? ( qml widgets )
@@ -44,7 +45,6 @@ RDEPEND="
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	media-libs/libvpx:=
 	media-libs/libwebp:=
 	media-libs/openjpeg:2=
 	media-libs/opus
@@ -76,6 +76,12 @@ RDEPEND="
 		x11-libs/libdrm
 	)
 	system-icu? ( dev-libs/icu:= )
+	vaapi? (
+		media-libs/libva:=[X]
+		media-libs/mesa[gbm(+)]
+		x11-libs/libdrm
+	)
+	!vaapi? ( media-libs/libvpx:= )
 	widgets? ( ~dev-qt/qtdeclarative-${PV}:6[widgets] )
 "
 DEPEND="
@@ -177,6 +183,7 @@ src_configure() {
 		$(qt_feature pulseaudio webengine_system_pulseaudio)
 		$(qt_feature screencast webengine_webrtc_pipewire)
 		$(qt_feature system-icu webengine_system_icu)
+		$(qt_feature vaapi webengine_vaapi)
 		$(qt_feature vulkan webengine_vulkan)
 		-DQT_FEATURE_webengine_embedded_build=OFF
 		-DQT_FEATURE_webengine_extensions=ON
@@ -195,10 +202,13 @@ src_configure() {
 		# (see discussions in https://github.com/gentoo/gentoo/pull/32281)
 		-DQT_FEATURE_webengine_system_re2=OFF
 
+		# bundled is currently required when using vaapi (forced regardless)
+		$(qt_feature !vaapi webengine_system_libvpx)
+
 		# not necessary to pass these (default), but in case detection fails
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
 			freetype glib harfbuzz lcms2 libevent libjpeg \
-			libopenjpeg2 libpci libpng libtiff libvpx libwebp \
+			libopenjpeg2 libpci libpng libtiff libwebp \
 			libxml minizip opus poppler snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
