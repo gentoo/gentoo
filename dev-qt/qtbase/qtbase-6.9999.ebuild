@@ -18,7 +18,7 @@ declare -A QT6_IUSE=(
 
 	[gui]="
 		+X accessibility eglfs evdev gles2-only +libinput
-		opengl tslib vulkan +widgets
+		opengl renderdoc tslib vulkan +widgets
 	"
 	[network]="brotli gssapi libproxy sctp"
 	[sql]="mysql oci8 odbc postgres +sqlite"
@@ -49,6 +49,7 @@ REQUIRED_USE="
 # - qtnetwork (src/network/configure.cmake)
 # - qtprintsupport (src/printsupport/configure.cmake) [gui+widgets]
 # - qtsql (src/plugins/sqldrivers/configure.cmake)
+# dlopen: renderdoc
 RDEPEND="
 	sys-libs/zlib:=
 	ssl? ( dev-libs/openssl:= )
@@ -86,6 +87,7 @@ RDEPEND="
 		evdev? ( sys-libs/mtdev )
 		libinput? ( dev-libs/libinput:= )
 		opengl? ( media-libs/libglvnd[X?] )
+		renderdoc? ( media-gfx/renderdoc )
 		tslib? ( x11-libs/tslib )
 		widgets? (
 			cups? ( net-print/cups )
@@ -190,6 +192,7 @@ src_configure() {
 		$(qt_feature libinput)
 		$(qt_feature opengl)
 		$(usev !opengl -DINPUT_opengl=no) #913691
+		$(qt_feature renderdoc graphicsframecapture)
 		$(qt_feature tslib)
 		$(qt_feature vulkan)
 		$(qt_feature widgets)
