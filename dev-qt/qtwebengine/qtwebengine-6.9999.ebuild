@@ -48,6 +48,7 @@ RDEPEND="
 	media-libs/libwebp:=
 	media-libs/openjpeg:2=
 	media-libs/opus
+	media-libs/tiff:=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/zlib:=[minizip]
@@ -197,8 +198,8 @@ src_configure() {
 		# not necessary to pass these (default), but in case detection fails
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
 			freetype glib harfbuzz lcms2 libevent libjpeg \
-			libopenjpeg2 libpci libpng libvpx libwebp libxml \
-			minizip opus poppler snappy zlib)
+			libopenjpeg2 libpci libpng libtiff libvpx libwebp \
+			libxml minizip opus poppler snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		-DINSTALL_GN=OFF
