@@ -4,7 +4,6 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-PYTHON_REQ_USE="tk"
 
 inherit xdg cmake python-single-r1
 
@@ -39,7 +38,8 @@ RDEPEND="
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
-	') )
+	')
+	$(python_gen_impl_dep 'tk') )
 	!qt6? (
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5

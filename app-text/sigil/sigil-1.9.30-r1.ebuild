@@ -4,7 +4,6 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-PYTHON_REQ_USE="tk"
 
 inherit xdg cmake python-single-r1
 
@@ -40,7 +39,8 @@ RDEPEND="
 		dev-python/cssselect[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/regex[${PYTHON_USEDEP}]') )
+		dev-python/regex[${PYTHON_USEDEP}]')
+		$(python_gen_impl_dep 'tk') )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
