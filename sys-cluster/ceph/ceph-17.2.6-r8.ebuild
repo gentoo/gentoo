@@ -110,7 +110,7 @@ BDEPEND="
 	x86? ( dev-lang/yasm )
 	app-arch/cpio
 	>=dev-util/cmake-3.5.0
-	<dev-python/cython-3[${PYTHON_USEDEP}]
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/gperf
@@ -226,6 +226,8 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.6-arrow-flatbuffers-c++14.patch"
 	# https://bugs.gentoo.org/868891
 	"${FILESDIR}/ceph-17.2.6-cmake.patch"
+	# https://bugs.gentoo.org/907739
+	"${FILESDIR}/ceph-18.2.0-cython3.patch"
 )
 
 check-reqs_export_vars() {
