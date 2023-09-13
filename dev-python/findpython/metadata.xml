@@ -10,6 +10,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">frostming/findpython</remote-id>
 		<remote-id type="pypi">findpython</remote-id>
 	</upstream>
 </pkgmetadata>
