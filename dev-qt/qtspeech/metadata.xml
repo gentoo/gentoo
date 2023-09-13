@@ -12,6 +12,7 @@
 	</upstream>
 	<use>
 		<flag name="flite">Enable text-to-speech synthesizer plugin using <pkg>app-accessibility/flite</pkg> engine</flag>
+		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
 		<flag name="speechd">Enable text-to-speech synthesizer plugin using <pkg>app-accessibility/speech-dispatcher</pkg> engine</flag>
 	</use>
 	<slots>
