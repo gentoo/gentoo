@@ -76,6 +76,7 @@ COMMON_DEPEND="
 	>=dev-python/python-dateutil-2.8.1-r3[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2020.1[${PYTHON_USEDEP}]
 "
+# <cython-3: bug #898706
 BDEPEND="
 	${COMMON_DEPEND}
 	<dev-python/cython-3[${PYTHON_USEDEP}]
