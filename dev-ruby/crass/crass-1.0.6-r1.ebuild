@@ -25,4 +25,7 @@ ruby_add_bdepend ">=dev-ruby/minitest-5.0.8:5"
 all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile || die
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Fix minitest deprecation
+	sed -i -e 's/MiniTest/Minitest/' test/support/common.rb || die
 }
