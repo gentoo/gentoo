@@ -177,7 +177,7 @@ src_install() {
 	einstalldocs
 
 	insinto /usr/lib/go
-doins go.env VERSION
+	doins go.env VERSION
 
 	# testdata directories are not needed on the installed system
 	rm -fr $(find "${ED}"/usr/lib/go -iname testdata -type d -print)
