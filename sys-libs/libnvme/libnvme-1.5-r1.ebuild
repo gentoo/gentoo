@@ -28,7 +28,6 @@ DEPEND="
 	uuid? ( sys-apps/util-linux:= )
 "
 RDEPEND="${DEPEND}"
-
 BDEPEND="
 	dev-lang/swig
 "
@@ -38,6 +37,7 @@ src_configure() {
 		-Dpython=false
 		$(meson_feature json json-c)
 		$(meson_feature dbus libdbus)
+		$(meson_feature keyutils)
 		$(meson_feature ssl openssl)
 		$(meson_feature python)
 	)
