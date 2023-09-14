@@ -27,10 +27,6 @@ VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/tomcat-connectors.a
 APACHE2_MOD_FILE="${S}/apache-2.0/${PN}.so"
 APACHE2_MOD_DEFINE="JK"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-clang16.patch
-)
-
 need_apache2
 
 pkg_setup() {
