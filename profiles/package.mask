@@ -715,10 +715,6 @@ x11-drivers/nvidia-drivers:0/390
 # Breaks too many revdeps for now
 =app-text/discount-3*
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
-# This version currently is not compatible with kernel build (yet)
-~dev-util/bindgen-0.63.0
-
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
 # Some potentially breaking changes here, please check the UPGRADE.txt file.
 # Most important:  chan_sip no longer builds by default, if you've migrated to
