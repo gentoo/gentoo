@@ -5,11 +5,12 @@ EAPI=7
 
 MY_P="tomcat-connectors-${PV#-*}-src"
 
-inherit apache-module autotools
+inherit apache-module autotools verify-sig
 
 DESCRIPTION="Provides an AJP Apache2-JK-connector for the Tomcat servlet engine"
 HOMEPAGE="https://tomcat.apache.org/connectors-doc/"
-SRC_URI="mirror://apache/tomcat/tomcat-connectors/jk/${MY_P}.tar.gz"
+SRC_URI="mirror://apache/tomcat/tomcat-connectors/jk/${MY_P}.tar.gz
+	verify-sig? ( https://downloads.apache.org/tomcat/tomcat-connectors/jk/tomcat-connectors-${PV}-src.tar.gz.asc  )"
 S="${WORKDIR}/${MY_P}/native"
 
 LICENSE="Apache-2.0"
@@ -18,7 +19,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND="dev-libs/apr:1="
 RDEPEND="${DEPEND}"
-BDEPEND="dev-lang/perl"
+BDEPEND="
+	dev-lang/perl
+	verify-sig? ( sec-keys/openpgp-keys-apache-tomcat-connectors )"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/tomcat-connectors.apache.org.asc"
 
 APACHE2_MOD_FILE="${S}/apache-2.0/${PN}.so"
 APACHE2_MOD_DEFINE="JK"
