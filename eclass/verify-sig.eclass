@@ -55,17 +55,22 @@ IUSE="verify-sig"
 # @DESCRIPTION:
 # Signature verification method to use.  The allowed value are:
 #
+#  - minisig -- verify signatures with (base64) Ed25519 public key using app-crypt/minisign
 #  - openpgp -- verify PGP signatures using app-crypt/gnupg (the default)
 #  - signify -- verify signatures with Ed25519 public key using app-crypt/signify
 : "${VERIFY_SIG_METHOD:=openpgp}"
 
 case ${VERIFY_SIG_METHOD} in
+	minisig)
+		BDEPEND="verify-sig? ( app-crypt/minisign )"
+		;;
 	openpgp)
 		BDEPEND="
 			verify-sig? (
 				app-crypt/gnupg
 				>=app-portage/gemato-16
-			)"
+			)
+		"
 		;;
 	signify)
 		BDEPEND="verify-sig? ( app-crypt/signify )"
@@ -139,6 +144,10 @@ verify-sig_verify_detached() {
 	[[ ${file} == - ]] && filename='(stdin)'
 	einfo "Verifying ${filename} ..."
 	case ${VERIFY_SIG_METHOD} in
+		minisig)
+			minisign -V -P "$(<"${key}")" -x "${sig}" -m "${file}" ||
+				die "minisig signature verification failed"
+			;;
 		openpgp)
 			# gpg can't handle very long TMPDIR
 			# https://bugs.gentoo.org/854492
@@ -198,6 +207,10 @@ verify-sig_verify_message() {
 	[[ ${file} == - ]] && filename='(stdin)'
 	einfo "Verifying ${filename} ..."
 	case ${VERIFY_SIG_METHOD} in
+		minisig)
+			minisign -V -P "$(<"${key}")" -x "${sig}" -o "${output_file}" -m "${file}" ||
+				die "minisig signature verification failed"
+			;;
 		openpgp)
 			# gpg can't handle very long TMPDIR
 			# https://bugs.gentoo.org/854492
@@ -356,7 +369,7 @@ verify-sig_src_unpack() {
 		# find all distfiles and signatures, and combine them
 		for f in ${A}; do
 			found=
-			for suffix in .asc .sig; do
+			for suffix in .asc .sig .minisig; do
 				if [[ ${f} == *${suffix} ]]; then
 					signatures+=( "${f}" )
 					found=sig
