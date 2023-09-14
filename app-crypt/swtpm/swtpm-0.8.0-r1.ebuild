@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools python-any-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/stefanberger/swtpm/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="fuse +gnutls seccomp test"
 RESTRICT="!test? ( test )"
 
@@ -26,6 +26,7 @@ RDEPEND="fuse? (
 		>=net-libs/gnutls-3.4.0:=[tools,pkcs11]
 	)
 	seccomp? ( sys-libs/libseccomp )
+	dev-libs/libtasn1:=
 	acct-group/tss
 	acct-user/tss
 	dev-libs/openssl:0=

@@ -14,12 +14,16 @@ SRC_URI="https://github.com/stefanberger/swtpm/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-IUSE="fuse seccomp test"
+IUSE="fuse +gnutls seccomp test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="fuse? (
 		dev-libs/glib:2
 		sys-fs/fuse:0
+	)
+	gnutls? (
+		dev-libs/libtasn1:=
+		>=net-libs/gnutls-3.4.0:=[tools,pkcs11]
 	)
 	seccomp? ( sys-libs/libseccomp )
 	dev-libs/libtasn1:=
@@ -53,6 +57,7 @@ src_configure() {
 		--with-openssl \
 		--without-selinux \
 		$(use_with fuse cuse) \
+		$(use_with gnutls) \
 		$(use_with seccomp) \
 		$(use_enable test)
 }
