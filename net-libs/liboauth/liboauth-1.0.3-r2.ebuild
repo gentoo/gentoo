@@ -25,7 +25,7 @@ RDEPEND="
 	nss? (
 		dev-libs/nss
 		curl? ( || (
-			net-misc/curl[ssl,curl_ssl_nss]
+			net-misc/curl[ssl,curl_ssl_nss(-)]
 			net-misc/curl[-ssl]
 		) )
 	)
