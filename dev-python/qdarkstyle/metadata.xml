@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">QDarkStyle</remote-id>
+		<remote-id type="github">ColinDuquesnoy/QDarkStyleSheet</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
