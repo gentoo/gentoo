@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2023-09-14)
+# Not ported to libsoup:3.0
+app-office/abiword collab
+
 # Sam James <sam@gentoo.org> (2023-09-09)
 # Needs <dev-libs/openssl-3 which is EOL on 2023-09-11. Please upgrade immediately.
 # See bug #913685.
