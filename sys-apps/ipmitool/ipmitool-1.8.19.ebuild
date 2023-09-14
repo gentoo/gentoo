@@ -24,7 +24,7 @@ SRC_URI+="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 hppa ~ia64 ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv x86"
 IUSE="openbmc openipmi static"
 
 RDEPEND="dev-libs/openssl:0=
