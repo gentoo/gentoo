@@ -36,10 +36,10 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	fuse? ( >=sys-fs/fuse-3.7.0 )
-	app-arch/lz4
+	app-arch/lz4:=
 	dev-libs/libaio
-	dev-libs/libsodium
-	dev-libs/userspace-rcu
+	dev-libs/libsodium:=
+	dev-libs/userspace-rcu:=
 	sys-apps/keyutils
 	sys-apps/util-linux
 	sys-libs/zlib
