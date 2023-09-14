@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DESCRIPTION="OpenPGP keys used by commons.apache.org"
+DESCRIPTION="OpenPGP keys used by tomcat-connectors"
 HOMEPAGE="https://tomcat.apache.org/download-native.cgi"
 SRC_URI="https://downloads.apache.org/tomcat/tomcat-connectors/KEYS -> ${P}-KEYS.asc"
 S="${WORKDIR}"
