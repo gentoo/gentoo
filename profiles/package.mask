@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-14)
+# No longer a test dependency of dev-python/textdistance, now fails tests
+# with the latest numpy. Upstream inactive and we already need patching for
+# python 3.10 compatibility. No other reverse dependencies.
+# Bug: https://bugs.gentoo.org/887845
+# Removal on 2023-10-14
+dev-python/abydos
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-09-11)
 # Dead project accumulating open bugs and incompatibilities.
 #
