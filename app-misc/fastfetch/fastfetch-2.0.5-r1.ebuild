@@ -24,7 +24,7 @@ IUSE="X chafa dbus ddcutil gnome imagemagick networkmanager opencl opengl osmesa
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
 RDEPEND="
-	dev-libs/yyjson
+	dev-libs/yyjson:=
 	sys-libs/zlib
 	X? ( x11-libs/libX11 )
 	chafa? ( media-gfx/chafa )
