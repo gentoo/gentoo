@@ -13,6 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
+RESTRICT="test" # bug 913965
+
 DEPEND="dev-libs/libpcre
 	sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
