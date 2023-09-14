@@ -14,8 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	dev-libs/json-c
-	dev-libs/libsodium
+	dev-libs/json-c:=
+	dev-libs/libsodium:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
@@ -23,8 +23,8 @@ BDEPEND=""
 S="${WORKDIR}"/${PN}-releases-${PV}
 
 PATCHES=(
-		"${FILESDIR}"/${P}-json-c.patch
-		"${FILESDIR}"/${P}-no-python.patch
+	"${FILESDIR}"/${P}-json-c.patch
+	"${FILESDIR}"/${P}-no-python.patch
 )
 
 src_prepare() {
