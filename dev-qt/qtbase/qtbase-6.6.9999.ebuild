@@ -128,6 +128,10 @@ PDEPEND="
 	wayland? ( ~dev-qt/qtwayland-${PV}:6 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
+)
+
 src_prepare() {
 	qt6-build_src_prepare
 
