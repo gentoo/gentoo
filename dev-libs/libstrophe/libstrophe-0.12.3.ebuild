@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="A simple, lightweight C library for writing XMPP clients"
 HOMEPAGE="https://strophe.im/libstrophe/"
 SRC_URI="
@@ -32,8 +34,14 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.12.3-allow-tests-when-static.patch"
 )
 
+src_prepare() {
+	default
+
+	# tests patch touches Makefile.am, need to regenerate to avoid maintainer mode
+	eautoreconf
+}
+
 src_configure() {
-	# shellcheck disable=SC2207
 	local myeconf=(
 		--enable-tls
 		$(use_with !expat libxml2)
