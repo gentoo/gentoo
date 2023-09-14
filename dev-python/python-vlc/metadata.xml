@@ -9,5 +9,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">python-vlc</remote-id>
+		<remote-id type="github">oaubert/python-vlc</remote-id>
 	</upstream>
 </pkgmetadata>
