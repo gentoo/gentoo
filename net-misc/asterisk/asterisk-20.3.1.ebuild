@@ -94,11 +94,11 @@ DEPEND="acct-user/asterisk
 "
 
 RDEPEND="${DEPEND}
-	net-misc/asterisk-base
 	net-misc/asterisk-core-sounds
 	net-misc/asterisk-extra-sounds
 	net-misc/asterisk-moh-opsound
 	selinux? ( sec-policy/selinux-asterisk )"
+PDEPEND="net-misc/asterisk-base"
 
 BDEPEND="dev-libs/libxml2:2
 	virtual/pkgconfig"
