@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -32,6 +32,7 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-4.2[${PYTHON_USEDEP}]
+	<dev-python/sphinx-7[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 BDEPEND="
