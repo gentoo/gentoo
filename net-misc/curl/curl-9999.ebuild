@@ -22,9 +22,9 @@ fi
 
 LICENSE="BSD curl ISC test? ( BSD-4 )"
 SLOT="0"
-IUSE="+adns alt-svc brotli +ftp gnutls gopher hsts +http2 idn +imap kerberos ldap mbedtls nss +openssl +pop3 +progress-meter rtmp rustls samba +smtp ssh ssl sslv3 static-libs test telnet +tftp websockets zstd"
+IUSE="+adns alt-svc brotli +ftp gnutls gopher hsts +http2 idn +imap kerberos ldap mbedtls +openssl +pop3 +progress-meter rtmp rustls samba +smtp ssh ssl sslv3 static-libs test telnet +tftp websockets zstd"
 # These select the default SSL implementation
-IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_rustls"
+IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls +curl_ssl_openssl curl_ssl_rustls"
 IUSE+=" nghttp3"
 RESTRICT="!test? ( test )"
 
@@ -35,14 +35,12 @@ REQUIRED_USE="
 		^^ (
 			curl_ssl_gnutls
 			curl_ssl_mbedtls
-			curl_ssl_nss
 			curl_ssl_openssl
 			curl_ssl_rustls
 		)
 	)
 	curl_ssl_gnutls? ( gnutls )
 	curl_ssl_mbedtls? ( mbedtls )
-	curl_ssl_nss? ( nss )
 	curl_ssl_openssl? ( openssl )
 	curl_ssl_rustls? ( rustls )
 "
@@ -77,11 +75,6 @@ RDEPEND="
 		mbedtls? (
 			app-misc/ca-certificates
 			net-libs/mbedtls:=[${MULTILIB_USEDEP}]
-		)
-		nss? (
-			app-misc/ca-certificates
-			dev-libs/nss[${MULTILIB_USEDEP}]
-			dev-libs/nss-pem
 		)
 		openssl? (
 			dev-libs/openssl:=[sslv3(-)=,static-libs?,${MULTILIB_USEDEP}]
@@ -147,7 +140,7 @@ multilib_src_configure() {
 
 	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
 	if use ssl; then
-		myconf+=( --without-gnutls --without-mbedtls --without-nss --without-rustls )
+		myconf+=( --without-gnutls --without-mbedtls --without-rustls )
 
 		if use gnutls; then
 			multilib_is_native_abi && einfo "SSL provided by gnutls"
@@ -156,10 +149,6 @@ multilib_src_configure() {
 		if use mbedtls; then
 			multilib_is_native_abi && einfo "SSL provided by mbedtls"
 			myconf+=( --with-mbedtls )
-		fi
-		if use nss; then
-			multilib_is_native_abi && einfo "SSL provided by nss"
-			myconf+=( --with-nss --with-nss-deprecated )
 		fi
 		if use openssl; then
 			multilib_is_native_abi && einfo "SSL provided by openssl"
@@ -175,9 +164,6 @@ multilib_src_configure() {
 		elif use curl_ssl_mbedtls; then
 			multilib_is_native_abi && einfo "Default SSL provided by mbedtls"
 			myconf+=( --with-default-ssl-backend=mbedtls )
-		elif use curl_ssl_nss; then
-			multilib_is_native_abi && einfo "Default SSL provided by nss"
-			myconf+=( --with-default-ssl-backend=nss )
 		elif use curl_ssl_openssl; then
 			multilib_is_native_abi && einfo "Default SSL provided by openssl"
 			myconf+=( --with-default-ssl-backend=openssl )
@@ -206,7 +192,12 @@ multilib_src_configure() {
 
 	myconf+=(
 		$(use_enable alt-svc)
-		--enable-crypto-auth
+		--enable-basic-auth
+		--enable-bearer-auth
+		--enable-digest-auth
+		--enable-kerberos-auth
+		--enable-negotiate-auth
+		--enable-aws
 		--enable-dict
 		--disable-ech
 		--enable-file
