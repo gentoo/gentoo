@@ -116,9 +116,6 @@ src_prepare() {
 	sed -i -e '/^Alias=org.jwz.xscreensaver.service/d' \
 		 driver/xscreensaver.service.in || die
 
-	sed -i -e 's/ --no-splash//' \
-		 driver/xscreensaver.service.in || die
-
 	strip-linguas -i po/
 	export ALL_LINGUAS="${LINGUAS}"
 
