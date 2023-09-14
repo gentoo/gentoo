@@ -13,6 +13,10 @@ SRC_URI="
 		https://github.com/Flowdalic/xscreensaver/commit/59e7974c42dc08411c9af2a3a644a582c2116f46.patch ->
 			${PN}-6.06-logind-idle-hint.patch
 	)
+	systemd? (
+		 https://github.com/Flowdalic/xscreensaver/commit/376b07ec76cfe1070f498773aaec8fd7030593af.patch ->
+			${PN}-6.07-xscreensaver.service-start-with-no-splash.patch
+	)
 "
 
 # Font license mapping for folder ./hacks/fonts/ as following:
@@ -111,10 +115,14 @@ src_prepare() {
 
 	sed -i configure.ac -e '/^ALL_LINGUAS=/d' || die
 
-	# Causes "Failed to enable unit: Cannot alias xscreensaver.service as org.jwz.xscreensaver."
-	# after "systemctl --user enable xscreensaver".
-	sed -i -e '/^Alias=org.jwz.xscreensaver.service/d' \
-		 driver/xscreensaver.service.in || die
+	if use systemd; then
+		# Causes "Failed to enable unit: Cannot alias xscreensaver.service as org.jwz.xscreensaver."
+		# after "systemctl --user enable xscreensaver".
+		sed -i -e '/^Alias=org.jwz.xscreensaver.service/d' \
+			driver/xscreensaver.service.in || die
+
+		eapply "${DISTDIR}/${PN}-6.07-xscreensaver.service-start-with-no-splash.patch"
+	fi
 
 	strip-linguas -i po/
 	export ALL_LINGUAS="${LINGUAS}"
