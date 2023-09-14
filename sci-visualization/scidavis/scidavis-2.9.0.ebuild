@@ -6,7 +6,7 @@ EAPI=8
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-single-r1 cmake docs virtualx xdg
 
