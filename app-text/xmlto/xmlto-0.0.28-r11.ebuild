@@ -15,6 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="latex text"
 
 RDEPEND="
+	app-shells/bash:0
 	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.2
 	dev-libs/libxslt
@@ -48,9 +49,12 @@ src_prepare() {
 }
 
 src_configure() {
-	# We don't want the script to detect /bin/sh if it is bash.
-	export ac_cv_path_BASH="${BASH}"
 	has_version sys-apps/util-linux || export GETOPT=getopt-long
 
-	econf
+	local args=(
+		# Ensure we always get a #!/bin/bash shebang in xmlto, bug 912286
+		BASH="${EPREFIX}/bin/bash"
+	)
+
+	econf "${args[@]}"
 }
