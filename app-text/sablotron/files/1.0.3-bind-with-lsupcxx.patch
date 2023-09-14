@@ -1,0 +1,18 @@
+Date: Thu, 14 Sep 2023 09:59:35 +0200
+Subject: [PATCH] bind with lsupc++
+
+Signed-off-by: Pascal Jäger pascal.jaeger@leimstift.de
+
+--- a/configure.in
++++ b/configure.in
+@@ -354,7 +354,7 @@ dnl miscellaneous - initial
+ dnl vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+ dnl here we collect needed libraries
+-OTHER_LIBS=
++OTHER_LIBS="-lsupc++ "
+
+ AC_MSG_CHECKING(whether to build under GPL)
+ if test ! x$SABLOT_GPL = 'x'; then
+--
+2.41.0
