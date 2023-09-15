@@ -9,7 +9,8 @@ DESCRIPTION="Sends messages to an alphanumeric pager via TAP protocol"
 HOMEPAGE="http://www.qpage.org/"
 SRC_URI="http://www.qpage.org/download/${P}.tar.Z"
 
-LICENSE="qpage"
+# GPL-2 - init script
+LICENSE="qpage GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="tcpd"
