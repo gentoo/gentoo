@@ -34,7 +34,6 @@ IUSE_OPTIONAL="debug gnutls iodbc odbc sasl ssl selinux static-libs +syslog test
 IUSE_CONTRIB="kerberos kinit pbkdf2 sha2 smbkrb5passwd"
 IUSE_CONTRIB="${IUSE_CONTRIB} cxx"
 IUSE="systemd ${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	cxx? ( sasl )
 	pbkdf2? ( ssl )
@@ -43,6 +42,7 @@ REQUIRED_USE="
 	?? ( test minimal )
 	kerberos? ( ?? ( kinit smbkrb5passwd ) )
 "
+RESTRICT="!test? ( test )"
 
 SYSTEM_LMDB_VER=0.9.31
 # openssl is needed to generate lanman-passwords required by samba
