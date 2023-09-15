@@ -10,7 +10,7 @@ PHP_EXT_SAPIS="cli"
 PHP_EXT_NEEDED_USE="cli,sockets?"
 DOCS=( README.md )
 
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -31,7 +31,6 @@ DEPEND="
 		dev-libs/openssl:0=
 	)
 	mysql? (
-		php_targets_php7-4? ( dev-lang/php:7.4[mysql,mysqli(+)] )
 		php_targets_php8-0? ( dev-lang/php:8.0[mysql,mysqli(+)] )
 		php_targets_php8-1? ( dev-lang/php:8.1[mysql,mysqli(+)] )
 	)

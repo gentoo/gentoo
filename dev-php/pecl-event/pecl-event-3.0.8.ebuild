@@ -8,7 +8,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS=( README.md )
 
-USE_PHP="php7-4 php8-0 php8-1 php8-2"
+USE_PHP="php8-0 php8-1 php8-2"
 PHP_EXT_NEEDED_USE="sockets(-)?"
 
 inherit php-ext-pecl-r3

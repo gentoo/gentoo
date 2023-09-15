@@ -4,7 +4,7 @@
 EAPI="7"
 
 PHP_EXT_NAME="ps"
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 PHP_EXT_NEEDED_USE="gd(-)?"
 
 inherit php-ext-pecl-r3

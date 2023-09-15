@@ -5,11 +5,9 @@ EAPI="7"
 
 PHP_EXT_NAME="ssh2"
 
-USE_PHP="php7-4 php8-0"
+USE_PHP="php8-0"
 
 inherit php-ext-pecl-r3
-
-USE_PHP="php7-4 php8-0"
 
 DESCRIPTION="PHP bindings for the libssh2 library"
 LICENSE="PHP-3.01"

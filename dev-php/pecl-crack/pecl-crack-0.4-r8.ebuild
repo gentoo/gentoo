@@ -9,7 +9,7 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_EXTRA_ECONF=""
 DOCS=( EXPERIMENTAL )
 
-USE_PHP="php7-4 php8-0"
+USE_PHP="php8-0"
 
 inherit php-ext-pecl-r3
 

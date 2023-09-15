@@ -28,7 +28,7 @@ IUSE="gd"
 
 DEPEND=""
 RDEPEND="
-	>=dev-lang/php-7.4[xml]
+	>=dev-lang/php-8.0[xml]
 	virtual/httpd-php:*
 	gd? ( ||
 		(

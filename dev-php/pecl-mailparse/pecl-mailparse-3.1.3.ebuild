@@ -8,7 +8,7 @@ PHP_EXT_NAME="mailparse"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 PHP_EXT_ECONF_ARGS=""
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 PHP_EXT_NEEDED_USE="unicode(-)"
 DOCS=( README.md )
 

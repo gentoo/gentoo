@@ -18,10 +18,6 @@ php_targets_php8-0
 # Ruby version.
 ruby_targets_ruby30
 
-# Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
-# PHP 7.x is end-of-life. Please upgrade to a newer slot.
-php_targets_php7-4
-
 # Hans de Graaff <graaff@gentoo.org> (2023-04-10)
 # Ruby 2.7 is masked for removal.
 ruby_targets_ruby27

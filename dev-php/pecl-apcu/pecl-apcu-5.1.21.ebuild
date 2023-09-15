@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS=( NOTICE README.md TECHNOTES.txt )
 
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -28,15 +28,6 @@ done
 IUSE="+mmap ${LUSE/lock-pthreadrw/+lock-pthreadrw}"
 
 REQUIRED_USE="^^ ( $LUSE )"
-
-src_prepare() {
-	php-ext-source-r3_src_prepare
-	# Remove broken tests from php 7.4 due to trivial output differences
-	if use php_targets_php7-4 ; then
-		php_init_slot_env "php7.4"
-		rm "${PHP_EXT_S}"/tests/apc_entry_00{2,3}.phpt || die
-	fi
-}
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=(
