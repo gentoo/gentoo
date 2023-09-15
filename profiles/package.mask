@@ -257,11 +257,6 @@ app-dicts/edictionary
 # Masked for removal on 2023-09-17.
 app-emacs/ruby-mode
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
-# Library without consumers. Bug #906882
-# Removal on 2023-08-05.
-net-libs/nativebiginteger
-
 # Sam James <sam@gentoo.org> (2023-08-04)
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
