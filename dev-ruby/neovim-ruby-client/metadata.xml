@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">alexgenco/neovim-ruby</remote-id>
+    <remote-id type="github">neovim/neovim-ruby</remote-id>
   </upstream>
 </pkgmetadata>
