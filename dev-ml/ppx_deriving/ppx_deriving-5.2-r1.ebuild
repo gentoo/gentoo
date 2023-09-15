@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,14 +15,13 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	dev-ml/ppx_tools:=
 	dev-ml/ocaml-migrate-parsetree:=
 	dev-ml/ppx_derivers:=
 	>=dev-ml/ppxlib-0.20.0:=
 	dev-ml/result:=
 "
-RDEPEND="${DEPEND}"
 DEPEND="${RDEPEND}
 	dev-ml/cppo
 	test? ( dev-ml/ounit2 )"
