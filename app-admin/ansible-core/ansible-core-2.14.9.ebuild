@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="devel"
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 fi
 
 LICENSE="GPL-3"
