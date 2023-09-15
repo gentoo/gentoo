@@ -101,10 +101,11 @@ fi
 KEYWORDS="-* amd64 ~arm ~arm64"
 VIVALDI_BASE_URI="https://downloads.vivaldi.com/${VIVALDI_PN#vivaldi-}/${VIVALDI_PN}_${PV%_p*}-${DEB_REV}_"
 
-RE="\bamd64\b"; [[ ${KEYWORDS} =~ ${RE} ]] && SRC_URI+=" amd64? ( ${VIVALDI_BASE_URI}amd64.deb )"
-RE="\barm\b"; [[ ${KEYWORDS} =~ ${RE} ]] && SRC_URI+=" arm? ( ${VIVALDI_BASE_URI}armhf.deb )"
-RE="\barm64\b"; [[ ${KEYWORDS} =~ ${RE} ]] && SRC_URI+=" arm64? ( ${VIVALDI_BASE_URI}arm64.deb )"
-RE="\bx86\b"; [[ ${KEYWORDS} =~ ${RE} ]] && SRC_URI+=" x86? ( ${VIVALDI_BASE_URI}i386.deb )"
+SRC_URI="
+	amd64? ( ${VIVALDI_BASE_URI}amd64.deb )
+	arm? ( ${VIVALDI_BASE_URI}armhf.deb )
+	arm64? ( ${VIVALDI_BASE_URI}arm64.deb )
+"
 
 LICENSE="Vivaldi"
 SLOT="0"
