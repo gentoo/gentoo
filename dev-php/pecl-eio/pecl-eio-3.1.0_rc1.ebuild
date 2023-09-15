@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 MY_PN="${PN/pecl-}"
 MY_PV="${PV/_rc/RC}"
 MY_P="${MY_PN}-${MY_PV}"
@@ -15,15 +16,13 @@ DOCS=( README.md )
 USE_PHP="php8-0 php8-1"
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~x86"
-LICENSE="PHP-3.01"
-
 DESCRIPTION="PHP wrapper for libeio library"
-LICENSE="PHP-3"
-SLOT="0"
-IUSE="debug"
-
 S="${PHP_EXT_S}"
+
+LICENSE="PHP-3.01"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug"
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=("--with-eio" "$(use_enable debug eio-debug)" )
