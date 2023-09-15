@@ -264,7 +264,6 @@ app-emacs/ruby-mode
 # to upgrade moodle is seven months old, which I think is long enough to
 # have waited. Selfoss has a newer version. Removal after 2023-09-11.
 dev-lang/php:7.4
-dev-php/PHP_TokenStream
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
