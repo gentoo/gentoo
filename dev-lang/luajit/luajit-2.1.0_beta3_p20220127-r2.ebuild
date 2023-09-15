@@ -20,7 +20,7 @@ MY_P="LuaJIT-${MY_PV}"
 
 DESCRIPTION="Just-In-Time Compiler for the Lua programming language"
 HOMEPAGE="https://luajit.org/"
-SRC_URI="https://luajit.org/download/${MY_P}.tar.gz"
+# SRC_URI="https://luajit.org/download/${MY_P}.tar.gz"
 SRC_URI="https://github.com/LuaJIT/LuaJIT/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
