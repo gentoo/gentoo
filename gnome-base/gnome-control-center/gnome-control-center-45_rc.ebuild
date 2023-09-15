@@ -21,9 +21,6 @@ REQUIRED_USE="
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime, but needs testing if handled gracefully enough
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
-# meson.build depends on python unconditionally
-BDEPEND="${PYTHON_DEPS}"
-
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # display panel requires colord and gnome-settings-daemon[colord]
 # wacom panel requires gsd-enums.h from gsd at build time, probably also runtime support
@@ -116,7 +113,8 @@ RDEPEND="${DEPEND}
 PDEPEND=">=gnome-base/gnome-session-2.91.6-r1
 	networkmanager? ( gnome-extra/nm-applet )" # networking panel can call into nm-connection-editor
 
-BDEPEND="
+# meson.build depends on python unconditionally
+BDEPEND="${PYTHON_DEPS}
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.2
