@@ -9,7 +9,6 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="This package contains tools for authenticating to an OpenStack-based cloud"
-HOMEPAGE="https://github.com/openstack/keystoneauth"
 HOMEPAGE="
 	https://opendev.org/openstack/keystoneauth/
 	https://github.com/openstack/keystoneauth/
