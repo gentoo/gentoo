@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/714222
+
+Hack instead of fix because upstream is dead and the typedef is used extensively.
+
+--- a/Ase.h
++++ b/Ase.h
+@@ -24,6 +24,7 @@
+ #include "T1Protocol.h"
+ #include "MemoryCards.h"
+ 
++typedef unsigned short ushort;
+ 
+ //#define ASE_DEBUG
+ 
