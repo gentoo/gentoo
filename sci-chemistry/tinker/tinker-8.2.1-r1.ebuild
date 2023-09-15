@@ -1,33 +1,34 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
+inherit flag-o-matic fortran-2 java-pkg-2 toolchain-funcs
 
 DESCRIPTION="Molecular modeling package that includes force fields, such as AMBER and CHARMM"
-HOMEPAGE="http://dasher.wustl.edu/tinker/"
-SRC_URI="http://dasher.wustl.edu/${PN}/downloads/${P}.tar.gz"
+HOMEPAGE="https://dasher.wustl.edu/tinker/"
+SRC_URI="https://dasher.wustl.edu/${PN}/downloads/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Tinker"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
+RESTRICT="mirror"
 
-RDEPEND="
+COMMON_DEPEND="
 	>=sci-libs/fftw-3.2.2-r1[fortran,threads]
 	dev-libs/maloc
 	!sys-apps/bar
 	!dev-util/diffuse
-	>=virtual/jre-1.6
+"
+RDEPEND="${COMMON_DEPEND}
+	>=virtual/jre-1.8:*
 "
 DEPEND="
-	${RDEPEND}
-	>=virtual/jdk-1.6
-	virtual/pkgconfig
+	${COMMON_DEPEND}
+	>=virtual/jdk-1.8:*
 "
-
-RESTRICT="mirror"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${PN}/source
 
@@ -39,17 +40,17 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 
 	fortran-2_pkg_setup
-	java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
 	sed 's:strip:true:g' -i ../make/Makefile || die
 	[[ $(tc-getFC) =~ "ifort" ]] && eapply "${FILESDIR}"/${PV}-openmp.patch
 	default
+	java-pkg-2_src_prepare
 }
 
 src_compile() {
-	local javalib=
+	local javalib= _omplib _fftwlib
 	for i in $(java-config -g LDPATH | sed 's|:| |g'); do
 		[[ -f ${i}/libjvm.so ]] && javalib=${i}
 	done
@@ -87,6 +88,7 @@ src_compile() {
 }
 
 src_test() {
+	local test
 	cd "${WORKDIR}"/${PN}/test/
 	for test in *.run; do
 		einfo "Testing ${test} ..."
