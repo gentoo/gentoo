@@ -3,19 +3,12 @@
 
 EAPI=7
 
-# Variables for the miscellaneous bindings we provide
-PHP_EXT_OPTIONAL_USE="php"
-PHP_EXT_NAME="php_mapscriptng"
-PHP_EXT_SKIP_PHPIZE="yes"
-PHP_EXT_SKIP_PATCHES="yes"
-
-USE_PHP="php7-4"
 PYTHON_COMPAT=( python3_{10..11} )
 
 WEBAPP_MANUAL_SLOT=yes
 WEBAPP_OPTIONAL=yes
 
-inherit cmake depend.apache perl-functions php-ext-source-r3 python-r1 webapp
+inherit cmake depend.apache perl-functions python-r1 webapp
 
 DESCRIPTION="Development environment for building spatially enabled webapps"
 HOMEPAGE="https://mapserver.org/"
@@ -26,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 # NOTE: opengl removed for now as no support for it in upstream CMake
-IUSE="apache bidi cairo geos mysql oracle perl php postgis python"
+IUSE="apache bidi cairo geos mysql oracle perl postgis python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -37,7 +30,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 #
 # The eclasses used normally try to run test suites themselves,
 # or skip if nothing was found.
-# However, because of the php-ext-* eclass usage, this fails and would
+# However, because of the python-r1 eclass usage, this fails and would
 # cause errors running non-existent tests, so we have to restrict here.
 RESTRICT="test"
 
@@ -79,7 +72,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	perl? ( >=dev-lang/swig-4.0 )
-	php? ( >=dev-lang/swig-4.0 )
 	python? (
 		>=dev-lang/swig-4.0
 		>=dev-python/setuptools-44.1.0
@@ -96,7 +88,6 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 
-	use php && php-ext-source-r3_src_prepare
 	use python && python_copy_sources
 }
 
@@ -175,29 +166,6 @@ src_configure() {
 		python_foreach_impl cmake_src_configure
 		python_foreach_impl python_optimize
 	fi
-
-	if use php ; then
-		local slot=
-		for slot in $(php_get_slots) ; do
-			# Switch to the slot's build dir
-			php_init_slot_env "${slot}"
-
-			# Take a blank config each time
-			# Add in only *this* slot's PHP includes dir, etc
-			mycmakeargs=(
-				$(_generate_cmake_args)
-				"-DWITH_PHPNG=ON"
-				"-DPHP_CONFIG_EXECUTABLE=${PHPCONFIG}"
-				"-DPHP_INCLUDES=${PHPPREFIX}"
-			)
-
-			BUILD_DIR="${S}/php${slot}" cmake_src_configure
-
-			# Return to where we left off, in case we add more
-			# to this phase.
-			cd "${S}" || die
-		done
-	fi
 }
 
 src_compile() {
@@ -205,21 +173,6 @@ src_compile() {
 
 	if use python ; then
 		python_foreach_impl cmake_src_compile
-	fi
-
-	if use php ; then
-		local slot=
-		for slot in $(php_get_slots) ; do
-			# Switch to the slot's build dir
-			php_init_slot_env "${slot}"
-
-			# Force cmake to build in it
-			BUILD_DIR="${S}/php${slot}" cmake_src_compile
-
-			# Return to where we left off, in case we add more
-			# to this phase.
-			cd "${S}" || die
-		done
 	fi
 }
 
@@ -232,19 +185,6 @@ src_install() {
 		python_foreach_impl python_optimize
 	fi
 
-	if use php ; then
-		php-ext-source-r3_createinifiles
-
-		local slot=
-		for slot in $(php_get_slots) ; do
-			php_init_slot_env "${slot}"
-
-			BUILD_DIR="${S}/php${slot}" cmake_src_install
-
-			cd "${S}" || die
-		done
-	fi
-
 	# Install this last because this build is the most "fully-featured"
 	cmake_src_install
 
@@ -255,31 +195,8 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	# We need to cache the value here of HAD_PHP because we want the
-	# original package version, not the result of us installing a new one
-	HAD_PHP=
-	has_version 'sci-geosciences/mapserver[php]' && HAD_PHP=1
-}
-
 pkg_postinst() {
 	use apache && webapp_pkg_postinst
-
-	# Let upgrading (from a pre-rewrite version) users know that the PHP module changed
-	local replacing_version=
-	for replacing_version in ${REPLACING_VERSIONS} ; do
-		if ver_test "7.6.0" -gt "${replacing_version}" ; then
-			if use php && [[ ${HAD_PHP} -eq 1 ]] ; then
-				elog "Note that MapServer has deprecated the old PHP extension"
-				elog "You can read more at: "
-				elog "URL: https://mapserver.org/MIGRATION_GUIDE.html#mapserver-7-2-to-7-4-migration"
-				elog "This may involve porting some of your PHP scripts to use the new module."
-			fi
-
-			# Only show the message once
-			break
-		fi
-	done
 }
 
 pkg_prerm() {
