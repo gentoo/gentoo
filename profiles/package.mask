@@ -33,9 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-06)
-# No longer maintained upstream; please see the 2021-07-15-opentmpfiles-deprecation
-# news item.
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-06, 2023-09-15)
+# No longer maintained upstream; masked everywhere for two years now.
+# Please see also the 2021-07-15-opentmpfiles-deprecation news item.
+# https://www.gentoo.org/support/news-items/2021-07-15-opentmpfiles-deprecation.html
+#
+# The replacement is sys-apps/systemd-utils[tmpfiles]; new name
+# but otherwise identical to the solution described in the news item.
+# Removal on 2023-10-15.
 sys-apps/opentmpfiles
 
 # Hans de Graaff <graaff@gentoo.org> (2023-09-15)
