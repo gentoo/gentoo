@@ -1,31 +1,22 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 MY_PV="${PV/_pre*}"
 MY_P="pulseaudio-${MY_PV}"
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit python-single-r1
 
 DESCRIPTION="Equalizer interface for equalizer sinks of PulseAudio (networked sound server)"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
-
-if [[ ${PV} = 9999 ]]; then
-	inherit git-r3
-	EGIT_BRANCH="master"
-	EGIT_REPO_URI="https://gitlab.freedesktop.org/pulseaudio/pulseaudio"
-else
-	SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-fi
-
+SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -37,11 +28,6 @@ RDEPEND="
 	>=media-sound/pulseaudio-daemon-16.1-r7[dbus,fftw]
 	!<media-sound/pulseaudio-daemon-16.1-r7
 "
-DEPEND=""
-
-BDEPEND=""
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	:; # do nothing
