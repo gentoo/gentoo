@@ -6,14 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{9..11} )
 
-USE_PHP="php7-4"
-PHP_EXT_ECONF_ARGS="--with-php=yes --without-lua --without-perl --without-python --without-ruby"
-PHP_EXT_NAME="redland"
-PHP_EXT_OPTIONAL_USE="php"
-PHP_EXT_SKIP_PATCHES="yes"
-PHP_EXT_SKIP_PHPIZE="yes"
-
-inherit lua php-ext-source-r3 python-single-r1 autotools
+inherit lua python-single-r1 autotools
 
 DESCRIPTION="Language bindings for Redland"
 HOMEPAGE="https://librdf.org/bindings/"
@@ -22,7 +15,7 @@ SRC_URI="https://download.librdf.org/source/${P}.tar.gz"
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86 ~x86-linux"
-IUSE="lua perl python php ruby test"
+IUSE="lua perl python ruby test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -33,10 +26,7 @@ RDEPEND="dev-libs/redland
 	lua? ( ${LUA_DEPS} )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( dev-lang/ruby:* dev-ruby/log4r )
-	php? (
-		php_targets_php7-4? ( dev-lang/php:7.4[-threads] )
-	)"
+	ruby? ( dev-lang/ruby:* dev-ruby/log4r )"
 
 DEPEND="${RDEPEND}
 	dev-lang/swig
@@ -46,8 +36,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-bool.patch
-	"${FILESDIR}"/${PN}-1.0.17.1-php-config-r1.patch
-	"${FILESDIR}"/${PN}-1.0.17.1-add-PHP7-support.patch
 )
 
 pkg_setup() {
@@ -63,8 +51,6 @@ src_prepare() {
 	# "error: redland_wrap.c: No such file or directory",
 	# have to copy the sources.
 	use lua && lua_copy_sources
-
-	use php && php-ext-source-r3_src_prepare
 }
 
 lua_src_configure() {
@@ -93,8 +79,6 @@ src_configure() {
 	if use lua; then
 		lua_foreach_impl lua_src_configure
 	fi
-
-	use php && php-ext-source-r3_src_configure
 }
 
 lua_src_compile() {
@@ -113,8 +97,6 @@ src_compile() {
 	if use lua; then
 		lua_foreach_impl lua_src_compile
 	fi
-
-	use php && php-ext-source-r3_src_compile
 }
 
 lua_src_test() {
@@ -132,17 +114,6 @@ src_test() {
 
 	if use lua; then
 		lua_foreach_impl lua_src_test
-	fi
-
-	if use php ; then
-		local slot
-		for slot in $(php_get_slots) ; do
-			php_init_slot_env "${slot}"
-			cd php || die
-			${PHPCLI} -v
-			${PHPCLI} -d "extension=./${PHP_EXT_NAME}.so" -f test.php || die "PHP tests for ${slot} failed!"
-			cd "${S}" || die
-		done
 	fi
 }
 
@@ -169,17 +140,6 @@ src_install() {
 	fi
 
 	use python && python_optimize
-
-	if use php; then
-		local slot
-		for slot in $(php_get_slots); do
-			php_init_slot_env "${slot}"
-			exeinto "${EXT_DIR#$EPREFIX}"
-			doexe "php/${PHP_EXT_NAME}.so"
-		done
-
-		php-ext-source-r3_createinifiles
-	fi
 
 	local DOCS=( AUTHORS ChangeLog NEWS README TODO )
 	local HTML_DOCS=( {NEWS,README,RELEASE,TODO}.html )
