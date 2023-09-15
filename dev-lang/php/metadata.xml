@@ -67,9 +67,6 @@
     <flag name="jit">
       Enable PCRE JIT support
     </flag>
-    <flag name="json">
-      Enable the JavaScript Object Notation extension
-    </flag>
     <flag name="ldap-sasl">
       Add SASL support for the PHP LDAP extension using
       <pkg>dev-libs/cyrus-sasl</pkg>
