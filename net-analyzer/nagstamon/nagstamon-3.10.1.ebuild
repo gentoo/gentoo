@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit python-r1 distutils-r1
+inherit distutils-r1
 
 distutils_enable_tests pytest
 
