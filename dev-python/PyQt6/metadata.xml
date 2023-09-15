@@ -15,6 +15,7 @@
 		<flag name="network">Build bindings for the QtNetwork module</flag>
 		<flag name="nfc">Build bindings for the QtNfc module</flag>
 		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
+		<flag name="pdfium">Build bindings for the QtPdf module (uses pdfium from <pkg>dev-qt/qtwebengine</pkg>)</flag>
 		<flag name="positioning">Build bindings for the QtPositioning module</flag>
 		<flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
 		<flag name="qml">Build bindings for the QtQml module and enable the qml plugin</flag>
