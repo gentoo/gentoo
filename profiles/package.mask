@@ -276,7 +276,6 @@ dev-php/sebastian-object-enumerator
 dev-php/sebastian-object-reflector
 dev-php/sebastian-recursion-context
 =mail-client/roundcube-1.4.11
-=virtual/httpd-php-7.4
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
