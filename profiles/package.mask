@@ -266,11 +266,6 @@ net-libs/nativebiginteger
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
 
-# David Seifert <soap@gentoo.org> (2023-07-29)
-# EAPI 6, fetch restrictions require annoying registration, no other
-# distro packages this, over 10 years old. Removal on 2023-08-28.
-sci-libs/rosetta-db
-
 # Mike Gilbert <floppym@gentoo.org> (2023-07-24)
 # Migrated to sys-apps/systemd-utils.
 # Removal on 2023-08-24.
