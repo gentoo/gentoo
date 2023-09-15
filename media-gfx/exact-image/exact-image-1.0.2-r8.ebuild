@@ -1,16 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PHP_EXT_NAME="exactimage"
-USE_PHP="php7-4"
-PHP_EXT_OPTIONAL_USE="php"
-PHP_EXT_SKIP_PATCHES="yes"
-PHP_EXT_SKIP_PHPIZE="yes"
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit php-ext-source-r3 lua-single toolchain-funcs
+inherit lua-single toolchain-funcs
 
 DESCRIPTION="A fast, modern and generic image processing library"
 HOMEPAGE="https://exactcode.com/opensource/exactimage/"
@@ -19,8 +14,8 @@ SRC_URI="http://dl.exactcode.de/oss/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="expat jpeg lua openexr php perl png ruby swig tiff truetype X"
-REQUIRED_USE="lua? ( swig ) perl? ( swig ) php? ( swig ) ruby? ( swig )"
+IUSE="expat jpeg lua openexr perl png ruby swig tiff truetype X"
+REQUIRED_USE="lua? ( swig ) perl? ( swig ) ruby? ( swig )"
 # Tests are broken; 'make check' fails and referenced testsuite dir not found
 RESTRICT="test"
 
@@ -53,7 +48,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${P}-g++.patch
 	"${FILESDIR}"/${P}-dcraw.patch
-	"${FILESDIR}"/${P}-php.patch
 )
 
 src_prepare() {
@@ -82,17 +76,6 @@ src_prepare() {
 	sed -i \
 		-e 's:Int64:uint64_t:g' \
 		codecs/openexr.cc || die
-
-	# When using PHP, the php-config binary should be specified by slot
-	# Cannot be done in a patch as it is live
-	if use php ; then
-		php-ext-source-r3_src_prepare
-		local slot
-		for slot in $(php_get_slots); do
-			php_init_slot_env "${slot}"
-			sed -i "s~php-config~${PHPCONFIG}~" configure || die
-		done
-	fi
 }
 
 src_configure() {
@@ -122,57 +105,4 @@ src_configure() {
 		--without-python \
 		--without-php \
 		$(use_with ruby) || die
-	if use php; then
-		local slot
-		for slot in $(php_get_slots); do
-			php_init_slot_env "${slot}"
-			./configure \
-				--prefix=/usr \
-				--libdir=/usr/$(get_libdir) \
-				--without-x11 \
-				$(use_with truetype freetype) \
-				--without-evas \
-				$(use_with jpeg libjpeg) \
-				$(use_with tiff libtiff) \
-				$(use_with png libpng) \
-				--without-jasper \
-				--without-libgif \
-				$(use_with openexr) \
-				$(use_with expat) \
-				--without-lcms \
-				--without-bardecode \
-				--without-lua \
-				--with-swig \
-				--without-perl \
-				--without-python \
-				--with-php \
-				--without-ruby || die
-		done
-	fi
-}
-
-src_compile() {
-	default
-	if use php ; then
-		local slot
-		for slot in $(php_get_slots); do
-			php_init_slot_env "${slot}"
-			# Copy built objects from default
-			cp -a "${S}/objdir" . || die
-			emake
-		done
-	fi
-}
-
-src_install() {
-	default
-	if use php ; then
-		local slot
-		for slot in $(php_get_slots); do
-			php_init_slot_env "${slot}"
-			exeinto "${EXT_DIR#$EPREFIX}"
-			newexe objdir/api/php/ExactImage.so "${PHP_EXT_NAME}.so"
-		done
-		php-ext-source-r3_createinifiles
-	fi
 }
