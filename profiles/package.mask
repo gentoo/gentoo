@@ -267,7 +267,6 @@ app-emacs/ruby-mode
 #   * pecl-propro dead since 2020
 #   * pecl-taint dead in 2021
 #
-dev-php/pecl-apcu_bc
 dev-php/pecl-http:7
 dev-php/pecl-ncurses
 dev-php/pecl-propro
