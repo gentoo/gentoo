@@ -32,7 +32,7 @@ SLOT="0/${libbtrfs_soname}"
 IUSE="+convert python +man reiserfs static static-libs udev +zstd"
 # Could support it with just !systemd => eudev, see mdadm, but let's
 # see if someone asks for it first.
-REQUIRED_USE="static? ( !udev )"
+REQUIRED_USE="static? ( !udev ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Tries to mount repaired filesystems
 RESTRICT="test"
@@ -81,8 +81,6 @@ BDEPEND="
 if [[ ${PV} == 9999 ]]; then
 	BDEPEND+=" sys-devel/gnuconfig"
 fi
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.5-avoid-textrel-crc32c-pcl-intel-asm_64.patch
