@@ -13,13 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="+alsa doc dssi +fltk jack lash portaudio"
-
 REQUIRED_USE="|| ( alsa jack portaudio )"
 
-BDEPEND="
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-"
 DEPEND="
 	dev-libs/mxml
 	media-libs/liblo
@@ -40,6 +35,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-lang/ruby:*
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
