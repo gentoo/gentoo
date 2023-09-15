@@ -12,7 +12,7 @@ PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
 PHP_EXT_S="${WORKDIR}/${MY_P}"
 DOCS=( README.md )
 
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 inherit php-ext-pecl-r3
 
 KEYWORDS="~amd64 ~x86"

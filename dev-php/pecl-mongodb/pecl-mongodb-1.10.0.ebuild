@@ -4,7 +4,7 @@
 EAPI=7
 
 PHP_EXT_NAME="mongodb"
-USE_PHP="php7-4 php8-0"
+USE_PHP="php8-0"
 
 inherit php-ext-pecl-r3
 
@@ -16,7 +16,6 @@ KEYWORDS="amd64 x86"
 IUSE="sasl test"
 
 PHP_DEPEND="
-	php_targets_php7-4? ( dev-lang/php:7.4[json,ssl,zlib] )
 	php_targets_php8-0? ( dev-lang/php:8.0[ssl,zlib] )"
 COMMON_DEPEND="${PHP_DEPEND}
 	>=dev-libs/libbson-1.18.0

@@ -9,7 +9,7 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_ECONF_ARGS=( --with-pam=/usr )
 DOCS=( README )
 
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 
 inherit php-ext-pecl-r3 pam
 

@@ -9,7 +9,7 @@ PHP_EXT_ECONF_ARGS=( --enable-${PN} )
 PHP_EXT_S="${S}/src"
 PHP_EXT_NEEDED_USE="session(+)"
 
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 
 inherit php-ext-source-r3
 

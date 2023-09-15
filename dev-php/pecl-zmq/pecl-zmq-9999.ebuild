@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 inherit php-ext-pecl-r3
 
 if [[ ${PV} == "9999" ]]; then

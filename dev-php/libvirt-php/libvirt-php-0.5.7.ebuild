@@ -5,7 +5,7 @@ EAPI="8"
 
 PHP_EXT_NAME="libvirt-php"
 PHP_EXT_SKIP_PHPIZE="yes"
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 PHP_EXT_ECONF_ARGS=()
 
 inherit php-ext-source-r3 autotools
