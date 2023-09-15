@@ -467,8 +467,6 @@ CRATES="
 inherit desktop cargo
 
 DESCRIPTION="A terminal workspace with batteries included"
-# Double check the homepage as the cargo_metadata crate
-# does not provide this value so instead repository is used
 HOMEPAGE="
 	https://zellij.dev/
 	https://github.com/zellij-org/zellij
@@ -501,6 +499,7 @@ BDEPEND="
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+QA_PRESTRIPPED="usr/bin/${PN}"
 
 DOCS=(
 	CHANGELOG.md
