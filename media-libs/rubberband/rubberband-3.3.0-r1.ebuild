@@ -13,11 +13,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="ladspa lv2 jni static-libs +programs test vamp"
+RESTRICT="!test? ( test )"
 
-BDEPEND="
-	virtual/pkgconfig
-"
-CDEPEND="
+DEPEND="
 	media-libs/libsamplerate[${MULTILIB_USEDEP}]
 	sci-libs/fftw:3.0[${MULTILIB_USEDEP}]
 	jni? ( >=virtual/jdk-1.8:* )
@@ -27,12 +25,13 @@ CDEPEND="
 	vamp? ( media-libs/vamp-plugin-sdk[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	ppc? ( sys-devel/gcc:* )
 "
-DEPEND="${CDEPEND}"
-BDEPEND="test? ( dev-libs/boost[${MULTILIB_USEDEP}] )"
-RESTRICT="!test? ( test )"
+BDEPEND="
+	virtual/pkgconfig
+	test? ( dev-libs/boost[${MULTILIB_USEDEP}] )
+"
 
 src_prepare() {
 	sed -i \
