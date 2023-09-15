@@ -107,14 +107,16 @@ DEPEND="${COMMON_DEPEND}
 	ruby? ( dev-lang/ruby virtual/rubygems dev-ruby/rake )
 	test? ( introspection? ( dev-libs/gjs ) )
 "
-BDEPEND="virtual/pkgconfig"
 RDEPEND="${COMMON_DEPEND}
 	app-emulation/libguestfs-appliance
 	acct-group/kvm
 "
 # Upstream build scripts compile and install Lua bindings for the ABI version
 # obtained by running 'lua' on the build host
-BDEPEND="lua? ( ${LUA_DEPS} )"
+BDEPEND="
+	virtual/pkgconfig
+	lua? ( ${LUA_DEPS} )
+"
 
 DOCS=( AUTHORS BUGS ChangeLog HACKING README TODO )
 
