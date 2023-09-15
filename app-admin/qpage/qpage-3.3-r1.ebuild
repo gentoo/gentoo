@@ -41,18 +41,14 @@ src_configure() {
 src_install() {
 	default
 
-	dodir /var/spool/qpage
+	keepdir /var/spool/qpage
 	fowners daemon:daemon /var/spool/qpage
 	fperms 770 /var/spool/qpage
-
-	dodir /var/lock/subsys/qpage
-	fowners daemon:daemon /var/lock/subsys/qpage
-	fperms 770 /var/lock/subsys/qpage
 
 	insinto /etc/qpage
 	doins example.cf
 
-	doinitd "${FILESDIR}"/qpage
+	newinitd "${FILESDIR}/qpage.init" "${PN}"
 }
 
 pkg_postinst() {
