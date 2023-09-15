@@ -266,7 +266,6 @@ app-emacs/ruby-mode
 dev-lang/php:7.4
 dev-php/PHP_TokenStream
 dev-php/PHP_CodeCoverage
-dev-php/phpspec-prophecy
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
