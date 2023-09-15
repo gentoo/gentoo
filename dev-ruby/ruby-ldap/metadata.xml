@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">ruby-activeldap</remote-id>
-		<remote-id type="sourceforge">ruby-ldap</remote-id>
+		<remote-id type="github">bearded/ruby-ldap</remote-id>
 	</upstream>
 </pkgmetadata>
