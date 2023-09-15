@@ -80,6 +80,13 @@ DEPEND="!!sys-devel/llvm:0"
 # Correct values of LLVM slots, newest first.
 declare -g -r _LLVM_KNOWN_SLOTS=( {18..8} )
 
+# @ECLASS_VARIABLE: LLVM_ECLASS_SKIP_PKG_SETUP
+# @INTERNAL
+# @DESCRIPTION:
+# If set to a non-empty value, llvm_pkg_setup will not perform LLVM version
+# check, nor set PATH.  Useful for bootstrap-prefix.sh, where AppleClang has
+# unparseable version numbers, which are irrelevant anyway.
+
 # @FUNCTION: get_llvm_slot
 # @USAGE: [-b|-d] [<max_slot>]
 # @DESCRIPTION:
@@ -241,6 +248,10 @@ llvm_fix_tool_path() {
 # should be inlined into the ebuild and modified as necessary.
 llvm_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ${LLVM_ECLASS_SKIP_PKG_SETUP} ]]; then
+		return
+	fi
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		LLVM_SLOT=$(get_llvm_slot "${LLVM_MAX_SLOT}")
