@@ -28,8 +28,6 @@ RDEPEND="
 "
 BDEPEND="app-arch/unzip"
 
-S="${WORKDIR}/${PN}"
-
 QA_PREBUILT="
 	opt/${PN}/netbeans/platform/modules/lib/amd64/linux/libjnidispatch-422.so
 "
