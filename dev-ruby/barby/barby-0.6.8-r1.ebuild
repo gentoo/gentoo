@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31"
 
 RUBY_FAKEGEM_TASK_TEST="test"
 
@@ -44,7 +44,11 @@ RESTRICT="!test? ( test ) prawn? ( test )"
 all_ruby_prepare() {
 	sed -i -e 's/README/README.md/' Rakefile || die
 
-	sed -i -e '/[bB]undler/s:^:#:' test/test_helper.rb || die
+	sed -e '/[bB]undler/s:^:#:' \
+		-e 's/MiniTest/Minitest/' \
+		-i test/test_helper.rb || die
+
+	sed -i -e 's/Fixnum/Integer/' test/outputter/svg_outputter_test.rb || die
 
 	if use qrcode; then
 		sed -i -e '/^end/i s.add_dependency "rqrcode"' ${RUBY_FAKEGEM_GEMSPEC}
