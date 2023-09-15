@@ -9,11 +9,11 @@ inherit python-single-r1
 DESCRIPTION="A console based XMPP client inspired by Irssi"
 HOMEPAGE="https://profanity-im.github.io"
 SRC_URI="
-    https://github.com/profanity-im/profanity/releases/download/${PV}/${P}.tar.gz
-    https://github.com/profanity-im/profanity/commit/122434a.patch
-        -> ${PN}-0.14.0-ox-carbons.patch
-    https://github.com/profanity-im/profanity/commit/2ed6211c.patch
-        -> ${PN}-0.14.0-xscreensaver.patch
+	https://github.com/profanity-im/profanity/releases/download/${PV}/${P}.tar.gz
+	https://github.com/profanity-im/profanity/commit/122434a.patch
+		-> ${PN}-0.14.0-ox-carbons.patch
+	https://github.com/profanity-im/profanity/commit/2ed6211c.patch
+		-> ${PN}-0.14.0-xscreensaver.patch
 "
 
 LICENSE="GPL-3"
@@ -54,11 +54,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka )
-    python? (
-	  $(python_gen_cond_dep '
-        dev-python/cython[${PYTHON_USEDEP}]
-      ')
-   )
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/cython[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 PATCHES=(
