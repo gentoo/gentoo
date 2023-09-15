@@ -25,11 +25,3 @@ sys-libs/libucontext
 # made.)
 # bug #699422.
 virtual/libcrypt:0/1
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-06)
-# No longer maintained upstream; please see the 2021-07-15-opentmpfiles-deprecation
-# news item.
-sys-apps/opentmpfiles
-
-# (above is added here instead of in ../package.mask so x86 musl can
-# override it for the moment)
