@@ -1,0 +1,24 @@
+From aa43040eb6b6d591e42a19ee385fc1ba17c7202b Mon Sep 17 00:00:00 2001
+From: Jeremy Evans <code@jeremyevans.net>
+Date: Tue, 27 Dec 2022 17:19:45 -0800
+Subject: [PATCH] Don't use rb_cData
+
+This fixes ruby-ldap on Ruby 3.2+
+---
+ conn.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/conn.c b/conn.c
+index e628695..39eeb5f 100644
+--- a/conn.c
++++ b/conn.c
+@@ -1855,7 +1855,8 @@ Init_ldap_conn ()
+ {
+   rb_ldap_sort_obj = Qnil;
+ 
+-  rb_cLDAP_Conn = rb_define_class_under (rb_mLDAP, "Conn", rb_cData);
++  rb_cLDAP_Conn = rb_define_class_under (rb_mLDAP, "Conn", rb_cObject);
++  rb_undef_alloc_func(rb_cLDAP_Conn);
+   rb_define_attr (rb_cLDAP_Conn, "referrals", 1, 0);
+   rb_define_attr (rb_cLDAP_Conn, "controls", 1, 0);
+   rb_define_attr (rb_cLDAP_Conn, "sasl_quiet", 1, 1);
