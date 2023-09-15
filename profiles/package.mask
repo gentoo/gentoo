@@ -273,7 +273,6 @@ dev-php/sebastian-comparator
 dev-php/sebastian-exporter
 dev-php/sebastian-global-state
 dev-php/sebastian-object-enumerator
-dev-php/sebastian-object-reflector
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
