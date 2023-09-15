@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md EXAMPLES.rdoc GUIDE.rdoc README.md"
 
@@ -16,6 +16,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-libxml2-1.patch"
+	"${FILESDIR}/${P}-libxml2-2.patch"
+)
 
 ruby_add_bdepend ">=dev-ruby/hoe-3.7
 	test? ( dev-ruby/minitest:5 )"
