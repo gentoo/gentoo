@@ -15,14 +15,6 @@ KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="doc gtk gtk2 qt5 test X"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	virtual/pkgconfig
-	doc? (
-		app-doc/doxygen
-		dev-python/sphinx
-		dev-python/sphinx_lv2_theme
-	)
-"
 # This could be way refined, but it's quickly a rabbit hole
 # Take care on bumps to check lv2 minimum version!
 RDEPEND="
@@ -44,7 +36,15 @@ RDEPEND="
 	X? ( x11-libs/libX11 )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-libs/check )"
+BDEPEND="
+	virtual/pkgconfig
+	doc? (
+		app-doc/doxygen
+		dev-python/sphinx
+		dev-python/sphinx_lv2_theme
+	)
+	test? ( dev-libs/check )
+"
 
 DOCS=( AUTHORS NEWS README.md )
 
