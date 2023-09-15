@@ -15,7 +15,7 @@ IUSE="gles2-only qml"
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gles2-only=,gui,opengl,widgets]
-	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
+	qml? ( ~dev-qt/qtdeclarative-${PV}:6[opengl] )
 "
 DEPEND="${RDEPEND}"
 
