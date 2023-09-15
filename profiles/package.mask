@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-09-15)
+# Not compatible with ruby31, no reverse dependencies. Last release in
+# 2013. Masked for removal on 2023-10-15.
+dev-ruby/ruby-elf
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-14)
 # No longer a test dependency of dev-python/textdistance, now fails tests
 # with the latest numpy. Upstream inactive and we already need patching for
