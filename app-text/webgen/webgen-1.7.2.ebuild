@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_DOC="task"
 RUBY_FAKEGEM_DOCDIR="htmldoc/rdoc"
@@ -46,6 +46,9 @@ all_ruby_prepare() {
 
 	# Avoid tests failing with newer Psych versions
 	rm -f test/test_documentation.rb || die
+
+	# Fix minitest deprecation
+	sed -i -e 's/MiniTest/Minitest/' $(find test -type f -print) || die
 }
 
 all_ruby_install() {
