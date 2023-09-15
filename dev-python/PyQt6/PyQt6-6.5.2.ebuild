@@ -17,7 +17,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 # defaults match what is provided with qtbase by default (except testlib),
 # reduces the need to set flags but does increase build time a fair amount
 IUSE="
