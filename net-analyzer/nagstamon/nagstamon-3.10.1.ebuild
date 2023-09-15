@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit python-r1 distutils-r1
 
@@ -12,10 +12,10 @@ distutils_enable_tests pytest
 MY_PN="Nagstamon"
 MY_P="${MY_PN}-${PV/_p/-}"
 
-DESCRIPTION="status monitor for the desktop"
 DESCRIPTION="systray monitor for displaying realtime status of several monitoring systems"
 HOMEPAGE="https://nagstamon.de"
 SRC_URI="https://github.com/HenriWahl/Nagstamon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -40,8 +40,6 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pylint[${PYTHON_USEDEP}] )"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}/${PN}-3.10.1-setup.patch" )
 
