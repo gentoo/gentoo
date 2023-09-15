@@ -1,0 +1,50 @@
+From 5d1dddb5322e19baf464f7aa82540eaf38bc88d0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 14 Sep 2023 10:18:36 +0200
+Subject: [PATCH] Make KF5Archive required for ipfilter plugin
+
+Cleanup HAVE_KF5Archive var - it was unused since 023def08d07a4a3e346eef34e6142bf574435f6c,
+but we require libktorrent which has a hard requirement for KF5Archive anyway.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                  | 10 ----------
+ plugins/ipfilter/CMakeLists.txt |  2 ++
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 07ad54d6..9010d632 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -83,16 +83,6 @@ if(KF5TextWidgets_FOUND)
+   set(HAVE_KF5TextWidgets 1)
+ endif()
+ 
+-find_package(KF5Archive ${KF5_MIN_VERSION})
+-set_package_properties(KF5Archive
+-  PROPERTIES
+-  TYPE OPTIONAL
+-  PURPOSE "Required for KTorrent's scripting plugin"
+-)
+-if(KF5Archive_FOUND)
+-  set(HAVE_KF5Archive 1)
+-endif()
+-
+ find_package(KF5ItemViews ${KF5_MIN_VERSION})
+ set_package_properties(KF5ItemViews
+   PROPERTIES
+diff --git a/plugins/ipfilter/CMakeLists.txt b/plugins/ipfilter/CMakeLists.txt
+index f59f251c..2a809a62 100644
+--- a/plugins/ipfilter/CMakeLists.txt
++++ b/plugins/ipfilter/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ ktorrent_add_plugin(ktorrent_ipfilter)
+ 
++find_package(KF5Archive ${KF5_MIN_VERSION} REQUIRED)
++
+ target_sources(ktorrent_ipfilter PRIVATE
+     ipblocklist.cpp
+     ipblockingprefpage.cpp
+-- 
+2.42.0
+
