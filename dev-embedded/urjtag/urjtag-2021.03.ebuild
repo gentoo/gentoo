@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	S="${WORKDIR}/${P}/${PN}"
 else
 	SRC_URI="mirror://sourceforge/urjtag/${P}.tar.xz"
-	KEYWORDS="amd64 ~ppc sparc x86"
+	KEYWORDS="amd64 ppc sparc x86"
 fi
 
 DESCRIPTION="Tool for communicating over JTAG with flash chips, CPUs, and many more"
