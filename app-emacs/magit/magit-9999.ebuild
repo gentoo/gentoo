@@ -11,20 +11,22 @@ HOMEPAGE="https://magit.vc/
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
+
 	EGIT_REPO_URI="https://github.com/magit/magit.git"
 else
 	SRC_URI="https://github.com/magit/magit/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
+
 S="${WORKDIR}/${P}/lisp"
 
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="libgit"
 
-DOCS=( ../README.md ../Documentation/AUTHORS.md ../Documentation/RelNotes )
-ELISP_TEXINFO="../Documentation/*.texi"
+DOCS=( ../README.md ../docs/AUTHORS.md ../docs/RelNotes )
+ELISP_TEXINFO="../docs/*.texi"
 SITEFILE="50${PN}-gentoo.el"
 
 RDEPEND="
