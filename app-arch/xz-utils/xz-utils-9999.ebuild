@@ -6,7 +6,7 @@
 
 EAPI=8
 
-inherit libtool multilib multilib-minimal preserve-libs usr-ldscript
+inherit flag-o-matic libtool multilib multilib-minimal preserve-libs usr-ldscript
 
 if [[ ${PV} == 9999 ]] ; then
 	# Per tukaani.org, git.tukaani.org is a mirror of github and
@@ -99,6 +99,10 @@ multilib_src_configure() {
 		# Undo Solaris-based defaults pointing to /usr/xpg5/bin
 		myconf+=( --disable-path-for-script )
 	fi
+
+	# ifunc is incompatible w/ asan
+	# https://github.com/tukaani-project/xz/issues/62#issuecomment-1719489932
+	is-flagq -fsanitize=address && myconf+=( --disable-ifunc )
 
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
