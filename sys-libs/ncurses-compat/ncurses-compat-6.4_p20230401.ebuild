@@ -16,7 +16,6 @@ MY_PN="${PN/-compat}"
 
 DESCRIPTION="Console display library (ABI version 5)"
 HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncurses/"
-SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 
 # Keep invisible-mirror.net here as some users reported 403 forbidden with invisible-island.net
 SRC_URI="
