@@ -20,8 +20,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug gnutls netlink zlib"
 
-BDEPEND="virtual/pkgconfig"
-
 RDEPEND="
 	>=dev-libs/glib-2.26.0
 	gnutls? ( >=net-libs/gnutls-2.12.0 )
@@ -29,9 +27,12 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/bison"
+BDEPEND="
+	sys-devel/bison
+	virtual/pkgconfig
+"
 
-if [[ ${PV} = 9999 ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	BDEPEND+="
 		app-text/docbook-sgml-dtd:4.5
 		app-text/docbook-sgml-utils
