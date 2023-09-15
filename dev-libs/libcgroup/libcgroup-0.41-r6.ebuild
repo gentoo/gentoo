@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-replace-INLCUDES.patch
 	"${FILESDIR}"/${P}-reorder-headers.patch
 	"${FILESDIR}"/${P}-remove-umask.patch
+	"${FILESDIR}"/${P}-slibtool.patch
 )
 
 pkg_setup() {
@@ -41,14 +42,6 @@ pkg_setup() {
 	fi
 	linux-info_pkg_setup
 }
-
-PATCHES=(
-	"${FILESDIR}"/${P}-replace_DECLS.patch
-	"${FILESDIR}"/${P}-replace_INLCUDES.patch
-	"${FILESDIR}"/${P}-reorder-headers.patch
-	"${FILESDIR}"/${P}-remove-umask.patch
-	"${FILESDIR}"/${P}-slibtool.patch
-)
 
 src_prepare() {
 	default
