@@ -281,7 +281,6 @@ dev-php/sebastian-recursion-context
 =www-apps/moodle-4.0.9
 =www-apps/moodle-4.1.4
 =www-apps/moodle-4.2.1
-=www-apps/selfoss-2.19
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
