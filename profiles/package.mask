@@ -271,7 +271,6 @@ dev-php/phpunit
 dev-php/phpunit-mock-objects
 dev-php/sebastian-comparator
 dev-php/sebastian-exporter
-dev-php/sebastian-global-state
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
