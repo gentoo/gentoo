@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit bash-completion-r1 gnome2 meson-multilib python-any-r1 vala virtualx
+inherit bash-completion-r1 gnome2 meson-multilib multibuild python-any-r1 vala virtualx
 
 DESCRIPTION="GObject library for accessing the freedesktop.org Secret Service API"
 HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
@@ -55,71 +55,12 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
-dbus_run() {
-	(
-		# start isolated dbus session bus
-		dbus_data=$(dbus-launch --sh-syntax) || exit
-		eval "${dbus_data}"
-
-		$@
-		ret=${?}
-
-		kill "${DBUS_SESSION_BUS_PID}"
-		exit "${ret}"
-	) || die
-}
-
-tpm2_run_with_emulator() {
-	export XDG_CONFIG_HOME=${T}/.config/swtpm
-	"${BROOT}"/usr/share/swtpm/swtpm-create-user-config-files || die
-
-	mkdir -p ${XDG_CONFIG_HOME}/mytpm1 || die
-	swtpm_setup_args=(
-		--tpm2
-		--tpmstate ${XDG_CONFIG_HOME}/mytpm1
-		--createek
-		--allow-signing
-		--decryption
-		--create-ek-cert
-		--create-platform-cert
-		--lock-nvram
-		--overwrite
-		--display
-	)
-	swtpm_setup "${swtpm_setup_args[@]}" || die
-
-	swtpm_socket_args=(
-		--tpm2
-		--tpmstate dir=${XDG_CONFIG_HOME}/mytpm1
-		--flags startup-clear
-		--ctrl type=unixio,path=${XDG_CONFIG_HOME}/mytpm1/swtpm.socket.ctrl
-		--server type=unixio,path=${XDG_CONFIG_HOME}/mytpm1/swtpm.socket
-		--pid file=${XDG_CONFIG_HOME}/mytpm1/swtpm.pid
-		--daemon
-	)
-	swtpm socket "${swtpm_socket_args[@]}" || die
-
-	tpm2_abrmd_args=(
-		--logger=stdout
-		--tcti=swtpm:path=${XDG_CONFIG_HOME}/mytpm1/swtpm.socket
-		--session
-		--flush-all
-	)
-	tpm2-abrmd "${tpm2_abrmd_args[@]}" &
-	export TCTI=tabrmd:bus_type=session
-
-	$@ || die
-
-	# When swtpm dies, tmp2-abrmd will exit
-	kill $(< ${XDG_CONFIG_HOME}/mytpm1/swtpm.pid) || die
-}
-
 python_check_deps() {
 	if use introspection; then
-		has_version -b "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
+		python_has_version -b "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
 	fi
-	has_version -b "dev-python/mock[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/dbus-python[${PYTHON_USEDEP}]"
+	python_has_version -b "dev-python/mock[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/dbus-python[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -146,6 +87,65 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	dbus_run() {
+		(
+			# start isolated dbus session bus
+			dbus_data=$(dbus-launch --sh-syntax) || exit
+			eval "${dbus_data}"
+
+			$@
+			ret=${?}
+
+			kill "${DBUS_SESSION_BUS_PID}"
+			exit "${ret}"
+		) || die
+	}
+
+	tpm2_run_with_emulator() {
+		export XDG_CONFIG_HOME=${T}/.config/swtpm
+		"${BROOT}"/usr/share/swtpm/swtpm-create-user-config-files || die
+
+		mkdir -p ${XDG_CONFIG_HOME}/mytpm1 || die
+		swtpm_setup_args=(
+			--tpm2
+			--tpmstate ${XDG_CONFIG_HOME}/mytpm1
+			--createek
+			--allow-signing
+			--decryption
+#			--create-ek-cert
+#			--create-platform-cert
+			--lock-nvram
+			--overwrite
+			--display
+		)
+		swtpm_setup "${swtpm_setup_args[@]}" || die
+
+		swtpm_socket_args=(
+			--tpm2
+			--tpmstate dir=${XDG_CONFIG_HOME}/mytpm1
+			--flags startup-clear
+			--ctrl type=unixio,path=${XDG_CONFIG_HOME}/mytpm1/swtpm.socket.ctrl
+			--server type=unixio,path=${XDG_CONFIG_HOME}/mytpm1/swtpm.socket
+			--pid file=${XDG_CONFIG_HOME}/mytpm1/swtpm.pid
+			--daemon
+		)
+		swtpm socket "${swtpm_socket_args[@]}" || die
+
+		tpm2_abrmd_args=(
+			--logger=stdout
+			--tcti=swtpm:path=${XDG_CONFIG_HOME}/mytpm1/swtpm.socket
+			--session
+			--flush-all
+		)
+		tpm2-abrmd "${tpm2_abrmd_args[@]}" &
+		export TCTI=tabrmd:bus_type=session
+
+		$@ || die
+
+		# When swtpm dies, tmp2-abrmd will exit
+		kill $(< ${XDG_CONFIG_HOME}/mytpm1/swtpm.pid) || die
+	}
+
 	if use tpm; then
 		dbus_run tpm2_run_with_emulator virtx meson test -C "${BUILD_DIR}"
 	else
