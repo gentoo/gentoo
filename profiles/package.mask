@@ -297,12 +297,6 @@ net-libs/nativebiginteger
 # distro packages this, over 10 years old. Removal on 2023-08-28.
 sci-libs/rosetta-db
 
-# Michael Orlitzky <mjo@gentoo.org> (2023-07-27)
-# Obsolete as of dev-php/swoole-4.3.0, according to
-# its github README. Stuck on php-7.4. Removal on or
-# after 30 days.
-dev-php/swoole-async
-
 # Mike Gilbert <floppym@gentoo.org> (2023-07-24)
 # Migrated to sys-apps/systemd-utils.
 # Removal on 2023-08-24.
