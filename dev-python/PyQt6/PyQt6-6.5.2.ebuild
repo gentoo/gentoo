@@ -61,7 +61,7 @@ DEPEND="
 		gles2-only? ( media-libs/libglvnd )
 	)
 	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
-	qml? ( >=dev-qt/qtdeclarative-${QT_PV} )
+	qml? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
 	quick3d? ( >=dev-qt/qtquick3d-${QT_PV} )
 	sensors? ( >=dev-qt/qtsensors-${QT_PV} )
 	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
