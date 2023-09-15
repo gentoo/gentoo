@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRAINSTALL="README.rdoc"
 
@@ -19,11 +19,10 @@ SLOT="2"
 IUSE="test"
 
 ruby_add_bdepend "
-	test? ( >=dev-ruby/fakefs-0.3.2 dev-ruby/mail dev-ruby/shoulda-context dev-ruby/test-unit:2 )"
+	test? ( >=dev-ruby/fakefs-0.3.2 dev-ruby/mail dev-ruby/shoulda dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile test/helper.rb || die
-	sed -i -e 's/shoulda/shoulda-context/' test/helper.rb || die
 
 	# Avoid tests that appear to need activesupport for .blank? support
 	sed -i -e '/add and remove flags/,/^    end/ s:^:#:' test/test_message.rb || die
