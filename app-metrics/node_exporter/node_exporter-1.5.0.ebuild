@@ -13,7 +13,7 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="selinux"
 
 COMMON_DEPEND="acct-group/node_exporter
