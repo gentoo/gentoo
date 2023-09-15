@@ -157,8 +157,6 @@ BDEPEND="
 
 DOCS=( NEWS README )
 
-S="${WORKDIR}/${MY_P}"
-
 # patches merged upstream, to be removed with 16.2 or later bump
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.0-optional-module-console-kit.patch
