@@ -257,11 +257,6 @@ app-dicts/edictionary
 # Masked for removal on 2023-09-17.
 app-emacs/ruby-mode
 
-# Matt Turner <mattst88@gentoo.org> (2023-08-14)
-# Dead slot depending on libsoup:2.4
-# Removal on 2023-09-14.
-net-libs/rest:0.7
-
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-12)
 # More php:7.4 casualties that I missed the first time around.
 # They'll be removed whenever php:7.4 is removed.
