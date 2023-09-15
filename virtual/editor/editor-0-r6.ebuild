@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Virtual for editor"
 
@@ -28,7 +28,6 @@ RDEPEND="|| (
 	app-editors/joe
 	app-editors/jove
 	app-editors/kakoune
-	app-editors/le
 	app-editors/levee
 	app-editors/lpe
 	app-editors/mg
