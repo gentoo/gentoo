@@ -187,11 +187,11 @@ src_install() {
 		mv "${i}" "${i/.sample/}" || die
 	done
 
-	local DOCS=( AUTHORS MAINTAINERS NEWS README TODO UPGRADING )
+	local DOCS=( AUTHORS MAINTAINERS NEWS.adoc README.adoc TODO.adoc UPGRADING.adoc )
 	einstalldocs
 
 	if use doc; then
-		newdoc lib/README README.lib
+		newdoc lib/README.adoc
 		dodoc docs/*.txt
 		docinto cables
 		dodoc docs/cables/*
