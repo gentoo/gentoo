@@ -15,6 +15,7 @@ SRC_URI="
 	amd64? ( https://releases.mattermost.com/desktop/${MY_PV}/mattermost-desktop-${MY_PV}-linux-x64.tar.gz )
 	arm64? ( https://releases.mattermost.com/desktop/${MY_PV}/mattermost-desktop-${MY_PV}-linux-arm64.tar.gz )
 "
+S="${WORKDIR}"
 
 LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
@@ -63,8 +64,6 @@ QA_PREBUILT="
 DOCS=(
 	NOTICE.txt
 )
-
-S="${WORKDIR}"
 
 src_install() {
 	if use amd64; then

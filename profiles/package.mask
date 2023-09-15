@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-06)
+# No longer maintained upstream; please see the 2021-07-15-opentmpfiles-deprecation
+# news item.
+sys-apps/opentmpfiles
+
 # Hans de Graaff <graaff@gentoo.org> (2023-09-15)
 # Not compatible with ruby31, no reverse dependencies. Last release in
 # 2013. Masked for removal on 2023-10-15.
