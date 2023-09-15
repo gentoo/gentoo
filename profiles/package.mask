@@ -269,7 +269,6 @@ dev-php/PHP_CodeCoverage
 dev-php/phpspec-prophecy
 dev-php/phpunit
 dev-php/phpunit-mock-objects
-dev-php/sebastian-comparator
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-07-05)
 # Library without consumers. Bug #906882
