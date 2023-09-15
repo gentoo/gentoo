@@ -444,20 +444,6 @@ kernel-build_merge_configs() {
 		fi
 	fi
 
-	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-		if use secureboot; then
-			# This only effects arm64 and riscv where the bootable image may
-			# contain its own decompressor (zboot). If enabled we get a
-			# sign-able efi file.
-			cat <<-EOF > "${WORKDIR}/secureboot.config" || die
-				## Enable zboot for signing
-				CONFIG_EFI_ZBOOT=y
-			EOF
-
-			merge_configs+=( "${WORKDIR}/secureboot.config" )
-		fi
-	fi
-
 	if [[ ${#user_configs[@]} -gt 0 ]]; then
 		elog "User config files are being applied:"
 		local x
