@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://musicbrainz.osuosl.org/pub/musicbrainz/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DESCRIPTION="Cross-platform music tagger"
