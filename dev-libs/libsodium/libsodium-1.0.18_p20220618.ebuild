@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libsodium.key
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libsodium.minisig
 VERIFY_SIG_METHOD=minisig
 inherit autotools multilib-minimal verify-sig
 
