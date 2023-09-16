@@ -7,7 +7,7 @@ RUBY_FAKEGEM_GEMSPEC="facter.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
 
-inherit ruby-ng ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="A cross-platform ruby library for retrieving facts from operating systems"
 HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
