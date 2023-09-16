@@ -3,6 +3,10 @@
 
 # Maciej Barć <xgqt@gentoo.org> (2023-09-16)
 # Binary package, which is compiled against glibc
+dev-lang/dafny-bin
+
+# Maciej Barć <xgqt@gentoo.org> (2023-09-16)
+# Binary package, which is compiled against glibc
 app-shells/pwsh-bin
 
 # Maciej Barć <xgqt@gentoo.org> (2023-07-01)
