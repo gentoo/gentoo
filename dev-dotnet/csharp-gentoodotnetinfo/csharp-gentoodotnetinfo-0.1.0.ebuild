@@ -17,7 +17,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	EGIT_REPO_URI="https://gitlab.gentoo.org/dotnet/${PN}.git"
 else
 	SRC_URI="https://gitlab.gentoo.org/dotnet/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 LICENSE="GPL-2+"
