@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0/${PF}"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	|| (
