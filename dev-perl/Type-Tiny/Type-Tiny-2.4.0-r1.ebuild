@@ -28,6 +28,10 @@ RDEPEND="
 		>=dev-perl/Ref-Util-XS-0.100.0
 		>=dev-perl/Regexp-Util-0.3.0
 		virtual/perl-Scalar-List-Utils
+	)
+"
+PDEPEND="
+	!minimal? (
 		>=dev-perl/Type-Tiny-XS-0.25.0
 	)
 "
