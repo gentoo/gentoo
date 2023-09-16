@@ -8,7 +8,7 @@ HOMEPAGE=""
 SRC_URI=""
 
 LICENSE=""
-SLOT="0/${PV}"
+SLOT="0/${PF}"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
