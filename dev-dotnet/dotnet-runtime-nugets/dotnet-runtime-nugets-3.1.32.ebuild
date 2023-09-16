@@ -33,7 +33,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="${DOTNET_COMPAT}/${PV}"  # WARNING: Mixed NUGETS versions.
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 src_unpack() {
 	:
