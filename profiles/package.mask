@@ -509,12 +509,6 @@ gnome-extra/tecla
 # as a workaround. bug #906797.
 ~sys-apps/util-linux-2.39
 
-# David Seifert <soap@gentoo.org> (2023-05-19)
-# Abandoned, NIH library only used by other obsolete packages like gkeys
-# and layman, use app-crypt/gpgme[python] as a proper upstream
-# supported gpg library. Removal on 2023-08-17.
-dev-python/pyGPG
-
 # Sam James <sam@gentoo.org> (2023-05-10)
 # Lots of package breakage as usual for new versions. Masked until most/all
 # reverse dependencies are fixed. Tracker bug is bug #906077.
