@@ -11,10 +11,10 @@ SRC_URI="
 	arm?   ( ${BASE_URI}/v${PV}/powershell-${PV}-linux-arm32.tar.gz )
 	arm64? ( ${BASE_URI}/v${PV}/powershell-${PV}-linux-arm64.tar.gz )
 "
-S=${WORKDIR}
+S="${WORKDIR}"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm ~arm64"
 IUSE="+pwsh-symlink"
 REQUIRED_USE="elibc_glibc"
