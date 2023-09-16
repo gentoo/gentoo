@@ -1,0 +1,31 @@
+diff --git a/Source/Core/DolphinNoGUI/CMakeLists.txt b/Source/Core/DolphinNoGUI/CMakeLists.txt
+index 566a643c89..7adef073e2 100644
+--- a/Source/Core/DolphinNoGUI/CMakeLists.txt
++++ b/Source/Core/DolphinNoGUI/CMakeLists.txt
+@@ -25,7 +25,7 @@ endif()
+ 
+ set_target_properties(dolphin-nogui PROPERTIES OUTPUT_NAME dolphin-emu-nogui)
+ 
+-target_link_libraries(dolphin-nogui
++target_link_libraries(dolphin-nogui PUBLIC ZLIB::ZLIB
+ PRIVATE
+   core
+   uicommon
+@@ -57,4 +57,3 @@ endif()
+ 
+ set(CPACK_PACKAGE_EXECUTABLES ${CPACK_PACKAGE_EXECUTABLES} dolphin-nogui)
+ install(TARGETS dolphin-nogui RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+-
+diff --git a/Source/Core/DolphinTool/CMakeLists.txt b/Source/Core/DolphinTool/CMakeLists.txt
+index e907fb9bbd..c6bd1cde33 100644
+--- a/Source/Core/DolphinTool/CMakeLists.txt
++++ b/Source/Core/DolphinTool/CMakeLists.txt
+@@ -13,7 +13,7 @@ add_executable(dolphin-tool
+ 
+ set_target_properties(dolphin-tool PROPERTIES OUTPUT_NAME dolphin-tool)
+ 
+-target_link_libraries(dolphin-tool
++target_link_libraries(dolphin-tool PUBLIC ZLIB::ZLIB
+ PRIVATE
+   discio
+   uicommon
