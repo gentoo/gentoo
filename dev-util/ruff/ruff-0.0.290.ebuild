@@ -24,7 +24,7 @@ CRATES="
 	anstyle-wincon@2.1.0
 	anstyle@1.0.2
 	anyhow@1.0.75
-	argfile@0.1.5
+	argfile@0.1.6
 	arrayvec@0.7.4
 	ascii-canvas@3.0.0
 	assert_cmd@2.0.12
@@ -42,17 +42,17 @@ CRATES="
 	cc@1.0.83
 	cfg-if@1.0.0
 	chic@1.2.2
-	chrono@0.4.28
+	chrono@0.4.30
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@4.4.1
-	clap_builder@4.4.1
+	clap@4.4.3
+	clap_builder@4.4.2
 	clap_complete@4.4.0
 	clap_complete_command@0.5.1
 	clap_complete_fig@4.4.0
 	clap_complete_nushell@0.1.11
-	clap_derive@4.4.0
+	clap_derive@4.4.2
 	clap_lex@0.5.1
 	clearscreen@2.0.1
 	codspeed-criterion-compat@2.2.0
@@ -76,7 +76,6 @@ CRATES="
 	darling@0.20.3
 	darling_core@0.20.3
 	darling_macro@0.20.3
-	deranged@0.3.8
 	diff@0.1.13
 	difflib@0.4.0
 	dirs-next@2.0.0
@@ -112,7 +111,6 @@ CRATES="
 	hashbrown@0.14.0
 	heck@0.4.1
 	hermit-abi@0.3.2
-	hex@0.4.3
 	hexf-parse@0.2.1
 	humantime@2.1.0
 	iana-time-zone-haiku@0.1.2
@@ -122,7 +120,6 @@ CRATES="
 	ignore@0.4.20
 	imara-diff@0.1.5
 	imperative@1.0.5
-	indexmap@1.9.3
 	indexmap@2.0.0
 	indicatif@0.17.6
 	indoc@2.0.3
@@ -131,7 +128,7 @@ CRATES="
 	insta-cmd@0.4.0
 	insta@1.31.0
 	instant@0.1.12
-	is-macro@0.2.2
+	is-macro@0.3.0
 	is-terminal@0.4.9
 	itertools@0.10.5
 	itoa@1.0.9
@@ -147,16 +144,16 @@ CRATES="
 	libc@0.2.147
 	libcst@0.1.0
 	libcst_derive@0.1.0
-	libmimalloc-sys@0.1.34
+	libmimalloc-sys@0.1.35
 	linked-hash-map@0.5.6
 	linux-raw-sys@0.4.5
 	lock_api@0.4.10
 	log@0.4.20
 	matchers@0.1.0
 	matches@0.1.10
-	memchr@2.6.2
+	memchr@2.6.3
 	memoffset@0.9.0
-	mimalloc@0.1.38
+	mimalloc@0.1.39
 	minimal-lexical@0.2.1
 	miniz_oxide@0.7.1
 	mio@0.8.8
@@ -165,7 +162,7 @@ CRATES="
 	nextest-workspace-hack@0.1.0
 	nix@0.26.4
 	nom@7.1.3
-	notify@5.2.0
+	notify@6.1.1
 	nu-ansi-term@0.46.0
 	num-bigint@0.4.4
 	num-integer@0.1.45
@@ -180,8 +177,8 @@ CRATES="
 	parking_lot@0.12.1
 	parking_lot_core@0.9.8
 	paste@1.0.14
-	path-absolutize@3.1.0
-	path-dedot@3.1.0
+	path-absolutize@3.1.1
+	path-dedot@3.1.1
 	pathdiff@0.2.1
 	peg-macros@0.8.1
 	peg-runtime@0.8.1
@@ -197,6 +194,7 @@ CRATES="
 	phf_shared@0.11.2
 	pin-project-lite@0.2.13
 	pmutil@0.5.3
+	pmutil@0.6.1
 	portable-atomic@1.4.3
 	ppv-lite86@0.2.17
 	precomputed-hash@0.1.1
@@ -206,8 +204,8 @@ CRATES="
 	pretty_assertions@1.4.0
 	proc-macro-error-attr@1.0.4
 	proc-macro-error@1.0.4
-	proc-macro2@1.0.66
-	pyproject-toml@0.6.1
+	proc-macro2@1.0.67
+	pyproject-toml@0.7.0
 	quick-junit@0.3.3
 	quick-xml@0.29.0
 	quote@1.0.33
@@ -220,10 +218,10 @@ CRATES="
 	redox_syscall@0.3.5
 	redox_users@0.4.3
 	regex-automata@0.1.10
-	regex-automata@0.3.7
+	regex-automata@0.3.8
 	regex-syntax@0.6.29
 	regex-syntax@0.7.5
-	regex@1.9.4
+	regex@1.9.5
 	result-like-derive@0.4.6
 	result-like@0.4.6
 	ring@0.16.20
@@ -242,18 +240,18 @@ CRATES="
 	scopeguard@1.2.0
 	sct@0.7.0
 	semver@1.0.18
-	serde-wasm-bindgen@0.5.0
+	serde-wasm-bindgen@0.6.0
 	serde@1.0.188
 	serde_derive@1.0.188
 	serde_derive_internals@0.26.0
-	serde_json@1.0.105
+	serde_json@1.0.106
 	serde_spanned@0.6.3
 	serde_test@1.0.176
 	serde_with@3.3.0
 	serde_with_macros@3.3.0
 	sharded-slab@0.1.4
 	shellexpand@3.1.0
-	shlex@1.1.0
+	shlex@1.2.0
 	similar@2.2.1
 	siphasher@0.3.11
 	smallvec@1.11.0
@@ -261,11 +259,11 @@ CRATES="
 	static_assertions@1.1.0
 	string_cache@0.8.7
 	strsim@0.10.0
-	strum@0.24.1
-	strum_macros@0.24.3
+	strum@0.25.0
+	strum_macros@0.25.2
 	syn-ext@0.4.0
 	syn@1.0.109
-	syn@2.0.29
+	syn@2.0.33
 	tempfile@3.8.0
 	term@0.7.0
 	termcolor@1.2.0
@@ -274,22 +272,18 @@ CRATES="
 	test-case-core@3.1.0
 	test-case-macros@3.1.0
 	test-case@3.1.0
-	thiserror-impl@1.0.47
-	thiserror@1.0.47
+	thiserror-impl@1.0.48
+	thiserror@1.0.48
 	thread_local@1.1.7
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
-	time-core@0.1.1
-	time-macros@0.2.14
-	time@0.1.45
-	time@0.3.28
 	tiny-keccak@2.0.2
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
-	toml@0.7.6
+	toml@0.7.8
 	toml_datetime@0.6.3
-	toml_edit@0.19.14
+	toml_edit@0.19.15
 	tracing-attributes@0.1.26
 	tracing-core@0.1.31
 	tracing-indicatif@0.3.5
@@ -319,8 +313,7 @@ CRATES="
 	vte@0.11.1
 	vte_generate_state_changes@0.1.1
 	wait-timeout@0.2.0
-	walkdir@2.3.3
-	wasi@0.10.0+wasi-snapshot-preview1
+	walkdir@2.4.0
 	wasi@0.11.0+wasi-snapshot-preview1
 	wasm-bindgen-backend@0.2.87
 	wasm-bindgen-futures@0.4.37
@@ -369,7 +362,6 @@ declare -A GIT_CRATES=(
 )
 
 inherit distutils-r1 cargo
-
 DESCRIPTION="An extremely fast Python linter, written in Rust"
 HOMEPAGE="
 	https://beta.ruff.rs/docs
@@ -381,6 +373,12 @@ SRC_URI="
 "
 
 LICENSE="MIT"
+
+BDEPEND="
+	dev-util/patchelf
+	>=virtual/rust-1.72
+"
+
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 BSD-2 BSD CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016
@@ -407,11 +405,6 @@ LICENSE+="
 # ring
 LICENSE+="
 	ISC SSLeay openssl MIT
-"
-
-BDEPEND="
-	dev-util/patchelf
-	>=virtual/rust-1.71
 "
 
 QA_FLAGS_IGNORED="usr/bin/.* usr/lib.*/libruff.*.so"
