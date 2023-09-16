@@ -358,6 +358,13 @@ perl-module_src_test() {
 		export NO_NETWORK_TESTING=1
 	fi
 
+	# See https://www.perlmonks.org/?node_id=1225311
+	# * AUTOMATES_TESTING appears inappropriate for us, as it affects
+	# exit codes and might mask failures if configuration is wrong.
+	# * EXTENDED_TESTING is something we could consider if we had
+	# some way to opt-in to expensive tests.
+	export NONINTERACTIVE_TESTING=1
+
 	case ${EAPI} in
 		7)
 			;;
