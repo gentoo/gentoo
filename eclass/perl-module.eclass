@@ -220,6 +220,8 @@ perl-module_src_configure() {
 	[[ -z ${pm_echovar} ]] && export PERL_MM_USE_DEFAULT=1
 	# Disable ExtUtils::AutoInstall from prompting
 	export PERL_EXTUTILS_AUTOINSTALL="--skipdeps"
+	# Noisy and not really appropriate to show to the user in a PM
+	export PERL_CANARY_STABILITY_DISABLE=1
 
 	if [[ $(declare -p myconf 2>&-) != "declare -a myconf="* ]]; then
 		local myconf_local=(${myconf})
