@@ -4,8 +4,12 @@
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="pypi">cchardet</remote-id>
-		<remote-id type="github">PyYoshi/cChardet</remote-id>
+		<remote-id type="pypi">faust-cchardet</remote-id>
+		<remote-id type="github">faust-streaming/cChardet</remote-id>
 	</upstream>
 </pkgmetadata>
