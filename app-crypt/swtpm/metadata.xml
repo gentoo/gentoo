@@ -15,7 +15,6 @@
 	</maintainer>
 	<use>
 		<flag name="fuse">Support <pkg>sys-fs/fuse</pkg> based /dev/tpm interface</flag>
-		<flag name="gnutls">Build the swtpm_cert binary which depends on <pkg>net-libs/gnutls</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">stefanberger/swtpm</remote-id>
