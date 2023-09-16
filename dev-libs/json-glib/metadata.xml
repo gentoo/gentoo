@@ -24,6 +24,9 @@
     classes for direct serialization into, and deserialization from, JSON data
     streams.
   </longdescription>
+  <use>
+        <flag name="nls">Enable native language support (translations)</flag>
+  </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/json-glib</remote-id>
   </upstream>
