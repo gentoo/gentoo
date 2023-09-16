@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libsodium.key
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libsodium.key
 VERIFY_SIG_METHOD=minisig
 inherit autotools multilib-minimal verify-sig
 
@@ -37,7 +37,7 @@ IUSE="+asm minimal static-libs +urandom verify-sig"
 CPU_USE=( cpu_flags_x86_{aes,sse4_1} )
 IUSE+=" ${CPU_USE[@]}"
 
-BDEPEND=" verify-sig? ( app-crypt/minisign )"
+BDEPEND=" verify-sig? ( sec-keys/minisig-keys-libsodium )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.10-cpuflags.patch
