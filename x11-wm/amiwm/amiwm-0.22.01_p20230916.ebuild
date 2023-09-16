@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools
 
-COMMIT="de6456b0aeca16243ed4c54fdc241be746274bcd"
+COMMIT="74a398944f9a2c543b6b176e65ed4ee2373b1d65"
 DESCRIPTION="Amiga Workbench inspired window manager for Xorg"
 HOMEPAGE="https://github.com/sdomi/amiwm"
 SRC_URI="https://github.com/chewi/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
