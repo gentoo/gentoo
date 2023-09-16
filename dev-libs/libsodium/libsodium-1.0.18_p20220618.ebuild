@@ -3,31 +3,31 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libsodium.key
+VERIFY_SIG_METHOD=minisig
+inherit autotools multilib-minimal verify-sig
 
-DESCRIPTION="A portable fork of NaCl, a higher-level cryptographic library"
+DESCRIPTION="Portable fork of NaCl, a higher-level cryptographic library"
 HOMEPAGE="https://libsodium.org"
 
 if [[ ${PV} == *_p* ]] ; then
 	MY_P=${PN}-$(ver_cut 1-3)-stable-$(ver_cut 5-)
-	MINISIGN_KEY="RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3"
 
 	# We use _pN to represent 'stable releases'
 	# These are backports from upstream to the last release branch
 	# See https://download.libsodium.org/libsodium/releases/README.html
-	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
-
-	# TODO: Could verify-sig.eclass support minisig? bug #783066
-	SRC_URI+=" verify-sig? ( https://dev.gentoo.org/~sam/distfiles/dev-libs/libsodium/${MY_P}.tar.gz.minisig -> ${P}.tar.gz.minisig )"
-
-	S="${WORKDIR}"/${PN}-stable
+	SRC_URI="
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_P}.tar.gz -> ${P}.tar.gz
+		verify-sig? ( https://dev.gentoo.org/~sam/distfiles/dev-libs/libsodium/${MY_P}.tar.gz.minisig -> ${P}.tar.gz.minisig )
+	"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/jedisct1.asc
-	inherit verify-sig
-
-	SRC_URI="https://download.libsodium.org/${PN}/releases/${P}.tar.gz"
-	SRC_URI+=" verify-sig? ( https://download.libsodium.org/${PN}/releases/${P}.tar.gz.sig )"
+	SRC_URI="
+		https://download.libsodium.org/${PN}/releases/${P}.tar.gz
+		verify-sig? ( https://download.libsodium.org/${PN}/releases/${P}.tar.gz.minisig )
+	"
 fi
+
+S="${WORKDIR}"/${PN}-stable
 
 LICENSE="ISC"
 SLOT="0/23"
@@ -37,31 +37,11 @@ IUSE="+asm minimal static-libs +urandom"
 CPU_USE=( cpu_flags_x86_{aes,sse4_1} )
 IUSE+=" ${CPU_USE[@]}"
 
-if [[ ${PV} == *_p* ]] ; then
-	IUSE+=" verify-sig"
-	BDEPEND+=" verify-sig? ( app-crypt/minisign )"
-fi
+BDEPEND=" verify-sig? ( sec-keys/minisig-keys-libsodium )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.10-cpuflags.patch
 )
-
-src_unpack() {
-	if [[ ${PV} == *_p* ]] ; then
-		if use verify-sig ; then
-			ebegin "Verifying signature using app-crypt/minisign"
-			minisign -V \
-				-P ${MINISIGN_KEY} \
-				-x "${DISTDIR}"/${P}.tar.gz.minisig \
-				-m "${DISTDIR}"/${P}.tar.gz
-			eend $? || die "Failed to verify distfile using minisign!"
-		fi
-
-		default
-	else
-		verify-sig_src_unpack
-	fi
-}
 
 src_prepare() {
 	default
