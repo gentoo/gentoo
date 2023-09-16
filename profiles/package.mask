@@ -188,12 +188,6 @@ sci-biology/express
 # Removal on 2023-09-27.  Bug #906516.
 dev-python/pytz_deprecation_shim
 
-# Sam James <sam@gentoo.org> (2023-08-26)
-# 'AttributeError: NoneType object has no attribute cname' regression
-# See bug #913062, https://github.com/cython/cython/issues/5643, and
-# https://github.com/cython/cython/issues/5644.
-=dev-python/cython-3.0.1
-
 # Hans de Graaff <graaff@gentoo.org> (2023-08-26)
 # Obsolete slot. Use the newer shoulda slot instead.
 # Masked for removal on 2023-09-26
@@ -220,10 +214,6 @@ sci-mathematics/polymake
 # no other distros package this, and upstream have discontinued development.
 # Removal on 2023-09-21.  Bug #912582.
 app-emulation/libvirt-snmp
-
-# Sam James <sam@gentoo.org> (2023-08-21)
-# Broken install.
-=net-libs/grpc-1.52.1-r1
 
 # Marek Szuba <marecki@gentoo.org> (2023-08-21)
 # Does not work with recent versions of Sphinx. In the process of being
@@ -446,10 +436,6 @@ gnome-extra/tecla
 # Please upgrade to >=dev-perl/dev-perl/OLE-StorageLite-0.220.0.
 =dev-perl/OLE-StorageLite-0.210.0
 
-# Sam James <sam@gentoo.org> (2023-06-23)
-# Segfaults with non-bison yacc.
-=app-shells/bash-5.2_p15-r4
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-21)
 # suitesparseconfig-7.0.0 fails to build with multilib enabled
 # because of dependencies that cannot be satisfied.  All the other
@@ -480,28 +466,12 @@ gnome-extra/tecla
 =dev-db/mariadb-10.11.2
 =dev-db/mariadb-10.11.3
 
-# Sam James <sam@gentoo.org> (2023-06-05)
-# Fails to bootstrap, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110120.
-=sys-devel/gcc-14.0.0_pre20230604
-
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2023-05-31)
 # Mask this version for uptime soversion issue. There will be an updated release
 # shortly which fixes this.
 # See https://github.com/AcademySoftwareFoundation/Imath/issues/189#issuecomment-1567077722
 # Bug: #907211
 =dev-libs/imath-3.1.7
-
-# Sam James <sam@gentoo.org> (2023-05-24)
-# Breaks building C++ consumers at least: bug #906755, bug #906879, bug #906957.
-# Please upgrade to >=0.5.1.
-=net-libs/libproxy-0.5.0
-
-# Sam James <sam@gentoo.org> (2023-05-20)
-# Various regressions, please upgrade to the latest libxml2 (>=2.11.4).
-=dev-libs/libxml2-2.11.1
-=dev-libs/libxml2-2.11.2
-=dev-libs/libxml2-2.11.2-r1
-=dev-libs/libxml2-2.11.3
 
 # Sam James <sam@gentoo.org> (2023-05-19)
 # Breaks Portage's pid-sandbox at least with 5.10 kernels. Pending investigation.
@@ -514,33 +484,14 @@ gnome-extra/tecla
 # reverse dependencies are fixed. Tracker bug is bug #906077.
 =dev-libs/libfmt-10*
 
-# Sam James <sam@gentoo.org> (2023-05-03)
-# Broken pkgconfig file, please upgrade to -r1.
-# bug #704348, bug #905632, bug #905822
-=sci-libs/metis-5.2.1
-=sci-libs/metis-5.2.1-r1
-=sci-libs/parmetis-4.0.3_p20230326
-
 # Sam James <sam@gentoo.org> (2023-05-01)
 # Breaks dev-python/scipy build. See bug #905396 and https://github.com/serge-sans-paille/gast/issues/74.
 =dev-python/pythran-0.13.0
 =dev-python/gast-0.5.4
 
-# Sam James <sam@gentoo.org> (2023-05-01)
-# Quite broken, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109672.
-=sys-devel/gcc-14.0.0_pre20230430
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-04-30)
 # Breaking even latest ~arch version of KDE PIM, bug #905352.
 =dev-libs/ktextaddons-1.3*
-
-# Sam James <sam@gentoo.org> (2023-04-19)
-# Last-minute libstdc++ symbol versioning magic causes e.g. mold, cmake
-# to segfault:
-# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108969
-# - https://bugzilla.redhat.com/show_bug.cgi?id=2187768#c4
-# 13.0.1_pre20230419 was GCC 13.1 RC1. RC2 will be made when this is fixed.
-=sys-devel/gcc-13.0.1_pre20230419
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-18)
 # Breaks ABI without SOVERSION bump, effectively preventing
@@ -598,19 +549,10 @@ x11-drivers/nvidia-drivers:0/390
 # https://github.com/igraph/igraph/issues/2311
 =sci-libs/arpack-3.9.0
 
-# Sam James <sam@gentoo.org> (2023-03-24)
-# Please upgrade to make-4.4.1 as make-4.4 has a bunch of issues.
-=sys-devel/make-4.4
-
 # Hans de Graaff <graaff@gentoo.org> (2023-03-19)
 # This version of cucumber-core is not compatible with the other
 # cucumber dependencies. Please downgrade cucumber-core.
 =dev-util/cucumber-core-11.1.0
-
-# Sam James <sam@gentoo.org> (2023-03-16)
-# Breaks building C++ consumers. See bug #901211 and bug #901035.
-# Please upgrade to glib-2.76.0-r1.
-=dev-libs/glib-2.76.0
 
 # Mike Pagano <mpagano@gentoo.org> (2023-03-10)
 # Mask =sys-kernel/gentoo-sources-5.15.99 since it does
