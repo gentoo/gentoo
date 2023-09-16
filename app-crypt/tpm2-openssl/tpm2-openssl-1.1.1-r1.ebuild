@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-libs/openssl-3:="
 DEPEND="${RDEPEND}
 	test? (
-		app-crypt/swtpm[gnutls]
+		app-crypt/swtpm[gnutls(+)]
 		app-crypt/tpm2-abrmd
 		app-crypt/tpm2-tools
 	)"
