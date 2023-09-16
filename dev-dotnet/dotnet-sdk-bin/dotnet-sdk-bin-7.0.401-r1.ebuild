@@ -22,7 +22,7 @@ arm64? (
 S="${WORKDIR}"
 
 SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.5"
+RUNTIME_SLOT="${SDK_SLOT}.11"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 
 LICENSE="MIT"
@@ -39,7 +39,7 @@ IDEPEND="app-eselect/eselect-dotnet"
 PDEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
 	~dev-dotnet/dotnet-runtime-nugets-3.1.32
-	~dev-dotnet/dotnet-runtime-nugets-6.0.16
+	~dev-dotnet/dotnet-runtime-nugets-6.0.22
 "
 
 QA_PREBUILT="*"
