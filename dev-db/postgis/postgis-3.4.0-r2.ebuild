@@ -98,7 +98,7 @@ src_compile() {
 
 	if use doc ; then
 		postgres-multi_foreach emake comments
-		postgres-multi_foreach emake cheatsheets
+		postgres-multi_forbest emake cheatsheets
 		postgres-multi_forbest emake -C doc html
 	fi
 }
@@ -115,12 +115,7 @@ src_install() {
 
 	if use doc ; then
 		postgres-multi_foreach emake DESTDIR="${D}" comments-install
-
-		docinto html
-		postgres-multi_forbest dodoc doc/html/{postgis-en.html,style.css}
-
-		docinto html/images
-		postgres-multi_forbest dodoc -r doc/html/images/*
+		postgres-multi_forbest emake DESTDIR="${D}" -C doc cheatsheet-install html-install html-assets-install
 	fi
 
 	use static-libs || find "${ED}" -name '*.a' -delete
