@@ -24,7 +24,9 @@ DEPEND="${RDEPEND}
 		app-crypt/tpm2-abrmd
 		app-crypt/tpm2-tools
 	)"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	sys-devel/autoconf-archive
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-tests-include-base-provider-required-to-load-ecparam.patch"
