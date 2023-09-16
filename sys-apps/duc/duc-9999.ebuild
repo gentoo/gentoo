@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -13,10 +13,10 @@ else
 	SRC_URI="https://github.com/zevv/${PN}/releases/download/${PV}/${P}.tar.gz"
 fi
 
-DESCRIPTION="A library and suite of tools for inspecting disk usage"
+DESCRIPTION="Library and suite of tools for inspecting disk usage"
 HOMEPAGE="https://github.com/zevv/duc"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-3"
 SLOT="0"
 IUSE="cairo gui leveldb ncurses sqlite +tokyocabinet X"
 
@@ -66,7 +66,7 @@ src_configure() {
 
 	if use tokyocabinet; then
 		myconf+=( --with-db-backend=tokyocabinet )
-	elif	use leveldb; then
+	elif use leveldb; then
 		myconf+=( --with-db-backend=leveldb )
 	else
 		myconf+=( --with-db-backend=sqlite3 )
