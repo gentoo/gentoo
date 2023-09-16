@@ -23,7 +23,7 @@ IUSE="all-plugins"
 RDEPEND="
 	dev-python/docstring-to-markdown[${PYTHON_USEDEP}]
 	>=dev-python/jedi-0.17.2[${PYTHON_USEDEP}]
-	>=dev-python/python-lsp-jsonrpc-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/python-lsp-jsonrpc-1.1.0[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
 	all-plugins? (
 		>=dev-python/autopep8-1.6.0[${PYTHON_USEDEP}]
