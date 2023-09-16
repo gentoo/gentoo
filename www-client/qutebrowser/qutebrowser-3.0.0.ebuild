@@ -81,6 +81,10 @@ fi
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests-qt653.patch
+)
+
 src_prepare() {
 	distutils-r1_src_prepare
 
