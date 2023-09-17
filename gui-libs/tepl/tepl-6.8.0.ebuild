@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-libs/glib-2.74:2
 	>=x11-libs/gtk+-3.22:3
 	>=gui-libs/libgedit-gtksourceview-299.0.4:300
-	>=gui-libs/libgedit-amtk-5.0:5=
+	>=gui-libs/libgedit-amtk-5.0:5=[introspection]
 	dev-libs/icu:=
 	gnome-base/gsettings-desktop-schemas
 
