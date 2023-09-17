@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DOTNET_COMPAT=$(ver_cut 1-2)
+DOTNET_PKG_COMPAT=$(ver_cut 1-2)
 NUGETS="
 microsoft.aspnetcore.app.ref@${PV}
 microsoft.aspnetcore.app.runtime.linux-arm@${PV}

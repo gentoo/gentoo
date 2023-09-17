@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DOTNET_COMPAT=$(ver_cut 1-2)
+DOTNET_PKG_COMPAT=$(ver_cut 1-2)
 NUGETS="
 microsoft.aspnetcore.app.ref@3.1.10
 microsoft.aspnetcore.app.runtime.linux-arm@${PV}
@@ -32,7 +32,7 @@ SRC_URI="${NUGET_URIS}"
 S="${WORKDIR}"
 
 LICENSE="MIT"
-SLOT="${DOTNET_COMPAT}/${PV}"  # WARNING: Mixed NUGETS versions.
+SLOT="${DOTNET_PKG_COMPAT}/${PV}"  # WARNING: Mixed NUGETS versions.
 KEYWORDS="~amd64 ~arm ~arm64"
 
 src_unpack() {
