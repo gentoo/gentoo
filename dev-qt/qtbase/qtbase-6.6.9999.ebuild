@@ -36,6 +36,7 @@ REQUIRED_USE="
 	)
 	accessibility? ( X dbus )
 	eglfs? ( opengl )
+	gles2-only? ( opengl )
 	gui? ( || ( X eglfs wayland ) )
 	libinput? ( udev )
 	sql? ( || ( ${QT6_IUSE[sql]//+/} ) )
