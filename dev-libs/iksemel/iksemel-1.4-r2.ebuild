@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,11 +12,11 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
-IUSE="ssl static-libs"
+IUSE="ssl"
 
 RDEPEND="ssl? ( net-libs/gnutls:= )"
-DEPEND="${RDEPEND}
-	ssl? ( virtual/pkgconfig )"
+DEPEND="${RDEPEND}"
+BDEPEND="ssl? ( virtual/pkgconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3-gnutls-2.8.patch
@@ -30,9 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_with ssl gnutls) \
-		$(use_enable static-libs static)
+	econf $(use_with ssl gnutls)
 }
 
 src_install() {
@@ -40,5 +38,5 @@ src_install() {
 	dodoc HACKING
 
 	# package installs .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
