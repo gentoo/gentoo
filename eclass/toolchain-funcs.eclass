@@ -576,9 +576,7 @@ _tc-has-openmp() {
 # @DESCRIPTION:
 # Test for OpenMP support with the current compiler and error out with
 # a clear error message, telling the user how to rectify the missing
-# OpenMP support that has been requested by the ebuild. Using this function
-# to test for OpenMP support should be preferred over tc-has-openmp and
-# printing a custom message, as it presents a uniform interface to the user.
+# OpenMP support that has been requested by the ebuild.
 #
 # You should test for any necessary OpenMP support in pkg_pretend in order to
 # warn the user of required toolchain changes.  You must still check for OpenMP
