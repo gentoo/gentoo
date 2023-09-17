@@ -238,6 +238,14 @@ pkg_setup() {
 	dotnet-pkg_pkg_setup
 }
 
+src_unpack() {
+	dotnet-pkg_src_unpack
+
+	if [[ -n ${EGIT_REPO_URI} ]] ; then
+		git-r3_src_unpack
+	fi
+}
+
 src_prepare() {
 	# Bump used .NET version: 6.0 -> 7.0
 	sed -e "s|net6.0|net7.0|g" \
