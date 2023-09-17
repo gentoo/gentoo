@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Space-separated paths of TT-RSS instances that you want to start the
@@ -24,10 +24,9 @@ LOG_DIR="/var/log/ttrssd"
 # User to run the update daemon as. You should not run this as
 # root. If ACLs are unavailable on the filesystem used by the TT-RSS
 # instances then choosing the same user that serves the PHP web
-# interface is recommended to avoid permission issues. You *must* add
-# this user to the ttrssd group. If the PHP user is not the same as
-# the web server user (e.g. apache or nginx) then this user must be
-# added to the ttrssd group too.
+# interface is recommended to avoid permission issues. Either way, you
+# *must* add these users to the ttrssd group unless everything is
+# running as the web server user (e.g. apache or nginx).
 #
 # Default:
 #  TTRSSD_USER="ttrssd"

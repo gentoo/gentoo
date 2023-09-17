@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,13 +7,13 @@ inherit webapp
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
-SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.gz" # Upstream git frontend blocks wget?
+SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.xz"
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.0 7.4"
+PHP_SLOTS="8.2"
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
@@ -62,12 +62,12 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}"
 	doins -r *
 
-	# When updating, grep the plugins directory for additional CACHE_DIR
-	# instances as they cannot be created later due to permissions.
-	dodir "${MY_HTDOCSDIR}"/cache/starred-images
+	# When updating, grep the code for additional DiskCache::instances as they
+	# cannot be created later due to permissions.
+	keepdir "${MY_HTDOCSDIR}"/cache/{feed-icons,starred-images}
 
 	local dir
-	for dir in "${ED}${MY_HTDOCSDIR}"/{cache/*,feed-icons,lock}/; do
+	for dir in "${ED}${MY_HTDOCSDIR}"/{cache/*,lock}/; do
 		webapp_serverowned "${dir#${ED}}"
 	done
 
