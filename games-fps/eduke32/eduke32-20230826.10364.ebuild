@@ -139,7 +139,7 @@ src_compile() {
 		SDL_TARGET=2
 		SIMPLE_MENU=0
 		STRIP=""
-		TANDALONE=0
+		STANDALONE=0
 		STARTUP_WINDOW=$(usex gtk 1 0)
 		USE_OPENGL=$(usex opengl 1 0)
 		USE_LIBVPX=$(usex vpx 1 0)
