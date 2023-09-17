@@ -8,7 +8,7 @@
 #KRESD_GROUP=knot-resolver
 
 # Configuration file
-#KRESD_CONFIGFILE="/etc/knot-resolver/kresd.conf"
+#KRESD_CONFIG="/etc/knot-resolver/kresd.conf"
 
 # Rundir
 #KRESD_RUNDIR="/var/run/kresd"
