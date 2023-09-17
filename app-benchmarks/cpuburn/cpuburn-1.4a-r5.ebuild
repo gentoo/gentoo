@@ -1,9 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_PV="${PV/./_}"
+
+inherit flag-o-matic
 
 DESCRIPTION="CPU testing utilities in optimized assembler for maximum loading"
 HOMEPAGE="https://web.archive.org/web/20110623074500/pages.sbcglobal.net/redelm/"
@@ -39,6 +41,9 @@ src_prepare() {
 }
 
 src_compile() {
+	# See bug 913410 for more information.
+	append-ldflags -z notext
+
 	if use arm; then
 		cd "${S}"/ARM || die
 	fi
