@@ -1,5 +1,19 @@
 # Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-KRESD_OPTS="-n /var/run/kresd"
 
+# The user to run your application as
+#KRESD_USER=knot-resolver
+
+# The group to run your application as
+#KRESD_GROUP=knot-resolver
+
+# Configuration file
+#KRESD_CONFIGFILE="/etc/knot-resolver/kresd.conf"
+
+# Rundir
+#KRESD_RUNDIR="/var/run/kresd"
+
+# PID file
 #KRESD_PIDFILE="/var/run/kresd.pid"
+
+KRESD_OPTS=""
