@@ -6,7 +6,7 @@
 		<name>Matthias Maier</name>
 	</maintainer>
 	<stabilize-allarches/>
-  <upstream>
-    <remote-id type="github">gentoo/gentoo-zsh-completions</remote-id>
-  </upstream>
+	<upstream>
+		<remote-id type="github">gentoo/gentoo-zsh-completions</remote-id>
+	</upstream>
 </pkgmetadata>
