@@ -6,8 +6,9 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="A curses-based ascii-art editor"
-HOMEPAGE="http://aewan.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+HOMEPAGE="https://aewan.sourceforge.net/"
+#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
