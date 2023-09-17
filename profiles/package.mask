@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-09-17)
+# Core API has not been maintained since 2017, and all the repositories
+# have been archived in 2019.  It remained in ::gentoo only
+# as an optional test dependency, and all reverse dependencies have been
+# updated not to depend on it.
+# Removal on 2023-10-17.  Bug #914363.
+dev-python/coreapi
+dev-python/coreschema
+dev-python/itypes
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-06, 2023-09-15)
 # No longer maintained upstream; masked everywhere for two years now.
 # Please see also the 2021-07-15-opentmpfiles-deprecation news item.
