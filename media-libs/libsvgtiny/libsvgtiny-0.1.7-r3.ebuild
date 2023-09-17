@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit netsurf
 
@@ -15,11 +15,12 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
-	>=net-libs/libdom-0.1.2-r1[xml]
-	>=dev-libs/libwapcaplet-0.2.2-r1"
+	net-libs/libdom[xml]
+	dev-libs/libwapcaplet"
 DEPEND="${RDEPEND}
-	dev-util/gperf
-	dev-util/netsurf-buildsystem
+	dev-util/gperf"
+BDEPEND="
+	>=dev-util/netsurf-buildsystem-1.9-r2
 	virtual/pkgconfig"
 
 _emake() {
