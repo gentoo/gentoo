@@ -1,19 +1,19 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 MY_PV="${PV/_p/+}"
 SLOT="${MY_PV%%[.+]*}"
-EGRADLE_VER="4.10.3"
+EGRADLE_BUNDLED_VER="4.10.3"
 
-inherit flag-o-matic java-pkg-2 multiprocessing
+inherit flag-o-matic gradle java-pkg-2 multiprocessing
 
 DESCRIPTION="Java OpenJFX client application platform"
 HOMEPAGE="https://openjfx.io"
 
-SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}-dev/rt/archive/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
-	https://downloads.gradle.org/distributions/gradle-${EGRADLE_VER}-bin.zip
+SRC_URI="
+	https://hg.openjdk.java.net/${PN}/${SLOT}-dev/rt/archive/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
 	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-sandbox/7.1.0/lucene-sandbox-7.1.0.jar
 	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-grouping/7.1.0/lucene-grouping-7.1.0.jar
 	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queryparser/7.1.0/lucene-queryparser-7.1.0.jar
@@ -22,6 +22,7 @@ SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}-dev/rt/archive/${MY_PV}.tar.b
 	https://repo.maven.apache.org/maven2/org/antlr/gunit/3.5.2/gunit-3.5.2.jar
 	https://repo1.maven.org/maven2/org/antlr/antlr4/4.7.2/antlr4-4.7.2-complete.jar
 	https://repo.maven.apache.org/maven2/org/antlr/ST4/4.0.8/ST4-4.0.8.jar
+	$(gradle-src_uri)
 "
 
 LICENSE="GPL-2-with-classpath-exception"
@@ -84,28 +85,8 @@ PATCHES=(
 
 S="${WORKDIR}/rt-${MY_PV}"
 
-egradle() {
-	local GRADLE_HOME="${WORKDIR}/gradle-${EGRADLE_VER}"
-	local gradle="${GRADLE_HOME}/bin/gradle"
-	local gradle_args=(
-		--info
-		--stacktrace
-		--no-build-cache
-		--no-daemon
-		--offline
-		--gradle-user-home "${T}/gradle_user_home"
-		--project-cache-dir "${T}/gradle_project_cache"
-	)
-
-	export GRADLE_HOME
-
-	# FIXME: build.gradle believes $ANT_HOME/bin/ant shoud exist
-	unset ANT_HOME
-
-	einfo "gradle "${gradle_args[@]}" ${@}"
-	# TERM needed, otherwise gradle may fail on terms it does not know about
-	TERM="xterm" "${gradle}" "${gradle_args[@]}" ${@} || die "gradle failed"
-}
+# Fails to build if gradle is invoked with --parallel.
+EGRADLE_PARALLEL=false
 
 pkg_setup() {
 	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} openjdk-bin-${SLOT}"
@@ -148,7 +129,7 @@ pkg_setup() {
 
 src_unpack() {
 	unpack "${P}.tar.bz2"
-	unpack "gradle-${EGRADLE_VER}-bin.zip"
+	gradle_src_unpack
 
 	mkdir "${T}/jars" || die
 
@@ -171,7 +152,7 @@ src_prepare() {
 	java-pkg_jar-from --build-only --with-dependencies --into "${d}" stringtemplate
 	java-pkg_jar-from --build-only --with-dependencies --into "${d}" hamcrest-core
 
-	sed -i "s#__gentoo_swt_jar__#$(java-pkg_getjars swt-4.10)#" "${S}"/build.gradle || die
+	sed -i "s#__gentoo_swt_jar__#$(java-pkg_getjars swt-4.10)#" build.gradle || die
 }
 
 src_configure() {
@@ -189,7 +170,7 @@ src_configure() {
 		[[ -r ${jdk_doc}/element-list ]] || die "JDK Docs not found, terminating build early"
 	fi
 
-	cat <<- _EOF_ > "${S}"/gradle.properties
+	cat <<- _EOF_ > gradle.properties
 		COMPILE_TARGETS = linux
 		COMPILE_WEBKIT = false
 		COMPILE_MEDIA = $(usex media true false)
@@ -206,6 +187,9 @@ src_configure() {
 }
 
 src_compile() {
+	# FIXME: build.gradle believes $ANT_HOME/bin/ant should exist
+	unset ANT_HOME
+
 	egradle zips $(usex doc "" "--exclude-task javadoc")
 }
 
