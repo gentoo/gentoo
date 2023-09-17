@@ -192,14 +192,12 @@ src_configure() {
 		$(qt_feature eglfs)
 		$(qt_feature evdev)
 		$(qt_feature evdev mtdev)
-		$(qt_feature gles2-only opengles2)
 		$(qt_feature libinput)
-		$(qt_feature opengl)
-		$(usev !opengl -DINPUT_opengl=no) #913691
 		$(qt_feature renderdoc graphicsframecapture)
 		$(qt_feature tslib)
 		$(qt_feature vulkan)
 		$(qt_feature widgets)
+		-DINPUT_opengl=$(usex opengl $(usex gles2-only es2 desktop) no)
 		-DQT_FEATURE_system_textmarkdownreader=OFF # TODO?: package md4c
 	) && use widgets && mycmakeargs+=(
 		$(qt_feature cups) # qtprintsupport is enabled w/ gui+widgets
