@@ -354,6 +354,14 @@ pkg_setup() {
 	fi
 }
 
+src_unpack() {
+	dotnet-pkg_src_unpack
+
+	if [[ -n ${EGIT_REPO_URI} ]] ; then
+		git-r3_src_unpack
+	fi
+}
+
 src_prepare() {
 	# Clean the environment.
 	unset NPM_CONFIG_USERCONFIG
