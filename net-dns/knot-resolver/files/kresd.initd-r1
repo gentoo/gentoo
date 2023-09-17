@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${KRESD_GROUP:=knot-resolver}
+: ${KRESD_USER:=knot-resolver}
+: ${KRESD_CONFIG:=/etc/knot-resolver/kresd.conf}
+: ${KRESD_RUNDIR:=/var/run/kresd}
+: ${KRESD_PIDFILE:=/var/run/kresd.pid}
+
+command="/usr/sbin/kresd"
+command_args="${KRESD_OPTS} -n -c ${KRESD_CONFIG} ${KRESD_RUNDIR}"
+command_user="${KRESD_USER}:${KRESD_GROUP}"
+pidfile="${KRESD_PIDFILE}"
+command_background=true
+retry="TERM/60/KILL/5"
+
+capabilities="^cap_net_bind_service,^cap_setpcap"
+
+name="knot-resolver"
+description="scaleable caching DNS resolver"
+
+depend() {
+    need net
+    use logger
+    provide dns
+}
+
+start_pre() {
+        checkpath -d -m 0750 -o "${KRESD_USER}:${KRESD_GROUP}" ${KRESD_RUNDIR}
+}
