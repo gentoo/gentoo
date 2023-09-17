@@ -5,7 +5,7 @@ EAPI=7
 
 inherit netsurf
 
-DESCRIPTION="framebuffer abstraction library, written in C"
+DESCRIPTION="Small and portable C library to parse SVG"
 HOMEPAGE="https://www.netsurf-browser.org/projects/libsvgtiny/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
