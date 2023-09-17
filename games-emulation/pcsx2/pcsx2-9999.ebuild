@@ -24,7 +24,7 @@ LICENSE="
 	ISC LGPL-2.1+ LGPL-3+ MIT OFL-1.1 ZLIB public-domain
 "
 SLOT="0"
-IUSE="alsa cpu_flags_x86_sse4_1 dbus jack pulseaudio sndio test vulkan wayland"
+IUSE="alsa cpu_flags_x86_sse4_1 jack pulseaudio sndio test vulkan wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
@@ -40,11 +40,11 @@ COMMON_DEPEND="
 	media-video/ffmpeg:=
 	net-libs/libpcap
 	net-misc/curl
+	sys-apps/dbus
 	sys-libs/zlib:=
 	virtual/libudev:=
 	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
-	dbus? ( sys-apps/dbus )
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
@@ -97,20 +97,18 @@ src_configure() {
 		append-flags -fno-strict-aliasing
 
 		# odr violations in pcsx2's vulkan code, disabling as a safety for now
-		# (vulkan support tend to receive major changes, is more on WIP side)
 		filter-lto
 	fi
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
-		-DDBUS_API=$(usex dbus)
 		-DDISABLE_BUILD_DATE=yes
 		-DENABLE_TESTS=$(usex test)
 		-DUSE_LINKED_FFMPEG=yes
 		-DUSE_VTUNE=no
 		-DUSE_VULKAN=$(usex vulkan)
 		-DWAYLAND_API=$(usex wayland)
-		-DX11_API=yes # fails if X libs are missing even if disabled
+		-DX11_API=yes # X libs are currently hard-required either way
 
 		# sse4.1 is the bare minimum required, -m is required at build time
 		# (see PCSX2Base.h) and it dies if no support at runtime (AppInit.cpp)
