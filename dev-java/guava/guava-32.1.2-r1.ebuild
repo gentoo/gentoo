@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 CP_DEPEND="
 	dev-java/checker-framework-qual:0
 	dev-java/error-prone-annotations:0
-	dev-java/failureaccess:0
+	~dev-java/failureaccess-${PV}:0
 	dev-java/j2objc-annotations:0
 	dev-java/jsr305:0
 "
