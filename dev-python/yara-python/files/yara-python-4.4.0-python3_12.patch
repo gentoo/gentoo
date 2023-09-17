@@ -1,0 +1,17 @@
+Upstream: https://github.com/VirusTotal/yara-python/pull/244
+From c00fd68cfb2f00c4bfe4ea6465a93af2d1d1a68f Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Sat, 16 Sep 2023 17:35:36 +0200
+Subject: [PATCH] Fix unknown escape sequence
+
+--- a/tests.py
++++ b/tests.py
+@@ -719,7 +719,7 @@ def testRE(self):
+             'rule test { strings: $a = /[M-N]iss/ nocase condition: $a }',
+             'rule test { strings: $a = /(Mi|ssi)ssippi/ nocase condition: $a }',
+             r'rule test { strings: $a = /ppi\tmi/ condition: $a }',
+-            'rule test { strings: $a = /ppi\.mi/ condition: $a }',
++            r'rule test { strings: $a = /ppi\.mi/ condition: $a }',
+             'rule test { strings: $a = /^mississippi/ fullword condition: $a }',
+             'rule test { strings: $a = /mississippi.*mississippi$/s condition: $a }',
+         ], 'mississippi\tmississippi.mississippi\nmississippi')
