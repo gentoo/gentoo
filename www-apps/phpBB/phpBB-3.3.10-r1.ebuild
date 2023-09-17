@@ -19,9 +19,8 @@ PHP_RDEPEND="(
 )"
 
 RDEPEND="|| (
+	${PHP_RDEPEND//@SLOT@/8.2}
 	${PHP_RDEPEND//@SLOT@/8.1}
-	${PHP_RDEPEND//@SLOT@/8.0}
-	${PHP_RDEPEND//@SLOT@/7.4}
 )"
 
 need_httpd_cgi
