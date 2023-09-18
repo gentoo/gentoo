@@ -13,9 +13,6 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<longdescription>
-	Qt equivalent to qalculate-gtk.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">Qalculate/qalculate-qt</remote-id>
 	</upstream>
