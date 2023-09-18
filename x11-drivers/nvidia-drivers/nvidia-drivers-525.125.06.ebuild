@@ -29,7 +29,6 @@ REQUIRED_USE="kernel-open? ( modules )"
 
 COMMON_DEPEND="
 	acct-group/video
-	sys-libs/glibc
 	X? ( x11-libs/libpciaccess )
 	persistenced? (
 		acct-user/nvpd
@@ -50,6 +49,7 @@ COMMON_DEPEND="
 	)"
 RDEPEND="
 	${COMMON_DEPEND}
+	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
 		x11-libs/libX11[abi_x86_32(-)?]

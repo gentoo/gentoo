@@ -26,7 +26,6 @@ IUSE="+X abi_x86_32 abi_x86_64 persistenced +static-libs +tools wayland"
 
 COMMON_DEPEND="
 	acct-group/video
-	sys-libs/glibc
 	persistenced? (
 		acct-user/nvpd
 		net-libs/libtirpc:=
@@ -46,6 +45,7 @@ COMMON_DEPEND="
 	)"
 RDEPEND="
 	${COMMON_DEPEND}
+	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
 		x11-libs/libX11[abi_x86_32(-)?]
