@@ -12,7 +12,7 @@ SRC_URI="https://github.com/supercollider/supercollider/releases/download/Versio
 LICENSE="GPL-2 gpl3? ( GPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack qt5 server +sndfile static-libs vim webengine X +zeroconf"
+IUSE="ableton-link cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack qt5 server +sndfile static-libs vim webengine X +zeroconf"
 
 REQUIRED_USE="
 	qt5? ( X )
@@ -68,6 +68,7 @@ src_configure() {
 		-DINSTALL_HELP=ON
 		-DSYSTEM_BOOST=ON
 		-DSYSTEM_YAMLCPP=ON
+		-DSC_ABLETON_LINK=$(usex ableton-link)
 		-DSSE=$(usex cpu_flags_x86_sse)
 		-DSSE2=$(usex cpu_flags_x86_sse2)
 		-DSC_EL=$(usex emacs)

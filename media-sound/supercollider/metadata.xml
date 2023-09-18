@@ -19,6 +19,7 @@
 		<remote-id type="github">supercollider/supercollider</remote-id>
 	</upstream>
 	<use>
+		<flag name="ableton-link">Enable support for Ableton Link</flag>
 		<flag name="vim">Enable the SCVIM user interface</flag>
 		<flag name="emacs">Enable the SCEL user interface</flag>
 		<flag name="gedit">Enable the SCED user interface</flag>
