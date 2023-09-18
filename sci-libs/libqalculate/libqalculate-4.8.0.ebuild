@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# Bump with sci-calculators/qalculate-gtk!
+# Bump with sci-calculators/qalculate-gtk and sci-calculators/qalculate-qt
 
 inherit toolchain-funcs
 
