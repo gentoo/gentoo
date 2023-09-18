@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	>=app-admin/ansible-core-2.12.0[${PYTHON_USEDEP}]
-	>=dev-python/ansible-compat-4.0.5[${PYTHON_USEDEP}]
+	>=dev-python/ansible-compat-4.1.10[${PYTHON_USEDEP}]
 	>=dev-python/black-22.8.0[${PYTHON_USEDEP}]
 	>=dev-python/filelock-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.17.0[${PYTHON_USEDEP}]
@@ -38,9 +38,11 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
 	test? (
+		dev-python/mypy[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-plus-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.5.0[${PYTHON_USEDEP}]
+		>=dev-python/spdx-tools-0.7.1:0/0.7[${PYTHON_USEDEP}]
 	)"
 
 # test_call_from_outside_venv doesn't play nicely with the sandbox
