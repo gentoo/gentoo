@@ -14,7 +14,7 @@ fi
 DESCRIPTION="Utility to manage compilers"
 HOMEPAGE="https://gitweb.gentoo.org/proj/gcc-config.git/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 IUSE="+cc-wrappers +native-symlinks"
 
