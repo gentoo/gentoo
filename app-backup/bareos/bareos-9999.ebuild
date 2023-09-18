@@ -47,7 +47,7 @@ DEPEND="
 	dev-libs/gmp:0
 	!clientonly? (
 		acct-user/${PN}
-		dev-db/postgresql:*[threads]
+		dev-db/postgresql:*[threads(+)]
 		director? (
 			virtual/mta
 		)
@@ -87,7 +87,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	test? (
 		dev-cpp/gtest
-		dev-db/postgresql:*[server,threads]
+		dev-db/postgresql:*[server,threads(+)]
 		dev-db/mariadb:*[server]
 	)
 "

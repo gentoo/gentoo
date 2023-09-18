@@ -33,7 +33,7 @@ DEPEND="
 	dev-libs/gmp:0
 	!clientonly? (
 		acct-user/${PN}
-		postgres? ( dev-db/postgresql:*[threads] )
+		postgres? ( dev-db/postgresql:*[threads(+)] )
 		mysql? ( virtual/mysql )
 		sqlite? ( dev-db/sqlite:3 )
 		director? (
