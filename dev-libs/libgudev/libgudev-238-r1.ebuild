@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.38.0:2[${MULTILIB_USEDEP}]
-	>=virtual/libudev-251:=[sticky-tags(+),${MULTILIB_USEDEP}]
+	>=virtual/libudev-251:=[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1 )
 "
 DEPEND="${RDEPEND}
