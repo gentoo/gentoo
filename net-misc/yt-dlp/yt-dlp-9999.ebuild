@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit bash-completion-r1 distutils-r1 git-r3 optfeature wrapper
 
 DESCRIPTION="youtube-dl fork with additional features and fixes"
