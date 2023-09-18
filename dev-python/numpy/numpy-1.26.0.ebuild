@@ -20,7 +20,9 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="lapack"
+# +lapack because the internal fallbacks are pretty slow. Building without blas
+# is barely supported anyway, see bug #914358.
+IUSE="+lapack"
 if [[ ${PV} != *_[rab]* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
@@ -59,6 +61,7 @@ python_prepare_all() {
 
 python_configure_all() {
 	DISTUTILS_ARGS=(
+		-Dallow-noblas=$(usex !lapack true false)
 		-Dblas=$(usev lapack cblas)
 		-Dlapack=$(usev lapack lapack)
 		# TODO: cpu-* options
