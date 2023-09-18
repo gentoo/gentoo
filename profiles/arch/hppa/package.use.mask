@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2023-09-18)
+# x11-libs/gtksourceview:4 not keyworded here
+media-gfx/inkscape sourceview
+
 # Rich Freeman <rich0@gentoo.org> (2023-09-13)
 # Tests require shellcheck which is not currently available on hppa
 sys-process/systemd-cron test

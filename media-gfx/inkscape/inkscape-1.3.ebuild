@@ -21,7 +21,7 @@ HOMEPAGE="https://inkscape.org/ https://gitlab.com/inkscape/inkscape/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="cdr dia exif graphicsmagick imagemagick inkjar jpeg openmp postscript readline spell svg2 test visio wpg X"
+IUSE="cdr dia exif graphicsmagick imagemagick inkjar jpeg openmp postscript readline sourceview spell svg2 test visio wpg X"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # Lots of test failures which need investigating, bug #871621
 RESTRICT="!test? ( test ) test"
@@ -77,6 +77,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	readline? ( sys-libs/readline:= )
+	sourceview? ( x11-libs/gtksourceview:4 )
 	spell? ( app-text/gspell )
 	visio? (
 		app-text/libwpg:0.3
@@ -149,6 +150,7 @@ src_configure() {
 		-DENABLE_LCMS=ON
 		-DWITH_OPENMP=$(usex openmp)
 		-DBUILD_SHARED_LIBS=ON
+		-DWITH_GSOURCEVIEW=$(usex sourceview)
 		-DWITH_SVG2=$(usex svg2)
 		-DWITH_LIBVISIO=$(usex visio)
 		-DWITH_LIBWPG=$(usex wpg)
@@ -159,14 +161,23 @@ src_configure() {
 }
 
 src_test() {
-	local myctestargs=(
+	CMAKE_SKIP_TESTS=(
 		# render_text*: needs patched Cairo / maybe upstream changes
 		# not yet in a release.
 		# test_lpe/test_lpe64: precision differences b/c of new GCC?
 		# cli_export-png-color-mode-gray-8_png_check_output: ditto?
-		-E "(render_test-use|render_test-glyph-y-pos|render_text-glyphs-combining|render_text-glyphs-vertical|render_test-rtl-vertical|test_lpe|test_lpe64|cli_export-png-color-mode-gray-8_png_check_output)"
+		render_test-use
+		render_test-glyph-y-pos
+		render_text-glyphs-combining
+		render_text-glyphs-vertical
+		render_test-rtl-vertical
+		test_lpe
+		test_lpe64
+		cli_export-png-color-mode-gray-8_png_check_output
 	)
 
+	# bug #871621
+	cmake_src_compile tests
 	cmake_src_test -j1
 }
 
