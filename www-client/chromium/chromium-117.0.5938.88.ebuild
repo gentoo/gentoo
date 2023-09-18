@@ -186,7 +186,7 @@ BDEPEND="
 		$(depend_clang_llvm_versions 16)
 	)
 	dev-lang/perl
-	>=dev-util/gn-0.1807
+	>=dev-util/gn-0.2114
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
 	dev-vcs/git
@@ -651,7 +651,7 @@ src_prepare() {
 		popd >/dev/null || die
 	fi
 
-	einfo "Unbundling third-party libraries..."
+	einfo "Unbundling third-party libraries ..."
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
 
@@ -921,7 +921,7 @@ chromium_configure() {
 		fi
 
 		# Re-configure bundled ffmpeg. See bug #491378 for example reasons.
-		einfo "Configuring bundled ffmpeg..."
+		einfo "Configuring bundled ffmpeg ..."
 		pushd third_party/ffmpeg > /dev/null || die
 		chromium/scripts/build_ffmpeg.py linux ${ffmpeg_target_arch} \
 			--branding ${ffmpeg_branding} -- ${build_ffmpeg_args} || die
@@ -1029,7 +1029,7 @@ chromium_configure() {
 		myconf_gn+=" devtools_skip_typecheck=false"
 	fi
 
-	einfo "Configuring Chromium..."
+	einfo "Configuring Chromium ..."
 	set -- gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
 	echo "$@"
 	"$@" || die
