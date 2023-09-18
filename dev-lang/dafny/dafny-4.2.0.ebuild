@@ -315,6 +315,7 @@ BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		dev-lang/boogie
+		dev-lang/go
 		dev-python/OutputCheck
 		dev-python/lit
 		net-libs/nodejs[npm]
