@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="Qt6 Configuration Tool"
+DESCRIPTION="Qt6 Configuration Tool (for DE/WM without Qt integration)"
 HOMEPAGE="https://github.com/trialuser02/qt6ct/"
 #SRC_URI="https://github.com/trialuser02/qt6ct/releases/download/${PV}/${P}.tar.xz"
 
