@@ -19,28 +19,17 @@ RESTRICT="test"
 src_prepare() {
 	default
 
-	sed -i -e "s#-D_FORTIFY_SOURCE=2##g;" GNUmakefile || die
-}
+	cat <<-EOF > local.mk || die
+	CC=$(tc-getCC)
+	CFLAGS=${CFLAGS}
+	CPPFLAGS=${CPPFLAGS}
+	LDFLAGS=${LDFLAGS}
+	EOF
 
-src_compile() {
-	emake \
-		COMPILERS=gcc \
-		COMPILER_gcc="$(tc-getCC)" \
-		LINKER_gcc="$(tc-getCC)" \
-		CFLAGS_gcc="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		CPPFLAGS_gcc="" \
-		all
-}
-
-src_test() {
-	emake \
-		COMPILERS=gcc \
-		COMPILER_gcc="$(tc-getCC)" \
-		LINKER_gcc="$(tc-getCC)" \
-		CFLAGS_gcc="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		check
+	sed -i \
+		-e "s#-D_FORTIFY_SOURCE=2##g;" \
+		-e '/\-Werror)/d' \
+		GNUmakefile || die
 }
 
 src_install() {
