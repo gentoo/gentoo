@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>sultan@gentoo.org</email>
-    <name>Stephan Hartmann</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="fox">Build a <pkg>x11-libs/fox</pkg> GUI</flag>
   </use>
