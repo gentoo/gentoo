@@ -6,6 +6,6 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">phppgadmin/phppgadmin</remote-id>
+		<remote-id type="github">ReimuHakurei/phppgadmin</remote-id>
 	</upstream>
 </pkgmetadata>
