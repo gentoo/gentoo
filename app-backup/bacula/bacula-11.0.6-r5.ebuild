@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 inherit desktop libtool qmake-utils systemd
 
@@ -15,12 +15,12 @@ SRC_URI="mirror://sourceforge/bacula/${MY_P}.tar.gz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 logwatch mysql postgres qt5 readline selinux +sqlite ssl static tcpd vim-syntax X"
+IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 logwatch mysql postgres qt5 readline +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="
 	!bacula-clientonly? (
 		!bacula-nodir? ( virtual/mta )
-		postgres? ( dev-db/postgresql:=[threads] )
+		postgres? ( dev-db/postgresql:=[threads(+)] )
 		mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c ) )
 		sqlite? ( dev-db/sqlite:3 )
 	)
@@ -64,7 +64,6 @@ RDEPEND="${DEPEND}
 			sys-block/mtx
 		)
 	)
-	selinux? ( sec-policy/selinux-bacula )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 "
 
@@ -138,6 +137,9 @@ src_prepare() {
 	sed -i -e "s/strip /# strip /" src/filed/Makefile.in || die
 	sed -i -e "s/strip /# strip /" src/console/Makefile.in || die
 
+	# fix 'implicit function declaration' bug 900663
+	eapply -p0 "${FILESDIR}/${PN}-11.0.2-fix-config.patch"
+
 	eapply_user
 
 	# Fix systemd unit files:
@@ -164,8 +166,7 @@ src_prepare() {
 	sed -i -e 's/ manpages//' Makefile.in || die
 
 	# correct installation for plugins to mode 0755 (bug #725946)
-	sed -i -e "s/(INSTALL_PROGRAM) /(INSTALL_LIB) /" src/plugins/fd/Makefile ||die
-	sed -i -e "s/(INSTALL_PROGRAM) /(INSTALL_LIB) /" src/plugins/fd/docker/Makefile ||die
+	sed -i -e "s/(INSTALL_PROGRAM) /(INSTALL_LIB) /" src/plugins/fd/Makefile.in ||die
 
 	# fix bundled libtool (bug 466696)
 	# But first move directory with M4 macros out of the way.
@@ -240,7 +241,6 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install
 	doicon scripts/bacula.png
-	keepdir /var/lib/bacula/tmp
 
 	# remove not needed .la files #840957
 	find "${ED}" -name '*.la' -delete || die

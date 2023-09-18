@@ -20,7 +20,7 @@ IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6
 DEPEND="
 	!bacula-clientonly? (
 		!bacula-nodir? ( virtual/mta )
-		postgres? ( dev-db/postgresql:=[threads] )
+		postgres? ( dev-db/postgresql:=[threads(+)] )
 		mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c ) )
 		sqlite? ( dev-db/sqlite:3 )
 	)
