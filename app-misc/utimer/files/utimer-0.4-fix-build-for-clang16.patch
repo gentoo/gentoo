@@ -1,0 +1,44 @@
+Add declarations because implicit function declarations are not allowed in clang16's defaults.
+
+Bug: https://bugs.gentoo.org/876376
+Patch sent upstream via mail. 
+
+#  Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-18)
+
+--- a/src/log.h
++++ b/src/log.h
+@@ -27,6 +27,7 @@
+ #define g_info(format...) g_log(G_LOG_DOMAIN, G_LOG_LEVEL_INFO, format)
+ #endif 
+ 
++void setup_log_handler(void);
+ 
+ 
+ #endif /* LOG_H */
+--- a/src/tests/maintests.c
++++ b/src/tests/maintests.c
+@@ -30,7 +30,8 @@
+ #endif 
+ 
+ #include <glib-object.h>
++#include "../log.h"
+ #include "../utimer.h"
+ 
+ #define TEST_DURATION_MAX_OFFSET_MSECONDS 100
+ 
+
+ /**
+  * Runs the timer for the given duration
+  * There is a timeout that prevents the function from running endlessly
+--- a/src/utimer.c
++++ b/src/utimer.c
+@@ -21,7 +21,9 @@
+  * 
+  */
+ 
++#include "glib-2.0/glib-object.h"
+ #include "utimer.h"
++#include "log.h"
+ 
+ //~ static    char            **remaining_args;
+ static ut_timer        *ttimer;
