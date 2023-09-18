@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# Note: bump with sci-libs/libqalculate!
+# Note: bump with sci-libs/libqalculate and sci-calculators/qalculate-qt!
 
 inherit xdg
 
