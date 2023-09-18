@@ -30,6 +30,7 @@ RESTRICT="!test? ( test )"
 
 # Only one default ssl provider can be enabled
 # The default ssl provider needs its USE satisfied
+# nghttp3 = https://bugs.gentoo.org/912029
 REQUIRED_USE="
 	ssl? (
 		^^ (
@@ -43,6 +44,7 @@ REQUIRED_USE="
 	curl_ssl_mbedtls? ( mbedtls )
 	curl_ssl_openssl? ( openssl )
 	curl_ssl_rustls? ( rustls )
+	nghttp3? ( !openssl )
 "
 
 # cURL's docs and CI/CD are great resources for confirming supported versions
