@@ -24,7 +24,7 @@ DESCRIPTION="Fast, feature-rich, GPU-based terminal"
 HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 
 LICENSE="GPL-3 ZLIB"
-LICENSE+=" Apache-2.0 BSD MIT MPL-2.0" # go
+LICENSE+=" Apache-2.0 BSD BSD-2 MIT MPL-2.0 " # go
 SLOT="0"
 IUSE="+X test wayland"
 REQUIRED_USE="
