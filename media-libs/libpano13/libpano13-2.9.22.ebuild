@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit cmake
+inherit java-pkg-opt-2 cmake
 
 DESCRIPTION="Helmut Dersch's panorama toolbox library"
 HOMEPAGE="http://panotools.sourceforge.net/"
@@ -24,6 +24,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
+pkg_setup() {
+	java-pkg-opt-2_pkg_setup
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DSUPPORT_JAVA_PROGRAMS=$(usex java)
@@ -38,4 +42,8 @@ src_install() {
 	if ! use static-libs ; then
 		find "${D}" -name "*.a" -type f -delete || die
 	fi
+}
+
+pkg_preinst() {
+	java-pkg-opt-2_pkg_preinst
 }
