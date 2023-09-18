@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Violet Purcell <vimproved@inventati.org> (2023-09-18)
+# Fails to compile on musl, bug 829544.
+media-sound/supercollider ableton-link
+
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is masked on musl
 app-accessibility/at-spi2-core dbus-broker
