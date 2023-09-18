@@ -9,7 +9,7 @@ DESCRIPTION="Minimalistic personal calendar program"
 HOMEPAGE="http://www.lightandmatter.com/when/when.html https://bitbucket.org/ben-crowell/when"
 SRC_URI="https://bitbucket.org/ben-crowell/${PN}/get/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Artistic"
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
@@ -17,8 +17,6 @@ DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}"
 
 DOCS=( README )
-
-RESTRICT="test"
 
 src_prepare() {
 	default
