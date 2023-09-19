@@ -306,7 +306,7 @@ src_test() {
 		tst_qimagewriter
 		tst_qpluginloader
 		# partially broken on llvm-musl, needs looking into but skip to have
-		# a baseline for regressions (like above, rest of dev-qt is fine)
+		# a baseline for regressions (rest of dev-qt still passes with musl)
 		$(usev elibc_musl '
 			tst_qfiledialog2
 			tst_qicoimageformat
