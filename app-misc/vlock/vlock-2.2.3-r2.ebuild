@@ -18,6 +18,7 @@ IUSE="pam selinux test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	virtual/libcrypt:=
 	!sys-apps/kbd[pam]
 	pam? ( sys-libs/pam )
 "
