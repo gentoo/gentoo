@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,8 @@ RDEPEND=">=dev-util/android-sdk-update-manager-10
 	|| (
 		sys-libs/ncurses:0/5[tinfo]
 		sys-libs/ncurses-compat:5[tinfo]
-	)"
+	)
+	virtual/libcrypt"
 
 S="${WORKDIR}/${PN}-r${PV}"
 
