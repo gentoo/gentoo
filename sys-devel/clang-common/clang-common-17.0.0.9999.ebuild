@@ -169,12 +169,19 @@ src_install() {
 	#  define __GENTOO_HAS_FEATURE(x) 0
 	# endif
 	#
-	# if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0
+	# if defined(__STDC_HOSTED__) && __STDC_HOSTED__ == 1
+	#  define __GENTOO_NOT_FREESTANDING 1
+	# else
+	#  define __GENTOO_NOT_FREESTANDING 0
+	# endif
+	#
+	# if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0 && __GENTOO_NOT_FREESTANDING > 0
 	#  if !defined(__SANITIZE_ADDRESS__) && !__GENTOO_HAS_FEATURE(address_sanitizer) && !__GENTOO_HAS_FEATURE(memory_sanitizer)
 	#   define _FORTIFY_SOURCE ${fortify_level}
 	#  endif
 	# endif
 	# undef __GENTOO_HAS_FEATURE
+	# undef __GENTOO_NOT_FREESTANDING
 	#endif
 	EOF
 
@@ -186,7 +193,7 @@ src_install() {
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
 			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
-			-D_LIBCPP_ENABLE_HARDENED_MODE=1
+			-D_LIBCPP_ENABLE_ASSERTIONS=1
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die

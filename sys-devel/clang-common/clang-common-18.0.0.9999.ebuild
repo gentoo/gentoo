@@ -169,12 +169,19 @@ src_install() {
 	#  define __GENTOO_HAS_FEATURE(x) 0
 	# endif
 	#
-	# if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0
+	# if defined(__STDC_HOSTED__) && __STDC_HOSTED__ == 1
+	#  define __GENTOO_NOT_FREESTANDING 1
+	# else
+	#  define __GENTOO_NOT_FREESTANDING 0
+	# endif
+	#
+	# if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0 && __GENTOO_NOT_FREESTANDING > 0
 	#  if !defined(__SANITIZE_ADDRESS__) && !__GENTOO_HAS_FEATURE(address_sanitizer) && !__GENTOO_HAS_FEATURE(memory_sanitizer)
 	#   define _FORTIFY_SOURCE ${fortify_level}
 	#  endif
 	# endif
 	# undef __GENTOO_HAS_FEATURE
+	# undef __GENTOO_NOT_FREESTANDING
 	#endif
 	EOF
 
