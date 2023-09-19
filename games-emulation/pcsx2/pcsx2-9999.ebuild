@@ -144,39 +144,12 @@ src_install() {
 pkg_postinst() {
 	fcaps -m 0755 cap_net_admin,cap_net_raw=eip usr/lib/${PN}/pcsx2-qt
 
-	local replacing=
-	if [[ ${REPLACING_VERSIONS##* } ]]; then
-		if ver_test ${REPLACING_VERSIONS##* } -lt 1.6.1; then
-			replacing=old
-		elif ver_test ${REPLACING_VERSIONS##* } -lt 1.7.3773; then
-			replacing=wx
-		else
-			replacing=any
-		fi
-	fi
-
-	if [[ ${replacing} == old ]]; then
+	if [[ ${REPLACING_VERSIONS##* } ]] &&
+		ver_test ${REPLACING_VERSIONS##* } -lt 1.7; then
+		elog ">=${PN}-1.7 has received several changes since <=${PN}-1.6.0, and is"
+		elog "notably now a 64bit build using Qt6. Just-in-case it is recommended"
+		elog "to backup configs, save states, and memory cards before using."
 		elog
-		elog ">=${PN}-1.7 has received several changes since <=${PN}-1.6.0, notably"
-		elog "it is now a 64bit build using Qt6. Just-in-case it is recommended to"
-		elog "backup your configs, save states, and memory cards before use."
 		elog "The executable was also renamed from 'PCSX2' to 'pcsx2'."
-	fi
-
-	if [[ ${replacing} == @(|old) && ${PV} != 9999 ]]; then
-		elog
-		elog "${PN}-1.7.x is a development branch where .x increments every changes."
-		elog "Stable 1.6.0 is getting old and lacks many notable features (e.g. native"
-		elog "64bit builds). Given it may be a long time before there is a new stable,"
-		elog "Gentoo will carry and update 1.7.x roughly every months."
-		elog
-		elog "Please report an issue if feel a picked version needs to be updated ahead"
-		elog "of time or masked (notably for handling regressions)."
-	fi
-
-	if [[ ${replacing} == wx ]]; then
-		ewarn
-		ewarn "Note that wxGTK support been dropped upstream since >=${PN}-1.7.3773,"
-		ewarn "and so USE=qt6 is gone and Qt6 is now always used."
 	fi
 }
