@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2023-09-19)
+# Only works with PHP 7, which was dropped from Gentoo
+# Upstream has no short-term plan to add PHP 8 support
+# Bug #842882, removal on 2023-10-19.
+www-apps/owncloud
+
 # Michał Górny <mgorny@gentoo.org> (2023-09-17)
 # Core API has not been maintained since 2017, and all the repositories
 # have been archived in 2019.  It remained in ::gentoo only
