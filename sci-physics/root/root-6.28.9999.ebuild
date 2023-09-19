@@ -45,6 +45,7 @@ REQUIRED_USE="
 	davix? ( ssl xml )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( root7 )
+	roofit? ( minuit )
 	root7? ( || ( c++17 ) )
 	tmva? ( gsl python )
 	uring? ( root7 )
