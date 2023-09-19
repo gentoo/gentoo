@@ -1,0 +1,20 @@
+# Disable automagic, otherwise wlroots will enable features if dependencies are present.
+# Enable x11-backend only if xwayland is enabled.
+diff --git a/meson.build b/meson.build
+index 6a94dee6..08993f8a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -39,7 +39,12 @@ add_project_arguments(
+   ],
+   language: 'cpp')
+ 
+-wlroots = subproject('wlroots', default_options: ['examples=false'])
++if get_option('xwayland').enabled()
++  wlroots = subproject('wlroots', default_options: ['backends=drm,libinput,x11','examples=false','renderers=gles2','xcb-errors=disabled','xwayland=enabled'])
++else
++  wlroots = subproject('wlroots', default_options: ['backends=drm,libinput','examples=false','renderers=gles2','xcb-errors=disabled','xwayland=disabled'])
++endif
++
+ have_xwlr = wlroots.get_variable('features').get('xwayland')
+ xcb_dep = dependency('xcb', required: get_option('xwayland'))
+ 

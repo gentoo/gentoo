@@ -1,0 +1,13 @@
+diff -r 6355de501637 configure
+--- a/configure	Thu Jan 23 15:03:16 2014 +0000
++++ b/configure	Fri Jan 31 23:55:12 2014 +0100
+@@ -19699,7 +19699,8 @@
+     extra_objs="$extra_objs terminfo.o" &&  if test "$verbose" = "yes"; then
+    echo "    xemacs will be linked with \"terminfo.o\""
+  fi
+-    LIBS="-lncurses $LIBS" &&  if test "$verbose" = "yes"; then echo "    Prepending \"-lncurses\" to \$LIBS"; fi
++    ncurses_libs=$(pkg-config ncurses --libs)
++    LIBS="$ncurses_libs $LIBS" &&  if test "$verbose" = "yes"; then echo "    Prepending \"$ncurses_libs\" to \$LIBS"; fi
+ 
+     if test "$ac_cv_header_ncurses_curses_h" != "yes" ; then
+                         save_c_switch_site="$c_switch_site"

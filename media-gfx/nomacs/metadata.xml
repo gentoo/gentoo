@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://nomacs.org/redmine/projects/nomacs</bugs-to>
+		<remote-id type="github">nomacs/nomacs</remote-id>
+		<remote-id type="sourceforge">nomacs</remote-id>
+	</upstream>
+	<use>
+		<flag name="opencv">Build support for <pkg>media-libs/opencv</pkg></flag>
+		<flag name="plugins">Build officially support plugins</flag>
+	</use>
+</pkgmetadata>

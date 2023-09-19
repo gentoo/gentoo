@@ -1,0 +1,13 @@
+Need to pass ABI flags if LD is ld.lld for USE=kernel-open
+ld.lld: error: target emulation unknown: -m or at least one .o file required
+
+https://bugs.gentoo.org/885483
+https://github.com/NVIDIA/open-gpu-kernel-modules/issues/405
+https://github.com/NVIDIA/open-gpu-kernel-modules/issues/214
+--- a/kernel-module-source/utils.mk
++++ b/kernel-module-source/utils.mk
+@@ -556,3 +556,3 @@
+ 	$(at_if_quiet)cd $$(dir $(1)); \
+-	$$(call quiet_cmd_no_at,LD) -r -z noexecstack --format=binary \
++	$$(call quiet_cmd_no_at,LD) $$(RAW_LDFLAGS) -r -z noexecstack --format=binary \
+ 	    $$(notdir $(1)) -o $$(OUTPUTDIR_ABSOLUTE)/$$(notdir $$@)

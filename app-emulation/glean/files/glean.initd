@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+
+description="Simple program to write static config from config-drive"
+
+depend() {
+	need root localmount
+	before net
+}
+
+start() {
+	ebegin "Starting Glean"
+	/usr/bin/glean.sh
+	eend
+}

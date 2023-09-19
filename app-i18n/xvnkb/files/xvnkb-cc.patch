@@ -1,0 +1,10 @@
+--- a/tools/Makefile.common
++++ b/tools/Makefile.common
+@@ -49,6 +49,6 @@
+ Makefile.dep:
+ 	@echo
+ 	@echo -n Create $@ ... 
+-	@gcc -I$(XLIB_INC) -MM *.c > $@
++	@$(CC) -I$(XLIB_INC) -MM *.c > $@
+ 	@echo " done"
+ 	@echo

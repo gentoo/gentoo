@@ -1,0 +1,8 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2020-11-30)
+# Undo +vala which drags in introspection
+# We don't (yet?)  have introspection support here
+# (Avoid users having to turn it off)
+dev-libs/gmime -vala

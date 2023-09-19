@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="lazy-lock">Enable lazy locking (only lock when multi-threaded)</flag>
+		<flag name="prof">Enable allocation profiling</flag>
+		<flag name="stats">Enable statistics calculation/reporting</flag>
+		<flag name="xmalloc">Add support for xmalloc (abort-on-out-of-memory)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jemalloc/jemalloc</remote-id>
+	</upstream>
+</pkgmetadata>

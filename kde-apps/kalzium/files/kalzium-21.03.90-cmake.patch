@@ -1,0 +1,28 @@
+From 137a209512e632ccc7b297355a6b54301657c9ff Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 12 Apr 2021 00:02:48 +0200
+Subject: [PATCH] Drop brackets around OpenBabel3_FOUND
+
+It breaks when cmake is run with -DCMAKE_DISABLE_FIND_PACKAGE_OpenBabel3=ON.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index abc8120b..a370e5da 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,7 +27,7 @@ find_package(Gettext REQUIRED)
+ find_package(PythonInterp REQUIRED)
+ find_package(PkgConfig)
+ find_package(OpenBabel3 3.1)
+-if(NOT ${OpenBabel3_FOUND})
++if(NOT OpenBabel3_FOUND)
+     find_package(OpenBabel2)
+ endif()
+ find_package(AvogadroLibs)
+-- 
+2.31.1
+

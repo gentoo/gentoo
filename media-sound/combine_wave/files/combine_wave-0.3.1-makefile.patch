@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,16 +3,13 @@
+ #CC  = /usr/local/bin/g++
+ #CC  = /usr/bin/g++
+ 
+-CFLAGS = -O2 -Wall -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
+-
+-.c.o:
+-	gcc $(CFLAGS) -c $<
++CFLAGS += -Wall
++CPPFLAGS += -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
+ 
+ OBJECT =\
+ combine_wave.o
+ 
+-a.out : $(OBJECT)
+-	gcc -o combine_wave  $(OBJECT)
++all: combine_wave
+ 		
+ # DEPENDENCIES
+ combine_wave.o : combine_wave.c combine_wave.h wave_header.h

@@ -1,0 +1,3 @@
+SUBSYSTEM=="vchiq",GROUP="video",MODE="0660"
+SUBSYSTEM=="vc-sm",GROUP="video",MODE="0660"
+SUBSYSTEM=="bcm2708_vcio",GROUP="video",MODE="0660"

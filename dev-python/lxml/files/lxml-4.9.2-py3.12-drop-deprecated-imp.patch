@@ -1,0 +1,49 @@
+https://github.com/lxml/lxml/commit/07db761f9f027d1814a43686cda6fca26e37a931
+https://github.com/lxml/lxml/commit/c6b7e621e4696c02bf8f6ea423ffbbf2109748ab
+
+From 07db761f9f027d1814a43686cda6fca26e37a931 Mon Sep 17 00:00:00 2001
+From: Stefan Behnel <stefan_ml@behnel.de>
+Date: Thu, 11 May 2023 10:29:02 +0200
+Subject: [PATCH] Avoid using the deprecated "imp" module.
+
+Closes https://bugs.launchpad.net/lxml/+bug/2018137
+--- a/src/lxml/html/tests/test_html5parser.py
++++ b/src/lxml/html/tests/test_html5parser.py
+@@ -1,5 +1,4 @@
+ import os
+-import imp
+ try:
+     from StringIO import StringIO
+ except ImportError:                     # python 3
+@@ -45,7 +44,10 @@ def find_module(self, fullname, path=None):
+             return None
+ 
+         def load_module(self, fullname):
+-            mod = sys.modules.setdefault(fullname, imp.new_module(fullname))
++            fake_module = object()
++            fake_module.__qualname__ = fullname
++            fake_module.__name__ = fullname.rsplit('.', 1)[-1]
++            mod = sys.modules.setdefault(fullname, fake_module)
+             mod.__file__, mod.__loader__, mod.__path__ = "<dummy>", self, []
+             mod.__dict__.update(self.mocks[fullname])
+             return mod
+
+From c6b7e621e4696c02bf8f6ea423ffbbf2109748ab Mon Sep 17 00:00:00 2001
+From: Stefan Behnel <stefan_ml@behnel.de>
+Date: Thu, 11 May 2023 10:30:15 +0200
+Subject: [PATCH] Avoid using the deprecated "imp" module.
+
+Closes https://bugs.launchpad.net/lxml/+bug/2018137
+--- a/src/lxml/html/tests/test_html5parser.py
++++ b/src/lxml/html/tests/test_html5parser.py
+@@ -44,7 +44,8 @@ def find_module(self, fullname, path=None):
+             return None
+ 
+         def load_module(self, fullname):
+-            fake_module = object()
++            class Cls: pass
++            fake_module = Cls()
+             fake_module.__qualname__ = fullname
+             fake_module.__name__ = fullname.rsplit('.', 1)[-1]
+             mod = sys.modules.setdefault(fullname, fake_module)
+

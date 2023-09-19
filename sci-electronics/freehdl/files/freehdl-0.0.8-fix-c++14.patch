@@ -1,0 +1,507 @@
+C++11 has added new types (std::hash), which get dropped into the namespace due to
+awful 'using namespace std;' declarations everywhere, causing name collisions.
+Instead, only drop a minimal set of declarations into the global :: namespace.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594706
+
+--- a/fire/test-fire.cc
++++ b/fire/test-fire.cc
+@@ -2,7 +2,7 @@
+ #include <stdio.h>
+ #include <freehdl/fire.h>
+ 
+-using namespace std;
++using std::cout;
+ 
+ extern tree_chunk_info fire_chunk_info;
+ 
+--- a/freehdl/cdfggen-chunk.h
++++ b/freehdl/cdfggen-chunk.h
+@@ -7,7 +7,9 @@
+ #include <string>
+ #include <vector>
+ typedef enum {to, downto} cdfgg_direction;
+-using namespace std;
++using std::string;
++using std::vector;
++using std::pair;
+ 
+ extern tree_chunk_info cdfggen_chunk_info;
+ extern tree_ctype_info int_ctype_info;
+--- a/freehdl/cdfggen-chunk.t
++++ b/freehdl/cdfggen-chunk.t
+@@ -13,8 +13,7 @@
+ (header-add "#include <freehdl/tree-supp.h>"
+ 	    "#include <string>"
+ 	    "#include <vector>"
+-	    "typedef enum {to, downto} cdfgg_direction;"
+-	    "using namespace std;")
++	    "typedef enum {to, downto} cdfgg_direction;")
+ 
+ (impl-add "#include <freehdl/cdfggen-chunk.h>")
+ 
+--- a/freehdl/kernel-attributes.hh
++++ b/freehdl/kernel-attributes.hh
+@@ -1,6 +1,8 @@
+ #ifndef FREEHDL_KERNEL_ATTRIBUTES_H
+ #define FREEHDL_KERNEL_ATTRIBUTES_H
+ 
++using std::max;
++
+ /* *************************************************************
+  *  Function kind attributes for signals
+  * ************************************************************* */
+--- a/freehdl/kernel-db.hh
++++ b/freehdl/kernel-db.hh
+@@ -3,6 +3,8 @@
+ 
+ #include <assert.h>
+ 
++#include <string>
++using std::string;
+ 
+ /* This header file includes the definitions that are required to
+  * setup a kernel database. This database will be used by the kernel
+@@ -254,7 +256,7 @@
+ 
+ // A hash function template used tp generate a hash number from
+ // d
+-class db_basic_key_hash : public hash<unsigned long> {
++class db_basic_key_hash : public __gnu_cxx::hash<unsigned long> {
+ public:
+   size_t operator()(const db_basic_key& x) const {
+     return (*(hash<unsigned long> *)this)(((unsigned long)x.value)>>2);
+--- a/freehdl/kernel-dump.hh
++++ b/freehdl/kernel-dump.hh
+@@ -13,9 +13,9 @@
+ #include <string>
+ #include <fstream>
+ 
+-using namespace std;
++using std::fstream;
+ 
+-typedef map<string, char*, less<string> > Tmap;
++typedef map<string, const char*, less<string> > Tmap;
+ extern Tmap mapping_translation_table;
+ 
+ // For each signal which is dumped an virtual process is created. This
+--- a/freehdl/kernel-fhdl-stream.hh
++++ b/freehdl/kernel-fhdl-stream.hh
+@@ -9,7 +9,9 @@
+ #include <string>
+ #include <iostream>
+ 
+-using namespace std;
++using std::istream;
++using std::ostream;
++using std::string;
+ 
+ struct fhdl_ostream_t {
+   union {
+--- a/freehdl/kernel-map-list.hh
++++ b/freehdl/kernel-map-list.hh
+@@ -7,7 +7,6 @@
+ #include <freehdl/kernel-acl.hh>
+ #include <freehdl/kernel-sig-info.hh>
+ 
+-using namespace std;
+ //using namespace __gnu_cxx;
+ 
+ // A signal_link instance describes the connection
+--- a/freehdl/kernel-name-stack.hh
++++ b/freehdl/kernel-name-stack.hh
+@@ -3,7 +3,7 @@
+ 
+ #include <string>
+ 
+-using namespace std;
++using std::string;
+ 
+ #define NAME_STACK_INCREMENT 10
+ 
+--- a/freehdl/kernel-signal-source-list-array.hh
++++ b/freehdl/kernel-signal-source-list-array.hh
+@@ -13,7 +13,6 @@
+ #include <freehdl/kernel-util.hh>
+ #include <freehdl/kernel-source-descriptor.hh>
+ 
+-using namespace std;
+ //using namespace __gnu_cxx;
+ 
+ // signal_source stores information about a source of a signal. Note
+--- a/freehdl/kernel-util.hh
++++ b/freehdl/kernel-util.hh
+@@ -15,7 +15,8 @@
+ #include <hash_map>
+ #endif
+ 
+-using namespace std;
++using std::stringstream;
++using std::string;
+ 
+ #if !defined __GNUC__ || __GNUC__ != 2
+ using namespace __gnu_cxx;
+@@ -24,7 +25,7 @@
+ // A hash function template used tp generate a hash number from
+ // pointer values.
+ template<class T>
+-class pointer_hash : public hash<unsigned long> {
++class pointer_hash : public __gnu_cxx::hash<unsigned long> {
+ public:
+   size_t operator()(const T& x) const {
+     return (*(hash<unsigned long> *)this)(((unsigned long)x)>>2);
+--- a/freehdl/std.h
++++ b/freehdl/std.h
+@@ -1,7 +1,6 @@
+ #ifndef FREEHDL_STD_H
+ #define FREEHDL_STD_H
+ 
+-using namespace std;
+ 
+ #include <freehdl/std-standard.hh>
+ #include <freehdl/std-vhdl-types.hh>
+--- a/freehdl/std-vhdl-types.hh
++++ b/freehdl/std-vhdl-types.hh
+@@ -6,13 +6,24 @@
+ #include <float.h>
+ #include <math.h>
+ #include <iostream>
++#include <map>
++#include <list>
++#include <functional>
+ #include <string.h>
+ 
+ #include <freehdl/std-memory.hh>
+ #include <freehdl/kernel-error.hh>
+ #include <freehdl/kernel-acl.hh>
+ 
+-using namespace std;
++using std::string;
++using std::istream;
++using std::ostream;
++using std::min;
++using std::map;
++using std::stringstream;
++using std::list;
++using std::less;
++using std::iostream;
+ 
+ typedef long long int lint;
+ const int BUFFER_STREAM_SIZE_INCREMENT = 1024;
+--- a/freehdl/vaul-lexer.h
++++ b/freehdl/vaul-lexer.h
+@@ -32,7 +32,6 @@
+ #include <stdarg.h>
+ #include <string.h>
+ 
+-using namespace std;
+ 
+ #undef yyFlexLexer
+ #define yyFlexLexer vaul_FlexLexer
+--- a/ieee/numeric_std.cc
++++ b/ieee/numeric_std.cc
+@@ -2,6 +2,7 @@
+ #include <freehdl/std.h>
+ 
+ 
++using std::max;
+ 
+ /* package :ieee:numeric_std */
+ /* External declarations */
+--- a/kernel/attributes.cc
++++ b/kernel/attributes.cc
+@@ -5,6 +5,7 @@
+ #include <freehdl/kernel-kernel-class.hh>
+ #include <freehdl/kernel-reader-info.hh>
+ #include <freehdl/kernel-driver-info.hh>
++using std::max;
+ #include <freehdl/kernel-attributes.hh>
+ 
+ 
+--- a/kernel/db.cc
++++ b/kernel/db.cc
+@@ -1,6 +1,5 @@
+ #define KERNEL // Include internal kernel definitions
+ 
+-using namespace std;
+ #include <freehdl/kernel-db.hh>
+ 
+ 
+--- a/kernel/fhdl_stream.cc
++++ b/kernel/fhdl_stream.cc
+@@ -7,6 +7,9 @@
+ #include <freehdl/kernel-error.hh>
+ #include <freehdl/kernel-fhdl-stream.hh>
+ 
++using std::cin;
++using std::cout;
++using std::stringstream;
+ 
+ // Error stream to output error messages generated by the kernel,
+ // e.g. to print error messages due to invalid simulator commands
+--- a/kernel/kernel_class.cc
++++ b/kernel/kernel_class.cc
+@@ -16,6 +16,10 @@
+ #include <freehdl/kernel-resolver-descriptor.hh>
+ #include <freehdl/kernel-fhdl-stream.hh>
+ 
++using std::cerr;
++using std::pair;
++using std::binary_function;
++
+ // Arguments that are passed in form the command line
+ int main_argc;
+ char **main_argv;
+--- a/kernel/main.cc
++++ b/kernel/main.cc
+@@ -34,6 +34,15 @@
+ #include <freehdl/kernel-error.hh>
+ #include <freehdl/kernel-fhdl-stream.hh>
+ 
++using std::ios;
++using std::ifstream;
++using std::ofstream;
++using std::ostringstream;
++using std::cin;
++using std::cerr;
++using std::cout;
++using std::endl;
++
+ #ifdef PERFMON_STATISTICS
+ #include "pcounter.hh"
+ #endif
+--- a/kernel/map_list.cc
++++ b/kernel/map_list.cc
+@@ -4,6 +4,8 @@
+ #include <freehdl/kernel-sig-info.hh>
+ #include <freehdl/kernel-resolver-descriptor.hh>
+ 
++using std::max;
++
+ // Stores the father signal(s) of port signals
+ port_signal_link_map_t port_signal_link_map;
+ 
+--- a/kernel/name_stack.cc
++++ b/kernel/name_stack.cc
+@@ -1,8 +1,10 @@
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <stack>
+ #include <freehdl/kernel-error.hh>
+ #include <freehdl/kernel-name-stack.hh>
+ 
++using std::stack;
+ 
+ name_stack instance_name;
+ 
+--- a/kernel/persistent_cdfg_dump.cc
++++ b/kernel/persistent_cdfg_dump.cc
+@@ -3,6 +3,7 @@
+ #include <freehdl/kernel-persistent-cdfg-dump.hh>
+ #include <freehdl/kernel-persistent-dump.hh>
+ 
++using std::endl;
+ 
+ buffer_stream register_cdfg_tmp_buffer;
+ 
+--- a/kernel/sig_info.cc
++++ b/kernel/sig_info.cc
+@@ -1,6 +1,5 @@
+ #define KERNEL // Include internal kernel definitions
+ 
+-using namespace std;
+ #include <freehdl/kernel-error.hh>
+ #include <freehdl/kernel-db.hh>
+ #include <freehdl/kernel-sig-info.hh>
+--- a/std/internal_textio.cc
++++ b/std/internal_textio.cc
+@@ -10,6 +10,10 @@
+ #include <freehdl/kernel-name-stack.hh>
+ #include <freehdl/kernel-register.hh>
+ 
++using std::ios;
++using std::cin;
++using std::cout;
++
+ /* package :std:textio */
+ 
+ /* Definitions for access type :std:textio:line */
+--- a/std/vhdl_types.cc
++++ b/std/vhdl_types.cc
+@@ -12,6 +12,9 @@
+ #include <freehdl/kernel-register.hh>
+ 
+ 
++using std::ios;
++using std::ifstream;
++using std::ofstream;
+ 
+ /* *************************************************************
+  *  Some global functions
+--- a/v2cc/mapping.cc
++++ b/v2cc/mapping.cc
+@@ -34,7 +34,12 @@
+ #include <iostream>
+ #include <stdlib.h>
+ 
+-using namespace std;
++using std::string;
++using std::list;
++using std::map;
++using std::istream;
++using std::ifstream;
++using std::cerr;
+ 
+ v2cc_mapper::v2cc_mapper ()
+ {
+--- a/v2cc/v2cc.cc
++++ b/v2cc/v2cc.cc
+@@ -35,7 +35,6 @@
+ 
+ */
+ 
+-using namespace std;
+ 
+ #if HAVE_MALLOC_H
+ #include <malloc.h>
+--- a/v2cc/v2cc-const-fold.cc
++++ b/v2cc/v2cc-const-fold.cc
+@@ -16,6 +16,9 @@
+ #include "v2cc-util.h"
+ 
+ 
++using std::cerr;
++using std::max;
++using std::min;
+ 
+ // Used to generate error messages
+ extern vaul_error_printer codegen_error;
+--- a/v2cc/v2cc-decl.cc
++++ b/v2cc/v2cc-decl.cc
+@@ -13,6 +13,9 @@
+ #include "mapping.h"
+ #include "v2cc-util.h"
+ 
++using std::endl;
++using std::min;
++using std::max;
+ 
+ void test (RegionStack &rstack)
+ {
+--- a/v2cc/v2cc-explore.cc
++++ b/v2cc/v2cc-explore.cc
+@@ -15,7 +15,6 @@
+ #include "mapping.h"
+ #include "v2cc-util.h"
+ 
+-using namespace std;
+ 
+ // Used to generate error messages
+ extern vaul_error_printer codegen_error;
+--- a/v2cc/v2cc.h
++++ b/v2cc/v2cc.h
+@@ -1,7 +1,17 @@
+ #ifndef V2CC_HEADER
+ #define V2CC_HEADER
+ 
+-using namespace std;
++using std::vector;
++using std::list;
++using std::string;
++using std::pair;
++using std::string;
++using std::set;
++using std::less;
++using std::deque;
++using std::binary_function;
++using std::map;
++using std::binary_function;
+ 
+ #include <freehdl/vaul.h>
+ #include "mapping.h"
+--- a/v2cc/v2cc-qid.cc
++++ b/v2cc/v2cc-qid.cc
+@@ -4,6 +4,7 @@
+ #include "v2cc-util.h"
+ 
+ 
++using std::endl;
+ 
+ // ******************************************************************************************
+ // Name: m_qid , generic function
+--- a/v2cc/v2cc-util.cc
++++ b/v2cc/v2cc-util.cc
+@@ -9,6 +9,9 @@
+ 
+ #include "v2cc-util.h"
+ 
++using std::endl;
++using std::hex;
++using std::dec;
+ 
+ // ******************************************************************************************
+ // Some global variables
+--- a/v2cc/v2cc-util.h
++++ b/v2cc/v2cc-util.h
+@@ -2,13 +2,18 @@
+ #ifndef V2CC_UTIL_H 
+ #define V2CC_UTIL_H
+ 
+-using namespace std;
+ 
+ #include <sstream>
+ #include <iomanip>
+ #include <freehdl/vaul.h>
+ #include "v2cc-chunk.h"
+ 
++using std::stringstream;
++using std::setprecision;
++using std::showpoint;
++using std::ofstream;
++using std::cout;
++
+ // ******************************************************************************************
+ // Some global variables
+ // ******************************************************************************************
+--- a/vaul/bison-parser.cc
++++ b/vaul/bison-parser.cc
+@@ -86,7 +86,6 @@
+ #include <malloc.h>
+ #endif
+ 
+-using namespace std;
+ 
+ #define YYINITDEPTH 10000
+ #define YYMAXDEPTH 100000
+--- a/vaul/bison-parser.yy
++++ b/vaul/bison-parser.yy
+@@ -49,7 +49,6 @@
+ #include <malloc.h>
+ #endif
+ 
+-using namespace std;
+ 
+ #define YYINITDEPTH 10000
+ #define YYMAXDEPTH 100000
+--- a/vaul/printer.cc
++++ b/vaul/printer.cc
+@@ -27,7 +27,8 @@
+ #include <string.h>
+ #include <sstream>
+ 
+-using namespace std;
++using std::ostringstream;
++using std::ostream;
+ 
+ void vaul_printer::printf (const char *fmt, ...)
+ {
+--- a/vaul/tree.cc
++++ b/vaul/tree.cc
+@@ -31,7 +31,7 @@
+ #include <assert.h>
+ #include <stdlib.h>
+ 
+-using namespace std;
++using std::ostream;
+ 
+ vaul_id_set::vaul_id_set(int dummy)
+ {

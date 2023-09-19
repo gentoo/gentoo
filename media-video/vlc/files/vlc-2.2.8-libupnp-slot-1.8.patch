@@ -1,0 +1,24 @@
+--- a/modules/services_discovery/upnp.hpp	2015-05-19 15:32:38.000000000 +0200
++++ b/modules/services_discovery/upnp.hpp	2017-12-09 14:07:08.551654458 +0100
+@@ -28,8 +28,8 @@
+ #include <vector>
+ #include <string>
+ 
+-#include <upnp/upnp.h>
+-#include <upnp/upnptools.h>
++#include <upnp-1.8/upnp.h>
++#include <upnp-1.8/upnptools.h>
+ 
+ #include <vlc_common.h>
+ 
+--- a/configure.ac	2017-12-09 14:09:12.956370304 +0100
++++ b/configure.ac	2017-12-09 14:13:25.236710362 +0100
+@@ -4046,7 +4046,7 @@
+ dnl
+ dnl UPnP Plugin (Intel SDK)
+ dnl
+-PKG_ENABLE_MODULES_VLC([UPNP], [upnp], [libupnp], [Intel UPNP SDK],[auto])
++PKG_ENABLE_MODULES_VLC([UPNP], [upnp], [libupnp-1.8], [Intel UPNP SDK],[auto])
+ 
+ EXTEND_HELP_STRING([Misc options:])
+ 

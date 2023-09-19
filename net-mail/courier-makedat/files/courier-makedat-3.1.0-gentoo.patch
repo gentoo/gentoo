@@ -1,0 +1,105 @@
+--- a/Makefile.am	2023-01-23 20:26:38.281754514 +0100
++++ b/Makefile.am	2023-01-23 20:56:23.015425918 +0100
+@@ -10,7 +10,7 @@
+ 
+ HTML2TXT=elinks -dump -no-numbering -no-references
+ 
+-SUBDIRS=libs/numlib libs/liblock libs/rfc822 libs/rfc2045 @DBSUBDIR@ libs/makedat libs/maildir libs/maildrop
++SUBDIRS=@DBSUBDIR@ libs/makedat
+ 
+ DIST_SUBDIRS=libs/numlib libs/liblock libs/rfc822 libs/rfc2045 libs/gdbmobj libs/bdbobj libs/makedat libs/maildir libs/maildrop
+ 
+@@ -51,21 +51,13 @@
+ uninstall-deliverquota:
+ 	rm -f $(DESTDIR)$(bindir)/deliverquota
+ 
+-MAILDROPHTML=lockmail.html maildiracl.html maildirkw.html \
+-	maildirwatch.html \
+-	maildirmake.html maildropex.html \
+-	maildir.html \
+-	maildropfilter.html maildropgdbm.html maildrop.html mailbot.html \
+-	makemime.html reformail.html reformime.html
++MAILDROPHTML=
+ 
+ if HAVE_DBLIBRARY
+ MAILDROPHTML += makedat.html
+ endif
+ 
+-MAILDROPMAN=lockmail.1 maildirmake.1 maildrop.1 mailbot.1 maildropex.7 \
+-	maildirkw.1 maildirwatch.1 \
+-	maildir.5 \
+-	maildropfilter.7 maildropgdbm.7 makemime.1 reformail.1 reformime.1
++MAILDROPMAN=
+ 
+ if HAVE_DBLIBRARY
+ MAILDROPMAN += makedat.1
+@@ -82,8 +74,8 @@
+ 
+ lib_LTLIBRARIES=@DEVEL_LIBS@
+ 
+-htmldataclean=$(DELIVERQUOTAHTML) \
+-	$(MAILDROPHTML) rfc822.html rfc2045.html
++htmldataclean= \
++	$(MAILDROPHTML)
+ 
+ html_DATA=$(htmldataclean) manpage.css
+ 
+@@ -91,7 +83,7 @@
+ html_DATA += makedat.html
+ endif
+ 
+-man_MANS=$(DELIVERQUOTAMAN) \
++man_MANS= \
+ 	$(MAILDROPMAN) $(DEVEL_MAN)
+ 
+ if !HAVE_DBLIBRARY
+@@ -108,7 +100,7 @@
+ librfc822_la_LDFLAGS=-rpath $(libdir) -version-info @LIBVERSION_INFO@
+ librfc2045_la_LDFLAGS=-rpath $(libdir) -version-info @LIBVERSION_INFO@
+ 
+-install-data-local: install-man install-deliverquota install-maildrop
++install-data-local: install-man install-maildrop
+ 
+ uninstall-local: uninstall-deliverquota uninstall-maildrop
+ 
+@@ -130,21 +122,10 @@
+ 
+ install-maildrop:
+ 	$(mkinstalldirs) $(DESTDIR)$(bindir)
+-	for f in maildrop mailbot reformail ; do \
+-		$(INSTALL_PROGRAM) libs/maildrop/$$f $(DESTDIR)$(bindir)/$$f ; \
+-	done
+-	$(INSTALL_PROGRAM) libs/liblock/lockmail $(DESTDIR)$(bindir)/lockmail
+-	$(INSTALL_PROGRAM) libs/maildir/maildirmake $(DESTDIR)$(bindir)/maildirmake
+-	$(INSTALL_PROGRAM) libs/maildir/maildirkw $(DESTDIR)$(bindir)/maildirkw
+-	$(INSTALL_PROGRAM) libs/maildir/maildirwatch $(DESTDIR)$(bindir)/maildirwatch
+-	$(INSTALL_PROGRAM) libs/rfc2045/reformime $(DESTDIR)$(bindir)/reformime
+-	$(INSTALL_PROGRAM) libs/rfc2045/makemime $(DESTDIR)$(bindir)/makemime
+ 	test "@USE_DB@@USE_GDBM@" = "00" && exit 0; \
+ 		$(INSTALL_PROGRAM) libs/makedat/makedatprog $(DESTDIR)$(bindir)/makedatprog
+ 	test "@USE_DB@@USE_GDBM@" = "00" && exit 0; \
+ 		$(INSTALL_SCRIPT)  libs/makedat/makedat     $(DESTDIR)$(bindir)/makedat
+-	. libs/maildrop/uidgid ; test -z "$$gid" && exit 0; test -w /etc || exit 0; cd $(DESTDIR)$(bindir) && chgrp $$gid maildrop lockmail
+-	. libs/maildrop/uidgid ; test -z "$$uid" && exit 0; test -w /etc || exit 0; cd $(DESTDIR)$(bindir) && chown $$uid maildrop lockmail && chmod 755 maildrop lockmail
+ 
+ uninstall-maildrop:
+ 	for f in maildrop mailbot maildirmake reformail lockmail makemime reformime maildirkw maildirwatch; do \
+--- a/configure.ac	2023-01-23 20:25:07.119321103 +0100
++++ b/configure.ac	2023-01-23 20:30:33.445719448 +0100
+@@ -129,7 +129,6 @@
+ 	AC_MSG_ERROR([libidn not found])
+ fi
+ 
+-AX_COURIER_UNICODE_VERSION(2.1)
+ 
+ AC_ARG_WITH(plentyofbeer,
+ [  --enable-sendmail=prog       set sendmail location
+@@ -203,7 +202,7 @@
+ 
+ AC_SUBST(REPOSITORY)
+ 
+-AC_CONFIG_SUBDIRS(libs/numlib libs/liblock libs/rfc822 libs/rfc2045 libs/gdbmobj libs/bdbobj libs/makedat libs/maildir libs/maildrop)
++AC_CONFIG_SUBDIRS(libs/gdbmobj libs/bdbobj libs/makedat)
+ 
+ AC_CONFIG_FILES([Makefile
+ 	courier-debuild

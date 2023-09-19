@@ -1,0 +1,20 @@
+# These variable names are chose to be as close as possible to the upstream & Debian options.
+RECEIVER_OPTIONS="--device-index 0 --gain -10 --ppm 0"
+DECODER_OPTIONS="--max-range 360 --fix"
+NET_OPTIONS="--net --net-heartbeat 60 --net-ro-size 1300 --net-ro-interval 0.2 --net-ri-port 0 --net-ro-port 30002 --net-sbs-port 30003 --net-bi-port 30004,30104 --net-bo-port 30005"
+JSON_OPTIONS="--json-location-accuracy 1 --write-json /run/dump1090/"
+
+# See README.md for custom wisdom, or use one of the bundled wisdom files
+WISDOM_FILE=
+[ -f /etc/dump1090-fa/wisdom.local ] && WISDOM_FILE=/etc/dump1090-fa/wisdom.local
+
+# Optional, populate these with your location
+#PIAWARE_LAT=
+#PIAWARE_LON=
+# Or populate file /var/cache/piaware/location.env
+[ -f /var/cache/piaware/location.env ] && source /var/cache/piaware/location.env
+
+if [ -n "$PIAWARE_LAT" -a -n "$PIAWARE_LON" ]
+then
+    POSITION="--lat $PIAWARE_LAT --lon $PIAWARE_LON"
+fi

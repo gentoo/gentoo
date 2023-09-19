@@ -1,0 +1,56 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="save panic try"
+extra_started_commands="reload"
+
+depend() {
+	need localmount
+	after bootmisc
+	before net
+	provide firewall
+}
+
+start_pre() {
+	if [ ! -f ${SANEWALL_CONFIG} ]; then
+		eerror "Not starting sanewall, missing config file ${SANEWALL_CONFIG}."
+		return 1
+	fi
+}
+
+start() {
+	ebegin "Starting sanewall"
+	/usr/sbin/sanewall ${SANEWALL_OPTS} ${SANEWALL_CONFIG} start >/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sanewall"
+	/usr/sbin/sanewall ${SANEWALL_OPTS} stop >/dev/null
+	eend $?
+}
+
+try() {
+	ebegin "Trying sanewall configuration"
+	/usr/sbin/sanewall ${SANEWALL_OPTS} ${SANEWALL_CONFIG} try
+	eend $?
+}
+
+status() {
+	ebegin "Showing sanewall status"
+	/usr/sbin/sanewall ${SANEWALL_OPTS} status
+	eend $?
+}
+
+panic() {
+	ebegin "sanewall panic"
+	/usr/sbin/sanewall ${SANEWALL_OPTS} panic
+	eend $?
+}
+
+save() {
+	ebegin "Saving sanewall configuration"
+	/usr/sbin/sanewall ${SANEWALL_OPTS} save
+	eend $?
+}

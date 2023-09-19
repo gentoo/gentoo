@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Wine</name>
+	</maintainer>
+	<use>
+		<flag name="shared">Install pre-unpacked files which do not need to be copied into the Wine prefix</flag>
+	</use>
+</pkgmetadata>

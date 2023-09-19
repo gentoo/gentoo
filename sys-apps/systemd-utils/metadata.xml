@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>systemd@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="boot">Enable systemd-boot (UEFI boot manager)</flag>
+		<flag name="kmod">Enable kernel module loading via <pkg>sys-apps/kmod</pkg></flag>
+		<flag name="sysusers">Enable systemd-sysusers</flag>
+		<flag name="tmpfiles">Enable systemd-tmpfiles</flag>
+		<flag name="udev">Enable systemd-udev (userspace device manager)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">systemd/systemd</remote-id>
+		<remote-id type="github">systemd/systemd-stable</remote-id>
+	</upstream>
+</pkgmetadata>

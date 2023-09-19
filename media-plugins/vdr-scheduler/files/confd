@@ -1,0 +1,10 @@
+# Global config file for vdr scheduler plugin
+
+############## Global config for vdr-scheduler #########################
+#
+# Restart of VDR is needed after some changes
+
+# Set verbose Loglevel
+#	allowed values: 0..3
+#	default: 0
+#SCHEDULER_LOGLEVEL="0"

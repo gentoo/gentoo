@@ -1,0 +1,26 @@
+From e8a5b2ec185d78c918305cd85962823c6b4ef363 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Fri, 14 Oct 2022 15:15:23 +0100
+Subject: [PATCH] Fix compile failure with -Dsystemd=false
+
+Fixes https://gitlab.gnome.org/World/gnome-firmware/-/issues/47
+---
+ src/gfu-common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gfu-common.c b/src/gfu-common.c
+index dfb1d30..bf83778 100644
+--- a/src/gfu-common.c
++++ b/src/gfu-common.c
+@@ -234,7 +234,7 @@ gfu_common_system_shutdown(GError **error)
+ #else
+ 	g_set_error_literal(error,
+ 			    FWUPD_ERROR,
+-			    FWUPD_ERROR_INVALID_ARGS,
++			    FWUPD_ERROR_NOT_SUPPORTED,
+ 			    "No supported backend compiled in to perform the operation.");
+ #endif
+ 	return val != NULL;
+-- 
+GitLab
+

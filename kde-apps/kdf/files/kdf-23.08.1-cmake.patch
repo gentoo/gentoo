@@ -1,0 +1,28 @@
+From d4379757723826f5bfcd9ab60918b089303a1281 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 14 Sep 2023 22:11:28 +0200
+Subject: [PATCH] Add missing JobWidgets dependency
+
+KDialogJobUiDelegate being used in src/kwikdisk.cpp
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit 18c4fa728d1fc5fbe429965dd252765cc892a117)
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 113b089..69ae470 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,6 +60,7 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED
+     CoreAddons
+     I18n
+     IconThemes
++    JobWidgets
+     KIO
+     KCMUtils
+     Notifications
+-- 
+2.42.0
+

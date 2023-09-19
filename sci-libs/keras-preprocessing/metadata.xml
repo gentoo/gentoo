@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<longdescription lang="en">
+		Keras Preprocessing is the data preprocessing and data augmentation module of the Keras deep learning library. It provides utilities for working with image data, text data, and sequence data.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">keras-team/keras-preprocessing</remote-id>
+	</upstream>
+</pkgmetadata>

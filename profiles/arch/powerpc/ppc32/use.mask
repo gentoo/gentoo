@@ -1,0 +1,41 @@
+# Copyright 2008-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-ppc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# dev-db/mysql doesn't work well on PPC, especially 8.x, but should be fine on PPC64
+-mysql
+
+# Matt Turner <mattst88@gentoo.org> (2022-02-21)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
+
+# Sam James <sam@gentoo.org> (2021-12-07)
+# net-libs/gnome-online-accounts is not marked keyworded on ppc
+gnome-online-accounts
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# media-libs/openexr doesn't work on BE (bug #818424)
+# ...and openscenegraph needs openexr.
+openexr
+osg
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
+# gnome-shell requires rustified librsvg.
+gnome-shell
+
+# James Le Cuirot <chewi@gentoo.org> (2015-01-12)
+# Java is no longer supported on ppc.
+java
+
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
+# keyworded on ppc
+-clisp
+-ecl
+-sbcl

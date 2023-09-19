@@ -1,0 +1,20 @@
+Report the correct version rather than the old libopenaptx version (left over from the fork point).
+https://github.com/iamthehorker/libfreeaptx/commit/c176b7de9c2017d0fc1877659cea3bb6c330aafa.patch
+
+From: Hunter <wardlawhunter@gmail.com>
+Date: Mon, 9 Aug 2021 23:51:49 -0400
+Subject: [PATCH] Fixed libfreeaptx reporting wrong version number
+
+--- a/freeaptx.h
++++ b/freeaptx.h
+@@ -22,8 +22,8 @@
+ #define freeaptx_H
+ 
+ #define freeaptx_MAJOR 0
+-#define freeaptx_MINOR 2
+-#define freeaptx_PATCH 0
++#define freeaptx_MINOR 1
++#define freeaptx_PATCH 1
+ 
+ #include <stddef.h>
+ 

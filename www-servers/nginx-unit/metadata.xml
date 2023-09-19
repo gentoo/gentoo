@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
+	<longdescription>
+		NGINX Unit is a dynamic web and application server, designed to run
+		applications in multiple languages. Unit is lightweight, polyglot, and
+		dynamically configured via API. The design of the server allows
+		reconfiguration of specific application parameters as needed by the
+		engineering or operations.
+	</longdescription>
+	<use>
+		<flag name="php8-1">Support for PHP 8.1</flag>
+		<flag name="php8-2">Support for PHP 8.2</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nginx/unit</remote-id>
+	</upstream>
+</pkgmetadata>

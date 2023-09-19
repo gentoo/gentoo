@@ -1,0 +1,49 @@
+From e4a23de95ac1b1333a8f349a1ead82999bca3862 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Sun, 17 Apr 2022 17:07:28 +0300
+Subject: [PATCH] build: Make execinfo optional
+
+---
+ Makefile | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 3f9d72ce..99048a82 100644
+--- a/Makefile
++++ b/Makefile
+@@ -62,6 +62,8 @@ WITH_SYSTEMWIDE:=no
+ # MUST NOT be surrounded by quotation marks!
+ WITH_SYSTEMDIR:=""
+ 
++WITH_EXECINFO:=yes
++
+ # This will set the build options to create an MacOS .app-bundle.
+ # The app-bundle itself will not be created, but the runtime paths
+ # will be set to expect the game-data in *.app/
+@@ -406,6 +408,7 @@ config:
+ 	@echo "WITH_RPATH = $(WITH_RPATH)"
+ 	@echo "WITH_SYSTEMWIDE = $(WITH_SYSTEMWIDE)"
+ 	@echo "WITH_SYSTEMDIR = $(WITH_SYSTEMDIR)"
++	@echo "WITH_EXECINFO = $(WITH_EXECINFO)"
+ 	@echo "============================"
+ 	@echo ""
+ 
+@@ -492,6 +495,7 @@ release/quake2 : CFLAGS += -DUSE_OPENAL -DDEFAULT_OPENAL_DRIVER='"libopenal.so.1
+ endif
+ endif
+ 
++ifeq ($(WITH_EXECINFO),yes)
+ ifeq ($(YQ2_OSTYPE), Linux)
+ release/quake2 : CFLAGS += -DHAVE_EXECINFO
+ endif
+@@ -523,6 +527,7 @@ ifeq ($(YQ2_OSTYPE), Haiku)
+ release/quake2 : CFLAGS += -DHAVE_EXECINFO
+ release/quake2 : LDLIBS += -lexecinfo
+ endif
++endif
+ 
+ ifeq ($(WITH_RPATH),yes)
+ ifeq ($(YQ2_OSTYPE), Darwin)
+-- 
+2.35.1
+

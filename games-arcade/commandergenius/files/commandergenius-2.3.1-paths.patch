@@ -1,0 +1,11 @@
+diff -Naur a/GsKit/base/utils/FindFile.cpp b/GsKit/base/utils/FindFile.cpp
+--- a/GsKit/base/utils/FindFile.cpp	2019-02-08 15:17:29.000000000 +0000
++++ b/GsKit/base/utils/FindFile.cpp	2019-02-19 23:14:32.299939859 +0000
+@@ -493,7 +493,6 @@
+ #else
+ 	AddToFileList(&basesearchpaths, "${HOME}/.CommanderGenius");
+ #endif
+-	AddToFileList(&basesearchpaths, ".");
+ 	AddToFileList(&basesearchpaths, SYSTEM_DATA_DIR"/commandergenius"); // no use of ${SYSTEM_DATA}, because it is uncommon and could cause confusion to the user
+ #endif
+ }

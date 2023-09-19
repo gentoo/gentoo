@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>philipp.ammann@posteo.de</email>
+    <name>Philipp Ammann</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <changelog>
+      https://download.netsurf-browser.org/netsurf/releases/ChangeLog.txt
+    </changelog>
+  </upstream>
+  <use>
+    <flag name="bmp">
+      Bitmap (BMP and ICO) image support via
+      <pkg>media-libs/libnsbmp</pkg>
+    </flag>
+    <flag name="gtk">Build GTK3 GUI</flag>
+    <flag name="psl">
+      Use public suffix list from <pkg>media-libs/libnspsl</pkg> to
+      detect supercookies (recommended)
+    </flag>
+    <flag name="rosprite">
+      RISC OS Sprite bitmap image support via
+      <pkg>media-libs/librosprite</pkg>
+    </flag>
+    <flag name="svgtiny">
+      Use <pkg>media-libs/libsvgtiny</pkg> instead of
+      <pkg>gnome-base/librsvg</pkg> for SVG support
+    </flag>
+    <flag name="truetype">
+      Use <pkg>media-libs/freetype</pkg> for text in the framebuffer
+      frontend
+    </flag>
+  </use>
+  <longdescription lang="en">
+    NetSurf is a free, open source web browser. It is written in C,
+    has its own layout and rendering engine entirely written from
+    scratch. It is small and capable of handling many of the web
+    standards in use today.
+
+    Whether you want to check your webmail, read the news or post to
+    discussion forums, NetSurf is your lightweight gateway to the
+    world wide web. Actively developed, NetSurf is continually
+    evolving and improving.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>JoMull01@protonmail.com</email>
+		<name>Josiah Mullins</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="av">Adds support for audio and video.</flag>
+		<flag name="dht-node">Enables DHT Bootstrap Node.</flag> 
+		<flag name="key-utils">Builds utilities to create custom keys and profiles</flag>
+		<flag name="log-error">Log level: 1</flag>
+		<flag name="log-warn">Log level: 2</flag>
+		<flag name="log-info">Log level: 3</flag>
+		<flag name="log-debug">Log level: 4</flag>
+		<flag name="log-trace">Log level: 5</flag>
+		<flag name="daemon">Enable the DHT Bootstrap Daemon.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">TokTok/c-toxcore</remote-id>
+	</upstream>
+</pkgmetadata>

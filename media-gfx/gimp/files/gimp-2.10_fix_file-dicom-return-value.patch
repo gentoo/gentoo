@@ -1,0 +1,15 @@
+Issue: https://bugs.gentoo.org/875413
+Upstream issue: https://gitlab.gnome.org/GNOME/gimp/-/issues/8807
+Upstream patch: https://gitlab.gnome.org/GNOME/gimp/-/commit/543f9e37e69b4e57b5e44092542c95bb2052f047
+
+--- a/plug-ins/common/file-dicom.c
++++ b/plug-ins/common/file-dicom.c
+@@ -602,7 +602,7 @@ load_image (const gchar  *filename,
+                                (gchar *) value, samples_per_pixel);
+                   g_free (dicominfo);
+                   fclose (DICOM);
+-                  return NULL;
++                  return -1;
+                 }
+ 
+               break;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="proxy">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>waebbl-gentoo@posteo.net</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
+	<use>
+		<flag name="docstrings">Expose documentation as Python docstrings (recommended)</flag>
+		<flag name="numpy">Implicitly convert passed NumPy arrays to Qt lists</flag>
+		<flag name="vulkan">Generate "QSurface::VulkanSurface" bindings</flag>
+	</use>
+	<upstream>
+		<remote-id type="pypi">shiboken6</remote-id>
+	</upstream>
+</pkgmetadata>

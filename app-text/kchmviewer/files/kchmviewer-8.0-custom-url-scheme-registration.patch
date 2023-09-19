@@ -1,0 +1,59 @@
+From 9ac73e7ad15de08aab6b1198115be2eb44da7afe Mon Sep 17 00:00:00 2001
+From: George Yunaev <gyunaev@ulduzsoft.com>
+Date: Fri, 21 May 2021 15:57:21 -0700
+Subject: [PATCH] Custom URL scheme registration needs to be applied once per
+ https://doc.qt.io/qt-5/qwebengineurlschemehandler.html
+
+---
+ src/viewwindow_webengine.cpp | 20 +++++++++++++-------
+ src/viewwindow_webengine.h   |  3 ---
+ 2 files changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/src/viewwindow_webengine.cpp b/src/viewwindow_webengine.cpp
+index 631d84d..34f3396 100644
+--- a/src/viewwindow_webengine.cpp
++++ b/src/viewwindow_webengine.cpp
+@@ -63,16 +63,22 @@ ViewWindow::ViewWindow( QWidget * parent )
+     m_contextMenuLink = 0;
+     m_storedScrollbarPosition = -1; // see header
+ 
+-    // Use our network emulation layer. I don't know if we transfer the ownership when we install it,
+-    // so we create one per page. May be unnecessary.
+-    m_provider = new DataProvider_QWebEngine( this );
+-
+-    page()->profile()->installUrlSchemeHandler( EBook_CHM::urlScheme(), m_provider );
+-    page()->profile()->installUrlSchemeHandler( EBook_EPUB::urlScheme(), m_provider );
+-
+     // All links are going through us
+     //page()->setLinkDelegationPolicy( QWebPage::DelegateAllLinks );
+ 
++    // This needs to be done only once
++    static bool providerInstalled = false;
++
++    if ( !providerInstalled )
++    {
++        // Use our network emulation layer. We do not transfer the ownership when we install it. See https://doc.qt.io/qt-5/qwebengineurlschemehandler.html
++        DataProvider_QWebEngine * provider = new DataProvider_QWebEngine( 0 );
++
++        QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( EBook_CHM::urlScheme(), provider );
++        QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( EBook_EPUB::urlScheme(), provider );
++        providerInstalled = true;
++    }
++
+     connect( this, SIGNAL( loadFinished(bool)), this, SLOT( onLoadFinished(bool)) );
+ 
+     // Search results highlighter
+diff --git a/src/viewwindow_webengine.h b/src/viewwindow_webengine.h
+index 0adea31..3e96690 100644
+--- a/src/viewwindow_webengine.h
++++ b/src/viewwindow_webengine.h
+@@ -128,9 +128,6 @@ class ViewWindow : public QWebEngineView
+         // It is set to -1 if no scrollbar position has been set and the page is not loaded yet
+         // It is set to 0 if no scrollbar position has been set and the page is loaded already
+         int						m_storedScrollbarPosition;
+-
+-        // Data provider
+-        DataProvider_QWebEngine * m_provider;
+ };
+ 
+ #endif // VIEWWINDOW_WEBENGINE_H

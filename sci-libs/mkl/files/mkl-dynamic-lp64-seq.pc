@@ -1,0 +1,10 @@
+prefix=@PREFIX@
+exec_prefix=${prefix}
+includedir=${prefix}/include
+
+Name: mkl-dynamic-lp64-seq
+Description: Intel(R) Math Kernel Library
+Version: Gentoo
+URL: https://software.intel.com/en-us/mkl
+Libs: -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
+Cflags: -I${includedir}

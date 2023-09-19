@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
+	<use>
+		<flag name="asm">Enable use of hand optimized assembly routines (faster execution)</flag>
+		<flag name="cpudetection">
+			Enables runtime CPU detection (useful for binpkgs, compatibility on other CPUs).
+
+			This only works on amd64/x86 at present.
+
+			If this flag is enabled, GMP will work on a variety of amd64/x86 CPUs and load accelerated
+			routines for use at runtime depending on the CPU in use. This makes it suitable
+			for binary packages (binpkgs).
+
+			If this flag is disabled, GMP will be tuned for the CPU being used at build-time
+			and may not be usable on other machines.
+		</flag>
+		<flag name="pic">Force static libraries to be built as PIC to avoid TEXTRELs.</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gmplib:gmp</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,66 @@
+--- a/mp32ogg
++++ b/mp32ogg
+@@ -6,6 +6,10 @@
+ # <http://www.opensource.org/licenses/artistic-license.html>
+ 
+ # ChangeLog
++# 0.11-gentoo-r2
++#     * Mathias Hablützel <mhk@mathiashabluetzel.ch>:
++#       Support for german umlaut
++#
+ # 0.11-gentoo
+ #     * Jeremy Huddleston <eradicator@gentoo.org>:
+ #       Added support for mpg321
+@@ -82,13 +86,18 @@
+ # 0.1
+ #     First Release
+ 
+-$version = "v0.11-gentoo";
++$version = "v0.11-gentoo-r2";
+ 
+ use MP3::Info;
+ use File::Find ();
+ use File::Basename;
+ use Getopt::Long;
+ use String::ShellQuote;
++use Encode;
++use POSIX qw/setlocale LC_CTYPE/;
++use I18N::Langinfo qw/langinfo CODESET/;
++
++setlocale(LC_CTYPE, '');
+ 
+ use_winamp_genres();
+ 
+@@ -111,6 +120,7 @@
+ 		"lowercase",
+ 		"no-replace",
+ 		"verbose",
++              "preserve-timestamp",
+ 		"<>", \&checkfile);
+ 
+ sub showhelp() {
+@@ -123,7 +133,7 @@
+ 	print "                         and %l with artist, title, and album name\n";
+ 	print "                         for the track\n";
+ 	print "--lowercase              Force lowercase filenames when using --rename\n";
+-	print "--verbose		Verbose output\n";
++	print "--verbose                Verbose output\n";
+ 	print "--help                   Display this help message\n";
+ 	exit;
+ 
+@@ -160,6 +170,15 @@
+ 
+ 	$info = get_mp3tag($mp3file);
+ 	$fileinfo = get_mp3info($mp3file);
++	# Sanity checking: Is this file really an MP3 file?
++	die "Could not determine MP3 version, aborting" if ($fileinfo->{VERSION}=="");
++
++        # get_mp3info returns magical Perl UTF-8 strings, but this script
++        # really wants to deal with plain old sequences-of-octets, so encode
++        # those strings.
++        for $key (keys %$info) {
++            $info->{$key} = encode(langinfo(CODESET), $info->{$key});
++        }
+ 
+ 	$_ = $filename;
+ 

@@ -1,0 +1,7 @@
+# /etc/conf.d/unbound-telemetry: Configuration file for unbound-telemetry daemon
+
+# the args to pass to the unbound-telemetry daemon (see unbound-telemetry --help)
+unbound_telemetry_args="tcp"
+
+# example for UNIX socket (unbound needs to be set up accordingly)
+#unbound_telemetry_args="uds --bind=127.0.0.1:9167  --control-interface=/run/unbound/remote-control"

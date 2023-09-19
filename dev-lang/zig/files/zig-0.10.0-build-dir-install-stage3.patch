@@ -1,0 +1,42 @@
+From: Eric Joldasov <bratishkaerik@getgoogleoff.me>
+
+Install 'zig' binary in 'build_dir/stage3' directory so that we can find it and use for testing.
+Also split "add_custom_target(stage3 ALL" and command that it invokes, so that it won't retry it during installation,
+as target will be considered not out-of-date. (Bug https://bugs.gentoo.org/890457 and https://bugs.gentoo.org/890459).
+Upstream PR https://github.com/ziglang/zig/pull/14255.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1094,10 +1094,14 @@ set(ZIG_BUILD_ARGS
+ )
+ 
+ add_custom_target(stage3 ALL
+-    COMMAND zig2 build compile ${ZIG_BUILD_ARGS}
+-    DEPENDS zig2
+-    COMMENT STATUS "Building stage3"
+-    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
++  DEPENDS "${CMAKE_BINARY_DIR}/stage3/bin/zig"
++)
++
++add_custom_command(
++  OUTPUT "${CMAKE_BINARY_DIR}/stage3/bin/zig"
++  COMMAND zig2 build --prefix "${CMAKE_BINARY_DIR}/stage3" ${ZIG_BUILD_ARGS}
++  COMMENT STATUS "Building stage3"
++  WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+ )
+ 
+ install(CODE "set(ZIG_EXECUTABLE \"${ZIG_EXECUTABLE}\")")
+
+--- a/build.zig
++++ b/build.zig
+@@ -148,10 +148,6 @@ pub fn build(b: *Builder) !void {
+     };
+ 
+     const exe = b.addExecutable("zig", main_file);
+-
+-    const compile_step = b.step("compile", "Build the self-hosted compiler");
+-    compile_step.dependOn(&exe.step);
+-
+     exe.stack_size = stack_size;
+     exe.strip = strip;
+     exe.sanitize_thread = sanitize_thread;

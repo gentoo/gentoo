@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+
+  <upstream>
+    <maintainer status="active">
+      <email>michael@orlitzky.com</email>
+      <name>Michael Orlitzky</name>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

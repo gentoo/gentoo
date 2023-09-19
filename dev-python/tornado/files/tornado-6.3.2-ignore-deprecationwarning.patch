@@ -1,0 +1,12 @@
+https://src.fedoraproject.org/rpms/python-tornado/raw/rawhide/f/Do-not-turn-DeprecationWarning-into-Exception.patch
+--- a/tornado/test/runtests.py
++++ b/tornado/test/runtests.py
+@@ -126,7 +126,6 @@
+     # Tornado generally shouldn't use anything deprecated, but some of
+     # our dependencies do (last match wins).
+     warnings.filterwarnings("ignore", category=DeprecationWarning)
+-    warnings.filterwarnings("error", category=DeprecationWarning, module=r"tornado\..*")
+     warnings.filterwarnings("ignore", category=PendingDeprecationWarning)
+     warnings.filterwarnings(
+         "error", category=PendingDeprecationWarning, module=r"tornado\..*"
+

@@ -1,0 +1,307 @@
+From a174f9ced333da8dda20255bd97c075d690da2f8 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 1 Oct 2017 03:17:03 +1300
+Subject: Fix test failures under Perl 5.26+ without '.' in @INC
+
+Bug: https://github.com/gbarr/perl-Convert-ASN1/issues/33
+Bug: https://bugs.gentoo.org/613638
+Bug: https://github.com/gbarr/perl-Convert-ASN1/pull/36
+---
+ t/00prim.t       | 2 +-
+ t/01tag.t        | 2 +-
+ t/02seq.t        | 2 +-
+ t/03seqof.t      | 2 +-
+ t/04opt.t        | 2 +-
+ t/05time.t       | 2 +-
+ t/06bigint.t     | 2 +-
+ t/08set.t        | 2 +-
+ t/09contr.t      | 2 +-
+ t/10choice.t     | 2 +-
+ t/11explicit.t   | 2 +-
+ t/11indef.t      | 2 +-
+ t/12der.t        | 2 +-
+ t/13utf8.t       | 2 +-
+ t/14any.t        | 2 +-
+ t/15extseq.t     | 2 +-
+ t/16extset.t     | 2 +-
+ t/17extchoice.t  | 2 +-
+ t/18tagdefault.t | 2 +-
+ t/99misc.t       | 2 +-
+ t/x509.t         | 2 +-
+ 21 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/t/00prim.t b/t/00prim.t
+index 904c9c6..e5468f7 100644
+--- a/t/00prim.t
++++ b/t/00prim.t
+@@ -8,7 +8,7 @@ use Convert::ASN1 qw(:all);
+ 
+ print "1..186\n";
+ 
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ ntest 1, 129,      asn_tag(ASN_CONTEXT, 1);
+ ntest 2, 0x201f,   asn_tag(ASN_UNIVERSAL, 32);
+diff --git a/t/01tag.t b/t/01tag.t
+index 40e28a0..0a44729 100644
+--- a/t/01tag.t
++++ b/t/01tag.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..21\n";
+ 
+diff --git a/t/02seq.t b/t/02seq.t
+index bc21712..4585195 100644
+--- a/t/02seq.t
++++ b/t/02seq.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..18\n";
+ 
+diff --git a/t/03seqof.t b/t/03seqof.t
+index 66683b6..9f85c48 100644
+--- a/t/03seqof.t
++++ b/t/03seqof.t
+@@ -4,7 +4,7 @@
+ # Test that the primitive operators are working
+ #
+ 
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ use Convert::ASN1;
+ 
+diff --git a/t/04opt.t b/t/04opt.t
+index 7f23fca..ba2f958 100644
+--- a/t/04opt.t
++++ b/t/04opt.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..16\n"; # This testcase needs more tests
+ 
+diff --git a/t/05time.t b/t/05time.t
+index f444e7f..082b4e7 100644
+--- a/t/05time.t
++++ b/t/05time.t
+@@ -10,7 +10,7 @@ use Convert::ASN1 qw(:all);
+ 
+ print "1..24\n";
+ 
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ my $t = 1;
+ 
+diff --git a/t/06bigint.t b/t/06bigint.t
+index f9aeba3..bde99f6 100644
+--- a/t/06bigint.t
++++ b/t/06bigint.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ $^W=0 if $] < 5.005; # BigInt in 5.004 has undef issues
+ 
+diff --git a/t/08set.t b/t/08set.t
+index b35a7ba..ee6af6e 100644
+--- a/t/08set.t
++++ b/t/08set.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..13\n";
+ 
+diff --git a/t/09contr.t b/t/09contr.t
+index 2213c7e..47cb280 100644
+--- a/t/09contr.t
++++ b/t/09contr.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..4\n";
+ 
+diff --git a/t/10choice.t b/t/10choice.t
+index 6ceeb6d..5e0a050 100644
+--- a/t/10choice.t
++++ b/t/10choice.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..10\n";
+ 
+diff --git a/t/11explicit.t b/t/11explicit.t
+index 7e24506..8c60493 100644
+--- a/t/11explicit.t
++++ b/t/11explicit.t
+@@ -1,6 +1,6 @@
+ #!/usr/local/bin/perl
+ 
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ use Convert::ASN1;
+ 
+diff --git a/t/11indef.t b/t/11indef.t
+index 7c3886d..4a33eec 100644
+--- a/t/11indef.t
++++ b/t/11indef.t
+@@ -4,7 +4,7 @@
+ # Test that indefinite length encodings can be decoded
+ #
+ 
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ use Convert::ASN1;
+ my @zz = ( 0, 0 );
+diff --git a/t/12der.t b/t/12der.t
+index b7d1b79..f2f9716 100644
+--- a/t/12der.t
++++ b/t/12der.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..18\n";
+ 
+diff --git a/t/13utf8.t b/t/13utf8.t
+index 1f62042..6fdb596 100644
+--- a/t/13utf8.t
++++ b/t/13utf8.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ if ($] < 5.007) {
+   print "1..0\n";
+diff --git a/t/14any.t b/t/14any.t
+index 4147764..05370ba 100644
+--- a/t/14any.t
++++ b/t/14any.t
+@@ -4,7 +4,7 @@
+ # Check whether the ANY DEFINED BY syntax is working
+ #
+ 
+-BEGIN { require 't/funcs.pl'}
++BEGIN { require './t/funcs.pl'}
+ 
+ use Convert::ASN1;
+ 
+diff --git a/t/15extseq.t b/t/15extseq.t
+index 6060793..2b98854 100644
+--- a/t/15extseq.t
++++ b/t/15extseq.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..27\n";
+ 
+diff --git a/t/16extset.t b/t/16extset.t
+index c57ac0c..cd2caa2 100644
+--- a/t/16extset.t
++++ b/t/16extset.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..27\n";
+ 
+diff --git a/t/17extchoice.t b/t/17extchoice.t
+index 66bd9c5..7528d72 100644
+--- a/t/17extchoice.t
++++ b/t/17extchoice.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..19\n";
+ 
+diff --git a/t/18tagdefault.t b/t/18tagdefault.t
+index 6a1fa3b..a589920 100644
+--- a/t/18tagdefault.t
++++ b/t/18tagdefault.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..25\n";
+ 
+diff --git a/t/99misc.t b/t/99misc.t
+index 4b67aba..c06bd8e 100644
+--- a/t/99misc.t
++++ b/t/99misc.t
+@@ -5,7 +5,7 @@
+ #
+ 
+ use Convert::ASN1;
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ print "1..2\n";
+ 
+diff --git a/t/x509.t b/t/x509.t
+index 3fd5ba0..0b9bfeb 100644
+--- a/t/x509.t
++++ b/t/x509.t
+@@ -2,7 +2,7 @@
+ 
+ print "1..26\n";
+ 
+-BEGIN { require 't/funcs.pl' }
++BEGIN { require './t/funcs.pl' }
+ 
+ use Convert::ASN1;
+ 
+-- 
+2.14.1
+

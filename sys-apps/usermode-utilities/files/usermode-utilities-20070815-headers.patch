@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/580816
+
+include headers needed by targets
+
+--- b/uml_net/ethertap.c
++++ a/uml_net/ethertap.c
+@@ -13,6 +13,7 @@
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <net/if.h>
++#include <sys/select.h>
+ #include "host.h"
+ #include "output.h"
+ 
+
+for major/minor macros
+
+--- b/uml_net/host.c
++++ a/uml_net/host.c
+@@ -10,6 +10,7 @@
+ #include <ctype.h>
+ #include <sys/wait.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include "output.h"
+ #include "host.h"
+ 

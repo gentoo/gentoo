@@ -1,0 +1,31 @@
+From 2974fba837aef46711d9e1b26cd367aab68ba53a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 19 Dec 2018 13:36:12 +0100
+Subject: [PATCH] Disable install misc files by cmake
+
+AUTHORS, README, Changelog etc. are handled by distribution packages.
+---
+ CMakeLists.txt | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 91a732ab..c69c168c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -114,13 +114,6 @@ install(
+ 		kile2.0-5_upd.pl
+ 	DESTINATION ${KDE_INSTALL_DATAROOTDIR}/kconf_update)
+ 
+-install(FILES
+-		AUTHORS
+-		ChangeLog
+-		README
+-		README.cwl
+-		kile-remote-control.txt
+-	DESTINATION ${KDE_INSTALL_DATAROOTDIR}/doc/kile)
+ 
+ ki18n_install(po)
+ 
+-- 
+2.38.1
+

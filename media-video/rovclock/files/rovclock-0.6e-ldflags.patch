@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 7d2a21e..5912f71 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,7 @@ CFLAGS = -O2 -Wall -Wstrict-prototypes $(DEFS)
+ all: $(PROG)
+ 
+ $(PROG): $(SRCS)
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ $(SRCS): $(HDRS)
+ 

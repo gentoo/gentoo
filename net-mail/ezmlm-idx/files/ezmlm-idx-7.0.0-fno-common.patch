@@ -1,0 +1,40 @@
+fix build with -fno-common
+
+--- a/ezmlm-get.c	2021-05-24 12:07:05.245657000 +0200
++++ b/ezmlm-get.c	2021-05-24 12:07:11.477657000 +0200
+@@ -125,7 +125,7 @@
+ 
+ int act = AC_NONE;		/* Action we do */
+ int flageditor = 0;		/* if we're invoked for within dir/editor */
+-struct stat st;
++static struct stat st;
+ 
+ int flaglocked = 0;		/* if directory is locked */
+ int flagq = 0;			/* don't use 'quoted-printable' */
+@@ -157,7 +157,7 @@
+ substdio ssindex;
+ char indexbuf[1024];
+ 
+-int fdlock;
++static int fdlock;
+ 
+ void lockup(void)
+ /* lock unless locked */
+--- a/idxthread.c	2021-05-24 12:06:55.169657000 +0200
++++ b/idxthread.c	2021-05-24 12:07:09.197657000 +0200
+@@ -39,13 +39,13 @@
+ 
+ static char strnum[FMT_ULONG];
+ 
+-struct stat st;
++static struct stat st;
+ 			/* if no data, these may be the entire table, so */
+ 			/* need to be static */
+ static subentry sdummy;
+ static authentry adummy;
+ 
+-int fdlock;
++static int fdlock;
+ 
+ /* NOTE: These do NOT prevent double locking */
+ static void lockup(void)

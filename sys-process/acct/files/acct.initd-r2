@@ -1,0 +1,65 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+ : ${ACCT_LOG:=/var/account/pacct}
+ : ${REPORT_OPTS:="--sort-real-time --list-all-names --percentage"}
+
+extra_started_commands="report"
+
+depend() {
+	need localmount
+}
+
+_checkconfig() {
+	if [ -z "${ACCT_LOG}" ]; then
+		eerror "No accounting file specified!"
+		return 1
+	fi
+
+	checkpath -f -m 600 "${ACCT_LOG}"
+}
+
+_get_service_value() {
+	local _name=$1
+
+	local _default_value=
+	if [ -n "${2}" ]; then
+		_default_value=$2
+	fi
+
+	local _service_value=$(service_get_value ${_name})
+	if [ -n "${_service_value}" ]; then
+		echo "${_service_value}"
+	else
+		echo "${_default_value}"
+	fi
+
+	return 0
+}
+
+ACCT_LOG=$(_get_service_value ACCT_LOG "${ACCT_LOG}")
+
+start_pre() {
+	_checkconfig || return 1
+}
+
+start() {
+	ebegin "Starting accounting"
+	accton "${ACCT_LOG}" >/dev/null
+	eend $?
+}
+
+start_post() {
+	service_set_value ACCT_LOG "${ACCT_LOG}"
+}
+
+stop() {
+	ebegin "Stopping accounting"
+	accton off >/dev/null
+	eend $?
+}
+
+report() {
+	sa ${REPORT_OPTS} "${ACCT_LOG}"
+}

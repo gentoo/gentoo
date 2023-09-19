@@ -1,0 +1,17 @@
+diff --git a/Makefile.PL b/Makefile.PL
+index 31d9c74..91ac2b4 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -12,11 +12,7 @@ use Symbol qw(gensym);
+ # the Net-SSLeay loadable object on Windows
+ my $win_link_statically = 0;
+ 
+-my $tests = prompt(
+-  "Do you want to run external tests?\n".
+-  "These tests *will* *fail* if you do not have network connectivity.",
+-  'n',
+-) =~ /^y/i ? 't/*/*.t t/*/*/*.t' : 't/local/*.t t/handle/local/*.t';
++my $tests = ( 'yes' eq ( $ENV{NETWORK_TESTS} || '' ) ) ? 't/*/*.t t/*/*/*.t' : 't/local/*.t t/handle/local/*.t';
+ 
+ my %eumm_args = (
+   NAME => 'Net::SSLeay',

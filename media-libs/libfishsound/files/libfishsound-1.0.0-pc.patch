@@ -1,0 +1,13 @@
+This will avoid including -I/usr/include/FLAC in `pkg-config --cflags fishsound` since
+FLAC/assert.h will collide with system assert.h.
+
+--- a/fishsound.pc.in
++++ b/fishsound.pc.in
+@@ -5,7 +5,6 @@
+ 
+ Name: fishsound
+ Description: Encode and decode Vorbis, Speex, FLAC audio
+-Requires: @fishsound_pkgdeps@
+ Version: @VERSION@
+ Libs: -L${libdir} -lfishsound
+ Libs.private: @VORBIS_LIBS@ @SPEEX_LIBS@ @FLAC_LIBS@

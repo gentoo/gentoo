@@ -1,0 +1,20 @@
+diff -ru yubihsm-shell-2.4.0-orig/cmake/SecurityFlags.cmake yubihsm-shell-2.4.0/cmake/SecurityFlags.cmake
+--- yubihsm-shell-2.4.0-orig/cmake/SecurityFlags.cmake	2023-04-07 20:11:44.438751635 +0200
++++ yubihsm-shell-2.4.0/cmake/SecurityFlags.cmake	2023-04-07 20:12:30.588873600 +0200
+@@ -4,7 +4,7 @@
+     CMAKE_C_COMPILER_ID STREQUAL "AppleClang" OR
+     CMAKE_C_COMPILER_ID STREQUAL "GNU")
+ 
+-    add_compile_options (-Wall -Wextra -Werror)
++    add_compile_options (-Wall -Wextra)
+     add_compile_options (-Wformat -Wformat-nonliteral -Wformat-security)
+     add_compile_options (-Wshadow)
+     add_compile_options (-Wcast-qual)
+@@ -13,7 +13,6 @@
+     add_compile_options (-pedantic -pedantic-errors)
+     add_compile_options (-fpie -fpic)
+     if (NOT FUZZ)
+-        add_compile_options(-O2)
+         add_definitions (-D_FORTIFY_SOURCE=2)
+     endif ()
+ 

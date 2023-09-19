@@ -1,0 +1,10 @@
+--- a/spacerider.cpp.old	2007-02-18 11:25:38.000000000 +0100
++++ b/spacerider.cpp	2007-02-18 11:27:00.000000000 +0100
+@@ -17,6 +17,7 @@
+ #include <unistd.h>
+ }
+ 
++int send_score_thread(void *param);
+ 
+ Spacerider::Spacerider(const int argc, char *argv[]) : fullscreen(FULLSCREEN), game_over(false), online_highscore(ONLINE_HIGHSCORE), score_sent(false), name_input(true), highscore_thread_started(false), scroll(0), last_enemy(0), score(0), lives(LIVES), fps(FPS) 
+ {

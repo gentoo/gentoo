@@ -1,0 +1,75 @@
+--- a/configure.in
++++ b/configure.in
+@@ -23,6 +23,9 @@
+ AC_PROG_CC
+ AC_PROG_YACC
+ AC_PROG_LEX
++
++PKG_PROG_PKG_CONFIG
++
+ AC_REQUIRE_CPP
+ AC_AIX
+ ACX_PTHREAD(, AC_MSG_ERROR(cannot find pthread; see the INSTALL notes))
+@@ -51,7 +54,7 @@
+ 	)
+ )
+ if test "$ac_cv_type_in_addr_t" != yes; then
+-	AC_DEFINE_UNQUOTED(in_addr_t, $ac_cv_type_in_addr_t)
++	AC_DEFINE_UNQUOTED([in_addr_t], [$ac_cv_type_in_addr_t], [addr_t])
+ fi
+ 
+ AC_CACHE_CHECK(for socklen_t, ac_cv_type_socklen_t,
+@@ -65,7 +68,7 @@
+ 	)
+ )
+ if test "$ac_cv_type_socklen_t" != yes; then
+-	AC_DEFINE_UNQUOTED(socklen_t, $ac_cv_type_socklen_t)
++	AC_DEFINE_UNQUOTED([socklen_t], [$ac_cv_type_socklen_t], [socklen_t])
+ fi
+ 
+ AC_CACHE_CHECK(for struct sockaddr_storage, ac_cv_sockaddr_storage,
+@@ -79,7 +82,7 @@
+ 	)
+ )
+ if test "$ac_cv_sockaddr_storage" != no; then
+-	AC_DEFINE(HAVE_SOCKADDR_STORAGE)
++	AC_DEFINE(HAVE_SOCKADDR_STORAGE, 1, [have sockaddr_storage])
+ fi
+ 
+ AC_CACHE_CHECK(for struct ether_addr, ac_cv_ether_addr,
+@@ -94,7 +97,7 @@
+ 	)
+ )
+ if test "$ac_cv_ether_addr" != no; then
+-	AC_DEFINE(HAVE_ETHER_ADDR)
++	AC_DEFINE(HAVE_ETHER_ADDR, 1, [have ether_addr])
+ fi
+ 
+ dnl Check for network system libraries.
+@@ -144,20 +147,21 @@
+ case "$ac_cv_have_curses" in
+ 
+ slang)
+-	AC_DEFINE(HAVE_SLCURSES)
+-	AC_DEFINE(HAVE_HAS_COLORS)
++	AC_DEFINE(HAVE_SLCURSES, 1, [have slcurses])
++	AC_DEFINE(HAVE_HAS_COLORS, 1, [have colors])
+ 	;;
+ ncurses)
+-	AC_DEFINE(HAVE_NCURSES)
++	PKG_CHECK_MODULES(ncurses,ncurses, [LIBS="$LIBS $ncurses_LIBS"], [ncurses not found])
++	AC_DEFINE(HAVE_NCURSES, 1, [have ncurses])
+ 	AC_CHECK_FUNCS(has_colors)
+ 	;;
+ n_curses)
+ 	CFLAGS="-I/usr/include/ncurses $CFLAGS"
+-	AC_DEFINE(HAVE_NCURSES)
++	AC_DEFINE(HAVE_NCURSES, 1, [have n_curses])
+ 	AC_CHECK_FUNCS(has_colors)
+ 	;;
+ curses)
+-	AC_DEFINE(HAVE_CURSES)
++	AC_DEFINE(HAVE_CURSES, 1, [have curses])
+ 	AC_CHECK_FUNCS(has_colors)
+ 	;;
+ *)

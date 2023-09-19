@@ -1,0 +1,35 @@
+Tries to manage started service instead of allowing OpenRC to do it.
+https://bugs.gentoo.org/641836
+https://bugs.gentoo.org/649014
+--- a/script/service
++++ b/script/service
+@@ -159,23 +160,6 @@ run_via_sysvinit() {
+    fi
+ }
+ 
+-update_openrc_started_symlinks() {
+-   # maintain the symlinks of /run/openrc/started so that
+-   # rc-status works with the service command as well
+-   if [ -d /run/openrc/started ] ; then
+-      case "${ACTION}" in
+-      start)
+-         if [ ! -h /run/openrc/started/$SERVICE ] ; then
+-            ln -s $SERVICEDIR/$SERVICE /run/openrc/started/$SERVICE || true
+-         fi
+-      ;;
+-      stop)
+-         rm /run/openrc/started/$SERVICE || true
+-      ;;
+-      esac
+-   fi
+-}
+-
+ # When this machine is running systemd, standard service calls are turned into
+ # systemctl calls.
+ if [ -n "$is_systemd" ]
+@@ -210,5 +228,4 @@ then
+    esac
+ fi
+ 
+-update_openrc_started_symlinks
+ run_via_sysvinit

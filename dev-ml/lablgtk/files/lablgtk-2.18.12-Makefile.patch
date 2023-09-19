@@ -1,0 +1,20 @@
+--- a/src/Makefile	2022-12-23 21:39:09.743150707 +0100
++++ b/src/Makefile	2022-12-23 21:39:40.219667855 +0100
+@@ -23,7 +23,7 @@
+ TARGETS = varcc$(XE) lablgtktop$(XE) lablgtk2$(XB) gdk_pixbuf_mlsource$(XE) \
+ 	$(THINITOBJS) build.ml
+ 
+-all: dist byte
++all: dist byte sourceView2Enums.ml
+ world: dist byte $(CAMLBEST)
+ install: findlib-install
+ uninstall: findlib-uninstall
+@@ -617,7 +617,7 @@
+ 			gtk_tags.h gdk_tags.h ml_gtktext.h sourceView_tags.h wrappers.h
+ 
+ $(GTKSOURCEVIEW2COBJS):  ml_glib.h ml_gdk.h ml_gtk.h ml_gobject.h ml_gdkpixbuf.h ml_pango.h \
+-			gtk_tags.h gdk_tags.h ml_gtktext.h sourceView2_tags.h wrappers.h
++			gtk_tags.h gdk_tags.h ml_gtktext.h pango_tags.h sourceView2_tags.h wrappers.h
+ 
+ ml_glib$(XO): glib_tags.h ml_glib.h wrappers.h
+ ml_gobject$(XO): gobject_tags.h ml_gvaluecaml.h wrappers.h

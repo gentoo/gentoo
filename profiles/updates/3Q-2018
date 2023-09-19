@@ -1,0 +1,2 @@
+move app-crypt/sbsigntool app-crypt/sbsigntools
+move x11-apps/radeontop app-misc/radeontop

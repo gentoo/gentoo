@@ -1,0 +1,26 @@
+From ef1c9f03a6be40474486044b6a28780d12107d9b Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 26 Sep 2022 14:07:29 -0400
+Subject: [PATCH] Drop '#include <libaudit.h>' from src/util/apparmor.c
+
+This header does not seem to be required.
+Tested with -Dapparmor=true and -Daudit=true/-Daudit=false.
+
+Bug: https://bugs.gentoo.org/873082
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ src/util/apparmor.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/util/apparmor.c b/src/util/apparmor.c
+index f319ffcf..4b7a7809 100644
+--- a/src/util/apparmor.c
++++ b/src/util/apparmor.c
+@@ -8,7 +8,6 @@
+ 
+ #include <c-rbtree.h>
+ #include <c-stdaux.h>
+-#include <libaudit.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/apparmor.h>

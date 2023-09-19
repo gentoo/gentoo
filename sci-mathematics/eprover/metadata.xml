@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    E is a theorem prover for full first-order logic with equality. It accepts
+    a problem specification, typically consisting of a number of first-order
+    clauses or formulas, and a conjecture, again either in clausal or full
+    first-order form. The system will then try to find a formal proof for the
+    conjecture, assuming the axioms. If a proof is found, the system can
+    provide a detailed list of proof steps that can be individually verified.
+    If the conjecture is existential (i.e. it is of the form "there exists an X
+    with property P"), more recent versions can also provide possible answers
+    (values for X). Development of E started as part of the E-SETHEO project at
+    TUM. The first public release was in in 1998, and the system has been
+    continuously improved ever since. I believe that E now is one of the most
+    powerful and friendly reasoning systems for first-order logic. The prover
+    has successfully participated in many competitions.
+  </longdescription>
+  <use>
+    <flag name="ho">enable support for higher-order logic</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/eprover/eprover/issues/</bugs-to>
+    <remote-id type="github">eprover/eprover</remote-id>
+  </upstream>
+</pkgmetadata>

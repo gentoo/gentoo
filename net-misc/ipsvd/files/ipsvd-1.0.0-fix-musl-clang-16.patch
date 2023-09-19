@@ -1,0 +1,139 @@
+Bug: https://bugs.gentoo.org/897946
+Don't use sig_unblock and other such functions, they are deprecated.
+--- a/src/cdb_make.c
++++ b/src/cdb_make.c
+@@ -15,7 +15,7 @@ int cdb_make_start(struct cdb_make *c,int fd)
+   c->numentries = 0;
+   c->fd = fd;
+   c->pos = sizeof c->final;
+-  buffer_init(&c->b,write,fd,c->bspace,sizeof c->bspace);
++  buffer_init(&c->b,(void *)write,fd,c->bspace,sizeof c->bspace);
+   return seek_set(fd,c->pos);
+ }
+ 
+--- a/src/pathexec_run.c
++++ b/src/pathexec_run.c
+@@ -1,5 +1,6 @@
+ /* Public domain. */
+ 
++#include <unistd.h>
+ #include "error.h"
+ #include "stralloc.h"
+ #include "str.h"
+--- a/src/prot.c
++++ b/src/prot.c
+@@ -1,5 +1,7 @@
+ /* Public domain. */
+ 
++#include <grp.h>
++#include <unistd.h>
+ #include "hasshsgr.h"
+ #include "prot.h"
+ 
+--- a/src/seek_set.c
++++ b/src/seek_set.c
+@@ -1,6 +1,7 @@
+ /* Public domain. */
+ 
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define SET 0 /* sigh */
+--- a/src/sig_block.c
++++ b/src/sig_block.c
+@@ -6,35 +6,23 @@
+ 
+ void sig_block(int sig)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t ss;
+   sigemptyset(&ss);
+   sigaddset(&ss,sig);
+   sigprocmask(SIG_BLOCK,&ss,(sigset_t *) 0);
+-#else
+-  sigblock(1 << (sig - 1));
+-#endif
+ }
+ 
+ void sig_unblock(int sig)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t ss;
+   sigemptyset(&ss);
+   sigaddset(&ss,sig);
+   sigprocmask(SIG_UNBLOCK,&ss,(sigset_t *) 0);
+-#else
+-  sigsetmask(sigsetmask(~0) & ~(1 << (sig - 1)));
+-#endif
+ }
+ 
+ void sig_blocknone(void)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t ss;
+   sigemptyset(&ss);
+   sigprocmask(SIG_SETMASK,&ss,(sigset_t *) 0);
+-#else
+-  sigsetmask(0);
+-#endif
+ }
+--- a/src/sig_pause.c
++++ b/src/sig_pause.c
+@@ -6,11 +6,7 @@
+ 
+ void sig_pause(void)
+ {
+-#ifdef HASSIGPROCMASK
+   sigset_t ss;
+   sigemptyset(&ss);
+   sigsuspend(&ss);
+-#else
+-  sigpause(0);
+-#endif
+ }
+Binary files a/src/sig_pause.o and b/src/sig_pause.o differ
+--- a/src/udpsvd.c
++++ b/src/udpsvd.c
+@@ -268,7 +268,7 @@ int main(int argc, const char **argv, const char *const *envp) {
+     if (user) {
+       bufnum[fmt_ulong(bufnum, ugid.uid)] =0;
+       out(", uid "); out(bufnum);
+-      bufnum[fmt_ulong(bufnum, ugid.gid)] =0;
++      bufnum[fmt_ulong(bufnum, (unsigned long) ugid.gid)] =0;
+       out(", gid "); out(bufnum);
+     }
+     flush(", starting.\n");
+--- a/src/chkshsgr.c
++++ b/src/chkshsgr.c
+@@ -1,5 +1,7 @@
+ /* Public domain. */
+ 
++#define _GNU_SOURCE
++#include <grp.h>
+ #include <unistd.h>
+ 
+ int main()
+--- a/src/tcpsvd.c
++++ b/src/tcpsvd.c
+@@ -1,6 +1,8 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#define _GNU_SOURCE
++#include <grp.h>
+ #include <unistd.h>
+ #include "dns.h"
+ #include "socket.h"
+--- a/src/udpsvd.c
++++ b/src/udpsvd.c
+@@ -1,7 +1,9 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#define _GNU_SOURCE
+ #include <unistd.h>
++#include <grp.h>
+ #include "dns.h"
+ #include "socket.h"
+ #include "ip4.h"

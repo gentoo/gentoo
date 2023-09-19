@@ -1,0 +1,21 @@
+From 5acf351e4b9d099d446f401df690d559ed5dfdad Mon Sep 17 00:00:00 2001
+From: Prasanth R <prasanth.r@timesys.com>
+Date: Thu, 14 Jul 2022 13:34:54 +0530
+Subject: [PATCH] #21804 Add opencv_gapi as dep to samples/cpp
+
+---
+ samples/cpp/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/samples/cpp/CMakeLists.txt b/samples/cpp/CMakeLists.txt
+index c9c4440f22c7..f23b333ca93a 100644
+--- a/samples/cpp/CMakeLists.txt
++++ b/samples/cpp/CMakeLists.txt
+@@ -15,6 +15,7 @@ set(OPENCV_CPP_SAMPLES_REQUIRED_DEPS
+   opencv_calib3d
+   opencv_stitching
+   opencv_dnn
++  opencv_gapi
+   ${OPENCV_MODULES_PUBLIC}
+   ${OpenCV_LIB_COMPONENTS})
+ ocv_check_dependencies(${OPENCV_CPP_SAMPLES_REQUIRED_DEPS})

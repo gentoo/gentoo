@@ -1,0 +1,61 @@
+https://bugs.gentoo.org/879657
+https://github.com/SWI-Prolog/swipl-devel/commit/2328d9d54c8aa368a4bf0165b1b811d1f31ba0f7
+https://github.com/SWI-Prolog/swipl-devel/commit/0d1088443348b71a3624835a19469e2b6cc7e284
+
+From 2328d9d54c8aa368a4bf0165b1b811d1f31ba0f7 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Tue, 10 Jan 2023 14:08:04 +0100
+Subject: [PATCH] cmake: Fix C99 compatibility issues in GCC built-in detection
+
+Future compilers may not support implicit ints or implicit
+function declarations, so avoid them, by using an explicit int
+type and including <alloca.h> for the alloca function.
+--- a/cmake/GCCBuiltins.cmake
++++ b/cmake/GCCBuiltins.cmake
+@@ -22,7 +22,7 @@ check_c_source_compiles(
+     "volatile int i=0; int main() { return 0; }"
+     HAVE_VOLATILE)
+ check_c_source_compiles(
+-    "static inline foo() { return 0; } int main() { return foo(); }"
++    "static inline int foo() { return 0; } int main() { return foo(); }"
+     HAVE_INLINE)
+ check_c_source_compiles(
+     "int main() { void *p = &&lbl; goto *p; lbl: return 0; }"
+@@ -45,7 +45,7 @@ check_visibility()
+ # Builtin functions that lead to conflicts
+ 
+ check_c_source_compiles(
+-    "int main() { char *s = alloca(10); return s!=0; }"
++    "#include <alloca.h>\nint main() { char *s = alloca(10); return s!=0; }"
+     HAVE_ALLOCA)
+ check_c_source_compiles(
+     "#include <math.h>\nint main() { double x; return signbit(x); }"
+
+From 0d1088443348b71a3624835a19469e2b6cc7e284 Mon Sep 17 00:00:00 2001
+From: Jan Wielemaker <J.Wielemaker@vu.nl>
+Date: Wed, 11 Jan 2023 13:30:34 +0100
+Subject: [PATCH] Cleanup some no longer used GCC __builtin checks.
+
+--- a/cmake/GCCBuiltins.cmake
++++ b/cmake/GCCBuiltins.cmake
+@@ -9,12 +9,6 @@ check_c_source_compiles(
+ check_c_source_compiles(
+     "int i=0; int main() { return __builtin_expect(i, 0) ? 0 : 1; }"
+     HAVE___BUILTIN_EXPECT)
+-check_c_source_compiles(
+-    "int i=0; struct {int x[10];} st; int main() { return __builtin_choose_expr(1, i, st); }"
+-    HAVE___BUILTIN_CHOOSE_EXPR)
+-check_c_source_compiles(
+-    "int i=0; int main() { return __builtin_types_compatible_p(typeof(i), int); }"
+-    HAVE___BUILTIN_TYPES_COMPATIBLE_P)
+ check_c_source_compiles(
+     "__thread int i=0; int main() { return 0; }"
+     HAVE___THREAD)
+@@ -48,5 +42,5 @@ check_c_source_compiles(
+     "#include <alloca.h>\nint main() { char *s = alloca(10); return s!=0; }"
+     HAVE_ALLOCA)
+ check_c_source_compiles(
+-    "#include <math.h>\nint main() { double x; return signbit(x); }"
++    "#include <math.h>\nint main() { double x = 0.0; return signbit(x); }"
+     HAVE_SIGNBIT)
+

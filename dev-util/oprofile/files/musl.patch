@@ -1,0 +1,23 @@
+--- oprofile-1.4.0/pe_profiling/operf.cpp.orig	2016-08-08 18:03:27.000000000 +0300
++++ oprofile-1.4.0/pe_profiling/operf.cpp	2020-09-05 12:45:55.237558495 +0300
+@@ -860,9 +860,9 @@
+ {
+ 	if (remove(fpath)) {
+ 		perror("sample data removal error");
+-		return FTW_STOP;
++		return 1;
+ 	} else {
+-		return FTW_CONTINUE;
++		return 0;
+ 	}
+ }
+ 
+@@ -897,7 +897,7 @@
+ 		return;
+ 
+ 	if (!operf_options::append) {
+-                int flags = FTW_DEPTH | FTW_ACTIONRETVAL;
++                int flags = FTW_DEPTH;
+ 		errno = 0;
+ 		if (nftw(previous_sampledir.c_str(), __delete_old_previous_sample_data, 32, flags) !=0 &&
+ 				errno != ENOENT) {

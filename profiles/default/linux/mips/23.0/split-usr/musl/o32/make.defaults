@@ -1,0 +1,6 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="mips-gentoo-linux-musl"
+CHOST_o32="${CHOST}"
+LIBDIR_o32="lib"

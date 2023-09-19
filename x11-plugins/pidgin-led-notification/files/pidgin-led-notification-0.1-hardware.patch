@@ -1,0 +1,34 @@
+--- led-notification-0.1/led-notification.c
++++ led-notification-0.1/led-notification.c
+@@ -54,9 +54,9 @@
+ 	}
+ 
+ 	if(state) {
+-		fputs("1", file);
++		fputs(purple_prefs_get_string("/plugins/gtk/gtk-simom-lednot/led_on"), file);
+ 	} else {
+-		fputs("0", file);
++		fputs(purple_prefs_get_string("/plugins/gtk/gtk-simom-lednot/led_off"), file);
+ 	}
+ 
+ 	fclose(file);
+@@ -155,6 +155,10 @@
+ 
+ 	ent=pidgin_prefs_labeled_entry(vbox2,"File to control led:",
+ 	                              "/plugins/gtk/gtk-simom-lednot/filename",sg);
++	ent=pidgin_prefs_labeled_entry(vbox2,"String to turn led on:",
++		"/plugins/gtk/gtk-simom-lednot/led_on",sg);
++	ent=pidgin_prefs_labeled_entry(vbox2,"String to turn led off:",
++		"/plugins/gtk/gtk-simom-lednot/led_off",sg);
+ 
+ 	gtk_widget_show_all(frame);
+ 	return frame;
+@@ -166,6 +170,8 @@
+ 	purple_prefs_add_string("/plugins/gtk/gtk-simom-lednot/chat", "nick");
+ 	purple_prefs_add_string("/plugins/gtk/gtk-simom-lednot/filename",
+ 	                        "/proc/acpi/asus/mled");
++	purple_prefs_add_string("/plugins/gtk/gtk-simom-lednot/led_on", "1");
++	purple_prefs_add_string("/plugins/gtk/gtk-simom-lednot/led_off", "0");
+ }
+ 
+ static gboolean plugin_load(PurplePlugin *plugin) {

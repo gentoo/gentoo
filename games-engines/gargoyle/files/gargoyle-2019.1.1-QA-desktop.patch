@@ -1,0 +1,11 @@
+--- a/garglk/gargoyle.desktop
++++ b/garglk/gargoyle.desktop
+@@ -4,7 +4,7 @@ Type=Application
+ Name=Gargoyle
+ GenericName=Interactive Fiction interpreter
+ Comment=Interactive Fiction multi-interpreter that supports all major IF formats
+-Icon=gargoyle-house.png
++Icon=gargoyle-house
+ Exec=gargoyle
+ Categories=Game;
+ MimeType=application/x-adrift;application/x-advsys;application/x-agt;application/x-alan;application/x-blorb;application/x-glulx;application/x-hugo;application/x-level9;application/x-magscroll;application/x-tads;application/x-t3vm-image;application/x-zmachine;

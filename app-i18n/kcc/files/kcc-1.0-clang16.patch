@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/871399
+--- a/kcc.c
++++ b/kcc.c
+@@ -33,2 +33,3 @@
+ #include <sys/stat.h>
++#include <unistd.h>
+ 
+@@ -138,4 +139,6 @@
+ #ifdef __STDC__
++int getstr(char *str, register int n, FILE *fp);
+ void error(char *format, ...);
+ #else
++int getstr();
+ void error();
+@@ -152,3 +155,3 @@
+  ---------------------------------------------------------------------*/
+-main(c, v)
++int main(c, v)
+     register int c;

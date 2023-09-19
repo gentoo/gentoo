@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!--maintainer-needed-->
+  <use>
+    <flag name="minimal">Disable bundled drivers and extra libraries (most users don't need these)</flag>
+    <flag name="odbcmanual">Administrator, Internal Structure, Programmer and User documentation</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">lurcher/unixODBC</remote-id>
+  </upstream>
+</pkgmetadata>

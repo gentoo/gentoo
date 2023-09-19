@@ -1,0 +1,13 @@
+http://gcc.gnu.org/ml/gcc/2003-04/msg00518.html
+
+--- a/lib/regex.c
++++ b/lib/regex.c
+@@ -8184,7 +8184,7 @@
+       if (msg_size > errbuf_size)
+         {
+ #if defined HAVE_MEMPCPY || defined _LIBC
+-	  *((char *) __mempcpy (errbuf, msg, errbuf_size - 1)) = '\0';
++	  *((char *) mempcpy (errbuf, msg, errbuf_size - 1)) = '\0';
+ #else
+           memcpy (errbuf, msg, errbuf_size - 1);
+           errbuf[errbuf_size - 1] = 0;

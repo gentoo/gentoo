@@ -1,0 +1,106 @@
+Drop incorrectly quoted chunks which aren't relevant for remotely modern
+systems. Breaks with autoconf-2.72/9999.
+--- a/configure.in
++++ b/configure.in
+@@ -48,24 +48,6 @@ dnl On SCO Unix, there are ELF and COFF binaries.  We want elf to
+ dnl provide for dlopen() and friends.  With help from Tamas Laufer!
+ dnl ****************************************************************
+ 
+-case "$ARCH" in
+-    *sco*|*SCO*)
+-        AC_MSG_CHECKING("SCO-Unix.  See if we need -belf")
+-        old_cflags="$CFLAGS"
+-        CFLAGS="$CFLAGS -belf"
+-        AC_TRY_COMPILE(
+-        [
+-        ],
+-        [
+-        ],
+-        CMFLAGS="$CMFLAGS -belf"
+-        AC_MSG_RESULT(yes),
+-        AC_MSG_RESULT(no)
+-        CFLAGS="$old_cflags")
+-        ;;
+-esac
+-
+-
+ dnl Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+@@ -105,23 +87,22 @@ fi
+ 
+ 
+ AC_ARG_WITH(sdl, [  --with-sdl              Turn on SDL support instead of X11],
+-              sdl_support=yes,
+-              sdl_support=no)
++              [sdl_support=yes],
++              [sdl_support=no])
+ 
+-if test "x$sdl_support" = "xyes"; then
++AS_IF([test "x$sdl_support" = "xyes"], [
+     echo "SDL is ENABLED *******************"
+     IFACEOBJS='$(SDLOBJS)'
+     IFACELIBS='`sdl-config --libs` -lSDL_image'
+     IFACEINC='`sdl-config --cflags` -I./sdl'
+-else
++], [
+     echo "X11 is ENABLED *******************"
+     AC_PATH_X
+     AC_PATH_XTRA
+     IFACEOBJS='$(X11OBJS) $(X11IMAGE)'
+     IFACELIBS='$(XLIBS)'
+     IFACEINC='$(XINC) -I./x11'
+-fi
+-
++])
+ 
+ out_lib=${LIBS}
+ 
+@@ -169,47 +150,6 @@ MCOMMON=./src/Make.common
+ AC_SUBST_FILE(MCOMMON)
+ 
+ 
+-dnl Some specific OS stuff
+-
+-case "$ARCH" in
+-  *hppa*|*hpux*)
+-        # do nothing
+-        ;;
+-  *solaris*)
+-        if test "$GCC" = "yes"; then
+-		AC_MSG_CHECKING("whether we need -fpermissive")
+-		old_cflags="$CFLAGS"
+-		CFLAGS="-fpermissive $CFLAGS"
+-		AC_TRY_RUN(
+-		main()
+-		{ exit(0);
+-		},
+-	        if grep 'option `-fpermissive'"'" config.log >/dev/null; then
+-	           AC_MSG_RESULT(no)
+-	           CFLAGS="$old_cflags"
+-	        else
+-	           CFLAGS="$old_cflags -fpermissive"
+-	           AC_MSG_RESULT(yes)
+-	        fi,
+-	        AC_MSG_RESULT(no)
+-	        CFLAGS="$old_cflags",
+-	        AC_MSG_RESULT(no)
+-	        CFLAGS="$old_cflags")
+-        fi
+-        ;;
+-  *aix*)
+-        # do nothing
+-        ;;
+-  *darwin*)
+-        # do nothing
+-	;;
+-  *)
+-        # do nothing
+-        ;;
+-esac
+-
+-
+-
+ AC_CONFIG_HEADER(src/include/config.h)
+ AC_OUTPUT( \
+     src/Make.common \

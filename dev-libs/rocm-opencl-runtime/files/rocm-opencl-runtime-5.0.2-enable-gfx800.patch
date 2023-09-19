@@ -1,0 +1,16 @@
+#From xuhuisheng
+#at https://github.com/RadeonOpenCompute/ROCm/issues/1659#issuecomment-1041026624
+
+diff --git a/utils/flags.hpp b/utils/flags.hpp
+index 8f0228cc..2eaa47c5 100644
+--- a/utils/flags.hpp
++++ b/utils/flags.hpp
+@@ -245,7 +245,7 @@ release(bool, ROC_SYSTEM_SCOPE_SIGNAL, true,                                  \
+         "Enable system scope for signals (uses interrupts).")                 \
+ release(bool, ROC_SKIP_COPY_SYNC, false,                                      \
+         "Skips copy syncs if runtime can predict the same engine.")           \
+-release(bool, ROC_ENABLE_PRE_VEGA, false,                                     \
++release(bool, ROC_ENABLE_PRE_VEGA, true,                                     \
+         "Enable support of pre-vega ASICs in ROCm path")                      \
+ release(bool, HIP_FORCE_QUEUE_PROFILING, false,                               \
+         "Force command queue profiling by default")                           \

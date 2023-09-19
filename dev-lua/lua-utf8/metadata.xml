@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription lang="en">
+		This module adds UTF-8 support to Lua.
+
+		It use data extracted from Unicode Character Database, and tested on Lua 5.2.3, Lua 5.3.0 and LuaJIT.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">starwing/luautf8</remote-id>
+	</upstream>
+</pkgmetadata>

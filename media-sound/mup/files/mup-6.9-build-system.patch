@@ -1,0 +1,125 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,2 @@
+ SUBDIRS = lib tools src doc mup-input packaging
+-EXTRA_DIST = LICENSE simple.makefile
+-mup_doc_dir = $(datadir)/doc/packages/$(PACKAGE)
+-mup_doc__DATA = LICENSE
++EXTRA_DIST = simple.makefile
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ 
+ AC_PREREQ([2.69])
+ AC_INIT([mup], [6.9], [support@arkkra.com])
+-AM_INIT_AUTOMAKE([-Wall -Werror])
++AM_INIT_AUTOMAKE([-Wall])
+ 
+ # Checks for programs.
+ AC_PROG_CXX
+@@ -16,21 +16,21 @@ AC_PROG_SED
+ AC_PROG_MKDIR_P
+ 
+ AC_PATH_PROGS(GS, [gs gs386], [none])
+-test "$GS" == "none" && AC_MSG_ERROR([required ghostscript program 'gs' is missing])
++test "$GS" = "none" && AC_MSG_ERROR([required ghostscript program 'gs' is missing])
+ AC_PATH_PROG(GROFF, [groff], [none])
+-test "$GROFF" == "none" && AC_MSG_ERROR([required program 'groff' is missing])
++test "$GROFF" = "none" && AC_MSG_ERROR([required program 'groff' is missing])
+ AC_PATH_PROG(BISON, [bison], [none])
+-test "$BISON" == "none" && AC_MSG_ERROR([required program 'bison' is missing])
++test "$BISON" = "none" && AC_MSG_ERROR([required program 'bison' is missing])
+ AC_PATH_PROG(PPMTOGIF, [ppmtogif], [none])
+-test "$PPMTOGIF" == "none" && AC_MSG_ERROR([required program 'ppmtogif' is missing])
++test "$PPMTOGIF" = "none" && AC_MSG_ERROR([required program 'ppmtogif' is missing])
+ AC_PATH_PROG(EXPR, [expr], [none])
+-test "$EXPR" == "none" && AC_MSG_ERROR([required program 'expr' is missing])
++test "$EXPR" = "none" && AC_MSG_ERROR([required program 'expr' is missing])
+ AC_PATH_PROG(SORT, [sort], [none])
+-test "$SORT" == "none" && AC_MSG_ERROR([required program 'sort' is missing])
++test "$SORT" = "none" && AC_MSG_ERROR([required program 'sort' is missing])
+ AC_PATH_PROG(CAT, [cat], [none])
+-test "$CAT" == "none" && AC_MSG_ERROR([required program 'cat' is missing])
++test "$CAT" = "none" && AC_MSG_ERROR([required program 'cat' is missing])
+ AC_PATH_PROG(EGREP, [egrep], [none])
+-test "$EGREP" == "none" && AC_MSG_ERROR([required program 'egrep' is missing])
++test "$EGREP" = "none" && AC_MSG_ERROR([required program 'egrep' is missing])
+ 
+ # Need to know if on Windows to install mupprnt.bat rather than shell script
+ AC_CANONICAL_HOST
+@@ -70,7 +70,7 @@ AS_IF([test "x$enable_mupmate" != xno],
+ 	# Find fltk-config program
+ 	PATH="$fltk_prefix/bin:$PATH"
+ 	AC_PATH_PROG(FLTK_CONFIG, fltk-config, none, $PATH)
+-	test "$FLTK_CONFIG" == "none" && AC_MSG_ERROR([required program 'fltk-config' is missing])
++	test "$FLTK_CONFIG" = "none" && AC_MSG_ERROR([required program 'fltk-config' is missing])
+ 	# Make sure it is the 1.x API, not 2.x
+ 	fltk_api_version="`$FLTK_CONFIG --api-version`"
+ 	fltk_api_major=`echo $fltk_api_version | sed -e 's/\..*//'`
+@@ -79,13 +79,13 @@ AS_IF([test "x$enable_mupmate" != xno],
+ 	AC_SUBST([FLTK_CXXFLAGS], [`$FLTK_CONFIG --cxxflags`])
+ 	# Red Hat/CentOS 7 version of fltk-config doesn't include -lfltk when using --use_image --ldflags, so fix that
+ 	fltk_ldflags="`$FLTK_CONFIG --use-images --ldflags`"
+-	if test "$fltk_ldflags" == "-lfltk_images"
++	if test "$fltk_ldflags" = "-lfltk_images"
+ 	then
+ 		AC_SUBST([FLTK_LDFLAGS], ["-lfltk -lfltk_images"])
+ 	else
+ 		AC_SUBST([FLTK_LDFLAGS], [`$FLTK_CONFIG --use-images --ldflags`])
+ 	fi
+-	test "$build_mac" == "yes" && AC_SUBST([EXTRA_CFLAGS], [-Dunix])
++	test "$build_mac" = "yes" && AC_SUBST([EXTRA_CFLAGS], [-Dunix])
+ 	# Check that libraries that Mupmate needs exist
+ 	AC_CHECK_LIB([fltk], [fl_alphasort], [ ])
+ 	AC_CHECK_LIB([fltk_images], [main], [ ])
+@@ -100,13 +100,13 @@ AS_IF([test "x$enable_mupmate" != xno],
+ 	AC_CHECK_LIB([z], [gzgets], [ ])
+ 
+ 	# Programs for Windows icons for Mupmate
+-	test "$build_windows" == "yes" && test "$PAMTOWINICON" == "none" && test "$PPMWINICON" == "none" && AC_MSG_ERROR([Need either pamtowinicon or ppmtowinicon])
++	test "$build_windows" = "yes" && test "$PAMTOWINICON" = "none" && test "$PPMWINICON" = "none" && AC_MSG_ERROR([Need either pamtowinicon or ppmtowinicon])
+ 	AC_PATH_PROG(XPMTOPPM, xpmtoppm, none, $PATH)
+-	test "$build_windows" == "yes" && test "$XPMTOPPM" == "none" && AC_MSG_ERROR([Need xpmtoppm])
++	test "$build_windows" = "yes" && test "$XPMTOPPM" = "none" && AC_MSG_ERROR([Need xpmtoppm])
+ 	AC_PATH_PROG(PPMTOPGM, ppmtopgm, none, $PATH)
+-	test "$build_windows" == "yes" && test "$PPMTOPGM" == "none" && test "$PAMTOWINICON" == "none" && AC_MSG_ERROR([Need ppmtopgm])
++	test "$build_windows" = "yes" && test "$PPMTOPGM" = "none" && test "$PAMTOWINICON" = "none" && AC_MSG_ERROR([Need ppmtopgm])
+ 	AC_PATH_PROG(WINDRES, i386-mingw32msvc-windres, none, $PATH)
+-	test "$build_windows" == "yes" && test "$WINDRES" == "none" && AC_MSG_ERROR([Need i386-mingw32msvc-windres])
++	test "$build_windows" = "yes" && test "$WINDRES" = "none" && AC_MSG_ERROR([Need i386-mingw32msvc-windres])
+ 	]
+ )
+ 
+@@ -122,7 +122,7 @@ AC_FUNC_MALLOC
+ AC_FUNC_MMAP
+ AC_FUNC_REALLOC
+ AC_CHECK_FUNCS([access alarm atan cos getcwd isascii isspace memcmp memmove memset munmap pow putenv select setenv sin sqrt strcasecmp strchr strcmp strcpy strcspn strdup strerror strncasecmp strncpy strpbrk strrchr strspn strstr strtol tan unlink])
+-test "$build_linux" == "yes" && AC_CHECK_FUNCS([kill sleep waitpid])
++test "$build_linux" = "yes" && AC_CHECK_FUNCS([kill sleep waitpid])
+ 
+ AS_IF([test "x$enable_mupdisp" != xno],
+ 	[
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -208,10 +208,9 @@ uguide_files = \
+ 
+ ps_files = quickref.ps uguide.ps
+ EXTRA_DIST = uguide.t quickref.t charlist $(uguide_files) $(ps_files)
+-mup_doc_dir = $(datadir)/doc/packages/$(PACKAGE)
+-mup_doc__DATA = $(ps_files)
+-mup_uguide_dir = $(mup_doc_dir)/uguide
+-mup_uguide__DATA = $(uguide_files)
++dist_doc_DATA = $(ps_files)
++mup_uguidedir = $(docdir)/uguide
++mup_uguide_DATA = $(uguide_files)
+ 
+ muschar.ps: ../src/include/muschar.h ../tools/doc/mkmuscharps.sh
+ 	../tools/doc/mkmuscharps.sh < ../src/include/muschar.h
+--- a/doc/htmldocs/Makefile.am
++++ b/doc/htmldocs/Makefile.am
+@@ -1,4 +1,4 @@
+ mup_html_docs = blind.html faq.html Macinst.html mupfeat.html overview.html usercomm.html whatsnew.html winrun.html
+-mup_htmldoc_dir = $(datadir)/doc/packages/$(PACKAGE)
++mup_htmldoc_dir = $(htmldir)
+ mup_htmldoc__DATA = $(mup_html_docs)
+ EXTRA_DIST = $(mup_html_docs)

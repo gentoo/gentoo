@@ -1,0 +1,92 @@
+--- a/src/c_make.gen
++++ b/src/c_make.gen
+@@ -200,45 +200,11 @@
+ #### Do not redefine if (a) passed in on command line, or (b)
+ #### defined in an environment variable.
+ 
+-ifneq "$(origin CC)" "environment"
+-CC      = cc
+-endif
+-
+-ifneq "$(origin CPPFLAGS)" "environment"
+-CPPFLAGS=
+-endif
+-
+-ifneq "$(origin CFLAGS)" "environment"
+-CFLAGS  =
+-endif
+-
+-ifneq "$(origin CDEFS)" "environment"
+-CDEFS  =
+-endif
+-
+-ifneq "$(origin CXX)" "environment"
+-CXX	= g++
+-endif
+-
+-ifneq "$(origin CXXFLAGS)" "environment"
+-CXXFLAGS=
+-endif
+-
+-ifneq "$(origin CXXDEFS)" "environment"
+-CXXDEFS= -D__cplusplus
+-endif
+-
+-ifneq "$(origin AR)" "environment"
+-AR      = ar
+-endif
+-
+-ifneq "$(origin ARFLAGS)" "environment"
+-ARFLAGS = rvs
+-endif
+-
+-ifneq "$(origin LDFLAGS)" "environment"
+-LDFLAGS =
+-endif
++CC      ?= cc
++CXX	?= g++
++CXXFLAGS ?=
++AR      ?= ar
++ARFLAGS ?= rvs
+ 
+ #### Delete default suffix rules
+ .SUFFIXES:
+@@ -359,13 +325,13 @@
+ 	  cd $(LOCAL_OBJ); \
+ 	    if $(CC) -o $(LOCAL_BIN)/$(notdir $@) $(LDFLAGS) \
+                $(LD_DIRS) $(filter-out lib%.a, $+) \
+-	       $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) ; then \
++	       $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) $(LIBS) ; then \
+ 			true; else rm -f $(LOCAL_BIN)/$(notdir $@); fi; \
+ 	else \
+ 	  cd $(LOCAL_OBJ); \
+ 	    if $(CXX) -o $(LOCAL_BIN)/$(notdir $@) $(LDFLAGS) \
+                $(LD_DIRS) $(filter-out lib%.a, $+) \
+-	       $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) ; then \
++	       $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) $(LIBS) ; then \
+ 			true; else rm -f $(LOCAL_BIN)/$(notdir $@); fi; \
+ 	fi ;
+ 
+--- a/src/c_make.glm
++++ b/src/c_make.glm
+@@ -8,18 +8,14 @@
+ 
+ SUBDIRS = Common ICM Glimmer Util
+ 
+-CFLAGS = -g -Wall
+-CXXFLAGS = -g -Wall
+-
+-LDFLAGS = -g -lm
++LIBS = -lm
+ 
+ 
+ #AS_BUILD_DIR =$(LOCAL_WORK)
+ INC_IMPORT_DIRS += \
+ 		$(patsubst %, $(LOCAL_WORK)/src/%, $(strip $(SUBDIRS))) \
+                 $(LOCAL_WORK)/inc
+-LIB_IMPORT_DIRS += $(LOCAL_WORK)/lib /usr/lib /usr/shlib /usr/X11R6/lib \
+-     $(SYBASE)/lib
++LIB_IMPORT_DIRS += $(LOCAL_WORK)/lib
+ 
+ OBJ_SEARCH_PATH = $(LOCAL_WORK)/obj
+ 

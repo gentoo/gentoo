@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="smartcard">
+		Build scdaemon software. Enables usage of OpenPGP cards. For
+		other type of smartcards, try <pkg>app-crypt/gnupg-pkcs11-scd</pkg>.
+		Bring in <pkg>dev-libs/libusb</pkg> as a dependency; enable scdaemon.
+		</flag>
+		<flag name="usb">
+		Build direct CCID access for scdaemon; requires <pkg>dev-libs/libusb</pkg>.
+		</flag>
+		<flag name="user-socket">
+		try a socket directory which is not removed by init manager at session end
+		</flag>
+		<flag name="tofu">
+		Enable support for Trust on First use trust model; requires <pkg>dev-db/sqlite</pkg>.
+		</flag>
+		<flag name="tools">
+		Install extra tools (including gpgsplit and gpg-zip).
+		</flag>
+		<flag name="tpm">
+		Enable TPM support via <pkg>app-crypt/tpm2-tss</pkg> and build tpm2d.
+		</flag>
+		<flag name="wks-server">
+		Install the wks-server
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnupg:gnupg</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+Register keyword was deprecated in C++14 and removed in C++17
+Bug: https://bugs.gentoo.org/898168
+--- a/splat.cpp
++++ b/splat.cpp
+@@ -567,7 +567,7 @@ double ElevationAngle(struct site source, struct site destination)
+ 	   (downtilt), as referenced to a normal to the center of
+ 	   the earth. */
+ 	   
+-	register double a, b, dx;
++	double a, b, dx;
+ 
+ 	a=GetElevation(destination)+destination.alt+earthradius;
+ 	b=GetElevation(source)+source.alt+earthradius;
+@@ -2727,7 +2727,7 @@ void PlotPath(struct site source, struct site destination, char mask_value)
+ 
+ 	char block;
+ 	int x, y;
+-	register double cos_xmtr_angle, cos_test_angle, test_alt;
++	double cos_xmtr_angle, cos_test_angle, test_alt;
+ 	double distance, rx_alt, tx_alt;
+ 
+ 	ReadPath(source,destination);

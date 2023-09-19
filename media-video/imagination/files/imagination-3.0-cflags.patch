@@ -1,0 +1,34 @@
+diff --git a/configure.in b/configure.in
+index 0be7802..d19c8ec 100644
+--- a/configure.in
++++ b/configure.in
+@@ -24,7 +24,7 @@
+ AM_PROG_LIBTOOL
+ LIBTOOL="$LIBTOOL --silent"
+ 
+-pkg_modules="gtk+-2.0 >= 2.14.0 gthread-2.0"
++pkg_modules="gtk+-2.0 >= 2.14.0 gthread-2.0 gmodule-2.0"
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+ 
+ sox_modules="sox >= 14.2.0"
+@@ -33,6 +33,11 @@
+ plugins_modules="cairo >= 1.6 glib-2.0 > 2.18.0"
+ PKG_CHECK_MODULES(PLUGINS, [$plugins_modules])
+ 
++dnl Check for libm for sqrtf()
++AC_SEARCH_LIBS([sqrtf], [m], [], [
++	AC_MSG_ERROR([unable to find the sqrtf() function])
++])
++
+ # get svn revision
+ REVISION="r0"
+ if test "x${REVISION}" = "xr0"
+@@ -46,7 +51,7 @@
+ if test "x${REVISION}" != "xr0"
+ then
+ 	# force debug mode for a SVN working copy
+-	CFLAGS="-g -Wall"
++	CFLAGS +="-Wall"
+ else
+ 	REVISION="-1"
+ fi

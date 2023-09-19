@@ -1,0 +1,36 @@
+--- a/gamelogic.cpp
++++ b/gamelogic.cpp
+@@ -27,2 +27,3 @@
+ #include<cctype>
++#include<cstdlib>
+ 
+@@ -156,3 +157,3 @@
+ 
+-	currentMap = NULL;
++	currentMap = (list< class Clevel_map *>::iterator)NULL;
+ 
+--- a/levelmap.cpp
++++ b/levelmap.cpp
+@@ -28,2 +28,3 @@
+ #include <iostream>
++#include <cstdlib>
+ 
+--- a/mapedit.cpp
++++ b/mapedit.cpp
+@@ -28,2 +28,4 @@
+ #include<vector>
++#include<cstring>
++#include<cstdlib>
+ 
+--- a/modlist.cpp
++++ b/modlist.cpp
+@@ -24,2 +24,3 @@
+ #include <fstream>
++#include <cstdlib>
+ 
+--- a/tile_spinner.cpp
++++ b/tile_spinner.cpp
+@@ -25,2 +25,3 @@
+ 
++#include <cstdlib>
+ // Application Includes

@@ -1,0 +1,59 @@
+Upstream: https://github.com/ROCmSoftwarePlatform/rocRAND/pull/372
+
+commit 78c5631acd58d218af0c61af5acc57e9f47bc9c7
+Author: Benda Xu <orv@debian.org>
+Date:   Sat Jul 29 23:03:22 2023 +0800
+
+    sobol*_direction_vector_generator.cpp: include stdint.h for uint*_t
+    
+    Reference: https://gcc.gnu.org/gcc-13/porting_to.html
+    Signed-off-by: Benda Xu <heroxbd@gentoo.org>
+
+diff --git a/tools/scrambled_sobol32_direction_vector_generator.cpp b/tools/scrambled_sobol32_direction_vector_generator.cpp
+index 5623704..7addf4d 100644
+--- a/tools/scrambled_sobol32_direction_vector_generator.cpp
++++ b/tools/scrambled_sobol32_direction_vector_generator.cpp
+@@ -21,6 +21,7 @@
+ #include "../library/include/rocrand/rocrand_sobol32_precomputed.h"
+ #include <fstream>
+ #include <iomanip>
++#include <cstdint>
+ #include <iostream>
+ #include <string>
+ 
+diff --git a/tools/scrambled_sobol64_direction_vector_generator.cpp b/tools/scrambled_sobol64_direction_vector_generator.cpp
+index 0aecd3e..4189006 100644
+--- a/tools/scrambled_sobol64_direction_vector_generator.cpp
++++ b/tools/scrambled_sobol64_direction_vector_generator.cpp
+@@ -21,6 +21,7 @@
+ #include "../library/include/rocrand/rocrand_sobol64_precomputed.h"
+ #include <fstream>
+ #include <iomanip>
++#include <cstdint>
+ #include <iostream>
+ #include <string>
+ 
+diff --git a/tools/sobol32_direction_vector_generator.cpp b/tools/sobol32_direction_vector_generator.cpp
+index 16c4354..eb316c7 100644
+--- a/tools/sobol32_direction_vector_generator.cpp
++++ b/tools/sobol32_direction_vector_generator.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <iostream>
+ #include <fstream>
++#include <cstdint>
+ #include <string>
+ #include <iomanip>
+ 
+diff --git a/tools/sobol64_direction_vector_generator.cpp b/tools/sobol64_direction_vector_generator.cpp
+index e520903..ecdbdc4 100644
+--- a/tools/sobol64_direction_vector_generator.cpp
++++ b/tools/sobol64_direction_vector_generator.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <iostream>
+ #include <fstream>
++#include <cstdint>
+ #include <string>
+ #include <iomanip>
+ 

@@ -1,0 +1,10 @@
+# /etc/conf.d/mbmon
+
+# Port to listen on.
+
+MBMON_PORT="12912"
+
+# These are default options to use with gkrellm2.
+# See the mbmon(1) manpage for more info.
+
+MBMON_OPTS="-r"

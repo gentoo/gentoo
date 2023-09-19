@@ -1,0 +1,15 @@
+Author: Michael Banck <mbanck@debian.org>
+Description: Fix "error: format not a string literal and no format arguments [-Werror=format-security]" (#759860)
+Forwarded: yes
+
+--- a/contrib/uiuc/plugins/molfile_plugin/src/maeffplugin.cpp
++++ b/contrib/uiuc/plugins/molfile_plugin/src/maeffplugin.cpp
+@@ -2004,7 +2004,7 @@ namespace {
+       }
+     }
+     catch (std::exception &e) {
+-      fprintf(stderr, "%s", e.what());
++      fprintf(stderr, "Cannot write timestamp to mae file: %s\n", e.what());
+       return MOLFILE_ERROR;
+     }
+     return MOLFILE_SUCCESS;

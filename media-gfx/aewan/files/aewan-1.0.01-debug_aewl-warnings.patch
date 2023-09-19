@@ -1,0 +1,10 @@
+--- aewan-1.0.01.orig/debug_aewl.c
++++ aewan-1.0.01/debug_aewl.c
+@@ -8,6 +8,7 @@
+ #include "aewl/label.h"
+ 
+ #include "keys.h"
++#include "filedlg.h"
+ 
+ #include <ncurses.h>
+ #include <stdbool.h>

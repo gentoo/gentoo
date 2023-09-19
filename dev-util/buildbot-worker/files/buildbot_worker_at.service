@@ -1,0 +1,14 @@
+[Unit]
+Description=buildbot-worker daemon
+After=local-fs.target network.target
+PartOf=buildbot_worker.target
+
+[Service]
+Environment=BASEDIR=/var/lib/buildbot_worker
+Type=forking
+User=buildbot
+ExecStart=/usr/bin/buildbot-worker start ${BASEDIR}/%i
+ExecStop=/usr/bin/buildbot-worker stop ${BASEDIR}/%i
+
+[Install]
+WantedBy=buildbot_worker.target

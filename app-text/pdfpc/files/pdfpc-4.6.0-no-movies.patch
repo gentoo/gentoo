@@ -1,0 +1,59 @@
+https://github.com/pdfpc/pdfpc/issues/672
+https://bugs.gentoo.org/904241
+
+commit a6501085b3e94eb4a01db18fe9dc15d51fcde3a3
+Author: Evgeny Stambulchik <fnevgeny@gmail.com>
+Date:   Sat, 11 Feb 2023 23:04:19 +0200
+
+    Skip MOVIE actions when configured with -DMOVIES
+
+--- a/src/classes/action/link_action.vala
++++ b/src/classes/action/link_action.vala
+@@ -47,6 +47,7 @@
+             this.action = mapping.action.copy();
+         }
+ 
++#if MOVIES
+         /**
+          * Find movie on the current slide by its filename; there seems to be
+          * no better way with the current Glib Poppler bindings.
+@@ -71,6 +72,7 @@
+ 
+             return null;
+         }
++#endif
+ 
+         /**
+          * Create from the LinkMapping if the link is an internal link to a named
+@@ -91,6 +93,7 @@
+                     return new_obj as ActionMapping;
+                 }
+                 break;
++#if MOVIES
+             case Poppler.ActionType.MOVIE:
+                 unowned var movie_action = (Poppler.ActionMovie*) mapping.action;
+                 var movie = movie_action.movie;
+@@ -100,6 +103,7 @@
+                     return new_obj as ActionMapping;
+                 }
+                 break;
++#endif
+             default:
+                 break;
+             }
+@@ -167,6 +171,7 @@
+                 this.controller.switch_to_slide_number(slide_number);
+ 
+                 break;
++#if MOVIES
+             case Poppler.ActionType.MOVIE:
+                 unowned var action = (Poppler.ActionMovie*) this.action;
+                 var movie = action.movie;
+@@ -192,6 +197,7 @@
+                     }
+                 }
+                 break;
++#endif
+             default:
+                 return false;
+             }

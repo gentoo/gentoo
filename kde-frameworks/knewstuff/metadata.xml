@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
+	<use>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="opds">Enable support for the Open Publication Distribution System via <pkg>kde-frameworks/syndication</pkg></flag>
+	</use>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Frameworks API.
+		</subslots>
+	</slots>
+</pkgmetadata>

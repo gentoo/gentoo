@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="devil">Build the DevIL based ImageCodec module</flag>
+		<flag name="freeimage">Build the FreeImage based ImageCodec module</flag>
+		<flag name="irrlicht">Enable the Irrlicht renderer</flag>
+		<flag name="ogre">Enable the OGRE renderer</flag>
+		<flag name="tinyxml">Enable the Tiny XML parser module</flag>
+		<flag name="xerces-c">Enable the Xerces-C++ XML parser module</flag>
+		<flag name="zip">Enable the Minizip resource provider</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">crayzedsgui</remote-id>
+	</upstream>
+</pkgmetadata>

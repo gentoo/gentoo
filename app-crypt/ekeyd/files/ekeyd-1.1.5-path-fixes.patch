@@ -1,0 +1,49 @@
+# HG changeset patch
+# User kristianf
+# Date 1382917171 -3600
+#      Mon Oct 28 00:39:31 2013 +0100
+# Node ID d96c42b36cb125e6e52cff623b7bdad1910284b4
+# Parent  0a9e41a05aafb98cc8c21562931cb1cbb5e30c1f
+entropykey.sh
+
+diff -r 0a9e41a05aaf -r d96c42b36cb1 udev/entropykey.sh
+--- a/udev/entropykey.sh	Mon Oct 28 00:35:46 2013 +0100
++++ b/udev/entropykey.sh	Mon Oct 28 00:39:31 2013 +0100
+@@ -19,9 +19,10 @@
+     COUNTER=$(( ${COUNTER} + 1 ))
+     test ${COUNTER} -ge 10 && exit 1
+   done
+-  $BINPATH/ekey-ulusbd -b${BUSNUM} -d${DEVNUM} -P/var/run/ekey-ulusbd-${ENTROPY_KEY_SERIAL}.pid -p/var/run/entropykeys/${ENTROPY_KEY_SERIAL} -D
++  /usr/libexec/ekey-ulusbd -b${BUSNUM} -d${DEVNUM} -P/dev/.ekey-ulusbd/${ENTROPY_KEY_SERIAL}.pid -p/dev/entropykey/${ENTROPY_KEY_SERIAL} -D
++
+   sleep 1
+-  $BINPATH/ekeydctl ${ACTION} /var/run/entropykeys/${ENTROPY_KEY_SERIAL}
++  $BINPATH/ekeydctl ${ACTION} /dev/entropykey/${ENTROPY_KEY_SERIAL}
+   exit 0
+ }
+ 
+@@ -34,18 +35,18 @@
+     if test "x${BUSNUM}" = "x" -o "x${DEVNUM}" = "x"; then
+       exit 0
+     fi
+-    if test -r "/var/run/ekey-ulusbd-${ENTROPY_KEY_SERIAL}.pid"; then
+-      kill $(cat "/var/run/ekey-ulusbd-${ENTROPY_KEY_SERIAL}.pid") || true
++    if test -r "/dev/.ekey-ulusbd/${ENTROPY_KEY_SERIAL}.pid"; then
++      kill $(< "/dev/.ekey-ulusbd/${ENTROPY_KEY_SERIAL}.pid") || true
+     fi
+-    mkdir -p /var/run/entropykeys
++    mkdir -p /dev/entropykey /dev/.ekeyd-ulusb
+     wait_for_usb &
+     exit 0
+   fi
+   # Update ekeyd with device operation
+-  $BINPATH/ekeydctl ${ACTION} /var/run/entropykeys/${ENTROPY_KEY_SERIAL}
++  $BINPATH/ekeydctl ${ACTION} /dev/entropykey/${ENTROPY_KEY_SERIAL}
+   if test "x$ACTION" = "xremove"; then
+-    rm "/var/run/ekey-ulusbd-${ENTROPYKEY_KEY_SERIAL}.pid"
+-    rm "/var/run/entropykeys/${ENTROPYKEY_KEY_SERIAL}"
++    rm "/dev/.ekey-ulusbd/${ENTROPYKEY_KEY_SERIAL}.pid"
++    rm "/dev/entropykey/${ENTROPYKEY_KEY_SERIAL}"
+   fi
+ fi
+ 

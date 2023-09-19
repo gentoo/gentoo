@@ -1,0 +1,51 @@
+--- a/configure.in	2005-06-23 17:02:57.000000000 +0200
++++ b/configure.in	2010-11-01 04:44:44.000000000 +0100
+@@ -8,12 +8,10 @@
+ AM_CONFIG_HEADER(config.h)
+ 
+ AC_ISC_POSIX
+-CFLAGS=""
+ AC_SUBST(CFLAGS)
+ AC_PROG_CC
+ AM_PROG_CC_STDC
+ AC_HEADER_STDC
+-AM_PROG_LIBTOOL
+ 
+ dnl Checks for programs.
+ 
+--- a/Makefile.am	2005-06-23 12:32:13.000000000 +0200
++++ b/Makefile.am	2010-11-01 04:46:41.000000000 +0100
+@@ -5,20 +5,6 @@
+ 
+ SUBDIRS = src
+ 
+-upnpscandocdir = ${prefix}/doc/upnpscan
+-upnpscandoc_DATA = \
+-	README\
+-	COPYING\
+-	AUTHORS\
+-	ChangeLog\
+-	INSTALL\
+-	NEWS\
+-	TODO
+-
+-EXTRA_DIST = $(upnpscandoc_DATA)
+-
+-
+-
+ # Copy all the spec files. Of cource, only one is actually used.
+ dist-hook:
+ 	for specfile in *.spec; do \
+--- a/src/Makefile.am	2005-06-21 22:57:32.000000000 +0200
++++ b/src/Makefile.am	2010-11-01 04:53:22.000000000 +0100
+@@ -7,10 +7,6 @@
+ INCLUDES =\
+ 	 -I../include
+ 
+-AM_CFLAGS =\
+-	 -Wall\
+-	 -g
+-
+ bin_PROGRAMS = upnpscan
+ 
+ upnpscan_SOURCES = \

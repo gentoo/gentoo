@@ -1,0 +1,38 @@
+--- a/NFBTRANS.C
++++ b/NFBTRANS.C
+@@ -534,7 +534,7 @@ void compact_line(char *);
+ void length_error(char *);
+ void do_lop_op(foptype *);
+ void do_lop(void);
+-void getline(void);
++void nfbtrans_getline(void);
+ void get_input(char *, int);
+ int get_paragraph_type(int);
+ void check_purge(void);
+@@ -2585,7 +2585,7 @@ void do_lop()
+   }
+ }                  /* do_lop */
+ 
+-void getline()
++void nfbtrans_getline()
+ {
+   int i = -1;
+   for (;;)
+@@ -2722,7 +2722,7 @@ int get_paragraph_type(int mode)
+   total_lines = 0;
+   do
+   {
+-    getline();
++    nfbtrans_getline();
+     if (linein[0])
+     {              /* line not empty */
+       if (prev_char == '\0')
+@@ -2874,7 +2874,7 @@ void get_word()
+     }              /* head */
+     else
+       header_flag = 0;
+-    getline();
++    nfbtrans_getline();
+     if (remove_page_nums)
+       remove_page_number();
+     if (auto_center)

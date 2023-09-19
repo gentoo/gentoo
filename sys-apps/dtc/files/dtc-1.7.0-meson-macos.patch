@@ -1,0 +1,39 @@
+https://git.kernel.org/pub/scm/utils/dtc/dtc.git/commit/?id=71a8b8ef0adf01af4c78c739e04533a35c1dc89c
+
+From 71a8b8ef0adf01af4c78c739e04533a35c1dc89c Mon Sep 17 00:00:00 2001
+From: Otavio Salvador <otavio@ossystems.com.br>
+Date: Wed, 31 May 2023 11:41:42 -0300
+Subject: libfdt: meson: Fix linking on macOS linker
+
+-undefined error is the equivalent of --no-undefined for the macOS
+linker, but -undefined would also be understood as a valid argument for
+GNU ld so we use the supported linker variant.
+
+Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+--- a/libfdt/meson.build
++++ b/libfdt/meson.build
+@@ -16,10 +16,20 @@ sources = files(
+   'fdt_wip.c',
+ )
+ 
++link_args = []
++if cc.has_link_argument('-Wl,--no-undefined')
++    link_args += '-Wl,--no-undefined'
++else
++    # -undefined error is the equivalent of --no-undefined for the macOS linker,
++    # but -undefined would also be understood as a valid argument for GNU ld!
++    link_args += cc.get_supported_link_arguments('-Wl,-undefined,error')
++endif
++
++link_args += version_script
+ libfdt = library(
+   'fdt', sources,
+   version: '1.6.0',
+-  link_args: ['-Wl,--no-undefined', version_script],
++  link_args: link_args,
+   link_depends: 'version.lds',
+   install: true,
+ )
+-- 
+cgit

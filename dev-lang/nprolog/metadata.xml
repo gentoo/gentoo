@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    N-Prolog(NPL) is an interpreter and compiler to be compatible with
+    Arity/Prolog32. N-Prolog is NOT ISO-Prolog. About Arity/prolog32 see
+    http://petergabel.info/ArityProlog32/ArityProlog32PredList/
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/sasagawa888/nprolog/issues</bugs-to>
+    <remote-id type="github">sasagawa888/nprolog</remote-id>
+  </upstream>
+</pkgmetadata>

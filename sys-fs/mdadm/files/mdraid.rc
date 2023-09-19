@@ -1,0 +1,39 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before checkfs fsck
+	after modules
+}
+
+start() {
+	local output
+
+	ebegin "Starting up RAID devices"
+	output=$(mdadm -As ${MDADM_ASSEMBLE_OPTS} 2>&1)
+	eend $? "${output}"
+
+	local pat="/dev/md_d*"
+	set -- ${pat}
+	if [ "$*" != "${pat}" ] ; then
+		ebegin "Creating RAID device partitions"
+		blockdev "$@"
+		eend $?
+		# wait because vgscan runs next, and we want udev to fire
+		sleep 1
+	fi
+
+	return 0
+}
+
+stop() {
+	local output
+
+	# XXX: Maybe drop this check ?
+	[ ! -e /etc/mdadm/mdadm.conf ] && [ ! -e /etc/mdadm.conf ] && return 0
+
+	ebegin "Shutting down RAID devices (mdadm)"
+	output=$(mdadm -Ss 2>&1)
+	eend $? "${output}"
+}

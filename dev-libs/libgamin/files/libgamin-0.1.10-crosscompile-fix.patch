@@ -1,0 +1,38 @@
+--- configure.in.orig	2009-04-26 23:00:43.445135823 +0300
++++ configure.in	2009-04-26 23:25:04.042489243 +0300
+@@ -389,8 +389,7 @@
+ 
+ AC_MSG_CHECKING(abstract socket namespace)
+ AC_LANG_PUSH(C)
+-AC_RUN_IFELSE([AC_LANG_PROGRAM(
+-[[
++AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -398,8 +397,8 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <errno.h>
+-]],
+-[[
++
++int main() {
+   int listen_fd;
+   struct sockaddr_un addr;
+   
+@@ -424,9 +423,11 @@
+     }
+   else 
+     exit (0);
+-]])],
+-              [have_abstract_sockets=yes],
+-              [have_abstract_sockets=no])
++}
++],
++have_abstract_sockets=yes,
++have_abstract_sockets=no,
++have_abstract_sockets=no)
+ AC_LANG_POP(C)
+ AC_MSG_RESULT($have_abstract_sockets)
+ 

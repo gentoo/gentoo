@@ -1,0 +1,72 @@
+From c87d4e27cd482918c1d091c09cfac749a56b0f99 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 20 Jul 2022 07:15:57 +0200
+Subject: [PATCH 1/3] 
+ https://src.fedoraproject.org/fork/pviktori/rpms/python-pyside2/raw/5da9902bd8732b49eb722d71f306d4ab197c84b8/f/python3.11.patch
+ https://code.qt.io/cgit/pyside/pyside-setup.git/patch/?id=52df3b8f64
+ https://code.qt.io/cgit/pyside/pyside-setup.git/patch/?id=73adefe22f
+ https://code.qt.io/cgit/pyside/pyside-setup.git/patch/?id=a09a1db839
+
+From b64ad27d8dfeeecaaa8a98051252a32c9d998df4 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Thu, 9 Jun 2022 16:50:41 +0200
+Subject: [PATCH] libshiboken: Fix a crash in Shiboken::Object::isValid() for
+ Python 3.11
+
+The function is passed type objects for class methods, which caused
+it to crash.
+
+The first clause did not catch this, and so it was cast to SbkObject
+below.
+
+Add a type check to prevent this.
+
+Pick-to: 6.3 6.2 5.15
+Task-number: PYSIDE-1960
+Change-Id: Icfdd6fefb7156ac5961444bd5395109849a1d66e
+Reviewed-by: Christian Tismer <tismer@stackless.com>
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+
+Original patch no longer applies with 5.15.5.
+Manually re-applied to respect code changes.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/libshiboken/basewrapper.cpp
++++ b/libshiboken/basewrapper.cpp
+@@ -377,7 +377,7 @@ SbkObjectType *SbkObject_TypeF(void)
+     static PyTypeObject *type = nullptr;
+     if (!type) {
+         type = reinterpret_cast<PyTypeObject *>(SbkType_FromSpec(&SbkObject_Type_spec));
+-        Py_TYPE(type) = SbkObjectType_TypeF();
++        Py_SET_TYPE(type, SbkObjectType_TypeF());
+         Py_INCREF(Py_TYPE(type));
+         type->tp_weaklistoffset = offsetof(SbkObject, weakreflist);
+         type->tp_dictoffset = offsetof(SbkObject, ob_dict);
+@@ -1152,7 +1152,7 @@ introduceWrapperType(PyObject *enclosingObject,
+     typeSpec->slots[0].pfunc = reinterpret_cast<void *>(baseType ? baseType : SbkObject_TypeF());
+ 
+     PyObject *heaptype = SbkType_FromSpecWithBases(typeSpec, baseTypes);
+-    Py_TYPE(heaptype) = SbkObjectType_TypeF();
++    Py_SET_TYPE(heaptype, SbkObjectType_TypeF());
+     Py_INCREF(Py_TYPE(heaptype));
+     auto *type = reinterpret_cast<SbkObjectType *>(heaptype);
+ #if PY_VERSION_HEX < 0x03000000
+@@ -1517,6 +1517,7 @@ bool setCppPointer(SbkObject *sbkObj, PyTypeObject *desiredType, void *cptr)
+ bool isValid(PyObject *pyObj)
+ {
+     if (!pyObj || pyObj == Py_None
++        || PyType_Check(pyObj) != 0
+         || Py_TYPE(Py_TYPE(pyObj)) != SbkObjectType_TypeF()) {
+         return true;
+     }
+--- a/libshiboken/sbkenum.cpp
++++ b/libshiboken/sbkenum.cpp
+@@ -753,7 +753,7 @@ newTypeWithName(const char *name,
+     PyTuple_SetItem(bases, 0, reinterpret_cast<PyObject *>(basetype));
+     auto *type = reinterpret_cast<PyTypeObject *>(SbkType_FromSpecWithBases(&newspec, bases));
+     PyErr_Print();
+-    Py_TYPE(type) = SbkEnumType_TypeF();
++    Py_SET_TYPE(type, SbkEnumType_TypeF());
+ 
+     auto *enumType = reinterpret_cast<SbkEnumType *>(type);
+     PepType_SETP(enumType)->cppName = cppName;

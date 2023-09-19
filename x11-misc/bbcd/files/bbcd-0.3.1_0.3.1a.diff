@@ -1,0 +1,41 @@
+diff -urN bbcd-0.3.1/CD_Ctrl.cc bbcd-0.3.2/CD_Ctrl.cc
+--- bbcd-0.3.1/CD_Ctrl.cc	Sun Jun 23 18:35:27 2002
++++ bbcd-0.3.2/CD_Ctrl.cc	Mon Feb  3 09:29:00 2003
+@@ -116,7 +116,7 @@
+       cd_resume(getCdFd());
+       return di.disc_current_track;
+     }
+-    if(di.disc_mode == CDAUDIO_COMPLETED) {
++    if(di.disc_mode == CDAUDIO_COMPLETED || di.disc_mode == CDAUDIO_NOSTATUS) {
+       cd_play(getCdFd(), di.disc_first_track);
+       return di.disc_first_track;
+     }
+Binary files bbcd-0.3.1/test_cd_ctrl and bbcd-0.3.2/test_cd_ctrl differ
+diff -urN bbcd-0.3.1/test_cd_ctrl.cc bbcd-0.3.2/test_cd_ctrl.cc
+--- bbcd-0.3.1/test_cd_ctrl.cc	Thu Jun 27 22:52:36 2002
++++ bbcd-0.3.2/test_cd_ctrl.cc	Mon Feb  3 09:19:42 2003
+@@ -88,10 +88,20 @@
+ 
+   CD_Controler cd(deviceName);
+   if(info) {
+-    std::cout << "Drive status: \n";
+-    std::cout << "Disc present ? " << (cd.isDiscPresent()?"yes":"no") << "\n";
+-    std::cout << "Is drive playing ? " << (cd.isPlaying()?"yes":"no") << "\n"
+-      << "Is drive paused ? " << (cd.isPaused()?"yes":"no") << "\n";
++    std::cout << "Drive status: \n"
++      << "Disc present? " << (cd.isDiscPresent()?"yes":"no") << "\n"
++      << "Is drive playing? " << (cd.isPlaying()?"yes":"no") << "\n"
++      << "Is drive paused? " << (cd.isPaused()?"yes":"no") << "\n"
++      << "Audio status: ";
++    switch(cd.getAudioStatus()) {
++    case CD_Controler::Invalid:   std::cout<<"Invalid"; break;
++    case CD_Controler::Play:      std::cout<<"Play"; break;
++    case CD_Controler::Paused:    std::cout<<"Paused"; break;
++    case CD_Controler::Completed: std::cout<<"Completed"; break;
++    case CD_Controler::Error:     std::cout<<"Error"; break;
++    case CD_Controler::NoStatus:  std::cout<<"No Status"; break;
++    }
++    std::cout<<std::endl;
+   }
+ 
+   if(pause) {

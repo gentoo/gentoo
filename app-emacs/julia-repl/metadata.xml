@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This is a minor mode for interacting with a Julia REPL running inside
+    Emacs. The julia process is started in an ANSI terminal (term), which
+    allows text formatting and colors, and interaction with the help system and
+    the debugger.
+    It is recommended that you use this minor mode with julia-mode.
+  </longdescription>
+  <upstream>
+    <changelog>
+      https://raw.githubusercontent.com/tpapp/julia-repl/master/CHANGELOG.md
+    </changelog>
+    <bugs-to>https://github.com/tpapp/julia-repl/issues/</bugs-to>
+    <remote-id type="github">tpapp/julia-repl</remote-id>
+  </upstream>
+</pkgmetadata>

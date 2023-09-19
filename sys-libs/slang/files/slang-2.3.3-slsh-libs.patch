@@ -1,0 +1,21 @@
+Fix build issue:
+```
+make -j32 -j1 -C slsh slsh
+make: Entering directory '/var/tmp/portage/sys-libs/slang-2.3.3/work/slang-2.3.3-abi_x86_32.x86/slsh'
+x86_64-pc-linux-gnu-gcc -m32 amd64objs/slsh.o amd64objs/readline.o -o amd64objs/slsh -Wl,-O1 -Wl,--as-needed -Wl,--defsym=__gentoo_check_ldflags__=0 -Wl,-z,pack-relative-relocs -fuse-ld=bfd -Wl,-O1 -Wl,--as-needed -Wl,-export-dynamic -L/usr/lib -Wl,-R/usr/lib -L/usr/lib -lslang -Wl,-O1 -Wl,--as-needed -Wl,--defsym=__gentoo_check_ldflags__=0 -Wl,-z,pack-relative-relocs -fuse-ld=bfd -Wl,-O1 -Wl,--as-needed -lreadline -ldl  -lm
+/usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/../../../../x86_64-pc-linux-gnu/bin/ld.bfd: cannot find -lslang: No such file or directory
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:95: amd64objs/slsh] Error 1
+make: Leaving directory '/var/tmp/portage/sys-libs/slang-2.3.3/work/slang-2.3.3-abi_x86_32.x86/slsh'
+```
+--- a/slsh/Makefile.in
++++ b/slsh/Makefile.in
+@@ -92,7 +92,7 @@ slsh: $(OBJDIR)/slsh
+ $(OBJDIR)/slsh_exe: $(OBJDIR)/slsh.o $(OBJDIR)/readline.o
+ 	$(CC) $(OBJDIR)/slsh.o $(OBJDIR)/readline.o -o $(OBJDIR)/slsh_exe $(LDFLAGS) $(DLINK_FLAGS) $(SRC_LIBS)
+ $(OBJDIR)/slsh: $(OBJDIR)/slsh.o $(OBJDIR)/readline.o
+-	$(CC) $(OBJDIR)/slsh.o $(OBJDIR)/readline.o -o $(OBJDIR)/slsh $(LDFLAGS) $(DLINK_FLAGS) $(INST_LIBS)
++	$(CC) $(OBJDIR)/slsh.o $(OBJDIR)/readline.o -o $(OBJDIR)/slsh $(LDFLAGS) $(DLINK_FLAGS) $(SRC_LIBS)
+ $(OBJDIR)/slsh.o: $(OBJDIR_TSTAMP) slsh.c slsh.h config.h Makefile
+ 	cd $(OBJDIR) && $(CC) $(SLANG_SRCINC) $(CFLAGS) -c $(DEFS) $(SRCDIR)/slsh.c
+ $(OBJDIR)/readline.o: $(OBJDIR_TSTAMP) readline.c slsh.h config.h Makefile

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>proaudio@gentoo.org</email>
+	<name>Gentoo ProAudio Project</name>
+</maintainer>
+<use>
+	<flag name="jni">Enables building of Java Native Interface library</flag>
+	<flag name="programs">Builds also executable applications</flag>
+	<flag name="vamp">Enables vamp plugins support (Audio analysing plugins)</flag>
+	<flag name="lv2">Add support for Ladspa V2</flag>
+</use>
+</pkgmetadata>

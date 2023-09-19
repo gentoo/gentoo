@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>nerdboy@gentoo.org</email>
+	<name>Steve Arnold</name>
+</maintainer>
+<longdescription lang="en">
+	Create a fancy changelog from git log history (in rst or md). You can
+	customize your config with Python callables and custom regex, as well
+	as built-in or custom template files.
+</longdescription>
+<upstream>
+	<remote-id type="github">sarnold/gitchangelog</remote-id>
+</upstream>
+</pkgmetadata>

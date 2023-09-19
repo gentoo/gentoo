@@ -1,0 +1,25 @@
+From ccfbd4a046de9590cadb522d1f754c78ee9f8d4e Mon Sep 17 00:00:00 2001
+From: Jonathan Dowland <jon@dow.land>
+Date: Mon, 15 Jan 2018 19:10:16 +0000
+Subject: [PATCH] bash-completion: run docgen with -z argument
+
+---
+ man/bash-completion/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/bash-completion/Makefile.am b/man/bash-completion/Makefile.am
+index 801dd212..60e7ae9c 100644
+--- a/man/bash-completion/Makefile.am
++++ b/man/bash-completion/Makefile.am
+@@ -19,7 +19,7 @@ CLEANFILES = $(BASH_COMPLETION_SCRIPTLETS)
+ 
+ MANDIR = $(top_srcdir)/man
+ DOCGEN = $(MANDIR)/docgen
+-DOCGEN_COMMON_ARGS = -n "@PROGRAM_SPREFIX@" -s "@PACKAGE_NAME@"
++DOCGEN_COMMON_ARGS = -n "@PROGRAM_SPREFIX@" -s "@PACKAGE_NAME@" -z "@PACKAGE_SHORTNAME@"
+ 
+ @PROGRAM_PREFIX@doom: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+ 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
+-- 
+2.26.2
+

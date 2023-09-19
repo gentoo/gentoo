@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <name>Kalin KOZHUHAROV</name>
+    <email>kalin@thinrope.net</email>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>candrews@gentoo.org</email>
+    <name>Craig Andrews</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">georgmartius/vid.stab</remote-id>
+  </upstream>
+</pkgmetadata>

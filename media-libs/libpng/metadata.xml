@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Codec project</name>
+	</maintainer>
+	<use>
+		<flag name="apng">support unofficial APNG (Animated PNG) spec</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:libpng:libpng</remote-id>
+		<remote-id type="github">glennrp/libpng</remote-id>
+		<remote-id type="github">pnggroup/libpng-EXPERIMENTAL</remote-id>
+		<remote-id type="github">glennrp/libpng-releases</remote-id>
+		<remote-id type="sourceforge">libpng</remote-id>
+		<remote-id type="sourceforge">apng</remote-id>
+		<remote-id type="sourceforge">libpng-apng</remote-id>
+	</upstream>
+	<slots>
+		<subslots>Reflect ABI compatibility for libpng.so.</subslots>
+	</slots>
+</pkgmetadata>

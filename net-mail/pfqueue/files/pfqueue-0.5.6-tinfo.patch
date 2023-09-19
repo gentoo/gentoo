@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -38,6 +38,7 @@
+ 
+ dnl Checks for library functions.
+ AC_CHECK_LIB(ncurses,newwin)
++AC_SEARCH_LIBS(COLS, tinfo)
+ AC_CHECK_LIB(pthread,pthread_create)
+ AC_CHECK_LIB(c_r,pthread_create)
+ AC_CHECK_LIB(dl,dlopen)

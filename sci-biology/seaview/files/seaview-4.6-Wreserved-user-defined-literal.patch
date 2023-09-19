@@ -1,0 +1,76 @@
+--- a/align.cxx
++++ b/align.cxx
+@@ -754,7 +754,7 @@
+   alignitems[clustalopt + MAX_MSA_ALGOS].label(strdup(options));
+   alignitems[clustalopt + MAX_MSA_ALGOS].flags = attr;
+   if (view->alignment_algorithm < 2) alignitems[clustalopt + MAX_MSA_ALGOS + 3].flags = FL_MENU_INACTIVE;
+-  delete options;
++  delete[] options;
+   view->menu_align = alignitems;
+   view->menubar->add("Align", 0, NULL, (void*)view->menu_align, FL_SUBMENU_POINTER);
+   if (view->count_msa_algos >= MAX_MSA_ALGOS) (alignitems + clustalopt + MAX_MSA_ALGOS + 2)->deactivate();
+--- a/seaview.cxx
++++ b/seaview.cxx
+@@ -3314,7 +3314,7 @@
+ 	if(p != NULL) *p = 0;
+ 	if(printout_black == TEXT_ONLY) strcat(suggested, ".txt");
+ 	else {
+-		strcat(suggested, "."PDF_OR_PS_EXT);
++		strcat(suggested, "." PDF_OR_PS_EXT);
+ 		}
+ if( view->alt_col_rank != NULL ) {
+ 		for(anerr = 0; anerr < view->tot_seqs; anerr++)
+@@ -3424,7 +3424,7 @@
+ 
+ pdf_form = new Fl_Window(415, 90);
+ pdf_form->box(FL_FLAT_BOX);
+-pdf_form->label("Set "PDF_OR_PS" output options");
++pdf_form->label("Set " PDF_OR_PS " output options");
+ 
+ x = 5 + (int)fl_width("block size:"); y = 5; w = 50; h = 25;
+ sizeinput = new Fl_Input(x, y, w, h, "font size:");
+@@ -5000,10 +5000,10 @@
+     {"Save prot alignmt", 0,file_menu_callback, 0, FL_MENU_INACTIVE},
+     {"Save bootstrap replicates", 0,file_menu_callback, 0, FL_MENU_INACTIVE | FL_MENU_DIVIDER},
+ #if !defined(__APPLE__)
+-    {"Prepare "PDF_OR_PS"", 0, file_menu_callback, 0, 0},
+-    {""PDF_OR_PS" options...", 0, file_menu_callback, 0, FL_MENU_DIVIDER},
++    {"Prepare " PDF_OR_PS "", 0, file_menu_callback, 0, 0},
++    {"" PDF_OR_PS " options...", 0, file_menu_callback, 0, FL_MENU_DIVIDER},
+ #else
+-    {"Prepare "PDF_OR_PS"", 0, file_menu_callback, 0, FL_MENU_DIVIDER},
++    {"Prepare " PDF_OR_PS "", 0, file_menu_callback, 0, FL_MENU_DIVIDER},
+ #endif
+     {"Concatenate", 0,file_menu_callback, 0, FL_MENU_DIVIDER},
+     {"New window", FL_COMMAND | 'n', file_menu_callback, 0, 0},
+--- a/treedraw.cxx
++++ b/treedraw.cxx
+@@ -210,7 +210,7 @@
+     {"Save all trees", 0, file_callback, NULL, 0},
+     {"Save patristic distances", 0, patristic_callback, NULL, FL_MENU_DIVIDER},
+     {"Print", FL_COMMAND | 'p', file_callback, NULL, 0},
+-    {"Save as "PDF_OR_PS"", 0, file_callback, NULL, 0},
++    {"Save as " PDF_OR_PS "", 0, file_callback, NULL, 0},
+     {"Save as SVG", 0, file_callback, NULL, 0},
+     {"A4", 0, file_callback, NULL, FL_MENU_RADIO | 0},
+     {"Letter", 0, file_callback, NULL, FL_MENU_RADIO | 0},
+--- a/xfmatpt.cxx
++++ b/xfmatpt.cxx
+@@ -205,7 +205,7 @@
+ compute->callback(compute_proc, fdui);
+ fdui->compute_butt = compute;
+ 
+-Fl_Widget *postscript = cre_button(fin, curr_y, &width, but_height, fontsize, "Write "PDF_OR_PS);
++Fl_Widget *postscript = cre_button(fin, curr_y, &width, but_height, fontsize, "Write " PDF_OR_PS);
+ fin += width;
+ postscript->callback(plot_button_proc, fdui);
+ 
+@@ -870,7 +870,7 @@
+ #ifndef MICRO
+   matpt->form->hide(); Fl::flush(); // because of strange bug on 32-bit Linux only
+ #endif
+-  fl_message("Dot plot is now in file\n%s\nin "PDF_OR_PS" format", surface->outfname());
++  fl_message("Dot plot is now in file\n%s\nin " PDF_OR_PS " format", surface->outfname());
+   delete surface;
+ #ifndef MICRO
+   matpt->form->show(); Fl::flush();

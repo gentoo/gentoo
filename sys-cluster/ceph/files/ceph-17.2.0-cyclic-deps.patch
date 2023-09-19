@@ -1,0 +1,24 @@
+diff --git a/src/rgw/store/dbstore/CMakeLists.txt b/src/rgw/store/dbstore/CMakeLists.txt
+index 143ede3c094c9..18e032b73f54f 100644
+--- a/src/rgw/store/dbstore/CMakeLists.txt
++++ b/src/rgw/store/dbstore/CMakeLists.txt
+@@ -47,7 +47,7 @@ else()
+ endif()
+ 
+ include_directories(${CMAKE_INCLUDE_DIR})
+-add_library(dbstore ${dbstore_mgr_srcs})
++add_library(dbstore STATIC ${dbstore_mgr_srcs})
+ target_link_libraries(dbstore ${CMAKE_LINK_LIBRARIES})
+ 
+ # testing purpose
+diff --git a/src/rgw/store/dbstore/sqlite/CMakeLists.txt b/src/rgw/store/dbstore/sqlite/CMakeLists.txt
+index cce59b9ec0aa9..909765e3058b6 100644
+--- a/src/rgw/store/dbstore/sqlite/CMakeLists.txt
++++ b/src/rgw/store/dbstore/sqlite/CMakeLists.txt
+@@ -12,5 +12,5 @@ include_directories(${CMAKE_INCLUDE_DIR})
+ set(SQLITE_COMPILE_FLAGS "-DSQLITE_THREADSAFE=1")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SQLITE_COMPILE_FLAGS}")
+ 
+-add_library(sqlite_db ${sqlite_db_srcs})
++add_library(sqlite_db STATIC ${sqlite_db_srcs})
+ target_link_libraries(sqlite_db sqlite3 dbstore_lib rgw_common)

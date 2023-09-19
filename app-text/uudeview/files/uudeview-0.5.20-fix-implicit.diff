@@ -1,0 +1,12 @@
+diff --git a/configure.in b/configure.in
+index 4ea5965..49100ff 100644
+--- a/configure.in
++++ b/configure.in
+@@ -518,6 +518,7 @@ AC_CHECK_FUNC([mkstemp],,[AC_MSG_ERROR([needs mkstemp])])
+ #
+ AC_MSG_CHECKING([for strerror])
+ AC_TRY_LINK([
++#include <string.h>
+ char *blubb() { return (char *) strerror (42); }
+ ],[
+ (void) blubb();

@@ -1,0 +1,20 @@
+# default: off
+# description: The telnet server serves telnet sessions; it uses \
+#	unencrypted username/password pairs for authentication.
+
+service smtp
+{
+    flags           = REUSE
+    socket_type     = stream
+    wait            = no
+    user            = smtpd
+    group           = smtpd
+    groups          = yes
+    log_on_failure += USERID HOST
+    disable         = yes
+    rlimit_as       = 128M
+    instances       = 40
+    per_source      = 10
+    cps             = 50 10
+    server          = /usr/bin/qpsmtpd
+}

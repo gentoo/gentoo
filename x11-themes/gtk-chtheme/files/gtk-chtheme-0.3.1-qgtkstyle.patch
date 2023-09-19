@@ -1,0 +1,12 @@
+# Make gtk-chtheme work with qgtkstyle
+# https://bugs.gentoo.org/show_bug.cgi?id=250504
+--- a/main.c	2004-02-09 06:33:28.000000000 +0200
++++ b/main.c	2008-12-10 12:47:42.000000000 +0200
+@@ -97,6 +97,7 @@
+ 		fprintf(gtkrc_fh, "gtk-font-name=\"%s\"\n\n", font);
+ 	}
+ 
++	fprintf(gtkrc_fh, "gtk-theme-name  = \"%s\"\n\n", themename); 
+ 	fprintf(gtkrc_fh, "include \"%s/.gtkrc.mine\"\n\n", getenv("HOME"));
+ 	fprintf(gtkrc_fh, "# -- THEME AUTO-WRITTEN DO NOT EDIT\n");
+ 	fclose(gtkrc_fh);

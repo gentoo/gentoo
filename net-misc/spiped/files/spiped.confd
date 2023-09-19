@@ -1,0 +1,21 @@
+# /etc/conf.d/spiped
+
+# Once you're happy with your settings,
+# set IS_CONFIGURED to "yes".
+IS_CONFIGURED="no"
+
+# spiped is shipped with plenty of options. 
+# Please see the man page for the complete list.
+# -e : encrypt communication
+# -d : decrypt communication
+OPTS="-e"
+
+# Address and port on which spiped should listen for incoming connections.
+# If you want it to listen on the loopback interface, do not specify "localhost" 
+# but the localhost IP address instead. spiped won't start if you do so.
+SRCHOST="127.0.0.1"
+SRCPORT="12345"
+
+# Address and port to which spiped should connect
+TARGETHOST="some.domain.tld"
+TARGETPORT="1337"

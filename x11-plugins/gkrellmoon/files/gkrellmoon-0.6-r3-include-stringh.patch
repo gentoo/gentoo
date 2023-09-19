@@ -1,0 +1,14 @@
+Include string.h
+--- a/CalcEphem.h
++++ b/CalcEphem.h
+@@ -13,6 +13,7 @@
+ #include <glib.h>
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <math.h>
+ 
+ #define DegPerRad       57.29577951308232087680
+-- 
+2.34.1
+

@@ -1,0 +1,15 @@
+Index: FreeImage/Source/FreeImage.h
+===================================================================
+--- FreeImage.orig/Source/FreeImage.h
++++ FreeImage/Source/FreeImage.h
+@@ -155,8 +155,10 @@ typedef uint8_t BYTE;
+ typedef uint16_t WORD;
+ typedef uint32_t DWORD;
+ typedef int32_t LONG;
++#ifndef _LIBRAW_TYPES_H
+ typedef int64_t INT64;
+ typedef uint64_t UINT64;
++#endif
+ #else
+ // MS is not C99 ISO compliant
+ typedef long BOOL;

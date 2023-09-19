@@ -1,0 +1,16 @@
+/var/log/rspamd/rspamd.log {
+	daily
+	rotate 4
+	delaycompress
+	compress
+	notifempty
+	missingok
+	postrotate
+		if test -d /run/systemd/system ; then
+			systemctl kill -s USR1 --kill-who=main rspamd.service
+		else
+			test -r /run/rspamd.pid && kill -USR1 $(cat /run/rspamd.pid) &>/dev/null
+		fi
+	endscript
+}
+

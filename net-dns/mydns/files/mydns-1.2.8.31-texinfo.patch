@@ -1,0 +1,30 @@
+From d341ad19c32777757d2ade6dc8c096a8d14dfb77 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 13 Aug 2015 23:10:29 +0200
+Subject: [PATCH] Fix texinfo compilation
+
+Error was:
+./fdl.texi:371: raising the section level of @appendixsubsec which is too low
+
+Applying idea from
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=708589
+---
+ doc/fdl.texi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/fdl.texi b/doc/fdl.texi
+index a497bba..fc801a8 100644
+--- a/doc/fdl.texi
++++ b/doc/fdl.texi
+@@ -368,7 +368,7 @@ as a draft) by the Free Software Foundation.
+ @end enumerate
+ 
+ @page
+-@appendixsubsec ADDENDUM: How to use this License for your documents
++@appendixsec ADDENDUM: How to use this License for your documents
+ 
+ To use this License in a document you have written, include a copy of
+ the License in the document and put the following copyright and
+-- 
+2.5.0
+

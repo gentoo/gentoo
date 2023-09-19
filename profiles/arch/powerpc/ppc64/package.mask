@@ -1,0 +1,81 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-01-11)
+# Requires media-libs/libva since 29.0.0.
+>=media-video/obs-studio-29.0.0
+
+# Sam James <sam@gentoo.org> (2022-10-08)
+# sys-boot/gnu-efi isn't keyworded here right now
+sys-kernel/installkernel-systemd-boot
+
+# Michał Górny <mgorny@gentoo.org> (2022-08-25)
+# Only ppc64le binpkg is provided.
+dev-python/pypy-exe-bin
+dev-python/pypy3-exe-bin
+
+# Sam James <sam@gentoo.org> (2022-01-18)
+# No bootstrap binary available on big endian PPC64 right now
+dev-lisp/sbcl
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Mask for media-libs/openexr and its reverse dependencies.
+# Broken on big endian.
+# bug #818424
+dev-games/openscenegraph
+dev-games/openscenegraph-openmw
+dev-games/openscenegraph-qt
+games-engines/openmw
+media-libs/openexr
+media-libs/ctl
+media-gfx/openvdb
+media-libs/embree
+media-libs/opencolorio
+media-libs/openimageio
+media-libs/osl
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Fails with "No byte-swap function available on big-endian platform."
+# bug #711940
+dev-db/mysql-connector-c++
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-17)
+# chromium does not work on ppc64be
+www-client/chromium
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
+# only works on little-endian
+sci-mathematics/geogebra-bin
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
+# Fails to build with buildmode=pie assumptions, which
+# does not work on big-endian ppc64
+# next releases remove that assumption and mask will be lifted
+app-containers/docker
+app-containers/docker-buildx
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
+# openjfx:11 does not work on ppc64be
+dev-java/openjfx:11
+
+# Georgy Yakovlev <gyakovlev@gentoo.org) (2020-08-27)
+# big-endian ppc64 configs are not provided
+# however users can unmask and use savedconfig feature
+sys-kernel/gentoo-kernel
+sys-kernel/gentoo-kernel-bin
+sys-kernel/vanilla-kernel
+virtual/dist-kernel
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
+# buggy on big-endian
+media-libs/libva
+media-video/libva-utils
+media-plugins/gst-plugins-vaapi
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# buggy on big-endian
+x11-drivers/xf86-video-amdgpu
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2018-02-21)
+# Mozc supports only little-endian architectures.
+app-i18n/mozc

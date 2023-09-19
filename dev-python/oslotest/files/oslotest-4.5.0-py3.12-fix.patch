@@ -1,0 +1,23 @@
+Subject: [PATCH] Replace find_module function
+
+find_module function was deprecated in Python 3.4 [1] and later removed
+in Python 3.12 [2], the find_spec function should be used instead. This
+change is necessary for proper Python 3.12 support.
+
+[1] https://docs.python.org/3.4/library/importlib.html#importlib.abc.MetaPathFinder.find_module
+[2] https://github.com/python/cpython/issues/98040
+
+Upstream: https://review.opendev.org/c/openstack/oslotest/+/886646
+
+diff --git a/oslotest/modules.py b/oslotest/modules.py
+index f453b17..8fe04a2 100644
+--- a/oslotest/modules.py
++++ b/oslotest/modules.py
+@@ -45,6 +45,6 @@
+     def __init__(self, module):
+         self.module = module
+ 
+-    def find_module(self, fullname, path):
++    def find_spec(self, fullname, path, target):
+         if fullname == self.module or fullname.startswith(self.module + '.'):
+             raise ImportError

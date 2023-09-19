@@ -1,0 +1,465 @@
+diff -ru nstx-1.1-beta6.orig/nstx_tuntap.c nstx-1.1-beta6/nstx_tuntap.c
+--- nstx-1.1-beta6.orig/nstx_tuntap.c	2009-03-16 05:31:24.000000000 +0000
++++ nstx-1.1-beta6/nstx_tuntap.c	2009-03-16 22:45:28.000000000 +0000
+@@ -19,13 +19,15 @@
+ 
+ #ifdef linux
+ #include <linux/if_tun.h>
+-#define TUNDEV "/dev/net/tun"
++#define TUNINT "tun0"
++#define TUNDEVNODE "/dev/net/tun"
+ #else
+ #	include <net/if_tun.h>
++#	define TUNINT "NULL?"
+ #	if __FreeBSD_version < 500000
+-#		define TUNDEV "/dev/tun2"
++#		define TUNDEVNODE "/dev/tun2"
+ #	else
+-#		define TUNDEV "/dev/tun"
++#		define TUNDEVNODE "/dev/tun"
+ #	endif
+ #endif
+ 
+@@ -33,127 +35,135 @@
+ 
+ #define MAXPKT 2000
+ 
+-#define TAPDEV "/dev/tap0"
++#define TAPINT "tap0"
++#define TAPDEVNODE "/dev/net/tun"
+ 
+ int tfd = -1, nfd = -1;
+ static char dev[IFNAMSIZ+1];
+ 
+-static int tun_alloc (const char *path);
++static int tun_alloc (const char * interface, const char * device_node);
++static int tap_alloc (const char * interface, const char * device_node);
++
+ #ifdef linux
+-static int tap_alloc (const char *path);
++static int tuntap_alloc_linux(const char * interface, const char * device_node,
++        int mode);
++#else
++static int tun_alloc_bsd(const char * interface, const char * device_node);
+ #endif
+ 
+ void
+-open_tuntap(const char *device)
++open_tuntap(const char * interface, const char * device_node, int tun)
+ {
+-   int	tunerr;
+-#ifdef linux
+-   int	taperr;
+-#endif
++   int err;
++
++   if (!interface)
++       interface = (tun ? TUNINT : TAPINT);
++
++   if (!device_node)
++       device_node = (tun ? TUNDEVNODE : TAPDEVNODE);
++
++   fprintf(stderr, "Opening %s interface %s at %s... ", tun ? "tun" : "tap",
++           interface, device_node);
++
++   err = (tun ? tun_alloc(interface, device_node) : tap_alloc(interface,
++               device_node));
++
++   if (!err) {
++       fprintf(stderr, "using interface %s\n", dev);
++
++       if (tun)
++           fprintf(stderr, "you will now need to assign an ip and routing to "
++                   "this interface\n");
++       else
++           fprintf(stderr, "you will now need to add bridging or other rules "
++                   "to this interface\n");
++       return;
++   }
+    
+-   fprintf(stderr, "Opening tun/tap-device... ");
+-   if ((tunerr = tun_alloc(device ? device : TUNDEV))
++   fprintf(stderr, "failed! (%s)\n", strerror(err));
++
++   fprintf(stderr, "Diagnostics: ");
++
++   if (err == EPERM)
++       fprintf(stderr, "you usually have to be root to use nstx.\n");
++   else if (err == ENOENT)
++       fprintf(stderr, "maybe you need kernel support -- did you modprobe "
++               "tap?\n");
++   else if (err == ENODEV)
++       fprintf(stderr, "maybe you need kernel support -- did you modprobe "
++               "tap?\n");
+ #ifdef linux
+-	&& (taperr = tap_alloc(device ? device : TAPDEV))
++#else
++   else if ((err == EINVAL) && !tun)
++       fprintf(stderr, "tap support is only available under linux\n");
+ #endif
+-   ) {
+-      fprintf(stderr, "failed!\n"
+-	              "Diagnostics:\nTun ("TUNDEV"): ");
+-      switch (tunerr) {
+-       case EPERM:
+-	 fprintf(stderr, "Permission denied. You usually have to "
+-		         "be root to use nstx.\n");
+-	 break;
+-       case ENOENT:
+-	 fprintf(stderr, TUNDEV " not found. Please create /dev/net/ and\n"
+-		 "     mknod /dev/net/tun c 10 200 to use the tun-device\n");
+-	 break;
+-       case ENODEV:
+-	 fprintf(stderr, "Device not available. Make sure you have "
+-		 "kernel-support\n     for the tun-device. Under linux, you "
+-		 "need tun.o (Universal tun/tap-device)\n");
+-	 break;
+-       default:
+-	 perror("Unexpected error");
+-	 break;
+-      }
+-      fprintf(stderr, "Tap ("TAPDEV"):\n(only available under linux)\n");
++   else
++       fprintf(stderr, "none, sorry\n");
++
++   exit(EXIT_FAILURE);
++}
++
++int tun_alloc(const char * interface, const char * device_node) 
++{
+ #ifdef linux
+-      switch (taperr) {
+-       case EPERM:
+-	 fprintf(stderr, "Permission denied. You generally have to "
+-		 "be root to use nstx.\n");
+-	 break;
+-       case ENOENT:
+-	 fprintf(stderr, TAPDEV " not found. Please\n"
+-		 "     mknod /dev/tap0 c 36 16 to use the tap-device\n");
+-	 break;
+-       case ENODEV:
+-	 fprintf(stderr, "Device not available. Make sure you have kernel-support\n"
+-		 "     for the tap-device. Under linux, you need netlink_dev.o and ethertap.o\n");
+-	 break;
+-       default:
+-	 fprintf(stderr, "Unexpected error: %s\n", strerror(taperr));
+-	 break;
+-      }
++    return tuntap_alloc_linux(interface, device_node, IFF_TUN);
++#else
++    return tun_alloc_bsd(interface, device_node);
+ #endif
+-      exit(EXIT_FAILURE);
+-   }
+-   
+-   fprintf(stderr, "using device %s\n"
+-	  "Please configure this device appropriately (IP, routes, etc.)\n", dev);
+ }
+ 
+-int
+-tun_alloc (const char *path) 
++int tap_alloc(const char * interface, const char * device_node) 
+ {
+ #ifdef linux
+-   struct ifreq ifr;
++    return tuntap_alloc_linux(interface, device_node, IFF_TAP);
+ #else
+-   struct stat st;
++    return EINVAL;
+ #endif
+- 
+-   if ((tfd = open(path, O_RDWR)) < 0)
+-     return errno;
++}
+ 
+ #ifdef linux
+-   memset(&ifr, 0, sizeof(ifr));
++
++int tuntap_alloc_linux(const char * interface, const char * device_node,
++        int mode)
++{
++    struct ifreq ifr;
++
++    if ((tfd = open(device_node, O_RDWR)) < 0)
++        return errno;
++
++    memset(&ifr, 0, sizeof(ifr));
+    
+-   ifr.ifr_flags = IFF_TUN|IFF_NO_PI;
++    ifr.ifr_flags = mode | IFF_NO_PI;
++    strncpy(ifr.ifr_name, interface, sizeof(ifr.ifr_name));
++    ifr.ifr_name[sizeof(ifr.ifr_name) - 1] = 0;
+    
+-   if (ioctl(tfd, TUNSETIFF, (void *) &ifr) < 0)
+-     {
+-	close(tfd);
+-	tfd = -1;
+-	return errno;
+-     }
+-   strncpy(dev, ifr.ifr_name, IFNAMSIZ+1);
+-#else
+-   fstat(tfd, &st);
+-   strncpy(dev, devname(st.st_rdev, S_IFCHR), IFNAMSIZ+1);
+-#endif
++    if (ioctl(tfd, TUNSETIFF, (void *) &ifr) < 0) {
++        close(tfd);
++        tfd = -1;
++        return errno;
++    }
++
++    strncpy(dev, ifr.ifr_name, IFNAMSIZ+1);
+    
+-   return 0;
++    return 0;
+ }
+ 
++#else /* bsd */
+ 
+-#ifdef linux
+-int
+-tap_alloc(const char *path)
++int tun_alloc_bsd(const char * interface, const char * device_node)
+ {
+-   char *ptr;
+-   
+-   if ((tfd = open(path, O_RDWR)) < 0)
++   struct stat st;
++
++   if ((tfd = open(device_node, O_RDWR)) < 0)
+      return errno;
+-   
+-   if ((ptr = strrchr(path, '/')))
+-     strncpy(dev, ptr+1, IFNAMSIZ+1);
+-   else
+-     strncpy(dev, path, IFNAMSIZ+1);
++
++   fstat(tfd, &st);
++   strncpy(dev, devname(st.st_rdev, S_IFCHR), IFNAMSIZ+1);
+    
+    return 0;
+ }
+-#endif
++
++#endif /* linux/bsd */
+ 
+ void
+ open_ns(const char *ip)
+diff -ru nstx-1.1-beta6.orig/nstxcd.8 nstx-1.1-beta6/nstxcd.8
+--- nstx-1.1-beta6.orig/nstxcd.8	2009-03-16 05:31:24.000000000 +0000
++++ nstx-1.1-beta6/nstxcd.8	2009-03-16 23:16:21.000000000 +0000
+@@ -3,7 +3,7 @@
+ nstxcd \- IP over DNS tunneling client
+ 
+ .SH SYNOPSIS
+-.B "nstxcd \fIDOMAIN\fR \fIIPADDRESS\fR"
++.B "nstxcd \fIOPTIONS\fR \fIDOMAIN\fR \fIIPADDRESS\fR"
+ 
+ .SH DESCRIPTION
+ .B nstxcd
+@@ -13,6 +13,14 @@
+ .SH OPTIONS
+ .B nstxcd
+ takes the following options:
++.IP \-I tun/tap interface
++Use this tun/tap interface instead of the default (tun0/tap0)
++.IP \-d tun/tap device node
++Use this tun/tap device node instead of the default (/dev/net/tun on Linux)
++.IP \-t
++Tun mode (default)
++.IP \-T
++Tap mode
+ .IP "domain"
+ The domain that nstxcd will send requests to. This domain must be delegated
+ to a machine that is running nstxd.
+@@ -22,9 +30,9 @@
+ .SH USAGE
+ .Bnstxcd
+ should be run against a domain that has been delegated to a machine running
+-nstxd. It will then take any packets that are sent to the tun0 interface and
+-send them over DNS to the other tunnel endpoint. Responses will appear on 
+-the tun0 interface.
++nstxd. It will then take any packets that are sent to the tun/tap interface and
++send them over DNS to the other tunnel endpoint. Responses will appear on the
++tun/tap interface.
+ 
+ .SH AUTHORS
+ 
+diff -ru nstx-1.1-beta6.orig/nstxcd.c nstx-1.1-beta6/nstxcd.c
+--- nstx-1.1-beta6.orig/nstxcd.c	2009-03-16 05:31:24.000000000 +0000
++++ nstx-1.1-beta6/nstxcd.c	2009-03-16 23:16:07.000000000 +0000
+@@ -55,25 +55,44 @@
+ static void
+ usage(const char *prog, int code)
+ {
+-	fprintf(stderr, "Usage: %s [-d tun-device] <domainname> <dns-server>\n"
+-	    "Example: %s tun.yomama.com 125.23.53.12\n", prog, prog);
++	fprintf(stderr, "Usage: %s [options] <domainname> <dns-server>\n"
++	    "Where options are:\n"
++	    "\t-d path (use this tun/tap device node instead of default)\n"
++	    "\t-I interface (use this tun/tap interface instead of default)\n"
++#ifdef linux
++	    "\t-t (tun mode, default)\n"
++	    "\t-T (tap mode)\n"
++#endif
++	    "example:\n"
++	    "%s tun.yomama.com 125.23.53.12\n", prog, prog);
+ 	exit(code);
+ }
+ 
+ int main (int argc, char * argv[]) {
+   struct nstxmsg *msg;
+-  const char	*device = NULL;
++  const char	*interface = NULL;
++  const char	*device_node = NULL;
+   int 		 ch;
++  int tun = 1;
+ 
+   nsid = time(NULL);
+  
+   if (argc < 3)
+ 	usage(argv[0], EX_USAGE);
+ 
+-  while ((ch = getopt(argc, argv, "hd:")) != -1) {
++  while ((ch = getopt(argc, argv, "hd:I:tT")) != -1) {
+ 	switch (ch) {
++	case 'I':
++		interface = optarg;
++		break;
+ 	case 'd':
+-		device = optarg;
++		device_node = optarg;
++		break;
++	case 't':
++        tun = 1;
++		break;
++	case 'T':
++        tun = 0;
+ 		break;
+ 	case 'h':
+ 		usage(argv[0], 0);
+@@ -85,7 +104,7 @@
+   dns_setsuffix(argv[optind]);
+ 
+   qsettimeout(10);
+-  open_tuntap(device);
++  open_tuntap(interface, device_node, tun);
+   open_ns(argv[optind + 1]);
+ 
+   for (;;) {
+diff -ru nstx-1.1-beta6.orig/nstxd.8 nstx-1.1-beta6/nstxd.8
+--- nstx-1.1-beta6.orig/nstxd.8	2009-03-16 05:31:24.000000000 +0000
++++ nstx-1.1-beta6/nstxd.8	2009-03-16 23:16:32.000000000 +0000
+@@ -3,7 +3,7 @@
+ nstxd \- IP over DNS tunneling daemon
+ 
+ .SH SYNOPSIS
+-.B "nstxd \fIOPTION\fR \fIDOMAIN\fR"
++.B "nstxd \fIOPTIONS\fR \fIDOMAIN\fR"
+ 
+ .SH DESCRIPTION
+ .B nstxd
+@@ -14,8 +14,14 @@
+ .SH OPTIONS
+ .B nstxd
+ takes the following option:
+-.IP \-d tun-device
+-Use this tun device instead of tun0
++.IP \-I tun/tap interface
++Use this tun/tap interface instead of the default (tun0/tap0)
++.IP \-d tun/tap device node
++Use this tun/tap device node instead of the default (/dev/net/tun on linux)
++.IP \-t
++Tun mode (default)
++.IP \-T
++Tap mode
+ .IP \-i ipaddr
+ Bind to this IP address rather than every available address
+ .IP \-C dir
+@@ -33,9 +39,9 @@
+ .SH USAGE
+ A domain should be delegated to the machine that will run nstxd. nstxd should
+ then be run giving that domain as the only argument. nstxd will then listen
+-for requests and translate them into IP packets that will appear on the tun0
+-interface. Packets sent to the tun0 interface will be transferred back to
+-the client as DNS answers.
++for requests and translate them into IP packets that will appear on the given
++tun/tap interface. Packets sent to the tun/tap interface will be transferred
++back to the client as DNS answers.
+ 
+ .SH AUTHORS
+ 
+diff -ru nstx-1.1-beta6.orig/nstxd.c nstx-1.1-beta6/nstxd.c
+--- nstx-1.1-beta6.orig/nstxd.c	2009-03-16 05:31:24.000000000 +0000
++++ nstx-1.1-beta6/nstxd.c	2009-03-16 23:15:30.000000000 +0000
+@@ -55,7 +55,12 @@
+ {
+ 	fprintf (stderr, "usage: %s [options] <domainname>\n"
+ 	    "Where options are:\n"
+-	    "\t-d tun-device (use this tun/tap device instead of default\n"
++	    "\t-d path (use this tun/tap device node instead of default)\n"
++	    "\t-I interface (use this tun/tap interface instead of default)\n"
++#ifdef linux
++	    "\t-t (tun mode, default)\n"
++	    "\t-T (tap mode)\n"
++#endif
+ 	    "\t-i ip.to.bi.nd (bind to port 53 on this IP only)\n"
+ 	    "\t-C dir (chroot() to this directory after initialization)\n"
+ 	    "\t-D (call daemon(3) to detach from terminal)\n"
+@@ -68,13 +73,15 @@
+ 
+ int main (int argc, char *argv[]) {
+    signed char	 ch;
+-   const char	*device = NULL, *dir = NULL;
++   const char	*interface = NULL, *dir = NULL;
++   const char	*device_node = NULL;
+    in_addr_t	 bindto = INADDR_ANY;
+    uid_t	 uid = 0;
+    int		 daemonize = 0;
+    int		 logmask = LOG_UPTO(LOG_INFO);
++   int tun = 1;
+    
+-   while ((ch = getopt(argc, argv, "gDC:u:hd:i:")) != -1) {
++   while ((ch = getopt(argc, argv, "gDC:u:hd:I:i:tT")) != -1) {
+ 	switch(ch) {
+ 	case 'i':
+ 		bindto = inet_addr(optarg);
+@@ -84,8 +91,17 @@
+ 			exit(EX_USAGE);
+ 		}
+ 		break;
++	case 'I':
++		interface = optarg;
++		break;
+ 	case 'd':
+-		device = optarg;
++		device_node = optarg;
++		break;
++	case 't':
++        tun = 1;
++		break;
++	case 'T':
++        tun = 0;
+ 		break;
+ 	case 'D':
+ 		daemonize = 1;
+@@ -121,7 +137,7 @@
+ 
+    dns_setsuffix(argv[optind]);
+    
+-   open_tuntap(device);
++   open_tuntap(interface, device_node, tun);
+    open_ns_bind(bindto);
+    
+    if (dir) {
+diff -ru nstx-1.1-beta6.orig/nstxfun.h nstx-1.1-beta6/nstxfun.h
+--- nstx-1.1-beta6.orig/nstxfun.h	2009-03-16 05:31:24.000000000 +0000
++++ nstx-1.1-beta6/nstxfun.h	2009-03-16 22:40:44.000000000 +0000
+@@ -52,7 +52,7 @@
+ 
+ /* DNS */
+ 
+-void open_tuntap (const char *device);
++void open_tuntap (const char * interface, const char * device_node, int tun);
+ void open_ns (const char *ip);
+ void open_ns_bind(in_addr_t ip);
+ 

@@ -1,0 +1,18 @@
+It is not specified whether the python sitedir is located within the native
+ABI's $libdir folder. This breaks Gentoo's py3.7 and 3.8 installations.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -154,9 +154,9 @@
+ 	ln -sf $(LIBNEWTSH) $(DESTDIR)/$(libdir)/$(LIBNEWTSONAME)
+ 	[ -n "$(WHIPTCLSO)" ] && install -m 755 whiptcl.$(SOEXT) $(DESTDIR)/$(libdir) || :
+ 	[ -n "$(PYTHONVERS)" ] && for ver in $(PYTHONVERS) ; do \
+-	   [ -d $(DESTDIR)/$(libdir)/$$ver/site-packages ] || install -m 755 -d $(DESTDIR)/$(libdir)/$$ver/site-packages ;\
+-	   install -m 755 $$ver/_snack.$(SOEXT) $(DESTDIR)/$(libdir)/$$ver/site-packages ;\
+-	   install -m 644 snack.py $(DESTDIR)/$(libdir)/$$ver/site-packages ;\
++	   [ -d $(DESTDIR)/$(PYTHON_SITEDIR) ] || install -m 755 -d $(DESTDIR)/$(PYTHON_SITEDIR) ;\
++	   install -m 755 $$ver/_snack.$(SOEXT) $(DESTDIR)/$(PYTHON_SITEDIR) ;\
++	   install -m 644 snack.py $(DESTDIR)/$(PYTHON_SITEDIR) ;\
+ 	done || :
+ 
+ Makefile: configure.ac

@@ -1,0 +1,19 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2023-04-11)
+# dev-libs/weston casualties (#833010)
+# https://gitlab.freedesktop.org/wayland/weston/-/issues/739
+gui-libs/gtk wayland
+gnome-base/gnome-control-center wayland
+sys-apps/xdg-desktop-portal-gnome wayland
+
+# matoro <matoro_gentoo@matoro.tk> (2023-04-10)
+# media-libs/libldac casualties (#80238)
+media-video/pipewire bluetooth
+media-sound/pulseaudio-daemon ldac
+
+# matoro <matoro_gentoo@matoro.tk> (2023-04-07)
+# media-libs/openh264 casualties (#896138)
+# https://github.com/cisco/openh264/issues/3634
+media-libs/libtgvoip dsp

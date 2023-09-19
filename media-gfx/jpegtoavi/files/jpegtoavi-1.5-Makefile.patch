@@ -1,0 +1,31 @@
+--- a/Makefile	2010-03-02 23:06:07.000000000 +0200
++++ b/Makefile	2010-03-02 23:11:59.000000000 +0200
+@@ -1,4 +1,4 @@
+-CC=gcc
++CC ?= gcc
+ INCLUDE=
+ LIBS=-L.
+ SOURCES=jpegtoavi.c avifmt.h byteswap.h llist.h llist.c
+@@ -10,7 +10,8 @@
+ PACKAGE_VERSION_MIN=5
+ PACKAGE_VERSION=$(PACKAGE_VERSION_MAJ).$(PACKAGE_VERSION_MIN)
+ VERBOSE=0
+-CCFLAGS=$(INCLUDE) -O3 -Wall -ansi -g -DLINUX -D__UNIX__ \
++CFLAGS += -Wall -ansi
++CPPFLAGS += $(INCLUDE) -DLINUX -D__UNIX__ \
+ 	-DVERSION_MIN=$(PACKAGE_VERSION_MIN) \
+ 	-DVERSION_MAJ=$(PACKAGE_VERSION_MAJ) \
+ 	-DVERBOSE=$(VERBOSE)
+@@ -27,10 +28,10 @@
+ all: jpegtoavi
+ 
+ %.o: %.c
+-	$(CC) $(CCFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ jpegtoavi: jpegtoavi.o llist.o
+-	$(CC) $(CCFLAGS) jpegtoavi.o llist.o $(LIBS) -o $@
++	$(CC) $(LDFLAGS) jpegtoavi.o llist.o $(LIBS) -o $@
+ 
+ distdir: $(DISTFILES)
+ 	$(am__remove_distdir)

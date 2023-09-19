@@ -1,0 +1,11 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Ulrich Müller <ulm@gentoo.org> (2020-11-29)
+# GCC's Objective-C compiler fails to build the Aqua/Cocoa interface.
+# Bug #757300
+app-editors/emacs aqua
+
+# Cocoa integration requires frameworks, and this is a bridge too far
+# for current FSF GCC
+x11-libs/cairo aqua

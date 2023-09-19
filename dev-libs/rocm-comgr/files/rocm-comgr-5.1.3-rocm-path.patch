@@ -1,0 +1,14 @@
+Add --rocm-path=/usr argument in runtime because our rocm path is not in default seach list.
+--- comgr/src/comgr-compiler.cpp
++++ comgr.orig/src/comgr-compiler.cpp
+@@ -1096,6 +1096,10 @@
+       }
+     }
+   }
++  else {
++    llvm::SmallString<128> RealRocmDir = env::getLLVMPath();
++    Args.push_back(Saver.save(Twine("--rocm-path=") + RealRocmDir).data());
++  }
+ 
+   return processFiles(AMD_COMGR_DATA_KIND_BC, ".bc");
+ }

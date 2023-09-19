@@ -1,0 +1,46 @@
+From 826770e2dae8646a613dbe07685be68b4dc83b62 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Mon, 9 Mar 2020 15:21:55 +0100
+Subject: [PATCH] Only check for enchant-2
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8ab413657..e1159d45e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -591,23 +591,15 @@ dnl enchant is used for spell checking
+ AC_MSG_CHECKING([whether to use enchant])
+ AC_MSG_RESULT($enable_enchant)
+ if test $enable_enchant = yes; then
+-	PKG_CHECK_MODULES(ENCHANT, enchant >= 1.4.0,
++	PKG_CHECK_MODULES(ENCHANT, enchant-2 >= 2.0.0,
+ 	[
+-		AC_DEFINE(USE_ENCHANT, 1, enchant)
+-		echo "Building with enchant"
++		AC_DEFINE(USE_ENCHANT, 1, enchant-2)
++		echo "Building with enchant-2"
+ 		enable_enchant=yes
+ 	],
+ 	[
+-		PKG_CHECK_MODULES(ENCHANT, enchant-2 >= 2.0.0,
+-		[
+-			AC_DEFINE(USE_ENCHANT, 1, enchant-2)
+-			echo "Building with enchant-2"
+-			enable_enchant=yes
+-		],
+-		[
+-			echo "Building without enchant-notification"
+-			enable_enchant=no
+-		])
++		echo "Building without enchant-notification"
++		enable_enchant=no
+ 	])
+ 	AC_SUBST(ENCHANT_CFLAGS)
+ 	AC_SUBST(ENCHANT_LIBS)
+-- 
+2.25.1
+

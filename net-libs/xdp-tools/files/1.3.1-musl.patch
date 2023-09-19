@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/836708
+https://github.com/xdp-project/xdp-tools/pull/309
+
+From c9956abbfbd238bd2eb98c67ea002bfce29063a4 Mon Sep 17 00:00:00 2001
+From: Stijn Tintel <stijn@linux-ipv6.be>
+Date: Wed, 29 Mar 2023 04:25:06 +0300
+Subject: [PATCH] libxdp: fix build on musl
+
+In musl, PATH_MAX is defined in limits.h. Include it in libxdp.c to fix
+building systems using musl libc.
+
+libxdp.c: In function 'find_bpffs':
+libxdp.c:406:33: error: 'PATH_MAX' undeclared (first use in this function)
+  406 |         static char bpf_wrk_dir[PATH_MAX];
+      |                                 ^~~~~~~~
+
+Signed-off-by: Stijn Tintel <stijn@linux-ipv6.be>
+--- a/lib/libxdp/libxdp.c
++++ b/lib/libxdp/libxdp.c
+@@ -22,6 +22,7 @@
+ #include <fcntl.h>
+ #include <inttypes.h>
+ #include <dirent.h>
++#include <limits.h>
+ 
+ #include <linux/err.h> /* ERR_PTR */
+ #include <linux/if_link.h>
+

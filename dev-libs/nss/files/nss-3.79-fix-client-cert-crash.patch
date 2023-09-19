@@ -1,0 +1,23 @@
+diff --git a/lib/ssl/authcert.c b/lib/ssl/authcert.c
+--- a/lib/ssl/authcert.c
++++ b/lib/ssl/authcert.c
+@@ -212,17 +212,17 @@ NSS_GetClientAuthData(void *arg,
+                                                pw_arg);
+         } else {
+             int nnames = 0;
+             char **names = ssl_DistNamesToStrings(caNames, &nnames);
+             rv = CERT_FilterCertListByCANames(certList, nnames, names,
+                                               certUsageSSLClient);
+             ssl_FreeDistNamesStrings(names, nnames);
+         }
+-        if ((rv != SECSuccess) || CERT_LIST_EMPTY(certList)) {
++        if ((rv != SECSuccess) || (certList && CERT_LIST_EMPTY(certList))) {
+             CERT_DestroyCertList(certList);
+             certList = NULL;
+         }
+     }
+     if (certList == NULL) {
+         /* no user certs meeting the nickname/usage requirements found */
+         return SECFailure;
+     }
+

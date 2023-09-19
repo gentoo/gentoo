@@ -1,0 +1,56 @@
+Joerg Bornkessel <hd_brummy@gentoo.org>
+Version 1 ( 24 Oct 2006 )
+
+diff -Naur weatherng-0.0.8-pre2.orig/examples/weatherng.sh weatherng-0.0.8-pre2/examples/weatherng.sh
+--- weatherng-0.0.8-pre2.orig/examples/weatherng.sh	2006-03-19 18:35:48.897789250 +0100
++++ weatherng-0.0.8-pre2/examples/weatherng.sh	2006-03-19 18:46:43.290686250 +0100
+@@ -8,6 +8,11 @@
+ # To use this examples of urls , you must have the permission of owner to download and
+ # use them. Otherwise you must change the URLs. See README or README.DE.
+ 
++source /etc/conf.d/vdr.weatherng
++
++SCRIPT_API=2
++source /usr/share/vdr/rcscript/plugin-weatherng.sh
++
+ # Change SETUPDIR if you need.
+ SETUPDIR=/etc/vdr
+ 
+@@ -16,11 +21,11 @@
+ case "${LANGUAGE[2]}" in
+ 	1) MESG='Download abgeschlossen und Radarmaps aktualisiert'
+ 	   URLS=(\
+-#		http://www.dwd.de/scripts/getimg.php?src=/wundk/Wetter.jpg \
+-#		http://www.wetter24.de/automatic/brd_tag_n+ww00002.jpg \
+-#		http://www.wetter24.de/automatic/brd_tag_dd00002.jpg \
+-#		http://www.wetter24.de/automatic/brd_tag_tt00002.jpg \
+-#		http://www.wetter24.de/automatic/brd_tag_rr00002.jpg \
++		http://www.dwd.de/bvbw/generator/Sites/DWDWWW/Content/Oeffentlichkeit/WV/WV11/Wetterkarten/Wetter__Deutschland__teaser__Bild,property=default.jpg \
++		http://www.zdf.de/CMO/frontend/subsystem_we/WeShowPicture/0,6008,337,00.jpg \
++		http://www.zdf.de/CMO/frontend/subsystem_we/WeShowPicture/0,6008,261,00.jpg \
++		http://www.zdf.de/CMO/frontend/subsystem_we/WeShowPicture/0,6008,258,00.jpg \
++		http://www.zdf.de/CMO/frontend/subsystem_we/WeShowPicture/0,6008,346,00.jpg \
+ 		)
+ 	;;
+ 	7) MESG='Téléchargement des données Météo OK'
+@@ -53,7 +58,7 @@
+ esac
+ 
+ for i in $(seq 0 10) ; do
+-    eval ${URLS[$i]:+ wget -t 4 -T 20 "${URLS[$i]}" -O "$SETUPDIR/plugins/weatherng/pic${i}"}
++    eval ${URLS[$i]:+ wget -t 4 -T 20 "${URLS[$i]}" -O "${WEATHERNG_DATA_DIR}/pic${i}"}
+ done
+ 
+ # Dont change or uncomment this and the following 5 lines. ;)
+@@ -63,8 +68,8 @@
+ # Example for Herne,Germany [GMXX0057]with a permission from The weather channel:
+ # e.g :  wget -t 4 -T 20 "http://xoap.weather.com/weather/local/GMXX0057?cc=*&unit=m&dayf=10&prod=xoap&par=1004124588&key=079f24145f208494" -O "$SETUPDIR/plugins/weatherng/data1.xml"
+ 
+-#wget -t 4 -T 20 "http://xoap.weather.com/weather/local/STATIONID1?cc=*&unit=m&dayf=10&prod=xoap&par=1004124588&key=079f24145f208494" -O "$SETUPDIR/plugins/weatherng/data1.xml"
+-#wget -t 4 -T 20 "http://xoap.weather.com/weather/local/STATIONID2?cc=*&unit=m&dayf=10&prod=xoap&par=1004124588&key=079f24145f208494" -O "$SETUPDIR/plugins/weatherng/data2.xml"
+-#wget -t 4 -T 20 "http://xoap.weather.com/weather/local/STATIONID3?cc=*&unit=m&dayf=10&prod=xoap&par=1004124588&key=079f24145f208494" -O "$SETUPDIR/plugins/weatherng/data3.xml"
++wget -t 4 -T 20 "http://xoap.weather.com/weather/local/${WEATHERNG_STATIONID1}?cc=*&unit=m&dayf=10&par=1004124588&key=079f24145f208494" -O "${WEATHERNG_DATA_DIR}/data1.xml"
++wget -t 4 -T 20 "http://xoap.weather.com/weather/local/${WEATHERNG_STATIONID2}?cc=*&unit=m&dayf=10&par=1004124588&key=079f24145f208494" -O "${WEATHERNG_DATA_DIR}/data2.xml"
++wget -t 4 -T 20 "http://xoap.weather.com/weather/local/${WEATHERNG_STATIONID3}?cc=*&unit=m&dayf=10&par=1004124588&key=079f24145f208494" -O "${WEATHERNG_DATA_DIR}/data3.xml"
+ 
+ echo $MESG

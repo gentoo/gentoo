@@ -1,0 +1,33 @@
+From 0f4a2071dfeb90357a3eba947d6dd7cc879675ce Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 29 Nov 2022 01:08:49 +0100
+Subject: [PATCH] Examples/Client/svn_cmd.py: Stop DeprecationWarning from
+ breaking tests with Python 3.11
+
+---
+ Examples/Client/svn_cmd.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/Examples/Client/svn_cmd.py b/Examples/Client/svn_cmd.py
+index 42e4c87..b8ef4ff 100644
+--- a/Examples/Client/svn_cmd.py
++++ b/Examples/Client/svn_cmd.py
+@@ -72,7 +72,14 @@ def initLocale():
+         locale.setlocale( locale.LC_ALL, '' )
+ 
+     else:
+-        language_code, encoding = locale.getdefaultlocale()
++        import warnings
++
++        with warnings.catch_warnings():
++            if sys.version_info >= (3, 11):
++                warnings.filterwarnings("ignore", category=DeprecationWarning)
++
++            language_code, encoding = locale.getdefaultlocale()
++
+         if language_code is None:
+             language_code = 'en_GB'
+ 
+-- 
+2.38.1
+

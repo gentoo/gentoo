@@ -1,0 +1,25 @@
+index 033c2f5..ca83044 100644
+--- a/emojify.el
++++ b/emojify.el
+@@ -290,9 +290,7 @@ current window too."
+ 
+ (defcustom emojify-emoji-json
+   (expand-file-name "data/emoji.json"
+-                    (cond (load-file-name (file-name-directory load-file-name))
+-                          ((locate-library "emojify") (file-name-directory (locate-library "emojify")))
+-                          (t default-directory)))
++                    "@SITEETC@")
+   "The path to JSON file containing the configuration for displaying emojis."
+   :type 'file
+   :group 'emojify)
+@@ -301,9 +299,7 @@ current window too."
+   (let ((json-array-type 'list)
+         (json-object-type 'hash-table))
+     (json-read-file (expand-file-name "data/emoji-sets.json"
+-                                      (cond (load-file-name (file-name-directory load-file-name))
+-                                            ((locate-library "emojify") (file-name-directory (locate-library "emojify")))
+-                                            (t default-directory))))))
++                                      "@SITEETC@"))))
+ 
+ (defcustom emojify-emoji-set "emojione-v2.2.6-22"
+   "The emoji set used to display emojis."

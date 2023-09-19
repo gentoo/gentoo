@@ -1,0 +1,15 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2020-06-24)
+# Valgrind works on ARMv7
+-dev-util/valgrind
+
+# James Le Cuirot <chewi@gentoo.org> (2015-05-24)
+# This is built for armv7a so unmask against the wider arm mask.
+-dev-java/icedtea-bin
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
+# This is built for armv7a so unmask here.
+-dev-java/openjdk-bin:11
+-dev-java/openjdk-bin:17

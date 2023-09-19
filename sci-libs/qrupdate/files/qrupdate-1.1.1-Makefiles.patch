@@ -1,0 +1,91 @@
+diff --git a/Makefile b/Makefile
+index f9dbe86..2b11b59 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,22 +32,22 @@ help:
+ 	@echo "   make install - installs everything"
+ 
+ lib:
+-	make -C src/ lib
++	$(MAKE) -C src lib
+ solib:
+-	make -C src/ solib
++	$(MAKE) -C src solib
+ test: lib
+-	make -C test/
++	$(MAKE) -C test
+ 
+ clean:
+ 	rm -f libqrupdate.a libqrupdate.so
+-	make -C src/ clean
+-	make -C test/ clean
++	$(MAKE) -C src clean
++	$(MAKE) -C test clean
+ 
+ install:
+-	make -C src/ install
++	$(MAKE) -C src install
+ 
+ install-shlib:
+-	make -C src/ install-shlib
++	$(MAKE) -C src install-shlib
+ 
+ install-staticlib:
+-	make -C src/ install-staticlib
++	$(MAKE) -C src install-staticlib
+diff --git a/src/Makefile b/src/Makefile
+index 65ef49a..c338882 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -34,6 +34,8 @@ clup1up.f dlup1up.f slup1up.f zlup1up.f
+ 
+ OBJS = $(SRC:%.f=%.o)
+ 
++PICOBJS = $(SRC:%.f=%.lo)
++
+ lib: ../libqrupdate.a
+ 
+ ifeq ($(shell uname),Darwin)
+@@ -46,19 +48,22 @@ solib: ../libqrupdate$(SOEXT)
+ ../libqrupdate.a: $(OBJS)
+ 	ar -cr $@ $(OBJS)
+ 
+-../libqrupdate.so: $(OBJS)
+-	$(FC) $(FFLAGS) -shared -o $@ -Wl,-soname=libqrupdate.so.$(MAJOR) $(OBJS) \
++../libqrupdate.so: $(PICOBJS)
++	$(FC) $(LDFLAGS) -shared -o $@ -Wl,-soname=libqrupdate.so.$(MAJOR) $(PICOBJS) \
+ 		$(BLAS) $(LAPACK)
+ 
+-../libqrupdate.dylib: $(OBJS)
+-	$(FC) $(FFLAGS) $(LDFLAGS) -dynamiclib -o $@ -install_name $(PREFIX)/$(LIBDIR)/libqrupdate.$(MAJOR).dylib $(OBJS) \
++../libqrupdate.dylib: $(PICOBJS)
++	$(FC) $(LDFLAGS) -dynamiclib -o $@ -install_name $(PREFIX)/$(LIBDIR)/libqrupdate.$(MAJOR).dylib $(PICOBJS) \
+ 		$(BLAS) $(LAPACK)
+ 
++$(PICOBJS): %.lo: %.f
++	$(FC) $(FFLAGS) $(FPICFLAGS) -c $< -o $@
++
+ $(OBJS): %.o: %.f
+-	$(FC) $(FFLAGS) $(FPICFLAGS) -c $<
++	$(FC) $(FFLAGS) -c $<
+ 
+ clean:
+-	rm -f $(OBJS)
++	rm -f $(OBJS) $(PICOBJS)
+ 
+ install: install-shlib install-staticlib
+ 
+diff --git a/test/Makefile b/test/Makefile
+index 45a843d..3be917f 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -41,7 +41,7 @@ utils.o: utils.f
+ 	$(FC) $(FFLAGS) -c $<
+ 
+ ../libqrupdate.a:
+-	make -C ../ lib
+-	
++	$(MAKE) -C .. lib
++
+ clean: 
+ 	rm -f *.o $(PROGS) $(OUTS)

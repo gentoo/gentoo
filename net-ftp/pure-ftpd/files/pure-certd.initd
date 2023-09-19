@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+certd_scriptfile="/etc/${SVCNAME}.sh"
+certd_socketfile="/run/${SVCNAME}.sock"
+pidfile="/run/pure-certd.pid"
+
+command="/usr/sbin/pure-certd"
+command_args="--pidfile ${pidfile} --run ${certd_scriptfile} --socket ${certd_socketfile}"
+command_background="true"
+
+start_pre() {
+	if [ ! -f "${certd_scriptfile}" ] ; then
+		eerror "The file ${certd_scriptfile} does not exist!"
+		eerror "Please create and configure the script."
+		return 1
+	fi
+}

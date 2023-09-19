@@ -1,0 +1,11 @@
+--- a/Samples/Simple/include/SSAO.h	2020-04-26 13:54:31.321908377 +0200
++++ b/Samples/Simple/include/SSAO.h	2020-04-26 13:54:47.497909935 +0200
+@@ -65,7 +65,7 @@
+     SSAOGBufferSchemeHandler()
+     {
+         mGBufRefMat = Ogre::MaterialManager::getSingleton().getByName("SSAO/GBuffer");
+-        RTShader::ShaderGenerator::getSingleton().validateMaterial("GBuffer", "SSAO/GBuffer");
++        RTShader::ShaderGenerator::getSingleton().validateMaterial("GBuffer", "SSAO/GBuffer", "OgreAutodetect");
+         mGBufRefMat->load();
+     }
+ 

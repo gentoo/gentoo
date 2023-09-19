@@ -1,0 +1,74 @@
+--- a/libtiff/tifftclDecls.h	2023-03-14 18:53:43.978820056 +0100
++++ b/libtiff/tifftclDecls.h	2023-03-14 18:54:32.583047764 +0100
+@@ -169,10 +169,10 @@
+ TIFFTCLAPI int		TIFFReadRGBATile(TIFF *tiffptr, uint32_t a,
+ 				uint32_t b, uint32_t *c);
+ /* 57 */
+-TIFFTCLAPI int		TIFFRGBAImageOK(TIFF *tiffptr, char *a);
++TIFFTCLAPI int		TIFFRGBAImageOK(TIFF *tiffptr, char a[1024]);
+ /* 58 */
+ TIFFTCLAPI int		TIFFRGBAImageBegin(TIFFRGBAImage *a, TIFF *tiffptr,
+-				int b, char *c);
++				int b, char c[1024]);
+ /* 59 */
+ TIFFTCLAPI int		TIFFRGBAImageGet(TIFFRGBAImage *d, uint32_t *c,
+ 				uint32_t b, uint32_t a);
+--- a/tiff/tiffZip.c	2023-03-14 19:04:42.869354563 +0100
++++ b/tiff/tiffZip.c	2023-03-14 19:05:14.768849607 +0100
+@@ -22,6 +22,7 @@
+  * OF THIS SOFTWARE.
+  */
+ 
++#include <stdint.h>
+ #include "tiffInt.h"
+ 
+ /*
+@@ -233,7 +234,7 @@
+ 	    we need to simplify this code to reflect a ZLib that is likely updated
+ 	    to deal with 8byte memory sizes, though this code will respond
+ 	    appropriately even before we simplify it */
+-	sp->stream.avail_out = (uint64)tif->tif_rawdatasize <= 0xFFFFFFFFU ? (uInt)tif->tif_rawdatasize : 0xFFFFFFFFU;
++	sp->stream.avail_out = (uint64_t)tif->tif_rawdatasize <= 0xFFFFFFFFU ? (uInt)tif->tif_rawdatasize : 0xFFFFFFFFU;
+ 	return (deflateReset(&sp->stream) == Z_OK);
+ }
+ 
+--- a/tiff/tiffPixar.c	2023-03-14 20:52:33.865532115 +0100
++++ b/tiff/tiffPixar.c	2023-03-14 20:54:14.606973646 +0100
+@@ -592,8 +592,8 @@
+ #define DecoderState(tif)	((PixarLogState*) (tif)->tif_data)
+ #define EncoderState(tif)	((PixarLogState*) (tif)->tif_data)
+ 
+-static int PixarLogEncode(TIFF* tif, uint8_t bp, tmsize_t cc, uint16_t s);
+-static int PixarLogDecode(TIFF* tif, uint8_t op, tmsize_t occ, uint16_t s);
++static int PixarLogEncode(TIFF* tif, uint8_t *bp, tmsize_t cc, uint16_t s);
++static int PixarLogDecode(TIFF* tif, uint8_t *op, tmsize_t occ, uint16_t s);
+ 
+ #define PIXARLOGDATAFMT_UNKNOWN	-1
+ 
+@@ -747,7 +747,7 @@
+ }
+ 
+ static int
+-PixarLogDecode(TIFF* tif, uint8_t op, tmsize_t occ, uint16_t s)
++PixarLogDecode(TIFF* tif, uint8_t *op, tmsize_t occ, uint16_t s)
+ {
+ 	static const char module[] = "PixarLogDecode";
+ 	TIFFDirectory *td = &tif->tif_dir;
+@@ -1111,7 +1111,7 @@
+  * Encode a chunk of pixels.
+  */
+ static int
+-PixarLogEncode(TIFF* tif, uint8_t bp, tmsize_t cc, uint16_t s)
++PixarLogEncode(TIFF* tif, uint8_t *bp, tmsize_t cc, uint16_t s)
+ {
+ 	static const char module[] = "PixarLogEncode";
+ 	TIFFDirectory *td = &tif->tif_dir;
+@@ -1411,7 +1411,7 @@
+ 	/*
+ 	 * Allocate state block so tag methods have storage to record values.
+ 	 */
+-	tif->tif_data = (uint8_t) TkimgTIFFmalloc(sizeof (PixarLogState));
++	tif->tif_data = (uint8_t *) TkimgTIFFmalloc(sizeof (PixarLogState));
+ 	if (tif->tif_data == NULL)
+ 		goto bad;
+ 	sp = (PixarLogState*) tif->tif_data;

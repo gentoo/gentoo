@@ -1,0 +1,16 @@
+--- linuxsampler-2.1.1/src/network/lscp.y	2020/06/07 15:39:31	3786
++++ linuxsampler-2.1.1/src/network/lscp.y	2020/06/08 11:55:18	3787
+@@ -1479,6 +1479,13 @@
+  */
+ typedef std::set< std::vector<YYTYPE_INT16> > YYStackHistory;
+ 
++/*
++ * YYTERROR macro was removed in Bison 3.6.0, we need it in function below.
++ */
++#ifndef YYTERROR
++# define YYTERROR YYSYMBOL_YYerror
++#endif
++
+ #define DEBUG_BISON_SYNTAX_ERROR_WALKER 0
+ 
+ /**

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/nextcloud/notify_push/issues</bugs-to>
+		<remote-id type="github">nextcloud/notify_push</remote-id>
+	</upstream>
+</pkgmetadata>

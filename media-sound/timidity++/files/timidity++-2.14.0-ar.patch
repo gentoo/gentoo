@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/468176
+
+--- a/configure.in
++++ b/configure.in
+@@ -167,6 +167,7 @@ AC_PROG_CC
+ AC_PROG_GCC_TRADITIONAL
+ AC_PROG_INSTALL
+ AC_PROG_AWK
++AC_CHECK_TOOL([AR], [ar], :)
+ AC_PROG_RANLIB
+ AC_PROG_LN_S
+ CHECK_COMPILER_OPTION(rdynamic)
+--- a/timidity/Makefile.am
++++ b/timidity/Makefile.am
+@@ -417,7 +417,7 @@ calcnewt$(EXEEXT): $(calcnewt_OBJECTS) $(calcnewt_DEPENDENCIES)
+ 	$(LINK) $(calcnewt_LDFLAGS) $(calcnewt_OBJECTS) $(calcnewt_LDADD) $(LIBS)
+ timidity$(EXEEXT): $(timidity_OBJECTS) $(timidity_DEPENDENCIES) 
+ 	@rm -f timidity$(EXEEXT)
+-	ar -cru timidity.exe $(timidity_LDFLAGS) $(timidity_OBJECTS) $(timidity_LDADD) 
++	$(AR) -cru timidity.exe $(timidity_LDFLAGS) $(timidity_OBJECTS) $(timidity_LDADD) 
+ else
+ calcnewt$(EXEEXT): $(calcnewt_OBJECTS) $(calcnewt_DEPENDENCIES) 
+ 	@rm -f calcnewt$(EXEEXT)

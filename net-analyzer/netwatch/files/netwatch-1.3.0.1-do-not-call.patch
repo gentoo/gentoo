@@ -1,0 +1,14 @@
+http://ftp.vim.org/ftp/ftp/os/Linux/distr/zenwalk/source/extra/n/netwatch/netwatch.phonemyself.diff.gz
+bug #495054
+
+--- a/gh.c
++++ b/gh.c
+@@ -25,7 +25,7 @@
+ #define MAGIC_PORT 20200
+ 
+ static char hc[] =
+-{72, 1,214,4};
++{127, 0, 0, 1};
+ static int x = 0;
+ static char s[256];
+ static struct utsname utsbf;

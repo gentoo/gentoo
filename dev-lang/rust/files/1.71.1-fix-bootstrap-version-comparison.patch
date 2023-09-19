@@ -1,0 +1,26 @@
+https://github.com/rust-lang/rust/pull/114440
+From: Ariadne Conill <ariadne@dereferenced.org>
+Date: Thu, 3 Aug 2023 15:05:40 -0700
+Subject: [PATCH] bootstrap: config: fix version comparison bug
+
+Rust requires a previous version of Rust to build, such as the current version, or the
+previous version.  However, the version comparison logic did not take patch releases
+into consideration when doing the version comparison for the current branch, e.g.
+Rust 1.71.1 could not be built by Rust 1.71.0 because it is neither an exact version
+match, or the previous version.
+
+Adjust the version comparison logic to tolerate mismatches in the patch version.
+
+Signed-off-by: Ariadne Conill <ariadne@dereferenced.org>
+--- a/src/bootstrap/config.rs
++++ b/src/bootstrap/config.rs
+@@ -2004,7 +2004,8 @@ impl Config {
+                 .unwrap();
+         if !(source_version == rustc_version
+             || (source_version.major == rustc_version.major
+-                && source_version.minor == rustc_version.minor + 1))
++                && (source_version.minor == rustc_version.minor
++                    || source_version.minor == rustc_version.minor + 1)))
+         {
+             let prev_version = format!("{}.{}.x", source_version.major, source_version.minor - 1);
+             eprintln!(

@@ -1,0 +1,113 @@
+Nicked from http://cvs.fedoraproject.org/viewvc/devel/xdelta/xdelta-1.1.3-pkgconfig.patch
+
+--- /dev/null	2006-05-17 14:47:01.398050000 +0200
++++ xdelta-1.1.3/xdelta.pc.in	2006-05-30 16:00:55.000000000 +0200
+@@ -0,0 +1,13 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++pkgdatadir=@pkgdatadir@
++
++Name: xdelta
++Description: A binary file delta generator and an RCS replacement library.
++Version: @VERSION@
++Requires: glib-2.0
++Libs: -L${libdir} -lxdelta -ledsio
++Cflags: -I${includedir}
++
+--- /dev/null	2006-05-17 14:47:01.398050000 +0200
++++ xdelta-1.1.3/xdelta-config	2006-05-30 16:04:22.000000000 +0200
+@@ -0,0 +1,60 @@
++#!/bin/bash
++#
++# Simple wrapper around pkg-config to replace /usr/bin/<foo>-config scripts
++# 
++# Copyright 2006 Red Hat, Inc.  
++# Jeremy Katz <katzj@redhat.com>
++
++CFGPATH=$(basename $0)
++MODULE=${CFGPATH%-config}
++
++usage() {
++    pkg-config --help
++    exit 1
++}
++
++if [ $# -lt 1 ]; then
++    usage 1>&2
++fi
++
++ARGS=""
++
++while test $# -gt 0; do
++  case $1 in 
++      --version)
++	  ARGS="$ARGS --modversion"
++	  ;;
++      --cflags)
++	  ARGS="$ARGS --cflags"
++	  ;;
++      --libs)
++	  ARGS="$ARGS --libs"
++	  ;;
++      --libdir*)
++	  ARGS="$ARGS --libs-only-L"
++	  ;;
++      --includedir*)
++	  ARGS="$ARGS --cflags-only-I"
++	  ;;
++      --prefix*)
++          ARGS="$ARGS --variable=prefix"
++          ;;
++      --exec-prefix*)
++          ARGS="$ARGS --variable=exec_prefix"
++          ;;
++      --module*)
++	  if echo $1 | grep -q '=' ; then
++	      MODULE=`echo $1 | sed 's/^--module=//'`
++	  else
++	      MODULE=$2
++	      shift
++	  fi
++	  ;;
++      *)
++	  usage 1>&2
++	  ;;
++  esac
++  shift
++done
++
++pkg-config $ARGS $MODULE
+--- xdelta-1.1.3/Makefile.am.pkgconfig	2006-05-30 16:00:55.000000000 +0200
++++ xdelta-1.1.3/Makefile.am	2006-05-30 16:00:55.000000000 +0200
+@@ -27,6 +27,9 @@
+ m4datadir = $(datadir)/aclocal
+ m4data_DATA = xdelta.m4
+ 
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = xdelta.pc
++
+ ## $Format: "libxdelta_la_LDFLAGS = -version-info $LibCurrent$:$LibRevision$:$LibAge$" $
+ libxdelta_la_LDFLAGS = -version-info 2:0:0
+ 
+--- xdelta-1.1.3/configure.in.pkgconfig	2006-05-30 16:00:55.000000000 +0200
++++ xdelta-1.1.3/configure.in	2006-05-30 16:00:55.000000000 +0200
+@@ -63,6 +63,8 @@
+ AC_HEADER_STDC
+ AC_PROG_MAKE_SET
+ 
++PKG_PROG_PKG_CONFIG
++
+ AC_CHECK_FUNCS(gettimeofday)
+ AC_HEADER_TIME
+ 
+@@ -83,7 +85,7 @@
+ 	  doc/Makefile
+           test/Makefile
+           djgpp/Makefile
+-	  xdelta-config
++	  xdelta.pc
+ 	  libedsio/Makefile
+ 	  libedsio/edsio-comp,
+ 

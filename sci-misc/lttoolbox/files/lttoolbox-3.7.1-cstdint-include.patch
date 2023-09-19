@@ -1,0 +1,21 @@
+https://github.com/apertium/lttoolbox/pull/173
+
+From 8873eb40827179c821c4979563063200e144d129 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 6 Feb 2023 22:16:49 +0000
+Subject: [PATCH] acx: Add missing <cstdint> include
+
+Needed for int32_t. Fixes build w/ musl but also likely gcc 13.
+
+Bug: https://bugs.gentoo.org/889400
+--- a/lttoolbox/acx.h
++++ b/lttoolbox/acx.h
+@@ -18,6 +18,7 @@
+ #define _ACXPARSEUTIL_
+ 
+ #include <lttoolbox/sorted_vector.hpp>
++#include <cstdint>
+ #include <map>
+ 
+ std::map<int32_t, sorted_vector<int32_t>> readACX(const char* file);
+

@@ -1,0 +1,7 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Those are part of the base powerpc profile's @system set, but having them as
+# part of @system makes no sense for Gentoo Prefix.
+-*sys-fs/hfsutils
+-*sys-fs/hfsplusutils

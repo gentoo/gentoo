@@ -1,0 +1,12 @@
+index 2cd9baf..e6ea521 100644
+--- a/src/elisp/treemacs-icons.el
++++ b/src/elisp/treemacs-icons.el
+@@ -273,7 +273,7 @@ Necessary since root icons are not rectangular."
+        (ht-set! tui-icons it tui-icon))))
+ 
+ (treemacs-create-theme "Default"
+-  :icon-directory (treemacs-join-path treemacs-dir "icons/default")
++  :icon-directory "@SITEETC@/icons/default"
+   :config
+   (progn
+     ;; directory and other icons

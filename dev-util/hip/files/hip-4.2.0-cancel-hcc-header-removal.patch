@@ -1,0 +1,18 @@
+hcc now deprecated by ROCm upstream. They use cmake to delete hcc headers for upgrating hip on other distros, 
+but Gentoo don't need this and the following code causes sandbox violation (#799257).
+
+github.com/ROCm-Developer-Tools/HIP/commit/c2adc70d4df3d30ef0db84d47be14b99b01aa340 introduce these lines.
+
+--- orig/CMakeLists.txt
++++ HIP-rocm-4.2.0/CMakeLists.txt
+@@ -333,10 +333,6 @@ if(NOT ${INSTALL_SOURCE} EQUAL 0)
+     endif()
+     install(DIRECTORY bin DESTINATION . USE_SOURCE_PERMISSIONS)
+ 
+-    # The following two lines will be removed after upstream updation
+-    install(CODE "MESSAGE(\"Removing ${CMAKE_INSTALL_PREFIX}/include\")")
+-    install(CODE "file(REMOVE_RECURSE ${CMAKE_INSTALL_PREFIX}/include)")
+-
+     install(DIRECTORY include DESTINATION .)
+     install(DIRECTORY cmake DESTINATION .)
+ endif()

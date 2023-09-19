@@ -1,0 +1,238 @@
+From 43bde093ca66f430ae9c78204fcf02e6edf28833 Mon Sep 17 00:00:00 2001
+From: Bernard Cafarelli <bernard.cafarelli@gmail.com>
+Date: Fri, 15 Jul 2022 17:38:43 +0200
+Subject: [PATCH 1/2] dedicated_process: only enable backtrace when GLIBC is
+ used
+
+This is a GNU-specific extension so will not compile (and execinfo.h not
+found) with other libc like MUSL
+---
+ .../libinsane/src/workarounds/dedicated_process/worker.c    | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/subprojects/libinsane/src/workarounds/dedicated_process/worker.c b/subprojects/libinsane/src/workarounds/dedicated_process/worker.c
+index 51a9209..826ae8a 100644
+--- a/subprojects/libinsane/src/workarounds/dedicated_process/worker.c
++++ b/subprojects/libinsane/src/workarounds/dedicated_process/worker.c
+@@ -1,5 +1,7 @@
+ #include <errno.h>
++#ifdef __GLIBC__
+ #include <execinfo.h>
++#endif
+ #include <signal.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -144,8 +146,10 @@ static void worker_log_callback(enum lis_log_level lvl, const char *msg)
+ #ifndef DISABLE_CRASH_HANDLER
+ static void crash_handler(int sig) {
+ 	pid_t mypid;
++#ifdef __GLIBC__
+ 	void *stack[16];
+ 	size_t size;
++#endif
+ 	unsigned int i;
+ 
+ 	mypid = getpid();
+@@ -165,6 +169,7 @@ static void crash_handler(int sig) {
+ 		);
+ 	}
+ 
++#ifdef __GLIBC__
+ 	fprintf(stderr, "======== START OF BACKTRACE ========\n");
+ 
+ 	// get void*'s for all entries on the stack
+@@ -175,6 +180,7 @@ static void crash_handler(int sig) {
+ 
+ 	fsync(STDERR_FILENO);
+ 	fprintf(stderr, "======== END OF BACKTRACE ========\n");
++#endif
+ 
+ 	if (kill(mypid, sig) < 0) {
+ 		fprintf(stderr, "KILL FAILED\n");
+-- 
+GitLab
+
+
+From 4a9eeb0df231668fd3760761f6fbe99c4e81d3ab Mon Sep 17 00:00:00 2001
+From: Bernard Cafarelli <bernard.cafarelli@gmail.com>
+Date: Fri, 15 Jul 2022 18:10:48 +0200
+Subject: [PATCH 2/2] dedicated_process: rename stderr communication pipes
+
+On some systems, stdin, stdout, and stderr are macros that you cannot
+assign to in the normal way [1]. This uses std_err instead
+
+[1] https://www.gnu.org/software/libc/manual/html_node/Standard-Streams.html
+---
+ .../workarounds/dedicated_process/master.c    | 10 ++---
+ .../workarounds/dedicated_process/protocol.c  | 42 +++++++++----------
+ .../workarounds/dedicated_process/protocol.h  |  4 +-
+ .../workarounds/dedicated_process/worker.c    |  4 +-
+ 4 files changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/subprojects/libinsane/src/workarounds/dedicated_process/master.c b/subprojects/libinsane/src/workarounds/dedicated_process/master.c
+index a48098a..be7f3f5 100644
+--- a/subprojects/libinsane/src/workarounds/dedicated_process/master.c
++++ b/subprojects/libinsane/src/workarounds/dedicated_process/master.c
+@@ -183,7 +183,7 @@ static void *log_thread(void *_pipes)
+ 	);
+ 	lis_log_debug(
+ 		"Stderr pipe: Read: %d - Write: %d",
+-		pipes->sorted.stderr[0], pipes->sorted.stderr[1]
++		pipes->sorted.std_err[0], pipes->sorted.std_err[1]
+ 	);
+ 
+ 	lis_log_info("Log thread started");
+@@ -1158,8 +1158,8 @@ enum lis_error lis_api_workaround_dedicated_process(
+ 		private->pipes.sorted.msgs_w2m[0] = -1;
+ 		close(private->pipes.sorted.logs[0]);
+ 		private->pipes.sorted.logs[0] = -1;
+-		close(private->pipes.sorted.stderr[0]);
+-		private->pipes.sorted.stderr[0] = -1;
++		close(private->pipes.sorted.std_err[0]);
++		private->pipes.sorted.std_err[0] = -1;
+ 
+ 		lis_worker_main(to_wrap, &private->pipes);
+ 		abort(); // lis_worker_main() must never return
+@@ -1172,8 +1172,8 @@ enum lis_error lis_api_workaround_dedicated_process(
+ 	private->pipes.sorted.msgs_w2m[1] = -1;
+ 	close(private->pipes.sorted.logs[1]);
+ 	private->pipes.sorted.logs[1] = -1;
+-	close(private->pipes.sorted.stderr[1]);
+-	private->pipes.sorted.stderr[1] = -1;
++	close(private->pipes.sorted.std_err[1]);
++	private->pipes.sorted.std_err[1] = -1;
+ 
+ 	lis_log_info("Child process PID: %u", (int)private->worker);
+ 
+diff --git a/subprojects/libinsane/src/workarounds/dedicated_process/protocol.c b/subprojects/libinsane/src/workarounds/dedicated_process/protocol.c
+index 58c3b2d..813eaaa 100644
+--- a/subprojects/libinsane/src/workarounds/dedicated_process/protocol.c
++++ b/subprojects/libinsane/src/workarounds/dedicated_process/protocol.c
+@@ -214,38 +214,38 @@ static enum lis_error read_stderr(struct lis_pipes *pipes, enum lis_log_level *l
+ {
+ 	*lvl = LIS_LOG_LVL_INFO;
+ 
+-	if (pipes->sorted.stderr[0] < 0) {
++	if (pipes->sorted.std_err[0] < 0) {
+ 		// pipe has been closed on purpose
+ 		return LIS_ERR_IO_ERROR;
+ 	}
+ 
+-	if (pipes->stderr.total <= 0) {
+-		pipes->stderr.current = 0;
+-		memset(pipes->stderr.buf, 0, sizeof(pipes->stderr.buf));
+-		pipes->stderr.total = read(pipes->sorted.stderr[0], pipes->stderr.buf, sizeof(pipes->stderr.buf) - 1);
+-		if (pipes->stderr.total < 0) {
++	if (pipes->std_err.total <= 0) {
++		pipes->std_err.current = 0;
++		memset(pipes->std_err.buf, 0, sizeof(pipes->std_err.buf));
++		pipes->std_err.total = read(pipes->sorted.std_err[0], pipes->std_err.buf, sizeof(pipes->std_err.buf) - 1);
++		if (pipes->std_err.total < 0) {
+ 			lis_log_error("read() failed: %d, %s", errno, strerror(errno));
+ 			return LIS_ERR_IO_ERROR;
+ 		}
+-		if (pipes->stderr.total == 0) {
++		if (pipes->std_err.total == 0) {
+ 			*msg = NULL;
+ 			return LIS_OK;
+ 		}
+ 	}
+ 
+-	*msg = pipes->stderr.buf + pipes->stderr.current;
++	*msg = pipes->std_err.buf + pipes->std_err.current;
+ 
+-	for ( ; pipes->stderr.current < pipes->stderr.total ; pipes->stderr.current++) {
+-		if (pipes->stderr.buf[pipes->stderr.current] == '\n') {
+-			pipes->stderr.buf[pipes->stderr.current] = '\0';
+-			pipes->stderr.current += 1;
++	for ( ; pipes->std_err.current < pipes->std_err.total ; pipes->std_err.current++) {
++		if (pipes->std_err.buf[pipes->std_err.current] == '\n') {
++			pipes->std_err.buf[pipes->std_err.current] = '\0';
++			pipes->std_err.current += 1;
+ 			return LIS_OK;
+-		} else if (pipes->stderr.buf[pipes->stderr.current] == '\0') {
++		} else if (pipes->std_err.buf[pipes->std_err.current] == '\0') {
+ 			break;
+ 		}
+ 	}
+-	pipes->stderr.current = 0;
+-	pipes->stderr.total = 0;
++	pipes->std_err.current = 0;
++	pipes->std_err.total = 0;
+ 
+ 	if ((*msg)[0] == '\0') {
+ 		*msg = NULL;
+@@ -265,7 +265,7 @@ enum lis_error lis_protocol_log_read(struct lis_pipes *pipes, enum lis_log_level
+ 			.revents = 0,
+ 		},
+ 		{
+-			.fd = pipes->sorted.stderr[0],
++			.fd = pipes->sorted.std_err[0],
+ 			.events = POLLIN,
+ 			.revents = 0,
+ 		},
+@@ -275,7 +275,7 @@ enum lis_error lis_protocol_log_read(struct lis_pipes *pipes, enum lis_log_level
+ 
+ 	*msg = NULL;
+ 
+-	if (pipes->stderr.total > 0) {
++	if (pipes->std_err.total > 0) {
+ 		return read_stderr(pipes, lvl, msg);
+ 	}
+ 
+@@ -320,11 +320,11 @@ enum lis_error lis_protocol_log_read(struct lis_pipes *pipes, enum lis_log_level
+ 				close(pipes->sorted.logs[0]);
+ 				pipes->sorted.logs[0] = -1;
+ 			}
+-			if (fds[i].fd == pipes->sorted.stderr[0]) {
+-				close(pipes->sorted.stderr[0]);
+-				pipes->sorted.stderr[0] = -1;
++			if (fds[i].fd == pipes->sorted.std_err[0]) {
++				close(pipes->sorted.std_err[0]);
++				pipes->sorted.std_err[0] = -1;
+ 			}
+-			if (pipes->sorted.logs[0] < 0 && pipes->sorted.stderr[0] < 0) {
++			if (pipes->sorted.logs[0] < 0 && pipes->sorted.std_err[0] < 0) {
+ 				return LIS_ERR_IO_ERROR;
+ 			}
+ 			return LIS_OK;
+diff --git a/subprojects/libinsane/src/workarounds/dedicated_process/protocol.h b/subprojects/libinsane/src/workarounds/dedicated_process/protocol.h
+index 82b8d3d..40bc47a 100644
+--- a/subprojects/libinsane/src/workarounds/dedicated_process/protocol.h
++++ b/subprojects/libinsane/src/workarounds/dedicated_process/protocol.h
+@@ -61,7 +61,7 @@ struct lis_pipes
+ 			int msgs_m2w[2]; /* messages ; query (master -> worker) */
+ 			int msgs_w2m[2]; /* messages ; reply (worker -> master) */
+ 			int logs[2]; /* worker to master only ; prefixed by log level + msg len */
+-			int stderr[2]; /* worker to master only */
++			int std_err[2]; /* worker to master only */
+ 		} sorted;
+ 		int all[4][2];
+ 	};
+@@ -72,7 +72,7 @@ struct lis_pipes
+ 		char buf[1024]; // to avoid a malloc() on each stderr line
+ 		ssize_t current;
+ 		ssize_t total;
+-	} stderr;
++	} std_err;
+ };
+ 
+ 
+diff --git a/subprojects/libinsane/src/workarounds/dedicated_process/worker.c b/subprojects/libinsane/src/workarounds/dedicated_process/worker.c
+index 826ae8a..b85df09 100644
+--- a/subprojects/libinsane/src/workarounds/dedicated_process/worker.c
++++ b/subprojects/libinsane/src/workarounds/dedicated_process/worker.c
+@@ -767,8 +767,8 @@ void lis_worker_main(struct lis_api *to_wrap, struct lis_pipes *pipes)
+ #endif
+ 
+ #ifndef DISABLE_REDIRECT_STDERR
+-	if (dup2(pipes->sorted.stderr[1], STDOUT_FILENO) < 0
+-		|| dup2(pipes->sorted.stderr[1], STDERR_FILENO) < 0) {
++	if (dup2(pipes->sorted.std_err[1], STDOUT_FILENO) < 0
++		|| dup2(pipes->sorted.std_err[1], STDERR_FILENO) < 0) {
+ 		lis_log_warning(
+ 			"Failed to redirect stderr and stdout: %d, %s", errno, strerror(errno)
+ 		);
+-- 
+GitLab
+

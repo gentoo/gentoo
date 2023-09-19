@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/711530
+
+--- ntp-4.2.8p14/ntpd/ntpd.c
++++ ntp-4.2.8p14/ntpd/ntpd.c
+@@ -1189,7 +1189,7 @@
+ 		 *  drop privileges in this case.
+ 		 */
+ 		cap_t caps;
+-		caps = cap_from_text("cap_sys_time,cap_setuid,cap_setgid,cap_sys_chroot,cap_net_bind_service=pe");
++		caps = cap_from_text("cap_ipc_lock,cap_sys_time,cap_setuid,cap_setgid,cap_sys_chroot,cap_net_bind_service=pe");
+ 		if ( ! caps) {
+ 			msyslog( LOG_ERR, "cap_from_text() failed: %m" );
+ 			exit(-1);

@@ -1,0 +1,53 @@
+From c23f126d06abd97e70010ad1e0df2f87ebf09c39 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 31 Dec 2022 12:19:17 +0100
+Subject: [PATCH] fix installation directories
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/OpenEXR_CTL/CtlModules/CMakeLists.txt
++++ b/OpenEXR_CTL/CtlModules/CMakeLists.txt
+@@ -2,6 +2,6 @@ install(
+     FILES
+         utilities.ctl
+     DESTINATION 
+-        ${INSTALL_LIB_DIR}/CTL
++        ${CMAKE_INSTALL_DATADIR}/CTL
+ )
+ 
+--- a/OpenEXR_CTL/exr_ctl_exr/CMakeLists.txt
++++ b/OpenEXR_CTL/exr_ctl_exr/CMakeLists.txt
+@@ -39,4 +39,4 @@ target_link_libraries (exr_ctl_exr
+ 
+ install( TARGETS exr_ctl_exr DESTINATION ${INSTALL_BIN_DIR} )
+ 
+-install( FILES change_saturation.ctl DESTINATION ${INSTALL_LIB_DIR}/CTL )
++install( FILES change_saturation.ctl DESTINATION ${CMAKE_INSTALL_DATADIR}/CTL )
+--- a/OpenEXR_CTL/exrdpx/CMakeLists.txt
++++ b/OpenEXR_CTL/exrdpx/CMakeLists.txt
+@@ -39,6 +39,6 @@ target_link_libraries (exrdpx
+ 
+ install( TARGETS exrdpx DESTINATION ${INSTALL_BIN_DIR} )
+ 
+-install( FILES transform_DPX_EXR.ctl transform_EXR_DPX.ctl DESTINATION ${INSTALL_LIB_DIR}/CTL )
++install( FILES transform_DPX_EXR.ctl transform_EXR_DPX.ctl DESTINATION ${CMAKE_INSTALL_DATADIR}/CTL )
+ 
+ 
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -1 +1 @@
+-install( FILES CtlManual.pdf CtlManual.doc DESTINATION ${CMAKE_INSTALL_DOCDIR}/CTL )
++install( FILES CtlManual.pdf CtlManual.doc DESTINATION ${CMAKE_INSTALL_DOCDIR} )
+--- a/lib/IlmImfCtl/CMakeLists.txt
++++ b/lib/IlmImfCtl/CMakeLists.txt
+@@ -38,7 +38,7 @@ target_link_libraries (IlmImfCtl
+ install(FILES
+ 	ImfCtlApplyTransforms.h
+ DESTINATION
+-	${CMAKE_INSTALL_LIBDIR}/OpenEXR
++	${CMAKE_INSTALL_INCLUDEDIR}/OpenEXR
+ )
+ 
+ install(TARGETS IlmImfCtl DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-- 
+2.39.0
+

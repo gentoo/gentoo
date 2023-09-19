@@ -1,0 +1,41 @@
+https://github.com/rails/rails/commit/60fc40ea58de8b6faf98081d659e7f5b232aa25e
+
+From 60fc40ea58de8b6faf98081d659e7f5b232aa25e Mon Sep 17 00:00:00 2001
+From: Jonathan Hefner <jonathan@hefner.pro>
+Date: Thu, 22 Jul 2021 13:45:57 -0500
+Subject: [PATCH] Isolate descendants garbage collection test
+
+This prevents the test from being affected by Ruby-internal thread
+locals set by other tests.
+
+Example failure: https://buildkite.com/rails/rails/builds/79505#cb261462-8e40-4adc-99fc-81708a473cc6/1076-1085
+
+Co-authored-by: Jean Boussier <jean.boussier@gmail.com>
+--- a/test/descendants_tracker_test_cases.rb
++++ b/test/descendants_tracker_test_cases.rb
+@@ -28,11 +28,23 @@ def test_descendants
+   end
+ 
+   def test_descendants_with_garbage_collected_classes
+-    1.times do
++    # The Ruby GC (and most other GCs for that matter) are not fully precise.
++    # When GC is run, the whole stack is scanned to mark any object reference
++    # in registers. But some of these references might simply be leftovers from
++    # previous method calls waiting to be overridden, and there's no definite
++    # way to clear them. By executing this code in a distinct thread, we ensure
++    # that such references are on a stack that will be entirely garbage
++    # collected, effectively working around the problem.
++    Thread.new do
+       child_klass = Class.new(Parent)
+       assert_equal_sets [Child1, Grandchild1, Grandchild2, Child2, child_klass], Parent.descendants
++    end.join
++
++    # Calling `GC.start` 4 times should trigger a full GC run
++    4.times do
++      GC.start
+     end
+-    GC.start
++
+     assert_equal_sets [Child1, Grandchild1, Grandchild2, Child2], Parent.descendants
+   end
+ 

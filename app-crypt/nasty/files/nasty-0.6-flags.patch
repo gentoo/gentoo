@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,15 +1,16 @@
+ VERSION=0.6
+ 
+ DEBUG=-g # -pg
+-CFLAGS+=-Wall -O2 -DVERSION=\"${VERSION}\" $(DEBUG)
+-LDFLAGS=-lgpgme $(DEBUG)
++CPPFLAGS+=-DVERSION=\"${VERSION}\" -D_FILE_OFFSET_BITS=64
++CFLAGS+=-Wall $(DEBUG) `gpgme-config --cflags`
++LIBS=`gpgme-config --libs`
+ 
+ OBJS=nasty.o
+ 
+ all: nasty
+ 
+ nasty: $(OBJS)
+-	$(CC) -Wall -W $(OBJS) $(LDFLAGS) -o nasty
++	$(CC) $(LDFLAGS) $(OBJS) -o nasty $(LIBS)
+ 
+ install: nasty
+ 	cp nasty /usr/bin

@@ -1,0 +1,137 @@
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@
+ 	stralloc_eady.o stralloc_opyb.o stralloc_opys.o stralloc_pend.o \
+ 	strerr_die.o strerr_sys.o subgetopt.o supervise supervise.o svc svc.o \
+ 	svok svok.o svscan svscan.o svscanboot svstat svstat.o sysdeps \
+-	systype tai64n tai64n.o tai64nlocal tai64nlocal.o tai_now.o \
++	tai64n tai64n.o tai64nlocal tai64nlocal.o tai_now.o \
+ 	tai_pack.o tai_sub.o tai_unpack.o taia_add.o taia_approx.o \
+ 	taia_frac.o taia_less.o taia_now.o taia_pack.o taia_sub.o taia_uint.o \
+ 	time.a timestamp.o uint64.h unix.a wait_nohang.o wait_pid.o
+@@ -85,16 +85,16 @@
+ choose: choose.sh home warn-auto.sh
+ 	rm -f choose
+ 	cat warn-auto.sh choose.sh \
+-	| sed s}HOME}"`head -1 home`"}g \
++	| sed s}HOME}"`head -n 1 home`"}g \
+ 	> choose
+ 	chmod 555 choose
+ 
+ coe.o: coe.c coe.h compile
+ 	./compile coe.c
+ 
+-compile: conf-cc print-cc.sh systype warn-auto.sh
++compile: conf-cc print-cc.sh warn-auto.sh
+ 	rm -f compile
+-	sh print-cc.sh > compile
++	cat print-cc.sh > compile
+ 	chmod 555 compile
+ 
+ deepsleep.o: compile deepsleep.c deepsleep.h iopause.h tai.h taia.h \
+@@ -179,9 +179,9 @@
+ 
+ it: rts sysdeps
+ 
+-load: conf-ld print-ld.sh systype warn-auto.sh
++load: conf-ld print-ld.sh warn-auto.sh
+ 	rm -f load
+-	sh print-ld.sh > load
++	cat print-ld.sh > load
+ 	chmod 555 load
+ 
+ lock_ex.o: compile hasflock.h lock.h lock_ex.c
+@@ -190,9 +190,9 @@
+ lock_exnb.o: compile hasflock.h lock.h lock_exnb.c
+ 	./compile lock_exnb.c
+ 
+-makelib: print-ar.sh systype warn-auto.sh
++makelib: print-ar.sh warn-auto.sh
+ 	rm -f makelib
+-	sh print-ar.sh > makelib
++	cat print-ar.sh > makelib
+ 	chmod 555 makelib
+ 
+ match.o: compile match.c match.h
+@@ -390,7 +390,7 @@
+ svscanboot: home svscanboot.sh warn-auto.sh
+ 	rm -f svscanboot
+ 	cat warn-auto.sh svscanboot.sh \
+-	| sed s}HOME}"`head -1 home`"}g \
++	| sed s}HOME}"`head -n 1 home`"}g \
+ 	> svscanboot
+ 	chmod 555 svscanboot
+ 
+@@ -402,10 +402,10 @@
+ 	./compile svstat.c
+ 
+ sysdeps: compile direntry.h hasflock.h hasmkffo.h hassgact.h \
+-hassgprm.h hasshsgr.h haswaitp.h iopause.h load select.h systype \
++hassgprm.h hasshsgr.h haswaitp.h iopause.h load select.h \
+ uint64.h
+ 	rm -f sysdeps
+-	cat systype compile load >> sysdeps
++	cat compile load >> sysdeps
+ 	grep sysdep direntry.h >> sysdeps
+ 	grep sysdep haswaitp.h >> sysdeps
+ 	grep sysdep hassgact.h >> sysdeps
+@@ -417,9 +417,6 @@
+ 	grep sysdep hasflock.h >> sysdeps
+ 	grep sysdep hasshsgr.h >> sysdeps
+ 
+-systype: find-systype.sh trycpp.c x86cpuid.c
+-	sh find-systype.sh > systype
+-
+ tai64n: byte.a load tai64n.o time.a timestamp.o unix.a
+ 	./load tai64n timestamp.o time.a unix.a byte.a 
+ 
+--- a/print-ar.sh
++++ b/print-ar.sh
+@@ -1,14 +1,7 @@
+-cat warn-auto.sh
+-echo 'main="$1"; shift'
+-echo 'rm -f "$main"'
+-echo 'ar cr "$main" ${1+"$@"}'
+-case "`cat systype`" in
+-  sunos-5.*) ;;
+-  unix_sv*) ;;
+-  irix64-*) ;;
+-  irix-*) ;;
+-  dgux-*) ;;
+-  hp-ux-*) ;;
+-  sco*) ;;
+-  *) echo 'ranlib "$main"' ;;
+-esac
++#!/usr/bin/env sh
++
++lib=$1
++shift
++
++echo ${AR} rcs "${lib}" "$@"
++${AR} rcs "${lib}" "$@"
+--- a/print-cc.sh
++++ b/print-cc.sh
+@@ -1,5 +1,4 @@
+-cc="`head -1 conf-cc`"
+-systype="`cat systype`"
++#!/usr/bin/env sh
+ 
+-cat warn-auto.sh
+-echo exec "$cc" '-c ${1+"$@"}'
++echo ${CC} ${CPPFLAGS} ${CFLAGS} -c "$@"
++${CC} ${CPPFLAGS} ${CFLAGS} -c "$@"
+--- a/print-ld.sh
++++ b/print-ld.sh
+@@ -1,6 +1,7 @@
+-ld="`head -1 conf-ld`"
+-systype="`cat systype`"
++#!/usr/bin/env sh
+ 
+-cat warn-auto.sh
+-echo 'main="$1"; shift'
+-echo exec "$ld" '-o "$main" "$main".o ${1+"$@"}'
++exe=$1
++shift
++
++echo ${CC} ${CFLAGS} ${LDFLAGS} -o "${exe}" "${exe}.o" "$@" ${LIBS}
++${CC} ${CFLAGS} ${LDFLAGS} -o "${exe}" "${exe}.o" "$@" ${LIBS}

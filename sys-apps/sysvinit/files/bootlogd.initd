@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="bootlogd - record boot messages (sysvinit)"
+pidfile="/run/bootlogd"
+command="/sbin/bootlogd"
+command_args="-p ${pidfile} ${BOOTLOGD_ARGS}"

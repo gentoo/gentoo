@@ -1,0 +1,14 @@
+# Gitea configuration
+GITEA_CONF="/etc/gitea/app.ini"
+
+# Gitea user
+GITEA_USER="git"
+
+# Gitea group
+GITEA_GROUP="git"
+
+# Gitea working directory
+GITEA_WORK_DIR="/var/lib/gitea"
+
+# Gitea custom directory
+GITEA_CUSTOM="${GITEA_WORK_DIR}/custom"

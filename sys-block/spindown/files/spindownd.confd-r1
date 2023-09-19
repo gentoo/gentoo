@@ -1,0 +1,11 @@
+# spindownd config file
+# default: /etc/spindown.conf
+#SPINDOWND_CFG=/etc/spindown.conf
+
+# spindownd pidfile
+# default: /var/run/spindown.pid
+#SPINDOWND_PID=/var/run/spindown.pid
+
+# spindownd fifo
+# default: /var/run/spindown.fifo
+#SPINDOWND_FIFO=/var/run/spindown.fifo

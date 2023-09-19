@@ -1,0 +1,97 @@
+From 4927c28a30fe469b512b49346f321661ca865769 Mon Sep 17 00:00:00 2001
+Message-ID: <4927c28a30fe469b512b49346f321661ca865769.1689058931.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Tue, 15 Mar 2022 05:23:29 +0100
+Subject: [PATCH] libvirt-9.5.0-fix-paths-for-apparmor.patch
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/security/apparmor/libvirt-qemu.in                       | 1 +
+ src/security/apparmor/meson.build                           | 6 +++---
+ src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local  | 1 -
+ ...t-aa-helper.in => usr.libexec.libvirt.virt-aa-helper.in} | 6 +++---
+ .../apparmor/usr.libexec.libvirt.virt-aa-helper.local       | 1 +
+ 5 files changed, 8 insertions(+), 7 deletions(-)
+ delete mode 100644 src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
+ rename src/security/apparmor/{usr.lib.libvirt.virt-aa-helper.in => usr.libexec.libvirt.virt-aa-helper.in} (92%)
+ create mode 100644 src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.local
+
+diff --git a/src/security/apparmor/libvirt-qemu.in b/src/security/apparmor/libvirt-qemu.in
+index 53f45c3a28..7882e811fc 100644
+--- a/src/security/apparmor/libvirt-qemu.in
++++ b/src/security/apparmor/libvirt-qemu.in
+@@ -96,6 +96,7 @@
+   /usr/share/sgabios/** r,
+   /usr/share/slof/** r,
+   /usr/share/vgabios/** r,
++  /usr/share/seavgabios/** r,
+ 
+   # pki for libvirt-vnc and libvirt-spice (LP: #901272, #1690140)
+   /etc/pki/CA/ r,
+diff --git a/src/security/apparmor/meson.build b/src/security/apparmor/meson.build
+index b9257c816d..c1b79fef27 100644
+--- a/src/security/apparmor/meson.build
++++ b/src/security/apparmor/meson.build
+@@ -1,5 +1,5 @@
+ apparmor_gen_profiles = [
+-  'usr.lib.libvirt.virt-aa-helper',
++  'usr.libexec.libvirt.virt-aa-helper',
+   'usr.sbin.libvirtd',
+   'usr.sbin.virtqemud',
+   'usr.sbin.virtxend',
+@@ -82,8 +82,8 @@ if not conf.has('WITH_APPARMOR_3')
+   # AppArmor 3.x, upstream's preference is to avoid creating these
+   # files in order to limit the amount of filesystem clutter.
+   install_data(
+-    'usr.lib.libvirt.virt-aa-helper.local',
++    'usr.libexec.libvirt.virt-aa-helper.local',
+     install_dir: apparmor_dir / 'local',
+-    rename: 'usr.lib.libvirt.virt-aa-helper',
++    rename: 'usr.libexec.libvirt.virt-aa-helper',
+   )
+ endif
+diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local b/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
+deleted file mode 100644
+index c0990e51d0..0000000000
+--- a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
++++ /dev/null
+@@ -1 +0,0 @@
+-# Site-specific additions and overrides for 'usr.lib.libvirt.virt-aa-helper'
+diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in b/src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.in
+similarity index 92%
+rename from src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
+rename to src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.in
+index 26ee20a17d..38fd3bfb88 100644
+--- a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
++++ b/src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.in
+@@ -41,7 +41,7 @@ profile virt-aa-helper @libexecdir@/virt-aa-helper {
+   deny /dev/mapper/* r,
+ 
+   @libexecdir@/virt-aa-helper mr,
+-  /{usr/,}sbin/apparmor_parser Ux,
++  /{usr/,}{s,}bin/apparmor_parser Ux,
+ 
+   @sysconfdir@/apparmor.d/libvirt/* r,
+   @sysconfdir@/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
+@@ -72,9 +72,9 @@ profile virt-aa-helper @libexecdir@/virt-aa-helper {
+   /**/disk{,.*} r,
+ 
+ @BEGIN_APPARMOR_3@
+-  include if exists <local/usr.lib.libvirt.virt-aa-helper>
++  include if exists <local/usr.libexec.libvirt.virt-aa-helper>
+ @END_APPARMOR_3@
+ @BEGIN_APPARMOR_2@
+-  #include <local/usr.lib.libvirt.virt-aa-helper>
++  #include <local/usr.libexec.libvirt.virt-aa-helper>
+ @END_APPARMOR_2@
+ }
+diff --git a/src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.local b/src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.local
+new file mode 100644
+index 0000000000..974653d797
+--- /dev/null
++++ b/src/security/apparmor/usr.libexec.libvirt.virt-aa-helper.local
+@@ -0,0 +1 @@
++# Site-specific additions and overrides for 'usr.libexec.libvirt.virt-aa-helper'
+-- 
+2.41.0
+

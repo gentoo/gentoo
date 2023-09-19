@@ -1,0 +1,13 @@
+diff --git a/src/image-view.c b/src/image-view.c
+index b367f2a..1368620 100644
+--- a/src/image-view.c
++++ b/src/image-view.c
+@@ -343,7 +343,7 @@ void image_view_clear( ImageView* iv )
+ 
+ void image_view_set_pixbuf( ImageView* iv, GdkPixbuf* pixbuf )
+ {
+-    if( pixbuf != iv->pix )
++
+     {
+         image_view_clear( iv );
+         if( G_LIKELY(pixbuf) )

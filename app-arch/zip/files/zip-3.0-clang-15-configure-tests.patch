@@ -1,0 +1,219 @@
+https://bugs.gentoo.org/869203
+
+See also OE's variant: https://cgit.openembedded.org/openembedded-core/commit/?id=f898db2607ba3837f81292af92bc8cb605b96cb3
+--- a/unix/configure
++++ b/unix/configure
+@@ -32,7 +32,7 @@ CFLAGS_BZ=''
+ echo 'Check C compiler type (optimization options)'
+ # Sun C?
+ cat > conftest.c << _EOF_
+-int main()
++int main(void)
+ {
+ #ifndef __SUNPRO_C
+    bad code
+@@ -47,7 +47,7 @@ if test $? -eq 0; then
+ else
+   # Tru64 DEC/Compaq/HP C?
+   cat > conftest.c << _EOF_
+-int main()
++int main(void)
+ {
+ #ifndef __DECC
+    bad code
+@@ -62,7 +62,7 @@ _EOF_
+   else
+     # HP-UX HP C?
+     cat > conftest.c << _EOF_
+-int main()
++int main(void)
+ {
+ #ifdef __GNUC__
+    bad code
+@@ -88,7 +88,7 @@ _EOF_
+     else
+       # GNU C?
+       cat > conftest.c << _EOF_
+-int main()
++int main(void)
+ {
+ #ifndef __GNUC__
+    bad code
+@@ -197,7 +197,7 @@ else
+       echo "  Check if OS already has bzip2 library installed"
+       cat > conftest.c << _EOF_
+ #include "bzlib.h"
+-int main()
++int main(void)
+ {
+   bz_stream strm;
+   BZ2_bzCompressEnd(&strm);
+@@ -260,7 +260,7 @@ rm -f _match.s _match.o _crc_i386.s _crc_i386.o
+ 
+ echo Check for ANSI options
+ cat > conftest.c << _EOF_
+-int main()
++int main(void)
+ {
+ #ifndef __STDC__
+    forget it
+@@ -288,7 +288,7 @@ $CC $CFLAGS -c conftest.c > /dev/null 2>/dev/null
+ echo Check the handling of const
+ cat > conftest.c << _EOF_
+ typedef int charset[2];
+-int main()
++int main(void)
+ {
+   const charset x;
+   const char *foo;
+@@ -303,7 +303,7 @@ echo Check for time_t
+ cat > conftest.c << _EOF_
+ #include <sys/types.h>
+ #include <time.h>
+-int main()
++int main(void)
+ {
+   time_t t;
+   return 0;
+@@ -315,8 +315,9 @@ $CC $CFLAGS -c conftest.c >/dev/null 2>/dev/null
+ 
+ echo Check for size_t
+ cat > conftest.c << _EOF_
++#include <stddef.h>
+ #include <sys/types.h>
+-int main()
++int main(void)
+ {
+   size_t s;
+   return 0;
+@@ -329,7 +330,7 @@ $CC $CFLAGS -c conftest.c >/dev/null 2>/dev/null
+ echo Check for off_t
+ cat > conftest.c << _EOF_
+ #include <sys/types.h>
+-int main()
++int main(void)
+ {
+   off_t s;
+   return 0;
+@@ -353,7 +354,7 @@ cat > conftest.c << _EOF_
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <stdio.h>
+-int main()
++int main(void)
+ {
+   struct stat s;
+ 
+@@ -409,7 +410,7 @@ cat > conftest.c << _EOF_
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <stdio.h>
+-int main()
++int main(void)
+ {
+   off_t offset;
+   struct stat s;
+@@ -453,7 +454,7 @@ echo Check for wide char support
+ cat > conftest.c << _EOF_
+ #include <stdlib.h>
+ #include <stdio.h>
+-int main()
++int main(void)
+ {
+   int wsize;
+   wchar_t *wide_string;
+@@ -489,7 +490,7 @@ fi
+ echo Check for gcc no-builtin flag
+ # -fno-builtin since version 2
+ cat > conftest.c << _EOF_
+-int main()
++int main(void)
+ {
+ #if __GNUC__ >= 2
+    return 0;
+@@ -508,14 +509,14 @@ $CC $CFLAGS -c conftest.c >/dev/null 2>/dev/null
+ for func in rmdir strchr strrchr rename mktemp mktime mkstemp
+ do
+   echo Check for $func
+-  echo "int main(){ $func(); return 0; }" > conftest.c
++  echo "char $func(); int main(void){ return $func(); }" > conftest.c
+   $CC $BFLAG -o conftest conftest.c >/dev/null 2>/dev/null
+   [ $? -ne 0 ] && CFLAGS="${CFLAGS} -DNO_`echo $func | tr '[a-z]' '[A-Z]'`"
+ done
+ 
+ 
+ echo Check for memset
+-echo "int main(){ char k; memset(&k,0,0); return 0; }" > conftest.c
++echo "int main(void){ char memset(); return memset(); }" > conftest.c
+ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ [ $? -ne 0 ] && CFLAGS="${CFLAGS} -DZMEM"
+ 
+@@ -523,7 +524,7 @@ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ echo Check for memmove
+ cat > conftest.c << _EOF_
+ #include <string.h>
+-int main() { int a; int b = 0; memmove( &a, &b, sizeof( a)); return a; }
++int main(void) { int a; int b = 0; memmove( &a, &b, sizeof( a)); return a; }
+ _EOF_
+ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ [ $? -ne 0 ] && CFLAGS="${CFLAGS} -DNEED_MEMMOVE"
+@@ -532,7 +533,7 @@ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ echo Check for strerror
+ cat > conftest.c << _EOF_
+ #include <string.h>
+-int main() { strerror( 0); return 0; }
++int main(void) { strerror(0); return 0; }
+ _EOF_
+ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ [ $? -ne 0 ] && CFLAGS="${CFLAGS} -DNEED_STRERROR"
+@@ -540,7 +541,7 @@ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ echo Check for errno declaration
+ cat > conftest.c << _EOF_
+ #include <errno.h>
+-main()
++int main(void)
+ {
+   errno = 0;
+   return 0;
+@@ -552,7 +553,7 @@ $CC $CFLAGS -c conftest.c >/dev/null 2>/dev/null
+ 
+ echo Check for directory libraries
+ cat > conftest.c << _EOF_
+-int main() { return closedir(opendir(".")); }
++int main(void) { char closedir(); char opendir(); return closedir(opendir()); }
+ _EOF_
+ 
+ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+@@ -574,7 +575,7 @@ fi
+ # Dynix/ptx 1.3 needed this
+ 
+ echo Check for readlink
+-echo "int main(){ return readlink(); }" > conftest.c
++echo "int main(void){ char readlink(); return readlink(); }" > conftest.c
+ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ if [ $? -ne 0 ]; then
+   $CC -o conftest conftest.c -lseq >/dev/null 2>/dev/null
+@@ -617,7 +618,7 @@ CFLAGS="${CFLAGS} ${OPT}"
+ 
+ echo Check for valloc
+ cat > conftest.c << _EOF_
+-main()
++int main(void)
+ {
+ #ifdef MMAP
+     valloc();
+@@ -652,12 +653,12 @@ elif [ -f /xenix ]; then
+   fi
+ elif uname -X >/dev/null 2>/dev/null; then
+ # SCO shared library check
+-  echo "int main() { return 0;}" > conftest.c
++  echo "int main(void) { return 0;}" > conftest.c
+   $CC -o conftest conftest.c -lc_s -nointl >/dev/null 2> /dev/null
+   [ $? -eq 0 ] && LFLAGS2="-lc_s -nointl"
+ else
+   SYSTEM=`uname -s 2>/dev/null` || SYSTEM="unknown"
+-  echo "int main() { return 0;}" > conftest.c
++  echo "int main(void) { return 0;}" > conftest.c
+   case $SYSTEM in
+      OSF1|ULTRIX)
+         echo Check for -Olimit option

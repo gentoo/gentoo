@@ -1,0 +1,36 @@
+From ffbab4fbf218514845b8e5209aec044621b1f460 Mon Sep 17 00:00:00 2001
+From: Vsevolod Stakhov <vsevolod@rspamd.com>
+Date: Sun, 6 Aug 2023 18:33:37 +0100
+Subject: [PATCH] [CritFix] Fix leak in `gzip` function
+
+Upstream-Issue: https://github.com/rspamd/rspamd/issues/4564
+
+diff --git a/src/libutil/util.c b/src/libutil/util.c
+index 4be7cc620..deba3e807 100644
+--- a/src/libutil/util.c
++++ b/src/libutil/util.c
+@@ -2231,6 +2231,7 @@ rspamd_fstring_gzip(rspamd_fstring_t **in)
+ 	strm.avail_out = sizeof(temp) > buf->allocated ? buf->allocated : sizeof(temp);
+ 	ret = deflate(&strm, Z_FINISH);
+ 	if (ret == Z_STREAM_ERROR) {
++		deflateEnd(&strm);
+ 		return FALSE;
+ 	}
+ 
+@@ -2247,6 +2248,8 @@ rspamd_fstring_gzip(rspamd_fstring_t **in)
+ 		if (ret != Z_BUF_ERROR || strm.avail_in == 0) {
+ 			buf->len = strm.next_out - (unsigned char *) buf->str;
+ 			*in = buf;
++			deflateEnd(&strm);
++
+ 			return ret == Z_STREAM_END;
+ 		}
+ 	}
+@@ -2267,6 +2270,7 @@ rspamd_fstring_gzip(rspamd_fstring_t **in)
+ 	g_free(hold);
+ 	buf->len = strm.next_out - (unsigned char *) buf->str;
+ 	*in = buf;
++	deflateEnd(&strm);
+ 
+ 	return ret == Z_STREAM_END;
+ }

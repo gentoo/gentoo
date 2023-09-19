@@ -1,0 +1,19 @@
+From 6019c52444309dc2fdc61c5340c9458aeff6dced Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sat, 13 May 2023 02:11:24 +0530
+Subject: [PATCH] Fix pbs_tcp_timeout has a different language linkage
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/include/tcp.h
++++ b/src/include/tcp.h
+@@ -38,6 +38,6 @@ int tcp_wcommit(struct tcp_chan *chan, int);
+ int tcp_rskip(struct tcp_chan *chan,size_t);
+ int tcp_chan_has_data(struct tcp_chan *chan);
+ 
+-extern time_t pbs_tcp_timeout;
++extern "C" time_t pbs_tcp_timeout;
+ 
+ #endif /* TCP_PBS_H */
+-- 
+2.40.1
+

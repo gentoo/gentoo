@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		With this library you can use YARA from your Python programs. It covers
+		all YARA's features, from compiling, saving and loading rules to
+		scanning files, strings and processes.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">VirusTotal/yara-python</remote-id>
+		<remote-id type="pypi">yara-python</remote-id>
+	</upstream>
+</pkgmetadata>

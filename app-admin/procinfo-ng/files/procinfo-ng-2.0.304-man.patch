@@ -1,0 +1,11 @@
+--- a/procinfo.8
++++ b/procinfo.8
+@@ -6,7 +6,7 @@
+ .SH SYNOPSIS
+ .B procinfo
+ [
+-.IR \-fdDSbrhv
++.IR \-dDSbrhv
+ ] [
+ .IR \-n N
+ ]

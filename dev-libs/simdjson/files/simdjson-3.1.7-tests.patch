@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ba15fe93..6993bdd5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -249,12 +249,11 @@ add_subdirectory(singleheader)
+ #
+ # Compile tools / tests / benchmarks
+ #
+-add_subdirectory(tests)
+-add_subdirectory(examples)
+-if(CMAKE_SIZEOF_VOID_P EQUAL 8) # we only include the benchmarks on 64-bit systems.
+-  add_subdirectory(benchmark)
++if (SIMDJSON_TESTS)
++  add_subdirectory(tests)
++  add_subdirectory(fuzz)
+ endif()
+-add_subdirectory(fuzz)
++add_subdirectory(examples)
+ 
+ #
+ # Source files should be just ASCII

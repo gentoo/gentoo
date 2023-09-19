@@ -1,0 +1,26 @@
+From 48c682d577a7955256d0bfac5d497b3feebff11c Mon Sep 17 00:00:00 2001
+From: Ron Lieberman <ron.lieberman@amd.com>
+Date: Mon, 16 Jan 2023 14:29:05 -0600
+Subject: [PATCH] [llvm merge] Move to Expected on SubtargetFeatures
+
+Change-Id: I060ceaa2b51eaa6ed1b472ea42c6788b98001088
+---
+ lib/comgr/src/comgr-objdump.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/lib/comgr/src/comgr-objdump.cpp b/lib/comgr/src/comgr-objdump.cpp
+index 86a5d7f..6d20a3c 100644
+--- comgr/src/comgr-objdump.cpp
++++ comgr/src/comgr-objdump.cpp
+@@ -1270,7 +1270,10 @@ void llvm::DisassemHelper::DisassembleObject(const ObjectFile *Obj,
+   const Target *TheTarget = getTarget(Obj);
+ 
+   // Package up features to be passed to target/subtarget
+-  SubtargetFeatures Features = Obj->getFeatures();
++  Expected<SubtargetFeatures> FeaturesValue = Obj->getFeatures();
++  if (!FeaturesValue)
++    WithColor::error(errs(), ToolName) << FeaturesValue.takeError();
++  SubtargetFeatures Features = *FeaturesValue;
+   std::vector<std::string> MAttrs = lld::getMAttrs();
+   if (MAttrs.size()) {
+     for (unsigned I = 0; I != MAttrs.size(); ++I) {

@@ -1,0 +1,7 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2022-08-05)
+# Test failures on 32-bit, passes on 64-bit.  Bug #638888
+app-antivirus/clamav
+dev-perl/File-Scan-ClamAV

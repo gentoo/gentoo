@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 2016-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Docker Registry Authentication Server"
+pidfile=${pidfile:-"/run/${SVCNAME}.pid"}
+user=${user:-${SVCNAME}}
+group=${group:-${SVCNAME}}
+
+command="/usr/bin/auth_server"
+command_args="${command_args:--log_dir /var/log/${SVCNAME} /etc/docker_auth/config.yml}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
+	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
+
+depend() {
+	after net
+}

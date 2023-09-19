@@ -1,0 +1,11 @@
+--- ldap-nss.c~	2006-02-25 02:43:33.503639826 -0800
++++ ldap-nss.c	2006-02-25 02:50:51.943806612 -0800
+@@ -72,6 +72,8 @@
+ #include <sasl/sasl.h>
+ #elif defined(HAVE_SASL_H)
+ #include <sasl.h>
++#elif defined(HAVE_SASL_SASL_H)
++#include <sasl/sasl.h>
+ #endif
+ 
+ #ifndef HAVE_SNPRINTF

@@ -1,0 +1,15 @@
+vala-0.56.11 gtk4 bindings seemingly broke API, and so this
+workaround must either be applied conditionally or depend
+on >=vala-0.56.11 as it breaks older VALA_0_56 and we cannot
+check for minor versions from defines.
+
+https://bugs.gentoo.org/912438
+--- a/gmult/main.vala
++++ b/gmult/main.vala
+@@ -108,4 +108,4 @@
+     var provider = new Gtk.CssProvider();
+-#if VALA_0_58
+-    provider.load_from_data(css);
++#if VALA_0_56
++    provider.load_from_data(css, -1);
+ #else

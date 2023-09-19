@@ -1,0 +1,20 @@
+https://github.com/OpenPrinting/cups/issues/465
+https://github.com/OpenPrinting/cups/commit/cd84d7fde692237af4996d4a0e985a3eb4a293f0
+
+From: Michael R Sweet <michael.r.sweet@gmail.com>
+Date: Mon, 5 Sep 2022 09:20:03 -0400
+Subject: [PATCH] The OpenSSL code path wasn't loading the full certificate
+ chain (Issue #465)
+
+--- a/cups/tls-openssl.c
++++ b/cups/tls-openssl.c
+@@ -1055,7 +1055,7 @@ _httpTLSStart(http_t *http)		// I - Connection to server
+     }
+ 
+     SSL_CTX_use_PrivateKey_file(context, keyfile, SSL_FILETYPE_PEM);
+-    SSL_CTX_use_certificate_file(context, crtfile, SSL_FILETYPE_PEM);
++    SSL_CTX_use_certificate_chain_file(context, crtfile);
+   }
+ 
+   // Set TLS options...
+

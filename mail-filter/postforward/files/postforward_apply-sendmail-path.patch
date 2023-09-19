@@ -1,0 +1,11 @@
+--- a/postforward.go
++++ b/postforward.go
+@@ -27,7 +27,7 @@ const (
+ )
+ 
+ var dryRun = flag.Bool("dry-run", false, "show what would be done, don't actually forward mail")
+-var path = flag.String("path", "", "override $PATH with this value when executing binaries")
++var path = flag.String("path", "@GENTOO_PORTAGE_EPREFIX@/usr/sbin", "override $PATH with this value when executing binaries")
+ var rpHeader = flag.String("rp-header", "Return-Path", "header name containing the return-path (MAIL FROM) value")
+ var sendmailPath = flag.String("sendmail-path", "sendmail", "path to the sendmail binary (deprecated: use --path instead)")
+ var srsAddr = flag.String("srs-addr", "localhost:10001", "TCP address for SRS lookups")

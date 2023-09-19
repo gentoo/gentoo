@@ -1,0 +1,11 @@
+diff -Naur wmbiff-0.4.36.orig/configure.ac wmbiff-0.4.36/configure.ac
+--- wmbiff-0.4.36.orig/configure.ac	2020-04-17 19:30:26.000000000 +0200
++++ wmbiff-0.4.36/configure.ac	2021-01-03 00:27:57.522698494 +0100
+@@ -13,6 +13,7 @@
+ AH_TEMPLATE([VERSION], [wmbiff's release version])
+ AC_SUBST(VERSION)
+ 
++AM_PROG_AR
+ AC_PROG_INSTALL
+ AC_PROG_CC
+ AC_PROG_RANLIB

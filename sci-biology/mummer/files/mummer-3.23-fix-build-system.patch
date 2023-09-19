@@ -1,0 +1,397 @@
+Fix build system to restore some sanity
+
+--- a/Makefile
++++ b/Makefile
+@@ -27,31 +27,27 @@
+ 
+ 
+ TOP_DIR     := $(CURDIR)
+-BIN_DIR     := $(TOP_DIR)
+-AUX_BIN_DIR := $(TOP_DIR)/aux_bin
++
++BIN_DIR     = $(EPREFIX)/usr/bin
++SCRIPT_DIR  = $(EPREFIX)/usr/share/mummer/scripts
++AUX_BIN_DIR = $(EPREFIX)/usr/bin
+ 
+ DOC_DIR       := $(TOP_DIR)/docs
+ SCRIPT_DIR    := $(TOP_DIR)/scripts
+ TIGR_SRC_DIR  := $(TOP_DIR)/src/tigr
+ KURTZ_SRC_DIR := $(TOP_DIR)/src/kurtz
+ 
+-CC   := $(filter /%,$(shell /bin/sh -c 'type gcc'))
+-CXX  := $(filter /%,$(shell /bin/sh -c 'type g++'))
+ SED  := $(filter /%,$(shell /bin/sh -c 'type sed'))
+ CSH  := $(filter /%,$(shell /bin/sh -c 'type csh'))
+ PERL := $(filter /%,$(shell /bin/sh -c 'type perl'))
+-AR   := $(filter /%,$(shell /bin/sh -c 'type ar'))
+ 
+-CXXFLAGS = -O3
+-CFLAGS = -O3
+-LDFLAGS  =
+ 
+ FLATS = ACKNOWLEDGEMENTS COPYRIGHT INSTALL LICENSE Makefile README ChangeLog
+ 
+ 
+ 
+ #-- EXPORT THESE VARIABLES TO OTHER MAKEFILES
+-export BIN_DIR AUX_BIN_DIR CXX CC CFLAGS CXXFLAGS LDFLAGS
++export BIN_DIR SCRIPT_DIR AUX_BIN_DIR
+ 
+ 
+ 
+@@ -114,15 +110,15 @@
+ 
+ 
+ kurtz:
+-	cd $(KURTZ_SRC_DIR); $(MAKE) mummer
++	$(MAKE) -C $(KURTZ_SRC_DIR) mummer
+ 
+ 
+ scripts:
+-	cd $(SCRIPT_DIR); $(MAKE) all
++	$(MAKE) -C $(SCRIPT_DIR) all
+ 
+ 
+ tigr:
+-	cd $(TIGR_SRC_DIR); $(MAKE) all
++	$(MAKE) -C $(TIGR_SRC_DIR) all
+ 
+ 
+ uninstall: clean
+--- a/scripts/Makefile
++++ b/scripts/Makefile
+@@ -1,21 +1,10 @@
+-#-- Imported variables from top level makefile
+-# BIN_DIR AUX_BIN_DIR CXX CC CFLAGS CXXFLAGS LDFLAGS
++BIN_DIR     = $(EPREFIX)/usr/bin
++SCRIPT_DIR  = $(EPREFIX)/usr/share/mummer/scripts
++AUX_BIN_DIR = $(EPREFIX)/usr/bin
+ 
+-ifndef BIN_DIR
+-BIN_DIR := $(CURDIR)
+-endif
+-ifndef AUX_BIN_DIR
+-AUX_BIN_DIR := $(CURDIR)
+-endif
+-ifndef SCRIPT_DIR
+-SCRIPT_DIR := $(CURDIR)
+-endif
+-
+-SCRIPT_DIR := $(CURDIR)
+ SED := $(filter /%,$(shell /bin/sh -c 'type sed'))
+ CSH := $(filter /%,$(shell /bin/sh -c 'type csh'))
+ PERL := $(filter /%,$(shell /bin/sh -c 'type perl'))
+-VPATH := $(BIN_DIR)
+ 
+ ALL := exact-tandems mapview mummerplot nucmer promer \
+        run-mummer1 run-mummer3 nucmer2xfig dnadiff
+@@ -39,58 +28,49 @@
+ 	$(SED)  -e 's?__CSH_PATH?$(CSH)?g' \
+ 		-e 's?__BIN_DIR?$(BIN_DIR)?g' \
+ 		-e 's?__SCRIPT_DIR?$(SCRIPT_DIR)?g' \
+-		exact-tandems.csh > $(BIN_DIR)/exact-tandems
+-	chmod 755 $(BIN_DIR)/exact-tandems
++		exact-tandems.csh > exact-tandems
+ 
+ mapview: mapview.pl
+ 	$(SED)  -e 's?__PERL_PATH?$(PERL)?g' \
+ 		-e 's?__SCRIPT_DIR?$(SCRIPT_DIR)?g' \
+-                mapview.pl > $(BIN_DIR)/mapview
+-	chmod 755 $(BIN_DIR)/mapview
++                mapview.pl > mapview
+ 
+ mummerplot: mummerplot.pl Foundation.pm
+ 	$(SED)  -e 's?__PERL_PATH?$(PERL)?g' \
+                 -e 's?__SCRIPT_DIR?$(SCRIPT_DIR)?g' \
+                 -e 's?__BIN_DIR?$(BIN_DIR)?g' \
+-                mummerplot.pl > $(BIN_DIR)/mummerplot
+-	chmod 755 $(BIN_DIR)/mummerplot
++                mummerplot.pl > mummerplot
+ 
+ dnadiff: dnadiff.pl Foundation.pm
+ 	$(SED) -e 's?__PERL_PATH?$(PERL)?g' \
+                -e 's?__SCRIPT_DIR?$(SCRIPT_DIR)?g' \
+                -e 's?__BIN_DIR?$(BIN_DIR)?g' \
+-                 dnadiff.pl > $(BIN_DIR)/dnadiff
+-	chmod 755 $(BIN_DIR)/dnadiff
++                 dnadiff.pl > dnadiff
+ 
+ nucmer: nucmer.pl Foundation.pm
+ 	$(SED)  -e 's?__PERL_PATH?$(PERL)?g' \
+                 -e 's?__SCRIPT_DIR?$(SCRIPT_DIR)?g' \
+                 -e 's?__AUX_BIN_DIR?$(AUX_BIN_DIR)?g' \
+                 -e 's?__BIN_DIR?$(BIN_DIR)?g' \
+-                 nucmer.pl > $(BIN_DIR)/nucmer
+-	chmod 755 $(BIN_DIR)/nucmer
++                 nucmer.pl > nucmer
+ 
+ promer: promer.pl Foundation.pm
+ 	$(SED)  -e 's?__PERL_PATH?$(PERL)?g' \
+                 -e 's?__SCRIPT_DIR?$(SCRIPT_DIR)?g' \
+                 -e 's?__AUX_BIN_DIR?$(AUX_BIN_DIR)?g' \
+                 -e 's?__BIN_DIR?$(BIN_DIR)?g' \
+-                promer.pl > $(BIN_DIR)/promer
+-	chmod 755 $(BIN_DIR)/promer
++                promer.pl > promer
+ 
+ run-mummer1: run-mummer1.csh
+ 	$(SED)  -e 's?__CSH_PATH?$(CSH)?g' \
+ 		-e 's?__BIN_DIR?$(BIN_DIR)?g' \
+-		run-mummer1.csh > $(BIN_DIR)/run-mummer1
+-	chmod 755 $(BIN_DIR)/run-mummer1
++		run-mummer1.csh > run-mummer1
+ 
+ run-mummer3: run-mummer3.csh
+ 	$(SED)  -e 's?__CSH_PATH?$(CSH)?g' \
+ 		-e 's?__BIN_DIR?$(BIN_DIR)?g' \
+-		run-mummer3.csh > $(BIN_DIR)/run-mummer3
+-	chmod 755 $(BIN_DIR)/run-mummer3
++		run-mummer3.csh > run-mummer3
+ 
+ nucmer2xfig: nucmer2xfig.pl
+ 	$(SED)  -e 's?__PERL_PATH?$(PERL)?g' \
+-		nucmer2xfig.pl > $(BIN_DIR)/nucmer2xfig
+-	chmod 755 $(BIN_DIR)/nucmer2xfig
++		nucmer2xfig.pl > nucmer2xfig
+--- a/src/kurtz/libbasedir/Makefile
++++ b/src/kurtz/libbasedir/Makefile
+@@ -5,8 +5,6 @@
+ 
+ SPLINTFLAGS=-f ../Splintoptions -DDEBUG
+ 
+-LD=$(CC)
+-
+ ##CFLAGS=${DEFINECFLAGS}
+ 
+ LIBBASE=libbase.a
+@@ -24,14 +22,14 @@
+ 
+ 
+ $(LIBBASE): $(LIBOBJECTS)
+-	ar sruv $@ $(LIBOBJECTS)
++	$(AR) sruv $@ $(LIBOBJECTS)
+ 
+ 
+ include Filegoals.mf
+ 
+ 
+ $(LIBBASEDBG): $(LIBDEBUGOBJECTS)
+-	ar sruv $@ $(LIBDEBUGOBJECTS)
++	$(AR) sruv $@ $(LIBDEBUGOBJECTS)
+ 
+ 
+ .PHONY:clean
+--- a/src/kurtz/Makefile
++++ b/src/kurtz/Makefile
+@@ -1,7 +1,7 @@
+ all:
+-	cd libbasedir; $(MAKE) all
+-	cd streesrc; $(MAKE) all
+-	cd mm3src; $(MAKE) all
++	$(MAKE) -C libbasedir all
++	$(MAKE) -C streesrc all
++	$(MAKE) -C mm3src all
+ 
+ clean:
+ 	rm -f *~
+@@ -10,11 +10,11 @@
+ 	cd mm3src; $(MAKE) clean
+ 
+ mummer:
+-	cd libbasedir; $(MAKE) libbase.a
+-	cd streesrc; $(MAKE) libstree.a
+-	cd mm3src; $(MAKE) mummer
++	$(MAKE) -C libbasedir libbase.a
++	$(MAKE) -C streesrc libstree.a
++	$(MAKE) -C mm3src mummer
+ 
+ splintall:
+-	cd libbasedir; ${MAKE} splintall
+-	cd streesrc; ${MAKE} splintall
+-	cd mm3src; ${MAKE} splintall
++	$(MAKE) -C libbasedir splintall
++	$(MAKE) -C streesrc splintall
++	$(MAKE) -C mm3src splintall
+--- a/src/kurtz/mm3src/Makefile
++++ b/src/kurtz/mm3src/Makefile
+@@ -3,11 +3,7 @@
+ 
+ ##include ../Makedef
+ 
+-ifndef BIN_DIR
+-BIN_DIR := $(CURDIR)
+-endif
+-
+-VPATH := $(BIN_DIR)
++BIN_DIR     = $(EPREFIX)/usr/bin
+ 
+ ALL := maxmat3.x maxmat3.dbg.x
+ 
+@@ -15,11 +11,8 @@
+ LIBSTREEDIR=../streesrc
+ INCLUDEDIR=-I${LIBBASEDIR} -I${LIBSTREEDIR}
+ 
+-override CFLAGS+=$(INCLUDEDIR)
+-##CFLAGS=${DEFINECFLAGS} $(INCLUDEDIR)
+-##LDFLAGS=${DEFINELDFLAGS}
++override CPPFLAGS+=$(INCLUDEDIR)
+ SPLINTFLAGS=${INCLUDEDIR} -f ../Splintoptions -DDEBUG
+-LD=$(CC)
+ 
+ LIBBASE=$(LIBBASEDIR)/libbase.a
+ LIBBASEDBG=$(LIBBASEDIR)/libbase.dbg.a
+@@ -40,16 +33,16 @@
+ all: $(ALL)
+ 
+ mummer: $(MUM3OBJECTS) $(LIBSTREE)
+-	$(LD) $(LDFLAGS) $(MUM3OBJECTS) $(LIBSTREE) $(LIBBASE) \
+-	-o $(BIN_DIR)/$@; chmod 755 $(BIN_DIR)/$@
++	$(CC) $(LDFLAGS) $(MUM3OBJECTS) $(LIBSTREE) $(LIBBASE) \
++	-o $@
+ 
+ maxmat3.x: $(MUM3OBJECTS) $(LIBSTREE)
+-	$(LD) $(LDFLAGS) $(MUM3OBJECTS) $(LIBSTREE) $(LIBBASE) \
+-	-o $(BIN_DIR)/$@; chmod 755 $(BIN_DIR)/$@
++	$(CC) $(LDFLAGS) $(MUM3OBJECTS) $(LIBSTREE) $(LIBBASE) \
++	-o $@
+ 
+ maxmat3.dbg.x: ${MUM3DBGOBJECTS} $(LIBSTREEDBG)
+-	$(LD) $(LDFLAGS) $(MUM3DBGOBJECTS) $(LIBSTREEDBG) $(LIBBASEDBG) \
+-	-lm -o $(BIN_DIR)/$@; chmod 755 $(BIN_DIR)/$@
++	$(CC) $(LDFLAGS) $(MUM3DBGOBJECTS) $(LIBSTREEDBG) $(LIBBASEDBG) \
++	-lm -o $@
+ 
+ include Filegoals.mf
+ 
+--- a/src/kurtz/streesrc/Makefile
++++ b/src/kurtz/streesrc/Makefile
+@@ -23,8 +23,6 @@
+ 
+ #-DSTARTFACTOR=0.5
+ 
+-LD=${CC}
+-
+ LIBBASE=${LIBBASEDIR}/libbase.a
+ LIBBASEDBG=${LIBBASEDIR}/libbase.dbg.a
+ 
+@@ -65,29 +63,29 @@
+ include Filegoals.mf
+ 
+ libstree.4.a: $(OBJECTS4)
+-	ar sruv $@ $(OBJECTS4)
++	$(AR) sruv $@ $(OBJECTS4)
+ 
+ libstree.a: $(OBJECTS)
+-	ar sruv $@ $(OBJECTS)
++	$(AR) sruv $@ $(OBJECTS)
+ 
+ libstree.dbg.4.a: $(DBGOBJECTS4)
+-	ar sruv $@ $(DBGOBJECTS4)
++	$(AR) sruv $@ $(DBGOBJECTS4)
+ 
+ libstree.dbg.a: $(DBGOBJECTS)
+-	ar sruv $@ $(DBGOBJECTS)
++	$(AR) sruv $@ $(DBGOBJECTS)
+ 
+ 
+ stree.x: stree.o libstree.a
+-	$(LD) $(LDFLAGS) stree.o libstree.a $(LIBBASE) -o $@
++	$(CC) $(LDFLAGS) stree.o libstree.a $(LIBBASE) -o $@
+ 
+ loc.x: loc.o libstree.a
+-	$(LD) $(LDFLAGS) loc.o libstree.a $(LIBBASE) -o $@
++	$(CC) $(LDFLAGS) loc.o libstree.a $(LIBBASE) -o $@
+ 
+ stree.dbg.x: stree.dbg.o libstree.dbg.a 
+-	$(LD) $(LDFLAGS) stree.dbg.o libstree.dbg.a $(LIBBASEDBG) -o $@
++	$(CC) $(LDFLAGS) stree.dbg.o libstree.dbg.a $(LIBBASEDBG) -o $@
+ 
+ loc.dbg.x: loc.dbg.o libstree.dbg.a 
+-	$(LD) $(LDFLAGS) loc.dbg.o libstree.dbg.a $(LIBBASEDBG) -o $@
++	$(CC) $(LDFLAGS) loc.dbg.o libstree.dbg.a $(LIBBASEDBG) -o $@
+ 
+ streeproto.h: $(PROTOFILES) Mkstreeproto.sh
+ 	@echo "make $@"
+--- a/src/tigr/Makefile
++++ b/src/tigr/Makefile
+@@ -1,20 +1,3 @@
+-#-- Imported variables from top level makefile
+-# BIN_DIR AUX_BIN_DIR CXX CC CFLAGS CXXFLAGS LDFLAGS
+-
+-ifndef BIN_DIR
+-BIN_DIR := $(CURDIR)
+-endif
+-ifndef AUX_BIN_DIR
+-AUX_BIN_DIR := $(CURDIR)
+-endif
+-
+-OBJ_RULE = $(CXX) $(CXXFLAGS) $< -c -o $@
+-BIN_RULE = $(CXX) $(CXXFLAGS) $^ -o $(BIN_DIR)/$@; \
+-           chmod 755 $(BIN_DIR)/$@
+-AUX_BIN_RULE = $(CXX) $(CXXFLAGS) $^ -o $(AUX_BIN_DIR)/$@; \
+-           chmod 755 $(AUX_BIN_DIR)/$@
+-VPATH := $(AUX_BIN_DIR):$(BIN_DIR)
+-
+ ALL := annotate combineMUMs delta-filter gaps mgaps \
+      postnuc postpro prenuc prepro repeat-match \
+      show-aligns show-coords show-tiling show-snps \
+@@ -38,59 +21,22 @@
+ 
+ #-- not so PHONY rules --#
+ delta.o: delta.cc delta.hh
+-	$(OBJ_RULE)
+-
+ tigrinc.o: tigrinc.cc tigrinc.hh
+-	$(OBJ_RULE)
+-
+ sw_align.o: sw_align.cc sw_align.hh tigrinc.hh
+-	$(OBJ_RULE)
+-
+ translate.o: translate.cc translate.hh
+-	$(OBJ_RULE)
+-
+ 
+ annotate: annotate.cc tigrinc.o
+-	$(BIN_RULE)
+-
+ combineMUMs: combineMUMs.cc tigrinc.o
+-	$(BIN_RULE)
+-
+ delta-filter: delta-filter.cc tigrinc.o delta.o
+-	$(BIN_RULE)
+-
+ gaps: gaps.cc tigrinc.o
+-	$(BIN_RULE)
+-
+ mgaps: mgaps.cc tigrinc.o
+-	$(BIN_RULE)
+-
+ postnuc: postnuc.cc tigrinc.o sw_align.o
+-	$(AUX_BIN_RULE)
+-
+ postpro: postpro.cc tigrinc.o sw_align.o translate.o
+-	$(AUX_BIN_RULE)
+-
+ prenuc: prenuc.cc tigrinc.o
+-	$(AUX_BIN_RULE)
+-
+ prepro: prepro.cc tigrinc.o translate.o
+-	$(AUX_BIN_RULE)
+-
+ repeat-match: repeat-match.cc tigrinc.o
+-	$(BIN_RULE)
+-
+ show-aligns: show-aligns.cc tigrinc.o translate.o delta.o
+-	$(BIN_RULE)
+-
+ show-coords: show-coords.cc tigrinc.o delta.o
+-	$(BIN_RULE)
+-
+ show-tiling: show-tiling.cc tigrinc.o delta.o
+-	$(BIN_RULE)
+-
+ show-snps: show-snps.cc tigrinc.o translate.o delta.o
+-	$(BIN_RULE)
+-
+ show-diff: show-diff.cc tigrinc.o delta.o
+-	$(BIN_RULE)

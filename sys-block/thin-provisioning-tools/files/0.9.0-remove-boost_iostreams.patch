@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -173,7 +173,7 @@
+ CXXFLAGS+=@CXX_STRERROR_FLAG@
+ CXXFLAGS+=@LFS_FLAGS@
+ INCLUDES+=-I$(TOP_BUILDDIR) -I$(TOP_DIR) -I$(TOP_DIR)/thin-provisioning
+-LIBS:=-laio -lexpat -lboost_iostreams -ldl
++LIBS:=-laio -lexpat -ldl
+ 
+ ifeq ("@DEVTOOLS@", "yes")
+ LIBS+=-lncurses

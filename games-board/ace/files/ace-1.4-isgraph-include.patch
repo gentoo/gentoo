@@ -1,0 +1,7 @@
+--- a/lib/make-imglib.c
++++ b/lib/make-imglib.c
+@@ -1,3 +1,4 @@
++#include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

@@ -1,0 +1,36 @@
+diff -Naur a/configure b/configure
+--- a/configure	2019-01-20 21:12:12.634450200 +0000
++++ b/configure	2019-01-20 21:12:52.502298542 +0000
+@@ -411,7 +411,7 @@
+ else
+ 
+   if enabled_or_auto hdhomerun_client; then
+-    if check_cc_header 'libhdhomerun/hdhomerun' libhdhomerun; then
++    if check_cc_header 'hdhomerun/hdhomerun' libhdhomerun; then
+       enable  hdhomerun_client
+       LDFLAGS="$LDFLAGS -lhdhomerun"
+     fi
+diff -Naur a/src/input/mpegts/tvhdhomerun/tvhdhomerun.c b/src/input/mpegts/tvhdhomerun/tvhdhomerun.c
+--- a/src/input/mpegts/tvhdhomerun/tvhdhomerun.c	2019-01-20 21:12:12.707451725 +0000
++++ b/src/input/mpegts/tvhdhomerun/tvhdhomerun.c	2019-01-20 21:12:35.990947079 +0000
+@@ -17,7 +17,7 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include "libhdhomerun/hdhomerun.h"
++#include <hdhomerun/hdhomerun.h>
+ 
+ #include "tvheadend.h"
+ #include "input.h"
+diff -Naur a/src/input/mpegts/tvhdhomerun/tvhdhomerun_frontend.c b/src/input/mpegts/tvhdhomerun/tvhdhomerun_frontend.c
+--- a/src/input/mpegts/tvhdhomerun/tvhdhomerun_frontend.c	2019-01-20 21:12:12.707451725 +0000
++++ b/src/input/mpegts/tvhdhomerun/tvhdhomerun_frontend.c	2019-01-20 21:12:35.991947101 +0000
+@@ -17,7 +17,7 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include "libhdhomerun/hdhomerun.h"
++#include <hdhomerun/hdhomerun.h>
+ 
+ #include <fcntl.h>
+ #include "tvheadend.h"

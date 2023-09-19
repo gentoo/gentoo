@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="bzip2">
+			Add support for pcregrep command to search within
+			bzip2-compressed files (via <pkg>app-arch/bzip2</pkg>).
+		</flag>
+		<flag name="pcre16">Build PCRE library for 16 bit characters (e.g. UTF-16).</flag>
+		<flag name="pcre32">Build PCRE library for 32 bit characters (e.g. UTF-32).</flag>
+		<flag name="readline">
+			Add support for command line editing to pcretest, through
+			<pkg>sys-libs/readline</pkg>.
+		</flag>
+		<flag name="zlib">
+			Add support for pcregrep command to search within
+			gzip-compressed files (via <pkg>sys-libs/zlib</pkg>).
+		</flag>
+	</use>
+	<slots>
+		<subslots>Reflects binary compatibility for libpcre2-posix.so.</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:pcre:pcre</remote-id>
+		<remote-id type="github">PCRE2Project/pcre2</remote-id>
+	</upstream>
+</pkgmetadata>

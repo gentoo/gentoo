@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/873487
+https://github.com/gentoo/gentoo/pull/27679
+
+diff --git a/test/functional/Test1/Makefile.am b/test/functional/Test1/Makefile.am
+index 3269751..50dd2a9 100644
+--- a/test/functional/Test1/Makefile.am
++++ b/test/functional/Test1/Makefile.am
+@@ -40,3 +40,4 @@ AM_CPPFLAGS =
+ 
+ ## File created by the gnome-build tools
+ 
++TESTS = $(noinst_PROGRAMS)
+diff --git a/test/generator/Makefile.am b/test/generator/Makefile.am
+index 6c2403d..c6781aa 100644
+--- a/test/generator/Makefile.am
++++ b/test/generator/Makefile.am
+@@ -38,3 +38,5 @@ dist-hook:
+ 
+ MAINTAINERCLEANFILES = \
+ 	Makefile.in
++
++TESTS = $(noinst_PROGRAMS)

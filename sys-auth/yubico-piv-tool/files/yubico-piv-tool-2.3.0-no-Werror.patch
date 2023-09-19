@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -104,7 +104,7 @@
+ else()
+     find_package (PkgConfig REQUIRED)
+ 
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-missing-braces")
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wformat -Wformat-security")
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wshadow")

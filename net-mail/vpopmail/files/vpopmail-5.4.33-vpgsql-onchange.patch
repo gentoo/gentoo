@@ -1,0 +1,26 @@
+From c317829c750438fbb16867cbadb196328f3ba567 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Fri, 31 Jul 2020 22:09:50 +0200
+Subject: [PATCH] fix build when using PostgreSQL and --enable-onchange-script
+
+This obviously has never worked.
+---
+ vpgsql.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vpgsql.c b/vpgsql.c
+index b5dd40b..7d8e5c0 100644
+--- a/vpgsql.c
++++ b/vpgsql.c
+@@ -1456,7 +1456,7 @@ int valias_delete_domain( char *domain)
+ #ifdef ONCHANGE_SCRIPT
+   if( allow_onchange ) {
+      /* tell other programs that data has changed */
+-     snprintf ( onchange_buf, MAX_BUFF, "%s@%s - %s", alias, domain, alias_line);
++     snprintf ( onchange_buf, MAX_BUFF, "%s", domain );
+      call_onchange ( "valias_delete_domain" );
+      }
+ #endif
+-- 
+2.26.2
+

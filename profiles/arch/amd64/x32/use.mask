@@ -1,0 +1,10 @@
+# Copyright 2013-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2013-01-26)
+# Unmask the x32 ABI.
+-abi_x86_x32
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
+# Requires net-libs/nodejs
+webengine

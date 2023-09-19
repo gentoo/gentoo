@@ -1,0 +1,22 @@
+From: Sam James <sam@gentoo.org>
+Subject: [PATCH 1/2] Respect DESTDIR
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -6,10 +6,10 @@ clean:
+ 	$(MAKE) -C src clean
+ 
+ install:	xdms
+-	mkdir -p {PREFIX}/bin {PREFIX}/share/doc/xdms-{VERSION} {PREFIX}/share/man/man1
+-	install src/xdms {PREFIX}/bin/
+-	install xdms.txt COPYING ChangeLog.txt {PREFIX}/share/doc/xdms-{VERSION}/
+-	chmod og+rx {PREFIX}/bin {PREFIX}/bin/xdms
+-	chmod -R og+rX {PREFIX}/share/doc/xdms-{VERSION}
++	mkdir -p ${DESTDIR}{PREFIX}/bin ${DESTDIR}{PREFIX}/share/doc/xdms-{VERSION} ${DESTDIR}{PREFIX}/share/man/man1
++	install src/xdms ${DESTDIR}{PREFIX}/bin/
++	install xdms.txt COPYING ChangeLog.txt ${DESTDIR}{PREFIX}/share/doc/xdms-{VERSION}/
++	chmod og+rx ${DESTDIR}{PREFIX}/bin ${DESTDIR}{PREFIX}/bin/xdms
++	chmod -R og+rX ${DESTDIR}{PREFIX}/share/doc/xdms-{VERSION}
+ 	gzip < xdms.1 > xdms.1.gz
+-	install xdms.1.gz {PREFIX}/share/man/man1/
++	install xdms.1.gz ${DESTDIR}{PREFIX}/share/man/man1/
+-- 

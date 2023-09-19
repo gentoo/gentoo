@@ -1,0 +1,15 @@
+Index: dymo-cups-drivers-1.2.0/configure.ac
+===================================================================
+--- dymo-cups-drivers-1.2.0.orig/configure.ac
++++ dymo-cups-drivers-1.2.0/configure.ac
+@@ -87,9 +87,7 @@ AM_CONDITIONAL([SAMPLES], [test x$sample
+ AC_SUBST(cups_cflags)
+ 
+ warning_flags="-Wall -Wno-unknown-pragmas"
+-debug_flags=""
+-optimization_flags="-O2"
+-CXXFLAGS="${optimization_flags} ${warning_flags} ${debug_flags} ${cups_cflags}"
++CXXFLAGS="${CXXFLAGS} ${warning_flags} ${debug_flags} ${cups_cflags}"
+ 
+ 
+ AC_CHECK_LIB(cups, cupsMarkOptions, , AC_ERROR([Can't find cups library]))

@@ -1,0 +1,13 @@
+# Copyright 2021-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-20)
+# force users to use system versions
+# internal bootstrap only needed in parent big-endian profile
+dev-java/openjdk:11 system-bootstrap
+dev-java/openjdk:17 system-bootstrap
+
+# Michał Górny <mgorny@gentoo.org> (2021-02-19)
+# We have ready-to-use configs here.
+sys-kernel/gentoo-kernel -savedconfig
+sys-kernel/vanilla-kernel -savedconfig

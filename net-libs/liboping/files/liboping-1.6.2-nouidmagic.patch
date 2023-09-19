@@ -1,0 +1,19 @@
+diff -ruN liboping-1.6.2.orig/src/Makefile.am liboping-1.6.2/src/Makefile.am
+--- liboping-1.6.2.orig/src/Makefile.am	2012-01-31 17:20:44.000000000 +0100
++++ liboping-1.6.2/src/Makefile.am	2012-06-11 21:21:08.000000000 +0200
+@@ -52,15 +52,3 @@
+ endif
+ endif # BUILD_WITH_LIBNCURSES
+ 
+-install-exec-hook:
+-	@if test "x0" = "x$$UID"; then \
+-		if test "xLinux" = "x`uname -s`"; then \
+-			echo "Setting CAP_NET_RAW capability on binaries."; \
+-			setcap cap_net_raw=ep $(DESTDIR)$(bindir)/oping || true; \
+-			setcap cap_net_raw=ep $(DESTDIR)$(bindir)/noping || true; \
+-		else \
+-			echo "Setting set-UID bit on binaries."; \
+-			chmod u+s $(DESTDIR)$(bindir)/oping || true; \
+-			chmod u+s $(DESTDIR)$(bindir)/noping || true; \
+-		fi; \
+-	fi

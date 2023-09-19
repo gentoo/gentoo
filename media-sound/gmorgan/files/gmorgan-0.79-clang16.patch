@@ -1,0 +1,182 @@
+Bug: https://bugs.gentoo.org/896430
+--- a/src/GMorgan.h
++++ b/src/GMorgan.h
+@@ -41,7 +41,7 @@ using namespace std;
+ #define MAGIC_TRACK 0x4d54726b
+ 
+ extern int Pexitprogram, espera, programa, vum, vumvum, tum, cambialo;
+-extern int vavi, pr, pr1, count, ulcount, canaledit, notplaying;
++extern int vavi, pr, pr1, count_t, ulcount, canaledit, notplaying;
+ extern int veloplus[65];
+ extern const char *FilePreset;
+ extern const char *FileDrums;
+--- a/src/NotGenerated.cxx
++++ b/src/NotGenerated.cxx
+@@ -9105,7 +9105,7 @@ GMORGAN::cb_PtBro_i (Fl_Browser *, void *)
+       else
+ 	{
+ 	  gmo->sposi = 0;
+-	  count = 1;
++	  count_t = 1;
+ 	  gmo->negra = 0;
+ 	  gmo->semi = 0;
+ 	  gmo->ncompas = 0;
+@@ -24432,7 +24432,7 @@ GMORGAN::preparast ()
+   gmo->nfundi = 0;
+   gmo->ya = 0;
+   gmo->anticipa = 0;
+-  count = 1;
++  count_t = 1;
+   gmo->negra = 0;
+   ulcount = 0;
+   N1->value (0);
+@@ -24792,7 +24792,7 @@ GMORGAN::PutStyle (int i)
+   else
+     {
+       gmo->sposi = 0;
+-      count = 1;
++      count_t = 1;
+       gmo->negra = 0;
+       gmo->semi = 1;
+       gmo->ncompas = 0;
+@@ -26772,7 +26772,7 @@ GMORGAN::ActualizaEntrada ()
+ 	  else
+ 	    {
+ 	      gmo->sposi = 0;
+-	      count = 1;
++	      count_t = 1;
+ 	      gmo->negra = 0;
+ 	      gmo->semi = 1;
+ 	      gmo->ncompas = 0;
+--- a/src/Stk.cpp
++++ b/src/Stk.cpp
+@@ -123,7 +123,7 @@ void Stk :: setRawwavePath( std::string path )
+ 
+ void Stk :: swap16(unsigned char *ptr)
+ {
+-  register unsigned char val;
++  unsigned char val;
+ 
+   // Swap 1st and 2nd bytes
+   val = *(ptr);
+@@ -133,7 +133,7 @@ void Stk :: swap16(unsigned char *ptr)
+ 
+ void Stk :: swap32(unsigned char *ptr)
+ {
+-  register unsigned char val;
++  unsigned char val;
+ 
+   // Swap 1st and 4th bytes
+   val = *(ptr);
+@@ -149,7 +149,7 @@ void Stk :: swap32(unsigned char *ptr)
+ 
+ void Stk :: swap64(unsigned char *ptr)
+ {
+-  register unsigned char val;
++  unsigned char val;
+ 
+   // Swap 1st and 8th bytes
+   val = *(ptr);
+--- a/src/gmorgan.C
++++ b/src/gmorgan.C
+@@ -88,7 +88,7 @@ int
+   splashcounter,
+   clicksplash;
+ int
+-  count,
++  count_t,
+   ulcount,
+   ponfin;
+ int
+@@ -184,7 +184,7 @@ GMO::GMO ()
+   tick = 0;
+   negra = 0;
+   ncompas = 0;
+-  count = 0;
++  count_t = 0;
+   queue_id = 0;
+   elbar = 1;
+   HMode = 0;
+@@ -608,7 +608,7 @@ GMO::GMO ()
+       if (strlen (temp) > 2)
+ 	for (i = 0; i <= (int) strlen (temp) - 2; i++)
+ 	  HelpFilename[i] = temp[i];
+-	cout << "helpfile: " << HelpFilename << endl;
++	  std::cout << "helpfile: " << HelpFilename << endl;
+       bzero (temp, sizeof (temp));
+       fgets (temp, sizeof temp, fs);
+       if (strlen (temp) > 2)
+@@ -712,14 +712,14 @@ GMO::organo ()
+ 	{
+ 	  semi = 1;
+ 	  negra++;
+-	  count++;
+-	  if (count >= Rt[sp].blackn + 1)
++	  count_t++;
++	  if (count_t >= Rt[sp].blackn + 1)
+ 	    {
+ 	      elbar++;
+ 	      if (elbar > Rt[sp].bars)
+ 		elbar = 1;
+ 	      negra = 0;
+-	      count = 1;
++	      count_t = 1;
+ 	      ncompas++;
+ 	      sprintf (elbart, "%d", ncompas + 1);
+ // 
+@@ -1246,7 +1246,7 @@ GMO::GeneraChord ()
+ 
+   if (bplay)
+     {
+-      switch (count)
++      switch (count_t)
+ 	{
+ 	case 1:
+ 	  strcpy (elacorde, S[nb].ch1);
+--- a/src/gmorgan.MIDIExport.C
++++ b/src/gmorgan.MIDIExport.C
+@@ -306,18 +306,18 @@ GMO::generatracks ()
+ 	}
+       for (neg = 1; neg <= SNomi; neg++)
+ 	{
+-	  count = neg;
++	  count_t = neg;
+ 	  if (MTempo)
+ 	    MiraCambioTempoM (tcompas, neg);
+ 	  GeneraChord ();
+ 	  for (sem = 1; sem <= 4; sem++)
+ 	    {
+-	      if ((S[nb].ar8 == 1) && (count == SNomi) && (sem == 3))
++	      if ((S[nb].ar8 == 1) && (count_t == SNomi) && (sem == 3))
+ 		{
+ 		  anticipa = 1;
+ 		  GeneraChord ();
+ 		}
+-	      if ((S[nb].ar16 == 1) && (count == SNomi) && (sem == 4))
++	      if ((S[nb].ar16 == 1) && (count_t == SNomi) && (sem == 4))
+ 		{
+ 		  anticipa = 1;
+ 		  GeneraChord ();
+--- a/src/main.C
++++ b/src/main.C
+@@ -195,9 +195,9 @@ LastBar = 1;
+      }
+ 
+  if (vumvum != vum) gmoUI->VUI1->value(vum);
+-  if ((gmo.stst) && (ulcount != count))
++  if ((gmo.stst) && (ulcount != count_t))
+      {
+-      ulcount = count;
++      ulcount = count_t;
+       int rvtempo = gmoUI->CTEMPO->value();
+ 	if (gmo.bplay != 1)
+ 	{
+@@ -219,7 +219,7 @@ LastBar = 1;
+  	 gmoUI->LightIt(nbar);
+          }
+ 	if (nbar > 127) nbar = 127;	
+-      switch(count)
++      switch(count_t)
+       {
+          case 1:
+                 gmoUI->N1->setonly();

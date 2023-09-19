@@ -1,0 +1,41 @@
+--- a/m4/objc.m4.old
++++ b/m4/objc.m4
+@@ -448,32 +448,32 @@
+ 
+ # AC_LANG_SOURCE(Objective C)(BODY)
+ # ---------------------------------
+-m4_copy([AC_LANG_SOURCE(C)], [AC_LANG_SOURCE(Objective C)])
++m4_copy_force([AC_LANG_SOURCE(C)], [AC_LANG_SOURCE(Objective C)])
+ 
+ 
+ # AC_LANG_PROGRAM(Objective C)([PROLOGUE], [BODY])
+ # ------------------------------------------------
+-m4_copy([AC_LANG_PROGRAM(C)], [AC_LANG_PROGRAM(Objective C)])
++m4_copy_force([AC_LANG_PROGRAM(C)], [AC_LANG_PROGRAM(Objective C)])
+ 
+ 
+ # AC_LANG_CALL(Objective C)(PROLOGUE, FUNCTION)
+ # ---------------------------------------------
+-m4_copy([AC_LANG_CALL(C)], [AC_LANG_CALL(Objective C)])
++m4_copy_force([AC_LANG_CALL(C)], [AC_LANG_CALL(Objective C)])
+ 
+ 
+ # AC_LANG_FUNC_LINK_TRY(Objective C)(FUNCTION)
+ # --------------------------------------------
+-m4_copy([AC_LANG_FUNC_LINK_TRY(C)], [AC_LANG_FUNC_LINK_TRY(Objective C)])
++m4_copy_force([AC_LANG_FUNC_LINK_TRY(C)], [AC_LANG_FUNC_LINK_TRY(Objective C)])
+ 
+ 
+ # AC_LANG_BOOL_COMPILE_TRY(Objective C)(PROLOGUE, EXPRESSION)
+ # -----------------------------------------------------------
+-m4_copy([AC_LANG_BOOL_COMPILE_TRY(C)], [AC_LANG_BOOL_COMPILE_TRY(Objective C)])
++m4_copy_force([AC_LANG_BOOL_COMPILE_TRY(C)], [AC_LANG_BOOL_COMPILE_TRY(Objective C)])
+ 
+ 
+ # AC_LANG_INT_SAVE(Objective C)(PROLOGUE, EXPRESSION)
+ # ---------------------------------------------------
+-m4_copy([AC_LANG_INT_SAVE(C)], [AC_LANG_INT_SAVE(Objective C)])
++m4_copy_force([AC_LANG_INT_SAVE(C)], [AC_LANG_INT_SAVE(Objective C)])
+ 
+ 
+ 

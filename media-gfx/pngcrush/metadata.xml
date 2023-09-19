@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>glennrp@gmail.com</email>
+			<name>Glenn Randers-Pehrson</name>
+		</maintainer>
+		<bugs-to>https://sourceforge.net/p/pmt/bugs/</bugs-to>
+		<remote-id type="sourceforge">pmt</remote-id>
+	</upstream>
+</pkgmetadata>

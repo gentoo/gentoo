@@ -1,0 +1,30 @@
+From 68f6ef2ea203e047743a97fc17be23a4a964a05a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 15 Sep 2023 09:47:42 +0200
+Subject: [PATCH] Drop unused X11 dependency
+
+It seems it is (no longer) needed and was only a leftover for feature selection.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9fd6f4f01..47c234498 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -105,9 +105,7 @@ find_package(ICU 61.0 COMPONENTS uc i18n REQUIRED)
+ if(NOT APPLE)
+     option(WITHOUT_X11 "Build without X11 integration (skips finding X11)" OFF)
+     if (NOT WITHOUT_X11)
+-        find_package(X11)
+-        set_package_properties(X11 PROPERTIES TYPE OPTIONAL)
+-        set(HAVE_X11 ${X11_FOUND})
++        set(HAVE_X11 1)
+     endif()
+ endif()
+ 
+-- 
+2.42.0
+

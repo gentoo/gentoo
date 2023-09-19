@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		RtMidi is a set of C++ classes (RtMidiIn, RtMidiOut and API-specific classes)
+		that provides a common API (Application Programming Interface) for realtime MIDI
+		input/output across Linux (ALSA, JACK), Macintosh OS X (CoreMIDI, JACK),
+		and Windows (Multimedia Library) operating systems.
+		RtMidi significantly simplifies the process of interacting with computer MIDI hardware and software.
+	</longdescription>
+</pkgmetadata>

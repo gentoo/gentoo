@@ -1,0 +1,23 @@
+# HG changeset patch
+# User kristianf
+# Date 1382916946 -3600
+#      Mon Oct 28 00:35:46 2013 +0100
+# Node ID 0a9e41a05aafb98cc8c21562931cb1cbb5e30c1f
+# Parent  0d99149615ec5ec70a6d03c685291ddc55babff6
+libusb_compat
+
+diff -r 0d99149615ec -r 0a9e41a05aaf host/ekey-ulusbd.c
+--- a/host/ekey-ulusbd.c	Mon Oct 28 00:33:43 2013 +0100
++++ b/host/ekey-ulusbd.c	Mon Oct 28 00:35:46 2013 +0100
+@@ -100,8 +100,9 @@
+ 
+ #if LIBUSB_HAS_DETACH_KERNEL_DRIVER_NP
+     if ((r = usb_detach_kernel_driver_np(devh, EKEY_IFACE)) != 0) {
+-        if (r != -ENODATA) {
+-            fprintf(stderr, 
++        /* libusb_compat-0.1.3 mistakenly translate ENODATA to ENOENT */
++	if (r != -ENODATA && r != -ENOENT) {
++	      fprintf(stderr, 
+                     "Unable to detach Entropy Key at %s/%s from kernel\n", 
+                     busmatch, devmatch);
+             usb_close(devh);

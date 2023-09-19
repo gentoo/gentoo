@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
+	<use>
+		<flag name="infoflow">Depend on <pkg>dev-python/networkx</pkg> to use seinfoflow</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">SELinuxProject/setools</remote-id>
+	</upstream>
+</pkgmetadata>

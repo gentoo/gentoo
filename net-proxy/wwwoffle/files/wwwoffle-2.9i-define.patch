@@ -1,0 +1,20 @@
+--- a/src/wwwoffled.c
++++ b/src/wwwoffled.c
+@@ -15,6 +15,7 @@
+ 
+ #include "autoconfig.h"
+ 
++#define _GNU_SOURCE
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- a/src/cgi.c
++++ b/src/cgi.c
+@@ -16,6 +16,7 @@
+ 
+ #include "autoconfig.h"
+ 
++#define _GNU_SOURCE
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

@@ -1,0 +1,11 @@
+#!/bin/sh
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+if [ -e ./env ] ; then source ./env ; else echo "failed to source env" ; fi
+mkdir -p "/var/log/mysql/${SVCNAME}"
+if [ ${S6_LOG_OPTIONS} ] ; then
+	exec s6-log ${S6_LOG_OPTIONS}
+else
+	exec s6-log -b n20 S15000000 !"gzip -nq9" "/var/log/mysql/${SVCNAME}"
+fi

@@ -1,0 +1,20 @@
+--- duplicity-2.1.0/setup.py	2023-08-30 13:39:42.430023811 -0400
++++ duplicity-2.1.0/setup.py	2023-08-30 13:41:59.154868245 -0400
+@@ -92,17 +92,6 @@
+                 'bin/duplicity.1',
+                 ]
+             ),
+-            (f'share/doc/duplicity-{Version}',
+-                [
+-                'CHANGELOG.md',
+-                'CONTRIBUTING.md',
+-                'COPYING',
+-                'README.md',
+-                'README-LOG.md',
+-                'README-REPO.md',
+-                'README-TESTING.md',
+-                ],
+-            ),
+         ]
+ 
+     # short circuit fot READTHEDOCS

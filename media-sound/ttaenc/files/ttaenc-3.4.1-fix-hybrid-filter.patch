@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/721988
+
+--- a/ttaenc.c
++++ b/ttaenc.c
+@@ -525,7 +525,7 @@ __inline void memshl (register int *pA, register int *pB) {
+ 	*pA   = *pB;
+ }
+ 
+-__inline void hybrid_filter (fltst *fs, int *in, int mode) {
++static void hybrid_filter (fltst *fs, int *in, int mode) {
+ 	register int *pA = fs->dl;
+ 	register int *pB = fs->qm;
+ 	register int *pM = fs->dx;

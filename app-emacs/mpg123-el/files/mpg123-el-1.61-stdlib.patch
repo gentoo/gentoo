@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/874954
+
+--- mpg123-el-1.61/id3put.c
++++ mpg123-el-1.61/id3put.c
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #define INLEN 30

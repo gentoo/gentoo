@@ -1,0 +1,41 @@
+From 6c06d62579234e1d0030bad985a9cfcf7249b5d7 Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Mon, 27 Feb 2023 17:49:41 +0100
+Subject: [PATCH 1/2] fix prototypes for functions with parameters
+Bug: https://bugs.gentoo.org/898108
+Upstream: https://gitlab.com/free-astro/siril/-/merge_requests/443
+
+---
+ src/core/processing.h | 2 +-
+ src/gui/save_dialog.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/processing.h b/src/core/processing.h
+index 1eba970b..89f24bd3 100644
+--- a/src/core/processing.h
++++ b/src/core/processing.h
+@@ -162,7 +162,7 @@ void wait_for_script_thread();
+ gboolean end_generic(gpointer arg);
+ guint siril_add_idle(GSourceFunc idle_function, gpointer data);
+ 
+-struct generic_seq_args *create_default_seqargs();
++struct generic_seq_args *create_default_seqargs(sequence *seq);
+ 
+ int check_threading(threading_type *threads);
+ int limit_threading(threading_type *threads, int min_iterations_per_thread, size_t total_iterations);
+diff --git a/src/gui/save_dialog.h b/src/gui/save_dialog.h
+index c724abb1..586a2ca3 100644
+--- a/src/gui/save_dialog.h
++++ b/src/gui/save_dialog.h
+@@ -20,7 +20,7 @@ enum {
+ };
+ 
+ void on_header_save_as_button_clicked();
+-void on_header_snapshot_button_clicked();
++void on_header_snapshot_button_clicked(gboolean clipboard);
+ void on_header_save_button_clicked();
+ 
+ #endif /* SRC_GUI_SAVE_DIALOG_H_ */
+-- 
+2.39.2
+

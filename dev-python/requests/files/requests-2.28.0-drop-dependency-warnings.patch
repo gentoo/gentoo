@@ -1,0 +1,21 @@
+Minimal patch to avoid often rebasing.
+
+We already have tools to try check for these (`pip check` obviously, but also
+app-portage/gpyutils provides gpy-verify-deps).
+--- a/requests/__init__.py
++++ b/requests/__init__.py
+@@ -106,13 +106,7 @@ try:
+         urllib3.__version__, chardet_version, charset_normalizer_version
+     )
+ except (AssertionError, ValueError):
+-    warnings.warn(
+-        "urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+-        "version!".format(
+-            urllib3.__version__, chardet_version, charset_normalizer_version
+-        ),
+-        RequestsDependencyWarning,
+-    )
++    pass
+ 
+ # Attempt to enable urllib3's fallback for SNI support
+ # if the standard library doesn't support SNI or the

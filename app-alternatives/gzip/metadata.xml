@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="pigz">
+			Symlink to <pkg>app-arch/pigz</pkg>.
+		</flag>
+		<flag name="reference">
+			Symlink to <pkg>app-arch/gzip</pkg>.
+		</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,18 +1,18 @@
+ # Makefile for ADSL4Linux 1.11 Gentoo Edition
+ 
+ all: adsl
+ 
+ adsl: adsl.o adslstatus.o adslstatus.h adsl.h
+-	gcc adsl.o adslstatus.o -o adsl
++	$(CC) $(LDFLAGS) adsl.o adslstatus.o -o adsl $(LIBS)
+ 
+ adsl.o: adsl.c adsl.h
+-	gcc -c adsl.c
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c adsl.c
+ 
+ adslstatus: adslstatus.o adslstatus.h adsl.h
+-	gcc adslstatus.o -o adslstatus
++	$(CC) $(LDFLAGS) adslstatus.o -o adslstatus $(LIBS)
+ 
+ adslstatus.o: adslstatus.c adslstatus.h adsl.h
+-	gcc -c adslstatus.c
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c adslstatus.c
+ 
+ clean:
+ 	rm adsl *.o

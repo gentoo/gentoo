@@ -1,0 +1,25 @@
+--- a/Makefile
++++ b/Makefile
+@@ -50,4 +50,5 @@
+ ifeq  ($(strip $(USEREADLINE)),yes)
+     CFLAGS += -DUSE_READLINE
++#   CFLAGS += -DCOMPLETIONMATCHES
+ 	LIBS += -lncurses -lreadline 
+ endif
+--- a/bayes.c
++++ b/bayes.c
+@@ -382,9 +382,11 @@
+ char **readline_completion(const char *text, int start, int stop) {
+ 	char **matches = (char **) NULL;
+-	
++
++#ifdef COMPLETIONMATCHES	
+ 	if(start == 0)
+-    	matches = rl_completion_matches (text, command_generator);
++    		matches = rl_completion_matches (text, command_generator);
++#endif
+ 
+-  return (matches);	
++	return (matches);	
+ }
+ #endif

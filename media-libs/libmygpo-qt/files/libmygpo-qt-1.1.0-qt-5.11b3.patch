@@ -1,0 +1,136 @@
+From 0d76d960727018bddf04c6cc89552af69aaa7e55 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 15 Apr 2018 22:20:34 +0200
+Subject: [PATCH 1/2] Add missing Qt5Network, Qt5Test, make BUILD_WITH_QT4 more
+ strict
+
+---
+ CMakeLists.txt | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2a1f652..eb006d9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,25 +5,25 @@ project( libmygpo-qt )
+ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII" )
+ 
+-option(BUILD_WITH_QT4 "Build libmygpo-qt with Qt4 no matter if Qt5 was found" OFF)
++option(BUILD_WITH_QT4 "Build libmygpo-qt with Qt4" OFF)
+ 
+ if( NOT BUILD_WITH_QT4 )
+-    find_package(Qt5Core QUIET)
+-    if( Qt5Core_DIR )
+-        set(MYGPO_QT_VERSION_SUFFIX 5)
+-
+-        macro(qt_wrap_cpp)
+-            qt5_wrap_cpp(${ARGN})
+-        endmacro()
++    if( MYGPO_BUILD_TESTS )
++        find_package(Qt5 REQUIRED COMPONENTS Core Network Test CONFIG)
++    else()
++        find_package(Qt5 REQUIRED COMPONENTS Core Network CONFIG)
+     endif()
++    set(MYGPO_QT_VERSION_SUFFIX 5)
++
++    macro(qt_wrap_cpp)
++        qt5_wrap_cpp(${ARGN})
++    endmacro()
+ 
+     # pkg-config names of QtCore and QtNetwork are Qt5Core and Qt5Network for
+     # Qt5
+     set(MYGPO_QT_MAJOR_VERSION "5")
+     set(MYGPO_QT4_QJSON_DEP "")
+-endif()
+-
+-if( NOT Qt5Core_DIR )
++else()
+     message(STATUS "Could not find Qt5, searching for Qt4 instead...")
+     message(STATUS "Qt4 Support is deprecated, building with Qt4 is no longer officially supported")
+     if( MYGPO_BUILD_TESTS )
+-- 
+2.17.0
+
+
+From 1b53767b988b339aac8b353327a1542b2a0c0610 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 15 Apr 2018 22:29:33 +0200
+Subject: [PATCH 2/2] Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
+
+---
+ CMakeLists.txt       |  3 ---
+ src/CMakeLists.txt   |  8 ++++++--
+ tests/CMakeLists.txt | 12 +++++++++---
+ 3 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eb006d9..fa4b0cb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,9 +34,6 @@ else()
+     set( QT_DONT_USE_QTGUI TRUE )
+     include( ${QT_USE_FILE} )
+ 
+-    macro(qt5_use_modules)
+-    endmacro()
+-
+     macro(qt_wrap_cpp)
+         qt4_wrap_cpp(${ARGN})
+     endmacro()
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 802125b..253e81e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -79,9 +79,13 @@ QT_WRAP_CPP(LIBMYGPO_QT_MOC_SRC ${LIBMYGPO_QT_MOC_H} )
+ 
+ add_library( ${MYGPO_QT_TARGET_NAME} SHARED ${LIBMYGPO_QT_SRC} ${LIBMYGPO_QT_MOC_SRC} )
+ 
+-target_link_libraries( ${MYGPO_QT_TARGET_NAME} ${QJSON_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY}  )
+ set_target_properties( ${MYGPO_QT_TARGET_NAME} PROPERTIES VERSION ${MYGPO_QT_VERSION} SOVERSION ${MYGPO_QT_SONAME} DEFINE_SYMBOL MYGPO_MAKEDLL)
+-qt5_use_modules( ${MYGPO_QT_TARGET_NAME} Core Network )
++
++if( NOT BUILD_WITH_QT4 )
++    target_link_libraries( ${MYGPO_QT_TARGET_NAME} Qt5::Core Qt5::Network)
++else()
++    target_link_libraries( ${MYGPO_QT_TARGET_NAME} ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QJSON_LIBRARIES})
++endif()
+ 
+ install( TARGETS ${MYGPO_QT_TARGET_NAME} EXPORT ${MYGPO_QT_TARGET_NAME}Export DESTINATION ${LIB_INSTALL_DIR} )
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index a3e3223..4f77158 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -11,11 +11,15 @@ include_directories( ${QJSON_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CU
+ 
+ # UrlBuilder library
+ add_library( UrlBuilder ${TESTOBJECTS_SRCDIR}/UrlBuilder.cpp ${TESTOBJECTS_SRCDIR}/Config.cpp )
+-qt5_use_modules( UrlBuilder Core )
++if( NOT BUILD_WITH_QT4 )
++    target_link_libraries( UrlBuilder Qt5::Core )
++endif()
+ # JSONCreator library
+ QT_WRAP_CPP(LIBMYGPO_QT_MOC_SRC ${TESTOBJECTS_SRCDIR}/EpisodeAction.h ${TESTOBJECTS_SRCDIR}/EpisodeAction_p.h )
+ add_library( JsonCreator ${TESTOBJECTS_SRCDIR}/JsonCreator.cpp ${TESTOBJECTS_SRCDIR}/EpisodeAction.cpp ${TESTOBJECTS_SRCDIR}/qjsonwrapper/Json.cpp ${LIBMYGPO_QT_MOC_SRC})
+-qt5_use_modules( JsonCreator Core Network )
++if( NOT BUILD_WITH_QT4 )
++    target_link_libraries( JsonCreator Qt5::Core Qt5::Network )
++endif()
+ 
+ set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
+ 
+@@ -25,7 +29,9 @@ macro(add_libmygpo_test _source)
+     add_executable(${_name} ${_source} ${${_name}_MOC_SRC})
+     target_link_libraries(${_name} ${QT_QTCORE_LIBRARY} ${QT_QTTEST_LIBRARY} ${QT_QTNETWORK_LIBRARY})
+     add_test(${_name}-test ${EXECUTABLE_OUTPUT_PATH}/${_name})
+-    qt5_use_modules(${_name} Network Test)
++    if( NOT BUILD_WITH_QT4 )
++        target_link_libraries(${_name} Qt5::Network Qt5::Test)
++    endif()
+ endmacro(add_libmygpo_test)
+ 
+ add_libmygpo_test( UrlBuilderTest.cpp )
+-- 
+2.17.0
+

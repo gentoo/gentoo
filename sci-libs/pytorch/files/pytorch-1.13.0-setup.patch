@@ -1,0 +1,11 @@
+--- a/setup.py	2023-02-14 19:34:56.327571750 +0100
++++ b/setup.py	2023-02-14 19:35:31.073020464 +0100
+@@ -234,6 +234,8 @@
+ import time
+ import sysconfig
+ 
++sys.path[:0] = os.getcwd()
++
+ from tools.build_pytorch_libs import build_caffe2
+ from tools.setup_helpers.env import (IS_WINDOWS, IS_DARWIN, IS_LINUX,
+                                      build_type)

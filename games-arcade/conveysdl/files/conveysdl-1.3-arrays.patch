@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/330161
+--- a/main.c
++++ b/main.c
+@@ -24,3 +24,3 @@
+ SDL_Surface *letters[100];
+-SDL_Surface *tiles[9];
++SDL_Surface *tiles[10];
+ SDL_Surface *btiles;
+@@ -53,3 +53,3 @@
+ 
+-int bpointx,bpointy,pointx,pointy,jug,death,goose,jump,jumpf,blibs,spr[1000][8],leveldone,level,lives,totallevels,blobx[7],bloby[7],blobp[7],score,bak,bok,buk,bik,start,blibo,blibs,die,jumpoo=12,speed=4,arse,highscore;
++int bpointx,bpointy,pointx,pointy,jug,death,goose,jump,jumpf,blibs,spr[1000][8],leveldone,level,lives,totallevels,blobx[8],bloby[8],blobp[8],score,bak,bok,buk,bik,start,blibo,blibs,die,jumpoo=12,speed=4,arse,highscore;
+ /* Keys */
+@@ -454,3 +454,3 @@
+   int monkey=70,munk;
+-  char scoremonkey[10];
++  char scoremonkey[16];
+   if (lives>1) {

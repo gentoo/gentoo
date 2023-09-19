@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://issues.apache.org/jira/projects/VALIDATOR/issues/</bugs-to>
+		<changelog>http://commons.apache.org/proper/commons-validator/changes-report.html</changelog>
+	</upstream>
+</pkgmetadata>

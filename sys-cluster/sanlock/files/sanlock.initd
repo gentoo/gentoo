@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/var/run/sanlock.pid"
+command="/usr/sbin/sanlock"
+command_args="daemon ${SANLOCKOPTS:-"-U sanlock -G sanlock"}"
+

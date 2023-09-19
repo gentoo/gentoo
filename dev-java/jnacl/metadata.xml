@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Pure Java implementation of curve25519, salsa20, hsalsa20, xsalsa20 and poly1305 cryptographic primitives, along with a NaCl "Box" implementation
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/neilalexander/jnacl/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

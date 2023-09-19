@@ -1,0 +1,12 @@
+--- a/src/osdep/unix/Makefile
++++ b/src/osdep/unix/Makefile
+@@ -990,6 +990,9 @@ onceenv:
+ 	 -DLOCKPGM3=\"$(LOCKPGM3)\" > OSCFLAGS
+ 	echo $(BASELDFLAGS) $(EXTRALDFLAGS) > LDFLAGS
+ 	echo "$(ARRC) $(ARCHIVE) $(BINARIES) $(LIBRARIES);$(RANLIB) $(ARCHIVE)" > ARCHIVE
++	echo "`$(CAT) CCTYPE` `$(CAT) CFLAGS` `$(CAT) OSFLAGS` -shared \
++		-Wl,-soname,libc-client.so.1 -o libc-client.so.1.0.0 $(BINARIES)" \
++	>> ARCHIVE
+ 	echo $(ARCHIVE) > ARCHIVENAME
+ 	echo $(OS) > OSTYPE
+ 	./drivers $(EXTRADRIVERS) $(DEFAULTDRIVERS) dummy

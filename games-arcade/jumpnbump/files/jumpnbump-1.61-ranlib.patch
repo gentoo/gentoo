@@ -1,0 +1,7 @@
+--- a/sdl/Makefile
++++ b/sdl/Makefile
+@@ -10,3 +10,3 @@
+ 	$(AR) cru $(TARGET) $(OBJS)
+-	ranlib $(TARGET)
++	$(RANLIB) $(TARGET)
+ 

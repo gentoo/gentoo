@@ -1,0 +1,62 @@
+fix for VDR 1.5.x
+
+Joerg Bornkessel <hd_brummy@gentoo.org> 25 Mar 2007
+diff -Naur mp3ng-0.9.13-MKIV-pre3.orig/mp3ng.c mp3ng-0.9.13-MKIV-pre3/mp3ng.c
+--- mp3ng-0.9.13-MKIV-pre3.orig/mp3ng.c	2007-03-25 23:09:14.000000000 +0200
++++ mp3ng-0.9.13-MKIV-pre3/mp3ng.c	2007-03-25 23:14:16.000000000 +0200
+@@ -370,7 +370,12 @@
+   HideStatus();
+   if(visible) {
+     delete osd; osd=0;
++#if APIVERSNUM > 10500
++       visible=bigwin=false;
++       SetNeedsFastResponse(visible);
++#else
+     needsFastResponse=visible=bigwin=false;
++#endif
+     }
+ }
+ 
+@@ -581,7 +586,12 @@
+       osd->Flush();
+ 
+       ShowStatus(true);
++#if APIVERSNUM > 10500
++      visible=true;
++      SetNeedsFastResponse(visible);
++#else
+       needsFastResponse=visible=true;
++#endif
+       fliptime=listtime=0; flipint=0; flip=-1; top=lastTop=-1; lastIndex=lastTotal=-1;
+       delete lastMode; lastMode=0;
+       }
+diff -Naur mp3ng-0.9.13-MKIV-pre3.orig/mplayer.c mp3ng-0.9.13-MKIV-pre3/mplayer.c
+--- mp3ng-0.9.13-MKIV-pre3.orig/mplayer.c	2007-03-25 23:09:14.000000000 +0200
++++ mp3ng-0.9.13-MKIV-pre3/mplayer.c	2007-03-25 23:18:09.000000000 +0200
+@@ -219,7 +219,12 @@
+ #else
+     Interface->Close();
+ #endif
++#if APIVERSNUM > 10500
++    visible = modeOnly = false;
++    SetNeedsFastResponse(visible);
++#else
+     needsFastResponse=visible=modeOnly=false;
++#endif
+     }
+ }
+ 
+@@ -251,7 +256,13 @@
+       Interface->Clear();
+       if(MPlayerSetup.OsdPos>0) Interface->Fill(0,3,Interface->Width(),MPlayerSetup.OsdPos,clrTransparent);
+ #endif
++#if APIVERSNUM > 10500
++      visible = true;
++      SetNeedsFastResponse(visible);
++      modeOnly=false;
++#else
+       needsFastResponse=visible=true; modeOnly=false;
++#endif
+       if(file) {
+ #if VDRVERSNUM >= 10307
+         display->SetTitle(file->Path());

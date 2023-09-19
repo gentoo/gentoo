@@ -1,0 +1,85 @@
+https://bugs.gentoo.org/892617
+https://github.com/alexmojaki/stack_data/pull/48
+
+From 4fbe4c0aec04ac818070d5963b0249a5592c1b53 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Fri, 3 Feb 2023 14:51:01 +0100
+Subject: [PATCH] Update test_pygments_example and skip it with Pygments <
+ 2.14.0
+
+--- a/tests/test_core.py
++++ b/tests/test_core.py
+@@ -630,7 +630,7 @@ def test_example():
+ """
+ 
+ 
+-@pytest.mark.skipif(pygments_version < (2, 12), reason="Different output in older Pygments")
++@pytest.mark.skipif(pygments_version < (2, 14), reason="Different output in older Pygments")
+ def test_pygments_example():
+     from .samples.pygments_example import bar
+     result = bar()
+@@ -670,32 +670,32 @@ def test_pygments_example():
+ 
+ TerminalFormatter native:
+ 
+-  13 | \x1b[34mdef\x1b[39;49;00m \x1b[32mbar\x1b[39;49;00m():
+-  14 |     x = \x1b[34m1\x1b[39;49;00m
+-  15 |     \x1b[36mstr\x1b[39;49;00m(x)
+-  17 |     \x1b[90m@deco\x1b[39;49;00m
+-  18 |     \x1b[34mdef\x1b[39;49;00m \x1b[32mfoo\x1b[39;49;00m():
+-  19 |         \x1b[34mpass\x1b[39;49;00m
++  13 | \x1b[34mdef\x1b[39;49;00m \x1b[32mbar\x1b[39;49;00m():\x1b[37m\x1b[39;49;00m
++  14 |     x = \x1b[34m1\x1b[39;49;00m\x1b[37m\x1b[39;49;00m
++  15 |     \x1b[36mstr\x1b[39;49;00m(x)\x1b[37m\x1b[39;49;00m
++  17 |     \x1b[90m@deco\x1b[39;49;00m\x1b[37m\x1b[39;49;00m
++  18 |     \x1b[34mdef\x1b[39;49;00m \x1b[32mfoo\x1b[39;49;00m():\x1b[37m\x1b[39;49;00m
++  19 |         \x1b[34mpass\x1b[39;49;00m\x1b[37m\x1b[39;49;00m
+ -----
+-  25 | \x1b[34mdef\x1b[39;49;00m \x1b[32mdeco\x1b[39;49;00m(f):
+-  26 |     f.result = print_stack()
+-  27 |     \x1b[34mreturn\x1b[39;49;00m f
++  25 | \x1b[34mdef\x1b[39;49;00m \x1b[32mdeco\x1b[39;49;00m(f):\x1b[37m\x1b[39;49;00m
++  26 |     f.result = print_stack()\x1b[37m\x1b[39;49;00m
++  27 |     \x1b[34mreturn\x1b[39;49;00m f\x1b[37m\x1b[39;49;00m
+ -----
+ 
+ ====================
+ 
+ TerminalFormatter <class \'stack_data.core.style_with_executing_node.<locals>.NewStyle\'>:
+ 
+-  13 | \x1b[34mdef\x1b[39;49;00m \x1b[32mbar\x1b[39;49;00m():
+-  14 |     x = \x1b[34m1\x1b[39;49;00m
+-  15 |     \x1b[36mstr\x1b[39;49;00m(x)
+-  17 |     \x1b[90m@deco\x1b[39;49;00m
+-  18 |     \x1b[34mdef\x1b[39;49;00m \x1b[32mfoo\x1b[39;49;00m():
+-  19 |         \x1b[34mpass\x1b[39;49;00m
++  13 | \x1b[34mdef\x1b[39;49;00m \x1b[32mbar\x1b[39;49;00m():\x1b[37m\x1b[39;49;00m
++  14 |     x = \x1b[34m1\x1b[39;49;00m\x1b[37m\x1b[39;49;00m
++  15 |     \x1b[36mstr\x1b[39;49;00m(x)\x1b[37m\x1b[39;49;00m
++  17 |     \x1b[90m@deco\x1b[39;49;00m\x1b[37m\x1b[39;49;00m
++  18 |     \x1b[34mdef\x1b[39;49;00m \x1b[32mfoo\x1b[39;49;00m():\x1b[37m\x1b[39;49;00m
++  19 |         \x1b[34mpass\x1b[39;49;00m\x1b[37m\x1b[39;49;00m
+ -----
+-  25 | \x1b[34mdef\x1b[39;49;00m \x1b[32mdeco\x1b[39;49;00m(f):
+-  26 |     f.result = print_stack()
+-  27 |     \x1b[34mreturn\x1b[39;49;00m f
++  25 | \x1b[34mdef\x1b[39;49;00m \x1b[32mdeco\x1b[39;49;00m(f):\x1b[37m\x1b[39;49;00m
++  26 |     f.result = print_stack()\x1b[37m\x1b[39;49;00m
++  27 |     \x1b[34mreturn\x1b[39;49;00m f\x1b[37m\x1b[39;49;00m
+ -----
+ 
+ ====================
+@@ -753,9 +753,9 @@ def test_pygments_example():
+   13 | <span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+   14 |     <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+   15 |     <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+-  17 | <span class=" -ExecutingNode">    </span><span class="nd nd-ExecutingNode">@deco</span><span class=" -ExecutingNode"></span>
+-  18 | <span class=" -ExecutingNode">    </span><span class="k k-ExecutingNode">def</span><span class=" -ExecutingNode"> </span><span class="nf nf-ExecutingNode">foo</span><span class="p p-ExecutingNode">():</span><span class=" -ExecutingNode"></span>
+-  19 | <span class=" -ExecutingNode">        </span><span class="k k-ExecutingNode">pass</span><span class=" -ExecutingNode"></span>
++  17 | <span class=" -ExecutingNode">    </span><span class="nd nd-ExecutingNode">@deco</span>
++  18 | <span class=" -ExecutingNode">    </span><span class="k k-ExecutingNode">def</span><span class=" -ExecutingNode"> </span><span class="nf nf-ExecutingNode">foo</span><span class="p p-ExecutingNode">():</span>
++  19 | <span class=" -ExecutingNode">        </span><span class="k k-ExecutingNode">pass</span>
+ -----
+   25 | <span class="k">def</span> <span class="nf">deco</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+   26 |     <span class="n">f</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n n-ExecutingNode">print_stack</span><span class="p p-ExecutingNode">()</span>
+

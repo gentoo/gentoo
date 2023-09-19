@@ -1,0 +1,23 @@
+From 8a4be2142b37a6ab4b6b8a3f38a07f2b06752acf Mon Sep 17 00:00:00 2001
+From: Daniel Leidert <dleidert@debian.org>
+Date: Mon, 22 Nov 2021 01:35:53 +0100
+Subject: [PATCH] Relax error message on test a bit
+
+---
+ test/partial_mock_test.rb | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/test/partial_mock_test.rb b/test/partial_mock_test.rb
+index 065ecb5..3564db3 100644
+--- a/test/partial_mock_test.rb
++++ b/test/partial_mock_test.rb
+@@ -634,7 +634,8 @@ def test_partial_mocks_leaves_NoMethodError_exceptions_raised_by_the_original_me
+     exception = assert_raises(NameError) do
+         obj.mocked_method
+     end
+-    assert_equal "undefined method `does_not_exist' for #{obj}", exception.message
++    assert(/undefined method `does_not_exist' for #<#<Class:/ === exception.message, 
++        "expected #{exception.message} to match /undefined method `does_not_exist' for #<#<Class:/")
+   end
+ 
+   def test_it_checks_whether_mocks_are_forbidden_before_forwarding_the_call

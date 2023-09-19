@@ -1,0 +1,372 @@
+From 30af0e2edbf061b71bed9536d826894449f0390d Mon Sep 17 00:00:00 2001
+From: Nils Philippsen <nils@redhat.com>
+Date: Mon, 23 Sep 2013 16:11:31 +0200
+Subject: [PATCH] patch: lcms2
+
+Squashed commit of the following:
+
+commit f975accf7e1a08438b63580ea848457d373200f5
+Author: Nils Philippsen <nils@redhat.com>
+Date:   Mon Sep 23 14:53:45 2013 +0200
+
+    Add support for lcms 2.x.
+---
+ configure.in        | 22 ++++++++++++++----
+ include/config.h.in |  8 ++++++-
+ src/xsane-preview.c |  6 +++--
+ src/xsane-save.c    | 38 ++++++++++++++++++++++++++-----
+ src/xsane-viewer.c  | 65 ++++++++++++++++++++++++++++++++++++++++++++++++++---
+ src/xsane.h         |  8 ++++++-
+ 6 files changed, 130 insertions(+), 17 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index df7b114..3659c97 100644
+--- a/configure.in
++++ b/configure.in
+@@ -130,7 +130,17 @@ if test "${USE_TIFF}" = "yes"; then
+ fi
+ 
+ if test "${USE_LCMS}" = "yes"; then
+-  AC_CHECK_LIB(lcms, cmsOpenProfileFromFile)
++  AC_SEARCH_LIBS(cmsOpenProfileFromFile, [lcms2 lcms])
++  if test "${ac_cv_search_cmsOpenProfileFromFile}" != "no"; then
++    AC_DEFINE(HAVE_LIBLCMS, 1, [Define if LCMS is to be used.])
++  fi
++  if test "${ac_cv_search_cmsOpenProfileFromFile}" = "-llcms2"; then
++    AC_DEFINE(HAVE_LIBLCMS2, 1, [Define if you have liblcms2.])
++  else
++    if test "${ac_cv_search_cmsOpenProfileFromFile}" = "-llcms"; then
++      AC_DEFINE(HAVE_LIBLCMS1, 1, [Define if you have liblcms.])
++    fi
++  fi
+ fi
+ 
+ dnl Checks for library functions.
+@@ -294,10 +304,14 @@ else
+   echo "* - PNG  support deactivated                                   *"
+ fi
+ 
+-if test "${ac_cv_lib_lcms_cmsOpenProfileFromFile}" = "yes"; then
+-  echo "* - LCMS (color management) support activated                  *"
++if test "${ac_cv_search_cmsOpenProfileFromFile}" = "-llcms2"; then
++  echo "* - LCMS (color management) support activated (lcms2)          *"
+ else
+-  echo "* - LCMS (color management) support deactivated                *"
++  if test "${ac_cv_search_cmsOpenProfileFromFile}" = "-llcms"; then
++    echo "* - LCMS (color management) support activated (lcms)           *"
++  else
++    echo "* - LCMS (color management) support deactivated                *"
++  fi
+ fi
+ 
+ echo "*                                                              *"
+diff --git a/include/config.h.in b/include/config.h.in
+index ecc9637..f9a3e40 100755
+--- a/include/config.h.in
++++ b/include/config.h.in
+@@ -290,9 +290,15 @@
+ /* Define if you have libtiff.  */
+ #undef HAVE_LIBTIFF
+ 
+-/* Define if you have liblcms.  */
++/* Define if LCMS is to be used. */
+ #undef HAVE_LIBLCMS
+ 
++/* Define if you have liblcms. */
++#undef HAVE_LIBLCMS1
++
++/* Define if you have liblcms2. */
++#undef HAVE_LIBLCMS2
++
+ #ifndef HAVE_STRNCASECMP
+   /* OS/2 needs this */
+ # define strncasecmp(a, b, c) strnicmp(a, b, c)
+diff --git a/src/xsane-preview.c b/src/xsane-preview.c
+index 6327ca7..6eaf687 100644
+--- a/src/xsane-preview.c
++++ b/src/xsane-preview.c
+@@ -6346,8 +6346,8 @@ int preview_do_color_correction(Preview *p)
+  cmsHPROFILE hOutProfile = NULL;
+  cmsHPROFILE hProofProfile = NULL;
+  cmsHTRANSFORM hTransform = NULL;
+- DWORD input_format, output_format;
+- DWORD cms_flags = 0;
++ cmsUInt32Number input_format, output_format;
++ cmsUInt32Number cms_flags = 0;
+  int proof = 0;
+  char *cms_proof_icm_profile = NULL;
+  int linesize = 0;
+@@ -6355,7 +6355,9 @@ int preview_do_color_correction(Preview *p)
+ 
+   DBG(DBG_proc, "preview_do_color_correction\n");
+ 
++#ifdef HAVE_LIBLCMS1
+   cmsErrorAction(LCMS_ERROR_SHOW);
++#endif
+ 
+   if (preferences.cms_bpc)
+   {
+diff --git a/src/xsane-save.c b/src/xsane-save.c
+index 75e0a63..2d0e44b 100644
+--- a/src/xsane-save.c
++++ b/src/xsane-save.c
+@@ -832,9 +832,9 @@ cmsHTRANSFORM xsane_create_cms_transform(Image_info *image_info, int cms_functio
+  cmsHPROFILE hInProfile = NULL;
+  cmsHPROFILE hOutProfile = NULL;
+  cmsHTRANSFORM hTransform = NULL;
+- DWORD cms_input_format;
+- DWORD cms_output_format;
+- DWORD cms_flags = 0;
++ cmsUInt32Number cms_input_format;
++ cmsUInt32Number cms_output_format;
++ cmsUInt32Number cms_flags = 0;
+ 
+   if (cms_function == XSANE_CMS_FUNCTION_EMBED_SCANNER_ICM_PROFILE)
+   {
+@@ -843,7 +843,9 @@ cmsHTRANSFORM xsane_create_cms_transform(Image_info *image_info, int cms_functio
+ 
+   DBG(DBG_info, "Prepare CMS transform\n");
+ 
++#ifdef HAVE_LIBLCMS1
+   cmsErrorAction(LCMS_ERROR_SHOW);
++#endif
+ 
+   if (cms_bpc)
+   {
+@@ -890,10 +892,18 @@ cmsHTRANSFORM xsane_create_cms_transform(Image_info *image_info, int cms_functio
+     if (image_info->channels == 1) /* == 1 (grayscale) */
+     {
+ #if 1 /* xxx oli */
++# ifdef HAVE_LIBLCMS2
++     cmsToneCurve *Gamma = cmsBuildGamma(NULL, 2.2);
++# else
+      LPGAMMATABLE Gamma = cmsBuildGamma(256, 2.2);
++# endif
+ 
+       hOutProfile = cmsCreateGrayProfile(cmsD50_xyY(), Gamma);
++# ifdef HAVE_LIBLCMS2
++      cmsFreeToneCurve(Gamma);
++# else
+       cmsFreeGamma(Gamma);
++# endif
+ #endif
+     }
+     else
+@@ -2896,7 +2906,11 @@ static int xsane_write_CSA(FILE *outfile, char *input_profile, int intent)
+     return -1;
+   }
+ 
++#ifdef HAVE_LIBLCMS2
++  n = cmsGetPostScriptCSA(NULL, hProfile, intent, 0, NULL, 0);
++#else
+   n = cmsGetPostScriptCSA(hProfile, intent, NULL, 0);
++#endif
+   if (n == 0)
+   {
+     return -2;
+@@ -2908,7 +2922,11 @@ static int xsane_write_CSA(FILE *outfile, char *input_profile, int intent)
+     return -3;
+   }
+ 
++#ifdef HAVE_LIBLCMS2
++  cmsGetPostScriptCSA(NULL, hProfile, intent, 0, buffer, n);
++#else
+   cmsGetPostScriptCSA(hProfile, intent, buffer, n);
++#endif
+   buffer[n] = 0;
+ 
+   fprintf(outfile, "%s", buffer);
+@@ -2927,7 +2945,7 @@ static int xsane_write_CRD(FILE *outfile, char *output_profile, int intent, int
+  cmsHPROFILE hProfile;
+  size_t n;
+  char* buffer;
+- DWORD flags = cmsFLAGS_NODEFAULTRESOURCEDEF;
++ cmsUInt32Number flags = cmsFLAGS_NODEFAULTRESOURCEDEF;
+ 
+   hProfile = cmsOpenProfileFromFile(output_profile, "r");
+   if (!hProfile)
+@@ -2940,7 +2958,11 @@ static int xsane_write_CRD(FILE *outfile, char *output_profile, int intent, int
+     flags |= cmsFLAGS_BLACKPOINTCOMPENSATION;
+   }
+ 
++#ifdef HAVE_LIBLCMS2
++  n = cmsGetPostScriptCRD(NULL, hProfile, intent, flags, NULL, 0);
++#else
+   n = cmsGetPostScriptCRDEx(hProfile, intent, flags, NULL, 0);
++#endif
+   if (n == 0)
+   {
+     return -2;
+@@ -2952,7 +2974,11 @@ static int xsane_write_CRD(FILE *outfile, char *output_profile, int intent, int
+     return -3;
+   }
+ 
++#ifdef HAVE_LIBLCMS2
++  cmsGetPostScriptCRD(NULL, hProfile, intent, flags, buffer, n);
++#else
+   cmsGetPostScriptCRDEx(hProfile, intent, flags, buffer, n);
++#endif
+   buffer[n] = 0;
+ 
+   fprintf(outfile, "%s", buffer);
+@@ -4349,7 +4375,7 @@ static void xsane_jpeg_embed_scanner_icm_profile(j_compress_ptr cinfo_ptr, const
+ {
+  FILE *icm_profile;
+  size_t size, embed_len;
+- LPBYTE embed_buffer;
++ cmsUInt8Number *embed_buffer;
+ 
+   DBG(DBG_proc, "xsane_jpeg_embed_scanner_icm_profile(%s)\n", icm_filename);
+ 
+@@ -4363,7 +4389,7 @@ static void xsane_jpeg_embed_scanner_icm_profile(j_compress_ptr cinfo_ptr, const
+   size = ftell(icm_profile);
+   fseek(icm_profile, 0, SEEK_SET);
+ 
+-  embed_buffer = (LPBYTE) malloc(size + 1);
++  embed_buffer = (cmsUInt8Number *) malloc(size + 1);
+   if (embed_buffer)
+   {
+     embed_len = fread(embed_buffer, 1, size, icm_profile);
+diff --git a/src/xsane-viewer.c b/src/xsane-viewer.c
+index 69a444d..844c077 100644
+--- a/src/xsane-viewer.c
++++ b/src/xsane-viewer.c
+@@ -1795,6 +1795,9 @@ static void xsane_viewer_set_cms_gamut_alarm_color_callback(GtkWidget *widget, g
+ {
+  Viewer *v = (Viewer *) data;
+  int val;
++#ifdef HAVE_LIBLCMS2
++ cmsUInt16Number alarm_codes[cmsMAXCHANNELS];
++#endif
+ 
+   g_signal_handlers_block_by_func(GTK_OBJECT(v->cms_gamut_alarm_color_widget[0]), (GtkSignalFunc) xsane_viewer_set_cms_gamut_alarm_color_callback, v);
+   g_signal_handlers_block_by_func(GTK_OBJECT(v->cms_gamut_alarm_color_widget[1]), (GtkSignalFunc) xsane_viewer_set_cms_gamut_alarm_color_callback, v);
+@@ -1811,6 +1814,49 @@ static void xsane_viewer_set_cms_gamut_alarm_color_callback(GtkWidget *widget, g
+   v->cms_gamut_alarm_color = val;
+   gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(v->cms_gamut_alarm_color_widget[v->cms_gamut_alarm_color]), TRUE);
+ 
++#ifdef HAVE_LIBLCMS2
++  switch(v->cms_gamut_alarm_color)
++  {
++    default:
++    case 0: /* black */
++      alarm_codes[0] = (cmsUInt16Number) 0;
++      alarm_codes[1] = (cmsUInt16Number) 0;
++      alarm_codes[2] = (cmsUInt16Number) 0;
++     break;
++
++    case 1: /* gray */
++      alarm_codes[0] = (cmsUInt16Number) 128;
++      alarm_codes[1] = (cmsUInt16Number) 128;
++      alarm_codes[2] = (cmsUInt16Number) 128;
++     break;
++
++    case 2: /* white */
++      alarm_codes[0] = (cmsUInt16Number) 255;
++      alarm_codes[1] = (cmsUInt16Number) 255;
++      alarm_codes[2] = (cmsUInt16Number) 255;
++     break;
++
++    case 3: /* red */
++      alarm_codes[0] = (cmsUInt16Number) 255;
++      alarm_codes[1] = (cmsUInt16Number) 0;
++      alarm_codes[2] = (cmsUInt16Number) 0;
++     break;
++
++    case 4: /* green */
++      alarm_codes[0] = (cmsUInt16Number) 0;
++      alarm_codes[1] = (cmsUInt16Number) 255;
++      alarm_codes[2] = (cmsUInt16Number) 0;
++     break;
++
++    case 5: /* blue */
++      alarm_codes[0] = (cmsUInt16Number) 0;
++      alarm_codes[1] = (cmsUInt16Number) 0;
++      alarm_codes[2] = (cmsUInt16Number) 255;
++     break;
++  }
++
++  cmsSetAlarmCodes(alarm_codes);
++#else
+   switch(v->cms_gamut_alarm_color)
+   {
+     default:
+@@ -1838,6 +1884,7 @@ static void xsane_viewer_set_cms_gamut_alarm_color_callback(GtkWidget *widget, g
+       cmsSetAlarmCodes(0, 0, 255);
+      break;
+   }
++#endif
+ 
+   g_signal_handlers_unblock_by_func(GTK_OBJECT(v->cms_gamut_alarm_color_widget[0]), (GtkSignalFunc) xsane_viewer_set_cms_gamut_alarm_color_callback, v);
+   g_signal_handlers_unblock_by_func(GTK_OBJECT(v->cms_gamut_alarm_color_widget[1]), (GtkSignalFunc) xsane_viewer_set_cms_gamut_alarm_color_callback, v);
+@@ -2172,9 +2219,9 @@ static int xsane_viewer_read_image(Viewer *v)
+  cmsHTRANSFORM hTransform = NULL;
+  int proof = 0;
+  char *cms_proof_icm_profile = NULL;
+- DWORD cms_input_format;
+- DWORD cms_output_format;
+- DWORD cms_flags = 0;
++ cmsUInt32Number cms_input_format;
++ cmsUInt32Number cms_output_format;
++ cmsUInt32Number cms_flags = 0;
+ #endif
+ 
+   /* open imagefile */
+@@ -2203,7 +2250,9 @@ static int xsane_viewer_read_image(Viewer *v)
+ 
+   if ((v->enable_color_management) && (v->cms_enable))
+   {
++#ifdef HAVE_LIBLCMS1
+     cmsErrorAction(LCMS_ERROR_SHOW);
++#endif
+ 
+     if (v->cms_bpc)
+     {
+@@ -2801,6 +2850,9 @@ Viewer *xsane_viewer_new(char *filename, char *selection_filetype, int allow_red
+  GtkWidget *scrolled_window;
+  GtkWidget *zoom_option_menu, *zoom_menu, *zoom_menu_item;
+  int i, selection;
++#ifdef HAVE_LIBLCMS2
++ cmsUInt16Number alarm_codes[cmsMAXCHANNELS];
++#endif
+ 
+   DBG(DBG_proc, "viewer_new(%s)\n", filename);
+ 
+@@ -2830,8 +2882,15 @@ Viewer *xsane_viewer_new(char *filename, char *selection_filetype, int allow_red
+   v->cms_proofing_intent = INTENT_ABSOLUTE_COLORIMETRIC;
+   v->cms_gamut_check = 0;
+   v->cms_gamut_alarm_color = 3; /* red */
++#ifdef HAVE_LIBLCMS2
++  alarm_codes[0] = (cmsUInt16Number) 255;
++  alarm_codes[1] = (cmsUInt16Number) 0;
++  alarm_codes[2] = (cmsUInt16Number) 0;
++  cmsSetAlarmCodes(alarm_codes);
++#else
+   cmsSetAlarmCodes(255, 0, 0);
+ #endif
++#endif
+   if (selection_filetype)
+   {
+     v->selection_filetype = strdup(selection_filetype);
+diff --git a/src/xsane.h b/src/xsane.h
+index 4067d61..adcc0ed 100644
+--- a/src/xsane.h
++++ b/src/xsane.h
+@@ -70,7 +70,13 @@
+ #include <gtk/gtk.h>
+ 
+ #ifdef HAVE_LIBLCMS
+-# include "lcms.h"
++# ifdef HAVE_LIBLCMS2
++#  include "lcms2.h"
++# else
++#  include "lcms.h"
++typedef BYTE cmsUInt8Number;
++typedef DWORD cmsUInt32Number;
++# endif
+ #else
+ # define cmsHTRANSFORM void *
+ #endif
+-- 
+1.8.3.1
+

@@ -1,0 +1,332 @@
+Original commits from upstream applied to 4.94.2 release tarball
+
+From a5d79c99f4948d9fd288a1bfaca3a44cf2caaa32 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Wed, 1 Dec 2021 17:36:18 +0000
+Subject: [PATCH] OpenSSL: use nondeprecated D-H functions under 3.0.0.
+
+From c6a290f4d8df3734b3cdc2232b4334ff8386c1da Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Wed, 1 Dec 2021 18:52:21 +0000
+Subject: [PATCH] OpenSSL: tidy DH and ECDH param setup Testsuite: expand DH
+ testcase
+
+From ff7829398d74e67f1c1f40339a772fd76708e5ac Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaroslav=20=C5=A0karvada?= <jskarvad@redhat.com>
+Date: Sat, 27 Nov 2021 21:07:15 +0000
+Subject: [PATCH] Fix build for OpenSSL 3.0.0 .  Bug 2810
+
+From ca4014de81e6aa367aa0a54c49b4c3d4b137814c Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Sun, 1 Jan 2023 12:18:38 +0000
+Subject: [PATCH] OpenSSL: fix tls_eccurve setting explicit curve/group.  Bug
+ 2954
+
+From 7fa5764c203f2f4a900898a79ed02d674075313f Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Mon, 2 Jan 2023 15:04:14 +0000
+Subject: [PATCH] OpenSSL: Fix tls_eccurve on earlier versions than 3.0.0.  Bug
+ 2954
+
+Broken-by: ca4014de81e6
+
+--- a/src/tls-openssl.c
++++ b/src/tls-openssl.c
+@@ -227,12 +227,16 @@
+   { US"no_tlsv1", SSL_OP_NO_TLSv1 },
+ #endif
+ #ifdef SSL_OP_NO_TLSv1_1
+-#if SSL_OP_NO_TLSv1_1 == 0x00000400L
++# if OPENSSL_VERSION_NUMBER < 0x30000000L
++#  if SSL_OP_NO_TLSv1_1 == 0x00000400L
+   /* Error in chosen value in 1.0.1a; see first item in CHANGES for 1.0.1b */
+-#warning OpenSSL 1.0.1a uses a bad value for SSL_OP_NO_TLSv1_1, ignoring
+-#else
++#   warning OpenSSL 1.0.1a uses a bad value for SSL_OP_NO_TLSv1_1, ignoring
++#   define NO_SSL_OP_NO_TLSv1_1
++#  endif
++# endif
++# ifndef NO_SSL_OP_NO_TLSv1_1
+   { US"no_tlsv1_1", SSL_OP_NO_TLSv1_1 },
+-#endif
++# endif
+ #endif
+ #ifdef SSL_OP_NO_TLSv1_2
+   { US"no_tlsv1_2", SSL_OP_NO_TLSv1_2 },
+@@ -1017,23 +1021,27 @@
+ *************************************************/
+ 
+ /* If dhparam is set, expand it, and load up the parameters for DH encryption.
++Server only.
+ 
+ Arguments:
+   sctx      The current SSL CTX (inbound or outbound)
+   dhparam   DH parameter file or fixed parameter identity string
+-  host      connected host, if client; NULL if server
+   errstr    error string pointer
+ 
+ Returns:    TRUE if OK (nothing to set up, or setup worked)
+ */
+ 
+ static BOOL
+-init_dh(SSL_CTX *sctx, uschar *dhparam, const host_item *host, uschar ** errstr)
++init_dh(SSL_CTX * sctx, uschar * dhparam, uschar ** errstr)
+ {
+-BIO *bio;
+-DH *dh;
+-uschar *dhexpanded;
+-const char *pem;
++BIO * bio;
++#if OPENSSL_VERSION_NUMBER < 0x30000000L
++DH * dh;
++#else
++EVP_PKEY * pkey;
++#endif
++uschar * dhexpanded;
++const char * pem;
+ int dh_bitsize;
+ 
+ if (!expand_check(dhparam, US"tls_dhparam", &dhexpanded, errstr))
+@@ -1046,7 +1054,7 @@
+   if (!(bio = BIO_new_file(CS dhexpanded, "r")))
+     {
+     tls_error(string_sprintf("could not read dhparams file %s", dhexpanded),
+-          host, US strerror(errno), errstr);
++          NULL, US strerror(errno), errstr);
+     return FALSE;
+     }
+   }
+@@ -1061,17 +1069,23 @@
+   if (!(pem = std_dh_prime_named(dhexpanded)))
+     {
+     tls_error(string_sprintf("Unknown standard DH prime \"%s\"", dhexpanded),
+-        host, US strerror(errno), errstr);
++        NULL, US strerror(errno), errstr);
+     return FALSE;
+     }
+   bio = BIO_new_mem_buf(CS pem, -1);
+   }
+ 
+-if (!(dh = PEM_read_bio_DHparams(bio, NULL, NULL, NULL)))
++if (!(
++#if OPENSSL_VERSION_NUMBER < 0x30000000L
++      dh = PEM_read_bio_DHparams(bio, NULL, NULL, NULL)
++#else
++      pkey = PEM_read_bio_Parameters_ex(bio, NULL, NULL, NULL)
++#endif
++   ) )
+   {
+   BIO_free(bio);
+   tls_error(string_sprintf("Could not read tls_dhparams \"%s\"", dhexpanded),
+-      host, NULL, errstr);
++      NULL, NULL, errstr);
+   return FALSE;
+   }
+ 
+@@ -1081,33 +1095,54 @@
+  * If someone wants to dance at the edge, then they can raise the limit or use
+  * current libraries. */
+-#ifdef EXIM_HAVE_OPENSSL_DH_BITS
++#if OPENSSL_VERSION_NUMBER < 0x30000000L
++# ifdef EXIM_HAVE_OPENSSL_DH_BITS
+ /* Added in commit 26c79d5641d; `git describe --contains` says OpenSSL_1_1_0-pre1~1022
+  * This predates OpenSSL_1_1_0 (before a, b, ...) so is in all 1.1.0 */
+ dh_bitsize = DH_bits(dh);
+-#else
++# else
+ dh_bitsize = 8 * DH_size(dh);
++# endif
++#else	/* 3.0.0 + */
++dh_bitsize = EVP_PKEY_get_bits(pkey);
+ #endif
+ 
+-/* Even if it is larger, we silently return success rather than cause things
+- * to fail out, so that a too-large DH will not knock out all TLS; it's a
+- * debatable choice. */
+-if (dh_bitsize > tls_dh_max_bits)
++/* Even if it is larger, we silently return success rather than cause things to
++fail out, so that a too-large DH will not knock out all TLS; it's a debatable
++choice.  Likewise for a failing attempt to set one. */
++
++if (dh_bitsize <= tls_dh_max_bits)
+   {
+-  DEBUG(D_tls)
+-    debug_printf("dhparams file %d bits, is > tls_dh_max_bits limit of %d\n",
+-        dh_bitsize, tls_dh_max_bits);
++  if (
++#if OPENSSL_VERSION_NUMBER < 0x30000000L
++      SSL_CTX_set_tmp_dh(sctx, dh)
++#else
++      SSL_CTX_set0_tmp_dh_pkey(sctx, pkey)
++#endif
++      == 0)
++    {
++    ERR_error_string_n(ERR_get_error(), ssl_errstring, sizeof(ssl_errstring));
++    log_write(0, LOG_MAIN|LOG_PANIC, "TLS error (D-H param setting '%s'): %s",
++	dhexpanded ? dhexpanded : US"default", ssl_errstring);
++#if OPENSSL_VERSION_NUMBER >= 0x30000000L
++    /* EVP_PKEY_free(pkey);  crashes */
++#endif
++    }
++  else
++    DEBUG(D_tls)
++      debug_printf("Diffie-Hellman initialized from %s with %d-bit prime\n",
++	dhexpanded ? dhexpanded : US"default", dh_bitsize);
+   }
+ else
+-  {
+-  SSL_CTX_set_tmp_dh(sctx, dh);
+   DEBUG(D_tls)
+-    debug_printf("Diffie-Hellman initialized from %s with %d-bit prime\n",
+-      dhexpanded ? dhexpanded : US"default", dh_bitsize);
+-  }
++    debug_printf("dhparams '%s' %d bits, is > tls_dh_max_bits limit of %d\n",
++	dhexpanded ? dhexpanded : US"default", dh_bitsize, tls_dh_max_bits);
+ 
++#if OPENSSL_VERSION_NUMBER < 0x30000000L
+ DH_free(dh);
+-BIO_free(bio);
++#endif
++/* The EVP_PKEY ownership stays with the ctx; do not free it */
+ 
++BIO_free(bio);
+ return TRUE;
+ }
+ 
+@@ -1118,7 +1154,7 @@
+ *               Initialize for ECDH              *
+ *************************************************/
+ 
+-/* Load parameters for ECDH encryption.
++/* Load parameters for ECDH encryption.  Server only.
+ 
+ For now, we stick to NIST P-256 because: it's simple and easy to configure;
+ it avoids any patent issues that might bite redistributors; despite events in
+@@ -1136,37 +1172,40 @@
+ 
+ Arguments:
+   sctx      The current SSL CTX (inbound or outbound)
+-  host      connected host, if client; NULL if server
+   errstr    error string pointer
+ 
+ Returns:    TRUE if OK (nothing to set up, or setup worked)
+ */
+ 
+ static BOOL
+-init_ecdh(SSL_CTX * sctx, host_item * host, uschar ** errstr)
++init_ecdh(SSL_CTX * sctx, uschar ** errstr)
+ {
+ #ifdef OPENSSL_NO_ECDH
+ return TRUE;
+ #else
+ 
+-EC_KEY * ecdh;
+ uschar * exp_curve;
+-int nid;
+-BOOL rv;
+-
+-if (host)	/* No ECDH setup for clients, only for servers */
+-  return TRUE;
++int nid, rc;
+ 
+ # ifndef EXIM_HAVE_ECDH
+ DEBUG(D_tls)
+-  debug_printf("No OpenSSL API to define ECDH parameters, skipping\n");
++  debug_printf(" No OpenSSL API to define ECDH parameters, skipping\n");
+ return TRUE;
+ # else
+ 
+ if (!expand_check(tls_eccurve, US"tls_eccurve", &exp_curve, errstr))
+   return FALSE;
++
++/* Is the option deliberately empty? */
++
+ if (!exp_curve || !*exp_curve)
++  {
++#if OPENSSL_VERSION_NUMBER >= 0x10002000L
++  DEBUG(D_tls) debug_printf( " ECDH OpenSSL 1.0.2+: clearing curves list\n");
++  (void) SSL_CTX_set1_curves(sctx, &nid, 0);
++#endif
+   return TRUE;
++  }
+ 
+ /* "auto" needs to be handled carefully.
+  * OpenSSL <  1.0.2: we do not select anything, but fallback to prime256v1
+@@ -1202,27 +1241,41 @@
+ #   endif
+    )
+   {
+-  tls_error(string_sprintf("Unknown curve name tls_eccurve '%s'", exp_curve),
+-    host, NULL, errstr);
++  uschar * s = string_sprintf("Unknown curve name tls_eccurve '%s'", exp_curve);
++  DEBUG(D_tls) debug_printf("TLS error '%s'\n", s);
++  if (errstr) *errstr = s;
+   return FALSE;
+   }
+ 
+-if (!(ecdh = EC_KEY_new_by_curve_name(nid)))
+-  {
+-  tls_error(US"Unable to create ec curve", host, NULL, errstr);
+-  return FALSE;
+-  }
++# if OPENSSL_VERSION_NUMBER < 0x30000000L
++ {
++  EC_KEY * ecdh;
++  if (!(ecdh = EC_KEY_new_by_curve_name(nid)))
++    {
++    tls_error(US"Unable to create ec curve", NULL, NULL, errstr);
++    return FALSE;
++    }
+ 
+-/* The "tmp" in the name here refers to setting a temporary key
+-not to the stability of the interface. */
++  /* The "tmp" in the name here refers to setting a temporary key
++  not to the stability of the interface. */
+ 
+-if ((rv = SSL_CTX_set_tmp_ecdh(sctx, ecdh) == 0))
+-  tls_error(string_sprintf("Error enabling '%s' curve", exp_curve), host, NULL, errstr);
++  if ((rc = SSL_CTX_set_tmp_ecdh(sctx, ecdh)) == 0)
++    tls_error(string_sprintf("Error enabling '%s' curve", exp_curve), NULL, NULL, errstr);
++  else
++    DEBUG(D_tls) debug_printf(" ECDH: enabled '%s' curve\n", exp_curve);
++  EC_KEY_free(ecdh);
++ }
++
++#else	/* v 3.0.0 + */
++
++if ((rc = SSL_CTX_set1_groups(sctx, &nid, 1)) == 0)
++  tls_error(string_sprintf("Error enabling '%s' group", exp_curve), NULL, NULL, errstr);
+ else
+-  DEBUG(D_tls) debug_printf("ECDH: enabled '%s' curve\n", exp_curve);
++  DEBUG(D_tls) debug_printf(" ECDH: enabled '%s' group\n", exp_curve);
++
++#endif
+ 
+-EC_KEY_free(ecdh);
+-return !rv;
++return !!rc;
+ 
+ # endif	/*EXIM_HAVE_ECDH*/
+ #endif /*OPENSSL_NO_ECDH*/
+@@ -1727,8 +1780,8 @@
+ SSL_CTX_set_tlsext_servername_callback(server_sni, tls_servername_cb);
+ SSL_CTX_set_tlsext_servername_arg(server_sni, cbinfo);
+ 
+-if (  !init_dh(server_sni, cbinfo->dhparam, NULL, &dummy_errstr)
+-   || !init_ecdh(server_sni, NULL, &dummy_errstr)
++if (  !init_dh(server_sni, cbinfo->dhparam, &dummy_errstr)
++   || !init_ecdh(server_sni, &dummy_errstr)
+    )
+   goto bad;
+ 
+@@ -2213,8 +2266,8 @@
+ /* Initialize with DH parameters if supplied */
+ /* Initialize ECDH temp key parameter selection */
+ 
+-if (  !init_dh(ctx, dhparam, host, errstr)
+-   || !init_ecdh(ctx, host, errstr)
++if (  !init_dh(ctx, dhparam, errstr)
++   || !init_ecdh(ctx, errstr)
+    )
+   return DEFER;
+ 

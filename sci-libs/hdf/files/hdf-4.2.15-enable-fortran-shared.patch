@@ -1,0 +1,37 @@
+diff --git a/configure.ac b/configure.ac
+index 0014f85..5601a1c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -290,20 +290,6 @@ fi
+ ## Build static libraries by default. Furthermore, fortran shared libraries
+ ## are unsupported. Disallow a user from enabling both shared libraries and
+ ## fortran.
+-if test "X${enable_shared}" != "Xyes"; then
+-    enable_shared="no"
+-fi
+-
+-if test "X${enable_shared}" = "Xyes"; then
+-    if test "X${BUILD_FORTRAN}" = "Xyes"; then
+-        AC_MSG_ERROR([Cannot build shared fortran libraries. Please configure with --disable-fortran flag.])
+-    fi
+-fi
+-
+-AC_PROG_INSTALL
+-AC_PROG_LN_S
+-
+-AC_CHECK_PROGS([AR], [ar xar], [:], [$PATH])
+ 
+ AC_CHECK_PROGS([YACC], ['bison -y' byacc yacc], [none], [])
+ 
+@@ -948,11 +934,6 @@ done
+ ## ------------------------------------------------------------------------
+ ## Check to see if libtool has enabled shared libraries. Set a conditional
+ ## as some Makefiles will build based on availability of shared libraries.
+-if (./libtool --features | grep '^enable shared libraries' > /dev/null); then
+-  enable_shared=yes
+-else
+-  enable_shared=no
+-fi
+ 
+ ## ------------------------------------------------------------------------
+ ## Specify shared library extension the host machine should recognize.

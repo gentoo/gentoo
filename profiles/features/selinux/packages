@@ -1,0 +1,10 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# Base SELinux packages
+*sys-libs/libsepol
+*sys-libs/libselinux
+*sys-libs/libsemanage
+*sys-apps/checkpolicy
+*sys-apps/policycoreutils
+*sec-policy/selinux-base-policy

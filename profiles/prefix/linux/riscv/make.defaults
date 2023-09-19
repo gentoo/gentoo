@@ -1,0 +1,14 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="riscv"
+
+CHOST="riscv64-pc-linux-gnu"
+
+ACCEPT_KEYWORDS="~riscv"
+
+SYMLINK_LIB=""
+
+LIBDIR_lp64d="lib"
+
+LIBDIR_lp64="lib"

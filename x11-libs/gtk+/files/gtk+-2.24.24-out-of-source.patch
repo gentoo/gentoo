@@ -1,0 +1,33 @@
+From 9e0f33144aff8d792ab105927cf686eda0afd25e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 18 May 2014 10:50:05 +0200
+Subject: [PATCH] aliasfilecheck: check for sources both in builddir & srcdir.
+
+The $gtk_all_c_sources variable contains both supplied and generated
+sources. The former reside in $srcdir, the latter in the build directory
+(cwd).
+
+In order to handle both kinds properly, first try to find each source
+file in cwd, and then fallback to $srcdir. This makes it possible to use
+out-of-source builds, and guarantees that fresh-built source files will
+be used rather than pre-generated copies included in the distribution
+tarball.
+---
+ gtk/aliasfilescheck.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gtk/aliasfilescheck.sh b/gtk/aliasfilescheck.sh
+index 31b49d4..3636a82 100755
+--- a/gtk/aliasfilescheck.sh
++++ b/gtk/aliasfilescheck.sh
+@@ -6,6 +6,6 @@ if test "x$gtk_all_c_sources" = x; then
+ fi
+ 
+ grep 'IN_FILE' ${srcdir-.}/gtk.symbols | sed 's/.*(//;s/).*//' | grep __ | sort -u > expected-files
+-{ cd ${srcdir-.}; grep '^ *# *define __' $gtk_all_c_sources; } | sed 's/.*define //;s/ *$//' | sort > actual-files
++{ for f in $gtk_all_c_sources; do if test -f ${f}; then grep '^ *# *define __' ${f}; else grep '^ *# *define __' "${srcdir-.}"/${f}; fi; done } | sed 's/.*define //;s/ *$//' | sort > actual-files
+ 
+ diff expected-files actual-files && rm -f expected-files actual-files
+-- 
+1.9.3
+

@@ -1,0 +1,218 @@
+From 639005a81abf915e7b6450baacf40ede01121cb7 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Fri, 27 Jan 2023 06:40:05 -0800
+Subject: [PATCH] Disable things we don't want
+
+v2: Enable libglad to satisfy egl dependencies
+v3: Enable most of libutil to fix undefined references in es2gears
+---
+ meson.build                   | 13 +++----------
+ src/egl/opengl/meson.build    | 28 ---------------------------
+ src/egl/opengles2/meson.build |  5 -----
+ src/meson.build               |  2 --
+ src/util/gl_wrap.h            |  2 --
+ src/util/meson.build          |  7 +------
+ src/xdemos/meson.build        | 36 -----------------------------------
+ 7 files changed, 4 insertions(+), 89 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 3e39b5a2..6d064ef6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -87,16 +87,7 @@ endif
+ 
+ dep_threads = dependency('threads')
+ 
+-dep_glu = dependency('glu', required : false)
+-# GLU is part of OpenGL.Framework
+-if not dep_glu.found() and host_machine.system() != 'darwin'
+-  _glu_name = 'GLU'
+-  if host_machine.system() == 'windows'
+-    _glu_name = 'glu32'
+-  endif
+-  dep_glu = cc.find_library(_glu_name, has_headers: 'GL/glu.h',
+-    required : dep_x11.found())
+-endif
++dep_glu = disabler()
+ 
+ dep_glx = dependency('glx', required: false, disabler : true)
+ if not dep_glx.found()
+@@ -165,6 +156,8 @@ else
+   dep_glut = dependency('', required : false)
+ endif
+ 
++dep_glut = disabler()
++
+ if dep_glut.found() and (dep_glut.type_name() == 'internal' or
+    cc.has_function('glutInitContextProfile',
+                    dependencies: [dep_glut],
+diff --git a/src/egl/opengl/meson.build b/src/egl/opengl/meson.build
+index 9bca049c..e7122027 100644
+--- a/src/egl/opengl/meson.build
++++ b/src/egl/opengl/meson.build
+@@ -25,27 +25,6 @@ executable(
+   dependencies: [_deps, dep_glu, idep_eglut],
+   install: true
+ )
+-executable(
+-  'egltri', files('egltri.c'),
+-  dependencies: [_deps, dep_glu, idep_eglut],
+-  install: true
+-)
+-executable(
+-  'xeglgears', files('xeglgears.c'),
+-  dependencies: [_deps, dep_glu, dep_egl, dep_x11],
+-  install: true
+-)
+-executable(
+-  'xeglthreads', files('xeglthreads.c'),
+-  dependencies: [_deps, dep_x11],
+-  install: true
+-)
+-
+-executable(
+-  'eglkms', 'eglkms.c',
+-  dependencies: [_deps, dep_drm, dep_gbm, dep_egl],
+-  install: true
+-)
+ 
+ executable(
+   'eglinfo', 'eglinfo.c',
+@@ -53,10 +32,3 @@ executable(
+   include_directories: [inc_glad],
+   install: true
+ )
+-
+-executable(
+-  'peglgears', 'peglgears.c',
+-  dependencies: [dep_gl, dep_glu, dep_egl, dep_m, idep_util],
+-  install: true
+-)
+-
+diff --git a/src/egl/opengles2/meson.build b/src/egl/opengles2/meson.build
+index 86062cbd..729c0df6 100644
+--- a/src/egl/opengles2/meson.build
++++ b/src/egl/opengles2/meson.build
+@@ -29,11 +29,6 @@ executable(
+   dependencies: [dep_gles2, idep_eglut, idep_util],
+   install: true
+ )
+-executable(
+-  'es2tri', files('es2tri.c'),
+-  dependencies: [_deps_x11, dep_m],
+-  install: true
+-)
+ executable(
+   'texture_from_pixmap_glesv2', files('texture_from_pixmap_glesv2.c'),
+   dependencies: [_deps_x11, idep_util],
+diff --git a/src/meson.build b/src/meson.build
+index fd4a1673..cea622a6 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -57,5 +57,3 @@ endif
+ if host_machine.system() == 'windows'
+   subdir('wgl')
+ endif
+-
+-subdir('data')
+diff --git a/src/util/gl_wrap.h b/src/util/gl_wrap.h
+index b2ff9c8f..f482df5e 100644
+--- a/src/util/gl_wrap.h
++++ b/src/util/gl_wrap.h
+@@ -7,10 +7,8 @@
+ 
+ #ifdef __APPLE__
+ #  include <OpenGL/gl.h>
+-#  include <OpenGL/glu.h>
+ #else
+ #  include <GL/gl.h>
+-#  include <GL/glu.h>
+ #endif
+ 
+ #ifndef GLAPIENTRY
+diff --git a/src/util/meson.build b/src/util/meson.build
+index b4fe614f..e56b456e 100644
+--- a/src/util/meson.build
++++ b/src/util/meson.build
+@@ -22,17 +22,12 @@ inc_util = include_directories('.')
+ 
+ files_libutil = files(
+   'glinfo_common.c',
+-  'readtex.c',
+   'showbuffer.c',
+   'trackball.c',
+   'matrix.c',
+ )
+ 
+-_deps = [dep_glu, dep_m]
+-if dep_glut.found()
+-  files_libutil += files('shaderutil.c')
+-  _deps += dep_glut
+-endif
++_deps = [dep_m]
+ 
+ _libutil = static_library(
+   'util',
+diff --git a/src/xdemos/meson.build b/src/xdemos/meson.build
+index a569fde5..40007616 100644
+--- a/src/xdemos/meson.build
++++ b/src/xdemos/meson.build
+@@ -21,25 +21,7 @@
+ glx_deps = [dep_gl, dep_glx, dep_x11, dep_m]
+ 
+ progs = [
+-  'glsync',
+-  'glxdemo',
+   'glxgears',
+-  'glxgears_pixmap',
+-  'glxcontexts',
+-  'glxheads',
+-  'glxpixmap',
+-  'glxpbdemo',
+-  'glxsnoop',
+-  'glxswapcontrol',
+-  'manywin',
+-  'multictx',
+-  'offset',
+-  'overlay',
+-  'shape',
+-  'sharedtex',
+-  'texture_from_pixmap',
+-  'wincopy',
+-  'xfont',
+ ]
+ foreach p : progs
+   executable(
+@@ -56,23 +38,7 @@ executable(
+   install: true
+ )
+ 
+-executable(
+-  'xrotfontdemo',
+-  files('xrotfontdemo.c', 'xuserotfont.c'),
+-  dependencies: glx_deps,
+-  install: true
+-)
+-
+-_libpbutil = static_library(
+-  'pbutil',
+-  files('pbutil.c'),
+-  dependencies: glx_deps
+-)
+-
+ pbutil_progs = [
+-  'glxgears_fbconfig',
+-  'pbinfo',
+-  'pbdemo',
+ ]
+ foreach p : pbutil_progs
+   executable(
+@@ -84,8 +50,6 @@ foreach p : pbutil_progs
+ endforeach
+ 
+ thread_progs = [
+-  'glthreads',
+-  'sharedtex_mt',
+ ]
+ foreach p : thread_progs
+   executable(

@@ -1,0 +1,11 @@
+--- a/configure
++++ b/configure
+@@ -11,7 +11,7 @@
+ #compiler flags
+ common_cflags="-Wall"
+ devel_cflags="-g -Werror -fno-builtin"
+-optimization_cflags="-O3"
++optimization_cflags="${CXXFLAGS}"
+ release_cflags=$optimization_cflags
+ OFLAGS="-ansi"
+ cflags=$common_cflags

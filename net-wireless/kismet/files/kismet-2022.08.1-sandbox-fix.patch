@@ -1,0 +1,147 @@
+From 8264835a935de9c754c0ff28c632695103b2dc2f Mon Sep 17 00:00:00 2001
+From: Mike Kershaw / Dragorn <dragorn@kismetwireless.net>
+Date: Fri, 6 Jan 2023 15:22:52 -0500
+Subject: [PATCH] python: Merge patch from Rick Farina / Zero_Chaos to make
+ gentoo not complain about python build parameters
+
+---
+ capture_bt_geiger/Makefile.in        | 4 +++-
+ capture_freaklabs_zigbee/Makefile.in | 4 +++-
+ capture_proxy_adsb/Makefile.in       | 4 +++-
+ capture_sdr_rtl433/Makefile.in       | 4 +++-
+ capture_sdr_rtladsb/Makefile.in      | 4 +++-
+ capture_sdr_rtlamr/Makefile.in       | 4 +++-
+ 6 files changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/capture_bt_geiger/Makefile.in b/capture_bt_geiger/Makefile.in
+index 646069fed..4f644535b 100644
+--- a/capture_bt_geiger/Makefile.in
++++ b/capture_bt_geiger/Makefile.in
+@@ -2,6 +2,8 @@ KIS_SRC_DIR ?= ..
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
++DESTDIR ?= /
++
+ DATASOURCE_NAME := $(shell $(PYTHON) setup.py --name)
+ 
+ PROTOBUF_DIR = $(KIS_SRC_DIR)/protobuf_definitions
+@@ -19,7 +21,7 @@ $(DATASOURCE_NAME)/kismetexternal/%_pb2.py: $(PROTOBUF_DIR)/%.proto
+ 	sed -i -E 's/^import kismet_/from . import kismet_/' $@
+ 
+ install:
+-	$(PYTHON) setup.py install --root="/$(DESTDIR)" --prefix="$(prefix)"
++	$(PYTHON) setup.py install --root="$(DESTDIR)" --prefix="$(prefix)"
+ 
+ clean:
+ 	@-$(PYTHON) setup.py clean
+diff --git a/capture_freaklabs_zigbee/Makefile.in b/capture_freaklabs_zigbee/Makefile.in
+index 646069fed..4f644535b 100644
+--- a/capture_freaklabs_zigbee/Makefile.in
++++ b/capture_freaklabs_zigbee/Makefile.in
+@@ -2,6 +2,8 @@ KIS_SRC_DIR ?= ..
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
++DESTDIR ?= /
++
+ DATASOURCE_NAME := $(shell $(PYTHON) setup.py --name)
+ 
+ PROTOBUF_DIR = $(KIS_SRC_DIR)/protobuf_definitions
+@@ -19,7 +21,7 @@ $(DATASOURCE_NAME)/kismetexternal/%_pb2.py: $(PROTOBUF_DIR)/%.proto
+ 	sed -i -E 's/^import kismet_/from . import kismet_/' $@
+ 
+ install:
+-	$(PYTHON) setup.py install --root="/$(DESTDIR)" --prefix="$(prefix)"
++	$(PYTHON) setup.py install --root="$(DESTDIR)" --prefix="$(prefix)"
+ 
+ clean:
+ 	@-$(PYTHON) setup.py clean
+diff --git a/capture_proxy_adsb/Makefile.in b/capture_proxy_adsb/Makefile.in
+index d16ba601f..96ba6ceca 100644
+--- a/capture_proxy_adsb/Makefile.in
++++ b/capture_proxy_adsb/Makefile.in
+@@ -2,6 +2,8 @@ KIS_SRC_DIR ?= ..
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
++DESTDIR ?= /
++
+ DATASOURCE_NAME := $(shell $(PYTHON) setup.py --name)
+ 
+ PROTOBUF_DIR = $(KIS_SRC_DIR)/protobuf_definitions
+@@ -22,7 +24,7 @@ $(DATASOURCE_NAME)/kismetexternal/%_pb2.py: $(PROTOBUF_DIR)/%.proto
+ 	sed -i -E 's/^import kismet_/from . import kismet_/' $@
+ 
+ install:
+-	$(PYTHON) setup.py install --root="/$(DESTDIR)" --prefix="$(prefix)"
++	$(PYTHON) setup.py install --root="$(DESTDIR)" --prefix="$(prefix)"
+ 
+ clean:
+ 	@-$(PYTHON) setup.py clean
+diff --git a/capture_sdr_rtl433/Makefile.in b/capture_sdr_rtl433/Makefile.in
+index 646069fed..4f644535b 100644
+--- a/capture_sdr_rtl433/Makefile.in
++++ b/capture_sdr_rtl433/Makefile.in
+@@ -2,6 +2,8 @@ KIS_SRC_DIR ?= ..
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
++DESTDIR ?= /
++
+ DATASOURCE_NAME := $(shell $(PYTHON) setup.py --name)
+ 
+ PROTOBUF_DIR = $(KIS_SRC_DIR)/protobuf_definitions
+@@ -19,7 +21,7 @@ $(DATASOURCE_NAME)/kismetexternal/%_pb2.py: $(PROTOBUF_DIR)/%.proto
+ 	sed -i -E 's/^import kismet_/from . import kismet_/' $@
+ 
+ install:
+-	$(PYTHON) setup.py install --root="/$(DESTDIR)" --prefix="$(prefix)"
++	$(PYTHON) setup.py install --root="$(DESTDIR)" --prefix="$(prefix)"
+ 
+ clean:
+ 	@-$(PYTHON) setup.py clean
+diff --git a/capture_sdr_rtladsb/Makefile.in b/capture_sdr_rtladsb/Makefile.in
+index d16ba601f..96ba6ceca 100644
+--- a/capture_sdr_rtladsb/Makefile.in
++++ b/capture_sdr_rtladsb/Makefile.in
+@@ -2,6 +2,8 @@ KIS_SRC_DIR ?= ..
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
++DESTDIR ?= /
++
+ DATASOURCE_NAME := $(shell $(PYTHON) setup.py --name)
+ 
+ PROTOBUF_DIR = $(KIS_SRC_DIR)/protobuf_definitions
+@@ -22,7 +24,7 @@ $(DATASOURCE_NAME)/kismetexternal/%_pb2.py: $(PROTOBUF_DIR)/%.proto
+ 	sed -i -E 's/^import kismet_/from . import kismet_/' $@
+ 
+ install:
+-	$(PYTHON) setup.py install --root="/$(DESTDIR)" --prefix="$(prefix)"
++	$(PYTHON) setup.py install --root="$(DESTDIR)" --prefix="$(prefix)"
+ 
+ clean:
+ 	@-$(PYTHON) setup.py clean
+diff --git a/capture_sdr_rtlamr/Makefile.in b/capture_sdr_rtlamr/Makefile.in
+index 646069fed..4f644535b 100644
+--- a/capture_sdr_rtlamr/Makefile.in
++++ b/capture_sdr_rtlamr/Makefile.in
+@@ -2,6 +2,8 @@ KIS_SRC_DIR ?= ..
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
++DESTDIR ?= /
++
+ DATASOURCE_NAME := $(shell $(PYTHON) setup.py --name)
+ 
+ PROTOBUF_DIR = $(KIS_SRC_DIR)/protobuf_definitions
+@@ -19,7 +21,7 @@ $(DATASOURCE_NAME)/kismetexternal/%_pb2.py: $(PROTOBUF_DIR)/%.proto
+ 	sed -i -E 's/^import kismet_/from . import kismet_/' $@
+ 
+ install:
+-	$(PYTHON) setup.py install --root="/$(DESTDIR)" --prefix="$(prefix)"
++	$(PYTHON) setup.py install --root="$(DESTDIR)" --prefix="$(prefix)"
+ 
+ clean:
+ 	@-$(PYTHON) setup.py clean

@@ -1,0 +1,14 @@
+diff --git a/test/expect/cmd.cc-msvc-c-src-c-cmd.stderr.txt b/test/expect/cmd.cc-msvc-c-src-c-cmd.stderr.txt
+index fb9ae02..33b3df9 100644
+--- a/test/expect/cmd.cc-msvc-c-src-c-cmd.stderr.txt
++++ b/test/expect/cmd.cc-msvc-c-src-c-cmd.stderr.txt
+@@ -1 +1 @@
+-"clang" .* "-[^i][^"]*" "[^-"][^"]*" "-isystem" "/some/include" "-isystem" "/some/other/include" "-[^i]
++"clang" .* "-[^i][^"]*" "[^-"][^"]*" "-isystem" "/some/include" "-isystem" "/some/other/include" "-([^i]|i[^s])
+diff --git a/test/expect/cmd.cc-msvc-src-cxx-cmd.stderr.txt b/test/expect/cmd.cc-msvc-src-cxx-cmd.stderr.txt
+index fb9ae02..33b3df9 100644
+--- a/test/expect/cmd.cc-msvc-src-cxx-cmd.stderr.txt
++++ b/test/expect/cmd.cc-msvc-src-cxx-cmd.stderr.txt
+@@ -1 +1 @@
+-"clang" .* "-[^i][^"]*" "[^-"][^"]*" "-isystem" "/some/include" "-isystem" "/some/other/include" "-[^i]
++"clang" .* "-[^i][^"]*" "[^-"][^"]*" "-isystem" "/some/include" "-isystem" "/some/other/include" "-([^i]|i[^s])

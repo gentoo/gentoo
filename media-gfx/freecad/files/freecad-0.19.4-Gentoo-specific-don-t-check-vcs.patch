@@ -1,0 +1,20 @@
+From 60ba533d21302b8a4c11ac06adb53b4041754b02 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Tue, 1 Mar 2022 18:22:00 +0100
+Subject: [PATCH] [Gentoo specific] don't check vcs
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/src/Tools/SubWCRev.py
++++ b/src/Tools/SubWCRev.py
+@@ -455,7 +455,7 @@ def main():
+         if o in ("-b", "--bindir"):
+             bindir = a
+ 
+-    vcs=[GitControl(), DebianGitHub(), BazaarControl(), Subversion(), MercurialControl(), DebianChangelog(), UnknownControl()]
++    vcs=[UnknownControl()]
+     for i in vcs:
+         if i.extractInfo(srcdir, bindir):
+             # Open the template file and the version file
+-- 
+2.35.1
+

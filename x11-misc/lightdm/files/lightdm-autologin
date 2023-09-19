@@ -1,0 +1,6 @@
+auth	optional	pam_env.so
+auth	required	pam_nologin.so
+auth	required	pam_permit.so
+
+account	substack		system-local-login
+session	substack		system-local-login

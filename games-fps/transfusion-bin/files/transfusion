@@ -1,0 +1,2 @@
+#!/bin/sh
+cd GENTOO_DIR && exec ./transfusion-glx ${@} || exit 1

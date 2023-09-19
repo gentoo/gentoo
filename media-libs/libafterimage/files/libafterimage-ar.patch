@@ -1,0 +1,39 @@
+diff '--color=auto' -Naurd libAfterImage-1.20.orig/Makefile.in libAfterImage-1.20/Makefile.in
+--- libAfterImage-1.20.orig/Makefile.in	2011-01-15 08:52:22.000000000 +0300
++++ libAfterImage-1.20/Makefile.in	2021-05-19 23:32:32.793826120 +0300
+@@ -78,7 +78,8 @@
+ EXTRA_DEFINES	= @DEFINE_XLOCALE@
+ 
+ RANLIB		= @RANLIB@
+-AR		= ar clq
++AR		?= ar
++AR		+= cq
+ CP		= @CP@
+ MV		= @MV@
+ RM		= @RM@
+diff '--color=auto' -Naurd libAfterImage-1.20.orig/aftershow/Makefile.in libAfterImage-1.20/aftershow/Makefile.in
+--- libAfterImage-1.20.orig/aftershow/Makefile.in	2011-01-15 08:52:22.000000000 +0300
++++ libAfterImage-1.20/aftershow/Makefile.in	2021-05-19 23:32:53.158905472 +0300
+@@ -11,7 +11,8 @@
+ EXTRA_DEFINES	= @DEFINE_XLOCALE@
+ 
+ RANLIB		= @RANLIB@
+-AR		= ar clq
++AR		?= ar
++AR		+= cq
+ CP		= @CP@
+ MV		= @MV@
+ RM		= @RM@
+diff '--color=auto' -Naurd libAfterImage-1.20.orig/apps/Makefile.in libAfterImage-1.20/apps/Makefile.in
+--- libAfterImage-1.20.orig/apps/Makefile.in	2011-01-15 08:52:22.000000000 +0300
++++ libAfterImage-1.20/apps/Makefile.in	2021-05-19 23:33:15.769993568 +0300
+@@ -8,7 +8,8 @@
+ EXTRA_DEFINES	= @DEFINE_XLOCALE@
+ 
+ RANLIB		= @RANLIB@
+-AR		= ar clq
++AR		?= ar
++AR		+= cq
+ CP		= @CP@
+ MV		= @MV@
+ RM		= @RM@

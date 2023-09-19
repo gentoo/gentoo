@@ -1,0 +1,11 @@
+--- a/Xbae.tmpl
++++ b/Xbae.tmpl
+@@ -13,7 +13,7 @@
+ 
+ #define DoNormalLib		YES
+ #define DoSharedLib		YES
+-#define DoDebugLib		YES
++#define DoDebugLib		NO
+ 
+ #include <Library.tmpl>
+ 

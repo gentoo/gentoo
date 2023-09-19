@@ -1,0 +1,14 @@
+This disables deprecated functions, then proceeds to use newly
+deprecated functions. Given GTK2 is now EOL and unchanging,
+there's no reason to avoid these without migration to newer GTK.
+
+https://bugs.gentoo.org/874642
+https://bugs.gentoo.org/391105 (see also)
+--- a/test/test-module.c
++++ b/test/test-module.c
+@@ -23,5 +23,4 @@
+ #include <string.h>
+ 
+-#define GTK_DISABLE_DEPRECATED
+ 
+ #include <gtk/gtk.h>

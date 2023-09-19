@@ -1,0 +1,12 @@
+diff -ur b/Makefile a/Makefile
+--- b/Makefile	2018-06-21 14:02:53.439716620 -0500
++++ a/Makefile	2018-06-21 14:03:33.900568504 -0500
+@@ -111,7 +111,7 @@
+ 
+ # SCMLIT -- try making this first!
+ scmlit:	$(ofiles) scmmain.o require.scm Makefile
+-	$(LD) -o scmlit $(ofiles) scmmain.o $(LIBS)
++	$(LD) $(LDFLAGS) -o scmlit $(ofiles) scmmain.o $(LIBS)
+ 	$(MAKE) checklit
+ scmflags.h:	scmflags
+ scmflags:

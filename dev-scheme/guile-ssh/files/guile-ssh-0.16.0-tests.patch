@@ -1,0 +1,19 @@
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 8eaa33f..5eaad69 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -23,14 +23,12 @@ if !CROSS_COMPILING
+ 
+ SCM_TESTS = \
+ 	log.scm \
+-	server.scm \
+ 	session.scm \
+ 	client-server.scm \
+ 	popen.scm \
+ 	shell.scm \
+ 	server-client.scm \
+ 	sssh-ssshd.scm \
+-	key.scm \
+ 	tunnel.scm \
+ 	dist.scm
+ 

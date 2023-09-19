@@ -1,0 +1,2 @@
+#type	path				mode	user	group	age		argument
+d		/run/tailscale		0755	-		-		-		-

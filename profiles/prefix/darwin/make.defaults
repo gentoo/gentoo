@@ -1,0 +1,15 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# System-wide defaults for all Darwin profiles
+# This file should rarely need to be changed
+
+# 'Sane' defaults
+ELIBC="Darwin"
+KERNEL="Darwin"
+
+# strip isn't GNU
+FEATURES="nostrip"
+
+# This is the sort of equivalent of --as-needed
+LDFLAGS="-Wl,-dead_strip_dylibs"

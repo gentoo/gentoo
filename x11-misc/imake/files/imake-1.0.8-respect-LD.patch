@@ -1,0 +1,15 @@
+Use LD env if available, other tests already do similar for CC.
+https://bugs.gentoo.org/729630
+--- a/imake.c
++++ b/imake.c
+@@ -1110,5 +1110,9 @@
+   signed char c;
+   int ldmajor, ldminor;
+-  const char *ld = "ld -v";
++  char ld[PATH_MAX];
++  const char *ldenv;
++  if (!(ldenv = getenv("LD")))
++    ldenv = "ld";
++  snprintf(ld, PATH_MAX, "%s -v", ldenv);
+ 
+ # ifdef CROSSCOMPILE

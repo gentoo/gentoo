@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>azamat.hackimov@gmail.com</email>
+		<name>Azamat H. Hackimov</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>matthew@gentoo.org</email>
+		<name>Matthew Smith</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">certbot/certbot</remote-id>
+		<remote-id type="pypi">certbot-dns-dnsimple</remote-id>
+	</upstream>
+</pkgmetadata>

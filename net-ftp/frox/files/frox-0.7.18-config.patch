@@ -1,0 +1,66 @@
+--- a/src/frox.conf	2005-02-04 19:54:55.000000000 +0930
++++ b/src/frox.conf	2005-02-07 19:35:32.995421344 +0930
+@@ -18,7 +18,9 @@
+ # commented out to listen on all local IPs.
+ #
+ # Listen firewall.localnet
+-Listen 192.168.2.1
++# Listen 192.168.2.1
++
++Listen 127.0.0.1
+ 
+ # Port to listen on. Must be supplied.
+ #
+@@ -26,7 +28,7 @@
+ 
+ # If specified then bind to this device
+ #
+-BindToDevice eth0
++#BindToDevice eth0
+ 
+ # Whether to run from inetd. You should still define Port above, but
+ # it isn't used for much.
+@@ -69,12 +71,12 @@
+ ####################################################################
+ # General Options                                                  #
+ ####################################################################
+-# User and group to drop priveliges to. This must be specified - if
++User ftpproxy
+ # you really want to run as root (not a good idea) you must say so
+ # specifically, and have compiled with --enable-run-as-root.
+ #
+-# User nobody
+-# Group nogroup
++User ftpproxy
++Group ftpproxy
+ 
+ # This is frox's working directory - it must be specified. Temporary
+ # files and sockets will be created here. If you are using local
+@@ -83,7 +85,7 @@
+ # also chroot to this dir on startup. To avoid this you must specifically 
+ # set DontChroot to Yes.
+ #
+-# WorkingDir /usr/local/lib/frox
++WorkingDir /var/spool/frox
+ # DontChroot Yes
+ 
+ # Logging level. 0=No logging. 5=Critical errors only. 10= All errors.
+@@ -96,15 +98,15 @@
+ # transferred irrespective of the log level. You can turn this off
+ # below.
+ #
+-# LogLevel 15
+-# LogFile /usr/local/lib/frox/frox-log
++LogLevel 20
++LogFile /var/log/frox/frox-log
+ # XferLogging no
+ 
+ # File to store PID in. Default is not to. If this file is not within
+ # the Chroot directory then it cannot be deleted on exit, but will
+ # otherwise work fine.
+ #
+-PidFile /var/run/frox.pid
++PidFile /var/run/frox/frox.pid
+ 
+ 
+ ####################################################################

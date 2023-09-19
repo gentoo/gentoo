@@ -1,0 +1,11 @@
+--- twelf-orig/emacs/twelf.el	2008-07-13 06:06:03.000000000 +1000
++++ twelf/emacs/twelf.el	2012-12-10 00:39:05.332036491 +1100
+@@ -1815,7 +1815,7 @@
+          (twelf-server-process (twelf-server-process twelf-server-buffer))
+          (proc-mark (process-mark twelf-server-process))
+          (_ (display-buffer twelf-server-buffer))
+-         (twelf-server-window (get-buffer-window twelf-server-buffer)))
++         (twelf-server-window (get-buffer-window twelf-server-buffer t)))
+     (if (not (pos-visible-in-window-p proc-mark twelf-server-window))
+         (progn
+           (push-mark proc-mark)

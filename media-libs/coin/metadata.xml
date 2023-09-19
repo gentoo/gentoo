@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>reavertm@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="exceptions">Compile with C++ exceptions</flag>
+    <flag name="qthelp">Build API documentation in QtHelp format</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">coin3d/coin</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,8 @@
+--- flpsed-0.7.2/flpsed.desktop
++++ flpsed-0.7.2/flpsed.desktop
+@@ -11,4 +11,4 @@
+ StartupNotify=true
+ Categories=Graphics;
+ MimeType=application/postscript;application/pdf;
+-Keywords=flpsed;pdf annotator;fltk
++Keywords=flpsed;pdf annotator;fltk;

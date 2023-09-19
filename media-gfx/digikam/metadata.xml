@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
+	<use>
+		<flag name="addressbook">Enable akonadi contact integration</flag>
+		<flag name="imagemagick">Enable support for additional image formats such as XCF, FITS, HEIC etc.</flag>
+		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg></flag>
+		<flag name="marble">Enable support for geolocation using <pkg>kde-apps/marble</pkg></flag>
+		<flag name="panorama">Build the panorama plugin which requires <pkg>media-gfx/hugin</pkg></flag>
+		<flag name="semantic-desktop">Enable <pkg>kde-frameworks/kfilemetadata</pkg> support</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,296 @@
+Index: flexbackup
+===================================================================
+--- flexbackup	(.../tags/flexbackup-1.2.1-r5)	(revision 784)
++++ flexbackup	(.../trunk)	(revision 784)
+@@ -1301,8 +1301,8 @@
+ 	$cmd .= "$::unz";
+     }
+     $cmd .= "(";
+-    $cmd .= "mkdir -p $::device ; ";
+-    $cmd .= "cd $::device ; ";
++    $cmd .= "mkdir -p \"$::device\" ; ";
++    $cmd .= "cd \"$::device\" ; ";
+     $cmd .= "$::path{cpio} -i ";
+     $cmd .= "-m ";
+     $cmd .= "-d ";
+@@ -1351,9 +1351,8 @@
+ 
+     # Have to take leading './' off to make rsync's include/exclude work right
+     $cmd .= " | $::path{sed} -e \"s/\\.\\///g\" | ";
+-
+     $cmd .= "$::path{rsync} ";
+-    $cmd .= "--include-from=- --exclude=* ";
++    $cmd .= "--files-from=- ";
+     $cmd .= "--archive ";
+     $cmd .= "$::rsync_verb_flag ";
+     $cmd .= "--delete --delete-excluded ";
+@@ -1368,7 +1367,7 @@
+ 	    $cmd .= "$remote:";
+ 	}
+     }
+-    $cmd .= "$dir/ $::device";
++    $cmd .= "\"$dir/\" \"$::device\"";
+ 
+     push(@cmds, $cmd);
+ 
+@@ -1658,7 +1657,9 @@
+     my $tmpfile = "$cfg::tmpdir/ar.$PROCESS_ID";
+     my $remove = '';
+ 
+-    &log("| NOTE: ar archives will not descend directories");
++    &log("| NOTE: ar archives will not recurse into subdirectories,");
++    &log("|       which makes them inappropriate for most backups.");
++    &log("|       Be sure this is what you want.");
+ 
+     if (defined($remote) and ($level != 0)) {
+ 	my $time = &get_last_date($label, $level, 'numeric');
+@@ -1682,11 +1683,13 @@
+     $cmd = "cd \"$dir\" && ";
+     $cmd .= &file_list_cmd( $dir, $stamp, 'newline', $level, $remote, '-maxdepth 1 ! -type d');
+     $cmd .= "> $filelist; ";
++    # Escape any spaces in filenames. 
++    $cmd .= "$::path{sed} -i -e 's/ /\\\\ /g' $filelist; ";
+ 
+     $cmd .= "$::path{ar} rc";
+     $cmd .= "$::ar_verb_flag ";
+     $cmd .= "$tmpfile ";
+-    $cmd .= "`$::path{cat} $filelist`";
++    $cmd .= "\@$filelist ";
+     $cmd .= "; $::path{cat} $tmpfile $::z";
+ 
+     # Buffer both sides if remote
+@@ -1800,12 +1803,9 @@
+ 
+     $cmd = "cd \"$dir\" && ";
+     $cmd .= &file_list_cmd( $dir, $stamp, 'newline', $level, $remote);
+-    $cmd .= "> $filelist; ";
+-
+-    $cmd .= "$::path{lha} a";
++    $cmd .= " | $::path{lha} a";
+     $cmd .= "$::lha_verb_flag ";
+     $cmd .= "$tmpfile ";
+-    $cmd .= "`$::path{cat} $filelist`";
+     $cmd .= "; $::path{cat} $tmpfile $::z";
+ 
+     # Buffer both sides if remote
+@@ -2766,6 +2766,7 @@
+     $::path{'dd'} = &checkinpath('dd');
+     $::path{'printf'} = &checkinpath('printf');
+     $::path{'mkdir'} = &checkinpath('mkdir');
++	$::path{'sed'} = &checkinpath('sed');
+ 
+     push(@::remoteprogs,($::path{'touch'},$::path{'rm'},$::path{'find'},$::path{'printf'},$::path{'mkdir'}));
+ 
+@@ -4894,9 +4895,9 @@
+ 			$rex .= '\)"';
+ 		}
+ 		# Show what the darn thing is constructing for prune expressions.
+-		&log("| \"find\" regex for pruning is:");
+-		&log("|     $rex");
+-		&line();
++        (my $temp = $rex) =~ s/\\([()|])/$1/g;
++		&log("| \"find\" regex for pruning (shell escaping omitted for clarity) is:");
++		&log("|     $temp");
+ 		$cmd .= '-regex ' . $rex . ' -prune -o ';
+     } else {
+ 		# Show what the darn thing is constructing for prune expressions.
+@@ -4906,6 +4907,7 @@
+ 		# don't have permissions on and are running as non-root)
+ 		$cmd .= "-depth ";
+     }
++    &line();
+ 
+     $cmd .= "$::mountpoint_flag ";
+     $cmd .= "! -type s ";
+@@ -5301,12 +5303,14 @@
+ 	print $::msg "| Checking '$cfg::buffer' on this machine... ";
+ 	$pipecmd = "sh $tmp_script ";
+     } else {
++	$pipecmd = 
++        "$::remoteshell $host '$::path{mkdir} -p $cfg::tmpdir'; " .
++        "cat $tmp_script | ($::remoteshell $host 'cat > $tmp_script; " .
++        "sh $tmp_script; rm -rf $cfg::tmpdir')";
+ 	print $::msg "| Checking '$cfg::buffer' on host $host... ";
+-	$pipecmd =  "$::remoteshell $host '$::path{mkdir} -p $cfg::tmpdir'; cat $tmp_script | ($::remoteshell $host 'cat > $tmp_script; sh $tmp_script; rm -rf $cfg::tmpdir')";
+     }
+ 
+     if (!defined($::debug)) {
+-
+ 	open(PIPE,"$pipecmd |") || die;
+ 
+ 	$explicit_success = 0;
+Index: flexbackup.conf
+===================================================================
+--- flexbackup.conf	(.../tags/flexbackup-1.2.1-r5)	(revision 784)
++++ flexbackup.conf	(.../trunk)	(revision 784)
+@@ -12,19 +12,27 @@
+ 
+ # Configure backup "sets".
+ # Not needed if you use "-dir <dir>" to backup one tree at a time.
+-# Each set is a simple space-separated list of filesystems
+-# Remote filesystems should denoted as 'host:dir'
+-# You can use anything (other than 'all') as set names
+-#
+-# Example:
+-#  $set{'set1'} = "/home /usr";
+-#  $set{'set2'} = "/dir3 machine2:/dir4 machine3:/dir5";
++# Each set is a simple space-separated list of filesystems.  Remote filesystems
++# should denoted as 'host:dir'.  If the filesystem name (local or remote)
++# contains spaces, then it should be enclosed in its entirety in double quotes.
++# Multiple quoted filesystems included in a set should be space separated just
++# like unquoted filesystem.  The Perl '.' string concatenation operator can be
++# used to split excessively long lines.
++#
++# You can use anything (other than 'all') as set names.
++#
++# Examples:
++#  $set{'set1'} = '/home /usr';
++#  $set{'set2'} = '/dir3 machine2:/dir4 machine3:/dir5';
++#  $set{'set3'} =
++#      '"/mnt/winmachine1/Documents and Settings" ' .
++#      '"/mnt/winmachine1/Program Files"';
+ #
+ # "-set all" will back up all defined sets. If you are doing a full backup
+ # using tapes, each "set" will go onto a different tape and you will be
+ # prompted for tape change in between.
+ #
+-$set{'backup'} = "/home";
++$set{'backup'} = '/home';
+ 
+ # Subtree pruning
+ # A space-separated list of directories to prune from each backup.
+@@ -42,7 +50,7 @@
+ # start with "./".  To be helpful, FlexBackup packages each space-separated
+ # prune directory as follows.  If you have a prune list like this
+ #
+-#     $prune{'/somedir'} = "one two three";
++#     $prune{'/somedir'} = 'one two three';
+ #
+ # then, the constructed -regex argument to "find" looks like this
+ #
+@@ -54,31 +62,38 @@
+ # terms that match the current base directory in the set you're backing
+ # up.  For example, if your backup set definition looks like this
+ #
+-#     $set{'daily'} = "/home /root /var /usr";
++#     $set{'daily'} = '/home /root /var /usr';
+ #
+ # and you want to do some exclusions in "/home" and "/var" (but not the other
+ # directories), you must set up a prune list for those two directories 
+ # separately.  For example, to exclude bert's and ernie's home directories plus
+ # /var/tmp, you would need the following:
+ #
+-#     $prune{'/home'} = "bert ernie";
+-#     $prune{'/var'}  = "tmp";
++#     $prune{'/home'} = 'bert ernie';
++#     $prune{'/var'}  = 'tmp';
+ #
+ # In particular, combining these *does not* work.  For example, this
+ #
+-#     $prune{'/'} = "home/bert home/ernie var/tmp";
++#     $prune{'/'} = 'home/bert home/ernie var/tmp';
+ #
+ # doesn't work, unless, of course, your backup set is backing up "/", 
+ # which our example is not.
+ #
++# Like the $set configuration item, special handling is required for
++# directories with spaces in them.  Double quotes should surround pruning
++# targets but not the key.  Example:
++#
++#     $prune{'/mnt/winmachine1/Documents and Settings'} =
++#         '"user1/Local Settings/Temp" user2';
++#
+ # Many other complex and abstruse variations are possible.  Here's one 
+ # interesting corner case.  If you want to preserve a directory but none of its
+ # contents, you can do it.  Picking on ernie from our previous example, preserve
+ # only his home directory:
+ #
+-#     $prune{'/home'} = "ernie/.*";
++#     $prune{'/home'} = 'ernie/.*';
+ #
+-$prune{'/'} = "tmp proc";
++$prune{'/'} = 'tmp proc';
+ 
+ # Compression
+ $compress = 'gzip'; # one of false/gzip/bzip2/lzop/zip/compress/hardware/lzma
+Index: flexbackup.conf.5
+===================================================================
+--- flexbackup.conf.5	(.../tags/flexbackup-1.2.1-r5)	(revision 784)
++++ flexbackup.conf.5	(.../trunk)	(revision 784)
+@@ -24,25 +24,51 @@
+ .TP
+ \fB$set{\fI'tag'\fR}\fR = \fI'/dir'\fR;
+ Configure backup \(dqsets\(dq. Not needed if \(dq-dir <dir>\(dq is used to
+-backup one tree at a time.  Each set is a simple space-separated list of
+-filesystems/directories. Remote filesystems should be denoted as
+-\(dqhost:directory\(dq.  You can use anything (other than \fI'all'\fR) as set
+-names. Using \(dq-set all\(dq will back up all defined sets. If you are doing
+-a full backup using tapes, each \(dqset\(dq will go onto a different tape and
+-you will be prompted for tape change in between. Examples:
++backup one tree at a time.
++Each set is a simple space-separated list of filesystems/directories.
++Remote filesystems should be denoted as \(dqhost:directory\(dq.
++You can use anything (other than \fI'all'\fR) as set names.
++Using \(dq-set all\(dq will back up all defined sets.
++If you are doing a full backup using tapes, each \(dqset\(dq will go onto a
++different tape and you will be prompted for tape change in between.
++Examples:
+ .RS
+ .PP
+ \fB$set{\fI'set1'\fI}\fR = \fI'/home /usr'\fR;
+ .br
+ \fB$set{\fI'set2'\fI}\fR = \fI'/dir3 machine2:/dir4 machine3:/dir5'\fR;
++.br
++.PP
++Directories (local or remote) with spaces in their names should be enclosed in
++their entirety in double quotes.
++Multiple quoted directories included in a set should be space separated just
++like unquoted directories.
++The Perl '.' string concatenation operator can be used to split excessively
++long sets.
++Example:
++.PP
++\fB$set{\fI'set3'\fI}\fR = \fI
++    '\(dq/mnt/winmachine1/Documents and Settings\(dq ' .
++    '\(dq/mnt/winmachine1/Program Files\(dq';\fR
+ .RE
+ .TP
+ \fB$prune{\fI'/'\fR}\fR = \fI'tmp proc'\fR;
+ Configure subtree pruning. A space-separated list of directories to prune from
+ each backup. Key is a filesystem/directory or \(dqhost:directory\(dq spec as
+-outlined above. Regular expressions allowed (not shell-type wildcards!). There
+-is additional explanation (and a lot of examples) in the provided configuration
+-file.
++outlined above. Regular expressions allowed (not shell-type wildcards!).
++.RS
++.PP
++Like the \fB$set\fR configuration item, special handling is required for
++directories with spaces in them.  Double quotes should surround pruning targets
++but not the key.  Example:
++.PP
++\fB$prune{\fI'/mnt/winmachine1/Documents and Settings'\fI}\fR = 
++    \fI'\(dquser1/Local Settings/Temp\(dq user2'\fR;
++.br
++.PP
++There are lots of examples and additional explanation in the provided sample
++configuration file.
++.RE
+ .TP
+ \fB$compress\fR = \fI'false|gzip|bzip2|lzop|zip|compress|hardware'\fR;
+ .TQ
+@@ -207,7 +233,7 @@
+ .RS
+ .TP
+ If GNU \fBtar\fR is called \fB\(dqgtar\(dq\fR on your system:
+-\fB$path{'tar'} = 'gtar';
++\fB$path{'tar'} = 'gtar';\fR
+ .TP
+ Or it can be used to \fB\(dqsudo\(dq\fR certain commands:
+ \fB$path{\fI'find'\fR}\fR = \fI'sudo find'\fR;
+@@ -304,3 +330,6 @@
+ Written by Edwin Huffstutler (edwinh@computer.org)
+ .SH "SEE ALSO"
+ \fBflexbackup\fR(1)
++.\" Local Variables:
++.\" mode: nroff
++.\" End:

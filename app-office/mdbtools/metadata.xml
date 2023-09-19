@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="glib">Use functions provided by <pkg>dev-libs/glib</pkg>, not built-in</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mdbtools/mdbtools</remote-id>
+	</upstream>
+</pkgmetadata>

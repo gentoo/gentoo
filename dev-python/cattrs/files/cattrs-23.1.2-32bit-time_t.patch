@@ -1,0 +1,38 @@
+From 1b001c30090876dd9cefa3aefac8218ad78222c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 12 Aug 2023 18:04:07 +0200
+Subject: [PATCH] Fix typeddict tests on systems with 32-bit time_t
+
+Reduce the range of generated `datetime` instances to values valid
+for 32-bit `time_t` range, as otherwise multiple tests fail with errors
+such as:
+
+    FAILED tests/test_typeddicts.py::test_simple_roundtrip - OverflowError: timestamp out of range for platform time_t
+
+This is based on an earlier fix for `test_preconf.py`,
+see a0e56f43f061c43814d6f938833d1c325ed61525
+and c58028789454fc7a9b459b94c214cab2ab1acb81.
+
+Originally reported as https://bugs.gentoo.org/912187.
+---
+ tests/typeddicts.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/typeddicts.py b/tests/typeddicts.py
+index d7f8141..4f7804d 100644
+--- a/tests/typeddicts.py
++++ b/tests/typeddicts.py
+@@ -59,7 +59,9 @@ def int_attributes(
+ def datetime_attributes(
+     draw: DrawFn, total: bool = True, not_required: bool = False
+ ) -> Tuple[datetime, SearchStrategy, SearchStrategy]:
+-    success_strat = datetimes().map(lambda dt: dt.replace(microsecond=0))
++    success_strat = datetimes(
++        min_value=datetime(1970, 1, 1), max_value=datetime(2038, 1, 1)
++    ).map(lambda dt: dt.replace(microsecond=0))
+     type = datetime
+     strat = success_strat if total else success_strat | just(NOTHING)
+     if not_required and draw(booleans()):
+-- 
+2.41.0
+

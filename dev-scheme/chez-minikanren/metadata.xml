@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    miniKanren is an embedded Domain Specific Language for logic programming.
+    The core miniKanren language is very simple, with only three logical
+    operators and one interface operator.
+    miniKanren is designed to be easily modified and extended; extensions
+    include Constraint Logic Programming, probabilistic logic programming,
+    nominal logic programming, and tabling.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/miniKanren/miniKanren/issues</bugs-to>
+    <remote-id type="github">miniKanren/miniKanren</remote-id>
+  </upstream>
+</pkgmetadata>

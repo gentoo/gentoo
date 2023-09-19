@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -297,7 +297,7 @@
+ # -------------------------------
+ 
+ IF ( WITH_LUA )
+-  FIND_PACKAGE(Lua)
++  FIND_PACKAGE(Lua ${LUA_VERSION} EXACT REQUIRED)
+ ENDIF()
+ 
+ IF ( WITH_PYTHON )

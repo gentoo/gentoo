@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="opal_errd daemon"
+description="Daemon to read/parse OPAL platform error(s)/event(s)"
+command=/usr/sbin/opal_errd
+command_args="-w ${opal_errd_args}"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need localmount
+	use logger
+}

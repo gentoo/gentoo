@@ -1,0 +1,14 @@
+[Unit]
+Description=Atop process accounting daemon
+Documentation=man:atopacctd(8)
+Conflicts=psacct.service
+After=syslog.target
+Before=atop.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/atopacctd.pid
+ExecStart=/usr/sbin/atopacctd
+
+[Install]
+WantedBy=multi-user.target

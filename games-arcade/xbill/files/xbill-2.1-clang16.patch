@@ -1,0 +1,27 @@
+Drop -I. to prevent <strings.h> from including ./strings.h
+https://bugs.gentoo.org/874624
+--- a/Bucket.c
++++ b/Bucket.c
+@@ -1,2 +1,2 @@
+-#include <util.h>
++#include "util.h"
+ 
+--- a/Game.c
++++ b/Game.c
+@@ -4,2 +4,3 @@
+ #include <string.h>
++#include <strings.h>
+ #include <time.h>
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -22,3 +22,3 @@
+ 
+-ALL_CFLAGS =	$(CFLAGS) $(CPPFLAGS) -I$(srcdir)
++ALL_CFLAGS =	$(CFLAGS) $(CPPFLAGS)
+ ALL_LDFLAGS =	$(CFLAGS) $(LDFLAGS)
+--- a/UI.c
++++ b/UI.c
+@@ -3,2 +3,3 @@
+ #include <string.h>
++#include <strings.h>
+ 

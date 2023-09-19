@@ -1,0 +1,15 @@
+From 38a37394194794217371d1213424646a77674ce6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 18 Oct 2022 21:26:25 +0100
+Subject: [PATCH] Add missing include for strlen
+
+--- a/tinlink.c
++++ b/tinlink.c
+@@ -33,6 +33,7 @@
+ #include <unistd.h>
+ #include <errno.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #define DEFAULT_START (unsigned char *)(0x8000000+sizeof(Elf32_Ehdr)-8+sizeof(Elf32_Phdr)-2)
+ #define DEFAULT_OUTPUT "a.out"

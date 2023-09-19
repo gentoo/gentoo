@@ -1,0 +1,18 @@
+--- a/Makefile.orig	2008-03-24 07:16:47.000000000 -0400
++++ b/Makefile	2008-03-24 07:17:18.000000000 -0400
+@@ -3,6 +3,7 @@
+ CC?=gcc
+ CFLAGS?=-g -O2 -Wall 
+ CFLAGS+=-I. -DVERSION=\"$(MAJOR).$(MINOR)\"
++LDLIBS+=-lz
+ prefix?=/usr/local
+ OBJS=\
+ 	cbtcommon/debug.o\
+@@ -21,7 +22,6 @@
+ all: cvsps
+ 
+ cvsps: $(OBJS)
+-	$(CC) -o cvsps $(OBJS) -lz
+ 
+ install:
+ 	[ -d $(prefix)/bin ] || mkdir -p $(prefix)/bin

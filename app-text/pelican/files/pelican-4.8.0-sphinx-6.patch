@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/889706
+https://github.com/getpelican/pelican/commit/33aca76d78601f0f0da635c8a14c89bbbc9ff8d6
+
+From 33aca76d78601f0f0da635c8a14c89bbbc9ff8d6 Mon Sep 17 00:00:00 2001
+From: Justin Mayer <entroP@gmail.com>
+Date: Mon, 1 Aug 2022 12:36:54 +0200
+Subject: [PATCH] Adjust extlinks configuration for Sphinx 5.0+
+
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -23,7 +23,7 @@
+ '''.format(last_stable)
+ 
+ extlinks = {
+-    'pelican-doc':  ('https://docs.getpelican.com/%s/', '')
++    'pelican-doc':  ('https://docs.getpelican.com/%s/', '%s')
+ }
+ 
+ # -- Options for HTML output --------------------------------------------------
+

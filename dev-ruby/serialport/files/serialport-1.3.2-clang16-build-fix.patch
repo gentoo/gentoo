@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/883127
+Upstream PR: https://github.com/hparra/ruby-serialport/pull/75
+--- a/ext/native/posix_serialport_impl.c
++++ b/ext/native/posix_serialport_impl.c
+@@ -110,7 +110,7 @@ VALUE sp_create_impl(class, _port)
+    struct termios params;
+ 
+    NEWOBJ(sp, struct RFile);
+-   OBJSETUP(sp, class, T_FILE);
++   OBJSETUP((VALUE)sp, class, T_FILE);
+    MakeOpenFile((VALUE) sp, fp);
+ 
+    switch(TYPE(_port))

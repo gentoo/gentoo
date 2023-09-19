@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<use>
+		<flag name="proprietary-codecs">Use system <pkg>media-video/ffmpeg</pkg> to support patent-encumbered media codecs</flag>
+		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
+	</use>
+</pkgmetadata>

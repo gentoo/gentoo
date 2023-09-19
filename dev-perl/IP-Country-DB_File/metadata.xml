@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">IP-Country-DB_File</remote-id>
+		<remote-id type="cpan-module">IP::Country::DB_File</remote-id>
+		<remote-id type="cpan-module">IP::Country::DB_File::Builder</remote-id>
+		<remote-id type="github">nwellnhof/IP-Country-DB_File</remote-id>
+	</upstream>
+</pkgmetadata>

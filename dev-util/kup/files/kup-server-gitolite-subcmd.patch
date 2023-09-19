@@ -1,0 +1,242 @@
+Upstream kup provided this patch, that was apparently written by the Gitolite
+author.
+
+--- standard/kup-server	2017-03-28 13:01:24.000000000 -0400
++++ gitolite/kup-server	2018-03-26 15:01:20.000000000 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -T
++#!/usr/bin/perl
+ ## -----------------------------------------------------------------------
+ ##
+ ##   Copyright 2011 Intel Corporation; author: H. Peter Anvin
+@@ -68,12 +68,20 @@
+ 
+ use Digest::SHA;
+ 
+-my $VERSION = '0.3.6';
+-
+-# Scrub the environment completely
+-%ENV = ('PATH' => '/bin:/usr/bin',
+-		'LANG' => 'C',
+-		'SHELL' => '/bin/false'); # Nothing in this program should shell out
++use lib $ENV{GL_LIBDIR};
++use Gitolite::Easy;
++use Gitolite::Conf::Load;
++
++my $VERSION = '0.3.6 (gitolite integrated)';
++
++# Scrub the environment completely, except gitolite variables and HOME
++{
++	my %env = %ENV;
++	%ENV = ('PATH' => '/bin:/usr/bin',
++			'LANG' => 'C',
++			'SHELL' => '/bin/false'); # Nothing in this program should shell out
++	$ENV{$_} = $env{$_} for ('HOME', grep(/^GL_/, keys %env));
++}
+ 
+ # The standard function to call on bail
+ sub fatal($) {
+@@ -88,16 +96,7 @@
+ }
+ 
+ sub my_username() {
+-	my $whoami = getuid();
+-	my ($name,$passwd,$uid,$gid,$quota,$comment,$gcos,$dir,$shell,$expire) = getpwuid($whoami);
+-
+-	if (!defined($name) || $whoami != $uid) {
+-		# We haven't called openlog() yet so we need to do it here
+-		openlog("kup-server($whoami)", 'ndelay,pid', LOG_LOCAL5);
+-		fatal("You don't exist, go away!");
+-	}
+-
+-	return (defined($name) && $whoami == $uid) ? $name : $whoami;
++	return $ENV{GL_USER};
+ }
+ 
+ my $user_name = my_username();
+@@ -106,7 +105,7 @@
+ 
+ 
+ # Get config values from kup-server.cfg
+-my $cfg_file = '/etc/kup/kup-server.cfg';
++my $cfg_file = '/var/lib/gitolite3/.gitolite/local-code/configs/kup-server.cfg';
+ 
+ my $cfg = new Config::Simple($cfg_file);
+ 
+@@ -371,6 +370,51 @@
+ 	return 1;
+ }
+ 
++# kup-server may "read" files from the kup data_path, or repos.  If a repo is
++# supplied, we assume it's a gitolite repo and check access accordingly (while
++# remembering that kup seems to add a leading slash).  If a repo is *not*
++# supplied, we assume we're talking about the kup data_path, which means we
++# make gitolite access rules from the "fake" repo called "@kup-server"
++sub read_allowed
++{
++	Gitolite::Common::trace( 1, 'read_allowed', @_ );
++	my $repo = shift || '@kup-server';
++
++	# gitolite expects a "normalised" repo name; no leading slash, no trailing ".git"
++	$repo =~ s(^/)(); $repo =~ s/\.git$//;
++
++	return can_read($repo);
++}
++
++# kup-server does not write to normal repos, it only writes to files in the
++# kup data_path.  So we don't have to worry about any repo other than
++# "@kup-server", which is therefore hardcoded in here.
++sub write_allowed
++{
++	Gitolite::Common::trace( 1, 'write_allowed', @_ );
++	my($path, $perm) = @_;
++
++	# other values for perm are + (rm) and C (mkdir), analogous to gitolite's
++	# "+ means delete or rewind branch, C means create branch"
++	$perm ||= 'W';
++
++	my $repo = '@kup-server';
++
++	# the paths that gitolite expects start with "refs/heads/", since we are
++	# simply re-using the existing ACL for this.  (But remember $path, in
++	# kup-land, already starts with a "/".)
++	$path = "refs/heads" . $path;
++
++	return can_write($repo, $perm, $path) ||
++		   can_write($repo, $perm, "$path/");
++	# the second check is because, when specifying a permission on a directory
++	# in gitolite, you end with a "/", say "RW+C foo/ = user".  To exercise
++	# that right, the user runs "kup mkdir foo" or "kup rm foo".  This fails,
++	# because the regex "foo/" won't match.  (In a *git* repo it doesn't
++	# matter, because git doesn't allow empty directories, so it never
++	# happens).
++}
++
+ # Return a percentage, valid even if the denominator is zero
+ sub percentage($$)
+ {
+@@ -526,6 +570,10 @@
+ 		fatal("Invalid pathname in TAR command");
+ 	}
+ 
++	if (!read_allowed($tree)) {
++		fatal("Read access denied");
++	}
++
+ 	if (!is_clean_string($prefix)) {
+ 		fatal("Invalid prefix string");
+ 	}
+@@ -569,6 +617,10 @@
+ 		fatal("Invalid pathname in DIFF command");
+ 	}
+ 
++	if (!read_allowed($tree)) {
++		fatal("Read access denied");
++	}
++
+ 	if ($tree !~ /\.git$/ || ! -d $git_path.$tree ||
+ 		! -d $git_path.$tree.'/objects') {
+ 		fatal("No such git tree");
+@@ -788,8 +840,13 @@
+ 		or fatal("dup error");
+ 	close($devnull);
+ 
++	my $gpgvbin = '/opt/gnupg22/bin/gpgv';
++	if ( ! -x $gpgvbin) {
++		$gpgvbin = '/usr/bin/gpgv';
++	}
++
+ 	my $status =
+-		system('/usr/bin/gpgv',
++		system($gpgvbin,
+ 			   '--quiet',
+ 			   '--homedir', $tmpdir,
+ 			   '--keyring', $pgp_path."/${user_name}.gpg",
+@@ -839,6 +896,10 @@
+ 		fatal("Invalid filename in PUT command");
+ 	}
+ 
++	if (!write_allowed($file)) {
++		fatal("Write access denied");
++	}
++
+ 	my @install_ext;
+ 	my @conflic_ext;
+ 	my $stem;
+@@ -917,6 +978,10 @@
+ 		fatal("Invalid filename in MKDIR command");
+ 	}
+ 
++	if (!write_allowed($file, 'C')) {
++		fatal("MKDIR access denied");
++	}
++
+ 	my @badext = ('.sign', keys(%zformats));
+ 
+ 	foreach my $e (@badext) {
+@@ -991,6 +1056,16 @@
+ 		fatal("Invalid filename in $cmd command");
+ 	}
+ 
++	if ($cmd eq 'MOVE') {
++		if (!write_allowed($from, '+')) {
++			fatal("Delete (as part of MOVE) access denied");
++		}
++	}
++
++	if (!write_allowed($to)) {
++		fatal("Write access denied");
++	}
++
+ 	if ($from =~ /\.gz$/) {
+ 		if ($to !~ /\.gz$/) {
+ 			fatal("$cmd of .gz file must itself end in .gz");
+@@ -1093,6 +1168,10 @@
+ 		fatal("Invalid pathname in DELETE command");
+ 	}
+ 
++	if (!write_allowed($file, "+")) {
++		fatal("Delete access denied");
++	}
++
+ 	if ($file !~ /\.gz$/ &&
+ 		has_extension($file, '.sign', keys(%zformats))) {
+ 		fatal("DELETE of auxiliary files not supported");
+@@ -1222,6 +1301,10 @@
+ 
+ 	my($dir) = @args;
+ 
++	if (!read_allowed()) {
++		fatal("Read access denied");
++	}
++
+ 	# DIR / is permitted unlike any other command
+ 	$dir =~ s:/$::g;
+ 	if ($dir ne '' && !is_valid_filename($dir)) {
+@@ -1261,7 +1344,25 @@
+ 
+ sub do_info()
+ {
+-	print "kup-server $VERSION\n";
++	print "kup-server $VERSION\n\n";
++
++	my %xlat = (
++		R       =>	'ls',
++		RW      =>	'put',
++		'RW+'   =>	'put/rm/mv',
++		'RWC'   =>	'put/mkdir',
++		'RW+C'  =>	'put/rm/mv/mkdir',
++		'-'     =>	'(denied)',
++	);
++	Gitolite::Conf::Load::load('@kup-server');
++	my @rules = Gitolite::Conf::Load::rules('@kup-server', $ENV{GL_USER});
++	for my $r (@rules) {
++		my ($dummy, $perm, $ref) = @$r;
++		$ref =~ s(^refs/heads/)();
++		$ref =~ s(/USER/)(/$ENV{GL_USER}/);
++		$ref = ($ref eq 'refs/.*') ? '/*' : '/' . $ref . '*';
++		printf "%-24s %s\n", ($xlat{$perm} || $perm), $ref;
++	}
+ }
+ 
+ sub get_command()

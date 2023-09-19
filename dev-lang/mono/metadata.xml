@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="pax-kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
+		<flag name="xen">Make mono generate code that is considerably faster on xen VMs but slightly slower on for normal systems.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mono/mono</remote-id>
+		<changelog>https://www.mono-project.com/docs/about-mono/releases/</changelog>
+	</upstream>
+</pkgmetadata>

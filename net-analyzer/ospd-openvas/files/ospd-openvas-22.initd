@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${GVM_USER:=gvm}
+: ${GVM_GROUP:=$(id -ng ${GVM_USER})}
+: ${OSPD_TIMEOUT:=30}
+
+name="remotely control an OpenVAS Scanner"
+command=/usr/bin/ospd-openvas
+command_user="${GVM_USER}:${GVM_GROUP}"
+command_args="${OSPD_OPENVAS_OPTIONS} \
+	--config /etc/gvm/ospd-openvas.conf"
+retry="${OSPD_TIMEOUT}"
+
+depend() {
+	after bootmisc
+	need localmount redis-openvas
+}
+
+start_pre() {
+        checkpath -d --owner ${GVM_USER} /var/run/ospd
+}

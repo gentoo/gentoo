@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <upstream>
+    <remote-id type="sourceforge">hte</remote-id>
+    <bugs-to>https://github.com/sebastianbiallas/ht/issues</bugs-to>
+    <remote-id type="github">sebastianbiallas/ht</remote-id>
+  </upstream>
+</pkgmetadata>

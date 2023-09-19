@@ -1,0 +1,26 @@
+From 326705b559b7e488314a776d171aef40e687e91b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 16 Jun 2017 13:42:13 +1200
+Subject: Fix for '.' in @INC removal on Perl 5.26+
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=122110
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index fc1a55a..b455410 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,7 +1,7 @@
+ # Makefile.PL for Perl module WWW::Curl
+ # Check out the README file for more information.
+ 
+-use inc::Module::Install;
++use lib q[.]; use inc::Module::Install;
+ 
+ name			'WWW-Curl';
+ abstract		'Perl extension interface for libcurl';
+-- 
+2.16.2
+

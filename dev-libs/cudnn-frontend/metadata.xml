@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>telans@posteo.de</email>
+		<name>James Beddek</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">NVIDIA/cudnn-frontend</remote-id>
+	</upstream>
+</pkgmetadata>

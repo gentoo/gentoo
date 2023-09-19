@@ -1,0 +1,93 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-01-11)
+# Requires media-libs/libva since 29.0.0, which is unmasked here.
+->=media-video/obs-studio-29.0.0
+
+# Michał Górny <mgorny@gentoo.org> (2022-08-25)
+# Only ppc64le binpkg is provided.
+-dev-python/pypy-exe-bin
+-dev-python/pypy3-exe-bin
+
+# Sam James <sam@gentoo.org> (2022-01-18)
+# No bootstrap binary available on big endian PPC64 right now, but there is
+# one for ppc64le.
+-dev-lisp/sbcl
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# (un)mask for media-libs/openexr and its reverse dependencies.
+# Broken on big endian, but should be fine on le.
+# bug #818424
+-dev-games/openscenegraph
+-dev-games/openscenegraph-openmw
+-dev-games/openscenegraph-qt
+-games-engines/openmw
+-media-libs/openexr
+-media-libs/ctl
+-media-gfx/openvdb
+-media-libs/embree
+-media-libs/opencolorio
+-media-libs/openimageio
+-media-libs/osl
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Fails with "No byte-swap function available on big-endian platform." on be
+# but fine on le.
+# bug #711940
+-dev-db/mysql-connector-c++
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-17)↲
+# chromium works on ppc64le
+-www-client/chromium
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)↲
+# works on little-endian
+-sci-mathematics/geogebra-bin
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
+# works on ppc64le
+-app-containers/docker
+-app-containers/docker-buildx
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-22
+# criu works on ppc64le
+-sys-process/criu
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
+# openjfx:11 works on ppc64le
+-dev-java/openjfx:11
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-27)
+# little-endian power8 ppc64 configs are provided
+-sys-kernel/gentoo-kernel
+-sys-kernel/gentoo-kernel-bin
+-sys-kernel/vanilla-kernel
+-virtual/dist-kernel
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# libva unmasked on little-endian profile
+-net-im/telegram-desktop
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
+# works fine on little-endian
+-media-libs/libva
+-media-video/libva-utils
+-media-plugins/gst-plugins-vaapi
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# works fine on little-endian
+-x11-drivers/xf86-video-amdgpu
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-04)
+# Temurin ppc64 build is little-endian only
+# so we can use bins.
+-dev-java/openjdk-bin
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-04-11)
+# ltrace is not ported to powerpc64le yet.
+dev-util/ltrace
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2018-02-21)
+# Mozc supports only little-endian architectures.
+-app-i18n/mozc

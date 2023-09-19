@@ -1,0 +1,53 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/var/run/srsd.pid"
+command="/usr/bin/srsd"
+command_args="${SRSD_OPTS}"
+
+depend() {
+    use logger
+}
+
+start_pre() {
+    if [[ ! -z ${SRSD_SECRET_FILE} ]]; then
+        # check for secret file
+        checkpath --file --owner root:root --mode 0644 ${SRSD_SECRET_FILE}
+        
+        # srsd complains if the secret file is empty
+        # check for characters in it 
+        grep -q '.' ${SRSD_SECRET_FILE}
+
+        # grep returns 0 if a match has been found
+        # 1 otherwise
+        local retval=$?
+        if [[ $retval -ne 0 ]]; then
+            eerror "Secret file \"${SRSD_SECRET_FILE}\" must NOT be empty."
+            return 1
+        fi
+    fi
+
+    return 0
+}
+
+start() {
+    ebegin 'Starting srsd'
+    start-stop-daemon \
+        --start \
+        --background \
+        --pidfile ${pidfile} \
+        --make-pidfile \
+        --exec ${command} \
+        -- ${command_args}
+    eend $?
+}
+
+stop() {
+    ebegin 'Stopping srsd'
+    start-stop-daemon \
+        --stop \
+        --pidfile ${pidfile} \
+        --exec ${command}
+    eend $?
+}

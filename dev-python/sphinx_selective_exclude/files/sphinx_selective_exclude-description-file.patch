@@ -1,0 +1,8 @@
+diff -r -U1 sphinx_selective_exclude-1.0.3.orig/setup.cfg sphinx_selective_exclude-1.0.3/setup.cfg
+--- sphinx_selective_exclude-1.0.3.orig/setup.cfg	2019-12-24 05:59:33.000000000 +0700
++++ sphinx_selective_exclude-1.0.3/setup.cfg	2023-02-28 17:56:05.055719498 +0700
+@@ -1,3 +1,3 @@
+ [metadata]
+-description-file = README.md
++description_file = README.md
+ 

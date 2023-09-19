@@ -1,0 +1,12 @@
+Fix byte-compilation with Emacs 27.
+
+--- treepy.el-0.1.1-orig/treepy.el
++++ treepy.el-0.1.1/treepy.el
+@@ -40,6 +40,7 @@
+ ;; 
+ ;;; Code:
+ 
++(require 'cl-lib)
+ (require 'map)
+ 
+ ;;; Walk (recursive tree traversal)

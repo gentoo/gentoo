@@ -1,0 +1,17 @@
+# Copyright 2019-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# RISC-V rv32imac/ilp32 no-multilib profile
+
+CHOST="riscv32-unknown-linux-gnu"
+
+MULTILIB_ABIS="ilp32"
+DEFAULT_ABI="ilp32"
+ABI="ilp32"
+
+LIBDIR_ilp32="lib"
+
+CFLAGS="-O2 -pipe -march=rv32imac -mabi=ilp32"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

@@ -1,0 +1,13 @@
+diff --git a/src/main.js b/src/main.js
+index 718d420..2ea2018 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -18,7 +18,7 @@ pkg.initFormat()
+ pkg.require({
+     'Gio': '2.0',
+     'Gtk': '3.0',
+-    'WebKit2': '4.0'
++    'WebKit2': '4.1'
+ })
+ 
+ const { Gio, Gtk, Gdk, GLib, WebKit2 } = imports.gi

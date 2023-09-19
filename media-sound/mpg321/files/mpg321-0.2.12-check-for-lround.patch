@@ -1,0 +1,16 @@
+diff -ur mpg321-0.2.12-1.orig//configure.ac mpg321-0.2.12-1/configure.ac
+--- mpg321-0.2.12-1.orig//configure.ac	2010-07-03 07:46:40.000000000 -0400
++++ mpg321-0.2.12-1/configure.ac	2011-08-20 19:50:32.143229893 -0400
+@@ -75,6 +75,12 @@
+ 
+ AC_CHECK_FUNCS([gethostbyname memset munmap socket strchr strdup strerror strrchr strstr gettimeofday select getenv putenv setenv unsetenv strcasecmp])
+ 
++dnl Check if math library is needed.
++AC_CHECK_FUNC(lround)
++if test "$ac_cv_func_lround" = no; then
++  AC_CHECK_LIB(m, lround)
++fi
++
+ AC_ARG_ENABLE(mpg123_symlink,
+ [  --enable-mpg123-symlink Enable symlink of mpg123 to mpg321 [[default=yes]] ],
+ ,enable_mpg123_symlink=yes)

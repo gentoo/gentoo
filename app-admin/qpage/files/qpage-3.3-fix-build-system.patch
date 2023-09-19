@@ -1,0 +1,21 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -65,12 +65,12 @@
+ 		@exit 1
+ 
+ install:	all
+-		$(RM) $(bindir)/$(PROG)
+-		$(MKDIR) -p $(bindir)
+-		$(CP) $(PROG) $(bindir)
+-		$(RM) $(mandir)/man1/$(PROG).1
+-		$(MKDIR) -p $(mandir)/man1
+-		$(CP) $(PROG).man $(mandir)/man1/$(PROG).1
++		$(RM) $(DESTDIR)$(bindir)/$(PROG)
++		$(MKDIR) -p $(DESTDIR)$(bindir)
++		$(CP) $(PROG) $(DESTDIR)$(bindir)
++		$(RM) $(DESTDIR)$(mandir)/man1/$(PROG).1
++		$(MKDIR) -p $(DESTDIR)$(mandir)/man1
++		$(CP) $(PROG).man $(DESTDIR)$(mandir)/man1/$(PROG).1
+ 
+ #		$(INSTALL) S99qpage /etc/rc3.d
+ #		ln /etc/rc3.d/S99qpage /etc/init.d/qpage

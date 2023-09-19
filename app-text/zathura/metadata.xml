@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>turret@turret.cyou</email>
+		<name>Mason Rocha</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="synctex">Use libsynctex to get latex codeline from pdf</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>mlq@pwmt.org</email>
+			<name>Moritz Lipp</name>
+		</maintainer>
+		<maintainer status="active">
+			<email>sebastian+dev@ramacher.at</email>
+			<name>Sebastian Ramacher</name>
+		</maintainer>
+		<changelog>https://pwmt.org/projects/zathura/download/</changelog>
+		<doc lang="en">https://pwmt.org/projects/zathura/</doc>
+		<remote-id type="github">pwmt/zathura</remote-id>
+	</upstream>
+</pkgmetadata>

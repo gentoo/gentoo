@@ -1,0 +1,25 @@
+diff --git a/meson.build b/meson.build
+index c05dc47f..4ae7c513 100644
+--- a/meson.build
++++ b/meson.build
+@@ -64,9 +64,9 @@ libz_dep = dependency('zlib', required: true,
+                       fallback : ['zlib', 'zlib_dep'])
+ 
+ # Check for libhugetlbfs availability (optional)
+-if cc.has_header('hugetlbfs.h')
++if get_option('hugepages') and cc.has_header('hugetlbfs.h')
+   libhugetlbfs_dep = cc.find_library('hugetlbfs',
+-                                     required : false)
++                                     required : true)
+   have_libhugetlbfs = libhugetlbfs_dep.found()
+ else
+   libhugetlbfs_dep = []
+diff --git a/meson_options.txt b/meson_options.txt
+index 04843ea5..bb10b6c0 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -9,3 +9,4 @@ option('nvme-tests', type : 'boolean', value : false, description: 'Run tests ag
+ option('docs', type : 'combo', choices : ['false', 'html', 'man', 'all'], description : 'install documentation')
+ option('docs-build', type : 'boolean', value : false, description : 'build documentation')
+ option('pdc-enabled', type: 'boolean', value : false, description : 'set default Persistent Discovery Controllers behavior')
++option('hugepages', type: 'boolean', value : false, description : 'Enable support for hugetlbfs')

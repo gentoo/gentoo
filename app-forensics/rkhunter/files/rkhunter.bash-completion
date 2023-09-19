@@ -1,0 +1,87 @@
+# rkhunter completion
+
+_rkhunter() {
+	local cur prev opts
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+	opts="-c --checkall --createlogfile --cronjob --display-logfile -h --help\
+		 --nocolors --report-mode --report-warnings-only \
+		 --skip-application-check --skip-keypress --quick --quiet --update \
+		 --version --versioncheck --bindir --configfile --dbdir --rootdir \
+		 --tmpdir --disable-md5-check --disable-passwd-check \
+		 --scan-knownbad-files" 
+
+	if [[ "${cur}" == -* ]] || [[ ${COMP_CWORD} -eq 1 ]]; then
+		COMPREPLY=($(compgen -W "${opts}" -- "${cur}"))
+	fi
+
+	case "${prev}" in
+		--createlogfile)
+			COMPREPLY=($(compgen -o filenames -A file -W "${opts/--createlogfile}" \
+			    -- "${cur}"))
+			;;
+		--display-logfile)
+			COMPREPLY=($(compgen -W "${opts/--display-logfile}" -- "${cur}"))
+			;;
+		--*dir)	
+			COMPREPLY=($(compgen -o dirnames -A directory -- "${cur}"))
+			;;
+		--*file)
+			COMPREPLY=($(compgen -o filenames -A file -- "${cur}"))
+			;;
+		-c|--checkall)
+			COMPREPLY=($(compgen -W "${opts/-c --checkall}" -- "${cur}"))
+			;;
+		--cronjob)
+			COMPREPLY=($(compgen -W "${opts/--cronjob}" -- "${cur}"))
+			;;
+		-h|--help)
+			COMPREPLY=($(compgen -W "${opts/-h --help}" -- "${cur}"))
+			;;
+		--nocolors)
+			COMPREPLY=($(compgen -W "${opts/--nocolors}" -- "${cur}"))
+			;;
+		--report-mode)
+			COMPREPLY=($(compgen -W "${opts/--report-mode}" -- "${cur}"))
+			;;
+		--report-warnings-only)
+			COMPREPLY=($(compgen -W "${opts/--report-warnings-only}" -- \
+				"${cur}"))
+			;;
+		--skip-application-check)
+			COMPREPLY=($(compgen -W "${opts/--skip-application-check}" -- \
+				"${cur}"))
+			;;
+		--skip-keypress)
+			COMPREPLY=($(compgen -W "${opts/--skip-keypress}" -- "${cur}"))
+			;;
+		--quick)
+			COMPREPLY=($(compgen -W "${opts/--quick}" -- "${cur}"))
+			;;
+		--quiet)
+			COMPREPLY=($(compgen -W "${opts/--quiet}" -- "${cur}"))
+			;;
+		--update)
+			COMPREPLY=($(compgen -W "${opts/--update}" -- "${cur}"))
+			;;
+		--version)
+			COMPREPLY=($(compgen -W "${opts/--version}" -- "${cur}"))
+			;;
+		--versioncheck)
+			COMPREPLY=($(compgen -W "${opts/--versioncheck}" -- "${cur}"))
+			;;
+		--disable-md5-check)
+			COMPREPLY=($(compgen -W "${opts/--disable-md5-check}" -- "${cur}"))
+			;;
+		--disable-passwd-check)
+			COMPREPLY=($(compgen -W "${opts/--disable-passwd-check}" -- \
+				"${cur}"))
+			;;
+		--scan-knownbad-files)
+			COMPREPLY=($(compgen -W "${opts/--scan-knownbad-files}" -- \
+				"${cur}"))
+			;;
+	esac
+}
+complete -F _rkhunter rkhunter

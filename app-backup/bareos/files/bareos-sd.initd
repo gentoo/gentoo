@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use dns
+}
+
+start_pre() {
+	checkpath --directory --owner root:bareos --mode 01775 /run/bareos
+	if [[ -e /run/bareos/bareos-sd.9103.pid && $(stat -c %U /run/bareos/bareos-sd.9103.pid) != "root" ]]; then
+		eerror "SECURITY ALERT: bareos owned pidfile found! (see #631598)"
+		exit 1
+	fi
+}
+
+start_post() {
+	ewaitfile 10 /run/bareos/bareos-sd.9103.pid
+	checkpath --file --owner root:bareos /run/bareos/bareos-sd.9103.pid
+}
+
+command="/usr/sbin/bareos-sd"
+command_args="${SD_OPTIONS}"
+pidfile="/run/bareos/bareos-sd.9103.pid"

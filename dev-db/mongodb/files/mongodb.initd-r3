@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${config_file:="/etc/${RC_SVCNAME}.conf"}
+: ${user:=mongodb}
+: ${group:=mongodb}
+
+command="/usr/bin/mongod"
+command_args="--config ${config_file}"
+command_background="true"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_user="${user}:${group}"
+required_files="${config_file}"
+retry="SIGTERM/30"
+
+depend() {
+	use net
+}

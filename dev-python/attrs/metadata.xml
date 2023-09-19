@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:attrs_project:attrs</remote-id>
+    <remote-id type="pypi">attrs</remote-id>
+    <maintainer status="unknown">
+      <email>hs@ox.cx</email>
+      <name>Hynek Schlawack</name>
+    </maintainer>
+    <remote-id type="github">python-attrs/attrs</remote-id>
+  </upstream>
+</pkgmetadata>

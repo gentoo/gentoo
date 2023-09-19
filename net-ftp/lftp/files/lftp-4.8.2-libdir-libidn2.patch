@@ -1,0 +1,10 @@
+--- a/m4/lftp.m4
++++ b/m4/lftp.m4
+@@ -319,7 +319,6 @@
+        libidn2=$withval, libidn2=yes)
+      if test "$libidn2" != "no"; then
+        if test "$libidn2" != "yes"; then
+-         LDFLAGS="${LDFLAGS} -L$libidn2/lib"
+          CPPFLAGS="${CPPFLAGS} -I$libidn2/include"
+        fi
+        AC_CHECK_HEADER(idn2.h,

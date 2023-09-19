@@ -1,0 +1,48 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Main LoongArch profile directory. Common settings for all loong profiles.
+#
+# Subdirectories represent choices for base instruction set; the names come
+# from the "Base Architecture" table, in the *LoongArch Toolchain Conventions*
+# document.
+#
+# https://loongson.github.io/LoongArch-Documentation/LoongArch-toolchain-conventions-EN.html
+
+# This is not a complete profile. Use the subdirectories!
+
+ARCH="loong"
+ACCEPT_KEYWORDS="loong ~loong"
+
+USE_EXPAND_VALUES_ARCH="${USE_EXPAND_VALUES_ARCH} loong"
+
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+SYMLINK_LIB="no"
+
+# Note about LIBDIR_*:
+#
+# Unlike riscv profiles, LoongArch so far has not defined exact multilib
+# layouts for non-multiarch (i.e. non-Debian-derived) systems; also the ABIs
+# other than LP64D are underdeveloped and likely unusable. So here we only
+# give definitions for lp64d.
+#
+# Should any official spec be revised such that a multilib layout is given,
+# definitions here should be updated to stay compliant.
+
+# Flags for lp64d
+LIBDIR_lp64d="lib64"
+CFLAGS_lp64d="-mabi=lp64d"
+LDFLAGS_lp64d="-m elf64loongarch"
+CHOST_lp64d="loongarch64-unknown-linux-gnu"
+
+# Since many people will want to test this in qemu...
+FEATURES="-pid-sandbox -network-sandbox -ipc-sandbox"
+
+# The following stuff MUST be defined in subdirs:
+# ABI
+# DEFAULT_ABI
+# MULTILIB_ABIS

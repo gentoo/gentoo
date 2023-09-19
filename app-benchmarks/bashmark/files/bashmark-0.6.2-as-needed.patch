@@ -1,0 +1,11 @@
+--- a/makefile
++++ b/makefile
+@@ -10,7 +10,7 @@
+ BIN = bashmark
+ 
+ $(BIN):  $(OBJ)
+-	$(LD) $(LDFLAGS) $(CXXFLAGS) $(OBJ) -o $(BIN)
++	$(LD) $(CXXFLAGS) $(OBJ) $(LDFLAGS) -o $(BIN)
+ 
+ 
+ Benchmark.o:

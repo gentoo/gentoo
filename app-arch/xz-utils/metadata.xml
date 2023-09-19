@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="extra-filters">Build additional filters that are not
+			used in any of the default xz presets. This includes delta
+			and BCJ coders, additional match finders and SHA256 checks.</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:tukaani:xz</remote-id>
+		<remote-id type="sourceforge">lzmautils</remote-id>
+		<remote-id type="github">tukaani-project/xz</remote-id>
+	</upstream>
+</pkgmetadata>

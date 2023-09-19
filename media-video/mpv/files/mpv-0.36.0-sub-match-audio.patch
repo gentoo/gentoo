@@ -1,0 +1,35 @@
+Backport to restore --subs-with-matching-audio back to "yes" by default
+like it was in <0.36 to spare users from confusion and/or needlessly
+adjusting their configs until next version.
+
+https://github.com/mpv-player/mpv/issues/11854
+https://github.com/mpv-player/mpv/pull/12015
+https://github.com/mpv-player/mpv/commit/a2dd78fbc0932a4f47edbe4c41fe268095075c88
+--- a/DOCS/man/options.rst
++++ b/DOCS/man/options.rst
+@@ -140,11 +140,11 @@ Track Selection
+ 
+ ``--subs-with-matching-audio=<yes|no>``
+     When autoselecting a subtitle track, select a full/non-forced one even if the selected
+-    audio stream matches your preferred subtitle language (default: no).
++    audio stream matches your preferred subtitle language (default: yes).
+ 
+ ``--subs-fallback=<yes|default|no>``
+     When autoselecting a subtitle track, if no tracks match your preferred languages,
+-    select a full track even if it doesn't match your preferred subtitle language (default: no).
++    select a full track even if it doesn't match your preferred subtitle language (default: default).
+     Setting this to `default` means that only streams flagged as `default` will be selected.
+ 
+ ``--subs-fallback-forced=<yes|no>``
+--- a/options/options.c
++++ b/options/options.c
+@@ -1040,7 +1040,8 @@ static const struct MPOpts mp_default_opts = {
+         [STREAM_SUB] = (char *[]){ "auto", NULL },
+     },
+     .stream_auto_sel = true,
+-    .subs_with_matching_audio = false,
++    .subs_with_matching_audio = true,
++    .subs_fallback = 1,
+     .subs_fallback_forced = true,
+     .audio_display = 1,
+     .audio_output_format = 0,  // AF_FORMAT_UNKNOWN

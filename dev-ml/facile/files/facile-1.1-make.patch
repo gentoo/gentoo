@@ -1,0 +1,48 @@
+diff -ur a/Makefile b/Makefile
+--- a/Makefile	2004-09-08 10:51:02 +0100
++++ b/Makefile	2007-10-23 13:11:28 +0100
+@@ -3,7 +3,7 @@
+ include config_Makefile
+ 
+ compile:
+-	cd src; make
++	cd src; $(MAKE) 
+ 
+ install:
+ 	if test -d $(FACILEDIR); then : ; else mkdir $(FACILEDIR); fi
+@@ -14,10 +14,10 @@
+ 	chmod a+r $(FACILEDIR)/facile.a
+ 
+ clean:
+-	cd src; make clean
++	cd src; $(MAKE) clean
+ 
+ distclean uninstall:
+ 	rm -fr $(FACILEDIR)
+ 
+ check:
+-	cd examples; make FACILEDIR=../src queens.opt; ./queens.opt 8
++	cd examples; $(MAKE) FACILEDIR=../src queens.opt; ./queens.opt 8
+diff -ur a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2004-09-08 10:51:02 +0100
++++ b/src/Makefile	2007-10-23 13:10:34 +0100
+@@ -28,7 +28,7 @@
+ # Version of the library to be linked with the -p (profiler) option
+ facile.p.cmxa : $(CSTR)
+ 	rm -fr $(CSTRCMX)
+-	make facile.cmxa OPTOPT=-p
++	$(MAKE) facile.cmxa OPTOPT=-p
+ 	rm -fr $(CSTRCMX)
+ 	mv facile.cmxa $@
+ 	mv facile.a facile.p.a
+@@ -41,8 +41,8 @@
+ # Does not work with many modules (e.g. containing class expressions
+ facile.exp.cmxa : $(CSTR)
+ 	rm -fr $(CSTRCMX)
+-	make fcl_stak.cmx fcl_cstr.cmx fcl_inv.cmx fcl_reify.cmx fcl_arith.cmx fcl_goals.cmx fcl_fdArray.cmx fcl_gcc.cmx fcl_alldiff.cmx fcl_sorting.cmx fcl_interval.cmx facile.cmx
+-	make facile.cmxa OPTOPT="-pp inline_functors"
++	$(MAKE) fcl_stak.cmx fcl_cstr.cmx fcl_inv.cmx fcl_reify.cmx fcl_arith.cmx fcl_goals.cmx fcl_fdArray.cmx fcl_gcc.cmx fcl_alldiff.cmx fcl_sorting.cmx fcl_interval.cmx facile.cmx
++	$(MAKE) facile.cmxa OPTOPT="-pp inline_functors"
+ 	rm -fr $(CSTRCMX)
+ 	mv facile.cmxa $@
+ 	mv facile.a facile.exp.a

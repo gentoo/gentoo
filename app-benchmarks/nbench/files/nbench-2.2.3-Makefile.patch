@@ -1,0 +1,77 @@
+--- a/Makefile
++++ b/Makefile
+@@ -19,10 +19,10 @@
+ # You should leave -static in the CFLAGS so that your sysinfo can be
+ # compiled into the executable.
+ 
+-CC = gcc
++#CC = gcc
+ 
+ # generic options for gcc
+-CFLAGS = -s -static -Wall -O3
++#CFLAGS = -s -static -Wall -O3
+ 
+ # if your gcc lets you do it, then try this one
+ #CFLAGS = -s -static -Wall -O3 -fomit-frame-pointer -funroll-loops
+@@ -96,10 +96,10 @@
+ ##########################################################################
+ # For LINUX-like systems with gcc
+ sysinfoc.c: Makefile
+-	./sysinfo.sh $(CC) $(MACHINE) $(DEFINES) $(CFLAGS)
++	./sysinfo.sh $(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)
+ 
+ sysinfo.c: Makefile
+-	./sysinfo.sh $(CC) $(MACHINE) $(DEFINES) $(CFLAGS)
++	./sysinfo.sh $(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)
+ 
+ ##########################################################################
+ # For non-LINUX systems
+@@ -107,39 +107,39 @@
+ # and take sysinfo.c and sysinfoc.c out of the dependencies for nbench0.o
+ 
+ hardware.o: hardware.c hardware.h Makefile
+-	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS)\
++	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)\
+ 		-c hardware.c
+ 
+ nbench0.o: nbench0.h nbench0.c nmglobal.h pointer.h hardware.h\
+ 	   Makefile sysinfo.c sysinfoc.c
+-	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS)\
++	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)\
+ 		-c nbench0.c
+ 
+ emfloat.o: emfloat.h emfloat.c nmglobal.h pointer.h Makefile
+-	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS)\
++	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)\
+ 		-c emfloat.c
+ 
+ pointer.h: pointer Makefile
+-	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS)\
++	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)\
+ 		-o pointer pointer.c
+ 	rm -f pointer.h
+ 	if [ "4" = `./pointer` ] ; then touch pointer.h ;\
+ 	else echo "#define LONG64" >pointer.h ; fi
+ 
+-misc.o: misc.h misc.c Makefile
+-	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS)\
++misc.o: misc.h misc.c pointer.h Makefile
++	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)\
+ 		-c misc.c
+ 
+ nbench1.o: nbench1.h nbench1.c wordcat.h nmglobal.h pointer.h Makefile
+-	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS)\
++	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)\
+ 		-c nbench1.c
+ 
+ sysspec.o: sysspec.h sysspec.c nmglobal.h pointer.h Makefile
+-	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS)\
++	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS)\
+ 		-c sysspec.c
+ 
+ nbench: emfloat.o misc.o nbench0.o nbench1.o sysspec.o hardware.o
+-	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(LINKFLAGS)\
++	$(CC) $(MACHINE) $(DEFINES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)\
+ 		emfloat.o misc.o nbench0.o nbench1.o sysspec.o hardware.o\
+ 		-o nbench -lm
+ 

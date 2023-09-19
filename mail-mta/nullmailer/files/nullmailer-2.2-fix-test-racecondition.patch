@@ -1,0 +1,29 @@
+https://sources.debian.org/data/main/n/nullmailer/1:2.2-3/debian/patches/0001-Remove-race-conditions-from-tests.patch
+
+From: Felix Lechner <felix.lechner@lease-up.com>
+Date: Sat, 2 Sep 2017 09:57:43 -0300
+Subject: Remove race conditions from tests
+
+Testing the qmqp protocol fails because the testing server cannot
+acquire the lock.  This is solved by waiting for the previous
+server to exit gracefully and clear the lock. Similarly, wait
+before removing temporary directories.
+
+Forwarded: no
+Last-Update: 2017-10-07
+---
+ test/tests/protocols | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/tests/protocols b/test/tests/protocols
+index 0309d12..52209d7 100644
+--- a/test/tests/protocols
++++ b/test/tests/protocols
+@@ -54,6 +54,7 @@ do
+ 	echo "Testing protocol failure with $p."
+ 	error 11 protocol $p -p $port --host=localhost 3<$testmail
+ 	stop server
++	wait
+ done
+ 
+ stop server

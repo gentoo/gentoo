@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
+	<use>
+		<flag name="aspell">Enable the <pkg>app-text/aspell</pkg> spell-checking backend</flag>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="hunspell">Enable the <pkg>app-text/hunspell</pkg> spell-checking backend</flag>
+		<flag name="qml">Enable QML/QtQuick support via <pkg>dev-qt/qtdeclarative</pkg></flag>
+	</use>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Frameworks API.
+		</subslots>
+	</slots>
+</pkgmetadata>

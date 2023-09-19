@@ -1,0 +1,32 @@
+Gentoo splits off tinfo from ncurses, so we need to ask pkg-config here what the user has on the system.
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/Makefile
++++ b/Makefile
+@@ -24,10 +24,10 @@ ifeq ($(PLATFORM),Darwin)
+     LDFLAGS+=-lpanel $(NCURSES_LIB) -lutil -lm
+ else
+ ifeq ($(UTF8_SUPPORT),yes)
+-    LDFLAGS+=-lpanelw -lncursesw -lutil -lm
++	LIBS+=$(shell $(PKG_CONFIG) --libs ncursesw panelw) -lutil -lm
+     CPPFLAGS+=-DUTF8_SUPPORT
+ else
+-    LDFLAGS+=-lpanel -lncurses -lutil -lm
++	LIBS+=$(shell $(PKG_CONFIG) --libs ncurses panel) -lutil -lm
+ endif
+ endif
+ 
+@@ -40,10 +40,10 @@ DEPENDS:= $(OBJS:%.o=%.d)
+ all: multitail
+ 
+ multitail: $(OBJS)
+-	$(CC) $(OBJS) $(LDFLAGS) -o multitail
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(OBJS) -o multitail $(LIBS)
+ 
+ ccmultitail: $(OBJS)
+-	ccmalloc --no-wrapper -Wextra $(CC) $(OBJS) $(LDFLAGS) -o ccmultitail
++	ccmalloc --no-wrapper $(CC) $(CFLAGS) $(LDFLAGS) -Wall -W $(OBJS) -o ccmultitail $(LIBS)
+ 
+ install: multitail
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin

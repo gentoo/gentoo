@@ -1,0 +1,122 @@
+https://bugs.gentoo.org/835322
+
+https://github.com/mikel/mail/commit/a20fdd591bd5b1596983f5e1ee6ffed4e0b1f5f9
+https://sources.debian.org/patches/ruby-mail/2.7.1%2Bdfsg1-2/0001-Add-Mail-YAML-load-compatible-with-Psych-3.x-and-Psy.patch/
+
+From: =?utf-8?b?Sm9zZWYgxaBpbcOhbmVr?= <josef.simanek@gmail.com>
+Date: Sun, 4 Dec 2022 15:18:33 -0300
+Subject: Add Mail::YAML#load compatible with Psych 3.x and Psych 4.x.
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Co-authored-by: Vít Ondruch <vondruch@redhat.com>
+Backported-by: Antonio Terceiro <terceiro@debian.org>
+Origin: https://github.com/mikel/mail/commit/a20fdd591bd5b1596983f5e1ee6ffed4e0b1f5f9
+--- a/lib/mail/message.rb
++++ b/lib/mail/message.rb
+@@ -1,6 +1,6 @@
+ # encoding: utf-8
+ # frozen_string_literal: true
+-require "yaml"
++require "mail/yaml"
+ 
+ module Mail
+   # The Message class provides a single point of access to all things to do with an
+@@ -1867,7 +1867,7 @@ module Mail
+     end
+ 
+     def self.from_yaml(str)
+-      hash = YAML.load(str)
++      hash = Mail::YAML.load(str)
+       m = self.new(:headers => hash['headers'])
+       hash.delete('headers')
+       hash.each do |k,v|
+--- /dev/null
++++ b/lib/mail/yaml.rb
+@@ -0,0 +1,30 @@
++require 'yaml'
++
++module Mail
++  module YAML
++    def self.load(yaml)
++      permitted_classes = [
++        Symbol,
++
++        Mail::Body,
++
++        # Delivery methods as listed in mail/configuration.rb
++        Mail::SMTP,
++        Mail::Sendmail,
++        Mail::Exim,
++        Mail::FileDelivery,
++        Mail::SMTPConnection,
++        Mail::TestMailer,
++        Mail::LoggerDelivery,
++
++        Mail.delivery_method.class,
++      ]
++
++      if Gem::Version.new(Psych::VERSION) >= Gem::Version.new('3.1.0.pre1')
++        ::YAML.safe_load(yaml, :permitted_classes => permitted_classes)
++      else
++        ::YAML.safe_load(yaml, permitted_classes)
++      end
++    end
++  end
++end
+--- a/spec/mail/message_spec.rb
++++ b/spec/mail/message_spec.rb
+@@ -198,7 +198,7 @@ describe Mail::Message do
+ 
+       it "should serialize the basic information to YAML" do
+         yaml = @yaml_mail.to_yaml
+-        yaml_output = YAML.load(yaml)
++        yaml_output = Mail::YAML.load(yaml)
+         expect(yaml_output['headers']['To']).to       eq "someone@somewhere.com"
+         expect(yaml_output['headers']['Cc']).to       eq "someoneelse@somewhere.com"
+         expect(yaml_output['headers']['Subject']).to  eq "subject"
+@@ -216,7 +216,7 @@ describe Mail::Message do
+       it "should serialize a Message with a custom delivery_handler" do
+         @yaml_mail.delivery_handler = DeliveryAgent
+         yaml = @yaml_mail.to_yaml
+-        yaml_output = YAML.load(yaml)
++        yaml_output = Mail::YAML.load(yaml)
+         expect(yaml_output['delivery_handler']).to eq "DeliveryAgent"
+       end
+ 
+@@ -228,7 +228,7 @@ describe Mail::Message do
+ 
+       it "should not deserialize a delivery_handler that does not exist" do
+         yaml = @yaml_mail.to_yaml
+-        yaml_hash = YAML.load(yaml)
++        yaml_hash = Mail::YAML.load(yaml)
+         yaml_hash['delivery_handler'] = "NotARealClass"
+         deserialized = Mail::Message.from_yaml(yaml_hash.to_yaml)
+         expect(deserialized.delivery_handler).to be_nil
+--- a/spec/mail/parts_list_spec.rb
++++ b/spec/mail/parts_list_spec.rb
+@@ -89,6 +89,6 @@ describe "PartsList" do
+ 
+   it "should have a round-tripping YAML serialization" do
+     p = Mail::PartsList.new([1, 2])
+-    expect(YAML.load(YAML.dump(p))).to eq(p)
++    expect(Mail::YAML.load(YAML.dump(p))).to eq(p)
+   end
+ end
+--- /dev/null
++++ b/spec/mail/yaml_spec.rb
+@@ -0,0 +1,13 @@
++# encoding: utf-8
++# frozen_string_literal: true
++require 'spec_helper'
++
++describe Mail::YAML do
++
++  describe "#load" do
++
++    it 'loads YAML' do
++      expect(Mail::YAML.load('{}')).to eq({})
++    end
++  end
++end

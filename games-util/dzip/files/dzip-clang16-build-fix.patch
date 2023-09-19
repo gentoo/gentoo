@@ -1,0 +1,14 @@
+Bug: https://bugs.gentoo.org/884923
+--- a/delete.c
++++ b/delete.c
+@@ -1,8 +1,8 @@
+ #include "dzip.h"
+ 
+-int intcmp (const uInt *arg1, const uInt *arg2)
++int intcmp (const void *arg1, const void *arg2)
+ {
+-	if (*arg1 < *arg2) return -1;
++	if (*(uInt *)arg1 < *(uInt *)arg2) return -1;
+ 	return 1;
+ }
+ 

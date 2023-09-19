@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+	The Simple and Fast Multimedia Library (SFML) is a portable and easy to use
+	multimedia API written in C++. You can see it as a modern, object-oriented
+	alternative to SDL. SFML is composed of several packages to suit your needs.
+	You can use SFML as a minimal windowing system to interface with OpenGL, or
+	as a fully-featured multimedia library for building games or interactive
+	programs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">SFML/SFML</remote-id>
+		<remote-id type="sourceforge">sfml</remote-id>
+	</upstream>
+</pkgmetadata>

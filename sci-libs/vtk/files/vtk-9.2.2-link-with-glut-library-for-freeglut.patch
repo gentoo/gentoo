@@ -1,0 +1,18 @@
+From 801654a5f1c3991ff9bb3ea5798afdd252d214b6 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Mon, 21 Nov 2022 15:35:58 +0100
+Subject: [PATCH] link with glut library for freeglut
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/Rendering/External/Testing/Cxx/CMakeLists.txt
++++ b/Rendering/External/Testing/Cxx/CMakeLists.txt
+@@ -12,5 +12,5 @@ if(NOT APPLE)
+ 
+   vtk_test_cxx_executable(vtkRenderingExternalCxxTests tests)
+   target_link_libraries(vtkRenderingExternalCxxTests PRIVATE
+-    ${GLUT_LIBRARY})
++    ${GLUT_LIBRARIES})
+ endif()
+-- 
+2.38.1
+

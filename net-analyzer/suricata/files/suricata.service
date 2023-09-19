@@ -1,0 +1,19 @@
+[Unit]
+Description=Suricata IDS/IDP daemon
+After=network.target
+Requires=network.target
+Documentation=man:suricata(8) man:suricatasc(8)
+Documentation=https://suricata.readthedocs.io/
+
+[Service]
+Environment=OPTIONS='-c /etc/suricata/suricata.yaml --af-packet'
+PIDFile=/run/suricata/suricata.pid
+ExecStart=/usr/bin/suricata --pidfile /run/suricata/suricata.pid $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill $MAINPID
+PrivateTmp=yes
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
+

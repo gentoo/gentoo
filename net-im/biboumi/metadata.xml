@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		Biboumi is an XMPP gateway that connects to IRC servers and translates
+		between the two protocols. It can be used to access IRC channels using
+		any XMPP client as if these channels were XMPP MUCs.
+	</longdescription>
+	<upstream>
+		<doc>https://doc.biboumi.louiz.org/</doc>
+		<bugs-to>https://lab.louiz.org/louiz/biboumi/-/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="udns">Asynchronously resolve domain names using
+		<pkg>net-libs/udns</pkg></flag>
+	</use>
+</pkgmetadata>

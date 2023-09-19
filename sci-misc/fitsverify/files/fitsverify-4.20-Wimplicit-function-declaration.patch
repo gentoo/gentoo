@@ -1,0 +1,75 @@
+--- a/fverify.h
++++ b/fverify.h
+@@ -169,16 +169,16 @@
+     int  errnum;			/* number of errors in this hdu */
+     int  wrnno;			/* number of warnning in this hdu */
+ }HduName;    
+-int get_total_warn();
+-int get_total_err();
+-void init_hduname();
++int get_total_warn(void);
++int get_total_err(void);
++void init_hduname(void);
+ void set_hduname(int hdunum,int hdutype, char* extname,int  extver);
+ void set_hduerr(int hdunum);
+ void set_hdubasic(int hdunum,int hdutype);
+ int test_hduname(int hdunum1, int hdunum2);
+ void total_errors (int *totalerr, int * totalwrn);
+ void hdus_summary(FILE *out);
+-void destroy_hduname();
++void destroy_hduname(void);
+ void test_end(fitsfile *infits, FILE *out);
+ void init_report(FILE *out, char *rootnam);
+ void close_report(FILE *out);
+@@ -198,7 +198,7 @@
+ int wrtserr(FILE *out, char* mess, int *status, int severity);
+ void wrtsep (FILE *out,char fill, char *title, int nchar);
+ void num_err_wrn(int *num_err, int *num_wrn);
+-void reset_err_wrn();
++void reset_err_wrn(void);
+ int compkey (const void *key1, const void *key2);
+ int compcol (const void *col1, const void *col2);
+ int compcol (const void *col1, const void *col2);
+--- a/fvrf_file.c
++++ b/fvrf_file.c
+@@ -3,17 +3,17 @@
+ static int total_err=1;  /* initialzed to 1 in case fail to open file */
+ static int total_warn=0;
+ 
+-int get_total_warn()
++int get_total_warn(void)
+ {
+     return (total_warn);
+ }
+-int get_total_err()
++int get_total_err(void)
+ {
+     return (total_err);
+ }
+ 
+ /* Get the total hdu number and allocate the memory for hdu array */  
+-void init_hduname() 
++void init_hduname(void) 
+ {
+     int i;
+     /* allocate memories for the hdu structure array  */
+@@ -168,7 +168,7 @@
+ 
+ 		   
+ 
+-void destroy_hduname() 
++void destroy_hduname(void) 
+ { 
+    int i;
+    for (i=0; i < totalhdu; i++) free(hduname[i]);
+--- a/fvrf_misc.c
++++ b/fvrf_misc.c
+@@ -20,7 +20,7 @@
+     return;
+ }
+ 
+-void reset_err_wrn() 
++void reset_err_wrn(void) 
+ { 
+     nwrns = 0; 
+     nerrs = 0;

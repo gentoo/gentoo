@@ -1,0 +1,67 @@
+--- a/aewm.hh
++++ b/aewm.hh
+@@ -87,7 +87,7 @@
+ #define BW (has_border ? wm->getOptBW() : 0)
+ 
+ // defined in main.cc
+-void forkExec(char *);
++void forkExec(const char *);
+ int handleXError(Display *, XErrorEvent *);
+ 
+ class Client;
+--- a/client.cc
++++ b/client.cc
+@@ -6,6 +6,8 @@
+  */
+ #include "aewm.hh"
+ 
++#include <string.h>
++
+ Client::Client(Display *d, Window new_client)
+ {
+ 	initialize(d);
+--- a/main.cc
++++ b/main.cc
+@@ -6,8 +6,10 @@
+  */
+  #include "aewm.hh"
+ 
++#include <string.h>
++
+ // Dunno where I ripped this from. Kudos to the author whoever he is!
+-void forkExec(char *cmd)
++void forkExec(const char *cmd)
+ {
+     if(! (strlen(cmd)>0)) return;
+     
+--- a/windowmanager.cc
++++ b/windowmanager.cc
+@@ -6,6 +6,8 @@
+  */
+ #include "aewm.hh"
+ 
++#include <string.h>
++
+ WindowManager* wm;
+ 
+ #define AEWM_KEY_ALT_COUNT 4
+@@ -1020,7 +1022,7 @@
+ {
+ 	cleanup();
+ 	
+-	execl("/bin/sh", "sh", "-c", command_line.c_str(), 0);
++	execl("/bin/sh", "sh", "-c", command_line.c_str(), (const char*)NULL);
+ }
+ 
+ void WindowManager::quitNicely()
+--- a/windowmanager.hh
++++ b/windowmanager.hh
+@@ -46,7 +46,7 @@
+ 	string 	command_line;
+ 	int 	max_desktops;
+ 	int 	focus_model;	
+-	char 	*opt_display,	
++	const char 	*opt_display,
+ 		*opt_fc, 
+ 		*opt_fg,
+ 		*opt_fm, 

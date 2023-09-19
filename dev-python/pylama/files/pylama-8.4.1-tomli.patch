@@ -1,0 +1,69 @@
+From 8b7908fec960a05af0a0a9b10d24ed458fcf97c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 8 Nov 2022 14:33:59 +0100
+Subject: [PATCH] Use tomli/tomllib instead of the unmaintained toml package
+
+Replace the use of the unmaintained `toml` package with the modern
+alternatives: the built-in `tomllib` in Python 3.11+, and its equivalent
+`tomli` in older Python versions.  `tomli` installs type stubs, so there
+is no need for an additional `types-*` package for it.
+---
+ pylama/config_toml.py               | 9 +++++++--
+ requirements/requirements-tests.txt | 3 +--
+ setup.py                            | 2 +-
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/pylama/config_toml.py b/pylama/config_toml.py
+index 2af02a5..ea6e17a 100644
+--- a/pylama/config_toml.py
++++ b/pylama/config_toml.py
+@@ -1,16 +1,21 @@
+ """Pylama TOML configuration."""
+ 
+-import toml
++import sys
+ 
+ from pylama.libs.inirama import Namespace as _Namespace
+ 
++if sys.version_info >= (3, 11):
++    import tomllib
++else:
++    import tomli as tomllib
++
+ 
+ class Namespace(_Namespace):
+     """Inirama-style wrapper for TOML config."""
+ 
+     def parse(self, source: str, update: bool = True, **params):
+         """Parse TOML source as string."""
+-        content = toml.loads(source)
++        content = tomllib.loads(source)
+         tool = content.get("tool", {})
+         pylama = tool.get("pylama", {})
+         linters = pylama.pop("linter", {})
+diff --git a/requirements/requirements-tests.txt b/requirements/requirements-tests.txt
+index d786f1f..e62ccae 100644
+--- a/requirements/requirements-tests.txt
++++ b/requirements/requirements-tests.txt
+@@ -5,8 +5,7 @@ radon       >= 5.1.0
+ mypy
+ pylint      >= 2.11.1
+ pylama-quotes
+-toml
++tomli       >= 1.2.3  ; python_version < "3.11"
+ vulture
+ 
+ types-setuptools
+-types-toml
+diff --git a/setup.py b/setup.py
+index 911aea6..6d0222b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -21,6 +21,6 @@ def parse_requirements(path: str) -> "list[str]":
+     extras_require=dict(
+         tests=parse_requirements("requirements/requirements-tests.txt"),
+         all=OPTIONAL_LINTERS, **{linter: [linter] for linter in OPTIONAL_LINTERS},
+-        toml="toml>=0.10.2",
++        toml="tomli>=1.2.3; python_version < '3.11'",
+     ),
+ )

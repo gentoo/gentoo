@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/show_bug.cgi?id=117320
+diff -Naur vsound-0.6-orig/vsound.in vsound-0.6/vsound.in
+--- vsound-0.6-orig/vsound.in	2004-07-11 04:08:43.000000000 -0600
++++ vsound-0.6/vsound.in	2007-03-11 22:05:20.000000000 -0600
+@@ -153,7 +153,7 @@
+ 
+ export VSOUND_DATA=./vsound$$.au
+ 
+-if [ "$verbose" ] && [ "$VSOUND_STDOUT" ]; then
++if [ "$verbose" = 1 ] && [ "$VSOUND_STDOUT" ]; then
+ 	echo "Error : cannot specify both --verbose and --stdout."
+ 	exit 1
+ fi

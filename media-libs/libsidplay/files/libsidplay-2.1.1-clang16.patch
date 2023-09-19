@@ -1,0 +1,48 @@
+_Ios_Openmode is an implementation detail of the GNU c++ stdlib whereas
+ios_base::openmode is the portable way to go
+--- a/libsidplay/src/sidtune/SidTune.cpp
++++ b/libsidplay/src/sidtune/SidTune.cpp
+@@ -29,6 +29,7 @@
+ #   include <new>
+ #endif
+ #include <iostream>
++#include <ios>
+ #include <iomanip>
+ #include <string.h>
+ #include <limits.h>
+@@ -283,7 +284,7 @@ bool SidTune::loadFile(const char* fileName, Buffer_sidtt<const uint_least8_t>&
+     uint_least32_t fileLen = 0;
+ 
+     // This sucks big time
+-    std::_Ios_Openmode createAtrr = std::ios::in;
++    std::ios_base::openmode createAtrr = std::ios::in;
+ #ifdef HAVE_IOS_NOCREATE
+     createAtrr |= std::ios::nocreate;
+ #endif
+@@ -952,7 +953,7 @@ bool SidTune::saveC64dataFile( const char* fileName, bool overWriteFlag )
+     if ( status )
+     {
+         // Open binary output file stream.
+-        std::_Ios_Openmode createAttr = std::ios::out;
++        std::ios_base::openmode createAttr = std::ios::out;
+ #if defined(HAVE_IOS_BIN)
+         createAttr |= std::ios::bin;
+ #else
+@@ -1002,7 +1003,7 @@ bool SidTune::saveSIDfile( const char* fileName, bool overWriteFlag )
+     if ( status )
+     {
+         // Open ASCII output file stream.
+-        std::_Ios_Openmode createAttr = std::ios::out;
++        std::ios_base::openmode createAttr = std::ios::out;
+         if ( overWriteFlag )
+             createAttr |= std::ios::trunc;
+         else
+@@ -1036,7 +1037,7 @@ bool SidTune::savePSIDfile( const char* fileName, bool overWriteFlag )
+     if ( status )
+     {
+         // Open binary output file stream.
+-        std::_Ios_Openmode createAttr = std::ios::out;
++        std::ios_base::openmode createAttr = std::ios::out;
+ #if defined(HAVE_IOS_BIN)
+         createAttr |= std::ios::bin;
+ #else

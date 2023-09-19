@@ -1,0 +1,15 @@
+diff -ubBr old/flexbackup new/flexbackup
+--- old/flexbackup	2016-12-01 10:52:59.088767278 -0500
++++ new/flexbackup	2016-12-01 10:54:18.006882216 -0500
+@@ -1408,10 +1408,10 @@
+ 
+     $cmd .= "$::path{tar} --create ";
+     $cmd .= "--null ";
++    $cmd .= "--no-recursion ";
+     $cmd .= "--files-from=- ";
+     $cmd .= "--ignore-failed-read ";
+     $cmd .= "--same-permissions ";
+-    $cmd .= "--no-recursion ";
+     $cmd .= "--totals ";
+     if ($cfg::label ne 'false') {
+ 	if (length($title) > $::tar_max_label) {

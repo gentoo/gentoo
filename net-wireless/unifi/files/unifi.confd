@@ -1,0 +1,6 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Specifies the path of an used Java runtime,
+# if it's not set, the system default is being used.
+# JAVA_HOME=""

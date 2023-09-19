@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/709670
+
+--- a/lib/Alien/Gnuplot.pm
++++ b/lib/Alien/Gnuplot.pm
+@@ -289,7 +289,7 @@
+ your GNUPLOT_BINARY variable to an actual gnuplot.
+ };
+     
+-    $lines =~ m/Version (\d+\.\d+) (patchlevel (\d+))?/ or die qq{
++    $lines =~ m/Version (\d+\.\d+(?:\.\d+)?) (patchlevel (\d+))?/ or die qq{
+ Alien::Gnuplot: the executable file $exec_path claims to be gnuplot, but 
+ I could not parse a version number from its output.  Sorry, I give up.
+ 

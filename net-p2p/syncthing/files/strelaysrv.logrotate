@@ -1,0 +1,6 @@
+/var/log/syncthing/strelaysrv.log {
+    missingok
+    notifempty
+    sharedscripts
+    copytruncate
+}

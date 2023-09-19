@@ -1,0 +1,14 @@
+--- a/Makefile
++++ b/Makefile
+@@ -38,9 +38,8 @@
+ INSTALLMANPATH = $(INSTALLBASE)/man
+ INSTALLMANMODE = 444
+ GCCOPTS = -Wall -Wstrict-prototypes
+-CC = cc
+-CFLAGS = $(SWITCHES) -g
+-LDFLAGS = $(SWITCHES) # -s
++CC ?= cc
++CFLAGS += $(SWITCHES) 
+ # To use an architecture-specific compile directory (inside of the
+ # source directory):
+ ARCHDIR = .

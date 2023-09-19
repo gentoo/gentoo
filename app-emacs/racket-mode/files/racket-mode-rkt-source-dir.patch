@@ -1,0 +1,11 @@
+--- a/racket-util.el
++++ b/racket-util.el
+@@ -90,7 +90,7 @@ When installed as a package, this can be found from the variable
+ .el buffer file name.")
+ 
+ (defvar racket--rkt-source-dir
+-  (expand-file-name "./racket/" racket--el-source-dir)
++  (expand-file-name "./racket/" "@SITEETC@")
+   "Path to dir of our Racket source files. ")
+ 
+ (defun racket--restoring-current-buffer (proc)

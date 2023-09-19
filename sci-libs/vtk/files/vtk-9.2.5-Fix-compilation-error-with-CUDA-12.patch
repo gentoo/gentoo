@@ -1,0 +1,21 @@
+https://894646.bugs.gentoo.org/attachment.cgi?id=851914
+https://gitlab.kitware.com/vtk/vtk-m/-/merge_requests/2972/diffs
+
+From be96ea7d85fefcad876729377c1b73a295d1c732 Mon Sep 17 00:00:00 2001
+From: "Luke A. Guest" <laguest@archeia.com>
+Date: Thu, 16 Feb 2023 16:57:32 +0000
+Subject: [PATCH] Fix compilation error with CUDA 12.
+
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/exec/cuda/internal/ExecutionPolicy.h
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/exec/cuda/internal/ExecutionPolicy.h
+@@ -17,6 +17,7 @@
+ #include <vtkm/exec/cuda/internal/ThrustPatches.h>
+ VTKM_THIRDPARTY_PRE_INCLUDE
+ #include <thrust/execution_policy.h>
++#include <thrust/sort.h>
+ #include <thrust/system/cuda/execution_policy.h>
+ #include <thrust/system/cuda/memory.h>
+ VTKM_THIRDPARTY_POST_INCLUDE
+-- 
+2.39.1
+

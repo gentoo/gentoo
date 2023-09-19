@@ -1,0 +1,11 @@
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -64,7 +64,7 @@
+ acc: acc.c
+ 	$(CC) -o $@ $< $(CFLAGS) $(LDFLAGS) -lowfat
+ 
+-CC:=$(DIET) $(CC)
++override CC:=$(DIET) $(CC)
+ 
+ pthreadbench: pthreadbench.o
+ 	$(CC) $< -o $@ -I. $(CFLAGS) $(LDFLAGS) $(LDLIBS) -lpthread

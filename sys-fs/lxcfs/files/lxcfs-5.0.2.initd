@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+DAEMON=/usr/bin/lxcfs
+PIDFILE=/run/lxcfs.pid
+
+start() {
+	ebegin "Starting lxcfs."
+	/sbin/modprobe -q fuse
+	install -d "${LXCFS_PATH}"
+	start-stop-daemon --start \
+			--pidfile ${PIDFILE} \
+			--exec ${DAEMON} \
+			--background \
+			--make-pidfile \
+			-- ${LXCFS_OPTS} \
+			"${LXCFS_PATH}"
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping lxcfs."
+	/usr/bin/fusermount3 -u "${LXCFS_PATH}"
+	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+	eend ${?}
+}

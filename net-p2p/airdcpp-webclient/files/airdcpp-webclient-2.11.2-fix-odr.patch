@@ -1,0 +1,22 @@
+From 5f12f803c2fc0450111152e2ea5f649ed92f4b7f Mon Sep 17 00:00:00 2001
+From: maksis <maksis@adrenaline-network.com>
+Date: Thu, 13 Oct 2022 22:05:35 +0300
+Subject: [PATCH] Build: define the HAVE_POSIX_FADVISE flag correctly
+
+Fixes https://github.com/airdcpp-web/airdcpp-webclient/issues/425
+---
+ airdcpp-core/CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+--- a/airdcpp-core/CMakeLists.txt
++++ b/airdcpp-core/CMakeLists.txt
+@@ -75,8 +75,7 @@ if (HAVE_MNTENT_H)
+ endif (HAVE_MNTENT_H)
+ 
+ if (HAVE_POSIX_FADVISE)
+-    set_property(SOURCE ${PROJECT_SOURCE_DIR}/airdcpp/File.cpp PROPERTY COMPILE_DEFINITIONS HAVE_POSIX_FADVISE APPEND)
+-		set_property(SOURCE ${PROJECT_SOURCE_DIR}/airdcpp/File.h PROPERTY COMPILE_DEFINITIONS HAVE_POSIX_FADVISE APPEND)
++    add_definitions (-DHAVE_POSIX_FADVISE)
+ endif (HAVE_POSIX_FADVISE)
+ 
+ 

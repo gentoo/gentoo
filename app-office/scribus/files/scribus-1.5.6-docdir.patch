@@ -1,0 +1,29 @@
+diff --git a/CMakeLists_Directories.cmake b/CMakeLists_Directories.cmake
+index db6133f..faf85ce 100644
+--- a/CMakeLists_Directories.cmake
++++ b/CMakeLists_Directories.cmake
+@@ -36,14 +36,16 @@ else()
+ endif()
+ 
+ #SHARE - use the default on Apple as TAG_VERSION is empty
+-if(WIN32 OR OS2)
+-	set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/")
+-elseif(TAG_VERSION OR BUILD_OSX_BUNDLE)
+-	set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}${TAG_VERSION}/")
+-elseif(NOT WANT_VERSIONING)
+-	set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}/")
+-else()
+-	set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}-${VERSION}/")
++if(NOT DOCDIR)
++	if(WIN32 OR OS2)
++		set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/")
++	elseif(TAG_VERSION OR BUILD_OSX_BUNDLE)
++		set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}${TAG_VERSION}/")
++	elseif(NOT WANT_VERSIONING)
++		set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}/")
++	else()
++		set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}-${VERSION}/")
++	endif()
+ endif()
+ 
+ if(IS_ABSOLUTE ${DOCDIR} AND WANT_RELOCATABLE)

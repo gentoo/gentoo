@@ -1,0 +1,57 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# System-wide defaults for the Portage system
+# See portage(5) manpage
+#
+# Please avoid enabling things by default in here if possible. Understand any 
+# implications with core packages.  For example, if "java" is in USE and db 
+# has a conditional dependency on java (which it does,) then a JDK will be 
+# pulled in during *emerge system*!
+
+
+# Default starting set of USE flags for all default/linux profiles.
+USE="crypt ipv6 ncurses nls pam readline ssl zlib"
+
+# Security ftw.
+USE="${USE} seccomp"
+
+# Ole Markus With <olemarkus@gentoo.org> (2010-10-21)
+# These USE flags were originally inserted here because of PHP
+# and were later removed by me. Reinserting the USE flags again because they are
+# global USE flags that may be expected to be set by other packages.
+USE="${USE} cli pcre"
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
+# Modular X: Support direct rendering by default
+# Andreas K. Huettel <dilfridge@gentoo.org> (2013-01-21)
+# Re-added following discussion with chithead
+USE="${USE} dri"
+
+# Luca Barbato <lu_zero@gentoo.org> (2006-10-28)
+# on glibc system you cannot turn it off
+USE="${USE} iconv"
+
+# Matt Turner <mattst88@gentoo.org> (2017-01-17)
+# Sane defaults for input drivers
+INPUT_DEVICES="libinput"
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
+# Lowest common denominator defaults for video drivers,
+# except hppa, which lacks v4l so removes it in the hppa profile
+VIDEO_CARDS="dummy fbdev v4l"
+
+# Doug Goldstein <cardoe@gentoo.org> (2008-07-09)
+# Adding LDFLAGS="-Wl,-O1 for all Linux profiles by default
+# after discussion on the gentoo-dev ML. As we bang out a clear
+# direction with how LDFLAGS will be set by default, this entry
+# may move.
+# Samuli Suominen <ssuominen@gentoo.org> (2010-07-12)
+# Note that adding LDFLAGS="-Wl,-O1 ${LDFLAGS}" breaks dev-util/boost-build
+# because of whitespace.
+LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+
+# Mike Gilbert <floppym@gentoo.org> (2021-12-17)
+# Prevent automagic use of 64-bit time_t.
+# https://bugs.gentoo.org/828001
+enable_year2038="no"

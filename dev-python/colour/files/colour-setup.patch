@@ -1,0 +1,8 @@
+--- a/setup.py
++++ b/setup.py
+@@ -60,5 +60,4 @@ if "0.1.5".startswith("%%"):
+ 
+ setup(
+     extras_require={'test': ['nose', ]},
+-    d2to1=True
+ )

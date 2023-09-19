@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>dist-kernel@gentoo.org</email>
+		<name>Distribution Kernel Project</name>
+	</maintainer>
+	<use>
+		<flag name="grub">Re-generate grub.cfg on each kernel installation</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">projg2/installkernel-gentoo</remote-id>
+	</upstream>
+</pkgmetadata>

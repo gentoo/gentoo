@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/870949
+--- a/sig_pause.c
++++ b/sig_pause.c
+@@ -1,5 +1,9 @@
+ /* Public domain. */
+ 
++#ifndef _XOPEN_SOURCE
++#define _XOPEN_SOURCE 500
++#endif
++
+ #include <signal.h>
+ #include "sig.h"
+ #include "hassgprm.h"

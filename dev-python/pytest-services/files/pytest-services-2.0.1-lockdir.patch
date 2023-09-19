@@ -1,0 +1,23 @@
+diff -ur pytest-services-2.0.1.orig/pytest_services/folders.py pytest-services-2.0.1/pytest_services/folders.py
+--- pytest-services-2.0.1.orig/pytest_services/folders.py	2019-11-12 13:04:01.000000000 -0800
++++ pytest-services-2.0.1/pytest_services/folders.py	2019-11-20 23:26:55.760949590 -0800
+@@ -9,7 +9,7 @@
+ @pytest.fixture(scope='session')
+ def root_dir():
+     """The parent directory of the test base artifact directory."""
+-    return '/tmp'
++    return os.getenv("TMPDIR") or '/tmp'
+ 
+ 
+ @pytest.yield_fixture(scope='session')
+@@ -47,7 +47,8 @@
+ def memory_root_dir(root_dir):
+     """The parent directory of the test artifact directory in memory."""
+     # check for a free space for at least 8 parallel processes
+-    if os.path.exists('/dev/shm') and psutil.disk_usage('/dev/shm').free > 1024 * 1024 * 64 * 10:
++    if os.path.exists('/dev/shm') and psutil.disk_usage('/dev/shm').free > 1024 * 1024 * 64 * 10 \
++            and os.access('/dev/shm', os.W_OK):
+         return '/dev/shm'
+     return root_dir
+ 
+Only in pytest-services-2.0.1/pytest_services: .folders.py.un~

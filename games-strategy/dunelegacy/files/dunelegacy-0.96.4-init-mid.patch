@@ -1,0 +1,50 @@
+From e227fc26ffff199a6a659dbe954ff7b764658d4d Mon Sep 17 00:00:00 2001
+From: Richard Schaller <richard.schaller@gmx.de>
+Date: Sat, 30 Mar 2019 18:07:28 +0100
+Subject: [PATCH] Support for SDL_mixer 2.0.2 or higher: MIX_INIT_FLUIDSYNTH
+ was renamed to MIX_INIT_MID
+
+---
+ src/FileClasses/music/DirectoryPlayer.cpp | 4 ++++
+ src/FileClasses/music/XMIPlayer.cpp       | 6 ++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/src/FileClasses/music/DirectoryPlayer.cpp b/src/FileClasses/music/DirectoryPlayer.cpp
+index 531d971..05d800c 100644
+--- a/src/FileClasses/music/DirectoryPlayer.cpp
++++ b/src/FileClasses/music/DirectoryPlayer.cpp
+@@ -59,7 +59,11 @@ DirectoryPlayer::DirectoryPlayer() : MusicPlayer(settings.audio.playMusic, setti
+ 
+     music = nullptr;
+ 
++#if SDL_VERSIONNUM(SDL_MIXER_MAJOR_VERSION, SDL_MIXER_MINOR_VERSION, SDL_MIXER_PATCHLEVEL) >= SDL_VERSIONNUM(2,0,2)
++    Mix_Init(MIX_INIT_MID | MIX_INIT_FLAC | MIX_INIT_MP3 | MIX_INIT_OGG);
++#else
+     Mix_Init(MIX_INIT_FLUIDSYNTH | MIX_INIT_FLAC | MIX_INIT_MP3 | MIX_INIT_OGG);
++#endif
+ }
+ 
+ DirectoryPlayer::~DirectoryPlayer() {
+diff --git a/src/FileClasses/music/XMIPlayer.cpp b/src/FileClasses/music/XMIPlayer.cpp
+index a7e5150..0fcfa8f 100644
+--- a/src/FileClasses/music/XMIPlayer.cpp
++++ b/src/FileClasses/music/XMIPlayer.cpp
+@@ -30,9 +30,15 @@
+ XMIPlayer::XMIPlayer() : MusicPlayer(settings.audio.playMusic, settings.audio.musicVolume) {
+     music = nullptr;
+ 
++#if SDL_VERSIONNUM(SDL_MIXER_MAJOR_VERSION, SDL_MIXER_MINOR_VERSION, SDL_MIXER_PATCHLEVEL) >= SDL_VERSIONNUM(2,0,2)
++    if((Mix_Init(MIX_INIT_MID) & MIX_INIT_MID) == 0) {
++        SDL_Log("XMIPlayer: Failed to init required midi support: %s", SDL_GetError());
++    }
++#else
+     if((Mix_Init(MIX_INIT_FLUIDSYNTH) & MIX_INIT_FLUIDSYNTH) == 0) {
+         SDL_Log("XMIPlayer: Failed to init required midi support: %s", SDL_GetError());
+     }
++#endif
+ }
+ 
+ XMIPlayer::~XMIPlayer() {
+-- 
+2.24.1
+

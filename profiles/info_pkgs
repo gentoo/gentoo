@@ -1,0 +1,41 @@
+# Copyright 2004-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+##
+## These ATOMS are printed with a standard 'emerge info' in
+## portage as of 2.0.51-r5. Do not overcrowd the output please.
+##
+app-shells/bash:0
+sys-devel/autoconf
+sys-devel/automake
+sys-kernel/linux-headers
+sys-libs/glibc
+sys-libs/musl
+sys-devel/binutils
+sys-devel/binutils-config
+sys-devel/libtool
+sys-devel/make
+dev-lang/python
+dev-lang/perl
+dev-lang/rust
+dev-lang/rust-bin
+app-misc/pax-utils
+sys-apps/sandbox
+dev-util/ccache
+sys-devel/clang
+sys-devel/llvm
+sys-devel/lld
+sys-devel/gcc
+sys-devel/gcc-config
+dev-java/java-config
+dev-util/cmake
+dev-util/meson
+# NOTE: portage no longer list /etc/gentoo-release,
+# so this is not redundant
+sys-apps/baselayout
+sys-apps/openrc
+sys-apps/systemd
+
+# SELinux
+sec-policy/selinux-base
+sys-libs/libselinux

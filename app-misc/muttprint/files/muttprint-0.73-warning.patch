@@ -1,0 +1,19 @@
+--- a/muttprint
++++ b/muttprint
+@@ -740,6 +740,8 @@
+ 	}
+ }
+ 
++chdir($ENV{HOME}) || chdir('/');
++
+ ################################### ENDE ####################################
+ 
+ 
+@@ -1791,6 +1793,7 @@
+ 			output \*STDERR, $messageString;
+ 		}
+ 	}
++	chdir($ENV{HOME}) || chdir('/');
+ 	exit 1;
+ }
+ 

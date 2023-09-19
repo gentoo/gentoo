@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/903083
+https://github.com/shadow-maint/shadow/pull/691
+https://github.com/shadow-maint/shadow/commit/bd2d0079c90241f24671a7946a3ad175dc1a3aeb
+
+From fcb04de38a0ddc263288a1c450b35bfb1503d523 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 25 Mar 2023 21:16:55 -0400
+Subject: [PATCH] usermod: respect --prefix for --gid option
+
+The --gid option accepts a group name or id. When a name is provided, it
+is resolved to an id by looking up the name in the group database
+(/etc/group).
+
+The --prefix option overides the location of the passwd and group
+databases. I suspect the --gid option was overlooked when wiring up the
+--prefix option.
+
+useradd --gid already respects --prefix; this change makes usermod
+behave the same way.
+
+Fixes: b6b2c756c91806b1c3e150ea0ee4721c6cdaf9d0
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+--- a/src/usermod.c
++++ b/src/usermod.c
+@@ -1072,7 +1072,7 @@ static void process_flags (int argc, char **argv)
+ 				fflg = true;
+ 				break;
+ 			case 'g':
+-				grp = getgr_nam_gid (optarg);
++				grp = prefix_getgr_nam_gid (optarg);
+ 				if (NULL == grp) {
+ 					fprintf (stderr,
+ 					         _("%s: group '%s' does not exist\n"),

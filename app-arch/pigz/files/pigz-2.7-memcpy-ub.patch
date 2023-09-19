@@ -1,0 +1,26 @@
+https://github.com/madler/pigz/commit/e1ed230a1599a3cb64c8f5c003cced60e10e3314
+https://github.com/madler/pigz/issues/107
+
+From e1ed230a1599a3cb64c8f5c003cced60e10e3314 Mon Sep 17 00:00:00 2001
+From: Mark Adler <madler@alumni.caltech.edu>
+Date: Sat, 31 Dec 2022 21:28:26 -0800
+Subject: [PATCH] Avoid calling memcpy() with a NULL pointer.
+
+This is not permitted by the C99 standard even when the length is
+zero. Go figure.
+--- a/pigz.c
++++ b/pigz.c
+@@ -3414,8 +3414,10 @@ local int outb(void *desc, unsigned char *buf, unsigned len) {
+ 
+         // copy the output and alert the worker bees
+         out_len = len;
+-        g.out_tot += len;
+-        memcpy(out_copy, buf, len);
++        if (len) {
++            g.out_tot += len;
++            memcpy(out_copy, buf, len);
++        }
+         twist(outb_write_more, TO, 1);
+         twist(outb_check_more, TO, 1);
+ 
+

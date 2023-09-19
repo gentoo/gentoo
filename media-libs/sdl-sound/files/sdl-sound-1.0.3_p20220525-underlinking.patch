@@ -1,0 +1,45 @@
+https://github.com/icculus/SDL_sound/pull/80
+
+From 83f33e04125517197520e26452d06b81c2d7b429 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 12 Nov 2022 02:49:21 +0000
+Subject: [PATCH] Fix underlinking with lld (missing -lm)
+
+We need to explicitly search for and link with -lm if needed by
+libc for math libraries like `log` and `sin`:
+```
+ld.lld: error: undefined reference due to --no-allow-shlib-undefined: sin
+>>> referenced by ../.libs/libSDL_sound.so
+
+ld.lld: error: undefined reference due to --no-allow-shlib-undefined: log
+>>> referenced by ../.libs/libSDL_sound.so
+```
+
+It turns out Gentoo has actually had a patch for this since 2012 (mea
+culpa!) but it never made its way upstream.
+
+We're already using libtool, so just use the macro it provides for
+this purpose.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -12,7 +12,7 @@ endif
+ SDLSOUND_HDRS = SDL_sound.h
+ SDLSOUND_SRCS = SDL_sound.c SDL_sound_internal.h alt_audio_convert.c alt_audio_convert.h audio_convert.c
+ SDLSOUND_LDFLAGS = -no-undefined -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+-SDLSOUND_LIBADD = decoders/libdecoders.la $(TIMIDITY_LIB)
++SDLSOUND_LIBADD = decoders/libdecoders.la $(TIMIDITY_LIB) $(LIBM)
+ 
+ if USE_SDL2
+ lib_LTLIBRARIES = libSDL2_sound.la
+--- a/configure.ac
++++ b/configure.ac
+@@ -54,6 +54,7 @@ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ LT_INIT([win32-dll])
++LT_LIB_M
+ PKG_PROG_PKG_CONFIG
+ 
+ 

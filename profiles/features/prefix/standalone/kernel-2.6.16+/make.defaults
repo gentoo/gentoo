@@ -1,0 +1,22 @@
+# Copyright 2018-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This profile is supporting >=linux-2.6.16[a] and <linux-2.6.32[b].
+
+# a. https://sourceware.org/ml/libc-announce/2012/msg00001.html
+# lowest version supported by glibc-2.17 to glibc-2.19.
+
+# b. https://sourceware.org/ml/libc-alpha/2014-09/msg00088.html
+# lowest version supported by glibc-2.20 onwards.
+
+
+# utimensat is missing or not reliable until linux-2.6.32.
+# needed by python-3.
+# lutimes requires utimensat
+ac_cv_func_utimensat=no
+ac_cv_func_lutimes=no
+# pipe2 and dup3 requires >=linux-2.6.27.  Needed by python-3.
+ac_cv_func_pipe2=no
+ac_cv_func_dup3=no
+# epoll_create1 requires >=linux-2.6.27.
+ac_cv_func_epoll_create1=no

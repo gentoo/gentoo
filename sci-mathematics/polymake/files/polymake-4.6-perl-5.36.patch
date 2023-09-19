@@ -1,0 +1,15 @@
+diff -up lib/core/src/perl/RefHash.xxs.orig lib/core/src/perl/RefHash.xxs
+--- a/lib/core/src/perl/RefHash.xxs	2022-06-06 10:35:17.689807548 +0200
++++ b/lib/core/src/perl/RefHash.xxs	2022-06-06 10:37:12.935663947 +0200
+@@ -71,7 +71,11 @@ SV* tmp_keysv::set(SV* keysv)
+    Copy(obj.keyp, HEK_KEY(hekp), sizeof(SV*), char);
+    HEK_LEN(hekp) = sizeof(SV*);
+    HEK_HASH(hekp) = U32(obj.keyl >> 4);          // hash value
++#if PerlVersion < 5360
+    HEK_FLAGS(hekp) = HVhek_UNSHARED;
++#else
++   HEK_FLAGS(hekp) = HVhek_NOTSHARED;
++#endif
+    sv.sv_any = &xpv;
+    sv.sv_refcnt = 1;
+    sv.sv_flags = SVt_PVIV | SVf_IVisUV | SVf_POK | SVp_POK | PmFlagsForHashKey;

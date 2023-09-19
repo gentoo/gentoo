@@ -1,0 +1,32 @@
+set default settings
+unset gentoo unsupportede packages (m2vrequantizer)
+disable unneeded menuentrys
+
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (12 Feb 2012)
+diff -Naur burn-0.2.0.orig/setup.c burn-0.2.0/setup.c
+--- burn-0.2.0.orig/setup.c	2012-02-12 20:14:01.000000000 +0100
++++ burn-0.2.0/setup.c	2012-02-12 20:18:10.000000000 +0100
+@@ -88,10 +88,10 @@
+ 	//!--- plugin_setup -----------------------------------------------------------
+ 
+ 	plugin_setup::plugin_setup():
+-			PROCTOOLS_INIT_PROPERTY( RemovePath,          false ),
++			PROCTOOLS_INIT_PROPERTY( RemovePath,          true ),
+ 			PROCTOOLS_INIT_PROPERTY( CustomDiskSize,      200 ),
+ 			PROCTOOLS_INIT_PROPERTY( BurnSpeed,           0 ),
+-			PROCTOOLS_INIT_PROPERTY( RequantType,         requanttype_metakine ),
++			PROCTOOLS_INIT_PROPERTY( RequantType,         requanttype_transcode ),
+ 			PROCTOOLS_INIT_PROPERTY( PreserveLogFiles,    false ),
+ 			PROCTOOLS_INIT_PROPERTY( DefaultLanguage,     0 ),
+ 			PROCTOOLS_INIT_PROPERTY( MainMenuStatus,      true ),
+@@ -226,8 +226,8 @@
+ 		m_defaults = job_defaults();
+ 
+ 		Add( new menu::text_item( tr("--- Common settings --------------------------------------------------") ) );
+-		Add( new menu::bool_edit_item( tr("Remove path component"), m_setup.RemovePath ) );
+-		Add( new menu::list_edit_item( tr("Requant using"), m_setup.RequantType, requanttype_strings ) );
++//		Add( new menu::bool_edit_item( tr("Remove path component"), m_setup.RemovePath ) );
++//		Add( new menu::list_edit_item( tr("Requant using"), m_setup.RequantType, requanttype_strings ) );
+ 		Add( new menu::number_edit_item( tr("Burn speed"), m_setup.BurnSpeed, 0, 32, tr("unlimited") ) );
+ 		Add( new menu::bool_edit_item( tr("Preserve logfiles"), m_setup.PreserveLogFiles ) );
+ 		Add( new menu::list_edit_item( tr("Spare language code"), m_setup.DefaultLanguage, track_info::get_language_codes(), false ) );

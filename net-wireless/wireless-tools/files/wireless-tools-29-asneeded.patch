@@ -1,0 +1,13 @@
+Index: wireless_tools.29/Makefile
+===================================================================
+--- wireless_tools.29.orig/Makefile
++++ wireless_tools.29/Makefile
+@@ -145,7 +145,7 @@ wireless.h:
+ 
+ # Compilation of the dynamic library
+ $(DYNAMIC): $(OBJS:.o=.so)
+-	$(CC) -shared -o $@ -Wl,-soname,$@ $(STRIPFLAGS) $(LIBS) -lc $^
++	$(CC) $(LDFLAGS) -shared -o $@ -Wl,-soname,$@ $(STRIPFLAGS) $^ $(LIBS) -lc
+ 
+ # Compilation of the static library
+ $(STATIC): $(OBJS:.o=.so)

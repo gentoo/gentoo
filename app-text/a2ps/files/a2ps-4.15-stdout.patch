@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/47691
+https://bugs.gentoo.org/47764
+https://lists.gnu.org/archive/html/bug-a2ps/2001-05/msg00000.html
+--- a/liba2ps/printers.c
++++ b/liba2ps/printers.c
+@@ -287,8 +287,8 @@ a2ps_printers_new (struct a2ps_common_s * common)
+   res->ppd = NULL;		/* Printer's ppd are not read yet */
+ 
+   /* Output */
+-  /* Default is to send to default printer */
+-  res->flag_output_is_printer = true;
++  /* Default is to send to stdout */
++  res->flag_output_is_printer = false;
+   res->flag_output_name = NULL;
+   res->output_is_file = true;
+   res->output_name = NULL;

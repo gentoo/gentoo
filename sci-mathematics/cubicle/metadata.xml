@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Cubicle is an open source model checker for verifying safety properties of
+    array-based systems. This is a syntactically restricted class of
+    parametrized transition systems with states represented as arrays indexed
+    by an arbitrary number of processes. Cache coherence protocols and mutual
+    exclusion algorithms are typical examples of such systems. Cubicle
+    model-checks by a symbolic backward reachability analysis on infinite sets
+    of states represented by specific simple formulas, called cubes. Cubicle is
+    based on ideas introduced by MCMT from which, in addition to revealing the
+    implementation details, it differs in a more friendly input language and a
+    concurrent architecture. Cubicle is written in OCaml. Its SMT solver is a
+    tightly integrated, lightweight and enhanced version of Alt-Ergo; and its
+    parallel implementation relies on the Functory library.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/cubicle-model-checker/cubicle/issues/</bugs-to>
+    <remote-id type="github">cubicle-model-checker/cubicle</remote-id>
+  </upstream>
+</pkgmetadata>

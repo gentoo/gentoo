@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+This extension allows you to use Python 3 annotations for documenting acceptable argument types and return value types of functions. This allows you to use type hints in a very natural fashion
+  </longdescription>
+  <upstream>
+    <remote-id type="github">tox-dev/sphinx-autodoc-typehints</remote-id>
+    <remote-id type="pypi">sphinx-autodoc-typehints</remote-id>
+  </upstream>
+  <stabilize-allarches/>
+</pkgmetadata>

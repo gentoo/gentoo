@@ -1,0 +1,15 @@
+*** ../bash-5.0-patched/builtins/shopt.def	2018-10-05 14:49:02.000000000 -0400
+--- builtins/shopt.def	2019-01-23 09:55:22.000000000 -0500
+***************
+*** 123,127 ****
+  #endif
+  
+! #if defined (SYSLOG_HISTORY) && defined (SYSLOG_SHOPT)
+  extern int syslog_history;
+  #endif
+--- 123,127 ----
+  #endif
+  
+! #if defined (SYSLOG_HISTORY)
+  extern int syslog_history;
+  #endif

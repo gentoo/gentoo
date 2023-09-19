@@ -1,0 +1,12 @@
+# Config file for /etc/init.d/resilio-sync
+
+# Various options.
+# run `rslsync --help` for valid cmdline options
+#OPTS="--log /var/log/resilio-sync/resilio-sync.log"
+
+# User and group daemon runs as
+#USER="rslsync"
+#GROUP="rslsync"
+
+# Resilio Sync config file
+#CONFIG="/etc/resilio-sync/config.json"

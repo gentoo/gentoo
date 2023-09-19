@@ -1,0 +1,21 @@
+From d2ad34b94c01b4e41cac6c6181d2ee0cf332c583 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Sat, 29 Jul 2023 11:51:45 +0200
+Subject: xscreensaver.service: start xscreensaver with --no-splash
+
+Prevents the splash screen being shown when the user logs in.
+
+--- a/driver/xscreensaver.service.in
++++ b/driver/xscreensaver.service.in
+@@ -9,7 +9,7 @@ ConditionUser=!@system
+ Conflicts=org.gnome.ScreenSaver org.cinnamon.ScreenSaver org.mate.ScreenSaver org.xfce.ScreenSaver light-locker
+ 
+ [Service]
+-ExecStart=/usr/bin/xscreensaver
++ExecStart=/usr/bin/xscreensaver --no-splash
+ Restart=on-failure
+ OOMScoreAdjust=-1000
+ 
+-- 
+2.41.0
+

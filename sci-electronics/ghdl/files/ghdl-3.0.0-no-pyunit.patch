@@ -1,0 +1,16 @@
+--- a/testsuite/testsuite.sh
++++ b/testsuite/testsuite.sh
+@@ -129,9 +129,10 @@ do_test() {
+ 
+     pyunit)
+       # The Python Unit testsuite: regression testsuite for Python bindings to libghdl
+-      gstart "[GHDL - test] pyunit"
+-      PYTHONPATH=$(pwd)/.. ${PYTHON:-python3} -m pytest -vsrA pyunit
+-      gend
++      # gstart "[GHDL - test] pyunit"
++      # PYTHONPATH=$(pwd)/.. ${PYTHON:-python3} -m pytest -vsrA pyunit
++      # gend
++      echo "Python Unit testsuite is disabled!"
+     ;;
+ 
+     vests)

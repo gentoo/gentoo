@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+
+description='tayga NAT64 gateway'
+pidfile=${pidfile:=/run/tayga.pid}
+user=${user:=nobody}
+group=${group:=nogroup}
+datadir=${datadir:=/var/db/tayga}
+
+command='/usr/sbin/tayga'
+command_args="--pidfile ${pidfile} -u ${user} -g ${group}"
+
+start_pre() {
+	checkpath --directory --owner ${user}:${group} ${datadir}
+	checkpath --owner ${user}:${group} ${datadir}/dynamic.map
+}
+
+

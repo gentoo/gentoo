@@ -1,0 +1,10 @@
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -51,6 +51,7 @@
+ #include <stdio.h>
+ #include <errno.h>
+ #include <string.h>
++#include <stdlib.h> /* exit() */
+ 
+ /****************************************************************************/
+ 

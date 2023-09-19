@@ -1,0 +1,28 @@
+From 6e6d6a70848cf006fabf48088cb4140c6d1858e7 Mon Sep 17 00:00:00 2001
+From: pavel <pavel.rosicky@easy.cz>
+Date: Tue, 1 Oct 2019 12:29:13 +0200
+Subject: [PATCH] kwargs
+
+---
+ test/test_performance.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_performance.rb b/test/test_performance.rb
+index c9e76c00f..f2ffde606 100644
+--- a/test/test_performance.rb
++++ b/test/test_performance.rb
+@@ -16,12 +16,12 @@ def stat(filename)
+ $dir_entires_calls = nil
+ class << Dir
+   alias_method :original_entries, :entries
+-  def entries(dirname, *args)
++  def entries(dirname, **args)
+     if $dir_entires_calls
+       $dir_entires_calls[dirname.to_s] ||= []
+       $dir_entires_calls[dirname.to_s] << caller
+     end
+-    original_entries(dirname, *args)
++    original_entries(dirname, **args)
+   end
+ end
+ 

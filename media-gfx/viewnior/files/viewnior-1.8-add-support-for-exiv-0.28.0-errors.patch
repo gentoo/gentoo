@@ -1,0 +1,62 @@
+# upstream PR: <https://github.com/hellosiyan/Viewnior/pull/130>
+
+From 60312f7435492338299d519e739da1f33df02f8c Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Tue, 16 May 2023 11:17:00 +0200
+Subject: [PATCH] add support for exiv-0.28.0 errors
+
+exiv2-0.28.0 changed Exiv2::AnyError to Exiv2::Error.
+---
+ src/uni-exiv2.cpp | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/src/uni-exiv2.cpp b/src/uni-exiv2.cpp
+index 77064c2..567a50f 100644
+--- a/src/uni-exiv2.cpp
++++ b/src/uni-exiv2.cpp
+@@ -28,6 +28,15 @@
+ 
+ #define ARRAY_SIZE(array) (sizeof array/sizeof(array[0]))
+ 
++#define EXIV_ERROR Exiv2::AnyError
++#ifdef EXIV2_VERSION
++    #ifdef EXIV2_TEST_VERSION
++        #if EXIV2_TEST_VERSION(0,28,0)
++            #define EXIV_ERROR Exiv2::Error
++        #endif
++    #endif
++#endif
++
+ static std::unique_ptr<Exiv2::Image> cached_image;
+ 
+ extern "C"
+@@ -81,7 +90,7 @@ uni_read_exiv2_map(const char *uri, void (*callback)(const char*, const char*, v
+                 }
+             }
+         }
+-    } catch (Exiv2::AnyError& e) {
++    } catch (EXIV_ERROR& e) {
+         std::cerr << "Exiv2: '" << e << "'\n";
+     }
+ }
+@@ -104,7 +113,7 @@ uni_read_exiv2_to_cache(const char *uri)
+         }
+ 
+         cached_image->readMetadata();
+-    } catch (Exiv2::AnyError& e) {
++    } catch (EXIV_ERROR& e) {
+         std::cerr << "Exiv2: '" << e << "'\n";
+     }
+ 
+@@ -134,7 +143,7 @@ uni_write_exiv2_from_cache(const char *uri)
+         cached_image.reset(nullptr);
+ 
+         return 0;
+-    } catch (Exiv2::AnyError& e) {
++    } catch (EXIV_ERROR& e) {
+         std::cerr << "Exiv2: '" << e << "'\n";
+     }
+ 
+-- 
+2.39.3
+

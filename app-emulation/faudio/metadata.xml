@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+FAudio is an XAudio reimplementation that focuses solely on developing fully accurate DirectX Audio runtime libraries
+for the FNA project, including XAudio2, X3DAudio, XAPO, and XACT3.
+
+Project Website: https://fna-xna.github.io/
+	</longdescription>
+	<use>
+		<flag name="dumpvoices">FAudio dumps buffer data to individual files with RIFF/XWMA headers, usable with players like ffplay/testxwma.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">FNA-XNA/FAudio</remote-id>
+	</upstream>
+</pkgmetadata>

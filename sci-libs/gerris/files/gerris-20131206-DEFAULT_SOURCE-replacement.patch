@@ -1,0 +1,16 @@
+Silence warnings due to _BSD_SOURCE being deprecated by glib:
+* /usr/include/features.h:148:3: warning: #warning "_BSD_SOURCE and
+* _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+* # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -108,7 +108,7 @@
+ AC_PROG_CC
+ 
+ # -D_GNU_SOURCE is only necessary for old (< 2.10) glibc implementations of open_memstream()
+-CFLAGS="$CFLAGS -D_XOPEN_SOURCE=700 -D_BSD_SOURCE -D_GNU_SOURCE"
++CFLAGS="$CFLAGS -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE -D_GNU_SOURCE"
+ if test x$GCC = xyes ; then
+   CFLAGS="$CFLAGS -Wall -Werror-implicit-function-declaration -Wmissing-prototypes -Wmissing-declarations -pipe -std=c99"
+ fi

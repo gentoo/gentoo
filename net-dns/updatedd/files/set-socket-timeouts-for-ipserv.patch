@@ -1,0 +1,36 @@
+Patch by Maciej S. Szmigiero to prevent ipserv from hanging when the
+other end of the connection goes AWOL.
+
+Gentoo-Bug: 602216
+
+--- a/scripts/ipserv.pl.in	2005-03-06 22:21:36.000000000 +0100
++++ b/scripts/ipserv.pl.in	2017-01-14 19:39:25.583277538 +0100
+@@ -20,6 +20,7 @@
+ 
+ use strict;
+ use IO::Socket;
++use IO::Socket::Timeout qw(IO::Socket::INET);
+ 
+ my $ipv4_rex = qr/(?:\d{1,3}\.){3}\d{1,3}/imosx;
+ 
+@@ -128,7 +129,8 @@
+ 	$socket = IO::Socket::INET->new(PeerAddr => $target->{url},
+ 					PeerPort => $target->{port},
+ 					Proto    => "tcp",
+-					Type     => SOCK_STREAM)
++					Type     => SOCK_STREAM,
++					Timeout  => 2 * 60)
+ 	    or $retries--;
+ 
+     } while(!defined($socket) && $retries != 0);
+@@ -137,6 +139,10 @@
+ 	die "could not connect to $target->{url}: $!";
+     }
+ 
++    IO::Socket::Timeout->enable_timeouts_on($socket);
++    $socket->read_timeout(2 * 60);
++    $socket->write_timeout(2 * 60);
++
+     if(defined($target->{request})) {
+ 	print($socket $target->{request});
+     }

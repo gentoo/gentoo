@@ -1,0 +1,14 @@
+[Unit]
+Description=Gmqtt Broker Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Environment=GMQTTD_OPTS="-c /etc/gmqtt/gmqttd.yml start"
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/gmqttd $GMQTTD_OPTS
+
+[Install]
+WantedBy=multi-user.target

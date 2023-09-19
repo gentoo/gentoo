@@ -1,0 +1,11 @@
+--- a/examples/readsdpa.c
++++ b/examples/readsdpa.c
+@@ -87,7 +87,7 @@
+   double   ddobj,ppobj,scl,dpot;
+   char     problemname[100],thisline[100], filename[300],savefile[100];
+   char     directory[100]="/home/benson/sdpexamples/sdplib/";
+-  char     outputfile[50]="",suffix[20]=".dat-s", tablename[20]="results-dsdp-5.8";
++  char     outputfile[50]="",suffix[20]=".dat-s", tablename[100]="results-dsdp-5.8";
+   char     success='s',sformat;
+   FILE     *fp1=0,*fp2=0,*fout;
+   DSDPData dddd;

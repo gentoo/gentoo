@@ -1,0 +1,41 @@
+The original Makefile did not pass CFLAGS and LDFLAGS
+See bug https://bugs.gentoo.org/727632
+Also remove -O3 and stripping
+--- a/vxp2ps/Makefile
++++ b/vxp2ps/Makefile
+@@ -3,16 +3,16 @@
+ all: vxp2ps vxp2tex vxp2dkw
+ 
+ vxp2ps: vxp2ps.c
+-	gcc vxp2ps.c -o vxp2ps -lm $(CFLAGSEXTRA)
++	$(CC) vxp2ps.c -o vxp2ps -lm $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+ 
+ vxp2tex: vxp2tex.c
+-	gcc vxp2tex.c -o vxp2tex -lm
++	$(CC) vxp2tex.c -o vxp2tex -lm $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+ 
+ vxp2dkw: vxp2dkw.c
+-	gcc vxp2dkw.c -o vxp2dkw -lm
++	$(CC) vxp2dkw.c -o vxp2dkw -lm $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+ 
+ install: all
+-	install -c -s vxp2ps vxp2tex vxp2dkw "$(DESTDIR)"/usr/bin
++	install -c vxp2ps vxp2tex vxp2dkw "$(DESTDIR)$(BINDIR)"
+ 
+ clean:
+ 	rm -f core *~ vxp2ps vxp2tex vxp2dkw
+--- a/util/Makefile
++++ b/util/Makefile
+@@ -10,10 +10,10 @@
+ endif
+ 
+ pdfconcat:
+-	$(CC) $(CFLAGS) -O3 -s -DNDEBUG=1 -DNO_CONFIG=1 -ansi -pedantic -Wunused -Wall -W -Wnested-externs -Winline -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wmissing-prototypes -Wmissing-declarations pdfconcat.c -o pdfconcat
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -DNDEBUG=1 -DNO_CONFIG=1 -ansi -pedantic -Wunused -Wall -W -Wnested-externs -Winline -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wmissing-prototypes -Wmissing-declarations pdfconcat.c -o pdfconcat
+ 
+ ppmtops:
+-	$(CC) $(CFLAGS) ppmtops.c -o ppmtops
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) ppmtops.c -o ppmtops
+ 
+ ifneq ($(WITH_PGF),no)
+ pgf2pnm: main.cpp pnm.cpp

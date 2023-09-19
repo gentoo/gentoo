@@ -1,0 +1,20 @@
+On the one hand the bundled upstream README only mentions sentry_test_unit
+as a test suite meant for the users to run, on the other comments
+in sentry_fuzz_json sources state that it has to be built in a very
+special - and performance-killing - way in order to work.
+
+--- a/tests/unit/CMakeLists.txt
++++ b/tests/unit/CMakeLists.txt
+@@ -89,6 +89,7 @@
+ 
+ add_test(NAME sentry_test_unit COMMAND sentry_test_unit)
+ 
++if(0)
+ add_executable(sentry_fuzz_json
+ 	${SENTRY_SOURCES}
+ 	fuzz.c
+@@ -114,3 +115,4 @@
+ endif()
+ 
+ add_test(NAME sentry_fuzz_json COMMAND sentry_fuzz_json)
++endif()

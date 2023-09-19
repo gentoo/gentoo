@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/828879
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,20 +16,12 @@ AM_SANITY_CHECK
+ AM_MAINTAINER_MODE
+ AM_WITH_DMALLOC
+ 
+-AC_PATH_GENERIC(imlib2, 1.0.0, [
+-  AC_SUBST(IMLIB_LIBS)
+-  AC_SUBST(IMLIB_CFLAGS) ],
+-  AC_MSG_ERROR(Cannot find imlib2: Is imlib2-config in the path?) )
+-
+-dnl the above doesn't work for some reason :/
+-IMLIB_LIBS=`imlib2-config --libs`
+-IMLIB_CFLAGS=`imlib2-config --cflags`
+-AC_SUBST(IMLIB_LIBS)
+-AC_SUBST(IMLIB_CFLAGS)
+-
+-LIBS="$LIBS -lm"
+-CFLAGS="$CFLAGS -Wall"
++PKG_PROG_PKG_CONFIG
++PKG_CHECK_MODULES([IMLIB], [imlib2 > 1.0])
++
++AC_CHECK_LIB([m],[cos])
+ 
++CFLAGS="$CFLAGS -Wall"
+ 
+ AC_OUTPUT([
+ Makefile

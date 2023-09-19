@@ -1,0 +1,22 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -10,8 +10,8 @@ CC = gcc
+ RM = /bin/rm
+ INSTALL = install
+ 
+-CFLAGS = -I../include -Wall -D__THREADS
+-LDFLAGS = -lpthread -lncurses 
++CFLAGS += -I../include -Wall -D__THREADS
++LIBS = -lpthread -lncurses 
+ 
+ SRC = bwmon.c
+ OBJS = $(SRC:.c=.o)
+@@ -19,7 +19,7 @@ OBJS = $(SRC:.c=.o)
+ all: bwmon
+ 
+ bwmon: $(OBJS)
+-	$(CC) $(LDFLAGS) -o ../$@ $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ../$@ $(OBJS) $(LIBS)
+ 
+ clean:
+ 	@for i in $(OBJS) *~ core bwmon; do \

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Gappa (Génération Automatique de Preuves de Propriétés Arithmétiques --
+    automatic proof generation of arithmetic properties) is a tool intended to
+    help verifying and formally proving properties on numerical programs
+    dealing with floating-point or fixed-point arithmetic.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.inria.fr/gappa/gappa/-/issues/</bugs-to>
+  </upstream>
+</pkgmetadata>

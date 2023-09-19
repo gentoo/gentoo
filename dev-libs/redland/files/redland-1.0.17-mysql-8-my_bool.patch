@@ -1,0 +1,15 @@
+--- a/src/rdf_storage_mysql.c
++++ b/src/rdf_storage_mysql.c
+@@ -445,11 +445,11 @@
+   /* Initialize closed MySQL connection handle */
+   connection->handle=mysql_init(connection->handle);
+ 
+ #ifdef HAVE_MYSQL_OPT_RECONNECT
+   if(1) {
+-    my_bool value=(context->reconnect) ? 1 : 0;
++    bool value=(context->reconnect) ? 1 : 0;
+     mysql_options(connection->handle, MYSQL_OPT_RECONNECT, &value);
+   }
+ #endif
+ 
+   /* Create connection to database for handle */

@@ -1,0 +1,27 @@
+Clang16 will not allow implicit function pointer types by default.
+
+Bug: https://bugs.gentoo.org/880941
+Upstream Bug report and patch: https://savannah.nongnu.org/bugs/index.php?63356
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/x11.c
++++ b/x11.c
+@@ -2259,7 +2259,7 @@ x_preparse_args(int *pargc, char ***pargv)
+     if (isEmpty(xvile_class))
+ 	xvile_class = MY_CLASS;
+ 
+-    XtSetErrorHandler(initial_error_handler);
++    XtSetErrorHandler((__attribute__((noreturn)) XtErrorHandler)runtime_error_handler);
+     memset(cur_win, 0, sizeof(*cur_win));
+     cur_win->top_widget = XtVaAppInitialize(&cur_win->app_context,
+ 					    xvile_class,
+@@ -2269,7 +2269,7 @@ x_preparse_args(int *pargc, char ***pargv)
+ 					    Nval(XtNgeometry, NULL),
+ 					    Nval(XtNinput, TRUE),
+ 					    NULL);
+-    XtSetErrorHandler(runtime_error_handler);
++    XtSetErrorHandler((__attribute__((noreturn)) XtErrorHandler)runtime_error_handler);
+     dpy = XtDisplay(cur_win->top_widget);
+ 
+     XtVaGetValues(cur_win->top_widget,

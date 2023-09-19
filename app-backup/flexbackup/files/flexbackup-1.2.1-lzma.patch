@@ -1,0 +1,114 @@
+--- flexbackup	2003-10-10 15:12:09.000000000 +0100
++++ flexbackup	2007-01-15 01:08:18.000000000 +0000
+@@ -687,6 +687,8 @@
+ 		$filename .= ".zip";
+ 	    } elsif ($cfg::compress eq "compress") {
+ 		$filename .= ".Z";
++	    } elsif ($cfg::compress eq "lzma") {
++		$filename .= ".lzma";
+ 	    }
+ 	} elsif ($cfg::type eq "afio") {
+ 	    # tag these a little different, the archive file itself isn't a
+@@ -701,6 +703,8 @@
+ 		$filename .= "-zip";
+ 	    } elsif ($cfg::compress eq "compress") {
+ 		$filename .= "-Z";
++	    } elsif ($cfg::compress eq "lzma") {
++		$filename .= "-lzma";
+ 	    }
+ 	}
+ 
+@@ -2700,7 +2704,7 @@
+     # First check if things are defined in the config file
+     # Checks exist, true/false, or one of options
+     &checkvar(\$cfg::type,'type','dump afio cpio tar star pax zip ar shar lha copy rsync filelist','tar');
+-    &checkvar(\$cfg::compress,'compress','gzip bzip2 lzop compress zip false hardware','gzip');
++    &checkvar(\$cfg::compress,'compress','gzip bzip2 lzop compress zip false hardware lzma','gzip');
+     &checkvar(\$cfg::compr_level,'compr_level','exist','4');
+     &checkvar(\$cfg::verbose,'verbose','bool','true');
+     &checkvar(\$cfg::sparse,'sparse','bool','true');
+@@ -3001,6 +3005,16 @@
+ 	    $::z = " | $::path{zip} -$cfg::compr_level - -";
+ 	    $::unz = "$::path{funzip} | ";
+ 	}
++    } elsif ($cfg::compress eq "lzma") {
++	$::path{'lzma'} = &checkinpath($cfg::compress);
++	push(@::remoteprogs, $::path{$cfg::compress});
++	if ($cfg::compr_level !~ m/^[123456789]$/) {
++	    push(@::errors,"\$compr_level must be set to 1-9");
++	} else {
++	    $::z = " | $::path{$cfg::compress} -$cfg::compr_level ";
++	}
++	$::unz = "$::path{$cfg::compress} -d | ";
++
+     } else {
+ 	$::z = "";
+ 	$::unz = "";
+@@ -3252,6 +3266,10 @@
+ 		$::afio_z_flag = "-P $::path{$cfg::compress} -Q -c -Z";
+ 		$::afio_unz_flag = "-P $::path{$cfg::compress} -Q -d -Q -c -Z";
+ 
++	    } elsif ($cfg::compress eq "lzma") {
++		$::afio_z_flag = "-P $::path{$cfg::compress} -Q -$cfg::compr_level -Z";
++		$::afio_unz_flag = "-P $::path{$cfg::compress} -Q -d -Z";
++
+ 	    }
+ 	    $::unz = ""; # Reset & just use this for reading the archive file.
+ 
+@@ -3415,7 +3433,7 @@
+ 	$::path{'lha'} = &checkinpath('lha');
+ 	push(@::remoteprogs, $::path{'lha'});
+ 
+-	if ($cfg::compress =~ /^(gzip|bzip2|lzop|compress|zip)$/) {
++	if ($cfg::compress =~ /^(gzip|bzip2|lzop|compress|zip|lzma)$/) {
+ 	    warn("Using type \"lha\" with compress=$cfg::compress makes no sense");
+ 	    warn("Setting compression to false");
+ 	    $::unz = "";
+@@ -3781,7 +3799,7 @@
+ 
+     # Try and guess file types and commpression scheme
+     # might as well since we are reading from a file in this case
+-    if ($file =~ m/\.(dump|cpio|tar|star|pax|a|shar|filelist)\.(gz|bz2|lzo|Z|zip)$/) {
++    if ($file =~ m/\.(dump|cpio|tar|star|pax|a|shar|filelist)\.(gz|bz2|lzo|Z|zip|lzma)$/) {
+ 	$cfg::type = $1;
+ 	$cfg::compress = $2;
+ 	$cfg::type =~ s/^a$/ar/;
+@@ -3789,16 +3807,18 @@
+ 	$cfg::compress =~ s/bz2/bzip2/;
+ 	$cfg::compress =~ s/lzo/lzop/;
+ 	$cfg::compress =~ s/Z/compress/;
++	$cfg::compress =~ s/lzma/lzma/;
+ 	&log("| Auto-set to type=$cfg::type compress=$cfg::compress");
+ 	&optioncheck();                  # redo to set a few variables over
+ 
+-    } elsif ($file =~ m/\.afio-(gz|bz2|lzo|Z|zip)$/) {
++    } elsif ($file =~ m/\.afio-(gz|bz2|lzo|Z|zip|lzma)$/) {
+ 	$cfg::type = "afio";
+ 	$cfg::compress = $1;
+ 	$cfg::compress =~ s/gz/gzip/;
+ 	$cfg::compress =~ s/bz2/bzip2/;
+ 	$cfg::compress =~ s/lzo/lzop/;
+ 	$cfg::compress =~ s/Z/compress/;
++	$cfg::compress =~ s/lzma/lzma/;
+ 	&log("| Auto-set to type=$cfg::type compress=$cfg::compress");
+ 	&optioncheck();                  # redo to set a few variables over
+ 
+@@ -5686,3 +5706,5 @@
+ 
+     return($spinner[$index]);
+ }
++
++ 	  	 
+--- flexbackup.conf	2007-01-15 01:11:36.000000000 +0000
++++ flexbackup.conf.new	2007-01-15 01:21:46.000000000 +0000
+@@ -33,8 +33,8 @@
+ $prune{'/'} = "tmp proc";
+ 
+ # Compression
+-$compress = 'gzip'; # one of false/gzip/bzip2/lzop/zip/compress/hardware
+-$compr_level = '4'; # compression level (1-9) (for gzip/bzip2/lzop/zip)
++$compress = 'gzip'; # one of false/gzip/bzip2/lzop/zip/compress/hardware/lzma
++$compr_level = '4'; # compression level (1-9) (for gzip/bzip2/lzop/zip/lzma)
+ 
+ # Buffering program - to help streaming
+ $buffer = 'false';         # one of false/buffer/mbuffer

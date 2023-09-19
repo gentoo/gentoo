@@ -1,0 +1,36 @@
+--- a/ttf2pt1.1
++++ b/ttf2pt1.1
+@@ -109,7 +109,8 @@
+ ..
+ .\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+ .	\" AM - accent mark definitions
+-.bd B 3
++''' Next line commented because it garbles bold font when viewed with man-1.6
++'''.bd B 3
+ .	\" fudge factors for nroff and troff
+ .if n \{\
+ .	ds #H 0
+--- a/ttf2pt1_convert.1
++++ b/ttf2pt1_convert.1
+@@ -109,7 +109,8 @@
+ ..
+ .\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+ .	\" AM - accent mark definitions
+-.bd B 3
++''' Next line commented because it garbles bold font when viewed with man-1.6
++'''.bd B 3
+ .	\" fudge factors for nroff and troff
+ .if n \{\
+ .	ds #H 0
+--- a/ttf2pt1_x2gs.1
++++ b/ttf2pt1_x2gs.1
+@@ -109,7 +109,8 @@
+ ..
+ .\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+ .	\" AM - accent mark definitions
+-.bd B 3
++''' Next line commented because it garbles bold font when viewed with man-1.6
++'''.bd B 3
+ .	\" fudge factors for nroff and troff
+ .if n \{\
+ .	ds #H 0

@@ -1,0 +1,115 @@
+diff -ru 9libs-1.0/include/libc.h 9libs-1.0-fixed/include/libc.h
+--- 9libs-1.0/include/libc.h	1998-11-10 22:35:27.000000000 +0000
++++ 9libs-1.0-fixed/include/libc.h	2011-10-02 13:27:38.000000000 +0100
+@@ -57,14 +57,14 @@
+ extern	int	fprint(int, char *, ...);
+ extern	int	sprint(char *, char *, ...);
+ extern	int	snprint(char *, int, char *, ...);
+-extern	int	fmtinstall(int, int (*)(void *, Fconv *));
++extern	int	fmtinstall(int, int (*)(va_list, Fconv *));
+ extern	void	strconv(char *, Fconv *);
+ #if defined(PRINT_RUNES)
+ extern	void	Strconv(Rune *, Fconv *);
+ #endif
+-extern	int	numbconv(void *, Fconv *);
++extern	int	numbconv(va_list, Fconv *);
+ extern	int	fltconv(double, Fconv *);
+-extern	char *	doprint(char *, char *, char *, void *);
++extern	char *	doprint(char *, char *, char *, va_list);
+ 
+ /*
+  * argument parsing - lifted from tcs
+diff -ru 9libs-1.0/libplan9c/doprint.c 9libs-1.0-fixed/libplan9c/doprint.c
+--- 9libs-1.0/libplan9c/doprint.c	1998-11-10 22:35:28.000000000 +0000
++++ 9libs-1.0-fixed/libplan9c/doprint.c	2011-10-02 13:30:25.000000000 +0100
+@@ -73,12 +73,12 @@
+ 		0,	0,	0,	0,	0,	0,	0,	0,
+ };
+ 
+-static int (*fmtfns[16])(void *, Fconv *) = {
++static int (*fmtfns[16])(va_list, Fconv *) = {
+ 	numbconv,
+ };
+ 
+ int
+-fmtinstall(int c, int (*f)(void *, Fconv *))
++fmtinstall(int c, int (*f)(va_list, Fconv *))
+ {
+ 	int i;
+ 
+@@ -95,9 +95,8 @@
+ }
+ 
+ char *
+-doprint(char *s, char *es, char *format, void *argp)
++doprint(char *s, char *es, char *format, va_list ap)
+ {
+-	va_list ap = argp;
+ 	int c;
+ 	int percent = 0;
+ 	int dot = 0;
+@@ -218,7 +217,6 @@
+ 				if (r < 0)
+ 					f.f3 |= ~r;
+ 				else {
+-					ap += r;
+ 					s = f.out;
+ 					percent = 0;
+ 				}
+@@ -287,13 +285,12 @@
+ #endif
+ 
+ int
+-numbconv(void *o, Fconv *fp)
++numbconv(va_list ap, Fconv *fp)
+ {
+ 	static char digits[16] = "0123456789abcdef";
+ 	char buf[80];	/* arbitrary limit. enough digits, but no limit on f2 */
+ 	char *s = buf+sizeof(buf)-1;
+ 	char sign = 0;
+-	va_list ap = o;
+ 	int uc = 0;
+ 	unsigned long u;
+ 
+@@ -362,5 +359,5 @@
+ 		break;
+ 	}
+ 	strconv(s, fp);
+-	return ap-(va_list)o;
++	return 0;
+ }
+diff -ru 9libs-1.0/libplan9c/tdp.c 9libs-1.0-fixed/libplan9c/tdp.c
+--- 9libs-1.0/libplan9c/tdp.c	1998-11-10 22:35:28.000000000 +0000
++++ 9libs-1.0-fixed/libplan9c/tdp.c	2011-10-02 13:31:58.000000000 +0100
+@@ -122,27 +122,25 @@
+ } Rectangle;
+ 
+ int
+-Pconv(void *v, Fconv *fp)
++Pconv(va_list ap, Fconv *fp)
+ {
+ 	char str[50];
+-	va_list ap = v;
+ 	Point *p = va_arg(ap, Point *);
+ 
+ 	sprint(str, "(%d,%d)", p->x, p->y);
+ 	strconv(str, fp);
+-	return ap-(va_list)v;
++	return 0;
+ }
+ 
+ int
+-Rconv(void *v, Fconv *fp)
++Rconv(va_list ap, Fconv *fp)
+ {
+ 	char str[50];
+-	va_list ap = v;
+ 	Rectangle *r = va_arg(ap, Rectangle *);
+ 
+ 	sprint(str, "(%P,%P)", &r->min, &r->max);
+ 	strconv(str, fp);
+-	return ap-(va_list)v;
++	return 0;
+ }
+ 
+ int

@@ -1,0 +1,30 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -44,6 +44,7 @@
+ AM_PROG_CC_C_O
+ AC_PROG_CPP
+ AC_PROG_AWK
++AM_PROG_AR
+ AC_PROG_RANLIB
+ AC_PROG_LN_S
+ 
+@@ -112,7 +113,7 @@
+ # Checks for typedefs, structures, and compiler characteristics.
+ # ==============================================================
+ 
+-AM_C_PROTOTYPES
++AC_C_PROTOTYPES
+ AC_C_CONST
+ AC_TYPE_UID_T     dnl This checks for gid_t too.
+ AC_CHECK_TYPES([ssize_t])
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -42,7 +42,7 @@
+ heroeslvl_SOURCES = heroeslvl.c
+ 
+ heroes_LDADD = lvl/libhlvl.a media/libhmcommon.a ../lib/libheroes.a \
+-	       $(INTLLIBS) $(LIBALT_LOCAL_XLDADD) $(LIBALT_XLDADD)
++	       $(INTLLIBS) $(LIBALT_LOCAL_XLDADD) $(LIBALT_XLDADD) -lm
+ heroes_LDFLAGS = $(LIBALT_XLDFLAGS)
+ 
+ ## Depend upon Makefile because the value of LIBALT_LOCAL_LDADD might

@@ -1,0 +1,39 @@
+newer gcc versions will output .text.unlikely which this linker script
+doesn't expect
+
+https://bugs.gentoo.org/363535
+
+--- a/scripts/ldscript-crom.ld
++++ b/scripts/ldscript-crom.ld
+@@ -21,7 +21,7 @@ SECTIONS {
+ 
+ 	.text LOW_ROM : AT ( 0 ){
+ 		_start_low_rom = . ;
+-		*(.text);
++		*(.text .text.*);
+ 		_end_low_rom = . ;
+ 	}
+ 
+@@ -67,4 +67,5 @@ SECTIONS {
+ 	
+ 	_end_complete_rom = SIZEOF(.text) + SIZEOF(.rodata) + SIZEOF(.data) + SIZEOF(.bss);
+ 
++	/DISCARD/ : { *(.eh_frame) }
+ }
+--- a/boot_rom/bootrom.ld
++++ b/boot_rom/bootrom.ld
+@@ -31,7 +31,7 @@ SECTIONS {
+ 	.text (RAM_CODE) : AT( SIZEOF(.low_rom) ) {
+ 		_ram_location = .;
+ 		_start_ramcopy = _end_rom;
+-		*(.text);
++		*(.text .text.*);
+ 		_start_checksum = _start_ramcopy - LOW_ROM;
+ 	}
+ 
+@@ -74,4 +74,5 @@ SECTIONS {
+ 	} = 0x90909090      
+ */
+ 
++	/DISCARD/ : { *(.eh_frame) }
+ }

@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# adapted from Pavel Curtis' restart.sh
+
+depend() {
+	need net
+}
+
+check_setup() {
+	if [ ! -r ${DB_PREFIX}.db ] ; then
+		eerror "Unable to read ${DB_PREFIX}.db"
+		return 1
+	fi
+
+	if [ -r ${DB_PREFIX}.db.new ] ; then
+		mv ${DB_PREFIX}.db ${DB_PREFIX}.db.old
+		mv ${DB_PREFIX}.db.new ${DB_PREFIX}.db
+		#Pavel compressed the old db here, I have not to save start time.
+	fi
+
+	if [ -f /var/log/lambdamoo.log ] ; then
+		cat /var/log/lambdamoo.log >> /var/log/lambdamoo.log.old
+		rm /var/log/lambdamoo.log
+	fi
+
+	return 0
+}
+
+start() {
+	check_setup || return 1
+
+	ebegin "Starting LambdaMOO"
+	echo "`date`: RESTARTED" >> ${DB_PREFIX}.log
+	start-stop-daemon --start --startas /usr/sbin/moo \
+	                  --pidfile /var/run/LambdaMOO.pid --make-pidfile \
+			  -- -l /var/log/lambdamoo.log ${DB_PREFIX}.db ${DB_PREFIX}.db.new ${PORT} &
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping LambdaMOO"
+	start-stop-daemon -o --quiet --stop --pidfile /var/run/LambdaMOO.pid
+	eend $?
+	[ -f /var/run/LambdaMOO.pid ] && rm /var/run/LambdaMOO.pid
+}

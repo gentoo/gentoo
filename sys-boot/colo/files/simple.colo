@@ -1,0 +1,19 @@
+#:CoLo:#
+#
+# Simple CoLo boot script.
+
+# Turn serial on; if possible
+# - means: "ignore any failure", so if the machine has no serial device (such as
+# a Qube 2700), it will simply pretend the command never happened.
+-serial on
+
+# Mount the hard drive
+mount hda1
+
+# Loads the kernel into memory (and unzips if needed)
+# Makes sure this points at the correct kernel image
+load /boot/kernel.gz
+
+# Executes the loaded image with the specified command args
+# Change these args to suit your purposes
+execute root=/dev/hda5 console=ttyS0,115200

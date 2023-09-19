@@ -1,0 +1,14 @@
+[Unit]
+Description=Restore ip6tables firewall rules
+# if both are queued for some reason, don't store before restoring :)
+Before=ip6tables-store.service
+# sounds reasonable to have firewall up before any of the services go up
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ip6tables-restore -w -- /var/lib/ip6tables/rules-save
+
+[Install]
+WantedBy=basic.target

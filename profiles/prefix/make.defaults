@@ -1,0 +1,9 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Some USE-flags that only die-hards don't want:
+# readline:  to have some sane command line editing, e.g. in python
+# zlib:      for many things you just want gzip support
+# ncurses:   a nice working console drawing library
+# ssl:       encrypted connections are a nice feature
+USE="readline zlib ncurses ssl"

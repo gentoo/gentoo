@@ -1,0 +1,13 @@
+# https://github.com/teyjus/teyjus/issues/117 Version number not updated in release 2.1
+
+--- teyjus-2.1-orig/source/front/parseargs.ml	2015-07-06 08:07:17.000000000 +1000
++++ teyjus-2.1/source/front/parseargs.ml	2022-07-17 13:47:19.844819942 +1000
+@@ -24,7 +24,7 @@
+   in
+     List.flatten (List.map seperate dualSpecList)
+ 
+-let version = "2.0-b2"
++let version = "2.1"
+ 
+ let printVersion () =
+   print_endline ("Teyjus version " ^ version) ;

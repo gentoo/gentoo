@@ -1,0 +1,12 @@
+--- a/parsetimey.y
++++ b/parsetimey.y
+@@ -7,6 +7,9 @@
+ 
+ #define YYDEBUG 1
+ 
++int yyerror(char *s);
++int yylex(void);
++
+ time_t currtime;
+ struct tm exectm;
+ static int isgmt;

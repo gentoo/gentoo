@@ -1,0 +1,51 @@
+From 69d9dcb60c9e88084aba37545c77fd02fdc7df33 Mon Sep 17 00:00:00 2001
+From: Cebtenzzre <cebtenzzre@gmail.com>
+Date: Wed, 9 Aug 2023 18:42:00 -0400
+Subject: [PATCH] tests: fix failures caused by certain directory names
+
+Fixes #630
+--- a/tests/test_options/test_sorting.py
++++ b/tests/test_options/test_sorting.py
+@@ -158,15 +158,15 @@ def test_sort_by_regex():
+     create_file('xxx', 'aaab')
+     create_file('xxx', 'b')
+     create_file('xxx', 'c')
+-    create_file('xxx', '1/c')
+-    create_file('xxx', 'd')
++    create_file('xxx', 'd/e')
++    create_file('xxx', 'f')
+ 
+-    head, *data, footer = run_rmlint("-S 'r<1/c>x<d$>a'")
++    head, *data, footer = run_rmlint("-S 'r<d/e>x<f$>a'")
+ 
+     paths = [p['path'] for p in data]
+ 
+-    assert paths[0].endswith('1/c')
+-    assert paths[1].endswith('d')
++    assert paths[0].endswith('d/e')
++    assert paths[1].endswith('f')
+     assert paths[2].endswith('aaaa')
+     assert paths[3].endswith('aaab')
+     assert paths[4].endswith('b')
+@@ -206,16 +206,16 @@ def test_sort_by_regex_bad_input():
+ # regression test for GitHub issue #484
+ @with_setup(usual_setup_func, usual_teardown_func)
+ def test_regex_multiple_matches():
+-    paths = [
+-        '1/a', '1/a2', '1/b',
+-        '2/a', '2/a2', '2/b',
+-    ]
++    paths = [os.path.join(dname, bname)
++             for dname in ['unique_1', 'unique_2']
++             for bname in ['a', 'a2', 'b']]
++
+     for path in reversed(paths):
+         create_file('xxx', path)
+ 
+     # when multiple paths matched a regex, rmlint would not try the next criterion
+     # check multiple times because sort order was inconsistent before the fix
+     for _ in range(3):
+-        head, *data, foot = run_rmlint("-S 'r<1>x<a>l'")
++        head, *data, foot = run_rmlint("-S 'r<unique_1>x<a>l'")
+         assert len(data) == len(paths)
+         assert [e['path'] for e in data] == [os.path.join(TESTDIR_NAME, p) for p in paths]

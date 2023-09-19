@@ -1,0 +1,93 @@
+# -ansi breaks <linux/joystick.h>
+
+--- a/configure.in
++++ b/configure.in
+@@ -133,7 +133,7 @@
+ if test "$enable_warnings" = yes ; then
+ case "$CC" in *gcc*)
+ AC_MSG_RESULT(enabling selected compiler warnings)
+-CFLAGS="$CFLAGS -ansi -pedantic -Wall -Wno-implicit -Wno-long-long" ;;
++CFLAGS="$CFLAGS -Wall -Wno-implicit -Wno-long-long" ;;
+ *)
+ AC_MSG_RESULT(disabling warnings for non-gcc compiler) ;;
+ esac
+--- a/loader.c
++++ b/loader.c
+@@ -11,7 +11,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-char *strdup();
+ 
+ static int mbc_table[256] =
+ {
+--- a/main.c
++++ b/main.c
+@@ -8,7 +8,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-char *strdup();
+ 
+ #include <stdarg.h>
+ #include <signal.h>
+--- a/path.c
++++ b/path.c
+@@ -5,7 +5,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-char *strdup();
+ 
+ #ifdef ALT_PATH_SEP
+ #define SEP ';'
+--- a/rckeys.c
++++ b/rckeys.c
+@@ -4,7 +4,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-char *strdup();
+ 
+ #include "defs.h"
+ #include "rc.h"
+--- a/rcvars.c
++++ b/rcvars.c
+@@ -5,7 +5,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-char *strdup();
+ 
+ #include "defs.h"
+ #include "rc.h"
+--- a/sys/linux/fbdev.c
++++ b/sys/linux/fbdev.c
+@@ -10,7 +10,6 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
+-char *strdup();
+ #include <unistd.h>
+ #include <sys/mman.h>
+ #include <linux/fb.h>
+--- a/sys/linux/joy.c
++++ b/sys/linux/joy.c
+@@ -2,7 +2,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-char *strdup();
+ #include <linux/joystick.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+--- a/sys/oss/oss.c
++++ b/sys/oss/oss.c
+@@ -2,7 +2,6 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
+-char *strdup();
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>

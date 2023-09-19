@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -e /etc/qpage/qpage.cf ] ; then
+		eerror "You need a /etc/qpage/qpage.cf file first."
+		eerror "There is a sample file in /etc/qpage/."
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting qpage"
+	start-stop-daemon --start --quiet --exec /usr/bin/qpage -- -q 10
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping qpage"
+	start-stop-daemon --stop --quiet --exec /usr/bin/qpage
+	eend $?
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gio@eigenlab.org</email>
+		<name>Gioacchino Mazzurco</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		RetroShare is a Free and Open Source cross-platform, Friend-2-Friend
+		secure decentralised communication platform.
+		It lets you to securely chat and share files with your friends, family
+		and even unknown people using PGP to authenticate peers and OpenSSL
+		to encrypt all communication.
+		RetroShare provides filesharing, chat, mails, forums and channels.
+	</longdescription>
+	<use>
+		<flag name="cli">Enables terminal login support for retroshare-service</flag>
+		<flag name="jsonapi">Enables the new RetroShare JSON API</flag>
+		<flag name="libupnp">Enables UPnP port forwarding via <pkg>net-libs/libupnp</pkg></flag>
+		<flag name="miniupnp">Enables UPnP port forwarding via <pkg>net-libs/miniupnpc</pkg></flag>
+		<flag name="service">Enables the new RetroShare service</flag>
+		<flag name="sqlcipher">Enables GXS database encryption via SQLCipher</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/RetroShare/RetroShare/issues</bugs-to>
+		<remote-id type="github">RetroShare/RetroShare</remote-id>
+	</upstream>
+</pkgmetadata>

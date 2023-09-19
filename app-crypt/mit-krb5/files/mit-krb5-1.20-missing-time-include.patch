@@ -1,0 +1,20 @@
+https://github.com/krb5/krb5/commit/c3958cec43b598b25484b9805224c56f25f7a755
+https://bugs.gentoo.org/854561
+
+From: Greg Hudson <ghudson@mit.edu>
+Date: Tue, 29 Mar 2022 16:27:55 -0400
+Subject: [PATCH] Include time.h in kdb.h
+
+kdb.h uses time_t, and therefore must include <time.h> to ensure its
+definition.  Noticed when building t_sort_key_data.c on macOS.
+--- a/include/kdb.h
++++ b/include/kdb.h
+@@ -65,6 +65,7 @@
+ #ifndef KRB5_KDB5__
+ #define KRB5_KDB5__
+ 
++#include <time.h>
+ #include <krb5.h>
+ 
+ /* This version will be incremented when incompatible changes are made to the
+

@@ -1,0 +1,45 @@
+# _SC_LEVEL2_CACHE_LINESIZE is most probably Glibc specific define. Hence we
+# cannot use it with other libc's. Check if _SC_LEVEL2_CACHE_LINESIZE is
+# available or use custom function to get CPU cache size
+# Original patch was found here [1]
+# [1]: https://cgit.openembedded.org/meta-openembedded/plain/meta-oe/recipes-benchmark/libhugetlbfs/files/0003-alloc.c-Avoid-sysconf-_SC_LEVEL2_CACHE_LINESIZE-on-l.patch
+# Closes: https://bugs.gentoo.org/828830
+--- a/alloc.c
++++ b/alloc.c
+@@ -245,6 +245,24 @@ void free_huge_pages(void *ptr)
+ 	__free_huge_pages(ptr, 1);
+ }
+
++/*
++ * Avoid sysconf(_SC_LEVEL2_CACHE_LINESIZE) on linux
++ * Taken from the folling patch [1]
++ *
++ * [1]: https://cgit.openembedded.org/meta-openembedded/plain/meta-oe/recipes-benchmark/libhugetlbfs/files/0003-alloc.c-Avoid-sysconf-_SC_LEVEL2_CACHE_LINESIZE-on-l.patch
++ */
++#if !defined(_SC_LEVEL2_CACHE_LINESIZE)
++static size_t get_cacheline_size() {
++	FILE * fp = fopen("/sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size", "r");
++	unsigned int line_size = 0;
++	if (fp) {
++		fscanf(fp, "%d", &line_size);
++		fclose(fp);
++	}
++	return line_size;
++}
++#endif
++
+ /*
+  * Offset the buffer using bytes wasted due to alignment to avoid using the
+  * same cache lines for the start of every buffer returned by
+@@ -261,7 +279,11 @@ void *cachecolor(void *buf, size_t len, size_t color_bytes)
+
+ 	/* Lookup our cacheline size once */
+ 	if (cacheline_size == 0) {
++#if defined(_SC_LEVEL2_CACHE_LINESIZE)
+ 		cacheline_size = sysconf(_SC_LEVEL2_CACHE_LINESIZE);
++#else
++		cacheline_size = get_cacheline_size();
++#endif
+ 		linemod = time(NULL);
+ 	}
+

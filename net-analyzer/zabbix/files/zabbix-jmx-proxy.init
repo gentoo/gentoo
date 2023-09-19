@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+
+LISTEN_IP=${LISTEN_IP:-127.0.0.1}
+LISTEN_PORT=${LISTEN_PORT:-10052}
+START_POLLERS=${START_POLLERS:-5}
+TIMEOUT=${TIMEOUT:-3}
+
+PID_FILE="/run/zabbix-jmx-proxy"
+
+
+start() {
+  ZABBIX_OPTIONS="-Dzabbix.pidFile=$PID_FILE \
+	-Dzabbix.listenIP=$LISTEN_IP \
+	-Dzabbix.listenPort=$LISTEN_PORT \
+	-Dzabbix.startPollers=$START_POLLERS \
+	-Dzabbix.timeout=$TIMEOUT \
+	-Dsun.rmi.transport.tcp.responseTimeout=${TIMEOUT}000"
+
+  JAVA_OPTIONS="-server $JAVA_OPTIONS -Dlogback.configurationFile=logback-console.xml"
+
+  cd /opt/zabbix_java
+
+  CLASSPATH="lib"
+  for jar in lib/*.jar bin/*.jar; do
+        CLASSPATH="$CLASSPATH:$jar"
+  done
+
+  start-stop-daemon -m --background --pidfile $PID_FILE -- java $JAVA_OPTIONS -classpath $CLASSPATH $ZABBIX_OPTIONS com.zabbix.gateway.JavaGateway
+}
+
+stop() {
+  start-stop-daemon --stop --pidfile $PID_FILE
+}

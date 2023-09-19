@@ -1,0 +1,85 @@
+diff -Naur a/lib/freebl/freebl_base.gypi b/lib/freebl/freebl_base.gypi
+--- a/lib/freebl/freebl_base.gypi	2023-02-10 09:25:24.750840063 +0200
++++ b/lib/freebl/freebl_base.gypi	2023-02-10 09:28:01.621413675 +0200
+@@ -72,19 +72,6 @@
+             'mpi/mpi_amd64_common.S',
+             'mpi/mp_comba.c',
+           ],
+-          'conditions': [
+-            [ 'cc_is_clang==1 and fuzz!=1 and coverage!=1 and force_integrated_as!=1', {
+-              'cflags': [
+-                '-no-integrated-as',
+-              ],
+-              'cflags_mozilla': [
+-                '-no-integrated-as',
+-              ],
+-              'asflags_mozilla': [
+-                '-no-integrated-as',
+-              ],
+-            }],
+-          ],
+         }],
+         [ 'target_arch=="ia32"', {
+           'sources': [
+diff -Naur a/lib/freebl/freebl.gyp b/lib/freebl/freebl.gyp
+--- a/lib/freebl/freebl.gyp	2023-02-10 09:25:24.750840063 +0200
++++ b/lib/freebl/freebl.gyp	2023-02-10 09:27:43.549117181 +0200
+@@ -16,19 +16,6 @@
+       'dependencies': [
+         '<(DEPTH)/exports.gyp:nss_exports'
+       ],
+-      'conditions': [
+-        [ 'cc_is_clang==1 and force_integrated_as!=1', {
+-          'cflags': [
+-            '-no-integrated-as',
+-          ],
+-          'cflags_mozilla': [
+-            '-no-integrated-as',
+-          ],
+-          'asflags_mozilla': [
+-            '-no-integrated-as',
+-          ],
+-        }],
+-      ],
+     },
+     {
+       'target_name': 'intel-gcm-wrap_c_lib',
+@@ -325,19 +312,6 @@
+       'dependencies': [
+         '<(DEPTH)/exports.gyp:nss_exports'
+       ],
+-      'conditions': [
+-        [ 'cc_is_clang==1 and force_integrated_as!=1', {
+-          'cflags': [
+-            '-no-integrated-as',
+-          ],
+-          'cflags_mozilla': [
+-            '-no-integrated-as',
+-          ],
+-          'asflags_mozilla': [
+-            '-no-integrated-as',
+-          ],
+-        }],
+-      ],
+     },
+     {
+       'target_name': 'ppc-gcm-wrap-nodepend_c_lib',
+diff -Naur a/lib/freebl/Makefile b/lib/freebl/Makefile
+--- a/lib/freebl/Makefile	2023-02-10 09:25:24.749840047 +0200
++++ b/lib/freebl/Makefile	2023-02-10 09:26:23.932810998 +0200
+@@ -731,15 +731,6 @@
+ # GCM binary needs -mssse3
+ #
+ $(OBJDIR)/$(PROG_PREFIX)intel-gcm-wrap$(OBJ_SUFFIX): CFLAGS += -mssse3
+-
+-# The integrated assembler in Clang 3.2 does not support % in the
+-# expression of a .set directive. intel-gcm.s uses .set to give
+-# symbolic names to registers, for example,
+-#     .set  Htbl, %rdi
+-# So we can't use Clang's integrated assembler with intel-gcm.s.
+-ifdef CC_IS_CLANG
+-$(OBJDIR)/$(PROG_PREFIX)intel-gcm$(OBJ_SUFFIX): CFLAGS += -no-integrated-as
+-endif
+ endif
+ 
+ ifdef INTEL_GCM_CLANG_CL

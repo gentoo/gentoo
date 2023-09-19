@@ -1,0 +1,28 @@
+From 209e9e0c21dd5bdf62d943dfd9caca40565734b5 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Mon, 28 Nov 2022 14:08:17 -0800
+Subject: [PATCH] respect CC variable
+
+https://github.com/grpc/grpc/pull/26480
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ src/python/grpcio/commands.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/python/grpcio/commands.py b/src/python/grpcio/commands.py
+index 58ab57be47..6d8228ffa0 100644
+--- a/src/python/grpcio/commands.py
++++ b/src/python/grpcio/commands.py
+@@ -228,7 +228,8 @@ class BuildExt(build_ext.build_ext):
+             """
+             try:
+                 # TODO(lidiz) Remove the generated a.out for success tests.
+-                cc_test = subprocess.Popen(['cc', '-x', 'c', '-std=c++14', '-'],
++                cc = os.environ.get('CC', 'cc')
++                cc_test = subprocess.Popen([cc, '-x', 'c', '-std=c++14', '-'],
+                                            stdin=subprocess.PIPE,
+                                            stdout=subprocess.PIPE,
+                                            stderr=subprocess.PIPE)
+-- 
+2.38.1
+

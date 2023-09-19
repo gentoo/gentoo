@@ -1,0 +1,59 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/vmtoolsd.pid"
+command="/usr/bin/vmtoolsd"
+command_args="-b ${pidfile}"
+
+vmblockmntpt="/proc/fs/vmblock/mountPoint"
+vmblockfusemntpt="/run/vmblock-fuse"
+
+depend() {
+	before checkfs fsck net X
+}
+
+start_vmblock() {
+	checkpath -d -m 1777 /tmp/VMwareDnD
+	if command -v vmware-vmblock-fuse > /dev/null; then
+		modprobe fuse > /dev/null 2>&1
+		checkpath -d "${vmblockfusemntpt}"
+		ebegin "Mounting vmblock-fuse"
+		vmware-vmblock-fuse \
+			-o subtype=vmware-vmblock,default_permissions,allow_other \
+			"${vmblockfusemntpt}"
+		eend $?
+	else
+		modprobe vmblock > /dev/null 2>&1
+		checkpath -d "${vmblockmntpt}"
+		ebegin "Mounting vmblock"
+		mount -t vmblock vmblock "${vmblockmntpt}"
+		eend $?
+	fi
+}
+
+stop_vmblock() {
+	if [ -d "${vmblockfusemntpt}" ]; then
+		ebegin "Unmounting vmblock-fuse"
+		umount "${vmblockfusemntpt}"
+		eend $?
+	else
+		ebegin "Unmounting vmblock"
+		umount "${vmblockmntpt}"
+		eend $?
+	fi
+}
+
+start_pre() {
+	if [ x"${VM_DRAG_AND_DROP}" = xyes ]; then
+		start_vmblock
+	fi
+	return 0
+}
+
+stop_post() {
+	if [ x"${VM_DRAG_AND_DROP}" = xyes ]; then
+		stop_vmblock
+	fi
+	return 0
+}

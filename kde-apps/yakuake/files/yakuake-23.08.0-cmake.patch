@@ -1,0 +1,28 @@
+From 0d0a3639b1c1e33aa49e979879e29064808a0a96 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 26 Aug 2023 12:49:24 +0200
+Subject: [PATCH] Fix broken HAVE_KWAYLAND assignment
+
+Fixes up commit 3e58132f2315b99d0d8c8c233a8183079356506a
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2d143f9..bfdcd12 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -80,7 +80,7 @@ if(NOT APPLE)
+     endif()
+ 
+     find_package(KF${KF_MAJOR_VERSION}Wayland ${KF_MIN_VERSION} CONFIG)
+-    set(HAVE_KWAYLAND KF${KF_MAJOR_VERSION}Wayland_FOUND)
++    set(HAVE_KWAYLAND ${KF${KF_MAJOR_VERSION}Wayland_FOUND})
+ endif()
+ 
+ add_subdirectory(app)
+-- 
+2.42.0
+

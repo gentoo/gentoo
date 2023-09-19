@@ -1,0 +1,34 @@
+diff --git a/tools/cross-wine32.in b/tools/cross-wine32.in
+index bfbe410..0064cf8 100644
+--- a/tools/cross-wine32.in
++++ b/tools/cross-wine32.in
+@@ -5,9 +5,10 @@ strip = 'strip'
+ pkgconfig = '@PKG_CONFIG@'
+ 
+ [properties]
+-c_args = ['-m32']
+-c_link_args = ['-m32', '-mwindows']
++c_args = @CFLAGS@ + ['-m32']
++c_link_args = @LDFLAGS@ + ['-m32', '-mwindows']
+ needs_exe_wrapper = true
++pkg_config_libdir = '@PKG_CONFIG_LIBDIR@'
+ 
+ [host_machine]
+ system = 'linux'
+diff --git a/tools/cross-wine64.in b/tools/cross-wine64.in
+index 5e19023..06b1f2a 100644
+--- a/tools/cross-wine64.in
++++ b/tools/cross-wine64.in
+@@ -5,9 +5,10 @@ strip = 'strip'
+ pkgconfig = '@PKG_CONFIG@'
+ 
+ [properties]
+-c_args = ['-m64']
+-c_link_args = ['-m64', '-mwindows']
++c_args = @CFLAGS@ + ['-m64']
++c_link_args = @LDFLAGS@ + ['-m64', '-mwindows']
+ needs_exe_wrapper = true
++pkg_config_libdir = '@PKG_CONFIG_LIBDIR@'
+ 
+ [host_machine]
+ system = 'linux'

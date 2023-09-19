@@ -1,0 +1,29 @@
+From 4c15aea1425ef19a5d68387e60abfab830fed20b Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Thu, 15 Jun 2023 22:05:29 +0300
+Subject: [PATCH] Fix major version detection of zita-resampler >=1.10
+
+https://github.com/brummer10/guitarix/pull/129
+
+Fixes #122
+--- a/waftools/zita-resampler.py
++++ b/waftools/zita-resampler.py
+@@ -18,10 +18,11 @@ def configure(conf):
+     code="""
+     #include <zita-resampler/resampler.h>
+     #include <zita-resampler/resampler-table.h>
+-    #if ZITA_RESAMPLER_MAJOR_VERSION != %d
+-    #error
+-    #endif
+-    int main(){ return 0; }
++    int main() {
++        int maj = zita_resampler_major_version();
++        if (maj == %d) { return 0; };
++        return 1;
++    }
+     """ % expected_zita_resampler_version
+     conf.check_cxx(
+         fragment=code,
+-- 
+2.39.3
+

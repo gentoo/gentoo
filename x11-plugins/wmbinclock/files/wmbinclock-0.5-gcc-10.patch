@@ -1,0 +1,39 @@
+diff -Naur wmbinclock-0.5.orig/wmBinClock.c wmbinclock-0.5/wmBinClock.c
+--- wmbinclock-0.5.orig/wmBinClock.c	2005-06-21 19:57:58.000000000 +0200
++++ wmbinclock-0.5/wmBinClock.c	2020-03-01 16:01:16.622171968 +0100
+@@ -72,6 +72,13 @@
+ int GotFirstClick3, GotDoubleClick3;
+ int DblClkDelay;
+ 
++Display		*display;
++Window          Root;
++Window          iconwin, win;
++int             screen; 
++int             DisplayDepth;
++GC NormalGC;
++
+ void IntToBinary(int x, int *str[]);
+ void PrintHelp(char err[]);
+ 
+diff -Naur wmbinclock-0.5.orig/xutils.h wmbinclock-0.5/xutils.h
+--- wmbinclock-0.5.orig/xutils.h	2005-02-04 23:06:34.000000000 +0100
++++ wmbinclock-0.5/xutils.h	2020-03-01 16:01:24.721173796 +0100
+@@ -18,12 +18,12 @@
+ /*
+  *   Global variable
+  */
+-Display		*display;
+-Window          Root;
+-Window          iconwin, win;
+-int             screen; 
+-int             DisplayDepth;
+-GC NormalGC;
++extern Display		*display;
++extern Window          Root;
++extern Window          iconwin, win;
++extern int             screen; 
++extern int             DisplayDepth;
++extern GC NormalGC;
+ 
+ 
+ 

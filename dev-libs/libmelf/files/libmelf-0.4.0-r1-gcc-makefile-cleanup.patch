@@ -1,0 +1,73 @@
+--- a/example/Makefile.in
++++ b/example/Makefile.in
+@@ -1,7 +1,11 @@
+-cc=@CC@
+ DEFINES=@DEFINES@
++CFLAGS=$(DEFINES) $(OPTFLAGS) -I..
++BINS = sign test new
+ 
+-all:
+-	${CC} ${DEFINES} -I.. -Wall -O3 sign.c -o sign ../libmelf.a
+-	${CC} ${DEFINES} -I.. -Wall -O3 test.c -o test ../libmelf.a
+-	${CC} ${DEFINES} -I.. -Wall -O3 new.c -o new ../libmelf.a
++%: %.c
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -o $@ -L.. -lmelf
++
++all: $(BINS)
++
++clean:
++	-rm -f $(BINS)
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,25 +1,23 @@
+-CC=gcc
+-
+ STATICBIN=libmelf.a
+ DYNAMICBIN=libmelf.so
+ DEBUG=
+ DEFINES=@DEFINES@ -DMELF_COMP
+ INCLUDES=-I.
+ PREFIX=@PREFIX@
+-CFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} -Wall -O3 -fPIC
+-LFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} -Wall -O3 -o
++CFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} ${OPTFLAGS}
++LFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} ${OPTFLAGS} -o
+ LIBS=
+ OBJS=melf.o melf_dynamic.o melf_elf.o melf_list.o melf_note.o melf_program.o melf_reloc.o \
+ 	  melf_res.o melf_section.o melf_string.o melf_symbol.o melf_symbolTable.o
+ 
+-all: ${OBJS}
+-	ar rc ${STATICBIN} ${OBJS} && ranlib ${STATICBIN}
+-	@SHAREDEXEC@
+-	cd example && make
+-	cd tools && make
++all: ${STATICBIN} ${DYNAMICBIN}
++	$(MAKE) -C example
++	$(MAKE) -C tools
+ 
+-*.c.${O}:
+-	${CC} ${CFLAGS} $*.c
++${STATICBIN}: ${OBJS}
++	$(AR) rc ${STATICBIN} ${OBJS} && $(RANLIB) ${STATICBIN}
++${DYNAMICBIN}: ${OBJS}
++	@SHAREDEXEC@
+ 
+ clean:
+ 	rm -f *.o ${STATICBIN} ${DYNAMICBIN} example/test example/new example/sign tools/elfres config.*
+--- a/tools/Makefile.in
++++ b/tools/Makefile.in
+@@ -1,8 +1,11 @@
+-cc=@CC@
+ DEFINES=@DEFINES@
++CFLAGS=$(DEFINES) $(OPTFLAGS) -I..
++BINS=elfres
+ 
+-all:
+-	${CC} ${DEFINES} -I.. -Wall -O3 elfres.c -o elfres ../libmelf.a
++%: %.c
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -o $@ -L.. -lmelf
++
++all: $(BINS)
+ 
+ clean:
+ 	rm -f elfres

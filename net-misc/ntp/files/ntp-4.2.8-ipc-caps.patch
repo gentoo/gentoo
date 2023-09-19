@@ -1,0 +1,16 @@
+http://bugs.ntp.org/show_bug.cgi?id=2646
+https://bugs.gentoo.org/533966
+
+--- a/ntpd/ntpd.c
++++ a/ntpd/ntpd.c
+@@ -971,8 +971,8 @@ getgroup:
+ 			char *captext;
+ 			
+ 			captext = (0 != interface_interval)
+-				      ? "cap_sys_time,cap_net_bind_service=pe"
+-				      : "cap_sys_time=pe";
++				      ? "cap_ipc_lock,cap_sys_time,cap_net_bind_service=pe"
++				      : "cap_ipc_lock,cap_sys_time=pe";
+ 			caps = cap_from_text(captext);
+ 			if (!caps) {
+ 				msyslog(LOG_ERR,

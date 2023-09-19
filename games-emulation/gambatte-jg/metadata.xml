@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		Gambatte JG is an emulator for the Nintendo Game Boy/Game Boy
+		Color. This is a fork of the final public revision of Gambatte.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/gambatte/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/gambatte</remote-id>
+	</upstream>
+</pkgmetadata>

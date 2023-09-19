@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 2019 Sony Interactive Entertainment Inc.
+# Distributed under the terms of the GNU General Public License v2
+
+name="consolation daemon"
+description=""
+command=/usr/sbin/consolation
+command_args="${consolation_args}"
+
+depend() {
+	need udev
+}

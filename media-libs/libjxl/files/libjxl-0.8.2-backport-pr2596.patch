@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/908939
+https://github.com/libjxl/libjxl/issues/2433
+https://github.com/libjxl/libjxl/pull/2596
+
+From 6a5cd1ff847e7b18ba8b87fcc11ada17dccb0692 Mon Sep 17 00:00:00 2001
+From: Sami Boukortt <sboukortt@google.com>
+Date: Thu, 22 Jun 2023 12:26:25 +0200
+Subject: [PATCH] Make sure to read the rendering intent before the CICP tag
+
+The code that reads the CICP tag exits the function if it succeeds, but
+it should not skip reading the rendering intent, so make sure to have
+already done it by that point.
+---
+ lib/jxl/enc_color_management.cc | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/lib/jxl/enc_color_management.cc b/lib/jxl/enc_color_management.cc
+index 752e3e02c0..2b519d152e 100644
+--- a/lib/jxl/enc_color_management.cc
++++ b/lib/jxl/enc_color_management.cc
+@@ -982,6 +982,14 @@ Status ColorEncoding::SetFieldsFromICC() {
+   Profile profile;
+   JXL_RETURN_IF_ERROR(DecodeProfile(context, icc_, &profile));
+ 
++  const cmsUInt32Number rendering_intent32 =
++      cmsGetHeaderRenderingIntent(profile.get());
++  if (rendering_intent32 > 3) {
++    return JXL_FAILURE("Invalid rendering intent %u\n", rendering_intent32);
++  }
++  // ICC and RenderingIntent have the same values (0..3).
++  rendering_intent = static_cast<RenderingIntent>(rendering_intent32);
++
+   static constexpr size_t kCICPSize = 12;
+   static constexpr auto kCICPSignature =
+       static_cast<cmsTagSignature>(0x63696370);
+@@ -993,14 +1001,6 @@ Status ColorEncoding::SetFieldsFromICC() {
+     return true;
+   }
+ 
+-  const cmsUInt32Number rendering_intent32 =
+-      cmsGetHeaderRenderingIntent(profile.get());
+-  if (rendering_intent32 > 3) {
+-    return JXL_FAILURE("Invalid rendering intent %u\n", rendering_intent32);
+-  }
+-  // ICC and RenderingIntent have the same values (0..3).
+-  rendering_intent = static_cast<RenderingIntent>(rendering_intent32);
+-
+   SetColorSpace(ColorSpaceFromProfile(profile));
+   if (cmsGetColorSpace(profile.get()) == cmsSigCmykData) {
+     cmyk_ = true;

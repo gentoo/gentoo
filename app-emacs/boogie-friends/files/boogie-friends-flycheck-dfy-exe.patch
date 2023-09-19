@@ -1,0 +1,11 @@
+--- a/dafny-mode.el
++++ b/dafny-mode.el
+@@ -553,7 +553,7 @@ open Dafny buffers."
+ 
+ (flycheck-define-command-checker 'dafny
+   "Flycheck checker for the Dafny programming language."
+-  :command '("Dafny" (eval (boogie-friends-compute-prover-args)) source-inplace)
++  :command '("dafny" (eval (boogie-friends-compute-prover-args)) source-inplace)
+   :error-patterns boogie-friends-error-patterns
+   :error-filter #'dafny-error-filter
+   :predicate #'dafny-predicate

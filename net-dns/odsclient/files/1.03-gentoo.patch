@@ -1,0 +1,21 @@
+--- a/client.c
++++ b/client.c
+@@ -40,7 +40,8 @@
+ 				ret = getret(s);
+ 				if(ret == 795 || ret == 796)
+ 				{
+-					fprintf(stderr, "Updated successfully\n");
++					fprintf(stderr, "Updated %s to %s successfully\n",
++					argv[3], ipaddress);
+ 					mydprintf(s, "QUIT\n");				
+ 					close(s);				
+ 					exit(0);
+@@ -50,7 +51,7 @@
+ 		
+ 		}	
+ 	}
+-	fprintf(stderr, "Unable to update host\n");
++	fprintf(stderr, "Unable to update %s\n", argv[3]);
+ 	return 1;
+ }
+ 

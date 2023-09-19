@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${GVM_USER:=gvm}
+: ${GVM_GROUP:=$(id -ng ${GVM_USER})}
+: ${GVM_TIMEOUT:=30}
+
+name="Greenbone Vulnerability Manager"
+command="/bin/true"
+command_background="true"
+command_user="${GSAD_USER}:${GSAD_GROUP}"
+pidfile="/run/gvm/gvm.pid"
+retry="${GSAD_TIMEOUT}"
+
+depend() {
+	after bootmisc
+	need localmount net redis-openvas ospd-openvas gvmd gsad
+	want notus-scanner
+}
+
+start_pre() {
+	mkdir /run/gvm
+	chown -R gvm:gvm /run/gvm/
+}

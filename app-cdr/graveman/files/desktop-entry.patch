@@ -1,0 +1,16 @@
+--- a/desktop/graveman.desktop.in
++++ b/desktop/graveman.desktop.in
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Graveman
+ Name[cs]=Graveman
+ Name[de]=Graveman
+@@ -48,5 +47,5 @@
+ Exec=graveman
+ Terminal=false
+ Type=Application
+-Icon=graveman48.png
+-Categories=Application;Utility;
++Icon=graveman48
++Categories=Utility;

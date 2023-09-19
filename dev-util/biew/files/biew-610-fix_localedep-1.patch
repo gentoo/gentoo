@@ -1,0 +1,26 @@
+The configure script of biew-6.1.0 fails with
+    Checking for C compiler name ... gcc-Version
+if using the de_DE.UTF-8 locale and sys-devel/gcc-4.5.2. It may fail with other
+locales and/or compilers, too. The problem occurs due to the fact that the
+string “gcc version” written by gcc for ‘gcc -v’ is translated according to the
+language (German in the case mentioned above).
+
+This patch makes sure that the POSIX locale is used when the biew configure
+script checks for the name of the compiler. This allows the configure script to
+parse the output properly.
+
+ –nico
+
+
+diff -Naur biew-610.orig/configure biew-610/configure
+--- biew-610.orig/configure	2009-11-13 15:52:36.000000000 +0100
++++ biew-610/configure	2011-01-13 11:11:59.000000000 +0100
+@@ -497,7 +497,7 @@
+ 
+ _cdefos="-DDATADIR='\"$_datadir\"'"
+ 
+-cc_name=`$_cc -v 2>&1 | tail -n 1 | cut -d ' ' -f 1`
++cc_name=`LC_ALL=POSIX $_cc -v 2>&1 | tail -n 1 | cut -d ' ' -f 1`
+ cc_version=`$_cc -dumpversion`
+ 
+ echocheck "C compiler name"

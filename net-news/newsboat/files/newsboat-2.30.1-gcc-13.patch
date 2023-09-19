@@ -1,0 +1,50 @@
+https://github.com/newsboat/newsboat/commit/ca1fe3c9fcea89fb9cc0a5ea8740732ae480c6bd
+https://github.com/newsboat/newsboat/commit/7ecea2591df830baea41c7b46b3c5d8a2cbd985e
+
+From ca1fe3c9fcea89fb9cc0a5ea8740732ae480c6bd Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sun, 8 Jan 2023 09:31:36 +0000
+Subject: [PATCH] include/listwidgetbackend.h: add missing <cstdint> include
+
+Upcoming `gcc-13` made `<string>` leaner and does not include `<cstdint>`
+implicitly anymore. As a result build fails without the change as:
+
+    include/listwidgetbackend.h:16:37: error: 'std::uint32_t' has not been declared
+       16 |         void stfl_replace_list(std::uint32_t number_of_lines, std::string stfl);
+          |                                     ^~~~~~~~
+--- a/include/listwidgetbackend.h
++++ b/include/listwidgetbackend.h
+@@ -1,6 +1,7 @@
+ #ifndef NEWSBOAT_LISTWIDGETBACKEND_H_
+ #define NEWSBOAT_LISTWIDGETBACKEND_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "listformatter.h"
+
+From 7ecea2591df830baea41c7b46b3c5d8a2cbd985e Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sun, 8 Jan 2023 09:32:59 +0000
+Subject: [PATCH] include/matcherexception.h: add missing <cstdint> include
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upcoming `gcc-13` made `<string>` leaner and does not include `<cstdint>`
+implicitly anymore. As a result build fails without the change as:
+
+    include/matcherexception.h:14:14: error: elaborated-type-specifier for a scoped enum must not use the «class» keyword [-Werror]
+       14 |         enum class Type : std::uint8_t { ATTRIB_UNAVAIL = 0, INVALID_REGEX = 1 };
+          |         ~~~~ ^~~~~
+          |              -----
+--- a/include/matcherexception.h
++++ b/include/matcherexception.h
+@@ -1,6 +1,7 @@
+ #ifndef NEWSBOAT_MATCHEREXCEPTON_H_
+ #define NEWSBOAT_MATCHEREXCEPTON_H_
+ 
++#include <cstdint>
+ #include <stdexcept>
+ #include <string>
+ 

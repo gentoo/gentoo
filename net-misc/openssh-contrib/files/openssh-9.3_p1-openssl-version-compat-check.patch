@@ -1,0 +1,58 @@
+https://bugzilla.mindrot.org/show_bug.cgi?id=3548
+--- a/openbsd-compat/openssl-compat.c
++++ b/openbsd-compat/openssl-compat.c
+@@ -48,19 +48,25 @@ ssh_compatible_openssl(long headerver, long libver)
+ 	if (headerver == libver)
+ 		return 1;
+ 
+-	/* for versions < 1.0.0, major,minor,fix,status must match */
+-	if (headerver < 0x1000000f) {
+-		mask = 0xfffff00fL; /* major,minor,fix,status */
+-		return (headerver & mask) == (libver & mask);
++	/*
++	 * For versions < 3.0.0, major,minor,status must match and library
++	 * fix version must be equal to or newer than the header.
++	 */
++	if (headerver < 0x3000000f) {
++		mask = 0xfff0000fL; /* major,minor,status */
++		hfix = (headerver & 0x000ff000) >> 12;
++		lfix = (libver & 0x000ff000) >> 12;
++		if ( (headerver & mask) == (libver & mask) && lfix >= hfix)
++			return 1;
+ 	}
+ 
+ 	/*
+-	 * For versions >= 1.0.0, major,minor,status must match and library
+-	 * fix version must be equal to or newer than the header.
++	 * For versions >= 3.0.0, major must match and minor,status must be
++	 * equal to or greater than the header.
+ 	 */
+-	mask = 0xfff00000L; /* major,minor,status */
+-	hfix = (headerver & 0x000ff000) >> 12;
+-	lfix = (libver & 0x000ff000) >> 12;
++	mask = 0xf000000fL; /* major, status */
++	hfix = (headerver & 0x0ffffff0L) >> 12;
++	lfix = (libver & 0x0ffffff0L) >> 12;
+ 	if ( (headerver & mask) == (libver & mask) && lfix >= hfix)
+ 		return 1;
+ 	return 0;
+--- a/openbsd-compat/regress/opensslvertest.c
++++ b/openbsd-compat/regress/opensslvertest.c
+@@ -31,7 +31,7 @@ struct version_test {
+ 	{ 0x0090802fL, 0x0090804fL, 1},	/* newer library fix version: ok */
+ 	{ 0x0090802fL, 0x0090801fL, 1},	/* older library fix version: ok */
+ 	{ 0x0090802fL, 0x0090702fL, 0},	/* older library minor version: NO */
+-	{ 0x0090802fL, 0x0090902fL, 0},	/* newer library minor version: NO */
++	{ 0x0090802fL, 0x0090902fL, 1},	/* newer library minor version: ok */
+ 	{ 0x0090802fL, 0x0080802fL, 0},	/* older library major version: NO */
+ 	{ 0x0090802fL, 0x1000100fL, 0},	/* newer library major version: NO */
+ 
+@@ -41,7 +41,7 @@ struct version_test {
+ 	{ 0x1000101fL, 0x1000100fL, 1},	/* older library patch version: ok */
+ 	{ 0x1000101fL, 0x1000201fL, 1},	/* newer library fix version: ok */
+ 	{ 0x1000101fL, 0x1000001fL, 0},	/* older library fix version: NO */
+-	{ 0x1000101fL, 0x1010101fL, 0},	/* newer library minor version: NO */
++	{ 0x1000101fL, 0x1010101fL, 1},	/* newer library minor version: ok */
+ 	{ 0x1000101fL, 0x0000101fL, 0},	/* older library major version: NO */
+ 	{ 0x1000101fL, 0x2000101fL, 0},	/* newer library major version: NO */
+ };

@@ -1,0 +1,30 @@
+Add more checks to prevent segfaults in ill-formatted files
+
+http://bugs.gentoo.org/show_bug.cgi?id=90540
+
+--- a/bin2iso19b_linux.c
++++ b/bin2iso19b_linux.c
+@@ -237,6 +237,10 @@
+    // Get the 'mode'
+    if (strncmp(&Line[2], "TRACK ", 6)==0) 
+    {
++      if (Line[8] < '0' || Line[8] > '9' || Line[9] < '0' || Line[9] > '9') {
++        printf("Error: Track # is not a 2 digit number\n");
++        exit(1);
++      }
+       strncpy(track->num, &Line[8], 2); track->num[2] = '\0';
+ 
+       track->mode = UNKNOWN;
+@@ -246,7 +250,11 @@
+       if(strncmp(&Line[11], "MODE2/2352", 10)==0) track->mode = MODE2_2352;
+       if(strncmp(&Line[11], "MODE2/2336", 10)==0) track->mode = MODE2_2336;
+    }
+-   else return(1);
++   else
++   {
++      printf("Error: 2nd line does not begin with '  TRACK '\n");
++      exit(1);
++   }
+    
+    // Set the name
+    strcpy(track->name, sBinFilename);

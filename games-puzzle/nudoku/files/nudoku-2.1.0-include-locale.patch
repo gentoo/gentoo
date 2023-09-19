@@ -1,0 +1,22 @@
+From ffe61c8cb6dcf6032960fa75ac2b66b5f1906e37 Mon Sep 17 00:00:00 2001
+From: Michael Vetter <jubalh@iodoru.org>
+Date: Thu, 23 Feb 2023 10:58:43 +0100
+Subject: [PATCH] Include locale.h
+
+See https://bugs.gentoo.org/895990
+---
+ src/main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/main.c b/src/main.c
+index 74d6a0e..77a0a03 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -25,6 +25,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ #include <ncurses.h>			/* ncurses */
+ #include <time.h>				/* time */
+ #include <string.h>				/* strcmp, strlen */
++#include <locale.h>				/* setlocale */
+ #include "sudoku.h"				/* sudoku functions */
+ #ifdef ENABLE_CAIRO
+ #include "outp.h"				/* output functions */

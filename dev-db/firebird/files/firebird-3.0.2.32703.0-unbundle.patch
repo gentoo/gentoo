@@ -1,0 +1,51 @@
+diff -ruN Firebird-3.0.2.32703-0.orig/builds/posix/Makefile.in Firebird-3.0.2.32703-0/builds/posix/Makefile.in
+--- Firebird-3.0.2.32703-0.orig/builds/posix/Makefile.in	2017-03-21 10:11:35.000000000 +0100
++++ Firebird-3.0.2.32703-0/builds/posix/Makefile.in	2017-05-14 01:32:34.032241679 +0200
+@@ -123,7 +123,6 @@
+ #
+ 
+ extern:
+-	$(MAKE) -C $(ROOT)/extern/btyacc
+ 	$(MAKE) -C $(ROOT)/extern/cloop TARGET=release WITH_FPC=0 BUILD_DIR=$(TMP_ROOT)/cloop OUT_DIR=$(GEN_ROOT)/$(TARGET)/cloop
+ 
+ ifeq ($(TOMBUILD_FLG),Y)
+@@ -648,7 +647,7 @@
+ # various cleaning
+ #
+ .PHONY: clean clean_objects clean_dependancies clean_extern_objects clean_build \
+-		clean_gpre_gen clean_icu clean_dbs clean_examples clean_makefiles \
++		clean_gpre_gen clean_dbs clean_examples clean_makefiles \
+ 		clean_editline clean_all
+ 
+ 
+@@ -669,8 +668,6 @@
+ 	$(RM) $(ROOT)/libtool
+ 	$(RM_R) $(ROOT)/autom4te.cache
+ 	-$(MAKE) -C $(ROOT)/extern/editline distclean
+-#	-$(MAKE) -C $(ROOT)/extern/icu/source distclean
+-	-$(MAKE) -C $(ROOT)/extern/btyacc distclean
+ 
+ clean_dbs:
+ 	$(RM) *.fdb *.FDB msg.timestamp
+@@ -687,9 +684,6 @@
+ clean_editline:
+ 	-$(MAKE) -C $(ROOT)/extern/editline clean
+ 
+-#clean_icu:
+-#	-$(MAKE) -C $(ROOT)/extern/icu/source clean
+-
+ clean_tommath:
+ 	-$(MAKE) -C $(ROOT)/extern/libtommath clean
+ 
+diff -ruN Firebird-3.0.2.32703-0.orig/builds/posix/make.defaults Firebird-3.0.2.32703-0/builds/posix/make.defaults
+--- Firebird-3.0.2.32703-0.orig/builds/posix/make.defaults	2017-03-21 10:11:35.000000000 +0100
++++ Firebird-3.0.2.32703-0/builds/posix/make.defaults	2017-05-14 01:29:54.590235045 +0200
+@@ -155,7 +155,7 @@
+ AR=			ar @AR_OPTIONS@
+ LN=			@LN_S@
+ RANLIB=			@RANLIB@
+-BTYACC=$(ROOT)/extern/btyacc/btyacc
++BTYACC=/usr/bin/btyacc
+ CLOOP=$(GEN_ROOT)/$(TARGET)/cloop/release/bin/cloop
+ 
+ CC =	@CC@

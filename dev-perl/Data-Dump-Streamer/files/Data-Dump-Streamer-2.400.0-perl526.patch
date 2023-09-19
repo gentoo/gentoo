@@ -1,0 +1,243 @@
+From 91e95b2c1a29253a823f9e6ee06a545d57648166 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 7 Oct 2017 17:34:57 +1300
+Subject: Fix tests for Perl 5.26
+
+This removes the jiggery-pokery with $0 because its not actually
+necessary vendor side, and require './t/test_helper.pl' is *MORE* than
+adequate
+
+Bug: https://bugs.gentoo.org/615698
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121169
+Bug: https://github.com/demerphq/Data-Dump-Streamer/pull/15
+---
+ t/dogpound.t       | 3 +--
+ t/dump.t           | 3 +--
+ t/filter.t         | 3 +--
+ t/globtest.t       | 3 +--
+ t/hardrefs.t       | 3 +--
+ t/impure_madness.t | 3 +--
+ t/lexicals.t       | 3 +--
+ t/locked.t         | 3 +--
+ t/madness.t        | 3 +--
+ t/madness_json.t   | 3 +--
+ t/madness_w.t      | 3 +--
+ t/names.t          | 3 +--
+ t/overload.t       | 3 +--
+ t/sortkeys.t       | 3 +--
+ t/tree.t           | 3 +--
+ 15 files changed, 15 insertions(+), 30 deletions(-)
+
+diff --git a/t/dogpound.t b/t/dogpound.t
+index a534257..3d63a61 100644
+--- a/t/dogpound.t
++++ b/t/dogpound.t
+@@ -8,8 +8,7 @@ use warnings;
+ use Data::Dumper;
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/dump.t b/t/dump.t
+index c5efb28..5d0ae48 100644
+--- a/t/dump.t
++++ b/t/dump.t
+@@ -7,8 +7,7 @@ use Data::Dumper;
+ #$Id: dump.t 40 2007-12-22 00:37:55Z demerphq $#
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/filter.t b/t/filter.t
+index 9bd9d5c..c8de30c 100644
+--- a/t/filter.t
++++ b/t/filter.t
+@@ -7,8 +7,7 @@ use Data::Dumper;
+ #$Id: filter.t 26 2006-04-16 15:18:52Z demerphq $#
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/globtest.t b/t/globtest.t
+index 5ff7c66..fc55e56 100644
+--- a/t/globtest.t
++++ b/t/globtest.t
+@@ -8,8 +8,7 @@ use warnings;
+ use Data::Dumper;
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/hardrefs.t b/t/hardrefs.t
+index 3d97988..b17eebb 100644
+--- a/t/hardrefs.t
++++ b/t/hardrefs.t
+@@ -8,8 +8,7 @@ use warnings;
+ use Data::Dumper;
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/impure_madness.t b/t/impure_madness.t
+index 168db14..db496a0 100644
+--- a/t/impure_madness.t
++++ b/t/impure_madness.t
+@@ -8,8 +8,7 @@ use warnings;
+ use Data::Dumper;
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/lexicals.t b/t/lexicals.t
+index 76984b8..5369b0d 100644
+--- a/t/lexicals.t
++++ b/t/lexicals.t
+@@ -5,8 +5,7 @@ use warnings;
+ 
+ use Data::Dump::Streamer;
+ use Test::More tests => 14;
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ diag "\nPadWalker ",
+     eval "use PadWalker 0.99; 1" ? qq($PadWalker::VERSION is) : "isn't",
+     " installed";
+diff --git a/t/locked.t b/t/locked.t
+index 0af7b69..24b8539 100644
+--- a/t/locked.t
++++ b/t/locked.t
+@@ -9,8 +9,7 @@ use warnings;
+ 
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/madness.t b/t/madness.t
+index 0987bfb..fd40e7e 100644
+--- a/t/madness.t
++++ b/t/madness.t
+@@ -7,8 +7,7 @@ use strict;
+ use warnings;
+ use Data::Dumper;
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/madness_json.t b/t/madness_json.t
+index 5fb055e..505cc03 100644
+--- a/t/madness_json.t
++++ b/t/madness_json.t
+@@ -12,8 +12,7 @@ BEGIN {
+ };
+ BEGIN { use_ok( 'Data::Dump::Streamer', qw(:undump) ); }
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/madness_w.t b/t/madness_w.t
+index ae06ccd..0c70e6c 100644
+--- a/t/madness_w.t
++++ b/t/madness_w.t
+@@ -14,8 +14,7 @@ SKIP:{
+         unless eval { weaken($_ref) };
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/names.t b/t/names.t
+index c4773ea..1e72e4c 100644
+--- a/t/names.t
++++ b/t/names.t
+@@ -7,8 +7,7 @@ use Data::Dumper;
+ #$Id: names.t 26 2006-04-16 15:18:52Z demerphq $#
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/overload.t b/t/overload.t
+index 63063e9..3baae8a 100644
+--- a/t/overload.t
++++ b/t/overload.t
+@@ -9,8 +9,7 @@ require overload;
+ #$Id: overload.t 26 2006-04-16 15:18:52Z demerphq $#
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ 
+ sub dump_obj {
+     my $obj = shift;
+diff --git a/t/sortkeys.t b/t/sortkeys.t
+index 2973c72..0267239 100644
+--- a/t/sortkeys.t
++++ b/t/sortkeys.t
+@@ -7,8 +7,7 @@ use Data::Dumper;
+ #$Id: sortkeys.t 26 2006-04-16 15:18:52Z demerphq $#
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+diff --git a/t/tree.t b/t/tree.t
+index d20d2f5..74abf1d 100644
+--- a/t/tree.t
++++ b/t/tree.t
+@@ -7,8 +7,7 @@ use Data::Dumper;
+ #$Id: tree.t 26 2006-04-16 15:18:52Z demerphq $#
+ 
+ # imports same()
+-(my $helper=$0)=~s/\w+\.\w+$/test_helper.pl/;
+-require $helper;
++require "./t/test_helper.pl";
+ # use this one for simple, non evalable tests. (GLOB)
+ #   same ( $got,$expected,$name,$obj )
+ #
+-- 
+2.14.1
+

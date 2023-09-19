@@ -1,0 +1,202 @@
+https://github.com/telmich/gpm/commit/dbd2e04665da885805a2c3e7dc2ee4b733d3c7cd
+https://github.com/telmich/gpm/pull/10
+https://bugs.gentoo.org/539320
+
+From 7d21d7f469d90c2d55b23926c866bba635aa7e6f Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 14 Feb 2016 18:05:49 -0500
+Subject: [PATCH 1/5] report/oops: constify format strings
+
+--- a/src/headers/gpm.h
++++ b/src/headers/gpm.h
+@@ -280,10 +280,10 @@ int   Gpm_GetSnapshot(Gpm_Event *ePtr);
+ char *Gpm_get_console( void );
+ int Gpm_x_high_y(int base, int pot_y);
+ int Gpm_cnt_digits(int number);
+-void gpm_oops(int line, char *file, char *text, ... );
++void gpm_oops(int line, const char *file, const char *text, ... );
+ 
+ /* report.c / report-lib.c */
+-void gpm_report(int line, char *file, int stat, char *text, ... );
++void gpm_report(int line, const char *file, int stat, const char *text, ... );
+ 
+ #ifdef __cplusplus
+   };
+--- a/src/headers/message.h
++++ b/src/headers/message.h
+@@ -226,7 +226,7 @@
+ /* #define GPM_MESS_                   "" */
+ 
+ /* functions */
+-void gpm_report(int line, char *file, int stat, char *text, ... );
++void gpm_report(int line, const char *file, int stat, const char *text, ... );
+ 
+ /* rest of wd.h */
+ #ifdef HAVE_SYSLOG_H
+--- a/src/lib/report-lib.c
++++ b/src/lib/report-lib.c
+@@ -24,9 +24,9 @@
+ 
+ #include "headers/message.h"
+ 
+-void gpm_report(int line, char *file, int stat, char *text, ... )
++void gpm_report(int line, const char *file, int stat, const char *text, ... )
+ {
+-   char *string = NULL;
++   const char *string = NULL;
+    int log_level;
+    va_list ap;
+ 
+--- a/src/prog/mouse-test.c
++++ b/src/prog/mouse-test.c
+@@ -182,7 +182,7 @@ Gpm_Type *(*I_serial)(int fd, unsigned short flags, struct Gpm_Type *type,
+ /*----------------------------------------------------------------------------- 
+    Place the description here.
+  -----------------------------------------------------------------------------*/
+-int mousereopen(int oldfd, char *name, Gpm_Type *type)
++int mousereopen(int oldfd, const char *name, Gpm_Type *type)
+ {
+    int fd;
+    if (!type) type=mice+1; /* ms */
+--- a/src/report.c
++++ b/src/report.c
+@@ -69,7 +69,7 @@
+  *
+  */
+ 
+-void gpm_report(int line, char *file, int stat, char *text, ... )
++void gpm_report(int line, const char *file, int stat, const char *text, ...)
+ {
+    FILE *console = NULL;
+    va_list ap, ap3;
+
+From 7ba518ff8b5e5c06d0a74b1fecf3b682f14c631c Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 14 Feb 2016 18:07:46 -0500
+Subject: [PATCH 2/5] report: avoid -Wformat-security warnings
+
+Some functions warn when you pass a string to a printf style function
+that is a dynamic buffer as its contents cannot be verified.  Since we
+don't want to support that here, just use %s.
+--- a/src/lib/report-lib.c
++++ b/src/lib/report-lib.c
+@@ -47,7 +47,7 @@ void gpm_report(int line, const char *file, int stat, const char *text, ... )
+                            log_level = LOG_CRIT; break;
+    }
+ #ifdef HAVE_VSYSLOG
+-   syslog(log_level, string);
++   syslog(log_level, "%s", string);
+    vsyslog(log_level, text, ap);
+ #else
+    fprintf(stderr,"%s[%s(%d)]:\n",string,file,line);
+--- a/src/prog/mouse-test.c
++++ b/src/prog/mouse-test.c
+@@ -189,7 +189,7 @@ int mousereopen(int oldfd, const char *name, Gpm_Type *type)
+    close(oldfd);
+    usleep(100000);
+    fd=open(name,O_RDWR);
+-   if (fd < 0) gpm_report(GPM_PR_OOPS,name);
++   if (fd < 0) gpm_report(GPM_PR_OOPS, "%s", name);
+    (*I_serial)(fd,type->flags,type,1,&type->name); /* ms initialization */
+    return fd;
+ }
+
+From c3717d54b67133fd14ce4f2166f61e529a1dcfe4 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 14 Feb 2016 18:08:54 -0500
+Subject: [PATCH 3/5] update ignored file list
+
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,6 +11,7 @@ Makefile
+ Makefile.include
+ /aclocal.m4
+ /autom4te.cache
++/config.cache
+ /config.log
+ /config.status
+ /configure
+@@ -29,7 +30,7 @@ Makefile.include
+ /src/gpm
+ /src/gpm2/tmp
+ /src/gpm2/out
+-/src/lib/libgpm.so.*
++/src/lib/libgpm.so*
+ /src/prog/disable-paste
+ /src/prog/display-buttons
+ /src/prog/display-coords
+
+From 01265c7ac5f86a02a7cec323f34a3b54e5973872 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 14 Feb 2016 21:02:48 -0500
+Subject: [PATCH 4/5] report/oops: add attributes to mark as printf functions
+
+This allows gcc to do printf checking on calls to these funcs to make
+sure they're being called correctly.
+--- a/src/headers/gpm.h
++++ b/src/headers/gpm.h
+@@ -280,9 +280,15 @@ int   Gpm_GetSnapshot(Gpm_Event *ePtr);
+ char *Gpm_get_console( void );
+ int Gpm_x_high_y(int base, int pot_y);
+ int Gpm_cnt_digits(int number);
++#ifdef __GNUC__
++__attribute__((__format__(printf, 3, 4)))
++#endif
+ void gpm_oops(int line, const char *file, const char *text, ... );
+ 
+ /* report.c / report-lib.c */
++#ifdef __GNUC__
++__attribute__((__format__(printf, 4, 5)))
++#endif
+ void gpm_report(int line, const char *file, int stat, const char *text, ... );
+ 
+ #ifdef __cplusplus
+--- a/src/headers/message.h
++++ b/src/headers/message.h
+@@ -226,6 +226,9 @@
+ /* #define GPM_MESS_                   "" */
+ 
+ /* functions */
++#ifdef __GNUC__
++__attribute__((__format__(printf, 4, 5)))
++#endif
+ void gpm_report(int line, const char *file, int stat, const char *text, ... );
+ 
+ /* rest of wd.h */
+
+From 85b451a188cfc8aa6233df55ec0c5dfcd203786f Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 14 Feb 2016 21:08:28 -0500
+Subject: [PATCH 5/5] clean up a few unused funcs/vars
+
+--- a/src/prog/gpm-root.y
++++ b/src/prog/gpm-root.y
+@@ -443,6 +443,7 @@ void f__fix(struct passwd *pass)
+ }
+ 
+ /*---------------------------------------------------------------------*/
++#if 0
+ static int f_debug_one(FILE *f, Draw *draw)
+ {
+    DrawItem *ip;
+@@ -465,6 +466,7 @@ static int f_debug_one(FILE *f, Draw *draw)
+ #undef LINE
+    return 0;
+ }
++#endif
+ 
+ int f_debug(int mode, DrawItem *self, int uid)
+ {
+@@ -960,10 +962,8 @@ static inline void scr_dump(int fd, FILE *f, unsigned char *buffer, int vc)
+ /*------------*/
+ static inline void scr_restore(int fd, FILE *f, unsigned char *buffer, int vc)
+ {
+-   int x,y, dumpfd;
++   int dumpfd;
+    char dumpname[20];
+-
+-   x=buffer[2]; y=buffer[3];
+    
+    /* WILL NOT WORK WITH DEVFS! FIXME! */
+    sprintf(dumpname,"/dev/vcsa%i",vc);
+

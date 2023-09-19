@@ -1,0 +1,30 @@
+https://github.com/net-snmp/net-snmp/pull/493
+
+From 7261ea344004ac42b6099acfba49c0ea731d049c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Dec 2022 02:29:45 +0000
+Subject: [PATCH 3/4] Prune Libs.private entries in netsnmp*.pc.in
+
+Gentoo has been carrying this patch for a while, as has Fedora.
+
+Bug: https://bugs.gentoo.org/693970
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/netsnmp-agent.pc.in
++++ b/netsnmp-agent.pc.in
+@@ -9,4 +9,4 @@ URL: http://www.net-snmp.org
+ Version: @PACKAGE_VERSION@
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lnetsnmpmibs -lnetsnmpagent -lnetsnmp
+-Libs.private: @LDFLAGS@ @LMIBLIBS@ @LAGENTLIBS@ @PERLLDOPTS_FOR_APPS@ @LNETSNMPLIBS@ @LIBS@
++Libs.private: @LMIBLIBS@ @LAGENTLIBS@ @LNETSNMPLIBS@ @LIBS@
+--- a/netsnmp.pc.in
++++ b/netsnmp.pc.in
+@@ -9,4 +9,4 @@ URL: http://www.net-snmp.org
+ Version: @PACKAGE_VERSION@
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lnetsnmp
+-Libs.private: @LDFLAGS@ @LNETSNMPLIBS@ @LIBS@ @PERLLDOPTS_FOR_APPS@
++Libs.private: @LNETSNMPLIBS@ @LIBS@
+-- 
+2.38.1
+

@@ -1,0 +1,10 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -17,6 +17,7 @@
+ 			feature_index.cpp  feature_index.h  lbfgs.cpp \
+ 			lbfgs.h  learner_tagger.cpp  learner_tagger.h  learner.cpp  \
+ 			learner_node.h libmecab.cpp
++libmecab_la_LIBADD = $(LTLIBICONV)
+ 
+ include_HEADERS = mecab.h
+ bin_PROGRAMS    = mecab

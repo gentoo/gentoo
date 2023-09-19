@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/899566
+https://github.com/rakshasa/libtorrent/pull/237
+
+From e851a8657d2ef5c332260f1e3a3896f438dba255 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Tue, 3 Jan 2023 14:41:11 +0100
+Subject: [PATCH] configure: Define _GNU_SOURCE when checking for
+ pthread_setname_np
+
+Previously, the test would always fail with compilers that do not
+support implicit function declarations because the pthread_setname_np
+function was not declared.
+--- a/scripts/checks.m4
++++ b/scripts/checks.m4
+@@ -469,6 +469,7 @@ AC_DEFUN([TORRENT_CHECK_PTHREAD_SETNAME_NP], [
+   AC_MSG_CHECKING(for pthread_setname_np type)
+ 
+   AC_TRY_LINK([
++    #define _GNU_SOURCE
+     #include <pthread.h>
+     #include <sys/types.h>
+   ],[

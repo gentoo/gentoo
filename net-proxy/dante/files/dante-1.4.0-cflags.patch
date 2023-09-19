@@ -1,0 +1,32 @@
+The upstream code tries to remove -g from CFLAGS, but the logic also matches
+the -g in the middle of flags, like:
+-frecord-gcc-switches => -frecordcc-switches
+-ggdb3 => ggdb3
+Both of which cause GCC to fail horribly!
+
+Fix the grep & sed to only match standalone instances.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar dante-1.4.0.orig/compiler.m4 dante-1.4.0/compiler.m4
+--- dante-1.4.0.orig/compiler.m4	2013-10-24 13:20:23.000000000 -0700
++++ dante-1.4.0/compiler.m4	2014-01-05 15:18:03.544336373 -0800
+@@ -375,14 +375,14 @@
+ 	gcc)
+ 	    if test x"$aixldbug" != x; then
+ 	        #disable debug info
+-		if echo $CFLAGS | grep -- "-g" >/dev/null; then
+-		    CFLAGS="`echo $CFLAGS | sed -e 's/-g//g'`"
++		if echo $CFLAGS | grep -w -- "-g" >/dev/null; then
++		    CFLAGS="`echo $CFLAGS | sed -e 's/\<-g\>//g'`"
+ 		fi
+ 		CFLAGS="$CFLAGS${CFLAGS:+ }-g0"
+ 	    else
+ 		#use -ggdb also when not debugging
+-		if echo $CFLAGS | grep -- "-g" >/dev/null; then
+-		    CFLAGS="`echo $CFLAGS | sed -e 's/-g//g'`"
++		if echo $CFLAGS | grep -w -- "-g" >/dev/null; then
++		    CFLAGS="`echo $CFLAGS | sed -e 's/\<-g\>//g'`"
+ 		fi
+ 		CFLAGS="$CFLAGS${CFLAGS:+ }-ggdb"
+ 	    fi

@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/880865
+
+https://github.com/mm2/Little-CMS/issues/344
+https://github.com/hughsie/colord/issues/145
+
+https://github.com/hughsie/colord/commit/91a3cc2e994be587def3b70762f15461101d43a1
+
+From 91a3cc2e994be587def3b70762f15461101d43a1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 15 Nov 2022 17:03:37 +0000
+Subject: [PATCH] lib: avoid destructing LCMS plugin twice with lcms 2.14
+
+lcms 2.14 contains a change to avoid a memory leak, but that change
+assumes correct API usage. It's not necessary to both cmsUnregisterPluginsTHR()
+and then cmsDeleteContext() -- we can just straight up delete the LCMS
+context instead (cmsDeleteContext()).
+
+So, follow upstream's suggestion & do that. This fixes memory corruption
+when building colord on x86, for example.
+
+Bug: https://github.com/mm2/Little-CMS/issues/344
+Fixes: https://github.com/hughsie/colord/issues/145
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/lib/colord/cd-context-lcms.c
++++ b/lib/colord/cd-context-lcms.c
+@@ -163,7 +163,6 @@ cd_context_lcms_free (gpointer ctx)
+ 	g_clear_error (error_ctx);
+ 	g_free (error_ctx);
+ 
+-	cmsUnregisterPluginsTHR (ctx);
+ 	cmsDeleteContext (ctx);
+ }
+ 

@@ -1,0 +1,10 @@
+# /etc/conf.d/minissdpd: config file for /etc/init.d/minissdpd
+
+# Configure on which interface or interfaces minissdpd will listen.
+# List all interfaces space separated. If this is not specified then
+# minissdpd will listen on just the interface for the default route.
+# You probably want that when running minissdpd with miniupnpc on the
+# client, but you most likely want to specify the internal interface
+# when running with miniupnpd on the gateway.
+#
+# MINISSDPD_IFACE="eth0 eth1"

@@ -1,0 +1,22 @@
+Do not compress changelog during build.
+
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -12,7 +12,7 @@ LSRCFILES = INSTALL CHANGES COPYING $(README) \
+ 
+ LDIRT = *.gz
+ 
+-default: CHANGES.gz
++default:
+ 
+ include $(BUILDRULES)
+ 
+@@ -22,7 +22,7 @@ CHANGES.gz:
+ 
+ install: default
+ 	$(INSTALL) -m 755 -d $(PKG_DOC_DIR)
+-	$(INSTALL) -m 644 CHANGES.gz $(README) $(PKG_DOC_DIR)
++	$(INSTALL) -m 644 CHANGES $(README) $(PKG_DOC_DIR)
+ ifeq ($(PKG_DISTRIBUTION), debian)
+ 	$(INSTALL) -S CHANGES.gz $(PKG_DOC_DIR)/changelog.gz
+ else

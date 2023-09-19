@@ -1,0 +1,24 @@
+https://github.com/FreeCAD/FreeCAD/commit/f91ad00ed23e92c81fff2bd0073c662291efad32
+https://bugs.gentoo.org/905451
+
+From f91ad00ed23e92c81fff2bd0073c662291efad32 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Adrian=20Schr=C3=B6ter?= <adrian@suse.de>
+Date: Mon, 27 Mar 2023 11:45:20 +0200
+Subject: [PATCH 011/420] libE57Format: fix compile using gcc13
+
+Adding missing header file. Also submitted this upstream here:
+
+https://github.com/asmaloney/libE57Format/pull/243
+--- a/src/3rdParty/libE57Format/include/E57Format.h
++++ b/src/3rdParty/libE57Format/include/E57Format.h
+@@ -33,6 +33,7 @@
+ 
+ #include <cfloat>
+ #include <memory>
++#include <cstdint>
+ #include <vector>
+ 
+ #include "E57Exception.h"
+-- 
+2.40.1
+

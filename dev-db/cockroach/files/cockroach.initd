@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/cockroach"
+pidfile=/run/cockroach/cockroach.pid
+command_args="start --background --log-dir=/var/log/cockroach
+	--pid-file=\"${pidfile}\" ${start_args}"
+start_stop_daemon_args="--quiet --user cockroach"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o cockroach:cockroach $(dirname ${pidfile})
+}
+
+stop() {
+ebegin "bringing down ${RC_SVCNAME}"
+"${command}" quit ${stop_args}
+eend $?
+}

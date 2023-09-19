@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/893824
+--- a/leechcore/Makefile
++++ b/leechcore/Makefile
+@@ -6,7 +6,8 @@
+ # CFLAGS  += -fsanitize=address -fsanitize=leak -fno-omit-frame-pointer -fsanitize=undefined -fsanitize=bounds-strict -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
+ # CFLAGS  += -fsanitize=pointer-compare -fsanitize=pointer-subtract -fanalyzer
+ # DEBUG FLAGS ABOVE
+-CFLAGS  += -fPIE -fPIC -pie -fstack-protector -D_FORTIFY_SOURCE=2 -O1 -Wl,-z,noexecstack
++CFLAGS  := -D_FORTIFY_SOURCE=2 ${CFLAGS}
++CFLAGS  += -fPIE -fPIC -pie -Wl,-z,noexecstack
+ CFLAGS  += -Wall -Wno-unused-result -Wno-unused-variable -Wno-unused-value -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
+ LDFLAGS += -g -ldl -shared
+ DEPS = leechcore.h

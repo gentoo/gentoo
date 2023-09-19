@@ -1,0 +1,32 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,9 +3,6 @@
+ 
+ SHELL = /bin/sh
+ 
+-CC = gcc
+-CFLAGS = -g -O2
+-LDFLAGS = 
+ LIBS = 
+ DEFS =  
+ INSTALL = /usr/bin/install -c
+@@ -20,11 +17,6 @@
+ SRCS = id3.c
+ OBJS = $(SRCS:.c=.o)
+ 
+-.SUFFIXES: .c .o
+-
+-.c.o:
+-	$(CC) $(DEFS) $(CFLAGS) -c $<
+-
+ all: $(PRODUCT)
+ 
+ $(PRODUCT): $(OBJS)
+@@ -35,6 +27,6 @@
+ 
+ install: $(PRODUCT)
+ 	$(INSTALL) -d -m 755 $(bindir)
+-	$(INSTALL) -s -m 755 -o 0 $(PRODUCT) $(bindir)
++	$(INSTALL) -m 755 -o 0 $(PRODUCT) $(bindir)
+ 	$(INSTALL) -d -m 755 $(mandir)
+ 	$(INSTALL) -m 644 -o 0 $(PRODUCT).1 $(mandir)

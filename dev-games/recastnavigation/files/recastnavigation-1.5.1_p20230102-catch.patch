@@ -1,0 +1,10 @@
+--- a/Tests/CMakeLists.txt
++++ b/Tests/CMakeLists.txt
+@@ -10,5 +10,6 @@ add_executable(Tests ${TESTS_SOURCES})
+ set_property(TARGET Tests PROPERTY CXX_STANDARD 17)
+ 
+ add_dependencies(Tests Recast Detour)
+-target_link_libraries(Tests Recast Detour)
++find_package(Catch2 REQUIRED)
++target_link_libraries(Tests Recast Detour Catch2::Catch2WithMain)
+ add_test(Tests Tests)

@@ -1,0 +1,78 @@
+Bug: https://bugs.gentoo.org/610468
+
+Description: Port to newer cups headers: ppd_file_t is only defined in ppd.h
+Author: Didier Raboud <odyx@debian.org>
+Origin: vendor
+Last-Update: 2016-09-24
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -94,7 +94,7 @@
+ 
+ AC_CHECK_LIB(cups, cupsMarkOptions, , AC_ERROR([Can't find cups library]))
+ AC_CHECK_LIB(cupsimage, cupsRasterReadHeader, , AC_ERROR([Can't find cupsimage library]))
+-AC_CHECK_HEADERS([cups/cups.h cups/raster.h],, AC_ERROR([Can't find cups headers]))
++AC_CHECK_HEADERS([cups/cups.h cups/raster.h cups/ppd.h],, AC_ERROR([Can't find cups headers]))
+ 
+ #CUPS_LIBS=`cups-config --image --libs`
+ #CUPS_LIBS="-lcups -lcupsimage"
+--- a/src/common/CupsFilter.h
++++ b/src/common/CupsFilter.h
+@@ -23,6 +23,7 @@
+ 
+ #include <cups/cups.h>
+ #include <cups/raster.h>
++#include <cups/ppd.h>
+ #include <memory>
+ #include <string>
+ #include "CupsPrintEnvironment.h"
+--- a/src/lm/CupsFilterLabelManager.h
++++ b/src/lm/CupsFilterLabelManager.h
+@@ -23,6 +23,7 @@
+ 
+ #include <cups/cups.h>
+ #include <cups/raster.h>
++#include <cups/ppd.h>
+ #include "LabelManagerDriver.h"
+ #include "LabelManagerLanguageMonitor.h"
+ #include "DummyLanguageMonitor.h"
+--- a/src/lw/CupsFilterLabelWriter.h
++++ b/src/lw/CupsFilterLabelWriter.h
+@@ -23,6 +23,7 @@
+ 
+ #include <cups/cups.h>
+ #include <cups/raster.h>
++#include <cups/ppd.h>
+ #include "LabelWriterDriver.h"
+ #include "LabelWriterLanguageMonitor.h"
+ #include "DummyLanguageMonitor.h"
+--- a/src/lw/raster2dymolw.cpp
++++ b/src/lw/raster2dymolw.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <cups/cups.h>
+ #include <cups/raster.h>
++#include <cups/ppd.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <string.h>
+--- a/src/lw/tests/TestLabelWriterFilter.h
++++ b/src/lw/tests/TestLabelWriterFilter.h
+@@ -27,6 +27,7 @@
+ #include "../DummyLanguageMonitor.h"
+ 
+ #include <cups/cups.h>
++#include <cups/ppd.h>
+ 
+ class LabelWriterFilterTest: public CPPUNIT_NS::TestFixture
+ {
+--- a/src/lm/tests/TestLabelManagerFilter.h
++++ b/src/lm/tests/TestLabelManagerFilter.h
+@@ -26,6 +26,7 @@
+ #include "../LabelManagerDriver.h"
+ #include "DummyLanguageMonitor.h"
+ #include <cups/cups.h>
++#include <cups/ppd.h>
+ 
+ class LabelManagerFilterTest: public CPPUNIT_NS::TestFixture
+ {

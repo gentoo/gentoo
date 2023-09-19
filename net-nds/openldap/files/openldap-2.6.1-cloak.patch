@@ -1,0 +1,21 @@
+--- a/contrib/slapd-modules/cloak/cloak.c
++++ b/contrib/slapd-modules/cloak/cloak.c
+@@ -29,6 +29,7 @@
+ #include "ac/socket.h"
+ 
+ #include "lutil.h"
++#include "attr.h"
+ #include "slap.h"
+ #include "slap-config.h"
+ 
+--- a/servers/slapd/attr.h
++++ b/servers/slapd/attr.h
+@@ -0,0 +1,8 @@
++#ifndef OPENLDAP_SERVERS_SLAPD_ATTR_H_
++#define OPENLDAP_SERVERS_SLAPD_ATTR_H_
++
++#endif //OPENLDAP_SERVERS_SLAPD_ATTR_H_
++
++#include "slap.h"
++
++void attr_clean( Attribute *a );

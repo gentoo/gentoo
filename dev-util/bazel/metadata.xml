@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">bazelbuild/bazel</remote-id>
+	</upstream>
+	<longdescription>
+		Bazel is Google's own build tool. Bazel has built-in support for
+		building both client and server software, including client
+		applications for both Android and iOS platforms. It also provides
+		an extensible framework that you can use to develop your own build
+		rules.
+	</longdescription>
+	<use>
+		<flag name="tools">Install extra bazel tools to build from sources</flag>
+	</use>
+</pkgmetadata>

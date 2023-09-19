@@ -1,0 +1,60 @@
+#!/sbin/openrc-run
+#shellcheck shell=sh
+
+IDENT="${RC_SVCNAME#*.}"
+PIDFILE="/run/nfcapd/${IDENT}.pid"
+USER="nfcapd"
+GROUP="nfcapd"
+
+ssd_start(){
+	if [ -n "${MAX_SIZE}" ]; then
+		set -- "$@" -e
+	fi
+	if [ -n "${PORT}" ]; then
+		set -- "$@" -p "${PORT}"
+	fi
+	if [ -n "${REPEAT_TO}" ]; then
+		set -- "$@" -R "${REPEAT_TO}"
+	fi
+	start-stop-daemon "$@"
+}
+
+checkconfig() {
+	if [ "${IDENT}" = "${RC_SVCNAME}" ]; then
+		eerror "You have to create an init script for each ident:"
+		eerror " cd /etc/init.d/; ln -s nfcapd nfcapd.ident"
+		return 1
+	fi
+}
+
+depend() {
+	need net
+}
+
+start() {
+	checkconfig || return 1
+
+	checkpath -d -m 0750 -o nfcapd:nfcapd /run/nfcapd
+	checkpath -d -m 0750 -o nfcapd:nfcapd /var/tmp/nfcapd/"${IDENT}"
+
+	if [ -n "${MAX_SIZE}" ]; then
+		nfexpire -u /var/tmp/nfcapd/"${IDENT}" -s "${MAX_SIZE}" \
+			> /dev/null 2>&1
+		chown -R ${USER}:${GROUP} /var/tmp/nfcapd/"${IDENT}"
+	fi
+
+	ebegin "Starting ${RC_SVCNAME}"
+	ssd_start --start --quiet --exec /usr/bin/nfcapd \
+		--pidfile "${PIDFILE}" -- -D -P "${PIDFILE}" -u ${USER} \
+		-g ${GROUP} -I "${IDENT}" -l /var/tmp/nfcapd/"${IDENT}"
+	eend $?
+}
+
+stop() {
+	checkconfig || return 1
+
+	ebegin "Stopping ${RC_SVCNAME}"
+	start-stop-daemon --stop --exec /usr/bin/nfcapd \
+		--pidfile "${PIDFILE}"
+	eend $?
+}

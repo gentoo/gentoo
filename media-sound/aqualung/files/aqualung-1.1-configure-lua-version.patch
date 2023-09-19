@@ -1,0 +1,31 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -401,24 +401,11 @@
+ ])
+ 
+ AQUALUNG_DETECT([lua], [Lua Extension],
+-    [PKG_CHECK_MODULES([lua], [lua5.2],
++    [PKG_CHECK_MODULES([lua], [lua],
+         [AQUALUNG_FOUND([lua])],
+-        [PKG_CHECK_MODULES([lua], [lua-5.2],
+-            [AQUALUNG_FOUND([lua])],
+-            [PKG_CHECK_MODULES([lua], [lua52],
+-                [AQUALUNG_FOUND([lua])],
+-                [PKG_CHECK_MODULES([lua], [lua5.1],
+-                    [AQUALUNG_FOUND([lua])],
+-                    [PKG_CHECK_MODULES([lua], [lua-5.1],
+-                        [AQUALUNG_FOUND([lua])],
+-                        [PKG_CHECK_MODULES([lua], [lua51],
+-                            [AQUALUNG_FOUND([lua])],
+-                            [PKG_CHECK_MODULES([lua], [lua >= 5.2],
+-                                [AQUALUNG_FOUND([lua])],
+-                                    [PKG_CHECK_MODULES([lua], [lua >= 5.1],
+-                                    [AQUALUNG_FOUND([lua])],
+-                                [AQUALUNG_MISSING([lua], [$lua_PKG_ERRORS])])])])])])])])])])
+-
++        [AQUALUNG_MISSING([lua], [$lua_PKG_ERRORS])]
++    )]
++)
+ 
+ # Compiler and linker variables.
+ AS_VAR_IF([GCC], [yes], [CFLAGS="-Wall $CFLAGS"])

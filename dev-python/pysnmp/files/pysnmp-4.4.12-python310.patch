@@ -1,0 +1,36 @@
+https://github.com/etingof/pysnmp/pull/415
+
+From 1d83beddd61b71e71dd725a12813a7052c14f730 Mon Sep 17 00:00:00 2001
+From: Flaviu Tamas <me@flaviutamas.com>
+Date: Sun, 26 Dec 2021 18:07:09 -0500
+Subject: [PATCH 1/2] Fixes #413
+
+Thanks to @mheppner for finding the issue and reporting the bug.
+--- a/pysnmp/carrier/asyncio/dgram/base.py
++++ b/pysnmp/carrier/asyncio/dgram/base.py
+@@ -44,7 +44,7 @@
+ from pysnmp.carrier import error
+ from pysnmp.carrier.asyncio.base import AbstractAsyncioTransport
+ 
+-IS_PYTHON_344_PLUS = platform.python_version_tuple() >= ('3', '4', '4')
++IS_PYTHON_344_PLUS = [int(v) for v in platform.python_version_tuple()] >= [3, 4, 4]
+ 
+ 
+ class DgramAsyncioProtocol(asyncio.DatagramProtocol, AbstractAsyncioTransport):
+
+From fc5ad9c1b1b9195f49d327f471705f9519ce5c09 Mon Sep 17 00:00:00 2001
+From: Flaviu Tamas <me@flaviutamas.com>
+Date: Fri, 31 Dec 2021 11:41:09 -0500
+Subject: [PATCH 2/2] Fix python 3.10 compatability, part 2
+
+--- a/pysnmp/carrier/asyncio/dispatch.py
++++ b/pysnmp/carrier/asyncio/dispatch.py
+@@ -43,7 +43,7 @@
+ from pysnmp.carrier.base import AbstractTransportDispatcher
+ from pysnmp.error import PySnmpError
+ 
+-IS_PYTHON_344_PLUS = platform.python_version_tuple() >= ('3', '4', '4')
++IS_PYTHON_344_PLUS = [int(v) for v in platform.python_version_tuple()] >= [3, 4, 4]
+ 
+ 
+ class AsyncioDispatcher(AbstractTransportDispatcher):

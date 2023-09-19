@@ -1,0 +1,118 @@
+Debian patch for fixing errors emitted due to -Werror=format-security.
+The patch can be found at:
+https://salsa.debian.org/java-team/rxtx/-/blob/6500bd55f265de7d2dfef68dc1df5d8b990f66c3/debian/patches/format_security.patch
+
+Bug: https://bugs.gentoo.org/550534
+
+---
+From: tony mancill <tmancill@debian.org>
+Forwarded: no
+Description: use format specifiers in fprintf statements for hardening flags
+
+--- a/src/SerialImp.c
++++ b/src/SerialImp.c
+@@ -5108,7 +5108,7 @@
+ void report_warning(const char *msg)
+ {
+ #ifndef DEBUG_MW
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ #else
+ 	mexWarnMsgTxt( (const char *) msg );
+ #endif /* DEBUG_MW */
+@@ -5129,7 +5129,7 @@
+ #ifdef DEBUG_MW
+ 	mexErrMsgTxt( msg );
+ #else
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ #endif /* DEBUG_MW */
+ #endif /* DEBUG_VERBOSE */
+ }
+@@ -5145,7 +5145,7 @@
+ void report_error(const char *msg)
+ {
+ #ifndef DEBUG_MW
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ #else
+ 	mexWarnMsgTxt( msg );
+ #endif /* DEBUG_MW */
+@@ -5164,7 +5164,7 @@
+ {
+ #ifdef DEBUG
+ #	ifndef DEBUG_MW
+-		fprintf(stderr, msg);
++		fprintf(stderr, "%s", msg);
+ #	else
+ 		mexPrintf( msg );
+ #	endif /* DEBUG_MW */
+--- a/src/ParallelImp.c
++++ b/src/ParallelImp.c
+@@ -920,7 +920,7 @@
+ void report_error(char *msg)
+ {
+ #ifndef DEBUG_MW
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ #else
+ 	mexWarnMsgTxt( msg );
+ #endif /* DEBUG_MW */
+@@ -938,7 +938,7 @@
+ void report(char *msg)
+ {
+ #ifdef DEBUG
+-        fprintf(stderr, msg);
++        fprintf(stderr, "%s", msg);
+ #endif /* DEBUG */
+ }
+ 
+--- a/src/SerialImp.cpp
++++ b/src/SerialImp.cpp
+@@ -1844,7 +1844,7 @@
+ 
+ 
+ #ifdef DEBUG
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ #endif
+ }
+ 
+--- a/CNI/SerialImp.c
++++ b/CNI/SerialImp.c
+@@ -4549,7 +4549,7 @@
+ void report_warning(char *msg)
+ {
+ #ifndef DEBUG_MW
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ #else
+ 	mexWarnMsgTxt( (const char *) msg );
+ #endif /* DEBUG_MW */
+@@ -4570,7 +4570,7 @@
+ #ifdef DEBUG_MW
+ 	mexErrMsgTxt( msg );
+ #else
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ #endif /* DEBUG_MW */
+ #endif /* DEBUG_VERBOSE */
+ }
+@@ -4586,7 +4586,7 @@
+ void report_error(char *msg)
+ {
+ #ifndef DEBUG_MW
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ #else
+ 	mexWarnMsgTxt( msg );
+ #endif /* DEBUG_MW */
+@@ -4605,7 +4605,7 @@
+ {
+ #ifdef DEBUG
+ #	ifndef DEBUG_MW
+-		fprintf(stderr, msg);
++		fprintf(stderr, "%s", msg);
+ #	else
+ 		mexPrintf( msg );
+ #	endif /* DEBUG_MW */

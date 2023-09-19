@@ -1,0 +1,26 @@
+diff -pruN ferite-1.1.17.orig/modules/regexp/regexp.fec ferite-1.1.17/modules/regexp/regexp.fec
+--- ferite-1.1.17.orig/modules/regexp/regexp.fec	2009-07-15 19:21:34.000000000 +0200
++++ ferite-1.1.17/modules/regexp/regexp.fec	2013-02-01 02:33:40.438849775 +0100
+@@ -427,7 +427,8 @@ class Regexp {
+ 		}
+ 		
+ 		/* get the number of subparts */
+-		captured_str_cnt = pcre_info( rgx->compiled_re, NULL, NULL ) + 1;
++		pcre_fullinfo( rgx->compiled_re, NULL, PCRE_INFO_CAPTURECOUNT, &captured_str_cnt );
++		captured_str_cnt++;
+ 		/* create an offset array */
+ 		size_offsets = (int)(captured_str_cnt * 3);
+ 		offsets = (int *)fmalloc(size_offsets * sizeof(int));
+diff -pruN ferite-1.1.17.orig/modules/regexp/regexp_Regexp.c ferite-1.1.17/modules/regexp/regexp_Regexp.c
+--- ferite-1.1.17.orig/modules/regexp/regexp_Regexp.c	2009-07-17 08:59:19.000000000 +0200
++++ ferite-1.1.17/modules/regexp/regexp_Regexp.c	2013-02-01 02:33:16.647875845 +0100
+@@ -88,7 +88,8 @@ FE_NATIVE_FUNCTION( ferite_regexp_Regexp
+ 		}
+ 		
+ 		/* get the number of subparts */
+-		captured_str_cnt = pcre_info( rgx->compiled_re, NULL, NULL ) + 1;
++		pcre_fullinfo( rgx->compiled_re, NULL, PCRE_INFO_CAPTURECOUNT, &captured_str_cnt );
++		captured_str_cnt++;
+ 		/* create an offset array */
+ 		size_offsets = (int)(captured_str_cnt * 3);
+ 		offsets = (int *)fmalloc(size_offsets * sizeof(int));

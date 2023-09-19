@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Emacs Lisp functions for dealing with associative structures in a uniform
+    and functional way. Inspired by Clojure, dash, and seq.el.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/plexus/a.el/issues/</bugs-to>
+    <remote-id type="github">plexus/a.el</remote-id>
+  </upstream>
+</pkgmetadata>

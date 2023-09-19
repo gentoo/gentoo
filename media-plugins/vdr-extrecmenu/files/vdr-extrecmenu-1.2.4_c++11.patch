@@ -1,0 +1,24 @@
+C++11 requires a space between literal and identifier
+https://bugs.gentoo.org/740282
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org>
+--- a/mymenueditrecording.c
++++ b/mymenueditrecording.c
+@@ -626,7 +626,7 @@
+ { //This has been taken from remotetimers-0.1.5, written by Frank Schmirler <vdrdev@schmirler.de>
+ 
+ #if VDRVERSNUM > 10713
+-  cString InfoFileName=cString::sprintf(Recording->IsPesRecording()?"%s/"INFOFILE_PES:"%s/"INFOFILE_TS,Recording->FileName());
++  cString InfoFileName=cString::sprintf(Recording->IsPesRecording()?"%s/" INFOFILE_PES:"%s/" INFOFILE_TS,Recording->FileName());
+ 	FILE *f = fopen(InfoFileName, "a");
+ 	if (f)
+ 	{
+@@ -641,7 +641,7 @@
+ 	else
+ 		esyslog("[extrecmenu] writing to '%s' failed: %m", *InfoFileName);
+ #else
+-  cString InfoFileName=cString::sprintf("%s/"INFOFILE_PES,Recording->FileName());
++  cString InfoFileName=cString::sprintf("%s/" INFOFILE_PES,Recording->FileName());
+   // check for write access as cRecording::WriteInfo() always returns true
+   if(access(InfoFileName,W_OK)==0)
+   {

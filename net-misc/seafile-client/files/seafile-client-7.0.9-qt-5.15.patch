@@ -1,0 +1,37 @@
+https://github.com/haiwen/seafile-client/pull/1297
+
+From 86ebea086c6b78738b3140c922c909331d2b9a94 Mon Sep 17 00:00:00 2001
+From: Joffrey <j-off@live.fr>
+Date: Fri, 29 May 2020 15:59:11 +0000
+Subject: [PATCH] Fix build with Qt5 v5.15.0
+
+---
+ src/ui/events-list-view.cpp     | 1 +
+ src/ui/private-share-dialog.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/ui/events-list-view.cpp b/src/ui/events-list-view.cpp
+index b1d04abb..09536b9e 100644
+--- a/src/ui/events-list-view.cpp
++++ b/src/ui/events-list-view.cpp
+@@ -1,4 +1,5 @@
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QApplication>
+ #include <QPixmap>
+ #include <QToolTip>
+diff --git a/src/ui/private-share-dialog.cpp b/src/ui/private-share-dialog.cpp
+index 511d476b..284cc043 100644
+--- a/src/ui/private-share-dialog.cpp
++++ b/src/ui/private-share-dialog.cpp
+@@ -2,6 +2,7 @@
+ #include <QCompleter>
+ #include <QLineEdit>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QResizeEvent>
+ #include <QStringList>
+ #include <QStringListModel>
+-- 
+2.26.2
+

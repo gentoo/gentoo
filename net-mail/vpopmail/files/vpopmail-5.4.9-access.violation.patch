@@ -1,0 +1,27 @@
+--- a/configure.in	2004-06-30 22:11:08.000000000 -0700
++++ b/configure.in	2004-08-22 16:45:36.279473008 -0700
+@@ -463,16 +463,16 @@
+   if test ! -d $vpopmaildir
+   then
+     AC_MSG_WARN( creating $vpopmaildir )
+-    mkdir -p $vpopmaildir
+-    chown $vpopmailuid $vpopmaildir
+-    chgrp $vpopmailgid $vpopmaildir
+-    chmod 755 $vpopmaildir
++    mkdir -p ${D}/$vpopmaildir
++    chown $vpopmailuid ${D}/$vpopmaildir
++    chgrp $vpopmailgid ${D}/$vpopmaildir
++    chmod 755 ${D}/$vpopmaildir
+   fi
+   AC_MSG_WARN( making a vpopmail etc directory )
+-  mkdir $vpopmaildir/etc
+-  chown $vpopmailuid "$vpopmaildir"/etc
+-  chgrp $vpopmailgid "$vpopmaildir"/etc
+-  chmod 755 "$vpopmaildir"/etc
++  mkdir ${D}/$vpopmaildir/etc
++  chown $vpopmailuid ${D}/$vpopmaildir/etc
++  chgrp $vpopmailgid ${D}/$vpopmaildir/etc
++  chmod 755 ${D}/$vpopmaildir/etc
+ fi
+ 
+ #----------------------------------------------------------------------

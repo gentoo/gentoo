@@ -1,0 +1,33 @@
+https://github.com/serge1/ELFIO/pull/113
+
+From 4c47fd4c783f286a73605e43e362f1e14b0296a9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 19 Nov 2022 02:56:22 +0000
+Subject: [PATCH] tests: allow using system gtest copy
+
+Distributions often do builds with no network access available
+for both security reasons and also to ensure reproducibility.
+
+This change tells CMake to query the system for a copy of gtest,
+but if it's not available, it'll fall back to downloading via
+FetchContent.
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -3,6 +3,7 @@ include(FetchContent)
+ FetchContent_Declare(
+     googletest
+     URL https://github.com/google/googletest/archive/9a32aee22d771387c494be2d8519fbdf46a713b2.zip
++    FIND_PACKAGE_ARGS NAMES GTest
+ )
+ 
+ # For Windows: Prevent overriding the parent project's compiler/linker settings
+@@ -44,7 +45,8 @@ target_link_libraries(
+     ELFIOTest
+     PRIVATE
+     elfio::elfio
+-    gtest_main)
++    gtest_main
++    GTest::gtest_main)
+ 
+ add_test(
+     NAME

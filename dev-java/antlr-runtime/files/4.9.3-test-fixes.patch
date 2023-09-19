@@ -1,0 +1,26 @@
+From 3eabbddff69dcbcaf9a59f407cc8bef4be8e215b Mon Sep 17 00:00:00 2001
+From: Yuan Liao <liaoyuan@gmail.com>
+Date: Thu, 3 Feb 2022 11:51:53 -0800
+Subject: [PATCH] Use 1.8 as javac -source/-target for running tests on Java 17
+
+Signed-off-by: Yuan Liao <liaoyuan@gmail.com>
+---
+ .../test/org/antlr/v4/test/runtime/java/BaseJavaTest.java       | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/runtime-testsuite/test/org/antlr/v4/test/runtime/java/BaseJavaTest.java b/runtime-testsuite/test/org/antlr/v4/test/runtime/java/BaseJavaTest.java
+index cc03bdc11..82061135e 100644
+--- a/runtime-testsuite/test/org/antlr/v4/test/runtime/java/BaseJavaTest.java
++++ b/runtime-testsuite/test/org/antlr/v4/test/runtime/java/BaseJavaTest.java
+@@ -137,7 +137,7 @@ public class BaseJavaTest extends BaseRuntimeTestSupport implements RuntimeTestS
+ 			fileManager.getJavaFileObjectsFromFiles(files);
+ 
+ 		Iterable<String> compileOptions =
+-			Arrays.asList("-g", "-source", "1.6", "-target", "1.6", "-implicit:class", "-Xlint:-options", "-d", getTempDirPath(), "-cp", getTempDirPath() + PATH_SEP + CLASSPATH);
++			Arrays.asList("-g", "-source", "1.8", "-target", "1.8", "-implicit:class", "-Xlint:-options", "-d", getTempDirPath(), "-cp", getTempDirPath() + PATH_SEP + CLASSPATH);
+ 
+ 		JavaCompiler.CompilationTask task =
+ 			compiler.getTask(null, fileManager, null, compileOptions, null,
+-- 
+2.34.1
+

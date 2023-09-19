@@ -1,0 +1,17 @@
+From 52470a9be22fb4f8b6092e744c324ba691aff583 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 21 Apr 2021 00:45:27 +0000
+Subject: [PATCH 1/2] Fix bashism
+
+--- a/configure.in
++++ b/configure.in
+@@ -94,7 +94,7 @@ AC_CHECK_LIB([nsl],
+ 
+ # final checks
+ 
+-if test "$vl_cv_lib_readline" == "no"; then
++if test "$vl_cv_lib_readline" = "xno"; then
+ 	# are we using getline instead? do we have threads?
+ 	if test "$pthread_libs"; then
+ 		CMDOBJS="cmdline/getline.o $CMDOBJS"
+-- 

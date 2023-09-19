@@ -1,0 +1,58 @@
+--- a/fishmon.c
++++ b/fishmon.c
+@@ -648,6 +648,7 @@
+ 
+     /* make a copy for the iconwin - parameters are the same */
+     memcpy(&attri, &attr, sizeof(GdkWindowAttr));
++    attri.window_type = GDK_WINDOW_CHILD;
+ 
+     sizehints.flags = USSize;
+     sizehints.width = 64;
+@@ -679,7 +680,6 @@
+     wmhints.window_group = win;
+     wmhints.flags =
+ 	StateHint | IconWindowHint | IconPositionHint | WindowGroupHint;
+-    XSetWMHints(GDK_WINDOW_XDISPLAY(bm.win), win, &wmhints);
+ 
+     bm.gc = gdk_gc_new(bm.win);
+ 
+@@ -693,6 +693,8 @@
+ 
+     gdk_window_show(bm.win);
+ 
++    XSetWMHints(GDK_WINDOW_XDISPLAY(bm.win), win, &wmhints);
++
+ #undef MASK
+ }				/* make_new_fishmon_dockapp */
+ 
+--- a/Makefile
++++ b/Makefile
+@@ -2,11 +2,11 @@
+ DESTDIR =
+ 
+ # where to install this program
+-PREFIX = $(DESTDIR)/usr/X11R6
++PREFIX = $(DESTDIR)/usr
+ 
+ # no user serviceable parts below this line
+ # optimization cflags
+-CFLAGS = -O3 -Wall `gtk-config --cflags` ${EXTRA}
++CFLAGS += -Wall `${PKG_CONFIG} gtk+-2.0 --cflags` ${EXTRA}
+ # profiling cflags
+ # CFLAGS=-ansi -pedantic -Wall -pg -O3 `gtk-config --cflags` ${EXTRA} -DPRO
+ # test coverage cflags
+@@ -16,7 +16,7 @@
+ CC = gcc
+ SHELL = sh
+ OBJS = fishmon.o
+-LIBS = `gtk-config --libs | sed "s/-lgtk//g"`
++LIBS = `${PKG_CONFIG} gtk+-2.0 --libs` -lm -lX11
+ INSTALL = -m 755
+ 
+ all: wmfishtime
+@@ -30,4 +30,4 @@
+ # You're going to have to be root to do this!
+ install:
+ 	install $(INSTALL) wmfishtime $(PREFIX)/bin
+-	install $(INSTALL) wmfishtime.1 $(PREFIX)/man/man1
++	install $(INSTALL) wmfishtime.1 $(PREFIX)/share/man/man1

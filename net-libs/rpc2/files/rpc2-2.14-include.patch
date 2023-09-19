@@ -1,0 +1,10 @@
+--- a/rpc2-src/rpc2b.c
++++ b/rpc2-src/rpc2b.c
+@@ -42,6 +42,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>

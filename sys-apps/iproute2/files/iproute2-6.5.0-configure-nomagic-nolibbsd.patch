@@ -1,0 +1,246 @@
+The hand-rolled configure script, for multiple options (selinux,mnl,elf), sets
+a variable as well as modifying CFLAGS & LDLIBS.
+
+If config.mk is later amended to disable a feature, the CFLAGS/LDLIBS tweaks
+are still in place.
+
+Push the CFLAGS/LDLIBS changes into new conditional Makefile code, so that they
+are only passed when correctly needed.
+
+Prior Gentoo testcase for reproduction:
+USE=minimal ebuild ... compile.
+- Linking with libbsd, libelf, libmnl & libcap based only on presence.
+- Links based on libselinux based only on presence.
+
+Closes: https://bugs.gentoo.org/643722
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
+Added libcap to v4.17.0 by Lars Wendler <polynomial-c@gentoo.org>
+Forward-ported from v4.17.0 to v4.20.0 by Lars Wendler <polynomial-c@gentoo.org>
+Forward-ported from v4.20.0 to v5.11.0 by Lars Wendler <polynomial-c@gentoo.org>
+Forward-ported from v5.11.0 to v5.12.0 by Lars Wendler <polynomial-c@gentoo.org>
+
+Update 2023-09-05: Removed libbsd enforcement from config.include for bug #911727
+by Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- a/config.include
++++ b/config.include
+@@ -0,0 +1,26 @@
++# We can only modify CFLAGS/LDLIBS after all the config options are known.
++ifeq ($(IP_CONFIG_SETNS),y)
++	CFLAGS += $(IP_CONFIG_SETNS_CFLAGS)
++endif
++ifeq ($(HAVE_ELF),y)
++	CFLAGS += $(HAVE_ELF_CFLAGS)
++	LDLIBS += $(HAVE_ELF_LDLIBS)
++endif
++ifeq ($(HAVE_SELINUX),y)
++	CFLAGS += $(HAVE_SELINUX_CFLAGS)
++	LDLIBS += $(HAVE_SELINUX_LDLIBS)
++endif
++ifeq ($(HAVE_MNL),y)
++	CFLAGS += $(HAVE_MNL_CFLAGS)
++	LDLIBS += $(HAVE_MNL_LDLIBS)
++endif
++ifeq ($(HAVE_CAP),y)
++	CFLAGS += $(HAVE_CAP_CFLAGS)
++	LDLIBS += $(HAVE_CAP_LDLIBS)
++endif
++
++# Rules can only be declared after all variables in them are known.
++%.o: %.c
++	$(QUIET_CC)$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CPPFLAGS) -c -o $@ $<
++
++# vim: ft=make:
+
+--- a/bridge/Makefile
++++ b/bridge/Makefile
+@@ -2,6 +2,7 @@
+ BROBJ = bridge.o fdb.o monitor.o link.o mdb.o vlan.o vni.o
+ 
+ include ../config.mk
++include ../config.include
+ 
+ all: bridge
+ 
+--- a/configure
++++ b/configure
+@@ -202,7 +202,7 @@ EOF
+     if $CC -I$INCLUDE -o $TMPDIR/setnstest $TMPDIR/setnstest.c >/dev/null 2>&1; then
+ 	echo "IP_CONFIG_SETNS:=y" >>$CONFIG
+ 	echo "yes"
+-	echo "CFLAGS += -DHAVE_SETNS" >>$CONFIG
++	echo "IP_CONFIG_SETNS_CFLAGS += -DHAVE_SETNS" >>$CONFIG
+     else
+ 	echo "no"
+     fi
+@@ -269,8 +269,8 @@ check_elf()
+ 	echo "HAVE_ELF:=y" >>$CONFIG
+ 	echo "yes"
+ 
+-	echo 'CFLAGS += -DHAVE_ELF' `${PKG_CONFIG} libelf --cflags` >> $CONFIG
+-	echo 'LDLIBS += ' `${PKG_CONFIG} libelf --libs` >>$CONFIG
++	echo 'HAVE_ELF_CFLAGS += -DHAVE_ELF' `${PKG_CONFIG} libelf --cflags` >> $CONFIG
++	echo 'HAVE_ELF_LDLIBS += ' `${PKG_CONFIG} libelf --libs` >>$CONFIG
+     else
+ 	echo "no"
+     fi
+@@ -388,8 +388,8 @@ check_selinux()
+ 		echo "HAVE_SELINUX:=y" >>$CONFIG
+ 		echo "yes"
+ 
+-		echo 'LDLIBS +=' `${PKG_CONFIG} --libs libselinux` >>$CONFIG
+-		echo 'CFLAGS += -DHAVE_SELINUX' `${PKG_CONFIG} --cflags libselinux` >>$CONFIG
++		echo 'HAVE_SELINUX_CFLAGS += -DHAVE_SELINUX' `${PKG_CONFIG} --cflags libselinux` >>$CONFIG
++		echo 'HAVE_SELINUX_LDLIBS +=' `${PKG_CONFIG} --libs libselinux` >>$CONFIG
+ 	else
+ 		echo "no"
+ 	fi
+@@ -414,8 +414,8 @@ check_mnl()
+ 		echo "HAVE_MNL:=y" >>$CONFIG
+ 		echo "yes"
+ 
+-		echo 'CFLAGS += -DHAVE_LIBMNL' `${PKG_CONFIG} libmnl --cflags` >>$CONFIG
+-		echo 'LDLIBS +=' `${PKG_CONFIG} libmnl --libs` >> $CONFIG
++		echo 'HAVE_MNL_CFLAGS += -DHAVE_LIBMNL' `${PKG_CONFIG} libmnl --cflags` >>$CONFIG
++		echo 'HAVE_MNL_LDLIBS +=' `${PKG_CONFIG} libmnl --libs` >> $CONFIG
+ 	else
+ 		echo "no"
+ 	fi
+@@ -455,8 +455,8 @@ EOF
+ 	echo "no"
+     else
+ 	if ${PKG_CONFIG} libbsd --exists; then
+-		echo 'CFLAGS += -DHAVE_LIBBSD' `${PKG_CONFIG} libbsd --cflags` >>$CONFIG
+-		echo 'LDLIBS +=' `${PKG_CONFIG} libbsd --libs` >> $CONFIG
++		echo 'HAVE_LIBBSD_CFLAGS += -DHAVE_LIBBSD' `${PKG_CONFIG} libbsd --cflags` >>$CONFIG
++		echo 'HAVE_LIBBSD_LDLIBS +=' `${PKG_CONFIG} libbsd --libs` >> $CONFIG
+ 		echo "no"
+ 	else
+ 		echo 'CFLAGS += -DNEED_STRLCPY' >>$CONFIG
+@@ -472,8 +472,8 @@ check_cap()
+ 		echo "HAVE_CAP:=y" >>$CONFIG
+ 		echo "yes"
+ 
+-		echo 'CFLAGS += -DHAVE_LIBCAP' `${PKG_CONFIG} libcap --cflags` >>$CONFIG
+-		echo 'LDLIBS +=' `${PKG_CONFIG} libcap --libs` >> $CONFIG
++		echo 'HAVE_CAP_CFLAGS += -DHAVE_LIBCAP' `${PKG_CONFIG} libcap --cflags` >>$CONFIG
++		echo 'HAVE_CAP_LDLIBS +=' `${PKG_CONFIG} libcap --libs` >> $CONFIG
+ 	else
+ 		echo "no"
+ 	fi
+@@ -633,7 +633,3 @@ check_strlcpy
+ 
+ echo -n "libcap support: "
+ check_cap
+-
+-echo >> $CONFIG
+-echo "%.o: %.c" >> $CONFIG
+-echo '	$(QUIET_CC)$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CPPFLAGS) -c -o $@ $<' >> $CONFIG
+--- a/dcb/Makefile
++++ b/dcb/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ DCBOBJ = dcb.o \
+          dcb_app.o \
+--- a/devlink/Makefile
++++ b/devlink/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ DEVLINKOBJ = devlink.o mnlg.o
+ TARGETS += devlink
+--- a/genl/Makefile
++++ b/genl/Makefile
+@@ -2,6 +2,7 @@
+ GENLOBJ=genl.o
+ 
+ include ../config.mk
++include ../config.include
+ SHARED_LIBS ?= y
+ 
+ CFLAGS += -fno-strict-aliasing
+--- a/ip/Makefile
++++ b/ip/Makefile
+@@ -18,6 +18,7 @@ IPOBJ=ip.o ipaddress.o ipaddrlabel.o iproute.o iprule.o ipnetns.o \
+ RTMONOBJ=rtmon.o
+ 
+ include ../config.mk
++include ../config.include
+ 
+ ALLOBJ=$(IPOBJ) $(RTMONOBJ)
+ SCRIPTS=routel
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ CFLAGS += -fPIC
+ 
+--- a/misc/Makefile
++++ b/misc/Makefile
+@@ -5,6 +5,7 @@ LNSTATOBJ=lnstat.o lnstat_util.o
+ TARGETS=ss nstat ifstat rtacct lnstat
+ 
+ include ../config.mk
++include ../config.include
+ 
+ ifeq ($(HAVE_BERKELEY_DB),y)
+ 	TARGETS += arpd
+--- a/netem/Makefile
++++ b/netem/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ DISTGEN = maketable normal pareto paretonormal
+ DISTDATA = normal.dist pareto.dist paretonormal.dist experimental.dist
+--- a/rdma/Makefile
++++ b/rdma/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0 OR Linux-OpenIB
+ include ../config.mk
++include ../config.include
+ 
+ CFLAGS += -I./include/uapi/
+ 
+--- a/tc/Makefile
++++ b/tc/Makefile
+@@ -4,6 +4,7 @@ TCOBJ= tc.o tc_qdisc.o tc_class.o tc_filter.o tc_util.o tc_monitor.o \
+        emp_ematch.tab.o emp_ematch.lex.o
+ 
+ include ../config.mk
++include ../config.include
+ 
+ SHARED_LIBS ?= y
+ 
+--- a/tipc/Makefile
++++ b/tipc/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ TIPCOBJ=bearer.o \
+     cmdl.o link.o \
+--- a/vdpa/Makefile
++++ b/vdpa/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ CFLAGS += -I./include/uapi/
+ VDPAOBJ = vdpa.o
+-- 
+2.42.0
+

@@ -1,0 +1,19 @@
+Patch kindly borrowed from openSUSE
+
+Gentoo-bug: 563802
+
+--- a/src/oxygenqtsettings.cpp
++++ b/src/oxygenqtsettings.cpp
+@@ -277,7 +277,11 @@
+ 
+         // load icon install prefix
+         gchar* path = 0L;
+-        if( runCommand( "kde4-config --path config", path ) && path )
++        if( runCommand( "qtpaths --paths ConfigLocation", path ) && path )
++        {
++            out.split( path );
++            g_free( path );
++        } else if( runCommand( "kde4-config --path config", path ) && path )
+         {
+ 
+             out.split( path );

@@ -1,0 +1,9 @@
+[Unit]
+Description=An opensource alternative to shoutcast
+After=network.target
+ 
+[Service]
+ExecStart=/usr/bin/icecast -c /etc/icecast2/icecast.xml
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,29 @@
+We don't want the build system to install to docdir for us.
+
+--- a/meson.build	2020-03-12 20:33:40.000000000 +0100
++++ b/meson.build	2020-03-12 22:46:08.020716935 +0100
+@@ -3352,15 +3352,11 @@
+ # install_data('modprobe.d/systemd.conf',
+ #              install_dir : modprobedir)
+ #endif // 0
+-install_data('LICENSE.GPL2',
+-             'LICENSE.LGPL2.1',
+ #if 0 /// elogind has upgraded to markdown, and the NEWS file is useless
+ #              'NEWS',
+ #              'README',
+ #else // 0
+-             'README.md',
+ #endif // 0
+-             'docs/CODING_STYLE.md',
+ #if 0 /// irrelevant for elogind
+ #              'docs/DISTRO_PORTING.md',
+ #              'docs/ENVIRONMENT.md',
+@@ -3369,8 +3365,6 @@
+ #              'docs/TRANSLATORS.md',
+ #              'docs/UIDS-GIDS.md',
+ #endif // 0
+-             'src/libelogind/sd-bus/GVARIANT-SERIALIZATION',
+-             install_dir : docdir)
+ 
+ #if 0 /// UNNEEDED by elogind
+ # meson.add_install_script('sh', '-c', mkdir_p.format(systemdstatedir))

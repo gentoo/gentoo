@@ -1,0 +1,7 @@
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Top-level sparc profile
+
+# SPARC specific stuff (32 and 64 bit)
+*sys-apps/sparc-utils

@@ -1,0 +1,67 @@
+https://github.com/ekenberg/quotatool/commit/09695c944947d804cbe3b5c7e2c854953984413e
+https://github.com/ekenberg/quotatool/commit/af27842d1a6640d932407999ceec57f54a225a78
+
+From 09695c944947d804cbe3b5c7e2c854953984413e Mon Sep 17 00:00:00 2001
+From: Bas Zoetekouw <bas.zoetekouw@surfnet.nl>
+Date: Thu, 9 Aug 2018 22:17:22 +0200
+Subject: [PATCH] fix implicit fallthrough
+
+--- a/src/parse.c
++++ b/src/parse.c
+@@ -268,6 +268,7 @@ argdata_t *parse_commandline (int argc, char **argv)
+ 
+     case '?':
+       output_error ("Unrecognized option: '%c'", optopt);
++      __attribute__ ((fallthrough));
+ 
+     default:
+       output_help();
+
+
+From af27842d1a6640d932407999ceec57f54a225a78 Mon Sep 17 00:00:00 2001
+From: Johan Ekenberg <johan.ekenberg@gmail.com>
+Date: Mon, 1 Apr 2019 13:19:08 +0200
+Subject: [PATCH] Fix compiler warnings
+
+__P() seems to not be used with modern compilers
+Fix switch-case attribute fallthrough warning
+--- a/src/linux/linux_quota.h
++++ b/src/linux/linux_quota.h
+@@ -117,7 +117,7 @@ struct if_dqinfo {
+ 	#endif
+ #endif
+ 
+-long quotactl __P((int, const char *, qid_t, caddr_t));
++long quotactl (int, const char *, qid_t, caddr_t);
+ 
+ /*
+  * runtime detection of quota format
+@@ -139,16 +139,3 @@ int kern_quota_format(fs_t *, int);
+ #include "xfs_quota.h"
+ 
+ #endif /* _QUOTA_ */
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+--- a/src/parse.c
++++ b/src/parse.c
+@@ -268,7 +268,7 @@ argdata_t *parse_commandline (int argc, char **argv)
+ 
+     case '?':
+       output_error ("Unrecognized option: '%c'", optopt);
+-      __attribute__ ((fallthrough));
++      // fall through
+ 
+     default:
+       output_help();
+

@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index b30f0e3..2c636f9 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -82,7 +82,7 @@ src_libp4est_la_SOURCES = \
+ src_libp4est_la_CPPFLAGS = $(AM_CPPFLAGS) $(P4EST_CPPFLAGS)
+ ## This is the official API versioning scheme of libtool.  Please see:
+ ## Read https://www.gnu.org/software/libtool/manual/libtool.html#Versioning
+-src_libp4est_la_LDFLAGS = -version-info 1:0:0
++src_libp4est_la_LDFLAGS = -release $(VERSION)
+ src_libp4est_la_LIBADD = @P4EST_SC_LDADD@
+ LDADD += src/libp4est.la @P4EST_SC_LDADD@
+ EXTRA_src_libp4est_la_DEPENDENCIES = @P4EST_SC_LDADD@

@@ -1,0 +1,19 @@
+From 47a80a178b4ab0225ff0540376be5b5c740530a7 Mon Sep 17 00:00:00 2001
+From: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+Date: Sat, 26 Mar 2022 10:32:18 +0100
+Subject: [PATCH] pkgconfig
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,6 @@
+-GTK_INCLUDE = `pkg-config gtk+-2.0 --cflags`
+-GTK_LIB = `pkg-config gtk+-2.0 --libs`
++PKG_CONFIG ?= pkg-config
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ FLAGS = -fPIC $(GTK_INCLUDE) 
+ LIBS = $(GTK_LIB) 
+-- 
+2.34.1
+

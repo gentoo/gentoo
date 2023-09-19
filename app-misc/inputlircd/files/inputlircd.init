@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+start() {
+	ebegin "Starting lircd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/inputlircd -- ${INPUTLIRCD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping lircd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/inputlircd
+	eend $?
+}

@@ -1,0 +1,75 @@
+--- a/editcor.c
++++ b/editcor.c
+@@ -183,11 +183,11 @@
+ 
+     strcpy(scratch, "/tmp/lv.XXXXXX");
+     
+     clrprompt();
+     printch('!');
+-    if ( !getline(instring) )
++    if ( !get_line(instring) )
+ 	return FALSE;
+ 
+     if ( (tf = mkstemp(scratch)) < 0 ) {
+ 	prints("[tempfile error]");
+ 	return FALSE;
+--- a/extern.h
++++ b/extern.h
+@@ -195,11 +195,11 @@
+ extern exec_type PROC editcore();
+ 
+ extern char PROC line(), peekc(), readchar();
+ extern char PROC *findparse(),*makepat();
+ 
+-extern bool PROC getline();
++extern bool PROC get_line();
+ extern bool PROC putfile();
+ extern bool PROC doyank(), deletion(), putback();
+ extern bool PROC pushb(),pushi(),pushmem(),uputcmd(), delete_to_undo();
+ extern bool PROC ok_to_scroll(), move_to_undo();
+ 
+--- a/main.c
++++ b/main.c
+@@ -251,11 +251,11 @@
+ 	println();
+ 
+     mode=emode;
+     do {
+ 	prompt(FALSE,":");
+-	if (getline(instring))
++	if (get_line(instring))
+ 	    exec(instring, &mode, &noquit);
+ 	indirect = FALSE;
+ 	if (mode == E_VISUAL && zotscreen && noquit) {	/*ask for more*/
+ 	    prints(" [more]");
+ 	    if ((ch=peekc()) == 13 || ch == ' ' || ch == ':')
+--- a/misc.c
++++ b/misc.c
+@@ -19,11 +19,11 @@
+  */
+ #include "levee.h"
+ #include "extern.h"
+ 
+ bool PROC
+-getline(str)
++get_line(str)
+ char *str;
+ {
+     int len;
+     char flag;
+     
+--- a/move.c
++++ b/move.c
+@@ -158,11 +158,11 @@
+     case FSEARCH:
+     case BSEARCH:
+ 	clrprompt();
+ 	if (cmd == PATT_FWD || cmd == PATT_BACK) {
+ 	    printch(tsearch = instring[0] = chars[cmd-PATT_FWD]);
+-	    if (!getline(&instring[1]))
++	    if (!get_line(&instring[1]))
+ 		return ESCAPED;	/* needs to skip later tests */
+ 	}
+ 	else {
+ 	    if (!lsearch)
+ 		return BADMOVE;

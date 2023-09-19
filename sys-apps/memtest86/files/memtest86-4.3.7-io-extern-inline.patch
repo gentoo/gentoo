@@ -1,0 +1,29 @@
+the meaning of extern inline changed between standards.  use static inline
+for these tiny I/O functions everywhere to keep things simple.
+
+--- a/io.h
++++ b/io.h
+@@ -31,6 +31,6 @@
+  */
+ 
+ #define __OUT1(s,x) \
+-extern inline void __out##s(unsigned x value, unsigned short port) {
++static inline void __out##s(unsigned x value, unsigned short port) {
+ 
+ #define __OUT2(s,s1,s2) \
+@@ -43,6 +43,6 @@
+ __OUT1(s##c_p,x) __OUT2(s,s1,"") : : "a" (value), "id" (port)); SLOW_DOWN_IO; }
+ 
+ #define __IN1(s) \
+-extern inline RETURN_TYPE __in##s(unsigned short port) { RETURN_TYPE _v;
++static inline RETURN_TYPE __in##s(unsigned short port) { RETURN_TYPE _v;
+ 
+ #define __IN2(s,s1,s2) \
+@@ -55,6 +55,6 @@
+ __IN1(s##c_p) __IN2(s,s1,"") : "=a" (_v) : "id" (port) ,##i ); SLOW_DOWN_IO; return _v; }
+ 
+ #define __OUTS(s) \
+-extern inline void outs##s(unsigned short port, const void * addr, unsigned long count) \
++static inline void outs##s(unsigned short port, const void * addr, unsigned long count) \
+ { __asm__ __volatile__ ("cld ; rep ; outs" #s \
+ : "=S" (addr), "=c" (count) : "d" (port),"0" (addr),"1" (count)); }

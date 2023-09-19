@@ -1,0 +1,54 @@
+From d1c3b3bc53f2ce1ceb99e634a2d62f573a539220 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 21 Mar 2018 14:58:29 +1300
+Subject: Disable tests that require network IO when NO_NETWORK_TESTING set
+
+---
+ t/OOInterface.t | 9 ++++++++-
+ t/Simple.t      | 9 ++++++++-
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/t/OOInterface.t b/t/OOInterface.t
+index b20535e..9591d93 100644
+--- a/t/OOInterface.t
++++ b/t/OOInterface.t
+@@ -14,7 +14,14 @@
+ # initialization
+ #
+ no warnings;
+-use Test::More tests => 62;
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++  require Test::More;
++  Test::More->import( tests => 62 );
++}
+ require './t/TestData.pm';
+ 
+ BEGIN {
+diff --git a/t/Simple.t b/t/Simple.t
+index 227383d..f4687ec 100644
+--- a/t/Simple.t
++++ b/t/Simple.t
+@@ -14,8 +14,15 @@
+ # initialization
+ #
+ no warnings;
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++  require Test::More;
++  Test::More->import( tests => 2 );
++}
+ use Data::Dumper;
+-use Test::More tests => 2;
+ require './t/TestData.pm';
+ 
+ BEGIN {
+-- 
+2.16.2
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/Fanael/rainbow-delimiters/issues/</bugs-to>
+    <remote-id type="github">Fanael/rainbow-delimiters</remote-id>
+  </upstream>
+</pkgmetadata>

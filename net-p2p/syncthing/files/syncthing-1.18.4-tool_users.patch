@@ -1,0 +1,25 @@
+Let us save ourselves the pain of messing with renamed system accounts
+use the old names, for now at least.
+
+--- a/cmd/stdiscosrv/etc/linux-systemd/stdiscosrv.service
++++ b/cmd/stdiscosrv/etc/linux-systemd/stdiscosrv.service
+@@ -9,7 +9,7 @@
+ ExecStart=/usr/bin/stdiscosrv $DISCOSRV_OPTS
+ 
+ # Hardening
+-User=syncthing-discosrv
++User=stdiscosrv
+ Group=syncthing
+ ProtectSystem=strict
+ ReadWritePaths=/var/lib/syncthing-discosrv
+--- a/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
++++ b/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
+@@ -9,7 +9,7 @@
+ ExecStart=/usr/bin/strelaysrv -nat=${NAT} $RELAYSRV_OPTS
+ 
+ # Hardening
+-User=syncthing-relaysrv
++User=strelaysrv
+ Group=syncthing
+ ProtectSystem=strict
+ ReadWritePaths=/var/lib/syncthing-relaysrv

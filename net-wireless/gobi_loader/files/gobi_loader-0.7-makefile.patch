@@ -1,0 +1,22 @@
+--- gobi_loader-0.7/Makefile
++++ gobi_loader-0.7/Makefile
+@@ -1,15 +1,14 @@
+ VERSION = 0.7
+ 
+ gobi_loader: gobi_loader.c
+-	gcc -Wall gobi_loader.c -o gobi_loader
++	gcc ${CFLAGS} ${LDFLAGS} -Wall gobi_loader.c -o gobi_loader
+ 
+ all: gobi_loader
+ 
+ install: gobi_loader
+-	install -D gobi_loader ${prefix}/lib/udev/gobi_loader
+-	install -D 60-gobi.rules ${prefix}/lib/udev/rules.d/60-gobi.rules
+-	mkdir -p ${prefix}/lib/firmware
+-	-udevadm control --reload-rules
++	install -D gobi_loader ${D}%UDEVDIR%/gobi_loader
++	install -D 60-gobi.rules ${D}%UDEVDIR%/rules.d/60-gobi.rules
++	mkdir -p ${D}${prefix}/lib/firmware
+ 
+ uninstall:
+ 	-rm $(prefix)/lib/udev/gobi_loader

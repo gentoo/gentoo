@@ -1,0 +1,9 @@
+diff -r -U2 src.orig/gui/CMakeLists.txt src/gui/CMakeLists.txt
+--- src.orig/gui/CMakeLists.txt	2023-04-11 07:46:19.000000000 +0700
++++ src/gui/CMakeLists.txt	2023-08-21 13:00:21.039704497 +0700
+@@ -70,4 +70,5 @@
+ 	${PNG_LIBRARIES}
+ 	${PIXMAN_LIBRARIES}
++	TIFF::TIFF
+ 	Qt::Core
+ 	Qt::Gui

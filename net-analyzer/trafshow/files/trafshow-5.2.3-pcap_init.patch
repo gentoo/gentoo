@@ -1,0 +1,29 @@
+--- a/trafshow.c
++++ b/trafshow.c
+@@ -58,7 +58,7 @@
+ static void vers();
+ static void usage();
+ static pcap_if_t *pcap_matchdev(pcap_if_t *dp, const char *name);
+-static int pcap_init(PCAP_HANDLER **ph_list, pcap_if_t *dp);
++static int ts_pcap_init(PCAP_HANDLER **ph_list, pcap_if_t *dp);
+ static void *pcap_feed(void *arg); /* PCAP_HANDLER *ph */
+ #ifdef	HAVE_PCAP_GET_SELECTABLE_FD
+ static void *pcap_feed2(void *arg); /* PCAP_HANDLER *ph */
+@@ -172,7 +172,7 @@
+ 	}
+ 
+ 	/* initialize list of pcap handlers */
+-	if ((op = pcap_init(&ph_list, dev_list)) < 1) {
++	if ((op = ts_pcap_init(&ph_list, dev_list)) < 1) {
+ 		fprintf(stderr, "No packet capture device available (no permission?)\n");
+ 		exit(1);
+ 	}
+@@ -298,7 +298,7 @@
+ }
+ 
+ static int
+-pcap_init(ph_list, dp)
++ts_pcap_init(ph_list, dp)
+ 	PCAP_HANDLER **ph_list;
+ 	pcap_if_t *dp;
+ {

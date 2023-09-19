@@ -1,0 +1,170 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -94,6 +94,9 @@
+   "Build PaStiX with PaRSEC runtime support" OFF)
+ 
+ # Internal options
++option(INSTALL_EXAMPLES
++  "Install example code" OFF)
++
+ option(PASTIX_GENERATE_MODEL
+   "Enable performances profiling for model generation" OFF)
+ 
+--- a/example/CMakeLists.txt
++++ b/example/CMakeLists.txt
+@@ -38,15 +38,18 @@
+   )
+ set (example_install_dir "${CMAKE_INSTALL_DOCDIR}/examples/c")
+ 
++if (BUILD_TESTING)
+ foreach (_file ${EXAMPLES})
+   get_filename_component(_name_we ${_file} NAME_WE)
+   add_executable(${_name_we} ${_file})
+   target_link_libraries(${_name_we} pastix)
+   target_link_libraries(${_name_we} ${BLAS_LIBRARIES})
+-
+-  install(TARGETS ${_name_we} RUNTIME DESTINATION ${example_install_dir} )
+-  install(FILES   ${_file}            DESTINATION ${example_install_dir} )
+ endforeach()
++endif()
++
++if (INSTALL_EXAMPLES)
++
++install(FILES ${EXAMPLES} DESTINATION ${example_install_dir} )
+ 
+ ### Install a makefile for user compilation test
+ set( EXAMPLE_LIBS ${DEPS_LIBRARIES} )
+@@ -61,4 +64,6 @@
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/make/Makefile"
+   DESTINATION ${example_install_dir})
+ 
++endif (INSTALL_EXAMPLES)
++
+ include(CTestLists.txt)
+--- a/example/old/CMakeLists.txt
++++ b/example/old/CMakeLists.txt
+@@ -15,14 +15,17 @@
+   )
+ set (example_install_dir "${CMAKE_INSTALL_DOCDIR}/examples/c/old")
+ 
++if (BUILD_TESTING)
+ foreach (_file ${EXAMPLES})
+   get_filename_component(_name_we ${_file} NAME_WE)
+   add_executable("old_${_name_we}" ${_file})
+   target_link_libraries("old_${_name_we}" pastix)
+-
+-  install(TARGETS old_${_name_we} RUNTIME DESTINATION ${example_install_dir} )
+-  install(FILES   ${_file}                DESTINATION ${example_install_dir} )
+ endforeach()
++endif()
++
++if (INSTALL_EXAMPLES)
++
++install(FILES ${EXAMPLES} DESTINATION ${example_install_dir} )
+ 
+ ### Install a makefile for user compilation test
+ set( EXAMPLE_LIBS
+@@ -36,3 +39,4 @@
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/make/Makefile"
+   DESTINATION ${example_install_dir} )
+ 
++endif (INSTALL_EXAMPLES)
+--- a/spm/wrappers/fortran90/CMakeLists.txt
++++ b/spm/wrappers/fortran90/CMakeLists.txt
+@@ -43,15 +43,19 @@
+   )
+ set ( example_install_dir "${CMAKE_INSTALL_DOCDIR}/examples/fortran" )
+ 
++if (BUILD_TESTING)
+ foreach (_file ${EXAMPLES})
+   get_filename_component(_name_we ${_file} NAME_WE)
+   add_executable(${_name_we} examples/${_file})
+   target_link_libraries(${_name_we} spmf)
+ 
+-  install(TARGETS ${_name_we}       RUNTIME DESTINATION ${example_install_dir} )
+-  install(FILES   examples/${_file}         DESTINATION ${example_install_dir} )
+-
+   add_test(fortran_${_name_we} ./${_name_we})
+ 
+ endforeach()
++endif()
+ 
++if (INSTALL_EXAMPLES)
++  foreach (_file ${EXAMPLES})
++    install(FILES examples/${_file} DESTINATION ${example_install_dir} )
++  endforeach()
++endif()
+--- a/spm/wrappers/python/CMakeLists.txt
++++ b/spm/wrappers/python/CMakeLists.txt
+@@ -31,11 +31,13 @@
+   DESTINATION "${Python_SITELIB}/spm" )
+ 
+ # Install python examples
++if (INSTALL_EXAMPLES)
+ install(FILES
+   ${CMAKE_CURRENT_SOURCE_DIR}/spm_driver.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/spm_scipy.py
+   DESTINATION "${CMAKE_INSTALL_DOCDIR}/examples/python"
+   )
++endif()
+ 
+ ## CTest execution
+   set( PYTHON_TESTS
+--- a/wrappers/fortran90/CMakeLists.txt
++++ b/wrappers/fortran90/CMakeLists.txt
+@@ -45,14 +45,13 @@
+   )
+ set ( example_install_dir "${CMAKE_INSTALL_DOCDIR}/examples/fortran" )
+ 
++if (BUILD_TESTING)
++
+ foreach (_file ${EXAMPLES})
+   get_filename_component(_name_we ${_file} NAME_WE)
+   add_executable(${_name_we} examples/${_file})
+   target_link_libraries(${_name_we} pastixf spmf)
+ 
+-  install(TARGETS ${_name_we}       RUNTIME DESTINATION ${example_install_dir} )
+-  install(FILES   examples/${_file}         DESTINATION ${example_install_dir} )
+-
+   add_test(fortran_${_name_we} ./${_name_we})
+ 
+ endforeach()
+@@ -66,10 +65,16 @@
+ add_executable(${_name_we} examples/${_file})
+ target_link_libraries(${_name_we} pastixf spmf)
+ 
+-install(TARGETS ${_name_we}       RUNTIME DESTINATION ${example_install_dir} )
+-install(FILES   examples/${_file}         DESTINATION ${example_install_dir} )
+-install(FILES   examples/test_seq.in      DESTINATION ${example_install_dir} )
+-install(FILES   examples/test_mt.in       DESTINATION ${example_install_dir} )
++endif (BUILD_TESTING)
++
++if (INSTALL_EXAMPLES)
++  foreach (_file ${EXAMPLES})
++    install(FILES examples/${_file} DESTINATION ${example_install_dir} )
++  endforeach()
++  install(FILES examples/fmultilap.f90 DESTINATION ${example_install_dir} )
++  install(FILES examples/test_seq.in DESTINATION ${example_install_dir} )
++  install(FILES examples/test_mt.in DESTINATION ${example_install_dir} )
++endif()
+ 
+ # Add OpenMP if available
+ find_package(OpenMP)
+--- a/wrappers/python/CMakeLists.txt
++++ b/wrappers/python/CMakeLists.txt
+@@ -32,6 +32,7 @@
+   DESTINATION "${Python_SITELIB}/pypastix" )
+ 
+ # Install python examples
++if (INSTALL_EXAMPLES)
+ install(FILES
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/simple.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/simple_obj.py
+@@ -39,6 +40,7 @@
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/schur_obj.py
+   DESTINATION "${CMAKE_INSTALL_DOCDIR}/examples/python"
+   )
++endif()
+ 
+ ## CTest execution
+   set( PYTHON_TESTS

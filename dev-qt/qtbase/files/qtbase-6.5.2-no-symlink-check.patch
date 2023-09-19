@@ -1,0 +1,5 @@
+https://bugs.gentoo.org/914195
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65 +64,0 @@
+-qt_internal_check_if_path_has_symlinks("${CMAKE_BINARY_DIR}")

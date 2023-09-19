@@ -1,0 +1,24 @@
+ * QA Notice: This package installs one or more .desktop files that do not
+ * pass validation.
+ * 
+ *      /usr/share/applications/calf.desktop: error: value "0.90.1" for key "Version" in group "Desktop Entry" is not a known version
+ *      /usr/share/applications/calf.desktop: warning: value "Application;AudioVideo;Audio;GNOME" for key "Categories" in group "Desktop Entry" contains a deprecated value "Application"
+
+
+--- a/calf.desktop.in	2018-07-08 12:35:56.000000000 +0200
++++ b/calf.desktop.in	2019-03-10 20:19:01.251946945 +0100
+@@ -3,7 +3,6 @@
+ Name[pl]=Zestaw wtyczek Calf
+ Name[ru]=Набор эффектов и инструментов Calf для JACK
+ Name[fr]=Ensemble de greffons Calf pour JACK
+-Version=@VERSION@
+ Comment=Process and produce sounds using a set of plugins with JACK interface
+ Comment[pl]=Przetwarzaj i generuj dźwięk używając zestawu wtyczek zgodnych z JACK
+ Comment[ru]=Обработка и создание музыки при помощи эффектов и инструментов через JACK
+@@ -11,5 +10,5 @@
+ Exec=calfjackhost
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo;Audio;GNOME
++Categories=AudioVideo;Audio;GNOME
+ Icon=calf

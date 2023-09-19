@@ -1,0 +1,11 @@
+--- a/src/command/sabcmd.cpp
++++ b/src/command/sabcmd.cpp
+@@ -168,7 +168,7 @@
+ 
+ char askhelp[] = "Type sabcmd --help to display a help message.\n";
+ char msgConflict[] = "conflict with preceding switches: ";
+-char version_txt[] = "\nsabcmd "SAB_VERSION" ("SAB_DATE")\n"\
++char version_txt[] = "\nsabcmd " SAB_VERSION " (" SAB_DATE ")\n"\
+     "copyright (C) 2000 - 2005 Ginger Alliance (www.gingerall.com)\n";
+ char dbg_usage[] = "\nDebugging options:\n"\
+     "\t--debug\t\t\tdisplay results of the command line parse\n"\

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    PDF Tools is, among other things, a replacement of DocView for PDF files.
+    The key difference is that pages are not pre-rendered by e.g. ghostscript
+    and stored in the file-system, but rather created on-demand and stored in
+    memory. This rendering is performed by a special library named, for
+    whatever reason, poppler, running inside a server program. This program is
+    called epdfinfo and its job is to successively read requests from Emacs and
+    produce the proper results, i.e. the PNG image of a PDF page. Actually,
+    displaying PDF files is just one part of pdf-tools. Since poppler can
+    provide us with all kinds of information about a document and is also able
+    to modify it, there is a lot more we can do with it.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/vedang/pdf-tools/issues/</bugs-to>
+    <remote-id type="github">vedang/pdf-tools</remote-id>
+  </upstream>
+</pkgmetadata>

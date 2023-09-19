@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/887467
+--- a/Source/FreeImage/PluginRAW.cpp
++++ b/Source/FreeImage/PluginRAW.cpp
+@@ -693,3 +693,7 @@
+ 		// (-s [0..N-1]) Select one raw image from input file
++#if LIBRAW_COMPILE_CHECK_VERSION_NOTLESS(0, 21)
++		RawProcessor->imgdata.rawparams.shot_select = 0;
++#else
+ 		RawProcessor->imgdata.params.shot_select = 0;
++#endif
+ 		// (-w) Use camera white balance, if possible (otherwise, fallback to auto_wb)

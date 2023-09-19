@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/Bismuth-Forge/bismuth/issues</bugs-to>
+		<changelog>https://github.com/Bismuth-Forge/bismuth/blob/master/CHANGELOG.md</changelog>
+		<doc>https://github.com/Bismuth-Forge/bismuth/tree/master/docs</doc>
+		<remote-id type="github">Bismuth-Forge/bismuth</remote-id>
+	</upstream>
+</pkgmetadata>

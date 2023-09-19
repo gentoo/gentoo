@@ -1,0 +1,26 @@
+This fixes build with sys-devel/slibtool
+
+--- SDL2_gfx-1.0.4/configure.in
++++ SDL2_gfx-1.0.4/configure.in
+@@ -58,6 +58,9 @@
+ fi
+ AC_CHECK_PROGS(WINDRES, [windres $hostaliaswindres $host_os-windres])
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ case "$host" in
+     *-*-beos*)
+         ac_default_prefix=/boot/develop/tools/gnupro
+--- SDL2_gfx-1.0.4/Makefile.am
++++ SDL2_gfx-1.0.4/Makefile.am
+@@ -24,6 +24,9 @@
+ 	-release $(LT_RELEASE)	\
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
++libSDL2_gfx_la_LIBADD =		\
++	$(LIBM)
++
+ %.o : %.rc
+ 	$(WINDRES) $< $@
+ 

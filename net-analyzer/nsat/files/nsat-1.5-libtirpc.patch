@@ -1,0 +1,33 @@
+--- a/configure.in
++++ b/configure.in
+@@ -195,6 +195,8 @@
+ AC_FUNC_VPRINTF
+ AC_CHECK_FUNCS(select socket strdup strstr random srandom snprintf setsockopt initstate gettimeofday strerror)
+ 
++PKG_CHECK_MODULES([TIRPC], [libtirpc], [], [AC_MSG_NOTICE([Using glibc rpc support])])
++
+ AC_OUTPUT(Makefile tools/Makefile src/Makefile src/mod/Makefile src/smb/Makefile src/libmix++/Makefile src/libmix++/mix/net.h)
+ 
+ AC_MSG_RESULT()
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -36,7 +36,7 @@
+ 	@cd mod ; $(MAKE) modobj
+ 
+ ../nsat: modobj
+-	${GPP} ${CFLAGS} ${LDFLAGS} ${OBJ} ${MODOBJ} ${MIXOBJ} -o ../nsat ${CLIB}
++	${GPP} ${CFLAGS} ${LDFLAGS} ${OBJ} ${MODOBJ} ${MIXOBJ} -o ../nsat ${CLIB} @TIRPC_LIBS@
+ 
+ pidalloc.o:
+ 	${GPP} ${CFLAGS} -c pidalloc.cpp
+--- a/src/mod/Makefile.in
++++ b/src/mod/Makefile.in
+@@ -35,7 +35,7 @@
+ 	${GPP} ${CFLAGS} -c osscan.cpp
+ 
+ rpc.o:
+-	${GPP} ${CFLAGS} -c rpc.cpp
++	${GPP} ${CFLAGS} @TIRPC_CFLAGS@ -c rpc.cpp
+ 
+ www.o:
+ 	${GPP} ${CFLAGS} -c www.cpp

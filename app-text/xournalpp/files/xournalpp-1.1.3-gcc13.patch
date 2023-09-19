@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/894720
+https://bugs.gentoo.org/895536
+--- a/src/view/background/BackgroundConfig.h
++++ b/src/view/background/BackgroundConfig.h
+@@ -11,6 +11,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ 

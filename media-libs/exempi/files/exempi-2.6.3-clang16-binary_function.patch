@@ -1,0 +1,33 @@
+Bug: https://bugs.gentoo.org/910494
+--- a/XMPFiles/source/PluginHandler/XMPAtoms.h
++++ b/XMPFiles/source/PluginHandler/XMPAtoms.h
+@@ -83,8 +83,12 @@ enum
+ 
+ #define XMPAtomNull emptyStr_K
+ 
+-struct StringCompare : std::binary_function<const std::string &, const std::string &, bool>
++struct StringCompare
+ {
++	public:
++		using first_argument_type = const std::string &;
++		using second_argument_type = const std::string &;
++		using result_type = bool;
+ 	bool operator() (const std::string & a, const std::string & b) const
+ 	{
+ 		return ( a.compare(b) < 0 );
+--- a/XMPFilesPlugins/api/source/PluginRegistry.h
++++ b/XMPFilesPlugins/api/source/PluginRegistry.h
+@@ -68,8 +68,12 @@ public:
+ 	
+ private:
+ 
+-	struct StringCompare : std::binary_function< const std::string &, const std::string &, bool >
++	struct StringCompare
+ 	{
++		public:
++			using first_argument_type = const std::string &;
++			using second_argument_type = const std::string &;
++			using result_type = bool;
+ 		bool operator()( const std::string & a, const std::string & b ) const
+ 		{
+ 			return ( a.compare(b) < 0 );

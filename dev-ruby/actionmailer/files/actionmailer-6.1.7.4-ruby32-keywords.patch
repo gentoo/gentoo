@@ -1,0 +1,50 @@
+From 67bdba4e63cad218c02dbb3171ddd53353cc0b48 Mon Sep 17 00:00:00 2001
+From: Javier Jimenez <javiyu7@gmail.com>
+Date: Thu, 5 Jan 2023 21:34:37 +0100
+Subject: [PATCH] Backports ruby 3.2 compatibility fixes for rails 6.1
+
+---
+ actionmailer/lib/action_mailer/base.rb            |  2 +-
+ actionmailer/lib/action_mailer/rescuable.rb       | 12 ++++++++----
+ actionpack/lib/abstract_controller/base.rb        | 10 +++++++---
+ actionpack/lib/abstract_controller/callbacks.rb   |  6 +++++-
+ actionview/lib/action_view/rendering.rb           |  6 +++++-
+ activemodel/lib/active_model/attribute_methods.rb |  2 +-
+ activerecord/lib/active_record/relation.rb        |  8 ++++++--
+ 7 files changed, 33 insertions(+), 13 deletions(-)
+
+diff --git a/actionmailer/lib/action_mailer/base.rb b/actionmailer/lib/action_mailer/base.rb
+index ae04c0419fc99..4f2620e525157 100644
+--- a/lib/action_mailer/base.rb
++++ b/lib/action_mailer/base.rb
+@@ -616,6 +616,7 @@ def process(method_name, *args) #:nodoc:
+         @_message = NullMail.new unless @_mail_was_called
+       end
+     end
++    ruby2_keywords(:process) if respond_to?(:ruby2_keywords, true)
+ 
+     class NullMail #:nodoc:
+       def body; "" end
+diff --git a/actionmailer/lib/action_mailer/rescuable.rb b/actionmailer/lib/action_mailer/rescuable.rb
+index ffcaa1f79526d..d949e4681e30c 100644
+--- a/lib/action_mailer/rescuable.rb
++++ b/lib/action_mailer/rescuable.rb
+@@ -20,10 +20,14 @@ def handle_exceptions #:nodoc:
+     end
+ 
+     private
+-      def process(*)
+-        handle_exceptions do
+-          super
+-        end
++      all_args = RUBY_VERSION < "2.7" ? "*" : "..."
++
++      class_eval <<-RUBY
++    def process(#{all_args})
++      handle_exceptions do
++        super
+       end
++    end
++      RUBY
+   end
+ end

@@ -1,0 +1,14 @@
+Fully respect DESTDIR.
+
+https://bugs.gentoo.org/796557#c1
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -436,7 +436,7 @@
+ if(UNIX AND NOT APPLE)
+   install(FILES docs/melt.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 RENAME melt-${MLT_VERSION_MAJOR}.1)
+   install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink melt-${MLT_VERSION_MAJOR}.1 melt.1 \
+-                                WORKING_DIRECTORY ${CMAKE_INSTALL_FULL_MANDIR}/man1)"
++                                WORKING_DIRECTORY \$ENV\{DESTDIR\}${CMAKE_INSTALL_FULL_MANDIR}/man1)"
+   )
+ endif()
+ 

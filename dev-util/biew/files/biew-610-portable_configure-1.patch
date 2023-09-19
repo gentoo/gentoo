@@ -1,0 +1,167 @@
+Changes the biew-610 configure script to use portable test constructs. See the
+Autoconf manual <URL:https://www.gnu.org/software/autoconf/manual/html_node/
+Limitations-of-Builtins.html#index-g_t_0040command_007btest_007d-1725> for
+explanations.
+
+ –nico
+
+
+diff -Naur biew-610.orig/configure biew-610/configure
+--- biew-610.orig/configure	2009-11-13 14:52:36.000000000 +0000
++++ biew-610/configure	2011-02-24 09:44:10.000000000 +0000
+@@ -171,7 +171,7 @@
+ # 1st: print out help
+ 
+ for parm in "$@" ; do
+-  if test "$parm" = "--help" || test "$parm" = "-help" || test "$parm" = "-h" ; then
++  if test "X$parm" = "X--help" || test "X$parm" = "X-help" || test "X$parm" = "X-h" ; then
+     cat << EOF
+ 
+ Usage: $0 [OPTIONS]...
+@@ -235,7 +235,7 @@
+ _cp=cp
+ _libext=a
+ _libprefix=lib
+-test "$CC" && _cc="$CC"
++test "X$CC" != X && _cc="$CC"
+ _prefix="/usr/local"
+ _datadir=
+ _libdir=
+@@ -340,11 +340,11 @@
+     ;;
+   esac
+ done
+-test -z "$_datadir" && _datadir=$_prefix"/share/biew"
+-test -z "$_libdir" && _libdir=$_prefix"/lib/biew"
++test "X$_datadir" = X && _datadir=$_prefix"/share/biew"
++test "X$_libdir" = X && _libdir=$_prefix"/lib/biew"
+ 
+ for I in "$TMPDIR" "$TEMPDIR" "/tmp" ; do
+-  test "$I" && break
++  test "X$I" != X && break
+ done
+ 
+ TMPLOG="config.log"
+@@ -357,8 +357,8 @@
+ _tee="tee -a $TMPLOG"
+ 
+ echocheck "architecture"
+-if test "$_target_arch" = auto ; then
+-  if test -z "$host_arch" ; then
++if test "X$_target_arch" = Xauto ; then
++  if test "X$host_arch" = X ; then
+   host_arch=`( uname -p ) 2>&1`
+   log "uname -p :" "$host_arch"
+   case "$host_arch" in
+@@ -416,8 +416,8 @@
+ x86_64  && _bitness=64
+ 
+ echocheck "target OS"
+-if test "$_target_system" = auto ; then
+-  if test -z "$system_name" ; then
++if test "X$_target_system" = Xauto ; then
++  if test "X$system_name" = X ; then
+     # OS name
+     system_name=`uname -s`
+     log "uname -s :" "$system_name"
+@@ -461,8 +461,8 @@
+   fi
+ fi
+ 
+-if test "$_target_system" = auto ; then
+-  if test -z "$system_name" ; then
++if test "X$_target_system" = Xauto ; then
++  if test "X$system_name" = X ; then
+     # OS name
+     system_name=`/bin/sh --version 2>&1 | sed -n 's/^.*\([(]\)./\1/p'`
+     log "/bin/sh --version:" "$system_name"
+@@ -549,7 +549,7 @@
+     ;;
+ esac
+ 
+-if test -z "$_x11incdir" ; then
++if test "X$_x11incdir" = X ; then
+ echocheck "X11 headers"
+   for I in /usr/include /usr/X11R6/include /usr/X11/include /usr/openwin/include ; do
+     if test -d "$I/X11" ; then
+@@ -559,11 +559,11 @@
+     fi
+   done
+ fi
+-if test -z "$_x11incdir" ; then
++if test "X$_x11incdir" = X ; then
+     echores "x11inc not found"
+ fi
+ 
+-if test -z "$_x11libdir" ; then
++if test "X$_x11libdir" = X ; then
+ echocheck "X11 libs"
+   for I in /usr/X11R6/lib /usr/X11/lib /usr/lib32 /usr/openwin/lib ; do
+     if test -d "$I" ; then
+@@ -573,24 +573,24 @@
+     fi
+   done
+ fi
+-if test -z "$_x11libdir" ; then
++if test "X$_x11libdir" = X ; then
+     echores "x11lib not found"
+ fi
+ 
+-test -z "$_debug" && _osldef="-s $_osldef" || _cdefos="-finline-limit-5 $_cdefos"
+-if test "$_profile" -o "$_debug" -o "$_gcov"; then
++test "X$_debug" = X && _osldef="-s $_osldef" || _cdefos="-finline-limit-5 $_cdefos"
++if test "X$_profile" != X || test "X$_debug" != X || test "X$_gcov" != X ; then
+   _cdefos="-W -Wall -O2 -fno-builtin $_debug $_profile $_gcov $_cdefos"
+   _osldef="$_debug $_profile $_osldef"
+-elif test -z "$CFLAGS" ; then
++elif test "X$CFLAGS" = X ; then
+     _cdefos="-DNDEBUG=1 -O2 -ffast-math -fomit-frame-pointer $_cdefos"
+     x86 && _cdefos="-mmmx -msse $_cdefos"
+ else
+     _cdefos="-DNDEBUG=1 $CFLAGS $_cdefos"
+ fi
+-test -n "$LDFLAGS" && _osldef="$LDFLAGS $_osldef"
+-test -n "$LIBS" && _osldef="$LIBS $_osldef"
++test "X$LDFLAGS" != X && _osldef="$LDFLAGS $_osldef"
++test "X$LIBS" != X && _osldef="$LIBS $_osldef"
+ 
+-if test "$_target_system" = dos ; then
++if test "X$_target_system" = Xdos ; then
+ # disable cc_check call for DJGPP due bugs in bash
+ _cdefos="-D__HAVE_PRAGMA_PACK__=1 $_cdefos"
+ else
+@@ -668,10 +668,10 @@
+ 	_curseslib=
+ 	disable _curses
+ 	cc_check -lcurses && _curseslib="-lcurses"
+-	if test -z "$_curseslib" ; then
++	if test "X$_curseslib" = X ; then
+ 	    cc_check -lncurses && _curseslib="-lncurses"
+ 	fi
+-	if test -n "$_curseslib" ; then
++	if test "X$_curseslib" != X ; then
+ 	    enable _curses
+ 	    _cdefos="-D_CURSES_ -D__OS_NAME__='\"Unix/Curses\"' $_cdefos"
+ 	    _oslibs="$_curseslib $_oslibs"
+@@ -711,10 +711,10 @@
+ enabled sys_resource_h && _cdefos="-DHAVE_SYS_RESOURCE=1 $_cdefos"
+ echores "$sys_resource_h"
+ 
+-if test -z "$_x11libdir" ; then
++if test "X$_x11libdir" = X ; then
+  _cdefos="$_cdefos"
+ else
+-  if test -z "$_x11incdir" ; then
++  if test "X$_x11incdir" = X ; then
+    _cdefos="$_cdefos"
+   else
+     _cdefos="-DHAVE_X11 $_cdefos"
+@@ -738,7 +738,7 @@
+ fi
+ 
+ # Checking for INSTALL
+-if test -z $_install
++if test "X$_install" = X
+ then
+     _install="install"
+     $_install --version 1>/dev/null 2>/dev/null || _install=""

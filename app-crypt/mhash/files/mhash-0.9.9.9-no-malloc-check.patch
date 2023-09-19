@@ -1,0 +1,20 @@
+https://sourceforge.net/p/mhash/patches/11/
+
+Compiling mhash-0.9.9.9 on platforms (like AIX) without GNU libc compatible malloc leads to undefined symbol rpl_malloc
+when linking the in-mhash executables drver, frag_test, rest_test, hmac_test, keygen_test.
+
+Reason is that configure.in still contains AC_FUNC_MALLOC, detecting need
+to "#define malloc rpl_malloc", while mhash does not provide a rpl_malloc implementation.
+
+As the only use of malloc() in lib/stdfns.c does not rely on GNU libc
+compatible malloc actually, there is no need to check for one.
+--- a/configure.in
++++ b/configure.in
+@@ -64,7 +64,6 @@ AC_CHECK_HEADERS(signal.h stdint.h stdio.h stdlib.h string.h strings.h)
+ 
+ dnl Checks for functions
+ 
+-AC_FUNC_MALLOC
+ AC_FUNC_MEMCMP
+ 
+ AC_CHECK_FUNCS(bcopy bzero)

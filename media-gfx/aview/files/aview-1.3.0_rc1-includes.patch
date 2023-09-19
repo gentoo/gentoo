@@ -1,0 +1,39 @@
+--- a/flip.c
++++ b/flip.c
+@@ -7,6 +7,7 @@
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+ #include <aalib.h>
+--- a/image.c
++++ b/image.c
+@@ -1,6 +1,6 @@
+ #include <stdio.h>
+ #include <unistd.h>
+-#include <malloc.h>
++#include <stdlib.h>
+ #include "config.h"
+ 
+ int imgwidth, imgheight;
+--- a/main.c
++++ b/main.c
+@@ -1,4 +1,6 @@
+ #include <aalib.h>
++#include <string.h>
++#include <stdlib.h>
+ #include "image.h"
+ #include "ui.h"
+ #include "config.h"
+--- a/ui.c
++++ b/ui.c
+@@ -1,6 +1,6 @@
+ #include <stdio.h>
+ #include <ctype.h>
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <aalib.h>
+ #include "shrink.h"

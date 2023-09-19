@@ -1,0 +1,22 @@
+From ecddb700c4551157fb5604c59c38eefc9a99d21b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sun, 1 Jul 2018 22:10:44 +0200
+Subject: Include ioctl header in order to close FTBFS in MIPS
+
+Workarround a glibc bug
+
+Forwarded: no, not-needed
+---
+ Fuse.xs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Fuse.xs b/Fuse.xs
+index e9cce2e..4504a29 100755
+--- a/Fuse.xs
++++ b/Fuse.xs
+@@ -1,3 +1,5 @@
++#include <sys/ioctl.h>
++
+ #define PERL_NO_GET_CONTEXT
+ #include "EXTERN.h"
+ #include "perl.h"

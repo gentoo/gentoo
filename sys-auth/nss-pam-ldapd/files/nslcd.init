@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/sbin/nslcd
+pidfile=/run/nslcd/nslcd.pid
+extra_commands="checkconfig"
+cfg="/etc/nslcd.conf"
+
+depend() {
+	need net	
+	use dns logger
+}
+
+checkconfig() {
+	if [ ! -f "$cfg" ] ; then
+		eerror "Please create $cfg"
+		eerror "Example config: /usr/share/nss-ldapd/nslcd.conf"
+		return 1
+	fi
+	return 0
+}
+
+start_pre() {
+	checkpath -q -d /run/nslcd -o nslcd:nslcd
+	checkconfig
+	return $?
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">mido</remote-id>
+		<remote-id type="github">mido/mido</remote-id>
+	</upstream>
+	<use>
+		<flag name="portmidi">Support using <pkg>media-libs/portmidi</pkg> as MIDI back-end</flag>
+		<flag name="rtmidi">Support using <pkg>media-libs/rtmidi</pkg> as MIDI back-end</flag>
+	</use>
+</pkgmetadata>

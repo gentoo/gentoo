@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -126,7 +126,6 @@
+ 
+ # compiler specifics
+ AC_PROG_CC
+-AM_C_PROTOTYPES
+ AC_PROG_CPP
+ AC_C_CONST
+ AC_C_INLINE

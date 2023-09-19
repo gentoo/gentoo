@@ -1,0 +1,22 @@
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -16,8 +16,8 @@ endif
+ endif
+ 
+ CC = gcc
+-LIBS = $(shell pkg-config --libs gtk+-2.0 gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0) -L/usr/X11R6/lib  -lXmu
+-INCS = $(shell pkg-config --cflags gtk+-2.0 gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0)
++LIBS = $(shell ${PKG_CONFIG} --libs gtk+-2.0 gdk-pixbuf-2.0 gmodule-2.0 x11)
++INCS = $(shell ${PKG_CONFIG} --cflags gtk+-2.0 gdk-pixbuf-2.0 gmodule-2.0 x11)
+ CFLAGS = -O2    # overwriten by command line or env. variable
+ CFLAGS += -Wall # always nice to have 
+ ifneq (,$(DEVEL))
+--- a/plugin.c
++++ b/plugin.c
+@@ -2,7 +2,6 @@
+ #include "plugin.h"
+ 
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+-#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
+ #include <gdk/gdk.h>
+ #include <string.h>

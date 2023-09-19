@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/klausman/golop/issues/</bugs-to>
+		<changelog>https://github.com/klausman/golop/commits/master</changelog>
+		<remote-id type="github">klausman/golop</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+diff --git a/src/pybind/CMakeLists.txt b/src/pybind/CMakeLists.txt
+index cd9b27623d2..12688ad32b9 100644
+--- a/src/pybind/CMakeLists.txt
++++ b/src/pybind/CMakeLists.txt
+@@ -36,6 +36,10 @@ execute_process(
+   OUTPUT_VARIABLE "PYTHON3_INSTDIR"
+   OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
++if(Boost_VERSION VERSION_GREATER_EQUAL 1.74)
++  add_definitions(-DBOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT)
++endif()
++
+ install(FILES
+   ceph_argparse.py
+   ceph_daemon.py
+diff --git a/src/test/librados/CMakeLists.txt b/src/test/librados/CMakeLists.txt
+index fc033766cc4..0ba3bc56e98 100644
+--- a/src/test/librados/CMakeLists.txt
++++ b/src/test/librados/CMakeLists.txt
+@@ -1,3 +1,6 @@
++
++add_definitions(-DBOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT)
++
+ # radostest
+ add_library(radostest_shared OBJECT test_shared.cc)
+ target_include_directories(radostest_shared PRIVATE

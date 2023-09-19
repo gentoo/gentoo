@@ -1,0 +1,44 @@
+These instructions help you to upgrade your mediawiki installation.
+
+Please NOTE: at this point it is supposed that you've already read
+RELEASE-NOTES and done full wiki backup, as described here:
+http://www.mediawiki.org/wiki/Manual:Backing_up_a_wiki
+
+
+Run the update script
+=====================
+
+Note: Make sure \$wgDBadminusr and \$wgDBadminpassword is set in your
+LocalSettings.php file in your wiki root. The user needs full permissions
+(shell access) on the database.
+
+The preferred method of performing the update is using the command-line
+maintenance script, although it is also possible to re-run the web-based
+installer. To run command-line maintenance script, change to the maintenance
+directory and execute the update script:
+
+$ cd ${MY_INSTALLDIR}/maintenance
+$ php update.php
+
+MediaWiki will inspect the existing schema and update it to work with the new
+code, adding tables and columns as needed.
+
+For alternative ways to upgrade your wiki, please, take a look at:
+http://www.mediawiki.org/wiki/Manual:Upgrading
+
+
+Upgrade extensions
+==================
+
+Certain extensions have been updated in order to work with installed MediaWiki.
+Be sure to upgrade to the latest versions of such extensions. You might need to
+perform manual updates to custom extensions.
+
+
+Test the update
+===============
+
+Once the upgrade has completed, browse to the wiki and check basics such as
+viewing and editing pages to ensure things still work as expected.
+
+Visit Special:Version and check that the version shown is correct.

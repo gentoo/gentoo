@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/879653
+--- a/configure.in
++++ b/configure.in
+@@ -194,7 +194,7 @@ test -n "$LDFLAGS" && MYLDFLAGS="$LDFLAGS $MYLDFLAGS"
+ AC_C_BIGENDIAN(MYCPPFLAGS="$MYCPPFLAGS -D_MYBIGEND")
+ 
+ printf 'checking for useless warnings... '
+-if printf 'main() {}' | $CC -xc \
++if printf 'int main(void) {}' | $CC -xc \
+   -Wno-unused-but-set-variable -Wno-unused-but-set-parameter -o config.tmp - >config.tmp 2>&1
+ then
+   MYCFLAGS="$MYCFLAGS -Wno-unused-but-set-variable -Wno-unused-but-set-parameter"

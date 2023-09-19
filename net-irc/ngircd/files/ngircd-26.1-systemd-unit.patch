@@ -1,0 +1,24 @@
+diff --git a/contrib/ngircd.service b/contrib/ngircd.service
+index e4c30e2..ba1b513 100644
+--- a/contrib/ngircd.service
++++ b/contrib/ngircd.service
+@@ -12,8 +12,8 @@ Before=bopm.service
+ 
+ [Service]
+ Type=forking
+-User=irc
+-Group=irc
++User=ngircd
++Group=ngircd
+ # Settings & limits:
+ CapabilityBoundingSet=CAP_SYS_CHROOT CAP_NET_BIND_SERVICE
+ MemoryDenyWriteExecute=yes
+@@ -27,7 +27,7 @@ ProtectKernelTunables=yes
+ ProtectSystem=full
+ RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ RestrictRealtime=yes
+-RuntimeDirectory=ircd
++RuntimeDirectory=ngircd
+ RuntimeDirectoryMode=750
+ # Try to load "default files" from any Debian package variant to keep this
+ # unit generic.

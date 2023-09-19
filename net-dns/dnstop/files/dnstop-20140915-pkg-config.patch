@@ -1,0 +1,29 @@
+diff -Naur dnstop-20140915-orig/configure.ac dnstop-20140915/configure.ac
+--- dnstop-20140915-orig/configure.ac	2016-09-25 19:36:25.222387686 +0100
++++ dnstop-20140915/configure.ac	2016-09-25 19:32:01.489612302 +0100
+@@ -11,10 +11,7 @@
+ AC_PROG_INSTALL
+ 
+ # Checks for libraries.
+-AC_CHECK_LIB([ncurses], [initscr])
+-if test "$ac_cv_lib_ncurses_initscr" != "yes" ; then
+-AC_CHECK_LIB([curses], [initscr])
+-fi
++PKG_CHECK_MODULES([ncurses], [ncurses])
+ AC_CHECK_LIB([pcap], [pcap_open_live])
+ AC_CHECK_LIB([socket], [main])
+ AC_CHECK_LIB([nsl], [main])
+diff -Naur dnstop-20140915-orig/Makefile.in dnstop-20140915/Makefile.in
+--- dnstop-20140915-orig/Makefile.in	2016-09-25 19:36:25.221387679 +0100
++++ dnstop-20140915/Makefile.in	2016-09-25 19:37:39.333887436 +0100
+@@ -2,8 +2,8 @@
+ 
+ OPTFLAGS=@OPTFLAGS@
+ CC=@CC@
+-CFLAGS=@CFLAGS@ ${OPTFLAGS}
+-LIBS=@LIBS@
++CFLAGS=@CFLAGS@ @ncurses_CFLAGS@ ${OPTFLAGS}
++LIBS=@LIBS@ @ncurses_LIBS@
+ LDFLAGS=@LDFLAGS@
+ 
+ prefix=@prefix@

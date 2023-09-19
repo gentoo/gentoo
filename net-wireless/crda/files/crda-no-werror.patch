@@ -1,0 +1,32 @@
+From 37384d22ba0ab622a5848a9a794084e6064fc905 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Wed, 4 Mar 2015 14:03:44 -0500
+Subject: [PATCH] allow people to turn off -Werror
+
+Forcing -Werror at build time easily breaks across compiler settings,
+compiler versions, architectures, C libraries, etc...  Add a knob so
+distro peeps can turn it off.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 46c683d..5f988f4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -25,8 +25,9 @@ UDEV_RULE_DIR?=/lib/udev/rules.d/
+ PUBKEY_DIR?=pubkeys
+ RUNTIME_PUBKEY_DIR?=/etc/wireless-regdb/pubkeys
+ 
++WERROR = -Werror
+ CFLAGS += -O2 -fpic
+-CFLAGS += -std=gnu99 -Wall -Werror -pedantic
++CFLAGS += -std=gnu99 -Wall $(WERROR) -pedantic
+ CFLAGS += -Wall -g
+ LDLIBREG += -lreg
+ LDLIBS += $(LDLIBREG)
+-- 
+2.3.1
+

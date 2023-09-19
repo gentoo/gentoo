@@ -1,0 +1,13 @@
+diff --git a/src/neorados/CMakeLists.txt b/src/neorados/CMakeLists.txt
+index c66043ac9f9..4b1013d26b7 100644
+--- a/src/neorados/CMakeLists.txt
++++ b/src/neorados/CMakeLists.txt
+@@ -11,7 +11,7 @@ add_library(libneorados STATIC
+   $<TARGET_OBJECTS:neorados_api_obj>
+   $<TARGET_OBJECTS:neorados_objs>)
+ target_link_libraries(libneorados PRIVATE
+-  osdc ceph-common cls_lock_client fmt::fmt
++  osdc ceph-common cls_lock_client fmt::fmt Boost::context
+   ${BLKID_LIBRARIES} ${CRYPTO_LIBS} ${EXTRALIBS})
+ 
+ # if(ENABLE_SHARED)

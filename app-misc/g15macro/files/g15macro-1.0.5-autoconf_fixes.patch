@@ -1,0 +1,22 @@
+From 67f905a6ac134b75e9197715aeb407c7d4ba7cbb Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sat, 14 May 2022 19:02:58 +0200
+Subject: [PATCH] configure.ac: Fix quoting in AC_INIT
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2a73dc0..b2d49bf 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,4 +1,4 @@
+-AC_INIT(g15macro,[1.0.5, [menelkir@itroll.org])
++AC_INIT([g15macro], [1.0.5], [menelkir@itroll.org])
+  
+ PACKAGE=g15macro
+ VERSION=1.0.5
+-- 
+2.36.1
+

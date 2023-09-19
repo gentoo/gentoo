@@ -1,0 +1,146 @@
+https://bugs.gentoo.org/832384
+--- a/vamps/requant.c
++++ b/vamps/requant.c
+@@ -188,21 +188,21 @@ int old_dc_pred, new_dc_pred;
+ 
+ // mpeg2 state
+ 	// seq header
+-	static uint horizontal_size_value;
+-	static uint vertical_size_value;
++	static unsigned int horizontal_size_value;
++	static unsigned int vertical_size_value;
+ 	
+ 	// pic header
+-	static uint picture_coding_type;
++	static unsigned int picture_coding_type;
+ 	
+ 	// pic code ext
+-	static uint f_code[2][2];
+-	static uint intra_dc_precision;
+-	static uint picture_structure;
+-	static uint frame_pred_frame_dct;
+-	static uint concealment_motion_vectors;
+-	static uint q_scale_type;
+-	static uint intra_vlc_format;
+-	static uint alternate_scan;
++	static unsigned int f_code[2][2];
++	static unsigned int intra_dc_precision;
++	static unsigned int picture_structure;
++	static unsigned int frame_pred_frame_dct;
++	static unsigned int concealment_motion_vectors;
++	static unsigned int q_scale_type;
++	static unsigned int intra_vlc_format;
++	static unsigned int alternate_scan;
+ 	
+ 	// error
+ 	static int validPicHeader;
+@@ -211,9 +211,9 @@ int old_dc_pred, new_dc_pred;
+ 	static int sliceError;
+ 
+ 	// slice or mb
+-	static uint quantizer_scale;
+-	static uint new_quantizer_scale;
+-	static uint last_coded_scale;
++	static unsigned int quantizer_scale;
++	static unsigned int new_quantizer_scale;
++	static unsigned int last_coded_scale;
+ 	static int  h_offset, v_offset;
+ 	static int  mb_skip, mb_add;
+ 	static int  mb_out;
+@@ -385,7 +385,7 @@ int old_dc_pred, new_dc_pred;
+ 		assert (wbuf >= owbuf);
+ #endif
+ 
+-static MINLINE void putbits(uint val, int n)
++static MINLINE void putbits(unsigned int val, int n)
+ {
+ 	assert(n < 32);
+ 	assert(!(val & (0xffffffffU << n)));
+@@ -418,7 +418,7 @@ static MINLINE void Refill_bits(void)
+ 	SEEKR(1)
+ }
+ 
+-static MINLINE void Flush_Bits(uint n)
++static MINLINE void Flush_Bits(unsigned int n)
+ {
+ 	assert(inbitcnt >= n);
+ 
+@@ -430,21 +430,21 @@ static MINLINE void Flush_Bits(uint n)
+ 	while (unlikely(inbitcnt < 24)) Refill_bits();
+ }
+ 
+-static MINLINE uint Show_Bits(uint n)
++static MINLINE unsigned int Show_Bits(unsigned int n)
+ {
+ 	return ((unsigned int)inbitbuf) >> (32 - n);
+ }
+ 
+-static MINLINE uint Get_Bits(uint n)
++static MINLINE unsigned int Get_Bits(unsigned int n)
+ {
+-	uint Val = Show_Bits(n);
++	unsigned int Val = Show_Bits(n);
+ 	Flush_Bits(n);
+ 	return Val;
+ }
+ 
+-static MINLINE uint Copy_Bits(uint n)
++static MINLINE unsigned int Copy_Bits(unsigned int n)
+ {
+-	uint Val = Get_Bits(n);
++	unsigned int Val = Get_Bits(n);
+ 	putbits(Val, n);
+ 	return Val;
+ }
+@@ -1656,13 +1656,13 @@ static MINLINE void slice_non_intra_DCT (int cur_block)
+ #endif
+ }
+ 
+-static void motion_fr_frame ( uint f_code[2] )
++static void motion_fr_frame ( unsigned int f_code[2] )
+ {
+ 	get_motion_delta (f_code[0]);
+ 	get_motion_delta (f_code[1]);
+ }
+ 
+-static void motion_fr_field ( uint f_code[2] )
++static void motion_fr_field ( unsigned int f_code[2] )
+ {
+     COPYBITS (bit_buf, bits, 1);
+ 	get_motion_delta (f_code[0]);
+@@ -1673,7 +1673,7 @@ static void motion_fr_field ( uint f_code[2] )
+ 	get_motion_delta (f_code[1]);
+ }
+ 
+-static void motion_fr_dmv ( uint f_code[2] )
++static void motion_fr_dmv ( unsigned int f_code[2] )
+ {
+     get_motion_delta (f_code[0]);
+ 	get_dmv ();
+@@ -1690,7 +1690,7 @@ static void motion_fr_conceal ( )
+     COPYBITS (bit_buf, bits, 1);
+ }
+ 
+-static void motion_fi_field ( uint f_code[2] )
++static void motion_fi_field ( unsigned int f_code[2] )
+ {
+     COPYBITS (bit_buf, bits, 1);
+ 
+@@ -1698,7 +1698,7 @@ static void motion_fi_field ( uint f_code[2] )
+ 	get_motion_delta (f_code[1]);
+ }
+ 
+-static void motion_fi_16x8 ( uint f_code[2] )
++static void motion_fi_16x8 ( unsigned int f_code[2] )
+ {
+     COPYBITS (bit_buf, bits, 1);
+ 
+@@ -1711,7 +1711,7 @@ static void motion_fi_16x8 ( uint f_code[2] )
+ 	get_motion_delta (f_code[1]);
+ }
+ 
+-static void motion_fi_dmv ( uint f_code[2] )
++static void motion_fi_dmv ( unsigned int f_code[2] )
+ {
+ 	get_motion_delta (f_code[0]);
+     get_dmv ();

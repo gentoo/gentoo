@@ -1,0 +1,28 @@
+* grobian@gentoo.org: need all symbols to be satisfied, need
+  install_name for actual usage
+
+--- unix/Makefile.in
++++ unix/Makefile.in
+@@ -35,7 +35,7 @@
+ 
+ LIBSO     = -lc @ALIB@ @TCL_LIB_SPEC@
+ 
+-LIBSN     = -lc @TK_LIBS@ @ALIB@ @TCL_LIB_SPEC@ @TK_LIB_SPEC@
++LIBSN     = -lc -lX11 -ltk @TK_LIBS@ @ALIB@ @TCL_LIB_SPEC@ @TK_LIB_SPEC@
+ 
+ SHLIB_LD     = @SHLIB_LD@
+ SHLIB_SUFFIX = @SHLIB_SUFFIX@
+@@ -158,11 +158,11 @@
+ 	$(CC) -c $(CFLAGS) $(GENERIC_DIR)/snackStubLib.c
+ 
+ libsound${SHLIB_SUFFIX}: ${OBJSO}
+-	${SHLIB_LD} ${OBJSO} ${LIBSO} -o libsound${SHLIB_SUFFIX} 
++	${SHLIB_LD} ${OBJSO} ${LIBSO} -install_name $(SNACK_INSTALL_PATH)/snack${VERSION}/libsound${SHLIB_SUFFIX} -o libsound${SHLIB_SUFFIX} 
+ 	sed s/.dll/${SHLIB_SUFFIX}/ < $(UNIX_DIR)/pkgIndex.tcl.dll > pkgIndex.tcl
+ 
+ libsnack${SHLIB_SUFFIX}: ${OBJSN}
+-	${SHLIB_LD} ${OBJSN} ${LIBSN} -o libsnack${SHLIB_SUFFIX} 
++	${SHLIB_LD} ${OBJSN} ${LIBSN} -install_name $(SNACK_INSTALL_PATH)/snack${VERSION}/libsnack${SHLIB_SUFFIX} -o libsnack${SHLIB_SUFFIX} 
+ 	sed s/.dll/${SHLIB_SUFFIX}/ < $(UNIX_DIR)/pkgIndex.tcl.dll > pkgIndex.tcl
+ 
+ stublib: ${OBJSNST}

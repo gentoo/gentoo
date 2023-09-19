@@ -1,0 +1,20 @@
+--- a/common.c
++++ b/common.c
+@@ -19,6 +19,8 @@
+ *
+ ***********************************************************************/
+ 
++options glopts;
++
+ char *mode_names[4] = { "stereo", "j-stereo", "dual-ch", "single-ch" };
+ char *version_names[2] = { "MPEG-2 LSF", "MPEG-1" };
+ 
+--- a/options.h
++++ b/options.h
+@@ -19,5 +19,5 @@
+ }
+ options;
+ 
+-options glopts;
++extern options glopts;
+ #endif

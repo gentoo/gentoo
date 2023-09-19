@@ -1,0 +1,33 @@
+From 4d4f022eef0d0d14936288a5f6374c7a4b85c77c Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 23 Aug 2020 04:06:15 +0300
+Subject: [PATCH] Respect system CFLAGS and LDFLAGS
+
+---
+ Makefile | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a04f707..ae4fe32 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,15 +9,7 @@ ZIP_FILES = mdns-repeater	\
+ 
+ HGVERSION=$(shell hg parents --template "{latesttag}.{latesttagdistance}")
+ 
+-CFLAGS=-Wall
+-
+-ifdef DEBUG
+-CFLAGS+= -g
+-else
+-CFLAGS+= -Os
+-LDFLAGS+= -s
+-endif
+-
++CFLAGS+=-Wall
+ CFLAGS+= -DHGVERSION="\"${HGVERSION}\""
+ 
+ .PHONY: all clean
+-- 
+2.26.2
+

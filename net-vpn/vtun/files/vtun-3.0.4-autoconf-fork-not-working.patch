@@ -1,0 +1,11 @@
+--- a/config.h.in	2022-11-28 07:10:54.564387362 +0100
++++ b/config.h.in	2022-11-28 07:12:15.435007668 +0100
+@@ -156,3 +156,8 @@
+ 
+ /* Define as `fork' if `vfork' does not work. */
+ #undef vfork
++
++#if !defined(HAVE_WORKING_FORK) && !defined(HAVE_WORKING_VFORK)
++#define HAVE_WORKING_FORK 1
++#endif
++

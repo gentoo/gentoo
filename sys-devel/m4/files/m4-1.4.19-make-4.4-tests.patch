@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/879061
+
+https://savannah.gnu.org/bugs/index.php?63307 (make bug)
+https://savannah.gnu.org/support/?110767 (M4 bug)
+
+https://lists.gnu.org/archive/html/bug-m4/2022-11/msg00003.html
+https://savannah.gnu.org/support/download.php?file_id=53951
+
+From ed64def45d68b2af53f1d3d783cc98e9dbe2ff74 Mon Sep 17 00:00:00 2001
+From: Alexander Kanavin <alex@linutronix.de>
+Date: Sat, 12 Nov 2022 15:18:41 +0100
+Subject: [PATCH] test-execute-main.c: set default handler for SIGPIPE in tests
+ 3 and 4
+
+make 4.4 sets this to SIG_IGN and the tests fail
+
+Signed-off-by: Alexander Kanavin <alex@linutronix.de>
+--- a/tests/test-execute-main.c
++++ b/tests/test-execute-main.c
+@@ -132,6 +132,7 @@ main (int argc, char *argv[])
+       #if !(defined _WIN32 && !defined __CYGWIN__)
+       {
+         /* Check SIGPIPE handling with ignore_sigpipe = false.  */
++        signal(SIGPIPE, SIG_DFL);
+         const char *prog_argv[3] = { prog_path, "3", NULL };
+         int termsig = 0x7DEADBEE;
+         int ret = execute (progname, prog_argv[0], prog_argv, NULL,
+@@ -145,6 +146,7 @@ main (int argc, char *argv[])
+       #if !(defined _WIN32 && !defined __CYGWIN__)
+       {
+         /* Check SIGPIPE handling with ignore_sigpipe = true.  */
++        signal(SIGPIPE, SIG_DFL);
+         const char *prog_argv[3] = { prog_path, "4", NULL };
+         int termsig = 0x7DEADBEE;
+         int ret = execute (progname, prog_argv[0], prog_argv, NULL,
+-- 
+2.30.2
+

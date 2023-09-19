@@ -1,0 +1,38 @@
+From 8a292168e584c50808b80df3577a7d89fa32db26 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 16 May 2011 16:24:20 -0400
+Subject: [PATCH] drop LDFLAGS set, and restore CFLAGS linking
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile |    5 ++---
+ 1 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 1938e05..8309ad6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,7 +32,6 @@ TABSRCS = crontab.c chuser.c
+ TABOBJS = crontab.o chuser.o
+ PROTOS = protos.h
+ LIBS =
+-LDFLAGS =
+ DEFS =  -DVERSION='"$(VERSION)"' \
+ 		-DSCRONTABS='"$(SCRONTABS)"' -DCRONTABS='"$(CRONTABS)"' \
+ 		-DCRONSTAMPS='"$(CRONSTAMPS)"' -DLOG_IDENT='"$(LOG_IDENT)"' \
+@@ -54,10 +53,10 @@ protos.h: $(SRCS) $(TABSRCS)
+ 	fgrep -h Prototype $(SRCS) $(TABSRCS) > protos.h
+ 
+ crond: $(OBJS)
+-	$(CC) $(LDFLAGS) $^ $(LIBS) -o crond
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o crond
+ 
+ crontab: $(TABOBJS)
+-	$(CC) $(LDFLAGS) $^ -o crontab
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o crontab
+ 
+ %.o: %.c defs.h $(PROTOS)
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(DEFS) $< -o $@
+-- 
+1.7.5.rc3
+

@@ -1,0 +1,8 @@
+Fix failure with -Werror=lto-type-mismatch
+--- a/dispdata.c
++++ b/dispdata.c
+@@ -96,3 +96,3 @@
+ #define MAXSTATUS 14
+-#define STATUSSIZE 200
++#define STATUSSIZE 256
+ extern char status_lines[MAXSTATUS][STATUSSIZE];

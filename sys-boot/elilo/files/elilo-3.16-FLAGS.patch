@@ -1,0 +1,19 @@
+eliloalt is a rare native tool. Allow user to explicitly pass
+standart optimization flags via
+    $ make NATIIVE_CFLAGS=${CFLAGS} NATIVE_LDFLAGS
+https://bugs.gentoo.org/744931
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -42,10 +42,10 @@ all: $(TARGET)
+ # redefine local rule (we build a Linux/ia64 binary here)
+ #
+ %.o: %.c 
+-	$(CC) $(OPTIMFLAGS) $(DEBUGFLAGS) -c $< -o $@
++	$(CC) $(OPTIMFLAGS) $(NATIVE_CFLAGS) $(DEBUGFLAGS) -c $< -o $@
+ 
+ $(TARGET):  %:%.o 
+-	$(CC) -o $@ $(OPTIMFLAGS) $(DEBUGFLAGS) $^
++	$(CC) -o $@ $(OPTIMFLAGS) $(NATIVE_CFLAGS) $(NATIVE_LDFLAGS) $(DEBUGFLAGS) $^
+ 
+ clean:
+ 	$(RM) -f $(TARGET) $(FILES)

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    NVC is a VHDL compiler and simulator. NVC supports almost all of VHDL-2008
+    with the exception of PSL, and it has been successfully used to simulate
+    several real-world designs. Experimental support for VHDL-2019 is under
+    development. NVC has a particular emphasis on simulation performance and
+    uses LLVM to compile VHDL to native machine code. NVC is not a synthesizer.
+    That is, it does not output something that could be used to program an FPGA
+    or ASIC. It implements only the simulation behaviour of the language as
+    described by the IEEE 1076 standard. NVC supports popular verification
+    frameworks including OSVVM, UVVM, and VUnit.
+  </longdescription>
+  <use>
+    <flag name="llvm">Build LLVM code generator</flag>
+    <flag name="jit">Enable experimental JIT complilation with LLVM</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/nickg/nvc/issues/</bugs-to>
+    <remote-id type="github">nickg/nvc</remote-id>
+    <remote-id type="sourcehut">~nickg/nvc</remote-id>
+  </upstream>
+</pkgmetadata>

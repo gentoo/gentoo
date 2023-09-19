@@ -1,0 +1,10 @@
+--- a/dnsproxy.c
++++ b/dnsproxy.c
+@@ -28,6 +28,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <grp.h> /* setgroups() */
+ #include <unistd.h>
+ 
+ #define GLOBALS 1

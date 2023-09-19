@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>mozilla@gentoo.org</email>
+	<name>Gentoo Mozilla Team</name>
+</maintainer>
+<use>
+	<flag name="clang">Use Clang compiler instead of GCC</flag>
+	<flag name="eme-free">Disable EME (DRM plugin) capability at build time</flag>
+	<flag name="geckodriver">Enable WebDriver support</flag>
+	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
+		downloaded and kept up-to-date in user profiles</flag>
+	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
+	<flag name="jumbo-build">Enable unified build - combines source files to speed up build process, but requires more memory</flag>
+	<flag name="libproxy">Enable libproxy support</flag>
+	<flag name="lto">Enable Link Time Optimization (LTO)</flag>
+	<flag name="openh264">Use <pkg>media-libs/openh264</pkg> for H264 support
+		instead of downloading binary blob from Mozilla at runtime</flag>
+	<flag name="pgo">Add support for profile-guided optimization for faster binaries - this
+		option will double the compile time</flag>
+	<flag name="pulseaudio">Add sound server support via media-libs/libpulse (may be PulseAudio or
+		Pipewire, or apulse if installed)</flag>
+	<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+	<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg>
+		and <pkg>media-libs/libaom</pkg> library instead of bundled</flag>
+	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>
+		and <pkg>media-gfx/graphite2</pkg> instead of bundled</flag>
+	<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg>
+		instead of bundled</flag>
+	<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg>
+		instead of bundled</flag>
+	<flag name="system-libevent">Use the system-wide <pkg>dev-libs/libevent</pkg>
+		instead of bundled</flag>
+	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
+		instead of bundled</flag>
+	<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg>
+		instead of bundled (requires APNG patches)</flag>
+	<flag name="system-python-libs">Use system's python site instead of bundled python libraries</flag>
+	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
+		instead of bundled</flag>
+	<flag name="wifi">Enable necko-wifi for NetworkManager integration, and access point MAC
+		address scanning for better precision with opt-in geolocation services</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,44 @@
+--- a/lib/print.c
++++ b/lib/print.c
+@@ -997,20 +997,20 @@
+ static int
+ get_compound(mrph_data_t *data, char *headword, darts_t *da, long index)
+ {
+-    mrph_t mrph;
++    mrph_t *mrph = data->mrph;
+     int has_next, hw_len;
+     char *base = da_get_lex_base(da) + index;
+ 
+     hw_len = ((short *)base)[0];
+     has_next = ((short *)base)[1];
+     base += sizeof(short) * 2;
+-    memcpy(&mrph, base, sizeof(da_lex_t));
+-    mrph.headword = headword;
+-    mrph.headword_len = hw_len;
+-    mrph.is_undef = 0;
+-    mrph.darts = da;
++    memcpy(mrph, base, sizeof(da_lex_t));
++    mrph->headword = headword;
++    mrph->headword_len = hw_len;
++    mrph->is_undef = 0;
++    mrph->darts = da;
+ 
+-    get_mrph_data(&mrph, data);
++    get_mrph_data(mrph, data);
+ 
+     return has_next;
+ }
+@@ -1028,10 +1028,13 @@
+         cha_printf_mrph(lat, path_num, mdata, format); 
+     } else {
+ 	mrph_data_t data;
++	mrph_t m;
+ 	long index = mdata->compound;
+ 	int has_next = 1;
+ 	char *headword = mrph->headword;
+ 
++	data.mrph = &m;
++
+ 	while (has_next) {
+ 	    has_next = get_compound(&data, headword, mrph->darts, index);
+ 	    if (!has_next) {

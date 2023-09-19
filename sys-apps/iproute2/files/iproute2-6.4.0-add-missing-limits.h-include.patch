@@ -1,0 +1,22 @@
+From https://github.com/shemminger/iproute2/pull/69/commits/030013c4b9ba032869f72b766e28eaf8c8099f36 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Tue, 27 Jun 2023 18:58:05 +0000
+Subject: [PATCH] bridge: mdb: add missing limits.h include
+
+Adding limits.h include for USHRT_MAX and ULONG_MAX. Don't rely on it
+being transitively include (as it is not on musl).
+
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
+--- a/bridge/mdb.c
++++ b/bridge/mdb.c
+@@ -15,6 +15,7 @@
+ #include <string.h>
+ #include <arpa/inet.h>
+ #include <netdb.h>
++#include <limits.h>
+ 
+ #include "libnetlink.h"
+ #include "utils.h"
+-- 
+2.41.0
+

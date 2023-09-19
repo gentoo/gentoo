@@ -1,0 +1,24 @@
+ Makefile.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index c1859d1..1aa8559 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -44,7 +44,7 @@ TARGET_CFLAGS	= @TARGET_CFLAGS@
+ 
+ # Base compiler flags. These are extended by the subcomponent-Makefiles
+ # where necessary.
+-CPPFLAGS	= @CPPFLAGS@ -I$(srcdir)/include -I$(srcdir)/util_lib/include \
++CPPFLAGS	= @CPPFLAGS@ -I$(top_builddir)/include -I$(srcdir)/include -I$(srcdir)/util_lib/include \
+ 			-Iinclude/ $($(ARCH)_CPPFLAGS)
+ CFLAGS		= @CFLAGS@ -fno-strict-aliasing -Wall -Wstrict-prototypes
+ PURGATORY_EXTRA_CFLAGS = @PURGATORY_EXTRA_CFLAGS@
+@@ -77,6 +77,7 @@ pkgincludedir = $(includedir)/$(PACKAGE_NAME)
+ DESTDIR =
+ 
+ srcdir		= @srcdir@
++top_builddir = @top_builddir@
+ VPATH		= .:$(srcdir)
+ 
+ # install paths

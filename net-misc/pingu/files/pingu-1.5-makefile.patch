@@ -1,0 +1,21 @@
+--- a/src/Makefile	2017-11-25 18:39:32.667570139 +0200
++++ b/src/Makefile	2017-11-25 18:41:29.285573031 +0200
+@@ -17,7 +17,7 @@
+ 
+ rundir ?= $(localstatedir)/run
+ 
+-pingustatedir = $(rundir)/pingu
++pingustatedir = /run/pingu
+ 
+ DESTDIR ?=
+ 
+@@ -93,8 +93,7 @@
+ 	$(MAKE) -C $@
+ 
+ install: $(TARGETS) $(INSTALL_LUA_TARGET)
+-	$(INSTALLDIR) $(DESTDIR)/$(bindir) $(DESTDIR)/$(sbindir) \
+-		$(DESTDIR)/$(pingustatedir)
++	$(INSTALLDIR) $(DESTDIR)/$(bindir) $(DESTDIR)/$(sbindir)
+ 	$(INSTALL) $(BIN_TARGETS) $(DESTDIR)/$(bindir)
+ 	$(INSTALL) $(SBIN_TARGETS) $(DESTDIR)/$(sbindir)
+ 	for dir in $(SUBDIRS); do \

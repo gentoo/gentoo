@@ -1,0 +1,4 @@
+# Port for Registry listener
+CONMAX_REGISTRY_PORT="63000"
+# Log file
+CONMAX_REGISTRY_LOG="/var/log/conmux-registry.log"

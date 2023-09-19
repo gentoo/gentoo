@@ -1,0 +1,28 @@
+https://src.fedoraproject.org/rpms/python-twisted/raw/rawhide/f/0005-fix-sendmail-tests-for-python-3.11.patch
+
+From f29ae1ae433cd9529410a93fd5675cb01460460e Mon Sep 17 00:00:00 2001
+From: eevel <eevel@weezel3.weezelnet>
+Date: Wed, 26 Oct 2022 19:49:33 -0500
+Subject: [PATCH 5/6] fix sendmail tests for python 3.11
+
+(cherry picked from commit 00bf5be704bee022ba4d9b24eb6c2c768b4a1921)
+--- a/src/twisted/mail/test/test_smtp.py
++++ b/src/twisted/mail/test/test_smtp.py
+@@ -1771,7 +1771,8 @@ class SendmailTests(TestCase):
+         The default C{reactor} parameter of L{twisted.mail.smtp.sendmail} is
+         L{twisted.internet.reactor}.
+         """
+-        args, varArgs, keywords, defaults = inspect.getargspec(smtp.sendmail)
++        fullSpec = inspect.getfullargspec(smtp.sendmail)
++        defaults = fullSpec[3]
+         self.assertEqual(reactor, defaults[2])
+ 
+     def _honorsESMTPArguments(self, username, password):
+--- /dev/null
++++ b/src/twisted/newsfragments/10345.misc
+@@ -0,0 +1 @@
++Fix SendmailTests for python 3.11.
+-- 
+2.39.2
+
+

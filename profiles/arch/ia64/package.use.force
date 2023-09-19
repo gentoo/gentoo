@@ -1,0 +1,11 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-02-19)
+# New enough SpiderMonkey not keyworded here, bug #753221
+sys-auth/polkit duktape
+
+# Raúl Porcel <armin76@gentoo.org> (2007-10-21)
+# It segfaults without debug use-flags
+# Remove when http://bugs.php.net/bug.php?id=42893 is fixed
+dev-lang/php debug

@@ -1,0 +1,33 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/9f7d960c66a2d5732958ee29934c7aef6decc0cb
+
+From 9f7d960c66a2d5732958ee29934c7aef6decc0cb Mon Sep 17 00:00:00 2001
+From: q66 <q66@chimera-linux.org>
+Date: Thu, 31 Aug 2023 03:42:40 +0200
+Subject: [PATCH] meson: better check for module dlopen dir
+
+The ${LIB} token is a glibc extension, so it is incorrect to
+use it on all Linux. Doing so will break e.g. with musl libc.
+--- a/meson.build
++++ b/meson.build
+@@ -49,7 +49,9 @@ pipewire_configdir = pipewire_sysconfdir / 'pipewire'
+ pipewire_confdatadir = pipewire_datadir / 'pipewire'
+ modules_install_dir = pipewire_libdir / pipewire_name
+ 
+-if host_machine.system() == 'linux'
++cc = meson.get_compiler('c')
++
++if cc.has_header('features.h') and cc.get_define('__GLIBC__', prefix: '#include <features.h>') != ''
+   # glibc ld.so interprets ${LIB} in a library loading path with an
+   # appropriate value for the current architecture, typically something
+   # like lib, lib64 or lib/x86_64-linux-gnu.
+@@ -72,8 +74,6 @@ pipewire_headers_dir = pipewire_name / 'pipewire'
+ 
+ pkgconfig = import('pkgconfig')
+ 
+-cc = meson.get_compiler('c')
+-
+ common_flags = [
+   '-fvisibility=hidden',
+   '-fno-strict-aliasing',
+-- 
+GitLab

@@ -1,0 +1,42 @@
+--- a/htb.init
++++ b/htb.init
+@@ -891,7 +895,6 @@
+ TIME_TMP=`date +%w/%k:%M`
+ TIME_DOW=${TIME_TMP%%/*}
+ TIME_NOW=${TIME_TMP##*/}
+-TIME_ABS=`htb_time2abs $TIME_NOW`
+ 
+ ### Check all classes (if configured)
+ for classfile in `htb_class_list`; do
+@@ -914,6 +917,7 @@
+ 		### Compute interval boundaries
+ 		BEG_ABS=`htb_time2abs $BEG_TIME`
+ 		END_ABS=`htb_time2abs $END_TIME`
++		TIME_ABS=`htb_time2abs $TIME_NOW`
+ 
+ 		### Midnight wrap fixup
+ 		if [ $BEG_ABS -gt $END_ABS ]; then
+@@ -926,6 +930,23 @@
+ 		### If time period matches, remember params and set MATCH flag
+ 		if [ $TIME_ABS -ge $BEG_ABS -a $TIME_ABS -lt $END_ABS ]; then
+ 			RATESPEC=${PARAMS%%,*}; CEILSPEC=${PARAMS##*,}
++
++			RNAME=""; CNAME=""
++
++			[ "$RATESPEC" = "prate" ] && RNAME=RATE_$PARENT
++			[ "$RATESPEC" = "pceil" ] && RNAME=CEIL_$PARENT
++
++			if [ -n "$RNAME" ]; then
++				RATESPEC=${!RNAME}
++			fi
++
++			[ "$CEILSPEC" = "prate" ] && CNAME=RATE_$PARENT
++			[ "$CEILSPEC" = "pceil" ] && CNAME=CEIL_$PARENT
++
++			if [ -n "$CNAME" ]; then
++				CEILSPEC=${!CNAME}
++			fi
++
+ 			[ "$RATESPEC" = "$CEILSPEC" ] && CEILSPEC=""
+ 
+ 			NEW_RATE=${RATESPEC%%/*}; NEW_BURST=${RATESPEC##*/}

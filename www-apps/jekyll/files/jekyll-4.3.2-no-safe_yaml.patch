@@ -1,0 +1,405 @@
+From https://sources.debian.org/patches/jekyll/4.3.1%2Bdfsg-2/0016-Drop-usage-of-safe_yaml.patch/
+(added Symbol to allowed classes for jekyll-sass-converter)
+
+From: Antonio Terceiro <terceiro@debian.org>
+Date: Sat, 21 Jan 2023 23:25:30 -0300
+Subject: Drop usage of safe_yaml
+
+Squashed commit of the following:
+
+commit 9e8b06e55afab8da1bb134a9f5362f403c82f05b
+Author: f <f@sutty.nl>
+Date:   Sat Aug 21 14:27:31 2021 -0300
+
+    Move YAML loading into Utils
+
+commit a91a88119e4b77fff26812384970bbb0b7f1be31
+Author: f <f@sutty.nl>
+Date:   Thu Aug 19 14:45:39 2021 -0300
+
+    Support older Psych versions
+
+commit b0526242dff12fa4e95ddc0b67efdb73144fb517
+Author: f@sutty.nl <f@sutty.nl>
+Date:   Thu Aug 19 13:42:39 2021 -0300
+
+    Use Psych as YAML parser
+
+Source: https://github.com/jekyll/jekyll/pull/8772
+Additional changes:
+  - Also make the replacement of SafeYAML in lib/jekyll/commands/serve.rb
+--- a/features/step_definitions.rb
++++ b/features/step_definitions.rb
+@@ -159,7 +159,7 @@ end
+ Given(%r!^I have a configuration file with "(.*)" set to "(.*)"$!) do |key, value|
+   config = \
+     if source_dir.join("_config.yml").exist?
+-      SafeYAML.load_file(source_dir.join("_config.yml"))
++      Jekyll::Utils.safe_load_yaml_file(source_dir.join("_config.yml"))
+     else
+       {}
+     end
+--- a/jekyll.gemspec
++++ b/jekyll.gemspec
+@@ -44,7 +44,6 @@ Gem::Specification.new do |s|
+   s.add_runtime_dependency("mercenary",             ">= 0.3.6", "< 0.5")
+   s.add_runtime_dependency("pathutil",              "~> 0.9")
+   s.add_runtime_dependency("rouge",                 ">= 3.0", "< 5.0")
+-  s.add_runtime_dependency("safe_yaml",             "~> 1.0")
+   s.add_runtime_dependency("terminal-table",        ">= 1.8", "< 4.0")
+   s.add_runtime_dependency("webrick",               "~> 1.7")
+ end
+--- a/lib/jekyll.rb
++++ b/lib/jekyll.rb
+@@ -27,18 +27,16 @@ require "logger"
+ require "set"
+ require "csv"
+ require "json"
++require "psych"
+ 
+ # 3rd party
+ require "pathutil"
+ require "addressable/uri"
+-require "safe_yaml/load"
+ require "liquid"
+ require "kramdown"
+ require "colorator"
+ require "i18n"
+ 
+-SafeYAML::OPTIONS[:suppress_warnings] = true
+-
+ module Jekyll
+   # internal requires
+   autoload :Cleaner,             "jekyll/cleaner"
+--- a/lib/jekyll/commands/serve.rb
++++ b/lib/jekyll/commands/serve.rb
+@@ -355,7 +355,7 @@ module Jekyll
+         end
+ 
+         def mime_types_charset
+-          SafeYAML.load_file(File.expand_path("serve/mime_types_charset.json", __dir__))
++          Jekyll::Utils.safe_load_yaml_file(File.expand_path("serve/mime_types_charset.json", __dir__))
+         end
+ 
+         def read_file(source_dir, file_path)
+--- a/lib/jekyll/configuration.rb
++++ b/lib/jekyll/configuration.rb
+@@ -126,7 +126,7 @@ module Jekyll
+         Jekyll::External.require_with_graceful_fail("tomlrb") unless defined?(Tomlrb)
+         Tomlrb.load_file(filename)
+       when %r!\.ya?ml!i
+-        SafeYAML.load_file(filename) || {}
++        Jekyll::Utils.safe_load_yaml_file(filename) || {}
+       else
+         raise ArgumentError,
+               "No parser for '#{filename}' is available. Use a .y(a)ml or .toml file instead."
+--- a/lib/jekyll/convertible.rb
++++ b/lib/jekyll/convertible.rb
+@@ -42,7 +42,7 @@ module Jekyll
+         self.content = File.read(filename, **Utils.merged_file_read_opts(site, opts))
+         if content =~ Document::YAML_FRONT_MATTER_REGEXP
+           self.content = Regexp.last_match.post_match
+-          self.data = SafeYAML.load(Regexp.last_match(1))
++          self.data = Jekyll::Utils.safe_load_yaml(Regexp.last_match(1))
+         end
+       rescue Psych::SyntaxError => e
+         Jekyll.logger.warn "YAML Exception reading #{filename}: #{e.message}"
+--- a/lib/jekyll/document.rb
++++ b/lib/jekyll/document.rb
+@@ -300,7 +300,7 @@ module Jekyll
+       Jekyll.logger.debug "Reading:", relative_path
+ 
+       if yaml_file?
+-        @data = SafeYAML.load_file(path)
++        @data = Jekyll::Utils.safe_load_yaml_file(path, :read_opts => site.file_read_opts)
+       else
+         begin
+           merge_defaults
+@@ -483,7 +483,7 @@ module Jekyll
+       self.content = File.read(path, **Utils.merged_file_read_opts(site, opts))
+       if content =~ YAML_FRONT_MATTER_REGEXP
+         self.content = Regexp.last_match.post_match
+-        data_file = SafeYAML.load(Regexp.last_match(1))
++        data_file = Jekyll::Utils.safe_load_yaml(Regexp.last_match(1))
+         merge_data!(data_file, :source => "YAML front matter") if data_file
+       end
+     end
+--- a/lib/jekyll/readers/data_reader.rb
++++ b/lib/jekyll/readers/data_reader.rb
+@@ -63,7 +63,7 @@ module Jekyll
+       when ".tsv"
+         CSV.read(path, **tsv_config).map { |row| convert_row(row) }
+       else
+-        SafeYAML.load_file(path)
++        Jekyll::Utils.safe_load_yaml_file(path, :read_opts => site.file_read_opts)
+       end
+     end
+ 
+--- a/lib/jekyll/regenerator.rb
++++ b/lib/jekyll/regenerator.rb
+@@ -152,7 +152,7 @@ module Jekyll
+           begin
+             Marshal.load(content)
+           rescue TypeError
+-            SafeYAML.load(content)
++            Jekyll::Utils.safe_load_yaml(content)
+           rescue ArgumentError => e
+             Jekyll.logger.warn("Failed to load #{metadata_file}: #{e}")
+             {}
+--- a/lib/jekyll/site.rb
++++ b/lib/jekyll/site.rb
+@@ -471,7 +471,7 @@ module Jekyll
+       # Bail out if the theme_config_file is a symlink file irrespective of safe mode
+       return config if File.symlink?(theme_config_file)
+ 
+-      theme_config = SafeYAML.load_file(theme_config_file)
++      theme_config = Jekyll::Utils.safe_load_yaml_file(theme_config_file, :read_opts => file_read_opts)
+       return config unless theme_config.is_a?(Hash)
+ 
+       Jekyll.logger.info "Theme Config file:", theme_config_file
+--- a/lib/jekyll/utils.rb
++++ b/lib/jekyll/utils.rb
+@@ -316,6 +316,20 @@ module Jekyll
+       merged
+     end
+ 
++    # Safely load YAML strings
++    def safe_load_yaml(yaml)
++      Psych.safe_load(yaml, :permitted_classes => [Date, Time, Symbol])
++    rescue ArgumentError
++      # Psych versions < 3.1 had a different safe_load API and used
++      # problematic language.
++      Psych.safe_load(yaml, [Date, Time])
++    end
++
++    # Reads file contents and safely loads YAML
++    def safe_load_yaml_file(filename, read_opts = {})
++      safe_load_yaml(File.read(filename, **read_opts))
++    end
++
+     private
+ 
+     def merge_values(target, overwrite)
+--- a/rake/site.rake
++++ b/rake/site.rake
+@@ -92,9 +92,9 @@ namespace :site do
+   desc "Write the latest Jekyll version"
+   task :latest_version do
+     next if version =~ %r!(beta|rc|alpha)!i
+-    require "safe_yaml/load"
++    require "jekyll/yaml"
+     config_file = File.join(docs_folder, "_config.yml")
+-    config = SafeYAML.load_file(config_file)
++    config = Jekyll::Utils.safe_load_yaml_file(config_file)
+     config["version"] = version
+     File.write(config_file, YAML.dump(config))
+     File.open("#{docs_folder}/latest_version.txt", "wb") { |f| f.puts(version) }
+--- a/test/test_commands_serve.rb
++++ b/test/test_commands_serve.rb
+@@ -143,7 +143,7 @@ class TestCommandsServe < JekyllUnitTest
+         )
+       end
+       Jekyll.sites.clear
+-      allow(SafeYAML).to receive(:load_file).and_return({})
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).and_return({})
+       allow(Jekyll::Commands::Build).to receive(:build).and_return("")
+     end
+     teardown do
+--- a/test/test_configuration.rb
++++ b/test/test_configuration.rb
+@@ -205,7 +205,7 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "not raise an error on empty files" do
+-      allow(SafeYAML).to receive(:load_file).with(File.expand_path("empty.yml")).and_return(false)
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(File.expand_path("empty.yml")).and_return(false)
+       Jekyll.logger.log_level = :warn
+       @config.read_config_file("empty.yml")
+       Jekyll.logger.log_level = :info
+@@ -218,8 +218,8 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "continue to read config files if one is empty" do
+-      allow(SafeYAML).to receive(:load_file).with(File.expand_path("empty.yml")).and_return(false)
+-      allow(SafeYAML).to receive(:load_file).with(File.expand_path("not_empty.yml")).and_return(
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(File.expand_path("empty.yml")).and_return(false)
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(File.expand_path("not_empty.yml")).and_return(
+         "foo" => "bar"
+       )
+       Jekyll.logger.log_level = :warn
+@@ -279,7 +279,7 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "fire warning with no _config.yml" do
+-      allow(SafeYAML).to receive(:load_file).with(@path) do
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@path) do
+         raise SystemCallError, "No such file or directory - #{@path}"
+       end
+       allow($stderr).to receive(:puts).with(
+@@ -289,13 +289,13 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "load configuration as hash" do
+-      allow(SafeYAML).to receive(:load_file).with(@path).and_return({})
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@path).and_return({})
+       allow($stdout).to receive(:puts).with("Configuration file: #{@path}")
+       assert_equal site_configuration, Jekyll.configuration(test_config)
+     end
+ 
+     should "fire warning with bad config" do
+-      allow(SafeYAML).to receive(:load_file).with(@path).and_return([])
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@path).and_return([])
+       allow($stderr)
+         .to receive(:puts)
+         .and_return(
+@@ -309,7 +309,7 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "fire warning when user-specified config file isn't there" do
+-      allow(SafeYAML).to receive(:load_file).with(@user_config) do
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@user_config) do
+         raise SystemCallError, "No such file or directory - #{@user_config}"
+       end
+       allow($stderr)
+@@ -325,7 +325,7 @@ class TestConfiguration < JekyllUnitTest
+ 
+     should "not clobber YAML.load to the dismay of other libraries" do
+       assert_equal :foo, YAML.load(":foo")
+-      # as opposed to: assert_equal ':foo', SafeYAML.load(':foo')
++      # as opposed to: assert_equal ':foo', Jekyll::Utils.safe_load_yaml(':foo')
+     end
+   end
+ 
+@@ -340,14 +340,14 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "load default plus posts config if no config_file is set" do
+-      allow(SafeYAML).to receive(:load_file).with(@paths[:default]).and_return({})
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@paths[:default]).and_return({})
+       allow($stdout).to receive(:puts).with("Configuration file: #{@paths[:default]}")
+       assert_equal site_configuration, Jekyll.configuration(test_config)
+     end
+ 
+     should "load different config if specified" do
+-      allow(SafeYAML)
+-        .to receive(:load_file)
++      allow(Jekyll::Utils)
++        .to receive(:safe_load_yaml_file)
+         .with(@paths[:other])
+         .and_return("baseurl" => "http://example.com")
+       allow($stdout).to receive(:puts).with("Configuration file: #{@paths[:other]}")
+@@ -360,9 +360,9 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "load different config if specified with symbol key" do
+-      allow(SafeYAML).to receive(:load_file).with(@paths[:default]).and_return({})
+-      allow(SafeYAML)
+-        .to receive(:load_file)
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@paths[:default]).and_return({})
++      allow(Jekyll::Utils)
++        .to receive(:safe_load_yaml_file)
+         .with(@paths[:other])
+         .and_return("baseurl" => "http://example.com")
+       allow($stdout).to receive(:puts).with("Configuration file: #{@paths[:other]}")
+@@ -375,7 +375,7 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "load default config if path passed is empty" do
+-      allow(SafeYAML).to receive(:load_file).with(@paths[:default]).and_return({})
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@paths[:default]).and_return({})
+       allow($stdout).to receive(:puts).with("Configuration file: #{@paths[:default]}")
+       assert_equal \
+         site_configuration("config" => [@paths[:empty]]),
+@@ -397,8 +397,8 @@ class TestConfiguration < JekyllUnitTest
+     should "load multiple config files" do
+       External.require_with_graceful_fail("tomlrb")
+ 
+-      allow(SafeYAML).to receive(:load_file).with(@paths[:default]).and_return({})
+-      allow(SafeYAML).to receive(:load_file).with(@paths[:other]).and_return({})
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@paths[:default]).and_return({})
++      allow(Jekyll::Utils).to receive(:safe_load_yaml_file).with(@paths[:other]).and_return({})
+       allow(Tomlrb).to receive(:load_file).with(@paths[:toml]).and_return({})
+       allow($stdout).to receive(:puts).with("Configuration file: #{@paths[:default]}")
+       allow($stdout).to receive(:puts).with("Configuration file: #{@paths[:other]}")
+@@ -416,12 +416,12 @@ class TestConfiguration < JekyllUnitTest
+     end
+ 
+     should "load multiple config files and last config should win" do
+-      allow(SafeYAML)
+-        .to receive(:load_file)
++      allow(Jekyll::Utils)
++        .to receive(:safe_load_yaml_file)
+         .with(@paths[:default])
+         .and_return("baseurl" => "http://example.dev")
+-      allow(SafeYAML)
+-        .to receive(:load_file)
++      allow(Jekyll::Utils)
++        .to receive(:safe_load_yaml_file)
+         .with(@paths[:other])
+         .and_return("baseurl" => "http://example.com")
+       allow($stdout)
+--- a/test/test_site.rb
++++ b/test/test_site.rb
+@@ -490,7 +490,7 @@ class TestSite < JekyllUnitTest
+         site = Site.new(site_configuration)
+         site.process
+ 
+-        file_content = SafeYAML.load_file(File.join(source_dir, "_data", "members.yaml"))
++        file_content = Jekyll::Utils.safe_load_yaml_file(File.join(source_dir, "_data", "members.yaml"))
+ 
+         assert_equal site.data["members"], file_content
+         assert_equal site.site_payload["site"]["data"]["members"], file_content
+@@ -511,7 +511,7 @@ class TestSite < JekyllUnitTest
+         site = Site.new(site_configuration)
+         site.process
+ 
+-        file_content = SafeYAML.load_file(File.join(source_dir, "_data", "languages.yml"))
++        file_content = Jekyll::Utils.safe_load_yaml_file(File.join(source_dir, "_data", "languages.yml"))
+ 
+         assert_equal site.data["languages"], file_content
+         assert_equal site.site_payload["site"]["data"]["languages"], file_content
+@@ -521,7 +521,7 @@ class TestSite < JekyllUnitTest
+         site = Site.new(site_configuration)
+         site.process
+ 
+-        file_content = SafeYAML.load_file(File.join(source_dir, "_data", "members.json"))
++        file_content = Jekyll::Utils.safe_load_yaml_file(File.join(source_dir, "_data", "members.json"))
+ 
+         assert_equal site.data["members"], file_content
+         assert_equal site.site_payload["site"]["data"]["members"], file_content
+@@ -531,7 +531,7 @@ class TestSite < JekyllUnitTest
+         site = Site.new(site_configuration)
+         site.process
+ 
+-        file_content = SafeYAML.load_file(File.join(
++        file_content = Jekyll::Utils.safe_load_yaml_file(File.join(
+                                             source_dir, "_data", "categories", "dairy.yaml"
+                                           ))
+ 
+@@ -546,7 +546,7 @@ class TestSite < JekyllUnitTest
+         site = Site.new(site_configuration)
+         site.process
+ 
+-        file_content = SafeYAML.load_file(File.join(
++        file_content = Jekyll::Utils.safe_load_yaml_file(File.join(
+                                             source_dir, "_data", "categories.01", "dairy.yaml"
+                                           ))
+ 
+@@ -561,7 +561,7 @@ class TestSite < JekyllUnitTest
+         site = Site.new(site_configuration("safe" => false))
+         site.process
+ 
+-        file_content = SafeYAML.load_file(File.join(source_dir, "_data", "products.yml"))
++        file_content = Jekyll::Utils.safe_load_yaml_file(File.join(source_dir, "_data", "products.yml"))
+ 
+         assert_equal site.data["products"], file_content
+         assert_equal site.site_payload["site"]["data"]["products"], file_content
+@@ -571,7 +571,7 @@ class TestSite < JekyllUnitTest
+              "as they resolve to inside site.source" do
+         site = Site.new(site_configuration("safe" => true))
+         site.process
+-        file_content = SafeYAML.load_file(File.join(source_dir, "_data", "products.yml"))
++        file_content = Jekyll::Utils.safe_load_yaml_file(File.join(source_dir, "_data", "products.yml"))
+         assert_equal site.data["products"], file_content
+         assert_equal site.site_payload["site"]["data"]["products"], file_content
+       end

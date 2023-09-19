@@ -1,0 +1,18 @@
+https://github.com/file/file/commit/1590a653b520123d47070a47436abfba42d4c943
+
+From 1590a653b520123d47070a47436abfba42d4c943 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Mon, 26 Dec 2022 18:57:29 +0000
+Subject: [PATCH] PR/408: SpraxDev: Add utimes to the allow list for -p
+
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -233,6 +233,7 @@ enable_sandbox_full(void)
+ 	ALLOW_RULE(umask);	// Used in file_pipe2file()
+ 	ALLOW_RULE(getpid);	// Used by glibc in file_pipe2file()
+ 	ALLOW_RULE(unlink);
++	ALLOW_RULE(utimes);
+ 	ALLOW_RULE(write);
+ 	ALLOW_RULE(writev);
+ 
+

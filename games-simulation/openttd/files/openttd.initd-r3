@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+description="OpenTTD dedicated game server"
+dtach_tmpfile="$(mktemp -u)"
+name="OpenTTD dedicated game server"
+openttd_command="/usr/bin/openttd"
+pidfile="/run/${SVCNAME}.pid"
+
+description_attach="Attaches to the session (interactive console) of the OpenTTD game server"
+extra_started_commands="attach"
+
+command="/usr/bin/dtach"
+command_args="-N ${dtach_tmpfile} ${openttd_command} -D ${openttd_opts}"
+command_background="true"
+command_group="openttd"
+command_user="openttd"
+
+depend() {
+        need net
+}
+
+attach() {
+        pidnumber="$(cat ${pidfile})"
+        dtach_tmpfile="$(cat /proc/${pidnumber}/cmdline | tr '\0' ' ' | awk '{print $3}')"
+
+        if [ -S "${dtach_tmpfile}" ]; then
+                eval "${command}" -a "${dtach_tmpfile}" "${dtach_opts}"
+        else
+                eerror "The determined socket file for dtach could not be found!"
+                eerror "Did the process crash?"
+        fi
+}

@@ -1,0 +1,13 @@
+Not upstreamable hack. Gentoo installs /usr/${libdir}/libz.so
+linker script that redirects to /${libdir}/libz.so.1
+
+Let's use ELF file directly. It also requires guile to support
+direct loading and enforces >=guile-3.
+--- a/zlib/config.scm.in
++++ b/zlib/config.scm.in
+@@ -20,4 +20,4 @@
+   #:export (%libz))
+ 
+ (define %libz
+-  "@LIBZ_LIBDIR@/libz")
++  "@LIBZ_LIBDIR@/libz.so.1")

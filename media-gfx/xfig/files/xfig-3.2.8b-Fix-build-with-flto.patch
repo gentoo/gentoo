@@ -1,0 +1,62 @@
+https://sourceforge.net/p/mcj/tickets/149/
+
+From 938c4089e6cc09e6e327f15d622c064865f837ae Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 27 Aug 2022 09:14:55 -0400
+Subject: [PATCH] Fix build with -flto
+
+With CFLAGS="-lflto" the tests fail to build because main() is
+redeclared with a different type:
+
+../src/main.c:651:1: error: type of ‘main’ does not match original declaration [-Werror=lto-type-mismatch]
+  651 | main(int argc, char **argv)
+      | ^
+test1.c:47:1: note: type mismatch in parameter 1
+   47 | main(void)
+      | ^
+test1.c:47:1: note: type ‘void’ should match type ‘int’
+test1.c:47:1: note: ‘main’ was previously declared here
+
+Simply change the definitions of main() in the tests to match
+the one in src/main.c.
+---
+ tests/test1.c | 4 +++-
+ tests/test2.c | 4 +++-
+ tests/test4.c | 4 +++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test1.c b/tests/test1.c
+index 83cf930..da76dd7 100644
+--- a/tests/test1.c
++++ b/tests/test1.c
+@@ -44,8 +44,10 @@ round_coords(int *x, int *y)
+ }
+ 
+ int
+-main(void)
++main(int argc, char *argv[])
+ {
++	(void)	argc;
++	(void)	argv;
+ 	int errcode = 0;
+ 
+ 	cur_pointposn = 2;	/* == P_GRID1, see mode.h */
+diff --git a/tests/test2.c b/tests/test2.c
+index ab3b434..02e919c 100644
+--- a/tests/test2.c
++++ b/tests/test2.c
+@@ -77,8 +77,10 @@ compare(int xc, int yc, int n, int pts[n][2])
+ }
+ 
+ int
+-main(void)
++main(int argc, char *argv[])
+ {
++	(void)	argc;
++	(void)	argv;
+ 	int x, y, yspacing, xc, yc, dist, xdist;
+ 	int error = 0;
+ 	int pts_square[2][2];
+-- 
+2.35.1
+

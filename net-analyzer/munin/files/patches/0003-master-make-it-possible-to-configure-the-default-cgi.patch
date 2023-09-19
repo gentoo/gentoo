@@ -1,0 +1,113 @@
+From b634d1396bc2fba170b414f09ea07d0de702fdb8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diego=20Elio=20Petten=C3=B2?= <flameeyes@flameeyes.eu>
+Date: Sun, 4 Nov 2012 11:18:11 -0800
+Subject: [PATCH 3/7] master: make it possible to configure the default cgi-tmp
+ directory.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This allows distributions to use, for instance, /var/cache/munin-cgi,
+so that /var/lib preserves its designed purpose.
+
+Signed-off-by: Diego Elio Pettenò <flameeyes@flameeyes.eu>
+---
+ Makefile                            | 7 ++++---
+ Makefile.config                     | 3 +++
+ common/lib/Munin/Common/Defaults.pm | 2 +-
+ master/_bin/munin-cgi-graph.in      | 2 +-
+ master/lib/Munin/Master/Config.pm   | 2 +-
+ master/munin.conf.in                | 2 +-
+ 6 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c119d38..2e30052 100644
+--- a/Makefile
++++ b/Makefile
+@@ -87,14 +87,14 @@ install-master-prime: $(INFILES_MASTER) install-pre install-master
+ 	mkdir -p $(PERLLIB)/Munin/Master
+ 	mkdir -p $(HTMLDIR)
+ 	mkdir -p $(DBDIR)
+-	mkdir -p $(DBDIR)/cgi-tmp
++	mkdir -p $(CGITMPDIR)
+ 	mkdir -p $(CGIDIR)
+ 
+ 	$(CHOWN) $(USER) $(HTMLDIR) $(DBDIR)
+ 	$(CHMOD) 0755 $(DBDIR)
+ 
+-	$(CHOWN) $(CGIUSER) $(DBDIR)/cgi-tmp
+-	$(CHMOD) 0755 $(DBDIR)/cgi-tmp
++	$(CHOWN) $(CGIUSER) $(CGITMPDIR)
++	$(CHMOD) 0755 $(CGITMPDIR)
+ 
+ 	for p in master/www/*.tmpl ;  do \
+ 		$(INSTALL) -m 0644 "$$p" $(CONFDIR)/templates/ ; \
+diff --git a/Makefile.config b/Makefile.config
+index f5557ea..4378b60 100644
+--- a/Makefile.config
++++ b/Makefile.config
+@@ -44,6 +44,9 @@ CGIDIR     = $(PREFIX)/www/cgi
+ # Where to put internal data for master (RRD, internal files, ...)
+ DBDIR      = $(DESTDIR)/var/opt/munin
+ 
++# Where to put CGI cached files (for master only)
++CGITMPDIR  = $(DBDIR)/cgi-tmp
++
+ # Where to put internal data for node (plugin state, ...)
+ DBDIRNODE  = $(DESTDIR)/var/opt/munin-node
+ 
+diff --git a/common/lib/Munin/Common/Defaults.pm b/common/lib/Munin/Common/Defaults.pm
+index 131f52c..787b596 100644
+--- a/common/lib/Munin/Common/Defaults.pm
++++ b/common/lib/Munin/Common/Defaults.pm
+@@ -25,7 +25,7 @@ our $MUNIN_DOCDIR     = '';
+ our $MUNIN_LIBDIR     = '';
+ our $MUNIN_HTMLDIR    = '';
+ our $MUNIN_CGIDIR     = '';
+-our $MUNIN_CGITMPDIR     = '';
++our $MUNIN_CGITMPDIR  = '';
+ our $MUNIN_DBDIR      = '';
+ our $MUNIN_PLUGSTATE  = ''; 
+ our $MUNIN_SPOOLDIR   = '';
+diff --git a/master/_bin/munin-cgi-graph.in b/master/_bin/munin-cgi-graph.in
+index 651cf8c..f5a7ccd 100755
+--- a/master/_bin/munin-cgi-graph.in
++++ b/master/_bin/munin-cgi-graph.in
+@@ -337,7 +337,7 @@ sub get_picture_filename {
+     my $params  = shift;
+ 
+     # XXX - hack to fix cgitmpdir default 
+-    $config->{cgitmpdir} ||= "$Munin::Common::Defaults::MUNIN_DBDIR/cgi-tmp";
++    $config->{cgitmpdir} ||= "$Munin::Common::Defaults::MUNIN_CGITMPDIR";
+     my $cgi_tmp_dir = $config->{cgitmpdir} . "/munin-cgi-graph";
+ 
+     $params = $params ? "?$params" : "";
+diff --git a/master/lib/Munin/Master/Config.pm b/master/lib/Munin/Master/Config.pm
+index 291ffaf..b5c0813 100644
+--- a/master/lib/Munin/Master/Config.pm	2017-03-03 01:02:39.000000000 +0100
++++ b/master/lib/Munin/Master/Config.pm	2017-07-18 19:29:44.861742592 +0200
+@@ -161,7 +161,7 @@
+ 		tls_verify_depth => 5,
+ 		tmpldir          => "$Munin::Common::Defaults::MUNIN_CONFDIR/templates",
+ 	        staticdir        => "$Munin::Common::Defaults::MUNIN_CONFDIR/static",
+-	        cgitmpdir        => "$Munin::Common::Defaults::MUNIN_DBDIR/cgi-tmp",
++	        cgitmpdir        => "$Munin::Common::Defaults::MUNIN_CGITMPDIR",
+ 		ssh_command      => "ssh",
+ 		ssh_options      => "-o ChallengeResponseAuthentication=no -o StrictHostKeyChecking=no",
+ 	    }, $class ),
+diff --git a/master/munin.conf.in b/master/munin.conf.in
+index 8d1a75f..046f369 100644
+--- a/master/munin.conf.in
++++ b/master/munin.conf.in
+@@ -21,7 +21,7 @@
+ # temporary cgi files are here. note that it has to be writable by 
+ # the cgi user (usually nobody or httpd).
+ #
+-# cgitmpdir @@DBDIR@@/cgi-tmp
++# cgitmpdir @@CGITMPDIR@@
+ 
+ # (Exactly one) directory to include all files from.
+ includedir @@CONFDIR@@/munin-conf.d
+-- 
+2.2.1
+

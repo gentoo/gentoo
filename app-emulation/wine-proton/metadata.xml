@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Wine</name>
+	</maintainer>
+	<use>
+		<flag name="crossdev-mingw">
+			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
+			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up)
+		</flag>
+		<flag name="gecko">Enable mshtml support using <pkg>app-emulation/wine-gecko</pkg></flag>
+		<flag name="mono">Enable .NET support using <pkg>app-emulation/wine-mono</pkg></flag>
+		<flag name="osmesa">Enable off-screen rendering (OpenGL in bitmaps) support</flag>
+		<flag name="perl">Install helpers that require perl (winedump/winemaker)</flag>
+		<flag name="sdl">Enable gamepad support using <pkg>media-libs/libsdl2</pkg></flag>
+		<flag name="vkd3d">Enable DirectX 12 support using <pkg>app-emulation/vkd3d</pkg></flag>
+	</use>
+	<upstream>
+		<changelog>https://github.com/ValveSoftware/Proton/wiki/Changelog</changelog>
+		<remote-id type="github">ValveSoftware/wine</remote-id>
+	</upstream>
+</pkgmetadata>

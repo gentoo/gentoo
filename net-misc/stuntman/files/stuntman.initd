@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/stunserver.pid"
+command="/usr/sbin/stunserver"
+command_args="${STUNTMAN_PARAMS}"
+command_background="true"
+
+depend() {
+	need net
+}

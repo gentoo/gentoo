@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -131,7 +132,7 @@
+ AC_MSG_CHECKING([shared library link args])
+ AC_COMPILE_IFELSE([ int foo(int val) { return val + 1; } ],[
+ 	# so now we try to create an archive from the compiled .o file
+-	(ar cr conftest.a conftest.o) 2>&5
++	($AR cr conftest.a conftest.o) 2>&5
+ 	# see which shared-library ld commands work
+ 	#
+ 	# Darwin/Mac OS X - Terry Teague

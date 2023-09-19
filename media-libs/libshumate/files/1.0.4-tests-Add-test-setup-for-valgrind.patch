@@ -1,0 +1,98 @@
+https://gitlab.gnome.org/GNOME/libshumate/-/merge_requests/158/
+
+From f4f806207cc59c21331d1542f6629e85a59ea1db Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Thu, 1 Dec 2022 20:48:57 -0500
+Subject: [PATCH] tests: Add test setup for valgrind
+
+valgrind is great, but it often does not support the latest instruction
+sets used by core libraries (e.g. AVX instructions used in glibc). That
+leads to failures that are unrelated to libshumate. For example:
+
+  6/7 viewport            FAIL            0.16s   killed by signal 4 SIGILL
+  [...]
+  vex amd64->IR: unhandled instruction bytes: 0xC4 0xE1 0xF9 0x90 0xD 0xDE 0xE8 0x1 0x0 0x41
+  vex amd64->IR:   REX=0 REX.W=1 REX.R=0 REX.X=0 REX.B=0
+  vex amd64->IR:   VEX=1 VEX.L=0 VEX.nVVVV=0x0 ESC=0F
+  vex amd64->IR:   PFX.66=1 PFX.F2=0 PFX.F3=0
+
+Categorizing these tests under a 'valgrind' setup allows distributions
+to easily disable them.
+---
+ tests/meson.build | 38 +++++++++++++++++---------------------
+ 1 file changed, 17 insertions(+), 21 deletions(-)
+
+diff --git a/tests/meson.build b/tests/meson.build
+index eadf54f..362e87d 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -6,21 +6,18 @@ test_env = [
+   'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
+ ]
+
+-valgrind_tests = [
+-  'coordinate',
+-  'memory-cache',
+-  'viewport',
+-]
+-
+ tests = [
++  'coordinate',
+   'file-cache',
+-  'marker',
+   'map',
++  'marker',
+   'marker-layer',
++  'memory-cache',
++  'viewport',
+ ]
+
+ if get_option('vector_renderer')
+-  valgrind_tests += [
++  tests += [
+     'vector-expression',
+     'vector-style',
+     'vector-value',
+@@ -29,21 +26,20 @@ endif
+
+ subdir('data')
+
++# Allow the tests to be easily run under valgrind using --setup=valgrind
+ valgrind = find_program('valgrind', required: false)
+
+ if valgrind.found()
+-  foreach test : valgrind_tests
+-    executable = executable(
+-      test,
+-      test_resources,
+-      '@0@.c'.format(test),
+-      dependencies: [libshumate_dep],
+-    )
+-
+-    test(test, valgrind, args: ['--leak-check=full', '--error-exitcode=1', executable], env: test_env)
+-  endforeach
+-else
+-  tests += valgrind_tests
++  add_test_setup('valgrind',
++    exclude_suites: [ 'no-valgrind', 'flaky' ],
++    exe_wrapper: [
++      valgrind,
++      '--leak-check=full',
++      '--error-exitcode=1',
++    ],
++    env: test_env,
++    timeout_multiplier: 20,
++  )
+ endif
+
+ foreach test : tests
+@@ -55,4 +51,4 @@ foreach test : tests
+   )
+
+   test(test, executable, env: test_env)
+-endforeach
+\ No newline at end of file
++endforeach
+--
+2.39.3
+

@@ -1,0 +1,12 @@
+diff -ruN foo2zjs.orig/hplj1000 foo2zjs/hplj1000
+--- foo2zjs.orig/hplj1000	2013-01-11 17:20:04.000000000 +0100
++++ foo2zjs/hplj1000	2013-03-24 20:49:16.150065578 +0100
+@@ -42,7 +42,7 @@
+ # Path to the USB CUPS backend. We use this backend to upload the firmware
+ # into the printer when we are on a CUPS/libusb-based system.
+ #
+-USB_BACKEND=/usr/lib/cups/backend/usb
++USB_BACKEND=/usr/libexec/cups/backend/usb
+ 
+ #
+ # Directory to find downloadable HP firmware files sihpMMMM.dl

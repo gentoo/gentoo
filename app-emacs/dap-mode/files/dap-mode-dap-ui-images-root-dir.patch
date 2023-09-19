@@ -1,0 +1,12 @@
+index ba02fee..56be79f 100644
+--- a/dap-ui.el
++++ b/dap-ui.el
+@@ -486,7 +486,7 @@ DEBUG-SESSION is the debug session triggering the event."
+ 
+ 
+ ;; dap-ui posframe stuff
+-(defvar dap-ui--control-images-root-dir (f-join (f-dirname (file-truename (or load-file-name buffer-file-name))) "icons/vscode"))
++(defvar dap-ui--control-images-root-dir "@SITEETC@/icons/vscode")
+ (defvar dap-ui--control-buffer " *dap-ui*")
+ 
+ (defun dap-ui--create-command (image command hover-text)

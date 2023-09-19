@@ -1,0 +1,7 @@
+#!/bin/sh
+
+VDR_RECORD_STATE=reccmd
+VDR_RECORD_NAME="${1}"
+
+. /usr/share/vdr/record/record-50-noad.sh "${VDR_RECORD_STATE}" "${VDR_RECORD_NAME}"
+

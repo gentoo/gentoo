@@ -1,0 +1,57 @@
+diff --git a/Makefile.config b/Makefile.config
+index 270ec61c0..eed38626e 100644
+--- a/Makefile.config
++++ b/Makefile.config
+@@ -5,9 +5,6 @@ include scripts/feature-tests.mak
+ ifeq ($(call try-cc,$(FEATURE_TEST_LIBBSD_DEV),-lbsd),true)
+         LIBS_FEATURES	+= -lbsd
+         FEATURE_DEFINES	+= -DCONFIG_HAS_LIBBSD
+-else
+-        $(info Note: Building without setproctitle() and strlcpy() support.)
+-        $(info $(info)      To enable these features, please install libbsd-devel (RPM) / libbsd-dev (DEB).)
+ endif
+ 
+ ifeq ($(call pkg-config-check,libselinux),y)
+@@ -33,8 +30,6 @@ ifeq ($(NO_GNUTLS)x$(call pkg-config-check,gnutls),xy)
+         LIBS_FEATURES	+= -lgnutls
+         export CONFIG_GNUTLS := y
+         FEATURE_DEFINES	+= -DCONFIG_GNUTLS
+-else
+-        $(info Note: Building without GnuTLS support)
+ endif
+ 
+ ifeq ($(call pkg-config-check,libnftables),y)
+@@ -49,9 +44,6 @@ ifeq ($(call pkg-config-check,libnftables),y)
+                 $(warning Warn: you have libnftables installed but it has incompatible API)
+                 $(warning Warn: Building without nftables support)
+         endif
+-else
+-        $(warning Warn: you have no libnftables installed)
+-        $(warning Warn: Building without nftables support)
+ endif
+ 
+ export LIBS += $(LIBS_FEATURES)
+diff --git a/lib/Makefile b/lib/Makefile
+index ff540fb75..dcac4b1ac 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -54,10 +54,6 @@ install: lib-c lib-a lib-py crit/crit lib/c/criu.pc.in
+ 	$(Q) mkdir -p $(DESTDIR)$(LIBDIR)/pkgconfig
+ 	$(Q) sed -e 's,@version@,$(CRIU_VERSION),' -e 's,@libdir@,$(LIBDIR),' -e 's,@includedir@,$(dir $(INCLUDEDIR)/criu/),' lib/c/criu.pc.in > lib/c/criu.pc
+ 	$(Q) install -m 644 lib/c/criu.pc $(DESTDIR)$(LIBDIR)/pkgconfig
+-ifeq ($(PYTHON),python3)
+-	$(E) "  INSTALL " crit
+-	$(Q) $(PYTHON) -m pip install --upgrade --force-reinstall --prefix=$(DESTDIR)$(PREFIX) ./crit
+-endif
+ .PHONY: install
+ 
+ uninstall:
+@@ -69,8 +65,4 @@ uninstall:
+ 	$(Q) $(RM) $(addprefix $(DESTDIR)$(INCLUDEDIR)/criu/,$(notdir $(UAPI_HEADERS)))
+ 	$(E) " UNINSTALL" pkgconfig/criu.pc
+ 	$(Q) $(RM) $(addprefix $(DESTDIR)$(LIBDIR)/pkgconfig/,criu.pc)
+-ifeq ($(PYTHON),python3)
+-	$(E) " UNINSTALL" crit
+-	$(Q) $(PYTHON) ./scripts/uninstall_module.py --prefix=$(DESTDIR)$(PREFIX) crit
+-endif
+ .PHONY: uninstall

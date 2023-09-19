@@ -1,0 +1,41 @@
+diff -Nuar uftp-4.9.4-orig/makefile uftp-4.9.4/makefile
+--- uftp-4.9.4-orig/makefile	2017-12-13 13:15:53.873252064 +0500
++++ uftp-4.9.4/makefile	2017-12-13 13:25:44.092223428 +0500
+@@ -42,24 +42,24 @@
+ endif
+ 
+ # defaults
+-OPTIONS=-g -Wall $(ENC_OPTS)
++OPTIONS=-Wall $(ENC_OPTS)
+ LDLIBS=-lc -lm $(CRYPT_LIB)
+ MTFLAGS=
+ 
+ # FreeBSD
+ ifeq ("FreeBSD", "$(UNAME_S)")
+-OPTIONS=-g -Wall -DHAS_GETIFADDRS -DNO_DUAL -DSOCKADDR_LEN $(ENC_OPTS)
++OPTIONS=-DHAS_GETIFADDRS -DNO_DUAL -DSOCKADDR_LEN $(ENC_OPTS)
+ endif
+ 
+ # OSX, aka Darwin
+ ifeq ("Darwin", "$(UNAME_S)")
+-OPTIONS=-g -Wall -DHAS_GETIFADDRS $(ENC_OPTS)
++OPTIONS=-Wall -DHAS_GETIFADDRS $(ENC_OPTS)
+ endif
+ 
+ # Sun
+ ifeq ("SunOS", "$(UNAME_S)")
+ CC = cc
+-OPTIONS=-g -DBSD_COMP -DNO_DUAL -DNO_RECVMSG $(ENC_OPTS)
++OPTIONS=-DBSD_COMP -DNO_DUAL -DNO_RECVMSG $(ENC_OPTS)
+ LDLIBS=-lnsl -lsocket -lm $(CRYPT_LIB)
+ CFLAGS+=`getconf LFS_CFLAGS`
+ OPENSSL=/usr/sfw
+@@ -68,7 +68,7 @@
+ 
+ # Linux
+ ifeq ("Linux", "$(UNAME_S)")
+-OPTIONS=-g -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wformat=2 -Wwrite-strings -Wpointer-arith -Wcast-qual -Wshadow -Wno-missing-field-initializers -Wstrict-prototypes -Winline -Wbad-function-cast -DHAS_GETIFADDRS $(ENC_OPTS)
++OPTIONS=-Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wformat=2 -Wwrite-strings -Wpointer-arith -Wcast-qual -Wshadow -Wno-missing-field-initializers -Wstrict-prototypes -Winline -Wbad-function-cast -DHAS_GETIFADDRS $(ENC_OPTS)
+ LDLIBS=-lm $(CRYPT_LIB)
+ CFLAGS+=`getconf LFS_CFLAGS`
+ endif

@@ -1,0 +1,13 @@
+http://aur.archlinux.org/packages.php?ID=10325
+
+--- a/src/rwpng.c
++++ b/src/rwpng.c
+@@ -80,7 +80,7 @@
+      * have used slightly more general png_sig_cmp() function instead */
+ 
+     fread(sig, 1, 8, infile);
+-    if (!png_check_sig(sig, 8)) {
++    if (png_sig_cmp(sig, 0, 8)) {
+         mainprog_ptr->retval = 21;   /* bad signature */
+         return mainprog_ptr->retval;
+     }

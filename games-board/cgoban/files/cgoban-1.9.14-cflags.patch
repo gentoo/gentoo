@@ -1,0 +1,39 @@
+--- a/configure.in
++++ b/configure.in
+@@ -1,8 +1,9 @@
+ #for autoconf 2.1x start configure script with next three lines
+ 
+ AC_PREREQ(2.13)
+-AC_INIT(src/cgoban.c)
+-AM_INIT_AUTOMAKE(cgoban, 1.9.14)
++AC_INIT([cgoban], [1.9.14])
++AC_CONFIG_SRCDIR([src/cgoban.c])
++AM_INIT_AUTOMAKE([no-define])
+ 
+ #for autoconf 2.5x start configure script with next four lines
+ # AC_PREREQ(2.50)
+@@ -145,7 +146,7 @@
+ ######################################################################
+ 
+ export VERSION
+-AC_DEFINE_UNQUOTED(VERSION,$VERSION)
++AC_DEFINE_UNQUOTED(VERSION,["$VERSION"])
+ AC_PREFIX_DEFAULT(/usr/games)
+ 
+ dayNum=`echo $date | awk '{ print $1 }'`
+@@ -160,6 +161,7 @@
+ AC_DEFINE_UNQUOTED(DATE,$DATE)
+ AC_DEFINE_UNQUOTED(DATE_FRENCH,$DATE_FRENCH)
+ 
++AM_PROG_AR
+ AC_PROG_MAKE_SET
+ AC_PROG_INSTALL
+ AC_PROG_CC
+@@ -168,7 +170,6 @@
+ AC_MINIX
+ AC_PROG_CPP
+ AC_EXEEXT
+-WMS_GET_CFLAGS
+ 
+ AM_CONFIG_HEADER(configure.h)
+ AC_SUBST(LIBS)dnl

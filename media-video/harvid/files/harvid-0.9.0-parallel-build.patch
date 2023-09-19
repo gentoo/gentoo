@@ -1,0 +1,40 @@
+https://github.com/x42/harvid/commit/a3f85c57ad2559558706d9b22989de36452704d9
+
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Wed, 22 Jun 2022 23:18:16 +0100
+Subject: [PATCH] Makefile: add a missing target libharvid dependency of src
+
+Without the change parallel build fails sometimes by linking
+too early on non-existent file:
+
+    make -C src
+    make[1]: Entering directory '/build/harvid/src'
+    ld -r -b binary -o seek.o ../doc/seek.js
+    ld -r -b binary -o logo.o ../doc/harvid.jpg
+    make[1]: *** No rule to make target '../libharvid/libharvid.a', needed by 'harvid'.  Stop.
+
+It's nest reproducible in `make --shuffle` mode:
+  https://savannah.gnu.org/bugs/index.php?62100
+
+The change makes sure 'libharvid' is built before 'src'.
+--- a/Makefile
++++ b/Makefile
+@@ -3,12 +3,15 @@ SUBDIRS = libharvid src doc
+ 
+ default: all
+ 
+-$(SUBDIRS)::
++$(SUBDIRS):
+ 	$(MAKE) -C $@ $(MAKECMDGOALS)
+ 
+ all clean man install uninstall install-bin install-man uninstall-bin uninstall-man install-lib uninstall-lib: $(SUBDIRS)
+ 
++# final binary links against a library
++src: libharvid
++
+ dist:
+ 	git archive --format=tar --prefix=harvid-$(VERSION)/ HEAD | gzip -9 > harvid-$(VERSION).tar.gz
+ 
+-.PHONY: clean all subdirs install uninstall dist install-bin install-man uninstall-bin uninstall-man install-lib uninstall-lib
++.PHONY: clean all subdirs install uninstall dist install-bin install-man uninstall-bin uninstall-man install-lib uninstall-lib $(SUBDIRS)
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>stasibear@gentoo.org</email>
+    <name>Erik Mackdanz</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Web-Machine</remote-id>
+    <remote-id type="cpan-module">Web::Machine</remote-id>
+    <remote-id type="cpan-module">Web::Machine::Manual</remote-id>
+    <remote-id type="cpan-module">Web::Machine::FSM</remote-id>
+    <remote-id type="cpan-module">Web::Machine::FSM::States</remote-id>
+    <remote-id type="cpan-module">Web::Machine::I18N</remote-id>
+    <remote-id type="cpan-module">Web::Machine::I18N::en</remote-id>
+    <remote-id type="cpan-module">Web::Machine::Util</remote-id>
+    <remote-id type="cpan-module">Web::Machine::Util::BodyEncoding</remote-id>
+    <remote-id type="cpan-module">Web::Machine::Util::ContentNegotiation</remote-id>
+  </upstream>
+</pkgmetadata>

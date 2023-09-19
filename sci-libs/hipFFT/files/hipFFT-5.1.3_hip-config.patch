@@ -1,0 +1,90 @@
+reverts the following commit.
+
+Upstream: https://github.com/ROCmSoftwarePlatform/hipFFT/pull/67
+
+commit 41491c9a70f808ed74690a538ca7bd25ff1ae1ca
+Author: Steve Leung <Steve.Leung@amd.com>
+Date:   Wed Sep 1 11:25:26 2021 -0600
+
+    cmake: use HIP CONFIG on Windows
+
+diff --git a/clients/rider/CMakeLists.txt b/clients/rider/CMakeLists.txt
+index de1fc7d..8b88103 100644
+--- b/clients/rider/CMakeLists.txt
++++ a/clients/rider/CMakeLists.txt
+@@ -43,11 +43,7 @@
+   
+ if( NOT CMAKE_CXX_COMPILER MATCHES ".*/hipcc$" )
+   if( NOT BUILD_WITH_LIB STREQUAL "CUDA" )
+-    if( WIN32 )
+-      find_package( HIP CONFIG REQUIRED )
+-    else()
+-      find_package( HIP MODULE REQUIRED )
+-    endif()
++    find_package( HIP REQUIRED )
+     target_link_libraries( hipfft-rider PRIVATE hip::host )
+   else()
+ 
+diff --git a/clients/samples/CMakeLists.txt b/clients/samples/CMakeLists.txt
+index 5a882c6..37162ab 100644
+--- b/clients/samples/CMakeLists.txt
++++ a/clients/samples/CMakeLists.txt
+@@ -48,11 +48,7 @@
+   target_link_libraries( ${sample} PRIVATE hip::hipfft )
+   
+   if( NOT CMAKE_CXX_COMPILER MATCHES ".*/hipcc$" )
+-    if( WIN32 )
+-      find_package( HIP CONFIG REQUIRED )
+-    else()
+-      find_package( HIP MODULE REQUIRED )
+-    endif()
++    find_package( HIP REQUIRED )
+     if( NOT BUILD_WITH_LIB STREQUAL "CUDA" )
+       target_link_libraries( ${sample} PRIVATE hip::host )
+     else()
+diff --git a/clients/tests/CMakeLists.txt b/clients/tests/CMakeLists.txt
+index 2b965e2..0442a79 100644
+--- b/clients/tests/CMakeLists.txt
++++ a/clients/tests/CMakeLists.txt
+@@ -81,11 +81,7 @@
+ 
+ if( NOT CMAKE_CXX_COMPILER MATCHES ".*/hipcc$" )
+   if( NOT BUILD_WITH_LIB STREQUAL "CUDA" )
+-    if( WIN32 )
+-      find_package( HIP CONFIG REQUIRED )
+-    else()
+-      find_package( HIP MODULE REQUIRED )
+-    endif()
++    find_package( HIP REQUIRED )
+     target_link_libraries( hipfft-test PRIVATE hip::host )
+   else()
+     target_compile_definitions( hipfft-test PRIVATE __HIP_PLATFORM_NVIDIA__)
+diff --git a/cmake/dependencies.cmake b/cmake/dependencies.cmake
+index 022e3e4..0c8b3f8 100644
+--- b/cmake/dependencies.cmake
++++ a/cmake/dependencies.cmake
+@@ -27,22 +27,14 @@
+ # HIP
+ if( NOT CMAKE_CXX_COMPILER MATCHES ".*/hipcc$" )
+   if( NOT BUILD_WITH_LIB STREQUAL "CUDA" )
+-    if( WIN32 )
+-      find_package( HIP CONFIG REQUIRED )
+-    else()
+-      find_package( HIP MODULE REQUIRED )
+-    endif()
++    find_package( HIP REQUIRED )
+     list( APPEND HIP_INCLUDE_DIRS "${HIP_ROOT_DIR}/include" )
+   endif()
+ else()
+   if( BUILD_WITH_LIB STREQUAL "CUDA" )
+     set(HIP_INCLUDE_DIRS "${HIP_ROOT_DIR}/include")
+   else()
+-    if( WIN32 )
+-      find_package( HIP CONFIG REQUIRED )
+-    else()
+-      find_package( HIP MODULE REQUIRED )
+-    endif()
++    find_package( HIP REQUIRED )
+   endif()
+ endif()
+   

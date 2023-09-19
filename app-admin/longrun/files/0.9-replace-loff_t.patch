@@ -1,0 +1,35 @@
+Use off_t instead of loff_t.  Both pread() and pwrite() take
+off_t not loff_t types.  This breaks the build on musl.  See
+
+https://bugs.gentoo.org/show_bug.cgi?id=541694
+
+diff -Naur longrun.orig/longrun.c longrun/longrun.c
+--- longrun.orig/longrun.c	2015-03-07 19:05:19.166652462 +0000
++++ longrun/longrun.c	2015-03-07 19:06:05.419651899 +0000
+@@ -181,7 +181,7 @@
+ }
+ 
+ /* note: if an output is NULL, then don't set it */
+-void read_msr(loff_t address, int *lower, int *upper)
++void read_msr(off_t address, int *lower, int *upper)
+ {
+ 	uint32_t data[2];
+ 
+@@ -193,7 +193,7 @@
+ 	if (upper) *upper = data[1];
+ }
+ 
+-void write_msr(loff_t address, int lower, int upper)
++void write_msr(off_t address, int lower, int upper)
+ {
+ 	uint32_t data[2];
+ 
+@@ -206,7 +206,7 @@
+ }
+ 
+ /* note: if an output is NULL, then don't set it */
+-void read_cpuid(loff_t address, int *eax, int *ebx, int *ecx, int *edx)
++void read_cpuid(off_t address, int *eax, int *ebx, int *ecx, int *edx)
+ {
+ 	uint32_t data[4];
+ 

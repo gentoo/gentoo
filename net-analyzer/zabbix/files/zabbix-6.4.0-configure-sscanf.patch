@@ -1,0 +1,12 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -952,8 +952,9 @@ dnl Check for %qu format (FreeBSD 4.x)
+ dnl FreeBSD 4.x does not support %llu
+ AC_MSG_CHECKING(for long long format)
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdio.h>
+ #include <sys/types.h>
+-int main()
++int main(void)
+ {
+         uint64_t i;

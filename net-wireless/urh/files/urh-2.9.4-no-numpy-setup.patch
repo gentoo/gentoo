@@ -1,0 +1,11 @@
+diff -Naur urh-2.9.4-orig/setup.py urh-2.9.4/setup.py
+--- urh-2.9.4-orig/setup.py	2023-08-20 20:31:45.067321480 -0400
++++ urh-2.9.4/setup.py	2023-08-20 20:31:55.088320822 -0400
+@@ -50,7 +50,6 @@
+         print("Finalizing options")
+         _build_ext.finalize_options(self)
+         # Prevent numpy from thinking it is still in its setup process:
+-        __builtins__.__NUMPY_SETUP__ = False
+         import numpy
+         self.include_dirs.append(numpy.get_include())
+ 

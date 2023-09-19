@@ -1,0 +1,37 @@
+https://chromium-review.googlesource.com/c/webm/libvpx/+/4004627
+
+From 62dee8012ea70a9f0628471609c5768f98a1e726 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 6 Nov 2022 04:11:59 +0000
+Subject: [PATCH] build: fix -Wimplicit-int (Clang 16)
+
+Clang 16 will make -Wimplicit-int error by default which can, in addition to
+other things, lead to some configure tests silently failing/returning the wrong result.
+
+Fixes this error:
+```
++/var/tmp/portage/media-libs/libvpx-1.12.0/temp/vpx-conf-1802-30624.c:1:15: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+```
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], gentoo-dev@ [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://archives.gentoo.org/gentoo-dev/message/dd9f2d3082b8b6f8dfbccb0639e6e240
+[3] hosted at lists.linux.dev.
+
+Bug: https://bugs.gentoo.org/879705
+Change-Id: Id73a98944ab3c99a368b9da7a5e902ddff9d937f
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/build/make/configure.sh
++++ b/build/make/configure.sh
+@@ -1511,7 +1511,7 @@ EOF
+ 
+     # Try to find which inline keywords are supported
+     check_cc <<EOF && INLINE="inline"
+-static inline function() {}
++static inline int function(void) {}
+ EOF
+ 
+   # Almost every platform uses pthreads.

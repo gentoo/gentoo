@@ -1,0 +1,36 @@
+https://github.com/tuxera/ntfs-3g/pull/58
+
+From a008fc4b3553583369111b145172a92542de4598 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 22 Sep 2022 04:00:45 +0100
+Subject: [PATCH] configure.ac: fix bashism in fuse check
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+checking Windows OS... no
+./configure: 13360: test: xinternal: unexpected operator
+checking for pthread_create in -lpthread... yes
+checking Solaris OS... no
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -228,7 +228,7 @@ esac
+ 
+ if test "x${enable_ntfs_3g}" != "xyes"; then
+ 	with_fuse="none"
+-elif test "x${with_fuse}" == "x"; then
++elif test "x${with_fuse}" = "x"; then
+ 	AC_MSG_CHECKING([fuse compatibility])
+ 	case "${target_os}" in
+ 	linux*|solaris*)
+

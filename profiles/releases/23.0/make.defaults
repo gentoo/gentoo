@@ -1,0 +1,23 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# See also 
+# https://wiki.gentoo.org/wiki/Project:Toolchain/23.0_profile_transition
+
+# This just makes sense nowadays, if only for distfiles...
+USE="lzma zstd"
+
+# bug 831045
+USE="${USE} -cli"
+
+# bug 849875
+USE="${USE} -dri"
+
+# bug 818376
+LDFLAGS="-Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs"
+
+# copied from merged-usr feature
+# Mike Gilbert <floppym@gentoo.org> (2022-08-31)
+# Avoid removing merged-usr symlinks.
+UNINSTALL_IGNORE="${UNINSTALL_IGNORE} /bin /lib /lib32 /lib64 /libx32 /sbin /usr/sbin"
+UNINSTALL_IGNORE="${UNINSTALL_IGNORE} /usr/lib/modules/*"

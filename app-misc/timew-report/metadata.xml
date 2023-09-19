@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nerdboy@gentoo.org</email>
+		<name>Steve Arnold</name>
+	</maintainer>
+	<longdescription lang="en">
+		timew-report is an interface for generating custom reports
+		from timewarrior tracking data (drop your python scripts in
+		the timew extensions directory).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">lauft/timew-report</remote-id>
+		<remote-id type="pypi">timew-report</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+sci-libs/lis changed some of its function prototypes by renaming
+lis_solver_get_iters to lis_solver_get_iter in version 1.4.43 from 17 July 2014
+
+See also:
+http://www.ssisc.org/lis/ChangeLog.txt
+https://bugs.gentoo.org/show_bug.cgi?id=593282
+
+--- a/modules/lis.c
++++ b/modules/lis.c
+@@ -67,7 +67,7 @@
+ 
+   lis_solve (A, b, x, solver);
+   int iter;
+-  lis_solver_get_iters (solver, &iter);
++  lis_solver_get_iter (solver, &iter);
+   par->niter = iter;
+ 
+   lis_vector_get_values (x, 0, lp->lhs->len, (double *) lp->lhs->data);

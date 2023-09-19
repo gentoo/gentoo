@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,8 +2,8 @@
+ 
+ all: longrun README stamp-po
+ 
+-longrun: longrun.c
+-	gcc -DLOCALEDIR=\"$(LOCALEDIR)\" -g -O2 -W -Wall -o longrun longrun.c
++CFLAGS += -W -Wall
++CPPFLAGS += -DLOCALEDIR=\"$(LOCALEDIR)\"
+ 
+ README: longrun.1
+ 	groff -Tascii -man longrun.1 | col -bx > README

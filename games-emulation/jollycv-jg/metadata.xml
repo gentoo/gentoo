@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		JollyCV is a highly accurate emulator for the ColecoVision,
+		including support for the Super Game Module. It was written in
+		standards compliant ISO C11 specifically for The Jolly Good API.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/jollycv/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/jollycv</remote-id>
+	</upstream>
+</pkgmetadata>

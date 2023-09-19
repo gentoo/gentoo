@@ -1,0 +1,46 @@
+Fix error: type ‘struct NameCompareFunctor’ violates the C++ One Definition Rule [-Werror=odr]
+
+Bug: https://bugs.gentoo.org/856097
+
+--- a/src/xalanc/PlatformSupport/AttributesImpl.cpp
++++ b/src/xalanc/PlatformSupport/AttributesImpl.cpp
+@@ -253,6 +253,9 @@
+ 
+ 
+ 
++namespace
++{
++
+ struct NameCompareFunctor
+ {
+     NameCompareFunctor(const XMLCh*     theQName) :
+@@ -271,6 +274,8 @@
+     const XMLCh* const  m_qname;
+ };
+ 
++}	// --- namespace
++
+ 
+ 
+ struct URIAndLocalNameCompareFunctor
+--- a/src/xalanc/PlatformSupport/AttributeListImpl.cpp
++++ b/src/xalanc/PlatformSupport/AttributeListImpl.cpp
+@@ -242,6 +242,9 @@
+ 
+ 
+ 
++namespace
++{
++
+ struct NameCompareFunctor
+ {
+     NameCompareFunctor(const XMLCh*     theName) :
+@@ -260,6 +263,8 @@
+     const XMLCh* const  m_name;
+ };
+ 
++}	// --- namespace
++
+ 
+ 
+ const XMLCh*

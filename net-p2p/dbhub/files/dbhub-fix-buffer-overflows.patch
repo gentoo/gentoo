@@ -1,0 +1,53 @@
+From 6d52acedf13eba875ab064d1a3b6a0ac3afb24f3 Mon Sep 17 00:00:00 2001
+From: Stanislav Ochotnicky <sochotnicky@gentoo.org>
+Date: Wed, 19 Jan 2011 21:06:05 +0100
+Subject: [PATCH] Fix buffer overflows
+
+---
+ src/commands.c |    2 +-
+ src/main.c     |    2 +-
+ src/main.h     |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/commands.c b/src/commands.c
+index f66ad68..e0bc6a8 100644
+--- a/src/commands.c
++++ b/src/commands.c
+@@ -313,7 +313,7 @@ void chat(char *buf, struct user_t *user)
+ 	char kg2user[51];
+ 	char largestring[501];
+ 	char msgl[801];
+-	char bigstring[1001]; 
++	char bigstring[4096];
+ 	char tempstring[151];
+ 	char nick[51];
+ 	char phrase[51];
+diff --git a/src/main.c b/src/main.c
+index dec3ef8..85dad68 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -506,7 +506,7 @@ void alarm_signal(int z){
+ void alarm_handler(void)
+ {
+ 	struct sock_t *human_user;
+-	char sometxt[151];
++	char sometxt[250];
+ 	char somerec[21];
+ 	char showrec[251];
+ 	char recpath[MAX_FDP_LEN+1];
+diff --git a/src/main.h b/src/main.h
+index 886312e..da1ead5 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -430,7 +430,7 @@ int 	brokensr;		/* 1 means share record was broken */
+ char  	recordshstr[120];
+ char  	recordusstr[120];
+ 
+-char 	clocknick[21];
++char 	clocknick[50];
+ 
+ //DB// Pointers that count various things and display them in !ui command to admins/owners
+ long long blocked_pm;
+-- 
+1.7.3.4
+

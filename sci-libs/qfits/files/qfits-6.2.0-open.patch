@@ -1,0 +1,11 @@
+--- a/src/qfits_memory.c
++++ b/src/qfits_memory.c
+@@ -308,7 +308,7 @@
+         /* Create swap file with rights: rw-rw-rw- */
+         swapfileid = ++ qfits_memory_table.file_reg ;
+         fname = qfits_memory_tmpfilename(swapfileid);
+-        swapfd = open(fname, O_RDWR | O_CREAT);
++        swapfd = open(fname, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+         if (swapfd==-1) {
+             fprintf(stderr, "qfits_mem: cannot create swap file\n");
+             exit(-1);

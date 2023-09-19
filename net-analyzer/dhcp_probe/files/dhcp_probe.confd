@@ -1,0 +1,9 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Config file for /etc/init.d/dhcp_probe
+
+# For more information, see dhcp_probe(8).
+
+DHCP_PROBE_OPTIONS="-d 1"
+

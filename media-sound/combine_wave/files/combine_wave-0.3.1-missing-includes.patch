@@ -1,0 +1,14 @@
+--- a/combine_wave.h
++++ b/combine_wave.h
+@@ -12,9 +12,10 @@
+ #include <float.h>
+ #include <math.h>
+ #include <linux/soundcard.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include "stdint.h"
+ #include <sys/ioctl.h>
++#include <sys/select.h>
+ #include <string.h> 
+ 
+ 

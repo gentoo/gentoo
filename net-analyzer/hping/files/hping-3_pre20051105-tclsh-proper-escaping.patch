@@ -1,0 +1,26 @@
+Fix for https://bugs.gentoo.org/show_bug.cgi?id=486664
+
+--- a/configure
++++ b/configure
+@@ -65,10 +65,10 @@
+ do
+ 	for TCLVER_TRY in "8.6" "8.5" "8.4" "8.3" "8.2" "8.1" "8.0"
+ 	do
+-		if [ -z $TCLSH ]
++		if [ -z "$TCLSH" ]
+ 		then
+ 			TCLSH_TRY=${TCLPATH_TRY}tclsh${TCLVER_TRY}
+-			if [ -f $TCLSH_TRY ]
++			if [ -f "$TCLSH_TRY" ]
+ 			then
+ 				TCLSH=$TCLSH_TRY
+ 				echo "===> Found Tclsh in: $TCLSH"
+@@ -76,7 +76,7 @@
+ 		fi
+ 	done
+ done
+-if [ -f $TCLSH ]
++if [ -f "$TCLSH" ]
+ then
+ 	TCL_VER=`echo puts \\$tcl_version | $TCLSH -`
+ 	USE_TCL='-DUSE_TCL'

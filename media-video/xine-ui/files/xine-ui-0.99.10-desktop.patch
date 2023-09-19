@@ -1,0 +1,23 @@
+--- a/misc/desktops/xine.desktop.in
++++ b/misc/desktops/xine.desktop.in
+@@ -6,5 +6,5 @@
+ Icon=xine
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo;Player;
+-MimeType=
+\ No newline at end of file
++Categories=AudioVideo;Player;
++MimeType=
+\ No newline at end of file
+--- a/misc/desktops/Makefile.am
++++ b/misc/desktops/Makefile.am
+@@ -32,7 +32,7 @@
+ if XINE_LIST
+ xine.desktop: xine.desktop.in @XINE_LIST@
+ 	$(AM_V_GEN)cat $< > $@; \
+-	@XINE_LIST@ | perl -ne 'print join(";",sort(split(";")))' >> $@; \
++	@XINE_LIST@ | perl -ne 'print join("\n",split(";"))' | sort -u | xargs | perl -ne 'print join(";",sort(split(" ")))' >> $@; \
+ 	echo ';$(INPUT_MIME_TYPES)' >> $@
+ else
+ XINE_MIME = $(if $(shell test "$(XINE_CONFIG)" = '' && echo y),$(shell pkg-config --variable=plugindir libxine),$(shell $(XINE_CONFIG) --plugindir))/mime.types

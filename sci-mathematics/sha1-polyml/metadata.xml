@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gienah@gentoo.org</email>
+    <name>Mark Wright</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    <pkg>sci-mathematics/sha1-polyml</pkg> is the implementation of SHA1 taken from
+    the GNU coreutils package as described in the <pkg>sci-mathematics/sha1-polyml</pkg>
+    README.
+  </longdescription>
+</pkgmetadata>

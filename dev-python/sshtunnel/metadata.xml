@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">sshtunnel</remote-id>
+		<remote-id type="github">pahaz/sshtunnel</remote-id>
+	</upstream>
+</pkgmetadata>

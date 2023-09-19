@@ -1,0 +1,48 @@
+From 149f4687db15d1759723d5d3e8334980239f9d56 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sun, 18 Dec 2022 16:09:27 +0100
+Subject: [PATCH 3/3] Revert "fix linking Alg_atoms symbol_table with dynamic
+ linking with MSVC"
+
+This reverts commit 951b636f7d0cba370d483a91f1897c71f3d98530.
+
+This change separated the symbol_table that portSMF provides from the one that
+the consumers use.  I suspect this was wrong, and the problem it fixes in
+actuality was somewhere else.
+---
+This effectively makes the packaged version v238.
+
+Forwarded: https://codeberg.org/tenacityteam/portsmf/pulls/11
+
+ include/allegro.h | 2 +-
+ src/allegro.cpp   | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/allegro.h b/include/allegro.h
+index 460b3fb..7bba98e 100755
+--- a/include/allegro.h
++++ b/include/allegro.h
+@@ -109,7 +109,7 @@ private:
+     void expand(); // make more space
+ };
+ 
+-static Alg_atoms symbol_table;
++extern Alg_atoms symbol_table;
+ 
+ 
+ // an attribute/value pair. Since Alg_attribute names imply type,
+diff --git a/src/allegro.cpp b/src/allegro.cpp
+index cdbef90..1305d48 100755
+--- a/src/allegro.cpp
++++ b/src/allegro.cpp
+@@ -30,6 +30,7 @@
+ // 4267 is size_t to long warning
+ #pragma warning(disable: 4311 4996 4267)
+ #endif
++Alg_atoms symbol_table;
+ Serial_read_buffer Alg_track::ser_read_buf; // declare the static variables
+ Serial_write_buffer Alg_track::ser_write_buf;
+ 
+-- 
+2.39.0
+

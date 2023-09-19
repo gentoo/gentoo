@@ -1,0 +1,22 @@
+From: Boian Bonev <bbonev@ipacct.com>
+Date: Tue, 21 Sep 2021 03:36:23 +0300
+Subject: [PATCH] fix problems with install
+
+--- a/Makefile.main
++++ b/Makefile.main
+@@ -108,12 +108,12 @@ yascreen.pc: yascreen.pc.in
+ 
+ install: libyascreen.a libyascreen.so yascreen.pc yascreen.3
+ 	$(INSTALL) -Ds -m 644 -t $(DESTDIR)$(PREFIX)$(LIBDIR) libyascreen.a
+-	$(INSTALL) -Ds -m 644 -t $(DESTDIR)$(PREFIX)$(LIBDIR)/pkgconfig/ yascreen.pc
++	$(INSTALL) -D -m 644 -t $(DESTDIR)$(PREFIX)$(LIBDIR)/pkgconfig/ yascreen.pc
+ 	ln -fs libyascreen.so.$(SOVERF) $(DESTDIR)$(PREFIX)$(LIBDIR)libyascreen.so.$(SOVERM)
+ 	ln -fs libyascreen.so.$(SOVERM) $(DESTDIR)$(PREFIX)$(LIBDIR)libyascreen.so
+ 	$(INSTALL) -Ds -m 644 -s -t $(DESTDIR)$(PREFIX)$(LIBDIR) libyascreen.so.$(SOVERF)
+-	$(INSTALL) -Ds -m 644 -t $(DESTDIR)$(PREFIX)$(INCDIR) yascreen.h
+-	$(INSTALL) -TDs -m 0644 yascreen.3 $(DESTDIR)$(PREFIX)/share/man/man3/yascreen.3
++	$(INSTALL) -D -m 644 -t $(DESTDIR)$(PREFIX)$(INCDIR) yascreen.h
++	$(INSTALL) -TD -m 0644 yascreen.3 $(DESTDIR)$(PREFIX)/share/man/man3/yascreen.3
+ 
+ clean:
+ 	rm -f yastest yastest.shared yastest.o yascreen.o libyascreen.a libyascreen.so libyascreen.so.$(SOVERM) libyascreen.so.$(SOVERF) yascreen.pc

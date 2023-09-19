@@ -1,0 +1,11 @@
+Avoids file conficts with other API versions being installed on the system.
+--- a/meson.build
++++ b/meson.build
+@@ -78,6 +78,6 @@ libgucharmap_gtk4_soversion = '0'
+ 
+ # i18n
+ 
+-gucharmap_gettext_domain = gucharmap_name
++gucharmap_gettext_domain = libgucharmap_gtk3_api_name
+ 
+ # Directories

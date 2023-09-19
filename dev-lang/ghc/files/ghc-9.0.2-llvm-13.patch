@@ -1,0 +1,26 @@
+https://salsa.debian.org/haskell-team/DHG_packages/-/commit/b16997ae9270c8f88b7f8548e5cb6fdf93a07c43
+
+From 78db231ffdf8385662812781c1d09c630cfad313 Mon Sep 17 00:00:00 2001
+From: Cheng Shao <astrohavoc@gmail.com>
+Date: Thu, 27 Jan 2022 12:12:14 +0000
+Subject: [PATCH] configure: bump LlvmMaxVersion to 14
+
+LLVM 13.0.0 is released in Oct 2021, and latest head validates against
+LLVM 13 just fine if LlvmMaxVersion is bumped.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e8a95726a35..71879adeb04 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -681,7 +681,7 @@ AC_SUBST(InstallNameToolCmd)
+ # versions of LLVM simultaneously, but that stopped working around
+ # 3.5/3.6 release of LLVM.
+ LlvmMinVersion=9  # inclusive
+-LlvmMaxVersion=13 # not inclusive
++LlvmMaxVersion=14 # not inclusive
+ AC_SUBST([LlvmMinVersion])
+ AC_SUBST([LlvmMaxVersion])
+ sUPPORTED_LLVM_VERSION_MIN=$(echo \($LlvmMinVersion\) | sed 's/\./,/')

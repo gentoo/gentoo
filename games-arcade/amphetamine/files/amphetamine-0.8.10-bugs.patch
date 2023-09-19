@@ -1,0 +1,56 @@
+description: fix issues in collision detection
+Index: amphetamine-0.8.10/src/Appl.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Appl.cpp	2006-05-15 19:16:56.000000000 +0200
++++ amphetamine-0.8.10/src/Appl.cpp	2006-05-15 19:17:02.000000000 +0200
+@@ -183,7 +183,7 @@
+ 
+ 	firstPlayRound = 1;
+ 	command = kCmdNoCommand;
+-	syncTime = gSystem->GetTicks();
++	syncTime = gSystem->GetTicks() - 20;
+ 	aveTime = 20;
+ 
+ 	while (command == kCmdNoCommand) {
+@@ -256,7 +256,7 @@
+ 
+ 		if (gSystem->KeyPressed(kKeyEscape)) {
+ 			command = gGUI->RunUserInterface(kMainPage);
+-			syncTime = gSystem->GetTicks();
++			syncTime = gSystem->GetTicks() - aveTime;
+ 		}
+ 		
+ 		if (command >= kSaveGameSlot0 && command <= kSaveGameSlot5) {
+Index: amphetamine-0.8.10/src/Object.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Object.cpp	2006-05-15 19:18:21.000000000 +0200
++++ amphetamine-0.8.10/src/Object.cpp	2006-05-15 19:18:33.000000000 +0200
+@@ -70,10 +70,13 @@
+ {
+ 	if (ABS(forcex) > ABS(forcey)) {
+ 		sx += SIGN(forcex);
+-		sy += forcey / ABS(forcex);
++		if (forcex != 0)
++			sy += forcey / ABS(forcex);
+ 	}else{
+ 		sy += SIGN(forcey);
+-		sx += forcex / ABS(forcey);
++		/* Avoid SIGFE on alpha on divide by zero. -- JEH */
++		if (forcey != 0)
++			sx += forcex / ABS(forcey);
+ 	}
+ }
+ 
+Index: amphetamine-0.8.10/src/Pltform.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Pltform.cpp	2006-05-15 19:18:25.000000000 +0200
++++ amphetamine-0.8.10/src/Pltform.cpp	2006-05-15 19:18:33.000000000 +0200
+@@ -136,7 +136,7 @@
+ 
+ short	CPlatform::Forces()
+ {
+-	short	collisionObject, collisionCode;
++	short	collisionObject = 0, collisionCode;
+ 	CObject	*collObj;
+ 
+ 	CObject::Forces();

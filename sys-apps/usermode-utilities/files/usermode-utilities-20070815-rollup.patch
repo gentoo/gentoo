@@ -1,0 +1,101 @@
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/jail/Makefile tools-20070815/jail/Makefile
+--- tools-20070815.orig/jail/Makefile	2006-02-27 14:51:46.000000000 -0500
++++ tools-20070815/jail/Makefile	2010-08-04 22:17:56.869103217 -0400
+@@ -11,7 +11,7 @@ $(BIN) : $(OBJS)
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(SBIN_DIR)
+-	install -s $(BIN) $(DESTDIR)$(SBIN_DIR)
++	install $(BIN) $(DESTDIR)$(SBIN_DIR)
+ 
+ clean :
+ 	rm -rf *~ $(BIN) $(OBJS) cell[0-9]* core* tty_log_cell*
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/jailtest/Makefile tools-20070815/jailtest/Makefile
+--- tools-20070815.orig/jailtest/Makefile	2006-02-27 14:52:53.000000000 -0500
++++ tools-20070815/jailtest/Makefile	2010-08-04 22:17:56.870032258 -0400
+@@ -14,4 +14,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -s $(BIN) $(DESTDIR)$(BIN_DIR)
++	install $(BIN) $(DESTDIR)$(BIN_DIR)
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/mconsole/Makefile tools-20070815/mconsole/Makefile
+--- tools-20070815.orig/mconsole/Makefile	2006-02-27 15:03:01.000000000 -0500
++++ tools-20070815/mconsole/Makefile	2010-08-04 22:17:56.916031770 -0400
+@@ -15,4 +15,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -s $(BIN) $(DESTDIR)$(BIN_DIR)
++	install $(BIN) $(DESTDIR)$(BIN_DIR)
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/moo/Makefile tools-20070815/moo/Makefile
+--- tools-20070815.orig/moo/Makefile	2006-02-27 15:08:49.000000000 -0500
++++ tools-20070815/moo/Makefile	2010-08-04 22:17:56.938282085 -0400
+@@ -23,4 +23,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -s $(BIN) $(DESTDIR)$(BIN_DIR)
++	install $(BIN) $(DESTDIR)$(BIN_DIR)
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/port-helper/Makefile tools-20070815/port-helper/Makefile
+--- tools-20070815.orig/port-helper/Makefile	2006-02-27 15:18:40.000000000 -0500
++++ tools-20070815/port-helper/Makefile	2010-08-04 22:17:56.938282085 -0400
+@@ -15,4 +15,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(LIB_DIR)
+-	install -s $(BIN) $(DESTDIR)$(LIB_DIR)
++	install $(BIN) $(DESTDIR)$(LIB_DIR)
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/tunctl/Makefile tools-20070815/tunctl/Makefile
+--- tools-20070815.orig/tunctl/Makefile	2006-02-27 15:19:52.000000000 -0500
++++ tools-20070815/tunctl/Makefile	2010-08-04 22:17:56.939282225 -0400
+@@ -14,4 +14,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -s $(BIN) $(DESTDIR)$(BIN_DIR)
++	install $(BIN) $(DESTDIR)$(BIN_DIR)
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/umlfs/Makefile tools-20070815/umlfs/Makefile
+--- tools-20070815.orig/umlfs/Makefile	2006-02-27 16:11:25.000000000 -0500
++++ tools-20070815/umlfs/Makefile	2010-08-04 22:17:56.940282085 -0400
+@@ -16,4 +16,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -s $(BIN) $(DESTDIR)$(BIN_DIR)
++	install $(BIN) $(DESTDIR)$(BIN_DIR)
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/uml_net/Makefile tools-20070815/uml_net/Makefile
+--- tools-20070815.orig/uml_net/Makefile	2006-02-27 15:19:52.000000000 -0500
++++ tools-20070815/uml_net/Makefile	2010-08-04 22:23:40.459151826 -0400
+@@ -2,6 +2,7 @@ TUNTAP = $(shell [ -e /usr/include/linux
+ 
+ BIN = uml_net
+ CFLAGS ?= -g -Wall
++LDFLAGS += -Wl,-z,now
+ override CFLAGS += $(TUNTAP)
+ 
+ BIN_DIR ?= /usr/bin
+@@ -22,4 +23,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -s -m 04755 $(BIN) $(DESTDIR)$(BIN_DIR)
++	install -m 04755 $(BIN) $(DESTDIR)$(BIN_DIR)
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/uml_switch/Makefile tools-20070815/uml_switch/Makefile
+--- tools-20070815.orig/uml_switch/Makefile	2006-02-27 15:20:26.000000000 -0500
++++ tools-20070815/uml_switch/Makefile	2010-08-04 22:17:56.942283133 -0400
+@@ -21,4 +21,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -s $(BIN) $(DESTDIR)$(BIN_DIR)
++	install $(BIN) $(DESTDIR)$(BIN_DIR)
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/watchdog/Makefile tools-20070815/watchdog/Makefile
+--- tools-20070815.orig/watchdog/Makefile	2006-02-27 15:55:34.000000000 -0500
++++ tools-20070815/watchdog/Makefile	2010-08-04 22:17:56.943282225 -0400
+@@ -14,4 +14,4 @@ clean :
+ 
+ install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -s $(BIN) $(DESTDIR)$(BIN_DIR)
++	install $(BIN) $(DESTDIR)$(BIN_DIR)

@@ -1,0 +1,70 @@
+#! /bin/sh
+
+nm="${0%mkexpfile}nm"
+showwith=
+expfile="ld.aix.exports.$$"
+srcobjs=
+
+# /bin/sort does not allow TMPDIR to be longer than 85 characters
+test ${#TMPDIR} -le 85 || TMPDIR=/tmp export TMPDIR
+
+while test $# -gt 0
+do
+    arg=$1
+    shift
+
+    case ${arg} in
+    --) for arg in "$@"
+	do
+	  srcobjs="${srcobjs} '${arg}'"
+	done
+	break
+	;;
+    --show-with=*) showwith="${arg#--show-with=}" ;;
+    -o)  expfile="${1}"; shift ;;
+    -o*) expfile="${arg#-o}"; ;;
+    *)   srcobjs="${srcobjs} '${arg}'" ;;
+    esac
+done
+
+/bin/rm -f "${expfile}" || exit 1
+
+if ! type "${nm}" >/dev/null 2>&1
+then
+    case ${nm} in
+    *-nm) nm=${nm##*/} ;; # use "powerpc-ibm-aix7.1.0.0-nm" from PATH
+    */nm|nm) nm=/usr/ccs/bin/nm ;; # native anyway
+    esac
+    type "${nm}" >/dev/null || exit 1 # let 'type' yell when necessary
+fi
+
+if "${nm}" -V 2>&1 | /bin/grep 'GNU' >/dev/null
+then
+    eval "${nm}" -Bpg ${srcobjs} |
+      /bin/awk '{
+	if ((($2 == "T") || ($2 == "D") || ($2 == "B") || ($2 == "W")) && (substr($3,1,1) != ".")) {
+	  if ($2 == "W") {
+	    print $3 " weak"
+	  } else {
+	    print $3
+	  }
+	}
+      }' |
+      /bin/sort -u > "${expfile}" || exit 1
+else
+    eval "${nm}" -PCpgl ${srcobjs} |
+      /bin/awk '{
+	if ((($2 == "T") || ($2 == "D") || ($2 == "B") || ($2 == "W") || ($2 == "V") || ($2 == "Z")) && (substr($1,1,1) != ".")) {
+	  if (($2 == "W") || ($2 == "V") || ($2 == "Z")) {
+	    print $1 " weak"
+	  } else {
+	    print $1
+	  }
+	}
+      }' |
+     /bin/sort -u > "${expfile}" || exit 1
+fi
+
+echo "${showwith}${expfile}"
+
+exit 0

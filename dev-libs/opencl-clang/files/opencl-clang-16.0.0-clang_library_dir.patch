@@ -1,0 +1,36 @@
+From 9f50367661bb6345bf7b18102f1e415378afda06 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Franti=C5=A1ek=20Zatloukal?= <Zatloukal.Frantisek@gmail.com>
+Date: Fri, 21 Apr 2023 04:08:11 +0200
+Subject: [PATCH] Support llvm headers in
+ ${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}/ (#419)
+
+Fedora places llvm include files into that directory instead of assumed
+${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}/include/
+
+Try both, fail horribly when none of them exist
+---
+ cl_headers/CMakeLists.txt | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/cl_headers/CMakeLists.txt b/cl_headers/CMakeLists.txt
+index 86df76f..0223d52 100644
+--- a/cl_headers/CMakeLists.txt
++++ b/cl_headers/CMakeLists.txt
+@@ -19,8 +19,15 @@ add_custom_command(
+ endfunction(copy_file)
+ 
+ if(USE_PREBUILT_LLVM)
+-    set(OPENCL_HEADERS_DIR
+-      "${LLVM_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}/include/")
++    if(EXISTS "${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}/")
++        set(OPENCL_HEADERS_DIR
++        "${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}/include/")
++    elseif(EXISTS "${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}/")
++        set(OPENCL_HEADERS_DIR
++            "${CLANG_LIBRARY_DIRS}/clang/${LLVM_VERSION_MAJOR}/include/")
++    else()
++        message(FATAL_ERROR "[OPENCL-CLANG] Couldn't find prebuilt LLVM include directory.")
++    endif()
+ else(USE_PREBUILT_LLVM)
+     set(OPENCL_HEADERS_DIR "${CLANG_SOURCE_DIR}/lib/Headers")
+ endif(USE_PREBUILT_LLVM)

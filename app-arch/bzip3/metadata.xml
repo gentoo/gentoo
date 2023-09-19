@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    A better, faster and stronger spiritual successor to BZip2. Features higher
+    compression ratios and better performance thanks to a order-0 context
+    mixing entropy coder, a fast Burrows-Wheeler transform code making use of
+    suffix arrays and a RLE with Lempel Ziv+Prediction pass based on LZ77-style
+    string matching and PPM-style context modeling.
+    Like its ancestor, BZip3 excels at compressing text or code.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/kspalaiologos/bzip3/issues/</bugs-to>
+    <remote-id type="github">kspalaiologos/bzip3</remote-id>
+  </upstream>
+</pkgmetadata>

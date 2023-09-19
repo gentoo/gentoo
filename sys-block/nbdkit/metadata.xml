@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">nbdkit/nbdkit</remote-id>
+		<remote-id type="github">libguestfs/nbdkit</remote-id>
+	</upstream>
+	<use>
+		<flag name="ext2">Enable the ext2 filter via <pkg>sys-fs/e2fsprogs</pkg>.</flag>
+		<flag name="libguestfs">Enable the <pkg>app-emulation/libguestfs</pkg> plugin.</flag>
+		<flag name="libssh">Enable the SSH plugin via <pkg>net-libs/libssh</pkg>.</flag>
+		<flag name="libvirt">Enable the <pkg>app-emulation/libvirt</pkg> plugin.</flag>
+		<flag name="nbd">Enable the nbd plugin via <pkg>sys-libs/libnbd</pkg>.</flag>
+		<flag name="torrent">Enable the torrent plugin via <pkg>net-libs/libtorrent-rasterbar</pkg>.</flag>
+	</use>
+</pkgmetadata>

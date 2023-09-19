@@ -1,0 +1,34 @@
+From e145fb627d199e888267e19eab951c69c2f8151c Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 8 Oct 2022 13:16:47 +0200
+Subject: [PATCH] avoid pre-stripping binaries
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/adm/cmake/occt_defs_flags.cmake
++++ b/adm/cmake/occt_defs_flags.cmake
+@@ -135,22 +135,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "[Cc][Ll][Aa][Nn][Gg]")
+     # CLang can be used with both libstdc++ and libc++, however on OS X libstdc++ is outdated.
+     set (CMAKE_CXX_FLAGS "-stdlib=libc++ ${CMAKE_CXX_FLAGS}")
+   endif()
+-  # Optimize size of binaries
+-  set (CMAKE_SHARED_LINKER_FLAGS "-Wl,-s ${CMAKE_SHARED_LINKER_FLAGS}")
+ elseif(MINGW)
+   add_definitions(-D_WIN32_WINNT=0x0601)
+   # _WIN32_WINNT=0x0601 (use Windows 7 SDK)
+   #set (CMAKE_SYSTEM_VERSION "6.1")
+   # workaround bugs in mingw with vtable export
+   set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
+-
+-  # Optimize size of binaries
+-  set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+-  set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+-elseif (DEFINED CMAKE_COMPILER_IS_GNUCXX)
+-  # Optimize size of binaries
+-  set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+-  set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+ endif()
+ 
+ if (BUILD_RELEASE_DISABLE_EXCEPTIONS)
+-- 
+2.38.0
+

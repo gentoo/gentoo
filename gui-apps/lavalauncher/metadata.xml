@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		Minimalistic and simple launcher for Wayland.
+		It serves a single purpose: Letting the user
+		execute shell commands by clicking on icons on
+		a dynamically sized bar, placed at one of the
+		screen edges.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourcehut">~leon_plickat/lavalauncher</remote-id>
+	</upstream>
+</pkgmetadata>

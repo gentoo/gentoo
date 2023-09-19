@@ -1,0 +1,13 @@
+Index: flexbackup
+===================================================================
+--- flexbackup	(revision 808)
++++ flexbackup	(working copy)
+@@ -1155,7 +1155,7 @@
+     $cmd .= "$::path{afio} -o ";
+     $cmd .= "$no_compress ";
+     $cmd .= "-z ";
+-    $cmd .= "-1 m ";
++    $cmd .= "-1 mC ";
+     $cmd .= "$::afio_z_flag ";
+     $cmd .= "$::afio_verb_flag ";
+     $cmd .= "$::afio_sparse_flag ";

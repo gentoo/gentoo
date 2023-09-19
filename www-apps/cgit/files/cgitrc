@@ -1,0 +1,130 @@
+# Enable caching of up to 1000 output entriess
+#cache-size=1000
+
+
+# Specify some default clone prefixes
+#clone-prefix=git://foobar.com ssh://foobar.com/pub/git http://foobar.com/git
+
+# Specify the css url
+#css=/css/cgit.css
+
+
+# Show extra links for each repository on the index page
+#enable-index-links=1
+
+
+# Enable ASCII art commit history graph on the log pages
+#enable-commit-graph=1
+
+
+# Show number of affected files per commit on the log pages
+#enable-log-filecount=1
+
+
+# Show number of added/removed lines per commit on the log pages
+#enable-log-linecount=1
+
+
+# Add a cgit favicon
+#favicon=/favicon.ico
+
+
+# Use a custom logo
+#logo=/img/mylogo.png
+
+
+# Enable statistics per week, month and quarter
+#max-stats=quarter
+
+
+# Set the title and heading of the repository index page
+#root-title=foobar.com git repositories
+
+
+# Set a subheading for the repository index page
+#root-desc=tracking the foobar development
+
+
+# Include some more info about foobar.com on the index page
+#root-readme=/var/www/htdocs/about.html
+
+
+# Allow download of tar.gz, tar.bz2 and zip-files
+#snapshots=tar.gz tar.bz2 zip
+
+
+##
+## List of common mimetypes
+##
+
+# Instead of defining mime types ourselves, grab it from etc
+#mimetype-file=/etc/mime.types
+
+# Or do it manually here
+#mimetype.gif=image/gif
+#mimetype.html=text/html
+#mimetype.jpg=image/jpeg
+#mimetype.jpeg=image/jpeg
+#mimetype.pdf=application/pdf
+#mimetype.png=image/png
+#mimetype.svg=image/svg+xml
+
+
+##
+## List of repositories.
+## PS: Any repositories listed when section is unset will not be
+##     displayed under a section heading
+## PPS: This list could be kept in a different file (e.g. '/etc/cgitrepos')
+##      and included like this:
+##        include=/etc/cgitrepos
+##
+
+
+#repo.url=foo
+#repo.path=/pub/git/foo.git
+#repo.desc=the master foo repository
+#repo.owner=fooman@foobar.com
+#repo.readme=info/web/about.html
+
+
+#repo.url=bar
+#repo.path=/pub/git/bar.git
+#repo.desc=the bars for your foo
+#repo.owner=barman@foobar.com
+#repo.readme=info/web/about.html
+
+
+# The next repositories will be displayed under the 'extras' heading
+#section=extras
+
+
+#repo.url=baz
+#repo.path=/pub/git/baz.git
+#repo.desc=a set of extensions for bar users
+
+#repo.url=wiz
+#repo.path=/pub/git/wiz.git
+#repo.desc=the wizard of foo
+
+
+# Add some mirrored repositories
+#section=mirrors
+
+
+#repo.url=git
+#repo.path=/pub/git/git.git
+#repo.desc=the dscm
+
+
+#repo.url=linux
+#repo.path=/pub/git/linux.git
+#repo.desc=the kernel
+
+# Disable adhoc downloads of this repo
+#repo.snapshots=0
+
+# Disable line-counts for this repo
+#repo.enable-log-linecount=0
+
+# Restrict the max statistics period for this repo
+#repo.max-stats=month

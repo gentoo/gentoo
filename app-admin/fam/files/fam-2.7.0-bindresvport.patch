@@ -1,0 +1,11 @@
+--- a/src/Listener.c++
++++ b/src/Listener.c++
+@@ -44,7 +44,7 @@
+ #include "Cred.h"
+ #include "BTree.h"
+ 
+-#if !(HAVE_BINDRESVPORT_PROTO)
++#if !(HAVE_BINDRESVPORT)
+ extern "C" int bindresvport(int sd, struct sockaddr_in *);
+ #endif
+ 

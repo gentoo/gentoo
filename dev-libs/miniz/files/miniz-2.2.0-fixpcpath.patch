@@ -1,0 +1,22 @@
+From 9cd715b3b1f5accc2e7cd0b167808c1a47a08938 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Sat, 4 Jun 2022 09:22:37 +0100
+Subject: [PATCH 1/2] build: Install .pc file in correct directory
+
+/usr/share/pkgconfig should be used for architecture independent
+libraries (e.g. data or scripts), while an architecture dependent
+directory like /usr/lib64/pkgconfig should be used for native
+binaries.
+
+Co-authored-by: Sam James <sam@gentoo.org>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -173,7 +173,7 @@ if(NOT BUILD_HEADER_ONLY)
+   if(INSTALL_PROJECT)
+     install(FILES
+       ${CMAKE_CURRENT_BINARY_DIR}/miniz.pc
+-      DESTINATION ${CMAKE_INSTALL_DATADIR}/pkgconfig)
++      DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+   endif()
+ endif()
+ 

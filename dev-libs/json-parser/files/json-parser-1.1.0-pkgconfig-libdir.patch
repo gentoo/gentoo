@@ -1,0 +1,22 @@
+Upstream-PR: https://github.com/json-parser/json-parser/pull/164
+
+diff --git a/Makefile.in b/Makefile.in
+index 8938230..b7539f7 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -43,9 +43,9 @@ clean:
+ 	rm -f libjsonparser.$(SO_EXT) libjsonparser.a json.o
+ 
+ install-shared: libjsonparser.$(SO_EXT)
+-	@echo Installing pkgconfig module: $(datadir)/pkgconfig/json-parser.pc
+-	@install -d $(datadir)/pkgconfig/ || true
+-	@install -m 0644 json-parser.pc $(datadir)/pkgconfig/json-parser.pc
++	@echo Installing pkgconfig module: $(libdir)/pkgconfig/json-parser.pc
++	@install -d $(libdir)/pkgconfig/ || true
++	@install -m 0644 json-parser.pc $(libdir)/pkgconfig/json-parser.pc
+ 	@echo Installing shared library: $(libdir)/libjsonparser.$(SO_EXT)
+ 	@install -d $(libdir) || true
+ 	@install -m 0755 libjsonparser.$(SO_EXT) $(libdir)/$(REAL_NAME)
+-- 
+2.35.1
+

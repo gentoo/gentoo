@@ -1,0 +1,20 @@
+--- a/convert/mtv/archdep.h
++++ b/convert/mtv/archdep.h
+@@ -17,7 +17,7 @@
+  * Note that these macros *do not* work for in-place transformations.
+  */
+ 
+-#if defined (mc68000) || defined (sparc)
++#if defined (mc68000) || defined (sparc) || defined (__powerpc__) || defined(__POWERPC__)
+ #define	DECODE_SHORT(from, to)	*((short *)(to)) = *((short *)(from))
+ #define	DECODE_LONG(from, to)	*((long *)(to)) = *((long *)(from))
+ #define	DECODE_FLOAT(from, to)	*((float *)(to)) = *((float *)(from))
+@@ -75,7 +75,7 @@
+ 
+ 
+ /* Most architectures are symmetrical with respect to conversions. */
+-#if defined (mc68000) || defined (sparc) || defined (i386) || defined(__x86_64)
++#if defined (mc68000) || defined (sparc) || defined (i386) || defined(__x86_64) || defined(__powerpc__) || defined(__POWERPC__)
+ #define	ENCODE_SHORT(from, to)		DECODE_SHORT((from), (to))
+ #define	ENCODE_LONG(from, to)		DECODE_LONG((from), (to))
+ #define	ENCODE_FLOAT(from, to)		DECODE_FLOAT((from), (to))

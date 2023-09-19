@@ -1,0 +1,21 @@
+#!/bin/sh
+
+ERL_LIBS=/usr/lib/erlang/lib
+
+for bin in "$ERL_LIBS"/epam-*/priv/bin/epam; do
+	if [ -x "$bin" ]; then
+		if [ -z "$epam" ]; then
+			epam="$bin"
+		else
+			echo "Multiple epam libraries - don't know what to do" >&2
+			exit 1
+		fi
+	fi
+done
+
+if [ -z "$epam" ]; then
+	echo "Couldn't find epam package" >&2
+	exit 1
+fi
+
+exec "$epam"

@@ -1,0 +1,23 @@
+From 8f2add1046c2d23294496bc0bc7c00d18c6aa0a2 Mon Sep 17 00:00:00 2001
+From: Daniels Umanovskis <daniels@umanovskis.se>
+Date: Fri, 13 Mar 2020 16:23:02 +0100
+Subject: [PATCH] Change output for a trace so that trace is actually usable
+ again
+
+---
+ kdbg/debugger.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kdbg/debugger.cpp b/kdbg/debugger.cpp
+index 3751e4c..7d43eb9 100644
+--- a/kdbg/debugger.cpp
++++ b/kdbg/debugger.cpp
+@@ -2225,7 +2225,7 @@ void KDebugger::slotValueEdited(VarTree* expr, const QString& text)
+ 
+     ExprWnd* wnd = static_cast<ExprWnd*>(expr->treeWidget());
+     TRACE(QString().sprintf("Changing %s to ",
+-			    wnd->name()) + text);
++			    wnd->exprList().join(" ")) + text);
+ 
+     // determine the lvalue to edit
+     QString lvalue = expr->computeExpr();

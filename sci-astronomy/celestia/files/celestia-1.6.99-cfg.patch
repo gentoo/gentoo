@@ -1,0 +1,25 @@
+From 82023197fabf148e164c538ce0839e3add31068d Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 2 Jan 2019 14:25:37 +0100
+Subject: [PATCH] celestia.cfg: Add ~/.celestia as extras directory.
+
+---
+ celestia.cfg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/celestia.cfg b/celestia.cfg
+index ea9e4f58..00edf250 100644
+--- a/celestia.cfg
++++ b/celestia.cfg
+@@ -197,7 +197,7 @@ StarTextures
+ # or
+ #   ExtrasDirectories  [ "D:\\celestia-extras" ]
+ #------------------------------------------------------------------------
+-  ExtrasDirectories  [ "extras-standard" "extras" ]
++  ExtrasDirectories  [ "extras-standard" "extras" "~/.celestia" ]
+ 
+ 
+ #------------------------------------------------------------------------
+-- 
+2.20.1
+

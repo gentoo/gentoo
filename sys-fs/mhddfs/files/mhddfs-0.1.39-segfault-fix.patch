@@ -1,0 +1,190 @@
+Patch backported from
+https://github.com/vdudouyt/mhddfs-nosegfault
+
+Thanks to Gabor Kovari <gabor.kovari@gmail.com>
+
+--- a/src/main.c	2012-06-17 16:09:56.000000000 +0200
++++ b/src/main.c	2015-12-21 16:32:29.000000000 +0100
+@@ -33,6 +33,13 @@
+ #include <sys/time.h>
+ #include <utime.h>
+ 
++#include <execinfo.h>
++#include <signal.h>
++#include <unistd.h>
++
++#include <glib.h>
++#include <sys/resource.h>
++
+ #ifndef WITHOUT_XATTR
+ #include <attr/xattr.h>
+ #endif
+@@ -42,7 +49,21 @@
+ 
+ #include "debug.h"
+ 
+-#include <uthash.h>
++void save_backtrace(int sig)
++{
++  void *array[10];
++  size_t size;
++
++  // get void*'s for all entries on the stack
++  size = backtrace(array, 10);
++
++  // print out all the frames to stderr
++  fprintf(stderr, "Error: signal %d\n", sig);
++  FILE *log = fopen("/tmp/mhddfs_backtrace.log", "w");
++  backtrace_symbols_fd(array, size, fileno(log));
++  fclose(log);
++  exit(1);
++}
+ 
+ // getattr
+ static int mhdd_stat(const char *file_name, struct stat *buf)
+@@ -161,16 +182,13 @@
+ 	mhdd_debug(MHDD_MSG, "mhdd_readdir: %s\n", dirname);
+ 	char **dirs = (char **) calloc(mhdd.cdirs+1, sizeof(char *));
+ 
++	struct stat st;
++
+ 	typedef struct dir_item {
+ 		char            *name;
+ 		struct stat     *st;
+-		UT_hash_handle   hh;
+ 	} dir_item;
+ 
+-	dir_item * items_ht = NULL;
+-
+-
+-	struct stat st;
+ 
+ 	// find all dirs
+ 	for(i = j = found = 0; i<mhdd.cdirs; i++) {
+@@ -194,6 +212,8 @@
+ 		return -errno;
+ 	}
+ 
++	GHashTable* hash = g_hash_table_new(g_str_hash, g_str_equal);
++
+ 	// read directories
+ 	for (i = 0; dirs[i]; i++) {
+ 		struct dirent *de;
+@@ -204,51 +224,43 @@
+ 		while((de = readdir(dh))) {
+ 			// find dups
+ 			
+-			struct dir_item *prev;
+-
+-			HASH_FIND_STR(items_ht, de->d_name, prev);
+-
+-			if (prev) {
++			if(g_hash_table_lookup(hash, de->d_name))
++			{
+ 				continue;
+ 			}
+ 
+ 			// add item
+ 			char *object_name = create_path(dirs[i], de->d_name);
+-			struct dir_item *new_item =
+-				calloc(1, sizeof(struct dir_item));
++			struct dir_item *new_item =	calloc(1, sizeof(struct dir_item));
+ 
+ 			new_item->name = strdup(de->d_name);
+ 			new_item->st = calloc(1, sizeof(struct stat));
+ 			lstat(object_name, new_item->st);
+ 
+-			HASH_ADD_KEYPTR(
+-				hh,
+-				items_ht,
+-				new_item->name,
+-				strlen(new_item->name),
+-				new_item
+-			);
++			g_hash_table_insert(hash, new_item->name, new_item);
+ 			free(object_name);
+ 		}
+ 
+ 		closedir(dh);
+ 	}
+ 
+-	dir_item *item, *tmp;
+-
+-	// fill list
+-	HASH_ITER(hh, items_ht, item, tmp) {
+-		if (filler(buf, item->name, item->st, 0))
+-			break;
+-	}
++	dir_item *item;
+ 
+-	// free memory
+-	HASH_ITER(hh, items_ht, item, tmp) {
++	gpointer key, value;	
++	GHashTableIter iter;
++	g_hash_table_iter_init(&iter, hash);
++
++	while(g_hash_table_iter_next (&iter, &key, &value))
++	{
++		item = (dir_item*) value;
++		int result = filler(buf, item->name, item->st, 0);
+ 		free(item->name);
+ 		free(item->st);
+ 		free(item);
++		if(result) break;
+ 	}
+-	HASH_CLEAR(hh, items_ht);
++
++	g_hash_table_destroy(hash);
+ 
+ 	for (i = 0; dirs[i]; i++)
+ 		free(dirs[i]);
+@@ -1008,6 +1020,19 @@
+ }
+ #endif
+ 
++static void limits_init()
++{
++   struct rlimit limit;
++   limit.rlim_cur = 512000;
++   limit.rlim_max = 512000;
++
++   if(setrlimit(RLIMIT_NOFILE, &limit) != 0)
++   {
++      perror("setrlimit() failed");
++      exit(-1);
++   }
++}
++
+ // functions links
+ static struct fuse_operations mhdd_oper = {
+ 	.getattr    	= mhdd_stat,
+@@ -1048,5 +1073,7 @@
+ 	mhdd_debug_init();
+ 	struct fuse_args *args = parse_options(argc, argv);
+ 	flist_init();
++	limits_init();
++	signal(SIGSEGV, save_backtrace);
+ 	return fuse_main(args->argc, args->argv, &mhdd_oper, 0);
+ }
+--- a/src/usage.c	2012-06-17 16:09:56.000000000 +0200
++++ b/src/usage.c	2015-12-21 16:32:29.000000000 +0100
+@@ -25,6 +25,7 @@
+ 		"\n"
+ 		"Multi-hdd FUSE filesystem\n"
+ 		" Copyright (C) 2008, Dmitry E. Oboukhov <dimka@avanto.org>\n"
++		" Copyright (C) 2015, Valentin Dudouyt <valentin.dudouyt@gmail.com>\n"		
+ 		"\n"
+ 		"Usage:\n"
+ 		" mhddfs dir1,dir2.. mountpoint [ -o OPTIONS ]\n"
+--- a/Makefile	2016-01-05 16:45:10.184105001 +0100
++++ b/Makefile	2015-12-21 16:32:29.000000000 +0100
+@@ -53,7 +53,7 @@
+ ifeq ($(DEBVERSION), $(VERSION))
+ all: $(TARGET)
+ else
+-all: update_version $(TARGET)
++all: $(TARGET)
+ endif
+ 
+ update_version:
+ 

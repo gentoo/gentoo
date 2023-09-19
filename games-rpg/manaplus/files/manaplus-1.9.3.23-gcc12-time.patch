@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/855212
+https://bugs.gentoo.org/855455
+--- a/src/resources/wallpaper.cpp
++++ b/src/resources/wallpaper.cpp
+@@ -38,9 +38,7 @@
+ #include <sys/time.h>
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #include "debug.h"
+ 
+--- a/src/progs/dyecmd/client.cpp
++++ b/src/progs/dyecmd/client.cpp
+@@ -87,9 +87,7 @@ PRAGMA48(GCC diagnostic pop)
+ #undef ERROR
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #ifdef ANDROID
+ #ifndef USE_SDL2

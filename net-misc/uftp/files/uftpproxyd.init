@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PROGRAM=/usr/sbin/uftpproxyd
+PIDFILE=/var/run/uftpproxyd.pid
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting uftpd"
+	start-stop-daemon --start --exec ${PROGRAM} -- \
+		-L /var/log/uftpproxyd.log -P ${PIDFILE} ${UFTPPROXYD_OPTS}
+	eend $? "Failed to start uftpd"
+}
+
+stop() {
+	ebegin "Stopping uftpd"
+	start-stop-daemon --stop --exec ${PROGRAM} -p ${PIDFILE}
+	eend $? "Failed to stop uftpd"
+}

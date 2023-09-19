@@ -1,0 +1,33 @@
+Rebased from original redis-5.0-shared.patch
+
+diff --git a/src/Makefile b/src/Makefile
+index ecbd2753d..275446338 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -65,10 +65,7 @@ PYTHON := $(shell which python3 || which python)
+ endif
+ 
+ # Default allocator defaults to Jemalloc on Linux and libc otherwise
+-MALLOC=libc
+-ifeq ($(uname_S),Linux)
+-	MALLOC=jemalloc
+-endif
++MALLOC?=jemalloc
+ 
+ # To get ARM stack traces if Redis crashes we need a special C flag.
+ ifneq (,$(filter aarch64 armv%,$(uname_M)))
+@@ -266,9 +263,8 @@ ifeq ($(MALLOC),tcmalloc_minimal)
+ endif
+ 
+ ifeq ($(MALLOC),jemalloc)
+-	DEPENDENCY_TARGETS+= jemalloc
+-	FINAL_CFLAGS+= -DUSE_JEMALLOC -I../deps/jemalloc/include
+-	FINAL_LIBS := ../deps/jemalloc/lib/libjemalloc.a $(FINAL_LIBS)
++	FINAL_CFLAGS+= -DUSE_JEMALLOC -DJEMALLOC_NO_DEMANGLE
++	FINAL_LIBS+= -ljemalloc -ldl
+ endif
+ 
+ # LIBSSL & LIBCRYPTO
+-- 
+2.41.0
+

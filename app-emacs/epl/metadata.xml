@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>jturner.usa+gentoo@gmail.com</email>
+    <name>John Turner</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">cask/epl</remote-id>
+    <doc>https://github.com/cask/epl/blob/master/README.md</doc>
+  </upstream>
+  <longdescription>
+    EPL provides a convenient high-level API for various package.el versions,
+    and aims to overcome its most striking idiocies.
+  </longdescription>
+</pkgmetadata>

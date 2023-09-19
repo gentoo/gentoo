@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Fluxbox
+Comment=This session logs you into Fluxbox
+Exec=startfluxbox
+TryExec=startfluxbox
+# no icon yet, only the top three are currently used
+Icon=
+Type=Application

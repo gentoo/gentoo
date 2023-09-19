@@ -1,0 +1,8 @@
+Lazy fix to prevent log() overlap that leads to failure with clang.
+https://bugs.gentoo.org/731028
+--- a/src/mp3asm.h
++++ b/src/mp3asm.h
+@@ -48,2 +48,3 @@
+ extern char *me; /* name of the executable */
++#define log logfile
+ extern logfile_t log; /* file to log to */

@@ -1,0 +1,44 @@
+https://github.com/fract4d/gnofract4d/pull/254
+
+From dd92a4bf2c6e68352203c511f465846e5c96407b Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Fri, 14 Apr 2023 09:33:28 +0200
+Subject: [PATCH] Declare image_lookup, gradient in fract_stdlib.h
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This avoids test failures in generated code with C compilers
+that do not support implicit function declartions:
+
+>           raise fracttypes.TranslationError(
+                "Error reported by C compiler:%s" % output)
+E           fract4d_compiler.fracttypes.TranslationError: Error reported by C co
+mpiler:/tmp/fract4d_4tueiy9c/gnofract4d-cache/fract4d_9ebc1853081db2ea5eb7cce846
+42cd4e.c: In function ‘pf_calc’:
+E           /tmp/fract4d_4tueiy9c/gnofract4d-cache/fract4d_9ebc1853081db2ea5eb7c
+ce84642cd4e.c:282:1: error: implicit declaration of function ‘image_lookup’
+E             282 | image_lookup(t__a_cf1image,z_re,z_im, &t__cf10, &t__cf11, &t
+__cf12);
+E                 | ^~~~~~~~~~~~
+
+
+>           raise fracttypes.TranslationError(
+                "Error reported by C compiler:%s" % output)
+E           fract4d_compiler.fracttypes.TranslationError: Error reported by C compiler:/tmp/fract4d_4tueiy9c/gnofract4d-cache/fract4d_2ccc81a001cdf717973d45d4cbd12778.c: In function ‘pf_calc’:
+E           /tmp/fract4d_4tueiy9c/gnofract4d-cache/fract4d_2ccc81a001cdf717973d45d4cbd12778.c:323:1: error: implicit declaration of function ‘gradient’
+E             323 | gradient(t__a__gradient,t__cf09, &t__cf010, &t__cf011, &t__cf012);
+E                 | ^~~~~~~~
+--- a/fract4d/c/fract_stdlib.h
++++ b/fract4d/c/fract_stdlib.h
+@@ -52,6 +52,9 @@ extern "C"
+     double read_float_array_2D(void *array, int x, int y);
+     int write_float_array_2D(void *array, int x, int y, double val);
+ 
++    void image_lookup(void *im, double x, double y, double *pr, double *pg, double *pb);
++    void gradient(void *grad_object, double index, double *r, double *g, double *b);
++
+ #ifdef __cplusplus
+ }
+ #endif
+

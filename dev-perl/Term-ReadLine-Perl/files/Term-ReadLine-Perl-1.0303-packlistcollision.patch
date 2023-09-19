@@ -1,0 +1,56 @@
+From 635bf84ee3916ec578a56bdfaed39a4759dd6579 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 14 Mar 2018 19:40:00 +1300
+Subject: Fix NAME to reflect MAIN MODULE NAME
+
+Otherwise generated packlist is called "Term/ReadLine/.packlist"
+which collides with Term::ReadLine's
+---
+ MANIFEST                                    | 4 ++--
+ Makefile.PL                                 | 4 ++--
+ {ReadLine => lib/Term/ReadLine}/Perl.pm     | 0
+ {ReadLine => lib/Term/ReadLine}/readline.pm | 0
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+ rename {ReadLine => lib/Term/ReadLine}/Perl.pm (100%)
+ rename {ReadLine => lib/Term/ReadLine}/readline.pm (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index 633f90c..9a6d460 100755
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -1,7 +1,7 @@
+ CHANGES
+ MANIFEST
+ Makefile.PL
+-ReadLine/Perl.pm
+-ReadLine/readline.pm
++lib/Term/ReadLine/Perl.pm
++lib/Term/ReadLine/readline.pm
+ README
+ test.pl
+diff --git a/Makefile.PL b/Makefile.PL
+index e9fb967..15b1dce 100755
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -3,8 +3,8 @@ use ExtUtils::MakeMaker;
+ # the contents of the Makefile that is written.
+ WriteMakefile(
+ 	      DISTNAME	=> 'Term-ReadLine-Perl',
+-	      NAME	=> 'Term::ReadLine',
+-	      VERSION_FROM => 'ReadLine/readline.pm',
++	      NAME	=> 'Term::ReadLine::Perl',
++	      VERSION_FROM => 'lib/Term/ReadLine/readline.pm',
+ 	      linkext => {LINKTYPE => '' },
+ 	      # dist => {COMPRESS=>'gzip -9f', SUFFIX=>'gz', 
+ 	      #		     DIST_DEFAULT => 'all uutardist'},
+diff --git a/ReadLine/Perl.pm b/lib/Term/ReadLine/Perl.pm
+similarity index 100%
+rename from ReadLine/Perl.pm
+rename to lib/Term/ReadLine/Perl.pm
+diff --git a/ReadLine/readline.pm b/lib/Term/ReadLine/readline.pm
+similarity index 100%
+rename from ReadLine/readline.pm
+rename to lib/Term/ReadLine/readline.pm
+-- 
+2.16.2
+

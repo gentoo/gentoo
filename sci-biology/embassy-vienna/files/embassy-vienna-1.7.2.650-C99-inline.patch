@@ -1,0 +1,32 @@
+--- a/src/fold.c
++++ b/src/fold.c
+@@ -65,9 +65,9 @@
+ PRIVATE int fill_arrays(const char *sequence);
+ /*@unused@*/
+ INLINE PRIVATE  int oldLoopEnergy(int i, int j, int p, int q, int type, int type_2);
+-INLINE int  LoopEnergy(int n1, int n2, int type, int type_2,
++int  LoopEnergy(int n1, int n2, int type, int type_2,
+ 			 int si1, int sj1, int sp1, int sq1);
+-INLINE int  HairpinE(int size, int type, int si1, int sj1, const char *string);
++int  HairpinE(int size, int type, int si1, int sj1, const char *string);
+ int loop_energy(short * ptable, short *s, short *s1, int i);
+ char *backtrack_fold_from_pair(char *sequence, int i, int j);
+ void export_circfold_arrays(int *Fc_p, int *FcH_p, int *FcI_p, int *FcM_p, int **fM2_p,
+@@ -831,7 +831,7 @@
+ }
+ /*---------------------------------------------------------------------------*/
+ 
+-INLINE int HairpinE(int size, int type, int si1, int sj1, const char *string) {
++int HairpinE(int size, int type, int si1, int sj1, const char *string) {
+   int energy;
+   energy = (size <= 30) ? P->hairpin[size] :
+     P->hairpin[30]+(int)(P->lxc*log((size)/30.));
+@@ -901,7 +901,7 @@
+ 
+ /*--------------------------------------------------------------------------*/
+ 
+-INLINE int LoopEnergy(int n1, int n2, int type, int type_2,
++int LoopEnergy(int n1, int n2, int type, int type_2,
+ 		      int si1, int sj1, int sp1, int sq1) {
+   /* compute energy of degree 2 loop (stack bulge or interior) */
+   int nl, ns, energy;

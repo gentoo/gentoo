@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>sparc@gentoo.org</email>
+	<name>SPARC architecture team</name>
+</maintainer>
+<use>
+	<flag name="tilo-only">Install only the tilo netboot tool</flag>
+</use>
+</pkgmetadata>

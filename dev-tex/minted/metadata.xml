@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+    minted is a LaTeX package that facilitates expressive syntax highlighting
+    using the Pygments library. The package also provides options to customize
+    the highlighted source code output using fancyvrb.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/gpoore/minted/issues/</bugs-to>
+    <remote-id type="github">gpoore/minted</remote-id>
+  </upstream>
+</pkgmetadata>

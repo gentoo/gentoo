@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mrmagic223325@fedora.email</email>
+		<name>Mathis Winterer</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<name>Christian Muehlhaeuser</name>
+		</maintainer>
+		<bugs-to>https://github.com/muesli/duf/issues</bugs-to>
+		<doc>https://github.com/muesli/duf</doc>
+		<remote-id type="github">muesli/duf</remote-id>
+	</upstream>
+</pkgmetadata>

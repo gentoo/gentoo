@@ -1,0 +1,12 @@
+https://bugzilla.redhat.com/show_bug.cgi?id=248329
+
+--- a/local/snmpconf.in
++++ b/local/snmpconf.in
+@@ -680,6 +680,7 @@
+ 	    }
+ 	}
+ 	close(O);
++	system("restorecon $outputf");
+     }
+ }
+ 

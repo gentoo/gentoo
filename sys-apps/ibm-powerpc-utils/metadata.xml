@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ppc@gentoo.org</email>
+		<name>PowerPC architecture team</name>
+	</maintainer>
+	<use>
+		<flag name="rtas">Add support for the Run Time Abstraction Services (RTAS)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">powerpc-utils</remote-id>
+		<remote-id type="github">ibm-power-utilities/powerpc-utils</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+diff --git a/gr-blocks/include/gnuradio/blocks/blockinterleaving.h b/gr-blocks/include/gnuradio/blocks/blockinterleaving.h
+index 9d4e0f2..f6b8bc6 100644
+--- a/gr-blocks/include/gnuradio/blocks/blockinterleaving.h
++++ b/gr-blocks/include/gnuradio/blocks/blockinterleaving.h
+@@ -12,7 +12,8 @@
+ #define INCLUDED_GR_BLOCKS_BLOCKINTERLEAVING_H
+ 
+ #include <gnuradio/blocks/api.h>
+-
++#include <cstddef>
++#include <vector>
+ 
+ namespace gr {
+ namespace blocks {
+diff --git a/gr-blocks/lib/blockinterleaving.cc b/gr-blocks/lib/blockinterleaving.cc
+index fc5873e..768ad9e 100644
+--- a/gr-blocks/lib/blockinterleaving.cc
++++ b/gr-blocks/lib/blockinterleaving.cc
+@@ -12,6 +12,7 @@
+ #include <spdlog/fmt/fmt.h>
+ #include <algorithm>
+ #include <numeric>
++#include <vector>
+ 
+ namespace gr {
+ namespace blocks {

@@ -1,0 +1,134 @@
+From: Jesus Climent <jesus dot climent at hispalinux dot es>
+Subject: A patch for generating dynamic rc files
+
+diff -u sitecopy-0.16.3-orig/src/console_fe.c sitecopy-0.16.3/src/console_fe.c
+--- sitecopy-0.16.3-orig/src/console_fe.c	2006-10-27 18:55:19.000000000 +0530
++++ sitecopy-0.16.3/src/console_fe.c	2006-10-27 18:39:06.000000000 +0530
+@@ -155,7 +155,8 @@
+     show_progress, /* Do they want the %-complete messages */
+     prompting, /* Did they say --prompting? */
+     keepgoing, /* Did they say --keep-going? */
+-    dry_run;   /* Did they say --dry-run? */
++    dry_run,   /* Did they say --dry-run? */
++    createremoteroot=false; /* Did they say --create-remote? */	
+ 
+ /* Functions prototypes */
+ static void init(int, char **);
+@@ -222,9 +223,9 @@
+ 	exit(-1);
+     }
+ 
+-    for (current=all_sites; current!=NULL; current=current->next) {
++     for (current=all_sites; current!=NULL; current=current->next) {
+ 	
+-	if (current->use_this || allsites) {
++	 if (current->use_this || allsites) {
+ 	    if (!listflat && quiet == 0) {
+ 		/* Display the banner line */
+ 		const char *str_action = _(actions[action].doing);
+@@ -507,6 +508,9 @@
+ 	    }
+ 	} break;
+ #endif
++	case 'x':
++	    createremoteroot = true;
++	    break;
+ 	case 'y':
+ 	    prompting = true;
+ 	    break;
+@@ -1210,7 +1214,8 @@
+     int ret = 0, verify_removed;
+ 
+     /* Set the options */
+-    site->keep_going = keepgoing;
++     site->keep_going = keepgoing;
++     site->create_remote_root = createremoteroot;	
+ 
+     switch (act) {
+     case action_update:
+@@ -1354,6 +1359,7 @@
+ "  -p, --storepath=PATH  Use alternate site storage directory\n"
+ "  -y, --prompting       Request confirmation before making each update\n"
+ "  -a, --allsites        Perform the operation on ALL defined sites\n"
++"  -x, --create-remote   Create root for remote site\n"
+ "  -k, --keep-going      Carry on an update regardless of errors\n"
+ "  -o, --show-progress   Display total percentage file transfer complete\n"
+ "  -q, --quiet           Be quiet while performing the operation\n"
+diff -u sitecopy-0.16.3-orig/src/sites.c sitecopy-0.16.3/src/sites.c
+--- sitecopy-0.16.3-orig/src/sites.c	2006-03-02 01:08:21.000000000 +0530
++++ sitecopy-0.16.3/src/sites.c	2006-10-27 19:12:30.000000000 +0530
+@@ -94,7 +94,6 @@
+     struct site_file *current;
+     char *full_local;
+     int ret;
+-    
+     ret = 0;
+     
+     for_each_file(current, site) {
+@@ -312,11 +311,52 @@
+     free(full_remote);
+ }
+ 
++static int create_remote_root_dirs(struct site *site, void *session)
++{
++    char *buffer;
++    int i,j=0,ret=1,flag=1;
++
++    buffer = (char *) calloc(strlen(site->remote_root)+1,sizeof(char));
++
++    buffer[j++] = '/';
++
++    for( i=1 ; site->remote_root[i] != '\0' ; i++ )
++    {
++      if (site->remote_root[i] == '/')
++        flag = 0;
++
++      if (flag)
++        buffer[j++] = site->remote_root[i];
++      else
++       if (j > 0)
++        {
++         buffer[j] = '\0';
++         ret = CALL(dir_create)(session, buffer);
++
++         if (ret != SITE_OK)
++           ret = 0;
++
++         buffer[j++] = '/';
++         flag=1;
++       }
++    }
++
++    return ret;
++}
++
+ /* Create new directories and change permissions on existing directories. */
+ static int update_create_directories(struct site *site, void *session)
+ {
+     struct site_file *current;
+-    int ret = 0;
++    int ret = 0, ret_root_dir;
++
++    if (site->create_remote_root) /* We create remote init struct before updating the whole stuff */
++    {
++      ret_root_dir = create_remote_root_dirs(site,session);
++
++      if (!ret_root_dir)
++        fe_warning (_("I couldn't create some dir. already exists?"),NULL,NULL);
++    }
+ 
+     for_each_file(current, site) {
+ 	if ((current->type == file_dir) 
+diff -u sitecopy-0.16.3-orig/src/sites.h sitecopy-0.16.3/src/sites.h
+--- sitecopy-0.16.3-orig/src/sites.h	2006-02-04 17:46:36.000000000 +0530
++++ sitecopy-0.16.3/src/sites.h	2006-10-27 18:39:06.000000000 +0530
+@@ -381,6 +381,8 @@
+     char *rsh_cmd;
+     char *rcp_cmd;
+ 
++    unsigned int create_remote_root:1; /* to create remote root in case it doesn't exist */	
++
+     unsigned int nodelete; /* whether to delete any files remotely */
+     unsigned int checkmoved; /* whether to check for moved files */
+     unsigned int checkrenames; /* whether to check for renamed files */
+

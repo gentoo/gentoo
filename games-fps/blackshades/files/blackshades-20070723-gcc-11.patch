@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/787740
+--- a/Source/Globals.cpp
++++ b/Source/Globals.cpp
+@@ -62,7 +62,7 @@ XYZ n,pa1,pa2,pa3;
+ float u0, u1, u2;
+ float v0, v1, v2;
+ float a, b;
+-float max;
++float _max;
+ int i, j;
+ bool bInter;
+ float pointv[3];
+--- a/Source/Quaternions.cpp
++++ b/Source/Quaternions.cpp
+@@ -316,7 +316,7 @@ float normaldotproduct(XYZ point1, XYZ point2){
+ extern float u0, u1, u2;
+ extern float v0, v1, v2;
+ extern float a, b;
+-extern float max;
++extern float _max;
+ extern int i, j;
+ extern bool bInter;
+ extern float pointv[3];
+@@ -352,11 +352,11 @@ bool PointInTriangle(Vector *p, Vector normal, float p11, float p12, float p13,
+ 	
+ #define ABS(X) (((X)<0.f)?-(X):(X) )
+ #define MAX(A, B) (((A)<(B))?(B):(A))	
+-	max = MAX(MAX(ABS(normalv[0]), ABS(normalv[1])), ABS(normalv[2]));
++	_max = MAX(MAX(ABS(normalv[0]), ABS(normalv[1])), ABS(normalv[2]));
+ #undef MAX
+-	if (max == ABS(normalv[0])) {i = 1; j = 2;} // y, z
+-	if (max == ABS(normalv[1])) {i = 0; j = 2;} // x, z
+-	if (max == ABS(normalv[2])) {i = 0; j = 1;} // x, y
++	if (_max == ABS(normalv[0])) {i = 1; j = 2;} // y, z
++	if (_max == ABS(normalv[1])) {i = 0; j = 2;} // x, z
++	if (_max == ABS(normalv[2])) {i = 0; j = 1;} // x, y
+ #undef ABS
+ 	
+ 	u0 = pointv[i] - p1v[i];
+@@ -447,11 +447,11 @@ bool PointInTriangle(XYZ *p, XYZ normal, XYZ *p1, XYZ *p2, XYZ *p3)
+ 	
+ #define ABS(X) (((X)<0.f)?-(X):(X) )
+ #define MAX(A, B) (((A)<(B))?(B):(A))	
+-	max = MAX(MAX(ABS(normalv[0]), ABS(normalv[1])), ABS(normalv[2]));
++	_max = MAX(MAX(ABS(normalv[0]), ABS(normalv[1])), ABS(normalv[2]));
+ #undef MAX
+-	if (max == ABS(normalv[0])) {i = 1; j = 2;} // y, z
+-	if (max == ABS(normalv[1])) {i = 0; j = 2;} // x, z
+-	if (max == ABS(normalv[2])) {i = 0; j = 1;} // x, y
++	if (_max == ABS(normalv[0])) {i = 1; j = 2;} // y, z
++	if (_max == ABS(normalv[1])) {i = 0; j = 2;} // x, z
++	if (_max == ABS(normalv[2])) {i = 0; j = 1;} // x, y
+ #undef ABS
+ 	
+ 	u0 = pointv[i] - p1v[i];

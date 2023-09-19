@@ -1,0 +1,26 @@
+ncurses widechar functions are only available if the correct macros are
+defined. Use CFLAGS and LDFLAGS from pkgconfig to ensure that widechar
+functions are available.
+
+From 9b71952bfb29e036b13c16d621febff76e84e3e4 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Tue, 11 Jul 2023 15:45:05 -0400
+Subject: [PATCH] Use pkg-config for correct ncursesw CFLAGS and LDFLAGS
+
+--- a/Makefile
++++ b/Makefile
+@@ -21,8 +21,9 @@
+ include Makefile.cfg
+ 
+ export CC = gcc -pthread
+-export CFLAGS += -I. -Wall -Os -ggdb -D_GNU_SOURCE -fPIC
+-export LDLIBS += -lncursesw
++export PKG_CONFIG ?= pkg-config
++export CFLAGS += -I. -Wall -Os -ggdb -D_GNU_SOURCE -fPIC $(shell ${PKG_CONFIG} --cflags ncursesw)
++export LDLIBS += $(shell ${PKG_CONFIG} --libs ncursesw)
+ 
+ SONAME  := libstfl.so.0
+ VERSION := 0.24
+-- 
+2.41.0
+

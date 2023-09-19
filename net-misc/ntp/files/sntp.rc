@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/sntp"
+
+depend() {
+	before cron portmap
+	after net
+	use dns logger
+}
+
+start_pre() {
+	if [ -z "${SNTP_OPTS}" ] ; then
+		eerror "Please edit /etc/conf.d/sntp"
+		eerror "I need to know what server/options to use!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	ebegin "Setting clock via SNTP"
+	${command} ${SNTP_OPTS}
+	eend $? "Failed to set clock"
+}

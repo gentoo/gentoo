@@ -1,0 +1,85 @@
+diff --git a/pipenv/project.py b/pipenv/project.py
+index ed43cf2bc..55251bc5f 100644
+--- a/pipenv/project.py
++++ b/pipenv/project.py
+@@ -13,6 +13,13 @@ import urllib.parse
+ from json.decoder import JSONDecodeError
+ from pathlib import Path
+ 
++import click, tomlkit
++
++try:
++    import tomllib as toml
++except ImportError:
++    import tomli as toml
++
+ from pipenv.cmdparse import Script
+ from pipenv.environment import Environment
+ from pipenv.environments import Setting, is_in_virtualenv, normalize_pipfile_path
+@@ -43,8 +50,6 @@ from pipenv.utils.toml import cleanup_toml, convert_toml_outline_tables
+ from pipenv.vendor import plette
+ from pipenv.vendor.requirementslib.models.utils import get_default_pyproject_backend
+ 
+-import click, toml, tomlkit
+-
+ try:
+     # this is only in Python3.8 and later
+     from functools import cached_property
+diff --git a/pipenv/utils/toml.py b/pipenv/utils/toml.py
+index d4157d01c..27d9975ae 100644
+--- a/pipenv/utils/toml.py
++++ b/pipenv/utils/toml.py
+@@ -1,4 +1,9 @@
+-from pipenv.vendor import toml, tomlkit
++try:
++    import tomllib as toml
++except ImportError:
++    import tomli as toml
++
++import tomlkit
+ 
+ 
+ def cleanup_toml(tml):
+diff --git a/pipenv/vendor/dparse/parser.py b/pipenv/vendor/dparse/parser.py
+index faaad2e8e..4c59474e9 100644
+--- a/pipenv/vendor/dparse/parser.py
++++ b/pipenv/vendor/dparse/parser.py
+@@ -10,6 +10,11 @@ from io import StringIO
+ from configparser import ConfigParser, NoOptionError
+ from pathlib import PurePath
+ 
++try:
++    import tomllib as toml
++except ImportError:
++    import tomli as toml
++
+ from .errors import MalformedDependencyFileError
+ from .regex import HASH_REGEX
+ 
+@@ -17,7 +22,6 @@ from .dependencies import DependencyFile, Dependency
+ from pipenv.patched.pip._vendor.packaging.requirements import Requirement as PackagingRequirement,\
+     InvalidRequirement
+ from . import filetypes
+-import pipenv.vendor.toml as toml
+ from pipenv.patched.pip._vendor.packaging.specifiers import SpecifierSet
+ from pipenv.patched.pip._vendor.packaging.version import Version, InvalidVersion
+ import json
+diff --git a/pipenv/vendor/dparse/updater.py b/pipenv/vendor/dparse/updater.py
+index 7b7ba9a53..fe20a213f 100644
+--- a/pipenv/vendor/dparse/updater.py
++++ b/pipenv/vendor/dparse/updater.py
+@@ -3,9 +3,13 @@ from __future__ import absolute_import, print_function, unicode_literals
+ import re
+ import json
+ import tempfile
+-import pipenv.vendor.toml as toml
+ import os
+ 
++try:
++    import tomllib as toml
++except ImportError:
++    import tomli as toml
++
+ 
+ class RequirementsTXTUpdater(object):
+     SUB_REGEX = r"^{}(?=\s*\r?\n?$)"

@@ -1,0 +1,11 @@
+--- a/src/cdargs.cc
++++ b/src/cdargs.cc
+@@ -1301,7 +1301,7 @@ void helpscreen(void) {
+ 
+ void fatal_exit(char* msg) {
+     endwin();
+-    fprintf(stderr, msg);
++    fprintf(stderr, "%s", msg);
+     exit(1);
+ }
+ 

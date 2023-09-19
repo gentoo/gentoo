@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<longdescription>
+		Spell checker library and command-line program designed for
+		languages with rich morphology and complex word compounding.
+
+		Nuspell is a pure C++ re-implementation of <pkg>app-text/hunspell</pkg>.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">nuspell/nuspell</remote-id>
+	</upstream>
+</pkgmetadata>

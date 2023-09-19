@@ -1,0 +1,67 @@
+diff --git a/texmaker.pro b/texmaker.pro
+index 0a9205d..62bc46d 100644
+--- a/texmaker.pro
++++ b/texmaker.pro
+@@ -117,29 +117,6 @@ HEADERS	+= texmaker.h \
+ 	unicodeview.h \
+ 	svnhelper.h \
+ 	quickbeamerdialog.h \
+-	hunspell/affentry.hxx \
+-	hunspell/affixmgr.hxx \
+-	hunspell/atypes.hxx \
+-	hunspell/baseaffix.hxx \
+-	hunspell/csutil.hxx \
+-	hunspell/dictmgr.hxx \
+-	hunspell/hashmgr.hxx \
+-	hunspell/htypes.hxx \
+-	hunspell/hunspell.hxx \
+-	hunspell/hunspell.h \
+-	hunspell/langnum.hxx \
+-	hunspell/license.hunspell \
+-	hunspell/phonet.hxx \
+-	hunspell/suggestmgr.hxx \
+-	hunspell/license.myspell \
+-	hunspell/filemgr.hxx \
+-	hunspell/hunzip.hxx \
+-	hunspell/replist.hxx \
+-	hunspell/w_char.hxx \
+-	singleapp/qtlocalpeer.h \
+-	singleapp/qtlockedfile.h \
+-	singleapp/qtsingleapplication.h \
+-	singleapp/qtsinglecoreapplication.h \
+ 	encodingprober/CharDistribution.h \
+ 	encodingprober/ChineseGroupProber.h \
+ 	encodingprober/ctype_test_p.h \
+@@ -502,22 +479,6 @@ SOURCES	+= main.cpp \
+ 	unicodeview.cpp \
+ 	quickbeamerdialog.cpp \
+ 	svnhelper.cpp \
+-	hunspell/affentry.cxx \
+-	hunspell/affixmgr.cxx \
+-	hunspell/csutil.cxx \
+-	hunspell/dictmgr.cxx \
+-	hunspell/hashmgr.cxx \
+-	hunspell/hunspell.cxx \
+-	hunspell/phonet.cxx \
+-	hunspell/suggestmgr.cxx \
+-	hunspell/utf_info.cxx \
+-	hunspell/filemgr.cxx \
+-	hunspell/replist.cxx \
+-	hunspell/hunzip.cxx \
+-	singleapp/qtlocalpeer.cpp \
+-	singleapp/qtlockedfile.cpp \
+-	singleapp/qtsingleapplication.cpp \
+-	singleapp/qtsinglecoreapplication.cpp \
+ 	encodingprober/CharDistribution.cpp \
+ 	encodingprober/ChineseGroupProber.cpp \
+ 	encodingprober/JapaneseGroupProber.cpp \
+@@ -1088,8 +1049,7 @@ metainfo.path = texmaker_linux64
+ 
+ INSTALLS = target
+ HEADERS	+= x11fontdialog.h 
+-SOURCES	+= x11fontdialog.cpp \
+-	  singleapp/qtlockedfile_unix.cpp
++SOURCES	+= x11fontdialog.cpp
+ FORMS += x11fontdialog.ui
+ 
+ utilities.files = doc/doc10.png \

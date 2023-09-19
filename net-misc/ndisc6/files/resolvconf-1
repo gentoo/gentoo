@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -x /sbin/resolvconf ]; then
+	exec /sbin/resolvconf -a rdnssd </var/lib/run/rdnssd/resolv.conf
+else
+	exec "`dirname "$0"`"/merge-hook
+fi

@@ -1,0 +1,33 @@
+From 6c4416e8c266c7dc10eb3f3af8f913ace1da84e2 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 28 Oct 2022 17:16:17 +0100
+Subject: [PATCH] Fix build with Clang 16
+
+Bug: https://bugs.gentoo.org/871171
+--- a/vmnet.c
++++ b/vmnet.c
+@@ -49,12 +49,15 @@
+  * to set up the SLIP connection and parse/generated SLIP packets.
+  */
+ 
++#define _GNU_SOURCE
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <pwd.h>
+ #include <signal.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
+ #include <termios.h>
+ #include <sys/ioctl.h>
+ #include <sys/select.h>
+@@ -251,7 +254,7 @@ void tty_setup(slipconn *sc)
+ 	}
+ }
+ 
+-int slip_setup(slipconn *sc)
++void slip_setup(slipconn *sc)
+ {
+ 	int disc, sencap = 0;
+ 

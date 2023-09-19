@@ -1,0 +1,18 @@
+Fix Makefile to respect user variables
+
+--- a/Makefile
++++ b/Makefile
+@@ -3,9 +3,8 @@
+ # by default, you probably need to add -I/usr/whereever/flac to CFLAGS and
+ # -L/usr/lib/whereever to the link step.
+ 
+-CFLAGS="-Wall -g"
+-
+ flac-image: flac-image.o
+-	gcc -o flac-image -lFLAC flac-image.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lFLAC
+ 
+-flac-image: flac-image.c flac-image.h
+\ No newline at end of file
++flac-image.o: flac-image.c flac-image.h
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<

@@ -1,0 +1,110 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6c07596..31dcaf2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -459,8 +459,10 @@ endif(CYGWIN OR NOT WIN32)
+ 
+ # PLplot MANDATORY
+ # -DPLPLOTDIR=DIR
+-set(CMAKE_PREFIX_PATH ${PLPLOTDIR})
+-find_package(Plplot QUIET)
++
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(PLPLOT REQUIRED plplot plplot-c++)
++
+ set(HAVE_LIBPLPLOTCXXD ${PLPLOT_FOUND})
+ if(PLPLOT_FOUND)
+     set(LIBRARIES ${LIBRARIES} ${PLPLOT_LIBRARIES})
+@@ -635,33 +637,16 @@ endif(GRAPHICSMAGICK_FOUND)
+ # -DMAGICK=ON|OFF
+ # -DMAGICKDIR=DIR
+ if(MAGICK)
+-  set(CMAKE_PREFIX_PATH ${MAGICKDIR})
+-  find_package(ImageMagick QUIET COMPONENTS Magick++ MagickWand MagickCore)
+-  mark_as_advanced(ImageMagick_EXECUTABLE_DIR ImageMagick_Magick++_INCLUDE_DIR ImageMagick_Magick++_LIBRARY
+-    ImageMagick_MagickCore_INCLUDE_DIR ImageMagick_MagickCore_LIBRARY ImageMagick_MagickWand_INCLUDE_DIR ImageMagick_MagickWand_LIBRARY)
+-  set(USE_MAGICK ${ImageMagick_FOUND})
+-  if(ImageMagick_FOUND)
+-    find_program(MAGICKXXCONFIG Magick++-config)
+-    if(MAGICKXXCONFIG)
+-      execute_process(COMMAND ${MAGICKXXCONFIG} "--libs" OUTPUT_VARIABLE MAGICKXXCONFIGLIBS OUTPUT_STRIP_TRAILING_WHITESPACE)
+-      set(LIBRARIES ${LIBRARIES} ${MAGICKXXCONFIGLIBS})     
+-    else(MAGICKXXCONFIG)
+-      message(FATAL_ERROR "ImageMagick is required but was not found (Magick++-config).\n"
+-    "Use -DMAGICKDIR=DIR to specify the ImageMagick directory.\n"
+-    "Use -DMAGICK=OFF to not use it.\n"
+-        "(suitable Debian/Ubuntu package: libmagick++-dev)\n"
+-        "(suitable Fedora/CentOS package: ImageMagick-c++-devel)")
+-    endif(MAGICKXXCONFIG)
+-    set(LIBRARIES ${LIBRARIES} ${ImageMagick_LIBRARIES})
+-    include_directories(${ImageMagick_INCLUDE_DIRS})
+-    set(MAGICK_LIBRARIES ${ImageMagick_LIBRARIES})
+-  else(ImageMagick_FOUND)
+-    message(FATAL_ERROR "ImageMagick is required but was not found.\n"
+-      "Use -DMAGICKDIR=DIR to specify the ImageMagick directory.\n"
+-      "Use -DMAGICK=OFF to not use it.\n"
+-      "(suitable Debian/Ubuntu package: libmagick++-dev)\n"
+-      "(suitable Fedora/CentOS package: ImageMagick-c++-devel)")
+-  endif(ImageMagick_FOUND)
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(Magick++ REQUIRED Magick++)
++  pkg_check_modules(MagickWand REQUIRED MagickWand)
++  pkg_check_modules(MagickCore REQUIRED MagickCore)
++
++  set(MAGICK_LIBRARIES ${Magick++_LIBRARIES} ${MagickWand_LIBRARIES} ${MagickCore_LIBRARIES})
++  set(LIBRARIES ${LIBRARIES} ${MAGICK_LIBRARIES})
++  include_directories(${Magick++_INCLUDE_DIRS})
++  include_directories(${MagickWand_INCLUDE_DIRS})
++  include_directories(${MagickCore_INCLUDE_DIRS})
+ endif(MAGICK)
+ 
+ ## not valid anymore I bet ## if GM or IM activated, we check whether Plplot is OK for that
+@@ -1037,20 +1022,8 @@ endif(GLPK)
+ # -DSHAPELIB=ON|OFF
+ # -DSHAPELIBDIR=DIR
+ if(SHAPELIB)
+-  set(CMAKE_PREFIX_PATH ${SHAPELIBDIR})
+-  find_package(SHAPELIB QUIET)
+-  set(USE_SHAPELIB ${SHAPELIB_FOUND})
+-  if(SHAPELIB_FOUND)
+-    set(LIBRARIES ${LIBRARIES} ${SHAPELIB_LIBRARIES})
+-    include_directories(${SHAPELIB_INCLUDE_DIR})
+-  else(SHAPELIB_FOUND)
+-    message(FATAL_ERROR "SHAPELIB (http://shapelib.maptools.org/)  is required but was not found.\n"
+-      "Use -DSHAPELIBDIR=DIR to specify the SHAPELIB-devel directory tree.\n"
+-      "Use -DSHAPELIB=OFF to not use it.\n"
+-      "shapelib is often in package libshp-devel.\n"
+-      "(suitable Debian/Ubuntu package: libshp-dev)\n"
+-      "(suitable Fedora/CentOS package: shapelib-devel)\n")
+-  endif(SHAPELIB_FOUND)
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(shapelib REQUIRED shapelib)
+ endif(SHAPELIB)
+ # EXPAT for IDLffXMLSAX and IDLffXMLDOM
+ # -DEXPAT=ON|OFF
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f1923d2..6f1343e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -193,9 +193,9 @@ ${WX_RC}
+ )
+ endif(HAVE_LIBWXWIDGETS AND WIN32)
+ 
+-add_subdirectory(antlr)
++find_library(ANTLR_LIBRARY NAMES antlr)
+ 
+-include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/src ${CMAKE_SOURCE_DIR}/src/antlr ${CMAKE_BINARY_DIR})
++include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR})
+ link_directories(${LINK_DIRECTORIES})
+ 
+ if(PYTHON_MODULE) #GDL.so
+@@ -213,8 +213,7 @@ if(USE_OPENMP)
+ 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+ endif(USE_OPENMP)
+ 
+-add_dependencies(gdl antlr) # be sure that antlr is built before gdl
+-target_link_libraries(gdl antlr) # link antlr against gdl
++target_link_libraries(gdl ${ANTLR_LIBRARY}) # link antlr against gdl
+ if (MINGW)
+ target_link_libraries(gdl ws2_32)
+ endif (MINGW)

@@ -1,0 +1,44 @@
+https://github.com/openucx/ucx/pull/8494
+
+From c65087d7984f516485c11b4b732d9ac2676a494e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 3 Sep 2022 00:28:28 +0100
+Subject: [PATCH] config: Fix bashisms in configure
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+checking for go... yes
+./configure: 26781: test: xyes: unexpected operator
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/config/m4/go.m4
++++ b/config/m4/go.m4
+@@ -21,7 +21,7 @@ AS_IF([test "x$with_go" != xno],
+                   [AS_VERSION_COMPARE([1.16], [`go version | awk '{print substr($3, 3, length($3)-2)}'`],
+                                       [go_happy="yes"], [go_happy="yes"], [go_happy=no])],
+                   [go_happy=no])
+-            AS_IF([test "x$go_happy" == xno],
++            AS_IF([test "x$go_happy" = xno],
+                   [AS_IF([test "x$with_go" = "xguess"],
+                          [AC_MSG_WARN([Disabling GO support - GO compiler version 1.16 or newer not found.])],
+                          [AC_MSG_ERROR([GO support was explicitly requested, but go compiler not found.])])])
+--- a/configure.ac
++++ b/configure.ac
+@@ -159,7 +159,7 @@ AC_ARG_WITH([docs_only],
+ AC_DEFUN([UCX_DX_ENABLE_CHECK],
+          [AS_IF([DX_TEST_FEATURE($1)],
+                 [],
+-                [AS_IF([test "x$enable_doxygen_$1" == xyes],
++                [AS_IF([test "x$enable_doxygen_$1" = xyes],
+                        [AC_MSG_ERROR([--enable-doxygen-$1 was specified, but $1 tools were not found])],
+                        [])])])
+ 

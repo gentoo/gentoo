@@ -1,0 +1,32 @@
+--- a/configure.in
++++ b/configure.in
+@@ -1,7 +1,7 @@
+ dnl Welcome to the Sphinx-2 automated build system.
+ dnl try not to hurt yourself ;)
+ 
+-AC_INIT(configure.in)
++AC_INIT(configure.ac)
+ AM_INIT_AUTOMAKE(sphinx2,0.6)
+ 
+ CFLAGS=${CFLAGS:--g -O2 -Wall}
+--- a/src/libsphinx2/Makefile.am
++++ b/src/libsphinx2/Makefile.am
+@@ -88,7 +88,7 @@
+ 	word_fsg.c
+ 
+ 
+-# libsphinx2_la_LIBADD = -lc -lm $(top_srcdir)/src/libsphinx2fe/libsphinx2fe.la
++libsphinx2_la_LIBADD = -lc -lm $(top_srcdir)/src/libsphinx2fe/libsphinx2fe.la
+ 
+ # hjf@cs.brown.edu - Added for Solaris build
+ # LDADD = -L/usr/demo/SOUND/lib/ -laudio
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,5 @@
+-SUBDIRS = libsphinx2 \
+-	libsphinx2fe \
++SUBDIRS = libsphinx2fe \
+ 	libsphinx2ad \
++	libsphinx2 \
+ 	examples
+ 

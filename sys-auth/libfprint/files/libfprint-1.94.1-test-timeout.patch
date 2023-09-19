@@ -1,0 +1,15 @@
+Although most libfprint tests are vert quick, several of the VirtualImage
+ones come very close to the default time-out threshold of 30 seconds.
+Increase the relevant threshold to 45 seconds to make those tests less
+sensitive to CPU frequency, system load etc.
+
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -88,6 +88,7 @@
+                     suite: ut_suite,
+                     depends: libfprint_typelib,
+                     env: envs,
++                    timeout: 45,
+                 )
+             endforeach
+         else

@@ -1,0 +1,21 @@
+From 2e989dabcf853da5ab82ab67e3eca8619cb6669a Mon Sep 17 00:00:00 2001
+From: Jahn F <jahnf@users.noreply.github.com>
+Date: Tue, 3 May 2022 09:02:05 +0200
+Subject: [PATCH] Add missing <array> include
+
+---
+ src/device.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/device.h b/src/device.h
+index 1c51585..1ce24fe 100644
+--- a/src/device.h
++++ b/src/device.h
+@@ -7,6 +7,7 @@
+ 
+ #include "devicescan.h"
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 

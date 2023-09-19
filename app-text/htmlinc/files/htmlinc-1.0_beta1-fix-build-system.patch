@@ -1,0 +1,33 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,28 +1,9 @@
+-CC=g++
+-INSTDIR=/usr/local/bin
+-CFLAGS=-Wall
+-STRINGLIB=bytevector.o stringlist.o
+-
+-htmlinc :htmlinc.o
+-	$(CC) $(STRINGLIB) htmlinc.o -o htmlinc $(CFLAGS)
+-
+-htmlinc.o: htmlinc.cc stringlist.o bytevector.o 
+-	$(CC) -c htmlinc.cc $(CFLAGS)
++htmlinc: bytevector.o stringlist.o
+ 
+ headers: text2h 
+ 	text2h help <help.txt >help.h 
+ 
+-text2h: text2h.o bytevector.o stringlist.o 
+-	$(CC) $(STRINGLIB) text2h.o -o text2h $(CFLAGS)
+-
+-text2h.o: text2h.cc
+-	$(CC) -c text2h.cc $(CFLAGS)
+-
+-bytevector.o: bytevector.h bytevector.cc
+-	${CC} -c bytevector.cc $(CFLAGS)
+-
+-stringlist.o: bytevector.o stringlist.h stringlist.cc
+-	$(CC) -c stringlist.cc $(CFLAGS)
++text2h: bytevector.o stringlist.o
+ 
+ clean:
+ 	rm *.o text2h htmlinc

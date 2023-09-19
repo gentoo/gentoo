@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		REINER SCT cyberJack USB chipcard reader user space driver.
+		This package includes the IFD driver for the cyberJack
+		contactless (RFID) and contact USB chipcard reader.
+	</longdescription>
+	<use>
+		<flag name="tools">Build and install optional management tools.</flag>
+	</use>
+</pkgmetadata>

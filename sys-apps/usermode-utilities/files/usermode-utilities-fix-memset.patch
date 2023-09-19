@@ -1,0 +1,44 @@
+Fix building with clang-16, as lot of functions from string.h (including
+memset) couldn't be found. Resulting in error: call to undeclared library
+function memset type error.
+Bug: https://bugs.gentoo.org/898550
+--- a/port-helper/port-helper.c
++++ b/port-helper/port-helper.c
+@@ -13,6 +13,7 @@ for read and write, and the console is functional.
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <signal.h>
++#include <string.h>
+ #include <errno.h>
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+--- a/uml_switch/port.c
++++ b/uml_switch/port.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <string.h>
+ #include <errno.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+--- a/uml_switch/uml_switch.c
++++ b/uml_switch/uml_switch.c
+@@ -6,6 +6,7 @@
+ #include <errno.h>
+ #include <stdlib.h>
+ #include <signal.h>
++#include <string.h>
+ #include <fcntl.h>
+ #include <stdint.h>
+ #include <sys/socket.h>
+--- a/watchdog/uml_watchdog.c
++++ b/watchdog/uml_watchdog.c
+@@ -2,6 +2,7 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <signal.h>
++#include <string.h>
+ #include <errno.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>

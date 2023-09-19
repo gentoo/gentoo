@@ -1,0 +1,35 @@
+https://github.com/LINBIT/drbd-utils/pull/30
+
+From 907145b7a9ae800cc66574097badf78f5e1f397d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 27 Jul 2023 06:30:25 +0100
+Subject: [PATCH] user: drbrdmon: add missing <stdint.h> includes
+
+GCC 13 drops some transitive includes within libstdc++.
+
+Explicitly include <stdint.h> for uint32_t etc.
+
+Note that using <stdint.h> deliberately because we're not using std::-prefixed
+types.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/user/drbdmon/DrbdMonConsts.h
++++ b/user/drbdmon/DrbdMonConsts.h
+@@ -1,6 +1,7 @@
+ #ifndef DRBDMONCONSTS_H
+ #define DRBDMONCONSTS_H
+ 
++#include <stdint.h>
+ #include <string>
+ 
+ class DrbdMonConsts
+--- a/user/drbdmon/terminal/DisplayId.h
++++ b/user/drbdmon/terminal/DisplayId.h
+@@ -1,6 +1,7 @@
+ #ifndef DISPLAYID_H
+ #define DISPLAYID_H
+ 
++#include <stdint.h>
+ #include <string>
+ 
+ class DisplayId

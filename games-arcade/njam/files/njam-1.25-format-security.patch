@@ -1,0 +1,13 @@
+diff -up njam-1.25-src/src/njamgame.cpp~ njam-1.25-src/src/njamgame.cpp
+--- njam-1.25-src/src/njamgame.cpp~	2005-12-13 12:56:42.000000000 +0100
++++ njam-1.25-src/src/njamgame.cpp	2014-06-14 11:54:12.320854217 +0200
+@@ -227,8 +227,7 @@ void NjamEngine::StartGame(GameType Gt)
+ 	 	SDL_Surface *temp = IMG_Load(filename);
+ 	 	if (!temp)
+ 	 	{
+-			printf("Loading file: %s", filename);
+-			printf(SDL_GetError());
++			printf("Error loading file %s: %s\n", filename, SDL_GetError());
+ 			return;
+ 	 	}
+ 

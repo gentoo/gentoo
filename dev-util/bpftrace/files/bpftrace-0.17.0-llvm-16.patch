@@ -1,0 +1,26 @@
+
+From: https://github.com/iovisor/bpftrace/pull/2528
+
+From a91064d7fb26626d79719c2e2a13cc2acab9549a Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Fri, 10 Mar 2023 00:08:27 -0800
+Subject: [PATCH] cmake: Raise max llvm major version to 16
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0a7914f580d..341ac7e9c1f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -165,7 +165,7 @@ else()
+   endif()
+ 
+   set(MIN_LLVM_MAJOR 6)
+-  set(MAX_LLVM_MAJOR 15)
++  set(MAX_LLVM_MAJOR 16)
+ 
+   if((${LLVM_VERSION_MAJOR} VERSION_LESS ${MIN_LLVM_MAJOR}) OR (${LLVM_VERSION_MAJOR} VERSION_GREATER ${MAX_LLVM_MAJOR}))
+     message(SEND_ERROR "Unsupported LLVM version found via ${LLVM_INCLUDE_DIRS}: ${LLVM_VERSION_MAJOR}")

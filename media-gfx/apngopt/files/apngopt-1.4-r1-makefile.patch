@@ -1,0 +1,43 @@
+Use system zopfli library and respect CFLAGS.
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,9 @@
+ PACKAGE    = apngopt
+-CC         = gcc
+-SRC_DIRS   = . 7z zopfli
+-CFLAGS     = -Wall -pedantic
+-CFLAGS_OPT = -O2
+-CFLAGS_7Z  = -Wno-sign-compare -Wno-reorder -Wno-maybe-uninitialized -Wno-parentheses
+-LIBS       = -lstdc++ -lm -lpng -lz
++
++SRC_DIRS   = . 7z
++CXXFLAGS   += -Wall -pedantic
++CXXFLAGS_7Z = -Wno-sign-compare -Wno-reorder -Wno-maybe-uninitialized -Wno-parentheses
++LIBS       += -lm -lpng -lz -lzopfli
+ 
+ INCUDE_DIRS := $(addprefix -I./, $(SRC_DIRS))
+ OBJ_DIRS := $(addprefix obj/, $(SRC_DIRS))
+@@ -16,19 +15,16 @@
+ all : $(PACKAGE)
+ 
+ $(PACKAGE) : objdirs $(OBJECTS)
+-	$(CC) -o $@ $(OBJECTS) -s $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJECTS) $(LIBS)
+ 
+ objdirs :
+ 	mkdir -p $(OBJ_DIRS)
+ 
+ obj/%.o : %.cpp
+-	$(CC) -o $@ -c $< $(INCUDE_DIRS) $(CFLAGS) $(CFLAGS_OPT)
+-
+-obj/%.o : %.c
+-	$(CC) -o $@ -c $< $(INCUDE_DIRS) $(CFLAGS) $(CFLAGS_OPT)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ -c $< $(INCUDE_DIRS)
+ 
+ obj/%.o : %.cc
+-	$(CC) -o $@ -c $< $(INCUDE_DIRS) $(CFLAGS) $(CFLAGS_OPT) $(CFLAGS_7Z)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ -c $< $(INCUDE_DIRS) $(CXXFLAGS_7Z)
+ 
+ .PHONY : clean
+ 

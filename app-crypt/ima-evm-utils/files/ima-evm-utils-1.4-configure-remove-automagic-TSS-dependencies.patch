@@ -1,0 +1,39 @@
+From 911cef2b984a947b1020bdcf87d1573600ea754d Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Fri, 5 Nov 2021 21:31:10 -0500
+Subject: [PATCH] configure.ac: Remove automagic dependencies on the TSS stacks
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ configure.ac | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1a0f093..c05b72d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,12 +31,18 @@ AC_CHECK_HEADER(unistd.h)
+ AC_CHECK_HEADERS(openssl/conf.h)
+ 
+ # Intel TSS
+-AC_CHECK_LIB([tss2-esys], [Esys_Free])
+-AC_CHECK_LIB([tss2-rc], [Tss2_RC_Decode])
++AC_ARG_WITH([pcrtss], AS_HELP_STRING([--with-pcrtss], [Build with Intel TSS library (default: disabled)]))
++AS_IF([test "x$with_pcrtss" = "xyes"], [
++  AC_CHECK_LIB([tss2-esys], [Esys_Free])
++  AC_CHECK_LIB([tss2-rc], [Tss2_RC_Decode])
++])
+ AM_CONDITIONAL([USE_PCRTSS], [test "x$ac_cv_lib_tss2_esys_Esys_Free" = "xyes"])
+ 
+ # IBM TSS include files
+-AC_CHECK_HEADER(ibmtss/tss.h, [], [], [[#define TPM_POSIX]])
++AC_ARG_WITH([ibmtss], AS_HELP_STRING([--with-ibmtss], [Build with IBM TSS library (default: disabled)]))
++AS_IF([test "x$with_ibmtss" = "xyes"], [
++  AC_CHECK_HEADER(ibmtss/tss.h, [], [], [[#define TPM_POSIX]])
++])
+ AM_CONDITIONAL([USE_IBMTSS], [test "x$ac_cv_header_ibmtss_tss_h" = "xyes"])
+ 
+ AC_CHECK_HEADERS(sys/xattr.h, , [AC_MSG_ERROR([sys/xattr.h header not found. You need the c-library development package.])])
+-- 
+2.32.0
+

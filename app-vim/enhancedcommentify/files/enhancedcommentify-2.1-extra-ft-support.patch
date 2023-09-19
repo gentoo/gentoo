@@ -1,0 +1,13 @@
+--- a/plugin/EnhancedCommentify.vim	2005-03-01 02:28:23.409962824 -0500
++++ b/plugin/EnhancedCommentify.vim	2005-03-01 02:29:45.695453528 -0500
+@@ -740,7 +740,9 @@
+ 		\ 'psf\|ptcap\|r\|radiance\|ratpoison\|readline\remind\|'.
+ 		\ 'ruby\|screen\|sed\|sm\|snnsnet\|snnspat\|snnsres\|spec\|'.
+ 		\ 'squid\|terminfo\|tidy\|tli\|tsscl\|vgrindefs\|vrml\|'.
+-		\ 'wget\|wml\|xf86conf\|xmath\)$'
++		\ 'wget\|wml\|xf86conf\|xmath\|fstab\|apache\|resolv\|sudoers\|'.
++		\ 'ntp\|mailcap\|ssh_config\|sshdconfig\|mplayerconf\|desktop\|'.
++		\ 'gkrellmrc\|pf\|ipfilter\|grub\|fluxbox\)$'
+ 	let b:ECcommentOpen = '#'
+ 	let b:ECcommentClose = ''
+     elseif fileType =~ 'gentoo'

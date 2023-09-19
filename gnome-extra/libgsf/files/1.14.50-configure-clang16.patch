@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/898818
+https://gitlab.gnome.org/GNOME/libgsf/-/merge_requests/13
+
+From 167d7f96c81683392933ddb8c427e5d7c8ce284d Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 27 Apr 2023 20:34:34 +0200
+Subject: [PATCH] configure.ac: Avoid implicit int in libbz2 probe
+
+Otherwise, this probe will always fail with future compilers,
+which are likely not to support implict ints by default.
+--- a/configure.ac
++++ b/configure.ac
+@@ -427,7 +427,7 @@ if test "x$test_bz2" = xtrue ; then
+ 	  #undef VERSION
+ 	  #undef HAVE_STDLIB_H
+ 	  #include <bzlib.h>
+-          main ()
++          int main (void)
+           {
+             return BZ2_bzDecompressInit (NULL, 0, 0);
+           }
+-- 
+GitLab

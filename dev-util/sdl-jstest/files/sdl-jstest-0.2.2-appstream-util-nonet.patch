@@ -1,0 +1,35 @@
+https://github.com/Grumbel/sdl-jstest/issues/17
+https://github.com/Grumbel/sdl-jstest/commit/d442ee9e2c4dda1fd43cb3201ea8edf8222ee66c.patch
+
+From d442ee9e2c4dda1fd43cb3201ea8edf8222ee66c Mon Sep 17 00:00:00 2001
+From: Ingo Ruhnke <grumbel@gmail.com>
+Date: Fri, 14 Jul 2023 10:25:11 +0200
+Subject: [PATCH] Disable tests requiring network access
+
+Fixes #17
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c1e4284..09d3e2e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,7 +68,7 @@ if(BUILD_SDL_JSTEST)
+   if (BUILD_TESTS)
+     add_test(NAME sdl-jstest.appdata.xml
+       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+-      COMMAND appstream-util validate-relax ${CMAKE_CURRENT_BINARY_DIR}/sdl-jstest.appdata.xml)
++      COMMAND appstream-util validate-relax --nonet ${CMAKE_CURRENT_BINARY_DIR}/sdl-jstest.appdata.xml)
+   endif(BUILD_TESTS)
+ 
+   file(COPY sdl-jstest.1
+@@ -101,7 +101,7 @@ if(BUILD_SDL2_JSTEST)
+   if (BUILD_TESTS)
+     add_test(NAME sdl2-jstest.appdata.xml
+       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+-      COMMAND appstream-util validate-relax ${CMAKE_CURRENT_BINARY_DIR}/sdl2-jstest.appdata.xml)
++      COMMAND appstream-util validate-relax --nonet ${CMAKE_CURRENT_BINARY_DIR}/sdl2-jstest.appdata.xml)
+   endif(BUILD_TESTS)
+ 
+   file(COPY sdl2-jstest.1

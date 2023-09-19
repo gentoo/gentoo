@@ -1,0 +1,740 @@
+From 9bd19c7101d0db6910747fc75c9bd1f8a54419c3 Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sat, 13 May 2023 02:06:35 +0530
+Subject: [PATCH] Remove register storage class as it's been deprecated since
+ c++17
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+Bug: https://bugs.gentoo.org/898574
+--- a/src/lib/Libattr/attr_func.c
++++ b/src/lib/Libattr/attr_func.c
+@@ -310,7 +310,7 @@ svrattrl *attrlist_alloc(
+   int szval)   /* I */
+ 
+   {
+-  register size_t  tsize;
++  size_t  tsize;
+   svrattrl        *pal;
+ 
+   /* alloc memory block <SVRATTRL><NAME><RESC><VAL> */
+--- a/src/resmom/aix4/mom_mach.c
++++ b/src/resmom/aix4/mom_mach.c
+@@ -642,7 +642,7 @@ cput_sum(job *pjob)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -697,7 +697,7 @@ mem_sum(job *pjob)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -760,7 +760,7 @@ overmem_proc(job *pjob, unsigned long limit)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1192,7 +1192,7 @@ static unsigned long nodes_ses(
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1631,7 +1631,7 @@ kill_task(task *ptask, int sig, int pg)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1758,7 +1758,7 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1819,7 +1819,7 @@ pid_t pid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1919,7 +1919,7 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1966,7 +1966,7 @@ pid_t pid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -2227,7 +2227,7 @@ sessions(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -2342,7 +2342,7 @@ pids(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -2403,7 +2403,7 @@ nusers(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+--- a/src/resmom/aix5/mom_mach.c
++++ b/src/resmom/aix5/mom_mach.c
+@@ -646,7 +646,7 @@ cput_sum(job *pjob)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -701,7 +701,7 @@ mem_sum(job *pjob)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -764,7 +764,7 @@ overmem_proc(job *pjob, unsigned long limit)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1190,7 +1190,7 @@ nodes_ses(job *pjob)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1601,7 +1601,7 @@ kill_task(task *ptask, int sig, int pg)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1728,7 +1728,7 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1789,7 +1789,7 @@ pid_t pid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1889,7 +1889,7 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -1936,7 +1936,7 @@ pid_t pid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -2191,7 +2191,7 @@ sessions(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -2306,7 +2306,7 @@ pids(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+@@ -2367,7 +2367,7 @@ nusers(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct procsinfo *pp = &proc_tbl[i];
++    struct procsinfo *pp = &proc_tbl[i];
+ 
+     if (pp->pi_state == SNONE)
+       continue;
+--- a/src/resmom/cygwin/mom_mach.c
++++ b/src/resmom/cygwin/mom_mach.c
+@@ -2771,7 +2771,7 @@ char *sessions(
+   int            njids = 0;
+   pid_t         *jids, *hold;
+   static int     maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib != NULL)
+     {
+@@ -3022,7 +3022,7 @@ char *nusers(
+   int  nuids = 0;
+   uid_t  *uids, *hold;
+   static int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib != NULL)
+     {
+--- a/src/resmom/digitalunix/mom_mach.c
++++ b/src/resmom/digitalunix/mom_mach.c
+@@ -1526,7 +1526,7 @@ sessions(struct rm_attribute *attrib)
+   int   njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -1717,7 +1717,7 @@ nusers(struct rm_attribute *attrib)
+   int   nuids = 0;
+   uid_t   *uids, *hold;
+   static  int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib)
+     {
+--- a/src/resmom/fujitsu/mom_mach.c
++++ b/src/resmom/fujitsu/mom_mach.c
+@@ -1560,7 +1560,7 @@ sessions(struct rm_attribute *attrib)
+   int   njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -1751,7 +1751,7 @@ nusers(struct rm_attribute *attrib)
+   int   nuids = 0;
+   uid_t   *uids, *hold;
+   static  int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib)
+     {
+--- a/src/resmom/hpux10/mom_mach.c
++++ b/src/resmom/hpux10/mom_mach.c
+@@ -1432,7 +1432,7 @@ sessions(struct rm_attribute *attrib)
+   int   njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -1625,7 +1625,7 @@ nusers(struct rm_attribute *attrib)
+   int   nuids = 0;
+   uid_t   *uids, *hold;
+   static  int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib)
+     {
+--- a/src/resmom/hpux11/mom_mach.c
++++ b/src/resmom/hpux11/mom_mach.c
+@@ -1512,7 +1512,7 @@ sessions(struct rm_attribute *attrib)
+   int   njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -1705,7 +1705,7 @@ nusers(struct rm_attribute *attrib)
+   int   nuids = 0;
+   uid_t   *uids, *hold;
+   static  int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib)
+     {
+--- a/src/resmom/irix5/mom_mach.c
++++ b/src/resmom/irix5/mom_mach.c
+@@ -1679,7 +1679,7 @@ sessions(struct rm_attribute *attrib)
+   int   njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -1894,7 +1894,7 @@ nusers(struct rm_attribute *attrib)
+   int   nuids = 0;
+   uid_t   *uids, *hold;
+   static  int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib)
+     {
+--- a/src/resmom/irix6/mom_mach.c
++++ b/src/resmom/irix6/mom_mach.c
+@@ -1923,7 +1923,7 @@ sessions(struct rm_attribute *attrib)
+   int   njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -2114,7 +2114,7 @@ nusers(struct rm_attribute *attrib)
+   int   nuids = 0;
+   uid_t   *uids, *hold;
+   static  int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib)
+     {
+--- a/src/resmom/linux/mom_mach.c
++++ b/src/resmom/linux/mom_mach.c
+@@ -4250,7 +4250,7 @@ const char *nusers(
+   int                nuids = 0;
+   uid_t             *uids, *hold;
+   static int         maxuid = 200;
+-  register uid_t     uid;
++  uid_t     uid;
+ #ifdef NUMA_SUPPORT
+   char               mom_check_name[PBS_MAXSERVERNAME], *s;
+   job               *pjob;
+--- a/src/resmom/mom_server.c
++++ b/src/resmom/mom_server.c
+@@ -1811,11 +1811,11 @@ void mom_server_all_update_stat(void)
+ 
+ long power(
+ 
+-  register int x,
+-  register int n)
++  int x,
++  int n)
+ 
+   {
+-  register long p;
++  long p;
+ 
+   for (p = 1;n > 0;--n)
+     {
+--- a/src/resmom/mom_server_lib.h
++++ b/src/resmom/mom_server_lib.h
+@@ -86,7 +86,7 @@ int send_update();
+ 
+ void mom_server_all_update_stat(void);
+ 
+-long power(register int x, register int n);
++long power(int x, int n);
+ 
+ int calculate_retry_seconds(int count);
+ 
+--- a/src/resmom/solaris5/mom_mach.c
++++ b/src/resmom/solaris5/mom_mach.c
+@@ -1534,7 +1534,7 @@ sessions(struct rm_attribute *attrib)
+   int   njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -1725,7 +1725,7 @@ nusers(struct rm_attribute *attrib)
+   int   nuids = 0;
+   uid_t   *uids, *hold;
+   static  int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib)
+     {
+--- a/src/resmom/solaris7/mom_mach.c
++++ b/src/resmom/solaris7/mom_mach.c
+@@ -1623,7 +1623,7 @@ sessions(struct rm_attribute *attrib)
+   int   njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 200;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -1814,7 +1814,7 @@ nusers(struct rm_attribute *attrib)
+   int   nuids = 0;
+   uid_t   *uids, *hold;
+   static  int maxuid = 200;
+-  register uid_t uid;
++  uid_t uid;
+ 
+   if (attrib)
+     {
+--- a/src/resmom/sunos4/mom_mach.c
++++ b/src/resmom/sunos4/mom_mach.c
+@@ -384,7 +384,7 @@ cput_sum(job *pjob)
+   char   *id = "cput_sum";
+   int   i;
+ 
+-  register struct user *uarea;
++  struct user *uarea;
+   unsigned long  cputime;
+   int   nps = 0;
+ 
+@@ -393,7 +393,7 @@ cput_sum(job *pjob)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -461,7 +461,7 @@ mem_sum(job *pjob)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -493,7 +493,7 @@ resi_sum(job *pjob)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -522,7 +522,7 @@ overmem_proc(job *pjob, unsigned long limit)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -1270,7 +1270,7 @@ pid_t jobid;
+   double   ses_time;
+   int   i;
+ 
+-  register struct user *uarea;
++  struct user *uarea;
+   unsigned long  cputime;
+ 
+   if (getprocs() == 0)
+@@ -1284,7 +1284,7 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -1335,9 +1335,9 @@ pid_t pid;
+   {
+   char   *id = "cput_proc";
+ 
+-  register struct proc *pp;
++  struct proc *pp;
+ 
+-  register struct user *uarea;
++  struct user *uarea;
+   uint   cputime;
+ 
+   if (kd == NULL)
+@@ -1438,7 +1438,7 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -1470,7 +1470,7 @@ pid_t pid;
+   {
+   char   *id = "mem_proc";
+ 
+-  register struct proc *pp;
++  struct proc *pp;
+   int   memsize;
+ 
+   if (kd == NULL)
+@@ -1553,7 +1553,7 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -1583,7 +1583,7 @@ pid_t pid;
+   {
+   char   *id = "resi_proc";
+ 
+-  register struct proc *pp;
++  struct proc *pp;
+ 
+   if (kd == NULL)
+     {
+@@ -1679,7 +1679,7 @@ sessions(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -1791,7 +1791,7 @@ pids(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -1850,7 +1850,7 @@ nusers(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -2160,7 +2160,7 @@ walltime(struct rm_attribute *attrib)
+   {
+   char   *id = "walltime";
+ 
+-  register struct user *uarea;
++  struct user *uarea;
+   pid_t   value;
+   int   i, job, found = 0;
+   time_t   now, start;
+@@ -2215,7 +2215,7 @@ walltime(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc *pp = &proc_tbl[i];
++    struct proc *pp = &proc_tbl[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+--- a/src/resmom/unicos8/mom_mach.c
++++ b/src/resmom/unicos8/mom_mach.c
+@@ -263,7 +263,7 @@ var_init(void)
+ void
+ var_cleanup(void)
+   {
+-  register i;
++  int i;
+ 
+   if (v_name == NULL)
+     return;
+@@ -280,7 +280,7 @@ var_cleanup(void)
+ char *
+ var_value(char *name)
+   {
+-  register i;
++  int i;
+ 
+   for (i = 0; v_name[i]; i++)
+     {
+@@ -2382,9 +2382,9 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc    *pp = &process_table[i];
++    struct proc    *pp = &process_table[i];
+ 
+-    register struct pcomm *pc;
++    struct pcomm *pc;
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -2437,9 +2437,9 @@ pid_t pid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc    *pp = &process_table[i];
++    struct proc    *pp = &process_table[i];
+ 
+-    register struct pcomm *pc;
++    struct pcomm *pc;
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -2528,9 +2528,9 @@ pid_t jobid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc    *pp = &process_table[i];
++    struct proc    *pp = &process_table[i];
+ 
+-    register struct pcomm *pc;
++    struct pcomm *pc;
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -2576,9 +2576,9 @@ pid_t pid;
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc    *pp = &process_table[i];
++    struct proc    *pp = &process_table[i];
+ 
+-    register struct pcomm *pc;
++    struct pcomm *pc;
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -2646,7 +2646,7 @@ sessions(struct rm_attribute *attrib)
+   int   i, j, nproc, njids = 0;
+   pid_t   *jids, *hold;
+   static  int maxjid = 300;
+-  register pid_t jobid;
++  pid_t jobid;
+ 
+   if (attrib)
+     {
+@@ -2674,7 +2674,7 @@ sessions(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc    *pp = &process_table[i];
++    struct proc    *pp = &process_table[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -2790,7 +2790,7 @@ nusers(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc    *pp = &process_table[i];
++    struct proc    *pp = &process_table[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+@@ -2872,7 +2872,7 @@ pids(struct rm_attribute *attrib)
+   for (i = 0; i < nproc; i++)
+     {
+ 
+-    register struct proc    *pp = &process_table[i];
++    struct proc    *pp = &process_table[i];
+ 
+     if (pp->p_stat == 0)
+       continue;
+--- a/src/server/node_manager.c
++++ b/src/server/node_manager.c
+@@ -5433,10 +5433,10 @@ int node_avail(
+   char           *pc;
+ 
+   struct prop    *prop = NULL;
+-  register int    xavail;
+-  register int    xalloc;
+-  register int    xresvd;
+-  register int    xdown;
++  int    xavail;
++  int    xalloc;
++  int    xresvd;
++  int    xdown;
+   int             node_req = 1;
+   int             gpu_req = 0;
+   int             mic_req = 0;
+-- 
+2.40.1
+

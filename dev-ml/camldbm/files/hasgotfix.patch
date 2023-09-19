@@ -1,0 +1,15 @@
+https://forge.ocamlcore.org/tracker/index.php?func=detail&aid=1202&group_id=278&atid=1189
+
+Index: camldbm-1.0/configure
+===================================================================
+--- camldbm-1.0.orig/configure
++++ camldbm-1.0/configure
+@@ -35,7 +35,7 @@ hasgot() {
+   ${CC:-cc} -I$1 -o hasgot.exe hasgot.c $3 $4
+   res=$?
+   rm -f hasgot.c hasgot.exe
+-  return $?
++  return $res
+ }
+ 
+ dbm_include="not found"

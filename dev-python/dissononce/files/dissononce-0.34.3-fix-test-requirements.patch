@@ -1,0 +1,32 @@
+From 4fad01ef1689380b6de685aef5e85ebb1696cce5 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Sun, 2 Jun 2019 01:19:16 +0200
+Subject: [PATCH] setup.py: fix test requirements
+
+/usr/lib64/python2.7/distutils/dist.py:267: UserWarning: Unknown distribution option: 'test_requires'
+Package installs 'tests' package which is forbidden and likely a bug in the build system.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 77cd54b..4d4423f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -5,12 +5,12 @@
+ setup(
+     name='dissononce',
+     version=dissononce.__version__,
+-    packages=find_packages(exclude=['tests', 'examples']),
++    packages=find_packages(exclude=['tests*', 'examples']),
+     install_requires=['cryptography>=2.5'],
+     extras_require={
+         'GuardedHandshakeState': ['transitions']
+     },
+-    test_requires=['pytest'],
++    tests_require=['pytest'],
+     license='MIT',
+     author='Tarek Galal',
+     author_email='tare2.galal@gmail.com',

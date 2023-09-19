@@ -1,0 +1,40 @@
+https://github.com/elogind/elogind/pull/231, but made minimal.
+From: Wu Xiaotian <wuxiaotian@loongson.cn>
+Date: Tue, 1 Sep 2020 12:13:18 +0800
+Subject: [PATCH] architecture: Add support for the LoongArch architecture
+
+(cherry picked from commit 5c0968a2d14d5e1afb40a36c55d3f89805712904)
+[resolved merge conflict for minimal diff, also use __loongarch_lp64
+instead of __loongarch64 -- xen0n]
+
+basic: update the Arch tuples for LoongArch
+
+(cherry picked from commit 017228934833d8618774353dcccbc5ec9f78ce98)
+--- a/src/basic/architecture.h
++++ b/src/basic/architecture.h
+@@ -44,6 +44,7 @@ enum {
+         ARCHITECTURE_RISCV64,
+         ARCHITECTURE_ARC,
+         ARCHITECTURE_ARC_BE,
++        ARCHITECTURE_LOONGARCH64,
+         _ARCHITECTURE_MAX,
+         _ARCHITECTURE_INVALID = -1
+ };
+@@ -200,6 +201,17 @@ int uname_architecture(void);
+ #  elif defined(__SH4A__)
+ #    define LIB_ARCH_TUPLE "sh4a-linux-gnu"
+ #  endif
++#elif defined(__loongarch_lp64)
++#  define native_architecture() ARCHITECTURE_LOONGARCH64
++#  if defined(__loongarch_double_float)
++#    define LIB_ARCH_TUPLE "loongarch64-linux-gnuf64"
++#  elif defined(__loongarch_single_float)
++#    define LIB_ARCH_TUPLE "loongarch64-linux-gnuf32"
++#  elif defined(__loongarch_soft_float)
++#    define LIB_ARCH_TUPLE "loongarch64-linux-gnusf"
++#  else
++#    error "Unrecognized loongarch architecture variant"
++#  endif
+ #elif defined(__m68k__)
+ #  define native_architecture() ARCHITECTURE_M68K
+ #  define LIB_ARCH_TUPLE "m68k-linux-gnu"

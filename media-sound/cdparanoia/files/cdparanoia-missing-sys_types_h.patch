@@ -1,0 +1,24 @@
+diff -Naur cdparanoia-III-10.2.orig/interface/utils.h cdparanoia-III-10.2/interface/utils.h
+--- cdparanoia-III-10.2.orig/interface/utils.h	2008-08-14 06:56:20.000000000 -0700
++++ cdparanoia-III-10.2/interface/utils.h	2016-05-30 14:35:57.071615252 -0700
+@@ -3,6 +3,8 @@
+ #include <errno.h>
+ #include <string.h>
+ 
++#include <sys/types.h>
++
+ /* I wonder how many alignment issues this is gonna trip in the
+    future...  it shouldn't trip any...  I guess we'll find out :) */
+ 
+diff -Naur cdparanoia-III-10.2.orig/utils.h cdparanoia-III-10.2/utils.h
+--- cdparanoia-III-10.2.orig/utils.h	2008-08-22 02:39:06.000000000 -0700
++++ cdparanoia-III-10.2/utils.h	2016-05-30 14:35:33.101409747 -0700
+@@ -4,6 +4,8 @@
+ #include <errno.h>
+ #include <string.h>
+ 
++#include <sys/types.h>
++
+ extern long buffering_write(int outf, char *buffer, long num);
+ extern int buffering_close(int fd);
+ 

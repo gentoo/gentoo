@@ -1,0 +1,140 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2005-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2 or later
+
+inherit config multilib
+
+DESCRIPTION="Manage the LuaJIT symlink"
+MAINTAINER="mva@gentoo.org"
+VERSION="1"
+
+# sort function for luajit versions, to be used in a pipe
+sort_luajit_versions() {
+	local vsort="sort --version-sort"
+	${vsort} </dev/null &>/dev/null || vsort=sort
+	sed -e 's/^\(luajit-\)\?\([[:digit:].]\+\)[-_]beta/\2 0 &/' \
+		-e 't;s/^\(luajit-\)\?\([[:digit:].]\+\)/\2 1 &/' \
+		| LC_ALL=C ${vsort} | sed 's/.* //'
+}
+
+# find a list of luajit symlink targets
+find_targets() {
+	local f
+	for f in $(find "${EROOT}"/usr/bin/ -type f -iname 'luajit-[[:digit:]]*'); do
+		basename "${f}"
+	done | sort_luajit_versions
+}
+
+get_libdirs() {
+	local dir libdirs
+	for dir in $(list_libdirs); do
+		[[ -L ${EROOT}/usr/${dir} ]] && continue
+		ls "${EROOT}"/usr/${dir}/libluajit*.* > /dev/null 2>&1 || continue
+
+		libdirs+=' '/usr/${dir}
+	done
+	echo ${libdirs:-/usr/lib}
+}
+
+
+# remove the luajit symlink
+remove_symlinks() {
+	for dir in $(get_libdirs) ; do
+		[[ -L "${dir}/libluajit-5.1.so" ]] && rm "${dir}/libluajit-5.1.so"
+		[[ -L "${dir}/libluajit-5.1.a" ]] && rm "${dir}/libluajit-5.1.a"
+		[[ -L "${dir}/pkgconfig/luajit.pc" ]] && rm "${dir}/pkgconfig/luajit.pc"
+	done
+	[[ -L "${EROOT}/usr/bin/luajit" ]] && rm "${EROOT}/usr/bin/luajit"
+	rm -f "${EROOT}"/usr/share/man/man1/luajit.1{,.gz,.bz2,.lzma} &>/dev/null
+}
+
+# set the luajit symlink
+set_symlinks() {
+	local target=$1
+
+	if is_number "${target}"; then
+		local targets=( $(find_targets) )
+		target=${targets[target-1]}
+	fi
+
+	if [[ -z ${target} ]]; then
+		die -q "Target \"$1\" doesn't appear to be valid!"
+	elif [[ -f ${EROOT}/usr/bin/${target} ]]; then
+		ln -s "${target}" "${EROOT}/usr/bin/luajit"
+		for dir in $(get_libdirs) ; do
+			[[ -e "${dir}/lib${target}.so" ]] && ln -s "lib${target}.so" "${dir}/libluajit-5.1.so"
+			[[ -e "${dir}/lib${target}.a" ]] && ln -s "lib${target}.a" "${dir}/libluajit-5.1.a"
+			[[ -e "${dir}/pkgconfig/${target}.pc" ]] && ln -s "${target}.pc" "${dir}/pkgconfig/luajit.pc"
+		done
+		for orig in "${EROOT}"/usr/share/man/man1/$target.1* ; do
+			ln -s "$(basename ${orig})" "${orig/$target/luajit}"
+		done
+	else
+		die -q "Target \"$1\" doesn't appear to be valid!"
+	fi
+}
+
+### show action ###
+
+describe_show() {
+	echo "Show the current luajit symlink"
+}
+
+do_show() {
+	write_list_start "Current luajit symlink:"
+	if [[ -L ${EROOT}/usr/bin/luajit ]]; then
+		local SV=$(readlink "${EROOT}/usr/bin/luajit")
+		write_kv_list_entry "${SV%/}"
+	else
+		write_kv_list_entry "(unset)"
+	fi
+}
+
+### list action ###
+
+describe_list() {
+	echo "List available luajit symlink targets"
+}
+
+do_list() {
+	local i targets=( $(find_targets) )
+
+	write_list_start "Available luajit symlink targets:"
+		local SV=$(readlink "${EROOT}/usr/bin/luajit")
+	for (( i = 0; i < ${#targets[@]}; i++ )); do
+		[[ ${targets[i]} = \
+			$(basename "${SV}") ]] \
+			&& targets[i]=$(highlight_marker "${targets[i]}")
+	done
+	write_numbered_list -m "(none found)" "${targets[@]}"
+}
+
+### set action ###
+
+describe_set() {
+	echo "Set a new luajit symlink target"
+}
+
+describe_set_parameters() {
+	echo "<target>"
+}
+
+describe_set_options() {
+	echo "target : Target name or number (from 'list' action)"
+}
+
+do_set() {
+	[[ -z $1 ]] && die -q "You didn't tell me what to set the symlink to"
+	[[ $# -gt 1 ]] && die -q "Too many parameters"
+
+	if [[ -L ${EROOT}/usr/bin/luajit ]]; then
+		# existing symlink
+		remove_symlinks || die -q "Couldn't remove existing symlink"
+		set_symlinks "$1" || die -q "Couldn't set a new symlink"
+	elif [[ -e ${EROOT}/usr/bin/luajit ]]; then
+		# we have something strange
+		die -q "${EROOT}/usr/bin/luajit exists but is not a symlink"
+	else
+		set_symlinks "$1" || die -q "Couldn't set a new symlink"
+	fi
+}

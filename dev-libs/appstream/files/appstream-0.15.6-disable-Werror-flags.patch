@@ -1,0 +1,46 @@
+--- a/meson.build	2022-12-22 23:48:12.000000000 +0100
++++ b/meson.build	2022-12-24 22:15:49.620891586 +0100
+@@ -95,43 +95,6 @@
+   endif
+ endif
+ 
+-# a few compiler warning flags we always want enabled
+-add_project_arguments(
+-  cc.get_supported_arguments([
+-    '-Werror=shadow',
+-    '-Werror=empty-body',
+-    '-Werror=strict-prototypes',
+-    '-Werror=missing-prototypes',
+-    '-Werror=implicit-function-declaration',
+-    '-Werror=pointer-arith',
+-    '-Werror=missing-declarations',
+-    '-Werror=return-type',
+-    '-Werror=int-conversion',
+-    '-Werror=incompatible-pointer-types',
+-    '-Werror=misleading-indentation',
+-    '-Werror=missing-include-dirs',
+-    '-Werror=declaration-after-statement',
+-    '-Werror=format-security',
+-
+-    '-Wno-missing-field-initializers',
+-    '-Wno-error=missing-field-initializers',
+-    '-Wno-unused-parameter',
+-    '-Wno-error=unused-parameter',
+-  ]),
+-  language: 'c'
+-)
+-add_project_arguments(
+-  '-Wno-unused-parameter',
+-  '-Werror=shadow',
+-  '-Werror=empty-body',
+-  '-Werror=pointer-arith',
+-  '-Werror=init-self',
+-  '-Werror=missing-declarations',
+-  '-Werror=return-type',
+-  '-Werror=misleading-indentation',
+-  '-Werror=format-security',
+-  language: 'cpp'
+-)
+ add_project_arguments('-DAS_COMPILATION', language: 'c')
+ 
+ # Vendor extensions in system headers

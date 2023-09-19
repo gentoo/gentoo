@@ -1,0 +1,11 @@
+[Unit]
+Description=Quassel Core
+After=network.target
+
+[Service]
+User=quassel
+Group=quassel
+ExecStart=/usr/bin/quasselcore --configdir=/var/lib/quassel
+
+[Install]
+WantedBy=multi-user.target

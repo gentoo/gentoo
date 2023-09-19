@@ -1,0 +1,17 @@
+# Copyright 2008-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
+# Defaults for video drivers
+VIDEO_CARDS="fbdev impact"
+
+ARCH="mips"
+ACCEPT_KEYWORDS="${ARCH} ~mips"
+
+PROFILE_ARCH="mips"
+
+USE="-fortran -openmp"
+
+LIBDIR_o32="lib"
+LIBDIR_n32="lib32"
+LIBDIR_n64="lib64"

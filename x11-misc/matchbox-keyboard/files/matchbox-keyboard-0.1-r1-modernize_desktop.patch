@@ -1,0 +1,11 @@
+--- a/matchbox-keyboard.desktop
++++ b/matchbox-keyboard.desktop
+@@ -3,6 +3,6 @@
+ Comment=Virtual Keyboard
+ Exec=matchbox-keyboard
+ Type=Application
+-Icon=matchbox-keyboard.png
+-Categories=Panel;Utility;MB
++Icon=matchbox-keyboard
++Categories=Utility;X-MB;X-Panel;
+ X-MB-INPUT-MECHANSIM=True

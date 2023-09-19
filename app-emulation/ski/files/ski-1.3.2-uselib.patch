@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/592226
+
+patch taken from Fedora
+
+glibc-2.23+ no longer exports the uselib function.  make the syscall directly.
+
+--- ski-1.3.2/src/linux/syscall-linux.c
++++ ski-1.3.2/src/linux/syscall-linux.c
+@@ -554,7 +554,8 @@
+ extern void munmapSyms (ADDR, ADDR);
+ extern void dynBlock (ADDR, ADDR);
+ extern void memFree (ADDR);
+-extern int uselib (const char *libname);	/* Linux specific */
++#include <sys/syscall.h>
++#define uselib(libname) syscall(__NR_uselib, libname)
+ 
+ extern int setresuid (uid_t, uid_t, uid_t);
+ extern int getresuid (uid_t *, uid_t *, uid_t *);

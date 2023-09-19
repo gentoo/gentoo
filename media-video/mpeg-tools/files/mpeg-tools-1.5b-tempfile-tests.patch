@@ -1,0 +1,204 @@
+When running tests, don't use /tmp for obvious reasons
+
+Also rewrite the diffscript in sh since csh isnt always available
+
+--- a/mpeg_encode/Makefile
++++ b/mpeg_encode/Makefile
+@@ -187,16 +187,16 @@
+ #########
+ 
+ test:
+-	rm -f /tmp/ts.stat
+-	./mpeg_encode -stat /tmp/ts.stat ./tst/ts.param
+-	csh ./tst/diffscript /tmp/ts.stat ./tst/ts.stat /tmp/ts.mpg ./tst/ts.mpg
++	rm -f ./tst/ts.stat.new
++	./mpeg_encode -stat ./tst/ts.stat.new ./tst/ts.param
++	sh ./tst/diffscript.sh ./tst/ts.stat.new ./tst/ts.stat ./tst/ts.mpg.new ./tst/ts.mpg
+ 
+ testd:
+-	rm -f /tmp/tsd.stat
+-	./mpeg_encode -stat /tmp/tsd.stat ./tst/tsd.param
+-	csh ./tst/diffscript /tmp/tsd.stat ./tst/tsd.stat /tmp/tsd.mpg ./tst/tsd.mpg
++	rm -f ./tst/tsd.stat.new
++	./mpeg_encode -stat ./tst/tsd.stat.new ./tst/tsd.param
++	sh ./tst/diffscript.sh ./tst/tsd.stat.new ./tst/tsd.stat ./tst/tsd.mpg.new ./tst/tsd.mpg
+ 
+-test_all: test testd
++test_all check: test testd
+ 
+ ############
+ # BINARIES #
+--- a/mpeg_encode/tst/diffscript.sh
++++ b/mpeg_encode/tst/diffscript.sh
+@@ -0,0 +1,16 @@
++diff $1 $2 > ./foobar
++egrep Blocks ./foobar > ./blockbar
++
++if test ! -s ./blockbar ; then
++	diff $3 $4 > ./foobar.mpg
++	if test -s ./foobar.mpg ; then
++		echo "FAILURE! (different output -- probably endian bug).  Please send bug report."
++		exit 1
++	else
++		echo "SUCCESS."
++		exit 0
++	fi
++else
++	echo "FAILURE! (different exection).  Please send bug report."
++	exit 1
++fi
+--- a/mpeg_encode/tst/test_all
++++ b/mpeg_encode/tst/test_all
+@@ -1,19 +1,19 @@
+-#!/bin/csh -f
++#!/bin/sh
+ cd ..
+-echo "First we encode three mpegs... (note requires 5MB on /tmp)"
+-rm -f /tmp/ts{,2,d}.{mpg,stat}
+-./mpeg_encode -stat /tmp/ts.stat ./tst/ts.param
+-./mpeg_encode -stat /tmp/ts2.stat ./tst/ts2.param
+-./mpeg_encode -stat /tmp/tsd.stat ./tst/tsd.param
++echo "First we encode three mpegs... (note requires 5MB in ./tst)"
++rm -f ./tst/ts{,2,d}.{mpg,stat}.new
++./mpeg_encode -stat ./tst/ts.stat.new ./tst/ts.param
++./mpeg_encode -stat ./tst/ts2.stat.new ./tst/ts2.param
++./mpeg_encode -stat ./tst/tsd.stat.new ./tst/tsd.param
+ 
+ cd tst
+ 
+ echo "Test one - tst/ts.param"
+-csh diffscript /tmp/ts.stat ts.stat /tmp/ts.mpg ts.mpg
++sh diffscript.sh ./ts.stat.new ts.stat ./ts.mpg.new ts.mpg
+ 
+ echo "Test two - tst/ts2.param (different pattern)"
+-csh diffscript /tmp/ts2.stat ts2.stat /tmp/ts2.mpg ts2.mpg
++sh diffscript.sh ./ts2.stat.new ts2.stat ./ts2.mpg.new ts2.mpg
+ 
+ echo "Test three - tst/tsd.param (uses decoded frames)"
+-csh diffscript /tmp/tsd.stat tsd.stat /tmp/tsd.mpg tsd.mpg
++sh diffscript.sh ./tsd.stat.new tsd.stat ./tsd.mpg.new tsd.mpg
+ 
+--- a/mpeg_encode/tst/diffscript
++++ b/mpeg_encode/tst/diffscript
+@@ -3,23 +3,23 @@
+ #
+ # NOTE:  if this script doesn't work, then basically all you need to know
+ # is that the stat files should be the same except for the times.
+-# So the /tmp/blockbar below should be empty if the test succeeded, and non-
++# So the ./blockbar below should be empty if the test succeeded, and non-
+ # empty if it failed.  Then the .mpg files are compared.
+ #
+ 
+-rm -f /tmp/foobar
+-rm -f /tmp/blockbar
++rm -f ./foobar
++rm -f ./blockbar
+ 
+-diff $1 $2 > /tmp/foobar
++diff $1 $2 > ./foobar
+ 
+-# /tmp/foobar must exist, since starting times will be different
++# ./foobar must exist, since starting times will be different
+ 
+-egrep Blocks /tmp/foobar > /tmp/blockbar
++egrep Blocks ./foobar > ./blockbar
+ 
+-# /tmp/blockbar may or may not exist
+-if ( -z /tmp/blockbar ) then
+-	diff $3 $4 > /tmp/foobar.mpg
+-	if ( -z /tmp/foobar.mpg ) then
++# ./blockbar may or may not exist
++if ( -z ./blockbar ) then
++	diff $3 $4 > ./foobar.mpg
++	if ( -z ./foobar.mpg ) then
+ 		echo "SUCCESS."
+ 	else
+ 		echo "FAILURE! (different output -- probably endian bug).  Please send bug report."
+--- a/mpeg_encode/tst/ts.param
++++ b/mpeg_encode/tst/ts.param
+@@ -1,7 +1,7 @@
+ # test suite parameter file
+ 
+ PATTERN		IBBPBBPBBP
+-OUTPUT		/tmp/ts.mpg
++OUTPUT		./tst/ts.mpg.new
+ 
+ YUV_SIZE	352x240
+ 
+--- a/mpeg_encode/tst/tsd.param
++++ b/mpeg_encode/tst/tsd.param
+@@ -1,7 +1,7 @@
+ # test suite parameter file
+ 
+ PATTERN		IBBBPBBBBP
+-OUTPUT		/tmp/tsd.mpg
++OUTPUT		./tst/tsd.mpg.new
+ 
+ YUV_SIZE	352x240
+ 
+--- a/mpeg_encode/tst/gop.param
++++ b/mpeg_encode/tst/gop.param
+@@ -1,7 +1,7 @@
+ # test suite parameter file
+ 
+ PATTERN		IBPBIBPBPB
+-OUTPUT		/tmp/ts.mpg
++OUTPUT		./tst/ts.mpg.new
+ 
+ YUV_SIZE	352x240
+ 
+--- a/mpeg_encode/tst/short.param
++++ b/mpeg_encode/tst/short.param
+@@ -1,7 +1,7 @@
+ # test suite parameter file
+ 
+ PATTERN		IBBBPBBB
+-OUTPUT		/tmp/ts.mpg
++OUTPUT		./tst/ts.mpg.new
+ 
+ YUV_SIZE	352x240
+ 
+--- a/mpeg_encode/tst/ts2.param
++++ b/mpeg_encode/tst/ts2.param
+@@ -2,7 +2,7 @@
+ 
+ PATTERN		IBBPBBPBB
+ 
+-OUTPUT		/tmp/ts2.mpg
++OUTPUT		./tst/ts2.mpg.new
+ 
+ YUV_SIZE	352x240
+ 
+--- a/mpeg_encode/tst/ts3.param
++++ b/mpeg_encode/tst/ts3.param
+@@ -1,7 +1,7 @@
+ # test suite parameter file
+ 
+ PATTERN		IBPB
+-OUTPUT		/tmp/ts.mpg
++OUTPUT		./tst/ts.mpg.new
+ 
+ YUV_SIZE	352x240
+ 
+--- a/mpeg_encode/tst/ts4.param
++++ b/mpeg_encode/tst/ts4.param
+@@ -1,7 +1,7 @@
+ # test suite parameter file
+ 
+ PATTERN		IBBBPBBBBP
+-OUTPUT		/tmp/ts.mpg
++OUTPUT		./tst/ts.mpg.new
+ 
+ YUV_SIZE	352x240
+ 
+--- a/mpeg_encode/tst/tstl.param
++++ b/mpeg_encode/tst/tstl.param
+@@ -1,7 +1,7 @@
+ # test suite parameter file
+ 
+ PATTERN		IBBBPBBBBP
+-OUTPUT		/tmp/ts.mpg
++OUTPUT		./tst/ts.mpg.new
+ 
+ YUV_SIZE	352x240
+ 

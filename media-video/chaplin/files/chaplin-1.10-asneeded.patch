@@ -1,0 +1,15 @@
+--- chaplin.orig/Makefile	2004-03-21 18:44:18.000000000 +0100
++++ chaplin/Makefile	2009-10-25 18:34:26.082229887 +0100
+@@ -6,10 +6,10 @@
+ all: build
+ 
+ build:
+-	gcc -DNDEBUG -Wall -I$(LIBDVDREAD)/include -L$(LIBDVDREAD)/lib -ldvdread -Wl,-rpath,$(LIBDVDREAD)/lib -o chaplin chaplin.c -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -DNDEBUG -Wall -I$(LIBDVDREAD)/include -Wl,-rpath,$(LIBDVDREAD)/lib -o chaplin chaplin.c -L$(LIBDVDREAD)/lib -ldvdread -lm
+ 
+ debug:
+-	gcc -Wall -I$(LIBDVDREAD)/include -L$(LIBDVDREAD)/lib -ldvdread -Wl,-rpath,$(LIBDVDREAD)/lib -o chaplin chaplin.c -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -Wall -I$(LIBDVDREAD)/include -Wl,-rpath,$(LIBDVDREAD)/lib -o chaplin chaplin.c -L$(LIBDVDREAD)/lib -ldvdread -lm
+ 
+ dist:
+ 	cd .. ; tar cvfz chaplin.tgz chaplin/Makefile chaplin/chaplin.c chaplin/chaplin-genmenu chaplin/chaplin

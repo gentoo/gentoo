@@ -1,0 +1,25 @@
+--- a/setup.py.orig	2020-01-10 12:01:28.688051015 +0800
++++ b/setup.py	2020-01-10 12:02:10.370053813 +0800
+@@ -70,14 +70,6 @@
+     print("$ apt-get install python-dev", file=sys.stderr)
+     sys.exit(-1)
+ 
+-# Convert README.md to reStructuredText for PyPI
+-long_description = ''
+-try:
+-    long_description = subprocess.check_output(['pandoc', 'README.md', '--to=rst'], universal_newlines=True)
+-except Exception as e:
+-    print("Failed to convert README.md through pandoc, proceeding anyway", file=sys.stderr)
+-    traceback.print_exc()
+-
+ setup(
+     name                 = 'pwntools',
+     python_requires      = '>=2.7',
+@@ -99,7 +91,6 @@
+     entry_points = {'console_scripts': console_scripts},
+     scripts              = glob.glob("bin/*"),
+     description          = "Pwntools CTF framework and exploit development library.",
+-    long_description     = long_description,
+     author               = "Gallopsled et al.",
+     author_email         = "pwntools-users@googlegroups.com",
+     url                  = 'https://pwntools.com',

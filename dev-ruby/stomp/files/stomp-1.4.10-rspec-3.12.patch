@@ -1,0 +1,149 @@
+https://github.com/stompgem/stomp/pull/175
+
+From 299923281d02e544ca386a9883e87c395135d3af Mon Sep 17 00:00:00 2001
+From: Steve Traylen <steve.traylen@cern.ch>
+Date: Thu, 30 Mar 2023 13:36:52 +0200
+Subject: [PATCH] Fix tests failing with rspec 3.12
+
+Patch from
+
+* https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027092
+* https://salsa.debian.org/ruby-team/ruby-stomp/-/commit/5be6383a7a34a1d1891708d6aa8688cb4a6f89a5
+
+resolves rspec failure:
+
+```
+$ rspec --fail-fast spec/client_spec.rb
+RSpec version: 3.8.0
+Traceback (most recent call last):
+	9: from /home/straylen/pkgs/rubygem-stomp/stomp-1.4.9/lib/client/utils.rb:194:in `block in start_listeners'
+	8: from /home/straylen/pkgs/rubygem-stomp/stomp-1.4.9/lib/client/utils.rb:194:in `loop'
+	7: from /home/straylen/pkgs/rubygem-stomp/stomp-1.4.9/lib/client/utils.rb:195:in `block (2 levels) in start_listeners'
+	6: from /usr/share/gems/gems/rspec-mocks-3.8.1/lib/rspec/mocks/test_double.rb:102:in `method_missing'
+	5: from /usr/share/gems/gems/rspec-mocks-3.8.1/lib/rspec/mocks/proxy.rb:202:in `raise_unexpected_message_error'
+	4: from /usr/share/gems/gems/rspec-mocks-3.8.1/lib/rspec/mocks/error_generator.rb:50:in `raise_unexpected_message_error'
+	3: from /usr/share/gems/gems/rspec-mocks-3.8.1/lib/rspec/mocks/error_generator.rb:311:in `__raise'
+	2: from /usr/share/gems/gems/rspec-mocks-3.8.1/lib/rspec/mocks/error_generator.rb:327:in `notify'
+	1: from /usr/share/gems/gems/rspec-support-3.8.2/lib/rspec/support.rb:106:in `notify_failure'
+/usr/share/gems/gems/rspec-support-3.8.2/lib/rspec/support.rb:97:in `block in <module:Support>': #<Double "connection"> received unexpected message :receive with (no args) (RSpec::Mocks::MockExpectationError)
+.#<Thread:0x000055a54150bd60@/home/straylen/pkgs/rubygem-stomp/stomp-1.4.9/lib/client/utils.rb:193 run> terminated with exception (report_on_exception is true):
+Traceback (most recent call last):
+	6: from /home/straylen/pkgs/rubygem-stomp/stomp-1.4.9/lib/client/utils.rb:194:in `block in start_listeners'
+	5: from /home/straylen/pkgs/rubygem-stomp/stomp-1.4.9/lib/client/utils.rb:194:in `loop'
+```
+
+Fixes: #164
+--- a/spec/client_spec.rb
++++ b/spec/client_spec.rb
+@@ -136,13 +136,13 @@
+     end
+ 
+     it "should properly parse the URL provided" do
+-      expect(Stomp::Connection).to receive(:new).with(:hosts => [{:login => 'testlogin',
++      expect(Stomp::Connection).to receive(:new).with({:hosts => [{:login => 'testlogin',
+                                                               :passcode => 'testpassword',
+                                                               :host => 'localhost',
+                                                               :port => 12345}],
+                                                   :logger => null_logger,
+                                                   :reliable => false,
+-												:client_main => @cli_thread)
++												:client_main => @cli_thread})
+       Stomp::Client.new('testlogin', 'testpassword', 'localhost', '12345', false)
+     end
+ 
+@@ -157,13 +157,13 @@
+     end
+ 
+     it "should properly parse the URL provided" do
+-      expect(Stomp::Connection).to receive(:new).with(:hosts => [{:login => '',
++      expect(Stomp::Connection).to receive(:new).with({:hosts => [{:login => '',
+                                                               :passcode => '',
+                                                               :host => 'foobar',
+                                                               :port => 12345}],
+                                                   :logger => null_logger,
+                                                   :reliable => false,
+-												:client_main => @cli_thread)
++												:client_main => @cli_thread})
+       Stomp::Client.new('stomp://foobar:12345')
+     end
+ 
+@@ -179,13 +179,13 @@
+     end
+ 
+     it "should properly parse the URL provided" do
+-      expect(Stomp::Connection).to receive(:new).with(:hosts => [{:login => '',
++      expect(Stomp::Connection).to receive(:new).with({:hosts => [{:login => '',
+                                                               :passcode => '',
+                                                               :host => 'foo-bar',
+                                                               :port => 12345}],
+                                                   :logger => null_logger,
+                                                   :reliable => false,
+-												:client_main => @cli_thread)
++												:client_main => @cli_thread})
+       Stomp::Client.new('stomp://foo-bar:12345')
+     end
+ 
+@@ -201,13 +201,13 @@
+     end
+ 
+     it "should properly parse the URL provided" do
+-      expect(Stomp::Connection).to receive(:new).with(:hosts => [{:login => 'test-login',
++      expect(Stomp::Connection).to receive(:new).with({:hosts => [{:login => 'test-login',
+                                                               :passcode => 'testpasscode',
+                                                               :host => 'foobar',
+                                                               :port => 12345}],
+                                                   :logger => null_logger,
+                                                   :reliable => false,
+-												:client_main => @cli_thread)
++												:client_main => @cli_thread})
+       Stomp::Client.new('stomp://test-login:testpasscode@foobar:12345')
+     end
+ 
+@@ -223,13 +223,13 @@
+     end
+ 
+     it "should properly parse the URL provided" do
+-      expect(Stomp::Connection).to receive(:new).with(:hosts => [{:login => 'test-login',
++      expect(Stomp::Connection).to receive(:new).with({:hosts => [{:login => 'test-login',
+                                                               :passcode => 'testpasscode',
+                                                               :host => 'foo-bar',
+                                                               :port => 12345}],
+                                                   :logger => null_logger,
+                                                   :reliable => false,
+-												:client_main => @cli_thread)
++												:client_main => @cli_thread})
+       Stomp::Client.new('stomp://test-login:testpasscode@foo-bar:12345')
+     end
+ 
+@@ -248,13 +248,13 @@
+     end
+ 
+     it "should properly parse the URL provided" do
+-      expect(Stomp::Connection).to receive(:new).with(:hosts => [{:login => '',
++      expect(Stomp::Connection).to receive(:new).with({:hosts => [{:login => '',
+                                                               :passcode => '',
+                                                               :host => 'host.foobar.com',
+                                                               :port => 12345}],
+                                                   :logger => null_logger,
+                                                   :reliable => false,
+-												:client_main => @cli_thread)
++												:client_main => @cli_thread})
+       Stomp::Client.new('stomp://host.foobar.com:12345')
+     end
+ 
+@@ -270,13 +270,13 @@
+     end
+ 
+     it "should properly parse the URL provided" do
+-      expect(Stomp::Connection).to receive(:new).with(:hosts => [{:login => 'testlogin',
++      expect(Stomp::Connection).to receive(:new).with({:hosts => [{:login => 'testlogin',
+                                                               :passcode => 'testpasscode',
+                                                               :host => 'host.foobar.com',
+                                                               :port => 12345}],
+                                                   :logger => null_logger,
+                                                   :reliable => false,
+-												:client_main => @cli_thread)
++												:client_main => @cli_thread})
+       Stomp::Client.new('stomp://testlogin:testpasscode@host.foobar.com:12345')
+     end
+ 

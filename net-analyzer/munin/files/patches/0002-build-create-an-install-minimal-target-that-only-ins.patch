@@ -1,0 +1,36 @@
+From 75ae794b1c497a82c4ce8f63c9d016cd11d3c7ba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diego=20Elio=20Petten=C3=B2?= <flameeyes@flameeyes.eu>
+Date: Sun, 21 Oct 2012 13:39:21 -0700
+Subject: [PATCH 2/7] build: create an install-minimal target that only
+ installs the Node components
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is what Gentoo does right now manually, it's easier to maintain
+here though, and users might want to do the same if they are
+installing from sources, and only want a node.
+
+Signed-off-by: Diego Elio Pettenò <flameeyes@flameeyes.eu>
+---
+ Makefile | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index cdc3577..c119d38 100644
+--- a/Makefile
++++ b/Makefile
+@@ -64,7 +64,9 @@ tags:
+ 
+ ######################################################################
+ 
+-install: install-master-prime install-common-prime install-node-prime install-plugins-prime $(JAVA_INSTALL) install-man install-async-prime
++install: install-master-prime install-minimal install-man
++
++install-minimal: install-common-prime install-node-prime install-plugins-prime $(JAVA_INSTALL) install-async-prime
+ 
+ install-pre: Makefile Makefile.config
+ 	@$(CHECKUSER)
+-- 
+2.2.1
+

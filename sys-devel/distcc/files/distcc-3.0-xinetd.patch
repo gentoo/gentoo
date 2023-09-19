@@ -1,0 +1,15 @@
+diff -Naur distcc-3.0.orig/doc/example/xinetd distcc-3.0/doc/example/xinetd
+--- distcc-3.0.orig/doc/example/xinetd	2008-08-07 05:52:13.000000000 +0900
++++ distcc-3.0/doc/example/xinetd	2008-10-27 15:32:14.000000000 +0900
+@@ -19,10 +19,6 @@
+ 	socket_type     = stream
+ 	wait            = no
+ 	user            = distcc
+-	server          = /usr/local/bin/distccd
++	server          = /usr/bin/distccd
+ 	server_args     = --inetd
+-
+-        # This makes xinetd cope if there is no service listed in
+-        # /etc/services
+-        type            = UNLISTED
+ }

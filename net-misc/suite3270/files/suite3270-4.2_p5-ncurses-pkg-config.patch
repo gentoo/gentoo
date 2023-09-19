@@ -1,0 +1,48 @@
+Needed to ensure we pick up definitions from ncurses' pkg-config file
+like -DNCURSES_WIDECHAR (issue is observable on say, musl).
+--- a/x3270if/configure.in
++++ b/x3270if/configure.in
+@@ -65,6 +65,9 @@ AC_CHECK_HEADERS(getopt.h)
+ if test "$with_readline" != no; then
+ AC_CHECK_HEADERS(readline/history.h)
+ fi
++
++dnl Try pkg-config first, and if it fails, try the traditional methods.
++PKG_CHECK_MODULES([ncurses], [ncursesw], [AC_DEFINE([HAVE_NCURSESW_NCURSES_H] ,[1]) AC_DEFINE([HAVE_NCURSESW_TERM_H], [1])], [
+ dnl Find the best curses header file and hope it's consistent with the library
+ dnl we found.
+ AC_CHECK_HEADERS(ncursesw/ncurses.h, ,
+@@ -75,15 +78,16 @@ AC_CHECK_HEADERS(ncursesw/term.h, ,
+  [AC_CHECK_HEADERS(ncurses/term.h, ,
+   [AC_CHECK_HEADERS(term.h)])])
+ 
++  AC_SEARCH_LIBS(newterm, ncursesw ncurses curses, , [AC_MSG_ERROR(Can't find libncurses or new-enough libcurses)])
++  AC_SEARCH_LIBS(setupterm, tinfow tinfo, , [AC_MSG_ERROR(Can't find terminfo library)])
++  AC_CHECK_FUNCS(tiparm)])
++
+ dnl Check for --without-readline
+ AC_ARG_WITH(readline, [  --without-readline      Don't use the readline library]) 
+ 
+ dnl Checks for library functions.
+ AC_CHECK_FUNCS(vasprintf)
+ AC_FUNC_FSEEKO
+-AC_SEARCH_LIBS(newterm, ncursesw ncurses curses, , [AC_MSG_ERROR(Can't find libncurses or new-enough libcurses)])
+-AC_SEARCH_LIBS(setupterm, tinfow tinfo, , [AC_MSG_ERROR(Can't find terminfo library)])
+-AC_CHECK_FUNCS(tiparm)
+ if test "$with_readline" != no; then
+ AC_CHECK_LIB(readline, rl_initialize)
+ fi
+--- a/x3270if/Makefile.obj.in
++++ b/x3270if/Makefile.obj.in
+@@ -51,9 +51,9 @@ INSTALL_DATA = @INSTALL_DATA@
+ 
+ CCOPTIONS = @CCOPTIONS@
+ XCPPFLAGS = -I$(THIS) -I$(TOP)/include -I$(TOP)/Common/x3270if @CPPFLAGS@
+-CFLAGS = $(CCOPTIONS) $(CDEBUGFLAGS) $(XCPPFLAGS) @CFLAGS@
++CFLAGS = $(CCOPTIONS) $(CDEBUGFLAGS) $(XCPPFLAGS) @ncurses_CFLAGS@ @CFLAGS@
+ LDFLAGS = @LDFLAGS@
+-LIBS = @LIBS@
++LIBS = @LIBS@ @ncurses_LIBS@
+ 
+ XVERSION = xversion.c
+ version.o: mkversion.sh $(VOBJS) version.txt

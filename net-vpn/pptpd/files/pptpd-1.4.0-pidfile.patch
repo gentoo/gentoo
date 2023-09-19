@@ -1,0 +1,33 @@
+--- a/pptpd.c	2016-08-16 15:35:51.660000000 +0300
++++ b/pptpd.c	2016-08-16 15:36:01.010000000 +0300
+@@ -115,7 +115,7 @@
+         printf("                           (default is /etc/ppp/options).\n");
+ #endif
+         printf(" [-p] [--pidfile file]     Specifies the file to write the process ID to\n");
+-        printf("                           (default is /var/run/pptpd.pid).\n");
++        printf("                           (default is /run/pptpd.pid).\n");
+ #if !defined(BSDUSER_PPP)
+         printf(" [-s] [--speed baud]       Specifies the baud speed for the PPP daemon\n");
+         printf("                           (default is 115200).\n");
+--- a/pptpd.8	2016-08-16 15:34:53.480000000 +0300
++++ b/pptpd.8	2016-08-16 15:35:11.650000000 +0300
+@@ -72,7 +72,7 @@
+ .TP
+ \fB-p\fR|\fB--pidfile \fIpid-file
+ specifies an alternate location to store the process ID file (default
+-.IR /var/run/pptpd.pid ).
++.IR /run/pptpd.pid ).
+ 
+ .TP
+ \fB-s\fR|\fB--speed \fIbaud
+--- a/defaults.h	2016-08-16 15:35:01.050000000 +0300
++++ b/defaults.h	2016-08-16 15:35:20.190000000 +0300
+@@ -43,7 +43,7 @@
+ #else
+ #define PPTPD_CONFIG_FILE_DEFAULT       "/etc/pptpd.conf"
+ #endif
+-#define PIDFILE_DEFAULT                 "/var/run/pptpd.pid"
++#define PIDFILE_DEFAULT                 "/run/pptpd.pid"
+ 
+ #define STIMEOUT_DEFAULT                10 /* seconds */
+ 

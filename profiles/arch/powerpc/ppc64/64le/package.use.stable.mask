@@ -1,0 +1,12 @@
+# Copyright 2019-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2022-02-05)
+# dev-qt/qtwebengine not stable on ppc64 yet
+sci-astronomy/stellarium webengine
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
+# openjfx:8 will never be stabilized
+# openjfx:11 probably will neither
+dev-java/openjdk:8 javafx
+dev-java/openjdk:11 javafx

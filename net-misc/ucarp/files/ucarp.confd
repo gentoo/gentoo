@@ -1,0 +1,30 @@
+# /etc/conf.d/ucarp: config file for /etc/init.d/ucarp
+
+# The network interface to bind to, for example 'eth0'
+UCARP_INTERFACE=
+
+# The persistent source address, (real IP), associated with this interface.
+UCARP_SOURCEADDRESS=
+
+# The IP address of the virtual server.
+UCARP_VIRTUALADDRESS=
+
+# The prefix length of the virtual server IP address
+# For example 24 for a netmask of 255.255.255.0
+UCARP_VIRTUALPREFIX=
+
+# The id of the virtual server [1-255].
+UCARP_VHID=123
+
+# File to read the shared password from.
+UCARP_PASSFILE=/etc/ucarp/ucarp.pass
+
+# Specifies the command to run after ucarp has successfully become master.
+UCARP_UPSCRIPT=/usr/libexec/ucarp/vip-up-default.sh
+
+# Specifies the command that is run after ucarp has transitioned to the backup
+# state.
+UCARP_DOWNSCRIPT=/usr/libexec/ucarp/vip-down-default.sh
+
+# Additional ucarp options to pass
+UCARP_OPTS="--shutdown"

@@ -1,0 +1,23 @@
+diff --git a/Makefile b/Makefile
+index 79c5b33..452e091 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-CC = cc
++CC ?= cc
+ #CFLAGS = -W -Wall -O2 -g 
+ INCLUDE = $(wildcard *.h)
+ OBJS = color.o
+@@ -6,8 +6,11 @@ EXE = color
+ 
+ all: $(EXE)
+ 
++OBJS: color.c
++	$(CC) $(CFLAGS) -c $^ $@
++
+ $(EXE): $(OBJS)
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(LDFLAGS) -o $@ $^
+ 
+ install: all
+ 	cp $(EXE) /usr/local/bin

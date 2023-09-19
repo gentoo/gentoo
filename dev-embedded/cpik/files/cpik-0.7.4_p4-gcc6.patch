@@ -1,0 +1,12 @@
+diff -Naur cpik-0.7.2-4-orig/utility.h cpik-0.7.2-4/utility.h
+--- cpik-0.7.2-4-orig/utility.h	2017-12-03 03:47:35.302504007 +0100
++++ cpik-0.7.2-4/utility.h	2017-12-03 03:47:59.537116442 +0100
+@@ -75,7 +75,7 @@
+     static bool stringTo ( const string& s, T& result )
+     {
+       istringstream is ( s ) ;
+-      return is >> result ;
++      return static_cast<bool>(is >> result);
+     }
+ 
+     /** generic conversion from T to string  */

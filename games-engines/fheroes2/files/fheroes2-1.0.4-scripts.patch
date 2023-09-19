@@ -1,0 +1,19 @@
+Install the data-exporting scripts to a better place than docs
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -182,12 +182,12 @@ if(NOT MACOS_APP_BUNDLE)
+ 		install(
+ 			FILES script/demo/download_demo_version.sh
+ 			PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ
+-			DESTINATION ${CMAKE_INSTALL_DOCDIR}/demo
++			DESTINATION ${FHEROES2_DATA}
+ 			)
+ 		install(
+ 			FILES script/homm2/extract_homm2_resources.sh
+ 			PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ
+-			DESTINATION ${CMAKE_INSTALL_DOCDIR}/homm2
++			DESTINATION ${FHEROES2_DATA}
+ 			)
+ 		install(
+ 			FILES script/packaging/common/fheroes2.appdata.xml

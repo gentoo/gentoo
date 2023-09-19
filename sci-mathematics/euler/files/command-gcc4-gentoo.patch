@@ -1,0 +1,11 @@
+--- a/src/command.c
++++ b/src/command.c
+@@ -732,7 +732,7 @@
+ }
+ 
+ 
+-static int command_count;
++int command_count;
+ 
+ commandtyp command_list[] = {
+ 	{"quit",c_quit,do_quit},

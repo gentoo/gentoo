@@ -1,0 +1,22 @@
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -5,7 +5,7 @@
+ 
+ INCLUDES = -I$(top_srcdir)/src
+ 
+-bin_PROGRAMS = pcapnav-test1 pcapnav-offsets \
++check_PROGRAMS = pcapnav-test1 pcapnav-offsets \
+ 	pcapnav-jump pcapnav-concat pcapnav-filespan
+ 
+ pcapnav_test1_SOURCES = pcapnav-test1.c
+@@ -23,10 +23,6 @@
+ pcapnav_filespan_SOURCES = pcapnav-filespan.c
+ pcapnav_filespan_LDADD = -L$(top_builddir)/src/ -lpcapnav -lpcap @PCN_LIBADD@
+ 
+-# don't install any of this stuff
+-install-binPROGRAMS:
+-uninstall-binPROGRAMS:
+-
+ EXTRA_DIST = \
+ 	run-tests.sh \
+ 	test1.trace test1-correct.be.trace test1-correct.le.trace

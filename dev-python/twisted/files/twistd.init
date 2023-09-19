@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+
+depend() {
+	need net
+}
+
+start() {
+	if [ -z "${TWISTD_OPTS}" ]; then
+		eerror "TWISTD_OPTS is not set!"
+		eerror "You need to configure twistd in /etc/conf.d/twistd."
+		return 1
+	fi
+	export PYTHONPATH
+	ebegin "Starting twistd"
+	start-stop-daemon --start --quiet --pidfile /var/run/twistd.pid \
+		--exec /usr/bin/twistd -- --pidfile /var/run/twistd.pid \
+			${TWISTD_OPTS}
+	eend $? "Failed to start twistd"
+}
+
+stop() {
+	ebegin "Stopping twistd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/twistd.pid 
+	eend $? "Failed to stop twistd"
+}

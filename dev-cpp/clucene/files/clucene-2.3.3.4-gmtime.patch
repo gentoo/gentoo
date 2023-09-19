@@ -1,0 +1,12 @@
+diff -Naur clucene-core-2.3.3.4/src/core/CLucene/document/DateTools.cpp clucene-core-2.3.3.4.new/src/core/CLucene/document/DateTools.cpp
+--- clucene-core-2.3.3.4/src/core/CLucene/document/DateTools.cpp	2011-03-17 03:21:07.000000000 +0300
++++ clucene-core-2.3.3.4.new/src/core/CLucene/document/DateTools.cpp	2020-02-21 15:20:17.382575302 +0300
+@@ -9,6 +9,8 @@
+ #include "DateTools.h"
+ #include "CLucene/util/Misc.h"
+ 
++#include <ctime>
++
+ CL_NS_USE(util)
+ CL_NS_DEF(document)
+ 

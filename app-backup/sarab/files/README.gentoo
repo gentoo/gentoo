@@ -1,0 +1,13 @@
+-*- outline -*-
+
+Gentoo GNU/Linux specific notes for SaraB
+-----------------------------------------
+
+This is the README.Gentoo file from /usr/share/doc/@PF@/ directory.
+
+  * The Gentoo port includes more reasonable pathnames for the example
+    configuration.
+
+If you encounter any problems or have suggestions, use https://bugs.gentoo.org.
+Please don't bother the upstream authors unless you are absolutely certain it is
+not Gentoo-related.

@@ -1,0 +1,146 @@
+--- a/examples/kegogi/Makefile
++++ b/examples/kegogi/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS=-g -I../../src -Isrc -Wall -Wextra
++CFLAGS+=-I../../src -Isrc -Wall -Wextra
+ LIBS=-lzmq -lsqlite3
+ 
+ all: kegogi
+@@ -8,10 +8,10 @@ install: all
+ 
+ kegogi: src/kegogi.o src/fuzzrnd.o src/kegogi_parser.o src/httpclient.o src/param.o src/kegogi_lexer.o src/kegogi_tokens.o
+ 	mkdir -p build
+-	$(CC) ${CFLAGS} -o build/kegogi src/kegogi.o src/kegogi_parser.o src/kegogi_lexer.o src/fuzzrnd.o src/httpclient.o src/param.o src/kegogi_tokens.o ${LIBS} ../../build/libm2.a
++	$(CC) $(CPPFLAGS) ${CFLAGS} $(LDFLAGS) -o build/kegogi src/kegogi.o src/kegogi_parser.o src/kegogi_lexer.o src/fuzzrnd.o src/httpclient.o src/param.o src/kegogi_tokens.o ${LIBS} ../../build/libm2.a
+ 
+ src/kegogi_lexer.o: src/kegogi_lexer.c
+-	$(CC) $(CFLAGS) -c src/kegogi_lexer.c -o src/kegogi_lexer.o
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -c src/kegogi_lexer.c -o src/kegogi_lexer.o
+ 
+ src/kegogi_lexer.c: src/kegogi_lexer.rl src/kegogi_parser.h
+ 	ragel src/kegogi_lexer.rl -C -o src/kegogi_lexer.c
+--- a/tests/filters/Makefile
++++ b/tests/filters/Makefile
+@@ -1,12 +1,12 @@
+ PREFIX?=/usr/local
+-CFLAGS=-I../../src -I../../src/mbedtls/include $(OPTFLAGS) -fPIC -shared -nostartfiles -L../../build
+-LDFLAGS=$(OPTLIBS)
++CFLAGS+=-I../../src -I../../src/mbedtls/include -fPIC -shared -nostartfiles -L../../build
++LDFLAGS+=$(OPTLIBS)
+ 
+ all: test_filter.so test_filter_a.so test_filter_b.so test_filter_c.so
+ 
+ 
+ %.so : %.c ../../build/libm2.a
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< ../../build/libm2.a
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< ../../build/libm2.a
+ 
+ clean:
+ 	rm -f *.so
+--- a/tools/config_modules/Makefile
++++ b/tools/config_modules/Makefile
+@@ -1,6 +1,6 @@
+ PREFIX?=/usr/local
+-CFLAGS=-I../../src -I../../src/mbedtls/include $(OPTFLAGS) -fPIC -shared -nostartfiles -L../../build
+-LDFLAGS=$(OPTLIBS)
++CFLAGS+=-I../../src -I../../src/mbedtls/include -fPIC -shared -nostartfiles -L../../build
++LDFLAGS+=$(OPTLIBS)
+ 
+ MONGO_SRC = mongo-c-driver/src/bson.c \
+             mongo-c-driver/src/encoding.c \
+@@ -22,11 +22,11 @@ fetch_mongo_c_driver:
+ mongodb.so: CFLAGS += $(MONGO_CFLAGS)
+ mongodb.so: fetch_mongo_c_driver
+ mongodb.so: mongodb.c
+-	$(CC) $(CFLAGS) -c $(MONGO_SRC)
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< bson.o encoding.o gridfs.o md5.o mongo.o env_posix.o numbers.o ../../build/libm2.a
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -c $(MONGO_SRC)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< bson.o encoding.o gridfs.o md5.o mongo.o env_posix.o numbers.o ../../build/libm2.a
+ 
+ %.so : %.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< ../../build/libm2.a
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< ../../build/libm2.a
+ 
+ clean:
+ 	rm -f *.o *.so
+--- a/tools/filters/Makefile
++++ b/tools/filters/Makefile
+@@ -1,12 +1,12 @@
+ PREFIX?=/usr/local
+-CFLAGS=-I../../src -I../../src/mbedtls/include $(OPTFLAGS) -g -fPIC -shared -nostartfiles -L../../build
+-LDFLAGS=$(OPTLIBS)
++CFLAGS+=-I../../src -I../../src/mbedtls/include -fPIC -shared -nostartfiles -L../../build
++LDFLAGS+=$(OPTLIBS)
+ 
+ all: null.so rewrite.so sendfile.so
+ 
+ 
+ %.so : %.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< ../../build/libm2.a
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< ../../build/libm2.a
+ 
+ clean:
+ 	rm -f *.so
+--- a/tools/m2sh/Makefile
++++ b/tools/m2sh/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS=-DNDEBUG -DNO_LINENOS -pthread -g -I../../src -Isrc -Wall $(OPTFLAGS)
++CFLAGS+=-DNDEBUG -DNO_LINENOS -pthread -g -I../../src -Isrc -Wall
+ LIBS=-lzmq -lsqlite3 ../../build/libm2.a $(OPTLIBS)
+ 
+ PREFIX?=/usr/local
+@@ -11,7 +11,7 @@ LIB_OBJ=$(filter-out src/m2sh.o,${OBJECTS})
+ 
+ all: ../lemon/lemon tests build/m2sh
+ 
+-dev: CFLAGS=-g -Wall -Wextra -Isrc -I../../src $(OPTFLAGS)
++dev: CFLAGS+=-Wall -Wextra -Isrc -I../../src $(OPTFLAGS)
+ dev: all
+ 
+ install: build/m2sh
+@@ -19,15 +19,15 @@ install: build/m2sh
+ 
+ build/libm2sh.a: ${LIB_OBJ}
+ 	mkdir -p build
+-	ar rcs $@ ${LIB_OBJ}
+-	ranlib $@
++	$(AR) rcs $@ ${LIB_OBJ}
++	$(RANLIB) $@
+ 
+ build/m2sh: ../lemon/lemon ../../build/libm2.a ${OBJECTS}
+ 	mkdir -p build
+-	$(CC) $(CFLAGS) -o build/m2sh ${OBJECTS} ../../build/libm2.a $(LIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o build/m2sh ${OBJECTS} ../../build/libm2.a $(LIBS)
+ 
+ ../lemon/lemon: ../lemon/lemon.c
+-	$(CC) -O2 ../lemon/lemon.c -o ../lemon/lemon
++	$(CC) $(CPPFLAGS) $(LDFLAGS) ../lemon/lemon.c -o ../lemon/lemon
+ 
+ tests: build/libm2sh.a ${TESTS}
+ 	sh ./tests/runtests.sh
+@@ -39,7 +39,7 @@ tests: build/libm2sh.a ${TESTS}
+ 	ragel -G2 $<
+ 
+ $(TESTS): %: %.c build/libm2sh.a
+-	$(CC) $(CFLAGS) -o $@ $< build/libm2sh.a ../../build/libm2.a $(LIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< build/libm2sh.a ../../build/libm2.a $(LIBS)
+ 
+ ../../build/libm2.a:
+ 	cd ../.. && make clean all
+--- a/tools/procer/Makefile
++++ b/tools/procer/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS=-DNDEBUG -pthread -g -I../../src -Wall $(OPTFLAGS)
++CFLAGS+=-DNDEBUG -pthread -g -I../../src -Wall
+ PREFIX?=/usr/local
+ LIBS?=-lzmq 
+ SOURCES=$(wildcard *.c)
+@@ -8,7 +8,7 @@ all: procer
+ 
+ 
+ procer: ../../build/libm2.a ${OBJECTS}
+-	$(CC) $(OPTFLAGS) $(OPTLIBS) -o $@ ${OBJECTS} ../../build/libm2.a ${LIBS}
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ ${OBJECTS} ../../build/libm2.a ${LIBS}
+ 
+ clean:
+ 	rm -f *.o procer

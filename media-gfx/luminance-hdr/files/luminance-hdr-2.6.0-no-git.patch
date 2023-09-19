@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt	2019-06-09 21:18:38.000000000 +0200
++++ b/CMakeLists.txt	2019-09-15 23:41:24.684413834 +0200
+@@ -103,11 +103,7 @@
+     set(LIBS ${LIBS} ${QT_QTWEBKIT_LIBRARIES})
+ endif()
+ 
+-FIND_PACKAGE(Git)
+-IF(GIT_FOUND)
+-    include(GetGitRevisionDescription)
+-    get_git_head_revision(GIT_REFSPEC GIT_SHA1)
+-ENDIF()
++SET(GIT_SHA1 "-- Gentoo build --")
+ 
+ IF(WIN32)
+ 

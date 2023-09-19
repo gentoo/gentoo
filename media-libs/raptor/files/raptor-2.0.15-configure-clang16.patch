@@ -1,0 +1,28 @@
+https://github.com/dajobe/raptor/pull/55
+
+From b7c252e1d5601321a5a6f6627745753b5c704762 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 01:53:32 +0000
+Subject: [PATCH] configure.ac: fix -Wimplicit-function-declaration in
+ HAVE___FUNCTION__ test
+
+This breaks with Clang 16 which makes such errors fatal:
+```
+error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Werror,-Wimplicit-function-declaration]
+error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Werror,-Wimplicit-function-declaration]
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -335,7 +335,8 @@ AC_C_BIGENDIAN
+ AC_C_INLINE
+ 
+ AC_MSG_CHECKING(whether __FUNCTION__ is available)
+-AC_COMPILE_IFELSE([AC_LANG_SOURCE([int main() { printf(__FUNCTION__); }])],
++AC_COMPILE_IFELSE([AC_LANG_SOURCE([#include <stdio.h>
++int main() { printf(__FUNCTION__); }])],
+     [AC_DEFINE([HAVE___FUNCTION__], [1], [Is __FUNCTION__ available])
+      AC_MSG_RESULT(yes)],
+     [AC_MSG_RESULT(no)])
+

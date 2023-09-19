@@ -1,0 +1,26 @@
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -169,7 +169,7 @@
+ 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+ 	$(ioperf_stdio_la_LDFLAGS) $(LDFLAGS) -o $@
+ rocket_silo_la_LIBADD =
+-am_rocket_silo_la_OBJECTS = rocket_silo.lo
++am_rocket_silo_la_OBJECTS = rocket_silo.lo ../src/.libs/libsiloh5.la
+ rocket_silo_la_OBJECTS = $(am_rocket_silo_la_OBJECTS)
+ rocket_silo_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: bash is needed to execute this testscript for test 62.
+Last-Updated: 2011-04-11
+Forwarded: no
+Link: https://sources.debian.org/patches/silo-llnl/4.11-2/testsuite-fix.patch/
+
+--- a/tests/testdtypes
++++ b/tests/testdtypes
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ 
+ # Copyright (C) 1994-2016 Lawrence Livermore National Security, LLC.
+ # LLNL-CODE-425250.

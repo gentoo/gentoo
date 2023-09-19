@@ -1,0 +1,64 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,5 +1,5 @@
+ daimonindir=$(d_bindir)
+-daimonin_PROGRAMS = daimonin daimonin-updater
++daimonin_PROGRAMS = daimonin
+ 
+ daimonin_SOURCES =  \
+ 	../../src/adler32.c \
+@@ -72,30 +72,30 @@
+ #		echo '***'; \
+ #		exit 42; \
+ #	fi;
+-	$(MKDIR) -p $(d_datadir)/sfx
+-	$(MKDIR) -p $(d_datadir)/man
+-	$(MKDIR) -p $(d_datadir)/media
+-	$(MKDIR) -p $(d_datadir)/cache
+-	$(MKDIR) -p $(d_datadir)/logs
+-	$(MKDIR) -p $(d_datadir)/gfx_user
+-	$(MKDIR) -p $(d_datadir)/srv_files
+-	$(MKDIR) -p $(d_datadir)/bitmaps
+-	$(MKDIR) -p $(d_datadir)/icons
+-	$(MKDIR) -p $(d_datadir)/settings
+-	$(MKDIR) -p $(d_datadir)/update
+-	$(CP) ../../sfx/*.* $(d_datadir)/sfx
+-	$(CP) -R ../../man/* $(d_datadir)/man
+-	$(CP) ../../media/*.* $(d_datadir)/media
+-	$(CP) ../../cache/*.* $(d_datadir)/cache
+-	$(CP) ../../bitmaps/* $(d_datadir)/bitmaps
+-	$(CP) ../../icons/* $(d_datadir)/icons
+-	$(CP) -R ../../settings/*.* $(d_datadir)/settings
+-	$(CP) ../../srv_files/*.* $(d_datadir)/srv_files
+-	$(CP) ../../update/version $(d_datadir)/update
+-	$(CP) ../../gfx_user/*.* $(d_datadir)/gfx_user
+-	$(CP) ../../daimonin.p0 $(d_datadir)
+-	$(CP) ../../License $(d_datadir)
+-	$(CP) ../../archdef.dat $(d_datadir)
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/sfx
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/man
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/media
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/cache
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/logs
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/gfx_user
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/srv_files
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/bitmaps
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/icons
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/settings
++	$(MKDIR) -p $(DESTDIR)$(d_datadir)/update
++	$(CP) ../../sfx/*.* $(DESTDIR)$(d_datadir)/sfx
++	$(CP) -R ../../man/* $(DESTDIR)$(d_datadir)/man
++	$(CP) ../../media/*.* $(DESTDIR)$(d_datadir)/media
++	$(CP) ../../cache/*.* $(DESTDIR)$(d_datadir)/cache
++	$(CP) ../../bitmaps/* $(DESTDIR)$(d_datadir)/bitmaps
++	$(CP) ../../icons/* $(DESTDIR)$(d_datadir)/icons
++	$(CP) -R ../../settings/*.* $(DESTDIR)$(d_datadir)/settings
++	$(CP) ../../srv_files/*.* $(DESTDIR)$(d_datadir)/srv_files
++	$(CP) ../../update/version $(DESTDIR)$(d_datadir)/update
++	$(CP) ../../gfx_user/*.* $(DESTDIR)$(d_datadir)/gfx_user
++	$(CP) ../../daimonin.p0 $(DESTDIR)$(d_datadir)
++	$(CP) ../../License $(DESTDIR)$(d_datadir)
++	$(CP) ../../archdef.dat $(DESTDIR)$(d_datadir)
+ 	@echo "*** Daimonin client successful installed in $(daimonindir)!"
+ 	@echo "*** Enter your install folder and type ./daimonin"
+ 	@echo "*** to start the game!"

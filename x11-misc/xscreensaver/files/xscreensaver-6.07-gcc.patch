@@ -1,0 +1,24 @@
+We want it to be possible to bulid with clang, so also check against that.
+
+# Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -303,7 +303,7 @@ done
+ 
+ AC_DEFUN([AC_CHECK_GCC_ARG],
+  [if test -n "$GCC"; then
+-   AC_CACHE_CHECK([whether gcc accepts [$2]],
++   AC_CACHE_CHECK([whether $[$CC] accepts [$2]],
+      ac_cv_gcc_accepts_[$1],
+     [rm -rf conftest.$ac_ext
+      touch conftest.$ac_ext
+@@ -316,7 +316,7 @@ AC_DEFUN([AC_CHECK_GCC_ARG],
+      # earlier diagnostics".
+      #
+      without_no=`echo $2 | sed s/Wno-/W/`
+-     if ( ( gcc -c $without_no conftest.$ac_ext -o/dev/null >/dev/null ) \
++     if ( ( $CC -c $without_no conftest.$ac_ext -o/dev/null >/dev/null ) \
+           2>&1 | \
+           grep unrecognized >/dev/null ); then
+        ac_cv_gcc_accepts_[$1]=no

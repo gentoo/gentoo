@@ -1,0 +1,45 @@
+https://github.com/freeswitch/sofia-sip/pull/134
+
+From 17da7c45937cf0f66ca6a49a5661519443ebf8a7 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Wed, 1 Jun 2022 11:32:38 -0400
+Subject: [PATCH] Fix array size
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+check_sres_sip.c: In function ‘resolver_setup’:
+check_sres_sip.c:113:19: warning: array subscript 2 is above array bounds of ‘su_addrinfo_t[2]’ {aka ‘struct addrinfo[2]’} [-Warray-bounds]
+  113 |   hint_udp_tcp_tls[2].ai_protocol = TPPROTO_TLS;
+      |   ~~~~~~~~~~~~~~~~^~~
+check_sres_sip.c:69:22: note: while referencing ‘hint_udp_tcp_tls’
+   69 | static su_addrinfo_t hint_udp_tcp_tls[2];
+      |                      ^~~~~~~~~~~~~~~~
+check_sres_sip.c:114:19: warning: array subscript 2 is above array bounds of ‘su_addrinfo_t[2]’ {aka ‘struct addrinfo[2]’} [-Warray-bounds]
+  114 |   hint_udp_tcp_tls[2].ai_next = NULL;
+      |   ~~~~~~~~~~~~~~~~^~~
+check_sres_sip.c:69:22: note: while referencing ‘hint_udp_tcp_tls’
+   69 | static su_addrinfo_t hint_udp_tcp_tls[2];
+      |                      ^~~~~~~~~~~~~~~~
+
+Fixes: https://github.com/freeswitch/sofia-sip/issues/89
+---
+ libsofia-sip-ua/sresolv/check_sres_sip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libsofia-sip-ua/sresolv/check_sres_sip.c b/libsofia-sip-ua/sresolv/check_sres_sip.c
+index ea392f0..e6c9642 100644
+--- a/libsofia-sip-ua/sresolv/check_sres_sip.c
++++ b/libsofia-sip-ua/sresolv/check_sres_sip.c
+@@ -66,7 +66,7 @@ struct context {
+ } x[1];
+ 
+ static su_addrinfo_t hint_udp_tcp[2];
+-static su_addrinfo_t hint_udp_tcp_tls[2];
++static su_addrinfo_t hint_udp_tcp_tls[3];
+ static su_addrinfo_t hint_udp_tcp_ip4[2];
+ static su_addrinfo_t hint_tls[1];
+ static su_addrinfo_t hint_tls_udp_tcp[1];
+-- 
+2.35.1
+

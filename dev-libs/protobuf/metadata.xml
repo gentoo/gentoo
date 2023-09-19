@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<slots>
+		<subslots>Soname version number</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:google:protobuf</remote-id>
+		<remote-id type="github">protocolbuffers/protobuf</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,70 @@
+Fix the Makefile for building on Gentoo.
+
+diff -r b15554ece4d6 Makefile
+--- a/Makefile	Thu Feb 21 17:49:39 2008 +0100
++++ b/Makefile	Thu Feb 21 18:51:31 2008 +0100
+@@ -295,7 +295,7 @@ BUILD=$(MAKE) build EXTRACFLAGS='$(EXTRA
+ 
+ # Make the IMAP Toolkit
+ 
+-all:	c-client SPECIALS rebuild bundled
++all:	c-client SPECIALS rebuild
+ 
+ c-client:
+ 	@echo Not processed yet.  In a first-time build, you must specify
+@@ -665,16 +665,9 @@ an ua:
+ 	$(TOOLS)/$@ "$(LN)" src/ansilib c-client
+ 	$(TOOLS)/$@ "$(LN)" src/charset c-client
+ 	$(TOOLS)/$@ "$(LN)" src/osdep/$(SYSTEM) c-client
+-	$(TOOLS)/$@ "$(LN)" src/mtest mtest
+-	$(TOOLS)/$@ "$(LN)" src/ipopd ipopd
+-	$(TOOLS)/$@ "$(LN)" src/imapd imapd
+-	$(TOOLS)/$@ "$(LN)" src/mailutil mailutil
+-	$(TOOLS)/$@ "$(LN)" src/mlock mlock
+-	$(TOOLS)/$@ "$(LN)" src/dmail dmail
+-	$(TOOLS)/$@ "$(LN)" src/tmail tmail
+ 	$(LN) $(TOOLS)/$@ .
+ 
+-build:	OSTYPE rebuild rebuildclean bundled
++build:	OSTYPE rebuild rebuildclean
+ 
+ OSTYPE:
+ 	@$(MAKE) ip$(IP)
+@@ -690,8 +683,6 @@ OSTYPE:
+ 	echo $(BUILDTYPE) > OSTYPE
+ 	$(TOUCH) rebuild
+ 
+-rebuild:
+-	@$(SH) -c '(test $(BUILDTYPE) = rebuild -o $(BUILDTYPE) = `$(CAT) OSTYPE`) || (echo Already built for `$(CAT) OSTYPE` -- you must do \"make clean\" first && exit 1)'
+ 	@echo Rebuilding c-client for `$(CAT) OSTYPE`...
+ 	@$(TOUCH) SPECIALS
+ 	$(CD) c-client;$(MAKE) all CC=`$(CAT) CCTYPE` \
+@@ -700,28 +691,6 @@ rebuildclean:
+ rebuildclean:
+ 	$(SH) -c '$(RM) rebuild || true'
+ 
+-bundled:
+-	@echo Building bundled tools...
+-	$(CD) mtest;$(MAKE)
+-	$(CD) ipopd;$(MAKE)
+-	$(CD) imapd;$(MAKE)
+-	$(CD) mailutil;$(MAKE)
+-	@$(SH) -c '(test -f /usr/include/sysexits.h ) || make sysexitwarn'
+-	$(CD) mlock;$(MAKE) || true
+-	$(CD) dmail;$(MAKE) || true
+-	$(CD) tmail;$(MAKE) || true
+-
+-
+-sysexitwarn:
+-	@echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-	@echo + Hmm...it does not look like /usr/include/sysexits.h exists.
+-	@echo + Either your system is too ancient to have the sysexits.h
+-	@echo + include, or your C compiler gets it from some other location
+-	@echo + than /usr/include.  If your system is too old to have the
+-	@echo + sysexits.h include, you will not be able to build the
+-	@echo + following programs.
+-	@echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-
+ clean:
+ 	@echo Removing old processed sources and binaries...
+ 	$(SH) -c '$(RM) an ua OSTYPE SPECIALS c-client mtest imapd ipopd mailutil mlock dmail tmail || true'

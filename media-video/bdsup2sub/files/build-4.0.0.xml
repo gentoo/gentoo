@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<project name="BDSup2Sub" default="jar">
+	<!-- some properties -->
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="docs.dir" value="apidocs" />
+	<property name="dist.dir" value="dist" />
+	<property name="resources.dir" value="bin_copy" />
+	<property name="project.jar" value="${dist.dir}/${ant.project.name}.jar" />
+	<property name="target.jdk" value="1.6" />
+
+	<!-- init -->
+	<target name="init">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${docs.dir}" />
+		<mkdir dir="${build.dir}" />
+	</target>	
+
+	<!-- compile everything -->
+	<target name="compile" depends="init">
+		<javac srcdir="${src.dir}"
+			destdir="${build.dir}"
+			source="${target.jdk}"
+			target="${target.jdk}"
+			encoding="ISO-8859-1"/>
+		<copy todir="${build.dir}">
+			<fileset dir="${resources.dir}" />
+		</copy>
+	</target>
+
+	<!-- build the jar files -->
+	<target name="build" depends="compile">
+		<jar jarfile="${project.jar}" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${ant.project.name}" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<!-- generate javadocs -->
+	<target name="javadoc" depends="init">
+		<javadoc sourcepath="${src.dir}"
+			packagenames="*"
+           		destdir="${docs.dir}"
+           		author="true"
+           		version="true"
+			use="true"
+			charset="UTF-8"
+			encoding="ISO-8859-1"
+           		windowtitle="${ant.project.name} API" />
+	</target>
+	
+	<!-- clean up -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+        <!-- zip the sources -->
+        <target name="sourcezip">
+		<zip destfile="${dist.dir}/${ant.project.name}-src.zip">
+                        <zipfileset dir="${src.dir}" />
+                </zip>
+        </target>
+
+</project>

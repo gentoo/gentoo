@@ -1,0 +1,10 @@
+--- a/rlogin/rlogin.c
++++ b/rlogin/rlogin.c
+@@ -194,6 +194,7 @@
+ 		p = argv[0];
+ 
+ 	if (strcmp(p, "rlogin"))
++	if (strcmp(p, "rsh"))
+ 		host = p;
+ 
+ 	/* handle "rlogin host flags" */

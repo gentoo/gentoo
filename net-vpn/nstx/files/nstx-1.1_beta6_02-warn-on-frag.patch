@@ -1,0 +1,22 @@
+Only in nstx-1.1-beta6.orig/: nstx_dns.o
+Only in nstx-1.1-beta6.orig/: nstx_encode.o
+Only in nstx-1.1-beta6.orig/: nstx_pstack.o
+diff -ru nstx-1.1-beta6.orig/nstx_tuntap.c nstx-1.1-beta6/nstx_tuntap.c
+--- nstx-1.1-beta6.orig/nstx_tuntap.c	2009-03-16 23:56:02.000000000 +0000
++++ nstx-1.1-beta6/nstx_tuntap.c	2009-03-17 00:06:00.000000000 +0000
+@@ -274,7 +274,13 @@
+ sendtun(const char *data, size_t len)
+ {
+ //   printf("Sent len %d, csum %d\n", len, checksum(data, len));
+-   write(tfd, data, len);
++   size_t w = write(tfd, data, len);
++
++   if (w < len) {
++       fprintf(stderr, "packet was descrutively fragmented! (len=%zd, "
++           "wrote=%zd)\n",
++           len, w);
++   }
+ }
+ 
+ void
+Only in nstx-1.1-beta6.orig/: nstxd.o

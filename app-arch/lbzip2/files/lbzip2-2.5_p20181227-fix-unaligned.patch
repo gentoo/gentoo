@@ -1,0 +1,33 @@
+https://github.com/kjn/lbzip2/pull/25
+
+From d570020ade2add591b97e61927545a005a2d4a6f Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Wed, 7 Aug 2019 11:47:04 -0700
+Subject: [PATCH] Align zero-length array to avoid unaligned accesses
+
+When make_tree() creates the left-justified base table (uint64_t *B)
+it does so with 64-bit stores:
+
+    B[k] = sofar;
+
+But B points to memory in the zero-length array "uint32_t tt[0]" at the
+end of struct decoder_state. Since tt's type is uint32_t, it is only
+aligned to a four byte boundary, and so the 64-bit store in make_tree()
+causes an unaligned trap on strict platforms like sparc.
+---
+ src/decode.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/decode.h b/src/decode.h
+index c9a9086..7c0ca3f 100644
+--- a/src/decode.h
++++ b/src/decode.h
+@@ -62,7 +62,7 @@ struct decoder_state {
+   uint8_t rle_char;             /* current character */
+   uint8_t rle_prev;             /* prevoius character */
+ 
+-  uint32_t tt[0];
++  uint32_t tt[0] __attribute__((aligned (8)));
+ };
+ 
+ 

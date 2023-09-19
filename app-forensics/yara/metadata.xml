@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		YARA is a tool aimed at (but not limited to) helping malware
+		researchers to identify and classify malware samples. With YARA you can
+		create descriptions of malware families (or whatever you want to
+		describe) based on textual or binary patterns.
+	</longdescription>
+	<use>
+		<flag name='cuckoo'>Enable cockoo module</flag>
+		<flag name='dex'>Enable dex module</flag>
+		<flag name='dotnet'>Enable dotnet module</flag>
+		<flag name='macho'>Enable macho module</flag>
+		<flag name='magic'>Enable magic module</flag>
+		<flag name='profiling'>Enable rules profiling</flag>
+		<flag name='python'>Pulls in python binding via <pkg>dev-python/yara-python</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">VirusTotal/yara</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="dist-kernel-cap">Prevents upgrading to an unsupported kernel version when combined with USE=dist-kernel</flag>
+		<flag name="rootfs">Pull dependencies and check kernel options required for root-on-zfs</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/openzfs/zfs/issues</bugs-to>
+		<doc>https://openzfs.github.io/openzfs-docs</doc>
+		<remote-id type="github">openzfs/zfs</remote-id>
+	</upstream>
+</pkgmetadata>

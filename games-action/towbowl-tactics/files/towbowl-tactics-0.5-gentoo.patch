@@ -1,0 +1,40 @@
+--- a/config.xml
++++ b/config.xml
+@@ -5,5 +5,5 @@
+ <screen_h>600</screen_h>
+ <sound_enabled>1</sound_enabled>
+ <video_enabled>1</video_enabled>
+-<language>0</language>
++<language>1</language>
+ </config>
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,24 +1,20 @@
+ TBTHOME = /usr/local/games/tbt
+ INCDIR = -I /usr/include/smpeg -I /usr/include/libxml2 -I /usr/include/SDL/ 
+-CFLAGS = -O2 -g -fno-strength-reduce -Wall -W -DTBTHOME=\"$(TBTHOME)\" 
+-LFLAGS = -L. -lm -lSDL -lSDL_net -lSDL_image -lSDL_mixer -ldl -pthread -lxml2 -lsmpeg
+-CC     = g++
++CXXFLAGS += -DTBTHOME=\"$(TBTHOME)\"
++LIBS = -lm -lSDL -lSDL_net -lSDL_image -lSDL_mixer -ldl -pthread -lxml2 -lsmpeg
+ SOURCES = movies.cpp sounds.cpp SFont.cpp Ball.cpp CON_console.cpp CON_consolecommands.cpp CON_internal.cpp Config.cpp Console.cpp DT_drawtext.cpp DialogBox.cpp Dice.cpp Formation.cpp Main.cpp MoviePlayer.cpp NetClient.cpp NetServer.cpp Network.cpp Path.cpp Player.cpp ProgressBar.cpp Public.cpp Screen.cpp Shared.cpp SoundPlayer.cpp Square.cpp State.cpp Team.cpp Transformation.cpp Translator.cpp XmlParser.cpp dir_func.cpp 
+ OBJS = $(patsubst %.c,%.o,$(SOURCES:%.cpp=%.o))
+ PRGM = tbt
+ 
+ .SUFFIXES: .cpp .c
+ 
+-.c.o: 
+-	$(CC) -c $< $(CFLAGS) $(INCDIR) -o $@
+-
+ .cpp.o: 
+-	$(CC) -c $< $(CFLAGS) $(INCDIR) -o $@
++	$(CXX) -c $< $(CXXFLAGS) $(INCDIR) -o $@
+ 
+ all: $(PRGM)
+ 
+ $(PRGM): $(OBJS)
+-	$(CC) $(OBJS) -o $(PRGM) $(LFLAGS)
++	$(CXX) $(OBJS) -o $(PRGM) $(LDFLAGS) $(LIBS)
+ 
+ clean:
+ 	-rm -f $(PRGM) *core *~ *.o

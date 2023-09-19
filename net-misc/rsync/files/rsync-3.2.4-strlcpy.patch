@@ -1,0 +1,46 @@
+https://github.com/WayneD/rsync/issues/324
+https://github.com/WayneD/rsync/commit/3592ac3c025da23b2dd291561ec6113940b9c11b
+
+From 3592ac3c025da23b2dd291561ec6113940b9c11b Mon Sep 17 00:00:00 2001
+From: Wayne Davison <wayne@opencoder.net>
+Date: Sun, 19 Jun 2022 10:02:51 -0700
+Subject: [PATCH] Include bsd/strings.h if it exists
+
+Some systems apparently put strlcpy() into a separate bsd/strings.h file
+without putting the function into a separate library. Thus, configure
+finds that the function exists for linking but the build does not have
+the declaration (which rsync only supplies if it is also supplying its
+own version of the function).
+---
+ configure.ac | 3 ++-
+ rsync.h      | 3 +++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 37dbb18a..37241637 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13,7 +13,8 @@ AC_CHECK_HEADERS(sys/fcntl.h sys/select.h fcntl.h sys/time.h sys/unistd.h \
+     netdb.h malloc.h float.h limits.h iconv.h libcharset.h langinfo.h mcheck.h \
+     sys/acl.h acl/libacl.h attr/xattr.h sys/xattr.h sys/extattr.h dl.h \
+     popt.h popt/popt.h linux/falloc.h netinet/in_systm.h netgroup.h \
+-    zlib.h xxhash.h openssl/md4.h openssl/md5.h zstd.h lz4.h sys/file.h)
++    zlib.h xxhash.h openssl/md4.h openssl/md5.h zstd.h lz4.h sys/file.h \
++    bsd/string.h)
+ AC_CHECK_HEADERS([netinet/ip.h], [], [], [[#include <netinet/in.h>]])
+ AC_HEADER_MAJOR_FIXED
+ 
+diff --git a/rsync.h b/rsync.h
+index e5aacd25..1cc037c5 100644
+--- a/rsync.h
++++ b/rsync.h
+@@ -338,6 +338,9 @@ enum delret {
+ # endif
+ # include <string.h>
+ #endif
++#ifdef HAVE_BSD_STRING_H
++# include <bsd/string.h>
++#endif
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+ #endif

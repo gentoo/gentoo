@@ -1,0 +1,10 @@
+diff --git a/test-suite/standalone/test-out-of-memory b/test-suite/standalone/test-out-of-memory
+index 2216512..0ed6079 100755
+--- a/test-suite/standalone/test-out-of-memory
++++ b/test-suite/standalone/test-out-of-memory
+@@ -5,2 +5,5 @@ exec guile -q -s "$0" "$@"
+ 
++; Gentoo's sandbox does not handle OOM gracefully
++(exit 77)
++
+ (unless (defined? 'setrlimit)

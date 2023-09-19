@@ -1,0 +1,13 @@
+Yiyang's original patch for msgpack-cxx-5 adapted to version 6.
+
+--- a/Tensile/Source/lib/CMakeLists.txt
++++ b/Tensile/Source/lib/CMakeLists.txt
+@@ -97,7 +97,7 @@ if(TENSILE_USE_LLVM OR TENSILE_USE_MSGPACK)
+ endif()
+ 
+ if(TENSILE_USE_MSGPACK)
+-    find_package(msgpack REQUIRED)
++    find_package(msgpack-cxx REQUIRED)
+     target_compile_definitions(TensileHost PUBLIC -DTENSILE_MSGPACK=1)
+ 
+     if(TARGET msgpackc-cxx)

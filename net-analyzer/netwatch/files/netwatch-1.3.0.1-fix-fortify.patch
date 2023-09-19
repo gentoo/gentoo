@@ -1,0 +1,11 @@
+--- a/netwatch.c
++++ b/netwatch.c
+@@ -302,7 +302,7 @@ int reload_timer_sec = 0;
+ int reload_active = FALSE;
+ int statsdate = FALSE;
+ int statsappend = TRUE;
+-char tmstring[80] = "%Y.%m.%d.%H.%M";
++char tmstring[256] = "%Y.%m.%d.%H.%M";
+ int freezedisplay = FALSE;
+ int lastfreeze = FALSE;
+ int sentclear = FALSE;

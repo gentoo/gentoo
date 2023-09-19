@@ -1,0 +1,12 @@
+diff -Naurp a/src/rebar_port_compiler.erl b/src/rebar_port_compiler.erl
+--- a/src/rebar_port_compiler.erl	2016-08-31 16:47:31.000000000 +0200
++++ b/src/rebar_port_compiler.erl	2020-05-23 13:03:22.464682124 +0200
+@@ -673,7 +673,7 @@ default_env() ->
+                        "\" "
+                       ])},
+      {"ERL_EI_LIBDIR", lists:concat(["\"", erl_interface_dir(lib), "\""])},
+-     {"ERL_LDFLAGS"  , " -L$ERL_EI_LIBDIR -lerl_interface -lei"},
++     {"ERL_LDFLAGS"  , " -L$ERL_EI_LIBDIR -lei"},
+      {"ERLANG_ARCH"  , rebar_utils:wordsize()},
+      {"ERLANG_TARGET", rebar_utils:get_arch()},
+ 

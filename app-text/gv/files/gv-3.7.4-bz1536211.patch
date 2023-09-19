@@ -1,0 +1,28 @@
+Fix PDF printing
+https://bugzilla.redhat.com/show_bug.cgi?id=1536211
+https://src.fedoraproject.org/rpms/gv/blob/rawhide/f/gv-bz1536211.patch
+
+diff -up a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -198,7 +198,7 @@ gv_intern_res_unix.dat :
+ 	@echo ""							>> gv_intern_res_unix.dat
+ 	@echo "GV.gsInterpreter:	gs" >> gv_intern_res_unix.dat
+ 	@echo "GV.gsCmdScanPDF:	gs -dNODISPLAY -dQUIET -sPDFname=%s -sDSCname=%s %s pdf2dsc.ps -c quit" >> gv_intern_res_unix.dat
+-	@echo "GV.gsCmdConvPDF:	gs -dNOPAUSE -dQUIET -dBATCH -sDEVICE=pswrite -sOutputFile=%s -f %s -c save pop quit" >> gv_intern_res_unix.dat
++	@echo "GV.gsCmdConvPDF:	gs -dNOPAUSE -dQUIET -dBATCH -sDEVICE=ps2write -sOutputFile=%s -f %s -c save pop quit" >> gv_intern_res_unix.dat
+ 	@echo "GV.gsX11Device:		-sDEVICE=x11" >> gv_intern_res_unix.dat
+ 	@echo "GV.gsX11AlphaDevice:	-sDEVICE=x11 -dTextAlphaBits=4 -dGraphicsAlphaBits=2 -dMaxBitmap=10000000 -dNOPLATFONTS" >> gv_intern_res_unix.dat
+ 	@echo "GV.gsSafeDir:		True" >> gv_intern_res_unix.dat
+diff -up a/src/Makefile.in b/src/Makefile.in
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -1134,7 +1134,7 @@ gv_intern_res_unix.dat :
+ 	@echo ""							>> gv_intern_res_unix.dat
+ 	@echo "GV.gsInterpreter:	gs" >> gv_intern_res_unix.dat
+ 	@echo "GV.gsCmdScanPDF:	gs -dNODISPLAY -dQUIET -sPDFname=%s -sDSCname=%s %s pdf2dsc.ps -c quit" >> gv_intern_res_unix.dat
+-	@echo "GV.gsCmdConvPDF:	gs -dNOPAUSE -dQUIET -dBATCH -sDEVICE=pswrite -sOutputFile=%s -f %s -c save pop quit" >> gv_intern_res_unix.dat
++	@echo "GV.gsCmdConvPDF:	gs -dNOPAUSE -dQUIET -dBATCH -sDEVICE=ps2write -sOutputFile=%s -f %s -c save pop quit" >> gv_intern_res_unix.dat
+ 	@echo "GV.gsX11Device:		-sDEVICE=x11" >> gv_intern_res_unix.dat
+ 	@echo "GV.gsX11AlphaDevice:	-sDEVICE=x11 -dTextAlphaBits=4 -dGraphicsAlphaBits=2 -dMaxBitmap=10000000 -dNOPLATFONTS" >> gv_intern_res_unix.dat
+ 	@echo "GV.gsSafeDir:		True" >> gv_intern_res_unix.dat

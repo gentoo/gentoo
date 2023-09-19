@@ -1,0 +1,32 @@
+https://sigrok.org/gitweb/?p=libserialport.git;a=commitdiff;h=6f9b03e597ea7200eb616a4e410add3dd1690cb1
+https://sigrok.org/bugzilla/show_bug.cgi?id=1687
+https://bugs.gentoo.org/813273
+
+Fixes runtime breakage with newer kernels.
+
+From: Karl Palsson <karlp@etactica.com>
+Date: Fri, 11 Jun 2021 17:07:09 +0000
+Subject: [PATCH] HACK: don't even check for termiox
+
+termiox was removed from linux in e0efb3168d34
+Some more information available in https://www.spinics.net/lists/linux-serial/msg41926.html
+
+Attempting to use the termiox ioctls on more modern kernels results in
+"Inappropriate IOCTL" errors.
+
+While the "right" solution might be to remove the termiox code from the
+linux path, simply not checking for termiox builds a libserialport that
+functions on modern linux kernels.
+
+Signed-off-by: Karl Palsson <karlp@etactica.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -112,7 +112,7 @@ AC_SYS_LARGEFILE
+ AC_TYPE_SIZE_T
+ 
+ # Check for specific termios structures.
+-AC_CHECK_TYPES([struct termios2, struct termiox],,,
++AC_CHECK_TYPES([struct termios2],,,
+ 	[[#include <linux/termios.h>]])
+ AC_CHECK_MEMBERS([struct termios.c_ispeed, struct termios.c_ospeed,
+ 		struct termios2.c_ispeed, struct termios2.c_ospeed],,,

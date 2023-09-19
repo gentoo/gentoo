@@ -1,0 +1,13 @@
+--- a/src/terminal.c
++++ b/src/terminal.c
+@@ -190,7 +190,9 @@
+ #endif
+ 
+    pthread_mutex_destroy(&terms->admin_listen_th.finished);
++#ifdef HAS_CURSES
+    pthread_mutex_destroy(&terms->gui_th.finished);
++#endif
+    pthread_mutex_destroy(&terms->pcap_listen_th.finished);
+    pthread_mutex_destroy(&terms->uptime_th.finished);
+ 
+

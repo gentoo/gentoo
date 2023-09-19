@@ -1,0 +1,19 @@
+--- makefile.orig	2009-01-04 16:00:44.467365615 +0100
++++ makefile	2009-01-04 16:02:16.338692800 +0100
+@@ -8,13 +8,13 @@
+ 	install -sc cwmm ${PREFIX}/bin
+ 
+ cwmm: cwmm.o morse.o
+-	${CC} ${CFLAGS} -o cwmm $^
++	${CC} ${CFLAGS} $(LDFLAGS) -o cwmm $^
+ 	
+ cwpcm: cwpcm.o morse.o pcm.o
+-	${CC} ${CFLAGS} -o cwpcm -lm $^
++	${CC} ${CFLAGS} $(LDFLAGS) -o cwpcm $^ -lm
+ 
+ cwtext: cwtext.o morse.o
+-	${CC} ${CFLAGS} -o cwtext  $^
++	${CC} ${CFLAGS} $(LDFLAGS) -o cwtext  $^
+ 
+ cwpcm.o: cwpcm.c morse.h pcm.h
+ 	${CC} ${CFLAGS} -c cwpcm.c

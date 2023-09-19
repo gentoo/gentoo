@@ -1,0 +1,69 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+DAEMON=/usr/sbin/automount
+PIDFILE=/var/run/autofs.pid
+DEVICE=autofs
+
+depend() {
+	need localmount	
+	use ypbind nfsclient slapd net
+}
+
+extra_started_commands="reload"
+
+start() {
+	ebegin "Starting automounter"
+
+	# Ensure autofs support is loaded
+	grep -q autofs /proc/filesystems || modprobe -q autofs4
+	if [ $? -ne 0 ]; then
+		eend 1 "No autofs support available in kernel"
+		return 1
+	fi
+
+	# Check misc device
+	if [ -n "${USE_MISC_DEVICE}" -a "${USE_MISC_DEVICE}" = "yes" ]; then
+		sleep 1
+		if [ -e "/proc/misc" ]; then
+			MINOR=$(awk "/${DEVICE}/ {print \$1}" /proc/misc)
+			if [ -n "${MINOR}" -a ! -c "/dev/${DEVICE}" ]; then
+				mknod -m 0600 "/dev/${DEVICE}" c 10 ${MINOR}
+				if [ $? -ne 0 ]; then
+					eend 1 "Could not create '/dev/${DEVICE}'"
+					return 1
+				fi
+			fi
+		fi
+		if [ -x /sbin/restorecon -a -c "/dev/${DEVICE}" ]; then
+			/sbin/restorecon "/dev/${DEVICE}"
+			if [ $? -ne 0 ]; then
+				eend 1 "Failed to execute '/sbin/restorecon \"/dev/${DEVICE}\"'"
+				return 1
+			fi
+		fi
+	else
+		[ -c "/dev/${DEVICE}" ] && rm -rf "/dev/${DEVICE}"
+	fi
+
+	start-stop-daemon --start --exec ${DAEMON} -- -p ${PIDFILE} ${OPTIONS}
+
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping automounter"
+	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading automounter"
+	if [ ! -r "${PIDFILE}" ]; then
+		eend 1 "automount not running"
+	else
+		kill -s HUP $(cat "${PIDFILE}") 2> /dev/null
+		eend $?
+	fi
+}

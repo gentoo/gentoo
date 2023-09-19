@@ -1,0 +1,14 @@
+Missing header for headless builds (quickfix, may not make much
+sense to probe renderer on headless).
+
+os_linuxbsd.cpp:249:46: error: 'RenderingServer' has not been declared
+
+Caused by: https://github.com/godotengine/godot/commit/de768afbdcf
+--- a/platform/linuxbsd/os_linuxbsd.cpp
++++ b/platform/linuxbsd/os_linuxbsd.cpp
+@@ -34,4 +34,5 @@
+ #include "main/main.h"
+ #include "servers/display_server.h"
++#include "servers/rendering_server.h"
+ 
+ #include "modules/modules_enabled.gen.h" // For regex.

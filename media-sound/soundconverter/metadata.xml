@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gstreamer@gentoo.org</email>
+		<name>GStreamer package maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="launchpad">soundconverter</remote-id>
+		<remote-id type="github">kassoulet/soundconverter</remote-id>
+	</upstream>
+</pkgmetadata>

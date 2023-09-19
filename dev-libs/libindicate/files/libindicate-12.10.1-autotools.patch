@@ -1,0 +1,151 @@
+- Temporary patch to disable mono until new gtk-sharp is in tree wrt bug #382491
+- fix parallel install issue #469032
+- remove -Werror
+- use VAPIGEN from vala.eclass
+
+--- a/bindings/Makefile.am
++++ b/bindings/Makefile.am
+@@ -1,9 +1,5 @@
+ SUBDIRS = 
+ 
+-if HAS_MONO
+-SUBDIRS += mono
+-endif
+-
+ if HAS_PYTHON
+ SUBDIRS += python
+ endif
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ 
+ AC_PREREQ(2.53)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(libindicate, 12.10.1)
+ 
+ AM_MAINTAINER_MODE
+@@ -134,62 +134,7 @@
+ # Vala API Generation
+ ###########################
+ 
+-AC_PATH_PROG([VALA_API_GEN], [vapigen])
+-
+-###########################
+-# Check for Mono support
+-###########################
+-
+-MONO_REQUIRED_VERSION=1.0
+-PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
+-
+-AC_PATH_PROG(AL, al, no)
+-if test "x$AL" = "xno" ; then
+-   AC_MSG_NOTICE([No al tool found.  You need to install Mono.])
+-fi
+-
+-if test "x$has_mono" = "xtrue" ; then
+-   GENERATED_SOURCES=generated/*.cs
+-   AC_PATH_PROG(RUNTIME, mono, no)
+-
+-   if test "x$RUNTIME" != "no" ; then
+-      RUNTIME=mono
+-   fi
+-
+-   AC_PATH_PROG(CSC, gmcs, no)
+-   LIB_PREFIX=.so
+-   LIB_SUFFIX=
+-fi
+-
+-if test "x$CSC" = "xno" ; then
+-   AC_MSG_NOTICE([No Mono compiler found.])
+-fi
+-
+-AC_PATH_PROG(GACUTIL, gacutil, no)
+-if test "x$GACUTIL" = "xno" ; then
+-   AC_MSG_NOTICE([No gacutil tool found])
+-fi
+-
+-AC_SUBST(RUNTIME)
+-AC_SUBST(CSC)
+-AC_SUBST(GACUTIL)
+-AC_SUBST(LIB_PREFIX)
+-AC_SUBST(LIB_SUFFIX)
+-AC_SUBST(GENERATED_SOURCES)
+-
+-GLIB_SHARP_REQ_VERSION=2.12.1
+-GTK_SHARP_REQ_VERSION=2.12
+-PKG_CHECK_MODULES(GTK_SHARP, gtk-sharp-2.0 >= $GTK_SHARP_REQ_VERSION, has_gtksharp=true, has_gtksharp=false)
+-AC_SUBST(GTK_SHARP_LIBS)
+-AC_SUBST(GTK_SHARP_CFLAGS)
+-
+-PKG_CHECK_MODULES(GAPI, gapi-2.0 >= $GLIB_SHARP_REQ_VERSION, has_gapi=true, has_gapi=false)
+-AC_PATH_PROG(GAPI_PARSER, gapi2-parser, no)
+-AC_SUBST(GAPI_PARSER)
+-AC_PATH_PROG(GAPI_CODEGEN, gapi2-codegen, no)
+-AC_SUBST(GAPI_CODEGEN)
+-AC_PATH_PROG(GAPI_FIXUP, gapi2-fixup, no)
+-AC_SUBST(GAPI_FIXUP)
++AC_PATH_PROG([VAPIGEN], [vapigen])
+ 
+ ###########################
+ # Check for Python support
+--- a/libindicate/Makefile.am
++++ b/libindicate/Makefile.am
+@@ -74,7 +74,7 @@
+ libindicate_la_CFLAGS = \
+ 	$(LIBINDICATE_CFLAGS) \
+ 	$(COVERAGE_CFLAGS) \
+-	-Wall -Werror
++	-Wall
+ 
+ libindicate_la_LIBADD = \
+ 	$(LIBINDICATE_LIBS)
+@@ -173,7 +173,7 @@
+ vapi_DATA = Indicate-0.7.vapi
+ 
+ Indicate-0.7.vapi: Indicate-0.7.gir
+-	$(VALA_API_GEN) --library=Indicate-0.7 \
++	$(VAPIGEN) --library=Indicate-0.7 \
+ 			--pkg Dbusmenu-0.4 \
+ 			$<
+ 
+--- a/libindicate-gtk/Makefile.am
++++ b/libindicate-gtk/Makefile.am
+@@ -26,8 +26,7 @@
+ 	indicator.h \
+ 	listener.h
+ 
+-libindicate_gtkinclude_HEADERS = \
+-	$(indicate_gtk_headers)
++libindicate_gtkinclude_HEADERS =
+ 
+ libindicate_gtk_la_SOURCES = \
+ 	$(indicate_gtk_headers) \
+@@ -43,7 +42,7 @@
+ libindicate_gtk_la_CFLAGS = \
+ 	$(COVERAGE_CFLAGS) \
+ 	-I $(top_srcdir) \
+-	-Wall -Werror \
++	-Wall \
+ 	$(LIBINDICATEGTK_CFLAGS)
+ 
+ libindicate_gtk_la_LIBADD = \
+@@ -58,7 +57,7 @@
+ libindicate_gtk3_la_CFLAGS = $(libindicate_gtk_la_CFLAGS)
+ libindicate_gtk3_la_LDFLAGS = $(libindicate_gtk_la_LDFLAGS)
+ libindicate_gtk3_la_SOURCES = $(libindicate_gtk_la_SOURCES)
+-libindicate_gtk3include_HEADERS = $(libindicate_gtkinclude_HEADERS)
++libindicate_gtk3include_HEADERS = $(indicate_gtk_headers)
+ libindicate_gtk3includedir = $(libindicate_gtkincludedir)
+ 
+ pkgconfig_DATA = indicate-gtk$(VER)-0.7.pc
+@@ -139,7 +138,7 @@
+ vapi_DATA = IndicateGtk$(VER)-0.7.vapi
+ 
+ IndicateGtk$(VER)-0.7.vapi: IndicateGtk$(VER)-0.7.tmp.gir Makefile.am
+-	$(VALA_API_GEN) --library=IndicateGtk$(VER)-0.7 \
++	$(VAPIGEN) --library=IndicateGtk$(VER)-0.7 \
+ 		--pkg $(GTKVALA) \
+ 		--pkg Dbusmenu-0.4 \
+ 		--pkg Indicate-0.7 \

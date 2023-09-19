@@ -1,0 +1,17 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,12 +88,12 @@
+     message(STATUS "Build type: Debug")
+ 
+     set(CMAKE_BUILD_TYPE "Debug")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra -Wformat=2 -Winit-self -Wreturn-type -Wswitch-default -Wswitch-enum -Wunused-parameter -Wuninitialized -Wstrict-aliasing=3 -Wstrict-overflow=5 -Wdeclaration-after-statement -Wundef -Wpointer-arith -Wunsafe-loop-optimizations -Wbad-function-cast -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsizeof-pointer-memaccess -Wlogical-op -Waggregate-return -Wstrict-prototypes -Wold-style-declaration -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wnested-externs -Winline -Wlong-long -Wvariadic-macros -Wvarargs -Wvla -Wdisabled-optimization -Woverlength-strings -O0 -g -ggdb")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wformat=2 -Winit-self -Wreturn-type -Wswitch-default -Wswitch-enum -Wunused-parameter -Wuninitialized -Wstrict-aliasing=3 -Wstrict-overflow=5 -Wdeclaration-after-statement -Wundef -Wpointer-arith -Wunsafe-loop-optimizations -Wbad-function-cast -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsizeof-pointer-memaccess -Wlogical-op -Waggregate-return -Wstrict-prototypes -Wold-style-declaration -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wnested-externs -Winline -Wlong-long -Wvariadic-macros -Wvarargs -Wvla -Wdisabled-optimization -Woverlength-strings")
+ else(cmake_build_type_tolower STREQUAL "debug")
+     message(STATUS "Build type: Release")
+ 
+     set(CMAKE_BUILD_TYPE "Release")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra -O3 -DNDEBUG")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -DNDEBUG")
+ endif(cmake_build_type_tolower STREQUAL "debug")
+ 
+ find_package(Headers)

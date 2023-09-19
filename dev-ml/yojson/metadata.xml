@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <name>François-Xavier Carton</name>
+    <email>fx.carton91@gmail.com</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/mjambon/yojson/issues/</bugs-to>
+    <remote-id type="github">mjambon/yojson</remote-id>
+  </upstream>
+</pkgmetadata>

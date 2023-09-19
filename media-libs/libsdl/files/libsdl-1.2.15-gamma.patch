@@ -1,0 +1,42 @@
+From 4b56fa058a45b7c804d1a5fcaf7a70db0bd0581c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <petr.pisar@atlas.cz>
+Date: Tue, 1 Jan 2013 21:25:15 +0100
+Subject: [PATCH] x11: Bypass SetGammaRamp when changing gamma
+
+Recent Xorg has broken dynamic colors setting, so calling SDL_SetGamme()
+does not have any effect here. Recent means xorg-server >= 1.7, since 2010.
+See <https://bugs.freedesktop.org/show_bug.cgi?id=27222>.
+---
+ src/video/SDL_gamma.c |   15 ++-------------
+ 1 files changed, 2 insertions(+), 13 deletions(-)
+
+--- a/src/video/SDL_gamma.c
++++ b/src/video/SDL_gamma.c
+@@ -92,22 +92,11 @@ static void CalculateGammaFromRamp(float *gamma, Uint16 *ramp)
+ 
+ int SDL_SetGamma(float red, float green, float blue)
+ {
+-	int succeeded;
++	int succeeded = -1;
+ 	SDL_VideoDevice *video = current_video;
+ 	SDL_VideoDevice *this  = current_video;	
+ 
+-	succeeded = -1;
+-	/* Prefer using SetGammaRamp(), as it's more flexible */
+-	{
+-		Uint16 ramp[3][256];
+-
+-		CalculateGammaRamp(red, ramp[0]);
+-		CalculateGammaRamp(green, ramp[1]);
+-		CalculateGammaRamp(blue, ramp[2]);
+-		succeeded = SDL_SetGammaRamp(ramp[0], ramp[1], ramp[2]);
+-	}
+-	if ( (succeeded < 0) && video->SetGamma ) {
+-		SDL_ClearError();
++	if ( video->SetGamma ) {
+ 		succeeded = video->SetGamma(this, red, green, blue);
+ 	}
+ 	return succeeded;
+-- 
+1.7.8.6
+

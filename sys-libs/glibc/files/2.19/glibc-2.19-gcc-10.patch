@@ -1,0 +1,15 @@
+Identify gcc-10+ as a good compiler.
+
+Index: work/glibc-2.19/configure
+===================================================================
+--- glibc-2.19/configure
++++ glibc-2.19/configure
+@@ -4710,7 +4710,7 @@ $as_echo_n "checking version of $CC... "
+   ac_prog_version=`$CC -v 2>&1 | sed -n 's/^.*version \([egcygnustpi-]*[0-9.]*\).*$/\1/p'`
+   case $ac_prog_version in
+     '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
+-    4.[4-9].* | 4.[1-9][0-9].* | [5-9].* )
++    4.[4-9].* | 4.[1-9][0-9].* | [5-9].* | [1-9][0-9].* )
+        ac_prog_version="$ac_prog_version, ok"; ac_verc_fail=no;;
+     *) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
+ 

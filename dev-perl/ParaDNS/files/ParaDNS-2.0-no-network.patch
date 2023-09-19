@@ -1,0 +1,38 @@
+From 257b6b9764858cdbca2e0d6b95e688bb92ae0b05 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 27 Dec 2017 16:19:05 +1300
+Subject: Fence for NO_NETWORK_TESTING
+
+---
+ t/00basic.t | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/t/00basic.t b/t/00basic.t
+index e9ceaf5..108e0ec 100644
+--- a/t/00basic.t
++++ b/t/00basic.t
+@@ -1,10 +1,15 @@
+ #!/usr/bin/perl -w
+ 
+-use Test::More tests => 5;
++
++use Test::More tests => 6;
+ 
+ $|++;
+ 
+ use_ok('ParaDNS');
++use_ok('ParaDNS::Resolver');
++
++SKIP: {
++  skip "NO_NETWORK_TESTING set", 4 if $ENV{NO_NETWORK_TESTING};
+ 
+ my $done = 0;
+ 
+@@ -59,3 +64,4 @@ ParaDNS->new(
+ 
+ Danga::Socket->EventLoop;
+ 
++}
+-- 
+2.15.1
+

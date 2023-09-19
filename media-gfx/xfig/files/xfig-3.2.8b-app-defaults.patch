@@ -1,0 +1,14 @@
+diff -ruN xfig-3.2.8b.orig/app-defaults/Fig xfig-3.2.6a/app-defaults/Fig
+--- xfig-3.2.8b.orig/app-defaults/Fig.in	2017-01-10 00:27:39.000000000 +0100
++++ xfig-3.2.8b/app-defaults/Fig.in	2017-03-24 16:22:14.702253419 +0100
+@@ -10,6 +10,10 @@
+ 
+ ! some sample settings you may want to change
+ 
++! If the following resource is set to false, xfig will use metric units
++! by default.
++Fig.inches:	false
++
+ ! The following fixes a problem that some window managers have
+ ! with xfig continually resizing itself
+ 

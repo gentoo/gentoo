@@ -1,0 +1,58 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Mart Raudsepp <leio@gentoo.org> (2022-01-05)
+# gnome-boxes requires spice-gtk[vala]
+net-misc/spice-gtk vala
+
+# Mart Raudsepp <leio@gentoo.org> (2021-08-13)
+# evolution-data-server requires libical[vala] and libgdata[vala] by default
+dev-libs/libical vala
+dev-libs/libgdata vala
+
+# Marek Szuba <marecki@gentoo.org> (2021-03-18)
+# FUSE cannot be built with multiple audio drivers, and desktop/gnome
+# profiles set both USE=pulseaudio (directly) and USE=alsa (inherited
+# from desktop). Default to the latter for now because PulseAudio support
+# in FUSE is currently considered experimental.
+app-emulation/fuse -pulseaudio
+
+# REQUIRED_USE constraint when pulseaudio is enabled
+dev-libs/efl sound
+
+# Needed by gnome-photos
+media-libs/gegl raw
+
+# Needed by a global USE=wayland right now; some REQUIRED_USE may be outdated and need review
+>=media-libs/cogl-1.18.2-r1 gles2
+>=media-libs/clutter-1.20 egl
+media-libs/cogl kms
+media-libs/libsdl2 gles2
+
+# Needed by mutter defaults and USE=wayland, bug #547300
+>=media-libs/mesa-10.3 gles2
+
+# For eautoreconf in =app-crypt/seahorse-3.10.2-r1
+app-crypt/gcr vala
+
+# Required by folks, needed by empathy
+>=gnome-extra/evolution-data-server-3.8 vala
+
+# Required for cheese in gnome3
+>=media-libs/gst-plugins-base-1.0 theora
+
+# Required for gnome-base/gnome-2.32 to be merged directly, for
+# gnome-extra/hamster-applet-2.32 and x11-misc/alacarte-0.13
+dev-lang/python sqlite
+
+# Required by app-accessibility/orca-3
+app-accessibility/speech-dispatcher python
+
+# Pulled in by grilo-plugins which is needed for gnome-music
+media-libs/grilo playlist
+
+# Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
+media-libs/libmediaart gtk -qt5
+
+# For gnome-boxes
+net-misc/spice-gtk gtk3

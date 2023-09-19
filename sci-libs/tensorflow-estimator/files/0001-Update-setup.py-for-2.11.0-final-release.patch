@@ -1,0 +1,25 @@
+From bfc826cf6ab1a65c3cf2e28cf9c6300ced56e9f8 Mon Sep 17 00:00:00 2001
+From: Vinila S <106367904+vinila21@users.noreply.github.com>
+Date: Fri, 11 Nov 2022 16:55:11 -0800
+Subject: [PATCH] Update setup.py for 2.11.0 final release.
+
+---
+ tensorflow_estimator/tools/pip_package/setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tensorflow_estimator/tools/pip_package/setup.py b/tensorflow_estimator/tools/pip_package/setup.py
+index b49eff2..fe35b4b 100644
+--- a/tensorflow_estimator/tools/pip_package/setup.py
++++ b/tensorflow_estimator/tools/pip_package/setup.py
+@@ -30,7 +30,7 @@ DOCLINES = __doc__.split('\n')
+ # This version string is semver compatible, but incompatible with pip.
+ # For pip, we will remove all '-' characters from this string, and use the
+ # result for pip.
+-_VERSION = '2.11.0-rc0'
++_VERSION = '2.11.0'
+ 
+ REQUIRED_PACKAGES = [
+     # We depend on TensorFlow's declared pip dependencies.
+-- 
+2.37.4
+

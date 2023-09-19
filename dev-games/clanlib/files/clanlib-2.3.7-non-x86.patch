@@ -1,0 +1,38 @@
+diff -up ClanLib-2.3.6/Sources/Core/System/detect_cpu_ext.cpp.non-x86 ClanLib-2.3.6/Sources/Core/System/detect_cpu_ext.cpp
+--- ClanLib-2.3.6/Sources/Core/System/detect_cpu_ext.cpp.non-x86	2011-11-15 13:15:42.000000000 +0100
++++ ClanLib-2.3.6/Sources/Core/System/detect_cpu_ext.cpp	2013-01-08 13:33:20.000000000 +0100
+@@ -30,7 +30,7 @@
+ #include "Core/precomp.h"
+ #include "API/Core/System/system.h"
+ 
+-#ifdef CL_ARM_PLATFORM
++#if ! (defined(__i386__) || defined(__x86_64__) || defined(__amd64__))
+ bool CL_System::detect_cpu_extension(CL_CPU_ExtensionPPC ext)
+ {
+ 	throw ("Congratulations, you've just been selected to code this feature!");
+@@ -48,11 +48,12 @@ bool CL_System::detect_cpu_extension(CL_
+ #ifdef __GNUC__
+ 
+ 
+-#ifdef __amd64__
++#if defined(__amd64__) || defined(__x86_64__)
+ 
+ #define __cpuid(out, infoType)\
+ 	asm("cpuid": "=a" ((out)[0]), "=b" ((out)[1]), "=c" ((out)[2]), "=d" ((out)[3]): "a" (infoType));
+-#else
++
++#elif defined(__i386__)
+ 
+ #define __cpuid(out, infoType) \
+ 	asm volatile(	"pushl %%ebx \n" \
+@@ -61,6 +62,10 @@ bool CL_System::detect_cpu_extension(CL_
+ 			"popl %%ebx" \
+ 		: "=a" ((out)[0]), "=r" ((out)[1]), "=c" ((out)[2]), "=d" ((out)[3]): "a" (infoType));
+ 
++#else
++
++#define __cpuid(out, infoType) {}
++
+ #endif
+ 
+ #endif

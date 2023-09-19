@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -50,8 +50,6 @@ install: all
+ 		sed -e "s/VERSION/${VERSION}/" < "$$m" >  "${DESTDIR}${MANPREFIX}/man1/$$m" && \
+ 		chmod 644 "${DESTDIR}${MANPREFIX}/man1/$$m"; \
+ 	done
+-	@echo installing terminfo description
+-	@TERMINFO=${TERMINFO} tic -s dvtm.info
+ 
+ uninstall:
+ 	@for b in ${BIN}; do \

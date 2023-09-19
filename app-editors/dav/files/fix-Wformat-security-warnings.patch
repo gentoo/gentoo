@@ -1,0 +1,39 @@
+From 8e57c21b3b707c2a81695384688c46faa1d51da8 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 10 Aug 2016 15:52:30 -0400
+Subject: [PATCH 1/1] fileIO.c: add format strings to sprintf calls.
+
+Two calls to sprintf() in fileIO.c were missing the trivial format
+string "%s". This caused warnings with -Wformat-security, and build
+failures with -Werror=format-security. Those two calls are now fixed.
+
+Gentoo-Bug: 521016
+---
+ fileIO.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fileIO.c b/fileIO.c
+index a6c535a..1916a46 100644
+--- a/fileIO.c
++++ b/fileIO.c
+@@ -92,7 +92,7 @@ char *doSave(char *filename) {
+         n++;
+         choices = realloc(choices, n*sizeof(char *));
+         choices[n-1] = malloc(256);
+-        sprintf(choices[n-1], d->d_name);
++        sprintf(choices[n-1], "%s", d->d_name);
+       }
+       closedir(dir);
+       
+@@ -178,7 +178,7 @@ void load(char *filename)
+       n++;
+       choices = realloc(choices, n*sizeof(char *));
+       choices[n-1] = malloc(256);
+-      sprintf(choices[n-1], d->d_name);
++      sprintf(choices[n-1], "%s", d->d_name);
+     }
+     closedir(dir);
+     
+-- 
+2.7.3
+

@@ -1,0 +1,20 @@
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -10,7 +10,8 @@ import shutil
+ 
+ version = "0.8.0"
+ data_files = []
+-include_dirs = ["../lib"]
++include_dirs = ["../include"]
++library_dirs = ["../lib/.libs"]
+ libraries = ["tre"]
+ 
+ if sys.platform == "win32":
+@@ -31,6 +32,7 @@ setup(name = "tre",
+                                sources = ["tre-python.c"],
+                                define_macros = [("HAVE_CONFIG_H", None)],
+                                include_dirs = include_dirs,
++                               library_dirs = library_dirs,
+                                libraries = libraries
+                                ),
+                      ],

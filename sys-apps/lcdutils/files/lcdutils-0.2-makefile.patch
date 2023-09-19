@@ -1,0 +1,20 @@
+--- a/Makefile	2002-07-08 15:31:37.000000000 +0200
++++ b/Makefile	2019-11-06 20:38:11.499806312 +0100
+@@ -1,13 +1,14 @@
+ #CC=mips-uclibc-gcc
+ #LDFLAGS=-static
+ 
+-CFLAGS=-O2 -Wall
++CFLAGS?=-O2 -Wall
+ 
+ all: putlcd buttond
+ 
+ install: all
+-	install putlcd /usr/local/sbin
+-	install buttond /usr/local/sbin
++	install -d ${DESTDIR}/usr/bin
++	install putlcd ${DESTDIR}/usr/bin
++	install buttond ${DESTDIR}/usr/bin
+ 
+ clean:
+ 	rm -f putlcd buttond *.o

@@ -1,0 +1,52 @@
+buf_free_data must free data independently
+of send or reseived bytes over network.
+
+Moreover, when buffer is usually freed
+buffer _is_ empty, but has one clean mapped page.
+
+I've observed massive 'cvs server' leaks
+when importing large gentoo-x86 repo with 'cvsps'.
+Leak ate all my 32GBs of RAM and killed process.
+(Leaked around 3 pages per client request).
+
+valgrind found the leak easily:
+
+$ valgrind \
+    cvsps \
+           --root :local:$HOME/portage/gentoo-x86.rsync \
+           --fast-export \
+           gentoo-x86/dev-vcs/git-annex 2>l |
+    git fast-import
+
+    ==13504== 1,248 bytes in 52 blocks are still reachable in loss record 41 of 47
+    ==13504==    at 0x4C2C19B: malloc (vg_replace_malloc.c:270)
+    ==13504==    by 0x48A556: xnmalloc_inline (xmalloc.c:40)
+    ==13504==    by 0x48A5B5: xmalloc (xmalloc.c:56)
+    ==13504==    by 0x4855F5: new_memnode (pagealign_alloc.c:91)
+    ==13504==    by 0x48571B: pagealign_alloc (pagealign_alloc.c:151)
+    ==13504==    by 0x485739: pagealign_xalloc (pagealign_alloc.c:182)
+    ==13504==    by 0x408DD7: get_buffer_data (buffer.c:98)
+    ==13504==    by 0x409C0C: buf_input_data (buffer.c:738)
+    ==13504==    by 0x45BB63: do_cvs_command (server.c:3847)
+    ==13504==    by 0x45D39E: serve_co (server.c:4809)
+    ==13504==    by 0x45F845: server (server.c:6438)
+    ==13504==    by 0x438784: main (main.c:1066)
+
+And now it takes constant space (less, than 18MB)
+for 'cvs server' process to convert all gentoo-x86
+by serving more, than 5 000 000 client requests.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+diff --git a/src/buffer.c b/src/buffer.c
+index 3f12513..9a7a559 100644
+--- a/src/buffer.c
++++ b/src/buffer.c
+@@ -526,7 +526,7 @@ buf_copy_data (struct buffer *buf, struct buffer_data *data,
+ void
+ buf_free_data (struct buffer *buffer)
+ {
+-    if (buf_empty_p (buffer)) return;
++    if (! buffer->data) return;
+     buf_free_datas (buffer->data, buffer->last);
+     buffer->data = buffer->last = NULL;
+ }

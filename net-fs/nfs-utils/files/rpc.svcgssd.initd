@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+[ -e /etc/conf.d/nfs ] && . /etc/conf.d/nfs
+
+depend() {
+	use ypbind net
+	need portmap rpc.pipefs
+	after quota
+}
+
+start() {
+	ebegin "Starting svcgssd"
+	start-stop-daemon --start --exec /usr/sbin/rpc.svcgssd -- ${OPTS_RPC_SVCGSSD}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping svcgssd"
+	start-stop-daemon --stop --exec /usr/sbin/rpc.svcgssd
+	eend $?
+}

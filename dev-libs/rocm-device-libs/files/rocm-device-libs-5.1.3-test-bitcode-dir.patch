@@ -1,0 +1,24 @@
+lib/amdgcn/bitcode is not among the default bitcode dirs of clang
+Add --rocm-device-lib-path to the clang argument
+Excerpt from https://salsa.debian.org/rocm-team/rocm-device-libs/-/blob/d2014eed680ccce5f9bd61ff4fc28a89682575f3/debian/patches/cmake-amdgcn-bitcode.patch
+==============================================
+--- rocm-device-libs.orig/test/constant_folding/RunConstantFoldTest.cmake
++++ rocm-device-libs/test/constant_folding/RunConstantFoldTest.cmake
+@@ -16,6 +16,7 @@
+   -target amdgcn-amd-amdhsa -mcpu=${TEST_CPU}
+   -Xclang -finclude-default-header
+   --rocm-path=${BINARY_DIR}
++  --rocm-device-lib-path=${AMDGCN_BITCODES}
+   -mllvm -amdgpu-simplify-libcall=0
+   -o ${OUTPUT_FILE} ${INPUT_FILE}
+   RESULT_VARIABLE CLANG_RESULT
+--- rocm-device-libs.orig/test/constant_folding/CMakeLists.txt
++++ rocm-device-libs/test/constant_folding/CMakeLists.txt
+@@ -30,6 +30,7 @@
+      -DFILECHECK_BIN=${FILECHECK_BIN}
+      -DOUTPUT_FILE=output.${name}.ll
+      -DINPUT_FILE=${CMAKE_CURRENT_SOURCE_DIR}/${name}.cl
++     -DAMDGCN_BITCODES=${PROJECT_BINARY_DIR}/lib/amdgcn/bitcode
+      -DTEST_CPU=gfx900
+      -P ${CMAKE_CURRENT_SOURCE_DIR}/RunConstantFoldTest.cmake)
+ endfunction()

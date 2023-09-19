@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  RPy provides a robust Python interface to the R programming
+  language. It can manage R objects and can execute arbitrary R
+  functions. All the errors from the R language are converted to
+  Python exceptions.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">rpy2</remote-id>
+    <remote-id type="sourceforge">rpy</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,61 @@
+diff -urN b/iso2mb.c c/iso2mb.c
+--- b/iso2mb.c	2015-07-06 21:38:49.129658661 +0000
++++ c/iso2mb.c	2015-07-07 18:50:17.211540572 +0000
+@@ -513,11 +513,11 @@
+   return wc;
+ }
+ 
+-mb_wchar_t
++__attribute__ ((gnu_inline)) __inline__ mb_wchar_t
+ mb_encode_to_wchar(mb_info_t *info)
+ MB_ENCODE_TO_WCHAR
+ 
+-mb_wchar_t
++__attribute__ ((gnu_inline)) __inline__ mb_wchar_t
+ mb_fetch_wchar(mb_info_t *info)
+ MB_FETCH_WCHAR
+ 
+diff -urN b/mb2iso.c c/mb2iso.c
+--- b/mb2iso.c	2015-07-06 21:38:49.133658683 +0000
++++ c/mb2iso.c	2015-07-07 19:07:47.583244156 +0000
+@@ -900,7 +900,7 @@
+   return n;
+ }
+ 
+-size_t
++__attribute__ ((gnu_inline)) __inline__ size_t
+ mb_store_wchar(mb_wchar_t enc, mb_info_t *info)
+ MB_STORE_WCHAR
+ 
+diff -urN b/mb.h c/mb.h
+--- b/mb.h	2015-07-06 21:38:49.133658683 +0000
++++ c/mb.h	2015-07-07 18:50:17.211540572 +0000
+@@ -434,7 +434,7 @@
+ }
+ 
+ #ifdef __GNUC__
+-extern __inline__ mb_wchar_t mb_encode_to_wchar(mb_info_t *info) MB_ENCODE_TO_WCHAR
++extern __attribute__ ((gnu_inline))  __inline__ mb_wchar_t mb_encode_to_wchar(mb_info_t *info);
+ #else
+ extern mb_wchar_t mb_encode_to_wchar(mb_info_t *info);
+ #endif
+@@ -449,7 +449,7 @@
+ }
+ 
+ #ifdef __GNUC__
+-extern __inline__ mb_wchar_t mb_fetch_wchar(mb_info_t *info) MB_FETCH_WCHAR
++extern __attribute__ ((gnu_inline))  __inline__ mb_wchar_t mb_fetch_wchar(mb_info_t *info);
+ #else
+ extern mb_wchar_t mb_fetch_wchar(mb_info_t *info);
+ #endif
+@@ -552,7 +552,7 @@
+ }
+ 
+ #ifdef __GNUC__
+-extern __inline__ size_t mb_store_wchar(mb_wchar_t enc, mb_info_t *info) MB_STORE_WCHAR
++extern __attribute__ ((gnu_inline)) __inline__ size_t mb_store_wchar(mb_wchar_t enc, mb_info_t *info);
+ #else
+ extern size_t mb_store_wchar(mb_wchar_t enc, mb_info_t *info);
+ #endif
+
+ 

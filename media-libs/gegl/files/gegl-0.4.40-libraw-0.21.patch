@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/887421
+https://gitlab.gnome.org/GNOME/gegl/-/merge_requests/133
+
+From ef71b865a301514fcd13f50d421942f7b6b92d5e Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Wed, 21 Dec 2022 19:32:02 +0000
+Subject: [PATCH] raw-load: make compatible with LibRaw 0.21.0
+
+imgdata.params.shot_select moved to imgdata.rawparams.shot_select
+https://github.com/LibRaw/LibRaw/blob/979160ff13/Changelog.txt#L182
+--- a/operations/external/raw-load.c
++++ b/operations/external/raw-load.c
+@@ -114,7 +114,11 @@ prepare (GeglOperation *operation)
+         g_warning ("raw-load: Error Initializing raw library");
+       else
+         {
++#if LIBRAW_COMPILE_CHECK_VERSION_NOTLESS(0, 21)
++          p->LibRaw->rawparams.shot_select = o->image_num;
++#else
+           p->LibRaw->params.shot_select = o->image_num;
++#endif
+     
+           p->LibRaw->params.aber[0] = 1.0;
+           p->LibRaw->params.aber[2] = 1.0;
+-- 
+GitLab

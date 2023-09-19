@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<use>
+		<flag name="clutter">Enable clutter support for displaying coverart</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gtkpod</remote-id>
+	</upstream>
+</pkgmetadata>

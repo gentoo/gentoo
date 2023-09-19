@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 5a43896..d0e106c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,6 +31,7 @@ AC_FUNC_FORK
+ AC_TYPE_SIGNAL
+ AC_FUNC_STRNLEN
+ AC_CHECK_LIB(socket, bind)
++AC_CHECK_LIB(compat, ftime)
+ AC_CHECK_FUNCS([ftime memset socket strchr strdup strncasecmp])
+ AC_TYPE_SIZE_T
+ 

@@ -1,0 +1,13 @@
+Additional pthread/glibc 2.34 patch.
+
+https://bugs.gentoo.org/827474
+--- a/src/lib/Libpbs/Makefile.am
++++ b/src/lib/Libpbs/Makefile.am
+@@ -7,6 +7,7 @@ CLEANFILES = *.gcda *.gcno *.gcov
+ lib_LTLIBRARIES = libtorque.la
+
+ libtorque_la_LDFLAGS = -version-info 2:0:0
++libtorque_la_LIBADD = $(PTHREAD_LIBS)
+
+ libtorque_la_SOURCES = ../Libcsv/csv.c ../Libdis/dis.c \
+         ../Libdis/discui_.c ../Libdis/discul_.c \

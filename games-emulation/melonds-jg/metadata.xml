@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		melonDS is an emulator for the Nintendo DS and DSi. The
+		Jolly Good API port is designed for use with content for
+		the Nintendo DS.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/melonds/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/melonds</remote-id>
+	</upstream>
+</pkgmetadata>

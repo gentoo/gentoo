@@ -1,0 +1,80 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+CONFIGFILE="/etc/pgpool2/pgpool.conf"
+LOGFILE="/var/log/pgpool2.log"
+
+depend() {
+    use net
+    use postgresql
+    after logger
+}
+
+get_config() {
+    [ -f ${CONFIGFILE} ] || return 1
+
+    eval echo $(sed -e 's:#.*::' ${CONFIGFILE} | \
+        awk '$1 == "'$1'" { print ($2 == "=" ? $3 : $2) }')
+}
+
+PIDFILE="$(get_config pid_file_name)"
+: ${PIDFILE:='/run/pgpool/pgpool.pid'}
+
+start_pre() {
+    # $logdir contains status file(s), not log files.
+    local logdir=$(get_config logdir)
+    local socket_dir=$(get_config socket_dir)
+    local pcp_socket_dir=$(get_config pcp_socket_dir)
+
+    checkpath -o pgpool:postgres -m 0770 -d $(dirname ${PIDFILE}) || return 1
+    checkpath -o pgpool:postgres -m 0770 -d ${logdir:-'/var/lib/pgpool'} || return 1
+    checkpath -o pgpool:postgres -m 0660 -f ${LOGFILE} || return 1
+    checkpath -o root:postgres -m 1775 \
+        -d ${socket_dir:-'/run/postgresql'} || return 1
+    checkpath -o pgpool:postgres -m 0770 \
+        -d ${pcp_socket_dir:-'/run/postgresql/pgpool'} || return 1
+}
+
+start() {
+    ebegin "Starting pgpool2"
+
+    start-stop-daemon --start \
+        --user pgpool:postgres \
+        --pidfile ${PIDFILE} \
+        --exec /usr/bin/pgpool
+
+    eend
+}
+
+stop() {
+    local seconds=$(( ${NICE_TIMEOUT} + ${RUDE_TIMEOUT} + ${FORCE_TIMEOUT} ))
+    ebegin "Stopping pgpool (this can take up to ${seconds} seconds)"
+
+    local retval
+    local retries=SIGTERM/${NICE_TIMEOUT}
+
+    if [ "${RUDE_QUIT}" != "NO" ] ; then
+        einfo "RUDE_QUIT enabled."
+        retries="${retries}/SIGINT/${RUDE_TIMEOUT}"
+    fi
+    if [ "${FORCE_QUIT}" = "YES" ] ; then
+        einfo "FORCE_QUIT enabled."
+        ewarn "A recover-run might be executed on next startup."
+        retries="${retries}/SIGQUIT/${FORCE_TIMEOUT}"
+    fi
+
+    # Loops through nice, rude, and force quit in one go.
+    start-stop-daemon --stop \
+        --pidfile ${PIDFILE} \
+        --retry ${retries}
+
+    eend
+}
+
+reload() {
+    start-stop-daemon --signal HUP \
+        --pidfile ${PIDFILE}
+}

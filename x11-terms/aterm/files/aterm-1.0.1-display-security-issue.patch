@@ -1,0 +1,24 @@
+--- aterm-1.0.1/src/main.c	2007-08-01 16:08:29.000000000 +0200
++++ aterm-1.0.1.new/src/main.c	2008-05-03 14:06:52.000000000 +0200
+@@ -2057,10 +2057,6 @@
+  */
+     get_options(argc, argv);
+ 
+-	if( display_name == NULL )
+-    	if ((display_name = getenv("DISPLAY")) == NULL)
+-			display_name = ":0";
+-
+ #ifdef HAVE_AFTERSTEP
+ #ifdef MyArgs_IS_MACRO	
+     MyArgsPtr = safecalloc(1, sizeof(ASProgArgs) );
+@@ -2102,7 +2098,9 @@
+ 	Xdisplay = XOpenDisplay(display_name);
+     
+ 	if (!Xdisplay) {
+-		print_error("can't open display %s", display_name);
++		print_error("can't open display %s", display_name?display_name:
++				getenv("DISPLAY")?getenv("DISPLAY"):
++				"as no -d given and DISPLAY not set");
+ 		exit(EXIT_FAILURE);
+     }
+   /* changed from _MOTIF_WM_INFO - Vaevictus - gentoo bug #139554 */

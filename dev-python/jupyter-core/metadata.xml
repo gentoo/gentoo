@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription>
+    Core common functionality of Jupyter projects.
+    This package contains base application classes and configuration
+    inhertited by other projects. It doesn't do much on its own.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">jupyter-core</remote-id>
+    <remote-id type="github">jupyter/jupyter_core</remote-id>
+  </upstream>
+</pkgmetadata>

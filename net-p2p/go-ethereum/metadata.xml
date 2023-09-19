@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="devtools">Build Ethereum development tools (evm, abigen, puppeth, ...)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ethereum/go-ethereum</remote-id>
+	</upstream>
+</pkgmetadata>

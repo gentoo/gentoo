@@ -1,0 +1,43 @@
+--- a/surfraw-bash-completion.IN
++++ b/surfraw-bash-completion.IN
+@@ -4,6 +4,23 @@
+ # installing the bash-completion package which sets this explicitly.
+ shopt -s extglob
+ 
++_srpkgname()
++{
++	local pd
++	local dir=$(sed -n -e '/^PORTDIR=/ { s/^[^=]\+="\?\([^"]\+\|\S\+\).*/\1/p ; q }' \
++		/etc/make.{conf,globals})/*
++	local cur="$1"
++
++	COMPREPLY=($(compgen -W "$(
++	    for pd in $dir
++		do
++			[ ! -d ${pd} ] && continue
++			builtin cd ${pd}
++			echo *
++		done)" -- ${cur})
++	)
++}
++
+ _surfraw()
+ {       COMPREPLY=()
+ 	local cur=${COMP_WORDS[COMP_CWORD]}
+@@ -20,7 +37,7 @@
+ 	then    COMPREPLY=( $( compgen -W "$elvi" -- $cur ) )
+ 		# "sr go<tab>" for google
+ 	elif    [[ $prev == @(alioth|deb@(bugs|contents|packages|pts|sec)|freshmeat|fsfdir|sourceforge) ]]
+-	then    COMPREPLY=( $(apt-cache --generate pkgnames $cur) )
++	then    _srpkgname ${cur}
+ 		# "sr debbugs 4<tab>" to check 44bsd-rdist bugs...
+ 	elif    [[ -x /usr/bin/look ]] # in bsdmainutils, "important"
+ 	then	COMPREPLY=( $(/usr/bin/look ${cur:-''}) )
+@@ -29,5 +46,5 @@
+ 	fi
+ 	return 0
+ }
+-# test first in case removed-but-unpurged
+-type -p surfraw >/dev/null 2>&1 && complete -F _surfraw surfraw sr
++
++complete -F _surfraw surfraw sr

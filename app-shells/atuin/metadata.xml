@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Jonas Frei</name>
+		<email>freijon@pm.me</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="client">Enable the autin client</flag>
+		<flag name="server">Enable the autin server</flag>
+		<flag name="sync">Enable the server-sync feature in the autin client</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">atuinsh/atuin</remote-id>
+		<bugs-to>https://github.com/atuinsh/atuin/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

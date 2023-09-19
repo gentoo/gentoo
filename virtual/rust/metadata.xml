@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>rust@gentoo.org</email>
+		<name>Rust Project</name>
+	</maintainer>
+	<use>
+		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
+	</use>
+	<stabilize-allarches/>
+</pkgmetadata>

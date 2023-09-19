@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,6 +12,7 @@
+ # Checks for programs.
+ AC_PROG_CC
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ #check for pkg-config
+ PKG_PROG_PKG_CONFIG

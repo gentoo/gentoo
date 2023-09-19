@@ -1,0 +1,26 @@
+From 529a9188114bcbd8ed753d2276942384fa50d7a1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Franti=C5=A1ek=20Zatloukal?= <Zatloukal.Frantisek@gmail.com>
+Date: Fri, 21 Apr 2023 04:07:21 +0200
+Subject: [PATCH] Fix standalone build (#415)
+
+Fixes https://github.com/intel/opencl-clang/issues/406
+Fixes https://github.com/intel/opencl-clang/issues/374
+---
+ cl_headers/CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/cl_headers/CMakeLists.txt b/cl_headers/CMakeLists.txt
+index 788adff..86df76f 100644
+--- a/cl_headers/CMakeLists.txt
++++ b/cl_headers/CMakeLists.txt
+@@ -1,5 +1,9 @@
+ set(CL_HEADERS_LIB cl_headers)
+-set(CLANG_COMMAND $<TARGET_FILE:clang> )
++if(USE_PREBUILT_LLVM)
++    find_program(CLANG_COMMAND clang PATHS ${LLVM_TOOLS_BINARY_DIR} NO_DEFAULT_PATH)
++else()
++    set(CLANG_COMMAND $<TARGET_FILE:clang>)
++endif()
+ if(LLVM_USE_HOST_TOOLS AND NOT OPENCL_CLANG_BUILD_EXTERNAL)
+   build_native_tool(clang CLANG_COMMAND)
+ endif()

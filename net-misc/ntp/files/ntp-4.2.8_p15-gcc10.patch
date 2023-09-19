@@ -1,0 +1,75 @@
+
+Source:
+https://bugs.ntp.org/show_bug.cgi?id=3688
+
+Juergen Perlinger 2020-12-24 07:10:49 UTC
+Created attachment 1760 [details]
+ultimate patch, v00
+
+--- a/sntp/log.c	2020-12-24 08:02:05.206004072 +0100
++++ a/sntp/log.c	2020-12-24 08:02:05.206004072 +0100
+@@ -2,7 +2,7 @@ 
+ 
+ #include "log.h"
+ 
+-const char *progname;		/* for msyslog use too */
++extern const char *progname;		/* for msyslog use too */
+ 
+ static int counter = 0;
+ 
+--- a/sntp/main.c	2020-12-24 08:02:05.210003956 +0100
++++ a/sntp/main.c	2020-12-24 08:02:05.210003956 +0100
+@@ -20,7 +20,6 @@ 
+ #include "log.h"
+ #include "libntp.h"
+ 
+-
+ int shutting_down;
+ int time_derived;
+ int time_adjusted;
+--- a/sntp/main.h	2020-12-24 08:02:05.210003956 +0100
++++ a/sntp/main.h	2020-12-24 08:02:05.210003956 +0100
+@@ -16,6 +16,14 @@ 
+ 
+ #include "crypto.h"
+ 
++/* !Attention! 'progname' must de instantiated in any program that wants
++ * to use this library.  Putting it into the library breaks a lot of
++ * things, since many programs define it itself and then the symbol
++ * might end up twice in the linker.
++ */
++extern const char * progname;
++
++
+ void	set_li_vn_mode(struct pkt *spkt, char leap, char version, char mode); 
+ extern int sntp_main(int argc, char **argv, const char *);
+ int	generate_pkt(struct pkt *x_pkt, const struct timeval *tv_xmt,
+--- a/sntp/sntp.c	2020-12-24 08:02:05.210003956 +0100
++++ a/sntp/sntp.c	2020-12-24 08:02:05.210003956 +0100
+@@ -2,6 +2,8 @@ 
+ 
+ #include "main.h"
+ 
++const char * progname;
++
+ int 
+ main (
+ 	int	argc,
+--- a/sntp/tests/t-log.c	2020-12-24 08:02:05.210003956 +0100
++++ a/sntp/tests/t-log.c	2020-12-24 08:02:05.210003956 +0100
+@@ -3,7 +3,6 @@ 
+ #include "ntp_types.h"
+ 
+ 
+-//#include "log.h"
+ #include "log.c"
+ 
+ void setUp(void);
+--- a/tests/libntp/test-libntp.h	2020-12-24 08:02:05.210003956 +0100
++++ a/tests/libntp/test-libntp.h	2020-12-24 08:02:05.210003956 +0100
+@@ -5,4 +5,4 @@ 
+ 
+ time_t timefunc(time_t *ptr);
+ void settime(int y, int m, int d, int H, int M, int S);
+-time_t nowtime;
++extern time_t nowtime;

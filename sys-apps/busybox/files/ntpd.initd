@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/bin/busybox ntpd"
+command_args="${NTPD_OPTS}"
+pidfile="/run/ntpd.pid"
+
+depend() {
+	use net dns logger
+	after ntp-client
+}

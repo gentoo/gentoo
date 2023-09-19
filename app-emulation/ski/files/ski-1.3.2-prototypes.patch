@@ -1,0 +1,31 @@
+fix up prototypes to avoid -Wimplicit-function-declaration warnings
+
+--- a/src/coreui.h
++++ b/src/coreui.h
+@@ -177,6 +177,7 @@
+ void stepIt_setupGtk(CTR cnt);
+ 
+ void runIt_setupX(void);
++void runIt_setupGtk(void);
+ 
+ 
+ /*--------------------------------------------------------------------------
+--- a/src/ssGtk.c
++++ b/src/ssGtk.c
+@@ -82,6 +82,7 @@
+ 
+ /* externals */
+ extern dataStart;
++ADDR iAinstAddr(ADDR baseAddr, BYTE iAmode, int delta);
+ 
+ static GtkLabel* instcount_label;
+ /* sits in a background loop */
+@@ -100,7 +101,7 @@
+ }
+ 
+ 
+-void runIt_setupGtk(void *data)
++void runIt_setupGtk(void)
+ {
+ 	g_idle_add(runItGtk, NULL);
+ 	stopPressed = NO;

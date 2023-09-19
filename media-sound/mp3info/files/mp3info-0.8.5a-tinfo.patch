@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -43,7 +43,7 @@
+ INSTALL = /usr/bin/install -c
+ STRIP = strip
+ 
+-LIBS = -lncurses
++LIBS = $(shell ${PKG_CONFIG} --libs ncurses)
+ CC = gcc
+ CFLAGS = -g -O2 -Wall
+ 

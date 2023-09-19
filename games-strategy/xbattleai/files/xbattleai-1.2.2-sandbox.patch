@@ -1,0 +1,114 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -200,87 +200,87 @@
+ .PHONY: install-bin
+ 
+ install-bin: ${TARGET} ${SCRIPTS}
+-	${INSTALL_DIRS} ${bindir}
++	${INSTALL_DIRS} ${DESTDIR}/${bindir}
+ 	@list='${TARGET} ${SCRIPTS}'; for p in $$list; do \
+ 	  if test -f $$p; then \
+ 	    ${ECHO} "${INSTALL_PROGRAM} $$p ${bindir}"; \
+-	    ${INSTALL_PROGRAM} $$p ${bindir}; \
++	    ${INSTALL_PROGRAM} $$p ${DESTDIR}/${bindir}; \
+ 	  else :; fi; \
+ 	done
+ 
+ .PHONY: install-man
+ 
+ install-man:
+-	${INSTALL_DIRS} ${mandir}
++	${INSTALL_DIRS} ${DESTDIR}/${mandir}
+ 	@list='${MAN1}'; for p in $$list; do \
+ 	  ${INSTALL_DIRS} ${mandir}/man1; \
+ 	  if test -f ${SRC_DIR}/$${p}.man; then \
+ 	    ${ECHO} "${INSTALL_DATA} ${SRC_DIR}/$${p}.man ${mandir}/man1/$${p}.1"; \
+-	    ${INSTALL_DATA} ${SRC_DIR}/$${p}.man ${mandir}/man1/$${p}.1; \
++	    ${INSTALL_DATA} ${SRC_DIR}/$${p}.man ${DESTDIR}/${mandir}/man1/$${p}.1; \
+ 	  else :; fi; \
+ 	done
+ 	@list='${MAN6}'; for p in $$list; do \
+-	  ${INSTALL_DIRS} ${mandir}/man6; \
++	  ${INSTALL_DIRS} ${DESTDIR}/${mandir}/man6; \
+ 	  if test -f ${SRC_DIR}/$${p}.man; then \
+ 	    ${ECHO} "${INSTALL_DATA} ${SRC_DIR}/$${p}.man ${mandir}/man6/$${p}.6"; \
+-	    ${INSTALL_DATA} ${SRC_DIR}/$${p}.man ${mandir}/man6/$${p}.6; \
++	    ${INSTALL_DATA} ${SRC_DIR}/$${p}.man ${DESTDIR}/${mandir}/man6/$${p}.6; \
+ 	  else :; fi; \
+ 	done
+ 
+ .PHONY: install-share
+ 
+ install-share:
+-	${INSTALL_DIRS} ${XBO_DIR}
++	${INSTALL_DIRS} ${DESTDIR}/${XBO_DIR}
+ 	@list='${SRC_DIR}/xbos/*'; for p in $$list; do \
+ 	  if test -f $$p; then \
+ 	    ${ECHO} "${INSTALL_DATA} $$p ${XBO_DIR}"; \
+-	    ${INSTALL_DATA} $$p ${XBO_DIR}; \
++	    ${INSTALL_DATA} $$p ${DESTDIR}/${XBO_DIR}; \
+ 	  else :; fi; \
+ 	done
+-	${INSTALL_DIRS} ${XBT_DIR}
++	${INSTALL_DIRS} ${DESTDIR}/${XBT_DIR}
+ 	@list='${SRC_DIR}/xbts/*'; for p in $$list; do \
+ 	  if test -f $$p; then \
+ 	    ${ECHO} "${INSTALL_DATA} $$p ${XBT_DIR}"; \
+-	    ${INSTALL_DATA} $$p ${XBT_DIR}; \
++	    ${INSTALL_DATA} $$p ${DESTDIR}/${XBT_DIR}; \
+ 	  else :; fi; \
+ 	done
+-	${INSTALL_DIRS} ${XBA_DIR}
++	${INSTALL_DIRS} ${DESTDIR}/${XBA_DIR}
+ 	@list='${SRC_DIR}/xbas/*'; for p in $$list; do \
+ 	  if test -f $$p; then \
+ 	    ${ECHO} "${INSTALL_DATA} $$p ${XBA_DIR}"; \
+-	    ${INSTALL_DATA} $$p ${XBA_DIR}; \
++	    ${INSTALL_DATA} $$p ${DESTDIR}/${XBA_DIR}; \
+ 	  else :; fi; \
+ 	done
+-	${INSTALL_DIRS} ${IMG_DIR}
++	${INSTALL_DIRS} ${DESTDIR}/${IMG_DIR}
+ 	@list='${SRC_DIR}/images/*'; for p in $$list; do \
+ 	  if test -f $$p; then \
+ 	    ${ECHO} "${INSTALL_DATA} $$p ${IMG_DIR}"; \
+-	    ${INSTALL_DATA} $$p ${IMG_DIR}; \
++	    ${INSTALL_DATA} $$p ${DESTDIR}/${IMG_DIR}; \
+ 	  else :; fi; \
+ 	done
+-	${INSTALL_DIRS} ${SND_DIR}
++	${INSTALL_DIRS} ${DESTDIR}/${SND_DIR}
+ 	@list='${SRC_DIR}/snd/*'; for p in $$list; do \
+ 	  if test -f $$p; then \
+ 	    ${ECHO} "${INSTALL_DATA} $$p ${SND_DIR}"; \
+-	    ${INSTALL_DATA} $$p ${SND_DIR}; \
++	    ${INSTALL_DATA} $$p ${DESTDIR}/${SND_DIR}; \
+ 	  else :; fi; \
+ 	done
+-	${INSTALL_DIRS} ${XBC_DIR}
++	${INSTALL_DIRS} ${DESTDIR}/${XBC_DIR}
+ 	@list='${SRC_DIR}/xbcs/*'; for p in $$list; do \
+ 	  if test -f $$p; then \
+ 	    ${ECHO} "${INSTALL_DATA} $$p ${XBC_DIR}"; \
+-	    ${INSTALL_DATA} $$p ${XBC_DIR}; \
++	    ${INSTALL_DATA} $$p ${DESTDIR}/${XBC_DIR}; \
+ 	  else :; fi; \
+ 	done
+-	${INSTALL_DIRS} ${GC_DIR}
+-	${INSTALL_DATA} ${SRC_DIR}/gauntlet/gauntlet.dat ${GC_DIR};
+-	${INSTALL_DATA} ${SRC_DIR}/gauntlet/gauntlet.xbo ${GC_DIR};
+-	${INSTALL_PROGRAM} ${SRC_DIR}/gauntlet/gauntlet_interp.awk ${GC_DIR};
+-	${INSTALL_DIRS} ${GC_DIR}/gauntlet_levels
++	${INSTALL_DIRS} ${DESTDIR}/${GC_DIR}
++	${INSTALL_DATA} ${SRC_DIR}/gauntlet/gauntlet.dat ${DESTDIR}/${GC_DIR};
++	${INSTALL_DATA} ${SRC_DIR}/gauntlet/gauntlet.xbo ${DESTDIR}/${GC_DIR};
++	${INSTALL_PROGRAM} ${SRC_DIR}/gauntlet/gauntlet_interp.awk ${DESTDIR}/${GC_DIR};
++	${INSTALL_DIRS} ${DESTDIR}/${GC_DIR}/gauntlet_levels
+ 	@list='${SRC_DIR}/gauntlet/gauntlet_levels/*'; for p in $$list; do \
+ 	  if test -f $$p; then \
+ 	    ${ECHO} "${INSTALL_DATA} $$p ${GC_DIR}/gauntlet_levels"; \
+-	    ${INSTALL_DATA} $$p ${GC_DIR}/gauntlet_levels; \
++	    ${INSTALL_DATA} $$p ${DESTDIR}/${GC_DIR}/gauntlet_levels; \
+ 	  else :; fi; \
+ 	done
+ 

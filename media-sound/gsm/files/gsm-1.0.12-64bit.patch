@@ -1,0 +1,16 @@
+diff -ur gsm-1.0-pl12.orig/inc/private.h gsm-1.0-pl12/inc/private.h
+--- gsm-1.0-pl12.orig/inc/private.h	2006-04-26 22:17:01.000000000 +0300
++++ gsm-1.0-pl12/inc/private.h	2007-08-19 12:23:02.000000000 +0300
+@@ -10,10 +10,10 @@
+ #define	PRIVATE_H
+ 
+ typedef short			word;		/* 16 bit signed int	*/
+-typedef long			longword;	/* 32 bit signed int	*/
++typedef int			longword;	/* 32 bit signed int	*/
+ 
+ typedef unsigned short		uword;		/* unsigned word	*/
+-typedef unsigned long		ulongword;	/* unsigned longword	*/
++typedef unsigned int		ulongword;	/* unsigned longword	*/
+ 
+ struct gsm_state {
+ 

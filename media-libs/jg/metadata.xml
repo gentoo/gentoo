@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		The Jolly Good API is an emulation focused API for
+		rshared objects, written in ISO C99. It has been
+		designed with the goal of simplicity to ensure that
+		emulator cores are lean and minimalistic, making
+		them easier to understand.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/jg/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/jg</remote-id>
+	</upstream>
+</pkgmetadata>

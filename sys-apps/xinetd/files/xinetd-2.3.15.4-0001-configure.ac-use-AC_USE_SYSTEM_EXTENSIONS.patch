@@ -1,0 +1,43 @@
+https://github.com/openSUSE/xinetd/pull/42
+
+From 0539bd4450020c83c6b72eec1004e3ce3f64554b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 10 Sep 2022 13:59:20 +0100
+Subject: [PATCH 1/2] configure.ac: use AC_USE_SYSTEM_EXTENSIONS
+
+We use fcvt and gcvt, both of which are extensions
+guarded by GNU_SOURCE. Use AC_USE_SYSTEM_EXTENSIONS
+to ensure they're always available.
+
+Fixes a build failure on musl with Clang 15:
+```
+src/sio/sprint.c:176:15: error: call to undeclared function 'fcvt'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+                p = (char *)fcvt( num, precision, &decimal_point, is_negative ) ;
+src/sio/sprint.c:178:15: error: call to undeclared function 'ecvt'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+                p = (char *)ecvt( num, precision+1, &decimal_point, is_negative ) ;
+```
+
+And drop a single #define _GNU_SOURCE from signals.c, as it's
+preferable to have it consistently defined across the codebase
+where possible. We have autotools, so let's use it.
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,6 +38,8 @@ AC_CHECK_LIB([m], [log10], [
+ ])
+ AC_SUBST([LIBM_LIBS])
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ # ======================================
+ # Check for various headers and settings
+ # ======================================
+--- a/src/signals.c
++++ b/src/signals.c
+@@ -7,7 +7,6 @@
+ 
+ 
+ #include "config.h"
+-#define _GNU_SOURCE
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <signal.h>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		User space daemon for the hostap-driver.
+		Extended IEEE 802.11 management, IEEE 802.1X Authenticator,
+		RADIUS Authentication client, RADIUS Accounting client
+	</longdescription>
+	<use>
+		<flag name="crda">Add CRDA support</flag>
+		<flag name="internal-tls">Use internal TLSv1 implementation instead of depending on OpenSSL or GnuTLS</flag>
+		<flag name="netlink">Adding support for using netlink to create VLANs</flag>
+		<flag name="suiteb">Adding support for NSA Suite B Cryptography</flag>
+		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
+	</use>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:w1.fi:hostapd</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,6 @@
+/var/log/redis/redis.log /var/log/redis/sentinel.log {
+	compress
+	delaycompress
+	notifempty
+	missingok
+}

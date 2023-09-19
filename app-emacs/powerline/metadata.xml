@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Powerline is a library for customizing the mode-line that is based on the
+    Vim Powerline. A collection of predefined themes comes with the package.
+    This version has utf-8 support enabled. The utf-8 separators will display a
+    unicode character properly under mintty for example - as long as you have
+    patched fonts installed. By default, any terminal mode emacs will use the
+    utf-8 separators.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/milkypostman/powerline/issues/</bugs-to>
+    <remote-id type="github">milkypostman/powerline</remote-id>
+  </upstream>
+</pkgmetadata>

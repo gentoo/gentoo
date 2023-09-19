@@ -1,0 +1,40 @@
+https://sourceforge.net/p/unixtop/bugs/43/
+
+--- a/hash.c
++++ b/hash.c
+@@ -1354,7 +1354,7 @@ hash_add_pidthr(hash_table *ht, pidthr_t
+     hi->value = value;
+ 
+     /* hash to the bucket */
+-    bucket = &(ht->buckets[((key.k_thr * 10000 + key.k_pid) % ht->num_buckets)]);
++    bucket = &(ht->buckets[(((unsigned long)(key.k_thr) * 10000U + (unsigned long)(key.k_pid)) % ht->num_buckets)]);
+ 
+     /* walk the list to make sure we do not have a duplicate */
+     ll = &(bucket->list);
+@@ -1408,7 +1408,7 @@ hash_replace_pidthr(hash_table *ht, pidt
+     pidthr_t k1;
+ 
+     /* find the bucket */
+-    bucket = &(ht->buckets[((key.k_thr * 10000 + key.k_pid) % ht->num_buckets)]);
++    bucket = &(ht->buckets[(((unsigned long)(key.k_thr) * 10000U + (unsigned long)(key.k_pid)) % ht->num_buckets)]);
+ 
+     /* walk the list until we find the existing item */
+     ll = &(bucket->list);
+@@ -1460,7 +1460,7 @@ hash_lookup_pidthr(hash_table *ht, pidth
+     pidthr_t k1;
+ 
+     result = NULL;
+-    if ((bucket = &(ht->buckets[((key.k_thr * 10000 + key.k_pid) % ht->num_buckets)])) != NULL)
++    if ((bucket = &(ht->buckets[(((unsigned long)(key.k_thr) * 10000U + (unsigned long)(key.k_pid)) % ht->num_buckets)])) != NULL)
+     {
+ 	ll = &(bucket->list);
+ 	li = LL_FIRST(ll);
+@@ -1499,7 +1499,7 @@ hash_remove_pidthr(hash_table *ht, pidth
+     pidthr_t k1;
+ 
+     result = NULL;
+-    if ((bucket = &(ht->buckets[((key.k_thr * 10000 + key.k_pid) % ht->num_buckets)])) != NULL)
++    if ((bucket = &(ht->buckets[(((unsigned long)(key.k_thr) * 10000U + (unsigned long)(key.k_pid)) % ht->num_buckets)])) != NULL)
+     {
+ 	ll = &(bucket->list);
+ 	li = LL_FIRST(ll);

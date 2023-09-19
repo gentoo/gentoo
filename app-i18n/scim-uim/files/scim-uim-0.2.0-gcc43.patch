@@ -1,0 +1,11 @@
+diff -Naur scim-uim-0.2.0.orig/src/scim_uim_imengine.cpp scim-uim-0.2.0/src/scim_uim_imengine.cpp
+--- scim-uim-0.2.0.orig/src/scim_uim_imengine.cpp	2007-04-10 14:43:59.000000000 +0900
++++ scim-uim-0.2.0/src/scim_uim_imengine.cpp	2008-11-02 19:00:55.000000000 +0900
+@@ -32,6 +32,7 @@
+   #include <config.h>
+ #endif
+ 
++#include <cstring>
+ #include <scim.h>
+ #include "scim_uim_imengine.h"
+ #include <uim/uim-compat-scm.h>

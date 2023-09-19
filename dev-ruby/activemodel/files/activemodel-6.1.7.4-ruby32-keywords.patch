@@ -1,0 +1,27 @@
+From 67bdba4e63cad218c02dbb3171ddd53353cc0b48 Mon Sep 17 00:00:00 2001
+From: Javier Jimenez <javiyu7@gmail.com>
+Date: Thu, 5 Jan 2023 21:34:37 +0100
+Subject: [PATCH] Backports ruby 3.2 compatibility fixes for rails 6.1
+
+---
+ actionmailer/lib/action_mailer/base.rb            |  2 +-
+ actionmailer/lib/action_mailer/rescuable.rb       | 12 ++++++++----
+ actionpack/lib/abstract_controller/base.rb        | 10 +++++++---
+ actionpack/lib/abstract_controller/callbacks.rb   |  6 +++++-
+ actionview/lib/action_view/rendering.rb           |  6 +++++-
+ activemodel/lib/active_model/attribute_methods.rb |  2 +-
+ activerecord/lib/active_record/relation.rb        |  8 ++++++--
+ 7 files changed, 33 insertions(+), 13 deletions(-)
+
+diff --git a/activemodel/lib/active_model/attribute_methods.rb b/activemodel/lib/active_model/attribute_methods.rb
+index 365b338d17af3..0c401f7aeb4d9 100644
+--- a/lib/active_model/attribute_methods.rb
++++ b/lib/active_model/attribute_methods.rb
+@@ -478,6 +478,7 @@ def method_missing(method, *args, &block)
+     def attribute_missing(match, *args, &block)
+       __send__(match.target, match.attr_name, *args, &block)
+     end
++    ruby2_keywords(:attribute_missing) if respond_to?(:ruby2_keywords, true)
+ 
+     # A +Person+ instance with a +name+ attribute can ask
+     # <tt>person.respond_to?(:name)</tt>, <tt>person.respond_to?(:name=)</tt>,

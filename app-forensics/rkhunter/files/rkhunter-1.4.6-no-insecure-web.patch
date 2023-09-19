@@ -1,0 +1,46 @@
+Disable insecure web operations (CVE-2017-7480).
+
+Bug: https://bugs.gentoo.org/623150
+
+--- a/rkhunter
++++ b/rkhunter
+@@ -19462,7 +19462,7 @@
+ 	#
+ 
+ 	echo $ECHOOPT ""
+-	echo $ECHOOPT "Usage: rkhunter {--check | --unlock | --update | --versioncheck |"
++	echo $ECHOOPT "Usage: rkhunter {--check | --unlock |"
+ 	echo $ECHOOPT "                 --propupd [{filename | directory | package name},...] |"
+ 	echo $ECHOOPT "                 --list [{tests | {lang | languages} | rootkits | perl | propfiles}] |"
+ 	echo $ECHOOPT "                 --config-check | --version | --help} [options]"
+@@ -19518,10 +19518,8 @@
+ 	echo $ECHOOPT "                                       (Default level is $SYSLOG_DFLT_PRIO)"
+ 	echo $ECHOOPT "         --tmpdir <directory>          Use the specified temporary directory"
+ 	echo $ECHOOPT "         --unlock                      Unlock (remove) the lock file"
+-	echo $ECHOOPT "         --update                      Check for updates to database files"
+ 	echo $ECHOOPT "   --vl, --verbose-logging             Use verbose logging (on by default)"
+ 	echo $ECHOOPT "     -V, --version                     Display the version number, then exit"
+-	echo $ECHOOPT "         --versioncheck                Check for latest version of program"
+ 	echo $ECHOOPT "     -x, --autox                       Automatically detect if X is in use"
+ 	echo $ECHOOPT "     -X, --no-autox                    Do not automatically detect if X is in use"
+ 	echo $ECHOOPT ""
+@@ -20396,9 +20394,6 @@
+ 	--unlock)
+ 		UNLOCK=1
+ 		;;
+-	--update)
+-		UPDATE=1
+-		;;
+ 	--vl | --verboselogging | --verbose-logging)
+ 		VERBOSE_LOGGING=1
+ 		;;
+@@ -20407,9 +20402,6 @@
+ 		echo "${PROGRAM_blurb}"
+ 		exit 0
+ 		;;
+-	--versioncheck | --version-check)
+-		VERSIONCHECK=1
+-		;;
+ 	-x | --autox)
+ 		AUTO_X_OPT=1
+ 		AUTO_X_DTCT=1

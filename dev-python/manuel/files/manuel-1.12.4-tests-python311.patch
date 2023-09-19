@@ -1,0 +1,22 @@
+https://github.com/benji-york/manuel/pull/32
+
+From d9f12d03e39bb76e4bb3ba43ad51af6d3e9d45c0 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Mon, 6 Jun 2022 22:44:22 +1000
+Subject: [PATCH] Replace TextTestResult with TestResult for Py3.11
+
+--- a/src/manuel/index.txt
++++ b/src/manuel/index.txt
+@@ -211,10 +211,7 @@ When tests are run this way:
+ 
+     >>> sys.stdout.writeln = lambda s: sys.stdout.write(s+'\n')
+     >>> suite = loader.loadTestsFromTestCase(MyTest)
+-    >>> result = suite.run(unittest.TextTestResult(sys.stdout, True, 3))
+-    test1 (tests.MyTest) ... ok
+-    test2 (tests.MyTest) ... ok
+-    test3 (tests.MyTest) ... FAIL
++    >>> result = suite.run(unittest.TestResult(True, 3))
+ 
+     >>> for _, e in result.errors:
+     ...     print(e); print
+

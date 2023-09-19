@@ -1,0 +1,42 @@
+diff -urNp scponly-4.8-orig/configure scponly-4.8-dwok/configure
+--- scponly-4.8-orig/configure	2019-11-26 16:34:19.028544577 +0100
++++ scponly-4.8-dwok/configure	2019-11-26 16:33:24.571763528 +0100
+@@ -3244,7 +3244,7 @@ else
+   ;;
+   *)
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-as_dummy="`echo "$PATH:/usr/lib:/usr/lib64:/usr/libexec:/usr/libexec/openssh:/usr/lib/ssh:/usr/lib64/ssh:/usr/local/libexec:/usr/lib/misc:/usr/lib/openssh" | sed -e 's/:/ /'`"
++as_dummy="`echo "$PATH:/usr/lib:/usr/lib64:/usr/lib64/misc:/usr/libexec:/usr/libexec/openssh:/usr/lib/ssh:/usr/lib64/ssh:/usr/local/libexec:/usr/lib/misc:/usr/lib/openssh" | sed -e 's/:/ /'`"
+ for as_dir in $as_dummy
+ do
+   IFS=$as_save_IFS
+@@ -4240,7 +4240,7 @@ else
+   ;;
+   *)
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-as_dummy="`echo "$PATH:/usr/lib:/usr/lib/ssh:/usr/libexec/openssh:/usr/libexec:/usr/local/libexec" | sed -e 's/:/ /'`"
++as_dummy="`echo "$PATH:/usr/lib:/usr/lib64:/usr/lib64/misc:/usr/lib/ssh:/usr/libexec/openssh:/usr/libexec:/usr/local/libexec" | sed -e 's/:/ /'`"
+ for as_dir in $as_dummy
+ do
+   IFS=$as_save_IFS
+diff -urNp scponly-4.8-orig/configure.in scponly-4.8-dwok/configure.in
+--- scponly-4.8-orig/configure.in	2019-11-26 16:34:19.028544577 +0100
++++ scponly-4.8-dwok/configure.in	2019-11-26 16:33:28.491819749 +0100
+@@ -231,7 +231,7 @@ AC_ARG_ENABLE([quota-compat],
+ 
+ if test "x$scponly_scp_compat" != "x"; then
+ 	AC_MSG_NOTICE([enabling core WinSCP and Vanilla SCP binaries...])
+-	SCPONLY_PATH_PROG_DEFINE([PROG_SFTP_SERVER], [sftp-server],[/usr/lib:/usr/lib64:/usr/libexec:/usr/libexec/openssh:/usr/lib/ssh:/usr/lib64/ssh:/usr/local/libexec:/usr/lib/misc:/usr/lib/openssh])
++	SCPONLY_PATH_PROG_DEFINE([PROG_SFTP_SERVER], [sftp-server],[/usr/lib:/usr/lib64:/usr/lib64/misc:/usr/libexec:/usr/libexec/openssh:/usr/lib/ssh:/usr/lib64/ssh:/usr/local/libexec:/usr/lib/misc:/usr/lib/openssh])
+ 	SCPONLY_PATH_PROG_DEFINE([PROG_LS],    [ls],    [/bin:/usr/bin:/sbin:/usr/sbin])
+ 	SCPONLY_PATH_PROG_DEFINE([PROG_SCP],   [scp],   [/bin:/usr/bin:/sbin:/usr/sbin])
+ 	SCPONLY_PATH_PROG_DEFINE([PROG_RM],    [rm],    [/bin:/usr/bin:/sbin:/usr/sbin])
+@@ -297,7 +297,7 @@ if test "x$scponly_sftp_compat" != "x";
+   if test "x$scponly_explicit_sftpserver_path" = "x"; then
+       dnl Informed guess:
+       SCPONLY_PATH_PROG_DEFINE([PROG_SFTP_SERVER], [sftp-server],
+-       [/usr/lib:/usr/lib/ssh:/usr/libexec/openssh:/usr/libexec:/usr/local/libexec])
++       [/usr/lib:/usr/lib64:/usr/lib64/misc:/usr/lib/ssh:/usr/libexec/openssh:/usr/libexec:/usr/local/libexec])
+       dnl Debian uses /usr/lib
+       dnl Red Hat uses /usr/libexec/openssh
+       dnl Many a *BSD uses $PATH itself (which is implicit + checked 1st)

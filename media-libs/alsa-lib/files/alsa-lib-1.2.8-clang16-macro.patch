@@ -1,0 +1,31 @@
+https://github.com/alsa-project/alsa-lib/pull/278
+
+From 68a233404279366f7c7e34afb6197bcc70f4b7d7 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 30 Oct 2022 18:06:37 +0000
+Subject: [PATCH] utils/alsa.m4: include <stdlib.h> for exit()
+
+Clang 16 makes -Wimplicit-function-declaration an error by default
+and it's easier to just explicitly include <stdlib.h> rather
+than hope the ALSA headers always have it.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/utils/alsa.m4
++++ b/utils/alsa.m4
+@@ -85,6 +85,7 @@ AC_LANG_PUSH([C])
+ AC_MSG_CHECKING([for libasound headers version >= $alsa_min_major_version.$alsa_min_minor_version.$alsa_min_micro_version ($min_alsa_version)])
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <alsa/asoundlib.h>
++#include <stdlib.h>
+ ]], [[
+ /* ensure backward compatibility */
+ #if !defined(SND_LIB_MAJOR) && defined(SOUNDLIB_VERSION_MAJOR)
+@@ -130,6 +131,7 @@ AC_MSG_CHECKING([for libatopology (sound headers version > 1.1.9)])
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <alsa/asoundlib.h>
+ #include <alsa/topology.h>
++#include <stdlib.h>
+ ]], [[
+ /* ensure backward compatibility */
+ #if !defined(SND_LIB_VERSION)
+

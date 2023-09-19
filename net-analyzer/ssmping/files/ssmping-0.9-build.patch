@@ -1,0 +1,23 @@
+fixup build errors/warnings
+
+http://bugs.gentoo.org/240750
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,5 @@
+ PREFIX ?= /usr/local
++CPPFLAGS += -D_GNU_SOURCE
+ 
+ all: ssmping asmping ssmpingd mcfirst
+ 
+--- a/ssmping.c
++++ b/ssmping.c
+@@ -22,7 +22,7 @@
+     uint16_t size;
+     uint32_t intface;
+     struct sockaddr_storage name, ucaddr, mcaddr, grpaddr;
+-    size_t namelen;
++    socklen_t namelen;
+ #ifdef WIN32
+     WORD wVersionRequested;
+     WSADATA wsaData;

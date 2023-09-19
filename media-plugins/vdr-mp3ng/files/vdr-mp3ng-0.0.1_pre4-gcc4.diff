@@ -1,0 +1,17 @@
+Nur in mp3ng-0.9.13-MKIV-pre3: decoder.o.
+diff -ru mp3ng-0.9.13-MKIV-pre3-orig/decoder-ogg.h mp3ng-0.9.13-MKIV-pre3/decoder-ogg.h
+--- mp3ng-0.9.13-MKIV-pre3-orig/decoder-ogg.h	2006-07-08 21:19:14.777181805 +0200
++++ mp3ng-0.9.13-MKIV-pre3/decoder-ogg.h	2006-07-08 21:19:31.498835576 +0200
+@@ -49,7 +49,7 @@
+   ~cOggFile();
+   bool Open(bool log=true);
+   void Close(void);
+-  long long cOggFile::Seek(long long posMs=0, bool relativ=false);
++  long long Seek(long long posMs=0, bool relativ=false);
+   int Stream(short *buffer, int samples);
+   bool CanSeek(void) { return canSeek; }
+   long long IndexMs(void);
+Nur in mp3ng-0.9.13-MKIV-pre3: decoder-ogg.o.
+Nur in mp3ng-0.9.13-MKIV-pre3: decoder-snd.o.
+Nur in mp3ng-0.9.13-MKIV-pre3: libvdr-mp3ng.so.
+Nur in mp3ng-0.9.13-MKIV-pre3: libvdr-mp3ng.so.1.4.1.

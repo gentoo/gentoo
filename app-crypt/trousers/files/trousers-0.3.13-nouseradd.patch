@@ -1,0 +1,12 @@
+diff -urNp trousers-0.3.13.org/dist/Makefile.am trousers-0.3.13/dist/Makefile.am
+--- trousers-0.3.13.org/dist/Makefile.am	2014-04-24 21:05:43.000000000 +0300
++++ trousers-0.3.13/dist/Makefile.am	2015-04-08 10:05:51.018955728 +0300
+@@ -11,8 +11,6 @@ endif
+ install-exec-hook:
+ 	/bin/sh -c 'if [ ! -e ${DESTDIR}/@localstatedir@/lib/tpm ];then mkdir -p ${DESTDIR}/@localstatedir@/lib/tpm; fi'
+ if !NOUSERCHECK
+-	/usr/sbin/groupadd tss || true
+-	/usr/sbin/useradd -r tss -g tss || true
+ 	/bin/chown tss:tss ${DESTDIR}/@localstatedir@/lib/tpm || true
+ 	/bin/chmod 0700 ${DESTDIR}/@localstatedir@/lib/tpm
+ endif

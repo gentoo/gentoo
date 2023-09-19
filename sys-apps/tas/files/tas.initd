@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+name="Supermicro Thin-Agent Service"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+command="/usr/bin/IPMITAS"
+command_args="-agent start-service"
+command_args_stop="-agent stop-service"
+start_stop_daemon_args="--env LC_ALL=C"
+
+stop() {
+	ebegin "Stopping ${name}"
+	${command} ${command_args_stop}
+	eend $?
+}

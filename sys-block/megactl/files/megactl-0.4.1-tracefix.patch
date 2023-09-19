@@ -1,0 +1,232 @@
+diff -Nuar megactl-0.4.1.orig/src/megactl.c megactl-0.4.1/src/megactl.c
+--- megactl-0.4.1.orig/src/megactl.c	2007-08-21 00:19:53.000000000 -0700
++++ megactl-0.4.1/src/megactl.c	2014-07-14 11:15:14.538745305 -0700
+@@ -45,6 +45,9 @@
+ 
+ ********************************************************************/
+ 
++#define __STDC_FORMAT_MACROS
++#include <inttypes.h>
++
+ #include	"mega.h"
+ #include	"megaioctl.h"
+ #include	"adapter.h"
+@@ -207,7 +210,7 @@
+ 
+     for (k = 0; (b >= 1024) && (k < sizeof (suffix) / sizeof (suffix[0]) - 1); ++k, b /= 1024)
+ 	;
+-    snprintf (bytes, sizeof bytes, "%3llu%s%s", b, suffix[k], unit);
++    snprintf (bytes, sizeof bytes, "%3"PRIu64"%s%s", b, suffix[k], unit);
+     return bytes;
+ }
+ 
+@@ -604,6 +607,8 @@
+ 	fprintf (stderr, "megaraid driver version %x too old.\n", driverVersion);
+ 	return 1;
+     }
++#else
++	driverVersion = 0;
+ #endif
+ 
+     if (megaGetNumAdapters (fd, &numAdapters, sas) < 0)
+diff -Nuar megactl-0.4.1.orig/src/megaioctl.c megactl-0.4.1/src/megaioctl.c
+--- megactl-0.4.1.orig/src/megaioctl.c	2014-07-14 11:30:03.590781305 -0700
++++ megactl-0.4.1/src/megaioctl.c	2014-07-14 11:31:36.410258930 -0700
+@@ -87,7 +87,11 @@
+     m->cmd = cmd;
+     m->opcode = opcode;
+     m->subopcode = subopcode;
++#ifdef __x86_64__
++    m->xferaddr = (uint64_t) data;
++#else
+     m->xferaddr = (uint32_t) data;
++#endif
+     if (data)
+ 	memset (data, 0, len);
+ 
+@@ -115,7 +119,11 @@
+     m->cmd = cmd;
+     m->opcode = opcode;
+     m->subopcode = subopcode;
++#ifdef __x86_64__
++    m->xferaddr = (uint64_t) data;
++#else
+     m->xferaddr = (uint32_t) data;
++#endif
+     if (data)
+ 	memset (data, 0, len);
+ 
+@@ -178,11 +186,19 @@
+ 	u.ui.fcs.adapno = MKADAP(adapter->adapno);
+ 	u.data = data;
+ 	m->cmd = MBOXCMD_PASSTHRU;
++#ifdef __x86_64__
++	m->xferaddr = (uint64_t) p;
++#else
+ 	m->xferaddr = (uint32_t) p;
++#endif
+ 	p->timeout = 3;
+ 	p->ars = 1;
+ 	p->target = target;
+-	p->dataxferaddr = (uint32_t) data;
++#ifdef __x86_64__
++    p->dataxferaddr = (uint64_t) data;
++#else
++    p->dataxferaddr = (uint32_t) data;
++#endif
+ 	p->dataxferlen = len;
+ 	p->scsistatus = 239;	/* HMMM */
+ 	memcpy (p->cdb, cdb, cdblen);
+diff -Nuar megactl-0.4.1.orig/src/megatrace.c megactl-0.4.1/src/megatrace.c
+--- megactl-0.4.1.orig/src/megatrace.c	2014-07-14 01:31:47.704312799 -0700
++++ megactl-0.4.1/src/megatrace.c	2014-07-14 11:37:20.570755832 -0700
+@@ -170,7 +170,11 @@
+ 		    fprintf (stderr, "ptrace:getregs: %s\n", strerror (errno));
+ 		    exit (1);
+ 		}
++#ifdef __x86_64__
++		call = r.orig_rax;
++#else
+ 		call = r.orig_eax;
++#endif
+ 		/*printthis = call == SYS_ioctl;*/
+ 
+ 		if (state == INBOUND)
+@@ -188,18 +192,30 @@
+ 		{
+ 		    if ((call < 0) || (call > callmax) || (callinfo[call].name == NULL))
+ 		    {
++#ifdef __x86_64__
++			fprintf (stderr, "= 0x%08llx\n", (unsigned long long) r.rax);
++#else
+ 			fprintf (stderr, "= 0x%08lx\n", (unsigned long) r.eax);
++#endif
+ 		    }
+ 		    else
+ 		    {
+ 			if (callinfo[call].ptrval)
+ 			{
+ 			    if (printcalls || printthis)
++#ifdef __x86_64__
++				fprintf (stderr, " = 0x%08llx\n", r.rax);
++#else
+ 				fprintf (stderr, " = 0x%08lx\n", r.eax);
++#endif
+ 			}
+ 			else
+ 			{
++#ifdef __x86_64__
++			    long	rv = r.rax;
++#else
+ 			    long	rv = r.eax;
++#endif
+ 			    if (rv < 0)
+ 			    {
+ 				if (printcalls || printthis)
+@@ -219,16 +235,22 @@
+ 		    unsigned int		len = 16;
+ 		    unsigned char		buf[65536];
+ 
++#ifdef __x86_64__
++		    unsigned long long	fd = r.rbx;
++		    unsigned long long	ioc = r.rcx;
++		    unsigned long long	arg = r.rdx;
++#else
+ 		    unsigned long		fd = r.ebx;
+-
+ 		    unsigned long		ioc = r.ecx;
++		    unsigned long		arg = r.edx;
++#endif
++
+ 		    unsigned int		iocdir = _IOC_DIR(ioc);
+ 		    unsigned char		ioctype = _IOC_TYPE(ioc);
+ 		    unsigned int		iocnr = _IOC_NR(ioc);
+ 		    unsigned int		iocsize = _IOC_SIZE(ioc);
+ 		    char			*iocdirname;
+ 
+-		    unsigned long		arg = r.edx;
+ 
+ 		    switch (iocdir)
+ 		    {
+@@ -240,7 +262,11 @@
+ 
+ 		    fprintf (stderr, "%s: ioctl(%ld, _IOC(\"%s\",'%c',0x%02x,0x%02x), 0x%08lx)", tbuf, fd, iocdirname, ioctype, iocnr, iocsize, arg);
+ 		    if (state == OUTBOUND)
++#ifdef __x86_64__
++			fprintf (stderr, " = %lld\n", r.rax);
++#else
+ 			fprintf (stderr, " = %ld\n", r.eax);
++#endif
+ 		    if (getenv ("LOG_INBOUND"))
+ 			fprintf (stderr, "\n");
+ 
+@@ -249,10 +275,18 @@
+ 		    if (len > sizeof buf)
+ 			len = sizeof buf;
+ 
++#ifdef __x86_64__
++		    if (printregs)
++			fprintf (stderr, "    rbx=%08llx rcx=%08llx rdx=%08llx rsi=%08llx rdi=%08llx rbp=%08llx rax=%08llx ds=%08llx es=%08llx fs=%08llx gs=%08llx orig_rax=%08llx rip=%08llx cs=%08llx eflags=%08llx rsp=%08llx ss=%08llx\n", r.rbx, r.rcx, r.rdx, r.rsi, r.rdi, r.rbp, r.rax, r.ds, r.es, r.fs, r.gs, r.orig_rax, r.rip, r.cs, r.eflags, r.rsp, r.ss);
++
++		    copyout (buf, len, pid, r.rdx);
++#else
+ 		    if (printregs)
+ 			fprintf (stderr, "    ebx=%08lx ecx=%08lx edx=%08lx esi=%08lx edi=%08lx ebp=%08lx eax=%08lx xds=%08lx xes=%08lx xfs=%08lx xgs=%08lx orig_eax=%08lx eip=%08lx xcs=%08lx eflags=%08lx esp=%08lx xss=%08lx\n", r.ebx, r.ecx, r.edx, r.esi, r.edi, r.ebp, r.eax, r.xds, r.xes, r.xfs, r.xgs, r.orig_eax, r.eip, r.xcs, r.eflags, r.esp, r.xss);
+ 
+ 		    copyout (buf, len, pid, r.edx);
++#endif
++
+ 
+ 		    if ((ioctype == 'm') && (iocnr == 0) && (iocsize == sizeof (struct uioctl_t)))
+ 		    {
+@@ -405,7 +439,11 @@
+ 			else
+ 			{
+ 			    fprintf (stderr, "    host %d, off 0x%04x, count %d, sense_off 0x%08x, sense_len 0x%08x\n", iocp->host_no, iocp->sgl_off, iocp->sge_count, iocp->sense_off, iocp->sense_len);
++#ifdef __x86_64__
++			    dumpbytes (stderr, buf, len, (void *) r.rdx, NULL);
++#else
+ 			    dumpbytes (stderr, buf, len, (void *) r.edx, NULL);
++#endif
+ 			}
+ 			if (log)
+ 			{
+@@ -427,23 +465,38 @@
+ 		    }
+ 		    else
+ 		    {
++#ifdef __x86_64__
++			dumpbytes (stderr, buf, len, (void *) r.rdx, NULL);
++#else
+ 			dumpbytes (stderr, buf, len, (void *) r.edx, NULL);
++#endif
+ 		    }
+ 		    fprintf (stderr, "\n");
+ 		}
+ 
+ 		switch (state)
+ 		{
++#ifdef __x86_64__
++		    static u64		lastrip = 0;
++#else
+ 		    static u32		lasteip = 0;
++#endif
++
+ 
+ 		 case UNTRACED:
+ 		    /* We don't know whether we were inbound or outbound on the first signal; this
+ 		       appears to differ between kernels. So we defer until we see the same eip in
+ 		       two successive traps, at which point we know we were outbound, so the next
+ 		       trap is inbound. */
++#ifdef __x86_64__
++		    if (lastrip == r.rip)
++			state = INBOUND;
++		    lastrip = r.rip;
++#else
+ 		    if (lasteip == r.eip)
+ 			state = INBOUND;
+ 		    lasteip = r.eip;
++#endif
+ 		    break;
+ 		 case INBOUND:		state = OUTBOUND; break;
+ 		 case OUTBOUND:		state = INBOUND; break;

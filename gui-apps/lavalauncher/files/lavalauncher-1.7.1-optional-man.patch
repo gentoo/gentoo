@@ -1,0 +1,27 @@
+diff --git a/meson.build b/meson.build
+index 029f711..50beccd 100644
+--- a/meson.build
++++ b/meson.build
+@@ -6,7 +6,6 @@ project(
+   default_options: [
+     'c_std=c11',
+     'warning_level=3',
+-    'werror=true',
+   ]
+ )
+ 
+@@ -61,6 +60,7 @@ scdoc = dependency(
+   'scdoc',
+   version: '>=1.9.2',
+   native: true,
++  required: get_option('man-page'),
+ )
+ if scdoc.found()
+   scdoc_prog = find_program(scdoc.get_pkgconfig_variable('scdoc'), native: true)
+diff --git a/meson_options.txt b/meson_options.txt
+new file mode 100644
+index 0000000..2e41905
+--- /dev/null
++++ b/meson_options.txt
+@@ -0,0 +1 @@
++option('man-page', type: 'feature', value: 'auto', description: 'Generate and install man pages')

@@ -1,0 +1,11 @@
+--- a/cmake/KF5I18nMacros.cmake.in	2019-04-07 09:28:26.000000000 +0200
++++ b/cmake/KF5I18nMacros.cmake.in	2019-04-20 20:56:41.628484762 +0200
+@@ -31,7 +31,7 @@
+ # solution if it cannot be found in $PATH when building applications.
+ set(_KI18N_PYTHON_EXECUTABLE "@PYTHON_EXECUTABLE@")
+ 
+-find_program(KI18N_PYTHON_EXECUTABLE NAMES python3 python2 python)
++find_program(KI18N_PYTHON_EXECUTABLE NAMES python)
+ if(NOT KI18N_PYTHON_EXECUTABLE)
+     set(KI18N_PYTHON_EXECUTABLE "${_KI18N_PYTHON_EXECUTABLE}")
+ endif()

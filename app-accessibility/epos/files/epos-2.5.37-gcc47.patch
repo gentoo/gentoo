@@ -1,0 +1,16 @@
+ https://bugs.gentoo.org/440354
+ 
+ src/nnet/map.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/nnet/map.h
++++ b/src/nnet/map.h
+@@ -25,7 +25,7 @@ T2 & TMap<T1,T2>::operator [] (const T1 &key) {
+ 	else {
+ 		TData x;
+ 		x.first() = key;
+-		return insert (x)->second();
++		return this->insert (x)->second();
+ 	}
+ }
+ 

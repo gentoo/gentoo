@@ -1,0 +1,26 @@
+Fix int to pointer conversion for clang
+
+Note - this parameter was not actually used inside eval_buffer because of a define.
+
+Bug: https://bugs.gentoo.org/875449
+
+--- a/src/kmk/loadapi.c
++++ b/src/kmk/loadapi.c
+@@ -20,6 +20,8 @@
+ #include "variable.h"
+ #include "dep.h"
+ 
++#include <string.h>
++
+ /* Allocate a buffer in our context, so we can free it.  */
+ char *
+ gmk_alloc (unsigned int len)
+@@ -59,7 +61,7 @@
+   install_variable_buffer (&pbuf, &plen);
+ 
+   s = xstrdup (buffer);
+-  eval_buffer (s, flp IF_WITH_VALUE_LENGTH_PARAM (strlen (s) /** @todo suboptimal */));
++  eval_buffer (s, flp IF_WITH_VALUE_LENGTH_PARAM (strchr (s, 0) /** @todo suboptimal */));
+   free (s);
+ 
+   restore_variable_buffer (pbuf, plen);

@@ -1,0 +1,26 @@
+diff --git a/install.sh b/install.sh
+index f66810a..051b861 100755
+--- a/install.sh
++++ b/install.sh
+@@ -448,17 +448,15 @@ if [ -d manpages -a -n "$MANDIR" ]; then
+     make_parent_directory ${DESTDIR}${MANDIR}/man5 0755
+ 
+     for f in *.5; do
+-	gzip -c $f > $f.gz
+-	install_file $f.gz ${DESTDIR}${MANDIR}/man5/$f.gz 0644
+-	echo "Man page $f.gz installed to ${DESTDIR}${MANDIR}/man5/$f.gz"
++	install_file $f ${DESTDIR}${MANDIR}/man5/$f 0644
++	echo "Man page $f installed to ${DESTDIR}${MANDIR}/man5/$f"
+     done
+ 
+     make_parent_directory ${DESTDIR}${MANDIR}/man8 0755
+ 
+     for f in *.8; do
+-	gzip -c $f > $f.gz
+-	install_file $f.gz ${DESTDIR}${MANDIR}/man8/$f.gz 0644
+-	echo "Man page $f.gz installed to ${DESTDIR}${MANDIR}/man8/$f.gz"
++	install_file $f ${DESTDIR}${MANDIR}/man8/$f 0644
++	echo "Man page $f installed to ${DESTDIR}${MANDIR}/man8/$f"
+     done
+ 
+     cd ..

@@ -1,0 +1,31 @@
+https://github.com/NGSolve/netgen/pull/123/commits/5ee4e43393936ab4c00feb58c48bc3a10e6bcbdb
+
+From 76276c5a3b0e70b27d44f7ce0a3ea064b23909da Mon Sep 17 00:00:00 2001
+From: Christopher Montgomery <monty@xiph.org>
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sun, 19 Feb 2023 12:18:12 +0100
+Subject: [PATCH] fix nullptr deref in archive
+
+Hardened toolchains (eg, mainline Fedora) no longer tolerate null
+derefs that were silently trapped/ignored in earlier versions.  This
+eliminates a nullptr deref in archive.hpp that was failing several
+unit tests (and causing crashes) when trying to manipulate
+default-constructed archive objects.
+
+Adapted original patch according the comment in the PR.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/libsrc/core/archive.hpp
++++ b/libsrc/core/archive.hpp
+@@ -225,7 +225,7 @@ namespace ngcore
+       (*this) & size;
+       if(Input())
+         v.resize(size);
+-      Do(&v[0], size);
++      Do(v.data(), size);
+       return (*this);
+     }
+  
+-- 
+2.39.2
+

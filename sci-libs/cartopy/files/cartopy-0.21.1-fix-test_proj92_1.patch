@@ -1,0 +1,46 @@
+diff --git a/lib/cartopy/tests/crs/test_lambert_conformal.py b/lib/cartopy/tests/crs/test_lambert_conformal.py
+index 6032d2e5c..c64022ff9 100644
+--- a/lib/cartopy/tests/crs/test_lambert_conformal.py
++++ b/lib/cartopy/tests/crs/test_lambert_conformal.py
+@@ -5,6 +5,7 @@
+ # licensing details.
+ 
+ from numpy.testing import assert_array_almost_equal
++import pyproj
+ import pytest
+ 
+ import cartopy.crs as ccrs
+@@ -68,18 +69,29 @@ def test_too_many_parallel(self):
+ 
+     def test_single_spole(self):
+         s_pole_crs = ccrs.LambertConformal(standard_parallels=[-1.])
++        expected_x = (-19939660, 19939660)
++        expected_y = (-735590302, -8183795)
++        if pyproj.__proj_version__ >= '9.2.0':
++            expected_x = (-19840440, 19840440)
++            expected_y = (-370239953, -8191953)
++        print(s_pole_crs.x_limits)
+         assert_array_almost_equal(s_pole_crs.x_limits,
+-                                  (-19939660, 19939660),
++                                  expected_x,
+                                   decimal=0)
+         assert_array_almost_equal(s_pole_crs.y_limits,
+-                                  (-735590302, -8183795),
++                                  expected_y,
+                                   decimal=0)
+ 
+     def test_single_npole(self):
+         n_pole_crs = ccrs.LambertConformal(standard_parallels=[1.])
++        expected_x = (-20130569, 20130569)
++        expected_y = (-8170229, 726200683)
++        if pyproj.__proj_version__ >= '9.2.0':
++            expected_x = (-20222156, 20222156)
++            expected_y = (-8164817, 360848719)
+         assert_array_almost_equal(n_pole_crs.x_limits,
+-                                  (-20130569, 20130569),
++                                  expected_x,
+                                   decimal=0)
+         assert_array_almost_equal(n_pole_crs.y_limits,
+-                                  (-8170229, 726200683),
++                                  expected_y,
+                                   decimal=0)

@@ -1,0 +1,12 @@
+--- a/include/sqltypes.h
++++ b/include/sqltypes.h
+@@ -96,6 +96,9 @@
+ extern "C" {
+ #endif
+ 
++#ifndef _IODBCUNIX_H
++#include <iodbcunix.h>
++#endif
+ 
+ /*
+  *  Environment specific definitions

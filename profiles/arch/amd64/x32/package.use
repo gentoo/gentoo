@@ -1,0 +1,7 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2022-05-30)
+# Provide sensible default for EFI.
+sys-boot/gnu-efi abi_x86_64
+sys-boot/syslinux abi_x86_64

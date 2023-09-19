@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>eudev@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="kmod">enable module loading through libkmod</flag>
+    <flag name="rule-generator">install legacy rule generator rules and support scripts - note
+    that the functionality within was dropped from <pkg>sys-fs/udev</pkg> as it is not stable in
+    all cases; use at your own risk</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">eudev-project/eudev</remote-id>
+  </upstream>
+</pkgmetadata>

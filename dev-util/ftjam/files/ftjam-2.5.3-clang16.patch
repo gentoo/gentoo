@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/870655
+--- a/jam.h
++++ b/jam.h
+@@ -382,2 +382,3 @@
+ # include <string.h>
++# include <unistd.h>
+ # include <time.h>

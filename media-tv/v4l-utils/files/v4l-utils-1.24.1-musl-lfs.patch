@@ -1,0 +1,51 @@
+https://git.linuxtv.org/v4l-utils.git/commit/?id=5d7d99cd11acaaa3bdcb290f92012005dca58b1e
+
+From 5d7d99cd11acaaa3bdcb290f92012005dca58b1e Mon Sep 17 00:00:00 2001
+From: Peter Seiderer <ps.report@gmx.net>
+Date: Fri, 31 Mar 2023 23:35:02 +0200
+Subject: v4l2-tracer: wrap open64/mmap64 functions only if linux && __GLIBC__
+
+Wrap open64/mmap64 functions only if linux && __GLIBC__, as done
+in lib/libv4l1/v4l1comapt.c and lib/libv4l2/v4l2convert.c since
+commit 'libv4l: Wrap LFS64 functions only if linux && __GLIBC__'
+(403a4e2697a1ff96fe2fa16589039595f21cadf0), should fix musl libc
+compile.
+
+Signed-off-by: Peter Seiderer <ps.report@gmx.net>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+--- a/utils/v4l2-tracer/libv4l2tracer.cpp
++++ b/utils/v4l2-tracer/libv4l2tracer.cpp
+@@ -83,6 +83,7 @@ int open(const char *path, int oflag, ...)
+ 	return fd;
+ }
+ 
++#if defined(linux) && defined(__GLIBC__)
+ int open64(const char *path, int oflag, ...)
+ {
+ 	errno = 0;
+@@ -110,6 +111,7 @@ int open64(const char *path, int oflag, ...)
+ 
+ 	return fd;
+ }
++#endif
+ 
+ int close(int fd)
+ {
+@@ -156,6 +158,7 @@ void *mmap(void *addr, size_t len, int prot, int flags, int fildes, off_t off)
+ 	return buf_address_pointer;
+ }
+ 
++#if defined(linux) && defined(__GLIBC__)
+ void *mmap64(void *addr, size_t len, int prot, int flags, int fildes, off_t off)
+ {
+ 	errno = 0;
+@@ -170,6 +173,7 @@ void *mmap64(void *addr, size_t len, int prot, int flags, int fildes, off_t off)
+ 
+ 	return buf_address_pointer;
+ }
++#endif
+ 
+ int munmap(void *start, size_t length)
+ {
+-- 
+cgit v1.2.1

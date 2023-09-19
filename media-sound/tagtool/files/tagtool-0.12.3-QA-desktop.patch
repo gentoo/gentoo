@@ -1,0 +1,10 @@
+--- a/data/tagtool.desktop.in
++++ b/data/tagtool.desktop.in
+@@ -3,6 +3,6 @@
+ _Comment=MP3 and Ogg Vorbis tag editor
+ Exec=tagtool
+ Icon=TagTool
+-Terminal=False
++Terminal=false
+ Type=Application
+ Categories=Audio;AudioVideo;AudioVideoEditing;

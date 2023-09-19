@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="stubby">Add Stubby DNS Privacy Deamon</flag>
+		<flag name="getdns-query">Add getdns_query tool</flag>
+		<flag name="getdns-server-mon">Add getdns_server_mon tool</flag>
+		<flag name="unbound">Enable <pkg>net-dns/unbound</pkg> libraries support</flag>
+		<flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> support</flag>
+		<flag name="libev">Enable <pkg>dev-libs/libev</pkg> support</flag>
+		<flag name="libuv">Enable <pkg>dev-libs/libuv</pkg> support</flag>
+	</use>
+</pkgmetadata>

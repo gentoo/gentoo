@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This library allows the user to set Emacs' `exec-path' and $PATH from the
+    shell path, so that `shell-command', `compile' and the like work as
+    expected. It also allows other environment variables to be retrieved from
+    the shell, so that Emacs will see the same values you get in a terminal.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/purcell/exec-path-from-shell/issues/</bugs-to>
+    <remote-id type="github">purcell/exec-path-from-shell</remote-id>
+  </upstream>
+</pkgmetadata>

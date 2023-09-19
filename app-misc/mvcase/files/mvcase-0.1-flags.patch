@@ -1,0 +1,25 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Wed Nov 14 23:22:15 UTC 2012
+Subject: build system
+
+	respect CC, CFLAGS, CPPFLAGS and LDFLAGS
+
+--- a/Makefile
++++ b/Makefile
+@@ -6,15 +6,11 @@
+ MANPATH=/usr/man
+ COMPILE=gcc
+ ROFF=groff
+-CFLAGS=
+-CLIBS=-lshhopt
++LDLIBS=-lshhopt
+ INSTALL=install
+ 
+ all:	mvcase mvcase.1.gz
+ 
+-mvcase: mvcase.c
+-	$(COMPILE) $(CFLAGS) mvcase.c -o mvcase $(CLIBS)
+-
+ mvcase.1.gz: mvcase.1
+ 	$(ROFF) -man -Tascii mvcase.1 | gzip > mvcase.1.gz
+ 

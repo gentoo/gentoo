@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+depend() {
+	need net
+	use mpd
+}
+
+start () {
+	
+	ebegin "Starting Music Player Daemon Audioscrobbler client"
+	start-stop-daemon --start --exec /usr/bin/mpdscribble -- --pidfile /var/run/mpdscribble.pid
+	eend $?
+}
+
+stop () {
+	ebegin "Stopping Music Player Daemon Audioscrobbler client"
+	start-stop-daemon --stop --quiet -p /var/run/mpdscribble.pid --exec /usr/bin/mpdscribble || eerror "mpdscribble is not running"
+	rm -f /var/run/mpdscribble.pid
+	eend $?
+}

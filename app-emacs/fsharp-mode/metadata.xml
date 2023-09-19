@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://github.com/fsharp/emacs-fsharp-mode/blob/master/CHANGELOG.md</changelog>
+    <bugs-to>https://github.com/fsharp/emacs-fsharp-mode/issues/</bugs-to>
+    <remote-id type="github">fsharp/emacs-fsharp-mode</remote-id>
+  </upstream>
+</pkgmetadata>

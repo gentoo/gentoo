@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=TkMan
+Comment=Graphical man page and info viewer
+Exec=tkman
+Icon=TkMan.gif
+Terminal=false
+Type=Application
+Categories=Utility;
+

@@ -1,0 +1,25 @@
+From 1553ea30148f69bce545b3a79ab3f7847566c50a Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 6 Feb 2021 19:36:33 +0100
+Subject: [PATCH] Makefile: Give external AR="$(tc-getAR)" a chance to win
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index f005099..98808f8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -48,7 +48,7 @@ OPTFLAGS ?= -Wall
+ 
+ # programs used in the Makefiles:
+ export CC      ?= gcc
+-export AR      = ar
++export AR      ?= ar
+ export RM      = rm -f
+ export INSTALL = install
+ export CP      = cp
+-- 
+2.30.0
+

@@ -1,0 +1,20 @@
+https://github.com/etingof/pysnmp/commit/2ee8b8707d36e772d6308f434b445a766e6586e7
+https://bugs.gentoo.org/836608
+
+From 2ee8b8707d36e772d6308f434b445a766e6586e7 Mon Sep 17 00:00:00 2001
+From: Michael Weiss <dev.primeos@gmail.com>
+Date: Thu, 7 Nov 2019 18:55:45 +0100
+Subject: [PATCH] Improve the setuptools version check (#322)
+
+Handles malformed `setuptools.__version__` such as "41.4.0.post20191022"
+--- a/setup.py
++++ b/setup.py
+@@ -85,7 +85,7 @@ def howto_install_setuptools():
+ 
+     setup, Command = setuptools.setup, setuptools.Command
+ 
+-    observed_version = [int(x) for x in setuptools.__version__.split('.')]
++    observed_version = [int(x) for x in setuptools.__version__.split('.')[:3]]
+     required_version = [36, 2, 0]
+ 
+     # NOTE(etingof): require fresh setuptools to build proper wheels

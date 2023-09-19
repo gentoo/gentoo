@@ -1,0 +1,55 @@
+From dfd25022e2a775a8b5eb03e4ad28bab6fe6a0658 Mon Sep 17 00:00:00 2001
+From: Ed Marshall <esm@logic.net>
+Date: Sat, 1 Feb 2020 15:03:22 -0800
+Subject: [PATCH] Fix multiple definitions with new -fno-common default in GCC
+ 10
+
+---
+ ccextractor.c              | 3 +++
+ ccextractor.h              | 4 ++--
+ lib_ccx/ccx_decoders_708.h | 4 ++--
+ 3 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/ccextractor.c b/ccextractor.c
+index a2fb0a24f..8ed27936d 100644
+--- a/ccextractor.c
++++ b/ccextractor.c
+@@ -9,6 +9,9 @@ License: GPL 2.0
+ 
+ volatile int terminate_asap = 0;
+ 
++struct ccx_s_options ccx_options;
++struct lib_ccx_ctx *signal_ctx;
++
+ void sigusr1_handler(int sig)
+ {
+ 	mprint("Caught SIGUSR1. Filename Change Requested\n");
+diff --git a/ccextractor.h b/ccextractor.h
+index 4e9ae68f6..e5cde3055 100644
+--- a/ccextractor.h
++++ b/ccextractor.h
+@@ -41,8 +41,8 @@ char * api_param(struct ccx_s_options* api_options, int count);
+ #endif
+ 
+ 
+-struct ccx_s_options ccx_options;
+-struct lib_ccx_ctx *signal_ctx;
++extern struct ccx_s_options ccx_options;
++extern struct lib_ccx_ctx *signal_ctx;
+ //volatile int terminate_asap = 0;
+ 
+ struct ccx_s_options* api_init_options();
+diff --git a/lib_ccx/ccx_decoders_708.h b/lib_ccx/ccx_decoders_708.h
+index 324f3890d..df52c6002 100644
+--- a/lib_ccx/ccx_decoders_708.h
++++ b/lib_ccx/ccx_decoders_708.h
+@@ -371,7 +371,7 @@ void ccx_dtvcc_process_service_block(ccx_dtvcc_ctx *dtvcc,
+ 									 unsigned char *data,
+ 									 int data_length);
+ 
+-ccx_dtvcc_pen_color ccx_dtvcc_default_pen_color;
+-ccx_dtvcc_pen_attribs ccx_dtvcc_default_pen_attribs;
++extern ccx_dtvcc_pen_color ccx_dtvcc_default_pen_color;
++extern ccx_dtvcc_pen_attribs ccx_dtvcc_default_pen_attribs;
+ 
+ #endif

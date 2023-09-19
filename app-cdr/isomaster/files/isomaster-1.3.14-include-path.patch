@@ -1,0 +1,25 @@
+From 50113aa660d2a867f3f8bfd67e1ba601c8b5294a Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 27 Jan 2020 23:33:49 +0100
+Subject: [PATCH] Add missing (Gentoo specific) include path for iniparser 4
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8f4f23b..124a035 100644
+--- a/Makefile
++++ b/Makefile
+@@ -65,7 +65,7 @@ CPPFLAGS +=  -DICONPATH=\"$(ICONPATH)\" -DLOCALEDIR=\"$(LOCALEDIR)\" -DDEFAULT_E
+ CPPFLAGS += -D_FILE_OFFSET_BITS=64
+ 
+ ifdef USE_SYSTEM_INIPARSER
+-CPPFLAGS += -DUSE_SYSTEM_INIPARSER=$(USE_SYSTEM_INIPARSER)
++CPPFLAGS += -DUSE_SYSTEM_INIPARSER=$(USE_SYSTEM_INIPARSER) -I/usr/include/iniparser4
+ endif
+ 
+ OBJECTS = isomaster.o window.o browser.o fsbrowser.o isobrowser.o error.o about.o settings.o boot.o editfile.o
+-- 
+2.24.1
+

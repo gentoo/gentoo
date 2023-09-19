@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<longdescription lang="en">
+		Keras Applications is the applications module of the Keras deep learning library. It provides model definitions and pre-trained weights for a number of popular archictures, such as VGG16, ResNet50, Xception, MobileNet, and more.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">keras-team/keras-applications</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+Migrating from an existing Nextcloud deployment
+
+if you migrate data from a previously existing Nextcloud deployment, you may
+need to enable USE=argon2 on dev-lang/php (if previous system ran on a php
+version using this hashing algorithm)
+
+This is not listed in ebuild requirements as this will not be required for
+most systems (new installs and some migrations)
+
+More details in bug:
+https://bugs.gentoo.org/762388

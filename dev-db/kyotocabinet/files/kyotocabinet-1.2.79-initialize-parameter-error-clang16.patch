@@ -1,0 +1,62 @@
+Without the patch I'm getting the following error/s:
+kcthread.cc:671:50: error: cannot initialize a parameter of type 'void *' with an rvalue of type 'int'
+  while (!__sync_bool_compare_and_swap(&opq_, 0, 1)) {
+                                                 ^
+kcthread.cc:696:49: error: cannot initialize a parameter of type 'void *' with an rvalue of type 'int'
+  return __sync_bool_compare_and_swap(&opq_, 0, 1);
+--- a/kcthread.cc
++++ b/kcthread.cc
+@@ -668,7 +668,7 @@ void SpinLock::lock() {
+ #elif _KC_GCCATOMIC
+   _assert_(true);
+   uint32_t wcnt = 0;
+-  while (!__sync_bool_compare_and_swap(&opq_, 0, 1)) {
++  while (!__sync_bool_compare_and_swap(&opq_, 0, (void *)1)) {
+     if (wcnt >= LOCKBUSYLOOP) {
+       Thread::chill();
+     } else {
+@@ -693,7 +693,7 @@ bool SpinLock::lock_try() {
+   return ::InterlockedCompareExchange((LONG*)&opq_, 1, 0) == 0;
+ #elif _KC_GCCATOMIC
+   _assert_(true);
+-  return __sync_bool_compare_and_swap(&opq_, 0, 1);
++  return __sync_bool_compare_and_swap(&opq_, 0, (void *)1);
+ #else
+   _assert_(true);
+   ::pthread_spinlock_t* spin = (::pthread_spinlock_t*)opq_;
+@@ -811,7 +811,7 @@ void SlottedSpinLock::lock(size_t idx) {
+   SlottedSpinLockCore* core = (SlottedSpinLockCore*)opq_;
+   uint32_t* lock = core->locks + idx;
+   uint32_t wcnt = 0;
+-  while (!__sync_bool_compare_and_swap(lock, 0, 1)) {
++  while (!__sync_bool_compare_and_swap(lock, 0, (unsigned int)1)) {
+     if (wcnt >= LOCKBUSYLOOP) {
+       Thread::chill();
+     } else {
+@@ -880,7 +880,7 @@ void SlottedSpinLock::lock_all() {
+   for (size_t i = 0; i < slotnum; i++) {
+     uint32_t* lock = locks + i;
+     uint32_t wcnt = 0;
+-    while (!__sync_bool_compare_and_swap(lock, 0, 1)) {
++    while (!__sync_bool_compare_and_swap(lock, 0, (unsigned int)1)) {
+       if (wcnt >= LOCKBUSYLOOP) {
+         Thread::chill();
+       } else {
+@@ -1449,7 +1449,7 @@ static void spinrwlocklock(SpinRWLockCore* core) {
+   }
+ #elif _KC_GCCATOMIC
+   _assert_(core);
+-  while (!__sync_bool_compare_and_swap(&core->sem, 0, 1)) {
++  while (!__sync_bool_compare_and_swap(&core->sem, 0, (unsigned int)1)) {
+     ::sched_yield();
+   }
+ #else
+@@ -1732,7 +1732,7 @@ static void slottedspinrwlocklock(SlottedSpinRWLockCore* core, size_t idx) {
+   }
+ #elif _KC_GCCATOMIC
+   _assert_(core);
+-  while (!__sync_bool_compare_and_swap(core->sems + idx, 0, 1)) {
++  while (!__sync_bool_compare_and_swap(core->sems + idx, 0, (unsigned int)1)) {
+     ::sched_yield();
+   }
+ #else

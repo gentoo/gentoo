@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription lang="en">
+Contains com.google.common.util.concurrent.internal.InternalFutureFailureAccess
+and InternalFutures. Most users will never need to use this artifact. Its
+classes are conceptually a part of Guava, but they're in this separate artifact
+so that Android libraries can use them without pulling in all of Guava (just as
+they can use ListenableFuture by depending on the listenablefuture artifact).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">google/guava</remote-id>
+	</upstream>
+</pkgmetadata>

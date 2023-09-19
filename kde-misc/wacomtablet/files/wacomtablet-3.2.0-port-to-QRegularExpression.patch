@@ -1,0 +1,143 @@
+From 9c2f133ee400562ca9813e329f6e2bdae24a5ac5 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 4 Aug 2022 22:43:07 +0200
+Subject: [PATCH] Port from QRegExp to QRegularExpression
+
+---
+ src/common/buttonshortcut.cpp | 33 ++++++++++++++++++++-------------
+ src/kded/xsetwacomadaptor.cpp | 17 +++++++++++------
+ 2 files changed, 31 insertions(+), 19 deletions(-)
+
+diff --git a/src/common/buttonshortcut.cpp b/src/common/buttonshortcut.cpp
+index e11784f..32bf842 100644
+--- a/src/common/buttonshortcut.cpp
++++ b/src/common/buttonshortcut.cpp
+@@ -19,7 +19,7 @@
+ 
+ #include "buttonshortcut.h"
+ 
+-#include <QRegExp>
++#include <QRegularExpression>
+ #include <QKeySequence>
+ 
+ #include <KLocalizedString>
+@@ -266,8 +266,8 @@ bool ButtonShortcut::set(const QString& sequence)
+         return true;
+     }
+ 
+-    QRegExp modifierRx (QLatin1String("^(?:key )?(?:\\s*\\+?(?:alt|ctrl|meta|shift|super))+$"), Qt::CaseInsensitive);
+-    QRegExp buttonRx (QLatin1String ("^(?:button\\s+)?\\+?\\d+$"), Qt::CaseInsensitive);
++    static const QRegularExpression modifierRx (QLatin1String("^(?:key )?(?:\\s*\\+?(?:alt|ctrl|meta|shift|super))+$"), QRegularExpression::CaseInsensitiveOption);
++    static const QRegularExpression buttonRx (QLatin1String ("^(?:button\\s+)?\\+?\\d+$"), QRegularExpression::CaseInsensitiveOption);
+ 
+     if (seq.contains(buttonRx)) {
+         // this is a button
+@@ -388,7 +388,8 @@ void ButtonShortcut::convertToNormalizedKeySequence(QString& sequence, bool from
+ {
+     normalizeKeySequence(sequence);
+ 
+-    QStringList keyList    = sequence.split (QRegExp (QLatin1String ("\\s+")), Qt::SkipEmptyParts);
++    static const QRegularExpression rx(QStringLiteral("\\s+"));
++    QStringList keyList    = sequence.split (rx, Qt::SkipEmptyParts);
+     bool        isFirstKey = true;
+ 
+     sequence.clear();
+@@ -460,28 +461,33 @@ void ButtonShortcut::normalizeKeySequence(QString& sequence) const
+ {
+     // When setting a shortcut like "ctrl+x", xsetwacom will convert it to "key +ctrl +x -x"
+     // therefore we just truncate the string on the first "-key" we find.
+-    QRegExp minusKeyRx (QLatin1String ("(^|\\s)-\\S"));
+-    int     pos = 0;
++    static const QRegularExpression minusKeyRx (QLatin1String ("(^|\\s)-\\S"));
+ 
+-    if ((pos = minusKeyRx.indexIn(sequence, 0)) != -1) {
+-        sequence = sequence.left(pos);
++    const QRegularExpressionMatch minusKeyRxMatch = minusKeyRx.match(sequence);
++
++    if (minusKeyRxMatch.hasMatch()) {
++        sequence = sequence.left(minusKeyRxMatch.capturedStart());
+     }
+ 
+     // cleanup leading "key " identifier from xsetwacom sequences
+-    sequence.remove(QRegExp (QLatin1String ("^\\s*key\\s+"), Qt::CaseInsensitive));
++    static const QRegularExpression leadingKey(QStringLiteral("^\\s*key\\s+"), QRegularExpression::CaseInsensitiveOption);
++    sequence.remove(leadingKey);
+ 
+     // Remove all '+' prefixes from keys.
+     // This will convert shortcuts like "+ctrl +alt" to "ctrl alt", but not
+     // shortcuts like "ctrl +" which is required to keep compatibility to older
+     // (buggy) configuration files.
+-    sequence.replace(QRegExp (QLatin1String ("(^|\\s)\\+(\\S)")), QLatin1String ("\\1\\2"));
++    static const QRegularExpression plusPrefixes(QStringLiteral("(^|\\s)\\+(\\S)"), QRegularExpression::CaseInsensitiveOption);
++    sequence.replace(plusPrefixes, QLatin1String ("\\1\\2"));
+ 
+     // Cleanup plus signs between keys.
+     // This will convert shortcuts like "ctrl+alt+shift" or "Ctrl++" to "ctrl alt shift" or "Ctrl +".
+-    sequence.replace (QRegExp (QLatin1String ("(\\S)\\+(\\S)")), QLatin1String ("\\1 \\2"));
++    static const QRegularExpression cleanupPlus(QStringLiteral("(\\S)\\+(\\S)"), QRegularExpression::CaseInsensitiveOption);
++    sequence.replace (cleanupPlus, QLatin1String ("\\1 \\2"));
+ 
+     // replace multiple whitespaces with one
+-    sequence.replace (QRegExp (QLatin1String ("\\s{2,}")), QLatin1String (" "));
++    static const QRegularExpression whitespaces(QStringLiteral("\\s{2,}"), QRegularExpression::CaseInsensitiveOption);
++    sequence.replace (whitespaces, QLatin1String (" "));
+ 
+     // trim the string
+     sequence = sequence.trimmed();
+@@ -500,7 +506,8 @@ void ButtonShortcut::prettifyKey(QString& key) const
+ bool ButtonShortcut::setButtonSequence(const QString& buttonSequence)
+ {
+     QString buttonNumber = buttonSequence;
+-    buttonNumber.remove(QRegExp (QLatin1String ("^\\s*button\\s+"), Qt::CaseInsensitive));
++    static const QRegularExpression rx(QStringLiteral("^\\s*button\\s+"), QRegularExpression::CaseInsensitiveOption);
++    buttonNumber.remove(rx);
+ 
+     bool ok     = false;
+     int  button = buttonNumber.toInt(&ok);
+diff --git a/src/kded/xsetwacomadaptor.cpp b/src/kded/xsetwacomadaptor.cpp
+index a39f307..934fa8b 100644
+--- a/src/kded/xsetwacomadaptor.cpp
++++ b/src/kded/xsetwacomadaptor.cpp
+@@ -27,7 +27,7 @@
+ #include "tabletarea.h"
+ 
+ #include <QProcess>
+-#include <QRegExp>
++#include <QRegularExpression>
+ 
+ using namespace Wacom;
+ 
+@@ -142,10 +142,13 @@ const QString XsetwacomAdaptor::convertParameter(const XsetwacomProperty& param)
+     QString modifiedParam = param.key();
+ 
+     // convert tablet button number to hardware button number
+-    QRegExp rx(QLatin1String("^Button\\s*([0-9]+)$"), Qt::CaseInsensitive);
++    static const QRegularExpression rx(QLatin1String("^Button\\s*([0-9]+)$"), QRegularExpression::CaseInsensitiveOption);
++
++    const QRegularExpressionMatch match = rx.match(modifiedParam);
++
++    if (match.hasMatch()) {
++        QString hwButtonNumber = match.captured(1);
+ 
+-    if (rx.indexIn(modifiedParam, 0) != -1) {
+-        QString hwButtonNumber = rx.cap(1);
+         QString kernelButtonNumber;
+ 
+         if (!d->buttonMap.isEmpty()) {
+@@ -167,9 +170,11 @@ const QString XsetwacomAdaptor::convertParameter(const XsetwacomProperty& param)
+ 
+ void XsetwacomAdaptor::convertButtonShortcut (const XsetwacomProperty& property, QString& value) const
+ {
+-    QRegExp rx (QLatin1String("^Button\\s*[0-9]+$"), Qt::CaseInsensitive);
++    static const QRegularExpression rx(QLatin1String("^Button\\s*[0-9]+$"), QRegularExpression::CaseInsensitiveOption);
++
++    const QRegularExpressionMatch match = rx.match(property.key());
+ 
+-    if (rx.indexIn(property.key(), 0) != -1) {
++    if (match.hasMatch()) {
+         ButtonShortcut buttonshortcut(value);
+         value = buttonshortcut.toString();
+     }
+-- 
+GitLab
+

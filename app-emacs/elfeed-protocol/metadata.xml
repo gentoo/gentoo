@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    ﻿Provide extra protocols to make self-hosting RSS readers work with elfeed,
+    including Fever, NewsBlur, Nextcloud/ownCloud News, Tiny Tiny RSS and even
+    more.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/fasheng/elfeed-protocol/issues/</bugs-to>
+    <remote-id type="github">fasheng/elfeed-protocol</remote-id>
+  </upstream>
+</pkgmetadata>

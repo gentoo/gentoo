@@ -1,0 +1,17 @@
+Don't assume that $(libdir) is lib. Rely on linker defaults instead.
+--- a/configure.ac
++++ b/configure.ac
+@@ -55,13 +55,6 @@ AC_ARG_WITH([libnet-prefix],
+             [ LIBNET_PREFIX=$withval ],
+             [ LIBNET_PREFIX=/usr ])
+ 	    
+-AC_CHECK_FILE([$LIBNET_PREFIX/lib/libnet.a],
+-              [LDFLAGS="-L$LIBNET_PREFIX/lib"
+-	       CPPFLAGS="-I$LIBNET_PREFIX/include" ],
+-              AC_MSG_ERROR([
+-Libnet-1.1.1 Packet Shaping Library is required!
+-Verify to have installed it and pass --with-libnet-prefix to configure.
+-Or download it from http://www.packetfactory.net/libnet ])) 
+               
+ AC_CHECK_LIB(net, libnet_name2addr4,, 
+ AC_MSG_ERROR([

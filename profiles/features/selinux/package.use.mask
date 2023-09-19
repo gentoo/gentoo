@@ -1,0 +1,12 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Brian Dolbec <dolsen@gentoo.org> (2014-09-17)
+# mask pypy for several utilities due to incompatibility with libselinux
+sys-apps/portage python_targets_pypy3
+app-portage/elicense python_targets_pypy3
+app-portage/elogv python_targets_pypy3
+app-portage/gentoolkit python_targets_pypy3
+app-portage/layman python_targets_pypy3
+app-portage/smart-live-rebuild python_targets_pypy3
+app-portage/gentoopm python_targets_pypy3

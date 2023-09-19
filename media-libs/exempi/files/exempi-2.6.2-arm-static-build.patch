@@ -1,0 +1,35 @@
+https://gitlab.freedesktop.org/libopenraw/exempi/-/issues/28
+
+From 269b68aaaaaa9af0caf50678e820181c0694ebf7 Mon Sep 17 00:00:00 2001
+From: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+Date: Thu, 17 Mar 2022 17:27:28 +0100
+Subject: [PATCH] XMPFiles/source/XMPFiles_Impl.cpp: fix arm build with gcc 10
+
+Fix the following build failure with exempi on arm with gcc 10 raised
+since version 2.6.0 and
+https://gitlab.freedesktop.org/libopenraw/exempi/-/commit/0872e35a30457d2ecf746a1bebdb7d94636d0e2f
+https://github.com/adobe/XMP-Toolkit-SDK/commit/0872e35a30457d2ecf746a1bebdb7d94636d0e2f:
+
+/home/giuliobenetti/autobuild/run/instance-3/output-1/host/lib/gcc/arm-buildroot-linux-uclibcgnueabi/10.3.0/../../../../arm-buildroot-linux-uclibcgnueabi/bin/ld: ../../XMPFiles/source/.libs/libXMPFiles.a(XMPFiles_Impl.o):(.rodata+0x5c): multiple definition of `typeinfo name for TXMPMeta<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >'; XMPFilesCoverage.o:(.rodata+0x0): first defined here
+
+More information can be found on a similar issue here:
+https://github.com/OpenKinect/libfreenect2/issues/157
+
+Fixes:
+ - http://autobuild.buildroot.org/results/c440719de02a154c6bdae11bda06ea30c131c71d
+
+Signed-off-by: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+--- a/XMPFiles/source/XMPFiles_Impl.cpp
++++ b/XMPFiles/source/XMPFiles_Impl.cpp
+@@ -47,7 +47,9 @@ using namespace std;
+ /// This file ...
+ ///
+ // =================================================================================================
+-#include "public/include/XMP.incl_cpp"
++#if ! XMP_StaticBuild
++	#include "public/include/XMP.incl_cpp"
++#endif
+ 
+ #if XMP_WinBuild
+ 	#pragma warning ( disable : 4290 )	// C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+

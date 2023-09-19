@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>zorry@gentoo.org</email>
+		<name>Magnus Granberg</name>
+	</maintainer>
+	<longdescription lang="en">
+		The BuildBot-www-react package is the base or common code used for the other
+		react based user interface packages such as the grid and console views.
+	</longdescription>
+	<upstream>
+		<maintainer>
+			<email>devel@buildbot.net</email>
+			<name>Developers List</name>
+		</maintainer>
+		<remote-id type="pypi">buildbot-www-react</remote-id>
+		<remote-id type="github">buildbot/buildbot</remote-id>
+	</upstream>
+</pkgmetadata>

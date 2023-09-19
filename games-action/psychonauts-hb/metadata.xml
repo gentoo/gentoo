@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		A Psychic Odyssey Through the Mental Worlds of Misfits, Monsters, and
+		Mind Readers. This classic action/adventure platformer from acclaimed
+		developers Double Fine Productions follows the story of a young psychic
+		named Razputin.
+	</longdescription>
+</pkgmetadata>

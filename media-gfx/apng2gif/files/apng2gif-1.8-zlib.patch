@@ -1,0 +1,12 @@
+Drop unused zlib header.
+
+--- apng2gif-1.8-src/apng2gif.cpp
++++ apng2gif-1.8-src/apng2gif.cpp
+@@ -33,7 +33,6 @@
+ #include <string.h>
+ #include <vector>
+ #include "png.h"     /* original (unpatched) libpng is ok */
+-#include "zlib.h"
+ 
+ #define notabc(c) ((c) < 65 || (c) > 122 || ((c) > 90 && (c) < 97))
+ 

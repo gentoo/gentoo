@@ -1,0 +1,19 @@
+[Unit]
+Description=Domain-based Message Authentication, Reporting and Conformance (DMARC) Milter
+Documentation=man:opendmarc(8) man:opendmarc.conf(5) man:opendmarc-expire(8) man:opendmarc-importstats(8) man:opendmarc-reports(8) man:opendmarc-check(8) man:opendmarc-import(8) man:opendmarc-params(8) http://www.trusteddomain.org/opendmarc/
+After=network.target nss-lookup.target syslog.target
+
+[Service]
+User=milter
+Group=milter
+PIDFile=/var/run/opendmarc/opendmarc.pid
+ExecStartPre=/usr/sbin/opendmarc -c /etc/opendmarc/opendmarc.conf -n 
+ExecStart=/usr/sbin/opendmarc -c /etc/opendmarc/opendmarc.conf -f -P /var/run/opendmarc/opendmarc.pid
+ExecReload=/bin/kill -USR1 $MAINPID
+RuntimeDirectory=opendmarc
+RuntimeDirectoryMode=0750
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

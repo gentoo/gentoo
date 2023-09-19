@@ -1,0 +1,24 @@
+From a2dbad461b8a63630f9ad7cfa36b6613e85a91cb Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Sun, 5 Feb 2023 18:38:37 +0100
+Subject: [PATCH] autoconf: Fix C99 compatibility issue in mc_GET_FS_INFO check
+Content-type: text/plain
+
+Include <fcntl.h> for the declaration of posix_fallocate.  This
+avoids an implicit function declaration and build issues with future
+compilers.
+
+Signed-off-by: Florian Weimer <fweimer@redhat.com>
+--- a/m4.include/mc-get-fs-info.m4
++++ b/m4.include/mc-get-fs-info.m4
+@@ -8,6 +8,7 @@ AC_DEFUN([gl_POSIX_FALLOCATE], [
+     AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+         #define _XOPEN_SOURCE 600
+         #include <stdlib.h>
++        #include <fcntl.h>
+         #if defined(__GLIBC__) && (__GLIBC__ < 2 || __GLIBC_MINOR__ < 7)
+             possibly broken posix_fallocate
+         #endif
+-- 
+2.39.1
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>jturner.usa+gentoo@gmail.com</email>
+    <name>John Turner</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">flycheck/flycheck</remote-id>
+    <doc>https://github.com/flycheck/flycheck/blob/master/README.md</doc>
+  </upstream>
+  <longdescription>
+    Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs,
+    intended as replacement for the older Flymake extension which is part of GNU Emacs.
+  </longdescription>
+</pkgmetadata>

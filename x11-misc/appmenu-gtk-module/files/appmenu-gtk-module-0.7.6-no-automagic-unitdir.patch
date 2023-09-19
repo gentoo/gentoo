@@ -1,0 +1,56 @@
+From c60d530583a8bd07aea22c4f3f3aa8b0aaf271c1 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Tue, 4 Jan 2022 19:06:37 -0800
+Subject: [PATCH] appmenu-gtk-module: add userunitdir option
+
+allows setting systemd unit on systemd-less systems
+
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ .../appmenu-gtk-module/data/meson.build       | 19 ++++++++++++-------
+ .../appmenu-gtk-module/meson_options.txt      |  1 +
+ 2 files changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/subprojects/appmenu-gtk-module/data/meson.build b/subprojects/appmenu-gtk-module/data/meson.build
+index 8378965..d0d1717 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -2,14 +2,19 @@ install_data([
+     'org.appmenu.gtk-module.gschema.xml'
+ ], install_dir: schema_dir)
+ 
++userunitdir = get_option('userunitdir')
+ systemd = dependency('systemd', required: false)
+ 
+-if systemd.found()
++if userunitdir == ''
++  if systemd.found()
+     userunitdir = systemd.get_pkgconfig_variable('systemduserunitdir')
+-    configure_file(
+-        input: 'appmenu-gtk-module.service.in',
+-        output: 'appmenu-gtk-module.service',
+-        install_dir: userunitdir,
+-        configuration: {'CMAKE_INSTALL_FULL_BINDIR': join_paths(prefix,get_option('bindir'))}
+-    )
++  else
++    userunitdir = '/usr/lib/systemd/user'
++  endif
+ endif
++configure_file(
++  input: 'appmenu-gtk-module.service.in',
++  output: 'appmenu-gtk-module.service',
++  install_dir: userunitdir,
++  configuration: {'CMAKE_INSTALL_FULL_BINDIR': join_paths(prefix,get_option('bindir'))}
++)
+diff --git a/subprojects/appmenu-gtk-module/meson_options.txt b/subprojects/appmenu-gtk-module/meson_options.txt
+index f93877a..ec0b3a6 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,4 @@
+ option('gtk', type: 'array', choices : ['2','3'],  value: ['2','3'], description: 'Supported GTK versions')
+ option('tests', type : 'boolean', value : false, description: 'Parser tests')
+ option('gtk_doc', type: 'boolean', value: false, description: 'Build API reference')
++option('userunitdir', type: 'string', description: 'Installation path for user unit file (optional)')
+-- 
+2.34.1
+

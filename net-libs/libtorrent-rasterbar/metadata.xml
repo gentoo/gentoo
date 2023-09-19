@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="google-code">libtorrent</remote-id>
+		<remote-id type="sourceforge">libtorrent</remote-id>
+		<remote-id type="github">arvidn/libtorrent</remote-id>
+	</upstream>
+	<use>
+		<flag name="dht">Enable DHT (distributed hash table) support</flag>
+	</use>
+</pkgmetadata>

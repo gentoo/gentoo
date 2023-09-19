@@ -1,0 +1,20 @@
+--- a/htb.init
++++ b/htb.init
+@@ -453,7 +457,7 @@
+ 	### Load & filter file $HTB_PATH/$1
+ 	htb_filter_file () {
+ 		sed -n "s/#.*//; s/[^a-zA-Z0-9.,;:=/*-_]\+//g; \
+-		/^[a-zA-Z0-9]\+=[a-zA-Z0-9.,:;/*-_]\+$/ p" $HTB_PATH/$1
++		/^[a-zA-Z0-9_]\+=[a-zA-Z0-9.,:;/*-_]\+$/ p" $HTB_PATH/$1
+ 	} # htb_filter_file
+ 
+ 
+@@ -517,7 +521,7 @@
+ 
+ 	htb_filter_file () {
+ 		sed 's/#.*//; s/[^a-zA-Z0-9.,;:=/*-_]\+//g' $HTB_PATH/$1 \
+-		| grep '^[a-zA-Z0-9]\+=[a-zA-Z0-9.,;:/*-_]\+$'
++		| grep '^[a-zA-Z0-9_]\+=[a-zA-Z0-9.,;:/*-_]\+$'
+ 	} # htb_filter_file
+ 
+ 	htb_clsid_chain () {

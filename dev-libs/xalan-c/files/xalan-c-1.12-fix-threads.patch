@@ -1,0 +1,51 @@
+xercesc::XMLMutex doesn't work, replace it by std::mutex
+Bug: https://bugs.gentoo.org/887197
+
+--- a/Tests/Threads/ThreadTest.cpp
++++ b/Tests/Threads/ThreadTest.cpp
+@@ -49,6 +49,7 @@
+ 
+ #if defined(XALAN_USE_THREAD_STD)
+ #include <thread>
++#include <mutex>
+ #elif defined(XALAN_USE_THREAD_WINDOWS)
+ 
+ #include <process.h>
+@@ -95,8 +96,8 @@
+ 
+ 
+ 
+-typedef xercesc::XMLMutex         XMLMutexType;
+-typedef xercesc::XMLMutexLock     XMLMutexLockType;
++typedef std::mutex                  XMLMutexType;
++typedef std::lock_guard<std::mutex> XMLMutexLockType;
+ 
+ 
+ 
+@@ -121,7 +122,7 @@
+ 
+     XMLMutexType    m_mutex;
+ 
+-    long            m_counter;
++    volatile long   m_counter;
+ };
+ 
+ 
+@@ -143,7 +144,7 @@
+ void
+ SynchronizedCounter::increment()
+ {
+-    const XMLMutexLockType  theLock(&m_mutex);
++    const XMLMutexLockType  theLock(m_mutex);
+ 
+     if (m_counter < LONG_MAX)
+     {
+@@ -156,7 +157,7 @@
+ void
+ SynchronizedCounter::decrement()
+ {
+-    const XMLMutexLockType  theLock(&m_mutex);
++    const XMLMutexLockType  theLock(m_mutex);
+ 
+     if (m_counter > 0)
+     {
