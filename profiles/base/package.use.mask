@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Jaco Kroon <jaco@uls.co.za> (2023-09-19)
+# No longer using DAHDI, excessive effort for something that provides no benefit
+# to myself or my employer.  Don't want to outright remove the support from these
+# packages so simply use-masking for the moment until DAHDI actually gets removed.
+# See bug #914477.
+net-misc/asterisk dahdi
+net-voip/yate dahdi
+
 # Matt Turner <mattst88@gentoo.org> (2023-09-14)
 # Not ported to libsoup:3.0
 app-office/abiword collab
