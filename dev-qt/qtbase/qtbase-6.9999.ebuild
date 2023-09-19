@@ -297,9 +297,13 @@ src_test() {
 		tst_qglyphrun
 		tst_qvectornd
 		tst_rcc
-		# similarly, but on armv7 (bug #914028)
+		# similarly, but on armv7 and potentially others (bug #914028)
 		tst_qlineedit
 		tst_qpainter
+		# likewise, known failing at least on BE arches (bug #914033,914371)
+		tst_qimagereader
+		tst_qimagewriter
+		tst_qpluginloader
 		# partially broken on llvm-musl, needs looking into but skip to have
 		# a baseline for regressions (like above, rest of dev-qt is fine)
 		$(usev elibc_musl '
