@@ -8,4 +8,10 @@
 	<upstream>
 		<remote-id type="github">containers/buildah</remote-id>
 	</upstream>
+    <use>
+	  <flag name="btrfs">
+		Enables dependencies for the "btrfs" graph driver, including
+		necessary kernel flags.
+	  </flag>
+    </use>
 </pkgmetadata>
