@@ -130,6 +130,7 @@ PDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-6.5.2-hppa-forkfd-grow-stack.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
 	"${FILESDIR}"/${P}-CVE-2023-38197.patch
 	"${FILESDIR}"/${P}-tests-gcc13.patch
