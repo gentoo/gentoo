@@ -449,6 +449,9 @@ llvm_manpage_get_dist() {
 			16*)
 				echo "llvm-16.0.4-manpages.tar.bz2"
 				;;
+			17*)
+				echo "llvm-17.0.1-manpages.tar.bz2"
+				;;
 		esac
 	fi
 }
