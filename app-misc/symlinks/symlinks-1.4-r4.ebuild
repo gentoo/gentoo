@@ -1,13 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Scans for and fixes broken or messy symlinks"
-HOMEPAGE="http://www.ibiblio.org/pub/linux/utils/file/"
-SRC_URI="http://www.ibiblio.org/pub/linux/utils/file/${P}.tar.gz"
+HOMEPAGE="https://www.ibiblio.org/pub/linux/utils/file/"
+SRC_URI="https://www.ibiblio.org/pub/linux/utils/file/${P}.tar.gz"
 
 LICENSE="symlinks"
 SLOT="0"
