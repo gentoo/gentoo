@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT=16
+LLVM_MAX_SLOT=17
 inherit edo cmake llvm check-reqs toolchain-funcs
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
