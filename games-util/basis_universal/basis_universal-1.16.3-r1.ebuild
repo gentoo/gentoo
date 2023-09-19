@@ -19,7 +19,7 @@ IUSE="cpu_flags_x86_sse4_1 opencl zstd"
 DEPEND="
 	opencl? ( virtual/opencl )
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.16.3-respect-CFLAGS.patch
