@@ -11,7 +11,7 @@ DESCRIPTION="Dynamically create Perl language bindings"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/glib-perl-1.320.0
