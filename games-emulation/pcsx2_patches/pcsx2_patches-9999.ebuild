@@ -47,7 +47,7 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/share/pcsx2/resources
+	insinto /usr/lib/pcsx2/resources
 	doins patches.zip
 
 	einstalldocs
