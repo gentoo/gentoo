@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.2"
+PHP_SLOTS="8.2 8.1"
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
