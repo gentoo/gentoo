@@ -309,6 +309,11 @@ src_test() {
 			tst_qimagereader
 			tst_qimage
 		')
+		# fails due to hppa's NaN handling, needs looking into (bug #914371)
+		$(usev hppa '
+			tst_qcborvalue
+			tst_qnumeric
+		')
 		# note: for linux, upstream only really runs+maintains tests for amd64
 		# https://doc.qt.io/qt-6/supported-platforms.html
 	)
