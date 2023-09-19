@@ -20,12 +20,12 @@ RDEPEND="
 	>=dev-perl/File-Listing-6.0.0
 	virtual/perl-File-Temp
 	virtual/perl-Getopt-Long
-	>=dev-perl/HTML-Parser-3.340.0
+	>=dev-perl/HTML-Parser-3.710.0
 	dev-perl/HTTP-CookieJar
 	>=dev-perl/HTTP-Cookies-6.0.0
 	>=dev-perl/HTTP-Date-6.0.0
 	>=dev-perl/HTTP-Negotiate-6.0.0
-	>=dev-perl/HTTP-Message-6.70.0
+	>=dev-perl/HTTP-Message-6.180.0
 	virtual/perl-IO
 	>=dev-perl/LWP-MediaTypes-6.0.0
 	>=virtual/perl-MIME-Base64-2.100.0
