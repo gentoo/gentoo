@@ -37,7 +37,7 @@ LICENSE="
 	opengl? ( MIT )
 "
 SLOT="0/$(ver_cut 2 ${PV}.9999)" # soname
-IUSE="glslang lcms llvm-libunwind +opengl +shaderc test unwind +vulkan +xxhash"
+IUSE="glslang +lcms llvm-libunwind +opengl +shaderc test unwind +vulkan +xxhash"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 
