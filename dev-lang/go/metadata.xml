@@ -6,7 +6,7 @@
 		<name>William Hubbs</name>
 	</maintainer>
 	<longdescription lang="en">
-		Go is a new systems programming language developped at google by
+		Go is a new systems programming language developed at google by
 		Rob Pike. It has garbage collection, coroutines, communication
 		channels and a clean syntax.  
 	</longdescription>
