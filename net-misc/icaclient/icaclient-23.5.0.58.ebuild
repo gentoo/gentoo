@@ -100,7 +100,6 @@ RDEPEND="
 	!hdx? ( !media-plugins/hdx-realtime-media-engine )
 	usb? ( virtual/libudev )
 "
-DEPENDS=""
 
 pkg_nofetch() {
 	elog "Download the client file ${A} from
