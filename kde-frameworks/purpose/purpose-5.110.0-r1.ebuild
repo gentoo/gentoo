@@ -18,15 +18,18 @@ IUSE="bluetooth +kaccounts"
 RESTRICT="test"
 
 DEPEND="
+	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	=kde-frameworks/kconfig-${PVCUT}*:5
 	=kde-frameworks/kcoreaddons-${PVCUT}*:5
 	=kde-frameworks/ki18n-${PVCUT}*:5
 	=kde-frameworks/kio-${PVCUT}*:5
 	=kde-frameworks/kirigami-${PVCUT}*:5
 	=kde-frameworks/knotifications-${PVCUT}*:5
+	=kde-frameworks/kservice-${PVCUT}*:5
 	=kde-frameworks/prison-${PVCUT}*:5
 	kaccounts? (
 		>=kde-apps/kaccounts-integration-19.04.3:5
