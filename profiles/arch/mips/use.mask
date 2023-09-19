@@ -93,11 +93,6 @@ gnome
 # some programs with this useflag are useful, e.g #227631
 mpi
 
-# Ryan Hill <dirtyepic@gentoo.org>
-# virtual/blas virtual/cblas and virtual/lapack not keyworded
-lapack
-blas
-
 # Alexander Færøy <eroyf@gentoo.org>
 # Clamav -- untested, masking for now.
 clamav
