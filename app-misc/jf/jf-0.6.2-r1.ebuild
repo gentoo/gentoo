@@ -37,11 +37,18 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
+
+BDEPEND="
+	test? ( app-text/txt2man )
+"
+RESTRICT="!test? ( test )"
 
 DOCS=(
 	README.md
 )
 
+QA_FLAGS_IGNORED="usr/bin/jf"
 QA_PRESTRIPPED="usr/bin/jf"
 
 src_install() {
