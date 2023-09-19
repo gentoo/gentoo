@@ -55,7 +55,7 @@ COMMON_DEPEND="
 # is missing and it is fairly small (installs a ~1.5MB patches.zip)
 RDEPEND="
 	${COMMON_DEPEND}
-	games-emulation/pcsx2_patches
+	>=games-emulation/pcsx2_patches-0_p20230917
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -69,10 +69,6 @@ BDEPEND="
 	)
 "
 
-FILECAPS=(
-	-m 0755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
-)
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3468-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.3773-lto.patch
@@ -81,9 +77,6 @@ PATCHES=(
 
 src_prepare() {
 	cmake_src_prepare
-
-	sed -e "/AppRoot =/s|=.*|= \"${EPREFIX}/usr/share/${PN}\";|" \
-		-i pcsx2/Pcsx2Config.cpp || die
 
 	if [[ ${PV} != 9999 ]]; then
 		sed -e '/set(PCSX2_GIT_TAG "")/s/""/"v'${PV}-gentoo'"/' \
@@ -134,19 +127,22 @@ src_test() {
 }
 
 src_install() {
-	newbin "${BUILD_DIR}"/bin/pcsx2-qt ${PN}
+	insinto /usr/lib/${PN}
+	doins -r "${BUILD_DIR}"/bin/.
 
-	insinto /usr/share/${PN}
-	doins -r "${BUILD_DIR}"/bin/resources
-
-	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,debugger.txt}
+	fperms +x /usr/lib/${PN}/pcsx2-qt
+	dosym -r /usr/lib/${PN}/pcsx2-qt /usr/bin/${PN}
 
 	newicon bin/resources/icons/AppIconLarge.png ${PN}.png
 	make_desktop_entry ${PN} ${PN^^}
+
+	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,debugger.txt}
+
+	use !test || rm "${ED}"/usr/lib/${PN}/*_test || die
 }
 
 pkg_postinst() {
-	fcaps_pkg_postinst
+	fcaps -m 0755 cap_net_admin,cap_net_raw=eip usr/lib/${PN}/pcsx2-qt
 
 	local replacing=
 	if [[ ${REPLACING_VERSIONS##* } ]]; then
