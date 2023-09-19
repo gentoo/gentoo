@@ -24,6 +24,7 @@ DEPEND="
 	dev-libs/wayland
 	x11-libs/cairo
 	x11-libs/libxkbcommon
+	virtual/libcrypt:=
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2 )
 	pam? ( sys-libs/pam )
 "
