@@ -1,6 +1,13 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2023-09-18)
+# Disabling gstreamer seems to be untested upstream and is often broken.
+# The gstreamer dependencies are trivial in compile time and disk usage
+# compared to webkit-gtk.
+# Bugs #911663, #914362
+>=net-libs/webkit-gtk-2.42 gstreamer
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
 # Therefore apply mask/force to override the profile's defaults, and invert on
