@@ -3,12 +3,16 @@
 
 EAPI=8
 
+if [[ ${PV} != 4.14.0 ]]; then
+	die "Please replace eautoreconf with elibtoolize and drop autotools when bumping!"
+fi
+
 # Upstream sometimes pushes releases as pre-releases before marking them
 # official. Don't keyword the pre-releases!
 # Check https://github.com/shadow-maint/shadow/releases.
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sergehallyn.asc
-inherit libtool pam verify-sig
+inherit autotools libtool pam verify-sig
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow"
@@ -66,9 +70,11 @@ BDEPEND="
 "
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/shadow-4.14.0-bug912446.patch
+	)
 	default
-
-	elibtoolize
+	eautoreconf
 }
 
 src_configure() {
