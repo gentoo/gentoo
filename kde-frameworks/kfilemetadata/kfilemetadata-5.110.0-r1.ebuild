@@ -17,6 +17,7 @@ IUSE="epub exif ffmpeg mobi pdf taglib"
 RESTRICT="test"
 
 RDEPEND="
+	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	=kde-frameworks/karchive-${PVCUT}*:5
 	=kde-frameworks/kcoreaddons-${PVCUT}*:5
