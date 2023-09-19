@@ -4,9 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..12} )
-VIRTUALX_REQUIRED="manual"
 
-inherit autotools db-use multilib-minimal python-any-r1 virtualx flag-o-matic
+inherit autotools db-use multilib-minimal python-any-r1 flag-o-matic
 
 MY_P="${P}"
 DESCRIPTION="Kerberos 5 implementation from KTH"
@@ -34,11 +33,6 @@ CDEPEND="
 	>=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}]
 	afs? ( net-fs/openafs )
 	hdb-ldap? ( >=net-nds/openldap-2.3.0:= )
-	X? (
-		x11-libs/libX11
-		x11-libs/libXau
-		x11-libs/libXt
-	)
 	!!app-crypt/mit-krb5
 	!!app-crypt/mit-krb5-appl"
 
@@ -47,8 +41,7 @@ DEPEND="${CDEPEND}
 	dev-perl/JSON
 	virtual/pkgconfig
 	sys-apps/texinfo
-	>=sys-devel/autoconf-2.62
-	test? ( X? ( ${VIRTUALX_DEPEND} ) )"
+	>=sys-devel/autoconf-2.62"
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-kerberos )"
@@ -110,7 +103,6 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 		$(multilib_native_use_with caps capng)
 		$(multilib_native_use_with hdb-ldap openldap "${EPREFIX}"/usr)
-		$(multilib_native_use_with X x)
 	)
 	if use berkdb; then
 		myeconfargs+=(
