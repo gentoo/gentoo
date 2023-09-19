@@ -75,7 +75,7 @@ COMMON_DEPEND="
 # is missing and it is fairly small (installs a ~1.5MB patches.zip)
 RDEPEND="
 	${COMMON_DEPEND}
-	games-emulation/pcsx2_patches
+	<games-emulation/pcsx2_patches-0_p20230917
 "
 DEPEND="
 	${COMMON_DEPEND}
