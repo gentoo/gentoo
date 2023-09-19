@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Brahmajit Das <listout@protonmail.com> (2023-09-19)
+# Not much useful in musl and no way to build on musl,
+# bug 898556.
+sys-auth/polkit-pkla-compat
+
 # Maciej Barć <xgqt@gentoo.org> (2023-09-16)
 # Binary package, which is compiled against glibc
 dev-lang/dafny-bin
