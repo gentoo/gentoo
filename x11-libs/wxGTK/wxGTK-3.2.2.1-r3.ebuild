@@ -146,7 +146,22 @@ multilib_src_configure() {
 		--libdir='${prefix}'/$(get_libdir)
 	)
 
-	# Switch to wxGLCanvas GLX instead of EGL, resolves many OpenGL issues.
+	# By default, we now build with the GLX GLCanvas because some software like
+	# PrusaSlicer does not yet support EGL:
+	#
+	# https://github.com/prusa3d/PrusaSlicer/issues/9774 .
+	#
+	# A solution for this is being developed upstream:
+	#
+	# https://github.com/wxWidgets/wxWidgets/issues/22325 .
+	#
+	# Any software that needs to use OpenGL under Wayland can be patched like
+	# this to run under xwayland:
+	#
+	# https://github.com/visualboyadvance-m/visualboyadvance-m/commit/aca206a721265366728222d025fec30ee500de82 .
+	#
+	# Check that the macro wxUSE_GLCANVAS_EGL is set to 1.
+	#
 	myeconfargs+=( "--disable-glcanvasegl" )
 
 	# debug in >=2.9
