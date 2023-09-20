@@ -196,6 +196,10 @@ src_prepare() {
 				| sed -n '/^libraries:/{s:^[^/]*::;p}')
 	fi
 
+	if use small-ja-dic; then
+		rm -rf lisp/leim/ja-dic || die
+	fi
+
 	default
 
 	# Fix filename reference in redirected man page
