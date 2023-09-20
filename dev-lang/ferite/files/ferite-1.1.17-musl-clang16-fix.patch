@@ -1,0 +1,85 @@
+Bug: https://bugs.gentoo.org/913564
+https://sourceforge.net/p/ferite/bugs/7/
+--- a/include/ferite/ferror.h
++++ b/include/ferite/ferror.h
+@@ -43,6 +43,7 @@ FERITE_API void ferite_raise_script_error( FeriteScript *script, int err, char *
+ FERITE_API void ferite_vwarning(FeriteScript *script, char *errormsg, va_list *ap );
+ FERITE_API FeriteVariable *ferite_generate_backtrace( FeriteScript *script, int skip_first );
+ FERITE_API void ferite_error( FeriteScript *script, int err, char *errormsg, ... );
++FERITE_API void ferite_verror( FeriteScript *script, int err, char *errormsg, va_list *ap );
+ FERITE_API void ferite_vwarning(FeriteScript *script, char *errormsg, va_list *ap );
+ FERITE_API void ferite_warning( FeriteScript *script, char *errormsg, ... );
+ FERITE_API void ferite_set_error( FeriteScript *script, int num, char *fmt, ... );
+--- a/libs/aphex/include/aphex.h
++++ b/libs/aphex/include/aphex.h
+@@ -57,7 +57,7 @@
+ 
+ # ifdef USE_PTHREAD
+ #  include <pthread.h>
+-#  if (!defined(PTHREAD_MUTEX_RECURSIVE) && defined(PTHREAD_MUTEX_RECURSIVE_NP)) || defined(USING_LINUX)
++#  if (!defined(PTHREAD_MUTEX_RECURSIVE) && defined(PTHREAD_MUTEX_RECURSIVE_NP)) || defined(__GLIBC__)
+ #     define PTHREAD_MUTEX_RECURSIVE PTHREAD_MUTEX_RECURSIVE_NP
+ #   endif
+ # endif
+@@ -215,4 +215,18 @@ APHEX_API static __inline__ int aphex_atomic_decrement_v( AphexAtomicType *targe
+ APHEX_API int aphex_notify_can_read_with_timeout(int fd, int wait, int ce);
+ APHEX_API int aphex_notify_can_read(int fd, int ce);
+ 
++#ifdef HAVE_LIBGC
++void *aphex_malloc( size_t size );
++void *aphex_realloc( void *old, size_t new );
++void *aphex_calloc( size_t size, size_t block );
++void  aphex_free( void * ptr );
++char *aphex_strdup( char *original );
++#else
++void *aphex_malloc( size_t size );
++void *aphex_realloc( void *old, size_t new );
++void *aphex_calloc( size_t size, size_t block );
++void  aphex_free( void * ptr );
++char *aphex_strdup( char *original );
++#endif
++
+ #endif /* __APHEX_H__ */
+--- a/modules/xml/sax_handlers.c
++++ b/modules/xml/sax_handlers.c
+@@ -27,6 +27,7 @@
+ #include <libxml/parserInternals.h>
+ #include "xml_header.h"
+ #include "sax_handlers.h"
++#include "ferite/ferror.h"
+ 
+ #define DELIVER_STRING_CALLBACK( NAME, STRING, LENGTH ) \
+     do { \
+@@ -260,7 +261,7 @@ void sax_fatalError (void *ctxt, const char *msg, ...)
+     va_list ap;
+ 
+     va_start( ap, msg );
+-    ferite_verror( sr->script, (char *)msg, &ap );
++    ferite_verror( sr->script, 0, (char *)msg, &ap );
+     va_end( ap );
+ }
+ 
+--- a/src/ferite_gc_libgc.c
++++ b/src/ferite_gc_libgc.c
+@@ -57,8 +57,8 @@ void ferite_deinit_libgc_gc( FeriteScript *script )
+     FE_LEAVE_FUNCTION( NOWT );
+ }
+ 
+-void ferite_libgc_finalizer( FeriteObject *obj, FeriteScript *script ) {
+-	ferite_delete_class_object( script, obj, FE_TRUE );
++void ferite_libgc_finalizer( void *obj, void *script ) {
++	ferite_delete_class_object( (FeriteScript *)script, (FeriteObject *)obj, FE_TRUE );
+ }
+ void ferite_add_to_libgc_gc( FeriteScript *script, FeriteObject *obj )
+ {
+--- a/test/main.c
++++ b/test/main.c
+@@ -194,7 +194,7 @@ int parse_args( int argc, char **argv )
+             if((!strcmp(argv[i], "--execute")) || (!strcmp(argv[i], "-e")) &&
+                argv[i + 1])
+             {
+-                opt.scriptname = aphex_strdup( argv[++i] );
++                opt.scriptname = (char *) aphex_strdup( argv[++i] );
+                 opt.estring = FE_TRUE;
+                 gotScript = FE_TRUE;
+             }
