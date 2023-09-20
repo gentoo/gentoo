@@ -75,6 +75,9 @@ src_configure() {
 	# bug #407135
 	use test && append-flags -g
 
+	# bug 660738
+	filter-flags -fno-asynchronous-unwind-tables
+
 	multilib-minimal_src_configure
 }
 
