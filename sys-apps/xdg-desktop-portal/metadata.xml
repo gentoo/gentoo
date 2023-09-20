@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">flatpak/xdg-desktop-portal</remote-id>
 	</upstream>
+	<use>
+		<flag name="libportal">Enable libportal support via <pkg>dev-libs/libportal</pkg></flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,25 @@
+diff --git a/tests/meson.build b/tests/meson.build
+index 1fb7e07..e4e8987 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -129,20 +129,15 @@ test_portals = executable(
+ portal_tests = [
+   'account',
+   'background',
+-  'camera',
+   'color',
+   'email',
+-  'inhibit',
+-  'location',
+   'notification',
+   'openfile',
+-  'openuri',
+   'prepareprint',
+   'print',
+   'savefile',
+   'screenshot',
+   'trash',
+-  'wallpaper',
+ ]
+ foreach p : portal_tests
+     test(
