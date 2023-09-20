@@ -159,6 +159,10 @@ src_compile() {
 		SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
 	)
 
+	# temporary workaround for bug #914468
+	use modules &&
+		CPP="${KERNEL_CC} -E" tc-is-clang && addpredict "${KV_OUT_DIR}"
+
 	linux-mod-r1_src_compile
 
 	if use persistenced; then
