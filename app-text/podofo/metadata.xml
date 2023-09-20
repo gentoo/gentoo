@@ -11,7 +11,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">podofo/podofo</remote-id>
 		<remote-id type="sourceforge">podofo</remote-id>
-		<changelog>https://sourceforge.net/p/podofo/code/commit_browser</changelog>
 	</upstream>
 </pkgmetadata>
