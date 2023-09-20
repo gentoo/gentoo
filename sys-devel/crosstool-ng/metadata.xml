@@ -9,6 +9,17 @@
 
 		It is an alternative to <pkg>sys-devel/crossdev</pkg>.
 
-		For more information, see http://ymorin.is-a-geek.org/projects/crosstool
+		For more information, see https://crosstool-ng.github.io/
 	</longdescription>
+	<upstream>
+		<remote-id type="github">crosstool-ng/crosstool-ng</remote-id>
+	</upstream>
+	<use>
+		<flag name="dtc">Require <pkg>sys-apps/dtc</pkg></flag>
+		<flag name="lzip">Require <pkg>app-arch/lzip</pkg></flag>
+		<flag name="meson">Require <pkg>dev-util/meson</pkg></flag>
+		<flag name="ninja">Require <pkg>dev-util/ninja</pkg></flag>
+		<flag name="rsync">Require <pkg>net-misc/rsync</pkg></flag>
+		<flag name="wget">Require <pkg>net-misc/wget</pkg></flag>
+	</use>
 </pkgmetadata>
