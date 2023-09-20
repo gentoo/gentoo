@@ -10,49 +10,12 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="android">Build plugin for Android devices</flag>
-		<flag name="autotest">Enable integration with popular unit testing frameworks (QtTest, GoogleTest, Boost.Test, Catch2)</flag>
-		<flag name="autotools">Build plugin for autotools-based projects</flag>
-		<flag name="baremetal">Build plugin for bare metal devices</flag>
-		<flag name="bazaar">Add support for GNU Bazaar version control system (requires manual installation of Bazaar client)</flag>
-		<flag name="beautifier">Build the beautifier plugin (supports astyle, clang-format, and uncrustify)</flag>
-		<flag name="boot2qt">Build plugin for Boot2Qt devices</flag>
 		<flag name="clang">Build clang-based plugins for C/C++ development (code model, formatting, static analysis)</flag>
-		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
-		<flag name="cmake">Build plugin for CMake-based projects</flag>
-		<flag name="coco">Build plugin to support Coco code coverage tool</flag>
-		<flag name="conan">Build plugin to integrate with the Conan package manager</flag>
-		<flag name="cppcheck">Enable integration with <pkg>dev-util/cppcheck</pkg></flag>
-		<flag name="ctfvisualizer">Build the Chrome Trace Format visualizer plugin</flag>
 		<flag name="designer">Enable designer for QtWidgets-based UIs</flag>
-		<flag name="docker">Build plugin for Docker support</flag>
-		<flag name="glsl">Build the GLSL editor plugin</flag>
 		<flag name="help">Enable the integrated <pkg>dev-qt/qt-docs</pkg> viewer (also needed for examples)</flag>
-		<flag name="imageviewer">Build plugin to open and view image files</flag>
-		<flag name="incredibuild">Enable integration with Incredibuild</flag>
-		<flag name="lsp">Add support for the Language Server Protocol (LSP)</flag>
-		<flag name="mcu">Build plugin for MCU devices</flag>
-		<flag name="mercurial">Add support for <pkg>dev-vcs/mercurial</pkg> version control system</flag>
-		<flag name="meson">Build plugin for Meson-based projects</flag>
-		<flag name="modeling">Build the graphical model editor plugin</flag>
-		<flag name="nim">Build plugin for Nim language support</flag>
-		<flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
-		<flag name="perfprofiler">Build the Linux Perf-based profiler plugin</flag>
-		<flag name="python">Build plugin for Python language support</flag>
-		<flag name="qbs">Build plugin for Qbs-based projects</flag>
-		<flag name="qmake">Build plugin for qmake-based projects</flag>
-		<flag name="qml">Build plugins for QML-based development (designer, editor, project manager)</flag>
-		<flag name="qmlprofiler">Build the QML profiler plugin</flag>
-		<flag name="qnx">Build plugin for QNX devices</flag>
-		<flag name="remotelinux">Build plugin for deployment and execution on a remote Linux host</flag>
-		<flag name="scxml">Build the graphical SCXML editor plugin</flag>
 		<flag name="serialterminal">Build the serial terminal plugin</flag>
-		<flag name="silversearcher">Enable integration with <pkg>sys-apps/the_silver_searcher</pkg></flag>
-		<flag name="systemd">Add support for retrieving application output from journald</flag>
 		<flag name="qmldesigner">Build QmlDesigner and related plugins (Insight, StudioWelcome)</flag>
 		<flag name="tracing">Build plugins requiring tracing capabilities (CtfVisualizer, PerfProfiler, QmlProfiler)</flag>
-		<flag name="valgrind">Enable integration with <pkg>dev-util/valgrind</pkg></flag>
-		<flag name="webassembly">Build WebAssembly plugin</flag>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> with the help USE rather than bundled litehtml</flag>
 	</use>
 	<upstream>
