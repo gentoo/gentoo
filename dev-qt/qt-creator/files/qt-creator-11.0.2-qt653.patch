@@ -1,5 +1,10 @@
-Uses private parts of the QtQuick3D api which added a namespace in:
-https://github.com/qt/qtquick3d/commit/2b139225745a94ab4fa7e30f28cd0207469ee68e
+Uses private parts of the QtQuick3D api which added a namespace in [1].
+
+Update: upstream has done a better fix in [2] (but can stick to the
+simple version check until next release).
+
+[1] https://github.com/qt/qtquick3d/commit/2b139225745a94ab4fa7e30f28cd0207469ee68e
+[2] https://github.com/qt-creator/qt-creator/commit/291e3096cd5d0763370238252143c3bb4fe93839
 --- a/src/tools/qml2puppet/qml2puppet/editor3d/generalhelper.cpp
 +++ b/src/tools/qml2puppet/qml2puppet/editor3d/generalhelper.cpp
 @@ -803,5 +803,9 @@
