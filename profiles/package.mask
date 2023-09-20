@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2023-09-20)
+# Unmaintained upstream: Last release (2.92) in 2003, last commit
+# to XEmacs CVS repository in 2008. Broken with Emacs 29.
+# Masked for removal on 2023-10-20, bug #914449.
+app-emacs/crypt++
+
 # Bernard Cafarelli <voyageur@gentoo.org> (2023-09-19)
 # Only works with PHP 7, which was dropped from Gentoo
 # Upstream has no short-term plan to add PHP 8 support
