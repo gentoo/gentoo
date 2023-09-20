@@ -197,6 +197,7 @@ src_prepare() {
 	fi
 
 	if use small-ja-dic; then
+		# Remove pre-built dictionary https://debbugs.gnu.org/66125
 		rm -rf lisp/leim/ja-dic || die
 	fi
 
