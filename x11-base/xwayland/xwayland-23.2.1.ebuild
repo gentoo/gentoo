@@ -63,7 +63,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/xwayland-drop-redundantly-installed-files_v2.patch
+	"${FILESDIR}"/xwayland-drop-redundantly-installed-files.patch
 )
 
 src_configure() {
@@ -92,10 +92,6 @@ src_configure() {
 		-Ddocs=false
 		-Ddevel-docs=false
 		-Ddocs-pdf=false
-		-Dxorg=false
-		-Dxnest=false
-		-Dxvfb=false
-		-Dxwayland=true
 	)
 
 	if use libei; then

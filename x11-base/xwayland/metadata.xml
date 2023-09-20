@@ -8,6 +8,7 @@
   <use>
     <flag name="unwind">Enable libunwind usage for backtraces</flag>
     <flag name="xcsecurity">Build Security extension</flag>
+    <flag name="libei">Enable emulated input using <pkg>dev-libs/libei</pkg></flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:x.org:xorg-server</remote-id>
