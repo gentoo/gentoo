@@ -409,61 +409,12 @@ acct-group/spi
 
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
->=app-accessibility/orca-45_alpha
->=app-crypt/libsecret-0.21
 >=app-editors/ghex-45_alpha
->=app-editors/gnome-text-editor-45_alpha
 >=app-misc/gnote-45_alpha
->=app-misc/tracker-3.6_alpha
->=app-misc/tracker-miners-3.6_alpha
->=dev-cpp/glibmm-2.77
->=dev-cpp/gtkmm-4.11
->=dev-libs/gjs-1.77
->=dev-libs/glib-2.77
->=dev-libs/gobject-introspection-1.77
->=dev-libs/gobject-introspection-common-1.77
->=dev-libs/libdex-0.3.0
->=dev-libs/libportal-0.7
->=dev-util/gdbus-codegen-2.77
->=dev-util/glib-utils-2.77
->=games-puzzle/gnome-sudoku-45_alpha
->=gnome-base/gdm-45_beta
->=gnome-base/gnome-control-center-45_alpha
->=gnome-base/gnome-session-45_alpha
->=gnome-base/gnome-settings-daemon-45_alpha
->=gnome-base/gnome-shell-45_alpha
->=gnome-base/gsettings-desktop-schemas-45_alpha
->=gnome-base/librsvg-2.57
->=gnome-base/nautilus-45_alpha
->=gnome-extra/gnome-boxes-45_alpha
->=gnome-extra/gnome-calculator-45_alpha
->=gnome-extra/gnome-calendar-45_alpha
->=gnome-extra/gnome-characters-45_alpha
->=gnome-extra/gnome-clocks-45_alpha
->=gnome-extra/gnome-contacts-45_alpha
 >=gnome-extra/gnome-logs-45_alpha
->=gnome-extra/gnome-shell-extensions-45_alpha
->=gnome-extra/gnome-software-45_alpha
->=gnome-extra/gnome-system-monitor-45_alpha
->=gnome-extra/gnome-weather-45_alpha
->=gnome-extra/sushi-45_alpha
-gnome-extra/tecla
->=gui-apps/gnome-console-45_alpha
->=gui-libs/gtk-4.11
->=gui-libs/libadwaita-1.4_alpha
->=media-gfx/eog-45_alpha
->=media-gfx/gnome-font-viewer-45_alpha
->=media-libs/libshumate-1.1_alpha
->=net-misc/gnome-connections-45_alpha
 >=net-misc/gnome-remote-desktop-45_alpha
->=sci-geosciences/gnome-maps-45_alpha
->=sys-apps/baobab-45_alpha
 >=sys-apps/xdg-desktop-portal-gnome-45_alpha
->=sys-process/gnome-usage-45_alpha
 >=x11-libs/pango-1.51.0
->=x11-themes/adwaita-icon-theme-45_alpha
->=x11-themes/gnome-backgrounds-45_alpha
->=x11-wm/mutter-45_alpha
 
 # Sam James <sam@gentoo.org> (2023-07-05)
 # Doesn't install all needed files by e.g. kernelshark.
