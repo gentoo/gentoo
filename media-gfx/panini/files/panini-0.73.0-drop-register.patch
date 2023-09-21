@@ -1,0 +1,75 @@
+https://github.com/lazarus-pkgs/panini/pull/16
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Thu, 21 Sep 2023 09:12:45 +0000
+Subject: [PATCH] Fix C++17 does not allow register storage class specifier
+
+C++14 depricated register storage class and it was copletely removed
+from C++17. Hence we get this build error with newer compilers like
+Clang 16 and GCC 14. This patch should fix it.
+
+Bug: https://bugs.gentoo.org/896226
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/GLwindow.cpp
++++ b/src/GLwindow.cpp
+@@ -901,7 +901,7 @@ void GLwindow::setImgAlpha( QImage * pim, double alpha ){
+     qint32 m = (int( 255 * alpha ) & 255 ) << 24;
+ 
+     for( int i = pim->width() * pim->height(); i > 0; i-- ){
+-        register qint32 t = *pw & 0x00ffffff;
++        qint32 t = *pw & 0x00ffffff;
+         *pw++ = t + m;
+     }
+ }
+@@ -916,8 +916,8 @@ void GLwindow::diceImgAlpha( QImage * pim, double alpha, int dw ){
+     int r = 0, c = 0, w = pim->width();
+ 
+     for( int i = w * pim->height(); i > 0; i-- ){
+-        register qint32 t = *pw & 0x00ffffff;
+-        register int d = 1;
++        qint32 t = *pw & 0x00ffffff;
++        int d = 1;
+         if( dw ){  // dice...
+             d = ((r + c) / dw) ^ ((r + w - c) / dw);
+         }
+--- a/src/panocylinder.cpp
++++ b/src/panocylinder.cpp
+@@ -113,10 +113,10 @@ panocylinder::panocylinder( int divs ){
+     double vs = 0.5 * DEG2RAD( 150 ) / double(r2);
+ 
+     for( int r = 0; r < r2; r++){
+-        register double t = tan( r * vs );
+-        register float * pv = pv0;
+-        register float * pu = pv0 + 3 *( cols + r * cols );
+-        register float * pl = pv0 - 3 *( cols + r * cols );
++        double t = tan( r * vs );
++        float * pv = pv0;
++        float * pu = pv0 + 3 *( cols + r * cols );
++        float * pl = pv0 - 3 *( cols + r * cols );
+         for( col = 0; col < cols; col++){
+             *pu++ = *pv;
+             *pl++ = *pv++;
+--- a/src/panosphere.cpp
++++ b/src/panosphere.cpp
+@@ -190,7 +190,7 @@ panosphere::panosphere( int divs ){
+     float * ps = verts;	// -> front face
+ 
+     for( int i = 0; i < ppf; i++ ){
+-        register float * p = ps;
++        float * p = ps;
+ 
+         p +=  jf;	// ->top
+         p[0] = ps[0];	//  x = x
+--- a/src/pvQtView.cpp
++++ b/src/pvQtView.cpp
+@@ -465,7 +465,7 @@ void pvQtView::clipEyePosition(){
+                 x = c * sin(azi),
+                 y = sin(alt),
+                 z = c * cos(azi);
+-        register double s = eyeDistance;
++        double s = eyeDistance;
+         // the cube texture is only 1 radius wide
+         if( picType == pvQtPic::cub ) s *= 0.5;
+         eyex = x * s;
+-- 
+2.42.0
+
