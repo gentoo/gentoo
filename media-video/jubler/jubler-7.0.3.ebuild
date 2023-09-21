@@ -112,7 +112,7 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_doso dist/lib/libffdecode.so
+	java-pkg_doso resources/ffmpeg/ffdecode/libffdecode.so
 	java-pkg_dojar "coretheme.jar"
 	local module
 	for module in "${JUBLER_MODULES[@]}"; do
