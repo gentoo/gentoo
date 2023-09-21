@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2023-09-19)
+# Joonas Niilola <juippis@gentoo.org> (2023-09-21)
+# DAHDI is not suited for a rolling-release distribution. Upstream releases new
+# versions sporadically and it may take multiple years between them. Old
+# versions are constantly broken with newer kernels, requiring heavy patching
+# downstream. Has no active maintainer in Gentoo. If you use DAHDI and have
+# some ideas how to help, please see bug #914477.
+# Removal on 2024-03-01.
+net-libs/libpri
+net-misc/dahdi
+net-misc/dahdi-tools
+net-misc/openr2
+
 # Ulrich Müller <ulm@gentoo.org> (2023-09-20)
 # Unmaintained upstream: Last release (2.92) in 2003, last commit
 # to XEmacs CVS repository in 2008. Broken with Emacs 29.
