@@ -40,6 +40,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/hunspell-1.7:=
 	>=app-text/podofo-0.9.6_pre20171027:=
+	<app-text/podofo-0.10:=
 	>=app-text/poppler-0.26.5[qt5]
 	dev-libs/glib:2=
 	dev-libs/hyphen:=
@@ -113,6 +114,7 @@ BDEPEND="$(python_gen_cond_dep '
 		>=dev-python/sip-5[${PYTHON_USEDEP}]
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
+	<virtual/podofo-build-0.10
 	virtual/pkgconfig"
 
 PATCHES=(
