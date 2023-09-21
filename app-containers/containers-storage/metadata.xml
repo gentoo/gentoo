@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zmedico@gentoo.org</email>
-		<name>Zac Medico</name>
-	</maintainer>
-	<use>
-		<flag name="btrfs">
-			Enables dependencies for the "btrfs" graph driver, including
-			necessary kernel flags.
-		</flag>
-		<flag name="device-mapper">
-			Enables dependencies for the "devicemapper" graph driver, including
-			necessary kernel flags.
-		</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">containers/storage</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>zmedico@gentoo.org</email>
+    <name>Zac Medico</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>rahil3108@gmail.com</email>
+    <name>Rahil Bhimjiani</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">containers/storage</remote-id>
+    <bugs-to>https://github.com/containers/storage/issues</bugs-to>
+    <doc>https://github.com/containers/storage/blob/main/README.md</doc>
+  </upstream>
 </pkgmetadata>
