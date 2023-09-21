@@ -19,7 +19,7 @@ CP_DEPEND="
 	dev-java/commons-cli:1
 	dev-java/commons-collections:4
 	dev-java/commons-io:1
-	dev-java/commons-lang:2.1
+	dev-java/commons-lang:3.6
 	dev-java/commons-logging:0
 	dev-java/hamcrest-core:1.3
 	dev-java/jcommander:0
@@ -37,7 +37,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	default
-	rm libs/commons-{cli,collections4,io,logging}.jar || die
+	rm libs/commons-{cli,collections4,io,lang3,logging}.jar || die
 	rm libs/{hamcrest-core,jcommander,junit,slf4j-api}.jar || die
 
 	# Loads of bundled stuff :(
