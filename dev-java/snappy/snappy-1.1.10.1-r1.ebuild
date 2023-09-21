@@ -35,7 +35,7 @@ DEPEND=">=virtual/jdk-1.8:*
 	test? (
 		dev-java/ant-junit4:0
 		dev-java/commons-io:1
-		dev-java/commons-lang:2.1
+		dev-java/commons-lang:3.6
 		dev-java/plexus-classworlds:0
 		dev-java/xerial-core:0
 	)"
@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}/1.1.7.8-unbundle-bitshuffle.patch"
 	"${FILESDIR}/1.1.7.8-gentoo.patch"
 	"${FILESDIR}/snappy-1.1.10.1-SnappyOutputStreamTest.patch"
+	"${FILESDIR}/snappy-1.1.10.1-commons-lang3.patch"
 )
 
 JAVA_RESOURCE_DIRS="src/main/resources"
@@ -57,7 +58,7 @@ JAVA_SRC_DIR="src/main/java"
 
 JAVA_TEST_GENTOO_CLASSPATH="
 	commons-io-1
-	commons-lang-2.1
+	commons-lang-3.6
 	junit-4
 	plexus-classworlds
 	xerial-core
