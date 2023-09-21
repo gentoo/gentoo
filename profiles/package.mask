@@ -441,6 +441,7 @@ acct-group/spi
 >=gnome-extra/gnome-calendar-45_alpha
 >=gnome-extra/gnome-characters-45_alpha
 >=gnome-extra/gnome-clocks-45_alpha
+>=gnome-extra/gnome-contacts-45_alpha
 >=gnome-extra/gnome-logs-45_alpha
 >=gnome-extra/gnome-shell-extensions-45_alpha
 >=gnome-extra/gnome-software-45_alpha
