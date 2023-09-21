@@ -10,6 +10,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">frostming/unearth</remote-id>
 		<remote-id type="pypi">unearth</remote-id>
 	</upstream>
 </pkgmetadata>
