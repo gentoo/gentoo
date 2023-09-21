@@ -45,6 +45,8 @@ esac
 
 IUSE="secureboot"
 BDEPEND="secureboot? ( app-crypt/sbsigntools )"
+# The signing key may require a passphrase
+PROPERTIES="secureboot? ( interactive )"
 
 # @ECLASS_VARIABLE: SECUREBOOT_SIGN_KEY
 # @USER_VARIABLE
