@@ -226,7 +226,7 @@ src_configure() {
 		--with-version-string="${PV%_p*}"
 		--with-version-build="${PV#*_p}"
 		--with-zlib="${XPAK_BOOTSTRAP:-system}"
-		--enable-dtrace=$(usex systemtap yes no)
+		--enable-jvm-feature-dtrace=$(usex systemtap yes no)
 		--enable-headless-only=$(usex headless-awt yes no)
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
