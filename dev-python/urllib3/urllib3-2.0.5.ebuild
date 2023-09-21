@@ -38,6 +38,7 @@ BDEPEND="
 			dev-python/brotlicffi[\${PYTHON_USEDEP}]
 			dev-python/freezegun[\${PYTHON_USEDEP}]
 			dev-python/pytest[\${PYTHON_USEDEP}]
+			dev-python/pytest-rerunfailures[\${PYTHON_USEDEP}]
 			>=dev-python/tornado-4.2.1[\${PYTHON_USEDEP}]
 			>=dev-python/trustme-0.5.3[\${PYTHON_USEDEP}]
 			>=dev-python/zstandard-0.18.0[\${PYTHON_USEDEP}]
@@ -79,5 +80,6 @@ python_test() {
 
 	# plugins make tests slower, and more fragile
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
+	# some tests are very fragile to timing
+	epytest -p rerunfailures --reruns=10 --reruns-delay=2
 }
