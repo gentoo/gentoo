@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 CP_DEPEND="dev-java/appenh:0"
 
 DEPEND="${CP_DEPEND}
-	media-video/ffmpeg:0=
+	<media-video/ffmpeg-5.1.3:0
 	>=virtual/jdk-1.8:*"
 
 RDEPEND="${CP_DEPEND}
