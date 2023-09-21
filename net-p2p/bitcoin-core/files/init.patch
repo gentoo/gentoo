@@ -1,0 +1,43 @@
+--- a/contrib/init/bitcoind.openrcconf
++++ b/contrib/init/bitcoind.openrcconf
+@@ -4,14 +4,17 @@
+ #BITCOIND_CONFIGFILE="/etc/bitcoin/bitcoin.conf"
+ 
+ # What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+-#BITCOIND_PIDDIR="/var/run/bitcoind"
++#BITCOIND_PIDDIR="/run/bitcoind"
+ 
+ # What filename to give the pidfile
+-#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/bitcoind.pid"
++#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/${SVCNAME}.pid"
+ 
+ # Where to write bitcoind data (be mindful that the blockchain is large)
+ #BITCOIND_DATADIR="/var/lib/bitcoind"
+ 
++# Where to write the debug.log file
++#BITCOIND_LOGDIR="/var/log/bitcoind"
++
+ # User and group to own bitcoind process
+ #BITCOIND_USER="bitcoin"
+ #BITCOIND_GROUP="bitcoin"
+--- a/contrib/init/bitcoind.service
++++ b/contrib/init/bitcoind.service
+@@ -21,6 +21,7 @@ Wants=network-online.target
+ ExecStart=/usr/bin/bitcoind -daemonwait \
+                             -pid=/run/bitcoind/bitcoind.pid \
+                             -conf=/etc/bitcoin/bitcoin.conf \
++                            -debuglogfile=/var/log/bitcoind/debug.log \
+                             -datadir=/var/lib/bitcoind
+ 
+ # Make sure the config directory is readable by the service user
+@@ -51,6 +52,10 @@ RuntimeDirectoryMode=0710
+ ConfigurationDirectory=bitcoin
+ ConfigurationDirectoryMode=0710
+ 
++# /var/log/bitcoind
++LogsDirectory=bitcoind
++LogsDirectoryMode=0755
++
+ # /var/lib/bitcoind
+ StateDirectory=bitcoind
+ StateDirectoryMode=0710

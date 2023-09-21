@@ -1,0 +1,8 @@
+/var/log/bitcoin/debug.log {
+	missingok
+	weekly
+	sharedscripts
+	postrotate
+		killall -HUP bitcoind
+	endscript
+}

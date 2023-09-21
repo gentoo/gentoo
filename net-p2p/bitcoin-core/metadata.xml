@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@mattwhitlock.name</email>
+		<name>Matt Whitlock</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="asm">Enable assembly for optimization</flag>
+		<flag name="berkdb">Support legacy wallets in Berkeley DB format</flag>
+		<flag name="bitcoin-cli">Build and install bitcoin-cli command line interface</flag>
+		<flag name="daemon">Build and install bitcoind daemon</flag>
+		<flag name="external-signer">Include support for external wallet signer programs</flag>
+		<flag name="libs">Build and install libbitcoinconsensus</flag>
+		<flag name="nat-pmp">Enable NAT-PMP port forwarding</flag>
+		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
+		<flag name="qt5">Build and install Bitcoin-Qt GUI</flag>
+		<flag name="sqlite">Support descriptor wallets in SQLite format</flag>
+		<flag name="system-leveldb">Link with virtual/bitcoin-leveldb rather than embedding an internal copy</flag>
+		<flag name="system-libsecp256k1">Link with dev-libs/libsecp256k1 rather than embedding an internal copy</flag>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="upnp">Enable Universal Plug and Play</flag>
+		<flag name="zeromq">Report blocks and transactions via zeromq</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">bitcoin/bitcoin</remote-id>
+		<remote-id type="cpe">cpe:/a:bitcoin:bitcoin_core</remote-id>
+	</upstream>
+</pkgmetadata>
