@@ -46,7 +46,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/gettext"
 
-PATCHES=( "${WORKDIR}/${P}-patchset-1" ) # upstream, git master
+PATCHES=(
+	"${WORKDIR}/${P}-patchset-1" # upstream, git master
+	"${FILESDIR}/${P}-podofo-0.10.patch" # bug 914497
+)
 
 src_configure() {
 	local mycmakeargs=(

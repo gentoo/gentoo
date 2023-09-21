@@ -1,0 +1,319 @@
+From 0528606297a82aae46cb5e44a2bb406cbc033615 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Mon, 17 Jul 2023 20:29:37 +0000
+Subject: [PATCH 1/2] Support podofo 0.10
+
+Version 0.10 of podofo is a complete rewrite. krename's use of it is minimal, so porting is easy.
+
+Switch the cmake module to use pkgconfig, which is available since 0.9.5 (release in 2017).
+
+Unfortunately, the hack to find the version number is still needed, since the pc file is buggy and ships an empty "Version" field.
+---
+ cmake/modules/FindPoDoFo.cmake | 31 +++++++++++++++----------------
+ src/podofoplugin.cpp           | 20 ++++++++++++++++++++
+ 2 files changed, 35 insertions(+), 16 deletions(-)
+
+diff --git a/cmake/modules/FindPoDoFo.cmake b/cmake/modules/FindPoDoFo.cmake
+index 3d044f0..c771149 100644
+--- a/cmake/modules/FindPoDoFo.cmake
++++ b/cmake/modules/FindPoDoFo.cmake
+@@ -36,15 +36,8 @@
+ # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+-find_path(PoDoFo_INCLUDE_DIRS
+-  NAMES podofo/podofo.h
+-)
+-find_library(PoDoFo_LIBRARIES
+-  NAMES libpodofo podofo
+-)
+-
+-include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(PoDoFo DEFAULT_MSG PoDoFo_LIBRARIES PoDoFo_INCLUDE_DIRS)
++include(FindPkgConfig)
++pkg_search_module(PoDoFo libpodofo libpodofo-0)
+ 
+ set(PoDoFo_DEFINITIONS)
+ if(PoDoFo_FOUND)
+@@ -61,17 +54,19 @@ if(PoDoFo_FOUND)
+     endif()
+   endif()
+ 
+-  # PoDoFo-0.9.5 unconditionally includes openssl/opensslconf.h in a public
+-  # header. The fix is in https://sourceforge.net/p/podofo/code/1830/ and will
+-  # hopefully be released soon with 0.9.6. Note that krename doesn't use
+-  # OpenSSL in any way.
+-  file(STRINGS "${PoDoFo_INCLUDE_DIRS}/podofo/base/podofo_config.h" PoDoFo_MAJOR_VER_LINE REGEX "^#define[ \t]+PODOFO_VERSION_MAJOR[ \t]+[0-9]+$")
+-  file(STRINGS "${PoDoFo_INCLUDE_DIRS}/podofo/base/podofo_config.h" PoDoFo_MINOR_VER_LINE REGEX "^#define[ \t]+PODOFO_VERSION_MINOR[ \t]+[0-9]+$")
+-  file(STRINGS "${PoDoFo_INCLUDE_DIRS}/podofo/base/podofo_config.h" PoDoFo_PATCH_VER_LINE REGEX "^#define[ \t]+PODOFO_VERSION_PATCH[ \t]+[0-9]+$")
++  find_file(PoDoFo_CONFIG podofo_config.h PATHS ${PoDoFo_INCLUDE_DIRS} PATH_SUFFIXES auxiliary base)
++  file(STRINGS "${PoDoFo_CONFIG}" PoDoFo_MAJOR_VER_LINE REGEX "^#define[ \t]+PODOFO_VERSION_MAJOR[ \t]+[0-9]+$")
++  file(STRINGS "${PoDoFo_CONFIG}" PoDoFo_MINOR_VER_LINE REGEX "^#define[ \t]+PODOFO_VERSION_MINOR[ \t]+[0-9]+$")
++  file(STRINGS "${PoDoFo_CONFIG}" PoDoFo_PATCH_VER_LINE REGEX "^#define[ \t]+PODOFO_VERSION_PATCH[ \t]+[0-9]+$")
+   string(REGEX REPLACE "^#define[ \t]+PODOFO_VERSION_MAJOR[ \t]+([0-9]+)$" "\\1" PoDoFo_MAJOR_VER "${PoDoFo_MAJOR_VER_LINE}")
+   string(REGEX REPLACE "^#define[ \t]+PODOFO_VERSION_MINOR[ \t]+([0-9]+)$" "\\1" PoDoFo_MINOR_VER "${PoDoFo_MINOR_VER_LINE}")
+   string(REGEX REPLACE "^#define[ \t]+PODOFO_VERSION_PATCH[ \t]+([0-9]+)$" "\\1" PoDoFo_PATCH_VER "${PoDoFo_PATCH_VER_LINE}")
+   set(PoDoFo_VERSION "${PoDoFo_MAJOR_VER}.${PoDoFo_MINOR_VER}.${PoDoFo_PATCH_VER}")
++
++  # PoDoFo-0.9.5 unconditionally includes openssl/opensslconf.h in a public
++  # header. The fix is in https://sourceforge.net/p/podofo/code/1830/ and will
++  # hopefully be released soon with 0.9.6. Note that krename doesn't use
++  # OpenSSL in any way.
+   if(PoDoFo_VERSION VERSION_EQUAL "0.9.5")
+     find_package(OpenSSL)
+     if (OpenSSL_FOUND)
+@@ -84,4 +79,8 @@ if(PoDoFo_FOUND)
+   endif()
+ endif()
+ 
++if(PoDoFo_VERSION VERSION_GREATER_EQUAL 0.10.0)
++  set(CMAKE_CXX_STANDARD 17)
++endif()
++
+ mark_as_advanced(PoDoFo_INCLUDE_DIRS PoDoFo_LIBRARIES PoDoFo_DEFINITIONS)
+diff --git a/src/podofoplugin.cpp b/src/podofoplugin.cpp
+index 9bcce21..79fd735 100644
+--- a/src/podofoplugin.cpp
++++ b/src/podofoplugin.cpp
+@@ -61,6 +61,25 @@ QString PodofoPlugin::processFile(BatchRenamer *b, int index, const QString &fil
+     try {
+         PdfMemDocument doc;
+         doc.Load(filename.toUtf8().data());
++#if (PODOFO_VERSION_MINOR>=10 || PODOFO_VERSION_MAJOR>=1)
++        const PdfInfo *info = doc.GetInfo();
++
++        if (token == "pdfauthor") {
++            return info->GetAuthor().has_value() ? QString::fromUtf8(info->GetAuthor()->GetString().c_str()) : QString();
++        } else if (token == "pdfcreator") {
++            return info->GetCreator().has_value() ? QString::fromUtf8(info->GetCreator()->GetString().c_str()) : QString();
++        } else if (token == "pdfkeywords") {
++            return info->GetKeywords().has_value() ? QString::fromUtf8(info->GetKeywords()->GetString().c_str()) : QString();
++        } else if (token == "pdfsubject") {
++            return info->GetSubject().has_value() ? QString::fromUtf8(info->GetSubject()->GetString().c_str()) : QString();
++        } else if (token == "pdftitle") {
++            return info->GetTitle().has_value() ? QString::fromUtf8(info->GetTitle()->GetString().c_str()) : QString();
++        } else if (token == "pdfproducer") {
++            return info->GetProducer().has_value() ? QString::fromUtf8(info->GetProducer()->GetString().c_str()) : QString();
++        } else if (token == "pdfpages") {
++            return QString::number(doc.GetPages().GetCount());
++        }
++#else
+         PdfInfo *info = doc.GetInfo();
+ 
+         if (token == "pdfauthor") {
+@@ -78,6 +97,7 @@ QString PodofoPlugin::processFile(BatchRenamer *b, int index, const QString &fil
+         } else if (token == "pdfpages") {
+             return QString::number(doc.GetPageCount());
+         }
++#endif
+     } catch (PdfError &error) {
+         return QString::fromUtf8(error.what());
+     }
+-- 
+2.42.0
+
+
+From a054a825521698f1de4b387949ef56a15e78feb6 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Sat, 15 Jul 2023 18:20:06 +0200
+Subject: [PATCH 2/2] cmake: Improve FindPoDoFo
+
+Add some rst based documentation and provide an imported target for
+example.
+I've dropped -DUSING_SHARED_PODOFO, which looks weird nowadays and
+seems to exist because of Windows, which I can't test. So comment it out
+for now, but it'll probably be removed in the future, if nobody turns up
+who cares about Windows and can comment on it.
+---
+ CMakeLists.txt                 |   5 +-
+ cmake/modules/FindPoDoFo.cmake | 121 ++++++++++++++++++++++++---------
+ src/CMakeLists.txt             |   7 +-
+ 3 files changed, 91 insertions(+), 42 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a772b6a..9d736be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -63,10 +63,7 @@ endif()
+ 
+ # Find podofo
+ find_package(PoDoFo)
+-set_package_properties(PoDoFo PROPERTIES
+-    DESCRIPTION "A library to access PDF metadata"
+-    URL "http://podofo.sourceforge.net/"
+-    TYPE OPTIONAL)
++set_package_properties(PoDoFo PROPERTIES TYPE OPTIONAL)
+ 
+ # Find freetype
+ find_package(Freetype)
+diff --git a/cmake/modules/FindPoDoFo.cmake b/cmake/modules/FindPoDoFo.cmake
+index c771149..dce7473 100644
+--- a/cmake/modules/FindPoDoFo.cmake
++++ b/cmake/modules/FindPoDoFo.cmake
+@@ -1,17 +1,5 @@
+-# - Try to find the PoDoFo library
+-#
+-# Windows users MUST set when building:
+-#
+-# PoDoFo_USE_SHARED - whether use PoDoFo as shared library
+-#
+-# Once done this will define:
+-#
+-# PoDoFo_FOUND - system has the PoDoFo library
+-# PoDoFo_INCLUDE_DIRS - the PoDoFo include directory
+-# PoDoFo_LIBRARIES - the libraries needed to use PoDoFo
+-# PoDoFo_DEFINITIONS - the definitions needed to use PoDoFo
+-#
+ # Copyright 2016 Pino Toscano <pino@kde.org>
++# Copyright 2023 Heiko Becker <heiko.becker@kde.org>
+ #
+ # Redistribution and use in source and binary forms, with or without
+ # modification, are permitted provided that the following conditions
+@@ -36,23 +24,63 @@
+ # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+-include(FindPkgConfig)
+-pkg_search_module(PoDoFo libpodofo libpodofo-0)
+-
+-set(PoDoFo_DEFINITIONS)
+-if(PoDoFo_FOUND)
+-  if(WIN32)
+-    if(NOT DEFINED PoDoFo_USE_SHARED)
+-      message(SEND_ERROR "Win32 users MUST set PoDoFo_USE_SHARED")
+-      message(SEND_ERROR "Set -DPoDoFo_USE_SHARED=0 if linking to a static library PoDoFo")
+-      message(SEND_ERROR "or -DPoDoFo_USE_SHARED=1 if linking to a DLL build of PoDoFo")
+-      message(FATAL_ERROR "PoDoFo_USE_SHARED unset on win32 build")
+-    else()
+-      if(PoDoFo_USE_SHARED)
+-        set(PoDoFo_DEFINITIONS "${PoDoFo_DEFINITIONS} -DUSING_SHARED_PODOFO")
+-      endif(PoDoFo_USE_SHARED)
+-    endif()
+-  endif()
++#[=======================================================================[.rst:
++FindPoDoFo
++------------
++
++Try to find PoDoFo, a C++ library to work with the PDF file format
++
++This will define the following variables:
++
++``PoDoFo_FOUND``
++    True if PoDoFo is available
++``PoDoFo_VERSION``
++    The version of PoDoFo
++``PoDoFo_LIBRARIES``
++    The libraries of PoDoFofor use with target_link_libraries()
++``PoDoFo_INCLUDE_DIRS``
++    The include dirs of PoDoFo for use with target_include_directories()
++
++If ``PoDoFo_FOUND`` is TRUE, it will also define the following imported
++target:
++
++``PoDoFo::PoDoFo``
++    The PoDoFo library
++
++In general we recommend using the imported target, as it is easier to use.
++Bear in mind, however, that if the target is in the link interface of an
++exported library, it must be made available by the package config file.
++
++#]=======================================================================]
++
++find_package(PkgConfig QUIET)
++pkg_search_module(PC_PoDoFo QUIET libpodofo libpodofo-0)
++
++find_library(PoDoFo_LIBRARIES
++    NAMES podofo
++    HINTS ${PC_PoDoFo_LIBRARY_DIRS}
++)
++
++find_path(PoDoFo_INCLUDE_DIRS
++    NAMES podofo.h
++    HINTS ${PC_PoDoFo_INCLUDE_DIRS}
++)
++
++if(PoDoFo_INCLUDE_DIRS)
++  # NOTE: I have no idea if that's still needed and no possibility to test on
++  # Windows.
++  #if(WIN32)
++  #  if(NOT DEFINED PoDoFo_USE_SHARED)
++  #    message(SEND_ERROR "Win32 users MUST set PoDoFo_USE_SHARED")
++  #    message(SEND_ERROR "Set -DPoDoFo_USE_SHARED=0 if linking to a static library PoDoFo")
++  #    message(SEND_ERROR "or -DPoDoFo_USE_SHARED=1 if linking to a DLL build of PoDoFo")
++  #    message(FATAL_ERROR "PoDoFo_USE_SHARED unset on win32 build")
++  #  else()
++  #    if(PoDoFo_USE_SHARED)
++  #      set(PoDoFo_DEFINITIONS "${PoDoFo_DEFINITIONS} -DUSING_SHARED_PODOFO")
++  #    endif(PoDoFo_USE_SHARED)
++  #  endif()
++  #endif()
+ 
+   find_file(PoDoFo_CONFIG podofo_config.h PATHS ${PoDoFo_INCLUDE_DIRS} PATH_SUFFIXES auxiliary base)
+   file(STRINGS "${PoDoFo_CONFIG}" PoDoFo_MAJOR_VER_LINE REGEX "^#define[ \t]+PODOFO_VERSION_MAJOR[ \t]+[0-9]+$")
+@@ -80,7 +108,36 @@ if(PoDoFo_FOUND)
+ endif()
+ 
+ if(PoDoFo_VERSION VERSION_GREATER_EQUAL 0.10.0)
+-  set(CMAKE_CXX_STANDARD 17)
++    set(CMAKE_CXX_STANDARD 17)
++endif()
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(PoDoFo
++    FOUND_VAR
++        PoDoFo_FOUND
++    REQUIRED_VARS
++        PoDoFo_LIBRARIES
++        PoDoFo_INCLUDE_DIRS
++    VERSION_VAR
++        PoDoFo_VERSION
++)
++
++if(PoDoFo_FOUND AND NOT TARGET PoDoFo::PoDoFo)
++    add_library(PoDoFo::PoDoFo UNKNOWN IMPORTED)
++    set_target_properties(PoDoFo::PoDoFo PROPERTIES
++        IMPORTED_LOCATION "${PoDoFo_LIBRARIES}"
++        INTERFACE_COMPILE_OPTIONS "${PC_PoDoFo_CFLAGS}"
++        INTERFACE_INCLUDE_DIRECTORIES "${PoDoFo_INCLUDE_DIRS}"
++    )
++    if(TARGET PkgConfig::PC_PoDoFo)
++        target_link_libraries(PoDoFo::PoDoFo INTERFACE PkgConfig::PC_PoDoFo)
++    endif()
+ endif()
+ 
+-mark_as_advanced(PoDoFo_INCLUDE_DIRS PoDoFo_LIBRARIES PoDoFo_DEFINITIONS)
++mark_as_advanced(PoDoFo_LIBRARIES PoDoFo_INCLUDE_DIRS PoDoFo_VERSION)
++
++include(FeatureSummary)
++set_package_properties(PoDoFo PROPERTIES
++    DESCRIPTION "A C++ libary to work with the PDF file format"
++    URL "https://github.com/podofo/podofo"
++)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e4b00ac..cffe7fb 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -14,11 +14,6 @@ if(EXIV2_FOUND)
+     include_directories(${EXIV2_INCLUDE_DIR})
+ endif()
+ 
+-if(PoDoFo_FOUND)
+-    include_directories(${PoDoFo_INCLUDE_DIRS})
+-    add_definitions(${PoDoFo_DEFINITIONS})
+-endif()
+-
+ if(FREETYPE_FOUND)
+     include_directories(${FREETYPE_INCLUDE_DIRS})
+ endif()
+@@ -138,7 +133,7 @@ if(LibExiv2_FOUND)
+ endif()
+ if(PoDoFo_FOUND)
+     target_link_libraries(krename
+-        ${PoDoFo_LIBRARIES}
++        PoDoFo::PoDoFo
+     )
+ endif()
+ if(FREETYPE_FOUND)
+-- 
+2.42.0
+
