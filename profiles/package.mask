@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2023-09-21)
+# Enigmail's functionality has been built into Thunderbird-68, carrying over
+# all the way to 115. Enigmail hasn't been supported in TB since 91. It's
+# currently only supported on SeaMonkey, but upstream provides a pre-packed
+# extension to download for SM directly. Therefore there's not much reason to
+# package it in Gentoo, given also the current version is years behind upstream
+# releases. Bug #914486
+# Removal in ~30 days.
+x11-plugins/enigmail
+
 # Jaco Kroon <jaco@uls.co.za> (2023-09-19)
 # Joonas Niilola <juippis@gentoo.org> (2023-09-21)
 # DAHDI is not suited for a rolling-release distribution. Upstream releases new
