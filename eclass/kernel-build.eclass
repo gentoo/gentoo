@@ -105,6 +105,8 @@ if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	BDEPEND+="
 		modules-sign? ( dev-libs/openssl )
 	"
+	# The signing key may require a passphrase
+	PROPERTIES="modules-sign? ( interactive )"
 fi
 
 # @FUNCTION: kernel-build_pkg_setup
