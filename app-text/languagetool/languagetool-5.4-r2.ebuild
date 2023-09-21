@@ -8,8 +8,8 @@ MY_PN=LanguageTool
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A proof-reading tool for many languages"
-HOMEPAGE="https://www.languagetool.org/"
-SRC_URI="https://www.languagetool.org/download/${MY_P}.zip"
+HOMEPAGE="https://languagetool.org/"
+SRC_URI="https://languagetool.org/download/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
