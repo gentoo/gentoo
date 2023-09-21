@@ -9,7 +9,7 @@ PYTHON_TESTED=( python3_{10..12} pypy3 )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="ssl(+)"
 
-inherit distutils-r1 pypi
+inherit distutils-r1 multiprocessing pypi
 
 DESCRIPTION="HTTP library with thread-safe connection pooling, file post, and more"
 HOMEPAGE="
@@ -39,6 +39,7 @@ BDEPEND="
 			dev-python/freezegun[\${PYTHON_USEDEP}]
 			dev-python/pytest[\${PYTHON_USEDEP}]
 			dev-python/pytest-rerunfailures[\${PYTHON_USEDEP}]
+			dev-python/pytest-xdist[\${PYTHON_USEDEP}]
 			>=dev-python/tornado-4.2.1[\${PYTHON_USEDEP}]
 			>=dev-python/trustme-0.5.3[\${PYTHON_USEDEP}]
 			>=dev-python/zstandard-0.18.0[\${PYTHON_USEDEP}]
@@ -81,5 +82,6 @@ python_test() {
 	# plugins make tests slower, and more fragile
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# some tests are very fragile to timing
-	epytest -p rerunfailures --reruns=10 --reruns-delay=2
+	epytest -p rerunfailures --reruns=10 --reruns-delay=2 \
+		-p xdist -n "$(makeopts_jobs)" --dist=worksteal
 }
