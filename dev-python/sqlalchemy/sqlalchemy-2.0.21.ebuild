@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="sqlite?"
 
-inherit distutils-r1 optfeature pypi
+inherit distutils-r1 multiprocessing optfeature pypi
 
 MY_PN="SQLAlchemy"
 DESCRIPTION="Python SQL toolkit and Object Relational Mapper"
@@ -32,6 +32,8 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_impl_dep sqlite)
+		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
@@ -87,14 +89,8 @@ python_test() {
 	# means that any DeprecationWarnings from third-party plugins cause
 	# everything to explode
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=
-	# upstream automagically depends on xdist when it is importable
-	# note that we can't use xdist because it causes nodes to randomly
-	# crash on init
-	if has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]"; then
-		PYTEST_PLUGINS+=xdist.plugin
-	fi
-	epytest
+	epytest -p rerunfailures --reruns=10 --reruns-delay=2 \
+		-p xdist -n "$(makeopts_jobs)" --dist=worksteal
 }
 
 python_install_all() {
