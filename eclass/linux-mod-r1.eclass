@@ -112,6 +112,8 @@ _LINUX_MOD_R1_ECLASS=1
 inherit edo linux-info multiprocessing toolchain-funcs
 
 IUSE="dist-kernel modules-sign +strip ${MODULES_OPTIONAL_IUSE}"
+# The signing key may require a passphrase
+PROPERTIES="modules-sign? ( interactive )"
 
 RDEPEND="
 	sys-apps/kmod[tools]
