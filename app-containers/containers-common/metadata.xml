@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>rahil3108@gmail.com</email>
+    <name>Rahil Bhimjiani</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">containers/common</remote-id>
+    <bugs-to>https://github.com/containers/common/issues</bugs-to>
+    <doc>https://github.com/containers/common/blob/main/README.md</doc>
+  </upstream>
+</pkgmetadata>
