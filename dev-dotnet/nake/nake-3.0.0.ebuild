@@ -266,11 +266,3 @@ src_prepare() {
 
 	dotnet-pkg_src_prepare
 }
-
-src_install() {
-	dotnet-pkg-base_install
-	dotnet-pkg-base_dolauncher "/usr/share/${P}/${PN^}"
-	dosym -r "/usr/bin/${PN^}" "/usr/bin/${PN}"
-
-	einstalldocs
-}
