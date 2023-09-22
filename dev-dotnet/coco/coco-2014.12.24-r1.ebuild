@@ -34,10 +34,3 @@ src_unpack() {
 		git-r3_src_unpack
 	fi
 }
-
-src_install() {
-	dotnet-pkg-base_install
-	dotnet-pkg-base_dolauncher "/usr/share/${P}/${PN^}" "${PN}"
-
-	einstalldocs
-}
