@@ -120,7 +120,6 @@ qtwebengine_check-reqs() {
 		ewarn "when using more expensive debug symbols (e.g. -ggdb3 rather than -g)."
 		ewarn
 		ewarn "If run into issues, please try disabling before reporting a bug."
-		ewarn
 	fi
 
 	local CHECKREQS_DISK_BUILD=7G
@@ -215,7 +214,14 @@ src_configure() {
 		rtc_link_pipewire=true
 	)
 
-	use custom-cflags || strip-flags # fragile
+	if use !custom-cflags; then
+		strip-flags # fragile
+
+		if is-flagq '-g?(gdb)?([3-9])'; then #914475
+			replace-flags '-g?(gdb)?([3-9])' -g
+			ewarn "-g3+/-ggdb* *FLAGS replaced by -g, enable USE=custom-cflags to keep."
+		fi
+	fi
 
 	export NINJA NINJAFLAGS=$(get_NINJAOPTS)
 	[[ ${NINJA_VERBOSE^^} == OFF ]] || NINJAFLAGS+=" -v"
