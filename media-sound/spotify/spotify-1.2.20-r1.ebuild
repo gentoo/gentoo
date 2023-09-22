@@ -54,6 +54,7 @@ RDEPEND="
 	x11-libs/pango
 	!gnome-extra/gnome-integration-spotify
 	libnotify? ( x11-libs/libnotify )
+	dev-libs/libayatana-appindicator
 	local-playback? ( media-video/ffmpeg:0/56.58.58 )
 	pulseaudio? ( media-libs/libpulse )
 	!pulseaudio? ( media-sound/apulse )
