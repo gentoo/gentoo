@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools xdg
+inherit autotools flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="A set of open source instruments and effects for digital audio workstations"
 HOMEPAGE="https://calf-studio-gear.org/"
@@ -56,6 +56,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream append -ffast-math by default, however since libtool links C++
+	# shared libs with -nostdlib, this causes symbol resolution error for
+	# __powidn2 when using compiler-rt. Disable fast math on compiler-rt until
+	# a better fix is found.
+	[[ $(tc-get-c-rtlib) = "compiler-rt" ]] && append-cxxflags "-fno-fast-math"
+
 	local myeconfargs=(
 		--prefix="${EPREFIX}"/usr
 		--without-obsolete-check
