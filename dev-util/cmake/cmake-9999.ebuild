@@ -269,7 +269,7 @@ src_install() {
 pkg_postinst() {
 	use emacs && elisp-site-regen
 
-	if use qt5; then
+	if use gui; then
 		xdg_icon_cache_update
 		xdg_desktop_database_update
 		xdg_mimeinfo_database_update
@@ -279,7 +279,7 @@ pkg_postinst() {
 pkg_postrm() {
 	use emacs && elisp-site-regen
 
-	if use qt5; then
+	if use gui; then
 		xdg_icon_cache_update
 		xdg_desktop_database_update
 		xdg_mimeinfo_database_update
