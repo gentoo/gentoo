@@ -59,7 +59,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="${CMAKE_DOCS_USEFLAG} dap emacs gui ncurses test"
+IUSE="${CMAKE_DOCS_USEFLAG} dap emacs gui ncurses qt6 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -74,9 +74,14 @@ RDEPEND="
 	dap? ( dev-cpp/cppdap )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	gui? (
-		dev-qt/qtbase:6[gui,widgets]
+		!qt6? (
+			dev-qt/qtcore:5
+			dev-qt/qtgui:5
+			dev-qt/qtwidgets:5
+		)
+		qt6? ( dev-qt/qtbase:6[gui,widgets] )
 	)
-	ncurses? ( sys-libs/ncurses:0= )
+	ncurses? ( sys-libs/ncurses:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND+="
@@ -201,7 +206,7 @@ src_configure() {
 		-DBUILD_QtDialog=$(usex gui)
 	)
 
-	use gui && mycmakeargs+=( -DCMake_QT_MAJOR_VERSION=6 )
+	use gui && mycmakeargs+=( -DCMake_QT_MAJOR_VERSION=$(usex qt6 6 5) )
 
 	cmake_src_configure
 }
