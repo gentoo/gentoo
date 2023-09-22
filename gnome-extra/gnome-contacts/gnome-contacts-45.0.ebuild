@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Design/Apps/Contacts"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+gnome-online-accounts"
 
 VALA_DEPEND="
