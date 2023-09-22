@@ -89,8 +89,6 @@ src_configure() {
 		$(meson_feature test pytest)
 	)
 
-	use flatpak && emesonargs+=( -Dflatpak-interfaces-dir="${EPREFIX}/usr/share/dbus-1/interfaces" )
-
 	meson_src_configure
 }
 
