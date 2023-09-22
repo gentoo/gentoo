@@ -9,6 +9,6 @@
     <name>Gentoo Video project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">lolilolicon/ffcast</remote-id>
+    <remote-id type="github">ropery/ffcast</remote-id>
   </upstream>
 </pkgmetadata>
