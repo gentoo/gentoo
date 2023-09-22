@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="geolocation flatpak seccomp systemd test"
 RESTRICT="!test? ( test )"
+# Upstream expect flatpak to be used w/ seccomp and flatpak needs bwrap anyway
+REQUIRED_USE="flatpak? ( seccomp )"
 
 DEPEND="
 	>=dev-libs/glib-2.66:2
