@@ -1,6 +1,13 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-09-22)
+# Most people aren't going to use CMake's GUI. USE=gui is enabled by default
+# on desktop profiles and CMake is unavoidable, it feels a shame to drag in
+# Qt 6 just for something people are unlikely to want. Plus, it avoids a
+# circular dependency out of the box.
+dev-util/cmake -gui -qt5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-07-29)
 # Required by dev-python/PyQt5[multimedia]
 dev-qt/qtmultimedia:5 widgets
@@ -46,10 +53,6 @@ app-arch/unzip natspec
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by kde-frameworks/kwayland
 dev-qt/qtgui:5 egl libinput
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
-# Avoid circular dependency when installing from scratch
-dev-util/cmake -qt5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-08-04)
 # Required by flac and mp3
