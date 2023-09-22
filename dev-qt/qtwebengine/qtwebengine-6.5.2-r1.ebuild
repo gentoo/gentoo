@@ -115,8 +115,7 @@ qtwebengine_check-reqs() {
 		ewarn
 		ewarn "Used CFLAGS/CXXFLAGS seem to enable debug info (-g or -ggdb), which"
 		ewarn "is non-trivial with ${PN}. May experience extended compilation"
-		ewarn "times, increased disk/memory usage, and potentially linking issues"
-		ewarn "when using more expensive debug symbols (e.g. -ggdb3 rather than -g)."
+		ewarn "times, increased disk/memory usage, and potentially link failure."
 		ewarn
 		ewarn "If run into issues, please try disabling before reporting a bug."
 	fi
@@ -216,9 +215,9 @@ src_configure() {
 	if use !custom-cflags; then
 		strip-flags # fragile
 
-		if is-flagq '-g?(gdb)?([3-9])'; then #914475
-			replace-flags '-g?(gdb)?([3-9])' -g
-			ewarn "-g3+/-ggdb* *FLAGS replaced by -g, enable USE=custom-cflags to keep."
+		if is-flagq '-g?(gdb)?([2-9])'; then #914475
+			replace-flags '-g?(gdb)?([2-9])' -g1
+			ewarn "-g2+/-ggdb* *FLAGS replaced with -g1 (enable USE=custom-cflags to keep)"
 		fi
 	fi
 
