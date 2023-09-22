@@ -198,6 +198,11 @@ S="${WORKDIR}/${P}/src"
 LICENSE="MIT"
 SLOT="0"
 
+# Collision with dev-lang/coffee, file: cake, bug https://bugs.gentoo.org/914496
+RDEPEND="
+	!dev-lang/coffee-script
+"
+
 DOTNET_PKG_PROJECTS=( Cake/Cake.csproj )
 
 DOCS=( README.md ReleaseNotes.md SECURITY.md )
