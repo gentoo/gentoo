@@ -13,10 +13,6 @@
     <email>virtualization@gentoo.org</email>
     <name>Gentoo Virtualization Project</name>
   </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
   <longdescription>
     LXD is a modern, secure and powerful system container and virtual machine manager.
 
