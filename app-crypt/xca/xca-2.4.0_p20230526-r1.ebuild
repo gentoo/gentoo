@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/openssl:*
 	doc? ( app-text/linuxdoc-tools )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-qt/linguist-tools:5"
+BDEPEND="dev-qt/linguist-tools:5 doc? ( dev-python/sphinx dev-python/sphinxcontrib-htmlhelp dev-python/sphinxcontrib-qthelp )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-desktop.patch"
