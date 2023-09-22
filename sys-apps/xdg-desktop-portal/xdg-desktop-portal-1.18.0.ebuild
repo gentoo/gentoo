@@ -51,6 +51,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-sandbox-disable-failing-tests.patch"
 )
 
+pkg_setup() {
+	use test && python_setup
+}
+
 python_check_deps() {
 	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
