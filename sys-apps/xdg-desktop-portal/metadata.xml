@@ -5,6 +5,10 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="flatpak">Enable <pkg>sys-apps/flatpak</pkg> integration</flag>
+		<flag name="seccomp">Use <pkg>sys-apps/bubblewrap</pkg> (which requires seccomp) to sandbox some functionality like icon handling</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">flatpak/xdg-desktop-portal</remote-id>
 	</upstream>
