@@ -73,7 +73,6 @@ python_check_deps() {
 src_configure() {
 	local emesonargs=(
 		-Ddbus-service-dir="${EPREFIX}/usr/share/dbus-1/services"
-		-Dflatpak-interfaces-dir="${EPREFIX}/usr/share/dbus-1/interfaces"
 		-Dsystemd-user-unit-dir="$(systemd_get_userunitdir)"
 		$(meson_feature flatpak)
 		# Only used for tests
@@ -89,6 +88,8 @@ src_configure() {
 		-Dinstalled-tests=false
 		$(meson_feature test pytest)
 	)
+
+	use flatpak && emesonargs+=( -Dflatpak-interfaces-dir="${EPREFIX}/usr/share/dbus-1/interfaces" )
 
 	meson_src_configure
 }
