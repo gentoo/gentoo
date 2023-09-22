@@ -58,11 +58,11 @@ BDEPEND="
 	virtual/pkgconfig
 	lua? ( ${LUA_DEPS} )
 	amd64? ( dev-lang/yasm )
+	wayland? ( dev-util/wayland-scanner )
 	x86? ( dev-lang/yasm )
 "
 # <ffmpeg-5 dep for USE="ffmpeg vaapi" for bug #864721
 RDEPEND="
-	dev-util/wayland-scanner
 	media-libs/libvorbis
 	net-dns/libidn:=
 	sys-libs/zlib
