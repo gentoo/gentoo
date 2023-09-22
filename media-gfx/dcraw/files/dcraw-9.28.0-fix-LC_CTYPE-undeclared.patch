@@ -1,0 +1,17 @@
+In musl this is not pulled in automatically
+
+Bug: https://bugs.gentoo.org/713220
+Bug: https://bugs.gentoo.org/896204
+
+#  Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-22)
+
+--- a/dcraw.c
++++ b/dcraw.c
+@@ -41,6 +41,7 @@
+ #include <string.h>
+ #include <time.h>
+ #include <sys/types.h>
++#include <locale.h>
+ 
+ #if defined(DJGPP) || defined(__MINGW32__)
+ #define fseeko fseek
