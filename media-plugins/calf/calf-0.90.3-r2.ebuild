@@ -26,7 +26,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	dev-libs/atk
+	>=app-accessibility/at-spi2-core-2.46.0
 	dev-libs/expat
 	dev-libs/glib:2
 	media-sound/fluidsynth:=
