@@ -1,39 +1,49 @@
-From d8e42490b18bd0c8a827d96608e951bf5bc875e4 Mon Sep 17 00:00:00 2001
+From https://github.com/Ardour/ardour/pull/822/commits/c2ac82bfbacc583c49b306826dedec754633bbe7 Mon Sep 17 00:00:00 2001
 From: Violet Purcell <vimproved@inventati.org>
-Date: Sun, 4 Jun 2023 04:56:58 -0400
-Subject: [PATCH] Fix build with libc++ on linux
+Date: Thu, 21 Sep 2023 21:09:30 -0400
+Subject: [PATCH] Backport VST3 libc++ fix on linux
 
+LLVM libc++ does not have the ext/atomicity.h header. This fix is copied
+from the upstream vst3_pluginterfaces repo.
+
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
 --- a/libs/vst3/pluginterfaces/base/funknown.cpp
 +++ b/libs/vst3/pluginterfaces/base/funknown.cpp
-@@ -44,7 +44,9 @@
+@@ -44,13 +44,23 @@
  #endif
  
  #if SMTG_OS_LINUX
-+#ifndef USE_LIBCXX
++#if !defined (SMTG_USE_STDATOMIC_H)
++#if defined (_LIBCPP_VERSION)
++#define SMTG_USE_STDATOMIC_H 1
++#else
  #include <ext/atomicity.h>
++#endif
 +#endif
  /* UUID */
  #include <string>
  #include <boost/uuid/uuid.hpp>
-@@ -83,7 +85,7 @@ int32 PLUGIN_API atomicAdd (int32& var, int32 d)
+ #include <boost/uuid/uuid_generators.hpp>
+ #endif
+ 
++#if defined (SMTG_USE_STDATOMIC_H) && SMTG_USE_STDATOMIC_H
++#include <stdatomic.h>
++#endif
++
+ namespace Steinberg {
+ 
+ //------------------------------------------------------------------------
+@@ -79,7 +89,9 @@ namespace FUnknownPrivate {
+ //------------------------------------------------------------------------
+ int32 PLUGIN_API atomicAdd (int32& var, int32 d)
+ {
+-#if SMTG_OS_WINDOWS
++#if SMTG_USE_STDATOMIC_H
++	return atomic_fetch_add (reinterpret_cast<atomic_int_least32_t*> (&var), d) +d;
++#elif SMTG_OS_WINDOWS
  	return InterlockedExchangeAdd ((volatile long int*)&var, d) + d;
  #elif SMTG_OS_MACOS
  	return OSAtomicAdd32Barrier (d, (int32_t*)&var);
--#elif SMTG_OS_LINUX
-+#elif SMTG_OS_LINUX && !defined USE_LIBCXX
- 	__gnu_cxx::__atomic_add (&var, d);
- 	return var;
- #else
---- a/wscript
-+++ b/wscript
-@@ -545,6 +545,8 @@ int main() { return 0; }''',
-     if opt.use_libcpp or conf.env['build_host'] in [ 'yosemite', 'el_capitan', 'sierra', 'high_sierra', 'mojave', 'catalina' ]:
-         cxx_flags.append('--stdlib=libc++')
-         linker_flags.append('--stdlib=libc++')
-+        if platform == 'linux':
-+            cxx_flags.append('-DUSE_LIBCXX')
- 
-     if conf.options.cxx11 or conf.env['build_host'] in [ 'mavericks', 'yosemite', 'el_capitan', 'sierra', 'high_sierra', 'mojave', 'catalina' , 'bigsur', 'monterey', 'ventura' ]:
-         conf.check_cxx(cxxflags=["-std=c++11"])
 -- 
-2.40.1
+2.42.0
+

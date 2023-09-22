@@ -146,8 +146,6 @@ src_configure() {
 		# not possible right now  --use-external-libs
 	)
 
-	[[ "$(tc-get-cxx-stdlib)" = "libc++" ]] && myconf+=( --use-libc++ )
-
 	waf-utils_src_configure "${myconf[@]}"
 }
 
