@@ -42,12 +42,12 @@ CRATES="
 	cc@1.0.83
 	cfg-if@1.0.0
 	chic@1.2.2
-	chrono@0.4.30
+	chrono@0.4.31
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@4.4.3
-	clap_builder@4.4.2
+	clap@4.4.4
+	clap_builder@4.4.4
 	clap_complete@4.4.0
 	clap_complete_command@0.5.1
 	clap_complete_fig@4.4.0
@@ -121,16 +121,17 @@ CRATES="
 	imara-diff@0.1.5
 	imperative@1.0.5
 	indexmap@2.0.0
-	indicatif@0.17.6
-	indoc@2.0.3
+	indicatif@0.17.7
+	indoc@2.0.4
 	inotify-sys@0.1.5
 	inotify@0.9.6
 	insta-cmd@0.4.0
-	insta@1.31.0
+	insta@1.32.0
 	instant@0.1.12
 	is-macro@0.3.0
 	is-terminal@0.4.9
 	itertools@0.10.5
+	itertools@0.11.0
 	itoa@1.0.9
 	js-sys@0.3.64
 	kqueue-sys@1.0.4
@@ -167,7 +168,6 @@ CRATES="
 	num-bigint@0.4.4
 	num-integer@0.1.45
 	num-traits@0.2.16
-	num_cpus@1.16.0
 	number_prefix@0.4.0
 	once_cell@1.18.0
 	oorandom@11.1.3
@@ -212,8 +212,8 @@ CRATES="
 	rand@0.8.5
 	rand_chacha@0.3.1
 	rand_core@0.6.4
-	rayon-core@1.11.0
-	rayon@1.7.0
+	rayon-core@1.12.0
+	rayon@1.8.0
 	redox_syscall@0.2.16
 	redox_syscall@0.3.5
 	redox_users@0.4.3
@@ -234,17 +234,18 @@ CRATES="
 	rustversion@1.0.14
 	ryu@1.0.15
 	same-file@1.0.6
-	schemars@0.8.13
-	schemars_derive@0.8.13
+	schemars@0.8.15
+	schemars_derive@0.8.15
 	scoped-tls@1.0.1
 	scopeguard@1.2.0
 	sct@0.7.0
+	seahash@4.1.0
 	semver@1.0.18
 	serde-wasm-bindgen@0.6.0
 	serde@1.0.188
 	serde_derive@1.0.188
 	serde_derive_internals@0.26.0
-	serde_json@1.0.106
+	serde_json@1.0.107
 	serde_spanned@0.6.3
 	serde_test@1.0.176
 	serde_with@3.3.0
@@ -254,7 +255,7 @@ CRATES="
 	shlex@1.2.0
 	similar@2.2.1
 	siphasher@0.3.11
-	smallvec@1.11.0
+	smallvec@1.11.1
 	spin@0.5.2
 	static_assertions@1.1.0
 	string_cache@0.8.7
@@ -263,15 +264,15 @@ CRATES="
 	strum_macros@0.25.2
 	syn-ext@0.4.0
 	syn@1.0.109
-	syn@2.0.33
+	syn@2.0.37
 	tempfile@3.8.0
 	term@0.7.0
 	termcolor@1.2.0
 	terminfo@0.8.0
 	termtree@0.4.1
-	test-case-core@3.1.0
-	test-case-macros@3.1.0
-	test-case@3.1.0
+	test-case-core@3.2.1
+	test-case-macros@3.2.1
+	test-case@3.2.1
 	thiserror-impl@1.0.48
 	thiserror@1.0.48
 	thread_local@1.1.7
@@ -297,9 +298,9 @@ CRATES="
 	unic-ucd-category@0.9.0
 	unic-ucd-version@0.9.0
 	unicode-bidi@0.3.13
-	unicode-ident@1.0.11
+	unicode-ident@1.0.12
 	unicode-normalization@0.1.22
-	unicode-width@0.1.10
+	unicode-width@0.1.11
 	unicode-xid@0.2.4
 	untrusted@0.7.1
 	ureq@2.7.1
@@ -387,17 +388,17 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
+# libcst
+LICENSE+="
+	MIT PSF-2 Apache-2.0
+"
+
 # syn-ext
 LICENSE+="
 	BSD-2
 "
 
-# rustls-webpki
-LICENSE+="
-	ISC BSD
-"
-
-# LibCST
+# libcst_derive
 LICENSE+="
 	MIT PSF-2 Apache-2.0
 "
@@ -407,6 +408,11 @@ LICENSE+="
 	ISC SSLeay openssl MIT
 "
 
+# rustls-webpki
+LICENSE+="
+	ISC BSD
+"
+
 QA_FLAGS_IGNORED="usr/bin/.* usr/lib.*/libruff.*.so"
 
 DOCS=(
@@ -414,6 +420,8 @@ DOCS=(
 	CODE_OF_CONDUCT.md
 	CONTRIBUTING.md
 	README.md
+	assets
+	docs
 )
 
 src_prepare() {
@@ -422,6 +430,8 @@ src_prepare() {
 
 	[[ -n ${PATCHES[*]} ]] && eapply "${PATCHES[@]}"
 	eapply_user
+
+	rm -rf docs/{.overrides,gitignore} || die
 }
 
 src_configure() {
@@ -457,5 +467,5 @@ src_install() {
 	dobin ${releasedir}/{ruff{,_dev},flake8-to-ruff,ruff_python_formatter}
 	dolib.so $(find target/$(usex 'debug' 'debug' 'release') -maxdepth 1 -name '*.so')
 
-	dodoc "${DOCS[@]}"
+	dodoc -r "${DOCS[@]}"
 }
