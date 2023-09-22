@@ -20,7 +20,7 @@ REQUIRED_USE="
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime,
 #   but needs testing if handled gracefully enough
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 # meson.build depends on python unconditionally
 BDEPEND="${PYTHON_DEPS}"
