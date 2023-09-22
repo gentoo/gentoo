@@ -413,7 +413,6 @@ acct-group/spi
 >=app-misc/gnote-45_alpha
 >=gnome-extra/gnome-logs-45_alpha
 >=net-misc/gnome-remote-desktop-45_alpha
->=sys-apps/xdg-desktop-portal-gnome-45_alpha
 >=x11-libs/pango-1.51.0
 
 # Sam James <sam@gentoo.org> (2023-07-05)
