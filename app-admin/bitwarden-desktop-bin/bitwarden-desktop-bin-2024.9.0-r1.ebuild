@@ -76,6 +76,8 @@ src_install() {
 	for x in 16 32 64 128 256 512; do
 		doicon -s ${x} usr/share/icons/hicolor/${x}*/*
 	done
+
+	dosym -r "/opt/Bitwarden/bitwarden" "usr/bin/${PN}"
 }
 
 pkg_postinst() {
