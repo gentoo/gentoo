@@ -30,7 +30,6 @@ DEPEND="
 	flatpak? ( sys-apps/flatpak )
 	seccomp? ( sys-apps/bubblewrap )
 	systemd? ( sys-apps/systemd )
-	test? ( dev-libs/libportal )
 "
 RDEPEND="
 	${DEPEND}
@@ -42,8 +41,10 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		${PYTHON_DEPS}
+		dev-libs/libportal
 		$(python_gen_any_dep '
 			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 		')
 	)
@@ -65,6 +66,7 @@ pkg_setup() {
 
 python_check_deps() {
 	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 }
 
