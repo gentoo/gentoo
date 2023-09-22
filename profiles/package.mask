@@ -402,12 +402,6 @@ acct-group/spi
 # may or may not lead to useful results.
 <dev-util/catalyst-4
 
-# Michał Górny <mgorny@gentoo.org> (2023-07-12)
-# Having scikit-build-core installed still breaks building setuptools
-# extensions in some scenarios.
-# https://github.com/scikit-build/scikit-build-core/issues/426
-=dev-python/scikit-build-core-0.4.7-r1
-
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
 >=app-accessibility/orca-45_alpha
