@@ -1,0 +1,32 @@
+From https://github.com/calf-studio-gear/calf/pull/331/commits/849a0b589fb86cb4b9869738b270fd24859bd23b Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Thu, 21 Sep 2023 18:16:35 -0400
+Subject: [PATCH] Replace use of std::bind2nd with std::bind
+
+std::bind2nd was deprecated in C++11 and removed in C++17. Remove usage
+of it and replace with std::bind.
+
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
+--- a/src/calf/orfanidis_eq.h
++++ b/src/calf/orfanidis_eq.h
+@@ -748,7 +748,7 @@ private:
+ 			std::vector<eq_double_t> v = landen(k, tol);
+ 
+ 			std::transform(v.begin(), v.end(), v.begin(),
+-			    bind2nd(std::plus<eq_double_t>(), 1.0));
++			    bind(std::plus<eq_double_t>(), 1.0, std::placeholders::_1));
+ 
+ 			K = std::accumulate(v.begin(), v.end(),
+ 			    1, std::multiplies<eq_double_t>()) * M_PI/2.0;
+@@ -764,7 +764,7 @@ private:
+ 			std::vector<eq_double_t> vp = landen(kp, tol);
+ 
+ 			std::transform(vp.begin(), vp.end(), vp.begin(),
+-			    bind2nd(std::plus<eq_double_t>(), 1.0));
++			    bind(std::plus<eq_double_t>(), 1.0, std::placeholders::_1));
+ 
+ 			Kprime = std::accumulate(vp.begin(), vp.end(),
+ 			    1.0, std::multiplies<eq_double_t>()) * M_PI/2.0;
+-- 
+2.42.0
+
