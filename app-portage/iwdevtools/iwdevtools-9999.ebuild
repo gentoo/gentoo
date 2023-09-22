@@ -24,11 +24,13 @@ RDEPEND="
 	sys-apps/diffutils
 	sys-apps/file
 	sys-apps/portage
-	|| ( sys-apps/util-linux app-misc/getopt )"
+	|| ( sys-apps/util-linux app-misc/getopt )
+"
 BDEPEND="
 	sys-apps/help2man
 	|| ( sys-apps/util-linux app-misc/getopt )
-	test? ( ${RDEPEND} )"
+	test? ( ${RDEPEND} )
+"
 
 src_configure() {
 	local emesonargs=(
