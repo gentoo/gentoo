@@ -35,7 +35,7 @@ src_prepare() {
 }
 
 src_install() {
-	default
+	distutils-r1_src_install
 
 	# Application meta files are not installed automatically anymore
 	domenu share/applications/*.desktop
