@@ -62,6 +62,7 @@ BDEPEND="
 "
 # <ffmpeg-5 dep for USE="ffmpeg vaapi" for bug #864721
 RDEPEND="
+	dev-util/wayland-scanner
 	media-libs/libvorbis
 	net-dns/libidn:=
 	sys-libs/zlib

@@ -61,6 +61,7 @@ BDEPEND="
 	x86? ( dev-lang/yasm )
 "
 RDEPEND="
+	dev-util/wayland-scanner
 	media-libs/libvorbis
 	net-dns/libidn:=
 	sys-libs/zlib
