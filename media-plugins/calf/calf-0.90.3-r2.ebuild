@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.90.1-desktop.patch"
 	"${FILESDIR}/${PN}-0.90.3-fix-build-with-lld.patch"
 	"${FILESDIR}/${PN}-0.90.3-replace-std-bind2nd.patch"
+	"${FILESDIR}/${PN}-0.90.3-clang-lerp_table_lookup_float_mask.patch"
 )
 
 src_prepare() {
