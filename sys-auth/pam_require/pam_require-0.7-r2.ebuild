@@ -11,7 +11,7 @@ SRC_URI="https://www.splitbrain.org/_media/projects/pamrequire/${P}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 
 DEPEND="sys-libs/pam"
 RDEPEND="${DEPEND}"
