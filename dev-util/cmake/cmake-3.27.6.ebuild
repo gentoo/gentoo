@@ -103,9 +103,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0006-Filter-out-distcc-warnings-to-avoid-confusing-CMake.patch
 
 	# Upstream fixes (can usually be removed with a version bump)
-        # pkgconf
-        # fixes https://github.com/pkgconf/pkgconf/issues/317
-        "${FILESDIR}"/${PN}-3.27.4-0001-FindPkgConfig-ignore-whitespace-separators-in-versio.patch
+	# pkgconf
+	# fixes https://github.com/pkgconf/pkgconf/issues/317
+	"${FILESDIR}"/${PN}-3.27.4-0001-FindPkgConfig-ignore-whitespace-separators-in-versio.patch
 )
 
 cmake_src_bootstrap() {
