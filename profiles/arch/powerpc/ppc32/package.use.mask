@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2023-09-22)
+# Qt 6 not keyworded here.
+dev-util/cmake gui
+
+# Sam James <sam@gentoo.org> (2023-09-22)
 # sys-apps/flatpak is not keyworded here
 sys-apps/xdg-desktop-portal flatpak
 

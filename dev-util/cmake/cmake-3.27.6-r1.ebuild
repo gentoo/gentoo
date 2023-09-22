@@ -9,7 +9,8 @@ EAPI=8
 : ${CMAKE_DOCS_PREBUILT:=1}
 
 CMAKE_DOCS_PREBUILT_DEV=sam
-CMAKE_DOCS_VERSION=$(ver_cut 1-3)
+#CMAKE_DOCS_VERSION=$(ver_cut 1-3)
+CMAKE_DOCS_VERSION=3.27.0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 # See bug #784815
 CMAKE_DOCS_USEFLAG="+doc"
@@ -100,6 +101,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0006-Filter-out-distcc-warnings-to-avoid-confusing-CMake.patch
 
 	# Upstream fixes (can usually be removed with a version bump)
+	# pkgconf
+	# fixes https://github.com/pkgconf/pkgconf/issues/317
+	"${FILESDIR}"/${PN}-3.27.4-0001-FindPkgConfig-ignore-whitespace-separators-in-versio.patch
 )
 
 cmake_src_bootstrap() {

@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2023-09-22)
+# Qt 6 not keyworded here.
+dev-util/cmake gui
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
 # Libei not keyworded here yet
 x11-base/xwayland libei
