@@ -73,7 +73,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.8-metadata.patch"
-	"${FILESDIR}/${PN}-7.4-libc++.patch"
 )
 
 pkg_pretend() {
