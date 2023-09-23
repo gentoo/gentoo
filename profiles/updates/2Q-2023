@@ -1,7 +1,6 @@
 move dev-python/jupyter_core dev-python/jupyter-core
 move dev-python/mkdocs_pymdownx_material_extras dev-python/mkdocs-pymdownx-material-extras
 move dev-python/jupyter_client dev-python/jupyter-client
-move dev-python/importlib_resources dev-python/importlib-resources
 move dev-python/importlib_metadata dev-python/importlib-metadata
 move dev-python/python-keyutils dev-python/keyutils
 move dev-python/notebook_shim dev-python/notebook-shim
