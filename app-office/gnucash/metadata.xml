@@ -27,7 +27,7 @@
 	</longdescription>
 	<use>
 		<flag name="aqbanking">Connect to some internet banks via AqBanking</flag>
-		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
+		<flag name="quotes">Enable online stock quote retrieval</flag>
 		<flag name="register2">Use the new register (Experimental)</flag>
 	</use>
 	<upstream>
