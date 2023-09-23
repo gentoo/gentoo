@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit java-pkg-2
 
-DESCRIPTION="Apache Rat is a release audit tool, focused on licenses"
+DESCRIPTION="Release audit tool, focused on licenses"
 HOMEPAGE="https://creadur.apache.org/rat/"
 
 LICENSE="Apache-2.0"
