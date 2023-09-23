@@ -25,5 +25,5 @@ src_compile() { :; }
 src_install() {
 	default
 	java-pkg_register-dependency apache-rat-core,apache-rat-tasks
-	java-pkg_dolauncher "apache-${PN}" --jar $(java-pkg_getjar apache-rat-core apache-rat-core.jar) --main org.apache.rat.Report
+	java-pkg_dolauncher "${PN}" --jar $(java-pkg_getjar apache-rat-core apache-rat-core.jar) --main org.apache.rat.Report
 }
