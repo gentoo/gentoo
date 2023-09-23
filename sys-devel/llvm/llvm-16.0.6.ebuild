@@ -425,6 +425,13 @@ multilib_src_configure() {
 		)
 	fi
 
+	# On Macos prefix, Gentoo doesn't split sys-libs/ncurses to libtinfo and
+	# libncurses, but llvm tries to use libtinfo before libncurses, and ends up
+	# using libtinfo (actually, libncurses.dylib) from system instead of prefix
+	use kernel_Darwin && mycmakeargs+=(
+		-DTerminfo_LIBRARIES=-lncurses
+	)
+
 	# workaround BMI bug in gcc-7 (fixed in 7.4)
 	# https://bugs.gentoo.org/649880
 	# apply only to x86, https://bugs.gentoo.org/650506
