@@ -6,35 +6,40 @@ EAPI=8
 inherit autotools systemd
 
 DESCRIPTION="Utility for controlling IPMI enabled devices"
-HOMEPAGE="https://github.com/ipmitool/ipmitool"
+HOMEPAGE="https://codeberg.org/IPMITool/ipmitool"
 
 COMMIT_ID=
 if [[ -n "${COMMIT_ID}" ]]; then
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ipmitool/ipmitool/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 else
 	MY_P="${PN^^}_${PV//./_}"
-	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${MY_P}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ipmitool/ipmitool/archive/refs/tags/${MY_P}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_P}"
 fi
 
 # to generate: `make enterprise-numbers` from git checkout of release tag
 SRC_URI+="
-	https://dev.gentoo.org/~ajak/distfiles/${CATEGORY}/${PN}/enterprise-numbers-${PV}.xz"
+	https://dev.gentoo.org/~ajak/distfiles/${CATEGORY}/${PN}/enterprise-numbers-${PV}.xz
+"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv x86"
 IUSE="openbmc openipmi static"
 
-RDEPEND="dev-libs/openssl:0=
-	sys-libs/readline:0=
-	openbmc? ( sys-apps/systemd:0= )"
-DEPEND="${RDEPEND}
+RDEPEND="
+	dev-libs/openssl:=
+	sys-libs/readline:=
+	openbmc? ( sys-apps/systemd:= )
+"
+DEPEND="
+	${RDEPEND}
 	>=sys-devel/autoconf-2.69-r5
 	virtual/os-headers
-	openipmi? ( sys-libs/openipmi )"
-	#freeipmi? ( sys-libs/freeipmi )
+	openipmi? ( sys-libs/openipmi )
+"
+#freeipmi? ( sys-libs/freeipmi )
 # ipmitool CAN build against || ( sys-libs/openipmi sys-libs/freeipmi )
 # but it doesn't actually need either.
 
@@ -69,28 +74,27 @@ src_configure() {
 	# - LIPMI and BMC are the Solaris libs
 	# - OpenIPMI is unconditionally enabled in the configure as there is compat
 	# code that is used if the library itself is not available
-	# FreeIPMI does build now, but is disabled until the other arches keyword it
+	# - FreeIPMI does build now, but is disabled until the other arches keyword it
 	#	`use_enable freeipmi intf-free` \
-	# --enable-ipmievd is now unconditional
-
+	# - --enable-ipmievd is now unconditional
 	local econfargs=(
-		$(use_enable static) \
-		--enable-ipmishell \
-		--enable-intf-lan \
-		--enable-intf-usb \
-		$(use_enable openbmc intf-dbus) \
-		--enable-intf-lanplus \
-		--enable-intf-open \
-		--enable-intf-serial \
-		--disable-intf-bmc \
-		--disable-intf-dummy \
-		--disable-intf-free \
-		--disable-intf-imb \
-		--disable-intf-lipmi \
-		--disable-internal-md5 \
-		--with-kerneldir=/usr \
-		--bindir=/usr/sbin \
-		--runstatedir=/run \
+		$(use_enable static)
+		--enable-ipmishell
+		--enable-intf-lan
+		--enable-intf-usb
+		$(use_enable openbmc intf-dbus)
+		--enable-intf-lanplus
+		--enable-intf-open
+		--enable-intf-serial
+		--disable-intf-bmc
+		--disable-intf-dummy
+		--disable-intf-free
+		--disable-intf-imb
+		--disable-intf-lipmi
+		--disable-internal-md5
+		--with-kerneldir=/usr
+		--bindir=/usr/sbin
+		--runstatedir=/run
 		CFLAGS="${CFLAGS}"
 	)
 
