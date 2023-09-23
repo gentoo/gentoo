@@ -58,6 +58,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 PATCHES=(
 	"${FILESDIR}"/gcc-12.2.0-drop-cflags-sed.patch
+	"${FILESDIR}"/gcc-13.2.0-libcxx-17.patch
 )
 
 pkg_pretend() {
