@@ -364,7 +364,6 @@ sys-apps/dbus-broker
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd
 sys-apps/systemd-readahead
-sys-boot/systemd-boot
 sys-process/systemd-cron
 >=www-misc/profile-sync-daemon-6
 
