@@ -1,4 +1,4 @@
-# Copyright 2011-2022 Gentoo Authors
+# Copyright 2011-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: systemd.eclass
@@ -98,7 +98,7 @@ systemd_get_unitdir() {
 systemd_get_userunitdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_systemd_get_dir systemduserunitdir /usr/lib/systemd/user
+	_systemd_get_dir systemduserunitdir /lib/systemd/user
 }
 
 # @FUNCTION: systemd_get_utildir
@@ -222,7 +222,7 @@ systemd_install_serviced() {
 
 	(
 		insopts -m 0644
-		insinto /etc/systemd/system/"${service}".d
+		insinto "$(_systemd_unprefix systemd_get_systemunitdir)"/"${service}".d
 		newins "${src}" 00gentoo.conf
 	)
 }
