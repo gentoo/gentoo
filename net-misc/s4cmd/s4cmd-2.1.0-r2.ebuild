@@ -3,17 +3,21 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_10 python3_11 python3_12 )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 bash-completion-r1
 
 DESCRIPTION="Super S3 command line tool"
 HOMEPAGE="https://github.com/bloomreach/s4cmd"
-SRC_URI="https://github.com/bloomreach/s4cmd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://github.com/bloomreach/s4cmd/pull/310.patch -> ${P}-botocore-fix.patch "
+SRC_URI="
+	https://github.com/bloomreach/s4cmd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/bloomreach/s4cmd/pull/162.patch -> ${P}-py3-iter.patch
+	https://github.com/bloomreach/s4cmd/pull/310.patch -> ${P}-botocore-fix.patch
+"
 PATCHES=(
 	"${DISTDIR}/${P}-botocore-fix.patch"
+	"${DISTDIR}/${P}-py3-iter.patch"
 )
 
 LICENSE="GPL-2"
