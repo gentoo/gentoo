@@ -270,13 +270,6 @@ sci-mathematics/polymake
 # Removal on 2023-09-21.  Bug #912582.
 app-emulation/libvirt-snmp
 
-# Marek Szuba <marecki@gentoo.org> (2023-08-21)
-# Does not work with recent versions of Sphinx. In the process of being
-# phased out of the Ansible ecosystem in favour of an mkdocs-based
-# approach. No revdeps.
-# Removal on 2023-09-21. Bug #912743.
-dev-python/sphinx_ansible_theme
-
 # Sam James <sam@gentoo.org> (2023-08-18)
 # Masked for testing.
 =sys-libs/zlib-1.3-r1
