@@ -1,0 +1,33 @@
+Bug: https://bugs.gentoo.org/894750
+--- a/tests/cgreen/src/constraint.c
++++ b/tests/cgreen/src/constraint.c
+@@ -101,7 +101,7 @@ Constraint *with_(const char *parameter, const char* matcher_name, int (*matcher
+ 
+     constraint->parameter = parameter;
+     constraint->compare = &compare_using_matcher;
+-    constraint->test = &test_with_matcher;
++    constraint->test = (void *)&test_with_matcher;
+     constraint->name = matcher_name;
+     constraint->expected = (intptr_t)matcher_function;
+     return constraint;
+@@ -164,8 +164,8 @@ static void test_want_double(Constraint *constraint, const char *function, intpt
+ }
+ 
+ static int compare_using_matcher(Constraint *constraint, intptr_t actual) {
+-	int (*matches)(const void*) = constraint->expected;
+-    return matches(actual);
++	int (*matches)(const void*) = (void *)constraint->expected;
++    return matches((int *)actual);
+ }
+ 
+ static void test_with_matcher(Constraint *constraint, const char *function, const char* matcher_name, intptr_t matcher_function, const char *test_file, int test_line, TestReporter *reporter) {
+--- a/tests/cgreen/src/unit.c
++++ b/tests/cgreen/src/unit.c
+@@ -9,6 +9,7 @@
+ #include <stdarg.h>
+ #include <unistd.h>
+ #include <signal.h>
++#include <sys/wait.h>
+ 
+ enum {test_function, test_suite};
+ 
