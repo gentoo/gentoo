@@ -41,7 +41,7 @@ DEPEND="
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5[qml]
 	media-libs/kquickimageeditor:5
-	>=net-libs/libquotient-0.6:=
+	<net-libs/libquotient-0.8:=
 "
 RDEPEND="${DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
