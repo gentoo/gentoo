@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="A performance data analyzer for nagios"
-HOMEPAGE="http://www.pnp4nagios.org/"
+HOMEPAGE="https://github.com/ConSol-Monitoring/pnp"
 GH_COMMIT="e52677d3994d35197db68120d7089906a174a3f9"
 SRC_URI="https://github.com/ConSol-Monitoring/pnp/archive/${GH_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/pnp-${GH_COMMIT}"
