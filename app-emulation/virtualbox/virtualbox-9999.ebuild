@@ -7,7 +7,7 @@ EAPI=8
 # This compiles the latest svn version.
 # It also compiles the kernel modules.  Does not depend on virtualbox-modules.
 # It is not meant to be used, might be very unstable.
-# Upstream seem to have added support for python 3.12; I haven't checked it yet.
+# Upstream seem to have added support for python 3.12, but it crashes.
 #
 # USE=doc does not work for now.
 #
@@ -30,7 +30,7 @@ inherit desktop edo flag-o-matic java-pkg-opt-2 linux-mod-r1 multilib optfeature
 	python-single-r1 subversion tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
-BASE_PV=7.0.8
+BASE_PV=7.0.10
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
@@ -51,6 +51,7 @@ unset WATCOM #856769
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-group/vboxusers
+	app-arch/xz-utils
 	dev-libs/libtpms
 	dev-libs/libxml2
 	dev-libs/openssl:0=
@@ -60,17 +61,12 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	gui? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtgui:5
-		dev-qt/qthelp:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
-		dev-qt/qtxml:5
+		dev-qt/qtbase:6[widgets]
+		dev-qt/qt5compat:6
+		dev-qt/qtscxml:6
+		dev-qt/qttools:6[assistant]
 		x11-libs/libX11
 		x11-libs/libXt
-		opengl? ( dev-qt/qtopengl:5 )
 	)
 	lvm? ( sys-fs/lvm2 )
 	opengl? (
@@ -83,7 +79,6 @@ COMMON_DEPEND="
 	sdl? (
 		media-libs/libsdl2[X,video]
 		x11-libs/libX11
-		x11-libs/libXcursor
 		x11-libs/libXt
 	)
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-),debug?] )
@@ -104,6 +99,7 @@ DEPEND="
 	${COMMON_DEPEND}
 	>=dev-libs/libxslt-1.1.19
 	virtual/libcrypt:=
+	x11-libs/libXt
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	gui? (
 		x11-base/xorg-proto
@@ -123,7 +119,10 @@ DEPEND="
 		x11-libs/libXrandr
 		virtual/glu
 	)
-	sdl? ( x11-libs/libXinerama )
+	sdl? (
+		x11-libs/libXcursor
+		x11-libs/libXinerama
+	)
 	pulseaudio? ( media-libs/libpulse )
 	udev? ( >=virtual/udev-171 )
 "
@@ -134,7 +133,6 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	app-arch/makeself
 	>=app-arch/tar-1.34-r2
 	>=dev-lang/yasm-0.6.2
 	dev-libs/libIDL
@@ -156,8 +154,8 @@ BDEPEND="
 		dev-texlive/texlive-fontsextra
 		dev-qt/qthelp:5
 	)
-	gui? ( dev-qt/linguist-tools:5 )
-	nls? ( dev-qt/linguist-tools:5 )
+	gui? ( dev-qt/qttools:6[linguist] )
+	nls? ( dev-qt/qttools:6[linguist] )
 	java? ( virtual/jdk:1.8 )
 "
 
@@ -199,7 +197,7 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.1.26-configure-include-qt5-path.patch # bug #805365
+	"${FILESDIR}"/${PN}-7.0.11-configure-include-qt6-path.patch # bug #805365
 
 	# This patch is needed to avoid automagic detection based on a hardcoded
 	# list of Pythons in configure. It's necessary but not sufficient
@@ -214,6 +212,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.9-python.patch
 	"${FILESDIR}"/${PN}-7.0.6-gcc-13.patch
 	"${FILESDIR}"/${PN}-7.0.8-mtune-keep-size.patch
+	# 913109
+	"${FILESDIR}"/${PN}-7.0.10-fix-binutils-hardened.patch
 
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-7.0.10_pre20230615/patches
@@ -315,6 +315,9 @@ src_prepare() {
 		append-cflags $(test-flags-CC -mno-$i)
 		append-cxxflags $(test-flags-CXX -mno-$i)
 	done
+
+	# bug #908814
+	filter-lto
 
 	# bug #843437
 	cat >> LocalConfig.kmk <<-EOF || die
