@@ -65,14 +65,6 @@ net-misc/seafile-client shibboleth
 sci-mathematics/yacas gui
 sci-physics/root qt5
 
-# Michael Orlitzky <mjo@gentoo.org> (2022-12-23)
-# sci-libs/lrslib is keyworded ~x86, but probably shouldn't have been:
-#
-#   https://bugs.gentoo.org/771675
-#
-# Here we prevent its only direct consumer from pulling it in.
-sci-mathematics/polymake lrs
-
 # Michał Górny <mgorny@gentoo.org> (2022-11-16)
 # spirv-llvm-translator is not keyworded x86.
 dev-libs/libclc spirv

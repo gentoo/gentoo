@@ -86,10 +86,6 @@ net-misc/plowshare javascript
 # https://www.boost.org/doc/libs/1_78_0/libs/context/doc/html/context/architectures.html
 dev-libs/boost -context
 
-# Sam James <sam@gentoo.org> (2021-12-31)
-# sci-mathematics/polymake not keyworded here
-sci-mathematics/singular polymake
-
 # Sam James <sam@gentoo.org> (2021-12-08)
 # Masks involving webkit-gtk; webkit-gtk was dekeyworded on ppc for a while.
 # We haven't (yet?) restored keywords for all the bits we had to drop, so
