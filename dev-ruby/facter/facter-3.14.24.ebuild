@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby31"
 
 # git-r3 goes after ruby-ng so that it overrides src_unpack properly
 inherit cmake ruby-ng
