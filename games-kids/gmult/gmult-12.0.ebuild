@@ -30,15 +30,6 @@ BDEPEND="
 
 DOCS=( NEWS.md README.md )
 
-src_prepare() {
-	default
-
-	# TODO: verify if this is still needed with new vala releases
-	# as it may instead break them if reverted (see patch for details)
-	has_version -b ">=dev-lang/vala-0.56.11" &&
-		eapply "${FILESDIR}"/${PN}-12.0-vala-0.56.11.patch
-}
-
 src_configure() {
 	vala_setup
 	meson_src_configure
