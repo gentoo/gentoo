@@ -191,6 +191,7 @@ src_install() {
 			${nsys_dir}/target-linux-x64/nsys-launcher
 			${nsys_dir}/target-linux-x64/sqlite3
 			${nsys_dir}/target-linux-x64/python/bin/python
+			${nsys_dir}/target-linux-x64/CudaGpuInfoDumper
 		)
 
 		# remove rdma libs (unless USE=rdma)
