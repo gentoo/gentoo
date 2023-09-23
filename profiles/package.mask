@@ -284,12 +284,6 @@ dev-python/sphinx_ansible_theme
 # Removal on 2023-09-19.  Bug #880415.
 dev-python/nptyping
 
-# Hans de Graaff <graaff@gentoo.org> (2023-08-19)
-# Ruby 3.0 is not compatible with OpenSSL 3 and consequently will be
-# masked earlier than its upstream EOL date. Please use a newer Ruby
-# version instead. Masked for removal on 2023-09-19.
-dev-lang/ruby:3.0
-
 # Sam James <sam@gentoo.org> (2023-08-18)
 # Masked for testing.
 =sys-libs/zlib-1.3-r1
