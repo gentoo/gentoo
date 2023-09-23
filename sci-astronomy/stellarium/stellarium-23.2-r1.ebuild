@@ -152,7 +152,9 @@ src_configure() {
 		"$(cmake_use_find_package doc Doxygen)"
 	)
 	if use telescope; then
+		# https://bugs.gentoo.org/913177
 		mycmakeargs+=(
+			-DPREFER_SYSTEM_INDILIB=no
 			-DCPM_indiclient_SOURCE="${WORKDIR}/indi-1.8.5"
 		)
 	fi
