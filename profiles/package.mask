@@ -303,11 +303,6 @@ app-dicts/edictionary
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
 
-# Mike Gilbert <floppym@gentoo.org> (2023-07-24)
-# Migrated to sys-apps/systemd-utils.
-# Removal on 2023-08-24.
-sys-apps/systemd-tmpfiles
-
 # Mike Pagano <mpagano@gentoo.org> (2023-07-18)
 # Mask impacted kernels vulnerable to StackRot and
 # ones with a memory corruption bug
