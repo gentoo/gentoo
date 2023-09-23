@@ -34,7 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-09-23)
-# ruby31-only packages. No reverse dependencies. Discontinued by
+# ruby31-only package. No reverse dependencies. Archived by
+# upstream. Last release in 2012. Removal on 2023-10-23.
+dev-ruby/kirbybase
+
+# Hans de Graaff <graaff@gentoo.org> (2023-09-23)
+# ruby31-only package. No reverse dependencies. Discontinued by
 # upstream who recommends using dev-ruby/bunny instead. Removal on
 # 2023-10-23.
 dev-ruby/amqp
