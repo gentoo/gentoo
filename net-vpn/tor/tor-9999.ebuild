@@ -44,14 +44,14 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
+	dev-libs/openssl:=[-bindist(-)]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
-	dev-libs/openssl:=[-bindist(-)]
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd:= )
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
