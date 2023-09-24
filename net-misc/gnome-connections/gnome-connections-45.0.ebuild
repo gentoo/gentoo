@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/connections"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~loong"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
