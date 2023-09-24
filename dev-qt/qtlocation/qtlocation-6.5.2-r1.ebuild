@@ -34,7 +34,6 @@ src_install() {
 	if use test; then
 		local delete=( # sigh
 			"${D}${QT6_LIBDIR}"/cmake/Qt6Location/*TestGeoServicePlugin*.cmake
-			"${D}${QT6_LIBDIR}"/cmake/Qt6Location/*TestGeoServicePlugin*.cmake
 			"${D}${QT6_LIBDIR}"/cmake/Qt6Location/*UnsupportedPlacesGeoServicePlugin*.cmake
 			"${D}${QT6_LIBDIR}"/cmake/Qt6Qml/QmlPlugins/*declarative_location_test*.cmake
 			"${D}${QT6_PLUGINDIR}"/geoservices/libqtgeoservices_geocodingplugin.so
