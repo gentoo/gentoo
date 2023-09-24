@@ -59,8 +59,9 @@ CMAKE_SKIP_TESTS=(
 	tst_qmediacapturesession
 	tst_qmediaplayerbackend
 	tst_qsoundeffect
-	# may try to use hardware acceleration for encoding
+	# may try to use v4l2 or hardware acceleration depending on availability
 	tst_qscreencapture_integration
+	tst_qscreencapturebackend
 )
 
 src_configure() {
