@@ -50,6 +50,9 @@ src_prepare() {
 			"${S}/test/test-generator" || die
 	fi
 
+	# https://github.com/systemd-cron/systemd-cron/issues/134
+	# https://github.com/systemd-cron/systemd-cron/commit/acd77f59d58d9ec812f64c833a5e029b9dbae92a
+	eapply "${FILESDIR}/${P}-MAYBE_DUPA_SIGABRT.patch"
 	eapply_user
 }
 
