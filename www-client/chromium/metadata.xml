@@ -33,6 +33,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">chromium/chromium</remote-id>
-		<remote-id type="github">stha09/chromium-patches</remote-id>
+		<remote-id type="gitlab">Matt.Jolly/chromium-patches</remote-id>
 	</upstream>
 </pkgmetadata>
