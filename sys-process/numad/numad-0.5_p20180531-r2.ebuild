@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic linux-info systemd toolchain-funcs
+inherit linux-info systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://pagure.io/numad.git"
@@ -31,15 +31,13 @@ PATCHES=(
 
 	# from debian/ubuntu: https://sources.debian.org/patches/numad
 	"${FILESDIR}/${PN}-0.5-fix-build-for-no-NR-migrate-pages.patch"
+
+	# from fedora: https://src.fedoraproject.org/rpms/numad/c/b9fdb5b1b09611ba164c04cd994e5e9ddf7fb8f4
+	"${FILESDIR}/0001-numad_log-fix-buffer-overflow.patch"
 )
 
 src_configure() {
 	tc-export AR CC RANLIB
-
-	# FIXME: https://bugs.gentoo.org/890985
-	# temp workaround
-	filter-flags -D_FORTIFY_SOURCE=3
-	append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 }
 
 src_compile() {
