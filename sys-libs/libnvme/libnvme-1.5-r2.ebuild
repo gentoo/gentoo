@@ -32,6 +32,8 @@ BDEPEND="
 	dev-lang/swig
 "
 
+PATCHES=( "${FILESDIR}/${P}-free-segfault.patch" )
+
 src_configure() {
 	local emesonargs=(
 		-Dpython=false
