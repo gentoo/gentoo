@@ -41,6 +41,7 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	dev-db/sqlite:3
 	dev-lang/perl
+	dev-libs/libfmt:=
 	dev-libs/spdlog:=
 	media-libs/libpng:=
 	virtual/libiconv
@@ -61,6 +62,7 @@ RDEPEND="
 	)
 	doxysearch? ( dev-libs/xapian:= )
 	gui? (
+		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
