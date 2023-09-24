@@ -22,6 +22,10 @@ BDEPEND="
 	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/nasm )"
 
+PATCHES=(
+  "${FILESDIR}/p7zip-17.05-unit64.patch"
+)
+
 src_prepare() {
 	default
 

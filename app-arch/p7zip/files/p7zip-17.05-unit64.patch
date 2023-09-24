@@ -1,0 +1,21 @@
+--- p7zip-17.05-orig/C/hashes/hash.h	2023-03-03 23:16:28.000000000 +1100
++++ p7zip-17.05/C/hashes/hash.h	2023-04-15 09:05:20.357955971 +1000
+@@ -42,17 +42,7 @@
+ 
+ #include "../7zTypes.h"
+ 
+-#ifndef _UINT32_T_DECLARED
+-typedef UInt32 uint32_t;
+-#define _UINT32_T_DECLARED
+-#endif
+-
+-#ifndef _UINT64_T_DECLARED
+-typedef UInt64 uint64_t;
+-#define _UINT64_T_DECLARED
+-#endif
+-
+-//#include <stdint.h>
++#include <stdint.h>
+ 
+ #ifndef min
+ #define min(a,b) (((a)>(b))?(b):(a))
