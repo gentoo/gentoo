@@ -1,0 +1,34 @@
+From 8ee76835b2d615156bb6d329417d6ce8d19bfa3a Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Wed, 20 Sep 2023 23:11:27 +0200
+Subject: [PATCH 2/4] Append always install to pip extra args
+
+---
+ pipenv/routines/install.py | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/pipenv/routines/install.py b/pipenv/routines/install.py
+index 2f135b435..e30f2da52 100644
+--- a/pipenv/routines/install.py
++++ b/pipenv/routines/install.py
+@@ -459,6 +459,17 @@ def batch_install_iteration(
+     allow_global=False,
+     extra_pip_args=None,
+ ):
++    # Gentoo patch:
++    # Install dependencies into the venv even if they exist
++    # in the system.
++    # This is needed because pipenv imports the system packages to run.
++    # It does not change your system's packages.
++
++    if (extra_pip_args is not None) and ("-I" not in extra_pip_args):
++        extra_pip_args.append("-I")
++
++    # End of Gentoo patch
++
+     with temp_environ():
+         if not allow_global:
+             os.environ["PIP_USER"] = "0"
+-- 
+2.41.0
+
