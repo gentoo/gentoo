@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Wayland platform plugin for Qt"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~loong"
 fi
 
 IUSE="compositor qml vulkan"
