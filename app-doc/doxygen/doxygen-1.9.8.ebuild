@@ -74,6 +74,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.8-suppress-unused-option-libcxx.patch"
 
 	# Backports
+	"${FILESDIR}/${P}-spdlog-link.patch"
+	"${FILESDIR}/${P}-unbundle-sqlite.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
