@@ -9,7 +9,7 @@ SRC_URI="https://github.com/profanity-im/profanity/releases/download/${PV}/${P}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="libnotify omemo omemo-qrcode otr gpg test xscreensaver"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="omemo-qrcode? ( omemo )"
