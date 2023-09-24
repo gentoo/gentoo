@@ -30,14 +30,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 IUSE="curl cvs doc dtc git lzip meson ninja python rsync subversion wget"
 
 BDEPEND="
-	app-alternatives/awk[gawk]
-	app-alternatives/lex
-	app-alternatives/yacc[bison]
 	app-arch/unzip
 	>=app-shells/bash-3.1
 	sys-apps/help2man
 	>=sys-apps/sed-4.0
+	sys-apps/gawk
 	sys-apps/texinfo
+	sys-devel/bison
+	sys-devel/flex
 	curl? (  net-misc/curl )
 	cvs? ( dev-vcs/cvs )
 	dtc? ( sys-apps/dtc )
@@ -54,13 +54,21 @@ RDEPEND="
 	${BDEPEND}
 "
 
+src_configure() {
+	# Needs bison+flex
+	unset YACC LEX
+
+	default
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 
-	use doc && mv "${D}/usr/share/doc/crosstool-ng/crosstool-ng-${PVR}" \
-		"${D}"/usr/share/doc/
+	if use doc ; then
+		mv "${ED}"/usr/share/doc/crosstool-ng/crosstool-ng-${PVR} "${ED}"/usr/share/doc/ || die
+	fi
 
-	rm -rf "${D}"/usr/share/doc/crosstool-ng
-	rm -rf "${D}/usr/share/man/man1/ct-ng.1.gz"
-	cp docs/ct-ng.1 "${D}/usr/share/man/man1/"
+	rm -rf "${ED}"/usr/share/doc/crosstool-ng || die
+	rm -rf "${ED}"/usr/share/man/man1/ct-ng.1.gz || die
+	doman docs/ct-ng.1
 }
