@@ -29,6 +29,7 @@ SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 IUSE="curl cvs doc dtc git lzip meson ninja python rsync subversion wget"
 
+# TODO: Consider dropping these USE (optfeature), but configure does check for them
 BDEPEND="
 	app-arch/unzip
 	>=app-shells/bash-3.1
@@ -38,7 +39,7 @@ BDEPEND="
 	sys-apps/texinfo
 	sys-devel/bison
 	sys-devel/flex
-	curl? (  net-misc/curl )
+	curl? ( net-misc/curl )
 	cvs? ( dev-vcs/cvs )
 	dtc? ( sys-apps/dtc )
 	git? ( dev-vcs/git )
