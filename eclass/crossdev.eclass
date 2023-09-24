@@ -19,6 +19,16 @@ esac
 if [[ -z ${_CROSSDEV_ECLASS} ]]; then
 _CROSSDEV_ECLASS=1
 
+# @ECLASS_VARIABLE: CTARGET
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Target tuple, determined from the crossdev category.
+
+# @ECLASS_VARIABLE: CBUILD
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Build tuple, defaults to CHOST if unset.
+
 # @ECLASS_VARIABLE: _CROSS_CATEGORY_PREFIX
 # @INTERNAL
 # @DESCRIPTION:
