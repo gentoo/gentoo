@@ -40,6 +40,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}" \
-		PCDIR="/usr/$(get_libdir)/pkgconfig" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}" \
+		PCDIR="${EPREFIX}/usr/$(get_libdir)/pkgconfig" install
 }
