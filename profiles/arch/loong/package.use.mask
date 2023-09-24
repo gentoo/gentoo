@@ -5,10 +5,6 @@
 # fails tests
 gnome-extra/gnome-software flatpak
 
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-util/cmake gui
-
 # WANG Xuerui <xen0n@gentoo.org> (2023-09-21)
 # dev-ruby/asciidoctor is not keyworded yet.
 dev-util/librnp man
