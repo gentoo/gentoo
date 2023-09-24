@@ -41,5 +41,8 @@ pkg_postinst() {
 		elog
 		elog "If also using x11-misc/qt5ct, =qt5ct is alternatively recognized so it"
 		elog "can be activated for both Qt5 and Qt6 at once."
+		elog
+		elog "Try disabling if experience startup crashes for some applications,"
+		elog "may still be unstable (especially with newly released Qt versions)."
 	fi
 }
