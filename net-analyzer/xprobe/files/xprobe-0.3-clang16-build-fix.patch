@@ -1,0 +1,48 @@
+Bug: https://bugs.gentoo.org/897838
+--- a/libs-external/USI++/src/misc.cc
++++ b/libs-external/USI++/src/misc.cc
+@@ -18,9 +18,9 @@ unsigned short
+ in_cksum (unsigned short *ptr, int nbytes, bool may_pad)
+ {
+ 
+-  register long sum;		/* assumes long == 32 bits */
++  long sum;		/* assumes long == 32 bits */
+   u_short oddbyte;
+-  register u_short answer;	/* assumes u_short == 16 bits */
++  u_short answer;	/* assumes u_short == 16 bits */
+ 
+ 
+   /* For psuedo-headers: odd len's require
+--- a/src/target.cc
++++ b/src/target.cc
+@@ -28,6 +28,7 @@
+ #include "os_matrix.h"
+ #include "xplib/xplib.h"
+ #include "log.h"
++#include <random>
+ 
+ extern Interface *ui;
+ extern Xprobe_Module_Hdlr   *xmh;
+@@ -370,7 +371,10 @@ int Port_Range::get_next(u_short *port) {
+ 		// initialize
+ 		for (k=0; k < sz; k++) 
+ 			ports.push_back(low + k);
+-		random_shuffle(ports.begin(), ports.end());
++		// https://en.cppreference.com/w/cpp/algorithm/random_shuffle
++		random_device rd;
++		mt19937 g(rd());
++		shuffle(ports.begin(), ports.end(), g);
+ 		*port = ports[curr++];
+ 	} else 
+ 		*port = ports[curr++];
+--- a/src/xplib/xp_lib.cc
++++ b/src/xplib/xp_lib.cc
+@@ -82,7 +82,7 @@ int xp_lib::OpenUDPSocket(struct sockaddr_in *to, struct sockaddr_in *bind_sin)
+ 		return FAIL;
+ 	}
+ 	if (bind_sin != NULL)
+-		if (bind(sock, (struct sockaddr *)bind_sin, sizeof(struct sockaddr_in)) == -1) {
++		if (::bind(sock, (struct sockaddr *)bind_sin, sizeof(struct sockaddr_in)) == -1) {
+ 			return FAIL;
+ 		}
+ 
