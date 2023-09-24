@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Clocks https://gitlab.gnome.org/GNOME/gnom
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.72:2
