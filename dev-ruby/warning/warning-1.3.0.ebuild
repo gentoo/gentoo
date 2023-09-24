@@ -16,7 +16,7 @@ SRC_URI="https://github.com/jeremyevans/ruby-warning/archive/${PV}.tar.gz -> ${P
 RUBY_S="ruby-${P}"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~hppa ~riscv"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
