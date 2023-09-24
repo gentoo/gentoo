@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 src_configure() {
-	local -a emesonargs=(
+	local emesonargs=(
 		-Dfishcompletiondir="${EPREFIX}/usr/share/fish/vendor_completions.d"
 	)
 	meson_src_configure
