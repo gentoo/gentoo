@@ -12,7 +12,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	assistant clang designer distancefieldgenerator gles2-only
+	+assistant clang designer distancefieldgenerator gles2-only
 	+linguist opengl pixeltool qdbus qdoc qml qtattributionsscanner
 	qtdiag qtplugininfo vulkan +widgets
 "
