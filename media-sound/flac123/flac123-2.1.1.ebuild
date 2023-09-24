@@ -11,7 +11,7 @@ SRC_URI="https://github.com/flac123/flac123/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ppc ppc64 sparc x86"
 
 RDEPEND="
 	dev-libs/popt
