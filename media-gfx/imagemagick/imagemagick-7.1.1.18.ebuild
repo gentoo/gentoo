@@ -28,9 +28,11 @@ LICENSE="imagemagick"
 SLOT="0/$(ver_cut 1-3)-18"
 IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hardened hdri heif jbig jpeg jpeg2k jpegxl lcms lqr lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zip zlib"
 
-REQUIRED_USE="corefonts? ( truetype )
+REQUIRED_USE="
+	corefonts? ( truetype )
 	svg? ( xml )
-	test? ( corefonts )"
+	test? ( corefonts )
+"
 
 RESTRICT="!test? ( test )"
 
@@ -78,9 +80,12 @@ RDEPEND="
 	xml? ( dev-libs/libxml2 )
 	lzma? ( app-arch/xz-utils )
 	zip? ( dev-libs/libzip:= )
-	zlib? ( sys-libs/zlib:= )"
-DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+	zlib? ( sys-libs/zlib:= )
+"
+DEPEND="
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(

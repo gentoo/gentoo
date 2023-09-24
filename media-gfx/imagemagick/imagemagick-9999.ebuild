@@ -14,7 +14,7 @@ else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -25,12 +25,14 @@ HOMEPAGE="https://www.imagemagick.org/"
 LICENSE="imagemagick"
 # Please check this on bumps, SONAME is often not updated! Use abidiff on old/new.
 # If ABI is broken, change the bit after the '-'.
-SLOT="0/$(ver_cut 1-3)-43"
-IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k jpegxl lcms lqr lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zip zlib"
+SLOT="0/$(ver_cut 1-3)-18"
+IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hardened hdri heif jbig jpeg jpeg2k jpegxl lcms lqr lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zip zlib"
 
-REQUIRED_USE="corefonts? ( truetype )
+REQUIRED_USE="
+	corefonts? ( truetype )
 	svg? ( xml )
-	test? ( corefonts )"
+	test? ( corefonts )
+"
 
 RESTRICT="!test? ( test )"
 
@@ -78,9 +80,12 @@ RDEPEND="
 	xml? ( dev-libs/libxml2 )
 	lzma? ( app-arch/xz-utils )
 	zip? ( dev-libs/libzip:= )
-	zlib? ( sys-libs/zlib:= )"
-DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+	zlib? ( sys-libs/zlib:= )
+"
+DEPEND="
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
@@ -177,6 +182,14 @@ src_configure() {
 		$(use_with corefonts windows-font-dir "${EPREFIX}"/usr/share/fonts/corefonts)
 		$(use_with wmf)
 		$(use_with xml)
+
+		# Default upstream (as of 6.9.12.96/7.1.1.18 anyway) is open
+		# For now, let's make USE=hardened do 'limited', and have USE=-hardened
+		# reflect the upstream default of 'open'.
+		#
+		# We might change it to 'secure' and 'limited' at some point.
+		# See also bug #716674.
+		--with-security-policy=$(usex hardened limited open)
 	)
 
 	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myeconfargs[@]}"
