@@ -31,8 +31,6 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
 	dev-libs/libxml2:2
-	dev-libs/libxslt
-	>=gnome-base/libgnomecanvas-2
 	media-libs/alsa-lib
 	media-libs/aubio
 	media-libs/flac:=

@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="7"
-IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+IUSE="doc jack phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
 	dev-cpp/glibmm:2
@@ -31,8 +31,6 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
 	dev-libs/libxml2:2
-	dev-libs/libxslt
-	>=gnome-base/libgnomecanvas-2
 	media-libs/alsa-lib
 	media-libs/aubio
 	media-libs/flac:=
@@ -137,10 +135,9 @@ src_configure() {
 		--noconfirm
 		--optimize
 		--with-backends=${backends}
-		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && \
-			echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		--no-fpu-optimization
 		$(usex doc "--docs" '')
-		$(usex nls "--nls" "--no-nls")
+		--no-nls
 		$(usex phonehome "--phone-home" "--no-phone-home")
 		# not possible right now  --use-external-libs
 	)
