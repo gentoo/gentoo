@@ -87,7 +87,10 @@ RDEPEND="
 		eglfs? ( media-libs/mesa[gbm(+)] )
 		evdev? ( sys-libs/mtdev )
 		libinput? ( dev-libs/libinput:= )
-		opengl? ( media-libs/libglvnd[X?] )
+		opengl? (
+			gles2-only? ( media-libs/libglvnd )
+			!gles2-only? ( media-libs/libglvnd[X?] )
+		)
 		renderdoc? ( media-gfx/renderdoc )
 		tslib? ( x11-libs/tslib )
 		widgets? (
