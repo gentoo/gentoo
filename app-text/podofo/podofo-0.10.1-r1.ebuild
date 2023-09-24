@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
 HOMEPAGE="https://github.com/podofo/podofo"
@@ -52,5 +52,11 @@ src_configure() {
 		$(cmake_use_find_package png PNG)
 		$(cmake_use_find_package fontconfig Fontconfig)
 	)
+
+	# some optimizations cause testsuite failures which may indicate
+	# unsoundness with contraction. Be cautious for now. Reported
+	# upstream as https://github.com/podofo/podofo/issues/103
+	append-cxxflags $(test-flags-CXX -ffp-contract=off)
+
 	cmake_src_configure
 }
