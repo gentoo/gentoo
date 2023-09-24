@@ -20,7 +20,10 @@
 
 EAPI=8
 
-inherit check-reqs
+LLVM_MAX_SLOT=16
+PYTHON_COMPAT=( python3_{10..12} )
+
+inherit check-reqs llvm python-any-r1
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
@@ -56,9 +59,10 @@ RDEPEND="
 	sys-libs/zlib:0/1
 "
 BDEPEND="
+	${PYTHON_DEPS}
+	<sys-devel/clang-$(( LLVM_MAX_SLOT + 1 ))
 	dev-util/cmake
 	dev-vcs/git
-	sys-devel/clang
 "
 IDEPEND="
 	app-eselect/eselect-dotnet
@@ -70,6 +74,12 @@ PDEPEND="
 CHECKREQS_DISK_BUILD="20G"
 
 # QA_PREBUILT="*"  # TODO: Which binaries are created by dotnet itself?
+
+pkg_setup() {
+	check-reqs_pkg_setup
+	llvm_pkg_setup
+	python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
