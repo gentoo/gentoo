@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
@@ -20,6 +20,8 @@ LICENSE="BSD-2"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 SLOT="3"
+
+ruby_add_bdepend "test? ( dev-ruby/test-unit )"
 
 all_ruby_prepare() {
 	sed -i -e 's:require_relative ":require "./:' -e 's/__dir__/"."/' ${RUBY_FAKEGEM_GEMSPEC} || die
