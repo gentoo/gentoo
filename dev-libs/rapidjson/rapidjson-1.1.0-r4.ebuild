@@ -29,16 +29,17 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.1.0-system_gtest.patch"
-	"${FILESDIR}/${PN}-1.1.1-valgrind_optional.patch"
+	"${FILESDIR}/${P}-gcc-7.patch"
+	"${FILESDIR}/${P}-system_gtest.patch"
+	"${FILESDIR}/${P}-valgrind_optional.patch"
+	"${FILESDIR}/${P}-gcc14-const.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
 	sed -i -e 's| -march=native||g' CMakeLists.txt || die
-	sed -i -e 's| -mcpu=native||g' CMakeLists.txt || die
-	sed -i -e 's| -Werror||g' CMakeLists.txt || die
+	sed -i -e 's| -Werror||g' CMakeLists.txt example/CMakeLists.txt test/unittest/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -46,7 +47,6 @@ src_configure() {
 		-DDOC_INSTALL_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DRAPIDJSON_BUILD_CXX11=OFF # latest gtest requires C++14 or later
-		-DRAPIDJSON_BUILD_CXX17=ON
 		-DRAPIDJSON_BUILD_DOC=$(usex doc)
 		-DRAPIDJSON_BUILD_EXAMPLES=$(usex examples)
 		-DRAPIDJSON_BUILD_TESTS=$(usex test)
