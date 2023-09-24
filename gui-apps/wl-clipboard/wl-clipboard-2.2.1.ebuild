@@ -25,3 +25,10 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/wayland-scanner
 	dev-libs/wayland-protocols"
+
+src_configure() {
+	local -a emesonargs=(
+		-Dfishcompletiondir="${EPREFIX}/usr/share/fish/vendor_completions.d"
+	)
+	meson_src_configure
+}
