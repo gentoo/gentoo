@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Translation files for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~loong"
 fi
 
 DEPEND="~dev-qt/qtbase-${PV}:6"
