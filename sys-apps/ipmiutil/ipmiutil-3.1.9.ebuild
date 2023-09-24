@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools systemd
 
 DESCRIPTION="IPMI Management Utilities"
-HOMEPAGE="http://ipmiutil.sourceforge.net/"
+HOMEPAGE="https://ipmiutil.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
