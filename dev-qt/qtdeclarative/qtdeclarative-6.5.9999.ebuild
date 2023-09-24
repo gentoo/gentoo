@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt Declarative (Quick 2)"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~loong"
 fi
 
 IUSE="opengl +sql vulkan +widgets"
