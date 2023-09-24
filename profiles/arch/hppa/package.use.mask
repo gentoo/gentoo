@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2023-09-24)
+# Qt not keyworded here.
+app-doc/doxygen gui
+
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
 dev-util/cmake gui
