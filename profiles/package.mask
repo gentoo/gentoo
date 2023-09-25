@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-23)
+# >=media-sound/spotify-1.2.20 now has its own tray icon.
+# Therefore the use case for this package is gone.
+# Removal on 2023-10-23
+media-sound/spotify-tray
+
 # Hans de Graaff <graaff@gentoo.org> (2023-09-23)
 # ruby31-only package. No reverse dependencies. Archived by
 # upstream. Last release in 2012. Removal on 2023-10-23.
