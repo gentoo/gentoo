@@ -5,6 +5,7 @@ EAPI=8
 
 inherit savedconfig toolchain-funcs
 
+MY_P="${PN}-v${PV}"
 WLROOTS_SLOT="0/16"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/djpohly/dwl"
@@ -22,7 +23,8 @@ if [[ ${PV} == *9999* ]]; then
 			;;
 	esac
 else
-	SRC_URI="https://github.com/djpohly/${PN}/releases/download/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/djpohly/${PN}/releases/download/v${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
