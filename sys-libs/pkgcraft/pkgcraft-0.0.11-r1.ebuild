@@ -54,6 +54,7 @@ src_compile() {
 		--library-type=cdylib
 		--prefix=/usr
 		--libdir="/usr/$(get_libdir)"
+		$(usev !debug '--release')
 	)
 
 	# For scallop building bash
@@ -71,7 +72,7 @@ src_test() {
 
 		# Need nextest per README (separate processes required)
 		# Invocation from https://github.com/pkgcraft/pkgcraft/blob/main/.github/workflows/ci.yml#L56
-		edo cargo nextest run --color always --all-features
+		edo cargo nextest run $(usev !debug '--release') --color always --all-features --tests
 	else
 		# There are no tests for pkgcraft-c. Test via e.g. dev-python/pkgcraft.
 		:;
@@ -84,6 +85,7 @@ src_install() {
 		--prefix=/usr
 		--libdir="/usr/$(get_libdir)"
 		--destdir="${ED}"
+		$(usev !debug '--release')
 	)
 
 	edo cargo cinstall "${cargoargs[@]}"
