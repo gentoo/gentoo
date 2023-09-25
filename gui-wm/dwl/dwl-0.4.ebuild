@@ -23,7 +23,7 @@ if [[ ${PV} == *9999* ]]; then
 			;;
 	esac
 else
-	SRC_URI="https://github.com/djpohly/${PN}/releases/download/v${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/djpohly/${PN}/releases/download/v${PV}/${MY_P}.tar.gz -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
