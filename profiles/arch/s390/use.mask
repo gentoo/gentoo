@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -s390
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-20)
-# Keyworded here
--systemd
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # dev-libs/mongo-c-driver not keyworded here
@@ -46,14 +46,6 @@ lua_single_target_luajit
 lua_targets_luajit
 luajit
 luajittex
-
-# Matt Turner <mattst88@gentoo.org> (2019-12-05)
-# media-libs/libglvnd is not keyworded
-libglvnd
-
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
 
 # Stuff we don't want/not tested
 R
@@ -107,6 +99,7 @@ gtk2
 gtk3
 gnome
 gnome-keyring
+keyring
 
 diet
 m17n-lib

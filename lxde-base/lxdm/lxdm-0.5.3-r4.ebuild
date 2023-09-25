@@ -42,15 +42,19 @@ DOCS=( AUTHORS README TODO )
 
 REQUIRED_USE="?? ( elogind systemd ) elogind? ( pam ) systemd? ( pam )"
 
+PATCHES=(
+	# Fix consolekit and selinux
+	"${FILESDIR}/${P}-pam.patch"
+	# Apply all upstream fixes in git until 2016-11-11
+	"${FILESDIR}/lxdm-0.5.3-upstream-fixes.patch"
+	"${FILESDIR}/lxdm-0.5.3-portable-msghdr.patch"
+)
+
 src_prepare() {
 	# Upstream bug, tarball contains pre-made lxdm.conf
 	rm "${S}"/data/lxdm.conf || die
 
-	# Fix consolekit and selinux
-	eapply "${FILESDIR}/${P}-pam.patch"
-	# Apply all upstream fixes in git until 2016-11-11
-	eapply "${FILESDIR}/lxdm-0.5.3-upstream-fixes.patch"
-	eapply_user
+	default
 
 	# this replaces the bootstrap/autogen script in most packages
 	eautoreconf

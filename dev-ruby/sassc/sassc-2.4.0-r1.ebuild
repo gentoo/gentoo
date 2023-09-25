@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -15,7 +15,7 @@ DESCRIPTION="Use libsass with Ruby"
 HOMEPAGE="https://github.com/sass/sassc-ruby"
 LICENSE="MIT"
 
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 SLOT="2"
 IUSE=""
 
@@ -39,6 +39,9 @@ all_ruby_prepare() {
 
 	# Avoid version-specific test so newer libsass versions can be used.
 	sed -i -e '/test_it_reports_the_libsass_version/,/end/ s:^:#:' test/native_test.rb || die
+
+	# Fix minitest deprecation
+	sed -i -e 's/MiniTest/Minitest/' test/*_test.rb || die
 
 	sed -i -e '/pry/ s:^:#:' test/test_helper.rb || die
 }

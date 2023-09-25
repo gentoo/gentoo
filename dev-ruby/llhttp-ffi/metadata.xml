@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">metabahn/llhttp</remote-id>
+    <remote-id type="github">bryanp/llhttp</remote-id>
   </upstream>
 </pkgmetadata>

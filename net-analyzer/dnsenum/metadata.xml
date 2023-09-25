@@ -6,6 +6,6 @@
 		<name>Rick Farina</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">fwaeytens/dnsenum</remote-id>
+		<remote-id type="github">SparrowOchon/dnsenum2</remote-id>
 	</upstream>
 </pkgmetadata>

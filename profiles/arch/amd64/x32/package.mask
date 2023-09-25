@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
@@ -13,6 +13,9 @@ net-analyzer/gsad
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-02-13)
 # Requires qtwebengine
 sci-electronics/eagle
+sci-geosciences/gpsbabel
+sci-geosciences/qgis
+sci-geosciences/viking
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-09-09)
 # Jupyterlab and friends require net-libs/nodejs
@@ -24,6 +27,17 @@ dev-python/plotly-geo
 dev-python/chart-studio
 sci-visualization/dash
 sci-visualization/jupyter-dash
+>=dev-python/notebook-7
+dev-python/spyder-notebook
+app-emacs/emacs-ipython-notebook
+dev-python/jupyter
+dev-python/vpython
+dev-python/widgetsnbextension
+dev-python/ipywidgets
+sci-physics/root
+sci-physics/geant4_vmc
+sci-physics/vmc
+sci-libs/spr
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine
@@ -39,7 +53,6 @@ dev-python/PyQtWebEngine
 app-admin/calamares
 app-doc/zeal
 app-editors/ghostwriter
-app-editors/notepadqq
 app-editors/retext
 app-misc/anki
 app-office/kalendar:5
@@ -50,6 +63,7 @@ app-text/bibletime
 app-text/calibre
 app-text/cb2bib
 app-text/kchmviewer
+app-text/kjots
 app-text/sigil
 dev-lang/typescript
 dev-python/spyder
@@ -98,7 +112,7 @@ kde-apps/parley:5
 kde-apps/pim-data-exporter:5
 kde-apps/pim-sieve-editor:5
 kde-apps/plasma-telepathy-meta:5
->=kde-misc/kio-gdrive-22.04.3-r1
+kde-misc/kio-gdrive
 kde-misc/tellico:5
 kde-misc/zanshin:5
 mail-client/kube
@@ -106,10 +120,11 @@ media-gfx/digikam:5
 media-gfx/luminance-hdr
 media-sound/frescobaldi
 media-sound/teamspeak-client:3
->=media-video/openshot-2.6.0
+media-video/openshot
 media-video/vidify
 media-video/vidify-audiosync
 net-analyzer/nmapsi
+net-im/whatsie
 net-libs/signon-ui
 net-misc/nextcloud-client
 net-p2p/ktorrent:5
@@ -167,7 +182,6 @@ dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/deckar01-task_list
 dev-ruby/execjs
-dev-ruby/turbolinks
 dev-ruby/uglifier
 dev-util/uglifyjs
 net-libs/nodejs

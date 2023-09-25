@@ -1,9 +1,9 @@
-# Copyright 2018-2022 Gentoo Authors
+# Copyright 2018-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit bash-completion-r1 distutils-r1
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	>=dev-python/distro-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/docker-py-5[${PYTHON_USEDEP}]
+	>=dev-python/docker-5[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
 	>=dev-python/docopt-0.6.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.13.0[${PYTHON_USEDEP}]

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<use>
+		<flag name="deprecated">Enable deprecated components</flag>
+		<flag name="fits">Enable support for the Flexible Image Transport System data format using <pkg>sci-libs/cfitsio</pkg></flag>
+		<flag name="gsf">Enable support for structured files using <pkg>gnome-extra/libgsf</pkg></flag>
+		<flag name="imagequant">Enable support for Image Quantization using <pkg>media-gfx/libimagequant</pkg></flag>
+		<flag name="jpegxl">Enable support for the JPEG-XL image format using <pkg>media-libs/libjxl</pkg></flag>
+		<flag name="matio">Enable support for matlab files using <pkg>sci-libs/matio</pkg></flag>
+		<flag name="pango">Enable support for text rendering using <pkg>x11-libs/pango</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libvips/libvips</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,25 +12,28 @@ if [[ ${PV} == *9999* ]]; then
 	NLS_DEPEND="sys-devel/gettext"
 	NLS_RDEPEND="virtual/libintl"
 else
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 	SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+	S="${WORKDIR}"/${PN}-$(ver_cut 1-2)
+
 	NLS_IUSE="nls"
 	NLS_DEPEND="nls? ( sys-devel/gettext )"
 	NLS_RDEPEND="nls? ( virtual/libintl )"
 fi
 
 DESCRIPTION="Core libraries for Xine movie player"
-HOMEPAGE="http://xine.sourceforge.net/"
+HOMEPAGE="https://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
 IUSE="a52 aac aalib +alsa bluray cpu_flags_ppc_altivec +css dav1d dts dvb dxr3 fbcon flac gtk imagemagick jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
-
-BDEPEND="
-	app-arch/xz-utils
-	>=sys-devel/libtool-2.2.6b
-	virtual/pkgconfig
+REQUIRED_USE="
+	vidix? ( || ( X fbcon ) )
+	wayland? ( opengl )
+	xv? ( X )
+	xinerama? ( X )
 "
+
 RDEPEND="
 	dev-libs/libxdg-basedir
 	media-libs/libdvdnav
@@ -61,7 +64,7 @@ RDEPEND="
 		virtual/glu
 		virtual/opengl
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	samba? ( net-fs/samba )
 	sftp? ( net-libs/libssh2 )
 	sdl? ( media-libs/libsdl )
@@ -100,7 +103,8 @@ RDEPEND="
 	xv? ( x11-libs/libXv )
 	xvmc? ( x11-libs/libXvMC )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	oss? ( virtual/os-headers )
 	v4l? ( virtual/os-headers )
 	X? (
@@ -111,10 +115,10 @@ DEPEND="${RDEPEND}
 	xvmc? ( x11-base/xorg-proto )
 	xinerama? ( x11-base/xorg-proto )
 "
-REQUIRED_USE="
-	vidix? ( || ( X fbcon ) )
-	xv? ( X )
-	xinerama? ( X )
+BDEPEND="
+	app-arch/xz-utils
+	>=sys-devel/libtool-2.2.6b
+	virtual/pkgconfig
 "
 
 src_prepare() {
@@ -214,7 +218,7 @@ src_configure() {
 	)
 	[[ ${PV} == *9999* ]] || myconf+=( $(use_enable nls) )
 
-	econf "${myconf[@]}"
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myconf[@]}"
 }
 
 src_compile() {

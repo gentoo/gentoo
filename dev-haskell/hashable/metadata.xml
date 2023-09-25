@@ -5,6 +5,13 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="random-initial-seed">
+		Randomly initialize the seed on every executable invocation. This
+		is not a security feature and is intended only for testing (it
+		can affect legitimate use cases).
+		</flag>
+	</use>
 	<longdescription>
 		This package defines a class, 'Hashable', for types that
 		can be converted to a hash value.  This class

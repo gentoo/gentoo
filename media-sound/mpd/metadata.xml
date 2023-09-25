@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>zlogene@gentoo.org</email>
-    <name>Mikle Kolyada</name>
+    <email>nex+b-g-o@nexadn.de</email>
+    <name>Adrian Schollmeyer</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="cdio">Use libcdio for ISO9660 parsing support</flag>

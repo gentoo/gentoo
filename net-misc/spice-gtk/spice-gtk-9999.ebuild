@@ -4,7 +4,7 @@
 EAPI=8
 
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit desktop meson optfeature python-any-r1 readme.gentoo-r1 vala xdg
 
@@ -17,14 +17,14 @@ if [[ ${PV} == *9999* ]] ; then
 	SPICE_PROTOCOL_VER=9999
 else
 	SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 	SPICE_PROTOCOL_VER=0.14.3
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="+gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala wayland webdav"
+IUSE="gtk-doc +gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala valgrind wayland webdav"
 
 # TODO:
 # * check if sys-freebsd/freebsd-lib (from virtual/acl) provides acl/libacl.h
@@ -45,6 +45,9 @@ RDEPEND="
 	introspection? ( dev-libs/gobject-introspection )
 	dev-libs/openssl:=
 	lz4? ( app-arch/lz4 )
+	policykit? (
+		>=sys-auth/polkit-0.110-r1
+	)
 	sasl? ( dev-libs/cyrus-sasl )
 	smartcard? ( app-emulation/qemu[smartcard] )
 	usbredir? (
@@ -52,9 +55,6 @@ RDEPEND="
 		>=sys-apps/usbredir-0.4.2
 		virtual/acl
 		virtual/libusb:1
-		policykit? (
-			>=sys-auth/polkit-0.110-r1
-		)
 	)
 	webdav? (
 		net-libs/phodav:3.0
@@ -65,23 +65,28 @@ RDEPEND="
 # configure knob. The package is relatively lightweight so we just depend
 # on it unconditionally for now. It would be cleaner to transform this into
 # a USE="vaapi" conditional and patch the buildsystem...
-RDEPEND="${RDEPEND}
+RDEPEND="
+	${RDEPEND}
 	amd64? ( media-libs/libva:= )
 	arm64? ( media-libs/libva:= )
 	x86? ( media-libs/libva:= )
 "
-DEPEND="${RDEPEND}
-	>=app-emulation/spice-protocol-${SPICE_PROTOCOL_VER}"
+DEPEND="
+	${RDEPEND}
+	>=app-emulation/spice-protocol-${SPICE_PROTOCOL_VER}
+	valgrind? ( dev-util/valgrind )
+"
 BDEPEND="
+	$(python_gen_any_dep '
+		dev-python/pyparsing[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+	')
 	dev-perl/Text-CSV
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
+	gtk-doc? (  dev-util/gtk-doc )
 	vala? ( $(vala_depend) )
-	$(python_gen_any_dep '
-		dev-python/six[${PYTHON_USEDEP}]
-		dev-python/pyparsing[${PYTHON_USEDEP}]
-	')
 "
 
 python_check_deps() {
@@ -92,11 +97,14 @@ python_check_deps() {
 src_prepare() {
 	default
 
+	python_fix_shebang subprojects/keycodemapdb/tools/keymap-gen
+
 	use vala && vala_setup
 }
 
 src_configure() {
 	local emesonargs=(
+		$(meson_feature gtk-doc gtk_doc)
 		$(meson_feature gtk3 gtk)
 		$(meson_feature introspection)
 		$(meson_use mjpeg builtin-mjpeg)
@@ -106,6 +114,7 @@ src_configure() {
 		$(meson_feature smartcard)
 		$(meson_feature usbredir)
 		$(meson_feature vala vapi)
+		$(meson_use valgrind)
 		$(meson_feature webdav)
 		$(meson_feature wayland wayland-protocols)
 	)

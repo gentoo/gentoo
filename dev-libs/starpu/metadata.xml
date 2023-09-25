@@ -16,6 +16,5 @@
   <flag name="gcc-plugin">Enable GCC extension plugin (experimental)</flag>
   <flag name="opencl">Enable OpenCL support</flag>
   <flag name="spinlock-check">Enable spinlock check</flag>
-  <flag name="valgrind">Enable <pkg>dev-util/valgrind</pkg> support</flag>
 </use>
 </pkgmetadata>

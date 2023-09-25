@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,8 +39,6 @@
+ AC_MSG_RESULT($SONAME)
+ AC_DEFINE_UNQUOTED(SONAME, "$SONAME", [Define to the libzzuf full name])
+ 
+-# Optimizations
+-AC_TRY_CFLAGS(-g -O2, CFLAGS="${CFLAGS} -g -O2")
+ # Code qui fait des warnings == code de porc == deux baffes dans ta gueule
+ AC_TRY_CFLAGS(-Wall, CFLAGS="${CFLAGS} -Wall")
+ AC_TRY_CFLAGS(-W, CFLAGS="${CFLAGS} -W")

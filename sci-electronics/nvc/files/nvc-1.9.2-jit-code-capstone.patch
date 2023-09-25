@@ -1,0 +1,11 @@
+--- a/src/jit/jit-code.c
++++ b/src/jit/jit-code.c
+@@ -44,7 +44,7 @@
+ #endif
+ 
+ #ifdef HAVE_CAPSTONE
+-#include <capstone.h>
++#include <capstone/capstone.h>
+ #endif
+ 
+ #ifndef R_AARCH64_MOVW_UABS_G0_NC

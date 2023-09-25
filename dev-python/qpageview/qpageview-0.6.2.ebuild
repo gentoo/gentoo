@@ -1,9 +1,10 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Page-based viewer widget for Qt5/PyQt5"
@@ -16,8 +17,10 @@ LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-python/PyQt5[gui,printsupport,svg,widgets,${PYTHON_USEDEP}]
-	dev-python/python-poppler-qt5[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/PyQt5[gui,printsupport,svg,widgets,${PYTHON_USEDEP}]
+	dev-python/python-poppler-qt5[${PYTHON_USEDEP}]
+"
 
 pkg_postinst() {
 	optfeature "Printing support" dev-python/pycups

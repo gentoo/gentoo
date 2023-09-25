@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://downloads.linux.hpe.com/SDR/repo/spp/RHEL/7/x86_64/current/${PN
 
 LICENSE="hpe"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 RDEPEND="elibc_glibc? ( >sys-libs/glibc-2.14 )"
 

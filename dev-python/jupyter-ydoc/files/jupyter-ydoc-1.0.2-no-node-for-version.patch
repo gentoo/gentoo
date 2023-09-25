@@ -1,0 +1,30 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 6e0a069..42f76c1 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -2,12 +2,12 @@
+ # Distributed under the terms of the Modified BSD License.
+ 
+ [build-system]
+-requires = ["hatchling>=1.10.0", "hatch-nodejs-version"]
++requires = ["hatchling>=1.10.0"]
+ build-backend = "hatchling.build"
+ 
+ [project]
+ name = "jupyter-ydoc"
+-dynamic = ["version"]
++version = "1.0.2"
+ description = "Document structures for collaborative editing using Ypy"
+ requires-python = ">=3.7"
+ keywords = ["jupyter", "ypy"]
+@@ -56,10 +56,6 @@ text = "BSD 3-Clause License"
+ Homepage = "https://jupyter.org"
+ Source = "https://github.com/jupyter-server/jupyter_ydoc"
+ 
+-[tool.hatch.version]
+-source = "nodejs"
+-path = "javascript/package.json"
+-
+ [tool.hatch.build]
+ exclude = ["javascript", "!javascript/package.json"]
+ 

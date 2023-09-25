@@ -1,0 +1,39 @@
+diff --git a/pipenv/environment.py b/pipenv/environment.py
+index dbb89b011..89f2aaf9e 100644
+--- a/pipenv/environment.py
++++ b/pipenv/environment.py
+@@ -14,7 +14,9 @@ from sysconfig import get_paths, get_python_version, get_scheme_names
+ from urllib.parse import urlparse
+ from urllib.request import url2pathname
+ 
++import click
+ import pipenv
++
+ from pipenv.patched.pip._internal.commands.install import InstallCommand
+ from pipenv.patched.pip._internal.index.package_finder import PackageFinder
+ from pipenv.patched.pip._vendor import pkg_resources
+@@ -23,7 +25,6 @@ from pipenv.utils.funktools import chunked, unnest
+ from pipenv.utils.indexes import prepare_pip_source_args
+ from pipenv.utils.processes import subprocess_run
+ from pipenv.utils.shell import make_posix
+-from pipenv.vendor import click
+ from pipenv.vendor.pythonfinder.utils import is_in_path
+ from pipenv.vendor.requirementslib.fileutils import normalize_path, temp_path
+ from pipenv.vendor.requirementslib.utils import temp_environ
+diff --git a/pipenv/project.py b/pipenv/project.py
+index f865988b9..e8714ef63 100644
+--- a/pipenv/project.py
++++ b/pipenv/project.py
+@@ -44,9 +44,11 @@ from pipenv.utils.shell import (
+     system_which,
+ )
+ from pipenv.utils.toml import cleanup_toml, convert_toml_outline_tables
+-from pipenv.vendor import click, plette, tomlkit
++from pipenv.vendor import plette
+ from pipenv.vendor.requirementslib.models.utils import get_default_pyproject_backend
+ 
++import click, tomlkit
++
+ try:
+     # this is only in Python3.8 and later
+     from functools import cached_property

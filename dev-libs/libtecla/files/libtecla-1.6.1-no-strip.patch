@@ -1,8 +1,7 @@
 # prevent build system from stripping files (bug #239877).
 
-diff -Naur libtecla/Makefile.in libtecla.new/Makefile.in
---- libtecla/Makefile.in	2004-10-31 15:30:57.000000000 -0500
-+++ libtecla.new/Makefile.in	2008-10-07 06:17:22.000000000 -0400
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -260,7 +260,7 @@
  install_bin: $(BINDIR) $(PROGRAMS) $(PROGRAMS_R)
  	progs="$(PROGRAMS) $(PROGRAMS_R)"; \

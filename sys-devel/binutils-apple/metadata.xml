@@ -10,4 +10,7 @@
 		<flag name="classic">Use nm, otool, etc. from this ebuild
 			instead of llvm-based tools</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">grobian/darwin-xtools</remote-id>
+	</upstream>
 </pkgmetadata>

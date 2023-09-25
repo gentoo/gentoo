@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://gitlab.com/free-astro/${PN}.git"
 else
 	SRC_URI="https://gitlab.com/free-astro/siril/-/archive/${PV/_/-}/${PN}-${PV/_/-}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
 
@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
 	"${FILESDIR}/${PN}-$(ver_cut 1-2)-dependencies.patch"
 	"${FILESDIR}/${PN}-$(ver_cut 1-2)-execinfo-r2.patch"
+	"${FILESDIR}/${PN}-prototypes.patch"
 )
 
 DOCS=( README.md NEWS ChangeLog AUTHORS )

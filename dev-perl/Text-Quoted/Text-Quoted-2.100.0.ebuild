@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Extract the structure of a quoted mail message"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~ia64 ~ppc ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	dev-perl/Text-Autoformat

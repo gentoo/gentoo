@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>toshokan@shojigate.net</email>
-		<name>J. Pz</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<longdescription lang="en">
-		Crystal is a programming language that resembles Ruby but compiles to
-		native code and tries to be much more efficient, at the cost of
-		disallowing certain dynamic aspects of Ruby.
-	</longdescription>
-	<use>
-		<flag name="debug">
-			Build each module as a separate object file. Speeds build up.
-		</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">crystal-lang/crystal</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription lang="en">
+    Crystal is a programming language that resembles Ruby but compiles to
+    native code and tries to be much more efficient, at the cost of disallowing
+    certain dynamic aspects of Ruby.
+  </longdescription>
+  <use>
+    <flag name="debug">Build each module as a separate object file. Speeds build up.</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/crystal-lang/crystal/issues/</bugs-to>
+    <remote-id type="github">crystal-lang/crystal</remote-id>
+  </upstream>
 </pkgmetadata>

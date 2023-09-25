@@ -6,6 +6,6 @@
 		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">gnomesword</remote-id>
+		<remote-id type="github">crosswire/xiphos</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -12,9 +12,6 @@
 
 # Default starting set of USE flags for all default/linux profiles.
 USE="crypt ipv6 ncurses nls pam readline ssl zlib"
-
-# make sure toolchain has sane defaults <toolchain@gentoo.org>
-USE="${USE} fortran openmp"
 
 # Security ftw.
 USE="${USE} seccomp"

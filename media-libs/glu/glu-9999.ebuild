@@ -1,36 +1,30 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/glu.git"
-
-if [[ ${PV} = 9999* ]]; then
-	GIT_ECLASS="git-r3"
-fi
-
-inherit meson-multilib ${GIT_ECLASS}
+inherit meson-multilib
 
 DESCRIPTION="The OpenGL Utility Library"
 HOMEPAGE="https://gitlab.freedesktop.org/mesa/glu"
 
 if [[ ${PV} = 9999* ]]; then
-	SRC_URI=""
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/glu.git"
+	inherit git-r3
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/glu/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 fi
 
 LICENSE="SGI-B-2.0"
 SLOT="0"
-IUSE="static-libs"
 
-DEPEND=">=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]"
+DEPEND="media-libs/libglvnd[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Ddefault_library=$(usex static-libs both shared)
+		-Ddefault_library=shared
 		-Dgl_provider=glvnd
 	)
 	meson_src_configure

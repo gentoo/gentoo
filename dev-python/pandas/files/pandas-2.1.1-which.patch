@@ -1,0 +1,12 @@
+diff --git a/pandas/io/clipboard/__init__.py b/pandas/io/clipboard/__init__.py
+index c07f51d875..14d79fb367 100644
+--- a/pandas/io/clipboard/__init__.py
++++ b/pandas/io/clipboard/__init__.py
+@@ -87,6 +87,7 @@ else:
+ 
+ 
+ def _executable_exists(name):
++    return which(name)
+     return (
+         subprocess.call(
+             [WHICH_CMD, name], stdout=subprocess.PIPE, stderr=subprocess.PIPE

@@ -1,15 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 inherit autotools systemd tmpfiles
+
+COMMIT=""
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/connman/connman.git"
 else
-	SRC_URI="https://www.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	SRC_URI="https://git.kernel.org/pub/scm/network/connman/connman.git/snapshot/connman-${COMMIT}.tar.gz"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Provides a daemon for managing internet connections"
@@ -24,36 +26,56 @@ wispr"
 
 REQUIRED_USE="^^ ( iptables nftables )"
 BDEPEND="virtual/pkgconfig"
-RDEPEND=">=dev-libs/glib-2.16
+COMMON_DEPEND=">=dev-libs/glib-2.16
+	net-libs/gnutls
 	>=sys-apps/dbus-1.2.24
 	sys-libs/readline:0=
-	bluetooth? ( net-wireless/bluez )
-	iptables? ( >=net-firewall/iptables-1.4.8 )
-	iwd? ( net-wireless/iwd )
-	l2tp? ( net-dialup/xl2tpd )
 	nftables? (
 		>=net-libs/libnftnl-1.0.4:0=
-		>=net-libs/libmnl-1.0.0:0= )
-	ofono? ( net-misc/ofono )
+		>=net-libs/libmnl-1.0.0:0=
+	)
 	openconnect? ( net-vpn/openconnect )
 	openvpn? ( net-vpn/openvpn )
-	policykit? ( sys-auth/polkit )
 	pptp? ( net-dialup/pptpclient )
 	vpnc? ( net-vpn/vpnc )
-	wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] )
-	wireguard? ( >=net-libs/libmnl-1.0.0:0= )
-	wispr? ( net-libs/gnutls )"
-
-DEPEND="${RDEPEND}
+	wireguard? ( >=net-libs/libmnl-1.0.0:0= )"
+RDEPEND="${COMMON_DEPEND}
+	bluetooth? ( net-wireless/bluez )
+	iptables? ( >=net-firewall/iptables-1.4.8 )
+	l2tp? ( net-dialup/xl2tpd )
+	ofono? ( net-misc/ofono )
+	policykit? ( sys-auth/polkit )
+	wifi? (
+		!iwd? ( >=net-wireless/wpa_supplicant-0.7.3-r3[dbus] )
+		iwd? ( net-wireless/iwd )
+	)"
+DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-2.6.39"
+
+PATCHES=( "${FILESDIR}/libresolv-musl-fix.patch" )
+
+if [ ! -z ${COMMIT} ]; then
+	S=${WORKDIR}/${PN}-${COMMIT}
+fi
 
 src_prepare() {
 	default
 	eautoreconf
+
+	cp "${FILESDIR}"/connman.initd2 "${T}"
+	if use iwd; then
+		sed -i \
+			-e "s/need dbus/need dbus iwd/" \
+			-e '/start-stop-daemon --start/ s/ -- / -- --wifi=iwd_agent /' \
+			"${T}"/connman.initd2 || die
+		sed -i \
+			-e "/^ExecStart/ s/$/ --wifi=iwd_agent/" \
+			src/connman.service.in || die
+	fi
 }
 
 src_configure() {
-	econf \
+	local myeconfargs=(
 		--localstatedir=/var \
 		--runstatedir=/run \
 		--with-systemdunitdir=$(systemd_get_systemunitdir) \
@@ -65,7 +87,6 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable ethernet ethernet builtin) \
 		$(use_enable examples test) \
-		$(use_enable iwd) \
 		$(use_enable l2tp l2tp builtin) \
 		$(use_enable networkmanager nmcompat) \
 		$(use_enable ofono ofono builtin) \
@@ -75,12 +96,24 @@ src_configure() {
 		$(use_enable pptp pptp builtin) \
 		$(use_enable tools) \
 		$(use_enable vpnc vpnc builtin) \
-		$(use_enable wifi wifi builtin) \
 		$(use_enable wireguard) \
 		$(use_enable wispr wispr builtin) \
 		--with-firewall=$(usex iptables "iptables" "nftables" ) \
 		--disable-iospm \
 		--disable-hh2serial-gps
+		)
+	# wifi USE logic to match networkmanager ebuild behavior
+	if use wifi; then
+		if use iwd; then
+			myeconfargs+=( --enable-iwd --disable-wifi )
+		else
+			myeconfargs+=( --disable-iwd --enable-wifi=builtin )
+		fi
+	else
+		myeconfargs+=( --disable-iwd --disable-wifi )
+	fi
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -92,7 +125,7 @@ src_install() {
 	fi
 	keepdir /usr/lib/${PN}/scripts
 	keepdir /var/lib/${PN}
-	newinitd "${FILESDIR}"/${PN}.initd2 ${PN}
+	newinitd "${T}"/${PN}.initd2 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
 

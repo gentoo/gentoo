@@ -1,17 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
-inherit distutils-r1 optfeature
+PYPI_NO_NORMALIZE=1
+PYPI_PN="tap.py"
+PYTHON_COMPAT=( python3_{10..12} )
 
-MY_PN=tap.py
+inherit distutils-r1 optfeature pypi
+
 DESCRIPTION="Test Anything Protocol (TAP) tools"
-HOMEPAGE="https://github.com/python-tap/tappy https://pypi.org/project/tap.py/"
-SRC_URI="mirror://pypi/${MY_PN::1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S=${WORKDIR}/${MY_PN}-${PV}
+HOMEPAGE="
+	https://github.com/python-tap/tappy/
+	https://pypi.org/project/tap.py/
+"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -22,7 +25,8 @@ BDEPEND="
 	test? (
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_tests unittest
 distutils_enable_sphinx docs

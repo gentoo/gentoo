@@ -1,13 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 # Try to keep an eye on Fedora's packaging: https://src.fedoraproject.org/rpms/coreutils
-# The upstream coreutils maintianers also maintain the package in Fedora and may
+# The upstream coreutils maintainers also maintain the package in Fedora and may
 # backport fixes which we want to pick up.
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/coreutils.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
@@ -26,7 +26,7 @@ else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 		verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux"
 fi
 
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCH}.tar.xz )"
@@ -200,7 +200,7 @@ src_test() {
 
 	addwrite /dev/full
 	#export RUN_EXPENSIVE_TESTS="yes"
-	#export FETISH_GROUPS="portage wheel"
+	#export COREUTILS_GROUPS="portage wheel"
 	env PATH="${T}/mount-wrappers:${PATH}" emake -k check VERBOSE=yes
 }
 

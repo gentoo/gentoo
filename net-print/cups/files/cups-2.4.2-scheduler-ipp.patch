@@ -1,0 +1,36 @@
+From 020609ad9eb84ab5a4c602ff604b2f208a6cdb8d Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Wed, 22 Jun 2022 09:23:45 +0200
+Subject: [PATCH] scheduler/ipp.c: Allocate device_uri via cupsdSetString()
+
+If a driverless printer has .local in its URI, we resolve the
+URI and save the resolved one as new device URI. The problem was that
+a local pointer was assigned to the structure which is passed to the
+function as parameter, so the pointer became invalid once the execution
+left the create_local_bg_thread() function.
+
+We need to allocate the device URI via cupsdSetString() - the string is
+then freed when the printer is deleted or cupsd shuts down.
+
+Fixes #419.
+---
+ CHANGES.md      | 1 +
+ scheduler/ipp.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/scheduler/ipp.c b/scheduler/ipp.c
+index 3a849bdb5..b722712f6 100644
+--- a/scheduler/ipp.c
++++ b/scheduler/ipp.c
+@@ -5307,7 +5307,7 @@ create_local_bg_thread(
+       return (NULL);
+     }
+ 
+-    printer->device_uri = uri;
++    cupsdSetString(&printer->device_uri, uri);
+   }
+ 
+   if (httpSeparateURI(HTTP_URI_CODING_ALL, printer->device_uri, scheme, sizeof(scheme), userpass, sizeof(userpass), host, sizeof(host), &port, resource, sizeof(resource)) < HTTP_URI_STATUS_OK)
+-- 
+2.37.1
+

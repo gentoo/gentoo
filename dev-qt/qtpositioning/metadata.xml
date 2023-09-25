@@ -7,11 +7,13 @@
 	</maintainer>
 	<use>
 		<flag name="geoclue">Use enhanced location information from <pkg>app-misc/geoclue</pkg></flag>
+		<flag name="nmea">Build plugin for parsing NMEA (National Marine Electronics Association) sentences</flag>
 		<flag name="qml">Build QML bindings</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
+		<remote-id type="github">qt/qtpositioning</remote-id>
 	</upstream>
 	<slots>
 		<subslots>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,9 +6,9 @@ EAPI=7
 inherit autotools xdg
 
 DESCRIPTION="Audio mastering interface for JACK Audio Connection Kit (JACK)"
-HOMEPAGE="http://jamin.sourceforge.net/en/about.html https://salsa.debian.org/multimedia-team/jamin"
-SRC_URI="http://deb.debian.org/debian/pool/main/j/${PN}/${PN}_${PV/_pre/~git}~199091~repack1.orig.tar.bz2
-http://deb.debian.org/debian/pool/main/j/${PN}/${PN}_${PV/_pre/~git}~199091~repack1-1.debian.tar.xz"
+HOMEPAGE="https://jamin.sourceforge.net/en/about.html https://salsa.debian.org/multimedia-team/jamin"
+SRC_URI="https://deb.debian.org/debian/pool/main/j/${PN}/${PN}_${PV/_pre/~git}~199091~repack1.orig.tar.bz2
+https://deb.debian.org/debian/pool/main/j/${PN}/${PN}_${PV/_pre/~git}~199091~repack1-1.debian.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

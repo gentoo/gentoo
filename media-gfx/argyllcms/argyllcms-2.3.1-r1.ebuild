@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="http://www.argyllcms.com/${MY_P}_src.zip"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~loong ~mips ~riscv ~x86"
 IUSE="doc"
 
 RDEPEND="
@@ -35,6 +35,11 @@ BDEPEND="app-arch/unzip
 	dev-util/ftjam"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	default
+	sed -e "s/static eset/static int eset/" -i spectro/i1d3.c || die
+}
 
 src_compile() {
 	# Make it respect LDFLAGS

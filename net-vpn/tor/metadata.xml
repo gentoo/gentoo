@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
+		<email>ajak@gentoo.org</email>
+		<name>John Helmert III</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 	<use>
 		<flag name="scrypt">Use <pkg>app-crypt/libscrypt</pkg> for the scrypt algorithm</flag>

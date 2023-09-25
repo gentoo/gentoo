@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>k2k@narod.ru</email>
 		<name>Evgeny Grin</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name="epoll">Use epoll() system call</flag>
+		<flag name="epoll">Support epoll() system call</flag>
+		<flag name="eventfd">Use EventFD for efficient inter-thread communication</flag>
 		<flag name="thread-names">Assign thread names to internal threads, useful for dependent apps debugging</flag>
 	</use>
 	<upstream>

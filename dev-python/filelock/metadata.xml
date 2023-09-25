@@ -7,6 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">filelock</remote-id>
-		<remote-id type="github">tox-dev/py-filelock</remote-id>
+		<remote-id type="github">tox-dev/filelock</remote-id>
 	</upstream>
 </pkgmetadata>

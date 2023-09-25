@@ -1,10 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ninja-utils.eclass
 # @MAINTAINER:
-# Michał Górny <mgorny@gentoo.org>
-# Mike Gilbert <floppym@gentoo.org>
+# base-system@gentoo.org
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
@@ -34,12 +33,12 @@ _NINJA_UTILS_ECLASS=1
 # but other values can be set where NINJA_DEPEND will then be set
 # to a blank variable.
 # The default is set to "ninja".
-: ${NINJA:=ninja}
+: "${NINJA:=ninja}"
 
 # @ECLASS_VARIABLE: NINJA_DEPEND
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
-# Contains a set of build-time depenendencies based on the NINJA setting.
+# Contains a set of build-time dependencies based on the NINJA setting.
 
 # @ECLASS_VARIABLE: NINJAOPTS
 # @DEFAULT_UNSET
@@ -47,6 +46,12 @@ _NINJA_UTILS_ECLASS=1
 # The default set of options to pass to Ninja. Similar to MAKEOPTS,
 # supposed to be set in make.conf. If unset, eninja() will convert
 # MAKEOPTS instead.
+
+# @ECLASS_VARIABLE: NINJA_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Set to OFF to disable verbose messages during compilation
+: "${NINJA_VERBOSE:=ON}"
 
 inherit multiprocessing
 
@@ -80,7 +85,12 @@ get_NINJAOPTS() {
 # also supports being called via 'nonfatal'.
 eninja() {
 	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
-	set -- "${NINJA}" -v $(get_NINJAOPTS) "$@"
+	local v
+	case "${NINJA_VERBOSE}" in
+		OFF) ;;
+		*) v="-v"
+	esac
+	set -- "${NINJA}" ${v} $(get_NINJAOPTS) "$@"
 	echo "$@" >&2
 	"$@" || die -n "${*} failed"
 }

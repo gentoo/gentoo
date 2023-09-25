@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">basecamp/marcel</remote-id>
+    <remote-id type="github">rails/marcel</remote-id>
   </upstream>
 </pkgmetadata>

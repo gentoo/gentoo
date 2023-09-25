@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/occipital/openni2"
 fi
 
-inherit ${SCM} toolchain-funcs java-pkg-opt-2
+inherit ${SCM} flag-o-matic toolchain-funcs java-pkg-opt-2
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
@@ -52,6 +52,12 @@ src_prepare() {
 }
 
 src_compile() {
+	if ! use elibc_glibc ; then
+		# Build system doesn't respect CPPFLAGS.
+		# bug #716346
+		append-flags -DXN_PLATFORM_LINUX_NO_GLIBC -DXN_PLATFORM_HAS_NO_SCHED_PARAM
+	fi
+
 	use cpu_flags_arm_neon && export CFLAGS="${CFLAGS} -DXN_NEON"
 	emake \
 		CC="$(tc-getCC)" \

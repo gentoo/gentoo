@@ -12,6 +12,7 @@
 		<flag name="policykit">Uses <pkg>sys-auth/polkit</pkg> to restrict access to smartcard readers or smartcards to given users.</flag>
 	</use>
 	<upstream>
+		<changelog>https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog</changelog>
 		<remote-id type="github">LudovicRousseau/PCSC</remote-id>
 	</upstream>
 </pkgmetadata>

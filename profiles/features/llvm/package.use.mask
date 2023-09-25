@@ -1,5 +1,9 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-07-22)
+# Doesn't call llvm-profdata so fails.
+sys-devel/binutils pgo
 
 # Sam James <sam@gentoo.org> (2022-09-15)
 # Works on pure LLVM systems: bug #870211.

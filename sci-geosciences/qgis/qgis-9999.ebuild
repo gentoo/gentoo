@@ -1,16 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"
 
 # We only package the LTS releases right now
 # We could package more but would ideally only stabilise the LTS ones
 # at least.
 
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 	inherit git-r3
 else
@@ -53,16 +53,16 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtpositioning:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsvg:5
 	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/exiv2:=
 	>=sci-libs/gdal-3.0.4:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
-	sys-libs/zlib
 	>=sci-libs/proj-4.9.3:=
+	sys-libs/zlib
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
 	3d? ( dev-qt/qt3d:5 )
@@ -83,7 +83,6 @@ COMMON_DEPEND="
 		${PYTHON_DEPS}
 		>=sci-libs/gdal-2.2.3[python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_USEDEP}]
 			dev-python/httplib2[${PYTHON_USEDEP}]
 			dev-python/jinja[${PYTHON_USEDEP}]
 			dev-python/markupsafe[${PYTHON_USEDEP}]
@@ -97,7 +96,6 @@ COMMON_DEPEND="
 			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/sip:=[${PYTHON_USEDEP}]
-			dev-python/six[${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		')
 	)
@@ -106,13 +104,11 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qttest:5
-	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
 	sci-geosciences/gpsbabel
 "
-BDEPEND="
-	${PYTHON_DEPS}
+BDEPEND="${PYTHON_DEPS}
 	dev-qt/linguist-tools:5
 	sys-devel/bison
 	sys-devel/flex

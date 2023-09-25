@@ -1,11 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+# Make sure to test USE=utils on bumps and update MULTILIB_WRAPPED_HEADERS if needed
+
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit autotools distutils-r1 multilib-minimal
 
 LIBNL_P=${P/_/-}
@@ -31,18 +34,21 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
-BDEPEND="${RDEPEND}
+BDEPEND="
+	${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 	python? (
 		${DISTUTILS_DEPS}
 		dev-lang/swig
 	)
-	test? ( dev-libs/check )"
+	test? ( dev-libs/check )
+"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 MULTILIB_WRAPPED_HEADERS=(
-	# we do not install CLI stuff for non-native
+	# We do not install CLI stuff for non-native
 	/usr/include/libnl3/netlink/cli/addr.h
 	/usr/include/libnl3/netlink/cli/class.h
 	/usr/include/libnl3/netlink/cli/cls.h
@@ -50,12 +56,17 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/exp.h
 	/usr/include/libnl3/netlink/cli/link.h
 	/usr/include/libnl3/netlink/cli/mdb.h
+	/usr/include/libnl3/netlink/cli/nh.h
 	/usr/include/libnl3/netlink/cli/neigh.h
 	/usr/include/libnl3/netlink/cli/qdisc.h
 	/usr/include/libnl3/netlink/cli/route.h
 	/usr/include/libnl3/netlink/cli/rule.h
 	/usr/include/libnl3/netlink/cli/tc.h
 	/usr/include/libnl3/netlink/cli/utils.h
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.8.0-printf-non-bash.patch
 )
 
 src_prepare() {
@@ -71,6 +82,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# bug #884277
+	export YACC=yacc.bison
+
 	ECONF_SOURCE="${S}" econf \
 		$(multilib_native_use_enable utils cli) \
 		$(use_enable debug)

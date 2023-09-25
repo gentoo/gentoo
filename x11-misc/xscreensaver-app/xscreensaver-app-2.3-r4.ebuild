@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN=${MY_PN/xs/XS}
 MY_PN=${MY_PN/s/S}
 
 DESCRIPTION="XScreenSaver dockapp for the Window Maker window manager"
-HOMEPAGE="http://xscreensaverapp.sourceforge.net/"
+HOMEPAGE="https://xscreensaverapp.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/xscreensaverapp/${MY_PN}/${PV}/${MY_PN}-${PV}.tar.gz"
 
 SLOT="0"

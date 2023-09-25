@@ -1,18 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 EGIT_REPO_URI="https://gitlab.freedesktop.org/drm/${PN}.git"
 if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit ${GIT_ECLASS} meson python-any-r1
 
 DESCRIPTION="Intel GPU userland tools"
 
-HOMEPAGE="https://01.org/linuxgraphics https://gitlab.freedesktop.org/drm/igt-gpu-tools"
+HOMEPAGE="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
@@ -29,6 +29,7 @@ REQUIRED_USE="
 		|| ( X xv )
 	)
 	doc? ( tests )
+	runner? ( tests )
 "
 RESTRICT="test"
 

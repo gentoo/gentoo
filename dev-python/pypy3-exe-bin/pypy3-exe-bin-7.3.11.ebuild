@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,7 +50,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="3.9-${PV%_p*}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 # sys-devel/gcc for libgcc_s.so
 RDEPEND="

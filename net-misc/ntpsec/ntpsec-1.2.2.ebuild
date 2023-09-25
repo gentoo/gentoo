@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
@@ -73,7 +73,8 @@ src_prepare() {
 }
 
 src_configure() {
-	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
+	is-flagq -flto* && filter-flags -fuse-linker-plugin
+	filter-lto
 
 	local string_127=""
 	local rclocks="";

@@ -4,12 +4,6 @@ Date: Mon, 29 Aug 2016 20:44:45 -0400
 Subject: [PATCH 1/1] Clean up variable usage in Makefile to support LDFLAGS
  and friends.
 
----
- Makefile | 18 +++++++-----------
- 1 file changed, 7 insertions(+), 11 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index b422e79..d89977f 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -3,23 +3,19 @@

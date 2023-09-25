@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/alsa-lib:0=
-	media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
+	media-video/ffmpeg:=[vorbis?,vpx?,x264?,mp3?,theora?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
@@ -39,7 +39,7 @@ RDEPEND="
 	virtual/glu[${MULTILIB_USEDEP}]
 	jack? ( virtual/jack )
 	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	v4l? ( media-libs/libv4l )
 "
 DEPEND="${RDEPEND}"

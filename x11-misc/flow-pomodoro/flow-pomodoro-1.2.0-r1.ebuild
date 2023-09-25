@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
-DESCRIPTION="A pomodoro app that blocks distractions while you work"
+DESCRIPTION="Pomodoro app that blocks distractions while you work"
 HOMEPAGE="https://github.com/iamsergio/flow-pomodoro"
 SRC_URI="https://github.com/iamsergio/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

@@ -1,0 +1,593 @@
+Bug: https://bugs.gentoo.org/897790
+--- a/mpegsound/filter.cc
++++ b/mpegsound/filter.cc
+@@ -25,7 +25,7 @@ void Mpegtoraw::computebuffer(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+ 
+   // compute new values via a fast cosine transform:
+   {
+-    register REAL *x=fraction;
++    REAL *x=fraction;
+ 
+     p0=x[ 0]+x[31];p1=x[ 1]+x[30];p2=x[ 2]+x[29];p3=x[ 3]+x[28];
+     p4=x[ 4]+x[27];p5=x[ 5]+x[26];p6=x[ 6]+x[25];p7=x[ 7]+x[24];
+@@ -59,7 +59,7 @@ void Mpegtoraw::computebuffer(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+   pc=qc+qd;pd=hcos_4*(qc-qd);pe=qe+qf;pf=hcos_4*(qe-qf);
+ 
+   {
+-    register REAL tmp;
++    REAL tmp;
+ 
+     tmp=p6+p7;
+     OUT2(36)=-(p5+tmp);
+@@ -84,7 +84,7 @@ void Mpegtoraw::computebuffer(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+   }
+ 
+   {
+-    register REAL *x=fraction;
++    REAL *x=fraction;
+ 
+     p0=hcos_64[ 0]*(x[ 0]-x[31]);p1=hcos_64[ 1]*(x[ 1]-x[30]);
+     p2=hcos_64[ 2]*(x[ 2]-x[29]);p3=hcos_64[ 3]*(x[ 3]-x[28]);
+@@ -165,8 +165,8 @@ void Mpegtoraw::computebuffer(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+ inline void Mpegtoraw::generatesingle(void)
+ {
+   int i;
+-  register REAL r, *vp;
+-  register const REAL *dp;
++  REAL r, *vp;
++  const REAL *dp;
+   int raw;
+ 
+   i=32;
+@@ -251,8 +251,8 @@ inline void Mpegtoraw::generate(void)
+ {
+   int i;
+   REAL r1,r2;
+-  register REAL *vp1,*vp2;
+-  register const REAL *dp;
++  REAL *vp1,*vp2;
++  const REAL *dp;
+   int raw;
+ 
+   dp=filter;
+--- a/mpegsound/filter_2.cc
++++ b/mpegsound/filter_2.cc
+@@ -25,7 +25,7 @@ void Mpegtoraw::computebuffer_2(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+ 
+   // compute new values via a fast cosine transform:
+   /*  {
+-    register REAL *x=fraction;
++    REAL *x=fraction;
+ 
+     p0=x[ 0]+x[31];p1=x[ 1]+x[30];p2=x[ 2]+x[29];p3=x[ 3]+x[28];
+     p4=x[ 4]+x[27];p5=x[ 5]+x[26];p6=x[ 6]+x[25];p7=x[ 7]+x[24];
+@@ -41,7 +41,7 @@ void Mpegtoraw::computebuffer_2(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+   qe=hcos_32[6]*(p6-p9);qf=hcos_32[7]*(p7-p8); */
+ 
+   {
+-    register REAL *x=fraction;
++    REAL *x=fraction;
+ 
+     q0=x[ 0]+x[15];q1=x[ 1]+x[14];q2=x[ 2]+x[13];q3=x[ 3]+x[12];
+     q4=x[ 4]+x[11];q5=x[ 5]+x[10];q6=x[ 6]+x[ 9];q7=x[ 7]+x[ 8];
+@@ -70,7 +70,7 @@ void Mpegtoraw::computebuffer_2(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+   pc=qc+qd;pd=hcos_4*(qc-qd);pe=qe+qf;pf=hcos_4*(qe-qf);
+ 
+   {
+-    register REAL tmp;
++    REAL tmp;
+ 
+     tmp=p6+p7;
+     OUT2(36)=-(p5+tmp);
+@@ -95,7 +95,7 @@ void Mpegtoraw::computebuffer_2(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+   }
+ 
+   {
+-    register REAL *x=fraction;
++    REAL *x=fraction;
+ 
+     /*    p0=hcos_64[ 0]*(x[ 0]-x[31]);p1=hcos_64[ 1]*(x[ 1]-x[30]);
+     p2=hcos_64[ 2]*(x[ 2]-x[29]);p3=hcos_64[ 3]*(x[ 3]-x[28]);
+@@ -186,8 +186,8 @@ void Mpegtoraw::computebuffer_2(REAL *fraction,REAL buffer[2][CALCBUFFERSIZE])
+ inline void Mpegtoraw::generatesingle_2(void)
+ {
+   int i;
+-  register REAL r, *vp;
+-  register const REAL *dp;
++  REAL r, *vp;
++  const REAL *dp;
+   int raw;
+ 
+   i=32/2;
+@@ -273,8 +273,8 @@ inline void Mpegtoraw::generate_2(void)
+ {
+   int i;
+   REAL r1,r2;
+-  register REAL *vp1,*vp2;
+-  register const REAL *dp;
++  REAL *vp1,*vp2;
++  const REAL *dp;
+   int raw;
+ 
+   dp=filter;
+--- a/mpegsound/mpeglayer1.cc
++++ b/mpegsound/mpeglayer1.cc
+@@ -45,7 +45,7 @@ void Mpegtoraw::extractlayer1(void)
+   int bitalloc[MAXCHANNEL][MAXSUBBAND],
+       sample[MAXCHANNEL][MAXSUBBAND];
+ 
+-  register int i,j;
++  int i,j;
+   int s=stereobound,l;
+ 
+ 
+--- a/mpegsound/mpeglayer2.cc
++++ b/mpegsound/mpeglayer2.cc
+@@ -429,8 +429,8 @@ void Mpegtoraw::extractlayer2(void)
+ 
+ // Bitalloc
+   {
+-    register int i;
+-    register const int *t=bitalloclengthtable[tableindex];
++    int i;
++    const int *t=bitalloclengthtable[tableindex];
+ 
+     for(i=0;i<s;i++,t++)
+     {
+@@ -444,18 +444,18 @@ void Mpegtoraw::extractlayer2(void)
+ 
+   // Scale selector
+   if(inputstereo)
+-    for(register int i=0;i<n;i++)
++    for(int i=0;i<n;i++)
+     {
+       if(bitalloc[LS][i])scaleselector[LS][i]=getbits(2);
+       if(bitalloc[RS][i])scaleselector[RS][i]=getbits(2);
+     }
+   else
+-    for(register int i=0;i<n;i++)
++    for(int i=0;i<n;i++)
+       if(bitalloc[LS][i])scaleselector[LS][i]=getbits(2);
+ 
+   // Scale index
+   {
+-    register int i,j;
++    int i,j;
+ 
+     for(i=0;i<n;i++)
+     {
+@@ -600,7 +600,7 @@ void Mpegtoraw::extractlayer2(void)
+ 
+ // Read Sample
+   {
+-    register int i;
++    int i;
+ 
+     for(int l=0;l<SCALEBLOCK;l++)
+     {
+@@ -611,7 +611,7 @@ void Mpegtoraw::extractlayer2(void)
+ 	{
+ 	  if(group[LS][i])
+ 	  {
+-	    register const REAL *s;
++	    const REAL *s;
+ 	    int code=getbits(codelength[LS][i]);
+ 
+ 	    code+=code<<1;
+@@ -666,7 +666,7 @@ void Mpegtoraw::extractlayer2(void)
+ 	{
+ 	  if(group[LS][i])
+ 	  {
+-	    register const REAL *s;
++	    const REAL *s;
+ 	    int code=getbits(codelength[LS][i]);
+ 
+ 	    code+=code<<1;
+@@ -705,7 +705,7 @@ void Mpegtoraw::extractlayer2(void)
+ 	      fraction[LS][2][i]=(fraction[LS][2][i]+d[LS][i])*c[LS][i];
+ 	    }
+ 
+-	    register REAL t=scalefactor[LS][l>>2][i];
++	    REAL t=scalefactor[LS][l>>2][i];
+ 	    fraction[LS][0][i]*=t;
+ 	    fraction[LS][1][i]*=t;
+ 	    fraction[LS][2][i]*=t;
+@@ -720,7 +720,7 @@ void Mpegtoraw::extractlayer2(void)
+ 	      fraction[RS][2][i]=(fraction[RS][2][i]+d[RS][i])*c[LS][i];
+ 	    }
+ 
+-	    register REAL t=scalefactor[RS][l>>2][i];
++	    REAL t=scalefactor[RS][l>>2][i];
+ 	    fraction[RS][0][i]*=t;
+ 	    fraction[RS][1][i]*=t;
+ 	    fraction[RS][2][i]*=t;
+@@ -737,7 +737,7 @@ void Mpegtoraw::extractlayer2(void)
+ 	      fraction[LS][2][i]=(fraction[LS][2][i]+d[LS][i])*c[LS][i];
+ 	    }
+ 
+-	    register REAL t=scalefactor[LS][l>>2][i];
++	    REAL t=scalefactor[LS][l>>2][i];
+ 	    fraction[LS][0][i]*=t;
+ 	    fraction[LS][1][i]*=t;
+ 	    fraction[LS][2][i]*=t;
+--- a/mpegsound/mpeglayer3.cc
++++ b/mpegsound/mpeglayer3.cc
+@@ -29,7 +29,7 @@ inline void Mpegbitwindow::wrap(void)
+ 
+   if(p>=point)
+   {
+-    for(register int i=4;i<point;i++)
++    for(int i=4;i<point;i++)
+       buffer[WINDOWSIZE+i]=buffer[i];
+   }
+   *((int *)(buffer+WINDOWSIZE))=*((int *)buffer);
+@@ -37,15 +37,15 @@ inline void Mpegbitwindow::wrap(void)
+ 
+ inline int Mpegbitwindow::getbit(void)
+ {
+-//  register int r=(buffer[(bitindex>>3)&(WINDOWSIZE-1)]>>(7-(bitindex&7)))&1;
+-  register int r=(buffer[bitindex>>3]>>(7-(bitindex&7)))&1;
++//  int r=(buffer[(bitindex>>3)&(WINDOWSIZE-1)]>>(7-(bitindex&7)))&1;
++  int r=(buffer[bitindex>>3]>>(7-(bitindex&7)))&1;
+   bitindex++;
+   return r;
+ };
+ 
+ inline int Mpegbitwindow::getbits9(int bits)
+ {
+-  register unsigned short a;
++  unsigned short a;
+   int offset=bitindex>>3;
+ 
+   a=(((unsigned char)buffer[offset])<<8) | ((unsigned char)buffer[offset+1]);
+@@ -134,7 +134,7 @@ void Mpegtoraw::layer3initialize(void)
+ 
+   // Calculate win
+   {
+-    register int i;
++    int i;
+ 
+     for(i=0;i<18;i++)
+       win[0][i]=win[1][i]=0.5*sin(PI_72*(double)(2*i+1))/cos(PI_72*(double)(2*i+19));
+@@ -153,11 +153,11 @@ void Mpegtoraw::layer3initialize(void)
+       win[2][i]=0.5*sin(PI_24*(double)(2*i+1))/cos(PI_24*(double)(2*i+7));
+   }
+ 
+-  for(register int i=0;i<9;i++)
++  for(int i=0;i<9;i++)
+     cos_18[i]=cos(PI_18*double(i));
+-  for(register int i=0;i<9;i++)
++  for(int i=0;i<9;i++)
+     hsec_36[i]=0.5/cos(PI_36*double(i*2+1));
+-  for(register int i=0;i<3;i++)
++  for(int i=0;i<3;i++)
+     hsec_12[i]=0.5/cos(PI_12*double(i*2+1));
+ 
+   for(int i=0;i<40;i++)
+@@ -365,7 +365,7 @@ void Mpegtoraw::layer3getscalefactors(int ch,int gr)
+ 			  {0, 1, 2, 3, 0, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 3}};
+ 
+   layer3grinfo *gi=&(sideinfo.ch[ch].gr[gr]);
+-  register layer3scalefactor *sf=(&scalefactors[ch]);
++  layer3scalefactor *sf=(&scalefactors[ch]);
+   int l0,l1;
+ 
+   {
+@@ -498,7 +498,7 @@ void Mpegtoraw::layer3getscalefactors_2(int ch)
+ 
+   int sb[54];
+   layer3grinfo *gi=&(sideinfo.ch[ch].gr[0]);
+-  register layer3scalefactor *sf=(&scalefactors[ch]);
++  layer3scalefactor *sf=(&scalefactors[ch]);
+ 
+   {
+     int blocktypenumber,sc;
+@@ -660,7 +660,7 @@ inline void Mpegtoraw::huffmandecoder_1(const HUFFMANCODETABLE *h,int *x,int *y)
+     level>>=1;
+     if(!(level || ((unsigned)point<ht->treelen)))
+     {
+-      register int xx,yy;
++      int xx,yy;
+ 
+       xx=(h->xlen<<1);// set x and y to a medium value as a simple concealment
+       yy=(h->ylen<<1);
+@@ -689,7 +689,7 @@ inline void Mpegtoraw::huffmandecoder_2(const HUFFMANCODETABLE *h,
+   {
+     if(h->val[point][0]==0)
+     {   /*end of tree*/
+-      register int t=h->val[point][1];
++      int t=h->val[point][1];
+ 
+       if(t&8)*v=1-(wgetbit()<<1); else *v=0;
+       if(t&4)*w=1-(wgetbit()<<1); else *w=0;
+@@ -761,7 +761,7 @@ void Mpegtoraw::layer3huffmandecode(int ch,int gr,int out[SBLIMIT][SSLIMIT])
+   for(i=0;i<e;)
+   {
+     const HUFFMANCODETABLE *h;
+-    register int end;
++    int end;
+       
+     if     (i<region1Start)
+     {
+@@ -867,10 +867,10 @@ void Mpegtoraw::layer3dequantizesample(int ch,int gr,
+ 		{
+ 			cb_width=(sfBandIndex->s[cb+1]-sfBandIndex->s[cb])>>1;
+ 
+-			for(register int k=0;k<3;k++)
++			for(int k=0;k<3;k++)
+ 			{
+-				register REAL factor;
+-				register int count=cb_width;
++				REAL factor;
++				int count=cb_width;
+ 
+ 				factor=globalgain*
+ 					layer3twopow2_1(gi->subblock_gain[k],gi->scalefac_scale,
+@@ -1249,7 +1249,7 @@ inline void Mpegtoraw::layer3fixtostereo(int gr,REAL in[2][SBLIMIT][SSLIMIT])
+ 			do{
+ 				if(is_pos[i]==7)
+ 				{
+-					register REAL t=in[LS][0][i];
++					REAL t=in[LS][0][i];
+ 					in[LS][0][i]=(t+in[RS][0][i])*0.7071068f;
+ 					in[RS][0][i]=(t-in[RS][0][i])*0.7071068f;
+ 				}
+@@ -1278,7 +1278,7 @@ inline void Mpegtoraw::layer3fixtostereo(int gr,REAL in[2][SBLIMIT][SSLIMIT])
+ 		{
+ 			int i=ARRAYSIZE-1;
+ 			do{
+-				register REAL t=in[LS][0][i];
++				REAL t=in[LS][0][i];
+ 
+ 				in[LS][0][i]=(t+in[RS][0][i])*0.7071068f;
+ 				in[RS][0][i]=(t-in[RS][0][i])*0.7071068f;
+@@ -1400,7 +1400,7 @@ void Mpegtoraw::layer3reorderandantialias(int ch,int gr,
+ 					  REAL  in[SBLIMIT][SSLIMIT],
+ 					  REAL out[SBLIMIT][SSLIMIT])
+ {
+-  register layer3grinfo *gi=&(sideinfo.ch[ch].gr[gr]);
++  layer3grinfo *gi=&(sideinfo.ch[ch].gr[gr]);
+ 
+   if(gi->generalflag)
+   {
+@@ -1438,7 +1438,7 @@ static void dct36(REAL *inbuf,REAL *prevblk1,REAL *prevblk2,REAL *wi,REAL *out)
+     MACRO0(v); }
+ 
+   {
+-    register REAL *in = inbuf;
++    REAL *in = inbuf;
+    
+     in[17]+=in[16];in[16]+=in[15];in[15]+=in[14];in[14]+=in[13]; 
+     in[13]+=in[12];in[12]+=in[11];in[11]+=in[10];in[10]+=in[ 9];
+@@ -1450,10 +1450,10 @@ static void dct36(REAL *inbuf,REAL *prevblk1,REAL *prevblk2,REAL *wi,REAL *out)
+     in[ 9]+=in[ 7];in[7] +=in[ 5];in[ 5]+=in[ 3];in[ 3]+=in[ 1];
+ 
+     {
+-      register REAL *c = cos_18;
+-      register REAL *out2 = prevblk2;
+-      register REAL *out1 = prevblk1;
+-      register REAL *ts = out;
++      REAL *c = cos_18;
++      REAL *out2 = prevblk2;
++      REAL *out1 = prevblk1;
++      REAL *ts = out;
+       
+       REAL ta33,ta66,tb33,tb66;
+ 
+@@ -1513,7 +1513,7 @@ static void dct36(REAL *inbuf,REAL *prevblk1,REAL *prevblk2,REAL *wi,REAL *out)
+ }
+ 
+ 
+-static void dct12(REAL *in,REAL *prevblk1,REAL *prevblk2,register REAL *wi,register REAL *out)
++static void dct12(REAL *in,REAL *prevblk1,REAL *prevblk2,REAL *wi,REAL *out)
+ {
+ #define DCT12_PART1   \
+         in5=in[5*3];  \
+@@ -1547,7 +1547,7 @@ static void dct12(REAL *in,REAL *prevblk1,REAL *prevblk2,register REAL *wi,regis
+ 
+   {
+     REAL in0,in1,in2,in3,in4,in5;
+-    register REAL *pb1=prevblk1;
++    REAL *pb1=prevblk1;
+     out[SBLIMIT*0]=pb1[0];out[SBLIMIT*1]=pb1[1];out[SBLIMIT*2]=pb1[2];
+     out[SBLIMIT*3]=pb1[3];out[SBLIMIT*4]=pb1[4];out[SBLIMIT*5]=pb1[5];
+  
+@@ -1556,7 +1556,7 @@ static void dct12(REAL *in,REAL *prevblk1,REAL *prevblk2,register REAL *wi,regis
+     {
+       REAL tmp0,tmp1=(in0-in4);
+       {
+-	register REAL tmp2=(in1-in5)*hsec_12[1];
++	REAL tmp2=(in1-in5)*hsec_12[1];
+ 	tmp0=tmp1+tmp2;
+ 	tmp1-=tmp2;
+       }
+@@ -1581,7 +1581,7 @@ static void dct12(REAL *in,REAL *prevblk1,REAL *prevblk2,register REAL *wi,regis
+   in++;
+   {
+     REAL in0,in1,in2,in3,in4,in5;
+-    register REAL *pb2 = prevblk2;
++    REAL *pb2 = prevblk2;
+  
+     DCT12_PART1;
+ 
+@@ -1614,7 +1614,7 @@ static void dct12(REAL *in,REAL *prevblk1,REAL *prevblk2,register REAL *wi,regis
+   in++; 
+   {
+     REAL in0,in1,in2,in3,in4,in5;
+-    register REAL *pb2 = prevblk2;
++    REAL *pb2 = prevblk2;
+     pb2[12]=pb2[13]=pb2[14]=pb2[15]=pb2[16]=pb2[17]=0.0;
+ 
+     DCT12_PART1;
+@@ -1719,14 +1719,14 @@ void Mpegtoraw::extractlayer3(void)
+ 				 
+ 		if(issync())
+ 		{
+-			for(register int i=layer3slots;i>0;i--)  // read main data.
++			for(int i=layer3slots;i>0;i--)  // read main data.
+ 			{
+ 				bitwindow.putbyte(getbyte());
+ 			}
+ 		}
+ 		else
+ 		{
+-			for(register int i=layer3slots;i>0;i--)  // read main data.
++			for(int i=layer3slots;i>0;i--)  // read main data.
+ 			{
+ 				bitwindow.putbyte(getbits8());
+ 			}
+@@ -1799,7 +1799,7 @@ void Mpegtoraw::extractlayer3(void)
+ 			layer3reorderandantialias(RS,gr,b2.lr[RS],b1.hin[RS]);
+ 			layer3hybrid (RS,gr,b1.hin[RS],b2.hout[RS]);
+ 
+-			register int i=2*SSLIMIT*SBLIMIT-1;
++			int i=2*SSLIMIT*SBLIMIT-1;
+ 
+ 			do{
+ 				NEG(b2.hout[0][0][i		]);NEG(b2.hout[0][0][i- 2]);
+@@ -1814,7 +1814,7 @@ void Mpegtoraw::extractlayer3(void)
+ 		}
+ 		else
+ 		{
+-			register int i=SSLIMIT*SBLIMIT-1;
++			int i=SSLIMIT*SBLIMIT-1;
+ 			do{
+ 				NEG(b2.hout[0][0][i		]);NEG(b2.hout[0][0][i- 2]);
+ 				NEG(b2.hout[0][0][i- 4]);NEG(b2.hout[0][0][i- 6]);
+@@ -1844,12 +1844,12 @@ void Mpegtoraw::extractlayer3_2(void)
+ 	 
+     if(issync())
+     {
+-      for(register int i=layer3slots;i>0;i--)  // read main data.
++      for(int i=layer3slots;i>0;i--)  // read main data.
+ 	bitwindow.putbyte(getbyte());
+     }
+     else
+     {
+-      for(register int i=layer3slots;i>0;i--)  // read main data.
++      for(int i=layer3slots;i>0;i--)  // read main data.
+ 	bitwindow.putbyte(getbits8());
+     }
+     bitwindow.wrap();
+@@ -1912,7 +1912,7 @@ void Mpegtoraw::extractlayer3_2(void)
+       layer3reorderandantialias(RS,0,b2.lr[RS],b1.hin[RS]);
+       layer3hybrid (RS,0,b1.hin[RS],b2.hout[RS]);
+ 
+-      register int i=2*SSLIMIT*SBLIMIT-1;
++      int i=2*SSLIMIT*SBLIMIT-1;
+       do{
+ 	NEG(b2.hout[0][0][i-16]);NEG(b2.hout[0][0][i-18]);
+ 	NEG(b2.hout[0][0][i-20]);NEG(b2.hout[0][0][i-22]);
+@@ -1922,7 +1922,7 @@ void Mpegtoraw::extractlayer3_2(void)
+     }
+     else
+     {
+-      register int i=SSLIMIT*SBLIMIT-1;
++      int i=SSLIMIT*SBLIMIT-1;
+       do{
+ 	NEG(b2.hout[0][0][i-16]);NEG(b2.hout[0][0][i-18]);
+ 	NEG(b2.hout[0][0][i-20]);NEG(b2.hout[0][0][i-22]);
+--- a/mpegsound/mpegsound_locals.h
++++ b/mpegsound/mpegsound_locals.h
+@@ -8,6 +8,8 @@
+ #ifndef _L__SOUND_LOCALS__
+ #define _L__SOUND_LOCALS__
+ 
++#include "mpegsound.h"
++
+ extern void debug(const char*, ... );
+ // Inline functions
+ inline int Mpegtoraw::getbyte(void)
+@@ -20,7 +22,7 @@ inline int Mpegtoraw::getbyte(void)
+ 
+ inline int Mpegtoraw::getbits9(int bits)
+ {
+-  register unsigned short a;
++  unsigned short a;
+   int offset=bitindex>>3;
+ 
+   a=(((unsigned char)buffer[offset])<<8) | ((unsigned char)buffer[offset+1]);
+@@ -32,7 +34,7 @@ inline int Mpegtoraw::getbits9(int bits)
+ 
+ inline int Mpegtoraw::getbits8(void)
+ {
+-  register unsigned short a;
++  unsigned short a;
+   int offset=bitindex>>3;
+ 
+   a=(((unsigned char)buffer[offset])<<8) | ((unsigned char)buffer[offset+1]);
+@@ -44,7 +46,7 @@ inline int Mpegtoraw::getbits8(void)
+ 
+ inline int Mpegtoraw::getbit(void)
+ {
+-  register int r=(buffer[bitindex>>3]>>(7-(bitindex&7)))&1;
++  int r=(buffer[bitindex>>3]>>(7-(bitindex&7)))&1;
+ 
+   bitindex++;
+   return r;
+--- a/mpegsound/mpegtoraw.cc
++++ b/mpegsound/mpegtoraw.cc
+@@ -779,8 +779,8 @@ inline void parseID3(Soundinputstream *fp,ID3 *data)
+ // Mpeg header class
+ bool Mpegtoraw::initialize(const char *filename)
+ {
+-	register int i;
+-	register REAL *s1,*s2;
++	int i;
++	REAL *s1,*s2;
+ 	REAL *s3,*s4;
+ 	static bool initialized=false;
+ 
+@@ -1153,7 +1153,7 @@ void Mpegtoraw::clearbuffer(void)
+ //header is not found at the exact location of the filepointer at call time.
+ bool Mpegtoraw::loadheader(bool lookahead)
+ {
+-	register int c;
++	int c;
+ 	bool flag;
+ 	int bytes_read = 0;
+ 
+--- a/mpegsound/rawplayer.cc
++++ b/mpegsound/rawplayer.cc
+@@ -326,8 +326,8 @@ int Rawplayer::fix_samplesize(void *buffer, int size)
+ 
+ 	if(forcetomono || forceto8)
+ 	{
+-		register unsigned char modify=0;
+-		register unsigned char *source,*dest;
++		unsigned char modify=0;
++		unsigned char *source,*dest;
+ 		int increment=0,c;
+ 
+ 		source=dest=(unsigned char *)buffer;
+@@ -381,8 +381,8 @@ bool Rawplayer::putblock(void *buffer,int size)
+ 
+ 	if(forcetomono || forceto8)
+ 	{
+-		register unsigned char modify=0;
+-		register unsigned char *source,*dest;
++		unsigned char modify=0;
++		unsigned char *source,*dest;
+ 		int increment=0,c;
+ 
+ 		source=dest=(unsigned char *)buffer;
+@@ -408,7 +408,7 @@ bool Rawplayer::putblock(void *buffer,int size)
+ 	}
+ 
+ #if defined(AUDIO_NONBLOCKING) || defined(NEWTHREAD)
+-	register ssize_t
++	ssize_t
+ 		wsize,
+ 		remainsize = modifiedsize;
+ 	char *wbuf = (char*)buffer;
+--- a/src/splay_common.cc
++++ b/src/splay_common.cc
+@@ -66,7 +66,7 @@ const char *splay_Sounderrors[SOUND_ERROR_UNKNOWN]=
+ static bool argsflag=false;
+ void arglist(int argc,char *argv[],int start)
+ {
+-  register int i;
++  int i;
+ 
+   argsflag=true;
+   for(i=start;(i<argc) && (splay_listsize<MAXLISTSIZE); i++)

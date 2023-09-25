@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit flag-o-matic java-pkg-opt-2 java-ant-2 cmake-multilib python-r1 toolchain-funcs
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
@@ -88,7 +88,7 @@ RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
+	cuda? ( <dev-util/nvidia-cuda-toolkit-12:= )
 	contribhdf? ( sci-libs/hdf5:= )
 	contribfreetype? (
 		media-libs/freetype:2[${MULTILIB_USEDEP}]

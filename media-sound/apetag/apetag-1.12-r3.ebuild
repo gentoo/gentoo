@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="Command-line ape 2.0 tagger"
-HOMEPAGE="http://muth.org/Robert/Apetag/"
-SRC_URI="http://muth.org/Robert/Apetag/${PN}.${PV}.tar.gz"
+HOMEPAGE="https://robert.muth.org/Apetag/"
+SRC_URI="https://robert.muth.org/Apetag/${PN}.${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

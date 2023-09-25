@@ -1,12 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{8..11} )
-USE_RUBY="ruby27 ruby26"
+PYTHON_COMPAT=( python3_{9..11} )
+# ruby32 needs https://github.com/apache/subversion/commit/36e916ddaec4a5b1e64adee34337582f152805c5
+USE_RUBY="ruby27 ruby30 ruby31"
 
 inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module prefix python-any-r1 ruby-single xdg-utils
 
@@ -22,7 +23,7 @@ SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 fi
-IUSE="apache2 berkdb debug doc extras gnome-keyring java kwallet nls perl plaintext-password-storage ruby sasl test"
+IUSE="apache2 berkdb debug doc extras keyring java kwallet nls perl plaintext-password-storage ruby sasl test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -37,7 +38,7 @@ COMMON_DEPEND="
 	sys-apps/file
 	sys-libs/zlib
 	berkdb? ( >=sys-libs/db-4.0.14:= )
-	gnome-keyring? (
+	keyring? (
 		dev-libs/glib:2
 		app-crypt/libsecret
 		sys-apps/dbus
@@ -75,9 +76,7 @@ DEPEND="${COMMON_DEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
-	!!<sys-apps/sandbox-1.6
 	doc? ( app-doc/doxygen )
-	kwallet? ( kde-frameworks/kdelibs4support:5 )
 	nls? ( sys-devel/gettext )
 	perl? ( dev-lang/swig )
 	ruby? ( dev-lang/swig )
@@ -134,12 +133,12 @@ pkg_setup() {
 		local rbslot
 		RB_VER=""
 		for rbslot in $(sed 's@\([[:digit:]]\+\)\([[:digit:]]\)@\1.\2@g' <<< ${USE_RUBY//ruby}) ; do
-			if has_version dev-lang/ruby:${rbslot} ;  then
+			# No break here as we want to pick the best (latest)
+			if has_version "dev-lang/ruby:${rbslot}" && has_version "virtual/rubygems[ruby_targets_ruby${rbslot/.}(-)]" ; then
 				RB_VER="${rbslot/.}"
-				break
 			fi
 		done
-		[[ -z "${RB_VER}" ]] && die "No useable ruby version found"
+		[[ -z "${RB_VER}" ]] && die "No usable ruby version found"
 	fi
 }
 
@@ -181,10 +180,9 @@ src_configure() {
 		$(use_with berkdb berkeley-db "db.h:${EPREFIX}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
 		--without-ctypesgen
 		--disable-runtime-module-search
-		$(use_with gnome-keyring)
+		$(use_with keyring gnome-keyring)
 		$(use_enable java javahl)
 		$(use_with java jdk "${JAVA_HOME}")
-		$(use_with kwallet)
 		$(use_enable nls)
 		$(use_enable plaintext-password-storage)
 		$(use_with sasl)
@@ -197,6 +195,12 @@ src_configure() {
 		--disable-static
 		--enable-svnxx
 	)
+
+	if use kwallet ; then
+		myconf+=( "--with-kwallet=/usr/include/:/usr/$(get_libdir)/" )
+	else
+		myconf+=( --without-kwallet )
+	fi
 
 	if use perl || use ruby; then
 		myconf+=( --with-swig )
@@ -278,6 +282,11 @@ src_test() {
 	#	ewarn "before running the test suite."
 	#	ewarn "Test suite skipped."
 	#fi
+	if [[ -f "${S}/fails.log" ]] ; then
+		echo "====== contents of fails.log follow ======"
+		cat "${S}/fails.log"
+		echo "====== contents of fails.log end    ======"
+	fi
 }
 
 src_install() {

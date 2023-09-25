@@ -8,7 +8,6 @@
 	<use>
 		<flag name="archive">Enable archiving plugin</flag>
 		<flag name="bogofilter">Build <pkg>mail-filter/bogofilter</pkg> plugin</flag>
-		<flag name="dillo">Enable dillo html viewer plugin</flag>
 		<flag name="gdata">Enable plugin for access to Google data providers</flag>
 		<flag name="libcanberra">Enable sound notification in connection with USE=notification</flag>
 		<flag name="libnotify">Enable notification on the desktop in connection with USE=notification</flag>
@@ -20,6 +19,5 @@
 		<flag name="smime">Build plugin for S/MIME support</flag>
 		<flag name="spam-report">Enable plugin for spam reporting to various services</flag>
 		<flag name="spamassassin">Build <pkg>mail-filter/spamassassin</pkg> plugin</flag>
-		<flag name="valgrind">Add support for memory debugging using valgrind</flag>
 	</use>
 </pkgmetadata>

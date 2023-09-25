@@ -1,22 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="A notification sending utility (using libtinynotify)"
-HOMEPAGE="https://github.com/mgorny/tinynotify-send/"
-SRC_URI="https://github.com/mgorny/tinynotify-send/releases/download/${P}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/tinynotify-send/"
+SRC_URI="https://github.com/projg2/tinynotify-send/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="app-eselect/eselect-notify-send
+DEPEND="
 	x11-libs/libtinynotify:0=
-	~x11-libs/libtinynotify-cli-${PV}"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	~x11-libs/libtinynotify-cli-${PV}
+"
+RDEPEND="
+	${DEPEND}
+	app-eselect/eselect-notify-send
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 src_configure() {
 	local myconf=(

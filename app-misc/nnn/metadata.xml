@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>zlogene@gentoo.org</email>
-	<name>Mikle Kolyada</name>
-</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo-bugs@ares-macrotechnology.com</email>
+		<name>Sebastian Hamann</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jarun/nnn</remote-id>
+	</upstream>
+	<use>
+		<flag name="8contexts">Enable 8 contexts (instead of 4)</flag>
+		<flag name="colemak">Key bindings for Colemak keyboard layout</flag>
+		<flag name="colemak-dh">Key bindings for Colemak-DH keyboard layout</flag>
+		<flag name="emoji">Display icons using emoji</flag>
+		<flag name="gitstatus">Add git status column to the detail view</flag>
+		<flag name="icons">Display icons using icons-in-terminal</flag>
+		<flag name="namefirst">Print filenames first in the detail view</flag>
+		<flag name="nerdfonts">Display icons using nerdfonts icons</flag>
+		<flag name="qsort">Use Alexey Tourbin's quick sort implementation</flag>
+		<flag name="restorepreview">Add pipe to close and restore preview-tui for internal undetached edits</flag>
+	</use>
 </pkgmetadata>

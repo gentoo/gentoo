@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -172,7 +172,7 @@ if test "x$want_threads" = "xyes"; then
+ fi
+ 
+ # Add back -Werror if it was there before
+-CFLAGS="$CFLAGS""$CFLAGS_werror"
++CFLAGS="$CFLAGS"
+ 
+ # Optional threads support
+ THREADS_ENABLER='#include "lo/lo_serverthread.h"'

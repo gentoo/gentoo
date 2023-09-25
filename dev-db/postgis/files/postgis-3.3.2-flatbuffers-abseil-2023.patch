@@ -1,0 +1,39 @@
+From 411abb7014b05b809c0644f196425af1028e7ad3 Mon Sep 17 00:00:00 2001
+From: Berke <iamberkeyavas@gmail.com>
+Date: Fri, 7 Apr 2023 22:05:45 +0300
+Subject: [PATCH] additional check for absl::string_view availability
+
+absl::string_view is uses std::string_view when available. It already checks if std::string_view is available in the earlier code.
+It should only use absl::string_view implementation.
+---
+ deps/flatgeobuf/include/flatbuffers/base.h | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/deps/flatgeobuf/include/flatbuffers/base.h b/deps/flatgeobuf/include/flatbuffers/base.h
+index bc64f18ad93..98a02262c2b 100644
+--- a/deps/flatgeobuf/include/flatbuffers/base.h
++++ b/deps/flatgeobuf/include/flatbuffers/base.h
+@@ -233,12 +233,17 @@ namespace flatbuffers {
+       }
+       #define FLATBUFFERS_HAS_STRING_VIEW 1
+     // Check for absl::string_view
+-    #elif __has_include("absl/strings/string_view.h")
+-      #include "absl/strings/string_view.h"
+-      namespace flatbuffers {
+-        typedef absl::string_view string_view;
+-      }
+-      #define FLATBUFFERS_HAS_STRING_VIEW 1
++    #elif __has_include("absl/strings/string_view.h") && \
++          __has_include("absl/base/config.h") && \
++          (__cplusplus >= 201411)
++      #include "absl/base/config.h"
++      #if !defined(ABSL_USES_STD_STRING_VIEW)
++        #include "absl/strings/string_view.h"
++        namespace flatbuffers {
++          typedef absl::string_view string_view;
++        }
++        #define FLATBUFFERS_HAS_STRING_VIEW 1
++      #endif
+     #endif
+   #endif // __has_include
+ #endif // !FLATBUFFERS_HAS_STRING_VIEW

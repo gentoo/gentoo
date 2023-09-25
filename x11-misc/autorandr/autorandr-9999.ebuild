@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit bash-completion-r1 distutils-r1 systemd udev
 
@@ -29,7 +29,11 @@ RDEPEND="
 	udev? ( virtual/udev )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+# desktop-file-util: uses desktop-file-edit in Makefile
+BDEPEND="
+	dev-util/desktop-file-utils
+	virtual/pkgconfig
+"
 
 src_compile() {
 	distutils-r1_src_compile

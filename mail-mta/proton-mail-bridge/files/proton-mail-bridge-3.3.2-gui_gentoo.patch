@@ -1,0 +1,68 @@
+--- a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+@@ -165,12 +165,9 @@
+         WIN32_EXECUTABLE TRUE
+         MACOSX_BUNDLE TRUE)
+ 
+-install(TARGETS bridge-gui
+-        RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}"
+-        BUNDLE DESTINATION  "${CMAKE_INSTALL_PREFIX}"
+-        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}"
+-        )
++install(TARGETS bridge-gui)
+ 
++if(0)
+ qt_generate_deploy_app_script(
+         TARGET bridge-gui
+         FILENAME_VARIABLE deploy_script
+@@ -185,3 +182,4 @@
+ endif()
+ 
+ include(Deploy${DEPLOY_OS}.cmake)
++endif()
+--- a/internal/frontend/bridge-gui/bridge-gui/main.cpp
++++ b/internal/frontend/bridge-gui/bridge-gui/main.cpp
+@@ -53,7 +53,7 @@
+ 
+ QString const bridgeLock = "bridge-v3.lock"; ///< The file name used for the bridge-gui lock file.
+ QString const bridgeGUILock = "bridge-v3-gui.lock"; ///< The file name used for the bridge-gui lock file.
+-QString const exeName = "bridge" + exeSuffix; ///< The bridge executable file name.*
++QString const exeName = "proton-mail-bridge" + exeSuffix; ///< The bridge executable file name.*
+ qint64 const grpcServiceConfigWaitDelayMs = 180000; ///< The wait delay for the gRPC config file in milliseconds.
+ QString const waitFlag = "--wait"; ///< The wait command-line flag.
+ 
+--- a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
+@@ -161,6 +161,9 @@
+ 
+ target_precompile_headers(bridgepp PRIVATE Pch.h)
+ 
++install(TARGETS bridgepp)
++
++if(0)
+ #*****************************************************************************************************************************************************
+ # GoogleTest
+ #*****************************************************************************************************************************************************
+@@ -198,3 +201,4 @@
+ 
+ include(GoogleTest)
+ gtest_discover_tests(bridgepp-test)
++endif()
+--- a/internal/frontend/bridge-gui/BridgeSetup.cmake
++++ b/internal/frontend/bridge-gui/BridgeSetup.cmake
+@@ -45,6 +45,7 @@
+ endif()
+ 
+ 
++if(0)
+ #****************************************************************************************************************************************************
+ # vcpkg, toolchain, and architecture
+ #****************************************************************************************************************************************************
+@@ -87,4 +88,5 @@
+     set(VCPKG_TARGET_TRIPLET x64-windows)
+ endif()
+ 
+-set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "toolchain")
+\ No newline at end of file
++set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "toolchain")
++endif()

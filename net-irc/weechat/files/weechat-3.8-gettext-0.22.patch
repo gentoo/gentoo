@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/908976
+Backported from https://github.com/weechat/weechat/commit/11177a096707ed75cd15c8933a3346e350cf7b18
+
+--- a/po/cs.po
++++ b/po/cs.po
+@@ -144,7 +144,7 @@
+ 
+ #, c-format
+ msgid "End of command '%s', timeout reached (%.1fs)"
+-msgstr "Konec příkazu '%s', vypršel časový limit (%.lfs)"
++msgstr "Konec příkazu '%s', vypršel časový limit (%.1fs)"
+ 
+ #, c-format
+ msgid "System clock skew detected (%+ld seconds), reinitializing all timers"

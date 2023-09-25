@@ -11,11 +11,29 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <longdescription>
+    Z3 is an efficient Satisfiability Modulo Theories (SMT) solver from
+    Microsoft Research. Z3 is a solver for symbolic logic, a foundation for
+    many software engineering tools. SMT solvers rely on a tight integration of
+    specialized engines of proof. Each engine owns a piece of the global puzzle
+    and implements specialized algorithms. For example, Z3’s engine for
+    arithmetic integrates Simplex, cuts and polynomial reasoning, while an
+    engine for strings are regular expressions integrate methods for symbolic
+    derivatives of regular languages. A theme shared among many of the
+    algorithms is how they exploit a duality between finding satisfying
+    solutions and finding refutation proofs. The solver also integrates engines
+    for global and local inferences and global propagation. Z3 is used in a
+    wide range of software engineering applications, ranging from program
+    verification, compiler validation, testing, fuzzing using dynamic symbolic
+    execution, model-based software development, network verification, and
+    optimization.
+  </longdescription>
   <use>
     <flag name="isabelle">Add integration support for the Isabelle/HOL
   theorem prover.</flag>
   </use>
   <upstream>
+    <bugs-to>https://github.com/Z3Prover/z3/issues/</bugs-to>
     <remote-id type="github">Z3Prover/z3</remote-id>
   </upstream>
 </pkgmetadata>

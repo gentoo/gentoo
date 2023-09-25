@@ -1,0 +1,13 @@
+diff --git a/tests/test_scripts.py b/tests/test_scripts.py
+index 9ec1d43..2fc18ae 100644
+--- a/tests/test_scripts.py
++++ b/tests/test_scripts.py
+@@ -112,7 +112,7 @@ class ScriptTestCase(DistlibTestCase):
+             bindir = os.path.join(dstdir, 'bin')
+             maker = ScriptMaker(self.maker.source_dir, bindir,
+                                 add_launchers=False)
+-            venv.create(dstdir)
++            venv.create(dstdir, symlinks=True)
+             maker.executable = os.path.join(bindir, 'python')
+             filenames = maker.make('script8.py')
+             p = subprocess.Popen(filenames[0], shell=True,

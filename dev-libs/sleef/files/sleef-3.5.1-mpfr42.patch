@@ -1,0 +1,30 @@
+--- a/src/libm-tester/testerutil.h	2023-04-12 22:07:52.400469592 +0200
++++ b/src/libm-tester/testerutil.h	2023-04-12 22:08:03.404312574 +0200
+@@ -90,7 +90,5 @@
+ double countULPsp(float d, mpfr_t c);
+ double countULP2sp(float d, mpfr_t c);
+ 
+-void mpfr_sinpi(mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd);
+-void mpfr_cospi(mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd);
+ void mpfr_lgamma_nosign(mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd);
+ #endif
+--- a/src/libm-tester/testerutil.c	2023-04-12 22:07:55.045431845 +0200
++++ b/src/libm-tester/testerutil.c	2023-04-12 22:08:23.275029908 +0200
+@@ -289,7 +289,7 @@
+ }
+ 
+ //
+-
++#if 0
+ void mpfr_sinpi(mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd) {
+   mpfr_t frpi, frd;
+   mpfr_inits(frpi, frd, NULL);
+@@ -315,7 +315,7 @@
+ 
+   mpfr_clears(frpi, frd, NULL);
+ }
+-
++#endif
+ void mpfr_lgamma_nosign(mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd) {
+   int s;
+   mpfr_lgamma(ret, &s, arg, rnd);

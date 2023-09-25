@@ -33,10 +33,6 @@
 			The Python modules are available, without their GUI parts though,
 			if this is unset.
 		</flag>
-		<flag name="headless">
-			Build FreeCAD without a GUI, usable for server-side instances.
-			The Python modules are still available, without their GUI parts though.
-		</flag>
 		<flag name="idf">
 			Build the IDF module to provide file exchange capabilities with
 			IDF files
@@ -51,6 +47,9 @@
 		</flag>
 		<flag name="material">
 			Build the material module and workbench to work with materials
+		</flag>
+		<flag name="netgen">
+			Build support for the netgen mesher through <pkg>media-gfx/netgen</pkg>.
 		</flag>
 		<flag name="openscad">
 			Build the OpenSCAD module for interoperability with OpenSCAD 

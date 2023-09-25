@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>xgqt@gentoo.org</email>
+		<name>Maciej Barć</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@tastytea.de</email>
+		<name>tastytea</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<name>Jean-Philippe Barrette-LaPierre</name>
+		</maintainer>
+		<doc>https://github.com/jpbarrette/curlpp/blob/master/doc/guide.pdf</doc>
+		<bugs-to>https://github.com/jpbarrette/curlpp/issues</bugs-to>
+		<remote-id type="github">jpbarrette/curlpp</remote-id>
+	</upstream>
+</pkgmetadata>

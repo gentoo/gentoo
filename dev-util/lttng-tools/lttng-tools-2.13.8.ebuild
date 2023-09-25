@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://lttng.org/files/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${MY_SLOT}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+ust"
 
 DEPEND="dev-libs/userspace-rcu:=
@@ -21,6 +21,7 @@ DEPEND="dev-libs/userspace-rcu:=
 	ust? ( >=dev-util/lttng-ust-2.13.0:= )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 

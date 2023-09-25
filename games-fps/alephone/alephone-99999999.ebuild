@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools optfeature prefix toolchain-funcs xdg
 
 DESCRIPTION="An enhanced version of the game engine from the classic Mac game, Marathon"
-HOMEPAGE="http://source.bungie.org/"
+HOMEPAGE="https://alephone.lhowon.org/"
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Aleph-One-Marathon/alephone/"
@@ -22,8 +22,10 @@ SLOT="0"
 
 IUSE="alsa curl speex upnp"
 
-# ffmpeg covers most audio/video use cases and the package doesn't configure with alternatives enabled (media-libs/smpeg)
-# When resolved upstream, !ffmpeg ( media-libs/libmad media-libs/libsndfile media-libs/libvorbis media-libs/smpeg )
+# ffmpeg covers most audio/video use cases and the package doesn't configure
+# with alternatives enabled (media-libs/smpeg)
+# When resolved upstream,
+# !ffmpeg ( media-libs/libmad media-libs/libsndfile media-libs/libvorbis media-libs/smpeg )
 # with an appropriate REQUIRED_USE may be added.
 # See https://github.com/Aleph-One-Marathon/alephone/issues/85
 RDEPEND="

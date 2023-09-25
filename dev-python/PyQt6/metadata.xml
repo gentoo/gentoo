@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>ionen@gentoo.org</email>
-		<name>Ionen Wolkens</name>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
+		<flag name="bluetooth">Build bindings for the QtBluetooth module</flag>
 		<flag name="dbus">Build bindings for the QtDBus module</flag>
 		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
 		<flag name="gui">Build bindings for the QtGui module</flag>
 		<flag name="help">Build bindings for the QtHelp module</flag>
 		<flag name="multimedia">Build bindings for the QtMultimedia module</flag>
 		<flag name="network">Build bindings for the QtNetwork module</flag>
+		<flag name="nfc">Build bindings for the QtNfc module</flag>
 		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
 		<flag name="positioning">Build bindings for the QtPositioning module</flag>
 		<flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
 		<flag name="qml">Build bindings for the QtQml module and enable the qml plugin</flag>
 		<flag name="quick">Build bindings for the QtQuick module</flag>
 		<flag name="quick3d">Build bindings for the QtQuick3D module</flag>
+		<flag name="sensors">Build bindings for the QtSensors module</flag>
 		<flag name="serialport">Build bindings for the QtSerialPort module</flag>
+		<flag name="spatialaudio">Build bindings for the QtSpatialAudio module</flag>
+		<flag name="speech">Build bindings for the QtTextToSpeech module</flag>
 		<flag name="sql">Build bindings for the QtSql module</flag>
 		<flag name="svg">Build bindings for the QtSvg module</flag>
 		<flag name="testlib">Build bindings for the QtTest module</flag>

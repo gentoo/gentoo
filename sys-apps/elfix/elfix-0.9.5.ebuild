@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,14 +17,12 @@ HOMEPAGE="https://www.gentoo.org/proj/en/hardened/pax-quickstart.xml
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+ptpax +xtpax"
+IUSE="+ptpax test +xtpax"
+REQUIRED_USE="|| ( ptpax xtpax )"
+# These only work with a properly configured PaX kernel
+RESTRICT="!test? ( test ) test"
 
 DOCS=( AUTHORS ChangeLog INSTALL README THANKS TODO )
-
-REQUIRED_USE="|| ( ptpax xtpax )"
-
-# These only work with a properly configured PaX kernel
-RESTRICT="test"
 
 DEPEND="~dev-python/pypax-${PV}[ptpax=,xtpax=]
 	ptpax? ( dev-libs/elfutils )
@@ -42,7 +40,8 @@ src_prepare() {
 
 src_configure() {
 	rm -f "${S}/scripts/setup.py"
-	econf --disable-tests \
+	econf \
+		$(use_enable test tests) \
 		$(use_enable ptpax) \
 		$(use_enable xtpax)
 }

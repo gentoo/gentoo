@@ -4,22 +4,21 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN/-/.}
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P/-/.}
 DESCRIPTION="Testing support by jaraco"
 HOMEPAGE="
 	https://github.com/jaraco/jaraco.test/
 	https://pypi.org/project/jaraco.test/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN/-/.}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/jaraco-context[${PYTHON_USEDEP}]

@@ -10,4 +10,7 @@
   <use>
     <flag name="capi">Build the C-API library and header file</flag>
   </use>
+  <upstream>
+    <remote-id type="github">xiph/rav1e</remote-id>
+  </upstream>
 </pkgmetadata>

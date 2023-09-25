@@ -6,11 +6,12 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
+		<flag name="archive">Use <pkg>app-arch/libarchive</pkg> for 7zip support</flag>
 		<flag name="ffmpeg">Use <pkg>media-video/ffmpeg</pkg> for video recording</flag>
 		<flag name="x265">Use <pkg>media-libs/x265</pkg> for video recording (HEVC)</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">TASVideos/fceux</remote-id>
+		<remote-id type="github">TASEmulators/fceux</remote-id>
 		<remote-id type="sourceforge">fceultra</remote-id>
 	</upstream>
 </pkgmetadata>

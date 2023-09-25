@@ -1,0 +1,45 @@
+From f9557931ad361e08f1f1537ea670fedd1dd0138d Mon Sep 17 00:00:00 2001
+From: Claudia Draghicescu <claudia.rosu@nxp.com>
+Date: Tue, 4 Jul 2023 10:41:44 +0300
+Subject: monitor: Add decoding support for Sync Receiver events
+
+This commit adds decoding support for PA Sync Established,
+BIG Sync Established and BIG Sync Lost events.
+---
+ lib/mgmt.h       | 3 +++
+ monitor/packet.c | 5 +++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/lib/mgmt.h b/lib/mgmt.h
+index 062fa02712..8f92b77315 100644
+--- a/lib/mgmt.h
++++ b/lib/mgmt.h
+@@ -1238,6 +1238,9 @@ static const char *mgmt_ev[] = {
+ 	"Advertisement Monitor Device Lost",
+ 	"Mesh Packet Found",
+ 	"Mesh Packet Complete",
++	"PA Sync Established",
++	"BIG Sync Established",
++	"BIG Sync Lost",
+ };
+ 
+ static const char *mgmt_status[] = {
+diff --git a/monitor/packet.c b/monitor/packet.c
+index a871c7f272..f2167fb52a 100644
+--- a/monitor/packet.c
++++ b/monitor/packet.c
+@@ -3093,6 +3093,11 @@ static const struct bitfield_data events_le_table[] = {
+ 	{ 27, "LE Terminate BIG Complete"		},
+ 	{ 28, "LE BIG Sync Estabilished Complete"	},
+ 	{ 29, "LE BIG Sync Lost"			},
++	{ 30, "LE Request Peer SCA Complete"},
++	{ 31, "LE Path Loss Threshold"		},
++	{ 32, "LE Transmit Power Reporting"	},
++	{ 33, "LE BIG Info Advertising Report"	},
++	{ 34, "LE Subrate Change"			},
+ 	{ }
+ };
+ 
+-- 
+cgit 
+

@@ -1,7 +1,0 @@
-object.__getstate__ was added in 3.11 (bpo-26579) and the test is unaware
---- a/tests/test_dictutils.py
-+++ b/tests/test_dictutils.py
-@@ -476,2 +476,3 @@
-                        '__getitem__',
-+                       '__getstate__',
-                        '__gt__',

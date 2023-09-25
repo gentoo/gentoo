@@ -39,10 +39,8 @@ JENKINS_ARGS=""
 #
 JENKINS_USER=jenkins
 
-
-
 #
-# Pid File 
+# Pid File
 #
 JENKINS_PIDFILE="/var/run/jenkins.pid"
 

@@ -1,6 +1,5 @@
-diff -Naur a/make_linux.mak b/make_linux.mak
---- a/make_linux.mak	2019-01-07 14:08:00.269147198 +0100
-+++ b/make_linux.mak	2019-01-07 14:10:28.645155241 +0100
+--- a/make_linux.mak
++++ b/make_linux.mak
 @@ -101,7 +101,7 @@
  WEBKIT_OBJECTS = swt.o webkitgtk.o webkitgtk_structs.o webkitgtk_stats.o webkitgtk_custom.o
  GLX_OBJECTS = swt.o glx.o glx_structs.o glx_stats.o

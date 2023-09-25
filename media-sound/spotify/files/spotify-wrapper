@@ -5,7 +5,7 @@ export LD_LIBRARY_PATH="/usr/$LIBDIR/apulse"
 if command -v spotify-dbus.py > /dev/null; then
         echo "Launching spotify with Gnome systray integration."
         spotify-dbus.py "$@"
-elif command -v spotify-tray > /dev/null; then
+elif [ -e "$SPOTIFY_HOME/spotify-tray" ] > /dev/null; then
         echo "Launching spotify with generic systray integration."
         minimized=
         for arg; do
@@ -14,7 +14,7 @@ elif command -v spotify-tray > /dev/null; then
                         break
                 fi
         done
-        spotify-tray \
+        GDK_BACKEND="x11" "$SPOTIFY_HOME/spotify-tray" \
                 --client-path="$SPOTIFY_HOME/spotify" --toggle $minimized -- "$@"
 else
     if pgrep -f "Spotify/[0-9].[0-9].[0-9]" > /dev/null; then

@@ -1,0 +1,23 @@
+From b582dfb33fdb51065c22800fe02dd83207185664 Mon Sep 17 00:00:00 2001
+From: Ron Lieberman <ron.lieberman@amd.com>
+Date: Sun, 1 Jan 2023 10:35:49 -0600
+Subject: [PATCH] [llvm] move to inverted OPT_mrelax_relocations_no
+
+Change-Id: I95e48e8acf5b9124d25e5e7b86c418f1a0d9389d
+---
+ lib/comgr/src/comgr-compiler.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/comgr/src/comgr-compiler.cpp b/lib/comgr/src/comgr-compiler.cpp
+index bb1c9d3..95c1bb4 100644
+--- comgr/src/comgr-compiler.cpp
++++ comgr/src/comgr-compiler.cpp
+@@ -259,7 +259,7 @@ bool AssemblerInvocation::createFromArgs(AssemblerInvocation &Opts,
+     }
+   }
+ 
+-  Opts.RelaxELFRelocations = Args.hasArg(OPT_mrelax_relocations);
++  Opts.RelaxELFRelocations = !Args.hasArg(OPT_mrelax_relocations_no);
+   Opts.DwarfVersion = getLastArgIntValue(Args, OPT_dwarf_version_EQ, 2, Diags);
+   Opts.DwarfDebugFlags =
+       std::string(Args.getLastArgValue(OPT_dwarf_debug_flags));

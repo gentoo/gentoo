@@ -1,0 +1,43 @@
+With musl and clang16 the following build error occurs:
+
+client/run_run_svcs.c:24:17: error: use of undeclared identifier 'PATH_MAX'
+   char pathbuf[PATH_MAX+1];
+                ^
+client/run_run_svcs.c:28:21: warning: if statement has empty body [-Wempty-body]
+   D_PRINTF(abspath);
+                    ^
+client/run_run_svcs.c:28:21: note: put the semicolon on a separate line to silence this warning
+client/connect_sock.c:28:4: error: call to undeclared library function 'memset' with type
+      'void *(void *, int, unsigned long)'; ISO C99 and later do not support implicit function declarations
+      [-Wimplicit-function-declaration]
+   memset(&addr,0,socke);
+   ^
+client/connect_sock.c:28:4: note: include the header <string.h> or explicitly provide a declaration for
+      'memset'
+client/connect_sock.c:29:4: error: call to undeclared library function 'strcpy' with type
+      'char *(char *, const char *)'; ISO C99 and later do not support implicit function declarations
+      [-Wimplicit-function-declaration]
+   strcpy(addr.sun_path, CINIT_SOCK);
+
+This patch fixes all three of those errors
+Bug: https://bugs.gentoo.org/898542
+--- a/client/connect_sock.c
++++ b/client/connect_sock.c
+@@ -8,6 +8,7 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ #include "cinit.h"
+ 
+--- a/client/run_run_svcs.c
++++ b/client/run_run_svcs.c
+@@ -3,6 +3,7 @@
+  * (c) 2005 Nico Schottelius (nico-linux at schottelius.org)
+  * run services parallel
+  */
++#include <linux/limits.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <dirent.h>

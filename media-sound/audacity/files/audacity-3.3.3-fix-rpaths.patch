@@ -1,0 +1,95 @@
+This is an adapted version of:
+
+From: Benjamin Drung <benjamin.drung@canonical.com>
+Date: Thu, 22 Sep 2022 19:52:43 +0200
+Subject: Fix rpath for private libraries on Linux
+
+Fixes: https://github.com/audacity/audacity/issues/3289
+Forwarded: https://github.com/audacity/audacity/pull/3671
+[1] https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling#caveats
+
+diff -Nuar a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2023-06-08 15:17:02.000000000 +0200
++++ b/CMakeLists.txt	2023-07-14 01:18:46.452163033 +0200
+@@ -412,6 +412,7 @@
+ set( _LIBDIR "${CMAKE_INSTALL_LIBDIR}" )
+ set( _DATADIR "${CMAKE_INSTALL_DATADIR}" )
+ set( _PKGLIB "${_LIBDIR}/audacity" )
++set( _PKGMODULE "${_PKGLIB}/modules" )
+ set( _PKGDATA "${_DATADIR}/audacity/" )
+ set( _MANDIR "${CMAKE_INSTALL_MANDIR}" )
+ set( _MODDIR "${_PKGLIB}/modules" )
+diff -Nuar a/cmake-proxies/cmake-modules/AudacityFunctions.cmake b/cmake-proxies/cmake-modules/AudacityFunctions.cmake
+--- a/cmake-proxies/cmake-modules/AudacityFunctions.cmake	2023-06-08 15:17:02.000000000 +0200
++++ b/cmake-proxies/cmake-modules/AudacityFunctions.cmake	2023-07-14 01:23:42.025628702 +0200
+@@ -338,6 +338,17 @@
+    set( "${var}" "${node}" PARENT_SCOPE )
+ endfunction()
+ 
++# Call install(TARGETS...) only on Linux systems (i.e. exclude MacOS and Windows)
++macro( install_target_linux target destination )
++   if( NOT "${CMAKE_GENERATOR}" MATCHES "Xcode|Visual Studio*" AND NOT CMAKE_SYSTEM_NAME MATCHES "Darwin" )
++      install( TARGETS "${target}" DESTINATION "${destination}" )
++   endif()
++endmacro()
++
++macro( install_audacity_module target )
++   install_target_linux( "${target}" "${_PKGMODULE}" )
++endmacro()
++
+ define_property(TARGET PROPERTY AUDACITY_GRAPH_DEPENDENCIES
+    BRIEF_DOCS
+       "Propagates information used in generating a target dependency diagram"
+@@ -420,6 +431,13 @@
+       list( APPEND GRAPH_EDGES "\"${TARGET}\" -> \"${IMPORT}\" ${attributes}" )
+    endforeach()
+    set( GRAPH_EDGES "${GRAPH_EDGES}" PARENT_SCOPE )
++
++   # Note: Some modules set EXCLUDE_FROM_ALL afterwards to not be installed.
++   # Therefore only install libraries, but not modules here.
++   if( NOT REAL_LIBTYPE STREQUAL "MODULE" )
++      install_target_linux( "${TARGET}" "${_PKGLIB}" )
++   endif()
++
+ endfunction()
+ 
+ function ( make_interface_alias TARGET REAL_LIBTYTPE )
+@@ -487,6 +505,7 @@
+          PROPERTIES
+             PREFIX ""
+             FOLDER "modules" # for IDE organization
++            INSTALL_RPATH "$ORIGIN/.."
+       )
+ 
+       if( NOT CMAKE_SYSTEM_NAME MATCHES "Windows|Darwin" )
+@@ -501,6 +520,7 @@
+          PROPERTIES
+             PREFIX ""
+             FOLDER "libraries" # for IDE organization
++            INSTALL_RPATH "$ORIGIN"
+       )
+ 
+       if( NOT CMAKE_SYSTEM_NAME MATCHES "Windows|Darwin" )
+diff -Nuar a/modules/mod-script-pipe/CMakeLists.txt b/modules/mod-script-pipe/CMakeLists.txt
+--- a/modules/mod-script-pipe/CMakeLists.txt	2023-06-08 15:17:02.000000000 +0200
++++ b/modules/mod-script-pipe/CMakeLists.txt	2023-07-14 01:25:10.730068564 +0200
+@@ -15,3 +15,4 @@
+ )
+ audacity_module( mod-script-pipe "${SOURCES}" "Audacity"
+    "${DEFINES}" "" )
++install_audacity_module( mod-script-pipe )
+diff -Nuar a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2023-06-08 15:17:02.000000000 +0200
++++ b/src/CMakeLists.txt	2023-07-14 01:26:23.098427419 +0200
+@@ -1557,11 +1557,6 @@
+                RUNTIME
+                RESOURCE DESTINATION "${_PKGDATA}" )
+ 
+-      install( DIRECTORY "${_DEST}/${_LIBDIR}/"
+-               DESTINATION "${_LIBDIR}"
+-               USE_SOURCE_PERMISSIONS
+-               FILES_MATCHING PATTERN "*.so*" )
+-
+       install( FILES "${_INTDIR}/audacity.desktop"
+                DESTINATION "${_DATADIR}/applications" )
+       install( FILES "${topdir}/LICENSE.txt" "${topdir}/README.md"

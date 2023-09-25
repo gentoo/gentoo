@@ -1,13 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Sam James <sam@gentoo.org> (2022-11-08)
-# Mask until dev-lang/python:3.11 becomes stable.
-python_targets_python3_11
-python_single_target_python3_11
+# Alfredo Tupone <tupone@gentoo.org> (2023-2-2)
+# sys-devel/gcc:12 is not stable yet on x86
+ada_target_gcc_12
 
 # Sam James <sam@gentoo.org> (2020-11-10)
 # media-gfx/openvdb is not stable on x86

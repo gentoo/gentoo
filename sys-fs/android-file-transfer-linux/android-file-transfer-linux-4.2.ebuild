@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake python-single-r1 xdg
 
@@ -54,13 +54,12 @@ BDEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.2-gcc13.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-# required to override src_prepare from xdg eclass
-src_prepare() {
-	cmake_src_prepare
 }
 
 src_configure() {
@@ -73,7 +72,7 @@ src_configure() {
 		-DBUILD_TAGLIB="$(usex taglib)"
 		# Upstream recommends to keep this off as libusb is broken
 		-DUSB_BACKEND_LIBUSB="OFF"
-		$(usex qt5 '-DDESIRED_QT_VERSION=5' '')
+		$(usev qt5 '-DDESIRED_QT_VERSION=5')
 	)
 	cmake_src_configure
 }

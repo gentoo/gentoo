@@ -1,7 +1,7 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
@@ -18,8 +18,17 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="dev-libs/wayland"
 RDEPEND="${DEPEND}"
-BDEPEND="dev-util/wayland-scanner"
+BDEPEND="
+	dev-libs/wayland-protocols
+	dev-util/wayland-scanner
+"
+
+src_configure() {
+	local -a emesonargs=(
+		-Dfishcompletiondir="${EPREFIX}/usr/share/fish/vendor_completions.d"
+	)
+	meson_src_configure
+}

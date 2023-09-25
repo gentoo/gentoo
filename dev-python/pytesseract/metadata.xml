@@ -19,5 +19,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">madmaze/pytesseract</remote-id>
+		<remote-id type="pypi">pytesseract</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,43 @@
+https://patch-diff.githubusercontent.com/raw/irssi/irssi/pull/1474.patch
+From: Ailin Nemui <ailin@d5421s.localdomain>
+Date: Tue, 4 Jul 2023 10:27:09 +0200
+Subject: [PATCH] fix usage of $type in ExtUtils::ParseXS 3.50
+
+--- a/src/perl/common/typemap
++++ b/src/perl/common/typemap
+@@ -28,5 +28,5 @@ T_IrssiObj
+ 	$arg = iobject_bless((SERVER_REC *)$var);
+ 
+ T_PlainObj
+-	$arg = plain_bless($var, \"$type\");
++	$arg = plain_bless($var, \"$ntype\");
+ 
+--- a/src/perl/irc/typemap
++++ b/src/perl/irc/typemap
+@@ -36,5 +36,5 @@ T_DccObj
+ 	$arg = simple_iobject_bless((DCC_REC *)$var);
+ 
+ T_PlainObj
+-	$arg = plain_bless($var, \"$type\");
++	$arg = plain_bless($var, \"$ntype\");
+ 
+--- a/src/perl/textui/typemap
++++ b/src/perl/textui/typemap
+@@ -18,7 +18,7 @@ T_BufferLineWrapper
+ OUTPUT
+ 
+ T_PlainObj
+-	$arg = plain_bless($var, \"$type\");
++	$arg = plain_bless($var, \"$ntype\");
+ 
+ T_BufferLineWrapper
+ 	$arg = perl_buffer_line_bless($var);
+--- a/src/perl/ui/typemap
++++ b/src/perl/ui/typemap
+@@ -13,5 +13,5 @@ T_PlainObj
+ OUTPUT
+ 
+ T_PlainObj
+-	$arg = plain_bless($var, \"$type\");
++	$arg = plain_bless($var, \"$ntype\");
+ 

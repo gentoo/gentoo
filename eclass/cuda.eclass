@@ -1,16 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-case "${EAPI:-0}" in
-	[0-6])
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	7|8)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
-esac
 
 # @ECLASS: cuda.eclass
 # @MAINTAINER:
@@ -25,21 +14,26 @@ esac
 # @EXAMPLE:
 # inherit cuda
 
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_CUDA_ECLASS} ]]; then
+_CUDA_ECLASS=1
 
 inherit flag-o-matic toolchain-funcs
-[[ ${EAPI} == [56] ]] && inherit eapi7-ver
 
 # @ECLASS_VARIABLE: NVCCFLAGS
 # @DESCRIPTION:
 # nvcc compiler flags (see nvcc --help), which should be used like
 # CFLAGS for c compiler
-: ${NVCCFLAGS:=-O2}
+: "${NVCCFLAGS:=-O2}"
 
 # @ECLASS_VARIABLE: CUDA_VERBOSE
 # @DESCRIPTION:
 # Being verbose during compilation to see underlying commands
-: ${CUDA_VERBOSE:=true}
+: "${CUDA_VERBOSE:=true}"
 
 # @FUNCTION: cuda_gccdir
 # @USAGE: [-f]
@@ -87,7 +81,7 @@ cuda_gccdir() {
 	# Try the current gcc version first
 	ver=$(gcc-version)
 	if [[ -n "${ver}" ]] && [[ ${vers} =~ ${ver} ]]; then
-		dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
+		dirs=( "${EPREFIX}"/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
 		gcc_bindir="${dirs[${#dirs[@]}-1]}"
 	fi
 
@@ -96,14 +90,14 @@ cuda_gccdir() {
 		ver=$(ver_cut 1-2 "${ver##*sys-devel/gcc-}")
 
 		if [[ -n "${ver}" ]] && [[ ${vers} =~ ${ver} ]]; then
-			dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
+			dirs=( "${EPREFIX}"/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
 			gcc_bindir="${dirs[${#dirs[@]}-1]}"
 		fi
 	fi
 
 	for ver in ${vers}; do
 		if has_version "=sys-devel/gcc-${ver}*"; then
-			dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
+			dirs=( "${EPREFIX}"/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
 			gcc_bindir="${dirs[${#dirs[@]}-1]}"
 		fi
 	done
@@ -195,7 +189,6 @@ cuda_src_prepare() {
 	cuda_sanitize
 }
 
-EXPORT_FUNCTIONS src_prepare
-
-_CUDA_ECLASS=1
 fi
+
+EXPORT_FUNCTIONS src_prepare

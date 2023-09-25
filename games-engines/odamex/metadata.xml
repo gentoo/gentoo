@@ -17,6 +17,7 @@
 		<changelog>http://odamex.net/changelog.php</changelog>
 		<doc lang="en">http://odamex.net/wiki/Odamex</doc>
 		<bugs-to>http://odamex.net/bugs/</bugs-to>
+		<remote-id type="github">odamex/odamex</remote-id>
 		<remote-id type="sourceforge">odamex</remote-id>
 	</upstream>
 	<longdescription lang="en">

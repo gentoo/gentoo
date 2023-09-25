@@ -1,12 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1 multiprocessing optfeature
+inherit distutils-r1 multiprocessing optfeature pypi
 
 DESCRIPTION="Statistical computations and models for use with SciPy"
 HOMEPAGE="
@@ -14,11 +15,10 @@ HOMEPAGE="
 	https://github.com/statsmodels/statsmodels/
 	https://pypi.org/project/statsmodels/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 DEPEND="
@@ -33,9 +33,10 @@ RDEPEND="
 	>=dev-python/patsy-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.3[${PYTHON_USEDEP}]
 "
+# https://github.com/statsmodels/statsmodels/issues/8868 for <cython-3
 BDEPEND="
 	${DEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
@@ -43,7 +44,7 @@ BDEPEND="
 
 distutils_enable_sphinx docs \
 	'dev-python/ipykernel' \
-	'dev-python/jupyter_client' \
+	'dev-python/jupyter-client' \
 	'dev-python/matplotlib' \
 	'dev-python/nbconvert' \
 	'dev-python/numpydoc'

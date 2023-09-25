@@ -1,0 +1,19 @@
+# /etc/conf.d/ipset
+
+# Location in which ipset initscript will save set rules on 
+# service shutdown
+IPSET_SAVE="/var/lib/ipset/rules-save"
+
+# Save state on stopping ipset
+SAVE_ON_STOP="yes"
+
+# Suffix used for temporary set names used for atomic swaps
+TEMP_SUFFIX=".t"
+
+# If you need to log iptables messages as soon as iptables starts,
+# AND your logger does NOT depend on the network, then you may wish
+# to uncomment the next line.
+# If your logger depends on the network, and you uncomment this line
+# you will create an unresolvable circular dependency during startup.
+# After commenting or uncommenting this line, you must run 'rc-update -u'.
+#rc_use="logger"

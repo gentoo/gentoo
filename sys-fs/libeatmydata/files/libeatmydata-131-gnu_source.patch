@@ -1,0 +1,52 @@
+https://github.com/stewartsmith/libeatmydata/pull/30
+
+From 9b37e3994f94687085e234d153c9ae3abdd038d3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 9 Jan 2023 05:50:13 +0000
+Subject: [PATCH] Avoid redefining _GNU_SOURCE
+
+It's harmless, but with 3dea342f64a73a271d24779474d1b304b8f5618c, we get:
+```
+x86_64-pc-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I/var/tmp/portage/sys-fs/libeatmydata-131/work/libeatmydata-131     -O2 -pipe -march=native -fdiagnostics-color=always -frecord-gcc-switches -Wreturn-type      -ggdb3 -Werror=implicit-function-declaration -Werror=implicit-int -c -o libeatmydata/test/tst-cancel4.o /var/tmp/portage/sys-fs/libeatmydata-131/work/libeatmydata-131/libeatmydata/test/tst-cancel4.c
+/var/tmp/portage/sys-fs/libeatmydata-131/work/libeatmydata-131/libeatmydata/test/tst-cancel4.c:28: warning: "_GNU_SOURCE" redefined
+   28 | #define _GNU_SOURCE
+      |
+In file included from /var/tmp/portage/sys-fs/libeatmydata-131/work/libeatmydata-131/libeatmydata/test/tst-cancel4.c:26:
+./config.h:115: note: this is the location of the previous definition
+  115 | # define _GNU_SOURCE 1
+      |
+```
+
+This is because we already have `AC_USE_SYSTEM_EXTENSIONS` in configure.ac
+which sets GNU_SOURCE in config.h for us.
+
+We also explicitly add a config.h include to tst-invalidvd.c instead
+of relying on it via portability.h.
+--- a/libeatmydata/test/tst-cancel4.c
++++ b/libeatmydata/test/tst-cancel4.c
+@@ -25,7 +25,6 @@
+ 
+ #include "config.h"
+ 
+-#define _GNU_SOURCE
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <limits.h>
+--- a/libeatmydata/test/tst-invalidfd.c
++++ b/libeatmydata/test/tst-invalidfd.c
+@@ -13,6 +13,7 @@
+  * with this program.  If not, see <http://www.gnu.org/licenses/>.
+  * END LICENSE */
+ 
++#include "config.h"
+ #include "libeatmydata/portability.h"
+ 
+ #include <stdio.h>
+@@ -21,7 +22,6 @@
+ #include <assert.h>
+ 
+ #ifdef HAVE_SYNC_FILE_RANGE
+-#define _GNU_SOURCE
+ #include <fcntl.h>
+ #endif
+ 

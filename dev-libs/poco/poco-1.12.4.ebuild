@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,10 +13,11 @@ S="${WORKDIR}/${PN}-${P}-release"
 LICENSE="Boost-1.0"
 # SHARED_LIBRARY_VERSION -> "${S}"/libversion
 SLOT="0/94"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 IUSE="7z activerecord cppparser +data examples +file2pagecompiler iodbc +json jwt mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc postgres prometheus sqlite +ssl test +util +xml +zip"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
+	activerecord? ( util )
 	7z? ( xml )
 	file2pagecompiler? ( pagecompiler )
 	iodbc? ( odbc )

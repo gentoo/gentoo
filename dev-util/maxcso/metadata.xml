@@ -9,10 +9,6 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription>
 		A fast ISO to CSO compression program for use with PSP and PS2
 		emulators, which uses multiple algorithms for best compression

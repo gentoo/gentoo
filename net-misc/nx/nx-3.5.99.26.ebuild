@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,17 +6,17 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="https://github.com/ArcticaProject/nx-libs"
-
 SRC_URI="https://github.com/ArcticaProject/nx-libs/archive/${PV}.tar.gz -> nx-libs-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86"
+IUSE="selinux"
 
 RDEPEND="dev-libs/libxml2
+	media-libs/libjpeg-turbo:*
 	>=media-libs/libpng-1.2.8:0=
 	>=sys-libs/zlib-1.2.3
-	virtual/jpeg:*
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -35,10 +35,11 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libfontenc"
 
-BDEPEND="sys-apps/which
-	virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	x11-misc/gccmakedep
 	x11-misc/imake"
+
+RDEPEND+=" selinux? ( sec-policy/selinux-nx )"
 
 S="${WORKDIR}/nx-libs-${PV}"
 
@@ -47,6 +48,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.5.99.26-binutils-2.36.patch"
 	# https://github.com/ArcticaProject/nx-libs/pull/1023
 	"${FILESDIR}/${PN}-3.5.99.26-riscv64-support.patch"
+	"${FILESDIR}/${PN}-3.5.99.26-musl.patch"
+	"${FILESDIR}/${PN}-3.5.99.26-which.patch"
 )
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/37744/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/5"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="
 	blas cuda doc examples fftw fortran gcc-plugin mpi opencl opengl
@@ -39,15 +39,6 @@ BDEPEND="
 	doc? ( app-doc/doxygen virtual/latex-base )
 	test? ( gcc-plugin? ( dev-scheme/guile ) )
 "
-
-pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
-
-pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-	fortran-2_pkg_setup
-}
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,10 +16,12 @@ if [[ ${PV} == *9999 ]] ; then
 	[[ ${PV} != 9999 ]] && EGIT_BRANCH=branch-${PV/.9999}
 else
 	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
-	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
+	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	fi
 fi
+
+S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="The Common Unix Printing System"
 HOMEPAGE="https://www.cups.org/ https://github.com/OpenPrinting/cups"
@@ -60,7 +62,8 @@ DEPEND="
 	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[dbus,${MULTILIB_USEDEP}] )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	acct-group/lp
 	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
@@ -70,14 +73,11 @@ PDEPEND=">=net-print/cups-filters-1.0.43"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.1-nostrip.patch"
 	"${FILESDIR}/${PN}-2.4.1-user-AR.patch"
-	"${FILESDIR}/${PN}-2.4.2-no-fortify-override.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/cups-config
 )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use kernel_linux; then
@@ -116,6 +116,9 @@ src_prepare() {
 
 	# Remove ".SILENT" rule for verbose output (bug #524338).
 	sed 's#^.SILENT:##g' -i Makedefs.in || die
+
+	# Remove redefinition of _FORTIFY_SOURCE (bug #907683)
+	sed 's#-D_FORTIFY_SOURCE=3##g' -i config-scripts/cups-compiler.m4 || die
 
 	AT_M4DIR="config-scripts" eautoreconf
 

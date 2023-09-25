@@ -1,9 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit tmpfiles
+
+DESCRIPTION="Analyzes and Reports on system logs"
+HOMEPAGE="https://sourceforge.net/projects/logwatch/"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/logwatch/git ${PN}"
@@ -13,22 +16,22 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-DESCRIPTION="Analyzes and Reports on system logs"
-HOMEPAGE="https://sourceforge.net/projects/logwatch/"
-
 LICENSE="MIT"
 SLOT="0"
+IUSE="selinux"
 
 RDEPEND="
 	dev-lang/perl
 	dev-perl/Date-Calc
 	dev-perl/Date-Manip
+	dev-perl/HTML-Parser
 	dev-perl/Tie-IxHash
 	dev-perl/Sys-CPU
 	dev-perl/Sys-MemInfo
 	virtual/cron
 	virtual/mta
 	virtual/mailx
+	selinux? ( sec-policy/selinux-logwatch )
 "
 
 src_install() {

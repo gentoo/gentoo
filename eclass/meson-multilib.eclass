@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson-multilib.eclass
@@ -30,8 +30,6 @@ if [[ -z ${_MESON_MULTILIB_ECLASS} ]] ; then
 _MESON_MULTILIB_ECLASS=1
 
 inherit meson multilib-minimal
-
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
 # @FUNCTION: meson_native_use_bool
 # @USAGE: <USE flag> [option name]
@@ -130,3 +128,5 @@ multilib_src_install() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_configure src_compile src_test src_install

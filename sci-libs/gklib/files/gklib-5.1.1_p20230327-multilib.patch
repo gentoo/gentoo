@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9cd1b4b..592b70a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,6 +26,6 @@ include_directories("test")
+ add_subdirectory("test")
+ 
+ install(TARGETS GKlib
+-  ARCHIVE DESTINATION lib/${LINSTALL_PATH}
+-  LIBRARY DESTINATION lib/${LINSTALL_PATH})
++  ARCHIVE DESTINATION lib${LIB_SUFFIX}/${LINSTALL_PATH}
++  LIBRARY DESTINATION lib${LIB_SUFFIX}/${LINSTALL_PATH})
+ install(FILES ${GKlib_includes} DESTINATION include/${HINSTALL_PATH})

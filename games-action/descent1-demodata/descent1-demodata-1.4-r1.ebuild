@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit unpacker
 DEMO="desc${PV//.}sw.exe"
 
 DESCRIPTION="Demo data files for Descent 1"
-HOMEPAGE="http://www.interplay.com/games/descent.php"
-SRC_URI="http://icculus.org/d2x/data/${DEMO}
+HOMEPAGE="https://www.interplay.com"
+SRC_URI="https://icculus.org/d2x/data/${DEMO}
 	ftp://ftp.funet.fi/pub/msdos/games/interplay/${DEMO}"
 LICENSE="free-noncomm"
 SLOT="0"

@@ -1,0 +1,13 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f63aaad..ba2fe01 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -28,7 +28,7 @@ if (SLIC3R_GUI)
+     include_directories(hidapi/include)
+     add_subdirectory(exif)
+     include_directories(exif/include)
+-    add_subdirectory(angelscript)
++    add_subdirectory(angelscript EXCLUDE_FROM_ALL)
+     # include_directories(angelscript/include)
+ 
+     if(WIN32)

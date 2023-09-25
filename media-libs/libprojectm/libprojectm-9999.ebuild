@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,12 +26,11 @@ REQUIRED_USE="
 	pulseaudio? ( qt5 )
 "
 
-RDEPEND="gles2? ( media-libs/mesa[gles2] )
+RDEPEND="
+	gles2? ( media-libs/mesa[gles2] )
 	media-libs/glm
 	media-libs/mesa[X(+)]
-	jack? (
-		virtual/jack
-	)
+	jack? ( virtual/jack )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdeclarative:5
@@ -39,16 +38,12 @@ RDEPEND="gles2? ( media-libs/mesa[gles2] )
 		dev-qt/qtwidgets:5
 		dev-qt/qtopengl:5
 	)
-	pulseaudio? (
-		media-sound/pulseaudio
-	)
+	pulseaudio? ( media-libs/libpulse )
 	sdl? ( >=media-libs/libsdl2-2.0.5 )
 	sys-libs/zlib"
 
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default

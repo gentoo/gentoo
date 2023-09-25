@@ -12,7 +12,7 @@
 	</longdescription>
 	<upstream>
 		<doc>https://doc.biboumi.louiz.org/</doc>
-		<bugs-to> https://lab.louiz.org/louiz/biboumi/-/issues</bugs-to>
+		<bugs-to>https://lab.louiz.org/louiz/biboumi/-/issues</bugs-to>
 	</upstream>
 	<use>
 		<flag name="udns">Asynchronously resolve domain names using

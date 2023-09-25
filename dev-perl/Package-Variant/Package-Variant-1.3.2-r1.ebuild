@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Parameterizable packages"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 RDEPEND="
 	virtual/perl-Carp

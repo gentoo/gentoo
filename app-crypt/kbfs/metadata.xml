@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>ran.dall@icloud.com</email>
+		<name>Randall T. Vasquez</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
+	</maintainer>
+	<longdescription lang="en">
+		The official Keybase implementation of the client-side code for the
+		Keybase filesystem (KBFS), a cryptographically secure filesystem.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">keybase/client</remote-id>
+	</upstream>
+</pkgmetadata>

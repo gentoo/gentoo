@@ -12,15 +12,17 @@
 	</maintainer>
 	<use>
 		<flag name="designer">Install the QWebEngineView plugin used to add widgets in <pkg>dev-qt/designer</pkg> forms that display web pages.</flag>
-		<flag name="geolocation">Enable physical position determination via <pkg>dev-qt/qtpositioning</pkg></flag>
 		<flag name="jumbo-build">Combine source files to speed up build process.</flag>
-		<flag name="system-ffmpeg">Use the system-wide <pkg>media-video/ffmpeg</pkg> instead of bundled.</flag>
+		<flag name="pdfium">Build the QtPdf module based on chromium's PDFium library</flag>
+		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
 		<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg> instead of bundled.</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
+		<remote-id type="github">qt/qtwebengine</remote-id>
+		<remote-id type="github">qt/qtwebengine-chromium</remote-id>
 	</upstream>
 	<slots>
 		<subslots>

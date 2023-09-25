@@ -1,0 +1,34 @@
+From 0ba09f46be6f1ce4adb94baca9867ed769f6535a Mon Sep 17 00:00:00 2001
+From: Mike Dalessio <mike.dalessio@gmail.com>
+Date: Fri, 11 Aug 2023 09:29:06 -0400
+Subject: [PATCH] test: work around libxml2 encoding changes
+
+Related to 762df0c7, we're seeing the upstream fixes did not ship in
+v2.11.5 so let's change the version test to assume it won't land until
+v2.12.0.
+---
+ test/test_mechanize_page_link.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_mechanize_page_link.rb b/test/test_mechanize_page_link.rb
+index 988328cc..04294420 100644
+--- a/test/test_mechanize_page_link.rb
++++ b/test/test_mechanize_page_link.rb
+@@ -114,7 +114,7 @@ def test_encoding_charset_after_title_bad
+     skip_if_nkf_dependency
+ 
+     # https://gitlab.gnome.org/GNOME/libxml2/-/issues/543
+-    skip if Nokogiri.uses_libxml?([">= 2.11.0", "<= 2.11.4"])
++    skip if Nokogiri.uses_libxml?([">= 2.11.0", "< 2.12.0"])
+     expected_encoding = Nokogiri.uses_libxml?("< 2.11.0") ? 'UTF-8' : 'Shift_JIS'
+ 
+     page = util_page UTF8
+@@ -138,7 +138,7 @@ def test_encoding_charset_bad
+     skip_if_nkf_dependency
+ 
+     # https://gitlab.gnome.org/GNOME/libxml2/-/issues/543
+-    skip if Nokogiri.uses_libxml?([">= 2.11.0", "<= 2.11.4"])
++    skip if Nokogiri.uses_libxml?([">= 2.11.0", "< 2.12.0"])
+     expected_encoding = Nokogiri.uses_libxml?("< 2.11.0") ? 'UTF-8' : 'Shift_JIS'
+ 
+     page = util_page "<title>#{UTF8_TITLE}</title>"

@@ -6,6 +6,6 @@
     <flag name="deprecated">Install scripts which have been marked as deprecated by upstream</flag>
   </use>
   <upstream>
-    <remote-id type="github">muennich/urxvt-perls</remote-id>
+    <remote-id type="github">xyb3rt/urxvt-perls</remote-id>
   </upstream>
 </pkgmetadata>

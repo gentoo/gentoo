@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PHP_EXT_NAME="mcrypt"
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php8-0"
 MY_P="${PN/pecl-/}-${PV/_rc/RC}"
 PHP_EXT_ECONF_ARGS=()
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"

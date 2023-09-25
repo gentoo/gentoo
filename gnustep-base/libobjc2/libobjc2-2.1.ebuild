@@ -1,17 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit cmake
 
 DESCRIPTION="GNUstep Objective-C runtime"
-HOMEPAGE="http://www.gnustep.org"
+HOMEPAGE="https://gnustep.github.io"
 SRC_URI="https://github.com/gnustep/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/Tessil/robin-map/archive/757de82.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-QA_PKGCONFIG_VERSION="2.0.0"
 KEYWORDS="~amd64 ~x86"
 IUSE="boehm-gc test"
 RESTRICT="!test? ( test )"

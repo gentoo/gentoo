@@ -1,4 +1,4 @@
-# Copyright 2004-2022 Gentoo Authors
+# Copyright 2004-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>, Karl Trygve Kalleberg <karltk@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Base eclass for Java packages
 # @DESCRIPTION:
 # This eclass provides functionality which is used by java-pkg-2.eclass,
@@ -18,7 +18,7 @@
 # Ant-based packages.
 
 case ${EAPI:-0} in
-	[5678]) ;;
+	[678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -27,7 +27,7 @@ _JAVA_UTILS_2_ECLASS=1
 
 # EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
 # Keep versionator inheritance in case consumers are using it implicitly.
-[[ ${EAPI} == [56] ]] && inherit eapi7-ver eutils multilib versionator
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver eutils multilib versionator
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
@@ -37,7 +37,7 @@ has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 # @VARIABLE: JAVA_PKG_E_DEPEND
 # @INTERNAL
 # @DESCRIPTION:
-# This is a convience variable to be used from the other java eclasses. This is
+# This is a convenience variable to be used from the other java eclasses. This is
 # the version of java-config we want to use. Usually the latest stable version
 # so that ebuilds can use new features without depending on specific versions.
 JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3"
@@ -64,6 +64,21 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # Example: use openjdk-11 to emerge foo:
 # @CODE
 #	JAVA_PKG_FORCE_VM=openjdk-11 emerge foo
+# @CODE
+
+# @ECLASS_VARIABLE: JAVA_PKG_NO_CLEAN
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An array of expressions to match *.class or *.jar files in order to  protect
+# them against deletion by java-pkg_clean.
+#
+# @CODE
+#	JAVA_PKG_NO_CLEAN=(
+#		"*/standard.jar"
+#		"*/launch4j.jar"
+#		"*/apps/jetty/apache-tomcat*"
+#		"*/lib/jetty*"
+#	)
 # @CODE
 
 # @ECLASS_VARIABLE: JAVA_PKG_WANT_BUILD_VM
@@ -562,7 +577,7 @@ java-pkg_regso() {
 			java-pkg_append_ JAVA_PKG_LIBRARY "/${target_dir#${D}}"
 		# Check the path of the lib relative to ${D}
 		elif [[ -e "${D}${lib}" ]]; then
-			target_dir="$(java-pkg_expand_dir_ ${D}${lib})"
+			target_dir="$(java-pkg_expand_dir_ "${D}${lib}")"
 			java-pkg_append_ JAVA_PKG_LIBRARY "${target_dir}"
 		else
 			die "${lib} does not exist"
@@ -768,7 +783,7 @@ java-pkg_dosrc() {
 # @FUNCTION: java-pkg_dolauncher
 # @USAGE: <filename> [options]
 # @DESCRIPTION:
-# Make a wrapper script to lauch/start this package
+# Make a wrapper script to launch/start this package
 # If necessary, the wrapper will switch to the appropriate VM.
 #
 # Can be called without parameters if the package installs only one jar
@@ -909,7 +924,7 @@ java-pkg_recordjavadoc()
 	debug-print-function ${FUNCNAME} $*
 	# the find statement is important
 	# as some packages include multiple trees of javadoc
-	JAVADOC_PATH="$(find ${D}/usr/share/doc/ -name allclasses-frame.html -printf '%h:')"
+	JAVADOC_PATH="$(find "${D}"/usr/share/doc/ -name allclasses-frame.html -printf '%h:')"
 	# remove $D - TODO: check this is ok with all cases of the above
 	JAVADOC_PATH="${JAVADOC_PATH//${D}}"
 	if [[ -n "${JAVADOC_PATH}" ]] ; then
@@ -938,7 +953,7 @@ java-pkg_recordjavadoc()
 # Example: get a specific jar from xerces slot 2
 # 	java-pkg_jar-from xerces-2 xml-apis.jar
 #
-# Example: get a specific jar from xerces slot 2, and name it diffrently
+# Example: get a specific jar from xerces slot 2, and name it differently
 # 	java-pkg_jar-from xerces-2 xml-apis.jar xml.jar
 #
 # Example: get junit.jar which is needed only for building
@@ -1349,7 +1364,7 @@ java-pkg_register-optional-dependency() {
 # @DESCRIPTION:
 # Register an arbitrary environment variable into package.env. The gjl launcher
 # for this package or any package depending on this will export it into
-# environement before executing java command.
+# environment before executing java command.
 # Must only be called in src_install phase.
 JAVA_PKG_EXTRA_ENV="${T}/java-pkg-extra-env"
 JAVA_PKG_EXTRA_ENV_VARS=""
@@ -1919,12 +1934,8 @@ etestng() {
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
 	case ${EAPI:-0} in
-		5)
-			java-pkg_func-exists java_prepare && java_prepare ;;
-		*)
-			java-pkg_func-exists java_prepare &&
-				eqawarn "java_prepare is no longer called, define src_prepare instead."
-			eapply_user ;;
+		[678]) eapply_user ;;
+		*) default_src_prepare ;;
 	esac
 
 	# Check for files in JAVA_RM_FILES array.
@@ -1940,6 +1951,12 @@ java-utils-2_src_prepare() {
 		find "${WORKDIR}" -name "*.class"
 		echo "Search done."
 	fi
+
+	# Delete bundled .class and .jar files.
+	case ${EAPI:-0} in
+		[678]) ;;
+		*) java-pkg_clean ;;
+	esac
 }
 
 # @FUNCTION: java-utils-2_pkg_preinst
@@ -2373,7 +2390,7 @@ java-pkg_init-compiler_() {
 
 }
 
-# @FUNCTION: init_paths_
+# @FUNCTION: java-pkg_init_paths_
 # @INTERNAL
 # @DESCRIPTION:
 # Initializes some variables that will be used. These variables are mostly used
@@ -2623,7 +2640,7 @@ java-pkg_get-vm-version() {
 # @RETURN: VM handle of an available JDK
 # @DESCRIPTION:
 # Selects a build vm from a list of vm handles. First checks for the system-vm
-# beeing usable, then steps through the listed handles till a suitable vm is
+# being usable, then steps through the listed handles till a suitable vm is
 # found.
 #
 java-pkg_build-vm-from-handle() {
@@ -2926,11 +2943,13 @@ is-java-strict() {
 # @FUNCTION: java-pkg_clean
 # @DESCRIPTION:
 # Java package cleaner function. This will remove all *.class and *.jar
-# files, removing any bundled dependencies.
+# files, except those specified by expressions in JAVA_PKG_NO_CLEAN.
 java-pkg_clean() {
-	if [[ -z "${JAVA_PKG_NO_CLEAN}" ]]; then
-		find "${@}" '(' -name '*.class' -o -name '*.jar' ')' -type f -delete -print || die
-	fi
+	NO_DELETE=()
+	for keep in ${JAVA_PKG_NO_CLEAN[@]}; do
+		NO_DELETE+=( '!' '-path' ${keep} )
+	done
+	find "${@}" '(' -name '*.class' -o -name '*.jar' ${NO_DELETE[@]} ')' -type f -delete -print || die
 }
 
 # @FUNCTION: java-pkg_gen-cp

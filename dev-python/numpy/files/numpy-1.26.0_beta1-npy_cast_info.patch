@@ -1,0 +1,44 @@
+From 9cfb416aad45260e1cc837029638d6b39cea9e38 Mon Sep 17 00:00:00 2001
+From: Nathan Goldbaum <nathan.goldbaum@gmail.com>
+Date: Mon, 21 Aug 2023 15:45:11 -0600
+Subject: [PATCH] BUG: fix NPY_cast_info error handling in choose
+
+---
+ numpy/core/src/multiarray/item_selection.c | 2 +-
+ numpy/core/tests/test_multiarray.py        | 6 ++++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/numpy/core/src/multiarray/item_selection.c b/numpy/core/src/multiarray/item_selection.c
+index e935a27edb6..c1d4a950815 100644
+--- a/numpy/core/src/multiarray/item_selection.c
++++ b/numpy/core/src/multiarray/item_selection.c
+@@ -968,6 +968,7 @@ PyArray_Choose(PyArrayObject *ip, PyObject *op, PyArrayObject *out,
+     PyArrayObject **mps, *ap;
+     PyArrayMultiIterObject *multi = NULL;
+     npy_intp mi;
++    NPY_cast_info cast_info = {.func = NULL};
+     ap = NULL;
+ 
+     /*
+@@ -1045,7 +1046,6 @@ PyArray_Choose(PyArrayObject *ip, PyObject *op, PyArrayObject *out,
+     npy_intp transfer_strides[2] = {elsize, elsize};
+     npy_intp one = 1;
+     NPY_ARRAYMETHOD_FLAGS transfer_flags = 0;
+-    NPY_cast_info cast_info = {.func = NULL};
+     if (PyDataType_REFCHK(dtype)) {
+         int is_aligned = IsUintAligned(obj);
+         PyArray_GetDTypeTransferFunction(
+diff --git a/numpy/core/tests/test_multiarray.py b/numpy/core/tests/test_multiarray.py
+index 966b75cc122..2836c8985c9 100644
+--- a/numpy/core/tests/test_multiarray.py
++++ b/numpy/core/tests/test_multiarray.py
+@@ -10043,3 +10043,9 @@ def test_gh_22683():
+     np.choose(np.zeros(10000, dtype=int), [a], out=a)
+     refc_end = sys.getrefcount(b)
+     assert refc_end - refc_start < 10
++
++
++def test_gh_24459():
++    a = np.zeros((50, 3), dtype=np.float64)
++    with pytest.raises(TypeError):
++        np.choose(a, [3, -1])

@@ -1,0 +1,22 @@
+--- a/kodev/Makefile
++++ b/kodev/Makefile
+@@ -9,16 +9,16 @@ INSTALL_DIR=$(PREFIX)/bin
+ 
+ S_SRC=	../src/cli.c
+ 
+-CFLAGS+=-Wall -Werror -Wstrict-prototypes -Wmissing-prototypes
++CFLAGS+=-Wall -Wstrict-prototypes -Wmissing-prototypes
+ CFLAGS+=-Wmissing-declarations -Wshadow -Wpointer-arith -Wcast-qual
+ CFLAGS+=-Wsign-compare -Iincludes -std=c99 -pedantic
+ CFLAGS+=-DPREFIX='"$(PREFIX)"'
+-LDFLAGS=-lcrypto
++LDFLAGS+=-lcrypto
+ 
+ ifneq ("$(NOOPT)", "")
+ 	CFLAGS+=-O0
+ else
+-	CFLAGS+=-O2
++	CFLAGS+=
+ endif
+ 
+ ifneq ("$(MINIMAL)", "")

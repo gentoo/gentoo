@@ -2,7 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>junghans@gentoo.org</email>
-		<name>Christoph Junghans</name>
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">kokkos/kokkos</remote-id>
+	</upstream>
 </pkgmetadata>

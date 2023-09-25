@@ -25,8 +25,6 @@
     <flag name="dynamic-loading">Enable loading of dynamic libraries (modules)
     at runtime</flag>
     <flag name="games">Support shared score files for games</flag>
-    <flag name="gconf">Use <pkg>gnome-base/gconf</pkg> to read the system
-    font name</flag>
     <flag name="gfile">Use gfile (<pkg>dev-libs/glib</pkg>) for file
     notification</flag>
     <flag name="gmp">Use the GNU multiple precision arithmetic library
@@ -46,6 +44,8 @@
     of the internal Lisp implementations</flag>
     <flag name="mailutils">Retrieve e-mail using <pkg>net-mail/mailutils</pkg>
     instead of the internal movemail substitute</flag>
+    <flag name="small-ja-dic">Generate a smaller-size Japanese dictionary
+    (saves about 5 MiB in installed image)</flag>
     <flag name="source">Install C source files and make them available for
     find-function</flag>
     <flag name="threads">Add elisp threading support</flag>

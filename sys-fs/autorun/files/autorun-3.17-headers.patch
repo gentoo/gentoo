@@ -1,5 +1,6 @@
 https://bugs.gentoo.org/251684
-
+https://bugs.gentoo.org/875851
+https://bugs.gentoo.org/877125
 --- a/autorun.cc
 +++ b/autorun.cc
 @@ -90,6 +90,8 @@ char *strchr (), *strrchr ();
@@ -11,3 +12,44 @@ https://bugs.gentoo.org/251684
  #ifndef MNTTYPE_ISO9660
  #define MNTTYPE_ISO9660 "iso9660"
  #endif
+--- a/autorun.cc
++++ b/autorun.cc
+@@ -26,20 +26,6 @@
+ #define HAVE_ARGP
+ #endif
+ 
+-#if STDC_HEADERS
+-# include <string.h>
+-#else
+-# if !HAVE_STRCHR
+-#  define strchr index
+-#  define strrchr rindex
+-# endif
+-char *strchr (), *strrchr ();
+-# if !HAVE_MEMCPY
+-#  define memcpy(d, s, n) bcopy ((s), (d), (n))
+-#  define memmove(d, s, n) bcopy ((s), (d), (n))
+-# endif
+-#endif
+-
+ #include <sys/types.h>
+ #if HAVE_SYS_WAIT_H
+ # include <sys/wait.h>
+@@ -78,6 +64,8 @@ char *strchr (), *strrchr ();
+ #include <stdarg.h>
+ #include <mntent.h>
+ #include "cdrom.h"
++#include <cstring>
++#include <climits>
+ #include <list>
+ #include <iostream>
+ #include <libintl.h>
+@@ -88,7 +76,7 @@ char *strchr (), *strrchr ();
+ #include <getopt.h>
+ #endif
+ 
+-#include <errno.h>
++#include <cerrno>
+ 
+ #include <stdlib.h>
+ 

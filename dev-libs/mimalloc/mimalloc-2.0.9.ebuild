@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/microsoft/mimalloc/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="MIT"
 SLOT="0/2"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="hardened test"
 RESTRICT="!test? ( test )"
 

@@ -1,0 +1,28 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/820ca90705ae78124958f1b96de3bdc7889c2d1e
+https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3414
+
+From 820ca90705ae78124958f1b96de3bdc7889c2d1e Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 8 Aug 2023 13:01:30 +0200
+Subject: [PATCH] pulse-server: set all change_mask flags when removing
+
+So that the logic to emit events will select sink and source objects.
+
+Fixes #3414
+--- a/src/modules/module-protocol-pulse/manager.c
++++ b/src/modules/module-protocol-pulse/manager.c
+@@ -641,9 +641,10 @@ static void registry_event_global_remove(void *data, uint32_t id)
+ 
+ 	o->this.removing = true;
+ 
+-	if (!o->this.creating)
++	if (!o->this.creating) {
++		o->this.change_mask = ~0;
+ 		manager_emit_removed(m, &o->this);
+-
++	}
+ 	object_destroy(o);
+ }
+ 
+-- 
+GitLab

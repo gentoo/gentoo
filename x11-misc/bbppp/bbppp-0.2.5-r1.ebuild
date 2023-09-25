@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,9 @@ PATCHES=(
 src_prepare() {
 	default
 	mv configure.{in,ac} || die
+	sed -i \
+		-e 's|register ||' \
+		Image.cc LinkedList.cc || die
 	eautoreconf
 }
 

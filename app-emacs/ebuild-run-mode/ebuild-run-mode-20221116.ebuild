@@ -1,8 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-NEED_EMACS="24.5"
 
 inherit elisp
 
@@ -14,7 +13,7 @@ S="${WORKDIR}/${MY_PN}-v${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND=">=app-emacs/ebuild-mode-1.53"
 

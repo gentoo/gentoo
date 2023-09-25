@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-inherit autotools git-r3 python-any-r1 user-info
+PYTHON_COMPAT=( python3_{9..11} )
+
+inherit autotools git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
@@ -17,18 +18,23 @@ IUSE="+eselect test"
 RESTRICT="!test? ( test )"
 
 # completion collision with net-fs/mc
-RDEPEND=">=app-shells/bash-4.3_p30-r1:0
+RDEPEND="
+	>=app-shells/bash-4.3_p30-r1:0
 	sys-apps/miscfiles
-	!!net-fs/mc"
-DEPEND="
+	!!net-fs/mc
+"
+BDEPEND="
 	test? (
 		${RDEPEND}
 		$(python_gen_any_dep '
 			dev-python/pexpect[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
-	)"
-PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
+	)
+"
+PDEPEND="
+	>=app-shells/gentoo-bashcomp-20140911
+"
 
 strip_completions() {
 	# Remove unwanted completions.
@@ -45,13 +51,11 @@ strip_completions() {
 
 		# Now-dead symlinks to deprecated completions
 		hd ncal
+
+		# FreeBSD
+		freebsd-update kldload kldunload portinstall portsnap
+		pkg_deinstall pkg_delete pkg_info
 	)
-	if [[ ${ARCH} != *-fbsd && ${ARCH} != *-freebsd ]]; then
-		strip_completions+=(
-			freebsd-update kldload kldunload portinstall portsnap
-			pkg_deinstall pkg_delete pkg_info
-		)
-	fi
 
 	local file
 	for file in "${strip_completions[@]}"; do
@@ -64,8 +68,8 @@ strip_completions() {
 }
 
 python_check_deps() {
-	has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -73,10 +77,10 @@ pkg_setup() {
 }
 
 src_unpack() {
-	use eselect && git-r3_fetch https://github.com/mgorny/bashcomp2
+	use eselect && git-r3_fetch https://github.com/projg2/bashcomp2
 	git-r3_fetch
 
-	use eselect && git-r3_checkout https://github.com/mgorny/bashcomp2 \
+	use eselect && git-r3_checkout https://github.com/projg2/bashcomp2 \
 		"${WORKDIR}"/bashcomp2
 	git-r3_checkout
 }
@@ -88,21 +92,26 @@ src_prepare() {
 		eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
 	fi
 
-	# redhat-specific, we strip these completions
-	rm test/t/test_if{down,up}.py || die
-	# not available for icedtea
-	rm test/t/test_javaws.py || die
-
 	eapply_user
 	eautoreconf
 }
 
 src_test() {
+	local EPYTEST_DESELECT=(
+		# redhat-specific, we strip these completions
+		test/t/test_if{down,up}.py
+		# not available for icedtea
+		test/t/test_javaws.py
+	)
+
 	# portage's HOME override breaks tests
-	local myhome=$(unset HOME; echo ~)
-	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
-	addpredict "${myhome}"
-	emake check HOME="${myhome}" PYTESTFLAGS="-vv" NETWORK=none
+	local -x HOME=$(unset HOME; echo ~)
+	addpredict "${HOME}"
+	# used in pytest tests
+	local -x NETWORK=none
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	emake -C completions check
+	epytest
 }
 
 src_install() {
@@ -116,9 +125,10 @@ src_install() {
 	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
 	# install the eselect module
-	use eselect &&
+	if use eselect; then
 		emake -C "${WORKDIR}"/bashcomp2 DESTDIR="${D}" \
 			PREFIX="${EPREFIX}/usr" install
+	fi
 }
 
 pkg_postinst() {

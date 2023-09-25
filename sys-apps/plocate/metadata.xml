@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>arsen@aarsen.me</email>
-		<name>Arsen Arsenović</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
 		<email>jeffrey@icurse.nl</email>
 		<name>Jeffrey Lin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
+		<name>Arsen Arsenović</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>flow@gentoo.org</email>

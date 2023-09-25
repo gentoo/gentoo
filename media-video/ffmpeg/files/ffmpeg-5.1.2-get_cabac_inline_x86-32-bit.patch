@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/901099 and partly https://bugs.gentoo.org/900937.
+
+Newer compilers may optimise such that < 7 registers are free on 32-bit x86
+and then we get an "invalid asm" error. This is https://bugs.gentoo.org/901099
+and https://trac.ffmpeg.org/ticket/8903.
+
+Making matters worse, GCC sometimes hangs on invalid asm, so this also
+mitigates a hang with e.g. -O3 -march=znver1. See https://bugs.gentoo.org/900937
+and https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109137.
+
+In future, we may want to adjust the definition of HAVE_7REGS to just exclude
+32-bit x86, but that's a big sledgehammer, so let's avoid it for now until we have
+a reply on the upstream ffmpeg bug.
+--- a/libavcodec/x86/cabac.h
++++ b/libavcodec/x86/cabac.h
+@@ -175,7 +175,7 @@
+
+ #endif /* BROKEN_RELOCATIONS */
+
+-#if HAVE_7REGS && !BROKEN_COMPILER
++#if HAVE_7REGS && !BROKEN_COMPILER && !ARCH_X86_32
+ #define get_cabac_inline get_cabac_inline_x86
+ static
+ #if defined(_WIN32) && !defined(_WIN64) && defined(__clang__)
+

@@ -1,0 +1,24 @@
+From 17bb13dcfdb56ac238458dcef23fe01893a892e9 Mon Sep 17 00:00:00 2001
+From: John Marshall <jmarshall@hey.com>
+Date: Sat, 8 Apr 2023 11:00:46 +1200
+Subject: [PATCH] Remove incorrect type annotation
+
+The annotation already in pysam/libcbcf.pyi is correct.
+Fixes #1179 as reopened on April 6th.
+---
+ pysam/libcbcf.pyx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pysam/libcbcf.pyx b/pysam/libcbcf.pyx
+index 8c088af2..8ecfe5f3 100644
+--- a/pysam/libcbcf.pyx
++++ b/pysam/libcbcf.pyx
+@@ -3479,7 +3479,7 @@ cdef class VariantRecordSample(object):
+         return bcf_format_get_alleles(self)
+ 
+     @alleles.setter
+-    def alleles(self, value: tuple):
++    def alleles(self, value):
+         # Sets the genotype, supply a tuple of alleles to set.
+         # The supplied alleles need to be defined in the correspoding pysam.libcbcf.VariantRecord
+         # The genotype is reset when an empty tuple, None or (None,) is supplied

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,11 +58,15 @@ src_prepare() {
 	echo "SUBDIRS = $(usev test auto)" >> tests/tests.pro
 
 	# skip several tests that fail and/or have additional deps
-	sed -i \
-		-e 's/findArchiver(binaryName,.*/"";/'	`# requires zip and jar` \
-		-e 's/p\.value("nodejs\./true||&/'	`# requires nodejs, bug 527652` \
-		-e 's/\(p\.value\|m_qbsStderr\.contains\)("typescript\./true||&/' `# requires nodejs and typescript` \
-		tests/auto/blackbox/tst_blackbox.cpp || die
+	local SKIP_TESTS_ARGS=(
+		# requires zip and jar
+		-e 's/findArchiver(binaryName,.*/"";/'
+		# requires nodejs, bug 527652
+		-e 's/p\.value("nodejs\./true||&/'
+		# requires nodejs and typescript
+		-e 's/\(p\.value\|m_qbsStderr\.contains\)("typescript\./true||&/'
+	)
+	sed -i tests/auto/blackbox/tst_blackbox.cpp "${SKIP_TESTS_ARGS[@]}" || die
 	sed -i -re '/blackbox-(android|apple|java)\.pro/ d' tests/auto/auto.pro || die
 }
 

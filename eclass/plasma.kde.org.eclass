@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: plasma.kde.org.eclass
@@ -19,7 +19,7 @@
 
 case ${EAPI} in
 	8) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_PLASMA_KDE_ORG_ECLASS} ]]; then
@@ -53,7 +53,7 @@ if [[ ${KDE_BUILD_TYPE} == live ]]; then
 	fi
 elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 	case ${PV} in
-		5.??.[6-9]?* )
+		5.??.[6-9][05]* )
 			_KDE_SRC_URI+="unstable/plasma/$(ver_cut 1-3)/"
 			RESTRICT+=" mirror"
 			;;

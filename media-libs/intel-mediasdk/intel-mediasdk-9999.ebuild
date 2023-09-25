@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake optfeature
+inherit cmake-multilib optfeature
 
 if [[ ${PV} == *9999 ]] ; then
 	: ${EGIT_REPO_URI:="https://github.com/Intel-Media-SDK/MediaSDK"}
@@ -26,37 +26,41 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-IUSE="dri test +tools wayland X"
+IUSE="dri test tools wayland X"
 # Test not working at the moment
 #RESTRICT="!test? ( test )"
 RESTRICT="test"
-# # Most of these flags only have an effect on the tools
 REQUIRED_USE="
 	dri? ( X )
-	wayland? ( tools )
-	X? ( tools )
 "
 
 # x11-libs/libdrm[video_cards_intel] for intel_bufmgr.h in samples
 # bug #805224
-DEPEND="
-	x11-libs/libpciaccess
-	>=media-libs/libva-intel-media-driver-${PV}
-	media-libs/libva[X?,wayland?]
-	x11-libs/libdrm[video_cards_intel]
+RDEPEND="
+	x11-libs/libpciaccess[${MULTILIB_USEDEP}]
+	>=media-libs/libva-intel-media-driver-${PV}[${MULTILIB_USEDEP}]
+	media-libs/libva[X?,wayland?,${MULTILIB_USEDEP}]
+	x11-libs/libdrm[video_cards_intel,${MULTILIB_USEDEP}]
 	wayland? (
-		dev-libs/wayland
-		dev-util/wayland-scanner
-		dev-libs/wayland-protocols
+		dev-libs/wayland[${MULTILIB_USEDEP}]
 	)
 	X? (
-		x11-libs/libX11
-		x11-libs/libxcb
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libxcb[${MULTILIB_USEDEP}]
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	wayland? (
+		dev-libs/wayland-protocols
+	)
+"
+BDEPEND="
+	wayland? (
+		dev-util/wayland-scanner
+	)
+"
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		# OpenCL only has an effect if we build kernels
 		-DENABLE_OPENCL=OFF

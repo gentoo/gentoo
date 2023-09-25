@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake python-single-r1
 
 DESCRIPTION="C library for automatically solving Freecell and some other solitaire variants"
@@ -12,7 +12,7 @@ SRC_URI="https://fc-solve.shlomifish.org/downloads/fc-solve/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 IUSE="tcmalloc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

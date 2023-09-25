@@ -10,4 +10,7 @@
   factorization (or for LU factorization with diagonal pivoting). There
   are versions in both C and Fortran.
   </longdescription>
+  <upstream>
+    <remote-id type="github">DrTimothyAldenDavis/SuiteSparse</remote-id>
+  </upstream>
 </pkgmetadata>

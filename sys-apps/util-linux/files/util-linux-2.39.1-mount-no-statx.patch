@@ -1,0 +1,34 @@
+https://github.com/util-linux/util-linux/issues/2409
+https://github.com/util-linux/util-linux/commit/91c2cbdf3a04f2f3f4c4bb0d2a6053874bfa11ea
+
+From 91c2cbdf3a04f2f3f4c4bb0d2a6053874bfa11ea Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Thu, 3 Aug 2023 07:13:28 +0200
+Subject: [PATCH] libmount: (utils) fix statx fallback
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If the systemcall is not available ENOSYS is returned.
+
+Under glibc the statx implementation also has its own fallback logic.
+As AT_STATX_DONT_SYNC can't be implemented correctly in that fallback
+logic the wrapper will return EINVAL in case the emulation is needed and
+AT_STATX_DONT_SYNC is set.
+So also use our own fallback in that case.
+
+Fixes: #2409
+Signed-off-by: Thomas Weißschuh <thomas@t-8ch.de>
+--- a/libmount/src/utils.c
++++ b/libmount/src/utils.c
+@@ -133,7 +133,8 @@ static int safe_stat(const char *target, struct stat *st, int nofollow)
+ 			st->st_mode = stx.stx_mode;
+ 		}
+ 
+-		if (rc == 0 || errno != EOPNOTSUPP)
++		if (rc == 0 ||
++		    (errno != EOPNOTSUPP && errno != ENOSYS && errno != EINVAL))
+ 			return rc;
+ 	}
+ #endif
+

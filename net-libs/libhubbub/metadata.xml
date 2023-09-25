@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>mjo@gentoo.org</email>
+		<name>Michael Orlitzky</name>
+	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>jaco@uls.co.za</email>
 		<name>Jaco Kroon</name>

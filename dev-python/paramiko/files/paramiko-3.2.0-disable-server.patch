@@ -1,0 +1,58 @@
+From a47e9bdc80224c9ceafcea6da5cea1539ddfbd4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 26 May 2023 06:05:13 +0200
+Subject: [PATCH 3/3] Disable server component due to security issues
+
+---
+ paramiko/transport.py | 4 ++++
+ tests/conftest.py     | 5 +++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/paramiko/transport.py b/paramiko/transport.py
+index 8785d6bb..803d07d1 100644
+--- a/paramiko/transport.py
++++ b/paramiko/transport.py
+@@ -120,6 +120,8 @@ from paramiko.util import (
+ )
+ 
+ 
++SERVER_DISABLED_BY_GENTOO = True
++
+ # for thread cleanup
+ _active_threads = []
+ 
+@@ -768,6 +770,8 @@ class Transport(threading.Thread, ClosingContextManager):
+             `.SSHException` -- if negotiation fails (and no ``event`` was
+             passed in)
+         """
++        if SERVER_DISABLED_BY_GENTOO:
++            raise Exception("Disabled by Gentoo for security reasons. Enable with 'server' USE flag")
+         if server is None:
+             server = ServerInterface()
+         self.server_mode = True
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 7546aae4..804a289e 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -16,6 +16,7 @@ from paramiko import (
+     Ed25519Key,
+     ECDSAKey,
+     PKey,
++    transport,
+ )
+ 
+ from ._loop import LoopSocket
+@@ -23,6 +24,10 @@ from ._stub_sftp import StubServer, StubSFTPServer
+ from ._util import _support
+ 
+ 
++# We need the server component for testing
++transport.SERVER_DISABLED_BY_GENTOO = False
++
++
+ # Perform logging by default; pytest will capture and thus hide it normally,
+ # presenting it on error/failure. (But also allow turning it off when doing
+ # very pinpoint debugging - e.g. using breakpoints, so you don't want output
+-- 
+2.40.1
+

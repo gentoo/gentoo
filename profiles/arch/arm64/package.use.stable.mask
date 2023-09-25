@@ -1,5 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-22)
+# Needs unkeyworded dev-python/sympy
+dev-python/nbval test
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
 
 # Sam James <sam@gentoo.org> (2022-07-06)
 # sci-libs/sundials is not marked stable on arm64
@@ -83,7 +91,7 @@ net-misc/spice-gtk smartcard
 
 # Sam James <sam@gentoo.org> (2020-06-29)
 # Deps not yet stable
-dev-python/pymongo test
+dev-python/pymongo test-full
 net-misc/ntpsec rclock_oncore rclock_pps
 dev-util/bcc test
 dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
@@ -126,11 +134,6 @@ media-libs/opencv contribcvv contribhdf contribsfm glog gstreamer
 # Mart Raudsepp <leio@gentoo.org> (2019-01-18)
 # Respective x11-drivers/ not tested and stable yet
 x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_devices_void video_cards_dummy video_cards_fbdev video_cards_nouveau
-
-# Mart Raudsepp <leio@gentoo.org> (2018-05-29)
-# dev-libs/xapian, app-text/texlive not stable yet
-# USE=doc requires USE=latex
-app-doc/doxygen doxysearch doc
 
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Non-stable dependencies.

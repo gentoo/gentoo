@@ -1,0 +1,11 @@
+--- a/remarkable/RemarkableWindow.py	2023-03-11 19:50:14.183333326 +0100
++++ b/remarkable/RemarkableWindow.py	2023-03-11 19:57:02.033333327 +0100
+@@ -24,7 +24,7 @@
+ import gi
+ gi.require_version('Gtk', '3.0')
+ gi.require_version('GtkSource', '3.0')
+-gi.require_version('WebKit2', '4.0')
++gi.require_version('WebKit2', '4.1')
+ 
+ from bs4 import BeautifulSoup
+ from gi.repository import Gdk, Gtk, GtkSource, Pango, WebKit2

@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">WebTest</remote-id>
+		<remote-id type="github">Pylons/webtest</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit autotools
 
 MY_P=${P/-ac}
 
@@ -29,6 +31,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-acpi-sys-temp-hwmon.patch"
 	"${FILESDIR}/${PN}-acpi-fix-battery-unit.patch"
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf $(use_enable debug)

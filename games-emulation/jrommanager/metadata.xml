@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!--maintainer-needed-->
-  <longdescription>
-    JRomManager is a Rom manager made to work mostly anywhere, 
-    with decent performance and minimal memory footprint, 
-    some attention was also made to work correctly over shared networks.
-    It has also been made available open source to permit enhancements
-    from the retro gaming community. The main focus is to support MAME
-    and derivatives, but should work well with any Dat file from other
-    roms sets.
-  </longdescription>
+	<!--maintainer-needed-->
+	<longdescription>
+		JRomManager is a Rom manager made to work mostly anywhere, 
+		with decent performance and minimal memory footprint, 
+		some attention was also made to work correctly over shared networks.
+		It has also been made available open source to permit enhancements
+		from the retro gaming community. The main focus is to support MAME
+		and derivatives, but should work well with any Dat file from other
+		roms sets.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">optyfr/JRomManager</remote-id>
+	</upstream>
 </pkgmetadata>

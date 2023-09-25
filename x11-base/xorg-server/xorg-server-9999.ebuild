@@ -23,7 +23,6 @@ CDEPEND="
 	dev-libs/libbsd
 	dev-libs/openssl:0=
 	>=x11-apps/iceauth-1.0.2
-	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
 	x11-apps/xkbcomp
 	>=x11-libs/libdrm-2.4.89

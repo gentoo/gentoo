@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit latex-package
 
 DESCRIPTION="Culmus fonts support for latex"
-HOMEPAGE="http://ivritex.sourceforge.net/"
+HOMEPAGE="https://ivritex.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ivritex/${P}_src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

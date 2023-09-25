@@ -1,0 +1,21 @@
+diff -U3 -r asymptote-2.85.orig/settings.cc asymptote-2.85/settings.cc
+--- asymptote-2.85.orig/settings.cc	2023-02-09 11:53:32.000000000 +0700
++++ asymptote-2.85/settings.cc	2023-02-16 12:55:18.343703131 +0700
+@@ -101,13 +101,13 @@
+ string defaultPDFViewer="open";
+ string defaultHTMLViewer="open";
+ #else
+-string defaultPSViewer="evince";
+-string defaultPDFViewer="evince";
+-string defaultHTMLViewer="google-chrome";
++string defaultPSViewer="xdg-open";
++string defaultPDFViewer="xdg-open";
++string defaultHTMLViewer="xdg-open";
+ #endif
+ string defaultGhostscript="gs";
+ string defaultGhostscriptLibrary="";
+-string defaultDisplay="display";
++string defaultDisplay="xdg-open";
+ string defaultAnimate="animate";
+ void queryRegistry() {}
+ const string dirsep="/";

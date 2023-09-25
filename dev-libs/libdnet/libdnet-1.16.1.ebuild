@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1
 
@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="python test"
 RESTRICT="!test? ( test )"
 
@@ -55,7 +55,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with python) \
-		--with-check=$(usex test "${ESYSROOT}/usr")
+		$(use_with test check "${ESYSROOT}/usr")
 }
 
 src_compile() {

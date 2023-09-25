@@ -5,4 +5,7 @@
     <email>dilfridge@gentoo.org</email>
     <name>Andreas K. Huettel</name>
   </maintainer>
+  <use>
+    <flag name="agg">Enable the libagg anti-grain rendering engine</flag>
+  </use>
 </pkgmetadata>

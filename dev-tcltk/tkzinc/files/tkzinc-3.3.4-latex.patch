@@ -1,9 +1,0 @@
---- a/doc/refman.tex
-+++ b/doc/refman.tex
-@@ -1,4 +1,6 @@
-+\RequirePackage{ifpdf}
- \documentclass[11pt,twoside,a4paper]{book}
-+\usepackage [latin1]{inputenc}
- 
- %----------------------------------------------------------------------
- % $Revision: 1.94 $

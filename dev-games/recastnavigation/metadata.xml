@@ -13,4 +13,7 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">recastnavigation/recastnavigation</remote-id>
+	</upstream>
 </pkgmetadata>

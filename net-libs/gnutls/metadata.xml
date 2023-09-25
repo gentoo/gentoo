@@ -33,9 +33,6 @@
 		<flag name="test-full">
 			Enable full test mode
 		</flag>
-		<flag name="valgrind">
-			Enable usage of <pkg>dev-util/valgrind</pkg> in debug
-		</flag>
 	</use>
 	<slots>
 		<subslots>Reflect ABI compatibility of libgnutls.so</subslots>

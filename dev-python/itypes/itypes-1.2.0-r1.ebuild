@@ -1,15 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
-DESCRIPTION="basic immutable container types for python"
-HOMEPAGE="https://github.com/PavanTatikonda/itypes/"
+DESCRIPTION="Basic immutable container types for python"
+HOMEPAGE="
+	https://github.com/PavanTatikonda/itypes/
+	https://pypi.org/project/itypes/
+"
 SRC_URI="
 	https://github.com/PavanTatikonda/itypes/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz

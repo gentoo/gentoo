@@ -7,19 +7,23 @@
 	</maintainer>
 	<use>
 		<flag name="assistant">Build Qt Assistant</flag>
+		<flag name="clang">Enable using libclang for code parsing (linguist/qdoc)</flag>
 		<flag name="designer">Build Qt Designer</flag>
 		<flag name="distancefieldgenerator">Build Qt Distance Field Generator</flag>
-		<flag name="linguist">Build Qt Linguist</flag>
+		<flag name="linguist">Build Qt Linguist (GUI requires USE=widgets)</flag>
 		<flag name="pixeltool">Build Qt Pixeltool</flag>
-		<flag name="qdbus">Build the Qt D-Bus Interface and D-Bus Viewer</flag>
+		<flag name="qdbus">Build the Qt D-Bus Interface (D-Bus Viewer requires USE=widgets)</flag>
 		<flag name="qdoc">Build Qt Documentation Generator</flag>
+		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
 		<flag name="qtattributionsscanner">Build Qt Source Code Attribution Scanner</flag>
 		<flag name="qtdiag">Build Qt Diag</flag>
 		<flag name="qtplugininfo">Build Qt Plugin Info</flag>
+		<flag name="widgets">Enable QtWidgets support</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
+		<remote-id type="github">qt/qttools</remote-id>
 	</upstream>
 	<slots>
 		<subslots>

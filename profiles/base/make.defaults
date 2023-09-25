@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -6,18 +6,17 @@
 
 # Profile IUSE injection (applies only to ebuilds which use EAPI 5 or later)
 IUSE_IMPLICIT="prefix prefix-guest prefix-stack"
-USE_EXPAND_IMPLICIT="ELIBC KERNEL USERLAND"
-USE_EXPAND_VALUES_ELIBC="bionic Cygwin Darwin glibc mingw musl SunOS Winnt"
-USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS Winnt"
-USE_EXPAND_VALUES_USERLAND="BSD GNU"
+USE_EXPAND_IMPLICIT="ELIBC KERNEL"
+USE_EXPAND_VALUES_ELIBC="bionic Darwin glibc mingw musl SunOS"
+USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@lists.gentoo.org.
-USE_EXPAND="ABI_MIPS ABI_S390 ABI_X86 ADA_TARGET ALSA_CARDS AMDGPU_TARGETS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86 CURL_SSL ELIBC FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LLVM_TARGETS LUA_SINGLE_TARGET LUA_TARGETS MONKEYD_PLUGINS NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XTABLES_ADDONS"
+USE_EXPAND="ABI_MIPS ABI_S390 ABI_X86 ADA_TARGET ALSA_CARDS AMDGPU_TARGETS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86 CURL_SSL ELIBC FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LLVM_TARGETS LUA_SINGLE_TARGET LUA_TARGETS MONKEYD_PLUGINS NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XTABLES_ADDONS"
 
 # USE_EXPAND variables whose contents are not shown in package manager
 # output. Changes need discussion on gentoo-dev.
-USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_S390 ABI_X86 CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86"
+USE_EXPAND_HIDDEN="KERNEL ELIBC ABI_MIPS ABI_S390 ABI_X86 CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86"
 
 CONFIG_PROTECT="/etc"
 CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
@@ -43,16 +42,15 @@ CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
 # GOBIN needs to be cleaned as random values in GOBIN can affect the
 # building of some packages:
 # https://archives.gentoo.org/gentoo-dev/message/163010f83ae7819d80c0cfdf797cbfe0
-ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY CARGO_HOME XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_STATE_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX GOBIN GOPATH"
+ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY CARGO_HOME GDK_PIXBUF_MODULE_FILE XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_STATE_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX GOBIN GOPATH"
 
 # Variables that are set exclusively by the profile
 # and not by user configuration files.
-PROFILE_ONLY_VARIABLES="${PROFILE_ONLY_VARIABLES} ELIBC IUSE_IMPLICIT KERNEL USERLAND USE_EXPAND_IMPLICIT USE_EXPAND_UNPREFIXED USE_EXPAND_VALUES_ELIBC USE_EXPAND_VALUES_KERNEL USE_EXPAND_VALUES_USERLAND"
+PROFILE_ONLY_VARIABLES="${PROFILE_ONLY_VARIABLES} ELIBC IUSE_IMPLICIT KERNEL USE_EXPAND_IMPLICIT USE_EXPAND_UNPREFIXED USE_EXPAND_VALUES_ELIBC USE_EXPAND_VALUES_KERNEL"
 
 # 'Sane' defaults
 ELIBC="glibc"
 KERNEL="linux"
-USERLAND="GNU"
 INPUT_DEVICES="libinput"
 
 # Accept only licenses in the FREE license group, i.e., with
@@ -101,8 +99,8 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
 # Default Ruby build target(s)
-# Updated to include ruby27 on 2021-10-10
-RUBY_TARGETS="ruby27"
+# Updated to add ruby31 on 2023-05-29 and to drop ruby30 on 2023-06-17
+RUBY_TARGETS="ruby31"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-10-22)
 # These USE flags are what is common between the various sub-profiles. Stages 2
@@ -129,12 +127,12 @@ PYTHONDONTWRITEBYTECODE="1"
 # This MUST be kept in sync with the PYTHON_TARGETS below
 # Mike Gilbert <floppym@gentoo.org> (2018-05-23)
 # sys-apps/baselayout-2.5 needs split-usr enabled.
-BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr xml python_targets_python3_10"
+BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr xml python_targets_python3_11 python_single_target_python3_11"
 
 # Mike Gilbert <floppym@gentoo.org> (2012-05-15)
 # Default target(s) for python-r1.eclass
-PYTHON_TARGETS="python3_10"
-PYTHON_SINGLE_TARGET="python3_10"
+PYTHON_TARGETS="python3_11"
+PYTHON_SINGLE_TARGET="python3_11"
 
 # Michał Górny <mgorny@gentoo.org> (2013-08-10)
 # Moved from portage's make.globals.
@@ -155,7 +153,7 @@ TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
 
 # Aaron W. Swenson <titanofold@gentoo.org> (2017-07-09)
 # Default target(s) for postgres{,-multi}.eclass
-POSTGRES_TARGETS="postgres12 postgres13"
+POSTGRES_TARGETS="postgres15"
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-11-17)
 #
@@ -170,7 +168,7 @@ POSTGRES_TARGETS="postgres12 postgres13"
 # Moreover, it should only contain targets that have a stable version
 # of PHP, to avoid pulling in an unstable PHP on stable systems.
 #
-PHP_TARGETS="php7-4 php8-0"
+PHP_TARGETS="php8-1"
 
 # Alfredo Tupone <tupone@gentoo.org> (2022-11-16)
 #
@@ -181,3 +179,9 @@ ADA_TARGET="gnat_2021"
 # Default targets for lua{,-single}.eclass
 LUA_SINGLE_TARGET="lua5-1"
 LUA_TARGETS="lua5-1"
+
+# Sam James <sam@gentoo.org> (2023-02-28)
+# Reduce -Wimplicit-function-declaration noise from autoconf. Any compilers
+# we care about should match these anyway. See https://wiki.gentoo.org/wiki/Modern_C_porting.
+ac_cv_c_undeclared_builtin_options="none needed"
+gl_cv_compiler_check_decl_option="-Werror=implicit-function-declaration"

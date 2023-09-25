@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -9,13 +9,11 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 PHP_INI_NAME="50-http"
 
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
-USE_PHP="php8-0 php8-1"
-
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="Extended HTTP Support for PHP"
 LICENSE="BSD-2 MIT"
@@ -33,19 +31,14 @@ COMMON_DEPEND="app-arch/brotli:=
 DEPEND="
 	php_targets_php8-0? ( ${COMMON_DEPEND} dev-lang/php:8.0[session(-),iconv(-)] )
 	php_targets_php8-1? ( ${COMMON_DEPEND} dev-lang/php:8.1[session(-),iconv(-)] )"
-RDEPEND="${DEPEND}
-	php_targets_php7-4? ( dev-php/pecl-http:7[php_targets_php7-4(-)] )"
+RDEPEND="${DEPEND}"
 
 PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps
 	--without-http-libidn-dir  --without-http-libicu-dir
 	--without-http-libidnkit2-dir --without-http-libidnkit-dir )
 
 src_prepare() {
-	if use php_targets_php8-0 || use php_targets_php8-1 ; then
-		php-ext-source-r3_src_prepare
-	else
-		default_src_prepare
-	fi
+	php-ext-source-r3_src_prepare
 
 	# Respect LDFLAGS, bug 727134
 	export EXTRA_LDFLAGS="${LDFLAGS}"
@@ -70,10 +63,4 @@ src_test() {
 		# Clean up testing links
 		rm modules/raphf.so || die
 	done
-}
-
-src_install() {
-	if use php_targets_php8-0 || use php_targets_php8-1 ; then
-		php-ext-pecl-r3_src_install
-	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P}-sdl1
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	app-text/libpaper:=
@@ -46,9 +46,7 @@ src_compile() {
 }
 
 src_install() {
-	# Parallel install may break the building process
-	# See: https://bugs.gentoo.org/859169
-	emake -j1 DESTDIR="${D}" GENTOO_LIBDIR="$(get_libdir)" install
+	emake DESTDIR="${D}" GENTOO_LIBDIR="$(get_libdir)" install
 	local file size
 	for file in data/images/icon[0-9]*x[0-9]*.png; do
 		size=${file##*/icon}

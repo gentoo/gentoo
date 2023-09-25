@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 COMMIT="6092368aabdd0dbb0fbceb2766a37b98e0ff6911"
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{9..10} pypy3 )
 
 inherit autotools distutils-r1
 
@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+agrep +alloca +approx debug nls profile python"
 
 RDEPEND="

@@ -1,15 +1,15 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit python-single-r1
 
 DESCRIPTION="Scripts to help retiring Gentoo developers"
-HOMEPAGE="https://github.com/mgorny/gentoo-retirement-scripts/"
+HOMEPAGE="https://github.com/projg2/gentoo-retirement-scripts/"
 SRC_URI="
-	https://github.com/mgorny/gentoo-retirement-scripts/archive/v${PV}.tar.gz
+	https://github.com/projg2/gentoo-retirement-scripts/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

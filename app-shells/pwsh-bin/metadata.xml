@@ -2,9 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-  <maintainer type="person">
-    <email>xgqt@gentoo.org</email>
-    <name>Maciej Barć</name>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
   </maintainer>
   <longdescription>
     PowerShell Core is a cross-platform automation and configuration

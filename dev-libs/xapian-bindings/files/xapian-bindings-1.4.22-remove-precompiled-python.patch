@@ -1,0 +1,22 @@
+The build system installs the jni shared library in a wrong path.
+
+--- a/java/Makefile.am
++++ b/java/Makefile.am
+@@ -137,7 +137,7 @@
+ 
+ jnidir = `pwd`/built
+ 
+-jni_LTLIBRARIES = libxapian_jni.la
++noinst_LTLIBRARIES = libxapian_jni.la
+ 
+ # Remove the .la file - libxapian_jni.la is never linked against (it's a
+ # module) and JVMs don't use libltdl.  Note that the library gets installed by
+@@ -162,7 +162,7 @@
+ endif
+ AM_CXXFLAGS = $(SWIG_CXXFLAGS) $(XAPIAN_CXXFLAGS)
+ AM_CPPFLAGS = $(JAVA_CPPFLAGS)
+-libxapian_jni_la_LDFLAGS = -avoid-version -module $(SHREXT) $(NO_UNDEFINED)
++libxapian_jni_la_LDFLAGS = -avoid-version -module $(SHREXT) $(NO_UNDEFINED) -rpath $(libdir)/xapian-bindings
+ libxapian_jni_la_LIBADD = $(XAPIAN_LIBS)
+ libxapian_jni_la_SOURCES = xapian_wrap.cc
+ 

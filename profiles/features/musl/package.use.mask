@@ -1,12 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-10)
-# sci-libs/mkl is binary only and links to glibc
-sci-chemistry/gromacs mkl
-sci-libs/armadillo mkl
-sci-libs/dlib mkl
-sci-libs/trilinos mkl
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is masked on musl
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-05-08)
+# Needs fpu_control.h, bug #891063
+media-sound/lame debug
+
+# Conrad Kostecki <conikost@gentoo.org> (2023-03-01)
+# sys-block/arcconf is masked on musl
+net-analyzer/nagios-plugin-check_raid aacraid
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-10-04)
 # Mask loguru until fixed upstream #873601
@@ -37,6 +42,10 @@ media-video/ffmpeg amf
 net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
 sys-apps/hwloc gl
+sci-chemistry/gromacs mkl
+sci-libs/armadillo mkl
+sci-libs/dlib mkl
+sci-libs/trilinos mkl
 www-client/qutebrowser widevine
 
 # Sam James <sam@gentoo.org> (2022-10-03)
@@ -86,15 +95,12 @@ sys-apps/man-pages l10n_sr l10n_sv l10n_uk l10n_vi
 sys-apps/man-pages l10n_ja l10n_ru l10n_zh-CN
 sys-apps/sysvinit nls
 sys-auth/sssd man
+sys-apps/util-linux nls
 
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Disable some sanitizers for LLVM, see bug #753935
 # Needs libexecinfo on musl, not yet packaged
 sys-libs/compiler-rt-sanitizers gwp-asan
-
-# Sam James <sam@gentoo.org> (2021-11-07)
-# Broken as "error: unknown type name '_Unwind_Word'"
-<sys-libs/compiler-rt-sanitizers-14 hwasan
 
 # James Le Cuirot <chewi@gentoo.org> (2020-05-16)
 # execinfo.h is required for debug.
@@ -107,8 +113,9 @@ dev-lang/gforth check
 # See bug #604542
 net-misc/iputils idn
 
-# See bug #504200, #723370
-sys-devel/gcc sanitize nls vtv
+# See bug #504200, #723370, bug #893654
+<sys-devel/gcc-13 sanitize
+sys-devel/gcc nls vtv
 
 # These cause collisions with <libintl.h>
 # even with --without-included-gettext

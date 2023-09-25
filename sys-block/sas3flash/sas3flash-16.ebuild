@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit mount-boot
+inherit mount-boot secureboot
 
 DESCRIPTION="Flash utility for LSI MPT-SAS3 controller"
 HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8e#downloads"
 
 LICENSE="LSI"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~x64-solaris"
 IUSE="doc efi"
 
 RESTRICT="strip fetch mirror"
@@ -31,8 +31,6 @@ SRC_URI="
 	x86? ( ${SRC_URI_LINUX} )
 	ppc64? ( ${SRC_URI_LINUX} )
 	x64-solaris? ( ${SRC_URI_SOLARIS} )
-	x86-solaris? ( ${SRC_URI_SOLARIS} )
-	sparc-solaris? ( ${SRC_URI_SOLARIS} )
 	efi? ( ${SRC_URI_UEFI} )
 	doc? ( "${SRC_URI_BASE}/oracle/files/${DISTFILE_DOC}" )"
 
@@ -47,6 +45,10 @@ pkg_nofetch() {
 		elog "and also place it into your DISTDIR directory."
 	fi
 	einfo "${SRC_URI}"
+}
+
+pkg_setup() {
+	use efi && secureboot_pkg_setup
 }
 
 supportedcards() {
@@ -79,11 +81,8 @@ src_install() {
 	elif use ppc64; then
 		doexe Installer_P16_for_Linux/sas3flash_linux_ppc64_rel/sas3flash
 		DOCS+=( Installer_P"${PV}"_for_Linux/README_Installer_P"${PV}"_Linux.txt )
-	elif use x64-solaris || use x86-solaris; then
+	elif use x64-solaris; then
 		doexe Installer_P16_for_Solaris/sas3flash_solaris_x86_rel/sas3flash
-		DOCS+=( Installer_P"${PV}"_for_Solaris/README_Installer_P"${PV}"_Solaris.txt )
-	elif use sparc-solaris; then
-		doexe Installer_P16_for_Solaris/sas3flash_solaris_sparc_rel/sas3flash
 		DOCS+=( Installer_P"${PV}"_for_Solaris/README_Installer_P"${PV}"_Solaris.txt )
 	fi
 
@@ -93,6 +92,7 @@ src_install() {
 		if use amd64; then
 			doexe Installer_P"${PV}"_for_UEFI/sas3flash_udk_uefi_x64_rel/sas3flash.efi
 		fi
+		secureboot_auto_sign --in-place
 	fi
 
 	default

@@ -1,0 +1,34 @@
+--- a/Makefile.am	2023-01-23 22:58:11.644686431 +0100
++++ b/Makefile.am	2023-01-23 22:58:34.812309175 +0100
+@@ -13,7 +13,7 @@
+ SUBDIRS=libs/numlib libs/bdbobj libs/gdbmobj libs/soxwrap \
+ 	libs/rfc822 libs/rfc2045 \
+ 	libs/md5 libs/sha1 libs/random128 libs/rfc1035 libs/liblock \
+-	libs/maildir libs/makedat libs/libhmac \
++	libs/maildir libs/libhmac \
+ 	libs/waitlib libs/tcpd libs/rootcerts libs/imap
+ 
+ sbin_SCRIPTS=sharedindexinstall sharedindexsplit
+@@ -22,9 +22,9 @@
+ databin_SCRIPTS=mkimapdcert mkpop3dcert mkdhparams
+ 
+ binPROGRAMS=imapd pop3d maildirmake maildiracl deliverquota maildirkw \
+-	makeimapaccess makedat
++	makeimapaccess
+ sbinPROGRAMS=imaplogin pop3login
+-libexecPROGRAMS=makedatprog couriertcpd
++libexecPROGRAMS=couriertcpd
+ 
+ bin_PROGRAMS= @binPROGRAMS_exec@
+ sbin_PROGRAMS=@sbinPROGRAMS_exec@
+--- a/configure.ac	2023-01-23 22:59:15.960638991 +0100
++++ b/configure.ac	2023-01-23 22:59:29.744414452 +0100
+@@ -213,7 +213,7 @@
+ AC_CONFIG_SUBDIRS(libs/numlib libs/bdbobj libs/gdbmobj libs/soxwrap
+ 	libs/rfc822 libs/rfc1035 libs/rfc2045
+ 	libs/md5 libs/sha1 libs/random128 libs/liblock
+-	libs/maildir libs/makedat libs/libhmac
++	libs/maildir libs/libhmac
+ 	libs/waitlib libs/tcpd libs/rootcerts libs/imap)
+ 
+ # Courier-IMAP standalone does not use SOCKSv5

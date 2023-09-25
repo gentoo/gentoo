@@ -1,0 +1,48 @@
+gettext 0.22 removed BUILD_INCLUDED_LIBINTL and USE_INCLUDED_LIBINTL is 'no'
+
+INSTOBJEXT was deprecated and removed, replace with .mo
+
+Bug: https://bugs.gentoo.org/908861
+
+--- a/intl/Makefile.in
++++ b/intl/Makefile.in
+@@ -81,7 +81,7 @@
+ 
+ INCLUDES = -I.. -I. -I$(top_srcdir)/intl -I$(top_srcdir)/lib
+ 
+-all: all-@USE_INCLUDED_LIBINTL@
++all: all-no
+ 
+ all-yes: libintl.$la intlh.inst
+ all-no:
+--- a/configure.in
++++ b/configure.in
+@@ -98,7 +98,7 @@
+ AM_PROG_AR
+ AC_ISC_POSIX
+ AC_USE_SYSTEM_EXTENSIONS
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([use-libtool])
+ AC_C_CONST
+ AC_C_INLINE
+ 
+@@ -264,6 +264,8 @@
+ AC_SUBST(LDFLAGS)
+ AC_SUBST(LIBS)
+ 
++INTLLIBS="$LIBINTL"
++AC_SUBST(INTLLIBS)
+ 
+ AC_DEFINE_UNQUOTED(LOCALEDIR,"$prefix/$DATADIRNAME", [LOCALEDIR])
+ AC_LINK_FILES($nls_cv_header_libgt, $nls_cv_header_intl)
+--- a/po/Makefile.in.in
++++ b/po/Makefile.in.in
+@@ -53,7 +53,7 @@
+ 
+ CATALOGS = de.gmo
+ CATOBJEXT = @CATOBJEXT@
+-INSTOBJEXT = @INSTOBJEXT@
++INSTOBJEXT = .mo
+ 
+ .SUFFIXES:
+ .SUFFIXES: .c .o .po .pox .gmo .mo .msg .cat

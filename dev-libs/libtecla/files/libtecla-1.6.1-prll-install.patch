@@ -1,8 +1,6 @@
  Makefile.in |   10 +++++-----
  1 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/Makefile.in b/Makefile.in
-index a44371a..dfd44b0 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -217,7 +217,7 @@ install_inc: $(INCDIR)

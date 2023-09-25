@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit python-single-r1 xdg desktop
 
 DESCRIPTION="Collection of tools useful for audio production"
-HOMEPAGE="https://kxstudio.linuxaudio.org/Applications:Cadence"
+HOMEPAGE="https://kx.studio//Applications:Cadence"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/falkTX/Cadence.git"
 else
@@ -20,13 +20,11 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-
 IUSE="a2jmidid pulseaudio opengl"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-CDEPEND="
-	${PYTHON_DEPS}
+RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
@@ -34,19 +32,14 @@ CDEPEND="
 	media-sound/jack_capture
 	virtual/jack
 	a2jmidid? ( media-sound/a2jmidid[dbus] )
-	pulseaudio? (
-		|| (
-			media-sound/pulseaudio-daemon[jack]
-			media-video/pipewire[jack-sdk]
-			<media-sound/pulseaudio-15.99.1[daemon(+),jack]
-		)
-	)"
-RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+	pulseaudio? ( || (
+		media-video/pipewire[jack-sdk]
+		media-sound/pulseaudio-daemon[jack]
+	) )
+"
+DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.9.1-fix-clang.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-0.9.1-fix-clang.patch )
 
 src_prepare() {
 	sed -i -e "s/python3/${EPYTHON}/" \

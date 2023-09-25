@@ -1,9 +1,0 @@
-crash handler requires glibc or libexecinfo (not packaged),
-and is always enabled if build the editor (release_debug)
---- a/platform/linuxbsd/crash_handler_linuxbsd.cpp
-+++ b/platform/linuxbsd/crash_handler_linuxbsd.cpp
-@@ -38,3 +38,3 @@
- 
--#ifdef DEBUG_ENABLED
-+#if defined(DEBUG_ENABLED) && defined(__GLIBC__)
- #define CRASH_HANDLER_ENABLED 1

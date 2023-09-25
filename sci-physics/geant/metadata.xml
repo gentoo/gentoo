@@ -15,19 +15,16 @@
   features and detectors.
   </longdescription>
   <use>
-    <flag name="c++11">Build using the C++11 standard</flag>
-    <flag name="c++14">Build using the C++14 standard</flag>
     <flag name="c++17">Build using the C++17 standard</flag>
     <flag name="c++20">Build using the C++20 standard</flag>
     <flag name="data">Add a lot of standard physics data files for geant4</flag>
-    <flag name="dawn">Add support for <pkg>media-gfx/dawn</pkg> (3D postscript rendering)</flag>
     <flag name="freetype">Add support for <pkg>media-libs/freetype</pkg></flag>
     <flag name="gdml">Enable geometry markup language for xml</flag>
     <flag name="geant3">Add compatibility for geant321 to geant4</flag>
     <flag name="inventor">Add support for Open Inventor SGI toolkit via Coin3D</flag>
     <flag name="raytracerx">Enable raytracing for physics events</flag>
     <flag name="tbb">Enable support for <pkg>dev-cpp/tbb</pkg></flag>
-    <flag name="vrml">Enable output of geant4 in vrml formats</flag>
+    <flag name="trajectories">Enable display of particle trajectories</flag>
     <flag name="vtk">Use <pkg>sci-libs/vtk</pkg> for visualization (experimental)</flag>
   </use>
   <upstream>

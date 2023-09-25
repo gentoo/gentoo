@@ -1,9 +1,10 @@
+# Make static linking work by default for simple binaries (bug #892956)
+sys-libs/llvm-libunwind static-libs
+
 # use lld by default
 sys-devel/llvm -binutils-plugin
 
 # use all defaults
-sys-devel/clang default-compiler-rt default-lld default-libcxx llvm-libunwind
-sys-devel/clang-common default-compiler-rt default-lld default-libcxx llvm-libunwind
 sys-libs/compiler-rt clang
 
 # disable sanitizers for now

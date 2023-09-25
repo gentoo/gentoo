@@ -1,7 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+# Re cleanups:
+# 2.5.x is an LTS release so we want to keep it for a while.
 
 inherit autotools db-use flag-o-matic multilib multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd tmpfiles
 
@@ -22,7 +25,7 @@ SRC_URI="
 
 LICENSE="OPENLDAP GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE_DAEMON="crypt samba tcpd experimental minimal"
 IUSE_BACKEND="+berkdb"
@@ -31,13 +34,12 @@ IUSE_OPTIONAL="gnutls iodbc sasl ssl odbc debug ipv6 +syslog selinux static-libs
 IUSE_CONTRIB="smbkrb5passwd kerberos kinit pbkdf2 sha2"
 IUSE_CONTRIB="${IUSE_CONTRIB} cxx"
 IUSE="${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
-
-RESTRICT="!test? ( test )"
 REQUIRED_USE="cxx? ( sasl )
 	pbkdf2? ( ssl )
 	test? ( berkdb )
 	?? ( test minimal )
 	kerberos? ( ?? ( kinit smbkrb5passwd ) )"
+RESTRICT="!test? ( test )"
 
 # always list newer first
 # Do not add any AGPL-3 BDB here!

@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit git-r3 autotools
 
@@ -24,4 +24,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	eautoreconf -i
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

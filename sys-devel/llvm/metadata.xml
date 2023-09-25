@@ -11,6 +11,7 @@
 	4. LLVM does not imply things that you would expect from a high-level virtual machine. It does not require garbage collection or run-time code generation (In fact, LLVM makes a great static compiler!). Note that optional LLVM components can be used to build high-level virtual machines and other systems that need these services.</longdescription>
 	<use>
 		<flag name="binutils-plugin">Build the binutils plugin</flag>
+		<flag name="debuginfod">Install llvm-debuginfod (requires <pkg>net-misc/curl</pkg> and <pkg>dev-cpp/cpp-httplib</pkg>)</flag>
 		<flag name="doc">Build and install the HTML documentation and regenerate the man pages</flag>
 		<flag name="exegesis">Enable performance counter support for llvm-exegesis tool
 			that can be used to measure host machine instruction characteristics</flag>

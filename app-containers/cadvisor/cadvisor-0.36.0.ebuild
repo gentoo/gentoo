@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,11 +20,12 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
+	default
 	sed -i -e "/go get/d" build/assets.sh || die
 	sed -i -e "s/git describe.*/echo ${PV} )/"\
 		-e "s/git rev-parse --short HEAD.*/echo ${COMMIT} )/"\
 		build/build.sh || die
-	default
+	sed -i -e "s/-short -race/-short/" Makefile || die
 }
 
 src_compile() {

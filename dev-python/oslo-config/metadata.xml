@@ -17,5 +17,6 @@
   <upstream>
     <remote-id type="pypi">oslo.config</remote-id>
     <remote-id type="launchpad">oslo</remote-id>
+    <remote-id type="github">openstack/oslo.config</remote-id>
   </upstream>
 </pkgmetadata>

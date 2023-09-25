@@ -1,10 +1,12 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+PYTHON_COMPAT=( python3_{10..12} )
+MULTILIB_ABIS="amd64 x86" # allow usage on /no-multilib/
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit flag-o-matic meson-multilib
+inherit flag-o-matic meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -17,13 +19,15 @@ if [[ ${PV} == 9999 ]]; then
 else
 	HASH_SPIRV=0bcc624926a25a2a273d07877fd25a6ff5ba1cfb
 	HASH_VULKAN=98f440ce6868c94f5ec6e198cc1adda4760e8849
+	HASH_DISPLAYINFO=d39344f466caae0495ebac4d49b03a886d83ba3a
 	SRC_URI="
 		https://github.com/doitsujin/dxvk/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
 		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz
 			-> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
 		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
-			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
+			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz
+		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/${PN}-libdisplay-info-${HASH_DISPLAYINFO::10}.tar.bz2"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 # setup_dxvk.sh is no longer provided, fetch old until a better solution
@@ -34,15 +38,20 @@ HOMEPAGE="https://github.com/doitsujin/dxvk/"
 
 LICENSE="ZLIB Apache-2.0 MIT"
 SLOT="0"
-IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 debug +dxgi"
+IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 +dxgi +strip"
 REQUIRED_USE="
 	|| ( d3d9 d3d10 d3d11 dxgi )
 	d3d10? ( d3d11 )
 	d3d11? ( dxgi )"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/glslang
 	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.10.3-wow64-setup.patch
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return
@@ -67,31 +76,38 @@ pkg_pretend() {
 
 src_prepare() {
 	if [[ ${PV} != 9999 ]]; then
-		rmdir include/{spirv,vulkan} || die
+		rmdir include/{spirv,vulkan} subprojects/libdisplay-info || die
 		mv ../SPIRV-Headers-${HASH_SPIRV} include/spirv || die
 		mv ../Vulkan-Headers-${HASH_VULKAN} include/vulkan || die
+		mv ../libdisplay-info-${HASH_DISPLAYINFO} subprojects/libdisplay-info || die
 	fi
+	cp -- "${DISTDIR}"/setup_dxvk.sh . || die
 
 	default
 
-	sed "/^basedir=/s|=.*|=${EPREFIX}/usr/lib/${PN}|" \
-		"${DISTDIR}"/setup_dxvk.sh > setup_dxvk.sh || die
+	sed -i "/^basedir=/s|=.*|=${EPREFIX}/usr/lib/${PN}|" setup_dxvk.sh || die
 }
 
 src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
-	# AVX has a history of causing issues with this package, disable for safety
-	# https://github.com/Tk-Glitch/PKGBUILDS/issues/515
+	# -mavx with mingw-gcc has a history of obscure issues and
+	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+	# crashes with -march=skylake >=wine-8.10, similar issues with
+	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
 	append-flags -mno-avx
 
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP
-			filter-flags '-fstack-clash-protection' #758914
-			filter-flags '-fstack-protector*' #870136
 			filter-flags '-fuse-ld=*'
 			filter-flags '-mfunction-return=thunk*' #878849
+			if has_version '<dev-util/mingw64-toolchain-11' ||
+				{ use crossdev-mingw &&
+					has_version "<cross-$(usex x86 i686 x86_64)-w64-mingw32/mingw64-runtime-11"; }
+			then
+				filter-flags '-fstack-protector*' #870136
+			fi
 		fi
 
 		CHOST_amd64=x86_64-w64-mingw32
@@ -116,7 +132,7 @@ multilib_src_configure() {
 		$(meson_use {,enable_}d3d10)
 		$(meson_use {,enable_}d3d11)
 		$(meson_use {,enable_}dxgi)
-		$(usev !debug --strip) # portage won't strip .dll, so allow it here
+		$(usev strip --strip) # portage won't strip .dll, so allow it here
 	)
 
 	meson_src_configure

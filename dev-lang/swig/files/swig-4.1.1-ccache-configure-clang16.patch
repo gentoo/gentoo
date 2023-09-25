@@ -1,0 +1,32 @@
+https://github.com/swig/swig/pull/2483
+
+From 784dfc917e99429bdbb70fb9dd80c16dfeb73659 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 12 Jan 2023 17:49:40 +0100
+Subject: [PATCH] CCache: Do not rely on C89-only features in configure.ac
+
+Add missing #include directives to obtain additional function
+prototypes.  This avoids altering the result of this test with C99
+compilers which do not support implicit function declarations.
+--- a/CCache/configure.ac
++++ b/CCache/configure.ac
+@@ -63,6 +63,9 @@ AC_CACHE_CHECK([for C99 vsnprintf],ccache_cv_HAVE_C99_VSNPRINTF,[
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <sys/types.h>
+ #include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ void foo(const char *format, ...) { 
+        va_list ap;
+        int len;
+@@ -77,7 +80,7 @@ void foo(const char *format, ...) {
+ 
+        exit(0);
+ }
+-main() { foo("hello"); }
++int main(void) { foo("hello"); }
+ ]])],[ccache_cv_HAVE_C99_VSNPRINTF=yes],[ccache_cv_HAVE_C99_VSNPRINTF=no],[ccache_cv_HAVE_C99_VSNPRINTF=cross])])
+ if test x"$ccache_cv_HAVE_C99_VSNPRINTF" = x"yes"; then
+     AC_DEFINE(HAVE_C99_VSNPRINTF, 1, [ ])
+

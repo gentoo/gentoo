@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,7 +40,7 @@ RDEPEND="
 		virtual/opengl
 	)
 	png? ( media-libs/libpng:0= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	theora? ( media-libs/libtheora )
 	truetype? ( media-libs/freetype:2 )
 	sdl? ( media-libs/libsdl )
@@ -63,8 +63,9 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.0.0-configure.patch"
+	"${FILESDIR}/${PN}-2.2.0-configure.patch"
 	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
+	"${FILESDIR}/${PN}-2.2.0-ffmpeg6.patch"
 )
 
 DOCS=(
@@ -77,8 +78,6 @@ DOCS=(
 	README.md
 )
 
-HTML_DOCS="share/doc/*.html"
-
 my_use() {
 	local flag="$1" pflag="${2:-$1}"
 	if use ${flag}; then
@@ -88,11 +87,6 @@ my_use() {
 	fi
 }
 
-src_prepare() {
-	default
-	sed -i -e "s:\(--disable-.*\)=\*):\1):" configure || die
-}
-
 src_configure() {
 	tc-export CC CXX AR RANLIB
 
@@ -100,11 +94,8 @@ src_configure() {
 		--cc="$(tc-getCC)"
 		--libdir="$(get_libdir)"
 		--verbose
-		--enable-ipv6
 		--enable-pic
 		--enable-svg
-		--disable-amr
-		--use-js=no
 		--use-ogg=system
 		$(use_enable alsa)
 		$(use_enable debug)
@@ -121,14 +112,14 @@ src_configure() {
 		$(use_enable X x11-xv)
 		$(my_use a52)
 		$(my_use aac faad)
-		$(my_use dvb dvbx)
+		$(use_enable dvb dvbx)
 		$(my_use ffmpeg)
 		$(my_use jpeg)
 		$(my_use jpeg2k openjpeg)
 		$(my_use mad)
 		$(my_use png)
 		$(my_use theora)
-		$(my_use truetype ft)
+		$(my_use truetype freetype)
 		$(my_use vorbis)
 		$(my_use xvid)
 	)

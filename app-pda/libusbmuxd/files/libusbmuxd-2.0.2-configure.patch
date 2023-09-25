@@ -1,0 +1,32 @@
+From 84fb81483703dfcc26e784256b6a19d75e8e58ee Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Sun, 12 Feb 2023 10:18:02 +0000
+Subject: [PATCH] autoconf: Fix -Wint-conversion in test
+
+-Wint-conversion becomes an error by default in clang-16, causing the
+program_invocation_short_name test to fail.
+
+Bug: https://bugs.gentoo.org/893910
+--- a/configure.ac
++++ b/configure.ac
+@@ -87,7 +87,7 @@ case ${host_os} in
+     ])
+     AC_CHECK_FUNCS([pselect])
+     AC_CACHE_CHECK(for program_invocation_short_name, ac_cv_program_invocation_short_name,[
+-        AC_TRY_LINK([extern char* program_invocation_short_name;],[return program_invocation_short_name;],
++        AC_TRY_LINK([extern char* program_invocation_short_name;],[return program_invocation_short_name[0];],
+             [ac_cv_program_invocation_short_name=yes],
+             [ac_cv_program_invocation_short_name=no]
+         )
+@@ -95,7 +95,7 @@ case ${host_os} in
+     if test "x$ac_cv_program_invocation_short_name" = "xyes"; then
+         AC_DEFINE(HAVE_PROGRAM_INVOCATION_SHORT_NAME, 1, [Define if you have program_invocation_short_name])
+         AC_CACHE_CHECK(if program_invocation_short_name is declared in errno.h, ac_cv_program_invocation_short_name_errno_h,[
+-            AC_TRY_LINK([#include <errno.h>],[return program_invocation_short_name;],
++            AC_TRY_LINK([#include <errno.h>],[return program_invocation_short_name[0];],
+                 [ac_cv_program_invocation_short_name_errno_h=yes],
+                 [ac_cv_program_invocation_short_name_errno_h=no]
+             )
+-- 
+2.39.1
+

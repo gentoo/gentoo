@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ else
 		https://github.com/gpsbabel/gpsbabel/archive/gpsbabel_${MY_PV}.tar.gz
 		doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )
 	"
-	KEYWORDS="amd64 ~ppc x86"
+	KEYWORDS="amd64 ~ppc ~x86"
 	S="${WORKDIR}/gpsbabel-gpsbabel_${MY_PV}"
 fi
 

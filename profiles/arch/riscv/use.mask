@@ -1,11 +1,12 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -riscv
 
-# Unmask systemd
--systemd
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here
@@ -40,9 +41,6 @@ mono
 
 # No proper support for this arch yet
 java
-
-# Neither the virtual nor any of the runtimes (except mesa) keyworded here yet
-opencl
 
 # not supported / tested cards
 

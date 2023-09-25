@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_OPTIONAL=yes
 DISTUTILS_SINGLE_IMPL=yes
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 WANT_AUTOMAKE=none
 
 inherit autotools distutils-r1 perl-module systemd
@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	# https://github.com/net-snmp/net-snmp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+	SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
@@ -30,7 +30,7 @@ LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
 IUSE="
 	X bzip2 doc elf kmem ipv6 lm-sensors mfd-rewrites minimal mysql
-	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
+	netlink pcap pci pcre perl python rpm selinux smux ssl tcpd ucd-compat valgrind zlib
 "
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -47,6 +47,7 @@ COMMON_DEPEND="
 	netlink? ( dev-libs/libnl:3 )
 	pcap? ( net-libs/libpcap )
 	pci? ( sys-apps/pciutils )
+	pcre? ( dev-libs/libpcre2 )
 	perl? ( dev-lang/perl:= )
 	python? (
 		$(python_gen_cond_dep '
@@ -65,7 +66,10 @@ COMMON_DEPEND="
 	zlib? ( >=sys-libs/zlib-1.1.4 )
 "
 BDEPEND="doc? ( app-doc/doxygen )"
-DEPEND="${COMMON_DEPEND}"
+DEPEND="
+	${COMMON_DEPEND}
+	valgrind? ( dev-util/valgrind )
+"
 RDEPEND="
 	${COMMON_DEPEND}
 	perl? (
@@ -87,12 +91,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
 	"${FILESDIR}"/${PN}-5.9-MakeMaker.patch
-	"${FILESDIR}"/${P}-configure-clang16.patch
-	# https://github.com/net-snmp/net-snmp/pull/493
-	"${FILESDIR}"/${PN}-5.9.3-0001-Fix-LDFLAGS-vs-LIBS-ordering.patch
-	"${FILESDIR}"/${PN}-5.9.3-0002-Tidy-up-net-snmp-config-output.patch
-	"${FILESDIR}"/${PN}-5.9.3-0003-Prune-Libs.private-entries-in-netsnmp-.pc.in.patch
-	"${FILESDIR}"/${PN}-5.9.3-0004-Search-for-ltinfo-in-configure-if-needed.patch
 )
 
 pkg_setup() {
@@ -129,6 +127,8 @@ src_configure() {
 	# Assume /etc/mtab is not present with a recent baselayout/openrc (bug #565136)
 	use kernel_linux && export ac_cv_ETC_MNTTAB=/etc/mtab
 
+	export ac_cv_header_valgrind_{valgrind,memcheck}_h=$(usex valgrind)
+
 	econf \
 		$(use_enable !ssl internal-md5) \
 		$(use_enable ipv6) \
@@ -142,6 +142,8 @@ src_configure() {
 		$(use_with netlink nl) \
 		$(use_with pcap) \
 		$(use_with pci) \
+		$(use_with pcre pcre2-8) \
+		--without-pcre \
 		$(use_with perl perl-modules INSTALLDIRS=vendor) \
 		$(use_with python python-modules) \
 		$(use_with rpm) \

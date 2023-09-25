@@ -5,6 +5,10 @@
     <email>juippis@gentoo.org</email>
     <name>Joonas Niilola</name>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>brahmajit.xyz@gmail.com</email>
+    <name>Brahmajit Das</name>
+  </maintainer>
   <maintainer type="project">
     <email>virtualization@gentoo.org</email>
     <name>Gentoo Virtualization Project</name>
@@ -25,6 +29,6 @@
     machines, or in general run and manage your infrastructure in a cost-effective way.
   </longdescription>
   <upstream>
-    <remote-id type="github">lxc/lxd</remote-id>
+    <remote-id type="github">canonical/lxd</remote-id>
   </upstream>
 </pkgmetadata>

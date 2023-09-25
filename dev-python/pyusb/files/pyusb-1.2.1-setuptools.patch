@@ -1,0 +1,37 @@
+https://github.com/pyusb/pyusb/commit/777dea9d718e70d7323c821d4497c706b35742da
+
+From 777dea9d718e70d7323c821d4497c706b35742da Mon Sep 17 00:00:00 2001
+From: Jonas Malaco <jonas@protocubo.io>
+Date: Tue, 12 Jul 2022 03:12:50 -0300
+Subject: [PATCH] version: handle when patch component is missing
+
+actions/checkout@v3 (by default) no longer fetches the tags while
+checking out the repository.  This, combined with our use of
+setuptools_scm post-release scheme, results in tox trying to run the
+tests with version strings that look something like
+
+    pyusb-0.0.post1+g3678fc1.zip
+
+and breaking _get_extended_version_info().
+
+Make _get_extended_version_info() robust against this case.  This is
+preferable to configuring actions/checkout@v3 to fetch the tags as,
+being related shallow clones, it might also happen in other contexts.
+
+Fixes: 678fc1867f4 ("github: update to actions/checkout@v3")
+--- a/usb/__init__.py
++++ b/usb/__init__.py
+@@ -55,9 +55,9 @@
+ 
+ def _get_extended_version_info(version):
+     import re
+-    m = re.match(r'(\d+)\.(\d+)\.(\d+)[.-]?(.*)', version)
+-    major, minor, patch, suffix = m.groups()
+-    return int(major), int(minor), int(patch), suffix
++    m = re.match(r'(\d+)\.(\d+)(\.(\d+))?[.-]?(.*)', version)
++    major, minor, _, patch, suffix = m.groups()
++    return int(major), int(minor), int(patch or "0"), suffix
+ 
+ extended_version_info = _get_extended_version_info(__version__)
+ version_info = extended_version_info[:3]
+

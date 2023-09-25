@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,10 @@ CONFIG_VER=5.19.13-gentoo
 GENTOO_CONFIG_VER=g3
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
-HOMEPAGE="https://www.kernel.org/"
+HOMEPAGE="
+	https://wiki.gentoo.org/wiki/Project:Distribution_Kernel
+	https://www.kernel.org/
+"
 SRC_URI+="
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz

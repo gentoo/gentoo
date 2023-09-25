@@ -6,4 +6,7 @@
 		<name>Rick Farina</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<use>
+		<flag name="crda">Use obsolete <pkg>net-wireless/crda</pkg> for regulatory domain loading instead of in-kernel (4.15+) support</flag>
+	</use>
 </pkgmetadata>

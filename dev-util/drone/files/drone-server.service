@@ -1,0 +1,25 @@
+[Unit]
+Description=Drone CI
+Documentation=https://docs.drone.io/
+
+After=mysqld.target
+After=network.target
+After=postgresql-9.6.service
+After=postgresql-10.service
+After=postgresql-11.service
+After=postgresql-12.service
+After=postgresql-13.service
+After=postgresql-14.service
+Requires=network.target
+
+[Service]
+User=drone
+Group=drone
+
+EnvironmentFile=/etc/drone-server.conf
+ExecStart=/usr/bin/drone-server
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

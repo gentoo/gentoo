@@ -1,0 +1,158 @@
+https://bugs.gentoo.org/903001
+https://github.com/radiator-software/p5-net-ssleay/pull/360
+https://github.com/radiator-software/p5-net-ssleay/commit/4a886e06c1cac80e7fb3f8d52146a27ce557ba8c
+https://github.com/radiator-software/p5-net-ssleay/pull/362
+https://github.com/radiator-software/p5-net-ssleay/commit/88c3bbc45399c8ef2c8879aada8bfa91d8bc6c10
+https://github.com/radiator-software/p5-net-ssleay/pull/363
+https://github.com/radiator-software/p5-net-ssleay/commit/3dd2f101b8e15a59f66e22525b8d001d5ad6ce7d
+https://github.com/radiator-software/p5-net-ssleay/pull/434
+https://github.com/radiator-software/p5-net-ssleay/pull/435
+https://github.com/radiator-software/p5-net-ssleay/commit/fe9e49d220fa424c55fc436303b24f5bddae0b8d
+
+From 4a886e06c1cac80e7fb3f8d52146a27ce557ba8c Mon Sep 17 00:00:00 2001
+From: Alexander Bluhm <alexander.bluhm@gmx.net>
+Date: Wed, 19 Jan 2022 14:56:22 +0100
+Subject: [PATCH] Use X509_get0_tbs_sigalg() for LibreSSL. (#360)
+
+* Use X509_get0_tbs_sigalg() for LibreSSL.
+
+LibreSSL 3.5.0 has removed access to internal data structures.  Use
+X509_get0_tbs_sigalg() like in OpenSSL 1.1.
+
+* Start Changes for the next release.
+
+Co-authored-by: Heikki Vatiainen <hvn@radiatorsoftware.com>
+---
+ Changes   | 5 +++++
+ SSLeay.xs | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+From 88c3bbc45399c8ef2c8879aada8bfa91d8bc6c10 Mon Sep 17 00:00:00 2001
+From: Alexander Bluhm <alexander.bluhm@gmx.net>
+Date: Wed, 19 Jan 2022 20:38:57 +0100
+Subject: [PATCH] Use OCSP_SINGLERESP_get0_id() for LibreSSL. (#362)
+
+LibreSSL 3.5.0 has removed access to internal ocsp data structures.
+Use OCSP_SINGLERESP_get0_id() like in OpenSSL 1.1.
+---
+ SSLeay.xs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+From 3dd2f101b8e15a59f66e22525b8d001d5ad6ce7d Mon Sep 17 00:00:00 2001
+From: Alexander Bluhm <alexander.bluhm@gmx.net>
+Date: Thu, 20 Jan 2022 19:15:27 +0100
+Subject: [PATCH] Implement RSA_get_key_parameters() for newer LibreSSL. (#363)
+
+LibreSSL 3.5.0 has removed access to internal rsa data structures.
+Use RSA_get0... functions to provide RSA_get_key_parameters().
+---
+ SSLeay.xs | 25 +++++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
+
+From fe9e49d220fa424c55fc436303b24f5bddae0b8d Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 29 May 2023 10:16:33 -0700
+Subject: [PATCH] SSLeay.xs: Disable Policy Tree API for LibreSSL 3.8 and later
+
+This is taken from the OpenBSD ports tree.
+
+https://github.com/openbsd/ports/commit/f6567f938c9bd51bfd99f8426eba6a1590cc6384
+---
+ SSLeay.xs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/SSLeay.xs
++++ b/SSLeay.xs
+@@ -1914,7 +1914,7 @@ X509 * find_issuer(X509 *cert,X509_STORE *store, STACK_OF(X509) *chain) {
+     return issuer;
+ }
+
+-SV* bn2sv(BIGNUM* p_bn)
++SV* bn2sv(const BIGNUM* p_bn)
+ {
+     return p_bn != NULL
+         ? sv_2mortal(newSViv((IV) BN_dup(p_bn)))
+@@ -6283,8 +6283,28 @@ RSA_generate_key(bits,e,perl_cb=&PL_sv_undef,perl_data=&PL_sv_undef)
+ void
+ RSA_get_key_parameters(rsa)
+ 	    RSA * rsa
++PREINIT:
++#if defined(LIBRESSL_VERSION_NUMBER) && (LIBRESSL_VERSION_NUMBER >= 0x3050000fL)
++    const BIGNUM *n, *e, *d;
++    const BIGNUM *p, *q;
++    const BIGNUM *dmp1, *dmq1, *iqmp;
++#endif
+ PPCODE:
+ {
++#if defined(LIBRESSL_VERSION_NUMBER) && (LIBRESSL_VERSION_NUMBER >= 0x3050000fL)
++    RSA_get0_key(rsa, &n, &e, &d);
++    RSA_get0_factors(rsa, &p, &q);
++    RSA_get0_crt_params(rsa, &dmp1, &dmq1, &iqmp);
++    /* Caution: returned list consists of SV pointers to BIGNUMs, which would need to be blessed as Crypt::OpenSSL::Bignum for further use */
++    XPUSHs(bn2sv(n));
++    XPUSHs(bn2sv(e));
++    XPUSHs(bn2sv(d));
++    XPUSHs(bn2sv(p));
++    XPUSHs(bn2sv(q));
++    XPUSHs(bn2sv(dmp1));
++    XPUSHs(bn2sv(dmq1));
++    XPUSHs(bn2sv(iqmp));
++#else
+     /* Caution: returned list consists of SV pointers to BIGNUMs, which would need to be blessed as Crypt::OpenSSL::Bignum for further use */
+     XPUSHs(bn2sv(rsa->n));
+     XPUSHs(bn2sv(rsa->e));
+@@ -6294,9 +6314,10 @@ PPCODE:
+     XPUSHs(bn2sv(rsa->dmp1));
+     XPUSHs(bn2sv(rsa->dmq1));
+     XPUSHs(bn2sv(rsa->iqmp));
++#endif
+ }
+
+-#endif
++#endif /* OpenSSL < 1.1 or LibreSSL */
+
+ void
+ RSA_free(r)
+@@ -7010,6 +7031,7 @@ X509_VERIFY_PARAM_get0_peername(param)
+
+ #endif /* OpenSSL 1.0.2-beta2, LibreSSL 2.7.0 */
+
++#if !defined(LIBRESSL_VERSION_NUMBER) || (LIBRESSL_VERSION_NUMBER < 0x3080000fL) /* LibreSSL < 3.8.0 */
+ void
+ X509_policy_tree_free(tree)
+     X509_POLICY_TREE *tree
+@@ -7052,6 +7074,7 @@ const X509_POLICY_NODE *
+ X509_policy_node_get0_parent(node)
+     const X509_POLICY_NODE *node
+
++#endif /* !(LibreSSL >= 3.7.0) */
+ #endif
+
+ ASN1_OBJECT *
+@@ -7197,7 +7220,7 @@ ASN1_OBJECT *
+ P_X509_get_signature_alg(x)
+         X509 * x
+     CODE:
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)) || (LIBRESSL_VERSION_NUMBER >= 0x3050000fL)
+         RETVAL = (X509_get0_tbs_sigalg(x)->algorithm);
+ #else
+         RETVAL = (x->cert_info->signature->algorithm);
+@@ -7690,7 +7713,7 @@ OCSP_response_results(rsp,...)
+ 		if (!idsv) {
+ 		    /* getall: create new SV with OCSP_CERTID */
+ 		    unsigned char *pi,*pc;
+-#if OPENSSL_VERSION_NUMBER >= 0x10100003L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER >= 0x10100003L && !defined(LIBRESSL_VERSION_NUMBER)) || (LIBRESSL_VERSION_NUMBER >= 0x3050000fL)
+ 		    int len = i2d_OCSP_CERTID((OCSP_CERTID *)OCSP_SINGLERESP_get0_id(sir),NULL);
+ #else
+ 		    int len = i2d_OCSP_CERTID(sir->certId,NULL);
+@@ -7699,7 +7722,7 @@ OCSP_response_results(rsp,...)
+ 		    Newx(pc,len,unsigned char);
+ 		    if (!pc) croak("out of memory");
+ 		    pi = pc;
+-#if OPENSSL_VERSION_NUMBER >= 0x10100003L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER >= 0x10100003L && !defined(LIBRESSL_VERSION_NUMBER)) || (LIBRESSL_VERSION_NUMBER >= 0x3050000fL)
+ 		    i2d_OCSP_CERTID((OCSP_CERTID *)OCSP_SINGLERESP_get0_id(sir),&pi);
+ #else
+ 		    i2d_OCSP_CERTID(sir->certId,&pi);

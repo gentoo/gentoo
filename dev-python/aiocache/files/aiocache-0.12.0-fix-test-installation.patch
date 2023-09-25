@@ -1,0 +1,12 @@
+diff -Naur aiocache-0.12.0.orig/setup.py aiocache-0.12.0/setup.py
+--- aiocache-0.12.0.orig/setup.py	2023-01-13 21:54:07.000000000 +0100
++++ aiocache-0.12.0/setup.py	2023-02-09 22:45:48.004077571 +0100
+@@ -29,7 +29,7 @@
+         "Programming Language :: Python :: 3.11",
+         "Framework :: AsyncIO",
+     ],
+-    packages=find_packages(),
++    packages=find_packages(exclude=['tests*']),
+     install_requires=None,
+     extras_require={
+         "redis": ["redis>=4.2.0"],

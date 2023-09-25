@@ -30,12 +30,9 @@
 # llvm.org_set_globals
 # @CODE
 
-case "${EAPI:-0}" in
-	7|8)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # == version substrings ==
@@ -55,18 +52,12 @@ LLVM_VERSION=$(ver_cut 1-3)
 
 # == internal control bits ==
 
-# @ECLASS_VARIABLE: _LLVM_MASTER_MAJOR
+# @ECLASS_VARIABLE: _LLVM_MAIN_MAJOR
 # @INTERNAL
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MASTER_MAJOR=16
-
-# @ECLASS_VARIABLE: _LLVM_NEWEST_MANPAGE_RELEASE
-# @INTERNAL
-# @DESCRIPTION:
-# The newest release of LLVM for which manpages were generated.
-_LLVM_NEWEST_MANPAGE_RELEASE=15.0.6
+_LLVM_MAIN_MAJOR=18
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -81,14 +72,14 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				16.0.0_pre20221217)
-					EGIT_COMMIT=fb792ebaf2114ad11d673cf891ae560e2e604711
+				18.0.0_pre20230906)
+					EGIT_COMMIT=7e5809e7e7bc9a828427b6540a51d45884d8bbbb
 					;;
-				16.0.0_pre20221226)
-					EGIT_COMMIT=dfc20708bcdf7b4c4bea8595fc4ac8674634d5e6
+				18.0.0_pre20230829)
+					EGIT_COMMIT=f6259d9b9a546dbfa5bc2f29313c6edd6c701177
 					;;
-				16.0.0_pre20230101)
-					EGIT_COMMIT=b20dd2b186fdc76828219b705a2b58f5830f4b9d
+				18.0.0_pre20230825)
+					EGIT_COMMIT=e3373c6c83d3855adb78f1952a3bf0398baf359e
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -104,12 +95,12 @@ fi
 
 [[ ${_LLVM_SOURCE_TYPE} == git ]] && inherit git-r3
 
-[[ ${LLVM_MAJOR} == ${_LLVM_MASTER_MAJOR} && ${_LLVM_SOURCE_TYPE} == tar ]] &&
-	die "${ECLASS}: Release ebuild for master branch?!"
+[[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} && ${_LLVM_SOURCE_TYPE} == tar ]] &&
+	die "${ECLASS}: Release ebuild for main branch?!"
 
 inherit multiprocessing
 
-if [[ ${_LLVM_SOURCE_TYPE} == tar ]] && ver_test -ge 14.0.5; then
+if [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
 	inherit verify-sig
 fi
 
@@ -180,16 +171,6 @@ fi
 # version.  The value depends on ${PV}.
 
 case ${LLVM_MAJOR} in
-	10|11|12)
-		# this API is not present for old LLVM versions
-		;;
-	13)
-		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
-		ALL_LLVM_PRODUCTION_TARGETS=(
-			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
-			PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
-		)
-		;;
 	14)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k )
 		ALL_LLVM_PRODUCTION_TARGETS=(
@@ -208,11 +189,12 @@ case ${LLVM_MAJOR} in
 		;;
 	*)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=(
-			ARC CSKY DirectX LoongArch M68k SPIRV Xtensa
+			ARC CSKY DirectX M68k SPIRV Xtensa
 		)
 		ALL_LLVM_PRODUCTION_TARGETS=(
-			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
-			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
+			MSP430 NVPTX PowerPC RISCV Sparc SystemZ VE WebAssembly X86
+			XCore
 		)
 		;;
 esac
@@ -229,7 +211,7 @@ ALL_LLVM_TARGET_FLAGS=(
 # as a subslot.  This is equal to LLVM_MAJOR for releases, and to PV
 # for the main branch.
 LLVM_SOABI=${LLVM_MAJOR}
-[[ ${LLVM_MAJOR} == ${_LLVM_MASTER_MAJOR} ]] && LLVM_SOABI=${PV}
+[[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]] && LLVM_SOABI=${PV}
 
 # == global scope logic ==
 
@@ -251,28 +233,22 @@ llvm.org_set_globals() {
 		git)
 			EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
 
-			[[ ${LLVM_MAJOR} != ${_LLVM_MASTER_MAJOR} ]] &&
+			[[ ${LLVM_MAJOR} != ${_LLVM_MAIN_MAJOR} ]] &&
 				EGIT_BRANCH="release/${LLVM_MAJOR}.x"
 			;;
 		tar)
-			if ver_test -ge 14.0.5; then
-				SRC_URI+="
-					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
-					verify-sig? (
-						https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
-					)
-				"
-				BDEPEND+="
-					verify-sig? (
-						>=sec-keys/openpgp-keys-llvm-15
-					)
-				"
-				VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
-			else
-				SRC_URI+="
-					https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
-				"
-			fi
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
+				verify-sig? (
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
+				)
+			"
+			BDEPEND+="
+				verify-sig? (
+					>=sec-keys/openpgp-keys-llvm-16.0.4
+				)
+			"
+			VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
 			;;
 		snapshot)
 			SRC_URI+="
@@ -292,17 +268,17 @@ llvm.org_set_globals() {
 	fi
 
 	if [[ ${LLVM_MANPAGES} ]]; then
-		# use pregenerated tarball for releases
-		# up to _LLVM_NEWEST_MANPAGE_RELEASE
-		if llvm_manpage_dist_available; then
+		# use pregenerated tarball if available
+		local manpage_dist=$(llvm_manpage_get_dist)
+		if [[ -n ${manpage_dist} ]]; then
 			IUSE+=" doc"
 			SRC_URI+="
 				!doc? (
-					https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2
+					https://dev.gentoo.org/~mgorny/dist/llvm/${manpage_dist}
 				)
 			"
 		else
-			IUSE+=" doc"
+			IUSE+=" +doc"
 			# NB: this is not always the correct dep but it does no harm
 			BDEPEND+=" dev-python/sphinx"
 		fi
@@ -343,8 +319,6 @@ llvm.org_set_globals() {
 
 # == phase functions ==
 
-EXPORT_FUNCTIONS src_unpack src_prepare
-
 # @FUNCTION: llvm.org_src_unpack
 # @DESCRIPTION:
 # Unpack or checkout requested LLVM components.
@@ -365,25 +339,16 @@ llvm.org_src_unpack() {
 			git-r3_checkout '' . '' "${components[@]}"
 			;;
 		tar)
-			archive=llvmorg-${PV/_/-}.tar.gz
-			if ver_test -ge 14.0.5; then
-				archive=llvm-project-${PV/_/}.src.tar.xz
-				if use verify-sig; then
-					verify-sig_verify_detached \
-						"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
-				fi
+			archive=llvm-project-${PV/_/}.src.tar.xz
+			if use verify-sig; then
+				verify-sig_verify_detached \
+					"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
 			fi
 
 			ebegin "Unpacking from ${archive}"
-			if ver_test -ge 14.0.5; then
-				tar -x -J -o --strip-components 1 \
-					-f "${DISTDIR}/${archive}" \
-					"${components[@]/#/${archive%.tar*}/}" || die
-			else
-				tar -x -z -o --strip-components 1 \
-					-f "${DISTDIR}/${archive}" \
-					"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
-			fi
+			tar -x -J -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/${archive%.tar*}/}" || die
 			eend ${?}
 			;;
 		snapshot)
@@ -416,7 +381,7 @@ llvm.org_src_unpack() {
 		local IFS='|'
 		grep -E -r -L "^Gentoo-Component:.*(${components[*]})" \
 			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}" |
-			xargs rm
+			xargs -r rm
 		local status=( "${PIPESTATUS[@]}" )
 		[[ ${status[1]} -ne 0 ]] && die "rm failed"
 		[[ ${status[0]} -ne 0 ]] &&
@@ -471,13 +436,24 @@ get_lit_flags() {
 	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
 }
 
-# @FUNCTION: llvm_manpage_dist_available
+# @FUNCTION: llvm_manpage_get_dist
 # @DESCRIPTION:
-# Return true (0) if this LLVM version features prebuilt manpage
-# tarball, false (1) otherwise.
-llvm_manpage_dist_available() {
-	[[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
-		ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
+# Output the filename of the manpage dist for this version,
+# if available.  Otherwise returns without output.
+llvm_manpage_get_dist() {
+	if [[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]]; then
+		case ${PV} in
+			14*|15*|16.0.[0-3])
+				echo "llvm-${PV}-manpages.tar.bz2"
+				;;
+			16*)
+				echo "llvm-16.0.4-manpages.tar.bz2"
+				;;
+			17*)
+				echo "llvm-17.0.1-manpages.tar.bz2"
+				;;
+		esac
+	fi
 }
 
 # @FUNCTION: llvm_are_manpages_built
@@ -485,7 +461,7 @@ llvm_manpage_dist_available() {
 # Return true (0) if manpages are going to be built from source,
 # false (1) if preinstalled manpages will be used.
 llvm_are_manpages_built() {
-	use doc || ! llvm_manpage_dist_available
+	use doc || [[ -z $(llvm_manpage_get_dist) ]]
 }
 
 # @FUNCTION: llvm_install_manpages
@@ -496,6 +472,8 @@ llvm_install_manpages() {
 	if ! llvm_are_manpages_built; then
 		# (doman does not support custom paths)
 		insinto "/usr/lib/llvm/${LLVM_MAJOR}/share/man/man1"
-		doins "${WORKDIR}/llvm-${PV}-manpages/${LLVM_COMPONENTS[0]}"/*.1
+		doins "${WORKDIR}"/llvm-*-manpages/"${LLVM_COMPONENTS[0]}"/*.1
 	fi
 }
+
+EXPORT_FUNCTIONS src_unpack src_prepare

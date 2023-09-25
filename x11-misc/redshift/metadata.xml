@@ -4,10 +4,6 @@
   <maintainer type="person">
     <email>sping@gentoo.org</email>
   </maintainer>
-  <maintainer type="person">
-    <email>slashbeast@gentoo.org</email>
-    <name>Piotr Karbowski</name>
-  </maintainer>
   <use>
     <flag name="geoclue">Control dependency on <pkg>app-misc/geoclue</pkg></flag>
   </use>

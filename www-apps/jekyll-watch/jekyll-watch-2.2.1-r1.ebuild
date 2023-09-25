@@ -1,13 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby26 ruby27"
 
+USE_RUBY="ruby30 ruby31"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md History.markdown"
-
 RUBY_FAKEGEM_GEMSPEC="jekyll-watch.gemspec"
 
 inherit ruby-fakegem
@@ -19,7 +18,6 @@ SRC_URI="https://github.com/jekyll/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE=""
 
 ruby_add_rdepend "dev-ruby/listen:3"
 ruby_add_bdepend "test? ( >=www-apps/jekyll-2 )"

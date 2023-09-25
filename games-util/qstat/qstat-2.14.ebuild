@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Server statics collector supporting many FPS games"
-HOMEPAGE="https://github.com/multiplay/qstat"
-SRC_URI="https://github.com/multiplay/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/Unity-Technologies/qstat"
+SRC_URI="https://github.com/Unity-Technologies/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"

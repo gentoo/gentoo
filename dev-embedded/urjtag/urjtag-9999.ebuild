@@ -1,7 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+PYTHON_COMPAT=( python3_{10..12} )
+
+inherit python-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/urjtag/git"
@@ -13,18 +17,27 @@ else
 fi
 
 DESCRIPTION="Tool for communicating over JTAG with flash chips, CPUs, and many more"
-HOMEPAGE="http://urjtag.sourceforge.net/"
+HOMEPAGE="https://urjtag.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-# TODO: Figure out if anyone wants the Python bindings
-IUSE="ftdi readline usb"
+
+IUSE="ftdi ftd2xx python readline usb"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="ftdi? ( dev-embedded/libftdi:1 )
+	ftd2xx? ( dev-embedded/libftd2xx )
+	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:= )
 	usb? ( virtual/libusb:1 )"
-RDEPEND="${DEPEND}
-	!dev-embedded/jtag"
+RDEPEND="${DEPEND}"
+BDEPEND="
+	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2021.03-fix-python-setup.patch"
+)
 
 src_prepare() {
 	default
@@ -37,16 +50,35 @@ src_prepare() {
 }
 
 src_configure() {
-	use readline || export vl_cv_lib_readline=no
-
 	econf \
 		--disable-werror \
 		--disable-python \
+		$(use_with readline) \
 		$(use_with ftdi libftdi) \
-		$(use_with usb libusb)
+		$(use_with ftd2xx) \
+		$(use_with usb libusb 1.0)
+}
+
+src_compile() {
+	use python && python_copy_sources
+
+	emake
 }
 
 src_install() {
 	default
+
+	if use python; then
+		installation() {
+			cd bindings/python || die
+			ln -s "${S}"/src/.libs ../../src/.libs || die
+			"${EPYTHON}" setup.py install \
+				--root="${D}" \
+				--prefix="${EPREFIX}/usr" || die
+		}
+		python_foreach_impl run_in_build_dir installation
+		python_foreach_impl python_optimize
+	fi
+
 	find "${ED}" -name '*.la' -delete || die
 }

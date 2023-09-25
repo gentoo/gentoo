@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde.org.eclass
@@ -17,7 +17,7 @@
 
 case ${EAPI} in
 	8) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_KDE_ORG_ECLASS} ]]; then
@@ -84,7 +84,7 @@ readonly KDE_ORG_CATEGORIES
 # @DESCRIPTION:
 # If unset, default value is mapped from ${CATEGORY} to corresponding upstream
 # category on invent.kde.org, with "kde" as fallback value.
-: ${KDE_ORG_CATEGORY:=${KDE_ORG_CATEGORIES[${CATEGORY}]:-kde}}
+: "${KDE_ORG_CATEGORY:=${KDE_ORG_CATEGORIES[${CATEGORY}]:-kde}}"
 
 # @ECLASS_VARIABLE: KDE_ORG_COMMIT
 # @PRE_INHERIT
@@ -99,12 +99,12 @@ readonly KDE_ORG_CATEGORIES
 # @DESCRIPTION:
 # If unset, default value is set to ${PN}.
 # Name of the package as hosted on kde.org mirrors.
-: ${KDE_ORG_NAME:=$PN}
+: "${KDE_ORG_NAME:=$PN}"
 
 # @ECLASS_VARIABLE: KDE_ORG_SCHEDULE_URI
 # @DESCRIPTION:
 # Known schedule URI of package or release group.
-: ${KDE_ORG_SCHEDULE_URI:="https://community.kde.org/Schedules"}
+: "${KDE_ORG_SCHEDULE_URI:="https://community.kde.org/Schedules"}"
 
 # @ECLASS_VARIABLE: KDE_SELINUX_MODULE
 # @PRE_INHERIT
@@ -112,7 +112,7 @@ readonly KDE_ORG_CATEGORIES
 # If set to "none", do nothing.
 # For any other value, add selinux to IUSE, and depending on that useflag
 # add a dependency on sec-policy/selinux-${KDE_SELINUX_MODULE} to (R)DEPEND.
-: ${KDE_SELINUX_MODULE:=none}
+: "${KDE_SELINUX_MODULE:=none}"
 
 case ${KDE_SELINUX_MODULE} in
 	none)   ;;
@@ -161,7 +161,7 @@ case ${KDE_BUILD_TYPE} in
 		EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
 		EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
 
-		if [[ ${PV} == 5.??.?.9999 && ${CATEGORY} == dev-qt ]]; then
+		if [[ ${PV} == 5.15.*.9999 && ${CATEGORY} == dev-qt ]]; then
 			EGIT_BRANCH="kde/$(ver_cut 1-2)"
 		fi
 		;;

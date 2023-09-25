@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">minad/moneta</remote-id>
+    <remote-id type="github">moneta-rb/moneta</remote-id>
   </upstream>
 </pkgmetadata>

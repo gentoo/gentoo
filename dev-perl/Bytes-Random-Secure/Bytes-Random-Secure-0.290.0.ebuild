@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DIST_VERSION=0.29
 DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
-DESCRIPTION="extension to generate cryptographically-secure random bytes"
+DESCRIPTION="Extension to generate cryptographically-secure random bytes"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="minimal test"

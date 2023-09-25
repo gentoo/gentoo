@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
 	</maintainer>
 	<use>
 		<flag name="tools">Build some useful gpio tools that use libgpiod.</flag>

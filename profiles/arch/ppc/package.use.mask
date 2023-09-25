@@ -1,0 +1,6 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Rich Freeman <rich0@gentoo.org> (2023-09-13)
+# Tests require shellcheck which is not currently available
+sys-process/systemd-cron test

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ else
 	SRC_URI="
 		https://api.github.com/repos/streambinder/vpnc/tarball/fdd0de7 -> ${P}.tar.gz
 		https://dev.gentoo.org/~soap/distfiles/${PN}-0.5.3-docs.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -54,14 +54,18 @@ src_configure() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}"/usr DOCDIR='$(PREFIX)'/share/doc/${PF} DESTDIR="${D}" install
+	local args=(
+		PREFIX="${EPREFIX}"/usr
+		DOCDIR='$(PREFIX)'/share/doc/${PF}
+		SYSTEMDDIR="$(systemd_get_systemunitdir)"
+		DESTDIR="${D}"
+	)
+
+	emake "${args[@]}" install
 
 	keepdir /etc/vpnc/scripts.d
 	newinitd "${FILESDIR}"/vpnc-3.init vpnc
 	newconfd "${FILESDIR}"/vpnc.confd vpnc
-
-	dotmpfiles "${FILESDIR}"/vpnc-tmpfiles.conf
-	systemd_newunit "${FILESDIR}"/vpnc.service vpnc@.service
 
 	# LICENSE file resides here, should not be installed
 	rm -r "${ED}"/usr/share/licenses || die

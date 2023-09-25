@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,11 +8,11 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS=( README )
 
-USE_PHP="php7-4 php8-0 php8-1 php8-2"
+USE_PHP="php8-0 php8-1 php8-2"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86"
 
 DESCRIPTION="This extension implements a Z39.50 client for PHP using the YAZ toolkit"
 LICENSE="BSD"

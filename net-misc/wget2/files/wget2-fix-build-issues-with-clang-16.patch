@@ -1,0 +1,28 @@
+https://gitlab.com/gnuwget/wget2/-/merge_requests/523
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Mon, 29 May 2023 08:34:33 +0000
+Subject: [PATCH] libwget/thread.c: Fix build issues with clang-16
+
+With clang 16, specially on with musl libc, it would result in an
+incompatible pointer to integer conversion error. As clang 16 has made a
+few options default, including -Wincompatible-function-pointer-types.
+This patch fixes that error.
+
+First discovered on Gentoo's musl llvm profile. Please refer
+https://bugs.gentoo.org/898058.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/libwget/thread.c
++++ b/libwget/thread.c
+@@ -289,7 +289,7 @@ int wget_thread_join(wget_thread *thread)
+  */
+ wget_thread_id wget_thread_self(void)
+ {
+-	return gl_thread_self();
++	return (wget_thread_id) gl_thread_self();
+ }
+ 
+ /**
+-- 
+2.40.1
+

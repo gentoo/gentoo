@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="cpan">Modern-Perl</remote-id>
 		<remote-id type="cpan-module">Modern::Perl</remote-id>
+		<remote-id type="github">chromatic/Modern-Perl</remote-id>
 	</upstream>
 </pkgmetadata>

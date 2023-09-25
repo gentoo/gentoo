@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,11 +11,10 @@ HOMEPAGE="https://keepassxc.org/
 
 if [[ "${PV}" != *9999 ]] ; then
 	if [[ "${PV}" == *_beta* ]] ; then
-		SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+		SRC_URI="https://github.com/keepassxreboot/${PN}/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${P/_/-}"
 	else
-		#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-		SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
+		SRC_URI="https://github.com/keepassxreboot/${PN}/releases/download/${PV}/${P}-src.tar.xz"
 		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	fi
 else
@@ -33,7 +32,7 @@ REQUIRED_USE="autotype? ( X )"
 
 RDEPEND="
 	app-crypt/argon2:=
-	dev-libs/botan:2=
+	dev-libs/botan:3=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -73,7 +72,7 @@ src_prepare() {
 
 src_configure() {
 	# https://github.com/keepassxreboot/keepassxc/issues/5801
-	filter-flags -flto*
+	filter-lto
 
 	local mycmakeargs=(
 		# Gentoo users enable ccache via e.g. FEATURES=ccache or
@@ -84,6 +83,7 @@ src_configure() {
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
 		-DWITH_XC_DOCS="$(usex doc)"
 		-DWITH_XC_BROWSER="$(usex browser)"
+		-DWITH_XC_BOTAN3=ON
 		-DWITH_XC_FDOSECRETS=ON
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
 		-DWITH_XC_NETWORKING="$(usex network)"

@@ -1,0 +1,48 @@
+From d6d734f6fbeee2c091212d42e3ea730a1230aad5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 24 Jan 2023 07:35:45 +0100
+Subject: [PATCH] Remove tests broken by py3.9
+
+---
+ tests/test_clean.py | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/tests/test_clean.py b/tests/test_clean.py
+index 73946a1..f798a15 100644
+--- a/tests/test_clean.py
++++ b/tests/test_clean.py
+@@ -551,31 +551,16 @@ def test_attributes_list():
+             {"protocols": {"http"}},
+             '<a href="example.com">valid</a>',
+         ),
+-        (
+-            '<a href="example.com:8000">valid</a>',
+-            {"protocols": {"http"}},
+-            '<a href="example.com:8000">valid</a>',
+-        ),
+         (
+             '<a href="localhost">valid</a>',
+             {"protocols": {"http"}},
+             '<a href="localhost">valid</a>',
+         ),
+-        (
+-            '<a href="localhost:8000">valid</a>',
+-            {"protocols": {"http"}},
+-            '<a href="localhost:8000">valid</a>',
+-        ),
+         (
+             '<a href="192.168.100.100">valid</a>',
+             {"protocols": {"http"}},
+             '<a href="192.168.100.100">valid</a>',
+         ),
+-        (
+-            '<a href="192.168.100.100:8000">valid</a>',
+-            {"protocols": {"http"}},
+-            '<a href="192.168.100.100:8000">valid</a>',
+-        ),
+         pytest.param(
+             *(
+                 '<a href="192.168.100.100:8000/foo#bar">valid</a>',
+-- 
+2.39.1
+

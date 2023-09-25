@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="project">
-        <email>perl@gentoo.org</email>
-        <name>Gentoo Perl Project</name>
-    </maintainer>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Graphics-ColorNames-HTML</remote-id>
+		<remote-id type="cpan-module">Graphics::ColorNames::HTML</remote-id>
+		<remote-id type="github">robrwo/Graphics-ColorNames-HTML</remote-id>
+	</upstream>
 </pkgmetadata>

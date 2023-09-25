@@ -1,4 +1,4 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
@@ -9,8 +9,6 @@ ARCH="mips"
 ACCEPT_KEYWORDS="${ARCH} ~mips"
 
 PROFILE_ARCH="mips"
-
-USE="-fortran -openmp"
 
 LIBDIR_o32="lib"
 LIBDIR_n32="lib32"

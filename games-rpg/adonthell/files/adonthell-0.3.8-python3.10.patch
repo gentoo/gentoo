@@ -1,7 +1,0 @@
-node.h was removed in python3.10 but this does not actually use it
---- a/src/python_class.h
-+++ b/src/python_class.h
-@@ -38,3 +38,2 @@
- #include "eval.h"
--#include "node.h"
- #include "fileops.h"

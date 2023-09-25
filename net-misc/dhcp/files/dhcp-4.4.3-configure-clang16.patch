@@ -1,0 +1,143 @@
+https://src.fedoraproject.org/rpms/dhcp/blob/5a0c1922defd9dbb94fa7d9fd3294031ffe72df9/f/0030-bind-configure-c99.patch
+
+Downstream-only patch.
+Upstream bind9 development has changed configure significantly:
+https://gitlab.isc.org/isc-projects/bind9
+
+From 035224d94d4cf93257cf5440a2e4e129540e81e8 Mon Sep 17 00:00:00 2001
+From: Arjun Shankar <arjun@redhat.com>
+Date: Thu, 20 Apr 2023 15:34:01 +0200
+Subject: [PATCH] Port to C99
+
+--- a/bind/bind-9.11.36/configure
++++ b/bind/bind-9.11.36/configure
+@@ -20016,7 +20016,7 @@ else
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+-main() {
++int main() {
+ char a[16],b[64]; return(inet_ntop(AF_INET6, a, b, sizeof(b)) == (char*)0);}
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+@@ -20056,7 +20056,7 @@ else
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+-main() { char a[16]; return (inet_pton(AF_INET, "1.2.3", a) == 1 ? 1 :
++int main() { char a[16]; return (inet_pton(AF_INET, "1.2.3", a) == 1 ? 1 :
+ 			     inet_pton(AF_INET, "1.2.3.04", a) == 1 ? 1 :
+ 			     (inet_pton(AF_INET6, "::1.2.3.4", a) != 1)); }
+ _ACEOF
+@@ -21346,7 +21346,7 @@ else
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/resource.h>
+-main() { struct rlimit r; exit(!(sizeof(r.rlim_cur) == sizeof(int)));}
++int main() { struct rlimit r; exit(!(sizeof(r.rlim_cur) == sizeof(int)));}
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: int" >&5
+@@ -21363,7 +21363,7 @@ else
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/resource.h>
+-main() { struct rlimit r; exit(!(sizeof(r.rlim_cur) == sizeof(long int)));}
++int main() { struct rlimit r; exit(!(sizeof(r.rlim_cur) == sizeof(long int)));}
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: long int" >&5
+@@ -21380,7 +21380,7 @@ else
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/resource.h>
+-main() { struct rlimit r; exit((!sizeof(r.rlim_cur) == sizeof(long long int)));}
++int main() { struct rlimit r; exit((!sizeof(r.rlim_cur) == sizeof(long long int)));}
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: long long int" >&5
+@@ -21759,7 +21759,7 @@ int
+ main ()
+ {
+ 
+-				main() { asm("ics"); exit(0); }
++				int main() { asm("ics"); exit(0); }
+ 
+   ;
+   return 0;
+@@ -21782,7 +21782,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+-				main() { asm("ics"); exit(0); }
++				int main() { asm("ics"); exit(0); }
+ 
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+--- a/bind/bind-9.11.36/configure.ac
++++ b/bind/bind-9.11.36/configure.ac
+@@ -3274,7 +3274,7 @@ AC_TRY_RUN([
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+-main() {
++int main() {
+ char a[16],b[64]; return(inet_ntop(AF_INET6, a, b, sizeof(b)) == (char*)0);}],
+ 	[AC_MSG_RESULT(yes)
+ 	ISC_PLATFORM_NEEDNTOP="#undef ISC_PLATFORM_NEEDNTOP"],
+@@ -3297,7 +3297,7 @@ AC_TRY_RUN([
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+-main() { char a[16]; return (inet_pton(AF_INET, "1.2.3", a) == 1 ? 1 :
++int main() { char a[16]; return (inet_pton(AF_INET, "1.2.3", a) == 1 ? 1 :
+ 			     inet_pton(AF_INET, "1.2.3.04", a) == 1 ? 1 :
+ 			     (inet_pton(AF_INET6, "::1.2.3.4", a) != 1)); }],
+ 	[AC_MSG_RESULT(yes)
+@@ -3901,7 +3901,7 @@ AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/resource.h>
+-main() { struct rlimit r; exit(!(sizeof(r.rlim_cur) == sizeof(int)));}],
++int main() { struct rlimit r; exit(!(sizeof(r.rlim_cur) == sizeof(int)));}],
+ [AC_MSG_RESULT(int)
+ ISC_PLATFORM_RLIMITTYPE="#define ISC_PLATFORM_RLIMITTYPE int"],
+ [
+@@ -3909,7 +3909,7 @@ AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/resource.h>
+-main() { struct rlimit r; exit(!(sizeof(r.rlim_cur) == sizeof(long int)));}],
++int main() { struct rlimit r; exit(!(sizeof(r.rlim_cur) == sizeof(long int)));}],
+ [AC_MSG_RESULT(long int)
+ ISC_PLATFORM_RLIMITTYPE="#define ISC_PLATFORM_RLIMITTYPE long int"],
+ [
+@@ -3917,7 +3917,7 @@ AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/resource.h>
+-main() { struct rlimit r; exit((!sizeof(r.rlim_cur) == sizeof(long long int)));}],
++int main() { struct rlimit r; exit((!sizeof(r.rlim_cur) == sizeof(long long int)));}],
+ [AC_MSG_RESULT(long long int)
+ ISC_PLATFORM_RLIMITTYPE="#define ISC_PLATFORM_RLIMITTYPE long long int"],
+ [AC_MSG_ERROR([unable to determine sizeof rlim_cur])
+@@ -4117,7 +4117,7 @@ case "$enable_atomic" in
+ 			if test "X$GCC" = "Xyes"; then
+ 				AC_MSG_CHECKING([if asm("ics"); works])
+ 				AC_TRY_COMPILE(,[
+-				main() { asm("ics"); exit(0); }
++				int main() { asm("ics"); exit(0); }
+ 				],
+ 				[AC_MSG_RESULT(yes)
+ 				 use_atomic=yes],
+@@ -4125,7 +4125,7 @@ case "$enable_atomic" in
+ 				saved_cflags="$CFLAGS"
+ 				CFLAGS="$CFLAGS -Wa,-many"
+ 				AC_TRY_RUN([
+-				main() { asm("ics"); exit(0); }
++				int main() { asm("ics"); exit(0); }
+ 				],
+ 				[AC_MSG_RESULT([yes, required -Wa,-many])
+ 				 use_atomic=yes],
+-- 
+2.40.0

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~riscv x86"
 IUSE="+acpi hddtemp libnotify lm-sensors video_cards_nvidia"
 REQUIRED_USE="|| ( hddtemp lm-sensors acpi )"
 

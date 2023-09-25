@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,17 +10,19 @@ SRC_URI="http://www.libee.org/files/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~hppa x86 ~amd64-linux"
-IUSE="debug"
+IUSE="debug test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libxml2
-	dev-libs/libestr"
+	dev-libs/libestr
+"
 DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf \
 		--disable-static \
-		--enable-testbench \
+		$(use_enable test testbench) \
 		$(use_enable debug)
 }
 

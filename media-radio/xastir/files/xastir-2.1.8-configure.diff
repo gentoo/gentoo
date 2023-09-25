@@ -1,0 +1,16 @@
+# Fix implicit function declaration in configure.ac
+# bug 899846
+diff --git a/configure.ac b/configure.ac
+index 687bbe9..c137c80 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -646,7 +646,8 @@ fi
+ save_LDFLAGS="$LDFLAGS"
+ LDFLAGS="-Wl,--no-keep-memory $LDFLAGS"
+ AC_LINK_IFELSE(
+- [AC_LANG_PROGRAM([[#include <sys/types.h>]],
++ [AC_LANG_PROGRAM([[#include <sys/types.h>
++ 		    #include <stdlib.h>]],
+                   [[/* Stupid useless test for linker flags */
+                      exit(0);]])],
+  [xa_cv_no_keep_memory=yes],

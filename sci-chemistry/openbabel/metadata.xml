@@ -13,6 +13,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">openbabel</remote-id>
+		<remote-id type="github">openbabel/openbabel</remote-id>
 	</upstream>
 	<use>
 		<flag name="inchi">Build support for IUPAC International Chemical Identifier format</flag>

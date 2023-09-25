@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2023-05-03)
+# this pulls in glibc or musl, which requires RAP
+dev-libs/libgcrypt getentropy
 
 # Michael Haubenwallner <haubi@gentoo.org> (2019-05-02)
 # gold is linux only, and is required by cxx

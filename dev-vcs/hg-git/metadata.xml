@@ -5,7 +5,9 @@
 		<email>grobian@gentoo.org</email>
 		<name>Fabian Groffen</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">hg-git</remote-id>
+		<remote-id type="heptapod">mercurial/hg-git</remote-id>
 	</upstream>
 </pkgmetadata>

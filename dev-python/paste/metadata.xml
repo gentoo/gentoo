@@ -11,6 +11,7 @@
 	those interfaces.</longdescription>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">cdent/paste</remote-id>
 		<remote-id type="pypi">Paste</remote-id>
 	</upstream>
 </pkgmetadata>

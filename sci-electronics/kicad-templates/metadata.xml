@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gitlab">kicad/libraries/kicad-templates</remote-id>
+		<remote-id type="github">kicad/kicad-templates</remote-id>
 	</upstream>
 </pkgmetadata>

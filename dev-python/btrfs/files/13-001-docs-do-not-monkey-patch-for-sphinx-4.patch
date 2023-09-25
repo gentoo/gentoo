@@ -1,0 +1,146 @@
+
+Patch from:
+https://github.com/knorrie/python-btrfs/commit/892bc3d8882d62bf91df5de9a11569b6cffec3cd
+
+From 892bc3d8882d62bf91df5de9a11569b6cffec3cd Mon Sep 17 00:00:00 2001
+From: Hans van Kranenburg <hans@knorrie.org>
+Date: Sun, 8 Aug 2021 16:40:41 +0200
+Subject: [PATCH] docs: don't monkey patch for sphinx >= 4
+
+There's a really long existing bug in sphinx that causes it to generate
+cross references in places where it really should not:
+  https://github.com/sphinx-doc/sphinx/issues/2549
+
+In docs/source/conf.py there's a monkey patch for this, from line 363
+and further.
+
+It looks like a fix for this was implemented in v4:
+  https://github.com/sphinx-doc/sphinx/pull/8638/commits
+
+    -$ git tag --contains 918086b5590763663c1627578085e528f1358384
+    v4.0.0
+    [...]
+
+The function that is replaced while applying the workaround has been
+changed recently, causing breakage (TypeError: patched_make_field() got
+an unexpected keyword argument 'inliner').
+
+    -$ git tag --contains 4534d2d1a5755c8cbc9ef4327eab7e34a85a7de8
+    v4.1.0
+    [...]
+
+So, combining this information, it seems that when the major version
+number of the sphinx lib being used is >= 4, the monkey patch part
+should be skipped.
+
+Fixes: https://github.com/knorrie/python-btrfs/issues/31
+--- a/docs/source/conf.py
++++ b/docs/source/conf.py
+@@ -359,54 +359,56 @@ def get_version():
+ 
+ autodoc_member_order = 'bysource'
+ 
+-
+-from docutils import nodes
+-from sphinx.util.docfields import TypedField
+-from sphinx import addnodes
+-
+-
+-def patched_make_field(self,
+-                       types,     # type: Dict[unicode, List[nodes.Node]]
+-                       domain,    # type: unicode
+-                       items,     # type: Tuple
+-                       env=None,  # type: BuildEnvironment
+-                       ):
+-    # type: (...) -> nodes.field
+-    def handle_item(fieldarg, content):
+-        # type: (unicode, unicode) -> nodes.paragraph
+-        par = nodes.paragraph()
+-        # Adding the next line, and taking out the one after should prevent
+-        # ivars from getting incorrect cross-references.
+-        par += addnodes.literal_strong('', fieldarg)
+-        #par.extend(self.make_xrefs(self.rolename, domain, fieldarg,
+-        #                           addnodes.literal_strong, env=env))
+-        if fieldarg in types:
+-            par += nodes.Text(' (')
+-            # NOTE: using .pop() here to prevent a single type node to be
+-            # inserted twice into the doctree, which leads to
+-            # inconsistencies later when references are resolved
+-            fieldtype = types.pop(fieldarg)
+-            if len(fieldtype) == 1 and isinstance(fieldtype[0], nodes.Text):
+-                typename = u''.join(n.astext() for n in fieldtype)
+-                par.extend(self.make_xrefs(self.typerolename, domain, typename,
+-                                           addnodes.literal_emphasis, env=env))
+-            else:
+-                par += fieldtype
+-            par += nodes.Text(')')
+-        par += nodes.Text(' -- ')
+-        par += content
+-        return par
+-
+-    fieldname = nodes.field_name('', self.label)
+-    if len(items) == 1 and self.can_collapse:
+-        fieldarg, content = items[0]
+-        bodynode = handle_item(fieldarg, content)
+-    else:
+-        bodynode = self.list_type()
+-        for fieldarg, content in items:
+-            bodynode += nodes.list_item('', handle_item(fieldarg, content))
+-    fieldbody = nodes.field_body('', bodynode)
+-    return nodes.field('', fieldname, fieldbody)
+-
+-
+-TypedField.make_field = patched_make_field
++import sphinx
++
++if int(sphinx.__version__.split('.')[0]) < 4:
++    from docutils import nodes
++    from sphinx.util.docfields import TypedField
++    from sphinx import addnodes
++
++
++    def patched_make_field(self,
++                           types,     # type: Dict[unicode, List[nodes.Node]]
++                           domain,    # type: unicode
++                           items,     # type: Tuple
++                           env=None,  # type: BuildEnvironment
++                           ):
++        # type: (...) -> nodes.field
++        def handle_item(fieldarg, content):
++            # type: (unicode, unicode) -> nodes.paragraph
++            par = nodes.paragraph()
++            # Adding the next line, and taking out the one after should prevent
++            # ivars from getting incorrect cross-references.
++            par += addnodes.literal_strong('', fieldarg)
++            #par.extend(self.make_xrefs(self.rolename, domain, fieldarg,
++            #                           addnodes.literal_strong, env=env))
++            if fieldarg in types:
++                par += nodes.Text(' (')
++                # NOTE: using .pop() here to prevent a single type node to be
++                # inserted twice into the doctree, which leads to
++                # inconsistencies later when references are resolved
++                fieldtype = types.pop(fieldarg)
++                if len(fieldtype) == 1 and isinstance(fieldtype[0], nodes.Text):
++                    typename = u''.join(n.astext() for n in fieldtype)
++                    par.extend(self.make_xrefs(self.typerolename, domain, typename,
++                                               addnodes.literal_emphasis, env=env))
++                else:
++                    par += fieldtype
++                par += nodes.Text(')')
++            par += nodes.Text(' -- ')
++            par += content
++            return par
++
++        fieldname = nodes.field_name('', self.label)
++        if len(items) == 1 and self.can_collapse:
++            fieldarg, content = items[0]
++            bodynode = handle_item(fieldarg, content)
++        else:
++            bodynode = self.list_type()
++            for fieldarg, content in items:
++                bodynode += nodes.list_item('', handle_item(fieldarg, content))
++        fieldbody = nodes.field_body('', bodynode)
++        return nodes.field('', fieldname, fieldbody)
++
++
++    TypedField.make_field = patched_make_field

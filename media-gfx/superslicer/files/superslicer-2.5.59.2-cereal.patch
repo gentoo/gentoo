@@ -1,0 +1,53 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 18f26ba..c0a1f1f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -468,6 +468,9 @@ endif ()
+ 
+ # Find the Cereal serialization library
+ find_package(cereal REQUIRED)
++if (NOT TARGET cereal::cereal)
++    add_library(cereal::cereal ALIAS cereal)
++endif ()
+ 
+ # l10n
+ set(L10N_DIR "${SLIC3R_RESOURCES_DIR}/localization")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 7b2defe..f63aaad 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -141,7 +141,7 @@ if (NOT WIN32)
+     set_target_properties(Slic3r PROPERTIES OUTPUT_NAME "${SLIC3R_APP_CMD}")
+ endif ()
+ 
+-target_link_libraries(Slic3r libslic3r cereal)
++target_link_libraries(Slic3r libslic3r cereal::cereal)
+ 
+ if (APPLE)
+ #    add_compile_options(-stdlib=libc++)
+diff --git a/src/libslic3r/CMakeLists.txt b/src/libslic3r/CMakeLists.txt
+index 0ab5584..36917f3 100644
+--- a/src/libslic3r/CMakeLists.txt
++++ b/src/libslic3r/CMakeLists.txt
+@@ -416,7 +416,7 @@ find_package(JPEG REQUIRED)
+ target_link_libraries(libslic3r
+     libnest2d
+     admesh
+-    cereal
++    cereal::cereal
+     libigl
+     miniz
+     boost_libs
+diff --git a/src/slic3r/CMakeLists.txt b/src/slic3r/CMakeLists.txt
+index c11f860..4ca2523 100644
+--- a/src/slic3r/CMakeLists.txt
++++ b/src/slic3r/CMakeLists.txt
+@@ -302,7 +302,7 @@ target_compile_definitions(libslic3r_gui PRIVATE $<$<BOOL:${SLIC3R_ALPHA}>:SLIC3
+ 
+ encoding_check(libslic3r_gui)
+ 
+-target_link_libraries(libslic3r_gui libslic3r avrdude cereal imgui GLEW::GLEW OpenGL::GL hidapi exif angelscript libcurl ${wxWidgets_LIBRARIES})
++target_link_libraries(libslic3r_gui libslic3r avrdude cereal::cereal imgui GLEW::GLEW OpenGL::GL hidapi exif angelscript libcurl ${wxWidgets_LIBRARIES})
+ 
+ if (MSVC)
+     target_link_libraries(libslic3r_gui Setupapi.lib)

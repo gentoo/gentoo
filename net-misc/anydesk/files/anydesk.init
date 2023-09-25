@@ -6,5 +6,5 @@ name="AnyDesk service"
 description="AnyDesk global service"
 command="/opt/bin/anydesk"
 command_args="--service"
-pidfile="/var/run/anydesk.pid"
+pidfile="/run/anydesk.pid"
 command_background=true

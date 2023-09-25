@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -24,7 +24,7 @@ SRC_URI="https://opensource.apple.com/tarballs/misc_cmds/misc_cmds-${MISC_VER}.t
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc-macos ~x64-macos"
+KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos"
 IUSE=""
 
 # for ncal
@@ -42,6 +42,7 @@ src_prepare() {
 	cp "${DISTDIR}"/adv_cmds-md-${MD_VER}.c md/md.c || die
 	cp "${DISTDIR}"/adv_cmds-md-${MD_VER}.1 md/md.1 || die
 	eapply "${DISTDIR}"/adv_cmds-md-${MD_VER}-compile.patch
+	eapply "${FILESDIR}"/${PN}-12-md-register.patch
 
 	cd "${S}"
 	eapply_user

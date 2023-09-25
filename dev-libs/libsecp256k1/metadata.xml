@@ -12,15 +12,14 @@
   <use>
     <flag name="asm">Enable x86_64 assembly optimisation</flag>
     <flag name="ecdh">Enable ECDH shared secret computation</flag>
+    <flag name="ellswift">Enable ElligatorSwift encoding for public keys</flag>
     <flag name="endomorphism">Enable endomorphism</flag>
     <flag name="experimental">Allow experimental USE flags</flag>
     <flag name="extrakeys">Enable extrakeys module</flag>
-    <flag name="lowmem">Reduce runtime memory usage at the expense of performance (ecmult window size 2, gen precision 2)</flag>
-    <flag name="precompute-ecmult">Use over 512 MB memory at runtime for better performance (ecmult window size 24, gen precision 8)</flag>
+    <flag name="lowmem">Reduce runtime memory usage at the expense of performance (ecmult window size 4, gen precision 2)</flag>
     <flag name="recovery">Enable ECDSA pubkey recovery module</flag>
     <flag name="schnorr">Enable Schnorr signature module</flag>
     <flag name="test-openssl">Enable OpenSSL comparison tests</flag>
-    <flag name="valgrind">Compile in valgrind memory hints</flag>
   </use>
   <upstream>
     <remote-id type="github">bitcoin/secp256k1</remote-id>

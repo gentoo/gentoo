@@ -1,21 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="tk"
 
-inherit distutils-r1 virtualx
-
-MY_PN="Pmw"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 virtualx pypi
 
 DESCRIPTION="Toolkit for building high-level compound Python widgets using the Tkinter module"
 HOMEPAGE="http://pmw.sourceforge.net/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="py3"

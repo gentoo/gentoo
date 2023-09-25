@@ -1,5 +1,10 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# WANG Xuerui <xen0n@gentoo.org> (2023-09-10)
+# Has correctness issues on loong (failing test_encode_long_neg_conversion),
+# pending debug.
+dev-python/ujson
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-boot/gnu-efi upstream hasn't merged the loong port yet
@@ -9,4 +14,3 @@ app-crypt/sbsigntools
 sys-apps/fwupd-efi
 sys-boot/elilo
 sys-boot/refind
-sys-kernel/installkernel-systemd-boot

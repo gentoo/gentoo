@@ -1,0 +1,41 @@
+Bug: https://bugs.gentoo.org/886137
+--- a/autotune.c
++++ b/autotune.c
+@@ -29,6 +29,8 @@
+ #include <math.h>
+ #include "main.h"
+ #include "autotune.h"
++#include "draw.h"
++#include "calc.h"
+ #include <unistd.h>
+ 
+ 
+--- a/main.h
++++ b/main.h
+@@ -112,4 +112,6 @@ gint mdw_expose_event(GtkWidget *, GdkEventExpose *, gpointer),
+ 
+ void writespice(char *);
+ void removene(void);
++void loadgw(char *);
++void savegw(char *);
+ 
+--- a/print.c
++++ b/print.c
+@@ -32,6 +32,7 @@
+ #include "main.h"
+ #include "calc.h"
+ #include "print.h"
++#include "draw.h"
+ // jvdh 2004-3-30
+ 
+ extern SMCDATA smcdata;
+--- a/widget.c
++++ b/widget.c
+@@ -36,6 +36,7 @@
+ #include "widget.h"
+ #include "draw.h"
+ #include "print.h"
++#include "autotune.h"
+ 
+ extern GtkTextBuffer *txtcircbuff;
+ extern int Zcirc, Ycirc, RHOcirc, Qcirc, tsidx, fsidx;

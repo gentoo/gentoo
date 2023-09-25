@@ -11,6 +11,8 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Enterprise client-server fax package for class 1 and 2 fax modems"
 HOMEPAGE="https://hylafax.sourceforge.io/"
 SRC_URI="mirror://sourceforge/hylafax/${MY_P}.tar.gz"
+# bug #886303
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-tiff-4.5.0.patch.xz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="hylafaxplus"
@@ -44,6 +46,8 @@ CONFIG_PROTECT_MASK="${CONFIG_PROTECT_MASK} /var/spool/fax/etc/xferfaxlog"
 # See bug #706154, bug #810658 if need to patch for newer libtiff.
 PATCHES=(
 	"${FILESDIR}"/ldconfig-patch
+	"${FILESDIR}"/${P}-allow-tiff-4.5.patch
+	"${WORKDIR}"/${P}-tiff-4.5.0.patch
 )
 
 src_prepare() {

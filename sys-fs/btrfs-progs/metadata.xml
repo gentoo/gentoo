@@ -10,4 +10,7 @@
     <flag name="reiserfs">Enable reiserfs support in btrfs-convert tool.</flag>
     <flag name="static">Build static binaries in addition to the dynamic ones</flag>
   </use>
+  <upstream>
+    <remote-id type="github">kdave/btrfs-progs</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -15,8 +15,10 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="explicit-initialization iconv qt5 server test threads"
 RESTRICT="!test? ( test )"
 
-RDEPEND="iconv? ( virtual/libiconv )
-	qt5? ( dev-qt/qtcore:5 )"
+RDEPEND="
+	iconv? ( virtual/libiconv )
+	qt5? ( dev-qt/qtcore:5 )
+"
 DEPEND="${RDEPEND}"
 
 src_configure() {

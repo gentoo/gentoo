@@ -1,41 +1,45 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..11} )
-PYTHON_REQ_USE="ncurses"
+EAPI=8
 
+DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_REQ_USE="ncurses"
 inherit distutils-r1 xdg
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
+	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	SRC_URI="https://github.com/ranger/ranger/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 fi
 
-DESCRIPTION="A vim-inspired file manager for the console"
+DESCRIPTION="Vim-inspired file manager for the console"
 HOMEPAGE="https://ranger.github.io/"
+
 LICENSE="GPL-3"
 SLOT="0"
 
-RDEPEND="virtual/pager"
-
 distutils_enable_tests pytest
 
-src_prepare() {
-	# use versioned doc path
-	sed -i "s|share/doc/ranger|share/doc/${PF}|" setup.py doc/ranger.1 || die
+EPYTEST_IGNORE=(
+	tests/pylint
+)
 
+src_prepare() {
 	distutils-r1_src_prepare
+
+	sed -i "s|share/doc/ranger|share/doc/${PF}|" setup.py doc/ranger.1 || die
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog "Ranger has many optional dependencies to support enhanced file previews."
-		elog "See the README or homepage for more details."
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog "${PN^} has many optional dependencies to support enhanced file previews."
+		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for more details."
 	fi
 }

@@ -12,4 +12,7 @@
   <use>
     <flag name="ppp">Enables PPP/DAHDIRAS support</flag>
   </use>
+  <upstream>
+    <remote-id type="github">asterisk/dahdi-tools</remote-id>
+  </upstream>
 </pkgmetadata>

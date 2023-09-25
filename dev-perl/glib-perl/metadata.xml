@@ -23,5 +23,6 @@
     <remote-id type="cpan-module">Glib::Object::_LazyLoader</remote-id>
     <remote-id type="cpan-module">Glib::ParseXSDoc</remote-id>
     <remote-id type="cpan-module">Glib::Variant</remote-id>
+    <remote-id type="gnome-gitlab">GNOME/perl-glib</remote-id>
   </upstream>
 </pkgmetadata>

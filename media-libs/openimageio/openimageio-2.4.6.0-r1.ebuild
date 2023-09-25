@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 FONT_PN=OpenImageIO
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 TEST_OIIO_IMAGE_COMMIT="245e50edede2792205080eadc1dedce33ff5c1e4"
 TEST_OEXR_IMAGE_COMMIT="f17e353fbfcde3406fe02675f4d92aeae422a560"
@@ -21,7 +21,7 @@ S="${WORKDIR}/oiio-${PV}"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
 
 X86_CPU_FEATURES=(
 	aes:aes sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2

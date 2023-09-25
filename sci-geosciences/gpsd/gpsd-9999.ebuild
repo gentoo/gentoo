@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 SCONS_MIN_VERSION="2.3.0"
 
 inherit distutils-r1 scons-utils systemd toolchain-funcs udev
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
 	inherit git-r3
 else
@@ -21,7 +21,7 @@ DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping c
 HOMEPAGE="https://gpsd.gitlab.io/gpsd/"
 
 LICENSE="BSD"
-SLOT="0/29"
+SLOT="0/30"
 
 GPSD_PROTOCOLS=(
 	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt geostar
@@ -29,14 +29,16 @@ GPSD_PROTOCOLS=(
 	rtcm104v2 rtcm104v3 sirf skytraq superstar2 tnt tripmate tsip ublox
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/+gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp +python qt5 +shm +sockets static systemd test udev usb X"
-REQUIRED_USE="X? ( python )
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp +python qt5 selinux +shm +sockets static systemd test udev usb X"
+REQUIRED_USE="
+	X? ( python )
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
 	gpsd_protocols_isync? ( gpsd_protocols_ublox )
 	gpsd_protocols_ublox? ( python )
 	gpsd_protocols_greis? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	qt5? ( cxx )"
+	qt5? ( cxx )
+"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -67,6 +69,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
 	test? ( sys-devel/bc )"
+RDEPEND+=" selinux? ( sec-policy/selinux-gpsd )"
 
 # asciidoctor package is for man page generation
 if [[ ${PV} == *9999* ]] ; then
@@ -208,13 +211,13 @@ python_test() {
 }
 
 src_install() {
-	DESTDIR="${D}" escons install "${scons_opts[@]}" $(usex udev udev-install '')
+	DESTDIR="${D}" escons install "${scons_opts[@]}" $(usev udev udev-install)
 
 	newconfd "${FILESDIR}"/gpsd.conf-2 gpsd
 	newinitd "${FILESDIR}"/gpsd.init-2 gpsd
 
 	# Cleanup bad alt copy due to Scons
-	rm -rf  "${D}"/python-discard/gps*
+	rm -rf "${D}"/python-discard/gps*
 	find "${D}"/python-discard/ -type d -delete
 	# Install correct multi-python copy
 	pushd "${P}" || die

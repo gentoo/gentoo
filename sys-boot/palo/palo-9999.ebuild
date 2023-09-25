@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="PALO: PArisc Linux Loader"
-HOMEPAGE="https://parisc.wiki.kernel.org/"
+HOMEPAGE="https://parisc.wiki.kernel.org/ https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git"
 	inherit git-r3

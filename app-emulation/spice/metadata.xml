@@ -8,4 +8,7 @@
 	<use>
 		<flag name="smartcard">Enable smartcard remoting using <pkg>app-emulation/libcacard</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">spice/spice</remote-id>
+	</upstream>
 </pkgmetadata>

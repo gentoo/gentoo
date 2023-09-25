@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit flag-o-matic meson pax-utils python-any-r1 virtualx
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD CC0-1.0 MIT MPL-2.0 || ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
 IUSE="+cairo examples readline sysprof test"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-lang/spidermonkey-78.2.0:78
@@ -37,6 +37,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.6.1-clang15.patch
+)
 
 src_prepare() {
 	default

@@ -1,0 +1,30 @@
+From 057ae273bf223573b7cdb6ec978e051220ffe401 Mon Sep 17 00:00:00 2001
+From: Peter Levine <plevine457@gmail.com>
+Date: Sat, 18 Feb 2023 13:21:29 -0500
+Subject: [PATCH] [Gentoo specific] remove optimization flags and C++ standard
+ flags
+
+Remove the lines in CMakeLists.txt that emit -std=c++11 (as wall as
+emitting -O2) to enable the compiler default, which builds against
+the latest GTest with both clang-16.0.0_pre20230107 and
+gcc-12.2.1_p20230121-r1.
+
+Signed-off-by: Peter Levine <plevine457@gmail.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,12 +32,10 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+   # using GCC
+   add_definitions(-DBUILD_DLL)
+   add_compile_options(-Wall)
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O2")
+ elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
+   # using GCC
+   add_definitions(-DBUILD_DLL)
+   add_compile_options(-Wall) 
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O2")
+   set(CMAKE_MACOSX_RPATH ON)
+ endif()
+ 
+-- 
+2.39.1
+

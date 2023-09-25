@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -10,12 +10,12 @@ PHP_EXT_SAPIS="cli"
 PHP_EXT_NEEDED_USE="cli,sockets?"
 DOCS=( README.md )
 
-USE_PHP="php7-4 php8-0 php8-1"
+USE_PHP="php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
 HOMEPAGE="https://www.swoole.co.uk"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DESCRIPTION="Event-driven asynchronous & concurrent & coroutine networking engine"
 LICENSE="Apache-2.0"
@@ -31,7 +31,6 @@ DEPEND="
 		dev-libs/openssl:0=
 	)
 	mysql? (
-		php_targets_php7-4? ( dev-lang/php:7.4[mysql,mysqli(+)] )
 		php_targets_php8-0? ( dev-lang/php:8.0[mysql,mysqli(+)] )
 		php_targets_php8-1? ( dev-lang/php:8.1[mysql,mysqli(+)] )
 	)
@@ -40,6 +39,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 IUSE="debug http2 mysql sockets ssl"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc13.patch
+)
 
 src_configure() {
 	# JEMalloc not included as it refuses to find a ${ESYSROOT}/usr/includes/jemalloc subdirectory

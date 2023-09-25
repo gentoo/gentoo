@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">eradicate</remote-id>
-		<remote-id type="github">myint/eradicate</remote-id>
+		<remote-id type="github">PyCQA/eradicate</remote-id>
 	</upstream>
 </pkgmetadata>

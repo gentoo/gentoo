@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=hatchling
 
 DOCS_BUILDER="mkdocs"
@@ -11,28 +11,21 @@ DOCS_DEPEND="
 	dev-python/mkdocs-git-revision-date-localized-plugin
 	dev-python/mkdocs-material
 	dev-python/mkdocs-minify-plugin
-	dev-python/mkdocs_pymdownx_material_extras
+	dev-python/mkdocs-pymdownx-material-extras
 	dev-python/pyspelling
 "
 
-inherit distutils-r1 docs
-
-MY_PV="${PV%_p1}.post1"
+inherit distutils-r1 docs pypi
 
 DESCRIPTION="Bash style brace expansion for Python"
 HOMEPAGE="
 	https://github.com/facelessuser/bracex/
 	https://pypi.org/project/bracex/
 "
-SRC_URI="
-	https://github.com/facelessuser/${PN}/archive/${MY_PV}.tar.gz
-		-> ${P}.tar.gz
-"
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 BDEPEND="
 	test? (

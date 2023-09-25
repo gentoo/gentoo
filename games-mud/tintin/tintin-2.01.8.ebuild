@@ -1,16 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="(T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t"
-HOMEPAGE="https://tintin.sourceforge.net/"
+HOMEPAGE="https://tintin.mudhalla.net/"
 SRC_URI="mirror://sourceforge/tintin/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	dev-libs/libpcre

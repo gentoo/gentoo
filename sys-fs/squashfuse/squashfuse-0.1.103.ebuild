@@ -1,4 +1,4 @@
-# Copyright 2016-2022 Gentoo Authors
+# Copyright 2016-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}"
 
 src_configure() {
-	filter-flags -flto* -fwhole-program -fno-common
+	filter-lto
+	filter-flags -fwhole-program -fno-common
 
 	local econfargs=(
 		$(use_enable static-libs static)

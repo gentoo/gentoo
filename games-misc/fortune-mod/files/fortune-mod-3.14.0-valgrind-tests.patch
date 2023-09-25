@@ -1,4 +1,4 @@
-https://git.exherbo.org/arbor.git/plain/packages/games-misc/fortune-mod/files/fortune-mod-Don-t-run-tests-involving-valgrind.patch?id=4c04c9e10bfee01e4c7cc3278c452efb6863d549
+https://gitlab.exherbo.org/exherbo/arbor/-/blob/e1ff3d8f49ee349f289d248747f8139fc42857db/packages/games-misc/fortune-mod/files/fortune-mod-Don-t-run-tests-involving-valgrind.patch
 
 Upstream: no
 Reason: Test wants to install stuff, doesn't work and saves us the dep

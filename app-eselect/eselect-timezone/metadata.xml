@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>junghans@gentoo.org</email>
-		<name>Christoph Junghans</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<stabilize-allarches/>
 </pkgmetadata>

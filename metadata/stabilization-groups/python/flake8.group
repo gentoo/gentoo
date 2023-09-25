@@ -1,0 +1,4 @@
+dev-python/flake8
+dev-python/mccabe
+dev-python/pycodestyle
+dev-python/pyflakes

@@ -27,6 +27,10 @@
     <flag name="mlogc">
       Build and install the ModSecurity Audit Log Collector (mlogc).
     </flag>
+
+    <flag name="pcre2">
+      Use <pkg>dev-libs/libpcre2</pkg> as regex implementation
+    </flag>
   </use>
 
   <upstream>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		bsnes-jg is a cycle accurate emulator for the Super Famicom/Super
+		Nintendo Entertainment System, including support for the Super Game Boy,
+		BS-X Satellaview, and Sufami Turbo.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/bsnes/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/bsnes</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/900326
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -87,6 +87,7 @@ AC_CHECK_FUNCS(_snprintf snprintf)
+ 	
+ AC_MSG_CHECKING(for unaligned long accesses)
+ AC_TRY_RUN([
++	#include <stdlib.h>
+ 	void main(void)
+ 	{	unsigned char data[sizeof(long)*2];
+ 		long *ptr;

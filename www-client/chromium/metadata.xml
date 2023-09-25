@@ -5,8 +5,11 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>Matt.Jolly@footclan.ninja</email>
+		<name>Matt Jolly</name>
+	</maintainer>
 	<use>
-		<flag name="js-type-check">Enable JavaScript type-checking for Chrome's web technology-based UI. Requires Java.</flag>
 		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="debug">Enable DCHECK feature with severity configurable at runtime. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="gtk4">Build with GTK4 headers.</flag>
@@ -15,18 +18,21 @@
 		<flag name="libcxx">Use bundled libc++ instead of libstdc++ for building.</flag>
 		<flag name="lto">Build with Link Time Optimizations (via clang's ThinLTO)</flag>
 		<flag name="official">Enable Official build instead of Developer build.</flag>
+		<flag name="pax-kernel">Allow building on a PaX-enabled kernel</flag>
 		<flag name="pgo">Build with Profile Guided Optimizations (2-stage compilation)</flag>
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
 		<flag name="suid">Build the SUID sandbox, which is only needed on CONFIG_USER_NS=n kernels</flag>
-		<flag name="system-av1">Use system libaom and dav1d instead of the bundled one.</flag>
-		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
-		<flag name="system-harfbuzz">Use system harfbuzz instead of the bundled one.</flag>
-		<flag name="system-icu">Use system icu instead of the bundled one</flag>
-		<flag name="system-png">Use system libpng instead of the bundled one.</flag>
+		<flag name="system-av1">Use system <pkg>media-libs/libaom</pkg> and <pkg>media-libs/dav1d</pkg> instead of the bundled libraries.</flag>
+		<flag name="system-ffmpeg">Use system <pkg>media-video/ffmpeg</pkg> instead of the bundled version.</flag>
+		<flag name="system-harfbuzz">Use system <pkg>media-libs/harfbuzz</pkg> instead of the bundled library.</flag>
+		<flag name="system-icu">Use system <pkg>dev-libs/icu</pkg> instead of the bundled one</flag>
+		<flag name="system-png">Use system <pkg>media-libs/libpng</pkg> instead of the bundled library</flag>
+		<flag name="system-zstd">Use system <pkg>app-arch/zstd</pkg> instead of the bundled one.</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">stha09/chromium-patches</remote-id>
+		<remote-id type="github">chromium/chromium</remote-id>
+		<remote-id type="gitlab">Matt.Jolly/chromium-patches</remote-id>
 	</upstream>
 </pkgmetadata>

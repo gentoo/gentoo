@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="github">arsv/u2ps</remote-id>
 		<remote-id type="sourceforge">u2ps.berlios</remote-id>
 	</upstream>
 </pkgmetadata>

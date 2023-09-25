@@ -1,16 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=01db7cdd00aabcce559a8dddce8798dabb71949b
+[[ ${PV} == 20220224 ]] && COMMIT=01db7cdd00aabcce559a8dddce8798dabb71949b
 
 inherit cmake
 
 DESCRIPTION="Emulator, assembler, etc for XpertTeak, the DSP used by DSi/3DS"
 HOMEPAGE="https://github.com/wwylele/teakra/"
-SRC_URI="https://github.com/wwylele/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/wwylele/${PN}/archive/${COMMIT}.tar.gz
+	-> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,8 +24,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=ON
+	local -a mycmakeargs=(
+		-DCMAKE_SKIP_RPATCOMMIT=ON
 	)
 	cmake_src_configure
 }

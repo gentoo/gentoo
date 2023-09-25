@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="bsnes">Install bsnes for Super Nintendo</flag>
+		<flag name="cega">Install Cega for SG-1000, Sega Master System and Game Gear</flag>
+		<flag name="gambatte">Install Gambatte for Game Boy and Game Boy Color</flag>
+		<flag name="geolith">Install Geolith for Neo Geo AES/MVS</flag>
+		<flag name="jollycv">Install JollyCV for ColecoVision</flag>
+		<flag name="mednafen">Install Mednafen for Atari Lynx, Nintendo Virtual Boy, NEC PC Engine, NEC SuperGrafx, Sony PlayStation, Sega Saturn, Super Nintendo, Neo Geo Pocket and WonderSwan</flag>
+		<flag name="melonds">Install MelonDS for Nintendo DS</flag>
+		<flag name="mgba">Install mGBA for Game Boy Advance</flag>
+		<flag name="nestopia">Install Nestopia for Nintendo Entertainment System</flag>
+		<flag name="prosystem">Install ProSystem for Atari 7800</flag>
+		<flag name="sameboy">Install SameBoy for Game Boy and Game Boy Color</flag>
+		<flag name="vecx">Install Vecx for Vectrex</flag>
+	</use>
+	<longdescription>
+		Jolly Good Emulation is an education and preservation oriented
+		emulation project. As a side effect, it offers emulation
+		technology that extreme minimalists may find tolerable.
+	</longdescription>
+</pkgmetadata>

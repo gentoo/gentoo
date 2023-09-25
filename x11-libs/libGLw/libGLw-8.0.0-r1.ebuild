@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 MY_P=glw-"${PV}"
 
 DESCRIPTION="Mesa GLw library"
-HOMEPAGE="http://mesa3d.sourceforge.net/"
+HOMEPAGE="https://mesa3d.sourceforge.net/"
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/glw/${MY_P}.tar.bz2"
 
 LICENSE="MIT"

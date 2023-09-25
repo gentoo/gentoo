@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-user.eclass
@@ -44,9 +44,9 @@
 if [[ -z ${_ACCT_USER_ECLASS} ]]; then
 _ACCT_USER_ECLASS=1
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	7|8) ;;
-	*) die "EAPI=${EAPI:-0} not supported";;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit user-info
@@ -69,7 +69,7 @@ readonly ACCT_USER_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred UID for the new user.  This variable is obligatory, and its
-# value must be unique across all user packages.  This can be overriden
+# value must be unique across all user packages.  This can be overridden
 # in make.conf through ACCT_USER_<UPPERCASE_USERNAME>_ID variable.
 #
 # Overlays should set this to -1 to dynamically allocate UID.  Using -1
@@ -80,14 +80,14 @@ readonly ACCT_USER_NAME
 # If set to a non-null value, the eclass will require the user to have
 # specified UID.  If the user already exists with another UID, or
 # the UID is taken by another user, the install will fail.
-: ${ACCT_USER_ENFORCE_ID:=}
+: "${ACCT_USER_ENFORCE_ID:=}"
 
 # @ECLASS_VARIABLE: ACCT_USER_NO_MODIFY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, the eclass will not make any changes
 # to an already existing user.
-: ${ACCT_USER_NO_MODIFY:=}
+: "${ACCT_USER_NO_MODIFY:=}"
 
 # @ECLASS_VARIABLE: ACCT_USER_COMMENT
 # @DEFAULT_UNSET
@@ -99,33 +99,33 @@ readonly ACCT_USER_NAME
 # @ECLASS_VARIABLE: ACCT_USER_SHELL
 # @DESCRIPTION:
 # The shell to use for the user.  If not specified, a 'nologin' variant
-# for the system is used.  This can be overriden in make.conf through
+# for the system is used.  This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_SHELL variable.
-: ${ACCT_USER_SHELL:=/sbin/nologin}
+: "${ACCT_USER_SHELL:=/sbin/nologin}"
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME
 # @DESCRIPTION:
 # The home directory for the user.  If not specified, /dev/null is used.
 # The directory will be created with appropriate permissions if it does
 # not exist.  When updating, existing home directory will not be moved.
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME variable.
-: ${ACCT_USER_HOME:=/dev/null}
+: "${ACCT_USER_HOME:=/dev/null}"
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME_OWNER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The ownership to use for the home directory, in chown ([user][:group])
 # syntax.  Defaults to the newly created user, and its primary group.
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME_OWNER variable.
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME_PERMS
 # @DESCRIPTION:
 # The permissions to use for the home directory, in chmod (octal
-# or verbose) form.  This can be overriden in make.conf through
+# or verbose) form.  This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME_PERMS variable.
-: ${ACCT_USER_HOME_PERMS:=0755}
+: "${ACCT_USER_HOME_PERMS:=0755}"
 
 # @ECLASS_VARIABLE: ACCT_USER_GROUPS
 # @REQUIRED
@@ -134,7 +134,7 @@ readonly ACCT_USER_NAME
 # array.  The first group specified is the user's primary group, while
 # the remaining groups (if any) become supplementary groups.
 #
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_GROUPS variable, or appended to
 # via ACCT_USER_<UPPERCASE_USERNAME>_GROUPS_ADD.  Please note that
 # due to technical limitations, the override variables are not arrays
@@ -142,9 +142,9 @@ readonly ACCT_USER_NAME
 
 
 # << Boilerplate ebuild variables >>
-: ${DESCRIPTION:="System user: ${ACCT_USER_NAME}"}
-: ${SLOT:=0}
-: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 ~loong m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
+: "${DESCRIPTION:="System user: ${ACCT_USER_NAME}"}"
+: "${SLOT:=0}"
+: "${KEYWORDS:=~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris}"
 S=${WORKDIR}
 
 
@@ -212,8 +212,6 @@ eislocked() {
 }
 
 # << Phase functions >>
-EXPORT_FUNCTIONS pkg_pretend src_install pkg_preinst pkg_postinst \
-	pkg_prerm
 
 # @FUNCTION: acct-user_pkg_pretend
 # @DESCRIPTION:
@@ -271,7 +269,7 @@ acct-user_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	# Replace reserved characters in comment
-	: ${ACCT_USER_COMMENT:=${DESCRIPTION//[:,=]/;}}
+	: "${ACCT_USER_COMMENT:=${DESCRIPTION//[:,=]/;}}"
 
 	# serialize for override support
 	local ACCT_USER_GROUPS=${ACCT_USER_GROUPS[*]}
@@ -364,7 +362,7 @@ acct-user_pkg_preinst() {
 		fi
 
 		elog "Adding user ${ACCT_USER_NAME}"
-		useradd "${opts[@]}" "${ACCT_USER_NAME}" || die
+		useradd "${opts[@]}" "${ACCT_USER_NAME}" || die "useradd failed with status $?"
 		_ACCT_USER_ADDED=1
 	fi
 
@@ -434,12 +432,30 @@ acct-user_pkg_postinst() {
 	fi
 
 	elog "Updating user ${ACCT_USER_NAME}"
-	if ! usermod "${opts[@]}" "${ACCT_USER_NAME}" 2>"${T}/usermod-error.log"; then
-		# usermod outputs a warning if unlocking the account would result in an
-		# empty password. Hide stderr in a text file and display it if usermod
-		# fails.
+	# usermod outputs a warning if unlocking the account would result in an
+	# empty password. Hide stderr in a text file and display it if usermod fails.
+	usermod "${opts[@]}" "${ACCT_USER_NAME}" 2>"${T}/usermod-error.log"
+	local status=$?
+	if [[ ${status} -ne 0 ]]; then
 		cat "${T}/usermod-error.log" >&2
-		die "usermod failed"
+		if [[ ${status} -eq 8 ]]; then
+			# usermod refused to update the home directory
+			# for a uid with active processes.
+			eerror "Failed to update user ${ACCT_USER_NAME}"
+			eerror "This user currently has one or more running processes."
+			eerror "Please update this user manually with the following command:"
+
+			# Surround opts with quotes.
+			# With bash-5 (EAPI 8), we can use "${opts[@]@Q}" instead.
+			local q="'"
+			local optsq=( "${opts[@]/#/${q}}" )
+			optsq=( "${optsq[@]/%/${q}}" )
+
+			eerror "  usermod ${optsq[*]} ${ACCT_USER_NAME}"
+		else
+			eerror "$(<"${T}/usermod-error.log")"
+			die "usermod failed with status ${status}"
+		fi
 	fi
 }
 
@@ -486,7 +502,9 @@ acct-user_pkg_prerm() {
 	fi
 
 	elog "Locking user ${ACCT_USER_NAME}"
-	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die
+	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die "usermod failed with status $?"
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_pretend src_install pkg_preinst pkg_postinst pkg_prerm

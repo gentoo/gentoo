@@ -1,8 +1,21 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -x86
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
+# Requires media-libs/opencolorio, broken on x86, bug #884115
+color-management
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
+# Successful build of dev-qt/qtwebengine depends on 64-bit host
+# Bug #893234
+webengine
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here
@@ -43,16 +56,12 @@
 -python_targets_pypy3
 -python_single_target_pypy3
 
-# Michał Górny <mgorny@gentoo.org> (2013-05-04)
-# Unmask systemd since it is keyworded here.
--systemd
-
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on x86
 -clisp
 -clozurecl
 -cmucl
--ecls
+-ecl
 -gcl
 -sbcl
 
@@ -120,9 +129,6 @@
 -cpu_flags_x86_ssse3
 -cpu_flags_x86_xop
 
-# Unmask nvidia XvMC support
--nvidia
-
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
 -input_devices_vmmouse
@@ -134,7 +140,6 @@
 -video_cards_i965
 -video_cards_intel
 -video_cards_iris
--video_cards_nvidia
 -video_cards_siliconmotion
 -video_cards_vmware
 -video_cards_geode

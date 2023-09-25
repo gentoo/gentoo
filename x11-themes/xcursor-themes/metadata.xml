@@ -5,4 +5,7 @@
 	<email>x11@gentoo.org</email>
 	<name>X11</name>
 </maintainer>
+<upstream>
+	<remote-id type="freedesktop-gitlab">xorg/data/cursors</remote-id>
+</upstream>
 </pkgmetadata>

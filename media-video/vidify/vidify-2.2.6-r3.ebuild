@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
 inherit xdg distutils-r1 optfeature virtualx
 
@@ -28,7 +28,7 @@ RDEPEND="
 	!dbus? ( dev-python/tekore[${PYTHON_USEDEP}] )
 	mpv? ( dev-python/python-mpv[${PYTHON_USEDEP}] )
 	vlc? ( dev-python/python-vlc[${PYTHON_USEDEP}] )
-	zeroconf? ( dev-python/python-zeroconf[${PYTHON_USEDEP}] )
+	zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )
 "
 
 # use yt-dlp instead of youtube-dl, otherwise download is too slow for playback

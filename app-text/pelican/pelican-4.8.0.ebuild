@@ -1,23 +1,30 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="A tool to generate a static blog, with restructured text or markdown input files"
-HOMEPAGE="https://blog.getpelican.com/ https://pypi.org/project/pelican/"
-SRC_URI="https://github.com/getpelican/pelican/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://getpelican.com/
+	https://pypi.org/project/pelican/
+"
+SRC_URI="
+	https://github.com/getpelican/pelican/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
 IUSE="doc examples markdown"
 
-RDEPEND=">=dev-python/docutils-0.16[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/docutils-0.16[${PYTHON_USEDEP}]
 	>=dev-python/blinker-1.4[${PYTHON_USEDEP}]
 	>=dev-python/feedgenerator-1.9[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]
@@ -43,6 +50,10 @@ EPYTEST_DESELECT=(
 	pelican/tests/test_testsuite.py::TestSuiteTest::test_error_on_warning
 	pelican/tests/test_pelican.py::TestPelican::test_basic_generation_works
 	pelican/tests/test_pelican.py::TestPelican::test_custom_generation_works
+)
+
+PATCHES=(
+	"${FILESDIR}"/${P}-sphinx-6.patch
 )
 
 distutils_enable_tests pytest

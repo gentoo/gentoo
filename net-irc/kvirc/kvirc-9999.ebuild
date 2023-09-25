@@ -1,9 +1,9 @@
-# Copyright 2009-2022 Gentoo Authors
+# Copyright 2009-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit cmake flag-o-matic python-single-r1 xdg-utils
 
@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="Advanced IRC Client"
-HOMEPAGE="https://www.kvirc.net/ https://github.com/kvirc/KVIrc"
+HOMEPAGE="http://www.kvirc.net/ https://github.com/kvirc/KVIrc"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
@@ -64,7 +64,7 @@ DEPEND="dev-qt/qtcore:5
 	perl? ( dev-lang/perl:0= )
 	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
-	spell? ( app-text/enchant:0= )
+	spell? ( app-text/enchant:2 )
 	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg

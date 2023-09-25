@@ -8,4 +8,7 @@
 	<longdescription lang="en">
 		Two command-line Wayland clipboard utilities, wl-copy and wl-paste, that let you easily copy data between the clipboard and Unix pipes, sockets, files and so on.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">bugaevc/wl-clipboard</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,30 @@
+https://gitlab.kitware.com/vtk/vtk/-/merge-requests/9857
+
+From ef95422b62296e4c136917095eace14f48cefb82 Mon Sep 17 00:00:00 2001
+From: Laurent Rineau <laurent.rineau@cgal.org>
+Date: Tue, 17 Jan 2023 16:18:53 +0100
+Subject: [PATCH] Add #include <cstdint> to compile with gcc13
+
+The `vtkSEPReader` was introduced by MRs !4909 (from my former
+collaborator Maxime) and !4938. Then it was highly modified by
+!7516. The later MR is the one that introduced the uses of
+`std::uint8_t` and `std::uint32_t`.
+
+Those types needs the inclusion of `<cstdint>`.
+--- a/IO/Image/vtkSEPReader.h
++++ b/IO/Image/vtkSEPReader.h
+@@ -25,8 +25,9 @@
+ #include "vtkImageAlgorithm.h"
+ #include "vtkNew.h" // for ivars
+ 
+-#include <array>  // for std::array
+-#include <string> // for std::string
++#include <array>   // for std::array
++#include <cstdint> // for std::uint8_t and std::uint32_t
++#include <string>  // for std::string
+ 
+ namespace details
+ {
+-- 
+GitLab
+

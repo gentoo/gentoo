@@ -1,7 +1,0 @@
-#!/sbin/openrc-run
-
-pidfile="/run/sonarr.pid"
-command="/opt/sonarr/Sonarr"
-command_user="sonarr:sonarr"
-command_background=true
-

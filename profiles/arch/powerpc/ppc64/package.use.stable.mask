@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,18 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Niccolò Belli <niccolo.belli@linuxsystems.it> (2023-03-12)
+# media-libs/webrtc-audio-processing not stable on ppc64
+media-video/pipewire echo-cancel
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
+# Sam James <sam@gentoo.org> (2023-03-23)
+# app-emacs/flycheck is not marked stable here yet
+dev-util/pkgcheck emacs
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
 # The corresponding Qt5 modules are not stable keyworded on ppc64, and we don't want to
@@ -48,10 +60,6 @@ mail-client/claws-mail gdata
 # Michał Górny <mgorny@gentoo.org> (2020-08-07)
 # Unstable test deps.
 dev-cpp/eigen test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
-# media-libs/libheif not stable, bugs #717242, #720438
-media-gfx/gimp heif
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not stable

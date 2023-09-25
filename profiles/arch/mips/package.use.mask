@@ -1,5 +1,26 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
+# Libei not keyworded here yet
+x11-base/xwayland libei
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-18)
+# app-i18n/fcitx:4 not keyworded here
+media-libs/libsdl2 fcitx4
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# matoro <matoro_gentoo@matoro.tk> (2023-03-03)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
 
 # Conrad Kostecki <conikost@gentoo.org> (2022-11-01)
 # Mask tests, as not all needed deps are available on this arch.
@@ -150,7 +171,7 @@ dev-python/wxpython webkit
 
 # Markos Chandras <hwoarang@gentoo.org> (2014-01-05)
 # Perl is heavily unkeyworded on MIPS. See 497068
-dev-vcs/git mediawiki mediawiki-experimental
+dev-vcs/git mediawiki
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-09-02)
 # Not tested
@@ -160,10 +181,6 @@ app-text/tesseract	webp
 # Richard Brown <rbrown@gentoo.org> (2008-01-21)
 # Needs dev-ruby/builder, which isn't keyworded
 dev-ruby/rubygems server
-
-# Wolfram Schlich <wschlich@gentoo.org> (2007-11-20)
-# dependency can't be fulfilled at the moment
-net-im/mcabber otr
 
 # Jim Ramsay <lack@gentoo.org> (2007-09-07)
 # app-admin/gkrellm may pull in hddtemp, which is not yet available here

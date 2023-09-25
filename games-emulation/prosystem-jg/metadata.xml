@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		ProSystem JG is an emulator for the Atari 7800. This
+		is a fork of ProSystem 1.3e with patches from OpenEmu,
+		which contains patches derived from Wii7800 and js7800.
+		The code has been significantly altered. It was ported
+		from C++ to C, and all of the dependencies and Windows-
+		specific code were removed.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/prosystem/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/prosystem</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">deepmerge</remote-id>
+		<remote-id type="github">toumorokoshi/deepmerge</remote-id>
 	</upstream>
 </pkgmetadata>

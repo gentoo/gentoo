@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,15 +13,16 @@ KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="fontconfig freetype graphicsmagick imagemagick lcd_devices_ax206dpf lcd_devices_picolcd_256x64 lcd_devices_vnc"
-REQUIRED_USE="?? ( graphicsmagick imagemagick )"
 
 RDEPEND="
 	dev-libs/libhid
 	net-libs/libvncserver
 	freetype? ( media-libs/freetype:2= )
 	fontconfig? ( media-libs/fontconfig:1.0= )
-	graphicsmagick? ( media-gfx/graphicsmagick:0/1.3[cxx] )
-	imagemagick? ( media-gfx/imagemagick:= )
+	imagemagick? (
+		!graphicsmagick? ( media-gfx/imagemagick:= )
+		graphicsmagick? ( media-gfx/graphicsmagick:0/1.3[cxx] )
+	)
 	lcd_devices_ax206dpf? ( virtual/libusb:0 )
 	lcd_devices_picolcd_256x64? ( virtual/libusb:0 )
 "
@@ -71,11 +72,13 @@ src_configure() {
 	if ! use fontconfig; then
 		sed -e "50s:HAVE:#HAVE:" -i Make.config || die
 	fi
-	if use graphicsmagick; then
-		sed -e "57s:#::" -i Make.config || die
-	fi
+
 	if use imagemagick; then
-		sed -e "56s:#::" -i Make.config || die
+		if use graphicsmagick; then
+			sed -e "57s:#::" -i Make.config || die
+		else
+			sed -e "56s:#::" -i Make.config || die
+		fi
 	fi
 }
 

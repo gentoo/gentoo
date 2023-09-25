@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,6 @@ RESTRICT="x86? ( test )
 RDEPEND="app-arch/snappy:=
 	app-arch/zstd:=
 	>=dev-libs/libbson-${PV}[static-libs?]
-	<dev-python/sphinx-5
 	sys-libs/zlib:=
 	icu? ( dev-libs/icu:= )
 	sasl? ( dev-libs/cyrus-sasl:= )
@@ -35,6 +34,9 @@ DEPEND="${RDEPEND}
 		dev-db/mongodb
 		dev-libs/libbson[static-libs]
 	)"
+BDEPEND="
+	dev-python/sphinx
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.14.0-no-docs.patch"
@@ -43,6 +45,9 @@ PATCHES=(
 
 src_prepare() {
 	cmake_src_prepare
+
+	# sphinx's -Werror
+	sed -i -e 's:-qEW:-qE:' build/cmake/SphinxBuild.cmake || die
 
 	# copy private headers for tests since we don't build libbson
 	if use test; then

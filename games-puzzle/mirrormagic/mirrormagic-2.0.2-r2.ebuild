@@ -1,12 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit desktop toolchain-funcs
 
 DESCRIPTION="A game like Deflektor (C 64) or Mindbender (Amiga)"
 HOMEPAGE="https://www.artsoft.org/mirrormagic/"
-SRC_URI="https://www.artsoft.org/RELEASES/unix/${PN}/${P}.tar.gz"
+SRC_URI="https://www.artsoft.org/RELEASES/linux/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

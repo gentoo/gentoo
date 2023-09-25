@@ -1,0 +1,13 @@
+https://lists.gnu.org/archive/html/bug-bash/2023-01/msg00016.html
+https://git.savannah.gnu.org/cgit/bash.git/commit/?h=devel&id=0647e53bd15c8982d89a03c2db1643aedd7cd649
+
+--- lib/sh/random.c
++++ lib/sh/random.c
+@@ -75,7 +75,7 @@ u_bits32_t last;
+   /* Can't seed with 0. */
+   ret = (last == 0) ? 123459876 : last;
+   h = ret / 127773;
+-  l = ret - (127773 * h);
++  l = ret % 127773;
+   t = 16807 * l - 2836 * h;
+   ret = (t < 0) ? t + 0x7fffffff : t;

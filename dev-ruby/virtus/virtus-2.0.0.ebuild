@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="Changelog.md CONTRIBUTING.md README.md"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -34,6 +34,9 @@ ruby_add_bdepend "test? (
 all_ruby_prepare() {
 	# Avoid specs that require unpackaged dry-inflector for now.
 	rm -f spec/unit/virtus/class_methods/finalize_spec.rb || die
+
+	# Fix specs for ruby 3.2
+	sed -i -e 's/Fixnum/Integer/' spec/integration/inheritance_spec.rb || die
 
 	# Avoid developer dependencies
 	sed -i -e '/simplecov/I s:^:#:' spec/spec_helper.rb || die

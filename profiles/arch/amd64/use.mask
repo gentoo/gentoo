@@ -1,8 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -amd64
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-03-03)
+# Unmask on amd64 only for now.
+-qt6
+-pyqt6
+-pyside6
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here
@@ -55,14 +65,11 @@
 -python_targets_pypy3
 -python_single_target_pypy3
 
-# Michał Górny <mgorny@gentoo.org> (2013-05-04)
-# Unmask systemd since it is keyworded here.
--systemd
-
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on amd64
 -clisp
--ecls
+-clozurecl64
+-ecl
 -gcl
 -sbcl
 

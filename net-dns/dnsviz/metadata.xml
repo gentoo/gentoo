@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">dnsviz/dnsviz</remote-id>
+		<remote-id type="pypi">dnsviz</remote-id>
 	</upstream>
 </pkgmetadata>

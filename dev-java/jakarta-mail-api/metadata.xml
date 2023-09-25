@@ -8,6 +8,7 @@
 		Jakarta Mail defines a platform-independent and protocol-independent framework to build mail and messaging applications.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">eclipse-ee4j/mail</remote-id>
+		<changelog>https://jakartaee.github.io/mail-api/docs/CHANGES.txt</changelog>
+		<remote-id type="github">jakartaee/mail-api</remote-id>
 	</upstream>
 </pkgmetadata>

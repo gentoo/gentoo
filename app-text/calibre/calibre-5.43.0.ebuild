@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 PYTHON_REQ_USE="ipv6(+),sqlite,ssl"
 
 inherit toolchain-funcs python-single-r1 qmake-utils xdg-utils
@@ -31,7 +31,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~x86"
 SLOT="0"
 IUSE="ios +udisks"
 
@@ -40,6 +40,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/hunspell-1.7:=
 	>=app-text/podofo-0.9.6_pre20171027:=
+	<app-text/podofo-0.10:=
 	>=app-text/poppler-0.26.5[qt5]
 	dev-libs/glib:2=
 	dev-libs/hyphen:=
@@ -74,7 +75,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
-		dev-python/python-zeroconf[${PYTHON_USEDEP}]
+		dev-python/zeroconf[${PYTHON_USEDEP}]
 		>=dev-python/PyQt5-5.15.5_pre2107091435[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
 		>=dev-python/PyQt-builder-1.10.3[${PYTHON_USEDEP}]
 		>=dev-python/PyQtWebEngine-5.15.5_pre2108100905[${PYTHON_USEDEP}]
@@ -113,6 +114,7 @@ BDEPEND="$(python_gen_cond_dep '
 		>=dev-python/sip-5[${PYTHON_USEDEP}]
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
+	<virtual/podofo-build-0.10
 	virtual/pkgconfig"
 
 PATCHES=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.unidata.ucar.edu/pub/udunits/${P}.tar.gz"
 
 LICENSE="UCAR-BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-libs/expat"
 DEPEND="${RDEPEND}"

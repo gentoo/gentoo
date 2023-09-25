@@ -11,5 +11,6 @@
 	<!-- not suitable for ALLARCHES - uses cdll -->
 	<upstream>
 		<remote-id type="pypi">ifaddr</remote-id>
+		<remote-id type="github">pydron/ifaddr</remote-id>
 	</upstream>
 </pkgmetadata>

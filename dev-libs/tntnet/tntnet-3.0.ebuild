@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,9 +12,11 @@ SRC_URI="http://www.tntnet.org/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~sparc x86"
-IUSE="doc gnutls server ssl"
+IUSE="doc gnutls server ssl test"
+RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-libs/cxxtools-3.0
+RDEPEND="
+	>=dev-libs/cxxtools-3.0
 	sys-libs/zlib[minizip]
 	ssl? (
 		gnutls? (
@@ -24,10 +26,13 @@ RDEPEND=">=dev-libs/cxxtools-3.0
 		!gnutls? (
 			dev-libs/openssl:0=
 		)
-	)"
+	)
+"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	app-arch/zip"
+BDEPEND="
+	app-arch/zip
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0-autoconf-2.70.patch"
@@ -48,13 +53,19 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
+	local myconf="$(use_enable test unittest)"
 
 	if ! use server; then
 		myconf="${myconf} --disable-server"
 	fi
 
 	econf ${myconf}
+}
+
+src_test() {
+	cd test || die
+	emake || die
+	./tntnet-test || die
 }
 
 src_install() {

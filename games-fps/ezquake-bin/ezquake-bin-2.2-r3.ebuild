@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit wrapper
 MY_FULL_PV=1.9.3
 MY_PN="${PN/-bin/}"
 DESCRIPTION="Quakeworld client with mqwcl functionality and many more features"
-HOMEPAGE="http://ezquake.sf.net/"
+HOMEPAGE="https://ezquake.sourceforge.net/"
 SRC_URI="
 	amd64? ( mirror://sourceforge/${MY_PN}/${MY_PN}_linux-x86_64.${MY_FULL_PV}.tar.gz
 		mirror://sourceforge/${MY_PN}/${MY_PN}_linux64_${PV}.tar.gz )

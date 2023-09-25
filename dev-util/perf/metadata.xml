@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <maintainer type="person">
     <email>naota@gentoo.org</email>
     <name>Naohiro Aota</name>
   </maintainer>
@@ -9,15 +13,8 @@
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
   </maintainer>
-  <maintainer type="person">
-    <email>amadio@gentoo.org</email>
-    <name>Guilherme Amadio</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>zlogene@gentoo.org</email>
-    <name>Mikle Kolyada</name>
-  </maintainer>
   <use>
+    <flag name="bpf">Enable support for eBPF features with <pkg>dev-libs/libbpf</pkg></flag>
     <flag name="babeltrace">Enable <pkg>dev-util/babeltrace</pkg> support</flag>
     <flag name="clang">Enable builtin clang and LLVM support</flag>
     <flag name="doc">
@@ -28,6 +25,8 @@
       systems.
     </flag>
     <flag name="libpfm">Enable <pkg>dev-libs/libpfm</pkg> support</flag>
+    <flag name="libtraceevent">Enable <pkg>dev-libs/libtraceevent</pkg> support</flag>
+    <flag name="libtracefs">Enable <pkg>dev-libs/libtracefs</pkg> support</flag>
     <flag name="numa">Enable NUMA support</flag>
     <flag name="perl">
       Add support for Perl as a scripting language for perf tools.

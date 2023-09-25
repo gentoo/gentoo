@@ -13,7 +13,4 @@
     <remote-id type="pypi">hiredis</remote-id>
     <remote-id type="github">redis/hiredis-py</remote-id>
   </upstream>
-  <use>
-    <flag name="system-libs">Use <pkg>dev-libs/hiredis</pkg> from system</flag>
-  </use>
 </pkgmetadata>

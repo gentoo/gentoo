@@ -1,0 +1,103 @@
+https://github.com/boysetsfrog/vimpc/commit/055ecdce0720fdfc9ec2528c520b6c33da36271b
+
+From 055ecdce0720fdfc9ec2528c520b6c33da36271b Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Wed, 3 Nov 2021 08:25:58 +0000
+Subject: [PATCH] vimpc: always use "%s"-style format for printf()-style
+ functions
+
+`ncuses-6.3` added printf-style function attributes and now makes
+it easier to catch cases when user input is used in palce of format
+string when built with CFLAGS=-Werror=format-security:
+
+    src/window/listwindow.cpp:120:16:
+      error: format not a string literal and no format arguments [-Werror=format-security]
+      120 |       mvwprintw(window, line, 0, BlankLine.c_str());
+          |       ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Let's wrap all the missing places with "%s" format.
+--- a/src/screen.cpp
++++ b/src/screen.cpp
+@@ -1489,7 +1489,7 @@ void Screen::ClearStatus() const
+       wattron(statusWindow_, A_REVERSE);
+    }
+ 
+-   mvwprintw(statusWindow_, 0, 0, BlankLine.c_str());
++   mvwprintw(statusWindow_, 0, 0, "%s", BlankLine.c_str());
+ 
+    if (settings_.Get(Setting::ColourEnabled) == true)
+    {
+@@ -1516,7 +1516,7 @@ void Screen::UpdateTabWindow() const
+       wattron(tabWindow_, COLOR_PAIR(settings_.colours.TabWindow));
+    }
+ 
+-   mvwprintw(tabWindow_, 0, 0, BlankLine.c_str());
++   mvwprintw(tabWindow_, 0, 0, "%s", BlankLine.c_str());
+    wmove(tabWindow_, 0, 0);
+ 
+    std::string name   = "";
+--- a/src/window/directorywindow.cpp
++++ b/src/window/directorywindow.cpp
+@@ -220,8 +220,8 @@ void DirectoryWindow::Print(uint32_t line) const
+ 
+       wattron(window, A_BOLD);
+       std::string const Directory = "/" + directory_.CurrentDirectory();
+-      mvwprintw(window, line, 0, BlankLine.c_str());
+-      mvwprintw(window, line, 1, Directory.c_str());
++      mvwprintw(window, line, 0, "%s", BlankLine.c_str());
++      mvwprintw(window, line, 1, "%s", Directory.c_str());
+       wattroff(window, A_BOLD);
+ 
+       if (settings_.Get(Setting::ColourEnabled) == true)
+@@ -250,7 +250,7 @@ void DirectoryWindow::Print(uint32_t line) const
+             wattron(window, A_REVERSE);
+          }
+ 
+-         mvwprintw(window, line, 0, BlankLine.c_str());
++         mvwprintw(window, line, 0, "%s", BlankLine.c_str());
+ 
+          uint8_t expandCol = 1;
+ 
+@@ -276,7 +276,7 @@ void DirectoryWindow::Print(uint32_t line) const
+       }
+       else
+       {
+-         mvwprintw(window, line, 0, BlankLine.c_str());
++         mvwprintw(window, line, 0, "%s", BlankLine.c_str());
+       }
+    }
+ }
+--- a/src/window/help.cpp
++++ b/src/window/help.cpp
+@@ -64,7 +64,7 @@ void HelpWindow::Print(uint32_t line) const
+    WINDOW * window = N_WINDOW();
+ 
+    std::string const BlankLine(Columns(), ' ');
+-   mvwprintw(window, line, 0, BlankLine.c_str());
++   mvwprintw(window, line, 0, "%s", BlankLine.c_str());
+    wmove(window, line, 0);
+ 
+    if ((FirstLine() + line) < help_.Size())
+--- a/src/window/listwindow.cpp
++++ b/src/window/listwindow.cpp
+@@ -117,7 +117,7 @@ void ListWindow::Print(uint32_t line) const
+    else
+    {
+       std::string const BlankLine(Columns(), ' ');
+-      mvwprintw(window, line, 0, BlankLine.c_str());
++      mvwprintw(window, line, 0, "%s", BlankLine.c_str());
+    }
+ #else
+    SelectWindow::Print(line);
+--- a/src/window/lyricswindow.cpp
++++ b/src/window/lyricswindow.cpp
+@@ -61,7 +61,7 @@ void LyricsWindow::Print(uint32_t line) const
+    WINDOW * window = N_WINDOW();
+ 
+    std::string const BlankLine(Columns(), ' ');
+-   mvwprintw(window, line, 0, BlankLine.c_str());
++   mvwprintw(window, line, 0, "%s", BlankLine.c_str());
+    wmove(window, line, 0);
+ 
+    if ((FirstLine() == 0) && (line == 0))
+

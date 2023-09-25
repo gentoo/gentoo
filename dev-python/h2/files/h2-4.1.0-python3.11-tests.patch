@@ -1,0 +1,104 @@
+https://github.com/python-hyper/h2/commit/eabe727282e7a7aa3254773292f86cf341bdc597
+
+From eabe727282e7a7aa3254773292f86cf341bdc597 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert-Andr=C3=A9=20Mauchin?= <zebob.m@gmail.com>
+Date: Sun, 3 Jul 2022 12:05:05 +0200
+Subject: [PATCH] Fix repr() checks for Python 3.11
+
+In Python 3.11, repr() was modified, this commit fixes the
+assertions to match the new repr() behavior.
+
+Fix #1268
+--- a/test/test_events.py
++++ b/test/test_events.py
+@@ -207,11 +207,18 @@ def test_remotesettingschanged_repr(self):
+                 ),
+         }
+ 
+-        assert repr(e) == (
+-            "<RemoteSettingsChanged changed_settings:{ChangedSetting("
+-            "setting=SettingCodes.INITIAL_WINDOW_SIZE, original_value=65536, "
+-            "new_value=32768)}>"
+-        )
++        if sys.version_info >= (3, 11):
++            assert repr(e) == (
++                "<RemoteSettingsChanged changed_settings:{ChangedSetting("
++                "setting=4, original_value=65536, "
++                "new_value=32768)}>"
++            )
++        else:
++            assert repr(e) == (
++                "<RemoteSettingsChanged changed_settings:{ChangedSetting("
++                "setting=SettingCodes.INITIAL_WINDOW_SIZE, original_value=65536, "
++                "new_value=32768)}>"
++            )
+ 
+     def test_pingreceived_repr(self):
+         """
+@@ -249,10 +256,16 @@ def test_streamreset_repr(self):
+         e.error_code = h2.errors.ErrorCodes.ENHANCE_YOUR_CALM
+         e.remote_reset = False
+ 
+-        assert repr(e) == (
+-            "<StreamReset stream_id:919, "
+-            "error_code:ErrorCodes.ENHANCE_YOUR_CALM, remote_reset:False>"
+-        )
++        if sys.version_info >= (3, 11):
++            assert repr(e) == (
++                "<StreamReset stream_id:919, "
++                "error_code:11, remote_reset:False>"
++            )
++        else:
++            assert repr(e) == (
++                "<StreamReset stream_id:919, "
++                "error_code:ErrorCodes.ENHANCE_YOUR_CALM, remote_reset:False>"
++            )
+ 
+     def test_pushedstreamreceived_repr(self):
+         """
+@@ -284,11 +297,18 @@ def test_settingsacknowledged_repr(self):
+                 ),
+         }
+ 
+-        assert repr(e) == (
+-            "<SettingsAcknowledged changed_settings:{ChangedSetting("
+-            "setting=SettingCodes.INITIAL_WINDOW_SIZE, original_value=65536, "
+-            "new_value=32768)}>"
+-        )
++        if sys.version_info >= (3, 11):
++            assert repr(e) == (
++                "<SettingsAcknowledged changed_settings:{ChangedSetting("
++                "setting=4, original_value=65536, "
++                "new_value=32768)}>"
++            )
++        else:
++            assert repr(e) == (
++                "<SettingsAcknowledged changed_settings:{ChangedSetting("
++                "setting=SettingCodes.INITIAL_WINDOW_SIZE, original_value=65536, "
++                "new_value=32768)}>"
++            )
+ 
+     def test_priorityupdated_repr(self):
+         """
+@@ -318,10 +338,16 @@ def test_connectionterminated_repr(self, additional_data, data_repr):
+         e.last_stream_id = 33
+         e.additional_data = additional_data
+ 
+-        assert repr(e) == (
+-            "<ConnectionTerminated error_code:ErrorCodes.INADEQUATE_SECURITY, "
+-            "last_stream_id:33, additional_data:%s>" % data_repr
+-        )
++        if sys.version_info >= (3, 11):
++            assert repr(e) == (
++                "<ConnectionTerminated error_code:12, "
++                "last_stream_id:33, additional_data:%s>" % data_repr
++            )
++        else:
++            assert repr(e) == (
++                "<ConnectionTerminated error_code:ErrorCodes.INADEQUATE_SECURITY, "
++                "last_stream_id:33, additional_data:%s>" % data_repr
++            )
+ 
+     def test_alternativeserviceavailable_repr(self):
+         """
+

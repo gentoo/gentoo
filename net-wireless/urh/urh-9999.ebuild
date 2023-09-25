@@ -1,10 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{10..11} )
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
+inherit distutils-r1 virtualx
 
 DESCRIPTION="Universal Radio Hacker: investigate wireless protocols like a boss"
 HOMEPAGE="https://github.com/jopohl/urh"
@@ -31,16 +33,20 @@ DEPEND="${PYTHON_DEPS}
 		audio? ( dev-python/pyaudio[${PYTHON_USEDEP}] )
 		bladerf? ( net-wireless/bladerf:= )
 		hackrf? ( net-libs/libhackrf:= )
-		limesdr? ( net-wireless/limesuite:= )
+		limesdr? ( net-wireless/limesuite )
 		plutosdr? ( net-libs/libiio:= )
-		rtlsdr? ( net-wireless/rtl-sdr:= )
+		rtlsdr? ( net-wireless/rtl-sdr )
 		sdrplay? ( <net-wireless/sdrplay-3.0.0:= )
 		uhd?    ( net-wireless/uhd:= )"
 RDEPEND="${DEPEND}
 		dev-python/PyQt5[${PYTHON_USEDEP},testlib]
 		net-wireless/gr-osmosdr"
 
+distutils_enable_tests pytest
+
 python_configure_all() {
+	# Using sed in the live ebuild to avoid patch failure
+	sed -i '/__NUMPY_SETUP__/d' setup.py || die
 	DISTUTILS_ARGS=(
 			$(use_with airspy)
 			$(use_with bladerf)
@@ -51,4 +57,25 @@ python_configure_all() {
 			$(use_with sdrplay)
 			$(use_with uhd usrp)
 			)
+}
+
+src_test() {
+	virtx distutils-r1_src_test
+}
+
+python_test() {
+	# Why are these disabled?
+	# import errors AND hangs forever after 'tests/test_spectrogram.py::TestSpectrogram::test_cancel_filtering'
+	# import errors	'tests/test_continuous_modulator.py::TestContinuousModulator::test_modulate_continuously'
+	# import errors	'tests/test_send_recv_dialog_gui.py::TestSendRecvDialog::test_continuous_send_dialog'
+	# import errors	'tests/test_spectrogram.py::TestSpectrogram::test_channel_separation_with_negative_frequency'
+	local EPYTEST_DESELECT=(
+		'tests/test_spectrogram.py::TestSpectrogram::test_cancel_filtering'
+		'tests/test_continuous_modulator.py::TestContinuousModulator::test_modulate_continuously'
+		'tests/test_send_recv_dialog_gui.py::TestSendRecvDialog::test_continuous_send_dialog'
+		'tests/test_spectrogram.py::TestSpectrogram::test_channel_separation_with_negative_frequency'
+
+	)
+	cd "${T}" || die
+	epytest -s --pyargs urh.cythonext "${S}/tests" || die
 }

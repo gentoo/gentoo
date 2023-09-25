@@ -10,6 +10,6 @@
 		<flag name="sodium">Enable support for Argon2 password schemes using <pkg>dev-libs/libsodium</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="github">inverse-inc/sogo</remote-id>
+		<remote-id type="github">Alinto/sogo</remote-id>
 	</upstream>
 </pkgmetadata>

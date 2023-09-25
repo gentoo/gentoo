@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>listout@protonmail.com</email>
+		<email>brahmajit.xyz@gmail.com</email>
 		<name>Brahmajit Das</name>
 	</maintainer>
 	<maintainer type="project">
@@ -16,7 +16,6 @@
 	<use>
 		<flag name="lto">Build with Link Time Optimization (LTO)</flag>
 		<flag name="nvimpager">Install nvimpager symlink to less.sh macro</flag>
-		<flag name="tui">Build the neovim unix tui</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">neovim/neovim</remote-id>

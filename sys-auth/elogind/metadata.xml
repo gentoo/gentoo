@@ -8,10 +8,6 @@
 		<email>kensington@gentoo.org</email>
 		<name>Michael Palimaka</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>slashbeast@gentoo.org</email>
-		<name>Piotr Karbowski</name>
-	</maintainer>
 	<use>
 		<flag name="cgroup-hybrid">Use hybrid cgroup hierarchy (OpenRC's default) instead of unified.</flag>
 	</use>

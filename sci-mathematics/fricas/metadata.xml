@@ -18,12 +18,13 @@
     (<pkg>dev-lisp/gcl</pkg>)</flag>
     <flag name="sbcl">Add support for Steel Bank Common Lisp
     (<pkg>dev-lisp/sbcl</pkg>)</flag>
-    <flag name="ecls">Add support for Embeddable Common Lisp
-    (<pkg>dev-lisp/ecls</pkg>)</flag>
+    <flag name="ecl">Add support for Embeddable Common Lisp
+    (<pkg>dev-lisp/ecl</pkg>)</flag>
     <flag name="clozurecl">Add support for Clozure Common Lisp
     (<pkg>dev-lisp/clozurecl</pkg>)</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">fricas</remote-id>
+    <remote-id type="github">fricas/fricas</remote-id>
   </upstream>
 </pkgmetadata>

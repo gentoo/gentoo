@@ -2,7 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
+		<email>ajak@gentoo.org</email>
+		<name>John Helmert III</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 	<stabilize-allarches/>
 </pkgmetadata>

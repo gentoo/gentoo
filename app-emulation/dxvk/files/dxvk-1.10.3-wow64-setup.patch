@@ -1,0 +1,14 @@
+Dirty workaround to try syswow64 if paths are the same. This can happen
+with USE=wow64 on wine where wine64 is a symlink to wine.
+
+TODO: dxvk's and vkd3d-proton's setup script should be rewritten and packaged
+separately (shared) as upstream hardly support these (dxvk dropped altogether).
+--- a/setup_dxvk.sh
++++ b/setup_dxvk.sh
+@@ -89,2 +89,6 @@
+   win32_sys_path="${win32_sys_path/$'\r'/}"
++  if [ "$win32_sys_path" = "$win64_sys_path" ]; then
++    win32_sys_path=$($wine winepath -u 'C:\windows\syswow64' 2> /dev/null)
++    win32_sys_path="${win32_sys_path/$'\r'/}"
++  fi
+ fi

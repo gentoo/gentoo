@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # Openssl doesn't play along nicely with cross-compiling
@@ -77,7 +77,9 @@ fi
 
 # Detect target arch
 machine=""
+submachine=""
 chost_machine=${CHOST%%-*}
+[[ ${CC} == *clang* ]] && submachine="-clang"
 case ${system} in
 linux)
 	case ${chost_machine}:${ABI} in
@@ -95,7 +97,7 @@ linux)
 	#	hppa64*)      machine=parisc64;;
 		hppa*)        machine="generic32 -DB_ENDIAN";;
 		i[0-9]86*|\
-		x86_64*:x86)  machine=x86;;
+		x86_64*:x86)  machine=x86${submachine};;
 		ia64*)        machine=ia64;;
 		loongarch64*) machine="loongarch64 -DL_ENDIAN" system=linux64;;
 		m68*)         machine="latomic -DB_ENDIAN";;
@@ -109,7 +111,9 @@ linux)
 		powerpc64*)   machine=ppc64;;
 		powerpc*le*)  machine="generic32 -DL_ENDIAN";;
 		powerpc*)     machine=ppc;;
+		riscv32be*)   machine="generic32 -DB_ENDIAN";;
 		riscv32*)     machine="generic32 -DL_ENDIAN";;
+		riscv64be*)   machine="riscv64 -DB_ENDIAN" system=linux64;;
 		riscv64*)     machine="riscv64 -DL_ENDIAN" system=linux64;;
 	#	sh64*)        machine=elf;;
 		sh*b*)        machine="generic32 -DB_ENDIAN";;
@@ -125,7 +129,7 @@ linux)
 		s390x*)       machine=s390x system=linux64;;
 		s390*)        machine="generic32 -DB_ENDIAN";;
 		x86_64*:x32)  machine=x32;;
-		x86_64*)      machine=x86_64;;
+		x86_64*)      machine=x86_64${submachine};;
 	esac
 	;;
 BSD)

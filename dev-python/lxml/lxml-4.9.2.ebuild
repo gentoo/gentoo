@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 optfeature toolchain-funcs
 
@@ -22,7 +23,7 @@ S=${WORKDIR}/lxml-${P}
 
 LICENSE="BSD ElementTree GPL-2 PSF-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc examples +threads test"
 RESTRICT="!test? ( test )"
 
@@ -36,13 +37,14 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.29[${PYTHON_USEDEP}]
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/docutils[${PYTHON_USEDEP}]
 			dev-python/pygments[${PYTHON_USEDEP}]
 			dev-python/sphinx[${PYTHON_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 		')
 	)
 	test? (
@@ -52,6 +54,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.0-tests-pypy.patch
+	"${FILESDIR}"/${P}-py3.12-drop-deprecated-imp.patch
 )
 
 python_check_deps() {
@@ -59,7 +62,7 @@ python_check_deps() {
 	python_has_version -b "dev-python/docutils[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/pygments[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
+	python_has_version -b "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]"
 }
 
 python_prepare_all() {

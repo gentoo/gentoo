@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # As upstream (and we aswell) are not allowed to redistribute scansyn,
@@ -8,7 +8,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake lua-single python-single-r1
 
@@ -26,7 +26,7 @@ else
 fi
 
 DESCRIPTION="Sound design and signal processing system for composition and performance"
-HOMEPAGE="https://csound.github.io/"
+HOMEPAGE="https://csound.com/"
 
 LICENSE="LGPL-2.1 doc? ( FDL-1.2+ )"
 SLOT="0"

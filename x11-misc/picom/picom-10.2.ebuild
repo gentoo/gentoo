@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit meson python-any-r1 virtualx xdg
 
 DESCRIPTION="A lightweight compositor for X11 (previously a compton fork)"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/yshui/picom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 IUSE="+config-file dbus +doc +drm opengl pcre test"
 
 REQUIRED_USE="test? ( dbus )" # avoid "DBus support not compiled in!"

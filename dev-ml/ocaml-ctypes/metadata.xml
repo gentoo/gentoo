@@ -10,6 +10,6 @@
 		<name>Mark Wright</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ocamllabs/ocaml-ctypes</remote-id>
+		<remote-id type="github">yallop/ocaml-ctypes</remote-id>
 	</upstream>
 </pkgmetadata>

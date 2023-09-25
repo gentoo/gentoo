@@ -5,7 +5,4 @@
     <email>ceamac@gentoo.org</email>
     <name>Viorel Munteanu</name>
   </maintainer>
-  <use>
-    <flag name="pax-kernel">Apply patch needed for pax enabled kernels</flag>
-  </use>
 </pkgmetadata>

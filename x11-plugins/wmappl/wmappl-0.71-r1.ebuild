@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Simple application launcher for the Window Maker dock"
 HOMEPAGE="https://www.dockapps.net/wmappl"
@@ -17,3 +19,9 @@ DEPEND="${RDEPEND}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
+
+src_prepare() {
+	rm -rf "${S}"/icons/CVS || die
+	default
+	eautoreconf
+}

@@ -1,6 +1,6 @@
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'ebuild-mode "ebuild-mode"
-  "Major mode for Portage .ebuild and .eclass files." t)
+  "Major mode for Gentoo .ebuild and .eclass files." t)
 (autoload 'ebuild-repo-mode "ebuild-mode"
   "Minor mode for files in an ebuild repository." t)
 (autoload 'ebuild-repo-mode-maybe-enable "ebuild-mode")

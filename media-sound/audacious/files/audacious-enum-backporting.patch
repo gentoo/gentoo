@@ -1,0 +1,35 @@
+From 3989bafcb7a8843cef4e25875cd6c0e72680ad80 Mon Sep 17 00:00:00 2001
+From: Guido Falsi <mad@madpilot.net>
+Date: Wed, 28 Jun 2023 15:42:37 +0200
+Subject: [PATCH] Add missing enum value.
+
+New versions of the clang compiler have strict checks for enum values.
+
+The value "-1" is returned as a last resort from to_vfs_seek_type() as a VFSSeekType.
+
+Replace usage of `-1` with the new enum name.
+---
+ src/libaudcore/vfs.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/libaudcore/vfs.h b/src/libaudcore/vfs.h
+index 33c5a65c97..f6a1dd3f23 100644
+--- a/src/libaudcore/vfs.h
++++ b/src/libaudcore/vfs.h
+@@ -51,6 +51,7 @@ enum VFSReadOptions
+ 
+ enum VFSSeekType
+ {
++    VFS_SEEK_INVALID = -1,
+     VFS_SEEK_SET = 0,
+     VFS_SEEK_CUR = 1,
+     VFS_SEEK_END = 2
+@@ -75,7 +76,7 @@ constexpr VFSSeekType to_vfs_seek_type(int whence)
+                ? VFS_SEEK_SET
+                : (whence == SEEK_CUR)
+                      ? VFS_SEEK_CUR
+-                     : (whence == SEEK_END) ? VFS_SEEK_END : (VFSSeekType)-1;
++                     : (whence == SEEK_END) ? VFS_SEEK_END : VFS_SEEK_INVALID;
+ }
+ 
+ #endif // WANT_VFS_STDIO_COMPAT

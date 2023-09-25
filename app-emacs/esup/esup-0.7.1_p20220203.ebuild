@@ -1,17 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=4b49c8d599d4cc0fbf994e9e54a9c78e5ab62a5f
-NEED_EMACS=25.1
+COMMIT=4b49c8d599d4cc0fbf994e9e54a9c78e5ab62a5f
 
 inherit elisp
 
 DESCRIPTION="Benchmark Emacs Startup time without ever leaving it"
 HOMEPAGE="https://github.com/jschaf/esup/"
-SRC_URI="https://github.com/jschaf/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/jschaf/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"

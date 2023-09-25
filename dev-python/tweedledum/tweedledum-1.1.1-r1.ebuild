@@ -1,10 +1,10 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit distutils-r1
 
@@ -31,6 +31,7 @@ BDEPEND=">=dev-python/scikit-build-0.12.0"
 
 PATCHES=(
 	"${DISTDIR}"/${P}-fmt-e73beb23a3feeba02a851e3f8131e3c85a29de2b.patch
+	"${FILESDIR}"/${PN}-1.1.1-gcc-13.patch
 )
 
 distutils_enable_tests pytest

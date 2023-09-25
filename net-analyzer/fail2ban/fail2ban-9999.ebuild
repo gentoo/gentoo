@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit bash-completion-r1 distutils-r1 systemd tmpfiles
 
@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/fail2ban/fail2ban/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -29,10 +29,8 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-fail2ban )
 	systemd? (
 		$(python_gen_cond_dep '
-			|| (
-				dev-python/python-systemd[${PYTHON_USEDEP}]
-				sys-apps/systemd[python(-),${PYTHON_USEDEP}]
-			)' 'python*' )
+			dev-python/python-systemd[${PYTHON_USEDEP}]
+		')
 	)
 "
 
@@ -40,6 +38,7 @@ DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
+	"${FILESDIR}"/${PN}-1.0.2-umask-tests.patch
 )
 
 python_prepare_all() {
@@ -50,19 +49,15 @@ python_prepare_all() {
 		sed -i -e 's|/var\(/run/fail2ban\)|\1|g' {} + || die
 }
 
-python_compile() {
-	./fail2ban-2to3 || die
-	distutils-r1_python_compile
-}
-
 python_test() {
+	# Skip testRepairDb for bug #907348 (didn't always fail..)
 	bin/fail2ban-testcases \
 		--no-network \
-		--no-gamin \
+		--ignore databasetestcase.DatabaseTest.testRepairDb \
 		--verbosity=4 || die "Tests failed with ${EPYTHON}"
 
 	# Workaround for bug #790251
-	rm -r fail2ban.egg-info || die
+	rm -rf fail2ban.egg-info || die
 }
 
 python_install_all() {
@@ -100,7 +95,7 @@ pkg_preinst() {
 pkg_postinst() {
 	tmpfiles_process ${PN}-tmpfiles.conf
 
-	if [[ ${previous_less_than_0_7} = 0 ]] ; then
+	if [[ ${previous_less_than_0_7} == 0 ]] ; then
 		elog
 		elog "Configuration files are now in /etc/fail2ban/"
 		elog "You probably have to manually update your configuration"
@@ -113,10 +108,9 @@ pkg_postinst() {
 		elog "http://www.fail2ban.org/wiki/index.php/HOWTO_Upgrade_from_0.6_to_0.8"
 	fi
 
-	if ! has_version dev-python/pyinotify && ! has_version app-admin/gamin ; then
-		elog "For most jail.conf configurations, it is recommended you install either"
-		elog "dev-python/pyinotify or app-admin/gamin (in order of preference)"
-		elog "to control how log file modifications are detected"
+	if ! has_version dev-python/pyinotify ; then
+		elog "For most jail.conf configurations, it is recommended you install"
+		elog "dev-python/pyinotify to control how log file modifications are detected"
 	fi
 
 	if ! has_version dev-lang/python[sqlite] ; then
@@ -124,10 +118,5 @@ pkg_postinst() {
 		elog "dev-lang/python with USE=sqlite. If you do not use the"
 		elog "persistent database feature, then you should set"
 		elog "dbfile = :memory: in fail2ban.conf accordingly."
-	fi
-
-	if has_version sys-apps/systemd[-python] ; then
-		elog "If you want to track logins through sys-apps/systemd's"
-		elog "journal backend, then reinstall sys-apps/systemd with USE=python"
 	fi
 }

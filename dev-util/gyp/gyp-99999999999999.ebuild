@@ -1,8 +1,8 @@
-# Copyright 2017-2022 Gentoo Authors
+# Copyright 2017-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_SINGLE_IMPL="1"
 
 inherit distutils-r1
@@ -35,12 +35,12 @@ python_prepare_all() {
 
 	sed -e "s/'  Linux %s' % ' '\.join(platform.linux_distribution())/'  Linux'/" -i gyptest.py || die
 	sed \
-		-e "s/import collections/import collections.abc/" \
+		-e "s/^import collections/import collections.abc/" \
 		-e "s/collections\.MutableSet/collections.abc.MutableSet/" \
 		-i pylib/gyp/common.py || die
 	sed -e "s/the_dict_key is 'variables'/the_dict_key == 'variables'/" -i pylib/gyp/input.py || die
 	sed \
-		-e "s/import collections/import collections.abc/" \
+		-e "s/^import collections/import collections.abc/" \
 		-e "s/collections\.Iterable/collections.abc.Iterable/" \
 		-i pylib/gyp/msvs_emulation.py || die
 	sed \

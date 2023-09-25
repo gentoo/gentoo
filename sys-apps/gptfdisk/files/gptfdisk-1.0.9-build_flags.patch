@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -66,7 +66,7 @@
+ # Default/Linux settings....
+ STRIP?=strip
+ #CXXFLAGS+=-O2 -Wall -D_FILE_OFFSET_BITS=64 -D USE_UTF16
+-CXXFLAGS+=-O2 -Wall -D_FILE_OFFSET_BITS=64
++CXXFLAGS+=-D_FILE_OFFSET_BITS=64
+ LDFLAGS+=
+ LDLIBS+=-luuid #-licuio -licuuc
+ FATBINFLAGS=

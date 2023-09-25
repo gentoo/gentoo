@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ inherit cmake
 
 MY_PN="ZMusic"
 DESCRIPTION="GZDoom's music system as a standalone library"
-HOMEPAGE="https://github.com/coelckers/ZMusic"
-SRC_URI="https://github.com/coelckers/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/ZDoom/ZMusic"
+SRC_URI="https://github.com/ZDoom/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD DUMB-0.9.3 GPL-3 LGPL-2.1+ LGPL-3 MIT"
 SLOT="0"
@@ -24,6 +24,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.4-gcc-13.patch
+)
 
 src_prepare() {
 	rm -rf licenses || die

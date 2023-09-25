@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools
 
-DESCRIPTION="A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator"
-HOMEPAGE="http://dgen.sourceforge.net/"
+DESCRIPTION="Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator"
+HOMEPAGE="https://dgen.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dgen/files/${P}.tar.gz"
 
 LICENSE="dgen-sdl BSD BSD-2 free-noncomm LGPL-2.1+ GPL-2+"

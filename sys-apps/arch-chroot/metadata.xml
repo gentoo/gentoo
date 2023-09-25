@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+    <maintainer type="person" proxied="yes">
+      <email>cat@catcream.org</email>
+      <name>Alfred Persson</name>
+    </maintainer>
+    <maintainer type="person" proxied="yes">
+      <email>peeweep@0x0.ee</email>
+      <name>jinqiang zhang</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+      <email>proxy-maint@gentoo.org</email>
+      <name>Proxy Maintainers</name>
+    </maintainer>
+    <upstream>
+      <remote-id type="github">archlinux/arch-install-scripts</remote-id>
+    </upstream>
+</pkgmetadata>

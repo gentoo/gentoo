@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -15,12 +15,12 @@ RUBY_FAKEGEM_GEMSPEC="httparty.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Makes http fun! Also, makes consuming restful web services dead easy"
-HOMEPAGE="https://jnunemaker.github.com/httparty"
+HOMEPAGE="https://www.johnnunemaker.com/httparty/"
 SRC_URI="https://github.com/jnunemaker/httparty/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend '>=dev-ruby/mini_mime-1.0.0 >=dev-ruby/multi_xml-0.5.2'

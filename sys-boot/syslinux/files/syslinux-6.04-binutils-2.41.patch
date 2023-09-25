@@ -1,0 +1,74 @@
+https://bugs.gentoo.org/913129
+--- a/gnu-efi/gnu-efi-3.0/Make.defaults
++++ b/gnu-efi/gnu-efi-3.0/Make.defaults
+@@ -114,4 +114,4 @@ CFLAGS  += $(ARCH3264) -O2 -fpic -Wall -fshort-wchar -fno-strict-aliasing \
+            -fno-merge-constants -ffreestanding -fno-stack-protector       \
+            -fno-stack-check
+ ASFLAGS += $(ARCH3264)
+-LDFLAGS	+= -nostdlib --warn-common --no-undefined --fatal-warnings
++LDFLAGS	+= -nostdlib --warn-common --no-undefined --fatal-warnings --no-warn-rwx-segments -z notext
+--- a/gnu-efi/gnu-efi-3.0/apps/Makefile
++++ b/gnu-efi/gnu-efi-3.0/apps/Makefile
+@@ -52,7 +52,7 @@ ifneq (,$(findstring FreeBSD,$(OS)))
+ LDSCRIPT	= $(TOPDIR)/gnuefi/elf_$(ARCH)_fbsd_efi.lds
+ endif
+ 
+-LDFLAGS		+= -shared -Bsymbolic -L../lib -L../gnuefi $(CRTOBJS)
++LDFLAGS		+= -shared --no-warn-rwx-segments -z notext -Bsymbolic -L../lib -L../gnuefi $(CRTOBJS)
+ 
+ LOADLIBES	+= -lefi -lgnuefi
+ LOADLIBES	+= $(shell $(CC) $(ARCH3264) -print-libgcc-file-name)
+--- a/mk/com32.mk
++++ b/mk/com32.mk
+@@ -80,7 +80,7 @@ SFLAGS     = $(GCCOPT) $(GCCWARN) \
+ 	     -I$(topdir)/core/include
+ 
+ COM32LD	   = $(com32)/lib/$(ARCH)/elf.ld
+-LDFLAGS    = -m elf_$(ARCH) -shared --hash-style=gnu -T $(COM32LD)
++LDFLAGS    = -m elf_$(ARCH) -shared --no-warn-rwx-segments -z notext --hash-style=gnu -T $(COM32LD)
+ LIBGCC    := $(shell $(CC) $(GCCOPT) --print-libgcc)
+ 
+ LNXCFLAGS  = -I$(com32)/libutil/include $(GCCWARN) -O -g \
+--- a/mk/efi.mk
++++ b/mk/efi.mk
+@@ -38,7 +38,7 @@ CRT0 := $(LIBDIR)/crt0-efi-$(EFI_SUBARCH).o
+ LDSCRIPT := $(LIBDIR)/elf_$(EFI_SUBARCH)_efi.lds
+ 
+ LDFLAGS = -T $(SRC)/$(ARCH)/syslinux.ld -Bsymbolic -pie -nostdlib -znocombreloc \
+-		-L$(LIBDIR) --hash-style=gnu -m elf_$(ARCH) $(CRT0) -E
++		-L$(LIBDIR) --no-warn-rwx-segments -z notext --hash-style=gnu -m elf_$(ARCH) $(CRT0) -E
+ 
+ SFLAGS     = $(GCCOPT) $(GCCWARN) $(ARCHOPT) \
+ 	     -fomit-frame-pointer -D__COM32__ -D__FIRMWARE_$(FIRMWARE)__ \
+--- a/mk/elf.mk
++++ b/mk/elf.mk
+@@ -68,7 +68,7 @@ GCCOPT += -mregparm=3 -DREGPARM=3
+ endif
+ 
+ SFLAGS     = $(GCCOPT) -D__COM32__ -D__FIRMWARE_$(FIRMWARE)__ 
+-LDFLAGS    = -m elf_$(ARCH) -shared --hash-style=gnu -T $(com32)/lib/$(ARCH)/elf.ld --as-needed
++LDFLAGS    = -m elf_$(ARCH) -shared --no-warn-rwx-segments -z notext --hash-style=gnu -T $(com32)/lib/$(ARCH)/elf.ld --as-needed
+ LIBGCC    := $(shell $(CC) $(GCCOPT) --print-libgcc)
+ 
+ LNXCFLAGS  = -I$(com32)/libutil/include -W -Wall -O -g -D_GNU_SOURCE
+--- a/mk/lib.mk
++++ b/mk/lib.mk
+@@ -205,7 +205,7 @@ CORELIBOBJS = \
+ 	$(LIBENTRY_OBJS) \
+ 	$(LIBMODULE_OBJS)
+ 
+-LDFLAGS	= -m elf_$(ARCH) --hash-style=gnu -T $(com32)/lib/$(ARCH)/elf.ld
++LDFLAGS	= -m elf_$(ARCH) --no-warn-rwx-segments -z notext --hash-style=gnu -T $(com32)/lib/$(ARCH)/elf.ld
+ 
+ .SUFFIXES: .c .o .a .so .lo .i .S .s .ls .ss .lss
+ 
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -158,6 +158,7 @@ NASM_ELF = elf
+ %.elf: %.o $(LIBDEP) $(LDSCRIPT) $(AUXLIBS)
+ 	$(LD) $(LDFLAGS) -pie -Bsymbolic \
+ 		-T $(LDSCRIPT) \
++		--no-warn-rwx-segments -z notext \
+ 		--unresolved-symbols=report-all \
+ 		-E --hash-style=gnu -M -o $@ $< \
+ 		--start-group $(LIBS) $(subst $(*F).elf,lib$(*F).a,$@) --end-group \

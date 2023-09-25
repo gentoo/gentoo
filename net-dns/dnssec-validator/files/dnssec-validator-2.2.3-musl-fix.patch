@@ -1,0 +1,29 @@
+https://github.com/DNSSEC-Tools/DNSSEC-Tools/pull/22
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Fri, 15 Sep 2023 19:20:12 +0000
+Subject: [PATCH] Fix build on musl libc
+
+Function such as ns_name_pton are glibc specific and are not available
+on other libc's like musl. This patch should make it possible to use
+those internal function. The need for this patch is due to some of the
+structs like __ns_sect are already defined on musl and glibc, thus would
+result in an redefinition error.
+
+First discovered on Gentoo linux.
+
+Bug: https://bugs.gentoo.org/897862
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/include/validator/validator-compat.h
++++ b/include/validator/validator-compat.h
+@@ -896,6 +896,11 @@ typedef enum __ns_flag {
+         (cp) += NS_INT32SZ; \
+ } while (0)
+ 
++#endif /* HAVE_ARPA_NAMESER_H */
++
++/* eabi = android */
++/* OpenBSD has arpa/nameser.h, but it doesn't define ns_msg */
++#if !defined(HAVE_ARPA_NAMESER_H) || defined(eabi) || defined(ANDROID) ||defined(__OpenBSD__) || !defined(__GLIBC__)
+ int	ns_name_uncompress(const u_char *, const u_char *,
+ 		const u_char *, char *, size_t);
+ int	ns_name_compress(const char *, u_char *, size_t,

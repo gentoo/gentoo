@@ -1,0 +1,12 @@
+diff -r -U3 ginac-1.8.6.orig/ginac/numeric.cpp ginac-1.8.6/ginac/numeric.cpp
+--- ginac-1.8.6.orig/ginac/numeric.cpp	2023-02-08 06:02:38.000000000 +0700
++++ ginac-1.8.6/ginac/numeric.cpp	2023-02-17 16:13:45.137824611 +0700
+@@ -2139,7 +2139,7 @@
+ /** The Binomial coefficients.  It computes the binomial coefficients.  For
+  *  integer n and k and positive n this is the number of ways of choosing k
+  *  objects from n distinct objects.  If n is a negative integer, the formula
+- *  binomial(n,k) == (-1)^k*binomial(k-n-1,k) (if k≥0)
++ *  binomial(n,k) == (-1)^k*binomial(k-n-1,k) (if k>=0)
+  *  binomial(n,k) == (-1)^(n-k)*binomial(-k-1,n-k) (otherwise)
+  *  is used to compute the result. */
+ const numeric binomial(const numeric &n, const numeric &k)

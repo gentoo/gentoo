@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools desktop
 
 DESCRIPTION="Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles"
-HOMEPAGE="http://heroes.sourceforge.net/"
+HOMEPAGE="https://heroes.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.bz2
 	mirror://sourceforge/${PN}/${PN}-data-1.5.tar.bz2
@@ -14,7 +14,7 @@ SRC_URI="
 	mirror://sourceforge/${PN}/${PN}-sound-effects-1.0.tar.bz2
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ggi nls +sdl"

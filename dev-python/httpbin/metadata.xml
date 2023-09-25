@@ -9,5 +9,6 @@
 	<upstream>
 		<remote-id type="pypi">httpbin</remote-id>
 		<remote-id type="github">postmanlabs/httpbin</remote-id>
+		<remote-id type="github">psf/httpbin</remote-id>
 	</upstream>
 </pkgmetadata>

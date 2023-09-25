@@ -1,0 +1,9 @@
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,5 +1,5 @@
+ [metadata]
+-description-file = README.rst
++description_file = README.rst
+ 
+ [egg_info]
+ tag_build = 

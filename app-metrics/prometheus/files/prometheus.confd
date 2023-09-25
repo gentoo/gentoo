@@ -1,2 +1,26 @@
-# arguments for Prometheus
-command_args=""
+# additional arguments for Prometheus
+#
+# command_args should not be set in this file. Instead, you should set
+# prometheus_args.
+#
+# The default settings are listed below.
+# If you are not changing these settings, you do
+# not need to include them in prometheus_args.
+#
+# To migrate from using command_args to prometheus_args, drop any of the
+# default settings below that you have set the same way then switch to
+# prometheus_args.
+# 
+# The new behavior is that prometheus_args will be appended to these
+# defaults allowing anything you add to override them.
+#
+#The default settings are:
+#
+# --web.enable-lifecycle
+# --config.file=/etc/prometheus/prometheus.yml
+# --storage.tsdb.path=/var/lib/prometheus/data
+# --web.console.templates=/etc/prometheus/consoles
+# --web.console.libraries=/etc/prometheus/console_libraries
+# --web.enable-admin-api 
+#
+prometheus_args=""

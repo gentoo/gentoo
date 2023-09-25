@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,25 +36,32 @@ case ${PV} in
 			patch_url=
 			my_patch_index=
 
-			for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
-				for url in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
-					patch_url=$(printf "${url}/${PN}-$(ver_cut 1-2)-patches/${my_p}-%03d" ${my_patch_index})
-					SRC_URI+=" ${patch_url}"
-					SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
-				done
+			upstream_url_base="mirror://gnu/bash"
+			mirror_url_base="ftp://ftp.cwru.edu/pub/bash"
 
-				MY_PATCHES+=( "${DISTDIR}"/$(printf ${my_p}-%03d ${my_patch_index}) )
+			for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
+				printf -v mangled_patch_ver ${my_p}-%03d ${my_patch_index}
+				patch_url="${upstream_url_base}/${MY_P}-patches/${mangled_patch_ver}"
+
+				SRC_URI+=" ${patch_url}"
+				SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
+
+				# Add in the mirror URL too.
+				SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
+				SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}} )"
+
+				MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
 			done
 
-			unset my_pn patch_url my_patch_index
+			unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
 		fi
 	;;
 esac
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0/8"  # subslot matches SONAME major
 [[ ${PV} == *_rc* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="static-libs +unicode utils"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3:=[static-libs?,unicode(+)?,${MULTILIB_USEDEP}]"
@@ -134,7 +141,7 @@ src_configure() {
 	# In cases where the C library doesn't support wide characters, readline
 	# itself won't work correctly, so forcing the answer below should be OK.
 	if tc-is-cross-compiler ; then
-		use kernel_Winnt || export bash_cv_func_sigsetjmp='present'
+		export bash_cv_func_sigsetjmp='present'
 		export bash_cv_func_ctype_nonascii='yes'
 		export bash_cv_wcwidth_broken='no' #503312
 	fi

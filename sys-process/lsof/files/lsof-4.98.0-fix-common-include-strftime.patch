@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/910547
+https://github.com/lsof-org/lsof/commit/437824cf35daf5a505bed5b619bef95af090ecc4
+
+From 437824cf35daf5a505bed5b619bef95af090ecc4 Mon Sep 17 00:00:00 2001
+From: Kalin KOZHUHAROV <me.kalin@gmail.com>
+Date: Wed, 19 Jul 2023 15:23:13 +0200
+Subject: [PATCH] src/util.c	add proper includes (#294)
+
+* src/util.c	add proper includes
+
+Fixes #293 for lsof-org/lsof
+
+Signed-off-by: Kalin KOZHUHAROV <kalin@thinrope.net>
+
+---------
+
+Signed-off-by: Kalin KOZHUHAROV <kalin@thinrope.net>
+Co-authored-by: Jiajie Chen <c@jia.je>
+--- a/util.c
++++ b/util.c
+@@ -35,6 +35,7 @@
+  * 4. This notice may not be removed or altered.
+  */
+ 
++#include "lsof.h"
+ 
+ #if	defined(HAS_STRFTIME)
+ #include <time.h>

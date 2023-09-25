@@ -1,17 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
-
-# Sam James <sam@gentoo.org> (2022-11-08)
-# Mask until dev-lang/python:3.11 becomes stable.
-python_targets_python3_11
-python_single_target_python3_11
-
-# Matt Turner <mattst88@gentoo.org> (2022-09-16)
-# gui-libs/gtk is not stable here
-gtk4
 
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Clang and friends aren't (yet?) stable on sparc
@@ -34,7 +25,7 @@ clamav
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # no stable version on sparc
-ecls
+ecl
 sbcl
 
 # Pacho Ramos <pacho@gentoo.org> (2014-04-17)

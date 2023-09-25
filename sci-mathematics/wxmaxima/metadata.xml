@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
   <maintainer type="project">
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
@@ -12,6 +16,11 @@
   completion based on previous input (tab-key).
   wxMaxima provides 2d formated display of maxima output.
   </longdescription>
+  <use>
+    <flag name="webkit">Use <pkg>net-libs/webkit-gtk</pkg> to show help
+    (for maxima and wxmaxima) inside wxmaxima
+    </flag>
+  </use>
   <upstream>
     <remote-id type="github">wxMaxima-developers/wxmaxima</remote-id>
   </upstream>

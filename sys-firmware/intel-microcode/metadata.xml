@@ -6,10 +6,10 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
-		<flag name="initramfs">install a small initramfs for use with CONFIG_MICROCODE_EARLY</flag>
-		<flag name="hostonly">only install ucode(s) supported by currently available (=online) processor(s)</flag>
-		<flag name="split-ucode">install the split binary ucode files (used by the kernel directly)</flag>
-		<flag name="vanilla">install only microcode updates from Intel's official microcode tarball</flag>
+		<flag name="initramfs">Install a small initramfs for use with CONFIG_MICROCODE_EARLY</flag>
+		<flag name="hostonly">Only install ucode(s) supported by currently available (=online) processor(s)</flag>
+		<flag name="split-ucode">Install the split binary ucode files (used by the kernel directly)</flag>
+		<flag name="vanilla">Only install microcode updates from Intel's official microcode tarball</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">intel/Intel-Linux-Processor-Microcode-Data-Files</remote-id>

@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal toolchain-funcs pam usr-ldscript
 
@@ -32,6 +32,10 @@ BDEPEND="
 	tools? ( dev-lang/go )"
 
 QA_FLAGS_IGNORED="sbin/captree" # go binaries don't use LDFLAGS
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.62-ignore-RAISE_SETFCAP-install-failures.patch
+)
 
 src_prepare() {
 	default
@@ -88,5 +92,5 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc CHANGELOG README doc/capability.notes
+	dodoc CHANGELOG README doc/capability.md
 }

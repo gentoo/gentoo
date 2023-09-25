@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit cmake udev
 
-HOMEPAGE="http://ubertooth.sourceforge.net/"
+HOMEPAGE="https://greatscottgadgets.com/ubertoothone/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,7 +14,7 @@ IUSE="+bluez static-libs +ubertooth1-firmware +udev"
 DEPEND="bluez? ( net-wireless/bluez:= )
 	>=net-libs/libbtbb-${PV}:=[static-libs?]
 	static-libs? ( dev-libs/libusb[static-libs] )
-	virtual/libusb:1="
+	virtual/libusb:1"
 RDEPEND="${DEPEND}
 	udev? ( virtual/udev )"
 
@@ -32,7 +32,8 @@ fi
 DESCRIPTION="open source wireless development platform suitable for Bluetooth experimentation"
 
 #readd firmware building, but do it right
-#USE="-fortran -mudflap -nls -openmp -multilib" crossdev --without-headers --genv 'EXTRA_ECONF="--with-mode=thumb --with-cpu=cortex-m3 --with-float=soft"' -s4 -t arm-cortexm3-eabi
+#USE="-fortran -mudflap -nls -openmp -multilib" crossdev --without-headers --genv \
+#'EXTRA_ECONF="--with-mode=thumb --with-cpu=cortex-m3 --with-float=soft"' -s4 -t arm-cortexm3-eabi
 
 src_configure() {
 	local mycmakeargs=(
@@ -59,11 +60,21 @@ src_install() {
 		ewarn "Firmware isn't available for git releases, we assume you are already"
 		ewarn "on the latest and/or can build your own."
 	else
-		use ubertooth1-firmware && newins ubertooth-one-firmware-bin/bluetooth_rxtx.dfu ${PN}-one-${PV}-bluetooth_rxtx.dfu
-		use ubertooth1-firmware && newins ubertooth-one-firmware-bin/bluetooth_rx_only.dfu ${PN}-one-${PV}-bluetooth_rx_only.dfu
+		if use ubertooth1-firmware; then
+			newins ubertooth-one-firmware-bin/bluetooth_rxtx.dfu ${PN}-one-${PV}-bluetooth_rxtx.dfu
+			newins ubertooth-one-firmware-bin/bluetooth_rx_only.dfu ${PN}-one-${PV}-bluetooth_rx_only.dfu
+		fi
 	fi
 	popd
 
 	elog "Everyone can read from the ubertooth, but to talk to it"
 	elog "your user needs to be in the usb group."
+}
+
+pkg_postinst() {
+	use udev && udev_reload
+}
+
+pkg_postrm() {
+	use udev && udev_reload
 }

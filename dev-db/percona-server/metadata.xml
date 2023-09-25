@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>mysql-bugs@gentoo.org</email>
-    <name>MySQL</name>
-  </maintainer>
+<!-- maintainer-needed -->
 <use>
   <flag name="cjk">Add CJK support for InnoDB fulltext search using <pkg>app-text/mecab</pkg></flag>
   <flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
@@ -16,4 +13,7 @@
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
   <flag name="tokudb-backup-plugin">Builds the TokuDB backup plugin</flag>
 </use>
+<upstream>
+  <remote-id type="github">percona/percona-server</remote-id>
+</upstream>
 </pkgmetadata>

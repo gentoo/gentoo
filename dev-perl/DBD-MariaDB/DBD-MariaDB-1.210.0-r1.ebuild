@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,10 +17,6 @@ REQUIRED_USE="^^ ( mysql mariadb )"
 RDEPEND="
 	>=dev-perl/DBI-1.608.0
 	virtual/perl-XSLoader
-	mysql? ( dev-db/mysql-connector-c:0= )
-	mariadb? ( dev-db/mariadb-connector-c:0= )
-"
-DEPEND="
 	mysql? ( dev-db/mysql-connector-c:0= )
 	mariadb? ( dev-db/mariadb-connector-c:0= )
 "

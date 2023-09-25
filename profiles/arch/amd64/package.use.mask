@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,74 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Michał Górny <mgorny@gentoo.org> (2023-09-19)
+# dev-cpp/cpp-httplib is keyworded here.
+sys-devel/llvm -debuginfod
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-09-13)
+# media-gfx/renderdoc is keyworded here
+dev-qt/qtbase -renderdoc
+
+# Sam James <sam@gentoo.org> (2023-09-07)
+# media-libs/roc-toolkit is not keyworded in most places
+media-video/pipewire -roc
+
+# Matt Jolly <matt.jolly@footclan.ninja> (2023-08-10)
+# 'ssl' USE required for curl's nghttp3/quic support
+net-libs/ngtcp2 -ssl
+
+# Matt Jolly <matt.jolly@footclan.ninja> (2023-08-10)
+# nghttp3 has been tested to work on amd64
+net-misc/curl -nghttp3
+
+# Sam James <sam@gentoo.org> (2023-07-18)
+# dev-cpp/cppdap is not keyworded in most places
+dev-util/cmake -dap
+
+# Marek Szuba <marecki@gentoo.org> (2023-06-29)
+# Now that we globally unmask USE=qt6 for amd64, the mask set
+# in profiles/base/package.use.mask no longer has any effect on this arch.
+dev-python/pyotherside qt6
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-24)
+# dev-db/mongodb miraculously got keyworded here.
+dev-python/pymongo -test-full
+
+# Sam James <sam@gentoo.org> (2023-05-15)
+# net-libs/rustls-ffi is keyworded here
+www-servers/apache -apache2_modules_tls
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-22)
+# snap only works on amd64
+kde-plasma/discover -snap
+
+# Sam James <sam@gentoo.org> (2023-04-17)
+# Ruby has several JITs available but they need porting to individual arches.
+# Unmask on specific arches where it's available.
+dev-lang/ruby -jit
+
+# Sam James <sam@gentoo.org> (2023-04-03)
+# pytables is available here.
+dev-python/pytables -cpudetection
+
+# Craig Andrews <candrews@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is keyworded here
+media-video/ffmpeg -libplacebo
+
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
+# AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
+# See also: https://bugs.gentoo.org/891499
+sys-libs/libomp -llvm_targets_AMDGPU
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-24)
+# libomptarget is only supported on 64-bit architectures.
+>=sys-libs/libomp-16.0.0_pre20230124 -offload
+
+# Sam James <sam@gentoo.org> (2023-01-05)
+# asm is only available for amd64 and arm, but for arm, is gated
+# behind an experimental flag.
+>=dev-libs/libsecp256k1-0.2.0 -asm
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is keyworded here
@@ -168,10 +236,6 @@ app-emulation/aranym -jit
 # dev-python/pandas is keyworded for amd64
 sys-block/fio -python -gnuplot
 
-# Craig Andrews <candrews@gentoo.org> (2019-10-08)
-# net-misc/quiche is available on this arch
-net-misc/curl -quiche
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on amd64
 sys-firmware/seabios -debug
@@ -218,10 +282,6 @@ net-vpn/strongswan -strongswan_plugins_aesni -strongswan_plugins_rdrand
 # Michael Palimaka <kensington@gentoo.org> (2018-10-12)
 # Unmask arch-specific USE flags available on amd64
 net-analyzer/testssl -bundled-openssl -kerberos
-
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
-# Unmask libheif support where media-libs/libheif is keyworded
-media-gfx/imagemagick -heif
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
 # Dependency sys-cluster/ceph is keyworded for amd64
@@ -303,8 +363,8 @@ sys-boot/grub:2 -grub_platforms_xen-32
 >=dev-db/mariadb-10.1.0 -mroonga -galera
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
-# sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd -gnuefi
+# sd-boot is not supported on all archs.
+sys-apps/systemd -boot -gnuefi
 sys-apps/systemd-utils -boot
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
@@ -322,16 +382,11 @@ media-libs/libmikmod cpu_flags_x86_sse2
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-01-04)
 # While globally masked, the needed amd64 keywords are already present
-dev-vcs/git -mediawiki -mediawiki-experimental
+dev-vcs/git -mediawiki
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-12-27)
 # Boost.Context can be built on amd64
 dev-libs/boost -context
-
-# Michał Górny <mgorny@gentoo.org> (2013-12-15)
-# mupen64plus' 2.0 new dynamic recompiler is supported on x86 and arm
-# only.
-games-emulation/mupen64plus-core new-dynarec
 
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for amd64 (masked in base)

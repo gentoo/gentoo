@@ -1,0 +1,22 @@
+Ensure tests run using serial test harness (bug #914212), and do not
+call ar directly (bug #722328)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,7 +4,7 @@
+ # Initialization
+ AC_PREREQ(2.59)
+ AC_INIT(regex-markup, 0.10.0, oskar@osk.mine.nu)
+-AM_INIT_AUTOMAKE
++AM_INIT_AUTOMAKE([serial-tests])
+ AC_CONFIG_SRCDIR([src/remark.c])
+ AC_CONFIG_HEADER([config.h])
+ 
+@@ -19,6 +19,7 @@ AC_DEFINE_DIR(PKGDATADIR, datadir/$PACKAGE, [Directory where system-wide rule fi
+ # Checks for programs.
+ AC_PROG_CC
+ AC_PROG_INSTALL
++AM_PROG_AR
+ #AC_PROG_MAKE_SET
+ AC_PROG_RANLIB
+ AM_PROG_LEX

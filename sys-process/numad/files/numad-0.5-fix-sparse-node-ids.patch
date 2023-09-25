@@ -1,0 +1,53 @@
+From ab79ec5b6389507b4970d68862abb95d0b2b94c9 Mon Sep 17 00:00:00 2001
+From: Christian Ehrhardt <christian.ehrhardt@canonical.com>
+Date: Jun 17 2019 10:37:48 +0000
+Subject: fix sparse node ids
+
+
+CPU-ids can be sparse due to disabling a subset of CPUs.
+On ppc64le this even will make the node_ids sparse, this is actually pretty
+common on ppc64 when SMT is disabled.
+
+Numad has the assumption of cpu/node-ids always being linear and due to that
+accesses the 'node' array out of bounds. That triggers crashes like the
+following:
+
+  Thread 1 "numad" received signal SIGSEGV, Segmentation fault.
+  #0 0x00000fb6cd2779f4 in bind_process_and_migrate_memory (p=0xfb6fc1e0f70)
+    at numad.c:998
+  #1 0x00000fb6cd27d148 in manage_loads () at numad.c:2225
+  #2 0x00000fb6cd2734dc in main (argc=<optimized out>, argv=<optimized out>)
+    at numad.c:2654
+
+Instead of directly indexing with node_id we need to detect which array
+element has the matching node_id and use that.
+
+Signed-off-by: Christian Ehrhardt <christian.ehrhardt@canonical.com>
+
+---
+
+diff --git a/numad.c b/numad.c
+index a6a7a5d..524bf61 100644
+--- a/numad.c
++++ b/numad.c
+@@ -995,7 +995,18 @@ int bind_process_and_migrate_memory(process_data_p p) {
+     int node_id = 0;
+     while (nodes) {
+         if (ID_IS_IN_LIST(node_id, p->node_list_p)) {
+-            OR_LISTS(cpu_bind_list_p, cpu_bind_list_p, node[node_id].cpu_list_p);
++            int id = -1;
++            for (int node_ix = 0;  (node_ix < num_nodes);  node_ix++) {
++                if (node[node_ix].node_id == node_id) {
++                    id = node_ix;
++                    break;
++                }
++        }
++            if (id == -1) {
++                numad_log(LOG_CRIT, "Node %d is requested, but unknown\n", node_id);
++                exit(EXIT_FAILURE);
++            }
++            OR_LISTS(cpu_bind_list_p, cpu_bind_list_p, node[id].cpu_list_p);
+             nodes -= 1;
+         }
+         node_id += 1;
+

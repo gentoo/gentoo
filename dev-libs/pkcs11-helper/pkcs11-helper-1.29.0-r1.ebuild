@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,9 @@ SRC_URI="https://github.com/OpenSC/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="doc gnutls nss"
+IUSE="doc gnutls nss test"
+# Fails trying to load /usr/lib/pkcs11/provider.so?
+RESTRICT="!test? ( test ) test"
 
 RDEPEND=">=dev-libs/openssl-0.9.7:=
 	gnutls? ( >=net-libs/gnutls-1.4.4:= )
@@ -29,7 +31,8 @@ src_configure() {
 		--disable-crypto-engine-mbedtls \
 		$(use_enable doc) \
 		$(use_enable gnutls crypto-engine-gnutls) \
-		$(use_enable nss crypto-engine-nss)
+		$(use_enable nss crypto-engine-nss) \
+		$(use_enable test tests)
 }
 
 src_install() {

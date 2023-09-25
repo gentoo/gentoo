@@ -2,4 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person"><email>hanno@gentoo.org</email></maintainer>
+<upstream>
+<remote-id type="github">hannob/snallygaster</remote-id>
+<remote-id type="pypi">snallygaster</remote-id>
+</upstream>
 </pkgmetadata>

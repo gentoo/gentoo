@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ EAPI=8
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 cmake
 
 DESCRIPTION="Static analyzer of C/C++ code"
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/danmar/cppcheck/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc64 ~riscv sparc x86"
 IUSE="htmlreport pcre qt5 test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -49,7 +49,7 @@ BDEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
 		htmlreport? (
-			$(python_gen_cond_dep 'dev-python/unittest-or-fail[${PYTHON_USEDEP}]')
+			$(python_gen_cond_dep 'dev-python/unittest-or-fail[${PYTHON_USEDEP}]' python3_{10..11})
 		)
 	)
 "

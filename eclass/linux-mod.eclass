@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod.eclass
@@ -10,6 +10,7 @@
 # @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: linux-info
 # @BLURB: It provides the functionality required to install external modules against a kernel source tree.
+# @DEPRECATED: linux-mod-r1.eclass
 # @DESCRIPTION:
 # This eclass is used to interface with linux-info.eclass in such a way
 # to provide the functionality and initial functions
@@ -38,7 +39,7 @@
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
-: ${KERNEL_DIR:=/usr/src/linux}
+: "${KERNEL_DIR:=/usr/src/linux}"
 
 # @ECLASS_VARIABLE: ECONF_PARAMS
 # @DEFAULT_UNSET
@@ -54,7 +55,7 @@
 # @ECLASS_VARIABLE: BUILD_TARGETS
 # @DESCRIPTION:
 # It's a string with the build targets to pass to make. The default value is "clean module"
-: ${BUILD_TARGETS:=clean module}
+: "${BUILD_TARGETS:=clean module}"
 
 # @ECLASS_VARIABLE: MODULE_NAMES
 # @DEFAULT_UNSET
@@ -149,6 +150,12 @@
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
+# @ECLASS_VARIABLE: KV_OBJ_COMPRESS_EXT
+# @INTERNAL
+# @DESCRIPTION:
+# Read-only variable. It contains the compression extension of the kernel
+# modules (.xz, .gz, .zst)
+
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -177,7 +184,7 @@ RDEPEND="
 		)
 	${MODULES_OPTIONAL_USE:+)}"
 DEPEND="${RDEPEND}
-    ${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
+	${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
 	kernel_linux? ( virtual/linux-sources virtual/libelf )
 	${MODULES_OPTIONAL_USE:+)}"
 
@@ -340,7 +347,7 @@ get-KERNEL_CC() {
 # @USAGE: /path/to/the/modulename_without_extension
 # @RETURN: A file in /etc/modprobe.d
 # @DESCRIPTION:
-# This function will generate and install the neccessary modprobe.d file from the
+# This function will generate and install the necessary modprobe.d file from the
 # information contained in the modules exported parms.
 # (see the variables MODULESD_<modulename>_ENABLED, MODULESD_<modulename>_EXAMPLES,
 # MODULESD_<modulename>_ALIASES, MODULESD_<modulename>_ADDITION and MODULESD_<modulename>_DOCS).
@@ -385,7 +392,7 @@ generate_modulesd() {
 
 		# OK so now if we have got this far, then we know we want to continue
 		# and generate the modprobe.d file.
-		module_modinfo="$(modinfo -p ${currm_path}.${KV_OBJ})"
+		module_modinfo="$(modinfo -p ${currm_path}.${KV_OBJ}${KV_OBJ_COMPRESS_EXT})"
 		module_config="${T}/modulesd-${currm}"
 
 		ebegin "Preparing file for modprobe.d"
@@ -408,7 +415,7 @@ generate_modulesd() {
 
 			for((t=0; t<${module_aliases}; t++))
 			do
-				echo "alias $(eval echo \${MODULESD_${currm}_ALIASES[$t]})" \
+				echo "alias $(eval echo \${MODULESD_${currm_t}_ALIASES[$t]})" \
 					>> "${module_config}"
 			done
 			echo '' >> "${module_config}"
@@ -434,7 +441,7 @@ generate_modulesd() {
 		fi
 
 		#-----------------------------------------------------------------------
-		if [[ $(eval echo \${MODULESD_${currm}_ALIASES[0]}) == guess ]]; then
+		if [[ $(eval echo \${MODULESD_${currm_t}_ALIASES[0]}) == guess ]]; then
 			# So, let's do some guesswork, eh?
 			if [[ -n ${module_opts} ]]; then
 				echo "# For Example..." >> "${module_config}"
@@ -449,7 +456,7 @@ generate_modulesd() {
 			echo "# For Example..." >> "${module_config}"
 			echo "# --------------" >> "${module_config}"
 			for ((t=0; t<${module_examples}; t++)); do
-				echo "options $(eval echo \${MODULESD_${currm}_EXAMPLES[$t]})" \
+				echo "options $(eval echo \${MODULESD_${currm_t}_EXAMPLES[$t]})" \
 					>> "${module_config}"
 			done
 			echo '' >> "${module_config}"
@@ -458,7 +465,7 @@ generate_modulesd() {
 		#-----------------------------------------------------------------------
 		if [[ ${module_additions} -gt 0 ]]; then
 			for ((t=0; t<${module_additions}; t++)); do
-				echo "$(eval echo \${MODULESD_${currm}_ADDITIONS[$t]})" \
+				echo "$(eval echo \${MODULESD_${currm_t}_ADDITIONS[$t]})" \
 					>> "${module_config}"
 			done
 			echo '' >> "${module_config}"
@@ -624,10 +631,6 @@ linux-mod_src_compile() {
 			cd "${srcdir}" || die
 			ln -s "${S}"/Module.symvers Module.symvers # no die for bug #888679
 			einfo "Preparing ${modulename} module"
-			if [[ -n ${ECONF_PARAMS} ]]; then
-				eqawarn "This package relies on the deprecated functionality of econf being called in linux-mod_src_compile (ECONF_PARAMS), which will go away in 30 days (20230107) (https://bugs.gentoo.org/340597)"
-				econf ${ECONF_PARAMS}
-			fi
 
 			# This looks messy, but it is needed to handle multiple variables
 			# being passed in the BUILD_* stuff where the variables also have
@@ -683,11 +686,12 @@ linux-mod_src_install() {
 		insinto "${INSTALL_MOD_PATH}"/lib/modules/${KV_FULL}/${libdir}
 
 		# check here for CONFIG_MODULE_COMPRESS_<compression option> (NONE, GZIP, XZ, ZSTD)
-		# and similarily compress the module being built if != NONE.
+		# and similarly compress the module being built if != NONE.
 
 		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
 			xz -T$(makeopts_jobs) --memlimit-compress=50% -q ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
 			doins ${modulename}.${KV_OBJ}.xz
+			KV_OBJ_COMPRESS_EXT=".xz"
 		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
 			if type -P pigz &>/dev/null ; then
 				pigz -p$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with pigz failed"
@@ -695,9 +699,11 @@ linux-mod_src_install() {
 				gzip ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with gzip failed"
 			fi
 			doins ${modulename}.${KV_OBJ}.gz
+			KV_OBJ_COMPRESS_EXT=".gz"
 		elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
 			zstd -T$(makeopts_jobs) ${modulename}.${KV_OBJ} || "Compressing ${modulename}.${KV_OBJ} with zstd failed"
 			doins ${modulename}.${KV_OBJ}.zst
+			KV_OBJ_COMPRESS_EXT=".zst"
 		else
 			doins ${modulename}.${KV_OBJ}
 		fi
@@ -732,7 +738,7 @@ linux-mod_pkg_postinst() {
 
 # @FUNCTION: linux-mod_pkg_postrm
 # @DESCRIPTION:
-# It removes the package from the /var/lib/module-rebuild/moduledb database but it doens't
+# It removes the package from the /var/lib/module-rebuild/moduledb database but it doesn't
 # call /sbin/depmod because the modules are still installed.
 linux-mod_pkg_postrm() {
 	debug-print-function ${FUNCNAME} $*

@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 
-EAPI=7
+EAPI=8
 
-inherit eapi8-dosym flag-o-matic savedconfig toolchain-funcs
+inherit flag-o-matic savedconfig toolchain-funcs
 
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
@@ -18,10 +18,11 @@ else
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2" # GPL-2 only
 SLOT="0"
-IUSE="debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslog systemd"
+IUSE="debug livecd make-symlinks math mdev pam selinux sep-usr static syslog systemd"
 REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
@@ -41,8 +42,6 @@ DEPEND="${RDEPEND}
 	)
 	sys-kernel/linux-headers"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 busybox_config_option() {
 	local flag=$1 ; shift
@@ -76,7 +75,9 @@ busybox_config_enabled() {
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.2-bb.patch
 	"${FILESDIR}"/${PN}-1.34.1-skip-selinux-search.patch
-	"${FILESDIR}"/${PN}-1.36.0-fix-wx-sections.patch
+
+	"${FILESDIR}"/${PN}-1.36.0-fortify-source-3-fixdep.patch
+
 	# "${FILESDIR}"/${P}-*.patch
 )
 
@@ -105,6 +106,9 @@ src_prepare() {
 	sed -i \
 		-e 's:-static-libgcc::' \
 		Makefile.flags || die
+
+	# Print all link lines too
+	sed -i -e 's:debug=false:debug=true:' scripts/trylink || die
 }
 
 src_configure() {
@@ -169,14 +173,6 @@ src_configure() {
 
 	busybox_config_option '"/run"' PID_FILE_PATH
 	busybox_config_option '"/run/ifstate"' IFUPDOWN_IFSTATE_PATH
-
-	# disable ipv6 applets
-	if ! use ipv6; then
-		busybox_config_option n FEATURE_IPV6
-		busybox_config_option n TRACEROUTE6
-		busybox_config_option n PING6
-		busybox_config_option n UDHCPC6
-	fi
 
 	busybox_config_option pam PAM
 	busybox_config_option static STATIC
@@ -258,7 +254,8 @@ src_install() {
 		use make-symlinks || dosym /bin/bb /sbin/mdev
 		cp "${S}"/examples/mdev_fat.conf "${ED}"/etc/mdev.conf || die
 		if [[ ! "$(get_libdir)" == "lib" ]]; then
-			sed -i -e "s:/lib/:/$(get_libdir)/:g" "${ED}"/etc/mdev.conf || die #831251 - replace lib with lib64 where appropriate
+			#831251 - replace lib with lib64 where appropriate
+			sed -i -e "s:/lib/:/$(get_libdir)/:g" "${ED}"/etc/mdev.conf || die
 		fi
 
 		exeinto /$(get_libdir)/mdev/
@@ -298,7 +295,7 @@ src_install() {
 		doins examples/udhcp/udhcpd.conf
 	fi
 	if busybox_config_enabled ASH && ! use make-symlinks; then
-		dosym8 -r /bin/busybox /bin/ash
+		dosym -r /bin/busybox /bin/ash
 	fi
 	if busybox_config_enabled CROND; then
 		newconfd "${FILESDIR}"/crond.confd busybox-crond
@@ -307,12 +304,12 @@ src_install() {
 
 	# bundle up the symlink files for use later
 	emake DESTDIR="${ED}" install
-	rm _install/bin/busybox || die
 	# for compatibility, provide /usr/bin/env
 	mkdir -p _install/usr/bin || die
 	if [[ ! -e _install/usr/bin/env ]]; then
 		ln -s /bin/env _install/usr/bin/env || die
 	fi
+	rm _install/bin/busybox || die
 	tar cf busybox-links.tar -C _install . || : #;die
 	insinto /usr/share/${PN}
 	use make-symlinks && doins busybox-links.tar
@@ -349,7 +346,9 @@ pkg_postinst() {
 		cd "${T}" || die
 		mkdir _install
 		tar xf busybox-links.tar -C _install || die
-		echo n | cp -ivpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
+		# 907432: cp -n returns error if it skips any file, but that is expected here
+		# TODO: check if a new coreutils release has a replacement option
+		cp -nvpPR _install/* "${ROOT}"/
 	fi
 
 	if use sep-usr ; then

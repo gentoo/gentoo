@@ -6,6 +6,7 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
+		<flag name="aad">Enable login via Azure AD</flag>
 		<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
 		<flag name="server">Build server binaries</flag>
 	</use>

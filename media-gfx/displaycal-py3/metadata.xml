@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>sarnex@gentoo.org</email>
+    <name>Nick Sarnie</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">eoyilmaz/displaycal-py3</remote-id>
+  </upstream>
+  <longdescription>
+    This project intended to modernize the DisplayCAL code including Python 3 support.
+    Florian Höch, the original developer, did an incredible job of creating and maintaining DisplayCAL for all these years.
+    But, it seems that, during the pandemic, very understandably, he lost his passion to the project.
+    Now, it is time for us, the DisplayCAL community, to contribute back to this great tool.
+  </longdescription>
+</pkgmetadata>

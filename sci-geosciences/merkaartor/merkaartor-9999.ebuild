@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PLOCALES="cs de en es fi fr hr hu id_ID it ja nl pl pt_BR ru sv uk zh_TW"
-inherit flag-o-matic plocale qmake-utils xdg-utils
+inherit flag-o-matic plocale qmake-utils xdg
 
 if [[ ${PV} != *9999 ]] ; then
 	SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -21,10 +21,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug exif gps libproxy webengine"
 
-BDEPEND="
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-"
 DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -44,6 +40,10 @@ DEPEND="
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.18.3-sharedir-pluginsdir.patch ) # bug 621826
 
@@ -78,11 +78,11 @@ src_configure() {
 
 	# TRANSDIR_SYSTEM is for bug #385671
 	local myeqmakeargs=(
-		PREFIX="${ED}/usr"
-		LIBDIR="${ED}/usr/$(get_libdir)"
+		PREFIX="${EPREFIX}/usr"
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 		PLUGINS_DIR="/usr/$(get_libdir)/${PN}/plugins"
 		SHARE_DIR_PATH="/usr/share/${PN}"
-		TRANSDIR_MERKAARTOR="${ED}/usr/share/${PN}/translations"
+		TRANSDIR_MERKAARTOR="${EPREFIX}/usr/share/${PN}/translations"
 		TRANSDIR_SYSTEM="${EPREFIX}/usr/share/qt5/translations"
 		SYSTEM_QTSA=1
 		NODEBUG=$(usex debug 0 1)
@@ -96,12 +96,6 @@ src_configure() {
 	eqmake5 "${myeqmakeargs[@]}" Merkaartor.pro
 }
 
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+src_install() {
+	emake install INSTALL_ROOT="${D}"
 }

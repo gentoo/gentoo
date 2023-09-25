@@ -1,0 +1,86 @@
+https://debbugs.gnu.org/61128
+
+From c7b5c04083b8fc21c3e0d044375631d559e122e3 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Wed, 25 Jan 2023 15:26:46 +0000
+Subject: [PATCH] Use complementation correctly in shell globs
+
+Negation should be performed by using the <exclamation-mark> character.
+Attempting to use the <circumflex> shall result in undefined behaviour.
+
+Dash used to tolerate this violation of the spec but the following
+commit put a stop to it.
+
+https://git.kernel.org/pub/scm/utils/dash/dash.git/commit/?id=8f9cca0
+
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+Link: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_13
+Bug: https://bugs.gentoo.org/890869
+--- a/m4/o-direct.m4
++++ b/m4/o-direct.m4
+@@ -47,14 +47,14 @@ frobnozzle
+ 	      /dev/shm) ;;
+ 	      /*) case $pe_dir in
+ 		  # Accept $HOME or $TMP only if the value is nice and boring.
+-		  *[^/a-zA-Z0-9_.-]*) ;;
++		  *[!/a-zA-Z0-9_.-]*) ;;
+ 		  *) pe_cand_dirs="$pe_cand_dirs $pe_dir";;
+ 		  esac
+ 	      esac
+ 	  done
+ 
+ 	  case $PARTED_TMPDIR in
+-	      *[^/a-zA-Z0-9_.-]*) ;;
++	      *[!/a-zA-Z0-9_.-]*) ;;
+ 	      *) pe_cand_dirs="$PARTED_TMPDIR $pe_cand_dirs";;
+ 	  esac
+ 
+--- a/tests/t-local.sh
++++ b/tests/t-local.sh
+@@ -138,7 +138,7 @@ require_512_byte_sector_size_()
+ peek_()
+ {
+   case $# in 2) ;; *) echo "usage: peek_ FILE 0_BASED_OFFSET" >&2; exit 1;; esac
+-  case $2 in *[^0-9]*) echo "peek_: invalid offset: $2" >&2; exit 1 ;; esac
++  case $2 in *[!0-9]*) echo "peek_: invalid offset: $2" >&2; exit 1 ;; esac
+   dd if="$1" bs=1 skip="$2" count=1
+ }
+ 
+@@ -146,7 +146,7 @@ poke_()
+ {
+   case $# in 3) ;; *) echo "usage: poke_ FILE 0_BASED_OFFSET BYTE" >&2; exit 1;;
+     esac
+-  case $2 in *[^0-9]*) echo "poke_: invalid offset: $2" >&2; exit 1 ;; esac
++  case $2 in *[!0-9]*) echo "poke_: invalid offset: $2" >&2; exit 1 ;; esac
+   case $3 in ?) ;; *) echo "poke_: invalid byte: '$3'" >&2; exit 1 ;; esac
+   printf %s "$3" | dd of="$1" bs=1 seek="$2" count=1 conv=notrunc
+ }
+@@ -155,7 +155,7 @@ poke_()
+ gpt1_pte_name_offset_()
+ {
+   local ss=$1
+-  case $ss in *[^0-9]*) echo "$0: invalid sector size: $ss">&2; return 1;; esac
++  case $ss in *[!0-9]*) echo "$0: invalid sector size: $ss">&2; return 1;; esac
+   expr $ss \* 2 + 56
+   return 0
+ }
+@@ -167,7 +167,7 @@ gpt_corrupt_primary_table_()
+   case $# in 2) ;; *) echo "$0: expected 2 args, got $#" >&2; return 1;; esac
+   local dev=$1
+   local ss=$2
+-  case $ss in *[^0-9]*) echo "$0: invalid sector size: $ss">&2; return 1;; esac
++  case $ss in *[!0-9]*) echo "$0: invalid sector size: $ss">&2; return 1;; esac
+ 
+   # get the first byte of the name
+   local orig_pte_name_byte
+@@ -188,7 +188,7 @@ gpt_restore_primary_table_()
+   case $# in 3) ;; *) echo "$0: expected 2 args, got $#" >&2; return 1;; esac
+   local dev=$1
+   local ss=$2
+-  case $ss in *[^0-9]*) echo "$0: invalid sector size: $ss">&2; return 1;; esac
++  case $ss in *[!0-9]*) echo "$0: invalid sector size: $ss">&2; return 1;; esac
+   local orig_byte=$3
+   poke_ $dev $(gpt1_pte_name_offset_ $ss) "$orig_byte" || return 1
+ }
+-- 
+2.39.1

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="autoipd">Build and install the IPv4LL (RFC3927) network address configuration daemon</flag>
 		<flag name="bookmarks">Install the avahi-bookmarks application (requires <pkg>dev-python/twisted</pkg>)</flag>

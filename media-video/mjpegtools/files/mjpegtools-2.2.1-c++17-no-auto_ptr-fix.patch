@@ -1,0 +1,20 @@
+--- a/mplex/main.cpp
++++ b/mplex/main.cpp
+@@ -50,7 +50,7 @@
+ #include "multiplexor.hpp"
+ 
+ 
+-using std::auto_ptr;
++using std::unique_ptr;
+ 
+ 
+ /*************************************************************************
+@@ -138,7 +138,7 @@
+ void 
+ FileOutputStream::NextSegment( )
+ {
+-    auto_ptr<char> prev_filename_buf( new char[strlen(cur_filename)+1] );
++    unique_ptr<char[]> prev_filename_buf( new char[strlen(cur_filename)+1] );
+     char *prev_filename = prev_filename_buf.get();
+ 	fclose(strm);
+ 	++segment_num;

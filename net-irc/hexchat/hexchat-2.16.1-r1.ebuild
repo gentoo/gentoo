@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit flag-o-matic lua-single meson mono-env python-single-r1 xdg
 
@@ -18,7 +18,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 else
 	SRC_URI="https://dl.hexchat.net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
@@ -43,7 +43,9 @@ RDEPEND="
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? (
 		${PYTHON_DEPS}
-		virtual/python-cffi
+		$(python_gen_cond_dep '
+			dev-python/cffi[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 	ssl? ( dev-libs/openssl:0= )
 	theme-manager? (

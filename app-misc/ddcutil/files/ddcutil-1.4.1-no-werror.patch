@@ -1,0 +1,25 @@
+diff --git a/src/test/Makefile.am b/src/test/Makefile.am
+index c12f15c..27d2124 100644
+--- a/src/test/Makefile.am
++++ b/src/test/Makefile.am
+@@ -4,7 +4,7 @@ $(GLIB_CFLAGS)  \
+ -I$(top_srcdir)/src \
+ -I$(top_srcdir)/src/public 
+ 
+-AM_CFLAGS = -Wall -Werror
++AM_CFLAGS = -Wall
+ 
+ CLEANFILES = \
+ *expand 
+
+--- ddcutil-1.4.1/configure.ac.orig	2023-07-02 22:11:20.601695946 -0700
++++ ddcutil-1.4.1/configure.ac	2023-07-02 22:11:41.306685606 -0700
+@@ -63,7 +63,7 @@
+ AC_ARG_VAR(DBG, [Turn on script debugging messages(0/1)])
+ dnl AC_MSG_NOTICE([DBG = |$DBG|])
+
+-AM_CONDITIONAL(WARNINGS_ARE_ERRORS_COND, [test "x$ddcutil_version_suffix" != "x"] )
++AM_CONDITIONAL(WARNINGS_ARE_ERRORS_COND, 0)
+
+ AS_IF( [test 0$DBG -ne 0],
+    AC_MSG_NOTICE([debug messages enabled]),

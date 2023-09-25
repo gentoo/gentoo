@@ -1,0 +1,40 @@
+From 12699a5cf89a00d63637eafc108515990d27c8fc Mon Sep 17 00:00:00 2001
+From: "Rick Farina (Zero_Chaos)" <zerochaos@gentoo.org>
+Date: Thu, 16 Feb 2023 12:04:13 -0500
+Subject: [PATCH] use file(GLOB) instead of just globbing
+
+While *.h works for make, it fails when using ninja.  This fixes the bug
+using cmake's file(GLOB) as suggested by DarthGandalf in
+gentoo-dev-help on irc
+
+https://bugs.gentoo.org/800791
+---
+ host/libraries/libbladeRF/CMakeLists.txt | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/host/libraries/libbladeRF/CMakeLists.txt b/host/libraries/libbladeRF/CMakeLists.txt
+index 4000a1555..f280b07cd 100644
+--- a/host/libraries/libbladeRF/CMakeLists.txt
++++ b/host/libraries/libbladeRF/CMakeLists.txt
+@@ -540,13 +540,17 @@ if(BUILD_LIBBLADERF_DOCUMENTATION)
+ 
+         set(LOGO_IMAGE "${CMAKE_CURRENT_SOURCE_DIR}/doc/images/logo.png")
+ 
++        file(GLOB INCLUDE_H ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
++        file(GLOB DOC_DOX ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/*.dox)
++        file(GLOB DOC_EXAMPLES ${CMAKE_CURRENT_SOURCE_DIR}/doc/examples/*)
++        file(GLOB DOC_IMAGES ${CMAKE_CURRENT_SOURCE_DIR}/doc/images/*)
+         set(DOXYGEN_SOURCE_FILES
+             ${CMAKE_CURRENT_BINARY_DIR}/doc/doxygen/Doxyfile
+-            ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h
+-            ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/*.dox
++            ${INCLUDE_H}
++            ${DOC_DOX}
+             ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/layout.xml
+-            ${CMAKE_CURRENT_SOURCE_DIR}/doc/examples/*
+-            ${CMAKE_CURRENT_SOURCE_DIR}/doc/images/*
++            ${DOC_EXAMPLES}
++            ${DOC_IMAGES}
+         )
+ 
+         configure_file(

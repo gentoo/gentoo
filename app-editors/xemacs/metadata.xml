@@ -13,5 +13,6 @@
     <flag name="mule">Add multi-language support to XEmacs</flag>
     <flag name="pop">Support POP for mail retrieval</flag>
     <flag name="xim">Enable X11 XiM input method</flag>
+    <flag name="bignum">Support for OpenSSL bignum implementation</flag>
   </use>
 </pkgmetadata>

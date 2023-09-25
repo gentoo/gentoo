@@ -1,21 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
 inherit toolchain-funcs
 
-DESCRIPTION="A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs"
-HOMEPAGE="http://www.unhide-forensics.info"
+DESCRIPTION="Forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs"
+HOMEPAGE="https://www.unhide-forensics.info"
 SRC_URI="https://github.com/YJesus/Unhide/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/Unhide-${PV}"
 

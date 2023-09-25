@@ -1,21 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYPI_NO_NORMALIZE=1
+PYPI_PN="WSGIProxy2"
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_PN="WSGIProxy2"
 DESCRIPTION="HTTP proxying tools for WSGI apps"
 HOMEPAGE="
 	https://github.com/gawel/WSGIProxy2/
 	https://pypi.org/project/WSGIProxy2/
 "
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"

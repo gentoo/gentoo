@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ HOMEPAGE="http://blog.calhariz.com/index.php/tag/at https://packages.qa.debian.o
 SRC_URI="http://software.calhariz.com/at/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/a/at/${MY_P}.orig.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ GPL-3+ ISC"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="pam selinux"

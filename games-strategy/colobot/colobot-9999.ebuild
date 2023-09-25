@@ -1,12 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake git-r3 xdg-utils
 
 DESCRIPTION="A real-time strategy game, where you can program your bots"
-HOMEPAGE="https://colobot.info/"
+HOMEPAGE="
+	https://colobot.info/
+	https://github.com/colobot/colobot/
+"
 EGIT_REPO_URI="https://github.com/colobot/colobot"
 EGIT_SUBMODULES=()
 
@@ -19,8 +22,10 @@ RESTRICT="!test? ( test )"
 # perl for pod2man
 BDEPEND="
 	app-text/po4a
+	app-text/xmlstarlet
 	dev-lang/perl
-	sys-devel/gettext"
+	sys-devel/gettext
+"
 DEPEND="
 	dev-games/physfs
 	dev-libs/boost:=
@@ -33,9 +38,15 @@ DEPEND="
 	media-libs/sdl2-image
 	media-libs/sdl2-ttf
 	media-sound/vorbis-tools
-	openal? ( media-libs/openal )"
-RDEPEND="${DEPEND}
-	games-strategy/colobot-data"
+	openal? ( media-libs/openal )
+"
+RDEPEND="
+	${DEPEND}
+	games-strategy/colobot-data
+"
+DEPEND+="
+	test? ( dev-cpp/gtest )
+"
 
 src_prepare() {
 	cmake_src_prepare

@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LUA_COMPAT=( lua5-3 )
+LUA_COMPAT=( lua5-4 )
 LUA_REQ_USE="deprecated"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PLOCALES="de es fr hi hr hu id it ja pl pt_BR pt_PR ro ru sk zh"
 PLOCALE_BACKUP="en"
 inherit autotools lua-single plocale python-single-r1 toolchain-funcs
@@ -27,18 +27,21 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-LICENSE="|| ( NPSL GPL-2 )"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-7.95-patches.tar.xz"
+
+# https://github.com/nmap/nmap/issues/2199
+LICENSE="NPSL-0.95"
 SLOT="0"
-IUSE="ipv6 libssh2 ncat ndiff nping nls +nse ssl symlink +system-lua zenmap"
+IUSE="ipv6 libssh2 ncat ndiff nping nls +nse ssl symlink zenmap"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	system-lua? ( nse ${LUA_REQUIRED_USE} )
+	nse? ( ${LUA_REQUIRED_USE} )
 	symlink? ( ncat )
 "
 
 RDEPEND="
 	dev-libs/liblinear:=
-	dev-libs/libpcre
+	dev-libs/libpcre2
 	net-libs/libpcap
 	ndiff? ( ${PYTHON_DEPS} )
 	libssh2? (
@@ -46,7 +49,10 @@ RDEPEND="
 		sys-libs/zlib
 	)
 	nls? ( virtual/libintl )
-	nse? ( sys-libs/zlib )
+	nse? (
+		${LUA_DEPS}
+		sys-libs/zlib
+	)
 	ssl? ( dev-libs/openssl:= )
 	symlink? (
 		ncat? (
@@ -54,7 +60,6 @@ RDEPEND="
 			!net-analyzer/openbsd-netcat
 		)
 	)
-	system-lua? ( ${LUA_DEPS} )
 	zenmap? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -63,6 +68,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
+# Python is always needed at build time for some scripts
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
@@ -74,22 +80,24 @@ if [[ ${PV} != *9999* ]] ; then
 fi
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.10_beta1-string.patch
-	"${FILESDIR}"/${PN}-5.21-python.patch
-	"${FILESDIR}"/${PN}-6.46-uninstaller.patch
-	"${FILESDIR}"/${PN}-6.25-liblua-ar.patch
-	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
-	"${FILESDIR}"/${PN}-7.25-libpcre.patch
-	"${FILESDIR}"/${PN}-7.31-libnl.patch
-	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
-	"${FILESDIR}"/${PN}-7.91-no-FORTIFY_SOURCE.patch
-	"${FILESDIR}"/${PN}-9999-netutil-else.patch
+	"${WORKDIR}"/${PN}-7.95-patches
 )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
 
-	use system-lua && lua-single_pkg_setup
+	use nse && lua-single_pkg_setup
+}
+
+src_unpack() {
+	if [[ ${PV} == *9999 ]] ; then
+		git-r3_src_unpack
+	elif use verify-sig ; then
+		# Needed for downloaded patch (which is unsigned, which is fine)
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.bz2{,.asc}
+	fi
+
+	default
 }
 
 src_prepare() {
@@ -133,10 +141,10 @@ src_configure() {
 		$(use_with ncat)
 		$(use_with ndiff)
 		$(use_with nping)
+		$(use_with nse liblua)
 		$(use_with ssl openssl)
 		$(use_with zenmap)
 		$(usex libssh2 --with-zlib)
-		$(usex nse --with-liblua=$(usex system-lua yes included '' '') --without-liblua)
 		$(usex nse --with-zlib)
 		--cache-file="${S}"/config.cache
 		# The bundled libdnet is incompatible with the version available in the

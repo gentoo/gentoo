@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 inherit waf-utils multilib-minimal python-single-r1
 
@@ -15,16 +15,21 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 RDEPEND="
 	dev-libs/libbsd[${MULTILIB_USEDEP}]
-	python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}
-	virtual/libcrypt"
-BDEPEND="${PYTHON_DEPS}
-	app-text/docbook-xml-dtd:4.2"
+	python? ( ${PYTHON_DEPS} )
+"
+DEPEND="
+	${RDEPEND}
+	virtual/libcrypt
+"
+BDEPEND="
+	${PYTHON_DEPS}
+	app-text/docbook-xml-dtd:4.2
+"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 

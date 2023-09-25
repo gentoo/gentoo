@@ -1,13 +1,59 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-09-24)
+# Qt not keyworded here.
+app-doc/doxygen gui
+
+# Sam James <sam@gentoo.org> (2023-09-22)
+# Qt 6 not keyworded here.
+dev-util/cmake gui
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
+# Libei not keyworded here yet
+x11-base/xwayland libei
+
+# Rich Freeman <rich0@gentoo.org> (2023-09-13)
+# Tests require shellcheck which is not currently available
+sys-process/systemd-cron test
+
+# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
+# librttopo has not been tested on this arch
+dev-db/spatialite rttopo
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-04-17)
+# net-misc/pps-tools is not keyworded here
+net-misc/chrony pps
+
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
+# Sam James <sam@gentoo.org> (2023-04-14)
+# dev-python/sympy not keyworded here yet
+dev-python/nbval test
+
+# Michał Górny <mgorny@gentoo.org> (2023-03-14)
+# Requires virtual/pandoc.
+dev-python/nbclassic doc
+dev-python/nbval doc
 
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Unkeyworded dependencies
 dev-util/diffoscope opendocument pascal pdf R
-
-# Florian Schmaus <flow@gentoo.org> (2022-11-23)
-# avoid larger deptree, bug #882593
-dev-python/bracex doc
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-30)
 # No ruby on ia64 for dev-ruby/asciidoctor
@@ -21,15 +67,9 @@ dev-util/pkgcheck emacs
 # net-libs/libqrtr-glib not keyworded
 net-misc/modemmanager qrtr
 
-# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
-# media-libs/libjxl is not keyworded
-# bug https://bugs.gentoo.org/853628
-media-gfx/gimp jpegxl
-
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif jpegxl
-media-gfx/graphicsmagick jpegxl
+media-libs/imlib2 svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -57,7 +97,7 @@ app-accessibility/espeak-ng man
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
-dev-python/scipy pythran
+dev-python/scipy fortran
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Test suite is very fragile and doesn't even run on amd64.
@@ -73,11 +113,6 @@ dev-python/argon2-cffi doc
 # keywords. Doubt anybody is using PW here anyway right now.
 # bug #807616
 media-libs/libsdl2 pipewire
-
-# Sam James <sam@gentoo.org> (2021-10-17)
-# media-libs/libheif not keyworded here
-sci-libs/gdal heif
-media-gfx/graphicsmagick heif
 
 # Sam James <sam@gentoo.org> (2021-09-14)
 # JACK2 isn't keyworded here
@@ -113,10 +148,10 @@ dev-python/diskcache test
 media-libs/rubberband jni
 
 # Sam James <sam@gentoo.org> (2021-03-11)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
-media-gfx/graphicsmagick heif
+media-libs/gd avif
+www-client/links avif
+dev-lang/php avif
 
 # Akinori Hattori <hattya@gentoo.org> (2021-03-03)
 # dev-lang/ruby is not keyworded
@@ -204,10 +239,6 @@ net-misc/openssh security-key
 # Joonas Niilola <juippis@gentoo.org> (2020-02-08)
 # Dependency not keyworded on this arch.
 dev-libs/dbus-c++ ecore
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
 
 # David Seifert <soap@gentoo.org> (2020-01-26)
 # media-libs/libkate is not keyworded on ia64 anymore
@@ -337,7 +368,6 @@ media-sound/rhythmbox upnp-av
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
 # Missing keywords on app-text/gspell - bug #587368
->=app-editors/gedit-3.20 spell
 >=app-text/evince-3.30 spell
 
 # Pacho Ramos <pacho@gentoo.org> (2016-01-31)
@@ -374,8 +404,8 @@ media-sound/pulseaudio-daemon ofono-headset
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd -gnuefi
-sys-apps/systemd-utils -boot
+<sys-apps/systemd-254 -gnuefi
+<sys-apps/systemd-utils-254 -boot
 
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108
@@ -440,11 +470,6 @@ net-misc/modemmanager qmi
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# requires app-office/unoconv, which requires virtual/ooo, which is not
-# keyworded here. Remove mask if this situation changes.
-gnome-extra/sushi office
 
 # Agostino Sarubbo <ago@gentoo.org> (2012-12-18)
 # kde is not stable, then no needs phonon backends

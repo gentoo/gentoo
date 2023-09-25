@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools elisp-common readme.gentoo-r1 toolchain-funcs
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -40,24 +40,27 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter webp wide-int +X Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux small-ja-dic sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm xwidgets zlib"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
+	x11-libs/libXcomposite
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libxcb
+	x11-libs/xcb-util
 	x11-misc/xbitmaps
 	xpm? ( x11-libs/libXpm )
 	xft? (
 		media-libs/fontconfig
 		media-libs/freetype
-		x11-libs/libXft
 		x11-libs/libXrender
 		cairo? ( >=x11-libs/cairo-1.12.18[X] )
+		!cairo? ( x11-libs/libXft )
 		harfbuzz? ( media-libs/harfbuzz:0= )
 		m17n-lib? (
 			>=dev-libs/libotf-0.9.4
@@ -67,7 +70,7 @@ X_DEPEND="x11-libs/libICE
 	gtk? (
 		x11-libs/gtk+:3
 		xwidgets? (
-			net-libs/webkit-gtk:4=
+			net-libs/webkit-gtk:4.1=
 			x11-libs/libXcomposite
 		)
 	)
@@ -116,6 +119,8 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
 	tree-sitter? ( dev-libs/tree-sitter )
+	valgrind? ( dev-util/valgrind )
+	xattr? ( sys-apps/attr )
 	zlib? ( sys-libs/zlib )
 	gui? (
 		gif? ( media-libs/giflib:0= )
@@ -126,7 +131,10 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 		webp? ( media-libs/libwebp:0= )
 		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		!aqua? (
-			gsettings? ( >=dev-libs/glib-2.28.6 )
+			gsettings? (
+				app-emacs/emacs-common[gsettings(-)]
+				>=dev-libs/glib-2.28.6
+			)
 			gtk? ( !X? (
 				media-libs/fontconfig
 				media-libs/freetype
@@ -137,7 +145,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 					>=dev-libs/libotf-0.9.4
 					>=dev-libs/m17n-lib-1.5.1
 				)
-				xwidgets? ( net-libs/webkit-gtk:4= )
+				xwidgets? ( net-libs/webkit-gtk:4.1= )
 			) )
 			!gtk? ( ${X_DEPEND} )
 			X? ( ${X_DEPEND} )
@@ -173,6 +181,8 @@ src_prepare() {
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 	fi
 
+	default
+
 	if use jit; then
 		find lisp -type f -name "*.elc" -delete || die
 
@@ -186,8 +196,6 @@ src_prepare() {
 			&& export LIBRARY_PATH=$("$(tc-getCC)" -print-search-dirs \
 				| sed -n '/^libraries:/{s:^[^/]*::;p}')
 	fi
-
-	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
@@ -214,6 +222,14 @@ src_configure() {
 		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
+	if use jit; then
+		use zlib || ewarn \
+			"USE flag \"jit\" overrides \"-zlib\"; enabling zlib support."
+		myconf+=" --with-zlib"
+	else
+		myconf+=" $(use_with zlib)"
+	fi
+
 	# Emacs supports these window systems:
 	# X11, pure GTK (without X11), or Nextstep (Aqua/Cocoa).
 	# General GUI support is enabled by the "gui" USE flag, then
@@ -224,14 +240,6 @@ src_configure() {
 	# For X11 there is the further choice of toolkits GTK, Motif,
 	# Athena (Lucid), or no toolkit. They are enabled (in order of
 	# preference) with the "gtk", "motif", "Xaw3d", and "athena" flags.
-
-	if use jit; then
-		use zlib || ewarn \
-			"USE flag \"jit\" overrides \"-zlib\"; enabling zlib support."
-		myconf+=" --with-zlib"
-	else
-		myconf+=" $(use_with zlib)"
-	fi
 
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
@@ -347,6 +355,7 @@ src_configure() {
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		--with-pdumper \
 		$(use_enable acl) \
+		$(use_enable xattr) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
 		$(use_with games gameuser ":gamestat") \
@@ -359,6 +368,7 @@ src_configure() {
 		$(use_with libxml2 xml2) \
 		$(use_with mailutils) \
 		$(use_with selinux) \
+		$(use_with small-ja-dic) \
 		$(use_with sqlite sqlite3) \
 		$(use_with ssl gnutls) \
 		$(use_with systemd libsystemd) \
@@ -369,6 +379,9 @@ src_configure() {
 }
 
 src_compile() {
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
+	append-cppflags -DUSE_VALGRIND=$(usex valgrind)
+
 	if tc-is-cross-compiler; then
 		# Build native tools for compiling lisp etc.
 		emake -C "${S}-build" src
@@ -433,10 +446,9 @@ src_install() {
 	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
 	mv "${ED}"/usr/share/metainfo/{emacs-,}${EMACS_SUFFIX}.metainfo.xml || die
 
-	# move info dir to avoid collisions with the dir file generated by portage
-	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} || die
+	# dissuade Portage from removing our dir file #257260
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
-	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
+	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir
 
 	# movemail must be setgid mail
 	if ! use mailutils; then
@@ -447,6 +459,7 @@ src_install() {
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
 	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 
@@ -499,7 +512,7 @@ src_install() {
 	X	   (while (and (cdr q) (not (string-match re (cadr q))))
 	X	     (setq q (cdr q)))
 	X	   (setcdr q (cons dir (delete dir (cdr q))))
-	X	   (setq Info-directory-list (prune-directory-list (cdr p)))))))
+	X	   (setenv "INFOPATH" (mapconcat 'identity (cdr p) ":"))))))
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
@@ -539,10 +552,9 @@ src_install() {
 }
 
 pkg_preinst() {
-	# move Info dir file to correct name
-	if [[ -d ${ED}/usr/share/info ]]; then
-		mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{.orig,} || die
-	fi
+	# verify that the PM hasn't removed our Info directory index #257260
+	local infodir="${ED}/usr/share/info/${EMACS_SUFFIX}"
+	[[ -f ${infodir}/dir || ! -d ${infodir} ]] || die
 }
 
 pkg_postinst() {

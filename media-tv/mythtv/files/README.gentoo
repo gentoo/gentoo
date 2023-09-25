@@ -1,0 +1,43 @@
+Support for metadata lookup changes is added. User configuration required.
+Details at: https://www.mythtv.org/wiki/Metadata_Lookup_Changes_March_2021
+
+Support for Python 2.7 is removed.
+
+If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
+is created if it does not already exist.
+You will be prompted for your MySQL root password.
+
+A mythtv user is maintained by acct-user/mythtv. An existing mythtv user
+may be modified to the configuration defined by acct-user/mythtv.
+The mythtv user's primary group is now mythtv. (formerly video)
+An existing mythtv user may be changed which may alter some functionality.
+If it breaks mythtv you may need to (choose one):
+        * Restore the original mythtv user
+        * Create custom acct-user/mythtv overlay for your system
+        * Fix you system to use mythtv as daemon only (recommended)
+Failure to emerge acct-user/mythtv indicates that the existing mythtv user
+is customized and not changed. Corrective action (choose one):
+        * Ignore emerge failure
+        * Create custom acct-user/mythtv overlay for your system
+        * Fix you system to use mythtv as daemon only
+        * Delete existing user and try again (dangerous)
+
+Mythtv is updated to use correct FHS/Gentoo policy paths.
+Updating mythtv installations may report:
+        * mythtv is in use, cannot update home
+        * There was an error when attempting to update the home directory for mythtv
+        * Please update it manually on your system (as root):
+        *       usermod -d "/var/lib/mythtv" "mythtv"
+This can be ignored. The previous default was "/home/mythtv".
+Use caution if you change the home directory.
+
+To have this machine operate as recording host for MythTV,
+mythbackend must be running. Run the following:
+rc-update add mythbackend default
+
+Your recordings folder must be owned 'mythtv'. e.g.
+chown -R mythtv /var/lib/mythtv
+
+Want mythfrontend to start automatically?
+Set USE=autostart. Details can be found at:
+https://dev.gentoo.org/~cardoe/mythtv/autostart.html

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>cyber+gentoo@sysrq.in</email>
+		<name>Anna Vyalkova</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<name>Anna</name>
+			<email>cyber@sysrq.in</email>
+		</maintainer>
+		<bugs-to>https://bugs.sysrq.in/enter_bug.cgi?product=Software&amp;component=gentle</bugs-to>
+		<remote-id type="pypi">gentle-mxml</remote-id>
+	</upstream>
+</pkgmetadata>

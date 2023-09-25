@@ -1,5 +1,46 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-09-22)
+# Qt 6 not keyworded here.
+dev-util/cmake gui
+
+# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
+# librttopo has not been tested on this arch
+dev-db/spatialite rttopo
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org (2023-08-30)
+# Avoid keywording more Qt stuff
+dev-python/pyside2 datavis webengine
+
+# Marek Szuba <marecki@gentoo.org> (2023-08-19)
+# dev-libs/pocl needs some work before it can be keyworded here (Bug #907333).
+dev-python/pyopencl test
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
+# MPV currently[1] has no plans to support >=lua5-3 making luajit
+# the only choice for maintained lua. Apply mask/force to override
+# the profile's defaults, and invert on arches where not keyworded.
+# Done this way also avoids conflicts for users using another default.
+# [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
+media-video/mpv lua_single_target_luajit -lua_single_target_lua5-1
+
+# Mike Gilbert <floppym@gentoo.org> (2023-05-27)
+# sd-boot should work here.
+sys-apps/systemd -boot -gnuefi
+sys-apps/systemd-utils -boot
+
+# Sam James <sam@gentoo.org> (2023-05-10)
+# sys-cluster/ceph not keyworded here
+sys-block/tgt rbd
+
+# jinqiang zhang <peeweep@0x0.ee> (2023-03-27)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan
+
+# Yixun Lan <dlan@gentoo.org> (2023-02-16)
+# USE=java depend on virtual/jdk:1.8 which is not support on RISC-V
+app-office/libreoffice java libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
 
 # Mike Rivnak <rivnakm1@gmail.com> (2022-11-30)
 # luajit is currently not supported on riscv
@@ -24,7 +65,7 @@ app-i18n/fcitx-libpinyin dictionary-manager
 sys-devel/gcc -sanitize
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
-# Mask nvml use flag for slurm
+# Requires proprietary binary-only libraries only available for a handful of arches
 sys-cluster/slurm nvml
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-09-07)
@@ -41,7 +82,7 @@ app-admin/rsyslog jemalloc
 dev-util/bcc lua
 
 # Yu Gu <guyu2876@gmail.com> (2022-07-26)
-# Xen does not work on riscv, ceph not tested, bug #859625
+# Xen does not work on riscv, Ceph has dependencies which do not. Bug #859625.
 app-emulation/libvirt xen rbd
 
 # Sam James <sam@gentoo.org> (2022-07-02)
@@ -54,11 +95,6 @@ dev-libs/cyrus-sasl berkdb
 # Unfortunately, tests demand qtwebengine too.
 dev-python/QtPy pyside2 webengine
 dev-python/QtPy test
-
-# Jakov Smolić <jsmolic@gentoo.org> (2022-06-07)
-# riscv has no sanitizers unmasked for the time being, so
-# mask to prevent emerge from erroring out by default
-sys-devel/clang-runtime sanitize
 
 # Marek Szuba <marecki@gentoo.org> (2022-04-30)
 # net-wireless/sdrplay contains prebuilt binaries, currently available
@@ -98,7 +134,6 @@ dev-python/anyio test
 # Marek Szuba <marecki@gentoo.org> (2021-09-23)
 # mkdocs ecosystem only partly keyworded on riscv, has rather messy
 # Python-target requirements.
-dev-python/backrefs doc
 dev-python/pyspelling doc
 dev-python/wcmatch doc
 
@@ -118,6 +153,7 @@ app-text/nuspell doc
 dev-ruby/capybara test
 #  - dev-qt/qtwebengine (bdepend)
 dev-python/ipython qt5
+kde-apps/k3b webengine
 kde-apps/marble webengine
 kde-plasma/discover webengine
 kde-plasma/kdeplasma-addons webengine
@@ -143,19 +179,9 @@ app-crypt/heimdal afs
 # app-editors/xemacs reports arch as unknown, fails to build
 dev-lang/ruby xemacs
 
-# Yixun Lan <dlan@gentoo.org> (2021-08-20)
-# dependencies not keyworded/tested
-gnome-extra/sushi office
-gnome-base/gnome-shell browser-extension
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
 kde-plasma/plasma-meta plymouth
-
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# Currently requires dev-lang/spidermonkey:68, which explicitly
-# does not support riscv. Hopefully temporary, see Bug #807772.
-net-libs/libproxy spidermonkey
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
@@ -177,7 +203,6 @@ app-admin/syslog-ng test
 # Marek Szuba <marecki@gentoo.org> (2021-07-27)
 # dev-db/mongodb does not support riscv, fails src_configure
 dev-libs/mongo-c-driver test
-dev-python/pymongo test
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
 # hdf5-1.10 always fails tests with these 2 use flags enabled, otherwise

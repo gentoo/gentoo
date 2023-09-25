@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-vcs-snapshot.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @PROVIDES: golang-base
 # @BLURB: eclass to unpack VCS snapshot tarballs for Go software
 # @DEPRECATED: go-module.eclass
@@ -44,14 +44,15 @@
 # ${WORKDIR}/${P}/src/github.com/user/package
 # and add the vendored tarballs to ${WORKDIR}/src/${EGO_PN}/vendor
 
-inherit golang-base
-
-case ${EAPI:-0} in
-	5|6|7) ;;
-	*) die "${ECLASS} API in EAPI ${EAPI} not yet established."
+case ${EAPI} in
+	6|7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
+if [[ -z ${_GOLANG_VCS_SNAPSHOT_ECLASS} ]]; then
+_GOLANG_VCS_SNAPSHOT_ECLASS=1
+
+inherit golang-base
 
 # @ECLASS_VARIABLE: EGO_VENDOR
 # @DESCRIPTION:
@@ -82,7 +83,7 @@ unset -f _golang-vcs-snapshot_set_vendor_uri
 
 _golang-vcs-snapshot_dovendor() {
 	local VENDOR_PATH=$1 VENDORPN=$2 TARBALL=$3
-	rm -fr "${VENDOR_PATH}/${VENDORPN}" || die
+	rm -rf "${VENDOR_PATH}/${VENDORPN}" || die
 	mkdir -p "${VENDOR_PATH}/${VENDORPN}" || die
 	tar -C "${VENDOR_PATH}/${VENDORPN}" -x --strip-components 1\
 		-f "${DISTDIR}"/${TARBALL} || die
@@ -117,3 +118,7 @@ golang-vcs-snapshot_src_unpack() {
 		done
 	fi
 }
+
+fi
+
+EXPORT_FUNCTIONS src_unpack

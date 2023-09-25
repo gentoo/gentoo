@@ -1,0 +1,35 @@
+From 19424b0baa5999918701e1972b901b0937331581 Mon Sep 17 00:00:00 2001
+From: Ammar Faizi <ammarfaizi2@gnuweeb.org>
+Date: Sat, 14 Jan 2023 10:54:05 +0700
+Subject: [PATCH] liburing.map: Export
+ `io_uring_{enable_rings,register_restrictions}`
+
+When adding these two functions, Stefano didn't add
+io_uring_enable_rings() and io_uring_register_restrictions() to
+liburing.map. It causes a linking problem. Add them to liburing.map.
+
+This issue hits liburing 2.0 to 2.3.
+
+[flow: backport to liburing 2.3]
+
+Closes: https://github.com/axboe/liburing/pull/774
+Fixes: https://github.com/axboe/liburing/issues/773
+Fixes: https://github.com/facebook/folly/issues/1908
+Fixes: d2654b1ac886 ("Add helper to enable rings")
+Fixes: 25cf9b968a27 ("Add helper to register restrictions")
+Cc: Dylan Yudaken <dylany@meta.com>
+Cc: Stefano Garzarella <sgarzare@redhat.com>
+Signed-off-by: Ammar Faizi <ammarfaizi2@gnuweeb.org>
+Link: https://lore.kernel.org/r/20230114035405.429608-1-ammar.faizi@intel.com
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+--- a/src/liburing.map
++++ b/src/liburing.map
+@@ -68,2 +68,5 @@ LIBURING_2.3 {
+        io_uring_submit_and_get_events;
++
++		io_uring_enable_rings;
++		io_uring_register_restrictions;
+ } LIBURING_2.3;
+-- 
+2.39.1
+

@@ -13,6 +13,7 @@
     provide a visually attractive and easy to use experience.
   </longdescription>
   <use>
+    <flag name="pipewire">Use pipewire to enable the camera monitor</flag>
     <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking and suspend support.</flag>
     <flag name="ibus">Enable support for enhanced input methods through <pkg>app-i18n/ibus</pkg></flag>
   </use>

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/885311
+https://bugs.gentoo.org/899806
+--- a/m4/sane.m4
++++ b/m4/sane.m4
+@@ -44,6 +44,7 @@ dnl
+       AC_TRY_RUN([
+ #include <sane/sane.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ int 
+ main ()

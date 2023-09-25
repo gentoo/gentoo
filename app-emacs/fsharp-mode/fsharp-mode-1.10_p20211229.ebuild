@@ -1,17 +1,16 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=b3aa4c53fc9e98648b25ad036e657632ae2fe192
-NEED_EMACS=25
+COMMIT=b3aa4c53fc9e98648b25ad036e657632ae2fe192
 
 inherit elisp
 
 DESCRIPTION="Support for the F# programming language"
 HOMEPAGE="https://github.com/fsharp/emacs-fsharp-mode/"
-SRC_URI="https://github.com/fsharp/emacs-${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/emacs-${PN}-${H}
+SRC_URI="https://github.com/fsharp/emacs-${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/emacs-${PN}-${COMMIT}
 
 LICENSE="Apache-2.0"
 SLOT="0"

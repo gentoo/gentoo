@@ -13,9 +13,8 @@
 		engineering or operations.
 	</longdescription>
 	<use>
-		<flag name="php7-4">Support for PHP 7.4</flag>
-		<flag name="php8-0">Support for PHP 7.4</flag>
-		<flag name="php8-1">Support for PHP 7.4</flag>
+		<flag name="php8-1">Support for PHP 8.1</flag>
+		<flag name="php8-2">Support for PHP 8.2</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">nginx/unit</remote-id>

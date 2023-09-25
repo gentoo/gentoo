@@ -1,0 +1,25 @@
+From f63ba0916132e16d5eeb1a5c1ad868b0169bf7fc Mon Sep 17 00:00:00 2001
+From: Daniel Leidert <dleidert@debian.org>
+Date: Mon, 22 Nov 2021 01:34:25 +0100
+Subject: [PATCH] Properly accept argument and keywords
+
+---
+ lib/flexmock/composite_expectation.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/flexmock/composite_expectation.rb b/lib/flexmock/composite_expectation.rb
+index 370046f..fbc8e54 100644
+--- a/lib/flexmock/composite_expectation.rb
++++ b/lib/flexmock/composite_expectation.rb
+@@ -16,9 +16,9 @@ def add(expectation)
+     end
+ 
+     # Apply the constraint method to all expectations in the composite.
+-    def method_missing(sym, *args, &block)
++    def method_missing(sym, *args, **keywords, &block)
+       @expectations.each do |expectation|
+-        expectation.send(sym, *args, &block)
++        expectation.send(sym, *args, **keywords, &block)
+       end
+       self
+     end

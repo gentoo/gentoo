@@ -1,14 +1,15 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit xdg cmake
+inherit cmake xdg
 
 DESCRIPTION="Provides functionality for gaming input devices"
 
 HOMEPAGE="https://sourceforge.net/projects/libgaminggear/"
 SRC_URI="mirror://sourceforge/libgaminggear/${P}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -23,9 +24,7 @@ RDEPEND="
 	x11-libs/libnotify
 	x11-libs/pango
 "
-
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	dev-libs/libgudev
 	media-libs/harfbuzz
 "

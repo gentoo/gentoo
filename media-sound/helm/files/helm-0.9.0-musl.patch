@@ -1,0 +1,129 @@
+Upstream (JUCE, bundled): https://github.com/juce-framework/JUCE/pull/1239
+
+From 393de14d3fb55e462eeae24a4e64978a8a30cd4f Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Thu, 15 Jun 2023 19:01:32 +0000
+Subject: [PATCH] JUCE: Add support for musl
+
+---
+ JUCE/modules/juce_core/juce_core.cpp          |  2 +-
+ .../native/juce_linux_SystemStats.cpp         | 34 +++++++++++++++++--
+ .../juce_core/native/juce_posix_SharedCode.h  |  2 +-
+ .../juce_core/system/juce_SystemStats.cpp     |  2 +-
+ .../juce_core/system/juce_TargetPlatform.h    |  9 +++++
+ 5 files changed, 43 insertions(+), 6 deletions(-)
+
+diff --git a/JUCE/modules/juce_core/juce_core.cpp b/JUCE/modules/juce_core/juce_core.cpp
+index 9f87047..c6f28ce 100644
+--- a/JUCE/modules/juce_core/juce_core.cpp
++++ b/JUCE/modules/juce_core/juce_core.cpp
+@@ -93,7 +93,7 @@
+  #include <net/if.h>
+  #include <sys/ioctl.h>
+ 
+- #if ! JUCE_ANDROID
++ #if ! (JUCE_ANDROID || JUCE_MUSL)
+   #include <execinfo.h>
+  #endif
+ #endif
+diff --git a/JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp b/JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp
+index 4b8f4bd..55906eb 100644
+--- a/JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp
++++ b/JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp
+@@ -126,9 +126,37 @@ static String getLocaleValue (nl_item key)
+     return result;
+ }
+ 
+-String SystemStats::getUserLanguage()    { return getLocaleValue (_NL_IDENTIFICATION_LANGUAGE); }
+-String SystemStats::getUserRegion()      { return getLocaleValue (_NL_IDENTIFICATION_TERRITORY); }
+-String SystemStats::getDisplayLanguage() { return getUserLanguage() + "-" + getUserRegion(); }
++String SystemStats::getUserLanguage()
++{
++   #if JUCE_GLIBC
++    return getLocaleValue (_NL_ADDRESS_LANG_AB);
++   #else
++    if (auto langEnv = getenv ("LANG"))
++        return String::fromUTF8 (langEnv).upToLastOccurrenceOf (".UTF-8", false, true);
++
++    return {};
++   #endif
++}
++
++String SystemStats::getUserRegion()
++{
++   #if JUCE_GLIBC
++    return getLocaleValue (_NL_ADDRESS_COUNTRY_AB2);
++   #else
++    return {};
++   #endif
++}
++
++String SystemStats::getDisplayLanguage()
++{
++    auto result = getUserLanguage();
++    auto region = getUserRegion();
++
++    if (region.isNotEmpty())
++        result << "-" << region;
++
++    return result;
++}
+ 
+ //==============================================================================
+ void CPUInformation::initialise() noexcept
+diff --git a/JUCE/modules/juce_core/native/juce_posix_SharedCode.h b/JUCE/modules/juce_core/native/juce_posix_SharedCode.h
+index 876e681..59c49ba 100644
+--- a/JUCE/modules/juce_core/native/juce_posix_SharedCode.h
++++ b/JUCE/modules/juce_core/native/juce_posix_SharedCode.h
+@@ -235,7 +235,7 @@ int juce_siginterrupt (int sig, int flag)
+ //==============================================================================
+ namespace
+ {
+-   #if JUCE_LINUX || (JUCE_IOS && ! __DARWIN_ONLY_64_BIT_INO_T) // (this iOS stuff is to avoid a simulator bug)
++   #if JUCE_GLIBC || (JUCE_IOS && ! __DARWIN_ONLY_64_BIT_INO_T) // (this iOS stuff is to avoid a simulator bug)
+     typedef struct stat64 juce_statStruct;
+     #define JUCE_STAT     stat64
+    #else
+diff --git a/JUCE/modules/juce_core/system/juce_SystemStats.cpp b/JUCE/modules/juce_core/system/juce_SystemStats.cpp
+index 7e05277..cac9a14 100644
+--- a/JUCE/modules/juce_core/system/juce_SystemStats.cpp
++++ b/JUCE/modules/juce_core/system/juce_SystemStats.cpp
+@@ -120,7 +120,7 @@ String SystemStats::getStackBacktrace()
+ {
+     String result;
+ 
+-   #if JUCE_ANDROID || JUCE_MINGW
++   #if JUCE_ANDROID || JUCE_MINGW || JUCE_MUSL
+     jassertfalse; // sorry, not implemented yet!
+ 
+    #elif JUCE_WINDOWS
+diff --git a/JUCE/modules/juce_core/system/juce_TargetPlatform.h b/JUCE/modules/juce_core/system/juce_TargetPlatform.h
+index ae9d7e1..9dca4bc 100644
+--- a/JUCE/modules/juce_core/system/juce_TargetPlatform.h
++++ b/JUCE/modules/juce_core/system/juce_TargetPlatform.h
+@@ -33,6 +33,7 @@
+     - Either JUCE_LITTLE_ENDIAN or JUCE_BIG_ENDIAN.
+     - Either JUCE_INTEL or JUCE_ARM
+     - Either JUCE_GCC or JUCE_CLANG or JUCE_MSVC
++    - Either JUCE_GLIBC or JUCE_MUSL will be defined on Linux depending on the system's libc implementation.
+ */
+ 
+ //==============================================================================
+@@ -177,6 +178,14 @@
+   #elif __MMX__ || __SSE__ || __amd64__
+     #define JUCE_INTEL 1
+   #endif
++
++  #if JUCE_LINUX
++    #ifdef __GLIBC__
++      #define JUCE_GLIBC 1
++    #else
++      #define JUCE_MUSL 1
++    #endif
++  #endif
+ #endif
+ 
+ //==============================================================================
+-- 
+2.41.0
+

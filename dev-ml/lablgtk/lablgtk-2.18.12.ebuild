@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/garrigue/lablgtk/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )"
 SLOT="2/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug examples glade gnomecanvas +ocamlopt sourceview spell svg"
 
 DEPEND=">=dev-lang/ocaml-4.05:=[ocamlopt?]
@@ -29,6 +29,7 @@ DOCS=( CHANGES README CHANGES.API )
 PATCHES=(
 	"${FILESDIR}"/${P}-cflags.patch
 	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-depend.patch
 )
 
 src_configure() {

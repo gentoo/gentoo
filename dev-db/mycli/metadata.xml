@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>grknight@gentoo.org</email>
-		<name>Brian Evans</name>
+	<maintainer type="person" proxied="yes">
+		<email>parona@protonmail.com</email>
+		<name>Alfred Wingate</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">dbcli/mycli</remote-id>
+		<remote-id type="pypi">mycli</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 	<use>
 		<flag name="ssh">Add support for connection over SSH tunnel</flag>
 	</use>

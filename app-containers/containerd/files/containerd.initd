@@ -22,5 +22,5 @@ start_pre() {
 }
 
 start_post() {
-	ewaitfile 5 /run/containerd/containerd.sock
+	ewaitfile ${containerd_socket_delay:-5} /run/containerd/containerd.sock
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+    <maintainer type="project">
+        <email>sci@gentoo.org</email>
+        <name>Gentoo Science Project</name>
+    </maintainer>
     <maintainer type="person">
         <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>

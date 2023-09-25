@@ -2,21 +2,21 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-	<email>radio@gentoo.org</email>
-	<name>Radio</name>
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
 	</maintainer>
-<use>
-	<flag name="airspy">Build with Airspy support</flag>
-	<flag name="bladerf">Build with Nuand BladeRF support</flag>
-	<flag name="hackrf">Build with Great Scott Gadgets HackRF support</flag>
-	<flag name="iqbalance">Enable support for I/Q balancing using gr-iqbal</flag>
-	<flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
-	<flag name="sdrplay">Enable support for SDRplay devices through <pkg>net-wireless/sdrplay</pkg></flag>
-	<flag name="soapy">Build with SoapySDR support</flag>
-	<flag name="uhd">Build with Ettus Research USRP Hardware Driver support</flag>
-	<flag name="xtrx">Build with xtrx Hardware Driver support</flag>
-</use>
-<upstream>
-	<remote-id type="github">osmocom/gr-osmocom</remote-id>
-</upstream>
+	<use>
+		<flag name="airspy">Build with Airspy support through <pkg>net-wireless/airspy</pkg></flag>
+		<flag name="bladerf">Build with Nuand BladeRF support through <pkg>net-wireless/bladerf</pkg></flag>
+		<flag name="hackrf">Build with Great Scott Gadgets HackRF support through <pkg>net-libs/libhackrf</pkg></flag>
+		<flag name="iqbalance">Enable support for I/Q balancing using gr-iqbal through <pkg>net-wireless/gr-iqbal</pkg></flag>
+		<flag name="rtlsdr">Build with Realtek RTL2832U support through <pkg>net-wireless/rtl-sdr</pkg></flag>
+		<flag name="sdrplay">Enable support for SDRplay devices through <pkg>net-wireless/sdrplay</pkg></flag>
+		<flag name="soapy">Build with SoapySDR support through <pkg>net-wireless/soapysdr</pkg></flag>
+		<flag name="uhd">Build with Ettus Research USRP Hardware Driver support through <pkg>net-wireless/uhd</pkg></flag>
+		<flag name="xtrx">Build with xtrx Hardware Driver support through <pkg>net-wireless/libxtrx</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">osmocom/gr-osmosdr</remote-id>
+	</upstream>
 </pkgmetadata>

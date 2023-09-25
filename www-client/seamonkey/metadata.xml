@@ -9,6 +9,9 @@
 		<email>mozilla@gentoo.org</email>
 		<name>Gentoo Mozilla Team</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">BioMike/gentoo-seamonkey-patches</remote-id>
+	</upstream>
 	<use>
 		<flag name="chatzilla">Build Mozilla's IRC client (default on)</flag>
 		<flag name="custom-optimization">Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>

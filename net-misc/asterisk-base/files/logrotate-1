@@ -1,0 +1,27 @@
+/var/log/asterisk/messages {
+	missingok
+	notifempty
+
+	postrotate
+		test -e /run/openrc/softlevel && /etc/init.d/asterisk --quiet status && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
+		test -e /run/systemd/system && systemctl is-active --quiet asterisk.service && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
+	endscript
+}
+
+/var/log/asterisk/debug /var/log/asterisk/full {
+	missingok
+	notifempty
+	daily
+
+	postrotate
+		test -e /run/openrc/softlevel && /etc/init.d/asterisk --quiet status && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
+		test -e /run/systemd/system && systemctl is-active --quiet asterisk.service && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
+	endscript
+}
+
+/var/log/asterisk/cdr-csv/*.csv /var/log/asterisk/cdr-custom/*.csv /var/log/asterisk/queue_log {
+	missingok
+	notifempty
+	weekly
+	rotate 52
+}

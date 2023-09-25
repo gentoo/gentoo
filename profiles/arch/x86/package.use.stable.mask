@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,9 +17,32 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-06)
-# Unmask the target on python-exec while it's masked elsewhere.
-dev-lang/python-exec -python_targets_python3_11
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
+# Destabilizing x86 keywords on sci-*/* packages
+app-metrics/collectd collectd_plugins_gps collectd_plugins_sigrok
+dev-games/openscenegraph las
+dev-libs/efl physics
+dev-ml/zarith mpir
+media-libs/a52dec djbfft
+dev-python/graphviz test
+kde-apps/cantor R
+dev-python/sympy symengine
+kde-apps/gwenview fits
+kde-apps/marble gps
+kde-plasma/plasma-workspace gps
+media-gfx/graphviz gts
+media-libs/libpano13 suitesparse
+media-libs/opencv gdal lapack
+media-libs/openimageio dicom
+sci-libs/cholmod partition
+sci-libs/gdal armadillo fits geos hdf5 netcdf ogdi
+sci-libs/gsl cblas-external
+sci-libs/hdf szip test
+sci-libs/hdf5 szip
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
 # sci-libs/vtk is not stable on x86 and we don't want to complicate
@@ -76,10 +99,6 @@ app-admin/sudo -sssd
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-21)
-# Requires not yet stabilised media-libs/qtav
-media-gfx/digikam mediaplayer
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-10-01)
 # Stable mask dev-ruby/haml test till rails is stabilized.

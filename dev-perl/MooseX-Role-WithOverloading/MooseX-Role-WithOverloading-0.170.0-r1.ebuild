@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Roles which support overloading (DEPRECATED)"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="
 	>=dev-perl/Moose-0.940.0

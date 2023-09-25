@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ MY_PN="PRoot"
 inherit toolchain-funcs
 
 SRC_URI="https://github.com/proot-me/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 DESCRIPTION="User-space implementation of chroot, mount --bind, and binfmt_misc"
 HOMEPAGE="https://proot-me.github.io"

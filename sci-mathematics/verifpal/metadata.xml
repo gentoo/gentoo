@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Verifpal is new software for verifying the security of cryptographic
+    protocols. Building upon contemporary research in symbolic formal
+    verification, Verifpal’s main aim is to appeal more to real-world
+    practitioners, students and engineers without sacrificing comprehensive
+    formal verification features.
+  </longdescription>
+</pkgmetadata>

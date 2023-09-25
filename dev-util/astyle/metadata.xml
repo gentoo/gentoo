@@ -15,6 +15,7 @@
 			<email>jimp03@email.com</email>
 			<name>Jim Pattee</name>
 		</maintainer>
+		<remote-id type="gitlab">saalen/astyle</remote-id>
 		<remote-id type="sourceforge">astyle</remote-id>
 		<bugs-to>https://sourceforge.net/p/astyle/bugs/</bugs-to>
 		<doc>http://astyle.sourceforge.net/astyle.html</doc>

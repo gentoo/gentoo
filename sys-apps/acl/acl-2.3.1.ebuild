@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.3.1-musl-1.2.4-lfs64-fix.patch"
+)
+
 src_prepare() {
 	default
 
@@ -30,7 +34,7 @@ src_prepare() {
 multilib_src_configure() {
 	# Filter out -flto flags as they break getfacl/setfacl binaries
 	# bug #667372
-	filter-flags -flto*
+	filter-lto
 
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin

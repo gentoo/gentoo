@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Tangram is a new kind of browser. It is designed to organize and run your
+    Web applications. Each tab is persistent and independent. You can set
+    multiple tabs with different accounts for the same application.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/sonnyp/Tangram/issues</bugs-to>
+    <remote-id type="github">sonnyp/Tangram</remote-id>
+  </upstream>
+</pkgmetadata>

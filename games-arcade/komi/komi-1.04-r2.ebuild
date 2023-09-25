@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Komi the Space Frog - a simple SDL game"
-HOMEPAGE="http://komi.sourceforge.net/"
+HOMEPAGE="https://komi.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/komi/${P}.tar.gz
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"

@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		ratelimit introduces a method decorator preventing a method from being
 		called more than once within a given time period. It prevents API providers
 		from banning your applications by conforming to set rate limits.
 	</longdescription>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@chymera.eu</email>
-		<name>Horea Christian</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">tomasbasham/ratelimit</remote-id>

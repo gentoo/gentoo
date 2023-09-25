@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,10 +6,10 @@ EAPI=8
 inherit cmake xdg udev
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
-HOMEPAGE="https://www.mixxx.org/"
-if [[ "${PV}" == *9999 ]] ; then
+HOMEPAGE="https://mixxx.org/"
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
-	if [[ "${PV}" == ?.?.9999 ]] ; then
+	if [[ ${PV} == ?.?.9999 ]] ; then
 		EGIT_BRANCH=${PV%.9999}
 	fi
 	EGIT_REPO_URI="https://github.com/mixxxdj/${PN}.git"
@@ -70,26 +70,24 @@ RDEPEND="
 	mp3? ( media-libs/libmad )
 	mp4? ( media-libs/libmp4v2:= )
 	opus? (	media-libs/opusfile )
-	qtkeychain? ( dev-libs/qtkeychain )
+	qtkeychain? ( dev-libs/qtkeychain:=[qt5(+)] )
 	shout? ( >=media-libs/libshout-2.4.5 )
 	wavpack? ( media-sound/wavpack )
-	"
-
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+"
+DEPEND="${RDEPEND}
+	dev-cpp/ms-gsl
+"
+BDEPEND="
 	dev-qt/qttest:5
-	dev-qt/qtxmlpatterns:5"
+	dev-qt/qtxmlpatterns:5
+	virtual/pkgconfig
+"
 
 PATCHES=(
-	"${FILESDIR}"/mixxx-9999-docs.patch
-	)
-
-src_prepare() {
-	cmake_src_prepare
-}
+	"${FILESDIR}"/${PN}-9999-docs.patch
+)
 
 src_configure() {
-
 	local mycmakeargs=(
 		-DFAAD="$(usex aac on off)"
 		-DFFMPEG="$(usex ffmpeg on off)"
@@ -105,19 +103,16 @@ src_configure() {
 		-DWAVPACK="$(usex wavpack on off)"
 		-DQTKEYCHAIN="$(usex qtkeychain on off)"
 		-DKEYFINDER="$(usex keyfinder on off)"
+		-DDOWNLOAD_MANUAL=OFF
+		-DBUILD_SHARED_LIBS=OFF
 	)
 
-	if [[ "${PV}" == 9999 ]] ; then
-	local mycmakeargs+=(
-		-DENGINEPRIME="OFF"
-
-	)
+	if [[ ${PV} == 9999 ]] ; then
+		mycmakeargs+=(
+			-DENGINEPRIME="OFF"
+		)
 	fi
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
 }
 
 src_install() {
@@ -125,7 +120,7 @@ src_install() {
 	udev_newrules "${S}"/res/linux/mixxx-usb-uaccess.rules 69-mixxx-usb-uaccess.rules
 
 	if use doc ; then
-		dodoc README Mixxx-Manual.pdf
+		dodoc README res/Mixxx-Keyboard-Shortcuts.pdf
 	fi
 }
 

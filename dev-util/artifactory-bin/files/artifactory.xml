@@ -1,4 +1,0 @@
-<Context path="/artifactory" docBase="${artifactory.home}/webapps/artifactory.war" processTlds="false">
-    <Manager pathname="" />
-    <Valve className="org.apache.catalina.valves.RemoteIpValve" protocolHeader="x-forwarded-proto"/>
-</Context>

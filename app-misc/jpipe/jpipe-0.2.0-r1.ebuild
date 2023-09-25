@@ -1,17 +1,18 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 GO_OPTIONAL=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{7,8,9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11} )
 
-inherit go-module distutils-r1
+inherit go-module distutils-r1 pypi
 
 DESCRIPTION="Command line interface to JMESPath"
 HOMEPAGE="https://github.com/pipebus/jpipe https://github.com/jmespath/jp/pull/30 http://jmespath.org"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	!python? ( https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz )"
+SRC_URI+="
+	!python? ( https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz )
+"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"

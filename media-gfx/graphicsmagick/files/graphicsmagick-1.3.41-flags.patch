@@ -1,0 +1,53 @@
+--- a/Magick++/bin/GraphicsMagick++-config.in
++++ b/Magick++/bin/GraphicsMagick++-config.in
+@@ -36,7 +36,7 @@ while test $# -gt 0; do
+       echo '@CXX@'
+       ;;
+     --cxxflags)
+-      echo '@CXXFLAGS@'
++      echo '@MAGICK_API_CXXFLAGS@'
+       ;;
+     --ldflags)
+       echo '@MAGICK_API_LDFLAGS@'
+--- a/configure.ac
++++ b/configure.ac
+@@ -338,6 +338,7 @@ fi
+ 
+ AC_OPENMP([C])
+ CFLAGS="$OPENMP_CFLAGS $CFLAGS"
++MAGICK_API_CFLAGS="$MAGICK_API_CFLAGS $OPENMP_CFLAGS"
+ #CXXFLAGS="$OPENMP_CXXFLAGS $CXXFLAGS"
+ #LDFLAGS="$LDFLAGS $OPENMP_CFLAGS"
+ AC_SUBST([OPENMP_CFLAGS])
+@@ -3883,9 +3884,10 @@ MAGICK_DEP_LIBS=`echo $MAGICK_DEP_LIBS | sed -e 's/  */ /g'`
+ MAGICK_EXTRA_DEP_LIBS=`echo $MAGICK_EXTRA_DEP_LIBS | sed -e 's/  */ /g'`
+ #LIBS=`echo $LIBS | sed -e 's/  */ /g'`
+ 
+-MAGICK_API_CFLAGS=$CFLAGS
++MAGICK_API_CFLAGS=`echo $MAGICK_API_CFLAGS | sed -e 's/  */ /g'`
+ MAGICK_API_CPPFLAGS=`echo $MAGICK_API_CPPFLAGS | sed -e 's/  */ /g'`
+-MAGICK_API_LDFLAGS="-L$LIB_DIR $LDFLAGS"
++MAGICK_API_CXXFLAGS=""
++MAGICK_API_LDFLAGS="-L$LIB_DIR"
+ MAGICK_API_DEP_LIBS="$MAGICK_DEP_LIBS"
+ MAGICK_API_LIBS="-lGraphicsMagick $MAGICK_API_DEP_LIBS $MAGICK_EXTRA_DEP_LIBS"
+ 
+@@ -3915,6 +3917,7 @@ AC_SUBST([X_CFLAGS])
+ 
+ AC_SUBST([MAGICK_API_CFLAGS])
+ AC_SUBST([MAGICK_API_CPPFLAGS])
++AC_SUBST(MAGICK_API_CXXFLAGS)
+ AC_SUBST([MAGICK_API_PC_CPPFLAGS])
+ AC_SUBST([MAGICK_API_LDFLAGS])
+ AC_SUBST([MAGICK_API_LIBS])
+--- a/magick/GraphicsMagick-config.in
++++ b/magick/GraphicsMagick-config.in
+@@ -33,7 +33,7 @@ while test $# -gt 0; do
+       echo '@CC@'
+       ;;
+     --cflags)
+-      echo '@CFLAGS@'
++      echo '@MAGICK_API_CFLAGS@'
+       ;;
+     --cppflags)
+       echo '@MAGICK_API_CPPFLAGS@'

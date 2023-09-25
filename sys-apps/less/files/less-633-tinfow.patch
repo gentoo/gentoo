@@ -1,0 +1,52 @@
+https://github.com/gwsw/less/pull/403
+
+From 23000c286773af153a5743bc923465707b87613b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 17 Jul 2023 22:58:27 +0100
+Subject: [PATCH] configure.ac: Check for tinfow before tinfo
+
+We currently check for ncursesw > ncurses and then tinfo > tinfow. This means
+we can get a mismatch of ncursesw + tinfo, instead of the correct ncursesw + tinfow.
+
+Swap the order so we check for ncursesw first (before other ncurses variants)
+and then tinfow first (before other tinfo variants).
+
+This is needed anyway for correctness, but also needed for certain terminfos
+to work correctly with recent ncurses.
+
+A better fix would be to use pkg-config first which handles this correctly
+and would include the appropriate -ltinfo* in the libraries list for -lncurses*,
+but not doing that for now.
+
+Bug: https://bugs.gentoo.org/910430
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,10 +63,10 @@ fi
+ 
+ if test $curses_broken = 0; then
+ 
+-# -- Try tinfo.
++# -- Try tinfow.
+ if test "x$TERMLIBS" = x; then
+-  if test $have_tinfo = yes; then
+-    TERMLIBS="-ltinfo"
++  if test $have_tinfow = yes; then
++    TERMLIBS="-ltinfow"
+     SAVE_LIBS=$LIBS
+     LIBS="$LIBS $TERMLIBS"
+     AC_LINK_IFELSE([AC_LANG_PROGRAM([[$include_termcap_h]], [[tgetent(0,0); tgetflag(0); tgetnum(0); tgetstr(0,0);]])],[termok=yes],[termok=no])
+@@ -75,10 +75,10 @@ if test "x$TERMLIBS" = x; then
+   fi
+ fi
+ 
+-# -- Try tinfow.
++# -- Try tinfo.
+ if test "x$TERMLIBS" = x; then
+-  if test $have_tinfow = yes; then
+-    TERMLIBS="-ltinfow"
++  if test $have_tinfo = yes; then
++    TERMLIBS="-ltinfo"
+     SAVE_LIBS=$LIBS
+     LIBS="$LIBS $TERMLIBS"
+     AC_LINK_IFELSE([AC_LANG_PROGRAM([[$include_termcap_h]], [[tgetent(0,0); tgetflag(0); tgetnum(0); tgetstr(0,0);]])],[termok=yes],[termok=no])
+

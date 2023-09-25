@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,10 @@ DEPEND="
 	x11-libs/libX11"
 
 QA_SONAME="usr/lib.*/libstrangle.*" # intended for dlopen()
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc13.patch
+)
 
 src_prepare() {
 	default

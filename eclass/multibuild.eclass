@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multibuild.eclass
@@ -14,7 +14,10 @@
 # implementations).
 
 case ${EAPI} in
-	6|7|8) ;;
+	6|7|8)
+		# backwards compatibility for run_in_build_dir
+		inherit out-of-source-utils
+		;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -167,32 +170,11 @@ multibuild_copy_sources() {
 
 	_multibuild_create_source_copy() {
 		einfo "${MULTIBUILD_VARIANT}: copying to ${BUILD_DIR}"
-		# enable reflinking if possible to make this faster
-		cp -p -R --reflink=auto \
+		cp -p -R \
 			"${_MULTIBUILD_INITIAL_BUILD_DIR}" "${BUILD_DIR}" || die
 	}
 
 	multibuild_foreach_variant _multibuild_create_source_copy
-}
-
-# @FUNCTION: run_in_build_dir
-# @USAGE: <argv>...
-# @DESCRIPTION:
-# Run the given command in the directory pointed by BUILD_DIR.
-run_in_build_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
-	local ret
-
-	[[ ${#} -ne 0 ]] || die "${FUNCNAME}: no command specified."
-	[[ ${BUILD_DIR} ]] || die "${FUNCNAME}: BUILD_DIR not set."
-
-	mkdir -p "${BUILD_DIR}" || die
-	pushd "${BUILD_DIR}" >/dev/null || die
-	"${@}"
-	ret=${?}
-	popd >/dev/null || die
-
-	return ${ret}
 }
 
 # @FUNCTION: multibuild_merge_root
@@ -207,8 +189,7 @@ multibuild_merge_root() {
 	local src=${1}
 	local dest=${2}
 
-	# enable reflinking if possible to make this faster
-	cp -a --reflink=auto "${src}"/. "${dest}"/ || die "${MULTIBUILD_VARIANT:-(unknown)}: merging image failed"
+	cp -a "${src}"/. "${dest}"/ || die "${MULTIBUILD_VARIANT:-(unknown)}: merging image failed"
 	rm -rf "${src}" || die
 }
 

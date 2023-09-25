@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools xdg
+inherit autotools flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="A set of open source instruments and effects for digital audio workstations"
-HOMEPAGE="http://calf-studio-gear.org/"
+HOMEPAGE="https://calf-studio-gear.org/"
 
 if [[ "${PV}" = "9999" ]] ; then
 	inherit git-r3
@@ -26,7 +26,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	dev-libs/atk
+	>=app-accessibility/at-spi2-core-2.46.0
 	dev-libs/expat
 	dev-libs/glib:2
 	media-sound/fluidsynth:=
@@ -46,6 +46,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.90.1-no-automagic.patch"
 	"${FILESDIR}/${PN}-0.90.1-htmldir.patch"
 	"${FILESDIR}/${PN}-0.90.1-desktop.patch"
+	"${FILESDIR}/${PN}-9999-fix-build-with-lld.patch"
+	"${FILESDIR}/${PN}-0.90.3-replace-std-bind2nd.patch"
 )
 
 src_prepare() {
@@ -54,6 +56,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream append -ffast-math by default, however since libtool links C++
+	# shared libs with -nostdlib, this causes symbol resolution error for
+	# __powidn2 when using compiler-rt. Disable fast math on compiler-rt until
+	# a better fix is found.
+	[[ $(tc-get-c-rtlib) = "compiler-rt" ]] && append-cxxflags "-fno-fast-math"
+
 	local myeconfargs=(
 		--prefix="${EPREFIX}"/usr
 		--without-obsolete-check

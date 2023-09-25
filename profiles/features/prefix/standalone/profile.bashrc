@@ -1,5 +1,5 @@
 # -*- mode: shell-script; -*-
-# Copyright 2018-2021 Gentoo Authors
+# Copyright 2018-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # RAP specific patches pending upstream:
@@ -9,51 +9,10 @@
 # Disable RAP trick during bootstrap stage2
 [[ -z ${BOOTSTRAP_RAP_STAGE2} ]] || return 0
 
-if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; then
-    cd "${S}"
-    einfo "Prefixifying dynamic linkers..."
-    for h in gcc/config/*/*linux*.h; do
-	ebegin "  Updating $h"
-	if [[ "${h}" == gcc/config/rs6000/linux*.h ]]; then
-	    sed -i -r "s,(DYNAMIC_LINKER_PREFIX\s+)\"\",\1\"${EPREFIX}\",g" $h
-	else
-	    sed -i -r "/_DYNAMIC_LINKER/s,([\":])(/lib),\1${EPREFIX}\2,g" $h
-	fi
-	eend $?
-    done
-
-    # use sysroot of toolchain to get correct include and library at compile time
-    EXTRA_ECONF="${EXTRA_ECONF} --with-sysroot=${EPREFIX}"
-
-    ebegin "remove --sysroot call on ld for native toolchain"
-    sed -i 's/--sysroot=%R//' gcc/gcc.c*
-    eend $?
-elif [[ ${CATEGORY}/${PN} == sys-devel/clang && ${EBUILD_PHASE} == configure ]]; then
-    ebegin "Use ${EPREFIX} as default sysroot"
-    sed -i -e "s@DEFAULT_SYSROOT \"\"@DEFAULT_SYSROOT \"${EPREFIX}\"@" "${S}"/CMakeLists.txt
-    eend $?
-    pushd "${S}/lib/Driver/ToolChains" >/dev/null
-    ebegin "Use dynamic linker from ${EPREFIX}"
-    sed -i -e "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX%/}/\"@" Linux.cpp
-    eend $?
-    ebegin "Remove --sysroot call on ld for native toolchain"
-    sed -i -e "$(grep -n -B1 sysroot= Gnu.cpp | sed -ne '{1s/-.*//;1p}'),+1 d" Gnu.cpp
-    eend $?
-    popd >/dev/null
-elif [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
+if [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying native library path"
     sed -i -r "/NATIVE_LIB_DIRS/s,((/usr(/local|)|)/lib),${EPREFIX}\1,g" \
 	"${S}"/ld/configure.tgt
-    eend $?
-
-    ebegin "Prefixifying path to /etc/ld.so.conf"
-    local f=
-    if [[ -f "${S}"/ld/emultempl/elf32.em ]]; then
-        f="${S}"/ld/emultempl/elf32.em
-    elif [[ -f "${S}"/ld/ldelf.c ]]; then
-        f="${S}"/ld/ldelf.c
-    fi
-    [[ -n "${f}" ]] && sed -i -r "s,\"/etc,\"${EPREFIX}/etc," "${f}"
     eend $?
 elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; then
     cd "${S}"
@@ -61,7 +20,7 @@ elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; 
 
     for f in libio/iopopen.c \
 		 shadow/lckpwdf.c resolv/{netdb,resolv}.h elf/rtld.c \
-		 nis/nss_compat/compat-{grp,initgroups,{,s}pwd}.c \
+		 n[is]s/nss_compat/compat-{grp,initgroups,{,s}pwd}.c \
 		 nss/{bug-erange,nss_files/files-{XXX,init{,groups}}}.c \
 		 sysdeps/{{generic,unix/sysv/linux}/paths.h,posix/system.c}
     do

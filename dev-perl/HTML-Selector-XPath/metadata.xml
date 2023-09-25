@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTML-Selector-XPath</remote-id>
+    <remote-id type="cpan-module">HTML::Selector::XPath</remote-id>
+    <remote-id type="github">Corion/HTML-Selector-XPath</remote-id>
+  </upstream>
 </pkgmetadata>

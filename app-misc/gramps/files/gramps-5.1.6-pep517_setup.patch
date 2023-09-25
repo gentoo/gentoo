@@ -1,0 +1,163 @@
+--- a/setup.py
++++ b/setup.py
+@@ -23,7 +23,7 @@
+ #
+ 
+ '''
+-Gramps distutils module.
++Gramps setuptools module.
+ '''
+ 
+ #check python version first
+@@ -32,11 +32,11 @@
+ if sys.version_info < (3, 2):
+     raise SystemExit("Gramps requires Python 3.2 or later.")
+ 
+-from distutils import log
+-from distutils.core import setup, Command
+-from distutils.util import convert_path, newer
+-from distutils.command.build import build as _build
+-from distutils.command.install import install as _install
++from setuptools import setup, Command
++try:
++    from setuptools.command.build import build as _build
++except ImportError:
++    from distutils.command.build import build as _build
+ import os
+ import glob
+ import codecs
+@@ -45,6 +45,9 @@
+ from gramps.version import VERSION
+ import unittest
+ import argparse
++import logging
++
++_LOG = logging.getLogger(".setup")
+ 
+ # this list MUST be a subset of _LOCALE_NAMES in gen/utils/grampslocale.py
+ # (that is, if you add a new language here, be sure it's in _LOCALE_NAMES too)
+@@ -75,6 +78,17 @@
+     packaging = True
+ sys.argv = [sys.argv[0]] + passthrough
+ 
++def newer(source, target):
++    '''
++    Determines if a target file needs to be rebuilt.
++
++    Returns True if the target file doesn't exist or if the source file is
++    newer than the target file.
++    '''
++    if not os.path.exists(target):
++        return True
++    return os.path.getmtime(source) > os.path.getmtime(target)
++
+ def intltool_version():
+     '''
+     Return the version of intltool as a tuple.
+@@ -140,7 +154,7 @@
+                 reply = input(ask)
+                 if reply in ['n', 'N']:
+                     raise SystemExit(msg)
+-            log.info('Compiling %s >> %s', po_file, mo_file)
++            _LOG.info('Compiling %s >> %s', po_file, mo_file)
+ 
+         #linux specific piece:
+         target = 'share/locale/' + lang + '/LC_MESSAGES'
+@@ -179,7 +193,7 @@
+                     with open(newfile, 'rb') as f_in,\
+                             gzip.open(man_file_gz, 'wb') as f_out:
+                         f_out.writelines(f_in)
+-                        log.info('Compiling %s >> %s', filename, man_file_gz)
++                        _LOG.info('Compiling %s >> %s', filename, man_file_gz)
+ 
+                     os.remove(newfile)
+                     filename = False
+@@ -193,30 +207,26 @@
+     '''
+     Merge translation files into desktop and mime files
+     '''
+-    for filename in _FILES:
+-        filename = convert_path(filename)
+-        strip_files(filename + '.in', filename, ['_tip', '_name'])
+-
+     i_v = intltool_version()
+     if i_v is None or i_v < (0, 25, 0):
+-        log.info('No intltool or version < 0.25.0, build_intl is aborting')
++        _LOG.info('No intltool or version < 0.25.0, build_intl is aborting')
+         return
+     data_files = build_cmd.distribution.data_files
+     base = build_cmd.build_base
+ 
+-    merge_files = (('data/gramps.desktop', 'share/applications', '-d'),
+-                    ('data/gramps.keys', 'share/mime-info', '-k'),
+-                    ('data/gramps.xml', 'share/mime/packages', '-x'),
+-                    ('data/gramps.appdata.xml', 'share/metainfo', '-x'))
++    merge_files = (('gramps.desktop', 'share/applications', '-d'),
++                    ('gramps.keys', 'share/mime-info', '-k'),
++                    ('gramps.xml', 'share/mime/packages', '-x'),
++                    ('gramps.appdata.xml', 'share/metainfo', '-x'))
+ 
+     for filename, target, option in merge_files:
+-        filenamelocal = convert_path(filename)
++        filenamelocal = os.path.join('data', filename)
+         newfile = os.path.join(base, filenamelocal)
+         newdir = os.path.dirname(newfile)
+         if not(os.path.isdir(newdir) or os.path.islink(newdir)):
+             os.makedirs(newdir)
+         merge(filenamelocal + '.in', newfile, option)
+-        data_files.append((target, [base + '/' + filename]))
++        data_files.append((target, [base + '/data/' + filename]))
+ 
+ def strip_files(in_file, out_file, mark):
+     '''
+@@ -232,7 +242,7 @@
+                     line = line.replace(marker, marker[1:])
+                 fb.write(line)
+         old.close()
+-        log.info('Compiling %s >> %s', in_file, out_file)
++        _LOG.info('Compiling %s >> %s', in_file, out_file)
+ 
+ def merge(in_file, out_file, option, po_dir='po', cache=True):
+     '''
+@@ -262,7 +272,7 @@
+             msg = ('ERROR: %s was not merged into the translation files!\n' %
+                     out_file)
+             raise SystemExit(msg)
+-        log.info('Compiling %s >> %s', in_file, out_file)
++        _LOG.info('Compiling %s >> %s', in_file, out_file)
+ 
+ class build(_build):
+     """Custom build command."""
+@@ -273,22 +283,6 @@
+         build_intl(self)
+         _build.run(self)
+ 
+-class install(_install):
+-    """Custom install command."""
+-    def run(self):
+-        resource_file = os.path.join(os.path.dirname(__file__), 'gramps', 'gen',
+-                                     'utils', 'resource-path')
+-        with open(resource_file, 'w', encoding='utf-8', errors='strict') as fp:
+-            if packaging:
+-                path = resource_path
+-            else:
+-                path = os.path.abspath(os.path.join(self.install_data, 'share'))
+-            fp.write(path)
+-
+-        _install.run(self)
+-
+-        os.remove(resource_file)
+-
+ class test(Command):
+     """Command to run Gramps unit tests"""
+     description = "run all unit tests"
+@@ -503,7 +497,7 @@
+       url = 'http://gramps-project.org',
+       license = 'GPL v2 or greater',
+       platforms = ['FreeBSD', 'Linux', 'MacOS', 'Windows'],
+-      cmdclass = {'build': build, 'install': install, 'test': test},
++      cmdclass = {'build': build, 'test': test},
+       packages = packages,
+       package_data = {'gramps': package_data},
+       data_files = data_files,
+Binary files a/.setup.py.swp and b/.setup.py.swp differ

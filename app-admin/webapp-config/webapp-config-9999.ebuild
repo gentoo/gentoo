@@ -1,20 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 prefix
 
 if [[ ${PV} = 9999* ]]
 then
-	EGIT_REPO_URI="https://anongit.gentoo.org/proj/${PN}.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Gentoo's installer for web-based applications"
@@ -30,12 +30,29 @@ RDEPEND="
 	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
+	# make the source from svn mirror the one in the tarball
+	if [[ ${PV} == 9999* ]]; then
+		mkdir ../webapp-config || die "Cannot create temp directory."
+		cp -r * ../webapp-config || die "Cannot copy all into the temp directory."
+		mv ../webapp-config . || die "Cannot move temp directory to its final position."
+
+		# Installation fails if version is 1.55-git
+		sed -e 's/-git//' \
+			-i webapp-config/WebappConfig/version.py \
+			-i WebappConfig/version.py || die "Cannot fix version."
+	fi
+
 	distutils-r1_python_prepare_all
 	eprefixify WebappConfig/eprefix.py config/webapp-config
 }
 
 python_compile_all() {
 	emake -C doc/
+}
+
+python_test() {
+	PYTHONPATH="." "${EPYTHON}" WebappConfig/tests/external.py -v ||
+		die "Testing failed with ${EPYTHON}"
 }
 
 python_install() {
@@ -50,6 +67,9 @@ python_install() {
 python_install_all() {
 	distutils-r1_python_install_all
 
+	# distutils-r1 installs the scripts in /usr/bin in PEP517 mode
+	mv "${ED}"/usr/bin "${ED}"/usr/sbin || die "Cannot rename scripts directory to /usr/sbin"
+
 	insinto /etc/vhosts
 	doins config/webapp-config
 
@@ -58,11 +78,6 @@ python_install_all() {
 
 	dodoc AUTHORS
 	doman doc/*.[58]
-}
-
-python_test() {
-	PYTHONPATH="." "${EPYTHON}" WebappConfig/tests/external.py -v ||
-		die "Testing failed with ${EPYTHON}"
 }
 
 pkg_postinst() {

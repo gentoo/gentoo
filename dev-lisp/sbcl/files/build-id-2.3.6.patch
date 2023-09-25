@@ -1,0 +1,12 @@
+diff -r -U3 sbcl-2.3.6.orig/make-config.sh sbcl-2.3.6/make-config.sh
+--- sbcl-2.3.6.orig/make-config.sh	2023-06-28 13:35:17.000000000 +0700
++++ sbcl-2.3.6/make-config.sh	2023-08-06 15:49:33.994027736 +0700
+@@ -801,7 +801,7 @@
+   # use /usr/xpg4/bin/id instead of /usr/bin/id
+   PATH=/usr/xpg4/bin:$PATH
+ fi
+-echo '"'`hostname`-`id -un`-`date +%Y-%m-%d-%H-%M-%S`'"' > output/build-id.inc
++echo "\"${PV}\"" > output/build-id.inc
+ 
+ if [ -n "$SBCL_HOST_LOCATION" ]; then
+     echo //setting up host configuration

@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit python-any-r1 systemd toolchain-funcs
 
 DESCRIPTION="A security-aware DNS server"
@@ -14,7 +14,7 @@ SRC_URI="https://maradns.samiam.org/download/${PV%.*}/${PV}/${P}.tar.xz"
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips ~ppc x86"
-IUSE="examples ipv6"
+IUSE="examples"
 
 BDEPEND="${PYTHON_DEPS}
 	dev-lang/perl"
@@ -35,8 +35,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	./configure \
-		$(usex ipv6 --ipv6 "") || die "Failed to configure"
+	./configure --ipv6 || die "Failed to configure"
 }
 
 src_install() {

@@ -1,18 +1,16 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-any-r1 waf-utils xdg
 
-MY_P="${PN}2-${PV}"
-
 DESCRIPTION="Virtual guitar amplifier for Linux"
 HOMEPAGE="https://guitarix.org/"
-SRC_URI="mirror://sourceforge/guitarix/guitarix/${MY_P}.tar.xz"
+SRC_URI="https://github.com/brummer10/${PN}/releases/download/V${PV}/guitarix2-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -65,6 +63,9 @@ DOCS=( changelog README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.41.0-nostrip.patch
+	"${FILESDIR}"/${PN}-0.41.0-py3.11.patch
+	"${FILESDIR}"/${PN}-0.44.1-zita-resampler-1.10.patch
+	"${FILESDIR}"/${P}-gcc-13.patch
 )
 
 src_configure() {

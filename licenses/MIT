@@ -23,3 +23,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 shall not be used in advertising or otherwise to promote the sale, use
 or other dealings in this Software without prior written authorization
 from <copyright holders>.]
+
+---
+
+Gentoo license note: We don't distinguish between the "Expat" license
+(without the non-advertising clause, i.e. the bracketed paragraph) and
+the "X11" license (with the clause), and call both of them "MIT".

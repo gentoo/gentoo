@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pdm-pep517</remote-id>
-		<remote-id type="github">pdm-project/pdm-pep517</remote-id>
+		<remote-id type="github">pdm-project/pdm-backend</remote-id>
 	</upstream>
 </pkgmetadata>

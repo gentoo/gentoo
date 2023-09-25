@@ -1,7 +1,7 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson toolchain-funcs
 
@@ -21,30 +21,47 @@ SLOT="0"
 IUSE="debug +gles +system-wfconfig +system-wlroots X"
 
 DEPEND="
-	dev-libs/libevdev
-	dev-libs/libinput
+	dev-libs/libinput:=
 	dev-libs/wayland
 	gui-libs/gtk-layer-shell
 	media-libs/glm
 	media-libs/mesa:=[gles2,wayland,X?]
 	media-libs/libglvnd[X?]
-	media-libs/libjpeg-turbo
-	media-libs/libpng
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	media-libs/freetype:=[X?]
 	x11-libs/libdrm
 	x11-libs/gtk+:3=[wayland,X?]
-	x11-libs/cairo:=[X?,svg(+)]
-	x11-libs/libxkbcommon:=[X?]
+	x11-libs/cairo[X?,svg(+)]
+	x11-libs/libxkbcommon[X?]
+	x11-libs/pango
 	x11-libs/pixman
 	X? (
-		x11-libs/libxcb
 		x11-base/xwayland
+		x11-libs/libxcb
 	)
-	system-wfconfig? ( ~gui-libs/wf-config-9999:= )
-	!system-wfconfig? ( !gui-libs/wf-config )
-	system-wlroots? ( ~gui-libs/wlroots-9999:=[X?] )
-	!system-wlroots? ( !gui-libs/wlroots )
 "
+
+if [[ ${PV} == 9999 ]] ; then
+	DEPEND+="
+		system-wfconfig? ( ~gui-libs/wf-config-9999:= )
+		!system-wfconfig? ( !gui-libs/wf-config )
+		system-wlroots? ( ~gui-libs/wlroots-9999:=[drm(+),libinput(+),x11-backend,X?] )
+		!system-wlroots? ( !gui-libs/wlroots )
+	"
+else
+	DEPEND+="
+		system-wfconfig? (
+			>=gui-libs/wf-config-0.7.1
+			<gui-libs/wf-config-0.8.0
+		)
+		!system-wfconfig? ( !gui-libs/wf-config )
+		system-wlroots? (
+			>=gui-libs/wlroots-0.16.0:0/16[drm(+),libinput(+),x11-backend,X?]
+		)
+		!system-wlroots? ( !gui-libs/wlroots )
+	"
+fi
 
 RDEPEND="
 	${DEPEND}
@@ -58,9 +75,9 @@ BDEPEND="
 
 src_configure() {
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
-		"${FILESDIR}"/wayfire-session > "${T}"/wayfire-session || die
+	    "${FILESDIR}"/wayfire-session > "${T}"/wayfire-session || die
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
-		"${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
+	    "${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
 	local emesonargs=(
 		$(meson_feature system-wfconfig use_system_wfconfig)
 		$(meson_feature system-wlroots use_system_wlroots)
@@ -95,6 +112,6 @@ pkg_postinst() {
 		elog "until you install a configuration file. The default config"
 		elog "file is installed at \"/usr/share/wayfire/wayfire.ini\""
 		elog "To install the file execute"
-		elog "\$ cp /usr/share/wayfire.ini ~/.config/wayfire.ini"
+		elog "\$ cp /usr/share/wayfire/wayfire.ini ~/.config/wayfire.ini"
 	fi
 }

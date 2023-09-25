@@ -5,6 +5,10 @@
     <email>dilfridge@gentoo.org</email>
     <name>Andreas K. Huettel</name>
   </maintainer>
+  <maintainer type="person">
+    <email>eras@gentoo.org</email>
+    <name>Eray Aslan</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">amzn/amzn-drivers</remote-id>
   </upstream>

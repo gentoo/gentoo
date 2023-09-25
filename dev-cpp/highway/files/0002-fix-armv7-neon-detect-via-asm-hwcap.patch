@@ -1,0 +1,29 @@
+https://github.com/google/highway/commit/f3a33e8204b69f9e21b5fbd8036c11128cec0d2e.patch
+https://github.com/google/highway/issues/1199
+
+https://bugs.gentoo.org/900352
+
+From f3a33e8204b69f9e21b5fbd8036c11128cec0d2e Mon Sep 17 00:00:00 2001
+From: Jan Wassenberg <janwas@google.com>
+Date: Tue, 7 Mar 2023 22:59:17 -0800
+Subject: [PATCH] fix arm7 NEON detect, thanks @stefson. Fixes #1199
+
+PiperOrigin-RevId: 514940076
+---
+ hwy/targets.cc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hwy/targets.cc b/hwy/targets.cc
+index dc4217c..24fcaf7 100644
+--- a/hwy/targets.cc
++++ b/hwy/targets.cc
+@@ -43,6 +43,9 @@
+ #endif  // HWY_COMPILER_MSVC
+ 
+ #elif HWY_ARCH_ARM && HWY_OS_LINUX && !defined(TOOLCHAIN_MISS_SYS_AUXV_H)
++// sys/auxv.h does not always include asm/hwcap.h, or define HWCAP*, hence we
++// still include this directly. See #1199.
++#include <asm/hwcap.h>
+ #include <sys/auxv.h>
+ #endif  // HWY_ARCH_*
+ 

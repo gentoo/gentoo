@@ -10,7 +10,10 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">aaugustin/websockets</remote-id>
+		<remote-id type="github">python-websockets/websockets</remote-id>
 		<remote-id type="pypi">websockets</remote-id>
 	</upstream>
+	<use>
+		<flag name="native-extensions">Compiles native C extensions</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,31 @@
+https://github.com/zxing/zxing/pull/1668
+https://bugs.gentoo.org/910497
+--- a/src/test/java/com/google/zxing/client/j2se/MatrixToImageWriterTestCase.java
++++ b/src/test/java/com/google/zxing/client/j2se/MatrixToImageWriterTestCase.java
+@@ -17,7 +17,9 @@
+ package com.google.zxing.client.j2se;
+ 
+ import com.google.zxing.common.BitMatrix;
++import static org.hamcrest.CoreMatchers.hasItem;
+ import org.junit.Assert;
++import static org.junit.Assume.assumeThat;
+ import org.junit.Test;
+ 
+ import javax.imageio.ImageIO;
+@@ -25,6 +27,7 @@
+ import java.io.IOException;
+ import java.nio.file.Files;
+ import java.nio.file.Path;
++import java.util.Arrays;
+ 
+ /**
+  * Tests {@link MatrixToImageWriter}.
+@@ -52,6 +55,8 @@ private static void doTest(MatrixToImageConfig config) throws IOException {
+   }
+ 
+   private static void doTestFormat(String format, MatrixToImageConfig config) throws IOException {
++    assumeThat(Arrays.asList(ImageIO.getWriterFormatNames()), hasItem(format));
++
+     int width = 2;
+     int height = 3;
+     BitMatrix matrix = new BitMatrix(width, height);

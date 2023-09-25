@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit mount-boot
+inherit mount-boot secureboot
 
 DESCRIPTION="LSI MPT-SAS3 controller management tool"
 HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8e#downloads"
 
 LICENSE="LSI"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~x64-solaris"
 IUSE="doc efi"
 
 RESTRICT="strip fetch mirror"
@@ -40,6 +40,10 @@ pkg_nofetch() {
 		elog "and also place it into your DISTDIR directory"
 	fi
 	einfo "${SRC_URI}"
+}
+
+pkg_setup() {
+	use efi && secureboot_pkg_setup
 }
 
 supportedcards() {
@@ -73,10 +77,8 @@ src_install() {
 		doexe sas3ircu_rel/sas3ircu/sas3ircu_linux_arm_rel/sas3ircu
 	elif use ppc64; then
 		doexe sas3ircu_rel/sas3ircu/sas3ircu_linux_ppc64_rel/sas3ircu
-	elif use x64-solaris || use x86-solaris; then
+	elif use x64-solaris; then
 		doexe sas3ircu_rel/sas3ircu/sas3ircu_solaris_x86_rel/sas3ircu
-	elif use sparc-solaris; then
-		doexe sas3ircu_rel/sas3ircu/sas3ircu_solaris_sparc_rel/sas3ircu
 	fi
 
 	if use efi; then
@@ -86,5 +88,6 @@ src_install() {
 		elif use arm64; then
 			doexe sas3ircu_rel/sas3ircu/sas3ircu_udk_uefi_arm_rel/sas3ircu.efi
 		fi
+		secureboot_auto_sign --in-place
 	fi
 }

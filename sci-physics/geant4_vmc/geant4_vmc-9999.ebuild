@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake virtualx
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -23,12 +23,13 @@ SLOT="4"
 IUSE="doc examples geant3 +g4root vgm test"
 
 RDEPEND="
-	sci-physics/geant[c++17,opengl,geant3?]
+	sci-physics/clhep:=
+	sci-physics/geant:=[c++17,opengl,geant3?]
 	sci-physics/root:=[c++17,-vmc(-)]
 	sci-physics/vmc:=[c++17]
 	vgm? ( sci-physics/vgm:= )"
 DEPEND="${RDEPEND}
-	test? ( >=sci-physics/geant-4.11[gdml] )"
+	test? ( sci-physics/geant:=[gdml] )"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 RESTRICT="
 	!examples? ( test )
@@ -68,8 +69,8 @@ src_compile() {
 
 src_test() {
 	cd examples || die
-	./test_suite.sh --debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
-	./test_suite_exe.sh --g3=off --garfield=off --garfield=off --builddir="${BUILD_DIR}" || die
+	virtx ./test_suite.sh --debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
+	virtx ./test_suite_exe.sh --g3=off --garfield=off --garfield=off --builddir="${BUILD_DIR}" || die
 }
 
 src_install() {

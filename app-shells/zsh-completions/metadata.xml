@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <stabilize-allarches/>
-  <upstream>
-    <remote-id type="github">zsh-users/zsh-completions</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">zsh-users/zsh-completions</remote-id>
+	</upstream>
 </pkgmetadata>

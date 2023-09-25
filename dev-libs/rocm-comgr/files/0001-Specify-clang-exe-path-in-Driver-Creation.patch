@@ -1,0 +1,52 @@
+From e0fb8aca856eb61d2f774a0893e2243742eed341 Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Fri, 18 Nov 2022 15:41:53 +0800
+Subject: [PATCH] Specify clang exe path in Driver Creation
+
+By doing so, TheDriver can get the correct resource dir.
+
+Closes: #48
+Reference: #49
+---
+ lib/comgr/src/comgr-compiler.cpp | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/lib/comgr/src/comgr-compiler.cpp b/lib/comgr/src/comgr-compiler.cpp
+index 80849d4..67fe82b 100644
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -660,7 +660,7 @@ AMDGPUCompiler::executeInProcessDriver(ArrayRef<const char *> Args) {
+   IntrusiveRefCntPtr<DiagnosticIDs> DiagID(new DiagnosticIDs);
+   DiagnosticsEngine Diags(DiagID, &*DiagOpts, DiagClient);
+   ProcessWarningOptions(Diags, *DiagOpts, /*ReportDiags=*/false);
+-  Driver TheDriver("", "", Diags);
++  Driver TheDriver((Twine(env::getLLVMPath()) + "/bin/clang").str(), "", Diags);
+   TheDriver.setTitle("AMDGPU Code Object Manager");
+   TheDriver.setCheckInputsExist(false);
+ 
+@@ -998,11 +998,6 @@ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+   HIPIncludePath = (Twine(env::getHIPPath()) + "/include").str();
+   // HIP headers depend on hsa.h which is in ROCM_DIR/include.
+   ROCMIncludePath = (Twine(env::getROCMPath()) + "/include").str();
+-  ClangIncludePath =
+-      (Twine(env::getLLVMPath()) + "/lib/clang/" + CLANG_VERSION_STRING).str();
+-  ClangIncludePath2 = (Twine(env::getLLVMPath()) + "/lib/clang/" +
+-                       CLANG_VERSION_STRING + "/include")
+-                          .str();
+ 
+   Args.push_back("-x");
+ 
+@@ -1028,10 +1023,6 @@ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+     Args.push_back(ROCMIncludePath.c_str());
+     Args.push_back("-isystem");
+     Args.push_back(HIPIncludePath.c_str());
+-    Args.push_back("-isystem");
+-    Args.push_back(ClangIncludePath.c_str());
+-    Args.push_back("-isystem");
+-    Args.push_back(ClangIncludePath2.c_str());
+     break;
+   default:
+     return AMD_COMGR_STATUS_ERROR_INVALID_ARGUMENT;
+-- 
+2.39.0
+

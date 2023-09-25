@@ -1,9 +1,9 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake python-any-r1
 
@@ -24,9 +24,6 @@ LICENSE="
 SLOT="0/${PV%%.*}"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="test"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 BDEPEND="
 	${PYTHON_DEPS}

@@ -17,4 +17,7 @@ of easily access GSL functions without having to write a complete C application.
   <use>
     <flag name="fox">Build a <pkg>x11-libs/fox</pkg> GUI</flag>
   </use>
+  <upstream>
+    <remote-id type="github">franko/gsl-shell</remote-id>
+  </upstream>
 </pkgmetadata>

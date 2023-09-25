@@ -1,0 +1,11 @@
+--- a/misc/ext.d/video.sh
++++ b/misc/ext.d/video.sh
+@@ -19,7 +19,7 @@
+         elif which mpv_identify.sh >/dev/null 2>&1; then
+             mpv_identify.sh "${MC_EXT_FILENAME}"
+         else
+-            echo "Please install either mplayer or mpv to get information for this file"
++            echo "Please install either mplayer or mpv[tools] to get information for this file"
+         fi
+         ;;
+     esac

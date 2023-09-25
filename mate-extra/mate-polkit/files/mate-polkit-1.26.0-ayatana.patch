@@ -1,0 +1,176 @@
+From 65a6c367e28e338dc74931dece1af9e53338276f Mon Sep 17 00:00:00 2001
+From: lukefromdc <lukefromdc@hushmail.com>
+Date: Tue, 31 Jan 2023 01:25:20 -0500
+Subject: [PATCH] Prefer building against Ayatana AppIndicator, but also
+ support legacy Ubuntu Appindicator
+
+---
+ configure.ac    | 54 +++++++++++++++++++++++++++++++++++--------------
+ src/Makefile.am |  6 ++++--
+ src/main.c      | 15 +++++++-------
+ 3 files changed, 51 insertions(+), 24 deletions(-)
+
+--- a/configure.ac.old	2023-04-27 16:48:35.940816452 +0200
++++ b/configure.ac	2023-04-27 16:52:21.303890924 +0200
+@@ -111,8 +111,17 @@
+ 
+ AM_CONDITIONAL([HAVE_ACCOUNTSSERVICE], [test "x$enable_accountsservice" = xyes])
+ 
+-# Application indicator
+-APPINDICATOR_PKG=appindicator3-0.1
++# Application Indicator (Ubuntu and Ayatana implementation)
++
++AYATANA_APPINDICATOR_PKG=ayatana-appindicator3-0.1
++UBUNTU_APPINDICATOR_PKG=appindicator3-0.1
++
++PKG_CHECK_EXISTS($AYATANA_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED,
++                [have_appindicator_ayatana="yes"],
++                [have_appindicator_ayatana="no"])
++PKG_CHECK_EXISTS($UBUNTU_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED,
++                [have_appindicator_ubuntu="yes"],
++                [have_appindicator_ubuntu="no"])
+ 
+ AC_ARG_ENABLE([appindicator],
+ 	      AS_HELP_STRING([--enable-appindicator[=@<:@no/auto/yes@:>@]],[Build support for application indicators]),
+@@ -120,22 +129,33 @@
+ 	      [enable_appindicator="auto"])
+ 
+ 
+-if test "x$enable_appindicator" = "xauto"; then
+-	PKG_CHECK_EXISTS($APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED,
+-			 [enable_appindicator="yes"],
+-			 [enable_appindicator="no"])
++if  test "x$enable_appindicator" == "xauto" &&
++   (test "x$have_appindicator_ayatana" == "xyes" ||
++    test "x$have_appindicator_ubuntu" == "xyes"); then
++       AC_MSG_NOTICE([Enabling AppIndicator support (as --enable-appindicator=auto was used).])
++       enable_appindicator="yes"
+ fi
+ 
+-if test "x$enable_appindicator" = "xyes"; then
+-	PKG_CHECK_MODULES(APPINDICATOR,
+-			  [$APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
+-			  [AC_DEFINE(HAVE_APPINDICATOR, 1, [Have AppIndicator])])
++if test "x$enable_appindicator" == "xyes"; then
++       if test "x$have_appindicator_ayatana" == "xyes"; then
++               AC_MSG_NOTICE([Buidling against Ayatana AppIndicator.])
++               PKG_CHECK_MODULES(AYATANA_APPINDICATOR,
++                                 [$AYATANA_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
++                                 [AC_DEFINE(HAVE_AYATANA_APPINDICATOR, 1, [Have Ayatana AppIndicator])])
++               AC_SUBST(AYATANA_APPINDICATOR_CFLAGS)
++               AC_SUBST(AYATANA_APPINDICATOR_LIBS)
++       elif test "x$have_appindicator_ubuntu" == "xyes"; then
++               AC_MSG_NOTICE([Buidling against Ubuntu AppIndicator.])
++               PKG_CHECK_MODULES(UBUNTU_APPINDICATOR,
++                                 [$UBUNTU_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
++                                 [AC_DEFINE(HAVE_UBUNTU_APPINDICATOR, 1, [Have Ubuntu AppIndicator])])
++               AC_SUBST(UBUNTU_APPINDICATOR_CFLAGS)
++               AC_SUBST(UBUNTU_APPINDICATOR_LIBS)
++       else
++               AC_MSG_ERROR([Neither Ayatana AppIndicator nor Ubuntu AppIndicator library is present, but you enabled AppIndicator support.])
++       fi
+ fi
+ 
+-AM_CONDITIONAL(HAVE_APPINDICATOR, test "x$enable_appindicator" = "xyes")
+-AC_SUBST(APPINDICATOR_CFLAGS)
+-AC_SUBST(APPINDICATOR_LIBS)
+-
+ # ********************
+ # Internationalisation
+ # ********************
+@@ -181,6 +201,10 @@
+         Warning flags:              ${WARN_CFLAGS}
+ 
+         Accountsservice:            ${enable_accountsservice}
+-        Application indicator:      ${enable_appindicator}
++
++    	AppIndicator enabled:              ${enable_appindicator}
++	Ayatana AppIndicator (preferred)   ${have_appindicator_ayatana}
++    	Ubuntu AppIndicator (legacy)       ${have_appindicator_ubuntu}
++
+         Maintainer mode:            ${USE_MAINTAINER_MODE}
+ "
+diff --git a/src/Makefile.am b/src/Makefile.am
+index a534d1e..5f7ead8 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -35,7 +35,8 @@ polkit_mate_authentication_agent_1_CFLAGS = 		\
+ 	$(GLIB_CFLAGS)					\
+ 	$(POLKIT_AGENT_CFLAGS)				\
+ 	$(POLKIT_GOBJECT_CFLAGS)			\
+-	$(APPINDICATOR_CFLAGS)				\
++	$(AYATANA_APPINDICATOR_CFLAGS)			\
++	$(UBUNTU_APPINDICATOR_CFLAGS)			\
+ 	$(WARN_CFLAGS)					\
+ 	$(AM_CFLAGS)
+ 
+@@ -47,7 +48,8 @@ polkit_mate_authentication_agent_1_LDADD = 		\
+ 	$(GLIB_LIBS)					\
+ 	$(POLKIT_AGENT_LIBS)				\
+ 	$(POLKIT_GOBJECT_LIBS)				\
+-	$(APPINDICATOR_LIBS)
++	$(AYATANA_APPINDICATOR_LIBS)			\
++	$(UBUNTU_APPINDICATOR_LIBS)			
+ 
+ EXTRA_DIST = \
+ 	polkit-mate-authentication-agent-1.desktop.in \
+diff --git a/src/main.c b/src/main.c
+index 8c5f437..d60cd8f 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1,6 +1,5 @@
+ /*
+  * Copyright (C) 2009 Red Hat, Inc.
+- * Copyright (C) 2012-2021 MATE Developers
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -30,8 +29,10 @@
+ #include <glib/gi18n.h>
+ #include <polkitagent/polkitagent.h>
+ 
+-#ifdef HAVE_APPINDICATOR
+-#include <libappindicator/app-indicator.h>
++#if defined(HAVE_AYATANA_APPINDICATOR)
++# include <libayatana-appindicator/app-indicator.h>
++#elif defined(HAVE_UBUNTU_APPINDICATOR)
++# include <libappindicator/app-indicator.h>
+ #endif
+ 
+ #include "polkitmatelistener.h"
+@@ -51,7 +52,7 @@ static PolkitSubject *session = NULL;
+ /* the current set of temporary authorizations */
+ static GList *current_temporary_authorizations = NULL;
+ 
+-#ifdef HAVE_APPINDICATOR
++#if defined(HAVE_AYATANA_APPINDICATOR) || defined(HAVE_UBUNTU_APPINDICATOR)
+ static AppIndicator *app_indicator = NULL;
+ #else
+ static GtkStatusIcon *status_icon = NULL;
+@@ -90,7 +91,7 @@ revoke_tmp_authz (void)
+                                                     NULL);
+ }
+ 
+-#ifdef HAVE_APPINDICATOR
++#if defined(HAVE_AYATANA_APPINDICATOR) || defined(HAVE_UBUNTU_APPINDICATOR)
+ static void
+ on_menu_item_activate (GtkMenuItem *menu_item,
+                        gpointer     user_data)
+@@ -151,7 +152,7 @@ update_temporary_authorization_icon_real (void)
+   if (current_temporary_authorizations != NULL)
+     {
+       /* show icon */
+-#ifdef HAVE_APPINDICATOR
++#if defined(HAVE_AYATANA_APPINDICATOR) || defined(HAVE_UBUNTU_APPINDICATOR)
+       if (app_indicator == NULL)
+         {
+           GtkWidget *item, *menu;
+@@ -199,7 +200,7 @@ update_temporary_authorization_icon_real (void)
+   else
+     {
+       /* hide icon */
+-#ifdef HAVE_APPINDICATOR
++#if defined(HAVE_AYATANA_APPINDICATOR) || defined(HAVE_UBUNTU_APPINDICATOR)
+       if (app_indicator != NULL)
+         {
+           /* keep the app_indicator, hide the icon or it won't come back*/

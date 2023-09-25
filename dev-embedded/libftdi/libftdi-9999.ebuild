@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit cmake python-single-r1
 
 MY_P="${PN}1-${PV}"
@@ -14,7 +14,12 @@ else
 	SRC_URI="https://www.intra2net.com/en/developer/${PN}/download/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+
+	PATCHES=(
+		"${FILESDIR}"/${P}-tests-no-cxx.patch
+		"${FILESDIR}"/${P}-cmake-cxx.patch
+	)
 fi
 
 DESCRIPTION="Userspace access to FTDI USB interface chips"
@@ -26,19 +31,18 @@ IUSE="cxx doc examples python test tools"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-BDEPEND="
-	doc? ( app-doc/doxygen )
-	python? ( dev-lang/swig )"
 RDEPEND="
 	virtual/libusb:1
 	cxx? ( dev-libs/boost )
 	python? ( ${PYTHON_DEPS} )
-	tools? (
-		!<dev-embedded/ftdi_eeprom-1.0
-		dev-libs/confuse:=
-	)"
+	tools? ( dev-libs/confuse:= )
+"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/boost )
+"
+BDEPEND="
+	doc? ( app-doc/doxygen )
+	python? ( dev-lang/swig )
 "
 
 pkg_setup() {
@@ -71,7 +75,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog README TODO
 
 	if use doc ; then
-		# Clean up crap man pages. #356369
+		# Clean up man pages with too generic names. #356369
 		rm -vf "${BUILD_DIR}"/doc/man/man3/_* || die
 
 		doman "${BUILD_DIR}"/doc/man/man3/*

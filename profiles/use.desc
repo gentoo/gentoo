@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -152,6 +152,7 @@ jpeg - Add JPEG image support
 jpeg2k - Support for JPEG 2000, a wavelet-based image compression format
 kde - Add support for software made by KDE, a free software community
 kerberos - Add kerberos support
+keyring - Enable support for freedesktop.org Secret Service API password store
 ladspa - Enable the ability to support ladspa plugins
 lame - Prefer using LAME libraries for MP3 encoding support
 lapack - Add support for the virtual/lapack numerical library
@@ -191,6 +192,7 @@ mms - Support for Microsoft Media Server (MMS) streams
 mng - Add support for libmng (MNG images)
 modplug - Add libmodplug support for playing SoundTracker-style music files
 modules - Build the kernel modules
+modules-sign - Cryptographically sign installed kernel modules (requires CONFIG_MODULE_SIG=y in the kernel)
 mono - Build Mono bindings to support dotnet type stuff
 motif - Add support for the Motif toolkit
 mp3 - Add support for reading mp3 files
@@ -254,7 +256,7 @@ postscript - Enable support for the PostScript language (often with ghostscript-
 ppds - Add support for automatically generated ppd (printing driver) files
 prefix - Defines if a Gentoo Prefix offset installation is used
 profile - Add support for software performance analysis (will likely vary from ebuild to ebuild)
-pulseaudio - Add support for PulseAudio sound server
+pulseaudio - Add sound server support via media-libs/libpulse (may be PulseAudio or PipeWire)
 python - Add optional support/bindings for the Python language
 qdbm - Add support for the qdbm (Quick Database Manager) library
 qmail-spp - Add support for qmail SMTP plugins
@@ -276,6 +278,7 @@ screencast - Enable support for remote desktop and screen cast using PipeWire
 sctp - Support for Stream Control Transmission Protocol
 sdl - Add support for Simple Direct Layer (media library)
 seccomp - Enable seccomp (secure computing mode) to perform system call filtering at runtime to increase security of programs
+secureboot - Automatically sign efi executables using user specified key
 selinux - !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
 semantic-desktop - Cross-KDE support for semantic search and information retrieval
 session - Add persistent session support
@@ -300,6 +303,7 @@ ssl - Add support for SSL/TLS connections (Secure Socket Layer / Transport Layer
 startup-notification - Enable application startup event feedback mechanism
 static - !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
 static-libs - Build static versions of dynamic libraries as well
+strip - Allow symbol stripping to be performed by the ebuild for special files
 subversion - Enable subversion (version control system) support
 suid - Enable setuid root program(s)
 svg - Add support for SVG (Scalable Vector Graphics)
@@ -324,6 +328,7 @@ tk - Add support for Tk GUI toolkit
 truetype - Add support for FreeType and/or FreeType2 fonts
 udev - Enable virtual/udev integration (device discovery, power and storage device support, etc)
 udisks - Enable storage management support (automounting, volume monitoring, etc)
+uefi - Enable support for the Unified Extensible Firmware Interface
 unicode - Add support for Unicode
 unwind - Add support for call stack unwinding and function name resolution
 upnp - Enable UPnP port mapping support
@@ -333,6 +338,7 @@ usb - Add USB support to applications that have optional USB support (e.g. cups)
 v4l - Enable support for video4linux (using linux-headers or userspace libv4l libraries)
 vaapi - Enable Video Acceleration API for hardware decoding
 vala - Enable bindings for dev-lang/vala
+valgrind - Enable annotations for accuracy. May slow down runtime slightly. Safe to use even if not currently using dev-util/valgrind
 vanilla - Do not add extra patches which change default behaviour; DO NOT USE THIS ON A GLOBAL SCALE as the severity of the meaning changes drastically
 vcd - Video CD support
 vdpau - Enable the Video Decode and Presentation API for Unix acceleration interface
@@ -342,6 +348,7 @@ videos - Install optional video files (used in some games)
 vim-syntax - Pulls in related vim syntax scripts
 vnc - Enable VNC (remote desktop viewer) support
 vorbis - Add support for the OggVorbis audio codec
+vulkan - Add support for 3D graphics and computing via the Vulkan cross-platform API
 wavpack - Add support for wavpack audio compression tools
 wayland - Enable dev-libs/wayland backend
 webkit - Add support for the WebKit HTML rendering/layout engine

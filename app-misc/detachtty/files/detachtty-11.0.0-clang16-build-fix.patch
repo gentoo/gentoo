@@ -1,0 +1,43 @@
+Bug: https://bugs.gentoo.org/894544
+Upstream PR: https://github.com/cosmos72/detachtty/pull/6
+--- a/attachtty.c
++++ b/attachtty.c
+@@ -22,6 +22,7 @@
+ 
+ #include <errno.h>
+ #include <time.h>
++#include <string.h>
+ 
+ #include "config.h"
+ 
+--- a/config.h
++++ b/config.h
+@@ -24,7 +24,7 @@
+ #define DETACHTTY_CONFIG_H
+ 
+ #include <netdb.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+--- a/copy-stream.c
++++ b/copy-stream.c
+@@ -23,6 +23,7 @@
+ #include <errno.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
++#include <string.h>
+ 
+ #include "config.h"
+ 
+--- a/detachtty.c
++++ b/detachtty.c
+@@ -26,6 +26,7 @@
+ #include <sys/stat.h>
+ #include <pty.h>
+ #include <fcntl.h>
++#include <string.h>
+ 
+ #ifndef UNIX_PATH_MAX
+ # define UNIX_PATH_MAX    108

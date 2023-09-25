@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/898898
+--- a/nall/arithmetic/natural.hpp
++++ b/nall/arithmetic/natural.hpp
+@@ -1 +1,3 @@
++#include <stdexcept>
++
+ #define ConcatenateType(Size) uint##Size##_t

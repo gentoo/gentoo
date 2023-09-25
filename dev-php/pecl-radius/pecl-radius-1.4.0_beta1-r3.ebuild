@@ -7,7 +7,7 @@ PHP_EXT_NAME="radius"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php7-4 php8-0 php8-1 php8-2"
+USE_PHP="php8-0 php8-1 php8-2"
 PHP_EXT_PECL_FILENAME="${PN/pecl-/}-${PV/_beta/b}.tgz"
 PHP_EXT_S="${WORKDIR}/${PHP_EXT_PECL_FILENAME%.tgz}"
 PHP_EXT_NEEDED_USE="pcntl(-),sockets(-)"

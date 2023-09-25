@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN=Vulkan-Loader
 inherit flag-o-matic cmake-multilib toolchain-funcs
@@ -23,7 +23,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="layers wayland X"
 
-BDEPEND=">=dev-util/cmake-3.10.2"
 DEPEND="
 	~dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
@@ -59,9 +58,4 @@ multilib_src_install() {
 	keepdir /etc/vulkan/icd.d
 
 	cmake_src_install
-}
-
-pkg_postinst() {
-	einfo "USE=demos has been dropped as per upstream packaging"
-	einfo "vulkaninfo is now available in the dev-util/vulkan-tools package"
 }

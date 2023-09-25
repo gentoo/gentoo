@@ -5,10 +5,6 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>slashbeast@gentoo.org</email>
-		<name>Piotr Karbowski</name>
-	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/fwupd/fwupd-efi/issues</bugs-to>
 		<remote-id type="github">fwupd/fwupd-efi</remote-id>

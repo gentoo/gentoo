@@ -5,4 +5,7 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
+<upstream>
+  <remote-id type="github">kazu-yamamoto/Mew</remote-id>
+</upstream>
 </pkgmetadata>

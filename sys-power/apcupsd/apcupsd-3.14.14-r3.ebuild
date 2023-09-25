@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,20 +12,16 @@ SRC_URI="mirror://sourceforge/apcupsd/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ~riscv x86"
-IUSE="snmp +usb +modbus cgi gnome"
+IUSE="selinux snmp +usb +modbus cgi"
 
 DEPEND=">=sys-apps/util-linux-2.23[tty-helpers(-)]
 	cgi? ( >=media-libs/gd-1.8.4 )
 	modbus? ( usb? ( virtual/libusb:0 ) )
-	gnome? (
-		>=x11-libs/gtk+-2.4.0:2
-		dev-libs/glib:2
-		>=gnome-base/gconf-2.0
-	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )"
 
 RDEPEND="${DEPEND}
-	virtual/mailx"
+	virtual/mailx
+	selinux? ( sec-policy/selinux-apcupsd )"
 
 CONFIG_CHECK="~USB_HIDDEV ~HIDRAW"
 ERROR_USB_HIDDEV="CONFIG_USB_HIDDEV:	needed to access USB-attached UPSes"
@@ -75,7 +71,7 @@ src_configure() {
 		--enable-net --enable-pcnet \
 		--with-distname=gentoo \
 		$(use_enable snmp) \
-		$(use_enable gnome gapcmon) \
+		--disable-gapcmon \
 		${myconf} \
 		APCUPSD_MAIL=$(type -p mail)
 }

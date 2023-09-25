@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,7 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla zstd"
-REQUIRED_USE="default-gold? ( gold )"
+IUSE="cet debuginfod doc gold gprofng hardened multitarget +nls pgo +plugins static-libs test vanilla zstd"
 
 # Variables that can be set here  (ignored for live ebuilds)
 # PATCH_VER          - the patchset version
@@ -20,7 +19,7 @@ REQUIRED_USE="default-gold? ( gold )"
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
 
-PATCH_VER=0
+PATCH_VER=1
 PATCH_DEV=dilfridge
 
 if [[ ${PV} == 9999* ]]; then
@@ -29,7 +28,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${PV}}
 	PATCH_DEV=${PATCH_DEV:-dilfridge}
-	SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PV}.tar.xz"
+	SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz https://sourceware.org/pub/binutils/releases/binutils-${PV}.tar.xz https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PV}.tar.xz"
 	[[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
 		https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 	SLOT=$(ver_cut 1-2)
@@ -53,6 +52,9 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 RDEPEND="
 	>=sys-devel/binutils-config-3
 	sys-libs/zlib
+	debuginfod? (
+		dev-libs/elfutils[debuginfod(-)]
+	)
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}"
@@ -63,6 +65,7 @@ BDEPEND="
 		sys-devel/bc
 	)
 	nls? ( sys-devel/gettext )
+	zstd? ( virtual/pkgconfig )
 	sys-devel/flex
 	app-alternatives/yacc
 "
@@ -112,6 +115,10 @@ src_prepare() {
 			einfo "Applying binutils patchset ${patchsetname}"
 			eapply "${WORKDIR}/patch"
 			einfo "Done."
+
+			# This is applied conditionally for now just out of caution.
+			# It should be okay on non-prefix systems though. See bug #892549.
+			use prefix && eapply "${FILESDIR}"/binutils-2.40-linker-search-path.patch
 		fi
 	fi
 
@@ -171,8 +178,15 @@ src_configure() {
 
 	# Keep things sane
 	strip-flags
-
+	use cet && filter-flags -mindirect-branch -mindirect-branch=*
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
+
+	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
+	# https://github.com/gentoo/gentoo/pull/28355
+	# mold needs this too but right now tc-ld-is-mold is also not available
+	if tc-ld-is-lld; then
+		append-ldflags -Wl,--undefined-version
+	fi
 
 	local x
 	echo
@@ -190,9 +204,6 @@ src_configure() {
 	# enable gold (installed as ld.gold) and ld's plugin architecture
 	if use gold ; then
 		myconf+=( --enable-gold )
-		if use default-gold; then
-			myconf+=( --enable-gold=default )
-		fi
 	fi
 
 	if use nls ; then
@@ -239,30 +250,20 @@ src_configure() {
 		--libdir="${EPREFIX}"${LIBPATH}
 		--libexecdir="${EPREFIX}"${LIBPATH}
 		--includedir="${EPREFIX}"${INCPATH}
+		# portage's econf() does not detect presence of --d-d-t
+		# because it greps only top-level ./configure. But not
+		# libiberty's or bfd's configure.
+		--disable-dependency-tracking
+		--disable-silent-rules
 		--enable-obsolete
 		--enable-shared
 		--enable-threads
-		# Newer versions (>=2.27) offer a configure flag now.
 		--enable-relro
-		# Newer versions (>=2.24) make this an explicit option, bug #497268
 		--enable-install-libiberty
-		# Available from 2.35 on
-		--enable-textrel-check=warning
-
-		# These hardening options are available from 2.39+ but
-		# they unconditionally enable the behaviour even on arches
-		# where e.g. execstacks can't be avoided.
-		# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
-		#--enable-warn-execstack
-		#--enable-warn-rwx-segments
-		#--disable-default-execstack (or is it --enable-default-execstack=no? docs are confusing)
-
+		--enable-textrel-check=$(usex hardened error warning)
 		# Things to think about
 		#--enable-deterministic-archives
-
-		# Works better than vapier's patch, bug #808787
 		--enable-new-dtags
-
 		--disable-jansson
 		--disable-werror
 		--with-bugurl="$(toolchain-binutils_bugurl)"
@@ -272,16 +273,12 @@ src_configure() {
 
 		# Disable modules that are in a combined binutils/gdb tree, bug #490566
 		--disable-{gdb,libdecnumber,readline,sim}
-		# Strip out broken static link flags.
-		# https://gcc.gnu.org/PR56750
+		# Strip out broken static link flags: https://gcc.gnu.org/PR56750
 		--without-stage1-ldflags
-		# Change SONAME to avoid conflict across
-		# {native,cross}/binutils, binutils-libs. bug #666100
+		# Change SONAME to avoid conflict across {native,cross}/binutils, binutils-libs. bug #666100
 		--with-extra-soversion-suffix=gentoo-${CATEGORY}-${PN}-$(usex multitarget mt st)
 
-		# Avoid automagic dependency on (currently prefix) systems
-		# systems with debuginfod library, bug #754753
-		--without-debuginfod
+		$(use_with debuginfod)
 
 		# Avoid automagic dev-libs/msgpack dep, bug #865875
 		--without-msgpack
@@ -300,6 +297,41 @@ src_configure() {
 		$(use_enable gprofng)
 	)
 
+	case ${CTARGET} in
+		x86_64-*|aarch64*|arm64*|i[3456]*)
+			# These hardening options are available from 2.39+ but
+			# they unconditionally enable the behaviour even on arches
+			# where e.g. execstacks can't be avoided.
+			# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
+			#
+			# TODO: Get the logic for this fixed upstream so it doesn't
+			# create impossible broken combinations on some arches, like mips.
+			#
+			# TODO: Get the logic for this fixed upstream so --disable-* works
+			# as expected.
+			myconf+=(
+				--enable-warn-execstack=yes
+				--enable-warn-rwx-segments=yes
+			)
+
+			if use hardened ; then
+				myconf+=(
+					--enable-default-execstack=no
+				)
+			fi
+			;;
+		*)
+			;;
+	esac
+
+	if use elibc_musl ; then
+		# Override our earlier setting for musl, as textrels don't
+		# work there at all. See bug #707660.
+		myconf+=(
+			--enable-textrel-check=error
+		)
+	fi
+
 	if ! is_cross ; then
 		myconf+=( $(use_enable pgo pgo-build lto) )
 
@@ -308,7 +340,7 @@ src_configure() {
 		fi
 	fi
 
-	ECONF_SOURCE="${S}" econf "${myconf[@]}" || die
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 
 	# Prevent makeinfo from running if doc is unset.
 	if ! use doc ; then
@@ -322,11 +354,11 @@ src_compile() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake V=1 tooldir="${EPREFIX}${TOOLPATH}" all
+	emake tooldir="${EPREFIX}${TOOLPATH}" all
 
 	# only build info pages if the user wants them
 	if use doc ; then
-		emake V=1 info
+		emake info
 	fi
 
 	# we nuke the manpages when we're left with junk
@@ -340,7 +372,7 @@ src_test() {
 	# bug #637066
 	filter-flags -Wall -Wreturn-type
 
-	emake -k V=1 check
+	emake -k check
 }
 
 src_install() {
@@ -349,7 +381,7 @@ src_install() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake V=1 DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
+	emake DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
 	rm -rf "${ED}"/${LIBPATH}/bin || die
 	use static-libs || find "${ED}" -name '*.la' -delete
 

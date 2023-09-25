@@ -1,13 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="sqlite,threads(+)"
-DISTUTILS_SINGLE_IMPL="1"
 
-inherit distutils-r1 optfeature virtualx xdg
+inherit meson python-single-r1 optfeature virtualx xdg
 
 DESCRIPTION="An open source gaming platform for GNU/Linux"
 HOMEPAGE="https://lutris.net/"
@@ -28,24 +27,33 @@ fi
 
 LICENSE="GPL-3+ CC0-1.0"
 SLOT="0"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	app-arch/cabextract
 	app-arch/p7zip
 	app-arch/unzip
 	$(python_gen_cond_dep '
+		dev-python/certifi[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		dev-python/pypresence[${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
-		dev-python/python-magic[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/moddb[${PYTHON_USEDEP}]
 	')
 	media-sound/fluid-soundfont
-	net-libs/webkit-gtk:4.1[introspection]
+	|| (
+		net-libs/webkit-gtk:4[introspection]
+		net-libs/webkit-gtk:4.1[introspection]
+	)
+	sys-apps/xdg-desktop-portal
 	x11-apps/mesa-progs
 	x11-apps/xgamma
 	x11-apps/xrandr
@@ -53,23 +61,29 @@ RDEPEND="
 	x11-libs/gdk-pixbuf[jpeg]
 "
 
-distutils_enable_tests pytest
+BDEPEND="
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
+	)
+"
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
 
-python_test() {
+src_test() {
 	virtx epytest
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
+src_install() {
+	meson_src_install
 	python_fix_shebang "${ED}/usr/share/lutris/bin/lutris-wrapper" #740048
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	optfeature "running windows games through wine+DXVK/proton or other Vulkan games (plus ICD for your hardware)" media-libs/vulkan-loader
+	optfeature "running MS Windows games through wine+DXVK/proton or other Vulkan games (plus ICD for your hardware)" "media-libs/vulkan-loader dev-util/vulkan-tools"
 
 	# Quote README.rst
 	elog ""

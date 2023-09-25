@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools libtool bash-completion-r1 python-r1
 
@@ -26,7 +26,7 @@ IUSE="debug doc +lzma pkcs7 python static-libs +tools +zlib +zstd"
 # I was also told that the test suite is intended for kmod developers.
 # So we have to restrict it.
 # See bug #408915.
-RESTRICT="test"
+#RESTRICT="test"
 
 # - >=zlib-1.2.6 required because of bug #427130
 # - Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
@@ -60,7 +60,7 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DOCS=( NEWS README TODO )
+DOCS=( NEWS README.md TODO )
 
 src_prepare() {
 	default
@@ -129,6 +129,25 @@ src_compile() {
 		}
 
 		python_foreach_impl python_compile
+	fi
+}
+
+src_test() {
+	python_test() {
+		mkdir "${T}/test-${EPYTHON}" || die
+		emake -C "${BUILD_DIR}" DESTDIR="${T}/test-${EPYTHON}" \
+                                VPATH="${native_builddir}:${S}" \
+                                install-pkgpyexecLTLIBRARIES \
+                                install-dist_pkgpyexecPYTHON
+
+		# Smoke test based on https://bugs.gentoo.org/891975#c5
+		local -x PYTHONPATH="${T}/test-${EPYTHON}/usr/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
+		${EPYTHON} -c 'import kmod; km = kmod.Kmod(); print([(m.name, m.size) for m in km.loaded()])' || die
+		rm -r "${T}/test-${EPYTHON}" || die
+	}
+
+	if use python; then
+		python_foreach_impl python_test
 	fi
 }
 

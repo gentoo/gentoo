@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby30 ruby31 ruby32"
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -23,7 +23,7 @@ ruby_add_rdepend "dev-ruby/nokogiri"
 ruby_add_bdepend "test? (
 	dev-ruby/regexp_parser
 	dev-ruby/rspec:3
-	|| ( dev-util/aruba:2 dev-util/aruba:1 )
+	dev-util/aruba:2
 	dev-util/cucumber
 )"
 

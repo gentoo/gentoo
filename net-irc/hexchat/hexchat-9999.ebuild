@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit flag-o-matic lua-single meson mono-env python-single-r1 xdg
 
@@ -43,7 +43,9 @@ RDEPEND="
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? (
 		${PYTHON_DEPS}
-		virtual/python-cffi
+		$(python_gen_cond_dep '
+			dev-python/cffi[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 	ssl? ( dev-libs/openssl:0= )
 	theme-manager? (

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,22 +16,29 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="mpich2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="+cxx doc fortran mpi-threads +romio threads"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+IUSE="+cxx doc fortran mpi-threads +romio threads valgrind"
 REQUIRED_USE="mpi-threads? ( threads )"
 
-COMMON_DEPEND=">=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
+COMMON_DEPEND="
+	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
 	>=sys-apps/hwloc-2.0.2:=[${MULTILIB_USEDEP}]
 	sys-libs/libunwind:=[${MULTILIB_USEDEP}]
-	romio? ( net-fs/nfs-utils )"
+	romio? ( net-fs/nfs-utils )
+"
 
-DEPEND="${COMMON_DEPEND}
+DEPEND="
+	${COMMON_DEPEND}
 	dev-lang/perl
-	sys-devel/libtool"
-RDEPEND="${COMMON_DEPEND}
+	sys-devel/libtool
+	valgrind? ( dev-util/valgrind )
+"
+RDEPEND="
+	${COMMON_DEPEND}
 	!sys-cluster/mpich2
 	!sys-cluster/openmpi
-	!sys-cluster/nullmpi"
+	!sys-cluster/nullmpi
+"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpicxx.h
@@ -123,10 +130,12 @@ multilib_src_configure() {
 		--enable-versioning \
 		$(use_enable romio) \
 		$(use_enable cxx) \
-		$(use_enable fortran fortran all)
+		$(use_enable fortran fortran all) \
+		$(use_with valgrind)
 }
 
 multilib_src_test() {
+	export USE_VALGRIND=0 #884809
 	emake -j1 check
 }
 

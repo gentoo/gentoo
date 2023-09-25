@@ -1,4 +1,4 @@
-# Copyright 2007-2022 Gentoo Authors
+# Copyright 2007-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of APACHE2_MODULES USE_EXPAND flags.
@@ -7,6 +7,7 @@
 access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions
 actions - Provides for executing CGI scripts based on media type or request method
 alias - Provides for mapping different parts of the host filesystem in the document tree and for URL redirection
+allowmethods - This module makes it easy to restrict what HTTP methods can be used on a server
 asis - Sends files that contain their own HTTP headers
 auth_basic - Basic authentication
 auth_digest - User authentication using MD5 Digest Authentication
@@ -92,6 +93,7 @@ socache_shmcb - A shared object cache provider using a high-performance cyclic b
 speling - Attempts to correct mistaken URLs that users might have entered by ignoring capitalization and by allowing up to one misspelling
 status - Provides information on server activity and performance
 substitute - Perform search and replace operations on response bodies
+tls - mod_tls TLS module for Apache, intended to replace mod_ssl
 unique_id - Provides an environment variable with a unique identifier for each request
 unixd - Basic (required) security for Unix-family platforms
 userdir - User-specific directories

@@ -1,5 +1,43 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-09-06)
+# sys-block/thin-provisioning-tools now needs Rust.
+>=sys-fs/lvm2-2.03.22-r2 thin
+
+# Hans de Graaff <graaff@gentoo.org> (2023-09-03)
+# selenium-webdriver is needed for these tests but that requires
+# selenium-manager which requires rust (#912999)
+dev-ruby/actionpack test
+dev-ruby/capybara test
+
+# Alfred Wingate <parona@protonmail.com> (2023-07-22)
+# SSO feature in ZeroTier requires rust.
+net-misc/zerotier sso
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-06)
+# Packages needing dev-python/pydantic.
+dev-python/jaraco-itertools test
+dev-python/jaraco-text cli
+dev-python/versioningit test
+dev-python/zipp test
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-09)
+# Deps on several mkdocs plugins (#882593)
+dev-python/bracex doc
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-12)
+# The Rusticl OpenCL state tracker requires rust
+>=media-libs/mesa-23.1 opencl
+
+# Michał Górny <mgorny@gentoo.org> (2023-03-09)
+# Packages needing dev-python/selenium.
+dev-python/aiohttp-cors test
+dev-python/django test
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-04)
+# The JIT compiler in ruby requires rust
+dev-lang/ruby jit
 
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Needs dev-python/mkdocs-redirects->dev-python/twine which is masked on wd40
@@ -8,6 +46,7 @@ dev-util/gef doc
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi needs Rust.
 net-misc/curl rustls curl_ssl_rustls
+www-servers/apache apache2_modules_tls
 
 # matoro <matoro_gentoo@matoro.tk> (2022-12-01)
 # tree-sitter-grammar.eclass adds dev-util/tree-sitter-cli as test dep
@@ -51,11 +90,11 @@ net-vpn/networkmanager-vpnc gtk
 app-admin/salt keyring neutron
 dev-python/boto test
 dev-python/dask test
-dev-python/docker-py test
+dev-python/docker test
 dev-python/google-api-python-client test
 dev-python/httpx-socks test
 dev-python/hypercorn test
-dev-python/keystoneauth test
+dev-python/keystoneauth1 test
 dev-python/libtmux test
 dev-python/locket test
 dev-python/pyjwt test
@@ -83,7 +122,8 @@ www-apps/roundup ssl
 dev-python/anyio test
 dev-python/httpcore test
 dev-python/httpx test
-dev-python/uvicorn test
+<dev-python/uvicorn-0.21.1-r1 test
+dev-python/aiohttp-socks test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # dev-lang/rust is not available on ${arch} yet.
@@ -98,7 +138,7 @@ media-libs/imlib2 svg
 # Michał Górny <mgorny@gentoo.org> (2021-11-26)
 # These package flags require dev-python/cryptography which -- due
 # to the dependency on Rust -- is no longer portable to ${arch}.
-dev-python/dnspython dnssec
+dev-python/dnspython dnssec test
 dev-python/twisted conch ssl
 dev-python/urllib3 test
 net-fs/samba addc ads

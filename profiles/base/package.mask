@@ -1,5 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2023-06-15)
+# Conflicts with glibc.
+sys-apps/musl-locales
+
+# Sam James <sam@gentoo.org> (2023-06-06)
+# Only available on Linux.
+dev-libs/libaio
+sys-libs/libcap-ng
+sys-libs/libseccomp
 
 # Sam James <sam@gentoo.org> (2022-09-10)
 # Mask in general and unmask on specific profiles
@@ -15,11 +25,3 @@ sys-libs/libucontext
 # made.)
 # bug #699422.
 virtual/libcrypt:0/1
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-06)
-# No longer maintained upstream; please see the 2021-07-15-opentmpfiles-deprecation
-# news item.
-sys-apps/opentmpfiles
-
-# (above is added here instead of in ../package.mask so x86 musl can
-# override it for the moment)

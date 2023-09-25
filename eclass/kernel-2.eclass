@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-2.eclass
@@ -26,7 +26,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Used as a comparison kernel version, which is used when
-# PV doesnt reflect the genuine kernel version.
+# PV doesn't reflect the genuine kernel version.
 # This gets set to the portage style versioning. ie:
 # CKV=2.6.11_rc4
 
@@ -87,7 +87,7 @@
 # @ECLASS_VARIABLE: K_EXTRAEINFO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# this is a new-line seperated list of einfo displays in
+# this is a new-line separated list of einfo displays in
 # postinst and can be used to carry additional postinst
 # messages
 
@@ -171,7 +171,7 @@
 # @ECLASS_VARIABLE: K_SYMLINK
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# if this is set, then forcably create symlink anyway
+# if this is set, then forcibly create symlink anyway
 
 # @ECLASS_VARIABLE: K_USEPV
 # @DEFAULT_UNSET
@@ -251,7 +251,7 @@
 # @ECLASS_VARIABLE: UNIPATCH_EXCLUDE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An addition var to support exlusion based completely
+# An addition var to support exclusion based completely
 # on "<passedstring>*" and not "<passedno#>_*"
 # this should _NOT_ be used from the ebuild as this is
 # reserved for end users passing excludes from the cli
@@ -281,31 +281,28 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
-inherit estack multiprocessing toolchain-funcs
+# Added by Daniel Ostrow <dostrow@gentoo.org>
+# This is an ugly hack to get around an issue with a 32-bit userland on ppc64.
+# I will remove it when I come up with something more reasonable.
+# Alfred Persson Forsberg <cat@catcream.org>
+# Moved this above inherit as crossdev.eclass uses CHOST internally.
+[[ ${PROFILE_ARCH} == ppc64 ]] && CHOST="powerpc64-${CHOST#*-}"
+
+inherit crossdev estack multiprocessing toolchain-funcs
 
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# Added by Daniel Ostrow <dostrow@gentoo.org>
-# This is an ugly hack to get around an issue with a 32-bit userland on ppc64.
-# I will remove it when I come up with something more reasonable.
-[[ ${PROFILE_ARCH} == ppc64 ]] && CHOST="powerpc64-${CHOST#*-}"
-
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} == ${CHOST} && ${CATEGORY/cross-} != ${CATEGORY} ]]; then
-	export CTARGET=${CATEGORY/cross-}
-fi
-
 HOMEPAGE="https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel ${HOMEPAGE}"
-: ${LICENSE:="GPL-2"}
+: "${LICENSE:="GPL-2"}"
 
 # No need to run scanelf/strip on kernel sources/headers (bug #134453).
 RESTRICT="binchecks strip"
 
 # set LINUX_HOSTCFLAGS if not already set
-: ${LINUX_HOSTCFLAGS:="-Wall -Wstrict-prototypes -Os -fomit-frame-pointer -I${S}/include"}
+: "${LINUX_HOSTCFLAGS:="-Wall -Wstrict-prototypes -Os -fomit-frame-pointer -I${S}/include"}"
 
 
 # @FUNCTION: debug-print-kernel2-variables
@@ -393,7 +390,7 @@ detect_version() {
 	[[ -n ${KV_FULL} ]] && return 0
 
 	# CKV is used as a comparison kernel version, which is used when
-	# PV doesnt reflect the genuine kernel version.
+	# PV doesn't reflect the genuine kernel version.
 	# this gets set to the portage style versioning. ie:
 	#   CKV=2.6.11_rc4
 	CKV=${CKV:-${PV}}
@@ -487,7 +484,7 @@ detect_version() {
 	RELEASE=${RELEASE/_beta}
 	RELEASE=${RELEASE/_rc/-rc}
 	RELEASE=${RELEASE/_pre/-pre}
-	# We cannot trivally call kernel_is here, because it calls us to detect the
+	# We cannot trivially call kernel_is here, because it calls us to detect the
 	# version
 	#kernel_is ge 2 6 && RELEASE=${RELEASE/-pre/-git}
 	(( KV_MAJOR * 1000 + ${KV_MINOR:-0} >= 2006 )) && RELEASE=${RELEASE/-pre/-git}
@@ -680,7 +677,8 @@ if [[ ${ETYPE} == sources ]]; then
 			# Reflect that kernels contain firmware blobs unless otherwise
 			# stripped. Starting with version 4.14, the whole firmware
 			# tree has been dropped from the kernel.
-			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
+			kernel_is lt 4 14 &&
+				LICENSE+=" !deblob? ( linux-fw-redistributable all-rights-reserved )"
 
 			if [[ -n KV_MINOR ]]; then
 				DEBLOB_PV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
@@ -710,7 +708,7 @@ if [[ ${ETYPE} == sources ]]; then
 		elif kernel_is lt 4 14; then
 			# Deblobbing is not available, so just mark kernels older
 			# than 4.14 as tainted with non-libre materials.
-			LICENSE+=" linux-firmware"
+			LICENSE+=" linux-fw-redistributable all-rights-reserved"
 		fi
 	fi
 
@@ -745,25 +743,35 @@ cross_pre_c_headers() {
 	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 
-# @FUNCTION: env_setup_xmakeopts
+# @FUNCTION: env_setup_kernel_makeopts
 # @USAGE:
 # @DESCRIPTION:
-# set the ARCH/CROSS_COMPILE when cross compiling
+# Set the toolchain variables, as well as ARCH and CROSS_COMPILE when
+# cross-compiling.
 
-env_setup_xmakeopts() {
+env_setup_kernel_makeopts() {
 	# Kernel ARCH != portage ARCH
 	export KARCH=$(tc-arch-kernel)
 
 	# When cross-compiling, we need to set the ARCH/CROSS_COMPILE
 	# variables properly or bad things happen !
-	xmakeopts="ARCH=${KARCH}"
+	KERNEL_MAKEOPTS=( ARCH="${KARCH}" )
 	if [[ ${CTARGET} != ${CHOST} ]] && ! cross_pre_c_headers; then
-		xmakeopts="${xmakeopts} CROSS_COMPILE=${CTARGET}-"
+		KERNEL_MAKEOPTS+=( CROSS_COMPILE="${CTARGET}-" )
 	elif type -p ${CHOST}-ar >/dev/null; then
-		xmakeopts="${xmakeopts} CROSS_COMPILE=${CHOST}-"
+		KERNEL_MAKEOPTS+=( CROSS_COMPILE="${CHOST}-" )
 	fi
-	xmakeopts="${xmakeopts} HOSTCC=$(tc-getBUILD_CC) CC=$(tc-getCC) LD=$(tc-getLD) AR=$(tc-getAR) NM=$(tc-getNM) OBJCOPY=$(tc-getOBJCOPY) READELF=$(tc-getREADELF) STRIP=$(tc-getSTRIP)"
-	export xmakeopts
+	KERNEL_MAKEOPTS+=(
+		HOSTCC="$(tc-getBUILD_CC)"
+		CC="$(tc-getCC)"
+		LD="$(tc-getLD)"
+		AR="$(tc-getAR)"
+		NM="$(tc-getNM)"
+		OBJCOPY="$(tc-getOBJCOPY)"
+		READELF="$(tc-getREADELF)"
+		STRIP="$(tc-getSTRIP)"
+	)
+	export KERNEL_MAKEOPTS
 }
 
 # @FUNCTION: universal_unpack
@@ -849,8 +857,8 @@ install_universal() {
 install_headers() {
 	local ddir=$(kernel_header_destdir)
 
-	env_setup_xmakeopts
-	emake headers_install INSTALL_HDR_PATH="${ED}"${ddir}/.. ${xmakeopts}
+	env_setup_kernel_makeopts
+	emake headers_install INSTALL_HDR_PATH="${ED}"${ddir}/.. "${KERNEL_MAKEOPTS[@]}"
 
 	# let other packages install some of these headers
 	rm -rf "${ED}"${ddir}/scsi || die #glibc/uclibc/etc...
@@ -869,7 +877,7 @@ install_sources() {
 	dodir /usr/src
 	einfo ">>> Copying sources ..."
 
-	file="$(find ${WORKDIR} -iname "docs" -type d)"
+	file="$(find "${WORKDIR}" -iname "docs" -type d)"
 	if [[ -n ${file} ]]; then
 		for file in $(find ${file} -type f); do
 			echo "${file//*docs\/}" >> "${S}"/patches.txt
@@ -880,7 +888,7 @@ install_sources() {
 		done
 	fi
 
-	mv "${WORKDIR}"/linux* "${ED}"/usr/src || die
+	cp -R "${WORKDIR}"/linux* "${ED}"/usr/src || die
 
 	if [[ -n ${UNIPATCH_DOCS} ]]; then
 		for i in ${UNIPATCH_DOCS}; do
@@ -918,7 +926,7 @@ postinst_sources() {
 	#	use deblob && \
 	#	K_SECURITY_UNSUPPORTED=deblob
 
-	# if we are to forcably symlink, delete it if it already exists first.
+	# if we are to forcibly symlink, delete it if it already exists first.
 	if [[ ${K_SYMLINK} -gt 0 ]]; then
 		if [[ -e ${EROOT}/usr/src/linux && ! -L ${EROOT}/usr/src/linux ]] ; then
 			die "${EROOT}/usr/src/linux exists and is not a symlink"
@@ -1014,7 +1022,7 @@ setup_headers() {
 # Universal function that will apply patches to source
 
 unipatch() {
-	local i x y z extention PIPE_CMD UNIPATCH_DROP KPATCH_DIR PATCH_DEPTH ELINE
+	local i x y z extension PIPE_CMD UNIPATCH_DROP KPATCH_DIR PATCH_DEPTH ELINE
 	local STRICT_COUNT PATCH_LEVEL myLC_ALL myLANG
 
 	# set to a standard locale to ensure sorts are ordered properly.
@@ -1060,10 +1068,10 @@ unipatch() {
 
 			[[ ${i} == *:* ]] && elog ">>> Strict patch levels not currently supported for tarballed patchsets"
 		else
-			extention=${i/*./}
-			extention=${extention/:*/}
+			extension=${i/*./}
+			extension=${extension/:*/}
 			PIPE_CMD=""
-			case ${extention} in
+			case ${extension} in
 				     xz) PIPE_CMD="xz -T$(makeopts_jobs) -dc";;
 				   lzma) PIPE_CMD="lzma -dc";;
 				    bz2) PIPE_CMD="bzip2 -dc";;
@@ -1077,7 +1085,7 @@ unipatch() {
 			PATCH_LEVEL=${i/*([^:])?(:)}
 			i=${i/:*/}
 			x=${i/*\//}
-			x=${x/\.${extention}/}
+			x=${x/\.${extension}/}
 
 			if [[ -n ${PIPE_CMD} ]]; then
 				if [[ ! -r ${i} ]]; then
@@ -1332,7 +1340,7 @@ getfilevar() {
 # @USAGE:
 # @DESCRIPTION:
 # This function sets ARCH_URI and ARCH_PATCH
-# with the neccessary info for the arch sepecific compatibility
+# with the necessary info for the arch specific compatibility
 # patchsets.
 
 detect_arch() {
@@ -1416,8 +1424,8 @@ kernel-2_src_unpack() {
 	[[ -z ${K_NOSETEXTRAVERSION} ]] && unpack_set_extraversion
 	unpack_fix_install_path
 
-	# Setup xmakeopts and cd into sourcetree.
-	env_setup_xmakeopts
+	# Setup KERNEL_MAKEOPTS and cd into sourcetree.
+	env_setup_kernel_makeopts
 	cd "${S}" || die
 
 	if [[ ${K_DEBLOB_AVAILABLE} == 1 ]] && use deblob; then
@@ -1489,7 +1497,7 @@ kernel-2_pkg_preinst() {
 # @FUNCTION: kernel-2_src_install
 # @USAGE:
 # @DESCRIPTION:
-# Install headers or sources dependant on ETYPE
+# Install headers or sources dependent on ETYPE
 
 kernel-2_src_install() {
 	install_universal

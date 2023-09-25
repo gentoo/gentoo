@@ -1,0 +1,26 @@
+
+
+diff -ruN munin-2.0.33.orig/master/Build.PL munin-2.0.33/master/Build.PL
+--- munin-2.0.33.orig/master/Build.PL	2017-03-03 00:02:39.000000000 -0000
++++ munin-2.0.33/master/Build.PL	2017-08-05 15:06:55.799816839 -0000
+@@ -1,3 +1,4 @@
++use lib q[.];
+ use MasterBuilder;
+ 
+ use warnings;
+diff -ruN munin-2.0.33.orig/node/Build.PL munin-2.0.33/node/Build.PL
+--- munin-2.0.33.orig/node/Build.PL	2017-03-03 00:02:39.000000000 -0000
++++ munin-2.0.33/node/Build.PL	2017-08-05 15:11:07.689824612 -0000
+@@ -1,3 +1,4 @@
++use lib q[.];
+ use NodeBuilder;
+ 
+ use warnings;
+diff -ruN munin-2.0.33.orig/plugins/Build.PL munin-2.0.33/plugins/Build.PL
+--- munin-2.0.33.orig/plugins/Build.PL	2017-03-03 00:02:39.000000000 -0000
++++ munin-2.0.33/plugins/Build.PL	2017-08-05 15:13:57.056168401 -0000
+@@ -1,3 +1,4 @@
++use lib q[.];
+ use PluginsBuilder;
+ 
+ use warnings;

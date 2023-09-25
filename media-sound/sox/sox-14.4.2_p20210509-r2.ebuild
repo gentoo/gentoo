@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,14 +12,14 @@ COMMIT="42b3557e13e0fe01a83465b672d89faddbe65f49"
 MY_P="sox-code-${COMMIT}"
 
 DESCRIPTION="The swiss army knife of sound processing programs"
-HOMEPAGE="http://sox.sourceforge.net"
+HOMEPAGE="https://sox.sourceforge.net"
 # Source: https://sourceforge.net/code-snapshots/git/s/so/sox/code.git/${MY_P}.zip
 SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/${MY_P}.zip -> ${P}.zip"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="alsa amr ao encode flac id3tag ladspa mad magic ogg openmp oss opus png pulseaudio sndfile sndio static-libs twolame wavpack"
 
 BDEPEND="

@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">python-trio/trustme</remote-id>
 		<remote-id type="pypi">trustme</remote-id>
 	</upstream>
 </pkgmetadata>

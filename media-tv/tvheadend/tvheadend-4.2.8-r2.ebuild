@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit linux-info python-any-r1 systemd toolchain-funcs
 
@@ -22,14 +22,14 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
+# <ffmpeg-5 dep for bug #834399, https://github.com/tvheadend/tvheadend/pull/1460
 RDEPEND="
 	acct-user/tvheadend
 	virtual/libiconv
 	dbus? ( sys-apps/dbus )
 	dvbcsa? ( media-libs/libdvbcsa )
 	dvben50221? ( media-tv/linuxtv-dvb-apps )
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	hdhomerun? ( media-libs/libhdhomerun )
 	dev-libs/openssl:0=
 	uriparser? ( dev-libs/uriparser )

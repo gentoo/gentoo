@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 WX_GTK_VER="3.0"
 inherit wxwidgets
 
-DESCRIPTION="A program to decode .CHT files in Snes9x and ZSNES to plain text"
-HOMEPAGE="http://games.technoplaza.net/chtdecoder/"
+DESCRIPTION="Program to decode .CHT files in Snes9x and ZSNES to plain text"
+HOMEPAGE="https://games.technoplaza.net/chtdecoder/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

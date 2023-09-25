@@ -9,7 +9,10 @@
 		<name>Gentoo Sysadmin Project</name>
 	</maintainer>
 	<use>
-		<flag name="pskc">Build tools &amp; library for the Portable Symmetric Key Container (PSKC) format per RFC6030</flag>
 		<flag name="pam">Build PAM module for pluggable login authentication for OATH</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">oath-toolkit/oath-toolkit</remote-id>
+		<remote-id type="savannah-nongnu">oath-toolkit</remote-id>
+	</upstream>
 </pkgmetadata>

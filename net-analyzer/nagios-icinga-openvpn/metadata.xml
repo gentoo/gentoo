@@ -5,4 +5,7 @@
     <email>mjo@gentoo.org</email>
     <name>Michael Orlitzky</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">liquidat/nagios-icinga-openvpn</remote-id>
+  </upstream>
 </pkgmetadata>

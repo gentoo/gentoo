@@ -1,24 +1,25 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
-PYSIDE2_COMPAT=( python3_{8..10} )
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( python3_{10..12} )
+PYSIDE2_COMPAT=( python3_{10..11} )
+PYSIDE6_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r1 virtualx pypi
 
 DESCRIPTION="Pytest plugin for PyQt5 and PySide2 applications"
 HOMEPAGE="
 	https://pypi.org/project/pytest-qt/
 	https://github.com/pytest-dev/pytest-qt/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	dev-python/QtPy[gui,testlib,widgets(+),${PYTHON_USEDEP}]
@@ -26,14 +27,22 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/PyQt5[gui,testlib,widgets,${PYTHON_USEDEP}]
+		amd64? (
+			dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
+		)
 		$(python_gen_cond_dep '
 			dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]
 		' "${PYSIDE2_COMPAT[@]}")
+		amd64? (
+			$(python_gen_cond_dep '
+				dev-python/pyside6[gui,testlib,widgets,${PYTHON_USEDEP}]
+			' "${PYSIDE6_COMPAT[@]}")
+		)
 	)
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
 src_test() {
 	virtx distutils-r1_src_test
@@ -57,9 +66,17 @@ python_test() {
 
 	einfo "Testing with PyQt5"
 	PYTEST_QT_API="pyqt5" epytest || die
-	# Pyside2 is not compatible with python3.11
+	if use amd64; then
+		einfo "Testing with PyQt6"
+		PYTEST_QT_API="pyqt6" epytest || die
+	fi
+	# Pyside{2,6} is not compatible with python3.12
 	if has "${EPYTHON}" "${PYSIDE2_COMPAT[@]/_/.}"; then
 		einfo "Testing with PySide2"
 		PYTEST_QT_API="pyside2" epytest || die
+	fi
+	if use amd64 && has "${EPYTHON}" "${PYSIDE6_COMPAT[@]/_/.}"; then
+		einfo "Testing with PySide6"
+		PYTEST_QT_API="pyside6" epytest || die
 	fi
 }

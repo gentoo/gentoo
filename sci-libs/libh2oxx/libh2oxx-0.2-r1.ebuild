@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="C++ bindings for libh2o"
-HOMEPAGE="https://github.com/mgorny/libh2oxx/"
-SRC_URI="https://github.com/mgorny/libh2oxx/releases/download/${P}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/libh2oxx/"
+SRC_URI="https://github.com/projg2/libh2oxx/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

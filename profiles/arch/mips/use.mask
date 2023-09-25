@@ -1,16 +1,25 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# matoro <matoro_gentoo@matoro.tk> (2023-03-07)
+# GPU-related USE flags.  While hardware with PCIe host
+# capabilities exists, mask these by default to reduce burden
+# on maintainers of GPU-related packages.  Can be unmasked
+# in the future upon user request.
+vulkan
+vaapi
+frei0r
+
+# matoro <matoro_gentoo@matoro.tk> (2023-03-03)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-15)
 # rdma-core is not keyworded mips...
 rdma
-
-# Matt Turner <mattst88@gentoo.org> (2018-03-25)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-11)
 # dev-util/valgrind is not keyworded here yet,
@@ -24,10 +33,6 @@ networkmanager
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # sci-geosciences/gpsd is not keyworded here.
 gps
-
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
 
 # Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # media-libs/libmtp not tested
@@ -88,21 +93,12 @@ gnome
 # some programs with this useflag are useful, e.g #227631
 mpi
 
-# Ryan Hill <dirtyepic@gentoo.org>
-# virtual/blas virtual/cblas and virtual/lapack not keyworded
-lapack
-blas
-
 # Alexander Færøy <eroyf@gentoo.org>
 # Clamav -- untested, masking for now.
 clamav
 
 # Untested on mips, masking for now.
 cdb
-
-# Until someone actually needs fuse, we'll mask it as
-# it holds up stablizing ntfsprogs
-fuse
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
 # Modular X: mask for architectures lacking direct rendering

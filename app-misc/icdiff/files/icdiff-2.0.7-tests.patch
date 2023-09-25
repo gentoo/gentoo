@@ -1,0 +1,37 @@
+From 741d8b24bf7694d535b68fdbe23db6c33f4a5420 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 21 Aug 2023 23:52:20 +0200
+Subject: [PATCH] test.sh: Stop running flake8 and black
+
+---
+ test.sh | 14 --------------
+ 1 file changed, 14 deletions(-)
+
+diff --git a/test.sh b/test.sh
+index 4fc09fb..fb22fb0 100755
+--- a/test.sh
++++ b/test.sh
+@@ -213,20 +213,6 @@ function ensure_installed() {
+   fi
+ }
+ 
+-ensure_installed "black"
+-echo 'Running black formatter...'
+-if ! black icdiff --quiet --line-length 79 --check; then
+-  echo ""
+-  echo 'Consider running `black icdiff --line-length 79`'
+-  fail
+-fi
+-
+-ensure_installed "flake8"
+-echo 'Running flake8 linter...'
+-if ! flake8 icdiff; then
+-  fail
+-fi
+-
+ if ! $REGOLD; then
+   echo PASS
+ fi
+-- 
+2.41.0
+

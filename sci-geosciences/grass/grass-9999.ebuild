@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
 inherit desktop python-single-r1 toolchain-funcs xdg
@@ -13,17 +13,21 @@ HOMEPAGE="https://grass.osgeo.org/"
 
 LICENSE="GPL-2"
 
+if [[ ${PV} =~ "9999" ]]; then
+	SLOT="0/8.4"
+else
+	SLOT="0/$(ver_cut 1-2 ${PV})"
+fi
+
 GVERSION=${SLOT#*/}
 MY_PM="${PN}${GVERSION}"
 MY_PM="${MY_PM/.}"
 
 if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3
-	SLOT="0/8.3"
 	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 else
 	MY_P="${P/_rc/RC}"
-	SLOT="0/$(ver_cut 1-2 ${PV})"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~ppc ~x86"
@@ -32,7 +36,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-IUSE="blas cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
+IUSE="blas bzip2 cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	opengl? ( X )"
@@ -42,13 +46,14 @@ RDEPEND="
 	>=app-admin/eselect-1.2
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/ply[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	')
 	sci-libs/gdal:=
 	sys-libs/gdbm:=
 	sys-libs/ncurses:=
 	sci-libs/proj:=
-	sci-libs/xdrfile
 	sys-libs/zlib
 	media-libs/libglvnd
 	media-libs/glu
@@ -56,6 +61,7 @@ RDEPEND="
 		virtual/cblas[eselect-ldso(+)]
 		virtual/blas[eselect-ldso(+)]
 	)
+	bzip2? ( app-arch/bzip2:= )
 	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos:= )
 	lapack? ( virtual/lapack[eselect-ldso(+)] )
@@ -73,8 +79,12 @@ RDEPEND="
 	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
-		dev-python/wxpython:4.0
-		x11-libs/cairo[X,opengl?]
+		$(python_gen_cond_dep '
+			>=dev-python/matplotlib-1.2[wxwidgets,${PYTHON_USEDEP}]
+			dev-python/pillow[${PYTHON_USEDEP}]
+			>=dev-python/wxpython-4.1:4.0[${PYTHON_USEDEP}]
+		')
+		x11-libs/cairo[X]
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -161,7 +171,7 @@ src_configure() {
 		--with-proj-share="${EPREFIX}"/usr/share/proj/
 		$(use_with cxx)
 		$(use_with tiff)
-		$(use_with png)
+		$(use_with png libpng "${EPREFIX}"/usr/bin/libpng-config)
 		$(use_with postgres)
 		$(use_with mysql)
 		$(use_with mysql mysql-includes "${EPREFIX}"/usr/include/mysql)
@@ -179,6 +189,7 @@ src_configure() {
 		$(use_with threads pthread)
 		$(use_with openmp)
 		$(use_with opencl)
+		$(use_with bzip2 bzlib)
 		$(use_with pdal pdal "${EPREFIX}"/usr/bin/pdal-config)
 		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
@@ -224,33 +235,10 @@ src_install() {
 	dodir /usr/include/
 	dosym ../$(get_libdir)/${MY_PM}/include/grass /usr/include/grass
 
-	# fix paths in addons makefile includes
-	local scriptMakeDir="${ED}"/usr/$(get_libdir)/${MY_PM}/include/Make/
-	for f in "${scriptMakeDir}"/*; do
-		file="${f##*/}"
-		echo sed -i "s|${ED}|/|g" "${scriptMakeDir}/${file}" || die
-		sed -i "s|${ED}|/|g" "${scriptMakeDir}/${file}" || die
-	done
-
-	# get proper folder for grass path in script
-	local gisbase=/usr/$(get_libdir)/${MY_PM}
-	sed -e "s:GISBASE = os.path.normpath(\"${D}/usr/$(get_libdir)/${MY_PM}\"):\
-GISBASE = os.path.normpath(\"${gisbase}\"):" \
-		-i "${ED}"/usr/bin/grass || die
-
-	# get proper fonts path for fontcap
-	sed -i \
-		-e "s|${ED}/usr/${MY_PM}|${EPREFIX}/usr/$(get_libdir)/${MY_PM}|" \
-		"${ED}"${gisbase}/etc/fontcap || die
-
 	# set proper python interpreter
 	sed -e "s:os.environ\[\"GRASS_PYTHON\"\] = \"python3\":\
 os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 		-i "${ED}"/usr/bin/grass || die
-
-	# set proper GISDBASE directory path in the demolocation .grassrc${GVERSION//.} file
-	sed -e "s:GISDBASE\:.*$:GISDBASE\: ${gisbase}:" \
-		-i "${ED}"${gisbase}/demolocation/.grassrc${GVERSION//.} || die
 
 	if use X; then
 		local GUI="--gui"

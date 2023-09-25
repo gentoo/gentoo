@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools xdg
 
-DESCRIPTION="A GTK+ based utility to split mp3 and ogg files without decoding"
-HOMEPAGE="http://mp3splt.sourceforge.net"
+DESCRIPTION="GTK+ based utility to split mp3 and ogg files without decoding"
+HOMEPAGE="https://mp3splt.sourceforge.net"
 SRC_URI="mirror://sourceforge/mp3splt/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="doc gstreamer nls"

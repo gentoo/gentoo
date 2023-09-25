@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3 autotools
 else
 	SRC_URI="https://sf.net/projects/libwpd/files/${PN}/${P}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Helper library for REVerse ENGineered formats filters"
@@ -34,7 +34,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		$(use_with doc docs)
+		$(multilib_native_use_with doc docs)
 		$(use_enable test tests)
 	)
 	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"

@@ -14,7 +14,7 @@
 			<email>mgorny@gentoo.org</email>
 			<name>Michał Górny</name>
 		</maintainer>
-		<bugs-to>https://github.com/mgorny/mirage2iso/issues/</bugs-to>
-		<remote-id type="github">mgorny/mirage2iso</remote-id>
+		<bugs-to>https://github.com/projg2/mirage2iso/issues/</bugs-to>
+		<remote-id type="github">projg2/mirage2iso</remote-id>
 	</upstream>
 </pkgmetadata>

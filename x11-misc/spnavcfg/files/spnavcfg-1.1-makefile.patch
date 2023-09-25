@@ -1,0 +1,23 @@
+From fd9aa10fb8e19a257398757943b3d8e79906e583 Mon Sep 17 00:00:00 2001
+From: John Tsiombikas <nuclear@member.fsf.org>
+Date: Sun, 8 Jan 2023 21:49:12 +0200
+Subject: [PATCH] Make sure there are no duplicate object files. Closes issue
+ #29
+
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index b760f4d..f66ba22 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -2,7 +2,7 @@ csrc = $(wildcard src/*.c)
+ ccsrc = $(wildcard src/*.cc)
+ mochdr = src/ui.h
+ mocsrc = $(mochdr:.h=.moc.cc)
+-obj = $(csrc:.c=.o) $(ccsrc:.cc=.o) $(mocsrc:.cc=.o) res.cc
++obj = $(sort $(csrc:.c=.o) $(ccsrc:.cc=.o) $(mocsrc:.cc=.o)) res.cc
+ dep = $(csrc:.c=.d) $(ccsrc:.cc=.d)
+ bin = spnavcfg
+ 

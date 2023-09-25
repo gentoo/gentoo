@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 VALA_USE_DEPEND=vapigen
 
 inherit git-r3 lua-single meson python-single-r1 vala xdg
@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-glib-0.7.16
-	>=dev-libs/glib-2.68.0:2
+	>=dev-libs/glib-2.70.0:2
 	>=dev-libs/json-glib-1.4.4
 	dev-libs/libxml2:2
 	dev-libs/libxslt
@@ -40,13 +40,13 @@ COMMON_DEPEND="
 	>=media-libs/babl-0.1.98[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.40:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.46:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.13.1:2
 	media-libs/libjpeg-turbo:=
 	>=media-libs/libmypaint-1.6.1:=
-	>=media-libs/libpng-1.6.37:=
+	>=media-libs/libpng-1.6.37:0=
 	>=media-libs/tiff-4.1.0:=
 	net-libs/glib-networking[ssl]
 	sys-libs/zlib
@@ -54,6 +54,7 @@ COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
 	>=x11-libs/gtk+-3.24.16:3[introspection]
 	>=x11-libs/pango-1.44.7
+	>=x11-libs/libXmu-1.1.4
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	heif? ( >=media-libs/libheif-1.13.0:= )
@@ -130,7 +131,10 @@ src_prepare() {
 	# Fix pygimp.interp python implementation path.
 	# Meson @PYTHON_PATH@ use sandbox path e.g.:
 	# '/var/tmp/portage/media-gfx/gimp-2.99.12/temp/python3.10/bin/python3'
-	sed -i -e 's:@PYTHON_PATH@:'${EPYTHON}':' plug-ins/python/pygimp.interp.in || die
+	sed -i -e 's/@PYTHON_PATH@/'${EPYTHON}'/' plug-ins/python/pygimp.interp.in || die
+
+	# Set proper intallation path of documentation logo
+	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" data/images/meson.build || die
 }
 
 _adjust_sandbox() {
@@ -153,7 +157,7 @@ src_configure() {
 	use vala && vala_setup
 
 	local emesonargs=(
-		-Denable-default-bin=true
+		-Denable-default-bin=enabled
 
 		-Dcheck-update=no
 		-Denable-multiproc=true
@@ -165,22 +169,22 @@ src_configure() {
 		$(meson_feature alsa)
 		$(meson_feature doc gi-docgen)
 		$(meson_feature heif)
+		$(meson_feature javascript)
 		$(meson_feature jpeg2k jpeg2000)
 		$(meson_feature jpegxl jpeg-xl)
+		$(meson_feature lua)
 		$(meson_feature mng)
 		$(meson_feature openexr)
 		$(meson_feature postscript ghostscript)
+		$(meson_feature python)
 		$(meson_feature test headless-tests)
 		$(meson_feature udev gudev)
-		$(meson_feature vala vala-plugins)
+		$(meson_feature vala)
 		$(meson_feature webp)
 		$(meson_feature wmf)
 		$(meson_feature X xcursor)
 		$(meson_feature xpm)
 		$(meson_use doc g-ir-doc)
-		$(meson_use javascript)
-		$(meson_use lua)
-		$(meson_use python)
 		$(meson_use unwind libunwind)
 		$(meson_use vector-icons)
 	)
@@ -211,6 +215,11 @@ _rename_plugins() {
 	)
 }
 
+src_test() {
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}/libgimp:${LD_LIBRARY_PATH}"
+	meson_src_test
+}
+
 src_install() {
 	meson_src_install
 
@@ -238,9 +247,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }

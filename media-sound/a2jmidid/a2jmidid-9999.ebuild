@@ -1,16 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit meson python-single-r1 git-r3
 
 DESCRIPTION="Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system"
-HOMEPAGE="https://github.com/linuxaudio/a2jmidid"
-EGIT_REPO_URI="https://github.com/linuxaudio/a2jmidid.git"
+HOMEPAGE="https://github.com/jackaudio/a2jmidid"
+EGIT_REPO_URI="https://github.com/jackaudio/a2jmidid.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}"
 DOCS=( AUTHORS.rst CHANGELOG.rst README.rst internals.txt )
 
 src_configure() {
-	local emasonargs=(
+	local emesonargs=(
 		-Ddisable-dbus=$(usex dbus false true)
 	)
 

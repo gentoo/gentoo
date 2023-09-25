@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		For various reasons, ``urllib.parse`` and its Python 2 predecessor
+		``urlparse`` are not compliant with current Internet standards.  As
+		stated in `Lib/urllib/parse.py
+		&lt;https://github.com/python/cpython/blob/3.8/Lib/urllib/parse.py&gt;`_:
+
+			RFC 3986 is considered the current standard and any future changes
+			to urlparse module should conform with it.  The urlparse module is
+			currently not entirely compliant with this RFC due to defacto
+			scenarios for parsing, and for backward compatibility purposes,
+			some parsing quirks from older RFCs are retained.
+
+		This module aims to provide fully RFC 3986 compliant replacements for
+		the most commonly used functions found in ``urllib.parse``.  It also
+		includes functions for distinguishing between the different forms of
+		URIs and URI references, and for conveniently creating URIs from their
+		individual components.
+	</longdescription>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">uritools</remote-id>
+		<remote-id type="github">tkem/uritools</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+From 2b6195c6dc479692aa5b7b07356d788b3dd21596 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Mon, 5 Dec 2022 07:19:51 +0100
+Subject: [PATCH] fix linking of vdb_tool with OpenEXR
+
+This patch is Gentoo specific. Ideally it should respect the OpenEXR version
+being installed. Because we only support OpenEXR-3 for OpenVDB, the patch
+works on Gentoo, but not on setups where OpenEXR-2 is still being used to
+build OpenVDB.
+
+Bug: https://github.com/AcademySoftwareFoundation/openvdb/issues/1541
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/openvdb_cmd/vdb_tool/CMakeLists.txt
++++ b/openvdb_cmd/vdb_tool/CMakeLists.txt
+@@ -93,7 +93,7 @@ endif()
+ if(OPENVDB_TOOL_USE_EXR)
+   target_compile_definitions(vdb_tool_common INTERFACE "VDB_TOOL_USE_EXR")
+   find_package(OpenEXR REQUIRED)
+-  target_link_libraries(vdb_tool_common INTERFACE OpenEXR::IlmImf)
++  target_link_libraries(vdb_tool_common INTERFACE OpenEXR::OpenEXR)
+ endif()
+ 
+ if(OPENVDB_TOOL_USE_ABC)
+-- 
+2.38.1
+

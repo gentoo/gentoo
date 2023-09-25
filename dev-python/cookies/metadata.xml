@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">cookies</remote-id>
+		<remote-id type="gitlab">sashahart/cookies</remote-id>
 	</upstream>
 </pkgmetadata>

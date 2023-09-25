@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/linbox-team/givaro/releases/download/v${PV}/${P}.tar
 
 LICENSE="CeCILL-B"
 SLOT="0/9"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 doc static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -30,6 +30,7 @@ DOCS=( AUTHORS ChangeLog README.md )
 
 PATCHES=(
 	"${FILESDIR}/givaro-4.1.1-gcc-10.patch"
+	"${FILESDIR}/givaro-4.1.1-gcc-13.patch"
 	"${FILESDIR}/givaro-4.1.1-fix-pc-libdir.patch"
 )
 

@@ -5,10 +5,6 @@
         <email>xgqt@gentoo.org</email>
         <name>Maciej Barć</name>
     </maintainer>
-    <maintainer type="person">
-        <email>sultan@gentoo.org</email>
-        <name>Stephan Hartmann</name>
-    </maintainer>
     <longdescription>
         A screencast tool to display your keys, inspired by Screenflick.
         Featuring:

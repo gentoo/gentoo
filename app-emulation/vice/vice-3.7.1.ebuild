@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/vice-emu/releases/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="
 	alsa debug doc ethernet ffmpeg flac gif +gtk headless lame mpg123
 	ogg openmp oss parport pci png portaudio pulseaudio sdl zlib"
@@ -54,7 +54,7 @@ RDEPEND="
 	pci? ( sys-apps/pciutils )
 	png? ( media-libs/libpng:= )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
+	pulseaudio? ( media-libs/libpulse )
 	sdl? (
 		media-libs/libsdl2[video]
 		media-libs/sdl2-image

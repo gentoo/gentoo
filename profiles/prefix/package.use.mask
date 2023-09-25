@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (2022-02-13)
@@ -24,19 +24,19 @@ sys-apps/debianutils installkernel
 sys-devel/binutils gold default-gold
 
 # Fabian Groffen <grobian@gentoo.org> (2018-12-27)
-# USE-dep fixing, bugs #665088, #667266, #671730, 
+# USE-dep fixing, bugs #665088, #667266, #671730,
 dev-db/postgresql kerberos ldap llvm pam systemd
 net-libs/libsoup gssapi samba vala
 net-libs/glib-networking gnome libproxy
 net-misc/wget metalink uuid
 sys-apps/dbus selinux elogind systemd
-app-doc/doxygen clang doxysearch qt5
+app-doc/doxygen clang doxysearch qt5 gui
 app-text/ghostscript-gpl cups
 app-text/texlive-core cjk
 
 # Mikle Kolyada <zlogene@gentoo.org> (2014-11-29)
 # Masked because of lack of manpower/time (bug #497068)
-dev-vcs/git mediawiki mediawiki-experimental
+dev-vcs/git mediawiki
 
 # Fabian Groffen <grobian@gentoo.org> (2010-10-23)
 # IPC relies on pipes, selects, polls, and more stuff that Python is

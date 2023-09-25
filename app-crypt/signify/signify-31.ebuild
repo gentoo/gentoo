@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,18 +16,28 @@ SRC_URI="
 	verify-sig? (
 		https://github.com/aperezdc/${PN}/releases/download/v${PV}/SHA256.sig
 			-> ${P}.sha.sig
-	)"
+	)
+"
 
 LICENSE="BSD-1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
-RDEPEND="!net-mail/signify
-	>=dev-libs/libbsd-0.7"
-DEPEND="${RDEPEND}"
-BDEPEND="verify-sig? ( sec-keys/signify-keys-signify )"
+DEPEND="
+	>=dev-libs/libbsd-0.7
+"
+RDEPEND="
+	${DEPEND}
+	!net-mail/signify
+"
+BDEPEND="
+	verify-sig? ( sec-keys/signify-keys-signify )
+"
 
-PATCHES=( "${FILESDIR}"/${PN}-30-man_compress.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-30-man_compress.patch
+	"${FILESDIR}"/${PN}-31-fix-build-clang-16.patch
+)
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/signify-keys/${PN}-30.pub"
 

@@ -1,0 +1,21 @@
+This patches meson.build to enable it to find lua in any of its
+many wonderous hiding places. It also bumps the meson version so that
+there's a ton less boilerplate to do so.
+--- a/meson.build
++++ b/meson.build
+@@ -1,5 +1,5 @@
+ 
+-project('freeciv', ['c', 'cpp'], meson_version: '>= 0.57.0')
++project('freeciv', ['c', 'cpp'], meson_version: '>= 0.60.0')
+ 
+ if not get_option('ack_experimental')
+   error('Autotools are still the only fully supported way to build freeciv.\nSet configure option "ack_experimental" to true if you really want to do experimental meson build.\n' +
+@@ -436,7 +436,7 @@ endif
+ icu_dep = dependency('icu-uc')
+ 
+ syslua = get_option('syslua')
+-lua_dep_tmp = dependency('lua-5.4', required:false)
++lua_dep_tmp = dependency('lua-5.4', 'lua-54', 'lua54', 'lua5.4', required:false)
+ 
+ if syslua != 'false' and lua_dep_tmp.found()
+   lua_inc_path = []

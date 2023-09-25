@@ -1,9 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby26 ruby27"
-# ruby30 should be fine according to fluent docs but http_parser_rb and serverengine below doesn't.
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -30,6 +29,8 @@ ruby_add_rdepend "
 	>=dev-ruby/strptime-0.2.2
 	>=dev-ruby/tzinfo-1.0
 	>=dev-ruby/yajl-ruby-1.0"
+
+ruby_add_depend "test? ( dev-ruby/flexmock )"
 
 all_ruby_prepare() {
 	sed -i \

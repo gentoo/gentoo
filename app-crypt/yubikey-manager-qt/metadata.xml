@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>zerochaos@gentoo.org</email>
-    <name>Rick Farina</name>
-  </maintainer>
+	<maintainer type="person">
+		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Yubico/yubikey-manager-qt</remote-id>
+	</upstream>
 </pkgmetadata>

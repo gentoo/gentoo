@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kodi-addon.eclass
@@ -17,8 +17,6 @@ esac
 
 inherit cmake
 
-EXPORT_FUNCTIONS src_configure
-
 # @FUNCTION: kodi-addon_src_configure
 # @DESCRIPTION:
 # Configure handling for Kodi addons
@@ -30,3 +28,5 @@ kodi-addon_src_configure() {
 
 	cmake_src_configure
 }
+
+EXPORT_FUNCTIONS src_configure

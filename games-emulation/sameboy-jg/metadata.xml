@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		SameBoy is an extremely accurate, powerful and open source
+		Game Boy (DMG), Game Boy Color (CGB) and Super Game Boy (SGB)
+		emulator, written in portable C.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/sameboy/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/sameboy</remote-id>
+	</upstream>
+</pkgmetadata>

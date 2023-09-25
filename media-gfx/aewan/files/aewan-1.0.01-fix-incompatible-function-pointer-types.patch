@@ -1,0 +1,35 @@
+Subject: [PATCH] Fix incompatible function pointer types
+
+Clang 16 (and likely GCC 14) will enforce strict C99 semantics
+  and break old K&R C declarations and require correct C89
+  function prototypes.
+
+Bug: https://bugs.gentoo.org/880809
+Clang: https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213/9
+
+Patch has been sent to upstream here: https://sourceforge.net/p/aewan/bugs/14/
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+--- a/aeff.c
++++ b/aeff.c
+@@ -88,7 +88,7 @@ static bool read_parse_data_line(gzFile f, char **label, char **type,
+    autod_begin;
+    autod_register(line, free);
+ 
+-   autod_assign( line, freadline_ex(f, gzgetc) );
++   autod_assign( line, freadline_ex(f, (void*)gzgetc) );
+ 
+    /* look for ':' field separators and note their locations */
+    field_start[0] = line;
+@@ -192,7 +192,7 @@ static bool aeff_read_mark(AeFile *f, const char *mark_name, char pref) {
+    autod_begin;
+    autod_register(line, free);
+    
+-   autod_assign(line, freadline_ex(f->f, gzgetc));
++   autod_assign(line, freadline_ex(f->f, (void*)gzgetc));
+ 
+    /* if EOF was reached before anything could be read, something is wrong */
+    if (!line) {
+-- 
+2.39.1
+

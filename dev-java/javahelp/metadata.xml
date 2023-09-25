@@ -12,4 +12,7 @@
 		implementation of that specification. The JavaHelp system open source
 		project includes the source to the reference implementation.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">javaee/javahelp</remote-id>
+	</upstream>
 </pkgmetadata>

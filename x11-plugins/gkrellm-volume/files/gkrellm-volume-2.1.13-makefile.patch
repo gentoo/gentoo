@@ -1,5 +1,5 @@
---- a/Makefile	2004-08-19 22:07:27.000000000 +0200
-+++ b/Makefile_new	2013-03-16 21:16:03.919755685 +0100
+--- a/Makefile
++++ b/Makefile_new
 @@ -3,7 +3,7 @@
  PACKAGE ?= gkrellm-volume
  LOCALEDIR ?= /usr/local/share/locale

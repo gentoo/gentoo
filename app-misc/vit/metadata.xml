@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">
-  A perl/Curses front end for Taskwarrior (<pkg>app-misc/task</pkg>) that
-  provides a fullscreen terminal window with modes and commands
-  modeled after the vi editor.
-</longdescription>
+  <maintainer type="person">
+    <email>mattst88@gentoo.org</email>
+    <name>Matt Turner</name>
+  </maintainer>
   <upstream>
-    <remote-id type="github">scottkosty/vit</remote-id>
+    <remote-id type="github">vit-project/vit</remote-id>
+    <remote-id type="pypi">vit</remote-id>
   </upstream>
 </pkgmetadata>

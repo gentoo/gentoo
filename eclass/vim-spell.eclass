@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-spell.eclass
@@ -63,12 +63,10 @@
 # spell files. It's best to let upstream know if you've generated spell files
 # for another language rather than keeping them Gentoo-specific.
 
-case ${EAPI:-0} in
-	[67]) ;;
+case ${EAPI} in
+	6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS src_install pkg_postinst
 
 if [[ -z ${_VIM_SPELL_ECLASS} ]] ; then
 _VIM_SPELL_ECLASS=1
@@ -81,30 +79,30 @@ SLOT="0"
 # This variable defines the language for the spell package being
 # installed.
 # The default value is "English".
-: ${VIM_SPELL_LANGUAGE:="English"}
+: "${VIM_SPELL_LANGUAGE:="English"}"
 
 # @ECLASS_VARIABLE: VIM_SPELL_LOCALE
 # @INTERNAL
 # @DESCRIPTION:
 # This variable defines the locale for the current ebuild.
 # The default value is ${PN} stripped of the "vim-spell-" string.
-: ${VIM_SPELL_LOCALE:="${PN/vim-spell-/}"}
+: "${VIM_SPELL_LOCALE:="${PN/vim-spell-/}"}"
 
 # @ECLASS_VARIABLE: VIM_SPELL_DIRECTORY
 # @INTERNAL
 # @DESCRIPTION:
 # This variable defines the path to Vim spell files.
-: ${VIM_SPELL_DIRECTORY:="${EPREFIX}/usr/share/vim/vimfiles/spell/"}
+: "${VIM_SPELL_DIRECTORY:=/usr/share/vim/vimfiles/spell}"
 
 # @ECLASS_VARIABLE: DESCRIPTION
 # @DESCRIPTION:
 # This variable defines the DESCRIPTION for Vim spell ebuilds.
-: ${DESCRIPTION:="vim spell files: ${VIM_SPELL_LANGUAGE} (${VIM_SPELL_LOCALE})"}
+: "${DESCRIPTION:="vim spell files: ${VIM_SPELL_LANGUAGE} (${VIM_SPELL_LOCALE})"}"
 
 # @ECLASS_VARIABLE: HOMEPAGE
 # @DESCRIPTION:
 # This variable defines the HOMEPAGE for Vim spell ebuilds.
-: ${HOMEPAGE:="https://www.vim.org"}
+: "${HOMEPAGE:="https://www.vim.org"}"
 
 # @FUNCTION: vim-spell_src_install
 # @DESCRIPTION:
@@ -157,3 +155,5 @@ vim-spell_pkg_postinst() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_install pkg_postinst

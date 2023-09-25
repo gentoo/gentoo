@@ -11,7 +11,7 @@ HOMEPAGE="http://untroubled.org/qmail-notify/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~hppa ~ppc sparc x86"
+KEYWORDS="amd64 ~hppa sparc x86"
 IUSE=""
 
 DEPEND=""

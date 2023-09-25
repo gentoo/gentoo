@@ -2,7 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation.</longdescription>
+	<longdescription lang="en">
+		OpenColorIO (OCIO) is a complete color management solution geared
+		towards motion picture production with an emphasis on visual effects
+		and computer animation.
+	</longdescription>
+	<use>
+		<flag name="apps">Build the OCIO command line apps</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">AcademySoftwareFoundation/OpenColorIO</remote-id>
 	</upstream>

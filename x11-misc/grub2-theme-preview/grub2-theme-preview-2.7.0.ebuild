@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -21,7 +21,7 @@ RDEPEND="app-emulation/qemu
 	sys-fs/mtools
 	grub_platforms_efi-64? (
 		sys-boot/grub:2[grub_platforms_efi-64]
-		sys-firmware/edk2-ovmf
+		|| ( sys-firmware/edk2-ovmf sys-firmware/edk2-ovmf-bin )
 	)
 	!grub_platforms_efi-64? (
 		sys-boot/grub:2[grub_platforms_pc]

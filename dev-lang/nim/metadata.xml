@@ -6,6 +6,10 @@
     <email>xgqt@gentoo.org</email>
     <name>Maciej Barć</name>
   </maintainer>
+  <maintainer type="project">
+    <email>nim@gentoo.org</email>
+    <name>Gentoo Nim Project</name>
+  </maintainer>
   <longdescription>
     Nim is a statically typed compiled systems programming language.
     It combines successful concepts from mature languages like Python,
@@ -38,5 +42,6 @@
   </upstream>
   <use>
     <flag name="experimental">Apply experimental patches</flag>
+    <flag name="test-js">Enable tests that require Node.js</flag>
   </use>
 </pkgmetadata>

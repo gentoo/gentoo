@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/rspec-3.9.0:3 >=dev-ruby/thread_order-1.1.0 )"
@@ -46,11 +46,14 @@ each_ruby_prepare() {
 	sed -i -e '/shell_out/ s:ruby:'${RUBY}':' spec/rspec/support/spec/shell_out_spec.rb || die
 
 	case ${RUBY} in
-		*ruby31)
+		*ruby31|*ruby32)
 			# Avoid specs failing when run in Gentoo, possibly due to different IO
 			sed -e '/outputs unified diff message of two arrays/askip "ruby31 IO"' \
 				-e '/outputs unified diff message for hashes inside arrays with differing key orders/askip "ruby31 IO"' \
 			    -i spec/rspec/support/differ_spec.rb || die
+
+			# Avoid specs broken on newer ruby versions and already pending upstream
+			rm -f spec/rspec/support/reentrant_mutex_spec.rb
 			;;
 	esac
 }

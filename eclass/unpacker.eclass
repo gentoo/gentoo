@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: unpacker.eclass
@@ -15,8 +15,8 @@
 #  - merge rpm unpacking
 #  - support partial unpacks?
 
-case ${EAPI:-0} in
-	[678]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -122,7 +122,7 @@ unpack_pdv() {
 	local tmpfile="${T}/${FUNCNAME}"
 	tail -c +$((${tailskip}+1)) ${src} 2>/dev/null | head -c 512 > "${tmpfile}"
 
-	local iscompressed=$(file -b "${tmpfile}")
+	local iscompressed=$(file -S -b "${tmpfile}")
 	if [[ ${iscompressed:0:8} == "compress" ]] ; then
 		iscompressed=1
 		mv "${tmpfile}"{,.Z}
@@ -130,14 +130,14 @@ unpack_pdv() {
 	else
 		iscompressed=0
 	fi
-	local istar=$(file -b "${tmpfile}")
+	local istar=$(file -S -b "${tmpfile}")
 	if [[ ${istar:0:9} == "POSIX tar" ]] ; then
 		istar=1
 	else
 		istar=0
 	fi
 
-	#for some reason gzip dies with this ... dd cant provide buffer fast enough ?
+	# For some reason gzip dies with this ... dd can't provide buffer fast enough ?
 	#dd if=${src} ibs=${metaskip} count=1 \
 	#	| dd ibs=${tailskip} skip=1 \
 	#	| gzip -dc \
@@ -239,12 +239,12 @@ unpack_makeself() {
 	case ${exe} in
 		tail)	exe=( tail -n +${skip} "${src}" );;
 		dd)		exe=( dd ibs=${skip} skip=1 if="${src}" );;
-		*)		die "makeself cant handle exe '${exe}'"
+		*)		die "makeself can't handle exe '${exe}'"
 	esac
 
 	# lets grab the first few bytes of the file to figure out what kind of archive it is
 	local decomp= filetype suffix
-	filetype=$("${exe[@]}" 2>/dev/null | head -c 512 | file -b -) || die
+	filetype=$("${exe[@]}" 2>/dev/null | head -c 512 | file -S -b -) || die
 	case ${filetype} in
 		*tar\ archive*)
 			decomp=cat
@@ -325,7 +325,7 @@ unpack_deb() {
 			$(tc-getBUILD_AR) p "${deb}" "${f}" | ${decomp:-cat}
 			assert "unpacking ${f} from ${deb} failed"
 		fi
-	} | tar --no-same-owner -x
+	} | tar --no-same-owner -xf -
 	assert "unpacking ${deb} failed"
 }
 
@@ -421,7 +421,7 @@ _unpacker_get_decompressor() {
 			type -P lbzip2 || type -P pbzip2 || type -P bzip2
 		)}
 		local bzuncmd=${PORTAGE_BUNZIP2_COMMAND:-${bzcmd} -d}
-		: ${UNPACKER_BZ2:=${bzuncmd}}
+		: "${UNPACKER_BZ2:=${bzuncmd}}"
 		echo "${UNPACKER_BZ2} -c"
 		;;
 	*.z|*.gz|*.tgz)
@@ -444,7 +444,7 @@ _unpacker_get_decompressor() {
 			done
 		}
 
-		: ${UNPACKER_LZIP:=$(find_lz_unpacker)}
+		: "${UNPACKER_LZIP:=$(find_lz_unpacker)}"
 		echo "${UNPACKER_LZIP} -dc" ;;
 	*.zst)
 		echo "zstd -dc" ;;
@@ -596,7 +596,8 @@ unpacker_src_unpack() {
 #
 # Note: USE flags are not yet handled.
 unpacker_src_uri_depends() {
-	local uri deps d
+	local uri
+	local -A deps
 
 	if [[ $# -eq 0 ]] ; then
 		# Disable path expansion for USE conditionals. #654960
@@ -606,20 +607,19 @@ unpacker_src_uri_depends() {
 	fi
 
 	for uri in "$@" ; do
-		local m=${uri,,}
-		case ${m} in
+		case ${uri,,} in
 		*.cpio.*|*.cpio)
-			d="app-arch/cpio" ;;
+			deps[cpio]="app-arch/cpio" ;;
 		*.rar)
-			d="app-arch/unrar" ;;
+			deps[rar]="app-arch/unrar" ;;
 		*.7z)
-			d="app-arch/p7zip" ;;
+			deps[7z]="app-arch/p7zip" ;;
 		*.xz)
-			d="app-arch/xz-utils" ;;
+			deps[xz]="app-arch/xz-utils" ;;
 		*.zip)
-			d="app-arch/unzip" ;;
+			deps[zip]="app-arch/unzip" ;;
 		*.lz)
-			d="
+			deps[lz]="
 				|| (
 					>=app-arch/xz-utils-5.4.0
 					app-arch/plzip
@@ -629,20 +629,19 @@ unpacker_src_uri_depends() {
 			"
 			;;
 		*.zst)
-			d="app-arch/zstd" ;;
+			deps[zst]="app-arch/zstd" ;;
 		*.lha|*.lzh)
-			d="app-arch/lha" ;;
+			deps[lhah]="app-arch/lha" ;;
 		*.lz4)
-			d="app-arch/lz4" ;;
+			deps[lz4]="app-arch/lz4" ;;
 		*.lzo)
-			d="app-arch/lzop" ;;
+			deps[lzo]="app-arch/lzop" ;;
 		esac
-		deps+=" ${d}"
 	done
 
-	echo "${deps}"
+	echo "${deps[*]}"
 }
 
-EXPORT_FUNCTIONS src_unpack
-
 fi
+
+EXPORT_FUNCTIONS src_unpack

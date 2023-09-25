@@ -1,0 +1,187 @@
+From 1fe8a0dbde9f5e004b11430a9097a61b327967fe Mon Sep 17 00:00:00 2001
+From: Ming-Hung Tsai <mtsai@redhat.com>
+Date: Fri, 21 Aug 2020 18:26:48 +0800
+Subject: [PATCH] [thin_check] Allow using --clear-needs-check and
+ --skip-mappings together
+
+Although it is not recommended to clear the flag without a full
+examination, however, the usage has been documented as an approach
+to reduce lvchange run time [1]. For the purpose of backward
+compatibility and avoiding boot failure after upgrading thin_check [2],
+the limitation is now removed.
+
+[1] https://wiki.archlinux.org/index.php/LVM#Thinly-provisioned_root_volume_device_times_out
+[2] Community feedback on previous commit:
+    https://github.com/jthornber/thin-provisioning-tools/commit/b278f4f
+---
+ tests/thin_check.rs                   | 18 +++++--
+ thin-provisioning/metadata_checker.cc | 71 ++++++++++++++-------------
+ thin-provisioning/metadata_checker.h  |  3 ++
+ 3 files changed, 53 insertions(+), 39 deletions(-)
+
+diff --git a/thin-provisioning/metadata_checker.cc b/thin-provisioning/metadata_checker.cc
+index 0b26eca..a398ce8 100644
+--- a/thin-provisioning/metadata_checker.cc
++++ b/thin-provisioning/metadata_checker.cc
+@@ -371,7 +371,8 @@ namespace {
+ 			  out_(cerr, 2),
+ 			  info_out_(cout, 0),
+ 			  expected_rc_(true), // set stop on the first error
+-			  err_(NO_ERROR) {
++			  err_(NO_ERROR),
++			  metadata_checked_(false) {
+ 
+ 			if (output_opts == OUTPUT_QUIET) {
+ 				out_.disable();
+@@ -381,6 +382,22 @@ namespace {
+ 			sb_location_ = get_superblock_location();
+ 		}
+ 
++		void check_and_repair() {
++			check();
++			if (options_.fix_metadata_leaks_)
++				fix_metadata_leaks(options_.open_transaction_);
++			if (options_.clear_needs_check_)
++				clear_needs_check_flag();
++		}
++
++		bool get_status() const {
++			if (options_.ignore_non_fatal_)
++				return (err_ == FATAL) ? false : true;
++
++			return (err_ == NO_ERROR) ? true : false;
++		}
++
++	private:
+ 		void check() {
+ 			block_manager::ptr bm = open_bm(path_, block_manager::READ_ONLY,
+ 							!options_.use_metadata_snap_);
+@@ -419,10 +436,12 @@ namespace {
+ 			} else
+ 				err_ << examine_data_mappings(tm, sb, options_.data_mapping_opts_, out_,
+ 							      optional<space_map::ptr>());
++
++			metadata_checked_ = true;
+ 		}
+ 
+ 		bool fix_metadata_leaks(bool open_transaction) {
+-			if (!verify_preconditions_before_fixing()) {
++			if (!metadata_checked_) {
+ 				out_ << "metadata has not been fully examined" << end_message();
+ 				return false;
+ 			}
+@@ -458,7 +477,7 @@ namespace {
+ 		}
+ 
+ 		bool clear_needs_check_flag() {
+-			if (!verify_preconditions_before_fixing()) {
++			if (!metadata_checked_) {
+ 				out_ << "metadata has not been fully examined" << end_message();
+ 				return false;
+ 			}
+@@ -480,14 +499,6 @@ namespace {
+ 			return true;
+ 		}
+ 
+-		bool get_status() const {
+-			if (options_.ignore_non_fatal_)
+-				return (err_ == FATAL) ? false : true;
+-
+-			return (err_ == NO_ERROR) ? true : false;
+-		}
+-
+-	private:
+ 		block_address
+ 		get_superblock_location() {
+ 			block_address sb_location = superblock_detail::SUPERBLOCK_LOCATION;
+@@ -545,19 +556,6 @@ namespace {
+ 			return err;
+ 		}
+ 
+-		bool verify_preconditions_before_fixing() const {
+-			if (options_.use_metadata_snap_ ||
+-			    !!options_.override_mapping_root_ ||
+-			    options_.sm_opts_ != check_options::SPACE_MAP_FULL ||
+-			    options_.data_mapping_opts_ != check_options::DATA_MAPPING_LEVEL2)
+-				return false;
+-
+-			if (!expected_rc_.get_counts().size())
+-				return false;
+-
+-			return true;
+-		}
+-
+ 		std::string const &path_;
+ 		check_options options_;
+ 		nested_output out_;
+@@ -565,6 +563,7 @@ namespace {
+ 		block_address sb_location_;
+ 		block_counter expected_rc_;
+ 		base::error_state err_; // metadata state
++		bool metadata_checked_;
+ 	};
+ }
+ 
+@@ -628,12 +627,22 @@ bool check_options::check_conformance() {
+ 			cerr << "cannot perform fix with an overridden mapping root" << endl;
+ 			return false;
+ 		}
++	}
++
++	if (fix_metadata_leaks_ &&
++	    (data_mapping_opts_ != DATA_MAPPING_LEVEL2 || sm_opts_ != SPACE_MAP_FULL)) {
++		cerr << "cannot perform fix without a full examination" << endl;
++		return false;
++	}
+ 
+-		if (data_mapping_opts_ != DATA_MAPPING_LEVEL2 ||
+-		    sm_opts_ != SPACE_MAP_FULL) {
+-			cerr << "cannot perform fix without a full examination" << endl;
++	if (clear_needs_check_) {
++		if (data_mapping_opts_ == DATA_MAPPING_NONE) {
++			cerr << "cannot perform fix without partially examination" << endl;
+ 			return false;
+ 		}
++
++		if (data_mapping_opts_ != DATA_MAPPING_LEVEL2 || sm_opts_ != SPACE_MAP_FULL)
++			cerr << "clearing needs_check without a full examination is not suggested" << endl;
+ 	}
+ 
+ 	return true;
+@@ -647,13 +656,7 @@ thin_provisioning::check_metadata(std::string const &path,
+ 				  output_options output_opts)
+ {
+ 	metadata_checker checker(path, check_opts, output_opts);
+-
+-	checker.check();
+-	if (check_opts.fix_metadata_leaks_)
+-		checker.fix_metadata_leaks(check_opts.open_transaction_);
+-	if (check_opts.clear_needs_check_)
+-		checker.clear_needs_check_flag();
+-
++	checker.check_and_repair();
+ 	return checker.get_status();
+ }
+ 
+diff --git a/thin-provisioning/metadata_checker.h b/thin-provisioning/metadata_checker.h
+index b4afbdc..ea66dc3 100644
+--- a/thin-provisioning/metadata_checker.h
++++ b/thin-provisioning/metadata_checker.h
+@@ -48,11 +48,14 @@ namespace thin_provisioning {
+ 		void set_auto_repair();
+ 		void set_clear_needs_check();
+ 
++		// flags for checking
+ 		bool use_metadata_snap_;
+ 		data_mapping_options data_mapping_opts_;
+ 		space_map_options sm_opts_;
+ 		boost::optional<bcache::block_address> override_mapping_root_;
+ 		bool ignore_non_fatal_;
++
++		// flags for repairing
+ 		bool fix_metadata_leaks_;
+ 		bool clear_needs_check_;
+ 		bool open_transaction_;
+-- 
+2.41.0.255.g8b1d071c50-goog
+

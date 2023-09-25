@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit desktop python-single-r1 scons-utils toolchain-funcs udev multilib-minimal
 
@@ -28,7 +28,7 @@ BDEPEND="
 "
 CDEPEND="${PYTHON_DEPS}
 	dev-cpp/libxmlpp:2.6[${MULTILIB_USEDEP}]
-	dev-libs/dbus-c++
+	>=dev-libs/dbus-c++-0.9.0-r5
 	dev-libs/libconfig:=[cxx,${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/libiec61883[${MULTILIB_USEDEP}]

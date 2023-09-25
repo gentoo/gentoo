@@ -5,4 +5,7 @@
 	<use>
 		<flag name="tools">Build and install 'nfctool' for further NFC debugging</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">linux-nfc/neard</remote-id>
+	</upstream>
 </pkgmetadata>

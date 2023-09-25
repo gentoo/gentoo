@@ -11,4 +11,7 @@
 		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (language server)</flag>
 		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">rust-lang/rust</remote-id>
+	</upstream>
 </pkgmetadata>

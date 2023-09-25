@@ -1,0 +1,19 @@
+Adapt to dev-libs/iniparser being slotted in Gentoo.
+--- a/meson.build
++++ b/meson.build
+@@ -179,12 +179,12 @@ iniparser_headers = ['iniparser.h', 'dictionary.h']
+ message('Looking for iniparser include headers', iniparser_headers)
+ 
+ iniparserdir = include_directories(includedir / get_option('iniparserdir'), is_system:true)
+-iniparser = cc.find_library('iniparser', required : (get_option('iniparserdir') != '') ,
++iniparser = cc.find_library('iniparser4', required : (get_option('iniparserdir') != '') ,
+ 	  has_headers :iniparser_headers ,header_include_directories : iniparserdir)
+ 
+ if not iniparser.found()
+-   iniparserdir = include_directories(includedir / 'iniparser', is_system:true)
+-   iniparser = cc.find_library('iniparser', required : true, has_headers : iniparser_headers,
++   iniparserdir = include_directories(includedir / 'iniparser4', is_system:true)
++   iniparser = cc.find_library('iniparser4', required : true, has_headers : iniparser_headers,
+ 	     header_include_directories : iniparserdir)
+ endif
+ iniparser = declare_dependency(include_directories: iniparserdir, dependencies:iniparser)

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,7 +65,7 @@ pkg_postinst() {
 	optfeature "local cache support" dev-perl/LWP-UserAgent-Cached
 	optfeature "faster JSON to HASH conversion" dev-perl/JSON-XS
 	optfeature "printing results in a fixed-width format (--fixed-width, -W)" dev-perl/Text-CharWidth
-	optfeature "live streams support" net-misc/yt-dlp net-misc/youtube-dl
+	optfeature "live streams support" net-misc/yt-dlp
 	elog
 	elog "Check the configuration file in ~/.config/youtube-viewer/"
 	elog "and configure your video player backend."

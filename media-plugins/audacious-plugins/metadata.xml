@@ -11,8 +11,9 @@
 		<flag name="cue">Support CUE sheets using the libcue library</flag>
 		<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
 		<flag name="gme">Support various gaming console music formats</flag>
-		<flag name="openmpt">Add support for OpenMTP</flag>
 		<flag name="http">Support HTTP streams through neon</flag>
+		<flag name="openmpt">Add support for OpenMPT</flag>
+		<flag name="pipewire">Build the PipeWire output plugin</flag>
 		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="soxr">Build with SoX Resampler support</flag>

@@ -1,0 +1,63 @@
+https://github.com/scanmem/scanmem/pull/425
+
+From bda8b19d3020450518ea87f89477a947c47a85ce Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 15 Feb 2023 09:43:56 +0000
+Subject: [PATCH] Use 'unsigned int' instead of unofficial alias 'uint'
+
+glibc headers have 'uint' typedef'd to 'unsigned int', but this isn't
+guaranteed to be avaialble. Change to 'unsigned int' which is equivalent
+to fix building on musl.
+
+Bug: https://bugs.gentoo.org/854840
+--- a/ptrace.c
++++ b/ptrace.c
+@@ -317,7 +317,7 @@ bool sm_checkmatches(globals_t *vars,
+         match_flags checkflags;
+ 
+         match_flags old_flags = reading_swath_index->data[reading_iterator].match_info;
+-        uint old_length = flags_to_memlength(vars->options.scan_data_type, old_flags);
++        unsigned int old_length = flags_to_memlength(vars->options.scan_data_type, old_flags);
+         void *address = reading_swath.first_byte_in_child + reading_iterator;
+ 
+         /* read value from this address */
+@@ -639,7 +639,7 @@ bool sm_setaddr(pid_t target, void *addr, const value_t *to)
+ 
+     /* Assume `sizeof(uint64_t)` is a multiple of `sizeof(long)` */
+     long memarray[sizeof(uint64_t)/sizeof(long)] = {0};
+-    uint val_length = flags_to_memlength(ANYNUMBER, to->flags);
++    unsigned int val_length = flags_to_memlength(ANYNUMBER, to->flags);
+     if (val_length > 0) {
+         /* Basically, overwrite as much of the data as makes sense, and no more. */
+         memcpy(memarray, memory_ptr, memlength);
+--- a/scanroutines.c
++++ b/scanroutines.c
+@@ -369,7 +369,7 @@ extern inline unsigned int scan_routine_BYTEARRAY_EQUALTO SCAN_ROUTINE_ARGUMENTS
+ {
+     const uint8_t *bytes_array = user_value->bytearray_value;
+     const wildcard_t *wildcards_array = user_value->wildcard_value;
+-    uint length = user_value->flags;
++    unsigned int length = user_value->flags;
+     if (memlength < length ||
+         *((uint64_t*)bytes_array) != (memory_ptr->uint64_value & *((uint64_t*)wildcards_array)))
+     {
+@@ -470,7 +470,7 @@ DEFINE_BYTEARRAY_SMALLOOP_EQUALTO_ROUTINE(56)
+ extern inline unsigned int scan_routine_STRING_EQUALTO SCAN_ROUTINE_ARGUMENTS
+ {
+     const char *scan_string = user_value->string_value;
+-    uint length = user_value->flags;
++    unsigned int length = user_value->flags;
+     if(memlength < length ||
+        memory_ptr->int64_value != *((int64_t*)scan_string))
+     {
+--- a/targetmem.h
++++ b/targetmem.h
+@@ -257,7 +257,7 @@ static inline value_t
+ data_to_val_aux (const matches_and_old_values_swath *swath,
+                  size_t index, size_t swath_length)
+ {
+-    uint i;
++    unsigned int i;
+     value_t val;
+     size_t max_bytes = swath_length - index;
+ 

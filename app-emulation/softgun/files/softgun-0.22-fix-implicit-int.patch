@@ -1,0 +1,33 @@
+Subject: [PATCH] fix implicit int declarations in function params
+
+Clang16 does not allow implicit integer declarations by default.
+
+Bug: https://bugs.gentoo.org/882583
+Upstream: https://sourceforge.net/p/softgun/patches/5/
+
+#  Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-21)
+--- a/arm/arm9cpu.h
++++ b/arm/arm9cpu.h
+@@ -356,7 +356,7 @@ ARM_PostRestartIdecoder() {
+ }
+ 
+ static inline void 
+-ARM_SigDebugMode(value) {
++ARM_SigDebugMode(uint32_t value) {
+ 	if(value) {
+ 		gcpu.signals_raw |= ARM_SIG_DEBUGMODE;
+ 	} else {
+--- a/m32c/idecode_m32c.h
++++ b/m32c/idecode_m32c.h
+@@ -84,7 +84,7 @@ M32C_InstructionProcFind(uint16_t icode)
+ #endif
+ 
+ static inline int
+-M32C_InstructionLen(icode) {
++M32C_InstructionLen(uint32_t icode) {
+ 	M32C_Instruction *instr = M32C_InstructionFind(icode);
+ 	return instr->len;
+ }
+-- 
+2.41.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/kernel/kexec/${P/_/-}.tar.xz"
 	[[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
@@ -19,14 +19,18 @@ HOMEPAGE="https://kernel.org/pub/linux/utils/kernel/kexec/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="booke lzma xen zlib"
+IUSE="booke lzma selinux xen zlib"
 
 REQUIRED_USE="lzma? ( zlib )"
 
 DEPEND="
 	lzma? ( app-arch/xz-utils )
-	zlib? ( sys-libs/zlib )"
-RDEPEND="${DEPEND}"
+	zlib? ( sys-libs/zlib )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-kdump )
+"
 
 S="${WORKDIR}/${P/_/-}"
 

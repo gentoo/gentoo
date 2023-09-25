@@ -1,0 +1,35 @@
+Remove -Werror 
+
+See also: https://devmanual.gentoo.org/ebuild-writing/common-mistakes/index.html#-werror-compiler-flag-not-removed
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -337,7 +337,7 @@ AS_IF([test "${have_iconv}" = "yes"], [
+     AC_DEFINE(HAVE_LIBICONV,1,[Use libiconv instead of glibc iconv])
+ ])
+ 
+-AX_CHECK_COMPILER_FLAGS(-msse2, HAVE_SSE2=1, [], -Werror)
++AX_CHECK_COMPILER_FLAGS(-msse2, HAVE_SSE2=1, [])
+ AS_IF([test "${HAVE_SSE2}"], [
+     AC_DEFINE(HAVE_SSE2,1,[Support SSE2 instructions])
+ ])
+--- a/plugins/gtkui/Makefile.am
++++ b/plugins/gtkui/Makefile.am
+@@ -94,7 +94,7 @@
+ 
+ ddb_gui_GTK2_la_LIBADD = $(LDADD) $(GTK2_DEPS_LIBS) $(SM_LIBADD) ../libparser/libparser.la ../../shared/libtrkpropertiesutil.la ../../shared/libeqpreset.la ../../shared/libdeletefromdisk.la ../../shared/libtftintutil.la ../../shared/analyzer/libanalyzer.la ../../shared/scope/libscope.la $(JANSSON_LIBS) $(DISPATCH_LIBS)
+ 
+-ddb_gui_GTK2_la_CFLAGS = -std=c99 -Werror -DGLIB_DISABLE_DEPRECATION_WARNINGS -DGDK_DISABLE_DEPRECATION_WARNINGS -DGTK_DISABLE_DEPRECATION_WARNINGS $(GTK2_DEPS_CFLAGS) $(SM_CFLAGS) $(JANSSON_CFLAGS) $(DISPATCH_CFLAGS) -I@top_srcdir@/include -DDDB_WARN_DEPRECATED=1
++ddb_gui_GTK2_la_CFLAGS = -std=c99 -DGLIB_DISABLE_DEPRECATION_WARNINGS -DGDK_DISABLE_DEPRECATION_WARNINGS -DGTK_DISABLE_DEPRECATION_WARNINGS $(GTK2_DEPS_CFLAGS) $(SM_CFLAGS) $(JANSSON_CFLAGS) $(DISPATCH_CFLAGS) -I@top_srcdir@/include -DDDB_WARN_DEPRECATED=1
+ 
+ endif
+ 
+@@ -105,7 +105,7 @@
+ 
+ ddb_gui_GTK3_la_SOURCES = $(GTKUI_SOURCES_GTK3)
+ ddb_gui_GTK3_la_LIBADD = $(LDADD) $(GTK3_DEPS_LIBS) $(SM_LIBADD) ../libparser/libparser.la ../../shared/libtrkpropertiesutil.la ../../shared/libeqpreset.la ../../shared/libdeletefromdisk.la ../../shared/libtftintutil.la ../../shared/analyzer/libanalyzer.la ../../shared/scope/libscope.la $(JANSSON_LIBS) $(DISPATCH_LIBS)
+-ddb_gui_GTK3_la_CFLAGS = -std=c99 -Werror -DGLIB_DISABLE_DEPRECATION_WARNINGS -DGDK_DISABLE_DEPRECATION_WARNINGS -DGTK_DISABLE_DEPRECATION_WARNINGS $(GTK3_DEPS_CFLAGS) $(SM_CFLAGS) $(JANSSON_CFLAGS) $(DISPATCH_CFLAGS) -I@top_srcdir@/include -DDDB_WARN_DEPRECATED=1
++ddb_gui_GTK3_la_CFLAGS = -std=c99 -DGLIB_DISABLE_DEPRECATION_WARNINGS -DGDK_DISABLE_DEPRECATION_WARNINGS -DGTK_DISABLE_DEPRECATION_WARNINGS $(GTK3_DEPS_CFLAGS) $(SM_CFLAGS) $(JANSSON_CFLAGS) $(DISPATCH_CFLAGS) -I@top_srcdir@/include -DDDB_WARN_DEPRECATED=1
+ ddb_gui_GTK3_la_OBJCFLAGS = $(GTK3_DEPS_CFLAGS) $(SM_CFLAGS) $(JANSSON_CFLAGS)
+ 
+ nodist_ddb_gui_GTK3_la_SOURCES = gtkui-gresources.c

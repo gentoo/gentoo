@@ -5,4 +5,7 @@
 	<longdescription>
 		A prettyprinter/text rendering engine. Easy to use, well-documented, ANSI terminal backend exists, HTML backend is trivial to implement, no name clashes, Text-based, extensible.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">quchen/prettyprinter</remote-id>
+	</upstream>
 </pkgmetadata>

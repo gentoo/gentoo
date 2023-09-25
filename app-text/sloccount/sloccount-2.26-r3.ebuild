@@ -11,7 +11,7 @@ SRC_URI="http://www.dwheeler.com/sloccount/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="dev-lang/perl"
 DEPEND="${RDEPEND}"

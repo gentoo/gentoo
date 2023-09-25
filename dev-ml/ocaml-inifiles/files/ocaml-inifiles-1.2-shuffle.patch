@@ -1,0 +1,8 @@
+--- a/OCamlMakefile	2023-01-26 08:33:13.101689847 +0100
++++ b/OCamlMakefile	2023-01-26 08:34:59.133050720 +0100
+@@ -1117,3 +1117,5 @@
+ .PHONY: nobackup
+ nobackup:
+ 	rm -f *.bak *~ *.dup
++
++inilexer.cmi : parseini.cmo

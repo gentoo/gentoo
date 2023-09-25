@@ -13,5 +13,6 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:tukaani:xz</remote-id>
 		<remote-id type="sourceforge">lzmautils</remote-id>
+		<remote-id type="github">tukaani-project/xz</remote-id>
 	</upstream>
 </pkgmetadata>

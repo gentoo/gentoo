@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit edo systemd toolchain-funcs python-any-r1 udev
 
@@ -16,11 +16,13 @@ SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.xz"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="dev-libs/glib"
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="${PYTHON_DEPS}
+	dev-lang/perl
+	dev-util/ninja"
 
 S="${WORKDIR}/${MY_P}"
 

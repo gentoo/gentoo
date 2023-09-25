@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Devhelp"
 
 LICENSE="GPL-3+ CC-BY-SA-4.0"
 SLOT="0/3-6" # subslot = 3-(libdevhelp-3 soname version)
-KEYWORDS="amd64 ~arm ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sparc x86"
 IUSE="+gedit gtk-doc +introspection"
 REQUIRED_USE="gedit? ( ${PYTHON_REQUIRED_USE} ) gtk-doc? ( introspection )"
 

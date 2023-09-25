@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NSS: Required by kde-apps/okular[pdf]
@@ -37,6 +37,9 @@ media-gfx/graphviz python
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
 media-libs/gd fontconfig
 
+# Needed by a global USE=wayland right now
+media-libs/libsdl2 gles2
+
 # Required by kde-plasma/kwin
 media-libs/mesa wayland
 
@@ -60,3 +63,6 @@ kde-apps/marble phonon
 
 # Required by kde-plasma/plasma-meta
 kde-plasma/kwin lock
+
+# plasma profile never enabled pulseaudio. We're skipping to pipewire.
+media-video/pipewire sound-server

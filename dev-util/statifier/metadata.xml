@@ -5,4 +5,7 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">statifier</remote-id>
+	</upstream>
 </pkgmetadata>

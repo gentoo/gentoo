@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,21 +16,31 @@ fi
 
 DESCRIPTION="Tool for creating snapshots and remote backups of btrfs subvolumes"
 HOMEPAGE="https://digint.ch/btrbk/"
+
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+mbuffer +doc +lsbtr"
 
-DEPEND="doc? ( >=dev-ruby/asciidoctor-1.5.7 )"
-
-RDEPEND="dev-lang/perl
-	net-misc/openssh
+RDEPEND="
+	dev-lang/perl
+	>=sys-fs/btrfs-progs-4.12
+	virtual/openssh
 	mbuffer? ( >=sys-block/mbuffer-20180505 )
-	>=sys-fs/btrfs-progs-4.12"
+"
+BDEPEND="
+	doc? (
+		|| (
+			app-text/asciidoc
+			>=dev-ruby/asciidoctor-1.5.7
+		)
+	)
+"
 
 src_compile() {
 	emake clean
 	use doc && emake -C doc
 }
+
 src_install() {
 	local targets="install-bin install-etc install-share install-systemd"
 	use doc && targets="${targets} install-man install-doc"
@@ -41,6 +51,7 @@ src_install() {
 		SYSTEMDDIR="$(systemd_get_systemunitdir)" \
 		${targets}
 }
+
 pkg_preinst() {
 	if has_version "<${CATEGORY}/${PN}-0.26.0" ; then
 		upgrade_0_26_0_warning="1"
@@ -49,6 +60,7 @@ pkg_preinst() {
 		upgrade_0_27_0_warning="1"
 	fi
 }
+
 pkg_postinst() {
 	if [[ "${upgrade_0_26_0_warning}" == "1" ]]; then
 		ewarn "If you are using raw targets, make sure to run the"

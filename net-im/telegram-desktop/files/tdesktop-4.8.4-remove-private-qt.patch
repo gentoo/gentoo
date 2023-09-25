@@ -1,0 +1,50 @@
+Remove uses of private Qt classes
+
+Currently, this is used to fix compatibility with odd environments, and only
+for Qt6. This causes more trouble than it's worth, because it means telegram
+must be rebuilt with every minor Qt bump.
+
+https://bugs.gentoo.org/908500
+
+--- tdesktop-4.8.4-full.orig/Telegram/lib_ui/ui/rp_widget.cpp
++++ tdesktop-4.8.4-full/Telegram/lib_ui/ui/rp_widget.cpp
+@@ -12,38 +12,9 @@
+ 
+ #include <QtGui/QWindow>
+ #include <QtGui/QtEvents>
+-#include <private/qwidget_p.h>
+-
+-class TWidgetPrivate : public QWidgetPrivate {
+-public:
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+-	QPlatformBackingStoreRhiConfig rhiConfig() const override {
+-		const auto q = static_cast<TWidget*>(q_ptr);
+-		if (!q->testAttribute(Qt::WA_WState_Created)) {
+-			return QWidgetPrivate::rhiConfig();
+-		}
+-		if (const auto config = q->rhiConfig()) {
+-			return *config;
+-		}
+-		if (::Platform::IsMac10_14OrGreater()) {
+-			return { QPlatformBackingStoreRhiConfig::Metal };
+-		}
+-		// We can't specify the widget here as q_evaluateRhiConfig is called
+-		// in QWidgetWindow constructor, while windowHandle is set right after
+-		// the constructor is completed
+-		if (::Platform::IsWayland() // old versions of mutter produce flicker without OpenGL
+-			&& Ui::GL::ChooseBackendDefault(
+-					Ui::GL::CheckCapabilities(nullptr))
+-				== Ui::GL::Backend::OpenGL) {
+-			return { QPlatformBackingStoreRhiConfig::OpenGL };
+-		}
+-		return QWidgetPrivate::rhiConfig();
+-	}
+-#endif // Qt >= 6.4.0
+-};
+ 
+ TWidget::TWidget(QWidget *parent)
+-: TWidgetHelper<QWidget>(*(new TWidgetPrivate), parent, {}) {
++: TWidgetHelper<QWidget>(parent, {}) {
+ 	[[maybe_unused]] static const auto Once = [] {
+ 		auto format = QSurfaceFormat::defaultFormat();
+ 		format.setSwapInterval(0);

@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit desktop wrapper
 
-DESCRIPTION="A classic role-playing game"
-HOMEPAGE="http://basiliskgames.com/eschalon-book-i"
+DESCRIPTION="Classic role-playing game"
+HOMEPAGE="https://basiliskgames.com/eschalon-book-i/"
 SRC_URI="https://dev.gentoo.org/~calchan/distfiles/${P}.tar.gz"
 S="${WORKDIR}/Eschalon Book I Demo"
 

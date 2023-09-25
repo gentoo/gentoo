@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
@@ -20,7 +20,7 @@ _FLAG_O_MATIC_ECLASS=1
 
 inherit toolchain-funcs
 
-[[ ${EAPI} == [67] ]] && inherit eutils
+[[ ${EAPI} == 6 ]] && inherit eutils
 
 # @FUNCTION: all-flag-vars
 # @DESCRIPTION:
@@ -47,11 +47,11 @@ setup-allowed-flags() {
 # Note: shell globs and character lists are allowed
 _setup-allowed-flags() {
 	ALLOWED_FLAGS=(
-		-pipe -O '-O[12sg]' '-mcpu=*' '-march=*' '-mtune=*'
+		-pipe -O '-O[123szg]' '-mcpu=*' '-march=*' '-mtune=*'
+		-flto '-flto=*' -fno-lto
 
 		# Hardening flags
 		'-fstack-protector*'
-		'-fstack-check*' -fno-stack-check
 		-fstack-clash-protection
 		'-fcf-protection=*'
 		-fbounds-check -fbounds-checking
@@ -147,7 +147,10 @@ _filter-hardened() {
 			# not -fPIC or -fpic, but too many places filter -fPIC without
 			# thinking about -fPIE.
 			-fPIC|-fpic|-fPIE|-fpie|-Wl,pie|-pie)
-				gcc-specs-pie || continue
+				if ! gcc-specs-pie && ! tc-enables-pie ; then
+					continue
+				fi
+
 				if ! is-flagq -nopie && ! is-flagq -no-pie ; then
 					# Support older Gentoo form first (-nopie) before falling
 					# back to the official gcc-6+ form (-no-pie).
@@ -158,15 +161,36 @@ _filter-hardened() {
 					fi
 				fi
 				;;
-			-fstack-protector)
-				gcc-specs-ssp || continue
-				is-flagq -fno-stack-protector || append-flags $(test-flags -fno-stack-protector);;
+
+			-fstack-protector|-fstack-protector-strong)
+				if ! gcc-specs-ssp && ! tc-enables-ssp && ! tc-enables-ssp-strong ; then
+					continue
+				fi
+
+				is-flagq -fno-stack-protector || append-flags $(test-flags -fno-stack-protector)
+				;;
 			-fstack-protector-all)
-				gcc-specs-ssp-to-all || continue
-				is-flagq -fno-stack-protector-all || append-flags $(test-flags -fno-stack-protector-all);;
+				if ! gcc-specs-ssp-to-all && ! tc-enables-ssp-all ; then
+					continue
+				fi
+
+				is-flagq -fno-stack-protector-all || append-flags $(test-flags -fno-stack-protector-all)
+				;;
 			-fno-strict-overflow)
 				gcc-specs-nostrict || continue
-				is-flagq -fstrict-overflow || append-flags $(test-flags -fstrict-overflow);;
+
+				is-flagq -fstrict-overflow || append-flags $(test-flags -fstrict-overflow)
+				;;
+			-D_GLIBCXX_ASSERTIONS|-D_LIBCPP_ENABLE_ASSERTIONS|-D_LIBCPP_ENABLE_HARDENED_MODE)
+				tc-enables-cxx-assertions || continue
+
+				append-cppflags -U_GLIBCXX_ASSERTIONS -U_LIBCPP_ENABLE_ASSERTIONS -U_LIBCPP_ENABLE_HARDENED_MODE
+				;;
+			-D_FORTIFY_SOURCE=*)
+				tc-enables-fortify-source || continue
+
+				append-cppflags -U_FORTIFY_SOURCE
+				;;
 		esac
 	done
 }
@@ -888,15 +912,14 @@ no-as-needed() {
 	esac
 }
 
-# @FUNCTION: _test-compile-PROG
+# @FUNCTION: test-compile
 # @USAGE: <language> <code>
-# @INTERNAL
 # @DESCRIPTION:
 # Attempts to compile (and possibly link) the given program.  The first
 # <language> parameter corresponds to the standard -x compiler argument.
 # If the program should additionally be attempted to be linked, the string
 # "+ld" should be added to the <language> parameter.
-_test-compile-PROG() {
+test-compile() {
 	local lang=$1
 	local code=$2
 	shift 2
@@ -982,7 +1005,7 @@ append-atomic-flags() {
 	local code
 
 	# first, ensure we can compile a trivial program
-	# this is because we can't distinguish if _test-compile-PROG
+	# this is because we can't distinguish if test-compile
 	# fails because -latomic is actually needed or if we have a
 	# broken toolchain (like due to bad FLAGS)
 	read -r -d '' code <<- EOF
@@ -996,7 +1019,7 @@ append-atomic-flags() {
 	# let other pieces of the build fail later down the line than to
 	# make people think that something to do with atomic support is the
 	# cause of their problems.
-	_test-compile-PROG "c+ld" "${code}" || return
+	test-compile "c+ld" "${code}" || return
 
 	local bytesizes
 	[[ "${#}" == "0" ]] && bytesizes=( "1" "2" "4" "8" ) || bytesizes="${@}"
@@ -1017,7 +1040,7 @@ append-atomic-flags() {
 		EOF
 
 		# do nothing if test program links fine
-		_test-compile-PROG "c+ld" "${code}" && continue
+		test-compile "c+ld" "${code}" && continue
 
 		# ensure that the toolchain supports -latomic
 		test-flags-CCLD "-latomic" &>/dev/null || die "-latomic is required but not supported by $(tc-getCC)"
@@ -1025,7 +1048,7 @@ append-atomic-flags() {
 		append-libs "-latomic"
 
 		# verify that this did indeed fix the problem
-		_test-compile-PROG "c+ld" "${code}" || \
+		test-compile "c+ld" "${code}" || \
 			die "libatomic does not include an implementation of ${bytesize}-byte atomics for this toolchain"
 
 		# if any of the required bytesizes require -latomic, no need to continue

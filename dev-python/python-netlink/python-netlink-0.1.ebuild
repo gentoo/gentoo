@@ -1,17 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{9..11} )
+PYPI_NO_NORMALIZE=1
+PYPI_PN="NetLink"
 
-MY_P="NetLink-${PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Pure-Python client for the Linux NetLink interface"
 HOMEPAGE="https://pypi.org/project/NetLink/ https://xmine128.tk/Software/Python/netlink/docs/"
-SRC_URI="mirror://pypi/${MY_P:0:1}/NetLink/${MY_P}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3+"
 SLOT="0"

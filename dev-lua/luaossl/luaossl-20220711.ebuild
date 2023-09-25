@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,13 @@ src_prepare() {
 
 	# Remove Lua autodetection
 	# Respect users CFLAGS
-	sed -e '/LUAPATH :=/d' -e '/LUAPATH_FN =/d' -e '/HAVE_API_FN =/d' -e '/WITH_API_FN/d' -e 's/-O2//g' -i GNUmakefile || die
+	sed \
+		-e '/LUAPATH :=/d' \
+		-e '/LUAPATH_FN =/d' \
+		-e '/HAVE_API_FN =/d' \
+		-e '/WITH_API_FN/d' \
+		-e 's/-O2//g' \
+		-i GNUmakefile || die
 
 	lua_copy_sources
 }

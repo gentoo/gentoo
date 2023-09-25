@@ -1,0 +1,19 @@
+--- a/lib/include/termcap.c
++++ b/lib/include/termcap.c
+@@ -144,7 +144,7 @@ int bufsize = 128;
+ #  define NULL 0
+ #endif
+ 
+-static
++static void
+ memory_out ()
+ {
+   write (2, "Virtual memory exhausted\n", 25);
+@@ -328,6 +328,7 @@ tgetst1 (ptr, area)
+ 
+ char PC;
+ 
++void
+ tputs (string, nlines, outfun)
+      char *string;
+      int nlines;

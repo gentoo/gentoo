@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
 inherit gnome2 distutils-r1 optfeature
@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -30,7 +30,7 @@ RDEPEND="
 	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	>=sys-libs/libosinfo-0.2.10[introspection]
-		$(python_gen_cond_dep '
+	$(python_gen_cond_dep '
 		dev-libs/libxml2[python,${PYTHON_USEDEP}]
 		dev-python/argcomplete[${PYTHON_USEDEP}]
 		>=dev-python/libvirt-python-6.10.0[${PYTHON_USEDEP}]

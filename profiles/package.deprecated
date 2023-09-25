@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -17,6 +17,66 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-06-18)
+# Superseded by dev-python/pdm-backend.  The migration guide is at:
+# https://pdm-backend.fming.dev/migration/
+dev-python/pdm-pep517
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Merged into dev-perl/Type-Tiny. Please depend on that instead.
+dev-perl/Type-Tie
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
+# Obsolete transitional meta package. Switch to media-libs/libpulse
+# which ensures a sound server is installed via PDEPEND.
+media-sound/pulseaudio
+
+# Sam James <sam@gentoo.org> (2023-05-30)
+# Removed from GStreamer 1.20.
+# Dropped upstream in https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/9a4651e3879270292672f08a1f6ed2bffefc5aed.
+media-plugins/gst-plugins-libmms
+
+# Michał Górny <mgorny@gentoo.org> (2023-05-29)
+# Use the following snippet instead:
+#
+#   $(python_gen_cond_dep '
+#       dev-python/cffi[${PYTHON_USEDEP}]
+#   ' 'python*')
+#
+# Possibly adding version constraints if package declares them.
+virtual/python-cffi
+
+# Sam James <sam@gentoo.org> (2023-04-07)
+# Inactive upstream, doesn't support newer Rubies.
+# Please port your package to use dev-ruby/erubis instead.
+dev-ruby/erubis
+
+# Sam James <sam@gentoo.org> (2023-04-07)
+# No longer supported upstream, fork of dev-ruby/listen.
+# Please port your package to use dev-ruby/listen instead.
+dev-ruby/sass-listen
+
+# Sam James <sam@gentoo.org> (2023-04-06)
+# net-libs/libgsasl and net-misc/gsasl are now merged together.
+# Please depend on net-misc/gsasl[server] for the server and
+# net-misc/gsasl[client] for the client.
+net-libs/libgsasl
+virtual/gsasl
+
+# Michał Górny <mgorny@gentoo.org> (2023-02-03)
+# The same functionality is supported by dev-python/setuptools-scm-7.
+# See: https://github.com/pypa/setuptools_scm/#git-archives
+# https://github.com/Changaco/setuptools_scm_git_archive/#readme
+dev-python/setuptools_scm_git_archive
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-30)
+# The package is on keep-alive by Debian.  Nevertheless, they can't
+# keep up with changes in dev-python/setuptools, and they do not accept
+# bug reports.  PEP517 build systems are simply a no-go for this class
+# of packages (partially due to the limitations of wheel format), meson
+# and autotools are both much better choices.
+dev-python/python-distutils-extra
+
 # Sam James <sam@gentoo.org> (2022-12-29)
 # Doesn't work correctly on newer kernels/hardware. Events may go unreported
 # if using sys-apps/edac-utils. See app-admin/rasdaemon's README for the technical
@@ -26,11 +86,6 @@ sys-apps/edac-utils
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-12-26)
 # Last-rites pending and waiting for revdeps, bug 877311
 x11-libs/snorenotify
-
-# Michał Górny <mgorny@gentoo.org> (2022-12-25)
-# Archived upstream.  Last activity in 2018.  Broken with Python 3.8.
-# Broken with Django 2.
-dev-python/oauth2client
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-24)
 # Unmaintained with last release in 2019.  We already patched it to work
@@ -45,11 +100,7 @@ dev-python/future
 # work with prior Python versions.  If your package still needs it
 # (sic!), then either port it to use a maintained test framework (pytest
 # preferably) or last rite it.
-#
-# Case is also unmaintained (since 2018).  Nose-random has had last
-# commit in 2016 and was not even released to pypi!
 dev-python/nose
-dev-python/nose-random
 
 # Michał Górny <mgorny@gentoo.org> (2022-10-14)
 # The toml package is unmaintained (last release in 2020) and does not
@@ -59,12 +110,6 @@ dev-python/nose-random
 # https://projects.gentoo.org/python/guide/porting.html#replacing-the-toml-package
 dev-python/toml
 
-# Petr Vaněk <arkamar@atlas.cz> (2022-10-06)
-# Obsolete virtual.
-# Only one provider is left (net-libs/c-client), please change dependency to
-# that instead.
-virtual/imap-c-client
-
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.
 # When possible, replace dependencies on these packages with a dependency on
@@ -73,19 +118,14 @@ app-accessibility/at-spi2-atk
 dev-libs/atk
 
 # Michał Górny <mgorny@gentoo.org> (2022-06-19)
-# dev-python/tox is a wrapper to run test suite in a virtual
-# environment, possibly for multiple Python versions.  It cannot really
-# work inside network sandbox, and your package probably does not use
-# it anyway.
+# Test automation tools.  They are generally used to run the test suite
+# across multiple Python versions, i.e. what our eclasses do for you
+# already.  They usually can't work inside network sandbox (since they
+# fetch and install all the dependencies inside the venv), so even
+# if they are listed in dependencies, your package probably does not
+# actually need them to run tests.
+dev-python/nox
 dev-python/tox
-
-# Michał Górny <mgorny@gentoo.org> (2022-06-17)
-# So far not a single dependency on dev-python/versioneer was correct.
-# This package is a generator for "versioneer.py" file that is included
-# in the sdist tarball.  Your package most likely only imports that file
-# and does not need dev-python/versioneer.  If it really does, please
-# ping me.
-dev-python/versioneer
 
 # Sam James <sam@gentoo.org> (2022-04-22)
 # Obsolete virtual.
@@ -98,20 +138,16 @@ virtual/jpeg
 app-text/enchant:0
 app-text/gnome-doc-utils
 app-text/gtkspell:2
-app-text/rarian
 app-text/scrollkeeper-dtd
 dev-cpp/gtkmm:2.4
 dev-libs/libcroco
 dev-libs/libIDL
 dev-libs/libunique:1
-gnome-base/gconf
 gnome-base/libglade
 gnome-base/libgnomecanvas
-gnome-extra/gconf-editor
 media-libs/libart_lgpl
 x11-libs/gtksourceview:2.0
 x11-libs/libwnck:1
-x11-libs/vte:0
 x11-themes/gnome-icon-theme-extras
 x11-themes/gnome-icon-theme-symbolic
 x11-themes/gtk-chtheme
@@ -120,7 +156,6 @@ x11-themes/gtk-engines-adwaita
 x11-themes/gtk-engines-candido
 x11-themes/gtk-engines-experience
 x11-themes/gtk-engines-murrine
-x11-themes/gtk-engines-nodoka
 x11-themes/gtk-engines-qtpixmap
 x11-themes/gtk-engines-quartz
 x11-themes/gtk-engines-rezlooks

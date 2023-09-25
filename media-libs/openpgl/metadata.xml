@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>darkdefende@gmail.com</email>
+		<name>Sebastian Parborg</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The Intel® Open Path Guiding Library (Intel® Open PGL) implements a set of
+		representations and training algorithms needed to integrate path guiding
+		into a renderer. Open PGL offers implementations of current state-of-the-art
+		path guiding methods, which increase the sampling quality and, therefore,
+		the efficiency of a renderer. The goal of Open PGL is to provide
+		implementations that are well tested and robust enough to be used in a
+		production environment.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">OpenPathGuidingLibrary/openpgl</remote-id>
+	</upstream>
+</pkgmetadata>

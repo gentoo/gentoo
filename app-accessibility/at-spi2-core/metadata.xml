@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/at-spi2-core</remote-id>
   </upstream>
+  <use>
+    <flag name="dbus-broker">Use DBus broker implementation instead of default DBus daemon</flag>
+  </use>
 </pkgmetadata>

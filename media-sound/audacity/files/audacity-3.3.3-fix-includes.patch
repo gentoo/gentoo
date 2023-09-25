@@ -1,0 +1,55 @@
+From 78ef36996c348b1c47f75e9885a56ac46b0aeec1 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@inventati.org>
+Date: Fri, 14 Jul 2023 21:08:52 +0000
+Subject: [PATCH] Fix ImportMP3_MAD and ImportQT include directives
+
+This fixes 'file not found' errors.
+---
+ src/import/ImportMP3_MAD.cpp | 6 +++---
+ src/import/ImportQT.cpp      | 8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/import/ImportMP3_MAD.cpp b/src/import/ImportMP3_MAD.cpp
+index fa26eaca49dd..9e6dfdf3a534 100644
+--- a/src/import/ImportMP3_MAD.cpp
++++ b/src/import/ImportMP3_MAD.cpp
+@@ -62,10 +62,10 @@ static Importer::RegisteredUnusableImportPlugin registered
+ #include <wx/file.h>
+ 
+ #include "Prefs.h"
+-#include "../Tags.h"
++#include "Tags.h"
+ #include "WaveTrack.h"
+-#include "../widgets/AudacityMessageBox.h"
+-#include "../widgets/ProgressDialog.h"
++#include "AudacityMessageBox.h"
++#include "ProgressDialog.h"
+ 
+ // PRL:  include these last,
+ // and correct some preprocessor namespace pollution from wxWidgets that
+diff --git a/src/import/ImportQT.cpp b/src/import/ImportQT.cpp
+index f931b5a63fc1..5b49c1630b7f 100644
+--- a/src/import/ImportQT.cpp
++++ b/src/import/ImportQT.cpp
+@@ -17,8 +17,8 @@
+ 
+ #include "Import.h"
+ #include "ImportPlugin.h"
+-#include "../widgets/AudacityMessageBox.h"
+-#include "../widgets/ProgressDialog.h"
++#include "AudacityMessageBox.h"
++#include "ProgressDialog.h"
+ 
+ #define DESC XO("QuickTime files")
+ 
+@@ -76,8 +76,8 @@ static Importer::RegisteredUnusableImportPlugin registered{
+ // There's a name collision between our Track and QuickTime's...workaround it
+ #undef Track
+ 
+-#include "../Tags.h"
+-#include "../WaveTrack.h"
++#include "Tags.h"
++#include "WaveTrack.h"
+ 
+ #define kQTAudioPropertyID_MaxAudioSampleSize   'mssz'
+ 

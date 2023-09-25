@@ -1,0 +1,150 @@
+From b1d17b605088e118a8799fd027a892310e00d29e Mon Sep 17 00:00:00 2001
+From: Hongzhuo Liang <lianghongzhuo@126.com>
+Date: Fri, 27 Jan 2023 17:57:04 +0100
+Subject: [PATCH] support pikepdf instead of pypdf2
+
+---
+ krop/mainwindow.py |  1 -
+ krop/pdfcropper.py | 79 ++++++++++++++--------------------------------
+ 2 files changed, 24 insertions(+), 56 deletions(-)
+
+diff --git a/krop/mainwindow.py b/krop/mainwindow.py
+index e8adadf..fd1ae32 100644
+--- a/krop/mainwindow.py
++++ b/krop/mainwindow.py
+@@ -413,7 +413,6 @@ def slotKrop(self):
+             pdf = PdfFile()
+             pdf.loadFromFile(inputFileName)
+             cropper = PdfCropper()
+-            cropper.copyDocumentRoot(pdf)
+             for nr in pages:
+                 c = self.viewer.cropValues(nr)
+                 cropper.addPageCropped(pdf, nr, c, alwaysinclude, rotation)
+diff --git a/krop/pdfcropper.py b/krop/pdfcropper.py
+index db30646..42500de 100644
+--- a/krop/pdfcropper.py
++++ b/krop/pdfcropper.py
+@@ -15,23 +15,8 @@
+ 
+ import copy
+ import sys
++from pikepdf import Pdf
+ 
+-# Unless specified otherwise, use PyPDF2 instead of pyPdf if available.
+-usepypdf2 = '--no-PyPDF2' not in sys.argv
+-if usepypdf2:
+-    try:
+-        from PyPDF2 import PdfFileReader, PdfFileWriter
+-    except ImportError:
+-        usepypdf2 = False
+-if not usepypdf2:
+-    try:
+-        from pyPdf import PdfFileReader, PdfFileWriter
+-    except ImportError:
+-        _msg = "Please install PyPDF2 (or its predecessor pyPdf) first."\
+-            "\n\tOn recent versions of Ubuntu, the following should do the trick:"\
+-            "\n\tsudo apt-get install python-pypdf2"\
+-            "\n\t(or, if using python3) sudo apt-get install python3-pypdf2"
+-        raise RuntimeError(_msg)
+ 
+ class PdfEncryptedError(Exception):
+     pass
+@@ -55,8 +40,6 @@ def writeToFile(self, filename):
+         stream.close()
+     def addPageCropped(self, pdffile, pagenumber, croplist, rotate=0):
+         pass
+-    def copyDocumentRoot(self, pdffile):
+-        pass
+ 
+ 
+ class PyPdfFile(AbstractPdfFile):
+@@ -64,23 +47,16 @@ class PyPdfFile(AbstractPdfFile):
+     def __init__(self):
+         self.reader = None
+     def loadFromStream(self, stream):
+-        if usepypdf2:
+-            self.reader = PdfFileReader(stream, strict=False)
+-        else:
+-            self.reader = PdfFileReader(stream)
+-        if self.reader.isEncrypted:
+-            try:
+-                if not self.reader.decrypt(''):
+-                    raise PdfEncryptedError
+-            except:
+-                raise PdfEncryptedError
+-    def getPage(self, nr):
+-        page = self.reader.getPage(nr-1)
++        self.reader = Pdf.open(stream)
++        if self.reader.is_encrypted:
++            raise PdfEncryptedError
++
+ 
+ class PyPdfCropper(AbstractPdfCropper):
+     """Implementation of PdfCropper using pyPdf"""
+     def __init__(self):
+-        self.output = PdfFileWriter()
++        self.pdf = Pdf.new()
++
+     def writeToStream(self, stream):
+         # For certain large pdf files, PdfFileWriter.write() causes the error:
+         #  maximum recursion depth exceeded while calling a Python object
+@@ -88,37 +64,31 @@ def writeToStream(self, stream):
+         # We therefore temporarily increase the recursion limit.
+         old_reclimit = sys.getrecursionlimit()
+         sys.setrecursionlimit(10000)
+-        self.output.write(stream)
++        self.pdf.save(stream)
+         sys.setrecursionlimit(old_reclimit)
++
+     def addPageCropped(self, pdffile, pagenumber, croplist, alwaysinclude, rotate=0):
+-        page = pdffile.reader.getPage(pagenumber)
++        page = pdffile.reader.pages[pagenumber]
+         if not croplist and alwaysinclude:
+-            self.output.addPage(page)
++            self.pdf.pages.append(page)
+         for c in croplist:
+-            newpage = copy.copy(page)
+-            self.cropPage(newpage, c, rotate)
+-            self.output.addPage(newpage)
+-    def cropPage(self, page, crop, rotate):
++            new_box = self.getCropPageParm(page, c)
++            # Update the various PDF boxes
++            new_page = copy.copy(page)
++            new_page.mediabox = new_box
++            new_page.cropbox = new_box
++            new_page.trimbox = new_box
++            if rotate != 0:
++                new_page.rotate(rotate, True)
++            self.pdf.pages.append(new_page)
++
++    def getCropPageParm(self, page, crop):
+         # Note that the coordinate system is up-side down compared with Qt.
+-        x0, y0 = page.cropBox.lowerLeft
+-        x1, y1 = page.cropBox.upperRight
++        x0, y0, x1, y1 = page.cropbox
+         x0, y0, x1, y1 = float(x0), float(y0), float(x1), float(y1)
+         x0, x1 = x0+crop[0]*(x1-x0), x1-crop[2]*(x1-x0)
+         y0, y1 = y0+crop[3]*(y1-y0), y1-crop[1]*(y1-y0)
+-        # Update the various PDF boxes
+-        for box in (page.artBox, page.bleedBox, page.cropBox, page.mediaBox, page.trimBox):
+-            box.lowerLeft = (x0, y0)
+-            box.upperRight = (x1, y1)
+-        if rotate != 0:
+-            page.rotateClockwise(rotate)
+-
+-    def copyDocumentRoot(self, pdffile):
+-        # Sounds promising in PyPDF2 (see PdfFileWriter.cloneDocumentFromReader),
+-        # but doesn't seem to produce a readable PDF:
+-        # self.output.cloneReaderDocumentRoot(pdffile.reader)
+-        # Instead, this copies at least the named destinations for links:
+-        for dest in pdffile.reader.namedDestinations.values():
+-            self.output.addNamedDestinationObject(dest)
++        return [x0, y0, x1, y1]
+ 
+ 
+ def optimizePdfGhostscript(oldfilename, newfilename):
+@@ -128,4 +98,3 @@ def optimizePdfGhostscript(oldfilename, newfilename):
+ 
+ PdfFile = PyPdfFile
+ PdfCropper = PyPdfCropper
+-

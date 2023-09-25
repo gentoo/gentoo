@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_8,3_9,3_10,3_11} )
+PYTHON_COMPAT=( python{3_9,3_10,3_11} )
 inherit distutils-r1
 
 if [[ ${PV} == 9999 ]]; then
@@ -21,7 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
 RDEPEND="dev-libs/openssl:0"
 
 # Tests require a local ACME server to be set up.

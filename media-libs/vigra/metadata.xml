@@ -5,9 +5,6 @@
 		<email>printing@gentoo.org</email>
 		<name>Gentoo Printing Project</name>
 	</maintainer>
-	<use>
-		<flag name="valgrind">Enable valgrind in make check</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">ukoethe/vigra</remote-id>
 	</upstream>

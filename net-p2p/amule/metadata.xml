@@ -11,6 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">amule-project/amule</remote-id>
+		<remote-id type="sourceforge">amule</remote-id>
 	</upstream>
 	<use>
 		<flag name="daemon">Enable amule daemon</flag>

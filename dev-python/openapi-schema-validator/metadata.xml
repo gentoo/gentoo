@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">p1c2u/openapi-schema-validator</remote-id>
+		<remote-id type="github">python-openapi/openapi-schema-validator</remote-id>
 		<remote-id type="pypi">openapi-schema-validator</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit gnome.org meson python-any-r1 vala xdg
 
@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE https://gitlab.gnome.org/GNOM
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91"
 IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala vanilla"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 REQUIRED_USE="vala? ( introspection )"
 
 # Upstream is hostile and refuses to upload tarballs.

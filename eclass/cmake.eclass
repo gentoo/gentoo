@@ -1,9 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake.eclass
 # @MAINTAINER:
 # kde@gentoo.org
+# base-system@gentoo.org
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
 # Maciej Mrozowski <reavertm@gentoo.org>
@@ -19,7 +20,7 @@
 
 case ${EAPI} in
 	7|8) ;;
-	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_CMAKE_ECLASS} ]]; then
@@ -34,15 +35,15 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # For in-source build it's fixed to ${CMAKE_USE_DIR}.
 # For out-of-source build it can be overridden, by default it uses
 # ${CMAKE_USE_DIR}_build (in EAPI-7: ${WORKDIR}/${P}_build).
-[[ ${EAPI} == 7 ]] && : ${BUILD_DIR:=${WORKDIR}/${P}_build}
+[[ ${EAPI} == 7 ]] && : "${BUILD_DIR:=${WORKDIR}/${P}_build}"
 # EAPI-8: set inside _cmake_check_build_dir
 
 # @ECLASS_VARIABLE: CMAKE_BINARY
 # @DESCRIPTION:
 # Eclass can use different cmake binary than the one provided in by system.
-: ${CMAKE_BINARY:=cmake}
+: "${CMAKE_BINARY:=cmake}"
 
-[[ ${EAPI} == 7 ]] && : ${CMAKE_BUILD_TYPE:=Gentoo}
+[[ ${EAPI} == 7 ]] && : "${CMAKE_BUILD_TYPE:=Gentoo}"
 # @ECLASS_VARIABLE: CMAKE_BUILD_TYPE
 # @DESCRIPTION:
 # Set to override default CMAKE_BUILD_TYPE. Only useful for packages
@@ -54,7 +55,7 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # build type to achieve desirable results.
 #
 # In EAPI 7, the default was non-standard build type of Gentoo.
-: ${CMAKE_BUILD_TYPE:=RelWithDebInfo}
+: "${CMAKE_BUILD_TYPE:=RelWithDebInfo}"
 
 # @ECLASS_VARIABLE: CMAKE_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
@@ -68,7 +69,7 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # Specify a makefile generator to be used by cmake.
 # At this point only "emake" and "ninja" are supported.
 # The default is set to "ninja".
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+: "${CMAKE_MAKEFILE_GENERATOR:=ninja}"
 
 # @ECLASS_VARIABLE: CMAKE_REMOVE_MODULES_LIST
 # @PRE_INHERIT
@@ -96,16 +97,17 @@ fi
 # By default it uses current working directory (in EAPI-7: ${S}).
 
 # @ECLASS_VARIABLE: CMAKE_VERBOSE
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set to OFF to disable verbose messages during compilation
-: ${CMAKE_VERBOSE:=ON}
+: "${CMAKE_VERBOSE:=ON}"
 
 # @ECLASS_VARIABLE: CMAKE_WARN_UNUSED_CLI
 # @DESCRIPTION:
 # Warn about variables that are declared on the command line
 # but not used. Might give false-positives.
 # "no" to disable (default) or anything else to enable.
-: ${CMAKE_WARN_UNUSED_CLI:=yes}
+: "${CMAKE_WARN_UNUSED_CLI:=yes}"
 
 # @ECLASS_VARIABLE: CMAKE_EXTRA_CACHE_FILE
 # @USER_VARIABLE
@@ -122,6 +124,11 @@ fi
 # After running cmake_src_prepare, sets ${CMAKE_USE_DIR} (in EAPI-7: ${S}) to
 # read-only. This is a user flag and should under _no circumstances_ be set in
 # the ebuild. Helps in improving QA of build systems that write to source tree.
+
+# @ECLASS_VARIABLE: CMAKE_SKIP_TESTS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of tests that should be skipped when running CTest.
 
 [[ ${CMAKE_MIN_VERSION} ]] && die "CMAKE_MIN_VERSION is banned; if necessary, set BDEPEND=\">=dev-util/cmake-${CMAKE_MIN_VERSION}\" directly"
 [[ ${CMAKE_BUILD_DIR} ]] && die "The ebuild must be migrated to BUILD_DIR"
@@ -282,15 +289,24 @@ cmake-utils_useno() { _cmake_banned_func "" "$@" ; }
 # Determine using IN or OUT source build
 _cmake_check_build_dir() {
 	if [[ ${EAPI} == 7 ]]; then
-		: ${CMAKE_USE_DIR:=${S}}
+		: "${CMAKE_USE_DIR:=${S}}"
 	else
-		: ${CMAKE_USE_DIR:=${PWD}}
+		: "${CMAKE_USE_DIR:=${PWD}}"
 	fi
 	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
 		# we build in source dir
 		BUILD_DIR="${CMAKE_USE_DIR}"
 	else
-		: ${BUILD_DIR:=${CMAKE_USE_DIR}_build}
+		: "${BUILD_DIR:=${CMAKE_USE_DIR}_build}"
+
+		# Avoid creating ${WORKDIR}_build (which is above WORKDIR).
+		# TODO: For EAPI > 8, we should ban S=WORKDIR for CMake.
+		# See bug #889420.
+		if [[ ${S} == "${WORKDIR}" && ${BUILD_DIR} == "${WORKDIR}_build" ]] ; then
+			eqawarn "QA notice: S=WORKDIR is deprecated for cmake.eclass."
+			eqawarn "Please relocate the sources in src_unpack."
+			BUILD_DIR="${WORKDIR}"/${P}_build
+		fi
 	fi
 
 	einfo "Source directory (CMAKE_USE_DIR): \"${CMAKE_USE_DIR}\""
@@ -482,17 +498,17 @@ cmake_src_configure() {
 		cat >> "${toolchain_file}" <<- _EOF_ || die
 			set(CMAKE_SYSTEM_NAME "${sysname}")
 		_EOF_
+	fi
 
-		if [ "${SYSROOT:-/}" != "/" ] ; then
-			# When cross-compiling with a sysroot (e.g. with crossdev's emerge wrappers)
-			# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
-			cat >> "${toolchain_file}" <<- _EOF_ || die
-				set(CMAKE_FIND_ROOT_PATH "${SYSROOT}")
-				set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-				set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-				set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-			_EOF_
-		fi
+	if [[ ${SYSROOT:-/} != / ]] ; then
+		# When building with a sysroot (e.g. with crossdev's emerge wrappers)
+		# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
+		cat >> "${toolchain_file}" <<- _EOF_ || die
+			set(CMAKE_SYSROOT "${ESYSROOT}")
+			set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+			set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+			set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+		_EOF_
 	fi
 
 	if use prefix-guest; then
@@ -524,6 +540,7 @@ cmake_src_configure() {
 		set(CMAKE_USER_MAKE_RULES_OVERRIDE "${build_rules}" CACHE FILEPATH "Gentoo override rules")
 		set(CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
 		set(BUILD_SHARED_LIBS ON CACHE BOOL "")
+		set(Python3_FIND_UNVERSIONED_NAMES FIRST CACHE STRING "")
 	_EOF_
 
 	if [[ -n ${_ECM_ECLASS} ]]; then
@@ -593,9 +610,9 @@ cmake_src_configure() {
 		-DCMAKE_TOOLCHAIN_FILE="${toolchain_file}"
 	)
 
-	if [[ -n ${MYCMAKEARGS} ]] ; then
-		cmakeargs+=( "${MYCMAKEARGS}" )
-	fi
+	# Handle quoted whitespace
+	eval "local -a MYCMAKEARGS=( ${MYCMAKEARGS} )"
+	cmakeargs+=( "${MYCMAKEARGS[@]}" )
 
 	if [[ -n "${CMAKE_EXTRA_CACHE_FILE}" ]] ; then
 		cmakeargs+=( -C "${CMAKE_EXTRA_CACHE_FILE}" )
@@ -639,7 +656,10 @@ cmake_build() {
 			;;
 		ninja)
 			[[ -e build.ninja ]] || die "build.ninja not found. Error during configure stage."
-			eninja "$@"
+			case ${CMAKE_VERBOSE} in
+				OFF) NINJA_VERBOSE=OFF eninja "$@" ;;
+				*) eninja "$@" ;;
+			esac
 			;;
 	esac
 
@@ -665,6 +685,7 @@ cmake_src_test() {
 	[[ -e CTestTestfile.cmake ]] || { echo "No tests found. Skipping."; return 0 ; }
 
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
+	[[ -n ${CMAKE_SKIP_TESTS} ]] && myctestargs+=( -E '('$( IFS='|'; echo "${CMAKE_SKIP_TESTS[*]}")')'  )
 
 	set -- ctest -j "$(makeopts_jobs "${MAKEOPTS}" 999)" \
 		--test-load "$(makeopts_loadavg)" "${myctestargs[@]}" "$@"

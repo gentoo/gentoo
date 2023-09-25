@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 # chkconfig: - 91 35
 # description: Starts and stops dbmail-timsieved
@@ -40,12 +40,11 @@ start() {
 		--exec /usr/sbin/dbmail-timsieved \
 		-- -p ${PIDFILE} -f /etc/dbmail/dbmail.conf 2>&1
 	eend $?
-}	
+}
 
 stop() {
 	ebegin "Stopping DBMail SIEVE daemon"
 	    start-stop-daemon --stop --quiet --retry 5 \
 		--pidfile ${PIDFILE}
 	eend $?
-}	
-
+}

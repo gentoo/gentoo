@@ -5,13 +5,13 @@ EAPI=7
 
 # This ebuild uses 3 special global variables:
 # GRUB_BOOTSTRAP: Depend on python and invoke bootstrap (gnulib).
-# GRUB_AUTOGEN: Depend on python and invoke the autogen.sh.
+# GRUB_AUTOGEN: Depend on python and invoke autogen.sh.
 # GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf.
 #
 # When applying patches:
 # If gnulib is updated, set GRUB_BOOTSTRAP=1
-# If *.def is updated, set GRUB_AUTOGEN=1
-# If gnulib, *.def, or any autotools files are updated, set GRUB_AUTORECONF=1
+# If gentpl.py or *.def is updated, set GRUB_AUTOGEN=1
+# If gnulib, gentpl.py, *.def, or any autotools files are updated, set GRUB_AUTORECONF=1
 #
 # If any of the above applies to a user patch, the user should set the
 # corresponding variable in make.conf or the environment.
@@ -21,7 +21,7 @@ if [[ ${PV} == 9999  ]]; then
 	GRUB_BOOTSTRAP=1
 fi
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 WANT_LIBTOOL=none
 
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
@@ -44,7 +44,7 @@ if [[ ${PV} != 9999 ]]; then
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
@@ -57,7 +57,7 @@ PATCHES=(
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
-UNIFONT=unifont-12.1.02
+UNIFONT=unifont-15.0.06
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
 
@@ -129,7 +129,7 @@ RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )
 "
 
-RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test ) test? ( userpriv )"
 
 QA_EXECSTACK="usr/bin/grub-emu* usr/lib/grub/*"
 QA_PRESTRIPPED="usr/lib/grub/.*"
@@ -156,8 +156,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	sed -i -e /autoreconf/d autogen.sh || die
-
 	if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 		python_setup
 	else
@@ -168,7 +166,7 @@ src_prepare() {
 		eautopoint --force
 		AUTOPOINT=: AUTORECONF=: ./bootstrap || die
 	elif [[ -n ${GRUB_AUTOGEN} ]]; then
-		./autogen.sh || die
+		FROM_BOOTSTRAP=1 ./autogen.sh || die
 	fi
 
 	if [[ -n ${GRUB_AUTORECONF} ]]; then
@@ -282,7 +280,9 @@ src_compile() {
 src_test() {
 	# The qemu dependency is a bit complex.
 	# You will need to adjust QEMU_SOFTMMU_TARGETS to match the cpu/platform.
-	grub_do emake check
+	local SANDBOX_WRITE=${SANDBOX_WRITE}
+	addwrite /dev
+	grub_do emake -j1 check
 }
 
 src_install() {
@@ -292,7 +292,7 @@ src_install() {
 	einstalldocs
 
 	insinto /etc/default
-	newins "${FILESDIR}"/grub.default-3 grub
+	newins "${FILESDIR}"/grub.default-4 grub
 
 	# https://bugs.gentoo.org/231935
 	dostrip -x /usr/lib/grub
@@ -308,6 +308,7 @@ pkg_postinst() {
 			if ver_test -gt ${v}; then
 				ewarn
 				ewarn "Re-run grub-install to update installed boot code!"
+				ewarn "Re-run grub-mkconfig to update grub.cfg!"
 				ewarn
 				break
 			fi

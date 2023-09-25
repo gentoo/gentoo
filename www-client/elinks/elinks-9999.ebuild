@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 LUA_COMPAT=( lua5-{1,2,3,4} luajit )
 
 inherit meson lua-single python-any-r1
@@ -17,15 +17,14 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/rkd77/elinks/releases/download/v${PV}/${P}.tar.xz"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn"
 IUSE+=" javascript lua lzma +mouse nls nntp perl samba ssl test tre unicode X xml zlib zstd"
-# tests restricted for https://github.com/rkd77/elinks/issues/203
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
@@ -36,7 +35,7 @@ RDEPEND="
 		>=sys-libs/gpm-1.20.0-r5
 	)
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
-	idn? ( net-dns/libidn:= )
+	idn? ( net-dns/libidn2:= )
 	javascript? (
 		dev-cpp/libxmlpp:5.0
 		dev-lang/mujs:=
@@ -58,11 +57,15 @@ RDEPEND="
 	zlib? ( >=sys-libs/zlib-1.1.4 )
 	zstd? ( app-arch/zstd:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 BDEPEND="
 	${PYTHON_DEPS}
-	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+	test? (
+		net-dns/libidn2
+	)
 "
 
 pkg_setup() {
@@ -73,6 +76,9 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
+		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
+		-Dhtmldoc=false
+		-Dpdfdoc=false
 		-D88-colors=true
 		-D256-colors=true
 		$(meson_use bittorrent)
@@ -83,7 +89,7 @@ src_configure() {
 		$(meson_use ftp)
 		-Dfsp=false
 		-Dgemini=false
-		-Dgettext=true
+		$(meson_use nls gettext)
 		$(meson_use gopher)
 		$(meson_use gpm)
 		$(meson_use guile)

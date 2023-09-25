@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,9 @@ SRC_URI="https://mdocml.bsd.lv/snapshots/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="cgi system-man"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="cgi selinux system-man test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/zlib
 	system-man? ( !sys-apps/man-db )
@@ -22,7 +23,9 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	cgi? ( app-text/highlight )
+	test? ( dev-lang/perl )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-makewhatis )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.14.5-r1-www-install.patch
@@ -104,6 +107,10 @@ src_prepare() {
 src_compile() {
 	default
 	use cgi && emake man.cgi
+}
+
+src_test() {
+	emake regress
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-module.eclass
@@ -56,7 +56,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list of links to add for BINSCRIPTS.
-# The systax is: foo:bar to create a symlink bar -> foo.
+# The syntax is: foo:bar to create a symlink bar -> foo.
 
 # @ECLASS_VARIABLE: TL_PV
 # @INTERNAL
@@ -71,16 +71,17 @@
 # Information to display about the package.
 # e.g. for enabling/disabling a feature
 
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_TEXLIVE_MODULE_ECLASS} ]]; then
 _TEXLIVE_MODULE_ECLASS=1
 
-case ${EAPI:-0} in
-	[0-6])	die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	7)	inherit texlive-common ;;
-	*)	die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
-esac
+inherit texlive-common
 
-HOMEPAGE="http://www.tug.org/texlive/"
+HOMEPAGE="https://www.tug.org/texlive/"
 
 COMMON_DEPEND=">=app-text/texlive-core-${TL_PV:-${PV}}"
 
@@ -90,7 +91,7 @@ IUSE="source"
 PKGEXT=tar.xz
 
 # Now where should we get these files?
-TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge }
+TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge sam }
 
 # We do not need anything from SYSROOT:
 #   Everything is built from the texlive install in /
@@ -98,31 +99,38 @@ TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge }
 BDEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils"
 
-for i in ${TEXLIVE_MODULE_CONTENTS}; do
-	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
-	done
+tl_uri_prefix="https://dev.gentoo.org/~@dev@/distfiles/texlive/tl-"
+tl_uri_suffix="-${PV}.${PKGEXT}"
+
+tl_uri=( ${TEXLIVE_MODULE_CONTENTS} )
+tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
+for tldev in ${TEXLIVE_DEVS}; do
+	SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 done
 
 # Forge doc SRC_URI
-[[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} doc? ("
-for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
+if [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]]; then
+	SRC_URI+=" doc? ("
+	tl_uri=( ${TEXLIVE_MODULE_DOC_CONTENTS} )
+	tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
 	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
+		SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 	done
-done
-[[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} )"
+	SRC_URI+=" )"
+fi
 
 # Forge source SRC_URI
-if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]] ; then
-	SRC_URI="${SRC_URI} source? ("
-	for i in ${TEXLIVE_MODULE_SRC_CONTENTS}; do
-		for tldev in ${TEXLIVE_DEVS}; do
-			SRC_URI="${SRC_URI} https://dev.gentoo.org/~${tldev}/distfiles/texlive/tl-${i}-${PV}.${PKGEXT}"
-		done
+if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]]; then
+	SRC_URI+=" source? ("
+	tl_uri=( ${TEXLIVE_MODULE_SRC_CONTENTS} )
+	tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
+	for tldev in ${TEXLIVE_DEVS}; do
+		SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
 	done
-	SRC_URI="${SRC_URI} )"
+	SRC_URI+=" )"
 fi
+
+unset tldev tl_uri tl_uri_prefix tl_uri_suffix
 
 RDEPEND="${COMMON_DEPEND}"
 
@@ -156,10 +164,18 @@ texlive-module_src_unpack() {
 	sed -e 's/\/[^/]*$//' -e "s:^:${RELOC_TARGET}/:" "${T}/reloclist" |
 		sort -u |
 		xargs mkdir -p || die
-	local i
+	local i dir="" files=()
 	while read i; do
-		mv "${i}" "${RELOC_TARGET}/${i%/*}" || die
+		if [[ ${RELOC_TARGET}/${i%/*} != "${dir}" ]]; then
+			# new dir, do the previous move
+			[[ -z ${dir} ]] || mv "${files[@]}" "${dir}" || die
+			dir="${RELOC_TARGET}/${i%/*}"
+			files=()
+		fi
+		# collect files with same destination dir
+		files+=( "${i}" )
 	done < "${T}/reloclist"
+	mv "${files[@]}" "${dir}" || die
 }
 
 # @FUNCTION: texlive-module_add_format
@@ -320,13 +336,13 @@ texlive-module_src_compile() {
 			BuildLanguageDat)
 				einfo "Language file $parameter already generated.";;
 			*)
-				die "No rule to proccess ${command}. Please file a bug."
+				die "No rule to process ${command}. Please file a bug."
 		esac
 	done
 
 	# Determine texlive-core version for fmtutil call
-        fmt_call="$(has_version '>=app-text/texlive-core-2019' \
-         && echo "fmtutil-user" || echo "fmtutil")"
+	fmt_call="$(has_version '>=app-text/texlive-core-2019' \
+		&& echo "fmtutil-user" || echo "fmtutil")"
 
 	# Build format files
 	for i in texmf-dist/fmtutil/format*.cnf; do
@@ -385,7 +401,6 @@ texlive-module_src_install() {
 	if [[ -d tlpkg ]] && use source; then
 		cp -pR tlpkg "${ED}/usr/share/" || die
 	fi
-
 
 	if [[ -d texmf-var ]]; then
 		insinto /var/lib/texmf
@@ -447,6 +462,6 @@ texlive-module_pkg_postrm() {
 	etexmf-update
 }
 
-EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm
-
 fi
+
+EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm

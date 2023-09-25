@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/880807
+--- a/src/fixio.c
++++ b/src/fixio.c
+@@ -10,9 +10,11 @@
+  * $Id: fixio.c,v 1.4 2002/01/28 01:16:52 jason Exp $
+  */
+ 
++#define _XOPEN_SOURCE 600
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include "shorten.h"
+ #include "bitshift.h"
+ 

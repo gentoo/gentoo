@@ -5,4 +5,10 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Compiler-Lexer</remote-id>
+    <remote-id type="cpan-module">Compiler::Lexer</remote-id>
+    <remote-id type="cpan-module">Compiler::Lexer::Token</remote-id>
+    <remote-id type="github">goccy/p5-Compiler-Lexer</remote-id>
+  </upstream>
 </pkgmetadata>

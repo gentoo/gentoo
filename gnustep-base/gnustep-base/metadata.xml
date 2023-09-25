@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnustep@gentoo.org</email>
-	<name>Gentoo GNUstep Project</name>
-</maintainer>
-<longdescription>
-The GNUstep Base Library is a library of general-purpose, non-graphical
-Objective C objects.  For example, it includes classes for strings,
-object collections, byte streams, typed coders, invocations,
-notifications, notification dispatchers, moments in time, network ports,
-remote object messaging support (distributed objects), and event loops.
-
-It provides functionality that aims to implement the non-graphical
-portion of the OpenStep standard (the Foundation library).
-</longdescription>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">gnustep/libs-base</remote-id>
+	</upstream>
 </pkgmetadata>

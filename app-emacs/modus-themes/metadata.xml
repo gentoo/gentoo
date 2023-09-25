@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Highly accessible themes, conforming with the highest standard for colour
+    contrast between background and foreground values (WCAG AAA). They also are
+    optimised for users with red-green colour deficiency.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/protesilaos/modus-themes/issues/</bugs-to>
+    <remote-id type="github">protesilaos/modus-themes</remote-id>
+  </upstream>
+</pkgmetadata>

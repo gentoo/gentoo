@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,10 +7,10 @@ DIST_AUTHOR=HAARG
 DIST_VERSION=0.35
 inherit perl-module
 
-DESCRIPTION="A pragma to use the C3 method resolution order algortihm"
+DESCRIPTION="Pragma to use the C3 method resolution order algortihm"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~ppc-macos ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

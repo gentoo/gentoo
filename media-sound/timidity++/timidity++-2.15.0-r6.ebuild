@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,14 +8,14 @@ inherit autotools desktop elisp-common flag-o-matic systemd xdg
 MY_PV="${PV/_/-}"
 MY_P="TiMidity++-${MY_PV}"
 
-DESCRIPTION="A handy MIDI to WAV converter with OSS and ALSA output support"
-HOMEPAGE="http://timidity.sourceforge.net/"
+DESCRIPTION="Handy MIDI to WAV converter with OSS and ALSA output support"
+HOMEPAGE="https://timidity.sourceforge.net/"
 SRC_URI="mirror://sourceforge/timidity/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="alsa ao emacs flac gtk jack motif nas ncurses ogg oss selinux slang speex tk vorbis X Xaw3d"
 
 REQUIRED_USE="tk? ( X )"

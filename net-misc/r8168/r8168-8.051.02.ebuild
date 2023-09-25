@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~pacho/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 MODULE_NAMES="r8168(net:${S}/src)"
 BUILD_TARGETS="modules"
@@ -26,6 +26,7 @@ WARNING_R8169="CONFIG_R8169 is enabled. ${P} will not be loaded unless kernel dr
 
 PATCHES=(
 	"${FILESDIR}/${PN}-8.051.02-6.1-fix.patch"
+	"${FILESDIR}/${P}-6.4.10-fix.patch" # bug 912242
 )
 
 pkg_setup() {

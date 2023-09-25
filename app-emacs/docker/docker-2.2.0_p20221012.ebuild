@@ -1,22 +1,22 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=3173403a2d51a2af36f7fdb0b7d2bec9e202e772
+COMMIT=3173403a2d51a2af36f7fdb0b7d2bec9e202e772
 NEED_EMACS=26.1
 
 inherit elisp
 
 DESCRIPTION="Emacs integration for Docker"
 HOMEPAGE="https://github.com/Silex/docker.el/"
-SRC_URI="https://github.com/Silex/${PN}.el/archive/${H}.tar.gz
+SRC_URI="https://github.com/Silex/${PN}.el/archive/${COMMIT}.tar.gz
 	-> ${PN}.el-${PV}.tar.gz"
-S="${WORKDIR}"/${PN}.el-${H}
+S="${WORKDIR}"/${PN}.el-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=app-emacs/transient-0.3.7_p20220918

@@ -1,5 +1,51 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2023-09-19)
+# dev-cpp/cpp-httplib is barely keyworded anywhere.
+sys-devel/llvm debuginfod
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-09-13)
+# media-gfx/renderdoc currently has few keywords
+dev-qt/qtbase renderdoc
+
+# Sam James <sam@gentoo.org> (2023-09-07)
+# media-libs/roc-toolkit is not keyworded in most places
+media-video/pipewire roc
+
+# Sam James <sam@gentoo.org> (2023-07-18)
+# dev-cpp/cppdap is not keyworded in most places
+dev-util/cmake dap
+
+# Sam James <sam@gentoo.org> (2023-07-09)
+# sys-libs/libhugetlbfs is broken w/ newer glibc, bug #806079
+sys-apps/nvme-cli hugepages
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-24)
+# dev-db/mongodb builds practically only on the authors' computer.
+dev-python/pymongo test-full
+
+# Sam James <sam@gentoo.org> (2023-05-15)
+# Unkeyworded dependencies
+www-servers/apache apache2_modules_tls
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-22)
+# snap only works on amd64
+kde-plasma/discover snap
+
+# Sam James <sam@gentoo.org> (2023-04-03)
+# Needs dev-python/py-cpuinfo which is not ported to all of our platforms
+# See bug #894078.
+dev-python/pytables cpudetection
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-24)
+# libomptarget is only supported on 64-bit architectures.
+>=sys-libs/libomp-16.0.0_pre20230124 offload
+
+# Sam James <sam@gentoo.org> (2023-01-05)
+# asm is only available for amd64 and arm, but for arm, is gated
+# behind an experimental flag.
+>=dev-libs/libsecp256k1-0.2.0 asm
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # Unkeyworded dependencies
@@ -46,7 +92,6 @@ media-libs/libva-intel-driver hybrid
 # In the meantime, force-enable on loong only.
 # This is not inside use.mask, because crossdev toolchain packages would
 # want to have the flag enabled without hassle.
-<dev-libs/libffi-3.4.3 experimental-loong
 <sys-libs/glibc-2.36 experimental-loong
 sys-libs/libseccomp experimental-loong
 
@@ -100,13 +145,6 @@ x11-wm/mutter video_cards_nvidia
 # 32-bit arches and unmask "clozurecl64" on 64-bit ones.
 # We don't list "clozurecl" here since it's already in use.mask.
 >=sci-mathematics/maxima-5.44.0-r5 clozurecl64
-
-# Sam James <sam@gentoo.org> (2021-03-02)
-# Java build is extremely sensitive to environment
-# Previously stable-masked but moved here
-# Then: bug #483372, bug #508564
-# Now: bug #773913 (exposed by having a new ~arch ebuild)
-media-libs/libcaca java mono
 
 # Jaco Kroon <jaco@uls.co.za> (2021-01-08)
 # blocksruntime (clang -fblocks) isn't available on all arches.
@@ -223,10 +261,6 @@ net-vpn/strongswan strongswan_plugins_aesni strongswan_plugins_rdrand strongswan
 # Only available on amd64/x86
 net-analyzer/testssl bundled-openssl kerberos
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
-# Requires media-libs/libheif which is only keyworded for amd64 and x86
-media-gfx/imagemagick heif
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst only has support for assembling bootloader on some arches
 dev-util/catalyst system-bootloader
@@ -306,14 +340,15 @@ media-video/motion mmal
 media-video/ffmpeg mmal
 media-video/ffmpeg-chromium mmal
 media-video/mpv mmal
+net-misc/moonlight mmal
 
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 mroonga galera
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
-# sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd gnuefi
+# sd-boot is not supported on all archs.
+sys-apps/systemd boot gnuefi
 sys-apps/systemd-utils boot
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
@@ -330,7 +365,7 @@ media-sound/lmms vst
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-01-04)
 # Mask until dependencies are keyworded (bug 497068)
-dev-vcs/git mediawiki mediawiki-experimental
+dev-vcs/git mediawiki
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-12-27)
 # Mask because Boost.Context library does not work on most of arches
@@ -402,3 +437,7 @@ media-video/mplayer cpudetection
 # Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
 # Mask raspberry-pi except on arm.
 dev-libs/libcec raspberry-pi
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
+media-video/ffmpeg libplacebo

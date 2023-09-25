@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    The ef-themes are a collection of light and dark themes for GNU Emacs whose
+    goal is to provide colorfulyet legible options for users who want something
+    with a bit more flair than the modus-themes.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/protesilaos/ef-themes/issues/</bugs-to>
+    <remote-id type="github">protesilaos/ef-themes</remote-id>
+  </upstream>
+</pkgmetadata>

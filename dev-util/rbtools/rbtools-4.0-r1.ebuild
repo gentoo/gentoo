@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11} )
 
 inherit distutils-r1
 
@@ -15,11 +15,11 @@ SRC_URI="https://downloads.reviewboard.org/releases/${MY_PN}/$(ver_cut 1-2)/${MY
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/importlib_metadata-4.12[${PYTHON_USEDEP}]
+	>=dev-python/importlib-metadata-4.12[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	>=dev-python/pydiffx-1.1[${PYTHON_USEDEP}]
 	=dev-python/pydiffx-1.1*[${PYTHON_USEDEP}]

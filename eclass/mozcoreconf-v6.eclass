@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mozcoreconf-v6.eclass
@@ -26,7 +26,6 @@ _MOZCORECONF_V6_ECLASS=1
 inherit toolchain-funcs flag-o-matic python-any-r1
 
 BDEPEND="virtual/pkgconfig
-	dev-lang/python:2.7[ncurses,sqlite,ssl,threads(+)]
 	${PYTHON_DEPS}"
 
 IUSE="${IUSE} custom-cflags custom-optimization"
@@ -82,7 +81,7 @@ moz_pkgsetup() {
 	export HOST_CXX="$(tc-getBUILD_CXX)"
 	tc-export CC CXX LD PKG_CONFIG AR RANLIB
 
-	# Ensure that we have a sane build enviroment
+	# Ensure that we have a sane build environment
 	export MOZILLA_CLIENT=1
 	export BUILD_OPT=1
 	export NO_STATIC_LIB=1
@@ -99,12 +98,6 @@ moz_pkgsetup() {
 	export QA_CONFIGURE_OPTIONS=".*"
 
 	python-any-r1_pkg_setup
-	# workaround to set python3 into PYTHON3 until mozilla doesn't need py2
-	if [[ "${PYTHON_COMPAT[@]}" != "${PYTHON_COMPAT[@]#python3*}" ]]; then
-		export PYTHON3=${PYTHON}
-		export PYTHON=python2.7
-		export EPYTHON="${EPREFIX}"/usr/bin/python2.7
-	fi
 }
 
 # @FUNCTION: mozconfig_init

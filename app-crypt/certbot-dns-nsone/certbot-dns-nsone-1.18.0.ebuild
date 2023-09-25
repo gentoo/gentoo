@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_10 )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -26,5 +26,5 @@ RDEPEND="
 	>=dev-python/dns-lexicon-3.2.1[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest

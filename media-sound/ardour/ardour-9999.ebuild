@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..11} )
+EAPI=8
+
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
-PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
+PLOCALES="ca cs de el en_GB es eu fr it ja ko nn pl pt pt_PT ru sv zh"
 inherit toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
 
 DESCRIPTION="Digital Audio Workstation"
@@ -14,14 +15,14 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~loong ~x86"
 	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
 LICENSE="GPL-2"
 SLOT="7"
-IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+IUSE="doc jack phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
 	dev-cpp/glibmm:2
@@ -30,8 +31,6 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
 	dev-libs/libxml2:2
-	dev-libs/libxslt
-	>=gnome-base/libgnomecanvas-2
 	media-libs/alsa-lib
 	media-libs/aubio
 	media-libs/flac:=
@@ -54,11 +53,11 @@ RDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/pango
 	jack? ( virtual/jack )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
-	media-libs/suil[gtk2]
+	media-libs/suil[X,gtk2]
 	media-libs/lv2"
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
@@ -87,7 +86,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	xdg_src_prepare
+	default
 
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
@@ -136,9 +135,9 @@ src_configure() {
 		--noconfirm
 		--optimize
 		--with-backends=${backends}
-		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		--no-fpu-optimization
 		$(usex doc "--docs" '')
-		$(usex nls "--nls" "--no-nls")
+		--no-nls
 		$(usex phonehome "--phone-home" "--no-phone-home")
 		# not possible right now  --use-external-libs
 	)

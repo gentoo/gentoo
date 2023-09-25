@@ -1,0 +1,40 @@
+From e20e1e2e2109f1ce6580587f63ad000ac6bdd877 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Tue, 13 Dec 2022 08:14:12 +0100
+Subject: [PATCH] use system spdlog
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -481,8 +481,13 @@ endif(ENABLE_UNIT_TESTS)
+ #######################################################################
+ 
+ if(USE_SPDLOG)
+-  include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/external_projects/spdlog.cmake)
+-  include_directories(${SPDLOG_INCLUDE_DIR})
++  find_package(spdlog REQUIRED CONFIG)
++  if(TARGET spdlog::spdlog)
++    get_target_property(SPDLOG_INCLUDE_DIR spdlog::spdlog INTERFACE_INCLUDE_DIRECTORIES)
++    include_directories(${SPDLOG_INCLUDE_DIR})
++  else()
++    message(SEND_ERROR "You enabled USE_SPDLOG, but the spdlog package could not be found.")
++  endif()
+ endif(USE_SPDLOG)
+ 
+ if(ENABLE_CPP_CORE_GUIDELINES_CHECK)
+--- a/libsrc/core/CMakeLists.txt
++++ b/libsrc/core/CMakeLists.txt
+@@ -50,10 +50,6 @@ endif(TRACE_MEMORY)
+ 
+ if(USE_SPDLOG)
+   include_directories(${SPDLOG_INCLUDE_DIR})
+-  install(DIRECTORY ${SPDLOG_INCLUDE_DIR}
+-    DESTINATION ${NG_INSTALL_DIR_INCLUDE}
+-    )
+-  add_dependencies(ngcore project_spdlog)
+   target_compile_definitions(ngcore PUBLIC NETGEN_USE_SPDLOG)
+   if(DEBUG_LOG)
+     target_compile_definitions(ngcore PUBLIC NETGEN_LOG_DEBUG)
+-- 
+2.38.1
+

@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/906254
+https://gitlab.gnome.org/GNOME/network-manager-sstp/-/merge_requests/54
+
+From f4feed7431b1cf884bd3c1c10df795efaf8d149d Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 13 May 2023 12:19:44 -0400
+Subject: [PATCH] Compile nm-sstp-pppd-mppe.c when !WITH_PPP_MPPE_KEYS
+
+Bug: https://bugs.gentoo.org/906254
+Fixes: 4cd0ec66174011925c93aa04edccca92b4d1387f
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 3be01b6..770fc59 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -120,7 +120,7 @@ src_nm_sstp_pppd_plugin_la_SOURCES = \
+ 	src/nm-sstp-pppd-status.h
+ if !WITH_PPP_MPPE_KEYS
+ src_nm_sstp_pppd_plugin_la_SOURCES += \
+-	src/nm-sstp-pppd-mppe.h
++	src/nm-sstp-pppd-mppe.c
+ endif
+ src_nm_sstp_pppd_plugin_la_CPPFLAGS = \
+ 	$(src_cppflags)
+-- 
+GitLab
+

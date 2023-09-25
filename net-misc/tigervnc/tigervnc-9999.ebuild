@@ -1,36 +1,45 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
-inherit autotools cmake eapi8-dosym flag-o-matic git-r3 java-pkg-opt-2 optfeature systemd xdg
+inherit autotools cmake flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
-XSERVER_VERSION="21.1.1"
+XSERVER_VERSION="21.1.8"
+XSERVER_PATCH_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="https://tigervnc.org"
 SRC_URI="server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
-EGIT_REPO_URI="https://github.com/TigerVNC/tigervnc/"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/TigerVNC/tigervnc/"
+else
+	SRC_URI+=" https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="dri3 +drm gnutls java nls +opengl +server xinerama"
+IUSE="dri3 +drm gnutls java nls +opengl +server +viewer xinerama"
 REQUIRED_USE="
 	dri3? ( drm )
+	java? ( viewer )
 	opengl? ( server )
+	|| ( server viewer )
 "
 
-CDEPEND="
+# TODO: sys-libs/libselinux
+COMMON_DEPEND="
+	dev-libs/gmp:=
+	dev-libs/nettle:=
 	media-libs/libjpeg-turbo:=
 	sys-libs/zlib:=
-	x11-libs/fltk:1
 	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/libXi
 	x11-libs/libXrandr
-	x11-libs/libXrender
 	x11-libs/pixman
 	gnutls? ( net-libs/gnutls:= )
 	nls? ( virtual/libiconv )
@@ -45,38 +54,45 @@ CDEPEND="
 		x11-libs/libXfont2
 		x11-libs/libXtst
 		x11-libs/pixman
-		x11-libs/xtrans
 		x11-apps/xauth
 		x11-apps/xinit
 		x11-apps/xkbcomp
 		x11-apps/xsetroot
 		x11-misc/xkeyboard-config
 		opengl? ( media-libs/libglvnd[X] )
+		!net-misc/turbovnc[server]
 	)
-	"
-
-RDEPEND="${CDEPEND}
-	java? ( virtual/jre:1.8 )
-	server? (
-		dev-lang/perl
-		sys-process/psmisc
-	)"
-
-DEPEND="${CDEPEND}
+	viewer? (
+		media-video/ffmpeg:=
+		x11-libs/fltk:1
+		x11-libs/libXi
+		x11-libs/libXrender
+		!net-misc/turbovnc[viewer]
+	)
+"
+RDEPEND="${COMMON_DEPEND}
+	java? ( >=virtual/jre-1.8:* )
+	server? ( dev-lang/perl )
+"
+DEPEND="${COMMON_DEPEND}
+	java? ( >=virtual/jdk-1.8:* )
 	drm? ( x11-libs/libdrm )
 	server? (
 		media-fonts/font-util
 		x11-base/xorg-proto
 		x11-libs/libxcvt
+		x11-libs/libXi
 		x11-libs/libxkbfile
+		x11-libs/libXrender
+		x11-libs/xtrans
 		x11-misc/util-macros
 		opengl? ( media-libs/mesa )
-	)"
-
+	)
+"
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	"
+"
 
 PATCHES=(
 	# Restore Java viewer
@@ -86,8 +102,12 @@ PATCHES=(
 )
 
 src_unpack() {
-	git-r3_src_unpack
-	use server && unpack xorg-server-${XSERVER_VERSION}.tar.xz
+	if [[ ${PV} == *9999 ]]; then
+		git-r3_src_unpack
+		use server && unpack xorg-server-${XSERVER_VERSION}.tar.xz
+	else
+		default
+	fi
 }
 
 src_prepare() {
@@ -99,12 +119,15 @@ src_prepare() {
 
 	if use server; then
 		cd unix/xserver || die
-		eapply ../xserver${XSERVER_VERSION}.patch
+		eapply ../xserver${XSERVER_PATCH_VERSION}.patch
 		eautoreconf
 		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
 		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die
 
-		cd "${WORKDIR}" && sed -i 's:\(drm_fourcc.h\):libdrm/\1:' $(grep drm_fourcc.h -rl .) || die
+		if use drm; then
+			cd "${WORKDIR}" && \
+			sed -i 's:\(drm_fourcc.h\):libdrm/\1:' $(grep drm_fourcc.h -rl .) || die
+		fi
 	fi
 }
 
@@ -118,6 +141,7 @@ src_configure() {
 		-DENABLE_NLS=$(usex nls)
 		-DBUILD_JAVA=$(usex java)
 		-DBUILD_SERVER=$(usex server)
+		-DBUILD_VIEWER=$(usex viewer)
 	)
 
 	cmake_src_configure
@@ -176,8 +200,8 @@ src_install() {
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 
-		newconfd "${FILESDIR}"/${PN}-1.12.0.confd ${PN}
-		newinitd "${FILESDIR}"/${PN}-1.12.0.initd ${PN}
+		newconfd "${FILESDIR}"/${PN}-1.13.1.confd ${PN}
+		newinitd "${FILESDIR}"/${PN}-1.13.1.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
 
@@ -186,12 +210,14 @@ src_install() {
 		sed -i -e '/pam_selinux/s/^/#/' "${ED}"/etc/pam.d/tigervnc || die
 
 		# install vncserver to /usr/bin too, see bug #836620
-		dosym8 -r /usr/libexec/vncserver /usr/bin/vncserver
+		dosym -r /usr/libexec/vncserver /usr/bin/vncserver
 	fi
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
+
+	use server && elog 'OpenRC users: please migrate to one service per display as documented here'	#FIXME: add link
 
 	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm x11-misc/sddm x11-misc/slim"
 	use server && \

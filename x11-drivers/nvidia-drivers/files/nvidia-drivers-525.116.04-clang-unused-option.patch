@@ -1,0 +1,17 @@
+clang-15.0.7(?) or so may abort when the unused option -MD is passed,
+option removal is backported from the nvidia:0/535 branch.
+
+Note patch is kept without context given the lines below change constantly
+(version) preventing from applying same patch to multiple versions.
+
+https://github.com/NVIDIA/open-gpu-kernel-modules/issues/506
+--- a/kernel/Kbuild
++++ b/kernel/Kbuild
+@@ -73 +73 @@
+-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
+--- a/kernel-module-source/kernel-open/Kbuild
++++ b/kernel-module-source/kernel-open/Kbuild
+@@ -73 +73 @@
+-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args

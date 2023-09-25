@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: atm, libbz2.a is always PIC :(, so it is always built quickly
@@ -7,7 +7,7 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bzip2.gpg
-inherit toolchain-funcs multilib-minimal usr-ldscript verify-sig
+inherit toolchain-funcs multilib multilib-minimal usr-ldscript verify-sig
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="https://sourceware.org/bzip2/"
@@ -16,7 +16,7 @@ SRC_URI+=" verify-sig? ( https://sourceware.org/pub/${PN}/${P}.tar.gz.sig )"
 
 LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos"
 IUSE="static static-libs"
 
 BDEPEND="
@@ -91,9 +91,9 @@ multilib_src_install() {
 	if multilib_is_native_abi ; then
 		gen_usr_ldscript -a bz2
 
-		dobin bzip2recover
+		dobin bzip2recover$(get_exeext)
 		into /
-		newbin bzip2 bzip2-reference
+		newbin bzip2$(get_exeext) bzip2-reference$(get_exeext)
 	fi
 }
 
@@ -129,7 +129,7 @@ pkg_postinst() {
 	local x
 	for x in bzip2 bunzip2 bzcat; do
 		if [[ ! -h ${EROOT}/bin/${x} ]]; then
-			ln -s bzip2-reference "${EROOT}/bin/${x}" || die
+			ln -s bzip2-reference$(get_exeext) "${EROOT}/bin/${x}$(get_exeext)" || die
 		fi
 	done
 }

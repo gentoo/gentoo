@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -24,7 +24,7 @@ S=${WORKDIR}/${P/_/}
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -73,12 +73,13 @@ COMMON_DEPEND="
 	>=dev-python/python-dateutil-2.8.1-r3[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2020.1[${PYTHON_USEDEP}]
 "
+# <cython-3: bug #898706
 DEPEND="
 	${COMMON_DEPEND}
 	>=dev-python/cython-0.29.32[${PYTHON_USEDEP}]
+	<dev-python/cython-3[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
-		app-text/pandoc
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
@@ -94,6 +95,7 @@ DEPEND="
 		dev-python/xlrd[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
+		virtual/pandoc
 		x11-misc/xclip
 	)
 	test? (

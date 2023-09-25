@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake python-single-r1 virtualx xdg-utils
+inherit cmake desktop python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -122,7 +122,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
-		dev-libs/mathjax
+		<dev-libs/mathjax-3
 	)
 	grc? ( x11-misc/xdg-utils )
 	modtool? ( $(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]') )
@@ -206,14 +206,16 @@ src_install() {
 	rm -f "${ED}"/usr/libexec/${PN}/grc_setup_freedesktop || die
 
 	# Install icons, menu items and mime-types for GRC
-	#if use grc ; then
-	#	local fd_path="${S}/grc/scripts/freedesktop"
-	#	insinto /usr/share/mime/packages
-	#	doins "${fd_path}/${PN}-grc.xml"
+	if use grc ; then
+		local fd_path="${S}/grc/scripts/freedesktop"
+		insinto /usr/share/mime/packages
+		doins "${fd_path}/${PN}-grc.xml"
 
-	#	domenu "${fd_path}/"*.desktop
-	#	doicon "${fd_path}/"*.png
-	#fi
+		domenu "${fd_path}/${PN}-grc.desktop"
+		for size in 16 24 32 48 64 128 256; do
+			newicon -s $size "${fd_path}/"grc-icon-$size.png ${PN}-grc.png
+		done
+	fi
 
 	python_fix_shebang "${ED}"
 	# Remove incorrectly byte-compiled Python files and replace

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>arsen@aarsen.me</email>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
 		<name>Arsen Arsenović</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="gitlab">nbdkit/libnbd</remote-id>
@@ -19,6 +15,9 @@
 		</flag>
 		<flag name="fuse">
 			Install the <pkg>sys-fs/fuse</pkg> powered nbdfuse.
+		</flag>
+		<flag name="go">
+			Build bindings for <pkg>dev-lang/go</pkg>
 		</flag>
 	</use>
 </pkgmetadata>

@@ -1,8 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -sparc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
+
+# matoro <matoro_gentoo@matoro.tk> (2023-03-07)
+# dev-db/mariadb fails tests disastrously.
+mariadb
 
 # Sam James <sam@gentoo.org> (2022-07-21)
 # Untested.
@@ -56,13 +64,9 @@ luajittex
 fortune
 physfs
 
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
-
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on sparc
--ecls
+-ecl
 -sbcl
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
@@ -241,10 +245,6 @@ unwind
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
 # sys-devel/llvm is not keyworded, bug #320221
 llvm
-
-# Pacho Ramos <pacho@gentoo.org> (2014-01-19)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp

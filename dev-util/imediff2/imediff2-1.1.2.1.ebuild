@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ncurses"
 
 inherit python-single-r1
@@ -11,7 +11,7 @@ inherit python-single-r1
 MY_P="${PN}_${PV}"
 
 DESCRIPTION="An interactive, user friendly 2-way merge tool in text mode"
-HOMEPAGE="https://elonen.iki.fi/code/imediff/"
+HOMEPAGE="https://github.com/osamuaoki/imediff"
 SRC_URI="mirror://debian/pool/main/i/${PN}/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-2"

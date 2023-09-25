@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Math-BigInt-GMP</remote-id>
     <remote-id type="cpan-module">Math::BigInt::GMP</remote-id>
+    <remote-id type="github">pjacklam/p5-Math-BigInt-GMP</remote-id>
   </upstream>
 </pkgmetadata>

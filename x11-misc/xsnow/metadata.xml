@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type='sourceforge'>xsnow</remote-id>
+		<changelog>https://www.ratrabbit.nl/ratrabbit/xsnow/changelog/</changelog>
 	</upstream>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit cmake-multilib multilib python-single-r1
 
 DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-disable-multiarch.patch
 	"${FILESDIR}"/${P}-brotli-unbundle.patch
 	"${FILESDIR}"/${P}-libc-dlopen-glibc-2.34.patch
+	"${FILESDIR}"/${P}-pkgconfig-waffle.patch
 )
 
 src_prepare() {

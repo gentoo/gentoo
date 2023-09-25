@@ -1,0 +1,18 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 619d6a0..c520db0 100644
+--- hipamd-rocm-5.5.1.orig/src/CMakeLists.txt
++++ hipamd-rocm-5.5.1/src/CMakeLists.txt
+@@ -44,13 +44,6 @@ if(ADDRESS_SANITIZER)
+   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${ASAN_LINKER_FLAGS} -Wl,--build-id=sha1")
+ endif()
+ 
+-if(CMAKE_COMPILER_IS_GNUCC)
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error=deprecated-declarations")
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=deprecated-declarations")
+-endif()
+-
+ option(DISABLE_DIRECT_DISPATCH "Disable Direct Dispatch" OFF)
+ 
+ option(BUILD_SHARED_LIBS "Build the shared library" ON)

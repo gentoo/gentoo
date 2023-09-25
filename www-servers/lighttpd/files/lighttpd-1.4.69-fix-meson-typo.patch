@@ -1,0 +1,29 @@
+https://github.com/lighttpd/lighttpd1.4/pull/127
+
+From 7445f72eb441052f7051f029b25d39855dc75e1c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 25 Jun 2023 06:18:40 +0100
+Subject: [PATCH] src: Fix 'getoption' meson typo
+
+Bug: https://bugs.gentoo.org/905219
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -381,7 +381,7 @@ if get_option('with_gnutls')
+ 	# function: gnutls_check_version (-lgnutls)
+ 	libgnutls = [ dependency('gnutls') ]
+ 	conf_data.set('HAVE_GNUTLS_CRYPTO_H', true)
+-	if not(get_option('with_openssl')) and not(get_option('with_wolfssl')) and not(get_option('with_mbedtls')) and not(getoption('with_nettle'))
++	if not(get_option('with_openssl')) and not(get_option('with_wolfssl')) and not(get_option('with_mbedtls')) and not(get_option('with_nettle'))
+ 	  libcrypto = [ dependency('gnutls') ]
+ 	endif
+ endif
+@@ -402,7 +402,7 @@ if get_option('with_nss')
+ 	#libnss3 = [ compiler.find_library('nss3') ]
+ 	#libnssutil3 = [ compiler.find_library('nssutil3') ]
+ 	conf_data.set('HAVE_NSS3_NSS_H', true)
+-	if not(get_option('with_openssl')) and not(get_option('with_wolfssl')) and not(get_option('with_mbedtls')) and not(getoption('with_nettle')) and not(getoption('with_gnutls'))
++	if not(get_option('with_openssl')) and not(get_option('with_wolfssl')) and not(get_option('with_mbedtls')) and not(get_option('with_nettle')) and not(get_option('with_gnutls'))
+ 	  libcrypto = [ dependency('nss') ]
+ 	endif
+ endif
+

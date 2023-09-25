@@ -8,4 +8,7 @@
 	<use>
 		<flag name="server">Install all the tools building systems</flag>
 	</use>
+	<upstream>
+		<remote-id type="gentoo">proj/grs</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,212 @@
+--- a/tests/test_evaluator.py	2023-05-14 11:01:54.449768849 +0200
++++ b/tests/test_evaluator.py	2023-05-14 11:06:15.182738125 +0200
+@@ -16,6 +16,7 @@
+ 
+ from time import sleep
+ from unittest import TestCase, mock
++from unittest import skip
+ 
+ from datasets import ClassLabel, Dataset, Features, Sequence, Value
+ from PIL import Image
+@@ -128,6 +128,7 @@
+         return [{"text": "Lorem ipsum"} for _ in inputs]
+ 
+ 
++@skip("require network")
+ class TestEvaluator(TestCase):
+     def setUp(self):
+         self.data = Dataset.from_dict({"label": [1, 0], "text": ["great movie", "horrible movie"]})
+@@ -230,6 +230,7 @@
+         )
+ 
+ 
++@skip("require network")
+ class TestTextClassificationEvaluator(TestCase):
+     def setUp(self):
+         self.data = Dataset.from_dict({"label": [1, 0], "text": ["great movie", "horrible movie"]})
+@@ -394,6 +394,7 @@
+         self.assertAlmostEqual(results["latency_in_seconds"], results["total_time_in_seconds"] / len(data), 5)
+ 
+ 
++@skip("require network")
+ class TestTextClassificationEvaluatorTwoColumns(TestCase):
+     def setUp(self):
+         self.data = Dataset.from_dict(
+@@ -452,6 +452,7 @@
+         self.assertEqual(results["accuracy"], 1.0)
+ 
+ 
++@skip("require network")
+ class TestImageClassificationEvaluator(TestCase):
+     def setUp(self):
+         self.data = Dataset.from_dict(
+@@ -534,6 +535,7 @@
+         self.assertEqual(results["accuracy"], 0)
+ 
+ 
++@skip("require network")
+ class TestQuestionAnsweringEvaluator(TestCase):
+     def setUp(self):
+         self.data = Dataset.from_dict(
+@@ -716,6 +716,7 @@
+         )
+         self.assertEqual(results["overall_accuracy"], 0.5)
+ 
++    @skip("require network")
+     def test_class_init(self):
+         evaluator = TokenClassificationEvaluator()
+         self.assertEqual(evaluator.task, "token-classification")
+@@ -735,6 +736,7 @@
+         )
+         self.assertEqual(results["overall_accuracy"], 2 / 3)
+ 
++    @skip("require network")
+     def test_overwrite_default_metric(self):
+         accuracy = load("seqeval")
+         results = self.evaluator.compute(
+@@ -750,6 +752,7 @@
+         )
+         self.assertEqual(results["overall_accuracy"], 1.0)
+ 
++    @skip("require network")
+     def test_data_loading(self):
+         # Test passing in dataset by name with data_split
+         data = self.evaluator.load_data("evaluate/conll2003-ci", split="validation[:1]")
+@@ -863,6 +866,7 @@
+         self.pipe = DummyTextGenerationPipeline(num_return_sequences=4)
+         self.evaluator = evaluator("text-generation")
+ 
++    @skip("require network")
+     def test_class_init(self):
+         evaluator = TextGenerationEvaluator()
+         self.assertEqual(evaluator.task, "text-generation")
+@@ -877,6 +877,7 @@
+         results = self.evaluator.compute(data=self.data)
+         self.assertIsInstance(results["unique_words"], int)
+ 
++    @skip("require nltk")
+     def test_overwrite_default_metric(self):
+         word_length = load("word_length")
+         results = self.evaluator.compute(
+@@ -906,6 +910,7 @@
+         self.assertEqual(processed_predictions, {"data": ["A", "B", "C", "D"]})
+ 
+ 
++@skip("require network")
+ class TestText2TextGenerationEvaluator(TestCase):
+     def setUp(self):
+         self.data = Dataset.from_dict(
+@@ -979,6 +984,7 @@
+         self.assertEqual(results["bleu"], 0)
+ 
+ 
++@skip("require network")
+ class TestAutomaticSpeechRecognitionEvaluator(TestCase):
+     def setUp(self):
+         self.data = Dataset.from_dict(
+--- a/tests/test_trainer_evaluator_parity.py	2023-05-14 17:50:29.224525549 +0200
++++ b/tests/test_trainer_evaluator_parity.py	2023-05-14 17:37:40.947501195 +0200
+@@ -269,6 +269,7 @@
+         self.assertEqual(transformers_results["eval_HasAns_f1"], evaluator_results["HasAns_f1"])
+         self.assertEqual(transformers_results["eval_NoAns_f1"], evaluator_results["NoAns_f1"])
+ 
++    @unittest.skip('require eval_results.json')
+     def test_token_classification_parity(self):
+         model_name = "hf-internal-testing/tiny-bert-for-token-classification"
+         n_samples = 500
+--- a/tests/test_load.py	2023-05-20 15:45:58.855473557 +0200
++++ b/tests/test_load.py	2023-05-20 15:50:41.620071500 +0200
+@@ -61,6 +61,7 @@
+             hf_modules_cache=self.hf_modules_cache,
+         )
+ 
++    @pytest.mark.skip("require network")
+     def test_HubEvaluationModuleFactory_with_internal_import(self):
+         # "squad_v2" requires additional imports (internal)
+         factory = HubEvaluationModuleFactory(
+@@ -72,6 +73,7 @@
+         module_factory_result = factory.get_module()
+         assert importlib.import_module(module_factory_result.module_path) is not None
+ 
++    @pytest.mark.skip("require network")
+     def test_HubEvaluationModuleFactory_with_external_import(self):
+         # "bleu" requires additional imports (external from github)
+         factory = HubEvaluationModuleFactory(
+@@ -83,6 +85,7 @@
+         module_factory_result = factory.get_module()
+         assert importlib.import_module(module_factory_result.module_path) is not None
+ 
++    @pytest.mark.skip("require network")
+     def test_HubEvaluationModuleFactoryWithScript(self):
+         factory = HubEvaluationModuleFactory(
+             SAMPLE_METRIC_IDENTIFIER,
+@@ -115,6 +118,7 @@
+                 module_factory_result = factory.get_module()
+                 assert importlib.import_module(module_factory_result.module_path) is not None
+ 
++    @pytest.mark.skip("require network")
+     def test_cache_with_remote_canonical_module(self):
+         metric = "accuracy"
+         evaluation_module_factory(
+@@ -127,6 +131,7 @@
+                     metric, download_config=self.download_config, dynamic_modules_path=self.dynamic_modules_path
+                 )
+ 
++    @pytest.mark.skip("require network")
+     def test_cache_with_remote_community_module(self):
+         metric = "lvwerra/test"
+         evaluation_module_factory(
+--- a/tests/test_metric.py	2023-05-20 15:54:32.558477445 +0200
++++ b/tests/test_metric.py	2023-05-20 15:55:40.775415987 +0200
+@@ -736,6 +736,7 @@
+ 
+         self.assertDictEqual(dummy_result_1, combined_evaluation.compute(predictions=preds, references=refs))
+ 
++    @pytest.mark.skip('require network')
+     def test_modules_from_string(self):
+         expected_result = {"accuracy": 0.5, "recall": 0.5, "precision": 1.0}
+         predictions = [0, 1]
+--- a/tests/test_metric_common.py	2023-05-20 15:57:02.399146066 +0200
++++ b/tests/test_metric_common.py	2023-05-20 15:59:25.167947472 +0200
+@@ -99,6 +99,7 @@
+     evaluation_module_name = None
+     evaluation_module_type = None
+ 
++    @pytest.mark.skip('require network')
+     def test_load(self, evaluation_module_name, evaluation_module_type):
+         doctest.ELLIPSIS_MARKER = "[...]"
+         evaluation_module = importlib.import_module(
+--- a/tests/test_trainer_evaluator_parity.py	2023-05-20 16:00:55.986549706 +0200
++++ b/tests/test_trainer_evaluator_parity.py	2023-05-20 16:02:51.808766855 +0200
+@@ -4,6 +4,7 @@
+ import subprocess
+ import tempfile
+ import unittest
++import pytest
+ 
+ import numpy as np
+ import torch
+@@ -33,6 +33,7 @@
+     def tearDown(self):
+         shutil.rmtree(self.dir_path, ignore_errors=True)
+ 
++    @pytest.mark.skip('require network')
+     def test_text_classification_parity(self):
+         model_name = "philschmid/tiny-bert-sst2-distilled"
+ 
+@@ -121,6 +122,7 @@
+ 
+         self.assertEqual(transformers_results["eval_accuracy"], evaluator_results["accuracy"])
+ 
++    @pytest.mark.skip('require network')
+     def test_image_classification_parity(self):
+         # we can not compare to the Pytorch transformers example, that uses custom preprocessing on the images
+         model_name = "douwekiela/resnet-18-finetuned-dogfood"
+@@ -179,6 +181,7 @@
+ 
+         self.assertEqual(transformers_results["eval_accuracy"], evaluator_results["accuracy"])
+ 
++    @pytest.mark.skip('require network')
+     def test_question_answering_parity(self):
+         model_name_v1 = "anas-awadalla/bert-tiny-finetuned-squad"
+         model_name_v2 = "mrm8488/bert-tiny-finetuned-squadv2"

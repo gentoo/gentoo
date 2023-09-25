@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,9 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.3.7"
-MY_PV_RPL="0.0.70"
-MY_PV_TS="0.4.0"
+MY_PV_OBJ="1.3.11"
+MY_PV_RPL="0.0.78"
+MY_PV_TS="0.4.6"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.org/"

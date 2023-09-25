@@ -7,6 +7,7 @@
 </maintainer>
 <stabilize-allarches/>
 <upstream>
+  <bugs-to>https://github.com/haskell/haskell-mode/issues/</bugs-to>
   <remote-id type="github">haskell/haskell-mode</remote-id>
 </upstream>
 </pkgmetadata>

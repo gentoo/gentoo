@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,14 +24,16 @@ IUSE="doc examples +geant4 +root test"
 
 RDEPEND="
 	sci-physics/clhep:=
-	geant4? ( sci-physics/geant[c++17] )
+	geant4? ( sci-physics/geant:=[c++17] )
 	root? ( sci-physics/root:=[c++17] )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )
 	test? (
-		sci-physics/geant[gdml]
+		sci-physics/geant:=[gdml]
 		sci-physics/geant4_vmc[g4root]
 	)"
+BDEPEND="
+	doc? ( app-doc/doxygen[dot] )
+"
 RESTRICT="
 	!geant4? ( test )
 	!root? ( test )
@@ -41,7 +43,6 @@ RESTRICT="
 DOCS=(
 	doc/README
 	doc/VGMhistory.txt
-	doc/todo.txt
 )
 
 src_configure() {
@@ -70,8 +71,6 @@ src_compile() {
 
 src_test() {
 	cd "${BUILD_DIR}"/test || die
-	# See upstream issue: https://github.com/vmc-project/vgm/issues/5
-	sed -i 's/ ScaledSolids / /' test3_suite.sh || die
 	PATH="${BUILD_DIR}"/test:${PATH} ./test_suite.sh || die
 }
 

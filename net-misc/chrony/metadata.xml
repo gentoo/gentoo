@@ -39,5 +39,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:chrony_project:chrony</remote-id>
+		<remote-id type="gitlab">chrony/chrony</remote-id>
 	</upstream>
 </pkgmetadata>

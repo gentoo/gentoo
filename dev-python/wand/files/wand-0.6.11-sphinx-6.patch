@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/889906
+https://github.com/emcconville/wand/commit/460f605f45d406b6d0e2f3e6af7bfa2c62c66882
+
+From 460f605f45d406b6d0e2f3e6af7bfa2c62c66882 Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sat, 14 Jan 2023 22:30:03 +0100
+Subject: [PATCH] docs: fix build with Sphinx 6.0.0
+
+See https://github.com/sphinx-doc/sphinx/commit/93cf1a57d916a1ff96c8e8a0356d0256e40489ac
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -263,11 +263,11 @@ def __repr__(self):
+ intersphinx_mapping = {'http://docs.python.org/': None}
+ 
+ extlinks = {
+-    'issue': ('https://github.com/emcconville/wand/issues/%s', '#'),
+-    'pull': ('https://github.com/emcconville/wand/pull/%s', '!'),
+-    'branch': ('https://github.com/emcconville/wand/compare/master...%s', ''),
+-    'commit': ('https://github.com/emcconville/wand/commit/%s', ''),
+-    'cli': ('https://imagemagick.org/script/command-line-options.php#%s', '-'),
++    'issue': ('https://github.com/emcconville/wand/issues/%s', '#%s'),
++    'pull': ('https://github.com/emcconville/wand/pull/%s', '!%s'),
++    'branch': ('https://github.com/emcconville/wand/compare/master...%s', '%s'),
++    'commit': ('https://github.com/emcconville/wand/commit/%s', '%s'),
++    'cli': ('https://imagemagick.org/script/command-line-options.php#%s', '-%s'),
+ }
+ 
+ # fall back if theme is not there
+

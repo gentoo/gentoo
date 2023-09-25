@@ -8,4 +8,7 @@
 <use>
 	<flag name="sndio">Add support for <pkg>media-sound/sndio</pkg></flag>
 </use>
+<upstream>
+	<remote-id type="github">xiph/libao</remote-id>
+</upstream>
 </pkgmetadata>

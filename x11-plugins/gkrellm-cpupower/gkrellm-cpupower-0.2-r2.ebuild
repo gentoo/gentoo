@@ -1,14 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gkrellm-plugin toolchain-funcs
+inherit gkrellm-plugin multilib toolchain-funcs
 
 MY_P="${P/gkrellm/gkrellm2}"
 
 DESCRIPTION="A Gkrellm2 plugin for displaying and manipulating CPU frequency"
-HOMEPAGE="https://github.com/sainsaar/gkrellm2-cpupower/"
+HOMEPAGE="https://github.com/sainsaar/gkrellm2-cpupower"
 SRC_URI="https://github.com/sainsaar/gkrellm2-cpupower/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
@@ -20,7 +20,8 @@ DEPEND="app-admin/gkrellm:2[X]"
 RDEPEND="
 	${DEPEND}
 	app-admin/sudo
-	sys-power/cpupower"
+	sys-power/cpupower
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(

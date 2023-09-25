@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,24 +6,18 @@ EAPI=8
 # Worth keeping an eye on 'develop' branch upstream for possible backports.
 AUTOTOOLS_AUTO_DEPEND="no"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/madler.asc
-inherit autotools multilib-minimal flag-o-matic usr-ldscript verify-sig
-
-CYGWINPATCHES=(
-	"https://github.com/cygwinports/zlib/raw/22a3462cae33a82ad966ea0a7d6cbe8fc1368fec/1.2.11-gzopen_w.patch -> ${PN}-1.2.11-cygwin-gzopen_w.patch"
-	"https://github.com/cygwinports/zlib/raw/22a3462cae33a82ad966ea0a7d6cbe8fc1368fec/1.2.7-minizip-cygwin.patch -> ${PN}-1.2.7-cygwin-minizip.patch"
-)
+inherit autotools multilib-minimal flag-o-matic toolchain-funcs usr-ldscript verify-sig
 
 DESCRIPTION="Standard (de)compression library"
 HOMEPAGE="https://zlib.net/"
 SRC_URI="https://zlib.net/${P}.tar.xz
 	https://zlib.net/fossils/${P}.tar.xz
 	https://zlib.net/current/beta/${P}.tar.xz
-	verify-sig? ( https://zlib.net/${P}.tar.xz.asc )
-	elibc_Cygwin? ( ${CYGWINPATCHES[*]} )"
+	verify-sig? ( https://zlib.net/${P}.tar.xz.asc )"
 
 LICENSE="ZLIB"
 SLOT="0/1" # subslot = SONAME
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="minizip static-libs"
 
 RDEPEND="!sys-libs/zlib-ng[compat]"
@@ -51,33 +45,13 @@ PATCHES=(
 src_prepare() {
 	default
 
-	if use elibc_Cygwin ; then
-		local p
-		for p in "${CYGWINPATCHES[@]}" ; do
-			# Strip out the "... -> " from the array
-			eapply -p2 "${DISTDIR}/${p#*> }"
-		done
-	fi
-
 	if use minizip ; then
 		cd contrib/minizip || die
 		eautoreconf
 	fi
 
 	case ${CHOST} in
-		*-cygwin*)
-			# Do not use _wopen, it's a mingw-only symbol
-			sed -i -e '/define WIDECHAR/d' "${S}"/gzguts.h || die
-
-			# zlib1.dll is the mingw name, need cygz.dll
-			# cygz.dll is loaded by toolchain, put into subdir
-			sed -i -e 's|zlib1.dll|win32/cygz.dll|' win32/Makefile.gcc || die
-
-			;;
-	esac
-
-	case ${CHOST} in
-		*-mingw*|mingw*|*-cygwin*)
+		*-mingw*|mingw*)
 			# Uses preconfigured Makefile rather than configure script
 			multilib_copy_sources
 
@@ -92,8 +66,15 @@ multilib_src_configure() {
 	# because it would pass it even for older binutils.
 	use sparc && append-flags $(test-flags-CCLD -Wl,--no-warn-rwx-segments)
 
+	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
+	# https://github.com/gentoo/gentoo/pull/28355
+	# mold needs this too but right now tc-ld-is-mold is also not available
+	if tc-ld-is-lld; then
+		append-ldflags -Wl,--undefined-version
+	fi
+
 	case ${CHOST} in
-		*-mingw*|mingw*|*-cygwin*)
+		*-mingw*|mingw*)
 			;;
 
 		*)
@@ -124,7 +105,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	case ${CHOST} in
-		*-mingw*|mingw*|*-cygwin*)
+		*-mingw*|mingw*)
 			emake -f win32/Makefile.gcc STRIP=true PREFIX=${CHOST}-
 			sed \
 				-e 's|@prefix@|'"${EPREFIX}"'/usr|g' \
@@ -153,7 +134,7 @@ sed_macros() {
 
 multilib_src_install() {
 	case ${CHOST} in
-		*-mingw*|mingw*|*-cygwin*)
+		*-mingw*|mingw*)
 			emake -f win32/Makefile.gcc install \
 				BINARY_PATH="${ED}/usr/bin" \
 				LIBRARY_PATH="${ED}/usr/$(get_libdir)" \

@@ -12,6 +12,6 @@
   </maintainer>
   <upstream>
     <bugs-to>https://gitlab.com/flatwhatson/flycheck-guile/issues/</bugs-to>
-    <remote-id type="gitlab">flatwhatson/flycheck-guile</remote-id>
+    <remote-id type="github">flatwhatson/flycheck-guile</remote-id>
   </upstream>
 </pkgmetadata>

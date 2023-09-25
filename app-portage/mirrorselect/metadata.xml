@@ -11,4 +11,8 @@
 		provide a nicer front-end for mirror selection
 		(both rsync + distfiles) to a user.
 	</longdescription>
+	<upstream>
+		<remote-id type="gentoo">proj/mirrorselect</remote-id>
+		<remote-id type="github">gentoo/mirrorselect</remote-id>
+	</upstream>
 </pkgmetadata>

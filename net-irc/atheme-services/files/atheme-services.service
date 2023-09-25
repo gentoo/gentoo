@@ -1,0 +1,15 @@
+[Unit]
+Description=Atheme IRC services
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+RuntimeDirectory=atheme
+ExecStart=/usr/bin/atheme-services
+ExecReload=kill -HUP $MAINPID
+Type=forking
+PIDFile=/run/atheme/atheme.pid
+User=atheme-services
+
+[Install]
+WantedBy=multi-user.target

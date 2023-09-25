@@ -1,2 +1,35 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (2023-08-20)
+# Does not play well with linkers under macOS.
+# Undefined symbols for architecture x86_64:
+#  "_main", referenced from:
+#     implicit entry/start for main executable
+dev-python/pydevd
+dev-python/debugpy
+
+# Benda Xu <heroxbd@gentoo.org> (2023-08-18)
+# strlcpy and other BSD functions are available in the libc of macOS.
+# Should not use libbsd.
+dev-libs/libbsd
+
+# Benda Xu <heroxbd@gentoo.org> (2023-08-01)
+# embrace guile-3. (bug #825334)
+media-sound/lilypond
+
+# Fabian Groffen <grobian@gentoo.org> (2023-06-24)
+# Fails to link due to missing libintl, already fixed upstream:
+# https://git.savannah.gnu.org/cgit/tar.git/commit/?id=8632df398b2f548465ebe68b8f494c0d6f8d913d
+=app-arch/tar-1.35
+
+# Benda Xu <heroxbd@gentoo.org> (2023-07-09)
+# Requires Glibc <sys/xattr.h> to work properly.
+# For example, 'lgetxattr' is not available on macOS or gnulib.
+# https://www.gnu.org/software/gnulib/manual/html_node/lgetxattr.html
+sys-apps/attr
+
+# Fabian Groffen <grobian@gentoo.org> (2023-06-05)
+# Fails to compile using GCC, misdetecting sincosf
+# https://github.com/harfbuzz/harfbuzz/issues/4266
+=media-libs/harfbuzz-7.3.0

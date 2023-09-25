@@ -16,6 +16,9 @@
   Git operations.
 </longdescription>
 <stabilize-allarches/>
+<use>
+  <flag name="libgit">Use libgit (<pkg>app-emacs/libegit2</pkg>)</flag>
+</use>
 <upstream>
   <remote-id type="github">magit/magit</remote-id>
 </upstream>

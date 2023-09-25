@@ -1,9 +1,37 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Turner <mattst88@gentoo.org> (2022-12-02)
-# The patch we apply from Fedora doesn't apply.
->x11-terms/gnome-terminal-3.46.3 vanilla
+# Matt Turner <mattst88@gentoo.org> (2023-09-18)
+# Disabling gstreamer seems to be untested upstream and is often broken.
+# The gstreamer dependencies are trivial in compile time and disk usage
+# compared to webkit-gtk.
+# Bugs #911663, #914362
+>=net-libs/webkit-gtk-2.42 gstreamer
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
+# OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
+# Therefore apply mask/force to override the profile's defaults, and invert on
+# arches where luajit is not keyworded.
+# Done this way also avoids conflicts for users using another default.
+games-engines/openmw lua_single_target_luajit
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
+# MPV currently[1] has no plans to support >=lua5-3 making luajit
+# the only choice for maintained lua. Apply mask/force to override
+# the profile's defaults, and invert on arches where not keyworded.
+# Done this way also avoids conflicts for users using another default.
+# [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
+media-video/mpv lua_single_target_luajit
+
+# Joonas Niilola <juippis@gentoo.org> (2023-07-21)
+# -system-librnp is currently broken with upstream package.
+~mail-client/thunderbird-115.0 system-librnp
+~mail-client/thunderbird-115.0.1 system-librnp
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-08)
+# Uses attr even if disabling is requested, bug 910070
+# Workaround that should fix some stage builds
+>=sys-devel/gettext-0.22-r1 xattr
 
 # Patrick McLean <chutzpah@gentoo.org> (2022-06-27)
 # Doesn't build with boost installed on the system, some deps require boost
@@ -31,7 +59,7 @@ dev-java/openjdk:17 system-bootstrap
 # to find a clean way of resolving that.  Compared to the damage
 # potential, the increase of build time is a minor problem.  Users who
 # really insist of building a smaller system can un-force the flags
-# at their own responsibility.
+# at their own responsibility. See bug #767700.
 >=sys-devel/clang-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
 >=sys-devel/clang-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
 >=sys-devel/clang-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
@@ -41,6 +69,7 @@ dev-java/openjdk:17 system-bootstrap
 >=sys-devel/clang-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
 >=sys-devel/clang-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
 >=sys-devel/clang-14 llvm_targets_VE
+>=sys-devel/clang-16 llvm_targets_LoongArch
 >=sys-devel/llvm-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
 >=sys-devel/llvm-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
 >=sys-devel/llvm-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
@@ -50,6 +79,14 @@ dev-java/openjdk:17 system-bootstrap
 >=sys-devel/llvm-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
 >=sys-devel/llvm-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
 >=sys-devel/llvm-14 llvm_targets_VE
+>=sys-devel/llvm-16 llvm_targets_LoongArch
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
+# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
+# distribution and rely on external providers like libxcrypt.
+# Here we are following that path too.
+<sys-libs/glibc-2.33-r2 crypt
+sys-libs/libxcrypt system compat
 
 # Sam James <sam@gentoo.org> (2021-03-08)
 # Broken without USE=unicode
@@ -79,7 +116,6 @@ app-arch/unzip unicode
 app-arch/zip unicode
 sys-apps/util-linux unicode
 sys-process/procps unicode
-www-client/lynx unicode
 #
 # b) using libidn
 app-text/ghostscript-gpl unicode
@@ -129,13 +165,6 @@ sys-libs/libcxx libcxxabi
 # the flag.
 sys-kernel/vanilla-kernel initramfs
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
-# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
-# distribution and rely on external providers like libxcrypt.
-# Here we are following that path too.
-<sys-libs/glibc-2.33-r2 crypt
-sys-libs/libxcrypt system compat
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
 media-sound/lilypond guile2
@@ -178,7 +207,6 @@ sys-firmware/seabios binary
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
 net-analyzer/snort libtirpc
-net-firewall/conntrack-tools libtirpc
 net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
@@ -211,10 +239,9 @@ app-shells/bash:0 readline
 # Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
-dev-lang/python-exec python_targets_python3_8
-dev-lang/python-exec python_targets_python3_9
 dev-lang/python-exec python_targets_python3_10
 dev-lang/python-exec python_targets_python3_11
+dev-lang/python-exec python_targets_python3_12
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

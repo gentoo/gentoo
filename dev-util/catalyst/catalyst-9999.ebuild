@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 if [[ ${PV} == *9999* ]]; then
 	SRC_ECLASS="git-r3"
@@ -12,10 +12,10 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python3_{9..10} )
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1 linux-info optfeature ${SRC_ECLASS}
+inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
@@ -90,7 +90,8 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
+# Build man pages here so as to not clobber default src_compile
+src_configure() {
 	# build the man pages and docs
 	emake
 }
@@ -102,8 +103,20 @@ python_install_all() {
 	fi
 }
 
+src_install() {
+	distutils-r1_src_install
+
+	echo 'd /var/tmp/catalyst 0755 root root' > "${T}"/catalyst-tmpdir.conf
+	dotmpfiles "${T}"/catalyst-tmpdir.conf
+
+	doman files/catalyst.1 files/catalyst-config.5 files/catalyst-spec.5
+	insinto /etc/catalyst
+	doins etc/*
+}
+
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		optfeature "ccache support" dev-util/ccache
 	fi
+	tmpfiles_process catalyst-tmpdir.conf
 }

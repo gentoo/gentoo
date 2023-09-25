@@ -1,0 +1,49 @@
+https://sourceware.org/git/?p=elfutils.git;a=commit;h=a9834d7df68afde4ee44ee8fef888cf7e799171a
+
+From a9834d7df68afde4ee44ee8fef888cf7e799171a Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Sun, 5 Mar 2023 13:09:34 +0100
+Subject: [PATCH] configure.ac contains Bashisms
+
+Autoconf scripts are supposed to be written in POSIX-compatible shell
+language. elfutils commits 0ffe2874e75d48cb88936e119e5284ff2bf664d9
+and 3fa98a6f29b0f370e32549ead7eb897c839af980 introduced Bashisms to
+configure.ac that cause errors when /bin/sh is not Bash.
+
+Example error when /bin/sh is Dash:
+
+./configure: 8748: test: xyes: unexpected operator
+
+The cause of the error is the use of a non-existent == operator in
+expressions passed to the 'test' built-in command. POSIX shell
+specifies only an = operator for testing string equality.
+
+  * configure.ac: Replace == by = in use_msan and enable_demangler
+  comparisons.
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=30196
+
+Reported-by: Matt Whitlock <sourceware@mattwhitlock.name>
+Signed-off-by: Mark Wielaard <mark@klomp.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -169,7 +169,7 @@ if test "$use_msan" = yes; then
+   CXXFLAGS="$CXXFLAGS -fsanitize=memory -fsanitize-memory-track-origins -D_FORTIFY_SOURCE=0"
+   LDFLAGS="-shared"
+   AC_LINK_IFELSE([AC_LANG_SOURCE([int main (int argc, char **argv) { return 0; }])], use_msan=yes, use_msan=no)
+-  AS_IF([test "x$use_msan" == xyes],
++  AS_IF([test "x$use_msan" = xyes],
+         ac_cv_zdefs=no NO_UNDEFINED=,
+         AC_MSG_WARN([clang memory sanitizer not available])
+         CFLAGS="$old_CFLAGS" CXXFLAGS="$old_CXXFLAGS")
+@@ -493,7 +493,7 @@ AC_ARG_ENABLE([demangler],
+ AS_HELP_STRING([--disable-demangler],
+ 	       [Disable libstdc++ demangle support]),
+ 	       [], [enable_demangler=yes])
+-AS_IF([test "x$enable_demangler" == xyes],
++AS_IF([test "x$enable_demangler" = xyes],
+ AC_CHECK_LIB([stdc++], [__cxa_demangle], [dnl
+ AC_DEFINE([USE_DEMANGLE], [1], [Defined if demangling is enabled])])
+ AM_CONDITIONAL(DEMANGLE, test "x$ac_cv_lib_stdcpp___cxa_demangle" = "xyes")
+-- 
+2.31.1

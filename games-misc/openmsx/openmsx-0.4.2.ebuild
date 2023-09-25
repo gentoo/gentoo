@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit python-any-r1
 
@@ -19,10 +19,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 RESTRICT="test"
 
 BDEPEND="${PYTHON_DEPS}"
-
-pkg_setup() {
-	python-any-r1_pkg_setup
-}
 
 src_install() {
 	insinto /usr/share/openttd/baseset/${P}

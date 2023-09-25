@@ -15,35 +15,32 @@
 		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
+		<flag name="abi10-compat">
+			Disables newer features to maintain compatibility with ABI10
+		</flag>
+		<flag name="abi8-compat">
+			Disables newer features to maintain compatibility with ABI8
+		</flag>
+		<flag name="abi9-compat">
+			Disables newer features to maintain compatibility with ABI9
+		</flag>
 		<flag name="ax">
 			Build the OpenVDB AX module to perform custom manipulation of
-			OpenVDB data via an expression language: AX.
+			OpenVDB data via an expression language: AX
 		</flag>
 		<flag name="blosc">
 			Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg>
 		</flag>
 		<flag name="cuda">
-			Enable support for CUDA in NanoVDB.
+			Enable support for CUDA in NanoVDB
 		</flag>
 		<flag name="nanovdb">
-			A lightweight, header only, and GPU friendly version of VDB.
+			A lightweight, header only, and GPU friendly version of VDB
 		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="numpy">
+		<flag name="numpy">
 			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
 		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-6.0.0" name="abi6-compat">
-			Disables newer features to maintain compatibility with ABI6.
-		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="abi7-compat">
-			Disables newer features to maintain compatibility with ABI7.
-		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-8.0.0" name="abi8-compat">
-			Disables newer features to maintain compatibility with ABI8.
-		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-9.0.0" name="abi9-compat">
-			Disables newer features to maintain compatibility with ABI9.
-		</flag>
-		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="utils">
+		<flag name="utils">
 			Build utility binaries
 		</flag>
 	</use>

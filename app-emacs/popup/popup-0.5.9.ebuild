@@ -4,7 +4,6 @@
 EAPI=8
 
 MY_P=${PN}-el-${PV}
-NEED_EMACS=24.3
 
 inherit elisp
 

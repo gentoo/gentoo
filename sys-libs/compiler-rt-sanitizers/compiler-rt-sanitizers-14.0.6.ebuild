@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
@@ -215,6 +215,9 @@ src_test() {
 	local -x SANDBOX_ON=0
 	# wipe LD_PRELOAD to make ASAN happy
 	local -x LD_PRELOAD=
+	# avoid confusing with hardening, upstreamed for >= 16
+	# https://github.com/llvm/llvm-project/issues/60394
+	local -x CLANG_NO_DEFAULT_CONFIG=1
 
 	cmake_build check-all
 }

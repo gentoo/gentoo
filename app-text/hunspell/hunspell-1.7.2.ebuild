@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,10 +11,10 @@ DESCRIPTION="Spell checker, morphological analyzer library and command-line tool
 HOMEPAGE="https://hunspell.github.io/"
 SRC_URI="https://github.com/hunspell/hunspell/releases/download/v${PV}/${P}.tar.gz"
 
-LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
+LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="ncurses nls readline static-libs"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	ncurses? ( sys-libs/ncurses:= )
@@ -41,9 +41,9 @@ PATCHES=(
 	# Upstream package creates some executables which names are too generic
 	# to be placed in /usr/bin - this patch prefixes them with 'hunspell-'.
 	# It modifies a Makefile.am file, hence eautoreconf.
-	"${FILESDIR}/${PN}-1.7.0-renameexes.patch"
+	"${FILESDIR}/hunspell-1.7.2-renameexes.patch"
 
-	"${FILESDIR}/${PN}-1.7.0-tinfo.patch" # bug #692614
+	"${FILESDIR}/hunspell-1.7.0-tinfo.patch" # bug #692614
 )
 
 src_prepare() {

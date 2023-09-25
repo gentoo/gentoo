@@ -9,5 +9,5 @@ SRC_URI="http://www.jabberwocky.com/software/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 x86 ~x64-macos"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86 ~x64-macos"
 IUSE=""

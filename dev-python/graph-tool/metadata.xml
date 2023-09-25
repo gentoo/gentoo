@@ -5,10 +5,6 @@
 		<email>soap@gentoo.org</email>
 		<name>David Seifert</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@chymera.eu</email>
-		<name>Horea Christian</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="pypi">graph-tool</remote-id>
 	</upstream>

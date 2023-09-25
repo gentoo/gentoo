@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>python@gentoo.org</email>
-  </maintainer>
   <maintainer type="person">
     <email>bkohler@gentoo.org</email>
     <name>Ben Kohler</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">joeyespo/path-and-address</remote-id>
     <remote-id type="pypi">path-and-address</remote-id>

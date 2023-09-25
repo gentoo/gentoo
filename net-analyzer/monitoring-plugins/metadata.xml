@@ -36,4 +36,7 @@
       values. Disabling the flag does not remove any plugins.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">monitoring-plugins/monitoring-plugins</remote-id>
+  </upstream>
 </pkgmetadata>

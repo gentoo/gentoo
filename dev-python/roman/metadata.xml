@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">roman</remote-id>
+    <remote-id type="github">zopefoundation/roman</remote-id>
   </upstream>
 </pkgmetadata>

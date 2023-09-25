@@ -1,0 +1,7 @@
+dev-util/glslang
+dev-util/spirv-headers
+dev-util/spirv-tools
+dev-util/vulkan-headers
+dev-util/vulkan-tools
+media-libs/vulkan-layers
+media-libs/vulkan-loader

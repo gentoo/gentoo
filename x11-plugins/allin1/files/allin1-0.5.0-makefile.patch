@@ -1,0 +1,63 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -9,12 +9,10 @@
+ 
+ # General vars
+ 
+-CC = gcc
+ FLEX = flex
+-LIBFLAGS = -ggdb -Wall -O2 -fPIC
+-CFLAGS = -ggdb -Wall -O2
++LIBFLAGS = -fPIC
+ GENERATED = allin1 confparse.c
+-LIBRARIES = -L/usr/X11R6/lib -lXext -lX11 -lXpm -lm
++LIBRARIES = -lXext -lX11 -lXpm -lm
+ MODULES = allin1.o dockhelper.o memory.o battery.o cpu.o \
+ 	  network.o filesys.o confparse.o seti.o
+ INCLUDES = dockhelper.h memory.h battery.h cpu.h network.h filesys.h seti.h \
+@@ -30,35 +28,35 @@
+ 	$(FLEX) -o$@ -i -s $<
+ 
+ confparse.o: confparse.c confparse.h
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ dockhelper.o: dockhelper.c dockhelper.h
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ cpu.o: cpu.c dockhelper.h cpu.h
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ memory.o: memory.c memory.h dockhelper.h
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ seti.o: seti.c seti.h dockhelper.h
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ battery.o: battery.c battery.h batt.xpm dockhelper.h
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ network.o: network.c network.h net.xpm dockhelper.h
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ filesys.o: filesys.c filesys.h dockhelper.h
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ allin1.o: allin1.c $(INCLUDES)
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ 
+ allin1: $(MODULES)
+-	$(CC) $(CFLAGS) -o $@ $(MODULES) -DDEBUG $(LIBRARIES)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(MODULES) -DDEBUG $(LIBRARIES)
+ 
+ 
+ install: allin1

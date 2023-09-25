@@ -1,5 +1,21 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-07-28)
+# media-libs/libffado not marked stable here
+media-video/pipewire ieee1394
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-22)
+# Needs unkeyworded dev-python/sympy
+dev-python/nbval test
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
+# Sam James <sam@gentoo.org> (2023-03-23)
+# app-emacs/flycheck is not marked stable here yet
+dev-util/pkgcheck emacs
 
 # Sam James <sam@gentoo.org> (2022-07-06)
 # sci-libs/sundials is not marked stable on arm
@@ -54,8 +70,6 @@ media-libs/phonon vlc
 net-misc/openssh security-key
 dev-util/geany-plugins markdown
 app-arch/rpm test
-net-misc/openssh security-key
-dev-util/geany-plugins markdown
 net-misc/unison gtk
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)

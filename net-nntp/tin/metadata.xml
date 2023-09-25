@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<upstream>
-<doc>http://www.tin.org/bin/man.cgi?section=1&amp;topic=tin</doc>
-</upstream>
-<use>
-<flag name="cancel-locks">Enable Cancel-Lock header functionality</flag>
-<flag name="gpg">Enable <pkg>app-crypt/gnupg</pkg> support</flag>
-</use>
+	<!-- maintainer-needed -->
+	<upstream>
+		<doc>http://www.tin.org/bin/man.cgi?section=1&amp;topic=tin</doc>
+	</upstream>
+	<use>
+		<flag name="cancel-locks">Enable Cancel-Lock header functionality</flag>
+		<flag name="gpg">Enable <pkg>app-crypt/gnupg</pkg> support</flag>
+		<flag name="libtls" restrict="&gt;=net-nntp/tin-2.6.2">Prefer <pkg>dev-libs/libretls</pkg> as SSL/TLS provider (ineffective with USE=-ssl)</flag>
+	</use>
 </pkgmetadata>

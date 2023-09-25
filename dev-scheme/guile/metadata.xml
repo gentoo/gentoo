@@ -17,6 +17,7 @@ Guile is a library designed to help programmers create flexible applications. Us
     <flag name="regex"> Include regular expression interfaces</flag>
   </use>
   <upstream>
+    <doc>https://www.gnu.org/software/guile/manual/html_node/index.html</doc>
     <remote-id type="savannah">guile</remote-id>
   </upstream>
 </pkgmetadata>

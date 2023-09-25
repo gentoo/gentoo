@@ -1,17 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit toolchain-funcs
 
-MV=$(ver_cut 1)
+MV=$(ver_cut 1)$(ver_cut 2)
 MY_P="${PN}${PV//./}"
 LHA_VER="6.1"
 
 DESCRIPTION="Lund Monte Carlo high-energy physics event generator"
 HOMEPAGE="https://pythia.org/"
-SRC_URI="http://home.thep.lu.se/~torbjorn/${PN}${MV}/${MY_P}.tgz
+SRC_URI="https://pythia.org/download/${PN}${MV}/${MY_P}.tgz
 	test? ( lhapdf? (
 		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/CT10.tar.gz
 		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/MRST2007lomod.tar.gz

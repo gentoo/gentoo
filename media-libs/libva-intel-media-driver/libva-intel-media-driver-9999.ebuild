@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake-multilib flag-o-matic
 
 if [[ ${PV} == *9999 ]] ; then
 	: ${EGIT_REPO_URI:="https://github.com/intel/media-driver"}
@@ -29,8 +29,8 @@ IUSE="+redistributable test X"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=media-libs/gmmlib-22.1.8:=
-	>=media-libs/libva-2.14.0[X?]
+DEPEND=">=media-libs/gmmlib-22.3.10:=[${MULTILIB_USEDEP}]
+	>=media-libs/libva-2.19.0[X?,${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
@@ -40,7 +40,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-20.4.5_testing_in_src_test.patch
 )
 
-src_configure() {
+multilib_src_configure() {
+	# https://github.com/intel/media-driver/issues/356
+	append-cxxflags -D_FILE_OFFSET_BITS=64
+
 	local mycmakeargs=(
 		-DMEDIA_BUILD_FATAL_WARNINGS=OFF
 		-DMEDIA_RUN_TEST_SUITE=$(usex test)

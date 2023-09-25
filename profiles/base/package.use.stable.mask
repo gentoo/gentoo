@@ -1,8 +1,31 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-11)
+# xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
+xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
+
+# Mike Gilbert <floppym@gentoo.org> (2023-04-30)
+# Requires llvm-16.
+www-client/chromium libcxx lto pgo
+
+# Alfredo Tupone <tupone@gentoo.org> (2023-04-02)
+# For doc, dev-python/sphinxcontrib-bibtex is required
+sci-mathematics/why3-for-spark doc
+
+# Daniel Pielmeier <billie@gentoo.org> (2023-03-04)
+# For docs, app-text/pandoc is required. For details see:
+# Bug #737612
+app-admin/conky doc
+
+# Arsen Arsenović <arsen@gentoo.org> (2023-01-27)
+# Pulls in large amounts of unstable dependencies, blocking
+# stabilization of other packages.
+# Bug #891965.
+sys-block/nbdkit libguestfs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-12-24)
 # dev-util/hip and its rocm dependencies not stable yet
@@ -11,14 +34,11 @@ sci-physics/lammps hip
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/oneVPL
 media-libs/gst-plugins-bad qsv
+media-video/ffmpeg qsv
 
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
 # app-text/pandoc is not stable
 net-libs/gssdp man
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-06)
-# Unmask the target on python-exec while it's masked elsewhere.
-dev-lang/python-exec -python_targets_python3_11
 
 # Marek Szuba <marecki@gentoo.org> (2022-09-25)
 # This depends on app-admin/ansible-molecule, which is not stable yet.
@@ -26,24 +46,9 @@ dev-lang/python-exec -python_targets_python3_11
 # depend in turn on subprocess-tee.
 dev-python/subprocess-tee test-full
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-16)
-# app-emacs/flycheck is not stable
-dev-util/pkgcheck emacs
-
-# Matthew Smith <matthew@gentoo.org> (2022-08-25)
-# sci-electronics/ngspice is not stable and may not be for a while due
-# to outstanding bugs.
-sci-electronics/kicad ngspice
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-11)
 # app-text/pandoc is not stable
 app-text/nuspell doc
-
-# Sam James <sam@gentoo.org> (2022-02-11)
-# Needs glibc-2.35(?) (or <2.34) which is not yet even keyworded but
-# won't be stable for a while. Can be unmasked then.
-# bug #806079
-sys-apps/nvme-cli hugepages
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-24)
 # test deps are not stable
@@ -94,12 +99,6 @@ dev-libs/glib sysprof
 # bug #769923
 dev-embedded/urjtag ftd2xx
 
-# Sam James <sam@gentoo.org> (2021-01-27)
-# Experimental feature which may not be as secure
-# as on OpenBSD (where proper kernel support exists).
-# bug #726994
-app-admin/doas persist
-
 # Sam James <sam@gentoo.org> (2021-01-09)
 # relapack is experimental, please be careful with use
 # bug #764206
@@ -116,6 +115,7 @@ x11-themes/arc-theme cinnamon
 # Pacho Ramos <pacho@gentoo.org> (2020-08-21)
 # app-text/pandoc is hard to stabilize #737612
 sys-apps/earlyoom docs
+sys-apps/earlyoom man
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # app-text/pandoc (dev-lang/ghc) has no stable keywords.
@@ -163,10 +163,6 @@ media-plugins/grilo-plugins chromaprint
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86
 app-admin/sudo sssd
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-10-16)
-# app-misc/ddcutil is not yet stable.
-kde-plasma/powerdevil brightness-control
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
@@ -216,11 +212,6 @@ kde-apps/cantor julia
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-01-15)
-# Has no stable reverse deps requiring this useflag
-# Stable-masking it so Boost 1.62 stabilization can go ahead
-sci-libs/vtk mpi
-
 # Alon Bar-Lev <alonbl@gentoo.org> (2017-01-01)
 # Will always require unstable packages.
 net-libs/gnutls test-full
@@ -255,17 +246,17 @@ media-libs/opencv vtk
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
 
+# Samuli Suominen <ssuominen@gentoo.org> (2014-03-19)
+# Some open source OpenCL providers cause sandbox violation while accessing /dev/dri/card*
+# from a command like eg. `/usr/bin/mogrify -version`, see bug #472766
+<media-gfx/imagemagick-7.0.10.34 opencl
+
 # Ian Delaney <idella4@gentoo.org> (2013-12-09)
 # subsequent to the total inaction of the maintainer of
 # ocaml to honour / respond in any way to
 # Bug #486076, ocaml masked to allow xen to once again
 # become a stabilisable package
 app-emulation/xen-tools ocaml
-
-# Samuli Suominen <ssuominen@gentoo.org> (2014-03-19)
-# Some open source OpenCL providers cause sandbox violation while accessing /dev/dri/card*
-# from a command like eg. `/usr/bin/mogrify -version`, see bug #472766
-<media-gfx/imagemagick-7.0.10.34 opencl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-03-28)
 # Depends on unstable sci-libs/avogadrolibs

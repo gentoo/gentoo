@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -33,7 +33,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-python/cython-0.27[${PYTHON_USEDEP}]
+BDEPEND="<dev-python/cython-3[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/networkx-2.0[${PYTHON_USEDEP}]

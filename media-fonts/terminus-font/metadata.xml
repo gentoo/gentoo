@@ -9,10 +9,6 @@
     <email>marecki@gentoo.org</email>
     <name>Marek Szuba</name>
   </maintainer>
-  <maintainer type="person">
-    <email>slashbeast@gentoo.org</email>
-    <name>Piotr Karbowski</name>
-  </maintainer>
   <stabilize-allarches/>
   <use>
     <flag name="a-like-o">

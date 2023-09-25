@@ -5,4 +5,7 @@
 		<email>sci-chemistry@gentoo.org</email>
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">TinkerTools/tinker</remote-id>
+	</upstream>
 </pkgmetadata>

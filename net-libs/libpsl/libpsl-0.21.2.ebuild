@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit meson-multilib python-any-r1
 
 DESCRIPTION="C library for the Public Suffix List"
@@ -12,8 +12,9 @@ SRC_URI="https://github.com/rockdaboot/${PN}/releases/download/${PV}/${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="icu +idn"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="icu +idn test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	icu? ( !idn? ( dev-libs/icu:=[${MULTILIB_USEDEP}] ) )
@@ -29,6 +30,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests-optional.patch
+)
+
 pkg_pretend() {
 	if use icu && use idn ; then
 		ewarn "\"icu\" and \"idn\" USE flags are enabled. Using \"idn\"."
@@ -36,7 +41,9 @@ pkg_pretend() {
 }
 
 multilib_src_configure() {
-	local emesonargs=()
+	local emesonargs=(
+		$(meson_use test tests)
+	)
 
 	# Prefer idn even if icu is in USE as well
 	if use idn ; then

@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 virtualx
 
@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv x86"
 IUSE="doc"
 
 RDEPEND="
@@ -27,7 +27,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	doc? ( sys-apps/texinfo )
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )
 "

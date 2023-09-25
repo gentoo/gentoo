@@ -1,0 +1,25 @@
+Fix invalid operator in dash
+
+Some shells, like dash, don't support [ x == x ], reporting invalid syntax,
+and silently failing.
+
+--- gputils-1.5.2.orig/doc/html-help/Makefile.am
++++ gputils-1.5.2/doc/html-help/Makefile.am
+@@ -7,7 +7,7 @@
+ pkgdatadir = @GPUTILS_HTMLDOC_PATH@
+ 
+ html-doc:
+-	if [ "$(ENABLE_HTML_DOC)" == "yes" ]; then \
++	if [ "$(ENABLE_HTML_DOC)" = "yes" ]; then \
+ 	  if [ ! -e $(DEFAULT_MPLABX_PATH)/mpasmx/8bit_device.info ]; then \
+ 	    @echo "Can't find mplabx installation; HTML documentation will not be built."; \
+ 	  else \
+@@ -18,7 +18,7 @@
+ install: install-html
+ 
+ install-html:
+-	if [ "$(ENABLE_HTML_DOC)" == "yes" ]; then \
++	if [ "$(ENABLE_HTML_DOC)" = "yes" ]; then \
+ 	  if [ -n "$$(ls *.html 2>/dev/null)" -a -n "$$(ls *.css 2>/dev/null)" ]; then \
+ 	    $(install_sh) -d "$(DESTDIR)$(pkgdatadir)"; \
+ 	    $(install_sh) -c -m 644 *.css *.html "$(DESTDIR)$(pkgdatadir)"; \

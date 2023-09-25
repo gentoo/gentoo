@@ -1,0 +1,24 @@
+Gentoo issue: https://bugs.gentoo.org/899796
+
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -1291,13 +1291,14 @@
+ 	#include <sys/types.h>
+ 	#include <sys/ipc.h>
+ 	#include <sys/shm.h>
+-	int main()
++	#include <stdlib.h>
++	int main(void)
+ 	{
+ 	  int id;
+ 	  char *shmaddr;
+-	id = shmget (IPC_PRIVATE, 4, IPC_CREAT | 0600);
+-	if (id == -1)
+-	  exit (2);
++	  id = shmget (IPC_PRIVATE, 4, IPC_CREAT | 0600);
++	  if (id == -1)
++	    exit (2);
+ 	  shmaddr = shmat (id, 0, 0);
+ 	  shmctl (id, IPC_RMID, 0);
+ 	  if ((char*) shmat (id, 0, 0) == (char*) -1)

@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

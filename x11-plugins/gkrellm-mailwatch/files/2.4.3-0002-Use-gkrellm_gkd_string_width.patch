@@ -7,12 +7,6 @@ This wrapper is designed to transition from GdkFont to
 PangoFontDescription.  Without it, there is a warning and a probable
 runtime crash, as we are feeding the wrong structure into
 'gdk_string_width'.
----
- mailwatch.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
-
-diff --git a/mailwatch.c b/mailwatch.c
-index 3f0f0a2..5cca01e 100644
 --- a/mailwatch.c
 +++ b/mailwatch.c
 @@ -608,7 +608,7 @@ update_plugin(void) {

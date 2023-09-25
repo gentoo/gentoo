@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,8 +13,7 @@ EGIT_REPO_URI="https://gitlab.com/gnuwget/wget2.git"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/0" # subslot = libwget.so version
 KEYWORDS=""
-IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzip lzma openssl pcre psl +ssl test valgrind xattr zlib"
-REQUIRED_USE="valgrind? ( test )"
+IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzip lzma openssl pcre psl +ssl test xattr zlib"
 
 RDEPEND="
 	brotli? ( app-arch/brotli )
@@ -44,7 +43,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )
-	valgrind? ( dev-util/valgrind )
 "
 
 RESTRICT="!test? ( test )"
@@ -77,12 +75,12 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-static
+		--disable-valgrind-tests
 		--with-plugin-support
 		--with-ssl="$(usex ssl $(usex gnutls gnutls openssl) none)"
 		--without-libidn
 		--without-libmicrohttpd
 		$(use_enable doc)
-		$(use_enable valgrind valgrind-tests)
 		$(use_enable xattr)
 		$(use_with brotli brotlidec)
 		$(use_with bzip2)

@@ -1,0 +1,20 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bea0af828..00778100c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -115,7 +115,6 @@ INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}/"
+         "${CMAKE_SOURCE_DIR}/contrib/fpconv"
+         "${CMAKE_SOURCE_DIR}/contrib/libottery"
+         "${CMAKE_SOURCE_DIR}/contrib/cdb"
+-        "${CMAKE_SOURCE_DIR}/contrib/snowball/include"
+         "${CMAKE_SOURCE_DIR}/contrib/librdns"
+         "${CMAKE_SOURCE_DIR}/contrib/aho-corasick"
+         "${CMAKE_SOURCE_DIR}/contrib/lc-btrie"
+@@ -617,7 +616,6 @@ ELSE ()
+     ADD_DEFINITIONS(-DSYS_ZSTD)
+ ENDIF ()
+ IF (ENABLE_SNOWBALL MATCHES "ON")
+-    ADD_SUBDIRECTORY(contrib/snowball)
+     SET(WITH_SNOWBALL 1)
+ ENDIF ()
+ ADD_SUBDIRECTORY(contrib/libucl)

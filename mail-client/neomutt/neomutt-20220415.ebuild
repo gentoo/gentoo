@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ if [[ ${PV} =~ 99999999$ ]]; then
 	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~ppc64 x86"
 fi
 
 TEST_FILES_COMMIT=8629adab700a75c54e8e28bf05ad092503a98f75
@@ -31,7 +31,7 @@ CDEPEND="
 	app-misc/mime-types
 	berkdb? (
 		|| (
-			sys-libs/db:6.2
+			sys-libs/db:6.0
 			sys-libs/db:5.3
 			sys-libs/db:4.8
 		)

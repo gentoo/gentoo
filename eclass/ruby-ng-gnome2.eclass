@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng-gnome2.eclass
@@ -30,7 +30,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 # @DESCRIPTION:
 # If set to 'yes', the test is run with virtx. Set before inheriting this
 # eclass.
-: ${RUBY_GNOME2_NEED_VIRTX:="no"}
+: "${RUBY_GNOME2_NEED_VIRTX:="no"}"
 
 inherit ruby-fakegem
 if [[ ${RUBY_GNOME2_NEED_VIRTX} == yes ]]; then
@@ -45,7 +45,7 @@ ruby_add_bdepend "
 	dev-ruby/pkg-config
 	test? ( >=dev-ruby/test-unit-2 )"
 SRC_URI="mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
-HOMEPAGE="https://ruby-gnome2.osdn.jp/"
+HOMEPAGE="https://ruby-gnome.github.io/"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 if ver_test -ge "3.4.0"; then

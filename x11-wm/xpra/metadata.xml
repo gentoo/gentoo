@@ -14,6 +14,8 @@
 	<name>James Le Cuirot</name>
 </maintainer>
 <upstream>
+	<remote-id type="pypi">xpra</remote-id>
+	<remote-id type="github">Xpra-org/xpra</remote-id>
 	<bugs-to>https://www.xpra.org/trac/report</bugs-to>
 </upstream>
 <use>
@@ -23,8 +25,9 @@
 	<flag name="csc">Enable csc softscaler support</flag>
 	<flag name="html">Install the HTML5 client</flag>
 	<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
-	<flag name="pillow">Enable pillow support</flag>
+	<flag name="oauth">Enable OAuth2 authentication in the server</flag>
 	<flag name="pinentry">Use <pkg>app-crypt/pinentry</pkg> for password entry</flag>
+	<flag name="trayicon">Enable system tray icon</flag>
 	<flag name="server">Build server-side code</flag>
 	<flag name="vpx">Enable vpx image format support</flag>
 	<flag name="webcam">Enable webcam support via opencv</flag>

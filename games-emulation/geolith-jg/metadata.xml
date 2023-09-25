@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Geolith is a highly accurate emulator for the Neo Geo AES and MVS.
+		This project began life as a fork of GnGEO 0.8.1. All original
+		components were removed or replaced as the project progressed, with
+		the resulting codebase being entirely new, with all new code written
+		under the BSD 3-Clause license.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/geolith/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/geolith</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		RGBDS (Rednex Game Boy Development System) is a free assembler
+		and linker package for the Game Boy and Game Boy Color.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/gbdev/rgbds/issues</bugs-to>
+		<remote-id type="github">gbdev/rgbds</remote-id>
+	</upstream>
+</pkgmetadata>

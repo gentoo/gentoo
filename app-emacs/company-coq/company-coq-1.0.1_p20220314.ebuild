@@ -1,17 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=a6e349e0131f676a885bd14c908fd26054b2df42
+[[ ${PV} == *_p20220314 ]] && COMMIT=a6e349e0131f676a885bd14c908fd26054b2df42
 
 inherit elisp
 
 DESCRIPTION="Collection of extensions for Proof General's Coq mode"
 HOMEPAGE="https://github.com/cpitclaudel/company-coq/"
-SRC_URI="https://github.com/cpitclaudel/${PN}/archive/${H}.tar.gz
-		-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/cpitclaudel/${PN}/archive/${COMMIT}.tar.gz
+	-> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"

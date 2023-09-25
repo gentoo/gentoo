@@ -1,0 +1,34 @@
+Replace System V termio.h with POSIX termios.h for musl
+Upstream: https://github.com/linux-pam/linux-pam/pull/576
+Bug: https://bugs.gentoo.org/906137
+
+From 5658105b04ad4df212baf302898ee2cca99516a6 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Thu, 11 May 2023 10:27:53 -0400
+Subject: [PATCH] fix build on musl
+
+--- a/examples/tty_conv.c
++++ b/examples/tty_conv.c
+@@ -6,8 +6,9 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <unistd.h>
+-#include <termio.h>
++#include <termios.h>
+ #include <security/pam_appl.h>
++#include <sys/ioctl.h>
+ 
+ /***************************************
+  * @brief echo off/on
+@@ -16,7 +17,7 @@
+  ***************************************/
+ static void echoOff(int fd, int off)
+ {
+-    struct termio tty;
++    struct termios tty;
+     if (ioctl(fd, TCGETA, &tty) < 0)
+     {
+         fprintf(stderr, "TCGETA failed: %s\n", strerror(errno));
+-- 
+2.40.1
+

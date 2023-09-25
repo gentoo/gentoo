@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,20 +19,28 @@ HOMEPAGE="https://git.pwmt.org/pwmt/zathura-pdf-mupdf"
 
 LICENSE="ZLIB"
 SLOT="0"
+IUSE="+javascript"
 
-DEPEND=">=app-text/mupdf-1.20.0:=
-	>=app-text/zathura-0.3.9
+DEPEND="
+	>=app-text/mupdf-1.20.0:=[javascript?]
+	>=app-text/zathura-0.5.2:=
 	dev-libs/girara
 	dev-libs/glib:2
-	x11-libs/cairo"
+	x11-libs/cairo
+"
 
 RDEPEND="${DEPEND}"
 
-BDEPEND="app-text/tesseract
-	dev-lang/mujs
-	media-libs/leptonica
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/zathura-pdf-mupdf-0.3.8-meson-mupdfthird.patch"
+	"${FILESDIR}/${PN}-0.4.0-meson-mupdfthird.patch"
+)
+
+src_prepare() (
+	default
+
+	if ! use javascript ; then
+		sed -i -e '/mujs/d' meson.build || die
+	fi
 )

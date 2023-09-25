@@ -8,4 +8,8 @@
   <use>
     <flag name="plugins">Enables examples plugins.</flag>
   </use>
+  <upstream>
+    <remote-id type="gitlab">lv2/lv2</remote-id>
+    <remote-id type="github">lv2/lv2</remote-id>
+  </upstream>
 </pkgmetadata>

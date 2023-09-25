@@ -1,0 +1,11 @@
+--- a/user_manual/changes/V325-006.yaml	2022-09-15 14:51:28.000000000 +0200
++++ b/user_manual/changes/V325-006.yaml	2023-02-26 16:41:25.121927720 +0100
+@@ -1,7 +1,7 @@
+ type: bugfix
+ title: Fix exponentiation in Ada integer literal decoding
+ description: |
+-  Libadalang’s decoder for integer literals (the
++  Libadalang's decoder for integer literals (the
+   ``Libadalang.Sources.Decode_Integer_Literal`` procedure) applied the exponent
+   in base 10 regardless of the base of the literal being evaluated. This is
+   wrong, as the ARM (2.4.2) states:

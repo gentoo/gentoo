@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,8 +53,8 @@ DEPEND=">=sys-libs/ncurses-5.2-r2:0=
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
 	!<sys-apps/portage-2.1.6.7_p1"
-# We only need yacc when the .y files get patched (bash42-005)
-BDEPEND="app-alternatives/yacc"
+# We only need bison (yacc) when the .y files get patched (bash42-005)
+BDEPEND="sys-devel/bison"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-r2-patches/${PN}-4.3-mapfile-improper-array-name-validation.patch
@@ -106,6 +106,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream only test with Bison and require GNUisms like YYEOF and
+	# YYERRCODE. The former at least may be in POSIX soon:
+	# https://www.austingroupbugs.net/view.php?id=1269.
+	# configure warns on use of non-Bison but doesn't abort. The result
+	# may misbehave at runtime.
+	unset YACC
+
 	local myconf=(
 		--docdir='$(datarootdir)'/doc/${PF}
 		--htmldir='$(docdir)/html'
@@ -129,10 +136,10 @@ src_configure() {
 	# For descriptions of these, see config-top.h
 	# bashrc/#26952 bash_logout/#90488 ssh/#24762 mktemp/#574426
 	append-cppflags \
-		-DDEFAULT_PATH_VALUE=\'\"${EPREFIX}/usr/local/sbin:${EPREFIX}/usr/local/bin:${EPREFIX}/usr/sbin:${EPREFIX}/usr/bin:${EPREFIX}/sbin:${EPREFIX}/bin\"\' \
-		-DSTANDARD_UTILS_PATH=\'\"${EPREFIX}/bin:${EPREFIX}/usr/bin:${EPREFIX}/sbin:${EPREFIX}/usr/sbin\"\' \
-		-DSYS_BASHRC=\'\"${EPREFIX}/etc/bash/bashrc\"\' \
-		-DSYS_BASH_LOGOUT=\'\"${EPREFIX}/etc/bash/bash_logout\"\' \
+		-DDEFAULT_PATH_VALUE=\'\""${EPREFIX}"/usr/local/sbin:"${EPREFIX}"/usr/local/bin:"${EPREFIX}"/usr/sbin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/bin\"\' \
+		-DSTANDARD_UTILS_PATH=\'\""${EPREFIX}"/bin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/usr/sbin\"\' \
+		-DSYS_BASHRC=\'\""${EPREFIX}"/etc/bash/bashrc\"\' \
+		-DSYS_BASH_LOGOUT=\'\""${EPREFIX}"/etc/bash/bash_logout\"\' \
 		-DNON_INTERACTIVE_LOGIN_SHELLS \
 		-DSSH_SOURCE_BASHRC \
 		-DUSE_MKTEMP -DUSE_MKSTEMP \

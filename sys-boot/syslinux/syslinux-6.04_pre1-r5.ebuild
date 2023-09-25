@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic secureboot
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
 HOMEPAGE="https://www.syslinux.org/"
@@ -38,10 +38,15 @@ QA_WX_LOAD="usr/share/syslinux/*"
 QA_PRESTRIPPED="usr/share/syslinux/.*"
 QA_FLAGS_IGNORED=".*"
 
+pkg_setup() {
+	use efi && secureboot_pkg_setup
+}
+
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/syslinux-6.03-sysmacros.patch"
 		"${FILESDIR}/${PV}"
+		"${FILESDIR}/syslinux-6.04-binutils-2.41.patch"
 	)
 	default
 }
@@ -85,4 +90,6 @@ src_install() {
 	fi
 	einstalldocs
 	dostrip -x /usr/share/syslinux
+
+	use efi && secureboot_auto_sign --in-place
 }

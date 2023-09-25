@@ -1,0 +1,50 @@
+https://github.com/gentoo/elfix/pull/3
+
+From 776afeae92d2afd3340cd753abc58ccd8daba48f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 6 Jan 2023 06:39:30 +0000
+Subject: [PATCH 2/2] install-xattr: fix small memory leak
+
+There's another with strdup/malloc but it gets a bit messier
+to fix so let's leave that for now (this is mostly about correctness
+anyway, as the runtime of install-xattr is very small):
+```
+Direct leak of 4097 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4a2c22e257 in __interceptor_malloc /usr/src/debug/sys-devel/gcc-13.0.0_pre20230101/gcc-13-20230101/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x7f4a2c1d2b40 in __interceptor_realpath /usr/src/debug/sys-devel/gcc-13.0.0_pre20230101/gcc-13-20230101/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:3904
+    #2 0x55da3adf5629 in realpath /usr/include/bits/stdlib.h:42
+    #3 0x55da3adf5629 in main /home/sam/git/elfix/install-xattr.c:252
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/install-xattr.c
++++ b/install-xattr.c
+@@ -248,7 +248,6 @@ main(int argc, char* argv[])
+ 	char *target = NULL;           /* the target file or directory                                 */
+ 	char *path;                    /* path to the target file                                      */
+ 
+-	char *mypath = realpath("/proc/self/exe", NULL); /* path to argv[0]                            */
+ 	char *install;                                   /* path to the system install                 */
+ 
+ 	struct stat s;                 /* test if a file is a regular file or a directory              */
+@@ -353,7 +352,9 @@ main(int argc, char* argv[])
+ 		case -1:
+ 			err(1, "fork() failed");
+ 
+-		case 0:
++		case 0: {
++			char *mypath = realpath("/proc/self/exe", NULL); /* path to argv[0] */
++
+ 			/* find system install avoiding mypath and portage_helper_path! */
+ 			if (portage_helper_path)
+ 				portage_helper_canpath = realpath(portage_helper_path, NULL);
+@@ -363,6 +364,7 @@ main(int argc, char* argv[])
+ 			argv[0] = install;        /* so coreutils' lib/program.c behaves  */
+ 			execv(install, argv);     /* The kernel will free(install).       */
+ 			err(1, "execv() failed");
++		}
+ 
+ 		default:
+ 			wait(&status);
+-- 
+2.39.0

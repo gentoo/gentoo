@@ -22,7 +22,6 @@
 		<flag name="e300">support E300, E310 hardware</flag>
 		<flag name="mpmd">support N300, N310 hardware</flag>
 		<flag name="octoclock">Octoclock Network Support</flag>
-		<flag name="n230">support N230 harware</flag>
 		<flag name="usrp1">support USRP1 hardware</flag>
 		<flag name="usrp2">support USRP2, N200, N210 hardware</flag>
 		<flag name="utils">utilities needed to list, query, calibrate, or update FPGA/Firmware</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ DIST_AUTHOR=JROCKWAY
 DIST_VERSION=0.05
 inherit perl-module
 
-DESCRIPTION="create a temporary database from a DBIx::Class::Schema"
+DESCRIPTION="Create a temporary database from a DBIx::Class::Schema"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

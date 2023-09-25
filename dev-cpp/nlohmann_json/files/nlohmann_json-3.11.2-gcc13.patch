@@ -1,0 +1,76 @@
+https://github.com/nlohmann/json/issues/3927
+https://github.com/nlohmann/json/pull/3895
+
+From a5b09d50b786638ed9deb09ef13860a3cb64eb6b Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Tue, 20 Dec 2022 22:08:12 +0000
+Subject: [PATCH] custom allocators: define missing 'rebind' type
+
+`gcc-13` added an assert to standard headers to make sure custom
+allocators have intended implementation of rebind type instead
+of inherited rebind. gcc change:
+    https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=64c986b49558a7
+
+Without the fix build fails on this week's `gcc-13` as:
+
+    In file included from <<NIX>>-gcc-13.0.0/include/c++/13.0.0/ext/alloc_traits.h:34,
+                     from <<NIX>>-gcc-13.0.0/include/c++/13.0.0/bits/basic_string.h:39,
+                     from <<NIX>>-gcc-13.0.0/include/c++/13.0.0/string:54,
+                     from <<NIX>>-gcc-13.0.0/include/c++/13.0.0/bits/locale_classes.h:40,
+                     from <<NIX>>-gcc-13.0.0/include/c++/13.0.0/locale:41,
+                     from tests/src/unit-regression2.cpp:19:
+    <<NIX>>-gcc-13.0.0/include/c++/13.0.0/bits/alloc_traits.h: In instantiation of 'struct std::__allocator_traits_base::__rebind<my_allocator<unsigned char>, unsigned char, void>':
+    <<NIX>>-gcc-13.0.0/include/c++/13.0.0/bits/alloc_traits.h:94:11:   required by substitution of 'template<class _Alloc, class _Up> using std::__alloc_rebind = typename std::__allocator_traits_base::__rebind<_Alloc, _Up>::type [with _Alloc = my_allocator<unsigned char>; _Up = unsigned char]'
+    <<NIX>>-gcc-13.0.0/include/c++/13.0.0/bits/alloc_traits.h:228:8:   required by substitution of 'template<class _Alloc> template<class _Tp> using std::allocator_traits< <template-parameter-1-1> >::rebind_alloc = std::__alloc_rebind<_Alloc, _Tp> [with _Tp = unsigned char; _Alloc = my_allocator<unsigned char>]'
+    <<NIX>>-gcc-13.0.0/include/c++/13.0.0/ext/alloc_traits.h:126:65:   required from 'struct __gnu_cxx::__alloc_traits<my_allocator<unsigned char>, unsigned char>::rebind<unsigned char>'
+    <<NIX>>-gcc-13.0.0/include/c++/13.0.0/bits/stl_vector.h:88:21:   required from 'struct std::_Vector_base<unsigned char, my_allocator<unsigned char> >'
+    <<NIX>>-gcc-13.0.0/include/c++/13.0.0/bits/stl_vector.h:423:11:   required from 'class std::vector<unsigned char, my_allocator<unsigned char> >'
+    tests/src/unit-regression2.cpp:807:63:   required from here
+    <<NIX>>-gcc-13.0.0/include/c++/13.0.0/bits/alloc_traits.h:70:31: error: static assertion failed: allocator_traits<A>::rebind_alloc<A::value_type> must be A
+       70 |                         _Tp>::value,
+          |                               ^~~~~
+
+The change adds trivial `rebind` definition with expected return type
+and satisfies conversion requirements.
+--- a/tests/src/unit-allocator.cpp
++++ b/tests/src/unit-allocator.cpp
+@@ -20,11 +20,20 @@ struct bad_allocator : std::allocator<T>
+ {
+     using std::allocator<T>::allocator;
+ 
++    bad_allocator() = default;
++    template<class U> bad_allocator(const bad_allocator<U>& /*unused*/) { }
++
+     template<class... Args>
+     void construct(T* /*unused*/, Args&& ... /*unused*/)
+     {
+         throw std::bad_alloc();
+     }
++
++    template <class U>
++    struct rebind
++    {
++        using other = bad_allocator<U>;
++    };
+ };
+ } // namespace
+ 
+--- a/tests/src/unit-regression2.cpp
++++ b/tests/src/unit-regression2.cpp
+@@ -187,6 +187,15 @@ class my_allocator : public std::allocator<T>
+ {
+   public:
+     using std::allocator<T>::allocator;
++
++    my_allocator() = default;
++    template<class U> my_allocator(const my_allocator<U>& /*unused*/) { }
++
++    template <class U>
++    struct rebind
++    {
++        using other = my_allocator<U>;
++    };
+ };
+ 
+ /////////////////////////////////////////////////////////////////////
+

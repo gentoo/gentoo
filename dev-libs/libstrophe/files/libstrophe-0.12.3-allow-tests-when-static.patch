@@ -1,0 +1,59 @@
+From 9eba8e873847b6ed6e4aa8e9e887d45c2351f6ed Mon Sep 17 00:00:00 2001
+From: Steffen Jaeckel <jaeckel-floss@eyet-services.de>
+Date: Wed, 9 Aug 2023 13:34:18 +0200
+Subject: [PATCH] Allow running tests when static library is disabled
+
+We then only run a subset of the tests, but still better than failing to
+build.
+
+Signed-off-by: Steffen Jaeckel <jaeckel-floss@eyet-services.de>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -175,23 +175,29 @@ endif
+ 
+ 
+ ## Tests
+-TESTS = \
++STATIC_TESTS = \
+ 	tests/check_parser \
++	tests/test_hash \
++	tests/test_jid \
++	tests/test_ctx \
++	tests/test_send_queue \
++	tests/test_string \
++	tests/test_resolver
++
++TESTS = \
+ 	tests/test_sha1 \
+ 	tests/test_sha256 \
+ 	tests/test_sha512 \
+ 	tests/test_md5 \
+ 	tests/test_rand \
+ 	tests/test_scram \
+-	tests/test_ctx \
+ 	tests/test_base64 \
+-	tests/test_hash \
+-	tests/test_jid \
+-	tests/test_send_queue \
+ 	tests/test_snprintf \
+-	tests/test_string \
+-	tests/test_stanza \
+-	tests/test_resolver
++	tests/test_stanza
++
++if !DISABLE_STATIC
++TESTS += $(STATIC_TESTS)
++endif
+ 
+ if !DISABLE_TLS
+ TESTS += tests/test_xmppaddr
+--- a/configure.ac
++++ b/configure.ac
+@@ -256,6 +256,7 @@ m4_ifdef([PKG_INSTALLDIR], [PKG_INSTALLDIR],
+ 
+ AM_CONDITIONAL([PARSER_EXPAT], [test x$with_parser != xlibxml2])
+ AM_CONDITIONAL([DISABLE_TLS], [test x$enable_tls = xno])
++AM_CONDITIONAL([DISABLE_STATIC], [test x$enable_static = xno])
+ AM_CONDITIONAL([NEED_SNPRINTF], [test x$have_snprintf = xno])
+ AM_CONDITIONAL([TLS_WITH_GNUTLS], [test x$with_gnutls = xyes])
+ AM_CONDITIONAL([TLS_WITH_SCHANNEL], [test x$with_schannel = xyes])

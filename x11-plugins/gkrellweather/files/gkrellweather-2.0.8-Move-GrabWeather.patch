@@ -4,13 +4,6 @@ Date: Tue, 24 Aug 2010 12:23:25 -0400
 Subject: [PATCH] Move GrabWeather script to $(PREFIX)/libexec/gkrellweather/
 
 This is to avoid a file collision with x11-misc/bbweather (Bug #333289)
----
- Makefile        |    4 ++--
- gkrellweather.c |    4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index d6dc404..693b4f2 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -38,13 +38,13 @@ install:
@@ -29,8 +22,6 @@ index d6dc404..693b4f2 100644
  
  dist:
  	rm -rf $(PKGNAME)-$(VERSION)
-diff --git a/gkrellweather.c b/gkrellweather.c
-index 1d4cf4e..224260a 100644
 --- a/gkrellweather.c
 +++ b/gkrellweather.c
 @@ -721,7 +721,7 @@ apply_air_config (void)

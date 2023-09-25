@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">HTSeq</remote-id>
+		<remote-id type="github">htseq/htseq</remote-id>
 	</upstream>
 </pkgmetadata>

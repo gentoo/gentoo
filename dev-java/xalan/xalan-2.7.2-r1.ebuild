@@ -24,7 +24,7 @@ SRC_URI="mirror://apache/${PN}/${MY_PN}/source/${SRC_DIST}
 	doc? ( mirror://apache/${PN}/${MY_PN}/binaries/${BIN_DIST} )"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 CDEPEND="dev-java/javacup:0
 	dev-java/bcel:0"

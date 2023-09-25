@@ -1,0 +1,19 @@
+--- a/genemake
++++ b/genemake
+@@ -1279,6 +1279,7 @@
+ 
+ #---
+ cat > `checkcompilfile` <<EOF
++ #include <string.h>
+  int ether_hostton(char *para1, char *para2);
+  int main(void)
+  { char p1[10], p2[10];
+@@ -1668,7 +1669,7 @@
+  #include <pwd.h>
+  #include <grp.h>
+  int main(void)
+- { getgrgid_r(NULL, NULL, NULL, 0, NULL);
++ { getgrgid_r(0, NULL, NULL, 0, NULL);
+    return(0);
+  }
+ EOF

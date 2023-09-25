@@ -1,0 +1,33 @@
+--- a/tests/commands/install_uninstall_test.py
++++ b/tests/commands/install_uninstall_test.py
+@@ -176,7 +176,7 @@
+ def test_install_in_submodule_and_run(tempdir_factory, store):
+     src_path = make_consuming_repo(tempdir_factory, 'script_hooks_repo')
+     parent_path = git_dir(tempdir_factory)
+-    cmd_output('git', 'submodule', 'add', src_path, 'sub', cwd=parent_path)
++    cmd_output('git', '-c', 'protocol.file.allow=always', 'submodule', 'add', src_path, 'sub', cwd=parent_path)
+     git_commit(cwd=parent_path)
+ 
+     sub_pth = os.path.join(parent_path, 'sub')
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -90,7 +90,7 @@
+     git_dir_1 = git_dir(tempdir_factory)
+     git_dir_2 = git_dir(tempdir_factory)
+     git_commit(msg=in_conflicting_submodule.__name__, cwd=git_dir_2)
+-    cmd_output('git', 'submodule', 'add', git_dir_2, 'sub', cwd=git_dir_1)
++    cmd_output('git', '-c', 'protocol.file.allow=always', 'submodule', 'add', git_dir_2, 'sub', cwd=git_dir_1)
+     with cwd(os.path.join(git_dir_1, 'sub')):
+         _make_conflict()
+         yield
+--- a/tests/staged_files_only_test.py
++++ b/tests/staged_files_only_test.py
+@@ -211,7 +211,7 @@
+         cmd_output('git', 'add', 'bar')
+         git_commit()
+         cmd_output(
+-            'git', 'submodule', 'add', repo_with_commits.path, 'sub',
++            'git', '-c', 'protocol.file.allow=always', 'submodule', 'add', repo_with_commits.path, 'sub',
+         )
+         checkout_submodule(repo_with_commits.rev1)
+         cmd_output('git', 'add', 'sub')

@@ -1,0 +1,300 @@
+https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/74
+https://github.com/flatpak/xdg-desktop-portal/pull/985
+https://github.com/flatpak/xdg-desktop-portal/commit/2a219279997c2124c8a639b0d009c9946ec97b40
+
+Fedora's backported it as well at https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/74.
+
+From 2a219279997c2124c8a639b0d009c9946ec97b40 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Mon, 13 Mar 2023 12:38:17 +0100
+Subject: [PATCH] portal-impl: Only return found implementation if it launched
+
+If no portal backend for a given interface is found, a fallback is
+always tried anyway, despite that fallback not being listed as
+compatible with the current desktop environment.
+
+Sometimes it's good that a fallback is returned; e.g. the
+xdg-desktop-portal-gtk file chooser backend is technically usable
+anywhere, however, some backends might be specifically designed to only
+work in a specific desktop environment, e.g. xdg-desktop-portal-gnome.
+
+In order to avoid creating portals with non-functional backends, make
+sure it's possible to create a proxy object for the interface and D-Bus
+name, and that it launched successfully (i.e. has no name owner after
+creating the proxy).
+--- a/src/portal-impl.c
++++ b/src/portal-impl.c
+@@ -29,9 +29,12 @@
+ #include <glib.h>
+ #include <gio/gio.h>
+ 
++#include "xdp-utils.h"
++
+ static void
+ portal_implementation_free (PortalImplementation *impl)
+ {
++  g_clear_pointer (&impl->dummy_proxies, g_hash_table_unref);
+   g_free (impl->source);
+   g_free (impl->dbus_name);
+   g_strfreev (impl->interfaces);
+@@ -55,6 +58,10 @@ register_portal (const char *path, gboolean opt_verbose, GError **error)
+   if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, error))
+     return FALSE;
+ 
++  impl->dummy_proxies = g_hash_table_new_full (g_str_hash,
++                                               g_str_equal,
++                                               g_free,
++                                               g_object_unref);
+   impl->source = g_path_get_basename (path);
+   impl->dbus_name = g_key_file_get_string (keyfile, "portal", "DBusName", error);
+   if (impl->dbus_name == NULL)
+@@ -198,8 +205,44 @@ load_installed_portals (gboolean opt_verbose)
+   implementations = g_list_sort (implementations, sort_impl_by_use_in_and_name);
+ }
+ 
++static gboolean
++create_dummy_proxy (PortalImplementation  *impl,
++                    GDBusConnection       *connection,
++                    const char            *interface,
++                    GError               **error)
++{
++  g_autoptr(GDBusProxy) proxy = NULL;
++
++  g_debug ("Creating dummy proxy for %s on %s", interface, impl->dbus_name);
++  proxy = g_dbus_proxy_new_sync (connection,
++                                 G_DBUS_PROXY_FLAGS_NONE,
++                                 NULL,
++                                 impl->dbus_name,
++                                 DESKTOP_PORTAL_OBJECT_PATH,
++                                 interface,
++                                 NULL,
++                                 error);
++  if (!proxy)
++    return FALSE;
++
++  if (!g_dbus_proxy_get_name_owner (proxy))
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                   "Proxy has no owner");
++      return FALSE;
++    }
++
++  g_debug ("Dummy proxy created");
++
++  g_hash_table_insert (impl->dummy_proxies,
++                       g_strdup (interface),
++                       g_steal_pointer (&proxy));
++  return TRUE;
++}
++
+ PortalImplementation *
+-find_portal_implementation (const char *interface)
++find_portal_implementation (GDBusConnection *connection,
++                            const char      *interface)
+ {
+   const char *desktops_str = g_getenv ("XDG_CURRENT_DESKTOP");
+   g_auto(GStrv) desktops = NULL;
+@@ -216,15 +259,23 @@ find_portal_implementation (const char *interface)
+      for (l = implementations; l != NULL; l = l->next)
+         {
+           PortalImplementation *impl = l->data;
++          g_autoptr(GError) error = NULL;
+ 
+           if (!g_strv_contains ((const char **)impl->interfaces, interface))
+             continue;
+ 
+-          if (g_strv_case_contains ((const char **)impl->use_in, desktops[i]))
++          if (!g_strv_case_contains ((const char **)impl->use_in, desktops[i]))
++            continue;
++
++          if (!create_dummy_proxy (impl, connection, interface, &error))
+             {
+-              g_debug ("Using %s for %s in %s", impl->source, interface, desktops[i]);
+-              return impl;
++              g_debug ("Failed to create dummy proxy on %s for %s: %s",
++                       impl->dbus_name, interface, error->message);
++              continue;
+             }
++
++          g_debug ("Using %s for %s in %s", impl->source, interface, desktops[i]);
++          return impl;
+         }
+     }
+ 
+@@ -232,10 +283,18 @@ find_portal_implementation (const char *interface)
+   for (l = implementations; l != NULL; l = l->next)
+     {
+       PortalImplementation *impl = l->data;
++      g_autoptr(GError) error = NULL;
+ 
+       if (!g_strv_contains ((const char **)impl->interfaces, interface))
+         continue;
+ 
++      if (!create_dummy_proxy (impl, connection, interface, &error))
++        {
++          g_debug ("Failed to create dummy fallback proxy on %s for %s: %s",
++                   impl->dbus_name, interface, error->message);
++          continue;
++        }
++
+       g_debug ("Falling back to %s for %s", impl->source, interface);
+       return impl;
+     }
+--- a/src/portal-impl.h
++++ b/src/portal-impl.h
+@@ -23,6 +23,7 @@
+ #define __PORTAL_IMPL_H__
+ 
+ #include <glib.h>
++#include <gio/gio.h>
+ 
+ typedef struct {
+   char *source;
+@@ -30,10 +31,12 @@ typedef struct {
+   char **interfaces;
+   char **use_in;
+   int priority;
++  GHashTable *dummy_proxies;
+ } PortalImplementation;
+ 
+ void                  load_installed_portals          (gboolean opt_verbose);
+-PortalImplementation *find_portal_implementation      (const char *interface);
++PortalImplementation *find_portal_implementation      (GDBusConnection *connection,
++                                                       const char *interface);
+ GPtrArray            *find_all_portal_implementations (const char *interface);
+ 
+ #endif  /* __PORTAL_IMPL_H__ */
+--- a/src/xdg-desktop-portal.c
++++ b/src/xdg-desktop-portal.c
+@@ -237,7 +237,8 @@ on_bus_acquired (GDBusConnection *connection,
+   init_document_proxy (connection);
+   init_permission_store (connection);
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.Lockdown");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.Lockdown");
+   if (implementation != NULL)
+     lockdown = xdp_dbus_impl_lockdown_proxy_new_sync (connection,
+                                                       G_DBUS_PROXY_FLAGS_NONE,
+@@ -259,40 +260,48 @@ on_bus_acquired (GDBusConnection *connection,
+   export_portal_implementation (connection, settings_create (connection, impls));
+   g_ptr_array_free (impls, TRUE);
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.FileChooser");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.FileChooser");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   file_chooser_create (connection, implementation->dbus_name, lockdown));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.AppChooser");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.AppChooser");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   open_uri_create (connection, implementation->dbus_name, lockdown));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.Print");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.Print");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   print_create (connection, implementation->dbus_name, lockdown));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.Notification");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.Notification");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   notification_create (connection, implementation->dbus_name));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.Inhibit");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.Inhibit");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   inhibit_create (connection, implementation->dbus_name));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.Access");
+-  implementation2 = find_portal_implementation ("org.freedesktop.impl.portal.Screenshot");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.Access");
++  implementation2 = find_portal_implementation (connection,
++                                                "org.freedesktop.impl.portal.Screenshot");
+   if (implementation != NULL && implementation2 != NULL)
+     export_portal_implementation (connection,
+                                   screenshot_create (connection,
+                                                      implementation->dbus_name,
+                                                      implementation2->dbus_name));
+ 
+-  implementation2 = find_portal_implementation ("org.freedesktop.impl.portal.Background");
++  implementation2 = find_portal_implementation (connection,
++                                                "org.freedesktop.impl.portal.Background");
+   if (implementation != NULL)
+     {
+       export_portal_implementation (connection,
+@@ -313,47 +322,55 @@ on_bus_acquired (GDBusConnection *connection,
+                                                      implementation->dbus_name,
+                                                      implementation2->dbus_name));
+ 
+-  implementation2 = find_portal_implementation ("org.freedesktop.impl.portal.Wallpaper");
++  implementation2 = find_portal_implementation (connection,
++                                                "org.freedesktop.impl.portal.Wallpaper");
+   if (implementation != NULL && implementation2 != NULL)
+     export_portal_implementation (connection,
+                                   wallpaper_create (connection,
+                                                     implementation->dbus_name,
+                                                     implementation2->dbus_name));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.Account");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.Account");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   account_create (connection, implementation->dbus_name));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.Email");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.Email");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   email_create (connection, implementation->dbus_name));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.Secret");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.Secret");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   secret_create (connection, implementation->dbus_name));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.GlobalShortcuts");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.GlobalShortcuts");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   global_shortcuts_create (connection, implementation->dbus_name));
+ 
+ #ifdef HAVE_GLIB_2_66
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.DynamicLauncher");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.DynamicLauncher");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   dynamic_launcher_create (connection, implementation->dbus_name));
+ #endif
+ 
+ #ifdef HAVE_PIPEWIRE
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.ScreenCast");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.ScreenCast");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   screen_cast_create (connection, implementation->dbus_name));
+ 
+-  implementation = find_portal_implementation ("org.freedesktop.impl.portal.RemoteDesktop");
++  implementation = find_portal_implementation (connection,
++                                               "org.freedesktop.impl.portal.RemoteDesktop");
+   if (implementation != NULL)
+     export_portal_implementation (connection,
+                                   remote_desktop_create (connection, implementation->dbus_name));
+

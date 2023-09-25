@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">pecan/pecan</remote-id>
 		<remote-id type="pypi">pecan</remote-id>
 	</upstream>
 </pkgmetadata>

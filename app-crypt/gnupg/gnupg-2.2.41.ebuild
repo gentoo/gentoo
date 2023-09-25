@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl test tofu tools usb user-socket wks-server"
 RESTRICT="!test? ( test )"
 
@@ -32,7 +32,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	>=dev-libs/libassuan-2.5.0
 	>=dev-libs/libgcrypt-1.8.0:=
-	>=dev-libs/libgpg-error-1.29
+	>=dev-libs/libgpg-error-1.38
 	>=dev-libs/libksba-1.3.5
 	>=dev-libs/npth-1.2
 	>=net-misc/curl-7.10
@@ -81,6 +81,9 @@ src_prepare() {
 }
 
 my_src_configure() {
+	# Upstream don't support LTO, bug #854222.
+	filter-lto
+
 	local myconf=(
 		$(use_enable bzip2)
 		$(use_enable nls)

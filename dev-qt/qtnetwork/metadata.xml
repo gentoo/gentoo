@@ -6,12 +6,9 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="connman">Enable <pkg>net-misc/connman</pkg>-based bearer plugin</flag>
 		<flag name="gssapi">Enable support for GSSAPI (<pkg>virtual/krb5</pkg>)</flag>
 		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for automatic
 			HTTP/SOCKS proxy configuration</flag>
-		<flag name="networkmanager">Enable <pkg>net-misc/networkmanager</pkg>-based
-			bearer plugin</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>

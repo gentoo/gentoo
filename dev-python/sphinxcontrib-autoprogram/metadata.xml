@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">sphinx-contrib/autoprogram</remote-id>
 		<remote-id type="pypi">sphinxcontrib-autoprogram</remote-id>
 	</upstream>
 </pkgmetadata>

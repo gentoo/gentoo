@@ -12,4 +12,7 @@
 		* When backup should be done (manual, every hour, every day, every week, every month)
 	</longdescription>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">bit-team/backintime</remote-id>
+	</upstream>
 </pkgmetadata>

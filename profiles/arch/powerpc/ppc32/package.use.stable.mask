@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,14 +17,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-06-02)
+# Destabilizing ppc keywords on sci-*/* packages
+dev-perl/PDL gsl
+dev-python/numpy lapack
+dev-python/pythran test
+media-gfx/graphviz gts
+media-libs/a52dec djbfft
+sci-libs/gsl cblas-external
+sci-libs/hdf5 szip
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Deps not stable on ppc
 sys-devel/clang-common default-lld
 sys-devel/llvm binutils-plugin z3 xar
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-06)
-# Unmask the target on python-exec while it's masked elsewhere.
-dev-lang/python-exec -python_targets_python3_11
 
 # Sam James <sam@gentoo.org> (2022-07-27)
 # sys-devel/lld is not marked stable on ppc

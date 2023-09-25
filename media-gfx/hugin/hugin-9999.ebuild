@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit mercurial python-single-r1 wxwidgets cmake xdg
 
@@ -72,6 +72,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_HSI=$(usex python)
 		-DENABLE_LAPACK=$(usex lapack)
+		# Temporary workaround for bug #833443. Can be dropped when
+		# we switch to wxgtk-3.2, but complications for that remain
+		# w/ egl+wayland.
+		-DUSE_GDKBACKEND_X11=on
 	)
 	cmake_src_configure
 }

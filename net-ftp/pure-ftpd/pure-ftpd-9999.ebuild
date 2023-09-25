@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,6 +52,9 @@ PATCHES=( "${FILESDIR}/${PN}-1.0.28-pam.patch" )
 
 src_prepare() {
 	default
+
+	# Don't hardcode FORTIFY_SOURCE
+	sed -e '/-D_FORTIFY_SOURCE=2/d' -i configure.ac || die
 
 	[[ "${PV}" == 9999 ]] && eautoreconf
 }

@@ -1,0 +1,97 @@
+From 4351ac37b19bf43ff9a8f21e5126deb7f43f751e Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Tue, 11 Jul 2023 16:13:32 -0400
+Subject: [PATCH] Fix building with musl
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -554,6 +554,10 @@ OCCT_IS_PRODUCT_REQUIRED (CSF_EIGEN CAN_USE_EIGEN)
+ # define CSF variable
+ OCCT_INCLUDE_CMAKE_FILE ("adm/cmake/occt_csf")
+ 
++# Check for execinfo.h
++include(CheckIncludeFile)
++CHECK_INCLUDE_FILE("execinfo.h" HAS_EXECINFO_H)
++
+ # Tcl (mandatory for Draw Harness)
+ if (USE_TCL)
+   message (STATUS "Info: TCL is used by OCCT")
+--- a/src/OSD/OSD_MemInfo.cxx
++++ b/src/OSD/OSD_MemInfo.cxx
+@@ -184,12 +184,16 @@ void OSD_MemInfo::Update()
+     #endif
+   #endif
+ 
++  #if defined(__GLIBC__)
+   #ifdef HAS_MALLINFO2
+     const struct mallinfo2 aMI = mallinfo2();
+   #else
+     const struct mallinfo aMI = mallinfo();
+   #endif
+     myCounters[MemHeapUsage] = aMI.uordblks;
++  #else
++    myCounters[MemHeapUsage] = 0;
++  #endif
+   }
+ 
+   if (!IsActive (MemVirtual)
+--- a/src/OSD/OSD_signal.cxx
++++ b/src/OSD/OSD_signal.cxx
+@@ -758,7 +758,7 @@ typedef void (* SIG_PFV) (int);
+ 
+ #include <signal.h>
+ 
+-#if !defined(__ANDROID__) && !defined(__QNX__) && !defined(__EMSCRIPTEN__)
++#if !defined(__ANDROID__) && !defined(__QNX__) && !defined(__EMSCRIPTEN__) &&  defined(__GLIBC__)
+   #include <sys/signal.h>
+ #endif
+ 
+@@ -974,7 +974,7 @@ static void SegvHandler(const int theSignal,
+ //=======================================================================
+ void OSD::SetFloatingSignal (Standard_Boolean theFloatingSignal)
+ {
+-#if defined (__linux__)
++#if defined (__linux__) && defined(__GLIBC__)
+   feclearexcept (FE_ALL_EXCEPT);
+   if (theFloatingSignal)
+   {
+@@ -1007,7 +1007,7 @@ void OSD::SetFloatingSignal (Standard_Boolean theFloatingSignal)
+ //=======================================================================
+ Standard_Boolean OSD::ToCatchFloatingSignals()
+ {
+-#if defined (__linux__)
++#if defined (__linux__) && defined(__GLIBC__)
+   return (fegetexcept() & _OSD_FPX) != 0;
+ #else
+   return Standard_False;
+--- a/src/Standard/Standard_StackTrace.cxx
++++ b/src/Standard/Standard_StackTrace.cxx
+@@ -29,7 +29,7 @@
+   //#include <unwind.h>
+ #elif defined(__QNX__)
+   //#include <backtrace.h> // requires linking to libbacktrace
+-#elif !defined(_WIN32) && !(defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE)
++#elif defined (HAS_EXECINFO_H)
+   #include <execinfo.h>
+ #elif defined(_WIN32) && !defined(OCCT_UWP)
+ 
+@@ -313,7 +313,7 @@ Standard_Boolean Standard::StackTrace (char* theBuffer,
+   Message::SendTrace ("Standard::StackTrace() is not implemented for this CPU architecture");
+   return false;
+ #endif
+-#else
++#elif defined (HAS_EXECINFO_H)
+   const int aTopSkip = theNbTopSkip + 1; // skip this function call and specified extra number
+   int aNbTraces = theNbTraces + aTopSkip;
+   void** aStackArr = (void** )alloca (sizeof(void*) * aNbTraces);
+@@ -360,5 +360,7 @@ Standard_Boolean Standard::StackTrace (char* theBuffer,
+     strcat (theBuffer, "\n=============");
+   }
+   return true;
++#else
++  return false;
+ #endif
+ }
+-- 
+2.41.0
+

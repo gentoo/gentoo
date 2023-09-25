@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/863074
+--- a/src/disk.h
++++ b/src/disk.h
+@@ -30,6 +30,7 @@
+ 
+ #include "ininiparser3.0b/iniparser.h"
+ 
++#include <ctime>
+ #include <string>
+ using std::string;
+ 

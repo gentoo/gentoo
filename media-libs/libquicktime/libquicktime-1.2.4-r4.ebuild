@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame cpu_flags_x86_mmx opengl png static-libs vorbis X x264"
 
+# <ffmpeg-5 dep for bug #834384, Debian has disabled ffmpeg support entirely
+# as well.
 RDEPEND="
 	sys-libs/zlib
 	>=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
@@ -23,7 +25,7 @@ RDEPEND="
 	)
 	alsa? ( >=media-libs/alsa-lib-1.0.20 )
 	dv? ( >=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}] )
-	ffmpeg? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
+	ffmpeg? ( <media-video/ffmpeg-5:=[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:2 )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	lame? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )

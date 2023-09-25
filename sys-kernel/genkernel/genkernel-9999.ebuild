@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
 # genkernel-VERSION     -> normal genkernel release
 
-EAPI="7"
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit bash-completion-r1 python-single-r1
 
@@ -14,37 +14,38 @@ inherit bash-completion-r1 python-single-r1
 # or add new patches!
 VERSION_BCACHE_TOOLS="1.0.8_p20141204"
 VERSION_BOOST="1.79.0"
-VERSION_BTRFS_PROGS="5.15"
-VERSION_BUSYBOX="1.34.1"
-VERSION_COREUTILS="8.32"
-VERSION_CRYPTSETUP="2.4.1"
+VERSION_BTRFS_PROGS="6.3.2"
+VERSION_BUSYBOX="1.36.1"
+VERSION_COREUTILS="9.3"
+VERSION_CRYPTSETUP="2.6.1"
 VERSION_DMRAID="1.0.0.rc16-3"
-VERSION_DROPBEAR="2020.81"
+VERSION_DROPBEAR="2022.83"
 VERSION_EUDEV="3.2.10"
-VERSION_EXPAT="2.4.1"
+VERSION_EXPAT="2.5.0"
 VERSION_E2FSPROGS="1.46.4"
 VERSION_FUSE="2.9.9"
 VERSION_GPG="1.4.23"
 VERSION_HWIDS="20210613"
-VERSION_ISCSI="2.0.878"
+VERSION_ISCSI="2.1.8"
 VERSION_JSON_C="0.13.1"
-VERSION_KMOD="29"
-VERSION_LIBAIO="0.3.112"
+VERSION_KMOD="30"
+VERSION_LIBAIO="0.3.113"
 VERSION_LIBGCRYPT="1.9.4"
 VERSION_LIBGPGERROR="1.43"
-VERSION_LIBXCRYPT="4.4.26"
+VERSION_LIBXCRYPT="4.4.36"
 VERSION_LVM="2.02.188"
 VERSION_LZO="2.10"
 VERSION_MDADM="4.1"
 VERSION_POPT="1.18"
-VERSION_STRACE="5.14"
+VERSION_STRACE="6.4"
 VERSION_THIN_PROVISIONING_TOOLS="0.9.0"
 VERSION_UNIONFS_FUSE="2.0"
-VERSION_UTIL_LINUX="2.37.2"
-VERSION_XFSPROGS="5.13.0"
-VERSION_XZ="5.2.5"
-VERSION_ZLIB="1.2.11"
-VERSION_ZSTD="1.5.0"
+VERSION_USERSPACE_RCU="0.14.0"
+VERSION_UTIL_LINUX="2.38.1"
+VERSION_XFSPROGS="6.3.0"
+VERSION_XZ="5.4.3"
+VERSION_ZLIB="1.2.13"
+VERSION_ZSTD="1.5.5"
 VERSION_KEYUTILS="1.6.3"
 
 COMMON_URI="
@@ -68,7 +69,7 @@ COMMON_URI="
 	https://releases.pagure.org/libaio/libaio-${VERSION_LIBAIO}.tar.gz
 	mirror://gnupg/libgcrypt/libgcrypt-${VERSION_LIBGCRYPT}.tar.bz2
 	mirror://gnupg/libgpg-error/libgpg-error-${VERSION_LIBGPGERROR}.tar.bz2
-	https://github.com/besser82/libxcrypt/archive/v${VERSION_LIBXCRYPT}.tar.gz -> libxcrypt-${VERSION_LIBXCRYPT}.tar.gz
+	https://github.com/besser82/libxcrypt/releases/download/v${VERSION_LIBXCRYPT}/libxcrypt-${VERSION_LIBXCRYPT}.tar.xz
 	https://mirrors.kernel.org/sourceware/lvm2/LVM2.${VERSION_LVM}.tgz
 	https://www.oberhumer.com/opensource/lzo/download/lzo-${VERSION_LZO}.tar.gz
 	https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz
@@ -76,6 +77,7 @@ COMMON_URI="
 	https://github.com/strace/strace/releases/download/v${VERSION_STRACE}/strace-${VERSION_STRACE}.tar.xz
 	https://github.com/jthornber/thin-provisioning-tools/archive/v${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz -> thin-provisioning-tools-${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz
 	https://github.com/rpodgorny/unionfs-fuse/archive/v${VERSION_UNIONFS_FUSE}.tar.gz -> unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.gz
+	https://lttng.org/files/urcu/userspace-rcu-${VERSION_USERSPACE_RCU}.tar.bz2
 	https://www.kernel.org/pub/linux/utils/util-linux/v${VERSION_UTIL_LINUX:0:4}/util-linux-${VERSION_UTIL_LINUX}.tar.xz
 	https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-${VERSION_XFSPROGS}.tar.xz
 	https://tukaani.org/xz/xz-${VERSION_XZ}.tar.gz
@@ -90,7 +92,7 @@ if [[ ${PV} == 9999* ]] ; then
 	S="${WORKDIR}/${P}"
 	SRC_URI="${COMMON_URI}"
 else
-	SRC_URI="https://dev.gentoo.org/~mattst88/distfiles/${P}.tar.xz
+	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz
 		${COMMON_URI}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi

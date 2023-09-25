@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9,10} )
 
 inherit autotools python-r1
 
@@ -37,10 +37,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+# <cython-3 for bug #898666
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	python? ( >=dev-python/cython-0.17[${PYTHON_USEDEP}] )
+	python? ( <dev-python/cython-3[${PYTHON_USEDEP}] )
 "
 
 BUILD_DIR="${S}_build"

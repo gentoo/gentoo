@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">sphinxcontrib-plantuml</remote-id>
+		<remote-id type="github">sphinx-contrib/plantuml</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

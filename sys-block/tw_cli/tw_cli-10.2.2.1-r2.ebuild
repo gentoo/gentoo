@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ SRC_URI_A_linux="CLI_linux-from_the_${PV}_${ThreeDM2_PV}_codesets.zip"
 # Newer kernels cause a segmentation fault, and a special build is available for Linux only.
 # https://www.broadcom.com/support/knowledgebase/1211161501805/debian-8-twcli-causes-fault-segment-failure
 EXTRA_linux="https://docs.broadcom.com/docs-and-downloads/kb-documents/lsi/368_tw_cli_debian8_beta.tgz"
-EXTRA_fbsd=""
 [[ -n "${SRC_URI_A_linux}${EXTRA_linux}" ]] && SRC_URI+=" kernel_linux? ( ${SRC_URI_A_linux:+${SRC_URI_BASE}/}${SRC_URI_A_linux} ${EXTRA_linux} )"
 # The license is not available easily from upstream (embedded in a textbox),
 # nor in the upstream tarball, but needs to be installed, and can't be

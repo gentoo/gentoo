@@ -6,12 +6,6 @@
     <flag name="memcached">
       Include <pkg>dev-libs/libmemcached</pkg> in caching drivers
     </flag>
-    <flag name="pcap">
-      Build the RADIUS sniffer which requires <pkg>net-libs/libpcap</pkg>.
-    </flag>
-    <flag name="rest">
-      Include support for sending and receiving HTTP requests
-    </flag>
     <flag name="redis">
       Include support for Redis database
     </flag>
@@ -19,4 +13,7 @@
       Include support for MongoDB database
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">FreeRADIUS/freeradius-server</remote-id>
+  </upstream>
 </pkgmetadata>

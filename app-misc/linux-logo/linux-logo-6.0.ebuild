@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ BDEPEND="nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}"/"${P}"-configure.patch
+	"${FILESDIR}"/"${P}"-which.patch
 )
 
 DOCS=( BUGS README README.CUSTOM_LOGOS TODO USAGE LINUX_LOGO.FAQ )

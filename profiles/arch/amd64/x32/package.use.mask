@@ -1,5 +1,33 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Maciej Barć <xgqt@gentoo.org> (2023-09-17)
+# Tests require net-libs/nodejs which is unavailable on amd64/x32.
+dev-lang/dafny test
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-20)
+# depends on dev-python/notebook which depends on nodejs
+dev-python/ipython notebook
+dev-python/iminuit test
+dev-python/nbdime test
+dev-python/nbclient test
+dev-python/nbconvert test
+dev-python/qiskit-terra visualization
+sci-mathematics/cadabra jupyter
+sci-mathematics/yacas jupyter
+sci-physics/hepmc root
+sci-physics/pythia root
+sci-physics/qmeq examples
+sci-physics/vgm root test
+sci-physics/yoda root
+
+# Guilherme Amadio <amadio@gentoo.org> (2023-06-30)
+# sys-cluster/ceph not keyworded on x86
+>=net-libs/xrootd-5.6.0 ceph
+
+# Sam James <sam@gentoo.org> (2023-04-05)
+# x11-drivers/nvidia-drivers is not available for x32
+sys-apps/hwloc nvml
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
 # Dependency media-libs/intel-hybrid-codec-driver does not work on x32
@@ -41,10 +69,9 @@ www-servers/uwsgi uwsgi_plugins_rados
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Those packages require net-libs/nodejs.
-dev-python/nbdime webtools
+dev-lang/nim test-js
 dev-ruby/ammeter test
 dev-ruby/jsobfu test
-dev-ruby/rails asset-pipeline
 dev-ruby/sprockets test
 dev-ruby/tilt test
 net-analyzer/netdata nodejs

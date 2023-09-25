@@ -1,0 +1,16 @@
+The upstream patch for this is far too big to backport, so for now, just drop
+the assert given it's somewhat harmless compared to not being able to build at all.
+
+https://jira.mongodb.org/browse/SERVER-65664
+https://bugs.gentoo.org/855128
+--- a/src/mongo/db/stats/counters.h
++++ b/src/mongo/db/stats/counters.h
+@@ -221,8 +221,6 @@ private:
+         AtomicWord<long long> requests{0};
+     };
+     CacheAligned<Together> _together{};
+-    static_assert(sizeof(decltype(_together)) <= stdx::hardware_constructive_interference_size,
+-                  "cache line spill");
+ 
+     CacheAligned<AtomicWord<long long>> _logicalBytesOut{0};
+ 

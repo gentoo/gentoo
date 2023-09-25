@@ -1,0 +1,214 @@
+https://bugs.gentoo.org/898704
+https://github.com/pygame/pygame/issues/3938
+https://github.com/pygame/pygame/pull/3956
+https://github.com/pygame/pygame/commit/bff1ba00fa58de40d357d70ba645be2957593b69
+
+From bff1ba00fa58de40d357d70ba645be2957593b69 Mon Sep 17 00:00:00 2001
+From: Matus Valo <matusvalo@gmail.com>
+Date: Wed, 12 Jul 2023 01:26:21 +0200
+Subject: [PATCH] Mark functions as noexcept
+
+--- a/src_c/cython/pygame/_sdl2/audio.pyx
++++ b/src_c/cython/pygame/_sdl2/audio.pyx
+@@ -67,7 +67,7 @@ def get_audio_device_names(iscapture = False):
+     return names
+ 
+ import traceback
+-cdef void recording_cb(void* userdata, Uint8* stream, int len) nogil:
++cdef void recording_cb(void* userdata, Uint8* stream, int len) noexcept nogil:
+     """ This is called in a thread made by SDL.
+         So we need the python GIL to do python stuff.
+     """
+--- a/src_c/cython/pygame/_sdl2/controller.pxd
++++ b/src_c/cython/pygame/_sdl2/controller.pxd
+@@ -101,8 +101,8 @@ cdef extern from "../controllercompat.c" nogil:
+                                 Uint16 high_frequency_rumble,
+                                 Uint32 duration_ms)
+ 
+-cdef bint _controller_autoinit()
+-cdef void _controller_autoquit()
++cdef bint _controller_autoinit() noexcept
++cdef void _controller_autoquit() noexcept
+ 
+ cdef class Controller:
+     cdef SDL_GameController* _controller
+--- a/src_c/cython/pygame/_sdl2/controller.pyx
++++ b/src_c/cython/pygame/_sdl2/controller.pyx
+@@ -17,14 +17,14 @@ def _gamecontroller_init_check():
+     if not SDL_WasInit(_SDL_INIT_GAMECONTROLLER):
+         raise error("gamecontroller system not initialized")
+ 
+-cdef bint _controller_autoinit():
++cdef bint _controller_autoinit() noexcept:
+     if not SDL_WasInit(_SDL_INIT_GAMECONTROLLER):
+         if SDL_InitSubSystem(_SDL_INIT_GAMECONTROLLER):
+             return False
+         #pg_RegisterQuit(_controller_autoquit)
+     return True
+ 
+-cdef void _controller_autoquit():
++cdef void _controller_autoquit() noexcept:
+     cdef Controller controller
+     for c in Controller._controllers:
+         controller = c
+--- a/src_c/cython/pygame/_sdl2/mixer.pxd
++++ b/src_c/cython/pygame/_sdl2/mixer.pxd
+@@ -5,7 +5,7 @@ from .sdl2 cimport *
+ 
+ #https://www.libsdl.org/projects/SDL_mixer/docs/SDL_mixer.html#SEC79
+ 
+-ctypedef void (*mixcallback)(void *udata, Uint8 *stream, int len) nogil
++ctypedef void (*mixcallback)(void *udata, Uint8 *stream, int len) noexcept nogil
+ 
+ cdef extern from "SDL_mixer.h" nogil:
+     ctypedef void (*mix_func)(void *udata, Uint8 *stream, int len)
+--- a/src_c/cython/pygame/_sdl2/mixer.pyx
++++ b/src_c/cython/pygame/_sdl2/mixer.pyx
+@@ -14,7 +14,7 @@ import traceback
+ # Mix_SetPostMix(noEffect, NULL);
+ 
+ 
+-cdef void recording_cb(void* userdata, Uint8* stream, int len) nogil:
++cdef void recording_cb(void* userdata, Uint8* stream, int len) noexcept nogil:
+     """ This is called in a thread made by SDL.
+         So we need the python GIL to do python stuff.
+     """
+--- a/src_c/cython/pygame/_sdl2/video.pxd
++++ b/src_c/cython/pygame/_sdl2/video.pxd
+@@ -430,7 +430,7 @@ cdef class Texture:
+     cdef draw_internal(self, SDL_Rect *csrcrect, SDL_Rect *cdstrect, float angle=*, SDL_Point *originptr=*,
+                        bint flip_x=*, bint flip_y=*)
+     cpdef void draw(self, srcrect=*, dstrect=*, float angle=*, origin=*,
+-                    bint flip_x=*, bint flip_y=*)
++                    bint flip_x=*, bint flip_y=*) noexcept
+ 
+ cdef class Image:
+     cdef Color _color
+@@ -445,4 +445,4 @@ cdef class Image:
+     cdef public Texture texture
+     cdef public Rect srcrect
+ 
+-    cpdef void draw(self, srcrect=*, dstrect=*)
++    cpdef void draw(self, srcrect=*, dstrect=*) noexcept
+--- a/src_c/cython/pygame/_sdl2/video.pyx
++++ b/src_c/cython/pygame/_sdl2/video.pyx
+@@ -731,7 +731,7 @@ cdef class Texture:
+             raise error()
+ 
+     cpdef void draw(self, srcrect=None, dstrect=None, float angle=0, origin=None,
+-                    bint flip_x=False, bint flip_y=False):
++                    bint flip_x=False, bint flip_y=False) noexcept:
+         """ Copy a portion of the texture to the rendering target.
+ 
+         :param srcrect: source rectangle on the texture, or None for the entire texture.
+@@ -904,7 +904,7 @@ cdef class Image:
+     def get_rect(self):
+         return pgRect_New(&self.srcrect.r)
+ 
+-    cpdef void draw(self, srcrect=None, dstrect=None):
++    cpdef void draw(self, srcrect=None, dstrect=None) noexcept:
+         """ Copy a portion of the image to the rendering target.
+ 
+         :param srcrect: source rectangle specifying a sub-image, or None for the entire image.
+--- a/src_c/cython/pygame/_sprite.pyx
++++ b/src_c/cython/pygame/_sprite.pyx
+@@ -188,10 +188,10 @@ cdef class Sprite:
+             else:
+                 self.remove(*group)
+ 
+-    cpdef void add_internal(self, group):
++    cpdef void add_internal(self, group) noexcept:
+         self.__g.add(group)
+ 
+-    cpdef void remove_internal(self, group):
++    cpdef void remove_internal(self, group) noexcept:
+         self.__g.remove(group)
+ 
+     def update(self, *args, **kwargs):
+@@ -346,16 +346,16 @@ cdef class AbstractGroup:
+         """
+         return list(self.spritedict)
+ 
+-    cpdef void add_internal(self, sprite):
++    cpdef void add_internal(self, sprite) noexcept:
+         self.spritedict[sprite] = 0
+ 
+-    cpdef void remove_internal(self, sprite):
++    cpdef void remove_internal(self, sprite) noexcept:
+         r = self.spritedict[sprite]
+         if r:
+             self.lostsprites.append(r)
+         del self.spritedict[sprite]
+ 
+-    cpdef bint has_internal(self, sprite):
++    cpdef bint has_internal(self, sprite) noexcept:
+         return sprite in self.spritedict
+ 
+     def copy(self):
+@@ -650,11 +650,11 @@ cdef class OrderedUpdates(RenderUpdates):
+     cpdef list sprites(self):
+         return list(self._spritelist)
+ 
+-    cpdef void add_internal(self, sprite):
++    cpdef void add_internal(self, sprite) noexcept:
+         RenderUpdates.add_internal(self, sprite)
+         self._spritelist.append(sprite)
+ 
+-    cpdef void remove_internal(self, sprite):
++    cpdef void remove_internal(self, sprite) noexcept:
+         RenderUpdates.remove_internal(self, sprite)
+         self._spritelist.remove(sprite)
+ 
+@@ -697,7 +697,7 @@ cdef class LayeredUpdates(AbstractGroup):
+ 
+         self.add(*sprites, **kwargs)
+ 
+-    cpdef void add_internal(self, sprite, layer=None):
++    cpdef void add_internal(self, sprite, layer=None) noexcept:
+         """Do not use this method directly.
+ 
+         It is used by the group to add a sprite internally.
+@@ -779,7 +779,7 @@ cdef class LayeredUpdates(AbstractGroup):
+                         self.add_internal(sprite, layer)
+                         sprite.add_internal(self)
+ 
+-    cpdef void remove_internal(self, sprite):
++    cpdef void remove_internal(self, sprite) noexcept:
+         """Do not use this method directly.
+ 
+         The group uses it to add a sprite.
+@@ -1059,7 +1059,7 @@ cdef class LayeredDirty(LayeredUpdates):
+                 if hasattr(self, key):
+                     setattr(self, key, val)
+ 
+-    cpdef void add_internal(self, sprite, layer=None):
++    cpdef void add_internal(self, sprite, layer=None) noexcept:
+         """Do not use this method directly.
+ 
+         It is used by the group to add a sprite internally.
+@@ -1333,7 +1333,7 @@ cdef class GroupSingle(AbstractGroup):
+         else:
+             return []
+ 
+-    cpdef void add_internal(self, sprite):
++    cpdef void add_internal(self, sprite) noexcept:
+         if self.__sprite is not None:
+             self.__sprite.remove_internal(self)
+             self.remove_internal(<Sprite>self.__sprite)
+@@ -1355,13 +1355,13 @@ cdef class GroupSingle(AbstractGroup):
+                       None,
+                       "The sprite contained in this group")
+ 
+-    cpdef void remove_internal(self, sprite):
++    cpdef void remove_internal(self, sprite) noexcept:
+         if sprite is self.__sprite:
+             self.__sprite = None
+         if sprite in self.spritedict:
+             AbstractGroup.remove_internal(self, sprite)
+ 
+-    cpdef bint has_internal(self, sprite):
++    cpdef bint has_internal(self, sprite) noexcept:
+         return self.__sprite is sprite
+ 
+     # Optimizations...
+

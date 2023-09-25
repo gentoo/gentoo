@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -8,12 +8,12 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS=( README.md )
 
-USE_PHP="php7-4 php8-0 php8-1 php8-2"
+USE_PHP="php8-0 php8-1 php8-2"
 PHP_EXT_NEEDED_USE="sockets(-)?"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 x86"
 LICENSE="PHP-3.01"
 
 DESCRIPTION="PHP wrapper for libevent2"

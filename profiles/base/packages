@@ -38,6 +38,7 @@
 *net-misc/iputils
 *net-misc/rsync
 *net-misc/wget
+*sec-keys/openpgp-keys-gentoo-release
 *sys-apps/coreutils
 *sys-apps/diffutils
 *sys-apps/file

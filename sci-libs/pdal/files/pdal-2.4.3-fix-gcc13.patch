@@ -1,0 +1,29 @@
+From https://github.com/hobuinc/laz-perf/commit/a7f0f4f5b2ca851079574d47918f4f7abc6cc785 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Tue, 13 Dec 2022 22:06:21 +0000
+Subject: [PATCH] Extractor.hpp: add missing <cstdint> header inclusion (#144)
+
+Without the change build fails on upcomit `gcc-13` as:
+
+    In file included from cpp/lazperf/vlr.cpp:33:
+    cpp/lazperf/Extractor.hpp:185:31: error: 'uint8_t' has not been declared
+      185 |     LeExtractor& operator >> (uint8_t& v)
+          |                               ^~~~~~~
+
+`gcc-13` cleaned header up a bit and `<string>` does not include
+`<cstdint>` implicitly anymore. Let's use it explictly.
+---
+ cpp/lazperf/Extractor.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff -Nru PDAL-2.4.3-src-orig/vendor/lazperf/Extractor.hpp PDAL-2.4.3-src/vendor/lazperf/Extractor.hpp
+--- PDAL-2.4.3-src-orig/vendor/lazperf/Extractor.hpp	2023-05-10 23:13:39.613501276 -0300
++++ PDAL-2.4.3-src/vendor/lazperf/Extractor.hpp	2023-05-10 23:15:41.644241402 -0300
+@@ -34,6 +34,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <cstring>
+ #include <vector>
+ 

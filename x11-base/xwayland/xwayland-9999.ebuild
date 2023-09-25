@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ fi
 DESCRIPTION="Standalone X server running under Wayland"
 HOMEPAGE="https://wayland.freedesktop.org/xserver.html"
 
-IUSE="selinux video_cards_nvidia unwind xcsecurity"
+IUSE="libei selinux video_cards_nvidia unwind xcsecurity"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,13 +24,13 @@ SLOT="0"
 COMMON_DEPEND="
 	dev-libs/libbsd
 	dev-libs/openssl:=
-	>=dev-libs/wayland-1.20
-	>=dev-libs/wayland-protocols-1.22
+	>=dev-libs/wayland-1.21.0
+	>=dev-libs/wayland-protocols-1.30
 	media-fonts/font-util
 	>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	media-libs/libglvnd[X]
 	>=media-libs/mesa-21.1[X(+),egl(+),gbm(+)]
-	>=x11-libs/libdrm-2.4.89
+	>=x11-libs/libdrm-2.4.109
 	>=x11-libs/libXau-1.0.4
 	x11-libs/libxcvt
 	>=x11-libs/libXdmcp-1.0.2
@@ -40,18 +40,21 @@ COMMON_DEPEND="
 	>=x11-libs/pixman-0.27.2
 	>=x11-misc/xkeyboard-config-2.4.1-r3
 
+	libei? ( dev-libs/libei )
 	unwind? ( sys-libs/libunwind )
 	video_cards_nvidia? ( gui-libs/egl-wayland )
 "
 DEPEND="
 	${COMMON_DEPEND}
-	x11-base/xorg-proto
+	>=x11-base/xorg-proto-2022.2
 	>=x11-libs/xtrans-1.3.5
 "
 RDEPEND="
 	${COMMON_DEPEND}
 	x11-apps/xkbcomp
 	!<=x11-base/xorg-server-1.20.11
+
+	libei? ( >=sys-apps/xdg-desktop-portal-1.18.0 )
 	selinux? ( sec-policy/selinux-xserver )
 "
 BDEPEND="
@@ -85,6 +88,7 @@ src_configure() {
 		-Dxvfb=true
 		-Dxv=true
 		-Dxwayland-path="${EPREFIX}"/usr/bin
+		-Dlibdecor=false
 		-Ddocs=false
 		-Ddevel-docs=false
 		-Ddocs-pdf=false
@@ -93,6 +97,12 @@ src_configure() {
 		-Dxvfb=false
 		-Dxwayland=true
 	)
+
+	if use libei; then
+		emesonargs+=( -Dxwayland_ei=portal )
+	else
+		emesonargs+=( -Dxwayland_ei=false )
+	fi
 
 	meson_src_configure
 }

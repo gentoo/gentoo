@@ -15,6 +15,7 @@
 		<flag name="image-backend">Enable image viewing support</flag>
 		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>
 		<flag name="mobi">Enable mobipocket support via <pkg>kde-apps/kdegraphics-mobipocket</pkg></flag>
+		<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg></flag>
 		<flag name="plucker">Enable Plucker E-Book for Palm OS devices support</flag>
 		<flag name="qml">Install Okular Qml components</flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>

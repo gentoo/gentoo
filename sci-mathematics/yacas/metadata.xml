@@ -17,6 +17,6 @@
     <flag name="jupyter">Add support for jupyter notebook</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">yacas</remote-id>
+    <remote-id type="github">grzegorzmazur/yacas</remote-id>
   </upstream>
 </pkgmetadata>

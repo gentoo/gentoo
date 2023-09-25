@@ -10,6 +10,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">requests/toolbelt</remote-id>
 		<remote-id type="pypi">requests-toolbelt</remote-id>
 	</upstream>
 </pkgmetadata>

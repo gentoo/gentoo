@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-install.eclass
@@ -69,6 +69,7 @@ BDEPEND="
 		arm64? ( app-emulation/qemu[qemu_softmmu_targets_aarch64] )
 		ppc? ( app-emulation/qemu[qemu_softmmu_targets_ppc] )
 		ppc64? ( app-emulation/qemu[qemu_softmmu_targets_ppc64] )
+		sparc? ( app-emulation/qemu[qemu_softmmu_targets_sparc,qemu_softmmu_targets_sparc64] )
 		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
 	)"
 
@@ -150,20 +151,11 @@ kernel-install_get_qemu_arch() {
 		x86)
 			echo i386
 			;;
-		arm)
-			echo arm
-			;;
+		arm|ppc|ppc64|riscv|sparc|sparc64)
+			echo ${ARCH}
+		;;
 		arm64)
 			echo aarch64
-			;;
-		ppc)
-			echo ppc
-			;;
-		ppc64)
-			echo ppc64
-			;;
-		riscv)
-			echo riscv
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
@@ -308,6 +300,10 @@ kernel-install_test() {
 			:
 			;;
 	esac
+
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+		use modules-sign && qemu_extra_append+=" module.sig_enforce=1"
+	fi
 
 	cat > run.sh <<-EOF || die
 		#!/bin/sh

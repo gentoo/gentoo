@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ S="${WORKDIR}"/${PN}-${PN}$(ver_rs 0-1 '')
 
 PATCHES=(
 	"${FILESDIR}/nowarn.patch"
+	"${FILESDIR}"/${P}.parallelMake.patch
 )
 
 src_prepare() {
@@ -39,6 +40,7 @@ src_compile() {
 	ln -s Makefile.unix config/Makefile || die
 
 	# Make
+	emake depend
 	emake -j1 RANLIB="$(tc-getRANLIB)" CPP="$(tc-getPROG CPP cpp)"
 }
 

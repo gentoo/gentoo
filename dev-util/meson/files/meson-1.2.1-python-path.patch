@@ -1,0 +1,26 @@
+From 2b33c94e6315e9a397dd48a58a5becb0df3b8aba Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 12 Aug 2023 09:56:44 +0100
+Subject: [PATCH 2/2] python module: Respect PATH when python is not given in
+ machine file
+
+We should only fall back to the Python interpreter running Meson itself
+if `python3` is not found in the PATH.
+
+https://github.com/mesonbuild/meson/pull/12116
+
+diff --git a/mesonbuild/modules/python.py b/mesonbuild/modules/python.py
+index 5654e4231..2b2395a9b 100644
+--- a/mesonbuild/modules/python.py
++++ b/mesonbuild/modules/python.py
+@@ -381,7 +381,9 @@ class PythonModule(ExtensionModule):
+ 
+     def _find_installation_impl(self, state: 'ModuleState', display_name: str, name_or_path: str, required: bool) -> MaybePythonProg:
+         if not name_or_path:
+-            python = PythonExternalProgram('python3', mesonlib.python_command)
++            python = PythonExternalProgram('python3')
++            if not python.found():
++                python = PythonExternalProgram('python3', mesonlib.python_command)
+         else:
+             tmp_python = ExternalProgram.from_entry(display_name, name_or_path)
+             python = PythonExternalProgram(display_name, ext_prog=tmp_python)

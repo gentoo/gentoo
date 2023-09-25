@@ -1,7 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+# Please test that dev-util/conf2struct builds with any bumps! See bug #908989.
+# Conf-Libconfig is only in tree for it.
 
 DIST_AUTHOR=CNANGEL
 DIST_VERSION="0.100"

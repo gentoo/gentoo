@@ -12,4 +12,8 @@
 	<use>
 		<flag name="tools">Build command line utilities</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">lv2/lilv</remote-id>
+		<remote-id type="gitlab">lv2/lilv</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,13 +7,12 @@ inherit autotools flag-o-matic udev
 
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
-
 SRC_URI="mirror://sourceforge/opensc/${PN}/${P}.tar.gz"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc debug pcsc-lite usb"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="doc debug pcsc-lite selinux usb"
 
 DEPEND="
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= )
@@ -24,6 +23,7 @@ RDEPEND="
 	${DEPEND}
 	acct-group/openct
 	acct-user/openctd
+	selinux? ( sec-policy/selinux-openct )
 "
 BDEPEND="doc? ( app-doc/doxygen )"
 

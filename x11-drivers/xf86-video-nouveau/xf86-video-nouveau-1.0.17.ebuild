@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ fi
 
 DESCRIPTION="Accelerated Open Source driver for nVidia cards"
 HOMEPAGE="
-	https://nouveau.freedesktop.org/wiki/
+	https://nouveau.freedesktop.org/
 	https://cgit.freedesktop.org/nouveau/xf86-video-nouveau"
 
 KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"

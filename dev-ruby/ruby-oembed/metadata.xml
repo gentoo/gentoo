@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">judofyr/ruby-oembed</remote-id>
+    <remote-id type="github">ruby-oembed/ruby-oembed</remote-id>
   </upstream>
 </pkgmetadata>

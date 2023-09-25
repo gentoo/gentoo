@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit python-any-r1 readme.gentoo-r1
+inherit python-any-r1 readme.gentoo-r1 secureboot
 
 DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
@@ -36,6 +36,8 @@ RDEPEND="!sys-firmware/edk2-ovmf-bin"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-202105-werror.patch"
+	"${FILESDIR}/${PN}-202202-lld-textrels.patch"
+	"${FILESDIR}/${PN}-202202-binutils-2.41-textrels.patch"
 )
 
 S="${WORKDIR}/edk2-edk2-stable${PV}"
@@ -69,6 +71,11 @@ In order to use the firmware you can run qemu the following way
 		-drive file=/usr/share/edk2-ovmf/OVMF.fd,if=pflash,format=raw,unit=0,readonly=on \
 		..."
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+	secureboot_pkg_setup
+}
+
 src_prepare() {
 	# Bundled submodules
 	cp -rl "${WORKDIR}/openssl-${BUNDLED_OPENSSL_SUBMODULE_SHA}"/* "CryptoPkg/Library/OpensslLib/openssl/"
@@ -98,6 +105,10 @@ src_compile() {
 		-D SECURE_BOOT_ENABLE \
 		-D SMM_REQUIRE \
 		-D EXCLUDE_SHELL_FROM_FD"
+
+	export LDFLAGS="-z notext"
+	export EXTRA_LDFLAGS="-z notext"
+	export DLINK_FLAGS="-z notext"
 
 	emake ARCH=${TARGET_ARCH} -C BaseTools
 
@@ -139,6 +150,8 @@ src_install() {
 	insinto /usr/share/qemu/firmware
 	doins qemu/*
 	rm "${ED}"/usr/share/qemu/firmware/40-edk2-ovmf-x64-sb-enrolled.json || die "rm failed"
+
+	secureboot_auto_sign --in-place
 
 	readme.gentoo_create_doc
 }

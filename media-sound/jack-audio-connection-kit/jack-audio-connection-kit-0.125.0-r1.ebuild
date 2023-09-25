@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit multilib-minimal
 
 DESCRIPTION="A low-latency audio server"
-HOMEPAGE="http://www.jackaudio.org"
+HOMEPAGE="https://jackaudio.org"
 SRC_URI="https://github.com/jackaudio/jack1/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="cpu_flags_ppc_altivec cpu_flags_x86_3dnow alsa coreaudio doc debug examples oss cpu_flags_x86_sse pam"
 
 # readline: only used for jack_transport -> useless for non native ABIs

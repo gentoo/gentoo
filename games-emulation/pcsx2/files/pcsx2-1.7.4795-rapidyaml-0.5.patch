@@ -1,0 +1,8 @@
+Continuation of https://github.com/PCSX2/pcsx2/commit/a59f95317a3fd
+--- a/pcsx2/GameDatabase.cpp
++++ b/pcsx2/GameDatabase.cpp
+@@ -1040,3 +1040,3 @@
+ 	const u32 index = static_cast<u32>(s_hash_database.size());
+-	for (const ryml::NodeRef& n : node["hashes"].children())
++	for (const auto& n : node["hashes"].children())
+ 	{

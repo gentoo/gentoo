@@ -1,8 +1,9 @@
 Install docs into /usr/share/doc/wcd-${PVR}.
 
-diff -Nuar a/src/Makefile b/src/Makefile
---- a/src/Makefile	2019-08-14 10:07:15.000000000 +0000
-+++ b/src/Makefile	2021-10-23 17:10:17.000000000 +0000
+Bug: https://bugs.gentoo.org/802696
+
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -61,7 +61,7 @@
  datarootdir     = $(prefix)/share
  datadir         = $(datarootdir)

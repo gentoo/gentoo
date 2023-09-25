@@ -1,47 +1,52 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 git-r3 prefix
-
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/mirrorselect.git"
+inherit edo distutils-r1 prefix
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
-SRC_URI=""
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/mirrorselect.git"
+	inherit git-r3
+
+	SSL_FETCH_VER=9999
+else
+	SRC_URI="
+		https://gitweb.gentoo.org/proj/mirrorselect.git/snapshot/${P}.tar.gz
+		https://dev.gentoo.org/~dolsen/releases/mirrorselect/${P}.tar.gz
+		https://dev.gentoo.org/~dolsen/releases/mirrorselect/mirrorselect-test
+	"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+
+	SSL_FETCH_VER=0.3
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+IUSE="ipv6"
 
 RDEPEND="
 	dev-util/dialog
-	>=net-analyzer/netselect-0.4[ipv6(+)]
-	~dev-python/ssl-fetch-9999[${PYTHON_USEDEP}]
+	>=net-analyzer/netselect-0.4[ipv6(+)?]
+	>=dev-python/ssl-fetch-${SSL_FETCH_VER}[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests setup.py
 
 python_prepare_all() {
 	python_setup
+
+	local -x VERSION="${PVR}"
 	eprefixify setup.py mirrorselect/main.py
-	echo Now setting version... VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version
-	VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version || die "setup.py set_version failed"
+	edo "${PYTHON}" setup.py set_version
+
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	esetup.py test || die "tests failed under ${EPYTHON}"
-}
-
-pkg_postinst() {
-	distutils-r1_pkg_postinst
-
-	einfo "This is a development version."
-	einfo "Please report any bugs you encounter to:"
-	einfo "https://bugs.gentoo.org/"
 }

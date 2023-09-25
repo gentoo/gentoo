@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Vuze
-Comment=Vuze BitTorrent Client
-Exec=vuze
-Icon=vuze
-Terminal=false
-Categories=Network;
-Type=Application
-MimeType=application/x-bittorrent;

@@ -9,4 +9,8 @@
     <flag name="iso">Pulls in the depends for building iso images</flag>
     <flag name="system-bootloader">Pulls in the depends needed to setup livecd bootloader from the host system rather than using a cdtar</flag>
   </use>
+  <upstream>
+    <remote-id type="gentoo">proj/catalyst</remote-id>
+    <remote-id type="github">gentoo/catalyst</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,9 @@ EAPI=6
 inherit autotools git-r3 udev
 
 DESCRIPTION="Simple udev-based automounter for removable USB media"
-HOMEPAGE="https://github.com/mgorny/uam/"
+HOMEPAGE="https://github.com/projg2/uam/"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/uam.git"
+EGIT_REPO_URI="https://github.com/projg2/uam.git"
 
 LICENSE="BSD"
 SLOT="0"

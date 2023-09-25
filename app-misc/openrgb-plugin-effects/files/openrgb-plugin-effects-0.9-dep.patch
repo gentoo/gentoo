@@ -1,0 +1,16 @@
+Fix dependency on app-misc/openrgb
+
+--- a/OpenRGBEffectsPlugin.pro
++++ b/OpenRGBEffectsPlugin.pro
+@@ -64,11 +64,6 @@ HEADERS +=
+     OpenRGB/qt/hsv.h                                                                            \
+     OpenRGB/hidapi_wrapper/hidapi_wrapper.h                                                     \
+ 
+-SOURCES +=                                                                                      \
+-    OpenRGB/RGBController/RGBController.cpp                                                     \
+-    OpenRGB/LogManager.cpp                                                                      \
+-    OpenRGB/NetworkServer.cpp                                                                   \
+-    OpenRGB/qt/hsv.cpp                                                                          \
+ 
+ 
+ #-----------------------------------------------------------------------------------------------#

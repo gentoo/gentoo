@@ -7,8 +7,8 @@ The error is this:
  1178 |     struct ucred peercred;
       |                  ^~~~~~~~
 
---- ./unix/Xvnc/programs/Xserver/os/CMakeLists.txt~	2022-06-12 15:41:05.980270914 +0300
-+++ ./unix/Xvnc/programs/Xserver/os/CMakeLists.txt	2022-06-12 15:43:14.113823213 +0300
+--- a/unix/Xvnc/programs/Xserver/os/CMakeLists.txt
++++ b/unix/Xvnc/programs/Xserver/os/CMakeLists.txt
 @@ -1,7 +1,7 @@
  include_directories(../render ../../../lib/libsha1)
  

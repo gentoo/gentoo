@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/890256
+https://github.com/rrthomas/recode/commit/dcdd5d26c0c2c49f8113b63186449d6a1e3a509e
+
+From dcdd5d26c0c2c49f8113b63186449d6a1e3a509e Mon Sep 17 00:00:00 2001
+From: Reuben Thomas <rrt@sc3d.org>
+Date: Fri, 6 Jan 2023 20:11:03 +0100
+Subject: [PATCH] src/Makefile.am: allow build without help2man
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -19,7 +19,7 @@ AUTOMAKE_OPTIONS = gnits
+ bin_PROGRAMS = recode
+ lib_LTLIBRARIES = librecode.la
+ noinst_LTLIBRARIES = libmerged.la
+-man_MANS = recode.1
++dist_man_MANS = recode.1
+ include_HEADERS = recode.h recodext.h
+ 
+ H_STEPS = common.h decsteps.h inisteps.h tersteps.h \
+@@ -100,12 +100,12 @@ merged.c: mergelex.py $(L_STEPS)
+ # Depend on recode$(EXEEXT) rather than explicitly make-ing it, as otherwise
+ # we break parallel builds, as libmerged.la can be built twice in parallel,
+ # which can fail.
+-recode.1: main.c $(top_srcdir)/configure.ac recode$(EXEEXT)
++recode.1: main.c $(top_srcdir)/configure.ac
+ ## Exit gracefully if recode.1 is not writeable, such as during distcheck!
+ 	$(AM_V_GEN)if ( touch $@.w && rm -f $@.w; ) >/dev/null 2>&1; then \
+ 	  $(top_srcdir)/build-aux/missing --run $(HELP2MAN) --locale=en_US.UTF-8 \
+ 		--name="converts files between character sets" \
+-		--output=$@ ./recode; \
++		--output=$@ ./recode$(EXEEXT); \
+ 	fi
+ 
+ main.o: main.c ../config.status
+@@ -169,5 +169,3 @@ strip-pool.c strip-data.c: stamp-strip
+ stamp-strip: ../tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
+ 	$(TABLES_PY) -C $(srcdir) -p $(MNEMONICS_DS) $(CHARSETS_DEF)
+ 	@echo timestamp > $(srcdir)/$@
+-
+-DISTCLEANFILES = recode.1
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -1,5 +1,5 @@
+ # Makefile for Recode regression tests.
+-# Copyright © 1996-2022 Free Software Foundation, Inc.
++# Copyright © 1996-2023 Free Software Foundation, Inc.
+ # François Pinard <pinard@iro.umontreal.ca>, 1988.
+ 
+ # This program is free software; you can redistribute it and/or modify
+

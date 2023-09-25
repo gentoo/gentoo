@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit desktop wrapper
 
-DESCRIPTION="A Dystopian Document Thriller"
-HOMEPAGE="http://papersplea.se"
+DESCRIPTION="Dystopian Document Thriller"
+HOMEPAGE="https://papersplea.se"
 SRC_URI="papers-please_${PV}_i386.tar.gz"
 S="${WORKDIR}"/${PN}
 

@@ -1,0 +1,33 @@
+https://github.com/flatpak/xdg-desktop-portal/pull/1100
+
+From 8cf28b590ab23e94d6b80eaa6893ed51542d3dd8 Mon Sep 17 00:00:00 2001
+From: "Anna (navi) Figueiredo Gomes" <navi@vlhl.dev>
+Date: Sat, 9 Sep 2023 01:20:36 +0200
+Subject: [PATCH 2/3] meson.build: allow linux to build without bubblewrap
+
+per the same logic as flatpak, there's no reason to force bwrap as a
+dependency to build xdp under linux, as there is systems without bwrap
+that would want to be able to build xdp
+
+Signed-off-by: Anna (navi) Figueiredo Gomes <navi@vlhl.dev>
+---
+ meson.build | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 2366d9e..ad7faae 100644
+--- a/meson.build
++++ b/meson.build
+@@ -112,8 +112,7 @@ libportal_dep = dependency('libportal',
+ pipewire_dep = dependency('libpipewire-0.3', version: '>= 0.2.90')
+ libsystemd_dep = dependency('libsystemd', required: get_option('systemd'))
+ 
+-bwrap_required = host_machine.system() in ['linux']
+-bwrap = find_program('bwrap', required: bwrap_required)
++bwrap = find_program('bwrap', required: false)
+ 
+ have_libportal = libportal_dep.found()
+ if have_libportal
+-- 
+2.42.0
+

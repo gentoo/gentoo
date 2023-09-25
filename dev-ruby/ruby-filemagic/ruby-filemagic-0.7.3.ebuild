@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="ChangeLog README TODO"
@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/blackwinter/ruby-filemagic"
 
 LICENSE="Ruby-BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~amd64 ~hppa ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 DEPEND="${DEPEND} sys-apps/file test? ( >=sys-apps/file-5.30 )"

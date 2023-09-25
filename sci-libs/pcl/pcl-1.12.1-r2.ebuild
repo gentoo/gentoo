@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ inherit ${SCM} cmake cuda
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="amd64 ~arm"
 	SRC_URI="https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
 fi
@@ -57,7 +57,7 @@ BDEPEND="
 	)
 	tutorials? (
 		dev-python/sphinx
-		dev-python/sphinx_rtd_theme
+		dev-python/sphinx-rtd-theme
 		dev-python/sphinxcontrib-doxylink
 	)
 	virtual/pkgconfig"

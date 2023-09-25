@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-2.eclass
@@ -33,7 +33,7 @@ esac
 DEPEND+=" virtual/gnustep-back"
 RDEPEND="${DEPEND}"
 
-# The following gnustep-based EXPORT_FUNCTIONS are available:
+# The following gnustep-based exported functions are available:
 # * gnustep-base_pkg_setup
 # * gnustep-base_src_prepare
 # * gnustep-base_src_configure

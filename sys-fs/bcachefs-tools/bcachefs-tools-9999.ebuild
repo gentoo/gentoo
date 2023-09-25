@@ -1,13 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-CRATES=""
+# CRATES="
+# "
 
-PYTHON_COMPAT=( python3_{8..11} )
+# Upstream have a fork of bindgen and use cgit
+# declare -A GIT_CRATES=(
+# 	[bindgen]="https://gitlab.com/Matt.Jolly/rust-bindgen-bcachefs;f773267b090bf16b9e8375fcbdcd8ba5e88806a8;rust-bindgen-bcachefs-%commit%/bindgen"
+# )
 
-inherit cargo flag-o-matic multiprocessing python-any-r1 toolchain-funcs unpacker
+LLVM_MAX_SLOT=17
+PYTHON_COMPAT=( python3_{10..12} )
+
+inherit cargo flag-o-matic llvm multiprocessing python-any-r1 toolchain-funcs unpacker
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="https://bcachefs.org/"
@@ -15,9 +22,9 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://evilpiepirate.org/git/bcachefs-tools.git"
 else
-	MY_COMMIT=f1f88825c371f84edb85a156de5e1962503d23b2
-	SRC_URI="https://evilpiepirate.org/git/bcachefs-tools.git/snapshot/bcachefs-tools-${MY_COMMIT}.tar.zst
-		$(cargo_crate_uris ${CRATES})"
+	MY_COMMIT=1f78fed4693a5361f56508daac59bebd5b556379
+	SRC_URI="https://github.com/koverstreet/bcachefs-tools/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz
+		${CARGO_CRATE_URIS}"
 	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 	KEYWORDS="~amd64"
 fi
@@ -28,20 +35,20 @@ IUSE="fuse test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	app-arch/lz4
-	app-arch/zstd
+	fuse? ( >=sys-fs/fuse-3.7.0 )
+	app-arch/lz4:=
 	dev-libs/libaio
-	dev-libs/libsodium
-	dev-libs/userspace-rcu
+	dev-libs/libsodium:=
+	dev-libs/userspace-rcu:=
 	sys-apps/keyutils
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/udev
-	fuse? ( >=sys-fs/fuse-3.7.0 )
 "
 
 RDEPEND="${DEPEND}"
 
+# Clang is required for bindgen
 BDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
@@ -52,9 +59,14 @@ BDEPEND="
 		)
 	')
 	$(unpacker_src_uri_depends)
-	sys-devel/clang
+	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
+	virtual/pkgconfig
 	virtual/rust
 "
+
+llvm_check_deps() {
+	has_version -b "sys-devel/clang:${LLVM_SLOT}"
+}
 
 python_check_deps() {
 	if use test; then
@@ -63,18 +75,19 @@ python_check_deps() {
 			"dev-python/pytest-xdist[${PYTHON_USEDEP}]"
 	fi
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
+}
 
+pkg_setup() {
+	llvm_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
 		git-r3_src_unpack
-		local module
-		for module in bch_bindgen mount; do
-			S="${S}/rust-src/${module}" cargo_live_src_unpack
-		done
+		S="${S}/rust-src" cargo_live_src_unpack
 	else
-		unpacker bcachefs-tools-${MY_COMMIT}.tar.zst
+		unpack ${P}.tar.gz
 		cargo_src_unpack
 	fi
 }
@@ -85,8 +98,12 @@ src_prepare() {
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
 		-e '/^CFLAGS/s:-g::' \
-		-e 's:pytest-3:/bin/true:g' \
 		-i Makefile || die
+	# Patch our cargo-ebuild patch definition to pretend that our GIT_CRATE is upstream's URI.
+	if ! [[ ${PV} == "9999" ]]; then
+		sed -e 's https://gitlab.com/Matt.Jolly/rust-bindgen-bcachefs https://evilpiepirate.org/git/rust-bindgen.git ' \
+			-i "${WORKDIR}/cargo_home/config" || die
+	fi
 	append-lfs-flags
 }
 
@@ -96,16 +113,6 @@ src_compile() {
 	export VERSION=${PV}
 
 	default
-
-	# Rust UUID-based mounter isn't in 'all' target, may as well use ebuild functions
-	local module
-	for module in bch_bindgen mount; do
-		pushd "${S}/rust-src/${module}" > /dev/null || die
-			LIBBCACHEFS_LIB="${S}" LIBBCACHEFS_INCLUDE="${S}" cargo_src_compile
-		popd > /dev/null || die
-	done
-
-	ln -f "${S}/rust-src/mount/target/release/bcachefs-mount" "${S}/mount.bcachefs" || die
 
 	use test && emake tests
 }
@@ -132,17 +139,16 @@ src_test() {
 	epytest -v -n "$(makeopts_jobs)"
 }
 
-QA_FLAGS_IGNORED="usr/bin/mount.bcachefs"
-# Raised upstream; we don't expect anything to link against this outside of bcachefs-tools bins, for now
-QA_SONAME=".*libbcachefs.so"
-
 src_install() {
-	exeinto /usr/bin
-	local file
-	for file in bcachefs fsck.bcachefs mkfs.bcachefs mount.bcachefs mount.bcachefs.sh; do
-		doexe $file
-	done
-	dolib.so libbcachefs.so
+	into /
+	dosbin bcachefs fsck.bcachefs mkfs.bcachefs mount.bcachefs
+
+	if use fuse; then
+		dosbin mount.fuse.bcachefs
+		newsbin fsck.bcachefs fsck.fuse.bcachefs
+		newsbin mkfs.bcachefs mkfs.fuse.bcachefs
+	fi
+
 	doman bcachefs.8
 }
 

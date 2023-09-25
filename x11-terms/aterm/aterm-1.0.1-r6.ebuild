@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.afterstep.org/apps/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="background cjk xgetdefault"
 
 RDEPEND="
@@ -59,7 +59,6 @@ src_configure() {
 
 	case "${CHOST}" in
 		*-darwin*) myconf="${myconf} --enable-wtmp" ;;
-		*-interix*) ;;
 		*) myconf="${myconf} --enable-utmp --enable-wtmp"
 	esac
 

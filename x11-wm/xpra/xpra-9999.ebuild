@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,33 +7,35 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/Xpra-org/xpra.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="~amd64 ~x86"
 fi
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=yes
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_EXT=1
 
-inherit xdg xdg-utils distutils-r1 tmpfiles udev
+inherit xdg xdg-utils distutils-r1 multibuild prefix tmpfiles udev
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="https://xpra.org/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE="brotli +client +clipboard csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal opengl pillow pinentry pulseaudio +server sound systemd test udev vpx webcam webp xdg xinerama"
+IUSE="brotli +client +clipboard crypt csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal oauth opengl pinentry pulseaudio +server sound systemd test +trayicon udev vpx webcam webp xdg xinerama"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
 	cups? ( dbus )
+	oauth? ( server )
 	opengl? ( client )
-	test? ( client clipboard dbus html server sound xdg xinerama )
+	test? ( client clipboard crypt dbus html server sound xdg xinerama )
 "
 
-TDEPEND="
+TEST_DEPEND="
 	$(python_gen_cond_dep '
 		dev-python/netifaces[${PYTHON_USEDEP}]
-		dev-python/pillow[jpeg?,${PYTHON_USEDEP}]
+		dev-python/pillow[jpeg?,webp?,${PYTHON_USEDEP}]
 		dev-python/rencode[${PYTHON_USEDEP}]
 		dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 		xdg? ( dev-python/pyxdg[${PYTHON_USEDEP}] )
@@ -63,10 +65,10 @@ DEPEND="
 	x11-libs/libxkbfile
 	brotli? ( app-arch/brotli )
 	csc? ( >=media-video/ffmpeg-1.2.2:0= )
-	ffmpeg? ( >=media-video/ffmpeg-3.2.2:0=[x264,x265] )
+	ffmpeg? ( >=media-video/ffmpeg-3.2.2:0=[x264] )
 	jpeg? ( media-libs/libjpeg-turbo )
 	pulseaudio? (
-		media-sound/pulseaudio
+		media-libs/libpulse
 		media-plugins/gst-plugins-pulse:1.0
 	)
 	sound? (
@@ -78,14 +80,14 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	${TDEPEND}
+	${TEST_DEPEND}
 	$(python_gen_cond_dep '
+		crypt? ( dev-python/cryptography[${PYTHON_USEDEP}] )
 		cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
 		lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
 		lzo? ( >=dev-python/python-lzo-0.7.0[${PYTHON_USEDEP}] )
-		opengl? (
-			client? ( dev-python/pyopengl_accelerate[${PYTHON_USEDEP}] )
-		)
+		oauth? ( dev-python/oauthlib[${PYTHON_USEDEP}] )
+		opengl? ( dev-python/pyopengl_accelerate[${PYTHON_USEDEP}] )
 		webcam? (
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/pyinotify[${PYTHON_USEDEP}]
@@ -98,39 +100,37 @@ RDEPEND="
 	x11-apps/xmodmap
 	ibus? ( app-i18n/ibus )
 	pinentry? ( app-crypt/pinentry )
+	trayicon? ( dev-libs/libayatana-appindicator )
 	udev? ( virtual/udev )
 "
 DEPEND+="
-	test? ( ${TDEPEND} )
+	test? ( ${TEST_DEPEND} )
 "
 BDEPEND="
 	$(python_gen_cond_dep '
 		>=dev-python/cython-0.16[${PYTHON_USEDEP}]
 	')
 	virtual/pkgconfig
-	doc? ( app-text/pandoc )
+	doc? ( virtual/pandoc )
 "
 
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
-	"${FILESDIR}"/${PN}-4.3-no-service.patch
 	"${FILESDIR}"/${PN}-9999-xdummy.patch
 )
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# FIXME: There are hardcoded paths all over the place but the following
-	# double-prefixes some files under /etc. Looks tricky to fix. :(
-	#hprefixify $(find -type f \( -name "*.py" -o -name "*.conf" \))
+	hprefixify xpra/scripts/config.py
 
-	sed -r -e "/\bdoc_dir =/s:/${PN}\":/${PF}/html\":" \
+	sed -r -e "/\bdoc_dir =/s:/${PN}/\":/${PF}/html\":" \
 		-i setup.py || die
 
 	if use minimal; then
-		sed -r -e 's/^(pam|scripts|xdg_open)_ENABLED.*/\1_ENABLED=False/' \
+		sed -r -e '/pam_ENABLED/s/DEFAULT/False/' \
+			-e 's/^(xdg_open)_ENABLED = .*/\1_ENABLED = False/' \
 			-i setup.py || die
 	fi
 }
@@ -142,6 +142,7 @@ python_configure_all() {
 	DISTUTILS_ARGS=(
 		--without-PIC
 		--without-Xdummy
+		$(use_with sound audio)
 		$(use_with client)
 		$(use_with clipboard)
 		$(use_with csc csc_swscale)
@@ -155,16 +156,17 @@ python_configure_all() {
 		$(use_with ffmpeg dec_avcodec2)
 		$(use_with ffmpeg enc_ffmpeg)
 		$(use_with ffmpeg enc_x264)
-		$(use_with ffmpeg enc_x265)
+		--without-enc_x265
 		--with-gtk3
 		$(use_with jpeg jpeg_encoder)
 		$(use_with jpeg jpeg_decoder)
 		--without-mdns
+		--without-sd_listen
+		--without-service
 		$(use_with opengl)
 		$(use_with server shadow)
 		$(use_with server)
-		$(use_with sound)
-		--with-strict
+		--without-strict
 		$(use_with vpx)
 		--with-warn
 		$(use_with webcam)
@@ -191,13 +193,24 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_prepare_all
 
-	# Move udev dir to the right place.
+	# Switching to PEP517 gives /usr/etc. Previously, setup.py hardcodes
+	# if root_prefix.endswith("/usr"):
+	#     root_prefix = root_prefix[:-4]
+	# But now setuptools uses data/* to represent out-of-sitedir files.
+	# The upstream hack no longer works. We are on our own.
+
+	mv -v "${ED}"/usr/etc "${ED}"/ || die
+
+	# Move udev dir to the right place if necessary.
 	if use udev; then
 		local dir=$(get_udevdir)
-		dodir "${dir%/*}"
-		mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
+		if [[ ! ${ED}/usr/lib/udev -ef ${ED}${dir} ]]; then
+			dodir "${dir%/*}"
+			mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
+		fi
 	else
 		rm -vr "${ED}"/usr/lib/udev || die
+		rm -v "${ED}"/usr/libexec/xpra/xpra_udev_product_version || die
 	fi
 }
 

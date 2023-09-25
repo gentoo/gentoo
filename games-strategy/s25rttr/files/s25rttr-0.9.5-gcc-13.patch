@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/891713
+https://github.com/Return-To-The-Roots/s25client/pull/1548
+https://github.com/Return-To-The-Roots/libsiedler2/pull/21
+
+From d59abd4b565cd6f11dd64f6e4f497c9797e52c5a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 23 Jan 2023 01:49:47 +0000
+Subject: [PATCH] LanGameInfo: Add missing <cstdint> include
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> etc is no longer transitively included.
+
+See https://www.gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Closes: https://github.com/Return-To-The-Roots/libsiedler2/issues/20
+Bug: https://bugs.gentoo.org/891713
+--- a/libs/s25main/gameTypes/LanGameInfo.h
++++ b/libs/s25main/gameTypes/LanGameInfo.h
+@@ -4,6 +4,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ class Serializer;
+
+From 6a289fa3a3f50f0967a072292f3e0c628144ab8d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 23 Jan 2023 01:47:19 +0000
+Subject: [PATCH] oem: Add missing <cstdint> include
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> etc is no longer transitively included.
+
+See https://www.gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Closes: https://github.com/Return-To-The-Roots/libsiedler2/issues/20
+Bug: https://bugs.gentoo.org/891713
+--- a/external/libsiedler2/src/oem.cpp
++++ b/external/libsiedler2/src/oem.cpp
+@@ -4,6 +4,7 @@
+ 
+ #include "oem.h"
+ #include <array>
++#include <cstdint>
+ 
+ namespace libsiedler2 {
+ 
+

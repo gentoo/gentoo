@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dist-kernel-utils.eclass
@@ -12,12 +12,30 @@
 # This eclass provides various utility functions related to Distribution
 # Kernels.
 
+# @ECLASS_VARIABLE: KERNEL_IUSE_SECUREBOOT
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-null value, inherits secureboot.eclass
+# and allows signing of generated kernel images.
+
+# @ECLASS_VARIABLE: KERNEL_EFI_ZBOOT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-null value, it is assumed the kernel was built with
+# CONFIG_EFI_ZBOOT enabled. This effects the name of the kernel image on
+# arm64 and riscv. Mainly useful for sys-kernel/gentoo-kernel-bin.
+
 if [[ ! ${_DIST_KERNEL_UTILS} ]]; then
 
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+	inherit secureboot
+fi
 
 # @FUNCTION: dist-kernel_build_initramfs
 # @USAGE: <output> <version>
@@ -60,20 +78,21 @@ dist-kernel_get_image_path() {
 		amd64|x86)
 			echo arch/x86/boot/bzImage
 			;;
-		arm64)
-			echo arch/arm64/boot/Image.gz
+		arm64|riscv)
+			if [[ ${KERNEL_EFI_ZBOOT} ]]; then
+				echo arch/${ARCH}/boot/vmlinuz.efi
+			else
+				echo arch/${ARCH}/boot/Image.gz
+			fi
 			;;
 		arm)
 			echo arch/arm/boot/zImage
 			;;
-		hppa|ppc|ppc64)
+		hppa|ppc|ppc64|sparc)
 			# https://www.kernel.org/doc/html/latest/powerpc/bootwrapper.html
 			# ./ is required because of ${image_path%/*}
 			# substitutions in the code
 			echo ./vmlinux
-			;;
-		riscv)
-			echo arch/riscv/boot/Image.gz
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
@@ -104,12 +123,27 @@ dist-kernel_install_kernel() {
 	if [[ ${magic} == MZ ]]; then
 		einfo "Combined UEFI kernel+initramfs executable found"
 		# install the combined executable in place of kernel
-		image=${initrd}.uefi
+		image=${initrd%/*}/uki.efi
 		mv "${initrd}" "${image}" || die
-		# put an empty file in place of initrd.  installing a duplicate
-		# file would waste disk space, and removing it entirely provokes
-		# kernel-install to regenerate it via dracut.
-		> "${initrd}"
+		# We moved the generated initrd, prevent dracut from running again
+		# https://github.com/dracutdevs/dracut/pull/2405
+		shopt -s nullglob
+		local plugins=()
+		for file in "${EROOT}"/etc/kernel/install.d/*.install; do
+			plugins+=( "${file}" )
+		done
+		for file in "${EROOT}"/usr/lib/kernel/install.d/*.install; do
+			if ! has "${file##*/}" 50-dracut.install 51-dracut-rescue.install "${plugins[@]##*/}"; then
+					plugins+=( "${file}" )
+			fi
+		done
+		shopt -u nullglob
+		export KERNEL_INSTALL_PLUGINS="${KERNEL_INSTALL_PLUGINS} ${plugins[@]}"
+
+		if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+			# Ensure the uki is signed if dracut hasn't already done so.
+			secureboot_sign_efi_file "${image}"
+		fi
 	fi
 
 	ebegin "Installing the kernel via installkernel"
@@ -145,8 +179,8 @@ dist-kernel_reinstall_initramfs() {
 		eerror "Initramfs will not be updated.  Please reinstall your kernel."
 		return
 	fi
-	if [[ ! -f ${initramfs_path} ]]; then
-		einfo "No initramfs found at ${initramfs_path}"
+	if [[ ! -f ${initramfs_path} && ! -f ${initramfs_path%/*}/uki.efi ]]; then
+		einfo "No initramfs or uki found at ${image_path}"
 		return
 	fi
 

@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -16,23 +17,28 @@ HOMEPAGE="
 	https://pypi.org/project/ruamel.yaml.clib/
 	https://sourceforge.net/projects/ruamel-yaml-clib/
 "
-# Lacks .pyx files for cythonizing for py3.11
-#SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+# sdist lacks .pyx files for cythonizing
 SRC_URI="mirror://sourceforge/ruamel-dl-tagged-releases/${MY_P}.tar.xz"
-S=${WORKDIR}/${MY_P}
+# workaround https://bugs.gentoo.org/898716
+S=${WORKDIR}/ruamel_yaml_clib
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.7-clang-16.patch
+	"${FILESDIR}"/${PN}-0.2.7_cython_pointer_types.patch
 )
 
+src_unpack() {
+	default
+	mv "${MY_P}" ruamel_yaml_clib || die
+}
+
 src_configure() {
-	cythonize -3 _ruamel_yaml.pyx || die
+	cython -f -3 _ruamel_yaml.pyx || die
 }

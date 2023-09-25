@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Tempel is a tiny template package for Emacs, which uses the syntax of the
+    Emacs Tempo library. Tempo is an ancient temple of the church of Emacs. It
+    is 27 years old, but still in good shape since it successfully resisted
+    change over the decades. However it may look a bit dusty here and there.
+    Therefore we present Tempel, a new implementation of Tempo with inline
+    expansion and integration with recent Emacs facilities. Tempel takes
+    advantage of the standard completion-at-point-functions mechanism which is
+    used by Emacs for in-buffer completion.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/minad/tempel/issues/</bugs-to>
+    <remote-id type="github">minad/tempel</remote-id>
+  </upstream>
+</pkgmetadata>

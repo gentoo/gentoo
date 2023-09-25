@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -157,8 +157,6 @@ BDEPEND="
 "
 
 DOCS=( NEWS README )
-
-S="${WORKDIR}/${MY_P}"
 
 # patches merged upstream, to be removed with 16.2 or later bump
 PATCHES=(

@@ -1,0 +1,40 @@
+Bug: https://bugs.gentoo.org/889762
+diff --git a/contrib/cross-build.sh b/contrib/cross-build.sh
+index b199bf715..919a22005 100755
+--- a/contrib/cross-build.sh
++++ b/contrib/cross-build.sh
+@@ -155,7 +155,7 @@ if [ -d $CAPSTONE_SRC ] ; then
+   sed -i '1s;^;prefix=/usr \
+ exec_prefix=${prefix} \
+ libdir=${exec_prefix}/lib \
+-includedir=${prefix}/include/capstone\n\n;' $CAPSTONE_PC_FILE
++includedir=${prefix}/include\n\n;' $CAPSTONE_PC_FILE
+ fi
+ 
+ 
+diff --git a/src/target/a64_disassembler.c b/src/target/a64_disassembler.c
+index ca3d3ea7a..9579860f0 100644
+--- a/src/target/a64_disassembler.c
++++ b/src/target/a64_disassembler.c
+@@ -15,7 +15,7 @@
+ 
+ #if HAVE_CAPSTONE
+ 
+-#include <capstone.h>
++#include <capstone/capstone.h>
+ 
+ static void print_opcode(struct command_invocation *cmd, const cs_insn *insn)
+ {
+diff --git a/src/target/arm_disassembler.c b/src/target/arm_disassembler.c
+index 749274f36..e78d08853 100644
+--- a/src/target/arm_disassembler.c
++++ b/src/target/arm_disassembler.c
+@@ -16,7 +16,7 @@
+ #include <helper/log.h>
+ 
+ #if HAVE_CAPSTONE
+-#include <capstone.h>
++#include <capstone/capstone.h>
+ #endif
+ 
+ /*

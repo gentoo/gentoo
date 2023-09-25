@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DESCRIPTION="Recursive DNS Servers discovery Daemon (rdnssd) for IPv6"
+DESCRIPTION="IPv6 diagnostic tools"
 HOMEPAGE="https://www.remlab.net/ndisc6/"
 SRC_URI="https://www.remlab.net/files/${PN}/${P}.tar.bz2"
 

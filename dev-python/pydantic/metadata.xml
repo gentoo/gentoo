@@ -6,10 +6,11 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:pydantic_project:pydantic</remote-id>
 		<remote-id type="pypi">pydantic</remote-id>
 		<remote-id type="github">pydantic/pydantic</remote-id>
 		<bugs-to>https://github.com/pydantic/pydantic/issues</bugs-to>
-		<doc>https://pydantic-docs.helpmanual.io/</doc>
+		<doc>https://docs.pydantic.dev/</doc>
 	</upstream>
 	<use>
 		<flag name="native-extensions">Compiles native "C" extensions.</flag>

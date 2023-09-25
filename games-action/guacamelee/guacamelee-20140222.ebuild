@@ -1,13 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit desktop unpacker xdg-utils
 
-DESCRIPTION="A Metroidvania-style action-platformer set in a magical Mexican-inspired world"
-HOMEPAGE="http://guacamelee.com"
+DESCRIPTION="Metroidvania-style action-platformer set in a magical Mexican-inspired world"
+HOMEPAGE="https://guacamelee.com"
 SRC_URI="Guacamelee_linux_1393037377.sh"
+S="${WORKDIR}/data"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -17,8 +19,6 @@ RDEPEND="
 	media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,threads,video]
 	virtual/opengl[abi_x86_32]
 "
-
-S="${WORKDIR}/data"
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR}/*"

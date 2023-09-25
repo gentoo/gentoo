@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit flag-o-matic python-r1 toolchain-funcs udev
 
@@ -12,6 +12,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git https://kernel.googlesource.com/pub/scm/linux/kernel/git/colyli/bcache-tools.git"
 else
 	SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/colyli/${PN}.git/snapshot/${P}.tar.gz"
+	KEYWORDS="amd64 arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Tools for bcache"
@@ -36,28 +37,32 @@ src_prepare() {
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
 		-e '/^CFLAGS/s:-g::' \
+		-e '/.*INSTALL.*share\/man/d' \
+		-e '/.*INSTALL.*bcache-status/d' \
 		-i Makefile || die
 
 	append-lfs-flags
 }
 
 src_install() {
-	into /
-	dosbin bcache make-bcache bcache-super-show
+	local udevdir="$(get_udevdir)"
 
-	exeinto $(get_udevdir)
-	doexe bcache-register probe-bcache bcache-export-cached
+	local mydirs=(
+		sbin
+		"${udevdir}/rules.d"
+		/usr/share/initramfs-tools/hooks/bcache
+		/usr/lib/initcpio/install/bcache
+	)
+	dodir "${mydirs[@]}"
+
+	emake \
+		DESTDIR="${D}" \
+		PREFIX="${EPREFIX}" \
+		UDEVLIBDIR="${udevdir}" \
+		DRACUTLIBDIR="/usr/lib/dracut" \
+		install
 
 	python_foreach_impl python_doscript bcache-status
-
-	udev_dorules 69-bcache.rules
-
-	insinto /etc/initramfs-tools/hooks/bcache
-	doins initramfs/hook
-
-	# that is what dracut does
-	insinto /usr/lib/dracut/modules.d/90bcache
-	doins dracut/module-setup.sh
 
 	doman *.8
 

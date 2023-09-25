@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="af-packet">Enable AF_PACKET support</flag>
+    <flag name="af-xdp">Enable AF_XDP support</flag>
     <flag name="bpf">Enable support for eBPF (as well as XDP if supported by the kernel and the NIC driver)
         for low-level, high-speed packet processing</flag>
     <flag name="control-socket">Enable unix socket</flag>

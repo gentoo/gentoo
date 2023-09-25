@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit fcaps go-module systemd
+inherit fcaps go-module prefix systemd
 
-DESCRIPTION="A flexible DNS proxy, with support for encrypted DNS protocols"
+DESCRIPTION="Flexible DNS proxy, with support for encrypted DNS protocols"
 HOMEPAGE="https://github.com/DNSCrypt/dnscrypt-proxy"
 
 if [[ ${PV} == 9999 ]]; then
@@ -18,7 +18,6 @@ fi
 
 LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0"
 SLOT="0"
-IUSE="+pie"
 
 RDEPEND="
 	acct-group/dnscrypt-proxy
@@ -28,18 +27,18 @@ RDEPEND="
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.2-config-full-paths.patch
+	"${FILESDIR}"/${PN}-2.1.5-config-full-paths.patch
 )
 
 src_compile() {
 	pushd "${PN}" >/dev/null || die
-	go build -v -x -mod=readonly -mod=vendor -buildmode="$(usex pie pie default)" || die
+	ego build -v -x -mod=readonly -mod=vendor
 	popd >/dev/null || die
 }
 
 src_test() {
 	cd "${PN}" || die
-	go test -mod=vendor -buildmode="$(usex pie pie default)" || die "Failed to run tests"
+	ego test -mod=vendor
 }
 
 src_install() {
@@ -47,6 +46,7 @@ src_install() {
 
 	dobin dnscrypt-proxy
 
+	eprefixify example-dnscrypt-proxy.toml
 	insinto /etc/dnscrypt-proxy
 	newins example-dnscrypt-proxy.toml dnscrypt-proxy.toml
 	doins example-{allowed,blocked}-{ips.txt,names.txt}

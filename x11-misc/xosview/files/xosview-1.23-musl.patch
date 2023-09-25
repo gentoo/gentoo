@@ -1,0 +1,14 @@
+Musl does not have sys/perm.h. Luckily, sys/io.h has the required
+definitions both for musl and glibc.
+
+diff -ruN xosview-1.23.orig/linux/serialmeter.cc xosview-1.23/linux/serialmeter.cc
+--- xosview-1.23.orig/linux/serialmeter.cc	2020-07-11 14:10:34.000000000 +0200
++++ xosview-1.23/linux/serialmeter.cc	2023-05-05 22:13:19.863489393 +0200
+@@ -25,7 +25,6 @@
+  */
+ #if defined(__i386__) || defined(__ia64__) || defined(__amd64__)
+ #include <sys/io.h>
+-#include <sys/perm.h>
+ #define HAVE_IOPERM
+ #endif
+ 

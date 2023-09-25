@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/simplecov-ruby/simplecov"
 SRC_URI="https://github.com/simplecov-ruby/simplecov/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 SLOT="0.8"
 IUSE="doc"
 
@@ -36,6 +36,10 @@ ruby_add_bdepend "test? (
 
 # There are also cucumber tests that require poltergeist and unpackaged phantomjs gem.
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.22.0-ruby32-gentoo.patch
+)
+
 all_ruby_prepare() {
 	# Avoid test depending on spawning ruby and having timing issues
 	sed -i -e '/blocks other processes/askip "gentoo"' spec/result_merger_spec.rb || die
@@ -48,7 +52,6 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	RSPEC_VERSION=3 ruby-ng_rspec spec/*spec.rb || die
-
-	#${RUBY} -S cucumber features || die
+	sed -i -e "s:@GENTOO_RUBY@:${RUBY}:" spec/coverage_for_eval_spec.rb || die
+	RUBYLIB="${S}/lib" RSPEC_VERSION=3 ruby-ng_rspec spec/ || die
 }

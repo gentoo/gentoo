@@ -1,8 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -alpha
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-10)
+# dev-lang/go is not keyworded here
+go
+
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# dev-lang/ocaml is not keyworded here
+ocaml
 
 # Matt Turner <mattst88@gentoo.org> (2022-02-21)
 # app-crypt/tpm2-tss is not keyworded here
@@ -188,10 +200,6 @@ opencl
 
 # Unmask once sys-libs/libunwind gets ported & keyworded.
 unwind
-
-# Pacho Ramos <pacho@gentoo.org> (2014-01-08)
-# Unmask systemd since it is keyworded here.
--systemd
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-07-20)
 # Mask redis USE flag everywhere since redis depends on google-perftools,

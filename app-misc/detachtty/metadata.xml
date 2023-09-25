@@ -15,4 +15,7 @@
 		concept to GNU Screen but is better suited toward scrolling interfaces (not
 		full-screen, random-access based applications).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">cosmos72/detachtty</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/903781
+https://bugs.gentoo.org/900246
+https://bugs.gentoo.org/895814
+https://bugs.gentoo.org/894734
+https://github.com/bitcoin/bitcoin/commit/fadeb6b103cb441e0e91ef506ef29febabb10715
+
+From fadeb6b103cb441e0e91ef506ef29febabb10715 Mon Sep 17 00:00:00 2001
+From: MarcoFalke <*~=`'#}+{/-|&$^_@721217.xyz>
+Date: Thu, 19 Jan 2023 19:35:43 +0100
+Subject: [PATCH] Add missing includes to fix gcc-13 compile error
+
+--- a/src/support/lockedpool.cpp
++++ b/src/support/lockedpool.cpp
+@@ -19,6 +19,9 @@
+ #endif
+ 
+ #include <algorithm>
++#include <limits>
++#include <stdexcept>
++#include <utility>
+ #ifdef ARENA_DEBUG
+ #include <iomanip>
+ #include <iostream>
+--- a/src/support/lockedpool.h
++++ b/src/support/lockedpool.h
+@@ -5,11 +5,11 @@
+ #ifndef BITCOIN_SUPPORT_LOCKEDPOOL_H
+ #define BITCOIN_SUPPORT_LOCKEDPOOL_H
+ 
+-#include <stdint.h>
++#include <cstddef>
+ #include <list>
+ #include <map>
+-#include <mutex>
+ #include <memory>
++#include <mutex>
+ #include <unordered_map>
+ 
+ /**

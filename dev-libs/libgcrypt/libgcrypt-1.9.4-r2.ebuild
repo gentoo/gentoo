@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+asm cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 cpu_flags_ppc_vsx3 cpu_flags_x86_aes cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_padlock cpu_flags_x86_sha cpu_flags_x86_sse4_1 doc static-libs"
 
 # Build system only has --disable-arm-crypto-support right now
@@ -78,6 +78,13 @@ multilib_src_configure() {
 		append-flags -fno-tree-loop-vectorize
 	fi
 
+	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
+	# https://github.com/gentoo/gentoo/pull/28355
+	# mold needs this too but right now tc-ld-is-mold is also not available
+	if tc-ld-is-lld; then
+		append-ldflags -Wl,--undefined-version
+	fi
+
 	local myeconfargs=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
@@ -101,8 +108,6 @@ multilib_src_configure() {
 
 		# http://trac.videolan.org/vlc/ticket/620
 		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
-		# causes bus-errors on sparc64-solaris
-		$([[ ${CHOST} == sparcv9-*-solaris* ]] && echo "--disable-asm")
 
 		$(use asm || echo "--disable-asm")
 

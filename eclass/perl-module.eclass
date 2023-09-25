@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-module.eclass
@@ -21,11 +21,11 @@
 
 case ${EAPI} in
 	7)
-		inherit multiprocessing perl-functions
+		inherit multiprocessing perl-functions toolchain-funcs
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
 	8)
-		inherit multiprocessing perl-functions readme.gentoo-r1
+		inherit multiprocessing perl-functions readme.gentoo-r1 toolchain-funcs
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
 	*)
@@ -80,7 +80,7 @@ case ${EAPI} in
 			yes|noslotop)
 				DEPEND="dev-lang/perl"
 				BDEPEND="dev-lang/perl
-					 test? ( virtual/perl-Test-Simple )"
+					 test? ( >=virtual/perl-Test-Simple-1 )"
 				IUSE="test"
 				RESTRICT="!test? ( test )"
 				;;&
@@ -209,6 +209,10 @@ perl-module_src_prepare() {
 perl-module_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# Perl runs LD with LDFLAGS
+	export CCLD=$(tc-getCC)
+	unset LD
+
 	perl_check_env
 
 	perl_set_version
@@ -216,6 +220,8 @@ perl-module_src_configure() {
 	[[ -z ${pm_echovar} ]] && export PERL_MM_USE_DEFAULT=1
 	# Disable ExtUtils::AutoInstall from prompting
 	export PERL_EXTUTILS_AUTOINSTALL="--skipdeps"
+	# Noisy and not really appropriate to show to the user in a PM
+	export PERL_CANARY_STABILITY_DISABLE=1
 
 	if [[ $(declare -p myconf 2>&-) != "declare -a myconf="* ]]; then
 		local myconf_local=(${myconf})
@@ -250,7 +256,7 @@ perl-module_src_configure() {
 	elif [[ -f Makefile.PL ]] ; then
 		einfo "Using ExtUtils::MakeMaker"
 		set -- \
-			PREFIX=${EPREFIX}/usr \
+			PREFIX="${EPREFIX}"/usr \
 			INSTALLDIRS=vendor \
 			INSTALLMAN3DIR='none' \
 			DESTDIR="${D}" \
@@ -353,6 +359,13 @@ perl-module_src_test() {
 	if ! has network ${my_test_control} ; then
 		export NO_NETWORK_TESTING=1
 	fi
+
+	# See https://www.perlmonks.org/?node_id=1225311
+	# * AUTOMATES_TESTING appears inappropriate for us, as it affects
+	# exit codes and might mask failures if configuration is wrong.
+	# * EXTENDED_TESTING is something we could consider if we had
+	# some way to opt-in to expensive tests.
+	export NONINTERACTIVE_TESTING=1
 
 	case ${EAPI} in
 		7)

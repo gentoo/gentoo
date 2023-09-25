@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bzr.eclass
@@ -21,55 +21,53 @@
 
 case ${EAPI} in
 	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 PROPERTIES+=" live"
 
 BDEPEND="dev-vcs/breezy"
 
-EXPORT_FUNCTIONS src_unpack
-
 # @ECLASS_VARIABLE: EBZR_STORE_DIR
 # @USER_VARIABLE
 # @DESCRIPTION:
 # The directory to store all fetched Bazaar live sources.
-: ${EBZR_STORE_DIR:=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/bzr-src}
+: "${EBZR_STORE_DIR:=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/bzr-src}"
 
 # @ECLASS_VARIABLE: EBZR_UNPACK_DIR
 # @DESCRIPTION:
 # The working directory where the sources are copied to.
-: ${EBZR_UNPACK_DIR:=${WORKDIR}/${P}}
+: "${EBZR_UNPACK_DIR:=${WORKDIR}/${P}}"
 
 # @ECLASS_VARIABLE: EBZR_INIT_REPO_CMD
 # @DESCRIPTION:
 # The Bazaar command to initialise a shared repository.
-: ${EBZR_INIT_REPO_CMD:="brz init-shared-repository --no-trees"}
+: "${EBZR_INIT_REPO_CMD:="brz init-shared-repository --no-trees"}"
 
 # @ECLASS_VARIABLE: EBZR_FETCH_CMD
 # @DESCRIPTION:
 # The Bazaar command to fetch the sources.
-: ${EBZR_FETCH_CMD:="brz branch --no-tree"}
+: "${EBZR_FETCH_CMD:="brz branch --no-tree"}"
 
 # @ECLASS_VARIABLE: EBZR_UPDATE_CMD
 # @DESCRIPTION:
 # The Bazaar command to update the sources.
-: ${EBZR_UPDATE_CMD:="brz pull --overwrite-tags"}
+: "${EBZR_UPDATE_CMD:="brz pull --overwrite-tags"}"
 
 # @ECLASS_VARIABLE: EBZR_EXPORT_CMD
 # @DESCRIPTION:
 # The Bazaar command to export a branch.
-: ${EBZR_EXPORT_CMD:="brz export"}
+: "${EBZR_EXPORT_CMD:="brz export"}"
 
 # @ECLASS_VARIABLE: EBZR_CHECKOUT_CMD
 # @DESCRIPTION:
 # The Bazaar command to checkout a branch.
-: ${EBZR_CHECKOUT_CMD:="brz checkout --lightweight -q"}
+: "${EBZR_CHECKOUT_CMD:="brz checkout --lightweight -q"}"
 
 # @ECLASS_VARIABLE: EBZR_REVNO_CMD
 # @DESCRIPTION:
 # The Bazaar command to list a revision number of the branch.
-: ${EBZR_REVNO_CMD:="brz revno"}
+: "${EBZR_REVNO_CMD:="brz revno"}"
 
 # @ECLASS_VARIABLE: EBZR_OPTIONS
 # @DEFAULT_UNSET
@@ -90,7 +88,7 @@ EXPORT_FUNCTIONS src_unpack
 # If EBZR_BRANCH is set (see below), then a shared repository will be
 # created in that directory, and the branch will be located in
 # ${EBZR_STORE_DIR}/${EBZR_PROJECT}/${EBZR_BRANCH}.
-: ${EBZR_PROJECT:=${PN}}
+: "${EBZR_PROJECT:=${PN}}"
 
 # @ECLASS_VARIABLE: EBZR_BRANCH
 # @DEFAULT_UNSET
@@ -118,7 +116,7 @@ EXPORT_FUNCTIONS src_unpack
 # Set this variable to a non-empty value to disable automatic updating
 # of a bzr source tree.  This is intended to be set outside the ebuild
 # by users.
-: ${EBZR_OFFLINE=${EVCS_OFFLINE}}
+: "${EBZR_OFFLINE=${EVCS_OFFLINE}}"
 
 # @ECLASS_VARIABLE: EVCS_UMASK
 # @USER_VARIABLE
@@ -255,3 +253,5 @@ bzr_fetch() {
 bzr_src_unpack() {
 	bzr_fetch
 }
+
+EXPORT_FUNCTIONS src_unpack

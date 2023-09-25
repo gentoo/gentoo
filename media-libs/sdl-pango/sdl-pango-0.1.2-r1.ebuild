@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools
 
 DESCRIPTION="connect the text rendering engine of GNOME to SDL"
-HOMEPAGE="http://sdlpango.sourceforge.net/"
+HOMEPAGE="https://sdlpango.sourceforge.net/"
 SRC_URI="mirror://sourceforge/sdlpango/SDL_Pango-${PV}.tar.gz
 	http://zarb.org/~gc/t/SDL_Pango-0.1.2-API-adds.patch"
 

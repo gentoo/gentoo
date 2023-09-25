@@ -1,0 +1,22 @@
+https://github.com/FreeCAD/FreeCAD/commit/c7a21ecbeecefe7c2dfc9e950b3d6bb42351d476
+
+From c7a21ecbeecefe7c2dfc9e950b3d6bb42351d476 Mon Sep 17 00:00:00 2001
+From: wmayer <wmayer@users.sourceforge.net>
+Date: Sat, 11 Feb 2023 17:47:49 +0100
+Subject: [PATCH 02/51] Fixes #8206: FreeCAD segfaults being run with
+ parameters (e.g .desktop file has /usr/bin/freecad --single-instance)
+
+--- a/src/Base/Interpreter.cpp
++++ b/src/Base/Interpreter.cpp
+@@ -563,7 +563,7 @@ void initInterpreter(int argc,char *argv[])
+ {
+     PyStatus status;
+     PyConfig config;
+-    PyConfig_InitPythonConfig(&config);
++    PyConfig_InitIsolatedConfig(&config);
+ 
+     status = PyConfig_SetBytesArgv(&config, argc, argv);
+     if (PyStatus_Exception(status)) {
+-- 
+2.39.1
+

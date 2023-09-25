@@ -1,0 +1,11 @@
+--- a/./include/stp/AST/ASTNode.h
++++ b/./include/stp/AST/ASTNode.h
+@@ -24,6 +24,8 @@ THE SOFTWARE.
+ #ifndef ASTNODE_H
+ #define ASTNODE_H
+ 
++#include <cstdint>
++
+ #include "stp/AST/NodeFactory/HashingNodeFactory.h"
+ #include "stp/Util/Attributes.h"
+ #include "ASTInternal.h"

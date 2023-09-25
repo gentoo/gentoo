@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eclass for installing SELinux policy, and optionally
@@ -30,21 +30,21 @@ _SELINUX_POLICY_2_ECLASS=1
 # @DESCRIPTION:
 # This variable contains the (upstream) module name for the SELinux module.
 # This name is only the module name, not the category!
-: ${MODS:="_illegal"}
+: "${MODS:="_illegal"}"
 
 # @ECLASS_VARIABLE: BASEPOL
 # @DESCRIPTION:
 # This variable contains the version string of the selinux-base-policy package
 # that this module build depends on. It is used to patch with the appropriate
 # patch bundle(s) that are part of selinux-base-policy.
-: ${BASEPOL:=${PVR}}
+: "${BASEPOL:=${PVR}}"
 
 # @ECLASS_VARIABLE: POLICY_PATCH
 # @DESCRIPTION:
 # This variable contains the additional patch(es) that need to be applied on top
 # of the patchset already contained within the BASEPOL variable. The variable
 # can be both a simple string (space-separated) or a bash array.
-: ${POLICY_PATCH:=""}
+: "${POLICY_PATCH:=""}"
 
 # @ECLASS_VARIABLE: POLICY_FILES
 # @DESCRIPTION:
@@ -53,7 +53,7 @@ _SELINUX_POLICY_2_ECLASS=1
 # Generally, users would want to include at least a .te and .fc file, but .if
 # files are supported as well. The variable can be both a simple string
 # (space-separated) or a bash array.
-: ${POLICY_FILES:=""}
+: "${POLICY_FILES:=""}"
 
 # @ECLASS_VARIABLE: POLICY_TYPES
 # @DESCRIPTION:
@@ -62,7 +62,7 @@ _SELINUX_POLICY_2_ECLASS=1
 # This variable is the same POLICY_TYPES variable that we tell SELinux
 # users to set in make.conf. Therefore, it is not the module that should
 # override it, but the user.
-: ${POLICY_TYPES:="targeted strict mcs mls"}
+: "${POLICY_TYPES:="targeted strict mcs mls"}"
 
 # @ECLASS_VARIABLE: SELINUX_GIT_REPO
 # @DESCRIPTION:
@@ -71,7 +71,7 @@ _SELINUX_POLICY_2_ECLASS=1
 # using a single variable, rather than having to set the packagename_LIVE_REPO
 # variable for each and every SELinux policy module package they want to install.
 # The default value is Gentoo's hardened-refpolicy repository.
-: ${SELINUX_GIT_REPO:="https://anongit.gentoo.org/git/proj/hardened-refpolicy.git"};
+: "${SELINUX_GIT_REPO:="https://anongit.gentoo.org/git/proj/hardened-refpolicy.git"}"
 
 # @ECLASS_VARIABLE: SELINUX_GIT_BRANCH
 # @DESCRIPTION:
@@ -80,7 +80,7 @@ _SELINUX_POLICY_2_ECLASS=1
 # SELinux policy packages, rather than having to override them one by one with the
 # packagename_LIVE_BRANCH variable.
 # The default value is the 'master' branch.
-: ${SELINUX_GIT_BRANCH:="master"};
+: "${SELINUX_GIT_BRANCH:="master"}"
 
 case ${BASEPOL} in
 	9999)	inherit git-r3
@@ -166,7 +166,7 @@ selinux-policy-2_src_prepare() {
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" == "declare -a"* ]] ||
 	   [[ -n ${POLICY_FILES} ]]; then
-	    add_interfaces=1;
+		add_interfaces=1;
 		cd "${S}/refpolicy/policy/modules"
 		for POLFILE in ${POLICY_FILES[@]};
 		do
@@ -174,7 +174,7 @@ selinux-policy-2_src_prepare() {
 		done
 	fi
 
-	# Apply the additional patches refered to by the module ebuild.
+	# Apply the additional patches referred to by the module ebuild.
 	# But first some magic to differentiate between bash arrays and strings
 	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]]; then
 		[[ -n ${POLICY_PATCH[*]} ]] && eapply -d "${S}/refpolicy/policy/modules" -- "${POLICY_PATCH[@]}"
@@ -303,7 +303,7 @@ selinux-policy-2_pkg_postinst() {
 				ewarn "If it is the last SELinux module package being installed however,"
 				ewarn "then it is advised to look at the error above and take appropriate"
 				ewarn "action since the new SELinux policies are not loaded until the"
-				ewarn "command finished succesfully."
+				ewarn "command finished successfully."
 				ewarn ""
 				ewarn "To reload, run the following command from within /usr/share/selinux/${i}:"
 				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp)"
@@ -311,10 +311,10 @@ selinux-policy-2_pkg_postinst() {
 				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp | grep -v unconfined.pp)"
 				ewarn "depending on if you need the unconfined domain loaded as well or not."
 			else
-				einfo "SELinux modules reloaded succesfully."
+				einfo "SELinux modules reloaded successfully."
 			fi
 		else
-			einfo "SELinux modules loaded succesfully."
+			einfo "SELinux modules loaded successfully."
 		fi
 		COMMAND="";
 	done
@@ -360,7 +360,7 @@ selinux-policy-2_pkg_postrm() {
 			if [[ $? -ne 0 ]]; then
 				ewarn "SELinux module unload failed.";
 			else
-				einfo "SELinux modules unloaded succesfully."
+				einfo "SELinux modules unloaded successfully."
 			fi
 		done
 	fi

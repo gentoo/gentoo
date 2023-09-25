@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,14 +62,15 @@ DEPEND="${RDEPEND}
 	dev-cpp/doctest
 "
 BDEPEND="
+	dev-lang/perl
 	dev-util/ragel
 	virtual/pkgconfig
 "
 
 PATCHES=(
-	"${FILESDIR}/rspamd-3.0-cmake-lua-version.patch"
-	"${FILESDIR}/rspamd-3.2-unbundle-lua.patch"
-	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
+	"${FILESDIR}/rspamd-3.6-cmake-lua-version.patch"
+	"${FILESDIR}/rspamd-3.6-unbundle-lua.patch"
+	"${FILESDIR}/rspamd-3.6-unbundle-snowball.patch"
 )
 
 src_prepare() {
@@ -90,6 +91,7 @@ src_configure() {
 		-DRUNDIR=/var/run/rspamd
 		-DDBDIR=/var/lib/rspamd
 		-DLOGDIR=/var/log/rspamd
+		-DLIBDIR="/usr/$(get_libdir)/rspamd"
 
 		-DSYSTEM_DOCTEST=ON
 		-DSYSTEM_FMT=ON

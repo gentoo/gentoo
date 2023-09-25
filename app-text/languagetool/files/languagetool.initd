@@ -7,13 +7,13 @@ depend() {
 
 start() {
 	ebegin "Starting languagetool [server]"
-	start-stop-daemon --start --background --exec /bin/bash /usr/bin/languagetool-server \
-        --config "/etc/languagetool.cfg" --allow-origin "*" --port 8081
+	start-stop-daemon --start --background --exec /bin/bash -- /usr/bin/languagetool-server \
+		--config "/etc/languagetool.cfg" --allow-origin "*" --port 8081
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping languagetool [server]"
-	start-stop-daemon --stop --exec /bin/bash /usr/bin/languagetool-server 
+	start-stop-daemon --stop --exec /bin/bash -- /usr/bin/languagetool-server
 	eend $?
 }

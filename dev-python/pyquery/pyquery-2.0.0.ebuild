@@ -1,23 +1,22 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="A jQuery-like library for python"
 HOMEPAGE="
 	https://github.com/gawel/pyquery/
 	https://pypi.org/project/pyquery/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/lxml-2.1[${PYTHON_USEDEP}]
@@ -35,10 +34,25 @@ DEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# needs network
-	tests/test_pyquery.py::TestWebScrappingEncoding::test_get
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# needs network
+		tests/test_pyquery.py::TestWebScrappingEncoding::test_get
+		# known breakage, can't do much about it unless we force old
+		# libxml2 for everyone, sigh
+		# https://github.com/gawel/pyquery/issues/248
+		tests/test_pyquery.py::TestXMLNamespace::test_selector_html
+	)
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		EPYTEST_DESELECT+=(
+			# doctest failing because of changed repr()
+			# https://github.com/gawel/pyquery/issues/249
+			pyquery/pyquery.py::pyquery.pyquery.PyQuery.serialize_dict
+		)
+	fi
+
+	epytest
+}
 
 pkg_postinst() {
 	optfeature "Support for BeautifulSoup3 as a parser backend" dev-python/beautifulsoup4

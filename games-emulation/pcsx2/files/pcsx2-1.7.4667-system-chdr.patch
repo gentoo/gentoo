@@ -1,0 +1,6 @@
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -164 +164,2 @@
+-add_subdirectory(3rdparty/libchdr EXCLUDE_FROM_ALL)
++pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)
++alias_library(chdr-static PkgConfig::chdr)

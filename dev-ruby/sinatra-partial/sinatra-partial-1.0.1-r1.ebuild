@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,8 +20,8 @@ IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/sinatra-1.4"
 
-ruby_add_bdepend "test? ( dev-ruby/haml dev-ruby/rack-test dev-ruby/rspec-its dev-ruby/timecop )"
+ruby_add_bdepend "test? ( dev-ruby/haml dev-ruby/rack:2.2 dev-ruby/rack-test dev-ruby/rspec-its dev-ruby/timecop )"
 
 all_ruby_prepare() {
-	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
+	sed -i -e '/simplecov/,/^end/ s:^:#: ; 2igem "rack", "<3"' spec/spec_helper.rb || die
 }

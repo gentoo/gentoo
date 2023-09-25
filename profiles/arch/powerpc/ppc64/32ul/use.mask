@@ -6,3 +6,7 @@ ppc64
 
 # We mask this since we're not really a multilib profile
 multilib
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif

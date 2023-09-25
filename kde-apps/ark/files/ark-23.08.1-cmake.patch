@@ -1,0 +1,40 @@
+From 149271d3e341eea531405191ff1002fda86fdf84 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 14 Sep 2023 15:53:36 +0200
+Subject: [PATCH] Drop unused ItemModels dependency
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit 9343567be9f895cbe5e290f88c9a933db34cdd95)
+---
+ CMakeLists.txt      | 1 -
+ part/CMakeLists.txt | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 510adbc5..764cce99 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,7 +40,6 @@ find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS Config
+                                                         DBusAddons
+                                                         DocTools
+                                                         I18n
+-                                                        ItemModels
+                                                         KIO
+                                                         Service
+                                                         Parts
+diff --git a/part/CMakeLists.txt b/part/CMakeLists.txt
+index c4c96972..d760f78a 100644
+--- a/part/CMakeLists.txt
++++ b/part/CMakeLists.txt
+@@ -26,7 +26,7 @@ ki18n_wrap_ui(arkpart
+     jobtracker.ui)
+ 
+ 
+-target_link_libraries(arkpart kerfuffle KF${QT_MAJOR_VERSION}::Parts KF${QT_MAJOR_VERSION}::KIOFileWidgets KF${QT_MAJOR_VERSION}::ItemModels)
++target_link_libraries(arkpart kerfuffle KF${QT_MAJOR_VERSION}::Parts KF${QT_MAJOR_VERSION}::KIOFileWidgets)
+ 
+ if(QT_MAJOR_VERSION STREQUAL "5")
+     configure_file(
+-- 
+2.42.0
+

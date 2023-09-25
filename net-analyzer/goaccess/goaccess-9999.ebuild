@@ -1,5 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# shellcheck disable=SC2207
 
 EAPI=8
 
@@ -43,13 +45,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local myeconfargs=()
-	readarray -t myeconfargs < <(
-		use_enable debug
-		use_enable geoip geoip "$(usex geoipv2 mmdb legacy)"
-		use_enable unicode utf8
-		use_with getline
-		use_with ssl openssl
+	local myeconfargs=(
+		$(use_enable debug)
+		$(use_enable geoip geoip "$(usex geoipv2 mmdb legacy)")
+		$(use_enable unicode utf8)
+		$(use_with getline)
+		$(use_with ssl openssl)
 	)
 	econf "${myeconfargs[@]}"
 }

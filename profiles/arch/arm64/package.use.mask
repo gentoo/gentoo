@@ -1,5 +1,26 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
+# librttopo has not been tested on this arch
+dev-db/spatialite rttopo
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-24)
+# dev-db/mongodb miraculously got keyworded here.
+dev-python/pymongo -test-full
+
+# Sam James <sam@gentoo.org> (2023-04-17)
+# Ruby has several JITs available but they need porting to individual arches.
+# Unmask on specific arches where it's available.
+dev-lang/ruby -jit
+
+# Sam James <sam@gentoo.org> (2023-01-27)
+# media-libs/shaderc not keyworded here
+games-action/supertuxkart vulkan
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-24)
+# libomptarget is only supported on 64-bit architectures.
+>=sys-libs/libomp-16.0.0_pre20230124 -offload
 
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
 # avoid larger deptree, bug #882593
@@ -54,10 +75,6 @@ sys-cluster/slurm ucx
 # Supports 64-bit NEON
 dev-libs/libgcrypt -cpu_flags_arm_neon
 
-# Sam James <sam@gentoo.org> (2021-10-31)
-# dev-python/pyilmbase isn't keyworded on arm64
-media-gfx/alembic python
-
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-07)
 # dev-libs/mongo-c-driver is not keyworded here
 net-analyzer/zmap mongo
@@ -69,10 +86,6 @@ media-video/mjpg-streamer -input-raspicam
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-08)
 # dev-games/ogre doesn't build on arm64, see https://bugs.gentoo.org/806776#c12
 dev-games/mygui ogre
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-08-02)
-# pandoc not keyworded on arm64
-sys-apps/exa man
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-24)
 # not supported on arm64
@@ -127,7 +140,7 @@ media-sound/bluez-alsa man
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm64
 # bug #729720
-sys-apps/systemd -gnuefi
+sys-apps/systemd -boot -gnuefi
 sys-apps/systemd-utils -boot
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
@@ -140,6 +153,7 @@ sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan -shadowcallstack
 sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray
+>=sys-libs/compiler-rt-sanitizers-16 -orc
 
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-07)
 # media-libs/liblastfm fails to build with tests Bug #758896
@@ -335,7 +349,7 @@ dev-ruby/haml test
 net-libs/gnutls test-full
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
-# USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
+# USE=upnp-av requires net-libs/dleyna that is not keyworded yet.
 media-sound/rhythmbox upnp-av
 >=media-plugins/grilo-plugins-0.3.5 upnp-av
 
@@ -359,10 +373,6 @@ app-emulation/libvirt xen
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Requires USE=sdl that is masked in this profile.
 media-video/mjpegtools sdlgfx
-
-# Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
-# missing keywords media-libs/lastfmlib
-net-misc/gerbera lastfm
 
 # Roy Bamford <neddysegoon@gentoo.org> (2017-08-24)
 # Support for g15daemon still needs -9999 packages on all arches

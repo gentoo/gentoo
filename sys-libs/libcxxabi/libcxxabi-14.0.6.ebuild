@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
@@ -12,7 +12,7 @@ HOMEPAGE="https://libcxxabi.llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~riscv sparc x86 ~x64-macos"
-IUSE="+libunwind static-libs test"
+IUSE="+libunwind +static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -50,7 +50,7 @@ python_check_deps() {
 pkg_setup() {
 	# darwin prefix builds do not have llvm installed yet, so rely on bootstrap-prefix
 	# to set the appropriate path vars to LLVM instead of using llvm_pkg_setup.
-	if [[ ${CHOST} != *-darwin* ]] || has_version dev-lang/llvm; then
+	if [[ ${CHOST} != *-darwin* ]] || has_version sys-devel/llvm; then
 		llvm_pkg_setup
 	fi
 	python-any-r1_pkg_setup

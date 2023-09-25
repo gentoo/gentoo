@@ -1,0 +1,14 @@
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Bug: https://bugs.gentoo.org/865281
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -203,7 +203,7 @@ set( CMAKE_C_FLAGS_MINSIZEREL       "-Os -DNDEBUG" )
+ set( CMAKE_C_FLAGS_RELEASE          "-O4 -DNDEBUG" )
+ set( CMAKE_C_FLAGS_RELWITHDEBINFO   "-O2 -g" )
+ 
+-set( CMAKE_SHARED_LINKER_FLAGS      "-Wl,--no-undefined -Wl,--fatal-warnings" )
++set( CMAKE_SHARED_LINKER_FLAGS      "-Wl,--no-undefined -Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}" )
+ 
+ if( CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
+     message( STATUS "Found Clang ${CMAKE_CXX_COMPILER_VERSION}, setting up Clang-specific compiler flags." )

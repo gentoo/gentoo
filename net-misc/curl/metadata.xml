@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
+	<maintainer type="person" proxied="yes">
+		<email>Matt.Jolly@footclan.ninja</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
 		<flag name="alt-svc">Enable alt-svc support</flag>
@@ -16,7 +20,6 @@
 		<flag name="imap">Enable Internet Message Access Protocol support</flag>
 		<flag name="mbedtls">Enable mbedtls ssl backend</flag>
 		<flag name="nghttp3">Enable HTTP/3.0 support using <pkg>net-libs/nghttp3</pkg> and <pkg>net-libs/ngtcp2</pkg></flag>
-		<flag name="quiche">Enable HTTP/3.0 support using <pkg>net-libs/quiche</pkg></flag>
 		<flag name="nss">Enable nss ssl backend</flag>
 		<flag name="openssl">Enable openssl ssl backend</flag>
 		<flag name="pop3">Enable Post Office Protocol 3 support</flag>

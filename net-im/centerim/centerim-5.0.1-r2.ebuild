@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="http://www.centerim.org/download/cim5/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug nls"
 
 DEPEND=">=sys-libs/ncurses-5.2:=
@@ -33,7 +33,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	rm -f "${ED}"/usr/lib*/libcppconsui.{a,la}
+	find "${ED}" -name '*.la' -delete || die
 
 	dodoc AUTHORS HACKING NEWS README TODO
 }

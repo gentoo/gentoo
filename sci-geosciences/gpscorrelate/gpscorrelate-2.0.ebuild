@@ -29,6 +29,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-desktop-pass-validation.patch"
 	"${FILESDIR}/${P}-respect-users-flags.patch"
+	"${FILESDIR}/${P}-exiv2-0.28.patch" # bug 906498
 )
 
 src_compile() {

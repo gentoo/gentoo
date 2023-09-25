@@ -7,5 +7,9 @@
 	<maintainer type="project">
 		<email>systemd@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="eudev">Depend on <pkg>sys-fs/eudev</pkg></flag>
+		<flag name="sticky-tags">Enable API support for sticky tags</flag>
+	</use>
 	<stabilize-allarches/>
 </pkgmetadata>

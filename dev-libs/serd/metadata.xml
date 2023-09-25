@@ -13,4 +13,7 @@
 	<use>
 		<flag name="tools">Build command line utilities</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">drobilla/serd</remote-id>
+	</upstream>
 </pkgmetadata>

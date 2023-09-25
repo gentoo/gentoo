@@ -1,19 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A lightweight implementation of Desktop Notification Spec"
-HOMEPAGE="https://github.com/mgorny/libtinynotify/"
-SRC_URI="https://github.com/mgorny/libtinynotify/releases/download/${P}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/libtinynotify/"
+SRC_URI="https://github.com/projg2/libtinynotify/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug static-libs"
+IUSE="debug"
 
-RDEPEND="sys-apps/dbus:0="
-DEPEND="${RDEPEND}"
+DEPEND="sys-apps/dbus:0="
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( README )
@@ -21,7 +21,6 @@ DOCS=( README )
 src_configure() {
 	local myconf=(
 		$(use_enable debug)
-		$(use_enable static-libs static)
 	)
 
 	econf "${myconf[@]}"

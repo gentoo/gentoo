@@ -12,6 +12,7 @@
 			<name>Cory Benfield</name>
 		</maintainer>
 		<remote-id type="pypi">h2</remote-id>
+		<remote-id type="github">python-hyper/h2</remote-id>
 	</upstream>
 	<longdescription>A pure-Python implementation of a HTTP/2 protocol stack.
 		It’s written from the ground up to be embeddable in whatever program

@@ -1,0 +1,25 @@
+From f912f6630eada34dcfb1320bb46b02d149c32ad4 Mon Sep 17 00:00:00 2001
+From: Gwendal Grignou <gwendal@chromium.org>
+Date: Wed, 28 Jun 2023 16:08:41 -0700
+Subject: [PATCH] [base] Never use gcc directly
+
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index b1fd4aa..342daf7 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -363,7 +363,7 @@ LIBFT_OBJECTS=$(subst .c,.o,$(LIBFT_SOURCE))
+ 
+ lib/libft.so: $(LIBFT_OBJECTS)
+ 	@echo "    [LD]" $@
+-	$(V) gcc -shared -o $@ $+ -laio
++	$(V) $(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $+ -laio
+ 
+ .PHONEY: functional-test unit-test
+ 
+-- 
+2.41.0.255.g8b1d071c50-goog
+

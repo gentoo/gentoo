@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_SETUPTOOLS="no"
 
 inherit distutils-r1
@@ -15,7 +15,7 @@ else
 	UPSTREAM_PV=$(ver_rs 3 -)
 	SRC_URI="https://gitlab.com/latex-rubber/${PN}/-/archive/${UPSTREAM_PV}/${PN}-${UPSTREAM_PV}.tar.bz2"
 	S="${WORKDIR}/${PN}-${UPSTREAM_PV}"
-	KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+	KEYWORDS="amd64 ~ppc ~riscv ~x86"
 fi
 
 DESCRIPTION="A LaTeX wrapper for automatically building documents"

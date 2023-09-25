@@ -1,0 +1,1 @@
+ETCD_OPTS="--config-file=/etc/etcd/etcd.conf.yml"

@@ -1,0 +1,41 @@
+From 20e7b4e1cf4e150e7de2d9fa3f0ee43f434e8ec3 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 5 Nov 2020 14:39:51 +0100
+Subject: [PATCH] Fix hardcoded docbook install paths for Gentoo
+
+Gentoo sets KDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help".
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ umbrello/umlappprivate.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/umbrello/umlappprivate.cpp b/umbrello/umlappprivate.cpp
+index 08c138518..28e5d3086 100644
+--- a/umbrello/umlappprivate.cpp
++++ b/umbrello/umlappprivate.cpp
+@@ -33,17 +33,17 @@ QString UMLAppPrivate::findWelcomeFile()
+ 
+     // from custom install
+     foreach(const QString &lang, langList) {
+-        dirList.append(QCoreApplication::applicationDirPath() + QString(QStringLiteral("/../share/doc/HTML/%1/umbrello/apphelp")).arg(lang));
++        dirList.append(QCoreApplication::applicationDirPath() + QString(QStringLiteral("/../share/help/%1/umbrello/apphelp")).arg(lang));
+     }
+-    dirList.append(QCoreApplication::applicationDirPath() + QStringLiteral("/../share/doc/HTML/en/umbrello/apphelp"));
++    dirList.append(QCoreApplication::applicationDirPath() + QStringLiteral("/../share/help/en/umbrello/apphelp"));
+ 
+     QStringList locations = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+     // from real installation
+     foreach(const QString &location, locations) {
+         foreach(const QString &lang, langList) {
+-            dirList.append(QString(QStringLiteral("%1/doc/HTML/%2/umbrello/apphelp")).arg(location).arg(lang));
++            dirList.append(QString(QStringLiteral("%1/help/%2/umbrello/apphelp")).arg(location).arg(lang));
+         }
+-        dirList.append(QString(QStringLiteral("%1/doc/HTML/en/umbrello/apphelp")).arg(location));
++        dirList.append(QString(QStringLiteral("%1/help/en/umbrello/apphelp")).arg(location));
+     }
+     foreach(const QString &dir, dirList) {
+         QString filePath = dir + QStringLiteral("/index.cache.bz2");
+-- 
+2.40.0
+

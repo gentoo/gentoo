@@ -13,6 +13,7 @@
 configurable VPN daemon which can be used to securely link two or more
 networks using an encrypted tunnel.</longdescription>
   <use>
+    <flag name="dco">Enable support for kernel data channel offload</flag>
     <flag name="down-root">Enable the down-root plugin</flag>
     <flag name="iproute2">Enabled iproute2 support instead of net-tools</flag>
     <flag name="mbedtls">Use mbed TLS as the backend crypto library</flag>

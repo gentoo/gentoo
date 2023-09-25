@@ -1,0 +1,62 @@
+https://github.com/facebook/folly/commit/a65b35c03797c86969a7b0d9ec281935a21cfa18
+https://github.com/facebook/folly/pull/2022
+
+From a65b35c03797c86969a7b0d9ec281935a21cfa18 Mon Sep 17 00:00:00 2001
+From: Giuseppe Ottaviano <ott@meta.com>
+Date: Sun, 18 Jun 2023 00:40:43 -0700
+Subject: [PATCH] fmt/core.h is enough in Core.cpp
+
+Reviewed By: Orvid, luciang
+
+Differential Revision: D46788525
+
+fbshipit-source-id: 03da65f3499ca56b34baa4e75b2340bea36690f6
+---
+ folly/futures/detail/Core.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/folly/futures/detail/Core.cpp b/folly/futures/detail/Core.cpp
+index 26bd4afbffe..858229100f9 100644
+--- a/folly/futures/detail/Core.cpp
++++ b/folly/futures/detail/Core.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include <new>
+ 
+-#include <fmt/format.h>
++#include <fmt/core.h>
+ #include <folly/lang/Assume.h>
+ 
+ namespace folly {
+
+From d783a64391c02b40d78dfc6be04932fa45c46b9a Mon Sep 17 00:00:00 2001
+From: Marcus Holland-Moritz <github@mhxnet.de>
+Date: Tue, 20 Jun 2023 11:59:42 +0200
+Subject: [PATCH] Fix libfmt errors from not finding enum formatter
+
+Recent versions of libfmt have become more strict and require
+`enum` types to be formattable:
+
+  static assertion failed due to requirement 'formattable': Cannot format an argument. To make type T formattable provide a formatter<T> specialization: https://fmt.dev/latest/api.html#udt
+
+This is a quick fix to simply use the underlying type.
+--- a/folly/futures/detail/Core.cpp
++++ b/folly/futures/detail/Core.cpp
+@@ -19,6 +19,7 @@
+ #include <new>
+ 
+ #include <fmt/core.h>
++#include <folly/Utility.h>
+ #include <folly/lang/Assume.h>
+ 
+ namespace folly {
+@@ -30,7 +31,7 @@ namespace {
+ template <class Enum>
+ void terminate_unexpected_state(fmt::string_view context, Enum state) {
+   terminate_with<std::logic_error>(
+-      fmt::format("{} unexpected state: {}", context, state));
++      fmt::format("{} unexpected state: {}", context, to_underlying(state)));
+ }
+ 
+ } // namespace
+

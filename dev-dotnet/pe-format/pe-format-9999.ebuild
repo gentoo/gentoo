@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools git-r3 systemd xdg-utils
 
 DESCRIPTION="Intelligent PE executable wrapper for binfmt_misc"
-HOMEPAGE="https://github.com/mgorny/pe-format2/"
-EGIT_REPO_URI="https://github.com/mgorny/pe-format2.git"
+HOMEPAGE="https://github.com/projg2/pe-format2/"
+EGIT_REPO_URI="https://github.com/projg2/pe-format2.git"
 
 LICENSE="GPL-2"
 SLOT="0"

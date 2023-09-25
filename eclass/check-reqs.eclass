@@ -1,4 +1,4 @@
-# Copyright 2004-2022 Gentoo Authors
+# Copyright 2004-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: check-reqs.eclass
@@ -40,12 +40,10 @@
 
 case ${EAPI} in
 	6|7|8) ;;
-	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_pretend pkg_setup
-
-if [[ ! ${_CHECK_REQS_ECLASS} ]]; then
+if [[ -z ${_CHECK_REQS_ECLASS} ]]; then
 _CHECK_REQS_ECLASS=1
 
 # @ECLASS_VARIABLE: CHECKREQS_MEMORY
@@ -293,9 +291,11 @@ _check-reqs_output() {
 	[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && msg="eerror"
 	if [[ -n ${CHECKREQS_FAILED} ]]; then
 		${msg}
-		${msg} "Space constraints set in the ebuild were not met!"
-		${msg} "The build will most probably fail, you should enhance the space"
-		${msg} "as per failed tests."
+		${msg} "Memory or space constraints set in the ebuild were not met!"
+		${msg} "The build will most probably fail, you should:"
+		${msg} "- enhance the memory (reduce MAKEOPTS, add swap), or"
+		${msg} "- add more space"
+		${msg} "as required depending on the failed tests."
 		${msg}
 
 		[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && \
@@ -467,3 +467,5 @@ _check-reqs_unsatisfied() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup

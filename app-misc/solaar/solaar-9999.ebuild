@@ -5,7 +5,7 @@ EAPI=7
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit linux-info udev xdg distutils-r1
 
@@ -36,9 +36,9 @@ RDEPEND="
 
 	')
 	x11-libs/gtk+:3[introspection]
-	appindicator? ( dev-libs/libappindicator:3[introspection] )
+	appindicator? ( dev-libs/libayatana-appindicator )
 	libnotify? ( x11-libs/libnotify[introspection] )"
-# libappindicator & libnotify are entirely optional and detected at runtime
+# libayatana-appindicator & libnotify are entirely optional and detected at runtime
 
 CONFIG_CHECK="~HID_LOGITECH_DJ ~HIDRAW"
 
@@ -72,4 +72,10 @@ python_install_all() {
 
 pkg_postinst() {
 	udev_reload
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	udev_reload
+	xdg_pkg_postrm
 }

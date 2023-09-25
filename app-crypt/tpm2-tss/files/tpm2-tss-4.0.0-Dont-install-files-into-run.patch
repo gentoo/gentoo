@@ -1,0 +1,26 @@
+diff --git a/Makefile.am b/Makefile.am
+index 2c81cfa9..2673995c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -767,13 +767,11 @@ define set_tss_permissions
+ endef
+ 
+ define make_fapi_dirs
+-    ($(call make_tss_dir,$(DESTDIR)$(runstatedir)/tpm2-tss/eventlog/) || true) && \
+     ($(call make_tss_dir,$(DESTDIR)$(localstatedir)/lib/tpm2-tss/system/keystore/))
+ endef
+ 
+ define set_fapi_permissions
+     if test -z "${DESTDIR}"; then \ e
+-        ($(call set_tss_permissions,$(DESTDIR)$(runstatedir)/tpm2-tss)) && \
+         ($(call set_tss_permissions,$(DESTDIR)$(localstatedir)/lib/tpm2-tss)) \
+     fi
+ endef
+@@ -784,7 +782,6 @@ endef
+ 
+ define check_fapi_dirs
+     if test -z "${DESTDIR}"; then \
+-        ($(call check_dir,$(DESTDIR)$(runstatedir)/tpm2-tss/eventlog/)) && \
+         ($(call check_dir,$(DESTDIR)$(localstatedir)/lib/tpm2-tss/system/keystore/)) \
+     fi;
+ endef

@@ -5,6 +5,9 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
+  <use>
+    <flag name="sysprof">Enable sysprof-capture support for profiling</flag>
+  </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/libshumate</remote-id>
   </upstream>

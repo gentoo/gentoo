@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit elisp
 
-DESCRIPTION="BibTeX database manager for Emacs"
+DESCRIPTION="GNU Emacs minor mode for interacting with Pandoc"
 HOMEPAGE="https://joostkremers.github.io/pandoc-mode/
 	https://github.com/joostkremers/pandoc-mode/"
 SRC_URI="https://github.com/joostkremers/${PN}/archive/${PV}.tar.gz
-			-> ${P}.tar.gz"
+	-> ${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64"

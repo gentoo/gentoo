@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake prefix
 
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit subversion
 else
 	SRC_URI="mirror://apache/xerces/c/3/sources/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 LICENSE="Apache-2.0"
@@ -32,6 +32,8 @@ BDEPEND="
 	test? ( dev-lang/perl )"
 
 DOCS=( CREDITS KEYS NOTICE README )
+
+PATCHES=( "${FILESDIR}"/${PN}-3.2.2-fix-XERCESC-2163.patch )
 
 pkg_setup() {
 	export ICUROOT="${EPREFIX}/usr"
@@ -71,7 +73,6 @@ src_configure() {
 	else
 		transcoder="gnuiconv"
 	fi
-	# for interix maybe: transcoder="windows"
 
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"

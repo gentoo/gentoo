@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=1142f73e05fef6a57141b8328944b13872d4135e
+[[ ${PV} == *_p20220920 ]] && COMMIT=1142f73e05fef6a57141b8328944b13872d4135e
 
 inherit toolchain-funcs
 
@@ -14,9 +14,9 @@ if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/idris-lang/${PN^}.git"
 else
-	SRC_URI="https://github.com/idris-lang/${PN^}/archive/${H}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/idris-lang/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN^}-${H}"
+	S="${WORKDIR}/${PN^}-${COMMIT}"
 fi
 
 LICENSE="BSD"
@@ -31,7 +31,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( dev-python/sphinx_rtd_theme )
+	doc? ( dev-python/sphinx-rtd-theme )
 	test-full? (
 		dev-scheme/chez[threads]
 		dev-scheme/racket[threads]

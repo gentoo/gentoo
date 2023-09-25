@@ -1,0 +1,11 @@
+--- a/src/arch/helperpurec_scalar.h	2023-04-07 19:54:14.823254936 +0200
++++ b/src/arch/helperpurec_scalar.h	2023-04-07 19:54:29.684024763 +0200
+@@ -54,7 +54,7 @@
+ #define ENABLE_FMA_SP
+ //@#define ENABLE_FMA_SP
+ 
+-#if defined(__AVX2__) || defined(__aarch64__) || defined(__arm__) || defined(__powerpc64__) || defined(__zarch__)
++#if defined(__AVX2__) || defined(__aarch64__) || defined(__arm__) || defined(__powerpc64__) || defined(__zarch__) || defined(__riscv)
+ #ifndef FP_FAST_FMA
+ #define FP_FAST_FMA
+ //@#define FP_FAST_FMA

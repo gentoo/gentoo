@@ -1,0 +1,38 @@
+# https://gitlab.gnome.org/GNOME/gjs/-/issues/532
+# https://gitlab.gnome.org/GNOME/gjs/-/merge_requests/830/diffs?commit_id=83683d093c157828cf7787e53a32c586ae4e85d3 
+diff --git a/installed-tests/js/meson.build b/installed-tests/js/meson.build
+index 6db887d2250face397079b03d215bbd13f455efb..1e953ceb7695356b6e854775e5db005a9c22e053 100644
+--- a/installed-tests/js/meson.build
++++ b/installed-tests/js/meson.build
+@@ -203,9 +203,13 @@ endif
+ # during build should be run using dbus-run-session
+ 
+ dbus_tests = ['GDBus']
+-if have_gtk4 and not get_option('skip_gtk_tests')
+-    # FIXME: find out why GTK4 tries to acquire a message bus
+-    dbus_tests += 'Gtk4'
++if not get_option('skip_gtk_tests')
++    have_gtk4 = dependency('gtk4', required: false).found()
++
++    if have_gtk4 
++        # FIXME: find out why GTK4 tries to acquire a message bus
++        dbus_tests += 'Gtk4'
++    endif
+ endif
+ 
+ bus_config = files('../../test/test-bus.conf')
+diff --git a/meson.build b/meson.build
+index 3ac372a16b0bfaa364ed7422119f3e6e4af8971e..5c7703935b68c724347692ef5bf47a3edf868c61 100644
+--- a/meson.build
++++ b/meson.build
+@@ -679,10 +679,6 @@ endif
+ 
+ ### Tests and test setups ######################################################
+ 
+-if not get_option('skip_gtk_tests')
+-    have_gtk4 = dependency('gtk4', required: false).found()
+-endif
+-
+ subdir('installed-tests')
+ 
+ # Note: The test program in test/ needs to be ported

@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ if [[ ${PV} == 99999999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/vpnc-scripts.git"
 else
 	SRC_URI="ftp://ftp.infradead.org/pub/vpnc-scripts/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 fi
 
 DESCRIPTION="Connect scripts for use with vpnc and openconnect (and similar clients)"

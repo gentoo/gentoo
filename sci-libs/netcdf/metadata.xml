@@ -16,7 +16,6 @@
   <use>
     <flag name="dap">Support for remote data access with the built-in OPeNDAP client</flag>
     <flag name="hdf">Add support for the Hierarchical Data Format v.4 <pkg>sci-libs/hdf</pkg></flag>
-    <flag name="tools">Build the utilities nccopy, ncgen and ncdump</flag>
   </use>
   <upstream>
     <remote-id type="github">Unidata/netcdf-c</remote-id>

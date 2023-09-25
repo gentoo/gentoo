@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ inherit check-reqs
 
 DESCRIPTION="VM appliance disk image used in libguestfs package"
 HOMEPAGE="https://libguestfs.org/"
-SRC_URI="https://libguestfs.org/download/binaries/appliance/appliance-${PV}.tar.xz"
+SRC_URI="https://download.libguestfs.org/binaries/appliance/appliance-${PV}.tar.xz"
 S="${WORKDIR}"
 
 LICENSE="GPL-2 LGPL-2"
@@ -31,7 +31,7 @@ src_unpack() {
 
 src_install() {
 	dodir /usr/share/guestfs
-	cd "${ED}"/usr/share/guestfs || Die
+	cd "${ED}"/usr/share/guestfs || die
 	unpack ${A}
 
 	cd appliance || die

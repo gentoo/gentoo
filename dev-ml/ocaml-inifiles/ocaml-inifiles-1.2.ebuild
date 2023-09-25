@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,10 @@ IUSE="+ocamlopt"
 RDEPEND="dev-ml/pcre-ocaml:="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-inifiles.ml.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-inifiles.ml.patch
+	"${FILESDIR}"/${P}-shuffle.patch
+)
 
 src_compile() {
 	emake -j1

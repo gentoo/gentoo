@@ -1,0 +1,27 @@
+For https://bugs.gentoo.org/895382
+==================================
+From ca70cd7c3d63b1036e604116f3b269ca123e7904 Mon Sep 17 00:00:00 2001
+From: Jeremy Newton <Jeremy.Newton@amd.com>
+Date: Wed, 8 Feb 2023 14:03:58 -0500
+Subject: [PATCH] SWDEV-1 - device: Add missing include
+
+Newer GCC's seem to require this.
+
+Change-Id: I85926d4fa552b772f2eb9f8ede7863a546c47f54
+Signed-off-by: Jeremy Newton <Jeremy.Newton@amd.com>
+---
+ device/devhcprintf.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/device/devhcprintf.cpp b/device/devhcprintf.cpp
+index b36f7758..a5aba4a4 100644
+--- a/device/devhcprintf.cpp
++++ b/device/devhcprintf.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include <assert.h>
+ #include <cstdarg>
++#include <cstdint>
+ #include <cstdio>
+ #include <cstring>
+ #include <string>

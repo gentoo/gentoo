@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake gnome2-utils python-single-r1 xdg-utils
 
@@ -18,7 +18,8 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # librsvg for pixbuf-loader
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	app-cdr/cdemu-daemon:0/7
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -26,12 +27,15 @@ RDEPEND="${PYTHON_DEPS}
 	gnome-base/librsvg:2
 	x11-libs/gdk-pixbuf[introspection]
 	x11-libs/gtk+:3[introspection]
-	x11-libs/libnotify[introspection]"
-BDEPEND="${PYTHON_DEPS}
+	x11-libs/libnotify[introspection]
+"
+BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/desktop-file-utils
 	>=dev-util/intltool-0.21
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS README )
 

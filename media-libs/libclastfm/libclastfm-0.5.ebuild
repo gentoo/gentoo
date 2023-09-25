@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="C API library to the last.fm web service (unofficial)"
-HOMEPAGE="http://liblastfm.sourceforge.net/"
+HOMEPAGE="https://liblastfm.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN/c}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static-libs"

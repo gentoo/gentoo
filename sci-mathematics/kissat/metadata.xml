@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Kissat is a "keep it simple and clean bare metal SAT solver" written in C.
+    It is a port of CaDiCaL back to C with improved data structures, better
+    scheduling of inprocessing and optimized algorithms and implementation.
+    Coincidentally "kissat" also means "cats" in Finnish.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/arminbiere/kissat//issues/</bugs-to>
+    <remote-id type="github">arminbiere/kissat</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>luke-jr+gentoobugs@utopios.org</email>
-		<name>Luke Dashjr</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="adl">Enable support for controlling fans and overclocking on AMD cards with AMD Display Library</flag>
 		<flag name="alchemist">Enable support for mining with AlcheMist</flag>

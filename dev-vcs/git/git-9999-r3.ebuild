@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd
 
@@ -50,7 +50,7 @@ if [[ ${PV} != *9999 ]]; then
 	SRC_URI+=" doc? ( ${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX} )"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -58,7 +58,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc gnome-keyring +gpg highlight +iconv mediawiki mediawiki-experimental +nls +pcre perforce +perl +safe-directory selinux subversion tk +webdav xinetd cvs test"
+IUSE="+blksha1 +curl cgi doc keyring +gpg highlight +iconv mediawiki +nls +pcre perforce +perl +safe-directory selinux subversion tk +webdav xinetd cvs test"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -68,7 +68,7 @@ DEPEND="
 		net-misc/curl
 		webdav? ( dev-libs/expat )
 	)
-	gnome-keyring? (
+	keyring? (
 		app-crypt/libsecret
 		dev-libs/glib:2
 	)
@@ -120,7 +120,7 @@ BDEPEND="
 		app-text/xmlto
 		sys-apps/texinfo
 	)
-	gnome-keyring? ( virtual/pkgconfig )
+	keyring? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
 	test? (	app-crypt/gnupg	)
 "
@@ -136,7 +136,6 @@ REQUIRED_USE="
 	cgi? ( perl )
 	cvs? ( perl )
 	mediawiki? ( perl )
-	mediawiki-experimental? ( mediawiki )
 	perforce? ( ${PYTHON_REQUIRED_USE} )
 	subversion? ( perl )
 	webdav? ( curl )
@@ -174,7 +173,7 @@ exportmakeopts() {
 
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
 
-		$(usev elibc_musl NO_REGEX=YesPlease)
+		$(usev elibc_musl NO_REGEX=NeedsStartEnd)
 		$(usev !cvs NO_CVS=YesPlease)
 		$(usev !iconv NO_ICONV=YesPlease)
 		$(usev !nls NO_GETTEXT=YesPlease)
@@ -250,16 +249,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Add experimental patches to improve mediawiki support,
-	# see patches for origin.
-	if use mediawiki-experimental ; then
-		PATCHES+=(
-			"${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
-			"${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
-			"${FILESDIR}"/git-2.7.0-mediawiki-500pages.patch
-		)
-	fi
-
 	if ! use safe-directory ; then
 		# This patch neuters the "safe directory" detection.
 		# bugs #838271, #838223
@@ -354,7 +343,7 @@ src_compile() {
 	fi
 	popd &>/dev/null || die
 
-	if use gnome-keyring ; then
+	if use keyring ; then
 		git_emake -C contrib/credential/libsecret
 	fi
 
@@ -554,7 +543,7 @@ src_install() {
 	doexe contrib/contacts/git-contacts
 	dodoc contrib/contacts/git-contacts.txt
 
-	if use gnome-keyring ; then
+	if use keyring ; then
 		pushd contrib/credential/libsecret &>/dev/null || die
 		dobin git-credential-libsecret
 		popd &>/dev/null || die
@@ -652,6 +641,4 @@ pkg_postinst() {
 	optfeature_header "Some scripts require additional dependencies:"
 	optfeature git-quiltimport dev-util/quilt
 	optfeature git-instaweb www-servers/lighttpd www-servers/apache www-servers/nginx
-
-	use mediawiki-experimental && ewarn "Using experimental git-mediawiki patches. The stability of cloned wiki filesystems is not guaranteed."
 }

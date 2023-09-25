@@ -1,0 +1,52 @@
+https://gitlab.com/procps-ng/procps/-/merge_requests/205
+
+From 4b6b91b393c0f5d3ec26910785cb3e3a463fcb57 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 2 Sep 2023 10:46:38 +0100
+Subject: [PATCH] testsuite: skip tests where relevant binaries aren't built
+
+* With --without-ncurses, slabtop isn't built.
+* With --disable-w, w isn't built.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/testsuite/Makefile.am
++++ b/testsuite/Makefile.am
+@@ -14,16 +14,23 @@ if LINUX
+ # 3d807ae853b8b4264da156065b34f1447658a8ba
+ DEJATOOL += \
+ 	pmap
++
+ if !CYGWIN
+-DEJATOOL += \
+-	slabtop \
+-	sysctl
++if WITH_NCURSES
++DEJATOOL += slabtop
++endif
++
++DEJATOOL += sysctl
+ endif
+ 
+ if BUILD_KILL
+ DEJATOOL += kill
+ endif
+ 
++if BUILD_W
++DEJATOOL += w
++endif
++
+ DEJATOOL += \
+ 	free \
+ 	lib \
+@@ -31,10 +38,8 @@ DEJATOOL += \
+ 	pkill \
+ 	ps \
+ 	pwdx \
+-	slabtop \
+ 	uptime \
+-	vmstat \
+-	w
++	vmstat
+ endif
+ 
+ EXTRA_DIST = \

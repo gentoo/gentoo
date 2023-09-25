@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<use>
-		<flag name="pci">Support for PCI-attached "Super I/Os" (e.g. in VIA VT82686A/B).</flag>
-	</use>
-</pkgmetadata>

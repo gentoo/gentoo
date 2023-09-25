@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug libssh"
 
 RDEPEND="
@@ -34,6 +34,10 @@ FILECAPS=(
 	CAP_NET_ADMIN			usr/sbin/bird
 	CAP_NET_BIND_SERVICE	usr/sbin/bird
 	CAP_NET_RAW				usr/sbin/bird
+)
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.9-musl-tests.patch"
 )
 
 src_prepare() {

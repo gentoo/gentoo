@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+asm cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 cpu_flags_ppc_vsx3 cpu_flags_x86_aes cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_padlock cpu_flags_x86_sha cpu_flags_x86_sse4_1 doc +getentropy static-libs"
 
 # Build system only has --disable-arm-crypto-support right now
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.1-fix-no-asm-hppa.patch
 	"${FILESDIR}"/${PN}-1.9.4-no-fgrep-libgcrypt-config.patch
 	"${FILESDIR}"/${PN}-1.10.1-configure-clang16.patch
+	"${FILESDIR}"/libgcrypt-1.10-build-Allow-build-with-Oz.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -102,8 +103,16 @@ multilib_src_configure() {
 	# https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=commitdiff;h=0b399721ce9709ae25f9d2050360c5ab2115ae29
 	# https://dev.gnupg.org/T5581
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102124
-	if use arm64 && tc-is-gcc && (($(gcc-major-version) == 11)) && (($(gcc-minor-version) <= 2)) && (($(gcc-micro-version) == 0)) ; then
+	if use arm64 && tc-is-gcc && (($(gcc-major-version) == 11)) &&
+		(($(gcc-minor-version) <= 2)) && (($(gcc-micro-version) == 0)) ; then
 		append-flags -fno-tree-loop-vectorize
+	fi
+
+	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
+	# https://github.com/gentoo/gentoo/pull/28355
+	# mold needs this too but right now tc-ld-is-mold is also not available
+	if tc-ld-is-lld; then
+		append-ldflags -Wl,--undefined-version
 	fi
 
 	local myeconfargs=(
@@ -129,8 +138,6 @@ multilib_src_configure() {
 
 		# http://trac.videolan.org/vlc/ticket/620
 		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
-		# causes bus-errors on sparc64-solaris
-		$([[ ${CHOST} == sparcv9-*-solaris* ]] && echo "--disable-asm")
 
 		$(use asm || echo "--disable-asm")
 

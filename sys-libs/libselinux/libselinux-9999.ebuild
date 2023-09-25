@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{8..11} )
-USE_RUBY="ruby27"
+PYTHON_COMPAT=( python3_{10..12} )
+USE_RUBY="ruby30 ruby31 ruby32"
 
 # No, I am not calling ruby-ng
 inherit python-r1 toolchain-funcs multilib-minimal
@@ -26,19 +26,24 @@ fi
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="python ruby static-libs ruby_targets_ruby27"
+IUSE="python ruby static-libs ruby_targets_ruby30 ruby_targets_ruby31 ruby_targets_ruby32"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}]
 	>=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby27? ( dev-lang/ruby:2.7 )
+		ruby_targets_ruby30? ( dev-lang/ruby:3.0 )
+		ruby_targets_ruby31? ( dev-lang/ruby:3.1 )
+		ruby_targets_ruby32? ( dev-lang/ruby:3.2 )
 	)
 	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	python? ( >=dev-lang/swig-2.0.9 )
+	python? (
+		>=dev-lang/swig-2.0.9
+		dev-python/pip[${PYTHON_USEDEP}]
+)
 	ruby? ( >=dev-lang/swig-2.0.9 )"
 
 src_prepare() {

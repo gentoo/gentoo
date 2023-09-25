@@ -1,0 +1,38 @@
+https://gitlab.kitware.com/cmake/cmake/-/merge_requests/8789
+
+From d47771bbb96a8435401950fb504b06003ec0babb Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sat, 9 Sep 2023 13:45:19 +0200
+Subject: [PATCH] FindPkgConfig: ignore whitespace separators in version check
+
+The regex used to split up the version if it contains an operator fails
+if the string contains whitespaces. Resulting in an extra whitespace
+after the package name and before the package version leading to
+breakage in pkgconf and thus webkit-gtk.
+
+See:
+https://github.com/pkgconf/pkgconf/issues/317
+https://bugs.webkit.org/show_bug.cgi?id=261125
+https://bugs.gentoo.org/913644
+---
+ Modules/FindPkgConfig.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Modules/FindPkgConfig.cmake b/Modules/FindPkgConfig.cmake
+index 4d29f4505..6e8b78441 100644
+--- a/Modules/FindPkgConfig.cmake
++++ b/Modules/FindPkgConfig.cmake
+@@ -563,8 +563,8 @@ macro(_pkg_check_modules_internal _is_required _is_silent _no_cmake_path _no_cma
+     foreach (_pkg_check_modules_pkg ${_pkg_check_modules_list})
+       set(_pkg_check_modules_exist_query)
+ 
+-      # check whether version is given
+-      if (_pkg_check_modules_pkg MATCHES "(.*[^><])(=|[><]=?)(.*)")
++      # check whether version is given while ignoring whitespace
++      if (_pkg_check_modules_pkg MATCHES "(.*[^>< \t])[ \t]*(=|[><]=?)[ \t]*(.*)")
+         set(_pkg_check_modules_pkg_name "${CMAKE_MATCH_1}")
+         set(_pkg_check_modules_pkg_op "${CMAKE_MATCH_2}")
+         set(_pkg_check_modules_pkg_ver "${CMAKE_MATCH_3}")
+-- 
+2.42.0
+

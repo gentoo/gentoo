@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,6 +17,32 @@
 
 #--- END OF EXAMPLES ---
 
+# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
+# librttopo has not been stabalized on this arch yet
+dev-db/spatialite rttopo
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-21)
+# Mask testing on stable until we have stable qt6
+dev-python/pytest-qt test
+
+# Matt Jolly <matt.jolly@footclan.ninja> (2023-08-10)
+# net-libs/ngtcp2 is not marked stable
+net-misc/curl nghttp3
+
+# Sam James <sam@gentoo.org> (2023-05-15)
+# net-libs/rustls-ffi is not marked stable
+www-servers/apache apache2_modules_tls
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-22)
+# pandoc is stable here.
+dev-python/nbclassic -doc
+dev-python/nbval -doc
+
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
+# AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
+# See also: https://bugs.gentoo.org/891499
+sys-libs/libomp llvm_targets_AMDGPU
+
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is not yet marked stable
 net-misc/curl rustls curl_ssl_rustls
@@ -24,11 +50,7 @@ net-misc/curl rustls curl_ssl_rustls
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/oneVPL
 media-libs/gst-plugins-bad qsv
-
-# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
-# Dependency media-libs/intel-hybrid-codec-driver is only available on unstable
-# branch
-media-libs/libva-intel-driver hybrid
+media-video/ffmpeg qsv
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # needs stabilizing
@@ -65,11 +87,6 @@ app-office/libreoffice base
 # sys-cluster/slurm has no stable keywords
 # dev-util/nvidia-cuda-toolkit has no stable keywords
 app-metrics/collectd collectd_plugins_slurm collectd_plugins_gpu_nvidia
-
-# Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
-# net-libs/quiche is an early HTTP/3 implementation
-# not yet ready for everyone.
-net-misc/curl quiche
 
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo

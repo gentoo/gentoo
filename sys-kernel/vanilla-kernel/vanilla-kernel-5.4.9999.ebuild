@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,10 +8,13 @@ inherit git-r3 kernel-build
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.4.21
 CONFIG_HASH=2809b7faa6a8cb232cd825096c146b7bdc1e08ea
-GENTOO_CONFIG_VER=g1
+GENTOO_CONFIG_VER=g7
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
-HOMEPAGE="https://www.kernel.org/"
+HOMEPAGE="
+	https://wiki.gentoo.org/wiki/Project:Distribution_Kernel
+	https://www.kernel.org/
+"
 SRC_URI+="
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz

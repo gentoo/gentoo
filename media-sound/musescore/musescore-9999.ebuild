@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_MAKEFILE_GENERATOR="emake"
+#CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
 inherit cmake qmake-utils xdg check-reqs
 
@@ -24,7 +24,8 @@ SRC_URI+=" https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.2.0.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa debug jack mp3 osc omr portaudio portmidi pulseaudio +sf3 sfz webengine"
+IUSE="alsa debug jack mp3 osc omr portaudio portmidi pulseaudio +sf3 sfz test webengine"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="portmidi? ( portaudio )"
 
 BDEPEND="
@@ -42,6 +43,7 @@ DEPEND="
 	dev-qt/qtnetworkauth:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtquickcontrols:5
 	dev-qt/qtquickcontrols2:5
 	>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
 	dev-qt/qtsvg:5
@@ -56,7 +58,7 @@ DEPEND="
 	omr? ( app-text/poppler )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sf3? ( media-libs/libvorbis )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
@@ -85,15 +87,15 @@ src_configure() {
 	local mycmakeargs=(
 		-DAEOLUS=OFF # does not compile
 		-DBUILD_ALSA="$(usex alsa)"
-		-DBUILD_CRASH_REPORTER=OFF
+		-DBUILD_CRASHPAD_CLIENT=OFF
 		-DBUILD_JACK="$(usex jack)"
 		-DBUILD_LAME="$(usex mp3)"
 		-DBUILD_PCH=OFF
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
-		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_TELEMETRY_MODULE=ON
+		-DBUILD_UNIT_TESTS=$(usex test)
 		-DBUILD_WEBENGINE="$(usex webengine)"
 		-DCMAKE_SKIP_RPATH=ON
 		-DDOWNLOAD_SOUNDFONT=OFF
@@ -115,4 +117,11 @@ src_compile() {
 	cd "${BUILD_DIR}" || die
 	cmake_build -j1 lrelease manpages
 	cmake_src_compile
+}
+
+src_install() {
+	cmake_src_install
+
+	# Hack to not install bundled libraries like libogg
+	rm -rf "${ED}/usr/include" "${ED}/usr/$(get_libdir)" || die
 }

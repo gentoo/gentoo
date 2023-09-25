@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit gnome2 python-any-r1 readme.gentoo-r1 systemd udev vala
 
 DESCRIPTION="Modem and mobile broadband management libraries"
@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0/1" # subslot = dbus interface version, i.e. N in org.freedesktop.ModemManager${N}
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-IUSE="elogind +introspection mbim policykit +qmi +qrtr systemd test +udev vala"
+IUSE="elogind +introspection mbim policykit +qmi +qrtr selinux systemd test +udev vala"
 REQUIRED_USE="
 	?? ( elogind systemd )
 	qrtr? ( qmi )
@@ -34,6 +34,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	policykit? ( acct-group/plugdev )
+	selinux? ( sec-policy/selinux-modemmanager )
 "
 BDEPEND="
 	dev-util/gdbus-codegen

@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/742902
+
+From 5312ab56edcc721529af6520c9ecccaa20af4cdc Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 3 Feb 2023 09:46:55 +0000
+Subject: [PATCH 1/2] Fix -Wreturn-type
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/vaiobright.c
++++ b/vaiobright.c
+@@ -110,7 +110,7 @@ static int vaiobright_get_brightness() {
+     // If we're broken, try again to open it
+     if (vaiobright_bslider->broken == 1) {
+         if (vaiobright_open_device() == -1)
+-            return;
++            return -1;
+     }
+ 
+     if (ioctl(vaiobright_bslider->sony_fd, SONYPI_IOCGBRT, &value) < 0) {
+-- 
+2.39.1
+

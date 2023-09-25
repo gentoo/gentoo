@@ -1,0 +1,12 @@
+diff --git a/Makefile.am b/Makefile.am
+index 2ac7e84..265cce8 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -14,6 +14,7 @@ zshcompdir = $(datadir)/zsh/site-functions
+ dist_zshcomp_DATA = jo.zsh
+ install-data-hook:
+ 	mv -f $(DESTDIR)$(zshcompdir)/jo.zsh $(DESTDIR)$(zshcompdir)/_jo
++	mv -f $(DESTDIR)$(bashcompdir)/jo.bash $(DESTDIR)$(bashcompdir)/jo
+ 
+ uninstall-local:
+ 	rm -f $(DESTDIR)$(zshcompdir)/_jo

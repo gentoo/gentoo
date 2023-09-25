@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>prometheanfire@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>graaff@gentoo.org</email>
-		<description>Puppet 5.x only</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>sysadmin@gentoo.org</email>
 		<name>Gentoo Sysadmin Project</name>
@@ -33,6 +29,7 @@
 <!--		<flag name='puppetdb'>Enable puppetdb support</flag> -->
 		<flag name="augeas">Enable augeas support</flag>
 		<flag name="diff">Enable diff support</flag>
+		<flag name="hiera">Enable hiera support</flag>
 		<flag name="rrdtool">Enable rrdtool support</flag>
 		<flag name="shadow">Enable shadow support</flag>
 	</use>

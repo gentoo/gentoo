@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -23,6 +23,10 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rack-2.0.9:*"
 
+ruby_add_bdepend "test? ( dev-ruby/rack:2.2 )"
+
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e '1igem "rack", "<3"' spec/spec_helper.rb || die
 }

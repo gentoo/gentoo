@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Efficient (partially uncompressed) SquashFS binary delta tool"
-HOMEPAGE="https://github.com/mgorny/squashdelta/"
-SRC_URI="https://github.com/mgorny/squashdelta/releases/download/v${PV}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/squashdelta/"
+SRC_URI="https://github.com/projg2/squashdelta/releases/download/v${PV}/${P}.tar.bz2"
 
 # uses public-domain murmurhash3
 LICENSE="BSD public-domain"

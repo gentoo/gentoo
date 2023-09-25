@@ -1,21 +1,28 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Read DBF Files with Python"
-HOMEPAGE="https://github.com/olemb/dbfread https://pypi.org/project/dbfread/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	test? ( https://github.com/olemb/dbfread/archive/refs/tags/${PV}.tar.gz -> ${P}-src.tar.gz )"
+HOMEPAGE="
+	https://github.com/olemb/dbfread/
+	https://pypi.org/project/dbfread/
+"
+SRC_URI+="
+	test? (
+		https://github.com/olemb/dbfread/archive/${PV}.tar.gz
+			-> ${P}.gh.tar.gz
+	)
+"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64-macos ~x64-macos"
 
 distutils_enable_tests pytest
 

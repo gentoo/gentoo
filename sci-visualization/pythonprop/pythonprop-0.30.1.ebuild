@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools python-single-r1
 
@@ -30,7 +30,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
-	app-text/rarian
 "
 
 PATCHES=( "${FILESDIR}/${PN}-drop-portland.patch" )

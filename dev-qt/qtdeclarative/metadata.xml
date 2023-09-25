@@ -8,13 +8,13 @@
 	<use>
 		<flag name="localstorage">Build the LocalStorage import for QtQuick (requires QtSql)</flag>
 		<flag name="opengl">Enable OpenGL support</flag>
-		<flag name="vulkan">Enable support for Vulkan</flag>
 		<flag name="sql">Enable QtSQL support</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
+		<remote-id type="github">qt/qtdeclarative</remote-id>
 	</upstream>
 	<slots>
 		<subslots>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P=${PN}_${PV/_/\~}
 DEB_URI="mirror://debian/pool/main/j/${PN}"
 
 DESCRIPTION="JACK Rack is an effects rack for the JACK low latency audio API"
-HOMEPAGE="http://jack-rack.sourceforge.net/"
+HOMEPAGE="https://jack-rack.sourceforge.net/"
 SRC_URI="${DEB_URI}/${MY_P}.orig.tar.gz ${DEB_URI}/${MY_P}-1.debian.tar.gz"
 
 LICENSE="GPL-2"

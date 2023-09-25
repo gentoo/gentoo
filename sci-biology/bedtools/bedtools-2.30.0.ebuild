@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit python-any-r1 toolchain-funcs
 
@@ -34,6 +34,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.29.2-buildsystem.patch
 	"${FILESDIR}"/${PN}-2.29.2-python.patch
+	"${FILESDIR}"/${PN}-2.30.0-gcc13.patch
 )
 
 src_configure() {

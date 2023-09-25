@@ -1,19 +1,24 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 optfeature
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( python3_{10..11} )
+
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Image processing routines for SciPy"
-HOMEPAGE="https://scikit-image.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="
+	https://scikit-image.org/
+	https://github.com/scikit-image/scikit-image/
+	https://pypi.org/project/scikit-image/
+"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 RESTRICT="test"
 
 RDEPEND="
@@ -36,7 +41,7 @@ DOCS=( CONTRIBUTORS.txt RELEASE.txt )
 
 distutils_enable_tests pytest
 # There is a programmable error in your configuration file:
-#distutils_enable_sphinx doc/source dev-python/numpydoc dev-python/myst_parser
+#distutils_enable_sphinx doc/source dev-python/numpydoc dev-python/myst-parser
 
 python_test() {
 	# This needs to be run in the install dir

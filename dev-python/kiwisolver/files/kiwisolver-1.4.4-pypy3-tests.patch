@@ -1,0 +1,30 @@
+Patch provided upstream as https://github.com/nucleic/kiwi/pull/158
+from issue created at https://github.com/nucleic/kiwi/issues/157
+
+commit ad1c62f046dc14c1e85e4e1c1b8e175eda08838e
+Author: Jérôme Carretero <cJ-kiwisolver@zougloub.eu>
+Date:   Fri Feb 17 18:40:45 2023 -0500
+
+    py: tests: make tests run under PyPy
+
+diff --git a/py/tests/test_expression.py b/py/tests/test_expression.py
+index 671dd7f..6b5d8e5 100644
+--- a/py/tests/test_expression.py
++++ b/py/tests/test_expression.py
+@@ -8,6 +8,7 @@
+ import gc
+ import math
+ import operator
++import sys
+ from typing import Tuple
+ 
+ import pytest
+@@ -264,4 +265,7 @@ def test_expression_rich_compare_operations(op, symbol) -> None:
+     else:
+         with pytest.raises(TypeError) as excinfo:
+             op(e1, e2)
+-        assert "kiwisolver.Expression" in excinfo.exconly()
++        if "PyPy" in sys.version:
++            assert "Expression" in excinfo.exconly()
++        else:
++            assert "kiwisolver.Expression" in excinfo.exconly()

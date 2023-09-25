@@ -16,7 +16,7 @@ influence them by giving them commands, like build a bridge, dig a hole or redir
 animals in the other direction. The goal of each level is to reach the exit, for fix
 multiple combination of commands are necessary. The game is presented in a 2D site view.</longdescription>
 	<upstream>
-		<remote-id type="google-code">pingus</remote-id>
+		<remote-id type="gitlab">pingus/pingus</remote-id>
 	</upstream>
 	<use>
 		<flag name="music">Enable playing of background music</flag>

@@ -10,7 +10,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">flask-sqlalchemy</remote-id>
+		<remote-id type="pypi">Flask-SQLAlchemy</remote-id>
 		<remote-id type="github">pallets-eco/flask-sqlalchemy</remote-id>
 		<bugs-to>https://github.com/pallets-eco/flask-sqlalchemy/issues</bugs-to>
 	</upstream>

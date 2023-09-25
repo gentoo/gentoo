@@ -7,10 +7,11 @@
     <name>Maciej Barć</name>
   </maintainer>
   <longdescription>
-    Golly is an open source, cross-platform application for exploring
-    Conway's Game of Life and many other types of cellular automata.
+    Golly is an open source, cross-platform application for exploring Conway's
+    Game of Life and many other types of cellular automata.
   </longdescription>
   <upstream>
+    <doc>https://golly.sourceforge.net/Help/index.html</doc>
     <remote-id type="sourceforge">golly</remote-id>
   </upstream>
 </pkgmetadata>

@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">chrisjsewell/sphinx-pytest</remote-id>
+		<remote-id type="github">sphinx-extensions2/sphinx-pytest</remote-id>
 		<remote-id type="pypi">sphinx_pytest</remote-id>
 	</upstream>
 </pkgmetadata>

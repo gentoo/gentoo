@@ -5,9 +5,13 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<use>
+		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
+		<remote-id type="github">qt/qtscxml</remote-id>
 	</upstream>
 	<slots>
 		<subslots>

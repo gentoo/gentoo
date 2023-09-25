@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>
+    Dex is a library supporting "Deferred Execution" with the explicit
+    goal of integrating with GNOME and GTK-based applications.
+    It provides primatives for supporting futures in a variety of ways
+    with both read-only and writable views. Additionally, integration
+    with existing asynchronous-based APIs is provided through the use
+    of wrapper promises.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/libdex</remote-id>
+  </upstream>
+  <use>
+    <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
+  </use>
+</pkgmetadata>

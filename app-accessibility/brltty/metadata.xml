@@ -8,7 +8,6 @@
  <use>
   <flag name="api">build brltty's application program interface</flag>
   <flag name="beeper">support the console tone generator</flag>
-  <flag name="contracted-braille">support in-line contracted braille</flag>
   <flag name="fm">support for the sound card synthesizer</flag>
   <flag name="louis">Use braille translator <pkg>dev-libs/liblouis</pkg></flag>
   <flag name="midi">support the musical instrument digital interface</flag>

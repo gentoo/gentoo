@@ -1,0 +1,33 @@
+Upstream: https://gitlab.com/free-astro/siril/-/merge_requests/525
+--- a/src/core/exif.h
++++ b/src/core/exif.h
+@@ -20,6 +20,8 @@
+ #ifndef SRC_CORE_EXIF_H_
+ #define SRC_CORE_EXIF_H_
+ 
++#include <stdint.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+--- a/src/io/avi_pipp/pipp_avi_write_dib.h
++++ b/src/io/avi_pipp/pipp_avi_write_dib.h
+@@ -1,6 +1,8 @@
+ #ifndef PIPP_AVI_WRITE_DIB_H
+ #define PIPP_AVI_WRITE_DIB_H
+ 
++#include <cstdint>
++
+ #include "pipp_video_write.h"
+ #include "pipp_avi_write.h"
+ 
+--- a/src/io/avi_pipp/pipp_buffer.h
++++ b/src/io/avi_pipp/pipp_buffer.h
+@@ -19,7 +19,6 @@
+ #ifndef PIPP_BUFFER_H
+ #define PIPP_BUFFER_H
+ 
+-#include <cstdint>
+ #include <cstdint>
+ #include <cstddef>
+ 

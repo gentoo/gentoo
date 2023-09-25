@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">ionrock/cachecontrol</remote-id>
+		<remote-id type="github">psf/cachecontrol</remote-id>
 		<remote-id type="pypi">CacheControl</remote-id>
 	</upstream>
 </pkgmetadata>

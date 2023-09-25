@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,12 +11,16 @@ if [[ ${PV} == *9999* ]]; then
 	RELEASE_URI=""
 
 	inherit subversion git-r3
-elif [[ "${PV%_rc*}" == "${PV}" && "${PV%_pre*}" == "${PV}" ]]; then
+elif [[ "${PV%_rc*}" == "${PV}" && "${PV%_pre*}" == "${PV}" && "${PV%_p*}" == "${PV}" ]]; then
 	MY_P="MPlayer-${PV}"
 	S="${WORKDIR}/${MY_P}"
 	RELEASE_URI="mirror://mplayer/releases/${MY_P}.tar.xz"
 else
-	RELEASE_URI="mirror://gentoo/${P}.tar.xz"
+	# If necessary, don't be afraid to make a snapshot.
+	# http://www.mplayerhq.hu/design7/dload.html says:
+	# "We recommend to always use the latest SVN to get the all the new
+	# features and bugfixes, especially if the release date above looks old."
+	RELEASE_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
 fi
 
 FONT_URI="
@@ -264,7 +268,7 @@ src_configure() {
 
 	# Set LINGUAS
 	[[ -n ${LINGUAS} ]] && LINGUAS="${LINGUAS/da/dk}"
-	[[ -n ${LINGUAS} ]] && LINGUAS="${LINGUAS/zh/zh_CN}" #482968
+	[[ -n ${LINGUAS} ]] && LINGUAS="${LINGUAS/zh/zh_CN}" # bug #482968
 
 	# mplayer ebuild uses "use foo || --disable-foo" to forcibly disable
 	# compilation in almost every situation. The reason for this is
@@ -457,6 +461,7 @@ src_configure() {
 	# Platform specific flags, hardcoded on amd64 (see below)
 	use cpudetection && myconf+=( --enable-runtime-cpudetection )
 
+	# TODO: refresh this list
 	uses="3dnow 3dnowext avx avx2 fma3 fma4 mmx mmxext sse sse2 sse3 ssse3 xop"
 	for i in ${uses}; do
 		myconf+=( $(use_enable cpu_flags_x86_${i} ${i}) )
@@ -599,7 +604,7 @@ src_install() {
 		_EOF_
 	fi
 
-	# bug 256203
+	# bug #256203
 	if use rar; then
 		cat >> "${ED}/etc/mplayer/mplayer.conf" <<- _EOF_
 		unrarexec=${EPREFIX}/usr/bin/unrar

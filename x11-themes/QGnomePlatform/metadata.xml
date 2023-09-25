@@ -4,4 +4,10 @@
 	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">FedoraQt/QGnomePlatform</remote-id>
+	</upstream>
+	<use>
+		<flag name="minimal">Skip kde-frameworks/qqc2-desktop-style dependency (Warning: some apps could be wrongly rendered)</flag>
+	</use>
 </pkgmetadata>

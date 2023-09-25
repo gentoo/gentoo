@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ VIM_VERSION="9.0"
 VIM_PATCHES_VERSION="9.0.1000"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby27 ruby30 ruby31"
 
@@ -21,11 +21,11 @@ if [[ ${PV} == 9999* ]] ; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="Vim, an improved vi-style text editor"
-HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
+HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
@@ -48,7 +48,6 @@ RDEPEND="
 		$(lua_gen_impl_dep 'deprecated' lua5-1)
 	)
 	~app-editors/vim-core-${PV}
-	!<app-editors/vim-core-8.2.4328-r1
 	vim-pager? ( app-editors/vim-core[-minimal] )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
@@ -68,6 +67,21 @@ BDEPEND="
 "
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
+if [[ ${PV} != 9999* ]]; then
+	# Gentoo patches to fix runtime issues, cross-compile errors, etc
+	PATCHES=(
+		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
+	)
+fi
+
+# platform-specific checks (bug #898452):
+# - acl()     -- Solaris
+# - statacl() -- AIX
+QA_CONFIG_IMPL_DECL_SKIP=(
+	'acl'
+	'statacl'
+)
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
@@ -78,10 +92,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [[ ${PV} != 9999* ]] ; then
-		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}"/vim-patches-vim-${VIM_PATCHES_VERSION}-patches
-	fi
+	default
 
 	# Fixup a script to use awk instead of nawk
 	sed -i -e \
@@ -103,13 +114,6 @@ src_prepare() {
 		"${S}"/runtime/doc/tagsrch.txt \
 		"${S}"/runtime/doc/usr_29.txt \
 		"${S}"/runtime/menu.vim \
-		"${S}"/src/configure.ac || die 'sed failed'
-
-	# Don't be fooled by /usr/include/libc.h.  When found, vim thinks
-	# this is NeXT, but it's actually just a file in dev-libs/9libs
-	# This fixes bug #43885 (20 Mar 2004 agriffis)
-	sed -i -e \
-		's/ libc\.h / /' \
 		"${S}"/src/configure.ac || die 'sed failed'
 
 	# gcc on sparc32 has this, uhm, interesting problem with detecting EOF
@@ -142,10 +146,6 @@ src_prepare() {
 
 	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
 
-	sed -i -e \
-		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
-		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
-
 	# Fix bug 18245: Prevent "make" from the following chain:
 	# (1) Notice configure.ac is newer than auto/configure
 	# (2) Rebuild auto/configure
@@ -153,8 +153,6 @@ src_prepare() {
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm src/auto/configure || die "rm failed"
-
-	eapply_user
 }
 
 src_configure() {

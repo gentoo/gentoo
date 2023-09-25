@@ -7,11 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="htmlreport">install cppcheck-htmlreport</flag>
-		<flag name="z3">
-			Enable support for <pkg>sci-mathematics/z3</pkg> backend
-		</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">danmar/cppcheck</remote-id>
 		<remote-id type="sourceforge">cppcheck</remote-id>
 	</upstream>
 </pkgmetadata>

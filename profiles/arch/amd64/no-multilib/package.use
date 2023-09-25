@@ -1,0 +1,8 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-08-10)
+# Multilib profiles (currently) prefer USE=abi_x86_32 over experimental
+# USE=wow64, but experimental is better than no support for no-multilib.
+app-emulation/wine-staging wow64
+app-emulation/wine-vanilla wow64

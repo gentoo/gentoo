@@ -8,4 +8,7 @@
   <use>
     <flag name="clang">Use different logic in ebuild when clang is used</flag>
   </use>
+  <upstream>
+    <remote-id type="github">hfst/hfst-ospell</remote-id>
+  </upstream>
 </pkgmetadata>

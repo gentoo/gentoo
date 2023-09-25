@@ -1,16 +1,22 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server"
-HOMEPAGE="https://github.com/aio-libs/aiohttp-cors"
-SRC_URI="https://github.com/aio-libs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/aio-libs/aiohttp-cors/
+	https://pypi.org/project/aiohttp_cors/
+"
+SRC_URI="
+	https://github.com/aio-libs/aiohttp-cors/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -36,7 +42,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-py3_11.patch"
 )
 
-src_prepare() {
-	sed -i -e '/^addopts=/d' setup.cfg || die
-	distutils-r1_src_prepare
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -o addopts= -p aiohttp -p asyncio --asyncio-mode=auto
 }

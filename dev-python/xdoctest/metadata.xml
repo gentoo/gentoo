@@ -10,6 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">Erotemic/xdoctest</remote-id>
 		<remote-id type="pypi">xdoctest</remote-id>
 	</upstream>
 </pkgmetadata>

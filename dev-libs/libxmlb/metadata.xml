@@ -5,10 +5,6 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>slashbeast@gentoo.org</email>
-		<name>Piotr Karbowski</name>
-	</maintainer>
 	<use>
 		<flag name="stemmer">Enable language stemming support</flag>
 	</use>

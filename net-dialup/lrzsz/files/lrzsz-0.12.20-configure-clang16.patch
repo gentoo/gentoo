@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/898970
+--- a/configure.in
++++ b/configure.in
+@@ -186,7 +186,8 @@ AC_CACHE_VAL(lrzsz_cv_sys_ftime_ok,
+ #include <sys/types.h>
+ #include <sys/timeb.h>
+ #include <stdio.h>
+-main ()
++#include <stdlib.h>
++int main (void)
+ {
+   struct timeb s, slast;
+   int c = 0;

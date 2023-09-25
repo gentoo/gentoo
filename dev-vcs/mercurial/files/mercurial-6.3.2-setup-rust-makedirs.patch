@@ -1,0 +1,30 @@
+# HG changeset patch
+# User Cédric Krier <ced@b2ck.com>
+# Date 1674932937 -3600
+#      Sat Jan 28 20:08:57 2023 +0100
+# Node ID 65a97b8b1268169fecc21749b7472fd155bfb399
+# Parent  a1123772333204cbeb766b17de8089a1d13d4a68
+# EXP-Topic setup-rust-build-makedirs-target
+Ensure target directory exists with building rust extension
+
+When the rust extension is the first to be build, the target directory may not
+exist so the copy fails.
+
+diff --git a/setup.py b/setup.py
+--- a/setup.py
++++ b/setup.py
+@@ -1454,11 +1454,13 @@ class RustStandaloneExtension(RustExtens
+         target = [target_dir]
+         target.extend(self.name.split('.'))
+         target[-1] += DYLIB_SUFFIX
++        target = os.path.join(*target)
++        os.makedirs(os.path.dirname(target), exist_ok=True)
+         shutil.copy2(
+             os.path.join(
+                 self.rusttargetdir, self.dylibname + self.rustdylibsuffix()
+             ),
+-            os.path.join(*target),
++            target,
+         )
+ 
+ 

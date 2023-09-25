@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,14 +13,12 @@ if [[ ${PV} = 9999 ]] ; then
 else
 	SRC_URI="https://github.com/NetworkBlockDevice/nbd/releases/download/${P}/${P}.tar.xz
 		mirror://sourceforge/nbd/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug gnutls netlink zlib"
-
-BDEPEND="virtual/pkgconfig"
 
 RDEPEND="
 	>=dev-libs/glib-2.26.0
@@ -29,9 +27,12 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/bison"
+BDEPEND="
+	sys-devel/bison
+	virtual/pkgconfig
+"
 
-if [[ ${PV} = 9999 ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	BDEPEND+="
 		app-text/docbook-sgml-dtd:4.5
 		app-text/docbook-sgml-utils

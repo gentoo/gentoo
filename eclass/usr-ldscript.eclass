@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: usr-ldscript.eclass
@@ -39,6 +39,13 @@ gen_usr_ldscript() {
 	tc-is-static-only && return
 	use prefix && return
 
+	# The toolchain's sysroot is automatically prepended to paths in this
+	# script. We therefore need to omit EPREFIX on standalone prefix (RAP)
+	# systems. prefix-guest (non-RAP) systems don't apply a sysroot so EPREFIX
+	# is still needed in that case. This is moot because the above line makes
+	# the function a noop on prefix, but we keep this in case that changes.
+	local prefix=$(usex prefix-guest "${EPREFIX}" "")
+
 	# We only care about stuffing / for the native ABI. #479448
 	if [[ $(type -t multilib_is_native_abi) == "function" ]] ; then
 		multilib_is_native_abi || return 0
@@ -48,7 +55,7 @@ gen_usr_ldscript() {
 	case ${CTARGET:-${CHOST}} in
 	*-darwin*) ;;
 	*-android*) return 0 ;;
-	*linux*|*-freebsd*|*-openbsd*|*-netbsd*)
+	*linux*)
 		use split-usr || return 0
 		;;
 	*) return 0 ;;
@@ -154,7 +161,7 @@ gen_usr_ldscript() {
 			   See bug https://bugs.gentoo.org/4411 for more info.
 			 */
 			${output_format}
-			GROUP ( ${EPREFIX}/${libdir}/${tlib} )
+			GROUP ( ${prefix}/${libdir}/${tlib} )
 			END_LDSCRIPT
 			;;
 		esac

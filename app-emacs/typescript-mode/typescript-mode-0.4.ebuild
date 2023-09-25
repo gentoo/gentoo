@@ -1,9 +1,7 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-NEED_EMACS=24.3
 
 inherit elisp
 
@@ -18,13 +16,10 @@ KEYWORDS="~amd64 ~x86"
 
 SITEFILE="50${PN}-gentoo.el"
 
+elisp-enable-tests ert "${S}" -l typescript-mode-tests.el
+
 src_compile() {
 	elisp-compile ${PN}.el
-}
-
-src_test() {
-	${EMACS} ${EMACSFLAGS} -L . -l typescript-mode-tests.el \
-			 -f ert-run-tests-batch-and-exit || die
 }
 
 src_install() {

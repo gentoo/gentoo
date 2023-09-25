@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">validators</remote-id>
-		<remote-id type="github">kvesteri/validators</remote-id>
+		<remote-id type="github">python-validators/validators</remote-id>
 	</upstream>
 </pkgmetadata>

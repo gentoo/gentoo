@@ -17,5 +17,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">avidemux</remote-id>
+    <remote-id type="github">mean00/avidemux2</remote-id>
   </upstream>
 </pkgmetadata>

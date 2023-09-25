@@ -9,4 +9,7 @@
 		<remote-id type="github">nigels-com/glew</remote-id>
 		<remote-id type="sourceforge">glew</remote-id>
 	</upstream>
+	<use>
+		<flag name="egl-only">Enable EGL support and disable X11 support</flag>
+	</use>
 </pkgmetadata>

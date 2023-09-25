@@ -1,5 +1,3 @@
-diff --git a/configure.ac b/configure.ac
-index 76627c7..527e2cb 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -119,7 +119,7 @@ AC_TYPE_UINT16_T
@@ -11,8 +9,6 @@ index 76627c7..527e2cb 100644
  
  
  
-diff --git a/src/user_interface/Makefile.in b/src/user_interface/Makefile.in
-index 5d5f1fc..4d8214b 100644
 --- a/src/user_interface/Makefile.in
 +++ b/src/user_interface/Makefile.in
 @@ -88,7 +88,7 @@ CONFIG_HEADER = $(top_builddir)/config_cdw.h

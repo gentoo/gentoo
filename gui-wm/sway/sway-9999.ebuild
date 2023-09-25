@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="grimshot +man +swaybar +swaynag tray wallpapers X"
+IUSE="+man +swaybar +swaynag tray wallpapers X"
 
 DEPEND="
 	>=dev-libs/json-c-0.13:0=
@@ -56,13 +56,6 @@ else
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
-	grimshot? (
-		app-misc/jq
-		gui-apps/grim
-		gui-apps/slurp
-		gui-apps/wl-clipboard
-		x11-libs/libnotify
-	)
 	${DEPEND}
 "
 BDEPEND="
@@ -92,15 +85,6 @@ src_configure() {
 	)
 
 	meson_src_configure
-}
-
-src_install() {
-	meson_src_install
-
-	if use grimshot; then
-		doman contrib/grimshot.1
-		dobin contrib/grimshot
-	fi
 }
 
 pkg_postinst() {

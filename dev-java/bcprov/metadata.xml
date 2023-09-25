@@ -5,6 +5,9 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">bcgit/bc-java</remote-id>
+	</upstream>
 	<longdescription>
 		The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar contains JCE provider and lightweight API for the Bouncy Castle Cryptography APIs for JDK 1.8 and up.
 	</longdescription>

@@ -6,6 +6,7 @@
     <name>Bernard Cafarelli</name>
   </maintainer>
   <upstream>
+    <remote-id type="gnome-gitlab">World/OpenPaperwork</remote-id>
     <remote-id type="pypi">openpaperwork-gtk</remote-id>
   </upstream>
 </pkgmetadata>

@@ -22,6 +22,9 @@
 		<flag name="mousewheel">Enable scrolling via mouse wheel or buttons 4 and 5</flag>
 		<flag name="perl">Enable perl script support. You can still disable this at runtime with -pe ""</flag>
 		<flag name="unicode3">Use 21 instead of 16 bits to represent unicode characters</flag>
+		<flag name="wide-glyphs">Enable support for wide glyphs, required for certain symbol/icon
+			fonts to display correctly. Note that this feature is *unofficial* and has been
+			observed to cause stability issues for some users.</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:rxvt-unicode:rxvt-unicode</remote-id>

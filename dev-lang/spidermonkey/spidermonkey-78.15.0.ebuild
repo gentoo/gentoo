@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 # Patch version
 FIREFOX_PATCHSET="firefox-78esr-patches-19.tar.xz"
-SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-04.tar.xz"
+SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-05.tar.xz"
 
 LLVM_MAX_SLOT=14
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ssl"
 
 WANT_AUTOCONF="2.1"
@@ -52,7 +52,7 @@ fi
 
 PATCH_URIS=(
 	https://dev.gentoo.org/~{whissi,polynomial-c,axs}/mozilla/patchsets/${FIREFOX_PATCHSET}
-	https://dev.gentoo.org/~{whissi,polynomial-c,axs}/mozilla/patchsets/${SPIDERMONKEY_PATCHSET}
+	https://dev.gentoo.org/~juippis/mozilla/patchsets/${SPIDERMONKEY_PATCHSET}
 )
 
 SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
@@ -337,7 +337,7 @@ src_configure() {
 	fi
 
 	# LTO flag was handled via configure
-	filter-flags '-flto*'
+	filter-lto
 
 	if tc-is-gcc ; then
 		if ver_test $(gcc-fullversion) -ge 10 ; then

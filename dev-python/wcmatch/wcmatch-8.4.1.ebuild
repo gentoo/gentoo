@@ -1,14 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=hatchling
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
-	>=dev-python/mkdocs_pymdownx_material_extras-2.0
+	>=dev-python/mkdocs-pymdownx-material-extras-2.0
 	dev-python/mkdocs-material
 	dev-python/mkdocs-git-revision-date-localized-plugin
 	dev-python/mkdocs-minify-plugin
@@ -29,7 +29,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/bracex-2.1.1[${PYTHON_USEDEP}]

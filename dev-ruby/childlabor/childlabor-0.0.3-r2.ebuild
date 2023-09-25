@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="childlabor.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A scripting framework that replaces rake and sake"
+DESCRIPTION="Gem that helps manage child processes"
 HOMEPAGE="https://github.com/carllerche/childlabor"
 COMMIT_ID="6518b939dddbad20c7f05aa075d76e3ca6e70447"
 SRC_URI="https://github.com/carllerche/childlabor/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"

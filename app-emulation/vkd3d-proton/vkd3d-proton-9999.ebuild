@@ -1,8 +1,9 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+MULTILIB_ABIS="amd64 x86" # allow usage on /no-multilib/
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit flag-o-matic meson-multilib toolchain-funcs
 
@@ -17,11 +18,11 @@ if [[ ${PV} == 9999 ]]; then
 		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
 	)
 else
-	HASH_VKD3D=4df366172e025c23621c8df5a794de90de165d97 # match tag on bumps
-	HASH_DXIL=2166bc7ea0ceb2d7ff6d787d9b007f7eb7d4aaa8
-	HASH_SPIRV=ae217c17809fadb232ec94b29304b4afcd417bb4
-	HASH_SPIRV_DXIL=87d5b782bec60822aa878941e6b13c0a9a954c9b
-	HASH_VULKAN=5177b119bbdf463b7b909855a83230253c2d8b68
+	HASH_VKD3D=6365efeba253807beecaed0eaa963295522c6b70 # match tag on bumps
+	HASH_DXIL=f20a0fb4e984a83743baa9d863eb7b26228bcca3
+	HASH_SPIRV=1d31a100405cf8783ca7a31e31cdd727c9fc54c3
+	HASH_SPIRV_DXIL=aa331ab0ffcb3a67021caa1a0c1c9017712f2f31
+	HASH_VULKAN=bd6443d28f2ebecedfb839b52d612011ba623d14
 	SRC_URI="
 		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
@@ -41,11 +42,15 @@ HOMEPAGE="https://github.com/HansKristian-Work/vkd3d-proton/"
 
 LICENSE="LGPL-2.1+ Apache-2.0 MIT"
 SLOT="0"
-IUSE="+abi_x86_32 crossdev-mingw debug extras"
+IUSE="+abi_x86_32 crossdev-mingw debug extras +strip"
 
 BDEPEND="
 	dev-util/glslang
 	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.6-wow64-setup.patch
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return
@@ -105,13 +110,23 @@ src_prepare() {
 src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
+	# -mavx with mingw-gcc has a history of obscure issues and
+	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+	# crashes with -march=skylake >=wine-8.10, similar issues with
+	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+	append-flags -mno-avx
+
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP WIDL
-			filter-flags '-fstack-clash-protection' #758914
-			filter-flags '-fstack-protector*' #870136
 			filter-flags '-fuse-ld=*'
 			filter-flags '-mfunction-return=thunk*' #878849
+			if has_version '<dev-util/mingw64-toolchain-11' ||
+				{ use crossdev-mingw &&
+					has_version "<cross-$(usex x86 i686 x86_64)-w64-mingw32/mingw64-runtime-11"; }
+			then
+				filter-flags '-fstack-protector*' #870136
+			fi
 		fi
 
 		CHOST_amd64=x86_64-w64-mingw32
@@ -145,7 +160,7 @@ multilib_src_configure() {
 		--{cross,native}-file="${T}"/widl.${ABI}.ini
 		$(meson_use {,enable_}extras)
 		$(meson_use debug enable_trace)
-		$(usev !debug --strip) # portage won't strip .dll, so allow it here
+		$(usev strip --strip) # portage won't strip .dll, so allow it here
 		-Denable_tests=false # needs wine/vulkan and is intended for manual use
 	)
 
@@ -165,14 +180,24 @@ pkg_postinst() {
 		elog
 		elog "	WINEPREFIX=/path/to/prefix setup_vkd3d_proton.sh install --symlink"
 		elog
-		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
-	fi
-
-	if [[ ! ${REPLACING_VERSIONS##* } ]] ||
-		ver_test ${REPLACING_VERSIONS##* } -lt 2.7
-	then
+		elog "Should also ensure that >=app-emulation/dxvk-2.1's dxgi.dll is available"
+		elog "on it, not meant to function independently even if only using d3d12."
 		elog
-		elog ">=${PN}-2.7 requires drivers and Wine to support vulkan-1.3, meaning:"
-		elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
+		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
+	elif [[ ${REPLACING_VERSIONS##* } ]]; then
+		if ver_test ${REPLACING_VERSIONS##* } -lt 2.7; then
+			elog
+			elog ">=${PN}-2.7 requires drivers and Wine to support vulkan-1.3, meaning:"
+			elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
+		fi
+
+		if ver_test ${REPLACING_VERSIONS##* } -lt 2.9; then
+			elog
+			elog ">=${PN}-2.9 has a new file to install (d3d12core.dll), old Wine prefixes that"
+			elog "relied on '--symlink' may need updates by using the setup_vkd3d_proton.sh."
+			elog
+			elog "Furthermore, it may not function properly if >=app-emulation/dxvk-2.1's"
+			elog "dxgi.dll is not available on that prefix (even if only using d3d12)."
+		fi
 	fi
 }

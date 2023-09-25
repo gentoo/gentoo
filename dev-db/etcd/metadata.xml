@@ -2,10 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<upstream>
-		<bugs-to>https://github.com/coreos/etcd/issues</bugs-to>
-		<changelog>https://raw.githubusercontent.com/coreos/etcd/master/CHANGELOG</changelog>
-		<doc>https://github.com/coreos/etcd/blob/master/README.md/</doc>
-		<remote-id type="github">coreos/etcd</remote-id>
+		<bugs-to>https://github.com/etcd-io/etcd/issues</bugs-to>
+		<remote-id type="github">etcd-io/etcd</remote-id>
 	</upstream>
 	<use>
 		<flag name="server">Installs etcd daemon</flag>

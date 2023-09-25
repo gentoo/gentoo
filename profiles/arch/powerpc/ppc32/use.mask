@@ -1,8 +1,12 @@
-# Copyright 2008-2022 Gentoo Authors
+# Copyright 2008-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -ppc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
 
 # Sam James <sam@gentoo.org> (2022-03-03)
 # dev-db/mysql doesn't work well on PPC, especially 8.x, but should be fine on PPC64
@@ -33,9 +37,5 @@ java
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on ppc
 -clisp
--ecls
+-ecl
 -sbcl
-
-# Pacho Ramos <pacho@gentoo.org> (2013-09-11)
-# Unmask systemd since it is keyworded here.
--systemd

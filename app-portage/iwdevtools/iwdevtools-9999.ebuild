@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,17 +18,19 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-misc/pax-utils
 	app-portage/portage-utils
-	>=app-shells/bash-5.1
+	>=app-shells/bash-5.1:0[readline]
 	dev-libs/libxml2:2
 	sys-apps/coreutils
 	sys-apps/diffutils
 	sys-apps/file
 	sys-apps/portage
-	|| ( sys-apps/util-linux app-misc/getopt )"
+	|| ( sys-apps/util-linux app-misc/getopt )
+"
 BDEPEND="
 	sys-apps/help2man
 	|| ( sys-apps/util-linux app-misc/getopt )
-	test? ( ${RDEPEND} )"
+	test? ( ${RDEPEND} )
+"
 
 src_configure() {
 	local emesonargs=(

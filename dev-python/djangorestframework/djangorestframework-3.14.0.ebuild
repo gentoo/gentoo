@@ -1,16 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 MY_P=django-rest-framework-${PV}
 DESCRIPTION="Web APIs with django made easy"
-HOMEPAGE="https://www.django-rest-framework.org/"
+HOMEPAGE="
+	https://www.django-rest-framework.org/
+	https://github.com/encode/django-rest-framework/
+	https://pypi.org/project/djangorestframework/
+"
 SRC_URI="
 	https://github.com/encode/django-rest-framework/archive/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
@@ -27,8 +31,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/coreapi[${PYTHON_USEDEP}]
-		dev-python/coreschema[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)
@@ -38,4 +40,9 @@ distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	tests/test_description.py::TestViewNamesAndDescriptions::test_markdown
+
+	# require coreapi (but not skipped properly)
+	tests/schemas/test_managementcommand.py::GenerateSchemaTests::test_coreapi_renders_default_schema_with_custom_title_url_and_desc
+	tests/schemas/test_managementcommand.py::GenerateSchemaTests::test_coreapi_renders_openapi_json_schema
+	tests/schemas/test_managementcommand.py::GenerateSchemaTests::test_renders_corejson_schema
 )

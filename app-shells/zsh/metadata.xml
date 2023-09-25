@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>slashbeast@gentoo.org</email>
-    <name>Piotr Karbowski</name>
-  </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>t@laumann.xyz</email>
-    <name>Thomas Bracht Laumann Jespersen</name>
-  </maintainer>
-  <longdescription>
-  Zsh is a shell designed for interactive use, although it is also a
-  powerful scripting language. Many of the useful features of bash, ksh,
-  and tcsh were incorporated into zsh; many original features were
-  added.
-  </longdescription>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<longdescription>
+		Zsh is a shell designed for interactive use, although it is also a
+		powerful scripting language. Many of the useful features of bash, ksh,
+		and tcsh were incorporated into zsh; many original features were
+		added.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">zsh</remote-id>
+	</upstream>
 </pkgmetadata>

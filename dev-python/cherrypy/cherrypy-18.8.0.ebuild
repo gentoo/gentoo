@@ -4,20 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYPI_NO_NORMALIZE=1
+PYPI_PN="CherryPy"
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_PN="CherryPy"
-MY_P=${MY_PN}-${PV}
 DESCRIPTION="CherryPy is a pythonic, object-oriented HTTP framework"
 HOMEPAGE="
 	https://cherrypy.dev/
 	https://github.com/cherrypy/cherrypy/
 	https://pypi.org/project/CherryPy/
 "
-SRC_URI="mirror://pypi/${MY_PN::1}/${MY_PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
@@ -35,7 +33,7 @@ RDEPEND="
 	)
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/routes[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]

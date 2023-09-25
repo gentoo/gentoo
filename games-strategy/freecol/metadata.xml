@@ -6,6 +6,8 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://sourceforge.net/p/freecol/bugs/</bugs-to>
+		<doc>https://github.com/FreeCol/freecol/wiki</doc>
 		<remote-id type="sourceforge">freecol</remote-id>
 	</upstream>
 </pkgmetadata>

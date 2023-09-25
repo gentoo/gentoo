@@ -1,17 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Robbo, a popular Atari XE/XL game ported to Linux"
-HOMEPAGE="http://gnurobbo.sourceforge.net/"
+HOMEPAGE="https://gnurobbo.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/gnurobbo/${P}-source.tar.gz
 	https://salsa.debian.org/games-team/gnurobbo/-/raw/debian/$(ver_cut 1-2)+dfsg-5/debian/patches/single-variable-declarations.patch?inline=false -> ${P}-single-variable-declarations.patch
 "
 
-LICENSE="GPL-2 BitstreamVera"
+LICENSE="GPL-2+ BitstreamVera"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

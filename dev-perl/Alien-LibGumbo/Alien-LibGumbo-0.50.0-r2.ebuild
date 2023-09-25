@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,7 @@ BDEPEND="${RDEPEND}
 	>=dev-perl/Alien-Base-ModuleBuild-0.5.0
 	>=dev-perl/Module-Build-0.420.0
 "
+
 src_configure() {
 	unset LD;
 	if [[ -n "${CCLD}" ]]; then
@@ -35,9 +36,11 @@ src_configure() {
 	tc-export CC CXX
 	perl-module_src_configure
 }
+
 src_compile() {
 	./Build --config optimize="${CFLAGS}" build || die
 }
+
 src_test() {
 	local MODULES=(
 		"Alien::LibGumbo ${DIST_VERSION}"

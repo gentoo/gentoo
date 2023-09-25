@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,9 +8,8 @@ HOMEPAGE="https://github.com/thierry-martinez/stdcompat"
 SRC_URI="https://github.com/thierry-martinez/stdcompat/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"
-SLOT="0"
-KEYWORDS="~amd64 ~x86"
 SLOT="0/${PV}"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-lang/ocaml:=[ocamlopt]
 	dev-ml/result:=[ocamlopt]

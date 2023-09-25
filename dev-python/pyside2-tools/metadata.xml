@@ -9,8 +9,4 @@
 		<email>waebbl-gentoo@posteo.net</email>
 		<name>Bernd Waibel</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>fordfrog@gentoo.org</email>
-		<name>Miroslav Šulc</name>
-	</maintainer>
 </pkgmetadata>

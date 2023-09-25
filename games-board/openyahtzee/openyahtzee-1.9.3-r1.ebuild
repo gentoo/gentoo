@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 WX_GTK_VER="3.0"
 inherit flag-o-matic toolchain-funcs wxwidgets
 
-DESCRIPTION="A full-featured wxWidgets version of the classic dice game Yahtzee"
-HOMEPAGE="http://openyahtzee.sourceforge.net/"
+DESCRIPTION="Full-featured wxWidgets version of the classic dice game Yahtzee"
+HOMEPAGE="https://openyahtzee.sourceforge.net/"
 SRC_URI="mirror://sourceforge/openyahtzee/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

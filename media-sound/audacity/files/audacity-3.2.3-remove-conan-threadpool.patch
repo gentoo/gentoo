@@ -1,0 +1,58 @@
+From 7b5f56ec441fb472b61bae14e1efa353db4d7aca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sun, 18 Dec 2022 13:37:35 +0100
+Subject: [PATCH] Allow using local dependency for threadpool
+
+We pull it in manually.
+---
+ cmake-proxies/CMakeLists.txt | 27 +++++++++++++++++++--------
+ 1 file changed, 19 insertions(+), 8 deletions(-)
+
+diff --git a/cmake-proxies/CMakeLists.txt b/cmake-proxies/CMakeLists.txt
+index 81bbf2efd..474814f07 100644
+--- a/cmake-proxies/CMakeLists.txt
++++ b/cmake-proxies/CMakeLists.txt
+@@ -258,12 +258,22 @@ if( ${_OPT}has_networking )
+       set ( curl_ssl "openssl" )
+    endif ()
+ 
+-   add_conan_lib(
+-      ThreadPool
+-      threadpool/20140926
+-      REQUIRED
+-      ALWAYS_ALLOW_CONAN_FALLBACK
+-   )
++   if ( ${_OPT}has_threadpool STREQUAL "local" )
++     # Gentoo: Hack in Portage-downloaded ThreadPool.h.
++     # This follows somewhat-like-upstream conventions, except it doesn't use
++     # the proxy library mechanism because there's no library.
++     add_library ( ThreadPool::ThreadPool INTERFACE IMPORTED GLOBAL )
++     target_include_directories ( ThreadPool::ThreadPool INTERFACE
++       ${CMAKE_SOURCE_DIR}/lib-src/threadpool
++     )
++   else()
++     add_conan_lib(
++       ThreadPool
++       threadpool/20140926
++       REQUIRED
++       ALWAYS_ALLOW_CONAN_FALLBACK
++     )
++   endif()
+ 
+    add_conan_lib(
+       CURL
+@@ -276,8 +286,9 @@ if( ${_OPT}has_networking )
+       CONAN_OPTIONS
+          libcurl:with_ssl=${curl_ssl}
+          libcurl:shared=True
+-   )
+-
++       )
++else()
++   set(unused "${${_OPT}has_threadpool}")
+ endif()
+ 
+ if( NOT CMAKE_SYSTEM_NAME MATCHES "Darwin|Windows")
+-- 
+2.39.0
+

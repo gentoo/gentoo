@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit desktop optfeature python-single-r1
 
 MY_P="${PN}-$(ver_cut 1-3)"
@@ -43,8 +43,8 @@ src_prepare() {
 
 	default
 
-	sed -e "s|^cd .*/|cd ${EPREFIX}/usr/share/|" \
-		-e "s|^exec|exec ${EPYTHON}|" \
+	sed -e "s|^cd .*/|cd ${EPREFIX@Q}/usr/share/|" \
+		-e "s|^exec|exec ${EPYTHON@Q}|" \
 		-i ${PN} || die
 
 	gzip -d ${PN}.6.gz || die

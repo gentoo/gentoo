@@ -1,7 +1,67 @@
-diff -r -U1 python-xmp-toolkit-2.0.1.orig/test/test_exempi.py python-xmp-toolkit-2.0.1/test/test_exempi.py
---- python-xmp-toolkit-2.0.1.orig/test/test_exempi.py	2014-03-09 19:42:07.000000000 +0700
-+++ python-xmp-toolkit-2.0.1/test/test_exempi.py	2020-01-21 18:16:13.470778818 +0700
-@@ -539,2 +539,3 @@
+Squashed patches of the following:
+
+- https://github.com/exmakhina/python-xmp-toolkit/commit/3f7546173980610e0687f4eae4eb28aa026e4674
+  gentoo commit 14321e655b7b3f6e531c0a079cb131dbd767e1be
+
+- https://github.com/exmakhina/python-xmp-toolkit/commit/1459510907764746534ce41afa85a3bedd7029b9
+  test: disable tests involving BlueSquare.gif
+
+- https://github.com/exmakhina/python-xmp-toolkit/commit/bd8a0babef830e9a2c06150f6277ba0ddb1220bd
+  libxmp: exempi: exempi returns char-sized bool, not int
+
+diff --git a/libxmp/exempi.py b/libxmp/exempi.py
+index 683e240..cddc038 100644
+--- a/libxmp/exempi.py
++++ b/libxmp/exempi.py
+@@ -1693,6 +1693,7 @@ def check_error(success):
+         Return value from library function indicating success or failure.
+     """
+ 
++    success = success & 0xff
+     # Unfortunately the success parameter does not seem to always be reliable
+     # so we supplement it by explicitly checking the error code.
+     ecode = EXEMPI.xmp_get_error()
+diff --git a/test/common_fixtures.py b/test/common_fixtures.py
+index 135a795..363246c 100644
+--- a/test/common_fixtures.py
++++ b/test/common_fixtures.py
+@@ -44,7 +44,6 @@ samplefiles = {
+     'BlueSquare.ai'   : libxmp.consts.XMP_FT_ILLUSTRATOR,
+     'BlueSquare.avi'  : libxmp.consts.XMP_FT_AVI,
+     'BlueSquare.eps'  : libxmp.consts.XMP_FT_EPS,
+-    'BlueSquare.gif'  : libxmp.consts.XMP_FT_GIF,
+     'BlueSquare.indd' : libxmp.consts.XMP_FT_INDESIGN,
+     'BlueSquare.jpg'  : libxmp.consts.XMP_FT_JPEG,
+     'BlueSquare.mov'  : libxmp.consts.XMP_FT_MOV,
+diff --git a/test/samples.py b/test/samples.py
+index 4a97203..a7e0412 100644
+--- a/test/samples.py
++++ b/test/samples.py
+@@ -65,7 +65,6 @@ samplefiles = {
+     'BlueSquare.ai'   : libxmp.consts.XMP_FT_ILLUSTRATOR,
+     'BlueSquare.avi'  : libxmp.consts.XMP_FT_AVI,
+     'BlueSquare.eps'  : libxmp.consts.XMP_FT_EPS,
+-    'BlueSquare.gif'  : libxmp.consts.XMP_FT_GIF,
+     'BlueSquare.indd' : libxmp.consts.XMP_FT_INDESIGN,
+     'BlueSquare.jpg'  : libxmp.consts.XMP_FT_JPEG,
+     'BlueSquare.mov'  : libxmp.consts.XMP_FT_MOV,
+diff --git a/test/test_exempi.py b/test/test_exempi.py
+index 690ce15..54065e2 100644
+--- a/test/test_exempi.py
++++ b/test/test_exempi.py
+@@ -422,7 +422,6 @@ class TestExempi(unittest.TestCase):
+         """Verify that check_file_format function works as expected."""
+         pairs = { 'avi':  libxmp.consts.XMP_FT_AVI,
+                   'eps':  libxmp.consts.XMP_FT_EPS,
+-                  'gif':  libxmp.consts.XMP_FT_GIF,
+                   'indd': libxmp.consts.XMP_FT_INDESIGN,
+                   'jpg':  libxmp.consts.XMP_FT_JPEG,
+                   'mov':  libxmp.consts.XMP_FT_MOV,
+@@ -540,6 +539,7 @@ class TestIteration(unittest.TestCase):
+         self.assertEqual(props, ["2006, Hubert Figuiere"])
+ 
  
 +    @unittest.skip("Issue x1")
      def test_single_namespace_single_path_leaf_names(self):
+         """Get just leaf names from a single path, single namespace."""
+         # TODO:  why?

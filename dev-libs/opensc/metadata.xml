@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
+		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
 	</maintainer>
 	<longdescription>
 		OpenSC is a library for accessing SmartCard devices. It is also
@@ -19,6 +19,7 @@
 		<flag name="ctapi">Use CT-API for accessing Smartcard hardware</flag>
 		<flag name="notify">Enable notifications</flag>
 		<flag name="openct">Use <pkg>dev-libs/openct</pkg> (and CT-API) for accessing Smartcard hardware</flag>
+		<flag name="pace">Use <pkg>dev-libs/openpace</pkg> for EAC version 2 support</flag>
 		<flag name="pcsc-lite">Use <pkg>sys-apps/pcsc-lite</pkg> (and PC/SC API) for accessing Smartcard hardware</flag>
 		<flag name="secure-messaging">Enable secure messaging</flag>
 	</use>

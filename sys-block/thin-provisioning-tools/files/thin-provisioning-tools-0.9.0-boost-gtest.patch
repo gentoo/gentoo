@@ -1,0 +1,622 @@
+Bug: https://bugs.gentoo.org/911775
+
+--- a/base/base64.cc
++++ b/base/base64.cc
+@@ -68,13 +68,13 @@
+ 		throw std::runtime_error("internal error, in split");
+ 	}
+ 
+-	optional<unsigned> char_to_index(char c) {
++	boost::optional<unsigned> char_to_index(char c) {
+ 		// FIXME: very slow
+ 		for (unsigned i = 0; i < 64; i++)
+ 			if (table_[i] == c)
+-				return optional<unsigned>(i);
++				return boost::optional<unsigned>(i);
+ 
+-		return optional<unsigned>();
++		return boost::optional<unsigned>();
+ 	}
+ 
+ 	decoded_or_error success(vector<unsigned char> const &decoded) {
+@@ -92,7 +92,7 @@
+ 	}
+ 
+ 	decoded_or_error decode_quad(char c1, char c2, char c3, char c4) {
+-		typedef optional<unsigned> oi;
++		typedef boost::optional<unsigned> oi;
+ 		unsigned char d1, d2, d3;
+ 		vector<unsigned char> decoded;
+ 
+--- a/base/run.h
++++ b/base/run.h
+@@ -1,7 +1,7 @@
+ #ifndef BASE_DATA_RANGE_H
+ #define BASE_DATA_RANGE_H
+ 
+-#include <boost/optional.hpp>
++#include <boost/optional/optional_io.hpp>
+ #include <ostream>
+ 
+ //----------------------------------------------------------------
+--- a/block-cache/copier.cc
++++ b/block-cache/copier.cc
+@@ -90,19 +90,19 @@
+ copier::wait_complete()
+ {
+ 	if (complete_.empty()) {
+-		return optional<copy_op>();
++		return boost::optional<copy_op>();
+ 
+ 	} else {
+ 		auto op = complete_.front();
+ 		complete_.pop_front();
+-		return optional<copy_op>(op);
++		return boost::optional<copy_op>(op);
+ 	}
+ }
+ 
+ void
+ copier::wait_(unsigned &micro)
+ {
+-	optional<io_engine::wait_result> mp;
++	boost::optional<io_engine::wait_result> mp;
+ 
+ 	if (!pending())
+ 		return;
+--- a/block-cache/io_engine.cc
++++ b/block-cache/io_engine.cc
+@@ -125,13 +125,13 @@
+ 	return r == 1;
+ }
+ 
+-optional<io_engine::wait_result>
++boost::optional<io_engine::wait_result>
+ aio_engine::wait()
+ {
+ 	return wait_(NULL);
+ }
+ 
+-optional<io_engine::wait_result>
++boost::optional<io_engine::wait_result>
+ aio_engine::wait(unsigned &microsec)
+ {
+ 	timespec start = micro_to_ts(microsec);
+@@ -156,7 +156,7 @@
+ 	}
+ 
+ 	if (r == 0) {
+-		return optional<wait_result>();
++		return boost::optional<wait_result>();
+ 	}
+ 
+ 	iocb *cb = reinterpret_cast<iocb *>(event.obj);
+@@ -164,19 +164,19 @@
+ 
+ 	if (event.res == cb->u.c.nbytes) {
+ 		cbs_.free(cb);
+-		return optional<wait_result>(make_pair(true, context));
++		return boost::optional<wait_result>(make_pair(true, context));
+ 
+ 	} else if (static_cast<int>(event.res) < 0) {
+ 		cbs_.free(cb);
+-		return optional<wait_result>(make_pair(false, context));
++		return boost::optional<wait_result>(make_pair(false, context));
+ 
+ 	} else {
+ 		cbs_.free(cb);
+-		return optional<wait_result>(make_pair(false, context));
++		return boost::optional<wait_result>(make_pair(false, context));
+ 	}
+ 
+ 	// shouldn't get here
+-	return optional<wait_result>(make_pair(false, 0));
++	return boost::optional<wait_result>(make_pair(false, 0));
+ }
+ 
+ struct timespec
+--- a/caching/cache_restore.cc
++++ b/caching/cache_restore.cc
+@@ -40,8 +40,8 @@
+ 			  override_version(1) {
+ 		}
+ 
+-		optional<string> input;
+-		optional<string> output;
++		boost::optional<string> input;
++		boost::optional<string> output;
+ 
+ 		uint32_t metadata_version;
+ 		bool clean_shutdown;
+@@ -154,11 +154,11 @@
+ 			return 0;
+ 
+ 		case 'i':
+-			fs.input = optional<string>(string(optarg));
++			fs.input = boost::optional<string>(string(optarg));
+ 			break;
+ 
+ 		case 'o':
+-			fs.output = optional<string>(string(optarg));
++			fs.output = boost::optional<string>(string(optarg));
+ 			break;
+ 
+ 		case 'q':
+--- a/caching/cache_writeback.cc
++++ b/caching/cache_writeback.cc
+@@ -150,7 +150,7 @@
+ 		}
+ 
+ 		void check_for_completed_copies(bool block = false) {
+-			optional<copy_op> mop;
++			boost::optional<copy_op> mop;
+ 
+ 			do {
+ 				if (block)
+--- a/era/era_invalidate.cc
++++ b/era/era_invalidate.cc
+@@ -27,7 +27,7 @@
+ 		}
+ 
+ 		bool metadata_snapshot_;
+-		optional<uint32_t> era_threshold_;
++		boost::optional<uint32_t> era_threshold_;
+ 	};
+ 
+ 	//--------------------------------
+@@ -88,7 +88,7 @@
+ 		walk_writeset_tree(md.tm_, *md.writeset_tree_, v, dv);
+ 	}
+ 
+-	void mark_blocks_since(metadata const &md, optional<uint32_t> const &threshold, set<uint32_t> &result) {
++	void mark_blocks_since(metadata const &md, boost::optional<uint32_t> const &threshold, set<uint32_t> &result) {
+ 		if (!threshold)
+ 			// Can't get here, just putting in to pacify the compiler
+ 			throw std::runtime_error("threshold not set");
+--- a/era/era_restore.cc
++++ b/era/era_restore.cc
+@@ -28,8 +28,8 @@
+ 			: quiet(false) {
+ 		}
+ 
+-		optional<string> input;
+-		optional<string> output;
++		boost::optional<string> input;
++		boost::optional<string> output;
+ 		bool quiet;
+ 	};
+ 
+@@ -99,11 +99,11 @@
+ 			return 0;
+ 
+ 		case 'i':
+-			fs.input = optional<string>(string(optarg));
++			fs.input = boost::optional<string>(string(optarg));
+ 			break;
+ 
+ 		case 'o':
+-			fs.output = optional<string>(string(optarg));
++			fs.output = boost::optional<string>(string(optarg));
+ 			break;
+ 
+ 		case 'q':
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -162,7 +162,7 @@
+ TOP_BUILDDIR:=@top_builddir@
+ CFLAGS+=-fPIC
+ CFLAGS+=@LFS_FLAGS@
+-CXXFLAGS+=-fPIC -fno-strict-aliasing -std=c++11
++CXXFLAGS+=-fPIC -fno-strict-aliasing
+ 
+ ifeq ("@DEVTOOLS@", "yes")
+ CXXFLAGS+=-DDEV_TOOLS
+--- a/persistent-data/hex_dump.h
++++ b/persistent-data/hex_dump.h
+@@ -19,6 +19,7 @@
+ #ifndef HEX_DUMP_H
+ #define HEX_DUMP_H
+ 
++#include <cstddef>
+ #include <iosfwd>
+ 
+ //----------------------------------------------------------------
+--- a/persistent-data/transaction_manager.cc
++++ b/persistent-data/transaction_manager.cc
+@@ -48,7 +48,7 @@
+ transaction_manager::write_ref
+ transaction_manager::new_block(validator v)
+ {
+-	optional<block_address> mb = sm_->new_block();
++	boost::optional<block_address> mb = sm_->new_block();
+ 	if (!mb)
+ 		throw runtime_error("transaction_manager::new_block() couldn't allocate new block");
+ 
+@@ -67,7 +67,7 @@
+ 		return make_pair(bm_->write_lock(orig, v), need_inc);
+ 
+ 	read_ref src = bm_->read_lock(orig, v);
+-	optional<block_address> mb = sm_->new_block();
++	boost::optional<block_address> mb = sm_->new_block();
+ 	if (!mb)
+ 		throw runtime_error("transaction_manager::shadow() couldn't allocate new block");
+ 
+--- a/thin-provisioning/metadata_checker.cc
++++ b/thin-provisioning/metadata_checker.cc
+@@ -182,7 +182,7 @@
+ 	error_state examine_mapping_tree_(transaction_manager::ptr tm,
+ 					  superblock_detail::superblock const &sb,
+ 					  nested_output &out,
+-                                          optional<space_map::ptr> data_sm,
++                                          boost::optional<space_map::ptr> data_sm,
+ 					  bool ignore_non_fatal) {
+ 		out << "examining mapping tree" << end_message();
+ 		nested_output::nest _ = out.push();
+@@ -213,7 +213,7 @@
+ 	error_state examine_mapping_tree(transaction_manager::ptr tm,
+ 					 superblock_detail::superblock const &sb,
+ 					 nested_output &out,
+-	                                 optional<space_map::ptr> data_sm,
++	                                 boost::optional<space_map::ptr> data_sm,
+ 					 bool ignore_non_fatal) {
+ 		error_state err = examine_devices_tree_(tm, sb, out, ignore_non_fatal);
+ 		err << examine_mapping_tree_(tm, sb, out, data_sm, ignore_non_fatal);
+@@ -403,7 +403,7 @@
+ 				// until that there's a better solution in space
+ 				// and time complexity
+ 				space_map::ptr data_sm{open_disk_sm(*tm, &sb.data_space_map_root_)};
+-				optional<space_map::ptr> core_sm;
++				boost::optional<space_map::ptr> core_sm;
+ 				err_ << examine_data_mappings(tm, sb, options_.data_mapping_opts_, out_, core_sm);
+ 
+ 				if (err_ == FATAL)
+@@ -418,7 +418,7 @@
+ 					err_ << compare_space_maps(data_sm, *core_sm, out_);
+ 			} else
+ 				err_ << examine_data_mappings(tm, sb, options_.data_mapping_opts_, out_,
+-							      optional<space_map::ptr>());
++							      boost::optional<space_map::ptr>());
+
+ 			metadata_checked_ = true;
+ 		}
+@@ -509,7 +509,7 @@
+ 				      superblock_detail::superblock const &sb,
+ 				      check_options::data_mapping_options option,
+ 				      nested_output &out,
+-                                      optional<space_map::ptr> data_sm) {
++                                      boost::optional<space_map::ptr> data_sm) {
+ 			error_state err = NO_ERROR;
+ 
+ 			switch (option) {
+--- a/thin-provisioning/metadata_dumper.cc
++++ b/thin-provisioning/metadata_dumper.cc
+@@ -125,7 +125,7 @@
+ 	};
+ 
+ 	// See comment on get_map_ids
+-	optional<set<uint32_t> >
++	boost::optional<set<uint32_t> >
+ 	get_dev_ids(transaction_manager &tm, block_address root) {
+ 		d_thin_id_extractor de;
+ 		fatal_details_damage dv;
+@@ -134,7 +134,7 @@
+ 		try {
+ 			walk_device_tree(tree, de, dv, true);
+ 		} catch (...) {
+-			return optional<set<uint32_t>>();
++			return boost::optional<set<uint32_t>>();
+ 		}
+ 
+ 		return de.dd_;
+@@ -150,7 +150,7 @@
+ 
+ 	// The walk will do more sanity checks than we did when scanning the metadata, so
+ 	// it's possible that it will fail and throw a metadata damage exception.
+-	optional<set<uint32_t> >
++	boost::optional<set<uint32_t> >
+ 	get_map_ids(transaction_manager &tm, block_address root) {
+ 		m_thin_id_extractor me;
+ 		fatal_mapping_damage mv;
+@@ -159,7 +159,7 @@
+ 		try {
+ 			walk_mapping_tree(tree, me, mv, true);
+ 		} catch (...) {
+-			return optional<set<uint32_t>>();
++			return boost::optional<set<uint32_t>>();
+ 		}
+ 
+ 		return me.dd_;
+@@ -288,7 +288,7 @@
+ 			uint32_t time;
+ 		};
+ 
+-		optional<roots>
++		boost::optional<roots>
+ 		find_best_roots(transaction_manager &tm) {
+ 			vector<node_info> mapping_roots;
+ 			vector<node_info> device_roots;
+@@ -334,7 +334,7 @@
+ 			if (pairs.size())
+ 				return mk_roots(pairs[0]);
+ 			else
+-				return optional<roots>();
++				return boost::optional<roots>();
+ 		}
+ 
+ 	private:
+@@ -623,12 +623,12 @@
+ 			}
+ 		}
+ 
+-		optional<node_info> lookup_info(block_address b) const {
++		boost::optional<node_info> lookup_info(block_address b) const {
+ 			auto it = infos_.find(b);
+ 			if (it == infos_.end())
+-				return optional<node_info>();
++				return boost::optional<node_info>();
+ 
+-			return optional<node_info>(it->second);
++			return boost::optional<node_info>(it->second);
+ 		}
+ 
+ 		block_manager &bm_;
+@@ -846,16 +846,16 @@
+ 		return sb;
+ 	}
+ 
+-	optional<superblock_detail::superblock>
++	boost::optional<superblock_detail::superblock>
+ 	maybe_read_superblock(block_manager::ptr bm)
+ 	{
+ 		try {
+ 			auto sb = read_superblock(bm);
+-			return optional<superblock_detail::superblock>(sb);
++			return boost::optional<superblock_detail::superblock>(sb);
+ 		} catch (...) {
+ 		}
+ 
+-		return optional<superblock_detail::superblock>();
++		return boost::optional<superblock_detail::superblock>();
+ 	}
+ 
+ 	void
+--- a/thin-provisioning/thin_dump.cc
++++ b/thin-provisioning/thin_dump.cc
+@@ -50,7 +50,7 @@
+ 		string format;
+ 		bool repair;
+ 		bool use_metadata_snap;
+-		optional<block_address> snap_location;
++		boost::optional<block_address> snap_location;
+ 	};
+ 
+ 	metadata::ptr open_metadata(string const &path, struct flags &flags) {
+--- a/thin-provisioning/thin_ls.cc
++++ b/thin-provisioning/thin_ls.cc
+@@ -238,7 +238,7 @@
+ 
+ 	void pass1(metadata::ptr md, mapping_set &mappings, ::uint64_t dev_id) {
+ 		dev_tree::key k = {dev_id};
+-		optional<::uint64_t> dev_root = md->mappings_top_level_->lookup(k);
++		boost::optional<::uint64_t> dev_root = md->mappings_top_level_->lookup(k);
+ 
+ 		if (!dev_root)
+ 			throw runtime_error("couldn't find mapping tree root");
+@@ -254,7 +254,7 @@
+ 
+ 	block_address count_exclusives(metadata::ptr md, mapping_set const &mappings, ::uint64_t dev_id) {
+ 		dev_tree::key k = {dev_id};
+-		optional<::uint64_t> dev_root = md->mappings_top_level_->lookup(k);
++		boost::optional<::uint64_t> dev_root = md->mappings_top_level_->lookup(k);
+ 
+ 		if (!dev_root)
+ 			throw runtime_error("couldn't find mapping tree root");
+@@ -324,7 +324,7 @@
+ 		metadata::ptr md;
+ 
+ 		if (flags.use_metadata_snap)
+-			md.reset(new metadata(bm, optional<block_address>()));
++			md.reset(new metadata(bm, boost::optional<block_address>()));
+ 		else
+ 			md.reset(new metadata(bm));
+ 
+--- a/unit-tests/bitset_t.cc
++++ b/unit-tests/bitset_t.cc
+@@ -60,14 +60,14 @@
+ 			  tm_(bm_, sm_) {
+ 		}
+ 
+-		bitset::ptr
++		persistent_data::bitset::ptr
+ 		create_bitset() {
+-			return bitset::ptr(new bitset(tm_));
++			return persistent_data::bitset::ptr(new persistent_data::bitset(tm_));
+ 		}
+ 
+-		bitset::ptr
++		persistent_data::bitset::ptr
+ 		open_bitset(block_address root, unsigned count) {
+-			return bitset::ptr(new bitset(tm_, root, count));
++			return persistent_data::bitset::ptr(new persistent_data::bitset(tm_, root, count));
+ 		}
+ 
+ 	private:
+@@ -81,7 +81,7 @@
+ 
+ TEST_F(BitsetTests, create_empty_bitset)
+ {
+-	bitset::ptr bs = create_bitset();
++	persistent_data::bitset::ptr bs = create_bitset();
+ 	ASSERT_THROW(bs->get(0), runtime_error);
+ }
+ 
+@@ -89,7 +89,7 @@
+ {
+ 	unsigned const COUNT = 100000;
+ 
+-	bitset::ptr bs = create_bitset();
++	persistent_data::bitset::ptr bs = create_bitset();
+ 	bs->grow(COUNT, false);
+ 
+ 	for (unsigned i = 0; i < COUNT; i++)
+@@ -100,7 +100,7 @@
+ {
+ 	unsigned const COUNT = 100000;
+ 
+-	bitset::ptr bs = create_bitset();
++	persistent_data::bitset::ptr bs = create_bitset();
+ 	bs->grow(COUNT, true);
+ 
+ 	for (unsigned i = 0; i < COUNT; i++)
+@@ -111,7 +111,7 @@
+ {
+ 	unsigned const COUNT = 100000;
+ 
+-	bitset::ptr bs = create_bitset();
++	persistent_data::bitset::ptr bs = create_bitset();
+ 	bs->grow(COUNT, false);
+ 	ASSERT_THROW(bs->grow(COUNT / 2, false), runtime_error);
+ }
+@@ -120,7 +120,7 @@
+ {
+ 	unsigned const COUNT = 100000;
+ 	unsigned const STEP = 37;
+-	bitset::ptr bs = create_bitset();
++	persistent_data::bitset::ptr bs = create_bitset();
+ 
+ 	vector<unsigned> chunks;
+ 	unsigned c;
+@@ -150,7 +150,7 @@
+ TEST_F(BitsetTests, set_out_of_bounds_throws)
+ {
+ 	unsigned const COUNT = 100000;
+-	bitset::ptr bs = create_bitset();
++	persistent_data::bitset::ptr bs = create_bitset();
+ 
+ 	ASSERT_THROW(bs->set(0, true), runtime_error);
+ 	bs->grow(COUNT, true);
+@@ -160,7 +160,7 @@
+ TEST_F(BitsetTests, set_works)
+ {
+ 	unsigned const COUNT = 100000;
+-	bitset::ptr bs = create_bitset();
++	persistent_data::bitset::ptr bs = create_bitset();
+ 
+ 	bs->grow(COUNT, true);
+ 	for (unsigned i = 0; i < COUNT; i += 7)
+@@ -176,7 +176,7 @@
+ 	block_address root;
+ 
+ 	{
+-		bitset::ptr bs = create_bitset();
++		persistent_data::bitset::ptr bs = create_bitset();
+ 
+ 		bs->grow(COUNT, true);
+ 		for (unsigned i = 0; i < COUNT; i += 7)
+@@ -186,7 +186,7 @@
+ 	}
+ 
+ 	{
+-		bitset::ptr bs = open_bitset(root, COUNT);
++		persistent_data::bitset::ptr bs = open_bitset(root, COUNT);
+ 		for (unsigned i = 0; i < COUNT; i++)
+ 			ASSERT_THAT(bs->get(i), Eq(i % 7 ? true : false));
+ 	}
+@@ -198,7 +198,7 @@
+ 	block_address root;
+ 
+ 	{
+-		bitset::ptr bs = create_bitset();
++		persistent_data::bitset::ptr bs = create_bitset();
+ 
+ 		bs->grow(COUNT, true);
+ 		for (unsigned i = 0; i < COUNT; i += 7)
+@@ -211,7 +211,7 @@
+ 	}
+ 
+ 	{
+-		bitset::ptr bs = open_bitset(root, COUNT);
++		persistent_data::bitset::ptr bs = open_bitset(root, COUNT);
+ 		bitset_checker c(COUNT, 7);
+ 		bs->walk_bitset(c);
+ 	}
+--- a/unit-tests/copier_t.cc
++++ b/unit-tests/copier_t.cc
+@@ -32,23 +32,27 @@
+ namespace {
+ 	unsigned const BLOCK_SIZE = 64u;
+ 	using wait_result = io_engine::wait_result;
++}
+ 
+-	ostream &operator <<(ostream &out, optional<wait_result> const &mwr) {
++namespace boost {
++	ostream &operator <<(ostream &out, boost::optional<wait_result> const &mwr) {
+ 		if (mwr) {
+ 			out << "Just[wait_result[" << mwr->first << ", " << mwr->second << "]]";
+ 		} else
+ 			out << "Nothing";
+ 		return out;
+ 	}
++}
+ 
++namespace {
+ 	class io_engine_mock : public io_engine {
+ 	public:
+ 		MOCK_METHOD3(open_file, handle(string const &, mode, sharing));
+ 		MOCK_METHOD1(close_file, void(handle));
+ 		MOCK_METHOD6(issue_io, bool(handle, dir, sector_t, sector_t, void *, unsigned));
+ 
+-		MOCK_METHOD0(wait, optional<wait_result>());
+-		MOCK_METHOD1(wait, optional<wait_result>(unsigned &));
++		MOCK_METHOD0(wait, boost::optional<wait_result>());
++		MOCK_METHOD1(wait, boost::optional<wait_result>(unsigned &));
+ 	};
+ 
+ 	class CopierTests : public Test {
+@@ -72,8 +76,8 @@
+ 							     BLOCK_SIZE, 1 * 1024 * 1024));
+ 		}
+ 
+-		static optional<wait_result> make_wr(bool success, unsigned context) {
+-			return optional<wait_result>(wait_result(success, context));
++		static boost::optional<wait_result> make_wr(bool success, unsigned context) {
++			return boost::optional<wait_result>(wait_result(success, context));
+ 		}
+ 
+ 		void issue_successful_op(copier &c, copy_op &op, unsigned context) {
+@@ -258,7 +262,7 @@
+ 		WillOnce(Return(true));
+ 
+ 	EXPECT_CALL(engine_, wait(micro)).
+-		WillOnce(DoAll(SetArgReferee<0>(0u), Return(optional<wait_result>())));
++		WillOnce(DoAll(SetArgReferee<0>(0u), Return(boost::optional<wait_result>())));
+ 
+ 	auto mop = c->wait(micro);
+ 	ASSERT_FALSE(mop);
+--- a/unit-tests/rolling_hash_t.cc
++++ b/unit-tests/rolling_hash_t.cc
+@@ -127,10 +127,10 @@
+ 	unsigned min = 100000, max = 0;
+
+ 	bytes bs = random_bytes(1024 * 1024 * 100);
+-	vector<unsigned> counts(window_size_, 0);
++	vector<unsigned> counts(window_size_ + 1, 0);
+ 
+ 	for (unsigned i = 0; i < bs.size(); i++) {
+-		optional<unsigned> b = h_.step(bs[i]);
++		boost::optional<unsigned> b = h_.step(bs[i]);
+ 		if (b) {
+ 			counts[*b]++;
+ 
+--- a/unit-tests/span_iterator_t.cc
++++ b/unit-tests/span_iterator_t.cc
+@@ -81,7 +81,9 @@
+ 
+ 		base::run_set<block_address> forbidden;
+ 	};
++}
+ 
++namespace boost {
+ 	ostream &operator <<(ostream &out, maybe_span const &m) {
+ 		out << "maybe_span[";
+ 		if (m)

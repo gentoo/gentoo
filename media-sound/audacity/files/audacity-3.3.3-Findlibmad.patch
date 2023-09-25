@@ -1,0 +1,55 @@
+https://github.com/audacity/audacity/pull/4916
+https://github.com/audacity/audacity/pull/4917
+
+From b42dfbe2be1994ccfeff449b5c5cbe49994ffb38 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@inventati.org>
+Date: Fri, 14 Jul 2023 21:17:45 +0000
+Subject: [PATCH] Add missing Findlibmad.cmake file
+
+This fixes compiling against the system installed libmad.
+---
+ cmake-proxies/cmake-modules/Findlibmad.cmake | 35 ++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+ create mode 100644 cmake-proxies/cmake-modules/Findlibmad.cmake
+
+diff --git a/cmake-proxies/cmake-modules/Findlibmad.cmake b/cmake-proxies/cmake-modules/Findlibmad.cmake
+new file mode 100644
+index 000000000000..0858c2d93e24
+--- /dev/null
++++ b/cmake-proxies/cmake-modules/Findlibmad.cmake
+@@ -0,0 +1,35 @@
++#[[
++A module to look for libmad
++]]
++
++if( NOT libmad_FOUND )
++   find_path( libmad_INCLUDE_DIR mad.h )
++   find_library( libmad_LIBRARIES NAMES mad )
++
++   if( libmad_INCLUDE_DIR AND libmad_LIBRARIES )
++      set( libmad_FOUND Yes )
++   endif()
++
++   if( libmad_FOUND )
++      if( NOT libmad_FIND_QUIETLY )
++         message( STATUS "Found mad: \n\tlibmad_INCLUDE_DIR: ${libmad_INCLUDE_DIR}\n\tlibmad_LIBRARIES: ${libmad_LIBRARIES}" )
++      endif()
++
++      if( NOT TARGET libmad::libmad )
++         add_library( libmad::libmad INTERFACE IMPORTED GLOBAL)
++
++         target_include_directories( libmad::libmad INTERFACE ${libmad_INCLUDE_DIR} )
++         target_link_libraries( libmad::libmad INTERFACE ${libmad_LIBRARIES} )
++      endif()
++   else()
++      if( libmad_FIND_REQUIRED )
++         message( FATAL_ERROR "Could not find libmad")
++      endif()
++   endif()
++
++   mark_as_advanced(
++      libmad_FOUND
++      libmad_INCLUDE_DIR
++      libmad_LIBRARIES
++   )
++endif()

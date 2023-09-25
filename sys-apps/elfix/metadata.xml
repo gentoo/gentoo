@@ -13,4 +13,8 @@
 		<flag name="xtpax">Enable XATTR_PAX_FLAGS support.</flag>
 		<flag name="ptpax">Enable PT_PAX_FLAGS support.</flag>
 	</use>
+	<upstream>
+		<remote-id type="gentoo">proj/elfix</remote-id>
+		<remote-id type="github">gentoo/elfix</remote-id>
+	</upstream>
 </pkgmetadata>

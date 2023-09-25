@@ -1,0 +1,20 @@
+--- a/drv_mac80211.c
++++ b/drv_mac80211.c
+@@ -52,6 +52,7 @@
+ #include "lorcon_int.h"
+ #include "lorcon_packasm.h"
+ #include "lorcon_endian.h"
++#include "iwcontrol.h"
+ 
+ #ifndef IEEE80211_RADIOTAP_FLAGS
+ #define IEEE80211_RADIOTAP_FLAGS    (1 << 1)
+--- a/drv_madwifing.c
++++ b/drv_madwifing.c
+@@ -48,6 +48,7 @@
+ #include "ifcontrol_linux.h"
+ #include "madwifing_control.h"
+ #include "lorcon_int.h"
++#include "lorcon_packasm.h"
+ 
+ /* Monitor, inject, and injmon are all the same method, make a new
+  * mwng VAP */

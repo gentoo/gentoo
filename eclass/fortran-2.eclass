@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -26,24 +26,21 @@
 #
 # FORTRAN_NEED_OPENMP=1
 
-inherit toolchain-funcs
-
-case ${EAPI:-0} in
-	# not used in the eclass, but left for backward compatibility with legacy users
-	5|6) inherit eutils ;;
-	7|8) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup
+if [[ -z ${_FORTRAN_2_ECLASS} ]]; then
+_FORTRAN_2_ECLASS=1
 
-if [[ ! ${_FORTRAN_2_CLASS} ]]; then
+inherit toolchain-funcs
 
 # @ECLASS_VARIABLE: FORTRAN_NEED_OPENMP
 # @DESCRIPTION:
 # Set to "1" in order to automatically have the eclass abort if the fortran
 # compiler lacks openmp support.
-: ${FORTRAN_NEED_OPENMP:=0}
+: "${FORTRAN_NEED_OPENMP:=0}"
 
 # @ECLASS_VARIABLE: FORTRAN_STANDARD
 # @DESCRIPTION:
@@ -51,7 +48,7 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 # Generally not needed as default is sufficient.
 #
 # Valid settings are any combination of: 77 90 95 2003
-: ${FORTRAN_STANDARD:=77}
+: "${FORTRAN_STANDARD:=77}"
 
 # @ECLASS_VARIABLE: FORTRAN_NEEDED
 # @DESCRIPTION:
@@ -64,7 +61,7 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 # DEPEND="lapack? ( virtual/fortran )"
 #
 # If unset, we always depend on virtual/fortran.
-: ${FORTRAN_NEEDED:=always}
+: "${FORTRAN_NEEDED:=always}"
 
 for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
@@ -110,7 +107,7 @@ fortran_int64_abi_fflags() {
 	elif [[ ${_FC} == ifort ]]; then
 		echo "-integer-size 64"
 	else
-		die "Compiler flag for 64bit interger for ${_FC} unknown"
+		die "Compiler flag for 64bit integer for ${_FC} unknown"
 	fi
 }
 
@@ -224,9 +221,9 @@ _fortran_test_function() {
 
 	local dialect
 
-	: ${F77:=$(tc-getFC)}
+	: "${F77:=$(tc-getFC)}"
 
-	: ${FORTRAN_STANDARD:=77}
+	: "${FORTRAN_STANDARD:=77}"
 	for dialect in ${FORTRAN_STANDARD}; do
 		case ${dialect} in
 			77) _fortran_compile_test "$(tc-getF77)" || \
@@ -293,5 +290,6 @@ fortran-2_pkg_setup() {
 	fi
 }
 
-_FORTRAN_2_ECLASS=1
 fi
+
+EXPORT_FUNCTIONS pkg_setup

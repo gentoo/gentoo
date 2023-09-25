@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="MIT Boost-1.0 BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
@@ -69,6 +69,9 @@ src_configure() {
 		# TODO: enable this+tests, should(?) be easier to do with >=0.5.0 but
 		# still need looking into (please fill a bug if need this right away)
 		-DRYML_BUILD_API=no
+
+		# rapidyaml sets c++11, but >=gtest-1.13 wants >=c++14 (bug #893272)
+		-DC4_CXX_STANDARD=17
 	)
 
 	cmake_src_configure

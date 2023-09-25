@@ -1,0 +1,10 @@
+--- a/tcl3dOgl/swigfiles/tcl3dOgl.i	2023-01-17 12:19:29.845765609 +0100
++++ b/tcl3dOgl/swigfiles/tcl3dOgl.i	2023-01-17 12:21:51.336490329 +0100
+@@ -31,6 +31,7 @@
+ 
+ %{
+ #include <tk.h>
++#include "Togl/togl.h"
+ %}
+ 
+ %init %{

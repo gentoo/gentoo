@@ -1,0 +1,14 @@
+Subject: [PATCH] python: replace distutils with setuptools
+
+distutils is deprecated for sometime and it was removed in python 3.12.
+
+--- a/bindings/python/setup.py.in	2018-03-24 20:27:41.000000000 +0800
++++ b/bindings/python/setup.py.in	2023-08-06 10:31:12.932358441 +0800
+@@ -1,6 +1,6 @@
+ # python extension setup script for urjtag
+ 
+-from distutils.core import setup, Extension
++from setuptools import setup, Extension
+ 
+ libraries = ['urjtag']
+ libraries.extend( w.replace('-l', '') for w in "@LIBFTDI_LIBS@ @FTD2XXLIB@ @LIBUSB_LIBS@ @LIBINTL@".split() if w.replace('-l', '') not in libraries )

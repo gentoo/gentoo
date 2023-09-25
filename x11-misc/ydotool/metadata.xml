@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Generic Linux command-line automation tool (no X!) ou can use it on
+		anything as long as it accepts keyboard/mouse/whatever input. For
+		example, X11, text console, "RetroArch OS", fbdev apps
+		(fbterm/mplayer/SDL1/LittleVGL/Qt Embedded), etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ReimuNotMoe/ydotool</remote-id>
+		<bugs-to>https://github.com/ReimuNotMoe/ydotool/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

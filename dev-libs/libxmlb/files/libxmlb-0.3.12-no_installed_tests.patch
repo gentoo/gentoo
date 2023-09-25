@@ -1,0 +1,33 @@
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -3,18 +3,6 @@
+     input : 'libxmlb.test.in',
+     output : 'libxmlb.test',
+     configuration : conf,
+-    install: true,
+-    install_dir: installed_test_datadir,
+-  )
+-
+-  install_data([
+-    'test.desktop',
+-    'test.quirk',
+-    'test.xml',
+-    'test.xml.gz.gz.gz',
+-    'test.xml.xz',
+-    'test.xml.zstd',
+-  ],
+-    install_dir: installed_test_bindir,
++    install: false,
+   )
+ endif
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -248,7 +248,7 @@
+     c_args: [
+       '-DSRCDIR="' + join_paths(meson.project_source_root(), 'data') + '"',
+     ],
+-    install : true,
++    install : false,
+     install_dir : installed_test_bindir
+   )
+   test('xb-self-test', e, env : testdatadirs)

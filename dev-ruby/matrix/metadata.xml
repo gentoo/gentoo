@@ -5,4 +5,8 @@
     <email>ruby@gentoo.org</email>
     <name>Gentoo Ruby Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">ruby/matrix</remote-id>
+    <remote-id type="rubygems">matrix</remote-id>
+  </upstream>
 </pkgmetadata>

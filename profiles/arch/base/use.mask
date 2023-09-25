@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Mask secureboot flag on arches where sbsigntools is not keyworded
+secureboot
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # Pulls in dev-util/google-perftools, which is arch-specific
@@ -202,15 +206,11 @@ abi_s390_64
 # These lisps are available only on some arches
 clisp
 clozurecl
+clozurecl64
 cmucl
-ecls
+ecl
 gcl
 sbcl
-
-# Michał Górny <mgorny@gentoo.org> (2013-05-04)
-# Mask systemd flag globally, unmasked on arches on which systemd
-# is keyworded.
-systemd
 
 # Mike Gilbert <floppym@gentoo.org> (2014-10-19)
 # Requires the following packages to be keyworded/stable:

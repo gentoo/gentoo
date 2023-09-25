@@ -1,0 +1,32 @@
+
+From: https://github.com/xdp-project/xdp-tools/commit/cb6d06219d1b49b07980b481a383e1dea74a0702
+Bug: https://bugs.gentoo.org/889842
+
+From cb6d06219d1b49b07980b481a383e1dea74a0702 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Sat, 4 Mar 2023 20:08:25 +0100
+Subject: [PATCH] make: disable stack protector for BPF bits built by clang
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The clang toolchain might have stack-protection enabled by default
+(e.g. via platform configuration) and that won't work for BPF,
+so unconfitionally disable it via -fno-stack-protector.
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ lib/defines.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/defines.mk b/lib/defines.mk
+index f134c43b..54b259f2 100644
+--- a/lib/defines.mk
++++ b/lib/defines.mk
+@@ -1,5 +1,5 @@
+ CFLAGS ?= -O2 -g
+-BPF_CFLAGS ?= -Wno-visibility
++BPF_CFLAGS ?= -Wno-visibility -fno-stack-protector
+ BPF_TARGET ?= bpf
+ 
+ HAVE_FEATURES :=

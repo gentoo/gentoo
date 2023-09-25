@@ -13,7 +13,7 @@
 		- user defined workgroup/link/hosts are supported
 		- national character supported
 		- in config files you can specify different user/password to access different network shares
-		- command "cd mountpoint/username:password@computer_or_ip" allows you to access "computer_or_ip" as user "username" with password "password" (this is insecure, but usefull)
+		- command "cd mountpoint/username:password@computer_or_ip" allows you to access "computer_or_ip" as user "username" with password "password" (this is insecure, but useful)
 		- the program is multithreaded, so simultaneous access to a file/share is possible
 	</longdescription>
 	<upstream>

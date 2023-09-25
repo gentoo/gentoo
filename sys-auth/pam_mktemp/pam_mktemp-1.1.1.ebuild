@@ -1,13 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs pam
 
 DESCRIPTION="Create per-user private temporary directories during login"
-HOMEPAGE="http://www.openwall.com/pam/"
-SRC_URI="http://www.openwall.com/pam/modules/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.openwall.com/pam/"
+SRC_URI="https://www.openwall.com/pam/modules/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2" # LICENSE file says "heavily cut-down 'BSD license'"
 SLOT="0"

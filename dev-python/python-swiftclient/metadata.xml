@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>prometheanfire@gentoo.org</email>
-  </maintainer>
-  <maintainer type="project">
-    <email>openstack@gentoo.org</email>
-    <name>Openstack</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>python@gentoo.org</email>
-    <name>Python</name>
-  </maintainer>
-  <stabilize-allarches/>
-  <upstream>
-    <remote-id type="pypi">python-swiftclient</remote-id>
-    <remote-id type="launchpad">python-swiftclient</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>openstack@gentoo.org</email>
+		<name>Openstack</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">openstack/python-swiftclient</remote-id>
+		<remote-id type="launchpad">python-swiftclient</remote-id>
+		<remote-id type="pypi">python-swiftclient</remote-id>
+	</upstream>
 </pkgmetadata>

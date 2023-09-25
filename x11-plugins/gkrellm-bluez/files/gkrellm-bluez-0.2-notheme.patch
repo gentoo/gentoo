@@ -1,6 +1,5 @@
-diff -u --new-file gkrellm-bluez-0.2-orig/src/decal_net_leds.xpm gkrellm-bluez-0.2/src/decal_net_leds.xpm
---- gkrellm-bluez-0.2-orig/src/decal_net_leds.xpm	1969-12-31 18:00:00.000000000 -0600
-+++ gkrellm-bluez-0.2/src/decal_net_leds.xpm	2007-03-08 09:07:50.000000000 -0600
+--- a/src/decal_net_leds.xpm
++++ b/src/decal_net_leds.xpm
 @@ -0,0 +1,66 @@
 +/* XPM */
 +static char * decal_net_leds_xpm[] = {
@@ -68,9 +67,8 @@ diff -u --new-file gkrellm-bluez-0.2-orig/src/decal_net_leds.xpm gkrellm-bluez-0
 +"34567890ab",
 +"cdefghijkl",
 +"34567890ab"};
-diff -u --new-file gkrellm-bluez-0.2-orig/src/gkrellm-bluez-chart.c gkrellm-bluez-0.2/src/gkrellm-bluez-chart.c
---- gkrellm-bluez-0.2-orig/src/gkrellm-bluez-chart.c	2006-11-14 13:50:24.000000000 -0600
-+++ gkrellm-bluez-0.2/src/gkrellm-bluez-chart.c	2007-03-08 09:13:29.000000000 -0600
+--- a/src/gkrellm-bluez-chart.c
++++ b/src/gkrellm-bluez-chart.c
 @@ -22,6 +22,8 @@
  
  #include "gkrellm-bluez-chart.h"

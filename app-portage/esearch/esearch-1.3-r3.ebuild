@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="readline(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -11,13 +11,14 @@ inherit distutils-r1
 
 DESCRIPTION="Replacement for 'emerge --search' with search-index"
 HOMEPAGE="https://github.com/fuzzyray/esearch"
-SRC_URI="https://github.com/downloads/fuzzyray/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/fuzzyray/esearch/archive/refs/tags/${P}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}"/${PN}-${P}
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="l10n_fr l10n_it"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 DEPEND="sys-apps/portage"
 RDEPEND="${DEPEND}"

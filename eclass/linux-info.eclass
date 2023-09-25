@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-info.eclass
@@ -6,6 +6,7 @@
 # kernel@gentoo.org
 # @AUTHOR:
 # Original author: John Mylchreest <johnm@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: eclass used for accessing kernel related information
 # @DESCRIPTION:
 # This eclass is used as a central eclass for accessing kernel
@@ -26,6 +27,14 @@
 # get_version
 # get_running_version
 
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_LINUX_INFO_ECLASS} ]]; then
+_LINUX_INFO_ECLASS=1
+
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
 
@@ -36,7 +45,7 @@
 # @DESCRIPTION:
 # Do not error out in check_extra_config if CONFIG settings are not met.
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
-: ${CHECKCONFIG_DONOTHING:=""}
+: "${CHECKCONFIG_DONOTHING:=""}"
 
 # @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
@@ -76,8 +85,8 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # e.g.: ERROR_MTRR="MTRR exists in the .config but shouldn't!!"
 #
 # CONFIG_CHECK="CFG" with ERROR_<CFG>="Error Message" will die
-# CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dieing
-# CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dieing
+# CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dying
+# CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dying
 
 
 # @ECLASS_VARIABLE: KBUILD_OUTPUT
@@ -96,7 +105,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # the following names, in order: GNUmakefile, makefile and Makefile. Set this variable to the
 # proper Makefile name or the eclass will search in this order for it.
 # See https://www.gnu.org/software/make/manual/make.html
-: ${KERNEL_MAKEFILE:=""}
+: "${KERNEL_MAKEFILE:=""}"
 
 # @ECLASS_VARIABLE: KV_FULL
 # @OUTPUT_VARIABLE
@@ -147,13 +156,11 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # Do not check for kernel sources or a running kernel version.
 # Main use-case is for chroots.
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
-: ${SKIP_KERNEL_CHECK:=""}
+: "${SKIP_KERNEL_CHECK:=""}"
 
 # And to ensure all the weirdness with crosscompile
 inherit toolchain-funcs
-[[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
-
-EXPORT_FUNCTIONS pkg_setup
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver
 
 # bug #75034
 case ${ARCH} in
@@ -231,7 +238,6 @@ getfilevar() {
 		# We use nonfatal because we want the caller to take care of things #373151
 		# Pass need-config= to make to avoid config check in kernel Makefile.
 		# Pass dot-config=0 to avoid the config check in kernels prior to 5.4.
-		[[ ${EAPI:-0} == [0123] ]] && nonfatal() { "$@"; }
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
 			nonfatal emake -C "${basedname}" --no-print-directory M="${T}" \
 			dot-config=0 need-config= need-compiler= \
@@ -284,7 +290,7 @@ _LINUX_CONFIG_EXISTS_DONE=
 # @FUNCTION: linux_config_qa_check
 # @INTERNAL
 # @DESCRIPTION:
-# Helper funciton which returns an error before the function argument is run if no config exists
+# Helper function which returns an error before the function argument is run if no config exists
 linux_config_qa_check() {
 	local f="$1"
 
@@ -673,7 +679,7 @@ get_running_version() {
 	KV_MINOR=$(ver_cut 2 ${kv_full})
 	KV_PATCH=$(ver_cut 3 ${kv_full})
 	KV_EXTRA="${KV_FULL#${KV_MAJOR}.${KV_MINOR}${KV_PATCH:+.${KV_PATCH}}}"
-	: ${KV_PATCH:=0}
+	: "${KV_PATCH:=0}"
 
 	return 0
 }
@@ -805,8 +811,14 @@ check_extra_config() {
 			export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
 			return 0
 		fi
-	else
-		require_configured_kernel
+	elif ! linux_config_exists; then
+		qeerror "Could not find a neither a usable .config in the kernel source directory"
+		qeerror "nor a /proc/config.gz file,"
+		qeerror "Please ensure that ${KERNEL_DIR} points to a configured set of Linux sources."
+		qeerror "If you are using KBUILD_OUTPUT, please set the environment var so that"
+		qeerror "it points to the necessary object directory so that it might find .config"
+		qeerror "or have a properly configured kernel to produce a config.gz file. (CONFIG_IKCONFIG)."
+		die "Kernel not configured; no .config found in ${KV_OUT_DIR} or /proc/config.gz found"
 	fi
 
 	ebegin "Checking for suitable kernel configuration options"
@@ -1003,3 +1015,7 @@ kernel_get_makefile() {
 	[[ -s ${KV_DIR}/Makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/Makefile" && return
 
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup

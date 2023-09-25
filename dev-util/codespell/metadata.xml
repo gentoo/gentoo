@@ -16,6 +16,7 @@
 </longdescription>
 <upstream>
 	<bugs-to>https://github.com/codespell-project/codespell/issues</bugs-to>
+	<remote-id type="pypi">codespell</remote-id>
 	<remote-id type="github">codespell-project/codespell</remote-id>
 </upstream>
 </pkgmetadata>

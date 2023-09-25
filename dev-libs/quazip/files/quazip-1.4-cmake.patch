@@ -1,0 +1,76 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f6719c6..e0520ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,12 +14,10 @@ if(EMSCRIPTEN)
+   option(BUILD_SHARED_LIBS "" OFF)
+   option(QUAZIP_INSTALL "" OFF)
+   option(QUAZIP_USE_QT_ZLIB "" OFF)
+-  option(QUAZIP_ENABLE_TESTS "Build QuaZip tests" OFF)
+ else()
+   option(BUILD_SHARED_LIBS "" ON)
+   option(QUAZIP_INSTALL "" ON)
+   option(QUAZIP_USE_QT_ZLIB "" OFF)
+-  option(QUAZIP_ENABLE_TESTS "Build QuaZip tests" OFF)
+ endif()
+ 
+ # Make BZIP2 optional
+@@ -56,6 +54,8 @@ else()
+     set(CMAKE_CXX_STANDARD 14)
+ endif()
+ 
++include(CTest)
++
+ if(NOT CMAKE_BUILD_TYPE)
+ 	set(CMAKE_BUILD_TYPE RELEASE)
+ endif()
+@@ -72,23 +72,29 @@ set(QUAZIP_DIR_NAME QuaZip-Qt${QUAZIP_QT_MAJOR_VERSION}-${QUAZIP_LIB_VERSION})
+ set(QUAZIP_PACKAGE_NAME QuaZip-Qt${QUAZIP_QT_MAJOR_VERSION})
+ 
+ if(QUAZIP_QT_MAJOR_VERSION EQUAL 6)
+-	find_package(Qt6 REQUIRED COMPONENTS Core Core5Compat
+-                         OPTIONAL_COMPONENTS Network Test)
++	find_package(Qt6 REQUIRED COMPONENTS Core Core5Compat)
+ 	set(QUAZIP_LIB_LIBRARIES Qt6::Core Qt6::Core5Compat)
+-	set(QUAZIP_TEST_QT_LIBRARIES Qt6::Core Qt6::Core5Compat Qt6::Network Qt6::Test)
+ 	set(QUAZIP_PKGCONFIG_REQUIRES "zlib, Qt6Core")
++    if (BUILD_TESTING)
++		find_package(Qt6 REQUIRED COMPONENTS Network Test)
++		set(QUAZIP_TEST_QT_LIBRARIES Qt6::Core Qt6::Core5Compat Qt6::Network Qt6::Test)
++	endif()
+ elseif(QUAZIP_QT_MAJOR_VERSION EQUAL 5)
+-	find_package(Qt5 REQUIRED COMPONENTS Core
+-                         OPTIONAL_COMPONENTS Network Test)
++	find_package(Qt5 REQUIRED COMPONENTS Core)
+ 	set(QUAZIP_LIB_LIBRARIES Qt5::Core)
+-	set(QUAZIP_TEST_QT_LIBRARIES Qt5::Core Qt5::Network Qt5::Test)
+-	set(QUAZIP_PKGCONFIG_REQUIRES "zlib, Qt5Core")
++    set(QUAZIP_PKGCONFIG_REQUIRES "zlib, Qt5Core")
++	if (BUILD_TESTING)
++		find_package(Qt5 REQUIRED COMPONENTS Network Test)
++		set(QUAZIP_TEST_QT_LIBRARIES Qt5::Core Qt5::Network Qt5::Test)
++	endif()
+ elseif(QUAZIP_QT_MAJOR_VERSION EQUAL 4)
+-	find_package(Qt4 4.5.0 REQUIRED COMPONENTS QtCore
+-                           OPTIONAL_COMPONENTS QtNetwork QtTest)
++	find_package(Qt4 4.5.0 REQUIRED COMPONENTS QtCore)
+ 	set(QUAZIP_LIB_LIBRARIES Qt4::QtCore)
+-	set(QUAZIP_TEST_QT_LIBRARIES Qt4::QtCore Qt4::QtNetwork Qt4::QtTest)
+ 	set(QUAZIP_PKGCONFIG_REQUIRES "zlib, QtCore")
++    if (BUILD_TESTING)
++		find_package(Qt4 REQUIRED COMPONENTS Network Test)
++		set(QUAZIP_TEST_QT_LIBRARIES Qt4::QtCore Qt4::QtNetwork Qt4::QtTest)
++	endif()
+ else()
+ 	message(FATAL_ERROR "Qt version ${QUAZIP_QT_MAJOR_VERSION} is not supported")
+ endif()
+@@ -191,8 +197,7 @@ endif()
+ 
+ add_subdirectory(quazip)
+ 
+-if(QUAZIP_ENABLE_TESTS)
++if(BUILD_TESTING)
+     message(STATUS "Building QuaZip tests")
+-    enable_testing()
+     add_subdirectory(qztest)
+ endif()

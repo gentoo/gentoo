@@ -6,7 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
-    <flag name="libgda">Database/GDA support</flag>
+    <flag name="libgda">PostgreSQL support via <pkg>gnome-extra/libgda</pkg></flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">World/planner</remote-id>

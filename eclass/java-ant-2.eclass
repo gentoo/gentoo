@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-ant-2.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # kiorky <kiorky@cryptelium.net>
 # Petteri Räty <betelgeuse@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: eclass for ant based Java packages
 # @DESCRIPTION:
@@ -15,17 +15,15 @@
 # manual manipulation of build.xml files. Should be inherited after java-pkg-2
 # or java-pkg-opt-2 eclass.
 
-inherit java-utils-2 multilib
-
-case ${EAPI:-0} in
-	[5678]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_configure
-
 if [[ -z ${_JAVA_ANT_2_ECLASS} ]] ; then
 _JAVA_ANT_2_ECLASS=1
+
+inherit java-utils-2 multilib
 
 # This eclass provides functionality for Java packages which use
 # ant to build. In particular, it will attempt to fix build.xml files, so that
@@ -61,7 +59,6 @@ if [[ -z "${JAVA_ANT_DISABLE_ANT_CORE_DEP}" ]]; then
 fi
 
 # add ant tasks specified in WANT_ANT_TASKS to DEPEND
-local ANT_TASKS_DEPEND;
 ANT_TASKS_DEPEND="$(java-pkg_ant-tasks-depend)"
 # check that java-pkg_ant-tasks-depend didn't fail
 if [[ $? != 0 ]]; then
@@ -72,8 +69,9 @@ fi
 # We need some tools from javatoolkit. We also need ant dependencies
 # constructed above.
 JAVA_ANT_E_DEPEND="${JAVA_ANT_E_DEPEND}
-	   ${ANT_TASKS_DEPEND}
-	   dev-java/javatoolkit"
+	${ANT_TASKS_DEPEND}
+	dev-java/javatoolkit"
+unset ANT_TASKS_DEPEND
 
 # this eclass must be inherited after java-pkg-2 or java-pkg-opt-2
 # if it's java-pkg-opt-2, ant dependencies are pulled based on USE flag
@@ -277,7 +275,7 @@ java-ant_bsfix_files() {
 
 						for dir in ${JAVA_ANT_JAVADOC_INPUT_DIRS};do
 							if [[ ! -d ${dir} ]]; then
-								eerror "This dir: ${dir} doesnt' exists"
+								eerror "Directory ${dir} doesn't exist"
 								die "You must specify directories for javadoc input/output dirs."
 							fi
 						done
@@ -439,3 +437,5 @@ java-ant_rewrite-bootclasspath() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_configure

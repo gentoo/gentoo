@@ -1,5 +1,32 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2023-09-21)
+# dtrace/systemtap not availabie on ppc platform for jdk
+# configure: ERROR: Unavailable JVM features explicitly enabled for 'server': 'dtrace'
+# https://github.com/openjdk/jdk17u-dev/commit/5b29c6ec93372b20016565b84d449860b7233d6c
+dev-java/openjdk:17 systemtap
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
+# Libei not keyworded here yet
+x11-base/xwayland libei
+
+# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
+# librttopo has not been tested on this arch
+dev-db/spatialite rttopo
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
+# Avoid keywordming more Qt stuff
+dev-python/pyside2 3d datavis scxml
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-03-07)
+# nbval/nbclassic docs require pandoc which is not keyworded here yet
+dev-python/nbval doc
+dev-python/nbclassic doc
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2023-02-23)
+# Mask openvdb, as it pulls in masked media-libs/openexr
+sci-libs/vtk openvdb
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Drags in Rails (propshaft->rails)
@@ -13,10 +40,6 @@ dev-python/bracex doc
 # Sam James <sam@gentoo.org> (2022-10-29)
 # pandoc not keyworded here, bug #878355
 app-admin/conky doc
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2022-10-17)
-# media-libs/libheif not keyworded
-media-gfx/geeqie heif
 
 # Sam James <sam@gentoo.org> (2022-10-16)
 # dev-cpp/notcurses not keyworded here
@@ -169,7 +192,7 @@ app-emulation/qemu capstone
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
 # Requires unkeyworded deps
->=dev-python/ipython-5.4.1 qt5 smp
+>=dev-python/ipython-5.4.1 qt5
 
 # Amy Liffey <amynka@gentoo.org (2018-01-21)
 # dev-libs/cereal not keyworded for ppc
@@ -232,7 +255,6 @@ net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-x11-wm/sawfish kde
 
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
@@ -243,16 +265,12 @@ media-sound/rhythmbox upnp-av
 x11-base/xorg-drivers video_cards_amdgpu
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-10)
-# net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634
+# net-libs/dleyna lack ppc/ppc64 keyword, bug #551634
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
 
 # Pacho Ramos <pacho@gentoo.org> (2015-05-15)
 # Missing keywords
 net-dns/unbound dnstap
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (2015-02-15)
-# There's no keyworded office implementation anymore.
-gnome-extra/sushi office
 
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-24, 2015-04-01)
 # test dependencies need keywording

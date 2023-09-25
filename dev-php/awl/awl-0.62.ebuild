@@ -7,7 +7,7 @@ DESCRIPTION="Andrew McMillan's Web Libraries"
 HOMEPAGE="https://gitlab.com/davical-project/awl"
 SRC_URI="https://www.davical.org/downloads/${PN}_${PV}.orig.tar.xz -> ${P}.tar.xz"
 
-USE_PHP="php7.3 php7.4 php8.0"
+USE_PHP="php8.0"
 
 LICENSE="GPL-2 GPL-2+ GPL-3+ LGPL-2+ LGPL-3+"
 SLOT="0"

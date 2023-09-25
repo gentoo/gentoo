@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..4} luajit )
 MY_PV="${PV/_p/-}"
 
-inherit lua toolchain-funcs
+inherit lua
 
 DESCRIPTION="A command-line argument parsing module for Lua"
 HOMEPAGE="https://github.com/amireh/lua_cliargs"

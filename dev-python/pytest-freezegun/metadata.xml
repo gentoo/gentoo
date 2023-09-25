@@ -6,6 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">ktosiek/pytest-freezegun</remote-id>
 		<remote-id type="pypi">pytest-freezegun</remote-id>
 	</upstream>
 </pkgmetadata>

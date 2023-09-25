@@ -14,6 +14,6 @@
 		<remote-id type="github">zeromq/pyzmq</remote-id>
 	</upstream>
 	<use>
-		<flag name="draft">Enable draft API support</flag>
+		<flag name="drafts">Enable draft API support</flag>
 	</use>
 </pkgmetadata>

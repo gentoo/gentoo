@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">emmanueloga/ffaker</remote-id>
+    <remote-id type="github">ffaker/ffaker</remote-id>
+    <remote-id type="rubygems">ffaker</remote-id>
   </upstream>
 </pkgmetadata>

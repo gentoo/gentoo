@@ -5,4 +5,7 @@
 		<name>Rick Farina</name>
 		<email>zerochaos@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">mvp/uhubctl</remote-id>
+	</upstream>
 </pkgmetadata>

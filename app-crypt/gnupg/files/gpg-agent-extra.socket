@@ -1,0 +1,13 @@
+[Unit]
+Description=GnuPG cryptographic agent and passphrase cache (restricted)
+Documentation=man:gpg-agent(1)
+
+[Socket]
+ListenStream=%t/gnupg/S.gpg-agent.extra
+FileDescriptorName=extra
+Service=gpg-agent.service
+SocketMode=0600
+DirectoryMode=0700
+
+[Install]
+WantedBy=sockets.target

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,11 +9,9 @@ PHP_EXT_NEEDED_USE="session(-)?"
 DOCS=( README example.php )
 HTML_DOCS=( memcache.php )
 
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php8-0"
 
 inherit php-ext-pecl-r3
-
-USE_PHP="php8-0"
 
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 
@@ -23,10 +21,7 @@ SLOT="8"
 IUSE="+session"
 
 DEPEND="php_targets_php8-0? ( sys-libs/zlib )"
-RDEPEND="${DEPEND}
-	php_targets_php7-3? ( dev-php/pecl-memcache:7[php_targets_php7-3(-)?] )
-	php_targets_php7-4? ( dev-php/pecl-memcache:7[php_targets_php7-4(-)?] )
-"
+RDEPEND="${DEPEND}"
 
 # The test suite requires memcached to be running.
 RESTRICT='test'

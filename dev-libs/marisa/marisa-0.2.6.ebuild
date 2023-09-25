@@ -1,9 +1,10 @@
-# Copyright 2014-2022 Gentoo Authors
+# Copyright 2014-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_OPTIONAL="1"
+DISTUTILS_EXT=1
 
 inherit autotools distutils-r1 toolchain-funcs
 

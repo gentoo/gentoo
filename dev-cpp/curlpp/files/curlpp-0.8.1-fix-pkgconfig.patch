@@ -1,0 +1,39 @@
+# upstream commit: <https://github.com/jpbarrette/curlpp/commit/5cdb4eb>
+
+From 5cdb4eb7ae898bc9b81cd1a7f87986827848456a Mon Sep 17 00:00:00 2001
+From: Dale Mellor <black-hole@rdmp.org>
+Date: Thu, 6 Jan 2022 18:57:23 +0000
+Subject: [PATCH] Put full paths in pkg-config specification.
+
+Currently, 'pkg-config --cflags curlpp' gives '-Iinclude', which is not good
+enough for outside projects to link to this package.
+
+* extras/curlpp.pc.in: use internal variables to make the generated
+  specifications more precise.
+---
+ extras/curlpp.pc.in | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/extras/curlpp.pc.in b/extras/curlpp.pc.in
+index b040ee0..e19c5b2 100644
+--- a/extras/curlpp.pc.in
++++ b/extras/curlpp.pc.in
+@@ -1,13 +1,13 @@
+ # This is a comment
+ prefix=@prefix@
+-exec_prefix=@prefix@
+-includedir=@includedir@
++exec_prefix=${prefix}
++includedir=${prefix}/@includedir@
++libdir=${exec_prefix}/@libdir@
+ 
+ Name: curlpp
+ Description: cURLpp is a libcurl C++ wrapper
+ Version: @VERSION@                           
+-Libs: -L@libdir@ -lcurlpp @LDFLAGS@ @LIBS@
+-Cflags: -I@includedir@ @CURLPP_CXXFLAGS@
++Libs: -L${libdir} -lcurlpp @LDFLAGS@ @LIBS@
++Cflags: -I${includedir} @CURLPP_CXXFLAGS@
+ # libcurl is required as non-private because CurlHandle.inl uses curl_easy_setopt.
+ Requires: libcurl
+- 

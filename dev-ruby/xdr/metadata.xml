@@ -10,6 +10,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">stellar/ruby-xdr</remote-id>
+    <remote-id type="github">astroband/ruby-xdr</remote-id>
   </upstream>
 </pkgmetadata>

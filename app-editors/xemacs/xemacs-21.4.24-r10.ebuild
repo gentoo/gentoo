@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -174,6 +174,8 @@ src_configure() {
 
 	# see bug 576512
 	append-cflags -fgnu89-inline
+
+	use freewnn && append-cppflags "-I. -I${ESYSROOT}/usr/include/wnn"
 
 	# Don't use econf because it uses options which this configure
 	# script does not understand (like --host).

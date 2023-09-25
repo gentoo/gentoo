@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} =~ [9]{4,} ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/snapshot/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="LGPL-2.1"

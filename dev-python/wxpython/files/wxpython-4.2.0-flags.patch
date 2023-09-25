@@ -1,0 +1,16 @@
+--- a/buildtools/config.py
++++ b/buildtools/config.py
+@@ -236,9 +236,12 @@ class Configuration(object):
+                 for lst in [self.cflags, self.cxxflags]:
+                     lst.append('-O3')
+ 
++            self.cflags += os.environ.get('CFLAGS', '').split()
++            self.cxxflags += os.environ.get('CXXFLAGS', '').split()
++
+             lflags = self.getWxConfigValue('--libs')
+             self.MONOLITHIC = (lflags.find("_xrc") == -1)
+-            self.lflags = lflags.split()
++            self.lflags = lflags.split() + os.environ.get('LDFLAGS', '').split()
+ 
+             self.WXBASENAME = self.getWxConfigValue('--basename')
+             self.WXRELEASE  = self.getWxConfigValue('--release')

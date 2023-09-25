@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_OPTIONAL="1"
 
 inherit distutils-r1 perl-module toolchain-funcs vcs-snapshot
@@ -18,7 +18,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/70406/${P}.tar.gz
 
 LICENSE="ZLIB python? ( BSD )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ppc64 sparc x86"
 IUSE="perl python l10n_ja"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

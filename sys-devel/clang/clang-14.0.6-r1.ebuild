@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 inherit cmake llvm llvm.org multilib multilib-minimal \
-	prefix python-single-r1 toolchain-funcs
+	prefix python-single-r1 toolchain-funcs flag-o-matic
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -95,6 +95,10 @@ src_prepare() {
 	eprefixify \
 		lib/Lex/InitHeaderSearch.cpp \
 		lib/Driver/ToolChains/Darwin.cpp || die
+
+	if ! use prefix-guest && [[ -n ${EPREFIX} ]]; then
+		sed -i "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX}/\"@" lib/Driver/ToolChains/Linux.cpp || die
+	fi
 }
 
 check_distribution_components() {
@@ -230,10 +234,13 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
+	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
+
 	local llvm_version=$(llvm-config --version) || die
 	local clang_version=$(ver_cut 1-3 "${llvm_version}")
 
 	local mycmakeargs=(
+		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
 		-DLLVM_CMAKE_PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/$(get_libdir)/cmake/llvm"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"

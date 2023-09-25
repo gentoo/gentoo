@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby30 ruby31 ruby32"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -21,11 +21,11 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 
 ruby_add_rdepend "dev-ruby/roadie:5
-	|| ( dev-ruby/railties:7.0 dev-ruby/railties:6.1 dev-ruby/railties:6.0 dev-ruby/railties:5.2 )"
+	|| ( dev-ruby/railties:7.0 dev-ruby/railties:6.1 )"
 ruby_add_bdepend "
 	test? (
 		dev-ruby/bundler
-		|| ( dev-ruby/rails:7.0 dev-ruby/rails:6.1 dev-ruby/rails:6.0 dev-ruby/rails:5.2 )
+		|| ( dev-ruby/rails:7.0 dev-ruby/rails:6.1 )
 		dev-ruby/rspec-rails
 		dev-ruby/rspec-collection_matchers
 		dev-ruby/sass-rails )"

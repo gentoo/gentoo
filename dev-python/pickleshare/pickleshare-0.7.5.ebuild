@@ -1,17 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..11} )
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{9..11} )
+inherit distutils-r1 pypi
 
 DESCRIPTION="A small 'shelve' like datastore with concurrency support"
 HOMEPAGE="https://github.com/pickleshare/pickleshare"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	>=dev-python/path-6.2[${PYTHON_USEDEP}]"

@@ -1,0 +1,124 @@
+https://github.com/widelands/widelands/pull/5765
+
+From 14b9c357073126d11d719fd1a539bb7ef0154791 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 25 Jan 2023 23:42:42 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint>
+
+Like other versions before, gcc 13 moved some includes around and as a
+result <cstdint> is no longer transitively included. Explicitly include
+it for uint16_t.
+--- a/src/base/md5.h
++++ b/src/base/md5.h
+@@ -21,6 +21,7 @@
+ #define WL_BASE_MD5_H
+ 
+ #include <cassert>
++#include <cstdint>
+ #include <cstring>
+ #include <string>
+ 
+--- a/src/base/random.h
++++ b/src/base/random.h
+@@ -20,6 +20,7 @@
+ #define WL_BASE_RANDOM_H
+ 
+ #include <cassert>
++#include <cstdint>
+ #include <string>
+ 
+ extern const uint32_t rng_sbox[256];
+--- a/src/base/time_string.h
++++ b/src/base/time_string.h
+@@ -19,6 +19,7 @@
+ #ifndef WL_BASE_TIME_STRING_H
+ #define WL_BASE_TIME_STRING_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ /// Get a string representation conforming to ISO 8601 of the current time (in
+--- a/src/build_info.h
++++ b/src/build_info.h
+@@ -19,6 +19,7 @@
+ #ifndef WL_BUILD_INFO_H
+ #define WL_BUILD_INFO_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ constexpr uint16_t kWidelandsCopyrightStart = 2002;
+--- a/src/graphic/align.h
++++ b/src/graphic/align.h
+@@ -19,6 +19,7 @@
+ #ifndef WL_GRAPHIC_ALIGN_H
+ #define WL_GRAPHIC_ALIGN_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "base/rect.h"
+--- a/src/graphic/text/textstream.h
++++ b/src/graphic/text/textstream.h
+@@ -19,6 +19,7 @@
+ #ifndef WL_GRAPHIC_TEXT_TEXTSTREAM_H
+ #define WL_GRAPHIC_TEXT_TEXTSTREAM_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace RT {
+--- a/src/logic/generic_save_handler.h
++++ b/src/logic/generic_save_handler.h
+@@ -19,6 +19,7 @@
+ #ifndef WL_LOGIC_GENERIC_SAVE_HANDLER_H
+ #define WL_LOGIC_GENERIC_SAVE_HANDLER_H
+ 
++#include <cstdint>
+ #include <functional>
+ 
+ #include "io/filesystem/filesystem.h"
+--- a/src/logic/map_revision.h
++++ b/src/logic/map_revision.h
+@@ -19,6 +19,7 @@
+ #ifndef WL_LOGIC_MAP_REVISION_H
+ #define WL_LOGIC_MAP_REVISION_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace Widelands {
+--- a/src/logic/save_handler.h
++++ b/src/logic/save_handler.h
+@@ -19,6 +19,8 @@
+ #ifndef WL_LOGIC_SAVE_HANDLER_H
+ #define WL_LOGIC_SAVE_HANDLER_H
+ 
++#include <cstdint>
++
+ #include "io/filesystem/filesystem.h"
+ 
+ namespace Widelands {
+--- a/src/map_io/map_elemental_packet.h
++++ b/src/map_io/map_elemental_packet.h
+@@ -19,6 +19,7 @@
+ #ifndef WL_MAP_IO_MAP_ELEMENTAL_PACKET_H
+ #define WL_MAP_IO_MAP_ELEMENTAL_PACKET_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- a/src/scripting/persistence.h
++++ b/src/scripting/persistence.h
+@@ -19,6 +19,8 @@
+ #ifndef WL_SCRIPTING_PERSISTENCE_H
+ #define WL_SCRIPTING_PERSISTENCE_H
+ 
++#include <cstdint>
++
+ #include "scripting/lua.h"
+ 
+ class FileRead;
+-- 
+2.39.1

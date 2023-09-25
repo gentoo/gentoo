@@ -1,0 +1,108 @@
+# Fix build with clang 16. There were two main issues:
+# 1. Usage of regiter keyword, which has been removed since C++17
+# 2. Non-constant-expression cannot be narrowed
+# This patch fixes both the issues.
+# Bug: https://bugs.gentoo.org/898888
+--- a/src/Blender.cpp
++++ b/src/Blender.cpp
+@@ -147,20 +147,20 @@ void Blender::blendInto32Bit(Details &details) {
+ 				a >>= 24;
+ 				mod = alphaMax / static_cast<double>(a);
+ 
+-				register int d = (*dest) & 0xff;
+-				register int blue = (*src) & 0xff;
++				int d = (*dest) & 0xff;
++				int blue = (*src) & 0xff;
+ 				blue -= d;
+ 				blue /= mod;
+ 				blue += d;
+ 
+ 				d = (*dest>>8) & 0xff;
+-				register int green = (*src >> 8) & 0xff;
++				int green = (*src >> 8) & 0xff;
+ 				green -= d;
+ 				green /= mod;
+ 				green += d;
+ 
+ 				d = (*dest >> 16) & 0xff;
+-				register int red = (*src >> 16) & 0xff;
++				int red = (*src >> 16) & 0xff;
+ 				red -= d;
+ 				red /= mod;
+ 				red += d;
+@@ -282,9 +282,9 @@ void Blender::blendInto16Bit(Details &details) {
+ 				src += 4;
+ 				dest += 2;
+ 			} else if (a == 0xff && !useGlobalAlpha) {
+-				register int blue = *(src++);
+-				register int green = *(src++);
+-				register int red = *(src++);
++				int blue = *(src++);
++				int green = *(src++);
++				int red = *(src++);
+ 
+ 				*(reinterpret_cast<uint16_t *>(dest)) =
+ 					static_cast<uint16_t>((blue & 0xf8) >> 3) |
+@@ -297,21 +297,21 @@ void Blender::blendInto16Bit(Details &details) {
+ 				mod = alphaMax/static_cast<double>(a);
+ 
+ 				uint16_t pixel = *(reinterpret_cast<uint16_t *>(dest));
+-				register int db = (pixel << 3) & 0xf8;
+-				register int dg = (pixel >> 3) & 0xf8;
+-				register int dr = (pixel >> 8) & 0xf8;
++				int db = (pixel << 3) & 0xf8;
++				int dg = (pixel >> 3) & 0xf8;
++				int dr = (pixel >> 8) & 0xf8;
+ 
+-				register int blue = *src++;
++				int blue = *src++;
+ 				blue -= db;
+ 				blue /= mod;
+ 				blue += db;
+ 
+-				register int green = *src++;
++				int green = *src++;
+ 				green -= dg;
+ 				green /= mod;
+ 				green += dg;
+ 
+-				register int red = *src++;
++				int red = *src++;
+ 				red -= dr;
+ 				red /= mod;
+ 				red += dr;
+--- a/src/Cartouche.cpp
++++ b/src/Cartouche.cpp
+@@ -110,7 +110,7 @@ void Cartouche::drawRoundedRectangle(
+ 		bottom - radius - 1,
+ 		right - radius - 1,
+ 		getBytesPerLine(),
+-		color,
++		static_cast<int>( color ),
+ 		getData() + top * getBytesPerLine()
+ 	};
+ 
+--- a/src/Settings.cpp
++++ b/src/Settings.cpp
+@@ -614,7 +614,7 @@ void Settings::load(Display *d) {
+ 						!((*ki).modifier & (*mi))) {
+ 					Trigger trigger = {
+ 						(*ki).modifier | (*mi),
+-						(*ki).keySym,
++						static_cast<unsigned int>( (*ki).keySym ),
+ 						(*ki).menuName,
+ 						(*ki).eventMask
+ 					};
+--- a/src/WildcardCompare.cpp
++++ b/src/WildcardCompare.cpp
+@@ -91,8 +91,8 @@ const bool WildcardCompare::match(
+ 					return false;
+ 				}
+ 			} else {
+-				register unsigned char p = *pattern;
+-				register unsigned char l = *literal;
++				unsigned char p = *pattern;
++				unsigned char l = *literal;
+ 
+ 				if (p > 64 && p < 91) {
+ 					p += 32;

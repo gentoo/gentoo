@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,11 +17,10 @@ fi
 
 DESCRIPTION="Linux kernel vendor specific hardware reset module"
 HOMEPAGE="https://github.com/gnif/vendor-reset"
+
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 MODULE_NAMES="vendor-reset(extra)"

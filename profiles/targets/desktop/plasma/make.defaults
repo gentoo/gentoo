@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-USE="activities declarative dri kde kwallet plasma policykit qml semantic-desktop widgets"
+USE="activities declarative dri kde kwallet networkmanager pipewire plasma policykit pulseaudio qml screencast semantic-desktop wayland widgets"

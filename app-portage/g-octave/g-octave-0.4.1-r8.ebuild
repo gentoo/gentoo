@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -12,16 +12,20 @@ DB_DIR="rafaelmartins-${PN}-db-${DB_COMMIT:0:7}"
 
 DESCRIPTION="A tool that generates and installs ebuilds for Octave-Forge"
 HOMEPAGE="https://github.com/rafaelmartins/g-octave"
-SRC_URI="https://github.com/downloads/rafaelmartins/${PN}/${P}.tar.gz
+SRC_URI="
+	https://github.com/rafaelmartins/g-octave/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 	https://github.com/rafaelmartins/${PN}-db/archive/${DB_COMMIT}.tar.gz ->
 		${PN}-db-${DB_COMMIT:0:7}.tar.gz
-	https://dev.gentoo.org/~rafaelmartins/distfiles/${PN}-patches-${PV}-r7.tar.xz"
+	https://dev.gentoo.org/~rafaelmartins/distfiles/${PN}-patches-${PV}-r7.tar.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-apps/portage"
+# Only needed for man page generation but easier to just require it for all impls
+BDEPEND="dev-python/docutils[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${WORKDIR}/${PN}-patches-${PV}-r7"

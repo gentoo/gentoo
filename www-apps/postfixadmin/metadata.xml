@@ -15,5 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">postfixadmin</remote-id>
+		<remote-id type="github">postfixadmin/postfixadmin</remote-id>
 	</upstream>
 </pkgmetadata>

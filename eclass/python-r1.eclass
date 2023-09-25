@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -8,7 +8,7 @@
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
-# @PROVIDES: multibuild python-utils-r1
+# @PROVIDES: python-utils-r1
 # @BLURB: A common, simple eclass for Python packages.
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -35,7 +35,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_PYTHON_R1_ECLASS} ]]; then
+if [[ -z ${_PYTHON_R1_ECLASS} ]]; then
 _PYTHON_R1_ECLASS=1
 
 if [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
@@ -156,7 +156,7 @@ inherit multibuild python-utils-r1
 # Example use:
 # @CODE
 # python_check_deps() {
-# 	has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
+# 	python_has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
 # }
 # @CODE
 #
@@ -474,9 +474,9 @@ python_gen_impl_dep() {
 #		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
 #
 # python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
-#		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
-#			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
+# 	python_has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" &&
+# 		{ python_has_version "dev-python/bar[${PYTHON_USEDEP}]" ||
+# 			python_has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
 # }
 #
 # src_compile() {
@@ -522,7 +522,7 @@ python_gen_any_dep() {
 			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
 			i_depstr=${i_depstr//\$\{PYTHON_SINGLE_USEDEP\}/${PYTHON_SINGLE_USEDEP}}
 			# note: need to strip '=' slot operator for || deps
-			out="( ${PYTHON_PKG_DEP/:0=/:0} ${i_depstr} ) ${out}"
+			out="( ${PYTHON_PKG_DEP/:=} ${i_depstr} ) ${out}"
 		fi
 	done
 	echo "|| ( ${out})"
@@ -616,7 +616,7 @@ _python_multibuild_wrapper() {
 python_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${_DISTUTILS_R1} ]]; then
+	if [[ ${_DISTUTILS_R1_ECLASS} ]]; then
 		if has "${EBUILD_PHASE}" prepare configure compile test install &&
 			[[ ! ${_DISTUTILS_CALLING_FOREACH_IMPL} &&
 				! ${_DISTUTILS_FOREACH_IMPL_WARNED} ]]
@@ -692,7 +692,8 @@ python_foreach_impl() {
 #	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
 #
 # python_check_deps() {
-#	has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
+# 	! use doc && return 0
+# 	python_has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
 # }
 #
 # src_compile() {

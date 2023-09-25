@@ -1,4 +1,4 @@
-# Copyright 2004-2022 Gentoo Authors
+# Copyright 2004-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
@@ -36,7 +36,7 @@ S="${WORKDIR}"
 
 # handle dependencies for testing frameworks
 if has test ${JAVA_PKG_IUSE}; then
-	local test_deps
+	test_deps=
 	for framework in ${JAVA_TESTING_FRAMEWORKS}; do
 		case ${framework} in
 			junit)
@@ -51,6 +51,7 @@ if has test ${JAVA_PKG_IUSE}; then
 		esac
 	done
 	[[ ${test_deps} ]] && DEPEND="test? ( ${test_deps} )"
+	unset test_deps
 fi
 
 # @ECLASS_VARIABLE: JAVA_GENTOO_CLASSPATH
@@ -116,7 +117,7 @@ fi
 # @ECLASS_VARIABLE: JAVA_ENCODING
 # @DESCRIPTION:
 # The character encoding used in the source files.
-: ${JAVA_ENCODING:=UTF-8}
+: "${JAVA_ENCODING:=UTF-8}"
 
 # @ECLASS_VARIABLE: JAVAC_ARGS
 # @DEFAULT_UNSET
@@ -148,7 +149,7 @@ fi
 # @ECLASS_VARIABLE: JAVA_JAR_FILENAME
 # @DESCRIPTION:
 # The name of the jar file to create and install.
-: ${JAVA_JAR_FILENAME:=${PN}.jar}
+: "${JAVA_JAR_FILENAME:=${PN}.jar}"
 
 # @ECLASS_VARIABLE: JAVA_BINJAR_FILENAME
 # @DEFAULT_UNSET
@@ -161,7 +162,11 @@ fi
 # If ${JAVA_MAIN_CLASS} is set, we will create a launcher to
 # execute the jar, and ${JAVA_LAUNCHER_FILENAME} will be the
 # name of the script.
-: ${JAVA_LAUNCHER_FILENAME:=${PN}-${SLOT}}
+if [[ ${SLOT} = 0 ]]; then
+	: "${JAVA_LAUNCHER_FILENAME:=${PN}}"
+else
+	: "${JAVA_LAUNCHER_FILENAME:=${PN}-${SLOT}}"
+fi
 
 # @ECLASS_VARIABLE: JAVA_TESTING_FRAMEWORKS
 # @DEFAULT_UNSET
@@ -417,6 +422,7 @@ java-pkg-simple_src_compile() {
 	# package
 	local jar_args
 	if [[ -e ${classes}/META-INF/MANIFEST.MF ]]; then
+		sed '/Created-By: /Id' -i ${classes}/META-INF/MANIFEST.MF
 		jar_args="cfm ${JAVA_JAR_FILENAME} ${classes}/META-INF/MANIFEST.MF"
 	else
 		jar_args="cf ${JAVA_JAR_FILENAME}"

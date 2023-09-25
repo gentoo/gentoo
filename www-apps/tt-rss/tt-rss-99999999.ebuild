@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SLOT="${PV}" # Single live slot.
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.1 8.0 7.4"
+PHP_SLOTS="8.2 8.1"
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
@@ -50,18 +50,22 @@ DEPEND="
 
 need_httpd_cgi # From webapp.eclass
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-no-chmod.patch
+)
+
 src_install() {
 	webapp_src_preinst
 
 	insinto "${MY_HTDOCSDIR}"
 	doins -r *
 
-	# When updating, grep the plugins directory for additional CACHE_DIR
-	# instances as they cannot be created later due to permissions.
-	dodir "${MY_HTDOCSDIR}"/cache/starred-images
+	# When updating, grep the code for additional DiskCache::instances as they
+	# cannot be created later due to permissions.
+	keepdir "${MY_HTDOCSDIR}"/cache/{feed-icons,starred-images}
 
 	local dir
-	for dir in "${ED}${MY_HTDOCSDIR}"/{cache/*,feed-icons,lock}/; do
+	for dir in "${ED}${MY_HTDOCSDIR}"/{cache/*,lock}/; do
 		webapp_serverowned "${dir#${ED}}"
 	done
 

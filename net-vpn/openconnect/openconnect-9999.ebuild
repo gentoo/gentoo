@@ -1,9 +1,9 @@
-# Copyright 2011-2022 Gentoo Authors
+# Copyright 2011-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit linux-info python-any-r1
@@ -12,8 +12,10 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/openconnect.git"
 	inherit git-r3 autotools
 else
-	SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	inherit verify-sig
+	SRC_URI="https://www.infradead.org/openconnect/download/${P}.tar.gz
+		verify-sig? ( https://www.infradead.org/openconnect/download/${P}.tar.gz.asc )"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
@@ -45,7 +47,7 @@ COMMON_DEPEND="
 	libproxy? ( net-libs/libproxy )
 	lz4? ( app-arch/lz4:= )
 	nls? ( virtual/libintl )
-	pskc? ( sys-auth/oath-toolkit[pskc] )
+	pskc? ( sys-auth/oath-toolkit[pskc(+)] )
 	smartcard? ( sys-apps/pcsc-lite:0= )
 	stoken? ( app-crypt/stoken )
 "
@@ -68,6 +70,11 @@ BDEPEND="
 	test? ( net-vpn/ocserv )
 "
 
+if [[ ${PV} != 9999 ]]; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-dwmw2 )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/dwmw2@kernel.org.key"
+fi
+
 CONFIG_CHECK="~TUN"
 
 pkg_pretend() {
@@ -76,13 +83,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	:
-}
-
-src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-	fi
-	default
 }
 
 src_prepare() {
@@ -132,6 +132,7 @@ src_test() {
 			break
 		fi
 	done
+	addwrite /proc
 	default
 }
 

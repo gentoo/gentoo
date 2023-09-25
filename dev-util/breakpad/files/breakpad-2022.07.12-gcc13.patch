@@ -1,0 +1,10 @@
+--- a/src/client/linux/handler/minidump_descriptor.h	2023-03-11 08:49:06.385815254 +0100
++++ b/src/client/linux/handler/minidump_descriptor.h	2023-03-11 08:49:42.758139412 +0100
+@@ -33,6 +33,7 @@
+ #include <assert.h>
+ #include <sys/types.h>
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "client/linux/handler/microdump_extra_info.h"

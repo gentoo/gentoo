@@ -1,0 +1,41 @@
+From 4de207e0ca26067146ac58133e64c17fdf755c6a Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Sun, 9 Jul 2023 10:01:49 +0200
+Subject: [PATCH] Fix build with exiv2 0.28
+
+(cherry picked from commit 32f5418fc4f7bb2ee986dee1824ff2989c113a94)
+---
+ src/core/raster/qgsexiftools.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/core/raster/qgsexiftools.cpp b/src/core/raster/qgsexiftools.cpp
+index 1fbd6a84a8c..f64e07e9165 100644
+--- a/src/core/raster/qgsexiftools.cpp
++++ b/src/core/raster/qgsexiftools.cpp
+@@ -94,7 +94,11 @@ QVariant decodeExifData( const QString &key, Exiv2::ExifData::const_iterator &it
+       case Exiv2::signedLong:
+       case Exiv2::unsignedLongLong:
+       case Exiv2::signedLongLong:
++#if EXIV2_TEST_VERSION (0, 28, 0)
++        val = QVariant::fromValue( it->toUint32() );
++#else
+         val = QVariant::fromValue( it->toLong() );
++#endif
+         break;
+ 
+       case Exiv2::tiffDouble:
+@@ -108,7 +112,11 @@ QVariant decodeExifData( const QString &key, Exiv2::ExifData::const_iterator &it
+       case Exiv2::signedByte:
+       case Exiv2::tiffIfd:
+       case Exiv2::tiffIfd8:
++#if EXIV2_TEST_VERSION (0, 28, 0)
++        val = QVariant::fromValue( static_cast< int >( it->toUint32() ) );
++#else
+         val = QVariant::fromValue( static_cast< int >( it->toLong() ) );
++#endif
+         break;
+ 
+       case Exiv2::date:
+-- 
+2.41.0
+

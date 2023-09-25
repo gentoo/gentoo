@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ RDEPEND="${LUA_DEPS}
 	fftw? ( >=sci-libs/fftw-3.3:= )
 	openal? ( media-libs/openal )
 	portaudio? ( =media-libs/portaudio-19* )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	spell? ( app-text/hunspell:= )
 	uchardet? ( app-i18n/uchardet )
 "
@@ -56,6 +56,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 
 PATCHES=(
 	"${FILESDIR}/${P}-git.patch"
+	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-fix-boost-181-build.patch"
 )
 
 pkg_setup() {

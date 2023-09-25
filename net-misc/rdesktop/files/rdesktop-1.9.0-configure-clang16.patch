@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/900310
+https://github.com/rdesktop/rdesktop/pull/407
+
+From 0a38f855c2f6bb197539fbb9ec0ce5a97775a178 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Tue, 18 Apr 2023 09:55:39 +0200
+Subject: [PATCH] configure.ac: Fix statvfs64 check for C99 compatibility
+
+C99 does not support implicit ints and implicit function declarations
+(such as exit here).  Avoid them, so that the configure check does
+not fail unconditionally with such compilers.
+--- a/configure.ac
++++ b/configure.ac
+@@ -668,12 +668,13 @@ if test $space = no; then
+   # SVR4
+   AC_CACHE_CHECK([statvfs64 function (SVR4)], fu_cv_sys_stat_statvfs64,
+   [AC_TRY_RUN([
++#include <stdlib.h>
+ #if defined(HAVE_UNISTD_H)
+ #include <unistd.h>
+ #endif
+ #include <sys/types.h>
+ #include <sys/statvfs.h>
+-  main ()
++  int main (void)
+   {
+     struct statvfs64 fsd;
+     exit (statvfs64 (".", &fsd));

@@ -1,0 +1,36 @@
+From 4227409be9a2ca287f227e50fbf4c38ca237b676 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 24 Aug 2023 06:38:30 +0200
+Subject: [PATCH] Disable plugin autoloading in the test suite
+
+Disable plugin autoloading in the test suite to prevent other installed
+plugins from interfering with the test results.  This is particularly
+important since tests are run with cleared environment that could break
+other plugins (e.g. pytest-xvfb is broken by the lack of PATH).
+
+Fixes #48
+---
+ tests/test_env.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_env.py b/tests/test_env.py
+index 16cd080..a409b60 100644
+--- a/tests/test_env.py
++++ b/tests/test_env.py
+@@ -104,8 +104,15 @@ def test_env(
+     Path(str(tmp_dir / f"test_{test_name}.py")).symlink_to(Path(__file__).parent / "template.py")
+     (tmp_dir / "pytest.ini").write_text(ini, encoding="utf-8")
+ 
++    new_env = {
++        **env,
++        "_TEST_ENV": repr(expected_env),
++        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
++        "PYTEST_PLUGINS": "pytest_env.plugin",
++    }
++
+     # monkeypatch persists env variables across parametrized tests, therefore using mock.patch.dict
+-    with mock.patch.dict(os.environ, {**env, "_TEST_ENV": repr(expected_env)}, clear=True):
++    with mock.patch.dict(os.environ, new_env, clear=True):
+         result = testdir.runpytest()
+ 
+     result.assert_outcomes(passed=1)

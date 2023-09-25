@@ -1,0 +1,23 @@
+Bug: https://bugs.gentoo.org/895996
+--- a/src/OMISC.cpp
++++ b/src/OMISC.cpp
+@@ -608,7 +608,7 @@ int Misc::str_icmpx( const char* str1, const char* str2 )
+    err_when( !str1 || !str2 );
+ 
+    int i;
+-   register int a,b;
++   int a,b;
+ 
+ 
+    for (i=0 ; (a=str1[i]) != '\0' && (b=str2[i]) != '\0' ; i++)
+--- a/src/OSPATHBT.cpp
++++ b/src/OSPATHBT.cpp
+@@ -50,7 +50,7 @@ void NodePriorityQueue::reset_priority_queue()
+ void NodePriorityQueue::insert_node(Node *insertNode)
+ {
+ 	unsigned int i = ++size;
+-	register int f=insertNode->node_f;
++	int f=insertNode->node_f;
+ 	Node **localElements = elements;
+ 	
+ 	while(i>1 && localElements[i/2]->node_f > f)

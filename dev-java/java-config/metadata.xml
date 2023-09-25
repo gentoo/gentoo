@@ -11,4 +11,7 @@
 		per-user default JVMs, construct classpath env vars from installed java
 		packages and be used to query for the path to various JDK tools.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">gentoo/java-config</remote-id>
+	</upstream>
 </pkgmetadata>

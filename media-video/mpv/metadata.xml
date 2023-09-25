@@ -5,19 +5,13 @@
 		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
-	</maintainer>
 	<use>
 		<flag name="archive">Enable support for various archive formats via <pkg>app-arch/libarchive</pkg></flag>
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
 		<flag name="cli">Enable the command-line player</flag>
-		<flag name="cplugins">Enable C plugins support</flag>
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video outputs</flag>
 		<flag name="egl">Enable support for various EGL-based video outputs / backends</flag>
 		<flag name="gamepad">Enable gamepad input support</flag>
-		<flag name="gbm">Enable Graphics Buffer Manager based EGL video backend</flag>
 		<flag name="libmpv">Enable the shared library and headers (used by frontends / plugins)</flag>
 		<flag name="libplacebo">Enable support for GPU accelerated video rendering with <pkg>media-libs/libplacebo</pkg></flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI, and <pkg>net-misc/yt-dlp</pkg> support</flag>
@@ -33,7 +27,6 @@
 		<flag name="sndio">Enable sound support via <pkg>media-sound/sndio</pkg></flag>
 		<flag name="tools">Install extra tools: mpv_identify.sh, mpv_idet.sh, and umpv</flag>
 		<flag name="uchardet">Enable subtitles charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
-		<flag name="vulkan">Enable support for Vulkan-based video backends</flag>
 		<flag name="zimg">Enable libzimg support (for vf_fingerprint)</flag>
 	</use>
 	<upstream>

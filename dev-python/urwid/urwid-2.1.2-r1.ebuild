@@ -1,12 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ncurses"
-inherit distutils-r1 optfeature
+
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Curses-based user interface library for Python"
 HOMEPAGE="
@@ -14,7 +16,6 @@ HOMEPAGE="
 	https://pypi.org/project/urwid/
 	https://github.com/urwid/urwid/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -23,6 +24,11 @@ IUSE="examples"
 
 distutils_enable_sphinx docs
 distutils_enable_tests setup.py
+
+PATCHES=(
+	# https://github.com/urwid/urwid/pull/517
+	"${FILESDIR}/${P}-fix-py3.11.patch"
+)
 
 src_prepare() {
 	# optional tests broken by modern tornado versions

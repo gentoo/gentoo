@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -37,12 +37,8 @@ NEWLIBBUILD="${WORKDIR}/build"
 NEWLIBNANOBUILD="${WORKDIR}/build.nano"
 NEWLIBNANOTMPINSTALL="${WORKDIR}/nano_tmp_install"
 
-# Adding -U_FORTIFY_SOURCE to counter the effect of Gentoo's
-# auto-addition of _FORTIFY_SOURCE at gcc site: bug #656018#c4
-# Currently newlib can't be built itself when _FORTIFY_SOURCE
-# is set.
-CFLAGS_FULL="-ffunction-sections -fdata-sections -U_FORTIFY_SOURCE"
-CFLAGS_NANO="-Os -ffunction-sections -fdata-sections -U_FORTIFY_SOURCE"
+CFLAGS_FULL="-ffunction-sections -fdata-sections"
+CFLAGS_NANO="-Os -ffunction-sections -fdata-sections"
 
 pkg_setup() {
 	# Reject newlib-on-glibc type installs
@@ -71,6 +67,10 @@ src_configure() {
 	CFLAGS_ORIG="${CFLAGS}"
 
 	local myconf=(
+		# The top-level configure doesn't utilize this flag, but subdirs do,
+		# so autodetection for econf doesn't work.  Add ourselves.
+		--disable-dependency-tracking
+		--disable-silent-rules
 		# Disable legacy syscall stub code in newlib.  These have been
 		# moved to libgloss for a long time now, so the code in newlib
 		# itself just gets in the way.
@@ -111,7 +111,7 @@ src_configure() {
 			--enable-lite-exit \
 			--enable-newlib-global-atexit \
 			--enable-newlib-nano-formatted-io \
-			${myconf}
+			"${myconf[@]}"
 	fi
 }
 
@@ -129,11 +129,11 @@ src_compile() {
 
 src_install() {
 	cd "${NEWLIBBUILD}" || die
-	emake -j1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	if use nano ; then
 		cd "${NEWLIBNANOBUILD}" || die
-		emake -j1 DESTDIR="${NEWLIBNANOTMPINSTALL}" install
+		emake DESTDIR="${NEWLIBNANOTMPINSTALL}" install
 		# Rename nano lib* files to lib*_nano and move to the real ${D}
 		local nanolibfiles=""
 		nanolibfiles=$(find "${NEWLIBNANOTMPINSTALL}" -regex ".*/lib\(c\|g\|m\|rdimon\|gloss\)\.a" -print)

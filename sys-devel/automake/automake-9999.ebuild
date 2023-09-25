@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit python-any-r1
 
@@ -15,7 +15,7 @@ else
 		MY_P="${P}"
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 			https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	else
 		MY_PV="$(ver_cut 1).$(($(ver_cut 2)-1))b"
 		MY_P="${PN}-${MY_PV}"
@@ -36,15 +36,20 @@ SLOT="${PV:0:4}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-lang/perl-5.6
+RDEPEND="
+	>=dev-lang/perl-5.6
 	>=sys-devel/automake-wrapper-11
 	>=sys-devel/autoconf-2.69:*
-	sys-devel/gnuconfig"
+	sys-devel/gnuconfig
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-arch/gzip
+	app-alternatives/gzip
 	sys-apps/help2man
-	test? ( ${PYTHON_DEPS} )
+	test? (
+		${PYTHON_DEPS}
+		dev-util/dejagnu
+	)
 "
 
 pkg_setup() {
@@ -69,42 +74,14 @@ src_prepare() {
 
 src_configure() {
 	use test && python_setup
-	default
-}
-
-# Slot the info pages. Do this w/out munging the source so we don't have
-# to depend on texinfo to regen things. bug #464146 (among others)
-slot_info_pages() {
-	pushd "${ED}"/usr/share/info >/dev/null || die
-	rm -f dir
-
-	# Rewrite all the references to other pages.
-	# before: * aclocal-invocation: (automake)aclocal Invocation.   Generating aclocal.m4.
-	# after:  * aclocal-invocation v1.13: (automake-1.13)aclocal Invocation.   Generating aclocal.m4.
-	local p pages=( *.info ) args=()
-	for p in "${pages[@]/%.info}" ; do
-		args+=(
-			-e "/START-INFO-DIR-ENTRY/,/END-INFO-DIR-ENTRY/s|: (${p})| v${SLOT}&|"
-			-e "s:(${p}):(${p}-${SLOT}):g"
-		)
-	done
-	sed -i "${args[@]}" * || die
-
-	# Rewrite all the file references, and rename them in the process.
-	local f d
-	for f in * ; do
-		d=${f/.info/-${SLOT}.info}
-		mv "${f}" "${d}" || die
-		sed -i -e "s:${f}:${d}:g" * || die
-	done
-
-	popd >/dev/null || die
+	# Also used in install.
+	infopath="${EPREFIX}/usr/share/automake-${PV}/info"
+	econf --infodir="${infopath}"
 }
 
 src_install() {
 	default
 
-	slot_info_pages
 	rm "${ED}"/usr/share/aclocal/README || die
 	rmdir "${ED}"/usr/share/aclocal || die
 	rm \
@@ -124,4 +101,18 @@ src_install() {
 	if [[ -f "${tarfile}" ]] ; then
 		gunzip "${tarfile}" || die
 	fi
+
+	pushd "${D}/${infopath}" >/dev/null || die
+	for f in *.info*; do
+		# Install convenience aliases for versioned Automake pages.
+		ln -s "$f" "${f/./-${PV}.}" || die
+	done
+	popd >/dev/null || die
+
+	local major="$(ver_cut 1)"
+	local minor="$(ver_cut 2)"
+	local idx="$((99999-(major*1000+minor)))"
+	newenvd - "06automake${idx}" <<-EOF
+	INFOPATH="${infopath}"
+	EOF
 }

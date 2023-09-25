@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
 FFMPEG_VERSION="4.3.2"
 CODENAME="Matrix"
 FFMPEG_KODI_VERSION="19.1"
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{10..11} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
@@ -78,7 +78,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
-	dev-libs/crossguid
+	<dev-libs/crossguid-0.2.2_p20190529
 	>=dev-libs/fribidi-1.0.5
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
@@ -124,7 +124,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	raspberry-pi? (
 		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl(+),gles2,video_cards_vc4] )
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	>=sys-libs/zlib-1.2.11
 	udf? ( >=dev-libs/libudfread-1.0.0 )
@@ -146,7 +146,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=dev-libs/wayland-protocols-1.7
 		>=x11-libs/libxkbcommon-0.4.1
 	)
-	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages(+)] )
+	webserver? ( >=net-libs/libmicrohttpd-0.9.55:=[messages(+)] )
 	X? (
 		media-libs/mesa[X]
 		!gles? ( media-libs/libglvnd[X] )

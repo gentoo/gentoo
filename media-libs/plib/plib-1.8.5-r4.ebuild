@@ -1,13 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Multimedia library used by many games"
-HOMEPAGE="http://plib.sourceforge.net/"
-SRC_URI="http://plib.sourceforge.net/dist/${P}.tar.gz"
+HOMEPAGE="https://plib.sourceforge.net/"
+SRC_URI="https://plib.sourceforge.net/dist/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -30,6 +30,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++03
+
 	local myconf=(
 		--enable-shared
 	)

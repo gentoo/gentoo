@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,9 +46,9 @@ pkg_postinst() {
 	ewarn "minimal (mdns?_minimal) libraries which only lookup .local hosts"
 	ewarn "and 169.254.x.x addresses."
 	ewarn
-	ewarn "Add the appropriate mdns into the hosts line in /etc/nsswitch.conf."
-	ewarn "An example line looks like:"
-	ewarn "hosts:	files mdns4_minimal [NOTFOUND=return] dns mdns4"
+	ewarn "Add the appropriate mdns into the hosts line in /etc/nsswitch.conf"
+	ewarn "before resolve and dns. An example line looks like:"
+	ewarn "hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns"
 	ewarn
 	ewarn "If you want to perform mDNS lookups for domains other than the ones"
 	ewarn "ending in .local, add them to /etc/mdns.allow."

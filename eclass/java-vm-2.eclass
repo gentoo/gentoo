@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-vm-2.eclass
@@ -10,14 +10,15 @@
 # This eclass provides functionality which assists with installing
 # virtual machines, and ensures that they are recognized by java-config.
 
-case ${EAPI:-0} in
-	[678]) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit multilib pax-utils prefix xdg-utils
+if [[ -z ${_JAVA_VM_2_ECLASS} ]]; then
+_JAVA_VM_2_ECLASS=1
 
-EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm
+inherit multilib pax-utils prefix xdg-utils
 
 RDEPEND="
 	dev-java/java-config
@@ -343,10 +344,14 @@ java-vm_sandbox-predict() {
 	[[ -z "${1}" ]] && die "${FUNCNAME} takes at least one argument"
 
 	local path path_arr=("$@")
-	# subshell this to prevent IFS bleeding out dependant on bash version.
+	# subshell this to prevent IFS bleeding out dependent on bash version.
 	# could use local, which *should* work, but that requires a lot of testing.
 	path=$(IFS=":"; echo "${path_arr[*]}")
 	dodir /etc/sandbox.d
 	echo "SANDBOX_PREDICT=\"${path}\"" > "${ED}/etc/sandbox.d/20${VMHANDLE}" \
 		|| die "Failed to write sandbox control file"
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm

@@ -10,11 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="github">Add github support into PCB editor</flag>
 		<flag name="ngspice">Enable circuit simulation</flag>
-		<flag name="occ">Enable viewing 3D rendering of designs via <pkg>sci-libs/opencascade</pkg></flag>
-		<flag name="python">Enable python scripting support</flag>
-		<flag name="pcm">Enable plugin content manager</flag>
 	</use>
 	<longdescription>
 		Kicad is an open source (GPL) software for the creation of electronic

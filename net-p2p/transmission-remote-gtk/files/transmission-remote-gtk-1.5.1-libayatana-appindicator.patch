@@ -1,0 +1,138 @@
+https://bugs.gentoo.org/887373
+
+From e23030df5743ce645e919066b68370e394a710a2 Mon Sep 17 00:00:00 2001
+From: Patrick Griffis <pgriffis@igalia.com>
+Date: Sat, 16 Apr 2022 19:18:57 -0500
+Subject: [PATCH] Support libayatana-appindicator as drop-in for
+ libappindicator
+
+Closes #184
+
+Co-Author: "Barak A. Pearlmutter" <barak+git@pearlmutter.net>
+---
+ README.md             | 2 +-
+ meson.build           | 7 +++++--
+ src/trg-main-window.c | 4 +++-
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/README.md b/README.md
+index b7564d64..e814003c 100644
+--- a/README.md
++++ b/README.md
+@@ -29,7 +29,7 @@ The following packages are optional dependencies:
+  - libmrss >= 0.18, RSS feed support
+  - libproxy, HTTP proxy support
+  - libgeoip, country of origin of peers
+- - libappindicator, Application tray support
++ - libappindicator or libayatana-appindicator3, Application tray support
+ 
+ If these libraries are installed at build time they will be automatically
+ detected and linked for additional functionality.
+diff --git a/meson.build b/meson.build
+index 2acac209..9e26e227 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,7 +1,7 @@
+ project('transmission-remote-gtk', 'c',
+         license: 'GPL2+',
+         version: '1.5.1',
+-        meson_version: '>= 0.59.0',
++        meson_version: '>= 0.60.0',
+         default_options: ['b_pie=true',
+                           'c_std=gnu99',
+                           'warning_level=2',
+@@ -48,7 +48,7 @@ trg_deps = [gtk_dep, glib_dep, gio_dep, json_dep, libcurl_dep, gthread_dep]
+ rss_dep             = dependency('mrss', version: '>=0.18', required: get_option('mrss'))
+ geoip_dep           = dependency('geoip', required: get_option('geoip'))
+ libproxy_dep        = dependency('libproxy-1.0', required: get_option('libproxy'))
+-libappindicator_dep = dependency('appindicator3-0.1', required: get_option('libappindicator'))
++libappindicator_dep = dependency('libayatana-appindicator', 'appindicator3-0.1', required: get_option('libappindicator'))
+ 
+ trg_deps += [geoip_dep, libproxy_dep, libappindicator_dep]
+ 
+@@ -89,7 +89,10 @@ conf_data.set10('HAVE_RSS', rss_dep.found())
+ conf_data.set10('HAVE_GEOIP', geoip_dep.found())
+ conf_data.set10('HAVE_LIBPROXY', libproxy_dep.found())
+ conf_data.set10('ENABLE_NL_LANGINFO', nl_langinfo)
++
++libappindicator_name = libappindicator_dep.get_variable('Name')
+ conf_data.set10('HAVE_LIBAPPINDICATOR', libappindicator_dep.found())
++conf_data.set10('HAVE_LIBAYATANA_APPINDICATOR', libappindicator_dep.found() and libappindicator_name == 'ayatana-appindicator-0.1')
+ 
+ # compiler/linker flags
+ flags = ['-funsigned-char',
+diff --git a/src/trg-main-window.c b/src/trg-main-window.c
+index f2c6ab32..0fe41a82 100644
+--- a/src/trg-main-window.c
++++ b/src/trg-main-window.c
+@@ -32,7 +32,9 @@
+ #include <gdk/gdkkeysyms.h>
+ #include <gdk/gdkkeysyms-compat.h>
+ #include <curl/curl.h>
+-#if HAVE_LIBAPPINDICATOR
++#if HAVE_LIBAYATANA_APPINDICATOR
++#include <libayatana-appindicator/app-indicator.h>
++#elif HAVE_LIBAPPINDICATOR
+ #include <libappindicator/app-indicator.h>
+ #endif
+ 
+From aed8b115708bc8b69d28cd0875c289fe246f049b Mon Sep 17 00:00:00 2001
+From: Patrick Griffis <pgriffis@igalia.com>
+Date: Sat, 16 Apr 2022 19:21:36 -0500
+Subject: [PATCH] Fix pkg-config name for ayatana-appindicator
+
+---
+ meson.build | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 9e26e227..2ff29c2f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -48,7 +48,7 @@ trg_deps = [gtk_dep, glib_dep, gio_dep, json_dep, libcurl_dep, gthread_dep]
+ rss_dep             = dependency('mrss', version: '>=0.18', required: get_option('mrss'))
+ geoip_dep           = dependency('geoip', required: get_option('geoip'))
+ libproxy_dep        = dependency('libproxy-1.0', required: get_option('libproxy'))
+-libappindicator_dep = dependency('libayatana-appindicator', 'appindicator3-0.1', required: get_option('libappindicator'))
++libappindicator_dep = dependency('ayatana-appindicator3-0.1', 'appindicator3-0.1', required: get_option('libappindicator'))
+ 
+ trg_deps += [geoip_dep, libproxy_dep, libappindicator_dep]
+ 
+@@ -90,9 +90,8 @@ conf_data.set10('HAVE_GEOIP', geoip_dep.found())
+ conf_data.set10('HAVE_LIBPROXY', libproxy_dep.found())
+ conf_data.set10('ENABLE_NL_LANGINFO', nl_langinfo)
+ 
+-libappindicator_name = libappindicator_dep.get_variable('Name')
+ conf_data.set10('HAVE_LIBAPPINDICATOR', libappindicator_dep.found())
+-conf_data.set10('HAVE_LIBAYATANA_APPINDICATOR', libappindicator_dep.found() and libappindicator_name == 'ayatana-appindicator-0.1')
++conf_data.set10('HAVE_LIBAYATANA_APPINDICATOR', libappindicator_dep.found() and libappindicator_dep.get_variable('Name') == 'ayatana-appindicator3-0.1')
+ 
+ # compiler/linker flags
+ flags = ['-funsigned-char',
+From 4e5bd0baab479583dc798317d89e822c280d7b7a Mon Sep 17 00:00:00 2001
+From: LaserEyess <LaserEyess@users.noreply.github.com>
+Date: Wed, 12 Oct 2022 09:09:01 -0400
+Subject: [PATCH] Use dep.name() to find ayatana name
+
+pkg-config variables are defined as `key=value`, and the `Key: Value`
+versions are just metadata. Therefore most pkg-config files do not have
+'Name' as a variable and `get_variable('Name')` will not work. However,
+meson provides a way to find this with the dep.name() method, so use
+that instead.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 9c65488..e2cb6d4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -89,7 +89,7 @@ conf_data.set10('HAVE_LIBPROXY', libproxy_dep.found())
+ conf_data.set10('ENABLE_NL_LANGINFO', nl_langinfo)
+ 
+ conf_data.set10('HAVE_LIBAPPINDICATOR', libappindicator_dep.found())
+-conf_data.set10('HAVE_LIBAYATANA_APPINDICATOR', libappindicator_dep.found() and libappindicator_dep.get_variable('Name') == 'ayatana-appindicator3-0.1')
++conf_data.set10('HAVE_LIBAYATANA_APPINDICATOR', libappindicator_dep.found() and libappindicator_dep.name() == 'ayatana-appindicator3-0.1')
+ 
+ # compiler/linker flags
+ flags = ['-funsigned-char',

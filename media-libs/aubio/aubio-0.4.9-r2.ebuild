@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 waf-utils
 
@@ -14,7 +14,7 @@ SRC_URI="https://aubio.org/pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0/5"
-KEYWORDS="amd64 ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~loong ~ppc ppc64 sparc x86"
 IUSE="doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -52,6 +52,7 @@ PYTHON_SRC_DIR="${S}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.9-docdir.patch
 	"${FILESDIR}"/ffmpeg5.patch
+	"${FILESDIR}"/${PN}-0.4.9-remove-universal-newlines.patch
 )
 
 src_prepare() {

@@ -5,4 +5,14 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Crypt-PBKDF2</remote-id>
+    <remote-id type="cpan-module">Crypt::PBKDF2</remote-id>
+    <remote-id type="cpan-module">Crypt::PBKDF2::Hash</remote-id>
+    <remote-id type="cpan-module">Crypt::PBKDF2::Hash::DigestHMAC</remote-id>
+    <remote-id type="cpan-module">Crypt::PBKDF2::Hash::HMACSHA1</remote-id>
+    <remote-id type="cpan-module">Crypt::PBKDF2::Hash::HMACSHA2</remote-id>
+    <remote-id type="cpan-module">Crypt::PBKDF2::Hash::HMACSHA3</remote-id>
+    <remote-id type="github">arodland/Crypt-PBKDF2</remote-id>
+  </upstream>
 </pkgmetadata>

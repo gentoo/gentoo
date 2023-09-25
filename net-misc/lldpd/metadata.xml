@@ -32,6 +32,7 @@ lldpd also implements CDP (Cisco Discovery Protocol), FDP (Foundry Discovery Pro
 		<flag name="snmp">Enable the use of SNMP</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:lldpd_project:lldpd</remote-id>
 		<remote-id type="github">lldpd/lldpd</remote-id>
 	</upstream>
 </pkgmetadata>

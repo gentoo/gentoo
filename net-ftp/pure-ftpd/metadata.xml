@@ -22,4 +22,7 @@
 		<flag name="sysquota">Enables system quota support (needs <pkg>sys-fs/quota</pkg>)</flag>
 		<flag name="vchroot">Enable support for virtual chroot (possible security risk)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">jedisct1/pure-ftpd</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -10,4 +10,7 @@
 		RDAP is a replacement for WHOIS, which provides domain name and
 		IP address registration information in JSON format over HTTP(S).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">openrdap/rdap</remote-id>
+	</upstream>
 </pkgmetadata>

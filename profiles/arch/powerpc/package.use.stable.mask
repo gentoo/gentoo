@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,9 +17,9 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-06)
-# Unmask the target on python-exec while it's masked elsewhere.
-dev-lang/python-exec -python_targets_python3_11
+# Sam James <sam@gentoo.org> (2023-07-28)
+# media-libs/libffado not marked stable here
+media-video/pipewire ieee1394
 
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Various unstable dependencies:

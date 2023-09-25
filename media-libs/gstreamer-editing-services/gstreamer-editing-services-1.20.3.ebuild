@@ -1,14 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit meson python-r1
 
 DESCRIPTION="SDK for making video editors and more"
 HOMEPAGE="http://wiki.pitivi.org/wiki/GES"
 SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P/gstreamer/gst}.tar.xz"
+S="${WORKDIR}"/${P/gstreamer/gst}
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
@@ -16,7 +17,8 @@ KEYWORDS="amd64 x86"
 
 IUSE="+introspection test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
+# Some tests are failing
+RESTRICT="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -29,11 +31,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-# Some tests are failing
-RESTRICT="test"
-
-S="${WORKDIR}"/${P/gstreamer/gst}
 
 src_configure() {
 	local emesonargs=(

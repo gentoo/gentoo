@@ -49,7 +49,6 @@ dev-perl
 dev-php
 dev-python
 dev-qt
-dev-ros
 dev-ruby
 dev-scheme
 dev-tcltk
@@ -82,7 +81,6 @@ gnustep-libs
 gui-apps
 gui-libs
 gui-wm
-java-virtuals
 kde-apps
 kde-frameworks
 kde-misc
@@ -123,7 +121,6 @@ net-voip
 net-vpn
 net-wireless
 perl-core
-ros-meta
 sci-astronomy
 sci-biology
 sci-calculators

@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Small collection of programs that use libsndfile"
-HOMEPAGE="http://libsndfile.github.io/sndfile-tools/"
+HOMEPAGE="https://libsndfile.github.io/sndfile-tools/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3

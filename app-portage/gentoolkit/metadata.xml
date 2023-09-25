@@ -12,4 +12,8 @@
   implementations of features that may in time make it into Portage, or
   into full-fledged tools in their own right.
   </longdescription>
+  <upstream>
+    <remote-id type="gentoo">proj/gentoolkit</remote-id>
+    <remote-id type="github">gentoo/gentoolkit</remote-id>
+  </upstream>
 </pkgmetadata>

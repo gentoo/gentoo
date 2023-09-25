@@ -1,21 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux64"
-ASIO_COMMIT="b73dc1d2c0ecb9452a87c26544d7f71e24342df6"
-JSON_COMMIT="a34e011e24beece3b69397a03fdc650546f052c3"
-OBS_BROWSER_COMMIT="e2310b02df3e6c184fe6eb6608244a82e37f582e"
-OBS_WEBSOCKET_COMMIT="5716577019b1ccda01a12db2cba35a023082b7ad"
+OBS_BROWSER_COMMIT="291464d6988083411e7369fc53eba6d5ef07ff67"
+OBS_WEBSOCKET_COMMIT="6fd18a7ef1ecb149e8444154af1daab61d4241a9"
 QR_COMMIT="8518684c0f33d004fa93971be2c6a8eca3167d1e"
-WEBSOCKETPP_COMMIT="56123c87598f8b1dd471be83ca841ceae07f95ba"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -32,11 +29,8 @@ else
 	SRC_URI="
 		https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
-		https://github.com/chriskohlhoff/asio/archive/${ASIO_COMMIT}.tar.gz -> asio-${ASIO_COMMIT}.tar.gz
 		https://github.com/nayuki/QR-Code-generator/archive/${QR_COMMIT}.tar.gz -> qr-${QR_COMMIT}.tar.gz
-		https://github.com/nlohmann/json/archive/${JSON_COMMIT}.tar.gz -> json-${JSON_COMMIT}.tar.gz
 		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz -> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
-		https://github.com/zaphoyd/websocketpp/archive/${WEBSOCKETPP_COMMIT}.tar.gz -> websocketpp-${WEBSOCKETPP_COMMIT}.tar.gz
 	"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
@@ -49,7 +43,7 @@ LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua nvenc pipewire pulseaudio
-	python qt6 speex +ssl truetype v4l vlc wayland websocket
+	python qsv speex +ssl truetype v4l vlc wayland websocket
 "
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
@@ -61,26 +55,33 @@ BDEPEND="
 	lua? ( dev-lang/swig )
 	python? ( dev-lang/swig )
 "
+# media-video/ffmpeg[opus] required due to bug 909566
 DEPEND="
 	dev-libs/glib:2
 	dev-libs/jansson:=
+	dev-qt/qtbase:6[network,widgets,xml(+)]
+	dev-qt/qtsvg:6
 	media-libs/libglvnd
+	media-libs/libva
 	media-libs/x264:=
-	media-video/ffmpeg:=[nvenc?,x264]
+	media-video/ffmpeg:=[nvenc?,opus,x264]
 	net-misc/curl
 	sys-apps/dbus
 	sys-apps/pciutils
+	sys-apps/util-linux
 	sys-libs/zlib:=
 	x11-libs/libX11
+	x11-libs/libxcb:=
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
-	x11-libs/libxcb:=
+	x11-libs/libxkbcommon
 	alsa? ( media-libs/alsa-lib )
 	browser? (
 		|| (
 			>=app-accessibility/at-spi2-core-2.46.0:2
 			( app-accessibility/at-spi2-atk dev-libs/atk )
 		)
+		dev-cpp/nlohmann_json
 		dev-libs/expat
 		dev-libs/glib
 		dev-libs/nspr
@@ -110,20 +111,7 @@ DEPEND="
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
 	python? ( ${PYTHON_DEPS} )
-	qt6? (
-		dev-qt/qtbase:6[network,widgets,xml(+)]
-		dev-qt/qtsvg:6
-		x11-libs/libxkbcommon
-	)
-	!qt6? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5[wayland?]
-		dev-qt/qtnetwork:5
-		dev-qt/qtquickcontrols:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-	)
+	qsv? ( media-libs/oneVPL )
 	speex? ( media-libs/speexdsp )
 	ssl? ( net-libs/mbedtls:= )
 	truetype? (
@@ -138,6 +126,11 @@ DEPEND="
 	wayland? (
 		dev-libs/wayland
 		x11-libs/libxkbcommon
+	)
+	websocket? (
+		dev-cpp/asio
+		dev-cpp/nlohmann_json
+		dev-cpp/websocketpp
 	)
 "
 RDEPEND="${DEPEND}"
@@ -170,24 +163,25 @@ src_unpack() {
 		rm -d ${P}/plugins/obs-websocket || die
 		mv obs-websocket-${OBS_WEBSOCKET_COMMIT} ${P}/plugins/obs-websocket || die
 
-		rm -d ${P}/plugins/obs-websocket/deps/asio || die
-		mv asio-${ASIO_COMMIT} ${P}/plugins/obs-websocket/deps/asio || die
-
-		rm -d ${P}/plugins/obs-websocket/deps/json || die
-		mv json-${JSON_COMMIT} ${P}/plugins/obs-websocket/deps/json || die
-
 		rm -d ${P}/plugins/obs-websocket/deps/qr || die
 		mv QR-Code-generator-${QR_COMMIT} ${P}/plugins/obs-websocket/deps/qr || die
-
-		rm -d ${P}/plugins/obs-websocket/deps/websocketpp || die
-		mv websocketpp-${WEBSOCKETPP_COMMIT} ${P}/plugins/obs-websocket/deps/websocketpp || die
 	fi
+}
+
+src_prepare() {
+	default
+
+	sed -i '/-Werror$/d' "${WORKDIR}"/${P}/cmake/Modules/CompilerConfig.cmake || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		$(usev browser -DCEF_ROOT_DIR=../${CEF_DIR})
+		-DCALM_DEPRECATION=ON
+		-DCCACHE_SUPPORT=OFF
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AJA=OFF
 		-DENABLE_BROWSER=$(usex browser)
@@ -198,15 +192,16 @@ src_configure() {
 		-DENABLE_NEW_MPEGTS_OUTPUT=OFF # Requires librist and libsrt.
 		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
-		-DENABLE_RTMPS=$(usex ssl)
+		-DENABLE_QSV11=$(usex qsv)
+		-DENABLE_RTMPS=$(usex ssl ON OFF) # Needed for bug 880861
 		-DENABLE_SPEEXDSP=$(usex speex)
 		-DENABLE_V4L2=$(usex v4l)
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
 		-DENABLE_WAYLAND=$(usex wayland)
+		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
 		-DENABLE_WEBSOCKET=$(usex websocket)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
-		-DQT_VERSION=$(usex qt6 6 5)
 		-DUNIX_STRUCTURE=1
 	)
 
@@ -262,5 +257,6 @@ pkg_postinst() {
 		elog
 	fi
 
+	optfeature "VA-API hardware encoding" media-video/ffmpeg[vaapi]
 	optfeature "virtual camera support" media-video/v4l2loopback
 }

@@ -1,0 +1,46 @@
+https://src.fedoraproject.org/rpms/inkscape/blob/rawhide/f/0001-Fix-build-with-GCC13.patch
+https://gitlab.com/inkscape/inkscape/-/merge_requests/5108
+https://gitlab.com/inkscape/inkscape/-/merge_requests/5111 (version which got accepted upstream)
+https://bugs.gentoo.org/903867
+
+From c68f5f9cade8a890efefcb4c2e0fc57762211286 Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Fri, 24 Feb 2023 14:01:18 -0500
+Subject: [PATCH] Fix build with GCC13
+
+GCC 13 now complains about this line:
+```
+src/ui/widget/selected-style.cpp:111:6: error: statement-expressions are not allowed outside functions nor in template-argument lists
+  111 |     {g_strdup("application/x-oswb-color"), 0, APP_OSWB_COLOR}
+      |      ^~~~~~~~
+```
+
+However, it is not necessary to strdup the string constant as the value
+just needs to exist indefinitely, and it will as a constant. While C
+doesn't mind the `const` difference, a simple cast will silence C++'s
+higher strictness.
+
+And in fact, the other use of `GtkTargetEntry` in
+`src/ui/drag-and-drop.cpp` does the same cast.
+
+Signed-off-by: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+--- a/src/ui/widget/selected-style.cpp
++++ b/src/ui/widget/selected-style.cpp
+@@ -100,14 +100,8 @@ enum ui_drop_target_info {
+     APP_OSWB_COLOR
+ };
+ 
+-//TODO: warning: deprecated conversion from string constant to ‘gchar*’
+-//
+-//Turn out to be warnings that we should probably leave in place. The
+-// pointers/types used need to be read-only. So until we correct the using
+-// code, those warnings are actually desired. They say "Hey! Fix this". We
+-// definitely don't want to hide/ignore them. --JonCruz
+ static const GtkTargetEntry ui_drop_target_entries [] = {
+-    {g_strdup("application/x-oswb-color"), 0, APP_OSWB_COLOR}
++    {(gchar *)"application/x-oswb-color", 0, APP_OSWB_COLOR}
+ };
+ 
+ static guint nui_drop_target_entries = G_N_ELEMENTS(ui_drop_target_entries);
+-- 
+2.39.2

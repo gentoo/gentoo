@@ -2,20 +2,23 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>slashbeast@gentoo.org</email>
-		<name>Piotr Karbowski</name>
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">DeaDBeeF-Player/deadbeef</remote-id>
+		<remote-id type="sourceforge">deadbeef</remote-id>
 	</upstream>
 	<use>
 		<flag name="converter">File format converter</flag>
 		<flag name="cover">Support for cover art</flag>
 		<flag name="hotkeys">Keyboard shortcuts support</flag>
 		<flag name="lastfm">last.fm/AudioScrobbler protocol support</flag>
+		<flag name="libretro">libretro resampling plugin</flag>
 		<flag name="libsamplerate">Support the Secret Rabbit Code resampler</flag>
 		<flag name="notify">Desktop notifications support</flag>
 		<flag name="nullout">Dummy output driver</flag>
+		<flag name="pipewire">Pipewire output plugin</flag>
 		<flag name="sc68">Atari ST and Amiga music player</flag>
 		<flag name="shellexec">Define custom shell commands that can be called on tracks</flag>
 		<flag name="supereq">Enable equalizer</flag>

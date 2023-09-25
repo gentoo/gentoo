@@ -1,0 +1,22 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -930,7 +930,6 @@ if meta.compiler in ['gcc', 'clang']:
+         for var in ['CXXFLAGS', 'CFLAGS']:
+             env.Append(**{var: [
+                 '-fvisibility=hidden',
+-                '-O3',
+             ]})
+ 
+     if meta.compiler == 'gcc' and meta.compiler_ver[:2] < (4, 6):
+@@ -948,10 +947,7 @@ if meta.compiler in ['cc']:
+                 '-g',
+             ]})
+     else:
+-        for var in ['CXXFLAGS', 'CFLAGS']:
+-            env.Append(**{var: [
+-                '-O3',
+-            ]})
++        pass
+ 
+     if meta.fpic_support:
+         for var in ['CXXFLAGS', 'CFLAGS']:

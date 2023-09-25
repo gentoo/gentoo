@@ -1,21 +1,22 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=99d707bc3c600a9d6052a46a7c85f05b74c589a2
+[[ ${PV} == 20220303 ]] && COMMIT=99d707bc3c600a9d6052a46a7c85f05b74c589a2
 
 DESCRIPTION="Sample databases for Metamath"
-HOMEPAGE="http://us.metamath.org/mpeuni/mmset.html"
+HOMEPAGE="http://us.metamath.org/mpeuni/mmset.html
+	https://github.com/metamath/set.mm/"
 
-if [[ "${PV}" == *9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/metamath/set.mm.git"
 else
-	SRC_URI="https://github.com/metamath/set.mm/archive/${H}.tar.gz
-				-> ${P}.tar.gz"
+	SRC_URI="https://github.com/metamath/set.mm/archive/${COMMIT}.tar.gz
+		-> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}"/set.mm-${H}
+	S="${WORKDIR}"/set.mm-${COMMIT}
 fi
 
 LICENSE="CC0-1.0"

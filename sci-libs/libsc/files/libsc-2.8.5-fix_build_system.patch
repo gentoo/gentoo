@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 87af1b1..82cb357 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,8 @@ HOMEPAGE_URL https://www.p4est.org/
+ DESCRIPTION "The SC library supports parallel scientific applications."
+ VERSION ${PROJECT_VERSION})
+ 
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++
+ enable_testing()
+ 
+ include(cmake/options.cmake)
+@@ -57,7 +59,10 @@ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+ FILES_MATCHING PATTERN "*.h"
+ )
+ 
+-install(TARGETS sc EXPORT ${PROJECT_NAME}-targets)
++install(TARGETS sc EXPORT ${PROJECT_NAME}-targets
++ARCHIVE DESTINATION ${library_reldir}
++LIBRARY DESTINATION ${library_reldir}
++)
+ 
+ add_subdirectory(src)
+ add_subdirectory(example)

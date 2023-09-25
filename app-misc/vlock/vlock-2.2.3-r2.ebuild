@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,10 +14,11 @@ SRC_URI="https://github.com/WorMzy/vlock/archive/${EGIT_COMMIT}.tar.gz -> ${P}.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE="pam test"
+IUSE="pam selinux test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	virtual/libcrypt:=
 	!sys-apps/kbd[pam]
 	pam? ( sys-libs/pam )
 "
@@ -30,6 +31,7 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	acct-group/vlock
+	selinux? ( sec-policy/selinux-vlock )
 "
 
 DOCS=( ChangeLog PLUGINS README README.X11 SECURITY STYLE TODO )

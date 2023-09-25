@@ -21,7 +21,7 @@ LICENSE="ZLIB"
 SLOT="0"
 
 DEPEND="app-text/poppler[cairo]
-	>=app-text/zathura-0.3.9
+	>=app-text/zathura-0.3.9:=
 	dev-libs/girara
 	dev-libs/glib:2"
 

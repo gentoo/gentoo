@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit prefix python-any-r1 xdg
 
@@ -19,6 +19,10 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/pillow[${PYTHON_USEDEP},zlib]')
 	app-text/asciidoc
 	games-util/deutex[png]"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.12.1-Python-PIL-10.0.0-support.patch
+)
 
 S="${WORKDIR}/freedoom-${PV}"
 

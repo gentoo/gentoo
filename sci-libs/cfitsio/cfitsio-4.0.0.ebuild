@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/9"
-KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ppc64 ~riscv sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="bzip2 curl cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
 
 BDEPEND="

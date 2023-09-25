@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Embark makes it easy to choose a command to run based on what is near
+    point, both during a minibuffer completion session (in a way familiar to
+    Helm or Counsel users) and in normal buffers. Bind the command embark-act
+    to a key and it acts like prefix-key for a keymap of actions (commands)
+    relevant to the target around point. With point on an URL in a buffer you
+    can open the URL in a browser or eww or download the file it points to. If
+    while switching buffers you spot an old one, you can kill it right there
+    and continue to select another. Embark comes preconfigured with over a
+    hundred actions for common types of targets such as files, buffers,
+    identifiers, s-expressions, sentences; and it is easy to add more actions
+    and more target types. Embark can also collect all the candidates in a
+    minibuffer to an occur-like buffer or export them to a buffer in a
+    major-mode specific to the type of candidates, such as dired for a set of
+    files, ibuffer for a set of buffers, or customize for a set of variables.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/oantolin/embark/issues/</bugs-to>
+    <remote-id type="github">oantolin/embark</remote-id>
+  </upstream>
+</pkgmetadata>

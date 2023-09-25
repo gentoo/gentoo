@@ -9,4 +9,7 @@
 		<flag name="systemd">Use external libsystemd instead of statically-linked build</flag>
 		<flag name="tools">Install interface stub code generator</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Kistler-Group/sdbus-cpp</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,38 +1,48 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{8..11} )
+DISTUTILS_USE_PEP517=setuptools
 
 inherit cmake distutils-r1 toolchain-funcs
 
 DESCRIPTION="disassembly/disassembler framework + bindings"
-HOMEPAGE="http://www.capstone-engine.org/"
+HOMEPAGE="https://www.capstone-engine.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/capstone-engine/capstone.git"
 	EGIT_REPO_BRANCH="next"
 else
-	SRC_URI="https://github.com/capstone-engine/capstone/archive/${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	MY_PV="${PV/_rc/-rc}"
+	SRC_URI="https://github.com/capstone-engine/capstone/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_PV}"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="BSD"
 SLOT="0/5" # libcapstone.so.5
 
-IUSE="python test"
+IUSE="python static-libs test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
 "
+BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-distutils_enable_tests setup.py
+PATCHES=(
+	# Currently "-Werror" is only added in the `next`-development branch, but
+	# not merged into 5.* releases. Eventually this patch may be needed in
+	# version 5 releas line. See bug #911481.
+	"${FILESDIR}/${P}-werror.patch"
+)
 
-S=${WORKDIR}/${P/_rc/-rc}
+distutils_enable_tests setup.py
 
 if [[ ${PV} == *_rc* ]]; then
 	# Upstream doesn't flag release candidates (bug 858350)
@@ -82,4 +92,8 @@ src_install() {
 	cmake_src_install
 
 	wrap_python ${FUNCNAME}
+
+	if ! use static-libs ; then
+		find "${ED}" -name '*.a' -delete || die
+	fi
 }

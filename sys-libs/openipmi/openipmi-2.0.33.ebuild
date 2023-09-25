@@ -1,10 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-single-r1
 
 MY_PN="OpenIPMI"
@@ -16,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv x86"
 IUSE="crypt snmp perl python static-libs tcl"
 
 RDEPEND="
@@ -29,7 +28,8 @@ RDEPEND="
 	snmp? ( net-analyzer/net-snmp )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	tcl? ( dev-lang/tcl:= )"
+	tcl? ( dev-lang/tcl:= )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-lang/swig-1.3.21
@@ -38,7 +38,6 @@ BDEPEND="
 
 # Gui is broken!
 #		python? ( tcl? ( tk? ( dev-lang/tk dev-tcltk/tix ) ) )"
-
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(

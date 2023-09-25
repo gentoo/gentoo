@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,11 @@ IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${P#*-}"
+
+src_prepare() {
+	cmake_src_prepare
+	sed -i "s:-Werror::g" cmake/GhcHelper.cmake test/CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(

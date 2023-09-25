@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby30 ruby31 ruby32"
 
 # Skip integration tests since they require additional unpackaged
 # dependencies and running daemons.
@@ -15,7 +15,7 @@ RUBY_FAKEGEM_BINWRAP=""
 inherit ruby-fakegem
 
 DESCRIPTION="A DSL for blocking & throttling abusive clients"
-HOMEPAGE="https://github.com/kickstarter/rack-attack"
+HOMEPAGE="https://github.com/rack/rack-attack"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

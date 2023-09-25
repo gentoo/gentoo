@@ -1,5 +1,45 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
+# librttopo has not been tested on this arch
+dev-db/spatialite rttopo
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-05-10)
+# sys-cluster/ceph not keyworded here
+sys-block/tgt rbd
+
+# Sebastian Parborg <darkdefende@gmail.com> (2023-05-08)
+# media-libs/openpgl and media-libs/embree only supports amd64 and arm64
+media-gfx/blender embree openpgl
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-03-07)
+# nbval/nbclassic docs require pandoc which is not keyworded here yet
+dev-python/nbval doc
+dev-python/nbclassic doc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
+# Successful build of dev-qt/qtwebengine depends on 64-bit host
+# Bug #893234
+app-i18n/fcitx-libpinyin dictionary-manager
+dev-lang/idris2 test-full
+dev-python/cloudscraper test
+dev-python/QtPy test
+games-util/lgogdownloader gui
+kde-apps/kde-apps-meta:5 pim
+kde-apps/kdenetwork-meta:5 bittorrent telepathy
+kde-apps/kleopatra:5 pim
+kde-apps/umbrello:5 php
+kde-misc/kio-gdrive share
+net-irc/quassel urlpreview
+net-misc/fatrat bittorrent
+net-misc/seafile-client shibboleth
+sci-mathematics/yacas gui
+sci-physics/root qt5
 
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
 # avoid larger deptree, bug #882593
@@ -51,10 +91,6 @@ app-emulation/qemu rbd slirp spice virgl vde
 app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 app-emulation/qemu qemu_softmmu_targets_ppc qemu_softmmu_targets_ppc64
 
-# Sam James <sam@gentoo.org> (2021-10-31)
-# dev-python/pyilmbase isn't keyworded on arm
-media-gfx/alembic python
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2021-09-25)
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
@@ -89,7 +125,7 @@ net-im/prosody selinux
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm
 # bug #729720
-sys-apps/systemd -gnuefi
+sys-apps/systemd -boot -gnuefi
 sys-apps/systemd-utils -boot
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
@@ -101,6 +137,7 @@ app-text/enchant voikko
 sys-libs/compiler-rt-sanitizers -asan -lsan
 sys-libs/compiler-rt-sanitizers -ubsan -cfi -scudo
 sys-libs/compiler-rt-sanitizers -profile -xray
+>=sys-libs/compiler-rt-sanitizers-16 -gwp-asan -libfuzzer -orc
 
 # Rick Farina <zerochaos@gentoo.org> (2020-12-18)
 # net-wireless/libxtrx et all needs testing
@@ -126,18 +163,10 @@ games-strategy/0ad nvtt
 # Cinnamon is not keyworded on this architecture.
 x11-themes/arc-theme cinnamon
 
-# Sam James <sam@gentoo.org> (2020-07-11)
-# Don't drag in qtwebengine for Plasma right now
-# Not going for nuclear option of general mask
-# (or dropping keywords) because unclear if it's caused
-# by the use of a linux32 chroot.
-# See bug #713900
-kde-plasma/libksysguard webengine
-kde-plasma/kdeplasma-addons webengine
-
 # Sam James <sam@gentoo.org> (2020-06-27)
 # Tests require Valgrind, not available on <armv7a
 dev-libs/rapidjson test
+sys-apps/proot test
 
 # Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
 # Mask until 'app-arch/lxqt-archiver' is keyworded.
@@ -217,10 +246,6 @@ media-video/mpv -raspberry-pi
 # media-sound/mac's executable segfaults when compressing all but the
 # smallest wav files.
 media-sound/xmms2 mac
-
-# Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
-# missing keywords media-libs/lastfmlib
-net-misc/gerbera lastfm
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Requires USE=ipmi which is masked in this profile.
@@ -305,6 +330,7 @@ media-gfx/xsane ocr
 media-video/ffmpeg -mmal
 media-video/ffmpeg-chromium -mmal
 media-video/mpv -mmal
+net-misc/moonlight -mmal
 
 # Markus Meier <maekke@gentoo.org> (2015-10-10)
 # unkeyworded deps, bug #552330
@@ -417,16 +443,10 @@ dev-tex/tex4ht java
 dev-vcs/subversion java
 media-libs/libjpeg-turbo java
 net-misc/tigervnc java
-sys-devel/gettext java
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# requires app-office/unoconv, which requires virtual/ooo, which is not
-# keyworded here. Remove mask if this situation changes.
-gnome-extra/sushi office
 
 # Markus Meier <maekke@gentoo.org> (2012-12-08)
 # mask app-office/libreoffice java extensions

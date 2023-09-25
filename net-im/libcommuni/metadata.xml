@@ -14,4 +14,7 @@
 		<flag name="qml">Install optional qml files.</flag>
 		<flag name="uchardet">Use <pkg>app-i18n/uchardet</pkg>, which is upstreams default, instead of <pkg>dev-libs/icu</pkg>, which makes impossible to run tests.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">communi/libcommuni</remote-id>
+	</upstream>
 </pkgmetadata>

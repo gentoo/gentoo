@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://www.realtek.com/en/component/zoo/category/network-interface-co
 SRC_URI="http://rtitwww.realtek.com/rtdrivers/cn/nic1/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="virtual/udev"
 DEPEND="${RDEPEND}"
@@ -25,6 +25,7 @@ IUSE="+center-tap-short"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.16.3-kernel-5.19-fix.patch
 	"${FILESDIR}"/${PN}-2.16.3-kernel-6.1-fix.patch
+	"${FILESDIR}"/${PN}-2.16.3-kernel-6.4.10-fix.patch
 )
 
 pkg_setup() {

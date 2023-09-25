@@ -14,4 +14,7 @@
 
 	The instrument plugins make use of the new atom:AtomPort to receive MIDI. Apologies for any inconvenience, but this means they will only work in modern hosts which have implemented atom-based MIDI. The effects should work fine in any LV2 host.
 </longdescription>
+<upstream>
+	<remote-id type="gitlab">drobilla/mda-lv2</remote-id>
+</upstream>
 </pkgmetadata>

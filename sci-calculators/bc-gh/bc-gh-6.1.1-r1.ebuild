@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Implementation of POSIX bc with GNU extensions"
-HOMEPAGE="https://git.yzena.com/gavin/bc"
+HOMEPAGE="https://git.gavinhoward.com/gavin/bc"
 SRC_URI="https://github.com/gavinhoward/bc/releases/download/${PV}/bc-${PV}.tar.xz"
 
 LICENSE="BSD-2"

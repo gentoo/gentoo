@@ -5,9 +5,9 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <maintainer type="person">
-    <email>candrews@gentoo.org</email>
-    <name>Craig Andrews</name>
+  <maintainer type="person" proxied="yes">
+    <email>xgreenlandforwyy@gmail.com</email>
+    <name>Yiyang Wu</name>
   </maintainer>
   <maintainer type="person" proxied="yes">
     <email>gentoo@holzke.net</email>

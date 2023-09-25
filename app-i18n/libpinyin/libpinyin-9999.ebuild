@@ -1,7 +1,7 @@
-# Copyright 2012-2020 Gentoo Authors
+# Copyright 2012-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit autotools
 
@@ -57,5 +57,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name "*.la" -delete || die
+	find "${D}" -name "*.la" -delete || die
 }

@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools desktop
 
-DESCRIPTION="A Go-frontend"
-HOMEPAGE="http://cgoban1.sourceforge.net/"
+DESCRIPTION="Go-frontend with a large set of go-related services"
+HOMEPAGE="https://cgoban1.sourceforge.net/"
 SRC_URI="mirror://sourceforge/cgoban1/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -11,5 +11,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pyperclip</remote-id>
+		<remote-id type="github">asweigart/pyperclip</remote-id>
 	</upstream>
 </pkgmetadata>

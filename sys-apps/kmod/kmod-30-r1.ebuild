@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools libtool bash-completion-r1 python-r1
 
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/kernel/kmod/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 DESCRIPTION="library and tools for managing linux kernel modules"
@@ -26,7 +26,7 @@ IUSE="debug doc +lzma pkcs7 python static-libs +tools +zlib +zstd"
 # I was also told that the test suite is intended for kmod developers.
 # So we have to restrict it.
 # See bug #408915.
-RESTRICT="test"
+#RESTRICT="test"
 
 # - >=zlib-1.2.6 required because of bug #427130
 # - Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
@@ -136,6 +136,25 @@ src_compile() {
 		}
 
 		python_foreach_impl python_compile
+	fi
+}
+
+src_test() {
+	python_test() {
+		mkdir "${T}/test-${EPYTHON}" || die
+		emake -C "${BUILD_DIR}" DESTDIR="${T}/test-${EPYTHON}" \
+                                VPATH="${native_builddir}:${S}" \
+                                install-pkgpyexecLTLIBRARIES \
+                                install-dist_pkgpyexecPYTHON
+
+		# Smoke test based on https://bugs.gentoo.org/891975#c5
+		local -x PYTHONPATH="${T}/test-${EPYTHON}/usr/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
+		${EPYTHON} -c 'import kmod; km = kmod.Kmod(); print([(m.name, m.size) for m in km.loaded()])' || die
+		rm -r "${T}/test-${EPYTHON}" || die
+	}
+
+	if use python; then
+		python_foreach_impl python_test
 	fi
 }
 

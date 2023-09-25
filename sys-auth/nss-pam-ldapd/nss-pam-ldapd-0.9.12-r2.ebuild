@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-r1 s6 systemd tmpfiles multilib-minimal
 
 DESCRIPTION="NSS module for name lookups using LDAP"
@@ -12,7 +12,7 @@ SRC_URI="https://arthurdejong.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="debug kerberos +pam pynslcd sasl test +utils"
 REQUIRED_USE="
 	utils? ( ${PYTHON_REQUIRED_USE} )

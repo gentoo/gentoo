@@ -1,5 +1,43 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-09-24)
+# Qt not keyworded here.
+app-doc/doxygen gui
+
+# Sam James <sam@gentoo.org> (2023-09-22)
+# Qt 6 not keyworded here.
+dev-util/cmake gui
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
+# Libei not keyworded here yet
+x11-base/xwayland libei
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Needs dev-python/sympy which is not keyworded
+dev-python/nbval test
+
+# Michał Górny <mgorny@gentoo.org> (2023-03-14)
+# Requires virtual/pandoc.
+dev-python/nbclassic doc
+dev-python/nbval doc
 
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
 # avoid larger deptree, bug #882593
@@ -13,9 +51,7 @@ dev-ruby/stringex test
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # eps: app-text/libspectre not keyworded here
-# heif: media-libs/libheif not keyworded here
-# jpegxl: libjxl not keyworded here
-media-libs/imlib2 eps heif jpegxl
+media-libs/imlib2 eps
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # Avoid unkeyworded dependencies
@@ -71,10 +107,10 @@ net-fs/cifs-utils acl
 media-libs/libcanberra sound
 
 # Sam James <sam@gentoo.org> (2022-04-24)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
-media-gfx/graphicsmagick heif
+media-libs/gd avif
+www-client/links avif
+dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # Unkeyworded dev-tcltk/* dependencies
@@ -103,7 +139,7 @@ media-video/ffmpeg vmaf
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
-dev-python/scipy pythran
+dev-python/scipy fortran
 
 # Matt Turner <mattst88@gentoo.org> (2021-06-10)
 # dev-python/django is not keyworded here
@@ -123,14 +159,13 @@ dev-python/cssselect doc
 # not really interested in supporting alternative
 # VCS for overlays yet. Layman needs SVN for tests too.
 app-portage/layman darcs mercurial test
-dev-python/setuptools_scm test
+dev-python/setuptools-scm test
 # no lua support for vim
 app-editors/vim lua
 # not keyworded yet
 media-gfx/imagemagick raw
 dev-db/mariadb numa
 # not tested yet
-app-misc/mc samba
 app-arch/rpm test
 # no ceph keyworded
 net-analyzer/rrdtool rados
@@ -149,7 +184,7 @@ app-portage/layman g-sorcery
 
 # Mikle Kolyada <zlogene@gentoo.org> (2014-01-11)
 # too much unkeyworded dependencies (bug #497068)
-dev-vcs/git mediawiki mediawiki-experimental
+dev-vcs/git mediawiki
 
 # Agostino Sarubbo <ago@gentoo.org< (2013-04-10)
 # It requires too much unstable dep.

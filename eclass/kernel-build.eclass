@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -28,7 +28,13 @@ esac
 if [[ ! ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+	# If we have enabled module signing IUSE
+	# then we can also enable secureboot IUSE
+	KERNEL_IUSE_SECUREBOOT=1
+	inherit secureboot
+fi
 
 inherit multiprocessing python-any-r1 savedconfig toolchain-funcs kernel-install
 
@@ -39,7 +45,77 @@ BDEPEND="
 	sys-devel/flex
 	virtual/libelf
 	app-alternatives/yacc
+	arm? ( sys-apps/dtc )
+	arm64? ( sys-apps/dtc )
+	riscv? ( sys-apps/dtc )
 "
+
+IUSE="+strip"
+
+# @ECLASS_VARIABLE: KERNEL_IUSE_MODULES_SIGN
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-null value, adds IUSE=modules-sign and required
+# logic to manipulate the kernel config while respecting the
+# MODULES_SIGN_HASH, MODULES_SIGN_CERT, and MODULES_SIGN_KEY  user
+# variables.
+
+# @ECLASS_VARIABLE: MODULES_SIGN_HASH
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used with USE=modules-sign.  Can be set to hash algorithm to use
+# during signature generation (CONFIG_MODULE_SIG_SHA256).
+#
+# Valid values: sha512,sha384,sha256,sha224,sha1
+#
+# Default if unset: sha512
+
+# @ECLASS_VARIABLE: MODULES_SIGN_KEY
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used with USE=modules-sign.  Can be set to the path of the private
+# key in PEM format to use, or a PKCS#11 URI (CONFIG_MODULE_SIG_KEY).
+#
+# If path is relative (e.g. "certs/name.pem"), it is assumed to be
+# relative to the kernel build directory being used.
+#
+# If the key requires a passphrase or PIN, the used kernel sign-file
+# utility recognizes the KBUILD_SIGN_PIN environment variable.  Be
+# warned that the package manager may store this value in binary
+# packages, database files, temporary files, and possibly logs.  This
+# eclass unsets the variable after use to mitigate the issue (notably
+# for shared binary packages), but use this with care.
+#
+# Default if unset: certs/signing_key.pem
+
+# @ECLASS_VARIABLE: MODULES_SIGN_CERT
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used with USE=modules-sign.  Can be set to the path of the public
+# key in PEM format to use. Must be specified if MODULES_SIGN_KEY
+# is set to a path of a file that only contains the private key.
+
+if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+	IUSE+=" modules-sign"
+	REQUIRED_USE="secureboot? ( modules-sign )"
+	BDEPEND+="
+		modules-sign? ( dev-libs/openssl )
+	"
+fi
+
+# @FUNCTION: kernel-build_pkg_setup
+# @DESCRIPTION:
+# Call python-any-r1 and secureboot pkg_setup
+kernel-build_pkg_setup() {
+	python-any-r1_pkg_setup
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+		secureboot_pkg_setup
+	fi
+}
 
 # @FUNCTION: kernel-build_src_configure
 # @DESCRIPTION:
@@ -83,7 +159,7 @@ kernel-build_src_configure() {
 		LD="${LD}"
 		AR="$(tc-getAR)"
 		NM="$(tc-getNM)"
-		STRIP=":"
+		STRIP="$(tc-getSTRIP)"
 		OBJCOPY="$(tc-getOBJCOPY)"
 		OBJDUMP="$(tc-getOBJDUMP)"
 
@@ -144,12 +220,20 @@ kernel-build_src_test() {
 	debug-print-function ${FUNCNAME} "${@}"
 	local targets=( modules_install )
 	# on arm or arm64 you also need dtb
-	if use arm || use arm64; then
+	if use arm || use arm64 || use riscv; then
 		targets+=( dtbs_install )
 	fi
 
+	# Use the kernel build system to strip, this ensures the modules
+	# are stripped *before* they are signed or compressed.
+	local strip_args
+	if use strip; then
+		strip_args="--strip-unneeded"
+	fi
+
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${T}" "${targets[@]}"
+		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
+		"${targets[@]}"
 
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	local relfile=${WORKDIR}/build/include/config/kernel.release
@@ -172,18 +256,36 @@ kernel-build_src_install() {
 	# on what kind of installkernel is installed
 	local targets=( modules_install )
 	# on arm or arm64 you also need dtb
-	if use arm || use arm64; then
+	if use arm || use arm64 || use riscv; then
 		targets+=( dtbs_install )
 	fi
 
+	# Use the kernel build system to strip, this ensures the modules
+	# are stripped *before* they are signed or compressed.
+	local strip_args
+	if use strip; then
+		strip_args="--strip-unneeded"
+	fi
+	# Modules were already stripped by the kernel build system
+	dostrip -x /lib/modules
+
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${ED}" INSTALL_PATH="${ED}/boot" "${targets[@]}"
+		INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
+		INSTALL_PATH="${ED}/boot" "${targets[@]}"
 
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
 	local kern_arch=$(tc-arch-kernel)
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	local kernel_dir=/usr/src/linux-${dir_ver}
+
+	if use sparc ; then
+		# We don't want tc-arch-kernel's sparc64, even though we do
+		# need to pass ARCH=sparc64 to the build system. It's a quasi-alias
+		# in Kbuild.
+		kern_arch=sparc
+	fi
+
 	dodir "${kernel_dir}/arch/${kern_arch}"
 	mv include scripts "${ED}${kernel_dir}/" || die
 	mv "arch/${kern_arch}/include" \
@@ -210,12 +312,28 @@ kernel-build_src_install() {
 		')' -delete || die
 	rm modprep/source || die
 	cp -p -R modprep/. "${ED}${kernel_dir}"/ || die
+	# If CONFIG_MODULES=y, then kernel.release will be found in modprep as well, but not
+	# in case of CONFIG_MODULES is not set.
+	# The one in build is exactly the same as the one in modprep, but the one in build
+	# always exists, so it can just be copied unconditionally.
+	cp "${WORKDIR}/build/include/config/kernel.release" \
+		"${ED}${kernel_dir}/include/config/" || die
 
 	# install the kernel and files needed for module builds
 	insinto "${kernel_dir}"
-	doins build/{System.map,Module.symvers}
+	doins build/System.map
+	# build/Module.symvers does not exist if CONFIG_MODULES is not set.
+	[[ -f build/Module.symvers ]] && doins build/Module.symvers
 	local image_path=$(dist-kernel_get_image_path)
 	cp -p "build/${image_path}" "${ED}${kernel_dir}/${image_path}" || die
+
+	# If a key was generated, copy it so external modules can be signed
+	local suffix
+	for suffix in pem x509; do
+		if [[ -f "build/certs/signing_key.${suffix}" ]]; then
+			cp -p "build/certs/signing_key.${suffix}" "${ED}${kernel_dir}/certs" || die
+		fi
+	done
 
 	# building modules fails with 'vmlinux has no symtab?' if stripped
 	use ppc64 && dostrip -x "${kernel_dir}/${image_path}"
@@ -239,6 +357,13 @@ kernel-build_src_install() {
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
 
+	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+		secureboot_sign_efi_file "${ED}${kernel_dir}/${image_path}"
+	fi
+
+	# unset to at least be out of the environment file in, e.g. shared binpkgs
+	unset KBUILD_SIGN_PIN
+
 	save_config build/.config
 }
 
@@ -248,6 +373,26 @@ kernel-build_src_install() {
 kernel-build_pkg_postinst() {
 	kernel-install_pkg_postinst
 	savedconfig_pkg_postinst
+
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+		if use modules-sign && [[ -z ${MODULES_SIGN_KEY} ]]; then
+			ewarn
+			ewarn "MODULES_SIGN_KEY was not set, this means the kernel build system"
+			ewarn "automatically generated the signing key. This key was installed"
+			ewarn "in ${EROOT}/usr/src/linux-${PV}${KV_LOCALVERSION}/certs"
+			ewarn "and will also be included in any binary packages."
+			ewarn "Please take appropriate action to protect the key!"
+			ewarn
+			ewarn "Recompiling this package causes a new key to be generated. As"
+			ewarn "a result any external kernel modules will need to be resigned."
+			ewarn "Use emerge @module-rebuild, or manually sign the modules as"
+			ewarn "described on the wiki [1]"
+			ewarn
+			ewarn "Consider using the MODULES_SIGN_KEY variable to use an external key."
+			ewarn
+			ewarn "[1]: https://wiki.gentoo.org/wiki/Signed_kernel_module_support"
+		fi
+	fi
 }
 
 # @FUNCTION: kernel-build_merge_configs
@@ -270,18 +415,68 @@ kernel-build_merge_configs() {
 	local user_configs=( "${BROOT}"/etc/kernel/config.d/*.config )
 	shopt -u nullglob
 
+	local merge_configs=( "${@}" )
+
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+		if use modules-sign; then
+			: "${MODULES_SIGN_HASH:=sha512}"
+			cat <<-EOF > "${WORKDIR}/modules-sign.config" || die
+				## Enable module signing
+				CONFIG_MODULE_SIG=y
+				CONFIG_MODULE_SIG_ALL=y
+				CONFIG_MODULE_SIG_FORCE=y
+				CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
+			EOF
+			if [[ -e ${MODULES_SIGN_KEY} && -e ${MODULES_SIGN_CERT} &&
+				${MODULES_SIGN_KEY} != ${MODULES_SIGN_CERT} &&
+				${MODULES_SIGN_KEY} != pkcs11:* ]]
+			then
+				cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" > "${T}/kernel_key.pem" || die
+				MODULES_SIGN_KEY="${T}/kernel_key.pem"
+			fi
+			if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
+				echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
+					>> "${WORKDIR}/modules-sign.config"
+			elif [[ -n ${MODULES_SIGN_KEY} ]]; then
+				die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
+			fi
+			merge_configs+=( "${WORKDIR}/modules-sign.config" )
+		fi
+	fi
+
+	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+		if use secureboot; then
+			# This only effects arm64 and riscv where the bootable image may
+			# contain its own decompressor (zboot). If enabled we get a
+			# sign-able efi file.
+			cat <<-EOF > "${WORKDIR}/secureboot.config" || die
+				## Enable zboot for signing
+				CONFIG_EFI_ZBOOT=y
+			EOF
+
+			merge_configs+=( "${WORKDIR}/secureboot.config" )
+		fi
+	fi
+
 	if [[ ${#user_configs[@]} -gt 0 ]]; then
 		elog "User config files are being applied:"
 		local x
 		for x in "${user_configs[@]}"; do
 			elog "- ${x}"
 		done
+		merge_configs+=( "${user_configs[@]}" )
 	fi
 
 	./scripts/kconfig/merge_config.sh -m -r \
-		.config "${@}" "${user_configs[@]}" || die
+		.config "${merge_configs[@]}"  || die
+
+	# If this is set by USE=secureboot or user config this will have an effect
+	# on the name of the output image. Set this variable to track this setting.
+	if grep -q "CONFIG_EFI_ZBOOT=y" .config; then
+		KERNEL_EFI_ZBOOT=1
+	fi
 }
 
 fi
 
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install pkg_postinst
+EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_postinst

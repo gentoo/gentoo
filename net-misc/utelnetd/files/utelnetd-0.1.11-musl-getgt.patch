@@ -1,0 +1,14 @@
+Bug: https://bugs.gentoo.org/897954
+--- a/utelnetd.c
++++ b/utelnetd.c
+@@ -73,6 +73,10 @@
+ #define getpt() posix_openpt(O_RDWR|O_NOCTTY)
+ #endif
+ 
++#if !defined(__GLIBC__)
++#define getpt() posix_openpt(O_RDWR)
++#endif
++
+ #ifdef DEBUG
+ #define TELCMDS
+ #define TELOPTS

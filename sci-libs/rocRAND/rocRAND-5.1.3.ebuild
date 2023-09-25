@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,9 @@ IUSE="benchmark test"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}"/${PN}-5.1.3_stdint-gcc13.patch
+	"${FILESDIR}"/${PN}-5.1.3_no-symlink.patch )
+
 RDEPEND="dev-util/hip"
 DEPEND="${RDEPEND}
 dev-util/rocm-cmake
@@ -35,8 +38,6 @@ src_prepare() {
 	# change installed include and lib dir, and avoid symlink overwrite the installed headers
 	# avoid setting RPATH
 	sed -r -e "s:(hip|roc)rand/lib:\${CMAKE_INSTALL_LIBDIR}:" \
-		-e "s:(hip|roc)rand/include:include/\1rand:" \
-		-e '/\$\{INSTALL_SYMLINK_COMMAND\}/d' \
 		-e "/INSTALL_RPATH/d" -i library/CMakeLists.txt || die
 
 	# remove GIT dependency
@@ -54,6 +55,7 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=On
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-DBUILD_HIPRAND=ON
+		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DBUILD_BENCHMARK=$(usex benchmark ON OFF)
 	)

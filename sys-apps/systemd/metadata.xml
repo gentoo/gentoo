@@ -10,6 +10,7 @@
 	</slots>
 	<use>
 		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg></flag>
+		<flag name="boot">Enable EFI boot manager and stub loader</flag>
 		<flag name="cgroup-hybrid">Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).</flag>
 		<flag name="curl">Enable support for uploading journals</flag>
 		<flag name="cryptsetup">Enable cryptsetup tools (includes unit generator for crypttab)</flag>

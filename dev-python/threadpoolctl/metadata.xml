@@ -10,6 +10,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">joblib/threadpoolctl</remote-id>
 		<remote-id type="pypi">threadpoolctl</remote-id>
 	</upstream>
 </pkgmetadata>

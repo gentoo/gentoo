@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">grepmail</remote-id>
+		<remote-id type="github">coppit/grepmail</remote-id>
 	</upstream>
 </pkgmetadata>

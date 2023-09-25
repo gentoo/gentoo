@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,13 +8,13 @@ inherit texlive-common libtool prefix tmpfiles
 TEXMFD_VERSION="11"
 
 DESCRIPTION="Path searching library for TeX-related files"
-HOMEPAGE="http://tug.org/texlive/"
-SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz
-	https://dev.gentoo.org/~zlogene/distfiles/texlive/${PN}-texmf.d-${TEXMFD_VERSION}.tar.xz"
+HOMEPAGE="https://tug.org/texlive/"
+SRC_URI="https://dev.gentoo.org/~sam/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz
+	https://dev.gentoo.org/~sam/distfiles/texlive/${PN}-texmf.d-${TEXMFD_VERSION}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV%_p*}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc source static-libs"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}
@@ -24,12 +24,12 @@ EXTRA_TL_MODULES="kpathsea"
 EXTRA_TL_DOC_MODULES="kpathsea.doc"
 
 for i in ${EXTRA_TL_MODULES} ; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~sam/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 
 SRC_URI="${SRC_URI} doc? ( "
 for i in ${EXTRA_TL_DOC_MODULES} ; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~sam/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 SRC_URI="${SRC_URI} ) "
 

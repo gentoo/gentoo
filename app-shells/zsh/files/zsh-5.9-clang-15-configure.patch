@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/869539
+https://github.com/zsh-users/zsh/commit/ab4d62eb975a4c4c51dd35822665050e2ddc6918
 https://www.zsh.org/mla/workers/2022/msg00964.html
 --- a/configure.ac
 +++ b/configure.ac

@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_10 python3_11 )
 
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -13,7 +13,8 @@ HOMEPAGE="https://www.blender.org"
 if [[ ${PV} = *9999* ]] ; then
 	# Subversion is needed for downloading unit test files
 	inherit git-r3 subversion
-	EGIT_REPO_URI="https://git.blender.org/blender.git"
+	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
+	ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	# Update these between major releases.
@@ -24,18 +25,18 @@ fi
 
 SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
-IUSE="+bullet +dds +fluid +openexr +tbb \
-	alembic collada +color-management cuda +cycles \
-	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k \
-	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
-	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile \
-	test +tiff valgrind wayland X"
+IUSE="+bullet +dds +fluid +openexr +tbb
+	alembic collada +color-management cuda +cycles cycles-bin-kernels
+	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k
+	man +nanovdb ndof nls openal +oidn +openmp +openpgl +opensubdiv
+	+openvdb optix osl +pdf +potrace +pugixml pulseaudio sdl
+	+sndfile test +tiff valgrind wayland X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
-	cycles? ( openexr tiff openimageio )
+	cycles? ( openexr tiff )
 	fluid? ( tbb )
 	openvdb? ( tbb )
 	optix? ( cuda )
@@ -50,7 +51,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/python-zstandard[${PYTHON_USEDEP}]
+		dev-python/zstandard[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	media-libs/freetype:=[brotli]
@@ -58,6 +59,7 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsamplerate
+	>=media-libs/openimageio-2.4.6.0:=
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/libintl
@@ -80,11 +82,11 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-1.4.1 )
-	openimageio? ( >=media-libs/openimageio-2.3.12.0-r3:= )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
+	openpgl? ( media-libs/openpgl )
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0 )
 	openvdb? (
 		>=media-gfx/openvdb-9.0.0:=[nanovdb?]
@@ -95,7 +97,7 @@ RDEPEND="${PYTHON_DEPS}
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
@@ -168,10 +170,16 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
 		git-r3_src_unpack
+
+		git-r3_fetch ${ADDONS_EGIT_REPO_URI}
+		git-r3_checkout ${ADDONS_EGIT_REPO_URI} ${S}/scripts/addons
+
 		if use test; then
 			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
 			subversion_fetch ${TESTS_SVN_URL} ../lib/tests
 		fi
+		ASSETS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets
+		subversion_fetch ${ASSETS_SVN_URL} ../lib/assets
 	else
 		default
 		if use test; then
@@ -215,6 +223,7 @@ src_prepare() {
 
 src_configure() {
 	append-lfs-flags
+	blender_get_version
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
@@ -229,15 +238,18 @@ src_configure() {
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
 		-DWITH_CXX_GUARDEDALLOC=$(usex debug)
 		-DWITH_CYCLES=$(usex cycles)
+		-DWITH_CYCLES_CUDA_BINARIES=$(usex cycles-bin-kernels)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES_DEVICE_OPTIX=$(usex optix)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
 		-DWITH_CYCLES_OSL=$(usex osl)
+		-DWITH_CYCLES_PATH_GUIDING=$(usex openpgl)
 		-DWITH_CYCLES_STANDALONE=OFF
 		-DWITH_CYCLES_STANDALONE_GUI=OFF
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GHOST_WAYLAND=$(usex wayland)
+		-DWITH_GHOST_WAYLAND_APP_ID=blender-${BV}
 		-DWITH_GHOST_WAYLAND_DBUS=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_DYNLOAD=OFF
 		-DWITH_GHOST_WAYLAND_LIBDECOR=OFF
@@ -263,7 +275,6 @@ src_configure() {
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENCOLORIO=$(usex color-management)
 		-DWITH_OPENIMAGEDENOISE=$(usex oidn)
-		-DWITH_OPENIMAGEIO=$(usex openimageio)
 		-DWITH_OPENMP=$(usex openmp)
 		-DWITH_OPENSUBDIV=$(usex opensubdiv)
 		-DWITH_OPENVDB=$(usex openvdb)
@@ -288,6 +299,9 @@ src_configure() {
 			-DOPTIX_ROOT_DIR="${EPREFIX}"/opt/optix
 		)
 	fi
+
+	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
+	use arm64 && append-flags -flax-vector-conversions
 
 	append-flags $(usex debug '-DDEBUG' '-DNDEBUG')
 
@@ -389,13 +403,14 @@ pkg_postinst() {
 	elog "home directory. This can be done by starting blender, then"
 	elog "changing the 'Temporary Files' directory in Blender preferences."
 	elog
-	ewarn
-	ewarn "This ebuild does not unbundle the massive amount of 3rd party"
-	ewarn "libraries which are shipped with blender. Note that"
-	ewarn "these have caused security issues in the past."
-	ewarn "If you are concerned about security, file a bug upstream:"
-	ewarn "  https://developer.blender.org/"
-	ewarn
+
+	if use osl; then
+		ewarn ""
+		ewarn "OSL is know to cause runtime segfaults if Mesa has been linked to"
+		ewarn "an other LLVM version than what OSL is linked to."
+		ewarn "See https://bugs.gentoo.org/880671 for more details"
+		ewarn ""
+	fi
 
 	if ! use python_single_target_python3_10; then
 		elog "You are building Blender with a newer python version than"

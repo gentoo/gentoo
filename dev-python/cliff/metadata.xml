@@ -17,7 +17,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">cliff</remote-id>
-		<remote-id type="github">dreamhost/cliff</remote-id>
 		<remote-id type="github">openstack/cliff</remote-id>
 	</upstream>
 </pkgmetadata>

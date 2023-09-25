@@ -15,15 +15,26 @@
     </changelog>
   </upstream>
   <use>
-    <flag name="bmp">BMP bitmap image support (<pkg>media-libs/libnsbmp</pkg>)</flag>
+    <flag name="bmp">
+      Bitmap (BMP and ICO) image support via
+      <pkg>media-libs/libnsbmp</pkg>
+    </flag>
     <flag name="gtk">Build GTK3 GUI</flag>
-    <flag name="gtk2">Build GTK2 GUI</flag>
-    <flag name="psl">Use public suffix list via <pkg>media-libs/libnspsl</pkg></flag>
+    <flag name="psl">
+      Use public suffix list from <pkg>media-libs/libnspsl</pkg> to
+      detect supercookies (recommended)
+    </flag>
     <flag name="rosprite">
-      RISC OS Sprite bitmap image support (<pkg>media-libs/librosprite</pkg>)
+      RISC OS Sprite bitmap image support via
+      <pkg>media-libs/librosprite</pkg>
     </flag>
     <flag name="svgtiny">
-      SVG image support via media-libs/svgatiny instead of <pkg>gnome-base/librsvg</pkg>
+      Use <pkg>media-libs/libsvgtiny</pkg> instead of
+      <pkg>gnome-base/librsvg</pkg> for SVG support
+    </flag>
+    <flag name="truetype">
+      Use <pkg>media-libs/freetype</pkg> for text in the framebuffer
+      frontend
     </flag>
   </use>
   <longdescription lang="en">

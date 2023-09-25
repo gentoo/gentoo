@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="A library for high quality time and pitch scale modification"
-HOMEPAGE="https://github.com/claytonotey/libsbsms http://sbsms.sourceforge.net/"
+HOMEPAGE="https://github.com/claytonotey/libsbsms https://sbsms.sourceforge.net/"
 SRC_URI="https://github.com/claytonotey/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

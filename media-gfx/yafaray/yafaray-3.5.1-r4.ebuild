@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 # doesn't build with ninja when qt5 and python USE flags are both enabled
 CMAKE_MAKEFILE_GENERATOR="emake"
@@ -47,6 +47,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch
 	"${FILESDIR}"/${P}-add-missing-limits-header.patch
+	"${FILESDIR}"/${PN}-3.5.1-add-missing-include-statements-for-gcc-13.patch
 )
 
 DOCS=( AUTHORS.md CHANGELOG.md CODING.md INSTALL.md README.md )

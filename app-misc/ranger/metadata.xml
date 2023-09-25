@@ -2,17 +2,28 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
 	</maintainer>
-	<longdescription lang="en">
-	Ranger is a console file manager that gives you greater flexibility and a
-	good overview of your files without having to leave your console. It
-	visualizes the directory tree in two dimensions: the directory hierarchy on
-	one, lists of files on the other, with a preview to the right so you know
-	where you'll be going.
+	<maintainer type="person" proxied="yes">
+		<email>nex+b-g-o@nexadn.de</email>
+		<name>Adrian Schollmeyer</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		Ranger is a console file manager that gives you greater
+		flexibility and a good overview of your files without
+		having to leave your console. It visualizes the directory
+		tree in two dimensions: the directory hierarchy on one,
+		lists of files on the other, with a preview to the right
+		so you know where you'll be going.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">ranger/ranger</remote-id>
+		<remote-id type="pypi">ranger-fm</remote-id>
 	</upstream>
 </pkgmetadata>

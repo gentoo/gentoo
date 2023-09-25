@@ -1,10 +1,10 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
-inherit cmake
+inherit cmake toolchain-funcs flag-o-matic
 
 DESCRIPTION="Fuzzy matching library"
 HOMEPAGE="https://github.com/trendmicro/tlsh"
@@ -18,6 +18,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gnuinstalldirs.patch
 	"${FILESDIR}"/${P}-respect-flags.patch
 )
+
+src_prepare() {
+	# https://github.com/trendmicro/tlsh/issues/131
+	[[ "$(tc-endian)" == "big" ]] && append-flags "-D__SPARC"
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

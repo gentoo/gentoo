@@ -10,6 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">pythondialog</remote-id>
-		<remote-id type="pypi">python2-pythondialog</remote-id>
+		<remote-id type="pypi">pythondialog</remote-id>
 	</upstream>
 </pkgmetadata>

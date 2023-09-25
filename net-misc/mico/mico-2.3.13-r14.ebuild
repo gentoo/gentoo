@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-winnt"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="gtk postgres ssl tcl threads X"
 RESTRICT="test" #298101
 
@@ -84,18 +84,6 @@ src_configure() {
 	myconf $(use_with X x "${EPREFIX}"/usr)
 	# Same for gtk after patch 013, searches for gtk release.
 	myconf $(use_with gtk gtk 2)
-
-	# http://www.mico.org/pipermail/mico-devel/2009-April/010285.html
-	[[ ${CHOST} == *-hpux* ]] && append-cppflags -D_XOPEN_SOURCE_EXTENDED
-
-	if [[ ${CHOST} == *-winnt* ]]; then
-		# disabling static libs, since ar on interix takes nearly
-		# one hour per library, thanks to mico's monster objects.
-		use threads &&
-		ewarn "disabling USE='threads', does not work on ${CHOST}"
-		myconf --disable-threads --disable-static --enable-final
-		append-flags -D__STDC__
-	fi
 
 	econf ${myconf}
 }

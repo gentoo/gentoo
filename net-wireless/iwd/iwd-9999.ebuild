@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit flag-o-matic linux-info systemd
 
 #Set this variable to the required external ell version
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	IWD_EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/wireless/iwd.git"
 	ELL_EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
-	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
+	SRC_URI="https://mirrors.edge.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	MYRST2MAN="RST2MAN=:"
 fi
@@ -22,7 +22,7 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +crda +monitor ofono standalone systemd wired"
+IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +monitor ofono standalone systemd wired"
 
 DEPEND="
 	sys-apps/dbus
@@ -33,8 +33,8 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
+	acct-group/netdev
 	net-wireless/wireless-regdb
-	crda? ( net-wireless/crda )
 	standalone? (
 		systemd? ( sys-apps/systemd )
 		!systemd? ( virtual/resolvconf )
@@ -71,10 +71,6 @@ pkg_setup() {
 		~RFKILL
 		~X509_CERTIFICATE_PARSER
 	"
-	if use crda;then
-		CONFIG_CHECK="${CONFIG_CHECK} ~CFG80211_CRDA_SUPPORT"
-		WARNING_CFG80211_CRDA_SUPPORT="REGULATORY DOMAIN PROBLEM: please enable CFG80211_CRDA_SUPPORT for proper regulatory domain support"
-	fi
 
 	if use amd64;then
 		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_DES3_EDE_X86_64"
@@ -98,23 +94,6 @@ pkg_setup() {
 	fi
 
 	check_extra_config
-
-	if ! use crda; then
-		if use kernel_linux && kernel_is -lt 4 15; then
-			ewarn "POSSIBLE REGULATORY DOMAIN PROBLEM:"
-			ewarn "Regulatory domain support for kernels older than 4.15 requires crda."
-		fi
-		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
-			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
-		then
-			ewarn ""
-			ewarn "REGULATORY DOMAIN PROBLEM:"
-			ewarn "With CONFIG_CFG80211=y (built-in), the driver won't be able to load regulatory.db from"
-			ewarn " /lib/firmware, resulting in broken regulatory domain support.  Please set CONFIG_CFG80211=m"
-			ewarn " or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
-			ewarn ""
-		fi
-	fi
 }
 
 src_unpack() {
@@ -131,16 +110,18 @@ src_prepare() {
 	if [[ ${PV} == *9999* ]] ; then
 		eautoreconf
 	fi
+
+	sed -e "s:Exec=/bin/false:Exec=${EPREFIX}/usr/libexec/iwd:g" -i src/net.connman.iwd.service || die
 }
 
 src_configure() {
 	append-cflags "-fsigned-char"
 	local myeconfargs=(
 		--sysconfdir="${EPREFIX}"/etc/iwd --localstatedir="${EPREFIX}"/var
-		$(use_enable client)
-		$(use_enable monitor)
-		$(use_enable ofono)
-		$(use_enable wired)
+		"$(use_enable client)"
+		"$(use_enable monitor)"
+		"$(use_enable ofono)"
+		"$(use_enable wired)"
 		--enable-systemd-service
 		--with-systemd-unitdir="$(systemd_get_systemunitdir)"
 		--with-systemd-modloaddir="${EPREFIX}/usr/lib/modules-load.d"
@@ -151,12 +132,12 @@ src_configure() {
 }
 
 src_compile() {
-	emake ${MYRST2MAN}
+	emake "${MYRST2MAN}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" ${MYRST2MAN} install
-	keepdir /var/lib/${PN}
+	emake DESTDIR="${D}" "${MYRST2MAN}" install
+	keepdir "/var/lib/${PN}"
 
 	newinitd "${FILESDIR}/iwd.initd-r1" iwd
 
@@ -172,10 +153,13 @@ src_install() {
 	if use standalone ; then
 		local iwdconf="${ED}/etc/iwd/main.conf"
 		dodir /etc/iwd
-		echo "[General]" > "${iwdconf}"
-		echo "EnableNetworkConfiguration=true" >> "${iwdconf}"
-		echo "[Network]" >> "${iwdconf}"
-		echo "NameResolvingService=$(usex systemd systemd resolvconf)" >> "${iwdconf}"
+		cat << EOF > "${iwdconf}"
+[General]
+EnableNetworkConfiguration=true
+
+[Network]
+NameResolvingService=$(usex systemd systemd resolvconf)
+EOF
 		dodir /etc/conf.d
 		echo "rc_provide=\"net\"" > "${ED}"/etc/conf.d/iwd
 	fi

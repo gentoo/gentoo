@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="x64-macos"
 ACCEPT_KEYWORDS="~x64-macos"
 
+USE_EXPAND_HIDDEN="-CPU_FLAGS_X86"
 CPU_FLAGS_X86="mmx mmxext sse sse2"
 
 # multilib build stuff, single ABI (no multilib)

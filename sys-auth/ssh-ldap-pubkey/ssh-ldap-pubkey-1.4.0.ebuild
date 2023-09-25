@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Utility to manage SSH public keys stored in LDAP"
@@ -23,20 +23,15 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="schema"
 
-MY_CDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
+RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	>=dev-python/python-ldap-3.0[${PYTHON_USEDEP}]
 	virtual/logger"
-DEPEND="${MY_CDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-describe[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)"
-
-# We need to block previous net-misc/openssh packages
-# to avoid file collision on "/etc/openldap/schema/openssh-lpk.schema"
-RDEPEND="${MY_CDEPEND}
-	schema? ( !net-misc/openssh[ldap(-)] )"
 
 DOCS=( README.md CHANGELOG.adoc )
 

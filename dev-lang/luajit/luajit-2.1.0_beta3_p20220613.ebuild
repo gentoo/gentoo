@@ -1,8 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 GIT_COMMIT=0065cff7e0222c234b75a71e72b8883df5d000c2
+
+# Upstream don't make releases anymore and instead have a (broken) "rolling git tag"
+# model.
+#
+# https://github.com/LuaJIT/LuaJIT/issues/665#issuecomment-784452583
+# https://www.freelists.org/post/luajit/LuaJIT-uses-rolling-releases
+#
+# Regular snapshots should be made from the v2.1 branch.
 
 inherit pax-utils toolchain-funcs
 
@@ -12,13 +20,13 @@ MY_P="LuaJIT-${MY_PV}"
 
 DESCRIPTION="Just-In-Time Compiler for the Lua programming language"
 HOMEPAGE="https://luajit.org/"
-SRC_URI="https://luajit.org/download/${MY_P}.tar.gz"
+# SRC_URI="https://luajit.org/download/${MY_P}.tar.gz"
 SRC_URI="https://github.com/LuaJIT/LuaJIT/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 # this should probably be pkgmoved to 2.0 for sake of consistency.
 SLOT="2/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 -hppa ~ppc -riscv -sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 -hppa ~mips ~ppc -riscv -sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="lua52compat static-libs"
 
 S="${WORKDIR}/LuaJIT-${GIT_COMMIT}"

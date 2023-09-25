@@ -1,21 +1,27 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake python-single-r1
 
 DESCRIPTION="GNU Radio source block for OsmoSDR and rtlsdr and hackrf"
-HOMEPAGE="http://sdr.osmocom.org/trac/wiki/GrOsmoSDR"
+HOMEPAGE="
+	https://sdr.osmocom.org/trac/wiki/GrOsmoSDR
+	https://gitea.osmocom.org/sdr/gr-osmosdr
+"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/osmocom/gr-osmosdr.git"
 else
+	#commit
 	COMMIT="a100eb024c0210b95e4738b6efd836d48225bd03"
 	SRC_URI="https://github.com/osmocom/gr-osmosdr/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
+	#release
+	#SRC_URI="https://github.com/osmocom/gr-osmosdr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
@@ -48,7 +54,7 @@ BDEPEND="
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fix-enable-python.patch
+	"${FILESDIR}/${P}-fix-enable-python.patch"
 )
 
 src_configure() {

@@ -14,7 +14,7 @@ fi
 DESCRIPTION="Utility to change the binutils version being used"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Toolchain"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 IUSE="+native-symlinks"
 

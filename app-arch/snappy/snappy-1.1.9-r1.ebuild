@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,7 @@ PATCHES=(
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_CXX_STANDARD=14 # Latest gtest needs -std=c++14 or newer
 		-DSNAPPY_BUILD_TESTS=$(usex test)
 		-DSNAPPY_BUILD_BENCHMARKS=OFF
 		# Options below are related to benchmarking, that we disable.

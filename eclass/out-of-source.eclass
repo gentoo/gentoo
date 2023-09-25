@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: out-of-source.eclass
@@ -34,11 +34,18 @@
 
 case ${EAPI} in
 	7|8);;
-	*) die "EAPI ${EAPI:-0} unsupported (too old)";;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_OUT_OF_SOURCE_ECLASS} ]]; then
+if [[ -z ${_OUT_OF_SOURCE_ECLASS} ]]; then
 _OUT_OF_SOURCE_ECLASS=1
+
+# @ECLASS_VARIABLE: BUILD_DIR
+# @OUTPUT_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The current build directory.  Defaults to ${WORKDIR}/${P}_build
+# if unset.
 
 # @FUNCTION: out-of-source_src_configure
 # @DESCRIPTION:

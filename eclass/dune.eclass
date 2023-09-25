@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dune.eclass
@@ -27,9 +27,9 @@ _DUNE_ECLASS=1
 # @DESCRIPTION:
 # Sets the actual Dune package name, if different from Gentoo package name.
 # Set before inheriting the eclass.
-: ${DUNE_PKG_NAME:=${PN}}
+: "${DUNE_PKG_NAME:=${PN}}"
 
-inherit multiprocessing
+inherit edo multiprocessing
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -44,16 +44,108 @@ BDEPEND="
 	dev-ml/dune
 "
 
+# @FUNCTION: edune
+# @USAGE: <arg> ...
+# @DESCRIPTION:
+# A thin wrapper for the `dune` command.
+# Runs `dune` with given arguments and dies on failure.
+#
+# Example use:
+# @CODE
+# edune clean
+# @CODE
+edune() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	edo dune "${@}"
+}
+
+# @FUNCTION: dune-release
+# @USAGE: <subcommand> [--target target] [package] ...
+# @DESCRIPTION:
+# Run a selected subcommand for either all of dune packages in current
+# directory or only the selected packages. In case of all packages the package
+# detection is done via dune itself.
+# The `--target` option specifies a target for the selected subcommand,
+# it is primarily used for `dune build`, for more info see `man dune-build`.
+#
+# Example use:
+# @CODE
+# dune-release build --target @install menhir menhirLib menhirSdk
+# @CODE
+dune-release() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local subcommand
+	local target
+
+	# Get the subcommand.
+	if [[ -z "${1}" ]] ; then
+		die "dune-release: missing subcommand"
+	else
+		subcommand="${1}"
+		shift
+	fi
+
+	# Detect if the target is specified.
+	case "${1}" in
+		--target )
+			target="${2}"
+			shift
+			shift
+			;;
+	esac
+
+	local -a myduneopts=(
+		--display=short
+		--profile release
+		-j $(makeopts_jobs)
+	)
+
+	# Resolve the package flag.
+	if [[ -n "${1}" ]] ; then
+		myduneopts+=( --for-release-of-packages="$(IFS="," ; echo "${*}")" )
+	fi
+
+	edune ${subcommand} ${target} "${myduneopts[@]}"
+}
+
+# @FUNCTION: dune-compile
+# @USAGE: [package] ...
+# @DESCRIPTION:
+# Builds either all of or selected dune packages in current directory.
+#
+# Example use:
+# @CODE
+# dune-compile menhir menhirLib menhirSdk
+# @CODE
+dune-compile() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	dune-release build --target @install "${@}"
+}
+
+# @FUNCTION: dune-test
+# @USAGE: [package] ...
+# @DESCRIPTION:
+# Tests either all of or selected dune packages in current directory.
+#
+# Example use:
+# @CODE
+# dune-test menhir menhirLib menhirSdk
+# @CODE
+dune-test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	dune-release runtest "${@}"
+}
+
 dune_src_compile() {
-	ebegin "Building"
-	dune build @install -j $(makeopts_jobs) --profile release
-	eend $? || die
+	dune-compile
 }
 
 dune_src_test() {
-	ebegin "Testing"
-	dune runtest -j $(makeopts_jobs) --profile release
-	eend $? || die
+	dune-test
 }
 
 # @FUNCTION: dune-install
@@ -67,6 +159,8 @@ dune_src_test() {
 # dune-install menhir menhirLib menhirSdk
 # @CODE
 dune-install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local -a pkgs=( "${@}" )
 
 	[[ ${#pkgs[@]} -eq 0 ]] && pkgs=( "${DUNE_PKG_NAME}" )
@@ -79,9 +173,7 @@ dune-install() {
 
 	local pkg
 	for pkg in "${pkgs[@]}" ; do
-		ebegin "Installing ${pkg}"
-		dune install ${myduneopts[@]} ${pkg}
-		eend $? || die
+		edune install ${myduneopts[@]} ${pkg}
 
 		# Move docs to the appropriate place.
 		if [[ -d "${ED}/usr/doc/${pkg}" ]] ; then

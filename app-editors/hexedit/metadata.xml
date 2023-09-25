@@ -9,4 +9,7 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">pixel/hexedit</remote-id>
+	</upstream>
 </pkgmetadata>

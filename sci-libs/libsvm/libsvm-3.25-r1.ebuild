@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit flag-o-matic java-pkg-opt-2 python-r1 toolchain-funcs
 
@@ -12,7 +12,7 @@ SRC_URI="https://www.csie.ntu.edu.tw/~cjlin/libsvm/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/2"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="java openmp python tools"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

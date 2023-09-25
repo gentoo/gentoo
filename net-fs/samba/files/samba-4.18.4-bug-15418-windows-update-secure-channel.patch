@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/910306
+https://bugzilla.samba.org/show_bug.cgi?id=15418
+
+ source3/rpc_server/netlogon/srv_netlog_nt.c   | 9 +++++----
+ source4/rpc_server/netlogon/dcerpc_netlogon.c | 8 ++++----
+ 2 files changed, 9 insertions(+), 8 deletions(-)
+
+--- a/source3/rpc_server/netlogon/srv_netlog_nt.c
++++ b/source3/rpc_server/netlogon/srv_netlog_nt.c
+@@ -2284,6 +2284,11 @@ NTSTATUS _netr_LogonGetCapabilities(struct pipes_struct *p,
+ 	struct netlogon_creds_CredentialState *creds;
+ 	NTSTATUS status;
+ 
++	if (r->in.query_level != 1) {
++		p->fault_state = DCERPC_NCA_S_FAULT_INVALID_TAG;
++		return NT_STATUS_NOT_SUPPORTED;
++	}
++
+ 	become_root();
+ 	status = dcesrv_netr_creds_server_step_check(p->dce_call,
+ 						p->mem_ctx,
+@@ -2296,10 +2301,6 @@ NTSTATUS _netr_LogonGetCapabilities(struct pipes_struct *p,
+ 		return status;
+ 	}
+ 
+-	if (r->in.query_level != 1) {
+-		return NT_STATUS_NOT_SUPPORTED;
+-	}
+-
+ 	r->out.capabilities->server_capabilities = creds->negotiate_flags;
+ 
+ 	return NT_STATUS_OK;
+--- a/source4/rpc_server/netlogon/dcerpc_netlogon.c
++++ b/source4/rpc_server/netlogon/dcerpc_netlogon.c
+@@ -2364,6 +2364,10 @@ static NTSTATUS dcesrv_netr_LogonGetCapabilities(struct dcesrv_call_state *dce_c
+ 	struct netlogon_creds_CredentialState *creds;
+ 	NTSTATUS status;
+ 
++	if (r->in.query_level != 1) {
++		DCESRV_FAULT(DCERPC_NCA_S_FAULT_INVALID_TAG);
++	}
++
+ 	status = dcesrv_netr_creds_server_step_check(dce_call,
+ 						     mem_ctx,
+ 						     r->in.computer_name,
+@@ -2375,10 +2379,6 @@ static NTSTATUS dcesrv_netr_LogonGetCapabilities(struct dcesrv_call_state *dce_c
+ 	}
+ 	NT_STATUS_NOT_OK_RETURN(status);
+ 
+-	if (r->in.query_level != 1) {
+-		return NT_STATUS_NOT_SUPPORTED;
+-	}
+-
+ 	r->out.capabilities->server_capabilities = creds->negotiate_flags;
+ 
+ 	return NT_STATUS_OK;

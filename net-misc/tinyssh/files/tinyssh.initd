@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+TINYSSH_CONFDIR="${TINYSSH_CONFDIR:-/etc/tinyssh}"
+TINYSSH_KEYDIR="${TINYSSH_KEYDIR:-${TINYSSH_CONFDIR}/keys}"
+
+TINYSSHD="/usr/sbin/tinysshd"
+MAKEKEY="${TINYSSHD}-makekey"
+PRINTKEY="/usr/bin/tinysshd-printkey"
+
+command="/usr/bin/tcpserver"
+command_args="-HRDl0 ${TINYSSH_IP:-0.0.0.0} ${TINYSSH_PORT:-22}
+	${TINYSSHD} ${TINYSSH_OPTS:--l -v} ${TINYSSH_KEYDIR}"
+command_background=yes
+pidfile="/run/${RC_SVCNAME}.pid"
+start_stop_daemon_args="${SSD_OPTS}"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		checkpath -d "${TINYSSH_CONFDIR}"
+		if ! ${PRINTKEY} "${TINYSSH_KEYDIR}" >/dev/null 2>&1; then
+			${MAKEKEY} "${TINYSSH_KEYDIR}" || return 1
+		fi
+	fi
+}

@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-01-11)
+# Requires media-libs/libva since 29.0.0.
+>=media-video/obs-studio-29.0.0
 
 # Sam James <sam@gentoo.org> (2022-10-08)
 # sys-boot/gnu-efi isn't keyworded here right now
@@ -19,7 +23,9 @@ dev-lisp/sbcl
 # Broken on big endian.
 # bug #818424
 dev-games/openscenegraph
+dev-games/openscenegraph-openmw
 dev-games/openscenegraph-qt
+games-engines/openmw
 media-libs/openexr
 media-libs/ctl
 media-gfx/openvdb
@@ -46,6 +52,7 @@ sci-mathematics/geogebra-bin
 # does not work on big-endian ppc64
 # next releases remove that assumption and mask will be lifted
 app-containers/docker
+app-containers/docker-buildx
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
 # openjfx:11 does not work on ppc64be

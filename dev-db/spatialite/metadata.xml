@@ -9,5 +9,6 @@
 	<flag name="geos">Add the <pkg>sci-libs/geos</pkg> library for exact topological tests</flag>
 	<flag name="proj">Add the <pkg>sci-libs/proj</pkg> library for reprojection features</flag>
 	<flag name="xls">Add the <pkg>dev-libs/freexl</pkg> library for xls import support</flag>
+	<flag name="rttopo">Add the <pkg>sci-geosciences/librttopo</pkg> library for topology support</flag>
 </use>
 </pkgmetadata>

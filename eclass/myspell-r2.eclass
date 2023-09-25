@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: myspell-r2.eclass
@@ -37,14 +37,9 @@
 # @CODE
 
 case ${EAPI} in
-	7|8)
-		;;
-	*)
-		die "${ECLASS}: EAPI ${EAPI:-0} not supported"
-		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS src_unpack src_install
 
 # Basically no extra deps needed.
 # Unzip is required for .oxt libreoffice extensions
@@ -133,3 +128,5 @@ myspell-r2_src_install() {
 		fi
 	done
 }
+
+EXPORT_FUNCTIONS src_unpack src_install

@@ -1,20 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake distutils-r1 toolchain-funcs
 
 DESCRIPTION="disassembly/disassembler framework + bindings"
-HOMEPAGE="http://www.capstone-engine.org/"
+HOMEPAGE="https://www.capstone-engine.org/"
 SRC_URI="https://github.com/capstone-engine/capstone/archive/${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/5" # libcapstone.so.5
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 IUSE="python test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"

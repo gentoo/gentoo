@@ -1,0 +1,22 @@
+https://github.com/lavv17/lftp/commit/8af97cc255c3d2488adb107515bd1047dbedadfe
+
+From 8af97cc255c3d2488adb107515bd1047dbedadfe Mon Sep 17 00:00:00 2001
+From: DJ Delorie <dj@redhat.com>
+Date: Wed, 8 Feb 2023 23:37:37 -0500
+Subject: [PATCH] Fix C99 compatibility issue
+
+Related to:
+
+  <https://fedoraproject.org/wiki/Changes/PortingToModernC>
+  <https://fedoraproject.org/wiki/Toolchain/PortingToModernC>
+--- a/m4/needtrio.m4
++++ b/m4/needtrio.m4
+@@ -9,6 +9,7 @@ AC_DEFUN([LFTP_NEED_TRIO],[
+       else
+ 
+       AC_RUN_IFELSE([AC_LANG_SOURCE([[
++	 #include <stdio.h>
+ 	 int main()
+ 	 {
+ 	    unsigned long long x=0,x1;
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -13,7 +13,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Multi-Schema Validator Core package"
-HOMEPAGE="https://github.com/xmlark/msv/msv-core"
+HOMEPAGE="https://xmlark.github.io/msv/core/"
 SRC_URI="https://github.com/xmlark/msv/archive/msv-${PV}.tar.gz"
 
 LICENSE="BSD-1"

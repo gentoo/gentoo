@@ -2,12 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>mscardovi@icloud.com</email>
-		<name>Marco Scardovi</name>
+		<email>peeweep@0x0.ee</email>
+		<name>jinqiang zhang</name>
 	</maintainer>
-	<maintainer type="person" proxied="proxy">
-		<email>mattst88@gentoo.org</email>
-		<name>Matt Turner</name>
+	<maintainer type="person" proxied="yes">
+		<email>cat@catcream.org</email>
+		<name>Alfred Persson</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		genfstab helps fill in an fstab file by autodetecting all the current
@@ -25,6 +29,6 @@
 		l'installazione iniziale e la configurazione di un sistema operativo.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">scardracs/genfstab</remote-id>
+		<remote-id type="github">archlinux/arch-install-scripts</remote-id>
 	</upstream>
 </pkgmetadata>

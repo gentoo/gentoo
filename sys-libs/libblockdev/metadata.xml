@@ -5,10 +5,6 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>slashbeast@gentoo.org</email>
-		<name>Piotr Karbowski</name>
-	</maintainer>
 	<use>
 		<flag name="bcache">Enable block device cache support.</flag>
 		<flag name="cryptsetup">Enable <pkg>sys-fs/cryptsetup</pkg> support</flag>

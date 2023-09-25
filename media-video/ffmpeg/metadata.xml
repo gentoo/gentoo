@@ -72,7 +72,6 @@
 		<flag name="vidstab">Enables video stabilization filter using vid.stab library (<pkg>media-libs/vidstab</pkg>).</flag>
 		<flag name="vmaf">Enables Netflix's perceptual video quality assessment filter using the library (<pkg>media-libs/libvmaf</pkg>).</flag>
 		<flag name="vpx">Enables VP8 and VP9 codec support using libvpx: Decoding does not require this to be enabled but libvpx can also be used for decoding; encoding requires this useflag to be enabled though.</flag>
-		<flag name="vulkan">Enables support for the vulkan API for GPU offload.</flag>
 		<flag name="x265">Enables HEVC encoding with <pkg>media-libs/x265</pkg>.</flag>
 		<flag name="zeromq">Enables <pkg>net-libs/zeromq</pkg> support with the zmq/azmq filters.</flag>
 		<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>

@@ -1,0 +1,58 @@
+From 5973e4b237e7b50dca1c9f3157db459ef1ee6da5 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Sat, 9 Sep 2023 13:22:54 -0400
+Subject: [PATCH] meson: add link-kernel-install-shared option
+
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
+---
+ meson.build       | 9 ++++++++-
+ meson_options.txt | 2 ++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 053e772567..003a34574a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4420,11 +4420,17 @@ executable(
+         install : true,
+         install_dir : rootlibexecdir)
+ 
++if get_option('link-kernel-install-shared')
++        kernel_install_link_with = [libshared]
++else
++        kernel_install_link_with = [libsystemd_static, libshared_static]
++endif
++
+ kernel_install = executable(
+         'kernel-install',
+         'src/kernel-install/kernel-install.c',
+         include_directories : includes,
+-        link_with : [libshared],
++        link_with : kernel_install_link_with,
+         dependencies : [userspace,
+                         versiondep],
+         install_rpath : rootpkglibdir,
+@@ -5059,6 +5065,7 @@ foreach tuple : [
+         ['link-timesyncd-shared',  get_option('link-timesyncd-shared')],
+         ['link-journalctl-shared', get_option('link-journalctl-shared')],
+         ['link-boot-shared',       get_option('link-boot-shared')],
++        ['link-kernel-install-shared', get_option('link-kernel-install-shared')],
+         ['link-portabled-shared',  get_option('link-portabled-shared')],
+         ['first-boot-full-preset'],
+         ['fexecve'],
+diff --git a/meson_options.txt b/meson_options.txt
+index 1909323850..36794e6d98 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -29,6 +29,8 @@ option('link-journalctl-shared', type: 'boolean',
+        description : 'link journalctl against libsystemd-shared.so')
+ option('link-boot-shared', type: 'boolean',
+        description : 'link bootctl and systemd-bless-boot against libsystemd-shared.so')
++option('link-kernel-install-shared', type: 'boolean',
++       description : 'link kernel-install against libsystemd-shared.so')
+ option('link-portabled-shared', type: 'boolean',
+        description : 'link systemd-portabled and its helpers to libsystemd-shared.so')
+ option('first-boot-full-preset', type: 'boolean', value: false,
+-- 
+2.42.0
+

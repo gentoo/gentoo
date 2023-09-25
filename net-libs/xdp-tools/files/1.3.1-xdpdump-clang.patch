@@ -1,0 +1,36 @@
+
+From:  https://github.com/xdp-project/xdp-tools/commit/344b241da22a5358c714d6db1ea6f225f951dbdb
+
+From 344b241da22a5358c714d6db1ea6f225f951dbdb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Wed, 8 Mar 2023 18:50:56 +0100
+Subject: [PATCH] xdpdump: fix build with clang
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When building all of xdp-tools with clang, the xdp-dump build fails
+due to 'classic' use of variable-length arrays and -Werror.
+Disable the warning and leave a breadcrumb to the discussion.
+
+Fixes: #304
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ xdp-dump/Makefile | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/xdp-dump/Makefile b/xdp-dump/Makefile
+index 7ee1688e..a9ae0ae7 100644
+--- a/xdp-dump/Makefile
++++ b/xdp-dump/Makefile
+@@ -4,6 +4,10 @@ XDP_TARGETS  := xdpdump_bpf xdpdump_xdp
+ USER_TARGETS := xdpdump
+ TEST_FILE    := tests/test-xdpdump.sh
+ 
++# Disable warnings about VLAs not being at the end of a structure when building
++# with clang. The code is fine, but clang's complaint coupled with -Werror would
++# break the build. See https://github.com/xdp-project/xdp-tools/issues/304
++CFLAGS       += "-Wno-gnu-variable-sized-type-not-at-end"
+ LIB_DIR       = ../lib
+ USER_LIBS     = -lpcap
+ MAN_PAGE     := xdpdump.8

@@ -1,4 +1,4 @@
-# Copyright 2017-2022 Gentoo Authors
+# Copyright 2017-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -209,7 +209,7 @@ CRATES="
 
 MY_PV="${PV//_rc/-rc}"
 # https://bugs.gentoo.org/725962
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit bash-completion-r1 cargo desktop python-any-r1
 

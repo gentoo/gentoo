@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,10 @@ MY_P="${PN}-1.0.${PV:0:4}_${PV:4:2}_${PV:6:2}_$(ver_cut 3)"
 MY_P_TEXLIVE="${PN}-texlive-$(ver_cut 5)"
 
 DESCRIPTION="Converts (La)TeX to (X)HTML, XML and OO.org"
-HOMEPAGE="http://www.cse.ohio-state.edu/~gurari/TeX4ht/
-	http://www.cse.ohio-state.edu/~gurari/TeX4ht/bugfixes.html"
+HOMEPAGE="
+	https://tug.org/tex4ht/
+	https://puszcza.gnu.org.ua/projects/tex4ht/
+"
 SRC_URI="http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/${MY_P}.tar.gz
 	https://dev.gentoo.org/~ulm/distfiles/${MY_P_TEXLIVE}.tar.xz
 	doc? ( https://dev.gentoo.org/~ulm/distfiles/${MY_P_TEXLIVE}.doc.tar.xz )"

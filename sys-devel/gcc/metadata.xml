@@ -7,29 +7,107 @@
 	</maintainer>
 	<use>
 		<flag name="ada">Build the ADA language (GNAT) frontend</flag>
-		<flag name="cet" restrict="&gt;=sys-devel/gcc-10">Enable support for Intel Control Flow Enforcement Technology (CET)</flag>
+		<flag name="cet" restrict="&gt;=sys-devel/gcc-10">
+			Enable support for Intel Control Flow Enforcement Technology (CET).
+
+			Only effective on amd64/x86.
+
+			Only provides benefits on newer CPUs. For Intel, the CPU
+			must be at least as new as Tiger Lake. For AMD, it must be
+			at least as new as Zen 3. This is harmless on older CPUs,
+			but provides no benefit either.
+
+			When combined with USE=hardened, GCC will set -fcf-protection
+			by default when building software. The effect is minimal
+			on systems which do not support it, other than a possible
+			small increase in codesize for the NOPs. The generated
+			code is therefore compatible with i686 at the earliest.
+		</flag>
 		<flag name="d">Enable support for the D programming language</flag>
-		<flag name="default-stack-clash-protection">Build packages with stack clash protection on by default</flag>
-		<flag name="default-znow">Request full relocation on start from ld.so by default</flag>
+		<flag name="debug">
+			Enables GCC's 'checking' facility via --enable-checking=yes,extra,rtl.
+
+			This adds checks to various compiler passes for integrity and input
+			validation. This can help catch possible miscompilations early as
+			well as latent bugs which could become real problems in future, but
+			at the cost of slower compile times when using GCC.
+
+			Unrelated to backtraces.
+		</flag>
+		<flag name="default-stack-clash-protection">
+			Build packages with stack clash protection on by default as
+			a hardening measure.
+
+			This enables -fstack-clash-protection by default which protects against
+			large memory allocations allowing stack smashing.
+
+			May cause slightly increased codesize, but modern compilers
+			have been adapted to optimize well for this case, as
+			this mitigation is now quite common.
+
+			See https://developers.redhat.com/blog/2020/05/22/stack-clash-mitigation-in-gcc-part-3
+			and https://www.qualys.com/2017/06/19/stack-clash/stack-clash.txt.
+		</flag>
+		<flag name="default-znow">
+			Request full relocation on start from ld.so by default.
+
+			This sets the -z,now (BIND_NOW) flag by default on all linker invocations. By
+			resolving all dynamic symbols at application startup, parts of the program
+			can be made read-only as a hardening measure.
+
+			This is closely related to RELRO which is also separately
+			enabled by default.
+
+			In some applications with many unresolved symbols (heavily plugin based,
+			for example), startup time may be impacted.
+		</flag>
 		<flag name="fixed-point">Enable fixed-point arithmetic support for MIPS targets in gcc (Warning: significantly increases compile time!)</flag>
 		<flag name="go">Build the GCC Go language frontend.</flag>
 		<flag name="graphite">Add support for the framework for loop optimizations based on a polyhedral intermediate representation</flag>
 		<flag name="ieee-long-double">Use accelerated 128-bit IEEE long double ABI (ppc64le only)</flag>
 		<flag name="jit">Enable libgccjit so other applications can embed gcc for Just-In-Time compilation.</flag>
 		<flag name="libssp">Build SSP support into a dedicated library rather than use the code in the C library (DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT IT DOES)</flag>
-		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
+		<flag name="lto">
+			Build using Link Time Optimizations (LTO).
+
+			Note that GCC is always built with support for building
+			other programs with LTO. This USE flag is for whether
+			GCC itself is built and optimized with LTO.
+		</flag>
+		<flag name="modula2">Build the GCC Modula-2 language frontend.</flag>
 		<flag name="mpx">Enable support for Intel Memory Protection Extensions (MPX)</flag>
 		<flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)</flag>
 		<flag name="objc">Build support for the Objective C code language</flag>
 		<flag name="objc++">Build support for the Objective C++ language</flag>
 		<flag name="objc-gc">Build support for the Objective C code language Garbage Collector</flag>
-		<flag name="pgo">Build GCC using Profile Guided Optimization (PGO)</flag>
+		<flag name="pgo">
+			Build GCC using Profile Guided Optimization (PGO).
+
+			GCC will build itself and then analyze the just-built
+			binary and then rebuild itself using the data obtained
+			from analysis of codepaths taken.
+
+			It does not affect whether GCC itself supports PGO
+			when building other software.
+
+			This substantially increases the build time needed for
+			building GCC itself.
+		</flag>
 		<flag name="rust">Build support for the Rust language, installs gccrs.</flag>
-		<flag name="sanitize">Build support for various sanitizer functions (ASAN/TSAN/etc...)</flag>
-		<flag name="ssp">Build packages with stack smashing protector on by default</flag>
+		<flag name="sanitize">
+			Build support for various sanitizer functions (ASAN/TSAN/etc...)
+			to find runtime problems in applications.
+		</flag>
+		<flag name="ssp">Build packages with stack smashing protection on by default</flag>
 		<flag name="systemtap">enable systemtap static probe points</flag>
-		<flag name="valgrind">Enable valgrind annotations for gcc internals (useful for gcc debugging).</flag>
-		<flag name="vtv">Build support for virtual table verification (a C++ hardening feature)</flag>
+		<flag name="vtv">
+			Build support for virtual table verification (a C++ hardening feature).
+
+			This does not control whether GCC defaults to using VTV>
+
+			Note that actually using VTV breaks ABI and hence the whole
+			system must be built with -fvtable-verify.
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:gcc</remote-id>

@@ -1,0 +1,165 @@
+Bug: https://bugs.gentoo.org/883271
+--- a/alpine/adrbkcmd.c
++++ b/alpine/adrbkcmd.c
+@@ -81,7 +81,7 @@ int            ab_export(struct pine *, long, int, int);
+ VCARD_INFO_S  *prepare_abe_for_vcard(struct pine *, AdrBk_Entry *, int);
+ void           write_single_tab_entry(gf_io_t, VCARD_INFO_S *);
+ int            percent_done_copying(void);
+-int            cmp_action_list(const qsort_t *, const qsort_t *);
++int            cmp_action_list(const void *, const void *);
+ void           set_act_list_member(ACTION_LIST_S *, a_c_arg_t, PerAddrBook *, PerAddrBook *, char *);
+ void           convert_pinerc_to_remote(struct pine *, char *);
+ 
+@@ -5187,7 +5187,7 @@ percent_done_copying(void)
+ }
+ 
+ int
+-cmp_action_list(const qsort_t *a1, const qsort_t *a2)
++cmp_action_list(const void *a1, const void *a2)
+ {
+     ACTION_LIST_S *x = (ACTION_LIST_S *)a1;
+     ACTION_LIST_S *y = (ACTION_LIST_S *)a2;
+--- a/pico/browse.c
++++ b/pico/browse.c
+@@ -1920,7 +1920,7 @@ getfcells(char *dname, int fb_flags)
+     /* 
+      * sort files case independently
+      */
+-    qsort((qsort_t *)filtnames, (size_t)nentries, sizeof(char *), sstrcasecmp);
++    qsort((qsort_t *)filtnames, (size_t)nentries, sizeof(char *), (void *)sstrcasecmp);
+ 
+     /* 
+      * this is so we use absolute path names for stats.
+--- a/pith/adrbklib.c
++++ b/pith/adrbklib.c
+@@ -84,7 +84,7 @@ int            cmp_ae_by_nick_lists_last(const qsort_t *,const qsort_t *);
+ int            cmp_cntr_by_nick_lists_last(const qsort_t *, const qsort_t *);
+ int            cmp_ae_by_nick(const qsort_t *, const qsort_t *);
+ int            cmp_cntr_by_nick(const qsort_t *, const qsort_t *);
+-int            cmp_addr(const qsort_t *, const qsort_t *);
++int            cmp_addr(const void *, const void *);
+ void           sort_addr_list(char **);
+ int            build_abook_datastruct(AdrBk *, char *, size_t);
+ AdrBk_Entry   *init_ae(AdrBk *, AdrBk_Entry *, char *);
+@@ -4671,7 +4671,7 @@ cmp_cntr_by_nick(const qsort_t *a, const qsort_t *b)
+  * For sorting a simple list of pointers to addresses (skip initial quotes)
+  */
+ int
+-cmp_addr(const qsort_t *a1, const qsort_t *a2)
++cmp_addr(const void *a1, const void *a2)
+ {
+     char *x = *(char **)a1, *y = *(char **)a2;
+     char *r, *s;
+@@ -4762,14 +4762,14 @@ adrbk_sort(AdrBk *ab, a_c_arg_t current_entry_num, adrbk_cntr_t *new_entry_num,
+ 	qsort((qsort_t *)sort_array,
+ 	    (size_t)count,
+ 	    sizeof(adrbk_cntr_t),
+-	    (ab->sort_rule == AB_SORT_RULE_FULL_LISTS) ?
+-						cmp_cntr_by_full_lists_last :
+-	    (ab->sort_rule == AB_SORT_RULE_FULL) ?
+-						cmp_cntr_by_full :
+-	    (ab->sort_rule == AB_SORT_RULE_NICK_LISTS) ?
+-						cmp_cntr_by_nick_lists_last :
+-	    /* (ab->sort_rule == AB_SORT_RULE_NICK) */
+-						cmp_cntr_by_nick);
++		(void *)((ab->sort_rule == AB_SORT_RULE_FULL_LISTS) ?
++		 cmp_cntr_by_full_lists_last :
++		 (ab->sort_rule == AB_SORT_RULE_FULL) ?
++		 cmp_cntr_by_full :
++		 (ab->sort_rule == AB_SORT_RULE_NICK_LISTS) ?
++		 cmp_cntr_by_nick_lists_last :
++		 /* (ab->sort_rule == AB_SORT_RULE_NICK) */
++		 cmp_cntr_by_nick));
+     }
+ 
+     dprint((9, "- adrbk_sort: done with first sort -\n"));
+--- a/pith/folder.c
++++ b/pith/folder.c
+@@ -1939,11 +1939,11 @@ resort_folder_list(FLIST *flist)
+ {
+     if(flist && folder_total(flist) > 1 && flist->folders)
+       qsort(flist->folders, folder_total(flist), sizeof(flist->folders[0]),
+-	    (ps_global->fld_sort_rule == FLD_SORT_ALPHA_DIR_FIRST)
+-		? compare_folders_dir_alpha_qsort
+-		: (ps_global->fld_sort_rule == FLD_SORT_ALPHA_DIR_LAST)
+-		     ? compare_folders_alpha_dir_qsort
+-		     : compare_folders_alpha_qsort);
++			  (void *)((ps_global->fld_sort_rule == FLD_SORT_ALPHA_DIR_FIRST)
++			   ? compare_folders_dir_alpha_qsort
++			   : (ps_global->fld_sort_rule == FLD_SORT_ALPHA_DIR_LAST)
++			   ? compare_folders_alpha_dir_qsort
++			   : compare_folders_alpha_qsort));
+ }
+ 
+ 
+--- a/pith/init.c
++++ b/pith/init.c
+@@ -28,7 +28,7 @@
+ /*
+  * Internal prototypes
+  */
+-int	 compare_sm_files(const qsort_t *, const qsort_t *);
++int	 compare_sm_files(const void *, const void *);
+ 
+ 
+ 
+@@ -327,7 +327,7 @@ init_save_defaults(void)
+                   in above format.
+  ----*/
+ int   
+-compare_sm_files(const qsort_t *aa, const qsort_t *bb)
++compare_sm_files(const void *aa, const void *bb)
+ {
+     struct sm_folder *a = (struct sm_folder *)aa,
+                      *b = (struct sm_folder *)bb;
+--- a/pith/sort.c
++++ b/pith/sort.c
+@@ -41,7 +41,7 @@ void	sort_sort_callback(MAILSTREAM *, unsigned long *, unsigned long);
+ int     percent_sorted(void);
+ int	pine_compare_long(const qsort_t *, const qsort_t *);
+ int	pine_compare_long_rev(const qsort_t *, const qsort_t *);
+-int	pine_compare_scores(const qsort_t *, const qsort_t *);
++int	pine_compare_scores(const void *, const void *);
+ void	build_score_array(MAILSTREAM *, MSGNO_S *);
+ void	free_score_array(void);
+ 
+@@ -162,7 +162,7 @@ sort_folder(MAILSTREAM *stream, MSGNO_S *msgmap, SortOrder new_sort,
+ 	     */
+ 	    qsort(msgmap->sort+1, (size_t) mn_get_total(msgmap),
+ 		  sizeof(long),
+-		  new_rev ? pine_compare_long_rev : pine_compare_long);
++		  (void *)(new_rev ? pine_compare_long_rev : pine_compare_long));
+ 	}
+ 	else if(mn_get_total(msgmap) > 0L){
+ 	    if(new_rev){
+@@ -672,7 +672,7 @@ free_score_array(void)
+   Compare scores
+  ----*/
+ int
+-pine_compare_scores(const qsort_t *a, const qsort_t *b)
++pine_compare_scores(const void *a, const void *b)
+ {
+     long *mess_a = (long *)a, *mess_b = (long *)b, mdiff;
+     long  sdiff;
+--- a/pith/takeaddr.c
++++ b/pith/takeaddr.c
+@@ -1377,7 +1377,7 @@ process_vcard_atts(MAILSTREAM *stream, long int msgno,
+ 
+ 
+ int
+-cmp_swoop_list(const qsort_t *a1, const qsort_t *a2)
++cmp_swoop_list(const void *a1, const void *a2)
+ {
+     SWOOP_S *x = (SWOOP_S *)a1;
+     SWOOP_S *y = (SWOOP_S *)a2;
+--- a/pith/takeaddr.h
++++ b/pith/takeaddr.h
+@@ -98,7 +98,7 @@ int            convert_ta_to_lines(TA_S *, LINES_TO_TAKE **);
+ LINES_TO_TAKE *new_ltline(LINES_TO_TAKE **);
+ int            add_addresses_to_talist(struct pine *, long, char *, TA_S **, ADDRESS *, int);
+ int            process_vcard_atts(MAILSTREAM *, long, BODY *, BODY *, char *, TA_S **);
+-int            cmp_swoop_list(const qsort_t *, const qsort_t *);
++int            cmp_swoop_list(const void *, const void *);
+ int            vcard_to_ta(char *, char *, char *, char *, char *, char *, TA_S **);
+ char          *getaltcharset(char *, char **, char **, int *);
+ void           switch_to_last_comma_first(char *, char *, size_t);

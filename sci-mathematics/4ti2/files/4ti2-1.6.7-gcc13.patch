@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/895420
+https://github.com/4ti2/4ti2/commit/c024db44f43593fbfe9d8d51f035db7a605d1fa6
+
+From c024db44f43593fbfe9d8d51f035db7a605d1fa6 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 28 Mar 2023 00:33:03 +0200
+Subject: [PATCH] build: resolve missing includes showing on gcc-13
+
+../../src/zsolve/VectorArrayAPI.hpp: In function 'void _4ti2_zsolve_::convert(const T1&, T2&) [with T1 = long int; T2 = int]':
+../../src/zsolve/VectorArrayAPI.hpp:79:14: error: 'INT32_MIN' was not declared in this scope; did you mean 'INT_MIN'?
+--- a/src/zsolve/VectorArrayAPI.hpp
++++ b/src/zsolve/VectorArrayAPI.hpp
+@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ #include "zsolve/VectorArray.hpp"
+ #include "zsolve/Exception.h"
+ #include <fstream>
++#include <cstdint>
+ #include <cstdlib>
+ 
+ namespace _4ti2_zsolve_ {
+

@@ -10,6 +10,8 @@
 		<flag name="qtegrity">Build qtegrity applet, this adds additional dependencies for OpenSSL</flag>
 	</use>
 	<upstream>
-		<remote-id type="cpe">cpe:/a:gentoo:portage</remote-id>
+		<remote-id type="cpe">cpe:/a:gentoo:portage-utils</remote-id>
+		<remote-id type="gentoo">proj/portage-utils</remote-id>
+		<remote-id type="github">gentoo/portage-utils</remote-id>
 	</upstream>
 </pkgmetadata>

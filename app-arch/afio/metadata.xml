@@ -9,4 +9,7 @@
 		tar or cpio archives. Afio is best used as an 'archive engine' in a backup
 		script.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">kholtman/afio</remote-id>
+	</upstream>
 </pkgmetadata>

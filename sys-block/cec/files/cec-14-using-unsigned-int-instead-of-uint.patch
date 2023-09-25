@@ -1,0 +1,33 @@
+From 53cba8765ece2fddaea58405649d00df8041823b Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 13 Jun 2023 10:39:04 +0000
+Subject: [PATCH 1/2] cec.h utils.c: using unsigned int instead of uint
+
+Since uint ins't a standard type, using unsigned int in its place.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/cec.h
++++ b/cec.h
+@@ -22,7 +22,7 @@ void exits(char *);
+ 
+ enum { FQUOTE = (1<<0), FEMPTY = (1<<1) };
+ int getfields(char *, char **, int, char *, int);
+-char *htoa(char *, char *, uint);
++char *htoa(char *, char *, unsigned int);
+ int parseether(char *, char *);
+ 
+ #define tokenize(A, B, C) getfields((A), (B), (C), " \t\r\n", FQUOTE)
+--- a/utils.c
++++ b/utils.c
+@@ -57,7 +57,7 @@ dump(char *ap, int len)
+ }
+ 
+ char *
+-htoa(char *to, char *frm, uint len)
++htoa(char *to, char *frm, unsigned int len)
+ {
+ 	char *cp = to;
+ 	uchar ch;
+-- 
+2.41.0
+

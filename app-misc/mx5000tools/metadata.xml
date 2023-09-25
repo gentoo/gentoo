@@ -11,4 +11,7 @@
 		These tools make it possible to control what is displayed on the LCD and to use some
 		of the keys that are not recognized by the stock Linux HID driver.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">jwrdegoede/mx5000tools</remote-id>
+	</upstream>
 </pkgmetadata>

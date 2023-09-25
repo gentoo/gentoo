@@ -5,7 +5,12 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
 	<upstream>
+		<remote-id type="github">projectM-visualizer/frontend-libvisual-plug-in</remote-id>
 		<remote-id type="sourceforge">projectm</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DIST_VERSION=0.08
 
 inherit perl-module
 
-DESCRIPTION="A tool to build C libraries"
+DESCRIPTION="Tool to build C libraries"
 # https://rt.cpan.org/Ticket/Display.html?id=133195
 LICENSE="|| ( Artistic GPL-1 )"
 SLOT="0"
@@ -32,9 +32,3 @@ PERL_RM_FILES=(
 	"t/pod.t"
 	"t/pod-coverage.t"
 )
-
-src_configure() {
-	unset LD
-	[[ -n "${CCLD}" ]] && export LD="${CCLD}"
-	perl-module_src_configure
-}

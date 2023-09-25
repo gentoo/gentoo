@@ -10,9 +10,4 @@
     <remote-id type="pypi">nbdime</remote-id>
   </upstream>
   <stabilize-allarches/>
-  <use>
-    <flag name="webtools">
-      Install web-based diff and merge tools.
-    </flag>
-</use>
 </pkgmetadata>

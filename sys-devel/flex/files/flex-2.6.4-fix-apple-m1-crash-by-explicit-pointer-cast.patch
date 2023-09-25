@@ -1,0 +1,48 @@
+https://github.com/westes/flex/issues/539
+https://github.com/westes/flex/pull/554
+https://bugs.gentoo.org/871324
+
+This is a backported version for applying to v2.6.4
+instead of git.
+
+From cce2df853386d5b5b60445b1204dcca08e9f259e Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Mon, 20 Feb 2023 11:23:52 +0000
+Subject: [PATCH] Fix #539 crash on Apple M1 by casting 0 to (char *)
+ explicitly
+
+Currently, when the NULL-terminated variadic function
+filter_create_ext() is invoked, the value "0" is passed as
+the last argument to act as a terminator. However, this is
+an integer value, which is incompatible with the pointer
+data type expected by filter_create_ext().
+
+This is undefined behavior in C, correct operation is not
+guaranteed. In fact, it causes flex to crash on Apple M1
+when GCC is used - the loop is not terminated when it should,
+instead, it keeps running, corrupting the argument list for
+invoking m4. As a result, it creates the following error:
+
+> flex: fatal internal error, exec of gm4 failed
+
+This commit fixes the problem by explicitly casting the value 0 to
+the correct pointer type (char *).
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ src/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.c b/src/main.c
+index e5eac44fe..5c9086183 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -380,7 +380,7 @@ void check_options (void)
+ 			}
+ 		}
+ 	}
+-    filter_create_ext(output_chain, m4, "-P", 0);
++    filter_create_ext(output_chain, m4, "-P", (char *) 0);
+     filter_create_int(output_chain, filter_fix_linedirs, NULL);
+ 
+     /* For debugging, only run the requested number of filters. */

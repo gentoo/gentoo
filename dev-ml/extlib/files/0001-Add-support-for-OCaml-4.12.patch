@@ -1,0 +1,25 @@
+From 3b2073701aed50cd768e0a4cd3c776c7a3a54d7e Mon Sep 17 00:00:00 2001
+From: Kate <kit.ty.kate@disroot.org>
+Date: Thu, 5 Nov 2020 22:17:24 +0000
+Subject: [PATCH 1/2] Add support for OCaml 4.12
+
+---
+ src/extList.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/extList.ml b/src/extList.ml
+index 4f0057f..a1435ee 100644
+--- a/src/extList.ml
++++ b/src/extList.ml
+@@ -380,7 +380,7 @@ let combine l1 l2 =
+   loop dummy l1 l2;
+   dummy.tl
+ 
+-let sort ?(cmp=compare) = List.sort cmp
++let sort ?(cmp=Pervasives.compare) = List.sort cmp
+ 
+ #if OCAML < 406
+ let rec init size f =
+-- 
+2.30.0
+

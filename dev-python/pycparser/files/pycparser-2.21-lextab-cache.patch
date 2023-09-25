@@ -1,0 +1,66 @@
+From 35a279ecb9af41a6f95ddbc6a0f1beaa2472d165 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 26 Feb 2023 01:04:34 +0100
+Subject: [PATCH] _build_tables: Invalidate cache before importing generated
+ modules (#494)
+
+Make sure to invalidate finder caches before trying to import generated
+modules.  This is necessary according to the Python documentation:
+https://docs.python.org/3/library/importlib.html#importlib.invalidate_caches
+
+This fixes a hard-to-reproduce bug that Python would be unable to find
+just-generated `lextab.py` if mtime of the current directory did not
+change from the moment the script was started.  This could
+e.g. be the case if one has second-precision timestamps and removes
+the generated file just before starting the build, e.g.:
+
+    $ rm pycparser/lextab.py; python -m build -nw
+
+It could also be reproduced easier by doing something like:
+
+    $ cd pycparser
+    $ touch .; python -B _build_tables.py
+    Traceback (most recent call last):
+      File "/var/tmp/pycparser/pycparser/_build_tables.py", line 38, in <module>
+        import lextab
+    ModuleNotFoundError: No module named 'lextab'
+
+This is because the first command (`rm` or `touch`) updates the mtime
+of the directory to the current time.  If the script is run fast enough,
+it manages to scan the directory and then write the new `lextab.py`
+within the same second.  As a result, mtime of the directory after
+writing the new file is the same as when the script was started, finder
+does not invalidate the cache and assumes that `lextab.py` does not
+exist since it did not exist when the directory was scanned earlier.
+
+This potentially fixes #493.
+
+It was originally reported on https://bugs.gentoo.org/701878.
+Thanks to Gary E. Miller for patience in reproducing the problem
+and proxy-debugging it for me, as well as testing the final patch before
+submission.
+---
+ pycparser/_build_tables.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pycparser/_build_tables.py b/pycparser/_build_tables.py
+index 958381ad..4f371079 100644
+--- a/pycparser/_build_tables.py
++++ b/pycparser/_build_tables.py
+@@ -13,6 +13,7 @@
+ # Insert '.' and '..' as first entries to the search path for modules.
+ # Restricted environments like embeddable python do not include the
+ # current working directory on startup.
++import importlib
+ import sys
+ sys.path[0:0] = ['.', '..']
+ 
+@@ -32,6 +33,8 @@
+ 
+ # Load to compile into .pyc
+ #
++importlib.invalidate_caches()
++
+ import lextab
+ import yacctab
+ import c_ast

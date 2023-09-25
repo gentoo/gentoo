@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://ibiblio.org/pub/linux/apps/sound/mp3-utils/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="gtk"
 
 BDEPEND="
@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-ldflags.patch"
 	"${FILESDIR}/${P}-tinfo.patch"
 	"${FILESDIR}/${P}-format-security.patch"
+	"${FILESDIR}/${P}-musl.patch"
 )
 
 src_compile() {

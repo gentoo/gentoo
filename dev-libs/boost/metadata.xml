@@ -15,6 +15,7 @@
 		<flag name="doc">Install the full API documentation documentation. This takes over 200MB of extra disk space.</flag>
 		<flag name="nls">Build libboost_locale. This library requires compatible C library interfaces, which might not be provided by uClibc or other embedded libraries.</flag>
 		<flag name="numpy">Optionally build NumPy extensions when Boost.Python is enabled</flag>
+		<flag name="stacktrace">Build the full Boost.Stacktrace dynamic library instead of relying on the header-only implementation</flag>
 		<flag name="tools">Build and install the boost tools (bcp, quickbook, inspect, wave)</flag>
 	</use>
 	<upstream>

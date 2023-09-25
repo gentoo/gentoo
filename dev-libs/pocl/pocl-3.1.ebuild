@@ -1,15 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DOCS_AUTODOC=0
-DOCS_BUILDER="sphinx"
-DOCS_DIR="doc/sphinx/source"
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
 LLVM_MAX_SLOT=15
 
-inherit cmake llvm python-any-r1 docs
+inherit cmake llvm
 
 DESCRIPTION="Portable Computing Language (an implementation of OpenCL)"
 HOMEPAGE="http://portablecl.org https://github.com/pocl/pocl"
@@ -17,7 +13,7 @@ SRC_URI="https://github.com/pocl/pocl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 # TODO: hsa tce
 IUSE="accel +conformance cuda debug examples float-conversion hardening +hwloc memmanager lto test"
 # Tests not yet passing, fragile in Portage environment(?)
@@ -26,8 +22,10 @@ RESTRICT="!test? ( test ) test"
 # TODO: add dependencies for cuda
 # Note: No := on LLVM because it pulls in Clang
 # see llvm.eclass for why
-CLANG_DEPS="!cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):= )
-	cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_NVPTX] )"
+CLANG_DEPS="
+	!cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):= )
+	cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_NVPTX] )
+"
 RDEPEND="
 	dev-libs/libltdl
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):*
@@ -38,15 +36,10 @@ RDEPEND="
 	hwloc? ( sys-apps/hwloc:=[cuda?] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="${CLANG_DEPS}
+BDEPEND="
+	${CLANG_DEPS}
 	virtual/pkgconfig
-	doc? (
-		$(python_gen_any_dep '<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]')
-	)"
-
-python_check_deps() {
-	python_has_version "<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]"
-}
+"
 
 llvm_check_deps() {
 	local usedep=$(usex cuda "[llvm_targets_NVPTX]" '')
@@ -57,9 +50,12 @@ llvm_check_deps() {
 		has_version -b "sys-devel/clang:${LLVM_SLOT}${usedep}"
 }
 
-pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+PATCHES=(
+	"${FILESDIR}"/${P}-nodebug.patch
+	"${FILESDIR}"/${P}-c++11.patch
+)
 
+pkg_setup() {
 	llvm_pkg_setup
 }
 
@@ -107,7 +103,6 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-	docs_compile
 }
 
 src_test() {
@@ -123,11 +118,6 @@ src_test() {
 
 src_install() {
 	cmake_src_install
-
-	if use doc; then
-		dodoc -r _build/html
-		docompress -x /usr/share/doc/${P}/html
-	fi
 
 	if use examples; then
 		dodoc -r examples

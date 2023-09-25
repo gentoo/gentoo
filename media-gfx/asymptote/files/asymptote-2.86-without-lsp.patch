@@ -1,0 +1,50 @@
+From 29caaed5ead5a62787475286afd22e40585b8bb8 Mon Sep 17 00:00:00 2001
+From: John Bowman <bowman@ualberta.ca>
+Date: Wed, 14 Jun 2023 22:36:35 -0600
+Subject: [PATCH] Fix --without-lsp (issue #379).
+
+---
+ common.h | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/common.h b/common.h
+index 13f8be106..6ee3d971f 100644
+--- a/common.h
++++ b/common.h
+@@ -17,28 +17,27 @@
+ #include "config.h"
+ #endif
+ 
+-#ifdef HAVE_LSP
+ #if __cplusplus < 201703L
++
++#ifdef HAVE_LSP
+ #include <boost/optional.hpp>
+ #include <boost/none.hpp>
+ using boost::optional;
+ #define nullopt boost::none
+ using boost::make_optional;
+ #else
+-#include <optional>
+-using std::optional;
+-using std::nullopt;
+-using std::make_optional;
+-#endif
+-
+-#else
+-#if __cplusplus < 201703L
+ #include "optional.hpp"
+ #define boost nonstd
+ using nonstd::optional;
+ using nonstd::nullopt;
+ using nonstd::make_optional;
+ #endif
++
++#else
++#include <optional>
++using std::optional;
++using std::nullopt;
++using std::make_optional;
+ #endif
+ 
+ using std::make_pair;

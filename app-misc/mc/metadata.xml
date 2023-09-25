@@ -5,10 +5,6 @@
     <email>marecki@gentoo.org</email>
     <name>Marek Szuba</name>
   </maintainer>
-  <maintainer type="person">
-    <email>slashbeast@gentoo.org</email>
-    <name>Piotr Karbowski</name>
-  </maintainer>
   <use>
     <flag name="edit">Compile and install the mcedit application</flag>
     <flag name="sftp">Add support for sftp (uses <pkg>net-libs/libssh2</pkg> for it).</flag>

@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/892727
+https://github.com/BinomialLLC/basis_universal/issues/342
+https://github.com/BinomialLLC/basis_universal/pull/343
+
+From e61fe1e4ff66decbb14f86a1bf8ec4ea40d23bbf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C8=98tefan=20Talpalaru?= <stefantalpalaru@yahoo.com>
+Date: Tue, 31 Jan 2023 14:39:17 +0100
+Subject: [PATCH] SIMD: disable compile time checks
+
+SSE4.1 support is checked at runtime, so compile time checks are
+redundant at best and harmful when compiling for a different machine.
+
+Further more, a logic error prevented the use of SSE4.1 on systems with
+any version of AVX available. This is fixed now.
+--- a/encoder/basisu_kernels_sse.cpp
++++ b/encoder/basisu_kernels_sse.cpp
+@@ -22,22 +22,6 @@
+ #include <intrin.h>
+ #endif
+ 
+-#if !defined(_MSC_VER)
+-	#if __AVX__ || __AVX2__ || __AVX512F__
+-		#error Please check your compiler options
+-	#endif
+-	
+-	#if CPPSPMD_SSE2
+-		#if __SSE4_1__ || __SSE3__ || __SSE4_2__ || __SSSE3__
+-			#error SSE4.1/SSE3/SSE4.2/SSSE3 cannot be enabled to use this file
+-		#endif
+-	#else
+-		#if !__SSE4_1__ || !__SSE3__ || !__SSSE3__
+-			#error Please check your compiler options
+-		#endif
+-	#endif
+-#endif
+-
+ #include "cppspmd_sse.h"
+ 
+ #include "cppspmd_type_aliases.h"
+

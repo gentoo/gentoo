@@ -6,9 +6,13 @@
     <email>xgqt@gentoo.org</email>
     <name>Maciej Barć</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
   <upstream>
-    <bugs-to>https://github.com/plamere/spotipy/issues/</bugs-to>
-    <remote-id type="github">plamere/spotipy</remote-id>
+    <bugs-to>https://github.com/spotipy-dev/spotipy/issues/</bugs-to>
+    <remote-id type="github">spotipy-dev/spotipy</remote-id>
     <remote-id type="pypi">spotipy</remote-id>
   </upstream>
 </pkgmetadata>

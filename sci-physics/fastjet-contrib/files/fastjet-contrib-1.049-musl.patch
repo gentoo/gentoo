@@ -1,0 +1,11 @@
+--- a/LundPlane/example_dpsi_slice.cc
++++ b/LundPlane/example_dpsi_slice.cc
+@@ -124,7 +124,7 @@
+ 
+   int index_of_max_kt_secondary = -1;
+   double dpsi;
+-  for (uint i_secondary=0; i_secondary<secondaries.size(); i_secondary++) {
++  for (unsigned int i_secondary=0; i_secondary<secondaries.size(); i_secondary++) {
+     if (secondaries[i_secondary]->z() > z2_cut) {
+ 
+       index_of_max_kt_secondary = i_secondary;

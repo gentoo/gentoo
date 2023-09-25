@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,7 +54,7 @@ DEPEND="
 	fits? ( sci-libs/cfitsio:= )
 	hdf5? ( sci-libs/hdf5:= )
 	libcerf? ( sci-libs/libcerf )
-	markdown? ( app-text/discount )
+	markdown? ( app-text/discount:= )
 	matio? ( sci-libs/matio:= )
 	netcdf? ( sci-libs/netcdf:= )
 	origin? ( sci-libs/liborigin:2 )
@@ -71,6 +71,8 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/gettext
 "
+
+PATCHES=( "${FILESDIR}/${P}-discount-3.patch" )
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,0 +1,32 @@
+diff --git a/src/muf.c b/src/muf.c
+index 6671651..3032685 100644
+--- a/src/muf.c
++++ b/src/muf.c
+@@ -196,8 +196,7 @@ int t;
+ double xn, xs, ls, h, ff, x, yn_, k, lm, u, a;
+ 
+ 
+-static double power(man, ex)
+-double man, ex;
++static double power(double man, double ex)
+ {
+     return exp(ex * log(man));
+ }
+diff --git a/src/qtcwin.c b/src/qtcwin.c
+index 7437767..8b6dee0 100644
+--- a/src/qtcwin.c
++++ b/src/qtcwin.c
+@@ -53,11 +53,11 @@
+ 
+ 
+ void init_qtc_panel();
+-void draw_qtc_panel();
++void draw_qtc_panel(int direction);
+ void start_qtc_recording();
+ void stop_qtc_recording();
+ void clear_help_block();
+-void show_help_msg();
++void show_help_msg(int msgidx);
+ void showfield(int fidx);
+ void modify_field(int pressed);
+ void delete_from_field(int dir);

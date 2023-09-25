@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="GPL Arcade Volleyball"
-HOMEPAGE="http://gav.sourceforge.net/"
+HOMEPAGE="https://gav.sourceforge.net/"
 # the themes are behind a lame php-counter script.
 SRC_URI="
 	mirror://sourceforge/gav/${P}.tar.gz
@@ -18,7 +18,7 @@ SRC_URI="
 	mirror://gentoo/yisus.tgz
 	mirror://gentoo/yisus2.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

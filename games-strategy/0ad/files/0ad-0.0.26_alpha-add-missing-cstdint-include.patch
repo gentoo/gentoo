@@ -1,0 +1,29 @@
+diff --git a/source/tools/atlas/GameInterface/Messages.h b/source/tools/atlas/GameInterface/Messages.h
+index 2fa4780..a486d93 100644
+--- a/source/tools/atlas/GameInterface/Messages.h
++++ b/source/tools/atlas/GameInterface/Messages.h
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 2022 Wildfire Games.
++/* Copyright (C) 2023 Wildfire Games.
+  * This file is part of 0 A.D.
+  *
+  * 0 A.D. is free software: you can redistribute it and/or modify
+@@ -18,13 +18,15 @@
+ #ifndef INCLUDED_MESSAGES
+ #define INCLUDED_MESSAGES
+ 
++#include <cstdint>
++#include <string>
++#include <vector>
++
++// Opens namespace AtlasMessage, closes it on second inclusion!
+ #ifndef MESSAGES_SKIP_SETUP
+ #include "MessagesSetup.h"
+ #endif
+ 
+-#include <vector>
+-#include <string>
+-
+ // TODO: organisation, documentation, etc
+ 
+ #ifdef _MSC_VER // (can't use MSC_VERSION here since this file is included by Atlas too)

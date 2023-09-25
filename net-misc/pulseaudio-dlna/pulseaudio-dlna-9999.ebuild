@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit desktop distutils-r1
 
@@ -38,10 +38,10 @@ RDEPEND=">=dev-python/protobuf-python-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/pychromecast-10[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 	>=dev-python/dbus-python-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/python-zeroconf-0.17.4[${PYTHON_USEDEP}]
+	>=dev-python/zeroconf-0.17.4[${PYTHON_USEDEP}]
 	gnome-base/librsvg[introspection]
 	x11-libs/gtk+:3[introspection]
-	|| ( media-sound/pulseaudio-daemon media-sound/pulseaudio[daemon(+)] )
+	media-sound/pulseaudio-daemon
 	|| (
 		|| (
 			media-video/ffmpeg[encode,mp3,opus,vorbis]

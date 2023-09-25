@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools bash-completion-r1
+inherit autotools bash-completion-r1 flag-o-matic
 
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
 HOMEPAGE="https://mosh.org"
@@ -49,6 +49,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# protobuf needs >=c++14
+	append-cxxflags -std=gnu++14
+
 	econf \
 		--disable-completion \
 		$(use_enable client) \

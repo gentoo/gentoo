@@ -17,7 +17,6 @@
 		<flag name="server">Build xmms2 player daemon (otherwise only clients are built)</flag>
 		<flag name="sid">Support for C64 SID using <pkg>media-libs/libsidplay</pkg></flag>
 		<flag name="tremor">Support Vorbis using an alternate fixed-point decoder with <pkg>media-libs/tremor</pkg></flag>
-		<flag name="valgrind">Run unit tests under valgrind</flag>
 		<flag name="vocoder">Phase vocoder effect plugin</flag>
 		<flag name="xml">Enable support for various XML based playlists and sources: RSS, XSPF</flag>
 	</use>

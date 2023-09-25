@@ -1,0 +1,35 @@
+From 2d155220920c8fd7ad5b4df2d5be923808ee841a Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 19 Nov 2019 12:28:53 +0100
+Subject: [PATCH 1/6] Don't use .so for modules on darwin/macos. Use .bundle
+ instead.
+
+Patch by Heiko Przybyl
+
+Forward-ported from 2.8.10 to 3.4.0-rc1
+Forward-ported from 3.4.0-rc1 to 3.16.0-rc4
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+--- a/Modules/Platform/Darwin.cmake
++++ b/Modules/Platform/Darwin.cmake
+@@ -42,7 +42,7 @@ set(CMAKE_SHARED_LIBRARY_PREFIX "lib")
+ set(CMAKE_SHARED_LIBRARY_SUFFIX ".dylib")
+ set(CMAKE_EXTRA_SHARED_LIBRARY_SUFFIXES ".tbd" ".so")
+ set(CMAKE_SHARED_MODULE_PREFIX "lib")
+-set(CMAKE_SHARED_MODULE_SUFFIX ".so")
++set(CMAKE_SHARED_MODULE_SUFFIX ".bundle")
+ set(CMAKE_APPLE_IMPORT_FILE_PREFIX "lib")
+ set(CMAKE_APPLE_IMPORT_FILE_SUFFIX ".tbd")
+ set(CMAKE_MODULE_EXISTS 1)
+@@ -66,7 +66,7 @@ foreach(lang C CXX OBJC OBJCXX)
+ endforeach()
+ 
+ set(CMAKE_PLATFORM_HAS_INSTALLNAME 1)
+-set(CMAKE_FIND_LIBRARY_SUFFIXES ".tbd" ".dylib" ".so" ".a")
++set(CMAKE_FIND_LIBRARY_SUFFIXES ".tbd" ".dylib" ".bundle" ".a")
+ 
+ # hack: if a new cmake (which uses CMAKE_INSTALL_NAME_TOOL) runs on an old build tree
+ # (where install_name_tool was hardcoded) and where CMAKE_INSTALL_NAME_TOOL isn't in the cache
+-- 
+2.41.0
+

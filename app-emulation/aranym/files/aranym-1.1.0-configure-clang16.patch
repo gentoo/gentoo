@@ -1,0 +1,30 @@
+https://github.com/aranym/aranym/pull/102
+
+From ef9ba74fcbf868aeb1b0e0b02e53775a14cda0f7 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 19 Mar 2023 01:56:56 +0000
+Subject: [PATCH] configure.ac: fix -Wimplicit-function-declaration in TUN/TAP
+ test
+
+Clang 16 makes -Wimplicit-function-declaration an error by default.
+
+Unfortunately, this can lead to misconfiguration or miscompilation of software as configure
+tests may then return the wrong result.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+--- a/configure.ac
++++ b/configure.ac
+@@ -539,6 +539,7 @@ AC_CACHE_CHECK([whether TUN/TAP is supported],
+     #include <net/if.h>
+     #include <net/if_tun.h>
+     #endif
++    #include <string.h>
+   ], [
+     struct ifreq ifr;
+     memset(&ifr, 0, sizeof(ifr));

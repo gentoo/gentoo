@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-2.eclass
@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: Eclass for Java Packages
 # @DESCRIPTION:
@@ -14,7 +14,7 @@
 # need to use Java.
 
 case ${EAPI:-0} in
-	[5678]) ;;
+	[678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -73,7 +73,7 @@ java-pkg-2_src_prepare() {
 #   EANT_BUILD_TARGET - the ant target/targets to execute (default: jar)
 #   EANT_DOC_TARGET - the target to build extra docs under the doc use flag
 #                     (default: javadoc; declare empty to disable completely)
-#   EANT_GENTOO_CLASSPATH - @see eant documention in java-utils-2.eclass
+#   EANT_GENTOO_CLASSPATH - @see eant documentation in java-utils-2.eclass
 #   EANT_EXTRA_ARGS - extra arguments to pass to eant
 #   EANT_ANT_TASKS - modifies the ANT_TASKS variable in the eant environment
 # @CODE

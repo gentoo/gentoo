@@ -1,20 +1,20 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="A simple CLI for Denon AV receivers"
 HOMEPAGE="
-	https://github.com/mgorny/denonavr-cli/
+	https://github.com/projg2/denonavr-cli/
 	https://pypi.org/project/denonavr-cli/
 "
 SRC_URI="
-	https://github.com/mgorny/denonavr-cli/archive/v${PV}.tar.gz
+	https://github.com/projg2/denonavr-cli/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

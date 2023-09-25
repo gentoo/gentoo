@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="SDL app to test joysticks and game controllers"
-HOMEPAGE="http://sdljoytest.sourceforge.net/"
+HOMEPAGE="https://sdljoytest.sourceforge.net/"
 SRC_URI="mirror://sourceforge/sdljoytest/SDLJoytest-GL-${PV}.tar.bz2"
 S="${WORKDIR}"/SDLJoytest-GL
 

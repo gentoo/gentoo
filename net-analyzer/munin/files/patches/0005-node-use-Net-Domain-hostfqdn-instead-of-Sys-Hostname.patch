@@ -1,0 +1,44 @@
+From e504b83d0db596a39f32227d4c473575e227037a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diego=20Elio=20Petten=C3=B2?= <flameeyes@flameeyes.eu>
+Date: Sun, 11 Nov 2012 14:38:16 -0800
+Subject: [PATCH 5/7] node: use Net::Domain::hostfqdn instead of
+ Sys::Hostname::hostname to get the hostname.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This actually makes the test work correctly, but might change the
+returned values for some hosts.
+
+Signed-off-by: Diego Elio Pettenò <flameeyes@flameeyes.eu>
+---
+ node/lib/Munin/Node/OS.pm | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/node/lib/Munin/Node/OS.pm b/node/lib/Munin/Node/OS.pm
+index 31bebac..b8fa58a 100644
+--- a/node/lib/Munin/Node/OS.pm
++++ b/node/lib/Munin/Node/OS.pm
+@@ -12,7 +12,7 @@ use Munin::Node::Config;
+ use Munin::Common::Timeout;
+ 
+ use POSIX ();
+-use Sys::Hostname;
++use Net::Domain qw(hostfqdn);
+ 
+ sub get_uid {
+     my ($class, $user) = @_;
+@@ -38,9 +38,7 @@ sub _get_xid {
+ }
+ 
+ sub get_fq_hostname { 
+-    my $short = Sys::Hostname::hostname();
+-
+-    return (gethostbyname $short)[0] || $short || "unknown";
++    return hostfqdn || "unknown";
+ }
+ 
+ sub check_perms_if_paranoid
+-- 
+2.2.1
+

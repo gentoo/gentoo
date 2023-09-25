@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 RUBY_OPTIONAL="yes"
 USE_RUBY="ruby31"
@@ -24,7 +24,7 @@ SRC_URI="https://github.com/zeroc-ice/ice/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( https://download.zeroc.com/Ice/$(ver_cut 1-2)/${PN}-3.7.1.pdf )"
 LICENSE="GPL-2"
 SLOT="0/37"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="debug doc examples php python ruby test"
 RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="arm64-macos"
-ACCEPT_KEYWORDS="~x64-macos"  # this is a hack whilst we don't have full system
+ACCEPT_KEYWORDS="~arm64-macos"
 
 # multilib build stuff, single ABI (no multilib)
 ABI="arm64"

@@ -1,11 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_COMPAT=( python3_{10,11,12} )
 
-inherit flag-o-matic git-r3 linux-info pam python-single-r1 systemd tmpfiles
+inherit flag-o-matic git-r3 linux-info meson pam python-single-r1 \
+		systemd tmpfiles
 
 KEYWORDS=""
 
@@ -17,9 +18,8 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug icu kerberos ldap llvm +lz4
-	nls pam perl python +readline selinux server systemd
-	ssl static-libs tcl threads uuid xml zlib zstd"
+IUSE="debug +icu kerberos ldap llvm +lz4 nls pam perl python +readline
+	selinux server systemd ssl static-libs tcl uuid xml zlib zstd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -93,7 +93,7 @@ pkg_pretend() {
 	if ! use server; then
 		elog "You are using a live ebuild that uses the current source code as it is"
 		elog "available from PostgreSQL's Git repository at emerge time. Given such,"
-		elog "the GNU Makefiles may be altered by upstream without notice and the"
+		elog "the Meson build files may be altered by upstream without notice and the"
 		elog "documentation for this live version is not readily available"
 		elog "online. Ergo, the ebuild maintainers will not support building a"
 		elog "client-only and/or document-free version."
@@ -108,9 +108,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# still needed as of 2021-08-13
-	eapply "${FILESDIR}"/${PN}-13.3-riscv-spinlocks.patch
-
 	# Set proper run directory
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die
@@ -130,69 +127,76 @@ src_prepare() {
 }
 
 src_configure() {
+	local emesonargs=()
+
 	case ${CHOST} in
 		*-darwin*|*-solaris*)
 			use nls && append-libs intl
 			;;
 	esac
 
-	export LDFLAGS_SL="${LDFLAGS}"
-	export LDFLAGS_EX="${LDFLAGS}"
-
-	local PO="${EPREFIX}"
-
 	local i uuid_config=""
 	if use uuid; then
 		for i in ${UTIL_LINUX_LIBC[@]}; do
-			use ${i} && uuid_config="--with-uuid=e2fs"
+			use ${i} && uuid_config="-Duuid=e2fs"
 		done
-		[[ -z $uuid_config ]] && uuid_config="--with-uuid=ossp"
+
+		emesonargs+=( ${uuid_config:-"-Duuid=ossp"} )
 	fi
 
-	local myconf="\
-		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}" \
-		--datadir="${PO}/usr/share/postgresql-${SLOT}" \
-		--includedir="${PO}/usr/include/postgresql-${SLOT}" \
-		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
-		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
-		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
-		$(use_enable debug) \
-		$(use_enable nls) \
-		$(use_enable threads thread-safety) \
-		$(use_with icu) \
-		$(use_with kerberos gssapi) \
-		$(use_with ldap) \
-		$(use_with llvm) \
-		$(use_with lz4) \
-		$(use_with pam) \
-		$(use_with perl) \
-		$(use_with python) \
-		$(use_with readline) \
-		$(use_with ssl openssl) \
-		$(use_with tcl) \
-		$(use_with xml libxml) \
-		$(use_with xml libxslt) \
-		$(use_with zlib) \
-		$(use_with zstd ) \
-		$(use_with systemd) \
-		${uuid_config}"
-	if use alpha; then
-		myconf+=" --disable-spinlocks"
-	else
-		# Should be the default but just in case
-		myconf+=" --enable-spinlocks"
-	fi
-	econf ${myconf}
+	use debug && emesonargs+=( "--debug" )
+
+	local PO="${EPREFIX}"
+	emesonargs+=(
+		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}"
+		--datadir="${PO}/usr/share/postgresql-${SLOT}"
+		--includedir="${PO}/usr/include/postgresql-${SLOT}"
+		--mandir="${PO}/usr/share/postgresql-${SLOT}/man"
+		--sysconfdir="${PO}/etc/postgresql-${SLOT}"
+		-Dsystem_tzdata="${PO}/usr/share/zoneinfo"
+		$(meson_feature icu)
+		$(meson_feature kerberos gssapi)
+		$(meson_feature ldap)
+		$(meson_feature llvm)
+		$(meson_feature lz4)
+		$(meson_feature nls)
+		$(meson_feature pam)
+		$(meson_feature perl plperl)
+		$(meson_feature python plpython)
+		$(meson_feature readline)
+		$(meson_feature systemd)
+		$(meson_feature tcl pltcl)
+		$(meson_feature xml libxml)
+		$(meson_feature xml libxslt)
+		$(meson_feature zlib)
+		$(meson_feature zstd)
+	)
+
+	use ssl && emesonargs+=( "-Dssl=openssl" )
+	use alpha && emesonargs+=( "-Dspinlocks=false" )
+
+	export LDFLAGS_SL="${LDFLAGS}"
+	export LDFLAGS_EX="${LDFLAGS}"
+
+	meson_src_configure
 }
 
 src_compile() {
-	emake world
+	meson_src_compile
+	meson_src_compile {docs,man}
 }
 
 src_install() {
-	emake DESTDIR="${D}" install-world
+	meson_src_install
 
 	dodoc README HISTORY doc/TODO
+	dodoc -r "${BUILD_DIR}"/doc/src/sgml/html
+
+	# postgresql.eselect places the man files of the selected slot, which may
+	# not be this ${SLOT}, hence doins instead of doman
+	insinto /usr/share/postgresql-${SLOT}/man/
+	doins -r "${BUILD_DIR}"/doc/src/sgml/man{1,3,7}
+	docompress /usr/share/postgresql-${SLOT}/man/man{1,3,7}
 
 	insinto /etc/postgresql-${SLOT}
 	newins src/bin/psql/psqlrc.sample psqlrc
@@ -225,11 +229,8 @@ src_install() {
 					-mindepth 1 -maxdepth 1)
 	do
 		bn=$(basename "${f}")
-		# Temporarily tack on tmp to workaround a file collision
-		# issue. This is only necessary for 9.7 and earlier. 10 never
-		# had this issue.
 		dosym "../$(get_libdir)/postgresql-${SLOT}/bin/${bn}" \
-			  "/usr/bin/${bn}${SLOT/.}tmp"
+			  "/usr/bin/${bn}${SLOT/.}"
 	done
 
 	# Create slot specific man pages
@@ -260,40 +261,6 @@ src_install() {
 		keepdir /run/postgresql
 		fperms 1775 /run/postgresql
 	fi
-}
-
-pkg_preinst() {
-	# Find all of the slot-specific symlinks, if any, in /usr/bin (e.g.,
-	# /usr/bin/psql97). They may have been created by the
-	# postgresql.eselect module, but they're handled within this ebuild
-	# now. It's alright if we momentarily delete /usr/bin/psql as it
-	# will be recreated by the eselect module in pkg_ppostinst().  We
-	# only worry about the 9.7 slot as that's the last slot that had its
-	# slot-specific links generated by eselect.
-	#
-	# This can be removed when 10 is the lowest slot in the tree.
-	local canonicalise
-	if type -p realpath > /dev/null; then
-		canonicalise=realpath
-	elif type -p readlink > /dev/null; then
-		canonicalise='readlink -f'
-	else
-		# can't die, subshell
-		die "No readlink nor realpath found, cannot canonicalise"
-	fi
-
-	local l
-	# First remove any symlinks in /usr/bin that may have been created
-	# by the old eselect
-	for l in $(find "${ROOT}/usr/bin" -mindepth 1 -maxdepth 1 -type l) ; do
-		[[ $(${canonicalise} "${l}") == *postgresql-9.7* ]] && rm "${l}"
-	done
-
-	# Then move the symlinks created by the ebuild to their proper place.
-	for l in "${ED}"/usr/bin/*tmp ; do
-		mv "${l}" "${l%tmp}" \
-			|| ewarn "Couldn't rename $(basename ${l}) to $(basename ${l%tmp})"
-	done
 }
 
 pkg_postinst() {
@@ -463,7 +430,7 @@ src_test() {
 		# LC_CTYPE to be equal to LC_COLLATE since LC_COLLATE is set by Portage.
 		local old_ctype=${LC_CTYPE}
 		export LC_CTYPE=${LC_COLLATE}
-		emake check
+		meson_src_test
 		export LC_CTYPE=${old_ctype}
 
 		einfo "If you think other tests besides the regression tests are necessary, please"

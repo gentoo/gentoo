@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools bash-completion-r1 gnome2-utils python-r1 toolchain-funcs vala virtualx xdg-utils
 
@@ -76,11 +76,11 @@ BDEPEND="
 		app-i18n/unicode-emoji
 	)
 	nls? ( sys-devel/gettext )
+	test? ( x11-apps/setxkbmap )
 	unicode? ( app-i18n/unicode-data )"
 
 src_prepare() {
 	vala_src_prepare --ignore-use
-	sed -i "/UCD_DIR=/s/\$with_emoji_annotation_dir/\$with_ucd_dir/" configure.ac
 	if ! has_version 'x11-libs/gtk+:3[wayland]'; then
 		touch ui/gtk3/panelbinding.vala \
 			ui/gtk3/panel.vala \
@@ -104,7 +104,7 @@ src_prepare() {
 	# fix for parallel install
 	sed -i "/^if ENABLE_PYTHON2/,/^endif/d" bindings/pygobject/Makefile.am || die
 	# require user interaction
-	sed -i "/^TESTS += ibus-\(compose\|keypress\)/d" src/tests/Makefile.am || die
+	sed -i "/^TESTS_C += ibus-\(compose\|keypress\)/d" src/tests/Makefile.am || die
 
 	sed -i "/^bash_completion/d" tools/Makefile.am || die
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MAVEN_ID="org.brotli:dec:${PV}"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Brotli decompressor"
-HOMEPAGE="https://github.com/google/brotli"
+HOMEPAGE="https://brotli.org/ https://github.com/google/brotli"
 SRC_URI="https://repo1.maven.org/maven2/org/brotli/dec/${PV}/dec-${PV}-sources.jar -> ${P}-sources.jar"
 
 LICENSE="MIT"

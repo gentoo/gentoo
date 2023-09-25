@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop
 
 DESCRIPTION="Tetris clone written in OpenGL"
-HOMEPAGE="http://fbg.sourceforge.net/"
+HOMEPAGE="https://fbg.sourceforge.net/"
 SRC_URI="mirror://sourceforge/fbg/${P}.tar.gz"
 
 LICENSE="GPL-2"

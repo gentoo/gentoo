@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">xcpc</remote-id>
+		<remote-id type="bitbucket">ponceto/xcpc</remote-id>
 	</upstream>
 </pkgmetadata>

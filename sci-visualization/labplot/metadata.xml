@@ -18,6 +18,7 @@
 	</upstream>
 	<use>
 		<flag name="cantor">Enable support for different open-source computer algebra systems via <pkg>kde-apps/cantor</pkg></flag>
+		<flag name="excel">Enable support for importing/exporting Microsoft Excel files (.xlsx) via <pkg>dev-libs/qxlsx</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="libcerf">Enable special functions from <pkg>sci-libs/libcerf</pkg></flag>
 		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>

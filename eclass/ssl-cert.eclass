@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ssl-cert.eclass
@@ -14,31 +14,31 @@
 # @EXAMPLE:
 # "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 
-case "${EAPI}" in
+case ${EAPI} in
 	6|7|8) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_SSL_CERT_ECLASS} ]]; then
+if [[ -z ${_SSL_CERT_ECLASS} ]]; then
 _SSL_CERT_ECLASS=1
 
 # @ECLASS_VARIABLE: SSL_CERT_MANDATORY
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero if ssl-cert is mandatory for ebuild.
-: ${SSL_CERT_MANDATORY:=0}
+: "${SSL_CERT_MANDATORY:=0}"
 
 # @ECLASS_VARIABLE: SSL_CERT_USE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Use flag to append dependency to.
-: ${SSL_CERT_USE:=ssl}
+: "${SSL_CERT_USE:=ssl}"
 
 # @ECLASS_VARIABLE: SSL_DEPS_SKIP
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero to skip adding to DEPEND and IUSE.
-: ${SSL_DEPS_SKIP:=0}
+: "${SSL_DEPS_SKIP:=0}"
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then

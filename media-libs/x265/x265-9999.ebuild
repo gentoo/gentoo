@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265_git/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/199"
+SLOT="0/207"
 IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_vsx2 numa pic test"
 RESTRICT="!test? ( test )"
 

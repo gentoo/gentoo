@@ -1,0 +1,29 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,11 +1,9 @@
+-CFLAGS?=-Wall -O2
+-LDADD?=$(shell pkg-config --cflags --libs x11 xinerama x11 xft)
++CFLAGS += -Wall
++CPPFLAGS += $(shell $(PKG_CONFIG) --cflags x11 xinerama x11 xft)
++LDLIBS += $(shell $(PKG_CONFIG) --libs x11 xinerama x11 xft)
+ 
+-normal:
+-	$(CC) -o goomwwm goomwwm.c $(CFLAGS) $(LDADD) $(LDFLAGS)
+-
+-debug:
+-	$(CC) -o goomwwm-debug goomwwm.c $(CFLAGS) -g -DDEBUG $(LDADD)
++all: goomwwm
++goomwwm.c: proto
+ 
+ proto:
+ 	cat *.c | egrep '^(void|int|char|unsigned|client|Window|winlist|XWindow)' | sed -r 's/\)/);/' > proto.h
+@@ -13,7 +11,5 @@
+ docs:
+ 	pandoc -s -w man goomwwm.md -o goomwwm.1
+ 
+-all: proto normal debug docs
+-
+ clean:
+-	rm -f goomwwm goomwwm-debug
+\ No newline at end of file
++	rm -f goomwwm goomwwm-debug

@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools flag-o-matic multilib-minimal python-single-r1 systemd verify-sig
 
@@ -47,10 +47,7 @@ CDEPEND="acct-group/unbound
 BDEPEND="virtual/pkgconfig
 	python? ( dev-lang/swig )
 	test? (
-		|| (
-			net-libs/ldns[examples(-)]
-			net-dns/ldns-utils[examples(-)]
-		)
+		net-libs/ldns[examples(-)]
 		dev-util/splint
 		app-text/wdiff
 	)

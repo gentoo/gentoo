@@ -1,5 +1,73 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
+# Libei not keyworded here yet
+x11-base/xwayland libei
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-29)
+# Test failures in dev-libs/weston, although not as bad as big-endian
+# (2 at the time of this writing)
+# Upstream has specifically indicated they do not care about niche arches.
+# Use Debian CI as a reference for checking if this succeeded, note that
+# they have test suite in nonfatal mode so Maybe-Successful does NOT
+# indicate a passing test suite, you must check the logs.
+# https://buildd.debian.org/status/logs.php?pkg=weston&arch=alpha
+gui-libs/gtk wayland
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-18)
+# sci-physics/bullet not keyworded here (#908240)
+dev-libs/efl physics
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-18)
+# media-libs/rlottie not keyworded here (#908241)
+dev-libs/efl json
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-10)
+# Requires virtual/pandoc.
+dev-python/nbval doc
+dev-python/nbclassic doc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-10)
+# sys-cluster/ceph not keyworded here
+sys-block/tgt rbd
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# pandoc not keyworded here, bug #878355
+app-admin/conky doc
+
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# net-libs/libqmi and net-libs/libqrtr-glib are not keyworded here
+net-misc/modemmanager qmi qrtr
+
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# Depends on dev-util/umockdev which is broken on alpha.
+# See https://github.com/martinpitt/umockdev/issues/200
+dev-libs/libgudev test
+dev-libs/libgusb test
+sys-power/upower test
+
+# Stijn Tintel <stijn@linux-ipv6.be> (2023-02-02)
+# Dependency not keyworded
+# https://bugs.gentoo.org/show_bug.cgi?id=892389
+net-misc/openvswitch unwind
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-22)
 # Unable to test due to mask, bug #763963
@@ -8,11 +76,6 @@ net-misc/openntpd constraints
 # Matthew Smith <matthew@gentoo.org> (2022-07-10)
 # Needs unkeyworded app-doc/halibut
 >=net-misc/putty-0.77 doc
-
-# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
-# media-libs/libjxl is not keyworded
-# bug https://bugs.gentoo.org/853628
-media-gfx/gimp jpegxl
 
 # Sam James <sam@gentoo.org> (2022-04-29)
 # Needs unkeyworded dev-util/umockdev
@@ -24,7 +87,7 @@ dev-python/click doc
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
-media-libs/imlib2 svg heif jpegxl
+media-libs/imlib2 svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -33,10 +96,6 @@ app-text/enchant nuspell
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords
 media-libs/freetype svg
-
-# Sam James <sam@gentoo.org> (2022-03-26)
-# media-libs/libjxl not keyworded here
-media-gfx/graphicsmagick jpegxl
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
@@ -52,7 +111,7 @@ media-video/ffmpeg svt-av1
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
-dev-python/scipy pythran
+dev-python/scipy fortran
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Test suite is very fragile and doesn't even run on amd64.
@@ -96,10 +155,10 @@ dev-python/diskcache test
 media-libs/rubberband jni
 
 # Sam James <sam@gentoo.org> (2021-03-11)
-# media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
-media-gfx/graphicsmagick heif
+media-libs/gd avif
+www-client/links avif
+dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here
@@ -164,8 +223,6 @@ media-libs/mesa vulkan vulkan-overlay zink
 # net-libs/webkit-gtk has no alpha keywords
 app-editors/emacs xwidgets
 gnome-extra/evolution-data-server oauth
-# needs mail-client/evolution, depends on net-libs/webkit-gtk
-app-office/planner eds
 # needs gnome-extra/sushi, depends on net-libs/webkit-gtk
 gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
@@ -216,10 +273,6 @@ media-tv/v4l-utils bpf
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
@@ -445,18 +498,9 @@ media-libs/gst-plugins-base ivorbis
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-31)
-# remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# requires app-office/unoconv, which requires virtual/ooo, which is not
-# keyworded here. Remove mask if this situation changes.
-gnome-extra/sushi office
 
 # Raúl Porcel <armin76@gentoo.org> (2012-12-30)
 # Needs testing

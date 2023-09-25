@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools python-single-r1 udev systemd
 
@@ -33,19 +33,20 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="libusb lm-sensors networkmanager +pcre rtlsdr selinux +suid ubertooth udev"
+IUSE="libusb lm-sensors mqtt networkmanager +pcre rtlsdr selinux +suid ubertooth udev"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
 	${PYTHON_DEPS}
 	acct-user/kismet
 	acct-group/kismet
-	networkmanager? ( net-misc/networkmanager:= )
-	dev-libs/glib:=
-	dev-libs/elfutils:=
+	mqtt? ( app-misc/mosquitto )
+	networkmanager? ( net-misc/networkmanager )
+	dev-libs/glib:2
+	dev-libs/elfutils
+	dev-libs/openssl:=
 	sys-libs/zlib:=
-	dev-db/sqlite:=
-	net-libs/libmicrohttpd:=
+	dev-db/sqlite:3
 	net-libs/libwebsockets:=[client,lejp]
 	kernel_linux? ( sys-libs/libcap
 			dev-libs/libnl:3
@@ -58,11 +59,10 @@ CDEPEND="
 		dev-python/protobuf-python[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
 	')
-	sys-libs/ncurses:=
-	lm-sensors? ( sys-apps/lm-sensors )
-	pcre? ( dev-libs/libpcre )
+	lm-sensors? ( sys-apps/lm-sensors:= )
+	pcre? ( dev-libs/libpcre2:= )
 	suid? ( sys-libs/libcap )
-	ubertooth? ( net-wireless/ubertooth:= )
+	ubertooth? ( net-wireless/ubertooth )
 	"
 RDEPEND="${CDEPEND}
 	$(python_gen_cond_dep '
@@ -78,13 +78,14 @@ RDEPEND="${CDEPEND}
 "
 DEPEND="${CDEPEND}
 	dev-libs/boost
-	<dev-libs/libfmt-9
+	=dev-libs/libfmt-9*
+	sys-libs/libcap
 "
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
-		conf/kismet_logging.conf || die
+	#sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
+	#	conf/kismet_logging.conf || die
 
 	#this was added to quiet macosx builds but it makes gcc builds noisier
 	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
@@ -103,26 +104,20 @@ src_prepare() {
 	#	log_tools/kismetdb_to_wiglecsv.cc trackedcomponent.h \
 	#	trackedelement.h trackedelement_workers.h
 
-	# Don't strip and set correct mangrp
-	sed -i -e 's| -s||g' \
-		-e 's|@mangrp@|root|g' Makefile.in || die
-
 	eapply_user
 
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf
 	fi
-	# VERSION was incorrectly removed in 4e490cf0b49a287e964df9c5e5c4067f6918909e upstream
-	# https://github.com/kismetwireless/kismet/issues/427
-	# https://bugs.gentoo.org/864298
-	echo "${PV}" > VERSION
 }
 
 src_configure() {
 	econf \
 		$(use_enable libusb libusb) \
 		$(use_enable libusb wifi-coconut) \
+		$(use_enable mqtt mosquitto) \
 		$(use_enable pcre) \
+		$(use_enable pcre require-pcre2) \
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
 		$(use_enable ubertooth) \

@@ -20,8 +20,8 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">jabref</remote-id>
-		<changelog>https://github.com/JabRef/jabref/blob/master/CHANGELOG.md</changelog>
-		<doc>http://help.jabref.org/</doc>
+		<changelog>https://github.com/JabRef/jabref/blob/main/CHANGELOG.md</changelog>
+		<doc>https://docs.jabref.org/</doc>
 		<remote-id type="github">JabRef/jabref</remote-id>
 	</upstream>
 </pkgmetadata>

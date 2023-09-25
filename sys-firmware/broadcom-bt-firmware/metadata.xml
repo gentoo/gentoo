@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<name>Florian Schmaus</name>
-		<email>flow@gentoo.org</email>
+	<maintainer type="person" proxied="yes">
+		<email>azamat.hackimov@gmail.com</email>
+		<name>Azamat H. Hackimov</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">winterheart/broadcom-bt-firmware</remote-id>
+	</upstream>
+<use>
+	<flag name="compress-xz">Compress firmware using xz (<pkg>app-arch/xz-utils</pkg>) before installation</flag>
+	<flag name="compress-zstd">Compress firmware using zstd (<pkg>app-arch/zstd</pkg>) before installation</flag>
+</use>
 </pkgmetadata>

@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">jwasm</remote-id>
+		<remote-id type="github">JWasm/JWasm</remote-id>
 	</upstream>
 </pkgmetadata>

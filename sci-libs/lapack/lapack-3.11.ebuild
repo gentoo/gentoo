@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Some additional tests are run if Python is found
-PYTHON_COMPAT=( python3_{8..11} )
-inherit cmake python-any-r1
+PYTHON_COMPAT=( python3_{10..11} )
+inherit cmake fortran-2 python-any-r1
 
 DESCRIPTION="BLAS,CBLAS,LAPACK,LAPACKE reference implementations"
 HOMEPAGE="https://www.netlib.org/lapack/"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Reference-LAPACK/lapack/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos"
 # TODO: static-libs 64bit-index
 IUSE="lapacke deprecated doc eselect-ldso test"
 RESTRICT="!test? ( test )"
@@ -34,6 +34,7 @@ BDEPEND="
 "
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
@@ -44,6 +45,9 @@ src_configure() {
 		-DBUILD_DEPRECATED=$(usex deprecated)
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_TESTING=$(usex test)
+
+		# Breaks cross, will default to OFF in next release.
+		-DTEST_FORTRAN_COMPILER=OFF
 	)
 
 	cmake_src_configure
@@ -71,7 +75,7 @@ pkg_postinst() {
 
 	local me=reference libdir=$(get_libdir)
 	# check eselect-blas
-	eselect blas add ${libdir} "${EROOT}"/usr/${libdir}/blas/${me} ${me}
+	eselect blas add ${libdir} "${EPREFIX}"/usr/${libdir}/blas/${me} ${me}
 	local current_blas=$(eselect blas show ${libdir} | cut -d' ' -f2)
 	if [[ ${current_blas} == ${me} || -z ${current_blas} ]]; then
 		eselect blas set ${libdir} ${me}
@@ -83,7 +87,7 @@ pkg_postinst() {
 	fi
 
 	# check eselect-lapack
-	eselect lapack add ${libdir} "${EROOT}"/usr/${libdir}/lapack/${me} ${me}
+	eselect lapack add ${libdir} "${EPREFIX}"/usr/${libdir}/lapack/${me} ${me}
 	local current_lapack=$(eselect lapack show ${libdir} | cut -d' ' -f2)
 	if [[ ${current_lapack} == ${me} || -z ${current_lapack} ]]; then
 		eselect lapack set ${libdir} ${me}

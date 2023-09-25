@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PHP_EXT_NAME="mongodb"
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php8-0"
 
 inherit php-ext-pecl-r3
 
@@ -16,8 +16,6 @@ KEYWORDS="amd64 x86"
 IUSE="sasl test"
 
 PHP_DEPEND="
-	php_targets_php7-3? ( dev-lang/php:7.3[json,ssl,zlib] )
-	php_targets_php7-4? ( dev-lang/php:7.4[json,ssl,zlib] )
 	php_targets_php8-0? ( dev-lang/php:8.0[ssl,zlib] )"
 COMMON_DEPEND="${PHP_DEPEND}
 	>=dev-libs/libbson-1.18.0

@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt	2022-05-21 13:13:50.806813151 +0200
 +++ b/CMakeLists.txt	2022-05-21 13:16:46.448969453 +0200
-@@ -165,7 +165,7 @@
+@@ -187,7 +187,7 @@
  message(WARNING "CMAKE_CXX_FLAGS_RELEASE is ${CMAKE_CXX_FLAGS_RELEASE}")
  message(WARNING "==========")
  
@@ -9,8 +9,8 @@
    #Download asmjit from github if ASMJIT_SRC_DIR is not specified.
    if(NOT DEFINED ASMJIT_SRC_DIR)
      set(ASMJIT_SRC_DIR "${FBGEMM_SOURCE_DIR}/third_party/asmjit"
-@@ -184,7 +184,7 @@
-   set_property(TARGET asmjit PROPERTY POSITION_INDEPENDENT_CODE ON)
+@@ -216,7 +216,7 @@
+   endif()
  endif()
  
 -if(NOT TARGET cpuinfo)
@@ -18,7 +18,7 @@
    #Download cpuinfo from github if CPUINFO_SOURCE_DIR is not specified.
    if(NOT DEFINED CPUINFO_SOURCE_DIR)
      set(CPUINFO_SOURCE_DIR "${FBGEMM_SOURCE_DIR}/third_party/cpuinfo"
-@@ -261,7 +261,6 @@
+@@ -293,7 +293,6 @@
  
  target_link_libraries(fbgemm $<BUILD_INTERFACE:asmjit>
    $<BUILD_INTERFACE:cpuinfo>)
@@ -26,7 +26,7 @@
  
  install(TARGETS fbgemm EXPORT fbgemmLibraryConfig
    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-@@ -268,6 +268,8 @@
+@@ -302,6 +301,8 @@
  
  install(FILES ${FBGEMM_PUBLIC_HEADERS}
    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/fbgemm")
@@ -45,7 +45,7 @@
    #Download Googletest framework from github if
    #GOOGLETEST_SOURCE_DIR is not specified.
    if(NOT DEFINED GOOGLETEST_SOURCE_DIR)
-@@ -62,7 +62,6 @@
+@@ -67,7 +67,6 @@
      target_link_libraries(${TESTNAME} ${OpenMP_CXX_LIBRARIES})
    endif()
  

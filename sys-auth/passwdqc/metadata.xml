@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>zlogene@gentoo.org</email>
-	<name>Mikle Kolyada</name>
-</maintainer>
-<upstream>
-	<remote-id type="github">openwall/passwdqc</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">openwall/passwdqc</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,13 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-07-02)
+# Unlikely that anybody wants to use net-nds/openldap on hppa & often has
+# platform-specific bugs.
+dev-libs/cyrus-sasl openldap
+app-crypt/mit-krb5 openldap
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-12-18)
 # Unstable test dependencies
 dev-util/pkgdev test
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-06)
-# Unmask the target on python-exec while it's masked elsewhere.
-dev-lang/python-exec -python_targets_python3_11
 
 # Sam James <sam@gentoo.org> (2022-02-02)
 # net-analyzer/net-snmp is not marked stable on HPPA
@@ -45,12 +47,6 @@ net-misc/chrony pps
 # Sam James <sam@gentoo.org> (2021-12-15)
 # Unstable dependencies (dev-libs/libnl, sys-cluster/rdma-core)
 net-libs/libpcap netlink rdma
-
-# Sam James <sam@gentoo.org> (2021-11-17)
-# x11-libs/libXvMC is not marked stable on HPPA
-# media-libs/mesa is not marked stable on HPPA
-media-libs/libepoxy egl
-media-libs/mesa xvmc
 
 # Rolf Eike Beer <eike@sf-mail.de> (2021-11-10)
 # The following packages have no stable keywords on hppa:
@@ -174,10 +170,6 @@ sys-apps/dbus test
 # noone actually tests it on real hardware anymore
 x11-base/xorg-server xorg
 
-# Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
-# not all needed sphinx modules are stable on hppa.
-dev-python/aiohttp doc
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not stable.
 media-libs/libsdl2 fcitx4
@@ -185,7 +177,7 @@ media-libs/libsdl2 fcitx4
 # Rolf Eike Beer <eike@sf-mail.de> (2020-06-10)
 # not stable dev-vcs/mercurial because of broken dependencies: bug #727390
 app-portage/layman mercurial
-dev-python/setuptools_scm test
+dev-python/setuptools-scm test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-24)
 # dependencies not stable yet

@@ -1,0 +1,12 @@
+diff -Naurp a/setup.py b/setup.py
+--- a/setup.py	2018-04-14 12:44:43.000000000 +0200
++++ b/setup.py	2023-04-01 18:39:19.732484796 +0200
+@@ -18,7 +18,7 @@ module_curve = Extension('axolotl_curve2
+                     )
+ setup(
+     name='python-axolotl-curve25519',
+-    version="0.4.1-2",
++    version="0.4.1.post2",
+     license='GPLv3 License',
+     author='Tarek Galal',
+     ext_modules = [module_curve],

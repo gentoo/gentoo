@@ -1,6 +1,6 @@
 Openbox config files have changed. Genmenu doesn't work anymore with openbox
---- a/genmenu	2012-03-01 20:34:08.000000000 +0200
-+++ b/genmenu	2017-02-19 11:38:53.687593570 +0200
+--- a/genmenu
++++ b/genmenu
 @@ -111,7 +111,7 @@
  
  # Window managers to check for

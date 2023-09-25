@@ -1,19 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Low-level CFFI bindings for the Argon2 password hashing library"
 HOMEPAGE="
 	https://github.com/hynek/argon2-cffi-bindings/
 	https://pypi.org/project/argon2-cffi-bindings/
 "
-SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,7 +25,7 @@ DEPEND="
 	app-crypt/argon2:=
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-6.2[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-6.2[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/cffi[${PYTHON_USEDEP}]
 	' 'python*')

@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake flag-o-matic python-any-r1 xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
@@ -64,7 +64,7 @@ RDEPEND="
 	g15? ( app-misc/g15daemon:= )
 	jack? ( virtual/jack )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	pipewire? ( media-video/pipewire )
 	speech? ( >=app-accessibility/speech-dispatcher-0.8.0 )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )

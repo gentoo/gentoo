@@ -1,0 +1,28 @@
+--- a/CMakeLists.txt	2022-01-23 17:14:43.000000000 +0100
++++ b/CMakeLists.txt	2023-02-05 15:59:57.828047452 +0100
+@@ -362,25 +362,6 @@
+ if(APPLE)
+ 	### Include our Apple configure commands
+ 	include(CMakeLists_Apple.cmake)
+-else()
+-	if(${CMAKE_GENERATOR} MATCHES "^(Visual Studio|NMake).*")
+-		# Windows build with Visual Studio
+-		# Surely there's a better way to identify the compiler?
+-		set(CMAKE_CXX_FLAGS_DEBUG)
+-		set(CMAKE_C_FLAGS_DEBUG)
+-	else()
+-		# vanilla gcc
+-		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -g -Wall -fstrict-aliasing")
+-		set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0 -g -Wall -fstrict-aliasing")
+-	endif()
+-	if(${CMAKE_GENERATOR} MATCHES "^(Visual Studio|NMake).*")
+-		set(CMAKE_CXX_FLAGS_RELEASE)
+-		set(CMAKE_C_FLAGS_RELEASE)
+-	else()
+-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2 -Wall")
+-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2 -Wall")
+-	#	add_definitions(-DNDEBUG)
+-	endif()
+ endif()
+ if(WIN32)
+ 	add_definitions(-DWIN32_LEAN_AND_MEAN

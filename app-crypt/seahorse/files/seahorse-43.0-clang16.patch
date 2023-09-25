@@ -1,0 +1,35 @@
+https://gitlab.gnome.org/GNOME/seahorse/-/merge_requests/214
+
+From 3887ba07ccab4aa970c24a22a183b97e255e6ece Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Fri, 14 Apr 2023 14:37:23 +0200
+Subject: [PATCH] Avoid C99 incompatibility around
+ seahorse_pkcs11_backend_initialize
+
+Move the prototype for seahorse_pkcs11_backend_initialize into the
+header file, so C code generated from Vala sources will use it.
+This avoids an implicit function declaration during the C-build
+of src/application.vala, and resulting build failures with future
+compilers.
+--- a/pkcs11/seahorse-pkcs11-backend.c
++++ b/pkcs11/seahorse-pkcs11-backend.c
+@@ -43,8 +43,6 @@ enum {
+ 	PROP_LOADED,
+ };
+ 
+-void  seahorse_pkcs11_backend_initialize (void);
+-
+ static SeahorsePkcs11Backend *pkcs11_backend = NULL;
+ 
+ struct _SeahorsePkcs11Backend {
+--- a/pkcs11/seahorse-pkcs11-backend.h
++++ b/pkcs11/seahorse-pkcs11-backend.h
+@@ -43,4 +43,6 @@ SeahorsePkcs11Backend *  seahorse_pkcs11_backend_get           (void);
+ GcrCollection *          seahorse_pkcs11_backend_get_writable_tokens (SeahorsePkcs11Backend *self,
+                                                                       gulong with_mechanism);
+ 
++void  seahorse_pkcs11_backend_initialize (void);
++
+ #endif /* SEAHORSE_PKCS11_BACKEND_H_ */
+-- 
+GitLab

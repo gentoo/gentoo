@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="A module for working with NMR data in Python"
-HOMEPAGE="https://nmrglue.com/"
+HOMEPAGE="https://www.nmrglue.com/"
 SRC_URI="https://github.com/jjhelmus/nmrglue/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
@@ -28,4 +28,4 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( app-shells/tcsh )"
 
 distutils_enable_tests nose
-distutils_enable_sphinx doc/source dev-python/sphinx_rtd_theme dev-python/numpydoc
+distutils_enable_sphinx doc/source dev-python/sphinx-rtd-theme dev-python/numpydoc

@@ -1,0 +1,57 @@
+From f8bb34ebf97bf6a103a7d021b16059522d76d52d Mon Sep 17 00:00:00 2001
+From: Brendon Smith <bws@bws.bio>
+Date: Sat, 6 May 2023 16:24:26 -0400
+Subject: [PATCH] Fix `urllib3.util.ssl_.DEFAULT_CIPHERS` import
+
+---
+ httpie/cli/definition.py |  4 ++--
+ httpie/ssl_.py           | 15 ++++++++++-----
+ 2 files changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/httpie/cli/definition.py b/httpie/cli/definition.py
+index 0e5f91edf7..5e54d1c896 100644
+--- a/httpie/cli/definition.py
++++ b/httpie/cli/definition.py
+@@ -831,8 +831,8 @@ def format_auth_help(auth_plugins_mapping, *, isolation_mode: bool = False):
+     short_help='A string in the OpenSSL cipher list format.',
+     help=f"""
+ 
+-    A string in the OpenSSL cipher list format. By default, the following
+-    is used:
++    A string in the OpenSSL cipher list format. By default, the available
++    system ciphers will be used, which are:
+ 
+     {DEFAULT_SSL_CIPHERS}
+ 
+diff --git a/httpie/ssl_.py b/httpie/ssl_.py
+index b9438543eb..c8dba0ea8d 100644
+--- a/httpie/ssl_.py
++++ b/httpie/ssl_.py
+@@ -3,13 +3,9 @@
+ 
+ from httpie.adapters import HTTPAdapter
+ # noinspection PyPackageRequirements
+-from urllib3.util.ssl_ import (
+-    DEFAULT_CIPHERS, create_urllib3_context,
+-    resolve_ssl_version,
+-)
++from urllib3.util.ssl_ import create_urllib3_context, resolve_ssl_version
+ 
+ 
+-DEFAULT_SSL_CIPHERS = DEFAULT_CIPHERS
+ SSL_VERSION_ARG_MAPPING = {
+     'ssl2.3': 'PROTOCOL_SSLv23',
+     'ssl3': 'PROTOCOL_SSLv3',
+@@ -94,3 +90,12 @@ def _is_key_file_encrypted(key_file):
+                 return True
+ 
+     return False
++
++
++try:
++    from urllib3.util.ssl_ import DEFAULT_CIPHERS
++except ImportError:
++    _context = HTTPieHTTPSAdapter._create_ssl_context(verify=False)
++    DEFAULT_CIPHERS = ":".join([cipher["name"] for cipher in _context.get_ciphers()])
++
++DEFAULT_SSL_CIPHERS = DEFAULT_CIPHERS

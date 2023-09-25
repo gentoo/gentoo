@@ -10,7 +10,7 @@
 		<flag name="doc">Generate and install API documentation for the package.</flag>
 	</use>
 	<upstream>
-		<remote-id type="cpe">cpe:/a:opensc-project:opensc</remote-id>
+		<remote-id type="cpe">cpe:/a:opensc-project:libp11</remote-id>
 		<remote-id type="github">opensc/libp11</remote-id>
 		<remote-id type="sourceforge">opensc</remote-id>
 	</upstream>

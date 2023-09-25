@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 inherit cmake python-any-r1
 
 DESCRIPTION="Compact LMS7002M library suitable for resource-limited MCUs"

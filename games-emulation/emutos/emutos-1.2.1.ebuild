@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ MY_L10N=( cs:cz de es fi fr el:gr hu it nl no pl ru sv:se de-CH:sg tr en-GB:uk e
 MY_VERS=( 192k 256k 512k 1024k:etos aranym:emutos- )
 
 DESCRIPTION="Single-user single-tasking operating system for 32-bit Atari computer emulators"
-HOMEPAGE="http://emutos.sourceforge.net"
+HOMEPAGE="https://emutos.sourceforge.net"
 SRC_URI="$(printf "mirror://sourceforge/emutos/${PN}-%s-${PV}.zip " "${MY_VERS[@]%:*}")"
 S="${WORKDIR}"
 

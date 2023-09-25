@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,13 +8,13 @@ inherit cdrom estack
 
 # Not possible to apply official 1.2 patch under Linux. A Gentoo user
 # created Xdelta patches and the DXX-Rebirth project kindly hosted them.
-MY_PATCH="http://www.dxx-rebirth.com/download/dxx/misc/d2xptch12.tgz"
+MY_PATCH="https://www.dxx-rebirth.com/download/dxx/misc/d2xptch12.tgz"
 
 # For GOG install
 MY_EXE="setup_descent_2_1.1_(16596).exe"
 
 DESCRIPTION="Data files for Descent 2"
-HOMEPAGE="http://www.interplay.com/games/descent.php"
+HOMEPAGE="https://www.interplay.com"
 SRC_URI="cdinstall? ( ${MY_PATCH} )
 	!cdinstall? ( ${MY_EXE} )"
 LICENSE="descent-data"

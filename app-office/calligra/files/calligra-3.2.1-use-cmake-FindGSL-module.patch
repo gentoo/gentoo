@@ -1,0 +1,29 @@
+From fb545574a3e3b48b937dc4f741048c7033735e04 Mon Sep 17 00:00:00 2001
+From: Dan Leinir Turthra Jensen <admin@leinir.dk>
+Date: Thu, 29 Apr 2021 13:02:39 +0100
+Subject: [PATCH] Fix GSL find module
+
+This increases the CMake requirement to 3.2 so we can use the GSL find
+module that ships with CMake since then. The custom find module
+apparently doesn't work right on Windows, so...
+---
+ sheets/plugins/solver/CMakeLists.txt |  4 +-
+ 1 filee changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sheets/plugins/solver/CMakeLists.txt b/sheets/plugins/solver/CMakeLists.txt
+index 41bc4a77ae9..ecd4bd8d218 100644
+--- a/sheets/plugins/solver/CMakeLists.txt
++++ b/sheets/plugins/solver/CMakeLists.txt
+@@ -25,8 +25,8 @@ calligrasheets_viewplugin_desktop_to_json(sheetssolver sheetssolver.desktop)
+ 
+ 
+ target_link_libraries( sheetssolver
+-        ${GSL_LIBRARIES}
+-        ${GSL_CBLAS_LIBRARIES}
++        GSL::gsl
++        GSL::gslcblas
+         calligrasheetscommon
+ )
+ 
+-- 
+GitLab

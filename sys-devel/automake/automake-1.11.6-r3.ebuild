@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,17 +10,24 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE=""
-RESTRICT="test"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos"
+IUSE="test"
+RESTRICT="test !test? ( test )"
 
-RDEPEND=">=dev-lang/perl-5.6
+RDEPEND="
+	>=dev-lang/perl-5.6
 	>=sys-devel/automake-wrapper-10
 	>=sys-devel/autoconf-2.69:*
-	sys-devel/gnuconfig"
-DEPEND="${RDEPEND}
-	sys-apps/help2man"
-BDEPEND="app-arch/gzip"
+	sys-devel/gnuconfig
+"
+DEPEND="
+	${RDEPEND}
+	sys-apps/help2man
+"
+BDEPEND="
+	app-arch/gzip
+	test? ( dev-util/dejagnu )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10-perl-5.16.patch #424453

@@ -1,0 +1,40 @@
+--- mysql-workbench-community-8.0.33-src/library/forms/mforms/mforms.h.orig	2023-06-30 14:43:47.056539087 +0300
++++ mysql-workbench-community-8.0.33-src/library/forms/mforms/mforms.h	2023-06-30 14:44:11.500537735 +0300
+@@ -61,6 +61,7 @@
+  *
+  */
+ 
++#include <cstdint>
+ #include "mforms/view.h"
+ #include "mforms/form.h"
+ #include "mforms/button.h"
+--- mysql-workbench-community-8.0.33-src/library/cdbc/src/driver_manager.h.orig	2023-06-30 14:51:19.804514044 +0300
++++ mysql-workbench-community-8.0.33-src/library/cdbc/src/driver_manager.h	2023-06-30 14:51:30.333513462 +0300
+@@ -27,6 +27,7 @@
+ #include "cppdbc_public_interface.h"
+ 
+ #include <cppconn/driver.h>
++#include <cstdint>
+ #include <memory>
+ #include <set>
+ 
+--- mysql-workbench-community-8.0.33-src/library/forms/mforms/treeview.h.orig	2023-06-30 17:08:50.534057671 +0300
++++ mysql-workbench-community-8.0.33-src/library/forms/mforms/treeview.h	2023-06-30 17:10:33.945051951 +0300
+@@ -23,6 +23,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <mforms/view.h>
+ 
+ /**
+--- mysql-workbench-community-8.0.33-src/backend/wbpublic/sqlide/sqlide_generics_private.h.orig	2023-06-30 17:51:48.242915090 +0300
++++ mysql-workbench-community-8.0.33-src/backend/wbpublic/sqlide/sqlide_generics_private.h	2023-06-30 17:52:26.461912976 +0300
+@@ -24,6 +24,7 @@
+ #ifndef _SQLIDE_GENERICS_PRIVATE_H_
+ #define _SQLIDE_GENERICS_PRIVATE_H_
+ 
++#include <cstdint>
+ #include "wbpublic_public_interface.h"
+ #include <sqlite/database_exception.hpp>
+ #include <sqlite/result.hpp>

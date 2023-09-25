@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>jubalh@iodoru.org</email>
+		<name>Michael Vetter</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		Profanity is a console based XMPP client written in C using
 		ncurses and libstrophe, inspired by Irssi.
@@ -9,7 +16,9 @@
 	<use>
 		<flag name="gpg">Enable OpenPGP encryption</flag>
 		<flag name="omemo">Enable OMEMO encryption</flag>
+		<flag name="omemo-qrcode">Enable exchanging OMEMO information via QR code</flag>
 		<flag name="otr">Enable encrypted conversations using Off-The-Records messaging</flag>
+		<flag name="python">Enable Python plugins support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">profanity-im/profanity</remote-id>

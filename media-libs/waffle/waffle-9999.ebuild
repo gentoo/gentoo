@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ fi
 inherit meson-multilib multilib ${GIT_ECLASS}
 
 DESCRIPTION="Library that allows selection of GL API and of window system at runtime"
-HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
+HOMEPAGE="https://gitlab.freedesktop.org/mesa/waffle"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -34,8 +34,9 @@ DEPEND="${RDEPEND}
 	X? ( >=x11-base/xcb-proto-1.8-r3 )
 "
 BDEPEND="
-	dev-libs/libxslt
 	app-text/docbook-xml-dtd:4.2
+	dev-libs/libxslt
+	dev-util/wayland-scanner
 "
 
 MULTILIB_CHOST_TOOLS=(
@@ -57,8 +58,17 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	meson_src_install
+}
 
-	! use doc && rm -rf \
-		"${D}"/usr/share/doc/waffle1 \
-		"${D}"/usr/share/man/man{3,7}
+multilib_src_install_all() {
+	einstalldocs
+
+	rm -r \
+		"${ED}"/usr/share/doc/${P} \
+		"${ED}"/usr/share/doc/waffle1/release-notes || die
+	mv "${ED}"/usr/share/doc/{waffle1,${P}} || die
+	if ! use doc; then
+		rm -rf \
+			"${ED}"/usr/share/man/man{3,7} || die
+	fi
 }

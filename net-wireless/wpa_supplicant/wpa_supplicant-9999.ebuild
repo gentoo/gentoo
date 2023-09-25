@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls tkip uncommon-eap-types wep wimax wps"
+IUSE="ap broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls tkip uncommon-eap-types wep wimax wps"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -52,7 +52,6 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-networkmanager )
 	kernel_linux? (
 		net-wireless/wireless-regdb
-		crda? ( net-wireless/crda )
 	)
 "
 BDEPEND="virtual/pkgconfig"
@@ -77,36 +76,18 @@ Kconfig_style_config() {
 			#first remove any leading "# " if $2 is not n
 			sed -i "/^# *$CONFIG_PARAM=/s/^# *//" .config || echo "Kconfig_style_config error uncommenting $CONFIG_PARAM"
 			#set item = $setting (defaulting to y)
-			sed -i "/^$CONFIG_PARAM\>/s/=.*/=$setting/" .config || echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
+			if ! sed -i "/^$CONFIG_PARAM\>/s/=.*/=$setting/" .config; then
+				echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
+			fi
 			if [ -z "$( grep ^$CONFIG_PARAM= .config )" ] ; then
 				echo "$CONFIG_PARAM=$setting" >>.config
 			fi
 		else
 			#ensure item commented out
-			sed -i "/^$CONFIG_PARAM\>/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config || echo "Kconfig_style_config error commenting $CONFIG_PARAM"
+			if ! sed -i "/^$CONFIG_PARAM\>/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config; then
+				echo "Kconfig_style_config error commenting $CONFIG_PARAM"
+			fi
 		fi
-}
-
-pkg_pretend() {
-	CONFIG_CHECK=""
-
-	if use crda ; then
-		CONFIG_CHECK="${CONFIG_CHECK} ~CFG80211_CRDA_SUPPORT"
-		WARNING_CFG80211_CRDA_SUPPORT="REGULATORY DOMAIN PROBLEM: please enable CFG80211_CRDA_SUPPORT for proper regulatory domain support"
-	fi
-
-	check_extra_config
-
-	if ! use crda ; then
-		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
-			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
-		then
-			ewarn "REGULATORY DOMAIN PROBLEM:"
-			ewarn "With CONFIG_CFG80211=y (built-in), the driver won't be able to load regulatory.db from"
-			ewarn " /lib/firmware, resulting in broken regulatory domain support.  Please set CONFIG_CFG80211=m"
-			ewarn " or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
-		fi
-	fi
 }
 
 src_prepare() {
@@ -116,13 +97,6 @@ src_prepare() {
 	sed -i \
 		-e "s:\(#include <pcap\.h>\):#include <net/bpf.h>\n\1:" \
 		../src/l2_packet/l2_packet_freebsd.c || die
-
-	# People seem to take the example configuration file too literally (bug #102361)
-	sed -i \
-		-e "s:^\(opensc_engine_path\):#\1:" \
-		-e "s:^\(pkcs11_engine_path\):#\1:" \
-		-e "s:^\(pkcs11_module_path\):#\1:" \
-		wpa_supplicant.conf || die
 
 	# Change configuration to match Gentoo locations (bug #143750)
 	sed -i \
@@ -147,6 +121,9 @@ src_prepare() {
 
 	# bug (320097)
 	eapply "${FILESDIR}/${PN}-2.6-do-not-call-dbus-functions-with-NULL-path.patch"
+
+	# bug (912315)
+	eapply "${FILESDIR}/${PN}-2.10-allow-legacy-renegotiation.patch"
 
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die

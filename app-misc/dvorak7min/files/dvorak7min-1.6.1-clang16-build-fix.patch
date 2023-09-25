@@ -1,0 +1,29 @@
+Bug: https://bugs.gentoo.org/894546
+--- a/dvorak7min.c
++++ b/dvorak7min.c
+@@ -41,6 +41,7 @@
+  *  
+  */
+ 
++#define _GNU_SOURCE
+ #include <strings.h>
+ #include <string.h>
+ #include <stdlib.h>
+@@ -435,7 +436,7 @@ void do_text (char * const text)
+ 	     timeCurrent = time(0);
+ 	     speed = calcSpeed (timeStart, timeCurrent, hits + misses);
+ 	     // Use WPS/WPM as better standards
+-	     mvprintw (LINES - 1, 0, "WPS %.2f  WPM %.2f Hits: %d Misses: %d Seconds: %d Ratio: %.2f%%", speed, speed * 60, hits, misses, time(0) - timeStart, ratio);
++	     mvprintw (LINES - 1, 0, "WPS %.2f  WPM %.2f Hits: %d Misses: %d Seconds: %ld Ratio: %.2f%%", speed, speed * 60, hits, misses, time(0) - timeStart, ratio);
+ 	     clrtoeol();
+ 	  }
+        } while (ch == ERR);
+@@ -521,7 +522,7 @@ void do_text (char * const text)
+     } else {
+        float ratio = hits - misses;
+        ratio = (ratio < 0) ? 0 : (100.0 * ratio / hits);
+-       mvprintw (0, 0, "Elapsed time: %d seconds", timeFinish - timeStart);
++       mvprintw (0, 0, "Elapsed time: %ld seconds", timeFinish - timeStart);
+        mvprintw (1, 0, "Total: %d  Misses: %d  Ratio: %.2f%%",
+                  hits + misses, misses,
+ 		 (float)100*(hits) / (hits + misses));

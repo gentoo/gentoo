@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ecukes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -34,9 +34,16 @@ BDEPEND="
 DOCS=( README.markdown )
 PATCHES=( "${FILESDIR}"/${PN}-bin-launcher-fix.patch )
 
-# Remove pkg file and failing tests
-ELISP_REMOVE="${PN}-pkg.el test/${PN}-parse-line-test.el"
+# Remove pkg file and failing tests.
+ELISP_REMOVE="
+	${PN}-pkg.el
+	test/${PN}-parse-line-test.el
+	test/${PN}-run-test.el
+	test/${PN}-steps-test.el
+"
 SITEFILE="50${PN}-gentoo.el"
+
+elisp-enable-tests ert-runner test
 
 src_prepare() {
 	elisp_src_prepare
@@ -49,13 +56,10 @@ src_compile() {
 	elisp-compile reporters/*.el
 }
 
-src_test() {
-	ert-runner --reporter ert+duration --script || die
-}
-
 src_install() {
 	elisp_src_install
 	elisp-install ${PN}/reporters reporters/*.el{,c}
 
-	dobin bin/${PN}
+	exeinto /usr/bin
+	doexe bin/${PN}
 }

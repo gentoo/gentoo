@@ -8,5 +8,6 @@
 			<email>martin.osmera@gmail.com</email>
 			<name>Martin Osmera</name>
 		</maintainer>
+		<remote-id type="sourceforge">mcu8051ide</remote-id>
 	</upstream>
 </pkgmetadata>

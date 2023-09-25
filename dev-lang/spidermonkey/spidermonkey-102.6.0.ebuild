@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -9,7 +9,7 @@ SPIDERMONKEY_PATCHSET="spidermonkey-102-patches-04j.tar.xz"
 
 LLVM_MAX_SLOT=15
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ssl,xml(+)"
 
 WANT_AUTOCONF="2.1"
@@ -326,7 +326,7 @@ src_configure() {
 	fi
 
 	# LTO flag was handled via configure
-	filter-flags '-flto*'
+	filter-lto
 
 	if tc-is-gcc ; then
 		if ver_test $(gcc-fullversion) -ge 10 ; then

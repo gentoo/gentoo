@@ -33,7 +33,7 @@ is_release() {
 
 # The version of readline this bash normally ships with.
 # Note: right now, we don't use the system copy of readline for bash for non-releases.
-READLINE_VER="8.2"
+READLINE_VER="8.2_p1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
@@ -53,17 +53,24 @@ elif is_release ; then
 		patch_url=
 		my_patch_index=
 
-		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
-			for url in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
-				patch_url=$(printf "${url}/${PN}-$(ver_cut 1-2)-patches/${my_p}-%03d" ${my_patch_index})
-				SRC_URI+=" ${patch_url}"
-				SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
-			done
+		upstream_url_base="mirror://gnu/bash"
+		mirror_url_base="ftp://ftp.cwru.edu/pub/bash"
 
-			MY_PATCHES+=( "${DISTDIR}"/$(printf ${my_p}-%03d ${my_patch_index}) )
+		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
+			printf -v mangled_patch_ver ${my_p}-%03d ${my_patch_index}
+			patch_url="${upstream_url_base}/${MY_P}-patches/${mangled_patch_ver}"
+
+			SRC_URI+=" ${patch_url}"
+			SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
+
+			# Add in the mirror URL too.
+			SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
+			SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}} )"
+
+			MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
 		done
 
-		unset my_pn patch_url my_patch_index
+		unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
 	fi
 else
 	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
@@ -77,7 +84,7 @@ fi
 LICENSE="GPL-3+"
 SLOT="0"
 if is_release ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
 
@@ -91,9 +98,9 @@ fi
 RDEPEND="
 	${DEPEND}
 "
-# We only need yacc when the .y files get patched (bash42-005, bash51-011)
-#BDEPEND="app-alternatives/yacc"
+# We only need bison (yacc) when the .y files get patched (bash42-005, bash51-011)
 BDEPEND="
+	sys-devel/bison
 	pgo? ( dev-util/gperf )
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )
 "
@@ -106,7 +113,7 @@ QA_CONFIGURE_OPTIONS="--disable-static"
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
-	# Patches from Chet sent to bashbug ml
+	# Patches from Chet sent to bash-bug ml
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
 )
 
@@ -163,11 +170,21 @@ src_prepare() {
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/* || die
 
+	# Sometimes hangs (more noticeable w/ pgo), bug #907403.
+	rm tests/run-jobs || die
+
 	eapply -p0 "${PATCHES[@]}"
 	eapply_user
 }
 
 src_configure() {
+	# Upstream only test with Bison and require GNUisms like YYEOF and
+	# YYERRCODE. The former at least may be in POSIX soon:
+	# https://www.austingroupbugs.net/view.php?id=1269.
+	# configure warns on use of non-Bison but doesn't abort. The result
+	# may misbehave at runtime.
+	unset YACC
+
 	local myconf=(
 		--disable-profiling
 
@@ -189,10 +206,10 @@ src_configure() {
 	# For descriptions of these, see config-top.h
 	# bashrc/#26952 bash_logout/#90488 ssh/#24762 mktemp/#574426
 	append-cppflags \
-		-DDEFAULT_PATH_VALUE=\'\"${EPREFIX}/usr/local/sbin:${EPREFIX}/usr/local/bin:${EPREFIX}/usr/sbin:${EPREFIX}/usr/bin:${EPREFIX}/sbin:${EPREFIX}/bin\"\' \
-		-DSTANDARD_UTILS_PATH=\'\"${EPREFIX}/bin:${EPREFIX}/usr/bin:${EPREFIX}/sbin:${EPREFIX}/usr/sbin\"\' \
-		-DSYS_BASHRC=\'\"${EPREFIX}/etc/bash/bashrc\"\' \
-		-DSYS_BASH_LOGOUT=\'\"${EPREFIX}/etc/bash/bash_logout\"\' \
+		-DDEFAULT_PATH_VALUE=\'\""${EPREFIX}"/usr/local/sbin:"${EPREFIX}"/usr/local/bin:"${EPREFIX}"/usr/sbin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/bin\"\' \
+		-DSTANDARD_UTILS_PATH=\'\""${EPREFIX}"/bin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/usr/sbin\"\' \
+		-DSYS_BASHRC=\'\""${EPREFIX}"/etc/bash/bashrc\"\' \
+		-DSYS_BASH_LOGOUT=\'\""${EPREFIX}"/etc/bash/bash_logout\"\' \
 		-DNON_INTERACTIVE_LOGIN_SHELLS \
 		-DSSH_SOURCE_BASHRC \
 		$(use bashlogger && echo -DSYSLOG_HISTORY)
@@ -246,7 +263,9 @@ src_compile() {
 
 		emake CFLAGS="${CFLAGS} -fprofile-generate=${T}/pgo -fprofile-dir=${T}/pgo" -k check
 
-		tc-is-clang && llvm-profdata merge "${T}"/pgo --output="${T}"/pgo/default.profdata || die
+		if tc-is-clang; then
+			llvm-profdata merge "${T}"/pgo --output="${T}"/pgo/default.profdata || die
+		fi
 
 		# Rebuild Bash using the profiling data we just generated.
 		emake clean
@@ -288,7 +307,7 @@ src_install() {
 	done
 
 	local sed_args=(
-		-e "s:#${USERLAND}#@::"
+		-e 's:#GNU#@::'
 		-e '/#@/d'
 	)
 

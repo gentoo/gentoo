@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,9 +11,9 @@ SRC_URI="http://pawsa.fedorapeople.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 x86"
+KEYWORDS="amd64 x86"
 
-IUSE="gnome +gnome-keyring kerberos ldap rubrica sqlite systray webkit xface"
+IUSE="gnome +keyring kerberos ldap rubrica sqlite systray webkit xface"
 
 # TODO: internal spell checking via enchant-2 instead of gtkspell/gspell?
 DEPEND="
@@ -36,7 +36,7 @@ DEPEND="
 	xface? ( >=media-libs/compface-1.5.1:= )
 	gnome? ( x11-libs/gtksourceview:4 )
 	media-libs/libcanberra[gtk3]
-	gnome-keyring? ( app-crypt/libsecret )
+	keyring? ( app-crypt/libsecret )
 	>=app-text/gspell-1.6:0=
 
 	net-mail/mailbase
@@ -85,7 +85,7 @@ src_configure() {
 		$(meson_use rubrica)
 		-Dosmo=false
 		$(meson_use sqlite)
-		$(meson_use gnome-keyring libsecret)
+		$(meson_use keyring libsecret)
 		-Dgcr=false
 		-Dmore-warnings=true
 		-Dhelp-files=false

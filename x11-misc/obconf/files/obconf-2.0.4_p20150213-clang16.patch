@@ -1,3 +1,4 @@
+https://bugzilla.icculus.org/show_bug.cgi?id=6671
 https://bugs.gentoo.org/870538
 --- a/src/appearance.c
 +++ b/src/appearance.c

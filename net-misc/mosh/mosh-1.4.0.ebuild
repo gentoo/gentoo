@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1
+inherit autotools bash-completion-r1 flag-o-matic
 
 MY_P=${PN}-${PV/_rc/rc}
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
@@ -15,7 +15,7 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="GPL-3"
 SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 IUSE="+client examples +hardened nettle +server syslog ufw +utempter"
 
@@ -56,6 +56,9 @@ src_prepare() {
 
 src_configure() {
 	MAKEOPTS+=" V=1"
+
+	# protobuf needs >=c++14
+	append-cxxflags -std=gnu++14
 
 	local myeconfargs=(
 		# We install it ourselves in src_install

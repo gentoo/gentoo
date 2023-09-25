@@ -1,18 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
-inherit autotools toolchain-funcs
+inherit toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/kyz/libmspack.git"
-	inherit git-r3
+	inherit autotools git-r3
 	MY_P="${PN}-9999"
 
 	LIBMSPACK_DEPEND="~dev-libs/libmspack-9999:="
 else
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 	MY_PV="${PV/_alpha/alpha}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://www.cabextract.org.uk/${P}.tar.gz"
@@ -45,7 +45,7 @@ src_prepare() {
 
 	default
 
-	eautoreconf
+	[[ ${PV} == "9999" ]] && eautoreconf
 }
 
 src_configure() {

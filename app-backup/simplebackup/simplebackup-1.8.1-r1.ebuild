@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Cross-platform backup program"
-HOMEPAGE="http://migas-sbackup.sourceforge.net/"
+HOMEPAGE="https://migas-sbackup.sourceforge.net/"
 SRC_URI="mirror://sourceforge/migas-sbackup/${P}.tar.gz"
 
 LICENSE="GPL-2"

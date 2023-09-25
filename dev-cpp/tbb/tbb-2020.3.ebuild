@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,13 +17,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug examples"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 S="${WORKDIR}/oneTBB-${MY_PV}"
 
 DOCS=( CHANGES README README.md doc/Release_Notes.txt )
 
-PATCHES=( "${FILESDIR}"/${PN}-2020.1-makefile-debug.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2020.1-makefile-debug.patch
+	"${FILESDIR}"/${PN}-2020.3-gcc13.patch
+)
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,6 +9,7 @@ MV=$(ver_cut 1)
 MY_PN=${PN}${MV}
 DOC_PV=0613
 EX_PV=6.4.18
+MY_PV=${PV//./}
 PYR_P=pythia6-20160413
 
 DESCRIPTION="Lund Monte Carlo high-energy physics event generator"
@@ -18,18 +19,28 @@ HOMEPAGE="http://pythia6.hepforge.org/"
 # To produce a split version, replace the 6.4.x by the current version:
 # svn export http://svn.hepforge.org/pythia6/tags/v_6_4_x/ pythia-6.4.x
 # tar cJf pythia-6.4.x.tar.xz
+
 SRC_URI="
-	https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.xz
+	https://pythia.org/download/pythia6/pythia${MY_PV}-split.tgz
 	https://root.cern.ch/download/pythia6.tar.gz -> ${PYR_P}.tar.gz
-	doc? ( http://home.thep.lu.se/~torbjorn/pythia/lutp${DOC_PV}man2.pdf )
+	doc? ( https://pythia.org/download/pythia6/lutp${DOC_PV}man2.pdf )
 	examples? ( mirror://gentoo/${PN}-${EX_PV}-examples.tar.bz2 )"
 
 SLOT="6"
 LICENSE="public-domain"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
+# workaround to official pythia-split not having a pythia subdir
+src_unpack() {
+	mkdir -p "${S}" || die
+	cd "${S}" || die
+	unpack pythia${MY_PV}-split.tgz
+	cd "${WORKDIR}" || die
+	default
+}
 
 src_prepare() {
 	cp ../pythia6/tpythia6_called_from_cc.F .

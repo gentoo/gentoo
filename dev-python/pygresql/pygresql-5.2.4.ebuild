@@ -1,20 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="PyGreSQL"
 POSTGRES_COMPAT=( 9.6 {10..14} )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1 postgres
-
-MY_P="PyGreSQL-${PV}"
+inherit distutils-r1 postgres pypi
 
 DESCRIPTION="A Python interface for the PostgreSQL database"
 HOMEPAGE="https://pygresql.org/"
-SRC_URI="mirror://pypi/P/PyGreSQL/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="POSTGRESQL"
 SLOT="0"

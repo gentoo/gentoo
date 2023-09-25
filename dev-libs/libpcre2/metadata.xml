@@ -26,6 +26,6 @@
 	</slots>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:pcre:pcre</remote-id>
-		<remote-id type="github">PhilipHazel/pcre2</remote-id>
+		<remote-id type="github">PCRE2Project/pcre2</remote-id>
 	</upstream>
 </pkgmetadata>

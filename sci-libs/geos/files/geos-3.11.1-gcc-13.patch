@@ -1,0 +1,111 @@
+https://github.com/libgeos/geos/commit/0e8d4368b8bd72a7d361286e8523ebce5cff6146
+https://github.com/libgeos/geos/commit/bea3188be44075034fd349f5bb117c943bdb7fb1
+
+From 0e8d4368b8bd72a7d361286e8523ebce5cff6146 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Tue, 29 Nov 2022 23:10:22 +0000
+Subject: [PATCH] Add missing <cstdint> includes for gcc-13 (#743)
+
+Without the change build on `gcc-13` fails as:
+
+    geos/include/geos/geomgraph/TopologyLocation.h:143:52: error: 'uint32_t' has not been declared
+      143 |     bool isEqualOnSide(const TopologyLocation& le, uint32_t locIndex) const
+          |                                                    ^~~~~~~~
+--- a/include/geos/geomgraph/Depth.h
++++ b/include/geos/geomgraph/Depth.h
+@@ -24,6 +24,7 @@
+ #include <geos/geom/Location.h>
+ #include <geos/geom/Position.h>
+ #include <string>
++#include <cstdint>
+ 
+ // Forward declarations
+ namespace geos {
+--- a/include/geos/geomgraph/TopologyLocation.h
++++ b/include/geos/geomgraph/TopologyLocation.h
+@@ -27,6 +27,7 @@
+ #include <array>
+ #include <string>
+ #include <cassert>
++#include <cstdint>
+ 
+ #ifdef _MSC_VER
+ #pragma warning(push)
+--- a/include/geos/io/WKTWriter.h
++++ b/include/geos/io/WKTWriter.h
+@@ -24,6 +24,7 @@
+ 
+ #include <string>
+ #include <cctype>
++#include <cstdint>
+ 
+ #ifdef _MSC_VER
+ #pragma warning(push)
+--- a/include/geos/operation/overlayng/OverlayLabel.h
++++ b/include/geos/operation/overlayng/OverlayLabel.h
+@@ -14,6 +14,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ #include <geos/geom/Location.h>
+ #include <geos/geom/Position.h>
+ #include <geos/export.h>
+--- a/include/geos/shape/fractal/HilbertCode.h
++++ b/include/geos/shape/fractal/HilbertCode.h
+@@ -17,6 +17,7 @@
+ 
+ #include <geos/export.h>
+ #include <string>
++#include <cstdint>
+ 
+ // Forward declarations
+ namespace geos {
+--- a/include/geos/shape/fractal/MortonCode.h
++++ b/include/geos/shape/fractal/MortonCode.h
+@@ -17,6 +17,7 @@
+ 
+ #include <geos/export.h>
+ #include <string>
++#include <cstdint>
+ 
+ // Forward declarations
+ namespace geos {
+
+From bea3188be44075034fd349f5bb117c943bdb7fb1 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Mon, 23 Jan 2023 15:56:11 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint> (#805)
+
+In addition to [1]. Otherwise geos fails to build with:
+"geos-3.11.1/include/geos/shape/fractal/HilbertEncoder.h:40:28: error: expected ')' before 'p_level'
+   40 |     HilbertEncoder(uint32_t p_level, geom::Envelope& extent);
+      |                   ~        ^~~~~~~~
+      |                            )
+/var/tmp/paludis/build/sci-libs-geos-3.11.1/work/geos-3.11.1/include/geos/shape/fractal/HilbertEncoder.h:41:5: error: 'uint32_t' does not name a type
+   41 |     uint32_t encode(const geom::Envelope* env);
+      |     ^~~~~~~~"
+
+[1] 0e8d4368b8bd72a7d361286e8523ebce5cff6146
+--- a/include/geos/shape/fractal/HilbertEncoder.h
++++ b/include/geos/shape/fractal/HilbertEncoder.h
+@@ -19,6 +19,7 @@
+ #include <geos/geom/Geometry.h>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ // Forward declarations
+ namespace geos {
+--- a/tests/unit/capi/GEOSMakeValidTest.cpp
++++ b/tests/unit/capi/GEOSMakeValidTest.cpp
+@@ -9,6 +9,7 @@
+ #include <cstdlib>
+ #include <cmath>
+ #include <cstring>
++#include <cstdint>
+ 
+ #include "capi_test_utils.h"
+ 
+

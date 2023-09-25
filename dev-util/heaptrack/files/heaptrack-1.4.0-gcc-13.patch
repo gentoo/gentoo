@@ -1,0 +1,22 @@
+https://invent.kde.org/sdk/heaptrack/-/commit/315aa7116d588f92b67c4bb84e1549529cb2fca0
+
+From 315aa7116d588f92b67c4bb84e1549529cb2fca0 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Mon, 23 Jan 2023 23:44:09 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint>
+
+Like other versions before, gcc 13 moved some includes around and as a
+result <cstdint> is no longer transitively included [1]. Explicitly include
+it for uint{32,64}_t.
+
+[1] https://gcc.gnu.org/gcc-13/porting_to.html#header-dep-changes
+--- a/src/util/linereader.h
++++ b/src/util/linereader.h
+@@ -7,6 +7,7 @@
+ #ifndef LINEREADER_H
+ #define LINEREADER_H
+ 
++#include <cstdint>
+ #include <istream>
+ #include <string>
+ 

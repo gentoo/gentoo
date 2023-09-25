@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://mirror.dkm.cz/apache//commons/io/source/commons-io-2.11.0-src.tar.gz --slot 0 --keywords "~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris" --ebuild commons-io-2.11.0.ebuild
+# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://mirror.dkm.cz/apache//commons/io/source/commons-io-2.11.0-src.tar.gz --slot 0 --keywords "~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos" --ebuild commons-io-2.11.0.ebuild
 
 EAPI=7
 
@@ -16,7 +16,7 @@ HOMEPAGE="https://commons.apache.org/proper/commons-io/"
 SRC_URI="mirror://apache/commons/io/source/${P}-src.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 # Compile dependencies
 # POM: pom.xml

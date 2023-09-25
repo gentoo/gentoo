@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit cmake python-any-r1
 
@@ -28,7 +28,8 @@ BDEPEND="
 
 PATCHES=( "${FILESDIR}/${PN}-4.3.0-nostrip.patch"
 		"${FILESDIR}/${PN}-4.3.0-no-aqlprofile.patch"
-		"${FILESDIR}/${PN}-5.0.2-gentoo-location.patch" )
+		"${FILESDIR}/${PN}-5.0.2-gentoo-location.patch"
+		"${FILESDIR}/${PN}-5.1.3-remove-Werror.patch" )
 
 python_check_deps() {
 	python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"

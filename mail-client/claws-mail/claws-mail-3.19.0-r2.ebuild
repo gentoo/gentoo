@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit autotools desktop python-any-r1 xdg
 
@@ -15,13 +15,13 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
 
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="+appindicator archive bogofilter calendar clamav dbus debug doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
 REQUIRED_USE="
 	appindicator? ( notification )
 	libcanberra? ( notification )
@@ -53,7 +53,6 @@ COMMONDEPEND="
 		sys-apps/dbus
 	)
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
-	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
@@ -122,6 +121,7 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-bsfilter-plugin
+		--disable-dillo-plugin
 		--disable-fancy-plugin
 		--disable-generic-umpc
 		--disable-jpilot #735118
@@ -141,7 +141,6 @@ src_configure() {
 		$(use_enable clamav clamd-plugin)
 		$(use_enable dbus)
 		$(use_enable debug crash-dialog)
-		$(use_enable dillo dillo-plugin)
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)

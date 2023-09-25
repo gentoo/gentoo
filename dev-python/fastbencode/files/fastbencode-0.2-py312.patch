@@ -1,0 +1,35 @@
+From 23e8cadcc81c6649d96742f235a98bd3047e5d8a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jelmer=20Vernoo=C4=B3?= <jelmer@jelmer.uk>
+Date: Tue, 11 Jul 2023 11:45:47 +0000
+Subject: [PATCH] Fix compatibility with python 3.12
+
+Fixes #23
+---
+ fastbencode/tests/test_bencode.py | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/fastbencode/tests/test_bencode.py b/fastbencode/tests/test_bencode.py
+index 50e8e06..61cd8b5 100644
+--- a/fastbencode/tests/test_bencode.py
++++ b/fastbencode/tests/test_bencode.py
+@@ -287,10 +287,16 @@ def test_list(self):
+ 
+     def test_list_deepnested(self):
+         import platform
+-        if platform.python_implementation() == 'PyPy':
+-            self.skipTest('recursion not an issue on pypy')
+-        with RecursionLimit():
+-            self._run_check_error(RuntimeError, (b"l" * 100) + (b"e" * 100))
++        if (platform.python_implementation() == 'PyPy'
++                or sys.version_info[:2] >= (3, 12)):
++            expected = []
++            for i in range(99):
++                expected = [expected]
++            self._check(expected, (b"l" * 100) + (b"e" * 100))
++        else:
++            with RecursionLimit():
++                self._run_check_error(
++                    RuntimeError, (b"l" * 100) + (b"e" * 100))
+ 
+     def test_malformed_list(self):
+         self._run_check_error(ValueError, b'l')

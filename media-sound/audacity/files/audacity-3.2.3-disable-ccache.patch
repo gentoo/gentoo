@@ -1,0 +1,33 @@
+From afd777fbcbaa9e9c14b80374c60ecd631eb537ea Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Fri, 16 Dec 2022 23:37:36 +0100
+Subject: [PATCH] Don't force enable ccache
+
+---
+Analogous to the similar patches in prior versions.
+
+CMakeLists.txt | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9c1c7baf2..42e765691 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -142,14 +142,6 @@ set( CMAKE_PREFIX_PATH
+ set( CMAKE_CXX_STANDARD 17 )
+ set( CMAKE_CXX_STANDARD_REQUIRED ON )
+ 
+-# Use ccache if available
+-find_program( CCACHE_PROGRAM ccache )
+-mark_as_advanced( FORCE CCACHE_PROGRAM )
+-
+-if( CCACHE_PROGRAM )
+-   set_property( GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}" )
+-endif()
+-
+ # Define option() prefix
+ set( _OPT "audacity_" )
+ 
+-- 
+2.39.0
+

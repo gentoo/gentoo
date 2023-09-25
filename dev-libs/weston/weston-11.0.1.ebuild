@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
 else
 	SRC_URI="https://gitlab.freedesktop.org/wayland/${PN}/uploads/f5648c818fba5432edc3ea63c4db4813/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc64 ~riscv x86"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"
@@ -42,7 +42,6 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
 	>=dev-libs/wayland-1.20.0
-	>=dev-libs/wayland-protocols-1.24
 	lcms? ( >=media-libs/lcms-2.9:2 )
 	media-libs/libpng:0=
 	webp? ( media-libs/libwebp:0= )
@@ -85,7 +84,9 @@ RDEPEND="
 		x11-libs/libXcursor
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=dev-libs/wayland-protocols-1.24
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig

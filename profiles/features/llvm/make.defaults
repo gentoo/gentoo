@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # this is for now highly experimental -dilfridge
@@ -11,21 +11,10 @@ CXX="clang++"
 LD="ld.lld"
 
 # linker flags
-LDFLAGS="${LDFLAGS} -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind -Wl,--as-needed"
-
-## hardening flags
-#SOME_HARDENING_CFLAGS="-fPIC -fstack-protector-strong -D_FORTIFY_SOURCE=2"
-#SOME_HARDENING_LDFLAGS="-Wl,-z,relro,-z,now -pie"
-#
-# we need to eventually do this the same way as in gcc, for now let's
-# keep it to a minimum
-SOME_HARDENING_CFLAGS="-D_FORTIFY_SOURCE=2"
-SOME_HARDENING_LDFLAGS=""
-
-# enable hardening by default, cf. gcc[pie,ssp]
-CFLAGS="${CFLAGS} ${SOME_HARDENING_FLAGS}"
-CXXFLAGS="${CXXFLAGS} ${SOME_HARDENING_FLAGS}"
-LDFLAGS="${LDFLAGS} ${SOME_HARDENING_LDFLAGS}"
+# We don't set LDFLAGS here for linker, rtlib, etc because clang-common enforces
+# the needed bits for us and it confuses clang->gcc for stuff like Fortran,
+# see bug #908798.
+LDFLAGS="${LDFLAGS} -Wl,--as-needed"
 
 # use LLVM-provided binutils
 AR="llvm-ar"
@@ -53,7 +42,7 @@ CXXSTDLIB="c++"
 BOOTSTRAP_USE="${BOOTSTRAP_USE} ssl curl_ssl_openssl"
 
 # Clang needs this
-BOOTSTRAP_USE="${BOOTSTRAP_USE} python_single_target_python3_10"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} python_single_target_python3_11"
 
 # sys-devel/llvm
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -binutils-plugin"

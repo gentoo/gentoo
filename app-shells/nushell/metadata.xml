@@ -5,6 +5,14 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>freijon@pm.me</email>
+		<name>Jonas Frei</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/nushell/nushell/issues</bugs-to>
 		<changelog>https://github.com/nushell/nushell/commits/main</changelog>
@@ -12,6 +20,7 @@
 		<remote-id type="github">nushell/nushell</remote-id>
 	</upstream>
 	<use>
-		<flag name="extra">Install extra plugins: binaryview, tree, clipboard-cli, trash-support and others</flag>
+		<flag name="dataframe">Dataframe feature for nushell</flag>
+		<flag name="extra">Enable less stable or less common commands</flag>
 	</use>
 </pkgmetadata>

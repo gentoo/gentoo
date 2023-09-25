@@ -1,0 +1,30 @@
+future.standard_library.install_aliases() is a no-op on Python3 anyway.
+
+--- a/chirp/chirp_common.py
++++ b/chirp/chirp_common.py
+@@ -14,7 +14,6 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ from builtins import bytes
+-from future import standard_library
+ 
+ import base64
+ import json
+@@ -1920,7 +1919,6 @@
+ def urlretrieve(url, fn):
+     """Grab an URL and save it in a specified file"""
+ 
+-    standard_library.install_aliases()
+     import urllib.request
+     import urllib.error
+ 
+--- a/setup.py
++++ b/setup.py
+@@ -12,7 +12,6 @@
+           'pyserial',
+           'requests',
+           'six',
+-          'future',
+           'importlib-resources;python_version<"3.10"',
+           'yattag',
+       ],

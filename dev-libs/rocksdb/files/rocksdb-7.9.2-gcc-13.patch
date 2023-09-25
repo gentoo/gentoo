@@ -1,0 +1,42 @@
+https://github.com/facebook/rocksdb/commit/88edfbfb5e1cac228f7cc31fbec24bb637fe54b1
+
+From 88edfbfb5e1cac228f7cc31fbec24bb637fe54b1 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 25 Jan 2023 14:30:32 -0800
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint> (#11118)
+
+Summary:
+Like other versions before, gcc 13 moved some includes around and as a result <cstdint> is no longer transitively included [1]. Explicitly include it for uint{32,64}_t.
+
+[1] https://gcc.gnu.org/gcc-13/porting_to.html#header-dep-changes
+
+Pull Request resolved: https://github.com/facebook/rocksdb/pull/11118
+
+Reviewed By: cbi42
+
+Differential Revision: D42711356
+
+Pulled By: ajkr
+
+fbshipit-source-id: 5ea257b85b7017f40fd8fdbce965336da95c55b2
+--- a/table/block_based/data_block_hash_index.h
++++ b/table/block_based/data_block_hash_index.h
+@@ -5,6 +5,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- a/util/string_util.h
++++ b/util/string_util.h
+@@ -6,6 +6,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <sstream>
+ #include <string>
+ #include <unordered_map>
+

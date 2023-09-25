@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		The Jolly Good Reference Frontend is the simplest possible
+		frontend for The Jolly Good API. It is intended to remain this
+		way, and to avoid unnecessary feature creep, ensuring that it is
+		easy to learn from. In order to deliver a smooth and enjoyable
+		experience, a few slightly more advanced features are required. In
+		these instances, effort has been taken to ensure readability
+		and understandability of the code that implements these concepts.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/jgrf/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/jgrf</remote-id>
+	</upstream>
+</pkgmetadata>

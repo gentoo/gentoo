@@ -5,11 +5,6 @@
 		<name>Gentoo Base System</name>
 		<email>base-system@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="valgrind">
-			Enable usage of <pkg>dev-util/valgrind</pkg> in debug
-		</flag>
-	</use>
 	<upstream>
 		<changelog>https://gitlab.com/gnutls/libtasn1/blob/master/NEWS</changelog>
 		<remote-id type="cpe">cpe:/a:gnu:libtasn1</remote-id>

@@ -1,0 +1,67 @@
+Socket-activated dirmngr and gpg-agent with systemd
+===================================================
+
+When used on a GNU/Linux system supervised by systemd, you can ensure
+that the GnuPG daemons dirmngr and gpg-agent are launched
+automatically the first time they're needed, and shut down cleanly at
+session logout.  This is done by enabling user services via
+socket-activation.
+
+System distributors
+-------------------
+
+The *.service and *.socket files (from this directory) should be
+placed in /usr/lib/systemd/user/ alongside other user-session services
+and sockets.
+
+To enable socket-activated dirmngr for all accounts on the system,
+use:
+
+    systemctl --user --global enable dirmngr.socket
+
+To enable socket-activated gpg-agent for all accounts on the system,
+use:
+
+    systemctl --user --global enable gpg-agent.socket
+
+Additionally, you can enable socket-activated gpg-agent ssh-agent
+emulation for all accounts on the system with:
+
+    systemctl --user --global enable gpg-agent-ssh.socket
+
+You can also enable restricted ("--extra-socket"-style) gpg-agent
+sockets for all accounts on the system with:
+
+    systemctl --user --global enable gpg-agent-extra.socket
+
+Individual users
+----------------
+
+A user on a system with systemd where this has not been installed
+system-wide can place these files in ~/.config/systemd/user/ to make
+them available.
+
+If a given service isn't installed system-wide, or if it's installed
+system-wide but not globally enabled, individual users will still need
+to enable them.  For example, to enable socket-activated dirmngr for
+all future sessions:
+
+    systemctl --user enable dirmngr.socket
+
+To enable socket-activated gpg-agent with ssh support, do:
+
+    systemctl --user enable gpg-agent.socket gpg-agent-ssh.socket
+
+These changes won't take effect until your next login after you've
+fully logged out (be sure to terminate any running daemons before
+logging out).
+
+If you'd rather try a socket-activated GnuPG daemon in an
+already-running session without logging out (with or without enabling
+it for all future sessions), kill any existing daemon and start the
+user socket directly.  For example, to set up socket-activated dirmgnr
+in the current session:
+
+    gpgconf --kill dirmngr
+    systemctl --user start dirmngr.socket
+

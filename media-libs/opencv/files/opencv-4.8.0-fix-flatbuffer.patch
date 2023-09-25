@@ -1,0 +1,31 @@
+--- a/modules/dnn/misc/tflite/schema_generated.h	2023-06-28 19:53:33.000000000 +0800
++++ b/modules/dnn/misc/tflite/schema_generated.h	2023-08-24 15:17:19.594480034 +0800
+@@ -8,9 +8,9 @@
+ 
+ // Ensure the included flatbuffers.h is the same version as when this file was
+ // generated, otherwise it may not be compatible.
+-static_assert(FLATBUFFERS_VERSION_MAJOR == 23 &&
+-              FLATBUFFERS_VERSION_MINOR == 5 &&
+-              FLATBUFFERS_VERSION_REVISION == 9,
++static_assert(FLATBUFFERS_VERSION_MAJOR == FLATBUFFERS_VERSION_MAJOR &&
++              FLATBUFFERS_VERSION_MINOR == FLATBUFFERS_VERSION_MINOR &&
++              FLATBUFFERS_VERSION_REVISION == FLATBUFFERS_VERSION_REVISION,
+              "Non-compatible flatbuffers version included");
+ 
+ namespace opencv_tflite {
+--- a/cmake/OpenCVDetectFlatbuffers.cmake	2023-08-24 15:31:50.129947159 +0800
++++ b/cmake/OpenCVDetectFlatbuffers.cmake	2023-08-24 15:36:15.176705845 +0800
+@@ -1,9 +1,9 @@
+ if(WITH_FLATBUFFERS)
+   set(HAVE_FLATBUFFERS 1)
+-  set(flatbuffers_VERSION "23.5.9")
+-  ocv_install_3rdparty_licenses(flatbuffers "${OpenCV_SOURCE_DIR}/3rdparty/flatbuffers/LICENSE.txt")
+-  ocv_add_external_target(flatbuffers "${OpenCV_SOURCE_DIR}/3rdparty/flatbuffers/include" "" "HAVE_FLATBUFFERS=1")
+-  set(CUSTOM_STATUS_flatbuffers "    Flatbuffers:" "builtin/3rdparty (${flatbuffers_VERSION})")
++  #set(flatbuffers_VERSION "23.5.9")
++  #ocv_install_3rdparty_licenses(flatbuffers "${OpenCV_SOURCE_DIR}/3rdparty/flatbuffers/LICENSE.txt")
++  #ocv_add_external_target(flatbuffers "${OpenCV_SOURCE_DIR}/3rdparty/flatbuffers/include" "" "HAVE_FLATBUFFERS=1")
++  #set(CUSTOM_STATUS_flatbuffers "    Flatbuffers:" "builtin/3rdparty (${flatbuffers_VERSION})")
+ endif()
+ 
+ if(WITH_FLATBUFFERS OR HAVE_FLATBUFFERS)

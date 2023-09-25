@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Generate SQL from Perl data structures with backwards/forwards compat"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~ppc-macos ~x86-solaris"
+KEYWORDS="~amd64 ~ppc ~x86 ~ppc-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

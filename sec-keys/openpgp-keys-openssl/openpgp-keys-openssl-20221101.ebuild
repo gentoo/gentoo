@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,11 @@ HOMEPAGE="https://www.openssl.net/"
 # - https://www.openssl.org/community/omc.html
 # Mirrored from https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8657ABB260F056B1E5190839D9C4D26D0E604491 etc (unstable results)
 # ```
-# gpg --homedir=/tmp/tmp-gpg --keyserver keyserver.ubuntu.com --recv-keys "${OSSL_FINGERPRINTS[@]}" || exit 1
+# gpg --no-default-keyring --homedir=/tmp/tmp-gpg --keyserver keyserver.ubuntu.com --recv-keys "${OSSL_FINGERPRINTS[@]}" || exit 1
 #
-#for key in "${OSSL_FINGERPRINTS[@]}" ; do
-#	gpg --homedir=/tmp/tmp-gpg --export "${key}" > openssl-keys-20221101-${key}.asc
-#done
+# for key in "${OSSL_FINGERPRINTS[@]}" ; do
+#  gpg --no-default-keyring --homedir=/tmp/tmp-gpg --export "${key}" > openssl-keys-20221101-${key}.asc
+# done
 # ```
 #
 # https://github.com/openssl/openssl/issues/19566

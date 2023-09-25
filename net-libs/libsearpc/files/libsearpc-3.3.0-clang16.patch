@@ -1,0 +1,164 @@
+https://bugs.gentoo.org/870544
+https://github.com/haiwen/libsearpc/pull/63
+
+From ae466d2b3b503f4831bc701e97d0a600e23fed60 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 8 Apr 2023 16:53:07 -0700
+Subject: [PATCH 1/2] Fix -Werror=strict-prototypes
+
+---
+ lib/searpc-client.c   | 2 +-
+ lib/searpc-client.h   | 2 +-
+ lib/searpc-codegen.py | 4 ++--
+ lib/searpc-server.c   | 2 +-
+ lib/searpc-server.h   | 2 +-
+ tests/clar.c          | 4 ++--
+ tests/searpc.c        | 2 +-
+ 7 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/lib/searpc-client.c b/lib/searpc-client.c
+index 050a524..916241a 100644
+--- a/lib/searpc-client.c
++++ b/lib/searpc-client.c
+@@ -36,7 +36,7 @@ static void clean_objlist(GList *list)
+ 
+ 
+ SearpcClient *
+-searpc_client_new ()
++searpc_client_new (void)
+ {
+     return g_new0 (SearpcClient, 1);
+ }
+diff --git a/lib/searpc-client.h b/lib/searpc-client.h
+index 725fadd..157a407 100644
+--- a/lib/searpc-client.h
++++ b/lib/searpc-client.h
+@@ -44,7 +44,7 @@ struct _SearpcClient {
+ typedef struct _SearpcClient LIBSEARPC_API SearpcClient;
+ 
+ LIBSEARPC_API
+-SearpcClient *searpc_client_new ();
++SearpcClient *searpc_client_new (void);
+ 
+ LIBSEARPC_API void
+ searpc_client_free (SearpcClient *client);
+diff --git a/lib/searpc-codegen.py b/lib/searpc-codegen.py
+index dbbf8c9..acee024 100644
+--- a/lib/searpc-codegen.py
++++ b/lib/searpc-codegen.py
+@@ -139,7 +139,7 @@ def generate_marshal_register_item(ret_type, arg_types):
+         signature_name=signature_name)
+ 
+ def gen_marshal_register_function(f):
+-    write_file(f, "static void register_marshals()""")
++    write_file(f, "static void register_marshals(void)""")
+     write_file(f,  "{")
+     for item in func_table:
+         write_file(f, generate_marshal_register_item(item[0], item[1]))
+@@ -147,7 +147,7 @@ def gen_marshal_register_function(f):
+ 
+ signature_template = r"""
+ inline static gchar *
+-${signature_name}()
++${signature_name}(void)
+ {
+     return searpc_compute_signature (${args});
+ }
+diff --git a/lib/searpc-server.c b/lib/searpc-server.c
+index 3d6dc09..a82fbe4 100644
+--- a/lib/searpc-server.c
++++ b/lib/searpc-server.c
+@@ -248,7 +248,7 @@ searpc_server_reopen_slow_log (const char *slow_log_path)
+ #endif
+ 
+ void
+-searpc_server_final()
++searpc_server_final(void)
+ {
+     g_hash_table_destroy (service_table);
+     g_hash_table_destroy (marshal_table);
+diff --git a/lib/searpc-server.h b/lib/searpc-server.h
+index 02722a4..aa1a9fe 100644
+--- a/lib/searpc-server.h
++++ b/lib/searpc-server.h
+@@ -67,7 +67,7 @@ searpc_server_reopen_slow_log (const char *slow_log_path);
+  * Free the server structure.
+  */
+ LIBSEARPC_API
+-void searpc_server_final ();
++void searpc_server_final (void);
+ 
+ /**
+  * searpc_create_service:
+diff --git a/tests/clar.c b/tests/clar.c
+index 1546447..81da15a 100644
+--- a/tests/clar.c
++++ b/tests/clar.c
+@@ -371,7 +371,7 @@ clar_test_init(int argc, char **argv)
+ }
+ 
+ int
+-clar_test_run()
++clar_test_run(void)
+ {
+ 	if (_clar.argc > 1)
+ 		clar_parse_args(_clar.argc, _clar.argv);
+@@ -386,7 +386,7 @@ clar_test_run()
+ }
+ 
+ void
+-clar_test_shutdown()
++clar_test_shutdown(void)
+ {
+ 	clar_print_shutdown(
+ 		_clar.tests_ran,
+diff --git a/tests/searpc.c b/tests/searpc.c
+index 4c7edb7..7a2d5a5 100644
+--- a/tests/searpc.c
++++ b/tests/searpc.c
+@@ -204,7 +204,7 @@ get_substring (const gchar *orig_str, int sub_len, GError **error)
+ }
+ 
+ static SearpcClient *
+-do_create_client_with_pipe_transport()
++do_create_client_with_pipe_transport(void)
+ {
+     SearpcNamedPipeClient *pipe_client = searpc_create_named_pipe_client(pipe_path);
+     cl_must_pass_(searpc_named_pipe_client_connect(pipe_client), "named pipe client failed to connect");
+
+From d78aede0e4c559fa3dbce0e64ffc943da47fe76c Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 8 Apr 2023 17:13:55 -0700
+Subject: [PATCH 2/2] Fix -Werror=implicit-function-declaration
+
+unistd.h is needed for write, close and read
+---
+ demo/searpc-demo-packet.h | 1 +
+ demo/test-object.h        | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/demo/searpc-demo-packet.h b/demo/searpc-demo-packet.h
+index 926f36b..6552396 100644
+--- a/demo/searpc-demo-packet.h
++++ b/demo/searpc-demo-packet.h
+@@ -4,6 +4,7 @@
+ 
+ #include <stdint.h>
+ #include <stdio.h>
++#include <unistd.h>
+ #include <errno.h>
+ 
+ #ifdef WIN32
+diff --git a/demo/test-object.h b/demo/test-object.h
+index f3f7589..a6d8b5d 100644
+--- a/demo/test-object.h
++++ b/demo/test-object.h
+@@ -4,6 +4,8 @@
+ #include <glib.h>
+ #include <glib-object.h>
+ 
++GType test_object_get_type (void);
++
+ #define TEST_OBJECT_TYPE            (test_object_get_type())
+ #define TEST_OBJECT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TEST_OBJECT_TYPE, TestObject))
+ #define IS_TEST_OBJCET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TEST_OBJCET_TYPE))

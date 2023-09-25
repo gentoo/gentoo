@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: docs.eclass
@@ -146,7 +146,7 @@ esac
 # will initialize a dummy git repository before compiling. A dependency
 # on dev-vcs/git is automatically added.
 
-if [[ ! ${_DOCS_ECLASS} ]]; then
+if [[ -z ${_DOCS_ECLASS} ]]; then
 _DOCS_ECLASS=1
 
 # For the python based DOCS_BUILDERS we need to inherit any python eclass
@@ -186,21 +186,36 @@ initialize_git_repo() {
 	fi
 }
 
-# @FUNCTION: python_append_deps
+# @FUNCTION: _docs_set_python_deps
 # @INTERNAL
 # @DESCRIPTION:
-# Appends [\${PYTHON_USEDEP}] to all dependencies
-# for python based DOCS_BUILDERs such as mkdocs or
-# sphinx.
-python_append_deps() {
+# Add python_gen_any_dep or python_gen_cond_dep
+# to DOCS_DEPEND and define python_check_deps
+_docs_set_python_deps() {
 	debug-print-function ${FUNCNAME}
 
-	local temp
+	local deps=${@}
+	python_check_deps() {
+		use doc || return 0
+
+		local dep
+		for dep in ${deps[@]}; do
+			python_has_version "${dep}[${PYTHON_USEDEP}]" ||
+				return 1
+		done
+	}
+
+	local deps_appended
 	local dep
-	for dep in ${DOCS_DEPEND[@]}; do
-		temp+=" ${dep}[\${PYTHON_USEDEP}]"
+	for dep in ${deps[@]}; do
+		deps_appended+=" ${dep}[\${PYTHON_USEDEP}]"
 	done
-	DOCS_DEPEND=${temp}
+
+	if [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
+		DOCS_DEPEND=$(python_gen_cond_dep "${deps_appended}")
+	else
+		DOCS_DEPEND=$(python_gen_any_dep "${deps_appended}")
+	fi
 }
 
 # @FUNCTION: sphinx_deps
@@ -210,10 +225,10 @@ python_append_deps() {
 sphinx_deps() {
 	debug-print-function ${FUNCNAME}
 
-	: ${DOCS_AUTODOC:=1}
+	: "${DOCS_AUTODOC:=1}"
 
-	deps="dev-python/sphinx[\${PYTHON_USEDEP}]
-			${DOCS_DEPEND}"
+	deps="dev-python/sphinx
+		${DOCS_DEPEND}"
 	if [[ ${DOCS_AUTODOC} == 0 ]]; then
 		if [[ -n "${DOCS_DEPEND}" ]]; then
 			die "${FUNCNAME}: do not set DOCS_AUTODOC to 0 if external plugins are used"
@@ -221,11 +236,8 @@ sphinx_deps() {
 	elif [[ ${DOCS_AUTODOC} != 0 && ${DOCS_AUTODOC} != 1 ]]; then
 		die "${FUNCNAME}: DOCS_AUTODOC should be set to 0 or 1"
 	fi
-	if [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
-		DOCS_DEPEND="$(python_gen_cond_dep "${deps}")"
-	else
-		DOCS_DEPEND="$(python_gen_any_dep "${deps}")"
-	fi
+
+	_docs_set_python_deps ${deps}
 }
 
 # @FUNCTION: sphinx_compile
@@ -235,8 +247,8 @@ sphinx_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
 
-	: ${DOCS_DIR:="${S}"}
-	: ${DOCS_OUTDIR:="${S}/_build/html/sphinx"}
+	: "${DOCS_DIR:="${S}"}"
+	: "${DOCS_OUTDIR:="${S}/_build/html/sphinx"}"
 
 	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
 
@@ -257,8 +269,18 @@ sphinx_compile() {
 	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
 		"${DOCS_DIR}"/conf.py || die
 	# not all packages include the Makefile in pypi tarball
-	sphinx-build -b html -d "${DOCS_OUTDIR}"/_build/doctrees "${DOCS_DIR}" \
-	"${DOCS_OUTDIR}" || die "${FUNCNAME}: sphinx-build failed"
+	local command=( "${EPYTHON}" -m sphinx.cmd.build )
+	if ! "${EPYTHON}" -c "import sphinx.cmd.build" 2>/dev/null; then
+		command=( sphinx-build )
+	fi
+	command+=(
+		-b html
+		-d "${DOCS_OUTDIR}"/_build/doctrees
+		"${DOCS_DIR}"
+		"${DOCS_OUTDIR}"
+	)
+	echo "${command[@]}" >&2
+	"${command[@]}" || die "${FUNCNAME}: sphinx-build failed"
 
 	HTML_DOCS+=( "${DOCS_OUTDIR}" )
 
@@ -274,21 +296,18 @@ sphinx_compile() {
 mkdocs_deps() {
 	debug-print-function ${FUNCNAME}
 
-	: ${DOCS_AUTODOC:=0}
+	: "${DOCS_AUTODOC:=0}"
 
-	deps="dev-python/mkdocs[\${PYTHON_USEDEP}]
-			${DOCS_DEPEND}"
+	deps="dev-python/mkdocs
+		${DOCS_DEPEND}"
 	if [[ ${DOCS_AUTODOC} == 1 ]]; then
-		deps="dev-python/mkautodoc[\${PYTHON_USEDEP}]
+		deps="dev-python/mkautodoc
 				${deps}"
 	elif [[ ${DOCS_AUTODOC} != 0 && ${DOCS_AUTODOC} != 1 ]]; then
 		die "${FUNCNAME}: DOCS_AUTODOC should be set to 0 or 1"
 	fi
-	if [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
-		DOCS_DEPEND="$(python_gen_cond_dep "${deps}")"
-	else
-		DOCS_DEPEND="$(python_gen_any_dep "${deps}")"
-	fi
+
+	_docs_set_python_deps ${deps}
 }
 
 # @FUNCTION: mkdocs_compile
@@ -298,8 +317,8 @@ mkdocs_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
 
-	: ${DOCS_DIR:="${S}"}
-	: ${DOCS_OUTDIR:="${S}/_build/html/mkdocs"}
+	: "${DOCS_DIR:="${S}"}"
+	: "${DOCS_OUTDIR:="${S}/_build/html/mkdocs"}"
 
 	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
 
@@ -307,9 +326,17 @@ mkdocs_compile() {
 	[[ -f ${mkdocsyml} ]] ||
 		die "${FUNCNAME}: ${mkdocsyml} not found, DOCS_DIR=${DOCS_DIR} wrong"
 
-	pushd "${DOCS_DIR}" || die
-	mkdocs build -d "${DOCS_OUTDIR}" || die "${FUNCNAME}: mkdocs build failed"
-	popd || die
+	pushd "${DOCS_DIR}" >/dev/null || die
+	local command=( "${EPYTHON}" -m mkdocs build )
+	if ! "${EPYTHON}" -c "import mkdocs" 2>/dev/null; then
+		command=( mkdocs build )
+	fi
+	command+=(
+		-d "${DOCS_OUTDIR}"
+	)
+	echo "${command[@]}" >&2
+	"${command[@]}" || die "${FUNCNAME}: mkdocs build failed"
+	popd >/dev/null || die
 
 	# remove generated .gz variants
 	# mkdocs currently has no option to disable this
@@ -342,9 +369,9 @@ doxygen_compile() {
 	use doc || return
 
 	# This is the default name of the config file, upstream can change it.
-	: ${DOCS_CONFIG_NAME:="Doxyfile"}
-	: ${DOCS_DIR:="${S}"}
-	: ${DOCS_OUTDIR:="${S}/_build/html/doxygen"}
+	: "${DOCS_CONFIG_NAME:="Doxyfile"}"
+	: "${DOCS_DIR:="${S}"}"
+	: "${DOCS_OUTDIR:="${S}/_build/html/doxygen"}"
 
 	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
 
@@ -404,11 +431,9 @@ IUSE+=" doc"
 # Call the correct setup function
 case ${DOCS_BUILDER} in
 	"sphinx")
-		python_append_deps
 		sphinx_deps
 		;;
 	"mkdocs")
-		python_append_deps
 		mkdocs_deps
 		;;
 	"doxygen")
@@ -424,7 +449,7 @@ BDEPEND+=" doc? ( ${DOCS_DEPEND} )"
 # then put the compile function in the specific
 # python function, else docs_compile should be manually
 # added to src_compile
-if [[ ${_DISTUTILS_R1} && ( ${DOCS_BUILDER}="mkdocs" || ${DOCS_BUILDER}="sphinx" ) ]]; then
+if [[ ${_DISTUTILS_R1_ECLASS} && ( ${DOCS_BUILDER}="mkdocs" || ${DOCS_BUILDER}="sphinx" ) ]]; then
 	python_compile_all() { docs_compile; }
 fi
 

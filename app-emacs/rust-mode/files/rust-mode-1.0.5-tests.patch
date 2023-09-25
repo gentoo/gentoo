@@ -1,0 +1,36 @@
+From 8e85850cdba5cbe265d974e63b84b54a9bc9133e Mon Sep 17 00:00:00 2001
+From: Philipp Stephani <phst@google.com>
+Date: Wed, 26 Apr 2023 10:27:30 +0200
+Subject: [PATCH] =?UTF-8?q?Don=E2=80=99t=20duplicate=20test=20name.?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Emacs 29 will signal an error in this case in batch mode, and in any case the
+first test in the duplicate series will never run.
+---
+ rust-mode-tests.el | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/rust-mode-tests.el b/rust-mode-tests.el
+index c1d0501..3b23046 100644
+--- a/rust-mode-tests.el
++++ b/rust-mode-tests.el
+@@ -2797,7 +2797,7 @@ fn foo<T:Fn() -> X<Y>>() -> Z {
+      )
+    ))
+ 
+-(ert-deftest rust-test-paren-matching-lt-ops-in-fn-params ()
++(ert-deftest rust-test-paren-matching-lt-ops-in-fn-params-1 ()
+   (rust-test-matching-parens
+    "
+ fn foo(x:i32) {
+@@ -2809,7 +2809,7 @@ fn foo(x:i32) {
+      )
+    ))
+ 
+-(ert-deftest rust-test-paren-matching-lt-ops-in-fn-params ()
++(ert-deftest rust-test-paren-matching-lt-ops-in-fn-params-2 ()
+   (rust-test-matching-parens
+    "
+ fn foo(x:i32) -> bool {

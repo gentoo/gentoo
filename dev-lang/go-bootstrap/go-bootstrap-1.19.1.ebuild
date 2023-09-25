@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,12 +29,13 @@ SRC_URI="
 	s390? ( ${BOOTSTRAP_DIST}/go-linux-s390x-bootstrap-${PV}.tbz )
 	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap-${PV}.tbz )
 	x64-macos? ( ${BOOTSTRAP_DIST}/go-darwin-amd64-bootstrap-${PV}.tbz )
+	arm64-macos? ( ${BOOTSTRAP_DIST}/go-darwin-arm64-bootstrap-${PV}.tbz )
 	x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap-${PV}.tbz )
 "
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="abi_mips_n64 abi_mips_o32 big-endian"
 RESTRICT="strip"
 QA_PREBUILT="*"

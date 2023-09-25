@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop multiprocessing toolchain-funcs
 
 DESCRIPTION="The Ur-Quan Masters: Port of Star Control 2"
-HOMEPAGE="http://sc2.sourceforge.net/"
+HOMEPAGE="https://sc2.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/sc2/${P}-src.tgz
 	mirror://sourceforge/sc2/${P}-content.uqm

@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit qmake-utils python-single-r1
 
@@ -13,15 +13,14 @@ SRC_URI="https://github.com/thp/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="+qt5 qt6"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( qt5 qt6 )"
 
 # qt6 TODO:
-#  - add dev-qt/qt{gui,opengl}:6 once in the tree, test if qt6 deps okay then
-#  - instrument qmake6 (no eqmake6 in the eclass yet)
+#  - check if all qt6 deps are okay yet
 #  - multibuild for both qt5 and qt6 if requested
 RDEPEND="
 	${PYTHON_DEPS}
@@ -33,7 +32,7 @@ RDEPEND="
 		dev-qt/qtsvg:5
 	)
 	qt6? (
-		dev-qt/qtbase:6
+		dev-qt/qtbase:6[opengl]
 		dev-qt/qtdeclarative:6
 		dev-qt/qtsvg:6
 	)"
@@ -48,7 +47,7 @@ src_configure() {
 	if use qt5; then
 		eqmake5
 	elif use qt6; then
-		die "Qt6 support is not ready yet"
+		eqmake6
 	else
 		# This should never happen if REQUIRED_USE is enforced
 		die "Neither Qt5 nor Qt6 support enabled, aborting"

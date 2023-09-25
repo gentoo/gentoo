@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">python-lsp/python-lsp-jsonrpc</remote-id>
 		<remote-id type="pypi">python-lsp-jsonrpc</remote-id>
 	</upstream>
 </pkgmetadata>

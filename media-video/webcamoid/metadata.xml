@@ -9,6 +9,7 @@
 		<flag name="headers">Install development headers</flag>
 		<flag name="libuvc">Build with libuvc support</flag>
 		<flag name="qtaudio">Enable audio capture/play via <pkg>dev-qt/qtmultimedia</pkg></flag>
+		<flag name="qtcamera">Enable video capture/play via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="v4lutils">Build with V4L-utils support</flag>
 		<flag name="videoeffects">Build video effects</flag>
 	</use>

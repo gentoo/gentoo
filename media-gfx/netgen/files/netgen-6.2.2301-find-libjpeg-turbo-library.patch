@@ -1,0 +1,34 @@
+From d8a654a61452c39e3e611493ad70b8c6e818130e Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 15 Feb 2023 12:28:00 +0100
+Subject: [PATCH] find libjpeg-turbo library
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/libsrc/visualization/CMakeLists.txt
++++ b/libsrc/visualization/CMakeLists.txt
+@@ -7,7 +7,7 @@ target_sources(nggui PRIVATE
+     vssolution.cpp
+     visualpkg.cpp
+ )
+-target_link_libraries( nggui PUBLIC "$<BUILD_INTERFACE:netgen_python>" ${MPI_CXX_LIBRARIES} ${OPENGL_LIBRARIES} nglib)
++target_link_libraries( nggui PUBLIC "$<BUILD_INTERFACE:netgen_python>" ${MPI_CXX_LIBRARIES} ${OPENGL_LIBRARIES} ${JPEG_LIBRARIES} nglib)
+ 
+ install(FILES
+   meshdoc.hpp mvdraw.hpp visual_api.hpp
+--- a/nglib/CMakeLists.txt
++++ b/nglib/CMakeLists.txt
+@@ -7,6 +7,11 @@ endif(USE_OCC)
+ 
+ target_link_libraries(nglib PUBLIC ngcore)
+ 
++if(TARGET JPEG::JPEG)
++    get_target_property(JPEG_LIBRARIES JPEG::JPEG IMPORTED_LOCATION_RELEASE)
++else()
++    set(JPEG_LIBRARIES ${JPEG_LIBRARY_RELEASE})
++endif()
+ target_link_libraries( nglib PRIVATE ${MPI_CXX_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${JPEG_LIBRARIES} ${MKL_LIBRARIES} ${ZLIB_LIBRARIES} ${OCC_LIBRARIES} netgen_cgns )
+ 
+ install(TARGETS nglib netgen_cgns ${NG_INSTALL_DIR})
+-- 
+2.39.1
+

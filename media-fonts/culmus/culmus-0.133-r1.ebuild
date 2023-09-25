@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ MY_A_P=AncientSemiticFonts-0.06-1
 TYPE1_PV=0.105
 
 DESCRIPTION="Hebrew Type1 fonts"
-HOMEPAGE="http://culmus.sourceforge.net/"
+HOMEPAGE="https://culmus.sourceforge.io/"
 
 FANCY_FONTS="journal hillel anka comix gan ozrad ktav-yad dorian gladia horev"
 FANCY_YG_FONTS="ShmuelCLM MakabiYG"
@@ -25,15 +25,15 @@ SRC_URI="mirror://sourceforge/culmus/${P}.tar.gz
 	fontforge? ( mirror://sourceforge/culmus/${PN}-src-${PV}.tar.gz )
 	ancient? ( !fontforge? ( mirror://sourceforge/culmus/${MY_A_P}.TTF.tgz )
 		fontforge? ( mirror://sourceforge/culmus/${MY_A_P}.tgz ) )"
-SRC_URI+=" fancy? ( $(printf "http://culmus.sourceforge.net/fancy/%s.tar.gz " ${FANCY_FONTS}) )"
-SRC_URI+=" fancy? ( $(printf "http://culmus.sourceforge.net/fancy-yg/%s.zip " ${FANCY_YG_FONTS}) )"
-SRC_URI+=" taamey? ( $(printf "http://culmus.sourceforge.net/taamim/%s.zip " ${TAAMEY_FONTS}) )"
+SRC_URI+=" fancy? ( $(printf "https://culmus.sourceforge.io/fancy/%s.tar.gz " ${FANCY_FONTS}) )"
+SRC_URI+=" fancy? ( $(printf "https://culmus.sourceforge.io/fancy-yg/%s.zip " ${FANCY_YG_FONTS}) )"
+SRC_URI+=" taamey? ( $(printf "https://culmus.sourceforge.io/taamim/%s.zip " ${TAAMEY_FONTS}) )"
 S="${WORKDIR}"
 
 # Some fonts are available in otf format too. Do we need them?
-#	http://culmus.sourceforge.net/fancy/anka-otf.zip
-#	http://culmus.sourceforge.net/fancy/hillel-otf.zip
-#	http://culmus.sourceforge.net/fancy/journal-otf.zip
+#	https://culmus.sourceforge.io/fancy/anka-otf.zip
+#	https://culmus.sourceforge.io/fancy/hillel-otf.zip
+#	https://culmus.sourceforge.io/fancy/journal-otf.zip
 
 LICENSE="|| ( GPL-2 LICENSE-BITSTREAM ) ancient? ( MIT ) fancy? ( GPL-2 )"
 SLOT="0"
@@ -172,7 +172,7 @@ src_compile() {
 src_install() {
 	einstalldocs
 
-	FONT_SUFFIX="pfa afm $((use fancy || use taamey) && echo ttf)" \
+	FONT_SUFFIX="pfa afm $(use fancy || use taamey && echo ttf)" \
 		font_src_install
 
 	rm -rf "${FONT_S}" || die

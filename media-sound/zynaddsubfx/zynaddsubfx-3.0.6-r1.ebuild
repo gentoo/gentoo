@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,20 +6,15 @@ EAPI=8
 inherit cmake flag-o-matic
 
 DESCRIPTION="Software synthesizer capable of making a countless number of instruments"
-HOMEPAGE="http://zynaddsubfx.sourceforge.net/"
+HOMEPAGE="https://zynaddsubfx.sourceforge.net/"
 SRC_URI="mirror://sourceforge/zynaddsubfx/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="+alsa doc dssi +fltk jack lash portaudio"
-
 REQUIRED_USE="|| ( alsa jack portaudio )"
 
-BDEPEND="
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-"
 DEPEND="
 	dev-libs/mxml
 	media-libs/liblo
@@ -40,11 +35,13 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-lang/ruby:*
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${P}-docs.patch
+	"${FILESDIR}"/${P}-stdint.patch
 )
 
 DOCS=( AUTHORS.txt NEWS.txt README.adoc )

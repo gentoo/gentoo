@@ -1,0 +1,9 @@
+[Unit]
+Description=TinySSH Per-Connection Daemon
+Documentation=https://tinyssh.org
+After=tinyssh-makekey.service
+
+[Service]
+ExecStart=/usr/sbin/tinysshd /etc/tinyssh/keys
+StandardInput=socket
+StandardError=journal

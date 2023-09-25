@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">tarcieri/timers</remote-id>
+    <remote-id type="github">socketry/timers</remote-id>
+    <remote-id type="rubygems">timers</remote-id>
   </upstream>
 </pkgmetadata>

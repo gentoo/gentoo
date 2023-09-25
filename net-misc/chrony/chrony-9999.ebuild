@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,20 +6,20 @@ EAPI=8
 inherit edo systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
-HOMEPAGE="https://chrony.tuxfamily.org/ https://git.tuxfamily.org/chrony/chrony.git"
+HOMEPAGE="https://chrony-project.org/"
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
+	EGIT_REPO_URI="https://gitlab.com/chrony/chrony.git"
 	inherit git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/mlichvar.asc
 	inherit verify-sig
 
-	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
-	SRC_URI+=" verify-sig? ( https://download.tuxfamily.org/chrony/${P/_/-}-tar-gz-asc.txt -> ${P/_/-}.tar.gz.asc )"
+	SRC_URI="https://chrony-project.org/releases/${P/_/-}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://chrony-project.org/releases/${P/_/-}-tar-gz-asc.txt -> ${P/_/-}.tar.gz.asc )"
 
 	if [[ ${PV} != *_pre* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	fi
 fi
 
@@ -27,7 +27,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon debug html ipv6 libtomcrypt +nettle nss +ntp +nts +phc pps +readline +refclock +rtc samba +seccomp +sechash selinux"
+IUSE="+caps +cmdmon debug html libtomcrypt +nettle nss +ntp +nts +phc pps +readline +refclock +rtc samba +seccomp +sechash selinux"
 # nettle > nss > libtomcrypt in configure
 REQUIRED_USE="
 	sechash? ( || ( nettle nss libtomcrypt ) )
@@ -44,6 +44,7 @@ DEPEND="
 		acct-user/ntp
 		sys-libs/libcap
 	)
+	libtomcrypt? ( dev-libs/libtomcrypt:= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss:= )
 	nts? ( net-libs/gnutls:= )
@@ -116,7 +117,6 @@ src_configure() {
 		$(usev !caps '--disable-linuxcaps')
 		$(usev !cmdmon '--disable-cmdmon')
 		$(usev debug '--enable-debug')
-		$(usev !ipv6 '--disable-ipv6')
 
 		# USE=readline here means "readline-like functionality"
 		# chrony only supports libedit in terms of the library providing
@@ -162,6 +162,9 @@ src_compile() {
 
 src_install() {
 	default
+
+	# Compatibility with other distributions who install to /etc/chrony.conf (bug #835461)
+	dosym -r /etc/chrony/chrony.conf /etc/chrony.conf
 
 	newinitd "${FILESDIR}"/chronyd.init-r2 chronyd
 	newconfd "${T}"/chronyd.conf chronyd

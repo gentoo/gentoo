@@ -1,9 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_EXT=1
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -13,12 +14,22 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
 else
-	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${P}.tar.gz"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/ntpsec.asc
+	inherit verify-sig
+	SRC_URI="
+		https://ftp.ntpsec.org/pub/releases/${P}.tar.gz
+		verify-sig? ( https://ftp.ntpsec.org/pub/releases/${P}.tar.gz.asc )
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ntpsec )"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
 HOMEPAGE="https://www.ntpsec.org/"
+
+LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
+SLOT="0"
 
 NTPSEC_REFCLOCK=(
 	oncore trimble truetime gpsd jjy generic spectracom
@@ -27,33 +38,41 @@ NTPSEC_REFCLOCK=(
 
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
-LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
-SLOT="0"
 IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libbsd nist ntpviz samba seccomp smear" #ionice
 REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
-DEPEND="${PYTHON_DEPS}
+DEPEND="
+	${PYTHON_DEPS}
 	dev-libs/openssl:=
 	dev-python/psutil[${PYTHON_USEDEP}]
 	sys-libs/libcap
 	libbsd? ( dev-libs/libbsd:0= )
 	seccomp? ( sys-libs/libseccomp )
 	rclock_oncore? ( net-misc/pps-tools )
-	rclock_pps? ( net-misc/pps-tools )"
-RDEPEND="${DEPEND}
+	rclock_pps? ( net-misc/pps-tools )
+"
+RDEPEND="
+	${DEPEND}
 	!net-misc/ntp
 	!net-misc/openntpd
 	acct-group/ntp
 	acct-user/ntp
-	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )"
-BDEPEND=">=app-text/asciidoc-8.6.8
+	ntpviz? (
+		media-fonts/liberation-fonts
+		sci-visualization/gnuplot
+	)
+"
+BDEPEND+="
+	>=app-text/asciidoc-8.6.8
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
-	sys-devel/bison"
+	sys-devel/bison
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+	"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
 )
 
 WAF_BINARY="${S}/waf"
@@ -73,7 +92,7 @@ src_prepare() {
 }
 
 src_configure() {
-	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
+	filter-lto
 
 	local string_127=""
 	local rclocks="";
@@ -136,7 +155,7 @@ src_install() {
 	chmod 770 "${ED}"/var/lib/ntp
 	keepdir /var/lib/ntp
 
-	# Install a log rotate script
+	# Install a logrotate script
 	mkdir -pv "${ED}"/etc/logrotate.d
 	cp -v "${S}"/etc/logrotate-config.ntpd "${ED}"/etc/logrotate.d/ntpd
 

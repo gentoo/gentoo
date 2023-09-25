@@ -1,14 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Read, write and analyze MD trajectories with only a few lines of Python code"
 HOMEPAGE="https://mdtraj.org"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1+"
@@ -27,13 +26,21 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
-		dev-python/jupyter_client[${PYTHON_USEDEP}]
+		dev-python/jupyter-client[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		sci-libs/scikit-learn[${PYTHON_USEDEP}]
 	)
 "
+# <cython-3 for bug #911646
+BDEPEND="
+	<dev-python/cython-3[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests --install pytest
+
+PATCHES=(
+	"${FILESDIR}/${P}-python311.patch"
+)
 
 python_prepare_all() {
 	sed -e "s:re.match('build.*(mdtraj.*)', output_dir).group(1):'.':g" \

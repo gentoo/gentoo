@@ -1,10 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1 tmpfiles
@@ -14,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/gentoolkit.git/snapshot/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
@@ -23,12 +22,16 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 LICENSE="GPL-2"
 SLOT="0"
 
-# Need newer Portage for XML fix, bug #857537
+# Need newer Portage for eclean-pkg API, bug #900224
 DEPEND="
-	>=sys-apps/portage-3.0.32[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}
+	>=sys-apps/portage-3.0.52[${PYTHON_USEDEP}]
+"
+RDEPEND="
+	${DEPEND}
 	app-alternatives/awk
-	sys-apps/gentoo-functions"
+	sys-apps/gentoo-functions
+"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests setup.py
 

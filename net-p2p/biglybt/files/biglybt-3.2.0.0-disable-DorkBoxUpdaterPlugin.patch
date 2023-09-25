@@ -1,0 +1,10 @@
+--- a/uis/src/com/biglybt/ui/swt/systray/SystemTraySWT.java
++++ b/uis/src/com/biglybt/ui/swt/systray/SystemTraySWT.java
+@@ -124,7 +124,6 @@ public class SystemTraySWT
+ 				SystemTraySWT.core = core;
+ 				gm = core.getGlobalManager();
+ 				if (Constants.isUnix) {
+-					ensureDorkBoxPlugin(core);
+ 				}
+ 			}
+ 		});

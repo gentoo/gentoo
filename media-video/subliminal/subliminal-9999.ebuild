@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='xml(+)'
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -15,6 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://github.com/Diaoul/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 DESCRIPTION="Python library to search and download subtitles"
@@ -50,7 +51,8 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.1.0-fix-pytest-warning.patch"
+	"${FILESDIR}"/${P}-fix-pytest-warning.patch
+	"${FILESDIR}"/${PN}-2.1.0-rarfile-4.0-compat.patch
 )
 
 distutils_enable_tests pytest
@@ -80,16 +82,14 @@ python_prepare_all() {
 }
 
 python_test() {
-	local skipped_tests=(
+	EPYTEST_DESELECT=(
 		tests/test_core.py::test_scan_archive_with_one_video
 		tests/test_core.py::test_scan_archive_with_multiple_videos
 		tests/test_core.py::test_scan_archive_with_no_video
 		tests/test_core.py::test_scan_password_protected_archive
+		# NotImplementedError
+		tests/test_core.py::test_save_subtitles
 	)
 
-	# Two tests that list providers rely on entry points
-	# so they need the package to be installed
-	distutils_install_for_testing
-	pytest -vv --ignore ${PN}/test/test_core.py ${skipped_tests[@]/#/--deselect } \
-		|| die "Tests fail with ${EPYTHON}"
+	epytest
 }

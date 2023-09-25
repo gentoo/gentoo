@@ -8,4 +8,7 @@
   <use>
     <flag name="passthrough">Enable smartcard passthrough support via <pkg>sys-apps/pcsc-lite</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">spice/libcacard</remote-id>
+  </upstream>
 </pkgmetadata>

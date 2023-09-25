@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit readme.gentoo-r1
+inherit readme.gentoo-r1 secureboot
 
 BINPKG="${P/-bin/}-1"
 
@@ -60,6 +60,8 @@ src_install() {
 	# Don't want to try to install the readme from the source package
 	rm "usr/share/doc/${PF}/README.gentoo.bz2"
 	mv usr "${ED}" || die
+
+	secureboot_auto_sign --in-place
 
 	readme.gentoo_create_doc
 }

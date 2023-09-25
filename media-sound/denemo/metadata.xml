@@ -20,10 +20,6 @@
     <flag name="aubio">
       Enable <pkg>media-libs/aubio</pkg> support
     </flag>
-    <flag name="fluidsynth">
-      Enable Fluidsynth MIDI software synthesis using
-      <pkg>media-sound/fluidsynth</pkg>
-    </flag>
     <flag name="jack">
       Enable jack support through <pkg>virtual/jack</pkg>
     </flag>

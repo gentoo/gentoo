@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bazel.eclass
@@ -26,6 +26,13 @@ inherit multiprocessing toolchain-funcs
 if [[ ${CATEGORY}/${PN} != "dev-util/bazel" ]]; then
 	BDEPEND=">=dev-util/bazel-0.20"
 fi
+
+# @ECLASS_VARIABLE: BAZEL_BINARY
+# @DESCRIPTION:
+# The program to invoke for bazel. Defaults to `bazel`. Useful if you have
+# multiple bazel installations on your machine that differ in verson suffix,
+# e.g., `bazel-5`, `bazel-6`.
+BAZEL_BINARY="${BAZEL_BINARY:-bazel}"
 
 # @FUNCTION: bazel_get_flags
 # @DESCRIPTION:
@@ -138,7 +145,7 @@ ebazel() {
 	output_base="${output_base%/}-bazel-base"
 	mkdir -p "${output_base}" || die
 
-	set -- bazel --bazelrc="${T}/bazelrc" --output_base="${output_base}" ${@}
+	set -- "${BAZEL_BINARY}" --bazelrc="${T}/bazelrc" --output_base="${output_base}" ${@}
 	echo "${*}" >&2
 	"${@}" || die "ebazel failed"
 }

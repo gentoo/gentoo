@@ -1,0 +1,13 @@
+--- a/modules/core/src/main/java/com/panayotis/jubler/os/SystemFileFinder.java
++++ b/modules/core/src/main/java/com/panayotis/jubler/os/SystemFileFinder.java
+@@ -65,7 +65,9 @@ public class SystemFileFinder {
+     }
+ 
+     private static boolean loadLibraryImpl(String name) {
+-        File libfile = findFile("lib" + File.separator + SystemDependent.mapLibraryName(name));
++	System.out.println("SystemDependent.mapLibraryName is " + SystemDependent.mapLibraryName(name));
++        File libfile = findFile(SystemDependent.mapLibraryName(name));
++	System.out.println("libfile is " + libfile);
+         if (libfile != null)
+             try {
+                 System.load(libfile.getAbsolutePath());
