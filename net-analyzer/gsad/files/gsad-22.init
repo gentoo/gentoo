@@ -3,20 +3,29 @@
 # Distributed under the terms of the GNU General Public License v2
 
 : ${GSAD_USER:=gvm}
-: ${GSAD_GROUP:=$(id -ng ${GSAD_USER})}
 : ${GSAD_TIMEOUT:=30}
+: ${GSAD_PIDFILE:="/run/gsad/gsad.pid"}
 
 name="Greenbone Security Assistant (GSA)"
 command="/usr/bin/gsad"
-command_user="${GSAD_USER}:${GSAD_GROUP}"
-command_args="${GSAD_OPTIONS} ${GSAD_LISTEN_ADDRESS} ${GSAD_LISTEN_PORT} ${GVMD_LISTEN_ADDRESS} ${GVMD_LISTEN_PORT} ${GSAD_GNUTLS_PRIORITIES}"
+command_args="${GSAD_OPTIONS} ${GSAD_LISTEN_ADDRESS} ${GSAD_LISTEN_PORT} ${GVMD_LISTEN_ADDRESS} ${GVMD_LISTEN_PORT} ${GSAD_GNUTLS_PRIORITIES} --drop-privileges=${GSAD_USER}"
 retry="${GSAD_TIMEOUT}"
 
 depend() {
 	after bootmisc
-	need localmount net gvmd
+	need localmount net
+	want gvmd
 }
 
 start_pre() {
-        checkpath -d --owner ${GSAD_USER} /var/run/gsad
+        checkpath -d --mode 0755 --owner root /run/gsad
 }
+
+stop_post() {
+	if [ -f "${GSAD_PIDFILE}" ]; then
+		ebegin "Removing PID file"
+		rm --force "${GSAD_PIDFILE}"
+		eend $?
+	fi
+}
+

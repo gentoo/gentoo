@@ -57,12 +57,6 @@ src_prepare() {
 		   done
 		fi
 	fi
-
-	# Do not install the empty /run/gsad run dir. https://github.com/greenbone/gsad/pull/54
-	sed -i "/^install.*GSAD_RUN_DIR/d" CMakeLists.txt || die
-
-	# Drop Group= directive. https://github.com/greenbone/gsad/pull/55
-	sed -i "/^Group=/d" config/gsad.service.in || die
 }
 
 src_configure() {
