@@ -1,0 +1,18 @@
+diff -Naru a/build.gradle b/build.gradle
+--- a/build.gradle	2023-09-25 11:39:57.570198717 +0200
++++ b/build.gradle	2023-09-25 11:40:41.133059897 +0200
+@@ -3710,14 +3710,6 @@
+                                     }
+                                 }
+                             }
+-                        } else {
+-                            // Building fxavcodec plugin (libav plugin)
+-                            exec {
+-                                commandLine ("make", "${makeJobsFlag}", "-C", "${nativeSrcDir}/gstreamer/projects/linux/avplugin")
+-                                args("CC=${mediaProperties.compiler}", "LINKER=${mediaProperties.linker}",
+-                                     "OUTPUT_DIR=${nativeOutputDir}", "BUILD_TYPE=${buildType}",
+-                                     "BASE_NAME=avplugin", IS_64 ? "ARCH=x64" : "ARCH=x32")
+-                            }
+                         }
+                     }
+                 }
