@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit desktop git-r3
+inherit autotools desktop git-r3
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="https://www.windowmaker.org/"
@@ -54,6 +54,7 @@ src_prepare() {
 	done
 
 	default
+	eautoreconf
 }
 
 src_configure() {
