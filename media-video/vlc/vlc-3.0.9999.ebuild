@@ -48,7 +48,7 @@ REQUIRED_USE="
 	libtar? ( skins )
 	libtiger? ( kate )
 	lua? ( ${LUA_REQUIRED_USE} )
-	skins? ( gui truetype X xml )
+	skins? ( archive gui truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
