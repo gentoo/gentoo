@@ -5,7 +5,7 @@ EAPI=8
 
 CRATES=" "
 LLVM_MAX_SLOT=16
-inherit cargo llvm
+inherit edo cargo llvm
 
 DESCRIPTION="pkgcraft-based tools for Gentoo"
 HOMEPAGE="https://pkgcraft.github.io/"
@@ -25,6 +25,8 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD-2 BSD CC0-1.0 GPL-3+ ISC MIT Unicode-DFS-2016"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test ) "
 
 QA_FLAGS_IGNORED="usr/bin/pk"
 
@@ -32,6 +34,7 @@ QA_FLAGS_IGNORED="usr/bin/pk"
 BDEPEND="
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
 	>=virtual/rust-1.70
+	test? ( dev-util/cargo-nextest )
 "
 
 llvm_check_deps() {
@@ -45,4 +48,8 @@ src_unpack() {
 	else
 		cargo_src_unpack
 	fi
+}
+
+src_test() {
+	edo cargo nextest run $(usev !debug '--release') --color always --all-features --tests
 }
