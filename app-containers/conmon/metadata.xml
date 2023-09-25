@@ -5,7 +5,17 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>rahil3108@gmail.com</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">containers/conmon</remote-id>
+		<bugs-to>https://github.com/containers/conmon/issues</bugs-to>
+		<doc>https://github.com/containers/conmon/blob/main/README.md</doc>
 	</upstream>
 </pkgmetadata>

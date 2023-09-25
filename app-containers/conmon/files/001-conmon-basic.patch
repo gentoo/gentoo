@@ -1,0 +1,45 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ VERSION := $(shell cat VERSION)
+-PREFIX ?= /usr/local
++PREFIX ?= /usr
+ BINDIR ?= ${PREFIX}/bin
+ LIBEXECDIR ?= ${PREFIX}/libexec
+ GO ?= go
+@@ -124,7 +124,6 @@ install.podman: bin/conmon
+ 	install ${SELINUXOPT} -m 755 bin/conmon $(DESTDIR)$(LIBEXECDIR)/podman/conmon
+ 
+ install.tools:
+-	$(MAKE) -C tools
+ 
+ .PHONY: fmt
+ fmt:
+--- a/docs/Makefile
++++ b/docs/Makefile
+@@ -1,7 +1,7 @@
+-PREFIX ?= /usr/local
++PREFIX ?= /usr
+ DATADIR := ${PREFIX}/share
+ MANDIR := $(DATADIR)/man
+-GOMD2MAN = ../tools/build/go-md2man
++GOMD2MAN = go-md2man
+ 
+ docs: $(patsubst %.md,%,$(wildcard *.8.md))
+ 
+diff --git a/Makefile b/Makefile
+index f36dfb4..6f383b8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -38,10 +38,7 @@ override CFLAGS += $(shell $(PKG_CONFIG) --cflags glib-2.0) -DVERSION=\"$(VERSIO
+ # "pkg-config --exists" will error if the package doesn't exist. Make can only compare
+ # output of commands, so the echo commands are to allow pkg-config to error out, make to catch it,
+ # and allow the compilation to complete.
+-ifeq ($(shell $(PKG_CONFIG) --exists libsystemd-journal && echo "0"), 0)
+-	override LIBS += $(shell $(PKG_CONFIG) --libs libsystemd-journal)
+-	override CFLAGS += $(shell $(PKG_CONFIG) --cflags libsystemd-journal) -D USE_JOURNALD=1
+-else ifeq ($(shell $(PKG_CONFIG) --exists libsystemd && echo "0"), 0)
++ifeq ($(shell $(PKG_CONFIG) --exists libsystemd && echo "0"), 0)
+ 	override LIBS += $(shell $(PKG_CONFIG) --libs libsystemd)
+ 	override CFLAGS += $(shell $(PKG_CONFIG) --cflags libsystemd) -D USE_JOURNALD=1
+ endif
