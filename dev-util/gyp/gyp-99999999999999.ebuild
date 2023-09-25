@@ -7,23 +7,19 @@ DISTUTILS_SINGLE_IMPL="1"
 
 inherit distutils-r1
 
-if [[ "${PV}" == "99999999999999" ]]; then
-	inherit git-r3
-
-	EGIT_REPO_URI="https://chromium.googlesource.com/external/gyp"
-fi
-
 DESCRIPTION="GYP (Generate Your Projects) meta-build system"
 HOMEPAGE="https://gyp.gsrc.io/ https://chromium.googlesource.com/external/gyp"
+
 if [[ "${PV}" == "99999999999999" ]]; then
-	SRC_URI=""
+	EGIT_REPO_URI="https://chromium.googlesource.com/external/gyp"
+	inherit git-r3
 else
 	SRC_URI="https://home.apache.org/~arfrever/distfiles/${P}.tar.xz"
+	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 x86"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 BDEPEND=""
