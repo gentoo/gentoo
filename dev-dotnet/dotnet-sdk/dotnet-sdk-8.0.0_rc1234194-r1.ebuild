@@ -84,8 +84,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	unset DOTNET_DATA DOTNET_ROOT
-	unset NUGET_DATA NUGET_PACKAGES
+	unset DOTNET_ROOT
+	unset NUGET_PACKAGES
 
 	export DOTNET_CLI_TELEMETRY_OPTOUT=1
 	export MSBUILDDISABLENODEREUSE=1
