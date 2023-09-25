@@ -2244,7 +2244,9 @@ should_we_gcc_config() {
 
 	local curr_branch_ver=$(ver_cut 1-2 ${curr_config_ver})
 
-	if [[ ${curr_branch_ver} == ${GCC_BRANCH_VER} ]] ; then
+	if tc_use_major_version_only && [[ ${curr_config_ver} == ${GCCMAJOR} ]] ; then
+		return 0
+	elif ! tc_use_major_version_only && [[ ${curr_branch_ver} == ${GCC_BRANCH_VER} ]] ; then
 		return 0
 	else
 		# If we're installing a genuinely different compiler version,
