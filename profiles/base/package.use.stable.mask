@@ -8,10 +8,6 @@
 # xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
 xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
 
-# Mike Gilbert <floppym@gentoo.org> (2023-04-30)
-# Requires llvm-16.
-www-client/chromium libcxx lto pgo
-
 # Alfredo Tupone <tupone@gentoo.org> (2023-04-02)
 # For doc, dev-python/sphinxcontrib-bibtex is required
 sci-mathematics/why3-for-spark doc
