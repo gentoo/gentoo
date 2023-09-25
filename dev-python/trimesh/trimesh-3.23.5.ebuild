@@ -10,7 +10,7 @@ inherit distutils-r1 multiprocessing optfeature
 
 DESCRIPTION="Python library for loading and using triangular meshes"
 HOMEPAGE="
-	https://trimsh.org/
+	https://trimesh.org/
 	https://github.com/mikedh/trimesh/
 	https://pypi.org/project/trimesh/
 "
