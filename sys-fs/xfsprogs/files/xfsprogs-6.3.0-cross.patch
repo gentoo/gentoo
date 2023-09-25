@@ -1,0 +1,43 @@
+From 0b3f711bd7a9f47412f28b77a4a268f3ab1ba5ad Mon Sep 17 00:00:00 2001
+From: Krzesimir Nowak <knowak@microsoft.com>
+Date: Fri, 4 Aug 2023 11:49:18 +0200
+Subject: [PATCH] libfrog: Fix cross-compilation issue with randbytes
+
+randbytes.c was mostly split off from crc32.c and, like crc32.c, is
+used for selftests, which are run on the build host. As such it should
+not include platform_defs.h which in turn includes urcu.h from
+userspace-rcu library, because the build host might not have the
+library installed.
+---
+ libfrog/randbytes.c | 1 -
+ libfrog/randbytes.h | 2 ++
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libfrog/randbytes.c b/libfrog/randbytes.c
+index f22da0d3..2023b601 100644
+--- a/libfrog/randbytes.c
++++ b/libfrog/randbytes.c
+@@ -6,7 +6,6 @@
+  *
+  * This is the buffer of random bytes used for self tests.
+  */
+-#include "platform_defs.h"
+ #include "libfrog/randbytes.h"
+ 
+ /* 4096 random bytes */
+diff --git a/libfrog/randbytes.h b/libfrog/randbytes.h
+index 00fd7c4c..fddea9c7 100644
+--- a/libfrog/randbytes.h
++++ b/libfrog/randbytes.h
+@@ -6,6 +6,8 @@
+ #ifndef __LIBFROG_RANDBYTES_H__
+ #define __LIBFROG_RANDBYTES_H__
+ 
++#include <stdint.h>
++
+ extern uint8_t randbytes_test_buf[];
+ 
+ #endif /* __LIBFROG_RANDBYTES_H__ */
+-- 
+2.25.1
+
