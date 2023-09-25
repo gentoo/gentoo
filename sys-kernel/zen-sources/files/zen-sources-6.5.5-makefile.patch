@@ -1,0 +1,11 @@
+--- a/Makefile	2023-09-25 16:40:04.672288928 +0200
++++ b/Makefile	2023-09-25 16:41:18.538955697 +0200
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
+ VERSION = 6
+ PATCHLEVEL = 5
+-SUBLEVEL = 0
++SUBLEVEL = 5
+ EXTRAVERSION =
+ NAME = Hurr durr I'ma ninja sloth
+ 
