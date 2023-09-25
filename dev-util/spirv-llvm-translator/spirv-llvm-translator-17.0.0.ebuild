@@ -25,7 +25,7 @@ RDEPEND="
 	sys-devel/llvm:${SLOT}=
 "
 DEPEND="${RDEPEND}
-	dev-util/spirv-headers
+	>=dev-util/spirv-headers-1.3.261
 "
 BDEPEND="
 	virtual/pkgconfig
