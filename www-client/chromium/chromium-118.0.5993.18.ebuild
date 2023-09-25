@@ -254,12 +254,10 @@ pre_build_checks() {
 		use pgo && CHECKREQS_DISK_BUILD="22G"
 	fi
 	if is-flagq '-g?(gdb)?([1-9])'; then
-		if use custom-cflags || use component-build; then
+		if use custom-cflags; then
 			CHECKREQS_DISK_BUILD="27G"
 		fi
-		if ! use component-build; then
-			CHECKREQS_MEMORY="16G"
-		fi
+		CHECKREQS_MEMORY="16G"
 	fi
 	check-reqs_${EBUILD_PHASE_FUNC}
 }
