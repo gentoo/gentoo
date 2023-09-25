@@ -89,7 +89,14 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	cargo_src_test --target="$(rust_abi)"
+	local cargoargs=(
+		--prefix=/usr
+		--libdir="/usr/$(get_libdir)"
+		--target="$(rust_abi)"
+		$(usex debug '--debug' '--release')
+	)
+
+	cargo ctest "${cargoargs[@]}" || die "cargo ctest failed"
 }
 
 multilib_src_install() {
