@@ -26,7 +26,7 @@ else
 	SRC_URI="https://github.com/audacity/audacity/archive/${MY_P}.tar.gz"
 fi
 
-SRC_URI+=$'\n'"audiocom? ( ${MY_THREADPOOL} )"
+SRC_URI+=" audiocom? ( ${MY_THREADPOOL} )"
 
 # GPL-2+, GPL-3 - Audacity itself
 # ZLIB - The ThreadPool single-header library
