@@ -26,10 +26,6 @@ BDEPEND="test? ( dev-util/cmocka )"
 
 DOCS=( jffsX-utils/device_table.txt ubifs-utils/mkfs.ubifs/README )
 
-PATCHES=(
-	#"${FILESDIR}"/${P}-glibc-2.36.patch
-)
-
 src_prepare() {
 	default
 	sed -i '/if test.*then/s: == : = :' configure || die
