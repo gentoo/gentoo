@@ -12,26 +12,22 @@ SRC_URI="https://github.com/libcgroup/libcgroup/releases/download/v${PV}/${P}.ta
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE="+daemon pam static-libs test +tools"
+IUSE="+daemon pam static-libs systemd test +tools"
 REQUIRED_USE="daemon? ( tools )"
 
 # Test failure needs investigation
 RESTRICT="!test? ( test ) test"
 
+DEPEND="
+	elibc_musl? ( sys-libs/fts-standalone )
+	pam? ( sys-libs/pam )
+	systemd? ( sys-apps/systemd:= )
+"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 "
-DEPEND="
-	elibc_musl? ( sys-libs/fts-standalone )
-	pam? ( sys-libs/pam )
-"
-RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-3.0.0-configure-bashism.patch"
-	"${FILESDIR}/${PN}-3.0.0-musl-strerror_r.patch"
-)
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS"
@@ -45,7 +41,7 @@ src_prepare() {
 	default
 
 	# Change rules file location
-	find src -name '*.c' -o -name '*.h' -0 \
+	find src -name '*.c' -o -name '*.h' -print0 \
 		| xargs -0 sed -i '/^#define/s:/etc/cg:/etc/cgroup/cg:'
 	sed -i 's:/etc/cg:/etc/cgroup/cg:' \
 		doc/man/cg* samples/config/*.conf README* || die "sed failed"
@@ -67,12 +63,17 @@ src_configure() {
 		append-ldflags -lfts
 	fi
 
+	# Needs flex+bison
+	unset LEX YACC
+
 	local myconf=(
-		"$(use_enable static-libs static)"
-		"$(use_enable daemon)"
-		"$(use_enable pam)"
-		"$(use_enable tools)"
-		"$(use_enable test tests)"
+		--disable-python
+		$(use_enable static-libs static)
+		$(use_enable daemon)
+		$(use_enable pam)
+		$(use_enable systemd)
+		$(use_enable tools)
+		$(use_enable test tests)
 	)
 
 	if use pam; then
@@ -96,7 +97,7 @@ src_install() {
 	insinto /etc/cgroup
 	doins samples/config/cgconfig.conf
 	doins samples/config/cgrules.conf
-	doins samples/config/cgsnapshot_blacklist.conf
+	doins samples/config/cgsnapshot_denylist.conf
 
 	keepdir /etc/cgroup/cgconfig.d
 	keepdir /etc/cgroup/cgrules.d
