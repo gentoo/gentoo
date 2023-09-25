@@ -17,11 +17,12 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-
+RESTRICT="test"
 RDEPEND="
 	app-containers/containers-image
 	app-containers/containers-storage
 	app-containers/containers-shortnames
+	!<app-containers/podman-4.5.0-r1
 	net-firewall/nftables
 	net-firewall/iptables[nftables]
 	|| ( app-containers/crun app-containers/runc )
@@ -42,18 +43,11 @@ src_prepare() {
 	sed -i -e 's|/usr/local|/usr|g;' docs/Makefile || die
 
 	eapply "${FILESDIR}/fix-warnings.patch"
-}
-
-src_configure() {
-	return
+	eapply "${FILESDIR}/examplify-mounts-conf.patch"
 }
 
 src_compile() {
 	emake docs
-}
-
-src_test() {
-	return
 }
 
 src_install() {
@@ -68,9 +62,7 @@ src_install() {
 	doins "${FILESDIR}/default.yaml"
 
 	insinto /usr/share/containers
-	# https://github.com/containers/common/raw/main/pkg/seccomp/seccomp.json
-	# https://github.com/containers/common/raw/main/pkg/subscriptions/mounts.conf
-	doins "${FILESDIR}/seccomp.json" "${FILESDIR}/mounts.conf"
+	doins pkg/seccomp/seccomp.json pkg/subscriptions/mounts.conf
 
 	keepdir /etc/containers/certs.d /etc/containers/oci/hooks.d /etc/containers/systemd /var/lib/containers/sigstore
 }
