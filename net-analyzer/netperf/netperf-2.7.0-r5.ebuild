@@ -8,10 +8,10 @@ inherit flag-o-matic
 DESCRIPTION="Network performance benchmark"
 HOMEPAGE="http://www.netperf.org/"
 SRC_URI="ftp://ftp.netperf.org/${PN}/${P}.tar.bz2"
-KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 LICENSE="netperf"
 SLOT="0"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="demo sctp"
 
 RDEPEND="
@@ -19,8 +19,8 @@ RDEPEND="
 	acct-user/netperf
 "
 BDEPEND="
-	sys-devel/gnuconfig
 	${RDEPEND}
+	sys-devel/gnuconfig
 "
 
 PATCHES=(
