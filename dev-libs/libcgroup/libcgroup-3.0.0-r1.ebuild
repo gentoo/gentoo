@@ -45,7 +45,7 @@ src_prepare() {
 	default
 
 	# Change rules file location
-	find src -name '*.c' -o -name '*.h' -0 \
+	find src -name '*.c' -o -name '*.h' -print0 \
 		| xargs -0 sed -i '/^#define/s:/etc/cg:/etc/cgroup/cg:'
 	sed -i 's:/etc/cg:/etc/cgroup/cg:' \
 		doc/man/cg* samples/config/*.conf README* || die "sed failed"
