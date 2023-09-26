@@ -20,7 +20,11 @@ fi
 
 LICENSE="MIT"
 IUSE="liftoff +libinput +drm +session tinywl vulkan x11-backend xcb-errors X"
-REQUIRED_USE="drm? ( session ) libinput? ( session )"
+REQUIRED_USE="
+	drm? ( session )
+	libinput? ( session )
+	xcb-errors? ( || ( x11-backend X ) )
+"
 
 DEPEND="
 	>=dev-libs/wayland-1.22.0
