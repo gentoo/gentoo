@@ -64,7 +64,7 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/opengl
 	alembic? ( >=media-gfx/alembic-1.8.3-r2[boost(+),hdf(+)] )
 	collada? ( >=media-libs/opencollada-1.6.68 )
-	color-management? ( >=media-libs/opencolorio-2.1.1-r7:= )
+	color-management? ( <media-libs/opencolorio-2.3.0:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	embree? ( >=media-libs/embree-3.10.0[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
