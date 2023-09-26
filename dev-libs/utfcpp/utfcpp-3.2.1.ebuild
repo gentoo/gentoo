@@ -1,4 +1,4 @@
-# Copyright 2015-2022 Gentoo Authors
+# Copyright 2015-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -26,7 +26,7 @@ fi
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
