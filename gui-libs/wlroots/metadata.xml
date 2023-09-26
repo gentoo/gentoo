@@ -38,8 +38,8 @@
 		<remote-id type="github">swaywm/wlroots</remote-id>
 		<remote-id type="freedesktop-gitlab">wlroots/wlroots</remote-id>
 		<maintainer status="active">
-			<email>sir@cmpwn.com</email>
-			<name>Drew DeVault</name>
+			<email>contact@emersion.fr</email>
+			<name>Simon Ser</name>
 		</maintainer>
 		<bugs-to>https://gitlab.freedesktop.org/wlroots/wlroots/-/issues</bugs-to>
 		<doc>https://gitlab.freedesktop.org/wlroots/wlroots/-/wikis/home</doc>
