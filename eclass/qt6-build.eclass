@@ -162,9 +162,8 @@ qt6-build_src_configure() {
 # @DESCRIPTION:
 # Run cmake_src_test and handle anything else generic as-needed.
 qt6-build_src_test() {
-	# helps a few tests but is not always respected
 	local -x QML_IMPORT_PATH=${BUILD_DIR}${QT6_QMLDIR#"${QT6_PREFIX}"}
-
+	local -x QTEST_FUNCTION_TIMEOUT=900000 #914737
 	local -x QT_QPA_PLATFORM=offscreen
 
 	# TODO?: CMAKE_SKIP_TESTS skips a whole group of tests and, when
