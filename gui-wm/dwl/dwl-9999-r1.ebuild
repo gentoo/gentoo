@@ -38,7 +38,7 @@ IUSE="X"
 RDEPEND="
 	dev-libs/libinput:=
 	dev-libs/wayland
-	gui-libs/wlroots:${WLROOTS_SLOT}[X(-)?]
+	gui-libs/wlroots:${WLROOTS_SLOT}[libinput,session,X?]
 	x11-libs/libxkbcommon
 	X? (
 		x11-libs/libxcb:=
