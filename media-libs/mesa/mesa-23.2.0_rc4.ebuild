@@ -125,8 +125,8 @@ RDEPEND="${RDEPEND}
 # How to use it:
 # 1. Specify LLVM_MAX_SLOT (inclusive), e.g. 16.
 # 2. Specify LLVM_MIN_SLOT (inclusive), e.g. 15.
-LLVM_MAX_SLOT="16"
-LLVM_MIN_SLOT="15"
+LLVM_MAX_SLOT="17"
+LLVM_MIN_SLOT="17"
 LLVM_USE_DEPS="llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}"
 PER_SLOT_DEPSTR="
 	(
