@@ -1,0 +1,28 @@
+
+## DoH
+Note regarding Trusted Recursive Resolver aka DNS-over-HTTPS (DoH):
+Due to privacy concerns (encrypting DNS might be a good thing, sending all DNS 
+traffic to Cloudflare by default is not a good idea and applications should 
+respect OS configured settings), "network.trr.mode" was set to 5 ("Off by 
+choice") by default.
+You can enable DNS-over-HTTPS in Firefox's preferences.
+
+
+## Normandy
+Upstream operates a service named Normandy which allows Mozilla to push changes 
+for default settings or even install new add-ons remotely. While this can be 
+useful to address problems like 'Armagadd-on 2.0' or revert previous decisions 
+to disable TLS 1.0/1.1, privacy and security concerns prevail, which is why we 
+have switched off the use of this service by default.
+
+To re-enable this service set the following in "about:config":
+  app.normandy.enabled=true
+
+
+## Firefox >100 compatibility
+Unfortunately Firefox-100.0 breaks compatibility with some sites using 
+useragent checks. To temporarily fix this, enter about:config and modify 
+network.http.useragent.forceVersion preference to "99" Or install an addon to 
+change your useragent. 
+See: https://support.mozilla.org/en-US/kb/difficulties-opening-or-using-website-firefox-100
+
