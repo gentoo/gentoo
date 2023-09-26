@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake python-single-r1 virtualx
 
@@ -28,7 +28,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	dev-cpp/pystring
-	>=dev-cpp/yaml-cpp-0.7.0:=
+	<dev-cpp/yaml-cpp-0.8.0:=
 	dev-libs/expat
 	>=dev-libs/imath-3.1.5:=
 	sys-libs/minizip-ng
@@ -59,6 +59,7 @@ BDEPEND="
 			dev-python/recommonmark[${PYTHON_USEDEP}]
 			dev-python/six[${PYTHON_USEDEP}]
 			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-press-theme[${PYTHON_USEDEP}]
 			dev-python/sphinx-tabs[${PYTHON_USEDEP}]
 			dev-python/testresources[${PYTHON_USEDEP}]
 		')
@@ -79,8 +80,8 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.2.1-adjust-python-installation.patch
-	"${FILESDIR}"/${PN}-2.2.1-support-minizip-ng-4.patch
+	"${FILESDIR}/${PN}-2.2.1-adjust-python-installation.patch"
+	"${FILESDIR}/${PN}-2.2.1-support-minizip-ng-4.patch"
 )
 
 pkg_setup() {
