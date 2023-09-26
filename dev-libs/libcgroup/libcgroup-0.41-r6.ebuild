@@ -28,8 +28,8 @@ DEPEND="pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-replace-DECLS.patch
-	"${FILESDIR}"/${P}-replace-INLCUDES.patch
+	"${FILESDIR}"/${P}-replace_DECLS.patch
+	"${FILESDIR}"/${P}-replace_INLCUDES.patch
 	"${FILESDIR}"/${P}-reorder-headers.patch
 	"${FILESDIR}"/${P}-remove-umask.patch
 	"${FILESDIR}"/${P}-slibtool.patch
