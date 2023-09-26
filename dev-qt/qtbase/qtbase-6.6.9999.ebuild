@@ -280,6 +280,8 @@ src_test() {
 		tst_qx11info
 		# fails with network sandbox
 		tst_qdnslookup
+		# fails with sandbox
+		tst_qsharedmemory
 		# typical to lack SCTP support on non-generic kernels
 		tst_qsctpsocket
 		# these can be flaky depending on the environment/toolchain
