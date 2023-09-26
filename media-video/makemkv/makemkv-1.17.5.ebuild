@@ -48,7 +48,6 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-path.patch
-	"${FILESDIR}"/${PN}-ffmpeg-6.patch
 )
 
 src_prepare() {
@@ -73,7 +72,7 @@ src_configure() {
 src_install() {
 	local myarch
 	case "${ARCH}" in
-		arm) myarch=armel ;;
+		arm) myarch=armhf ;;
 		x86) myarch=i386 ;;
 		*) myarch=${ARCH} ;;
 	esac
