@@ -154,6 +154,7 @@ src_unpack() {
 src_prepare() {
 	if use fcitx4; then
 		cp -pr "${WORKDIR}/fcitx-mozc/src/unix/fcitx" unix || die
+		PATCHES+=( "${FILESDIR}"/mozc-2.28.5029.102-abseil-20230802.0-fcitx4.patch )
 	fi
 
 	pushd "${WORKDIR}/${P}" > /dev/null || die
