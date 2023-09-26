@@ -82,7 +82,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-11.0.2-musl-no-execinfo.patch
 	"${FILESDIR}"/${PN}-11.0.2-musl-no-malloc-trim.patch
-	"${FILESDIR}"/${PN}-11.0.2-qt653.patch
 )
 
 pkg_setup() {
