@@ -101,7 +101,6 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/stellarium-0.20.3-unbundle-zlib.patch"
-	"${FILESDIR}/stellarium-0.23.3-ccache.patch"
 )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/stellarium.asc
@@ -138,6 +137,7 @@ src_configure() {
 	filter-lto # https://bugs.gentoo.org/862249
 
 	local mycmakeargs=(
+		-DCCACHE_PROGRAM=no
 		-DCPM_LOCAL_PACKAGES_ONLY=yes
 		-DENABLE_GPS="$(usex gps)"
 		-DENABLE_MEDIA="$(usex media)"
