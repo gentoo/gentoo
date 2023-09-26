@@ -211,6 +211,7 @@ src_prepare() {
 	rm -r man || die "failed to remove man directory from source"
 
 	# Known failing test, upstream says it could potentially be ignored for know
+	# bug #914214
 	# https://github.com/eza-community/eza/issues/393
 	rm tests/cmd/{icons,basic}_all.toml || die
 	rm tests/cmd/only_dir_{,recursive_}unix.toml || die
