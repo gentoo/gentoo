@@ -255,6 +255,7 @@ src_test() {
 		# fails with network sandbox
 		tst_loadsignals
 		tst_qquickwebengineview
+		tst_qwebengineglobalsettings
 		tst_qwebengineview
 		# certs verfication seems flaky and gives expiration warnings
 		tst_qwebengineclientcertificatestore
