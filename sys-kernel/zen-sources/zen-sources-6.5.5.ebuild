@@ -4,7 +4,7 @@
 EAPI="8"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="1"
+K_GENPATCHES_VER="7"
 K_SECURITY_UNSUPPORTED="1"
 K_NOSETEXTRAVERSION="1"
 
@@ -16,20 +16,23 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 HOMEPAGE="https://github.com/zen-kernel"
 IUSE=""
 
+# Needed for zstd compression of the patch
+BDEPEND="app-arch/zstd"
+
 DESCRIPTION="The Zen Kernel Live Sources"
 
 ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV}-zen1/linux-v${PV}-zen1.patch.zst"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${ZEN_URI}"
 
-UNIPATCH_LIST="${DISTDIR}/v${PV}-zen1.patch.zst"
+UNIPATCH_LIST="${WORKDIR}/linux-v${PV%_*}-zen${PV#*p}.patch"
 UNIPATCH_STRICTORDER="yes"
 
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
 ${HOMEPAGE}, also go to #zen-sources on oftc"
 
-src_prepare() {
-	eapply "${FILESDIR}/${P}-makefile.patch"
-	eapply_user
+src_unpack() {
+	zstd -df "${DISTDIR}/linux-v${PV}-zen1.patch.zst" -o "${WORKDIR}/linux-v${PV%_*}-zen${PV#*p}.patch"
+	kernel-2_src_unpack
 }
 
 pkg_setup() {
