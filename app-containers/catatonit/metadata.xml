@@ -4,7 +4,17 @@
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>rahil3108@gmail.com</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">openSUSE/catatonit</remote-id>
+		<bugs-to>https://github.com/openSUSE/catatonit/issues</bugs-to>
+		<doc>https://github.com/openSUSE/catatonit/blob/main/README.md</doc>
 	</upstream>
 </pkgmetadata>
