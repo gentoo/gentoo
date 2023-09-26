@@ -211,7 +211,7 @@ Core:
 - Help (USE=help + dev-qt/qt-docs:6 with USE=\"examples qch\")
 
 Device Support:
-- Android (dev-util/android-sdk-update-manager)
+- Android (virtual/jdk, will also want the unpackaged Qt for Android)
 
 Other Languages:
 - Nim (dev-lang/nim)
