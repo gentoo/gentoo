@@ -28,7 +28,7 @@
 			necessary kernel flags.
 		</flag>
 		<flag name="cgroup-hybrid">
-			Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).
+			Use legacy (hybrid) cgroups instead of modern (unified) cgroups
 		</flag>
 		<flag name="fuse">
 			Enables fuse dependencies (fuse-overlayfs is especially useful
@@ -39,6 +39,9 @@
 		</flag>
 		<flag name="rootless">
 			Enables dependencies for running in rootless mode.
+		</flag>
+		<flag name="wrapper">
+			Install wrapper which lets use podman for command `docker`
 		</flag>
 	</use>
 	<upstream>

@@ -1,0 +1,15 @@
+--- a/Makefile
++++ b/Makefile
+@@ -57,7 +57,11 @@
+ 	$(shell hack/systemd_tag.sh) \
+ 	$(shell hack/libsubid_tag.sh) \
+ 	exclude_graphdriver_devicemapper \
+-	seccomp
++
++BUILD_SECCOMP ?= yes
++ifeq ($(BUILD_SECCOMP),yes)
++BUILDTAGS += seccomp
++endif
+ # N/B: This value is managed by Renovate, manual changes are
+ # possible, as long as they don't disturb the formatting
+ # (i.e. DO NOT ADD A 'v' prefix!)
