@@ -28,9 +28,8 @@ REQUIRED_USE="
 
 DEPEND="
 	>=dev-libs/wayland-1.22.0
-	>=dev-libs/wayland-protocols-1.28
 	drm? (
-		liftoff? ( dev-libs/libliftoff )
+		liftoff? ( >=dev-libs/libliftoff-0.4 )
 		media-libs/libdisplay-info
 		sys-apps/hwdata:=
 	)
@@ -48,21 +47,22 @@ DEPEND="
 	>=x11-libs/libdrm-2.4.114:0=
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0:0=
-	x11-backend? ( x11-libs/libxcb:0= )
+	x11-backend? (
+		x11-libs/libxcb:0=
+		x11-libs/xcb-util-renderutil
+	)
 	X? (
 		x11-base/xwayland
 		x11-libs/libxcb:0=
-		x11-libs/xcb-util-image
-		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
-		xcb-errors? ( x11-libs/xcb-util-errors )
 	)
+	xcb-errors? ( x11-libs/xcb-util-errors )
 "
 RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.24
+	>=dev-libs/wayland-protocols-1.32
 	>=dev-util/meson-0.60.0
 	dev-util/wayland-scanner
 	virtual/pkgconfig
@@ -76,7 +76,6 @@ src_configure() {
 	)
 	# Separate values with a comma with this evil floating point bit hack
 	local meson_backends=$(IFS=','; echo "${backends[*]}")
-	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
 		$(meson_feature xcb-errors)
 		$(meson_use tinywl examples)
