@@ -94,6 +94,9 @@ DEPEND="
 	test? (
 		widgets? ( app-text/poppler[cxx(+)] )
 	)
+	vaapi? (
+		vulkan? ( dev-util/vulkan-headers )
+	)
 "
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/html5lib[${PYTHON_USEDEP}]')
