@@ -141,12 +141,16 @@ src_test() {
 
 src_install() {
 	into /
-	dosbin bcachefs fsck.bcachefs mkfs.bcachefs mount.bcachefs
+	dosbin bcachefs
+
+	dosym bcachefs /sbin/fsck.bcachefs
+	dosym bcachefs /sbin/mkfs.bcachefs
+	dosym bcachefs /sbin/mount.bcachefs
 
 	if use fuse; then
-		dosbin mount.fuse.bcachefs
-		newsbin fsck.bcachefs fsck.fuse.bcachefs
-		newsbin mkfs.bcachefs mkfs.fuse.bcachefs
+		dosym bcachefs /sbin/fsck.fuse.bcachefs
+		dosym bcachefs /sbin/mkfs.fuse.bcachefs
+		dosym bcachefs /sbin/mount.fuse.bcachefs
 	fi
 
 	doman bcachefs.8
