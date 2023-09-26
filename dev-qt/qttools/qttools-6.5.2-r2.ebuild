@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit llvm optfeature qt6-build
+inherit desktop llvm optfeature qt6-build
 
 DESCRIPTION="Qt Tools Collection"
 
@@ -12,7 +12,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	assistant clang designer distancefieldgenerator gles2-only
+	+assistant clang designer distancefieldgenerator gles2-only
 	+linguist opengl pixeltool qdbus qdoc qml qtattributionsscanner
 	qtdiag qtplugininfo vulkan +widgets
 "
@@ -76,6 +76,60 @@ src_configure() {
 	)
 
 	qt6-build_src_configure
+}
+
+src_install() {
+	qt6-build_src_install
+
+	if use widgets; then #914766
+		use designer || use distancefieldgenerator || use pixeltool &&
+			newicon src/designer/src/designer/images/designer.png designer6.png
+
+		if use assistant; then
+			make_desktop_entry assistant6 'Qt 6 Assistant' assistant6 \
+				'Qt;Development;Documentation' \
+				'Comment=Tool for viewing online documentation in Qt help file format'
+			newicon src/assistant/assistant/images/assistant-128.png assistant6.png
+		fi
+
+		if use designer; then
+			make_desktop_entry designer6 'Qt 6 Designer' designer6 \
+				'Qt;Development;GUIDesigner' \
+				'Comment=WYSIWYG tool for designing and building graphical user interfaces with QtWidgets'
+		fi
+
+		if use distancefieldgenerator; then
+			# no icon, sharing with designer which fits letter-wise
+			make_desktop_entry qdistancefieldgenerator6 'Qt 6 Distance Field Generator' designer6 \
+				'Qt;Development' \
+				'Comment=Tool for pregenerating the font cache of Qt applications'
+		fi
+
+		if use linguist; then
+			make_desktop_entry linguist6 'Qt 6 Linguist' linguist6 \
+				'Qt;Development;Translation' \
+				'Comment=Tool for translating Qt applications'
+			newicon src/linguist/linguist/images/icons/linguist-128-32.png linguist6.png
+		fi
+
+		if use pixeltool; then
+			# no icon, not fitting but share with designer for now
+			make_desktop_entry pixeltool6 'Qt 6 Pixel Tool' designer6 \
+				'Qt;Development' \
+				'Comment=Tool for zooming in the desktop area pointed by the cursor'
+		fi
+
+		if use qdbus; then
+			make_desktop_entry qdbusviewer6 'Qt 6 QDBusViewer' qdbusviewer6 \
+				'Qt;Development' \
+				'Comment=Tool that lets introspect D-Bus objects and messages'
+			newicon src/qdbus/qdbusviewer/images/qdbusviewer-128.png qdbusviewer6.png
+		fi
+
+		# hack: make_destop_entry does not support overriding DESCRIPTION
+		find "${ED}" -type f -name "*.desktop" \
+			-exec sed -i "/^Comment=${DESCRIPTION}/d" -- {} + || die
+	fi
 }
 
 pkg_postinst() {
