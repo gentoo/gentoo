@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt APIs and Tools for Graphics Pipelines"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~loong"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~x86"
 fi
 
 RDEPEND="
