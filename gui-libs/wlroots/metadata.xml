@@ -9,6 +9,10 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>leohdz172@proton.me</email>
+		<name>Leonardo Hernández Hernández</name>
+	</maintainer>
 	<longdescription lang="en">
 		Pluggable, composable, unopinionated modules for building a Wayland
 		compositor.
