@@ -28,7 +28,7 @@ RDEPEND="dev-libs/glib:=
 DEPEND="${RDEPEND}"
 BDEPEND="dev-go/go-md2man"
 PATCHES=(
-	"${FILESDIR}/001-conmon-basic.patch"
+	"${FILESDIR}/conmon-2.1.8-Makefile.patch"
 )
 
 src_prepare() {
@@ -48,6 +48,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC PKG_CONFIG
+	export PREFIX=${EPREFIX}/usr GOMD2MAN=go-md2man
 	if [[ ${PV} == *9999* ]]; then
 		default
 	else

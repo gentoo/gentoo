@@ -1,0 +1,15 @@
+--- a/Makefile
++++ b/Makefile
+@@ -41,4 +41 @@
+-ifeq ($(shell $(PKG_CONFIG) --exists libsystemd-journal && echo "0"), 0)
+-	override LIBS += $(shell $(PKG_CONFIG) --libs libsystemd-journal)
+-	override CFLAGS += $(shell $(PKG_CONFIG) --cflags libsystemd-journal) -D USE_JOURNALD=1
+-else ifeq ($(shell $(PKG_CONFIG) --exists libsystemd && echo "0"), 0)
++ifeq ($(shell echo "0"), 0)
+@@ -127 +123,0 @@
+-	$(MAKE) -C tools
+--- a/docs/Makefile
++++ b/docs/Makefile
+@@ -4 +4 @@
+-GOMD2MAN = ../tools/build/go-md2man
++GOMD2MAN ?= ../tools/build/go-md2man
