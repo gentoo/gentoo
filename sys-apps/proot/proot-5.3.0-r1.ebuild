@@ -1,59 +1,58 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 MY_PN="PRoot"
 
 inherit toolchain-funcs
 
 SRC_URI="https://github.com/proot-me/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 DESCRIPTION="User-space implementation of chroot, mount --bind, and binfmt_misc"
 HOMEPAGE="https://proot-me.github.io"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="care test"
+IUSE="care doc test"
 
 RDEPEND="care? ( app-arch/libarchive:0= )
 	 sys-libs/talloc"
+BDEPEND="dev-python/docutils"
 DEPEND="${RDEPEND}
 	care? ( dev-libs/uthash )
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? ( dev-util/valgrind )"
 
 # Breaks sandbox
 RESTRICT="test"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
-
 PATCHES=(
-	"${FILESDIR}/${PN}-5.1.0-makefile.patch"
-	"${FILESDIR}/${PN}-2.3.1-lib-paths-fix.patch"
-	"${FILESDIR}/${PN}-5.1.0-loader.patch"
+	"${FILESDIR}/${PN}-5.3.0-makefile.patch"
+	"${FILESDIR}/${PN}-5.3.0-lib-paths-fix.patch"
 )
 
 src_compile() {
 	# build the proot and care targets
 	emake -C src V=1 \
 		CC="$(tc-getCC)" \
+		LD="$(tc-getCC) -fuse-ld=bfd" \
+		LD_CMD="$(tc-getLD)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		OBJCOPY="$(tc-getOBJCOPY)" \
 		OBJDUMP="$(tc-getOBJDUMP)" \
 		STRIP="$(tc-getSTRIP)" \
 		CHECK_VERSION="true" \
 		CAREBUILDENV="ok" \
 		proot $(use care && echo "care")
+	emake -C doc SUFFIX=".py" proot/man.1
 }
 
 src_install() {
-	if use care; then
-		dobin src/care
-		dodoc doc/care/*.txt
-	fi
+	use care && dobin src/care
 	dobin src/proot
+	dodoc doc/proot/*.rst
 	newman doc/proot/man.1 proot.1
-	dodoc doc/proot/*.txt
-	dodoc -r doc/articles
 }
 
 src_test() {
