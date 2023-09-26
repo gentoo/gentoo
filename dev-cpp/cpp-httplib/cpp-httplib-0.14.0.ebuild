@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	SRC_URI="https://github.com/yhirose/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="amd64 ~loong ~x86"
 fi
 
 LICENSE="MIT"
