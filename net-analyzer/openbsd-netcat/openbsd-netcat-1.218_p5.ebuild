@@ -20,7 +20,6 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86 ~amd64-linux ~x64-macos"
 
 RDEPEND="
 	!net-analyzer/netcat
-	!net-analyzer/netcat6
 	!elibc_Darwin? ( dev-libs/libbsd )
 "
 BDEPEND="virtual/pkgconfig"
@@ -33,7 +32,7 @@ src_prepare() {
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# This undoes some of the Debian/Linux changes
-		PATCHES+=( "${FILESDIR}"/${PN}-1.195-darwin.patch )
+		PATCHES+=( "${FILESDIR}"/${PN}-1.219-darwin.patch )
 
 		if [[ ${CHOST##*-darwin} -lt 20 ]] ; then
 			PATCHES+=( "${FILESDIR}"/${PN}-1.190-darwin13.patch )

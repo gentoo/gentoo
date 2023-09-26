@@ -1,10 +1,10 @@
-Allow compilation on Darwin
+Allow compilation on Darwin, reverting parts of Linux/Debian patch
 
-diff --git a/netcat.c b/netcat.c
-index a0fb51b..bbb5dd1 100644
---- a/netcat.c
-+++ b/netcat.c
-@@ -51,11 +51,16 @@
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- a/netcat.c	2023-09-26 15:04:51.169658537 +0200
++++ b/netcat.c	2023-09-26 15:07:00.270929256 +0200
+@@ -50,13 +50,18 @@
  # include <bsd/readpassphrase.h>
  #endif
  
@@ -22,7 +22,9 @@ index a0fb51b..bbb5dd1 100644
 +# define SOCK_CLOEXEC 0
 +#endif
  
-@@ -108,8 +110,9 @@
+ # ifndef IPTOS_DSCP_AF11
+ # define	IPTOS_DSCP_AF11		0x28
+@@ -108,8 +113,9 @@
  # include <tls.h>
  #endif
  #include <unistd.h>
@@ -34,9 +36,9 @@ index a0fb51b..bbb5dd1 100644
  
  #include "atomicio.h"
  
-@@ -814,9 +814,8 @@
- # endif
- 			} else {
+@@ -814,9 +820,8 @@
+ 				int connfd;
+ 
  				len = sizeof(cliaddr);
 -				connfd = accept4(s, (struct sockaddr *)&cliaddr,
 -				    &len, SOCK_NONBLOCK);
@@ -46,35 +48,33 @@ index a0fb51b..bbb5dd1 100644
  					/* For now, all errnos are fatal */
  					err(1, "accept");
  				}
-@@ -1100,6 +1099,8 @@
- 			return -1;
- 		}
+@@ -1069,6 +1074,8 @@
+ 		} else
+ 			err(1, "poll failed");
  	}
 +	if (fcntl(s, F_SETFD, FD_CLOEXEC) == -1)
 +		return -1;
  
- 	memset(&s_un, 0, sizeof(struct sockaddr_un));
- 	s_un.sun_family = AF_UNIX;
-@@ -1174,9 +1175,13 @@
+ 	return ret;
+ }
+@@ -1218,9 +1225,13 @@
  		    port, gai_strerror(error));
  
  	for (res = res0; res; res = res->ai_next) {
 -		if ((s = socket(res->ai_family, res->ai_socktype |
--		    SOCK_NONBLOCK, res->ai_protocol)) < 0)
+-		    SOCK_NONBLOCK, res->ai_protocol)) == -1)
 +		if ((s = socket(res->ai_family, res->ai_socktype,
-+		    res->ai_protocol)) < 0)
-+			continue;
++		    res->ai_protocol)) == -1)
+ 			continue;
 +		if (fcntl(s, F_SETFL, O_NONBLOCK) == -1) {
 +			close(s);
- 			continue;
++			continue;
 +		}
  
  		/* Bind to a local port or source address if specified. */
  		if (sflag || pflag) {
-diff --git a/socks.c b/socks.c
-index 9068f39..68b68e3 100644
---- a/socks.c
-+++ b/socks.c
+--- a/socks.c	2023-09-26 15:04:51.085185645 +0200
++++ b/socks.c	2023-09-26 15:07:30.947097100 +0200
 @@ -38,7 +38,7 @@
  #include <string.h>
  #include <unistd.h>
@@ -84,13 +84,12 @@ index 9068f39..68b68e3 100644
  #include "atomicio.h"
  
  #define SOCKS_PORT	"1080"
---- a/socks.c
-+++ b/socks.c
-@@ -53,5 +53,7 @@
+@@ -53,6 +53,8 @@
  #define SOCKS_DOMAIN	3
  #define SOCKS_IPV6	4
  
 +#define explicit_bzero(S,L) bzero(S,L)
-+ 
- int	remote_connect(const char *, const char *, struct addrinfo);
++
+ int	remote_connect(const char *, const char *, struct addrinfo, char *);
  int	socks_connect(const char *, const char *, struct addrinfo,
+ 	    const char *, const char *, struct addrinfo, int,
