@@ -85,7 +85,7 @@ unset DOCTAR DOCUSE
 S=${WORKDIR}/Docs/Qt-${PV%_p*}
 
 BDEPEND="
-	app-arch/p7zip
+	$(unpacker_src_uri_depends .7z)
 	media-libs/libpng:0
 "
 

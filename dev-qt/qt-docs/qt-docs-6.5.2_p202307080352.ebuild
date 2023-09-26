@@ -16,7 +16,7 @@ REQUIRED_USE="|| ( examples html qch )"
 
 BDEPEND="
 	examples? (
-		app-arch/p7zip
+		$(unpacker_src_uri_depends .7z)
 		media-libs/libpng
 	)
 "
