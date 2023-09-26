@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake desktop kde.org xdg-utils
+inherit cmake kde.org xdg-utils
 
 DESCRIPTION="Fast heap memory profiler"
 HOMEPAGE="https://apps.kde.org/heaptrack/
@@ -39,9 +39,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	gui? ( >=kde-frameworks/kf-env-4 )
 "
-BDEPEND="
-	gui? ( kde-frameworks/extra-cmake-modules:5 )
-"
+BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:5 )"
 
 src_prepare() {
 	cmake_src_prepare
