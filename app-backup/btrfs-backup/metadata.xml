@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>deso@posteo.net</email>
+		<name>Daniel Müller</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">d-e-s-o/btrfs-backup.git</remote-id>
+		<bugs-to>https://github.com/d-e-s-o/btrfs-backup/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
