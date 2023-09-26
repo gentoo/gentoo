@@ -44,6 +44,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # Library versions for official builds can be found in the blender source directory in:
 # build_files/build_environment/install_deps.sh
+#
+# <opencolorio-2.3.0 for https://projects.blender.org/blender/blender/issues/112917.
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[nls?]
 	dev-libs/lzo:2=
