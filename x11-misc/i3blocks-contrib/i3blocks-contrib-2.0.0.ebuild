@@ -16,7 +16,10 @@ DEPEND=""
 RDEPEND=">=x11-misc/i3blocks-1.5"
 BDEPEND=""
 
-PATCHES=( "${FILESDIR}"/${P}-respect-CFLAGS.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-respect-CFLAGS.patch
+	"${FILESDIR}"/${P}-fix-build-on-clang-llvm.patch
+)
 
 src_prepare() {
 	sed -i -e '/^$(_BLOCKS):/ s/$/ installdirs/' Makefile
