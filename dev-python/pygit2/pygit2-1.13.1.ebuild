@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -23,7 +23,7 @@ DEPEND="
 	=dev-libs/libgit2-1.7*:=
 "
 BDEPEND="
-	>=dev-python/cffi-1.9.1:=[${PYTHON_USEDEP}]
+	>=dev-python/cffi-1.16.0_rc2:=[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}
