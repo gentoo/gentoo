@@ -198,12 +198,12 @@ RDEPEND="${DEPEND}
 DOCS=( README.md CHANGELOG.md doc/alternatives.md )
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
-QA_PRESTRIPPED="${QA_FLAGS_IGNORED}"
 
 src_configure() {
 	export RUSTONIG_SYSTEM_LIBONIG=1
 	export LIBGIT2_SYS_USE_PKG_CONFIG=1
 	export PKG_CONFIG_ALLOW_CROSS=1
+	sed -i -e 's/strip = true/strip = false/g' Cargo.toml || die
 }
 
 src_install() {
