@@ -16,6 +16,7 @@ KEYWORDS="amd64"
 RDEPEND="
 	dev-qt/qtbase:6[gui,opengl,widgets]
 	dev-qt/qtmultimedia:6
+	dev-qt/qtsvg:6
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
