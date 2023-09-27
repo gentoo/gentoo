@@ -169,7 +169,7 @@ CRATES="
 	yaml-rust@0.4.5
 "
 
-inherit bash-completion-r1 cargo
+inherit cargo shell-completion
 
 DESCRIPTION="cat(1) clone with syntax highlighting and Git integration"
 HOMEPAGE="https://github.com/sharkdp/bat"
@@ -217,10 +217,6 @@ src_install() {
 	doman assets/manual/bat.1
 
 	newbashcomp assets/completions/${PN}.bash ${PN}
-
-	insinto /usr/share/zsh/site-functions
-	newins assets/completions/${PN}.zsh _${PN}
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins assets/completions/${PN}.fish
+	newzshcomp assets/completions/${PN}.zsh _${PN}
+	dofishcomp assets/completions/${PN}.fish
 }
