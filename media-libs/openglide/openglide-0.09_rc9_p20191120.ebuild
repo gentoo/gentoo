@@ -13,7 +13,7 @@ SRC_URI="https://github.com/voyageur/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+sdl static-libs"
 
 RDEPEND="virtual/glu[${MULTILIB_USEDEP}]
