@@ -19,7 +19,10 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+drm +libinput tinywl vulkan x11-backend X"
+IUSE="+drm +libinput tinywl vulkan x11-backend xcb-errors X"
+REQUIRED_USE="
+	xcb-errors? ( || ( x11-backend X ) )
+"
 
 DEPEND="
 	>=dev-libs/wayland-1.21.0
@@ -46,6 +49,7 @@ DEPEND="
 		x11-libs/libxcb:0=
 		x11-libs/xcb-util-wm
 	)
+	xcb-errors? ( x11-libs/xcb-util-errors )
 "
 RDEPEND="
 	${DEPEND}
@@ -65,9 +69,8 @@ src_configure() {
 	)
 	# Separate values with a comma with this evil floating point bit hack
 	local meson_backends=$(IFS=','; echo "${backends[*]}")
-	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
-		"-Dxcb-errors=disabled"
+		$(meson_feature xcb-errors)
 		$(meson_use tinywl examples)
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		$(meson_feature X xwayland)
