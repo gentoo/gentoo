@@ -17,7 +17,7 @@ if [[ ${PV} = "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/achillean/shodan-python.git"
 else
 	inherit pypi
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~loong x86"
 fi
 
 LICENSE="MIT"
