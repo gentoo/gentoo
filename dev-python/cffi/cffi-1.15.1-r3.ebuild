@@ -37,6 +37,9 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
+	test? (
+		dev-python/py[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_sphinx doc/source
