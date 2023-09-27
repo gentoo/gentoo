@@ -12,7 +12,7 @@ SRC_URI="https://github.com/roc-streaming/roc-toolkit/archive/refs/tags/v${PV}.t
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa llvm-libunwind pulseaudio sox ssl tools test unwind"
 RESTRICT="!test? ( test )"
 
