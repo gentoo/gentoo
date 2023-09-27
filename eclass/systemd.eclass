@@ -1,4 +1,4 @@
-# Copyright 2011-2022 Gentoo Authors
+# Copyright 2011-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: systemd.eclass
@@ -223,6 +223,48 @@ systemd_install_serviced() {
 	(
 		insopts -m 0644
 		insinto /etc/systemd/system/"${service}".d
+		newins "${src}" 00gentoo.conf
+	)
+}
+
+# @FUNCTION: systemd_install_dropin
+# @USAGE: [--user] <unit> <conf-file>
+# @DESCRIPTION:
+# Install <conf-file> as the dropin file <unit>.d/00gentoo.conf,
+# overriding the settings of <unit>.
+# Defaults to system unit dropins, unless --user is provided,
+# which causes the dropin to be installed for user units.
+# The required argument <conf-file> may be '-', in which case the
+# file is read from stdin and <unit> must also be specified.
+# @EXAMPLE:
+# systemd_install_dropin foo.service "${FILESDIR}/foo.service.conf"
+# systemd_install_dropin foo.service - <<-EOF
+# 	[Service]
+# 	RestartSec=120
+# EOF
+systemd_install_dropin() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local basedir
+	if [[ $# -ge 1 ]] && [[ $1 == "--user" ]]; then
+		basedir=$(_systemd_unprefix systemd_get_userunitdir)
+		shift 1
+	else
+		basedir=$(_systemd_unprefix systemd_get_systemunitdir)
+	fi
+
+	local unit=${1}
+	local src=${2}
+
+	[[ ${unit} ]] || die "No unit specified"
+	[[ ${src} ]] || die "No conf file specified"
+
+	# avoid potentially common mistake
+	[[ ${unit} == *.d ]] && die "Unit ${unit} must not have .d suffix"
+
+	(
+		insopts -m 0644
+		insinto "${basedir}/${unit}".d
 		newins "${src}" 00gentoo.conf
 	)
 }
