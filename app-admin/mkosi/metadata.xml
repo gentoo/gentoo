@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">systemd/mkosi</remote-id>
+		<remote-id type="github">webcamoid/webcamoid</remote-id>
 	</upstream>
 </pkgmetadata>
