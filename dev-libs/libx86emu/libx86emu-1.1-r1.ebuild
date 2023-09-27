@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.opensuse.org/"
 SRC_URI="https://download.opensuse.org/source/factory/repo/oss/suse/src/${P}-9.8.src.rpm"
 
 LICENSE="HPND"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 PATCHES=(
