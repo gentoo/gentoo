@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
+# XXX: drop .retag on next version
 MY_P=python-versioneer-${PV}
 DESCRIPTION="Easy VCS-based management of project version strings"
 HOMEPAGE="
@@ -16,7 +17,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/python-versioneer/python-versioneer/archive/${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+		-> ${MY_P}.retag.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}
 
