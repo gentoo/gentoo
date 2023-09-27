@@ -210,7 +210,7 @@ _distutils_set_globals() {
 		fi
 
 		bdep='
-			>=dev-python/gpep517-13[${PYTHON_USEDEP}]
+			>=dev-python/gpep517-15[${PYTHON_USEDEP}]
 		'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
@@ -1444,6 +1444,7 @@ distutils_pep517_install() {
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
 	local cmd=(
 		gpep517 build-wheel
+			--prefix="${EPREFIX}/usr"
 			--backend "${build_backend}"
 			--output-fd 3
 			--wheel-dir "${WHEEL_BUILD_DIR}"
