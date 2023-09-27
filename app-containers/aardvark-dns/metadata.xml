@@ -5,11 +5,21 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>rahil3108@gmail.com</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		Aardvark-dns is an authoritative dns server for A/AAAA container
 		records. It can forward other requests to configured resolvers.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">containers/aardvark-dns</remote-id>
+		<bugs-to>https://github.com/containers/aardvark-dns/issues</bugs-to>
+		<doc>https://github.com/containers/aardvark-dns/blob/main/README.md</doc>
 	</upstream>
 </pkgmetadata>
