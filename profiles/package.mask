@@ -325,7 +325,6 @@ app-dicts/edictionary
 # Florian Schmaus <flow@gentoo.org> (2023-07-17)
 # Obsolete acct-* packages which became leaf packages.
 # Removal on 2023-08-17.
-acct-group/simplevirt
 acct-group/spi
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-12)
