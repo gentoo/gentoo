@@ -276,11 +276,6 @@ dev-ruby/shoulda:0
 # 2023-09-26.
 dev-ruby/state_machine
 
-# Hans de Graaff <graaff@gentoo.org> (2023-08-26)
-# The totori.dip.jp website is no longer available. Last release in
-# 2015. No reverse dependencies. Masked for removal on 2023-09-26.
-dev-ruby/totoridipjp
-
 # Sam James <sam@gentoo.org> (2023-08-18)
 # Masked for testing.
 =sys-libs/zlib-1.3-r1
