@@ -59,8 +59,8 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		|| (
+			dev-lang/ruby:3.2
 			dev-lang/ruby:3.1
-			dev-lang/ruby:3.0
 		)
 	)
 	selinux? ( sec-policy/selinux-irc )
