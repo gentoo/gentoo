@@ -1,11 +1,11 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eapi7-ver flag-o-matic java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
+inherit flag-o-matic java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
 
 EGRADLE_VER="4.10.3"
 EHG_COMMIT="9f49e3b6147f"
@@ -15,14 +15,17 @@ HOMEPAGE="https://openjfx.io"
 SRC_URI="
 	https://hg.openjdk.java.net/${PN}/8u-dev/rt/archive/${EHG_COMMIT}.tar.bz2 -> ${P}.tar.bz2
 	https://dev.gentoo.org/~gyakovlev/distfiles/${P}-backports.tar.bz2
-	https://services.gradle.org/distributions/gradle-${EGRADLE_VER}-bin.zip
+	https://downloads.gradle.org/distributions/gradle-${EGRADLE_VER}-bin.zip
 "
+# eclass overrides it, set back to normal
+S="${WORKDIR}/${P}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~ppc64"
-
 IUSE="debug doc media cpu_flags_x86_sse2"
+REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )"
+RESTRICT="test" # needs junit version we don't have, fragile
 
 DEPEND="
 	app-arch/unzip
@@ -42,13 +45,6 @@ RDEPEND="
 	dev-java/swt:4.10[cairo,opengl]
 	virtual/jre:1.8
 "
-
-REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )"
-
-RESTRICT="test" # needs junit version we don't have, fragile
-
-# eclass overrides it, set back to normal
-S="${WORKDIR}/${P}"
 
 # FIXME: majority of flags are honored, needs a bit more patching
 QA_FLAGS_IGNORED=".*"
@@ -191,7 +187,7 @@ src_compile() {
 
 src_install() {
 	local dest="/usr/$(get_libdir)/openjdk-${SLOT}"
-	local ddest="${ED%/}/${dest#/}"
+	local ddest="${ED}${dest}"
 	dodir "${dest}"
 	pushd build/export/sdk > /dev/null || die
 	cp -pPRv * "${ddest}" || die
