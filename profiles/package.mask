@@ -265,11 +265,6 @@ sci-biology/express
 # Removal on 2023-09-27.  Bug #906516.
 dev-python/pytz_deprecation_shim
 
-# Hans de Graaff <graaff@gentoo.org> (2023-08-26)
-# Obsolete slot. Use the newer shoulda slot instead.
-# Masked for removal on 2023-09-26
-dev-ruby/shoulda:0
-
 # Sam James <sam@gentoo.org> (2023-08-18)
 # Masked for testing.
 =sys-libs/zlib-1.3-r1
