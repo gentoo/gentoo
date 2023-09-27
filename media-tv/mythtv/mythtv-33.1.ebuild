@@ -117,6 +117,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-lang/yasm
+	sys-kernel/linux-headers
 	x11-base/xorg-proto
 	perl? (
 		dev-perl/DBD-mysql
@@ -147,6 +148,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-33.1-libva.patch
 	"${FILESDIR}"/${PN}-33.1-ffmpeg-binutils-2.41.patch
+	"${FILESDIR}"/${PN}-33.1-linux-headers-6.5.patch
 )
 
 python_check_deps() {
