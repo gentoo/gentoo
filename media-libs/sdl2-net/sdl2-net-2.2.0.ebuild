@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="static-libs"
 
 RDEPEND=">=media-libs/libsdl2-2.0.4[${MULTILIB_USEDEP}]"
