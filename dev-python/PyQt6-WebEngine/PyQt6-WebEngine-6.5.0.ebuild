@@ -22,7 +22,7 @@ IUSE="debug quick +widgets"
 
 RDEPEND="
 	>=dev-python/PyQt6-${PV}[gui,ssl,${PYTHON_USEDEP}]
-	>=dev-qt/qtbase-${QT_PV}
+	>=dev-qt/qtbase-${QT_PV}[gui,widgets?]
 	>=dev-qt/qtwebengine-${QT_PV}[widgets]
 	quick? ( dev-python/PyQt6[qml] )
 	widgets? ( dev-python/PyQt6[network,printsupport,webchannel,widgets] )
