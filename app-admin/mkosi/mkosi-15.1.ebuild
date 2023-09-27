@@ -15,7 +15,7 @@ SRC_URI="https://github.com/systemd/mkosi/archive/refs/tags/${RELEASE}.tar.gz ->
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 RDEPEND="
 	app-emulation/qemu
 	sys-apps/bubblewrap
