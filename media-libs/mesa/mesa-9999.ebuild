@@ -187,6 +187,11 @@ BDEPEND="
 S="${WORKDIR}/${MY_P}"
 EGIT_CHECKOUT_DIR=${S}
 
+PATCHES=(
+	# Workaround the CMake dependency lookup returning a different LLVM to llvm-config, bug #907965
+	"${FILESDIR}/clang_config_tool.patch"
+)
+
 QA_WX_LOAD="
 x86? (
 	usr/lib/libglapi.so.0.0.0

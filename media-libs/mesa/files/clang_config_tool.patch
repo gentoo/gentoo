@@ -1,0 +1,13 @@
+Workaround the CMake dependency lookup returning a different LLVM to llvm-config.
+
+Bug: https://bugs.gentoo.org/907965
+--- a/meson.build
++++ b/meson.build
+@@ -1691,6 +1691,7 @@ if _llvm.allowed()
+     static : not _shared_llvm,
+     fallback : ['llvm', 'dep_llvm'],
+     include_type : 'system',
++    method: 'config-tool',
+   )
+   with_llvm = dep_llvm.found()
+ endif
