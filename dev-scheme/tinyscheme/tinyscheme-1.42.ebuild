@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit multilib toolchain-funcs
 
 DESCRIPTION="Lightweight scheme interpreter"
 HOMEPAGE="https://tinyscheme.sourceforge.net/"
