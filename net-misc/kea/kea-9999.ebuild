@@ -10,7 +10,7 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
 HOMEPAGE="https://www.isc.org/kea/"
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..12} )
 
 inherit autotools fcaps python-single-r1 systemd tmpfiles
 
