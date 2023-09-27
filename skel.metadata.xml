@@ -16,6 +16,7 @@
     <email>exampledev@gentoo.org</email>
     <description>Primary maintainer</description>
   </maintainer>
+<!--   The email and names of maintainer are given below. -->
   <maintainer type="project">
     <email>exampleproject@gentoo.org</email>
     <name>Gentoo Example Project</name>
