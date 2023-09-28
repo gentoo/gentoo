@@ -446,20 +446,22 @@ check_targets() {
 	popd >/dev/null
 }
 
-if [[ ${PV} == 9999 ]]; then
 src_unpack() {
-	git-r3_src_unpack
-	for file in ${A}; do
-		unpack "${file}"
-	done
-	cd ${WORKDIR} || die
-	for proj in "${!SUBPROJECTS[@]}"; do
-		mv "${proj}-${SUBPROJECTS[${proj}]}" "${S}/subprojects/${proj}" || die
-	done
-	cd "${S}" || die
-	meson subprojects packagefiles --apply || die
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+		for file in ${A}; do
+			unpack "${file}"
+		done
+		cd "${WORKDIR}" || die
+		for proj in "${!SUBPROJECTS[@]}"; do
+			mv "${proj}-${SUBPROJECTS[${proj}]}" "${S}/subprojects/${proj}" || die
+		done
+		cd "${S}" || die
+		meson subprojects packagefiles --apply || die
+	else
+		default
+	fi
 }
-fi
 
 src_prepare() {
 	check_targets IUSE_SOFTMMU_TARGETS softmmu
