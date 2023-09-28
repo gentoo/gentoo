@@ -11,7 +11,7 @@ SRC_URI="https://www.spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~loong x86"
 IUSE="gtk selinux systemd"
 
 COMMON_DEPEND="
