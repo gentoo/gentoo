@@ -65,7 +65,6 @@ src_configure() {
 		$(usev libinput)
 		$(usev x11-backend 'x11')
 	)
-	# Separate values with a comma with this evil floating point bit hack
 	local meson_backends=$(IFS=','; echo "${backends[*]}")
 	local emesonargs=(
 		$(meson_feature xcb-errors)
