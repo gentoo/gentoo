@@ -36,7 +36,7 @@ if [[ ${PV} == *9999* ]]; then
 
 	for proj in "${!SUBPROJECTS[@]}"; do
 		c=${SUBPROJECTS[${proj}]}
-		SRC_URI+=" https://gitlab.com/qemu-project/${proj}/-/archive/${c}/${proj}-${c}.tar.gz"
+		SRC_URI+=" https://gitlab.com/qemu-project/${proj}/-/archive/${c}/${proj}-${c}.tar.bz2"
 	done
 else
 	MY_P="${PN}-${PV/_rc/-rc}"
