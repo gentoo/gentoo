@@ -1,4 +1,4 @@
-# Copyright 2013-2021 Gentoo Authors
+# Copyright 2013-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2013-01-26)
@@ -7,4 +7,5 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
 # Requires net-libs/nodejs
+pdfium
 webengine
