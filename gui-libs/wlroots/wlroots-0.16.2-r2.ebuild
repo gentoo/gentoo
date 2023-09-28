@@ -26,37 +26,35 @@ REQUIRED_USE="
 
 DEPEND="
 	>=dev-libs/wayland-1.21.0
-	>=dev-libs/wayland-protocols-1.28
-	drm? ( sys-apps/hwdata:= )
-	libinput? ( >=dev-libs/libinput-1.14.0:0= )
 	media-libs/mesa[egl(+),gles2]
 	sys-auth/seatd:=
 	virtual/libudev
-	vulkan? (
-		dev-util/glslang:0=
-		dev-util/vulkan-headers:0=
-		media-libs/vulkan-loader:0=
-	)
-	>=x11-libs/libdrm-2.4.114:0=
+	>=x11-libs/libdrm-2.4.114
 	x11-libs/libxkbcommon
-	>=x11-libs/pixman-0.42.0:0=
+	>=x11-libs/pixman-0.42.0
+	drm? ( sys-apps/hwdata )
+	libinput? ( >=dev-libs/libinput-1.14.0:= )
+	vulkan? (
+		dev-util/glslang:=
+		dev-util/vulkan-headers
+		media-libs/vulkan-loader
+	)
+	xcb-errors? ( x11-libs/xcb-util-errors )
 	x11-backend? (
-		x11-libs/libxcb:0=
+		x11-libs/libxcb:=
 		x11-libs/xcb-util-renderutil
 	)
 	X? (
 		x11-base/xwayland
-		x11-libs/libxcb:0=
+		x11-libs/libxcb:=
 		x11-libs/xcb-util-wm
 	)
-	xcb-errors? ( x11-libs/xcb-util-errors )
 "
 RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.24
-	>=dev-util/meson-0.60.0
+	>=dev-libs/wayland-protocols-1.28
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
