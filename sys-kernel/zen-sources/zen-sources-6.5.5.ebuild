@@ -8,7 +8,7 @@ K_GENPATCHES_VER="7"
 K_SECURITY_UNSUPPORTED="1"
 K_NOSETEXTRAVERSION="1"
 
-inherit kernel-2
+inherit kernel-2 unpacker
 detect_version
 detect_arch
 
@@ -17,6 +17,7 @@ HOMEPAGE="https://github.com/zen-kernel"
 IUSE=""
 
 # Needed for zstd compression of the patch
+# Is this actually needed with the unpacker eclass?
 BDEPEND="app-arch/zstd"
 
 DESCRIPTION="The Zen Kernel Live Sources"
@@ -31,7 +32,7 @@ K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see:
 ${HOMEPAGE}, also go to #zen-sources on oftc"
 
 src_unpack() {
-	zstd -df "${DISTDIR}/linux-v${PV}-zen1.patch.zst" -o "${WORKDIR}/linux-v${PV}-zen1.patch"
+	unpacker "linux-v${PV}-zen1.patch.zst"
 	kernel-2_src_unpack
 }
 
