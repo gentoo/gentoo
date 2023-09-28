@@ -18,7 +18,7 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet +netifrc selinux sysv-utils unicode"
+IUSE="audit bash debug ncurses pam newnet +netifrc selinux +sysvinit sysv-utils unicode"
 
 COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
@@ -41,7 +41,7 @@ RDEPEND="${COMMON_DEPEND}
 		)
 		!sysv-utils? (
 			|| (
-				>=sys-apps/sysvinit-2.86-r6[selinux?]
+			sysvinit? ( >=sys-apps/sysvinit-2.86-r6[selinux?] )
 				sys-apps/s6-linux-init[sysv-utils(-)]
 			)
 		)
