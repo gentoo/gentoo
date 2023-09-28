@@ -50,6 +50,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.26-ncurses-mouse.patch
 	"${FILESDIR}"/${PN}-4.8.29-gentoo-tools.patch
+	"${FILESDIR}"/${PN}-4.8.30-mcdiff-segfault.patch
 )
 
 src_prepare() {
