@@ -1,0 +1,16 @@
+From 085a89ce3f7734fd9bc0527df7f0bb05e27fbaef Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Tue, 12 Sep 2023 07:42:23 +0100
+Subject: [PATCH] trivial: Fix parallel build, harder still
+
+Fixes https://github.com/fwupd/fwupd/issues/6175
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -17,6 +17,7 @@ engine_dep = [
+   polkit,
+   sqlite,
+   cbor,
++  fwupdplugin_rs_dep,
+ ]
+ 
+ if get_option('passim').allowed()
