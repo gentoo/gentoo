@@ -158,6 +158,7 @@ src_test() {
 		com.sun.jna.CallbacksTest # Needs to run separately
 		com.sun.jna.DirectTest # Needs to run separately
 		com.sun.jna.NativeTest # Needs to run separately
+		com.sun.jna.TypeMapperTest # Needs to run separately
 		com.sun.jna.UnionTest # Needs to run separately
 		com.sun.jna.VMCrashProtectionTest # Needs to run separately
 	)
@@ -174,6 +175,9 @@ src_test() {
 	java-pkg-simple_src_test
 
 	JAVA_TEST_RUN_ONLY=( com.sun.jna.VMCrashProtectionTest )
+	java-pkg-simple_src_test
+
+	JAVA_TEST_RUN_ONLY=( com.sun.jna.TypeMapperTest )
 	java-pkg-simple_src_test
 }
 
