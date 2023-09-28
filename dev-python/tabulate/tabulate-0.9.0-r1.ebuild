@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/wcwidth[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_impl_dep 'sqlite')
 		dev-python/colorclass[${PYTHON_USEDEP}]
