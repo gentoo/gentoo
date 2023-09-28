@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+
+: ${SLSKD_BIN:=/opt/slskd/slskd}
+
+# Program requires the relative path.
+SLSKD_WWWROOT="$(realpath --relative-to=$(dirname ${SLSKD_BIN}) $SLSKD_WWWROOT)"
+
+pidfile="/run/${RC_SVCNAME}.pid"
+command="${SLSKD_BIN}"
+command_args="--config ${SLSKD_CONFIG} --content-path ${SLSKD_WWWROOT}"
+command_user="slskd:slskd"
+command_background=true
+
+depend() {
+	use net
+}
+
+start_pre() {
+	# Program allows remote configuration
+	checkpath --owner slskd:slskd --file "${SLSKD_CONFIG}"
+}
