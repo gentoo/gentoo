@@ -1,9 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom mail/pom.xml --download-uri https://github.com/eclipse-ee4j/mail/archive/refs/tags/1.6.7.tar.gz --slot 0 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86" --ebuild javax-mail-1.6.7.ebuild
-
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
@@ -15,17 +12,14 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Jakarta Mail API"
 HOMEPAGE="https://jakartaee.github.io/mail-api/"
 SRC_URI="https://github.com/jakartaee/mail-api/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/mail-${PV}/mail"
 
 LICENSE="EPL-1.0 EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
-# Common dependencies
-# POM: mail/pom.xml
-# com.sun.activation:jakarta.activation:1.2.1 -> >=dev-java/jakarta-activation-1.2.2:1
-
 CDEPEND="
-	>=dev-java/jakarta-activation-1.2.2:1
+	dev-java/jakarta-activation:1
 "
 
 DEPEND="
@@ -37,25 +31,22 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CDEPEND}"
 
-DOCS=( ../{LICENSE,NOTICE,README}.md )
-
-S="${WORKDIR}/mail-${PV}/mail"
+DOCS=( ../{NOTICE,README}.md )
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 	mv src/main/{resources,java}/javax/mail/Version.java || die
 }
 
 JAVA_ENCODING="iso-8859-1"
-
 JAVA_GENTOO_CLASSPATH="jakarta-activation-1"
-JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
+JAVA_SRC_DIR="src/main/java"
 
-JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_SRC_DIR="src/test/java"
-JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_EXTRA_ARGS=( -ea )
+JAVA_TEST_GENTOO_CLASSPATH="junit-4"
+JAVA_TEST_RESOURCE_DIRS="src/test/resources"
+JAVA_TEST_SRC_DIR="src/test/java"
 
 src_test() {
 	pushd src/test/java || die
@@ -71,9 +62,4 @@ src_test() {
 	popd
 
 	java-pkg-simple_src_test
-}
-
-src_install() {
-	default # https://bugs.gentoo.org/789582
-	java-pkg-simple_src_install
 }
