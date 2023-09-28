@@ -1,0 +1,33 @@
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Thu, 28 Sep 2023 18:45:45 +0000
+Subject: [PATCH 1/1] ez-ipupdate.c: comment socketopen and socketclose
+
+From the looks at it, socketopen and socketclose and not used under
+__linux__ and hence it's better to not use them and cause unnecessary
+compilation bugs.
+
+Bug: https://bugs.gentoo.org/897848
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/ez-ipupdate.c
++++ b/ez-ipupdate.c
+@@ -5182,7 +5182,7 @@ int main(int argc, char **argv)
+         struct sockaddr_in sin;
+         int sock;
+ 
+-        socketopen(sock);
++        /*socketopen(sock);*/
+         if(get_if_addr(sock, interface, &sin) == 0)
+         {
+           if(address) { free(address); }
+@@ -5193,7 +5193,7 @@ int main(int argc, char **argv)
+           show_message("could not resolve ip address for %s\n", interface);
+           exit(1);
+         }
+-        socketclose(sock);
++        /*socketclose(sock);*/
+       }
+ 
+       for(i=0; i<ntrys; i++)
+-- 
+2.42.0
+
