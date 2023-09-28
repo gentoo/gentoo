@@ -16,7 +16,6 @@ RDEPEND="
 	virtual/perl-Carp
 	dev-perl/Class-XSAccessor
 	dev-perl/File-Find-Object
-	dev-perl/PathTools
 	dev-perl/Number-Compare
 	dev-perl/Text-Glob
 "
