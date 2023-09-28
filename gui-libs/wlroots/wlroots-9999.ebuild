@@ -28,42 +28,41 @@ REQUIRED_USE="
 
 DEPEND="
 	>=dev-libs/wayland-1.22.0
-	drm? (
-		liftoff? ( >=dev-libs/libliftoff-0.4 )
-		media-libs/libdisplay-info
-		sys-apps/hwdata:=
-	)
-	libinput? ( >=dev-libs/libinput-1.14.0:0= )
 	media-libs/mesa[egl(+),gles2]
+	>=x11-libs/libdrm-2.4.114
+	x11-libs/libxkbcommon
+	>=x11-libs/pixman-0.42.0
+	drm? (
+		media-libs/libdisplay-info
+		sys-apps/hwdata
+		liftoff? ( >=dev-libs/libliftoff-0.4 )
+	)
+	libinput? ( >=dev-libs/libinput-1.14.0:= )
 	session? (
 		sys-auth/seatd:=
 		virtual/libudev
 	)
 	vulkan? (
-		dev-util/glslang:0=
-		dev-util/vulkan-headers:0=
-		media-libs/vulkan-loader:0=
+		dev-util/glslang:=
+		dev-util/vulkan-headers
+		media-libs/vulkan-loader
 	)
-	>=x11-libs/libdrm-2.4.114:0=
-	x11-libs/libxkbcommon
-	>=x11-libs/pixman-0.42.0:0=
+	xcb-errors? ( x11-libs/xcb-util-errors )
 	x11-backend? (
-		x11-libs/libxcb:0=
+		x11-libs/libxcb:=
 		x11-libs/xcb-util-renderutil
 	)
 	X? (
-		x11-base/xwayland
-		x11-libs/libxcb:0=
+		x11-libs/libxcb:=
 		x11-libs/xcb-util-wm
+		x11-base/xwayland
 	)
-	xcb-errors? ( x11-libs/xcb-util-errors )
 "
 RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.32
-	>=dev-util/meson-0.60.0
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
