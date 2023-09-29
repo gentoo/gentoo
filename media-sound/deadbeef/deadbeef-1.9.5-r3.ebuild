@@ -37,7 +37,7 @@ DEPEND="
 		media-libs/imlib2[jpeg,png]
 	)
 	dts? ( media-libs/libdca )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg:= )
 	flac? (
 		media-libs/flac:=
 		media-libs/libogg
