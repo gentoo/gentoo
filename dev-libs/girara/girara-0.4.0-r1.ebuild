@@ -20,7 +20,6 @@ fi
 LICENSE="ZLIB"
 SLOT="0"
 IUSE="doc libnotify test"
-
 RESTRICT="!test? ( test )"
 
 DEPEND="
