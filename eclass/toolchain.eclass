@@ -1354,20 +1354,43 @@ toolchain_src_configure() {
 	if is_jit ; then
 		einfo "Configuring JIT gcc"
 
+		local confgcc_jit=(
+			"${confgcc[@]}"
+
+			--disable-analyzer
+			--disable-bootstrap
+			--disable-cet
+			--disable-default-pie
+			--disable-default-ssp
+			--disable-gcov
+			--disable-libada
+			--disable-libatomic
+			--disable-libgomp
+			--disable-libitm
+			--disable-libquadmath
+			--disable-libsanitizer
+			--disable-libssp
+			--disable-libstdcxx-pch
+			--disable-libvtv
+			--disable-lto
+			--disable-nls
+			--disable-objc-gc
+			--disable-systemtap
+			--enable-host-shared
+			--enable-languages=jit
+			--without-isl
+			--without-zstd
+			--with-system-zlib
+		)
+
+		if tc_version_is_at_least 13.1 ; then
+			confgcc_jit+=( --disable-fixincludes )
+		fi
+
 		mkdir -p "${WORKDIR}"/build-jit || die
 		pushd "${WORKDIR}"/build-jit > /dev/null || die
-		CONFIG_SHELL="${gcc_shell}" edo "${gcc_shell}" "${S}"/configure \
-				"${confgcc[@]}" \
-				--disable-libada \
-				--disable-libsanitizer \
-				--disable-libvtv \
-				--disable-libgomp \
-				--disable-libquadmath \
-				--disable-libatomic \
-				--disable-lto \
-				--disable-bootstrap \
-				--enable-host-shared \
-				--enable-languages=jit
+
+		CONFIG_SHELL="${gcc_shell}" edo "${gcc_shell}" "${S}"/configure "${confgcc_jit[@]}"
 		popd > /dev/null || die
 	fi
 
@@ -1701,11 +1724,8 @@ gcc_do_make() {
 
 	if is_jit ; then
 		# TODO: docs for jit?
-		pushd "${WORKDIR}"/build-jit > /dev/null || die
-
 		einfo "Building JIT"
-		emake "${emakeargs[@]}"
-		popd > /dev/null || die
+		emake -C "${WORKDIR}"/build-jit "${emakeargs[@]}"
 	fi
 
 	einfo "Compiling ${PN} (${GCC_MAKE_TARGET})..."
