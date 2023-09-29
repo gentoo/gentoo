@@ -271,10 +271,6 @@ sci-biology/express
 # Removal on 2023-09-27.  Bug #906516.
 dev-python/pytz_deprecation_shim
 
-# Sam James <sam@gentoo.org> (2023-08-18)
-# Masked for testing.
-=sys-libs/zlib-1.3-r1
-
 # Jonas Stein <jstein@gentoo.org> (2023-08-17)
 # Upstream warns that it is broken and there is no fix since 2010
 # Removal after 2023-10-01.  Bug #912363.
