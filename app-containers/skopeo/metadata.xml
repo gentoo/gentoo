@@ -5,10 +5,22 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>me@rahil.website</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="btrfs">Enables dependencies for the "btrfs" graph driver.</flag>
+		<flag name="device-mapper">Compiles with libdevmapper</flag>
+		<flag name="rootless">Compiles with libsubid</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">containers/skopeo</remote-id>
+		<bugs-to>https://github.com/containers/skopeo/issues</bugs-to>
+		<doc>https://github.com/containers/skopeo/blob/main/README.md</doc>
 	</upstream>
 </pkgmetadata>
