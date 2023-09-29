@@ -37,8 +37,8 @@ RDEPEND="
 	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
 	clang? ( <sys-devel/clang-$((LLVM_MAX_SLOT+1)):= )
 	designer? (
-		app-arch/zstd:=
 		~dev-qt/qtbase-${PV}:6[xml,zstd=]
+		zstd? ( app-arch/zstd:= )
 	)
 	qdbus? ( ~dev-qt/qtbase-${PV}:6[dbus,xml] )
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets?] )
