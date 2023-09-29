@@ -9,6 +9,10 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>leohdz172@proton.me</email>
+		<name>Leonardo Hernández Hernández</name>
+	</maintainer>
 	<longdescription lang="en">
 		Pluggable, composable, unopinionated modules for building a Wayland
 		compositor.
@@ -34,8 +38,8 @@
 		<remote-id type="github">swaywm/wlroots</remote-id>
 		<remote-id type="freedesktop-gitlab">wlroots/wlroots</remote-id>
 		<maintainer status="active">
-			<email>sir@cmpwn.com</email>
-			<name>Drew DeVault</name>
+			<email>contact@emersion.fr</email>
+			<name>Simon Ser</name>
 		</maintainer>
 		<bugs-to>https://gitlab.freedesktop.org/wlroots/wlroots/-/issues</bugs-to>
 		<doc>https://gitlab.freedesktop.org/wlroots/wlroots/-/wikis/home</doc>

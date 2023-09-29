@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}/5.11.0-makefile-flags.patch"
 	"${FILESDIR}/jna-5.11.0-no-Werror.patch"
 	"${FILESDIR}/jna-5.13.0-testpath.patch"
+	"${FILESDIR}/jna-5.13.0-LibCTest.patch"
 )
 
 src_prepare() {
@@ -149,14 +150,15 @@ src_test() {
 	# java.lang.UnsatisfiedLinkError: Unable to load library '/libtestlib-jar.so':
 	# /libtestlib-jar.so: cannot open shared object file: No such file or directory
 	jar cvf build/jna-test.jar \
-		-C build/native libtestlib-jar.so || die
+		-C build/native libtestlib-jar.so \
+		-C test com/sun/jna/data || die
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":build/jna-test.jar"
 
 	JAVA_TEST_EXCLUDES=(
 		com.sun.jna.CallbacksTest # Needs to run separately
 		com.sun.jna.DirectTest # Needs to run separately
-		com.sun.jna.ELFAnalyserTest # NPE
 		com.sun.jna.NativeTest # Needs to run separately
+		com.sun.jna.TypeMapperTest # Needs to run separately
 		com.sun.jna.UnionTest # Needs to run separately
 		com.sun.jna.VMCrashProtectionTest # Needs to run separately
 	)
@@ -173,6 +175,9 @@ src_test() {
 	java-pkg-simple_src_test
 
 	JAVA_TEST_RUN_ONLY=( com.sun.jna.VMCrashProtectionTest )
+	java-pkg-simple_src_test
+
+	JAVA_TEST_RUN_ONLY=( com.sun.jna.TypeMapperTest )
 	java-pkg-simple_src_test
 }
 

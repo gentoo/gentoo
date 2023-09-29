@@ -5,6 +5,14 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>rahil3108@gmail.com</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		Netavark is a rust based network stack for containers. It is
 		being designed to work with Podman but is also applicable for
@@ -12,5 +20,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">containers/netavark</remote-id>
+		<bugs-to>https://github.com/containers/netavark/issues</bugs-to>
+		<doc>https://github.com/containers/netavark/blob/main/README.md</doc>
 	</upstream>
 </pkgmetadata>

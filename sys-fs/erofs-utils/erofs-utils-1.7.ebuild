@@ -10,7 +10,7 @@ HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git"
 LICENSE="GPL-2+"
 
 SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/${PN}.git/snapshot/${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~loong"
 
 SLOT="0"
 IUSE="fuse +lz4 +lzma selinux +uuid +zlib"

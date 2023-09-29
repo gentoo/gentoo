@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~sultan/distfiles/dev-util/gn/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 
 BDEPEND="
 	${PYTHON_DEPS}

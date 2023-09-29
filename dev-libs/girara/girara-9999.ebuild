@@ -1,14 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson virtualx
 
 DESCRIPTION="UI library that focuses on simplicity and minimalism"
 HOMEPAGE="https://pwmt.org/projects/girara/"
 
-if [[ ${PV} == *999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
@@ -23,24 +23,38 @@ IUSE="doc libnotify test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-libs/glib:2
+DEPEND="
+	app-accessibility/at-spi2-core
+	dev-libs/glib:2
 	dev-libs/json-glib:=
+	media-libs/harfbuzz:=
+	x11-libs/cairo[glib]
+	x11-libs/gdk-pixbuf
 	>=x11-libs/gtk+-3.20:3
-	libnotify? ( x11-libs/libnotify )"
+	x11-libs/pango
+	libnotify? ( x11-libs/libnotify )
+"
 RDEPEND="${DEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )
-	test? ( dev-libs/check )
-	virtual/pkgconfig"
+# Tests are run under virtx
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+	test? (
+		dev-libs/check
+		x11-libs/gtk+:3[X]
+	)
+"
 
 src_configure() {
-	local emesonargs=(
+	local -a emesonargs=(
 		-Djson=enabled
-		-Ddocs=$(usex doc enabled disabled)
-		-Dnotify=$(usex libnotify enabled disabled)
+		$(meson_feature doc docs)
+		$(meson_feature libnotify notify)
 	)
 	meson_src_configure
 }
 
 src_test() {
+	# TODO: run test on wayland
 	virtx meson_src_test
 }

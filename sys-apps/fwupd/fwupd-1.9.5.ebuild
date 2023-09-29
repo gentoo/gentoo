@@ -94,6 +94,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.4-fragile_tests.patch
+	"${FILESDIR}"/${PN}-1.9.5-parallel_build.patch
 )
 
 pkg_pretend() {

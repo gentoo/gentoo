@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-09-29)
+# The project is no longer maintained upstream.  We haven't handled
+# the version bump from a year ago yet.  No reverse dependencies.
+# Removal on 2023-10-29.  Bug #894592.
+dev-python/django-mptt
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-23)
 # >=media-sound/spotify-1.2.20 now has its own tray icon.
 # Therefore the use case for this package is gone.

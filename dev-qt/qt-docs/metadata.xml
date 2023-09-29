@@ -40,6 +40,7 @@
 		<flag name="quick3dphysics">Install documentation for QtQuick3DPhysics (unpackaged)</flag>
 		<flag name="quickcontrols">Install documentation for <pkg>dev-qt/qtquickcontrols</pkg></flag>
 		<flag name="quickcontrols2">Install documentation for <pkg>dev-qt/qtquickcontrols2</pkg></flag>
+		<flag name="quickeffectmaker">Install documentation for QtQuickEffectMaker (unpackaged)</flag>
 		<flag name="remoteobjects">Install documentation for QtRemoteObjects (unpackaged)</flag>
 		<flag name="script">Install documentation for <pkg>dev-qt/qtscript</pkg></flag>
 		<flag name="scxml">Install documentation for <pkg>dev-qt/qtscxml</pkg></flag>
