@@ -64,7 +64,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-configure.patch"
-	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
 	"${FILESDIR}/${PN}-2.2.0-ffmpeg6.patch"
 	"${FILESDIR}/${PN}-2.2.0-ffmpeg6-deux.patch"
 )
@@ -86,6 +85,13 @@ my_use() {
 	else
 		echo "--use-${pflag}=no"
 	fi
+}
+
+src_prepare() {
+	default
+
+	# TODO: remove when old zlib is no longer in tree
+	has_version "<sys-libs/zlib-1.3" && eapply "${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
 }
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,7 +64,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.0-configure.patch"
-	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
 )
 
 DOCS=(
@@ -91,6 +90,9 @@ my_use() {
 src_prepare() {
 	default
 	sed -i -e "s:\(--disable-.*\)=\*):\1):" configure || die
+
+	# TODO: remove when old zlib is no longer in tree
+	has_version "<sys-libs/zlib-1.3" && eapply "${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
 }
 
 src_configure() {
