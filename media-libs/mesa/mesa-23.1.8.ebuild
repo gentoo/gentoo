@@ -291,6 +291,12 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	default
+	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
+		bin/symbols-check.py || die # bug #830728
+}
+
 multilib_src_configure() {
 	local emesonargs=()
 
