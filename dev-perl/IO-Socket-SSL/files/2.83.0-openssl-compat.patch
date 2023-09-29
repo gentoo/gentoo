@@ -1,0 +1,56 @@
+From a1ff93e99d504eb11cec1739ca57057731e3c2cb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Thu, 28 Sep 2023 22:20:59 +0200
+Subject: [PATCH] Adapt to new OpenSSL version / ABI compatibility scheme
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+https://www.openssl.org/policies/releasestrat.html
+
+In short, as of 3.0.0, when the version is MAJOR.MINOR.PATCH,
+only changes in MAJOR indicate API/ABI incompatible changes.
+
+Fixes: https://github.com/noxxi/p5-io-socket-ssl/issues/137
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=909545
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ Makefile.PL | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 8a35591..f6b3195 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -64,16 +64,27 @@ if (my $compiled = eval {
+ 	$compiled) if $compiled < 0x00908000;
+ 
+     my $linked = Net::SSLeay::SSLeay();
+-    if (($compiled ^ $linked) >= 0x00001000) {
+-	die sprintf("API-different OpenSSL versions compiled in (0x%08x) vs linked (0x%08x)",
+-	    $compiled,$linked);
+-    }
+ 
+     # OpenSSL 1.1.1e introduced behavior changes breaking various code
+     # will likely be reverted  in 1.1.1f - enforce to not use this version
+     if ($linked == 0x1010105f) {
+ 	die "detected OpenSSL 1.1.1e - please use a different version\n";
+     }
++
++    # For old versions we need to be rather strict, however OpenSSL explicitly
++    # declares that from 3.0 on x.y versions are for all y ABI-compatible.
++    # https://www.openssl.org/policies/releasestrat.html
++    if ($linked <  0x30000000) {
++      if (($compiled ^ $linked) >= 0x00001000) {
++	  die sprintf("API-different OpenSSL versions compiled in (0x%08x) vs linked (0x%08x)",
++	      $compiled,$linked);
++      }
++    } else {
++      if (($compiled ^ $linked) >= 0x10000000) {
++	  die sprintf("API-different OpenSSL versions compiled in (0x%08x) vs linked (0x%08x)",
++	      $compiled,$linked);
++      }
++    }
+ }
+ 
+ # make sure that we have dualvar from the XS Version of Scalar::Util

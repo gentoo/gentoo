@@ -30,4 +30,8 @@ BDEPEND="
 	virtual/perl-ExtUtils-MakeMaker
 "
 
+PATCHES=(
+	"${FILESDIR}/${PV}-openssl-compat.patch"
+)
+
 mydoc=("docs/debugging.txt")
