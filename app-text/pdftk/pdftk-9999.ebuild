@@ -9,7 +9,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="gcj-free version of pdftk written in Java"
+DESCRIPTION="A port of pdftk into java"
 HOMEPAGE="https://gitlab.com/pdftk-java/pdftk"
 
 if [[ ${PV} == 9999 ]] ; then
@@ -25,15 +25,11 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
+# Switch back to bcprov:0 once pdftk updates its bcprov dependency.
 CP_DEPEND="
-	dev-java/bcprov:0
+	dev-java/bcprov:1.74
 	dev-java/commons-lang:3.6
 "
-
-# Compile dependencies
-# POM: pom.xml
-# test? com.github.stefanbirkner:system-rules:1.19.0 -> !!!groupId-not-found!!!
-# test? junit:junit:4.12 -> >=dev-java/junit-4.13.2:4
 
 DEPEND="
 	>=virtual/jdk-1.8:*
@@ -50,16 +46,15 @@ RDEPEND="
 
 DOCS=( CHANGELOG.md README.md )
 
-JAVA_LAUNCHER_FILENAME="${PN}"
 JAVA_MAIN_CLASS="com.gitlab.pdftk_java.pdftk"
-JAVA_SRC_DIR="java"
 JAVA_RESOURCE_DIRS="resources/java"
+JAVA_SRC_DIR="java"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4,system-rules"
 JAVA_TEST_SRC_DIR="test"
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 	mkdir resources || die
 	cp -r {,resources/}java || die
 	rm -r resources/java/com/gitlab/pdftk_java/com/lowagie/text/pdf/codec || die
@@ -85,4 +80,9 @@ src_test() {
 		com.gitlab.pdftk_java.MultipleTest
 	)
 	java-pkg-simple_src_test
+}
+
+src_install() {
+	java-pkg-simple_src_install
+	doman "${PN}.1"
 }
