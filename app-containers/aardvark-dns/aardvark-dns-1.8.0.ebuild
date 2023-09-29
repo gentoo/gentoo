@@ -18,6 +18,7 @@ else
 fi
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unlicense Unicode-DFS-2016 ZLIB"
 SLOT="0"
+QA_FLAGS_IGNORED="usr/libexec/podman/${PN}"
 QA_PRESTRIPPED="usr/libexec/podman/${PN}"
 ECARGO_VENDOR="${WORKDIR}/vendor"
 
