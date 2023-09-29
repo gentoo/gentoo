@@ -33,7 +33,7 @@ src_unpack() {
 	default
 
 	# remove lua binaries (bug #631554)
-	rm -fr "${S}"/extensions/Scribunto/includes/engines/LuaStandalone/binaries || die "Failed to remove lua binaries"
+	rm -r "${S}"/extensions/Scribunto/includes/engines/LuaStandalone/binaries || die "Failed to remove lua binaries"
 }
 
 src_install() {
@@ -49,7 +49,7 @@ src_install() {
 	docinto databases
 	dodoc docs/databases/*
 	# Clean everything not used at the site...
-	rm -rf ${DOCS} COPYING tests docs || die
+	rm -r ${DOCS} COPYING tests docs || die
 	find . -name Makefile -delete || die
 	# and install
 	insinto "${MY_HTDOCSDIR}"
@@ -77,6 +77,10 @@ pkg_postinst() {
 		echo
 		elog "These detail bug fixes, new features and functionality, and any"
 		elog "particular points that may need to be noted during the upgrade procedure."
+		echo
+		elog "If you plan to use the Scribunto extension with Lua, make sure to configure"
+		elog "path to Lua executable using this documentation:"
+		elog "https://www.mediawiki.org/wiki/Extension:Scribunto#Lua_binary"
 		echo
 		ewarn "Back up existing files and the database before upgrade."
 		ewarn "http://www.mediawiki.org/wiki/Manual:Backing_up_a_wiki"
