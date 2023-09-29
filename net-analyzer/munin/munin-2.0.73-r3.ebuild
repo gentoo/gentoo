@@ -32,6 +32,7 @@ DEPEND_COM="
 	acct-group/munin
 	dev-lang/perl:=[berkdb]
 	dev-perl/DBI
+	dev-perl/Date-Manip
 	dev-perl/File-Copy-Recursive
 	dev-perl/List-MoreUtils
 	dev-perl/Log-Log4perl
