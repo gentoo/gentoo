@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,12 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/u4
 
+PATCHES=(
+	"${FILESDIR}/${P}-ldflags.patch"
+	"${FILESDIR}/${PV}-savegame.patch"
+	"${FILESDIR}/${P}-warnings.patch"
+)
+
 src_unpack() {
 	# xu4 will read the data files right out of the zip files
 	# but we want the docs from the original.
@@ -34,12 +40,6 @@ src_unpack() {
 	unzip -q ../ultima4.zip || die
 }
 
-PATCHES=(
-	"${FILESDIR}/${P}-ldflags.patch"
-	"${FILESDIR}/${PV}-savegame.patch"
-	"${FILESDIR}/${P}-warnings.patch"
-	"${FILESDIR}/${P}-zip.patch"
-)
 src_prepare() {
 	default
 
@@ -49,6 +49,8 @@ src_prepare() {
 	sed -i \
 		-e 's:-Wall:$(E_CFLAGS):' src/Makefile \
 		|| die
+
+	has_version "<sys-libs/zlib-1.3" && eapply "${FILESDIR}/${P}-zip.patch"
 }
 
 src_compile() {
