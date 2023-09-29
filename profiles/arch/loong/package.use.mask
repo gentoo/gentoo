@@ -1,6 +1,11 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2023-09-29)
+# no luajit for now
+media-gfx/gimp lua
+www-servers/nginx nginx_modules_http_lua
+
 # WANG Xuerui <xen0n@gentoo.org> (2023-09-24)
 # fails tests
 gnome-extra/gnome-software flatpak
