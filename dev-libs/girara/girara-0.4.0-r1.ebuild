@@ -23,9 +23,14 @@ IUSE="doc libnotify test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	app-accessibility/at-spi2-core
 	dev-libs/glib:2
 	dev-libs/json-glib:=
+	media-libs/harfbuzz:=
+	x11-libs/cairo[glib]
+	x11-libs/gdk-pixbuf
 	>=x11-libs/gtk+-3.20:3
+	x11-libs/pango
 	libnotify? ( x11-libs/libnotify )
 "
 RDEPEND="${DEPEND}"
