@@ -4,7 +4,7 @@
 # @ECLASS: depend.apache.eclass
 # @MAINTAINER:
 # apache-bugs@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Functions to allow ebuilds to depend on apache
 # @DESCRIPTION:
 # This eclass handles depending on apache in a sane way and provides information
@@ -41,7 +41,7 @@
 # @CODE
 
 case ${EAPI:-0} in
-	6|7)
+	6|7|8)
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by depend.apache.eclass"
