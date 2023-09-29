@@ -21,6 +21,8 @@ SLOT="0"
 BDEPEND="dev-go/go-md2man
 	dev-libs/protobuf"
 
+QA_FLAGS_IGNORED="
+	usr/libexec/podman/${PN}"
 QA_PRESTRIPPED="
 	usr/libexec/podman/${PN}"
 
