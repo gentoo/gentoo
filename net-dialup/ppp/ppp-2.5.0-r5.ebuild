@@ -85,7 +85,7 @@ src_configure() {
 		--runstatedir="${EPREFIX}"/run
 		$(use_enable systemd)
 		$(use_with atm)
-		$(usex pam --with-pam="${SYSROOT}/usr/" --without-pam)
+		"$(use_with pam pam "${SYSROOT}/usr/")"
 		$(use_with activefilter pcap)
 		$(use_with gtk)
 		--enable-cbcp
