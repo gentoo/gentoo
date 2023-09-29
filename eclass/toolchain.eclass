@@ -753,6 +753,9 @@ setup_multilib_osdirnames() {
 #---->> src_configure <<----
 
 toolchain_src_configure() {
+	BUILD_CONFIG_TARGETS=()
+	is-flagq '-O3' && BUILD_CONFIG_TARGETS+=( bootstrap-O3 )
+
 	downgrade_arch_flags
 	gcc_do_filter_flags
 
@@ -771,8 +774,6 @@ toolchain_src_configure() {
 	export JAR=no
 
 	local confgcc=( --host=${CHOST} )
-
-	local build_config_targets=()
 
 	if is_crosscompile || tc-is-cross-compiler ; then
 		# Straight from the GCC install doc:
@@ -898,11 +899,11 @@ toolchain_src_configure() {
 
 	# Build compiler itself using LTO
 	if tc_version_is_at_least 9.1 && _tc_use_if_iuse lto ; then
-		build_config_targets+=( bootstrap-lto )
+		BUILD_CONFIG_TARGETS+=( bootstrap-lto )
 	fi
 
 	if tc_version_is_at_least 12 && _tc_use_if_iuse cet ; then
-		build_config_targets+=( bootstrap-cet )
+		BUILD_CONFIG_TARGETS+=( bootstrap-cet )
 	fi
 
 	# Support to disable PCH when building libstdcxx
@@ -1321,9 +1322,9 @@ toolchain_src_configure() {
 
 	confgcc+=( "$@" ${EXTRA_ECONF} )
 
-	if ! is_crosscompile && ! tc-is-cross-compiler && [[ -n ${build_config_targets} ]] ; then
+	if ! is_crosscompile && ! tc-is-cross-compiler && [[ -n ${BUILD_CONFIG_TARGETS} ]] ; then
 		# e.g. ./configure --with-build-config='bootstrap-lto bootstrap-cet'
-		confgcc+=( --with-build-config="${build_config_targets[*]}" )
+		confgcc+=( --with-build-config="${BUILD_CONFIG_TARGETS[*]}" )
 	fi
 
 	# Nothing wrong with a good dose of verbosity
@@ -1501,7 +1502,14 @@ gcc_do_filter_flags() {
 
 		# Lock gcc at -O2; we want to be conservative here.
 		filter-flags '-O?'
-		append-flags -O2
+
+		# We allow -O3 given it's a supported option upstream.
+		# Only add -O2 if we're not doing -O3.
+		if [[ ${BUILD_CONFIG_TARGETS[@]} == *bootstrap-O3* ]] ; then
+			append-flags '-O3'
+		else
+			append-flags '-O2'
+		fi
 	fi
 
 	# Please use USE=lto instead (bug #906007).
