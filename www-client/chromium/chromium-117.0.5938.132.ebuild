@@ -257,24 +257,28 @@ llvm_check_deps() {
 }
 
 pre_build_checks() {
-	# Check build requirements, bug #541816 and bug #471810 .
+	# Check build requirements: bugs #471810, #541816, #914220
+	# We're going to start doing maths here on the size of an unpacked source tarball,
+	# this should make updates easier as chromium continues to balloon in size.
+	local BASE_DISK=17
+	local EXTRA_DISK=1
 	CHECKREQS_MEMORY="4G"
-	CHECKREQS_DISK_BUILD="14G"
-	tc-is-cross-compiler && CHECKREQS_DISK_BUILD="16G"
+	tc-is-cross-compiler && EXTRA_DISK=2
 	if use lto || use pgo; then
 		CHECKREQS_MEMORY="9G"
-		CHECKREQS_DISK_BUILD="15G"
-		tc-is-cross-compiler && CHECKREQS_DISK_BUILD="18G"
-		use pgo && CHECKREQS_DISK_BUILD="22G"
+		EXTRA_DISK=2
+		tc-is-cross-compiler && EXTRA_DISK=3
+		use pgo && EXTRA_DISK=8
 	fi
 	if is-flagq '-g?(gdb)?([1-9])'; then
 		if use custom-cflags || use component-build; then
-			CHECKREQS_DISK_BUILD="27G"
+			EXTRA_DISK=13
 		fi
 		if ! use component-build; then
 			CHECKREQS_MEMORY="16G"
 		fi
 	fi
+	CHECKREQS_DISK_BUILD="$((BASE_DISK + EXTRA_DISK))G"
 	check-reqs_${EBUILD_PHASE_FUNC}
 }
 
