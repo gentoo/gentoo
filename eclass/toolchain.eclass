@@ -1693,7 +1693,9 @@ gcc_do_make() {
 		# XXX: Hack for bug #914881, clean this up when fixed and go back
 		# to just calling get_abi_LDFLAGS as before.
 		local abi_ldflags="$(get_abi_LDFLAGS ${TARGET_DEFAULT_ABI})"
-		printf -v abi_ldflags -- "-Wl,%s " ${abi_ldflags}
+		if [[ -n ${abi_ldflags} ]] ; then
+			printf -v abi_ldflags -- "-Wl,%s " ${abi_ldflags}
+		fi
 
 		# If the host compiler is too old, let's use -O0 per the upstream
 		# default to be safe (to avoid a bootstrap comparison failure later).
