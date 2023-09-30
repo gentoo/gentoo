@@ -23,7 +23,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="lapack"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="amd64 ~arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 RDEPEND="
