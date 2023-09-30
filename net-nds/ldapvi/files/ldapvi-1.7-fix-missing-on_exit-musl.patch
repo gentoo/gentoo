@@ -1,0 +1,61 @@
+Use internal on_exit function as on_exit is not available on musl libc Bug: https://bugs.gentoo.org/898066
+--- a/common.h
++++ b/common.h
+@@ -372,3 +372,7 @@ void sasl_defaults_free(tsasl_defaults *sd);
+ int ldapvi_sasl_interact(LDAP *ld, unsigned flags, void *defaults, void *p);
+ 
+ void fdcp(int fdsrc, int fddst);
++
++#ifndef HAVE_ON_EXIT
++int on_exit(void (*function)(int, void *), void *arg);
++#endif
+--- a/ldapvi.c
++++ b/ldapvi.c
+@@ -17,6 +17,7 @@
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
++#include <stdio.h>
+ #include <curses.h>
+ #include <signal.h>
+ #include <term.h>
+--- a/misc.c
++++ b/misc.c
+@@ -15,6 +15,7 @@
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
++#include <stdio.h>
+ #include <curses.h>
+ #include <term.h>
+ #include "common.h"
+--- a/parse.c
++++ b/parse.c
+@@ -18,6 +18,7 @@
+ #define _XOPEN_SOURCE
+ #include <unistd.h>
+ #include <crypt.h>
++#include <stdio.h>
+ #include "common.h"
+ 
+ #define fast_g_string_append_c(gstring, c)				\
+--- a/parseldif.c
++++ b/parseldif.c
+@@ -17,6 +17,7 @@
+  */
+ #define _XOPEN_SOURCE
+ #include <unistd.h>
++#include <stdio.h>
+ #include "common.h"
+ 
+ #define fast_g_string_append_c(gstring, c)				\
+--- a/port.c
++++ b/port.c
+@@ -31,6 +31,7 @@
+ #include <unistd.h>
+ 
+ #include "config.h"
++#include "common.h"
+ 
+ #if defined(HAVE_OPENSSL)
+ #include <openssl/sha.h>
