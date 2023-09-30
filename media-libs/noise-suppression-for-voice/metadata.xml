@@ -16,4 +16,9 @@
 	<upstream>
 		<remote-id type="github">werman/noise-suppression-for-voice</remote-id>
 	</upstream>
+	<use>
+		<flag name="lv2">Enable the LV2 plugin</flag>
+		<flag name="vst">Enable the VST plugin</flag>
+		<flag name="vst3">Enable the VST3 plugin</flag>
+	</use>
 </pkgmetadata>
