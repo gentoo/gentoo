@@ -65,10 +65,6 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/utils.h
 )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.8.0-printf-non-bash.patch
-)
-
 src_prepare() {
 	default
 
