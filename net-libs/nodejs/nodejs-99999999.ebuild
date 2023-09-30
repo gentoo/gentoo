@@ -41,8 +41,7 @@ RDEPEND=">=app-arch/brotli-1.0.9:=
 	sys-libs/zlib
 	corepack? ( !sys-apps/yarn )
 	system-icu? ( >=dev-libs/icu-67:= )
-	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
-	sys-devel/gcc:*"
+	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )"
 BDEPEND="${PYTHON_DEPS}
 	dev-util/ninja
 	sys-apps/coreutils
@@ -50,6 +49,9 @@ BDEPEND="${PYTHON_DEPS}
 	test? ( net-misc/curl )
 	pax-kernel? ( sys-apps/elfix )"
 DEPEND="${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-16.20.2-clang-fix-libatomic.patch
+)
 
 # These are measured on a loong machine with -ggdb on, and only checked
 # if debugging flags are present in CFLAGS.
@@ -115,11 +117,7 @@ src_configure() {
 	# LTO compiler flags are handled by configure.py itself
 	filter-lto
 	# nodejs unconditionally links to libatomic #869992
-	# specifically it requires __atomic_is_lock_free which
-	# is not yet implemented by sys-libs/compiler-rt (see
-	# https://reviews.llvm.org/D85044?id=287068), therefore
-	# we depend on gcc and force using libgcc as the support lib
-	tc-is-clang && append-ldflags "--rtlib=libgcc --unwindlib=libgcc"
+	append-atomic-flags
 
 	local myconf=(
 		--ninja
