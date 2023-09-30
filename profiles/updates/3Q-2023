@@ -17,3 +17,4 @@ move dev-python/memory_profiler dev-python/memory-profiler
 move dev-libs/paho-mqtt-c net-libs/paho-mqtt-c
 move dev-lisp/ecls dev-lisp/ecl
 move sys-devel/ct-ng sys-devel/crosstool-ng
+move dev-python/stack_data dev-python/stack-data
