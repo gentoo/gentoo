@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Task scheduling and blocked algorithms for parallel processing"
 HOMEPAGE="
@@ -42,6 +42,7 @@ BDEPEND="
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/numexpr[${PYTHON_USEDEP}]
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 	)
 "
@@ -81,5 +82,6 @@ python_test() {
 	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_rerunfailures -m "not network"
+	epytest -p pytest_rerunfailures -m "not network" \
+		-p xdist -n "$(makeopts_jobs)"
 }
