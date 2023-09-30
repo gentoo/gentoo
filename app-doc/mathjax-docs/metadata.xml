@@ -21,4 +21,5 @@
   <upstream>
     <remote-id type="github">mathjax/MathJax-docs</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
