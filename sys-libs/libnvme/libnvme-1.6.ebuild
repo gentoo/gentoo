@@ -13,7 +13,8 @@ SRC_URI="https://github.com/linux-nvme/libnvme/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="dbus +json keyutils python ssl +uuid"
+IUSE="dbus +json keyutils python ssl test +uuid"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -34,9 +35,14 @@ BDEPEND="
 	dev-lang/swig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6-musl.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Dpython=false
+		$(meson_use test tests)
 		$(meson_feature json json-c)
 		$(meson_feature dbus libdbus)
 		$(meson_feature keyutils)
