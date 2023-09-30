@@ -24,7 +24,7 @@ DEPEND="media-libs/libcddb
 # dlopen() deps
 RDEPEND="${DEPEND}
 	flac? ( media-libs/flac )
-	mac? ( media-sound/mac )
+	mac? ( <=media-sound/mac-4.12 )
 	mp3? ( media-sound/lame )
 	musepack? ( media-sound/musepack-tools )
 	opus? ( media-sound/opus-tools )

@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-qt/qttest:5
 		media-libs/flac
-		media-sound/mac
+		<=media-sound/mac-4.12
 		media-sound/shntool
 		media-sound/ttaenc
 		media-sound/wavpack

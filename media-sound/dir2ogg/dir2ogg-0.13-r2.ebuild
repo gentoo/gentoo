@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 		media-libs/flac
 		media-video/mplayer ) )
 	mac? ( || (
-		media-sound/mac
+		<=media-sound/mac-4.12
 		media-video/mplayer ) )
 	mp3? ( || (
 		media-sound/mpg123

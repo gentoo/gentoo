@@ -24,8 +24,6 @@ BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
 "
-# <ffmpeg-5 dep for bug #834391
-# https://github.com/jeremyevans/aqualung/issues/29
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/libxml2
@@ -42,14 +40,21 @@ RDEPEND="
 	lame? ( media-sound/lame )
 	libsamplerate? ( media-libs/libsamplerate )
 	lua? ( ${LUA_DEPS} )
-	mac? ( media-sound/mac )
+	mac? ( <=media-sound/mac-4.12 )
 	modplug? ( media-libs/libmodplug )
 	mp3? ( media-libs/libmad )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	pulseaudio? ( media-libs/libpulse )
 	sndfile? ( media-libs/libsndfile )
-	speex? ( media-libs/speex media-libs/liboggz media-libs/libogg )
-	vorbis? ( media-libs/libvorbis media-libs/libogg )
+	speex? (
+		media-libs/speex
+		media-libs/liboggz
+		media-libs/libogg
+	)
+	vorbis? (
+		media-libs/libvorbis
+		media-libs/libogg
+	)
 	wavpack? ( media-sound/wavpack )
 "
 DEPEND="${RDEPEND}"

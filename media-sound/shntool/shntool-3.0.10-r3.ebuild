@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ IUSE="alac flac mac shorten sox wavpack"
 RDEPEND="
 	alac? ( media-sound/alac_decoder )
 	flac? ( media-libs/flac )
-	mac? ( media-sound/mac )
+	mac? ( <=media-sound/mac-4.12 )
 	shorten? ( media-sound/shorten )
 	sox? ( media-sound/sox )
 	wavpack? ( media-sound/wavpack )"
