@@ -12,7 +12,10 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python framework for efficient cluster administration"
-HOMEPAGE="https://github.com/cea-hpc/clustershell/"
+HOMEPAGE="
+	https://github.com/cea-hpc/clustershell/
+	https://pypi.org/project/ClusterShell/
+"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
