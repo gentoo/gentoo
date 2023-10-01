@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	app-emulation/qemu
 	sys-apps/bubblewrap
-	sys-apps/systemd
+	>=sys-apps/systemd-254
 	sys-firmware/edk2-ovmf"
 BDEPEND="virtual/pandoc"
 
