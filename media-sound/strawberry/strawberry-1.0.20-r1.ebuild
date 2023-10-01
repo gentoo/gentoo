@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strawberrymusicplayer/strawberry/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -102,8 +102,7 @@ src_configure() {
 		-DENABLE_SONGFINGERPRINTING="$(usex gstreamer)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
-		# Disable until we have qt6 in the tree
-		-DWITH_QT6=OFF
+		-DQT_VERSION_MAJOR=5
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT

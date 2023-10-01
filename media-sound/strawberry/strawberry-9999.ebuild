@@ -102,8 +102,7 @@ src_configure() {
 		-DENABLE_SONGFINGERPRINTING="$(usex gstreamer)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
-		# Disable until we have qt6 in the tree
-		-DWITH_QT6=OFF
+		-DQT_VERSION_MAJOR=5
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
