@@ -13,7 +13,7 @@ S="${WORKDIR}"/logcheck-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ~ppc ~s390 sparc x86"
+KEYWORDS="amd64 arm ~mips ppc ~s390 sparc x86"
 IUSE="selinux"
 
 RDEPEND="
