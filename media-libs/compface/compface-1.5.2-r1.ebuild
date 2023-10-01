@@ -15,8 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc
 
 RDEPEND="dev-lang/perl"
 
-PATCHES=( 
-	"${FILESDIR}"/${PN}-gentoo.patch 
+PATCHES=(
+	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-modern-c-porting.patch
 )
 
