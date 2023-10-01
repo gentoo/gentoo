@@ -11,7 +11,7 @@ SRC_URI="http://cronolog.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2+ Apache-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 ~arm ppc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-patches
