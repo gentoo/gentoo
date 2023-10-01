@@ -70,6 +70,7 @@ DEPEND="
 "
 BDEPEND="
 	${WLROOTS_BDEPEND}
+	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
 	dev-util/cmake
 	dev-util/wayland-scanner
