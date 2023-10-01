@@ -26,6 +26,7 @@ RDEPEND="
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	<dev-python/werkzeug-3[${PYTHON_USEDEP}]
 	>=dev-python/werkzeug-2.0[${PYTHON_USEDEP}]
 "
 
