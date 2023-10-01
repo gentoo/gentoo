@@ -118,7 +118,9 @@ src_prepare() {
 
 			# This is applied conditionally for now just out of caution.
 			# It should be okay on non-prefix systems though. See bug #892549.
-			use prefix && eapply "${FILESDIR}"/binutils-2.40-linker-search-path.patch
+			if is_cross || use prefix; then
+				eapply "${FILESDIR}"/binutils-2.40-linker-search-path.patch
+			fi
 		fi
 	fi
 
