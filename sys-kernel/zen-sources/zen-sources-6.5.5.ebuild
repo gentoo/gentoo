@@ -17,8 +17,7 @@ HOMEPAGE="https://github.com/zen-kernel"
 IUSE=""
 
 # Needed for zstd compression of the patch
-# Is this actually needed with the unpacker eclass?
-BDEPEND="app-arch/zstd"
+BDEPEND="$(unpacker_src_uri_depends)"
 
 DESCRIPTION="The Zen Kernel Live Sources"
 
@@ -47,7 +46,7 @@ pkg_setup() {
 }
 
 src_install() {
-	rm "${WORKDIR}/linux-v${PV}-zen1.patch"
+	rm "${WORKDIR}/linux-v${PV}-zen1.patch" || die
 	kernel-2_src_install
 }
 
