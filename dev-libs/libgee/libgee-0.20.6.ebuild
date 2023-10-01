@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2 vala
+inherit gnome2
 
 DESCRIPTION="GObject-based interfaces and classes for commonly used data structures"
 HOMEPAGE="https://wiki.gnome.org/Projects/Libgee"
@@ -21,11 +21,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-pkg_setup() {
-	vala_setup
-}
-
 src_configure() {
 	gnome2_src_configure \
-		$(use_enable introspection)
+		$(use_enable introspection) \
+		VALAC="$(type -P false)"
 }
