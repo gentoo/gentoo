@@ -27,7 +27,7 @@ SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.t
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+acl boot +kmod selinux split-usr sysusers +tmpfiles test +udev"
 REQUIRED_USE="|| ( boot tmpfiles sysusers udev )"
 RESTRICT="!test? ( test )"
@@ -347,6 +347,18 @@ multilib_src_compile() {
 		targets+=(
 			udev:shared_library
 			src/libudev/libudev.pc
+			man/libudev.3
+			man/udev_device_get_syspath.3
+			man/udev_device_has_tag.3
+			man/udev_device_new_from_syspath.3
+			man/udev_enumerate_add_match_subsystem.3
+			man/udev_enumerate_new.3
+			man/udev_enumerate_scan_devices.3
+			man/udev_list_entry.3
+			man/udev_monitor_filter_update.3
+			man/udev_monitor_new_from_netlink.3
+			man/udev_monitor_receive_device.3
+			man/udev_new.3
 		)
 		if use test; then
 			targets+=(
@@ -458,6 +470,8 @@ multilib_src_install() {
 		gen_usr_ldscript -a udev
 		insinto "/usr/$(get_libdir)/pkgconfig"
 		doins src/libudev/libudev.pc
+		doman man/libudev.3
+		doman man/udev_*.3
 	fi
 }
 

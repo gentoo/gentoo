@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
-inherit bash-completion-r1 flag-o-matic linux-info meson-multilib python-single-r1
+inherit bash-completion-r1 flag-o-matic linux-info meson-multilib python-any-r1
 inherit secureboot toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Utilities split out from systemd for OpenRC users"
@@ -22,17 +22,14 @@ else
 	SRC_URI="https://github.com/systemd/systemd/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 fi
 
-MUSL_PATCHSET="systemd-musl-patches-254.3"
+MUSL_PATCHSET="systemd-musl-patches-253.3"
 SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.tar.gz )"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+acl boot +kmod selinux split-usr sysusers +tmpfiles test +udev"
-REQUIRED_USE="
-	|| ( boot tmpfiles sysusers udev )
-	${PYTHON_REQUIRED_USE}
-"
+REQUIRED_USE="|| ( boot tmpfiles sysusers udev )"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -56,16 +53,10 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-3.11
+	boot? ( >=sys-boot/gnu-efi-3.0.2 )
 "
-
-PEFILE_DEPEND='dev-python/pefile[${PYTHON_USEDEP}]'
-
 RDEPEND="${COMMON_DEPEND}
-	boot? (
-		!<sys-boot/systemd-boot-250
-		${PYTHON_DEPS}
-		$(python_gen_cond_dep "${PEFILE_DEPEND}")
-	)
+	boot? ( !<sys-boot/systemd-boot-250 )
 	tmpfiles? ( !<sys-apps/systemd-tmpfiles-250 )
 	udev? (
 		acct-group/audio
@@ -94,6 +85,7 @@ PDEPEND="
 	udev? ( >=sys-fs/udev-init-scripts-34 )
 "
 BDEPEND="
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
@@ -102,18 +94,14 @@ BDEPEND="
 	>=sys-apps/coreutils-8.16
 	sys-devel/gettext
 	virtual/pkgconfig
-	$(python_gen_cond_dep "
-		dev-python/jinja[\${PYTHON_USEDEP}]
-		dev-python/lxml[\${PYTHON_USEDEP}]
-		boot? (
-			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
-			test? ( ${PEFILE_DEPEND} )
-		)
-	")
 "
 
 TMPFILES_OPTIONAL=1
 UDEV_OPTIONAL=1
+
+python_check_deps() {
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
+}
 
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
@@ -130,10 +118,11 @@ pkg_setup() {
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/${PN}-254.3-add-link-kernel-install-shared-option.patch"
 	)
 
 	if use elibc_musl; then
+		# Applied upstream
+		rm "${WORKDIR}/${MUSL_PATCHSET}/0015-test-sizeof.c-Disable-tests-for-missing-typedefs-in-.patch" || die
 		PATCHES+=(
 			"${WORKDIR}/${MUSL_PATCHSET}"
 		)
@@ -158,16 +147,19 @@ multilib_src_configure() {
 		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
 		-Dsysvinit-path=
-		$(meson_native_use_bool boot bootloader)
+		$(meson_native_use_bool boot efi)
+		$(meson_native_use_bool boot gnu-efi)
+		$(meson_native_use_bool boot kernel-install)
 		$(meson_native_use_bool selinux)
 		$(meson_native_use_bool sysusers)
 		$(meson_use test tests)
 		$(meson_native_use_bool tmpfiles)
 		$(meson_use udev hwdb)
 
+		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
+
 		# Link staticly with libsystemd-shared
 		-Dlink-boot-shared=false
-		-Dlink-kernel-install-shared=false
 		-Dlink-udev-shared=false
 
 		# systemd-tmpfiles has a separate "systemd-tmpfiles.standalone" target
@@ -286,7 +278,7 @@ multilib_src_compile() {
 				man/bootctl.1
 				man/kernel-install.8
 				90-loaderentry.install
-				src/boot/efi/linux$(efi_arch).efi.stub
+				src/boot/efi/linux$(efi_arch).{efi,elf}.stub
 				src/boot/efi/systemd-boot$(efi_arch).efi
 			)
 		fi
@@ -310,7 +302,7 @@ multilib_src_compile() {
 				tmpfiles.d/{etc,static-nodes-permissions,var}.conf
 			)
 			if use test; then
-				targets+=( test-tmpfile-util )
+				targets+=( test-tmpfiles )
 			fi
 		fi
 		if use udev; then
@@ -333,17 +325,20 @@ multilib_src_compile() {
 				man/udevadm.8
 				hwdb.d/60-autosuspend-chromiumos.hwdb
 				rules.d/50-udev-default.rules
-				rules.d/60-persistent-storage.rules
 				rules.d/64-btrfs.rules
 			)
 			if use test; then
 				targets+=(
+					# Used by udev-test.pl
+					systemd-detect-virt
+					test/sys
+					test-udev
+
 					test-fido-id-desc
 					test-udev-builtin
 					test-udev-event
 					test-udev-node
 					test-udev-util
-					udev-rule-runner
 				)
 			fi
 		fi
@@ -352,6 +347,18 @@ multilib_src_compile() {
 		targets+=(
 			udev:shared_library
 			src/libudev/libudev.pc
+			man/libudev.3
+			man/udev_device_get_syspath.3
+			man/udev_device_has_tag.3
+			man/udev_device_new_from_syspath.3
+			man/udev_enumerate_add_match_subsystem.3
+			man/udev_enumerate_new.3
+			man/udev_enumerate_scan_devices.3
+			man/udev_list_entry.3
+			man/udev_monitor_filter_update.3
+			man/udev_monitor_new_from_netlink.3
+			man/udev_monitor_receive_device.3
+			man/udev_new.3
 		)
 		if use test; then
 			targets+=(
@@ -377,19 +384,23 @@ multilib_src_test() {
 		if use tmpfiles; then
 			tests+=(
 				test-systemd-tmpfiles.standalone
-				test-tmpfile-util
+				test-tmpfiles
 			)
 		fi
 		if use udev; then
 			tests+=(
 				rule-syntax-check
 				test-fido-id-desc
-				test-udev
 				test-udev-builtin
 				test-udev-event
 				test-udev-node
 				test-udev-util
 			)
+			if [[ -w /dev ]]; then
+				tests+=( udev-test )
+			else
+				ewarn "Skipping udev-test (needs write access to /dev)"
+			fi
 		fi
 	fi
 	if use udev; then
@@ -441,7 +452,6 @@ multilib_src_install() {
 			exeinto "${rootprefix}"/lib/udev
 			doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
 
-			rm -f rules.d/99-systemd.rules
 			insinto "${rootprefix}"/lib/udev/rules.d
 			doins rules.d/*.rules
 
@@ -460,6 +470,8 @@ multilib_src_install() {
 		gen_usr_ldscript -a udev
 		insinto "/usr/$(get_libdir)/pkgconfig"
 		doins src/libudev/libudev.pc
+		doman man/libudev.3
+		doman man/udev_*.3
 	fi
 }
 
