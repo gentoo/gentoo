@@ -331,6 +331,18 @@ multilib_src_compile() {
 				man/systemd-hwdb.8
 				man/systemd-udevd.service.8
 				man/udevadm.8
+				man/libudev.3
+				man/udev_device_get_syspath.3
+				man/udev_device_has_tag.3
+				man/udev_device_new_from_syspath.3
+				man/udev_enumerate_add_match_subsystem.3
+				man/udev_enumerate_new.3
+				man/udev_enumerate_scan_devices.3
+				man/udev_list_entry.3
+				man/udev_monitor_filter_update.3
+				man/udev_monitor_new_from_netlink.3
+				man/udev_monitor_receive_device.3
+				man/udev_new.3
 				hwdb.d/60-autosuspend-chromiumos.hwdb
 				rules.d/50-udev-default.rules
 				rules.d/60-persistent-storage.rules
@@ -352,18 +364,6 @@ multilib_src_compile() {
 		targets+=(
 			udev:shared_library
 			src/libudev/libudev.pc
-			man/libudev.3
-			man/udev_device_get_syspath.3
-			man/udev_device_has_tag.3
-			man/udev_device_new_from_syspath.3
-			man/udev_enumerate_add_match_subsystem.3
-			man/udev_enumerate_new.3
-			man/udev_enumerate_scan_devices.3
-			man/udev_list_entry.3
-			man/udev_monitor_filter_update.3
-			man/udev_monitor_new_from_netlink.3
-			man/udev_monitor_receive_device.3
-			man/udev_new.3
 		)
 		if use test; then
 			targets+=(
@@ -465,6 +465,8 @@ multilib_src_install() {
 
 			doman man/{udev.conf.5,systemd.link.5,hwdb.7,systemd-hwdb.8,udev.7,udevadm.8}
 			newman man/systemd-udevd.service.8 systemd-udevd.8
+			doman man/libudev.3
+			doman man/udev_*.3
 		fi
 	fi
 	if use udev; then
@@ -472,8 +474,6 @@ multilib_src_install() {
 		gen_usr_ldscript -a udev
 		insinto "/usr/$(get_libdir)/pkgconfig"
 		doins src/libudev/libudev.pc
-		doman man/libudev.3
-		doman man/udev_*.3
 	fi
 }
 
