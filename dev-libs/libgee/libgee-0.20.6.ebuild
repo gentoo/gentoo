@@ -21,9 +21,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-src_configure() {
+pkg_setup() {
 	vala_setup
+}
 
+src_configure() {
 	gnome2_src_configure \
 		$(use_enable introspection)
 }
