@@ -5,7 +5,17 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>rahil3108@gmail.com</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">prometheus/promu</remote-id>
+		<bugs-to>https://github.com/prometheus/promu/issues</bugs-to>
+		<doc>https://github.com/prometheus/promu/blob/master/README.md</doc>
 	</upstream>
 </pkgmetadata>
