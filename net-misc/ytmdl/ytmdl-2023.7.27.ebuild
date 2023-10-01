@@ -14,7 +14,7 @@ HOMEPAGE="https://ytmdl.deepjyoti30.dev/
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=net-misc/yt-dlp-2022.3.8.2[${PYTHON_USEDEP}]
