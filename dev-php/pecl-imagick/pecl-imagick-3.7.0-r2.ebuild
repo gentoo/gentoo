@@ -11,7 +11,7 @@ PHP_EXT_NEEDED_USE="-debug"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 x86"
 
 DESCRIPTION="PHP wrapper for the ImageMagick library"
 HOMEPAGE="https://pecl.php.net/package/imagick https://github.com/Imagick/imagick"
