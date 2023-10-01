@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 DOCS=( AUTHORS ChangeLog README NEWS
 	   doc/{README.{bin,lib},SCHMM_format,filler.dict,phoneset{,-old}} )
