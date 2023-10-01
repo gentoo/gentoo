@@ -20,13 +20,12 @@ RESTRICT="mirror strip"
 LICENSE="spideroak"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dbus X"
+IUSE="X"
 
 BDEPEND="dev-util/patchelf"
 RDEPEND="
 	app-crypt/mit-krb5[keyutils]
 	media-libs/libpng-compat:1.2
-	dbus? ( sys-apps/dbus )
 	X? (
 		media-libs/fontconfig
 		media-libs/freetype:2
@@ -83,11 +82,6 @@ src_install() {
 	# Install the prebundled libraries
 	insinto /opt/SpiderOakONE
 	doins -r opt/SpiderOakONE/lib
-
-	# Install the config files
-	if ! use dbus; then
-		rm -rf etc/dbus-1 || die
-	fi
 
 	insinto /
 	doins -r etc
