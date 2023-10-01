@@ -5,7 +5,22 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>rahil3108@gmail.com</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="systemd">
+			Enables systemd collector by default
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">prometheus/node_exporter</remote-id>
+		<bugs-to>https://github.com/prometheus/node_exporter/issues</bugs-to>
+		<doc>https://github.com/prometheus/node_exporter/blob/master/README.md</doc>
 	</upstream>
 </pkgmetadata>
