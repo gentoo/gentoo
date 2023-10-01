@@ -24,10 +24,12 @@ SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}-dev/rt/archive/${MY_PV}.tar.b
 	https://repo.maven.apache.org/maven2/org/antlr/ST4/4.0.8/ST4-4.0.8.jar
 "
 
+S="${WORKDIR}/rt-${MY_PV}"
+
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="-* ~amd64 ~ppc64"
-
 IUSE="cpu_flags_x86_sse2 debug doc source +media"
+REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )"
 
 RDEPEND="
 	app-accessibility/at-spi2-core
@@ -68,8 +70,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )"
-
 PATCHES=(
 	"${FILESDIR}"/11/disable-buildSrc-tests.patch
 	"${FILESDIR}"/11/glibc-compatibility.patch
@@ -81,8 +81,6 @@ PATCHES=(
 	"${FILESDIR}"/11/gstreamer-CVE-2021-3522.patch
 	"${FILESDIR}"/11/ffmpeg5.patch
 )
-
-S="${WORKDIR}/rt-${MY_PV}"
 
 egradle() {
 	local GRADLE_HOME="${WORKDIR}/gradle-${EGRADLE_VER}"
@@ -128,14 +126,13 @@ pkg_setup() {
 		fi
 	done
 
-	if has_version --host-root dev-java/openjdk:${SLOT}; then
+	if has_version -b dev-java/openjdk:${SLOT}; then
 		export JAVA_HOME=${EPREFIX}/usr/$(get_libdir)/openjdk-${SLOT}
 		export JDK_HOME="${JAVA_HOME}"
 		export ANT_RESPECT_JAVA_HOME=true
-
 	else
 		if [[ ${MERGE_TYPE} != "binary" ]]; then
-			JDK_HOME=$(best_version --host-root dev-java/openjdk-bin:${SLOT})
+			JDK_HOME=$(best_version -b dev-java/openjdk-bin:${SLOT})
 			[[ -n ${JDK_HOME} ]] || die "Build VM not found!"
 			JDK_HOME=${JDK_HOME#*/}
 			JDK_HOME=${EPREFIX}/opt/${JDK_HOME%-r*}
@@ -183,7 +180,7 @@ src_configure() {
 	# build is very sensetive to doc presense, take extra steps
 	if use doc; then
 		local jdk_doc
-		if has_version --host-root dev-java/openjdk:${SLOT}[doc]; then
+		if has_version -b dev-java/openjdk:${SLOT}[doc]; then
 			jdk_doc="${EPREFIX}/usr/share/doc/openjdk-${SLOT}/html/api"
 		fi
 		[[ -r ${jdk_doc}/element-list ]] || die "JDK Docs not found, terminating build early"
