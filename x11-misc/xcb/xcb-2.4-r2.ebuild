@@ -1,7 +1,8 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="Marc Lehmann's improved X Cut Buffers"
@@ -18,11 +19,11 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/libXext
 	x11-libs/libXt
+	motif? ( >=x11-libs/motif-2.3:0 )
 "
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
-	motif? ( >=x11-libs/motif-2.3:0 )
 "
 
 PATCHES=(
