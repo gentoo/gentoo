@@ -19,9 +19,9 @@ fi
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="5"
-IUSE="fits indi +password raw wcs"
+IUSE="+password raw wcs"
 
-REQUIRED_USE="indi? ( fits ) ${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	>=dev-qt/qtdatavis3d-${QTMIN}:5
@@ -46,14 +46,12 @@ COMMON_DEPEND="
 	>=kde-frameworks/kplotting-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	sci-libs/cfitsio:=
 	sci-libs/gsl:=
+	>=sci-libs/indilib-2.0.2
+	sci-libs/libnova:=
+	>=sci-libs/stellarsolver-2.2
 	sys-libs/zlib
-	fits? ( sci-libs/cfitsio:= )
-	indi? (
-		>=sci-libs/indilib-2.0.2
-		sci-libs/libnova:=
-		>=sci-libs/stellarsolver-2.2
-	)
 	password? ( dev-libs/qtkeychain:=[qt5(+)] )
 	raw? ( media-libs/libraw:= )
 	wcs? ( sci-astronomy/wcslib:= )
@@ -79,9 +77,6 @@ src_configure() {
 		-DBUILD_PYKSTARS=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibXISF=ON # not packaged
 		-DBUILD_DOC=$(usex handbook)
-		$(cmake_use_find_package fits CFitsio)
-		$(cmake_use_find_package indi INDI)
-		$(cmake_use_find_package indi Nova)
 		$(cmake_use_find_package password Qt5Keychain)
 		$(cmake_use_find_package raw LibRaw)
 		$(cmake_use_find_package wcs WCSLIB)
