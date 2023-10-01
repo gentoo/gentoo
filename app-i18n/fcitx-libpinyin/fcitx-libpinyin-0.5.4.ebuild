@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="4"
-KEYWORDS="amd64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv x86"
 IUSE="dictionary-manager"
 
 BDEPEND=">=app-i18n/fcitx-4.2.9:4
