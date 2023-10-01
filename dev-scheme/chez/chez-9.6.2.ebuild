@@ -15,7 +15,7 @@ S="${WORKDIR}"/csv${PV//a}
 # which are both MIT licensed.
 LICENSE="Apache-2.0 MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="X ncurses threads"
 
 BDEPEND="virtual/pkgconfig"
