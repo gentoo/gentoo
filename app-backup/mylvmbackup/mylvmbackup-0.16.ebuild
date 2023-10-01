@@ -4,8 +4,8 @@
 EAPI=8
 
 DESCRIPTION="Tool for creating backups of MySQL server's data files using LVM snapshots"
-HOMEPAGE="http://lenzg.net/mylvmbackup/"
-SRC_URI="http://lenzg.net/${PN}/${P}.tar.gz"
+HOMEPAGE="https://lenzg.net/mylvmbackup/"
+SRC_URI="https://lenzg.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,7 +16,8 @@ RDEPEND="
 	dev-perl/DBD-mysql
 	dev-perl/TimeDate
 	sys-fs/lvm2
-	virtual/mysql"
+	virtual/mysql
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.16-fix-build-system.patch
