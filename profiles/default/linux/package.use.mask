@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki (conikost@gentoo.org> (2023-10-02)
+# Using VectorCompiler is currently broken on newer versions.
+# See https://github.com/intel/intel-graphics-compiler/issues/303
+>=dev-util/intel-graphics-compiler-1.0.15136.4
+
 # Sam James <sam@gentoo.org> (2023-06-06)
 # Needs linux-only dev-libs/libaio.
 app-emulation/qemu -aio
