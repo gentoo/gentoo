@@ -206,7 +206,7 @@ src_test() {
 	#
 	# Note that we currently have a hack to skip one part of test_qt!
 	# See PATCHES for more.
-	CALIBRE_PY3_PORT=1 ${PYTHON} setup.py test \
+	${PYTHON} setup.py test \
 			--exclude-test-name 7z \
 			--exclude-test-name test_mem_leaks \
 			--exclude-test-name test_searching \
@@ -214,9 +214,6 @@ src_test() {
 }
 
 src_install() {
-	# calibre works with python 3, so remove the python 2 constraint
-	export CALIBRE_PY3_PORT=1
-
 	# Bypass kbuildsycoca and update-mime-database in order to
 	# avoid sandbox violations if xdg-mime tries to call them.
 	mkdir "${T}/bin" || die
