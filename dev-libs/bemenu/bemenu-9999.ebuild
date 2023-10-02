@@ -53,10 +53,10 @@ BDEPEND="
 src_compile() {
 	tc-export CC
 
-	emake clients $(usex ncurses curses "") $(usex X x11 "") $(usex wayland wayland "") PREFIX=/usr libdir=/$(get_libdir)
-	use doc && emake doxygen PREFIX=/usr libdir=/$(get_libdir)
+	emake clients $(usev ncurses curses) $(usev X x11) $(usev wayland) PREFIX="${EPREFIX}"/usr libdir=/$(get_libdir)
+	use doc && emake doxygen PREFIX="${EPREFIX}"/usr libdir=/$(get_libdir)
 }
 
 src_install() {
-	emake install PREFIX="${D}"/usr libdir=/$(get_libdir)
+	emake install DESTDIR="${D}" PREFIX="${EPREFIX}"/usr libdir=/$(get_libdir)
 }
