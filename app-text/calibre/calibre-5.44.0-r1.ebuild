@@ -183,8 +183,9 @@ src_compile() {
 	# bug 821871
 	local MY_LIBDIR="${ESYSROOT}/usr/$(get_libdir)"
 	export FT_LIB_DIR="${MY_LIBDIR}" HUNSPELL_LIB_DIR="${MY_LIBDIR}" PODOFO_LIB_DIR="${MY_LIBDIR}"
+	export QMAKE="$(qt5_get_bindir)/qmake"
 
-	PATH="${T}/bin:$(qt5_get_bindir):${PATH}" ${EPYTHON} setup.py build || die
+	${EPYTHON} setup.py build || die
 }
 
 src_test() {
@@ -202,8 +203,6 @@ src_test() {
 }
 
 src_install() {
-	export QMAKE="$(qt5_get_bindir)/qmake"
-
 	# Bug #352625 - Some LANGUAGE values can trigger the following ValueError:
 	#   File "/usr/lib/python2.6/locale.py", line 486, in getdefaultlocale
 	#    return _parse_localename(localename)
@@ -219,9 +218,6 @@ src_install() {
 	export CALIBRE_CONFIG_DIRECTORY="${HOME}/.config/calibre"
 	mkdir -p "${CALIBRE_CONFIG_DIRECTORY}" || die
 
-	tc-export CC CXX
-	# Bug #334243 - respect LDFLAGS when building extensions
-	export OVERRIDE_CFLAGS="$CFLAGS" OVERRIDE_LDFLAGS="$LDFLAGS"
 	local libdir=$(get_libdir)
 	[[ -n $libdir ]] || die "get_libdir returned an empty string"
 
