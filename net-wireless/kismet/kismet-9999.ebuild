@@ -104,7 +104,7 @@ src_prepare() {
 	#	log_tools/kismetdb_to_wiglecsv.cc trackedcomponent.h \
 	#	trackedelement.h trackedelement_workers.h
 
-	eapply_user
+	default
 
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf

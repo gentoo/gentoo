@@ -18,12 +18,15 @@ else
 	S=${WORKDIR}/${MY_P/BETA/beta}
 
 	#normally we want an official release
-	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
+	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz
+		https://dev.gentoo.org/~zerochaos/distfiles/${P}-stdint-fix.patch"
 
 	#but sometimes we want a git commit
 	#COMMIT="9ca7e469cf115469f392db7436816151867e1654"
 	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	#S="${WORKDIR}/${PN}-${COMMIT}"
+
+	PATCHES=( "${DISTDIR}/${P}-stdint-fix.patch" )
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
@@ -103,7 +106,7 @@ src_prepare() {
 	#	log_tools/kismetdb_to_wiglecsv.cc trackedcomponent.h \
 	#	trackedelement.h trackedelement_workers.h
 
-	eapply_user
+	default
 
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf
