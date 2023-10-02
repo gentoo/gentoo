@@ -248,10 +248,6 @@ dev-ruby/mustermann:2
 net-wireless/blueberry
 net-wireless/gnome-bluetooth:2
 
-# Hans de Graaff <graaff@gentoo.org> (2023-08-29)
-# Use the newer slot instead.  Masked for removal on 2023-09-29.
-dev-ruby/twitter:7
-
 # Sam James <sam@gentoo.org> (2023-08-04)
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
