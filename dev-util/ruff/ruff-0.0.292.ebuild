@@ -12,7 +12,7 @@ CRATES="
 	Inflector@0.11.4
 	adler@1.0.2
 	ahash@0.8.3
-	aho-corasick@1.0.5
+	aho-corasick@1.1.1
 	android-tzdata@0.1.1
 	android_system_properties@0.1.5
 	anes@0.1.6
@@ -46,8 +46,8 @@ CRATES="
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@4.4.4
-	clap_builder@4.4.4
+	clap@4.4.5
+	clap_builder@4.4.5
 	clap_complete@4.4.0
 	clap_complete_command@0.5.1
 	clap_complete_fig@4.4.0
@@ -126,7 +126,7 @@ CRATES="
 	inotify-sys@0.1.5
 	inotify@0.9.6
 	insta-cmd@0.4.0
-	insta@1.32.0
+	insta@1.33.0
 	instant@0.1.12
 	is-macro@0.3.0
 	is-terminal@0.4.9
@@ -143,8 +143,6 @@ CRATES="
 	lexical-parse-integer@0.8.6
 	lexical-util@0.8.5
 	libc@0.2.147
-	libcst@0.1.0
-	libcst_derive@0.1.0
 	libmimalloc-sys@0.1.35
 	linked-hash-map@0.5.6
 	linux-raw-sys@0.4.5
@@ -152,7 +150,7 @@ CRATES="
 	log@0.4.20
 	matchers@0.1.0
 	matches@0.1.10
-	memchr@2.6.3
+	memchr@2.6.4
 	memoffset@0.9.0
 	mimalloc@0.1.39
 	minimal-lexical@0.2.1
@@ -165,8 +163,6 @@ CRATES="
 	nom@7.1.3
 	notify@6.1.1
 	nu-ansi-term@0.46.0
-	num-bigint@0.4.4
-	num-integer@0.1.45
 	num-traits@0.2.16
 	number_prefix@0.4.0
 	once_cell@1.18.0
@@ -183,7 +179,7 @@ CRATES="
 	peg-macros@0.8.1
 	peg-runtime@0.8.1
 	peg@0.8.1
-	pep440_rs@0.3.11
+	pep440_rs@0.3.12
 	pep508_rs@0.2.1
 	percent-encoding@2.3.0
 	petgraph@0.6.4
@@ -228,7 +224,6 @@ CRATES="
 	rust-stemmers@1.2.0
 	rustc-hash@1.1.0
 	rustix@0.38.10
-	rustls-webpki@0.100.2
 	rustls-webpki@0.101.4
 	rustls@0.21.7
 	rustversion@1.0.14
@@ -240,7 +235,7 @@ CRATES="
 	scopeguard@1.2.0
 	sct@0.7.0
 	seahash@4.1.0
-	semver@1.0.18
+	semver@1.0.19
 	serde-wasm-bindgen@0.6.0
 	serde@1.0.188
 	serde_derive@1.0.188
@@ -273,8 +268,8 @@ CRATES="
 	test-case-core@3.2.1
 	test-case-macros@3.2.1
 	test-case@3.2.1
-	thiserror-impl@1.0.48
-	thiserror@1.0.48
+	thiserror-impl@1.0.49
+	thiserror@1.0.49
 	thread_local@1.1.7
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
@@ -303,7 +298,7 @@ CRATES="
 	unicode-width@0.1.11
 	unicode-xid@0.2.4
 	untrusted@0.7.1
-	ureq@2.7.1
+	ureq@2.8.0
 	url@2.4.1
 	utf8parse@0.2.1
 	uuid-macro-internal@1.4.1
@@ -325,9 +320,9 @@ CRATES="
 	wasm-bindgen-test@0.3.37
 	wasm-bindgen@0.2.87
 	web-sys@0.3.64
-	webpki-roots@0.23.1
+	webpki-roots@0.25.2
 	which@4.4.0
-	wild@2.1.0
+	wild@2.2.0
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.5
 	winapi-x86_64-pc-windows-gnu@0.4.0
@@ -359,6 +354,8 @@ CRATES="
 "
 
 declare -A GIT_CRATES=(
+	[libcst]='https://github.com/Instagram/LibCST;03179b55ebe7e916f1722e18e8f0b87c01616d1f;LibCST-%commit%/native/libcst'
+	[libcst_derive]='https://github.com/Instagram/LibCST;03179b55ebe7e916f1722e18e8f0b87c01616d1f;LibCST-%commit%/native/libcst_derive'
 	[unicode_names2]='https://github.com/youknowone/unicode_names2;4ce16aa85cbcdd9cc830410f1a72ef9a235f2fde;unicode_names2-%commit%'
 )
 
@@ -406,11 +403,6 @@ LICENSE+="
 # ring
 LICENSE+="
 	ISC SSLeay openssl MIT
-"
-
-# rustls-webpki
-LICENSE+="
-	ISC BSD
 "
 
 QA_FLAGS_IGNORED="usr/bin/.* usr/lib.*/libruff.*.so"
