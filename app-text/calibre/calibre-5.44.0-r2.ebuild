@@ -135,6 +135,9 @@ PATCHES=(
 	# We don't (yet?) package libjxr and it seems to be dead upstream
 	# (last commit in 2017)
 	"${FILESDIR}/${PN}-5.35.0-jxr-test.patch"
+
+	# fix compatibility with recent versions of zeroconf
+	"${FILESDIR}"/${PN}-5.44.0-Fix-compatibility-with-zeroconf-0.73.patch
 )
 
 src_prepare() {
