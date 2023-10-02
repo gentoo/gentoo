@@ -27,27 +27,27 @@ RDEPEND="
 	wayland? (
 		dev-libs/wayland
 		x11-libs/cairo
+		x11-libs/libxcb:=
 		x11-libs/pango
-		x11-libs/libxcb
 	)
 	X? (
-		x11-libs/libxcb
-		x11-libs/libXext
-		x11-libs/libX11
 		x11-libs/cairo[X]
-		x11-libs/pango[X]
+		x11-libs/libX11
+		x11-libs/libXext
 		x11-libs/libXinerama
+		x11-libs/libxcb:=
+		x11-libs/pango[X]
 	)
 "
-DEPEND="
-	${RDEPEND}
-	wayland? (
-		dev-libs/wayland-protocols
-	)
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/scdoc
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
+	wayland? (
+		dev-libs/wayland-protocols
+		dev-util/wayland-scanner
+	)
 "
 
 src_compile() {
