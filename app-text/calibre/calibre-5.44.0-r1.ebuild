@@ -163,18 +163,6 @@ src_prepare() {
 	#	-i src/calibre/constants.py || \
 	#	die "sed failed to patch constants.py"
 
-	# Avoid sandbox violation in /usr/share/gnome/apps when linux.py
-	# calls xdg-* (bug #258938).
-	sed -e "s|'xdg-desktop-menu', 'install'|\\0, '--mode', 'user'|" \
-		-e "s|check_call(\\['xdg-desktop-menu', 'forceupdate'\\])|#\\0|" \
-		-e "s|\\(CurrentDir(tdir)\\), \\\\\$|\\1:|" \
-		-e "s|, PreserveMIMEDefaults():|:|" \
-		-e "s|'xdg-icon-resource', 'install'|\\0, '--mode', 'user'|" \
-		-e "s|cmd\[2\]|cmd[4]|" \
-		-e "s|cc(\\['xdg-desktop-menu', 'forceupdate'\\])|#\\0|" \
-		-e "s|'xdg-mime', 'install'|\\0, '--mode', 'user'|" \
-		-i src/calibre/linux.py || die "sed failed to patch linux.py"
-
 	# Disable unnecessary privilege dropping for bug #287067.
 	sed -e "s:if os.geteuid() == 0:if False and os.geteuid() == 0:" \
 		-i setup/install.py || die "sed failed to patch install.py"
@@ -214,23 +202,7 @@ src_test() {
 }
 
 src_install() {
-	# Bypass kbuildsycoca and update-mime-database in order to
-	# avoid sandbox violations if xdg-mime tries to call them.
-	mkdir "${T}/bin" || die
-	cat - > "${T}/bin/kbuildsycoca" <<-EOF
-	#!${BASH}
-	echo $0 : $@
-	exit 0
-	EOF
-
-	cp "${T}"/bin/{kbuildsycoca,update-mime-database} || die
-	chmod +x "${T}"/bin/{kbuildsycoca,update-mime-database} || die
-
 	export QMAKE="$(qt5_get_bindir)/qmake"
-
-	# Unset DISPLAY in order to prevent xdg-mime from triggering a sandbox
-	# violation with kbuildsycoca as in bug #287067, comment #13.
-	export -n DISPLAY
 
 	# Bug #352625 - Some LANGUAGE values can trigger the following ValueError:
 	#   File "/usr/lib/python2.6/locale.py", line 486, in getdefaultlocale
@@ -244,10 +216,8 @@ src_install() {
 	# Bug #295672 - Avoid sandbox violation in ~/.config by forcing
 	# variables to point to our fake temporary $HOME.
 	export HOME="${T}/fake_homedir"
-	export XDG_CONFIG_HOME="${HOME}/.config"
-	export XDG_DATA_HOME="${HOME}/.local/share"
-	export CALIBRE_CONFIG_DIRECTORY="${XDG_CONFIG_HOME}/calibre"
-	mkdir -p "${XDG_DATA_HOME}" "${CALIBRE_CONFIG_DIRECTORY}" || die
+	export CALIBRE_CONFIG_DIRECTORY="${HOME}/.config/calibre"
+	mkdir -p "${CALIBRE_CONFIG_DIRECTORY}" || die
 
 	tc-export CC CXX
 	# Bug #334243 - respect LDFLAGS when building extensions
@@ -257,7 +227,7 @@ src_install() {
 
 	addpredict /dev/dri #665310
 
-	PATH=${T}/bin:${PATH} PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
+	PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
 		"${PYTHON}" setup.py install \
 		--root="${D}" \
 		--prefix="${EPREFIX}/usr" \
