@@ -183,11 +183,6 @@ dev-ruby/mail:2.7
 <dev-libs/openssl-3
 <app-crypt/xca-2.4.0_p20230526
 
-# Conrad Kostecki <conikost@gentoo.org> (2023-09-09)
-# Release causes problems, upstream degrated to RC back.
-# See #913884 for more information
-=net-wireless/unifi-7.5.174-r1
-
 # David Seifert <soap@gentoo.org> (2023-09-09)
 # EOL upstream in 2 months, causes major headaches for OpenSSL 1.1
 # masking. Removal on 2023-10-09.
