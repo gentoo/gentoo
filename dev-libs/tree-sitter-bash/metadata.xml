@@ -9,6 +9,10 @@
 		<email>sarnex@gentoo.org</email>
 		<name>Nick Sarnie</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>pkgcore@gentoo.org</email>
+		<name>Pkgcore</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">tree-sitter/tree-sitter-bash</remote-id>
 	</upstream>
