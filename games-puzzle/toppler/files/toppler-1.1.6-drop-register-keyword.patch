@@ -1,0 +1,31 @@
+Bug: https://bugs.gentoo.org/896006
+--- a/main.cc
++++ b/main.cc
+@@ -36,6 +36,7 @@
+ #include <libintl.h>
+ #include <sys/types.h>
+ #include <dirent.h>
++#include <locale.h>
+ #endif
+ 
+ static void printhelp(void) {
+--- a/keyb.cc
++++ b/keyb.cc
+@@ -215,7 +215,7 @@ void key_keydatas(SDLKey &sdlkey, ttkey &tkey, char &ch) {
+ 
+ 
+ SDLKey key_conv2sdlkey(ttkey k, bool game) {
+-  register int i;
++  int i;
+ 
+   if (game) {
+     for (i = SIZE(ttkeyconv) - 1; i >= 0; i--)
+@@ -231,7 +231,7 @@ SDLKey key_conv2sdlkey(ttkey k, bool game) {
+ }
+ 
+ ttkey key_sdlkey2conv(SDLKey k, bool game) {
+-  register int i;
++  int i;
+ 
+   if (k != SDLK_UNKNOWN) {
+     if (game) {
