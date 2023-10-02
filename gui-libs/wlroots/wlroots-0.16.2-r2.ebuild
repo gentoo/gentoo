@@ -79,6 +79,7 @@ src_configure() {
 
 src_install() {
 	meson_src_install
+	dodoc docs/*
 
 	if use tinywl; then
 		dobin "${BUILD_DIR}"/tinywl/tinywl
