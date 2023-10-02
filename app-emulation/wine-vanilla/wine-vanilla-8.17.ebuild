@@ -4,7 +4,6 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-# note: multilib+wrapper are not unused, currently a pkgcheck false positive
 inherit autotools flag-o-matic multilib multilib-build
 inherit prefix toolchain-funcs wrapper
 
