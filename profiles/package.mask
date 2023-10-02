@@ -271,11 +271,6 @@ sci-biology/express
 # Removal on 2023-09-27.  Bug #906516.
 dev-python/pytz_deprecation_shim
 
-# Jonas Stein <jstein@gentoo.org> (2023-08-17)
-# Upstream warns that it is broken and there is no fix since 2010
-# Removal after 2023-10-01.  Bug #912363.
-app-dicts/edictionary
-
 # Sam James <sam@gentoo.org> (2023-08-04)
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
