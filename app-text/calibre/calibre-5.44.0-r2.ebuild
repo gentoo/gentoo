@@ -154,9 +154,7 @@ src_prepare() {
 	# creating a patch instead, but in any case, run the test suite
 	# and ensure it passes.
 	#
-	# If in doubt about a problem, checking Fedora or Arch Linux's packaging
-	# is recommended, as Arch Linux's PKGBUILD is maintained by a Calibre
-	# contributor. Or just ask them.
+	# If in doubt about a problem, checking Fedora's packaging is recommended.
 
 	# Fix outdated version constant.
 	#sed -e "s#\\(^numeric_version =\\).*#\\1 (${PV//./, })#" \
