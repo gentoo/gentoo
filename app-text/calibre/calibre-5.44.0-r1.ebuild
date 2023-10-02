@@ -287,23 +287,7 @@ src_install() {
 	newconfd "${FILESDIR}"/calibre-server-3.conf calibre-server
 }
 
-pkg_preinst() {
-	# Indentify stray directories from upstream's "Binary install"
-	# method (see bug 622728).
-	CALIBRE_LIB_DIR=/usr/$(get_libdir)/calibre
-	CALIBRE_LIB_CONTENT=$(for x in "${ED}${CALIBRE_LIB_DIR}"/*; do
-		printf -- "${x##*/} "; done) || die "Failed to list ${ED}${CALIBRE_LIB_DIR}"
-}
-
 pkg_postinst() {
-	[[ -n ${CALIBRE_LIB_DIR} ]] || die "CALIBRE_LIB_DIR is unset"
-	local x
-	for x in "${EROOT}${CALIBRE_LIB_DIR}"/*; do
-		if [[ " ${CALIBRE_LIB_CONTENT} " != *" ${x##*/} "* ]]; then
-			elog "Purging '${x}'"
-			rm -rf "${x}"
-		fi
-	done
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 	xdg_icon_cache_update
