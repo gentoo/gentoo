@@ -161,6 +161,20 @@ src_prepare() {
 '-i', os.path.join(os.path.basename(src_dir), 'Makefile')])" \
 		-e "s|open(self.j(bdir, '.qmake.conf'), 'wb').close()|open(self.j(bdir, '.qmake.conf'), 'wb').write(b'QMAKE_LFLAGS += ${LDFLAGS}')|" \
 		-i setup/build.py || die "sed failed to patch build.py"
+
+	# This is only ever used at build time. It contains a small embedded copy
+	# of the rapydscript-ng compiler usable inside of qtwebengine, if you don't
+	# have rapydscript-ng (a nodejs package) itself installed. Its only purpose
+	# is to build some resources that come bundled in dist tarballs already...
+	# and which we may also need to regenerate e.g. to use system-mathjax.
+	#
+	# However, running qtwebengine violates the portage sandbox (among other
+	# things, it tries to create directories in /usr! amazing) so this is a
+	# wash anyway. The only real solution here is to package rapydscript-ng.
+	#
+	# We do not need it at build time, and *no one* needs it at install time.
+	# Delete the cruft.
+	rm -r resources/rapydscript/ || die
 }
 
 src_compile() {
