@@ -228,18 +228,13 @@ src_install() {
 	export CALIBRE_CONFIG_DIRECTORY="${HOME}/.config/calibre"
 	mkdir -p "${CALIBRE_CONFIG_DIRECTORY}" || die
 
-	local libdir=$(get_libdir)
-	[[ -n $libdir ]] || die "get_libdir returned an empty string"
-
 	addpredict /dev/dri #665310
 
-	PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
-		"${PYTHON}" setup.py install \
-		--root="${D}" \
-		--prefix="${EPREFIX}/usr" \
-		--libdir="${EPREFIX}/usr/${libdir}" \
+	"${PYTHON}" setup.py install \
 		--staging-root="${ED}/usr" \
-		--staging-libdir="${ED}/usr/${libdir}" || die
+		--prefix="${EPREFIX}/usr" \
+		--libdir="${EPREFIX}/usr/$(get_libdir)" \
+		--staging-libdir="${ED}/usr/$(get_libdir)" || die
 
 	find "${ED}"/usr/share -type d -empty -delete
 
