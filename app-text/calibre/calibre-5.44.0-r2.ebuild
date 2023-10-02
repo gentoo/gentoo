@@ -35,7 +35,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
 IUSE="ios +udisks"
 
@@ -85,6 +85,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/PyQtWebEngine-5.15.5_pre2108100905[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
 	')
+	dev-qt/qtimageformats:5
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
 	dev-qt/qtgui:5=[jpeg]
@@ -132,15 +133,6 @@ PATCHES=(
 	# We don't (yet?) package libjxr and it seems to be dead upstream
 	# (last commit in 2017)
 	"${FILESDIR}/${PN}-5.35.0-jxr-test.patch"
-
-	# TODO:
-	# test_qt tries to load a bunch of images using Qt and it currently fails
-	# due to some presumably missing dependencies. This is important and
-	# we need to look into it, but at time of writing, none of the tests
-	# are even bring run, so I'd like to return to this later.
-	# We don't want to skip test_qt entirely, so just skip this particular
-	# assert for now.
-	"${FILESDIR}/${PN}-5.31.0-qt-image-test.patch"
 )
 
 src_prepare() {
@@ -193,8 +185,6 @@ src_compile() {
 
 src_test() {
 	# Skipped tests:
-	# Note that we currently have a hack to skip one part of test_qt!
-	# See PATCHES for more.
 	local _test_excludes=(
 		# unpackaged Python dependency: py7zr
 		7z
