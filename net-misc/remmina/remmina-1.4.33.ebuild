@@ -71,7 +71,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	PATCHES+=( ${FILESDIR}/${PN}-1.4.32-REM-2981.patch ) #914851
+	PATCHES+=( "${FILESDIR}"/${PN}-1.4.32-REM-2981.patch ) #914851
 	xdg_environment_reset
 	cmake_src_prepare
 }
