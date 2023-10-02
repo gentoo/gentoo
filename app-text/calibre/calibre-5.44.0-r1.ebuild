@@ -186,6 +186,16 @@ src_compile() {
 	export QMAKE="$(qt5_get_bindir)/qmake"
 
 	${EPYTHON} setup.py build || die
+	${EPYTHON} setup.py gui || die
+
+	# A few different resources are bundled in the distfile by default, because
+	# not all systems necessarily have them. We un-vendor them, using the
+	# upstream integrated approach if possible. See setup/revendor.py and
+	# consider migrating other resources to this if they do not use it, in
+	# *preference* over manual rm'ing.
+	${EPYTHON} setup.py liberation_fonts \
+		--path-to-liberation_fonts "${EPREFIX}"/usr/share/fonts/liberation-fonts \
+		--system-liberation_fonts || die
 }
 
 src_test() {
@@ -232,13 +242,6 @@ src_install() {
 		--staging-libdir="${ED}/usr/${libdir}" || die
 
 	find "${ED}"/usr/share -type d -empty -delete
-
-	cd "${ED}"/usr/share/calibre/fonts/liberation || die
-	local x
-	for x in * ; do
-		[[ -f ${EPREFIX}/usr/share/fonts/liberation-fonts/${x} ]] || continue
-		ln -sf "../../../fonts/liberation-fonts/${x}" "${x}" || die
-	done
 
 	einfo "Converting python shebangs"
 	python_fix_shebang --force "${ED}"
