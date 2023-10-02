@@ -228,13 +228,6 @@ app-crypt/tpm2-tss-engine
 # Removal on 2023-10-03.
 dev-erlang/protobuffs
 
-# Sam James <sam@gentoo.org> (2023-08-30)
-# Used to be a dependency of dev-python/qiskit-terra but is now being phased
-# out. Fails to build with modern setuptools and >= Python 3.11. No upstream
-# activity.
-# Removal on 2023-09-29.  Bug #911840, bug #896900.
-dev-python/tweedledum
-
 # Sam James <sam@gentoo.org> (2023-08-04)
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
