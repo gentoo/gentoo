@@ -241,13 +241,6 @@ dev-python/tweedledum
 dev-ruby/mustermann:1
 dev-ruby/mustermann:2
 
-# Olivier Laurantin <olivier.laurantin@laposte.net> (2023-08-29)
-# Masked for removal on 2023-10-01
-# net-wireless/blueberry will never work with recent gnome-bluetooth versions
-# and is the only package requiring net-wireless/gnome-bluetooth:2
-net-wireless/blueberry
-net-wireless/gnome-bluetooth:2
-
 # Sam James <sam@gentoo.org> (2023-08-04)
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
