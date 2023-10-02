@@ -5,7 +5,6 @@ EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{10..12} )
-# note: multilib+wrapper are not unused, currently a pkgcheck false positive
 inherit autotools edo flag-o-matic multilib multilib-build
 inherit prefix python-any-r1 toolchain-funcs wrapper
 
