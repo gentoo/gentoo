@@ -65,7 +65,7 @@ SRC_URI="
 # use cargo-license for a more accurate license picture
 LICENSE="Apache-2.0 BSD Boost-1.0 MIT MPL-2.0 Unicode-DFS-2016 Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 
 RESTRICT="test"
 QA_FLAGS_IGNORED="usr/bin/cbindgen"
