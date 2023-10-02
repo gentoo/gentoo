@@ -252,14 +252,6 @@ net-wireless/gnome-bluetooth:2
 # Use the newer slot instead.  Masked for removal on 2023-09-29.
 dev-ruby/twitter:7
 
-# Sam James <sam@gentoo.org> (2023-08-29)
-# Obsolete as of September 2021 when legacy Tor hidden services stopped
-# working. Now fails to build with latest protobuf too. No upstream activity
-# since 2017. Alternatives (unvetted) are 'cwtch' and 'ricochet-refreshed' but
-# neither are packaged.
-# Removal on 2023-09-28.  Bug #830477, bug #913004.
-net-im/ricochet
-
 # Sam James <sam@gentoo.org> (2023-08-04)
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
