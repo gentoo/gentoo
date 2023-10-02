@@ -7,7 +7,6 @@ EAPI=8
 # Check regularly after releases!
 inherit flag-o-matic toolchain-funcs
 
-
 DESCRIPTION="DMI (Desktop Management Interface) table related utilities"
 HOMEPAGE="https://www.nongnu.org/dmidecode/"
 SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.xz"
