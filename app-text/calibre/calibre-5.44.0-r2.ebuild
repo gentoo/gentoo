@@ -244,7 +244,7 @@ src_install() {
 	find "${ED}"/usr/share -type d -empty -delete
 
 	einfo "Converting python shebangs"
-	python_fix_shebang --force "${ED}"
+	python_fix_shebang "${ED}/usr/bin"
 
 	einfo "Compiling python modules"
 	python_optimize "${ED}"/usr/$(get_libdir)/calibre "${D}/$(python_get_sitedir)"
