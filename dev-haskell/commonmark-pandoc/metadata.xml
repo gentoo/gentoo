@@ -5,4 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="hackage">commonmark-pandoc</remote-id>
+		<remote-id type="github">jgm/commonmark-hs</remote-id>
+	</upstream>
 </pkgmetadata>
