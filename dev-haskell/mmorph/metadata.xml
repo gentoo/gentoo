@@ -5,8 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This library provides monad morphism utilities, most commonly used
-		for manipulating monad transformer stacks.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">mmorph</remote-id>
+		<remote-id type="github">Gabriella439/Haskell-MMorph-Library</remote-id>
+	</upstream>
 </pkgmetadata>
