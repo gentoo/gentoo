@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">extra</remote-id>
 		<remote-id type="github">ndmitchell/extra</remote-id>
 	</upstream>
 </pkgmetadata>
