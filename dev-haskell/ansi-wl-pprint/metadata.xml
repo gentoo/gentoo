@@ -5,10 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This is a pretty printing library based on Wadler's paper "A Prettier Printer". It has been enhanced with support for ANSI terminal colored output using the ansi-terminal package.
-	</longdescription>
 	<upstream>
-		<remote-id type="github">batterseapower/ansi-wl-pprint</remote-id>
+		<remote-id type="hackage">ansi-wl-pprint</remote-id>
+		<remote-id type="github">ekmett/ansi-wl-pprint</remote-id>
 	</upstream>
 </pkgmetadata>
