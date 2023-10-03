@@ -5,12 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Haddock is a documentation-generation tool for Haskell
-		libraries. These modules expose some functionality of it
-		without pulling in the GHC dependency and it is not the same
-		as Haddock itself. Please note that the
-		API is likely to change so specify upper bounds in your
-		project if you can't release often.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">haddock-library</remote-id>
+		<remote-id type="github">haskell/haddock</remote-id>
+	</upstream>
 </pkgmetadata>
