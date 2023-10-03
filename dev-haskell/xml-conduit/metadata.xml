@@ -21,6 +21,7 @@
 		Additionally, the xml-hamlet package &lt;http://hackage.haskell.org/package/xml-hamlet&gt; provides a more convenient syntax for creating XML documents. For a more thorough tutorial on this library, please see &lt;http://www.yesodweb.com/book/xml-enumerator&gt;.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">xml-conduit</remote-id>
 		<remote-id type="github">snoyberg/xml</remote-id>
 	</upstream>
 </pkgmetadata>
