@@ -5,15 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		hscolour is a small Haskell script to colourise Haskell code. It currently
-		has six output formats:
-		ANSI terminal codes (optionally XTerm-256colour codes),
-		HTML 3.2 with &lt;font&gt; tags,
-		HTML 4.01 with CSS,
-		HTML 4.01 with CSS and mouseover annotations,
-		XHTML 1.0 with inline CSS styling,
-		LaTeX,
-		and mIRC chat codes.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">hscolour</remote-id>
+	</upstream>
 </pkgmetadata>
