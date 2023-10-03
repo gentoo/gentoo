@@ -41,16 +41,15 @@
 #                  is fixed.
 
 case ${EAPI} in
-	6|7|8) ;;
+	# eutils is for eqawarn
+	6) inherit eutils ;;
+	8|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ -z ${_HASKELL_CABAL_ECLASS} ]]; then
-_HASKELL_CABAL_ECLASS=1
-
-[[ ${EAPI} == 6 ]] && inherit eqawarn
-
 inherit ghc-package multilib toolchain-funcs
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_install pkg_postinst pkg_postrm
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
 # @USER_VARIABLE
@@ -158,6 +157,9 @@ S="${WORKDIR}/${CABAL_P}"
 # @DESCRIPTION:
 # The location of the .cabal file for the Haskell package. This defaults to
 # "${S}/${CABAL_PN}.cabal".
+# 
+# NOTE: If $S is redefined in the ebuild after inheriting this eclass,
+# $CABAL_FILE will also need to be redefined as well.
 : "${CABAL_FILE:="${S}/${CABAL_PN}.cabal"}"
 
 # @ECLASS_VARIABLE: CABAL_DISTFILE
@@ -172,12 +174,15 @@ fi
 # @ECLASS_VARIABLE: CABAL_CHDEPS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Specifies changes to be made to the .cabal file. Uses the cabal_chdeps
-# function internally and shares the same syntax.
-# @EXAMPLE:
+# Specifies changes to be made to the .cabal file.
+# Accepts argument list as pairs of substitutions: <from-string> <to-string>...
+# Uses the cabal_chdeps function internally and shares the same syntax.
+#
+# Example:
+#
 # CABAL_CHDEPS=(
-#    'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
-#    'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
+# 	'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
+# 	'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
 # )
 : "${CABAL_CHDEPS:=}"
 
@@ -197,6 +202,45 @@ fi
 #	cabal-doctest
 # )
 : "${GHC_BOOTSTRAP_PACKAGES:=}"
+
+# @ECLASS_VARIABLE: CABAL_TEST_REQUIRED_BINS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Binaries included in this package which are needed during testing. This
+# adjusts PATH during src_test() so that the binaries can be found, even if
+# they have not been installed yet.
+#
+# Example:
+#
+# CABAL_TEST_REQUIRED_BINS=( arbtt-{capture,dump,import,recover,stats} )
+: "${CABAL_TEST_REQUIRED_BINS:=}"
+
+# @ECLASS_VARIABLE: CABAL_HADDOCK_TARGETS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Manually set the targets for haddock/hoogle. This is occasionally needed
+# when './setup haddock' cannot calculate the transient dependencies.
+#
+# Example:
+#
+# CABAL_HADDOCK_TARGETS="lib:${CABAL_PN}"
+: "${CABAL_HADDOCK_TARGETS:=}"
+
+# @ECLASS_VARIABLE: CABAL_CHBINS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Renames executables that are installed with the package.
+# Accepts argument list as pairs of substitutions: <from-string> <to-string>...
+#
+# Example:
+#
+# CABAL_CHBINS=(
+#	'demo' 'byline-demo'
+#	'simple' 'byline-simple'
+#	'menu' 'byline-menu'
+#	'shell' 'byline-shell'
+# )
+: "${CABAL_CHBINS:=}"
 
 # 'dev-haskell/cabal' passes those options with ./configure-based
 # configuration, but most packages don't need/don't accept it:
@@ -237,6 +281,7 @@ fi
 
 if [[ -n "${CABAL_USE_PROFILE}" ]]; then
 	IUSE="${IUSE} profile"
+	RDEPEND+=" dev-lang/ghc:=[profile?]"
 fi
 
 if [[ -n "${CABAL_TEST_SUITE}" ]]; then
@@ -251,6 +296,8 @@ case $PV in
 	*9999) ;;
 	*)
 		if [[ -z "${CABAL_LIVE_VERSION}" ]]; then
+			# Without this if/then/else block, pkgcheck gives a
+			# RedundantUriRename warning for every package
 			if [[ "${CABAL_P}" == "${P}" ]]; then
 				SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 			else
@@ -374,7 +421,7 @@ cabal-mksetup() {
 	local setup_src=${setupdir}/Setup.hs
 
 	rm -vf "${setupdir}"/Setup.{lhs,hs}
-	elog "Creating 'Setup.hs' for 'Simple' build type."
+	einfo "Creating 'Setup.hs' for 'Simple' build type."
 
 	echo 'import Distribution.Simple; main = defaultMain' \
 		> "${setup_src}" || die "failed to create default Setup.hs"
@@ -390,7 +437,7 @@ cabal-hscolour() {
 }
 
 cabal-haddock() {
-	haskell-cabal-run_verbose ./setup haddock "$@"
+	haskell-cabal-run_verbose ./setup haddock ${CABAL_HADDOCK_TARGETS[*]} "$@"
 }
 
 cabal-die-if-nonempty() {
@@ -650,7 +697,19 @@ haskell-cabal_src_prepare() {
 	# Apply patches *after* pulling the revised cabal
 	default
 
-	[[ -n "${CABAL_CHDEPS}" ]] && cabal_chdeps "${CABAL_CHDEPS[@]}"
+	if [[ -n "${CABAL_CHBINS}" ]]; then
+		for b in "${CABAL_CHBINS[@]}"; do
+			export CABAL_CHDEPS=( "${CABAL_CHDEPS[@]}" "executable ${b}" )
+		done
+	fi
+
+	# Clean CABAL_CHDEPS of any blank entries
+	local chdeps=()
+	for d in "${CABAL_CHDEPS[@]}"; do
+		[[ -n "${d}" ]] && export chdeps+=( "${d}" )
+	done
+
+	[[ -n "${chdeps[@]}" ]] && cabal_chdeps "${chdeps[@]}"
 }
 
 haskell-cabal_src_configure() {
@@ -670,6 +729,19 @@ cabal_src_configure() {
 	haskell-cabal_src_configure "$@"
 }
 
+# Run this to search for directories in "${S}/dist/build/" which contain
+# libraries, and add them to LD_LIBRARY_PATH
+cabal-export-dist-libs() {
+	local so lib_dir
+	while read -r lib_dir; do
+		export LD_LIBRARY_PATH="${lib_dir}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
+	done < <(
+		find "${S}/dist/build" -name "*.so" \
+			| while read -r so; do dirname "$so"; done \
+			| sort -u \
+	)
+}
+
 # exported function: cabal-style bootstrap configure and compile
 cabal_src_compile() {
 	cabal-is-dummy-lib && return
@@ -677,9 +749,10 @@ cabal_src_compile() {
 	cabal-build
 
 	if [[ -n "$CABAL_USE_HADDOCK" ]] && use doc; then
+
 		if [[ -n "$CABAL_USE_HSCOLOUR" ]] && use hscolour; then
 			# --hyperlink-source implies calling 'setup hscolour'
-			haddock_args+=(--hyperlink-source)
+			local haddock_args=(--hyperlink-source)
 		fi
 
 		cabal-haddock "${haddock_args[@]}" $CABAL_EXTRA_HADDOCK_FLAGS
@@ -702,6 +775,10 @@ cabal_src_compile() {
 			ewarn "hoogle USE flag requires doc USE flag, building without hoogle"
 		fi
 	fi
+
+	# Export built libraries to LD_LIBRARY_PATH so they can be used in the
+	# test and install phases.
+	cabal-export-dist-libs
 }
 
 haskell-cabal_src_compile() {
@@ -721,6 +798,15 @@ haskell-cabal_src_test() {
 		einfo ">>> No tests for dummy library: ${CATEGORY}/${PF}"
 	else
 		einfo ">>> Test phase [cabal test]: ${CATEGORY}/${PF}"
+
+		cabal-register-inplace
+
+		# Add binary build paths to PATH so just-built binaries can be found
+		# during testing.
+		local bin
+		for bin in ${CABAL_TEST_REQUIRED_BINS[*]}; do
+			export PATH="${S}/dist/build/${bin}${PATH+:}${PATH}"
+		done
 
 		# '--show-details=streaming' appeared in Cabal-1.20
 		if ./setup test --help | grep -q -- "'streaming'"; then
@@ -761,7 +847,7 @@ cabal_src_install() {
 # Arguments passed to this function will make their way to `cabal-copy`
 # and eventually `./setup copy`. This allows you to specify which
 # components will be installed.
-# e.g. `haskell-cabal_src_install "lib:${PN}"` will only install the library
+# e.g. `haskell-cabal_src_install "lib:${CABAL_PN}"` will only install the library
 haskell-cabal_src_install() {
 	pushd "${S}" > /dev/null || die
 
@@ -772,6 +858,22 @@ haskell-cabal_src_install() {
 
 haskell-cabal_pkg_postinst() {
 	ghc-package_pkg_postinst
+
+	if [[ -n "${CABAL_CHBINS}" ]]; then
+		elog "The following executables installed with this package have been renamed to help"
+		elog "prevent name collisions:"
+		elog ""
+
+		local from
+		for b in "${CABAL_CHBINS[@]}"; do
+			if [[ -z "${from}" ]]; then
+				from="${b}"
+			else
+				elog "${from} -> ${b}"
+				from=""
+			fi
+		done
+	fi
 }
 
 haskell-cabal_pkg_postrm() {
@@ -809,28 +911,16 @@ cabal_flag() {
 }
 
 # @FUNCTION: cabal_chdeps
+# @DEPRECATED: CABAL_CHDEPS
 # @DESCRIPTION:
+# See the CABAL_CHDEPS variable for the preferred way to use this function.
+#
 # Allows easier patching of $CABAL_FILE (${S}/${PN}.cabal by default)
 # depends
 #
 # Accepts argument list as pairs of substitutions: <from-string> <to-string>...
 #
 # Dies on error.
-#
-# Usage examples:
-#
-# src_prepare() {
-#    cabal_chdeps \
-#        'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7' \
-#        'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
-#}
-# or
-# src_prepare() {
-#    CABAL_FILE=${S}/${CABAL_PN}.cabal cabal_chdeps \
-#        'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
-#    CABAL_FILE=${S}/${CABAL_PN}-tools.cabal cabal_chdeps \
-#        'base == 3.*' 'base >= 4.2 && < 4.7'
-#}
 #
 cabal_chdeps() {
 	# Needed for compatibility with ebuilds still using MY_PN
@@ -848,6 +938,7 @@ cabal_chdeps() {
 	[[ -f "${cabal_file}" ]] || die "cabal file '${cabal_file}' does not exist"
 
 	orig_c=$(< "${cabal_file}")
+	local next_c=${orig_c}
 
 	while :; do
 		from_pat=$1
@@ -862,19 +953,26 @@ cabal_chdeps() {
 		from_pat=${from_pat//\*/\\*}
 		from_pat=${from_pat//\[/\\[}
 
-		new_c=${orig_c//${from_pat}/${to_str}}
+		# escape ampersands in the 'to' part
+		to_str=$(sed -e 's%&%\\\&%g' <<< "${to_str}")
 
-		if [[ -n $CABAL_DEBUG_LOOSENING ]]; then
-			echo "${orig_c}" >"${T}/${cabal_file}".pre
-			echo "${new_c}" >"${T}/${cabal_file}".post
-			diff -u "${T}/${cabal_file}".{pre,post}
-		fi
+		# use sed instead of bash to make sure things are consistent in the presence
+		# of the patsub_replacement shell option
+		# See: <https://github.com/gentoo-haskell/gentoo-haskell/issues/1363>
+		new_c="$(sed -e "s%${from_pat}%${to_str}%g" <<< "${next_c}")"
 
-		[[ "${orig_c}" == "${new_c}" ]] && die "no trigger for '${from_pat}'"
-		orig_c=${new_c}
+		[[ "${next_c}" == "${new_c}" ]] && die "no trigger for '${from_pat}'"
+		next_c=${new_c}
 		shift
 		shift
 	done
+
+	if [[ -n $CABAL_DEBUG_LOOSENING ]]; then
+		local cabal_base="${T}/$(basename "${cabal_file}")"
+		echo "${orig_c}" > "${cabal_base}.pre"
+		echo "${new_c}" > "${cabal_base}.post"
+		diff -u --color=always "${cabal_base}".{pre,post}
+	fi
 
 	echo "${new_c}" > "$cabal_file" ||
 		die "failed to update"
@@ -882,8 +980,8 @@ cabal_chdeps() {
 
 # @FUNCTION: cabal-constraint
 # @DESCRIPTION:
-# Allows to set constraints to the libraries that are used by the
-# specified package.
+# Allows to set constraint to the libraries that are
+# used by specified package
 cabal-constraint() {
 	while read p v ; do
 		echo "--constraint \"$p == $v\""
@@ -912,6 +1010,111 @@ replace-hcflags() {
 	return 0
 }
 
-fi
+# @FUNCTION: cabal-register-inplace
+# @DESCRIPTION:
+# Register the package library with the in-place package DB, located in
+# "${S}/dist/package.conf.inplace/". This is sometimes needed for tests when
+# the package is not yet installed. Unfortunately, prebuilt solutions to this
+# problem, such as './setup register --inplace', do not seem to work correctly.
+#
+# This function will not run unless CABAL_HAS_LIBRARIES is set to a nonempty
+# value.
+#
+# You can set SKIP_REGISTER_INPLACE to a nonempty value to skip this function
+# (useful since it is automatically called from within haskell-cabal_src_test).
+#
+# The environment variables TEST_CABAL_PN and TEST_PN can be manually set in
+# case the test suite is within a separate haskell package.
+#
+# The environment variable EXTRA_PACKAGE_DBS can be used to set extra databases
+# for ghc-pkg to read.
+cabal-register-inplace() {
+	if [[ -n ${CABAL_HAS_LIBRARIES} ]] && [[ -z ${SKIP_REGISTER_INPLACE} ]]; then
+		# It is assumed that the package-id is either registered in the global
+		# DB or in an "in-place" DB, local to the build dir. cabal-doctest is an
+		# example of something that makes this assumption.
+		local inplace_db="${S}/dist/package.conf.inplace/"
 
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_install pkg_postinst pkg_postrm
+		# Set test-specific CABAL_PN/PN values if they are not set already
+		: ${TEST_CABAL_PN:="$(
+			if [[ -n $MY_PN ]]; then
+				echo "${MY_PN}"
+			else
+				echo "${CABAL_PN}"
+			fi
+		)"}
+		: ${TEST_PN:="${PN}"}
+
+		local cabal_file="${S}/${TEST_CABAL_PN}.cabal"
+		local conf="${S}/${TEST_CABAL_PN}.conf"
+
+		# Generate the package conf
+		local ipid="$(./setup register --gen-pkg-config="${conf}" --print-ipid || die)"
+
+		# In the case that the package has multiple libraries (one "normal" and
+		# one or more "private" libraries) './setup register' will create a
+		# folder instead of a file, containing one conf file per library.
+		# The main library's conf file will end with the string captured by the
+		# 'ipid' variable.
+		if [[ -d "${S}/${TEST_CABAL_PN}.conf" ]]; then
+			local pkg_conf="$(find "${conf}" -maxdepth 1 -type f -name "*${ipid}")"
+			[[ -z $pkg_conf ]] && die "Failed to find package conf file in ${conf}"
+		elif [[ -f "${conf}" ]]; then
+			local pkg_conf="${conf}"
+		else
+			die "Package conf was not created by './setup register'"
+		fi
+
+		# Modify the package conf so that it points to directories within the build
+		# dir.
+		local sed=( sed -ri ) k
+		for k in import-dirs library-dirs dynamic-library-dirs; do
+			sed+=( -e "s%(^${k}:\s+)\S.*%\1${S}/dist/build%" )
+		done
+		sed+=( -e "s%/usr/share/doc/${P}/html%${S}/dist/doc/html/${TEST_CABAL_PN}%" )
+		sed+=( "${pkg_conf}" )
+		"${sed[@]}" || die "sed command failed"
+
+		local extra_pkg_dbs=() db
+		for db in ${EXTRA_PACKAGE_DBS[*]}; do
+			extra_pkg_dbs+=( --package-db="${db}" )
+		done
+
+		# The package-id may already be registered in the global DB, which will
+		# cause ghc-pkg to fail. However, we don't want to 'die' in this case, as
+		# the package registration in the global DB will be used instead.
+		/usr/bin/ghc-pkg "${extra_pkg_dbs[@]}" --package-db="${inplace_db}" register "${pkg_conf}"
+
+		local ret="$?"
+
+		case ${ret} in
+			0) return 0 ;;
+			1) einfo "Package is already registered in global DB"; return 0 ;;
+			*) die "ghc-pkg returned unusual code: ${ret}" ;;
+		esac
+	fi
+}
+
+# @FUNCTION: cabal-run-dist-bin
+# @USAGE: <bin> [args]
+# @DESCRIPTION:
+# Run an executable that was built but has not been installed to the system.
+# These live in "${S}/dist/build/", which also includes libraries that are
+# needed by the executable. (Needed libraries are automatically added to
+# LD_LIBRARY_PATH by haskell-cabal_src_compile().)
+#
+# This is only inteded to be run in the test and install phases.
+cabal-run-dist-bin() {
+	einfo "LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}"
+	case "$EBUILD_PHASE_FUNC" in
+		src_test|src_install)
+			local bin="$1"
+			shift
+			"${S}/dist/build/${bin}/${bin}" "$@"
+			;;
+		*)
+			ewarn "cabal-run-dist-bin() called from ${EBUILD_PHASE_FUNC} (ignoring)"
+			false
+			;;
+	esac
+}
