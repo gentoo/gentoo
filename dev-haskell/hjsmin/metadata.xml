@@ -5,11 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Reduces size of javascript files by stripping out extraneous whitespace and
-		other syntactic elements, without changing the semantics.
-	</longdescription>
 	<upstream>
-		<remote-id type="github">alanz/hjsmin</remote-id>
+		<remote-id type="hackage">hjsmin</remote-id>
+		<remote-id type="github">erikd/hjsmin</remote-id>
 	</upstream>
 </pkgmetadata>

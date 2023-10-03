@@ -1,0 +1,29 @@
+From 9605b913e6aed7fa3d40aa9925975b506d3a0eb0 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@users.noreply.github.com>
+Date: Wed, 1 Mar 2023 14:13:58 -0700
+Subject: [PATCH] Fix tests
+
+Tests assume a 'dist-newstyle' directory (e.g. cabal-v2) when we
+actually have a 'dist' directory.
+
+Signed-off-by: hololeap <hololeap@users.noreply.github.com>
+---
+ test/test-cli.hs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test-cli.hs b/test/test-cli.hs
+index a97e1b7..7691587 100644
+--- a/test/test-cli.hs
++++ b/test/test-cli.hs
+@@ -18,7 +18,7 @@ main = do
+   IO.hSetBuffering IO.stderr LineBuffering
+ 
+   cwd <- getCurrentDirectory
+-  topdir <- canonicalizePath $ cwd </> "dist-newstyle"
++  topdir <- canonicalizePath $ cwd </> "dist"
+ 
+   -- Set an environment variable for all the exectuables we want to test.
+   setExecutableEnvVar "HJSMIN" topdir "hjsmin"
+-- 
+2.39.2
+
