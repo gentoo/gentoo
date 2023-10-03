@@ -5,10 +5,11 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package includes a thin sqlite3 wrapper based on the direct-sqlite package, as well as the entire C library, so there are no system dependencies.
-	</longdescription>
 	<use>
-		<flag name="build-sanity-exe">Build a sanity check test executable.</flag>
+		<flag name="build-sanity-exe">Build a sanity check test executable</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">persistent-sqlite</remote-id>
+		<remote-id type="github">yesodweb/persistent</remote-id>
+	</upstream>
 </pkgmetadata>
