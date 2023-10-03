@@ -21,8 +21,8 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="7"
-IUSE="doc jack phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+SLOT="8"
+IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
 	dev-cpp/glibmm:2
@@ -45,6 +45,7 @@ RDEPEND="
 	media-libs/rubberband
 	media-libs/taglib
 	media-libs/vamp-plugin-sdk
+	net-libs/libwebsockets
 	net-misc/curl
 	sys-libs/readline:0=
 	sci-libs/fftw:3.0[threads]
@@ -88,7 +89,10 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# delete optimization flags
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
+
+	# handle arch
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
 	if use cpu_flags_x86_sse; then
@@ -110,9 +114,13 @@ src_prepare() {
 	sed 's/flag_line\ =\ o.*/flag_line\ =\ \": '"${OPTFLAGS}"' just some place holders\"/' \
 		-i "${S}"/wscript || die
 	sed 's/cpu\ ==\ .*/cpu\ ==\ "LeaveMarchAsIs":/' -i "${S}"/wscript || die
+
+	# boost and shebang
 	append-flags "-lboost_system"
 	python_fix_shebang "${S}"/wscript
 	python_fix_shebang "${S}"/waf
+
+	# handle locales
 	my_lcmsg() {
 		rm -f {gtk2_ardour,gtk2_ardour/appdata,libs/ardour,libs/gtkmm2ext}/po/${1}.po
 	}
@@ -135,11 +143,13 @@ src_configure() {
 		--noconfirm
 		--optimize
 		--with-backends=${backends}
-		--no-fpu-optimization
+		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && \
+			echo '' || echo "--no-fpu-optimization")
 		$(usex doc "--docs" '')
-		--no-nls
+		$(usex nls '' "--no-nls")
 		$(usex phonehome "--phone-home" "--no-phone-home")
 		# not possible right now  --use-external-libs
+		# missing dependency: https://github.com/c4dm/qm-dsp
 	)
 
 	waf-utils_src_configure "${myconf[@]}"
@@ -173,6 +183,7 @@ src_install() {
 
 	insinto /usr/share/mime/packages
 	newins build/gtk2_ardour/ardour.xml ardour${SLOT}.xml
+	rm "${D}/usr/share/mime/packages/ardour.xml" || die
 }
 
 pkg_postinst() {
