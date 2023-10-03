@@ -20,6 +20,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">bifunctors</remote-id>
 		<remote-id type="github">ekmett/bifunctors</remote-id>
 	</upstream>
 </pkgmetadata>
