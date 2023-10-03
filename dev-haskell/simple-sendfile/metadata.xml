@@ -5,11 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Cross platform library for the sendfile system call.
-		This library tries to call minimum system calls which
-		are the bottleneck of web servers.
-	</longdescription>
 	<use>
 		<flag name="allow-bsd">Allow use of BSD sendfile (disable on
 		GNU/kFreeBSD)</flag>
