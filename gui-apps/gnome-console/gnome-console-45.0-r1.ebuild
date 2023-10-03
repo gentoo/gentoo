@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/console"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="~amd64 ~arm64 ~loong"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
