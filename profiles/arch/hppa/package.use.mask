@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
+# sys-apps/s6-linux-init has not been tested on this arch
+sys-apps/openrc s6
+
 # Sam James <sam@gentoo.org> (2023-09-24)
 # Qt not keyworded here.
 app-doc/doxygen gui
