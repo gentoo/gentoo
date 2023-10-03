@@ -5,12 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Hedgehog is a modern property-based testing system, in the spirit of
-		QuickCheck. Hedgehog uses integrated shrinking, so shrinks obey the
-		invariants of generated values by construction.
-		
-		To get started quickly, see the examples:
-		&lt;https://github.com/hedgehogqa/haskell-hedgehog/tree/master/hedgehog-example&gt;
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">hedgehog</remote-id>
+		<remote-id type="github">hedgehogqa/haskell-hedgehog</remote-id>
+	</upstream>
 </pkgmetadata>
