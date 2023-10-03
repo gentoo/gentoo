@@ -11,6 +11,7 @@
 		See the README for what instances are covered: &lt;https://github.com/haskell-compat/base-orphans#readme&gt;
 	</longdescription>
 	<upstream>
-		<remote-id type="github">haskell-compat/base-orphans#readme</remote-id>
+		<remote-id type="hackage">base-orphans</remote-id>
+		<remote-id type="github">haskell-compat/base-orphans</remote-id>
 	</upstream>
 </pkgmetadata>
