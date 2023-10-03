@@ -140,6 +140,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.0-fix-build-with-boost-1.81.patch
+	"${FILESDIR}"/${PN}-3.3.6-cycles-gcc13.patch
 )
 
 blender_check_requirements() {

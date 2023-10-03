@@ -133,6 +133,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.2-Cycles-add-option-to-specify-OptiX-runtime-root-dire.patch
 	"${FILESDIR}"/${PN}-3.2.2-Fix-T100845-wrong-Cycles-OptiX-runtime-compilation-i.patch
 	"${FILESDIR}"/${PN}-3.3.0-fix-build-with-boost-1.81.patch
+	"${FILESDIR}"/${PN}-3.3.6-cycles-gcc13.patch
 )
 
 blender_check_requirements() {
