@@ -35,7 +35,6 @@ RDEPEND="
 	media-libs/aubio
 	media-libs/flac:=
 	media-libs/freetype:2
-	media-libs/libart_lgpl
 	media-libs/liblo
 	media-libs/liblrdf
 	media-libs/libsamplerate
