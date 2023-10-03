@@ -5,4 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="hackage">singleton-bool</remote-id>
+		<remote-id type="github">phadej/singleton-bool</remote-id>
+	</upstream>
 </pkgmetadata>
