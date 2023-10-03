@@ -8,4 +8,8 @@
 	<use>
 		<flag name="lukko">Use @lukko@ for file-locking, otherwise use @GHC.IO.Handle.Lock@</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">hackage-security</remote-id>
+		<remote-id type="github">haskell/hackage-security</remote-id>
+	</upstream>
 </pkgmetadata>
