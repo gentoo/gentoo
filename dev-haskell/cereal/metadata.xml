@@ -5,11 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A binary serialization library, similar to binary, that introduces an isolate
-		primitive for parser isolation, and replaces the asynchronous errors with a
-		user-handleable Either type.  Similar to binary in performance, but uses a
-		strict ByteString instead of a lazy ByteString, thus restricting it to
-		operating on finite inputs.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">cereal</remote-id>
+		<remote-id type="github">GaloisInc/cereal</remote-id>
+	</upstream>
 </pkgmetadata>
