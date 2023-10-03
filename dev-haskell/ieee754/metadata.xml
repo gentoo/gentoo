@@ -5,11 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-	Utilities for dealing with IEEE floating point numbers, ported from the Tangoi
-	math library; approximate and exact equality comparisons for general types. 
-	</longdescription>
-	<upstream>
-		<remote-id type="github">patperry/hs-ieee754</remote-id>
-	</upstream>
 </pkgmetadata>
