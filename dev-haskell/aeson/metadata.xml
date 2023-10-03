@@ -9,4 +9,8 @@
 		<flag name="cffi">Controls whether to include c-ffi bits or pure haskell. Default to False for security.</flag>
 		<flag name="ordered-keymap">Use ordered @Data.Map.Strict@ for KeyMap implementation.</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">aeson</remote-id>
+		<remote-id type="github">haskell/aeson</remote-id>
+	</upstream>
 </pkgmetadata>
