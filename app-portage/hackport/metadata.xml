@@ -5,11 +5,11 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A command line tool to manage an overlay of Gentoo ebuilds
-		that are generated from a hackage repo of Cabal packages.
-	</longdescription>
+	<use>
+		<flag name="profile">Enable profiling flags</flag>
+	</use>
 	<upstream>
+		<remote-id type="hackage">hackport</remote-id>
 		<remote-id type="github">gentoo-haskell/hackport</remote-id>
 	</upstream>
 </pkgmetadata>
