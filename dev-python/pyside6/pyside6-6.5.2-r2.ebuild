@@ -75,7 +75,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="test"
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-2)*:6"
+QT_PV="$(ver_cut 1-3)*:6"
 
 RDEPEND="${PYTHON_DEPS}
 	~dev-python/shiboken6-${PV}[${PYTHON_USEDEP}]
