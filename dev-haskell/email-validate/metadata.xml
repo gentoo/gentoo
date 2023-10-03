@@ -5,4 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="hackage">email-validate</remote-id>
+		<remote-id type="github">Porges/email-validate-hs</remote-id>
+	</upstream>
 </pkgmetadata>
