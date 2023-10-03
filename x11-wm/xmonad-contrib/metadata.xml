@@ -8,4 +8,8 @@
 	<use>
 		<flag name="xft">Use Xft to render text</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">xmonad-contrib</remote-id>
+		<remote-id type="github">xmonad/xmonad-contrib</remote-id>
+	</upstream>
 </pkgmetadata>
