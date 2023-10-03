@@ -5,13 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		The @threadDelay@ and @timeout@ functions from the @base@ library
-		use the bounded @Int@ type for specifying the delay or timeout
-		period. This packages provides alternatives which use the
-		unbounded @Integer@ type.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">basvandijk/unbounded-delays</remote-id>
-	</upstream>
 </pkgmetadata>
