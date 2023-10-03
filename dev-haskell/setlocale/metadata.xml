@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="bitbucket">IchUndNichtDu/haskell-setlocale</remote-id>
+		<remote-id type="hackage">setlocale</remote-id>
+		<remote-id type="gitlab">Kritzefitz/haskell-setlocale</remote-id>
 	</upstream>
 </pkgmetadata>
