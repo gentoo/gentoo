@@ -13,4 +13,8 @@
 		stacked on arbitrary monads, and it is also parametric in the
 		input stream type.
 	</longdescription>
+	<upstream>
+		<remote-id type="hackage">parsec</remote-id>
+		<remote-id type="github">haskell/parsec</remote-id>
+	</upstream>
 </pkgmetadata>
