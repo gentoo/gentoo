@@ -5,11 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package normalizes variations in the interface for
-		inspecting datatype information via Template Haskell
-		so that packages and support a single, easier to use
-		informational datatype while supporting many versions
-		of Template Haskell.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">th-abstraction</remote-id>
+		<remote-id type="github">glguy/th-abstraction</remote-id>
+	</upstream>
 </pkgmetadata>
