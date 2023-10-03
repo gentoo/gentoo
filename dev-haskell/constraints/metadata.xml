@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">constraints</remote-id>
 		<remote-id type="github">ekmett/constraints</remote-id>
 	</upstream>
 </pkgmetadata>
