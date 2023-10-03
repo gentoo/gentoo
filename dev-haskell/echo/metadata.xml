@@ -5,18 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		The @base@ library exposes the @hGetEcho@ and @hSetEcho@ functions
-		for querying and setting echo status, but unfortunately, neither
-		function works with MinTTY consoles on Windows. This is a serious
-		issue, since @hGetEcho@ and @hSetEcho@ are often used to disable
-		input echoing when a program prompts for a password, so many
-		programs will reveal your password as you type it on MinTTY!
-		
-		This library provides an alternative interface which works
-		with both MinTTY and other consoles. An example is included
-		which demonstrates how one might prompt for a password using
-		this library. To build it, make sure to configure with the
-		@-fexample@ flag.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">echo</remote-id>
+		<remote-id type="github">RyanGlScott/echo</remote-id>
+	</upstream>
 </pkgmetadata>
