@@ -15,4 +15,7 @@
 		<flag name="torrentparser">Use haskell torrent library to parse torrent files</flag>
 		<flag name="webapp">Enable git-annex webapp</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">git-annex</remote-id>
+	</upstream>
 </pkgmetadata>
