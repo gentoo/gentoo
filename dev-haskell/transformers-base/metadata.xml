@@ -9,6 +9,7 @@
 		<flag name="orphaninstances">Build instances for orphan datatypes.</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">transformers-base</remote-id>
 		<remote-id type="github">mvv/transformers-base</remote-id>
 	</upstream>
 </pkgmetadata>
