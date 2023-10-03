@@ -5,10 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Mustache templates for Haskell.
-		
-		Based on @stache@ library, which uses @megaparsec@.
-		This library uses @parsec@, thus the name: @microstache@.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">microstache</remote-id>
+		<remote-id type="github">haskellari/microstache</remote-id>
+	</upstream>
 </pkgmetadata>
