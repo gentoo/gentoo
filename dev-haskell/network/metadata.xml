@@ -8,4 +8,8 @@
 	<use>
 		<flag name="devel">using tests for developers</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">network</remote-id>
+		<remote-id type="github">haskell/network</remote-id>
+	</upstream>
 </pkgmetadata>
