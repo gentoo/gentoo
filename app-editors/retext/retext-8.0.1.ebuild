@@ -18,7 +18,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/retext-project/retext.git"
 else
 	inherit pypi
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-2+"
