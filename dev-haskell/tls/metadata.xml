@@ -20,10 +20,11 @@
 		ciphers, compressions and certificates functions.
 	</longdescription>
 	<use>
-		<flag name="compat">Accept SSLv2 compatible handshake.</flag>
-		<flag name="network">Use the base network library.</flag>
+		<flag name="compat">Accept SSLv2 client hello for beginning SSLv3 / TLS handshake</flag>
+		<flag name="network">Use the base network library</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">vincenthz/hs-tls</remote-id>
+		<remote-id type="hackage">tls</remote-id>
+		<remote-id type="github">haskell-tls/hs-tls</remote-id>
 	</upstream>
 </pkgmetadata>
