@@ -5,9 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Yesod is a framework designed to foster creation of RESTful web application that have strong compile-time guarantees of correctness. It also affords space efficient code and portability to many deployment backends, from CGI to stand-alone serving.
-		
-		The Yesod documentation site &lt;http://www.yesodweb.com/&gt; has much more information, tutorials and information on some of the supporting packages, like Hamlet and Persistent.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">yesod-core</remote-id>
+		<remote-id type="github">yesodweb/yesod</remote-id>
+	</upstream>
 </pkgmetadata>
