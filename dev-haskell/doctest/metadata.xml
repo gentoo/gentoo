@@ -5,15 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		The doctest program checks examples in source code comments.
-		It is modeled after doctest for Python
-		(&lt;http://docs.python.org/library/doctest.html&gt;).
-		
-		Documentation is at
-		&lt;https://github.com/sol/doctest-haskell#readme&gt;.
-	</longdescription>
 	<upstream>
-		<remote-id type="github">sol/doctest-haskell#readme</remote-id>
+		<remote-id type="hackage">doctest</remote-id>
+		<remote-id type="github">sol/doctest</remote-id>
 	</upstream>
 </pkgmetadata>
