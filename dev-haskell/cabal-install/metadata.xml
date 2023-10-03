@@ -9,4 +9,8 @@
 		<flag name="lukko">Use @lukko@ for file-locking</flag>
 		<flag name="native-dns">Enable use of the [resolv](https://hackage.haskell.org/package/resolv) &amp; [windns](https://hackage.haskell.org/package/windns) packages for performing DNS lookups</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">cabal-install</remote-id>
+		<remote-id type="github">haskell/cabal</remote-id>
+	</upstream>
 </pkgmetadata>
