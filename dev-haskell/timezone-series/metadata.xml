@@ -5,11 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package endows Data.Time, from the time
-		package, with several data types and functions
-		for enhanced processing of timezones. For one way
-		to create timezone series, see the timezone-olson
-		package.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">timezone-series</remote-id>
+		<remote-id type="github">ygale/timezone-series</remote-id>
+	</upstream>
 </pkgmetadata>
