@@ -7,37 +7,24 @@ EAPI=8
 #hackport: flags: +useghc
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
-CABAL_HACKAGE_REVISION="1"
+CABAL_HACKAGE_REVISION=3
 inherit haskell-cabal
 
 DESCRIPTION="a persistent store for values of arbitrary types"
 HOMEPAGE="https://github.com/HeinrichApfelmus/vault"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz
-	https://hackage.haskell.org/package/${P}/revision/${CABAL_HACKAGE_REVISION}.cabal -> ${PF}.cabal"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
-RDEPEND=">=dev-haskell/hashable-1.1.2.5:=[profile?] <dev-haskell/hashable-1.5:=[profile?]
+RDEPEND="
+	>=dev-haskell/hashable-1.1.2.5:=[profile?] <dev-haskell/hashable-1.5:=[profile?]
 	>=dev-haskell/unordered-containers-0.2.3.0:=[profile?] <dev-haskell/unordered-containers-0.3:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1
 "
-BDEPEND="app-text/dos2unix"
-
-src_prepare() {
-	# pull revised cabal from upstream
-	cp "${DISTDIR}/${PF}.cabal" "${S}/${PN}.cabal" || die
-
-	# Convert to unix line endings
-	dos2unix "${S}/${PN}.cabal" || die
-
-	# Apply patches *after* pulling the revised cabal
-	default
-}
 
 src_configure() {
 	haskell-cabal_src_configure \

@@ -5,15 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A /vault/ is a typed, persistent store for values of arbitrary types.
-		It's like having first-class access to the storage space behind IORefs.
-		
-		The data structure is analogous to a bank vault,
-		where you can access different bank boxes with different keys;
-		hence the name.
-	</longdescription>
 	<upstream>
+		<remote-id type="hackage">vault</remote-id>
 		<remote-id type="github">HeinrichApfelmus/vault</remote-id>
 	</upstream>
 </pkgmetadata>
