@@ -5,13 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This library contains functions for encoding [bytestring
-		builders](http://hackage.haskell.org/package/bytestring/docs/Data-ByteString-Builder.html#t:Builder)
-		for [chunked HTTP\/1.1 transfer](https://en.wikipedia.org/wiki/Chunked_transfer_encoding).
-		
-		This functionality was extracted from
-		the [blaze-builder](http://hackage.haskell.org/package/blaze-builder)
-		package.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">bsb-http-chunked</remote-id>
+		<remote-id type="github">sjakobi/bsb-http-chunked</remote-id>
+	</upstream>
 </pkgmetadata>
