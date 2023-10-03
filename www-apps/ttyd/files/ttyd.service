@@ -3,7 +3,7 @@ Description=Terminal over HTTP
 
 [Service]
 User=root
-ExecStart=/usr/bin/ttyd -p 9000 login
+ExecStart=/usr/bin/ttyd -W -p 9000 login
 Restart=on-abort
 
 [Install]
