@@ -5,15 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Simple time library focusing on simple but powerful and performant API
-		
-		The backbone of the library are the Timeable and Time type classes.
-		
-		Each Timeable instances can be converted to type that has a Time instances,
-		and thus are different representations of current time.
-	</longdescription>
 	<upstream>
+		<remote-id type="hackage">hourglass</remote-id>
 		<remote-id type="github">vincenthz/hs-hourglass</remote-id>
 	</upstream>
 </pkgmetadata>
