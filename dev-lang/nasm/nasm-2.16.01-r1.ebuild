@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="groovy little assembler"
 HOMEPAGE="https://www.nasm.us/"
@@ -12,6 +14,20 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ia64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	_BitScanReverse
+	_BitScanReverse64
+	__cpu_to_le16
+	__cpu_to_le32
+	__cpu_to_le64
+	_byteswap_uint64
+	_byteswap_ulong
+	_byteswap_ushort
+	cpu_to_le16
+	cpu_to_le32
+	cpu_to_le64
+)
 
 # [fonts note] doc/psfonts.ph defines ordered list of font preference.
 # Currently 'media-fonts/source-pro' is most preferred and is able to
@@ -30,6 +46,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.15-bsd-cp-doc.patch
+	"${FILESDIR}"/${PN}-2.16-autoconf-macro-fixes.patch
 )
 
 src_prepare() {
@@ -40,6 +57,8 @@ src_prepare() {
 	# were renamed. Currently depend on media-fonts/source-sans:3 which works
 	# with this sed.
 	sed -i 's/SourceSansPro/SourceSans3/g' doc/psfonts.ph || die
+
+	AT_M4DIR="${S}/autoconf/m4" eautoreconf
 }
 
 src_compile() {
