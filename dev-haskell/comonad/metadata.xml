@@ -8,4 +8,8 @@
 	<use>
 		<flag name="indexed-traversable">You can disable the use of the `indexed-traversable` package using `-f-indexed-traversable`.  Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.  If disabled we will not supply instances of `FunctorWithIndex`</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">comonad</remote-id>
+		<remote-id type="github">ekmett/comonad</remote-id>
+	</upstream>
 </pkgmetadata>
