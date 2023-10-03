@@ -1,0 +1,249 @@
+From 406d485eb5b055ec428fc189a2724c010ff90a8c Mon Sep 17 00:00:00 2001
+From: Ben Gamari <ben@well-typed.com>
+Date: Tue, 17 Jan 2023 19:45:34 +0000
+Subject: [PATCH 1/5] rts: Use C11-compliant static assertion syntax
+
+Previously we used `static_assert` which is only available in C23. By
+contrast, C11 only provides `_Static_assert`.
+
+Fixes #22777
+---
+ includes/Rts.h | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/includes/Rts.h b/includes/Rts.h
+index b2c74fcfc17..096da7e5139 100644
+--- a/includes/Rts.h
++++ b/includes/Rts.h
+@@ -29,6 +29,9 @@ extern "C" {
+ #include <windows.h>
+ #endif
+ 
++/* For _Static_assert */
++#include <assert.h>
++
+ #if !defined(IN_STG_CODE)
+ #define IN_STG_CODE 0
+ #endif
+@@ -147,9 +150,17 @@ void _warnFail(const char *filename, unsigned int linenum);
+ #define ASSERTM(predicate,msg,...) CHECKM(predicate,msg,##__VA_ARGS__)
+ #define WARN(predicate) CHECKWARN(predicate)
+ #undef ASSERTS_ENABLED
+-
+ #endif /* DEBUG */
+ 
++#if __STDC_VERSION__ >= 201112L
++// `_Static_assert` is provided by C11 but is deprecated and replaced by
++// `static_assert` in C23. Perhaps some day we should instead use the latter.
++// See #22777.
++#define GHC_STATIC_ASSERT(x, msg) _Static_assert((x), msg)
++#else
++#define GHC_STATIC_ASSERT(x, msg)
++#endif
++
+ /*
+  * Use this on the RHS of macros which expand to nothing
+  * to make sure that the macro can be used in a context which
+-- 
+GitLab
+
+
+From 489215f094ac077619bd13fb6e2a756c26648a34 Mon Sep 17 00:00:00 2001
+From: Ben Gamari <ben@smart-cactus.org>
+Date: Mon, 13 Feb 2023 13:13:05 -0500
+Subject: [PATCH 2/5] rts: Statically assert alignment of Capability
+
+In #22965 we noticed that changes in the size of `Capability` can result
+in unsound behavior due to the `align` pragma claiming an alignment
+which we don't in practice observe. Avoid this by statically asserting
+that the size is a multiple of the alignment.
+
+(cherry picked from commit b585225be9670de1a83e0bb17034d2fb821cb8a3)
+---
+ rts/Capability.h | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/rts/Capability.h b/rts/Capability.h
+index d7c1916ad7d..34695b0b13e 100644
+--- a/rts/Capability.h
++++ b/rts/Capability.h
+@@ -27,6 +27,16 @@
+ 
+ #include "BeginPrivate.h"
+ 
++// We never want a Capability to overlap a cache line with
++// anything else, so round it up to a cache line size:
++#if defined(s390x_HOST_ARCH)
++#define CAPABILITY_ALIGNMENT 256
++#elif !defined(mingw32_HOST_OS)
++#define CAPABILITY_ALIGNMENT 64
++#else
++#define CAPABILITY_ALIGNMENT 1
++#endif
++
+ /* N.B. This must be consistent with CapabilityPublic in RtsAPI.h */
+ struct Capability_ {
+     // State required by the STG virtual machine when running Haskell
+@@ -172,14 +182,12 @@ struct Capability_ {
+     StgTRecHeader *free_trec_headers;
+     uint32_t transaction_tokens;
+ } // typedef Capability is defined in RtsAPI.h
+-  // We never want a Capability to overlap a cache line with anything
+-  // else, so round it up to a cache line size:
+-#if defined(s390x_HOST_ARCH)
+-  ATTRIBUTE_ALIGNED(256)
+-#elif !defined(mingw32_HOST_OS)
+-  ATTRIBUTE_ALIGNED(64)
+-#endif
+-  ;
++  ATTRIBUTE_ALIGNED(CAPABILITY_ALIGNMENT)
++;
++
++// We allocate arrays of Capabilities therefore we must ensure that the size is
++// a multiple of the claimed alignment
++GHC_STATIC_ASSERT(sizeof(struct Capability_) % CAPABILITY_ALIGNMENT == 0, "Capability size does not match cache size");
+ 
+ #if defined(THREADED_RTS)
+ #define ASSERT_TASK_ID(task) ASSERT(task->id == osThreadId())
+-- 
+GitLab
+
+
+From 66f7ee57ce17d2fd96d74c6c4498d4f558815a0d Mon Sep 17 00:00:00 2001
+From: Ben Gamari <ben@smart-cactus.org>
+Date: Mon, 13 Feb 2023 13:21:11 -0500
+Subject: [PATCH 3/5] rts: Fix alignment of Capability
+
+---
+ rts/Capability.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/rts/Capability.h b/rts/Capability.h
+index 34695b0b13e..c0a058a3e71 100644
+--- a/rts/Capability.h
++++ b/rts/Capability.h
+@@ -181,6 +181,9 @@ struct Capability_ {
+     StgTRecChunk *free_trec_chunks;
+     StgTRecHeader *free_trec_headers;
+     uint32_t transaction_tokens;
++
++    // To ensure that size is multiple of CAPABILITY_ALIGNMENT.
++    StgWord _padding[0];
+ } // typedef Capability is defined in RtsAPI.h
+   ATTRIBUTE_ALIGNED(CAPABILITY_ALIGNMENT)
+ ;
+-- 
+GitLab
+
+
+From 1332f1f428e71cec02feb39b714b37c3ad0aa857 Mon Sep 17 00:00:00 2001
+From: Ben Gamari <ben@smart-cactus.org>
+Date: Mon, 13 Feb 2023 14:46:24 -0500
+Subject: [PATCH 4/5] rts: Introduce stgMallocAlignedBytes
+
+(cherry picked from commit 04336d2f11e49f7d00392f05d4fd48abdd231fc0)
+---
+ rts/RtsUtils.c | 37 ++++++++++++++++++++++++++++++++++++-
+ rts/RtsUtils.h |  2 ++
+ 2 files changed, 38 insertions(+), 1 deletion(-)
+
+diff --git a/rts/RtsUtils.c b/rts/RtsUtils.c
+index ca01bdb6e0c..439e54e2d7a 100644
+--- a/rts/RtsUtils.c
++++ b/rts/RtsUtils.c
+@@ -58,10 +58,45 @@ extern char *ctime_r(const time_t *, char *);
+ 
+ void *
+ stgMallocBytes (size_t n, char *msg)
++{
++    void *space = malloc(n);
++
++    if (space == NULL) {
++      /* Quoting POSIX.1-2008 (which says more or less the same as ISO C99):
++       *
++       *   "Upon successful completion with size not equal to 0, malloc() shall
++       *   return a pointer to the allocated space. If size is 0, either a null
++       *   pointer or a unique pointer that can be successfully passed to free()
++       *   shall be returned. Otherwise, it shall return a null pointer and set
++       *   errno to indicate the error."
++       *
++       * Consequently, a NULL pointer being returned by `malloc()` for a 0-size
++       * allocation is *not* to be considered an error.
++       */
++      if (n == 0) return NULL;
++
++      /* don't fflush(stdout); WORKAROUND bug in Linux glibc */
++      rtsConfig.mallocFailHook((W_) n, msg);
++      stg_exit(EXIT_INTERNAL_ERROR);
++    }
++    IF_DEBUG(zero_on_gc, memset(space, 0xbb, n));
++    return space;
++}
++
++void *
++stgMallocAlignedBytes (size_t n, size_t align, char *msg)
+ {
+     void *space;
+ 
+-    if ((space = malloc(n)) == NULL) {
++#if defined(mingw32_HOST_OS)
++    space = _aligned_malloc(n, align);
++#else
++    if (posix_memalign(&space, align, n)) {
++        space = NULL; // Allocation failed
++    }
++#endif
++
++    if (space == NULL) {
+       /* Quoting POSIX.1-2008 (which says more or less the same as ISO C99):
+        *
+        *   "Upon successful completion with size not equal to 0, malloc() shall
+diff --git a/rts/RtsUtils.h b/rts/RtsUtils.h
+index c87aedb3a74..3f4b558651c 100644
+--- a/rts/RtsUtils.h
++++ b/rts/RtsUtils.h
+@@ -20,6 +20,8 @@ void shutdownAllocator(void);
+ void *stgMallocBytes(size_t n, char *msg)
+     GNUC3_ATTRIBUTE(__malloc__);
+ 
++void *stgMallocAlignedBytes(size_t n, size_t align, char *msg);
++
+ void *stgReallocBytes(void *p, size_t n, char *msg);
+ 
+ void *stgCallocBytes(size_t count, size_t size, char *msg)
+-- 
+GitLab
+
+
+From 1741fd255842706a9f15c95cd8c1c6b7784c50ce Mon Sep 17 00:00:00 2001
+From: Ben Gamari <ben@smart-cactus.org>
+Date: Mon, 13 Feb 2023 14:49:52 -0500
+Subject: [PATCH 5/5] rts: Correctly align Capability allocations
+
+Previously we failed to tell the C allocator that `Capability`s needed
+to be aligned, resulting in #22965.
+
+(cherry picked from commit 4af27feabf482cf6b611951443e05ee7e53acb39)
+---
+ rts/Capability.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/rts/Capability.c b/rts/Capability.c
+index edf6a926902..971c1cef834 100644
+--- a/rts/Capability.c
++++ b/rts/Capability.c
+@@ -439,8 +439,9 @@ moreCapabilities (uint32_t from USED_IF_THREADS, uint32_t to USED_IF_THREADS)
+             if (i < from) {
+                 new_capabilities[i] = capabilities[i];
+             } else {
+-                new_capabilities[i] = stgMallocBytes(sizeof(Capability),
+-                                                     "moreCapabilities");
++                new_capabilities[i] = stgMallocAlignedBytes(sizeof(Capability),
++                                                            CAPABILITY_ALIGNMENT,
++                                                            "moreCapabilities");
+                 initCapability(new_capabilities[i], i);
+             }
+         }
+-- 
+GitLab
+

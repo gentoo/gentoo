@@ -1,0 +1,33 @@
+From 46b7ac7b8aca68d143eec5837ef1ff24d3d1f422 Mon Sep 17 00:00:00 2001
+From: Sylvain Henry <sylvain@haskus.fr>
+Date: Fri, 18 Feb 2022 11:01:04 +0100
+Subject: [PATCH] Quick and dirty fix for ModuleOrigin SemiGroup instance
+
+Bug: https://github.com/gentoo-haskell/gentoo-haskell/issues/1250#issuecomment-1044257595
+Bug: https://gitlab.haskell.org/ghc/ghc/-/issues/21097
+Signed-off-by: hololeap <hololeap@users.noreply.github.com>
+---
+ compiler/GHC/Unit/State.hs | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/compiler/GHC/Unit/State.hs b/compiler/GHC/Unit/State.hs
+index 9a95447e73..08ea0f3eb3 100644
+--- a/compiler/GHC/Unit/State.hs
++++ b/compiler/GHC/Unit/State.hs
+@@ -235,6 +235,13 @@ instance Semigroup ModuleOrigin where
+                     text "x: " <> ppr x $$ text "y: " <> ppr y
+             g Nothing x = x
+             g x Nothing = x
++    ModHidden     <> ModHidden      = ModHidden
++    ModUnusable x <> ModUnusable _y = ModUnusable x
++
++    ModUnusable _  <> ModHidden      = ModHidden
++    ModHidden      <> ModUnusable _  = ModHidden
++    ModUnusable _x <> y@ModOrigin{}  = y
++    x@ModOrigin{}  <> ModUnusable _y = x
+     x <> y = pprPanic "ModOrigin: hidden module redefined" $
+                  text "x: " <> ppr x $$ text "y: " <> ppr y
+ 
+-- 
+2.39.2
+
