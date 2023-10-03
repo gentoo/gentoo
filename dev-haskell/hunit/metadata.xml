@@ -5,11 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		HUnit is a unit testing framework for Haskell, inspired by the
-		JUnit tool for Java, see: &lt;http://www.junit.org&gt;.
-	</longdescription>
 	<upstream>
+		<remote-id type="hackage">HUnit</remote-id>
+		<remote-id type="github">hspec/HUnit</remote-id>
 		<remote-id type="sourceforge">hunit</remote-id>
 	</upstream>
 </pkgmetadata>
