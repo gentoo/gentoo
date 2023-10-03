@@ -37,7 +37,9 @@ LICENSE="
 "
 KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
-IUSE="ios +udisks"
+IUSE="ios test +udisks"
+
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -48,23 +50,16 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/podofo-0.9.6_pre20171027:=
 	<app-text/podofo-0.10:=
 	app-text/poppler[utils]
-	dev-libs/glib:2=
 	dev-libs/hyphen:=
 	>=dev-libs/icu-57.1:=
-	dev-libs/libinput:=
-	>=dev-libs/dbus-glib-0.106
 	dev-libs/openssl:=
 	dev-libs/snowball-stemmer:=
-	>=sys-apps/dbus-1.10.8
 	$(python_gen_cond_dep '
 		app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]
 		>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/cchardet[${PYTHON_USEDEP}]
-		>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]
-		>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
 		>=dev-python/css-parser-1.0.4[${PYTHON_USEDEP}]
-		>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
 		dev-python/dnspython[${PYTHON_USEDEP}]
 		>=dev-python/feedparser-5.2.1[${PYTHON_USEDEP}]
 		>=dev-python/html2text-2019.8.11[${PYTHON_USEDEP}]
@@ -83,7 +78,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 		dev-python/zeroconf[${PYTHON_USEDEP}]
 		>=dev-python/PyQt5-5.15.5_pre2107091435[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
-		>=dev-python/PyQt-builder-1.10.3[${PYTHON_USEDEP}]
 		>=dev-python/PyQtWebEngine-5.15.5_pre2108100905[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
 	')
@@ -98,14 +92,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/fontconfig:=
 	>=media-libs/freetype-2:=
 	>=media-libs/libmtp-1.1.11:=
-	>=media-libs/libwmf-0.2.8
 	>=media-gfx/optipng-0.7.6
-	>=sys-libs/zlib-1.2.11:=
 	virtual/libusb:1=
-	x11-libs/libxkbcommon:=
-	x11-libs/libX11:=
-	x11-libs/libXext:=
-	x11-libs/libXrender:=
 	x11-misc/shared-mime-info
 	>=x11-misc/xdg-utils-1.0.2-r2
 	ios? (
@@ -115,9 +103,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	udisks? ( virtual/libudev )"
 RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )"
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	test? ( $(python_gen_cond_dep '>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]') )
+"
 BDEPEND="$(python_gen_cond_dep '
-		>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
+		>=dev-python/PyQt-builder-1.10.3[${PYTHON_USEDEP}]
 		>=dev-python/sip-5[${PYTHON_USEDEP}]
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
