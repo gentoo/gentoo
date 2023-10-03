@@ -1,0 +1,27 @@
+From 11051d3af3d490f30b06a08e5b1f0b14eb648ece Mon Sep 17 00:00:00 2001
+From: Simon Jakobi <simon.jakobi@gmail.com>
+Date: Fri, 17 Dec 2021 14:47:41 +0100
+Subject: [PATCH] Disable doctests for GHC >= 9.2
+
+Closes #38.
+
+Bug: https://github.com/sjakobi/bsb-http-chunked/pull/39
+Signed-off-by: hololeap <hololeap@users.noreply.github.com>
+---
+ bsb-http-chunked.cabal | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/bsb-http-chunked.cabal b/bsb-http-chunked.cabal
+index 95cbd7e..b56651c 100644
+--- a/bsb-http-chunked.cabal
++++ b/bsb-http-chunked.cabal
+@@ -66,6 +66,9 @@ test-suite doctests
+                  , doctest >= 0.8
+   ghc-options: -Wall
+   type: exitcode-stdio-1.0
++  if impl(ghc >= 9.2)
++    -- https://github.com/sjakobi/bsb-http-chunked/issues/38
++    buildable: False
+ 
+ benchmark bench
+   hs-source-dirs: bench
