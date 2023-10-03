@@ -6,6 +6,31 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# hololeap <hololeap@protonmail.com> (2023-10-15)
+# Enabling these flags will create cycles in the dependency graph.
+# Maintainers may want to temporarily unmask these in order to run
+# tests for these packages, but it is necessary for each package to be
+# rebuilt with the flag disabled immediately after testing.
+# See: <https://github.com/gentoo-haskell/gentoo-haskell/pull/1375>
+dev-haskell/attoparsec test
+dev-haskell/base-orphans test
+dev-haskell/clock test
+dev-haskell/colour test
+dev-haskell/data-array-byte test
+dev-haskell/foldable1-classes-compat test
+dev-haskell/hspec-core test
+dev-haskell/hspec-discover test
+dev-haskell/integer-logarithms test
+dev-haskell/nanospec test
+dev-haskell/network-uri test
+dev-haskell/parser-combinators test
+dev-haskell/prettyprinter test
+dev-haskell/prettyprinter-ansi-terminal test
+dev-haskell/primitive test
+dev-haskell/scientific test
+dev-haskell/splitmix test
+dev-haskell/tasty-expected-failure test
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-14)
 # media-video/transcode is masked for removal.
 media-video/chaplin transcode
