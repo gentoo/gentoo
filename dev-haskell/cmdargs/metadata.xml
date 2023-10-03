@@ -5,31 +5,13 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This library provides an easy way to define command line parsers. Most users
-		will want to use the "System.Console.CmdArgs.Implicit" module, whose
-		documentation contains an example.
-		
-		* "System.Console.CmdArgs.Explicit" provides a way to write command line
-		parsers for both single mode programs (most programs) and multiple
-		mode programs (e.g. darcs or cabal). Parsers are defined by constructing
-		a data structure.
-		
-		* "System.Console.CmdArgs.Implicit" provides a way to concisely define
-		command line parsers, up to three times shorter than getopt. These parsers
-		are translated into the Explicit data type.
-		
-		* "System.Console.CmdArgs.GetOpt" provides a wrapper allowing compatiblity
-		with existing getopt parsers, mapping to the Explicit data type.
-		
-		For a general reference on what command line flags are commonly used,
-		see &lt;http://www.faqs.org/docs/artu/ch10s05.html&gt;.
-	</longdescription>
 	<use>
+		<flag name="examples">Build the cmdargs-demo program</flag>
 		<flag name="testprog">Build the test program</flag>
-		<flag name="quotation">Build quote module</flag>
+		<flag name="quotation">Build the Quote module</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">cmdargs</remote-id>
 		<remote-id type="github">ndmitchell/cmdargs</remote-id>
 	</upstream>
 </pkgmetadata>
