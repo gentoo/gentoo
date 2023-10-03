@@ -4,9 +4,9 @@
 # @ECLASS: ghc-package.eclass
 # @MAINTAINER:
 # "Gentoo's Haskell Language team" <haskell@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
 # @AUTHOR:
 # Original Author: Andres Loeh <kosmikus@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: This eclass helps with the Glasgow Haskell Compiler's package configuration utility.
 # @DESCRIPTION:
 # Helper eclass to handle ghc installation/upgrade/deinstallation process.
@@ -39,9 +39,8 @@ ghc-getghc() {
 }
 
 # @FUNCTION: ghc-getghcpkg
-# @INTERNAL
 # @DESCRIPTION:
-# Internal function determines returns the name of the ghc-pkg executable
+# returns the name of the ghc-pkg executable
 ghc-getghcpkg() {
 	if ! type -P ${HC_PKG:-ghc-pkg}; then
 		ewarn "ghc-pkg not found"
@@ -58,11 +57,11 @@ ghc-getghcpkg() {
 # because for some reason the global package file
 # must be specified
 ghc-getghcpkgbin() {
-	local empty_db="${T}/empty.conf.d" ghc_pkg="$(ghc-libdir)/bin/ghc-pkg"
+	local empty_db="${T}/empty.conf.d" ghc_pkg="$(ghc-bindir)/ghc-pkg"
 	if [[ ! -d ${empty_db} ]]; then
 		"${ghc_pkg}" init "${empty_db}" || die "Failed to initialize empty global db"
 	fi
-	echo "$(ghc-libdir)/bin/ghc-pkg" "--global-package-db=${empty_db}"
+	echo "$(ghc-bindir)/ghc-pkg" "--global-package-db=${empty_db}"
 }
 
 # @FUNCTION: ghc-version
@@ -176,6 +175,24 @@ ghc-libdir() {
 	echo "${_GHC_LIBDIR_CACHE}"
 }
 
+# @FUNCTION: ghc-bindir
+# @DESCRIPTION:
+# returns the directory where ghc binaries live
+_GHC_BINDIR_CACHE=""
+ghc-bindir() {
+	if [[ -z "${_GHC_BINDIR_CACHE}" ]]; then
+		local bindir
+		if [[ "$(basename $(ghc-libdir))" == "lib" ]]; then
+			bindir="$(ghc-libdir)/../bin/"
+		else
+			bindir="$(ghc-libdir)/bin/"
+		fi
+		bindir="$(realpath "${bindir}")" || die "Cannot find ghc bindir: ${bindir}"
+		_GHC_BINDIR_CACHE="${bindir}"
+	fi
+	echo "${_GHC_BINDIR_CACHE}"
+}
+
 # @FUNCTION: ghc-make-args
 # @DESCRIPTION:
 # Returns default arguments passed along 'ghc --make'
@@ -273,9 +290,14 @@ ghc-install-pkg() {
 
 	mkdir -p "${hint_db}" || die
 	for pkg_config_file in "$@"; do
-		local pkg_name="gentoo-${CATEGORY}-${PF}-"$(basename "${pkg_config_file}")
-		cp "${pkg_config_file}" "${hint_db}/${pkg_name}" || die
-		chmod 0644 "${hint_db}/${pkg_name}" || die
+		# 'haskell-updater' relies on '.conf' presence when scans gentoo/.
+		# Passed files can either already have .conf (single-file style DB)
+		# or not have a .conf suffix (directory-stype).
+		# Here we always normalize file names to have single .conf suffix.
+		local base_name=$(basename "${pkg_config_file}")
+		local pkg_name="gentoo-${CATEGORY}-${PF}-${base_name%.conf}"
+		cp "${pkg_config_file}" "${hint_db}/${pkg_name}.conf" || die
+		chmod 0644 "${hint_db}/${pkg_name}.conf" || die
 	done
 }
 
