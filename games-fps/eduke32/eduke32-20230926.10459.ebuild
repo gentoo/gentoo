@@ -77,9 +77,9 @@ BDEPEND="
 PDEPEND="duke3d? ( games-fps/duke3d-data )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-20190820.8043-search-duke3d-path.patch"
 	"${FILESDIR}/${PN}-20200505.8904-gcc10.patch"
 	"${FILESDIR}/${PN}-20220204.9957-log-to-tmpdir.patch"
+	"${FILESDIR}/${PN}-20230926.10459-search-duke3d-path.patch"
 )
 
 src_unpack() {
