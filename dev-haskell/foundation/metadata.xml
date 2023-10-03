@@ -6,25 +6,10 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="experimental">enable building experimental features, known as highly unstable or without good support cross-platform</flag>
+		<flag name="experimental">Enable building experimental features, known as highly unstable or without good support cross-platform</flag>
 	</use>
-	<longdescription>
-		A custom prelude with no dependencies apart from base.
-		
-		This package has the following goals:
-		
-		* provide a base like sets of modules that provide a consistent set of features and bugfixes across multiple versions of GHC (unlike base).
-		
-		* provide a better and more efficient prelude than base's prelude.
-		
-		* be self-sufficient: no external dependencies apart from base.
-		
-		* provide better data-types: packed unicode string by default, arrays.
-		
-		* Better numerical classes that better represent mathematical thing (No more all-in-one Num).
-		
-		* Better I/O system with less Lazy IO
-		
-		* Usual partial functions distinguished through type system
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">foundation</remote-id>
+		<remote-id type="github">haskell-foundation/foundation</remote-id>
+	</upstream>
 </pkgmetadata>
