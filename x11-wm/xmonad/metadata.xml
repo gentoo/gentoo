@@ -8,4 +8,8 @@
 	<use>
 		<flag name="no-autorepeat-keys">Allow ignoring of keyboard autorepeat.</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">xmonad</remote-id>
+		<remote-id type="github">xmonad/xmonad</remote-id>
+	</upstream>
 </pkgmetadata>
