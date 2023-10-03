@@ -86,7 +86,7 @@ src_unpack() {
 	# Can delete this once test fix patch is dropped
 	if use verify-sig ; then
 		# Needed for downloaded patch (which is unsigned, which is fine)
-		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
+		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.asc}
 	fi
 
 	default
