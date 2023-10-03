@@ -5,4 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="hackage">utf8-light</remote-id>
+		<remote-id type="gitlab">fffaaa/utf8-light</remote-id>
+	</upstream>
 </pkgmetadata>
