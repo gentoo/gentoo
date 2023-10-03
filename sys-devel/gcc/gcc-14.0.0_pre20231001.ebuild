@@ -61,4 +61,5 @@ src_prepare() {
 	toolchain_src_prepare
 
 	eapply_user
+	eapply "${FILESDIR}"/${P}-pgo-bootstrap.patch
 }

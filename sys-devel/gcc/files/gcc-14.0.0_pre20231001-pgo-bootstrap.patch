@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/914998
+https://gcc.gnu.org/PR111642
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=e465e5e4a969334f64cf0d6611de5273d73ea732
+
+From e465e5e4a969334f64cf0d6611de5273d73ea732 Mon Sep 17 00:00:00 2001
+From: Richard Sandiford <richard.sandiford@arm.com>
+Date: Mon, 2 Oct 2023 07:20:45 +0100
+Subject: [PATCH] Fix profiledbootstrap poly_int fallout [PR111642]
+
+rtl-tests.cc and simplify-rtx.cc used partial specialisation
+to try to restrict the NUM_POLY_INT_COEFFS>1 tests without
+resorting to preprocessor tests.  That now triggers an error
+in some configurations, since the NUM_POLY_INT_COEFFS>1 tests
+used the global poly_int64, whose definition does not depend
+on the template parameter.
+
+This patch uses local types that do depend on the template parameter.
+
+gcc/
+	PR bootstrap/111642
+	* rtl-tests.cc (const_poly_int_tests<N>::run): Use a local
+	poly_int64 typedef.
+	* simplify-rtx.cc (simplify_const_poly_int_tests<N>::run): Likewise.
+--- a/gcc/rtl-tests.cc
++++ b/gcc/rtl-tests.cc
+@@ -246,6 +246,7 @@ template<unsigned int N>
+ void
+ const_poly_int_tests<N>::run ()
+ {
++  using poly_int64 = poly_int<N, HOST_WIDE_INT>;
+   rtx x1 = gen_int_mode (poly_int64 (1, 1), QImode);
+   rtx x255 = gen_int_mode (poly_int64 (1, 255), QImode);
+ 
+--- a/gcc/simplify-rtx.cc
++++ b/gcc/simplify-rtx.cc
+@@ -8689,6 +8689,7 @@ template<unsigned int N>
+ void
+ simplify_const_poly_int_tests<N>::run ()
+ {
++  using poly_int64 = poly_int<N, HOST_WIDE_INT>;
+   rtx x1 = gen_int_mode (poly_int64 (1, 1), QImode);
+   rtx x2 = gen_int_mode (poly_int64 (-80, 127), QImode);
+   rtx x3 = gen_int_mode (poly_int64 (-79, -128), QImode);
+-- 
+2.39.3
