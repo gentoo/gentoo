@@ -6,15 +6,12 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="parsec">Enable the use of the `parsec` package</flag>
+		<flag name="attoparsec">You can disable the use of the `attoparsec` package using `-f-attoparsec`.</flag>
 		<flag name="binary">You can disable the use of the `binary` package using `-f-binary`.</flag>
-		<flag name="attoparsec">Enable the use of the `attoparsec` package</flag>
+		<flag name="parsec">You can disable the use of the `parsec` package using `-f-parsec`.</flag>
 	</use>
-	<longdescription>
-		This library provides convenient combinators for working with and building parsing combinator libraries.
-		
-		Given a few simple instances, e.g. for the class 'Text.Parser.Combinators.Parsing' in "Text.Parser.Combinators.Parsing" you
-		get access to a large number of canned definitions. Instances exist for the parsers provided by @parsec@,
-		@attoparsec@ and base’s "Text.Read".
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">parsers</remote-id>
+		<remote-id type="github">ekmett/parsers</remote-id>
+	</upstream>
 </pkgmetadata>
