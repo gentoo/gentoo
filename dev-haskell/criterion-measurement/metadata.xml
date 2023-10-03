@@ -5,7 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Measurement-related functionality extracted from Criterion, with minimal dependencies. The rationale for this is to enable alternative analysis front-ends.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">criterion-measurement</remote-id>
+		<remote-id type="github">haskell/criterion</remote-id>
+	</upstream>
 </pkgmetadata>
