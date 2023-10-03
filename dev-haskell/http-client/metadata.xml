@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">http-client</remote-id>
 		<remote-id type="github">snoyberg/http-client</remote-id>
 	</upstream>
 </pkgmetadata>
