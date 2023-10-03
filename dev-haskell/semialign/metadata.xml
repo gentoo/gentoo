@@ -5,4 +5,11 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="semigroupoids">Build with semigroupoids dependency</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">semialign</remote-id>
+		<remote-id type="github">haskellari/these</remote-id>
+	</upstream>
 </pkgmetadata>
