@@ -5,9 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Allows tests such as QuickCheck properties and HUnit test cases to be assembled into test groups, run in
-		parallel (but reported in deterministic order, to aid diff interpretation) and filtered and controlled by
-		command line options. All of this comes with colored test output, progress reporting and test statistics output.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">test-framework</remote-id>
+		<remote-id type="github">haskell/test-framework</remote-id>
+	</upstream>
 </pkgmetadata>
