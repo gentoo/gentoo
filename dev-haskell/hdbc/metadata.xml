@@ -5,13 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		HDBC provides an abstraction layer between Haskell programs and SQL
-		relational databases. This lets you write database code once, in
-		Haskell, and have it work with any number of backend SQL databases
-		(MySQL, Oracle, PostgreSQL, ODBC-compliant databases, etc.)
-	</longdescription>
 	<upstream>
+		<remote-id type="hackage">HDBC</remote-id>
 		<remote-id type="github">hdbc/hdbc</remote-id>
 	</upstream>
 </pkgmetadata>

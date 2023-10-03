@@ -1,0 +1,127 @@
+From cea6c0ebde0c3c7a0a0976fd9a0e745ccad9dec4 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@users.noreply.github.com>
+Date: Mon, 27 Feb 2023 07:54:10 -0700
+Subject: [PATCH] Fix tests
+
+Fix tests for modern 'time' and turn 'runtests' into a proper test
+suite.
+
+Signed-off-by: hololeap <hololeap@users.noreply.github.com>
+---
+ HDBC.cabal              | 40 +++++++++++++++++-----------------------
+ testsrc/TestSqlValue.hs | 16 +++++++++++++++-
+ 2 files changed, 32 insertions(+), 24 deletions(-)
+
+diff --git a/HDBC.cabal b/HDBC.cabal
+index e189f9a..15d0c15 100644
+--- a/HDBC.cabal
++++ b/HDBC.cabal
+@@ -24,9 +24,6 @@ source-repository head
+ 
+ flag splitBase
+   description: Choose the new smaller, split-up base package.
+-flag buildtests
+-  description: Build the executable to run unit tests
+-  default: False
+ flag minTime15
+   description: Use time 1.5 or higher.
+   default: True
+@@ -59,28 +56,25 @@ library
+     FlexibleInstances, DeriveDataTypeable
+   Default-Language: Haskell2010
+ 
+-Executable runtests
+-   if flag(buildtests)
+-      Buildable: True
+-      Build-Depends: HUnit, QuickCheck >= 2.0
++Test-Suite runtests
++   Build-Depends: HUnit, QuickCheck >= 2.0
+ 
+-      if flag(splitBase)
+-        Build-Depends: base>=3 && <5, old-time, bytestring, containers
+-        if flag(minTime15)
+-          Build-Depends: time >= 1.5 && < 1.14
+-          CPP-Options: -DMIN_TIME_15
+-        else
+-          Build-Depends: time >= 1.2 && < 1.5, old-locale
+-      else
+-        Build-Depends: base<3
+-      Build-Depends: mtl, convertible >= 1.1.0.0, utf8-string, text
+-
+-      -- Hack for cabal-install weirdness.  cabal-install forces base 3,
+-      -- though it works fine for Setup.lhs manually.  Fix.
+-      if impl(ghc >= 6.9)
+-         build-depends: base >= 4
++   if flag(splitBase)
++     Build-Depends: base>=3 && <5, old-time, bytestring, containers
++     if flag(minTime15)
++       Build-Depends: time >= 1.5 && < 1.14
++       CPP-Options: -DMIN_TIME_15
++     else
++       Build-Depends: time >= 1.2 && < 1.5, old-locale
+    else
+-      Buildable: False
++     Build-Depends: base<3
++   Build-Depends: mtl, convertible >= 1.1.0.0, utf8-string, text
++
++   -- Hack for cabal-install weirdness.  cabal-install forces base 3,
++   -- though it works fine for Setup.lhs manually.  Fix.
++   if impl(ghc >= 6.9)
++      build-depends: base >= 4
++   Type: exitcode-stdio-1.0
+    Main-Is: runtests.hs
+    Other-Modules: TestSqlValue
+    Hs-Source-Dirs: ., testsrc
+diff --git a/testsrc/TestSqlValue.hs b/testsrc/TestSqlValue.hs
+index 7d29453..e6161e8 100644
+--- a/testsrc/TestSqlValue.hs
++++ b/testsrc/TestSqlValue.hs
+@@ -6,12 +6,18 @@ All rights reserved.
+ For license and copyright information, see the file COPYRIGHT
+ -}
+ 
++{-# LANGUAGE CPP #-}
++
+ module TestSqlValue where
+ import Test.QuickCheck hiding (Result)
+ import Test.QuickCheck.Property (Result)
+ import qualified Test.HUnit as HU
+ import Database.HDBC
++#if MIN_VERSION_time(0,10,0)
++import Data.Time.Format (parseTimeM)
++#else
+ import Data.Time.Format (parseTime)
++#endif
+ import Data.Time.LocalTime
+ import Database.HDBC.Locale (defaultTimeLocale, iso8601DateFormat, oldIso8601DateFormat)
+ import Data.Maybe
+@@ -29,17 +35,25 @@ fromSql_Int x =
+ 
+ testZonedTimeStr = "1989-08-01 15:33:01 -0500"
+ testZonedTime :: ZonedTime
+-testZonedTime = fromJust $ parseTime defaultTimeLocale (iso8601DateFormat (Just "%T %z"))
++testZonedTime = fromJust $ parseTimeM False defaultTimeLocale (iso8601DateFormat (Just "%T %z"))
+                 testZonedTimeStr
+ 
+ testZonedTimeFracStr = "1989-08-01 15:33:01.536 -0500"
+ testZonedTimeFrac :: ZonedTime
++#if MIN_VERSION_time(0,10,0)
++testZonedTimeFrac = fromJust $ parseTimeM False defaultTimeLocale (iso8601DateFormat (Just "%T%Q %z"))
++#else
+ testZonedTimeFrac = fromJust $ parseTime defaultTimeLocale (iso8601DateFormat (Just "%T%Q %z"))
++#endif
+                     testZonedTimeFracStr
+ 
+ testZonedTimeTwoDigitYearStr = "89-08-01 15:33:01 -0500"
+ testZonedTimeTwoDigitYear :: ZonedTime
++#if MIN_VERSION_time(0,10,0)
++testZonedTimeTwoDigitYear = fromJust $ parseTimeM False defaultTimeLocale (oldIso8601DateFormat (Just "%T %z"))
++#else
+ testZonedTimeTwoDigitYear = fromJust $ parseTime defaultTimeLocale (oldIso8601DateFormat (Just "%T %z"))
++#endif
+                             testZonedTimeTwoDigitYearStr
+ 
+ ztparsenf =
+-- 
+2.39.2
+
