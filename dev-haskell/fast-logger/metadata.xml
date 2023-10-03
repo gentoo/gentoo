@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">fast-logger</remote-id>
 		<remote-id type="github">kazu-yamamoto/logger</remote-id>
 	</upstream>
 </pkgmetadata>
