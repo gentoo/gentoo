@@ -12,7 +12,7 @@ EAPI=8
 # "/usr/bin/shiboken2" at build time and "libshiboken2-*.so" at runtime.
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit cmake llvm python-r1 toolchain-funcs
 
@@ -37,7 +37,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-2)*:5"
+QT_PV="$(ver_cut 1-3)*:5"
 
 # Since Clang is required at both build- and runtime, BDEPEND is omitted here.
 LLVM_MAX_SLOT=15
