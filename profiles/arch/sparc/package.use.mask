@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
+# sys-apps/s6-linux-init has not been tested on this arch
+sys-apps/openrc s6
+
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
 dev-util/cmake gui
