@@ -5,10 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A blazingly fast HTML combinator library for the Haskell
-		programming language. The Text.Blaze module is a good
-		starting point, as well as this tutorial:
-		&lt;http://jaspervdj.be/blaze/tutorial.html&gt;.
-	</longdescription>
 </pkgmetadata>
