@@ -29,6 +29,7 @@
 		&lt;http://corsis.sourceforge.net/index.php/Haskell/Clock&gt;
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">clock</remote-id>
 		<remote-id type="github">corsis/clock</remote-id>
 	</upstream>
 </pkgmetadata>
