@@ -1,0 +1,20 @@
+diff -urN iproute-1.7.12/Data/IP/Addr.hs iproute-1.7.12-r1/Data/IP/Addr.hs
+--- iproute-1.7.12/Data/IP/Addr.hs	2001-09-08 19:46:40.000000000 -0600
++++ iproute-1.7.12-r1/Data/IP/Addr.hs	2022-01-15 10:13:21.758588845 -0700
+@@ -1,6 +1,7 @@
+ {-# LANGUAGE BangPatterns #-}
+ {-# LANGUAGE DeriveDataTypeable #-}
+ {-# LANGUAGE DeriveGeneric      #-}
++{-# LANGUAGE PackageImports     #-}
+ 
+ module Data.IP.Addr where
+ 
+@@ -14,7 +15,7 @@
+ import Data.Word
+ import Network.Socket
+ import Numeric (showHex, showInt)
+-import System.ByteOrder
++import "byteorder" System.ByteOrder
+ import Text.Appar.String
+ import GHC.Enum (succError,predError)
+ import GHC.Generics
