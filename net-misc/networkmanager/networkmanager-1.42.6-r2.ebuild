@@ -3,12 +3,15 @@
 
 EAPI=8
 GNOME_ORG_MODULE="NetworkManager"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit flag-o-matic gnome.org linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
+inherit gnome.org linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
+# bug #904840
+# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/1607
+SRC_URI+=" https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/5df19f5b26c5921a401e63fb329e844a02d6b1f2.patch -> ${PN}-ppp-2.5.0.patch"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
@@ -29,13 +32,13 @@ REQUIRED_USE="
 	?? ( syslog systemd )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 COMMON_DEPEND="
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
 	elogind? ( >=sys-auth/elogind-219 )
 	>=virtual/libudev-175:=[${MULTILIB_USEDEP}]
-	sys-apps/dbus
+	sys-apps/dbus[${MULTILIB_USEDEP}]
 	net-libs/libndp
 	systemd? ( >=sys-apps/systemd-209:0= )
 	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]
@@ -120,6 +123,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${DISTDIR}"/${PN}-ppp-2.5.0.patch
+)
+
 python_check_deps() {
 	if use introspection; then
 		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
@@ -173,8 +180,6 @@ meson_nm_native_program() {
 }
 
 multilib_src_configure() {
-	filter-lto
-
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
 
@@ -217,7 +222,6 @@ multilib_src_configure() {
 		-Dconfig_plugins_default=keyfile
 		-Difcfg_rh=false
 		-Difupdown=false
-		-Dconfig_migrate_ifcfg_rh_default=false
 
 		$(meson_nm_native_program resolvconf "" /sbin/resolvconf)
 		-Dnetconfig=no
