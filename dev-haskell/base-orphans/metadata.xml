@@ -5,11 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		@base-orphans@ defines orphan instances that mimic instances available in later versions of @base@ to a wider (older) range of compilers. @base-orphans@ does not export anything except the orphan instances themselves and complements @&lt;http://hackage.haskell.org/package/base-compat base-compat&gt;@.
-		
-		See the README for what instances are covered: &lt;https://github.com/haskell-compat/base-orphans#readme&gt;
-	</longdescription>
 	<upstream>
 		<remote-id type="hackage">base-orphans</remote-id>
 		<remote-id type="github">haskell-compat/base-orphans</remote-id>
