@@ -11,4 +11,8 @@ made available in other ways, e.g., through a
 system-wide installation. The loader will be replaced
 with a placeholder function that only emits a message.</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">lpeg</remote-id>
+		<remote-id type="github">hslua/hslua</remote-id>
+	</upstream>
 </pkgmetadata>
