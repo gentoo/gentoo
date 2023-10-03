@@ -13,6 +13,7 @@
 		<flag name="executable">Build the Zip executable.</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">zip-archive</remote-id>
 		<remote-id type="github">jgm/zip-archive</remote-id>
 	</upstream>
 </pkgmetadata>
