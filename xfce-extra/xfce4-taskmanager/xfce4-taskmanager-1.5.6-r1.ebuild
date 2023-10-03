@@ -40,7 +40,7 @@ BDEPEND="
 
 src_configure() {
 	local myconf=(
-		$(use_enable X x11)
+		$(use_enable X libx11)
 	)
 
 	econf "${myconf[@]}"
