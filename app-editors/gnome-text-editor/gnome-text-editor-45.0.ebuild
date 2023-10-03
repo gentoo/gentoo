@@ -14,7 +14,7 @@ SLOT="0"
 
 IUSE="spell"
 
-KEYWORDS="~amd64 ~loong ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
 
 DEPEND="
 	>=dev-libs/glib-2.73.0:2
