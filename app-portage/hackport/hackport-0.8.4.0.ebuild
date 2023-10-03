@@ -7,18 +7,14 @@ EAPI=8
 #hackport: flags: +cabal-v1,+gentoo-tests,+pedantic
 
 CABAL_FEATURES="test-suite"
-EGIT_REPO_URI="https://github.com/gentoo-haskell/hackport.git"
-
-inherit git-r3 haskell-cabal bash-completion-r1
-
+inherit haskell-cabal bash-completion-r1
 DESCRIPTION="Hackage and Portage integration tool"
 HOMEPAGE="https://github.com/gentoo-haskell/hackport#readme"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
-IUSE="profile +threads"
-REQUIRED_USE="profile? ( threads ) test? ( threads )"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+IUSE="profile"
 
 RDEPEND="
 	>=dev-haskell/async-2.0:=[profile?]
@@ -68,11 +64,6 @@ DEPEND="${RDEPEND}
 	)
 "
 
-src_prepare() {
-	haskell-cabal_src_prepare
-	sed -e 's/^version:.*/&.9999/' -i ${PN}.cabal || die # just to distinguish from release install
-}
-
 src_configure() {
 	if use test; then
 		export GHC_BOOTSTRAP_PACKAGES=(
@@ -84,8 +75,7 @@ src_configure() {
 		--flag=cabal-v1 \
 		--flag=gentoo-tests \
 		--flag=pedantic \
-		$(cabal_flag profile profile) \
-		$(cabal-flag threads threads)
+		$(cabal_flag profile profile)
 }
 
 src_install() {

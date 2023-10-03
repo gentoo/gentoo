@@ -1,0 +1,14 @@
+_hackport()
+{
+    local CMDLINE
+    local IFS=$'\n'
+    CMDLINE=(+RTS -I0 -A8M -N1 -qg -RTS --bash-completion-index $COMP_CWORD)
+
+    for arg in ${COMP_WORDS[@]}; do
+        CMDLINE=(${CMDLINE[@]} --bash-completion-word $arg)
+    done
+
+    COMPREPLY=( $(/usr/bin/hackport "${CMDLINE[@]}") )
+}
+
+complete -o filenames -F _hackport hackport
