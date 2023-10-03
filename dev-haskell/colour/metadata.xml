@@ -5,10 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package provides a data type for colours and transparency.
-		Colours can be blended and composed.
-		Various colour spaces are supported.
-		A module of colour names ("Data.Colour.Names") is provided.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">colour</remote-id>
+	</upstream>
 </pkgmetadata>
