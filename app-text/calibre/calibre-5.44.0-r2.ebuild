@@ -47,7 +47,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/hunspell-1.7:=
 	>=app-text/podofo-0.9.6_pre20171027:=
 	<app-text/podofo-0.10:=
-	>=app-text/poppler-0.26.5[qt5]
+	app-text/poppler[utils]
 	dev-libs/glib:2=
 	dev-libs/hyphen:=
 	>=dev-libs/icu-57.1:=
