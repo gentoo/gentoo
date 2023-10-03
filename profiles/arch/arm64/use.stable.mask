@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (2023-10-03)
+# dev-util/sysprof-capture and dev-util/sysprof are not stable yet
+sysprof
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
 # x11-drivers/nvidia-drivers is not stable yet
 video_cards_nvidia
