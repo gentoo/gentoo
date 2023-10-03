@@ -5,12 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A fast parser combinator library, aimed particularly at dealing
-		efficiently with network protocols and complicated text/binary
-		file formats.
-	</longdescription>
 	<upstream>
-		<remote-id type="github">bos/attoparsec</remote-id>
+		<remote-id type="hackage">attoparsec</remote-id>
+		<remote-id type="github">bgamari/attoparsec</remote-id>
 	</upstream>
 </pkgmetadata>
