@@ -5,10 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		doclayout is a prettyprinting library for laying out
-		text documents, with several features not present
-		in prettyprinting libraries designed for code.  It
-		was designed for use in pandoc.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">doclayout</remote-id>
+		<remote-id type="github">jgm/doclayout</remote-id>
+	</upstream>
 </pkgmetadata>
