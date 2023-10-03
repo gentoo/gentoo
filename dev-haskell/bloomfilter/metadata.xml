@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">bloomfilter</remote-id>
 		<remote-id type="github">bos/bloomfilter</remote-id>
 	</upstream>
 </pkgmetadata>
