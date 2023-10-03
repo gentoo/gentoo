@@ -4,7 +4,7 @@
 # Conrad Kostecki (conikost@gentoo.org> (2023-10-02)
 # Using VectorCompiler is currently broken on newer versions.
 # See https://github.com/intel/intel-graphics-compiler/issues/303
->=dev-util/intel-graphics-compiler-1.0.15136.4
+>=dev-util/intel-graphics-compiler-1.0.15136.4 vc
 
 # Sam James <sam@gentoo.org> (2023-06-06)
 # Needs linux-only dev-libs/libaio.
