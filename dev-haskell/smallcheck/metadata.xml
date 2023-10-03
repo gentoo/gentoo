@@ -5,13 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		SmallCheck is similar to QuickCheck (Claessen and Hughes 2000-) but
-		instead of testing for a sample of randomly generated values, SmallCheck
-		tests properties for all the finitely many values up to some depth,
-		progressively increasing the depth used.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">feuerbach/smallcheck</remote-id>
-	</upstream>
 </pkgmetadata>
