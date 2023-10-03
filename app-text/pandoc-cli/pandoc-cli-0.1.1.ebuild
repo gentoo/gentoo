@@ -26,6 +26,7 @@ RDEPEND=">=dev-haskell/pandoc-3.0:=
 			dev-haskell/safe:=
 			>=dev-haskell/wai-extra-3.0.24:=
 			dev-haskell/warp:= )
+	!app-text/pandoc
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.0.0.0
