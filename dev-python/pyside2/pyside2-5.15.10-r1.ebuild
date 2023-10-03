@@ -5,7 +5,7 @@ EAPI=8
 
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit cmake python-r1 virtualx
 
@@ -81,7 +81,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="test"
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-2)*:5"
+QT_PV="$(ver_cut 1-3)*:5"
 
 RDEPEND="${PYTHON_DEPS}
 	~dev-python/shiboken2-${PV}[${PYTHON_USEDEP}]
