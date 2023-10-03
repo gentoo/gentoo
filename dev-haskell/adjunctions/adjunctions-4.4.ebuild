@@ -36,9 +36,6 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/hspec-2 <dev-haskell/hspec-3 )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'containers          >= 0.3     && < 0.6' 'containers          >= 0.3'
-}
+CABAL_CHDEPS=(
+	'containers          >= 0.3     && < 0.6' 'containers          >= 0.3'
+)
