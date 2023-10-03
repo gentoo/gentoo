@@ -5,7 +5,7 @@ EAPI=8
 
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 CMAKE_IN_SOURCE_BUILD=1
 
 inherit cmake python-r1
