@@ -25,9 +25,6 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.12
 "
 
-src_prepare() {
-	default
-	cabal_chdeps \
-		'base        >=4.3   && <4.15' 'base        >=4.3'
-	eapply_user
-}
+CABAL_CHDEPS=(
+	'base        >=4.3   && <4.15' 'base        >=4.3'
+)
