@@ -5,9 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Behavior Driven Development for Haskell
-		
-		Hspec is roughly based on the Ruby library RSpec. However, Hspec is just a framework for running HUnit and QuickCheck tests. Compared to other options, it provides a much nicer syntax that makes tests very easy to read.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">hspec</remote-id>
+		<remote-id type="github">hspec/hspec</remote-id>
+	</upstream>
 </pkgmetadata>
