@@ -5,14 +5,11 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		ANSI terminal support for Haskell: allows cursor movement, screen clearing, color output showing or hiding the cursor, and
-		changing the title. Compatible with Windows and those Unixes with ANSI terminals, but only GHC is supported as a compiler.
-	</longdescription>
 	<use>
-		<flag name="example">Build the example application.</flag>
+		<flag name="example">Build the example application</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">ansi-terminal</remote-id>
 		<remote-id type="github">UnkindPartition/ansi-terminal</remote-id>
 	</upstream>
 </pkgmetadata>
