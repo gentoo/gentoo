@@ -5,4 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="hackage">data-fix</remote-id>
+		<remote-id type="github">spell-music/data-fix</remote-id>
+	</upstream>
 </pkgmetadata>
