@@ -5,13 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Monad classes using type families, with instances for various
-		monad transformers, inspired by the paper /Functional Programming
-		with Overloading and Higher-Order Polymorphism/, by Mark P
-		Jones, in /Advanced School of Functional Programming/, 1995
-		(&lt;http://web.cecs.pdx.edu/~mpj/pubs/springschool.html&gt;).
-		
-		This package is almost a compatible replacement for the @mtl-tf@ package.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">monads-tf</remote-id>
+		<remote-id type="github">typeclasses/monads-tf</remote-id>
+	</upstream>
 </pkgmetadata>
