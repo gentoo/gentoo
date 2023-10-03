@@ -26,6 +26,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">contravariant</remote-id>
 		<remote-id type="github">ekmett/contravariant</remote-id>
 	</upstream>
 </pkgmetadata>
