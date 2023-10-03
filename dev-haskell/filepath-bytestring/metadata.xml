@@ -5,17 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package provides functionality for manipulating @RawFilePath@
-		values. It can be used as a drop in replacement for the filepath library
-		to get the benefits of using ByteStrings. It provides three modules:
-		
-		* "System.FilePath.Posix.ByteString" manipulates POSIX\/Linux style @RawFilePath@ values (with @\/@ as the path separator).
-		
-		* "System.FilePath.Windows.ByteString" manipulates Windows style @RawFilePath@ values (with either @\\@ or @\/@ as the path separator, and deals with drives).
-		
-		* "System.FilePath.ByteString" is an alias for the module appropriate to your platform.
-		
-		All three modules provide the same API, and the same documentation (calling out differences in the different variants).
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">filepath-bytestring</remote-id>
+	</upstream>
 </pkgmetadata>
