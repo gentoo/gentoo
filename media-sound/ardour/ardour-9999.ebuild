@@ -136,7 +136,6 @@ src_configure() {
 	use pulseaudio && backends+=",pulseaudio"
 
 	tc-export CC CXX
-	mkdir -p "${D}"
 	local myconf=(
 		--configdir=/etc
 		--freedesktop
