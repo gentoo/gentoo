@@ -10,4 +10,8 @@
 Use with: @--write-ghc-environment-files=always@.</flag>
 		<flag name="executable">Build the unicode-collate executable.</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">unicode-collation</remote-id>
+		<remote-id type="github">jgm/unicode-collation</remote-id>
+	</upstream>
 </pkgmetadata>
