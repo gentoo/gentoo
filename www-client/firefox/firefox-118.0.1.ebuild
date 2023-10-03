@@ -1412,8 +1412,6 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
-	elog
-
 	optfeature_header "Optional programs for extra features:"
 	optfeature "desktop notifications" x11-libs/libnotify
 	optfeature "fallback mouse cursor theme e.g. on WMs" gnome-base/gsettings-desktop-schemas
