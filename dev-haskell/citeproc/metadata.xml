@@ -9,10 +9,8 @@
 		<flag name="executable">Build citeproc executable</flag>
 		<flag name="icu">Use Haskell bindings to the ICU library</flag>
 	</use>
-	<longdescription>
-		citeproc parses CSL style files and uses them to
-		generate a list of formatted citations and bibliography
-		entries.  For more information about CSL, see
-		&lt;https://citationstyles.org/&gt;.
-	</longdescription>
+	<upstream>
+		<remote-id type="hackage">citeproc</remote-id>
+		<remote-id type="github">jgm/citeproc</remote-id>
+	</upstream>
 </pkgmetadata>
