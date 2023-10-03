@@ -6,19 +6,14 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="embed-data-files">Embed the data files in the binary for a relocatable executable</flag>
+		<flag name="embed-data-files">
+			Embed the data files in the binary for a relocatable
+			executable. (Warning: This will increase the executabl
+			size significantly.)
+		</flag>
 	</use>
-	<longdescription>
-		This library provides a powerful but simple way to measure the
-		performance of Haskell code.  It provides both a framework for
-		executing and analysing benchmarks and a set of driver functions
-		that makes it easy to build and run benchmarks, and to analyse their
-		results.
-		
-		The fastest way to get started is to read the documentation and
-		examples in the Criterion.Main module.
-	</longdescription>
 	<upstream>
-		<remote-id type="github">bos/criterion</remote-id>
+		<remote-id type="hackage">criterion</remote-id>
+		<remote-id type="github">haskell/criterion</remote-id>
 	</upstream>
 </pkgmetadata>
