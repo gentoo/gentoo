@@ -5,16 +5,16 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A platform independent method to obtain cryptographically strong entropy
-		(RDRAND when available anywhere, urandom on nix, CryptAPI on Windows, patches welcome).
-		Users looking for cryptographically strong (number-theoretically
-		sound) PRNGs should see the 'DRBG' package too.
-	</longdescription>
 	<use>
+		<flag name="donotgetentropy">
+			Avoid use of the getentropy() *nix function. By default
+			getentropy will be used if detected during compilation
+			(this plays poorly with cross compilation).
+		</flag>
 		<flag name="halvm">Build for the HaLVM.</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">entropy</remote-id>
 		<remote-id type="github">TomMD/entropy</remote-id>
 	</upstream>
 </pkgmetadata>
