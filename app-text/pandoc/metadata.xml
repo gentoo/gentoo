@@ -4,16 +4,6 @@
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
 	</maintainer>
-	<longdescription>
-		Pandoc is a Haskell library for converting from one markup
-		format to another, and a command-line tool that uses
-		this library. It can read markdown and (subsets of)
-		reStructuredText, HTML, LaTeX and Textile, and it can write
-		markdown, reStructuredText, HTML, LaTeX, ConTeXt, Docbook,
-		OpenDocument, ODT, RTF, MediaWiki, Textile, groff man pages,
-		plain text, Emacs Org-Mode, EPUB, and S5 and Slidy HTML
-		slide shows.
-	</longdescription>
 	<use>
 		<flag name="embed-data-files">Embed data files in binary for relocatable executable.</flag>
 		<flag name="trypandoc">Build trypandoc cgi executable.</flag>
