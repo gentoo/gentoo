@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">adjunctions</remote-id>
 		<remote-id type="github">ekmett/adjunctions</remote-id>
 	</upstream>
 </pkgmetadata>
