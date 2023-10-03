@@ -6,7 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="no-unicode">Don't enable unicode output. Instead, unicode characters will be escaped.</flag>
+		<flag name="unicode">Enable unicode output. Otherwise, unicode characters will be escaped.</flag>
 		<flag name="system-libyaml">Use the system-wide libyaml instead of the bundled copy</flag>
 	</use>
 </pkgmetadata>
