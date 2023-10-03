@@ -5,4 +5,13 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="tagged">You can disable the use of the `tagged` package using `-f-tagged`.
+
+Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">assoc</remote-id>
+		<remote-id type="github">phadej/assoc</remote-id>
+	</upstream>
 </pkgmetadata>
