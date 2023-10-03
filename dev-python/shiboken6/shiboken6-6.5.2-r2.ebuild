@@ -40,11 +40,11 @@ RESTRICT="test"
 QT_PV="$(ver_cut 1-3)*:6"
 
 # Since Clang is required at both build- and runtime, BDEPEND is omitted here.
-LLVM_MAX_SLOT=15
+LLVM_MAX_SLOT=16
 RDEPEND="${PYTHON_DEPS}
 	=dev-qt/qtbase-${QT_PV}
-	<sys-devel/clang-16:=
-	<sys-devel/clang-runtime-16:=
+	<sys-devel/clang-17:=
+	<sys-devel/clang-runtime-17:=
 	docstrings? (
 		>=dev-libs/libxml2-2.6.32
 		>=dev-libs/libxslt-1.1.19
@@ -82,6 +82,13 @@ src_prepare() {
 			ApiExtractor/clangparser/compilersupport.cpp || die
 	fi
 
+	local clangver="$(CPP=clang clang-major-version)"
+
+	# Clang 15 and older used the full version as a directory name.
+	if [[ ${clangver} -lt 16 ]]; then
+		clangver="$(CPP=clang clang-fullversion)"
+	fi
+
 	# Shiboken6 assumes the "/usr/lib/clang/${CLANG_NEWEST_VERSION}/include/"
 	# subdirectory provides Clang builtin includes (e.g., "stddef.h") for the
 	# currently installed version of Clang, where ${CLANG_NEWEST_VERSION} is
@@ -97,7 +104,7 @@ src_prepare() {
 	# PySide6 does *NOT* care whether the end user has done so or not, as
 	# PySide6 unconditionally requires Clang in either case. See also:
 	#     https://bugs.gentoo.org/619490
-	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'$(CPP=clang clang-fullversion)'/include"))~' \
+	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'"${clangver}"'/include"))~' \
 		ApiExtractor/clangparser/compilersupport.cpp || die
 
 	cmake_src_prepare
