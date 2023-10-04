@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer-meson
 
 DESCRIPTION="Secure reliable transport (SRT) transfer plugin for GStreamer"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	net-libs/srt:=[${MULTILIB_USEDEP}]
