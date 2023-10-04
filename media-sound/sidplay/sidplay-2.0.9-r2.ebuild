@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/sidplay2/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ~sparc x86"
 IUSE=""
 
 BDEPEND="virtual/pkgconfig"
