@@ -49,7 +49,6 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	>=dev-util/gdbus-codegen-2.32
-	>=dev-util/gtk-doc-am-1.3
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.8 )
 	dev-libs/gobject-introspection-common
