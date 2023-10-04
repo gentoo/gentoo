@@ -1,0 +1,16 @@
+Don't clobber our toolchain defaults.
+
+https://bugs.gentoo.org/898240
+--- a/configure.ac
++++ b/configure.ac
+@@ -96,7 +96,9 @@ CLOCK_DEFINES='-DDATA_DIR="\"$(datadir)\"" -DPKGDATA_DIR="\"$(pkgdatadir)\""'
+ AC_SUBST([CLOCK_DEFINES])
+ 
+ dnl CFLAGS
+-CFLAGS="$CFLAGS -Wall -pedantic -std=c99 -fno-strict-aliasing -fmessage-length=0 -D_FORTIFY_SOURCE=2"
++CFLAGS="$CFLAGS -Wall -pedantic -std=c99 -fno-strict-aliasing -fmessage-length=0"
++
++AX_ADD_FORTIFY_SOURCE
+ 
+ AC_CONFIG_FILES([
+ 	Makefile
