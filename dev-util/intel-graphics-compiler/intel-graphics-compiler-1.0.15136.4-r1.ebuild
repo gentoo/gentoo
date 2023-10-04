@@ -35,9 +35,14 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 BDEPEND="
+	$(python_gen_any_dep 'dev-python/mako[${PYTHON_USEDEP}]')
 	=sys-devel/lld-${LLVM_MAX_SLOT}*
 	${PYTHON_DEPS}
 "
+
+python_check_deps() {
+	python_has_version "dev-python/mako[${PYTHON_USEDEP}]"
+}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.9-no_Werror.patch"
@@ -86,6 +91,7 @@ src_configure() {
 		-DIGC_OPTION__SPIRV_TOOLS_MODE="Prebuilds"
 		-DIGC_OPTION__SPIRV_TRANSLATOR_MODE="Prebuilds"
 		$(usex vc '-DIGC_OPTION__VC_INTRINSICS_MODE=Prebuilds' '')
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DINSTALL_GENX_IR="ON"
 		-DSPIRVLLVMTranslator_INCLUDE_DIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/include/LLVMSPIRVLib"
 		-Wno-dev
