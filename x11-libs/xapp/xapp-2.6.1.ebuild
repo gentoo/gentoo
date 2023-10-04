@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/linuxmint/xapp/"
 LICENSE="LGPL-3"
 
 SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 SLOT="0"
 IUSE="gtk-doc introspection mate"
