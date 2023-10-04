@@ -112,6 +112,11 @@ src_prepare() {
 	else
 		rm -fr 3rdParty || die
 	fi
+
+	if [[ ! -f VERSION.swift ]] ; then
+		# Source tarball from git doesn't include this file
+		echo "${PV}" > VERSION.swift || die
+	fi
 }
 
 src_configure() {
