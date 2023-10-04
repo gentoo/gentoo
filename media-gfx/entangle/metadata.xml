@@ -12,4 +12,7 @@
 		<email>media-video@gentoo.org</email>
 		<name>Gentoo Video project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">entangle/entangle</remote-id>
+	</upstream>
 </pkgmetadata>
