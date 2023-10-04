@@ -19,10 +19,4 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 
-DEPEND="
-	test? (
-		dev-python/memory-profiler[${PYTHON_USEDEP}]
-	)
-"
-
 distutils_enable_tests pytest
