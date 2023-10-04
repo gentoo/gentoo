@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/harfbuzz
 	media-libs/mesa[X(+)]
 	net-misc/curl[ssl]
-	net-print/cups[ssl]
+	net-print/cups[ssl(+)]
 	sys-apps/dbus
 	sys-libs/zlib
 	x11-libs/cairo
