@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/MaskRay/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="amd64 ~arm64 ~riscv"
 fi
 
 LICENSE="Apache-2.0"
