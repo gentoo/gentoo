@@ -1,0 +1,8 @@
+# path to binary. Default: /opt/slskd/slskd
+# SLSKD_BIN="/opt/slskd/slskd"
+
+# path to static web content. Default: /opt/slskd/wwwroot
+SLSKD_WWWROOT="/opt/slskd/wwwroot"
+
+# path to configuration file. Default: /opt/slskd/config/slskd.yml
+SLSKD_CONFIG="/opt/slskd/config/slskd.yml"
