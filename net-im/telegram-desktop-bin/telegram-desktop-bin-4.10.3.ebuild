@@ -25,6 +25,7 @@ RDEPEND="
 	>=media-libs/fontconfig-2.13
 	media-libs/freetype:2
 	virtual/opengl
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10
 "
