@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${PV}.tar.gz -> $
 
 LICENSE="GPL-1 GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0/4" # subslot = libcinnamon-desktop soname version
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.37.3:2[dbus]
