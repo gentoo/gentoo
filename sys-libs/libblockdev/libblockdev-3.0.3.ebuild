@@ -56,8 +56,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND+="
-	dev-util/gtk-doc-am
-	gtk-doc? ( dev-util/gtk-doc )
+	gtk-doc? (
+		dev-util/gtk-doc
+		dev-util/gtk-doc-am
+	)
 	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 	test? (
 		$(python_gen_cond_dep '
