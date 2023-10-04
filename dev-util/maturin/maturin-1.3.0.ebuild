@@ -399,6 +399,7 @@ RDEPEND="$(python_gen_cond_dep 'dev-python/tomli[${PYTHON_USEDEP}]' 3.10)"
 DEPEND="ssl? ( dev-libs/openssl:= )"
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
+	virtual/pkgconfig
 	doc? ( app-text/mdbook )
 	test? (
 		${RDEPEND}
