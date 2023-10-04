@@ -28,7 +28,7 @@ CRATES="
 	cargo_metadata@0.18.0
 	cc@1.0.73
 	cfg-if@1.0.0
-	chrono@0.4.30
+	chrono@0.4.31
 	clap@4.4.0
 	clap_builder@4.4.0
 	clap_derive@4.4.0
@@ -52,7 +52,7 @@ CRATES="
 	fnv@1.0.7
 	form_urlencoded@1.0.1
 	gimli@0.28.0
-	git2@0.18.0
+	git2@0.18.1
 	glob@0.3.1
 	gzip-header@0.3.0
 	hashbrown@0.11.2
@@ -107,10 +107,10 @@ CRATES="
 	quote@1.0.33
 	redox_syscall@0.2.16
 	regex-automata@0.1.10
-	regex-automata@0.3.8
+	regex-automata@0.3.9
 	regex-syntax@0.6.29
 	regex-syntax@0.7.5
-	regex@1.9.5
+	regex@1.9.6
 	remove_dir_all@0.5.3
 	rustc-demangle@0.1.23
 	rustc_version@0.4.0
@@ -141,9 +141,9 @@ CRATES="
 	thread_local@1.1.4
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.0
-	toml@0.8.0
+	toml@0.8.1
 	toml_datetime@0.6.3
-	toml_edit@0.20.0
+	toml_edit@0.20.1
 	tracing-attributes@0.1.24
 	tracing-core@0.1.30
 	tracing-log@0.1.3
