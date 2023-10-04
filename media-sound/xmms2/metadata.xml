@@ -13,7 +13,6 @@
 		<flag name="libvisual">Install xmms2-libvisual for use with the 'visualization' effect</flag>
 		<flag name="mac">Support for Monkey's Audio (APE) format using <pkg>media-sound/mac</pkg></flag>
 		<flag name="mlib-update">Enable building of xmms2-mlib-updater client</flag>
-		<flag name="ofa">Support for Open Fingerprint Architecture (OFA)</flag>
 		<flag name="server">Build xmms2 player daemon (otherwise only clients are built)</flag>
 		<flag name="sid">Support for C64 SID using <pkg>media-libs/libsidplay</pkg></flag>
 		<flag name="tremor">Support Vorbis using an alternate fixed-point decoder with <pkg>media-libs/tremor</pkg></flag>

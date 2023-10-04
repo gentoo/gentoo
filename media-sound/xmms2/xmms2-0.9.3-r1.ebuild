@@ -27,10 +27,10 @@ XMMS2_PLUGINS=(
 	aac:faad airplay alsa ao :asx cdda :cue curl :diskwrite :equalizer
 	ffmpeg:apefile,asf,avcodec,flv,tta :file flac fluidsynth:fluidsynth,mid1,midsquash
 	gme :html ices :icymetaint :id3v2 jack :karaoke :m3u mac +mad mms modplug
-	mp3:mpg123 :mp4 musepack :normalize :null :nulstripper ofa opus oss :pls
+	mp3:mpg123 :mp4 musepack :normalize :null :nulstripper opus oss :pls
 	pulseaudio:pulse :replaygain samba sid sndfile speex tremor vocoder +vorbis
 	:wave wavpack :xml xml:rss,xspf zeroconf:daap
-	# disabled: coreaudio,gvfs,nms,sc68,sun,waveout
+	# disabled: coreaudio,gvfs,nms,ofa,sc68,sun,waveout
 )
 
 IUSE="
@@ -79,11 +79,6 @@ COMMON_DEPEND="
 		modplug? ( media-libs/libmodplug )
 		mp3? ( media-sound/mpg123 )
 		musepack? ( media-sound/musepack-tools )
-		ofa? (
-			dev-libs/expat
-			media-libs/libofa
-			sci-libs/fftw:3.0=
-		)
 		opus? ( media-libs/opusfile )
 		pulseaudio? ( media-libs/libpulse )
 		samba? ( net-fs/samba )
