@@ -1,0 +1,17 @@
+This was originally added for ABI reasons in a case which barely works / doesn't
+work at all for glibc anyway, see https://github.com/webmproject/libvpx/commit/b73a3693e581583e9ec676f4396d0c3d173e2462.
+
+We want fortification and we definitely don't want it explicitly turned off.
+--- a/build/make/configure.sh
++++ b/build/make/configure.sh
+@@ -1495,10 +1495,6 @@ EOF
+   # shared objects
+   enabled gcc && enabled pic && check_add_cflags -fPIC
+ 
+-  # Work around longjmp interception on glibc >= 2.11, to improve binary
+-  # compatibility. See http://code.google.com/p/webm/issues/detail?id=166
+-  enabled linux && check_add_cflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0
+-
+   # Check for strip utility variant
+   ${STRIP} -V 2>/dev/null | grep GNU >/dev/null && enable_feature gnu_strip
+ 
