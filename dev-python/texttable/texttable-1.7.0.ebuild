@@ -9,14 +9,9 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Module to create simple ASCII tables"
-HOMEPAGE="
-	https://github.com/foutaise/texttable/
-	https://pypi.org/project/texttable/
-"
-SRC_URI="
-	https://github.com/foutaise/texttable/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
-"
+HOMEPAGE="https://github.com/foutaise/texttable/
+	https://pypi.org/project/texttable/"
+SRC_URI="https://github.com/foutaise/texttable/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
