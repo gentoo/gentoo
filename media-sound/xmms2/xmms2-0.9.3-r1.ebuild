@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 ~arm ~loong ppc ~riscv x86"
 
 # IUSE static map to be passed to --with-{optionals,plugins}=opt1,opt2,...
 # flag:opt = `usev flag opt`, opt = `usev opt`, :opt = `echo opt`
-# (if have a use for some of these disabled features, please fill a bug)
+# (if have a use for some of these disabled features, please file a bug)
 XMMS2_OPTIONALS=(
 	cxx:xmmsclient++,xmmsclient++-glib :launcher mlib-update:medialib-updater
 	:nycli perl :pixmaps python server:s4 test:tests libvisual:vistest
