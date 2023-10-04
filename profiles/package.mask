@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-10-04)
+# Incompatible with newer media-video/ffmpeg, bug #914499.
+# Deps appenh and loadlib not used by anything else.
+# Removal on 2023-11-04.
+media-video/jubler
+dev-java/appenh
+dev-java/loadlib
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-04)
 # The project was abandoned upstream.  The test suite is broken
 # with python3.12.  It was used only as an optional test dep
