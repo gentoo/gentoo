@@ -26,6 +26,7 @@ DEPEND="
 	sys-boot/gnu-efi
 "
 BDEPEND="
+	app-text/mandoc
 	sys-apps/help2man
 	virtual/pkgconfig
 "
