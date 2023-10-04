@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit meson python-any-r1 xdg
 
 DESCRIPTION="Graphical console client for connecting to virtual machines"
-HOMEPAGE="https://virt-manager.org/"
+HOMEPAGE="https://virt-manager.org/ https://gitlab.com/virt-viewer/virt-viewer"
 if [[ ${PV} == *_p* ]] ; then
 	GIT_HASH="f0cc7103becccbce95bdf0c80151178af2bace5a"
 	SRC_URI="https://gitlab.com/${PN}/${PN}/-/archive/${GIT_HASH}/${PN}-${GIT_HASH}.tar.bz2 -> ${P}.tar.bz2"
