@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2023-10-04)
+# GStreamer plugin removed upstream. The database used by this music fingerprint
+# plugin has been defunct for a while. Removal on 2023-11-04. Bug #915189.
+media-plugins/gst-plugins-ofa
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-04)
 # The project was abandoned upstream.  The test suite is broken
 # with python3.12.  It was used only as an optional test dep
