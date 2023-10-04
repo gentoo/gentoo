@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-04)
+# The project was abandoned upstream.  The test suite is broken
+# with python3.12.  It was used only as an optional test dep
+# for dev-python/Arpeggio.
+# Removal on 2023-11-03.  Bug #915162.
+dev-python/memory-profiler
+
 # Michał Górny <mgorny@gentoo.org> (2023-09-29)
 # The project is no longer maintained upstream.  We haven't handled
 # the version bump from a year ago yet.  No reverse dependencies.
