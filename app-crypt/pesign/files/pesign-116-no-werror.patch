@@ -1,0 +1,11 @@
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -60,7 +60,7 @@ cflags	= $(CFLAGS) $(ARCH3264) \
+ 	-Wall -Wextra -Wsign-compare -Wno-unused-result \
+ 	-Wno-unused-function -Wno-missing-field-initializers \
+ 	$(call enabled,ENABLE_LEAK_CHECKER,-Wno-analyzer-malloc-leak,) \
+-	-Werror -Wno-error=cpp -Wno-free-nonheap-object \
++	-Wno-error=cpp -Wno-free-nonheap-object \
+ 	-std=gnu11 -fshort-wchar -fPIC -fno-strict-aliasing \
+ 	-D_GNU_SOURCE -DCONFIG_$(ARCH) -I${TOPDIR}/include \
+ 	'-DRUNDIR="$(rundir)"' \
