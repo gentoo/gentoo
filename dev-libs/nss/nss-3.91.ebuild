@@ -238,6 +238,8 @@ multilib_src_test() {
 	export DOMSUF="localdomain"
 	export USE_IP=TRUE
 	export IP_ADDRESS="127.0.0.1"
+	# Per README, this is recommended to make run tests quicker.
+	export NSS_CYCLES="standard"
 
 	NSINSTALL="${PWD}/$(find -type f -name nsinstall)"
 
