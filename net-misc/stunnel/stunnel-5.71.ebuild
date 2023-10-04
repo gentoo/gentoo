@@ -37,7 +37,9 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-stunnel )
 	stunnel3? ( dev-lang/perl )
 "
+# autoconf-archive for F_S patch
 BDEPEND="
+	sys-devel/autoconf-archive
 	test? ( ${PYTHON_DEPS} )
 "
 
