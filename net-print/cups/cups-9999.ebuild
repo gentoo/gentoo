@@ -28,7 +28,7 @@ HOMEPAGE="https://www.cups.org/ https://github.com/OpenPrinting/cups"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="acl dbus debug kerberos openssl pam selinux +ssl static-libs systemd test usb X xinetd zeroconf"
+IUSE="acl dbus debug kerberos openssl pam selinux static-libs systemd test usb X xinetd zeroconf"
 
 # As of 2.4.2, they don't actually seem to be interactive (they pass some flags
 # by default to input for us), but they fail on some greyscale issue w/ poppler?
@@ -52,10 +52,8 @@ DEPEND="
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	!pam? ( virtual/libcrypt:= )
-	ssl? (
-		!openssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
-		openssl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
-	)
+	!openssl? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] )
+	openssl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
 	X? ( x11-misc/xdg-utils )
@@ -166,9 +164,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable pam)
 		$(use_enable static-libs static)
 		$(use_enable test unit-tests)
-		# USE="ssl" => gnutls
-		# USE="ssl openssl" => openssl
-		$(use_with ssl tls $(usex openssl openssl gnutls))
+		--with-tls=$(usex openssl openssl gnutls)
 		$(use_with systemd ondemand systemd)
 		$(multilib_native_use_enable usb libusb)
 		$(use_with zeroconf dnssd avahi)
