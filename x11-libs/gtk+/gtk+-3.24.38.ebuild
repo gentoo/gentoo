@@ -80,7 +80,6 @@ BDEPEND="
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.48
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.20
 	wayland? ( dev-util/wayland-scanner )
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
@@ -88,6 +87,7 @@ BDEPEND="
 	gtk-doc? (
 		app-text/docbook-xml-dtd:4.3
 		>=dev-util/gtk-doc-1.20
+		>=dev-util/gtk-doc-am-1.20
 	)
 	test? ( sys-apps/dbus )
 "
