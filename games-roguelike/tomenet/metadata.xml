@@ -19,4 +19,7 @@
 		choice and wielding mighty 
 		artifacts.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">TomenetGame/tomenet</remote-id>
+	</upstream>
 </pkgmetadata>
