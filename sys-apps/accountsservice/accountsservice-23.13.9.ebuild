@@ -29,7 +29,6 @@ DEPEND="${CDEPEND}
 	sys-apps/dbus
 "
 BDEPEND="
-	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	sys-devel/gettext
@@ -37,6 +36,7 @@ BDEPEND="
 	doc? (
 		app-text/docbook-xml-dtd:4.1.2
 		app-text/xmlto
+		dev-libs/libxslt
 	)
 	gtk-doc? (
 		dev-util/gtk-doc
