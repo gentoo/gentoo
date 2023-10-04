@@ -132,7 +132,14 @@ PER_SLOT_DEPSTR="
 		!opencl? ( sys-devel/llvm:@SLOT@[${LLVM_USE_DEPS}] )
 		opencl? ( sys-devel/clang:@SLOT@[${LLVM_USE_DEPS}] )
 		opencl? ( dev-util/spirv-llvm-translator:@SLOT@ )
-		vulkan? ( video_cards_intel? ( amd64? ( dev-util/spirv-llvm-translator:@SLOT@ ) ) )
+		vulkan? (
+			video_cards_intel? (
+				amd64? (
+					dev-util/spirv-llvm-translator:@SLOT@
+					sys-devel/clang:@SLOT@[${LLVM_USE_DEPS}]
+				)
+			)
+		)
 	)
 "
 LLVM_DEPSTR="
