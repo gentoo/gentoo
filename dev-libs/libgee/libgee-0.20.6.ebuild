@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2
+inherit gnome2 vala
 
 DESCRIPTION="GObject-based interfaces and classes for commonly used data structures"
 HOMEPAGE="https://wiki.gnome.org/Projects/Libgee"
@@ -19,10 +19,19 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	$(vala_depend)
+	virtual/pkgconfig
+"
 
 src_configure() {
+	vala_setup
 	gnome2_src_configure \
-		$(use_enable introspection) \
-		VALAC="$(type -P false)"
+		$(use_enable introspection)
+}
+
+src_compile() {
+	# Run make clean to remove pre-generated C sources
+	emake clean
+	gnome2_src_compile
 }
