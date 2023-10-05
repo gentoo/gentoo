@@ -1,6 +1,11 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+
+# Patrick Lauer <patrick@gentoo.org> (2023-10-05)
+# JIT / llvm support needs too old llvm
+dev-db/postgresql llvm
+
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
