@@ -73,6 +73,10 @@ RDEPEND="
 	${DEPEND}
 	>=dev-python/PyQt6-sip-13.4[${PYTHON_USEDEP}]
 "
+DEPEND+="
+	bluetooth? ( <dev-qt/qtconnectivity-6.6 )
+	sql? ( <dev-qt/qtbase-6.6 )
+"
 BDEPEND="
 	>=dev-python/PyQt-builder-1.15[${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}
