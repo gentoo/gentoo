@@ -181,6 +181,51 @@ nuget_link-system-nugets() {
 	done
 }
 
+# @FUNCTION: nuget_link-nuget-archives
+# @DESCRIPTION:
+# Link NuGet packages from package source files to the "NUGET_PACKAGES"
+# directory.
+#
+# This is a complementary function to "nuget_unpack-non-nuget-archives".
+#
+# This function is used inside "dotnet-pkg_src_unpack"
+# from the "dotnet-pkg" eclass.
+nuget_link-nuget-archives() {
+	local archive
+	for archive in ${A} ; do
+		case "${archive}" in
+			*.nupkg )
+				nuget_link "${DISTDIR}/${archive}"
+				;;
+			* )
+				:
+				;;
+		esac
+	done
+}
+
+# @FUNCTION: nuget_unpack-non-nuget-archives
+# @DESCRIPTION:
+# Unpack all from package source files that are not NuGet packages.
+#
+# This is a complementary function to "nuget_link-nuget-archives".
+#
+# This function is used inside "dotnet-pkg_src_unpack"
+# from the "dotnet-pkg" eclass.
+nuget_unpack-non-nuget-archives() {
+	local archive
+	for archive in ${A} ; do
+		case "${archive}" in
+			*.nupkg )
+				:
+				;;
+			* )
+				unpack "${archive}"
+				;;
+		esac
+	done
+}
+
 # @FUNCTION: nuget_donuget
 # @USAGE: <nuget-path> ...
 # @DESCRIPTION:

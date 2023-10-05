@@ -136,18 +136,8 @@ dotnet-pkg_pkg_setup() {
 # copied into the "NUGET_PACKAGES" directory.
 dotnet-pkg_src_unpack() {
 	nuget_link-system-nugets
-
-	local archive
-	for archive in ${A} ; do
-		case "${archive}" in
-			*.nupkg )
-				nuget_link "${DISTDIR}/${archive}"
-				;;
-			* )
-				unpack "${archive}"
-				;;
-		esac
-	done
+	nuget_link-nuget-archives
+	nuget_unpack-non-nuget-archives
 }
 
 # @FUNCTION: dotnet-pkg_src_prepare
