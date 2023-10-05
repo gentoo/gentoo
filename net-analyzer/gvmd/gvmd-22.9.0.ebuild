@@ -18,12 +18,14 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	acct-user/gvm
 	app-crypt/gpgme:1=
+	dev-libs/libbsd
 	>=dev-db/postgresql-9.6:=[uuid]
 	>=dev-libs/glib-2.42:2
 	>=dev-libs/libical-1.0.0
-	>=net-analyzer/gvm-libs-20.08.0
+	>=net-analyzer/gvm-libs-22.7
 	>=net-libs/gnutls-3.2.15[tools]
 "
+
 # gvmd (optionally) uses xml_split from XML-Twig at runtime. And texlive
 # and xmlstartlet are used for (PDF) report generator at runtime.
 RDEPEND="
@@ -111,9 +113,6 @@ src_install() {
 	if ! use prefix; then
 		fowners -R gvm:gvm /var/lib/gvm
 	fi
-
-	dosbin "${FILESDIR}"/gvm-sync-all
-	systemd_dounit "${FILESDIR}"/gvm-sync-all.{service,timer}
 
 	systemd_install_serviced "${FILESDIR}/gvmd.service.conf" \
 			${PN}.service

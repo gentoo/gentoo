@@ -10,14 +10,15 @@ name="Greenbone Vulnerability Manager"
 command=/usr/bin/gvmd
 command_args="${GVMD_VT_UPDATE} ${GVMD_OPTIONS} ${GVMD_LISTEN_ADDRESS_TCP} ${GVMD_PORT} ${GVMD_SCANNER_HOST} ${GVMD_GNUTLS_PRIORITIES}"
 command_user="${GVMD_USER}:${GVMD_GROUP}"
-pidfile="/var/run/gvmd/gvmd.pid"
+pidfile="/run/gvmd/gvmd.pid"
 retry="${GVMD_TIMEOUT}"
 
 depend() {
 	after bootmisc postgresql postgresql-9.6 postgresql-10 postgresql-11 postgresql-12 postgresql-13 postgresql-14 postgresql-15
+	want postgresql postgresql-9.6 postgresql-10 postgresql-11 postgresql-12 postgresql-13 postgresql-14 postgresql-15
 	need localmount net ospd-openvas
 }
 
 start_pre() {
-	checkpath -d --owner ${GVMD_USER} /var/run/gvmd
+	checkpath -d --owner ${GVMD_USER} /run/gvmd
 }
