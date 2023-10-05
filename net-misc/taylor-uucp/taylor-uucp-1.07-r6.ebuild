@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -58,12 +58,4 @@ src_install() {
 	doins sample/*
 
 	dodoc ChangeLog NEWS README TODO
-}
-
-pkg_preinst() {
-	usermod -s /bin/bash uucp || die
-}
-
-pkg_postrm() {
-	usermod -s /bin/false uucp || die
 }
