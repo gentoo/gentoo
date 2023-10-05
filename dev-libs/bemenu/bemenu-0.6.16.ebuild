@@ -27,7 +27,7 @@ RDEPEND="
 	wayland? (
 		dev-libs/wayland
 		x11-libs/cairo
-		x11-libs/libxcb:=
+		x11-libs/libxkbcommon
 		x11-libs/pango
 	)
 	X? (
