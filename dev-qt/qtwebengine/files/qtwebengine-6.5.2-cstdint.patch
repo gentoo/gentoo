@@ -6,7 +6,10 @@ include cstdint / stdint.h for the int32/64_t usage.
 Partially fixed by [1] (>=chromium-110.0.5434.0) given it removes the
 int64_t usage altogether in seed_response.h.
 
+See also [2] which fixed this for the 87 branch in Qt5.
+
 [1] https://crrev.com/01e21a077a0354d85e8359195613c2781f67a3a2
+[2] https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/489133
 --- a/src/3rdparty/chromium/components/variations/seed_response.h
 +++ b/src/3rdparty/chromium/components/variations/seed_response.h
 @@ -7,2 +7,3 @@

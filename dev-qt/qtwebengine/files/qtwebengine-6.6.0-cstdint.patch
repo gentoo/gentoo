@@ -2,6 +2,10 @@ Patch status: limbo, needs upstreaming
 
 Only manifests as an issue with gcc-13+musl which does not transitively
 include cstdint / stdint.h for the int32/64_t usage.
+
+See also [1] which fixed this for the 87 branch in Qt5.
+
+[1] https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/489133
 --- a/src/3rdparty/chromium/gpu/config/gpu_driver_bug_workarounds.h
 +++ b/src/3rdparty/chromium/gpu/config/gpu_driver_bug_workarounds.h
 @@ -7,2 +7,3 @@
