@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,12 @@ BDEPEND="app-text/texi2html
 
 PATCHES=( "${FILESDIR}"/${P}-emacs-28.patch )
 SITEFILE="50${PN}-gentoo.el"
+
+src_prepare() {
+	default
+	sed -i -e 's/font-lock-reference-face/font-lock-constant-face/g' \
+		lisp/*.el || die
+}
 
 src_compile() {
 	default
