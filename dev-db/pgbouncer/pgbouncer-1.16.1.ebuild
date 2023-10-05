@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,6 @@ REQUIRED_USE="?? ( c-ares udns )"
 
 RDEPEND="
 	>=dev-libs/libevent-2.0:=
-	>=sys-libs/glibc-2.10
 	acct-user/pgbouncer
 	c-ares? ( >=net-dns/c-ares-1.10 )
 	ssl? ( >=dev-libs/openssl-1.0.1:=[-bindist(-)] )

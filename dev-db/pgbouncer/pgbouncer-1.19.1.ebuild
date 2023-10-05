@@ -16,7 +16,6 @@ REQUIRED_USE="?? ( c-ares udns )"
 
 RDEPEND="
 	>=dev-libs/libevent-2.0:=
-	>=sys-libs/glibc-2.10
 	acct-user/pgbouncer
 	c-ares? ( >=net-dns/c-ares-1.10 )
 	ssl? ( >=dev-libs/openssl-1.0.1:=[-bindist(-)] )
