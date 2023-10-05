@@ -8,4 +8,7 @@
     <remote-id type="sourceforge">calibre</remote-id>
     <remote-id type="github">kovidgoyal/calibre</remote-id>
   </upstream>
+  <use>
+    <flag name="speech">Enable text-to-speech support</flag>
+  </use>
 </pkgmetadata>

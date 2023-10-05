@@ -37,7 +37,7 @@ LICENSE="
 "
 KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
-IUSE="ios test +udisks"
+IUSE="ios speech test +udisks"
 
 RESTRICT="!test? ( test )"
 
@@ -55,7 +55,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/openssl:=
 	dev-libs/snowball-stemmer:=
 	$(python_gen_cond_dep '
-		app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]
 		>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/cchardet[${PYTHON_USEDEP}]
@@ -100,6 +99,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=app-pda/usbmuxd-1.0.8
 		>=app-pda/libimobiledevice-1.2.0
 	)
+	speech? ( $(python_gen_cond_dep 'app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]') )
 	udisks? ( virtual/libudev )"
 RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )"
@@ -199,6 +199,8 @@ src_test() {
 		7z
 		# unpackaged Python dependency: unrardll
 		test_unrar
+
+		$(usev !speech speech_dispatcher)
 
 		# undocumented reasons
 		test_mem_leaks
