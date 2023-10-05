@@ -371,7 +371,7 @@ dotnet-pkg-base_restore_tools() {
 		--add-source "${NUGET_PACKAGES}"
 	)
 
-	if [[ "${1}" ]] ; then
+	if [[ -n "${1}" ]] ; then
 		tool_restore_args+=( --configfile "${1}" )
 		shift
 	fi
@@ -434,7 +434,7 @@ dotnet-pkg-base_test() {
 	debug-print-function "${FUNCNAME[0]}" "${@}"
 
 	local directory
-	if [[ "${1}" ]] ; then
+	if [[ -n "${1}" ]] ; then
 		directory="${1}"
 		shift
 	else
@@ -529,7 +529,7 @@ dotnet-pkg-base_dolauncher() {
 
 	local executable_path executable_name
 
-	if [[ "${1}" ]] ; then
+	if [[ -n "${1}" ]] ; then
 		local executable_path="${1}"
 		shift
 	else
@@ -553,9 +553,9 @@ dotnet-pkg-base_dolauncher() {
 	# compatible with dotnet version ${DOTNET_PKG_COMPAT}.
 
 	for __dotnet_root in \\
-		${EPREFIX}/usr/$(get_libdir)/dotnet-sdk-${DOTNET_PKG_COMPAT} \\
-		${EPREFIX}/opt/dotnet-sdk-bin-${DOTNET_PKG_COMPAT} ; do
-		[ -d \${__dotnet_root} ] && break
+		"${EPREFIX}/usr/$(get_libdir)/dotnet-sdk-${DOTNET_PKG_COMPAT}" \\
+		"${EPREFIX}/opt/dotnet-sdk-bin-${DOTNET_PKG_COMPAT}" ; do
+		[ -d "\${__dotnet_root}" ] && break
 	done
 
 	DOTNET_ROOT="\${__dotnet_root}"
