@@ -1,0 +1,59 @@
+--- a/IGC/VectorCompiler/lib/GenXCodeGen/GenXSimdCFConformance.cpp
++++ b/IGC/VectorCompiler/lib/GenXCodeGen/GenXSimdCFConformance.cpp
+@@ -1867,11 +1867,13 @@ void GenXSimdCFConformance::ensureConformance() {
+         IID != GenXIntrinsic::genx_simdcf_unmask &&
+         IID != GenXIntrinsic::genx_simdcf_remask) {
+       EMValsStack.insert(*i);
++      #ifdef DEBUG_VERBOSE_ON
+       LLVM_DEBUG(if (auto *Inst = dyn_cast<Instruction>(i->getValue())) {
+         auto FuncName = Inst->getFunction()->getName();
+         dbgs() << "Entry EMVals " << FuncName << " - ";
+         i->getValue()->dump();
+       });
++      #endif
+     }
+   }
+   for (auto i = EMVals.begin(), e = EMVals.end(); i != e; ++i) {
+@@ -1919,6 +1921,7 @@ void GenXSimdCFConformance::ensureConformance() {
+     // been identified in the early pass, unless passes in between have
+     // transformed the code in an unexpected way that has made the simd CF
+     // non-conformant. Give an error here if this has happened.
++    #ifdef DEBUG_VERBOSE_ON
+     if (!GotosToLower.empty()) {
+       dbgs() << "Not empty GotosToLower:";
+       for (auto *Dump : GotosToLower)
+@@ -1929,6 +1932,7 @@ void GenXSimdCFConformance::ensureConformance() {
+       for (auto *Dump : JoinsToLower)
+         Dump->dump();
+     }
++    #endif
+     IGC_ASSERT_EXIT_MESSAGE(
+         GotosToLower.empty(),
+         "unexpected non-conformant SIMD CF in late SIMD CF conformance pass");
+@@ -2460,8 +2464,10 @@ static bool checkAllUsesAreSelectOrWrRegion(Value *V) {
+     auto User2 = cast<Instruction>(ui2->getUser());
+     unsigned OpNum = ui2->getOperandNo();
+     ++ui2;
++    #ifdef DEBUG_VERBOSE_ON
+     LLVM_DEBUG(dbgs() << "checkAllUsesAreSelectOrWrRegion: for user ";
+                User2->dump());
++    #endif
+ 
+     if (isa<SelectInst>(User2))
+       continue;
+@@ -3006,12 +3012,14 @@ bool GenXSimdCFConformance::getConnectedVals(
+     }
+   } else {
+     if (!UsersToLower.empty()) {
++      #ifdef DEBUG_VERBOSE_ON
+       LLVM_DEBUG(dbgs() << "getConnectedVals: find bad users:\n";
+                  for (auto &BadUser
+                       : UsersToLower) {
+                    dbgs() << "    ";
+                    BadUser.dump();
+                  });
++      #endif
+       return false;
+     }
+   }
+--
