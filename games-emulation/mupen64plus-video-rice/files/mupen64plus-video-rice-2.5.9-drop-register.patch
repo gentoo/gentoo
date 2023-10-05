@@ -1,0 +1,87 @@
+Bug: https://bugs.gentoo.org/895976
+--- a/src/ConvertImage.cpp
++++ b/src/ConvertImage.cpp
+@@ -341,7 +341,7 @@ void ConvertIA8(CTexture *pTexture, const TxtrInfo &tinfo)
+     }
+     else
+     {
+-        register const uint8* FourToEightArray = &FourToEight[0];
++        const uint8* FourToEightArray = &FourToEight[0];
+         for (uint32 y = 0; y < tinfo.HeightToLoad; y++)
+         {
+             uint8 *pDst = (uint8 *)dInfo.lpSurface + y * dInfo.lPitch;
+@@ -351,7 +351,7 @@ void ConvertIA8(CTexture *pTexture, const TxtrInfo &tinfo)
+ 
+             for (uint32 x = 0; x < tinfo.WidthToLoad; x++)
+             {
+-                register uint8 b = pSrc[(dwByteOffset++) ^ 0x3];
++                uint8 b = pSrc[(dwByteOffset++) ^ 0x3];
+                 uint8 I = *(FourToEightArray+(b>>4));
+ 
+                 *pDst++ = I;
+--- a/src/FrameBuffer.cpp
++++ b/src/FrameBuffer.cpp
+@@ -591,7 +591,7 @@ uint32 CalculateRDRAMCRC(void *pPhysicalAddress, uint32 left, uint32 top, uint32
+         }
+ 
+         uint32 pitch = pitchInBytes>>2;
+-        register uint32 *pStart = (uint32*)(pPhysicalAddress);
++        uint32 *pStart = (uint32*)(pPhysicalAddress);
+         pStart += (top * pitch) + (((left<<size)+1)>>3);
+ 
+         // The original assembly code had a bug in it (it incremented pStart by 'pitch' in bytes, not in dwords)
+--- a/src/RenderBase.cpp
++++ b/src/RenderBase.cpp
+@@ -977,13 +977,13 @@ uint32 LightVert(XVECTOR4 & norm, int vidx)
+     float fCosT;
+ 
+     // Do ambient
+-    register float r = gRSP.fAmbientLightR;
+-    register float g = gRSP.fAmbientLightG;
+-    register float b = gRSP.fAmbientLightB;
++    float r = gRSP.fAmbientLightR;
++    float g = gRSP.fAmbientLightG;
++    float b = gRSP.fAmbientLightB;
+ 
+     if( options.enableHackForGames != HACK_FOR_ZELDA_MM )
+     {
+-        for (register unsigned int l=0; l < gRSPnumLights; l++)
++        for (unsigned int l=0; l < gRSPnumLights; l++)
+         {
+             fCosT = norm.x*gRSPlights[l].x + norm.y*gRSPlights[l].y + norm.z*gRSPlights[l].z; 
+ 
+@@ -1000,7 +1000,7 @@ uint32 LightVert(XVECTOR4 & norm, int vidx)
+         XVECTOR4 v;
+         bool transformed = false;
+ 
+-        for (register unsigned int l=0; l < gRSPnumLights; l++)
++        for (unsigned int l=0; l < gRSPnumLights; l++)
+         {
+             if( gRSPlights[l].range == 0 )
+             {
+@@ -1058,12 +1058,12 @@ uint32 LightVertNew(XVECTOR4 & norm)
+     float fCosT;
+ 
+     // Do ambient
+-    register float r = gRSP.fAmbientLightR;
+-    register float g = gRSP.fAmbientLightG;
+-    register float b = gRSP.fAmbientLightB;
++    float r = gRSP.fAmbientLightR;
++    float g = gRSP.fAmbientLightG;
++    float b = gRSP.fAmbientLightB;
+ 
+ 
+-    for (register unsigned int l=0; l < gRSPnumLights; l++)
++    for (unsigned int l=0; l < gRSPnumLights; l++)
+     {
+         fCosT = norm.x*gRSPlights[l].tx + norm.y*gRSPlights[l].ty + norm.z*gRSPlights[l].tz; 
+ 
+@@ -2173,7 +2173,7 @@ void SetLightDirection(uint32 dwLight, float x, float y, float z, float range)
+     //gRSPlights[dwLight].oy = y;
+     //gRSPlights[dwLight].oz = z;
+ 
+-    register float w = range == 0 ? (float)sqrt(x*x+y*y+z*z) : 1;
++    float w = range == 0 ? (float)sqrt(x*x+y*y+z*z) : 1;
+ 
+     gRSPlights[dwLight].x = x/w;
+     gRSPlights[dwLight].y = y/w;
