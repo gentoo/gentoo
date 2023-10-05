@@ -50,7 +50,7 @@ src_unpack() {
 		mkdir -p "${P}"/src || die
 	fi
 
-	tar -C "${P}"/src --strip-components=1 -xzf "${DISTDIR}/${MY_P}.tar.gz" || die
+	tar -C "${P}"/src --strip-components=1 --no-same-owner -xzf "${DISTDIR}/${MY_P}.tar.gz" || die
 }
 
 src_prepare() {

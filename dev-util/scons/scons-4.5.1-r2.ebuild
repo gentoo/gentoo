@@ -47,7 +47,7 @@ src_unpack() {
 	# use the git directory structure, then unpack the pypi tarball
 	# on top of it to make our life easier
 	unpack "${P}.gh.tar.gz"
-	tar -C "${P}" --strip-components=1 -xzf "${DISTDIR}/${MY_P}.tar.gz" || die
+	tar -C "${P}" --strip-components=1 --no-same-owner -xzf "${DISTDIR}/${MY_P}.tar.gz" || die
 }
 
 src_prepare() {
