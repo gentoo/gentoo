@@ -45,7 +45,7 @@ src_install() {
 	dodoc ChangeLog *NEWS doc/TODO
 	newdoc doc/ChangeLog ChangeLog-doc
 
-	DOC_CONTENTS="Please see /usr/share/doc/${PF} for the complete
-		documentation. Usage hints are in ${SITELISP}/${PN}/ess-site.el ."
+	local DOC_CONTENTS="\
+		Please see /usr/share/doc/${PF} for the complete documentation."
 	readme.gentoo_create_doc
 }
