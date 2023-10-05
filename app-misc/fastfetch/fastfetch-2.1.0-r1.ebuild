@@ -23,8 +23,9 @@ SLOT="0"
 IUSE="X chafa dbus ddcutil gnome imagemagick networkmanager opencl opengl osmesa pci pulseaudio sqlite vulkan wayland xcb xfce xrandr"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
+# make sure to crank yyjson minimum version to match bundled version
 RDEPEND="
-	dev-libs/yyjson:=
+	>=dev-libs/yyjson-0.8.0:=
 	sys-libs/zlib
 	X? ( x11-libs/libX11 )
 	chafa? ( media-gfx/chafa )
