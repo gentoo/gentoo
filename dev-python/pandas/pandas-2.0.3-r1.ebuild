@@ -45,8 +45,8 @@ OPTIONAL_DEPEND="
 	>=dev-python/lxml-4.6.3[${PYTHON_USEDEP}]
 	>=dev-python/matplotlib-3.6.1[${PYTHON_USEDEP}]
 	>=dev-python/openpyxl-3.0.7[${PYTHON_USEDEP}]
-	>=dev-python/pytables-3.6.1[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.4.16[${PYTHON_USEDEP}]
+	>=dev-python/tables-3.6.1[${PYTHON_USEDEP}]
 	>=dev-python/tabulate-0.8.9[${PYTHON_USEDEP}]
 	>=dev-python/xarray-0.21.0[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-2.0.1[${PYTHON_USEDEP}]
@@ -91,7 +91,7 @@ BDEPEND="
 		dev-python/nbsphinx[${PYTHON_USEDEP}]
 		>=dev-python/numpydoc-0.9.1[${PYTHON_USEDEP}]
 		>=dev-python/openpyxl-3.0.7[${PYTHON_USEDEP}]
-		>=dev-python/pytables-3.6.1[${PYTHON_USEDEP}]
+		>=dev-python/tables-3.6.1[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/rpy[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
@@ -250,7 +250,7 @@ pkg_postinst() {
 	optfeature "Template engine for conditional HTML formatting" dev-python/jinja
 	optfeature "Plotting support" dev-python/matplotlib
 	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-3.0.7" dev-python/xlsxwriter dev-python/xlrd dev-python/xlwt
-	optfeature "necessary for HDF5-based storage" ">=dev-python/pytables-3.6.1"
+	optfeature "necessary for HDF5-based storage" ">=dev-python/tables-3.6.1"
 	optfeature "R I/O support" dev-python/rpy
 	optfeature "Needed for parts of pandas.stats" dev-python/statsmodels
 	optfeature "SQL database support" ">=dev-python/sqlalchemy-1.4.16"

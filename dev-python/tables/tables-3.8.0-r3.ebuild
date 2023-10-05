@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 PYPI_PN="tables"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 prefix pypi

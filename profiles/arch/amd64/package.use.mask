@@ -65,7 +65,7 @@ dev-lang/ruby -jit
 
 # Sam James <sam@gentoo.org> (2023-04-03)
 # pytables is available here.
-dev-python/pytables -cpudetection
+dev-python/tables -cpudetection
 
 # Craig Andrews <candrews@gentoo.org> (2023-03-09)
 # media-libs/libplacebo is keyworded here
