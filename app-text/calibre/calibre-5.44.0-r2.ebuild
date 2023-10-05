@@ -70,21 +70,21 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/mechanize-0.3.5[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-0.6.2[${PYTHON_USEDEP}]
 		>=dev-python/netifaces-0.10.5[${PYTHON_USEDEP}]
-		>=dev-python/pillow-3.2.0[truetype,${PYTHON_USEDEP}]
+		>=dev-python/pillow-3.2.0[jpeg,truetype,webp,zlib,${PYTHON_USEDEP}]
 		>=dev-python/psutil-4.3.0[${PYTHON_USEDEP}]
 		>=dev-python/pychm-0.8.6[${PYTHON_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 		dev-python/zeroconf[${PYTHON_USEDEP}]
-		>=dev-python/PyQt5-5.15.5_pre2107091435[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
+		>=dev-python/PyQt5-5.15.5_pre2107091435[gui,widgets,network,printsupport,svg,${PYTHON_USEDEP}]
 		>=dev-python/PyQtWebEngine-5.15.5_pre2108100905[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
 	')
 	dev-qt/qtimageformats:5
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
-	dev-qt/qtgui:5=[jpeg]
+	dev-qt/qtgui:5=[jpeg,png]
 	dev-qt/qtwidgets:5
 	dev-util/desktop-file-utils
 	dev-util/gtk-update-icon-cache
