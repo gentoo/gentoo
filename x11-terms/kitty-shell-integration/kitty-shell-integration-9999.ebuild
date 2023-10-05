@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,10 @@ EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
 LICENSE="GPL-3"
 SLOT="0"
 RESTRICT="test" # intended to be ran on the full kitty package
+
+PATCHES=(
+	"${FILESDIR}"/kitty-0.30.1-no-sudo.patch
+)
 
 src_compile() { :; }
 
