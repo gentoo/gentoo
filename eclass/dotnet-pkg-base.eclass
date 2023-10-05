@@ -305,35 +305,37 @@ dotnet-pkg-base_info() {
 }
 
 # @FUNCTION: dotnet-pkg-base_foreach-solution
-# @USAGE: <function> [directory]
+# @USAGE: <directory> <args> ...
 # @DESCRIPTION:
 # Execute a function for each solution file (.sln) in a specified directory.
 # This function may yield no real results because solutions are discovered
 # automatically.
 #
-# Optional "directory" argument defaults to the current directory path.
-#
-# Used by "dotnet-pkg_src_configure" from the "dotnet-pkg" eclass.
+# Used by "dotnet-pkg_src_configure" and "dotnet-pkg_src_test" from
+# the "dotnet-pkg" eclass.
 dotnet-pkg-base_foreach-solution() {
 	debug-print-function "${FUNCNAME[0]}" "${@}"
+
+	local directory="${1}"
+	shift
 
 	local dotnet_solution
 	local dotnet_solution_name
 	while read -r dotnet_solution ; do
 		dotnet_solution_name="$(basename "${dotnet_solution}")"
 
-		ebegin "Running \"${1}\" for solution: \"${dotnet_solution_name}\""
-		"${1}" "${dotnet_solution}"
+		ebegin "Running \"${@}\" for solution: \"${dotnet_solution_name}\""
+		"${@}" "${dotnet_solution}"
 		eend $? "${FUNCNAME[0]}: failed for solution: \"${dotnet_solution}\"" || die
-	done < <(find "${2:-.}" -maxdepth 1 -type f -name "*.sln")
+	done < <(find "${directory}" -maxdepth 1 -type f -name "*.sln")
 }
 
 # @FUNCTION: dotnet-pkg-base_restore
-# @USAGE: [directory] [args] ...
+# @USAGE: [args] ...
 # @DESCRIPTION:
-# Restore the package using "dotnet restore" in a specified directory.
-#
-# Optional "directory" argument defaults to the current directory path.
+# Restore the package using "dotnet restore".
+# Restore is performed in current directory unless a different directory is
+# passed via "args".
 #
 # Additionally any number of "args" maybe be given, they are appended to
 # the "dotnet" command invocation.
@@ -342,14 +344,6 @@ dotnet-pkg-base_foreach-solution() {
 dotnet-pkg-base_restore() {
 	debug-print-function "${FUNCNAME[0]}" "${@}"
 
-	local directory
-	if [[ "${1}" ]] ; then
-		directory="${1}"
-		shift
-	else
-		directory="$(pwd)"
-	fi
-
 	local -a restore_args=(
 		--runtime "${DOTNET_PKG_RUNTIME}"
 		--source "${NUGET_PACKAGES}"
@@ -357,7 +351,7 @@ dotnet-pkg-base_restore() {
 		"${@}"
 	)
 
-	edotnet restore "${restore_args[@]}" "${directory}"
+	edotnet restore "${restore_args[@]}"
 }
 
 # @FUNCTION: dotnet-pkg-base_restore_tools
@@ -388,11 +382,11 @@ dotnet-pkg-base_restore_tools() {
 }
 
 # @FUNCTION: dotnet-pkg-base_build
-# @USAGE: [directory] [args] ...
+# @USAGE: [args] ...
 # @DESCRIPTION:
 # Build the package using "dotnet build" in a specified directory.
-#
-# Optional "directory" argument defaults to the current directory path.
+# Build is performed in current directory unless a different directory is
+# passed via "args".
 #
 # Additionally any number of "args" maybe be given, they are appended to
 # the "dotnet" command invocation.
@@ -401,14 +395,6 @@ dotnet-pkg-base_restore_tools() {
 dotnet-pkg-base_build() {
 	debug-print-function "${FUNCNAME[0]}" "${@}"
 
-	local directory
-	if [[ "${1}" ]] ; then
-		directory="${1}"
-		shift
-	else
-		directory="$(pwd)"
-	fi
-
 	local -a build_args=(
 		--configuration "${DOTNET_PKG_CONFIGURATION}"
 		--no-restore
@@ -416,7 +402,6 @@ dotnet-pkg-base_build() {
 		--output "${DOTNET_PKG_OUTPUT}"
 		--runtime "${DOTNET_PKG_RUNTIME}"
 		-maxCpuCount:$(makeopts_jobs)
-		"${@}"
 	)
 
 	if ! use debug ; then
@@ -426,7 +411,12 @@ dotnet-pkg-base_build() {
 		)
 	fi
 
-	edotnet build "${build_args[@]}" "${directory}"
+	# And append "args" at the end.
+	build_args+=(
+		"${@}"
+	)
+
+	edotnet build "${build_args[@]}"
 }
 
 # @FUNCTION: dotnet-pkg-base_test

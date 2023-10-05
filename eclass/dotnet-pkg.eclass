@@ -194,7 +194,9 @@ dotnet-pkg_src_configure() {
 	dotnet-pkg_foreach-project \
 		dotnet-pkg-base_restore "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}"
 
-	dotnet-pkg-base_foreach-solution dotnet-pkg-base_restore "$(pwd)"
+	dotnet-pkg-base_foreach-solution \
+		"$(pwd)" \
+		dotnet-pkg-base_restore "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}"
 }
 
 # @FUNCTION: dotnet-pkg_src_compile
@@ -223,7 +225,7 @@ dotnet-pkg_src_compile() {
 # will execute wrong or incomplete test suite. Maintainers should inspect if
 # any and/or correct tests are ran.
 dotnet-pkg_src_test() {
-	dotnet-pkg-base_foreach-solution dotnet-pkg-base_test "$(pwd)"
+	dotnet-pkg-base_foreach-solution "$(pwd)" dotnet-pkg-base_test
 }
 
 # @FUNCTION: dotnet-pkg_src_install
