@@ -7,7 +7,6 @@
 		<remote-id type="github">zerotier/ZeroTierOne</remote-id>
 	</upstream>
 	<use>
-		<flag name="clang">Use Clang compiler instead of GCC</flag>
 		<flag name="sso">Enable support for Single sign-on through zeroidc</flag>
 	</use>
 </pkgmetadata>
