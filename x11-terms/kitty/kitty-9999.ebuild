@@ -77,6 +77,10 @@ BDEPEND="
 
 QA_FLAGS_IGNORED="usr/bin/kitten" # written in Go
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.30.1-no-sudo.patch
+)
+
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
@@ -130,7 +134,7 @@ src_compile() {
 		--disable-link-time-optimization
 		--ignore-compiler-warnings
 		--libdir-name=$(get_libdir)
-		--shell-integration="enabled no-rc"
+		--shell-integration="enabled no-rc no-sudo"
 		--update-check-interval=0
 		--verbose
 	)
