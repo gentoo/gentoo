@@ -95,6 +95,7 @@ _setup-allowed-flags() {
 		'-fno-stack-protector*' '-fabi-version=*'
 		-fno-strict-aliasing -fno-bounds-check -fno-bounds-checking -fstrict-overflow
 		-fno-omit-frame-pointer '-fno-builtin*'
+		-mno-omit-leaf-frame-pointer
 	)
 	ALLOWED_FLAGS+=(
 		'-mregparm=*' -mno-app-regs -mapp-regs -mno-mmx -mno-sse
