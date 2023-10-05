@@ -112,6 +112,9 @@ _nuget_set_nuget_uris() {
 
 		for nuget_api in "${NUGET_APIS[@]}" ; do
 			case ${nuget_api%/} in
+				*dev.gentoo.org/~* )
+					url="${nuget_api}/${name}.${version}.nupkg"
+					;;
 				*/v2 )
 					url="${nuget_api}/package/${name}/${version}
 							-> ${name}.${version}.nupkg"
