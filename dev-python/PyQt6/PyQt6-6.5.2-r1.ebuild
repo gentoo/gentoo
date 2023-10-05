@@ -81,6 +81,10 @@ BDEPEND="
 	dbus? ( virtual/pkgconfig )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-qt660.patch
+)
+
 src_prepare() {
 	default
 
