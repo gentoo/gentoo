@@ -25,9 +25,6 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'containers           >= 0.2     && < 0.6' 'containers           >= 0.2'
-}
+CABAL_CHDEPS=(
+	'containers           >= 0.2     && < 0.6' 'containers           >= 0.2'
+)
