@@ -134,6 +134,12 @@ _setup-allowed-flags() {
 		# binaries: bug #677852
 		-mstackrealign
 	)
+	ALLOWED_FLAGS+=(
+		# Clang-only
+		'--unwindlib=*'
+		'--rtlib=*'
+		'--stdlib=*'
+	)
 }
 
 # @FUNCTION: _filter-hardened
