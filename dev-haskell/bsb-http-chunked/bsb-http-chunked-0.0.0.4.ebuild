@@ -30,9 +30,6 @@ DEPEND="${RDEPEND}
 		dev-haskell/tasty-hunit )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'base >= 4.8 && < 4.13' 'base >= 4.8'
-}
+CABAL_CHDEPS=(
+	'base >= 4.8 && < 4.13' 'base >= 4.8'
+)
