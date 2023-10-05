@@ -64,7 +64,6 @@ dev-util/rr
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Packages with dubious sys-libs/glibc dependencies (non-binary) but
 # masking for now to allow musl profiles to graduate from exp->dev.
-dev-db/pgbouncer
 dev-libs/cgreen
 media-sound/xwax
 net-analyzer/gsad
