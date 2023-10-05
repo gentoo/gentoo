@@ -61,6 +61,7 @@ _setup-allowed-flags() {
 		-mindirect-branch-register
 		'-mfunction-return=*'
 		-mretpoline
+		'-mbranch-protection=*'
 
 		# Misc
 		-fno-unit-at-a-time -fno-strict-overflow
