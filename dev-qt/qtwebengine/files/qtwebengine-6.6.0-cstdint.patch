@@ -1,0 +1,16 @@
+Patch status: limbo, needs upstreaming
+
+Only manifests as an issue with gcc-13+musl which does not transitively
+include cstdint / stdint.h for the int32/64_t usage.
+--- a/src/3rdparty/chromium/gpu/config/gpu_driver_bug_workarounds.h
++++ b/src/3rdparty/chromium/gpu/config/gpu_driver_bug_workarounds.h
+@@ -7,2 +7,3 @@
+ 
++#include <cstdint>
+ #include <vector>
+--- a/src/3rdparty/chromium/third_party/webrtc/rtc_base/system/file_wrapper.h
++++ b/src/3rdparty/chromium/third_party/webrtc/rtc_base/system/file_wrapper.h
+@@ -16,2 +16,3 @@
+ 
++#include <cstdint>
+ #include <string>

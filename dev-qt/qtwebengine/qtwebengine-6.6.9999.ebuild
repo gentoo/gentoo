@@ -112,6 +112,7 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.6.0-cstdint.patch
 )
 
 python_check_deps() {
