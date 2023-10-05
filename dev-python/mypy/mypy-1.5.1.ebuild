@@ -40,9 +40,6 @@ BDEPEND="
 		>=dev-python/lxml-4.4.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-7.4.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-1.18[${PYTHON_USEDEP}]
-		>=dev-python/py-1.5.2[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
-		>=dev-python/virtualenv-16.0.0[${PYTHON_USEDEP}]
 	)
 "
 
