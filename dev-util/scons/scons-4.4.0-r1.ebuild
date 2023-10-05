@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 multiprocessing
@@ -60,7 +60,8 @@ src_unpack() {
 		mkdir -p "${P}"/src || die
 	fi
 
-	tar -C "${P}"/src --strip-components=1 -xzf "${DISTDIR}/${MY_P}.tar.gz" || die
+	tar -C "${P}"/src --strip-components=1 --no-same-owner \
+		-xzf "${DISTDIR}/${MY_P}.tar.gz" || die
 }
 
 src_prepare() {
