@@ -1,0 +1,11 @@
+--- a/mic-paren.el
++++ b/mic-paren.el
+@@ -332,6 +332,8 @@
+ (defvar mic-paren-version "3.15"
+   "Version of mic-paren.")
+ 
++(require 'cl-lib)
++
+ ;;; ======================================================================
+ ;; Compatibility stuff
+ ;; BLOB to make custom stuff work even without customize
