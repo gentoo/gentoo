@@ -29,11 +29,8 @@ DEPEND="${RDEPEND}
 "
 
 # https://hackage.haskell.org/package/http-media-0.8.0.0/revisions/
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'base             >= 4.7  && < 4.13' 'base             >= 4.8' \
-		'base                       >= 4.7  && < 4.13' 'base >= 4.7' \
-		'QuickCheck                 >= 2.8  && < 2.14' 'QuickCheck >= 2.8'
-}
+CABAL_CHDEPS=(
+	'base             >= 4.7  && < 4.13' 'base             >= 4.8'
+	'base                       >= 4.7  && < 4.13' 'base >= 4.7'
+	'QuickCheck                 >= 2.8  && < 2.14' 'QuickCheck >= 2.8'
+)
