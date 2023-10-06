@@ -37,12 +37,9 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'Cabal >= 1.8 && < 3.3' 'Cabal >= 1.8'
-}
+CABAL_CHDEPS=(
+	'Cabal >= 1.8 && < 3.3' 'Cabal >= 1.8'
+)
 
 src_configure() {
 	haskell-cabal_src_configure \
