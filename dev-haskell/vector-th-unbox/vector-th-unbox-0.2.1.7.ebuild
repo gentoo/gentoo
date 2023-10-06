@@ -25,10 +25,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-haskell/data-default )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'base >= 4.5 && < 4.14' 'base >= 4.5' \
-		'template-haskell >= 2.5 && <2.16' 'template-haskell >= 2.5'
-}
+CABAL_CHDEPS=(
+	'base >= 4.5 && < 4.14' 'base >= 4.5'
+	'template-haskell >= 2.5 && <2.16' 'template-haskell >= 2.5'
+)
