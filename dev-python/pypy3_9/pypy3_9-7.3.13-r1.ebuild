@@ -123,7 +123,7 @@ src_compile() {
 	cffi_targets=(
 		pypy_util blake2/_blake2 sha3/_sha3 ssl
 		audioop syslog pwdgrp resource lzma posixshmem
-		testmultiphase
+		ctypes_test testmultiphase
 	)
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
@@ -138,6 +138,8 @@ src_compile() {
 		# tkinter doesn't work via -m
 		../pypy${PYVER}-c "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
 	done
+	# testcapi does not have a "build" script
+	../pypy${PYVER}-c -c "import _testcapi" || die
 
 	# Verify that CFFI module list is up-to-date
 	local expected_cksum=63d4659f
@@ -154,7 +156,7 @@ src_compile() {
 	fi
 
 	# Cleanup temporary objects
-	find -name "*_cffi.[co]" -delete || die
+	find \( -name "*_cffi.c" -o -name '*.o' \) -delete || die
 	find -type d -empty -delete || die
 }
 
