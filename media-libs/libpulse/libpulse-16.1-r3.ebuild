@@ -77,6 +77,8 @@ DOCS=( NEWS README )
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.1-memfd-cleanup.patch
 	"${FILESDIR}"/pulseaudio-16.1-proplist-util-without-gdkx.patch
+	"${FILESDIR}"/pulseaudio-16.1-smoother-start-paused.patch
+	"${FILESDIR}"/pulseaudio-16.1-smoother-time-calculation.patch
 )
 
 src_prepare() {
