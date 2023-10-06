@@ -25,7 +25,7 @@ S=${WORKDIR}/${P/_/}
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
