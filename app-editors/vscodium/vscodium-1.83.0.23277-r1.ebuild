@@ -49,19 +49,23 @@ IUSE="kerberos"
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret[crypt]
+	app-i18n/ibus
+	app-misc/ca-certificates
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
+	media-libs/libcanberra[gtk3]
+	media-libs/libglvnd
 	media-libs/mesa
-	net-print/cups
-	sys-apps/util-linux
-	sys-apps/dbus
+	net-misc/curl
+	sys-libs/zlib
+	sys-process/lsof
 	x11-libs/cairo
-	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/libdrm
+	x11-libs/libnotify
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXcomposite
@@ -71,8 +75,9 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/libxkbfile
 	x11-libs/libXrandr
-	x11-libs/libxshmfence
+	x11-libs/libXScrnSaver
 	x11-libs/pango
+	x11-misc/xdg-utils
 	kerberos? ( app-crypt/mit-krb5 )
 "
 
