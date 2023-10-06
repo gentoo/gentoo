@@ -42,21 +42,9 @@ DEPEND="${RDEPEND}
 		dev-haskell/tasty-hunit
 		dev-haskell/tasty-quickcheck )
 "
-BDEPEND="app-text/dos2unix"
-
-src_prepare() {
-	# pull revised cabal from upstream
-	cp "${DISTDIR}/${CABAL_DISTFILE}" "${CABAL_FILE}" || die
-
-	# Convert to unix line endings
-	dos2unix "${CABAL_FILE}" || die
-
-	# Apply patches *after* pulling the revised cabal
-	default
-
-	cabal_chdeps \
-		'doctest   >=0.15 && <0.19' 'doctest >=0.15'
-}
+CABAL_CHDEPS=(
+	'doctest   >=0.15 && <0.19' 'doctest >=0.15'
+)
 
 src_configure() {
 	haskell-cabal_src_configure \
