@@ -28,13 +28,10 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'QuickCheck            >= 2.4    && < 2.13' 'QuickCheck            >= 2.4' \
-		'random                >= 1      && < 1.2' 'random                >= 1'
-}
+CABAL_CHDEPS=(
+	'QuickCheck            >= 2.4    && < 2.13' 'QuickCheck            >= 2.4' \
+	'random                >= 1      && < 1.2' 'random                >= 1'
+)
 
 src_configure() {
 	haskell-cabal_src_configure \
