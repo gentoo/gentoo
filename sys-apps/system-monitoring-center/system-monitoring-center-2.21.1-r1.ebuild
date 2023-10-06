@@ -35,9 +35,15 @@ RDEPEND="
 	')
 "
 
+src_prepare() {
+	sed -i "s|@PYTHON@|${PYTHON}|" "${S}/src/${PN}.in" || die
+
+	default
+}
+
 src_install() {
 	meson_src_install
-	python_optimize "${ED}"/usr/share/${PN}
+	python_optimize "${ED}/usr/share/${PN}"
 
-	mv "${ED}"/usr/share/appdata "${ED}"/usr/share/metainfo || die
+	mv "${ED}/usr/share/appdata" "${ED}/usr/share/metainfo" || die
 }
