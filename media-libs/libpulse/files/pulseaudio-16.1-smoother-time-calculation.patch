@@ -1,0 +1,27 @@
+commit c3eae5d00cb79bd897049483126e75bb48a69cd1
+Author: flyingOwl <ofenfisch@googlemail.com>
+Date:   Fri Dec 30 00:16:03 2022 +0100
+
+    time-smoother-2: Fix time calculation by comparing timestamps
+    
+    This fixes the rare case of resume_time being bigger than time_stamp. Which
+    happens sometimes when a gstreamer client is quickly seeking through a
+    media file. The resulting integer underflow then causes a huge value in
+    current_time which will break the playback.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/764>
+
+diff --git a/src/pulsecore/time-smoother_2.c b/src/pulsecore/time-smoother_2.c
+index ea7ec1b36..46cc5e9cc 100644
+--- a/src/pulsecore/time-smoother_2.c
++++ b/src/pulsecore/time-smoother_2.c
+@@ -307,7 +307,8 @@ pa_usec_t pa_smoother_2_get(pa_smoother_2 *s, pa_usec_t time_stamp) {
+     /* If we are initializing, add the time since resume to the card time at pause_time */
+     else if (s->init) {
+         current_time += (s->pause_time - s->start_time - s->time_offset - s->fixup_time) * s->time_factor;
+-        current_time += (time_stamp - s->resume_time) * s->time_factor;
++        if (time_stamp > s->resume_time)
++            current_time += (time_stamp - s->resume_time) * s->time_factor;
+ 
+     /* Smoother is running, calculate current sound card time */
+     } else
