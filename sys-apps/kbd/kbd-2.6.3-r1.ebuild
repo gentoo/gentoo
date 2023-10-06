@@ -42,7 +42,9 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-loadkeys )
 "
+# autoconf-archive for F_S patch
 BDEPEND="
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	test? ( dev-libs/check )
 "
