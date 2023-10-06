@@ -198,16 +198,20 @@ src_compile() {
 
 src_test() {
 	# Skipped tests:
-	# - 7z (unpackaged Python dependency: py7zr)
-	# - test_unrar (unpackaged Python dependency: unrardll)
-	#
 	# Note that we currently have a hack to skip one part of test_qt!
 	# See PATCHES for more.
-	${PYTHON} setup.py test \
-			--exclude-test-name 7z \
-			--exclude-test-name test_mem_leaks \
-			--exclude-test-name test_searching \
-			--exclude-test-name test_unrar || die
+	local _test_excludes=(
+		# unpackaged Python dependency: py7zr
+		7z
+		# unpackaged Python dependency: unrardll
+		test_unrar
+
+		# undocumented reasons
+		test_mem_leaks
+		test_searching
+	)
+
+	${PYTHON} setup.py test "${_test_excludes[@]/#/--exclude-test-name=}" || die
 }
 
 src_install() {
