@@ -66,7 +66,7 @@ BDEPEND="
 PDEPEND="
 	|| (
 		media-video/pipewire[sound-server(+)]
-		media-sound/pulseaudio-daemon
+		>=media-sound/pulseaudio-daemon-16.1-r8
 		media-sound/pulseaudio[daemon(+)]
 	)
 "
@@ -79,6 +79,8 @@ PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.1-proplist-util-without-gdkx.patch
 	"${FILESDIR}"/pulseaudio-16.1-smoother-start-paused.patch
 	"${FILESDIR}"/pulseaudio-16.1-smoother-time-calculation.patch
+	"${FILESDIR}"/pulseaudio-16.1-fix-memblock-alignment.patch
+	"${FILESDIR}"/pulseaudio-16.1-add-more-standard-samplerates.patch
 )
 
 src_prepare() {

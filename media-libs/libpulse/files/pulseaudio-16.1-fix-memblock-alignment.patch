@@ -1,0 +1,122 @@
+commit 300db779224625144d6279d230c2daa857c967d8
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Thu Feb 9 13:28:29 2023 +0300
+
+    pstream: Pass frame size to keep split memblock parts aligned
+    
+    `pa_pstream_send_memblock()` would split incoming memblock into parts not
+    exceeding maximum pool block size.
+    
+    To make sure split parts of memblock are still frame-aligned add new `align` arg
+    to `pa_pstream_send_memblock`, find out required alignment from stream sample
+    format and pass it there. Bump default alignment to 256 which is good up to
+    32bit 64ch frames.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/780>
+
+diff --git a/src/modules/module-tunnel.c b/src/modules/module-tunnel.c
+index 61f427bd3..ab094ba4e 100644
+--- a/src/modules/module-tunnel.c
++++ b/src/modules/module-tunnel.c
+@@ -676,7 +676,7 @@ static int sink_process_msg(pa_msgobject *o, int code, void *data, int64_t offse
+              * IO thread context where the rest of the messages are
+              * dispatched. Yeah, ugly, but I am a lazy bastard. */
+ 
+-            pa_pstream_send_memblock(u->pstream, u->channel, 0, PA_SEEK_RELATIVE, chunk);
++            pa_pstream_send_memblock(u->pstream, u->channel, 0, PA_SEEK_RELATIVE, chunk, pa_frame_size(&u->sink->sample_spec));
+ 
+             u->receive_counter += chunk->length;
+ 
+diff --git a/src/pulse/stream.c b/src/pulse/stream.c
+index 0aa627396..3585b27e8 100644
+--- a/src/pulse/stream.c
++++ b/src/pulse/stream.c
+@@ -1535,7 +1535,7 @@ int pa_stream_write_ext_free(
+         s->write_memblock = NULL;
+         s->write_data = NULL;
+ 
+-        pa_pstream_send_memblock(s->context->pstream, s->channel, offset, seek, &chunk);
++        pa_pstream_send_memblock(s->context->pstream, s->channel, offset, seek, &chunk, pa_frame_size(&s->sample_spec));
+         pa_memblock_unref(chunk.memblock);
+ 
+     } else {
+@@ -1569,7 +1569,7 @@ int pa_stream_write_ext_free(
+                 pa_memblock_release(chunk.memblock);
+             }
+ 
+-            pa_pstream_send_memblock(s->context->pstream, s->channel, t_offset, t_seek, &chunk);
++            pa_pstream_send_memblock(s->context->pstream, s->channel, t_offset, t_seek, &chunk, pa_frame_size(&s->sample_spec));
+ 
+             t_offset = 0;
+             t_seek = PA_SEEK_RELATIVE;
+diff --git a/src/pulsecore/protocol-native.c b/src/pulsecore/protocol-native.c
+index 672182fbc..1342dee10 100644
+--- a/src/pulsecore/protocol-native.c
++++ b/src/pulsecore/protocol-native.c
+@@ -1260,7 +1260,7 @@ static void native_connection_send_memblock(pa_native_connection *c) {
+             if (schunk.length > r->buffer_attr.fragsize)
+                 schunk.length = r->buffer_attr.fragsize;
+ 
+-            pa_pstream_send_memblock(c->pstream, r->index, 0, PA_SEEK_RELATIVE, &schunk);
++            pa_pstream_send_memblock(c->pstream, r->index, 0, PA_SEEK_RELATIVE, &schunk, pa_memblockq_get_base(r->memblockq));
+ 
+             pa_memblockq_drop(r->memblockq, schunk.length);
+             pa_memblock_unref(schunk.memblock);
+@@ -2535,7 +2535,7 @@ static void setup_srbchannel(pa_native_connection *c, pa_mem_type_t shm_type) {
+     mc.memblock = srbt.memblock;
+     mc.index = 0;
+     mc.length = pa_memblock_get_length(srbt.memblock);
+-    pa_pstream_send_memblock(c->pstream, 0, 0, 0, &mc);
++    pa_pstream_send_memblock(c->pstream, 0, 0, 0, &mc, 0);
+ 
+     c->srbpending = srb;
+     return;
+diff --git a/src/pulsecore/pstream.c b/src/pulsecore/pstream.c
+index 7147b776a..ff62f464b 100644
+--- a/src/pulsecore/pstream.c
++++ b/src/pulsecore/pstream.c
+@@ -82,6 +82,10 @@ typedef uint32_t pa_pstream_descriptor[PA_PSTREAM_DESCRIPTOR_MAX];
+  */
+ #define FRAME_SIZE_MAX_ALLOW (1024*1024*16)
+ 
++/* Default memblock alignment used with pa_pstream_send_memblock()
++ */
++#define DEFAULT_PSTREAM_MEMBLOCK_ALIGN (256)
++
+ PA_STATIC_FLIST_DECLARE(items, 0, pa_xfree);
+ 
+ struct item_info {
+@@ -475,7 +479,7 @@ void pa_pstream_send_packet(pa_pstream*p, pa_packet *packet, pa_cmsg_ancil_data
+     p->mainloop->defer_enable(p->defer_event, 1);
+ }
+ 
+-void pa_pstream_send_memblock(pa_pstream*p, uint32_t channel, int64_t offset, pa_seek_mode_t seek_mode, const pa_memchunk *chunk) {
++void pa_pstream_send_memblock(pa_pstream*p, uint32_t channel, int64_t offset, pa_seek_mode_t seek_mode, const pa_memchunk *chunk, size_t align) {
+     size_t length, idx;
+     size_t bsm;
+ 
+@@ -492,6 +496,11 @@ void pa_pstream_send_memblock(pa_pstream*p, uint32_t channel, int64_t offset, pa
+ 
+     bsm = pa_mempool_block_size_max(p->mempool);
+ 
++    if (align == 0)
++        align = DEFAULT_PSTREAM_MEMBLOCK_ALIGN;
++
++    bsm = (bsm / align) * align;
++
+     while (length > 0) {
+         struct item_info *i;
+         size_t n;
+diff --git a/src/pulsecore/pstream.h b/src/pulsecore/pstream.h
+index 2bff270ad..88bdca4cc 100644
+--- a/src/pulsecore/pstream.h
++++ b/src/pulsecore/pstream.h
+@@ -51,7 +51,7 @@ void pa_pstream_unlink(pa_pstream *p);
+ int pa_pstream_attach_memfd_shmid(pa_pstream *p, unsigned shm_id, int memfd_fd);
+ 
+ void pa_pstream_send_packet(pa_pstream*p, pa_packet *packet, pa_cmsg_ancil_data *ancil_data);
+-void pa_pstream_send_memblock(pa_pstream*p, uint32_t channel, int64_t offset, pa_seek_mode_t seek, const pa_memchunk *chunk);
++void pa_pstream_send_memblock(pa_pstream*p, uint32_t channel, int64_t offset, pa_seek_mode_t seek, const pa_memchunk *chunk, size_t align);
+ void pa_pstream_send_release(pa_pstream *p, uint32_t block_id);
+ void pa_pstream_send_revoke(pa_pstream *p, uint32_t block_id);
+ 
