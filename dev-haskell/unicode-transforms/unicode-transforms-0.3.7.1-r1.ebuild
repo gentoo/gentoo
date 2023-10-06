@@ -29,12 +29,9 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/split-0.1 <dev-haskell/split-0.3 )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'ghc-prim >= 0.2 && < 0.7' 'ghc-prim >= 0.2'
-}
+CABAL_CHDEPS=(
+	'ghc-prim >= 0.2 && < 0.7' 'ghc-prim >= 0.2'
+)
 
 src_configure() {
 	haskell-cabal_src_configure \
