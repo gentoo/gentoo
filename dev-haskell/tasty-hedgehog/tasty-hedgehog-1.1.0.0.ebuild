@@ -26,10 +26,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-haskell/tasty-expected-failure-0.11 <dev-haskell/tasty-expected-failure-0.13 )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'base >= 4.8 && <4.16' 'base >= 4.8' \
-		'hedgehog >= 1.0.2 && < 1.0.6' 'hedgehog >= 1.0.2'
-}
+CABAL_CHDEPS=(
+	'base >= 4.8 && <4.16' 'base >= 4.8'
+	'hedgehog >= 1.0.2 && < 1.0.6' 'hedgehog >= 1.0.2'
+)
