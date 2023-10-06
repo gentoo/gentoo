@@ -1,0 +1,11 @@
+--- a/src/Makefile.sub
++++ b/src/Makefile.sub
+@@ -46,7 +46,7 @@ install: install-bin
+ 
+ install-bin: $(HTP)
+ 	mkdir -p $(bindir)
+-	$(INSTALL) -s $(HTP) $(bindir)
++	$(INSTALL) $(HTP) $(bindir)
+ 
+ #
+ # explicit dependency: final executable
