@@ -24,9 +24,6 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'network >= 3.0.0.0 && < 3.0.1' 'network >= 3.0.0.0'
-}
+CABAL_CHDEPS=(
+	'network >= 3.0.0.0 && < 3.0.1' 'network >= 3.0.0.0'
+)
