@@ -23,9 +23,6 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'base >=4.5 && <4.12' 'base >=4.5'
-}
+CABAL_CHDEPS=(
+	'base >=4.5 && <4.12' 'base >=4.5'
+)
