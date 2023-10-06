@@ -29,9 +29,6 @@ RDEPEND="
 # https://bugs.gentoo.org/show_bug.cgi?id=561038 docutils is needed for sphinx
 # exceptions... https://bugs.gentoo.org/show_bug.cgi?id=603848 stestr is run as
 # external tool.
-#
-# <dev-python/sphinx-7 is required because of removed build_sphinx hook in
-# setup.py, see https://bugs.launchpad.net/pbr/+bug/2018453
 BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
@@ -39,7 +36,6 @@ BDEPEND="
 			>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 			>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 			>=dev-python/six-1.12.0[${PYTHON_USEDEP}]
-			<dev-python/sphinx-7[${PYTHON_USEDEP}]
 			>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
 			>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 			>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
@@ -51,6 +47,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-importlib-suffixes.patch"
+	"${FILESDIR}/${P}-sphinx-tests.patch"
 )
 
 distutils_enable_tests unittest
