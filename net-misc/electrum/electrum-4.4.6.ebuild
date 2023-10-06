@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cli ncurses qrcode +qt5"
 REQUIRED_USE="|| ( cli ncurses qt5 )"
 
