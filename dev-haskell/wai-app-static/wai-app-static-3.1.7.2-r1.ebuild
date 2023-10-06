@@ -44,12 +44,9 @@ DEPEND="${RDEPEND}
 		dev-haskell/temporary )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'wai-extra                 >= 3.0      && < 3.1' 'wai-extra                 >= 3.0'
-}
+CABAL_CHDEPS=(
+	'wai-extra                 >= 3.0      && < 3.1' 'wai-extra                 >= 3.0'
+)
 
 src_configure() {
 	haskell-cabal_src_configure \
