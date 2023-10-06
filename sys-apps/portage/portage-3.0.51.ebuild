@@ -31,8 +31,11 @@ RESTRICT="!test? ( test )"
 
 # setuptools is still needed as a workaround for Python 3.12+ for now.
 # https://github.com/mesonbuild/meson/issues/7702
+#
+# >=meson-1.2.1-r1 for bug #912051
 BDEPEND="
 	${PYTHON_DEPS}
+	>=dev-util/meson-1.2.1-r1
 	$(python_gen_cond_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	' python3_12)
