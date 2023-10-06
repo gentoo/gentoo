@@ -228,6 +228,9 @@ src_install() {
 
 	addpredict /dev/dri #665310
 
+	# If this directory doesn't exist, zsh completion won't install
+	dodir /usr/share/zsh/site-functions
+
 	"${PYTHON}" setup.py install \
 		--staging-root="${ED}/usr" \
 		--prefix="${EPREFIX}/usr" \
