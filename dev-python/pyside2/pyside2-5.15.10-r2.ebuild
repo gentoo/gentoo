@@ -113,7 +113,11 @@ RDEPEND="${PYTHON_DEPS}
 	svg? ( =dev-qt/qtsvg-${QT_PV} )
 	testlib? ( =dev-qt/qttest-${QT_PV} )
 	webchannel? ( =dev-qt/qtwebchannel-${QT_PV}[qml] )
-	webengine? ( =dev-qt/qtwebengine-${QT_PV}[alsa,widgets?] )
+	webengine? ( || (
+		=dev-qt/qtwebengine-${QT_PV}[alsa,widgets?]
+		=dev-qt/qtwebengine-${QT_PV}[pulseaudio,widgets?]
+		)
+	)
 	websockets? ( =dev-qt/qtwebsockets-${QT_PV}[qml?] )
 	widgets? ( =dev-qt/qtwidgets-${QT_PV}[gles2-only=] )
 	x11extras? ( =dev-qt/qtx11extras-${QT_PV} )
