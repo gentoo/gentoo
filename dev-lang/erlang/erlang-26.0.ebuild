@@ -38,8 +38,15 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 "
+
+# libei.so (from dev-libs/libei) conflicts with libei.a from
+# erl_interface. Causes build faiure. Erlang build system needs to be
+# patched to prefer its own libei instead of system libei. Installed
+# into /usr/lib/erlang so no conflict following installation. Bug
+# #912888.
 DEPEND="${RDEPEND}
 	dev-lang/perl
+	!!dev-libs/libei
 "
 
 S="${WORKDIR}/otp-OTP-${PV}"
