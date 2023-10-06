@@ -29,9 +29,6 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'hashable               >= 1.1.2.1  && < 1.3' 'hashable >= 1.1.2.1'
-}
+CABAL_CHDEPS=(
+	'hashable               >= 1.1.2.1  && < 1.3' 'hashable >= 1.1.2.1'
+)
