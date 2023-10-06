@@ -26,8 +26,6 @@ DEPEND="${RDEPEND}
 # it's not quite true, but there was no major releases
 CABAL_CORE_LIB_GHC_PV="6.12.* 7.0.* 7.2.* 7.4.* 7.6.* 7.8.*"
 
-src_prepare() {
-	default
-	cabal_chdeps \
-		'base >= 4.2 && < 4.9' 'base >= 4.2'
-}
+CABAL_CHDEPS=(
+	'base >= 4.2 && < 4.9' 'base >= 4.2'
+)
