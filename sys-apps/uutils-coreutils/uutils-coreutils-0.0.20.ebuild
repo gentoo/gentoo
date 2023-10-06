@@ -350,7 +350,7 @@ src_compile() {
 
 		# pinky, uptime, users, and who require utmpx (not available on musl)
 		# bug #832868
-		SKIP_PROGS="$(usev elibc_musl "pinky uptime users who")"
+		SKIP_UTILS="$(usev elibc_musl "pinky uptime users who")"
 	)
 
 	emake "${makeargs[@]}"
