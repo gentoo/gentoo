@@ -7,7 +7,7 @@
   <use>
     <flag name="kmod">enable module loading through libkmod</flag>
     <flag name="rule-generator">install legacy rule generator rules and support scripts - note
-    that the functionality within was dropped from <pkg>sys-fs/udev</pkg> as it is not stable in
+    that the functionality within was dropped from <pkg>sys-apps/systemd-utils</pkg> as it is not stable in
     all cases; use at your own risk</flag>
   </use>
   <upstream>
