@@ -26,10 +26,7 @@ DEPEND="${RDEPEND}
 		dev-haskell/void )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'base >= 4.7 && < 4.11' 'base >= 4.7' \
-		'exceptions >= 0.8 && < 0.9' 'exceptions >= 0.8'
-}
+CABAL_CHDEPS=(
+	'base >= 4.7 && < 4.11' 'base >= 4.7'
+	'exceptions >= 0.8 && < 0.9' 'exceptions >= 0.8'
+)
