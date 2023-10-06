@@ -89,10 +89,6 @@ app-admin/clustershell
 app-shells/pdsh
 net-analyzer/ipcad
 
-# Sam James <sam@gentoo.org> (2022-09-17)
-# Fails to compile on musl: bug #832868
-sys-apps/uutils-coreutils
-
 # Sam James <sam@gentoo.org> (2022-09-12)
 # libxcrypt migration masks.
 # 1. The libxcrypt migration is optional for musl, so unmask -virtual/libcrypt:0/1.
