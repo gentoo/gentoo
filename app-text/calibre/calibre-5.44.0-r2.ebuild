@@ -237,6 +237,8 @@ src_install() {
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--staging-libdir="${ED}/usr/$(get_libdir)" || die
 
+	cp -r man-pages/ "${ED}"/usr/share/man || die
+
 	find "${ED}"/usr/share -type d -empty -delete || die
 
 	einfo "Converting python shebangs"
