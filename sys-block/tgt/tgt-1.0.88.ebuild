@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fujita/tgt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
-IUSE="fcoe fcp ibmvio infiniband rbd selinux"
+IUSE="infiniband rbd selinux"
 
 DEPEND="
 	app-text/docbook-xsl-stylesheets
@@ -41,10 +41,7 @@ src_prepare() {
 
 src_compile() {
 	local myconf
-	use ibmvio && myconf="${myconf} IBMVIO=1"
 	use infiniband && myconf="${myconf} ISCSI_RDMA=1"
-	use fcp && myconf="${myconf} FCP=1"
-	use fcoe && myconf="${myconf} FCOE=1"
 	use rbd && myconf="${myconf} CEPH_RBD=1"
 
 	emake -C usr/ KERNELSRC="${KERNEL_DIR}" ISCSI=1 ${myconf}
