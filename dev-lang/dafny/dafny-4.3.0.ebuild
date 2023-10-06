@@ -430,6 +430,15 @@ DOCS=(
 )
 
 pkg_setup() {
+	# Clean the environment.
+	unset NPM_CONFIG_USERCONFIG
+
+	if [[ -n "${_JAVA_OPTIONS}" ]] ; then
+		ewarn "Cleaning _JAVA_OPTIONS because when set compile and test may fail"
+
+		unset _JAVA_OPTIONS
+	fi
+
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
 	java-pkg-2_pkg_setup
@@ -449,10 +458,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Clean the environment.
-	unset NPM_CONFIG_USERCONFIG
-	unset _JAVA_OPTIONS
-
 	# Remove bad tests (recursive).
 	local -a bad_tests
 	bad_tests=(
