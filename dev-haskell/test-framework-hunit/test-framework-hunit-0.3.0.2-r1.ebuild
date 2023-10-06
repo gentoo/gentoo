@@ -27,12 +27,9 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'HUnit >= 1.2 && < 1.4' 'HUnit >= 1.2'
-}
+CABAL_CHDEPS=(
+	'HUnit >= 1.2 && < 1.4' 'HUnit >= 1.2'
+)
 
 src_configure() {
 	haskell-cabal_src_configure \
