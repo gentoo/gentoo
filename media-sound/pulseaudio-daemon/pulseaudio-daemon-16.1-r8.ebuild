@@ -167,6 +167,7 @@ PATCHES=(
 	# alignment fix changes internal abi, added requirement matching >=media-libs/libpulse-16.1-r3
 	"${FILESDIR}"/pulseaudio-16.1-fix-memblock-alignment.patch
 	"${FILESDIR}"/pulseaudio-16.1-add-more-standard-samplerates.patch
+	"${FILESDIR}"/pulseaudio-16.1-fix-resampler-oversized-memblock.patch
 )
 
 src_prepare() {
