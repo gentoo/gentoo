@@ -86,6 +86,13 @@ src_prepare() {
 			ApiExtractor/clangparser/compilersupport.cpp || die
 	fi
 
+	local clangver="$(CPP=clang clang-major-version)"
+
+	# Clang 15 and older used the full version as a directory name.
+	if [[ ${clangver} -lt 16 ]]; then
+		clangver="$(CPP=clang clang-fullversion)"
+	fi
+
 	# Shiboken2 assumes the "/usr/lib/clang/${CLANG_NEWEST_VERSION}/include/"
 	# subdirectory provides Clang builtin includes (e.g., "stddef.h") for the
 	# currently installed version of Clang, where ${CLANG_NEWEST_VERSION} is
@@ -101,7 +108,7 @@ src_prepare() {
 	# PySide2 does *NOT* care whether the end user has done so or not, as
 	# PySide2 unconditionally requires Clang in either case. See also:
 	#     https://bugs.gentoo.org/619490
-	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'$(CPP=clang clang-fullversion)'/include"))~' \
+	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'"${clangver}"'/include"))~' \
 		ApiExtractor/clangparser/compilersupport.cpp || die
 
 	cmake_src_prepare
