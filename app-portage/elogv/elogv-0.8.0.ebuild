@@ -13,7 +13,7 @@ DESCRIPTION="Curses based utility to parse the contents of elogs created by Port
 HOMEPAGE="https://gitweb.gentoo.org/proj/elogv.git/"
 SRC_URI="https://github.com/gentoo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 PLOCALES=( "de" "es" "it" "pl" )
