@@ -168,6 +168,7 @@ PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.1-fix-memblock-alignment.patch
 	"${FILESDIR}"/pulseaudio-16.1-add-more-standard-samplerates.patch
 	"${FILESDIR}"/pulseaudio-16.1-fix-resampler-oversized-memblock.patch
+	"${FILESDIR}"/pulseaudio-16.1-fix-uac2-broken-avoid-resampling.patch
 )
 
 src_prepare() {

@@ -1,0 +1,382 @@
+commit aed52c507f345d0b5c4cd2b1d2c58dae2d904b53
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Wed Feb 22 01:19:24 2023 +0300
+
+    alsa-util: Perform format and rate detection before setting HW params
+    
+    Perform detection of supported sample format and rates just after device is
+    opened, before `snd_pcm_hw_params()` is called for the first time. This fixes a
+    problem where device restricts available sample rates after HW params are set
+    preventing sample rate detection (seen with UAC2 devices and kernel 6.1.9)
+    
+    Bug: https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/issues/1414
+    Bug: https://github.com/alsa-project/alsa-lib/issues/119
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/782>
+
+diff --git a/src/modules/alsa/alsa-mixer.c b/src/modules/alsa/alsa-mixer.c
+index 49c39687c..c272e392b 100644
+--- a/src/modules/alsa/alsa-mixer.c
++++ b/src/modules/alsa/alsa-mixer.c
+@@ -5074,7 +5074,7 @@ static snd_pcm_t* mapping_open_pcm(pa_alsa_mapping *m,
+     handle = pa_alsa_open_by_template(
+                               m->device_strings, dev_id, NULL, &try_ss,
+                               &try_map, mode, &try_period_size,
+-                              &try_buffer_size, 0, NULL, NULL, exact_channels);
++                              &try_buffer_size, 0, NULL, NULL, NULL, NULL, exact_channels);
+     if (handle && !exact_channels && m->channel_map.channels != try_map.channels) {
+         char buf[PA_CHANNEL_MAP_SNPRINT_MAX];
+         pa_log_debug("Channel map for mapping '%s' permanently changed to '%s'", m->name,
+diff --git a/src/modules/alsa/alsa-sink.c b/src/modules/alsa/alsa-sink.c
+index b249df680..ca22f195f 100644
+--- a/src/modules/alsa/alsa-sink.c
++++ b/src/modules/alsa/alsa-sink.c
+@@ -2527,7 +2527,9 @@ pa_sink *pa_alsa_sink_new(pa_module *m, pa_modargs *ma, const char*driver, pa_ca
+                       &ss, &map,
+                       SND_PCM_STREAM_PLAYBACK,
+                       &period_frames, &buffer_frames, tsched_frames,
+-                      &b, &d, mapping)))
++                      &b, &d,
++                      &u->supported_formats, &u->supported_rates,
++                      mapping)))
+             goto fail;
+ 
+     } else if ((dev_id = pa_modargs_get_value(ma, "device_id", NULL))) {
+@@ -2541,7 +2543,9 @@ pa_sink *pa_alsa_sink_new(pa_module *m, pa_modargs *ma, const char*driver, pa_ca
+                       &ss, &map,
+                       SND_PCM_STREAM_PLAYBACK,
+                       &period_frames, &buffer_frames, tsched_frames,
+-                      &b, &d, profile_set, &mapping)))
++                      &b, &d,
++                      &u->supported_formats, &u->supported_rates,
++                      profile_set, &mapping)))
+             goto fail;
+ 
+     } else {
+@@ -2552,7 +2556,9 @@ pa_sink *pa_alsa_sink_new(pa_module *m, pa_modargs *ma, const char*driver, pa_ca
+                       &ss, &map,
+                       SND_PCM_STREAM_PLAYBACK,
+                       &period_frames, &buffer_frames, tsched_frames,
+-                      &b, &d, false)))
++                      &b, &d,
++                      &u->supported_formats, &u->supported_rates,
++                      false)))
+             goto fail;
+     }
+ 
+@@ -2598,13 +2604,11 @@ pa_sink *pa_alsa_sink_new(pa_module *m, pa_modargs *ma, const char*driver, pa_ca
+ 
+     u->verified_sample_spec = ss;
+ 
+-    u->supported_formats = pa_alsa_get_supported_formats(u->pcm_handle, ss.format);
+     if (!u->supported_formats) {
+         pa_log_error("Failed to find any supported sample formats.");
+         goto fail;
+     }
+ 
+-    u->supported_rates = pa_alsa_get_supported_rates(u->pcm_handle, ss.rate);
+     if (!u->supported_rates) {
+         pa_log_error("Failed to find any supported sample rates.");
+         goto fail;
+diff --git a/src/modules/alsa/alsa-source.c b/src/modules/alsa/alsa-source.c
+index ef8b12c32..d88c47f1f 100644
+--- a/src/modules/alsa/alsa-source.c
++++ b/src/modules/alsa/alsa-source.c
+@@ -2218,7 +2218,7 @@ pa_source *pa_alsa_source_new(pa_module *m, pa_modargs *ma, const char*driver, p
+                       &ss, &map,
+                       SND_PCM_STREAM_CAPTURE,
+                       &period_frames, &buffer_frames, tsched_frames,
+-                      &b, &d, mapping)))
++                      &b, &d, &u->supported_formats, &u->supported_rates, mapping)))
+             goto fail;
+ 
+     } else if ((dev_id = pa_modargs_get_value(ma, "device_id", NULL))) {
+@@ -2232,7 +2232,7 @@ pa_source *pa_alsa_source_new(pa_module *m, pa_modargs *ma, const char*driver, p
+                       &ss, &map,
+                       SND_PCM_STREAM_CAPTURE,
+                       &period_frames, &buffer_frames, tsched_frames,
+-                      &b, &d, profile_set, &mapping)))
++                      &b, &d, &u->supported_formats, &u->supported_rates, profile_set, &mapping)))
+             goto fail;
+ 
+     } else {
+@@ -2243,7 +2243,7 @@ pa_source *pa_alsa_source_new(pa_module *m, pa_modargs *ma, const char*driver, p
+                       &ss, &map,
+                       SND_PCM_STREAM_CAPTURE,
+                       &period_frames, &buffer_frames, tsched_frames,
+-                      &b, &d, false)))
++                      &b, &d, &u->supported_formats, &u->supported_rates, false)))
+             goto fail;
+     }
+ 
+@@ -2279,13 +2279,11 @@ pa_source *pa_alsa_source_new(pa_module *m, pa_modargs *ma, const char*driver, p
+ 
+     u->verified_sample_spec = ss;
+ 
+-    u->supported_formats = pa_alsa_get_supported_formats(u->pcm_handle, ss.format);
+     if (!u->supported_formats) {
+         pa_log_error("Failed to find any supported sample formats.");
+         goto fail;
+     }
+ 
+-    u->supported_rates = pa_alsa_get_supported_rates(u->pcm_handle, ss.rate);
+     if (!u->supported_rates) {
+         pa_log_error("Failed to find any supported sample rates.");
+         goto fail;
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index e75756f53..744e7aae1 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -2026,7 +2026,7 @@ static snd_pcm_t* mapping_open_pcm(pa_alsa_ucm_config *ucm, pa_alsa_mapping *m,
+     try_buffer_size = ucm->core->default_n_fragments * try_period_size;
+ 
+     pcm = pa_alsa_open_by_device_string(m->device_strings[0], NULL, &try_ss,
+-            &try_map, mode, &try_period_size, &try_buffer_size, 0, NULL, NULL, exact_channels);
++            &try_map, mode, &try_period_size, &try_buffer_size, 0, NULL, NULL, NULL, NULL, exact_channels);
+ 
+     if (pcm) {
+         if (!exact_channels)
+diff --git a/src/modules/alsa/alsa-util.c b/src/modules/alsa/alsa-util.c
+index fd30f18bd..b631c870c 100644
+--- a/src/modules/alsa/alsa-util.c
++++ b/src/modules/alsa/alsa-util.c
+@@ -523,6 +523,8 @@ snd_pcm_t *pa_alsa_open_by_device_id_auto(
+         snd_pcm_uframes_t tsched_size,
+         bool *use_mmap,
+         bool *use_tsched,
++        pa_sample_format_t **query_supported_formats,
++        unsigned int **query_supported_rates,
+         pa_alsa_profile_set *ps,
+         pa_alsa_mapping **mapping) {
+ 
+@@ -561,6 +563,8 @@ snd_pcm_t *pa_alsa_open_by_device_id_auto(
+                 tsched_size,
+                 use_mmap,
+                 use_tsched,
++                query_supported_formats,
++                query_supported_rates,
+                 m);
+ 
+         if (pcm_handle) {
+@@ -588,6 +592,8 @@ snd_pcm_t *pa_alsa_open_by_device_id_auto(
+                 tsched_size,
+                 use_mmap,
+                 use_tsched,
++                query_supported_formats,
++                query_supported_rates,
+                 m);
+ 
+         if (pcm_handle) {
+@@ -612,6 +618,8 @@ snd_pcm_t *pa_alsa_open_by_device_id_auto(
+             tsched_size,
+             use_mmap,
+             use_tsched,
++            query_supported_formats,
++            query_supported_rates,
+             false);
+     pa_xfree(d);
+ 
+@@ -632,6 +640,8 @@ snd_pcm_t *pa_alsa_open_by_device_id_mapping(
+         snd_pcm_uframes_t tsched_size,
+         bool *use_mmap,
+         bool *use_tsched,
++        pa_sample_format_t **query_supported_formats,
++        unsigned int **query_supported_rates,
+         pa_alsa_mapping *m) {
+ 
+     snd_pcm_t *pcm_handle;
+@@ -661,6 +671,8 @@ snd_pcm_t *pa_alsa_open_by_device_id_mapping(
+             tsched_size,
+             use_mmap,
+             use_tsched,
++            query_supported_formats,
++            query_supported_rates,
+             pa_channel_map_valid(&m->channel_map) /* Query the channel count if we don't know what we want */);
+ 
+     if (!pcm_handle)
+@@ -684,6 +696,8 @@ snd_pcm_t *pa_alsa_open_by_device_string(
+         snd_pcm_uframes_t tsched_size,
+         bool *use_mmap,
+         bool *use_tsched,
++        pa_sample_format_t **query_supported_formats,
++        unsigned int **query_supported_rates,
+         bool require_exact_channel_number) {
+ 
+     int err;
+@@ -711,6 +725,12 @@ snd_pcm_t *pa_alsa_open_by_device_string(
+ 
+         pa_log_debug("Managed to open %s", d);
+ 
++        if (query_supported_formats)
++            *query_supported_formats = pa_alsa_get_supported_formats(pcm_handle, ss->format);
++
++        if (query_supported_rates)
++            *query_supported_rates = pa_alsa_get_supported_rates(pcm_handle, ss->rate);
++
+         if ((err = pa_alsa_set_hw_params(
+                      pcm_handle,
+                      ss,
+@@ -784,6 +804,8 @@ snd_pcm_t *pa_alsa_open_by_template(
+         snd_pcm_uframes_t tsched_size,
+         bool *use_mmap,
+         bool *use_tsched,
++        pa_sample_format_t **query_supported_formats,
++        unsigned int **query_supported_rates,
+         bool require_exact_channel_number) {
+ 
+     snd_pcm_t *pcm_handle;
+@@ -805,6 +827,8 @@ snd_pcm_t *pa_alsa_open_by_template(
+                 tsched_size,
+                 use_mmap,
+                 use_tsched,
++                query_supported_formats,
++                query_supported_rates,
+                 require_exact_channel_number);
+ 
+         pa_xfree(d);
+diff --git a/src/modules/alsa/alsa-util.h b/src/modules/alsa/alsa-util.h
+index 2eed3eac3..c65801104 100644
+--- a/src/modules/alsa/alsa-util.h
++++ b/src/modules/alsa/alsa-util.h
+@@ -67,6 +67,8 @@ snd_pcm_t *pa_alsa_open_by_device_id_auto(
+         snd_pcm_uframes_t tsched_size,
+         bool *use_mmap,                   /* modified at return */
+         bool *use_tsched,                 /* modified at return */
++        pa_sample_format_t **query_supported_formats, /* modified at return */
++        unsigned int **query_supported_rates,         /* modified at return */
+         pa_alsa_profile_set *ps,
+         pa_alsa_mapping **mapping);       /* modified at return */
+ 
+@@ -82,6 +84,8 @@ snd_pcm_t *pa_alsa_open_by_device_id_mapping(
+         snd_pcm_uframes_t tsched_size,
+         bool *use_mmap,                   /* modified at return */
+         bool *use_tsched,                 /* modified at return */
++        pa_sample_format_t **query_supported_formats, /* modified at return */
++        unsigned int **query_supported_rates,         /* modified at return */
+         pa_alsa_mapping *mapping);
+ 
+ /* Opens the explicit ALSA device */
+@@ -96,6 +100,8 @@ snd_pcm_t *pa_alsa_open_by_device_string(
+         snd_pcm_uframes_t tsched_size,
+         bool *use_mmap,                   /* modified at return */
+         bool *use_tsched,                 /* modified at return */
++        pa_sample_format_t **query_supported_formats, /* modified at return */
++        unsigned int **query_supported_rates,         /* modified at return */
+         bool require_exact_channel_number);
+ 
+ /* Opens the explicit ALSA device with a fallback list */
+@@ -111,6 +117,8 @@ snd_pcm_t *pa_alsa_open_by_template(
+         snd_pcm_uframes_t tsched_size,
+         bool *use_mmap,                   /* modified at return */
+         bool *use_tsched,                 /* modified at return */
++        pa_sample_format_t **query_supported_formats, /* modified at return */
++        unsigned int **query_supported_rates,        /* modified at return */
+         bool require_exact_channel_number);
+ 
+ void pa_alsa_dump(pa_log_level_t level, snd_pcm_t *pcm);
+commit 5ab2b9cb0e32190c3ea12b0f4cb7533d7340bbf1
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Wed Feb 22 01:50:22 2023 +0300
+
+    alsa-util: Fix pa_alsa_get_supported_formats fallback.
+    
+    Looks like original intention was to scan over sample formats supported by PA,
+    but code does the scan by list of alsa formats. Reverse the map and adjust
+    fallback case which now can use the same map.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/782>
+
+diff --git a/src/modules/alsa/alsa-util.c b/src/modules/alsa/alsa-util.c
+index b631c870c..d3c092f52 100644
+--- a/src/modules/alsa/alsa-util.c
++++ b/src/modules/alsa/alsa-util.c
+@@ -1502,35 +1502,35 @@ unsigned int *pa_alsa_get_supported_rates(snd_pcm_t *pcm, unsigned int fallback_
+ }
+ 
+ pa_sample_format_t *pa_alsa_get_supported_formats(snd_pcm_t *pcm, pa_sample_format_t fallback_format) {
+-    static const snd_pcm_format_t format_trans_to_pa[] = {
+-        [SND_PCM_FORMAT_U8] = PA_SAMPLE_U8,
+-        [SND_PCM_FORMAT_A_LAW] = PA_SAMPLE_ALAW,
+-        [SND_PCM_FORMAT_MU_LAW] = PA_SAMPLE_ULAW,
+-        [SND_PCM_FORMAT_S16_LE] = PA_SAMPLE_S16LE,
+-        [SND_PCM_FORMAT_S16_BE] = PA_SAMPLE_S16BE,
+-        [SND_PCM_FORMAT_FLOAT_LE] = PA_SAMPLE_FLOAT32LE,
+-        [SND_PCM_FORMAT_FLOAT_BE] = PA_SAMPLE_FLOAT32BE,
+-        [SND_PCM_FORMAT_S32_LE] = PA_SAMPLE_S32LE,
+-        [SND_PCM_FORMAT_S32_BE] = PA_SAMPLE_S32BE,
+-        [SND_PCM_FORMAT_S24_3LE] = PA_SAMPLE_S24LE,
+-        [SND_PCM_FORMAT_S24_3BE] = PA_SAMPLE_S24BE,
+-        [SND_PCM_FORMAT_S24_LE] = PA_SAMPLE_S24_32LE,
+-        [SND_PCM_FORMAT_S24_BE] = PA_SAMPLE_S24_32BE,
++    static const snd_pcm_format_t format_trans_to_pcm[] = {
++        [PA_SAMPLE_U8] = SND_PCM_FORMAT_U8,
++        [PA_SAMPLE_ALAW] = SND_PCM_FORMAT_A_LAW,
++        [PA_SAMPLE_ULAW] = SND_PCM_FORMAT_MU_LAW,
++        [PA_SAMPLE_S16LE] = SND_PCM_FORMAT_S16_LE,
++        [PA_SAMPLE_S16BE] = SND_PCM_FORMAT_S16_BE,
++        [PA_SAMPLE_FLOAT32LE] = SND_PCM_FORMAT_FLOAT_LE,
++        [PA_SAMPLE_FLOAT32BE] = SND_PCM_FORMAT_FLOAT_BE,
++        [PA_SAMPLE_S32LE] = SND_PCM_FORMAT_S32_LE,
++        [PA_SAMPLE_S32BE] = SND_PCM_FORMAT_S32_BE,
++        [PA_SAMPLE_S24LE] = SND_PCM_FORMAT_S24_3LE,
++        [PA_SAMPLE_S24BE] = SND_PCM_FORMAT_S24_3BE,
++        [PA_SAMPLE_S24_32LE] = SND_PCM_FORMAT_S24_LE,
++        [PA_SAMPLE_S24_32BE] = SND_PCM_FORMAT_S24_BE,
+     };
+-    static const snd_pcm_format_t all_formats[] = {
+-        SND_PCM_FORMAT_U8,
+-        SND_PCM_FORMAT_A_LAW,
+-        SND_PCM_FORMAT_MU_LAW,
+-        SND_PCM_FORMAT_S16_LE,
+-        SND_PCM_FORMAT_S16_BE,
+-        SND_PCM_FORMAT_FLOAT_LE,
+-        SND_PCM_FORMAT_FLOAT_BE,
+-        SND_PCM_FORMAT_S32_LE,
+-        SND_PCM_FORMAT_S32_BE,
+-        SND_PCM_FORMAT_S24_3LE,
+-        SND_PCM_FORMAT_S24_3BE,
+-        SND_PCM_FORMAT_S24_LE,
+-        SND_PCM_FORMAT_S24_BE,
++    static const pa_sample_format_t all_formats[] = {
++        PA_SAMPLE_U8,
++        PA_SAMPLE_ALAW,
++        PA_SAMPLE_ULAW,
++        PA_SAMPLE_S16LE,
++        PA_SAMPLE_S16BE,
++        PA_SAMPLE_FLOAT32LE,
++        PA_SAMPLE_FLOAT32BE,
++        PA_SAMPLE_S32LE,
++        PA_SAMPLE_S32BE,
++        PA_SAMPLE_S24LE,
++        PA_SAMPLE_S24BE,
++        PA_SAMPLE_S24_32LE,
++        PA_SAMPLE_S24_32BE,
+     };
+     bool supported[PA_ELEMENTSOF(all_formats)] = {
+         false,
+@@ -1548,7 +1548,7 @@ pa_sample_format_t *pa_alsa_get_supported_formats(snd_pcm_t *pcm, pa_sample_form
+     }
+ 
+     for (i = 0, n = 0; i < PA_ELEMENTSOF(all_formats); i++) {
+-        if (snd_pcm_hw_params_test_format(pcm, hwparams, all_formats[i]) == 0) {
++        if (snd_pcm_hw_params_test_format(pcm, hwparams, format_trans_to_pcm[all_formats[i]]) == 0) {
+             supported[i] = true;
+             n++;
+         }
+@@ -1559,7 +1559,7 @@ pa_sample_format_t *pa_alsa_get_supported_formats(snd_pcm_t *pcm, pa_sample_form
+ 
+         for (i = 0, j = 0; i < PA_ELEMENTSOF(all_formats); i++) {
+             if (supported[i])
+-                formats[j++] = format_trans_to_pa[all_formats[i]];
++                formats[j++] = all_formats[i];
+         }
+ 
+         formats[j] = PA_SAMPLE_MAX;
+@@ -1567,7 +1567,7 @@ pa_sample_format_t *pa_alsa_get_supported_formats(snd_pcm_t *pcm, pa_sample_form
+         formats = pa_xnew(pa_sample_format_t, 2);
+ 
+         formats[0] = fallback_format;
+-        if ((ret = snd_pcm_hw_params_set_format(pcm, hwparams, format_trans_to_pa[formats[0]])) < 0) {
++        if ((ret = snd_pcm_hw_params_set_format(pcm, hwparams, format_trans_to_pcm[formats[0]])) < 0) {
+             pa_log_debug("snd_pcm_hw_params_set_format() failed: %s", pa_alsa_strerror(ret));
+             pa_xfree(formats);
+             return NULL;
