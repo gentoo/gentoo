@@ -27,9 +27,6 @@ DEPEND="${RDEPEND}
 		dev-haskell/test-framework-quickcheck2 )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'QuickCheck >= 2.4 && <2.9' 'QuickCheck >= 2.4'
-}
+CABAL_CHDEPS=(
+	'QuickCheck >= 2.4 && <2.9' 'QuickCheck >= 2.4'
+)
