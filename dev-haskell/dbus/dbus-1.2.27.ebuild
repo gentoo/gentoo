@@ -43,9 +43,7 @@ DEPEND="${RDEPEND}
 		<dev-haskell/tasty-quickcheck-0.11 )
 "
 
-src_prepare() {
-	default
-	cabal_chdeps \
-		"base >=4.16 && <5" "base >=4 && <5" \
-		"template-haskell >= 2.18 && < 2.20" "template-haskell"
-}
+CABAL_CHDEPS=(
+	"base >=4.16 && <5" "base >=4 && <5"
+	"template-haskell >= 2.18 && < 2.20" "template-haskell"
+)
