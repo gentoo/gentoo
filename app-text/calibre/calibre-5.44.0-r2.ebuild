@@ -72,7 +72,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/pillow-3.2.0[jpeg,truetype,webp,zlib,${PYTHON_USEDEP}]
 		>=dev-python/psutil-4.3.0[${PYTHON_USEDEP}]
 		>=dev-python/pychm-0.8.6[${PYTHON_USEDEP}]
-		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 		dev-python/zeroconf[${PYTHON_USEDEP}]
@@ -199,6 +198,8 @@ src_test() {
 		7z
 		# unpackaged Python dependency: unrardll
 		test_unrar
+		# tests if a completely unused module is bundled
+		pycryptodome
 
 		$(usev !speech speech_dispatcher)
 
