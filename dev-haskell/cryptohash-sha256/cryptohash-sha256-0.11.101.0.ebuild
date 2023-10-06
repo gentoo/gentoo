@@ -29,14 +29,12 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/tasty-quickcheck-0.8 )
 "
 
-src_prepare() {
-	cabal_chdeps \
-		'base             >= 4.5   && < 4.11' 'base             >= 4.5' \
-		'tasty             == 0.11.*' 'tasty             >= 0.11' \
-		'tasty-quickcheck  == 0.8.*' 'tasty-quickcheck  >= 0.8' \
-		'tasty-hunit       == 0.9.*' 'tasty-hunit       >= 0.9'
-	default
-}
+CABAL_CHDEPS=(
+	'base             >= 4.5   && < 4.11' 'base             >= 4.5'
+	'tasty             == 0.11.*' 'tasty             >= 0.11'
+	'tasty-quickcheck  == 0.8.*' 'tasty-quickcheck  >= 0.8'
+	'tasty-hunit       == 0.9.*' 'tasty-hunit       >= 0.9'
+)
 
 src_configure() {
 	haskell-cabal_src_configure \
