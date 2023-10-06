@@ -347,6 +347,10 @@ src_compile() {
 		MANDIR="/share/man/man1"
 
 		SELINUX_ENABLED=$(usex selinux)
+
+		# pinky, uptime, users, and who require utmpx (not available on musl)
+		# bug #832868
+		SKIP_PROGS="$(usev elibc_musl "pinky uptime users who")"
 	)
 
 	emake "${makeargs[@]}"
