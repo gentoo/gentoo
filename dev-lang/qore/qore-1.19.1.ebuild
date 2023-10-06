@@ -47,6 +47,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Needs "bison" and "flex" exactly.
+	unset LEX
+	unset YACC
+
 	local -a myconf=(
 		--disable-optimization
 		--disable-profile
