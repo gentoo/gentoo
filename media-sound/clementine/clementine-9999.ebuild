@@ -113,7 +113,7 @@ src_prepare() {
 		cmake_comment_add_subdirectory tests
 	fi
 
-	rm -r 3rdparty/{libmygpo-qt,libmygpo-qt5,taglib} || die
+	rm -r 3rdparty/{libmygpo-qt5,taglib} || die
 }
 
 src_configure() {
