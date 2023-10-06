@@ -39,12 +39,9 @@ DEPEND="${RDEPEND}
 		!examples? ( dev-haskell/raw-strings-qq ) )
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'executable examples' 'executable haskell-yaml-examples'
-}
+CABAL_CHBINS=(
+	'examples' 'haskell-yaml-examples'
+)
 
 src_configure() {
 	local examples_flag="no-examples"
