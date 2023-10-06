@@ -1,0 +1,16 @@
+Bug: https://bugs.gentoo.org/895878
+--- a/src/Gifload.cpp
++++ b/src/Gifload.cpp
+@@ -149,9 +149,9 @@ Graphic_file *LoadGIF(FILE *fp, char *fname )
+ {
+ 	Graphic_file	*gfile;
+ 	int                filesize, numcols;
+-	register unsigned  char ch, ch1;
+-	register byte	*ptr, *ptr1;
+-	register int	i;
++	unsigned  char ch, ch1;
++	byte	*ptr, *ptr1;
++	int	i;
+ 	short transparency = -1;
+ 
+   BitOffset = 0;
