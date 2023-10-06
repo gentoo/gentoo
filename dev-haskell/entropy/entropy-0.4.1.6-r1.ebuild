@@ -23,12 +23,9 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.22.2.0
 "
 
-src_prepare() {
-	default
-
-	cabal_chdeps \
-		'Cabal >= 1.10 && < 3.3' 'Cabal >= 1.10'
-}
+CABAL_CHDEPS=(
+	'Cabal >= 1.10 && < 3.3' 'Cabal >= 1.10'
+)
 
 src_configure() {
 	haskell-cabal_src_configure \
