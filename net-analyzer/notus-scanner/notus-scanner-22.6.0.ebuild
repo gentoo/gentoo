@@ -31,6 +31,10 @@ RDEPEND="
 	app-misc/mosquitto
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-tests.patch
+)
+
 DOC_CONTENTS="
 For validating the feed content, a GnuPG keychain with the Greenbone Community Feed integrity key needs to be created.
 Please, read here on how to create it:
@@ -43,13 +47,6 @@ disable-hashsum-verification = false"
 DISABLE_AUTOFORMATTING=true
 
 distutils_enable_tests unittest
-
-src_prepare() {
-	if use test; then
-		PATCHES+=( "${FILESDIR}"/${P}-remove-tests.patch )
-	fi
-	default
-}
 
 python_compile() {
 	distutils-r1_python_compile
