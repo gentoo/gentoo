@@ -139,6 +139,7 @@ multilib_src_compile() {
 	if multilib_is_native_abi && use python ; then
 		NATIVE_BUILD_DIR="${BUILD_DIR}"
 		python_foreach_impl run_in_build_dir libxml2_py_emake all
+
 	fi
 
 	# Remove all references to $SYSROOT from installed files
