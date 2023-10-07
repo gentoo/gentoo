@@ -5,7 +5,7 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-<use>
-<flag name="savedconfig">Without a saved config.h, this package depends on <pkg>media-gfx/farbfeld</pkg> for image conversions</flag>
-</use>
+	<use>
+		<flag name="savedconfig">Without a saved config.h, this package depends on <pkg>media-gfx/farbfeld</pkg> for image conversions</flag>
+	</use>
 </pkgmetadata>
