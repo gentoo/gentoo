@@ -32,7 +32,7 @@ PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spe
 # dev-lang/php eclass support is lacking, php plugins don't work. bug #705702
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr it ja pl ru"
-IUSE="doc enchant man nls selinux test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
+IUSE="doc enchant man nls selinux test +zstd ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 
 REQUIRED_USE="
 	enchant? ( spell )
@@ -42,7 +42,6 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	app-arch/zstd:=
 	dev-libs/libgcrypt:0=
 	net-libs/gnutls:=
 	sys-libs/ncurses:0=
@@ -69,6 +68,7 @@ RDEPEND="
 		!enchant? ( app-text/aspell )
 	)
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
+	zstd? ( app-arch/zstd:= )
 "
 
 DEPEND="${RDEPEND}
@@ -172,6 +172,7 @@ src_configure() {
 		-DENABLE_TRIGGER=$(usex trigger)
 		-DENABLE_TYPING=$(usex typing)
 		-DENABLE_XFER=$(usex xfer)
+		-DENABLE_ZSTD=$(usex zstd)
 	)
 	cmake_src_configure
 }
