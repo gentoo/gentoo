@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit xdg cmake python-any-r1 optfeature flag-o-matic
 
@@ -85,13 +85,13 @@ RDEPEND="${CDEPEND}
 	webkit? ( net-libs/webkit-gtk:4 )
 "
 DEPEND="${CDEPEND}
-	dev-cpp/cppgir
+	>=dev-cpp/cppgir-0_p20230926
 	>=dev-cpp/ms-gsl-4
 	dev-cpp/range-v3
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	dev-cpp/cppgir
+	>=dev-cpp/cppgir-0_p20230926
 	>=dev-util/cmake-3.16
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
