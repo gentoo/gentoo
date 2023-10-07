@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-10-08)
+# Unmaintained, last release over 5 years ago, lots of QA issues, no
+# other distro carries this.
+# Removal on 2023-11-06. Bug #742782, #742809, #771858, #811393,
+# #898314, #898322, #898324, #898326.
+dev-libs/libtubo
+x11-libs/librfm
+x11-misc/rodent
+
 # Hans de Graaff <graaff@gentoo.org> (2023-10-07)
 # Unresolved security issues since two years, bug #792336. Original
 # upstream inactive since 2019. Substitute upstream inactive since
