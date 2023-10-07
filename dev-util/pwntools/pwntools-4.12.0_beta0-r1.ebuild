@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="CTF framework and exploit development library"
 HOMEPAGE="https://github.com/Gallopsled/pwntools"
@@ -56,6 +56,12 @@ python_configure_all() {
 
 src_install() {
 	distutils-r1_src_install
+
+	newbashcomp extra/bash_completion.d/pwn pwn
+	newbashcomp extra/bash_completion.d/shellcraft shellcraft
+
+	insinto /usr/share/zsh/site-functions
+	doins extra/zsh_completion/_pwn
 
 	rm -r "${ED}/usr/pwntools-doc" || die
 }
