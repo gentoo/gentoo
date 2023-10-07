@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-10-07)
+# Unresolved security issues since two years, bug #792336. Original
+# upstream inactive since 2019. Substitute upstream inactive since
+# 2020. No reverse dependencies. Masked for removal on 2023-11-07.
+sys-fs/dmg2img
+
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
