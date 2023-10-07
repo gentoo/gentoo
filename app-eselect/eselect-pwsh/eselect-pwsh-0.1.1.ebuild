@@ -9,7 +9,7 @@ SRC_URI="https://gitlab.gentoo.org/dotnet/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 
 RDEPEND="app-admin/eselect"
 
