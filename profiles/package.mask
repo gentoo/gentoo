@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-10-08)
+# Unmaintained, typical broken suckless build system, no upstream
+# activity, only Fedora still carries it.
+# Removal on 2023-11-06. Bug #732422, #914638.
+x11-misc/sselp
+
+# David Seifert <soap@gentoo.org> (2023-10-08)
 # Unmaintained, last release over 5 years ago, lots of QA issues, no
 # other distro carries this.
 # Removal on 2023-11-06. Bug #742782, #742809, #771858, #811393,
