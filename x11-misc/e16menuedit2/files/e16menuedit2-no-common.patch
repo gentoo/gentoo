@@ -1,5 +1,5 @@
---- e16menuedit2-0.0.3/src/e16menu.h.orig	2020-10-11 10:41:36.827021380 +0300
-+++ e16menuedit2-0.0.3/src/e16menu.h	2020-10-11 10:51:27.043070842 +0300
+--- a/src/e16menu.h
++++ b/src/e16menu.h
 @@ -45,6 +45,6 @@
  gboolean table_check_func (GtkTreeModel *model, GtkTreePath *path,
                            GtkTreeIter *iter, gpointer user_data);			  
@@ -8,8 +8,8 @@
 +extern gchar *menu_file[MAX_RECURSION];
  
  #endif /* _E16MENU_H */
---- e16menuedit2-0.0.3/src/e16menu.c.orig	2005-02-18 15:09:55.000000000 +0300
-+++ e16menuedit2-0.0.3/src/e16menu.c	2020-10-11 10:51:52.615152314 +0300
+--- a/src/e16menu.c
++++ b/src/e16menu.c
 @@ -34,6 +34,7 @@
  #include "treeview.h"
  

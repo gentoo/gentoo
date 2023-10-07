@@ -1,5 +1,5 @@
---- e16menuedit2-0.0.3/Makefile.am.orig	2019-03-08 00:52:08.000000000 +0300
-+++ e16menuedit2-0.0.3/Makefile.am	2019-03-08 00:52:31.930201552 +0300
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -2,15 +2,8 @@
  
  SUBDIRS = src po pixmaps help
@@ -18,3 +18,13 @@
  
  GLADE_FILES = e16menuedit2.glade
  
+--- a/configure.in
++++ b/configure.in
+@@ -1,6 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(configure.in)
++AC_INIT(configure.ac)
+ AM_INIT_AUTOMAKE(e16menuedit2, 0.0.3)
+ AM_CONFIG_HEADER(config.h)
+ AM_MAINTAINER_MODE

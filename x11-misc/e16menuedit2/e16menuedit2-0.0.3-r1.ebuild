@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 GNOME2_EAUTORECONF="yes"
 inherit gnome2
@@ -9,25 +9,21 @@ inherit gnome2
 DESCRIPTION="Menu editor for Enlightenment DR16 written in GTK2"
 HOMEPAGE="https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/"
 SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND="
+RDEPEND="
 	>=gnome-base/libglade-2.4
-	virtual/pkgconfig
 	x11-libs/gtk+:2
 	x11-wm/e16
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-no-default-docs.patch"
-	"${FILESDIR}/${PN}-no-common.patch"
+	"${FILESDIR}"/${PN}-missing-include.patch
+	"${FILESDIR}"/${PN}-autotools.patch
+	"${FILESDIR}"/${PN}-no-common.patch
 )
-
-src_prepare() {
-	sed -i '1i#include <glib/gstdio.h>' src/e16menuedit2.c || die
-	gnome2_src_prepare
-}
