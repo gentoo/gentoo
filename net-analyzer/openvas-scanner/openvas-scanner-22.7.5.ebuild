@@ -11,8 +11,6 @@ DESCRIPTION="Open Vulnerability Assessment Scanner"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/openvas-scanner/"
 SRC_URI="
 	https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/greenbone/openvas-scanner/commit/c9ba348e1a7fa99a0b41a0e53f251309f2768187.patch
-		-> ${PN}-22.7.3-fix-automagic-dep-on-snmp.patch
 "
 
 SLOT="0"
@@ -23,14 +21,14 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-user/gvm
-	dev-db/redis
-	dev-libs/glib:2
+	>=dev-db/redis-5.0.3
+	>=dev-libs/glib-2.42:2
 	>=dev-libs/json-glib-1.4.4
 	>=net-libs/gnutls-3.2.15
 	>=net-analyzer/gvm-libs-22.4
 	net-libs/libpcap
 	app-crypt/gpgme:=
-	dev-libs/libgcrypt:=
+	>=dev-libs/libgcrypt-1.6
 	dev-libs/libgpg-error
 	>=dev-libs/libksba-1.0.7
 	>=net-libs/libssh-0.6.0
@@ -52,11 +50,6 @@ BDEPEND="
 	)
 	test? ( dev-libs/cgreen )
 "
-
-PATCHES=(
-	# Fix https://bugs.gentoo.org/911114
-	"${DISTDIR}"/${PN}-22.7.3-fix-automagic-dep-on-snmp.patch
-)
 
 src_prepare() {
 	cmake_src_prepare
