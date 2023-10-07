@@ -1,7 +1,6 @@
-diff -up gtkglext-1.2.0/configure.in.nopangox gtkglext-1.2.0/configure.in
---- gtkglext-1.2.0/configure.in.nopangox	2006-02-04 22:17:19.000000000 -0500
-+++ gtkglext-1.2.0/configure.in	2020-07-13 15:52:42.616448758 -0400
-@@ -59,10 +59,6 @@ m4_define([gmodule_required_version], [2
+--- a/configure.in
++++ b/configure.in
+@@ -59,10 +59,6 @@
  m4_define([pango_pkg], [pango])
  m4_define([pango_required_version], [1.0.0])
  
@@ -12,7 +11,7 @@ diff -up gtkglext-1.2.0/configure.in.nopangox gtkglext-1.2.0/configure.in
  # PangoFT2
  m4_define([pangoft2_pkg], [pangoft2])
  m4_define([pangoft2_required_version], [1.0.0])
-@@ -349,7 +345,6 @@ PKG_CHECK_MODULES([BASE_DEPENDENCIES], [
+@@ -350,7 +346,6 @@
  gtk_pkg >= gtk_required_version \
  gdk_pkg >= gdk_required_version \
  pango_pkg >= pango_required_version \
@@ -20,108 +19,17 @@ diff -up gtkglext-1.2.0/configure.in.nopangox gtkglext-1.2.0/configure.in
  gmodule_pkg >= gmodule_required_version \
  ])
  
-@@ -794,7 +789,7 @@ LIBS="$save_LIBS"
+@@ -570,7 +565,7 @@
  # CFLAGS and LIBS
  ##################################################
  
 -GDKGLEXT_PACKAGES="gdk_pkg pango_pkg pangox_pkg gmodule_pkg"
 +GDKGLEXT_PACKAGES="gdk_pkg pango_pkg gmodule_pkg"
  GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS $GDKGLEXT_WIN_CFLAGS"
- GDKGLEXT_EXTRA_LIBS="$GL_LIBS $GDKGLEXT_WIN_LIBS"
+ GDKGLEXT_EXTRA_LIBS="$GL_LIBS $GLU_LIBS $GDKGLEXT_WIN_LIBS"
  GDKGLEXT_DEP_CFLAGS="$GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES`"
-diff -up gtkglext-1.2.0/configure.nopangox gtkglext-1.2.0/configure
---- gtkglext-1.2.0/configure.nopangox	2006-02-04 22:17:47.000000000 -0500
-+++ gtkglext-1.2.0/configure	2020-07-13 15:52:42.619448711 -0400
-@@ -19880,14 +19880,12 @@ if test -n "$PKG_CONFIG"; then
- gtk+-2.0 >= 2.0.0 \\
- gdk-2.0 >= 2.0.0 \\
- pango >= 1.0.0 \\
--pangox >= 1.0.0 \\
- gmodule-2.0 >= 2.0.0 \\
- \"") >&5
-   ($PKG_CONFIG --exists --print-errors "\
- gtk+-2.0 >= 2.0.0 \
- gdk-2.0 >= 2.0.0 \
- pango >= 1.0.0 \
--pangox >= 1.0.0 \
- gmodule-2.0 >= 2.0.0 \
- ") 2>&5
-   ac_status=$?
-@@ -19897,7 +19895,6 @@ gmodule-2.0 >= 2.0.0 \
- gtk+-2.0 >= 2.0.0 \
- gdk-2.0 >= 2.0.0 \
- pango >= 1.0.0 \
--pangox >= 1.0.0 \
- gmodule-2.0 >= 2.0.0 \
- " 2>/dev/null`
- else
-@@ -19916,14 +19913,12 @@ if test -n "$PKG_CONFIG"; then
- gtk+-2.0 >= 2.0.0 \\
- gdk-2.0 >= 2.0.0 \\
- pango >= 1.0.0 \\
--pangox >= 1.0.0 \\
- gmodule-2.0 >= 2.0.0 \\
- \"") >&5
-   ($PKG_CONFIG --exists --print-errors "\
- gtk+-2.0 >= 2.0.0 \
- gdk-2.0 >= 2.0.0 \
- pango >= 1.0.0 \
--pangox >= 1.0.0 \
- gmodule-2.0 >= 2.0.0 \
- ") 2>&5
-   ac_status=$?
-@@ -19933,7 +19928,6 @@ gmodule-2.0 >= 2.0.0 \
- gtk+-2.0 >= 2.0.0 \
- gdk-2.0 >= 2.0.0 \
- pango >= 1.0.0 \
--pangox >= 1.0.0 \
- gmodule-2.0 >= 2.0.0 \
- " 2>/dev/null`
- else
-@@ -19958,7 +19952,6 @@ fi
- gtk+-2.0 >= 2.0.0 \
- gdk-2.0 >= 2.0.0 \
- pango >= 1.0.0 \
--pangox >= 1.0.0 \
- gmodule-2.0 >= 2.0.0 \
- "`
-         else
-@@ -19966,7 +19959,6 @@ gmodule-2.0 >= 2.0.0 \
- gtk+-2.0 >= 2.0.0 \
- gdk-2.0 >= 2.0.0 \
- pango >= 1.0.0 \
--pangox >= 1.0.0 \
- gmodule-2.0 >= 2.0.0 \
- "`
-         fi
-@@ -19977,7 +19969,6 @@ gmodule-2.0 >= 2.0.0 \
- gtk+-2.0 >= 2.0.0 \
- gdk-2.0 >= 2.0.0 \
- pango >= 1.0.0 \
--pangox >= 1.0.0 \
- gmodule-2.0 >= 2.0.0 \
- ) were not met:
- 
-@@ -19994,7 +19985,6 @@ echo "$as_me: error: Package requirement
- gtk+-2.0 >= 2.0.0 \
- gdk-2.0 >= 2.0.0 \
- pango >= 1.0.0 \
--pangox >= 1.0.0 \
- gmodule-2.0 >= 2.0.0 \
- ) were not met:
- 
-@@ -25420,7 +25410,7 @@ LIBS="$save_LIBS"
- # CFLAGS and LIBS
- ##################################################
- 
--GDKGLEXT_PACKAGES="gdk-2.0 pango pangox gmodule-2.0"
-+GDKGLEXT_PACKAGES="gdk-2.0 pango gmodule-2.0"
- GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS $GDKGLEXT_WIN_CFLAGS"
- GDKGLEXT_EXTRA_LIBS="$GL_LIBS $GDKGLEXT_WIN_LIBS"
- GDKGLEXT_DEP_CFLAGS="$GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES`"
-diff -up gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c.nopangox gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c
---- gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c.nopangox	2004-02-20 04:38:14.000000000 -0500
-+++ gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c	2020-07-13 15:55:19.720973082 -0400
+--- a/gdk/x11/gdkglfont-x11.c
++++ b/gdk/x11/gdkglfont-x11.c
 @@ -18,7 +18,8 @@
  
  #include <string.h>
@@ -132,7 +40,7 @@ diff -up gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c.nopangox gtkglext-1.2.0/gdk/x11/
  
  #include "gdkglx.h"
  #include "gdkglprivate-x11.h"
-@@ -77,9 +78,9 @@ gdk_gl_font_use_pango_font_common (Pango
+@@ -77,9 +78,9 @@
  {
    PangoFont *font = NULL;
    gchar *charset = NULL;
@@ -144,7 +52,7 @@ diff -up gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c.nopangox gtkglext-1.2.0/gdk/x11/
    XFontStruct *fs;
  
    GDK_GL_NOTE_FUNC_PRIVATE ();
-@@ -91,6 +92,7 @@ gdk_gl_font_use_pango_font_common (Pango
+@@ -91,6 +92,7 @@
        goto FAIL;
      }
  
@@ -152,7 +60,7 @@ diff -up gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c.nopangox gtkglext-1.2.0/gdk/x11/
    charset = gdk_gl_font_charset_for_locale ();
    if (!pango_x_find_first_subfont (font, &charset, 1, &subfont_id))
      {
-@@ -114,6 +116,7 @@ gdk_gl_font_use_pango_font_common (Pango
+@@ -114,6 +116,7 @@
    glXUseXFont (fs->fid, first, count, list_base);
  
    pango_x_font_cache_unload (font_cache, fs);
@@ -160,7 +68,7 @@ diff -up gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c.nopangox gtkglext-1.2.0/gdk/x11/
  
   FAIL:
  
-@@ -149,11 +152,7 @@ gdk_gl_font_use_pango_font (const PangoF
+@@ -149,11 +152,7 @@
  
    GDK_GL_NOTE_FUNC ();
  
@@ -173,7 +81,7 @@ diff -up gtkglext-1.2.0/gdk/x11/gdkglfont-x11.c.nopangox gtkglext-1.2.0/gdk/x11/
  
    return gdk_gl_font_use_pango_font_common (font_map, font_desc,
                                              first, count, list_base);
-@@ -187,7 +186,7 @@ gdk_gl_font_use_pango_font_for_display (
+@@ -187,7 +186,7 @@
  
    GDK_GL_NOTE_FUNC ();
  
