@@ -26,3 +26,11 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
 S="${WORKDIR}"/${PN}-${CommitId}
 
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	sed -i \
+		-e "s:versioneer.get_version():\"${PV}\":" \
+		setup.py \
+		|| die
+	distutils-r1_python_prepare_all
+}
