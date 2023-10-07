@@ -29,6 +29,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# unpin deps
+	sed -i -e 's:,<[0-9.]*::' setup.py || die
+	distutils-r1_src_prepare
+}
+
 src_test() {
 	local i
 
