@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DOTNET_PKG_COMPAT=6.0
+DOTNET_PKG_COMPAT=7.0
 NUGETS="
 fleck@1.2.0
 microsoft.build.tasks.git@1.1.1
@@ -102,6 +102,7 @@ SRC_URI+=" ${NUGET_URIS} "
 LICENSE="MIT"
 SLOT="0"
 
+DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
 DOTNET_PKG_PROJECTS=( Mond.Repl/Mond.Repl.csproj )
 
 DOCS=( README.md Examples )
@@ -109,9 +110,13 @@ DOCS=( README.md Examples )
 src_unpack() {
 	dotnet-pkg_src_unpack
 
-	if [[ -n ${EGIT_REPO_URI} ]] ; then
+	if [[ -n "${EGIT_REPO_URI}" ]] ; then
 		git-r3_src_unpack
 	fi
+}
+
+src_test() {
+	dotnet-pkg-base_test -p:RollForward=Major Mond.sln
 }
 
 src_install() {
