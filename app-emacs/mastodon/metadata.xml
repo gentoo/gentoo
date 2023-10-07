@@ -9,5 +9,6 @@
   <upstream>
     <changelog>https://codeberg.org/martianh/mastodon.el/releases/</changelog>
     <bugs-to>https://codeberg.org/martianh/mastodon.el/issues/</bugs-to>
+    <remote-id type="codeberg">martianh/mastodon.el</remote-id>
   </upstream>
 </pkgmetadata>
