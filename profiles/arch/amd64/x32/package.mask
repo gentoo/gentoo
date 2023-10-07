@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Maciej Barć <xgqt@gentoo.org> (2023-10-07)
+# Requires net-libs/nodejs which is unavailable on amd64/x32.
+app-containers/devcontainer
+
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
 # intel-hybrid-codec-driver does not work on x32
 media-libs/intel-hybrid-codec-driver
