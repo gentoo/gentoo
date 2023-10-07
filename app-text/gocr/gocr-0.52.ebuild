@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="An OCR (Optical Character Recognition) reader"
-HOMEPAGE="http://jocr.sourceforge.net"
+HOMEPAGE="https://www-e.uni-magdeburg.de/jschulen/ocr/"
 SRC_URI="http://www-e.uni-magdeburg.de/jschulen/ocr/${P}.tar.gz"
 
 LICENSE="GPL-2"
