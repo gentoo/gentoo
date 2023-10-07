@@ -1,24 +1,28 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="open source high performance realtime 3D engine written in C++"
 HOMEPAGE="https://irrlicht.sourceforge.io/"
-SRC_URI="mirror://sourceforge/irrlicht/${P}.zip
+SRC_URI="
+	mirror://sourceforge/irrlicht/${P}.zip
 	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
+S="${WORKDIR}/${P}/source/${PN^}"
 
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
-IUSE="debug doc static-libs"
+IUSE="debug doc"
 
-RDEPEND="app-arch/bzip2
+RDEPEND="
+	app-arch/bzip2
 	~dev-games/irrlicht-headers-${PV}
-	media-libs/libpng:0=
-	sys-libs/zlib
-	virtual/jpeg:0
+	media-libs/libpng:=
+	sys-libs/zlib:=
+	media-libs/libjpeg-turbo:=
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXxf86vm"
@@ -26,14 +30,13 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}/${P}/source/${PN^}
-
 PATCHES=(
 	"${WORKDIR}"/${P}-patchset/${P}-gentoo.patch
 	"${WORKDIR}"/${P}-patchset/${P}-demoMake.patch
 	"${WORKDIR}"/${P}-patchset/${P}-mesa-10.x.patch
 	"${WORKDIR}"/${P}-patchset/${P}-jpeg-9a.patch
-	"${FILESDIR}/${P}-remove-sys-sysctl.h.patch"
+	"${FILESDIR}"/${P}-remove-sys-sysctl.h.patch
+	"${FILESDIR}"/${P}-drop-register.patch
 )
 
 DOCS=( changes.txt readme.txt )
@@ -62,13 +65,12 @@ src_prepare() {
 
 src_compile() {
 	tc-export CXX CC AR
-	emake NDEBUG=$(usex debug "" "1") sharedlib $(usex static-libs "staticlib" "")
+	emake NDEBUG=$(usev !debug 1) sharedlib
 }
 
 src_install() {
 	cd "${WORKDIR}"/${P} || die
 
-	use static-libs && dolib.a lib/Linux/libIrrlicht.a
 	dolib.so lib/Linux/libIrrlicht.so*
 
 	# create library symlinks
@@ -78,7 +80,5 @@ src_install() {
 	einstalldocs
 
 	# don't do these with einstalldocs because they shouldn't be compressed
-	if use doc ; then
-		dodoc -r examples media
-	fi
+	use doc && dodoc -r examples media
 }
