@@ -27,13 +27,6 @@ dev-util/librnp man
 # dev-cpp/cpp-httplib is keyworded here.
 sys-devel/llvm -debuginfod
 
-# WANG Xuerui <xen0n@gentoo.org> (2023-09-12)
-# Vulkan is available on loong.
-dev-qt/qt3d -vulkan
-dev-qt/qtdeclarative -vulkan
-dev-qt/qtgui -vulkan
-dev-qt/qtwayland -vulkan
-
 # WANG Xuerui <xen0n@gentoo.org> (2023-09-10)
 # Revdeps of dev-python/ujson which is masked.
 dev-python/cattrs test

@@ -51,9 +51,6 @@ mail-client/thunderbird clang
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)
 # vulkan tested and works on ppc64le
-dev-qt/qtdeclarative -vulkan
-dev-qt/qtgui -vulkan
-dev-qt/qtwayland -vulkan
 media-libs/mesa -vulkan -vulkan-overlay
 media-video/mpv -libplacebo -vulkan
 media-video/vlc -libplacebo

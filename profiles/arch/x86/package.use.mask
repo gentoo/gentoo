@@ -231,13 +231,6 @@ sys-libs/glibc -static-pie
 mail-client/thunderbird -eme-free
 www-client/firefox -eme-free
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Vulkan is available on x86.
-dev-qt/qt3d -vulkan
-dev-qt/qtdeclarative -vulkan
-dev-qt/qtgui -vulkan
-dev-qt/qtwayland -vulkan
-
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on x86
 dev-util/schroot zfs
