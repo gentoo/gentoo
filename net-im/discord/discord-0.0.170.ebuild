@@ -16,10 +16,11 @@ inherit chromium-2 desktop linux-info optfeature unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
-SRC_URI="https://dl.discordapp.net/apps/linux/${MY_PV}/${MY_PN}-${MY_PV}.tar.gz"
+SRC_URI="https://dl-canary.discordapp.net/apps/linux/${MY_PV}/${MY_PN}-canary-${MY_PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+# https://dl-canary.discordapp.net/apps/linux/0.0.170/discord-canary-0.0.170.tar.gz
 LICENSE="all-rights-reserved"
-SLOT="stable"
-KEYWORDS="amd64"
+SLOT="canary"
+KEYWORDS="~amd64"
 RESTRICT="bindist mirror strip test"
 IUSE="appindicator +seccomp"
 
@@ -89,7 +90,7 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd >/dev/null || die "location reset for language cleanup failed"
 	# fix .desktop exec location
-	sed -i "/Exec/s:/usr/share/discord/Discord:${DESTDIR}/${MY_PN^}${MY_SLOT:1}:" \
+	sed -i "/Exec/s:/usr/share/discord${MY_SLOT,,}/Discord${MY_SLOT:1}:${DESTDIR}/${MY_PN^}${MY_SLOT:1}:" \
 		"${MY_PN}${MY_SLOT,,}.desktop" ||
 		die "fixing of exec location on .desktop failed"
 	# USE seccomp
