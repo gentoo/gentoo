@@ -1,25 +1,22 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -1,15 +1,15 @@
+@@ -1,15 +1,7 @@
 -CC = gcc
 -CCFLAGS = `gtk-config --cflags`
 -LDFLAGS = `gtk-config --libs`
-+CC ?= gcc
-+CFLAGS += `${PKG_CONFIG} --cflags gtk+-2.0`
-+LIBS = `${PKG_CONFIG} --libs gtk+-2.0`
++CPPFLAGS += `${PKG_CONFIG} --cflags gtk+-2.0`
++LDLIBS = `${PKG_CONFIG} --libs gtk+-2.0`
  
- gbase:	gbase.o
+-gbase:	gbase.o
 -	$(CC) gbase.o $(LDFLAGS) -o gbase
-+	$(CC) $(LDFLAGS) gbase.o $(LIBS) -o gbase
++all: gbase
  
  clean:
  	rm -f gbase gbase.o gbase.c~
- 
- # Make object files:
- %.o:
+-
+-# Make object files:
+-%.o:
 -	$(CC) $(CCFLAGS) -c $*.c
-+	$(CC) $(CFLAGS) -c $*.c
- 
+-
 -gbase.o: gbase.c
 \ No newline at end of file
-+gbase.o: gbase.c
