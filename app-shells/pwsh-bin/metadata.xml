@@ -13,9 +13,6 @@
     and object models. It includes a command-line shell, an associated
     scripting language and a framework for processing cmdlets.
   </longdescription>
-  <use>
-    <flag name="pwsh-symlink">Install a pwsh symlink that points to pwsh-bin.</flag>
-  </use>
   <upstream>
     <changelog>https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.1.md</changelog>
     <doc>https://learn.microsoft.com/en-us/powershell/</doc>
