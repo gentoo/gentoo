@@ -5,7 +5,7 @@ EAPI=8
 
 MY_PN=LiteDB
 
-DOTNET_PKG_COMPAT=6.0
+DOTNET_PKG_COMPAT=7.0
 NUGETS="
 benchmarkdotnet.annotations@0.12.0
 benchmarkdotnet@0.12.0
@@ -232,7 +232,7 @@ inherit check-reqs dotnet-pkg
 
 DESCRIPTION=".NET NoSQL Document Store in a single data file"
 HOMEPAGE="http://www.litedb.org/
-	http://www.litedb.org/"
+	https://github.com/mbdavid/LiteDB/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
@@ -252,11 +252,16 @@ LICENSE="MIT"
 SLOT="0"
 
 CHECKREQS_DISK_BUILD="2G"
+DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
 DOTNET_PKG_PROJECTS=( LiteDB.Shell/LiteDB.Shell.csproj )
 
 pkg_setup() {
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
+}
+
+src_test() {
+	dotnet-pkg-base_test -p:RollForward=Major LiteDB.sln
 }
 
 src_install() {
