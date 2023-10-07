@@ -8,7 +8,7 @@ REDIS_GROUP="gvm"
 REDIS_CONF="/etc/gvm/redis-openvas.conf"
 
 # Redis dump directory.
-REDIS_DIR="/var/lib/gvm/redis"
+REDIS_DIR="/var/lib/openvas/redis"
 
 # Redis options.
 # (Redis expects the first argument to be the configuration file.)
