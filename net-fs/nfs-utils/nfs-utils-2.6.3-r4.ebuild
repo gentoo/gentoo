@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,13 +14,13 @@ if [[ ${PV} == *_rc* ]] ; then
 	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 else
 	SRC_URI="mirror://sourceforge/nfs/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 sasl selinux tcpd +uuid"
-REQUIRED_USE="kerberos? ( nfsv4 )"
+IUSE="caps junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv3 +nfsv4 sasl selinux tcpd +uuid"
+REQUIRED_USE="|| ( nfsv3 nfsv4 ) kerberos? ( nfsv4 ) nfsdcld? ( nfsv4 )"
 # bug #315573
 RESTRICT="test"
 
@@ -31,8 +31,9 @@ RESTRICT="test"
 COMMON_DEPEND="
 	dev-libs/libxml2
 	net-libs/libtirpc:=
-	>=net-nds/rpcbind-0.2.4
 	sys-fs/e2fsprogs
+	dev-db/sqlite:3
+	dev-libs/libevent:=
 	caps? ( sys-libs/libcap )
 	ldap? (
 		net-nds/openldap:=
@@ -42,17 +43,14 @@ COMMON_DEPEND="
 		)
 	)
 	libmount? ( sys-apps/util-linux )
+	nfsv3? ( >=net-nds/rpcbind-0.2.4 )
 	nfsv4? (
-		dev-db/sqlite:3
-		dev-libs/libevent:=
 		>=sys-apps/keyutils-1.5.9:=
+		sys-fs/lvm2
 		kerberos? (
 			>=net-libs/libtirpc-0.2.4-r1[kerberos]
 			app-crypt/mit-krb5
 		)
-	)
-	nfsv41? (
-		sys-fs/lvm2
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
 	uuid? ( sys-apps/util-linux )"
@@ -63,7 +61,7 @@ RDEPEND="${COMMON_DEPEND}
 	!net-libs/libnfsidmap
 	selinux? (
 		sec-policy/selinux-rpc
-		sec-policy/selinux-rpcbind
+		nfsv3? ( sec-policy/selinux-rpcbind )
 	)
 "
 BDEPEND="
@@ -73,9 +71,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.2-no-werror.patch
-	"${FILESDIR}"/${P}-clang-Wlogical-not-parentheses.patch
-	"${FILESDIR}"/${P}-clang-fix-function-prototypes.patch
-	"${FILESDIR}"/${PN}-2.6.2-clang-more-function-prototypes.patch
+	"${FILESDIR}"/${PN}-udev-sysctl.patch
 )
 
 pkg_setup() {
@@ -124,11 +120,17 @@ src_configure() {
 		$(use_enable kerberos svcgss)
 		$(use_enable ldap)
 		$(use_enable libmount libmount-mount)
+		$(use_enable nfsdcld)
 		$(use_enable nfsdcld nfsdcltrack)
 		$(use_enable nfsv4)
-		$(use_enable nfsv41)
+		$(use_enable nfsv4 nfsv41)
+		$(use_enable nfsv4 nfsv4server)
 		$(use_enable uuid)
 		$(use_with tcpd tcp-wrappers)
+		# XXX: Remove this hack after 2.6.3
+		# See bug #904718.
+		# Patch: https://git.linux-nfs.org/?p=steved/nfs-utils.git;a=commit;h=bc4a5deef9f820c55fdac3c0070364c17cd91cca
+		LIBS="-lsqlite3 -levent_core"
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -193,6 +195,11 @@ src_install() {
 	sed -i \
 		-e 's:/usr/sbin/rpc.statd:/sbin/rpc.statd:' \
 		"${ED}${systemd_systemunitdir}"/* || die
+
+	# Remove legacy service if not requested (as it will be broken without rpcbind)
+	if ! use nfsv3; then
+		rm "${ED}${systemd_systemunitdir}/nfs-server.service" || die
+	fi
 
 	# bug #368505
 	keepdir /var/lib/nfs
