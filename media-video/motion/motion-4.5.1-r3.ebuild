@@ -36,7 +36,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${P}-fix-gettext-0.22-format-specifier.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-gettext-0.22-format-specifier.patch
+	"${FILESDIR}"/${P}-webp-underlinking.patch
+)
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
