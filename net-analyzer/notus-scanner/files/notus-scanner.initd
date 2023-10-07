@@ -21,6 +21,11 @@ depend() {
 }
 
 start_pre() {
-        checkpath -d --owner ${GVM_USER} /var/run/notus-scanner
+        checkpath -d --owner ${GVM_USER} /run/notus-scanner
 }
 
+start_post() {
+	ewaitfile 10 ${pidfile}
+	checkpath -d --owner root:root /run/notus-scanner
+	checkpath -f --owner root:root ${pidfile}
+}
