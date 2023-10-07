@@ -53,7 +53,7 @@ python_prepare_all() {
 	export USE_PKGCONFIG=TRUE
 
 	rm -r c-blosc/{blosc,internal-complibs} || die
-	sed -i -e '/blosc2/d' requirements.txt || die
+	sed -i -e '/blosc2/d' pyproject.toml || die
 	hprefixify -w '/prefixes =/' setup.py
 	distutils-r1_python_prepare_all
 }
