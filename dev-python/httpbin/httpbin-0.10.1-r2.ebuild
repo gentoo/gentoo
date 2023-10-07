@@ -31,3 +31,9 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# unpin greenlet
+	sed -i -e '/greenlet/d' pyproject.toml || die
+	distutils-r1_src_prepare
+}
