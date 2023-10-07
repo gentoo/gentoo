@@ -3,7 +3,6 @@
 
 EAPI=8
 
-WANT_LIBTOOL=none
 inherit autotools optfeature
 
 DESCRIPTION="NBD server with stable plugin ABI and permissive license"
