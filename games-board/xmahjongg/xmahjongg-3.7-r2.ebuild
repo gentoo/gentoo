@@ -5,9 +5,9 @@ EAPI=8
 
 inherit autotools desktop
 
-DESCRIPTION="friendly GUI version of xmahjongg"
-HOMEPAGE="http://www.lcdf.org/xmahjongg/"
-SRC_URI="http://www.lcdf.org/xmahjongg/${P}.tar.gz"
+DESCRIPTION="Friendly GUI version of xmahjongg"
+HOMEPAGE="https://www.lcdf.org/xmahjongg/"
+SRC_URI="https://www.lcdf.org/xmahjongg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
