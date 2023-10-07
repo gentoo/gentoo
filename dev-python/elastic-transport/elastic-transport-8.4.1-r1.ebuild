@@ -48,6 +48,12 @@ distutils_enable_sphinx docs/sphinx \
 	dev-python/sphinx-autodoc-typehints
 distutils_enable_tests pytest
 
+src_prepare() {
+	# unpin deps
+	sed -i -e 's:, *<[0-9.]*::' setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# fragile to random warnings
