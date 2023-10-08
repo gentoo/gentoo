@@ -136,11 +136,11 @@ BDEPEND="
 	>=virtual/rust-1.70
 "
 DEPEND="
-	dev-libs/glib:2
-	gui-libs/gtk:4
-	gui-libs/libadwaita
+	>=dev-libs/glib-2.66:2
+	>=gui-libs/gtk-4.4.0:4
+	>=gui-libs/libadwaita-1.3
 	media-libs/graphene
-	media-video/pipewire:=
+	>=media-video/pipewire-0.3:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango
