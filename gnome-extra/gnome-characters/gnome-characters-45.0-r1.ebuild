@@ -23,7 +23,7 @@ RDEPEND="
 	>=gui-libs/libadwaita-1.2:1=
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/pango-1.36[introspection]
-	gnome-base/gnome-desktop:3[introspection]
+	gnome-base/gnome-desktop:4
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
