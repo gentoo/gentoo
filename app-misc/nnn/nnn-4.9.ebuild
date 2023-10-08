@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jarun/nnn/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="8contexts colemak colemak-dh emoji gitstatus icons namefirst nerdfonts pcre qsort +readline restorepreview"
+IUSE="8contexts colemak emoji gitstatus icons namefirst nerdfonts pcre qsort +readline restorepreview"
 
 DEPEND="sys-libs/ncurses:=
 	pcre? ( dev-libs/libpcre )
@@ -20,8 +20,7 @@ DEPEND="sys-libs/ncurses:=
 	elibc_musl? ( sys-libs/fts-standalone )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="${DEPEND}"
-REQUIRED_USE="?? ( icons nerdfonts emoji )
-	?? ( colemak colemak-dh )"
+REQUIRED_USE="?? ( icons nerdfonts emoji )"
 
 src_prepare() {
 	default
@@ -30,10 +29,6 @@ src_prepare() {
 	# When using nnn's bundled patches, the 'install' target should not depend
 	# on 'all'. See: https://github.com/jarun/nnn/issues/1493
 	sed -i -e 's/install: all/install:/' Makefile || die "sed failed"
-	# The Makefile uses O_COLEMAK-DH to control the Colemak-DH patch, but that
-	# does not work with the array approach to make options below. Hence, we
-	# simply rename it to O_COLEMAK_DH.
-	sed -i -e 's/O_COLEMAK-DH/O_COLEMAK_DH/' Makefile || die "sed failed"
 }
 
 src_compile() {
@@ -47,7 +42,6 @@ src_compile() {
 		O_QSORT=$(usex qsort 1 0)
 		# nnn's user-submitted patches
 		O_COLEMAK=$(usex colemak 1 0)
-		O_COLEMAK_DH=$(usex colemak-dh 1 0)
 		O_GITSTATUS=$(usex gitstatus 1 0)
 		O_NAMEFIRST=$(usex namefirst 1 0)
 		O_RESTOREPREVIEW=$(usex restorepreview 1 0)
