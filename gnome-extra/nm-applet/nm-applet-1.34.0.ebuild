@@ -19,7 +19,6 @@ RDEPEND="
 	>=app-crypt/libsecret-0.18
 	>=net-libs/libnma-1.10.4-r2
 	>=x11-libs/gtk+-3.10:3
-	>=dev-libs/libgudev-147:=
 	>=net-misc/networkmanager-1.16[modemmanager?,teamd?]
 	appindicator? (
 		dev-libs/libayatana-appindicator
