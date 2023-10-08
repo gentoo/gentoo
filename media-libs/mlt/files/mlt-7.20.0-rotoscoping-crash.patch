@@ -1,0 +1,22 @@
+From 482f1fb0179587575b3071f622df51a95895068a Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Wed, 4 Oct 2023 22:26:13 +0200
+Subject: [PATCH] Fix rotoscoping filter crash on image with height = 0
+
+---
+ src/modules/plusgpl/filter_rotoscoping.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/plusgpl/filter_rotoscoping.c b/src/modules/plusgpl/filter_rotoscoping.c
+index 35e3931f0..782c39422 100644
+--- a/src/modules/plusgpl/filter_rotoscoping.c
++++ b/src/modules/plusgpl/filter_rotoscoping.c
+@@ -337,7 +337,7 @@ static int filter_get_image(mlt_frame frame,
+     int offsetx = 0;
+     int offsety = 0;
+     // Compare aspect ratio
+-    if (100 * *width / *height != 100 * normalized_width / normalized_height) {
++    if (*height > 0 && 100 * *width / *height != 100 * normalized_width / normalized_height) {
+         // Source has a different aspect ratio, apply scaling
+         double xfactor = normalized_width / *width;
+         double yfactor = normalized_height / *height;
