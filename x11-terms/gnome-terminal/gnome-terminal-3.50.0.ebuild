@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="debug +gnome-shell +nautilus vanilla"
+IUSE="debug gnome-shell nautilus vanilla"
 
 # Upstream is hostile and refuses to upload tarballs.
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
