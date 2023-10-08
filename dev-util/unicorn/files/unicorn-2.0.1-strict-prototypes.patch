@@ -1,0 +1,299 @@
+commit 5983b399d84c534ad2f19461dd38f69e70ea9cfb
+Upstream: https://github.com/unicorn-engine/unicorn/pull/1886
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Sun Oct 8 13:39:13 2023 +0200
+
+    use full prototypes for functions without parameters
+
+--- a/bindings/ruby/unicorn_gem/ext/unicorn.c
++++ b/bindings/ruby/unicorn_gem/ext/unicorn.c
+@@ -31,7 +31,7 @@ VALUE SavedContext = Qnil;
+ VALUE Hook = Qnil;
+ 
+ 
+-void Init_unicorn_engine() {
++void Init_unicorn_engine(void) {
+     rb_require("unicorn_engine/unicorn_const");
+     UnicornModule = rb_define_module("UnicornEngine");
+     UcError = rb_define_class_under(UnicornModule, "UcError", rb_eStandardError);
+--- a/samples/mem_apis.c
++++ b/samples/mem_apis.c
+@@ -193,7 +193,7 @@ static void do_nx_demo(bool cause_fault)
+     uc_close(uc);
+ }
+ 
+-static void nx_test()
++static void nx_test(void)
+ {
+     printf("NX demo - step 1: show that code runs to completion\n");
+     do_nx_demo(false);
+@@ -276,7 +276,7 @@ static void do_perms_demo(bool change_perms)
+     uc_close(uc);
+ }
+ 
+-static void perms_test()
++static void perms_test(void)
+ {
+     printf("Permissions demo - step 1: show that area is writeable\n");
+     do_perms_demo(false);
+@@ -355,7 +355,7 @@ static void do_unmap_demo(bool do_unmap)
+     uc_close(uc);
+ }
+ 
+-static void unmap_test()
++static void unmap_test(void)
+ {
+     printf("Unmap demo - step 1: show that area is writeable\n");
+     do_unmap_demo(false);
+--- a/samples/sample_arm.c
++++ b/samples/sample_arm.c
+@@ -366,7 +366,7 @@ static void test_thumb_ite_internal(bool step, uint32_t *r2_out,
+     *r3_out = r3;
+ }
+ 
+-static void test_thumb_ite()
++static void test_thumb_ite(void)
+ {
+     uint32_t r2, r3;
+     uint32_t step_r2, step_r3;
+@@ -390,7 +390,7 @@ static void test_thumb_ite()
+     }
+ }
+ 
+-static void test_read_sctlr()
++static void test_read_sctlr(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+--- a/samples/sample_arm64.c
++++ b/samples/sample_arm64.c
+@@ -197,7 +197,7 @@ static void test_arm64eb(void)
+     uc_close(uc);
+ }
+ 
+-static void test_arm64_sctlr()
++static void test_arm64_sctlr(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+@@ -248,7 +248,7 @@ static uint32_t hook_mrs(uc_engine *uc, uc_arm64_reg reg,
+     return 1;
+ }
+ 
+-static void test_arm64_hook_mrs()
++static void test_arm64_hook_mrs(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+--- a/samples/sample_batch_reg.c
++++ b/samples/sample_batch_reg.c
+@@ -49,7 +49,7 @@ void hook_code(uc_engine *uc, uint64_t addr, uint32_t size, void *user_data)
+     printf("HOOK_CODE: 0x%" PRIx64 ", 0x%x\n", addr, size);
+ }
+ 
+-int main()
++int main(void)
+ {
+     int i;
+     uc_hook sys_hook;
+--- a/samples/sample_ctl.c
++++ b/samples/sample_ctl.c
+@@ -79,7 +79,7 @@ static void trace_new_edge(uc_engine *uc, uc_tb *cur, uc_tb *prev, void *data)
+            prev->pc + prev->size - 1, cur->pc);
+ }
+ 
+-void test_uc_ctl_exits()
++void test_uc_ctl_exits(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+@@ -193,7 +193,7 @@ double time_emulation(uc_engine *uc, uint64_t start, uint64_t end)
+     return (t2 - t1) * 1000.0 / CLOCKS_PER_SEC;
+ }
+ 
+-static void test_uc_ctl_tb_cache()
++static void test_uc_ctl_tb_cache(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+--- a/samples/sample_x86.c
++++ b/samples/sample_x86.c
+@@ -1240,7 +1240,7 @@ static void test_i386_invalid_mem_read_in_tb(void)
+     uc_close(uc);
+ }
+ 
+-static void test_i386_smc_xor()
++static void test_i386_smc_xor(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+@@ -1319,7 +1319,7 @@ static void mmio_write_callback(uc_engine *uc, uint64_t offset, unsigned size,
+     return;
+ }
+ 
+-static void test_i386_mmio()
++static void test_i386_mmio(void)
+ {
+     uc_engine *uc;
+     int r_ecx = 0xdeadbeef;
+@@ -1392,7 +1392,7 @@ static bool test_i386_hook_mem_invalid_cb(uc_engine *uc, uc_mem_type type,
+     return true;
+ }
+ 
+-static void test_i386_hook_mem_invalid()
++static void test_i386_hook_mem_invalid(void)
+ {
+     uc_engine *uc;
+     uc_hook hook;
+--- a/samples/sample_x86_32_gdt_and_seg_regs.c
++++ b/samples/sample_x86_32_gdt_and_seg_regs.c
+@@ -163,7 +163,7 @@ static void hex_dump(unsigned char *ptr, unsigned int len)
+ }
+ */
+ 
+-static void gdt_demo()
++static void gdt_demo(void)
+ {
+     uc_engine *uc;
+     uc_hook hook1, hook2;
+--- a/tests/regress/00opcode_uc_crash.c
++++ b/tests/regress/00opcode_uc_crash.c
+@@ -7,7 +7,7 @@
+ #define X86_CODE32 "\x00" // add byte ptr ds:[eax],al
+ #define ADDRESS 0x1000000
+ 
+-static void VM_exec()
++static void VM_exec(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+--- a/tests/regress/arm_enable_vfp.c
++++ b/tests/regress/arm_enable_vfp.c
+@@ -6,7 +6,7 @@
+ #define ADDRESS 0x1000
+ #define ARM_VMOV "\xC0\xEF\x10\x00" // VMOV.I32 D16, #0 ; Vector Move
+ 
+-int main()
++int main(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+--- a/tests/regress/block_test.c
++++ b/tests/regress/block_test.c
+@@ -24,7 +24,7 @@ void cb_hookblock(uc_engine *uc, uint64_t address, uint32_t size, void *user_dat
+    fprintf(stderr, "ok %d - basic block size is correct\n", count++);
+ }
+ 
+-int main() {
++int main(void) {
+    uc_engine *uc;
+ 
+    fprintf(stderr, "# basic block callback test\n");
+--- a/tests/regress/eflags_noset.c
++++ b/tests/regress/eflags_noset.c
+@@ -20,7 +20,7 @@ typedef uint64_t puint;
+ #define PRIX3264 PRIX64
+ #endif
+ 
+-uint32_t realEflags()
++uint32_t realEflags(void)
+ {
+     puint val = 0;
+ 
+@@ -55,7 +55,7 @@ uint32_t realEflags()
+     return (uint32_t)val & 0xFFFFFFFF;
+ }
+ 
+-static void VM_exec()
++static void VM_exec(void)
+ {
+ #if defined(__i386__) || defined(__x86_64__)
+     uc_engine *uc;
+--- a/tests/regress/eflags_nosync.c
++++ b/tests/regress/eflags_nosync.c
+@@ -64,7 +64,7 @@ static bool hook_invalid_mem(uc_engine *uc, uc_mem_type type, uint64_t address,
+     }
+ }
+ 
+-static void VM_exec()
++static void VM_exec(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+--- a/tests/regress/emu_clear_errors.c
++++ b/tests/regress/emu_clear_errors.c
+@@ -38,7 +38,7 @@ bool cb_hookunmapped(uc_engine *uc, uc_mem_type type, uint64_t address, uint32_t
+              "\x56" \
+              "\xFF\x15\x20\x20\x00\x10"
+ 
+-int main() {
++int main(void) {
+    uc_engine *uc;
+ 
+    uc_err err = uc_open(UC_ARCH_X86, UC_MODE_32, &uc);
+--- a/tests/regress/hook_extrainvoke.c
++++ b/tests/regress/hook_extrainvoke.c
+@@ -14,7 +14,7 @@ void hook_ins(uc_engine *uc, uint64_t address, uint32_t size, void *user_data)
+     printf("hook called\n");
+ }
+ 
+-static void VM_exec()
++static void VM_exec(void)
+ {
+     uc_engine *uc;
+     uc_err err;
+--- a/tests/regress/map_crash.c
++++ b/tests/regress/map_crash.c
+@@ -6,7 +6,7 @@
+ #define UC_BUG_WRITE_SIZE 13000
+ #define UC_BUG_WRITE_ADDR 0x1000
+ 
+-int main()
++int main(void)
+ {
+     int size;
+     uint8_t *buf;
+--- a/tests/regress/map_write.c
++++ b/tests/regress/map_write.c
+@@ -6,7 +6,7 @@
+ #define SIZE 1024*64
+ #define OVERFLOW 1
+ 
+-int main()
++int main(void)
+ {
+     uc_engine *uc = NULL;
+     uint8_t *buf = NULL, *buf2 = NULL;
+--- a/tests/regress/mips_kseg0_1.c
++++ b/tests/regress/mips_kseg0_1.c
+@@ -20,7 +20,7 @@
+ 
+ #define MIPS_CODE_EL "\x56\x34\x21\x34" // ori $at, $at, 0x3456;
+ 
+-int main() 
++int main(void)
+ {
+ 
+     uc_engine *uc;
+--- a/tests/regress/sigill.c
++++ b/tests/regress/sigill.c
+@@ -16,7 +16,7 @@ void _interrupt(uc_engine *uc, uint32_t intno, void *user_data)
+     }
+ }
+ 
+-int main()
++int main(void)
+ {
+     int size;
+     uint8_t *buf;
+--- a/tests/regress/sigill2.c
++++ b/tests/regress/sigill2.c
+@@ -6,7 +6,7 @@
+ #define UC_BUG_WRITE_SIZE 128
+ #define UC_BUG_WRITE_ADDR 0x2000
+ 
+-int main()
++int main(void)
+ {
+     int size;
+     uc_engine *uc;
