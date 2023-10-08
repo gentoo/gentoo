@@ -28,7 +28,7 @@ BDEPEND="
 "
 
 PATCHES=(
-    "${FILESDIR}"/${PV}-Make-help2man-depend-on-manpage-option.patch
+	"${FILESDIR}"/${PV}-Make-help2man-depend-on-manpage-option.patch
 )
 
 src_configure() {
