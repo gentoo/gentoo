@@ -9,9 +9,9 @@
 name="Greenbone Vulnerability Manager"
 command="/bin/true"
 command_background="true"
-command_user="${GSAD_USER}:${GSAD_GROUP}"
+command_user="${GVM_USER}:${GVM_GROUP}"
 pidfile="/run/gvm/gvm.pid"
-retry="${GSAD_TIMEOUT}"
+retry="${GVM_TIMEOUT}"
 
 depend() {
 	after bootmisc
