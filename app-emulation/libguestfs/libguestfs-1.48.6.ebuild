@@ -118,7 +118,8 @@ RDEPEND="
 # Upstream build scripts compile and install Lua bindings for the ABI version
 # obtained by running 'lua' on the build host
 BDEPEND="
-	app-alternatives/yacc
+	sys-devel/bison
+	sys-devel/flex
 	virtual/pkgconfig
 	lua? ( ${LUA_DEPS} )
 "
