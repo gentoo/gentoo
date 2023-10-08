@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,18 +12,24 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
+
+PATCHES=( "${FILESDIR}"/${P}-posix.patch )
 
 src_prepare() {
 	default
-	sed -i -e 's:$(GCC_CFLAGS):\0 $(LDFLAGS):' Makefile || die
+	# just rely on implicit rules
+	rm Makefile || die
+}
+
+src_configure() {
+	tc-export CC
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" GCC_OPT="${CFLAGS}"
+	emake mac-robber
 }
 
 src_install() {
 	dobin mac-robber
-	dodoc CHANGES README
+	einstalldocs
 }
