@@ -11,7 +11,7 @@ SRC_URI="https://github.com/OCamlPro-Iguernlala/${PN}/archive/v${PV}.tar.gz -> $
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DOCS=( CHANGES.md README.md extra/simplex_invariants.txt extra/TODO.txt )
 
