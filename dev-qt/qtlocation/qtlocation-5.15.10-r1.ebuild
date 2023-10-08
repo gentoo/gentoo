@@ -6,7 +6,7 @@ EAPI=8
 if [[ ${PV} != *9999* ]]; then
 	QT5_KDEPATCHSET_REV=1
 	MAPBOXGL_COMMIT=4c88f2c0e61daa89f584a8a9a3eba210221c6920
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 inherit qt5-build
