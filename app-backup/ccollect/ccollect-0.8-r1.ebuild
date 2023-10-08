@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Pseudo incremental backup with different exclude lists using hardlinks and rsync"
 HOMEPAGE="https://www.nico.schottelius.org/software/ccollect/"
@@ -11,21 +11,20 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ppc ~sparc x86"
 IUSE="doc examples"
+# tests need ssh-access
+RESTRICT="test"
 
-DEPEND="
+RDEPEND="net-misc/rsync"
+BDEPEND="
 	doc? (
 		>=app-text/asciidoc-8.1.0
 		app-text/docbook-xsl-stylesheets
 		app-text/docbook-xml-dtd:4.2
 		dev-libs/libxslt
 	)"
-RDEPEND="net-misc/rsync"
-
-# tests need ssh-access
-RESTRICT="test"
 
 src_compile() {
-	use doc && emake XSL=/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl documentation
+	use doc && emake XSL="${BROOT}"/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl documentation
 }
 
 src_install() {
@@ -64,15 +63,15 @@ src_install() {
 pkg_postinst() {
 	ewarn "If you're upgrading from 0.6.x or less, you'll have to"
 	ewarn "upgrade your existing configuration as follows:"
-	ewarn "1. Make the scripts in ${EROOT%/}/usr/share/ccollect/scripts executable"
-	ewarn "2. Run all config-pre-\$VER-to-\$VER.sh in ${EROOT%/}/usr/share/ccollect/scripts"
+	ewarn "1. Make the scripts in ${EROOT}/usr/share/ccollect/scripts executable"
+	ewarn "2. Run all config-pre-\$VER-to-\$VER.sh in ${EROOT}/usr/share/ccollect/scripts"
 	ewarn "   ascending order, where \$VER is greater or equal than the version"
 	ewarn "   you upgraded from."
 	ewarn "Example:"
 	ewarn "  You upgraded from 0.5, thus you have to run:"
-	ewarn "  ${EROOT%/}/usr/share/ccollect/tools/config-pre-0.6-to-0.6.sh"
-	ewarn "  ${EROOT%/}/usr/share/ccollect/tools/config-pre-0.7-to-0.7.sh"
+	ewarn "  ${EROOT}/usr/share/ccollect/tools/config-pre-0.6-to-0.6.sh"
+	ewarn "  ${EROOT}/usr/share/ccollect/tools/config-pre-0.7-to-0.7.sh"
 
-	elog "Please note that many tools are now installed directly to ${EROOT%/}/usr/bin"
+	elog "Please note that many tools are now installed directly to ${EROOT}/usr/bin"
 	elog "as recommended by upstream."
 }
