@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,23 +12,20 @@ SRC_URI="http://www.muempf.de/down/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND=">=app-cdr/cdrtools-1.11.28"
-DEPEND=""
 
-src_prepare() {
-	sed -i -e '/cd\(backup\|restore\)/,+1 s:CFLAGS:LDFLAGS:' \
-		"${S}"/Makefile || die "sed Makefile failed"
-	default
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-u_char-musl.patch
+)
 
-src_compile() {
-	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
 	dobin cdbackup cdrestore
 	doman cdbackup.1 cdrestore.1
-	dodoc CHANGES CREDITS README
+	einstalldocs
 }
