@@ -22,6 +22,10 @@ BDEPEND="virtual/pkgconfig"
 RDEPEND="${DEPEND}"
 REQUIRED_USE="?? ( icons nerdfonts emoji )"
 
+PATCHES=(
+	"${FILESDIR}/nnn-4.9_fix_colemak_patch.patch"
+)
+
 src_prepare() {
 	default
 	tc-export CC
