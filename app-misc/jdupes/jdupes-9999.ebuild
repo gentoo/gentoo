@@ -17,7 +17,9 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="dev-libs/libjodycode"
+# Please keep a careful eye on the minimum libjoycode version! (Just pick
+# latest released at the time if necessary.)
+DEPEND=">=dev-libs/libjodycode-3.0"
 RDEPEND="${DEPEND}"
 
 IUSE="+dedupe lowmem hardened"
