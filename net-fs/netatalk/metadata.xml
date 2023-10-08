@@ -15,5 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">netatalk</remote-id>
+		<remote-id type="github">Netatalk/netatalk</remote-id>
 	</upstream>
 </pkgmetadata>
