@@ -22,9 +22,9 @@ microsoft.netcore.platforms@1.1.0
 microsoft.netcore.platforms@2.0.0
 microsoft.netcore.targets@1.0.1
 microsoft.netcore.targets@1.1.0
-microsoft.netframework.referenceassemblies.net45@1.0.2
-microsoft.netframework.referenceassemblies.net472@1.0.2
-microsoft.netframework.referenceassemblies@1.0.2
+microsoft.netframework.referenceassemblies.net45@1.0.3
+microsoft.netframework.referenceassemblies.net472@1.0.3
+microsoft.netframework.referenceassemblies@1.0.3
 microsoft.testplatform.objectmodel@17.4.1
 microsoft.testplatform.testhost@17.4.1
 microsoft.win32.primitives@4.0.1
