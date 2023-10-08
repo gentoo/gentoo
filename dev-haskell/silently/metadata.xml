@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">trystan/silently</remote-id>
+		<remote-id type="hackage">silently</remote-id>
+		<remote-id type="github">hspec/silently</remote-id>
 	</upstream>
 </pkgmetadata>
