@@ -3,6 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 : ${GSAD_USER:=gvm}
+: ${GSAD_GROUP:=gvm}
 : ${GSAD_TIMEOUT:=30}
 : ${GSAD_PIDFILE:="/run/gsad/gsad.pid"}
 
@@ -21,6 +22,10 @@ start_pre() {
         checkpath -d --mode 0755 --owner root /run/gsad
 }
 
+start_post() {
+        checkpath -f --mode 0644 --owner "${GSAD_USER}:${GSAD_GROUP}" /var/log/gvm/gsad.log
+}
+
 stop_post() {
 	if [ -f "${GSAD_PIDFILE}" ]; then
 		ebegin "Removing PID file"
@@ -28,4 +33,3 @@ stop_post() {
 		eend $?
 	fi
 }
-
