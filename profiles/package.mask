@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-10-08)
+# Upstream gone, kept on life support by Debian, most distros don't
+# carry this anymore, Transmeta CPUs are long obsolete at this point.
+# Removal on 2023-11-07. Bug #541694, #905186.
+app-admin/longrun
+
+# David Seifert <soap@gentoo.org> (2023-10-08)
 # Unmaintained, typical broken suckless build system, no upstream
 # activity, only Fedora still carries it.
 # Removal on 2023-11-06. Bug #732422, #914638.
