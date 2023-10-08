@@ -15,5 +15,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">python-efl</remote-id>
+		<remote-id type="github">DaveMDS/python-efl</remote-id>
 	</upstream>
 </pkgmetadata>
