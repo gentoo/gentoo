@@ -71,7 +71,7 @@ src_unpack() {
 		unpack ${tarname}
 
 		if [[ -n ${PATCHSET_VERSION} ]] ; then
-			unpack ${PN}-${PATCHSET_VERSION}.tar.bz2
+			unpack ${PN}-${PATCHSET_VERSION}.tar.xz
 		fi
 	fi
 
