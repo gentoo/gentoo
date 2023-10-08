@@ -4,7 +4,7 @@
 EAPI=7
 WX_GTK_VER="3.0-gtk3"
 
-inherit elisp-common flag-o-matic java-pkg-opt-2 systemd toolchain-funcs wxwidgets
+inherit autotools elisp-common flag-o-matic java-pkg-opt-2 systemd toolchain-funcs wxwidgets
 
 # NOTE: If you need symlinks for binaries please tell maintainers or
 # open up a bug to let it be created.
@@ -38,15 +38,8 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 "
-
-# libei.so (from dev-libs/libei) conflicts with libei.a from
-# erl_interface. Causes build faiure. Erlang build system needs to be
-# patched to prefer its own libei instead of system libei. Installed
-# into /usr/lib/erlang so no conflict following installation. Bug
-# #912888.
 DEPEND="${RDEPEND}
 	dev-lang/perl
-	!!dev-libs/libei
 "
 
 S="${WORKDIR}/otp-OTP-${PV}"
@@ -67,6 +60,14 @@ src_prepare() {
 	# bug #797886: erlang's VM does unsafe casts for ints
 	# to pointers and back. This breaks on gcc-11 -flto.
 	append-flags -fno-strict-aliasing
+
+	# Ensure that we use erl_interface's libei.a, and not the system
+	# libei.so from dev-libs/libei. Bug #912888.
+	sed -i 's/-lei$/-l:libei.a/' \
+		"${S}"/lib/odbc/c_src/Makefile.in || die
+	(cd "${S}"/lib/odbc &&
+		 eautoconf -B "${S}"/make/autoconf &&
+		 eautoheader -B "${S}"/make/autoconf) || die
 }
 
 src_configure() {
