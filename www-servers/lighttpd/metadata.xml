@@ -29,5 +29,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">lighttpd/lighttpd1.4</remote-id>
+		<remote-id type="github">lighttpd/lighttpd2</remote-id>
 	</upstream>
 </pkgmetadata>
