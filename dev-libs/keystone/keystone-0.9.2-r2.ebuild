@@ -28,7 +28,7 @@ SLOT="0"
 # Keep in sync with llvm/CMakeLists.txt
 KEYSTONE_TARGETS="AArch64 ARM Hexagon Mips PowerPC Sparc SystemZ X86"
 
-IUSE="debug python"
+IUSE="python"
 
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
