@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-10-08)
+# Unmaintained, EAPI 6, tons of patches we have to carry, last release
+# 20 years ago, all major distros have removed this.
+# Removal on 2023-11-07. Bug #602382.
+app-backup/flexbackup
+
+# David Seifert <soap@gentoo.org> (2023-10-08)
 # Unmaintained, last release over 23 years(!) ago, multiple QA issues,
 # no other major distro carries this anymore. Removal on 2023-11-07.
 # Bug #425872, #452982, #520968, #605450, #878621, #905945.
