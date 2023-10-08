@@ -9,7 +9,7 @@ DESCRIPTION="Pseudo incremental backup with different exclude lists using hardli
 HOMEPAGE="https://www.nico.schottelius.org/software/ccollect/"
 SRC_URI="https://www.nico.schottelius.org/software/${PN}/download/${P}.tar.bz2"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ppc ~sparc x86"
 IUSE="doc examples"
