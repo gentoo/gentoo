@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -14,25 +14,30 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PV}-ldflags.patch
 	default
+	# just rely on implicit rules
+	rm Makefile || die
+}
+
+src_configure() {
 	tc-export CC
+}
+
+src_compile() {
+	emake color
 }
 
 src_install() {
 	dobin color
-	dodoc CHANGELOG README
-
-	# symlink for british users.
-	dosym color /usr/bin/colour
+	einstalldocs
 }
 
 pkg_postinst() {
 	elog "For information on using colour in your shell scripts,"
-	elog "run \`color\` without any arguments."
+	elog "run 'color' without any arguments."
 	elog
 	elog "To see all the colours available, use this command"
 	elog "	$ color --list"
 	elog
-	elog "More examples are available in ${EPREFIX}/usr/share/doc/${PF}."
+	elog "More examples are available in ${EROOT}/usr/share/doc/${PF}."
 }
