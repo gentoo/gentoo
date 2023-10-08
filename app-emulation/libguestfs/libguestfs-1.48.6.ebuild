@@ -6,7 +6,7 @@ EAPI=8
 # Bump with app-emulation/guestfs-tools and app-emulation/libguestfs-appliance (if any new release there)
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools flag-o-matic linux-info lua-single perl-functions python-single-r1 strip-linguas toolchain-funcs
 
@@ -24,8 +24,10 @@ KEYWORDS="amd64 ~x86"
 IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua +ocaml +perl python ruby selinux static-libs systemtap test"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	lua? ( ${LUA_REQUIRED_USE} )
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 
 # Failures - doc
 COMMON_DEPEND="
@@ -92,7 +94,8 @@ COMMON_DEPEND="
 "
 # Some OCaml is always required
 # bug #729674
-DEPEND="${COMMON_DEPEND}
+DEPEND="
+	${COMMON_DEPEND}
 	>=dev-lang/ocaml-4.03:=[ocamlopt]
 	dev-util/gperf
 	dev-ml/findlib[ocamlopt]
@@ -107,7 +110,8 @@ DEPEND="${COMMON_DEPEND}
 	ruby? ( dev-lang/ruby virtual/rubygems dev-ruby/rake )
 	test? ( introspection? ( dev-libs/gjs ) )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
 	app-emulation/libguestfs-appliance
 	acct-group/kvm
 "
@@ -143,6 +147,9 @@ src_prepare() {
 src_configure() {
 	# bug #794877
 	tc-export AR
+
+	# Needs both bison+flex (bug #915339, see configure too)
+	unset LEX YACC
 
 	# Skip Bash test
 	# (See 13-test-suite.log in linked bug)
