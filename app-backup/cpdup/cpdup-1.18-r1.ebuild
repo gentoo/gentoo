@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,22 +13,23 @@ S="${WORKDIR}/${PN}"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="threads"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.11-unused.patch )
+RDEPEND="dev-libs/libbsd:="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-portable.patch
+)
 
 src_prepare() {
 	default
-
-	cp "${FILESDIR}"/Makefile.linux Makefile || die
-	# bits/stat.h has __unused too
-	sed -i 's/__unused/__cpdup_unused/' *.c || die
-	echo "#define strlcpy(a,b,c) strncpy(a,b,c)" >> cpdup.h || die
+	rm compat_linux.c || die
 }
 
 src_configure() {
-	tc-export CC
-	use threads || MAKEOPTS+=" NOPTHREADS=1"
+	tc-export CC PKG_CONFIG
 }
 
 src_install() {
