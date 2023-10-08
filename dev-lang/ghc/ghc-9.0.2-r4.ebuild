@@ -440,7 +440,7 @@ pkg_setup() {
 	else
 		if ! yet_binary; then
 			eerror "Please try emerging with USE=ghcbootstrap and report build"
-			eerror "sucess or failure to the haskell team (haskell@gentoo.org)"
+			eerror "success or failure to the haskell team (haskell@gentoo.org)"
 			die "No binary available for '${ARCH}' arch yet, USE=ghcbootstrap"
 		fi
 	fi
@@ -738,7 +738,7 @@ src_configure() {
 		fi
 
 		if use ghcmakebinary; then
-			# When building booting libary we are trying to
+			# When building booting library we are trying to
 			# bundle or restrict most of external depends
 			# with unstable ABI:
 			#  - embed libffi (default GHC behaviour)
@@ -856,7 +856,7 @@ src_install() {
 	PKGCACHE="${package_confdir}"/package.cache
 	# copy the package.conf.d, including timestamp, save it so we can help
 	# users that have a broken package.conf.d
-	cp -pR "${package_confdir}"{,.initial} || die "failed to backup intial package.conf.d"
+	cp -pR "${package_confdir}"{,.initial} || die "failed to backup initial package.conf.d"
 
 	# copy the package.conf, including timestamp, save it so we later can put it
 	# back before uninstalling, or when upgrading.
