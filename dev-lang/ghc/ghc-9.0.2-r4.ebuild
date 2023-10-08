@@ -165,6 +165,7 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
 		dev-python/sphinx
+		dev-python/sphinx-rtd-theme
 		>=dev-libs/libxslt-1.1.2 )
 	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )
 	test? ( ${PYTHON_DEPS} )
@@ -596,6 +597,22 @@ src_prepare() {
 		eapply "${WORKDIR}"/${P}-riscv64-llvm.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-fptools.patch # clang-16 workaround
 		eapply "${FILESDIR}"/${PN}-9.0.2-sphinx-6.patch
+
+		# FIXME: A hack that allows dev-python/sphinx-7 to build the docs
+		#
+		# GHC has updated the bundled version here:
+		# <https://gitlab.haskell.org/ghc/ghc/-/commit/70526f5bd8886126f49833ef20604a2c6477780a>
+		# However, the patch is difficult to apply and our versions of GHC don't
+		# have the update, so we symlink to the system version instead.
+		if use doc; then
+			local python_str="import sphinx_rtd_theme; print(sphinx_rtd_theme.__file__)"
+			local rtd_theme_dir="$(dirname $("${EPYTHON}" -c "$python_str"))"
+			local orig_rtd_theme_dir="${S}/docs/users_guide/rtd-theme"
+
+			einfo "Replacing bundled rtd-theme with dev-python/sphinx-rtd-theme"
+			rm -r "${orig_rtd_theme_dir}" || die
+			ln -s "${rtd_theme_dir}" "${orig_rtd_theme_dir}" || die
+		fi
 
 		# mingw32 target
 		pushd "${S}/libraries/Win32"
