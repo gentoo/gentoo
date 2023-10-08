@@ -17,13 +17,16 @@ if [[ "${PV}" == *9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.torproject.org/tpo/core/arti"
 else
 	SRC_URI="https://gitlab.torproject.org/tpo/core/${PN}/-/archive/${PN}-v${PV}/${PN}-${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2
-		$(cargo_crate_uris ${CRATES})"
+		${CARGO_CRATE_URIS}"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="MIT Apache-2.0"
-LICENSE+=""
+LICENSE+="
+	Apache-2.0 BSD CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 Unlicense
+	ZLIB
+"
 SLOT="0"
 
 DEPEND="app-arch/xz-utils
