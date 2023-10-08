@@ -1,7 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh"
 HOMEPAGE="http://www.miek.nl/projects/hdup2/index.html"
@@ -12,30 +14,33 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="crypt"
 
-CDEPEND="
+DEPEND="
 	app-arch/bzip2
 	app-arch/gzip
 	app-arch/tar
 	>=dev-libs/glib-2.0"
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	virtual/openssh
 	sys-apps/coreutils
 	sys-apps/findutils
 	crypt? ( app-crypt/mcrypt )"
-DEPEND="
-	${CDEPEND}
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.0.14-fix-build-system.patch )
+PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
+
+src_prepare() {
+	default
+	eautoconf # bug 906003
+}
 
 src_install() {
 	HTML_DOCS=( doc/FAQ.html )
 	default
-	dodoc Credits
+	dodoc -r Credits examples
 
 	insinto /usr/share/${PN}
-	doins -r contrib examples
+	doins -r contrib
 }
 
 pkg_postinst() {
