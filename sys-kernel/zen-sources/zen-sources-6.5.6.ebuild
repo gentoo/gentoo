@@ -8,6 +8,9 @@ K_GENPATCHES_VER="8"
 K_SECURITY_UNSUPPORTED="1"
 K_NOSETEXTRAVERSION="1"
 
+# For zen1 and zen2 patches
+MY_ZEN="2"
+
 inherit kernel-2 unpacker
 detect_version
 detect_arch
@@ -21,17 +24,17 @@ BDEPEND="$(unpacker_src_uri_depends)"
 
 DESCRIPTION="The Zen Kernel Live Sources"
 
-ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV}-zen1/linux-v${PV}-zen1.patch.zst"
+ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV}-zen${MY_ZEN}/linux-v${PV}-zen${MY_ZEN}.patch.zst"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${ZEN_URI}"
 
-UNIPATCH_LIST="${WORKDIR}/linux-v${PV}-zen1.patch"
+UNIPATCH_LIST="${WORKDIR}/linux-v${PV}-zen${MY_ZEN}.patch"
 UNIPATCH_STRICTORDER="yes"
 
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
 ${HOMEPAGE}, also go to #zen-sources on oftc"
 
 src_unpack() {
-	unpacker "linux-v${PV}-zen1.patch.zst"
+	unpacker "linux-v${PV}-zen${MY_ZEN}.patch.zst"
 	kernel-2_src_unpack
 }
 
@@ -46,7 +49,7 @@ pkg_setup() {
 }
 
 src_install() {
-	rm "${WORKDIR}/linux-v${PV}-zen1.patch" || die
+	rm "${WORKDIR}/linux-v${PV}-zen${MY_ZEN}.patch" || die
 	kernel-2_src_install
 }
 
