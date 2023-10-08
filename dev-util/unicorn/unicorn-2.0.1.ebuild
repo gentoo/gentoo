@@ -36,6 +36,13 @@ BDEPEND="virtual/pkgconfig
 
 UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
 
+# suppress warning wrt 'implicit function declaration' in config logs due to
+# auto-detection of some libc functions (bug #906919)
+QA_CONFIG_IMPL_DECL_SKIP=(
+	clock_adjtime
+	malloc_trim
+)
+
 wrap_python() {
 	if use python; then
 		# src_prepare
