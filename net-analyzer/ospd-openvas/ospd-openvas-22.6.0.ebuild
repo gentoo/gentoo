@@ -18,14 +18,15 @@ IUSE="doc +notus"
 
 DEPEND="
 	acct-user/gvm
-	dev-python/defusedxml[${PYTHON_USEDEP}]
-	dev-python/deprecated[${PYTHON_USEDEP}]
-	dev-python/lxml[${PYTHON_USEDEP}]
+	>=dev-python/defusedxml-0.6[${PYTHON_USEDEP}]
+	>=dev-python/deprecated-1.2.10[${PYTHON_USEDEP}]
+	>=dev-python/lxml-4.5.2[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
-	dev-python/paramiko[${PYTHON_USEDEP}]
-	>=dev-python/psutil-5.7.0[${PYTHON_USEDEP}]
-	>=dev-python/redis-3.5.3[${PYTHON_USEDEP}]
+	>=dev-python/psutil-5.5.1[${PYTHON_USEDEP}]
+	>=dev-python/redis-4.5.0[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.5.0[${PYTHON_USEDEP}]
+	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
+	>=dev-python/python-gnupg-0.4.8[${PYTHON_USEDEP}]
 	net-libs/paho-mqtt-c
 	app-misc/mosquitto
 "

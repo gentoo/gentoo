@@ -11,10 +11,11 @@ command=/usr/bin/ospd-openvas
 command_user="${GVM_USER}:${GVM_GROUP}"
 command_args="${OSPD_OPENVAS_OPTIONS} \
 	--config /etc/gvm/ospd-openvas.conf"
+pidfile=/run/ospd/ospd-openvas.pid
 retry="${OSPD_TIMEOUT}"
 
 depend() {
-	after bootmisc
+	after bootmisc redis-openvas
 	need localmount redis-openvas
 }
 
