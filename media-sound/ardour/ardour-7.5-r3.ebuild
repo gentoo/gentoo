@@ -44,6 +44,7 @@ RDEPEND="
 	media-libs/rubberband
 	media-libs/taglib
 	media-libs/vamp-plugin-sdk
+	net-libs/libwebsockets
 	net-misc/curl
 	sys-libs/readline:0=
 	sci-libs/fftw:3.0[threads]
