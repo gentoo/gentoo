@@ -323,7 +323,6 @@ dev-erlang/protobuffs
 # Matt Turner <mattst88@gentoo.org> (2023-07-06)
 # GNOME 45 mask
 >=app-editors/ghex-45_alpha
->=app-misc/gnote-45_alpha
 >=gnome-extra/gnome-logs-45_alpha
 >=net-misc/gnome-remote-desktop-45_alpha
 >=x11-libs/pango-1.51.0
