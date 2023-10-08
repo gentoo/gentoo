@@ -1,0 +1,24 @@
+https://github.com/openzfs/zfs/pull/15372
+
+From bb6ce273b2e04b609cc3d75d60afc3105251bc1f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 8 Oct 2023 02:00:29 +0100
+Subject: [PATCH] config/zfs-build.m4: add Gentoo's bash-completion path
+
+Followup e69ade32e116e72d03068c03799924c3f1a15c95 by adding Gentoo's
+bash completion path.
+
+We should probably consider using/honouring the standard --with-bashcompletiondir
+autoconf option as well, but that's something to do later.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/config/zfs-build.m4
++++ b/config/zfs-build.m4
+@@ -626,6 +626,7 @@ AC_DEFUN([ZFS_AC_DEFAULT_PACKAGE], [
+ 		ubuntu)     bashcompletiondir=/usr/share/bash-completion/completions   ;;
+ 		debian)     bashcompletiondir=/usr/share/bash-completion/completions   ;;
+ 		freebsd)    bashcompletiondir=$sysconfdir/bash_completion.d;;
++		gentoo)     bashcompletiondir=/usr/share/bash-completion/completions   ;;
+ 		*)          bashcompletiondir=/etc/bash_completion.d   ;;
+ 	esac
+ 	AC_MSG_RESULT([$bashcompletiondir])
