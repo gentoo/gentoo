@@ -6,7 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="hackage">commonmark-extensions</remote-id>
-		<remote-id type="github">jgm/commonmark-hs</remote-id>
+		<remote-id type="hackage">megaparsec</remote-id>
+		<remote-id type="github">mrkkrp/megaparsec</remote-id>
 	</upstream>
 </pkgmetadata>
