@@ -1,6 +1,9 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-10-08)
+# dev-db/mysql not keyworded here
+dev-perl/DBD-mysql mysql
 
 # Patrick Lauer <patrick@gentoo.org> (2023-10-05)
 # JIT / llvm support needs too old llvm

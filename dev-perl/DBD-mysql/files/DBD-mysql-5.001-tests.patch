@@ -1,0 +1,39 @@
+https://github.com/perl5-dbi/DBD-mysql/commit/18626cfefdc4568ed0de7129a1bfb5916c21f5e6
+
+From 18626cfefdc4568ed0de7129a1bfb5916c21f5e6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dani=C3=ABl=20van=20Eeden?= <git@myname.nl>
+Date: Thu, 5 Oct 2023 09:45:44 +0200
+Subject: [PATCH] Update version test for v5.x
+
+---
+ t/10connect.t | 2 +-
+ t/version.t   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/10connect.t b/t/10connect.t
+index 6f36c4db..bfca3448 100644
+--- a/t/10connect.t
++++ b/t/10connect.t
+@@ -45,7 +45,7 @@ like(
+   'get_info SQL_DRIVER_VER like dd.dd.dddd'
+ );
+ 
+-like($driver_ver, qr/^04\./, 'SQL_DRIVER_VER starts with "04." (update for 5.x)');
++like($driver_ver, qr/^05\./, 'SQL_DRIVER_VER starts with "05." (update for 6.x)');
+ 
+ # storage engine function is @@storage_engine in up to 5.5.03
+ # at that version, @@default_storage_engine is introduced
+diff --git a/t/version.t b/t/version.t
+index 47d1778f..87b0db04 100644
+--- a/t/version.t
++++ b/t/version.t
+@@ -6,7 +6,7 @@ use Bundle::DBD::mysql;
+ use Test::More;
+ 
+ like($DBD::mysql::VERSION, qr/^\d\.\d{2,3}(|_\d\d)$/, 'version format');
+-like($DBD::mysql::VERSION, qr/^4\./, 'version starts with "4." (update for 5.x)');
++like($DBD::mysql::VERSION, qr/^5\./, 'version starts with "5." (update for 6.x)');
+ is(
+   $DBD::mysql::VERSION,
+   $Bundle::DBD::mysql::VERSION,
+
