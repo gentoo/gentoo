@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick Lauer <patrick@gentoo.org> (2023-10-09)
+# ROCm 5.7 doesn't reliably work yet.
+=dev-util/rocm-cmake-5.7.0
+=dev-libs/roct-thunk-interface-5.7.0
+=dev-libs/rocm-device-libs-5.7.0
+=dev-libs/rocm-comgr-5.7.0
+=dev-libs/rocr-runtime-5.7.0
+=dev-libs/rocm-opencl-runtime-5.7.0
+
+
 # David Seifert <soap@gentoo.org> (2023-10-08)
 # Upstream long gone, unmaintained, EAPI 6, only Gentoo still packages
 # this. Removal on 2023-11-07. Bug #905187.
