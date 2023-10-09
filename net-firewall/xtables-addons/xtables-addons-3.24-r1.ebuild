@@ -23,7 +23,7 @@ SRC_URI="https://inai.de/files/xtables-addons/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="${XTABLES_MODULES[*]/#/xtables_addons_}"
 
 XTABLES_SCRIPTS_DEPEND="
