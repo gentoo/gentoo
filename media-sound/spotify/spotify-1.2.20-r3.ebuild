@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop optfeature pax-utils unpacker xdg
+inherit desktop pax-utils unpacker xdg
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/download/linux/"
@@ -127,6 +127,4 @@ pkg_postinst() {
 	ewarn "If Spotify crashes after an upgrade its cache may be corrupt."
 	ewarn "To remove the cache:"
 	ewarn "rm -rf ~/.cache/spotify"
-
-	optfeature "systray integration on non-Gnome DEs" media-sound/spotify-tray
 }
