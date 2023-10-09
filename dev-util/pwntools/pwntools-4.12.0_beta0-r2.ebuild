@@ -63,5 +63,8 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins extra/zsh_completion/_pwn
 
+	insinto /etc
+	doins "${FILESDIR}/pwn.conf"
+
 	rm -r "${ED}/usr/pwntools-doc" || die
 }
