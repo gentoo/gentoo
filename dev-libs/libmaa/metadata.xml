@@ -13,5 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">dict</remote-id>
+		<remote-id type="github">cheusov/dictd</remote-id>
 	</upstream>
 </pkgmetadata>
