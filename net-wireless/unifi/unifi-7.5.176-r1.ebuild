@@ -75,7 +75,13 @@ src_install() {
 	java-pkg_regjar "${D}"/usr/lib/unifi/lib/*.jar
 	java-pkg_dolauncher \
 		unifi \
-		--java_args '-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -Djava.library.path=' \
+		--java_args '-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp \
+			-Djava.library.path= \
+			--add-opens java.base/java.lang=ALL-UNNAMED \
+			--add-opens java.base/java.time=ALL-UNNAMED \
+			--add-opens java.base/sun.security.util=ALL-UNNAMED \
+			--add-opens java.base/java.io=ALL-UNNAMED \
+			--add-opens java.rmi/sun.rmi.transport=ALL-UNNAMED' \
 		--jar ace.jar \
 		--pwd '/usr/lib/unifi'
 
