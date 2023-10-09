@@ -12,7 +12,7 @@ SRC_URI="https://github.com/recastnavigation/recastnavigation/archive/refs/tags/
 
 LICENSE="ZLIB"
 SLOT="0/1.6.0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
