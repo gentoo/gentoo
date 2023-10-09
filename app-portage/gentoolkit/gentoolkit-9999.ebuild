@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
-inherit distutils-r1 tmpfiles
+inherit meson python-r1 tmpfiles
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
@@ -21,6 +21,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 
 LICENSE="GPL-2"
 SLOT="0"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Need newer Portage for eclean-pkg API, bug #900224
 DEPEND="
@@ -28,25 +29,74 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	${PYTHON_DEPS}
 	app-alternatives/awk
 	sys-apps/gentoo-functions
 "
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-distutils_enable_tests setup.py
+# setuptools is still needed as a workaround for Python 3.12+ for now.
+# https://github.com/mesonbuild/meson/issues/7702
+#
+# >=meson-1.2.1-r1 for bug #912051
+BDEPEND="
+	${PYTHON_DEPS}
+	>=dev-util/meson-1.2.1-r1
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' python3_12)
+"
 
-python_prepare_all() {
-	python_setup
-	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
-	VERSION="${PVR}" "${PYTHON}" setup.py set_version
-	distutils-r1_python_prepare_all
-
+src_prepare() {
+	default
 	if use prefix-guest ; then
 		# use correct repo name, bug #632223
 		sed -i \
 			-e "/load_profile_data/s/repo='gentoo'/repo='gentoo_prefix'/" \
 			pym/gentoolkit/profile.py || die
 	fi
+}
+
+src_configure() {
+	local code_only=false
+	python_foreach_impl my_src_configure
+}
+
+my_src_configure() {
+	local emesonargs=(
+		-Dcode-only=${code_only}
+		-Deprefix="${EPREFIX}"
+		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+	)
+
+	meson_src_configure
+	code_only=true
+}
+
+src_compile() {
+	python_foreach_impl meson_src_compile
+}
+
+src_test() {
+	python_foreach_impl meson_src_test --no-rebuild --verbose
+}
+
+src_install() {
+	python_foreach_impl my_src_install
+	dotmpfiles data/tmpfiles.d/revdep-rebuild.conf
+
+	local scripts
+	mapfile -t scripts < <(awk '/^#!.*python/ {print FILENAME} {nextfile}' "${ED}"/usr/bin/* || die)
+	python_replicate_script "${scripts[@]}"
+}
+
+my_src_install() {
+	local pydirs=(
+		"${D}$(python_get_sitedir)"
+	)
+
+	meson_src_install
+	python_optimize "${pydirs[@]}"
+	python_fix_shebang "${pydirs[@]}"
 }
 
 pkg_postinst() {
