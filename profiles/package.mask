@@ -41,7 +41,7 @@
 =dev-libs/rocm-comgr-5.7.0
 =dev-libs/rocr-runtime-5.7.0
 =dev-libs/rocm-opencl-runtime-5.7.0
-
+=dev-util/rocminfo-5.7.0
 
 # David Seifert <soap@gentoo.org> (2023-10-08)
 # Upstream long gone, unmaintained, EAPI 6, only Gentoo still packages
