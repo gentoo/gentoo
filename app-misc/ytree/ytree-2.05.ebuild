@@ -11,7 +11,7 @@ SRC_URI="https://www.han.de/~werner/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv x86"
+KEYWORDS="amd64 ~riscv x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
