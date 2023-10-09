@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not stable here
+app-text/ansifilter gui
+app-text/highlight gui
+
 # Sam James <sam@gentoo.org> (2023-07-02)
 # Unlikely that anybody wants to use net-nds/openldap on hppa & often has
 # platform-specific bugs.
