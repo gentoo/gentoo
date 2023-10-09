@@ -1,5 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
+# media-libs/shaderc is not keyworded here, so enable glslang fallback.
+media-libs/libplacebo glslang -shaderc
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # Enable the native arch as the default qemu target
