@@ -1,0 +1,20 @@
+commit 446d142de276a8ca1039798726a2b81937ece952
+Author: Ron Lieberman <ron.lieberman@amd.com>
+Date:   Thu Jul 13 19:42:47 2023 -0500
+
+    add #include llvm/ADT/StringExtras.h to comgr-disassembly.cpp
+    
+    Change-Id: Id0086adec6e33db55769a12f6a886202c8afd9e0
+
+diff --git a/src/comgr-disassembly.cpp b/src/comgr-disassembly.cpp
+index 8703c0d..31e9634 100644
+--- a/src/comgr-disassembly.cpp
++++ b/src/comgr-disassembly.cpp
+@@ -34,6 +34,7 @@
+  ******************************************************************************/
+ 
+ #include "comgr-disassembly.h"
++#include "llvm/ADT/StringExtras.h"
+ #include "llvm/MC/TargetRegistry.h"
+ 
+ using namespace llvm;
