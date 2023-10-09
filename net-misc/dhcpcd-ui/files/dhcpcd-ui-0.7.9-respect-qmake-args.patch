@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index ec61c80..9372b38 100755
+--- a/configure
++++ b/configure
+@@ -230,7 +230,7 @@ if [ -n "$LDFLAGS" ]; then
+ 	echo "LDFLAGS=" >>$CONFIG_MK
+ 	echo "LDFLAGS+=	$LDFLAGS" >>$CONFIG_MK
+ fi
+-QMAKE_CONFIG=
++#QMAKE_CONFIG
+ 
+ for x in $INCLUDEDIR; do
+ 	echo "CPPFLAGS+=	-I$x" >>$CONFIG_MK
