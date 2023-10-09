@@ -506,6 +506,11 @@ java-pkg-simple_src_test() {
 	# create the target directory
 	mkdir -p ${classes} || die "Could not create target directory for testing"
 
+	# generated test classes should get generated into "generated-test" directory
+	if [[ -d generated-test ]]; then
+		cp -r generated-test/* "${classes}" || die "cannot copy generated test classes"
+	fi
+
 	# get classpath
 	classpath="${classes}:${JAVA_JAR_FILENAME}"
 	java-pkg-simple_getclasspath
