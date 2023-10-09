@@ -1,0 +1,14 @@
+These were removed in libxkbcommon-1.6.0[1] and were apparently
+unnecesary. Usage results in build failure.
+
+Just a quick fix while waiting for what [2] comes up with.
+
+[1] https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/merge_requests/70
+[2] https://bugreports.qt.io/browse/QTBUG-117950
+--- a/src/platformsupport/input/xkbcommon/qxkbcommon.cpp
++++ b/src/platformsupport/input/xkbcommon/qxkbcommon.cpp
+@@ -276,4 +275,0 @@
+-        Xkb2Qt<XKB_KEY_dead_lowline,            Qt::Key_Dead_Lowline>,
+-        Xkb2Qt<XKB_KEY_dead_aboveverticalline,  Qt::Key_Dead_Aboveverticalline>,
+-        Xkb2Qt<XKB_KEY_dead_belowverticalline,  Qt::Key_Dead_Belowverticalline>,
+-        Xkb2Qt<XKB_KEY_dead_longsolidusoverlay, Qt::Key_Dead_Longsolidusoverlay>,

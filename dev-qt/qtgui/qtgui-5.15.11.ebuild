@@ -127,6 +127,10 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 	:gui
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.15.11-xkbcommon160.patch
+)
+
 src_prepare() {
 	# don't add -O3 to CXXFLAGS, bug 549140
 	sed -i -e '/CONFIG\s*+=/s/optimize_full//' src/gui/gui.pro || die
