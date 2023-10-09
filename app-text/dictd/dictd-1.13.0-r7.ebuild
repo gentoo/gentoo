@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 inherit autotools readme.gentoo-r1 systemd
 
@@ -11,8 +11,8 @@ SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
 
 LICENSE="GPL-1+ GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="dbi judy minimal selinux test"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="dbi judy minimal test"
 RESTRICT="!test? ( test )"
 
 # <gawk-3.1.6 makes tests fail.
@@ -20,7 +20,7 @@ RDEPEND="
 	acct-group/dictd
 	acct-user/dictd
 	>=sys-apps/coreutils-6.10
-	dev-libs/libmaa
+	dev-libs/libmaa:=
 	sys-libs/zlib
 	dbi? ( dev-db/libdbi )
 	judy? ( dev-libs/judy )
@@ -32,7 +32,6 @@ BDEPEND="
 	app-alternatives/yacc
 	test? ( !~sys-apps/gawk-4.2.1 )
 "
-RDEPEND+=" selinux? ( sec-policy/selinux-dictd )"
 
 DOC_CONTENTS="
 	To start and use ${PN} you need to emerge at least one dictionary from
@@ -49,13 +48,11 @@ PATCHES=(
 	"${FILESDIR}"/dictd-1.13.0-lex.patch
 	"${FILESDIR}"/dictd-1.13.0-libtool.patch # 818535
 	"${FILESDIR}"/dictd-1.13.0-version.patch # 852884
-	"${FILESDIR}"/dictd-1.13.0-stack-smashing.patch # 908998
 )
 
 src_prepare() {
 	default
 
-	sed -i -e 's:configure.in:configure.ac:' Makefile.in || die
 	eautoreconf
 }
 

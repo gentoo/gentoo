@@ -19,7 +19,7 @@ RDEPEND="
 	acct-group/dictd
 	acct-user/dictd
 	>=sys-apps/coreutils-6.10
-	dev-libs/libmaa
+	dev-libs/libmaa:=
 	sys-libs/zlib
 	dbi? ( dev-db/libdbi )
 	judy? ( dev-libs/judy )
