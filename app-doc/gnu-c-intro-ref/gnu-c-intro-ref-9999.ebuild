@@ -30,10 +30,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/gnu-c-intro-ref-9999-autotools.patch
-)
-
 src_prepare() {
 	default
 
