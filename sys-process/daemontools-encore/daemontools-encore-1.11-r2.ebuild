@@ -11,7 +11,7 @@ SRC_URI="https://untroubled.org/daemontools-encore/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~x86"
+KEYWORDS="amd64 ~loong ~x86"
 IUSE="selinux static"
 
 RDEPEND="
