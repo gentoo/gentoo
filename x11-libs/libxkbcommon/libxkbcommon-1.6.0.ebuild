@@ -26,18 +26,18 @@ BDEPEND="
 	sys-devel/bison
 	doc? ( app-doc/doxygen )
 	test? ( ${PYTHON_DEPS} )
-	wayland? ( dev-util/wayland-scanner )
+	tools? ( wayland? ( dev-util/wayland-scanner ) )
 "
 RDEPEND="
 	X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP}] )
-	wayland? ( >=dev-libs/wayland-1.2.0[${MULTILIB_USEDEP}] )
+	tools? ( wayland? ( >=dev-libs/wayland-1.2.0[${MULTILIB_USEDEP}] ) )
 	dev-libs/libxml2[${MULTILIB_USEDEP}]
 	x11-misc/compose-tables
 	x11-misc/xkeyboard-config
 "
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
-	wayland? ( >=dev-libs/wayland-protocols-1.12 )
+	tools? ( wayland? ( >=dev-libs/wayland-protocols-1.12 ) )
 "
 
 pkg_setup() {
