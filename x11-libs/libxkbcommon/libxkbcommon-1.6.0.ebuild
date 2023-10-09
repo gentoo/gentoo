@@ -13,7 +13,7 @@ fi
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit meson-multilib ${GIT_ECLASS} python-any-r1 virtualx
+inherit bash-completion-r1 meson-multilib ${GIT_ECLASS} python-any-r1 virtualx
 
 DESCRIPTION="Keymap handling library for toolkits and window systems"
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/"
@@ -50,6 +50,7 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Ddefault_library="$(usex static-libs both shared)"
 		-Dxkb-config-root="${EPREFIX}/usr/share/X11/xkb"
+		-Dbash-completion-path="$(get_bashcompdir)"
 		$(meson_native_use_bool tools enable-tools)
 		$(meson_use X enable-x11)
 		$(meson_native_use_bool doc enable-docs)
