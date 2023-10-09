@@ -204,10 +204,6 @@ dev-util/rpmdevtools emacs
 # Requires dev-lang/julia stabilisation, bug #613576
 kde-apps/cantor julia
 
-# Brian Dolbec <dolsen@gentoo.org> (2017-02-14)
-# This is stable masked as g-sorcery is being not actively developed.
-app-portage/layman g-sorcery
-
 # Alon Bar-Lev <alonbl@gentoo.org> (2017-01-01)
 # Will always require unstable packages.
 net-libs/gnutls test-full

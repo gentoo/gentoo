@@ -143,8 +143,6 @@ dev-python/wcmatch doc
 
 # Alex Fan <alex.fan.q@gmail.com> (2022-05-16)
 # These depend on Haskell:
-#  - dev-vcs/darcs
-app-portage/layman darcs
 #  - app-text/pandoc
 sys-cluster/ceph pmdk
 app-text/nuspell doc

@@ -108,10 +108,6 @@ net-libs/webkit-gtk avif
 # criu is masked on big-endian ppc*
 app-containers/crun criu
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-08-07)
-# dev-vcs/darcs is not keyworded on ppc/ppc64
-app-portage/layman darcs
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-03-27)
 # dev-ruby/capybara depends on www-client/firefox which has no keywords
 dev-ruby/capybara test

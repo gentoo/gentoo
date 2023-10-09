@@ -203,10 +203,6 @@ media-video/mplayer ladspa
 # app-xemacs/ruby-modes is not keyworded on this arch
 dev-lang/ruby xemacs
 
-# Sebastian Pipping <sping@gentoo.org> (2010-01-27)
-# dev-vcs/darcs is not keyworded on this arch
-app-portage/layman darcs
-
 # deps missing keywords
 games-strategy/freeciv auth
 
