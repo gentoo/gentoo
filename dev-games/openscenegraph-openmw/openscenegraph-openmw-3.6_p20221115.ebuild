@@ -17,7 +17,7 @@ S="${WORKDIR}/osg-${MY_COMMIT}"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/162" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="
 	+collada curl dicom debug doc egl examples fltk fox gdal
 	gif glut gstreamer +jpeg las lua openexr openinventor osgapps pdf +png
