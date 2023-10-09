@@ -71,7 +71,8 @@ multilib_src_test() {
 		*GetSock*
 		*GetSock_virtualized*
 		*VerifySocketFunctionCallback*
-		# Seems flaky, even run manually?
+		# Seems flaky, even run manually
+		# https://github.com/c-ares/c-ares/commit/9e542a8839f81c990bb0dff14beeaf9aa6bcc18d
 		*MockUDPMaxQueriesTest.GetHostByNameParallelLookups*
 	)
 
