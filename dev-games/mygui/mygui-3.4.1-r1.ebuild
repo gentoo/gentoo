@@ -15,7 +15,7 @@ SRC_URI="https://github.com/MyGUI/mygui/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="debug doc +ogre opengl plugins samples static-libs test tools l10n_ru"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="ogre? ( !opengl )
