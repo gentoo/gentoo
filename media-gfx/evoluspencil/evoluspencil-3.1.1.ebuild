@@ -13,7 +13,7 @@ SRC_URI="https://pencil.evolus.vn/dl/V${PV}.ga/${MY_PN}-${PV}.ga.x86_64.rpm"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	|| (
