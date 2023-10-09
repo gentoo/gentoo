@@ -80,6 +80,7 @@ TEXMF="${EPREFIX}/usr/share/texmf-site"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.6-no-picins.patch
+	"${FILESDIR}"/${PN}-5.4.9-unbal-braces.patch
 )
 
 pkg_setup() {
