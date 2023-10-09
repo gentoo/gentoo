@@ -1,6 +1,16 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-10-09)
+# Tested on LE only (#889996, #908893)
+dev-games/mygui
+dev-games/ois
+dev-games/openscenegraph-openmw
+dev-games/recastnavigation
+games-engines/fheroes2
+games-engines/openmw
+games-strategy/homm2-gold-gog
+
 # Sam James <sam@gentoo.org> (2023-09-28)
 # Broken on BE (https://bugs.chromium.org/p/aomedia/issues/detail?id=3487)
 ~media-libs/libaom-3.7.0
