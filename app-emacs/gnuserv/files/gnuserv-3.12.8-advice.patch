@@ -1,0 +1,57 @@
+defadvice is obsolete in Emacs 30.
+
+--- gnuserv-3.12.8/gnuserv-compat.el
++++ gnuserv-3.12.8/gnuserv-compat.el
+@@ -112,38 +112,34 @@
+   ;; can do!  If the device doesn't represent a live frame, we create
+   ;; the frame as requested.
+ 
+-  (defadvice make-frame (around
+-			 gnuserv-compat-make-frame
+-			 first
+-			 (&optional parameters device)
+-			 activate)
++  (defun gnuserv-compat-make-frame (orig-fun &optional parameters device)
+     (if (and device
+ 	     (frame-live-p device))
+ 	(progn
+ 	  (if parameters
+ 	      (modify-frame-parameters device parameters))
+-	  (setq ad-return-value device))
+-      ad-do-it))
++	  device)
++      (funcall orig-fun parameters)))
++
++  (advice-add 'make-frame :around #'gnuserv-compat-make-frame)
+ 
+   ;; Advise `delete-frame' to run `delete-device-hook'.  This might be a
+   ;; little too hacky, but it seems to work!  If someone actually tries
+   ;; to do something device specific then it will probably blow up!
+-  (defadvice delete-frame (before
+-			   gnuserv-compat-delete-frame
+-			   first
+-			   nil
+-			   activate)
++  (defun gnuserv-compat-delete-frame (&optional frame _force)
+     (run-hook-with-args 'delete-device-hook frame))
+ 
++  (advice-add 'delete-frame :before #'gnuserv-compat-delete-frame)
++
+   ;; Advise `filtered-frame-list' to ignore the optional device
+   ;; argument.  Here we don't follow the mapping of devices to frames.
+   ;; We just assume that any frame satisfying the predicate will do.
+-  (defadvice filtered-frame-list (around
+-				  gnuserv-compat-filtered-frame-list
+-				  first
+-				  (predicate &optional device)
+-				  activate)
+-    ad-do-it)
++  (defun gnuserv-compat-filtered-frame-list (orig-fun predicate
++						      &optional _device)
++    (funcall orig-fun predicate))
++
++  (advice-add 'filtered-frame-list
++	      :around #'gnuserv-compat-filtered-frame-list)
+ ;;  )
+ 
+ 
