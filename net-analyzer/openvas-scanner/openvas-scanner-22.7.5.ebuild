@@ -24,14 +24,14 @@ DEPEND="
 	>=dev-db/redis-5.0.3
 	>=dev-libs/glib-2.42:2
 	>=dev-libs/json-glib-1.4.4
-	>=net-libs/gnutls-3.2.15
+	>=net-libs/gnutls-3.2.15:=
 	>=net-analyzer/gvm-libs-22.4
 	net-libs/libpcap
 	app-crypt/gpgme:=
-	>=dev-libs/libgcrypt-1.6
+	>=dev-libs/libgcrypt-1.6:=
 	dev-libs/libgpg-error
 	>=dev-libs/libksba-1.0.7
-	>=net-libs/libssh-0.6.0
+	>=net-libs/libssh-0.6.0:=
 	dev-libs/libbsd
 	snmp? ( net-analyzer/net-snmp:= )
 "
