@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/xournalpp/xournalpp.git"
 else
 	SRC_URI="https://github.com/xournalpp/xournalpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="amd64 ~ppc64"
 fi
 
 DESCRIPTION="Handwriting notetaking software with PDF annotation support"
