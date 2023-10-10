@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="acl doc +netlink nfsv4 nls +man python samba selinux subid sudo systemd systemtap test"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
