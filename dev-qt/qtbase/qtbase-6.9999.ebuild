@@ -137,7 +137,6 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-hppa-forkfd-grow-stack.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
-	"${FILESDIR}"/${PN}-6.5.3-xkbcommon160.patch
 )
 
 src_prepare() {
