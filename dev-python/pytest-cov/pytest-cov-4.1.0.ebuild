@@ -49,15 +49,6 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# attempts to install packages via pip (network)
 		tests/test_pytest_cov.py::test_dist_missing_data
-		# TODO: pytest-cov.pth breaks importing coverage
-		# https://bugs.gentoo.org/889886
-		tests/test_pytest_cov.py::test_append_coverage_subprocess
-		tests/test_pytest_cov.py::test_central_subprocess_change_cwd
-		tests/test_pytest_cov.py::test_central_subprocess_change_cwd_with_pythonpath
-		tests/test_pytest_cov.py::test_central_subprocess
-		tests/test_pytest_cov.py::test_dist_subprocess_collocated
-		tests/test_pytest_cov.py::test_dist_subprocess_not_collocated
-		tests/test_pytest_cov.py::test_subprocess_with_path_aliasing
 		# TODO
 		tests/test_pytest_cov.py::test_contexts
 		tests/test_pytest_cov.py::test_cleanup_on_sigterm
@@ -66,5 +57,18 @@ python_test() {
 		tests/test_pytest_cov.py::test_cleanup_on_sigterm_sig_ign
 	)
 
-	epytest -n "$(makeopts_jobs)" --dist=worksteal
+	local src=$(
+		"${EPYTHON}" -c "import coverage as m; print(*m.__path__)" || die
+	)
+	# TODO: why do we need to do that?!
+	# https://github.com/pytest-dev/pytest-cov/issues/517
+	ln -s "${src}/coverage" \
+		"${BUILD_DIR}/install$(python_get_sitedir)/coverage" || die
+
+	nonfatal epytest -n "$(makeopts_jobs)" --dist=worksteal
+	local ret=${?}
+
+	rm "${BUILD_DIR}/install$(python_get_sitedir)/coverage" || die
+
+	[[ ${ret} -ne 0 ]] && die "epytest failed on ${EPYTHON}"
 }
