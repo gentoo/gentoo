@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2023-10-10)
+# Formerly added for unbundling on games-emulation/pcsx2, which is
+# no longer needed. Has no real use on its own, has no revdeps, and
+# does not have real releases (snapshot-only).
+# Removal on 2023-11-09.
+dev-libs/libchdr
+
 # Patrick Lauer <patrick@gentoo.org> (2023-10-09)
 # ROCm 5.7 doesn't reliably work yet.
 =dev-util/rocm-cmake-5.7.0
