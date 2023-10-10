@@ -23,9 +23,7 @@ BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 
 src_configure() {
 	local mycmakeargs=(
-		$(qt_feature opengl)
-		$(qt_feature sql)
-		$(qt_feature widgets)
+		$(cmake_use_find_package sql Qt6Sql)
 	)
 
 	qt6-build_src_configure
