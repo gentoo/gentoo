@@ -34,7 +34,7 @@ REQUIRED_USE="
 		printf '%s? ( sql ) ' ${QT6_IUSE[sql]//+/}
 		printf '%s? ( gui widgets ) ' ${QT6_IUSE[widgets]//+/}
 	)
-	accessibility? ( X dbus )
+	accessibility? ( dbus )
 	eglfs? ( opengl )
 	gles2-only? ( opengl )
 	gui? ( || ( X eglfs wayland ) )
