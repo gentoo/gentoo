@@ -11,7 +11,6 @@ EGIT_REPO_URI="https://git.code.sf.net/p/qjackctl/code"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="alsa dbus debug portaudio"
 
 BDEPEND="dev-qt/linguist-tools:5"
