@@ -56,7 +56,7 @@ distutils_enable_tests pytest
 
 # frustratingly, mypyc produces non-deterministic output. If ccache is enabled it will be a waste of time,
 # but simultaneously it might trash your system and fill up the cache with a giant wave of non-reproducible
-# test files
+# test files (https://github.com/mypyc/mypyc/issues/1014)
 export CCACHE_DISABLE=1
 
 src_compile() {
