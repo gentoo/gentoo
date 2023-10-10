@@ -11,7 +11,7 @@ SRC_URI="https://github.com/trialuser02/qt6ct/releases/download/${PV}/${P}.tar.x
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # uses Qt private APIs wrt :=
 DEPEND="dev-qt/qtbase:6=[gui,widgets]"
