@@ -35,6 +35,8 @@ LICENSE="CC0-1.0 GPL-3+ MIT"
 SLOT="0"
 IUSE="X"
 
+PATCHES=( "${FILESDIR}/${P}-do-not-use-libX11.patch" )
+
 RDEPEND="
 	dev-libs/libinput:=
 	dev-libs/wayland
