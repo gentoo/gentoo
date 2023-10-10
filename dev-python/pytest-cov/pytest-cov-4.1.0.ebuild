@@ -46,17 +46,6 @@ python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_cov.plugin,xdist.plugin,xdist.looponfail
 
-	local EPYTEST_DESELECT=(
-		# attempts to install packages via pip (network)
-		tests/test_pytest_cov.py::test_dist_missing_data
-		# TODO
-		tests/test_pytest_cov.py::test_contexts
-		tests/test_pytest_cov.py::test_cleanup_on_sigterm
-		tests/test_pytest_cov.py::test_cleanup_on_sigterm_sig_dfl
-		tests/test_pytest_cov.py::test_cleanup_on_sigterm_sig_dfl_sigint
-		tests/test_pytest_cov.py::test_cleanup_on_sigterm_sig_ign
-	)
-
 	local src=$(
 		"${EPYTHON}" -c "import coverage as m; print(*m.__path__)" || die
 	)
