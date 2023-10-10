@@ -1,0 +1,109 @@
+From: Eric Joldasov <bratishkaerik@getgoogleoff.me>
+
+Based on https://github.com/ziglang/zig/pull/12567 and https://github.com/ziglang/zig/pull/17671
+with small fixes, all ported to 0.11.0.
+
+First try `getconf GNU_LIBC_VERSION` to detect glibc version,
+If there are any errors, skip to the upstream logic.
+
+Also fix glibc version parsing: if version string does not contain third (patch) component, "std.SemanticVersion.parse" returns parsing error.
+For example, this currently happens with "GLIBC_2.37" or "glibc 2.37" inputs.
+To fix this, we use copy-pasted "std.zig.CrossTarget.parse" function here, that sets omitted patch component to 0.
+
+After applying this patch, both `zig build-exe --show-builtin` and `zig env` show correct version on my default/linux/amd64/17.1/desktop/plasma :
+glibc 2.37.
+
+Bug: https://bugs.gentoo.org/914731
+Bug: https://bugs.gentoo.org/914101
+
+diff --git a/lib/std/zig/system/NativeTargetInfo.zig b/lib/std/zig/system/NativeTargetInfo.zig
+index 99a1a8f2e..d1032a716 100644
+--- a/lib/std/zig/system/NativeTargetInfo.zig
++++ b/lib/std/zig/system/NativeTargetInfo.zig
+@@ -19,6 +19,32 @@ dynamic_linker: DynamicLinker = DynamicLinker{},
+ 
+ pub const DynamicLinker = Target.DynamicLinker;
+ 
++// Copy-pasted from `std.zig.CrossTarget.parse` to avoid changing visibility of mentioned function.
++/// Parses a version with an omitted patch component, such as "1.0",
++/// which SemanticVersion.parse is not capable of.
++fn parseWithOptionalPatchField(ver: []const u8) error{ InvalidVersion, Overflow }!std.SemanticVersion {
++    const parseVersionComponent = struct {
++        fn parseVersionComponent(component: []const u8) !usize {
++            return std.fmt.parseUnsigned(usize, component, 10) catch |err| {
++                switch (err) {
++                    error.InvalidCharacter => return error.InvalidVersion,
++                    error.Overflow => return error.Overflow,
++                }
++            };
++        }
++    }.parseVersionComponent;
++    var version_components = mem.split(u8, ver, ".");
++    const major = version_components.first();
++    const minor = version_components.next() orelse return error.InvalidVersion;
++    const patch = version_components.next() orelse "0";
++    if (version_components.next() != null) return error.InvalidVersion;
++    return .{
++        .major = try parseVersionComponent(major),
++        .minor = try parseVersionComponent(minor),
++        .patch = try parseVersionComponent(patch),
++    };
++}
++
+ pub const DetectError = error{
+     FileSystem,
+     SystemResources,
+@@ -307,6 +333,35 @@ fn detectAbiAndDynamicLinker(
+     }
+     const ld_info_list = ld_info_list_buffer[0..ld_info_list_len];
+ 
++    if (is_linux and !os_is_non_native and cross_target.glibc_version == null) try_getconf: {
++        var buf: [4096]u8 = undefined;
++        var fba = std.heap.FixedBufferAllocator.init(&buf);
++        const allocator = fba.allocator();
++
++        const getconf = std.process.Child.exec(.{
++            .allocator = allocator,
++            .argv = &.{ "getconf", "GNU_LIBC_VERSION" },
++            .max_output_bytes = 1024,
++        }) catch break :try_getconf;
++        if (!std.mem.startsWith(u8, getconf.stdout, "glibc ")) break :try_getconf;
++        const version_string = getconf.stdout["glibc ".len..];
++        const glibc_version = parseWithOptionalPatchField(version_string) catch break :try_getconf;
++
++        var os_with_glibc = os;
++        os_with_glibc.version_range.linux.glibc = glibc_version;
++
++        const result: NativeTargetInfo = .{
++            .target = .{
++                .cpu = cpu,
++                .os = os_with_glibc,
++                .abi = cross_target.abi orelse Target.Abi.default(cpu.arch, os_with_glibc),
++                .ofmt = cross_target.ofmt orelse Target.ObjectFormat.default(os_with_glibc.tag, cpu.arch),
++            },
++            .dynamic_linker = cross_target.dynamic_linker,
++        };
++        return result;
++    }
++
+     // Best case scenario: the executable is dynamically linked, and we can iterate
+     // over our own shared objects and find a dynamic linker.
+     const elf_file = blk: {
+@@ -563,7 +618,7 @@ fn glibcVerFromSoFile(file: fs.File) !std.SemanticVersion {
+     while (it.next()) |s| {
+         if (mem.startsWith(u8, s, "GLIBC_2.")) {
+             const chopped = s["GLIBC_".len..];
+-            const ver = std.SemanticVersion.parse(chopped) catch |err| switch (err) {
++            const ver = parseWithOptionalPatchField(chopped) catch |err| switch (err) {
+                 error.Overflow => return error.InvalidGnuLibCVersion,
+                 error.InvalidVersion => return error.InvalidGnuLibCVersion,
+             };
+@@ -586,7 +641,7 @@ fn glibcVerFromLinkName(link_name: []const u8, prefix: []const u8) !std.Semantic
+     }
+     // chop off "libc-" and ".so"
+     const link_name_chopped = link_name[prefix.len .. link_name.len - suffix.len];
+-    return std.SemanticVersion.parse(link_name_chopped) catch |err| switch (err) {
++    return parseWithOptionalPatchField(link_name_chopped) catch |err| switch (err) {
+         error.Overflow => return error.InvalidGnuLibCVersion,
+         error.InvalidVersion => return error.InvalidGnuLibCVersion,
+     };

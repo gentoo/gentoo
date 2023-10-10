@@ -36,7 +36,9 @@ IDEPEND="app-eselect/eselect-zig"
 # because they can use compile-time mechanics (and it is easier for distributions to patch them)
 # Here we use this feature for fixing programs that use standard library
 # Note: Zig build system is also part of standard library, so we can fix it too
-#PATCHES=()
+PATCHES=(
+	"${FILESDIR}/zig-0.11.0-first-try-getconf.patch"
+)
 
 QA_PREBUILT="opt/${P}/zig"
 
