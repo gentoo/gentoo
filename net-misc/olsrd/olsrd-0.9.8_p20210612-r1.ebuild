@@ -19,18 +19,17 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="gtk pud"
 
-DEPEND="
-	gtk? (
+RDEPEND="gtk? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:2
 	)
-	pud? ( sci-geosciences/gpsd )
-"
-RDEPEND="
-	${DEPEND}
-"
-BDEPEND="virtual/pkgconfig"
+	pud? ( sci-geosciences/gpsd )"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
+BDEPEND="app-alternatives/yacc
+	sys-devel/flex
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0.2-gtk.patch
