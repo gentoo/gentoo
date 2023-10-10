@@ -62,7 +62,7 @@ python_test() {
 	)
 	# TODO: why do we need to do that?!
 	# https://github.com/pytest-dev/pytest-cov/issues/517
-	ln -s "${src}/coverage" \
+	ln -s "${src}" \
 		"${BUILD_DIR}/install$(python_get_sitedir)/coverage" || die
 
 	nonfatal epytest -n "$(makeopts_jobs)" --dist=worksteal
