@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 multiprocessing pypi
 
 DESCRIPTION="pytest plugin for coverage reporting"
 HOMEPAGE="
@@ -66,5 +66,5 @@ python_test() {
 		tests/test_pytest_cov.py::test_cleanup_on_sigterm_sig_ign
 	)
 
-	epytest
+	epytest -n "$(makeopts_jobs)" --dist=worksteal
 }
