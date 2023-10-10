@@ -26,9 +26,7 @@ BDEPEND="
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		!hppa? (
-			$(python_gen_cond_dep '
-				dev-python/pytest-cov[${PYTHON_USEDEP}]
-			' python3_{10..11} pypy3)
+			dev-python/pytest-cov[${PYTHON_USEDEP}]
 		)
 	)
 "
