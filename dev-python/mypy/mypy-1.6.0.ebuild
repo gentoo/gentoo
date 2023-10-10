@@ -52,6 +52,10 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# the majority of them require Internet (via pip)
 		mypy/test/testpep561.py
+		# known broken with assertions enabled
+		# https://github.com/python/mypy/issues/16043
+		mypyc/test/test_run.py::TestRun::run-i64.test::testI64GlueMethodsAndInheritance
+		mypyc/test/test_run.py::TestRun::run-floats.test::testFloatOps
 	)
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
 	# fail with high COLUMNS values
