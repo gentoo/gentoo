@@ -13,7 +13,6 @@ EGIT_REPO_URI="https://github.com/yt-dlp/yt-dlp.git"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS=""
 IUSE="man"
 
 RDEPEND="
