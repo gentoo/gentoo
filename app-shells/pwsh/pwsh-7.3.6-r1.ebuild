@@ -24,12 +24,12 @@ microsoft.bcl.asyncinterfaces@7.0.0
 microsoft.codeanalysis.analyzers@3.3.3
 microsoft.codeanalysis.common@4.4.0
 microsoft.codeanalysis.csharp@4.4.0
-microsoft.codeanalysis.netanalyzers@7.0.4
+microsoft.codeanalysis.netanalyzers@7.0.3-preview1.23267.1
 microsoft.codecoverage@17.3.3
 microsoft.csharp@4.0.1
 microsoft.csharp@4.3.0
 microsoft.csharp@4.7.0
-microsoft.extensions.objectpool@7.0.11
+microsoft.extensions.objectpool@7.0.9
 microsoft.management.infrastructure.runtime.unix@2.0.0
 microsoft.management.infrastructure.runtime.win@2.0.0
 microsoft.management.infrastructure@2.0.0
@@ -48,7 +48,7 @@ microsoft.win32.primitives@4.3.0
 microsoft.win32.registry.accesscontrol@7.0.0
 microsoft.win32.registry@5.0.0
 microsoft.win32.systemevents@7.0.0
-microsoft.windows.compatibility@7.0.5
+microsoft.windows.compatibility@7.0.4
 namotion.reflection@2.1.2
 netstandard.library@1.6.1
 newtonsoft.json@13.0.1
@@ -107,8 +107,8 @@ runtime.unix.system.runtime.extensions@4.3.0
 runtime.win-arm64.runtime.native.system.data.sqlclient.sni@4.4.0
 runtime.win-x64.runtime.native.system.data.sqlclient.sni@4.4.0
 runtime.win-x86.runtime.native.system.data.sqlclient.sni@4.4.0
-stylecop.analyzers.unstable@1.2.0.507
-stylecop.analyzers@1.2.0-beta.507
+stylecop.analyzers.unstable@1.2.0.435
+stylecop.analyzers@1.2.0-beta.435
 system.appcontext@4.3.0
 system.buffers@4.3.0
 system.codedom@7.0.0
@@ -132,7 +132,7 @@ system.diagnostics.performancecounter@7.0.0
 system.diagnostics.tools@4.0.1
 system.diagnostics.tools@4.3.0
 system.diagnostics.tracing@4.3.0
-system.directoryservices.accountmanagement@7.0.1
+system.directoryservices.accountmanagement@7.0.0
 system.directoryservices.protocols@7.0.1
 system.directoryservices@7.0.1
 system.drawing.common@7.0.0
@@ -211,7 +211,6 @@ system.security.cryptography.csp@4.3.0
 system.security.cryptography.encoding@4.3.0
 system.security.cryptography.openssl@4.3.0
 system.security.cryptography.pkcs@7.0.0
-system.security.cryptography.pkcs@7.0.2
 system.security.cryptography.pkcs@7.0.3
 system.security.cryptography.primitives@4.3.0
 system.security.cryptography.protecteddata@7.0.1
@@ -253,7 +252,6 @@ system.web.services.description@4.10.2
 system.windows.extensions@7.0.0
 system.xml.readerwriter@4.0.11
 system.xml.readerwriter@4.3.0
-system.xml.xdocument@4.0.11
 system.xml.xdocument@4.0.11
 system.xml.xdocument@4.3.0
 validation@2.4.22
@@ -318,9 +316,7 @@ DOTNET_PKG_PROJECTS=(
 	"${S}/src/Modules/PSGalleryModules.csproj"
 )
 # Lower warning level to skip CS0162 error for the "disable-telemetry" patch.
-DOTNET_PKG_BUILD_EXTRA_ARGS=(
-	-p:WarningLevel=1
-)
+DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:WarningLevel=1 )
 PATCHES=(
 	"${FILESDIR}/pwsh-7.3.3-disable-telemetry.patch"
 	"${FILESDIR}/pwsh-7.3.3-disable-update-check.patch"
@@ -344,8 +340,7 @@ src_unpack() {
 src_prepare() {
 	dotnet-pkg_src_prepare
 
-	# This is guarded by "RegexGitVersion" in "PowerShell.Common.props".
-	local fake_describe="v${PV}-0-g0"
+	local fake_describe="v${PV}-0-g0deb490cb0c1a9267e3ba9a766fde4dcb9606a9c"
 	sed -i "s|git describe --abbrev=60 --long|echo ${fake_describe}|" \
 		PowerShell.Common.props || die
 
@@ -378,7 +373,7 @@ src_install() {
 	done
 
 	dotnet-pkg-base_append_launchervar \
-		'PSModulePath="${PSModulePath}:/usr/share/GentooPowerShell/Modules:"'
+		'PSModulePath="${PSModulePath}:${EPREFIX}/usr/share/GentooPowerShell/Modules:"'
 	dotnet-pkg-base_install "${dest_root}"
 	dotnet-pkg-base_dolauncher "${dest_root}/pwsh" "pwsh-${SLOT}"
 
