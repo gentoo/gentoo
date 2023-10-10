@@ -56,7 +56,7 @@ src_install() {
 
 	fperms 0755 "${dest_root}/pwsh"
 
-	local gentoo_path='PSModulePath="${PSModulePath}:/usr/share/GentooPowerShell/Modules:"'
+	local gentoo_path='PSModulePath="${PSModulePath}:${EPREFIX}/usr/share/GentooPowerShell/Modules:"'
 	make_wrapper "${PN}-${SLOT}" "env ${gentoo_path} ${dest_root}/pwsh"
 }
 
