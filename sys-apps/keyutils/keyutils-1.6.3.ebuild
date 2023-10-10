@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,11 +61,6 @@ src_prepare() {
 
 	# The lsb check is useless, so avoid spurious command not found messages.
 	sed -i -e 's,lsb_release,:,' tests/prepare.inc.sh || die
-	# All the test files are bash, but try to execute via `sh`.
-	sed -i -r \
-		-e 's:([[:space:]])sh([[:space:]]):\1bash\2:' \
-		tests/{Makefile*,*.sh} || die
-	find tests/ -name '*.sh' -exec sed -i '1s:/sh$:/bash:' {} + || die
 	# Some tests call the kernel which calls userspace, but that will
 	# run the install keyutils rather than the locally compiled one,
 	# so disable round trip tests.
