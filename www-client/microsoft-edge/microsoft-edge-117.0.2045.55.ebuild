@@ -23,7 +23,7 @@ SRC_URI="https://packages.microsoft.com/repos/edge/pool/main/m/${MY_PN}/${MY_P}_
 LICENSE="microsoft-edge"
 SLOT="0"
 RESTRICT="bindist mirror strip"
-IUSE="+mip qt5"
+IUSE="+mip qt5 qt6"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
@@ -61,6 +61,7 @@ RDEPEND="
 		dev-qt/qtgui:5[X]
 		dev-qt/qtwidgets:5
 	)
+	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 "
 
 QA_PREBUILT="*"
@@ -117,6 +118,9 @@ src_install() {
 
 	if ! use qt5; then
 		rm "${EDGE_HOME}/libqt5_shim.so" || die
+	fi
+	if ! use qt6; then
+		rm "${EDGE_HOME}/libqt6_shim.so" || die
 	fi
 
 	pax-mark m "${EDGE_HOME}/msedge"
