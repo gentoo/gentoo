@@ -16,8 +16,11 @@ KEYWORDS="~amd64"
 # TODO: investigate
 RESTRICT="test"
 
-RDEPEND="sys-devel/bmake"
-BDEPEND="sys-devel/bmake"
+RDEPEND="
+	|| ( x11-misc/makedepend sys-devel/pmake )
+	sys-devel/bmake
+"
+BDEPEND="${RDEPEND}"
 
 src_configure() {
 	local jobs="$(makeopts_jobs)"
