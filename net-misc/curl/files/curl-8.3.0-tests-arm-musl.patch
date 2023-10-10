@@ -1,0 +1,115 @@
+https://github.com/curl/curl/issues/11900
+https://github.com/curl/curl/commit/b226bd679a68b8bf94cbb6d58837f00251560e63
+https://github.com/curl/curl/commit/9c7165e96a3a9a2d0b7059c87c699b5ca8cdae93
+
+From b226bd679a68b8bf94cbb6d58837f00251560e63 Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Mon, 25 Sep 2023 13:03:26 +0200
+Subject: [PATCH] configure: sort AC_CHECK_FUNCS
+
+No functional changes.
+---
+ configure.ac | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2fc9f2f01783c..a6f9066a133a4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3583,8 +3583,10 @@ AC_CHECK_DECLS([getpwuid_r], [], [AC_DEFINE(HAVE_DECL_GETPWUID_R_MISSING, 1, "Se
+           #include <sys/types.h>]])
+ 
+ 
+-AC_CHECK_FUNCS([fnmatch \
++AC_CHECK_FUNCS([\
++  arc4random \
+   fchmod \
++  fnmatch \
+   fork \
+   geteuid \
+   getpass_r \
+@@ -3604,7 +3606,6 @@ AC_CHECK_FUNCS([fnmatch \
+   snprintf \
+   utime \
+   utimes \
+-  arc4random
+ ],[
+ ],[
+   func="$ac_func"
+
+From 9c7165e96a3a9a2d0b7059c87c699b5ca8cdae93 Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Fri, 22 Sep 2023 13:58:49 +0000
+Subject: [PATCH] lib: use wrapper for curl_mime_data fseek callback
+
+fseek uses long offset which does not match with curl_off_t. This leads
+to undefined behavior when calling the callback and caused failure on
+arm 32 bit.
+
+Use a wrapper to solve this and use fseeko which uses off_t instead of
+long.
+
+Thanks to the nice people at Libera IRC #musl for helping finding this
+out.
+
+Fixes #11882
+Fixes #11900
+Closes #11918
+---
+ configure.ac   |  2 ++
+ lib/formdata.c | 17 +++++++++++++++--
+ 3 files changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a6f9066a133a4..5fa7c45c47430 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3584,10 +3584,12 @@ AC_CHECK_DECLS([getpwuid_r], [], [AC_DEFINE(HAVE_DECL_GETPWUID_R_MISSING, 1, "Se
+ 
+ 
+ AC_CHECK_FUNCS([\
++  _fseeki64 \
+   arc4random \
+   fchmod \
+   fnmatch \
+   fork \
++  fseeko \
+   geteuid \
+   getpass_r \
+   getppid \
+diff --git a/lib/formdata.c b/lib/formdata.c
+index 8984b63223cc0..f370ce6854b5f 100644
+--- a/lib/formdata.c
++++ b/lib/formdata.c
+@@ -789,6 +789,20 @@ static CURLcode setname(curl_mimepart *part, const char *name, size_t len)
+   return res;
+ }
+ 
++/* wrap call to fseeko so it matches the calling convetion of callback */
++static int fseeko_wrapper(void *stream, curl_off_t offset, int whence)
++{
++#if defined(HAVE_FSEEKO)
++  return fseeko(stream, (off_t)offset, whence);
++#elif defined(HAVE__FSEEKI64)
++  return _fseeki64(stream, (__int64)offset, whence);
++#else
++  if(offset > LONG_MAX)
++    return -1;
++  return fseek(stream, (long)offset, whence);
++#endif
++}
++
+ /*
+  * Curl_getformdata() converts a linked list of "meta data" into a mime
+  * structure. The input list is in 'post', while the output is stored in
+@@ -874,8 +888,7 @@ CURLcode Curl_getformdata(struct Curl_easy *data,
+                compatibility: use of "-" pseudo file name should be avoided. */
+             result = curl_mime_data_cb(part, (curl_off_t) -1,
+                                        (curl_read_callback) fread,
+-                                       CURLX_FUNCTION_CAST(curl_seek_callback,
+-                                                           fseek),
++                                       fseeko_wrapper,
+                                        NULL, (void *) stdin);
+           }
+           else
+
