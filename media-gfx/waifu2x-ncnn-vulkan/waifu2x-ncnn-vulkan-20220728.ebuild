@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,13 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-libs/ncnn:=[vulkan]
 	media-libs/libwebp:=
-	media-libs/vulkan-loader"
+	media-libs/vulkan-loader
+"
 DEPEND="
 	${RDEPEND}
 	dev-util/glslang
-	dev-util/vulkan-headers"
+	dev-util/vulkan-headers
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20210521-no-lto.patch
