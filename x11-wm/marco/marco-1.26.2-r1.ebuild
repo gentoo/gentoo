@@ -7,7 +7,7 @@ MATE2_LA_PUNT="yes"
 
 inherit mate meson
 
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 
 DESCRIPTION="MATE default window manager"
 LICENSE="FDL-1.2+ GPL-2+ LGPL-2+ MIT"
