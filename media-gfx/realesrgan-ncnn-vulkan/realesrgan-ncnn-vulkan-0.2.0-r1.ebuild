@@ -16,7 +16,7 @@ S=${WORKDIR}/Real-ESRGAN-ncnn-vulkan-${PV}
 
 LICENSE="MIT BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-libs/ncnn:=[vulkan]
