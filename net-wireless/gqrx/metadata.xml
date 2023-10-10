@@ -13,6 +13,6 @@
 		<flag name="gr-audio">Use audio support from <pkg>net-wireless/gnuradio</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="github">csete/gqrx</remote-id>
+		<remote-id type="github">gqrx-sdr/gqrx</remote-id>
 	</upstream>
 </pkgmetadata>
