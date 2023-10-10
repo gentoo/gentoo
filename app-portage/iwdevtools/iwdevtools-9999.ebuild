@@ -11,7 +11,6 @@ EGIT_REPO_URI="https://github.com/ionenwks/iwdevtools.git"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
