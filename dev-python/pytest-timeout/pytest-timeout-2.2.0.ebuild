@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 multiprocessing pypi
 
 DESCRIPTION="pytest plugin to abort hanging tests"
 HOMEPAGE="
@@ -24,6 +24,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 BDEPEND="
 	test? (
 		dev-python/pexpect[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		!hppa? (
 			$(python_gen_cond_dep '
 				dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -34,8 +35,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# TODO
-	test_pytest_timeout.py::test_suppresses_timeout_when_debugger_is_entered
-	test_pytest_timeout.py::test_disable_debugger_detection_flag
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# TODO
+		test_pytest_timeout.py::test_suppresses_timeout_when_debugger_is_entered
+		test_pytest_timeout.py::test_disable_debugger_detection_flag
+	)
+
+	epytest -n "$(makeopts_jobs)" --dist=worksteal
+}
