@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,6 +48,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-no-ldconfig.patch
 	"${FILESDIR}"/${PN}-2.3.1-algorithm.patch
+	"${FILESDIR}"/${PN}-2.4.0-fix-build-clang16.patch
 )
 
 src_configure() {
