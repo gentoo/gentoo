@@ -58,6 +58,10 @@ QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
 # Zig uses self-hosted compiler only
 CHECKREQS_MEMORY="4G"
 
+PATCHES=(
+	"${FILESDIR}/zig-0.11.0-first-try-getconf.patch"
+)
+
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
 }
