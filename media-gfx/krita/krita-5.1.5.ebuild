@@ -66,7 +66,7 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXi
-	color-management? ( >=media-libs/opencolorio-2.0.0 )
+	color-management? ( >=media-libs/OpenColorIO-2.0.0 )
 	fftw? ( sci-libs/fftw:3.0= )
 	gif? ( media-libs/giflib )
 	gsl? ( sci-libs/gsl:= )

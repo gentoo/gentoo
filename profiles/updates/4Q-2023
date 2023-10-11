@@ -6,3 +6,4 @@ move dev-python/jschema_to_python dev-python/jschema-to-python
 move dev-python/sarif_om dev-python/sarif-om
 move dev-python/memory_allocator dev-python/memory-allocator
 move media-libs/openimageio media-libs/OpenImageIO
+move media-libs/opencolorio media-libs/OpenColorIO

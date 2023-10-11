@@ -10,7 +10,6 @@ inherit cmake flag-o-matic python-single-r1
 DESCRIPTION="Color management framework for visual effects and animation"
 HOMEPAGE="https://opencolorio.org https://github.com/AcademySoftwareFoundation/OpenColorIO"
 SRC_URI="https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/OpenColorIO-${PV}"
 
 LICENSE="BSD"
 # TODO: drop .1 on next SONAME bump (2.1 -> 2.2?) as we needed to nudge it
