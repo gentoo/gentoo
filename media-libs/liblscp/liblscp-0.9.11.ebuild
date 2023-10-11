@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://www.rncbc.org/archive/${P}.tar.gz
 		https://download.linuxsampler.org/packages/${P}.tar.gz"
-	KEYWORDS="amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc x86"
 fi
 
 LICENSE="LGPL-2.1"
