@@ -20,7 +20,7 @@ RDEPEND=">=dev-libs/rocr-runtime-${PV}
 	>=dev-libs/rocm-comgr-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
 	>=virtual/opencl-3
-	media-libs/mesa"
+	media-libs/mesa[-opencl]"
 DEPEND="${RDEPEND}
 	dev-util/opencl-headers"
 BDEPEND=">=dev-util/rocm-cmake-${PV}

@@ -28,7 +28,7 @@ RDEPEND=">=dev-libs/rocr-runtime-5.7
 	>=dev-libs/rocm-comgr-5.7
 	>=dev-libs/rocm-device-libs-5.7
 	>=virtual/opencl-3
-	media-libs/mesa"
+	media-libs/mesa[-opencl]"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-util/rocm-cmake-5.3
 	media-libs/glew
