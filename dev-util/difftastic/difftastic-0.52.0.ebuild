@@ -52,6 +52,7 @@ CRATES="
 	libc@0.2.139
 	libm@0.2.7
 	libmimalloc-sys@0.1.24
+	line-numbers@0.2.2
 	lock_api@0.4.9
 	log@0.4.17
 	memchr@2.5.0
@@ -144,7 +145,12 @@ SRC_URI="
 	https://github.com/Wilfred/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
-LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unlicense ZLIB"
+LICENSE="MIT"
+# Dependent crate licenses
+LICENSE+=" Apache-2.0 MIT ZLIB"
+# owo-colors
+LICENSE+=" MIT"
+
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
