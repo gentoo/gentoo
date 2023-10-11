@@ -16,7 +16,7 @@ SLOT="0/$(ver_cut 1-2)"
 # minizip-ng: ~arm ~arm64 ~ppc64 ~riscv
 # osl: ~riscv
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="apps cpu_flags_x86_sse2 doc opengl python static-libs test"
+IUSE="apps cpu_flags_x86_sse2 doc opengl python test"
 # TODO: drop opengl? It does nothing without building either the apps or the testsuite
 REQUIRED_USE="
 	apps? ( opengl )
@@ -104,7 +104,6 @@ src_configure() {
 	#	ocioconvert (USE opengl)
 	# - OpenGL, GLUT and GLEW is required for building ociodisplay (USE opengl)
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DOCIO_BUILD_APPS=$(usex apps)
 		-DOCIO_BUILD_DOCS=$(usex doc)
 		-DOCIO_BUILD_FROZEN_DOCS=$(usex doc)
