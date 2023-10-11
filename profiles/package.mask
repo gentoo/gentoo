@@ -382,13 +382,6 @@ net-misc/openr2
 =dev-db/mariadb-10.11.2
 =dev-db/mariadb-10.11.3
 
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2023-05-31)
-# Mask this version for uptime soversion issue. There will be an updated release
-# shortly which fixes this.
-# See https://github.com/AcademySoftwareFoundation/Imath/issues/189#issuecomment-1567077722
-# Bug: #907211
-=dev-libs/imath-3.1.7
-
 # Sam James <sam@gentoo.org> (2023-05-19)
 # Breaks Portage's pid-sandbox at least with 5.10 kernels. Pending investigation.
 # If you're hitting this, try: FEATURES="-pid-sandbox" emerge -v1 sys-apps/util-linux

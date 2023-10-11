@@ -24,11 +24,8 @@ RESTRICT="!test? ( test )"
 
 # blocker due to file collision #803347
 RDEPEND="
-	!dev-libs/imath:0
-	!media-libs/ilmbase
 	sys-libs/zlib
 	python? (
-		!dev-python/pyilmbase
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-libs/boost:=[python,${PYTHON_USEDEP}]
