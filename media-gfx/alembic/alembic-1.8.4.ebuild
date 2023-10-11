@@ -20,8 +20,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/imath:=
-	python? ( dev-libs/imath:=[python,${PYTHON_SINGLE_USEDEP}] )
+	dev-libs/Imath:=
+	python? ( dev-libs/Imath:=[python,${PYTHON_SINGLE_USEDEP}] )
 	hdf5? (
 		>=sci-libs/hdf5-1.10.2:=[zlib(+)]
 		>=sys-libs/zlib-1.2.11-r1

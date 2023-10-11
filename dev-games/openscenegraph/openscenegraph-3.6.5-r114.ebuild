@@ -66,7 +66,7 @@ RDEPEND="
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( ${LUA_DEPS} )
 	openexr? (
-		dev-libs/imath:=
+		dev-libs/Imath:=
 		>=media-libs/openexr-3:=
 	)
 	openinventor? ( media-libs/coin )

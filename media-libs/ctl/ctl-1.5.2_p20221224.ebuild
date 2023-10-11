@@ -20,7 +20,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/imath:=
+	dev-libs/Imath:=
 	>=media-libs/openexr-3:=[threads]
 	media-libs/tiff:=
 	!media-libs/openexr_ctl"

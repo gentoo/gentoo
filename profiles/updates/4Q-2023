@@ -8,3 +8,4 @@ move dev-python/memory_allocator dev-python/memory-allocator
 move media-libs/openimageio media-libs/OpenImageIO
 move media-libs/opencolorio media-libs/OpenColorIO
 move media-libs/osl media-libs/OpenShadingLanguage
+move dev-libs/imath dev-libs/Imath
