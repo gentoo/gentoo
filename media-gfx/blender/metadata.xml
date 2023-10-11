@@ -29,7 +29,7 @@
 			Add support for Collada interchange format through
 			<pkg>media-libs/opencollada</pkg>.
 		</flag>
-		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg>.</flag>
+		<flag name="color-management">Enable color management via <pkg>media-libs/OpenColorIO</pkg>.</flag>
 		<flag name="cuda">
 			Build cycles renderer with nVidia CUDA support.
 		</flag>

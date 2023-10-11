@@ -15,7 +15,7 @@ openexr
 osg
 
 # Samuli Suominen <ssuominen@gentoo.org> (2012-11-24)
-# TODO: Keyword and stabilize media-gfx/opencolorio and media-libs/opencv
+# TODO: Keyword and stabilize media-gfx/OpenColorIO and media-libs/opencv
 color-management
 opencv
 
