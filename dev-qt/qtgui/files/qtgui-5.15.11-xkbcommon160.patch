@@ -3,8 +3,12 @@ unnecesary. Usage results in build failure.
 
 Just a quick fix while waiting for what [2] comes up with.
 
+Update: will be fixed by [3], see also [4]
+
 [1] https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/merge_requests/70
 [2] https://bugreports.qt.io/browse/QTBUG-117950
+[3] https://invent.kde.org/qt/qt/qtbase/-/merge_requests/290
+[4] https://bugs.gentoo.org/915510
 --- a/src/platformsupport/input/xkbcommon/qxkbcommon.cpp
 +++ b/src/platformsupport/input/xkbcommon/qxkbcommon.cpp
 @@ -276,4 +276,4 @@
