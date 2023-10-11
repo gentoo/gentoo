@@ -30,7 +30,6 @@ DEPEND="${RDEPEND}"
 
 CMAKE_BUILD_TYPE=Release
 
-
 PATCHES=(
 	"${FILESDIR}/${PN}-5.5.1-fix-llvm-link.patch"
 	)
