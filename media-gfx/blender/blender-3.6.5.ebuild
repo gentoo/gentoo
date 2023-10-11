@@ -19,7 +19,7 @@ else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	# Update these between major releases.
 	TEST_TARBALL_VERSION="$(ver_cut 1-2).0"
-	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
+	# SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
@@ -138,6 +138,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.0-ocio-2.3.0.patch"
+)
+
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
@@ -172,7 +176,7 @@ src_unpack() {
 		git-r3_src_unpack
 
 		git-r3_fetch "${ADDONS_EGIT_REPO_URI}"
-		git-r3_checkout "${ADDONS_EGIT_REPO_URI} ${S}/scripts/addons"
+		git-r3_checkout "${ADDONS_EGIT_REPO_URI}" "${S}/scripts/addons"
 
 		if use test; then
 			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
