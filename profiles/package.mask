@@ -276,10 +276,6 @@ dev-ruby/mail:2.7
 dev-lang/php:8.0
 virtual/httpd-php:8.0
 
-# David Seifert <soap@gentoo.org> (2023-09-09)
-# Depends on PHP 8.0. Removal on 2023-10-09.
-~www-apps/tt-rss-20220218
-
 # Sam James <sam@gentoo.org> (2023-08-04)
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
