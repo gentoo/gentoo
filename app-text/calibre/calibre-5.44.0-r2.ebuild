@@ -41,6 +41,8 @@ IUSE="ios +udisks"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# Qt slotted dependencies are used because the libheadless.so plugin links to
+# QT_*_PRIVATE_ABI. It only uses core/gui/dbus.
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/hunspell-1.7:=
 	>=app-text/podofo-0.9.6_pre20171027:=
@@ -89,7 +91,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
 	dev-qt/qtgui:5=[jpeg]
-	dev-qt/qtwidgets:5=
+	dev-qt/qtwidgets:5
 	dev-util/desktop-file-utils
 	dev-util/gtk-update-icon-cache
 	media-fonts/liberation-fonts
