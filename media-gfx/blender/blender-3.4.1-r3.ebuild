@@ -139,8 +139,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.3.0-fix-build-with-boost-1.81.patch
-	"${FILESDIR}"/${PN}-3.3.6-cycles-gcc13.patch
+	"${FILESDIR}/${PN}-3.3.0-fix-build-with-boost-1.81.patch"
+	"${FILESDIR}/${PN}-3.3.6-cycles-gcc13.patch"
 )
 
 blender_check_requirements() {
@@ -184,7 +184,7 @@ src_unpack() {
 		if use test; then
 			#The tests are downloaded from: https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
 			mkdir -p lib || die
-			mv "${WORKDIR}"/blender-${TEST_TARBALL_VERSION}-tests/tests lib || die
+			mv "${WORKDIR}/blender-${TEST_TARBALL_VERSION}-tests/tests" lib || die
 		fi
 	fi
 
@@ -209,9 +209,9 @@ src_prepare() {
 	sed -e "s|Exec=blender|Exec=blender-${BV}|" -i release/freedesktop/blender.desktop || die
 	sed -e "s|Icon=blender|Icon=blender-${BV}|" -i release/freedesktop/blender.desktop || die
 
-	mv release/freedesktop/icons/scalable/apps/blender.svg release/freedesktop/icons/scalable/apps/blender-${BV}.svg || die
-	mv release/freedesktop/icons/symbolic/apps/blender-symbolic.svg release/freedesktop/icons/symbolic/apps/blender-${BV}-symbolic.svg || die
-	mv release/freedesktop/blender.desktop release/freedesktop/blender-${BV}.desktop || die
+	mv release/freedesktop/icons/scalable/apps/blender.svg "release/freedesktop/icons/scalable/apps/blender-${BV}.svg" || die
+	mv release/freedesktop/icons/symbolic/apps/blender-symbolic.svg "release/freedesktop/icons/symbolic/apps/blender-${BV}-symbolic.svg" || die
+	mv release/freedesktop/blender.desktop "release/freedesktop/blender-${BV}.desktop" || die
 
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
@@ -247,7 +247,7 @@ src_configure() {
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GHOST_WAYLAND=$(usex wayland)
-		-DWITH_GHOST_WAYLAND_APP_ID=blender-${BV}
+		-DWITH_GHOST_WAYLAND_APP_ID="blender-${BV}"
 		-DWITH_GHOST_WAYLAND_DBUS=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_DYNLOAD=OFF
 		-DWITH_GHOST_WAYLAND_LIBDECOR=OFF
