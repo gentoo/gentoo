@@ -24,7 +24,7 @@ IUSE="neigh python static-libs systemd valgrind"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
-	dev-lang/perl
+	dev-lang/perl:=
 	virtual/libudev:=
 	neigh? ( dev-libs/libnl:3 )
 	systemd? ( sys-apps/systemd:= )
