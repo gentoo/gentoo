@@ -1,0 +1,110 @@
+From 458917773afb4cdf8e1189c0bf5aff7feda6a664 Mon Sep 17 00:00:00 2001
+From: Brecht Van Lommel <brecht@blender.org>
+Date: Mon, 2 Oct 2023 17:31:08 +0200
+Subject: [PATCH] Build: changes to build with OpenColorIO 2.3
+
+Ref #113157
+---
+ intern/opencolorio/ocio_impl_glsl.cc          | 12 +++++++++-
+ .../ocio_color_space_conversion_shader.cc     | 24 +++++++++++++++++++
+ 2 files changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/intern/opencolorio/ocio_impl_glsl.cc b/intern/opencolorio/ocio_impl_glsl.cc
+index 8d46a2f0773..35e4d0b7a90 100644
+--- a/intern/opencolorio/ocio_impl_glsl.cc
++++ b/intern/opencolorio/ocio_impl_glsl.cc
+@@ -343,8 +343,15 @@ static bool addGPULut1D2D(OCIO_GPUTextures &textures,
+   unsigned int height = 0;
+   GpuShaderCreator::TextureType channel = GpuShaderCreator::TEXTURE_RGB_CHANNEL;
+   Interpolation interpolation = INTERP_LINEAR;
++#if OCIO_VERSION_HEX >= 0x02030000
++  /* Always use 2D textures in OpenColorIO 2.3, simpler and same performance. */
++  GpuShaderDesc::TextureDimensions dimensions = GpuShaderDesc::TEXTURE_2D;
++  shader_desc->getTexture(
++      index, texture_name, sampler_name, width, height, channel, dimensions, interpolation);
++#else
+   shader_desc->getTexture(
+       index, texture_name, sampler_name, width, height, channel, interpolation);
++#endif
+ 
+   const float *values;
+   shader_desc->getTextureValues(index, values);
+@@ -358,6 +365,7 @@ static bool addGPULut1D2D(OCIO_GPUTextures &textures,
+                                                                                   GPU_R16F;
+ 
+   OCIO_GPULutTexture lut;
++#if OCIO_VERSION_HEX < 0x02030000
+   /* There does not appear to be an explicit way to check if a texture is 1D or 2D.
+    * It depends on more than height. So check instead by looking at the source. */
+   std::string sampler1D_name = std::string("sampler1D ") + sampler_name;
+@@ -365,7 +373,9 @@ static bool addGPULut1D2D(OCIO_GPUTextures &textures,
+     lut.texture = GPU_texture_create_1d(
+         texture_name, width, 1, format, GPU_TEXTURE_USAGE_SHADER_READ, values);
+   }
+-  else {
++  else
++#endif
++  {
+     lut.texture = GPU_texture_create_2d(
+         texture_name, width, height, 1, format, GPU_TEXTURE_USAGE_SHADER_READ, values);
+   }
+diff --git a/source/blender/compositor/realtime_compositor/cached_resources/intern/ocio_color_space_conversion_shader.cc b/source/blender/compositor/realtime_compositor/cached_resources/intern/ocio_color_space_conversion_shader.cc
+index 4cdbb52a6ba..52492754c0f 100644
+--- a/source/blender/compositor/realtime_compositor/cached_resources/intern/ocio_color_space_conversion_shader.cc
++++ b/source/blender/compositor/realtime_compositor/cached_resources/intern/ocio_color_space_conversion_shader.cc
+@@ -95,6 +95,18 @@ class GPUShaderCreator : public OCIO::GpuShaderCreator {
+     return GPU_max_texture_size();
+   }
+ 
++#  if OCIO_VERSION_HEX >= 0x02030000
++  void setAllowTexture1D(bool allowed) override
++  {
++    allow_texture_1D_ = allowed;
++  }
++
++  bool getAllowTexture1D() const override
++  {
++    return allow_texture_1D_;
++  }
++#  endif
++
+   bool addUniform(const char *name, const DoubleGetter &get_double) override
+   {
+     /* Check if a resource exists with the same name and assert if it is the case, returning false
+@@ -201,6 +213,9 @@ class GPUShaderCreator : public OCIO::GpuShaderCreator {
+                   uint width,
+                   uint height,
+                   TextureType channel,
++#  if OCIO_VERSION_HEX >= 0x02030000
++                  OCIO::GpuShaderDesc::TextureDimensions dimensions,
++#  endif
+                   OCIO::Interpolation interpolation,
+                   const float *values) override
+   {
+@@ -216,7 +231,11 @@ class GPUShaderCreator : public OCIO::GpuShaderCreator {
+     GPUTexture *texture;
+     eGPUTextureFormat texture_format = (channel == TEXTURE_RGB_CHANNEL) ? GPU_RGB16F : GPU_R16F;
+     /* A height of 1 indicates a 1D texture according to the OCIO API. */
++#  if OCIO_VERSION_HEX >= 0x02030000
++    if (dimensions == OCIO::GpuShaderDesc::TEXTURE_1D) {
++#  else
+     if (height == 1) {
++#  endif
+       texture = GPU_texture_create_1d(
+           texture_name, width, 1, texture_format, GPU_TEXTURE_USAGE_SHADER_READ, values);
+       shader_create_info_.sampler(textures_.size() + 1, ImageType::FLOAT_1D, resource_name);
+@@ -398,6 +417,11 @@ class GPUShaderCreator : public OCIO::GpuShaderCreator {
+   /* A vectors that stores the created uniform buffers when bind_shader_and_resources() is called,
+    * so that they can be properly unbound and freed in the unbind_shader_and_resources() method. */
+   Vector<GPUUniformBuf *> uniform_buffers_;
++
++#  if OCIO_VERSION_HEX >= 0x02030000
++  /* Allow creating 1D textures, or only use 2D textures. */
++  bool allow_texture_1D_ = true;
++#  endif
+ };
+ 
+ #else
+-- 
+2.30.2
+
