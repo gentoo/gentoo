@@ -19,6 +19,6 @@
 		<flag name="qt5">Build the osltoy binary</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">imageworks/OpenShadingLanguage</remote-id>
+		<remote-id type="github">AcademySoftwareFoundation/OpenShadingLanguage</remote-id>
 	</upstream>
 </pkgmetadata>

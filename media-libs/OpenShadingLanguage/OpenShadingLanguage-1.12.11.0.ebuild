@@ -11,10 +11,9 @@ LLVM_MAX_SLOT=15
 inherit cmake llvm toolchain-funcs python-single-r1
 
 DESCRIPTION="Advanced shading language for production GI renderers"
-HOMEPAGE="http://opensource.imageworks.com/?p=osl"
+HOMEPAGE="https://github.com/AcademySoftwareFoundation/OpenShadingLanguage"
 # If a development release, please don't keyword!
-SRC_URI="https://github.com/imageworks/OpenShadingLanguage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/OpenShadingLanguage-${PV}"
+SRC_URI="https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
