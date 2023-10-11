@@ -36,7 +36,7 @@ src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf
 
 	MULTILIB_CHOST_TOOLS=(
-		/usr/bin/pkgconf
+		/usr/bin/pkgconf$(get_exeext)
 		/usr/bin/pkg-config$(get_exeext)
 	)
 }
