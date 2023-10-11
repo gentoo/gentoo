@@ -19,7 +19,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-# Needs Emacs 29
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 
 SITEFILE="50${PN}-gentoo.el"
