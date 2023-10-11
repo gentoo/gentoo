@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/botan.asc
-inherit edo flag-o-matic multiprocessing ninja-utils python-r1 toolchain-funcs verify-sig
+inherit edo flag-o-matic multiprocessing python-r1 toolchain-funcs verify-sig
 
 MY_P="Botan-${PV}"
 DESCRIPTION="C++ crypto library"
@@ -46,7 +46,6 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	${NINJA_DEPEND}
 	$(python_gen_any_dep '
 		doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	')
@@ -151,7 +150,8 @@ src_configure() {
 		$(use_with sqlite sqlite3)
 		$(use_with zlib)
 
-		--build-tool=ninja
+		# Broken in 3.2.0, bug #915544
+		#--build-tool=ninja
 		--cpu=${chostarch}
 		--docdir=share/doc
 		--disable-modules=$(IFS=","; echo "${disable_modules[*]}")
@@ -203,16 +203,12 @@ src_configure() {
 	edo ${EPYTHON} configure.py --verbose "${myargs[@]}"
 }
 
-src_compile() {
-	eninja
-}
-
 src_test() {
 	LD_LIBRARY_PATH="${S}" edo ./botan-test$(ver_cut 1) --test-threads="$(makeopts_jobs)"
 }
 
 src_install() {
-	DESTDIR="${D}" eninja install
+	default
 
 	if [[ -d "${ED}"/usr/share/doc/${P} && ${P} != ${PF} ]] ; then
 		# --docdir in configure controls the parent directory unfortunately
