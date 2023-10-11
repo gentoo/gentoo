@@ -296,12 +296,6 @@ dev-libs/kasync
 dev-libs/sink
 mail-client/kube
 
-# David Seifert <soap@gentoo.org> (2023-09-05)
-# OpenSSL 1.1 based, does not work with 3.0+. tpm2-openssl is the
-# spiritual successor for OpenSSL 3.0+, but isn't packaged.
-# Removal on 2023-10-05.
-app-crypt/tpm2-tss-engine
-
 # Sam James <sam@gentoo.org> (2023-08-04)
 # Stricter behavior which causes some packages to fail, see bug #911721.
 =dev-util/pkgconf-2.0.0
