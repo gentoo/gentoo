@@ -22,7 +22,7 @@ IUSE="doc boost bzip2 lzma python static-libs sqlite test tools zlib"
 RESTRICT="!test? ( test )"
 
 CPU_USE=(
-	cpu_flags_arm_{aes,neon}
+	cpu_flags_arm_{aes,neon,sha1,sha2}
 	cpu_flags_ppc_altivec
 	cpu_flags_x86_{aes,avx2,popcnt,rdrand,sha,sse2,ssse3,sse4_1,sse4_2}
 )
@@ -126,6 +126,8 @@ src_configure() {
 		# TODO: POWER Crypto (new CPU_FLAGS_PPC?)
 		$(usev !cpu_flags_arm_aes '--disable-armv8crypto')
 		$(usev !cpu_flags_arm_neon '--disable-neon')
+		$(usev !cpu_flags_arm_sha1 '--disable-armv8crypto')
+		$(usev !cpu_flags_arm_sha2 '--disable-armv8crypto')
 		$(usev !cpu_flags_ppc_altivec '--disable-altivec')
 		$(usev !cpu_flags_x86_aes '--disable-aes-ni')
 		$(usev !cpu_flags_x86_avx2 '--disable-avx2')
