@@ -15,6 +15,6 @@ HOMEPAGE="https://github.com/schettino72/sphinx_press_theme"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
