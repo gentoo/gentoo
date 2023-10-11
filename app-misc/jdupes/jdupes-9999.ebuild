@@ -6,13 +6,13 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Identify duplicate files on the filesystem"
-HOMEPAGE="https://github.com/jbruchon/jdupes"
+HOMEPAGE="https://codeberg.org/jbruchon/jdupes"
 if [[ "${PV}" == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/jbruchon/jdupes.git"
+	EGIT_REPO_URI="https://codeberg.org/jbruchon/jdupes.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/jbruchon/jdupes/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	SRC_URI="https://codeberg.org/jbruchon/jdupes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="amd64"
 fi
 LICENSE="MIT"
 SLOT="0"
@@ -22,7 +22,7 @@ SLOT="0"
 DEPEND=">=dev-libs/libjodycode-3.0"
 RDEPEND="${DEPEND}"
 
-IUSE="+dedupe lowmem hardened"
+IUSE="+dedupe hardened"
 
 # missing test.sh script
 # https://github.com/jbruchon/jdupes/issues/191
@@ -37,7 +37,6 @@ src_compile() {
 	tc-export CC
 	local myconf=(
 		$(usex dedupe 'ENABLE_DEDUPE=1' '')
-		$(usex lowmem 'LOW_MEMORY=1' '')
 		$(usex hardened 'HARDEN=1' '')
 	)
 	emake ${myconf[@]}
