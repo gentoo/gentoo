@@ -14,35 +14,27 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/
 LICENSE="BSD"
 SLOT="0/30" # based on SONAME
 # -ppc -sparc because broken on big endian, bug #818424
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong -ppc ~ppc64 ~riscv -sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong -ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+IUSE="cpu_flags_x86_avx examples large-stack utils test threads"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/Imath-${PV}:=
+	>=dev-libs/Imath-3.1.6:=
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	doc? ( dev-python/breathe )
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch
-	"${FILESDIR}"/${P}-Add-missing-include-cstdint-required-by-gcc-13-1264.patch
-	"${FILESDIR}"/${P}-add-missed-include-cstdint-statement.patch
-)
-
-DOCS=( CHANGES.md GOVERNANCE.md PATENTS README.md SECURITY.md docs/SymbolVisibility.md )
+PATCHES=( "${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch )
+DOCS=( CHANGES.md GOVERNANCE.md PATENTS README.md SECURITY.md )
 
 src_prepare() {
 	# Fix path for testsuite
 	sed -e "s:/var/tmp/:${T}:" \
-		-i "${S}"/src/test/${MY_PN}{,Fuzz,Util}Test/tmpDir.h || die "failed to set temp path for tests"
+		-i "${S}"/src/test/${MY_PN}Test/tmpDir.h || die "failed to set temp path for tests"
 
 	if use x86; then
-		eapply "${FILESDIR}"/${P}-drop-failing-testDwaLookups.patch
+		eapply "${FILESDIR}"/${PN}-3.1.5-drop-failing-testDwaLookups.patch
 	fi
 
 	cmake_src_prepare
@@ -54,8 +46,8 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DBUILD_DOCS=OFF # needs sphinx_press_theme which we don't have in ::gentoo
 		-DBUILD_TESTING=$(usex test)
-		-DDOCS=$(usex doc)
 		-DOPENEXR_BUILD_TOOLS=$(usex utils)
 		-DOPENEXR_ENABLE_LARGE_STACK=$(usex large-stack)
 		-DOPENEXR_ENABLE_THREADING=$(usex threads)
