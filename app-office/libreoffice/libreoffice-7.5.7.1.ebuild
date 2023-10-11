@@ -404,6 +404,9 @@ src_configure() {
 		RANLIB=llvm-ranlib
 		LDFLAGS+=" -fuse-ld=lld"
 
+		# Workaround for bug #915067
+		append-ldflags -Wl,--undefined-version
+
 		# Not implemented by Clang, bug #903889
 		filter-flags -Wlto-type-mismatch -Werror=lto-type-mismatch
 	else
