@@ -30,7 +30,7 @@ RDEPEND="
 	dev-cpp/pystring
 	dev-python/pybind11
 	<dev-cpp/yaml-cpp-0.8.0:=
-	>=dev-libs/imath-3.1.4-r2:=
+	>=dev-libs/Imath-3.1.4-r2:=
 	dev-libs/tinyxml
 	opengl? (
 		media-libs/lcms:2

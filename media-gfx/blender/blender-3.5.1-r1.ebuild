@@ -85,7 +85,7 @@ RDEPEND="${PYTHON_DEPS}
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-1.4.1 )
 	openexr? (
-		>=dev-libs/imath-3.1.4-r2:=
+		>=dev-libs/Imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
 	openpgl? ( media-libs/openpgl )

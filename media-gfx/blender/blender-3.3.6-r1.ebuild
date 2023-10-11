@@ -89,7 +89,7 @@ RDEPEND="${PYTHON_DEPS}
 	oidn? ( >=media-libs/oidn-1.4.1 )
 	openimageio? ( >=media-libs/OpenImageIO-2.3.12.0-r3:= )
 	openexr? (
-		>=dev-libs/imath-3.1.4-r2:=
+		>=dev-libs/Imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0 )

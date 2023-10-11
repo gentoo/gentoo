@@ -31,7 +31,7 @@ RDEPEND="
 	png? ( media-libs/libpng:0= )
 	raw? ( media-libs/libraw:= )
 	tiff? (
-		>=dev-libs/imath-3.1.4-r2:=
+		>=dev-libs/Imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 		>=media-libs/tiff-4.4.0:=
 	)

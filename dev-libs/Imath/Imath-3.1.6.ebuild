@@ -7,18 +7,15 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake python-single-r1
 
-MY_PN="${PN^}"
-
 DESCRIPTION="Imath basic math package"
 HOMEPAGE="https://imath.readthedocs.io"
-SRC_URI="https://github.com/AcademySoftwareFoundation/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-# re-keywording needed for (according to ilmbase keywords): ~x64-macos
+SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+# re-keywording needed for (according to ilmbase keywords): ~x64-macos ~x86-solaris
 KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
-SLOT="3/30"
-IUSE="large-stack python test"
+SLOT="3/29"
+IUSE="doc large-stack python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -39,6 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	doc? ( $(python_gen_cond_dep 'dev-python/breathe[${PYTHON_USEDEP}]') )
 	python? ( ${PYTHON_DEPS} )
 "
 
@@ -50,14 +48,11 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		# requires press theme, not available in ::gentoo
-		-DBUILD_DOCS=OFF
+		-DDOCS=$(usex doc)
 		-DIMATH_ENABLE_LARGE_STACK=$(usex large-stack)
-		# the following options are at their default value
 		-DIMATH_HALF_USE_LOOKUP_TABLE=ON
 		-DIMATH_INSTALL_PKG_CONFIG=ON
 		-DIMATH_USE_CLANG_TIDY=OFF
-		-DIMATH_USE_DEFAULT_VISIBILITY=OFF
 		-DIMATH_USE_NOEXCEPT=ON
 	)
 	if use python; then

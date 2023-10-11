@@ -16,7 +16,7 @@ IUSE="mpi"
 
 RDEPEND="
 	dev-libs/boost:=
-	>=dev-libs/imath-3.1.4-r2:=
+	>=dev-libs/Imath-3.1.4-r2:=
 	>=media-libs/openexr-3:0=
 	sci-libs/hdf5:=
 	mpi? ( virtual/mpi )

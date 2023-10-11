@@ -34,7 +34,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/gmp:=
 	dev-libs/mpfr:=
-	dev-libs/imath:=
+	dev-libs/Imath:=
 	>=media-gfx/openvdb-8.2:=
 	net-misc/curl[adns]
 	media-libs/glew:0=
