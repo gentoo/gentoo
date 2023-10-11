@@ -1,7 +1,11 @@
-Bit is removed in Qt6.6, fixes build with USE=sql ahead of next release.
+Quick workaround to fix build with USE=sql for Qt6.6 due to [1]
+while waiting for PyQt6-6.6.0. Not a proper fix but nothing in
+tree needs this bit currently.
 
-USE=bluetooth is still broken, but is not essential (no revdeps), and
-can instead be masked for the time being.
+USE=bluetooth is still broken, but is not essential (no revdeps),
+and can instead be masked for the time being.
+
+[1] https://github.com/qt/qtbase/commit/d924253c91
 --- a/sip/QtCore/QtCoremod.sip
 +++ b/sip/QtCore/QtCoremod.sip
 @@ -24,3 +24,3 @@
