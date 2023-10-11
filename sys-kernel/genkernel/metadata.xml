@@ -6,6 +6,22 @@
 	</maintainer>
 	<use>
 		<flag name="firmware">Prefer system firmware <pkg>sys-kernel/linux-firmware</pkg> over local copy.</flag>
+		<flag name="iscsi">Include option to have <pkg>net-libs/libiscsi</pkg> in the initramfs</flag>
+		<flag name="dmraid">Include option to have <pkg>sys-fs/dmraid</pkg> in the initramfs</flag>
+		<flag name="luks">Include option to have <pkg>sys-fs/cryptsetup</pkg> in the initramfs</flag>
+		<flag name="lvm">Include option to have <pkg>sys-fs/lvm2</pkg> in the initramfs</flag>
+		<flag name="mdadm">Include option to have <pkg>sys-fs/mdadm</pkg> in the initramfs</flag>
+		<flag name="multipath">Include option to have <pkg>sys-fs/multipath-tools</pkg> in the initramfs</flag>
+		<flag name="btrfs">Include option to have <pkg>sys-fs/btrfs-progs</pkg> in the initramfs</flag>
+		<flag name="e2fsprogs">Include option to have <pkg>sys-fs/e2fsprogs</pkg> in the initramfs</flag>
+		<flag name="unionfs">Include option to have <pkg>sys-fs/unionfs-fuse</pkg> in the initramfs</flag>
+		<flag name="xfsprogs">Include option to have <pkg>sys-fs/xfsprogs</pkg> in the initramfs</flag>
+		<flag name="zfs">Include option to have <pkg>sys-fs/zfs</pkg> in the initramfs</flag>
+		<flag name="bcache">Include option to have <pkg>sys-fs/bcachefs-tools</pkg> in the initramfs</flag>
+		<flag name="b2sum">Include option to have b2sum from <pkg>sys-apps/util-linux</pkg> in the initramfs</flag>
+		<flag name="plymouth">Include option to have <pkg>sys-boot/plymouth</pkg> in the initramfs</flag>
+		<flag name="ssh">Include option to have <pkg>net-misc/openssh</pkg> in the initramfs</flag>
+		<flag name="strace">Include option to have <pkg>dev-util/strace</pkg> in the initramfs</flag>
 	</use>
 	<upstream>
 		<remote-id type="gentoo">proj/genkernel</remote-id>
