@@ -6,6 +6,7 @@
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
 	<use>
+		<flag name="lttng">Enable support for the LTTng tracer</flag>
 		<flag name="neigh">Enable iwpmd support</flag>
 		<flag name="python">Enable pyverbs support</flag>
 	</use>
