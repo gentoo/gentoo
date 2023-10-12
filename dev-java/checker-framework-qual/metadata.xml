@@ -5,6 +5,9 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">typetools/checker-framework</remote-id>
+	</upstream>
 	<longdescription>
 The Checker Framework enhances Java's type system to make it
 more powerful and useful. This lets software developers detect
