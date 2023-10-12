@@ -12,7 +12,8 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://codeberg.org/jbruchon/jdupes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64"
+	S="${WORKDIR}"/${PN}
+	KEYWORDS="~amd64"
 fi
 LICENSE="MIT"
 SLOT="0"
