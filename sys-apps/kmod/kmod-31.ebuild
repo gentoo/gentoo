@@ -136,9 +136,9 @@ src_test() {
 	python_test() {
 		mkdir "${T}/test-${EPYTHON}" || die
 		emake -C "${BUILD_DIR}" DESTDIR="${T}/test-${EPYTHON}" \
-                                VPATH="${native_builddir}:${S}" \
-                                install-pkgpyexecLTLIBRARIES \
-                                install-dist_pkgpyexecPYTHON
+				VPATH="${native_builddir}:${S}" \
+				install-pkgpyexecLTLIBRARIES \
+				install-dist_pkgpyexecPYTHON
 
 		# Smoke test based on https://bugs.gentoo.org/891975#c5
 		local -x PYTHONPATH="${T}/test-${EPYTHON}/usr/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
