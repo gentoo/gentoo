@@ -64,7 +64,7 @@ CRATES="
 	jobserver@0.1.22
 	js-sys@0.3.64
 	lazy_static@1.4.0
-	libc@0.2.148
+	libc@0.2.149
 	libgit2-sys@0.16.1+1.7.1
 	libz-sys@1.1.2
 	linux-raw-sys@0.4.7
