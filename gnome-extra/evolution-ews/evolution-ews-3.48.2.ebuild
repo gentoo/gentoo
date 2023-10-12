@@ -68,5 +68,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "oauth support" gnome-extra/evolution-data-server[oauth]
+	optfeature "oauth support" "gnome-extra/evolution-data-server[oauth-gtk3]"
 }
