@@ -78,6 +78,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Needs "bison" and "flex" exactly.
+	unset LEX
+	unset YACC
+
 	local ECONF_SOURCE="${NVC_SOURCEDIR}"
 	local -a myconf=(
 		--enable-verilog
