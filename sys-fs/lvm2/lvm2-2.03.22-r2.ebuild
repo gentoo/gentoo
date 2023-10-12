@@ -47,9 +47,9 @@ RDEPEND="
 DEPEND="
 	${DEPEND_COMMON}
 	static? (
+		sys-apps/util-linux[static-libs]
 		lvm? (
 			dev-libs/libaio[static-libs]
-			sys-apps/util-linux[static-libs]
 			readline? ( sys-libs/readline[static-libs] )
 		)
 		selinux? ( sys-libs/libselinux[static-libs] )
