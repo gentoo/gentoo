@@ -33,6 +33,11 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# fails with FEATURES=distcc, bug #915614
+		test/test_networking.py::TestYoutubeDLNetworking::test_proxy\[None-expected2\]
+	)
+
 	epytest -m 'not download'
 }
 
