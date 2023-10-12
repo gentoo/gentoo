@@ -16,3 +16,7 @@ RDEPEND="
 	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-invalid-svg-crash.patch
+)
