@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="gentoo">proj/zsh-completion</remote-id>
 		<remote-id type="github">gentoo/gentoo-zsh-completions</remote-id>
 	</upstream>
 </pkgmetadata>
