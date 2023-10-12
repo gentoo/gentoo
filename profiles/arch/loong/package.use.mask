@@ -199,8 +199,9 @@ sys-apps/nvme-cli hugepages
 sys-boot/grub:2 grub_platforms_coreboot grub_platforms_efi-32 grub_platforms_ieee1275 grub_platforms_multiboot grub_platforms_pc grub_platforms_qemu grub_platforms_uboot grub_platforms_xen grub_platforms_xen-pvh
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-30)
-# No Haskell on loong yet (port under review), hence no virtual/pandoc and
-# friends.
+# No Haskell on loong yet (in-tree ghc too old and not bootstrapped here as of
+# Oct 2023), hence no virtual/pandoc and friends.
+sys-apps/eza man
 www-apps/hugo test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-30)
