@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/915544
+https://github.com/randombit/botan/commit/a1a32558669a6751e39420b26930d477790509ce
+
+From a1a32558669a6751e39420b26930d477790509ce Mon Sep 17 00:00:00 2001
+From: Jack Lloyd <jack@randombit.net>
+Date: Wed, 11 Oct 2023 07:36:31 -0400
+Subject: [PATCH] Fix Ninja build to pass instruction set flags to the compiler
+
+Fixes #3750
+--- a/src/build-data/ninja.in
++++ b/src/build-data/ninja.in
+@@ -161,6 +161,7 @@ build tidy: tidy
+ 
+ %{for lib_build_info}
+ build %{obj}: compile_lib %{src}
++  isa_flags = %{isa_flags}
+ %{endfor}
+ 
+ %{for cli_build_info}
+
