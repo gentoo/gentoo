@@ -107,6 +107,7 @@ multilib_src_compile() {
 	# -fprofile-partial-training because upstream note the test suite isn't super comprehensive
 	# See https://documentation.suse.com/sbp/all/html/SBP-GCC-10/index.html#sec-gcc10-pgo
 	local pgo_generate_flags=$(usev pgo "-fprofile-update=atomic -fprofile-dir=${T}/${ABI}-pgo -fprofile-generate=${T}/${ABI}-pgo $(test-flags-CC -fprofile-partial-training)")
+	local pgo_use_flags=$(usev pgo "-fprofile-use=${T}/${ABI}-pgo -fprofile-dir=${T}/${ABI}-pgo $(test-flags-CC -fprofile-partial-training)")
 
 	emake CFLAGS="${CFLAGS} ${pgo_generate_flags}"
 
@@ -118,7 +119,7 @@ multilib_src_compile() {
 		fi
 
 		emake clean
-		emake CFLAGS="${CFLAGS} -fprofile-use=${T}/${ABI}-pgo -fprofile-dir=${T}/${ABI}-pgo"
+		emake CFLAGS="${CFLAGS} ${pgo_use_flags}"
 	fi
 }
 
