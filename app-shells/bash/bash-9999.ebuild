@@ -257,7 +257,7 @@ src_compile() {
 	# -fprofile-partial-training because upstream note the test suite isn't super comprehensive
 	# See https://documentation.suse.com/sbp/all/html/SBP-GCC-10/index.html#sec-gcc10-pgo
 	local pgo_generate_flags=$(usev pgo "-fprofile-update=atomic -fprofile-dir=${T}/pgo -fprofile-generate=${T}/pgo $(test-flags-CC -fprofile-partial-training)")
-	local pgo_use_flags=$(usev pgo "-fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo")
+	local pgo_use_flags=$(usev pgo "-fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo $(test-flags-CC -fprofile-partial-training)")
 
 	emake CFLAGS="${CFLAGS} ${pgo_generate_flags}"
 	use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_generate_flags}" all others
