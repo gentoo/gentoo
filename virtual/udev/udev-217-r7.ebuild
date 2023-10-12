@@ -10,10 +10,5 @@ IUSE="systemd"
 
 RDEPEND="
 	systemd? ( >=sys-apps/systemd-217 )
-	!systemd? (
-		|| (
-			sys-apps/systemd-utils[udev]
-			>=sys-fs/eudev-2.1.1
-		)
-	)
+	!systemd? ( sys-apps/systemd-utils[udev] )
 "
