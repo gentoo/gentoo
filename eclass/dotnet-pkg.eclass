@@ -117,6 +117,28 @@ DOTNET_PKG_RESTORE_EXTRA_ARGS=()
 # For more info see the "DOTNET_PROJECT" variable and "dotnet-pkg_src_compile".
 DOTNET_PKG_BUILD_EXTRA_ARGS=()
 
+# @ECLASS_VARIABLE: DOTNET_PKG_TEST_EXTRA_ARGS
+# @DESCRIPTION:
+# Extra arguments to pass to the package test, in the "src_test" phase.
+#
+# This is passed only when testing found ".sln" solution files
+# (see also "dotnet-pkg-base_foreach-solution").
+# Other project builds do not use this variable.
+#
+# This variable should be set after inheriting "dotnet-pkg.eclass",
+# it is also advised that it is set after the variable
+# "DOTNET_PROJECT" (from "dotnet-pkg-base" eclass) is set.
+#
+# Default value is an empty array.
+#
+# Example:
+# @CODE
+# DOTNET_PKG_TEST_EXTRA_ARGS=( -p:RollForward=Major )
+# @CODE
+#
+# For more info see the "DOTNET_PROJECT" variable and "dotnet-pkg_src_test".
+DOTNET_PKG_TEST_EXTRA_ARGS=()
+
 # @FUNCTION: dotnet-pkg_pkg_setup
 # @DESCRIPTION:
 # Default "pkg_setup" for the "dotnet-pkg" eclass.
@@ -215,7 +237,9 @@ dotnet-pkg_src_compile() {
 # will execute wrong or incomplete test suite. Maintainers should inspect if
 # any and/or correct tests are ran.
 dotnet-pkg_src_test() {
-	dotnet-pkg-base_foreach-solution "$(pwd)" dotnet-pkg-base_test
+	dotnet-pkg-base_foreach-solution \
+		"$(pwd)" \
+		dotnet-pkg-base_test "${DOTNET_PKG_TEST_EXTRA_ARGS[@]}"
 }
 
 # @FUNCTION: dotnet-pkg_src_install
