@@ -252,16 +252,17 @@ LICENSE="MIT"
 SLOT="0"
 
 CHECKREQS_DISK_BUILD="2G"
-DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
 DOTNET_PKG_PROJECTS=( LiteDB.Shell/LiteDB.Shell.csproj )
+DOTNET_PKG_RESTORE_EXTRA_ARGS=(
+	-p:TargetFramework="net${DOTNET_PKG_COMPAT}"
+	-p:TargetFrameworks="net${DOTNET_PKG_COMPAT}"
+)
+DOTNET_PKG_BUILD_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
+DOTNET_PKG_TEST_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
 
 pkg_setup() {
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
-}
-
-src_test() {
-	dotnet-pkg-base_test -p:RollForward=Major LiteDB.sln
 }
 
 src_install() {
