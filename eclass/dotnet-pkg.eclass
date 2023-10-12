@@ -60,10 +60,9 @@ BDEPEND+=" ${DOTNET_PKG_BDEPS} "
 # "dotnet-pkg-base_build" will fail when pointed to a solution or a directory
 # containing a solution file.
 #
-# It is up to the maintainer if this variable is set before inheriting
-# "dotnet-pkg-base" eclass, but it is advised that it is set after
-# the variable "${S}" is set, it should also integrate with it
-# (see the example below).
+# This variable should be set after inheriting "dotnet-pkg.eclass",
+# it is also advised that it is set after the variable "${S}" is set.
+# "DOTNET_PKG_PROJECTS" can integrate with "S" (see the example below).
 #
 # Example:
 # @CODE
@@ -87,8 +86,8 @@ BDEPEND+=" ${DOTNET_PKG_BDEPS} "
 # This is passed only when restoring the specified "DOTNET_PROJECT".
 # Other project restorers do not use this variable.
 #
-# It is up to the maintainer if this variable is set before inheriting
-# "dotnet-pkg.eclass", but it is advised that it is set after the variable
+# This variable should be set after inheriting "dotnet-pkg.eclass",
+# it is also advised that it is set after the variable
 # "DOTNET_PROJECT" (from "dotnet-pkg-base" eclass) is set.
 #
 # Default value is an empty array.
@@ -103,8 +102,8 @@ DOTNET_PKG_RESTORE_EXTRA_ARGS=()
 # This is passed only when building the specified "DOTNET_PROJECT".
 # Other project builds do not use this variable.
 #
-# It is up to the maintainer if this variable is set before inheriting
-# "dotnet-pkg.eclass", but it is advised that it is set after the variable
+# This variable should be set after inheriting "dotnet-pkg.eclass",
+# it is also advised that it is set after the variable
 # "DOTNET_PROJECT" (from "dotnet-pkg-base" eclass) is set.
 #
 # Default value is an empty array.
