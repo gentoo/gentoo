@@ -47,7 +47,7 @@ HOMEPAGE="https://tukaani.org/xz/"
 # See top-level COPYING file as it outlines the various pieces and their licenses.
 LICENSE="public-domain LGPL-2.1+ GPL-2+"
 SLOT="0"
-IUSE="doc +extra-filters nls static-libs"
+IUSE="doc +extra-filters pgo nls static-libs"
 
 if [[ ${PV} != 9999 ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-jiatan )"
@@ -100,11 +100,26 @@ multilib_src_configure() {
 		myconf+=( --disable-path-for-script )
 	fi
 
-	# ifunc is incompatible w/ asan
-	# https://github.com/tukaani-project/xz/issues/62#issuecomment-1719489932
-	is-flagq -fsanitize=address && myconf+=( --disable-ifunc )
-
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
+}
+
+multilib_src_compile() {
+	# -fprofile-partial-training because upstream note the test suite isn't super comprehensive
+	# See https://documentation.suse.com/sbp/all/html/SBP-GCC-10/index.html#sec-gcc10-pgo
+	local pgo_generate_flags=$(usev pgo "-fprofile-update=atomic -fprofile-dir=${T}/${ABI}-pgo -fprofile-generate=${T}/${ABI}-pgo $(test-flags-CC -fprofile-partial-training)")
+
+	emake CFLAGS="${CFLAGS} ${pgo_generate_flags}"
+
+	if use pgo ; then
+		emake CFLAGS="${CFLAGS} ${pgo_generate_flags}" -k check
+
+		if tc-is-clang; then
+			llvm-profdata merge "${T}"/${ABI}-pgo --output="${T}"/${ABI}-pgo/default.profdata || die
+		fi
+
+		emake clean
+		emake CFLAGS="${CFLAGS} -fprofile-use=${T}/${ABI}-pgo -fprofile-dir=${T}/${ABI}-pgo"
+	fi
 }
 
 multilib_src_install() {
