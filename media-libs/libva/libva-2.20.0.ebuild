@@ -45,6 +45,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/va/va_dricommon.h
 )
 
+PATCHES=(
+	"${FILESDIR}/libva-2.20.0-no-undefined-version.patch"
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Ddriverdir="${EPREFIX}/usr/$(get_libdir)/va/drivers"
