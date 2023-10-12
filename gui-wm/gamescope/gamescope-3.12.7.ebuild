@@ -5,11 +5,14 @@ EAPI=8
 
 inherit fcaps meson
 
+RESHADE_COMMIT="9fdbea6892f9959fdc18095d035976c574b268b7"
 MY_PV=$(ver_rs 3 -)
 MY_PV="${MY_PV//_/-}"
+
 DESCRIPTION="Efficient micro-compositor for running games"
 HOMEPAGE="https://github.com/ValveSoftware/gamescope"
-SRC_URI="https://github.com/ValveSoftware/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ValveSoftware/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/Joshua-Ashton/reshade/archive/${RESHADE_COMMIT}.tar.gz -> reshade-${RESHADE_COMMIT}.tar.gz"
 KEYWORDS="~amd64"
 LICENSE="BSD-2"
 SLOT="0"
@@ -46,6 +49,7 @@ DEPEND="
 	dev-libs/stb
 	dev-util/vulkan-headers
 	media-libs/glm
+	dev-util/spirv-headers
 	wsi-layer? ( >=media-libs/vkroots-0_p20230103 )
 "
 BDEPEND="
@@ -67,6 +71,16 @@ src_prepare() {
 	# we don't install one. Work around this using symlinks.
 	mkdir subprojects/stb || die
 	ln -sn "${ESYSROOT}"/usr/include/stb/* "${S}"/subprojects/packagefiles/stb/* subprojects/stb/ || die
+
+	# ReShade is bundled as a git submodule, but it references an unofficial
+	# fork, so we cannot unbundle it. Symlink to its extracted sources.
+	rmdir src/reshade || die
+	ln -snfT ../../reshade-${RESHADE_COMMIT} src/reshade || die
+
+	# SPIRV-Headers is required by ReShade. It is bundled as a git submodule but
+	# not wrapped with Meson, so we can symlink to our system-wide headers.
+	mkdir thirdparty/SPIRV-Headers/include || die
+	ln -snf "${ESYSROOT}"/usr/include/spirv thirdparty/SPIRV-Headers/include/ || die
 }
 
 src_configure() {
