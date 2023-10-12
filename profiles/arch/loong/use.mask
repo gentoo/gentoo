@@ -42,6 +42,7 @@ webengine
 
 # Things we actually can support
 -input_devices_synaptics
+-video_cards_ast
 
 # Things without support yet
 java
