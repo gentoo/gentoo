@@ -67,6 +67,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-39.0-RDMA_BuildType.patch
 )
 
+src_prepare() {
+	# DEFINED is true even if the value is false, which makes lttng unconditional
+	sed -i -e 's/if (DEFINED ENABLE_LTTNG)/if (ENABLE_LTTNG)/' CMakeLists.txt || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	perl_set_version
 
