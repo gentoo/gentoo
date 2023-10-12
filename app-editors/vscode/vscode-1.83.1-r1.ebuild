@@ -42,7 +42,6 @@ IUSE="kerberos"
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret[crypt]
-	app-i18n/ibus
 	app-misc/ca-certificates
 	dev-libs/expat
 	dev-libs/glib:2
@@ -53,6 +52,7 @@ RDEPEND="
 	media-libs/libglvnd
 	media-libs/mesa
 	net-misc/curl
+	sys-apps/dbus
 	sys-libs/zlib
 	sys-process/lsof
 	x11-libs/cairo
