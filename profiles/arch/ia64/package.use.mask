@@ -218,7 +218,7 @@ app-text/texlive l10n_ja context
 # - net-libs/webkit-gtk: ruby build system
 app-editors/emacs xwidgets
 dev-util/geany-plugins markdown
-gnome-extra/evolution-data-server oauth
+gnome-extra/evolution-data-server oauth oauth-gtk3 oauth-gtk4
 # - gnome-extra/sushi: depends on webkit-gtk
 gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
