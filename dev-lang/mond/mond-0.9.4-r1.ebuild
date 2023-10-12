@@ -102,8 +102,9 @@ SRC_URI+=" ${NUGET_URIS} "
 LICENSE="MIT"
 SLOT="0"
 
-DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
 DOTNET_PKG_PROJECTS=( Mond.Repl/Mond.Repl.csproj )
+DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
+DOTNET_PKG_TEST_EXTRA_ARGS=( -p:RollForward=Major )
 
 DOCS=( README.md Examples )
 
@@ -113,10 +114,6 @@ src_unpack() {
 	if [[ -n "${EGIT_REPO_URI}" ]] ; then
 		git-r3_src_unpack
 	fi
-}
-
-src_test() {
-	dotnet-pkg-base_test -p:RollForward=Major Mond.sln
 }
 
 src_install() {
