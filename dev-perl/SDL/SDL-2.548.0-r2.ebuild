@@ -52,4 +52,5 @@ PERL_RM_FILES=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.546-pointer.patch
 	"${FILESDIR}"/${PN}-2.546-implicit-func-decl.patch
+	"${FILESDIR}"/${PN}-2.548-perl537_sv_nv.patch
 )
