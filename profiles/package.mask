@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrey Grozin <grozin@gentoo.org> (2023-10-12)
+# The last upstream tag in 2021
+# There is an active fork: app-text/crqt-ng and app-text/crwx-ng
+# Bug https://bugs.gentoo.org/915634
+# Removal on 2023-11-11
+app-text/coolreader
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-10)
 # Formerly added for unbundling on games-emulation/pcsx2, which is
 # no longer needed. Has no real use on its own, has no revdeps, and
