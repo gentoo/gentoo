@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <upstream>
+    <remote-id type="gentoo">proj/java-ebuilder</remote-id>
     <remote-id type="github">gentoo/java-ebuilder</remote-id>
   </upstream>
   <maintainer type="person">
