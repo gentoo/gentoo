@@ -78,6 +78,17 @@ BDEPEND="
 # It looks like a nightmare to disable those for now.
 RESTRICT="!test? ( test )"
 
+pkg_pretend() {
+	if has_version "gnome-extra/evolution-data-server[oauth(-)]" &&
+		! use oauth-gtk3 && ! use oauth-gtk4
+	then
+		ewarn "The previous installed version of gnome-extra/evolution-data-server"
+		ewarn "had USE=oauth enabled that is now split into USE=oauth-gtk3"
+		ewarn "and USE=oauth-gtk4.  Please consider enabling either (or both)"
+		ewarn "of these flags to preserve OAuth2 support."
+	fi
+}
+
 # global scope PATCHES or DOCS array mustn't be used due to double default_src_prepare call
 src_prepare() {
 	use vala && vala_setup
