@@ -1,5 +1,9 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+ 
+# Violet Purcell <vimproved@inventati.org> (2023-10-12)
+# dev-util/samurai is not keyworded here.
+app-alternatives/ninja samurai
 
 # Sam James <sam@gentoo.org> (2023-10-08)
 # dev-db/mysql not keyworded here
