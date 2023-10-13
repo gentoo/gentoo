@@ -85,7 +85,6 @@ x11-libs/libxcb xkb
 # gudev, required by freedesktop.org udev helpers like udisks and upower
 # introspection, exception, enabled from here instead of ebuild to skip extra deps for a system package
 dev-libs/libgudev introspection
-sys-fs/eudev introspection
 
 # Samuli Suominen <ssuominen@gentoo.org> (2010-12-19)
 # Support for desktop file icons
