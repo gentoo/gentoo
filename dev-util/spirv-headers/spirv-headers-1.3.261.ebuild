@@ -13,4 +13,4 @@ S="${WORKDIR}/SPIRV-Headers-${EGIT_COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~x86"
