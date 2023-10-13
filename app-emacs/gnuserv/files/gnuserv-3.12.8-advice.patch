@@ -2,7 +2,7 @@ defadvice is obsolete in Emacs 30.
 
 --- gnuserv-3.12.8/gnuserv-compat.el
 +++ gnuserv-3.12.8/gnuserv-compat.el
-@@ -112,38 +112,34 @@
+@@ -112,38 +112,35 @@
    ;; can do!  If the device doesn't represent a live frame, we create
    ;; the frame as requested.
  
@@ -45,13 +45,14 @@ defadvice is obsolete in Emacs 30.
 -				  first
 -				  (predicate &optional device)
 -				  activate)
--    ad-do-it)
+-    ad-do-it))
 +  (defun gnuserv-compat-filtered-frame-list (orig-fun predicate
 +						      &optional _device)
 +    (funcall orig-fun predicate))
 +
 +  (advice-add 'filtered-frame-list
 +	      :around #'gnuserv-compat-filtered-frame-list)
- ;;  )
++  )
  
  
+ ;; Emulate XEmacs devices.  A device is just a frame. For the most

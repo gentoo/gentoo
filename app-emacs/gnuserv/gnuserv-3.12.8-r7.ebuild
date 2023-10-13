@@ -25,10 +25,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-process-query.patch
 	"${FILESDIR}"/${P}-gnudoit.patch
 	"${FILESDIR}"/${P}-emacs-28.patch
+	"${FILESDIR}"/${P}-devices.patch
 	"${FILESDIR}"/${P}-cl.patch
-	"${FILESDIR}"/${P}-emacs-29.patch
+	"${FILESDIR}"/${P}-warnings.patch
 	"${FILESDIR}"/${P}-advice.patch
 )
+ELISP_REMOVE="devices.el"
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
@@ -39,7 +41,7 @@ src_configure() {
 
 src_compile() {
 	emake gnuserv gnuclient
-	elisp-compile *.el
+	BYTECOMPFLAGS+=" -l gnuserv-compat" elisp-compile *.el
 }
 
 src_install() {
