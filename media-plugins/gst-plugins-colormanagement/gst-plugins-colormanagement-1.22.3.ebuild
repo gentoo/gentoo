@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer-meson
 
 DESCRIPTION="Color management correction GStreamer plugins"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND=">=media-libs/lcms-2.7:2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
