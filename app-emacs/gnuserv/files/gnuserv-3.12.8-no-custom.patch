@@ -1,0 +1,31 @@
+Old-style backquotes don't work with Emacs 27 or later. Remove the
+code altogether, because it is no longer needed since Emacs 20.1.
+
+--- gnuserv-3.12.8/gnuserv-compat.el
++++ gnuserv-3.12.8/gnuserv-compat.el
+@@ -180,25 +180,6 @@
+   (defun frame-totally-visible-p (frame)
+     (eq t (frame-visible-p frame))))
+ 
+-;; Make custom stuff work even without customize
+-;;   Courtesy of Hrvoje Niksic <hniksic@srce.hr>
+-;;   via Ronan Waide <waider@scope.ie>.
+-(eval-and-compile
+-  (condition-case ()
+-      (require 'custom)
+-    (error nil))
+-  (if (and (featurep 'custom) (fboundp 'custom-declare-variable))
+-      nil ;; We've got what we needed
+-    ;; We have the old custom-library, hack around it!
+-    (defmacro defgroup (&rest args)
+-      nil)
+-    (defmacro defcustom (var value doc &rest args)
+-      (` (defvar (, var) (, value) (, doc))))
+-    (defmacro defface (var value doc &rest args)
+-      (` (make-face (, var))))
+-    (defmacro define-widget (&rest args)
+-      nil)))
+-
+ ;; Now for gnuserv...
+ (require 'gnuserv)
+ 

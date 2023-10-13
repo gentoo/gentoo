@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 	gui? ( x11-base/xorg-proto )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-backquotes.patch
+	"${FILESDIR}"/${P}-no-custom.patch
 	"${FILESDIR}"/${P}-process-query.patch
 	"${FILESDIR}"/${P}-gnudoit.patch
 	"${FILESDIR}"/${P}-emacs-28.patch
