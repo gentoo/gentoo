@@ -7,7 +7,7 @@ inherit meson
 
 MY_P="${PN}-v${PV}"
 SRC_URI="https://download.flashrom.org/releases/${MY_P}.tar.bz2"
-KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv x86"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
