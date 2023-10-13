@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Netatalk/netatalk/releases/download/netatalk-${PV//.
 
 LICENSE="GPL-2 BSD"
 SLOT="0/18.0"
-KEYWORDS="~amd64 arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~ppc ~ppc64 ~x86"
 IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota +shadow ssl tracker tcpd zeroconf"
 
 RDEPEND="
