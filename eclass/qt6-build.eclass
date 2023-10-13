@@ -257,8 +257,8 @@ _qt6-build_match_cpu_flags() {
 				[[ ${intrin} ]] && flags+=( -mno-${intrin} )
 			done
 	done < <(
-		# TODO: drop ver_test and ${fma} when <6.5.3 is gone
-		ver_test ${PV} -ge 6.5.3 && fma= || fma=fma
+		# TODO: drop ver_test and ${fma} when <6.5.3 and 6.6.0 are gone
+		ver_test ${PV} -ge 6.5.3 && ver_test ${PV} -ne 6.6.0 && fma= || fma=fma
 		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 2
 			#if defined(__GNUC__) && (defined(__x86_64__) || defined(__i386__))
 			#include <x86intrin.h>
