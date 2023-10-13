@@ -3,6 +3,8 @@
 
 EAPI=8
 
+LLVM_MAX_SLOT=16
+
 inherit autotools bash-completion-r1 llvm
 
 DESCRIPTION="NVC is a VHDL compiler and simulator"
@@ -38,7 +40,7 @@ RDEPEND="
 	dev-libs/libxml2:=
 	sys-libs/ncurses:=
 	sys-libs/zlib:=
-	llvm? ( sys-devel/llvm:= )
+	llvm? ( <sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
 "
 DEPEND="
 	${RDEPEND}
