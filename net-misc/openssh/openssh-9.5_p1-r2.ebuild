@@ -81,7 +81,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9.3_p1-GSSAPI-dns.patch" #165444 integrated into gsskex
 	"${FILESDIR}/${PN}-9.3_p1-disable-conch-interop-tests.patch"
 	"${FILESDIR}/${PN}-9.3_p1-fix-putty-tests.patch"
 	"${FILESDIR}/${PN}-9.3_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
