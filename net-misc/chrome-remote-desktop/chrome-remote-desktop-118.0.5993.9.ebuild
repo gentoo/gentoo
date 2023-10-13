@@ -15,7 +15,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9..12} )
 PLOCALES="am ar bg bn ca cs da de el en_GB en es_419 es et fa fil fi fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr sv sw ta te th tr uk vi zh_CN zh_TW"
 
 inherit unpacker python-single-r1 optfeature plocale
@@ -43,7 +43,10 @@ RDEPEND+="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
-	$(python_gen_cond_dep 'dev-python/psutil[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep '
+		dev-python/psutil[${PYTHON_USEDEP}]
+		dev-python/pyxdg[${PYTHON_USEDEP}]
+	')
 	media-libs/fontconfig
 	media-libs/freetype:2
 	sys-apps/dbus
