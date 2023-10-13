@@ -14,7 +14,7 @@ SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0/1.16.2"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~loong ~riscv x86"
 
 IUSE="+expvfst +hfst verify-sig"
 

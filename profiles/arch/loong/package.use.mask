@@ -157,7 +157,6 @@ app-cdr/brasero tracker
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # Respective dependency fails to build, pending investigation, mask for the
 # time being
-app-text/enchant voikko
 dev-cpp/libcmis man
 media-libs/opencv tesseract
 media-video/ffmpeg libilbc libtesseract
