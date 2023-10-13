@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ MY_P="${PN}-${PV/_/}"
 inherit xdg readme.gentoo-r1
 
 DESCRIPTION="Fast lightweight tabbed filemanager"
-HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
+HOMEPAGE="https://github.com/lxde/pcmanfm"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 S="${WORKDIR}"/${MY_P}
 
