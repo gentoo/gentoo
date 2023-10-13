@@ -13,12 +13,12 @@ SRC_URI="https://linuxcontainers.org/downloads/incus/${P}.tar.gz
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="nls"
+IUSE="apparmor nls"
 
 # incus conflicts with lxd due to fuidshift binary. Even if you replace the package, containers will remain.
 DEPEND="acct-group/incus
 	app-arch/xz-utils
-	>=app-containers/lxc-5.0.0:=[seccomp(+)]
+	>=app-containers/lxc-5.0.0:=[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
 	dev-libs/cowsql
 	dev-libs/lzo
@@ -92,6 +92,27 @@ src_prepare() {
 		-e "s:make:make ${MAKEOPTS}:g" \
 		Makefile || die
 
+	# Fix hardcoded ovmf file path, see bug 763180
+	sed -i \
+		-e "s:/usr/share/OVMF:/usr/share/edk2-ovmf:g" \
+		-e "s:OVMF_VARS.ms.fd:OVMF_VARS.fd:g" \
+		doc/environment.md \
+		internal/server/apparmor/instance.go \
+		internal/server/apparmor/instance_qemu.go \
+		internal/server/instance/drivers/driver_qemu.go || die "Failed to fix hardcoded ovmf paths."
+
+	# Fix hardcoded virtfs-proxy-helper file path, see bug 798924
+	sed -i \
+		-e "s:/usr/lib/qemu/virtfs-proxy-helper:/usr/libexec/virtfs-proxy-helper:g" \
+		internal/server/device/device_utils_disk.go || die "Failed to fix virtfs-proxy-helper path."
+
+	cp "${FILESDIR}"/incus-0.1.service "${T}"/incus.service || die
+	if use apparmor; then
+		sed -i \
+			'/^EnvironmentFile=.*/a ExecStartPre=\/usr\/libexec\/lxc\/lxc-apparmor-load' \
+			"${T}"/incus.service || die
+	fi
+
 	# Disable -Werror's from go modules.
 	find "${S}" -name "cgo.go" -exec sed -i "s/ -Werror / /g" {} + || die
 }
@@ -135,7 +156,7 @@ src_install() {
 	newconfd "${FILESDIR}"/incus-0.1.confd incus
 	newinitd "${FILESDIR}"/incus-0.1.initd incus
 
-	systemd_newunit "${FILESDIR}"/incus-0.1.service incus.service
+	systemd_dounit "${T}"/incus.service
 	systemd_newunit "${FILESDIR}"/incus-containers-0.1.service incus-containers.service
 	systemd_newunit "${FILESDIR}"/incus-0.1.socket incus.socket
 
