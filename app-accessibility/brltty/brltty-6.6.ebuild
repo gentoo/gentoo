@@ -191,12 +191,8 @@ src_install() {
 	insinto /etc
 	doins Documents/brltty.conf
 	newinitd "${FILESDIR}"/brltty.initd brltty
-	pushd Autostart/Systemd 1> /dev/null || die
-	emake -j1 INSTALL_ROOT="${ED}" install
-	popd || die
-	pushd Autostart/Udev 1> /dev/null || die
-	emake -j1 INSTALL_ROOT="${ED}" install
-	popd || die
+	emake -C Autostart/Systemd -j1 INSTALL_ROOT="${ED}" install
+	emake -C Autostart/Udev -j1 INSTALL_ROOT="${ED}" install
 
 	dodoc Documents/{CONTRIBUTORS,ChangeLog,HISTORY,README*,TODO}
 	if use doc; then
