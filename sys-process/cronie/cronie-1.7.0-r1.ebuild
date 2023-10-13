@@ -33,6 +33,10 @@ RDEPEND="
 	sys-apps/debianutils
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-optional-envionment.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		$(use_with inotify)

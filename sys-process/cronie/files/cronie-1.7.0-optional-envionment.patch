@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/915699
+https://github.com/cronie-crond/cronie/commit/1a6bed1dcf1871c47fdc6d5957f00eae5a854cc7
+
+From 1a6bed1dcf1871c47fdc6d5957f00eae5a854cc7 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Fri, 13 Oct 2023 11:17:12 +0200
+Subject: [PATCH] make the environment file optional
+
+Starting the daemon works without additional environment variables, so
+make the file optional.
+--- a/contrib/cronie.systemd
++++ b/contrib/cronie.systemd
+@@ -3,7 +3,7 @@ Description=Command Scheduler
+ After=auditd.service nss-user-lookup.target systemd-user-sessions.service time-sync.target ypbind.service autofs.service
+ 
+ [Service]
+-EnvironmentFile=/etc/sysconfig/crond
++EnvironmentFile=-/etc/sysconfig/crond
+ ExecStart=/usr/sbin/crond -n $CRONDARGS
+ ExecReload=/bin/kill -URG $MAINPID
+ KillMode=process
