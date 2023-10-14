@@ -78,4 +78,6 @@ python_install() {
 	newins - openvas <<-EOF
 	gvm  ALL = NOPASSWD: /usr/bin/openvas
 EOF
+	fperms 0750 /etc/sudoers.d
+	fperms 0440 /etc/sudoers.d/openvas
 }
