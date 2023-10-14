@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Mart Raudsepp <leio@gentoo.org> (2023-10-14)
+# The database used by this music fingerprint library has been defunct for
+# a while. Removal on 2023-11-13. Bug #915190.
+media-libs/libofa
+
+# Mart Raudsepp <leio@gentoo.org> (2023-10-14)
 # GStreamer plugin removed upstream. MMS was deprecated in 2003 and no
 # streams using MMS are known to exist. Removal on 2023-11-13. Bug #915771.
 media-plugins/gst-plugins-libmms
