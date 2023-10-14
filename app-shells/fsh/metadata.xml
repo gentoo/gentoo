@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    FSH (F# Shell - pronounced like 'fish') is a shell, like CMD, Powershell or
+    Bash, entirely written in F#.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/ChrisPritchard/FSH/issues/</bugs-to>
+    <remote-id type="github">ChrisPritchard/FSH</remote-id>
+  </upstream>
+</pkgmetadata>
