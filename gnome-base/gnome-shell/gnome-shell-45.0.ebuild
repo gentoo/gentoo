@@ -36,7 +36,6 @@ DEPEND="
 		>=net-misc/networkmanager-1.10.4[introspection]
 		net-libs/libnma[introspection]
 		>=app-crypt/libsecret-0.18
-		dev-libs/dbus-glib
 	)
 	pipewire? ( >=media-video/pipewire-0.3.49:= )
 	systemd? (
