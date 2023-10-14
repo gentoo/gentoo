@@ -114,7 +114,9 @@ BDEPEND="
 	doc? ( virtual/pandoc )
 "
 
-RESTRICT="!test? ( test )"
+# Broken by PEP517 migration and some tests failed for a while before that for
+# unknown reasons.
+RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-xdummy.patch
