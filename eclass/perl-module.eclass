@@ -335,6 +335,7 @@ perl-module_src_test() {
 
 	local my_test_control
 	local my_test_verbose
+	local my_test_makeopts
 
 	[[ -n "${DIST_TEST_OVERRIDE}" ]] && ewarn "DIST_TEST_OVERRIDE is set to ${DIST_TEST_OVERRIDE}"
 	my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
@@ -342,6 +343,10 @@ perl-module_src_test() {
 	if ! has 'do' ${my_test_control} && ! has 'parallel' ${my_test_control} ; then
 		einfo Skipping tests due to DIST_TEST=${my_test_control}
 		return 0
+	fi
+
+	if has 'do' ${my_test_control} && ! has 'parallel' ${my_test_control} ; then
+		my_test_makeopts="-j1"
 	fi
 
 	if has verbose ${my_test_control} ; then
@@ -383,7 +388,7 @@ perl-module_src_test() {
 	if [[ -f Build ]] ; then
 		./Build test verbose=${my_test_verbose} || die "test failed"
 	elif [[ -f Makefile ]] ; then
-		emake test TEST_VERBOSE=${my_test_verbose}
+		emake ${my_test_makeopts} test TEST_VERBOSE=${my_test_verbose}
 	fi
 }
 
