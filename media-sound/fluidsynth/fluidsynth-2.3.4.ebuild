@@ -54,7 +54,7 @@ src_configure() {
 		-Denable-ipv6=$(usex ipv6)
 		-Denable-jack=$(usex jack)
 		-Denable-ladspa=$(usex ladspa)
-		-Denable-libinstpatch=ON # https://github.com/swami/libinstpatch
+		-Denable-libinstpatch=OFF # https://github.com/swami/libinstpatch
 		-Denable-midishare=OFF # http://midishare.sourceforge.net/
 		-Denable-network=$(usex network)
 		-Denable-opensles=OFF
