@@ -17,6 +17,7 @@ IUSE="apparmor nls"
 
 # incus conflicts with lxd due to fuidshift binary. Even if you replace the package, containers will remain.
 DEPEND="acct-group/incus
+	acct-group/incus-admin
 	app-arch/xz-utils
 	>=app-containers/lxc-5.0.0:=[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
