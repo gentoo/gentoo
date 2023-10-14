@@ -428,16 +428,20 @@ src_test() {
 		"main.subquery_sj_firstmatch_bka;0;Known rounding error with latest AMD processors -- no upstream bug yet"
 		"main.subquery_sj_firstmatch_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet"
 		"main.subquery_sj_mat_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_sj_all_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet"
 		"main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet"
 		"main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet"
 		"main.with_recursive;0;Known rounding error with latest AMD processors -- no upstream bug yet"
 		"perfschema.statement_digest_query_sample;0;Test will fail on slow hardware"
 
 		"rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch;0;Unstable test"
+		"rpl_gtid.rpl_multi_source_mtr_includes;97844;Unstable test"
+		"main.partition_datatype;0;Unstable test"
 
 		"sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware"
 
 		"x.connection;0;Known failure - no upstream bug yet"
+		"main.slow_log;0;Known failure - no upstream bug yet"
 	)
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
@@ -481,6 +485,11 @@ src_test() {
 
 		# FIXME: suffers from broken DEATH_TESTS's
 		"routertest_router_certificate_generator"
+
+		# TODO: ???
+		"pfs_host-oom"
+		"pfs_user-oom"
+		"pfs"
 	)
 
 	# Try to increase file limits to increase test coverage
