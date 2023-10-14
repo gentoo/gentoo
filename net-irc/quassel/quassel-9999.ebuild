@@ -24,7 +24,7 @@ HOMEPAGE="https://quassel-irc.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="bundled-icons crypt +dbus gui kde ldap monolithic oxygen postgres +server snorenotify spell syslog test urlpreview"
+IUSE="bundled-icons crypt +dbus gui kde ldap monolithic oxygen postgres +server spell syslog test urlpreview"
 
 REQUIRED_USE="
 	|| ( gui server monolithic )
@@ -32,7 +32,6 @@ REQUIRED_USE="
 	kde? ( dbus spell )
 	ldap? ( || ( server monolithic ) )
 	postgres? ( || ( server monolithic ) )
-	snorenotify? ( || ( gui monolithic ) )
 	spell? ( || ( gui monolithic ) )
 	syslog? ( || ( server monolithic ) )
 "
@@ -72,7 +71,6 @@ GUI_DEPEND="
 		kde-frameworks/kwidgetsaddons:5
 		kde-frameworks/kxmlgui:5
 	)
-	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 	spell? ( kde-frameworks/sonnet:5 )
 	urlpreview? ( dev-qt/qtwebengine:5[widgets] )
 "
@@ -124,9 +122,9 @@ src_configure() {
 	# bug #830708
 	if use gui || use monolithic ; then
 		mycmakeargs+=(
+			-DCMAKE_DISABLE_FIND_PACKAGE=LibsnoreQt5=ON
 			$(cmake_use_find_package dbus dbusmenu-qt5)
 			$(cmake_use_find_package dbus Qt5DBus)
-			$(cmake_use_find_package snorenotify LibsnoreQt5)
 			$(cmake_use_find_package spell KF5Sonnet)
 		)
 	fi
