@@ -15,7 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="apparmor nls"
 
-# incus conflicts with lxd due to fuidshift binary. Even if you replace the package, containers will remain.
 DEPEND="acct-group/incus
 	acct-group/incus-admin
 	app-arch/xz-utils
@@ -29,7 +28,6 @@ DEPEND="acct-group/incus
 	sys-libs/libcap
 	virtual/udev"
 RDEPEND="${DEPEND}
-	!app-containers/lxd
 	net-firewall/ebtables
 	net-firewall/iptables
 	sys-apps/iproute2
@@ -125,7 +123,7 @@ src_compile() {
 	export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
 
 	# lxd-to-incus: this go module is packaged separately (0.1).
-	for k in fuidshift incus-benchmark incus-user incus lxc-to-incus ; do
+	for k in incus-benchmark incus-user incus lxc-to-incus ; do
 		go install -v -x "${S}/cmd/${k}" || die "failed compiling ${k}"
 	done
 
@@ -148,7 +146,7 @@ src_install() {
 
 	dosbin ${bindir}/incusd
 
-	for l in fuidshift incus-agent incus-benchmark incus-migrate incus-user incus lxc-to-incus ; do
+	for l in incus-agent incus-benchmark incus-migrate incus-user incus lxc-to-incus ; do
 		dobin ${bindir}/${l}
 	done
 
