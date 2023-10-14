@@ -745,3 +745,16 @@ Upstream variant: https://lists.gnu.org/archive/html/screen-devel/2022-08/msg000
  AC_MSG_CHECKING(for setenv)
  if test -z "$ac_setenv_args"; then
 
+
+--- a/display.c
++++ b/display.c
+@@ -38,6 +38,9 @@
+ #include "extern.h"
+ #include "braille.h"
+ #include "canvas.h"
++#ifdef DEBUG
++#include <sys/stat.h>
++#endif
+
+ /* CSI parsing status */
+ enum
