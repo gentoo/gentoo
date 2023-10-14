@@ -16,6 +16,7 @@ media-video/chaplin transcode
 # from failures. Limited to -r1 to spare stable users from rebuilds
 # (-r0 instead requires <6.6).
 =dev-python/PyQt6-6.5.2-r1 bluetooth
+~dev-python/PyQt6-6.5.3 bluetooth
 
 # Jaco Kroon <jaco@uls.co.za> (2023-09-19)
 # Joonas Niilola <juippis@gentoo.org> (2023-09-21)
