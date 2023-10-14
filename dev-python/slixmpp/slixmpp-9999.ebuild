@@ -14,7 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 
 if [[ "${PV}" == "9999" ]]; then
-	EGIT_REPO_URI="https://lab.louiz.org/poezio/${PN}.git"
+	EGIT_REPO_URI="https://lab.louiz.org/poezio/${PN}.git https://github.com/poezio/slixmpp.git"
 	inherit git-r3
 else
 	inherit pypi
