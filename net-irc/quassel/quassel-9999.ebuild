@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake xdg-utils pax-utils systemd
+inherit cmake optfeature pax-utils systemd xdg-utils
 
 if [[ ${PV} != *9999* ]]; then
 	MY_P=${PN}-${PV/_/-}
@@ -24,23 +24,40 @@ HOMEPAGE="https://quassel-irc.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="bundled-icons crypt +dbus debug gui kde ldap monolithic oxygen postgres +server snorenotify spell syslog test urlpreview"
+IUSE="bundled-icons crypt +dbus gui kde ldap monolithic oxygen postgres +server snorenotify spell syslog test urlpreview"
+
+REQUIRED_USE="
+	|| ( gui server monolithic )
+	crypt? ( || ( server monolithic ) )
+	kde? ( dbus spell )
+	ldap? ( || ( server monolithic ) )
+	postgres? ( || ( server monolithic ) )
+	snorenotify? ( || ( gui monolithic ) )
+	spell? ( || ( gui monolithic ) )
+	syslog? ( || ( server monolithic ) )
+"
+
 RESTRICT="!test? ( test )"
 
-SERVER_DEPEND="acct-group/quassel
+SERVER_DEPEND="
+	acct-group/quassel
 	acct-user/quassel
-	dev-qt/qtscript:5
 	crypt? ( app-crypt/qca:2[ssl] )
 	ldap? ( net-nds/openldap:= )
 	postgres? ( dev-qt/qtsql:5[postgres] )
-	!postgres? ( dev-qt/qtsql:5[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
-	syslog? ( virtual/logger )"
-GUI_DEPEND="dev-qt/qtgui:5
+	!postgres? (
+		dev-qt/qtsql:5[sqlite]
+		dev-db/sqlite:3[threadsafe(+),-secure-delete]
+	)
+	syslog? ( virtual/logger )
+"
+GUI_DEPEND="
+	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5
 	!bundled-icons? (
-		kde-frameworks/breeze-icons:5
-		oxygen? ( kde-frameworks/oxygen-icons:5 )
+		kde-frameworks/breeze-icons:*
+		oxygen? ( kde-frameworks/oxygen-icons:* )
 	)
 	dbus? (
 		>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619
@@ -57,8 +74,10 @@ GUI_DEPEND="dev-qt/qtgui:5
 	)
 	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 	spell? ( kde-frameworks/sonnet:5 )
-	urlpreview? ( dev-qt/qtwebengine:5[widgets] )"
-DEPEND="dev-libs/boost:=
+	urlpreview? ( dev-qt/qtwebengine:5[widgets] )
+"
+RDEPEND="
+	dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
 	sys-libs/zlib
@@ -69,44 +88,41 @@ DEPEND="dev-libs/boost:=
 	!monolithic? (
 		server? ( ${SERVER_DEPEND} )
 		gui? ( ${GUI_DEPEND} )
-	)"
-RDEPEND="${DEPEND}"
-BDEPEND="dev-qt/linguist-tools:5
-	kde-frameworks/extra-cmake-modules:5"
-
-DEPEND+=" test? ( dev-cpp/gtest dev-qt/qttest )"
+	)
+"
+DEPEND="
+	${RDEPEND}
+	test? (
+		dev-cpp/gtest
+		dev-qt/qttest:5
+	)
+"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	kde-frameworks/extra-cmake-modules:5
+"
 
 DOCS=( AUTHORS ChangeLog README.md )
 
-REQUIRED_USE="|| ( gui server monolithic )
-	crypt? ( || ( server monolithic ) )
-	kde? ( dbus spell )
-	ldap? ( || ( server monolithic ) )
-	postgres? ( || ( server monolithic ) )
-	snorenotify? ( || ( gui monolithic ) )
-	spell? ( || ( gui monolithic ) )
-	syslog? ( || ( server monolithic ) )"
-
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_TESTING=$(usex test)
 		-DUSE_CCACHE=OFF
 		-DCMAKE_SKIP_RPATH=ON
 		-DEMBED_DATA=OFF
 		-DWITH_WEBKIT=OFF
 		-DWITH_BUNDLED_ICONS=$(usex bundled-icons)
+		-DWANT_QTCLIENT=$(usex gui)
 		-DWITH_KDE=$(usex kde)
 		-DWITH_LDAP=$(usex ldap)
 		-DWANT_MONO=$(usex monolithic)
 		-DWITH_OXYGEN_ICONS=$(usex oxygen)
 		-DWANT_CORE=$(usex server)
+		-DBUILD_TESTING=$(usex test)
 		-DWITH_WEBENGINE=$(usex urlpreview)
-		-DWANT_QTCLIENT=$(usex gui)
 	)
 
+	# bug #830708
 	if use gui || use monolithic ; then
-		# We can't always pass these (avoid "unused" warning)
-		# bug #830708
 		mycmakeargs+=(
 			$(cmake_use_find_package dbus dbusmenu-qt5)
 			$(cmake_use_find_package dbus Qt5DBus)
@@ -147,17 +163,16 @@ src_test() {
 pkg_postinst() {
 	if use monolithic ; then
 		elog "Information on how to enable SSL support for client/core connections"
-		elog "is available at http://bugs.quassel-irc.org/projects/quassel-irc/wiki/Client-Core_SSL_support."
+		elog "is available at: https://bugs.quassel-irc.org/projects/quassel-irc/wiki/Client-Core_SSL_support"
 	fi
 
 	if use server ; then
-		einfo "If you want to generate SSL certificate remember to run:"
-		einfo "	emerge --config =${CATEGORY}/${PF}"
+		einfo "If you want to generate SSL certificate, remember to run:"
+		einfo "    emerge --config =${CATEGORY}/${PF}"
 	fi
 
 	if use server || use monolithic ; then
-		einfo "Quassel can use net-misc/oidentd package if installed on your system."
-		einfo "Consider installing it if you want to run quassel within identd daemon."
+		optfeature "running Quassel within an ident daemon" "net-misc/oidentd"
 	fi
 
 	xdg_icon_cache_update
@@ -176,11 +191,11 @@ pkg_config() {
 			einfo "Generating Quassel SSL certificate to: \"${QUASSEL_DIR}/quasselCert.pem\""
 			openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 				-keyout "${QUASSEL_DIR}/quasselCert.pem" \
-				-out "${QUASSEL_DIR}/quasselCert.pem"
+				-out "${QUASSEL_DIR}/quasselCert.pem" || die
 
 			# Permissions for the key
-			chown ${PN}:${PN} "${QUASSEL_DIR}/quasselCert.pem"
-			chmod 400 "${QUASSEL_DIR}/quasselCert.pem"
+			chown ${PN}:${PN} "${QUASSEL_DIR}/quasselCert.pem" || die
+			chmod 400 "${QUASSEL_DIR}/quasselCert.pem" || die
 		else
 			einfo "Certificate \"${QUASSEL_DIR}/quasselCert.pem\" already exists."
 			einfo "Remove it if you want to create new one."
