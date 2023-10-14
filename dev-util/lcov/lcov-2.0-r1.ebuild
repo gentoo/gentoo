@@ -68,8 +68,9 @@ src_test() {
 
 src_install() {
 	emake -j1 \
-		PREFIX="${ED}/usr" \
-		CFG_DIR="${ED}/etc" \
+		DESTDIR="${D}" \
+		CFG_DIR="${EPREFIX}/etc" \
+		PREFIX="${EPREFIX}/usr" \
 		LCOV_PERL_PATH="${EPREFIX}/usr/bin/perl" \
 		install
 }
