@@ -38,6 +38,8 @@ python_install() {
 	newins - greenbone-feed-sync <<-EOF
 	gvm ALL = NOPASSWD: /usr/bin/greenbone-feed-sync
 EOF
+	fperms 0750 /etc/sudoers.d
+	fperms 0440 /etc/sudoers.d/greenbone-feed-sync
 
 	if use cron; then
 		exeinto /etc/cron.daily
