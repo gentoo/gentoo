@@ -14,7 +14,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 if [[ "${PV}" == "9999" ]]; then
-	EGIT_REPO_URI="https://lab.louiz.org/${PN}/${PN}.git"
+	EGIT_REPO_URI="https://lab.louiz.org/${PN}/${PN}.git https://github.com/poezio/poezio.git"
 	inherit git-r3
 
 	# We build the html documentation using sphinx.
