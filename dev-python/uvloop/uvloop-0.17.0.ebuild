@@ -71,6 +71,9 @@ python_test() {
 		tests/test_process.py::Test_AIO_Process::test_process_env_2
 		# hangs
 		tests/test_tcp.py::Test_AIO_TCPSSL::test_remote_shutdown_receives_trailing_data
+		# crashes on assertion
+		# https://github.com/MagicStack/uvloop/issues/574
+		tests/test_cython.py::TestCythonIntegration::test_cython_coro_is_coroutine
 	)
 
 	rm -rf uvloop || die
