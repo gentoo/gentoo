@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/ansible/ansible-lint"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv"
 
 # Upstream has stated explicitly that all tests require Internet access
 PROPERTIES="test_network"
@@ -22,24 +22,28 @@ RESTRICT="test"
 
 RDEPEND="
 	>=app-admin/ansible-core-2.12.0[${PYTHON_USEDEP}]
-	>=dev-python/ansible-compat-4.0.5[${PYTHON_USEDEP}]
+	>=dev-python/ansible-compat-4.1.10[${PYTHON_USEDEP}]
 	>=dev-python/black-22.8.0[${PYTHON_USEDEP}]
 	>=dev-python/filelock-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.17.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
-	>=dev-python/pathspec-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/pathspec-0.10.3[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP}]
 	>=dev-python/rich-12.0.0[${PYTHON_USEDEP}]
-	>=dev-python/ruamel-yaml-0.17.0[${PYTHON_USEDEP}]
+	>=dev-python/ruamel-yaml-0.17.31[${PYTHON_USEDEP}]
+	<dev-python/ruamel-yaml-0.18[${PYTHON_USEDEP}]
 	>=dev-python/wcmatch-8.3.2[${PYTHON_USEDEP}]
 	>=dev-util/yamllint-1.30.0[${PYTHON_USEDEP}]
 	dev-vcs/git"
 BDEPEND="
 	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
 	test? (
+		dev-python/mypy[${PYTHON_USEDEP}]
+		dev-python/jmespath[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-plus-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.5.0[${PYTHON_USEDEP}]
+		>=dev-python/spdx-tools-0.7.1:0/0.7[${PYTHON_USEDEP}]
 	)"
 
 # test_call_from_outside_venv doesn't play nicely with the sandbox
