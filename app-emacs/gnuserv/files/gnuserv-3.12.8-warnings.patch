@@ -11,7 +11,7 @@ Fix some byte-compiler warnings
      nil
    
    ;; XEmacs `make-frame' takes an optional device to create the frame
-@@ -150,7 +150,7 @@
+@@ -140,7 +140,7 @@
  ;; part we use devices.el from the Emacs-W3 distribution.  In some
  ;; places the implementation seems wrong, so we "fix" it!
  
