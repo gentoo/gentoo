@@ -38,7 +38,7 @@ RDEPEND="
 	parquet? (
 		dev-libs/libutf8proc
 		dev-libs/thrift
-		ssl? ( dev-libs/openssl )
+		ssl? ( dev-libs/openssl:= )
 	)
 	snappy? ( app-arch/snappy )
 	zlib? ( sys-libs/zlib )
