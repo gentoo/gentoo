@@ -31,11 +31,8 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/bottle[${PYTHON_USEDEP}]
-		<dev-python/flask-sqlalchemy-3[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		>=dev-python/sqlalchemy-1.4[${PYTHON_USEDEP}]
-		<dev-python/sqlalchemy-2[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)
 "
@@ -76,8 +73,10 @@ python_test() {
 		tests/ext/httpx
 		tests/ext/requests
 		# requires old package vesions
-		tests/ext/django
 		tests/ext/aiohttp
+		tests/ext/django
+		tests/ext/flask_sqlalchemy
+		tests/ext/sqlalchemy
 	)
 
 	epytest -p no:django
