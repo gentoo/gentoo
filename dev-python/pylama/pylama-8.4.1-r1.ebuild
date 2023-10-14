@@ -45,6 +45,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-tomli.patch
+	"${FILESDIR}"/${P}-dummy-elif.patch
 )
 
 EPYTEST_DESELECT=(
