@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="alsa box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
+IUSE="alsa box cdda +dbus debug dropbox googledrive ipod lastfm moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -65,7 +65,6 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0
 	media-plugins/gst-plugins-soup:1.0
 	media-plugins/gst-plugins-taglib:1.0
-	mms? ( media-plugins/gst-plugins-libmms:1.0 )
 	mtp? ( gnome-base/gvfs[mtp] )
 	udisks? ( sys-fs/udisks:2 )
 "
