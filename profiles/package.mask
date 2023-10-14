@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2023-10-14)
+# GStreamer plugin removed upstream. MMS was deprecated in 2003 and no
+# streams using MMS are known to exist. Removal on 2023-11-13. Bug #915771.
+media-plugins/gst-plugins-libmms
+
 # Florian Schmaus <flow@gentoo.org> (2023-10-14)
 # Obsolete acct-* packages that became leaf packages.
 # Removal on 2023-11-14.
