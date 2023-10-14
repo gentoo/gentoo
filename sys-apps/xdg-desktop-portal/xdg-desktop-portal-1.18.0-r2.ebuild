@@ -22,7 +22,6 @@ REQUIRED_USE="flatpak? ( seccomp )"
 DEPEND="
 	>=dev-libs/glib-2.66:2
 	dev-libs/json-glib
-	dev-python/docutils
 	>=media-video/pipewire-0.3:=
 	>=sys-fs/fuse-3.10.0:3[suid]
 	x11-libs/gdk-pixbuf
@@ -37,6 +36,7 @@ RDEPEND="
 "
 BDEPEND="
 	dev-util/gdbus-codegen
+	dev-python/docutils
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? (
