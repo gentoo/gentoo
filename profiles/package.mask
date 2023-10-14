@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-14)
+# media-video/transcode is dead for many years.  We already piled up
+# a lot of downstream patches just to keep it working, and it's broken
+# again (ffmpeg-5 this time).  The mask includes revdeps.
+# Removal on 2023-11-13.  Bug #861311.
+app-cdr/dvdshrink
+media-plugins/vdr-burn
+media-plugins/vdr-burn-templates
+media-video/dvd9to5
+media-video/dvdrip
+media-video/transcode
+
 # Andrey Grozin <grozin@gentoo.org> (2023-10-12)
 # The last upstream tag in 2021
 # There is an active fork: app-text/crqt-ng and app-text/crwx-ng
