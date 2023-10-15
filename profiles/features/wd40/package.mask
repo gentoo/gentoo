@@ -63,6 +63,7 @@ dev-python/pyfuse3
 dev-python/pymdown-extensions
 dev-python/pyspelling
 dev-python/pyspnego
+dev-python/pytest-localftpserver
 dev-python/pytest-trio
 dev-python/python-glanceclient
 dev-python/python-ironicclient
