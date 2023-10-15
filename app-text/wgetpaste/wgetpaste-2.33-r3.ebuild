@@ -22,6 +22,7 @@ RDEPEND="net-misc/wget[ssl?]"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.33-tests.patch
 	"${FILESDIR}"/${PN}-2.33-disable-sprunge.patch
+	"${FILESDIR}"/${PN}-2.33-add-paste-gentoo-zip.patch
 )
 
 src_prepare() {
