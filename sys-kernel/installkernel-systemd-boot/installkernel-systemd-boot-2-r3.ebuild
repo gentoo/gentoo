@@ -30,6 +30,6 @@ src_install() {
 	EOF
 
 	exeinto /usr/lib/kernel/install.d/
-	newexe "${FILESDIR}/${PF}-00-00machineid-directory.install" \
+	newexe "${FILESDIR}/${PN}-2-r2-00-00machineid-directory.install" \
 		00-00machineid-directory.install
 }
