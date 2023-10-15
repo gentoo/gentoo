@@ -22,7 +22,9 @@ RDEPEND="
 	media-libs/libpng
 	virtual/jpeg
 	x11-apps/rgb
-	x11-libs/libXpm"
+	x11-libs/libXpm
+	!media-gfx/fig2dev
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/rman
