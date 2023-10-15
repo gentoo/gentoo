@@ -78,7 +78,18 @@ src_configure() {
 		exporter
 		$(usev test tests)
 	)
+
 	cargo_src_configure ${workspaces[*]/#/--package=}
+}
+
+src_test() {
+	local skip=(
+		# may need more investigation, strangely "pass" (xfail) when
+		# RUSTFLAGS is unset, skip for now (bug #915726)
+		--skip from_avmplus/as3/Types/Int/wraparound
+	)
+
+	cargo_src_test -- "${skip[@]}"
 }
 
 src_install() {
