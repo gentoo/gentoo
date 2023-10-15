@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit gstreamer-meson python-any-r1
 
 DESCRIPTION="OpenCV elements for GStreamer"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 # >=opencv-4.1.2-r3 to help testing removal of older being fine
 RDEPEND="
