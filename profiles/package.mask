@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-22)
+# Only one release (on 2017), only two commits after that
+# EAPI 6 and has no revdeps.
+# Removal: 2023-12-22.  Bugs #694906, #844583.
+app-containers/go-secbench
+
 # hololeap <hololeap@protonmail.com> (2023-11-19)
 # Package has been masked for a long time, is useless for ::gentoo, and has no
 # reverse dependencies.
