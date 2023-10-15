@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,6 +38,10 @@ RDEPEND="alsa_cards_usb-usx2y? ( sys-apps/fxload )
 	alsa_cards_hdspm? ( media-sound/alsa-tools )"
 
 DOCS="README"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.4-musl.patch
+)
 
 src_configure() {
 	econf --with-hotplug-dir=/lib/firmware
