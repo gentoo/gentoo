@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-15)
+# These packages were required by old version of dev-python/jupyterlab
+# and dev-python/notebook, and are no longer used.
+# Removal on 2023-11-14.  Bug #915824.
+dev-python/check-manifest
+dev-python/jupyter-server-fileid
+dev-python/jupyter-server-ydoc
+dev-python/jupyter-ydoc
+dev-python/nbclassic
+dev-python/y-py
+dev-python/ypy-websocket
+
 # Mart Raudsepp <leio@gentoo.org> (2023-10-14)
 # The database used by this music fingerprint library has been defunct for
 # a while. Removal on 2023-11-13. Bug #915190.
