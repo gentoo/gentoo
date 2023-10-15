@@ -23,7 +23,7 @@ fi
 DESCRIPTION="Portable and multi-interface IRC client"
 HOMEPAGE="https://weechat.org/"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0/${PV}"
 
 NETWORKS="+irc"
