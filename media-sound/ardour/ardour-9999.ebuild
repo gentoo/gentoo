@@ -145,7 +145,7 @@ src_configure() {
 			echo '' || echo "--no-fpu-optimization")
 		$(usex doc "--docs" '')
 		$(usex nls '' "--no-nls")
-		$(usex phonehome "--phone-home" "--no-phone-home")
+		$(usex phonehome '' "--no-phone-home")
 		# not possible right now  --use-external-libs
 		# missing dependency: https://github.com/c4dm/qm-dsp
 	)
