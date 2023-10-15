@@ -23,6 +23,7 @@ DEPEND="
 	>=sci-libs/libqalculate-${PV}
 "
 RDEPEND="${DEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 src_prepare() {
 	default
