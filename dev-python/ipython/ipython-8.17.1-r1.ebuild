@@ -30,7 +30,6 @@ RDEPEND="
 	>=dev-python/prompt-toolkit-3.0.38[${PYTHON_USEDEP}]
 	<dev-python/prompt-toolkit-3.1[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.4.0[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/stack-data[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
