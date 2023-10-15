@@ -1,0 +1,266 @@
+Bug: https://bugs.gentoo.org/882585
+--- a/netcat.c
++++ b/netcat.c
+@@ -35,6 +35,7 @@
+ */
+ 
+ #include "generic.h"		/* same as with L5, skey, etc */
++#include "farm9crypt.h"
+ 
+ /* conditional includes -- a very messy section which you may have to dink
+    for your own architecture [and please send diffs...]: */
+@@ -237,7 +238,7 @@ void catch ()
+ {
+   errno = 0;
+   if (o_verbose > 1)		/* normally we don't care */
+-    bail (wrote_txt, wrote_net, wrote_out);
++    bail (wrote_txt, (char *)wrote_net, (char *)wrote_out);
+   bail (" punt!");
+ }
+ 
+@@ -279,7 +280,7 @@ char * Hmalloc (size)
+   if (p != NULL)
+     memset (p, 0, s);
+   else
+-    bail ("Hmalloc %d failed", s);
++    bail ("Hmalloc %d failed", (char *)s);
+   return (p);
+ } /* Hmalloc */
+ 
+@@ -467,7 +468,7 @@ USHORT getportpoop (pstring, pnum)
+     if (servent) {
+       y = ntohs (servent->s_port);
+       if (x != y)			/* "never happen" */
+-	holler ("Warning: port-bynum mismatch, %d != %d", x, y);
++	holler ("Warning: port-bynum mismatch, %d != %d", (char *)x, (char *)y);
+       strncpy (portpoop->name, servent->s_name, sizeof (portpoop->name));
+     } /* if servent */
+     goto gp_finish;
+@@ -567,7 +568,7 @@ void loadports (block, lo, hi)
+   if (! block)
+     bail ("loadports: no block?!");
+   if ((! lo) || (! hi))
+-    bail ("loadports: bogus values %d, %d", lo, hi);
++    bail ("loadports: bogus values %d, %d", (char *)lo, (char *)hi);
+   x = hi;
+   while (lo <= x) {
+     block[x] = 1;
+@@ -673,7 +674,7 @@ newskt:
+       if (errno != EADDRINUSE)
+ 	break;
+       else {
+-	holler ("retrying local %s:%d", inet_ntoa (lclend->sin_addr), lp);
++	holler ("retrying local %s:%d", inet_ntoa (lclend->sin_addr), (char *)lp);
+ 	sleep (2);
+ 	errno = 0;			/* clear from sleep */
+       } /* if EADDRINUSE */
+@@ -681,7 +682,7 @@ newskt:
+   } /* if lad or lp */
+   if (rr)
+     bail ("Can't grab %s:%d with bind",
+-	inet_ntoa(lclend->sin_addr), lp);
++	inet_ntoa(lclend->sin_addr), (char *)lp);
+ 
+   if (o_listen)
+     return (nnetfd);			/* thanks, that's all for today */
+@@ -826,7 +827,7 @@ int dolisten (rad, rp, lad, lp)
+       strcat (bigbuf_net, "any");
+     strcat (bigbuf_net, "] %d ...");
+     z = ntohs (lclend->sin_port);
+-    holler (bigbuf_net, z);
++    holler (bigbuf_net, (char *)z);
+   } /* verbose -- whew!! */
+ 
+ /* UDP is a speeeeecial case -- we have to do I/O *and* get the calling
+@@ -938,9 +939,9 @@ dol_noop:
+       x = 1;
+   if (x)					/* guilty! */
+     bail ("invalid connection to [%s] from %s [%s] %d",
+-	cp, whozis->name, whozis->addrs[0], z);
++	cp, whozis->name, whozis->addrs[0], (char *)z);
+   holler ("connect to [%s] from %s [%s] %d",		/* oh, you're okay.. */
+-	cp, whozis->name, whozis->addrs[0], z);
++	cp, whozis->name, whozis->addrs[0], (char *)z);
+   return (nnetfd);				/* open! */
+ 
+ dol_tmo:
+@@ -960,7 +961,7 @@ dol_err:
+    Use the time delay between writes if given, otherwise use the "tcp ping"
+    trick for getting the RTT.  [I got that idea from pluvius, and warped it.]
+    Return either the original fd, or clean up and return -1. */
+-udptest (fd, where)
++int udptest (fd, where)
+   int fd;
+   IA * where;
+ {
+@@ -968,7 +969,7 @@ udptest (fd, where)
+ 
+   rr = write (fd, bigbuf_in, 1);
+   if (rr != 1)
+-    holler ("udptest first write failed?! errno %d", errno);
++    holler ("udptest first write failed?! er1no %d", (char *)errno);
+   if (o_wait)
+     sleep (o_wait);
+   else {
+@@ -1145,7 +1146,7 @@ int readwrite (fd)
+ /* if you don't have all this FD_* macro hair in sys/types.h, you'll have to
+    either find it or do your own bit-bashing: *ding1 |= (1 << fd), etc... */
+   if (fd > FD_SETSIZE) {
+-    holler ("Preposterous fd value %d", fd);
++    holler ("Preposterous fd value %d", (char *)fd);
+     return (1);
+   }
+   FD_SET (fd, ding1);		/* global: the net is open */
+@@ -1253,7 +1254,7 @@ shovel:
+ 
+ /* sanity check.  Works because they're both unsigned... */
+     if ((rzleft > 8200) || (rnleft > 8200)) {
+-	holler ("Bogus buffers: %d, %d", rzleft, rnleft);
++	holler ("Bogus buffers: %d, %d", (char *)rzleft, (char *)rnleft);
+ 	rzleft = rnleft = 0;
+     }
+ /* net write retries sometimes happen on UDP connections */
+@@ -1309,9 +1310,52 @@ Debug (("wrote %d to net, errno %d", rr, errno))
+   return (0);
+ } /* readwrite */
+ 
++#ifdef HAVE_HELP		/* unless we wanna be *really* cryptic */
++/* helpme :
++   the obvious */
++int helpme()
++{
++  o_verbose = 1;
++  holler ("[v1.10]\n\
++connect to somewhere:	nc [-options] hostname port[s] [ports] ... \n\
++listen for inbound:	nc -l -p port [-options] [hostname] [port]\n\
++options:");
++/* sigh, this necessarily gets messy.  And the trailing \ characters may be
++   interpreted oddly by some compilers, generating or not generating extra
++   newlines as they bloody please.  u-fix... */
++#ifdef GAPING_SECURITY_HOLE	/* needs to be separate holler() */
++  holler ("\
++	-e prog			program to exec after connect [dangerous!!]");
++#endif
++  holler ("\
++	-g gateway		source-routing hop point[s], up to 8\n\
++	-G num			source-routing pointer: 4, 8, 12, ...\n\
++	-h			this cruft\n\
++	-k secret		set the shared secret\n\
++	-i secs			delay interval for lines sent, ports scanned\n\
++	-l			listen mode, for inbound connects\n\
++	-n			numeric-only IP addresses, no DNS\n\
++	-o file			hex dump of traffic\n\
++	-p port			local port number\n\
++	-r			randomize local and remote ports\n\
++	-s addr			local source address");
++#ifdef TELNET
++  holler ("\
++	-t			answer TELNET negotiation");
++#endif
++  holler ("\
++	-u			UDP mode\n\
++	-v			verbose [use twice to be more verbose]\n\
++	-w secs			timeout for connects and final net reads\n\
++	-z			zero-I/O mode [used for scanning]");
++  bail ("port numbers can be individual or ranges: lo-hi [inclusive]");
++} /* helpme */
++#endif /* HAVE_HELP */
++
++
+ /* main :
+    now we pull it all together... */
+-main (argc, argv)
++int main (argc, argv)
+   int argc;
+   char ** argv;
+ {
+@@ -1437,7 +1481,7 @@ main (argc, argv)
+ 	if ((x) && (x == (x & 0x1c)))	/* mask off bits of fukt values */
+ 	  gatesptr = x;
+ 	else
+-	  bail ("invalid hop pointer %d, must be multiple of 4 <= 28", x);
++	  bail ("invalid hop pointer %d, must be multiple of 4 <= 28", (char *)x);
+ 	break;
+       case 'g':				/* srcroute hop[s] */
+ 	if (gatesidx > 8)
+@@ -1567,7 +1611,7 @@ Debug (("after go: x now %c, optarg %x optind %d", x, optarg, optind))
+ #endif /* GAPING_SECURITY_HOLE */
+       x = readwrite (netfd);		/* it even works with UDP! */
+       if (o_verbose > 1)		/* normally we don't care */
+-	holler (wrote_txt, wrote_net, wrote_out);
++	holler (wrote_txt, (char *)wrote_net, (char *)wrote_out);
+       exit (x);				/* "pack out yer trash" */
+     } else /* if no netfd */
+       bail ("no connection");
+@@ -1626,7 +1670,7 @@ Debug (("netfd %d from port %d to port %d", netfd, ourport, curport))
+       if (netfd > 0) {			/* Yow, are we OPEN YET?! */
+ 	x = 0;				/* pre-exit status */
+ 	holler ("%s [%s] %d (%s) open",
+-	  whereto->name, whereto->addrs[0], curport, portpoop->name);
++	  whereto->name, whereto->addrs[0], (char *)curport, portpoop->name);
+ #ifdef GAPING_SECURITY_HOLE
+ 	if (pr00gie)			/* exec is valid for outbound, too */
+ 	  doexec (netfd);
+@@ -1639,7 +1683,7 @@ Debug (("netfd %d from port %d to port %d", netfd, ourport, curport))
+    Give it another -v if you want to see everything. */
+ 	if ((Single || (o_verbose > 1)) || (errno != ECONNREFUSED))
+ 	  holler ("%s [%s] %d (%s)",
+-	    whereto->name, whereto->addrs[0], curport, portpoop->name);
++	    whereto->name, whereto->addrs[0], (char *)curport, portpoop->name);
+       } /* if netfd */
+       close (netfd);			/* just in case we didn't already */
+       if (o_interval)
+@@ -1654,52 +1698,10 @@ Debug (("netfd %d from port %d to port %d", netfd, ourport, curport))
+ 
+   errno = 0;
+   if (o_verbose > 1)		/* normally we don't care */
+-    holler (wrote_txt, wrote_net, wrote_out);
++    holler (wrote_txt, (char *)wrote_net, (char *)wrote_out);
+   if (Single)
+     exit (x);			/* give us status on one connection */
+   exit (0);			/* otherwise, we're just done */
+ } /* main */
+ 
+-#ifdef HAVE_HELP		/* unless we wanna be *really* cryptic */
+-/* helpme :
+-   the obvious */
+-helpme()
+-{
+-  o_verbose = 1;
+-  holler ("[v1.10]\n\
+-connect to somewhere:	nc [-options] hostname port[s] [ports] ... \n\
+-listen for inbound:	nc -l -p port [-options] [hostname] [port]\n\
+-options:");
+-/* sigh, this necessarily gets messy.  And the trailing \ characters may be
+-   interpreted oddly by some compilers, generating or not generating extra
+-   newlines as they bloody please.  u-fix... */
+-#ifdef GAPING_SECURITY_HOLE	/* needs to be separate holler() */
+-  holler ("\
+-	-e prog			program to exec after connect [dangerous!!]");
+-#endif
+-  holler ("\
+-	-g gateway		source-routing hop point[s], up to 8\n\
+-	-G num			source-routing pointer: 4, 8, 12, ...\n\
+-	-h			this cruft\n\
+-	-k secret		set the shared secret\n\
+-	-i secs			delay interval for lines sent, ports scanned\n\
+-	-l			listen mode, for inbound connects\n\
+-	-n			numeric-only IP addresses, no DNS\n\
+-	-o file			hex dump of traffic\n\
+-	-p port			local port number\n\
+-	-r			randomize local and remote ports\n\
+-	-s addr			local source address");
+-#ifdef TELNET
+-  holler ("\
+-	-t			answer TELNET negotiation");
+-#endif
+-  holler ("\
+-	-u			UDP mode\n\
+-	-v			verbose [use twice to be more verbose]\n\
+-	-w secs			timeout for connects and final net reads\n\
+-	-z			zero-I/O mode [used for scanning]");
+-  bail ("port numbers can be individual or ranges: lo-hi [inclusive]");
+-} /* helpme */
+-#endif /* HAVE_HELP */
+-
+ /* None genuine without this seal!  _H*/
