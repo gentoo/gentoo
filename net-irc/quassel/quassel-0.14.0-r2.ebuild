@@ -127,7 +127,7 @@ src_configure() {
 	# bug #830708
 	if use gui || use monolithic ; then
 		mycmakeargs+=(
-			-DCMAKE_DISABLE_FIND_PACKAGE=LibsnoreQt5=ON
+			-DCMAKE_DISABLE_FIND_PACKAGE_LibsnoreQt5=ON
 			$(cmake_use_find_package dbus dbusmenu-qt5)
 			$(cmake_use_find_package dbus Qt5DBus)
 			$(cmake_use_find_package spell KF5Sonnet)
