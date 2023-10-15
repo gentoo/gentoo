@@ -34,7 +34,7 @@ BDEPEND="
 	ssl? ( dev-libs/openssl )
 	test? (
 		dev-lang/python
-		app-shells/bash[net
+		app-shells/bash[net]
 	)
 "
 
