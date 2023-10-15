@@ -1,6 +1,12 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-15)
+# Need dev-python/notebook (that indirectly requires net-libs/nodejs).
+dev-python/ipython notebook
+dev-python/nbclient test
+dev-python/nbconvert test
+
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6

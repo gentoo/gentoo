@@ -25,6 +25,7 @@ dev-python/cfn-lint
 dev-python/dirty-equals
 dev-python/hatch-jupyter-builder
 dev-python/inflect
+dev-python/ipywidgets
 dev-python/jaraco-itertools
 dev-python/josepy
 >=dev-python/jsonschema-4.18.0
@@ -44,8 +45,11 @@ dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-git-revision-date-localized-plugin
+dev-python/nbclassic
+dev-python/nbdime
+dev-python/nbval
 dev-python/nh3
->=dev-python/notebook-7
+dev-python/notebook
 dev-python/oauthlib
 dev-python/openapi-core
 dev-python/openapi-schema-validator
@@ -89,6 +93,7 @@ dev-python/trio-websocket
 dev-python/twine
 dev-python/watchfiles
 dev-python/wcmatch
+dev-python/widgetsnbextension
 dev-ruby/selenium-webdriver
 dev-util/buildbot-worker
 dev-util/cargo-c
