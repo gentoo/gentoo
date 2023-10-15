@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake python-any-r1 toolchain-funcs
 
@@ -27,11 +27,13 @@ IUSE="doc examples +high-performance +ssl test"
 # Building samples needs ssl: #912262
 REQUIRED_USE="examples? ( ssl )"
 
+# Tests require net-redirections to be enabled in bash: #915718
 BDEPEND="
 	doc? ( app-doc/doxygen
 		   media-gfx/graphviz )
 	ssl? ( dev-libs/openssl )
-	test? ( dev-lang/python )
+	test? ( dev-lang/python
+		    app-shells/bash[net] )
 "
 
 # Tests can be run only if a MQTT broker is available
