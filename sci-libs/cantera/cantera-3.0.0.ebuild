@@ -63,8 +63,6 @@ DEPEND="
 	)
 "
 
-QA_SONAME="usr/lib.*/libcantera_python3.*.so" # intended for dlopen()
-
 PATCHES=(
 	"${FILESDIR}/${P}_env.patch"
 )
@@ -98,6 +96,8 @@ src_configure() {
 		system_blas_lapack=$(usex lapack y n)
 		env_vars="all"
 		extra_inc_dirs="/usr/include/eigen3"
+		use_rpath_linkage="yes"
+		extra_lib_dirs="/usr/$(get_libdir)/${PN}"
 	)
 	use hdf5 && scons_vars+=( system_highfive="y" )
 	use lapack && scons_vars+=( blas_lapack_libs="lapack,blas" )
