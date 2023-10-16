@@ -313,7 +313,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=virtual/rust-1.64.0
+	>=virtual/rust-1.70.0
 	test? ( dev-util/cargo-nextest )
 "
 
