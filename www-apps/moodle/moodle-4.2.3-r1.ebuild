@@ -39,7 +39,10 @@ IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
 # and the moodle documentation for other possibilities.
 DEPEND=""
 RDEPEND="
-	dev-lang/php:8.1[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+	|| (
+		dev-lang/php:8.1[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+		dev-lang/php:8.2[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+	)
 	virtual/httpd-php
 	virtual/cron"
 
