@@ -19,14 +19,19 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND=""
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
 	dev-libs/libxslt
 	sys-devel/gettext
+	test? (
+		$(python_gen_any_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 pkg_setup() {
