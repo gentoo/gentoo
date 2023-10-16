@@ -314,9 +314,8 @@ src_configure() {
 		myeconfargs+=( --disable-debug-symbols )
 	fi
 
-	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
-		myeconfargs+=( --enable-rust-simd )
-	fi
+	# Always troubling with newer rust versions.
+	myeconfargs+=( --disable-rust-simd )
 
 	# Modifications to better support ARM, bug 717344
 	if use cpu_flags_arm_neon ; then
