@@ -39,23 +39,23 @@ RDEPEND="${LUA_DEPS}
 
 DEPEND="${RDEPEND}"
 
-# Technically, build-time generation of documentation could use any version
-# of Lua (or to be precise: if in src_configure cmake has been told to use
-# LuaJIT documentation generation looks for LuaJIT, otherwise any
-# dev-lang/lua slot will do; see the first few lines of the bundled file
-# CMake/GenerateDoc.cmake for details) - but since dev-lang/lua conflicts
-# with the other slots of same, try to keep the deptree sane until we get
-# rid of unslotted Lua.
+# Although the docs could potentially be built with nearly any Lua version,
+# we need to ensure the necessary Lua modules are installed, so pin to the
+# same single version as runtime.
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen[dot]
 		${LUA_DEPS}
+		$(lua_gen_cond_dep '
+			>=dev-lua/luafilesystem-1.5[${LUA_USEDEP}]
+			>=dev-lua/lpeg-0.9[${LUA_USEDEP}]
+		')
 	)
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.66-cmake_lua_detection.patch
+	"${FILESDIR}"/${PN}-0.67-cmake_lua_detection.patch
 )
 
 src_configure() {

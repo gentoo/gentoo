@@ -1,0 +1,24 @@
+diff -Naur a/CMake/GenerateDoc.cmake b/CMake/GenerateDoc.cmake
+--- a/CMake/GenerateDoc.cmake	2023-08-06 04:02:29.000000000 +0100
++++ b/CMake/GenerateDoc.cmake	2023-10-16 23:26:11.527720737 +0100
+@@ -5,7 +5,7 @@
+   set(LUA_PROGRAM_NAMES lua53 lua5.3 lua-5.3 lua52 lua5.2 lua-5.2 lua51 lua5.1 lua-5.1 lua)
+ endif()
+ 
+-find_program(LUA_PROGRAM_PATH ${LUA_PROGRAM_NAMES}
++find_program(LUA_PROGRAM_PATH lua${LUA_VERSION}
+   PATHS
+     ENV LUA_DIR
+     /opt
+diff -Naur a/CorsixTH/CMakeLists.txt b/CorsixTH/CMakeLists.txt
+--- a/CorsixTH/CMakeLists.txt	2023-08-06 04:02:29.000000000 +0100
++++ b/CorsixTH/CMakeLists.txt	2023-10-16 23:23:20.119763454 +0100
+@@ -132,7 +132,7 @@
+   target_link_libraries(CorsixTH_lib lua)
+   target_link_libraries(CorsixTH lua)
+ else()
+-  find_package(Lua REQUIRED)
++  find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+   if(Lua_FOUND OR LUA_FOUND)
+     target_link_libraries(CorsixTH ${LUA_LIBRARY})
+     include_directories(${LUA_INCLUDE_DIR})
