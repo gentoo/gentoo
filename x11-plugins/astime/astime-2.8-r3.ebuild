@@ -14,14 +14,22 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="jpeg"
 
-RDEPEND="x11-libs/libXpm
+RDEPEND="
+	x11-libs/libICE
 	x11-libs/libSM
-	jpeg? ( media-libs/libjpeg-turbo:0 )"
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXpm
+	jpeg? ( media-libs/libjpeg-turbo:= )
+"
 
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 
 PATCHES=(
+	"${FILESDIR}/${P}-respect-ldflags.patch"
 	"${FILESDIR}/${P}-remove-double-config.h-autotools.patch"
 	"${FILESDIR}/${P}-fix-implicit-function-decl.patch"
 )
