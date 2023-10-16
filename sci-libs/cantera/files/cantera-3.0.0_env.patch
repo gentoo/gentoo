@@ -23,3 +23,15 @@ diff -Naur a/SConstruct b/SConstruct
  
  # Print values of all build options:
  # the (updated) "cantera.conf" combines all options that were specified by the user
+diff -Naur a/src/SConscript b/src/SConscript
+--- a/src/SConscript
++++ b/src/SConscript
+@@ -89,7 +89,7 @@
+     shim = pyenv.SharedObject("extensions/pythonShim.cpp")
+     pylibname = f"../lib/cantera_python{pyenv['py_version_short'].replace('.', '_')}"
+     lib = build(pyenv.SharedLibrary(pylibname, shim, SPAWN=get_spawn(pyenv)))
+-    install("$inst_shlibdir", lib)
++    install("$inst_shlibdir/cantera", lib)
+ 
+ 
+ # build the Cantera static library
