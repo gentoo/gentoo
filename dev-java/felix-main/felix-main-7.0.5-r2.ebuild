@@ -1,19 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri mirror://apache/felix/org.apache.felix.main-7.0.5-source-release.tar.gz --slot 0 --keywords "~amd64" --ebuild felix-main-7.0.5.ebuild
 
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 MAVEN_ID="org.apache.felix:org.apache.felix.main:7.0.5"
 
-inherit java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple verify-sig
 
 DESCRIPTION="Open source OSGi framework by Apache Software Foundation"
 HOMEPAGE="https://felix.apache.org/documentation/index.html"
-SRC_URI="mirror://apache/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://apache/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz
+	verify-sig? ( https://downloads.apache.org/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz.asc )"
+S="${WORKDIR}/org.apache.felix.main-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -35,9 +34,10 @@ RDEPEND="
 	${CP_DEPEND}
 "
 
-DOCS=( DEPENDENCIES NOTICE )
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-felix )"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/felix.apache.org.asc"
 
-S="${WORKDIR}/org.apache.felix.main-${PV}"
+DOCS=( DEPENDENCIES NOTICE )
 
 JAVA_MAIN_CLASS="org.apache.felix.main.Main"
 JAVA_RESOURCE_DIRS="src/main/resources"
