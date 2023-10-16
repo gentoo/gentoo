@@ -35,6 +35,7 @@ COMMON_DEPEND="
 
 DEPEND="
 	test? (
+		sys-apps/grep[pcre]
 		sys-apps/mawk
 		sys-apps/nawk
 	)
