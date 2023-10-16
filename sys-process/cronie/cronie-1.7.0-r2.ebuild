@@ -35,6 +35,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-optional-envionment.patch
+	"${FILESDIR}"/${P}-optional-default-anacron.patch
 )
 
 src_configure() {
