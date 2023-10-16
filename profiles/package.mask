@@ -269,14 +269,6 @@ sys-apps/opentmpfiles
 # 2013. Masked for removal on 2023-10-15.
 dev-ruby/ruby-elf
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-14)
-# No longer a test dependency of dev-python/textdistance, now fails tests
-# with the latest numpy. Upstream inactive and we already need patching for
-# python 3.10 compatibility. No other reverse dependencies.
-# Bug: https://bugs.gentoo.org/887845
-# Removal on 2023-10-14
-dev-python/abydos
-
 # Sam James <sam@gentoo.org> (2023-09-09)
 # OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
 # https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/
