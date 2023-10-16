@@ -41,19 +41,28 @@ BDEPEND="
 		>=app-doc/doxygen-1.8.3
 		>=media-gfx/graphviz-2.38.0
 	)
+	test? (
+		$(python_gen_any_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
+	)
 "
 #	test? ( dev-util/valgrind )
 
 python_check_deps() {
-	python_has_version \
-		"dev-python/commonmark[${PYTHON_USEDEP}]" \
-		"dev-python/recommonmark[${PYTHON_USEDEP}]" \
-		"dev-python/sphinx[${PYTHON_USEDEP}]" \
-		">=dev-python/sphinx-rtd-theme-0.2.4[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	if use doc; then
+		python_has_version \
+			"dev-python/commonmark[${PYTHON_USEDEP}]" \
+			"dev-python/recommonmark[${PYTHON_USEDEP}]" \
+			"dev-python/sphinx[${PYTHON_USEDEP}]" \
+			">=dev-python/sphinx-rtd-theme-0.2.4[${PYTHON_USEDEP}]" \
+		|| return
+	fi
+	if use test; then
+		python_has_version \
+			"dev-python/pytest[${PYTHON_USEDEP}]" \
+		|| return
+	fi
 }
 
 src_prepare() {
