@@ -7,11 +7,12 @@ JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="org.apache.felix:org.apache.felix.framework:7.0.5"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple verify-sig
 
 DESCRIPTION="Implementation of the OSGi R8 core framework specification"
 HOMEPAGE="https://felix.apache.org/documentation/subprojects/apache-felix-framework.html"
-SRC_URI="mirror://apache/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://apache/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz
+	verify-sig? ( https://downloads.apache.org/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz.asc )"
 S="${WORKDIR}/org.apache.felix.framework-${PV}"
 
 LICENSE="Apache-2.0"
@@ -49,6 +50,9 @@ DEPEND="
 RDEPEND="
 	>=virtual/jre-1.8:*
 	${CP_DEPEND}"
+
+DEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-felix )"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/felix.apache.org.asc"
 
 JAVA_CLASSPATH_EXTRA="felix-resolver,osgi-annotation"
 JAVA_SRC_DIR="src/main/java"
