@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<use>
-		<flag name="webui">Enable the Web UI</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">qbittorrent/qBittorrent</remote-id>
-		<remote-id type="sourceforge">qbittorrent</remote-id>
-	</upstream>
+    <maintainer type="person" proxied="yes">
+        <email>cheembox573@gmail.com</email>
+        <name>Alexey Lunev</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <use>
+        <flag name="webui">
+            Install qBittorrent Web UI (qbittorrent-nox) and systemd/OpenRC service
+        </flag>
+    </use>
+    <upstream>
+        <remote-id type="github">qbittorrent/qBittorrent</remote-id>
+    </upstream>
 </pkgmetadata>
