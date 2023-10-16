@@ -73,12 +73,11 @@ RESTRICT="!test? ( test )"
 BDEPEND="${PYTHON_DEPS}
 	|| (
 		(
-			sys-devel/clang:17
 			sys-devel/llvm:17
 			clang? (
 				sys-devel/lld:17
+				sys-devel/clang:17
 				virtual/rust:0/llvm-17
-				pgo? ( =sys-libs/compiler-rt-sanitizers-17*[profile] )
 			)
 		)
 		(
