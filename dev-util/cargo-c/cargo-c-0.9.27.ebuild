@@ -35,10 +35,14 @@ CRATES="
 	bumpalo-3.13.0
 	bytes-1.4.0
 	bytesize-1.3.0
-	cargo-0.73.1
-	cargo-platform-0.1.3
-	cargo-util-0.2.5
-	cbindgen-0.25.0
+	cargo-0.74.0
+	cargo-credential-0.3.0
+	cargo-credential-libsecret-0.3.1
+	cargo-credential-macos-keychain-0.3.0
+	cargo-credential-wincred-0.3.0
+	cargo-platform-0.1.4
+	cargo-util-0.2.6
+	cbindgen-0.26.0
 	cc-1.0.83
 	cfg-if-1.0.0
 	clap-4.4.0
@@ -51,7 +55,7 @@ CRATES="
 	core-foundation-0.9.3
 	core-foundation-sys-0.8.4
 	cpufeatures-0.2.9
-	crates-io-0.37.0
+	crates-io-0.38.0
 	crc32fast-1.3.2
 	crossbeam-channel-0.5.8
 	crossbeam-utils-0.8.16
@@ -68,7 +72,6 @@ CRATES="
 	ed25519-compact-2.0.4
 	either-1.9.0
 	elliptic-curve-0.13.5
-	env_logger-0.10.0
 	equivalent-1.0.1
 	errno-0.3.2
 	errno-dragonfly-0.1.2
@@ -152,7 +155,6 @@ CRATES="
 	indexmap-2.0.0
 	io-close-0.3.7
 	io-lifetimes-1.0.11
-	is-terminal-0.4.9
 	itertools-0.10.5
 	itertools-0.11.0
 	itoa-1.0.9
@@ -163,6 +165,7 @@ CRATES="
 	lazycell-1.3.0
 	libc-0.2.147
 	libgit2-sys-0.15.2+1.6.4
+	libloading-0.8.1
 	libnghttp2-sys-0.1.8+1.55.1
 	libssh2-sys-0.3.0
 	libz-sys-1.1.12
@@ -170,17 +173,20 @@ CRATES="
 	linux-raw-sys-0.4.5
 	lock_api-0.4.10
 	log-0.4.20
+	matchers-0.1.0
 	maybe-async-0.2.7
 	memchr-2.5.0
 	memmap2-0.5.10
 	minimal-lexical-0.2.1
 	miniz_oxide-0.7.1
-	miow-0.5.0
+	miow-0.6.0
 	nom-7.1.3
+	normpath-1.1.1
+	nu-ansi-term-0.46.0
 	num-traits-0.2.16
 	num_threads-0.1.6
 	once_cell-1.18.0
-	opener-0.5.2
+	opener-0.6.1
 	openssl-0.10.56
 	openssl-macros-0.1.1
 	openssl-probe-0.1.5
@@ -189,6 +195,7 @@ CRATES="
 	ordered-float-2.10.0
 	orion-0.17.5
 	os_info-3.7.0
+	overload-0.1.1
 	p384-0.13.0
 	parking_lot-0.12.1
 	parking_lot_core-0.9.8
@@ -196,6 +203,7 @@ CRATES="
 	pathdiff-0.2.1
 	pem-rfc7468-0.7.0
 	percent-encoding-2.3.0
+	pin-project-lite-0.2.13
 	pkcs8-0.10.2
 	pkg-config-0.3.27
 	ppv-lite86-0.2.17
@@ -210,7 +218,9 @@ CRATES="
 	rand_xoshiro-0.6.0
 	redox_syscall-0.3.5
 	regex-1.9.4
+	regex-automata-0.1.10
 	regex-automata-0.3.7
+	regex-syntax-0.6.29
 	regex-syntax-0.7.5
 	rfc6979-0.4.0
 	rustfix-0.6.1
@@ -221,6 +231,8 @@ CRATES="
 	schannel-0.1.22
 	scopeguard-1.2.0
 	sec1-0.7.3
+	security-framework-2.9.2
+	security-framework-sys-2.9.1
 	semver-1.0.18
 	serde-1.0.188
 	serde-value-0.7.0
@@ -231,6 +243,7 @@ CRATES="
 	sha1-0.10.5
 	sha1_smol-1.0.0
 	sha2-0.10.7
+	sharded-slab-0.1.7
 	shell-escape-0.1.5
 	signal-hook-0.3.17
 	signal-hook-registry-1.4.1
@@ -261,6 +274,11 @@ CRATES="
 	toml-0.7.6
 	toml_datetime-0.6.3
 	toml_edit-0.19.14
+	tracing-0.1.39
+	tracing-attributes-0.1.27
+	tracing-core-0.1.32
+	tracing-log-0.1.3
+	tracing-subscriber-0.3.17
 	typenum-1.16.0
 	unicase-2.7.0
 	unicode-bidi-0.3.13
@@ -271,6 +289,7 @@ CRATES="
 	unicode-xid-0.2.4
 	url-2.4.0
 	utf8parse-0.2.1
+	valuable-0.1.0
 	vcpkg-0.2.15
 	version_check-0.9.4
 	vte-0.10.1
@@ -287,22 +306,14 @@ CRATES="
 	winapi-util-0.1.5
 	winapi-x86_64-pc-windows-gnu-0.4.0
 	windows-0.48.0
-	windows-sys-0.42.0
 	windows-sys-0.48.0
 	windows-targets-0.48.5
-	windows_aarch64_gnullvm-0.42.2
 	windows_aarch64_gnullvm-0.48.5
-	windows_aarch64_msvc-0.42.2
 	windows_aarch64_msvc-0.48.5
-	windows_i686_gnu-0.42.2
 	windows_i686_gnu-0.48.5
-	windows_i686_msvc-0.42.2
 	windows_i686_msvc-0.48.5
-	windows_x86_64_gnu-0.42.2
 	windows_x86_64_gnu-0.48.5
-	windows_x86_64_gnullvm-0.42.2
 	windows_x86_64_gnullvm-0.48.5
-	windows_x86_64_msvc-0.42.2
 	windows_x86_64_msvc-0.48.5
 	winnow-0.5.15
 	zeroize-1.6.0
