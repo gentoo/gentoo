@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CHROMIUM_VERSION="106"
+CHROMIUM_VERSION="114"
 CHROMIUM_LANGS="
 	af
 	am
@@ -88,7 +88,6 @@ RDEPEND="
 	sys-apps/util-linux
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
 	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libxcb
@@ -104,6 +103,7 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-libs/pango[X]
+	|| ( gui-libs/gtk:4 x11-libs/gtk+:3 )
 	!<games-rpg/crosscode-1.4.2.2-r1
 "
 
