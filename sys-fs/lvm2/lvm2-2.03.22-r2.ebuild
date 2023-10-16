@@ -194,17 +194,17 @@ src_test() {
 }
 
 src_install() {
-	local INSTALL_TARGETS=(
-		# full LVM2
-		$(usev lvm "install install_tmpfiles_configuration")
-		# install systemd related files only when requested, bug #522430
-		$(usev $(usex lvm systemd lvm) "SYSTEMD_GENERATOR_DIR=$(systemd_get_systemgeneratordir) \
-			install_systemd_units install_systemd_generators")
-
-		# install dm unconditionally
-		install_device-mapper
-	)
-	emake V=1 DESTDIR="${D}" "${INSTALL_TARGETS[@]}"
+	local targets=()
+	if use lvm; then
+		targets+=( install install_tmpfiles_configuration )
+		if use systemd; then
+			# install systemd related files only when requested, bug #522430
+			targets+=( install_systemd_units )
+		fi
+	else
+		targets+=( install_device-mapper )
+	fi
+	emake V=1 DESTDIR="${D}" "${targets[@]}"
 
 	newinitd "${FILESDIR}"/device-mapper.rc-r3 device-mapper
 	newconfd "${FILESDIR}"/device-mapper.conf-r4 device-mapper
