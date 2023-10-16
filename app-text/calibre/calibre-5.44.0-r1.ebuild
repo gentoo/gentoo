@@ -156,11 +156,6 @@ src_prepare() {
 	#
 	# If in doubt about a problem, checking Fedora's packaging is recommended.
 
-	# Fix outdated version constant.
-	#sed -e "s#\\(^numeric_version =\\).*#\\1 (${PV//./, })#" \
-	#	-i src/calibre/constants.py || \
-	#	die "sed failed to patch constants.py"
-
 	# Disable unnecessary privilege dropping for bug #287067.
 	sed -e "s:if os.geteuid() == 0:if False and os.geteuid() == 0:" \
 		-i setup/install.py || die "sed failed to patch install.py"
@@ -238,7 +233,7 @@ src_install() {
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--staging-libdir="${ED}/usr/$(get_libdir)" || die
 
-	find "${ED}"/usr/share -type d -empty -delete
+	find "${ED}"/usr/share -type d -empty -delete || die
 
 	einfo "Converting python shebangs"
 	python_fix_shebang "${ED}/usr/bin"
