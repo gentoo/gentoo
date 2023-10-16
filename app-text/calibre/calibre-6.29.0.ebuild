@@ -111,10 +111,6 @@ BDEPEND="$(python_gen_cond_dep '
 "
 
 PATCHES=(
-	# Don't prompt the user for updates - they've installed via
-	# an ebuild.
-	"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch"
-
 	# Skip calling a binary (JxrDecApp) from libjxr which is used for tests
 	# We don't (yet?) package libjxr and it seems to be dead upstream
 	# (last commit in 2017)
