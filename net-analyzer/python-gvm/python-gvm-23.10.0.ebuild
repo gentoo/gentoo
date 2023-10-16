@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=poetry
 
 inherit distutils-r1
@@ -18,9 +18,9 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="
-	dev-python/defusedxml[${PYTHON_USEDEP}]
-	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/paramiko[${PYTHON_USEDEP}]
+	>=dev-python/defusedxml-0.6[${PYTHON_USEDEP}]
+	>=dev-python/lxml-4.5.0[${PYTHON_USEDEP}]
+	>=dev-python/paramiko-2.7.1[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
