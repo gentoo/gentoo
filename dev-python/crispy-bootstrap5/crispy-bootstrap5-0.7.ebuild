@@ -4,26 +4,35 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="Bootstrap5 template pack for django-crispy-forms"
 HOMEPAGE="
+	https://github.com/django-crispy-forms/crispy-bootstrap5/
 	https://pypi.org/project/crispy-bootstrap5/
 "
-SRC_URI="https://github.com/django-crispy-forms/${PN}/archive/refs/tags/${PV}.tar.gz
-	-> ${P}.gh.tar.gz"
+SRC_URI="
+	https://github.com/django-crispy-forms/crispy-bootstrap5/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
-RDEPEND="dev-python/django-crispy-forms[${PYTHON_USEDEP}]"
-BDEPEND="test? (
-	dev-python/pytest-django[${PYTHON_USEDEP}]
-)"
+RDEPEND="
+	dev-python/django-crispy-forms[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		dev-python/pytest-django[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
-PATCHES=( "${FILESDIR}"/${P}-test.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-test.patch
+)
