@@ -236,7 +236,8 @@ src_install() {
 		--staging-root="${ED}/usr" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
-		--staging-libdir="${ED}/usr/$(get_libdir)" || die
+		--staging-libdir="${ED}/usr/$(get_libdir)" \
+		--system-plugins-location="${EPREFIX}/usr/share/calibre/system-plugins" || die
 
 	cp -r man-pages/ "${ED}"/usr/share/man || die
 
