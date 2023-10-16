@@ -21,6 +21,7 @@
 		<flag name="mbedtls">Enable support for <pkg>net-libs/mbedtls</pkg></flag>
 	</use>
 	<upstream>
+		<remote-id type="github">shirok/Gauche</remote-id>
 		<remote-id type="sourceforge">gauche</remote-id>
 	</upstream>
 </pkgmetadata>
