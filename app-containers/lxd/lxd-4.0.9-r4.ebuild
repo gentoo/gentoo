@@ -27,8 +27,13 @@ DEPEND="acct-group/lxd
 	sys-libs/libcap
 	virtual/udev"
 RDEPEND="${DEPEND}
-	net-firewall/ebtables
-	net-firewall/iptables[ipv6(+)?]
+	|| (
+			net-firewall/nftables[json]
+			(
+				net-firewall/ebtables
+				net-firewall/iptables[ipv6(+)?]
+			)
+	)
 	sys-apps/iproute2[ipv6(+)?]
 	sys-fs/fuse:*
 	sys-fs/lxcfs
