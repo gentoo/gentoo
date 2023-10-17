@@ -1,0 +1,11 @@
+--- a/jdbc/driver/nativeapi/library_loader.h	2023-03-23 17:32:48.000000000 +0100
++++ b/jdbc/driver/nativeapi/library_loader.h	2023-10-17 16:54:37.270710451 +0200
+@@ -45,6 +45,8 @@
+ 
+ #include <map>
+ 
++#include "../mysql_util.h"
++
+ namespace sql
+ {
+ namespace mysql
