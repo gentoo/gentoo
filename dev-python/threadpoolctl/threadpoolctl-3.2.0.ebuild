@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -33,4 +33,9 @@ EPYTEST_DESELECT=(
 	# or file bugs about missing architectures until upstream realizes
 	# how bad idea that were.
 	tests/test_threadpoolctl.py::test_architecture
+	# This test fails if the Python executable (or any library that it
+	# links to) uses OpenMP.  This can particularly be the case with
+	# CPython 3.12 that links to app-crypt/libb2.
+	# https://github.com/joblib/threadpoolctl/issues/146
+	tests/test_threadpoolctl.py::test_command_line_empty
 )
