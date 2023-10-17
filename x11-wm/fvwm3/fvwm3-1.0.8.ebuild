@@ -92,6 +92,10 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}/${P}-implicit-function-decl-configure.patch"
+)
+
 src_prepare() {
 	default
 	use go && ( sed -e 's/GOFLAGS=-ldflags="-s -w"/GOFLAGS=/' \
