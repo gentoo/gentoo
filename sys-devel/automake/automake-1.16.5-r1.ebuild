@@ -56,6 +56,8 @@ PATCHES=(
 	"${FILESDIR}"/automake-1.16.2-py3-compile.patch
 	"${FILESDIR}"/automake-1.16.2-fix-instmany-python.sh-test.patch
 	"${FILESDIR}"/automake-1.16.2-fix-py-compile-basedir.sh-test.patch
+	# upstreamed
+	"${FILESDIR}"/automake-1.16.5-apostrophe-in-tests.patch
 )
 
 pkg_setup() {
