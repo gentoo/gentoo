@@ -262,7 +262,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm Source/Utility.Tests/ShellFixture.cs || die
+	rm Source/Nake.Tests/Multi_level_caching.cs		\
+	   Source/Nake.Tests/Nuget_references.cs		\
+	   Source/Utility.Tests/ShellFixture.cs	|| die
 
 	dotnet-pkg_src_prepare
 }
