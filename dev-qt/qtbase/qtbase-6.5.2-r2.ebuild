@@ -205,7 +205,8 @@ src_configure() {
 		-DINPUT_opengl=$(usex opengl $(usex gles2-only es2 desktop) no)
 		-DQT_FEATURE_system_textmarkdownreader=OFF # TODO?: package md4c
 	) && use widgets && mycmakeargs+=(
-		$(qt_feature cups) # qtprintsupport is enabled w/ gui+widgets
+		# note: qtprintsupport is enabled w/ gui+widgets regardless of USE=cups
+		$(qt_feature cups)
 		$(qt_feature gtk gtk3)
 	)
 
