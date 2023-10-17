@@ -17,9 +17,10 @@ SRC_URI="
 	arm64? ( ${NV_URI}Linux-aarch64/${PV}/NVIDIA-Linux-aarch64-${PV}.run )
 	$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})
-	${NV_URI}NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-${PV}.tar.xz"
+	${NV_URI}NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-${PV}.tar.xz
+"
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
-S="${WORKDIR}"
+S=${WORKDIR}
 
 LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
@@ -46,7 +47,8 @@ COMMON_DEPEND="
 		x11-libs/libXext
 		x11-libs/libXxf86vm
 		x11-libs/pango
-	)"
+	)
+"
 RDEPEND="
 	${COMMON_DEPEND}
 	sys-libs/glibc
@@ -59,7 +61,8 @@ RDEPEND="
 		gui-libs/egl-gbm
 		>=gui-libs/egl-wayland-1.1.10
 		media-libs/libglvnd
-	)"
+	)
+"
 DEPEND="
 	${COMMON_DEPEND}
 	static-libs? (
@@ -73,10 +76,12 @@ DEPEND="
 		x11-libs/libXrandr
 		x11-libs/libXv
 		x11-libs/libvdpau
-	)"
+	)
+"
 BDEPEND="
 	sys-devel/m4
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
@@ -97,7 +102,8 @@ pkg_setup() {
 		~SYSVIPC
 		~!LOCKDEP
 		~!SLUB_DEBUG_ON
-		!DEBUG_MUTEXES"
+		!DEBUG_MUTEXES
+	"
 
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
 	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
@@ -211,7 +217,7 @@ src_compile() {
 	use X && emake "${NV_ARGS[@]}" -C nvidia-xconfig
 
 	if use tools; then
-		# cflags: avoid noisy logs, only use here and set first to let override
+		# avoid noisy *very* noisy logs with deprecation warnings
 		CFLAGS="-Wno-deprecated-declarations ${CFLAGS}" \
 			emake "${NV_ARGS[@]}" -C nvidia-settings
 	elif use static-libs; then
