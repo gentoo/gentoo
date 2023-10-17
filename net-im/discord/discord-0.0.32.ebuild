@@ -5,6 +5,7 @@ EAPI=8
 
 MY_PN="${PN/-bin/}"
 MY_PV="${PV/-r*/}"
+
 CHROMIUM_VERSION="102"
 CHROMIUM_LANGS="
 	af am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
@@ -17,8 +18,9 @@ inherit chromium-2 desktop linux-info optfeature unpacker xdg
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
 SRC_URI="https://dl.discordapp.net/apps/linux/${MY_PV}/${MY_PN}-${MY_PV}.tar.gz"
+
 LICENSE="all-rights-reserved"
-SLOT="stable"
+SLOT="0"
 KEYWORDS="amd64"
 RESTRICT="bindist mirror strip test"
 IUSE="appindicator +seccomp"
@@ -55,21 +57,13 @@ RDEPEND="
 	appindicator? ( dev-libs/libayatana-appindicator )
 "
 
-if [ "${SLOT}" == "ptb" ]; then
-	MY_SLOT="-${SLOT^^}"
-elif [ "${SLOT}" == "stable" ]; then
-	MY_SLOT=""
-else
-	MY_SLOT="-${SLOT^}"
-fi
-
-DESTDIR="/opt/${MY_PN}${MY_SLOT,,}"
+DESTDIR="/opt/${MY_PN}"
 
 QA_PREBUILT="*"
 
 CONFIG_CHECK="~USER_NS"
 
-S="${WORKDIR}/${MY_PN^}${MY_SLOT:1}"
+S="${WORKDIR}/${MY_PN^}"
 
 src_unpack() {
 	unpack ${MY_PN}-${MY_PV}.tar.gz
@@ -89,27 +83,26 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd >/dev/null || die "location reset for language cleanup failed"
 	# fix .desktop exec location
-	sed -i "/Exec/s:/usr/share/discord/Discord:${DESTDIR}/${MY_PN^}${MY_SLOT:1}:" \
-		"${MY_PN}${MY_SLOT,,}.desktop" ||
+	sed -i "/Exec/s:/usr/share/discord/Discord:${DESTDIR}/${MY_PN^}:" \
+		"${MY_PN}.desktop" ||
 		die "fixing of exec location on .desktop failed"
 	# USE seccomp
 	if ! use seccomp; then
 		sed -i '/Exec/s/Discord/Discord --disable-seccomp-filter-sandbox/' \
-			"${MY_PN}${MY_SLOT,,}.desktop" ||
+			"${MY_PN}.desktop" ||
 			die "sed failed for seccomp"
 	fi
 }
 
 src_install() {
-	mv "discord.png" "${MY_PN}${MY_SLOT,,}.png"
-	doicon -s 256 "${MY_PN}${MY_SLOT,,}.png"
+	doicon -s 256 "${MY_PN}.png"
 
 	# install .desktop file
-	domenu "${MY_PN}${MY_SLOT,,}.desktop"
+	domenu "${MY_PN}.desktop"
 
 	exeinto "${DESTDIR}"
 
-	doexe "${MY_PN^}${MY_SLOT:1}" chrome-sandbox libEGL.so libffmpeg.so libGLESv2.so libvk_swiftshader.so
+	doexe "${MY_PN^}" chrome-sandbox libEGL.so libffmpeg.so libGLESv2.so libvk_swiftshader.so
 
 	insinto "${DESTDIR}"
 	doins chrome_100_percent.pak chrome_200_percent.pak icudtl.dat resources.pak snapshot_blob.bin v8_context_snapshot.bin
@@ -125,11 +118,11 @@ src_install() {
 	# See #903616 and #890595
 	[[ -x chrome_crashpad_handler ]] && doins chrome_crashpad_handler
 
-	dosym "${DESTDIR}/${MY_PN^}${MY_SLOT:1}" "/usr/bin/${MY_PN}${MY_SLOT,,}"
+	dosym "${DESTDIR}/${MY_PN^}" "/usr/bin/${MY_PN}"
 
 	# https://bugs.gentoo.org/898912
 	if use appindicator; then
-		dosym ../../usr/lib64/libayatana-appindicator3.so /opt/discord${MY_SLOT,,}/libappindicator3.so
+		dosym ../../usr/lib64/libayatana-appindicator3.so /opt/discord/libappindicator3.so
 	fi
 }
 
