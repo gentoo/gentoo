@@ -19,37 +19,20 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
-# Common dependencies
-# POM: pom.xml
-# org.codehaus.mojo:animal-sniffer-annotations:1.9 -> >=dev-java/animal-sniffer-annotations-1.15:0
-
 CP_DEPEND="dev-java/animal-sniffer-annotations:0"
 
-# Compile dependencies
-# POM: pom.xml
-# org.apache.felix:org.apache.felix.resolver:2.0.4 -> >=dev-java/felix-resolver-2.0.4:0
-# org.osgi:org.osgi.annotation:6.0.0 -> !!!artifactId-not-found!!!
-# POM: pom.xml
-# test? junit:junit:4.12 -> >=dev-java/junit-4.13.2:4
-# test? org.easymock:easymock:2.5.2 -> >=dev-java/easymock-2.5.2:2.5
-# test? org.mockito:mockito-all:1.10.19 -> !!!artifactId-not-found!!!
-# test? org.ow2.asm:asm-all:5.2 -> !!!artifactId-not-found!!!
-
-DEPEND="
-	>=virtual/jdk-11:*
-	${CP_DEPEND}
-	dev-java/osgi-annotation:0
+DEPEND="${CP_DEPEND}
 	dev-java/felix-resolver:0
+	dev-java/osgi-annotation:0
+	>=virtual/jdk-11:*
 	test? (
 		dev-java/asm:9
 		dev-java/easymock:2.5
 		dev-java/mockito:0
-	)
-"
+	)"
 
-RDEPEND="
-	>=virtual/jre-1.8:*
-	${CP_DEPEND}"
+RDEPEND="${CP_DEPEND}
+	>=virtual/jre-1.8:*"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-felix )"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/felix.apache.org.asc"
