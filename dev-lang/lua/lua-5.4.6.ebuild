@@ -22,6 +22,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	# Backported variant of upstream patch to fix sparc tests, bug #914562
+	"${FILESDIR}"/${PN}-5.4.6-sparc-tests.patch
+)
+
 src_prepare() {
 	default
 
