@@ -199,6 +199,9 @@ src_install() {
 	if use dbus; then
 		insinto /etc/dbus-1/system.d
 		doins dbus/dnsmasq.conf
+
+		docinto
+		dodoc dbus/DBus-interface
 	fi
 
 	if use dhcp-tools; then
