@@ -8,8 +8,9 @@
 	<use>
 		<flag name="examples">Build and install examples</flag>
 		<flag name="gbm">Enable support for the Generic Buffer Manager (gbm)</flag>
-		<flag name="h264">Enable fast encodings</flag>
-		<flag name="jpeg">Enable H.264 encoding</flag>
+		<flag name="h264">Enable H.264 encoding</flag>
+		<flag name="jpeg">Enable JPEG compression</flag>
 		<flag name="tracing">Trace kernel and memory calls</flag>
+		<flag name="websockets">Enable websockets support</flag>
 	</use>
 </pkgmetadata>
