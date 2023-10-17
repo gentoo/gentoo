@@ -34,7 +34,6 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			>=dev-python/wheel-0.32.0[${PYTHON_USEDEP}]
 			>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-			>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 			>=dev-python/six-1.12.0[${PYTHON_USEDEP}]
 			>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
 			>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
