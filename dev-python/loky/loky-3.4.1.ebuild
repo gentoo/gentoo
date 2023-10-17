@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Robust and reusable Executor for joblib"
 HOMEPAGE="
@@ -30,6 +30,7 @@ BDEPEND="
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
@@ -44,6 +45,8 @@ python_test() {
 		tests/test_reusable_executor.py::TestResizeExecutor::test_reusable_executor_resize
 	)
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# high memory test needs a lot of memory + is broken on 32-bit platforms
-	epytest --skip-high-memory
+	epytest --skip-high-memory \
+		-p xdist -n "$(makeopts_jobs)" --dist=worksteal
 }
