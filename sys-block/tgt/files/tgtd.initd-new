@@ -9,7 +9,7 @@
 
 pidfile="/var/run/${RC_SVCNAME}.pid"
 command="/usr/sbin/tgtd"
-command_args_background="--pid-file ${pidfile}"
+command_args_background="--pid-file ${pidfile} ${tgtd_opts}"
 extra_commands="forcedstop"
 extra_started_commands="forcedreload reload"
 
