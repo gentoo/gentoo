@@ -8,10 +8,13 @@ inherit flag-o-matic multilib toolchain-funcs multilib-minimal
 NSPR_VER="4.35"
 RTM_NAME="NSS_${PV//./_}_RTM"
 
+# nss-3.91-fixed-certs.tar.xz is a workaround for older NSS versions to
+# fix tests for bug #914837.
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/${P}.tar.gz
-	cacert? ( https://dev.gentoo.org/~whissi/dist/ca-certificates/nss-cacert-class1-class3-r2.patch )"
+	cacert? ( https://dev.gentoo.org/~whissi/dist/ca-certificates/nss-cacert-class1-class3-r2.patch )
+	test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.91-fixed-certs.tar.xz )"
 
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
@@ -81,6 +84,10 @@ src_prepare() {
 		lib/ssl/config.mk || die
 	sed -i -e "/CRYPTOLIB/s:\$(SOFTOKEN_LIB_DIR):../../lib/freebl/\$(OBJDIR):" \
 		cmd/platlibs.mk || die
+
+	if use test ; then
+		cp "${WORKDIR}"/${PN}-3.91-fixed-certs/* tests/libpkix/certs/ || die
+	fi
 
 	multilib_copy_sources
 
