@@ -21,6 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="net-firewall/iptables"
+BDEPEND=">=dev-lang/go-1.21"
 
 RESTRICT="test"
 
