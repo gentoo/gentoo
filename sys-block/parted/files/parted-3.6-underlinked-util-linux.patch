@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/910487
+https://git.savannah.gnu.org/cgit/parted.git/commit/?id=d22c2d01f62139e0d386d90584cac0705857a571
+
+From d22c2d01f62139e0d386d90584cac0705857a571 Mon Sep 17 00:00:00 2001
+From: Yegor Yefremov <yegorslists@googlemail.com>
+Date: Thu, 11 May 2023 10:03:59 +0200
+Subject: parted: link to libuuid
+
+parted.c uses libuuid since 61b3a9733c0e0a79ccc43096642d378c8706add6.
+Hence, add UUID_LIBS to PARTED_LIBS to avoid
+"DSO missing from command line" error.
+
+Signed-off-by: Brian C. Lane <bcl@redhat.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -298,6 +298,8 @@ Note: originally, libuuid was part of the e2fsprogs package.  Later, it
+ moved to util-linux-ng-2.16, and that package is now the preferred source.])])
+ AC_SUBST([UUID_LIBS])
+ 
++PARTED_LIBS="$PARTED_LIBS $UUID_LIBS"
++
+ dnl Check for libdevmapper
+ DM_LIBS=
+ if test $ENABLE_DEVICE_MAPPER = yes; then
+-- 
+cgit v1.1
