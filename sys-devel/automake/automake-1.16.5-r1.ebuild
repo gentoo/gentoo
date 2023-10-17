@@ -53,11 +53,11 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/automake-1.16.2-py3-compile.patch
-	"${FILESDIR}"/automake-1.16.2-fix-instmany-python.sh-test.patch
-	"${FILESDIR}"/automake-1.16.2-fix-py-compile-basedir.sh-test.patch
+	"${FILESDIR}"/${PN}-1.16.5-py3-compile.patch
+	"${FILESDIR}"/${PN}-1.16.5-fix-instmany-python.sh-test.patch
+	"${FILESDIR}"/${PN}-1.16.5-fix-py-compile-basedir.sh-test.patch
 	# upstreamed
-	"${FILESDIR}"/automake-1.16.5-apostrophe-in-tests.patch
+	"${FILESDIR}"/${PN}-1.16.5-apostrophe-in-tests.patch
 )
 
 pkg_setup() {

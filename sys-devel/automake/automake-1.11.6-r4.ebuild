@@ -30,9 +30,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.10-perl-5.16.patch #424453
-	"${FILESDIR}"/${PN}-1.11-install-sh-avoid-low-risk-race-in-tmp.patch
-	"${FILESDIR}"/${PN}-1.13-perl-escape-curly-bracket-r1.patch
+	"${FILESDIR}"/${P}-perl-5.16.patch #424453
+	"${FILESDIR}"/${P}-install-sh-avoid-low-risk-race-in-tmp.patch
+	"${FILESDIR}"/${P}-perl-escape-curly-bracket-r1.patch
 )
 
 src_prepare() {

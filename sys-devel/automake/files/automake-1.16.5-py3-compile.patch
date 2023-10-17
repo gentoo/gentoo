@@ -68,6 +68,6 @@ index e56d98d6e..5b9ae5d5d 100755
 +        py_compile.compile(filepath, $import_call(filepath), path)
      else:
          py_compile.compile(filepath, filepath + 'o', path)
- sys.stdout.write('\n')" 2>/dev/null || :
+ sys.stdout.write('\n')" 2>/dev/null || exit $?
 -- 
 2.25.2
