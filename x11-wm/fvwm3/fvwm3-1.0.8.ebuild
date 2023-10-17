@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 GO_OPTIONAL=1
 inherit autotools desktop flag-o-matic go-module python-single-r1 toolchain-funcs
 
@@ -92,6 +92,10 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}/${P}-implicit-function-decl-configure.patch"
+)
+
 src_prepare() {
 	default
 	use go && ( sed -e 's/GOFLAGS=-ldflags="-s -w"/GOFLAGS=/' \
@@ -141,9 +145,11 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${ED}" prefix="/usr" exec_prefix="/usr" datarootdir="/usr/share" install
 
-	dodir /etc/X11/Sessions
-	echo "/usr/bin/fvwm3" > "${ED}/etc/X11/Sessions/${PN}" || die
-	fperms a+x "/etc/X11/Sessions/${PN}" || die
+	exeinto /etc/X11/Sessions
+	newexe - ${PN} <<-EOF
+	#!/bin/sh
+	${PN}
+	EOF
 
 	python_scriptinto "/usr/bin"
 	python_doscript "${ED}/usr/bin/FvwmCommand" "${ED}/usr/bin/fvwm-menu-desktop"
