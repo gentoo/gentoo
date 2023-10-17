@@ -29,7 +29,6 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		app-crypt/gpgme[python,${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/fastimport[${PYTHON_USEDEP}]
 	)
 "
