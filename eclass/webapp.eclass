@@ -96,21 +96,6 @@ webapp_check_installedat() {
 	${WEBAPP_CONFIG} --show-installed -h localhost -d "${INSTALL_DIR}" 2> /dev/null
 }
 
-webapp_strip_appdir() {
-	debug-print-function $FUNCNAME $*
-	echo "${1#${MY_APPDIR}/}"
-}
-
-webapp_strip_d() {
-	debug-print-function $FUNCNAME $*
-	echo "${1#${D}}"
-}
-
-webapp_strip_cwd() {
-	debug-print-function $FUNCNAME $*
-	echo "${1/#.\///}"
-}
-
 webapp_getinstalltype() {
 	debug-print-function $FUNCNAME $*
 
@@ -195,8 +180,11 @@ webapp_configfile() {
 	for m in "$@"; do
 		webapp_checkfileexists "${m}" "${D}"
 
-		local my_file="$(webapp_strip_appdir "${m}")"
-		my_file="$(webapp_strip_cwd "${my_file}")"
+		local my_file
+		# Strip appdir
+		my_file="${m#${MY_APPDIR}/}"
+		# Strip cwd
+		my_file="${my_file/#.\///}"
 
 		elog "(config) ${my_file}"
 		echo "${my_file}" >> "${D}/${WA_CONFIGLIST}"
@@ -249,8 +237,11 @@ _webapp_serverowned() {
 	debug-print-function $FUNCNAME $*
 
 	webapp_checkfileexists "${1}" "${D}"
-	local my_file="$(webapp_strip_appdir "${1}")"
-	my_file="$(webapp_strip_cwd "${my_file}")"
+	local my_file
+	# Strip appdir
+	my_file="${1#${MY_APPDIR}/}"
+	# Strip cwd
+	my_file="${my_file/#.\///}"
 
 	echo "${my_file}" >> "${D}/${WA_SOLIST}"
 }
@@ -264,14 +255,15 @@ _webapp_serverowned() {
 webapp_serverowned() {
 	debug-print-function $FUNCNAME $*
 
-	local a m
+	local m
 	if [[ "${1}" == "-R" ]]; then
 		shift
 		for m in "$@"; do
-			find "${D}${m}" | while read a; do
-				a=$(webapp_strip_d "${a}")
-				_webapp_serverowned "${a}"
-			done
+			pushd "${D}${MY_APPDIR}" > /dev/null || die
+			# Strip appdir
+			m="${m#${MY_APPDIR}/}"
+			find "${m}" >> "${D}/${WA_SOLIST}" || die
+			popd > /dev/null || die
 		done
 	else
 		for m in "$@"; do
