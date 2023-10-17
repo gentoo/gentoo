@@ -201,6 +201,7 @@ games-puzzle/world-of-goo-demo
 games-puzzle/world-of-goo-gog
 games-puzzle/world-of-goo-hb
 games-rpg/crosscode
+games-rpg/crosscode-a-new-home
 games-server/bedrock-server
 games-server/etqw-ded
 games-server/mtavc
