@@ -21,6 +21,7 @@ IUSE="+boundschecks internalchecks unsafechecks"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.12.3.1-disable-doctests.patch"
+	"${FILESDIR}/${PN}-0.12.3.1-fix-testdata-float.patch"
 )
 
 RDEPEND="
