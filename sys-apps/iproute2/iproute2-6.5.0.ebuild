@@ -61,12 +61,12 @@ src_prepare() {
 	local versionfile="include/version.h"
 	if [[ ${PV} != 9999 ]] && ! grep -Fq "${PV}" ${versionfile} ; then
 		einfo "Fixing version string"
-		sed "s@\"[[:digit:]\.]\+\"@\"${PV}\"@" \
-			-i ${versionfile} || die
+		sed -i "s@\"[[:digit:]\.]\+\"@\"${PV}\"@" \
+			${versionfile} || die
 	fi
 
 	# echo -n is not POSIX compliant
-	sed 's@echo -n@printf@' -i configure || die
+	sed -i 's@echo -n@printf@' configure || die
 
 	sed -i \
 		-e '/^CC :\?=/d' \
