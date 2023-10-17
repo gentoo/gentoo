@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.10.1:2
 	>=dev-libs/ivykis-0.42.4
-	>=dev-libs/libpcre-6.1
+	>=dev-libs/libpcre2-10.0
 	dev-libs/openssl:0=
 	!dev-libs/eventlog
 	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
