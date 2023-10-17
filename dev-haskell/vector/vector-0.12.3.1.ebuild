@@ -24,7 +24,11 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+boundschecks internalchecks unsafechecks"
 
-PATCHES=( "${FILESDIR}/${PN}-0.12.3.1-cabal-doctest.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.12.3.1-cabal-doctest.patch"
+	"${FILESDIR}/${PN}-0.12.3.1-fix-testdata-float.patch"
+
+)
 
 RDEPEND=">=dev-haskell/primitive-0.6.4.0:=[profile?] <dev-haskell/primitive-0.8:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
