@@ -42,7 +42,6 @@ BDEPEND="
 	)
 	test? (
 		$(python_gen_any_dep '
-			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 			introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )')
 		test-rust? ( introspection? ( >=dev-libs/gjs-1.32 ) )
@@ -118,7 +117,6 @@ python_check_deps() {
 	if use introspection; then
 		has_version -b "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
 	fi
-	has_version -b "dev-python/mock[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/dbus-python[${PYTHON_USEDEP}]"
 }
 
