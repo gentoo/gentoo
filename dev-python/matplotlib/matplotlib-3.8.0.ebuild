@@ -110,7 +110,6 @@ BDEPEND="
 		>=media-gfx/graphviz-2.42.3[cairo]
 	)
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
