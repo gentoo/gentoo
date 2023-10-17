@@ -51,7 +51,7 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CP_DEPEND}"
 
-DEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-felix )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-felix )"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/felix.apache.org.asc"
 
 JAVA_CLASSPATH_EXTRA="felix-resolver,osgi-annotation"
