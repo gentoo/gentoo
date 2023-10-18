@@ -485,8 +485,10 @@ java-pkg-simple_src_install() {
 # @FUNCTION: java-pkg-simple_src_test
 # @DESCRIPTION:
 # src_test for simple single java jar file.
-# It will perform test with frameworks that are defined in
-# ${JAVA_TESTING_FRAMEWORKS}.
+# It will compile test classes from test sources using ejavac and perform tests
+# with frameworks that are defined in ${JAVA_TESTING_FRAMEWORKS}.
+# test-classes compiled with alternative compilers like groovyc need to be placed
+# in the "generated-test" directory.
 java-pkg-simple_src_test() {
 	local test_sources=test_sources.lst classes=target/test-classes moduleinfo
 	local tests_to_run classpath
@@ -502,12 +504,13 @@ java-pkg-simple_src_test() {
 	fi
 
 	# https://bugs.gentoo.org/906311
+	# This will remove target/test-classes. Do not put any test-classes there manually.
 	rm -rf ${classes} || die
 
 	# create the target directory
 	mkdir -p ${classes} || die "Could not create target directory for testing"
 
-	# generated test classes should get generated into "generated-test" directory
+	# generated test classes should get compiled into "generated-test" directory
 	if [[ -d generated-test ]]; then
 		cp -r generated-test/* "${classes}" || die "cannot copy generated test classes"
 	fi
