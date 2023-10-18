@@ -7,7 +7,6 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{10..12} )
 PYSIDE2_COMPAT=( python3_{10..11} )
-PYSIDE6_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 virtualx pypi
 
@@ -27,16 +26,12 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/PyQt5[gui,testlib,widgets,${PYTHON_USEDEP}]
-		amd64? (
-			dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
-		)
 		$(python_gen_cond_dep '
 			dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]
 		' "${PYSIDE2_COMPAT[@]}")
 		amd64? (
-			$(python_gen_cond_dep '
-				dev-python/pyside6[gui,testlib,widgets,${PYTHON_USEDEP}]
-			' "${PYSIDE6_COMPAT[@]}")
+			dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
+			dev-python/pyside6[gui,testlib,widgets,${PYTHON_USEDEP}]
 		)
 	)
 "
