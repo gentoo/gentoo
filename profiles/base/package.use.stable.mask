@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-18)
+# Unblock the support in python-exec while the target is masked.
+dev-lang/python-exec -python_targets_python3_12
+
 # Michał Górny <mgorny@gentoo.org> (2023-06-11)
 # xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
 xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
