@@ -1,0 +1,27 @@
+Fix build with GCC 13
+
+Gentoo bug https://bugs.gentoo.org/899754
+
+diff -ur inputstream.adaptive-19.0.0-Matrix/src/helpers.h inputstream.adaptive-19.0.0-Matrix-fixed/src/helpers.h
+--- inputstream.adaptive-19.0.0-Matrix/src/helpers.h	2021-09-14 17:28:17.000000000 +0300
++++ inputstream.adaptive-19.0.0-Matrix-fixed/src/helpers.h	2023-10-18 10:03:57.510248775 +0300
+@@ -19,7 +19,7 @@
+ #pragma once
+ 
+ #include <string>
+-#include <stdint.h>
++#include <cstdint>
+ #include <vector>
+ #include <map>
+ 
+diff -ur inputstream.adaptive-19.0.0-Matrix/src/Iaes_decrypter.h inputstream.adaptive-19.0.0-Matrix-fixed/src/Iaes_decrypter.h
+--- inputstream.adaptive-19.0.0-Matrix/src/Iaes_decrypter.h	2021-09-14 17:28:17.000000000 +0300
++++ inputstream.adaptive-19.0.0-Matrix-fixed/src/Iaes_decrypter.h	2023-10-18 10:03:12.136782831 +0300
+@@ -2,6 +2,7 @@
+ 
+ #include "Ap4Types.h"
+ 
++#include <cstdint>
+ #include <string>
+ 
+ class IAESDecrypter
