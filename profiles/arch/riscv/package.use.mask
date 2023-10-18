@@ -105,7 +105,7 @@ dev-libs/cyrus-sasl berkdb
 # Avoid dragging in "heavy"  parts of dev-qt/* unless/until
 # somebody needs them. bug #816981, bug #854261.
 # Unfortunately, tests demand qtwebengine too.
-dev-python/QtPy pyside2 webengine
+dev-python/QtPy webengine
 dev-python/QtPy test
 
 # Marek Szuba <marecki@gentoo.org> (2022-04-30)
