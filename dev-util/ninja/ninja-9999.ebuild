@@ -121,6 +121,9 @@ src_install() {
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
+	if ! [[ -e "${EROOT}/usr/bin/ninja" ]]; then
+		ln -s ninja-reference "${EROOT}/usr/bin/ninja" || die
+	fi
 }
 
 pkg_postrm() {
