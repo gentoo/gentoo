@@ -47,7 +47,6 @@ dev-python/check-manifest
 dev-python/jupyter-server-fileid
 dev-python/jupyter-server-ydoc
 dev-python/jupyter-ydoc
-dev-python/nbclassic
 dev-python/y-py
 dev-python/ypy-websocket
 
