@@ -42,8 +42,6 @@ REQUIRED_USE="
 # 	concurrent? ( pyside2 only )
 # 	datavis? ( pyside2 only )
 # 	scxml? ( pyside2 only )
-# 	script? ( pyside2 only )
-# 	scripttools? ( pyside2 only )
 #
 #	location? ( pyside2 and pyqt5 only )
 #	sensors? ( pyside2 and pyqt5 only )
@@ -134,7 +132,7 @@ BDEPEND="
 				dev-python/pyside2[${PYTHON_USEDEP}]
 				dev-python/pyside2[3d,charts,concurrent,datavis,designer,gui,help]
 				dev-python/pyside2[location,multimedia,network,opengl(+),positioning]
-				dev-python/pyside2[printsupport,qml,quick,script,scripttools,scxml]
+				dev-python/pyside2[printsupport,qml,quick,scxml]
 				dev-python/pyside2[sensors,serialport(+),speech,sql,svg,testlib]
 				dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
 				dev-python/pyside2[xml,xmlpatterns]
