@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake llvm
+
+LLVM_MAX_SLOT=17
 
 DESCRIPTION="Radeon Open Compute hipcc"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/hipcc"
@@ -20,8 +22,24 @@ S=${WORKDIR}/HIPCC-rocm-${PV}
 
 RDEPEND="!<dev-util/hip-5.7"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.7.1-fno-stack-protector.patch"
+)
+
 src_prepare() {
-	# hardcoded paths are wrong
-	sed -i -e 's~$ROCM_PATH/llvm/bin~/usr/lib/llvm/17/bin~' bin/hipvars.pm || die
 	cmake_src_prepare
+
+	sed -e "s:\$ROCM_PATH/llvm/bin:$(get_llvm_prefix ${LLVM_MAX_SLOT})/bin:" \
+		-i bin/hipvars.pm || die
+
+	sed -e "s:\$ENV{'DEVICE_LIB_PATH'}:'${EPREFIX}/usr/lib/amdgcn/bitcode':" \
+		-e "s:\$ENV{'HIP_LIB_PATH'}:'${EPREFIX}/usr/$(get_libdir)':" \
+		-e "/HIP.*FLAGS.*isystem.*HIP_INCLUDE_PATH/d" \
+		-i bin/hipcc.pl || die
+}
+
+src_install() {
+	cmake_src_install
+	# rm unwanted copy
+	rm -rf "${ED}/usr/hip" || die
 }
