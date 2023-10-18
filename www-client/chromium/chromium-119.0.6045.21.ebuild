@@ -27,7 +27,7 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 toolchain-funcs virtualx xdg-
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
 PATCHSET_PPC64="118.0.5993.70-1raptor0~deb11u1"
-PATCH_V="${PV%%\.*}"
+PATCH_V="${PV%%\.*}-1"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
 	ppc64? (
