@@ -5,4 +5,7 @@
 		<email>arsen@gentoo.org</email>
 		<name>Arsen Arsenović</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="codeberg">dnkl/foot</remote-id>
+	</upstream>
 </pkgmetadata>
