@@ -67,7 +67,7 @@ src_configure() {
 
 src_install() {
 	# TempRoot == DESTDIR
-	emake TempRoot="${D}" install
+	emake TempRoot="${ED}" install
 	einstalldocs
 
 	find "${ED}"/usr/$(get_libdir)/csv${PV//a}/examples \
