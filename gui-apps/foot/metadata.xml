@@ -8,4 +8,7 @@
 	<use>
 		<flag name="grapheme-clustering">Enable grapheme clustering support</flag>
 	</use>
+	<upstream>
+		<remote-id type="codeberg">dnkl/foot</remote-id>
+	</upstream>
 </pkgmetadata>
