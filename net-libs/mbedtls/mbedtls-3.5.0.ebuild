@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
-HOMEPAGE="https://tls.mbed.org/"
+HOMEPAGE="https://www.trustedfirmware.org/projects/mbed-tls/"
 SRC_URI="https://github.com/Mbed-TLS/mbedtls/archive/${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${P}
 

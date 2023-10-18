@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>azamat.hackimov@gmail.com</email>
+		<name>Azamat H. Hackimov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		The aim of the mbed TLS project is to provide a quality, open-source
 		cryptographic library written in C and targeted at embedded systems.
@@ -17,6 +24,6 @@
 		<flag name="programs">Build PolarSSL programs</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">ARMmbed/mbedtls</remote-id>
+		<remote-id type="github">Mbed-TLS/mbedtls</remote-id>
 	</upstream>
 </pkgmetadata>
