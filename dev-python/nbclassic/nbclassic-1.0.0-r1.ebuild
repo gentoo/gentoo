@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=jupyter
 
 inherit distutils-r1 pypi xdg-utils
@@ -35,9 +35,6 @@ RDEPEND="
 	>=dev-python/terminado-0.8.3[${PYTHON_USEDEP}]
 	>=dev-python/tornado-6.1[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
-"
-PDEPEND="
-	<dev-python/notebook-7[${PYTHON_USEDEP}]
 "
 
 # dev-python/nbval is missing impls
