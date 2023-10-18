@@ -1,0 +1,36 @@
+Bug: https://bugs.gentoo.org/885761
+--- a/src/perm.c
++++ b/src/perm.c
+@@ -25,6 +25,8 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdio.h>
++#include "perm.h"
++#include "ShiftyEngine.h"
+ 
+ struct node {
+ 	char * word;
+--- /dev/null
++++ b/src/perm.h
+@@ -0,0 +1,2 @@
++void initDictionary(char * name);
++void getWord(char * letters);
+--- a/src/scramble.c
++++ b/src/scramble.c
+@@ -26,6 +26,7 @@
+ #include <time.h>
+ 
+ #include "ShiftyEngine.h"
++#include "perm.h"
+ 
+ /* Forward references */
+ void timeOver();
+@@ -534,7 +535,7 @@ void updateClock()
+ 
+ /*****************************************************
+  ****************************************************/
+-int moveLetter(int i)
++void moveLetter(int i)
+ {
+ 	int minx, maxx, miny, maxy, advance;
+ 	i--;
