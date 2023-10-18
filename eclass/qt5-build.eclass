@@ -233,7 +233,7 @@ qt5-build_src_configure() {
 
 	# Workaround for bug #915203
 	# Upstream: https://bugreports.qt.io/browse/QTBUG-111514
-	if [[ ${PN} != qtcore ]]; then
+	if [[ ${PN} != qtcore ]] && tc-ld-is-lld ; then
 		append-ldflags -Wl,--undefined-version
 	fi
 
