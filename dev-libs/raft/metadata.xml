@@ -20,6 +20,6 @@
     snapshots).
   </longdescription>
   <upstream>
-    <remote-id type="github">canonical/raft</remote-id>
+    <remote-id type="github">cowsql/raft</remote-id>
   </upstream> 
 </pkgmetadata>
