@@ -8,9 +8,9 @@ inherit desktop java-pkg-2
 PDOC=VLT-PRO-ESO-19000-1932-V4
 
 DESCRIPTION="ESO astronomical data file organizer"
-HOMEPAGE="http://www.eso.org/sci/software/gasgano/"
+HOMEPAGE="https://www.eso.org/sci/software/gasgano.html"
 SRC_URI="ftp://ftp.eso.org/pub/dfs/${PN}/${P}.tar.gz
-	doc? ( http://www.eso.org/sci/software/gasgano/${PDOC}.pdf )"
+	doc? ( https://www.eso.org/sci/software/gasgano/${PDOC}.pdf )"
 
 LICENSE="Apache-1.1"
 SLOT="0"
