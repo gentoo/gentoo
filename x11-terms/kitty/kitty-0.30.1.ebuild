@@ -16,7 +16,7 @@ else
 		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
 	"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Fast, feature-rich, GPU-based terminal"
