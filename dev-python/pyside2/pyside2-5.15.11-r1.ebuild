@@ -40,7 +40,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="
 	3d charts +concurrent datavis designer gles2-only +gui help location
-	multimedia +network positioning +printsupport qml quick script scripttools
+	multimedia +network positioning +printsupport qml quick
 	scxml sensors speech +sql svg test +testlib webchannel webengine websockets
 	+widgets +x11extras xml xmlpatterns
 "
@@ -62,7 +62,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	printsupport? ( gui widgets )
 	qml? ( gui network )
 	quick? ( gui network qml widgets network )
-	scripttools? ( gui script widgets )
 	speech? ( multimedia )
 	sql? ( widgets )
 	svg? ( widgets )
@@ -105,7 +104,6 @@ RDEPEND="${PYTHON_DEPS}
 		=dev-qt/qtdeclarative-${QT_PV}[widgets?]
 		=dev-qt/qtquickcontrols2-${QT_PV}[widgets?]
 	)
-	script? ( =dev-qt/qtscript-${QT_PV}[scripttools?] )
 	scxml? ( =dev-qt/qtscxml-${QT_PV} )
 	sensors? ( =dev-qt/qtsensors-${QT_PV}[qml?] )
 	speech? ( =dev-qt/qtspeech-${QT_PV} )
@@ -154,8 +152,8 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Quick=$(usex !quick)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5QuickControls2=$(usex !quick)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5QuickWidgets=$(usex !quick yes $(usex !widgets))
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Script=$(usex !script)
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5ScriptTools=$(usex !scripttools)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Script=yes
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5ScriptTools=yes
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Scxml=$(usex !scxml)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Sensors=$(usex !sensors)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5TextToSpeech=$(usex !speech)

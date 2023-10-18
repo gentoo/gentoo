@@ -25,8 +25,6 @@
 		<flag name="printsupport">Build QtPrintSupport module</flag>
 		<flag name="qml">Build QtQml module</flag>
 		<flag name="quick">Build QtQuick and QtQuickWidgets modules</flag>
-		<flag name="script">Build QtScript module</flag>
-		<flag name="scripttools">Build QtScriptTools module</flag>
 		<flag name="scxml">Build QtScxml module</flag>
 		<flag name="sensors">Build QtSensors module</flag>
 		<flag name="speech">Build QtTextToSpeech module</flag>
