@@ -5,6 +5,9 @@
 	<email>java@gentoo.org</email>
 	<name>Java</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">apache/commons-codec</remote-id>
+</upstream>
 
 <longdescription>
 Codec was formed as an attempt to focus development effort on one
