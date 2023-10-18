@@ -66,10 +66,11 @@ src_configure() {
 		--runstatedir="${EPREFIX}"/run
 		$(use_enable systemd)
 		$(use_with atm)
-		$(use_with pam)
+		"$(use_with pam pam "${SYSROOT}/usr/")"
 		$(use_with activefilter pcap)
 		$(use_with gtk)
 		--enable-cbcp
+		--with-openssl="${SYSROOT}/usr/"
 	)
 	econf "${args[@]}"
 }
