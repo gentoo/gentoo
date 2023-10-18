@@ -35,8 +35,12 @@ RDEPEND="${DEPEND}
 	>=dev-libs/roct-thunk-interface-5"
 
 PATCHES=(
-	"${FILESDIR}/hip-5.7.0-install.patch"
-	)
+	"${FILESDIR}/${PN}-5.7.0-install.patch"
+	"${FILESDIR}/${PN}-5.7.1-fix-unaligned-access.patch"
+	"${FILESDIR}/${PN}-5.7.1-exec-stack.patch"
+	"${FILESDIR}/${PN}-5.7.1-disable-stack-protector.patch"
+	"${FILESDIR}/${PN}-5.7.1-no_asan_doc.patch"
+)
 
 S="${WORKDIR}/clr-rocm-${PV}/"
 
@@ -72,7 +76,6 @@ src_compile() {
 }
 
 src_install() {
-
 	cmake_src_install
 
 	rm "${ED}/usr/include/hip/hcc_detail" || die
