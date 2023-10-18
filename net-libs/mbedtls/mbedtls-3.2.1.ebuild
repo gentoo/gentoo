@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit cmake multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
-HOMEPAGE="https://tls.mbed.org/"
-SRC_URI="https://github.com/ARMmbed/mbedtls/archive/${P}.tar.gz"
+HOMEPAGE="https://www.trustedfirmware.org/projects/mbed-tls/"
+SRC_URI="https://github.com/Mbed-TLS/mbedtls/archive/${P}.tar.gz"
 S=${WORKDIR}/${PN}-${P}
 
 LICENSE="Apache-2.0"
