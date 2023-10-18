@@ -77,6 +77,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/PyQt-builder-1.15[${PYTHON_USEDEP}]
+	>=dev-python/sip-6.7.12[${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}
 	dbus? ( virtual/pkgconfig )
 "
