@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="
 	default-compiler-rt default-libcxx default-lld llvm-libunwind
-	hardened stricter
+	hardened
 "
 
 PDEPEND="
@@ -199,28 +199,6 @@ src_install() {
 		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die
 			# Options below are conditional on USE=hardened.
 			-Wl,-z,now
-		EOF
-	fi
-
-	if use stricter; then
-		newins - gentoo-stricter.cfg <<-EOF
-			# This file increases the strictness of older clang versions
-			# to match the newest upstream version.
-
-			# clang-16 defaults
-			-Werror=implicit-function-declaration
-			-Werror=implicit-int
-			-Werror=incompatible-function-pointer-types
-
-			# constructs banned by C2x
-			-Werror=deprecated-non-prototype
-
-			# deprecated but large blast radius
-			#-Werror=strict-prototypes
-		EOF
-
-		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
-			@gentoo-stricter.cfg
 		EOF
 	fi
 
