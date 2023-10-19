@@ -248,7 +248,9 @@ multilib_src_install() {
 		mkdir "${ED}"/usr || die
 	fi
 
-	emake INSTALL_PREFIX="${D}" install
+	# Only -j1 is supported for the install targets:
+	# https://github.com/openssl/openssl/issues/21999#issuecomment-1771150305
+	emake INSTALL_PREFIX="${D}" -j1 install
 
 	# This is crappy in that the static archives are still built even
 	# when USE=static-libs.  But this is due to a failing in the openssl
