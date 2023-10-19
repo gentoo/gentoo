@@ -232,7 +232,7 @@ sys-apps/flashrom -atahpt -atapromise -atavia -drkaiser -gfxnvidia -internal -it
 # clisp is keyworded on x86
 app-text/texlive-core -xindy
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-26)
 # static-pie works on x86, #719444
 sys-libs/glibc -static-pie
 
@@ -241,7 +241,7 @@ sys-libs/glibc -static-pie
 mail-client/thunderbird -eme-free
 www-client/firefox -eme-free
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-04)
 # zfs is not keyworded on x86
 dev-util/schroot zfs
 
@@ -385,7 +385,7 @@ www-client/vivaldi-snapshot widevine
 # mask revdeps of xen that imply a hypervisor in arch x86
 app-emulation/libvirt xen
 
-# Brian Evans <grknight@gentoo.org (2015-09-14)
+# Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches
 >=dev-db/mariadb-10.1.0 -galera
 
@@ -402,7 +402,7 @@ media-libs/libbluray -bdplus
 # sys-fs/zfs not keyworded on x86
 sys-cluster/ceph zfs
 
-# Lars Wendler <polynomial-c@gentoo.org (2014-04-23)
+# Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
 # Works on 32bit x86
 media-sound/lmms -vst
 

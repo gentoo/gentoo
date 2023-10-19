@@ -193,7 +193,7 @@ net-mail/dovecot lz4
 # too much unkeyworded dependencies (bug #497068)
 dev-vcs/git mediawiki
 
-# Agostino Sarubbo <ago@gentoo.org< (2013-04-10)
+# Agostino Sarubbo <ago@gentoo.org> (2013-04-10)
 # It requires too much unstable dep.
 x11-libs/gtk+ colord
 

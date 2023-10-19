@@ -176,7 +176,7 @@ lxqt-base/lxqt-meta archiver
 # no keywords
 dev-python/pbr test
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-04)
 # zfs is not keyworded on arm
 dev-util/schroot zfs
 

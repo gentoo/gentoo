@@ -338,7 +338,7 @@ media-video/ffmpeg-chromium mmal
 media-video/mpv mmal
 net-misc/moonlight mmal
 
-# Brian Evans <grknight@gentoo.org (2015-09-14)
+# Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 mroonga galera
 

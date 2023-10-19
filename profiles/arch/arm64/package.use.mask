@@ -163,7 +163,7 @@ sys-libs/compiler-rt-sanitizers -gwp-asan -shadowcallstack
 sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray
 >=sys-libs/compiler-rt-sanitizers-16 -orc
 
-# Roy Bamford <neddyseagoon@gentoo.org< (2020-12-07)
+# Roy Bamford <neddyseagoon@gentoo.org> (2020-12-07)
 # media-libs/liblastfm fails to build with tests Bug #758896
 media-sound/clementine lastfm
 
@@ -222,7 +222,7 @@ media-gfx/inkscape dia
 # Mask until 'app-arch/lxqt-archiver' is keyworded.
 lxqt-base/lxqt-meta archiver
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-26)
 # static-pie works on arm64, #719444
 sys-libs/glibc -static-pie
 
