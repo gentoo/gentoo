@@ -488,7 +488,8 @@ java-pkg-simple_src_install() {
 # It will compile test classes from test sources using ejavac and perform tests
 # with frameworks that are defined in ${JAVA_TESTING_FRAMEWORKS}.
 # test-classes compiled with alternative compilers like groovyc need to be placed
-# in the "generated-test" directory.
+# in the "generated-test" directory as content of this directory is preserved,
+# whereas content of target/test-classes is removed.
 java-pkg-simple_src_test() {
 	local test_sources=test_sources.lst classes=target/test-classes moduleinfo
 	local tests_to_run classpath
