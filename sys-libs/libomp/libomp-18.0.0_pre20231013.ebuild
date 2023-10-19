@@ -12,7 +12,6 @@ HOMEPAGE="https://openmp.llvm.org"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
-KEYWORDS=""
 IUSE="
 	+debug gdb-plugin hwloc offload ompt test
 	llvm_targets_AMDGPU llvm_targets_NVPTX
