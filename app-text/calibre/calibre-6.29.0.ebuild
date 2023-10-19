@@ -35,9 +35,9 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64"
 SLOT="0"
-IUSE="+font-subsetting ios speech test +udisks"
+IUSE="+font-subsetting ios speech +system-mathjax test +udisks"
 
 RESTRICT="!test? ( test )"
 
@@ -96,6 +96,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=app-pda/libimobiledevice-1.2.0
 	)
 	speech? ( $(python_gen_cond_dep 'app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]') )
+	system-mathjax? ( >=dev-libs/mathjax-3 )
 	udisks? ( virtual/libudev )"
 RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )"
@@ -107,6 +108,7 @@ BDEPEND="$(python_gen_cond_dep '
 		>=dev-python/sip-5[${PYTHON_USEDEP}]
 	')
 	virtual/pkgconfig
+	system-mathjax? ( dev-lang/rapydscript-ng )
 	verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )
 "
 
@@ -169,6 +171,10 @@ src_compile() {
 	edo ${EPYTHON} setup.py liberation_fonts \
 		--path-to-liberation_fonts "${EPREFIX}"/usr/share/fonts/liberation-fonts \
 		--system-liberation_fonts
+	if use system-mathjax; then
+		edo ${EPYTHON} setup.py mathjax --path-to-mathjax "${EPREFIX}"/usr/share/mathjax --system-mathjax
+		edo ${EPYTHON} setup.py rapydscript
+	fi
 }
 
 src_test() {
