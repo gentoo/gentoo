@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.0-install.patch"
-	"${FILESDIR}/${PN}-5.7.1-fix-unaligned-access.patch"
+	"${FILESDIR}/${PN}-5.7.0-set-correct-alignement.patch"
 	"${FILESDIR}/${PN}-5.7.1-exec-stack.patch"
 	"${FILESDIR}/${PN}-5.7.1-disable-stack-protector.patch"
 	"${FILESDIR}/${PN}-5.7.1-no_asan_doc.patch"

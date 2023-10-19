@@ -1,0 +1,30 @@
+hip clr 5.7.0 sets alignement for parameters to 16, but uses _mm512_stream_si512
+for AVX512 builds, causing random crashes in kernel loaders (affects rocBLAS, miopen, etc.)
+
+Bug: https://bugs.gentoo.org/915969
+Upstream bug: https://github.com/ROCm-Developer-Tools/clr/issues/18
+--- a/rocclr/utils/flags.hpp
++++ b/rocclr/utils/flags.hpp
+@@ -21,6 +21,13 @@
+ #ifndef FLAGS_HPP_
+ #define FLAGS_HPP_
+ 
++#if defined(__AVX512F__)
++#define NATIVE_ALIGNEMENT_SIZE 64
++#elif defined(__AVX__)
++#define NATIVE_ALIGNEMENT_SIZE 32
++#else
++#define NATIVE_ALIGNEMENT_SIZE 16
++#endif
+ 
+ #define RUNTIME_FLAGS(debug,release,release_on_stg)                           \
+                                                                               \
+@@ -52,7 +59,7 @@ debug(size_t, CPU_MEMORY_GUARD_PAGE_SIZE, 64,                                 \
+         "Size in KB of CPU memory guard page")                                \
+ debug(size_t, CPU_MEMORY_ALIGNMENT_SIZE, 256,                                 \
+         "Size in bytes for the default alignment for guarded memory on CPU")  \
+-debug(size_t, PARAMETERS_MIN_ALIGNMENT, 16,                                   \
++debug(size_t, PARAMETERS_MIN_ALIGNMENT, NATIVE_ALIGNEMENT_SIZE,               \
+         "Minimum alignment required for the abstract parameters stack")       \
+ debug(size_t, MEMOBJ_BASE_ADDR_ALIGN, 4*Ki,                                   \
+         "Alignment of the base address of any allocate memory object")        \
