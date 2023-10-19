@@ -182,7 +182,7 @@ pkg_postinst() {
 	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
 	optfeature "ipv6 support" net-dns/dnsmasq[ipv6]
-	optfeature "full lxd-migrate support"
+	optfeature "full lxd-migrate support" net-misc/rsync
 	optfeature "lvm2 storage backend" sys-fs/lvm2
 	optfeature "zfs storage backend" sys-fs/zfs
 	elog
