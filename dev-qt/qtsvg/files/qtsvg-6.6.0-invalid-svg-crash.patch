@@ -1,3 +1,7 @@
+Update:
+  What this fixes was later assigned CVE-2023-45872
+  https://lists.qt-project.org/pipermail/development/2023-October/044577.html
+
 https://bugs.gentoo.org/915582
 https://bugreports.qt.io/browse/QTBUG-117944
 https://codereview.qt-project.org/c/qt/qtsvg/+/510692
