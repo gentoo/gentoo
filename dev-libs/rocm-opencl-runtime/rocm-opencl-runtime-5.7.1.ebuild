@@ -38,7 +38,7 @@ BDEPEND=">=dev-util/rocm-cmake-5.3
 src_unpack () {
 if [[ ${PV} == "9999" ]]; then
 		git-r3_fetch
-		git-r3_checkout
+OB		git-r3_checkout
 		git-r3_fetch "${EGIT_CLR_REPO_URI}"
 		git-r3_checkout "${EGIT_CLR_REPO_URI}" "${CLR_S}"
 	else
@@ -55,7 +55,7 @@ src_configure() {
 		-DROCM_PATH="${EPREFIX}/usr"
 		-DBUILD_TESTS=$(usex test ON OFF)
 		-DEMU_ENV=ON
-		-DBUILD_ICD=OFF
+		-DBUILD_ICD=ON
 		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DCLR_BUILD_OCL=on
 	)
