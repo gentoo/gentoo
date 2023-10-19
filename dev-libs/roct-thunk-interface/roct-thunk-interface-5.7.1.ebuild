@@ -26,7 +26,7 @@ BDEPEND="x11-libs/libdrm[video_cards_amdgpu]"
 
 CMAKE_BUILD_TYPE=Release
 
-PATCHES=( "${FILESDIR}/${P}-functions.patch" )
+PATCHES=( "${FILESDIR}/${PN}-5.7.0-functions.patch" )
 
 src_prepare() {
 	sed -e "s:get_version ( \"1.0.0\" ):get_version ( \"${PV}\" ):" -i CMakeLists.txt || die
