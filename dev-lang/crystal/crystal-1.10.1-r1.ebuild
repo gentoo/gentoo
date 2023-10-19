@@ -3,22 +3,17 @@
 
 EAPI=8
 
-BV="${PV}-1"
-BV_AMD64="${BV}-linux-x86_64"
-LLVM_MAX_SLOT=17
+BV=${PV}-1
+BV_AMD64=${BV}-linux-x86_64
+LLVM_MAX_SLOT=16
 
 inherit bash-completion-r1 llvm multiprocessing toolchain-funcs
 
 DESCRIPTION="The Crystal Programming Language"
 HOMEPAGE="https://crystal-lang.org/
 	https://github.com/crystal-lang/crystal/"
-SRC_URI="
-	https://github.com/crystal-lang/crystal/archive/${PV}.tar.gz
-		-> ${P}.tar.gz
-	amd64? (
-		https://github.com/crystal-lang/crystal/releases/download/${BV/-*}/crystal-${BV_AMD64}.tar.gz
-	)
-"
+SRC_URI="https://github.com/crystal-lang/crystal/archive/${PV}.tar.gz -> ${P}.tar.gz
+	amd64? ( https://github.com/crystal-lang/crystal/releases/download/${BV/-*}/crystal-${BV_AMD64}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -33,7 +28,7 @@ DEPEND="
 	dev-libs/gmp:=
 	dev-libs/libatomic_ops:=
 	dev-libs/libevent:=
-	dev-libs/libpcre:=
+	dev-libs/libpcre2:=[unicode]
 	dev-libs/pcl:=
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=
 	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
@@ -46,9 +41,9 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.7.2-extra-spec-flags.patch"
-	"${FILESDIR}/${PN}-0.27.0-gentoo-tests-long-unix.patch"
-	"${FILESDIR}/${PN}-0.27.0-gentoo-tests-long-unix-2.patch"
+	"${FILESDIR}"/${PN}-1.7.2-extra-spec-flags.patch
+	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-long-unix.patch
+	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-long-unix-2.patch
 )
 
 src_configure() {
