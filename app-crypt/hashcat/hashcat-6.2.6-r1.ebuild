@@ -31,8 +31,13 @@ DEPEND="app-arch/lzma
 			virtual/opencl
 		)
 	)
-	!video_cards_nvidia? ( virtual/opencl )"
+	!video_cards_nvidia? (
+		virtual/opencl
+		dev-util/opencl-headers
+	)"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/hashcat-hip.patch" )
 
 src_prepare() {
 	# Remove bundled stuff
