@@ -1366,7 +1366,8 @@ epytest() {
 		# not to have DISPLAY at all, causing crashes sometimes
 		# and causing us to miss missing virtualx usage
 		-p no:xvfb
-		# tavern is intrusive and breaks test suites of various packages
+		# intrusive packages that break random test suites
+		-p no:plus
 		-p no:tavern
 	)
 	local x
