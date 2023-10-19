@@ -13,7 +13,8 @@ else
 	HASH_PCSX2_PATCHES=
 	SRC_URI="
 		https://github.com/PCSX2/pcsx2_patches/archive/${HASH_PCSX2_PATCHES}.tar.gz
-			-> ${P}.tar.gz"
+			-> ${P}.tar.gz
+	"
 	S=${WORKDIR}/${PN}-${HASH_PCSX2_PATCHES}
 	KEYWORDS="~amd64"
 fi
