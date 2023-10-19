@@ -10,7 +10,6 @@ HOMEPAGE="https://clang.llvm.org/"
 
 LICENSE="metapackage"
 SLOT="${PV%%.*}"
-KEYWORDS=""
 IUSE="+compiler-rt libcxx openmp +sanitize"
 REQUIRED_USE="sanitize? ( compiler-rt )"
 
