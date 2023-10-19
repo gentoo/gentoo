@@ -66,7 +66,6 @@ CDEPEND="
 		>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,wayland?,widgets,X?]
 		>=dev-qt/qtimageformats-6.5:6
 		>=dev-qt/qtsvg-6.5:6
-		wayland? ( >=dev-qt/qtwayland-6.5:6[compositor] )
 		webkit? (
 			>=dev-qt/qtdeclarative-6.5:6
 			>=dev-qt/qtwayland-6.5:6[compositor]
