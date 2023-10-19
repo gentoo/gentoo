@@ -9,7 +9,6 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="
 	sys-devel/llvm:${PV}[binutils-plugin]
