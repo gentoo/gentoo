@@ -287,12 +287,12 @@ CRATES="
 	toml@0.7.8
 	toml_datetime@0.6.3
 	toml_edit@0.19.15
-	tracing-attributes@0.1.26
-	tracing-core@0.1.31
+	tracing-attributes@0.1.27
+	tracing-core@0.1.32
 	tracing-indicatif@0.3.5
 	tracing-log@0.1.3
 	tracing-subscriber@0.3.17
-	tracing@0.1.37
+	tracing@0.1.39
 	typed-arena@2.0.2
 	unic-char-property@0.9.0
 	unic-char-range@0.9.0
