@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 RDEPEND="
 	dev-perl/Config-IniFiles
 	dev-perl/DBD-mysql
+	dev-perl/File-Copy-Recursive
 	dev-perl/TimeDate
 	sys-fs/lvm2
 	virtual/mysql
