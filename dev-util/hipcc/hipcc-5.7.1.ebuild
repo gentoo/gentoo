@@ -18,4 +18,4 @@ RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/HIPCC-rocm-${PV}
 
-DEPEND="!!<dev-util/hip-5.7"
+RDEPEND="!<dev-util/hip-5.7"
