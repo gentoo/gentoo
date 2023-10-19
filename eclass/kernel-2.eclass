@@ -304,7 +304,6 @@ RESTRICT="binchecks strip"
 # set LINUX_HOSTCFLAGS if not already set
 : "${LINUX_HOSTCFLAGS:="-Wall -Wstrict-prototypes -Os -fomit-frame-pointer -I${S}/include"}"
 
-
 # @FUNCTION: debug-print-kernel2-variables
 # @USAGE:
 # @DESCRIPTION:
@@ -665,7 +664,7 @@ if [[ ${ETYPE} == sources ]]; then
 		virtual/pkgconfig
 	)"
 
-	SLOT="${PVR}"
+	SLOT=${SLOT:=${PVR}}
 	DESCRIPTION="Sources based on the Linux Kernel"
 	IUSE="symlink build"
 
