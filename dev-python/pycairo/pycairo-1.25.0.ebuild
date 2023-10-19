@@ -58,7 +58,7 @@ python_install() {
 	# we need to pass --root via install command, sigh
 	cat > "${T}/distutils-extra.cfg" <<-EOF || die
 		[install]
-		root = ${ED}
+		root = ${D}
 	EOF
 	local -x DIST_EXTRA_CONFIG=${T}/distutils-extra.cfg
 	esetup.py \
