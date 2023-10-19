@@ -65,18 +65,12 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# performance tests are unreliable by design
 		test/performance
-		# unimpoortant and problematic
+		# unimportant and problematic
 		test/test_installation.py
 		# Internet
-		test/test_repo.py::TestRepo::test_leaking_password_in_clone_logs
 		test/test_quick_doc.py::QuickDoc::test_cloned_repo_object
-		# requires which(1)
-		# https://github.com/gitpython-developers/GitPython/pull/1525
-		test/test_git.py::TestGit::test_refresh
 		# TODO
 		test/test_submodule.py::TestSubmodule::test_base_rw
-		test/test_submodule.py::TestSubmodule::test_git_submodules_and_add_sm_with_new_commit
-		test/test_submodule.py::TestSubmodule::test_list_only_valid_submodules
 		test/test_submodule.py::TestSubmodule::test_root_module
 	)
 
