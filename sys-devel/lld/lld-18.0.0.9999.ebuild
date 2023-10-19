@@ -11,7 +11,6 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-KEYWORDS=""
 IUSE="+debug test zstd"
 RESTRICT="!test? ( test )"
 
