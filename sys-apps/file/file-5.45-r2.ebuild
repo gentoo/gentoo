@@ -60,7 +60,7 @@ QA_CONFIG_IMPL_DECL_SKIP=( makedev )
 
 PATCHES=(
 	"${FILESDIR}/file-5.43-seccomp-fstatat64-musl.patch" #789336, not upstream yet
-	"${FILESDIR}/file-5.43-portage-sandbox.patch" #889046
+	"${FILESDIR}/file-5.45-seccomp-sandbox.patch"
 	"${FILESDIR}/${P}-32-bit-time_t.patch"
 	"${FILESDIR}/${P}-32-bit-time_t-deux.patch"
 	"${FILESDIR}/${P}-weak-magic-shell.patch" #908401
