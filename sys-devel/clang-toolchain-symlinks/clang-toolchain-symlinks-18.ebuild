@@ -7,12 +7,10 @@ inherit multilib
 
 DESCRIPTION="Symlinks to use Clang on GCC-free system"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:LLVM"
-SRC_URI=""
 S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS=""
 IUSE="gcc-symlinks multilib-symlinks +native-symlinks"
 
 # Blocker for bug #872416
