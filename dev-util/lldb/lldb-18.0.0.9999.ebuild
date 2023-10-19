@@ -26,9 +26,6 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	python? (
-		$(python_gen_cond_dep '
-			dev-python/six[${PYTHON_USEDEP}]
-		')
 		${PYTHON_DEPS}
 	)
 "
@@ -37,9 +34,6 @@ BDEPEND="
 	>=dev-util/cmake-3.16
 	python? (
 		>=dev-lang/swig-3.0.11
-		$(python_gen_cond_dep '
-			dev-python/six[${PYTHON_USEDEP}]
-		')
 	)
 	test? (
 		$(python_gen_cond_dep "
