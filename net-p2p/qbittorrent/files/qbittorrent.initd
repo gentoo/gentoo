@@ -14,7 +14,7 @@ command="/usr/bin/qbittorrent-nox"
 command_args="${QBITTORRENT_OPTS}"
 pidfile="/run/${RC_SVCNAME}.pid"
 command_background="yes"
-command_user="${QBITTORRENT_USER}:${QBITTORRENT_USER}"
+command_user="${QBITTORRENT_USER}:${QBITTORRENT_GROUP}"
 umask="${QBITTORRENT_UMASK}"
 start_stop_daemon_args="--ionice ${QBITTORRENT_IONICE} --nicelevel ${QBITTORRENT_NICE}"
 
