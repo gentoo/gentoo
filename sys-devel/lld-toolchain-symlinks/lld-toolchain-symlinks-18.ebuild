@@ -7,12 +7,10 @@ inherit multilib
 
 DESCRIPTION="Symlinks to use LLD on binutils-free system"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:LLVM"
-SRC_URI=""
 S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS=""
 IUSE="multilib-symlinks +native-symlinks"
 
 RDEPEND="
