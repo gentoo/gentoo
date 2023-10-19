@@ -7,7 +7,6 @@ inherit multilib
 
 DESCRIPTION="Symlinks to use LLVM on binutils-free system"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:LLVM"
-SRC_URI=""
 S=${WORKDIR}
 
 LICENSE="public-domain"
