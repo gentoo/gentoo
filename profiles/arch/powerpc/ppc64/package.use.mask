@@ -145,7 +145,7 @@ media-video/ffmpeg -rav1e
 # media-libs/libplacebo is keyworded
 media-video/vlc -libplacebo
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-06-07)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-07)
 # works on ppc64
 app-emulation/qemu -spice -usbredir
 
@@ -208,7 +208,7 @@ dev-java/ant-apache-bsf python
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Michael Sterrett <mr_bones_@gentoo.org (2013-11-12)
+# Michael Sterrett <mr_bones_@gentoo.org> (2013-11-12)
 # Mask openmedia use flag because the content generation tools
 # are missing keywords.
 games-simulation/openttd openmedia

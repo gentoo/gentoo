@@ -58,7 +58,7 @@ app-containers/docker-buildx
 # openjfx:11 does not work on ppc64be
 dev-java/openjfx:11
 
-# Georgy Yakovlev <gyakovlev@gentoo.org) (2020-08-27)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-27)
 # big-endian ppc64 configs are not provided
 # however users can unmask and use savedconfig feature
 sys-kernel/gentoo-kernel

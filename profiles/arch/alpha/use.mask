@@ -181,7 +181,7 @@ topal
 # We don't have sys-devel/llvm
 llvm
 
-# Matt Turner <mattst88@gentoo.org (2012-05-27)
+# Matt Turner <mattst88@gentoo.org> (2012-05-27)
 # net-misc/connman is not keyworded
 connman
 

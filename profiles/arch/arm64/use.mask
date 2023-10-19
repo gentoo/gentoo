@@ -44,7 +44,7 @@
 -python_targets_pypy3
 -python_single_target_pypy3
 
-# David Seifert <soap@gentoo.org (2020-05-17)
+# David Seifert <soap@gentoo.org> (2020-05-17)
 # Mono is hopelessly broken on arm64
 mono
 

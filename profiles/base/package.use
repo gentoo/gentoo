@@ -9,7 +9,7 @@
 # Default to lua 5.4 (upstream requires 5.2 or higher)
 >=app-editors/vis-0.7-r1 lua_single_target_lua5-4
 
-# Patrick McLean <chutzpah@gentoo.org) (2022-05-04)
+# Patrick McLean <chutzpah@gentoo.org> (2022-05-04)
 # Default to lua 5.4 (upstream requires 5.3 or higher)
 >=sys-cluster/ceph-17.2.0 lua_single_target_lua5-4
 

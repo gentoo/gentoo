@@ -212,7 +212,7 @@ sys-apps/flashrom -atahpt -atapromise -atavia -drkaiser -gfxnvidia -internal -it
 # clisp is keyworded on amd64
 app-text/texlive-core -xindy
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-26)
 # static-pie works on amd64, #719444
 sys-libs/glibc -static-pie
 
@@ -355,7 +355,7 @@ dev-java/icedtea -shenandoah
 # This flag only has meaning on amd64
 sys-boot/grub:2 -grub_platforms_xen-32
 
-# Brian Evans <grknight@gentoo.org (2015-09-14)
+# Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches
 >=dev-db/mariadb-10.1.0 -mroonga -galera
 

@@ -237,7 +237,7 @@ smi
 # We don't have sys-devel/llvm
 llvm
 
-# Matt Turner <mattst88@gentoo.org (2011-06-14)
+# Matt Turner <mattst88@gentoo.org> (2011-06-14)
 # pdfannotextractor needs java
 pdfannotextractor
 

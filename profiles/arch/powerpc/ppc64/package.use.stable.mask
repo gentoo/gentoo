@@ -47,7 +47,7 @@ sys-cluster/openmpi openmpi_rm_pbs
 # and there are many dependencies to go through before there are
 app-text/htmltidy test
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2021-06-25)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-25)
 # ceph is not going to be stable on ppc64
 # https://bugs.gentoo.org/798744
 sys-block/tgt rbd

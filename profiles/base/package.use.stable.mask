@@ -187,7 +187,7 @@ dev-python/matplotlib doc
 # Dependencies have no stable keyword
 app-backup/backup-manager s3
 
-# Brian Evans <grknight@gentoo.org (2017-11-06)
+# Brian Evans <grknight@gentoo.org> (2017-11-06)
 # Requires stable phpunit
 dev-php/PEAR-Text_Password test
 
@@ -200,7 +200,7 @@ www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
 
-# Michael Palimaka <kensington@gentoo.org) (2017-08-11)
+# Michael Palimaka <kensington@gentoo.org> (2017-08-11)
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
 

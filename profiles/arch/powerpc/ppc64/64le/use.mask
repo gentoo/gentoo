@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
@@ -16,7 +16,7 @@
 # Prebuilt kernels are supported here.
 -dist-kernel
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-10-16)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-16)
 # dev-qt/qtwebengine works on ppc64le
 -webengine
 
@@ -24,7 +24,7 @@
 # clang is keyworded and works on ppc64
 -clang
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-21)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
 # works on ppc64le
 -vaapi
 
