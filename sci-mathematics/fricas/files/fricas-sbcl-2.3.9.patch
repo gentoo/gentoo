@@ -1,12 +1,11 @@
 diff --git a/src/lisp/num_gmp.lisp b/src/lisp/num_gmp.lisp
-index b58001e..9538e3c 100644
+index b58001e0b..f4a022ad4 100644
 --- a/src/lisp/num_gmp.lisp
 +++ b/src/lisp/num_gmp.lisp
-@@ -549,6 +549,20 @@
- ;;; (gmp-bignum-isqrt (expt 10 50))
- ;;; (gmp-bignum-isqrt (expt 2 127))
- #+:sbcl
-+
+@@ -646,14 +646,27 @@
+     (setf (symbol-function 'orig-isqrt)
+           (symbol-function 'common-lisp:isqrt)))
+
 +(defmacro negate_bignum(x)
 +    (let ((sym2
 +          (find-symbol "NEGATE-BIGNUM-NOT-FULLY-NORMALIZED" "SB-BIGNUM")))
@@ -20,10 +19,9 @@ index b58001e..9538e3c 100644
 +    )
 +)
 +
- (defun gmp-bignum-isqrt (x)
-   (let* ((len-x (sb-bignum::%bignum-length x))
-          (len-res (ceiling (+ 1 len-x) 2))
-@@ -652,8 +666,8 @@
+ (defun gmp-multiply-bignums0 (a b)
+   ;;; (declare (type bignum-type a b))
+   (let* ((a-plusp (sb-bignum::%bignum-0-or-plusp a
                    (sb-bignum::%bignum-length a)))
           (b-plusp (sb-bignum::%bignum-0-or-plusp b
                    (sb-bignum::%bignum-length b)))
@@ -34,7 +32,7 @@ index b58001e..9538e3c 100644
           (len-a (sb-bignum::%bignum-length a))
           (len-b (sb-bignum::%bignum-length b))
           (len-res (+ len-a len-b))
-@@ -697,10 +711,10 @@
+@@ -697,10 +710,10 @@
    (let* (
      (nx (if (sb-bignum::%bignum-0-or-plusp x (sb-bignum::%bignum-length x))
              (sb-bignum::copy-bignum x)
@@ -47,7 +45,7 @@ index b58001e..9538e3c 100644
      (xl (sb-bignum::%bignum-length nx))
      (yl (sb-bignum::%bignum-length ny))
      (rl (if (< xl yl) xl yl))
-@@ -735,9 +749,9 @@
+@@ -735,9 +748,9 @@
      (x-plusp (sb-bignum::%bignum-0-or-plusp x (sb-bignum::%bignum-length x)))
      (y-plusp (sb-bignum::%bignum-0-or-plusp y (sb-bignum::%bignum-length y)))
      (nx (if x-plusp x
