@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2023-10-19)
+# Pretest versions, masked for testing.
+<app-editors/emacs-29.1.9999:29-vcs
+
 # Sam James <sam@gentoo.org> (2023-10-16)
 # Part of Perl core and better maintained there - the version on CPAN is out of
 # date and incompatible with Perl 5.38. No reverse dependencies.
