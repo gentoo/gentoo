@@ -86,7 +86,6 @@ media-video/obs-studio browser
 
 # Joonas Niilola <juippis@gentoo.org> (2021-06-23)
 # Pandoc is a required dep, and not keyworded.
-sys-apps/exa man
 sys-apps/eza man
 
 # Matt Turner <mattst88@gentoo.org> (2021-06-10)
