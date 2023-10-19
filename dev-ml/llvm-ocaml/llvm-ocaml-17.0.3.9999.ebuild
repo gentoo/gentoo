@@ -11,7 +11,6 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS=""
 IUSE="+debug test"
 RESTRICT="!test? ( test )"
 
