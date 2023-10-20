@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	# Avoid sresolv tests since they make too many assumptions about the
+	# networking environment, bug 915904
+	sed -i -e '/TESTS/ s/run_test_sresolv//' libsofia-sip-ua/sresolv/Makefile.am
+
 	default
 	eautoreconf
 }
