@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 # Switch back to bcprov:0 once pdftk updates its bcprov dependency.
 CP_DEPEND="
