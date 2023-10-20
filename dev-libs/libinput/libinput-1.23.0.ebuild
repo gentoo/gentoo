@@ -82,7 +82,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "measure and replay tools" dev-python/python-libevdev
+	optfeature "measure and replay tools" dev-python/libevdev
 	udev_reload
 }
 

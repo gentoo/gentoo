@@ -27,7 +27,7 @@ BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep '
-			dev-python/python-libevdev[${PYTHON_USEDEP}]
+			dev-python/libevdev[${PYTHON_USEDEP}]
 			dev-python/pyudev[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
@@ -35,7 +35,7 @@ BDEPEND="
 "
 
 python_check_deps() {
-	python_has_version "dev-python/python-libevdev[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/libevdev[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pyudev[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
