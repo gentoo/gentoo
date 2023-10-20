@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-20)
+# The test suite is broken and does not fail correctly.  No maintainer.
+# No revdeps.
+# Removal on 2023-11-19.  Bug #916047.
+dev-python/pydotplus
+
 # Joonas Niilola <juippis@gentoo.org> (2023-10-20)
 # Upstream is abandoned with no updates for 2 years. Spawned many forks
 # and there are many alternatives to choose from available. To list a
