@@ -6,11 +6,13 @@ EAPI=7
 PYTHON_COMPAT=( python3_{9..10} pypy3 )
 inherit distutils-r1
 
+MY_P=python-musicbrainzngs-${PV}
 DESCRIPTION="Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices"
 HOMEPAGE="https://github.com/alastair/python-musicbrainzngs"
 SRC_URI="
 	https://github.com/alastair/python-musicbrainzngs/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz"
+		-> ${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD-2 ISC"
 SLOT="0"
