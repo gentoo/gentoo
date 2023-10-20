@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Checks PyPI validity of reStructuredText"
-HOMEPAGE="https://pypi.org/project/restructuredtext-lint/"
+HOMEPAGE="
+	https://github.com/twolfson/restructuredtext-lint/
+	https://pypi.org/project/restructuredtext-lint/
+"
 
 LICENSE="Unlicense"
 SLOT="0"
