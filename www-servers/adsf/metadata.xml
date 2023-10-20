@@ -5,6 +5,7 @@
 		<email>graaff@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ddfreyne/adsf</remote-id>
+		<remote-id type="github">denisdefreyne/adsf</remote-id>
+		<remote-id type="rubygems">adsf</remote-id>
 	</upstream>
 </pkgmetadata>
