@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit optfeature distutils-r1
 
 DESCRIPTION="Neofetch with LGBTQ+ pride flags!"
