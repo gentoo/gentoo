@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
+MY_P=python-libevdev-${PV}
 DESCRIPTION="Python wrappers for the libevdev library"
 HOMEPAGE="
 	https://gitlab.freedesktop.org/libevdev/python-libevdev/
 	https://pypi.org/project/libevdev/
 "
 SRC_URI="
-	https://gitlab.freedesktop.org/libevdev/${PN}/-/archive/${PV}/${P}.tar.bz2
+	https://gitlab.freedesktop.org/libevdev/python-libevdev/-/archive/${PV}/${MY_P}.tar.bz2
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
