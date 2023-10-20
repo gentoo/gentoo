@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="A small Python module to parse various kinds of time expressions"
-HOMEPAGE="https://github.com/wroberts/pytimeparse https://pypi.org/project/pytimeparse/"
+HOMEPAGE="
+	https://github.com/wroberts/pytimeparse/
+	https://pypi.org/project/pytimeparse/
+"
 
 LICENSE="MIT"
 SLOT="0"
