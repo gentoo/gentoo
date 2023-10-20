@@ -93,7 +93,6 @@ if [[ ${XORG_MODULE} == auto ]]; then
 		x11-misc/*|x11-themes/*) XORG_MODULE=util/    ;;
 		x11-base/*)              XORG_MODULE=xserver/ ;;
 		x11-drivers/*)           XORG_MODULE=driver/  ;;
-		x11-libs/xcb-util-*)     XORG_MODULE=xcb/     ;;
 		x11-libs/*)              XORG_MODULE=lib/     ;;
 		*)                       XORG_MODULE=         ;;
 	esac
