@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
+MY_P=python-varlink-${PV}
 DESCRIPTION="Python implementation of the Varlink protocol"
 HOMEPAGE="
 	https://github.com/varlink/python/
@@ -15,7 +16,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/varlink/python/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
 S="${WORKDIR}/python-${PV}"
 
