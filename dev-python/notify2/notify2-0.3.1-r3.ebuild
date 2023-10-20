@@ -4,25 +4,32 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 virtualx pypi
 
 DESCRIPTION="Python interface to DBus notifications"
-HOMEPAGE="https://bitbucket.org/takluyver/pynotify2"
+HOMEPAGE="
+	https://bitbucket.org/takluyver/pynotify2/
+	https://pypi.org/project/notify2/
+"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="examples"
 
-RDEPEND="dev-python/dbus-python[${PYTHON_USEDEP}]"
-BDEPEND="test? (
-	dev-python/pygobject[${PYTHON_USEDEP}]
-	sys-apps/dbus[X]
-	x11-libs/gdk-pixbuf[introspection]
-	virtual/notification-daemon
-)"
+RDEPEND="
+	dev-python/dbus-python[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		dev-python/pygobject[${PYTHON_USEDEP}]
+		sys-apps/dbus[X]
+		x11-libs/gdk-pixbuf[introspection]
+		virtual/notification-daemon
+	)
+"
 
 distutils_enable_tests unittest
 
