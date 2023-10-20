@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="${LLVM_MAJOR}"
-IUSE="+abi_x86_32 abi_x86_64 +clang +debug test"
+IUSE="+abi_x86_32 abi_x86_64 cet +clang +debug test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 DEPEND="
@@ -111,6 +111,7 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_PROFILE=OFF
 		-DCOMPILER_RT_BUILD_SANITIZERS=OFF
 		-DCOMPILER_RT_BUILD_XRAY=OFF
+		-DCOMPILER_RT_ENABLE_CET=$(usex cet)
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)

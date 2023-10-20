@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos"
-IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
+IUSE="+abi_x86_32 abi_x86_64 cet +clang debug test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 LLVM_MAX_SLOT=${SLOT%%.*}
@@ -106,6 +106,7 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_PROFILE=OFF
 		-DCOMPILER_RT_BUILD_SANITIZERS=OFF
 		-DCOMPILER_RT_BUILD_XRAY=OFF
+		-DCOMPILER_RT_ENABLE_CET=$(usex cet)
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)

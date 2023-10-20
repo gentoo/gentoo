@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv sparc x86 ~x64-macos"
-IUSE="debug static-libs test"
+IUSE="cet debug static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -77,6 +77,7 @@ multilib_src_configure() {
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/libcxx"
+			-DLIBUNWIND_ENABLE_CET=$(usex cet)
 
 			-DLIBCXXABI_LIBDIR_SUFFIX=
 			-DLIBCXXABI_ENABLE_SHARED=OFF
