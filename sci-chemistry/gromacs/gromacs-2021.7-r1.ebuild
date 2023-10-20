@@ -88,6 +88,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-2021-musl-stdint.patch"
 	"${FILESDIR}/${PN}-2021-cuda-detection.patch"
+	"${FILESDIR}/${PN}-2021-cstdint-include.patch"
 )
 
 if [[ ${PV} != *9999 ]]; then
