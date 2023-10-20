@@ -1,1 +1,2 @@
 move dev-python/python-varlink dev-python/varlink
+move dev-python/python-musicbrainzngs dev-python/musicbrainzngs
