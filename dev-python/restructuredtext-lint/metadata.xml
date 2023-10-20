@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">twolfson/restructuredtext-lint</remote-id>
 		<remote-id type="pypi">restructuredtext-lint</remote-id>
 	</upstream>
 </pkgmetadata>
