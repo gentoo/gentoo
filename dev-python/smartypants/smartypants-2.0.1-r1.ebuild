@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -28,6 +28,11 @@ distutils_enable_sphinx docs
 distutils_enable_tests unittest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/leohemsted/smartypants.py/pull/21
+		"${FILESDIR}/${P}-py312.patch"
+	)
+
 	# relevant only to upstream packaging, requires docutils
 	rm tests/test_setup.py || die
 	distutils-r1_src_prepare
