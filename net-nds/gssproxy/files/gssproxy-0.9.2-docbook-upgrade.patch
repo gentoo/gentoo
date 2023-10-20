@@ -1,0 +1,46 @@
+https://github.com/gssapi/gssproxy/commit/d4004e67cb399054c07b34517e8f0eaee83c55de
+
+From d4004e67cb399054c07b34517e8f0eaee83c55de Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20K=C5=82oczko?= <kloczek@github.com>
+Date: Fri, 1 Sep 2023 18:19:23 +0000
+Subject: [PATCH] upgrade xml DTD to 4.5
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Trival change which upgardes xml DTD version to latest stable 4.5.
+
+Signed-off-by: Tomasz Kłoczko <kloczek@github.com>
+--- a/man/gssproxy-mech.8.xml.in
++++ b/man/gssproxy-mech.8.xml.in
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
++<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.5//EN"
++"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+ <reference>
+ <title>GssProxy GSSAPI mechanism manual page</title>
+ <refentry>
+--- a/man/gssproxy.8.xml
++++ b/man/gssproxy.8.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
++<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.5//EN"
++"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+ <reference>
+ <title>GssProxy Manual pages</title>
+ <refentry>
+--- a/man/gssproxy.conf.5.xml
++++ b/man/gssproxy.conf.5.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
++<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.5//EN"
++"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+ <reference>
+ <title>GssProxy Manual pages</title>
+ <refentry>
