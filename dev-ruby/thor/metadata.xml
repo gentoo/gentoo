@@ -13,6 +13,7 @@
 		should be familiar to most Rake users.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">erikhuda/thor</remote-id>
+		<remote-id type="github">rails/thor</remote-id>
+		<remote-id type="rubygems">thor</remote-id>
 	</upstream>
 </pkgmetadata>
