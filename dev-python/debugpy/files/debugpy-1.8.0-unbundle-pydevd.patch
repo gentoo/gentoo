@@ -1,0 +1,46 @@
+diff --git a/setup.py b/setup.py
+index 0bb4f00..abfce1c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,12 +18,10 @@ del sys.path[0]
+ 
+ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
+ import debugpy
+-import debugpy._vendored
+ 
+ del sys.path[0]
+ 
+ 
+-PYDEVD_ROOT = debugpy._vendored.project_root("pydevd")
+ DEBUGBY_ROOT = os.path.dirname(os.path.abspath(debugpy.__file__))
+ 
+ 
+@@ -146,8 +144,6 @@ if __name__ == "__main__":
+         extras["platforms"] = platforms
+ 
+     cmds = versioneer.get_cmdclass()
+-    override_build(cmds)
+-    override_build_py(cmds)
+ 
+     setuptools.setup(
+         name="debugpy",
+diff --git a/src/debugpy/_vendored/force_pydevd.py b/src/debugpy/_vendored/force_pydevd.py
+index cfd8927..0cb1bca 100644
+--- a/src/debugpy/_vendored/force_pydevd.py
++++ b/src/debugpy/_vendored/force_pydevd.py
+@@ -8,15 +8,6 @@ import warnings
+ 
+ from . import check_modules, prefix_matcher, preimport, vendored
+ 
+-# Ensure that pydevd is our vendored copy.
+-_unvendored, _ = check_modules('pydevd',
+-                               prefix_matcher('pydev', '_pydev'))
+-if _unvendored:
+-    _unvendored = sorted(_unvendored.values())
+-    msg = 'incompatible copy of pydevd already imported'
+-    # raise ImportError(msg)
+-    warnings.warn(msg + ':\n {}'.format('\n  '.join(_unvendored)))
+-
+ # If debugpy logging is enabled, enable it for pydevd as well
+ if "DEBUGPY_LOG_DIR" in os.environ:
+     os.environ[str("PYDEVD_DEBUG")] = str("True")
