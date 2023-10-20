@@ -128,6 +128,8 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 
+	"${BUILD_DIR}/stage3/bin/zig" env || die "Zig compilation failed"
+
 	if use doc; then
 		cd "${BUILD_DIR}" || die
 		edo ./stage3/bin/zig build std-docs --prefix "${S}/docgen/"
