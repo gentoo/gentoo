@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-10.x-qt5.patch
 	eapply "${FILESDIR}"/${PN}-10.8-compiler-flags.patch
 	eapply "${FILESDIR}"/${PN}-10.x-qa-compiler-flags.patch
+	eapply "${FILESDIR}"/${PN}-10.x-drop-register.patch
 	eapply_user
 
 	eautoconf
