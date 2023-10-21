@@ -6,7 +6,7 @@
 # Fco. Javier Félix <web@inode64.com>
 # @AUTHOR:
 # Fco. Javier Félix <web@inode64.com>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: An eclass for build NodeJS projects
 # @DESCRIPTION:
 # An eclass providing functions to build NodeJS packages
@@ -19,7 +19,7 @@
 #       https://github.com/Tatsh/tatsh-overlay/blob/master/eclass/yarn.eclass
 
 case ${EAPI} in
-7 | 8) ;;
+8) ;;
 *) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
