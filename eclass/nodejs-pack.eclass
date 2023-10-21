@@ -11,7 +11,7 @@
 # @DESCRIPTION:
 # An eclass providing functions to build NodeJS packages
 #
-# Changelog:
+# Credits and ideas from:
 #   Initial version from:
 #       https://github.com/gentoo/gentoo/pull/930/files
 #       https://github.com/samuelbernardo/ssnb-overlay/blob/master/eclass/npm.eclass
