@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.7.0-metadata.patch"
 	"${FILESDIR}/${PN}-5.7.0-symbolizer.patch"
 	"${FILESDIR}/${PN}-5.7.1-fix-tests.patch"
+	"${FILESDIR}/${PN}-5.7.1-correct-license-install-dir.patch"
 )
 
 DESCRIPTION="Radeon Open Compute Code Object Manager"
