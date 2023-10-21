@@ -11,7 +11,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit bash-completion-r1 distutils-r1 multiprocessing optfeature
 
 DESCRIPTION="Check websites for broken links"
-HOMEPAGE="https://github.com/linkcheck/linkchecker"
+HOMEPAGE="https://github.com/linkchecker/linkchecker"
 SRC_URI="https://github.com/linkchecker/linkchecker/releases/download/v${PV}/LinkChecker-${PV}.tar.gz"
 KEYWORDS="amd64 x86"
 

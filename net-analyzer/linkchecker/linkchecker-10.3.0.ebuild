@@ -12,7 +12,7 @@ inherit bash-completion-r1 distutils-r1 multiprocessing optfeature
 
 MY_P=LinkChecker-${PV}
 DESCRIPTION="Check websites for broken links"
-HOMEPAGE="https://github.com/linkcheck/linkchecker"
+HOMEPAGE="https://github.com/linkchecker/linkchecker"
 SRC_URI="https://github.com/linkchecker/linkchecker/releases/download/v${PV}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
