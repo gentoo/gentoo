@@ -47,7 +47,7 @@ setup-allowed-flags() {
 # Note: shell globs and character lists are allowed
 _setup-allowed-flags() {
 	ALLOWED_FLAGS=(
-		-pipe -O '-O[123szg]' '-mcpu=*' '-march=*' '-mtune=*'
+		-pipe -O '-O[123szg]' '-mcpu=*' '-march=*' '-mtune=*' '-mfpmath=*'
 		-flto '-flto=*' -fno-lto
 
 		# Hardening flags
