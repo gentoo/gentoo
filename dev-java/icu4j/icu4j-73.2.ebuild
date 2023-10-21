@@ -25,10 +25,6 @@ RDEPEND=">=virtual/jre-1.8:*"
 
 HTML_DOCS=( ../{APIChangeReport,readme}.html )
 
-PATCHES=(
-	"${FILESDIR}/icu4j-73.2-DateFormatTest.patch"
-)
-
 JAVA_TEST_EXCLUDES=(
 	# Invalid tests, not run by maven
 	"com.ibm.icu.dev.data.TestDataElements_testtypes"
@@ -89,7 +85,6 @@ JAVA_TEST_SRC_DIR=(
 )
 
 src_prepare() {
-	default #780585
 	java-pkg_clean ! -path "./shared/data/*" # keep icudata.jar, icutzdata.jar, testdata.jar
 	java-pkg-2_src_prepare
 
@@ -195,6 +190,8 @@ src_compile() {
 }
 
 src_test () {
+	# TZ needed for some tests in com/ibm/icu/dev/test/format/DateFormatTest
+	export LC_ALL="en_US.UTF-8" TZ="US/Pacific"
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":framework.jar:shared/data/testdata.jar"
 
 	JAVA_TEST_RUN_ONLY=(
