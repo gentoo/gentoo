@@ -300,7 +300,9 @@ src_prepare() {
 	# the dependency tree manageable.
 	rm -f tests/{cli,iexplorer,output,safari,stable_browser}_tests.rs || die
 	sed -i -e '/case.*\(chrome\|edge\|iexplorer\)/ s:^://:' tests/{browser,config,exec_driver}_tests.rs || die
-	sed -i -e '/browser_version_test/,/^}/ s:^://:' tests/browser_tests.rs || die
+	sed -e '/browser_version_test/,/^}/ s:^://:' \
+		-e '/#\[test\]/,/^}/ s:^://:' \
+		-i tests/browser_tests.rs || die
 }
 
 src_install() {
