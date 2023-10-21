@@ -1,0 +1,26 @@
+https://github.com/linux-nvme/libnvme/pull/725
+
+From a5cc9074765bf400336f78a05c8374b9788ad670 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 10 Oct 2023 04:22:48 +0300
+Subject: [PATCH] build: remove symbol which doesn't exist in libnvme-mi.so
+
+* Added in bb70b874dac13a15c37ce1dd1de866d6a5dd428d, but was never used.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ src/libnvme-mi.map | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/libnvme-mi.map b/src/libnvme-mi.map
+index f1ce7125..41e81106 100644
+--- a/src/libnvme-mi.map
++++ b/src/libnvme-mi.map
+@@ -49,7 +49,6 @@ LIBNVME_MI_1_1 {
+ 		nvme_mi_admin_security_send;
+ 		nvme_mi_admin_security_recv;
+ 		nvme_mi_endpoint_desc;
+-		nvme_mi_root_close;
+ 		nvme_mi_first_endpoint;
+ 		nvme_mi_next_endpoint;
+ 		nvme_mi_first_ctrl;
