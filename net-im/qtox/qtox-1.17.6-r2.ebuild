@@ -44,8 +44,6 @@ RDEPEND="
 	media-libs/openal
 	media-video/ffmpeg:=[webp,v4l]
 	>=net-libs/tox-0.2.13:=[av]
-	>=net-libs/toxext-0.0.3
-	>=net-libs/tox_extension_messages-0.0.3
 	spellcheck? ( kde-frameworks/sonnet:5 )
 	X? (
 		x11-libs/libX11
