@@ -65,6 +65,7 @@ _setup-allowed-flags() {
 		-mindirect-branch-register
 		'-mfunction-return=*'
 		-mretpoline
+		'-mharden-sls=*'
 		'-mbranch-protection=*'
 
 		# Misc
