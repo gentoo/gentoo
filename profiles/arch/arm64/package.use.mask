@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jimi Huotari <chiitoo@gentoo.org> (2023-10-21)
+# Unmask on specific arches where it's available.
+media-video/obs-studio mpegts
+
 # Sam James <sam@gentoo.org> (2023-10-11)
 # Supports 64-bit NEON
 dev-libs/botan -cpu_flags_arm_neo

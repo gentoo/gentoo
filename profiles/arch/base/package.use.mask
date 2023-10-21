@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jimi Huotari <chiitoo@gentoo.org> (2023-10-21)
+# net-libs/librist is only keyworded for arm64 at this time.
+media-video/obs-studio mpegts
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # media-libs/shaderc has very few keywords.
 media-libs/libplacebo shaderc
