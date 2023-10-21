@@ -17,6 +17,12 @@
 		<remote-id type="pypi">cbor2</remote-id>
 		<remote-id type="github">agronholm/cbor2</remote-id>
 	</upstream>
+	<use>
+		<flag name="native-extensions">
+			Compiles native "C" extensions (speedups, instead of using python
+			fallback code).
+		</flag>
+	</use>
 	<longdescription>This library provides encoding and decoding for the
 Concise Binary Object Representation (CBOR) (RFC 7049) serialization format.
 It is implemented in pure python with an optional C backend and is compatible
