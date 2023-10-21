@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/895026
+--- a/src/heap_qp.h
++++ b/src/heap_qp.h
+@@ -290,7 +290,7 @@ Heap::allocateHeapSpace(size_t numHeapObjs)
+   //
+   assert(numHeapObjs > 0);
+ 
+-  register heapobject *result = next;
++  heapobject *result = next;
+   next += numHeapObjs;
+ 
+   //
