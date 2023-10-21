@@ -19,7 +19,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-emacs-29.patch
 )
 ELISP_REMOVE="color-theme-autoloads.*"
-SITEFILE="50${PN}-gentoo-6.6.0-r3.el"
+SITEFILE="50${PN}-gentoo.el"
 
 src_install() {
 	elisp-install ${PN} *.el *.elc
