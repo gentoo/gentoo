@@ -3,7 +3,7 @@
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-10-21)
 # Unmask on specific arches where it's available.
-media-video/obs-studio mpegts
+media-video/obs-studio -mpegts
 
 # Sam James <sam@gentoo.org> (2023-10-11)
 # Supports 64-bit NEON
