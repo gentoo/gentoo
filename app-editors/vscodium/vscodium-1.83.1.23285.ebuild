@@ -43,9 +43,10 @@ LICENSE="
 	W3C
 "
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64"
+KEYWORDS="-* amd64 ~arm ~arm64"
 IUSE="kerberos"
 
+# net-print/cups needed until https://github.com/VSCodium/vscodium/issues/1680 is fixed
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret[crypt]
@@ -60,6 +61,8 @@ RDEPEND="
 	media-libs/libglvnd
 	media-libs/mesa
 	net-misc/curl
+	net-print/cups
+	sys-apps/dbus
 	sys-libs/zlib
 	sys-process/lsof
 	x11-libs/cairo
