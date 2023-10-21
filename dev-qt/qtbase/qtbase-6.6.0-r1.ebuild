@@ -137,6 +137,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-no-glx.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
 	"${FILESDIR}"/${PN}-6.5.3-xkbcommon160.patch
+	"${FILESDIR}"/${PN}-6.5.3-forkfd-childstack-size.patch
 )
 
 src_prepare() {
