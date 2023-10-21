@@ -137,6 +137,8 @@ _setup-allowed-flags() {
 		# Allow explicit stack realignment to run non-conformant
 		# binaries: bug #677852
 		-mstackrealign
+		'-mpreferred-stack-boundary=*'
+		'-mincoming-stack-boundary=*'
 	)
 	ALLOWED_FLAGS+=(
 		# Clang-only
