@@ -237,16 +237,6 @@ net-misc/openr2
 # Bug #842882, removal on 2023-10-19.
 www-apps/owncloud
 
-# Michał Górny <mgorny@gentoo.org> (2023-09-17)
-# Core API has not been maintained since 2017, and all the repositories
-# have been archived in 2019.  It remained in ::gentoo only
-# as an optional test dependency, and all reverse dependencies have been
-# updated not to depend on it.
-# Removal on 2023-10-17.  Bug #914363.
-dev-python/coreapi
-dev-python/coreschema
-dev-python/itypes
-
 # Sam James <sam@gentoo.org> (2023-09-09)
 # OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
 # https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/
