@@ -10,8 +10,8 @@ PYTHON_COMPAT=( python3_{9..12} )
 inherit cmake lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux64"
-OBS_BROWSER_COMMIT="e397df52e70392ebb9146e0ab6317c0d1a30bce4"
-OBS_WEBSOCKET_COMMIT="4ff109b62bc221192943541010d055be9ae5dbba"
+OBS_BROWSER_COMMIT="594115a27d40f0916e55db97cb61f7c7130cbe28"
+OBS_WEBSOCKET_COMMIT="6fd18a7ef1ecb149e8444154af1daab61d4241a9"
 QR_COMMIT="8518684c0f33d004fa93971be2c6a8eca3167d1e"
 
 if [[ ${PV} == 9999 ]]; then
@@ -20,11 +20,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_SUBMODULES=(
 		plugins/obs-browser
 		plugins/obs-websocket
+		plugins/obs-websocket/deps/qr
 	)
 else
 	SRC_URI="
 		https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
+		https://github.com/nayuki/QR-Code-generator/archive/${QR_COMMIT}.tar.gz -> qr-${QR_COMMIT}.tar.gz
 		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz -> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
@@ -38,7 +40,7 @@ LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua mpegts nvenc pipewire pulseaudio
-	python qsv speex +ssl truetype v4l vlc wayland websocket
+	python qt6 speex +ssl truetype v4l vlc wayland websocket
 "
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
@@ -54,8 +56,6 @@ BDEPEND="
 DEPEND="
 	dev-libs/glib:2
 	dev-libs/jansson:=
-	dev-qt/qtbase:6[network,widgets,xml(+)]
-	dev-qt/qtsvg:6
 	media-libs/libglvnd
 	media-libs/libva
 	media-libs/rnnoise
@@ -67,17 +67,15 @@ DEPEND="
 	sys-apps/util-linux
 	sys-libs/zlib:=
 	x11-libs/libX11
-	x11-libs/libxcb:=
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
-	x11-libs/libxkbcommon
+	x11-libs/libxcb:=
 	alsa? ( media-libs/alsa-lib )
 	browser? (
 		|| (
 			>=app-accessibility/at-spi2-core-2.46.0:2
 			( app-accessibility/at-spi2-atk dev-libs/atk )
 		)
-		dev-cpp/nlohmann_json
 		dev-libs/expat
 		dev-libs/glib
 		dev-libs/nspr
@@ -111,7 +109,20 @@ DEPEND="
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
 	python? ( ${PYTHON_DEPS} )
-	qsv? ( media-libs/oneVPL )
+	qt6? (
+		dev-qt/qtbase:6[network,widgets,xml(+)]
+		dev-qt/qtsvg:6
+		x11-libs/libxkbcommon
+	)
+	!qt6? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5[wayland?]
+		dev-qt/qtnetwork:5
+		dev-qt/qtquickcontrols:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtxml:5
+	)
 	speex? ( media-libs/speexdsp )
 	ssl? ( net-libs/mbedtls:= )
 	truetype? (
@@ -162,6 +173,9 @@ src_unpack() {
 
 		rm -d ${P}/plugins/obs-websocket || die
 		mv obs-websocket-${OBS_WEBSOCKET_COMMIT} ${P}/plugins/obs-websocket || die
+
+		rm -d ${P}/plugins/obs-websocket/deps/qr || die
+		mv QR-Code-generator-${QR_COMMIT} ${P}/plugins/obs-websocket/deps/qr || die
 	fi
 }
 
@@ -189,7 +203,6 @@ src_configure() {
 		-DENABLE_NEW_MPEGTS_OUTPUT=$(usex mpegts)
 		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
-		-DENABLE_QSV11=$(usex qsv)
 		-DENABLE_RNNOISE=ON
 		-DENABLE_RTMPS=$(usex ssl ON OFF) # Needed for bug 880861
 		-DENABLE_SPEEXDSP=$(usex speex)
@@ -197,9 +210,9 @@ src_configure() {
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
 		-DENABLE_WAYLAND=$(usex wayland)
-		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
 		-DENABLE_WEBSOCKET=$(usex websocket)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
+		-DQT_VERSION=$(usex qt6 6 5)
 		-DUNIX_STRUCTURE=1
 	)
 
