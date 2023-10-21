@@ -231,12 +231,6 @@ net-misc/dahdi
 net-misc/dahdi-tools
 net-misc/openr2
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2023-09-19)
-# Only works with PHP 7, which was dropped from Gentoo
-# Upstream has no short-term plan to add PHP 8 support
-# Bug #842882, removal on 2023-10-19.
-www-apps/owncloud
-
 # Sam James <sam@gentoo.org> (2023-09-09)
 # OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
 # https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/
