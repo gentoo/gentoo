@@ -6,12 +6,12 @@
 # Fco. Javier Félix <web@inode64.com>
 # @AUTHOR:
 # Fco. Javier Félix <web@inode64.com>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: An eclass for build NodeJS projects
 # @DESCRIPTION:
 # An eclass providing functions to build NodeJS projects
 #
-# Changelog:
+# Credits and ideas from:
 #   Initial version from:
 #       https://github.com/gentoo/gentoo/pull/930/files
 #       https://github.com/samuelbernardo/ssnb-overlay/blob/master/eclass/npm.eclass
@@ -30,7 +30,7 @@
 #   tar --create --auto-compress --file foo-1-node_modules.tar.xz foo-1/node_modules/
 
 case ${EAPI} in
-7 | 8) ;;
+8) ;;
 *) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
