@@ -52,10 +52,11 @@ distutils_enable_tests pytest
 
 python_test() {
 	local EPYTEST_DESELECT=(
-		# libsdl2 itself is broken in numerous ways
+		# pysdl2 was misusing libsdl2's error API. Fixed upstream already
+		# but it didn't land in 0.9.16.
 		# https://bugs.gentoo.org/916120
-		sdl2/test/gamecontroller_test.py
 		# https://bugs.gentoo.org/916118
+		sdl2/test/gamecontroller_test.py
 		sdl2/test/hidapi_test.py::test_SDL_hid_enumerate
 	)
 
