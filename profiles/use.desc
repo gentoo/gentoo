@@ -22,6 +22,7 @@ apparmor - Enable support for the AppArmor application security system
 appindicator - Build in support for notifications using the libindicate or libappindicator plugin
 audiofile - Add support for libaudiofile where applicable
 audit - Enable support for Linux audit subsystem using sys-process/audit
+avif - Add AV1 Image Format (AVIF) support
 bash-completion - Enable bash-completion support
 berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
 bidi - Enable bidirectional language support
