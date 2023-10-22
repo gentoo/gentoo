@@ -19,7 +19,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+cli doc"
 
-RDEPEND="dev-libs/metee:="
+RDEPEND=">=dev-libs/metee-3.2.3:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
