@@ -3,6 +3,8 @@
 
 EAPI=8
 
+NEED_EMACS=27.1
+
 inherit elisp
 
 DESCRIPTION=".NET SDK CLI wrapper for GNU Emacs using Transient"
@@ -24,6 +26,13 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+
+RDEPEND="
+	app-emacs/transient
+"
+BDEPEND="
+	${RDEPEND}
+"
 
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
