@@ -4,7 +4,8 @@
 EAPI=7
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="Utility to manage SSH public keys stored in LDAP"
@@ -36,6 +37,10 @@ DEPEND="${RDEPEND}
 DOCS=( README.md CHANGELOG.adoc )
 
 distutils_enable_tests pytest
+
+python_test() {
+	epytest -p pytest-describe
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
