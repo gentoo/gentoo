@@ -55,7 +55,10 @@ PATCHES=(
 
 src_prepare() {
 	default
-	# patch touches configure.ac
+
+	# Bug #906194
+	use elibc_musl && eapply "${FILESDIR}"/${PN}-4.8.30-musl-tests.patch
+
 	eautoreconf
 }
 
