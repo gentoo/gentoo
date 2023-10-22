@@ -6,7 +6,6 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<use>
-		<flag name="brotli">Enable brotli compression support</flag>
 		<flag name="compute">Build the Arrow Compute Modules</flag>
 		<flag name="dataset">Build the Arrow Dataset Modules</flag>
 		<flag name="json">Enables read/write json format</flag>
