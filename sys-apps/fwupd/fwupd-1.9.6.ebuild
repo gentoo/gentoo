@@ -14,10 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="amt +archive bash-completion bluetooth cbor dell elogind fastboot flashrom gnutls gtk-doc +gusb introspection logitech lzma minimal modemmanager nvme policykit spi +sqlite synaptics systemd test test-full tpm uefi"
+IUSE="amdgpu amt +archive bash-completion bluetooth cbor elogind fastboot flashrom gnutls gtk-doc +gusb introspection logitech lzma minimal modemmanager nvme policykit spi +sqlite synaptics systemd test test-full tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
-	dell? ( uefi )
 	fastboot? ( gusb )
 	logitech? ( gusb )
 	minimal? ( !introspection )
@@ -31,6 +30,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="!test? ( test )"
 
 BDEPEND="$(vala_depend)
+	$(python_gen_cond_dep '
+		dev-python/jinja[${PYTHON_USEDEP}]
+	')
 	>=dev-util/meson-0.60.0
 	virtual/pkgconfig
 	gtk-doc? (
@@ -60,10 +62,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.62.0
 	archive? ( app-arch/libarchive:= )
 	cbor? ( >=dev-libs/libcbor-0.7.0:= )
-	dell? (
-		>=app-crypt/tpm2-tss-2.0
-		>=sys-libs/libsmbios-2.4.0
-	)
 	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
 	gnutls? ( >=net-libs/gnutls-3.6.0 )
@@ -90,11 +88,11 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	x11-libs/pango[introspection]
+	amdgpu? ( sys-kernel/linux-headers )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.4-fragile_tests.patch
-	"${FILESDIR}"/${PN}-1.9.5-parallel_build.patch
+	"${FILESDIR}"/${PN}-1.9.6-fragile_tests.patch
 )
 
 pkg_pretend() {
@@ -121,8 +119,8 @@ src_prepare() {
 src_configure() {
 	local plugins=(
 		-Dplugin_gpio="enabled"
+		$(meson_feature amdgpu plugin_amdgpu)
 		$(meson_feature amt plugin_intel_me)
-		$(meson_feature dell plugin_dell)
 		$(meson_feature fastboot plugin_fastboot)
 		$(meson_feature flashrom plugin_flashrom)
 		$(meson_feature gusb plugin_uf2)

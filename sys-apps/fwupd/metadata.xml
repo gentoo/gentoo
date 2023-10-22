@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="archive">Use <pkg>app-arch/libarchive</pkg> for archives support</flag>
+		<flag name="amdgpu">Build and install AMD dGPU (Navi3x and above) plugin</flag>
 		<flag name="amt">Build and install Intel AMT plugin</flag>
 		<flag name="cbor">Enable CBOR support for coSWID and uSWID via <pkg>dev-libs/libcbor</pkg></flag>
 		<flag name="dell">Enable Dell-specific support</flag>
