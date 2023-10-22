@@ -39,6 +39,7 @@ BDEPEND="
 	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mypy[${PYTHON_USEDEP}]
+		dev-python/jmespath[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-plus-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.5.0[${PYTHON_USEDEP}]
