@@ -163,6 +163,7 @@ multilib_src_configure() {
 		--disable-pulseaudio-shared
 		--disable-arts
 		$(use_enable libsamplerate)
+		--disable-libsamplerate-shared
 		--disable-werror
 		$(use_enable nas)
 		--disable-nas-shared
