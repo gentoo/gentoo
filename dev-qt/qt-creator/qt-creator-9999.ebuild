@@ -84,6 +84,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-11.0.2-musl-no-malloc-trim.patch
 )
 
+llvm_check_deps() {
+	has_version -d "sys-devel/clang:${LLVM_SLOT}"
+}
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 	use clang && llvm_pkg_setup
