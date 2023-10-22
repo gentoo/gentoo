@@ -13,9 +13,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="brotli">Enable <pkg>app-arch/brotli</pkg> support</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">yhirose/cpp-httplib</remote-id>
 		<bugs-to>https://github.com/yhirose/cpp-httplib/issues</bugs-to>
