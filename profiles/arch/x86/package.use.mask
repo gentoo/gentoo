@@ -1,12 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Joonas Niilola <juippis@gentoo.org> (2023-10-13)
-# Pulls webkit-gtk unconditionally, which (at least :4.1) doesn't
-# compile on x86. Bug #915197.
-gnome-extra/cinnamon eds
-gnome-extra/cinnamon-control-center gnome-online-accounts
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # media-libs/shaderc is keyworded here.
 media-libs/libplacebo -shaderc
