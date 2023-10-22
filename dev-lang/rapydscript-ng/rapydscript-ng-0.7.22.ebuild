@@ -39,7 +39,7 @@ maint_pkg_create() {
 	ver=${ver#v}
 	local tar="${T}/rapydscript-ng-node_modules-${ver}.tar.xz"
 
-	bsdtar -s "#\(.*\)#${PN}-node_modules-${ver}/~#S" -caf "${tar}" package-lock.json node_modules/ || die
+	bsdtar -s "#^#${PN}-node_modules-${ver}/#S" -caf "${tar}" package-lock.json node_modules/ || die
 	einfo "Packaged tar now available:"
 	einfo "$(du -b "${tar}")"
 }
