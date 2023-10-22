@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-22)
+# Incompatible with Python 3.12.  Last commit in 2016.  No revdeps.
+# Removal on 2023-11-21.  Bug #909917.
+dev-python/exam
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-20)
 # The test suite is broken and does not fail correctly.  No maintainer.
 # No revdeps.
