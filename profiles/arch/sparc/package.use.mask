@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-22)
+# This is not ISDN CAPI, so unmask it.
+media-video/rav1e -capi
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
 # Need dev-python/notebook (that indirectly requires net-libs/nodejs).
 dev-python/ipython notebook
