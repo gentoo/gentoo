@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/SDL_Pango-${PV}"
 
+PATCHES=(
+	"${FILESDIR}/SDL_Pango-0.1.2-fedora-c99.patch"
+)
+
 src_unpack() {
 	unpack SDL_Pango-${PV}.tar.gz
 }
@@ -28,6 +32,7 @@ src_unpack() {
 src_prepare() {
 	default
 	eapply -p0 "${DISTDIR}"/SDL_Pango-0.1.2-API-adds.patch
+
 	eautoreconf
 }
 
