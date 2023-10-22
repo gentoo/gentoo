@@ -19,7 +19,6 @@
 	<bugs-to>https://www.xpra.org/trac/report</bugs-to>
 </upstream>
 <use>
-	<flag name="brotli">Enable brotli compression support</flag>
 	<flag name="client">Build client-side code</flag>
 	<flag name="clipboard">Enable clipboard support</flag>
 	<flag name="csc">Enable csc softscaler support</flag>
