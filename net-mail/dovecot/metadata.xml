@@ -14,7 +14,6 @@
 		<flag name="solr">Add solr full text search (FTS) support</flag>
 		<flag name="stemmer">Add libstemmer support (for FTS)</flag>
 		<flag name="textcat">Add libtextcat language guessing support for full text search (FTS)</flag>
-		<flag name="zstd">Add support for zstd (de)compression</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">dovecot/core</remote-id>
