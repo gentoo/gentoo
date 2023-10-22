@@ -6,7 +6,6 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
-    <flag name="jpegxl">Support for JPEG XL image format</flag>
     <flag name="slideshow">Enable slideshow plugin</flag>
   </use>
   <upstream>
