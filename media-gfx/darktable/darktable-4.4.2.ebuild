@@ -98,6 +98,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
 	"${FILESDIR}"/${PN}-3.4.1_libxcf-cmake.patch
 	"${FILESDIR}"/${PN}-4.2.1_cmake-musl.patch
+	"${FILESDIR}"/${PN}-4.4.2_fix-has-attribute-musl.patch
 )
 
 S="${WORKDIR}/${P/_/~}"
