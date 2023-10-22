@@ -1367,6 +1367,7 @@ epytest() {
 		# and causing us to miss missing virtualx usage
 		-p no:xvfb
 		# intrusive packages that break random test suites
+		-p no:pytest-describe
 		-p no:plus
 		-p no:tavern
 	)
