@@ -13,12 +13,13 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="gif jpeg jpegxl png static-libs tiff webp"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="avif gif jpeg jpegxl png static-libs tiff webp"
 
 RDEPEND="
 	>=media-libs/libsdl2-2.0.9[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	avif? ( media-libs/libavif:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	jpegxl? ( media-libs/libjxl:=[${MULTILIB_USEDEP}] )
@@ -30,7 +31,7 @@ DEPEND="${RDEPEND}"
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)
-		--disable-avif
+		$(use_enable avif)
 		--disable-avif-shared
 		--disable-sdltest
 		--disable-stb-image
