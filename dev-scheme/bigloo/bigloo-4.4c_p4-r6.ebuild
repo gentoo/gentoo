@@ -6,12 +6,12 @@ EAPI=8
 inherit elisp-common toolchain-funcs
 
 MY_PV=${PV/_p/-}  # e.g.: 4.4c_p4 -> 4.4c-4
-MY_P=${PN}-${MY_PV}
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Practical Scheme Compiler with many extensions"
 HOMEPAGE="http://www-sop.inria.fr/indes/fp/Bigloo/index.html"
 SRC_URI="ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${MY_P}.tar.gz"
-S="${WORKDIR}"/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -19,7 +19,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa avahi emacs flac +gmp gpg gstreamer java libuv mp3 pulseaudio +sqlite"
 REQUIRED_USE="flac? ( alsa ) mp3? ( alsa )"
 
-EMACS_DEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
+EMACS_DEPEND="
+	emacs? ( >=app-editors/emacs-23.1:* )
+"
 DEPEND="
 	dev-libs/boehm-gc[threads]
 	dev-libs/libpcre2:=
@@ -34,10 +36,13 @@ DEPEND="
 		media-libs/gst-plugins-base:1.0=
 		media-libs/gstreamer:1.0=
 	)
-	java? ( virtual/jdk:* )
+	java? (
+		app-arch/zip
+		virtual/jdk:*
+	)
 	libuv? ( dev-libs/libuv:= )
 	mp3? ( media-sound/mpg123 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3= )
 "
 RDEPEND="
@@ -57,9 +62,10 @@ SITEFILE="50${PN}-gentoo.el"
 src_prepare() {
 	default
 
-	sed -e "/^ar=/s|=|=\"$(tc-getAR)\"|" \
-		-e "/^ranlib=/s|=|=\"$(tc-getRANLIB)\"|" \
-		-i ./configure || die
+	sed -e "/^ar=/s|=|= \"$(tc-getAR)\"|"			\
+		-e "/^ranlib=/s|=|= \"$(tc-getRANLIB)\"|"	\
+		-i ./configure								\
+		|| die
 
 	sed "s|^ar |$(tc-getAR) |" -i ./autoconf/ranlib || die
 }
@@ -69,7 +75,7 @@ src_configure() {
 	export CFLAGS
 	export LDFLAGS
 
-	local myconf=(
+	local -a myconf=(
 		# Compilation
 		--as="$(tc-getAS)"
 		--cc="$(tc-getCC)"
@@ -171,12 +177,13 @@ src_install() {
 	pushd "${D}" >/dev/null || die
 	local bin bin_link
 	for bin in usr/share/${PN}/bin/* ; do
-		if [[ ${bin} != *.sh ]] ; then
-			bin_link=usr/bin/$(basename ${bin})
+		if [[ "${bin}" != *.sh ]] ; then
+			bin_link="usr/bin/$(basename "${bin}")"
+
 			if [[ -f ${bin}.sh ]] ; then
-				ln -s ../../${bin}.sh ${bin_link} || die
+				ln -s ../../${bin}.sh "${bin_link}" || die
 			else
-				ln -s ../../${bin} ${bin_link} || die
+				ln -s ../../${bin} "${bin_link}" || die
 			fi
 		fi
 	done
@@ -184,6 +191,7 @@ src_install() {
 
 	if use emacs ; then
 		emake DESTDIR="${D}" install-bee
+
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
 
