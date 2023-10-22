@@ -115,6 +115,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	<x11-libs/libxkbcommon-1.6
 	X? ( x11-base/xorg-proto )
 	gui? (
 		vulkan? ( dev-util/vulkan-headers )
