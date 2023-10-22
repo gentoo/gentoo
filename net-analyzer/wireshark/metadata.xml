@@ -29,7 +29,6 @@
 	<use>
 		<flag name="androiddump">Install androiddump, an extcap interface to capture from Android devices</flag>
 		<flag name="bcg729">Use <pkg>media-libs/bcg729</pkg> for G.729 codec support in RTP Player</flag>
-		<flag name="brotli">Use <pkg>app-arch/brotli</pkg> for compression/decompression</flag>
 		<flag name="capinfos">Install capinfos, to print information about capture files</flag>
 		<flag name="captype">Install captype, to print the file types of capture files</flag>
 		<flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
