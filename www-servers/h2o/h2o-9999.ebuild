@@ -3,7 +3,7 @@
 
 EAPI="8"
 SSL_DEPS_SKIP=1
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby31 ruby32"
 
 inherit cmake git-r3 ruby-single ssl-cert systemd toolchain-funcs
 
