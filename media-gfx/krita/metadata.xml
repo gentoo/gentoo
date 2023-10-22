@@ -10,7 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
-		<flag name="jpegxl">Support for JPEG XL image format</flag>
 		<flag name="mypaint-brush-engine">Enable MyPaint brush engine support <pkg>media-libs/libmypaint</pkg></flag>
 		<flag name="qtmedia">Enable sound support for animations via <pkg>dev-qt/qtmultimedia</pkg></flag>
 	</use>
