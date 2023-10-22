@@ -333,6 +333,7 @@ elisp-make-autoload-file() {
 	;; Local ${null}Variables:
 	;; version-control: never
 	;; no-byte-compile: t
+	;; no-native-compile: t
 	;; no-update-autoloads: t
 	;; End:
 
@@ -725,6 +726,7 @@ elisp-site-regen() {
 
 	;; Local ${null}Variables:
 	;; no-byte-compile: t
+	;; no-native-compile: t
 	;; buffer-read-only: t
 	;; End:
 
