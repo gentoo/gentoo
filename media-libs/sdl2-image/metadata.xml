@@ -10,6 +10,7 @@
 		<bugs-to>https://github.com/libsdl-org/SDL_image/issues</bugs-to>
 	</upstream>
 	<use>
+		<flag name="jpegxl">Enable support for JPEG XL image format</flag>
 		<flag name="webp">support loading WEBP images</flag>
 	</use>
 </pkgmetadata>
