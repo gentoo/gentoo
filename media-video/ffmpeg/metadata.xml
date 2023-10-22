@@ -36,7 +36,6 @@
 			Improvements are being made to the runtime initialization, and so over time, this option will have an impact on fewer and fewer codecs.
 		</flag>
 		<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
-		<flag name="jpegxl">Enable JPEG XL de/encoding via <pkg>media-libs/libjxl</pkg>.</flag>
 		<flag name="kvazaar">Enables <pkg>media-libs/kvazaar</pkg> based HEVC encoder.</flag>
 		<flag name="lcms">Enable ICC profile support via <pkg>media-libs/lcms</pkg>.</flag>
 		<flag name="libaom">Enables <pkg>media-libs/libaom</pkg> based AV1 codec support.</flag>
