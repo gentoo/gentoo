@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -36,6 +36,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-py312.patch"
+)
+
 distutils_enable_tests pytest
 
 python_test() {
@@ -52,6 +56,10 @@ python_test() {
 		# broken by simplejson, doesn't seem important
 		# https://github.com/kevin1024/vcrpy/issues/751
 		tests/unit/test_serialize.py::test_serialize_binary_request
+		# new httpbin, sigh
+		# https://github.com/kevin1024/vcrpy/issues/761
+		tests/integration/test_basic.py::test_basic_json_use
+		tests/integration/test_register_persister.py::test_load_cassette_with_custom_persister
 	)
 
 	local -x REQUESTS_CA_BUNDLE=$("${EPYTHON}" -m pytest_httpbin.certs)
