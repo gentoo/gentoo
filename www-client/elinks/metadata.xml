@@ -11,7 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="bittorrent">Enable support for the BitTorrent protocol</flag>
-		<flag name="brotli">Enable support for brotli compression</flag>
 		<flag name="finger">Enable support for the finger protocol</flag>
 		<flag name="gopher">Enable support for the gopher protocol</flag>
 		<flag name="mouse">Make elinks to grab all mouse events</flag>
