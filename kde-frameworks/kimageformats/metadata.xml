@@ -10,9 +10,7 @@
 		<remote-id type="cpe">cpe:/a:kde:kimageformats</remote-id>
 	</upstream>
 	<use>
-		<flag name="avif">Support the AVIF image file format</flag>
 		<flag name="eps">Support the EPS graphics file format</flag>
-		<flag name="jpegxl">Support for JPEG XL image format</flag>
 	</use>
 	<slots>
 		<subslots>
