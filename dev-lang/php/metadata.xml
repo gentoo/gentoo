@@ -17,9 +17,6 @@
     <flag name="argon2">
       Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg>
     </flag>
-    <flag name="avif">
-      Enable AVIF support in bundled libgd
-    </flag>
     <flag name="bcmath">
       Enable the BCMath Arbitrary Precision Mathematics extension
     </flag>
@@ -121,9 +118,6 @@
     </flag>
     <flag name="xslt">
       Build the XSL extension
-    </flag>
-    <flag name="webp">
-      Enable webp support for GD in php-7.x
     </flag>
   </use>
   <upstream>
