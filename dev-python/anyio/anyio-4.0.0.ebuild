@@ -38,7 +38,7 @@ BDEPEND="
 		amd64? (
 			$(python_gen_cond_dep '
 				>=dev-python/uvloop-0.17[${PYTHON_USEDEP}]
-			' python3_{10..11})
+			' python3_{10..12})
 		)
 	)
 "
