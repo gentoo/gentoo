@@ -18,7 +18,7 @@ PYPI_PN="molecule"
 inherit distutils-r1 docs optfeature pypi
 
 DESCRIPTION="A toolkit designed to aid in the development and testing of Ansible roles"
-HOMEPAGE="https://pypi.org/project/molecule/ https://github.com/ansible-community/molecule/"
+HOMEPAGE="https://pypi.org/project/molecule/ https://github.com/ansible/molecule/"
 
 LICENSE="MIT"
 SLOT="0"

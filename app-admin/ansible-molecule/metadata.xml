@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">molecule</remote-id>
-		<remote-id type="github">ansible-community/molecule</remote-id>
+		<remote-id type="github">ansible/molecule</remote-id>
 	</upstream>
 </pkgmetadata>
