@@ -24,6 +24,10 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${P/_/.}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+)
+
 src_compile() {
 	emake VERSION="${PV}" IS_RELEASE=1 CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Wall"
 }
