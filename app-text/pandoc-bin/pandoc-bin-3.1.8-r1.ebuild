@@ -22,7 +22,13 @@ SLOT="0"
 KEYWORDS="-* amd64 arm64"
 IUSE="+pandoc-symlink"
 
-RDEPEND="pandoc-symlink? ( !${CATEGORY}/${MY_PN} )"
+RDEPEND="
+	pandoc-symlink? (
+		!${CATEGORY}/${MY_PN}
+		!app-text/pandoc-cli
+		!dev-haskell/pandoc[doc]
+	)
+"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="${QA_FLAGS_IGNORED}"
