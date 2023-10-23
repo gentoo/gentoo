@@ -18,6 +18,7 @@
 		<flag name="markdown">Enable the markdown plugin</flag>
 		<flag name="pretty-printer">Enable pretty-printer plugin</flag>
 		<flag name="scope">Enable the scope plugin which is a graphical GDB front-end</flag>
+		<flag name="webhelper">Enable webhelper plugin</flag>
 		<flag name="workbench">Enable workbench plugin</flag>
 	</use>
 </pkgmetadata>
