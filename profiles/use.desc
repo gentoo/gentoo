@@ -33,7 +33,7 @@ bluetooth - Enable Bluetooth Support
 branding - Enable Gentoo specific branding
 brotli - Enable Brotli compression support
 build - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for creating build images and the first half of bootstrapping [make stage1]
-bzip2 - Use the bzlib compression library
+bzip2 - Enable bzip2 compression support
 cairo - Enable support for the cairo graphics library
 calendar - Add support for calendars (not using mcal!)
 caps - Use Linux capabilities library to control privilege
@@ -177,7 +177,7 @@ lm-sensors - Add linux lm-sensors (hardware sensors) support
 lua - Enable Lua scripting support
 lz4 - Enable support for lz4 compression (as implemented in app-arch/lz4)
 lzip - Enable support for lzip compression
-lzma - Support for LZMA (de)compression algorithm
+lzma - Support for LZMA compression algorithm
 lzo - Enable support for lzo compression
 m17n-lib - Enable m17n-lib support
 mad - Add support for mad (high-quality mp3 decoder library and cli frontend)
@@ -381,6 +381,6 @@ xv - Add in optional support for the Xvideo extension (an X API for video playba
 xvid - Add support for xvid.org's open-source mpeg-4 codec
 zeroconf - Support for DNS Service Discovery (DNS-SD)
 zip - Enable support for ZIP archives
-zlib - Add support for zlib (de)compression
+zlib - Add support for zlib compression
 zsh-completion - Enable zsh completion support
 zstd - Enable support for ZSTD compression
