@@ -25,6 +25,10 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="examples"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-sphinx-build.patch"
+)
+
 distutils_enable_sphinx docs
 distutils_enable_tests unittest
 
