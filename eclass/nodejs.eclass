@@ -37,13 +37,13 @@ esac
 if [[ -z ${_NODEJS_ECLASS} ]]; then
 _NODEJS_ECLASS=1
 
-# @ECLASS_VARIABLE: NODEJS_MANAGEMENT
+# @ECLASS_VARIABLE: NODEJS_MANAGER
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Specify a package management
+# Specify a NodeJS package manager to use. ( npm | yarn )
 # The default is set to "npm".
-: "${NODEJS_MANAGEMENT:=npm}"
+: "${NODEJS_MANAGER:=npm}"
 
 # @ECLASS_VARIABLE: NODEJS_FILES
 # @INTERNAL
@@ -65,7 +65,7 @@ NODEJS_FILES="babel.config.js babel.config.json cli.js dist index.js lib node_mo
 # User-controlled environment variable containing arguments to be passed to npm
 
 
-case ${NODEJS_MANAGEMENT} in
+case ${NODEJS_MANAGER} in
     npm)
         BDEPEND+=" net-libs/nodejs[npm]"
         ;;
@@ -73,8 +73,8 @@ case ${NODEJS_MANAGEMENT} in
         BDEPEND+=" sys-apps/yarn"
         ;;
     *)
-        eerror "Unknown value for \${NODEJS_MANAGEMENT}"
-        die "Value ${NODEJS_MANAGEMENT} is not supported"
+        eerror "Unknown value for \${NODEJS_MANAGER}"
+        die "Value ${NODEJS_MANAGER} is not supported"
         ;;
 esac
 
@@ -234,7 +234,7 @@ enpm() {
         "${mynpmargs_local[@]}"
     )
 
-    case ${NODEJS_MANAGEMENT} in
+    case ${NODEJS_MANAGER} in
         npm)
             npmargs+=(
                 --audit false
@@ -259,7 +259,7 @@ enpm_clean() {
     local nodejs_files f
 
     einfo "Clean files"
-    case ${NODEJS_MANAGEMENT} in
+    case ${NODEJS_MANAGER} in
         npm)
             enpm prune --omit=dev || die
             ;;
