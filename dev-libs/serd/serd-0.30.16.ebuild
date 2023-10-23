@@ -19,7 +19,7 @@ BDEPEND="
 	doc? (
 		app-doc/doxygen
 		dev-python/sphinx
-		dev-python/sphinx_lv2_theme
+		dev-python/sphinx-lv2-theme
 )
 "
 
