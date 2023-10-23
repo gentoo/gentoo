@@ -431,6 +431,22 @@ acct-user_pkg_postinst() {
 		opts+=( --prefix "${ROOT}" )
 	fi
 
+	local g old_groups del_groups=""
+	old_groups=$(egetgroups "${ACCT_USER_NAME}")
+	for g in ${old_groups//,/ }; do
+		has "${g}" "${groups[@]}" || del_groups+="${del_groups:+, }${g}"
+	done
+	if [[ -n ${del_groups} ]]; then
+		local override_name=${ACCT_USER_NAME^^}
+		override_name=${override_name//-/_}
+		ewarn "Removing user ${ACCT_USER_NAME} from group(s): ${del_groups}"
+		ewarn "To retain the user's group membership in the local system"
+		ewarn "config, override with ACCT_USER_${override_name}_GROUPS or"
+		ewarn "ACCT_USER_${override_name}_GROUPS_ADD in make.conf."
+		ewarn "Documentation reference:"
+		ewarn "https://wiki.gentoo.org/wiki/Practical_guide_to_the_GLEP_81_migration#Override_user_groups"
+	fi
+
 	elog "Updating user ${ACCT_USER_NAME}"
 	# usermod outputs a warning if unlocking the account would result in an
 	# empty password. Hide stderr in a text file and display it if usermod fails.
