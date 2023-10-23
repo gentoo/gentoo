@@ -5,7 +5,7 @@ EAPI=8
 
 inherit elisp
 
-DESCRIPTION="Convert symbol names between different naming conventions"
+DESCRIPTION="Highly accessible themes for GNU Emacs"
 HOMEPAGE="https://github.com/protesilaos/modus-themes/"
 
 if [[ ${PV} == *9999* ]] ; then
