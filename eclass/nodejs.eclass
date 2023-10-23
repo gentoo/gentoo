@@ -30,8 +30,8 @@
 #   tar --create --auto-compress --file foo-1-node_modules.tar.xz foo-1/node_modules/
 
 case ${EAPI} in
-8) ;;
-*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+    8) ;;
+    *) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_NODEJS_ECLASS} ]]; then
@@ -59,16 +59,16 @@ NODEJS_FILES="babel.config.js babel.config.json cli.js dist index.js lib node_mo
 # Example: NODEJS_EXTRA_FILES="rigger.js modules"
 
 case ${NODEJS_MANAGEMENT} in
-npm)
-    BDEPEND+=" net-libs/nodejs[npm]"
-    ;;
-yarn)
-    BDEPEND+=" sys-apps/yarn"
-    ;;
-*)
-    eerror "Unknown value for \${NODEJS_MANAGEMENT}"
-    die "Value ${NODEJS_MANAGEMENT} is not supported"
-    ;;
+    npm)
+        BDEPEND+=" net-libs/nodejs[npm]"
+        ;;
+    yarn)
+        BDEPEND+=" sys-apps/yarn"
+        ;;
+    *)
+        eerror "Unknown value for \${NODEJS_MANAGEMENT}"
+        die "Value ${NODEJS_MANAGEMENT} is not supported"
+        ;;
 esac
 
 # @FUNCTION: nodejs_version
@@ -228,18 +228,18 @@ enpm() {
     )
 
     case ${NODEJS_MANAGEMENT} in
-    npm)
-        npmflags+=(
-            --audit false
-        )
-        npm "$@" "${npmflags[@]}"
-        ;;
-    yarn)
-        npmflags+=(
-            --cache-folder "${S}/.cache"
-        )
-        yarn "$@" "${npmflags[@]}"
-        ;;
+        npm)
+            npmflags+=(
+                --audit false
+            )
+            npm "$@" "${npmflags[@]}"
+            ;;
+        yarn)
+            npmflags+=(
+                --cache-folder "${S}/.cache"
+            )
+            yarn "$@" "${npmflags[@]}"
+            ;;
     esac
 }
 
@@ -253,15 +253,15 @@ enpm_clean() {
 
     einfo "Clean files"
     case ${NODEJS_MANAGEMENT} in
-    npm)
-        enpm prune --omit=dev || die
-        ;;
-    yarn)
-        enpm install production || die
-        # TODO
-        #enpm autoclean --init || die
-        #enpm autoclean --force || die
-        ;;
+        npm)
+            enpm prune --omit=dev || die
+            ;;
+        yarn)
+            enpm install production || die
+            # TODO
+            #enpm autoclean --init || die
+            #enpm autoclean --force || die
+            ;;
     esac
 
     nodejs_files="${NODEJS_FILES} ${NODEJS_EXTRA_FILES}"

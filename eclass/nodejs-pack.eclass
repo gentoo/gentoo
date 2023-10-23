@@ -19,8 +19,8 @@
 #       https://github.com/Tatsh/tatsh-overlay/blob/master/eclass/yarn.eclass
 
 case ${EAPI} in
-8) ;;
-*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+    8) ;;
+    *) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_NODEJS_PACK_ECLASS} ]]; then

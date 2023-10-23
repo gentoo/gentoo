@@ -30,8 +30,8 @@
 #   tar --create --auto-compress --file foo-1-node_modules.tar.xz foo-1/node_modules/
 
 case ${EAPI} in
-8) ;;
-*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+    8) ;;
+    *) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_NODEJS_MOD_ECLASS} ]]; then
