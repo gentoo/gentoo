@@ -58,6 +58,13 @@ NODEJS_FILES="babel.config.js babel.config.json cli.js dist index.js lib node_mo
 # Can be either files, or directories.
 # Example: NODEJS_EXTRA_FILES="rigger.js modules"
 
+
+# @VARIABLE: MYNPMARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# User-controlled environment variable containing arguments to be passed to npm
+
+
 case ${NODEJS_MANAGEMENT} in
     npm)
         BDEPEND+=" net-libs/nodejs[npm]"
@@ -206,39 +213,39 @@ nodejs_remove_dev() {
 enpm() {
     debug-print-function "${FUNCNAME}" "${@}"
 
-    local mynpmflags_local mynpmflagstype npmflags
+    local mynpmargs_local mynpmargstype npmargs
 
     # Make the array a local variable since <=portage-2.1.6.x does not support
     # global arrays (see bug #297255). But first make sure it is initialised.
-    [[ -z ${mynpmflags} ]] && declare -a mynpmflags=()
-    mynpmflagstype=$(declare -p mynpmflags 2>&-)
-    if [[ "${mynpmflagstype}" != "declare -a mynpmflags="* ]]; then
-        die "mynpmflags must be declared as array"
+    [[ -z ${mynpmargs} ]] && declare -a mynpmargs=()
+    mynpmargstype=$(declare -p mynpmargs 2>&-)
+    if [[ "${mynpmargstype}" != "declare -a mynpmargs="* ]]; then
+        die "mynpmargs must be declared as array"
     fi
 
-    mynpmflags_local=("${mynpmflags[@]}")
+    mynpmargs_local=("${mynpmargs[@]}")
 
-    npmflags=(
+    npmargs=(
         --color false
         --foreground-scripts
         --offline
         --progress false
         --verbose
-        "${mynpmflags_local[@]}"
+        "${mynpmargs_local[@]}"
     )
 
     case ${NODEJS_MANAGEMENT} in
         npm)
-            npmflags+=(
+            npmargs+=(
                 --audit false
             )
-            npm "$@" "${npmflags[@]}"
+            npm "$@" "${npmargs[@]}"
             ;;
         yarn)
-            npmflags+=(
+            npmargs+=(
                 --cache-folder "${S}/.cache"
             )
-            yarn "$@" "${npmflags[@]}"
+            yarn "$@" "${npmargs[@]}"
             ;;
     esac
 }
