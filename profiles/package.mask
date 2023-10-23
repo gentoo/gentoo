@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-10-23)
+# Java libraries. No reverse dependencies.
+# Removal on 2023-11-23.
+dev-java/apache-rat-core
+dev-java/apache-rat-tasks
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-23)
 # Broken on Python 3.11.  Archived upstream since 2020.  No revdeps.
 # Removal on 2023-11-22.  Bug #896886.
