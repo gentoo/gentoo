@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">tensorflow/tensorflow</remote-id>
+		<remote-id type="cpe">cpe:/a:google:tensorflow</remote-id>
 	</upstream>
 </pkgmetadata>
