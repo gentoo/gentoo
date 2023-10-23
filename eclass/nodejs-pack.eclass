@@ -34,9 +34,6 @@ fi
 
 RDEPEND+=" net-libs/nodejs"
 
-# Do not complain about CFLAGS etc since nodejs-pack projects do not use them.
-QA_FLAGS_IGNORED='.*'
-
 # Upstream does not support stripping go packages
 RESTRICT="test strip"
 
