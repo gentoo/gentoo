@@ -40,7 +40,7 @@ _NODEJS_MOD_ECLASS=1
 inherit nodejs
 
 if has nodejs-pack ${INHERITED}; then
-    eerror "nodejs-mod and nodejs-pack eclass are incompatible"
+    die "nodejs-mod and nodejs-pack eclass are incompatible"
 fi
 
 RDEPEND+=" net-libs/nodejs:="
