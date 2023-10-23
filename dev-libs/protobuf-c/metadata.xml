@@ -4,5 +4,6 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="github">protobuf-c/protobuf-c</remote-id>
+    <remote-id type="cpe">cpe:/a:protobuf-c_project:protobuf-c</remote-id>
   </upstream>
 </pkgmetadata>

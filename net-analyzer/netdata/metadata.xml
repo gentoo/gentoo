@@ -21,5 +21,6 @@
   </use>
   <upstream>
     <remote-id type="github">netdata/netdata</remote-id>
+    <remote-id type="cpe">cpe:/a:netdata:netdata</remote-id>
   </upstream>
 </pkgmetadata>

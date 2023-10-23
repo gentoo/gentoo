@@ -8,5 +8,6 @@
 <upstream>
 	<remote-id type="google-code">exfat</remote-id>
 	<remote-id type="github">relan/exfat</remote-id>
+	<remote-id type="cpe">cpe:/a:exfat_project:exfat</remote-id>
 </upstream>
 </pkgmetadata>

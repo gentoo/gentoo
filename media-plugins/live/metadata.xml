@@ -4,4 +4,7 @@
 <maintainer type="project">
   <email>media-video@gentoo.org</email>
 </maintainer>
+<upstream>
+  <remote-id type="cpe">cpe:/a:live555:streaming_media</remote-id>
+</upstream>
 </pkgmetadata>

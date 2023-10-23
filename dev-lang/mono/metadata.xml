@@ -8,6 +8,7 @@
 	</use>
 	<upstream>
 		<remote-id type="github">mono/mono</remote-id>
+		<remote-id type="cpe">cpe:/a:mono-project:mono</remote-id>
 		<changelog>https://www.mono-project.com/docs/about-mono/releases/</changelog>
 	</upstream>
 </pkgmetadata>

@@ -12,5 +12,6 @@
 	<upstream>
 		<changelog>https://www.alsa-project.org/wiki/Main_Page_News</changelog>
 		<remote-id type="github">alsa-project/alsa-utils</remote-id>
+		<remote-id type="cpe">cpe:/a:alsa-project:alsa</remote-id>
 	</upstream>
 </pkgmetadata>

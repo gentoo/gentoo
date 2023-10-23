@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="sourceforge">openjpeg.mirror</remote-id>
 		<remote-id type="github">uclouvain/openjpeg</remote-id>
+		<remote-id type="cpe">cpe:/a:openjpeg:openjpeg</remote-id>
 	</upstream>
 </pkgmetadata>

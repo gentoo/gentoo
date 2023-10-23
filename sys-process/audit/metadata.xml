@@ -13,5 +13,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">linux-audit/audit-userspace</remote-id>
+		<remote-id type="cpe">cpe:/a:linux:audit</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">landley/toybox</remote-id>
+    <remote-id type="cpe">cpe:/a:toybox_project:toybox</remote-id>
   </upstream>
 </pkgmetadata>
