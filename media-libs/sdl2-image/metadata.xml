@@ -9,8 +9,4 @@
 		<remote-id type="github">libsdl-org/SDL_image</remote-id>
 		<bugs-to>https://github.com/libsdl-org/SDL_image/issues</bugs-to>
 	</upstream>
-	<use>
-		<flag name="avif">Enable support for AVIF image format</flag>
-		<flag name="jpegxl">Enable support for JPEG XL image format</flag>
-	</use>
 </pkgmetadata>
