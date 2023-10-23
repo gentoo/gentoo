@@ -84,6 +84,7 @@ BDEPEND="gnome-base/librsvg
 	nls? ( dev-util/intltool )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-clang-16.patch
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-kde.patch
 	"${FILESDIR}"/${PN}-slibtool.patch
@@ -91,7 +92,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-Wconversion.patch
 	"${FILESDIR}"/${PN}-xkb.patch
 	"${FILESDIR}"/${PN}-zh-TW.patch
-	"${FILESDIR}"/${PN}-clang-16-configure.patch
 )
 
 DOCS=( AUTHORS NEWS README RELNOTE doc )
