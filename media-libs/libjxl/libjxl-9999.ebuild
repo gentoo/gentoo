@@ -20,7 +20,7 @@ IUSE="gdk-pixbuf openexr test"
 RESTRICT="!test? ( test )"
 
 DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
-	>=dev-cpp/highway-1.0.5[${MULTILIB_USEDEP}]
+	>=dev-cpp/highway-1.0.7[${MULTILIB_USEDEP}]
 	media-libs/giflib:=[${MULTILIB_USEDEP}]
 	>=media-libs/lcms-2.13:2[${MULTILIB_USEDEP}]
 	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
