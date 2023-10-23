@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-23)
+# Broken on Python 3.11.  Archived upstream since 2020.  No revdeps.
+# Removal on 2023-11-22.  Bug #896886.
+dev-python/sphinx-testing
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-22)
 # Incompatible with Python 3.12.  Last commit in 2016.  No revdeps.
 # Removal on 2023-11-21.  Bug #909917.
