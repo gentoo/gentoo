@@ -53,7 +53,7 @@ nodejs-mod_src_prepare() {
 
     if [[ ! -e package.json ]]; then
         eerror "Unable to locate package.json"
-        eerror "Consider not inheriting the nodejs eclass."
+        eerror "Consider not inheriting the NodeJS eclass."
         die "FATAL: Unable to find package.json"
     fi
 
@@ -71,7 +71,7 @@ nodejs-mod_src_compile() {
         find node_modules/ -name binding.gyp -exec dirname {} \; | while read -r dir; do
             pushd "${dir}" >/dev/null || die
             # shellcheck disable=SC2046
-            npm_config_nodedir=/usr/ /usr/$(get_libdir)/node_modules/npm/bin/node-gyp-bin/node-gyp rebuild --verbose
+            npm_config_nodedir=/usr/ /usr/$(get_libdir)/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js rebuild --verbose
             popd >/dev/null || die
         done
     fi
