@@ -1,0 +1,29 @@
+https://savannah.gnu.org/bugs/?53208
+https://git.savannah.gnu.org/cgit/gperf.git/commit/?id=11487a61ce8a90f29c078dffc576e42cad24b789
+
+From 11487a61ce8a90f29c078dffc576e42cad24b789 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Sat, 8 Sep 2018 17:12:15 +0200
+Subject: Fix failure of "make check -j2".
+
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -1,6 +1,6 @@
+ # Makefile for gperf/tests
+ 
+-# Copyright (C) 1989, 1992-1993, 1995, 1998, 2000, 2002-2004, 2007-2009, 2012, 2016 Free Software Foundation, Inc.
++# Copyright (C) 1989, 1992-1993, 1995, 1998, 2000, 2002-2004, 2007-2009, 2012, 2016, 2018 Free Software Foundation, Inc.
+ # Written by Douglas C. Schmidt <schmidt@ics.uci.edu>
+ # and Bruno Haible <bruno@clisp.org>.
+ #
+@@ -138,7 +138,7 @@ check-smtp:
+ 
+ # these next 5 are demos that show off the generated code
+ POSTPROCESS_FOR_MINGW = LC_ALL=C tr -d '\r' | LC_ALL=C sed -e 's|[^ ]*[/\\][\\]*src[/\\][\\]*gperf[^ ]*|../src/gperf|'
+-check-test:
++check-test: check-ada
+ 	$(GPERF) -L C -F ', 0, 0' -j1 -i 1 -g -o -t -G -N is_reserved_word -k1,3,'$$' < $(srcdir)/c-parse.gperf | $(POSTPROCESS_FOR_MINGW) > c-parse.out
+ 	diff $(srcdir)/c-parse.exp c-parse.out
+ 	$(GPERF) -j1 -i 1 -g -o -t -N is_reserved_word -k1,3,'$$' < $(srcdir)/objc.gperf | $(POSTPROCESS_FOR_MINGW) > objc.out
+-- 
+cgit v1.1
