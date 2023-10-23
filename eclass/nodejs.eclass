@@ -146,7 +146,7 @@ nodejs_remove_dev() {
     # shellcheck disable=SC2185
     find -type f -iregex '.*/\(readme\(.*\)?\|changelog\|roadmap\|security\|release\|contributors\|todo\|authors\)$' -delete || die
 
-    # Remove typscript files
+    # Remove TypeScript files
     # shellcheck disable=SC2185
     find -type f -iregex '.*\.\(tsx?\|jsx\|map\)$' -delete || die
     # shellcheck disable=SC2185
