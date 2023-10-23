@@ -13,6 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+S="${WORKDIR}/${PN}-v${PV}"
+
 src_compile() {
 	local modlist=( ryzen_smu )
 	local modargs=( KERNEL_BUILD="${KV_OUT_DIR}" )
