@@ -101,7 +101,7 @@ nodejs_has_build() {
 
 # @FUNCTION: _NODEJS_MODULES
 # @DESCRIPTION:
-# Returns location where to install nodejs
+# Returns location where to install NodeJS
 _NODEJS_MODULES() {
     # shellcheck disable=SC2046
     echo /usr/$(get_libdir)/node_modules/$(nodejs_package)
@@ -278,7 +278,7 @@ enpm_clean() {
 
 # @FUNCTION: enpm_install
 # @DESCRIPTION:
-# Install the files and folders necessary for the execution of nodejs
+# Install the files and folders necessary for the execution of NodeJS
 enpm_install() {
     debug-print-function "${FUNCNAME}" "${@}"
 

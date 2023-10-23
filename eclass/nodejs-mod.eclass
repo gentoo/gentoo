@@ -62,7 +62,7 @@ nodejs-mod_src_prepare() {
 
 # @FUNCTION: nodejs-mod_src_compile
 # @DESCRIPTION:
-# General function for compiling a nodejs module
+# General function for compiling a NodeJS module
 nodejs-mod_src_compile() {
     debug-print-function "${FUNCNAME}" "${@}"
 
@@ -84,7 +84,7 @@ nodejs-mod_src_compile() {
 
 # @FUNCTION: nodejs-mod_src_test
 # @DESCRIPTION:
-# General function for testing a nodejs module
+# General function for testing a NodeJS module
 nodejs-mod_src_test() {
     debug-print-function "${FUNCNAME}" "${@}"
 

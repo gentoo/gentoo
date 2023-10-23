@@ -57,7 +57,7 @@ nodejs-pack_src_prepare() {
 
 # @FUNCTION: nodejs-pack_src_compile
 # @DESCRIPTION:
-# General function for compiling a nodejs module
+# General function for compiling a NodeJS module
 nodejs-pack_src_compile() {
     debug-print-function "${FUNCNAME}" "${@}"
 
