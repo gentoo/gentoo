@@ -61,7 +61,7 @@ DOCS=( doc/{en,ja} )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-font.patch
-	"${FILESDIR}"/${PN}-configure-clang16.patch
+	"${FILESDIR}"/${PN}-clang-16.patch
 )
 
 src_prepare() {
