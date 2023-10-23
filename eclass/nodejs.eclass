@@ -111,7 +111,7 @@ _NODEJS_MODULES() {
 # @DESCRIPTION:
 # Returns true (0) if is a package
 nodejs_has_package() {
-    [[ -d "${S}"/package ]] || return 1
+    [[ -d "${S}"/package ]]
 }
 
 # @FUNCTION: nodejs_docs
