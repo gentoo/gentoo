@@ -16,14 +16,14 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 # IUSE="+cli" doesn't work due to https://bugs.gentoo.org/831045#c3
-IUSE="+asm +berkdb +bitcoin-cli +daemon dbus examples +external-signer kde libs +man nat-pmp +qrcode qt5 +sqlite system-leveldb +system-libsecp256k1 systemtap test upnp zeromq"
+IUSE="+asm +berkdb +bitcoin-cli +daemon dbus examples +external-signer kde libs +man nat-pmp +qrcode gui +sqlite system-leveldb +system-libsecp256k1 systemtap test upnp zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	dbus? ( qt5 )
-	kde? ( qt5 )
-	qrcode? ( qt5 )
-	system-leveldb? ( || ( daemon qt5 ) )
+	dbus? ( gui )
+	kde? ( gui )
+	qrcode? ( gui )
+	system-leveldb? ( || ( daemon gui ) )
 "
 # dev-libs/univalue is now bundled, as upstream dropped support for system copy
 # and their version in the Bitcoin repo has deviated a fair bit from upstream.
@@ -42,7 +42,7 @@ RDEPEND="
 	libs? ( !<net-libs/libbitcoinconsensus-25.0 )
 	nat-pmp? ( >=net-libs/libnatpmp-20220705:= )
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
-	qt5? (
+	gui? (
 		!<net-p2p/bitcoin-qt-25.0
 		>=dev-qt/qtcore-5.15.5:5
 		>=dev-qt/qtgui-5.15.5:5
@@ -66,11 +66,11 @@ BDEPEND="
 		acct-group/bitcoin
 		acct-user/bitcoin
 	)
-	qt5? ( >=dev-qt/linguist-tools-5.15.5:5 )
+	gui? ( >=dev-qt/linguist-tools-5.15.5:5 )
 	test? ( ${PYTHON_DEPS} )
 "
 IDEPEND="
-	qt5? ( dev-util/desktop-file-utils )
+	gui? ( dev-util/desktop-file-utils )
 "
 
 DOCS=(
@@ -116,7 +116,7 @@ src_prepare() {
 	sed -ne '/^  {/{h;:0;n;H;/^  }/!b0;g;\|"exec": *"\./bitcoin-util"|d};p' \
 		-i test/util/data/bitcoin-util-test.json || die
 
-	sed -e 's/^\(complete -F _bitcoind\b\).*$/\1'"$(usev daemon ' bitcoind')$(usev qt5 ' bitcoin-qt')/" \
+	sed -e 's/^\(complete -F _bitcoind\b\).*$/\1'"$(usev daemon ' bitcoind')$(usev gui ' bitcoin-qt')/" \
 		-i contrib/completions/bash/bitcoind.bash-completion || die
 }
 
@@ -146,7 +146,7 @@ src_configure() {
 		--disable-util-util
 		$(use_with libs)
 		$(use_with daemon)
-		$(use_with qt5 gui qt5)
+		$(use_with gui)
 		$(use_with dbus qtdbus)
 		$(use_with system-leveldb)
 		$(use_with system-libsecp256k1)
@@ -168,7 +168,7 @@ src_install() {
 
 	newbashcomp contrib/completions/bash/bitcoin-tx.bash-completion bitcoin-tx
 	use bitcoin-cli && newbashcomp contrib/completions/bash/bitcoin-cli.bash-completion bitcoin-cli
-	use daemon || use qt5 && newbashcomp contrib/completions/bash/bitcoind.bash-completion bitcoind
+	use daemon || use gui && newbashcomp contrib/completions/bash/bitcoind.bash-completion bitcoind
 
 	if use daemon ; then
 		insinto /etc/bitcoin
@@ -190,7 +190,7 @@ src_install() {
 		newins "${FILESDIR}/bitcoind.logrotate-r1" bitcoind
 	fi
 
-	if use qt5 ; then
+	if use gui ; then
 		insinto /usr/share/icons/hicolor/scalable/apps
 		newins src/qt/res/src/bitcoin.svg bitcoin128.svg
 
@@ -240,7 +240,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	# we don't use xdg.eclass because it adds unconditional IDEPENDs
-	if use qt5 ; then
+	if use gui ; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
@@ -257,7 +257,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if use qt5 ; then
+	if use gui ; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi

@@ -18,7 +18,6 @@
 		<flag name="libs">Build and install libbitcoinconsensus</flag>
 		<flag name="nat-pmp">Enable NAT-PMP port forwarding</flag>
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
-		<flag name="qt5">Build and install Bitcoin-Qt GUI</flag>
 		<flag name="sqlite">Support descriptor wallets in SQLite format</flag>
 		<flag name="system-leveldb">Link with virtual/bitcoin-leveldb rather than embedding an internal copy</flag>
 		<flag name="system-libsecp256k1">Link with dev-libs/libsecp256k1 rather than embedding an internal copy</flag>

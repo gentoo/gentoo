@@ -13,6 +13,6 @@ IUSE="+asm +berkdb dbus +external-signer kde nat-pmp +qrcode +sqlite systemtap t
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	~net-p2p/bitcoin-core-${PV}[qt5,asm=,berkdb=,dbus=,external-signer=,kde=,nat-pmp=,qrcode=,sqlite=,systemtap=,test=,upnp=,zeromq=]
+	~net-p2p/bitcoin-core-${PV}[gui,asm=,berkdb=,dbus=,external-signer=,kde=,nat-pmp=,qrcode=,sqlite=,systemtap=,test=,upnp=,zeromq=]
 	wallet? ( || ( ~net-p2p/bitcoin-core-${PV}[berkdb] ~net-p2p/bitcoin-core-${PV}[sqlite] ) )
 "
