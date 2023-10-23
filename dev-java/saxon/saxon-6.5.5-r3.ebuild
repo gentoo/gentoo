@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc examples source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Set of tools for processing XML documents"
-HOMEPAGE="http://saxon.sourceforge.net/"
+HOMEPAGE="https://www.saxonica.com/index.html https://saxon.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/saxon/saxon6/${PV}/saxon${PV//./-}.zip"
 
 LICENSE="MPL-1.1"
