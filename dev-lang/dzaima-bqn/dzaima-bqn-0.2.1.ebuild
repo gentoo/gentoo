@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/dzaima/BQN/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/BQN-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="MIT"
