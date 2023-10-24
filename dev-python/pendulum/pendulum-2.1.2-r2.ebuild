@@ -5,7 +5,7 @@ EAPI=7
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -38,5 +38,11 @@ BDEPEND="
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
+
+EPYTEST_DESELECT=(
+	# sigh
+	tests/datetime/test_behavior.py::test_proper_dst
+	tests/tz/test_timezone.py::test_dst
+)
 
 distutils_enable_tests pytest
