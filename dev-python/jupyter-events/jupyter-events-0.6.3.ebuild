@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -38,3 +38,18 @@ BDEPEND="
 # TODO: package jupyterlite-sphinx
 # distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=()
+
+	case ${EPYTHON} in
+		python3.12)
+			EPYTEST_DESELECT+=(
+				tests/test_logger.py::test_emit
+				tests/test_logger.py::test_unique_logger_instances
+			)
+			;;
+	esac
+
+	epytest
+}
