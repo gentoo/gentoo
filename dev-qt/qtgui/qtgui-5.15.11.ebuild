@@ -4,7 +4,7 @@
 EAPI=8
 
 if [[ ${PV} != *9999* ]]; then
-	QT5_KDEPATCHSET_REV=1
+	QT5_KDEPATCHSET_REV=2
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
@@ -125,10 +125,6 @@ QT5_GENTOO_CONFIG=(
 
 QT5_GENTOO_PRIVATE_CONFIG=(
 	:gui
-)
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.15.11-xkbcommon160.patch
 )
 
 src_prepare() {
