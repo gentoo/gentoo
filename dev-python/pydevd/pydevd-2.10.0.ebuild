@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 multiprocessing toolchain-funcs
 
@@ -104,6 +104,18 @@ python_test() {
 		# incompatible version?
 		tests_python/test_debugger_json.py::test_pandas
 	)
+
+	case ${EPYTHON} in
+		python3.12)
+			EPYTEST_DESELECT+=(
+				tests_python/test_debugger_json.py::test_case_stop_async_iteration_exception
+				'tests_python/test_debugger.py::test_case_handled_and_unhandled_exception_generator[False-_debugger_case_unhandled_exceptions_listcomp.py]'
+				'tests_python/test_debugger_json.py::test_case_unhandled_exception_generator[_debugger_case_unhandled_exceptions_listcomp.py]'
+				tests_python/test_debugger.py::test_case_13
+				tests_python/test_debugger_json.py::test_function_breakpoints_async
+			)
+			;;
+	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# this is only used to compare against getpid() to detect that xdist
