@@ -14,7 +14,7 @@ SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc python test tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -25,16 +25,17 @@ BDEPEND="
 		app-doc/doxygen
 		dev-python/sphinx
 		dev-python/sphinx-lv2-theme
+		dev-python/sphinxygen
 	)
 "
 # Take care on bumps to check minimum versions!
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-libs/serd-0.30.10[${MULTILIB_USEDEP}]
-	>=dev-libs/sord-0.16.10[${MULTILIB_USEDEP}]
+	dev-libs/serd[${MULTILIB_USEDEP}]
+	>=dev-libs/sord-0.16.16[${MULTILIB_USEDEP}]
 	media-libs/libsndfile
-	>=media-libs/lv2-1.18.2[${MULTILIB_USEDEP}]
-	>=media-libs/sratom-0.6.10[${MULTILIB_USEDEP}]
+	media-libs/lv2[${MULTILIB_USEDEP}]
+	media-libs/sratom[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
@@ -46,7 +47,7 @@ src_prepare() {
 	default
 
 	# fix doc installation path
-	sed -iE "s%install_dir: docdir / 'lilv-0',%install_dir: docdir / '${PF}',%g" doc/c/meson.build || die
+	sed -iE "s/versioned_name/'${PF}'/g" doc/html/meson.build doc/singlehtml/meson.build || die
 }
 
 multilib_src_configure() {
