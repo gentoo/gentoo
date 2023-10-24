@@ -95,6 +95,36 @@ PATCHES=(
 	"${FILESDIR}/init.patch"
 )
 
+efmt() {
+	: ${1:?} ; local l ; while read -r l ; do "${!#}" "${l}" ; done < <(fmt "${@:1:$#-1}")
+}
+
+pkg_pretend() {
+	if ! use daemon && ! use gui && ! has_version "${CATEGORY}/${PN}[-daemon,-gui(-),-qt5(-)]" ; then
+		efmt ewarn <<-EOF
+			You are enabling neither USE="daemon" nor USE="gui". This is a valid
+			configuration, but you will be unable to run a Bitcoin node using this
+			installation.
+		EOF
+	fi
+	if use daemon && ! use bitcoin-cli && ! has_version "${CATEGORY}/${PN}[daemon,-bitcoin-cli]" ; then
+		efmt ewarn <<-EOF
+			You are enabling USE="daemon" but not USE="bitcoin-cli". This is a valid
+			configuration, but you will be unable to interact with your bitcoind node
+			via the command line using this installation.
+		EOF
+	fi
+	if ! use berkdb && ! use sqlite &&
+		{ { use daemon && ! has_version "${CATEGORY}/${PN}[daemon,-berkdb,-sqlite]" ; } ||
+		  { use gui && ! has_version "${CATEGORY}/${PN}[gui,-berkdb,-sqlite]" ; } ; }
+	then
+		efmt ewarn <<-EOF
+			You are enabling neither USE="berkdb" nor USE="sqlite". This is a valid
+			configuration, but your Bitcoin node will be unable to open any wallets.
+		EOF
+	fi
+}
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
@@ -209,10 +239,6 @@ src_install() {
 	fi
 }
 
-efmt() {
-	: ${1:?} ; local l ; while read -r l ; do "${!#}" "${l}" ; done < <(fmt "${@:1:$#-1}")
-}
-
 pkg_preinst() {
 	if use daemon && [[ -d "${EROOT}/var/lib/bitcoin/.bitcoin" ]] ; then
 		if [[ -h "${EROOT}/var/lib/bitcoin/.bitcoin" ]] ; then
@@ -253,6 +279,14 @@ pkg_postinst() {
 			- Using an init script: add the 'bitcoin' user to the 'tor' user group.
 			- Running bitcoind directly: add that user to the 'tor' user group.
 			EOF
+	fi
+
+	if use bitcoin-cli && use daemon ; then
+		efmt -su elog <<-EOF
+			To use bitcoin-cli with the /etc/init.d/bitcoind service:
+			 - Add your user(s) to the 'bitcoin' group.
+			 - Symlink ~/.bitcoin to /var/lib/bitcoind.
+		EOF
 	fi
 }
 
