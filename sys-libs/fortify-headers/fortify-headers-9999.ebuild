@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="Standalone implementation of fortify source"
 HOMEPAGE="https://github.com/jvoisin/fortify-headers"
 
@@ -28,6 +30,10 @@ src_compile() {
 	# the catch-all rule and try to install here where we don't have access
 	# to ${ED}
 	:;
+}
+
+src_test() {
+	emake -C tests CC="$(tc-getCC)"
 }
 
 src_install() {
