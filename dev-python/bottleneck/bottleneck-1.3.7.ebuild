@@ -5,7 +5,9 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -14,10 +16,6 @@ HOMEPAGE="
 	https://github.com/pydata/bottleneck/
 	https://pypi.org/project/Bottleneck/
 "
-SRC_URI="
-	$(pypi_sdist_url --no-normalize Bottleneck)
-"
-S=${WORKDIR}/${P^}
 
 LICENSE="BSD"
 SLOT="0"
