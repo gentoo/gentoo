@@ -13,7 +13,7 @@ SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -23,13 +23,14 @@ BDEPEND="
 		app-doc/doxygen
 		dev-python/sphinx
 		dev-python/sphinx-lv2-theme
+		dev-python/sphinxygen
 )
 "
 # Take care on bumps to check minimum versions!
 RDEPEND="
-	>=dev-libs/serd-0.30.10
-	>=dev-libs/sord-0.16.10
-	>=media-libs/lv2-1.18.4
+	dev-libs/serd
+	>=dev-libs/sord-0.16.16
+	media-libs/lv2
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -39,7 +40,7 @@ src_prepare() {
 	default
 
 	# fix doc installation path
-	sed -iE "s%install_dir: docdir / 'sratom-0',%install_dir: docdir / '${PF}',%g" doc/c/meson.build || die
+	sed -iE "s/versioned_name/'${PF}'/g" doc/html/meson.build doc/singlehtml/meson.build || die
 }
 
 multilib_src_configure() {
