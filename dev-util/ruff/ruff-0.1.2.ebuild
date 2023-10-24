@@ -55,8 +55,8 @@ CRATES="
 	clap_derive@4.4.2
 	clap_lex@0.5.1
 	clearscreen@2.0.1
-	codspeed-criterion-compat@2.2.0
-	codspeed@2.2.0
+	codspeed-criterion-compat@2.3.0
+	codspeed@2.3.0
 	colorchoice@1.0.0
 	colored@2.0.4
 	configparser@3.0.2
@@ -248,8 +248,8 @@ CRATES="
 	serde_json@1.0.107
 	serde_spanned@0.6.3
 	serde_test@1.0.176
-	serde_with@3.3.0
-	serde_with_macros@3.3.0
+	serde_with@3.4.0
+	serde_with_macros@3.4.0
 	sharded-slab@0.1.4
 	shellexpand@3.1.0
 	shlex@1.2.0
@@ -261,7 +261,7 @@ CRATES="
 	string_cache@0.8.7
 	strsim@0.10.0
 	strum@0.25.0
-	strum_macros@0.25.2
+	strum_macros@0.25.3
 	syn-ext@0.4.0
 	syn@1.0.109
 	syn@2.0.38
@@ -273,8 +273,8 @@ CRATES="
 	test-case-core@3.2.1
 	test-case-macros@3.2.1
 	test-case@3.2.1
-	thiserror-impl@1.0.49
-	thiserror@1.0.49
+	thiserror-impl@1.0.50
+	thiserror@1.0.50
 	thread_local@1.1.7
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
@@ -292,7 +292,7 @@ CRATES="
 	tracing-indicatif@0.3.5
 	tracing-log@0.1.3
 	tracing-subscriber@0.3.17
-	tracing@0.1.39
+	tracing@0.1.40
 	typed-arena@2.0.2
 	unic-char-property@0.9.0
 	unic-char-range@0.9.0
@@ -378,7 +378,7 @@ LICENSE="MIT"
 
 BDEPEND="
 	dev-util/patchelf
-	>=virtual/rust-1.72
+	>=virtual/rust-1.73
 "
 
 # Dependent crate licenses
