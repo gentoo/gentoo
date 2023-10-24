@@ -89,6 +89,7 @@ src_configure() {
 		$(use_with activefilter pcap)
 		$(use_with gtk)
 		--enable-cbcp
+		--enable-multilink
 	)
 	econf "${args[@]}"
 }
