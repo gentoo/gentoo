@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 # jsonschema[format-nongpl] deps are always on in our ebuild
 RDEPEND="
