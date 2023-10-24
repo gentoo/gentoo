@@ -14,7 +14,7 @@ S="${WORKDIR}/${P/-core}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 # IUSE="+cli" doesn't work due to https://bugs.gentoo.org/831045#c3
 IUSE="+asm +berkdb +bitcoin-cli +daemon dbus examples +external-signer kde libs +man nat-pmp +qrcode gui +sqlite system-leveldb +system-libsecp256k1 systemtap test upnp zeromq"
 RESTRICT="!test? ( test )"
