@@ -52,6 +52,7 @@ dev-python/nbdime
 dev-python/nbval
 dev-python/nh3
 dev-python/notebook
+dev-python/notebook-shim
 dev-python/oauthlib
 dev-python/openapi-core
 dev-python/openapi-schema-validator
