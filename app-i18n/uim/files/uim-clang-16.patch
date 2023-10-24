@@ -1,4 +1,6 @@
 Part of this went upstream as https://github.com/uim/uim/commit/99fd890fa601b81ff99e5e0f1977fe309f56b90e.
+
+The rest was done in https://github.com/uim/uim/pull/198.
 --- a/configure.ac
 +++ b/configure.ac
 @@ -601,6 +601,7 @@ if test "x$ac_cv_func_snprintf" = xyes; then
