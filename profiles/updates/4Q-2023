@@ -2,3 +2,4 @@ move dev-python/python-varlink dev-python/varlink
 move dev-python/python-musicbrainzngs dev-python/musicbrainzngs
 move dev-python/python-libevdev dev-python/libevdev
 move dev-python/sphinx_lv2_theme dev-python/sphinx-lv2-theme
+move dev-python/jschema_to_python dev-python/jschema-to-python

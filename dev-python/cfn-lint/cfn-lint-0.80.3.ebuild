@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 RDEPEND="
 	>=dev-python/aws-sam-translator-1.73.0[${PYTHON_USEDEP}]
 	dev-python/jsonpatch[${PYTHON_USEDEP}]
-	>=dev-python/jschema_to_python-1.2.3[${PYTHON_USEDEP}]
+	>=dev-python/jschema-to-python-1.2.3[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-5[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-3.0[${PYTHON_USEDEP}]
 	dev-python/junit-xml[${PYTHON_USEDEP}]
