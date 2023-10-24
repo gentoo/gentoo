@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 multiprocessing
 
@@ -61,6 +61,15 @@ python_test() {
 	local EPYTEST_IGNORE=(
 		tests/tests/test_vendoring.py
 	)
+
+	case ${EPYTHON} in
+		python3.12)
+			EPYTEST_DESELECT+=(
+				tests/debugpy/test_flask.py
+			)
+			;;
+	esac
+
 	epytest -p timeout -p xdist -n "$(makeopts_jobs)" --dist=worksteal \
 		-k "not attach_pid"
 }
