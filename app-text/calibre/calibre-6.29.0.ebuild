@@ -37,7 +37,7 @@ LICENSE="
 "
 KEYWORDS="~amd64"
 SLOT="0"
-IUSE="+font-subsetting ios speech +system-mathjax test +udisks"
+IUSE="+font-subsetting ios speech +system-mathjax test +udisks unrar"
 
 RESTRICT="!test? ( test )"
 
@@ -97,7 +97,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	speech? ( $(python_gen_cond_dep 'app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]') )
 	system-mathjax? ( >=dev-libs/mathjax-3 )
-	udisks? ( virtual/libudev )"
+	udisks? ( virtual/libudev )
+	unrar? ( dev-python/unrardll )
+"
 RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )"
 DEPEND="${COMMON_DEPEND}
@@ -182,14 +184,13 @@ src_test() {
 	local _test_excludes=(
 		# unpackaged Python dependency: py7zr
 		7z
-		# unpackaged Python dependency: unrardll
-		test_unrar
 		# unpackaged Python dependency: pyzstd
 		test_zstd
 		# tests if a completely unused module is bundled
 		pycryptodome
 
 		$(usev !speech speech_dispatcher)
+		$(usev !unrar test_unrar)
 
 		# undocumented reasons
 		test_mem_leaks
