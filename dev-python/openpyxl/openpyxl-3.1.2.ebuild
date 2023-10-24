@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -34,3 +34,21 @@ BDEPEND="
 distutils_enable_sphinx doc \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=()
+
+	case ${EPYTHON} in
+		python3.12)
+			EPYTEST_DESELECT+=(
+				# deprecation warnings
+				openpyxl/reader/tests/test_workbook.py::TestWorkbookParser::test_broken_sheet_ref
+				openpyxl/reader/tests/test_workbook.py::TestWorkbookParser::test_defined_names_print_area
+				openpyxl/reader/tests/test_workbook.py::TestWorkbookParser::test_name_invalid_index
+				openpyxl/styles/tests/test_stylesheet.py::test_no_styles
+			)
+			;;
+	esac
+
+	epytest
+}
