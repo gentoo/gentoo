@@ -225,7 +225,6 @@ dev-libs/libffi exec-static-trampoline
 # and there is no explanation as to how, so continuing to provide these patches
 # would be irresponsible. Bug #889326
 net-libs/libbitcoinconsensus knots
-net-p2p/bitcoin-cli knots
 net-p2p/bitcoin-qt knots
 net-p2p/bitcoind knots
 
