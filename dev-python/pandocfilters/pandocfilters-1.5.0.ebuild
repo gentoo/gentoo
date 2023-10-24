@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="Utilities for writing pandoc filters in python"
-HOMEPAGE="https://github.com/jgm/pandocfilters"
+HOMEPAGE="
+	https://github.com/jgm/pandocfilters/
+	https://pypi.org/project/pandocfilters/
+"
 
 LICENSE="BSD"
 SLOT="0"
