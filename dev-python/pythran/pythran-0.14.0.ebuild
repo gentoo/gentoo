@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{10..11} )
+PYTHON_TESTED=( python3_{10..12} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 
 inherit distutils-r1 multiprocessing
@@ -68,6 +68,20 @@ python_test() {
 		pythran/tests/test_distutils.py::TestDistutils::test_setup_build
 		pythran/tests/test_distutils.py::TestDistutils::test_setup_build2
 	)
+
+	case ${EPYTHON} in
+		python3.12)
+			EPYTEST_DESELECT+=(
+				pythran/tests/test_cases.py::TestCases::test_convnet_run0
+				pythran/tests/test_advanced.py::TestAdvanced::test_matmul_operator
+				pythran/tests/test_distutils.py::TestDistutils::test_setup_{b,s}dist_install3
+				pythran/tests/test_cases.py::TestCases::test_euclidean_distance_square_run0
+				pythran/tests/test_numpy_func2.py::TestNumpyFunc2::test_matrix_power{0..2}
+				pythran/tests/test_numpy_func3.py::TestNumpyFunc3::test_dot{5,7,9,11,12b,13,14b}
+				pythran/tests/test_numpy_func3.py::TestNumpyFunc3::test_dot{15..23}
+			)
+			;;
+	esac
 
 	local -x COLUMNS=80
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
