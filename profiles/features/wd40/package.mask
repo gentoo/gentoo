@@ -34,7 +34,11 @@ dev-python/josepy
 dev-python/jsonschema-path
 dev-python/jsonschema-spec
 dev-python/jsonschema-specifications
->=dev-python/jupyter-events-0.7.0
+dev-python/jupyter-events
+dev-python/jupyter-lsp
+dev-python/jupyter-server
+dev-python/jupyter-server-mathjax
+dev-python/jupyter-server-terminals
 dev-python/jupyterlab-server
 dev-python/jupyterlab
 dev-python/keyring
@@ -70,6 +74,7 @@ dev-python/pyfuse3
 dev-python/pymdown-extensions
 dev-python/pyspelling
 dev-python/pyspnego
+dev-python/pytest-jupyter
 dev-python/pytest-localftpserver
 dev-python/pytest-salt-factories
 dev-python/pytest-trio
