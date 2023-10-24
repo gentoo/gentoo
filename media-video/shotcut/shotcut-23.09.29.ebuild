@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="A free, open source, cross-platform video editor"
 HOMEPAGE="https://www.shotcut.org/ https://github.com/mltframework/shotcut/"
 if [[ ${PV} != 9999* ]] ; then
 	SRC_URI="https://github.com/mltframework/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mltframework/shotcut/"
@@ -21,34 +21,31 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 "
 COMMON_DEPEND="
-	dev-qt/qtdeclarative:5[widgets]
-	dev-qt/qtmultimedia:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtopengl:5
-	dev-qt/qtquickcontrols2:5
-	dev-qt/qtsql:5
-	dev-qt/qtwebsockets:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
-	>=media-libs/mlt-7.8.0[ffmpeg,frei0r,fftw(+),jack,opengl,qt5,sdl,xml]
+	dev-qt/qtbase:6[concurrent,gui,network,opengl,sql,widgets,xml]
+	dev-qt/qtdeclarative:6[widgets]
+	dev-qt/qtmultimedia:6
+	>=media-libs/mlt-7.18.0[ffmpeg,frei0r,jack,opengl,sdl,xml]
 	media-video/ffmpeg
 "
-DEPEND="${COMMON_DEPEND}
-	dev-qt/qtconcurrent:5
-	dev-qt/qtx11extras:5
-"
+
+DEPEND="${COMMON_DEPEND}"
+
 RDEPEND="${COMMON_DEPEND}
-	dev-qt/qtgraphicaleffects:5
 	virtual/jack
 "
 
 src_configure() {
 	CMAKE_BUILD_TYPE=$(usex debug Debug Release)
+	if [[ ${PV} != 9999* ]] ; then
+		SHOTCUT_VERSION="${PV}"
+	else
+		SHOTCUT_VERSION="$(git log --date=format:'%y.%m.%d' -1 --format='%ad')"
+	fi
 	local mycmakeargs=(
-		-DSHOTCUT_VERSION="${PV}"
+		-DSHOTCUT_VERSION="${SHOTCUT_VERSION}"
 	)
 	use debug || append-cxxflags "-DNDEBUG"
 	append-cxxflags "-DSHOTCUT_NOUPGRADE"
