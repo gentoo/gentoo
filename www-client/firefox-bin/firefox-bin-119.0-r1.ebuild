@@ -56,7 +56,7 @@ DEPEND="alsa? (
 		)
 	)"
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!www-client/firefox-bin:0
 	!www-client/firefox-bin:esr
 	>=app-accessibility/at-spi2-core-2.46.0:2
