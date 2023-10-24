@@ -218,14 +218,6 @@ dev-libs/libffi exec-static-trampoline
 # Doesn't compile currently, bug #853094.
 >=net-dialup/freeradius-3.2.0 oracle
 
-# David Seifert <soap@gentoo.org> (2023-01-04)
-# Out of date patchset, warns on latest version about being "expired",
-# unofficial and maintainer discourages people upgrading to latest (non-packaged)
-# versions of knots too. The upstream maintainer was recently compromised
-# and there is no explanation as to how, so continuing to provide these patches
-# would be irresponsible. Bug #889326
-net-p2p/bitcoind knots
-
 # Matt Turner <mattst88@gentoo.org> (2023-01-01)
 # Depends on nautilus < 43
 >=app-text/evince-43.0 nautilus
