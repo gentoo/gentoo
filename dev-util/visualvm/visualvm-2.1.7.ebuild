@@ -38,6 +38,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	dev-java/asm:9
 	dev-java/hamcrest-core:1.3
+	dev-java/jcommander:0
 	dev-java/jna:4
 	dev-java/junit:4
 	dev-java/junit:5
