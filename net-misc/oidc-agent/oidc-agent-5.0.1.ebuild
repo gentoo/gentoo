@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg-utils
+inherit tmpfiles xdg-utils
 
 DESCRIPTION="Agent and tools for managing OpenID Connect tokens on the command line"
 HOMEPAGE="https://github.com/indigo-dc/oidc-agent"
@@ -68,6 +68,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	xdg_desktop_database_update
 
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
