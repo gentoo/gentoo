@@ -28,12 +28,12 @@ SLOT="0/$(ver_cut 1-2)"
 IUSE="debug"
 
 COMMON_DEPEND="dev-libs/elfutils"
-RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
 	sys-devel/clang
 	sys-devel/lld"
+RDEPEND="${DEPEND}"
 BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"
 
