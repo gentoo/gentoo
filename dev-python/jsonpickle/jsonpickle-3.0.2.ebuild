@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 optfeature
 
@@ -26,12 +26,14 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/feedparser[${PYTHON_USEDEP}]
-		dev-python/gmpy[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/ujson[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/gmpy[${PYTHON_USEDEP}]
+			dev-python/pandas[${PYTHON_USEDEP}]
+		' python3_{10..11})
 	)
 "
 
@@ -53,6 +55,14 @@ python_test() {
 		# unpackaged bson dependency
 		tests/bson_test.py
 	)
+
+	if ! has_version "dev-python/gmpy[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=( jsonpickle/ext/gmpy.py )
+	fi
+	if ! has_version "dev-python/pandas[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=( jsonpickle/ext/pandas.py )
+	fi
+
 	epytest
 }
 
