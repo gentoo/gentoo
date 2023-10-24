@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Transitional package for net-p2p/bitcoin-core[qt5]"
+DESCRIPTION="Transitional package for net-p2p/bitcoin-core[gui]"
 HOMEPAGE="https://bitcoincore.org/"
 
 LICENSE="MIT"

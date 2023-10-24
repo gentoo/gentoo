@@ -16,7 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 # IUSE="+cli" doesn't work due to https://bugs.gentoo.org/831045#c3
-IUSE="+asm +berkdb +bitcoin-cli +daemon dbus examples +external-signer kde libs +man nat-pmp +qrcode gui +sqlite system-leveldb +system-libsecp256k1 systemtap test upnp zeromq"
+IUSE="+asm +berkdb +bitcoin-cli +daemon dbus examples +external-signer gui kde libs +man nat-pmp +qrcode +sqlite system-leveldb +system-libsecp256k1 systemtap test upnp zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -39,9 +39,6 @@ RDEPEND="
 		acct-group/bitcoin
 		acct-user/bitcoin
 	)
-	libs? ( !<net-libs/libbitcoinconsensus-25.0 )
-	nat-pmp? ( >=net-libs/libnatpmp-20220705:= )
-	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
 	gui? (
 		!<net-p2p/bitcoin-qt-25.0
 		>=dev-qt/qtcore-5.15.5:5
@@ -50,6 +47,9 @@ RDEPEND="
 		>=dev-qt/qtwidgets-5.15.5:5
 		dbus? ( >=dev-qt/qtdbus-5.15.5:5 )
 	)
+	libs? ( !<net-libs/libbitcoinconsensus-25.0 )
+	nat-pmp? ( >=net-libs/libnatpmp-20220705:= )
+	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
 	sqlite? ( >=dev-db/sqlite-3.38.5:= )
 	system-leveldb? ( virtual/bitcoin-leveldb )
 	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.3.1:=[recovery,schnorr] )
@@ -146,7 +146,7 @@ src_configure() {
 		--disable-util-util
 		$(use_with libs)
 		$(use_with daemon)
-		$(use_with gui)
+		$(use_with gui gui qt5)
 		$(use_with dbus qtdbus)
 		$(use_with system-leveldb)
 		$(use_with system-libsecp256k1)
