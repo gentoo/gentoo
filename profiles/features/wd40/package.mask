@@ -4,6 +4,7 @@
 # Various packages requiring Rust.
 app-admin/ansible
 app-admin/ansible-core
+app-admin/salt
 >=app-antivirus/clamav-0.105.1
 app-backup/borgbackup
 app-backup/borgmatic
@@ -68,6 +69,7 @@ dev-python/pymdown-extensions
 dev-python/pyspelling
 dev-python/pyspnego
 dev-python/pytest-localftpserver
+dev-python/pytest-salt-factories
 dev-python/pytest-trio
 dev-python/python-glanceclient
 dev-python/python-ironicclient
