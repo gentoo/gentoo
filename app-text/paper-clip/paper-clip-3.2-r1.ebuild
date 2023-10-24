@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/Diego-Ivan/${REAL_PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${REAL_PN}-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"
