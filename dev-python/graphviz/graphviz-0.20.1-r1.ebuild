@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -32,6 +32,10 @@ BDEPEND="
 		>=dev-python/pytest-mock-1.8[${PYTHON_USEDEP}]
 		media-gfx/graphviz[gts,pdf]
 	)
+"
+
+PATCHES="
+	${FILESDIR}/${P}_fix_python3_12_test_deprecated_escape.patch
 "
 
 distutils_enable_tests pytest
