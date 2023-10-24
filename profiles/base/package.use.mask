@@ -224,7 +224,6 @@ dev-libs/libffi exec-static-trampoline
 # versions of knots too. The upstream maintainer was recently compromised
 # and there is no explanation as to how, so continuing to provide these patches
 # would be irresponsible. Bug #889326
-dev-util/bitcoin-tx knots
 net-libs/libbitcoinconsensus knots
 net-p2p/bitcoin-cli knots
 net-p2p/bitcoin-qt knots
