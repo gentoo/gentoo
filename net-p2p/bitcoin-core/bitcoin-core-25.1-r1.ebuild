@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools bash-completion-r1 db-use desktop python-any-r1 systemd xdg-utils
+inherit autotools bash-completion-r1 check-reqs db-use desktop edo multiprocessing python-any-r1 systemd xdg-utils
 
 DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
@@ -123,10 +123,17 @@ pkg_pretend() {
 			configuration, but your Bitcoin node will be unable to open any wallets.
 		EOF
 	fi
+
+	# test/functional/feature_pruning.py requires 4 GB disk space
+	# test/functional/wallet_pruning.py requires 1.3 GB disk space
+	use test && CHECKREQS_DISK_BUILD="6G" check-reqs_pkg_pretend
 }
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	if use test ; then
+		CHECKREQS_DISK_BUILD="6G" check-reqs_pkg_setup
+		python-any-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
@@ -174,6 +181,9 @@ src_configure() {
 		--enable-util-tx
 		--${wallet}-util-wallet
 		--disable-util-util
+		# syscall sandbox is missing faccessat2 and pselect6, causing bitcoind to crash during tests;
+		# removed upstream for 26.0 in https://github.com/bitcoin/bitcoin/commit/32e2ffc39374f61bb2435da507f285459985df9e
+		--without-seccomp
 		$(use_with libs)
 		$(use_with daemon)
 		$(use_with gui gui qt5)
@@ -182,6 +192,13 @@ src_configure() {
 		$(use_with system-libsecp256k1)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	emake check
+
+	use daemon && edo "${PYTHON}" test/functional/test_runner.py \
+			--ansi --extended --jobs="$(get_makeopts_jobs)" --timeout-factor="${TIMEOUT_FACTOR:-15}"
 }
 
 src_install() {
