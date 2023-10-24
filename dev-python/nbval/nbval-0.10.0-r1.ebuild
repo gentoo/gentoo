@@ -3,12 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="A pytest plugin to validate Jupyter notebooks"
-HOMEPAGE="https://github.com/computationalmodelling/nbval"
+HOMEPAGE="
+	https://github.com/computationalmodelling/nbval/
+	https://pypi.org/project/nbval/
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,19 +27,14 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/nbdime[${PYTHON_USEDEP}]
-		dev-python/sympy[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/sympy[${PYTHON_USEDEP}]
+		' python3_{10..11})
 	)
 	doc? (
 		virtual/pandoc
 	)
 "
-
-EPYTEST_IGNORE=(
-	# Mocker not packaged
-	tests/test_nbdime_reporter.py
-
-	tests/test_coverage.py
-)
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
@@ -45,5 +44,20 @@ distutils_enable_sphinx docs/source \
 	dev-python/matplotlib
 
 python_test() {
+	local EPYTEST_IGNORE=(
+		# Mocker not packaged
+		tests/test_nbdime_reporter.py
+
+		tests/test_coverage.py
+	)
+	local EPYTEST_DESELECT=()
+
+	if ! has_version "dev-python/sympy[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			"tests/test_unit_tests_in_notebooks.py::test_print[${S}/tests/ipynb-test-samples/test-latex-pass-failsbutignoreoutput.ipynb]"
+			"tests/test_unit_tests_in_notebooks.py::test_print[${S}/tests/ipynb-test-samples/test-latex-pass-correctouput.ipynb]"
+		)
+	fi
+
 	PYTHONPATH=. epytest # 895258
 }
