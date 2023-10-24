@@ -18,7 +18,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-2+ LGPL-2.1+ MIT"
