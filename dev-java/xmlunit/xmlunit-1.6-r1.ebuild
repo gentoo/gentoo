@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,8 @@ MAVEN_ID="xmlunit:xmlunit:1.6"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="XMLUnit extends JUnit and NUnit to enable unit testing of XML"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
-HOMEPAGE="http://xmlunit.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/xmlunit/ https://www.xmlunit.org"
+SRC_URI="mirror://sourceforge/project/xmlunit/xmlunit%20for%20Java/XMLUnit%20for%20Java%20${PV}/${P}-src.zip"
 
 LICENSE="BSD"
 SLOT="1"
