@@ -26,6 +26,7 @@ dev-python/cfn-lint
 dev-python/dirty-equals
 dev-python/hatch-jupyter-builder
 dev-python/inflect
+dev-python/ipyparallel
 dev-python/ipywidgets
 dev-python/jaraco-itertools
 dev-python/josepy
