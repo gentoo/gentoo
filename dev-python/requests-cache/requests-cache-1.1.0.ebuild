@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature
@@ -60,6 +60,16 @@ python_test() {
 		# Requires Internet access
 		tests/integration/test_upgrade.py::test_version_upgrade
 	)
+
+	case ${EPYTHON} in
+		python3.12)
+			# https://github.com/requests-cache/requests-cache/issues/845
+			EPYTEST_DESELECT+=(
+				tests/integration/test_memory.py::TestMemoryCache::test_response_no_duplicate_read
+				tests/integration/test_sqlite.py::TestSQLiteCache::test_concurrency
+			)
+			;;
+	esac
 
 	local -x USE_PYTEST_HTTPBIN=true
 	epytest
