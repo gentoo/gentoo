@@ -13,5 +13,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">graphviz</remote-id>
+    <remote-id type="github">xflr6/graphviz</remote-id>
   </upstream>
 </pkgmetadata>
