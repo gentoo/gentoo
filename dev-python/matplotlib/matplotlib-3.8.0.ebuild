@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic multiprocessing prefix pypi
@@ -83,7 +83,7 @@ RDEPEND="
 	wxwidgets? (
 		$(python_gen_cond_dep '
 			dev-python/wxpython:*[${PYTHON_USEDEP}]
-		' python3_{8..10})
+		' python3_{10..11})
 	)
 "
 
@@ -249,11 +249,20 @@ python_test() {
 		tests/test_backends_interactive.py::test_webagg
 	)
 
-	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
-		# https://github.com/matplotlib/matplotlib/issues/23384
-		"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtagg', 'QT_API': 'PyQt5'}]"
-		"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtcairo', 'QT_API': 'PyQt5'}]"
-	)
+	case ${EPYTHON} in
+		python3.11)
+			EPYTEST_DESELECT+=(
+				# https://github.com/matplotlib/matplotlib/issues/23384
+				"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtagg', 'QT_API': 'PyQt5'}]"
+				"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtcairo', 'QT_API': 'PyQt5'}]"
+			)
+			;;
+		python3.12)
+			EPYTEST_DESELECT+=(
+				tests/test_constrainedlayout.py::test_compressed1
+			)
+			;;
+	esac
 
 	case "${ABI}" in
 		alpha|arm|hppa|m68k|o32|ppc|s390|sh|sparc|x86)
