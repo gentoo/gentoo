@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
+
 inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Filesystem abstraction layer"
@@ -23,6 +24,9 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-lang/python-3.12.0_p1
+	' python3_12)
 "
 # NB: we skip tests requiring pyftpdlib
 BDEPEND="
