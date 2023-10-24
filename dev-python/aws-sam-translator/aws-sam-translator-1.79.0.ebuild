@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 multiprocessing
 
@@ -57,5 +57,6 @@ python_prepare_all() {
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x AWS_DEFAULT_REGION=us-east-1
-	epytest -o addopts= -p xdist -n "$(makeopts_jobs)" --dist=worksteal
+	epytest -o addopts= -o filterwarnings= \
+		-p xdist -n "$(makeopts_jobs)" --dist=worksteal
 }
