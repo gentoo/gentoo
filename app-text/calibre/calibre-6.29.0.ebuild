@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="ipv6(+),sqlite,ssl"
 
-inherit toolchain-funcs python-single-r1 qmake-utils verify-sig xdg-utils
+inherit edo toolchain-funcs python-single-r1 qmake-utils verify-sig xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
@@ -158,17 +158,17 @@ src_compile() {
 	export FT_LIB_DIR="${MY_LIBDIR}" HUNSPELL_LIB_DIR="${MY_LIBDIR}" PODOFO_LIB_DIR="${MY_LIBDIR}"
 	export QMAKE="$(qt6_get_bindir)/qmake"
 
-	${EPYTHON} setup.py build || die
-	${EPYTHON} setup.py gui || die
+	edo ${EPYTHON} setup.py build
+	edo ${EPYTHON} setup.py gui
 
 	# A few different resources are bundled in the distfile by default, because
 	# not all systems necessarily have them. We un-vendor them, using the
 	# upstream integrated approach if possible. See setup/revendor.py and
 	# consider migrating other resources to this if they do not use it, in
 	# *preference* over manual rm'ing.
-	${EPYTHON} setup.py liberation_fonts \
+	edo ${EPYTHON} setup.py liberation_fonts \
 		--path-to-liberation_fonts "${EPREFIX}"/usr/share/fonts/liberation-fonts \
-		--system-liberation_fonts || die
+		--system-liberation_fonts
 }
 
 src_test() {
@@ -190,7 +190,7 @@ src_test() {
 		test_searching
 	)
 
-	${PYTHON} setup.py test "${_test_excludes[@]/#/--exclude-test-name=}" || die
+	edo ${PYTHON} setup.py test "${_test_excludes[@]/#/--exclude-test-name=}"
 }
 
 src_install() {
@@ -214,12 +214,12 @@ src_install() {
 	# If this directory doesn't exist, zsh completion won't install
 	dodir /usr/share/zsh/site-functions
 
-	"${PYTHON}" setup.py install \
+	edo "${PYTHON}" setup.py install \
 		--staging-root="${ED}/usr" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--staging-libdir="${ED}/usr/$(get_libdir)" \
-		--system-plugins-location="${EPREFIX}/usr/share/calibre/system-plugins" || die
+		--system-plugins-location="${EPREFIX}/usr/share/calibre/system-plugins"
 
 	cp -r man-pages/ "${ED}"/usr/share/man || die
 
