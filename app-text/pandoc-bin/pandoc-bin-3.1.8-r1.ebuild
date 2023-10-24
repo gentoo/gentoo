@@ -26,7 +26,7 @@ RDEPEND="
 	pandoc-symlink? (
 		!${CATEGORY}/${MY_PN}
 		!app-text/pandoc-cli
-		!dev-haskell/pandoc[doc]
+		!dev-haskell/pandoc
 	)
 "
 
