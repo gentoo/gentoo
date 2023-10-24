@@ -191,6 +191,12 @@ src_install() {
 	use systemtap && DOCS+=( doc/tracing.md )
 	use zeromq && DOCS+=( doc/zmq.md )
 
+	if use daemon ; then
+		# https://bugs.gentoo.org/757102
+		DOCS+=( share/rpcauth/rpcauth.py )
+		docompress -x "/usr/share/doc/${PF}/rpcauth.py"
+	fi
+
 	default
 
 	find "${ED}" -type f -name '*.la' -delete || die
