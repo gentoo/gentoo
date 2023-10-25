@@ -21,7 +21,7 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
 IUSE="
 	+binutils-plugin +debug debuginfod doc exegesis libedit +libffi
-	ncurses test xar xml z3 zstd
+	ncurses test xml z3 zstd
 "
 RESTRICT="!test? ( test )"
 
@@ -35,7 +35,6 @@ RDEPEND="
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=dev-libs/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
-	xar? ( app-arch/xar )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	z3? ( >=sci-mathematics/z3-4.7.1:0=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
@@ -382,8 +381,6 @@ multilib_src_configure() {
 
 		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
 		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
-		# used only for llvm-objdump tool
-		-DLLVM_HAVE_LIBXAR=$(multilib_native_usex xar 1 0)
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 
