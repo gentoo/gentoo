@@ -30,7 +30,7 @@ RDEPEND="
 	>dev-python/pyyaml-5.4[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.15.0[${PYTHON_USEDEP}]
 	>=dev-python/regex-2021.7.1[${PYTHON_USEDEP}]
-	>=dev-python/sarif_om-1.0.4[${PYTHON_USEDEP}]
+	>=dev-python/sarif-om-1.0.4[${PYTHON_USEDEP}]
 	>=dev-python/sympy-1.0.0[${PYTHON_USEDEP}]
 "
 
