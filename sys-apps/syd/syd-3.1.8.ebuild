@@ -117,10 +117,8 @@ LICENSE+=" Apache-2.0 MIT Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="static? ( sys-libs/libseccomp[static-libs]
-		sys-libs/zlib[static-libs] )
-	sys-libs/libseccomp
-	sys-libs/zlib"
+DEPEND="static? ( sys-libs/libseccomp[static-libs] )
+	sys-libs/libseccomp"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/syd-v${PV}"
