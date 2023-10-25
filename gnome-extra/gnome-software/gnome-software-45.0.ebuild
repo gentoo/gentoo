@@ -11,7 +11,7 @@ HOMEPAGE="https://apps.gnome.org/Software"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~x86"
-IUSE="flatpak +firmware gnome gtk-doc sysprof udev test"
+IUSE="flatpak +firmware gnome gtk-doc sysprof udev snap test"
 
 RDEPEND="
 	>=dev-libs/appstream-0.14.0:0=
@@ -29,6 +29,10 @@ RDEPEND="
 	flatpak? (
 		>=sys-apps/flatpak-1.14.0-r1
 		dev-util/ostree
+	)
+	snap? (
+		app-containers/snapd
+		sys-libs/snapd-glib
 	)
 	udev? ( dev-libs/libgudev )
 	>=gnome-base/gsettings-desktop-schemas-3.11.5
@@ -74,7 +78,7 @@ src_configure() {
 		-Dhardcoded_proprietary_webapps=true
 		$(meson_use udev gudev)
 		-Dapt=false
-		-Dsnap=false
+		$(meson_use snap)
 		-Dexternal_appstream=false
 		$(meson_use gtk-doc gtk_doc)
 		-Dhardcoded_curated=true
