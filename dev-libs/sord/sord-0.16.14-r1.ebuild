@@ -27,8 +27,8 @@ BDEPEND="
 "
 # Take care on bumps to check minimum versions!
 RDEPEND="
-	dev-libs/libpcre
-	>=dev-libs/serd-0.30.10
+	dev-libs/libpcre[${MULTILIB_USEDEP}]
+	>=dev-libs/serd-0.30.10[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
