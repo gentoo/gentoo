@@ -32,7 +32,7 @@ BDEPEND="
 "
 # Take care on bumps to check minimum versions!
 RDEPEND="
-	dev-libs/libpcre[${MULTILIB_USEDEP}]
+	dev-libs/libpcre2[${MULTILIB_USEDEP}]
 	dev-libs/serd[${MULTILIB_USEDEP}]
 	dev-libs/zix[${MULTILIB_USEDEP}]
 "
