@@ -34,7 +34,7 @@ BDEPEND="
 RDEPEND="
 	dev-libs/libpcre
 	dev-libs/serd
-	dev-libs/zix
+	dev-libs/zix[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
