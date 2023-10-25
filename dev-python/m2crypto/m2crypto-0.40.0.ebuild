@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYPI_NO_NORMALIZE=1
 PYPI_PN="M2Crypto"
 PYTHON_REQ_USE="threads(+)"
@@ -12,7 +12,10 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 toolchain-funcs pypi
 
 DESCRIPTION="A Python crypto and SSL toolkit"
-HOMEPAGE="https://gitlab.com/m2crypto/m2crypto https://pypi.org/project/M2Crypto/"
+HOMEPAGE="
+	https://gitlab.com/m2crypto/m2crypto/
+	https://pypi.org/project/M2Crypto/
+"
 
 # openssl via src/SWIG/_lib11_compat.i
 LICENSE="MIT openssl"
