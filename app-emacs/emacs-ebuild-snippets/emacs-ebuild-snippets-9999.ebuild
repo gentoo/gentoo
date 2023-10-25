@@ -8,11 +8,13 @@ inherit elisp
 DESCRIPTION="Yasnippets for editing ebuilds and eclasses"
 HOMEPAGE="https://gitweb.gentoo.org/proj/emacs-ebuild-snippets.git"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
+
 	EGIT_REPO_URI="https://gitweb.gentoo.org/proj/${PN}.git"
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2"
+
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
@@ -23,7 +25,9 @@ RDEPEND="
 	app-emacs/ebuild-mode
 	app-emacs/yasnippet
 "
-BDEPEND="${RDEPEND}"
+BDEPEND="
+	${RDEPEND}
+"
 
 src_prepare() {
 	sh ./scripts/changeme.sh "${EPREFIX}${SITEETC}/${PN}" || die
@@ -32,8 +36,8 @@ src_prepare() {
 }
 
 src_install() {
-	elisp-install ${PN} *.el{,c}
-	elisp-site-file-install "${S}"/gentoo/50${PN}-gentoo.el
+	elisp-install "${PN}" *.el{,c}
+	elisp-site-file-install "${S}/gentoo/50${PN}-gentoo.el"
 
 	insinto "${SITEETC}/${PN}"
 	doins -r snippets
