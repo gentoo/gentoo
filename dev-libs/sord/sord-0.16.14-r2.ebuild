@@ -23,18 +23,12 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
-	doc? (
-		app-doc/doxygen
-		dev-python/sphinx
-		dev-python/sphinx-lv2-theme
-		dev-python/sphinxygen
-	)
+	doc? ( app-doc/doxygen )
 "
 # Take care on bumps to check minimum versions!
 RDEPEND="
-	dev-libs/libpcre2[${MULTILIB_USEDEP}]
-	dev-libs/serd[${MULTILIB_USEDEP}]
-	dev-libs/zix[${MULTILIB_USEDEP}]
+	>=dev-libs/serd-0.30.10[${MULTILIB_USEDEP}]
+	tools? ( dev-libs/libpcre[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 
