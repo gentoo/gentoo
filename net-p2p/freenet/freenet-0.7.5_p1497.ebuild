@@ -128,7 +128,7 @@ src_prepare() {
 	EOF
 
 	cat "${WORKDIR}"/seedrefs-build01480/* > "${S}"/seednodes.fref
-	cp "${FILESDIR}"/freenet-0.7.5_p1491-wrapper.conf freenet-wrapper.conf || die
+	cp "${FILESDIR}"/freenet-0.7.5_p1497-wrapper.conf freenet-wrapper.conf || die
 	cp "${FILESDIR}"/run.sh-20090501 run.sh || die
 
 	sed -i -e "s:=/usr/lib:=/usr/$(get_libdir):g" \
