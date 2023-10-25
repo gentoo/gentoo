@@ -12,7 +12,7 @@ HOMEPAGE="
 SRC_URI="https://github.com/jlanzarotta/${PN}/archive/v.${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/${PN}-v.${PV}"
 
