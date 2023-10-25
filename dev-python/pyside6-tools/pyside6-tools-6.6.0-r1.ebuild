@@ -6,7 +6,6 @@ EAPI=8
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..12} )
-CMAKE_IN_SOURCE_BUILD=1
 
 inherit cmake python-r1
 
@@ -23,7 +22,7 @@ KEYWORDS="~amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	~dev-python/pyside6-${PV}[${PYTHON_USEDEP}]
+	~dev-python/pyside6-${PV}[quick,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
@@ -36,10 +35,10 @@ src_prepare() {
 src_configure() {
 	pyside-tools_configure() {
 		local mycmakeargs=(
-			# the tools conflict with tools from Qt
+			# If this is enabled cmake just makes copies of /lib64/qt6/bin/*
 			-DNO_QT_TOOLS=yes
 		)
-		CMAKE_USE_DIR="${BUILD_DIR}" cmake_src_configure
+		cmake_src_configure
 	}
 
 	python_foreach_impl pyside-tools_configure
@@ -47,7 +46,7 @@ src_configure() {
 
 src_compile() {
 	pyside-tools_compile() {
-		CMAKE_USE_DIR="${BUILD_DIR}" cmake_src_compile
+		cmake_src_compile
 	}
 
 	python_foreach_impl pyside-tools_compile
@@ -55,7 +54,12 @@ src_compile() {
 
 src_install() {
 	pyside-tools_install() {
-		python_doexe "${BUILD_DIR}/"*.py
+		# This replicates the contents of the PySide6 pypi wheel
+		DESTDIR="${BUILD_DIR}" cmake_build install
+		cp __init__.py "${BUILD_DIR}/usr/bin" || die
+		rm -r  "${BUILD_DIR}/usr/bin/qtpy2cpp_lib/tests" || die
+		python_moduleinto PySide6/scripts
+		python_domodule "${BUILD_DIR}/usr/bin/."
 	}
 
 	python_foreach_impl pyside-tools_install
