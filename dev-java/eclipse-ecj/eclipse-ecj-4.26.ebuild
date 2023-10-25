@@ -12,7 +12,7 @@ DMF="R-${PV}-202211231800"
 
 DESCRIPTION="Eclipse Compiler for Java"
 HOMEPAGE="https://www.eclipse.org/"
-SRC_URI="https://download.eclipse.org/eclipse/downloads/drops4/${DMF}/${MY_PN}src-${PV}.jar"
+SRC_URI="https://archive.eclipse.org/eclipse/downloads/drops4/${DMF}/${MY_PN}src-${PV}.jar"
 
 LICENSE="EPL-1.0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
