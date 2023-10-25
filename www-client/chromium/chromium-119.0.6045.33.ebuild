@@ -14,6 +14,7 @@ PYTHON_REQ_USE="xml(+)"
 LLVM_MAX_SLOT=17
 LLVM_MIN_SLOT=16
 MIN_GCC_VER=12
+GN_MIN_VER=0.2122
 
 VIRTUALX_REQUIRED="pgo"
 
@@ -187,7 +188,7 @@ BDEPEND="
 		$(depend_clang_llvm_versions ${LLVM_MIN_SLOT} ${LLVM_MAX_SLOT})
 	)
 	dev-lang/perl
-	>=dev-util/gn-0.2122
+	>=dev-util/gn-${GN_MIN_VER}
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
 	dev-vcs/git
@@ -317,6 +318,10 @@ pkg_setup() {
 			if ver_test "$(clang-major-version)" -lt ${LLVM_MIN_SLOT}; then
 				die "At least Clang ${LLVM_MIN_SLOT} is required"
 			fi
+		fi
+		# Users should never hit this, it's purely a development convenience
+		if ver_test $(gn --version || die) -lt ${GN_MIN_VER}; then
+				die "dev-util/gn >= ${GN_MIN_VER} is required to build this Chromium"
 		fi
 	fi
 
