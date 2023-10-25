@@ -11,10 +11,6 @@ games-engines/fheroes2
 games-engines/openmw
 games-strategy/homm2-gold-gog
 
-# Sam James <sam@gentoo.org> (2023-09-28)
-# Broken on BE (https://bugs.chromium.org/p/aomedia/issues/detail?id=3487)
-~media-libs/libaom-3.7.0
-
 # matoro <matoro_gentoo@matoro.tk> (2023-06-30)
 # Test failures on BE
 # https://github.com/libjxl/libjxl/issues/2433

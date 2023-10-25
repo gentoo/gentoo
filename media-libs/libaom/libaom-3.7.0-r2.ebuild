@@ -58,6 +58,9 @@ DOCS=( PATENTS )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-posix-c-source-ftello.patch
 	"${FILESDIR}"/${PN}-3.7.0-allow-fortify-source.patch
+
+	"${FILESDIR}"/${P}-big-endian.patch
+	"${FILESDIR}"/${P}-big-endian-tests.patch
 )
 
 multilib_src_configure() {
