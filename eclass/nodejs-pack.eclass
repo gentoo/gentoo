@@ -75,7 +75,7 @@ nodejs-pack_src_install() {
         install \
         "$(nodejs_package)-$(nodejs_version).tgz" || die "install failed"
 
-    pushd "${ED}/$(_NODEJS_MODULES)" >/dev/null || die
+    pushd "${ED}/$(nodejs_modules)" >/dev/null || die
     nodejs_remove_dev
     popd >/dev/null || die
 }

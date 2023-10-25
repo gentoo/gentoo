@@ -106,10 +106,10 @@ nodejs_has_build() {
     node -p "if (require('./package.json').scripts.build === undefined) { process.exit(1) }" &>/dev/null
 }
 
-# @FUNCTION: _NODEJS_MODULES
+# @FUNCTION: nodejs_modules
 # @DESCRIPTION:
 # Returns location where to install NodeJS
-_NODEJS_MODULES() {
+nodejs_modules() {
     # shellcheck disable=SC2046
     echo /usr/$(get_libdir)/node_modules/$(nodejs_package)
 }
@@ -300,11 +300,11 @@ enpm_install() {
 
     nodejs_files="${NODEJS_FILES} ${NODEJS_EXTRA_FILES} $(nodejs_package).js"
 
-    dodir "$(_NODEJS_MODULES)" || die "Could not create DEST folder"
+    dodir "$(nodejs_modules)" || die "Could not create DEST folder"
 
     for f in ${nodejs_files}; do
         if [[ -e "${S}/${f}" ]]; then
-            cp -r "${S}/${f}" "${ED}/$(_NODEJS_MODULES)"
+            cp -r "${S}/${f}" "${ED}/$(nodejs_modules)"
         fi
     done
 }
