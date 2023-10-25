@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# py3.12 blocked by mkdocs-material
 DISTUTILS_USE_PEP517=pdm-backend
 PYTHON_COMPAT=( python3_{10..11} )
 
@@ -34,8 +35,10 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/markdown-exec[${PYTHON_USEDEP}]
 		dev-python/mkdocs-material[${PYTHON_USEDEP}]
 		dev-python/mkdocstrings-python[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 "
 
@@ -46,7 +49,7 @@ EPYTEST_DESELECT=(
 	tests/test_plugin.py::test_disabling_plugin
 	# WTF, it tries to unlink installed files from installed package?!
 	tests/test_handlers.py::test_extended_templates
-	# TODO: package markdown-exec
+	# Needs unpackaged mkdocs-callouts, mkdocs-literate-nav, and possibly more
 	tests/test_inventory.py::test_sphinx_load_mkdocstrings_inventory_file
 	# Internet
 	tests/test_inventory.py::test_load_inventory
