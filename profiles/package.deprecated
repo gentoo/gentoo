@@ -17,6 +17,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Whitlock <gentoo@mattwhitlock.name> (2023-10-24)
+# Transitional meta packages. Please update dependencies:
+#   dev-util/bitcoin-tx          -> net-p2p/bitcoin-core
+#   net-libs/libbitcoinconsensus -> net-p2p/bitcoin-core[libs]
+#   net-p2p/bitcoin-cli          -> net-p2p/bitcoin-core[bitcoin-cli]
+#   net-p2p/bitcoin-qt           -> net-p2p/bitcoin-core[gui]
+#   net-p2p/bitcoind             -> net-p2p/bitcoin-core[daemon]
+dev-util/bitcoin-tx
+net-libs/libbitcoinconsensus
+net-p2p/bitcoin-cli
+net-p2p/bitcoin-qt
+net-p2p/bitcoind
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-10-21)
 # QtScript is deprecated since Qt 5.5, all projects must port away.
 # Bug 915779
