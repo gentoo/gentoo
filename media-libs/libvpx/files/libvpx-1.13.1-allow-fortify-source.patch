@@ -1,3 +1,5 @@
+https://bugs.chromium.org/p/webm/issues/detail?id=1822
+
 This was originally added for ABI reasons in a case which barely works / doesn't
 work at all for glibc anyway, see https://github.com/webmproject/libvpx/commit/b73a3693e581583e9ec676f4396d0c3d173e2462.
 
