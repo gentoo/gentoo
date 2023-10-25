@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit python-single-r1 cmake docs virtualx xdg
 
 DESCRIPTION="Application for Scientific Data Analysis and Visualization"
-HOMEPAGE="http://scidavis.sourceforge.net/ https://github.com/SciDAVis/scidavis/"
+HOMEPAGE="https://scidavis.sourceforge.net/ https://github.com/SciDAVis/scidavis/"
 SRC_URI="https://github.com/SciDAVis/scidavis/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ ZLIB"
@@ -35,7 +35,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	sci-libs/gsl:=
-	sys-libs/zlib[minizip]
+	>=sys-libs/zlib-1.3[minizip]
 	x11-libs/qwt:5
 	x11-libs/qwtplot3d
 	origin? ( sci-libs/liborigin )
@@ -62,11 +62,6 @@ src_prepare() {
 
 	# Remove things which are packaged elsewhere
 	rm -r 3rdparty/qwt5-qt5 3rdparty/qwtplot3d 3rdparty/liborigin || die
-
-	# OF has been renamed in Gentoo https://bugs.gentoo.org/383179
-	# Note this is *not* packaged in sys-libs/zlib[minizip] because
-	# this file resides in the test directory in upstream zlib
-	sed -i -r 's:\<(O[FN])\>:_Z_\1:g' 3rdparty/minigzip/minigzip.c || die
 }
 
 src_configure() {
