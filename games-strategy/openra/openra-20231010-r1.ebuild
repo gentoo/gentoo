@@ -177,6 +177,7 @@ src_unpack() {
 }
 
 src_compile() {
+	emake VERSION="release-${PV}" version
 	emake RUNTIME=net6
 }
 
