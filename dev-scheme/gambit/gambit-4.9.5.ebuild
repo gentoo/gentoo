@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic elisp-common
 
 DESCRIPTION="Gambit-C is a native Scheme to C compiler and interpreter"
-HOMEPAGE="http://www.iro.umontreal.ca/~gambit/
+HOMEPAGE="http://gambitscheme.org/
 	https://github.com/gambit/gambit/"
 
 if [[ "${PV}" == *9999* ]] ; then
@@ -14,9 +14,8 @@ if [[ "${PV}" == *9999* ]] ; then
 
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-tags-v${PV}"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}-1.tar.gz"
 
 	KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
