@@ -138,4 +138,7 @@ src_install () {
 	dodoc README.md
 	insinto /usr/libexec
 	doins data/esyd.sh
+
+	insinto /etc
+	newins data/user.syd-3 user.syd-3.sample
 }
