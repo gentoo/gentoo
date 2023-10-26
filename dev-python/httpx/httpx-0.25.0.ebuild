@@ -39,7 +39,6 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	test? (
-		app-arch/brotli[python,${PYTHON_USEDEP}]
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
 		dev-python/chardet[${PYTHON_USEDEP}]
@@ -60,6 +59,11 @@ src_prepare() {
 		sed -i -e '/^httpx =/d' pyproject.toml || die
 	fi
 	sed -i -e '/rich/s:,<14::' pyproject.toml || die
+
+	# use brotlicffi instead of brotli in tests
+	sed -i -e 's:import brotli:import brotlicffi as brotli:' \
+		tests/test_decoders.py || die
+
 	distutils-r1_src_prepare
 }
 
