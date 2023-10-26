@@ -362,6 +362,7 @@ sys-apps/systemd
 sys-apps/systemd-readahead
 sys-process/systemd-cron
 >=www-misc/profile-sync-daemon-6
+sys-block/wait-for-dri-devices-rules
 
 # rust-bin requires a glibc system
 dev-lang/rust-bin
