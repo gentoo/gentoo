@@ -19,6 +19,7 @@ SRC_URI="
 			-> ${PN}-arrow-data-${PV}.tar.gz
 	)
 "
+S="${WORKDIR}/${P}/cpp"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -27,22 +28,22 @@ IUSE="brotli bzip2 compute dataset +json lz4 parquet re2 snappy ssl test zlib zs
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	brotli? ( app-arch/brotli )
-	bzip2? ( app-arch/bzip2 )
-	compute? ( dev-libs/libutf8proc )
+	brotli? ( app-arch/brotli:= )
+	bzip2? ( app-arch/bzip2:= )
+	compute? ( dev-libs/libutf8proc:= )
 	dataset? (
-		dev-libs/libutf8proc
-		re2? ( dev-libs/re2 )
+		dev-libs/libutf8proc:=
+		re2? ( dev-libs/re2:= )
 	)
-	lz4? ( app-arch/lz4 )
+	lz4? ( app-arch/lz4:= )
 	parquet? (
-		dev-libs/libutf8proc
-		dev-libs/thrift
+		dev-libs/libutf8proc:=
+		dev-libs/thrift:=
 		ssl? ( dev-libs/openssl:= )
 	)
-	snappy? ( app-arch/snappy )
-	zlib? ( sys-libs/zlib )
-	zstd? ( app-arch/zstd )
+	snappy? ( app-arch/snappy:= )
+	zlib? ( sys-libs/zlib:= )
+	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}
 	dev-cpp/xsimd
@@ -54,13 +55,13 @@ DEPEND="${RDEPEND}
 	)
 "
 
-REQUIRED_USE="test? (
+REQUIRED_USE="
+	test? (
 		json
 		parquet? ( zstd )
 	)
-	ssl? ( json )"
-
-S="${WORKDIR}/${P}/cpp"
+	ssl? ( json )
+"
 
 PATCHES=( "${FILESDIR}/${PN}-11.0.0-shared-lz4.patch" )
 
