@@ -24,7 +24,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PV}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PV}-gentoo.patch
+	"${FILESDIR}"/${PN}-0.6-clang16-fix.patch
+)
 
 src_prepare() {
 	default
