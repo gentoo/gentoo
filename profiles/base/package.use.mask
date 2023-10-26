@@ -381,11 +381,6 @@ net-libs/ngtcp2 openssl
 # Needs masked version of ogre (>=1.12), bug #825330
 >=dev-games/mygui-3.4.1 ogre
 
-# Marek Szuba <marecki@gentoo.org> (2022-02-07)
-# Deprecated back-end with known stability and data-corruption issues,
-# likely to be removed in gramps-5.2.0.
-app-misc/gramps berkdb
-
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2022-02-04)
 # We're still ironing out some kinks and writing documentation for
 # this feature, so keep masked for now.
