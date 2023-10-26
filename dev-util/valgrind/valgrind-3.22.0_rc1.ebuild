@@ -85,7 +85,7 @@ src_configure() {
 	#                          Note: -fstack-protector-explicit is a no-op for Valgrind, no need to strip it
 	# -fstack-protector-strong See -fstack-protector (bug #620402)
 	# -m64 -mx32			for multilib-portage, bug #398825
-	# -ggdb3                segmentation fault on startup
+	# -fharden-control-flow-redundancy: breaks runtime ('jump to the invalid address stated on the next line')
 	# -flto*                fails to build, bug #858509
 	filter-flags -fomit-frame-pointer
 	filter-flags -fstack-protector
@@ -93,7 +93,8 @@ src_configure() {
 	filter-flags -fstack-protector-strong
 	filter-flags -m64 -mx32
 	filter-flags -fsanitize -fsanitize=*
-	replace-flags -ggdb3 -ggdb2
+	filter-flags -fharden-control-flow-redundancy
+	append-cflags $(test-flags-CC -fno-harden-control-flow-redundancy)
 	filter-lto
 
 	if use amd64 || use ppc64; then

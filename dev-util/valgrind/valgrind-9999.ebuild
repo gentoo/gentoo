@@ -94,6 +94,7 @@ src_configure() {
 	filter-flags -m64 -mx32
 	filter-flags -fsanitize -fsanitize=*
 	filter-flags -fharden-control-flow-redundancy
+	append-cflags $(test-flags-CC -fno-harden-control-flow-redundancy)
 	filter-lto
 
 	if use amd64 || use ppc64; then
