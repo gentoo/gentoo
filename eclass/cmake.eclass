@@ -364,7 +364,7 @@ cmake_src_prepare() {
 	if [[ ${EAPI} == 7 ]]; then
 		pushd "${S}" > /dev/null || die # workaround from cmake-utils
 		# in EAPI-8, we use current working directory instead, bug #704524
-		# esp. test with 'special' pkgs like: app-arch/brotli, media-gfx/gmic, net-libs/quiche
+		# esp. test with 'special' pkgs like: app-arch/brotli, net-libs/quiche
 	fi
 	_cmake_check_build_dir
 
