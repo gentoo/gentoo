@@ -658,6 +658,10 @@ src_prepare() {
 		rm -v "${WORKDIR}"/firefox-patches/*ppc64*.patch || die
 	fi
 
+	if use x86 && use elibc_glibc ; then
+		rm -v "${WORKDIR}"/firefox-patches/*-musl-non-lfs64-api-on-audio_thread_priority-crate.patch || die
+	fi
+
 	eapply "${WORKDIR}/firefox-patches"
 
 	# Allow user to apply any additional patches without modifing ebuild
