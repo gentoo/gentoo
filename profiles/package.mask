@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-26)
+# Non-installable since the distfile is gone and the package
+# is mirror-restricted.
+# Removal on 2023-11-25.  Bug #753515.
+games-strategy/defcon-demo
+
+# Michał Górny <mgorny@gentoo.org> (2023-10-26)
 # An unmaintained programming language with last release in 2009.
 # Multiple bugs reported.  No revdeps.
 # Removal on 2023-11-25.
