@@ -33,8 +33,8 @@ QA_PREBUILT="usr/lib/bpf/*.o"
 MAKEOPTS+=" V=1"
 
 PATCHES=(
-	"${FILESDIR}"/1.3.1-no-Werror.patch
-	"${FILESDIR}"/${PV}-toolchain.patch
+	"${FILESDIR}"/1.4.0-no-Werror.patch
+	"${FILESDIR}"/1.4.0-toolchain.patch
 )
 
 src_configure() {
