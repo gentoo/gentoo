@@ -157,18 +157,45 @@ src_prepare() {
 	sed -i -e 's:--cov=qtpy --cov-report=term-missing::' pytest.ini || die
 	# Disable Qt for Python implementations that are not selected
 	if ! use pyqt5; then
-		sed -i -e '/from PyQt5.QtCore import/,/)/c\ \ \ \ \ \ \ \ raise ImportError #/' qtpy/__init__.py || die
-	fi
-	if ! use pyqt6; then
-		sed -i -e '/from PyQt6.QtCore import/,/)/c\ \ \ \ \ \ \ \ raise ImportError #/' qtpy/__init__.py || die
+		sed \
+			-e '/from PyQt5.QtCore import/,/)/c\ \ \ \ \ \ \ \ raise ImportError #/' \
+			-e '/if "PyQt5" in sys.modules:/,/"pyqt5"/c\' \
+			-i qtpy/__init__.py || die
+
+		# We need to ensure the first option is an 'if' not 'elif'
+		sed -e 's/elif "PySide2" in sys.modules:/if "PySide2" in sys.modules:/g' -i qtpy/__init__.py || die
 	fi
 	if ! use pyside2; then
-		sed -i -e "s/from PySide2 import/raise ImportError #/" qtpy/__init__.py || die
-		sed -i -e "s/from PySide2.QtCore import/raise ImportError #/" qtpy/__init__.py || die
+		sed \
+			-e "s/from PySide2 import/raise ImportError #/" \
+			-e "s/from PySide2.QtCore import/raise ImportError #/" \
+			-e '/if "PySide2" in sys.modules:/,/"pyside2"/c\' \
+			-i qtpy/__init__.py || die
+
+		if ! use pyqt5; then
+			sed \
+				-e 's/elif "PyQt6" in sys.modules:/if "PyQt6" in sys.modules:/g' \
+				-i qtpy/__init__.py || die
+		fi
+	fi
+	if ! use pyqt6; then
+		sed \
+			-e '/from PyQt6.QtCore import/,/)/c\ \ \ \ \ \ \ \ raise ImportError #/' \
+			-e '/if "PyQt6" in sys.modules:/,/"pyqt6"/c\' \
+			-i qtpy/__init__.py || die
+
+		if ! use pyqt5 && ! use pyside2; then
+			sed \
+				-e 's/elif "PySide6" in sys.modules:/if "PySide6" in sys.modules:/g' \
+				-i qtpy/__init__.py || die
+		fi
 	fi
 	if ! use pyside6; then
-		sed -i -e "s/from PySide6 import/raise ImportError #/" qtpy/__init__.py || die
-		sed -i -e "s/from PySide6.QtCore import/raise ImportError #/" qtpy/__init__.py || die
+		sed \
+			-e "s/from PySide6 import/raise ImportError #/" \
+			-e "s/from PySide6.QtCore import/raise ImportError #/" \
+			-e '/if "PySide6" in sys.modules:/,/"pyside6"/c\' \
+			-i qtpy/__init__.py || die
 	fi
 }
 
