@@ -43,7 +43,7 @@ CP_DEPEND="
 
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-11:*
-	dev-java/aqute-bnd-annotation:0
+	dev-java/bnd-annotation:0
 	dev-java/osgi-core:0"
 
 RDEPEND="${CP_DEPEND}
@@ -53,7 +53,7 @@ DOCS=( {README,SECURITY}.md release-notes/{CREDITS,VERSION} )
 
 S="${WORKDIR}/woodstox-${P}"
 
-JAVA_CLASSPATH_EXTRA="aqute-bnd-annotation,osgi-core"
+JAVA_CLASSPATH_EXTRA="bnd-annotation,osgi-core"
 JAVA_SRC_DIR=( "src/main/java" "src/moditect" )
 JAVA_RESOURCE_DIRS="src/main/resources"
 
