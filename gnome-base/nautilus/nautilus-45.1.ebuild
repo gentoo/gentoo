@@ -102,7 +102,8 @@ src_test() {
 	gnome2_environment_reset
 	# TODO: Tests require tracker testutils (e.g. tracker-sandbox), which may
 	# need some sorting out with tracker use flag deps
-	XDG_SESSION_TYPE=x11 virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
+	# GIO_USE_VOLUME_MONITOR=unix due to https://gitlab.gnome.org/GNOME/gvfs/-/issues/629#note_1467280
+	GIO_USE_VOLUME_MONITOR=unix XDG_SESSION_TYPE=x11 virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
 }
 
 pkg_postinst() {
