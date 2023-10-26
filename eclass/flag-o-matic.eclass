@@ -57,8 +57,8 @@ _setup-allowed-flags() {
 		-fbounds-check -fbounds-checking
 		-fno-PIE -fno-pie -nopie -no-pie
 		-fharden-compares -fharden-conditional-branches
-		-fharden-control-flow-redundancy -fhardcfr-skip-leaf
-		-fhardcfr-check-exceptions -fhardcfr-check-returning-calls
+		-fharden-control-flow-redundancy -fno-harden-control-flow-redundancy
+		-fhardcfr-skip-leaf -fhardcfr-check-exceptions -fhardcfr-check-returning-calls
 		'-fhardcfr-check-noreturn-calls=*'
 		# Spectre mitigations, bug #646076
 		'-mindirect-branch=*'
