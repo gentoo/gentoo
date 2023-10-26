@@ -1,3 +1,17 @@
+From: Violet Purcell <vimproved@inventati.org>
+Date: Thu, 21 Sep 2023 19:08:39 -0400
+Subject: [PATCH] Fix build with LLD
+
+LLVM's LLD handles the -retain-symbols-file option (used by
+-export-symbols-regex in libtool) differently from GNU ld, causing
+undefined references during link. This commit removes the
+-export-symbols-regex option from libcalf_la_LDFLAGS since by default
+libtool exports all symbols anyway, so it should not be necessary.
+
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
+
+rebased
+
 diff --git a/src/Makefile.am b/src/Makefile.am
 index 6f11628b..0e775bef 100644
 --- a/src/Makefile.am
