@@ -111,6 +111,9 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/portage-3.0.54-Convert-portageq-helper-to-a-function.patch"
+	)
 	default
 
 	if use prefix-guest; then
