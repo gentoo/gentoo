@@ -24,7 +24,7 @@ IUSE=""
 DEPEND="sci-mathematics/pari[gmp,doc]
 	dev-python/cysignals[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+BDEPEND=">=dev-python/cython-3[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}/${P}-regen-bindings-for-each-python.patch" )
 
