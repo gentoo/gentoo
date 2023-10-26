@@ -23,7 +23,7 @@ RDEPEND="sci-libs/fplll
 	dev-python/cysignals[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+BDEPEND=">=dev-python/cython-3[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
