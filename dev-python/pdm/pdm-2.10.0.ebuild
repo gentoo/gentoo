@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=pdm-backend
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 multiprocessing pypi
 
 DESCRIPTION="Python package and dependency manager supporting the latest PEP standards"
 HOMEPAGE="
@@ -45,6 +45,7 @@ BDEPEND="
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-httpserver[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
@@ -72,5 +73,8 @@ python_test() {
 		tests/test_project.py::test_project_packages_path
 	)
 
-	epytest -m "not network and not integration and not path"
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest  -m "not network and not integration and not path" \
+		-p pytest_mock \
+		-p xdist -n "$(makeopts_jobs)" --dist=worksteal
 }
