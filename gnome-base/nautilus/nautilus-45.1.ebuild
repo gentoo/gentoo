@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson readme.gentoo-r1 virtualx xdg
 
 DESCRIPTION="Default file manager for the GNOME desktop"
-HOMEPAGE="https://wiki.gnome.org/Apps/Nautilus"
+HOMEPAGE="https://apps.gnome.org/Nautilus/"
 
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
