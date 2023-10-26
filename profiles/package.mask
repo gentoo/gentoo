@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2023-10-26)
+# Upstream uses a massive home-made Makefile which has since the beginning
+# required massive amounts of patching to make it behave reasonably
+# (as well as to fix the problems which ostensibly led upstream to
+# abandoning CMake, and which they immediately re-introduced in their NIH
+# solution) and which if anything have only got worse since then. One,
+# optional, reverse dependency in the tree.
+# Removal on 2023-11-26. Bug #916289.
+media-gfx/gmic
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-10-23)
 # Java libraries. No reverse dependencies.
 # Removal on 2023-11-23.

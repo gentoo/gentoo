@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Marek Szuba <marecki@gentoo.org> (2023-10-26)
+# media-gfx/gmic has been masked for removal, see Bug #916289.
+media-gfx/darktable gmic
+
 # hololeap <hololeap@protonmail.com> (2023-10-15)
 # Enabling these flags will create cycles in the dependency graph.
 # Maintainers may want to temporarily unmask these in order to run
