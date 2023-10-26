@@ -12,6 +12,30 @@
      } else {
          Scm_Error("wrong slot number: %d", sa->slotNumber);
      }
+--- a/src/c-lex.c
++++ b/src/c-lex.c
+@@ -992,11 +992,6 @@
+     SCM_RETURN(Scm_MakeInteger(v));
+ }
+ 
+-ScmObj Scm_ReadStringLiteral()
+-{
+-    SCM_RETURN(read_string_literal());
+-}
+-
+ ScmObj Scm_ReadCharacterConstant()
+ {
+     SCM_RETURN(read_character_constant());
+--- a/src/c-lex.h
++++ b/src/c-lex.h
+@@ -78,7 +78,6 @@
+ extern ScmObj Scm_IsForceIdentifierSet(ScmObj v);
+ extern ScmObj Scm_ReadIdentifier(ScmObj l);
+ extern ScmObj Scm_ReadOperator(ScmObj c);
+-extern ScmObj Scm_ReadStringLiteral();
+ extern ScmObj Scm_ReadCharacterConstant();
+ extern ScmObj Scm_ReadOctalOrFlonum(ScmObj l);
+ extern ScmObj Scm_ReadDecimal(ScmObj l);
 --- a/src/c-lexlib.stub
 +++ b/src/c-lexlib.stub
 @@ -40,7 +40,11 @@
@@ -26,3 +50,13 @@
          "}"))
  
  (define-cproc strtod (nptr::<const-cstring>)
+@@ -136,9 +140,6 @@
+ (define-cproc read-operator (c)
+   (call "Scm_ReadOperator"))
+ 
+-(define-cproc read-string-literal ()
+-  (call "Scm_ReadStringLiteral"))
+-
+ (define-cproc read-character-constant ()
+   (call "Scm_ReadCharacterConstant"))
+ 
