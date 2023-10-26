@@ -6,7 +6,6 @@ EAPI=8
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..11} )
-CMAKE_IN_SOURCE_BUILD=1
 
 inherit cmake python-r1
 
@@ -27,11 +26,9 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
 
-DOCS=( README.md )
-
 # the tools conflict with tools from QT
 PATCHES=(
-	"${FILESDIR}/${PN}-5.15.1-dont-install-tools.patch"
+	"${FILESDIR}/${PN}-5.15.11-no-copy-uic.patch"
 )
 
 src_prepare() {
@@ -41,17 +38,12 @@ src_prepare() {
 }
 
 src_configure() {
-	# The tests are only related to the tools that we don't install
-	local mycmakeargs=(
-		-DBUILD_TESTS=OFF
-	)
-
 	pyside-tools_configure() {
 		local mycmakeargs=(
-			"${mycmakeargs[@]}"
+			-DBUILD_TESTS=OFF
 			-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
 		)
-		CMAKE_USE_DIR="${BUILD_DIR}" cmake_src_configure
+		cmake_src_configure
 	}
 
 	python_foreach_impl pyside-tools_configure
@@ -59,7 +51,7 @@ src_configure() {
 
 src_compile() {
 	pyside-tools_compile() {
-		CMAKE_USE_DIR="${BUILD_DIR}" cmake_src_compile
+		cmake_src_compile
 	}
 
 	python_foreach_impl pyside-tools_compile
@@ -67,11 +59,14 @@ src_compile() {
 
 src_install() {
 	pyside-tools_install() {
-		python_doexe "${BUILD_DIR}/pylupdate/pyside2-lupdate"
+		# This replicates the contents of the PySide6 pypi wheel
+		DESTDIR="${BUILD_DIR}" cmake_build install
+		dobin "${BUILD_DIR}/usr/bin/pyside2-lupdate"
+		python_moduleinto PySide2/scripts
+		python_domodule "${BUILD_DIR}/usr/bin/pyside_tool.py"
 	}
 
 	python_foreach_impl pyside-tools_install
 
-	doman pylupdate/pyside2-lupdate.1
 	einstalldocs
 }
