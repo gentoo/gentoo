@@ -32,8 +32,8 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-arch/xz-utils
 	dev-libs/libaio
-	>=dev-qt/qtbase-6.5.3:6[gui,network,widgets]
-	>=dev-qt/qtsvg-6.5.3:6
+	>=dev-qt/qtbase-6.6.0:6[gui,network,widgets]
+	>=dev-qt/qtsvg-6.6.0:6
 	media-libs/libglvnd
 	media-libs/libpng:=
 	>=media-libs/libsdl2-2.28.4[haptic,joystick]
@@ -62,7 +62,7 @@ DEPEND="
 	x11-base/xorg-proto
 "
 BDEPEND="
-	>=dev-qt/qttools-6.5.3:6[linguist]
+	>=dev-qt/qttools-6.6.0:6[linguist]
 	wayland? (
 		dev-util/wayland-scanner
 		kde-frameworks/extra-cmake-modules
