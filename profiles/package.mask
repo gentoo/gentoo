@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-26)
+# Not installable due to conflict with sys-apps/coreutils.
+# Removal on 2023-11-25.  Bug #908406.
+app-misc/realpath
+
+# Michał Górny <mgorny@gentoo.org> (2023-10-26)
 # Hyperdex "support libraries".  Hyperdex was removed in 2020.
 # No revdeps outside the bunch.
 # Removal on 2023-11-25.  Bug #527386.
