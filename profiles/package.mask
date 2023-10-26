@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-26)
+# Fails to compile with modern C++ compilers.  Last release in 2011.
+# No revdeps.
+# Removal on 2023-11-25.  Bug #722006.
+sci-electronics/freehdl
+
+# Michał Górny <mgorny@gentoo.org> (2023-10-26)
 # Incompatible with Cython 3.  Last commit in 2016.  No revdeps.
 # Removal on 2023-11-25.  Bug #898696.
 dev-python/plyr
