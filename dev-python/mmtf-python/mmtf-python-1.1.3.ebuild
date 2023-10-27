@@ -5,11 +5,16 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="The python implementation of the MMTF API, decoder and encoder"
-HOMEPAGE="http://mmtf.rcsb.org/"
+HOMEPAGE="
+	https://mmtf.rcsb.org/
+	https://github.com/rcsb/mmtf-python/
+	https://pypi.org/project/mmtf-python/
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
