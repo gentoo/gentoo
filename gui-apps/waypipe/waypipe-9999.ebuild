@@ -28,7 +28,7 @@ WAYPIPE_FLAG_MAP=(
 	"${WAYPIPE_FLAG_MAP_ARM[@]/#/cpu_flags_arm_}"
 )
 
-IUSE="dmabuf ffmpeg lz4 man systemtap test vaapi zstd ${WAYPIPE_FLAG_MAP[@]%:*}"
+IUSE="dmabuf ffmpeg lz4 systemtap test vaapi zstd ${WAYPIPE_FLAG_MAP[@]%:*}"
 REQUIRED_USE="vaapi? ( ffmpeg )"
 RESTRICT="!test? ( test )"
 
@@ -48,18 +48,18 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
+	app-text/scdoc
 	virtual/pkgconfig
-	man? ( app-text/scdoc )
 	test? ( dev-libs/weston[examples,headless,remoting,screen-sharing,wayland-compositor] )
 "
 
 src_configure() {
 	local emesonargs=(
+		-Dman-pages=enabled
 		$(meson_use systemtap with_systemtap)
 		$(meson_feature dmabuf with_dmabuf)
 		$(meson_feature ffmpeg with_video)
 		$(meson_feature lz4 with_lz4)
-		$(meson_feature man man-pages)
 		$(meson_feature vaapi with_vaapi)
 		$(meson_feature zstd with_zstd)
 	)
