@@ -288,6 +288,7 @@ src_test() {
 		# these can be flaky depending on the environment/toolchain
 		tst_qlogging # backtrace log test can easily vary
 		tst_q{,raw}font # affected by available fonts / settings (bug #914737)
+		tst_qprinter # checks system's printers (bug #916216)
 		tst_qstorageinfo # checks mounted filesystems
 		# flaky due to using different test framework and fails with USE=-gui
 		tst_selftests
