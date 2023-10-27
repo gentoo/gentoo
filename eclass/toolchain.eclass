@@ -1542,10 +1542,10 @@ gcc_do_filter_flags() {
 			-fharden-control-flow-redundancy -fno-harden-control-flow-redundancy \
 			-fhardcfr-skip-leaf -fhardcfr-check-exceptions \
 			-fhardcfr-check-returning-calls '-fhardcfr-check-noreturn-calls=*'
+	else
+		# Makes things painfully slow and no real benefit for the compiler.
+		append-flags $(test-flags-CC -fno-harden-control-flow-redundancy)
 	fi
-
-	# Makes things painfully slow and no real beenfit for the compiler.
-	append-flags $(test-flags-CC -fno-harden-control-flow-redundancy)
 
 	# Please use USE=lto instead (bug #906007).
 	filter-lto
