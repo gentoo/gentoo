@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/javax/persistence/${PN/-/.}/${PV}/${PN/-
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 BDEPEND="app-arch/unzip"
 DEPEND=">=virtual/jdk-1.8:*"
