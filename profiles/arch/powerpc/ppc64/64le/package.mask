@@ -27,7 +27,7 @@
 -media-libs/ctl
 -media-gfx/openvdb
 -media-libs/embree
--media-libs/OpenColorIO
+-media-libs/opencolorio
 -media-libs/OpenImageIO
 -media-libs/osl
 

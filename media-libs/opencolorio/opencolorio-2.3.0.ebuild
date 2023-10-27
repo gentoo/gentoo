@@ -10,6 +10,7 @@ inherit cmake python-single-r1 virtualx
 DESCRIPTION="A color management framework for visual effects and animation"
 HOMEPAGE="https://opencolorio.org https://github.com/AcademySoftwareFoundation/OpenColorIO"
 SRC_URI="https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/OpenColorIO-${PV}"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"

@@ -9,7 +9,7 @@
 -secureboot
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
-# Requires media-libs/OpenColorIO, broken on x86, bug #884115
+# Requires media-libs/opencolorio, broken on x86, bug #884115
 color-management
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
