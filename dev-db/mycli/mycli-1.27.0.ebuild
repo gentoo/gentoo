@@ -27,7 +27,7 @@ IUSE="ssh"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/cli_helpers-2.2.1[${PYTHON_USEDEP}]
+		>=dev-python/cli-helpers-2.2.1[${PYTHON_USEDEP}]
 		>=dev-python/click-7.0[${PYTHON_USEDEP}]
 		>=dev-python/configobj-5.0.5[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-1.0.0[${PYTHON_USEDEP}]

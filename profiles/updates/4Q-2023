@@ -9,3 +9,4 @@ move media-libs/OpenImageIO media-libs/openimageio
 move media-libs/OpenColorIO media-libs/opencolorio
 move media-libs/OpenShadingLanguage media-libs/osl
 move dev-libs/Imath dev-libs/imath
+move dev-python/cli_helpers dev-python/cli-helpers

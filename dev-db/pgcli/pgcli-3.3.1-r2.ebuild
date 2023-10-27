@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	>=dev-python/cli_helpers-2.2.1[${PYTHON_USEDEP}]
+	>=dev-python/cli-helpers-2.2.1[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/pendulum[${PYTHON_USEDEP}]
 	dev-python/pgspecial[${PYTHON_USEDEP}]
