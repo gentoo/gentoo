@@ -29,7 +29,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( "${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}" )
 
-IUSE="dicom doc ffmpeg gif gui jpeg jpeg2k opencv openvdb ptex python qt6 raw test +tools +truetype ${CPU_FEATURES[*]%:*}"
+IUSE="dicom doc ffmpeg gif gui jpeg2k opencv openvdb ptex python qt6 raw test +tools +truetype ${CPU_FEATURES[*]%:*}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) gui? ( tools )"
 
 # Not quite working yet
@@ -51,7 +51,7 @@ RDEPEND="
 	dev-libs/libfmt:=
 	dev-libs/pugixml:=
 	>=media-libs/libheif-1.13.0:=
-	jpeg? ( media-libs/libjpeg-turbo:= )
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.2.1:=
 	>=dev-libs/imath-3.1.2-r4:=
@@ -146,7 +146,6 @@ src_configure() {
 		"-DUSE_CCACHE=OFF"
 		"-DUSE_DCMTK=$(usex dicom)"
 		"-DUSE_EXTERNAL_PUGIXML=ON"
-		"-DUSE_JPEGTURBO=ON"
 		"-DUSE_NUKE=OFF" # not in Gentoo
 		"-DUSE_FFMPEG=$(usex ffmpeg)"
 		"-DUSE_GIF=$(usex gif)"
