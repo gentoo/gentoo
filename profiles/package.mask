@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-27)
+# The package does not work with any of the dev-python/ruamel-yaml
+# versions in ::gentoo.  No revdeps.
+# Removal on 2023-11-26.  Bug #915986.
+dev-python/yamlpath
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-26)
 # Non-installable since the distfile is gone and the package
 # is mirror-restricted.
