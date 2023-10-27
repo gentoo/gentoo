@@ -37,6 +37,13 @@ BDEPEND="
 	test? ( fontconfig? ( media-fonts/liberation-fonts ) )
 "
 
+PATCHES=(
+	# Dome optimizations cause testsuite failures due to floating point
+	# contraction. Fixed upstream by adding tolerance to the test itself:
+	# https://github.com/podofo/podofo/issues/103
+	"${FILESDIR}"/0001-FIX-ColorTest-Fixed-test-under-linux-when-compiled-w.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	if use test; then
@@ -55,11 +62,6 @@ src_configure() {
 		$(cmake_use_find_package png PNG)
 		$(cmake_use_find_package fontconfig Fontconfig)
 	)
-
-	# some optimizations cause testsuite failures which may indicate
-	# unsoundness with contraction. Be cautious for now. Reported
-	# upstream as https://github.com/podofo/podofo/issues/103
-	append-cxxflags $(test-flags-CXX -ffp-contract=off)
 
 	cmake_src_configure
 }
