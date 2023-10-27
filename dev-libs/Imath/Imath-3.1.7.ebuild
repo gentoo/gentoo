@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake python-single-r1
 
@@ -11,18 +11,21 @@ DESCRIPTION="Imath basic math package"
 HOMEPAGE="https://imath.readthedocs.io"
 SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 # re-keywording needed for (according to ilmbase keywords): ~x64-macos
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 LICENSE="BSD"
-SLOT="3/29"
+SLOT="3/30"
 IUSE="large-stack python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 # blocker due to file collision #803347
 RDEPEND="
+	!dev-libs/imath:0
+	!media-libs/ilmbase
 	sys-libs/zlib
 	python? (
+		!dev-python/pyilmbase
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-libs/boost:=[python,${PYTHON_USEDEP}]
