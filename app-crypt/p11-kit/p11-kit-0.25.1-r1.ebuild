@@ -26,11 +26,14 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	app-text/docbook-xsl-stylesheets
-	dev-libs/castxml
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-tty-comparison.patch
+)
 
 src_prepare() {
 	default
@@ -46,7 +49,18 @@ multilib_src_configure() {
 	# Disable unsafe tests, bug#502088
 	export FAKED_MODE=1
 
+	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
+
+	# p11-kit doesn't need this to build and castxml needs Clang. To get
+	# a deterministic non-automagic build, always disable the search for
+	# castxml.
+	cat >> ${native_file} <<-EOF || die
+	[binaries]
+	castxml='castxml-falseified'
+	EOF
+
 	local emesonargs=(
+		--native-file "${native_file}"
 		-Dbashcompdir="$(get_bashcompdir)"
 		-Dtrust_module=enabled
 		-Dtrust_paths="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt
