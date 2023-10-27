@@ -75,6 +75,7 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.3-crc32.patch
 	"${FILESDIR}"/${PN}-5.4.3-python_tests_py3.patch
+	"${FILESDIR}"/${PN}-5.6.3-add-pmark-header.patch
 )
 
 # xrootd plugins are not intended to be linked with,
