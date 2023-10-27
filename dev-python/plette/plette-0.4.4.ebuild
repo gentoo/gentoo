@@ -8,7 +8,7 @@ PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="PythonFinder: Cross Platform Search Tool for Finding Pythons"
+DESCRIPTION="Structured Pipfile and Pipfile.lock models"
 HOMEPAGE="
 	https://github.com/sarugaku/plette
 	https://pypi.org/project/plette/
