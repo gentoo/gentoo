@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 git-r3
 
@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/dbcli/cli_helpers/
 	https://pypi.org/project/cli-helpers/
 "
-EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
+EGIT_REPO_URI="https://github.com/dbcli/cli_helpers.git"
 
 LICENSE="BSD"
 SLOT="0"

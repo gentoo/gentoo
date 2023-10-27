@@ -4,10 +4,11 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
+MY_P=cli_helpers-${PV}
 DESCRIPTION="Python helpers for common CLI tasks"
 HOMEPAGE="
 	https://cli-helpers.rtfd.io/
@@ -16,8 +17,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/dbcli/cli_helpers/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
