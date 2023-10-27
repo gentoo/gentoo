@@ -1165,7 +1165,15 @@ glibc_headers_configure() {
 		popd >/dev/null
 	fi
 
+	local myconf=()
+
 	case ${CTARGET} in
+	aarch64*)
+		# The configure checks fail during cross-build, so disable here
+		# for headers-only
+		myconf+=(
+			--disable-mathvec
+		) ;;
 	riscv*)
 		# RISC-V interrogates the compiler to determine which target to
 		# build.  If building the headers then we don't strictly need a
@@ -1184,7 +1192,6 @@ glibc_headers_configure() {
 		) ;;
 	esac
 
-	local myconf=()
 	myconf+=(
 		--disable-sanity-checks
 		--enable-hacker-mode
