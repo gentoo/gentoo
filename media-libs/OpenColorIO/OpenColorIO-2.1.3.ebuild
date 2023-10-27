@@ -16,7 +16,7 @@ LICENSE="BSD"
 # to force rebuild of consumers due to changing to openexr 3 changing API.
 SLOT="0/$(ver_cut 1-2).1"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
-IUSE="cpu_flags_x86_sse2 doc opengl python test"
+IUSE="cpu_flags_x86_sse2 doc opengl python static-libs test"
 REQUIRED_USE="
 	doc? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -81,6 +81,7 @@ src_configure() {
 	# - OpenGL, GLUT and GLEW is required for building ociodisplay (USE opengl)
 	local mycmakeargs=(
 		-DOCIO_USE_OPENEXR_HALF=OFF
+		-DOCIO_BUILD_STATIC=$(usex static-libs)
 		-DOCIO_BUILD_DOCS=$(usex doc)
 		-DOCIO_BUILD_APPS=$(usex opengl)
 		-DOCIO_BUILD_PYTHON=$(usex python)
