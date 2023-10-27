@@ -203,6 +203,8 @@ x86? (
 PATCHES=(
 	# Workaround the CMake dependency lookup returning a different LLVM to llvm-config, bug #907965
 	"${FILESDIR}/clang_config_tool.patch"
+
+	"${FILESDIR}/mesa-23.2.1-Fix-undefined-version-script-symbols.patch"
 )
 
 llvm_check_deps() {
