@@ -3,20 +3,29 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="similar to bencode from the BitTorrent project"
-HOMEPAGE="https://github.com/aresch/rencode"
-SRC_URI="https://github.com/aresch/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/aresch/rencode/
+	https://pypi.org/project/rencode/
+"
+SRC_URI="
+	https://github.com/aresch/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
@@ -28,9 +37,6 @@ PATCHES=(
 )
 
 python_test() {
-	# The C extension ("_rencode") can't be imported from "${S}/rencode"
-	# so we need to cd somewhere else to make sure "rencode" is imported
-	# from ${BUILD_DIR}/lib (thanks to PYTHONPATH).
-	cd "${T}" || die
-	epytest "${S}"
+	rm -rf rencode || die
+	epytest
 }
