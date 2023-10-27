@@ -4,15 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="Generate simple tables in terminals from a nested list of strings"
-HOMEPAGE="https://robpol86.github.io/terminaltables/"
+HOMEPAGE="
+	https://robpol86.github.io/terminaltables/
+	https://github.com/matthewdeanmartin/terminaltables/
+	https://pypi.org/project/terminaltables/
+"
 SRC_URI="
 	https://github.com/matthewdeanmartin/terminaltables/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz"
+		-> ${P}.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
