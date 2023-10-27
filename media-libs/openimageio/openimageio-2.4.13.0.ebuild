@@ -104,6 +104,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	use dicom || rm -r "${S}/src/dicom.imageio/" || die
 	cmake_src_prepare
 	cmake_comment_add_subdirectory src/fonts
 
@@ -158,9 +159,7 @@ src_configure() {
 
 	if use qt5 || use qt6; then
 		mycmakeargs+=( -DENABLE_IV=ON -DUSE_OPENGL=ON -DUSE_QT=ON )
-		if use qt6; then
-			mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5=ON )
-		else
+		if ! use qt6; then
 			mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON )
 		fi
 	else

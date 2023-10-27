@@ -100,6 +100,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	use dicom || rm -r "${S}/src/dicom.imageio/" || die
 	cmake_src_prepare
 	cmake_comment_add_subdirectory src/fonts
 
