@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
+MY_P=swagger_spec_validator-${PV}
 DESCRIPTION="Validate Swagger specs against Swagger 1.1 or 2.0 specification"
 HOMEPAGE="
 	https://github.com/Yelp/swagger_spec_validator/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/Yelp/swagger_spec_validator/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
