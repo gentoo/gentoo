@@ -18,6 +18,7 @@ SRC_URI="
 		https://github.com/AcademySoftwareFoundation/openexr-images/archive/${TEST_OEXR_IMAGE_COMMIT}.tar.gz -> ${PN}-oexr-test-image-${TEST_OEXR_IMAGE_COMMIT}.tar.gz
 	)
 "
+S="${WORKDIR}/OpenImageIO-${PV}"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"

@@ -17,7 +17,7 @@ SRC_URI+=" test? (
 	https://github.com/OpenImageIO/oiio-images/archive/${TEST_OIIO_IMAGE_COMMIT}.tar.gz -> ${PN}-oiio-test-image-${TEST_OIIO_IMAGE_COMMIT}.tar.gz
 	https://github.com/AcademySoftwareFoundation/openexr-images/archive/${TEST_OEXR_IMAGE_COMMIT}.tar.gz -> ${PN}-oexr-test-image-${TEST_OEXR_IMAGE_COMMIT}.tar.gz
 )"
-S="${WORKDIR}/oiio-${PV}"
+S="${WORKDIR}/OpenImageIO-${PV}"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
