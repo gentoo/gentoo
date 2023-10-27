@@ -5,3 +5,7 @@ move dev-python/sphinx_lv2_theme dev-python/sphinx-lv2-theme
 move dev-python/jschema_to_python dev-python/jschema-to-python
 move dev-python/sarif_om dev-python/sarif-om
 move dev-python/memory_allocator dev-python/memory-allocator
+move media-libs/OpenImageIO media-libs/openimageio
+move media-libs/OpenColorIO media-libs/opencolorio
+move media-libs/OpenShadingLanguage media-libs/osl
+move dev-libs/Imath dev-libs/imath
