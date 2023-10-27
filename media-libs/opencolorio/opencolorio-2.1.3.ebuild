@@ -35,7 +35,7 @@ RDEPEND="
 	dev-libs/tinyxml
 	opengl? (
 		media-libs/lcms:2
-		>=media-libs/OpenImageIO-2.3.12.0-r3:=
+		>=media-libs/openimageio-2.3.12.0-r3:=
 		media-libs/glew:=
 		media-libs/freeglut
 		virtual/opengl

@@ -28,7 +28,7 @@
 -media-gfx/openvdb
 -media-libs/embree
 -media-libs/opencolorio
--media-libs/OpenImageIO
+-media-libs/openimageio
 -media-libs/osl
 
 # Sam James <sam@gentoo.org> (2021-10-16)

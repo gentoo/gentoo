@@ -3,25 +3,25 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+FONT_PN=OpenImageIO
+PYTHON_COMPAT=( python3_{9..11} )
 
-TEST_OIIO_IMAGE_COMMIT="aae37a54e31c0e719edcec852994d052ecf6541e"
-TEST_OEXR_IMAGE_COMMIT="df16e765fee28a947244657cae3251959ae63c00"
-inherit cmake flag-o-matic font python-single-r1
+TEST_OIIO_IMAGE_COMMIT="245e50edede2792205080eadc1dedce33ff5c1e4"
+TEST_OEXR_IMAGE_COMMIT="f17e353fbfcde3406fe02675f4d92aeae422a560"
+inherit cmake font python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
 HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
-SRC_URI="
-	https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	test? (
-		https://github.com/AcademySoftwareFoundation/OpenImageIO-images/archive/${TEST_OIIO_IMAGE_COMMIT}.tar.gz -> ${PN}-oiio-test-image-${TEST_OIIO_IMAGE_COMMIT}.tar.gz
+SRC_URI="https://github.com/OpenImageIO/oiio/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" test? (
+		https://github.com/OpenImageIO/oiio-images/archive/${TEST_OIIO_IMAGE_COMMIT}.tar.gz -> ${PN}-oiio-test-image-${TEST_OIIO_IMAGE_COMMIT}.tar.gz
 		https://github.com/AcademySoftwareFoundation/openexr-images/archive/${TEST_OEXR_IMAGE_COMMIT}.tar.gz -> ${PN}-oexr-test-image-${TEST_OEXR_IMAGE_COMMIT}.tar.gz
-	)
-"
+	)"
+S="${WORKDIR}/oiio-${PV}"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
 
 X86_CPU_FEATURES=(
 	aes:aes sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -29,8 +29,8 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
-IUSE="dicom doc ffmpeg gif jpeg2k opencv openvdb ptex python qt5 qt6 raw test +tools +truetype ${CPU_FEATURES[@]%:*}"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) qt5? ( tools ) qt6? ( tools )"
+IUSE="dicom doc ffmpeg gif jpeg2k opencv opengl openvdb ptex python qt5 raw test +truetype ${CPU_FEATURES[@]%:*}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Not quite working yet
 RESTRICT="!test? ( test )" # test"
@@ -50,7 +50,7 @@ RDEPEND="
 	dev-cpp/robin-map
 	dev-libs/libfmt:=
 	dev-libs/pugixml:=
-	>=media-libs/libheif-1.13.0:=
+	>=media-libs/libheif-1.7.0:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.2.1:=
@@ -64,6 +64,11 @@ RDEPEND="
 	gif? ( media-libs/giflib:0= )
 	jpeg2k? ( >=media-libs/openjpeg-2.0:2= )
 	opencv? ( media-libs/opencv:= )
+	opengl? (
+		media-libs/glew:=
+		virtual/glu
+		virtual/opengl
+	)
 	openvdb? (
 		dev-cpp/tbb:=
 		media-gfx/openvdb:=
@@ -78,15 +83,10 @@ RDEPEND="
 		')
 	)
 	qt5? (
-		media-libs/libglvnd
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
-	)
-	qt6? (
-		media-libs/libglvnd
-		dev-qt/qtbase:6[gui,widgets,opengl]
+		opengl? ( dev-qt/qtopengl:5 )
 	)
 	raw? ( media-libs/libraw:= )
 	truetype? ( media-libs/freetype:2= )
@@ -94,10 +94,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES.md CREDITS.md README.md )
-
-pkg_pretend() {
-	use qt5 && use qt6 && einfo "The \"qt5\" USE flag has no effect when the \"qt6\" USE flag is also enabled."
-}
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -109,8 +105,8 @@ src_prepare() {
 
 	if use test ; then
 		mkdir -p "${BUILD_DIR}"/testsuite || die
-		mv "${WORKDIR}/${PN}-images-${TEST_OIIO_IMAGE_COMMIT}" "${BUILD_DIR}"/testsuite/oiio-images || die
-		mv "${WORKDIR}/openexr-images-${TEST_OEXR_IMAGE_COMMIT}" "${BUILD_DIR}"/testsuite/openexr-images || die
+		mv "${WORKDIR}"/oiio-images-${TEST_OIIO_IMAGE_COMMIT} "${BUILD_DIR}"/testsuite/oiio-images || die
+		mv "${WORKDIR}"/openexr-images-${TEST_OEXR_IMAGE_COMMIT} "${BUILD_DIR}"/testsuite/openexr-images || die
 	fi
 }
 
@@ -125,13 +121,8 @@ src_configure() {
 	# If no CPU SIMDs were used, completely disable them
 	[[ -z ${mysimd} ]] && mysimd=("0")
 
-	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
-	# Even if there are no SIMD features selected, it seems like the code will turn on NEON support if it is available.
-	use arm64 && append-flags -flax-vector-conversions
-
 	local mycmakeargs=(
 		-DVERBOSE=ON
-		-DOIIO_BUILD_TOOLS=$(usex tools)
 		-DBUILD_TESTING=$(usex test)
 		-DOIIO_BUILD_TESTS=$(usex test)
 		-DOIIO_DOWNLOAD_MISSING_TESTDATA=OFF
@@ -148,24 +139,15 @@ src_configure() {
 		-DUSE_GIF=$(usex gif)
 		-DUSE_OPENJPEG=$(usex jpeg2k)
 		-DUSE_OPENCV=$(usex opencv)
+		-DUSE_OPENGL=$(usex opengl)
 		-DUSE_OPENVDB=$(usex openvdb)
 		-DUSE_PTEX=$(usex ptex)
 		-DUSE_PYTHON=$(usex python)
+		-DUSE_QT=$(usex qt5)
 		-DUSE_LIBRAW=$(usex raw)
 		-DUSE_FREETYPE=$(usex truetype)
 		-DUSE_SIMD=$(local IFS=','; echo "${mysimd[*]}")
 	)
-
-	if use qt5 || use qt6; then
-		mycmakeargs+=( -DENABLE_IV=ON -DUSE_OPENGL=ON -DUSE_QT=ON )
-		if use qt6; then
-			mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5=ON )
-		else
-			mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON )
-		fi
-	else
-		mycmakeargs+=( -DENABLE_IV=OFF -DUSE_QT=OFF )
-	fi
 
 	if use python; then
 		mycmakeargs+=(

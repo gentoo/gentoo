@@ -34,7 +34,7 @@
 			Build cycles renderer with nVidia CUDA support.
 		</flag>
 		<flag name="cycles">
-			Build cycles renderer (requires <pkg>media-libs/OpenImageIO</pkg> and
+			Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
 			<pkg>dev-libs/boost</pkg>).
 		</flag>
 		<flag name="cycles-bin-kernels">

@@ -61,7 +61,7 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsamplerate
-	>=media-libs/OpenImageIO-2.4.6.0:=
+	>=media-libs/openimageio-2.4.6.0:=
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/libintl
