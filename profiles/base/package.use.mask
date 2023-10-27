@@ -422,8 +422,9 @@ media-video/mjpg-streamer http-management
 app-text/texlive pdfannotextractor
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-10-16)
-# openjfx for openjdk17 is not yet available
+# openjfx for OpenJDK 17 and 21 is not yet available.
 dev-java/openjdk:17 javafx
+dev-java/openjdk:21 javafx
 
 # Marek Szuba <marecki@gentoo.org> (2021-10-10)
 # Legacy interface that depends on dev-libs/libx86 and specific kernel
