@@ -32,10 +32,6 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.25.1-skip-test-server.sh
-)
-
 src_prepare() {
 	default
 
