@@ -1539,9 +1539,9 @@ gcc_do_filter_flags() {
 	if ver_test -lt 13.6 ; then
 		# These aren't supported by the just-built compiler either.
 		filter-flags -fharden-compares -fharden-conditional-branches \
-			-fharden-control-flow-redundancy -fhardcfr-skip-leaf \
-			-fhardcfr-check-exceptions -fhardcfr-check-returning-calls \
-			'-fhardcfr-check-noreturn-calls=*'
+			-fharden-control-flow-redundancy -fno-harden-control-flow-redundancy \
+			-fhardcfr-skip-leaf -fhardcfr-check-exceptions \
+			-fhardcfr-check-returning-calls '-fhardcfr-check-noreturn-calls=*'
 	fi
 
 	# Makes things painfully slow and no real beenfit for the compiler.
