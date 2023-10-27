@@ -4,13 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python video metadata parser"
-HOMEPAGE="https://github.com/Diaoul/enzyme https://pypi.org/project/enzyme/"
+HOMEPAGE="
+	https://github.com/Diaoul/enzyme/
+	https://pypi.org/project/enzyme/
+"
 SRC_URI+="
 	test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )
 "
@@ -29,7 +32,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	if use test; then
