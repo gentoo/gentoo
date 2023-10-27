@@ -15,12 +15,17 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/openssl:=[bindist(+)]"
+RDEPEND="
+	<dev-libs/openssl-3.1.4:=[bindist(+)]
+"
 DEPEND="${RDEPEND}
-	test? ( dev-libs/softhsm )"
-BDEPEND="virtual/pkgconfig
+	test? ( dev-libs/softhsm )
+"
+BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	test? ( >=dev-libs/opensc-0.23.0-r2 )"
+	test? ( >=dev-libs/opensc-0.23.0-r2 )
+"
 
 src_prepare() {
 	local PATCHES=(
