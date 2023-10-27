@@ -3,21 +3,22 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 # Check this on updates
 LLVM_MAX_SLOT=15
 
-inherit cmake llvm toolchain-funcs python-single-r1
+inherit cmake flag-o-matic llvm toolchain-funcs python-single-r1
 
 DESCRIPTION="Advanced shading language for production GI renderers"
-HOMEPAGE="https://github.com/AcademySoftwareFoundation/OpenShadingLanguage"
+HOMEPAGE="http://opensource.imageworks.com/?p=osl"
 # If a development release, please don't keyword!
-SRC_URI="https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/imageworks/OpenShadingLanguage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/OpenShadingLanguage-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 
 X86_CPU_FEATURES=(
 	sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -77,11 +78,12 @@ src_configure() {
 	# If no CPU SIMDs were used, completely disable them
 	[[ -z ${mysimd} ]] && mysimd=("0")
 
+	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
+	# Even if there are no SIMD features selected, it seems like the code will turn on NEON support if it is available.
+	use arm64 && append-flags -flax-vector-conversions
+
 	local gcc="$(tc-getCC)"
 	local mycmakeargs=(
-		# Still needed?
-		# See https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/1454
-		#-DCMAKE_CXX_STANDARD=14
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DINSTALL_DOCS=$(usex doc)
 		-DUSE_CCACHE=OFF
@@ -101,7 +103,7 @@ src_configure() {
 src_test() {
 	# TODO: investigate failures
 	local myctestargs=(
-		-E "(osl-imageio|osl-imageio.opt|render-background|render-bumptest|render-mx-furnace-burley-diffuse|render-mx-furnace-sheen|render-mx-burley-diffuse|render-mx-conductor|render-mx-generalized-schlick|render-mx-generalized-schlick-glass|render-microfacet|render-oren-nayar|render-uv|render-veachmis|render-ward|color|color.opt|example-deformer)"
+		-E "(osl-imageio|osl-imageio.opt|render-background|render-bumptest|render-mx-furnace-burley-diffuse|render-mx-furnace-sheen|render-mx-burley-diffuse|render-mx-conductor|render-mx-generalized-schlick|render-mx-generalized-schlick-glass|render-microfacet|render-oren-nayar|render-uv|render-veachmis|render-ward|render-raytypes.opt|color|color.opt|example-deformer)"
 	)
 
 	cmake_src_test

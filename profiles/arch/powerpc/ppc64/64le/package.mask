@@ -29,7 +29,7 @@
 -media-libs/embree
 -media-libs/OpenColorIO
 -media-libs/OpenImageIO
--media-libs/OpenShadingLanguage
+-media-libs/osl
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Fails with "No byte-swap function available on big-endian platform." on be

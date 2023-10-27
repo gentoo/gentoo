@@ -71,7 +71,7 @@ BDEPEND="
 "
 # 	test? (
 # 		>=media-libs/OpenImageIO-2.2.14
-# 		>=media-libs/OpenShadingLanguage-1.11
+# 		>=media-libs/osl-1.11
 # 	)
 # "
 
