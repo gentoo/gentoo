@@ -121,7 +121,7 @@ RDEPEND="
 	)
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	openexr? (
-		dev-libs/Imath:=
+		dev-libs/imath:=
 		media-libs/openexr:=
 	)
 	opengl? (

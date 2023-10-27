@@ -102,7 +102,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
-	lcms? ( dev-libs/Imath:3 )
+	lcms? ( dev-libs/imath:3 )
 	test? ( >=kde-frameworks/threadweaver-${KFMIN}:5 )
 "
 RDEPEND="${COMMON_DEPEND}

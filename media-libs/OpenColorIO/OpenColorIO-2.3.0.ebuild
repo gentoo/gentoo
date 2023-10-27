@@ -29,7 +29,7 @@ RDEPEND="
 	dev-cpp/pystring
 	>=dev-cpp/yaml-cpp-0.7.0:=
 	dev-libs/expat
-	>=dev-libs/Imath-3.1.5:=
+	>=dev-libs/imath-3.1.5:=
 	sys-libs/minizip-ng
 	sys-libs/zlib
 	apps? (

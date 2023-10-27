@@ -19,7 +19,7 @@ IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/Imath-${PV}:=
+	>=dev-libs/imath-${PV}:=
 	sys-libs/zlib
 	!media-libs/openexr:3
 	!media-libs/ilmbase

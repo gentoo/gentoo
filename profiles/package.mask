@@ -387,7 +387,7 @@ net-misc/openr2
 # shortly which fixes this.
 # See https://github.com/AcademySoftwareFoundation/Imath/issues/189#issuecomment-1567077722
 # Bug: #907211
-=dev-libs/Imath-3.1.7
+=dev-libs/imath-3.1.7
 
 # Sam James <sam@gentoo.org> (2023-05-19)
 # Breaks Portage's pid-sandbox at least with 5.10 kernels. Pending investigation.

@@ -32,7 +32,7 @@ RDEPEND="
 		virtual/opencl
 	)
 	openexr? (
-		dev-libs/Imath:=
+		dev-libs/imath:=
 		media-libs/openexr:=
 	)
 	sndfile? ( media-libs/libsndfile )

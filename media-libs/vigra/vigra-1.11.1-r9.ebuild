@@ -37,7 +37,7 @@ DEPEND="
 	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi=] )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	openexr? (
-		>=dev-libs/Imath-3.1.4-r2:=
+		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
 	png? ( media-libs/libpng:0= )

@@ -30,7 +30,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/jemalloc:=
 	dev-libs/log4cplus:=
-	>=dev-libs/Imath-3.1.4-r2:=
+	>=dev-libs/imath-3.1.4-r2:=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
 	x11-libs/libXi

@@ -38,7 +38,7 @@ DEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	opencv? ( >=media-libs/opencv-2.3.1a-r1:= )
 	openexr? (
-		dev-libs/Imath:=
+		dev-libs/imath:=
 		media-libs/openexr:=
 	)
 	png? ( media-libs/libpng:= )
