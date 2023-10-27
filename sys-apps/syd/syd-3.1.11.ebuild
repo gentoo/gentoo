@@ -15,15 +15,14 @@ CRATES="
 	bitflags@1.3.2
 	bitflags@2.4.1
 	bstr@1.7.0
-	caps@0.5.5
 	cast@0.3.0
 	cfg-if@1.0.0
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@4.4.6
-	clap_builder@4.4.6
-	clap_lex@0.5.1
+	clap@4.4.7
+	clap_builder@4.4.7
+	clap_lex@0.6.0
 	criterion-plot@0.5.0
 	criterion@0.5.1
 	either@1.9.0
@@ -46,7 +45,7 @@ CRATES="
 	libseccomp@0.3.0
 	linked-hash-map@0.5.6
 	linux-raw-sys@0.4.10
-	lock_api@0.4.10
+	lock_api@0.4.11
 	log@0.4.20
 	memchr@2.6.4
 	memoffset@0.7.1
@@ -57,11 +56,11 @@ CRATES="
 	once_cell@1.18.0
 	oorandom@11.1.3
 	parking_lot@0.12.1
-	parking_lot_core@0.9.8
+	parking_lot_core@0.9.9
 	pkg-config@0.3.27
 	proc-macro2@1.0.69
 	quote@1.0.33
-	redox_syscall@0.3.5
+	redox_syscall@0.4.1
 	regex-automata@0.4.3
 	regex-syntax@0.8.2
 	regex@1.10.2
@@ -70,15 +69,13 @@ CRATES="
 	ryu@1.0.15
 	same-file@1.0.6
 	scopeguard@1.2.0
-	serde@1.0.189
-	serde_derive@1.0.189
+	serde@1.0.190
+	serde_derive@1.0.190
 	serde_json@1.0.107
 	smallvec@1.11.1
 	strum@0.25.0
 	strum_macros@0.25.3
 	syn@2.0.38
-	thiserror-impl@1.0.50
-	thiserror@1.0.50
 	threadpool@1.8.1
 	tinytemplate@1.2.1
 	ttl_cache@0.5.1
@@ -138,4 +135,7 @@ src_install () {
 	dodoc README.md
 	insinto /usr/libexec
 	doins data/esyd.sh
+
+	insinto /etc
+	newins data/user.syd-3 user.syd-3.sample
 }
