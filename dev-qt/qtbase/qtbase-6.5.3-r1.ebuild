@@ -285,6 +285,8 @@ src_test() {
 		tst_qdnslookup
 		# typical to lack SCTP support on non-generic kernels
 		tst_qsctpsocket
+		# randomly fails without -j1, and not worth it over this (bug #916181)
+		tst_qfiledialog{,2}
 		# these can be flaky depending on the environment/toolchain
 		tst_qlogging # backtrace log test can easily vary
 		tst_q{,raw}font # affected by available fonts / settings (bug #914737)
@@ -313,7 +315,6 @@ src_test() {
 		# partially broken on llvm-musl, needs looking into but skip to have
 		# a baseline for regressions (rest of dev-qt still passes with musl)
 		$(usev elibc_musl '
-			tst_qfiledialog2
 			tst_qicoimageformat
 			tst_qimagereader
 			tst_qimage
