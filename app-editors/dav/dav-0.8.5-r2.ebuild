@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="A minimal console text editor"
-HOMEPAGE="http://dav-text.sourceforge.net/"
+DESCRIPTION="Minimal console text editor"
+HOMEPAGE="https://dav-text.sourceforge.net/"
 # The maintainer does not keep sourceforge's mirrors up-to-date,
 # so we point to the website's store of files.
-SRC_URI="http://dav-text.sourceforge.net/files/${P}.tar.gz"
+SRC_URI="https://dav-text.sourceforge.net/files/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
