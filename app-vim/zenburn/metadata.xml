@@ -11,4 +11,5 @@
   <upstream>
     <remote-id type="github">jnurmine/Zenburn</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
