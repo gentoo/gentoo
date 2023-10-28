@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 git-r3
 
@@ -18,7 +18,6 @@ EGIT_REPO_URI="https://github.com/dbcli/cli_helpers.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="
 	>=dev-python/configobj-5.0.5[${PYTHON_USEDEP}]
