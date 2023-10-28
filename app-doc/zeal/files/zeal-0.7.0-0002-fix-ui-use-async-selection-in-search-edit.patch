@@ -1,0 +1,21 @@
+Commit d5ce8a0f04dfc4d609cfcab75cc53135ba1a9557
+--- a/src/libs/ui/widgets/searchedit.cpp
++++ b/src/libs/ui/widgets/searchedit.cpp
+@@ -29,6 +29,7 @@
+ #include <QKeyEvent>
+ #include <QLabel>
+ #include <QStyle>
++#include <QTimer>
+ 
+ using namespace Zeal;
+ using namespace Zeal::WidgetUi;
+@@ -82,7 +83,8 @@ void SearchEdit::selectQuery()
+         return;
+     }
+ 
+-    selectAll();
++    // Avoid some race condition which breaks Ctrl+K shortcut.
++    QTimer::singleShot(0, this, &QLineEdit::selectAll);
+ }
+ 
+ bool SearchEdit::event(QEvent *event)

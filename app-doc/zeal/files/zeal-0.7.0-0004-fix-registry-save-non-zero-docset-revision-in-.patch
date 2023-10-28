@@ -1,0 +1,14 @@
+Commit 2cefcd45423e58283372a4c735609c284eded410
+--- a/src/libs/registry/docsetmetadata.cpp
++++ b/src/libs/registry/docsetmetadata.cpp
+@@ -89,8 +89,8 @@ void DocsetMetadata::save(const QString &path, const QString &version)
+     if (!version.isEmpty())
+         jsonObject[QStringLiteral("version")] = version;
+ 
+-    if (version == latestVersion() && m_revision == 0)
+-        jsonObject[QStringLiteral("revision")] = m_revision;
++    if (version == latestVersion() && m_revision > 0)
++        jsonObject[QStringLiteral("revision")] = QString::number(m_revision);
+ 
+     if (!m_feedUrl.isEmpty())
+         jsonObject[QStringLiteral("feed_url")] = m_feedUrl.toString();
