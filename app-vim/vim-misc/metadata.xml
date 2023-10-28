@@ -8,4 +8,5 @@
   <upstream>
     <remote-id type="github">xolox/vim-misc</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
