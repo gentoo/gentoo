@@ -1,0 +1,12 @@
+diff -r -U3 pyxdg-rel-0.28.orig/test/test_basedirectory.py pyxdg-rel-0.28/test/test_basedirectory.py
+--- pyxdg-rel-0.28.orig/test/test_basedirectory.py	2022-06-05 18:34:18.000000000 +0700
++++ pyxdg-rel-0.28/test/test_basedirectory.py	2023-10-28 22:41:56.975921683 +0700
+@@ -9,7 +9,7 @@
+ try:
+     reload
+ except NameError:
+-    from imp import reload
++    from importlib import reload
+ 
+ class BaseDirectoryTest(unittest.TestCase):
+     def setUp(self):
