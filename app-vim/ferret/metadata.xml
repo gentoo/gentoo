@@ -12,4 +12,5 @@
 	<upstream>
 		<remote-id type="github">wincent/ferret</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
