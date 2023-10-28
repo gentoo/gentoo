@@ -12,4 +12,5 @@
 	<upstream>
 		<remote-id type="github">vim-scripts/tasklist.vim</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
