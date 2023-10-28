@@ -28,9 +28,9 @@ BDEPEND="
 "
 # Take care on bumps to check minimum versions!
 RDEPEND="
-	dev-libs/serd
+	>=dev-libs/serd-0.30.10
 	>=dev-libs/sord-0.16.16
-	media-libs/lv2
+	>=media-libs/lv2-1.18.4
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
