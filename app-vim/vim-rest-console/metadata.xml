@@ -8,4 +8,5 @@
   <upstream>
     <remote-id type="github">diepm/vim-rest-console</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
