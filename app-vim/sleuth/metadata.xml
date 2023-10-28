@@ -8,4 +8,5 @@
   <upstream>
     <remote-id type="github">tpope/vim-sleuth</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
