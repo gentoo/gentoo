@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-04-30)
@@ -6,3 +6,4 @@
 # system bootstrap
 dev-java/openjdk:11 -system-bootstrap
 dev-java/openjdk:17 -system-bootstrap
+dev-java/openjdk:21 -system-bootstrap

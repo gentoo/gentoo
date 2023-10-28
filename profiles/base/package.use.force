@@ -52,6 +52,7 @@ sys-devel/clang pie
 # Force to use installed openjdk{,-bin} for bootstrapping
 dev-java/openjdk:11 system-bootstrap
 dev-java/openjdk:17 system-bootstrap
+dev-java/openjdk:21 system-bootstrap
 
 # Michał Górny <mgorny@gentoo.org> (2021-11-04)
 # Enable all LLVM targets unconditionally.  Unfortunately, disabling

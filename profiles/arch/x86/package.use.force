@@ -17,6 +17,7 @@ www-client/firefox system-libvpx
 # system bootstrap
 dev-java/openjdk:11 -system-bootstrap
 dev-java/openjdk:17 -system-bootstrap
+dev-java/openjdk:21 -system-bootstrap
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # We have ready-to-use configs here.
