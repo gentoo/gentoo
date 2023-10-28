@@ -144,7 +144,7 @@ x11-wm/mutter video_cards_nvidia
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
 # Has unpackaged dependencies, bug #795459
-<media-libs/OpenColorIO-2.2.0 doc
+<media-libs/opencolorio-2.2.0 doc
 
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
 # The clozurecl and clozurecl64 flags are now arch-specific in maxima,
