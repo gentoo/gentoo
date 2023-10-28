@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
+	# gcc ICE with LTO: https://gcc.gnu.org/PR100010
+	filter-flags -fdevirtualize-at-ltrans
+
 	use kpathsea && has_version 'dev-libs/kpathsea' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
 	econf $(use_with kpathsea)
 }
