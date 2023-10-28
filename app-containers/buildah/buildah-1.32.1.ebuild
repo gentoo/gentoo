@@ -43,6 +43,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+export COMMIT_NO=bfd436d159059b45d770a0fc62386c9e0b9bdbb1
+export GIT_COMMIT=${COMMIT_NO}
+
 pkg_pretend() {
 	local CONFIG_CHECK=""
 	use btrfs && CONFIG_CHECK+=" ~BTRFS_FS"
