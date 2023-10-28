@@ -10,4 +10,5 @@
 		files, and automatic filetype detection for these files based upon
 		filename.
 	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>
