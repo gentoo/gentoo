@@ -82,6 +82,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.1-adjust-python-installation.patch"
 	"${FILESDIR}/${PN}-2.2.1-support-minizip-ng-4.patch"
+	"${FILESDIR}/${PN}-${PV}-support-doxygen-1.9.7.patch"
 )
 
 pkg_setup() {
