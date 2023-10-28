@@ -12,7 +12,8 @@ else
 	if [[ "${PV}" != *_rc* ]]; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	fi
-	SRC_URI="https://github.com/dracutdevs/dracut/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	EGIT_COMMIT="b2af8c8bcfc72802e02e2c0adc2eed9279101624"
+	SRC_URI="https://github.com/dracutdevs/dracut/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Generic initramfs generation tool"
