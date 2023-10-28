@@ -7,4 +7,5 @@
 	<upstream>
 		<remote-id type="github">kana/vim-vspec</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
