@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="PKCS#11 support for GnuPG"
-HOMEPAGE="http://gnupg-pkcs11.sourceforge.net"
+HOMEPAGE="https://sourceforge.net/projects/gnupg-pkcs11/"
 SRC_URI="https://github.com/alonbl/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
