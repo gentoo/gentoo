@@ -82,6 +82,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.1-adjust-python-installation.patch"
 	"${FILESDIR}/${PN}-2.3.0-support-yaml-cpp-0.8.0.patch"
+	"${FILESDIR}/${PN}-2.3.0-fix-cxxflags.patch"
 )
 
 pkg_setup() {
