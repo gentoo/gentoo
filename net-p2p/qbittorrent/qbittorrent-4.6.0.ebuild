@@ -24,12 +24,12 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( gui webui )"
 
 RDEPEND="
+	acct-group/qbittorrent
+	acct-user/qbittorrent
 	>=dev-libs/openssl-1.1.1:=
 	>=net-libs/libtorrent-rasterbar-1.2.18:=
 	>=sys-libs/zlib-1.2.11
 	virtual/libiconv
-	acct-group/qbittorrent
-	acct-user/qbittorrent
 	gui? (
 		dev-libs/geoip
 		!qt6? (
