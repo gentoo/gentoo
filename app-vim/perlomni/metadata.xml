@@ -11,4 +11,5 @@
   <upstream>
     <remote-id type="github">c9s/perlomni.vim</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
