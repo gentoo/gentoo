@@ -32,8 +32,8 @@ BDEPEND="
 "
 # Take care on bumps to check minimum versions!
 RDEPEND="
-	dev-libs/serd[${MULTILIB_USEDEP}]
-	dev-libs/zix[${MULTILIB_USEDEP}]
+	>=dev-libs/serd-0.30.10[${MULTILIB_USEDEP}]
+	>=dev-libs/zix-0.4.0[${MULTILIB_USEDEP}]
 	tools? ( dev-libs/libpcre2[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
