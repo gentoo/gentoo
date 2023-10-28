@@ -38,6 +38,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 COMMON_DEPEND="
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
+	dev-libs/libgit2
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1
