@@ -5,13 +5,14 @@ EAPI=8
 
 inherit meson-multilib
 
-SRC_URI="https://download.drobilla.net/${P}.tar.xz"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 DESCRIPTION="Lightweight C library of portability wrappers and data structures"
-HOMEPAGE="https://drobilla.net/software/zix.html"
+#HOMEPAGE="https://drobilla.net/software/zix.html"
+HOMEPAGE="https://gitlab.com/drobilla/zix"
+SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
