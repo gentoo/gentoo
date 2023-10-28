@@ -5,11 +5,13 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools bash-completion-r1 check-reqs db-use desktop edo multiprocessing python-any-r1 systemd xdg-utils
+inherit autotools bash-completion-r1 check-reqs db-use desktop edo multiprocessing python-any-r1 systemd verify-sig xdg-utils
 
 DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
-SRC_URI="https://bitcoincore.org/bin/${P}/${P/-core}.tar.gz"
+SRC_URI="https://bitcoincore.org/bin/${P}/${P/-core}.tar.gz
+	https://bitcoincore.org/bin/${P}/SHA256SUMS -> ${P/-core}.SHA256SUMS
+	https://bitcoincore.org/bin/${P}/SHA256SUMS.asc -> ${P/-core}.SHA256SUMS.asc"
 S="${WORKDIR}/${P/-core}"
 
 LICENSE="MIT"
@@ -68,10 +70,13 @@ BDEPEND="
 	)
 	gui? ( >=dev-qt/linguist-tools-5.15.5:5 )
 	test? ( ${PYTHON_DEPS} )
+	verify-sig? ( sec-keys/openpgp-keys-bitcoin-core )
 "
 IDEPEND="
 	gui? ( dev-util/desktop-file-utils )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/${PN}.asc"
 
 DOCS=(
 	doc/bips.md
@@ -134,6 +139,16 @@ pkg_setup() {
 		CHECKREQS_DISK_BUILD="6G" check-reqs_pkg_setup
 		python-any-r1_pkg_setup
 	fi
+}
+
+src_unpack() {
+	if use verify-sig ; then
+		pushd "${DISTDIR}" >/dev/null || die
+		verify-sig_verify_detached "${P/-core}.SHA256SUMS"{,.asc}
+		verify-sig_verify_unsigned_checksums "${P/-core}.SHA256SUMS" sha256 "${P/-core}.tar.gz"
+		popd >/dev/null || die
+	fi
+	unpack "${P/-core}.tar.gz"
 }
 
 src_prepare() {
