@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="replacement of the old unix crypt(1)"
-HOMEPAGE="http://mcrypt.sourceforge.net/"
+DESCRIPTION="Replacement of the old unix crypt(1)"
+HOMEPAGE="https://mcrypt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mcrypt/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE="nls"
