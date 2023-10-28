@@ -11,4 +11,5 @@
   <upstream>
     <remote-id type="github">fs111/pydoc.vim</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
