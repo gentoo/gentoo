@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="github">jlanzarotta/bufexplorer</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
