@@ -7,7 +7,7 @@ MY_PN="PProcM"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="ncurses-based program to monitor CPU, disk, network and memory usage"
-HOMEPAGE="http://www.fusedcreations.com/PProcM/"
+HOMEPAGE="https://github.com/ZachGoldberg/Perl-Proc-Monitor-PProcM"
 SRC_URI="http://www.fusedcreations.com/PProcM/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
