@@ -13,29 +13,18 @@ diff --git a/sphinx_celery/conf.py b/sphinx_celery/conf.py
 index b35bc2b..8a6895b 100644
 --- a/sphinx_celery/conf.py
 +++ b/sphinx_celery/conf.py
-@@ -158,20 +158,20 @@
- 
-     extlinks.setdefault('sha', (
-         'https://github.com/{0}/commit/%s'.format(github_project),
+@@ -161 +161 @@
 -        'GitHub SHA@',
 +        'GitHub SHA@%s',
-     ))
-     extlinks.setdefault('github_branch', (
-         'https://github.com/{0}/tree/%s'.format(github_project),
+@@ -165 +165 @@
 -        'GitHub branch',
 +        'GitHub branch %s',
-     ))
-     extlinks.setdefault('github_user', (
+@@ -168 +168 @@
 -        'https://github.com/%s/', '@',
 +        'https://github.com/%s/', '@%s',
-     ))
-     extlinks.setdefault('pypi', (
+@@ -171 +171 @@
 -        'https://pypi.python.org/pypi/%s/', '',
 +        'https://pypi.python.org/pypi/%s/', None,
-     ))
-     extlinks.setdefault('wikipedia', (
+@@ -174 +174 @@
 -        'https://en.wikipedia.org/wiki/%s', '',
 +        'https://en.wikipedia.org/wiki/%s', None,
-     ))
- 
-     if not canonical_dev_url:
