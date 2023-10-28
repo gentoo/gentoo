@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="github">mattn/gist-vim</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
