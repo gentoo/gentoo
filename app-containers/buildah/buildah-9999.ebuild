@@ -56,7 +56,8 @@ src_prepare() {
 
 	# ensure all  necessary files are there
 	local file
-	for file in docs/Makefile hack/libsubid_tag.sh hack/apparmor_tag.sh hack/systemd_tag.sh btrfs_installed_tag.sh btrfs_tag.sh; do
+	for file in docs/Makefile hack/libsubid_tag.sh hack/apparmor_tag.sh \
+		hack/systemd_tag.sh btrfs_installed_tag.sh btrfs_tag.sh; do
 		[[ -f "${file}" ]] || die
 	done
 
