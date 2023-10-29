@@ -13,7 +13,7 @@ SRC_URI="https://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAxMTc1MzA
 
 LICENSE="Canon-IJ"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="virtual/libusb:1
