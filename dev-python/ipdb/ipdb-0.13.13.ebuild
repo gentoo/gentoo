@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -25,7 +25,7 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/tomli[${PYTHON_USEDEP}]
-		' 3.8 3.9 3.10)
+		' 3.10)
 	)
 "
 
