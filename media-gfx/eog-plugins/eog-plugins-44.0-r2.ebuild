@@ -22,7 +22,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/glib-2.53.4:2
-	>=dev-libs/libpeas-1.14.1
+	>=dev-libs/libpeas-1.14.1:0
 	>=media-gfx/eog-41.0:1
 	exif? ( >=media-libs/libexif-0.6.16 )
 	map? (
@@ -33,7 +33,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		dev-libs/glib[dbus]
-		dev-libs/libpeas:=[gtk,python,${PYTHON_SINGLE_USEDEP}]
+		dev-libs/libpeas:0[gtk,python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
 		')
