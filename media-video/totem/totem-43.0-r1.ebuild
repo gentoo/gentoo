@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	>=media-libs/gst-plugins-base-1.6.0:1.0[pango]
 	>=media-libs/gst-plugins-good-1.6.0:1.0
 	>=media-libs/grilo-0.3.0:0.3[playlist]
-	>=dev-libs/libpeas-1.1.0[gtk]
+	>=dev-libs/libpeas-1.1.0:0[gtk]
 	>=dev-libs/totem-pl-parser-3.26.5:0=[introspection]
 	gnome-base/gnome-desktop:3=
 	gnome-base/gsettings-desktop-schemas
@@ -53,7 +53,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/libportal:0=[gtk]
 	python? (
 		x11-libs/pango[introspection]
-		>=dev-libs/libpeas-1.1.0[python,${PYTHON_SINGLE_USEDEP}]
+		>=dev-libs/libpeas-1.1.0:0[python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 		')
