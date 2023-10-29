@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RDEPEND="
 	>=gui-libs/gtk-3.92.0:4[introspection?]
 	>=gui-libs/libadwaita-1.2.0:1
 	>=net-libs/gnome-online-accounts-3.2.0:=
-	>=dev-libs/libpeas-1.17
+	>=dev-libs/libpeas-1.17:0
 	>=gnome-extra/evolution-data-server-3.33.2:=[gtk]
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "
