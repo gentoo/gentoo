@@ -43,19 +43,7 @@ IUSE="+alsa +ffmpeg +gmp-autoupdate +pulseaudio selinux wayland"
 
 RESTRICT="strip"
 
-BDEPEND="app-arch/unzip
-	alsa? (
-		!pulseaudio? (
-			dev-util/patchelf
-		)
-	)"
-
-DEPEND="alsa? (
-		!pulseaudio? (
-			media-sound/apulse
-		)
-	)"
-
+BDEPEND="app-arch/unzip"
 RDEPEND="${DEPEND}
 	!www-client/firefox-bin:0
 	!www-client/firefox-bin:esr
@@ -212,13 +200,6 @@ src_install() {
 		"${ED}${MOZILLA_FIVE_HOME}"/${MOZ_PN}-bin \
 		"${ED}${MOZILLA_FIVE_HOME}"/plugin-container
 
-	# Patch alsa support
-	local apulselib=
-	if use alsa && ! use pulseaudio ; then
-		apulselib="${EPREFIX}/usr/$(get_libdir)/apulse"
-		patchelf --set-rpath "${apulselib}" "${ED}${MOZILLA_FIVE_HOME}/libxul.so" || die
-	fi
-
 	# Install policy (currently only used to disable application updates)
 	insinto "${MOZILLA_FIVE_HOME}/distribution"
 	newins "${FILESDIR}"/disable-auto-update.policy.json policies.json
@@ -278,6 +259,13 @@ src_install() {
 	fi
 
 	cp "${desktop_file}" "${WORKDIR}/${PN}.desktop-template" || die
+
+	# Add apulse support through our wrapper shell launcher, patchelf-method broken since 119.0.
+	# See bgo#916230
+	local apulselib=
+	if use alsa && ! use pulseaudio ; then
+		apulselib="${EPREFIX}/usr/$(get_libdir)/apulse"
+	fi
 
 	sed -i \
 		-e "s:@NAME@:${app_name}:" \
