@@ -32,9 +32,12 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	virtual/wine[${MULTILIB_USEDEP}]
-	>=dev-util/meson-0.50.1
+"
+
+BDEPEND="
+	dev-util/meson-format-array
+	virtual/pkgconfig
 "
 
 PATCHES=(
@@ -65,8 +68,8 @@ src_prepare() {
 
 		sed \
 			-e "s!@PKG_CONFIG@!$(tc-getPKG_CONFIG)!" \
-			-e "s!@CFLAGS@!$(_meson_env_array "${CFLAGS} '-DG9DLL=${g9dll}'")!" \
-			-e "s!@LDFLAGS@!$(_meson_env_array "${LDFLAGS}")!" \
+			-e "s!@CFLAGS@!$(meson-format-array "${CFLAGS} '-DG9DLL=${g9dll}'")!" \
+			-e "s!@LDFLAGS@!$(meson-format-array "${LDFLAGS}")!" \
 			-e "s!@PKG_CONFIG_LIBDIR@!${PKG_CONFIG_LIBDIR:-${ESYSROOT}/usr/$(get_libdir)/pkgconfig}!" \
 			${file}.in > ${file} || die
 	}
