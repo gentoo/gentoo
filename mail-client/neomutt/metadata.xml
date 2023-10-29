@@ -5,6 +5,10 @@
 		<email>nicolasbock@gentoo.org</email>
 		<name>Nicolas Bock</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
+	</maintainer>
 	<use>
 		<flag name="autocrypt">Enable autocrypt.org support</flag>
 		<flag name="berkdb">Enable BDB (Berkley DB) backend for header
