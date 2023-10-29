@@ -88,6 +88,10 @@ linux)
 		alphaev56*|\
 		alphaev[678]*)machine=alpha+bwx-${compiler};;
 		alpha*)       machine=alpha-${compiler};;
+		arc64*b*)     machine="generic64 -DB_ENDIAN";;
+		arc64*)       machine="generic64 -DL_ENDIAN";;
+		arc*b*)       machine="generic32 -DB_ENDIAN";;
+		arc*)         machine="generic32 -DL_ENDIAN";;
 		armv[4-9]*b*) machine="armv4 -DB_ENDIAN";;
 		armv[4-9]*)   machine="armv4 -DL_ENDIAN";;
 		arm*b*)       machine="generic32 -DB_ENDIAN";;
