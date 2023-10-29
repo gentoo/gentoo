@@ -18,7 +18,7 @@ IUSE="X debug exif imagemagick +introspection nls jpeg lcms svg tiff xmp"
 COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.52:2
-	>=dev-libs/libpeas-1.8.0[gtk]
+	>=dev-libs/libpeas-1.8.0:0[gtk]
 	>=dev-libs/libxml2-2:2
 	gnome-base/dconf
 	>=mate-base/mate-desktop-1.17.0
