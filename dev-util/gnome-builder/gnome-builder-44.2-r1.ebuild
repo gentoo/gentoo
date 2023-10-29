@@ -41,7 +41,7 @@ RDEPEND="
 	>=dev-libs/json-glib-1.2.0
 	>=dev-libs/jsonrpc-glib-3.43.0:=
 	>=dev-libs/libdex-0.1.1:=
-	>=dev-libs/libpeas-1.34.0[python,${PYTHON_SINGLE_USEDEP}]
+	>=dev-libs/libpeas-1.34.0:0[python,${PYTHON_SINGLE_USEDEP}]
 	dev-libs/libportal:=[gtk,introspection]
 	>=dev-libs/template-glib-3.36.1:=[introspection]
 	>=gui-libs/vte-0.70.0:2.91-gtk4[introspection]
