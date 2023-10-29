@@ -513,11 +513,6 @@ x11-drivers/nvidia-drivers:0/390
 # https://github.com/igraph/igraph/issues/2311
 =sci-libs/arpack-3.9.0
 
-# Hans de Graaff <graaff@gentoo.org> (2023-03-19)
-# This version of cucumber-core is not compatible with the other
-# cucumber dependencies. Please downgrade cucumber-core.
-=dev-util/cucumber-core-11.1.0
-
 # Mike Pagano <mpagano@gentoo.org> (2023-03-10)
 # Mask =sys-kernel/gentoo-sources-5.15.99 since it does
 # not include 5.15.99 and is misleading
