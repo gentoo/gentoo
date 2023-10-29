@@ -21,7 +21,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.22.0:3[introspection]
 	>=gui-libs/libgedit-amtk-5.6:=
 	>=gui-libs/tepl-6.8.0:=
-	>=dev-libs/libpeas-1.14.1[gtk]
+	>=dev-libs/libpeas-1.14.1:0[gtk]
 	>=dev-libs/gobject-introspection-1.54:=
 	>=app-text/gspell-0.2.5:0=
 	python? (
@@ -29,7 +29,7 @@ DEPEND="
 		$(python_gen_cond_dep '
 			dev-python/pycairo[${PYTHON_USEDEP}]
 			>=dev-python/pygobject-3:3[cairo,${PYTHON_USEDEP}]
-			dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
+			dev-libs/libpeas:0[python,${PYTHON_SINGLE_USEDEP}]
 		')
 	)
 
