@@ -55,12 +55,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	# Remove cmake dependency from setup.py because of
-	# invalid dependency description. We put this dependency check in BDEPEND.
-	"${FILESDIR}"/${PN}-0.12.0-remove-cmake-dependency.patch
-)
-
 distutils_enable_tests pytest
 
 check_openblas() {
