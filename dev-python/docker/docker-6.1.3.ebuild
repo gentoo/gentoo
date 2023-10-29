@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+# py3.12: https://github.com/docker/docker-py/pull/3176 (incomplete)
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
