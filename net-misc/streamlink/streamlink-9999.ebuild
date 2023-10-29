@@ -52,7 +52,6 @@ BDEPEND="
 		>=dev-python/setuptools-64[${PYTHON_USEDEP}]
 		>=dev-python/versioningit-2.0.0[${PYTHON_USEDEP}]
 		test? (
-			dev-python/mock[${PYTHON_USEDEP}]
 			>=dev-python/freezegun-1.0.0[${PYTHON_USEDEP}]
 			dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 			dev-python/pytest-trio[${PYTHON_USEDEP}]
