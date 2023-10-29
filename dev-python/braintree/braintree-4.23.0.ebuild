@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -33,6 +33,11 @@ RDEPEND="
 DOCS=( README.md )
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://github.com/braintree/braintree_python/pull/154
+	"${FILESDIR}/${P}-py312.patch"
+)
 
 python_test() {
 	eunittest tests/unit
