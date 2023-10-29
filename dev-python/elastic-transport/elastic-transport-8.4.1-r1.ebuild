@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -30,7 +30,6 @@ RDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.26.2[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
 		dev-python/aiohttp[${PYTHON_USEDEP}]
