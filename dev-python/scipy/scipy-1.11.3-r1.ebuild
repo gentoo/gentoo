@@ -38,7 +38,7 @@ else
 		)"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~sparc ~x86"
 	fi
 fi
 
