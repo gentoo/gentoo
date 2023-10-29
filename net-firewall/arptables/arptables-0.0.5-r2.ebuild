@@ -1,18 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="set up, maintain, and inspect the tables of ARP rules in the Linux kernel"
-HOMEPAGE="http://ebtables.sourceforge.net/"
+DESCRIPTION="Set up, maintain, and inspect the tables of ARP rules in the Linux kernel"
+HOMEPAGE="https://ebtables.netfilter.org"
 SRC_URI="ftp://ftp.netfilter.org/pub/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 BDEPEND=">=app-eselect/eselect-iptables-20211203"
 RDEPEND="${BDEPEND}"
