@@ -35,7 +35,7 @@ COMMON_DEPEND="dev-cpp/atkmm:0
 	)
 	plugins? (
 		dev-libs/gobject-introspection
-		dev-libs/libpeas
+		dev-libs/libpeas:0
 	)
 	rar? ( app-arch/unrar:= )
 	ssl? (
