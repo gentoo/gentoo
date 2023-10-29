@@ -1,0 +1,11 @@
+XXX: We should really just make meson-python in distutils-r1 always disable werror.
+--- a/meson.build
++++ b/meson.build
+@@ -4,7 +4,6 @@ project(
+   default_options: [
+     # meson-python options are set in pyproject.toml
+     'cpp_std=c++17',
+-    'werror=true',
+   ],
+   license: 'BSD-3-Clause',
+   meson_version: '>= 1.2.0',
