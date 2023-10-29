@@ -21,6 +21,7 @@
   BLAS/LAPACK) for maximum performance and robustness.
   </longdescription>
   <upstream>
+    <remote-id type="github">dfm/emcee</remote-id>
     <remote-id type="pypi">emcee</remote-id>
   </upstream>
 </pkgmetadata>
