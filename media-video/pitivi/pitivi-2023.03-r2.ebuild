@@ -35,7 +35,7 @@ RDEPEND="${COMMON_DEPEND}
 
 	>=dev-libs/gobject-introspection-1.34:=
 
-	dev-libs/libpeas[${PYTHON_SINGLE_USEDEP}]
+	dev-libs/libpeas:0[${PYTHON_SINGLE_USEDEP}]
 
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
