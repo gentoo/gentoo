@@ -158,9 +158,11 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	# there are already files in ${ED}/usr/share/doc/${PF}
-	mv "${ED}/usr/share/doc/OpenColorIO/"* "${ED}/usr/share/doc/${PF}" || die
-	rmdir "${ED}/usr/share/doc/OpenColorIO" || die
+	if use doc; then
+		# there are already files in ${ED}/usr/share/doc/${PF}
+		mv "${ED}/usr/share/doc/OpenColorIO/"* "${ED}/usr/share/doc/${PF}" || die
+		rmdir "${ED}/usr/share/doc/OpenColorIO" || die
+	fi
 }
 
 src_test() {
