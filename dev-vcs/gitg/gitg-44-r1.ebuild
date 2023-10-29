@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/libgee:0.8[introspection]
 	>=dev-libs/libgit2-glib-1.2.0[ssh]
 	dev-libs/libgit2:=[threads]
-	>=dev-libs/libpeas-1.5.0[gtk]
+	>=dev-libs/libpeas-1.5.0:0[gtk]
 	>=dev-libs/libxml2-2.9.0:2
 	>=gnome-base/gsettings-desktop-schemas-0.1.1
 	>=gui-libs/libhandy-1.5.0
