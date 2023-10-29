@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Build a Linux distribution on a single floppy"
-HOMEPAGE="http://byld.sourceforge.net/"
+HOMEPAGE="https://byld.sourceforge.net/"
 SRC_URI="mirror://sourceforge/byld/byld-${PV//./_}.tgz"
 
 LICENSE="GPL-2"
