@@ -34,7 +34,7 @@ DEPEND="
 	app-text/iso-codes
 	>=dev-libs/json-glib-1.0
 	>=gui-libs/libhandy-1.2.1:1=
-	>=dev-libs/libpeas-1.24.0
+	>=dev-libs/libpeas-1.24.0:0
 	>=app-crypt/libsecret-0.11
 	net-libs/libsoup:3.0
 	dev-libs/snowball-stemmer:=
