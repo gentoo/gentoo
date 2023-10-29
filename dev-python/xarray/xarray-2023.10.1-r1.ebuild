@@ -18,6 +18,7 @@ HOMEPAGE="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+IUSE="big-endian"
 
 RDEPEND="
 	>=dev-python/numpy-1.22[${PYTHON_USEDEP}]
@@ -58,5 +59,25 @@ EPYTEST_DESELECT=(
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+
+	if ! has_version ">=dev-python/scipy-1.4[${PYTHON_USEDEP}]" ; then
+		EPYTEST_DESELECT+=(
+			'xarray/tests/test_missing.py::test_interpolate_na_2d[coords1]'
+		)
+	fi
+
+	if use big-endian ; then
+		EPYTEST_DESELECT+=(
+			# Appears to be a numpy issue in display? See bug #916460.
+			'xarray/tests/test_coding_times.py::test_roundtrip_datetime64_nanosecond_precision[1677-09-21T00:12:43.145224193-ns-int64-20-True]'
+			'xarray/tests/test_coding_times.py::test_roundtrip_datetime64_nanosecond_precision[1970-09-21T00:12:44.145224808-ns-float64-1e+30-True]'
+			'xarray/tests/test_coding_times.py::test_roundtrip_datetime64_nanosecond_precision[1677-09-21T00:12:43.145225216-ns-float64--9.223372036854776e+18-True]'
+			'xarray/tests/test_coding_times.py::test_roundtrip_datetime64_nanosecond_precision[1677-09-21T00:12:43.145224193-ns-int64-None-False]'
+			'xarray/tests/test_coding_times.py::test_roundtrip_datetime64_nanosecond_precision[1677-09-21T00:12:43.145225-us-int64-None-False]'
+			'xarray/tests/test_coding_times.py::test_roundtrip_datetime64_nanosecond_precision[1970-01-01T00:00:01.000001-us-int64-None-False]'
+			'xarray/tests/test_coding_times.py::test_roundtrip_datetime64_nanosecond_precision[1677-09-21T00:21:52.901038080-ns-float32-20.0-True]'
+		)
+	fi
+
 	epytest -p xdist.plugin -n "$(makeopts_jobs)" --dist=worksteal
 }
