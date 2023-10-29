@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+# No py3.12 yet: https://github.com/python-greenlet/greenlet/issues/368
 # Note: greenlet is built-in in pypy
 # py3.12: https://github.com/python-greenlet/greenlet/issues/368
 PYTHON_COMPAT=( python3_{10..11} )
