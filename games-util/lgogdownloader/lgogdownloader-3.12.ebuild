@@ -18,7 +18,7 @@ RDEPEND=">=app-crypt/rhash-1.3.3-r2:0=
 	dev-libs/boost:=[zlib]
 	>=dev-libs/jsoncpp-1.7:0=
 	dev-libs/tinyxml2:0=
-	>=net-misc/curl-7.32:0=[ssl]
+	>=net-misc/curl-7.55:0=[ssl]
 	gui? ( dev-qt/qtwebengine:5=[widgets] )"
 
 DEPEND="${RDEPEND}"
