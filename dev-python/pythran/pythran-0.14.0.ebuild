@@ -52,11 +52,18 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_configure() {
-	cat >> setup.cfg <<-EOF
+	cat >> setup.cfg <<-EOF || die
 		[build_py]
 		no_boost = True
 		no_xsimd = True
 	EOF
+
+	if use test ; then
+		sed -i \
+			-e 's|blas=blas|blas=cblas|' \
+			-e 's|libs=|libs=cblas|' \
+			pythran/pythran-*.cfg || die
+	fi
 }
 
 python_test() {
