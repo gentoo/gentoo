@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -27,8 +27,8 @@ ruby_add_bdepend "
 	)"
 
 ruby_add_rdepend "
-	>=dev-util/cucumber-gherkin-23.0.1:23
-	>=dev-util/cucumber-messages-18.0.0:18
+	dev-util/cucumber-gherkin:25
+	dev-util/cucumber-messages:19
 	>=dev-util/cucumber-tag-expressions-4.1.0:4
 "
 
