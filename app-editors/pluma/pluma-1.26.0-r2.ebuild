@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.50:2
-	>=dev-libs/libpeas-1.2.0[gtk]
+	>=dev-libs/libpeas-1.2.0:0[gtk]
 	>=dev-libs/libxml2-2.5:2
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
@@ -34,7 +34,6 @@ COMMON_DEPEND="
 		>=app-text/enchant-1.6:=
 		>=app-text/iso-codes-0.35
 	)
-	!!app-editors/mate-text-editor
 "
 RDEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
