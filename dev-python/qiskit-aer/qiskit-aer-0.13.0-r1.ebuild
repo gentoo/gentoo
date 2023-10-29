@@ -91,6 +91,9 @@ python_prepare_all() {
 	export DISABLE_DEPENDENCY_INSTALL="ON"
 	export SKBUILD_CONFIGURE_OPTIONS="-DTEST_JSON=1"
 
+	# remove meaningless dep on the metapackage
+	sed -i -e '/qiskit>=/d' setup.py || die
+
 	distutils-r1_python_prepare_all
 }
 
