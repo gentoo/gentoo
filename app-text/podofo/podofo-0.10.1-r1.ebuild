@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic
+inherit cmake
 
 DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
 HOMEPAGE="https://github.com/podofo/podofo"
