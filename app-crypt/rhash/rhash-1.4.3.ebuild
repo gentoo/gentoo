@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Console utility and library for computing and verifying file hash sums"
-HOMEPAGE="http://rhash.sourceforge.net/"
+HOMEPAGE="https://rhash.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
 
 LICENSE="0BSD"
