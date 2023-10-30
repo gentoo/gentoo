@@ -260,7 +260,7 @@ CRATES="
 	zerocopy@0.7.11
 "
 
-inherit bash-completion-r1 cargo desktop xdg
+inherit cargo desktop shell-completion xdg
 
 DESCRIPTION="A post-modern text editor"
 HOMEPAGE="
@@ -278,6 +278,9 @@ LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 ISC MIT M
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+grammar"
+
+BDEPEND="grammar? ( dev-vcs/git )"
+RDEPEND="dev-vcs/git"
 
 QA_FLAGS_IGNORED="
 	usr/bin/hx
@@ -315,12 +318,8 @@ src_install() {
 	doins contrib/Helix.appdata.xml
 
 	newbashcomp contrib/completion/hx.bash hx
-
-	insinto /usr/share/zsh/site-functions
-	newins contrib/completion/hx.zsh _hx
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins contrib/completion/hx.fish
+	newzshcomp contrib/completion/hx.zsh _hx
+	dofishcomp contrib/completion/hx.fish
 
 	newenvd - 99helix <<< 'HELIX_RUNTIME="/usr/share/helix/runtime"'
 }
@@ -330,5 +329,5 @@ pkg_postinst() {
 	einfo "installed in '/usr/share/helix/runtime'. The environment variable"
 	einfo "HELIX_RUNTIME was also installed on your system. In running shell instances"
 	einfo "you need to run 'source /etc/profile' to pick up the new variable"
-	einfo "or manually set the environment varialbe HELIX_RUNTIME=/usr/share/helix/runtime."
+	einfo "or manually set the environment variable HELIX_RUNTIME=/usr/share/helix/runtime."
 }
