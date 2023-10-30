@@ -66,7 +66,6 @@ CDEPEND="
 		>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,wayland?,widgets,X?]
 		>=dev-qt/qtimageformats-6.5:6
 		>=dev-qt/qtsvg-6.5:6
-		wayland? ( >=dev-qt/qtwayland-6.5:6[compositor] )
 		webkit? (
 			>=dev-qt/qtdeclarative-6.5:6
 			>=dev-qt/qtwayland-6.5:6[compositor]
@@ -95,6 +94,7 @@ BDEPEND="
 	>=dev-util/cmake-3.16
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
+	wayland? ( dev-util/wayland-scanner )
 "
 # dev-libs/jemalloc:=[-lazy-lock] -> https://bugs.gentoo.org/803233
 
@@ -126,14 +126,15 @@ src_prepare() {
 			>> cmake/external/qt/qt_static_plugins/qt_static_plugins.cpp || die
 	fi
 
-	# kde-frameworks/kcoreaddons is bundled when using qt6, see:
-	#   cmake/external/kcoreaddons/CMakeLists.txt
+	# kde-frameworks/kcoreaddons is bundled when using qt6,
+	#   see src_configure.
 
 	# Happily fail if libraries aren't found...
 	find -type f \( -name 'CMakeLists.txt' -o -name '*.cmake' \) \
-		\! -path './cmake/external/expected/CMakeLists.txt' \
-		\! -path './cmake/external/qt/package.cmake' \
 		\! -path './Telegram/lib_webview/CMakeLists.txt' \
+		\! -path './cmake/external/expected/CMakeLists.txt' \
+		\! -path './cmake/external/kcoreaddons/CMakeLists.txt' \
+		\! -path './cmake/external/qt/package.cmake' \
 		-print0 | xargs -0 sed -i \
 		-e '/pkg_check_modules(/s/[^ ]*)/REQUIRED &/' \
 		-e '/find_package(/s/)/ REQUIRED)/' || die
@@ -167,6 +168,8 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}WaylandClient=$(usex !wayland)
 		## Only used in Telegram/lib_webview/CMakeLists.txt
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt${qt}WaylandCompositor=$(usex !webkit)
+		## KF6CoreAddons is currently unavailable in ::gentoo
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF${qt}CoreAddons=$(usex qt6)
 
 		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex !X)
 		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex !wayland)
