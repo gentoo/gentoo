@@ -262,7 +262,7 @@ IUSE="+capi"
 
 ASM_DEP=">=dev-lang/nasm-2.15"
 BDEPEND="
-	>=virtual/rust-1.65.0
+	>=virtual/rust-1.70.0
 	amd64? ( ${ASM_DEP} )
 	capi? ( >=dev-util/cargo-c-0.6.3 )
 "
