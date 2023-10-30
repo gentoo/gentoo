@@ -231,6 +231,9 @@ src_configure() {
 	export NINJA_PATH=/usr/bin/ninja
 	export NINJAFLAGS="${NINJAFLAGS:--j$(makeopts_jobs "${MAKEOPTS}" 999) -l$(makeopts_loadavg "${MAKEOPTS}" 0) -v}"
 
+	# Try to force thirdparty components to use user C{,XX}FLAGS as well. bug #652172
+	tc-export_build_env CC CXX
+
 	local myqmakeargs=(
 		--
 		-no-build-qtpdf
