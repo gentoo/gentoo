@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rescrv/libmacaroons/archive/refs/tags/releases/${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-libs/json-c:=
