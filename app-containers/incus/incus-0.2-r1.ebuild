@@ -81,6 +81,8 @@ RESTRICT="test"
 
 GOPATH="${S}/_dist"
 
+PATCHES=( "${FILESDIR}"/incus-0.2-lxd-to-incus-openrc-support.patch )
+
 src_prepare() {
 	export GOPATH="${S}/_dist"
 
@@ -174,10 +176,8 @@ pkg_postinst() {
 	elog "Please see"
 	elog "  https://linuxcontainers.org/incus/introduction/"
 	elog "  https://linuxcontainers.org/incus/docs/main/tutorial/first_steps/"
-	elog "  https://github.com/lxc/incus/blob/main/doc/howto/server_migrate_lxd.md"
+	elog "  https://linuxcontainers.org/incus/docs/main/howto/server_migrate_lxd/"
 	elog "before a Gentoo Wiki page is made."
-	elog "Note that lxd-to-incus doesn't currently fully work on Gentoo, and doesn't"
-	elog "work at all on OpenRC systems."
 	elog
 	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
