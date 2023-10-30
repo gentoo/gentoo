@@ -20,9 +20,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="html jbig lcms ldap mgetty pam"
 
+# <tiff-4.6: https://sourceforge.net/p/hylafax/mailman/message/38259441/
 DEPEND="
 	app-text/ghostscript-gpl
-	media-libs/tiff:=[jbig?]
+	<media-libs/tiff-4.6:=[jbig?]
 	media-libs/libjpeg-turbo:=
 	>=sys-libs/zlib-1.1.4
 	app-alternatives/awk
