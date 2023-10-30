@@ -22,4 +22,7 @@
     <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
     <flag name="doc">Build the doxygen-described API documentation.</flag>
   </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">pulseaudio/pulseaudio</remote-id>
+  </upstream>
 </pkgmetadata>
