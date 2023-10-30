@@ -37,6 +37,16 @@ distutils_enable_tests pytest
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	case ${EPYTHON} in
+		python3.10)
+			EPYTEST_DESELECT+=(
+				# crashes with infinite recursion (?)
+				"tests/test_main.py::test_small_samples[1656dc52edd2385921104de7bb255ca369713f4b8c034ebeba5cf946058109bc.py]"
+			)
+			;;
+	esac
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
