@@ -44,8 +44,6 @@ microsoft.netcore.platforms@2.1.2
 microsoft.netcore.platforms@5.0.0
 microsoft.netcore.targets@1.1.0
 microsoft.netcore.targets@1.1.3
-microsoft.netframework.referenceassemblies.net462@1.0.2
-microsoft.netframework.referenceassemblies@1.0.2
 microsoft.sourcelink.common@1.1.1
 microsoft.sourcelink.github@1.1.1
 microsoft.testplatform.objectmodel@17.7.1
@@ -233,22 +231,17 @@ SLOT="0"
 RESTRICT="test"         # Tests fail.
 
 CHECKREQS_DISK_BUILD="2G"
+DOTNET_PKG_RESTORE_EXTRA_ARGS=(
+	-p:TargetFramework="net${DOTNET_PKG_COMPAT}"
+	-p:TargetFrameworks="net${DOTNET_PKG_COMPAT}"
+)
+DOTNET_PKG_BUILD_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
+DOTNET_PKG_TEST_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
 DOTNET_PKG_PROJECTS=( Jint.Repl/Jint.Repl.csproj )
 
 pkg_setup() {
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
-}
-
-src_prepare() {
-	default
-
-	# Force update to SDK 7.0 since build fails with current version
-	# of SDK 6.0 in the ::gentoo tree.
-	find .											\
-		 -type f -name "*.csproj"					\
-		 -exec sed -e "s|net6.0|net7.0|g" -i {} \;	\
-		|| die
 }
 
 src_install() {
