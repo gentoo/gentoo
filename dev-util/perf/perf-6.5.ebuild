@@ -23,7 +23,6 @@ elif [[ ${PV} == *.*.* ]] ; then
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_PATCH}"
 else
 	LINUX_VER=${PV}
-	SRC_URI=""
 fi
 
 LINUX_SOURCES="linux-${LINUX_VER}.tar.xz"
