@@ -163,6 +163,14 @@ multilib_src_configure() {
 		export ac_cv_host="${gmp_host}"
 	fi
 
+	# Clang with -fsanitize=address may emit weird section names in its asm,
+	# which causes gmp's configure checks to select a broken way of
+	# specifying `.rodata`. Disable this feature, which was introduced in
+	# Clang 15 (and defaulted to on in Clang 18).
+	if tc-is-clang && [[ "$(clang-major-version)" -ge 15 ]]; then
+		append-cxxflags "-fno-sanitize-address-globals-dead-stripping"
+	fi
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
