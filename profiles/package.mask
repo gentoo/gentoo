@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Guilherme Amadio <amadio@gentoo.org> (2023-10-30)
+# net-libs/xrootd-ceph was split from net-libs/xrootd as a git
+# submodule, but has been merged back to the main repository in
+# net-libs/xrootd-5.6.0. Please switch to net-libs/xrootd[ceph]
+# instead of net-libs/xrootd-ceph. Removal on 2023-11-30.
+net-libs/xrootd-ceph
+
 # Yixun Lan <dlan@gentoo.org> (2023-10-30)
 # testing version, not work on qt6, Bug #916449
 =net-im/telegram-desktop-4.10.5
