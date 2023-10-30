@@ -119,7 +119,7 @@ CDEPEND="
 		')
 	)
 	uring? ( sys-libs/liburing:= )
-	vc? ( dev-libs/vc:= )
+	vc? ( >=dev-libs/vc-1.4.4:= )
 	xml? ( dev-libs/libxml2:2= )
 	xrootd? ( net-libs/xrootd:0= )
 "
