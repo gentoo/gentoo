@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">hypercorn</remote-id>
+		<remote-id type="pypi">Hypercorn</remote-id>
 		<remote-id type="github">pgjones/hypercorn</remote-id>
 	</upstream>
 </pkgmetadata>
