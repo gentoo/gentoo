@@ -80,4 +80,7 @@
       LDAC over Bluetooth (primarily Sony headphones), requires <pkg>media-plugins/gst-plugins-ldac</pkg>.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">pulseaudio/pulseaudio</remote-id>
+  </upstream>
 </pkgmetadata>
