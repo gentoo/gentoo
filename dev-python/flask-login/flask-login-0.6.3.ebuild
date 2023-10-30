@@ -16,8 +16,6 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/maxcountryman/flask-login/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
-	https://github.com/maxcountryman/flask-login/pull/743.patch
-		-> ${P}-werkzeug-2.3.patch
 "
 
 LICENSE="BSD"
