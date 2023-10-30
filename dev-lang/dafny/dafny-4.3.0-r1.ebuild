@@ -92,8 +92,6 @@ microsoft.netcore.platforms@3.0.0
 microsoft.netcore.platforms@3.1.0
 microsoft.netcore.targets@1.0.1
 microsoft.netcore.targets@1.1.0
-microsoft.netframework.referenceassemblies.net452@1.0.2
-microsoft.netframework.referenceassemblies@1.0.2
 microsoft.testplatform.extensions.trxlogger@17.0.0
 microsoft.testplatform.objectmodel@16.11.0
 microsoft.testplatform.objectmodel@16.9.4
@@ -417,6 +415,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.12.0-DafnyRuntime-csproj.patch"
 	"${FILESDIR}/${PN}-4.1.0-lit.patch"
 	"${FILESDIR}/${PN}-4.2.0-lit-use-system-boogie.patch"
+	"${FILESDIR}/${PN}-4.3.0-net6.0-upgrade.patch"
 )
 
 DOCS=(

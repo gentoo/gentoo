@@ -1,0 +1,22 @@
+--- a/Source/DafnyRuntime/DafnyRuntime.csproj.orig
++++ b/Source/DafnyRuntime/DafnyRuntime.csproj
+@@ -6,7 +6,7 @@
+       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+       <DefineConstants>TRACE;ISDAFNYRUNTIMELIB</DefineConstants>
+-      <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
++      <TargetFrameworks>net6.0</TargetFrameworks>
+       <OutputPath>..\..\Binaries\</OutputPath>
+       <LangVersion>7.3</LangVersion>
+       <PackageLicenseExpression>MIT</PackageLicenseExpression>
+--- a/Test/comp/separate-compilation/Inputs/producer/TimesTwo.csproj.orig
++++ b/Test/comp/separate-compilation/Inputs/producer/TimesTwo.csproj
+@@ -2,7 +2,7 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+ 
+     <PropertyGroup>
+-        <TargetFramework>netstandard2.0</TargetFramework>
++        <TargetFramework>net6.0</TargetFramework>
+     </PropertyGroup>
+ 
+     <ItemGroup>
