@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools gnome.org multilib-minimal
+inherit autotools gnome.org multilib-minimal toolchain-funcs flag-o-matic
 
 DESCRIPTION="An elegant API for accessing audio files"
 HOMEPAGE="https://audiofile.68k.org/"
@@ -32,6 +32,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Bug 914349
+	if tc-is-clang; then
+		append-flags "-stdlib=libstdc++"
+	fi
 	# Tests depend on statically compiled binaries to work, so we'll have to
 	# delete them later rather than not compile them at all
 	local myconf=(
