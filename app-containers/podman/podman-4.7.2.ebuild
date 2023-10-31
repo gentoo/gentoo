@@ -7,14 +7,19 @@ inherit go-module tmpfiles linux-info
 
 DESCRIPTION="A tool for managing OCI containers and pods with Docker-compatible CLI"
 HOMEPAGE="https://github.com/containers/podman/ https://podman.io/"
-if [[ ${PV} == *9999* ]]; then
+
+if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/containers/podman.git"
 else
 	SRC_URI="https://github.com/containers/podman/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~riscv"
 fi
-LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
+
+# main pkg
+LICENSE="Apache-2.0"
+# deps
+LICENSE+=" BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="apparmor btrfs cgroup-hybrid wrapper +fuse +init +rootless +seccomp selinux systemd"
 RESTRICT="test"
@@ -59,28 +64,36 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# assure necessary files are present
 	local file
-	for file in apparmor_tag btrfs_installed_tag btrfs_tag selinux_tag systemd_tag; do
+	for file in apparmor_tag btrfs_installed_tag btrfs_tag systemd_tag; do
 		[[ -f hack/"${file}".sh ]] || die
 	done
 
 	local feature
-	for feature in apparmor selinux systemd; do
+	for feature in apparmor systemd; do
 		cat <<-EOF > hack/"${feature}"_tag.sh || die
 		#!/usr/bin/env bash
 		$(usex ${feature} "echo ${feature}" echo)
-EOF
+		EOF
 	done
 
 	echo -e "#!/usr/bin/env bash\n echo" > hack/btrfs_installed_tag.sh || die
 	cat <<-EOF > hack/btrfs_tag.sh || die
 	#!/usr/bin/env bash
 	$(usex btrfs echo 'echo exclude_graphdriver_btrfs btrfs_noversion')
-EOF
+	EOF
 }
 
 src_compile() {
 	export PREFIX="${EPREFIX}/usr"
+
+	# For non-live versions, prevent git operations which causes sandbox violations
+	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493
+	[[ ${PV} != 9999* ]] && export COMMIT_NO="" GIT_COMMIT=""
+
+	# BUILD_SECCOMP is used in the patch to toggle seccomp
 	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" BUILD_SECCOMP="$(usex seccomp)" all $(usev wrapper docker-docs)
 }
 
