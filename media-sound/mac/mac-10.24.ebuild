@@ -11,7 +11,7 @@ SRC_URI="http://monkeysaudio.com/files/MAC_${PV/.}_SDK.zip -> ${P}.zip"
 
 LICENSE="mac"
 SLOT="0/10"
-KEYWORDS="~alpha ~amd64 ~loong ~ppc ppc64 ~riscv sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~loong ~ppc ppc64 ~riscv sparc x86"
 
 RDEPEND=""
 DEPEND=""
