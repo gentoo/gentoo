@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-clang.patch
 	"${FILESDIR}"/${P}-gcc-13.patch
+	"${FILESDIR}"/${P}-gcc-14.patch
 	"${FILESDIR}"/${P}-python-optional.patch
 )
 
