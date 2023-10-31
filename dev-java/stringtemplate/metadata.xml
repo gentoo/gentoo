@@ -6,6 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">antlr/stringtemplate3</remote-id>
 		<remote-id type="github">antlr/stringtemplate4</remote-id>
 	</upstream>
 </pkgmetadata>
