@@ -59,5 +59,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:strongswan:strongswan</remote-id>
+		<remote-id type="github">strongswan/strongswan</remote-id>
 	</upstream>
 </pkgmetadata>
