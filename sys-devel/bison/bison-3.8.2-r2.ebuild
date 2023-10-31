@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bison.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bison.asc
 inherit flag-o-matic verify-sig
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"

@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0/6"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened hyperscan lua lz4 nflog +nfqueue redis systemd test"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/openinfosecfoundation.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/openinfosecfoundation.org.asc"
 
 RESTRICT="!test? ( test )"
 

@@ -54,7 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-nghttp-openssl.patch
 )
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/${PN}.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.gpg
 
 src_unpack() {
 	if use verify-sig; then

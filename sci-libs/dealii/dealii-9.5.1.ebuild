@@ -90,7 +90,7 @@ BDEPEND="
 PATCHES=(
 )
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/dealii.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/dealii.asc"
 
 src_configure() {
 	# deal.II needs a custom build type:

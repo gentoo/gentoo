@@ -6,7 +6,7 @@
 EAPI=7
 
 MY_P="gettext-${PV}"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gettext.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gettext.asc
 inherit multilib-minimal libtool usr-ldscript verify-sig
 
 DESCRIPTION="the GNU international library (split out of gettext)"

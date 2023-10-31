@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/ocserv.git"
 else
 	inherit verify-sig
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/ocserv.asc"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/ocserv.asc"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ocserv )"
 	SRC_URI="https://www.infradead.org/ocserv/download/${P}.tar.xz
 		verify-sig? ( https://www.infradead.org/ocserv/download/${P}.tar.xz.sig )"

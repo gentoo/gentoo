@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]] ; then
 
 	REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/waynedavison.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/waynedavison.asc
 	inherit verify-sig
 
 	if [[ ${PV} == *_pre* ]] ; then

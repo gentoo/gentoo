@@ -105,7 +105,7 @@ PATCHES=(
 
 DOCS=( util/LINUX_DIST_README )
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/baldurkarlsson.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/baldurkarlsson.gpg
 
 pkg_setup() {
 	use qt5 && python-single-r1_pkg_setup

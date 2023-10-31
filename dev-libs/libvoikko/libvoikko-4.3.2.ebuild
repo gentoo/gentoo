@@ -29,7 +29,7 @@ BDEPEND="virtual/pkgconfig
 	>=sys-devel/autoconf-2.71
 	verify-sig? ( sec-keys/openpgp-keys-voikko )"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/voikko.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/voikko.asc
 
 PATCHES=( "${FILESDIR}"/libvoikko-4.3.2-disable-wall-werror.patch )
 

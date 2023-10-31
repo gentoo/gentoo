@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-sol
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/commons.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 
 JAVA_AUTOMATIC_MODULE_NAME="org.apache.commons.lang3"
 JAVA_ENCODING="ISO-8859-1"

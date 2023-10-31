@@ -30,7 +30,7 @@ BDEPEND="${PYTHON_DEPS}
 # Needs some black magic to work inside container/chroot.
 RESTRICT="test"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/linuxcontainers.asc
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.4-fix-incompatible-pointer-conversion.patch

@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/patch.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/patch.asc
 inherit flag-o-matic verify-sig
 
 DESCRIPTION="Utility to apply diffs to files"

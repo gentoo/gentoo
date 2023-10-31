@@ -88,7 +88,7 @@ src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
 	else
-		local VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/qutebrowser.gpg
+		local VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qutebrowser.gpg
 		verify-sig_src_unpack
 	fi
 }

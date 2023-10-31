@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9..11} )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/dropbear.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dropbear.asc
 inherit savedconfig pam python-any-r1 verify-sig
 
 DESCRIPTION="Small SSH 2 client/server designed for small memory environments"

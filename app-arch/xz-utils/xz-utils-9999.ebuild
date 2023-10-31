@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]] ; then
 	# bug #272880 and bug #286068
 	BDEPEND="sys-devel/gettext >=sys-devel/libtool-2"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/jiatan.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jiatan.asc
 	inherit verify-sig
 
 	MY_P="${PN/-utils}-${PV/_}"

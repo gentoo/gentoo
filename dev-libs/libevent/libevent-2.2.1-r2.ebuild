@@ -47,7 +47,7 @@ DOCS=( README.md ChangeLog{,-1.4,-2.0} whatsnew-2.{0,1}.txt )
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
 )
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libevent.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libevent.asc
 
 PATCHES=(
 	# signalfd-by-default breaks at least app-misc/tmux

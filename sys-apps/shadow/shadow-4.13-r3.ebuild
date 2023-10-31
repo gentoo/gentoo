@@ -7,7 +7,7 @@ EAPI=8
 # official. Don't keyword the pre-releases!
 # Check https://github.com/shadow-maint/shadow/releases.
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sergehallyn.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/sergehallyn.asc
 inherit libtool pam verify-sig
 
 DESCRIPTION="Utilities to deal with user accounts"

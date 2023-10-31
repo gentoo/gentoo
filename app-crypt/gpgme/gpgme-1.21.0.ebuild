@@ -12,7 +12,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..12} )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 
 inherit distutils-r1 libtool flag-o-matic qmake-utils toolchain-funcs verify-sig
 

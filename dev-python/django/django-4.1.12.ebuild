@@ -58,7 +58,7 @@ PATCHES=(
 
 distutils_enable_sphinx docs --no-autodoc
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/django.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/django.asc
 
 src_unpack() {
 	if use verify-sig; then

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/nettle.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nettle.asc
 inherit multilib-build multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Low-level cryptographic library"

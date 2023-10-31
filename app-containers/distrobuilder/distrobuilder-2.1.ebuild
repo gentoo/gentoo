@@ -28,7 +28,7 @@ RESTRICT="test"
 
 CONFIG_CHECK="~OVERLAY_FS"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/linuxcontainers.asc
 
 PATCHES=( "${FILESDIR}"/distrobuilder-2.1-glibc-2.36-fix.patch )
 

@@ -78,7 +78,7 @@ QA_PREBUILT="/usr/bin/fuidshift
 	/usr/bin/lxd-migrate
 	/usr/sbin/lxd"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/canonical.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/canonical.asc
 
 # The testsuite must be run as root.
 # make: *** [Makefile:156: check] Error 1

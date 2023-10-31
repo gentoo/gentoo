@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/lighttpd.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/lighttpd.asc
 inherit lua-single meson readme.gentoo-r1 systemd tmpfiles verify-sig
 
 DESCRIPTION="Lightweight high-performance web server"

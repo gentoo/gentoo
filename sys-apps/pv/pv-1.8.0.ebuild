@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/pv.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/pv.asc
 inherit linux-info toolchain-funcs verify-sig
 
 DESCRIPTION="Pipe Viewer: a tool for monitoring the progress of data through a pipe"

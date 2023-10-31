@@ -59,7 +59,7 @@ RDEPEND=">=virtual/jre-1.8:*"
 BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-apache-logging )
 "
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/logging.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/logging.apache.org.asc"
 
 DOCS=( {CONTRIBUTING,README,RELEASE-NOTES,SECURITY}.md )
 

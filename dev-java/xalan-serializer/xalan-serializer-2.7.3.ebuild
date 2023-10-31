@@ -23,7 +23,7 @@ DEPEND="virtual/jdk:1.8"
 RDEPEND=">=virtual/jre-1.8:*"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-xalan-j )"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/xalan-j.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xalan-j.apache.org.asc"
 
 JAVA_MAIN_CLASS="org.apache.xml.serializer.Version"
 JAVA_RESOURCE_DIRS="resources"

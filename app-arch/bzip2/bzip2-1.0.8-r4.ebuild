@@ -6,7 +6,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bzip2.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bzip2.gpg
 inherit toolchain-funcs multilib multilib-minimal usr-ldscript verify-sig
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"

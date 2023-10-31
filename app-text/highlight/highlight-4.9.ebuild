@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/andresimon.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/andresimon.asc
 inherit lua-single qmake-utils toolchain-funcs verify-sig xdg
 
 DESCRIPTION="Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight"

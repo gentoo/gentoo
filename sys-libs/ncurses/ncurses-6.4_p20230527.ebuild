@@ -6,7 +6,7 @@ EAPI=8
 # sys-libs/ncurses-compat can be bumped with sys-libs/ncurses as upstream
 # provide a configure option for the ABI version.
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/thomasdickey.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/thomasdickey.asc
 inherit flag-o-matic toolchain-funcs multilib multilib-minimal preserve-libs usr-ldscript verify-sig
 
 MY_PV="${PV:0:3}"

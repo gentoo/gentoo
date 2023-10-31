@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-lang/perl
 	verify-sig? ( sec-keys/openpgp-keys-apache-tomcat-connectors )"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/tomcat-connectors.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tomcat-connectors.apache.org.asc"
 
 APACHE2_MOD_FILE="${S}/apache-2.0/${PN}.so"
 APACHE2_MOD_DEFINE="JK"

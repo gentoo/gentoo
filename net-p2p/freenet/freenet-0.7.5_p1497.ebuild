@@ -93,7 +93,7 @@ JAVA_TEST_GENTOO_CLASSPATH="
 JAVA_TEST_RESOURCE_DIRS="test"
 JAVA_TEST_SRC_DIR="test"
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/freenetproject.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/freenetproject.org.asc"
 src_unpack() {
 	if use verify-sig; then
 		verify-sig_verify_detached \

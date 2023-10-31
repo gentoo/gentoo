@@ -51,7 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-clang16.patch #880381
 	"${FILESDIR}"/${P}-libressl.patch #903001
 )
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libevent.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libevent.asc
 
 src_prepare() {
 	default

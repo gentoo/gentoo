@@ -4,7 +4,7 @@
 EAPI=8
 
 # Please bump with dev-libs/icu
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/icu.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/icu.asc
 inherit autotools flag-o-matic multilib-minimal toolchain-funcs verify-sig
 
 MY_PV=${PV/_rc/-rc}

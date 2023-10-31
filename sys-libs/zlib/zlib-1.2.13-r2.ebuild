@@ -5,7 +5,7 @@ EAPI=8
 
 # Worth keeping an eye on 'develop' branch upstream for possible backports.
 AUTOTOOLS_AUTO_DEPEND="no"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/madler.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/madler.asc
 inherit autotools multilib-minimal flag-o-matic toolchain-funcs usr-ldscript verify-sig
 
 DESCRIPTION="Standard (de)compression library"

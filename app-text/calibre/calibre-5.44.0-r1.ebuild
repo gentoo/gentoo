@@ -14,7 +14,7 @@ SRC_URI="
 	https://download.calibre-ebook.com/${PV}/${P}.tar.xz
 	verify-sig? ( https://calibre-ebook.com/signatures/${P}.tar.xz.sig )
 "
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/kovidgoyal.gpg"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/kovidgoyal.gpg"
 
 LICENSE="
 	GPL-3+

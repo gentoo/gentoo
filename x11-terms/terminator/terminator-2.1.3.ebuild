@@ -40,7 +40,7 @@ BDEPEND="
 "
 distutils_enable_tests pytest
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/terminator.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/terminator.asc
 
 PATCHES=(
 	"${FILESDIR}"/terminator-1.91-desktop.patch

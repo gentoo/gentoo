@@ -6,7 +6,7 @@ EAPI=8
 # Dropped these because blank as of 3.02
 #PLOCALES="de es fi fr hu id pl"
 PLOCALES="de es fr pl"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sysvinit.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/sysvinit.asc
 inherit toolchain-funcs flag-o-matic plocale verify-sig
 
 DESCRIPTION="/sbin/init - parent of all processes"

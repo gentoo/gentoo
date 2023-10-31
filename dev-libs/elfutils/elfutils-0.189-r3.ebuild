@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/elfutils.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/elfutils.gpg
 inherit autotools flag-o-matic multilib-minimal verify-sig
 
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"

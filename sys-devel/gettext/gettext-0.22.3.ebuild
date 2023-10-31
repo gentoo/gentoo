@@ -5,7 +5,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gettext.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gettext.asc
 inherit java-pkg-opt-2 libtool multilib-minimal verify-sig toolchain-funcs
 
 DESCRIPTION="GNU locale utilities"

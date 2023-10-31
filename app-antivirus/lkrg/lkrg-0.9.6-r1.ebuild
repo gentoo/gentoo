@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-openwall )"
 
 # MODULE_NAMES="lkrg(misc:${S}:${S})"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/openwall.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/openwall.asc"
 
 PATCHES=( "${FILESDIR}/${PN}-0.9.4-gentoo-paths.patch" )
 

@@ -10,7 +10,7 @@ QA_PKGCONFIG_VERSION="$(ver_cut 1-3)"
 # stuff too like PROJ, GDAL. Previous release manager of TIFF was
 # GraphicsMagick maintainer Bob Friesenhahn. Please be careful when verifying
 # who made releases.
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/rouault.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rouault.asc
 inherit autotools multilib-minimal verify-sig flag-o-matic
 
 MY_P="${P/_rc/rc}"

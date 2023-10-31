@@ -11,7 +11,7 @@ DESCRIPTION="A validating, recursive and caching DNS resolver"
 HOMEPAGE="https://unbound.net/ https://nlnetlabs.nl/projects/unbound/about/"
 SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz
 	verify-sig? ( https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz.asc )"
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/unbound.net.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/unbound.net.asc
 
 LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so

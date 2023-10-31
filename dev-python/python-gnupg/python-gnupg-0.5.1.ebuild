@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/vinaysajip.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/vinaysajip.asc
 inherit distutils-r1 verify-sig
 
 DESCRIPTION="A Python wrapper for GnuPG"

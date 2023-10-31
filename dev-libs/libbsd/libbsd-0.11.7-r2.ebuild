@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/guillemjover.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/guillemjover.asc
 inherit autotools multilib multilib-minimal verify-sig flag-o-matic
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"

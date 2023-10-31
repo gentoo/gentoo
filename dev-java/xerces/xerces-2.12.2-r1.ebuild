@@ -37,7 +37,7 @@ RDEPEND="
 	>=virtual/jre-1.8:*"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-xerces-j )"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/xerces-j.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xerces-j.apache.org.asc"
 
 DOCS=( LICENSE NOTICE README {LICENSE.resolver,LICENSE.serializer,NOTICE.resolver,NOTICE.serializer}.txt )
 HTML_DOCS=( {LICENSE.DOM-documentation,LICENSE.DOM-software,LICENSE-SAX,Readme}.html )

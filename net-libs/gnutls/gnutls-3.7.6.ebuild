@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnutls.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnutls.asc
 inherit libtool multilib-minimal verify-sig
 
 DESCRIPTION="A secure communications library implementing the SSL, TLS and DTLS protocols"

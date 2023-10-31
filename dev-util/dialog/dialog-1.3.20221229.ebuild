@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_P=${PN}-$(ver_rs 2 -)
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/thomasdickey.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/thomasdickey.asc
 inherit verify-sig
 
 DESCRIPTION="Tool to display dialog boxes from a shell"

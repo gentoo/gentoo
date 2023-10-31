@@ -49,7 +49,7 @@ RDEPEND="
 BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-apache-commons )
 "
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/commons.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 
 DOCS=( NOTICE.txt RELEASE-NOTES.txt )
 
