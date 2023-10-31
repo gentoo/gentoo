@@ -43,7 +43,6 @@ CRATES="
 	libc@0.2.149
 	libseccomp-sys@0.2.1
 	libseccomp@0.3.0
-	linked-hash-map@0.5.6
 	linux-raw-sys@0.4.10
 	lock_api@0.4.11
 	log@0.4.20
@@ -55,6 +54,7 @@ CRATES="
 	num_cpus@1.16.0
 	once_cell@1.18.0
 	oorandom@11.1.3
+	openat2@0.1.2
 	parking_lot@0.12.1
 	parking_lot_core@0.9.9
 	pkg-config@0.3.27
@@ -78,7 +78,6 @@ CRATES="
 	syn@2.0.38
 	threadpool@1.8.1
 	tinytemplate@1.2.1
-	ttl_cache@0.5.1
 	unicode-ident@1.0.12
 	walkdir@2.4.0
 	winapi-i686-pc-windows-gnu@0.4.0
