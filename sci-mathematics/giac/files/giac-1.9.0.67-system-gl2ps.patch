@@ -1,7 +1,7 @@
-From ca8eda770e36d2649bfc808464415308a5e9fc47 Mon Sep 17 00:00:00 2001
+From 753b67c88d7feb166cf99243118943c09beba62a Mon Sep 17 00:00:00 2001
 From: Michael Orlitzky <michael@orlitzky.com>
-Date: Thu, 6 Jul 2023 21:27:09 -0400
-Subject: [PATCH 1/1] src: unbundle gl2ps.
+Date: Mon, 30 Oct 2023 21:40:57 -0400
+Subject: [PATCH 1/1] src: unbundle gl2ps
 
 Updated patch based on the one by infinity0@debian.org. Ours links
 only libxcas (and not libgiac) to gl2ps.
@@ -12,10 +12,10 @@ only libxcas (and not libgiac) to gl2ps.
  3 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 8e1813e..2f7f644 100644
+index d66c3e1..2acbf30 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -465,6 +465,10 @@ dnl		AC_CHECK_LIB(GLU, main)
+@@ -469,6 +469,10 @@ dnl		AC_CHECK_LIB(GLU, main)
  	      AC_CHECK_LIB(fltk_images, main)
  	      FLTK_LIBS="$LIBS $X_LIBS"
  	      AC_SUBST(FLTK_LIBS)
@@ -27,20 +27,20 @@ index 8e1813e..2f7f644 100644
             fi
          fi
 diff --git a/src/Graph3d.cc b/src/Graph3d.cc
-index 7f54327..12d4723 100644
+index e653cc4..a6c3468 100644
 --- a/src/Graph3d.cc
 +++ b/src/Graph3d.cc
-@@ -45,7 +45,7 @@
- #include "Xcas1.h"
- #include "Cfg.h"
- #include "Print.h"
+@@ -23,7 +23,7 @@
+ #define __CARBONSOUND__
+ #ifdef HAVE_LIBFLTK
+ #ifdef HAVE_LIBFLTK_GL
 -#include "gl2ps.h"
 +#include <gl2ps.h>
- 
- #ifdef __APPLE__
- //#include <OpenGL/gl.h>
+ #else
+ void gl_font(int fontid, int size){}
+ void gl_draw(const char *){}
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 3fdd209..120ccb6 100644
+index 7c90381..2ae8003 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -35,17 +35,17 @@ libbf.h list.h cutils.h qjsgiac.h \
@@ -65,5 +65,5 @@ index 3fdd209..120ccb6 100644
  ##libjavagiac_la_LIBADD = libgiac.la 
  
 -- 
-2.39.3
+2.41.0
 

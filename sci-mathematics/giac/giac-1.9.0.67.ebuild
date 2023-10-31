@@ -51,11 +51,11 @@ BDEPEND="dev-tex/hevea
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.0.1-gsl_lapack.patch"
-	"${FILESDIR}/${PN}-1.6.0-pari-2.11.patch"
 	"${FILESDIR}/${PN}-1.9.0.21-pari-2.15.patch"
 	"${FILESDIR}/${PN}-1.9.0.55-pari-2.15-test.patch"
 	"${FILESDIR}/${PN}-1.9.0.55-undefined-behavior.patch"
-	"${FILESDIR}/${PN}-1.9.0.55-system-gl2ps.patch"
+	"${FILESDIR}/${PN}-1.9.0.67-system-gl2ps.patch"
+	"${FILESDIR}/${PN}-1.9.0.67-glibcxx-assertions.patch"
 )
 
 REQUIRED_USE="test? ( gui )"
