@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/869662
+
+--- vorbis-tools-1.4.2/ogg123/Makefile.am
++++ vorbis-tools-1.4.2/ogg123/Makefile.am
+@@ -25,7 +25,6 @@
+ localedir = $(datadir)/locale
+ DEFS = -DSYSCONFDIR=\"$(sysconfdir)\" -DLOCALEDIR=\"$(localedir)\" @DEFS@
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
+ mandir = @MANDIR@
+ 
+ bin_PROGRAMS = ogg123
