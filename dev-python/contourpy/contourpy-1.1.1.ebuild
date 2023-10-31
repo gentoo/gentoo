@@ -35,8 +35,8 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.1-no-werror.patch
+DISTUTILS_ARGS=(
+	-Dwerror=false
 )
 
 distutils_enable_tests pytest
