@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Eat's name self-explanatory, it stands for "Emulate A Terminal". Eat is a
+    terminal emulator. It can run most (if not all) full-screen terminal
+    programs, including Emacs. It is pretty fast, more than three times faster
+    than Term, despite being implemented entirely in Emacs Lisp. So fast that
+    you can comfortably run Emacs inside Eat, or even use your Emacs as a
+    terminal multiplexer. It has many features that other Emacs terminal
+    emulator still don't have, for example Sixel support, complete mouse
+    support, shell integration, etc. It flickers less than other Emacs terminal
+    emulator, so you get more performance and a smoother experience.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://codeberg.org/akib/emacs-eat/issues/</bugs-to>
+    <remote-id type="codeberg">akib/emacs-eat</remote-id>
+  </upstream>
+</pkgmetadata>
