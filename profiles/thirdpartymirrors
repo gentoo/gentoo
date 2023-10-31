@@ -4,7 +4,6 @@ debian		https://deb.debian.org/debian/ http://ftp.au.debian.org/debian/ http://f
 gentoo		https://distfiles.gentoo.org/distfiles https://gentoo.osuosl.org/distfiles https://ftp.halifax.rwth-aachen.de/gentoo/distfiles https://ftp.fau.de/gentoo/distfiles
 gcc		https://gcc.gnu.org/pub/gcc/ http://mirrors.concertpass.com/gcc/ https://mirrorservice.org/sites/sourceware.org/pub/gcc/ https://ftp.mpi-inf.mpg.de/mirrors/gnu/mirror/gcc.gnu.org/pub/gcc/ https://bigsearcher.com/mirrors/gcc/
 gimp		https://ftp.fau.de/gimp/gimp/ ftp://ftp.fau.de/gimp/gimp/ https://artfiles.org/gimp.org/pub/gimp/ https://www.mirrorservice.org/sites/ftp.gimp.org/pub/gimp/ ftp://ftp.mirrorservice.org/sites/ftp.gimp.org/pub/gimp/
-gmt		http://ftp.iris.washington.edu/pub/gmt/ ftp://ftp.soest.hawaii.edu/gmt/ ftp://ftp.iris.washington.edu/pub/gmt/ ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt
 gnome		https://download.gnome.org/
 gnu		https://ftp.gnu.org/gnu/ https://artfiles.org/gnu.org/ https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/
 gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://ftp.heanet.ie/mirrors/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ https://gnupg.org/ftp/gcrypt/ ftp://ftp.gnupg.org/gcrypt/
