@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file describes the packages needed to build a stage1 based on this
@@ -16,7 +16,6 @@ sys-devel/autoconf
 sys-devel/automake
 sys-devel/libtool
 sys-apps/baselayout
-sys-apps/makedev
 sys-apps/coreutils
 sys-apps/diffutils
 sys-apps/file
