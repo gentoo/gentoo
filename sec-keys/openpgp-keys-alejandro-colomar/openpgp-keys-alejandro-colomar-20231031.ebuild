@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="OpenPGP keys used by Alejandro Colomar"
 HOMEPAGE="https://github.com/alejandro-colomar"
-SRC_URI="https://github.com/alejandro-colomar.gpg -> ${P}.asx"
+SRC_URI="https://github.com/alejandro-colomar.gpg -> ${P}.asc"
 S="${WORKDIR}"
 
 LICENSE="public-domain"
