@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EHG_REPO_URI="http://hg.code.sf.net/p/${PN}/code"
 	inherit mercurial
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bobfriesenhahn.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bobfriesenhahn.asc
 	inherit verify-sig
 
 	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"

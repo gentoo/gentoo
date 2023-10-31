@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libtasn1.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libtasn1.asc
 inherit multilib-minimal libtool verify-sig
 
 DESCRIPTION="ASN.1 library"

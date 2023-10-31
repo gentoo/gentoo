@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 	inherit autotools git-r3
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/karelzak.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/karelzak.asc
 	inherit verify-sig
 
 	if [[ ${PV} != *_rc* ]] ; then

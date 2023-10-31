@@ -39,7 +39,7 @@ else
 	fi
 
 	if [[ ${PV} != *_rc* ]] ; then
-		VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bradking.asc
+		VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bradking.asc
 		inherit verify-sig
 
 		SRC_URI+=" verify-sig? (

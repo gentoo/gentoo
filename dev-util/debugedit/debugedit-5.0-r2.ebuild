@@ -28,7 +28,7 @@ BDEPEND="
 	)
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/debugedit.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/debugedit.gpg
 
 PATCHES=(
 	"${FILESDIR}"/${P}-readelf.patch

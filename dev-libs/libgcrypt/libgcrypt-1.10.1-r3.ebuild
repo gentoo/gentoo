@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 inherit autotools flag-o-matic linux-info multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="General purpose crypto library based on the code used in GnuPG"

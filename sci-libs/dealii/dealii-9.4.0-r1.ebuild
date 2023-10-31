@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -84,7 +84,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
 )
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/dealii.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/dealii.asc"
 
 src_configure() {
 	# deal.II needs a custom build type:

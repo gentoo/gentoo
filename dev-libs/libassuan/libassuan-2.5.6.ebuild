@@ -9,7 +9,7 @@ EAPI=8
 # (find the one for the current release then subscribe to it +
 # any subsequent ones linked within so you're covered for a while.)
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 inherit libtool verify-sig
 
 DESCRIPTION="IPC library used by GnuPG and GPGME"

@@ -19,7 +19,7 @@ else
 		https://dlcdn.apache.org/xalan/xalan-c/sources/${MY_PN}-${PV}.tar.gz
 		verify-sig? ( https://dlcdn.apache.org/xalan/xalan-c/sources/${MY_PN}-${PV}.tar.gz.asc )
 	"
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/apache-xalan-c.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/apache-xalan-c.asc
 
 	SLOT="0/$(ver_cut 1-2)"
 	KEYWORDS="amd64 ~ppc x86"

@@ -17,7 +17,7 @@ MY_DOCS_VERSION=$(ver_cut 1-2)
 # See bug #784815
 MY_DOCS_USEFLAG="+doc"
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/joelrosdahl.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/joelrosdahl.asc
 inherit cmake toolchain-funcs flag-o-matic verify-sig
 
 DESCRIPTION="Fast compiler cache"

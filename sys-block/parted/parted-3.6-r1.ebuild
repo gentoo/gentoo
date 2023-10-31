@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bcl.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bcl.asc
 
 inherit autotools verify-sig
 

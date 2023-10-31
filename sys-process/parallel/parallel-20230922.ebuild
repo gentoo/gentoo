@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/oletange.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/oletange.asc
 inherit verify-sig
 
 DESCRIPTION="A shell tool for executing jobs in parallel locally or on remote machines"

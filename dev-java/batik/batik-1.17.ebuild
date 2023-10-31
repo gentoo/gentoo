@@ -42,7 +42,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-batik )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/xmlgraphics-batik.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xmlgraphics-batik.apache.org.asc"
 
 DOCS=( CHANGES NOTICE README )
 

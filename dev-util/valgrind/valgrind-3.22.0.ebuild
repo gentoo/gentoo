@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/${PN}.git"
 	inherit git-r3
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/valgrind.gpg
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/valgrind.gpg
 	inherit verify-sig
 
 	MY_P="${P/_rc/.RC}"

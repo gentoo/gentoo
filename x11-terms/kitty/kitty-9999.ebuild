@@ -87,7 +87,7 @@ src_unpack() {
 		edo go mod vendor
 	else
 		if use verify-sig; then
-			local VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/kovidgoyal.gpg
+			local VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
 			verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
 		fi
 		default

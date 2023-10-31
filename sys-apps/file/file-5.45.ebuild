@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/glensc/file.git"
 	inherit autotools git-r3
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/file.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/file.asc
 	inherit verify-sig
 	SRC_URI="ftp://ftp.astron.com/pub/file/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( ftp://ftp.astron.com/pub/file/${P}.tar.gz.asc )"

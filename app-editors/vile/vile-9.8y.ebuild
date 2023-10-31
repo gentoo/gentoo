@@ -5,7 +5,7 @@ EAPI=8
 
 # Bump with app-editors/xvile
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/thomasdickey.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/thomasdickey.asc
 inherit verify-sig
 
 DESCRIPTION="VI Like Emacs -- yet another full-featured vi clone"

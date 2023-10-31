@@ -31,7 +31,7 @@ DEPEND="
 RDEPEND=">=virtual/jre-1.8:*"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-felix )"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/felix.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/felix.apache.org.asc"
 
 PATCHES=(
 	"${FILESDIR}/felix-utils-1.11.8-Port-to-osgi-cmpn.patch"

@@ -4,7 +4,7 @@
 EAPI=8
 
 SSL_CERT_MANDATORY=1
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/unrealircd.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/unrealircd.asc
 inherit autotools ssl-cert systemd tmpfiles verify-sig
 
 DESCRIPTION="An advanced Internet Relay Chat daemon"

@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 RESTRICT="test" #839681
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/commons.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
 DEPEND="
 	>=virtual/jdk-1.8:*

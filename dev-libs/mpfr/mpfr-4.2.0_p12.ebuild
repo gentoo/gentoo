@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/vincentlefevre.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/vincentlefevre.asc
 inherit multilib-minimal verify-sig
 
 # Upstream distribute patches before a new release is made

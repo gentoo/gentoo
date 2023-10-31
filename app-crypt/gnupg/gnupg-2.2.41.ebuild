@@ -9,7 +9,7 @@ EAPI=8
 # (find the one for the current release then subscribe to it +
 # any subsequent ones linked within so you're covered for a while.)
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 # in-source builds are not supported: https://dev.gnupg.org/T6313#166339
 inherit flag-o-matic out-of-source multiprocessing systemd toolchain-funcs verify-sig
 

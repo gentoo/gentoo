@@ -39,7 +39,7 @@ RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-creadur )"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/creadur.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/creadur.apache.org.asc"
 
 DOCS=( NOTICE README.md README.txt RELEASE-NOTES.txt RELEASE_NOTES.txt )
 

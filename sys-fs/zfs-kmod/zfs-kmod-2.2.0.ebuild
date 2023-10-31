@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	unset MODULES_KERNEL_MAX
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/openzfs.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openzfs.asc
 	inherit verify-sig
 
 	MY_PV=${PV/_rc/-rc}

@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 SSL_CERT_MANDATORY=1
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/unrealircd.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/unrealircd.asc
 inherit autotools ssl-cert systemd verify-sig
 
 DESCRIPTION="An advanced Internet Relay Chat daemon"

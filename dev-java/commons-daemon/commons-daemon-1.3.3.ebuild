@@ -25,7 +25,7 @@ DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/commons.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 
 DOCS=( {CONTRIBUTING,README}.md {HOWTO-RELEASE,NOTICE,RELEASE-NOTES}.txt )
 HTML_DOCS=( PROPOSAL.html )

@@ -10,7 +10,7 @@ EAPI=8
 # Also recommend subscribing to the coreutils and bug-coreutils MLs.
 
 PYTHON_COMPAT=( python3_{9..11} )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/coreutils.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/coreutils.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
 MY_PATCH="${PN}-9.0_p20220409-patches-01"

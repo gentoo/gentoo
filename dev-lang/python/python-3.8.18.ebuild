@@ -80,7 +80,7 @@ RDEPEND+="
 	!build? ( app-misc/mime-types )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc
 
 QA_PKGCONFIG_VERSION=${PYVER}
 # false positives -- functions specific to *BSD

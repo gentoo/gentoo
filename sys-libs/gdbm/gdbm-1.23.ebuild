@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gdbm.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gdbm.asc
 inherit libtool multilib-minimal verify-sig
 
 DESCRIPTION="Standard GNU database libraries"

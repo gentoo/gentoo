@@ -33,7 +33,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-libidn )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libidn.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libidn.asc
 
 multilib_src_configure() {
 	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs

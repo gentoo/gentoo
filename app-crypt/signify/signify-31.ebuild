@@ -39,7 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-31-fix-build-clang-16.patch
 )
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/signify-keys/${PN}-30.pub"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/signify-keys/${PN}-30.pub"
 
 src_unpack() {
 	if use verify-sig; then

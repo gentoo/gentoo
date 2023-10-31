@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/unbound.net.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/unbound.net.asc
 inherit autotools flag-o-matic multilib-minimal python-single-r1 systemd verify-sig
 
 MY_P=${PN}-${PV/_/}

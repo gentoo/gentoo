@@ -26,7 +26,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-lassecollin )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/lassecollin.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/lassecollin.asc"
 
 JAVA_SRC_DIR="src/org"
 

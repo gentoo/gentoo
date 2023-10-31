@@ -11,7 +11,7 @@ EAPI=8
 # Please bump them together!
 
 PYTHON_COMPAT=( python3_{9..11} )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libvirt.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
 inherit meson linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
 if [[ ${PV} = *9999* ]]; then

@@ -1,9 +1,9 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/thomasdickey.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/thomasdickey.asc
 inherit verify-sig
 
 DESCRIPTION="Locale and ISO 2022 support for Unicode terminals"

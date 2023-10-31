@@ -102,7 +102,7 @@ PATCHES=(
 	"${FILESDIR}/stellarium-0.22.2-ccache.patch"
 )
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/stellarium.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/stellarium.asc
 src_unpack() {
 	# stars-2.0 are not signed
 	if use verify-sig; then

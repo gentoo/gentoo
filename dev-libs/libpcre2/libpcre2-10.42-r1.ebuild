@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/philiphazel.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/philiphazel.asc
 inherit libtool multilib-minimal usr-ldscript verify-sig
 
 MY_P="pcre2-${PV/_rc/-RC}"

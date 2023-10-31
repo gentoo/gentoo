@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/poppler/poppler.git"
 	SLOT="0/9999"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/aacid.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/aacid.asc
 	inherit verify-sig
 
 	TEST_COMMIT="e3cdc82782941a8d7b8112f83b4a81b3d334601a"

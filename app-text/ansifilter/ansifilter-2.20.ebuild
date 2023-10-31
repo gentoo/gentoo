@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/andresimon.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/andresimon.asc
 inherit desktop toolchain-funcs qmake-utils verify-sig xdg-utils
 
 DESCRIPTION="Handles text files containing ANSI terminal escape codes"

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/danielstenberg.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielstenberg.asc
 inherit edo multilib-minimal verify-sig
 
 DESCRIPTION="C library that resolves names asynchronously"

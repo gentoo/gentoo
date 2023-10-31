@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ KEYWORDS="-* ~amd64 ~arm ~arm64 ~x86"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-yorhel )"
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/yoranheling.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/yoranheling.asc
 
 QA_PREBUILT="usr/bin/ncdu-bin"
 

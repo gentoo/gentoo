@@ -71,7 +71,7 @@ PATCHES=(
 	"${FILESDIR}"/"${PN}"-3.0.3-java-launcher-32-bit.patch
 )
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/vgl-turbovnc.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/vgl-turbovnc.asc
 
 #879797 - BSD functions
 QA_CONFIG_IMPL_DECL_SKIP=( strlcat strlcpy )

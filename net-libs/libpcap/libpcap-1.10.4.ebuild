@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/the-tcpdump-group/libpcap"
 	inherit git-r3
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/tcpdump.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tcpdump.asc
 	inherit verify-sig
 
 	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz"

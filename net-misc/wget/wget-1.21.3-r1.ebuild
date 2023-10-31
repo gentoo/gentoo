@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9..11} )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/wget.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/wget.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
 DESCRIPTION="Network utility to retrieve files from the WWW"

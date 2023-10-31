@@ -44,7 +44,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-libvirt )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libvirt.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
 
 distutils_enable_tests pytest
 

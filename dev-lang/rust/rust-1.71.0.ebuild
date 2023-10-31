@@ -159,7 +159,7 @@ QA_EXECSTACK="usr/lib/${PN}/${PV}/lib/rustlib/*/lib*.rlib:lib.rmeta"
 # causes double bootstrap
 RESTRICT="test"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
 	"${FILESDIR}"/1.71.0-fix-bashcomp-installation.patch

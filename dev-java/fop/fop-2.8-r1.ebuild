@@ -60,7 +60,7 @@ JAVA_CLASSPATH_EXTRA="
 "
 
 BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-fop )"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/xmlgraphics-fop.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xmlgraphics-fop.apache.org.asc"
 
 src_unpack() {
 	if use verify-sig; then

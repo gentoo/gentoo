@@ -28,7 +28,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-yorhel )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/yoranheling.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/yoranheling.asc
 
 # see https://github.com/ziglang/zig/issues/3382
 # For now, Zig doesn't support CFLAGS/LDFLAGS/etc.

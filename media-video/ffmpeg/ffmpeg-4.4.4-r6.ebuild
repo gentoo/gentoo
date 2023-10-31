@@ -30,7 +30,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 else # Release
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/ffmpeg.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ffmpeg.asc
 	inherit verify-sig
 	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://ffmpeg.org/releases/${P/_/-}.tar.xz.asc )"

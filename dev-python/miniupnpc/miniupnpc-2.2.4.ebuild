@@ -39,7 +39,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-miniupnp )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/miniupnp.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/miniupnp.asc
 
 PATCHES=(
 	"${FILESDIR}"/miniupnpc-2.2.3-shared-lib.patch

@@ -86,7 +86,7 @@ RDEPEND="${REQDEPEND} ${OPTDEPEND}"
 BDEPEND="${RDEPEND}
 	verify-sig? ( sec-keys/openpgp-keys-spamassassin )"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/spamassassin.apache.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/spamassassin.apache.org.asc
 
 PATCHES=(
 	"${FILESDIR}/mention-geoip.cf-in-init.pre.patch"

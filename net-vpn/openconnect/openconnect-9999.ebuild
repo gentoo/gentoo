@@ -72,7 +72,7 @@ BDEPEND="
 
 if [[ ${PV} != 9999 ]]; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-dwmw2 )"
-	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/dwmw2@kernel.org.key"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/dwmw2@kernel.org.key"
 fi
 
 CONFIG_CHECK="~TUN"
