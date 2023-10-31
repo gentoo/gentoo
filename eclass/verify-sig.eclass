@@ -87,6 +87,8 @@ esac
 # when using default src_unpack.  Alternatively, the key path can be
 # passed directly to the verification functions.
 #
+# The value of BROOT will be prepended to this path automatically.
+#
 # NB: this variable is also used for non-OpenPGP signatures.  The name
 # contains "OPENPGP" for historical reasons.
 
@@ -119,10 +121,15 @@ esac
 verify-sig_verify_detached() {
 	local file=${1}
 	local sig=${2}
-	local key=${3:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+	local key=${3}
 
-	[[ -n ${key} ]] ||
-		die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+	if [[ -z ${key} ]]; then
+		if [[ -z ${VERIFY_SIG_OPENPGP_KEY_PATH} ]]; then
+			die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+		else
+			key="${BROOT}${VERIFY_SIG_OPENPGP_KEY_PATH}"
+		fi
+	fi
 
 	local extra_args=()
 	[[ ${VERIFY_SIG_OPENPGP_KEY_REFRESH} == yes ]] || extra_args+=( -R )
@@ -182,10 +189,15 @@ verify-sig_verify_detached() {
 verify-sig_verify_message() {
 	local file=${1}
 	local output_file=${2}
-	local key=${3:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+	local key=${3}
 
-	[[ -n ${key} ]] ||
-		die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+	if [[ -z ${key} ]]; then
+		if [[ -z ${VERIFY_SIG_OPENPGP_KEY_PATH} ]]; then
+			die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+		else
+			key="${BROOT}${VERIFY_SIG_OPENPGP_KEY_PATH}"
+		fi
+	fi
 
 	local extra_args=()
 	[[ ${VERIFY_SIG_OPENPGP_KEY_REFRESH} == yes ]] || extra_args+=( -R )
@@ -313,7 +325,7 @@ _gpg_verify_signed_checksums() {
 	local checksum_file=${1}
 	local algo=${2}
 	local files=${3}
-	local key=${4:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+	local key=${4}
 
 	verify-sig_verify_unsigned_checksums - "${algo}" "${files}" < <(
 		verify-sig_verify_message "${checksum_file}" - "${key}"
@@ -336,10 +348,15 @@ verify-sig_verify_signed_checksums() {
 	local algo=${2}
 	local files=()
 	read -r -d '' -a files <<<"${3}"
-	local key=${4:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+	local key=${4}
 
-	[[ -n ${key} ]] ||
-		die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+	if [[ -z ${key} ]]; then
+		if [[ -z ${VERIFY_SIG_OPENPGP_KEY_PATH} ]]; then
+			die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+		else
+			key="${BROOT}${VERIFY_SIG_OPENPGP_KEY_PATH}"
+		fi
+	fi
 
 	case ${VERIFY_SIG_METHOD} in
 		openpgp)
