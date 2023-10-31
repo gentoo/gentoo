@@ -39,6 +39,8 @@ DEPEND="
 			dev-python/lark[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 		')
+		dev-vcs/git
+		net-misc/rsync
 	)
 	doc? (
 		$(python_gen_cond_dep '
