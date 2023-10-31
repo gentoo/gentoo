@@ -7,7 +7,6 @@ EAPI=8
 # official. Don't keyword the pre-releases!
 # Check https://github.com/shadow-maint/shadow/releases.
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sergehallyn.asc
 inherit libtool pam verify-sig
 
 DESCRIPTION="Utilities to deal with user accounts"
@@ -62,8 +61,15 @@ RDEPEND="
 BDEPEND="
 	app-arch/xz-utils
 	sys-devel/gettext
-	verify-sig? ( sec-keys/openpgp-keys-sergehallyn )
 "
+
+if [[ ${PV} == *.0 ]]; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-sergehallyn )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sergehallyn.asc
+else
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-alejandro-colomar )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/alejandro-colomar.asc
+fi
 
 src_prepare() {
 	default
