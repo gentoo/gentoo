@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-10-31)
+# Sabayon upstream (dead). No meaningful maintenance since we
+# switched to git. All other aws-*-tools packages were removed
+# in 2018. Removal on or after 2023-12-01.
+app-admin/aws-elb-tools
+
 # Guilherme Amadio <amadio@gentoo.org> (2023-10-30)
 # net-libs/xrootd-ceph was split from net-libs/xrootd as a git
 # submodule, but has been merged back to the main repository in
