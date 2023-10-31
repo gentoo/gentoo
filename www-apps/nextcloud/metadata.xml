@@ -5,6 +5,10 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
