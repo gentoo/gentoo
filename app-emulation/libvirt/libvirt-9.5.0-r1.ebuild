@@ -21,7 +21,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
@@ -146,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-9.4.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.4.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-9.6.0-storage-Fix-returning-of-locked-objects-from-virStor.patch
 )
 
 pkg_setup() {
