@@ -1,6 +1,11 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-10-31)
+# Tries to use unsupported MemoryDenyWriteExecute and crashes on boot.
+# See https://github.com/systemd/systemd/issues/29775 and bug #916469.
+>=sys-apps/systemd-254
+
 # Sam James <sam@gentoo.org> (2023-08-28)
 # libuv >=1.45.0 starts to use iouring (but via its own implementation, not sys-libs/liburing)
 # which means CMake then starts using iouring. There are some kernel bugs which
