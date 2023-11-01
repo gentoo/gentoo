@@ -1,5 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mart Raudsepp <leio@gentoo.org> (2023-10-01)
+# x11-wm/mutter[wayland] requires xwayland[libei] for emulated input portal
+# for e.g. remote desktop remote input support
+x11-base/xwayland libei
 
 # Mart Raudsepp <leio@gentoo.org> (2022-01-05)
 # gnome-boxes requires spice-gtk[vala]
