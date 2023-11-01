@@ -231,7 +231,7 @@ src_install() {
 pkg_postinst() {
 	einfo
 	einfo  "Please read and cite gromacs related papers from list:"
-	einfo  "https://www.gromacs.org/Gromacs_papers"
+	einfo  "https://www.gromacs.org/articles.html"
 	einfo
 	readme.gentoo_print_elog
 }

@@ -17,7 +17,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="
 		https://gitlab.com/gromacs/gromacs.git
 		https://github.com/gromacs/gromacs.git
-		git://git.gromacs.org/gromacs.git"
+		"
 	[[ ${PV} = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
 else
@@ -107,7 +107,7 @@ src_unpack() {
 	else
 		git-r3_src_unpack
 		if use test; then
-			EGIT_REPO_URI="git://git.gromacs.org/regressiontests.git" \
+			EGIT_REPO_URI="https://gitlab.com/gromacs/gromacs-regressiontests.git" \
 			EGIT_BRANCH="${EGIT_BRANCH}" \
 			EGIT_CHECKOUT_DIR="${WORKDIR}/regressiontests"\
 				git-r3_src_unpack
@@ -329,7 +329,7 @@ src_install() {
 pkg_postinst() {
 	einfo
 	einfo  "Please read and cite gromacs related papers from list:"
-	einfo  "https://www.gromacs.org/Gromacs_papers"
+	einfo  "https://www.gromacs.org/articles.html"
 	einfo
 	readme.gentoo_print_elog
 }
