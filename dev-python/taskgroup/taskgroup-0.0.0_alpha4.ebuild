@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
+# py3.11: this is a backport to py3.10, please do not add more targets
 PYTHON_COMPAT=( pypy3 python3_10 )
 
 inherit distutils-r1 pypi
