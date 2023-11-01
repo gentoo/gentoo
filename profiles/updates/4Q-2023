@@ -12,3 +12,4 @@ move dev-libs/Imath dev-libs/imath
 move dev-python/cli_helpers dev-python/cli-helpers
 move dev-python/python-cstruct dev-python/cstruct
 move dev-python/swagger_spec_validator dev-python/swagger-spec-validator
+move dev-python/pslab-python dev-python/pslab
