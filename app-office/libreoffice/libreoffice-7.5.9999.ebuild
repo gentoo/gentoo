@@ -294,6 +294,7 @@ PATCHES=(
 
 	# git master
 	"${WORKDIR}/${PN}-7.5.2.2-loong-buildsys-fix.patch"
+	"${FILESDIR}/${PN}-7.5.6.2-gcc-14.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
