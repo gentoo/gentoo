@@ -6,7 +6,7 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool multilib multilib-minimal preserve-libs usr-ldscript
+inherit flag-o-matic libtool multilib multilib-minimal preserve-libs toolchain-funcs usr-ldscript
 
 if [[ ${PV} == 9999 ]] ; then
 	# Per tukaani.org, git.tukaani.org is a mirror of github and
