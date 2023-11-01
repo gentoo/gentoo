@@ -2,22 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
+LICENSE="GPL-2+"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/mutter.git"
 	SRC_URI=""
+	SLOT="0/13" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
-
-LICENSE="GPL-2+"
-SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
 IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection screencast sysprof systemd test udev wayland video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
@@ -28,7 +28,11 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 # gnome-settings-daemon is build checked, but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard gschema
-# xorg-server is needed at build and runtime with USE=wayland for Xwayland
+# USE=libei was first introduced in xwayland-23.2.1; we min dep on that to ensure the [libei(+)] works right, as missing USE flag with
+# previous versions meant that it's not there, while the intention seems to be to make it always enabled without USE flag in the future;
+# this ensures have_enable_ei_portal is always there in xwayland.pc, which affects how Xwayland is launched, thus if it were toggled off
+# in Xwayland after mutter is installed, Xwayland would fail to be started by mutter. mutter already hard-depends on libei, so there's
+# really no extra deps here (besides xdg-desktop-portal, but we want that too, anyhow).
 # v3.32.2 has many excessive or unused *_req variables declared, thus currently the dep order ignores those and goes via dependency() call order
 DEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
@@ -47,6 +51,7 @@ DEPEND="
 	>=x11-misc/colord-1.4.5:=
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
+	>=dev-libs/libei-1.0.901
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
@@ -55,15 +60,15 @@ DEPEND="
 	media-libs/libglvnd[X]
 
 	wayland? (
-		>=dev-libs/wayland-protocols-1.31
+		>=dev-libs/wayland-protocols-1.32
 		>=dev-libs/wayland-1.21.0
 
 		x11-libs/libdrm
 		media-libs/mesa[gbm(+)]
-		>=dev-libs/libinput-1.18.0:=
+		>=dev-libs/libinput-1.19.0:=
 
 		elogind? ( sys-auth/elogind )
-		x11-base/xwayland
+		>=x11-base/xwayland-23.2.1[libei(+)]
 		video_cards_nvidia? ( gui-libs/egl-wayland )
 	)
 	udev? (
@@ -74,7 +79,7 @@ DEPEND="
 	x11-libs/libSM
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13:= )
 	>=x11-libs/startup-notification-0.7
-	screencast? ( >=media-video/pipewire-0.3.21:= )
+	screencast? ( >=media-video/pipewire-0.3.33:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 	test? ( >=x11-libs/gtk+-3.19.8:3[X,introspection?] )
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
@@ -88,7 +93,7 @@ DEPEND+="
 		x11-libs/libXcursor
 		x11-libs/libXdamage
 		x11-libs/libXext
-		>=x11-libs/libXfixes-3
+		>=x11-libs/libXfixes-6
 		>=x11-libs/libXi-1.7.4
 		x11-libs/libXtst
 		x11-libs/libxkbfile
@@ -140,12 +145,6 @@ python_check_deps() {
 	if use test; then
 		python_has_version ">=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]"
 	fi
-}
-
-src_prepare() {
-	default
-
-	sed -i -e "s:#!/usr/bin/bash:#!$(command -v bash):" src/tests/x11-test.sh || die
 }
 
 src_configure() {
@@ -216,7 +215,9 @@ src_configure() {
 }
 
 src_test() {
-	gnome2_environment_reset # Avoid dconf that looks at XDG_DATA_DIRS, which can sandbox fail if flatpak is installed
+	# Reset variables to avoid issues from /etc/profile.d/flatpak.sh file
+	gnome2_environment_reset
+	export XDG_DATA_DIRS="${EPREFIX}"/usr/share
 	glib-compile-schemas "${BUILD_DIR}"/data
 	GSETTINGS_SCHEMA_DIR="${BUILD_DIR}"/data meson_src_test --setup=CI
 }

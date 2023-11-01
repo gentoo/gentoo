@@ -7,17 +7,17 @@ inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
+LICENSE="GPL-2+"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/mutter.git"
 	SRC_URI=""
+	SLOT="0/13" # This can get easily out of date, but better than 9967
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
-
-LICENSE="GPL-2+"
-SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
 IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection screencast sysprof systemd test udev wayland video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
