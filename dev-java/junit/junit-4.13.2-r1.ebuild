@@ -1,19 +1,17 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom junit4-r4.13.2/pom.xml --download-uri https://github.com/junit-team/junit4/archive/refs/tags/r4.13.2.tar.gz --slot 4 --keywords "~amd64 ~arm64 ~ppc64 ~x86" --ebuild junit-4.13.2.ebuild
-
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="junit:junit:4.13.2"
+MAVEN_ID="junit:junit:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Simple framework to write repeatable tests"
 HOMEPAGE="https://junit.org/junit4/"
-SRC_URI="https://github.com/${PN}-team/${PN}4/archive/refs/tags/r${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-team/${PN}4/archive/r${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}4-r${PV}"
 
 LICENSE="EPL-1.0"
 SLOT="4"
@@ -29,19 +27,12 @@ RDEPEND="${CP_DEPEND}
 
 JAVA_AUTOMATIC_MODULE_NAME="junit"
 JAVA_ENCODING="ISO-8859-1"
-
-JAVA_GENTOO_CLASSPATH="hamcrest-core-1.3"
-JAVA_SRC_DIR="${PN}4-r${PV}/src/main/java"
-JAVA_RESOURCE_DIRS="${PN}4-r${PV}/src/main/resources"
+JAVA_RESOURCE_DIRS="src/main/resources"
+JAVA_SRC_DIR="src/main/java"
 
 JAVA_TEST_GENTOO_CLASSPATH="hamcrest-core-1.3,hamcrest-library-1.3"
-JAVA_TEST_SRC_DIR="${PN}4-r${PV}/src/test/java"
-JAVA_TEST_RESOURCE_DIRS="${PN}4-r${PV}/src/test/resources"
-
-src_prepare() {
-	default
-	java-pkg_clean
-}
+JAVA_TEST_SRC_DIR="src/test/java"
+JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 
 src_test() {
 	cd "${JAVA_TEST_SRC_DIR}" || die
