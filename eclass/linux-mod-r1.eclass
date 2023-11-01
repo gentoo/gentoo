@@ -1161,8 +1161,8 @@ _modules_set_makeargs() {
 		# eclass handle strip, sign, compress, and depmod (CONFIG_ should
 		# have no impact on building, only used by Makefile.modinst)
 		CONFIG_MODULE_{SIG_ALL,COMPRESS_{GZIP,XZ,ZSTD}}=
-		DEPMOD=:
-		STRIP=:
+		DEPMOD=true #916587
+		STRIP=true
 	)
 
 	if [[ ! ${MODULES_I_WANT_FULL_CONTROL} ]]; then
