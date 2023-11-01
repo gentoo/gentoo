@@ -142,8 +142,8 @@ src_prepare() {
 	DOC_CONTENTS="Gromacs can use sci-chemistry/vmd to read additional file formats"
 	if use build-manual; then
 		# try to create policy for imagemagik
-		mkdir -p ${HOME}/.config/ImageMagick
-		cat >> ${HOME}/.config/ImageMagick/policy.xml <<- EOF
+		mkdir -p "${HOME}"/.config/ImageMagick
+		cat >> "${HOME}"/.config/ImageMagick/policy.xml <<- EOF
 		<?xml version="1.0" encoding="UTF-8"?>
 		<!DOCTYPE policymap [
 		<!ELEMENT policymap (policy)+>
