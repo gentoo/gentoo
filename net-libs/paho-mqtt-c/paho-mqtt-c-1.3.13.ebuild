@@ -1,23 +1,22 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake python-any-r1 toolchain-funcs
 
-MY_TEST_UTILS="paho.mqtt.testing"
-MY_TEST_COMMIT="577f955352e41205c554d44966c2908e90026345"
-MY_LIVE_COMMIT="7db21329301b1f527c925dff789442db3ca3c1e7"
+TEST_UTILS="paho.mqtt.testing"
+TEST_COMMIT="a4dc694010217b291ee78ee13a6d1db812f9babd"
 
 DESCRIPTION="An Eclipse Paho C client library for MQTT for Windows, Linux and MacOS."
 HOMEPAGE="https://eclipse.org/paho"
 SRC_URI="
 	https://github.com/eclipse/paho.mqtt.c/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/eclipse/paho.mqtt.c/archive/${MY_LIVE_COMMIT}.tar.gz -> ${P}-live.tar.gz
-	https://github.com/eclipse/${MY_TEST_UTILS}/archive/${MY_TEST_COMMIT}.tar.gz -> ${MY_TEST_UTILS}.tar.gz
+	https://github.com/eclipse/${TEST_UTILS}/archive/${TEST_COMMIT}.tar.gz -> ${TEST_UTILS}-${TEST_COMMIT}.tar.gz
 "
+S="${WORKDIR}/paho.mqtt.c-${PV}"
 
 LICENSE="EPL-2.0"
 SLOT="1.3"
@@ -41,18 +40,12 @@ BDEPEND="
 # Tests can be run only if a MQTT broker is available
 RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/paho.mqtt.c-${PV}"
-
 BUILD_DIR="${S}_build"
 
 src_prepare(){
 	cmake_src_prepare
 	if use test; then
-		# removing old certs
-		rm -r "${S}"/test/ssl || die
-		mv "${WORKDIR}"/paho.mqtt.c-"${MY_LIVE_COMMIT}"/test/ssl "${S}"/test/ssl || die
-
-		mv "${WORKDIR}/${MY_TEST_UTILS}-${MY_TEST_COMMIT}" "${WORKDIR}/${MY_TEST_UTILS}" || die
+		mv "${WORKDIR}/${TEST_UTILS}-${TEST_COMMIT}" "${WORKDIR}/${TEST_UTILS}" || die
 	fi
 }
 
@@ -74,7 +67,7 @@ src_test() {
 		return
 	fi
 
-	cd "${WORKDIR}/${MY_TEST_UTILS}/interoperability" || die
+	cd "${WORKDIR}/${TEST_UTILS}/interoperability" || die
 
 	${EPYTHON} startbroker.py -c localhost_testing.conf \
 			   > "${T}/testbroker.log" &
