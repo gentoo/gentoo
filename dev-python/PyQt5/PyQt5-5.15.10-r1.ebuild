@@ -81,7 +81,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	>=dev-python/PyQt5-sip-12.11:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-12.13:=[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/PyQt-builder-1.14.1[${PYTHON_USEDEP}]
