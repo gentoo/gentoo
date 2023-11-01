@@ -9,7 +9,7 @@ SRC_URI="https://github.com/markuskimius/SDL2_Pango/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="dev-libs/glib:2
 	media-libs/freetype
