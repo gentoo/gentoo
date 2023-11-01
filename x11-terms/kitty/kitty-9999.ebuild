@@ -16,6 +16,7 @@ else
 		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
 	"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
@@ -86,10 +87,8 @@ src_unpack() {
 		cd "${S}" || die
 		edo go mod vendor
 	else
-		if use verify-sig; then
-			local VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
+		use verify-sig &&
 			verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
-		fi
 		default
 	fi
 }
