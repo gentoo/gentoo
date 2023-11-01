@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools git-r3 linux-info toolchain-funcs
 
@@ -20,7 +20,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-DOCS=( ChangeLog )
+DOCS=( ChangeLog NEWS README )
 
 CONFIG_CHECK="~NET_SCHED"
 ERROR_NET_SCHED="
