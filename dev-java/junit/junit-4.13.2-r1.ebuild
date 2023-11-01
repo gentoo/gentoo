@@ -4,7 +4,7 @@
 # Skeleton command:
 # java-ebuilder --generate-ebuild --workdir . --pom junit4-r4.13.2/pom.xml --download-uri https://github.com/junit-team/junit4/archive/refs/tags/r4.13.2.tar.gz --slot 4 --keywords "~amd64 ~arm64 ~ppc64 ~x86" --ebuild junit-4.13.2.ebuild
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="junit:junit:4.13.2"
@@ -19,30 +19,15 @@ LICENSE="EPL-1.0"
 SLOT="4"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
-# Common dependencies
-# POM: ${PN}4-r${PV}/pom.xml
-# org.hamcrest:hamcrest-core:1.3 -> >=dev-java/hamcrest-core-1.3:1.3
+CP_DEPEND="dev-java/hamcrest-core:1.3"
+# not suitable for jdk:21 #916398
+DEPEND="${CP_DEPEND}
+	<=virtual/jdk-17:*
+	test? ( dev-java/hamcrest-library:1.3 )"
+RDEPEND="${CP_DEPEND}
+	>=virtual/jre-1.8:*"
 
-CDEPEND="
-	dev-java/hamcrest-core:1.3
-"
-
-# Compile dependencies
-# POM: ${PN}4-r${PV}/pom.xml
-# test? org.hamcrest:hamcrest-library:1.3 -> >=dev-java/hamcrest-library-1.3:1.3
-
-DEPEND="
-	>=virtual/jdk-1.8:*
-	test? (
-		dev-java/hamcrest-library:1.3
-	)
-	${CDEPEND}"
-RDEPEND="
-	>=virtual/jre-1.8:*
-	${CDEPEND}"
-BDEPEND="app-arch/unzip"
-S="${WORKDIR}"
-
+JAVA_AUTOMATIC_MODULE_NAME="junit"
 JAVA_ENCODING="ISO-8859-1"
 
 JAVA_GENTOO_CLASSPATH="hamcrest-core-1.3"
@@ -64,5 +49,7 @@ src_test() {
 	local CP=".:../resources:${S}/${PN}.jar:$(java-pkg_getjars ${JAVA_TEST_GENTOO_CLASSPATH})"
 
 	ejavac -cp "${CP}" -d . $(find * -name "*.java")
-	java -cp "${CP}" -Djava.awt.headless=true org.junit.runner.JUnitCore junit.tests.AllTests || die "Running junit failed"
+	# pom.xml lines 264-268
+	java -cp "${CP}" -Djava.awt.headless=true \
+		org.junit.runner.JUnitCore org.junit.tests.AllTests || die "Running junit failed"
 }
