@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools git-r3 linux-info toolchain-funcs
 
 DESCRIPTION="Interface bandwidth monitor"
-HOMEPAGE="http://www.infradead.org/~tgr/bmon/ https://github.com/tgraf/bmon/"
+HOMEPAGE="https://github.com/tgraf/bmon/"
 EGIT_REPO_URI="https://github.com/tgraf/bmon/"
 
 LICENSE="BSD-2 MIT"
