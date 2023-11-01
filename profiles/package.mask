@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-11-01)
+# Broken on py3.12.  Repository archived upstream.  No revdeps.
+# Removal on 2023-12-01.  Bug #916670.
+dev-python/pushbullet-py
+
 # Michael Orlitzky <mjo@gentoo.org> (2023-10-31)
 # Sabayon upstream (dead). No meaningful maintenance since we
 # switched to git. All other aws-*-tools packages were removed
