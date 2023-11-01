@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -38,11 +38,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-ad9833_sys_version.patch
 )
 
-# Flaky in 2.5.0
 EPYTEST_DESELECT=(
+	# Flaky in 2.5.0
 	tests/test_logic_analyzer.py::test_stop
 )
 
-distutils_enable_tests pytest
-
 distutils_enable_sphinx docs dev-python/recommonmark
+distutils_enable_tests pytest
