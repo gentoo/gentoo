@@ -17,6 +17,7 @@ else
 		https://github.com/qutebrowser/qutebrowser/releases/download/v${PV}/${P}.tar.gz
 		verify-sig? ( https://github.com/qutebrowser/qutebrowser/releases/download/v${PV}/${P}.tar.gz.asc )
 	"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qutebrowser.gpg
 	KEYWORDS="amd64 ~arm64 ~x86"
 fi
 
@@ -83,15 +84,6 @@ distutils_enable_tests pytest
 PATCHES=(
 	"${FILESDIR}"/${P}-tests-qt653.patch
 )
-
-src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-	else
-		local VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qutebrowser.gpg
-		verify-sig_src_unpack
-	fi
-}
 
 src_prepare() {
 	distutils-r1_src_prepare
