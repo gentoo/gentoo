@@ -92,6 +92,11 @@ src_configure() {
 		-DWITH_LIBPNG=$(usex png)
 		-DXPDFWIDGET_PRINTING=$(usex cups)
 		-DSYSTEM_XPDFRC="${EPREFIX}/etc/xpdfrc"
+		# Bug 910166
+		# https://forum.xpdfreader.com/viewtopic.php?p=45052#p45052
+		# Likely fixed in 4.05
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6Widgets=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt4=ON
 	)
 	cmake_src_configure
 }
