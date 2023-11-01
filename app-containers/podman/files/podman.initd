@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2015-2021 Gentoo Authors
+# Copyright 2015-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="Podman Remote API Service"
@@ -12,9 +12,26 @@ pidfile="${RUN_PATH}/${RC_SVCNAME}.pid"
 command="/usr/bin/podman"
 command_args="--log-level ${LOG_LEVEL} system service -t 0 ${SOCKET}"
 command_background="true"
-start_stop_daemon_args="--stdout ${LOG_PATH}/${RC_SVCNAME}.log --stderr ${LOG_PATH}/${RC_SVCNAME}.log --user ${RUN_AS_USER}"
+command_user="${RUN_AS_USER}"
+start_stop_daemon_args="--stdout ${LOG_PATH}/${RC_SVCNAME}.log --stderr ${LOG_PATH}/${RC_SVCNAME}.log"
 
-start() {
+extra_commands="start_containers"
+description_start_containers="Start containers with restart policy set to always"
+
+depend() {
+	need sysfs cgroups
+}
+
+start_containers() {
+	ebegin "Starting containers with restart policy set to always"
+	${command} start --all --filter restart-policy=always
+	eend $?
+}
+
+start_pre() {
 	checkpath -o "${RUN_AS_USER}" -d "${RUN_PATH}" "${LOG_PATH}"
-	default_start
+}
+
+start_post() {
+	start_containers
 }
