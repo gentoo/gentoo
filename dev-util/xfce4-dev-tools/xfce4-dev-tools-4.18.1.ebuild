@@ -20,6 +20,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+# libxslt for xsltproc
 BDEPEND="
+	dev-libs/libxslt
 	virtual/pkgconfig
 "
