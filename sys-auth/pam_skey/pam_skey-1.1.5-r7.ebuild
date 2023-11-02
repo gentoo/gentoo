@@ -12,7 +12,7 @@ SRC_URI="https://dkorunic.net/tarballs/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=sys-libs/pam-0.78-r3
 	>=sys-auth/skey-1.1.5-r4"
