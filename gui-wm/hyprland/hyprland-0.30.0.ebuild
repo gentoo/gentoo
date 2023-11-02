@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-source"
 KEYWORDS="~amd64"
 LICENSE="BSD"
 SLOT="0"
-IUSE="X legacy-renderer systemd video_cards_nvidia"
+IUSE="X legacy-renderer systemd video_cards_nvidia wlroots-headers"
 
 # bundled wlroots has the following dependency string according to included headers.
 # wlroots[drm,gles2-renderer,libinput,x11-backend?,X?]
@@ -37,6 +37,9 @@ WLROOTS_RDEPEND="
 		x11-libs/libxcb:0=
 		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
+	)
+	wlroots-headers? (
+		=gui-libs/wlroots-20230828
 	)
 "
 WLROOTS_DEPEND="
@@ -86,11 +89,11 @@ PATCHES=(
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	if tc-is-gcc && ver_test $(gcc-version) -lt 13 ; then
+	if tc-is-gcc && ver_test $(gcc-version) -lt 13; then
 		eerror "Hyprland requires >=sys-devel/gcc-13 to build"
 		eerror "Please upgrade GCC: emerge -v1 sys-devel/gcc"
 		die "GCC version is too old to compile Hyprland!"
-	elif tc-is-clang && ver_test $(clang-version) -lt 16 ; then
+	elif tc-is-clang && ver_test $(clang-version) -lt 16; then
 		eerror "Hyprland requires >=sys-devel/clang-16 to build"
 		eerror "Please upgrade Clang: emerge -v1 sys-devel/clang"
 		die "Clang version is too old to compile Hyprland!"

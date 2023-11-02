@@ -17,5 +17,6 @@
 	</upstream>
 	<use>
 		<flag name="legacy-renderer">Enable legacy renderer</flag>
+		<flag name="wlroots-headers">Install the wlroots commit use by Hyprland (Allow the use of hyprland plugins)</flag>
 	</use>
 </pkgmetadata>
