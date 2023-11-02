@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,6 +29,15 @@ src_prepare() {
 		-e "s|^\\(LDFLAGS =.*\\)|\\1 ${LDFLAGS}|" \
 		-e "s|\`pkg-config[^\`]*\`||" \
 		-i Makefile || die
+
+	# https://github.com/editorconfig/editorconfig-geany/pull/15
+	cat << "EOF" > "${T}/GeanyFunctions.patch" || die
+--- a/editorconfig-geany.c
++++ b/editorconfig-geany.c
+@@ -33 +32,0 @@
+-GeanyFunctions*      geany_functions;
+EOF
+	eapply -p1 "${T}/GeanyFunctions.patch"
 }
 
 src_install() {
