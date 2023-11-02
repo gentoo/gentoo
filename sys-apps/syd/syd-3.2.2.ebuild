@@ -54,6 +54,7 @@ CRATES="
 	num_cpus@1.16.0
 	once_cell@1.18.0
 	oorandom@11.1.3
+	openat2@0.1.2
 	parking_lot@0.12.1
 	parking_lot_core@0.9.9
 	pkg-config@0.3.27
