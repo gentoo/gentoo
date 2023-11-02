@@ -83,10 +83,6 @@ dev-util/diffoscope haskell
 dev-java/openjdk:8 javafx
 dev-java/openjdk:11 javafx
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
-# REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
-app-office/libreoffice base
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
 # sys-cluster/slurm has no stable keywords
 # dev-util/nvidia-cuda-toolkit has no stable keywords

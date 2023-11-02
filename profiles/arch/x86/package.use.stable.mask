@@ -84,10 +84,6 @@ dev-util/diffoscope haskell
 # large amount of fabric. bug #763954
 sys-block/open-iscsi infiniband
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
-# REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
-app-office/libreoffice base
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
 # sys-cluster/slurm has no stable keywords
 app-metrics/collectd collectd_plugins_slurm
