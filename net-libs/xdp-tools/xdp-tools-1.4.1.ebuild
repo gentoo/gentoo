@@ -33,8 +33,16 @@ QA_PREBUILT="usr/lib/bpf/*.o"
 MAKEOPTS+=" V=1"
 
 PATCHES=(
-	"${FILESDIR}"/1.4.1-no-Werror.patch
 )
+
+src_prepare() {
+	# remove -Werror: #899744
+	sed -i 's/-Werror//g' lib/Makefile lib/defines.mk
+	sed -i '/-Werror/d' lib/common.mk lib/libxdp/Makefile \
+		lib/libxdp/tests/Makefile lib/util/Makefile
+
+	default
+}
 
 src_configure() {
 	export CC="$(tc-getCC)"
