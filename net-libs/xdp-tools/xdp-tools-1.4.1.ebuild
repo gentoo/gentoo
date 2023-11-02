@@ -45,17 +45,22 @@ src_prepare() {
 }
 
 src_configure() {
+	# filter LTO: #861587
+	filter-lto
+
+	# filter LDFLAGS some more: #916591
+	filter-ldflags -Wl,--{icf,lto}*
+
+	# force ld.bfd: #916591
+	tc-ld-force-bfd
+
 	export CC="$(tc-getCC)"
-	export LD="$(tc-getLD)"
 	export PREFIX="${EPREFIX}/usr"
 	export LIBDIR="${PREFIX}/$(get_libdir)"
 	export BPF_OBJECT_DIR="${PREFIX}/lib/bpf"
 	export PRODUCTION=1
 	export DYNAMIC_LIBXDP=1
 	export FORCE_SYSTEM_LIBBPF=1
-
-	# bug 861587
-	filter-lto
 
 	default
 }
