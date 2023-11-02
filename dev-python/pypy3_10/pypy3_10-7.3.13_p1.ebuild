@@ -25,7 +25,7 @@ LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="0/pypy310-pp73-384"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+ensurepip gdbm +jit ncurses sqlite tk"
 # many tests are failing upstream
 # see https://buildbot.pypy.org/summary?branch=py${PYVER}
