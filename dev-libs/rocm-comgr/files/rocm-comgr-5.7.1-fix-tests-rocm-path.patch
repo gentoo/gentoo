@@ -1,0 +1,12 @@
+Vanilla clang requires either -nogpulib or both --rocm-path and --rocm-device-lib-path flags
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -39,7 +39,7 @@ endmacro()
+ macro(add_test_input_bitcode name input output)
+   add_custom_command(
+     OUTPUT "${output}"
+-    COMMAND "$<TARGET_FILE:clang>" -c --offload-arch=gfx906 -emit-llvm -fgpu-rdc
++    COMMAND "$<TARGET_FILE:clang>" -c --offload-arch=gfx906 -emit-llvm -fgpu-rdc --rocm-path=@GENTOO_PORTAGE_EPREFIX@/usr --hip-device-lib-path=@GENTOO_PORTAGE_EPREFIX@/usr/lib/amdgcn/bitcode
+     --gpu-bundle-output ${ARGN} "${CMAKE_CURRENT_SOURCE_DIR}/${input}"
+     -o "${output}"
+     VERBATIM
