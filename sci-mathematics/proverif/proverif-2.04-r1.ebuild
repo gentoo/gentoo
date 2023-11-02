@@ -9,14 +9,16 @@ DESCRIPTION="Cryptographic protocol verifier in the formal model"
 HOMEPAGE="https://bblanche.gitlabpages.inria.fr/proverif/
 	https://gitlab.inria.fr/bblanche/proverif/"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
+
 	EGIT_REPO_URI="https://gitlab.inria.fr/bblanche/${PN}.git"
 	S="${WORKDIR}/${P}/${PN}"
 else
 	SRC_URI="https://gitlab.inria.fr/bblanche/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-v${PV}/${PN}"
+
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2+"
@@ -24,9 +26,10 @@ SLOT="0"
 IUSE="emacs"
 
 RDEPEND="
+	dev-lang/ocaml:=[ocamlopt]
 	emacs? ( >=app-editors/emacs-25:* )
 "
-BDEPEND="
+DEPEND="
 	${RDEPEND}
 "
 
