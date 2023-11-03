@@ -47,7 +47,10 @@ DEPEND="${COMMON_DEP}
 BDEPEND="verify-sig? ( ~sec-keys/openpgp-keys-apache-tomcat-${PV}:${PV} )"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tomcat-${PV}.apache.org.asc"
 
-PATCHES=( "${FILESDIR}/${PN}-8.5.86-build.xml.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-8.5.86-build.xml.patch"
+	"${FILESDIR}/${PN}-8.5.95-min.java.patch"
+)
 
 S=${WORKDIR}/${MY_P}
 
