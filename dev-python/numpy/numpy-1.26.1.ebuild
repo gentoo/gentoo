@@ -46,11 +46,11 @@ BDEPEND="
 		' 'python*')
 		dev-python/charset-normalizer[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-5.8.0[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -143,7 +143,7 @@ python_test() {
 	esac
 
 	rm -rf numpy || die
-	epytest -n "$(makeopts_jobs)" --pyargs numpy
+	epytest --pyargs numpy
 }
 
 python_install_all() {
