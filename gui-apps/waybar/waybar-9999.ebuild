@@ -40,8 +40,8 @@ RDEPEND="
 	dev-libs/jsoncpp:=
 	dev-libs/libinput:=
 	dev-libs/libsigc++:2
-	>=dev-libs/libfmt-7.0.0:=
-	>=dev-libs/spdlog-1.8.5:=
+	>=dev-libs/libfmt-8.1.1:=
+	>=dev-libs/spdlog-1.10.0:=
 	dev-libs/date:=
 	dev-libs/wayland
 	gui-libs/wlroots:=
