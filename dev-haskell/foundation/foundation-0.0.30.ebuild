@@ -14,14 +14,14 @@ HOMEPAGE="https://github.com/haskell-foundation/foundation"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64"
 IUSE="experimental"
 
 RDEPEND=">=dev-lang/ghc-8.8.1:=
 "
 DEPEND="${RDEPEND}
+	~dev-haskell/basement-0.0.16
 	>=dev-haskell/cabal-3.0.0.0
-	test? ( dev-haskell/basement )
 "
 
 src_configure() {
