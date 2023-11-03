@@ -608,6 +608,8 @@ distutils_enable_tests() {
 	esac
 
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
+
+	local test_deps=${RDEPEND}
 	local test_pkg
 	case ${1} in
 		nose)
@@ -619,7 +621,12 @@ distutils_enable_tests() {
 		setup.py)
 			;;
 		unittest)
-			# dep handled below
+			# unittest-or-fail is needed in py<3.12
+			test_deps+="
+				$(python_gen_cond_dep '
+					dev-python/unittest-or-fail[${PYTHON_USEDEP}]
+				' 3.10 3.11)
+			"
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
@@ -628,7 +635,6 @@ distutils_enable_tests() {
 	_DISTUTILS_TEST_RUNNER=${1}
 	python_test() { distutils-r1_python_test; }
 
-	local test_deps=${RDEPEND}
 	if [[ -n ${test_pkg} ]]; then
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 			test_deps+=" ${test_pkg}[${PYTHON_USEDEP}]"
@@ -637,13 +643,6 @@ distutils_enable_tests() {
 				${test_pkg}[\${PYTHON_USEDEP}]
 			")"
 		fi
-	elif [[ ${1} == unittest ]]; then
-		# unittest-or-fail is needed in py<3.12
-		test_deps+="
-			$(python_gen_cond_dep '
-				dev-python/unittest-or-fail[${PYTHON_USEDEP}]
-			' 3.{9..11})
-		"
 	fi
 	if [[ -n ${test_deps} ]]; then
 		IUSE+=" test"
