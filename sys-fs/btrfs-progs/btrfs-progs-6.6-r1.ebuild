@@ -10,7 +10,9 @@ libbtrfs_soname=0
 
 if [[ ${PV} != 9999 ]]; then
 	MY_PV="v${PV/_/-}"
-	SRC_URI="https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${PN}-${MY_PV}.tar.xz"
+	# XXX: Drop .respun after 6.6
+	# https://lore.kernel.org/linux-btrfs/20231103201408.GN11264@twin.jikos.cz/T/#u
+	SRC_URI="https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${PN}-${MY_PV}.tar.xz -> ${PN}-${MY_PV}.respun.tar.xz"
 
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
