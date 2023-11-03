@@ -8,4 +8,13 @@
   <upstream>
     <remote-id type="github">asciidoctor/asciidoctor-diagram</remote-id>
   </upstream>
+  <use>
+    <flag name="barcode">Enable diagrams with <pkg>dev-ruby/rqrcode</pkg> and <pkg>dev-ruby/barby</pkg></flag>
+    <flag name="ditaa">Enable diagrams with <pkg>media-gfx/ditaa</pkg></flag>
+    <flag name="lilypond">Enable diagrams with <pkg>media-sound/lilypond</pkg></flag>
+    <flag name="meme">Enable diagrams with <pkg>media-gfx/imagemagick</pkg></flag>
+    <flag name="mscgen">Enable diagrams with <pkg>media-gfx/mscgen</pkg></flag>
+    <flag name="plantuml">Enable diagrams with <pkg>media-gfx/plantuml</pkg></flag>
+    <flag name="tikz">Enable diagrams with <pkg>dev-tex/pgf</pkg></flag>
+  </use>
 </pkgmetadata>
