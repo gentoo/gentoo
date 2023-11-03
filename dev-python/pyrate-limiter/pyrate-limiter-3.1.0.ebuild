@@ -26,7 +26,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)
 "
@@ -37,6 +36,7 @@ EPYTEST_DESELECT=(
 	# Python 3.11 is slightly faster, leading to a non-critical failure here
 	"tests/test_concurrency.py::test_concurrency[ProcessPoolExecutor-SQLiteBucket]"
 )
+EPYTEST_XDIST=1
 
 # TODO: package sphinx-copybutton
 # distutils_enable_sphinx docs \
@@ -66,8 +66,4 @@ src_test() {
 
 	# Clean up afterwards
 	kill "$(<"${redis_pid}")" || die
-}
-
-python_test() {
-	epytest -n "$(makeopts_jobs)" --dist=worksteal
 }
