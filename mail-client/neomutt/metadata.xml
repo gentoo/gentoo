@@ -10,6 +10,8 @@
 		<name>Marc Schiffbauer</name>
 	</maintainer>
 	<use>
+		<flag name="asan">Enable Address sanitizer for debugging</flag>
+		<flag name="ubsan">Enable undefined behavior sanitizer for debugging</flag>
 		<flag name="autocrypt">Enable autocrypt.org support</flag>
 		<flag name="berkdb">Enable BDB (Berkley DB) backend for header
 			caching</flag>
