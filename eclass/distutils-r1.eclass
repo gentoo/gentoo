@@ -610,13 +610,13 @@ distutils_enable_tests() {
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
 
 	local test_deps=${RDEPEND}
-	local test_pkg
+	local test_pkgs
 	case ${1} in
 		nose)
-			test_pkg=">=dev-python/nose-1.3.7_p20221026"
+			test_pkgs='>=dev-python/nose-1.3.7_p20221026[${PYTHON_USEDEP}]'
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-7.3.1"
+			test_pkgs='>=dev-python/pytest-7.3.1[${PYTHON_USEDEP}]'
 			;;
 		setup.py)
 			;;
@@ -635,12 +635,12 @@ distutils_enable_tests() {
 	_DISTUTILS_TEST_RUNNER=${1}
 	python_test() { distutils-r1_python_test; }
 
-	if [[ -n ${test_pkg} ]]; then
+	if [[ -n ${test_pkgs} ]]; then
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-			test_deps+=" ${test_pkg}[${PYTHON_USEDEP}]"
+			test_deps+=" ${test_pkgs//'${PYTHON_USEDEP}'/${PYTHON_USEDEP}}"
 		else
 			test_deps+=" $(python_gen_cond_dep "
-				${test_pkg}[\${PYTHON_USEDEP}]
+				${test_pkgs}
 			")"
 		fi
 	fi
