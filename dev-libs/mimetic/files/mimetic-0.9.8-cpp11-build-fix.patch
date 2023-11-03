@@ -1,0 +1,85 @@
+Bug: https://bugs.gentoo.org/895056
+--- a/mimetic/parser/itparser.h
++++ b/mimetic/parser/itparser.h
+@@ -234,7 +234,7 @@ protected:
+             sValue,
+             sIgnoreHeader
+         };
+-        register int status;
++        int status;
+         int pos;
+         char *name, *value;
+         size_t nBufSz, vBufSz, nPos, vPos;
+@@ -472,7 +472,7 @@ protected:
+     virtual void copy_until_boundary(ParsingElem pe)
+     {
+         size_t pos, lines, eomsz = 0;
+-        register char c;
++        char c;
+         enum { nlsz = 1 };
+         const char *eom = 0;
+ 
+--- a/mimetic/rfc822/header.h
++++ b/mimetic/rfc822/header.h
+@@ -34,7 +34,7 @@ class Rfc822Header: public std::deque<Field>
+ {
+ public:
+     struct find_by_name: 
+-        public std::unary_function<const Field, bool>
++        public std::function<bool(const Field)>
+     {
+         find_by_name(const std::string&);
+         bool operator()(const Field&) const;
+--- a/mimetic/tokenizer.h
++++ b/mimetic/tokenizer.h
+@@ -16,7 +16,7 @@ namespace mimetic
+ {
+ 
+ template<typename value_type>
+-struct IsDelim: public std::unary_function<value_type,bool>
++struct IsDelim: public std::function<bool( value_type )>
+ {
+     bool operator()(const value_type& val) const
+     {
+@@ -49,7 +49,7 @@ private:
+ };
+ 
+ template<>
+-struct IsDelim<char>: public std::unary_function<char, bool>
++struct IsDelim<char>: public std::function<bool(char)>
+ {
+     void setDelimList(const std::string& delims)
+     {
+--- a/test/cutee.cxx
++++ b/test/cutee.cxx
+@@ -343,11 +343,11 @@ struct GenMakefile
+ 
+         _( "" );
+         _( RUNTEST_NAME ".cxx: cutee" );
+-        _( "\t$(CUTEE) -m -o "RUNTEST_NAME".cxx" );
++        _( "\t$(CUTEE) -m -o " RUNTEST_NAME".cxx" );
+         _( "" );
+         _( RUNTEST_NAME": autocutee.mk " RUNTEST_NAME ".o $(object_files)");
+-        _( "\t$(CXX) $(CXXFLAGS) $(LDFLAGS) -o "RUNTEST_NAME" "RUNTEST_NAME".o $(object_files)");
+-        _( "\t./"RUNTEST_NAME );
++        _( "\t$(CXX) $(CXXFLAGS) $(LDFLAGS) -o " RUNTEST_NAME" " RUNTEST_NAME".o $(object_files)");
++        _( "\t./" RUNTEST_NAME );
+         _( "" );
+         _( "# cutee autogen: end ");
+     }
+@@ -410,12 +410,12 @@ struct GenAutomakefile
+ 
+         _( "" );
+         _( RUNTEST_NAME "-clean:");
+-        _( "\trm -f autocutee.mk cutee *.o *.cutee.cxx "RUNTEST_NAME" "RUNTEST_NAME".cxx");
++        _( "\trm -f autocutee.mk cutee *.o *.cutee.cxx " RUNTEST_NAME" " RUNTEST_NAME".cxx");
+         _( "\ttouch autocutee.mk");
+ 
+         _( "" );
+-        _( "EXTRA_PROGRAMS="RUNTEST_NAME );
+-        _( RUNTEST_NAME "_SOURCES="RUNTEST_NAME".cxx $(test_files) $(t_runners)");
++        _( "EXTRA_PROGRAMS=" RUNTEST_NAME );
++        _( RUNTEST_NAME "_SOURCES=" RUNTEST_NAME".cxx $(test_files) $(t_runners)");
+         _( RUNTEST_NAME"_DEPENDENCIES=cutee autocutee.mk" );
+         _( "# cutee autogen: end ");
+     }
