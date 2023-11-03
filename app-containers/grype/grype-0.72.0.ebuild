@@ -24,8 +24,9 @@ src_compile() {
 		-X github.com/anchore/grype/internal/version.version=${PV}
 		-X github.com/anchore/grype/internal/version.syftVersion=${SYFT_VERSION}
 		-X github.com/anchore/grype/internal/version.gitCommit=${GIT_COMMIT}
-			-X github.com/anchore/grype/internal/version.buildDate=${BUILD_DATE}
-			-X github.com/anchore/grype/internal/version.gitDescription=v${PV}"
+		-X github.com/anchore/grype/internal/version.buildDate=${BUILD_DATE}
+		-X github.com/anchore/grype/internal/version.gitDescription=v${PV}
+		" ./cmd/grype
 }
 
 src_install() {
