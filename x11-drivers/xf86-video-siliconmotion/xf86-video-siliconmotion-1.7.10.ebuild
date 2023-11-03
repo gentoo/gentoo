@@ -8,4 +8,4 @@ inherit xorg-3
 
 DESCRIPTION="Silicon Motion video driver"
 
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="~amd64 ~mips x86"
