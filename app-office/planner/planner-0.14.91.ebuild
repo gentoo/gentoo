@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
 	SRC_URI=""
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 SLOT="0"
