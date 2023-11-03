@@ -1307,6 +1307,19 @@ _python_check_occluded_packages() {
 # parameter, when calling epytest.  The listed files will be entirely
 # skipped from test collection.
 
+# @ECLASS_VARIABLE: EPYTEST_XDIST
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, enables running tests in parallel
+# via pytest-xdist plugin.
+
+# @ECLASS_VARIABLE: EPYTEST_JOBS
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Specifies the number of jobs for parallel (pytest-xdist) test runs.
+# When unset, defaults to -j from MAKEOPTS, or the current nproc.
+
 # @FUNCTION: epytest
 # @USAGE: [<args>...]
 # @DESCRIPTION:
@@ -1371,6 +1384,22 @@ epytest() {
 		-p no:plus
 		-p no:tavern
 	)
+
+	if [[ ${EPYTEST_XDIST} ]]; then
+		local jobs=${EPYTEST_JOBS:-$(makeopts_jobs)}
+		if [[ ${jobs} -gt 1 ]]; then
+			args+=(
+				# explicitly enable the plugin, in case the ebuild was using
+				# PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+				-p xdist
+				-n "${jobs}"
+				# worksteal ensures that workers don't end up idle when heavy
+				# jobs are unevenly distributed
+				--dist=worksteal
+			)
+		fi
+	fi
+
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
 		args+=( --deselect "${x}" )
