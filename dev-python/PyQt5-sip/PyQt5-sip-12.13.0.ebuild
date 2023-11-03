@@ -15,4 +15,4 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/sip/"
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
