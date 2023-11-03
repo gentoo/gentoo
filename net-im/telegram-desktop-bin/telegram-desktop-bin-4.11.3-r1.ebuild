@@ -41,7 +41,7 @@ src_prepare() {
 src_install() {
 	newbin Telegram telegram-desktop
 
-	insinto /etc/tdesktop
+	insinto /usr/share/TelegramDesktop/externalupdater.d/
 	newins - externalupdater <<<"${EPREFIX}/usr/bin/telegram-desktop"
 
 	local icon_size
