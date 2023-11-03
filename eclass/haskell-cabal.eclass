@@ -370,6 +370,7 @@ cabal-bootstrap() {
 	# See: <https://gitlab.haskell.org/ghc/ghc/-/wikis/commentary/libraries/version-history>
 	local default_exposed_pkgs="
 		Cabal
+		array
 		base
 		binary
 		bytestring
