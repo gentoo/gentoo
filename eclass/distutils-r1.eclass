@@ -617,6 +617,9 @@ distutils_enable_tests() {
 			;;
 		pytest)
 			test_pkgs='>=dev-python/pytest-7.3.1[${PYTHON_USEDEP}]'
+			if [[ ${EPYTEST_XDIST} ]]; then
+				test_pkgs+=' dev-python/pytest-xdist[${PYTHON_USEDEP}]'
+			fi
 			;;
 		setup.py)
 			;;

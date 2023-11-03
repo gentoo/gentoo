@@ -1311,7 +1311,9 @@ _python_check_occluded_packages() {
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-empty value, enables running tests in parallel
-# via pytest-xdist plugin.
+# via pytest-xdist plugin.  If this variable is set prior to calling
+# distutils_enable_tests in distutils-r1, a test dependency
+# on dev-python/pytest-xdist is added automatically.
 
 # @VARIABLE: EPYTEST_JOBS
 # @USER_VARIABLE
