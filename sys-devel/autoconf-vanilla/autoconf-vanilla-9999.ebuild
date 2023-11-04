@@ -47,6 +47,8 @@ RDEPEND="
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
+TC_AUTOCONF_ENVPREFIX=07
+
 src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
 		# Avoid the "dirty" suffix in the git version by generating it

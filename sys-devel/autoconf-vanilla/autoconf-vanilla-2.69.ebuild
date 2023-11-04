@@ -51,6 +51,8 @@ PATCHES=(
 	"${WORKDIR}"/patches/${MY_P}-texinfo.patch
 )
 
+TC_AUTOCONF_ENVPREFIX=07
+
 src_prepare() {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -65,4 +67,13 @@ src_prepare() {
 	# Restore timestamp to avoid makeinfo call
 	# We already have an up to date autoconf.info page at this point.
 	touch -r doc/{old_,}autoconf.texi || die
+
+	# This version uses recursive makefiles.  As this code is dead by
+	# now, and this 'fix' is getting hacked in from the future back into
+	# the past, I doubt that the sins committed below will have a wide
+	# impact.  Don't copy this code.
+	find . \
+		 -name Makefile.in \
+		 -execdir sed -i '/^pkgdatadir/s/@PACKAGE@/&-vanilla/g' {} + \
+		 || die
 }

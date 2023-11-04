@@ -53,6 +53,6 @@ src_configure() {
 	toolchain-autoconf_src_configure \
 		--exec-prefix="${EPREFIX}"/usr \
 		--bindir="${EPREFIX}"/usr/bin \
-		--datadir="${EPREFIX}"/usr/share/${MY_P} \
+		--datadir="${EPREFIX}"/usr/share/"${P}" \
 		--infodir="${TC_AUTOCONF_INFOPATH}"
 }

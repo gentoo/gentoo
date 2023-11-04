@@ -47,6 +47,10 @@ RDEPEND="
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
+PATCHES=(
+	"${FILESDIR}"/"${MY_P}"-conflicts.patch
+)
+
 src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
 		# Avoid the "dirty" suffix in the git version by generating it

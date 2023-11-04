@@ -45,7 +45,10 @@ PATCHES=(
 	"${FILESDIR}"/${MY_P}-AC_LANG_CALL_C_cxx.patch
 	"${FILESDIR}"/${MY_P}-time.patch
 	"${FILESDIR}"/${MY_P}-make-4.4.patch
+	"${FILESDIR}"/"${MY_P}"-conflicts.patch
 )
+
+TC_AUTOCONF_ENVPREFIX=07
 
 src_prepare() {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
