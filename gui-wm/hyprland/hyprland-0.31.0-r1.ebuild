@@ -79,7 +79,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/hyprland-0.30.0-no-wlroots-automagic-r1.patch"
 	"${FILESDIR}/hyprland-0.31.0-fix-log-headers.patch"
 )
 
@@ -110,8 +109,11 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature legacy-renderer legacy_renderer)
-		$(meson_feature X xwayland)
 		$(meson_feature systemd)
+		$(meson_feature X xwayland)
+		$(meson_feature X wlroots:xwayland)
+		-Dwlroots:backends=drm,libinput$(usev X ',x11')
+		-Dwlroots:xcb-errors=disabled
 	)
 
 	meson_src_configure
