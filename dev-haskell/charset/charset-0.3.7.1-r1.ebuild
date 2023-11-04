@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/semigroups-0.8.3.1:=[profile?] <dev-haskell/semigroups-1:=[profile?]
 	>=dev-haskell/unordered-containers-0.1.4.6:=[profile?] <dev-haskell/unordered-containers-0.3:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:= <dev-lang/ghc-9.1:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6
