@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -28,3 +28,11 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# fix tests on py3.12
+	# https://github.com/twisted/tubes/pull/95
+	sed -i -e 's:assertEquals:assertEqual:' tubes/test/*.py || die
+
+	distutils-r1_src_prepare
+}
