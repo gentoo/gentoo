@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -28,6 +28,13 @@ distutils_enable_tests unittest
 PATCHES=(
 	"${FILESDIR}/yappi-1.2.5-warnings.patch"
 )
+
+src_prepare() {
+	# using new API makes sense for versions newer than 3.11 too, sigh...
+	# https://github.com/sumerc/yappi/pull/148
+	sed -i -e 's:== 11:>= 11:' yappi/_yappi.c || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	local -x PYTHONPATH=tests
