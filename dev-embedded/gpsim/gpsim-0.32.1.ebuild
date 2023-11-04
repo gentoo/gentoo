@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="A simulator for the Microchip PIC microcontrollers"
 HOMEPAGE="https://gpsim.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -25,15 +23,9 @@ BDEPEND="
 	virtual/pkgconfig
 	app-alternatives/yacc
 "
-DOCS=( ANNOUNCE AUTHORS ChangeLog HISTORY PROCESSORS README README.MODULES TODO )
-
-src_prepare() {
-	default
-
-	# empty directory that causes build failure
-	sed -e '/^SUBDIRS/d' -i doc/Makefile.am
-	eautoreconf
-}
+DOCS=( ANNOUNCE AUTHORS ChangeLog HISTORY PROCESSORS README README.MODULES \
+	TODO doc/gpsim.pdf )
+HTML_DOCS=( doc/gpsim.html.LyXconv/gpsim.html )
 
 src_configure() {
 	local myeconfargs=(
@@ -45,6 +37,5 @@ src_configure() {
 
 src_install() {
 	default
-	dodoc doc/gpsim.pdf
 	find "${ED}" -name '*.la' -delete || die
 }
