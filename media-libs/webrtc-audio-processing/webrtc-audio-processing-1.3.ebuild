@@ -14,7 +14,7 @@ SLOT="1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="cpu_flags_arm_neon"
 
-RDEPEND="dev-cpp/abseil-cpp:="
+RDEPEND="dev-cpp/abseil-cpp:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
