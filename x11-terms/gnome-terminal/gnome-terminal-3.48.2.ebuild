@@ -8,7 +8,7 @@ inherit gnome.org gnome2-utils meson python-any-r1 readme.gentoo-r1 xdg
 DESCRIPTION="A terminal emulator for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal"
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3+ GPL-3 CC-BY-SA-3.0 FDL-1.3"
 SLOT="0"
 IUSE="debug +gnome-shell +nautilus vanilla"
 
