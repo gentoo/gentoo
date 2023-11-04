@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Mart Raudsepp <leio@gentoo.org> (2023-10-05)
+# Orc optimisations are supported on arm64 NEON since 0.4.33
+-orc
+
 # Mart Raudsepp <leio@gentoo.org> (2023-10-03)
 # dev-util/sysprof-capture is keyworded on arm64
 -sysprof
