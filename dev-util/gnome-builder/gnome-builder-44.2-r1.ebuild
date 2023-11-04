@@ -135,6 +135,13 @@ pkg_setup() {
 	use clang && llvm_pkg_setup
 }
 
+src_prepare() {
+	default
+
+	# Fails with clang due to `environ` variable name shadowing unistd.h one
+	sed -i -e '/-Werror=shadow/d' meson.build || die
+}
+
 src_configure() {
 	local emesonargs=(
 		-Dchannel=other
