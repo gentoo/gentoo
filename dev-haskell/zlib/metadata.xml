@@ -12,4 +12,8 @@ For windows, this is the default.</flag>
 prevents other Haskell threads running. Enabling this flag
 avoids this unfairness, but with greater overall cost.</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">zlib</remote-id>
+		<remote-id type="github">haskell/zlib</remote-id>
+	</upstream>
 </pkgmetadata>
