@@ -245,10 +245,6 @@ dotnet-pkg-base_setup() {
 	# and not rely upon this environment variable.
 	unset DOTNET_ROOT
 
-	# Unset .NET and NuGet directories.
-	unset DOTNET_DATA
-	unset NUGET_DATA
-
 	DOTNET_PKG_RUNTIME="$(dotnet-pkg-base_get-runtime)"
 	DOTNET_PKG_CONFIGURATION="$(dotnet-pkg-base_get-configuration)"
 	DOTNET_PKG_OUTPUT="$(dotnet-pkg-base_get-output "${P}")"
