@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/intel/gmmlib"
 SRC_URI="https://github.com/intel/gmmlib/archive/intel-${P}.tar.gz"
 S="${WORKDIR}/${PN}-intel-${P}"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 LICENSE="MIT"
 SLOT="0/12.3"
 IUSE="+custom-cflags test"
