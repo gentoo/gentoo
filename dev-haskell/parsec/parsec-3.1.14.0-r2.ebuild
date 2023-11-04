@@ -23,6 +23,10 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 RESTRICT=test # circular dependencies: dev-haskell/base-orphans->cabal->parsec[test]->test-framework-hunit->test-framework->base-orphans
 
+CABAL_CHDEPS=(
+	'base       >= 4.5.0   && < 4.16' 'base >= 4.5.0'
+)
+
 RDEPEND="
 	>=dev-lang/ghc-8.10.6:=
 "
