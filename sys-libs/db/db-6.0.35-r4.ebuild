@@ -104,6 +104,12 @@ src_prepare() {
 		-i "${S_BASE}"/test/tcl/reputils.tcl || die
 }
 
+src_configure() {
+	# Force bfd before calling multilib_toolchain_setup
+	tc-ld-force-bfd #470634 #729510
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	local myconf=(
 		--enable-compat185
@@ -120,8 +126,6 @@ multilib_src_configure() {
 		$(use_enable cxx stl)
 		$(use_enable test)
 	)
-
-	tc-ld-force-bfd #470634 #729510
 
 	# compilation with -O0 fails on amd64, see bug #171231
 	if [[ ${ABI} == amd64 ]]; then
