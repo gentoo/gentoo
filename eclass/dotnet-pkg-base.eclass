@@ -44,6 +44,7 @@ inherit edo multiprocessing nuget
 # should be picked by the maintainer.
 
 # @ECLASS_VARIABLE: DOTNET_PKG_RDEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Populated with important dependencies on .NET ecosystem packages for running
 # .NET packages.
@@ -52,6 +53,7 @@ inherit edo multiprocessing nuget
 DOTNET_PKG_RDEPS=""
 
 # @ECLASS_VARIABLE: DOTNET_PKG_BDEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Populated with important dependencies on .NET ecosystem packages for building
 # .NET packages.
@@ -98,6 +100,7 @@ export UseSharedCompilation=false
 
 # @ECLASS_VARIABLE: DOTNET_PKG_RUNTIME
 # @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Sets the runtime used to build a package.
 #
@@ -105,6 +108,7 @@ export UseSharedCompilation=false
 
 # @ECLASS_VARIABLE: DOTNET_PKG_EXECUTABLE
 # @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Sets path of a "dotnet" executable.
 #
@@ -112,6 +116,7 @@ export UseSharedCompilation=false
 
 # @ECLASS_VARIABLE: DOTNET_PKG_CONFIGURATION
 # @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Configuration value passed to "dotnet" in the compile phase.
 # Is either Debug or Release, depending on the "debug" USE flag.
@@ -120,6 +125,7 @@ export UseSharedCompilation=false
 
 # @ECLASS_VARIABLE: DOTNET_PKG_OUTPUT
 # @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Path of the output directory, where the package artifacts are placed during
 # the building of packages with "dotnet-pkg-base_build" function.
