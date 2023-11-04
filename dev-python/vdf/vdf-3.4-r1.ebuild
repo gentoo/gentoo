@@ -4,13 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="A module for (de)serialization to and from VDF, Valve's key-value text format"
-HOMEPAGE="https://github.com/ValvePython/vdf"
-SRC_URI="https://codeload.github.com/ValvePython/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/ValvePython/vdf/
+	https://pypi.org/project/vdf/
+"
+SRC_URI="
+	https://github.com/ValvePython/vdf/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
