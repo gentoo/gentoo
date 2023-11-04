@@ -31,6 +31,21 @@ IUSE="lua52compat static-libs"
 
 S="${WORKDIR}/LuaJIT-${GIT_COMMIT}"
 
+src_configure() {
+	tc-export_build_env
+
+	# You need to use a 32-bit toolchain to build for a 32-bit architecture.
+	# Some 64-bit toolchains (like amd64 and ppc64) usually have multilib
+	# enabled, allowing you to build in 32-bit with -m32. This won't work in all
+	# cases, but it will otherwise just break, so it's worth trying anyway. If
+	# you're trying to build for 64-bit from 32-bit, then you're screwed, sorry.
+	# See https://github.com/LuaJIT/LuaJIT/issues/664 for the upstream issue.
+	if tc-is-cross-compiler && [[ $(tc-get-build-ptr-size) != 4 && $(tc-get-ptr-size) == 4 ]]; then
+		BUILD_CFLAGS+=" -m32"
+		BUILD_LDFLAGS+=" -m32"
+	fi
+}
+
 _emake() {
 	emake \
 		Q= \
@@ -55,7 +70,6 @@ _emake() {
 }
 
 src_compile() {
-	tc-export_build_env
 	_emake XCFLAGS="$(usex lua52compat "-DLUAJIT_ENABLE_LUA52COMPAT" "")"
 }
 
