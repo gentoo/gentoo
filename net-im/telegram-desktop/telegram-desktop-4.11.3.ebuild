@@ -25,7 +25,7 @@ REQUIRED_USE="
 KIMAGEFORMATS_RDEPEND="
 	media-libs/libavif:=
 	media-libs/libheif:=
-	media-libs/libjxl
+	>=media-libs/libjxl-0.8.0
 "
 CDEPEND="
 	!net-im/telegram-desktop-bin
@@ -125,9 +125,7 @@ src_prepare() {
 			'Q_IMPORT_PLUGIN(QJpegXLPlugin)' \
 			>> cmake/external/qt/qt_static_plugins/qt_static_plugins.cpp || die
 	fi
-
-	# kde-frameworks/kcoreaddons is bundled when using qt6,
-	#   see src_configure.
+	# kde-frameworks/kcoreaddons is bundled when using qt6.
 
 	# Happily fail if libraries aren't found...
 	find -type f \( -name 'CMakeLists.txt' -o -name '*.cmake' \) \
