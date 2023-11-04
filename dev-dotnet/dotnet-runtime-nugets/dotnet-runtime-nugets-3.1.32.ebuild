@@ -51,6 +51,11 @@ src_install() {
 	)
 	local nuget_namespace
 	for nuget_namespace in "${nuget_namespaces[@]}" ; do
+		if use arm && use elibc_musl ; then
+			# Well... those do not exist for net3.1.
+			continue
+		fi
+
 		nuget_donuget "${DISTDIR}/${nuget_namespace}.${runtime}.${PV}.nupkg"
 	done
 }
