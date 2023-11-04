@@ -4,15 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="An easy way to access Twitter data with Python"
-HOMEPAGE="https://github.com/ryanmcgrath/twython"
+HOMEPAGE="
+	https://github.com/ryanmcgrath/twython/
+	https://pypi.org/project/twython/
+"
 SRC_URI="
 	https://github.com/ryanmcgrath/twython/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+		-> ${P}.gh.tar.gz
+"
 
 SLOT="0"
 LICENSE="MIT"
