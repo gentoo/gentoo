@@ -12,7 +12,7 @@ S="${WORKDIR}"/HTTPing-${PV}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="debug fftw l10n_nl ncurses ssl +tfo"
 
 RDEPEND="
