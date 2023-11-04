@@ -32,6 +32,13 @@ _TOOLCHAIN_AUTOCONF_ECLASS=1
 # Where to install info files if not slotting.
 TC_AUTOCONF_INFOPATH="${EPREFIX}/usr/share/${P}/info"
 
+# @ECLASS_VARIABLE: TC_AUTOCONF_ENVPREFIX
+# @DESCRIPTION:
+# Prefix number for env.d files produced by this eclass.  Defaults to
+# 06.  Note that the generated env.d filename format is
+# "${TC_AUTOCONF_ENVPREFIX}${PN}$((99999-(major*1000+minor)))"
+: "${TC_AUTOCONF_ENVPREFIX:=06}"
+
 toolchain-autoconf_src_prepare() {
 	find -name Makefile.in -exec sed -i '/^pkgdatadir/s:$:-@VERSION@:' {} + || die
 	default
@@ -98,7 +105,7 @@ toolchain-autoconf_src_install() {
 		local major="$(ver_cut 1)"
 		local minor="$(ver_cut 2)"
 		local idx="$((99999-(major*1000+minor)))"
-		newenvd - "06autoconf${idx}" <<-EOF
+		newenvd - "${TC_AUTOCONF_ENVPREFIX}${PN}${idx}" <<-EOF
 		INFOPATH="${TC_AUTOCONF_INFOPATH}"
 		EOF
 
