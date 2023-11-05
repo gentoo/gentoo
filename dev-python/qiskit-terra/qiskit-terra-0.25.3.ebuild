@@ -141,7 +141,7 @@ BDEPEND="
 		>=dev-python/hypothesis-4.24.3[${PYTHON_USEDEP}]
 		>=dev-python/networkx-2.2[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		dev-python/qiskit-aer[${PYTHON_USEDEP}]
+		<dev-python/qiskit-aer-0.13[${PYTHON_USEDEP}]
 		>=sci-libs/scikit-learn-0.20.0[${PYTHON_USEDEP}]
 	)
 "
