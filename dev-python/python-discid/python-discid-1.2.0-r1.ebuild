@@ -4,20 +4,35 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for libdiscid"
-HOMEPAGE="https://github.com/JonnyJD/python-discid"
-SRC_URI="https://github.com/JonnyJD/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://python-discid.readthedocs.io/en/latest/
+	https://github.com/JonnyJD/python-discid/
+	https://pypi.org/project/discid/
+"
+SRC_URI="
+	https://github.com/JonnyJD/python-discid/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc x86"
 
-RDEPEND=">=media-libs/libdiscid-0.2.2"
-DEPEND="${RDEPEND}"
+DEPEND="
+	>=media-libs/libdiscid-0.2.2
+"
+RDEPEND="
+	${DEPEND}
+"
 
 distutils_enable_sphinx doc
-distutils_enable_tests setup.py
+
+python_test() {
+	"${EPYTHON}" -m unittest -v test_discid.TestModule{Private,} ||
+		die "Tests failed with ${EPYTHON}"
+}
