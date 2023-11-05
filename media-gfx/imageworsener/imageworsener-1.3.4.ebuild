@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ MY_P=${PN}-src-${PV}
 MY_PN=imagew
 
 DESCRIPTION="Utility for image scaling and processing"
-HOMEPAGE="http://entropymine.com/imageworsener/"
-SRC_URI="http://entropymine.com/${PN}/${P}.tar.gz"
+HOMEPAGE="https://entropymine.com/imageworsener/"
+SRC_URI="https://entropymine.com/${PN}/${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0/3"  # because of libimageworsener.so.3.*.*
