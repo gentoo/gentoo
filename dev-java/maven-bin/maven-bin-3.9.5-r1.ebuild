@@ -48,7 +48,7 @@ src_install() {
 	dodoc NOTICE README.txt
 
 	dodir /usr/bin
-	dosym "${MAVEN_SHARE}/bin/mvn" /usr/bin/mvn-${SLOT}
+	dosym "${MAVEN_SHARE}/bin/mvn" "${EPREFIX}/usr/bin/mvn-${SLOT}"
 
 	# See bug #342901.
 	echo "CONFIG_PROTECT=\"${MAVEN_SHARE}/conf\"" > "${T}/25${MAVEN}" || die
