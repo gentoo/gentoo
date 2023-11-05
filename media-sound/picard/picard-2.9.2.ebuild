@@ -36,7 +36,7 @@ RDEPEND="
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		media-libs/mutagen[${PYTHON_USEDEP}]
-		discid? ( dev-python/python-discid[${PYTHON_USEDEP}] )
+		discid? ( dev-python/discid[${PYTHON_USEDEP}] )
 	')
 	fingerprints? ( media-libs/chromaprint[tools] )
 "
