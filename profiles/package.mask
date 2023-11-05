@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-11-05)
+# Discontinued in favor of built-in support in setuptools-scm-7.
+# No revdeps left.
+# Removal on 2023-12-05.  Bug #916904.
+dev-python/setuptools_scm_git_archive
+
 # Mart Raudsepp <leio@gentoo.org> (2023-11-04)
 # gst-transcoder was merged into gst-plugins-bad and can be installed via
 # media-libs/gst-plugins-bad instead. Removal on 2023-12-04. Bug #916871.
