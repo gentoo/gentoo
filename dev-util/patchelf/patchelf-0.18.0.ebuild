@@ -14,6 +14,7 @@ LICENSE="GPL-3"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-glibc-dt-mips-xhash.patch
+	"${FILESDIR}"/${PN}-0.18.0-alpha.patch
 )
 
 src_prepare() {
