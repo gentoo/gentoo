@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-11-05)
+# Discontinued upstream.  Fails tests with modern pytest.
+# No revdeps left.
+# Removal on 2023-12-05.  Bug #906834.
+dev-python/pytest-subtesthack
+
+# Michał Górny <mgorny@gentoo.org> (2023-11-05)
 # Discontinued in favor of built-in support in setuptools-scm-7.
 # No revdeps left.
 # Removal on 2023-12-05.  Bug #916904.
