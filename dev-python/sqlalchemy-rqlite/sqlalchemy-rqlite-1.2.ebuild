@@ -4,13 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="A SQLAlchemy dialect for rqlite"
-HOMEPAGE="https://github.com/rqlite/sqlalchemy-rqlite"
-SRC_URI="https://github.com/rqlite/sqlalchemy-rqlite/archive//v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/rqlite/sqlalchemy-rqlite/
+	https://pypi.org/project/sqlalchemy-rqlite/
+"
+SRC_URI="
+	https://github.com/rqlite/sqlalchemy-rqlite/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
