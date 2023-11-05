@@ -37,6 +37,8 @@ RDEPEND="${BDEPEND}
 	dev-python/pillow[jpeg,${PYTHON_USEDEP}]
 	dev-python/cloudpickle[${PYTHON_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${P}-yapsy.patch )
+
 python_compile_all() {
 	nikola tabcompletion --shell=bash > ${PN}.bashcomp || die
 	nikola tabcompletion --shell=zsh > ${PN}.zshcomp || die
