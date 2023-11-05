@@ -6,6 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
+    <flag name="gjs">Enable GJS support</flag>
     <flag name="glade">Install the glade catalog</flag>
     <flag name="python">Build support for loading <pkg>dev-lang/python</pkg> plugins</flag>
   </use>
