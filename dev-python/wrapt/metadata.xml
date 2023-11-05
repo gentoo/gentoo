@@ -9,4 +9,10 @@
 		<remote-id type="github">GrahamDumpleton/wrapt</remote-id>
 		<remote-id type="pypi">wrapt</remote-id>
 	</upstream>
+	<use>
+		<flag name="native-extensions">
+			Compiles native C extensions (speedups, instead of using python
+			fallback code).
+		</flag>
+	</use>
 </pkgmetadata>
