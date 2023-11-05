@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="sqlite,ssl"
 
-inherit edo toolchain-funcs python-single-r1 qmake-utils verify-sig xdg-utils
+inherit edo toolchain-funcs python-single-r1 qmake-utils verify-sig xdg
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
@@ -240,16 +240,4 @@ src_install() {
 
 	newinitd "${FILESDIR}"/calibre-server-3.init calibre-server
 	newconfd "${FILESDIR}"/calibre-server-3.conf calibre-server
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }
