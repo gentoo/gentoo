@@ -16,6 +16,10 @@ LICENSE="BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
+CABAL_CHDEPS=(
+	'base                  >=4.5      && <4.16' 'base >=4.5'
+)
+
 RDEPEND=">=dev-haskell/indexed-traversable-0.1:=[profile?] <dev-haskell/indexed-traversable-0.2:=[profile?]
 	>=dev-haskell/tagged-0.8.6:=[profile?] <dev-haskell/tagged-0.9:=[profile?]
 	>=dev-haskell/unordered-containers-0.2.8.0:=[profile?] <dev-haskell/unordered-containers-0.3:=[profile?]
