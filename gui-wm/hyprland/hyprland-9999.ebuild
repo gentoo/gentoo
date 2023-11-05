@@ -9,8 +9,7 @@ DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its l
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
 
 inherit git-r3
-SRC_URI="https://github.com/hyprwm/hyprland.git"
-S="${WORKDIR}/hyprland"
+EGIT_REPO_URI="https://github.com/hyprwm/hyprland.git"
 
 KEYWORDS="~amd64"
 LICENSE="BSD"
