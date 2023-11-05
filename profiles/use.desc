@@ -212,6 +212,7 @@ musicbrainz - Lookup audio metadata using MusicBrainz community service (musicbr
 mysql - Add mySQL Database support
 mysqli - Add support for the improved mySQL libraries
 nas - Add support for network audio sound
+native-extensions - Build native (e.g. C, Rust) extensions in addition to pure (e.g. Python) code (usually speedups)
 ncurses - Add ncurses support (console display library)
 neXt - Enable neXt toolkit
 netcdf - Enable NetCDF data format support
