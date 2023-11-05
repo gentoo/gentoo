@@ -34,6 +34,7 @@ BDEPEND="
 	>=dev-python/cython-0.29.34[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-vcs/git
 	)
 "
 
