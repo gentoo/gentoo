@@ -20,16 +20,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	<dev-python/click-9[${PYTHON_USEDEP}]
 	>=dev-python/click-5.0[${PYTHON_USEDEP}]
-	<dev-python/click-log-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/click-log-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-toolbelt-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/atomicwrites-0.1.7[${PYTHON_USEDEP}]
-	<dev-python/aiohttp-4[${PYTHON_USEDEP}]
 	>=dev-python/aiohttp-3.8.0[${PYTHON_USEDEP}]
-	<dev-python/aiostream-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/aiostream-0.4.3[${PYTHON_USEDEP}]
 	dev-python/aiohttp-oauthlib[${PYTHON_USEDEP}]
 "
@@ -47,6 +43,12 @@ BDEPEND="
 DOCS=( AUTHORS.rst CHANGELOG.rst CONTRIBUTING.rst README.rst config.example )
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# unpin deps
+	sed -i -e 's:, *<[0-9.]*::' setup.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	# skip tests needing servers running
