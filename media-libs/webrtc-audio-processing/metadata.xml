@@ -5,4 +5,7 @@
 		<email>leio@gentoo.org</email>
 		<name>Mart Raudsepp</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">pulseaudio/webrtc-audio-processing</remote-id>
+	</upstream>
 </pkgmetadata>
