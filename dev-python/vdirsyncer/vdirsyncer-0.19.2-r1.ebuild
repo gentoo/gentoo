@@ -31,6 +31,7 @@ RDEPEND="
 	>=dev-python/aiohttp-3.8.0[${PYTHON_USEDEP}]
 	<dev-python/aiostream-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/aiostream-0.4.3[${PYTHON_USEDEP}]
+	dev-python/aiohttp-oauthlib[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
