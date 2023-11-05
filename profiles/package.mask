@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-11-05)
+# Mask broken versions:
+# - sys-fs/btrfs-progs-6.6(-r0) was respun upstream.
+# - sys-fs/btrfs-progs-6.6-r1 had the fixed tarball, but contained an upstream
+# bug in the ioctl numbers.
+# Please use sys-fs/btrfs-progs-6.6-r2 or, better, sys-fs/btrfs-progs-6.6.1
+# (identical in functional contents).
+=sys-fs/btrfs-progs-6.6
+=sys-fs/btrfs-progs-6.6-r1
+=sys-fs/btrfs-progs-6.6-r2
+
 # Michał Górny <mgorny@gentoo.org> (2023-11-05)
 # Discontinued upstream.  Fails tests with modern pytest.
 # No revdeps left.
