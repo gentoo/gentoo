@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# py3.12 blocked by nodeenv
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
