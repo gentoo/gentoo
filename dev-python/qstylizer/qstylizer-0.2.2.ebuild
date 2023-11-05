@@ -3,13 +3,20 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
 DESCRIPTION="Stylesheet Generator for PyQt5/PySide2"
-HOMEPAGE="https://github.com/blambright/qstylizer"
-SRC_URI="https://github.com/blambright/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/blambright/qstylizer/
+	https://pypi.org/project/qstylizer/
+"
+SRC_URI="
+	https://github.com/blambright/qstylizer/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -32,7 +39,9 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx doc dev-python/sphinx-rtd-theme dev-python/sphinxcontrib-autoprogram
+distutils_enable_sphinx doc \
+	dev-python/sphinx-rtd-theme \
+	dev-python/sphinxcontrib-autoprogram
 
 python_prepare_all() {
 	# Exception: Versioning for this project requires either an sdist tarball, or access to an
@@ -47,6 +56,11 @@ python_prepare_all() {
 	git add . || die
 	git commit -m "init" || die
 	git tag -a "${PV}" -m "${PV}" || die
+
+	# fix test
+	# https://github.com/blambright/qstylizer/pull/17
+	sed -e 's:[.]called_once_with:.assert_called_once_with:' \
+		-i test/unit/test_style.py || die
 
 	distutils-r1_python_prepare_all
 }
