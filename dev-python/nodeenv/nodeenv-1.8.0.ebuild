@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -22,13 +22,17 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 x86"
 
-# requires network access
-RESTRICT="test"
-PROPERTIES="test_network"
-
 # See https://github.com/ekalinin/nodeenv/issues/333 for which.
 RDEPEND="
 	sys-apps/which
+"
+# Coverage is genuinely required for tests.
+# tests/nodeenv_test.py::test_smoke
+# tests/nodeenv_test.py::test_smoke_n_system_special_chars
+BDEPEND="
+	test? (
+		dev-python/coverage[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
