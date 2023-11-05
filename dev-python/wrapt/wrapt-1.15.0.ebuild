@@ -26,6 +26,13 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
+src_prepare() {
+	# pypy3.9+ change, upstream commented this out
+	# in 59680c8bb998defa3be522fef6e49fd276bebe58
+	sed -i -e 's:if is_pypy:if False:' tests/test_object_proxy.py || die
+	distutils-r1_src_prepare
+}
+
 python_compile() {
 	local -x WRAPT_INSTALL_EXTENSIONS=true
 	distutils-r1_python_compile
