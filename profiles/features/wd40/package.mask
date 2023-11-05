@@ -19,6 +19,7 @@ dev-lang/rust
 dev-lang/rust-bin
 >=dev-lang/spidermonkey-78
 >=dev-libs/gjs-1.66
+dev-python/aiohttp-oauthlib
 dev-python/autobahn
 dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
