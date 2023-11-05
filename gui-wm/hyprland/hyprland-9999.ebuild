@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/hyprwm/Hyprland"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/hyprwm/hyprland.git"
 
-KEYWORDS="~amd64"
+KEYWORDS=""
 LICENSE="BSD"
 SLOT="0"
 IUSE="X legacy-renderer systemd video_cards_nvidia"
