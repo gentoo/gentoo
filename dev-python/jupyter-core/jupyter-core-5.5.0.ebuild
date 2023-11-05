@@ -26,6 +26,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/ipython-4.0.1[${PYTHON_USEDEP}]
+		dev-python/pip[${PYTHON_USEDEP}]
 	)
 "
 
