@@ -1,0 +1,317 @@
+From 8ac4da628ff241145addb23376572d7ac13904f0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 3 Nov 2023 15:51:09 +0100
+Subject: [PATCH 1/3] build(cmake): Set CMAKE_COMPILE_WARNING_AS_ERROR only for
+ ZEAL_RELEASE_BUILD=OFF
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6a31c6..dc7ffc5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,6 +45,10 @@ if(NOT ZEAL_RELEASE_BUILD)
+     else()
+         set(ZEAL_VERSION_SUFFIX "-dev")
+     endif()
++
++    if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.24.0")
++        set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
++    endif()
+ endif()
+ 
+ set(ZEAL_VERSION_FULL "${Zeal_VERSION}${ZEAL_VERSION_SUFFIX}")
+@@ -59,9 +63,5 @@ add_custom_target(zeal_version
+     VERBATIM
+ )
+ 
+-if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.24.0")
+-    set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+-endif()
+-
+ add_subdirectory(assets)
+ add_subdirectory(src)
+-- 
+2.42.0
+
+
+From 5a2eb812a822269e836c05322de3658911ce3ba3 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 3 Nov 2023 16:01:49 +0100
+Subject: [PATCH 2/3] cmake: Import QtVersionOption.cmake from ECM (available
+ since 5.82.0)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cmake/QtVersionOption.cmake | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 cmake/QtVersionOption.cmake
+
+diff --git a/cmake/QtVersionOption.cmake b/cmake/QtVersionOption.cmake
+new file mode 100644
+index 0000000..ea37da2
+--- /dev/null
++++ b/cmake/QtVersionOption.cmake
+@@ -0,0 +1,36 @@
++# SPDX-FileCopyrightText: 2021 Volker Krause <vkrause@kde.org>
++#
++# SPDX-License-Identifier: BSD-3-Clause
++
++#[=======================================================================[.rst:
++QtVersionOption
++---------------
++
++Adds a build option to select the major Qt version if necessary,
++that is, if the major Qt version has not yet been determined otherwise
++(e.g. by a corresponding ``find_package()`` call).
++This module is typically included by other modules requiring knowledge
++about the major Qt version.
++
++``QT_MAJOR_VERSION`` is defined to either be "5" or "6".
++
++Since 5.82.0.
++#]=======================================================================]
++
++if (DEFINED QT_MAJOR_VERSION)
++    return()
++endif()
++
++if (TARGET Qt5::Core)
++    set(QT_MAJOR_VERSION 5)
++elseif (TARGET Qt6::Core)
++    set(QT_MAJOR_VERSION 6)
++else()
++    option(BUILD_WITH_QT6 "Build against Qt 6" OFF)
++
++    if (BUILD_WITH_QT6)
++        set(QT_MAJOR_VERSION 6)
++    else()
++        set(QT_MAJOR_VERSION 5)
++    endif()
++endif()
+-- 
+2.42.0
+
+
+From 1976d46b9a2b193c34fab3d01492198a00219f54 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 3 Nov 2023 16:11:41 +0100
+Subject: [PATCH 3/3] build(cmake): Switch to ECM's QtVersionOption and
+ QT_MAJOR_VERSION
+
+Module imported from KDE's ECM which is already in use by parts of this project.
+This avoids build system automagic, providing a well known default cmake switch
+to distributions.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                               |  6 +++---
+ assets/freedesktop/CMakeLists.txt            |  2 +-
+ src/app/CMakeLists.txt                       | 10 +++++-----
+ src/libs/browser/CMakeLists.txt              |  4 ++--
+ src/libs/core/CMakeLists.txt                 |  6 +++---
+ src/libs/registry/CMakeLists.txt             |  4 ++--
+ src/libs/sidebar/CMakeLists.txt              |  4 ++--
+ src/libs/ui/CMakeLists.txt                   |  4 ++--
+ src/libs/ui/qxtglobalshortcut/CMakeLists.txt |  8 ++++----
+ src/libs/ui/widgets/CMakeLists.txt           |  4 ++--
+ src/libs/util/CMakeLists.txt                 |  4 ++--
+ 11 files changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dc7ffc5..deb376d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,9 +21,9 @@ endif()
+ set(PROJECT_COMPANY_NAME "Oleg Shparber")
+ set(PROJECT_COPYRIGHT "© 2013-2023 Oleg Shparber and other contributors")
+ 
+-# Find available major Qt version. It will be stored in QT_VERSION_MAJOR.
+-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+-if(QT_VERSION_MAJOR EQUAL 6)
++# Select major Qt version. It will be stored in QT_MAJOR_VERSION if not already set.
++include(QtVersionOption)
++if (QT_MAJOR_VERSION EQUAL "6")
+     set(QT_MINIMUM_VERSION 6.2.0)
+ else()
+     set(QT_MINIMUM_VERSION 5.9.5)
+diff --git a/assets/freedesktop/CMakeLists.txt b/assets/freedesktop/CMakeLists.txt
+index aa1b9b5..0dfc6b6 100644
+--- a/assets/freedesktop/CMakeLists.txt
++++ b/assets/freedesktop/CMakeLists.txt
+@@ -3,7 +3,7 @@ if(UNIX AND NOT APPLE)
+     set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+     include(ECMInstallIcons)
+ 
+-    if(QT_VERSION_MAJOR EQUAL 5)
++    if(QT_MAJOR_VERSION EQUAL 5)
+         include(KDEInstallDirs)
+     else()
+         # Workaround until KDEInstallDirs6 is ready to use.
+diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
+index 5c0e6d1..4e2ae7e 100644
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -1,5 +1,5 @@
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+-if (Qt${QT_VERSION_MAJOR}Widgets_VERSION VERSION_LESS QT_MINIMUM_VERSION)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Widgets REQUIRED)
++if (Qt${QT_MAJOR_VERSION}Widgets_VERSION VERSION_LESS QT_MINIMUM_VERSION)
+     message(FATAL_ERROR "Qt version >= ${QT_MINIMUM_VERSION} is required.")
+ endif()
+ 
+@@ -14,7 +14,7 @@ set(PROJECT_EXECUTABLE_NAME "${_project_output_name}${CMAKE_EXECUTABLE_SUFFIX}")
+ message(STATUS "Project executable name: ${PROJECT_EXECUTABLE_NAME}")
+ 
+ # Only support installing runtime dependencies with Qt >=6.5.1 (see QTBUG-111741).
+-if(Qt${QT_VERSION_MAJOR}Widgets_VERSION VERSION_GREATER_EQUAL "6.5.1")
++if(Qt${QT_MAJOR_VERSION}Widgets_VERSION VERSION_GREATER_EQUAL "6.5.1")
+     set(_use_qt_cmake_commands TRUE)
+ 
+     qt_standard_project_setup()
+@@ -29,7 +29,7 @@ else()
+     set(App_RESOURCES) # Silence CMake warning.
+ endif()
+ 
+-if(QT_VERSION_MAJOR EQUAL 6)
++if(QT_MAJOR_VERSION EQUAL 6)
+     qt_add_executable(App WIN32
+         main.cpp
+         zeal.qrc
+@@ -43,7 +43,7 @@ else()
+     )
+ endif()
+ 
+-target_link_libraries(App PRIVATE Core Util Qt${QT_VERSION_MAJOR}::Widgets)
++target_link_libraries(App PRIVATE Core Util Qt${QT_MAJOR_VERSION}::Widgets)
+ 
+ set_target_properties(App PROPERTIES
+     OUTPUT_NAME ${_project_output_name}
+diff --git a/src/libs/browser/CMakeLists.txt b/src/libs/browser/CMakeLists.txt
+index d0abfab..5690926 100644
+--- a/src/libs/browser/CMakeLists.txt
++++ b/src/libs/browser/CMakeLists.txt
+@@ -10,5 +10,5 @@ add_library(Browser STATIC
+ 
+ target_link_libraries(Browser)
+ 
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebChannel WebEngineWidgets REQUIRED)
+-target_link_libraries(Browser Qt${QT_VERSION_MAJOR}::WebChannel Qt${QT_VERSION_MAJOR}::WebEngineWidgets)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS WebChannel WebEngineWidgets REQUIRED)
++target_link_libraries(Browser Qt${QT_MAJOR_VERSION}::WebChannel Qt${QT_VERSION_MAJOR}::WebEngineWidgets)
+diff --git a/src/libs/core/CMakeLists.txt b/src/libs/core/CMakeLists.txt
+index 7dfe901..76d20d3 100644
+--- a/src/libs/core/CMakeLists.txt
++++ b/src/libs/core/CMakeLists.txt
+@@ -16,10 +16,10 @@ add_definitions(-DCPPHTTPLIB_USE_POLL)
+ 
+ target_link_libraries(Core Registry Ui)
+ 
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Network WebEngineCore Widgets REQUIRED)
+-target_link_libraries(Core Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::WebEngineCore Qt${QT_VERSION_MAJOR}::Widgets)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Network WebEngineCore Widgets REQUIRED)
++target_link_libraries(Core Qt${QT_MAJOR_VERSION}::Network Qt${QT_VERSION_MAJOR}::WebEngineCore Qt${QT_VERSION_MAJOR}::Widgets)
+ 
+-if(QT_VERSION_MAJOR EQUAL 6)
++if(QT_MAJOR_VERSION EQUAL 6)
+     find_package(Qt6 COMPONENTS WebEngineCore Widgets REQUIRED)
+     target_link_libraries(Core Qt6::WebEngineCore)
+ else()
+diff --git a/src/libs/registry/CMakeLists.txt b/src/libs/registry/CMakeLists.txt
+index 2fbaba4..0a105eb 100644
+--- a/src/libs/registry/CMakeLists.txt
++++ b/src/libs/registry/CMakeLists.txt
+@@ -12,5 +12,5 @@ add_library(Registry STATIC
+     searchresult.h
+ )
+ 
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Concurrent Gui Network REQUIRED)
+-target_link_libraries(Registry Util Qt${QT_VERSION_MAJOR}::Concurrent Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Network)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Concurrent Gui Network REQUIRED)
++target_link_libraries(Registry Util Qt${QT_MAJOR_VERSION}::Concurrent Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Network)
+diff --git a/src/libs/sidebar/CMakeLists.txt b/src/libs/sidebar/CMakeLists.txt
+index 133c9d9..498f654 100644
+--- a/src/libs/sidebar/CMakeLists.txt
++++ b/src/libs/sidebar/CMakeLists.txt
+@@ -7,5 +7,5 @@ add_library(Sidebar STATIC
+ 
+ target_link_libraries(Sidebar)
+ 
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+-target_link_libraries(Sidebar Qt${QT_VERSION_MAJOR}::Widgets)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Widgets REQUIRED)
++target_link_libraries(Sidebar Qt${QT_MAJOR_VERSION}::Widgets)
+diff --git a/src/libs/ui/CMakeLists.txt b/src/libs/ui/CMakeLists.txt
+index 2937c5a..cb66b98 100644
+--- a/src/libs/ui/CMakeLists.txt
++++ b/src/libs/ui/CMakeLists.txt
+@@ -23,5 +23,5 @@ add_library(Ui STATIC
+ 
+ target_link_libraries(Ui Browser Sidebar QxtGlobalShortcut Widgets Registry)
+ 
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets REQUIRED)
+-target_link_libraries(Ui Qt${QT_VERSION_MAJOR}::WebEngineWidgets)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS WebEngineWidgets REQUIRED)
++target_link_libraries(Ui Qt${QT_MAJOR_VERSION}::WebEngineWidgets)
+diff --git a/src/libs/ui/qxtglobalshortcut/CMakeLists.txt b/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
+index f1c6a05..1120a70 100644
+--- a/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
++++ b/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
+@@ -21,8 +21,8 @@ endif()
+ 
+ add_library(QxtGlobalShortcut STATIC ${QxtGlobalShortcut_SOURCES})
+ 
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Gui REQUIRED)
+-target_link_libraries(QxtGlobalShortcut Qt${QT_VERSION_MAJOR}::Gui)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Gui REQUIRED)
++target_link_libraries(QxtGlobalShortcut Qt${QT_MAJOR_VERSION}::Gui)
+ 
+ if(APPLE)
+     find_library(CARBON_LIBRARY Carbon)
+@@ -30,11 +30,11 @@ if(APPLE)
+ elseif(UNIX AND X11_FOUND)
+     target_link_libraries(QxtGlobalShortcut ${X11_LIBRARIES})
+ 
+-    if(QT_VERSION_MAJOR EQUAL 5)
++    if(QT_MAJOR_VERSION EQUAL 5)
+         find_package(Qt5 COMPONENTS X11Extras REQUIRED)
+         target_link_libraries(QxtGlobalShortcut Qt5::X11Extras)
+     else()
+-        target_link_libraries(QxtGlobalShortcut Qt${QT_VERSION_MAJOR}::GuiPrivate)
++        target_link_libraries(QxtGlobalShortcut Qt${QT_MAJOR_VERSION}::GuiPrivate)
+     endif()
+ 
+     find_package(ECM REQUIRED NO_MODULE)
+diff --git a/src/libs/ui/widgets/CMakeLists.txt b/src/libs/ui/widgets/CMakeLists.txt
+index 09d12dd..2e74e1d 100644
+--- a/src/libs/ui/widgets/CMakeLists.txt
++++ b/src/libs/ui/widgets/CMakeLists.txt
+@@ -5,5 +5,5 @@ add_library(Widgets STATIC
+     toolbarframe.cpp
+ )
+ 
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+-target_link_libraries(Widgets Qt${QT_VERSION_MAJOR}::Widgets)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Widgets REQUIRED)
++target_link_libraries(Widgets Qt${QT_MAJOR_VERSION}::Widgets)
+diff --git a/src/libs/util/CMakeLists.txt b/src/libs/util/CMakeLists.txt
+index a9cf9a5..7829c35 100644
+--- a/src/libs/util/CMakeLists.txt
++++ b/src/libs/util/CMakeLists.txt
+@@ -9,8 +9,8 @@ add_library(Util STATIC
+     caseinsensitivemap.h
+ )
+ 
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
+-target_link_libraries(Util Qt${QT_VERSION_MAJOR}::Core)
++find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Core REQUIRED)
++target_link_libraries(Util Qt${QT_MAJOR_VERSION}::Core)
+ 
+ find_package(SQLite3 REQUIRED)
+ target_link_libraries(Util SQLite::SQLite3)
+-- 
+2.42.0
+
