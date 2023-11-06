@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -31,3 +31,11 @@ RDEPEND="
 "
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	# py3.12
+	# https://github.com/facebook/pyre2/pull/26
+	sed -e 's:assertRaisesRegexp:assertRaisesRegex:' \
+		-i tests/test_match.py || die
+	distutils-r1_src_prepare
+}
