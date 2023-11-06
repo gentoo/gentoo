@@ -59,8 +59,9 @@ src_configure() {
 }
 
 src_test() {
-	# See https://github.com/grke/burp/issues/869
-	local -x CK_DEFAULT_TIMEOUT=10
+	# See https://bugs.gentoo.org/915690
+	local -x CK_DEFAULT_TIMEOUT=0
+	local -x CK_TIMEOUT_MULTIPLIER=0
 	default
 }
 
