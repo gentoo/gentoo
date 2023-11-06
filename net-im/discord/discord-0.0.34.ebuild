@@ -6,7 +6,6 @@ EAPI=8
 MY_PN="${PN/-bin/}"
 MY_PV="${PV/-r*/}"
 
-CHROMIUM_VERSION="102"
 CHROMIUM_LANGS="
 	af am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
