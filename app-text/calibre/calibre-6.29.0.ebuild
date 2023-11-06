@@ -208,7 +208,7 @@ src_install() {
 	#    raise ValueError, 'unknown locale: %s' % localename
 	#ValueError: unknown locale: 46
 	export -n LANG LANGUAGE ${!LC_*}
-	export LC_ALL=C.utf8 #709682
+	export LC_ALL=C.utf8 # bug #709682
 
 	# Bug #295672 - Avoid sandbox violation in ~/.config by forcing
 	# variables to point to our fake temporary $HOME.
@@ -232,10 +232,8 @@ src_install() {
 
 	find "${ED}"/usr/share -type d -empty -delete || die
 
-	einfo "Converting python shebangs"
 	python_fix_shebang "${ED}/usr/bin"
 
-	einfo "Compiling python modules"
 	python_optimize "${ED}"/usr/$(get_libdir)/calibre "${D}/$(python_get_sitedir)"
 
 	newinitd "${FILESDIR}"/calibre-server-3.init calibre-server
