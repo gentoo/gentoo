@@ -18,8 +18,12 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/hhatto/${PN}.git"
 	inherit git-r3
 else
-	inherit pypi
 	KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	COMMIT="af7399d90926f2fe99a71f15197a08fa197f73a1"
+	SRC_URI="
+		https://github.com/hhatto/autopep8/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz
+	"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="MIT"
@@ -33,3 +37,15 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=()
+
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# fails due to deprecation warnings
+		test/test_autopep8.py::CommandLineTests::test_in_place_no_modifications_no_writes
+		test/test_autopep8.py::CommandLineTests::test_in_place_no_modifications_no_writes_with_empty_file
+	)
+
+	epytest
+}
