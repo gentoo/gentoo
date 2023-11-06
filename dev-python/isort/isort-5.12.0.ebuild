@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
@@ -31,7 +31,6 @@ BDEPEND="
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/natsort[${PYTHON_USEDEP}]
-		dev-python/pylama[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
@@ -63,5 +62,13 @@ python_test() {
 		# Excluded from upstream's test script
 		tests/unit/test_deprecated_finders.py
 	)
+
+	if ! has_version "dev-python/pylama[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/unit/test_importable.py
+			tests/unit/test_pylama_isort.py
+		)
+	fi
+
 	epytest tests/unit
 }
