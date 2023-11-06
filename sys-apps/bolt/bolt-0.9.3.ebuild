@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1 GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~loong ~riscv x86"
-IUSE="test"
+IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -20,6 +20,7 @@ RDEPEND="
 	virtual/libudev:=
 	virtual/udev
 	sys-auth/polkit[introspection]
+	selinux? ( sec-policy/selinux-thunderbolt )
 "
 DEPEND="
 	${RDEPEND}
