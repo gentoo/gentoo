@@ -57,6 +57,10 @@ EPYTEST_DESELECT=(
 	zmq/tests/test_auth.py
 	zmq/tests/test_cython.py
 	zmq/tests/test_zmqstream.py
+
+	# swap thrashing on low-mem hosts, per Debian:
+	# https://salsa.debian.org/python-team/packages/pyzmq/-/blob/master/debian/patches/skip_large_send
+	zmq/tests/test_socket.py::TestSocket::test_large_send
 )
 
 EPYTEST_IGNORE=(
