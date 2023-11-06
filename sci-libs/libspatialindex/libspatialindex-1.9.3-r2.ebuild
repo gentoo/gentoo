@@ -15,7 +15,7 @@ SRC_URI="https://github.com/libspatialindex/${PN}/releases/download/${PV}/${MY_P
 LICENSE="MIT"
 SLOT="0/6"
 KEYWORDS="amd64 ~arm64 ~riscv ~x86"
-IUSE="test"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=""
@@ -38,6 +38,10 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DSIDX_BUILD_TESTS=$(usex test)
+	)
+	! use debug && mycmakeargs+=(
+		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 	)
 
 	cmake_src_configure
