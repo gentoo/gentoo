@@ -133,7 +133,7 @@ src_install () {
 	cargo_src_install
 	dodoc README.md
 	insinto /usr/libexec
-	doins data/esyd.sh
+	doins src/esyd.sh
 
 	insinto /etc
 	newins data/user.syd-3 user.syd-3.sample
