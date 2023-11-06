@@ -3,3 +3,4 @@
 
 gnat_2021 - Compile with dev-lang/gnat-gpl-2021
 gcc_12 - Compile with sys-devel/gcc:12
+gcc_13 - Compile with sys-devel/gcc:13

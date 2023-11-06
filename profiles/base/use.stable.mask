@@ -17,10 +17,6 @@ python_single_target_python3_12
 # PHP 8.2 is in testing
 php_targets_php8-2
 
-# Alfredo Tupone <tupone@gentoo.org> (2022-12-04)
-# sys-devel/gcc:12 is not stable yet
-ada_target_gcc_12_2_0
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
 darcs
