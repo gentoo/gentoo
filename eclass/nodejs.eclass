@@ -19,6 +19,11 @@
 #       https://github.com/Tatsh/tatsh-overlay/blob/master/eclass/yarn.eclass
 
 #
+# Find licences in node_modules:
+#   find node_modules -type f -name package.json -exec node -p 'let pkg = require("./{}"); pkg.license ? (pkg.license.type || pkg.license) : "No license field found"' \; 2>/dev/null|sort|uniq
+
+
+#
 # Build package for node_modules:
 #   npm:
 #   npm install --audit false --color false --foreground-scripts --progress false --verbose --ignore-scripts
