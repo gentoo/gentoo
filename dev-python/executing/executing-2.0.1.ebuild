@@ -32,6 +32,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${PN}-2.0.1-additional-slow-tests.patch" )
+
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
