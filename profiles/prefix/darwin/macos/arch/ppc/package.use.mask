@@ -12,3 +12,4 @@ media-libs/imlib2 cpu_flags_x86_mmx
 # Elias Pipping <pipping@gentoo.org> (2007-09-01)
 # mpg123 does not compile with USE=mmx
 media-sound/mpg123 cpu_flags_x86_mmx
+media-libs/libmpg123 cpu_flags_x86_mmx
