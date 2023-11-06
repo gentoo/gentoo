@@ -49,6 +49,7 @@ BDEPEND="
 		>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
 	)
 "
+PATCHES=( "${FILESDIR}/${PN}-1.26.1-alpha.patch" )
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
@@ -141,6 +142,13 @@ python_test() {
 		*)
 			;;
 	esac
+
+	if ! has_version -b "~${CATEGORY}/${P}[${PYTHON_USEDEP}]" ; then
+		# depends on importing numpy.random from system namespace
+		EPYTEST_DESELECT+=(
+			'random/tests/test_extending.py::test_cython'
+		)
+	fi
 
 	rm -rf numpy || die
 	epytest --pyargs numpy
