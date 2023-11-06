@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-11-06)
+# Unmaintained.  Last commit in 2017.  Distutils is deprecated.
+# No revdeps.
+# Removal on 2023-12-06.  Bug #916968.
+dev-python/pyqt-distutils
+
 # Sam James <sam@gentoo.org> (2023-11-05)
 # Mask broken versions:
 # - sys-fs/btrfs-progs-6.6(-r0) was respun upstream.
