@@ -1,0 +1,15 @@
+diff --git a/joblib/test/test_parallel.py b/joblib/test/test_parallel.py
+index 906d436..c4a727c 100644
+--- a/joblib/test/test_parallel.py
++++ b/joblib/test/test_parallel.py
+@@ -189,6 +189,10 @@ def test_main_thread_renamed_no_warning(backend, monkeypatch):
+     # warninfo catches Warnings from worker timeouts. We remove it if it exists
+     warninfo = [w for w in warninfo if "worker timeout" not in str(w.message)]
+
++    # We don't want to count DeprecationWarnings
++    warninfo = [w for w in warninfo
++                if not isinstance(w.message, DeprecationWarning)]
++
+     # The multiprocessing backend will raise a warning when detecting that is
+     # started from the non-main thread. Let's check that there is no false
+     # positive because of the name change.
