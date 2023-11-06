@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.freedesktop.org/hadess/switcheroo-control/uploads/86ea54
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="gtk-doc test"
+IUSE="gtk-doc selinux test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
@@ -21,6 +21,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/libgudev-232:=
+	selinux? ( sec-policy/selinux-switcheroo )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
