@@ -47,19 +47,10 @@ python_test() {
 		# no clue why they're broken
 		tests/test_modutils.py::GetModulePartTest::test_known_values_get_builtin_module_part
 		tests/test_regrtest.py::NonRegressionTests::test_numpy_distutils
-#		tests/brain/test_regex.py::TestRegexBrain::test_regex_pattern_and_match_subscriptable
-#		# some problem with warnings (our options?)
-#		tests/test_decorators.py::TestDeprecationDecorators::test_deprecated_default_argument_values_one_arg
-#		tests/test_decorators.py::TestDeprecationDecorators::test_deprecated_default_argument_values_two_args
-#		tests/test_scoped_nodes.py::test_deprecation_of_doc_attribute
-#		# requires six bundled in urllib3, sigh
-#		tests/test_modutils.py::test_file_info_from_modpath__SixMetaPathImporter
-#		# requires pip, and looks suspicious anyway
-#		tests/test_manager.py::IsolatedAstroidManagerTest::test_no_user_warning
 		# pydantic-2?
 		tests/brain/test_dataclasses.py::test_pydantic_field
-#		# TODO
-#		tests/test_manager.py::ClearCacheTest::test_clear_cache_clears_other_lru_caches
+		# requires urllib3 with bundled six (skipped with urllib3>=2)
+		tests/test_modutils.py::test_file_info_from_modpath__SixMetaPathImporter
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
