@@ -4,6 +4,10 @@
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>eschwartz93@gmail.com</email>
+		<name>Eli Schwartz</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">mesonbuild/meson</remote-id>
 		<remote-id type="pypi">meson</remote-id>
