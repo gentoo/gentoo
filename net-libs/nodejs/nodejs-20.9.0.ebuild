@@ -60,6 +60,10 @@ DEPEND="${RDEPEND}"
 CHECKREQS_MEMORY="8G"
 CHECKREQS_DISK_BUILD="22G"
 
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-20.8.1-gcc14.patch
+	)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
