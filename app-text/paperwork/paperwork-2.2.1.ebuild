@@ -10,7 +10,11 @@ inherit distutils-r1 xdg
 
 DESCRIPTION="a personal document manager for scanned documents (and PDFs)"
 HOMEPAGE="https://gitlab.gnome.org/World/OpenPaperwork"
-SRC_URI="https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/archive/${PV}/paperwork-${PV}.tar.bz2"
+# Update from release hash at:
+# https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/tags
+REL_HASH="0bea4054"
+SRC_URI="https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/archive/${PV}/paperwork-${PV}.tar.bz2
+	https://download.openpaper.work/data/paperwork/master_${REL_HASH}/data.tar.gz -> paperwork-data-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,11 +32,23 @@ RDEPEND="~app-text/openpaperwork-core-${PV}[${PYTHON_USEDEP}]
 	media-libs/libinsane
 	x11-libs/libnotify[introspection]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-devel/gettext"
 
 S=${WORKDIR}/paperwork-${PV}/${PN}-gtk
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+src_prepare() {
+	default
+	cp -a "${WORKDIR}"/${PN}-gtk ${WORKDIR}/paperwork-${PV}/
+}
+
+python_compile() {
+	emake l10n_compile
+
+	distutils-r1_python_compile
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
