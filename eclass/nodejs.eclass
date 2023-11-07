@@ -87,14 +87,14 @@ esac
 # @DESCRIPTION:
 # Returns the package version
 nodejs_version() {
-    node -p "require('./package.json').version"
+    node -p "require('./package.json').version" || die "Missing package version"
 }
 
 # @FUNCTION: nodejs_package
 # @DESCRIPTION:
 # Returns the package name
 nodejs_package() {
-    node -p "require('./package.json').name"
+    node -p "require('./package.json').name" || die "Missing package name"
 }
 
 # @FUNCTION: nodejs_has_test
