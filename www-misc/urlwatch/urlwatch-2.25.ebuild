@@ -64,10 +64,6 @@ pkg_postinst() {
 		if ! has_version dev-python/jq; then
 			elog "Install 'dev-python/jq' to enable jq filtering support"
 		fi
-		if ! has_version dev-python/pushbullet-py; then
-			elog "Install 'dev-python/pushbullet-py' to enable" \
-				"Pushbullet notifications support"
-		fi
 		elog "HTML parsing can be improved by installing one of the following packages"
 		elog "and changing the html2text subfilter parameter:"
 		elog "dev-python/beautifulsoup4"

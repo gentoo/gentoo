@@ -59,10 +59,6 @@ pkg_postinst() {
 		if ! has_version dev-python/jq; then
 			elog "Install 'dev-python/jq' to enable jq filtering support"
 		fi
-		if ! has_version dev-python/pushbullet-py; then
-			elog "Install 'dev-python/pushbullet-py' to enable" \
-				"Pushbullet notifications support"
-		fi
 		if ! has_version dev-python/pytesseract; then
 			elog "Install 'dev-python/pytesseract' to enable OCR support"
 		fi
