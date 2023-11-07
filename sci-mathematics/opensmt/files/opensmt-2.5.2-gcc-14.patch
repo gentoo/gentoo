@@ -1,0 +1,68 @@
+From f30e983f876df3bd34571f9d554b3ebe226dd4bd Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kocelfc@tutanota.com>
+Date: Tue, 7 Nov 2023 16:38:39 +0200
+Subject: [PATCH] Add include <algorithm> to fix building with gcc 14
+
+Gentoo bug:
+https://bugs.gentoo.org/916855
+
+Upstream PR:
+https://github.com/usi-verification-and-security/opensmt/pull/653
+
+Signed-off-by: Kostadin Shishmanov <kocelfc@tutanota.com>
+---
+ src/logics/Logic.cc               | 1 +
+ src/pterms/PtStore.cc             | 1 +
+ src/simplifiers/BoolRewriting.cc  | 1 +
+ src/tsolvers/egraph/EnodeStore.cc | 2 ++
+ 4 files changed, 5 insertions(+)
+
+diff --git a/src/logics/Logic.cc b/src/logics/Logic.cc
+index 2619df1fd..84b04d515 100644
+--- a/src/logics/Logic.cc
++++ b/src/logics/Logic.cc
+@@ -21,6 +21,7 @@
+ #include <queue>
+ #include <set>
+ #include <sstream>
++#include <algorithm>
+ 
+ using namespace std;
+ 
+diff --git a/src/pterms/PtStore.cc b/src/pterms/PtStore.cc
+index 377642947..63c6f56f3 100644
+--- a/src/pterms/PtStore.cc
++++ b/src/pterms/PtStore.cc
+@@ -29,6 +29,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #include "OsmtApiException.h"
+ 
+ #include <sstream>
++#include <algorithm>
+ 
+ const int PtStore::ptstore_vec_idx = 1;
+ const int PtStore::ptstore_buf_idx = 2;
+diff --git a/src/simplifiers/BoolRewriting.cc b/src/simplifiers/BoolRewriting.cc
+index e2aa52b2c..196a642c4 100644
+--- a/src/simplifiers/BoolRewriting.cc
++++ b/src/simplifiers/BoolRewriting.cc
+@@ -5,6 +5,7 @@
+ #include "BoolRewriting.h"
+ #include "Logic.h"
+ #include <unordered_set>
++#include <algorithm>
+ 
+ // Replace subtrees consisting only of ands / ors with a single and / or term.
+ // Search a maximal section of the tree consisting solely of ands / ors.  The
+diff --git a/src/tsolvers/egraph/EnodeStore.cc b/src/tsolvers/egraph/EnodeStore.cc
+index 2bed3302b..de2216410 100644
+--- a/src/tsolvers/egraph/EnodeStore.cc
++++ b/src/tsolvers/egraph/EnodeStore.cc
+@@ -28,6 +28,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #include "Symbol.h"
+ #include "Logic.h"
+ 
++#include <algorithm>
++
+ EnodeStore::EnodeStore(Logic& l)
+       : logic(l)
+       , ea(1024*1024)
