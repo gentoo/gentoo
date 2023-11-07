@@ -1,0 +1,27 @@
+From c2b06bd9ab43f5481cf038bdbf7a8feec9eb8e4a Mon Sep 17 00:00:00 2001
+From: mipseb <germtoo@outlook.com>
+Date: Tue, 7 Nov 2023 00:36:02 +0000
+Subject: [PATCH 1/1] fixes configure.ac to check for libucontext in
+ dev-libs/starpu-1.4.1
+
+---
+ configure.ac | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index ad23841..f5d40e3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -448,6 +448,9 @@ fi
+ 
+ AM_CONDITIONAL([STARPU_CROSS_COMPILING], [test "x$cross_compiling" = "xyes"])
+ 
++# musl libc requires libucontext to link
++LIBS="${LIBS} $(pkg-config --cflags --libs libucontext)"
++
+ ###############################################################################
+ #                                                                             #
+ #                           MPI compilers                                     #
+-- 
+2.41.0
+
