@@ -1,0 +1,61 @@
+From 75e68f79adaae7f50920e84a748b7ebb4a3a8a1d Mon Sep 17 00:00:00 2001
+From: Richard-Rogalski <rrogalski@tutanota.com>
+Date: Mon, 6 Nov 2023 14:00:02 -0600
+Subject: [PATCH] Added --quiet flag
+
+Signed-off-by: Richard Rogalski <rrogalski@firemail.cc>
+Closes: #19
+---
+See also: https://github.com/zlin/wgetpaste/pull/51
+- Oskari
+
+ _wgetpaste | 1 +
+ wgetpaste  | 6 +++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/_wgetpaste b/_wgetpaste
+index c4703e5..63696ad 100644
+--- a/_wgetpaste
++++ b/_wgetpaste
+@@ -50,6 +50,7 @@ _arguments -s : \
+   '(--xclippaste -C)'{--xclippaste,-C}'[write resulting url to the X clipboard selection buffer]' \
+   '(--raw -r)'{--raw,-r}'[show url for the raw paste]' \
+   '(--tee -t)'{--tee,-t}'[use tee to show what is being pasted]' \
++  '(--quiet -q)'{--quiet,-q}'[show the url only]' \
+   '(--verbose -v)'{--verbose,-v}'[show wget stderr output if no url is received]' \
+   '--debug[be very verbose]' \
+   '(--help -h)'{--help,-h}'[show help and exit]' \
+diff --git a/wgetpaste b/wgetpaste
+index fc0b559..d016515 100755
+--- a/wgetpaste
++++ b/wgetpaste
+@@ -559,6 +559,7 @@ Options:
+ 
+     -r, --raw                     show url for the raw paste (no syntax highlighting or html)
+     -t, --tee                     use tee to show what is being pasted
++    -q, --quiet                   show the url only
+     -v, --verbose                 show wget stderr output if no url is received
+         --completions             emit output suitable for shell completions (only affects --list-*)
+         --debug                   be *very* verbose (implies -v)
+@@ -657,7 +658,7 @@ showexpirations() {
+ }
+ 
+ showurl() {
+-	echo -n "Your ${2}paste can be seen here: " >&2
++	[[ $QUIET ]] || echo -n "Your ${2}paste can be seen here: " >&2
+ 	echo "$1"
+ 	[[ $XPASTE ]] && x_paste "$1" primary
+ 	[[ $XCLIPPASTE ]] && x_paste "$1" clipboard
+@@ -809,6 +810,9 @@ while [[ -n $1 ]]; do
+ 		-N | --no-ansi )
+ 		NOANSI=0
+ 		;;
++		-q | --quiet)
++		QUIET=0
++		;;
+ 		-r | --raw )
+ 		RAW=0
+ 		;;
+-- 
+2.41.0
+
