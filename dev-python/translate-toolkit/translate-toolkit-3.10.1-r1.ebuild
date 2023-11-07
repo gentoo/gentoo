@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-# py3.12: https://github.com/translate/translate/issues/5071
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -51,6 +50,11 @@ BDEPEND="
 		dev-python/phply[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	# https://github.com/translate/translate/commit/3217ed10bb9371ff25cb04e194e0250d42f89206
+	"${FILESDIR}/${P}-py312.patch"
+)
 
 distutils_enable_tests pytest
 
