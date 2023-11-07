@@ -18,8 +18,15 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/distro[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-devel/gettext"
 
 S=${WORKDIR}/paperwork-${PV}/${PN}
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+python_compile() {
+	emake l10n_compile
+
+	distutils-r1_python_compile
+}
