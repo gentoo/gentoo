@@ -24,6 +24,7 @@ RDEPEND="app-text/openpaperwork-core[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-apps/which
 	sys-devel/gettext"
 
 S=${WORKDIR}/paperwork-${PV}/${PN}
