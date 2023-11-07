@@ -23,6 +23,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.33-tests.patch
 	"${FILESDIR}"/${PN}-2.33-disable-sprunge.patch
 	"${FILESDIR}"/${PN}-2.33-add-paste-gentoo-zip.patch
+	"${FILESDIR}"/${PN}-2.33-change-arg-parsing-priority.patch
+	"${FILESDIR}"/${PN}-2.33-add-A-ansi.patch
+	"${FILESDIR}"/${PN}-2.33-test_ansi-add-A-to-the-tests.patch
+	"${FILESDIR}"/${PN}-2.33-added-quiet-flag.patch
 )
 
 src_prepare() {
