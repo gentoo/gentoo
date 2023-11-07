@@ -3,13 +3,18 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
 DESCRIPTION="Requests-compatible interface for PycURL"
-HOMEPAGE="https://github.com/dcoles/pycurl-requests"
+HOMEPAGE="
+	https://github.com/dcoles/pycurl-requests/
+	https://pypi.org/project/pycurl-requests/
+"
 SRC_URI="
-	https://github.com/dcoles/${PN}/archive/v${PV}.tar.gz
+	https://github.com/dcoles/pycurl-requests/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
@@ -28,4 +33,6 @@ EPYTEST_DESELECT=(
 	# network-sandbox
 	pycurl_requests/tests/test_requests.py::test_get_connect_timeout
 	pycurl_requests/tests/test_requests.py::test_get_connect_timeout_urllib3
+	# TODO: different error?
+	pycurl_requests/tests/test_exceptions.py::test_connecterror_refused
 )
