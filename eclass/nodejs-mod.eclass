@@ -54,7 +54,7 @@ nodejs-mod_src_prepare() {
     if [[ ! -e package.json ]]; then
         eerror "Unable to locate package.json"
         eerror "Consider not inheriting the NodeJS eclass."
-        die "FATAL: Unable to find package.json"
+        die "Unable to find package.json"
     fi
 
     default_src_prepare

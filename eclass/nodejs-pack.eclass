@@ -46,7 +46,7 @@ nodejs-pack_src_prepare() {
     if ! nodejs_has_package && [[ ! -e package.json ]]; then
         eerror "Unable to locate package.json"
         eerror "Consider not inheriting the nodejs-pack eclass."
-        die "FATAL: Unable to find package.json"
+        die "Unable to find package.json"
     fi
 
     default_src_prepare
