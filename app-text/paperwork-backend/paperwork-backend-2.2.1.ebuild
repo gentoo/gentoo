@@ -37,6 +37,7 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-apps/which
 	sys-devel/gettext
 	test? (
 		dev-python/libpillowfight[${PYTHON_USEDEP}]
