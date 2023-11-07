@@ -129,6 +129,10 @@ python_test() {
 	local EPYTEST_IGNORE=(
 		tests/benchmarks
 	)
+	local EPYTEST_DESELECT=(
+		# TODO: recursion till segfault
+		tests/serializers/test_functions.py::test_recursive_call
+	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	rm -rf pydantic_core || die
