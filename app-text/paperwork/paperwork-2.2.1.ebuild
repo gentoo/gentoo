@@ -33,6 +33,7 @@ RDEPEND="~app-text/openpaperwork-core-${PV}[${PYTHON_USEDEP}]
 	x11-libs/libnotify[introspection]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-apps/which
 	sys-devel/gettext"
 
 S=${WORKDIR}/paperwork-${PV}/${PN}-gtk
