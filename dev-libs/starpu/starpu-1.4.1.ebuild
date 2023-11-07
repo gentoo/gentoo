@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 FORTRAN_NEEDED="fortran"
 FORTRAN_STANDARD=90
@@ -14,7 +14,11 @@ SRC_URI="https://files.inria.fr/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/7"
+<<<<<<< HEAD
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+=======
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+>>>>>>> f4f4025d1a16698113f9a08bcaf6b969c8a3b97f
 
 IUSE="
 	blas cuda doc examples fftw fortran hdf5 mpi opencl opengl
@@ -34,14 +38,13 @@ RDEPEND="
 	opencl? ( virtual/opencl )
 	opengl? ( media-libs/freeglut:0= )
 	valgrind? ( dev-util/valgrind )
+	elibc_musl? ( sys-libs/libucontext )
 "
 
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-
 	doc? ( app-doc/doxygen virtual/latex-base )
-	elibc_musl? ( sys-libs/libucontext )
 "
 
 PATCHES=(
