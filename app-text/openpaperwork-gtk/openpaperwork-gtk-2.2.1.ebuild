@@ -23,8 +23,15 @@ RDEPEND="app-text/openpaperwork-core[${PYTHON_USEDEP}]
 	gui-libs/libhandy
 	x11-libs/gtk+:3[introspection]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-devel/gettext"
 
 S=${WORKDIR}/paperwork-${PV}/${PN}
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+python_compile() {
+	emake l10n_compile
+
+	distutils-r1_python_compile
+}
