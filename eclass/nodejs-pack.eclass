@@ -43,7 +43,7 @@ RESTRICT="test strip"
 nodejs-pack_src_prepare() {
     debug-print-function "${FUNCNAME}" "${@}"
 
-    if ! nodejs_has_package && ! test -e package.json; then
+    if ! nodejs_has_package && [[ ! -e package.json ]]; then
         eerror "Unable to locate package.json"
         eerror "Consider not inheriting the nodejs-pack eclass."
         die "FATAL: Unable to find package.json"
