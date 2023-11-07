@@ -32,3 +32,9 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# https://github.com/pyenchant/pyenchant/issues/313
+	tests/test_pwl.py::test_dwpwl
+	tests/test_pwl.py::test_suggestions
+)
