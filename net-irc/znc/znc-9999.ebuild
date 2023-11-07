@@ -57,7 +57,7 @@ BDEPEND="
 	)
 "
 DEPEND="
-	app-crypt/argon2
+	app-crypt/argon2:=
 	icu? ( dev-libs/icu:= )
 	nls? ( dev-libs/boost:=[nls] )
 	perl? ( >=dev-lang/perl-5.10:= )
