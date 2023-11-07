@@ -5,13 +5,14 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python OO interface to libcdio (CD Input and Control library)"
 HOMEPAGE="
 	https://savannah.gnu.org/projects/libcdio/
+	https://github.com/rocky/pycdio/
 	https://pypi.org/project/pycdio/
 "
 
@@ -38,6 +39,8 @@ python_prepare_all() {
 		-e "s:^sys.path.insert.*::" \
 		-e "s:\.\./data:./data:g" \
 		example/*.py || die
+	# https://github.com/rocky/pycdio/pull/5
+	sed -i -e 's:assertEquals:assertEqual:' test/test-*.py || die
 	distutils-r1_python_prepare_all
 }
 
