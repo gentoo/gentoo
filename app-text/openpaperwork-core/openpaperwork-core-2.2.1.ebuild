@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-python/distro[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-apps/which
 	sys-devel/gettext"
 
 S=${WORKDIR}/paperwork-${PV}/${PN}
