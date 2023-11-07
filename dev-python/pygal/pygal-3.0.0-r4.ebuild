@@ -4,14 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="A python SVG charts generator"
-HOMEPAGE="https://github.com/Kozea/pygal/"
-SRC_URI="https://github.com/Kozea/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/Kozea/pygal/
+	https://pypi.org/project/pygal/
+"
+SRC_URI="
+	https://github.com/Kozea/pygal/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="LGPL-3+"
 SLOT="0"
