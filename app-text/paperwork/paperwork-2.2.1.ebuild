@@ -41,7 +41,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 src_prepare() {
 	default
-	cp -a "${WORKDIR}"/${PN}-gtk ${WORKDIR}/paperwork-${PV}/
+	cp -a "${WORKDIR}"/${PN}-gtk "${WORKDIR}"/paperwork-${PV}/
 }
 
 python_compile() {
