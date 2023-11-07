@@ -10,7 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="Backend part of Paperwork (Python API, no UI)"
 HOMEPAGE="https://gitlab.gnome.org/World/OpenPaperwork"
-SRC_URI="https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/archive/${PV}/paperwork-${PV}.tar.bz2"
+# Update from release hash at:
+# https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/tags
+REL_HASH="0bea4054"
+SRC_URI="https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/archive/${PV}/paperwork-${PV}.tar.bz2
+	https://download.openpaper.work/data/paperwork/master_${REL_HASH}/data.tar.gz -> paperwork-data-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -33,6 +37,7 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-devel/gettext
 	test? (
 		dev-python/libpillowfight[${PYTHON_USEDEP}]
 		media-libs/libinsane
@@ -43,3 +48,14 @@ S=${WORKDIR}/paperwork-${PV}/${PN}
 distutils_enable_tests unittest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+src_prepare() {
+	default
+	cp -a "${WORKDIR}"/${PN} ${WORKDIR}/paperwork-${PV}/
+}
+
+python_compile() {
+	emake l10n_compile
+
+	distutils-r1_python_compile
+}
