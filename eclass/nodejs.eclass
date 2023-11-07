@@ -108,7 +108,7 @@ nodejs_has_test() {
 # @DESCRIPTION:
 # Returns true if build script exist
 nodejs_has_build() {
-    node -p "if (require('./package.json').scripts.build === undefined) { process.exit(1) }" &>/dev/null
+	node -p "if (require('./package.json').scripts && require('./package.json').scripts.build) { process.exit(1); } else { process.exit(0); }" &>/dev/null
 }
 
 # @FUNCTION: nodejs_modules
