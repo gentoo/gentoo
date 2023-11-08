@@ -52,7 +52,7 @@ IDEPEND="
 		sys-kernel/installkernel-gentoo
 		sys-kernel/installkernel-systemd
 	)
-	initramfs? ( >=sys-kernel/dracut-049-r3 )"
+	initramfs? ( >=sys-kernel/dracut-059-r4 )"
 # needed by objtool that is installed along with the kernel and used
 # to build external modules
 # NB: linux-mod.eclass also adds this dep but it's cleaner to have
