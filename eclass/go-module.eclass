@@ -68,7 +68,7 @@ esac
 if [[ -z ${_GO_MODULE_ECLASS} ]]; then
 _GO_MODULE_ECLASS=1
 
-inherit multiprocessing toolchain-funcs
+inherit multiprocessing toolchain-funcs go-env
 
 if [[ ! ${GO_OPTIONAL} ]]; then
 	BDEPEND=">=dev-lang/go-1.18"
@@ -363,6 +363,7 @@ go-module_setup_proxy() {
 #    local go proxy.  This mode is deprecated.
 # 2. Otherwise, if EGO_VENDOR is set, bail out, as this functionality was removed.
 # 3. Otherwise, call 'ego mod verify' and then do a normal unpack.
+# Set compile env via go-env.
 go-module_src_unpack() {
 	if use amd64 || use arm || use arm64 ||
 		( use ppc64 && [[ $(tc-endian) == "little" ]] ) || use s390 || use x86; then
@@ -386,6 +387,8 @@ go-module_src_unpack() {
 			${nf} ego mod verify
 		fi
 	fi
+
+	go-env_set_compile_environment
 }
 
 # @FUNCTION: _go-module_src_unpack_gosum
