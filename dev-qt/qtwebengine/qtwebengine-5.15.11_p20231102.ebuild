@@ -208,9 +208,6 @@ src_prepare() {
 
 	qt_use_disable_mod widgets widgets src/src.pro
 
-	qt5-build_src_prepare
-
-	# we need to generate ppc64 stuff because upstream does not ship it yet
 	if use ppc64; then
 		einfo "Patching for ppc64le and generating build files"
 		eapply "${FILESDIR}/qtwebengine-5.15.2-enable-ppc64.patch"
@@ -218,6 +215,13 @@ src_prepare() {
 		eapply -p0 "${WORKDIR}/${PN}-ppc64le"
 		eapply -p1 "${WORKDIR}/${PN}-ffmpeg-ppc64le"
 		popd > /dev/null || die
+	fi
+
+	qt5-build_src_prepare
+
+	# we need to generate ppc64 stuff because upstream does not ship it yet
+	if use ppc64; then
+		einfo "Generating ppc64le build files"
 		pushd src/3rdparty/chromium/third_party/libvpx > /dev/null || die
 		mkdir -vp source/config/linux/ppc64 || die
 		mkdir -p source/libvpx/test || die
