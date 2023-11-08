@@ -109,7 +109,7 @@ src_configure() {
 		--with-systemdtmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--disable-setuid # bug #662438
-		--enable-cache-owner=man
+		$(use_enable !prefix cache-owner man)  # bug #917024
 		--with-sections="${sections}"
 
 		$(use_enable nls)
