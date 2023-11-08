@@ -35,3 +35,13 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# Failing hypothesis health checks... so upstream reinvented
+	# hypothesis in trunk.  This is too big to backport, and the package
+	# is too awful to install from snapshot.
+	src/klein/test/test_headers.py::{Frozen,Mutable}HTTPHeadersTests::test_getTextName{,BinaryValues}
+	src/klein/test/test_headers_compat.py::HTTPHeadersWrappingHeadersTests::test_getTextName{,BinaryValues}
+	src/klein/test/test_response.py::FrozenHTTPResponseTests::test_bodyAsBytesFrom{Bytes,Fount}{,Cached}
+	src/klein/test/test_response.py::FrozenHTTPResponseTests::test_bodyAsFountFrom{Bytes,Fount}{,Twice}
+)
