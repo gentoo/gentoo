@@ -13,7 +13,7 @@ app-doc/zeal
 app-editors/ghostwriter
 app-editors/retext
 app-misc/anki
-app-office/kalendar:5
+app-office/merkuro
 app-office/kmymoney:5
 app-office/skrooge:5
 app-office/texmaker

@@ -4,7 +4,7 @@
 EAPI=8
 
 KDE_ORG_CATEGORY="pim"
-KDE_ORG_NAME="merkuro"
+KDE_ORG_NAME="kalendar"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.106.0
@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/kalendar/"
 
 LICENSE="|| ( GPL-2 GPL-3 ) CC0-1.0"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE=""
 
 # All of the tests involve interacting with akonadi right now (as of 22.04)
@@ -31,11 +31,13 @@ DEPEND="
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=kde-apps/akonadi-${PVCUT}:5
+	>=kde-apps/akonadi-calendar-${PVCUT}:5
 	>=kde-apps/akonadi-contacts-${PVCUT}:5
 	>=kde-apps/akonadi-mime-${PVCUT}:5
-	>=kde-apps/kcalutils-${PVCUT}:5
-	>=kde-apps/kidentitymanagement-${PVCUT}:5
+	>=kde-apps/calendarsupport-${PVCUT}:5
+	>=kde-apps/eventviews-${PVCUT}:5
 	>=kde-apps/mailcommon-${PVCUT}:5
+	>=kde-apps/pimcommon-${PVCUT}:5
 	>=kde-frameworks/kcalendarcore-${KFMIN}:5
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcontacts-${KFMIN}:5

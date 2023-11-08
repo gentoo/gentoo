@@ -18,3 +18,4 @@ move dev-python/py-amqp dev-python/amqp
 move dev-python/pyre2 dev-python/fb-re2
 move dev-python/python-sshpubkeys dev-python/sshpubkeys
 move sys-kernel/installkernel-systemd-boot sys-kernel/installkernel-systemd
+move app-office/kalendar app-office/merkuro

@@ -12,7 +12,7 @@ KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="bogofilter clamav spamassassin"
 
 RDEPEND="
-	>=app-office/kalendar-${PV}:${SLOT}
+	>=app-office/merkuro-${PV}:${SLOT}
 	>=kde-apps/akonadi-${PV}:${SLOT}
 	>=kde-apps/akonadiconsole-${PV}:${SLOT}
 	>=kde-apps/akonadi-calendar-${PV}:${SLOT}
