@@ -85,7 +85,6 @@ dev-python/python-ironicclient
 dev-python/python-jose
 dev-python/python-neutronclient
 dev-python/python-openstackclient
-dev-python/python-sshpubkeys
 dev-python/readme-renderer
 dev-python/referencing
 dev-python/requests-kerberos
@@ -96,6 +95,7 @@ dev-python/selenium
 dev-python/service-identity
 dev-python/setuptools-rust
 dev-python/spur
+dev-python/sshpubkeys
 dev-python/sshtunnel
 dev-python/tempest
 dev-python/trustme
