@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm x86"
 
 RDEPEND="
 	dev-lang/execline:=
-	dev-libs/skalibs:=
+	<dev-libs/skalibs-2.14:=
 	>=sys-apps/s6-2.11.3.0:=[execline]
 "
 DEPEND="${RDEPEND}"
