@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~riscv ~x86"
 
 RDEPEND="
 	dev-python/wrapt[${PYTHON_USEDEP}]
