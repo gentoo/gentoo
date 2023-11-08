@@ -328,12 +328,6 @@ sys-fs/dmg2img
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-10-04)
-# Incompatible with newer media-video/ffmpeg, bug #914499.
-# Deps appenh and loadlib not used by anything else.
-# Removal on 2023-11-04.
-dev-java/loadlib
-
 # Michał Górny <mgorny@gentoo.org> (2023-09-22)
 # =dev-python/setuptools-scm-8.0.1 broke compatibility hard but reverted
 # the changes in 8.0.2.
