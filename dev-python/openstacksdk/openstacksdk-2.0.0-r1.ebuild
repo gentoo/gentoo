@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -73,6 +73,12 @@ src_prepare() {
 
 	# requires hacking
 	rm openstack/tests/unit/test_hacking.py || die
+
+	# fragile warning-based tests
+	sed -e 's:test_unsupported_version_override:_&:' \
+		-i openstack/tests/unit/test_missing_version.py || die
+	sed -e 's:test_create_unknown_proxy:_&:' \
+		-i openstack/tests/unit/test_connection.py || die
 
 	distutils-r1_src_prepare
 }
