@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -58,7 +58,7 @@ python_test() {
 	)
 
 	case ${EPYTHON} in
-		python3.11)
+		python3.1[12])
 			# upstream is... *sigh*
 			EPYTEST_DESELECT+=(
 				oslo_log/tests/unit/test_log.py::LogConfigTestCase::test_log_config_append_invalid
