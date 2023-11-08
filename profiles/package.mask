@@ -303,12 +303,6 @@ app-admin/qpage
 # Removal on 2023-11-07. Bug #541694, #905186.
 app-admin/longrun
 
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Unmaintained, typical broken suckless build system, no upstream
-# activity, only Fedora still carries it.
-# Removal on 2023-11-06. Bug #732422, #914638.
-x11-misc/sselp
-
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
