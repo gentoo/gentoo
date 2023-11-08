@@ -20,7 +20,7 @@ esac
 if [[ -z ${_GOLANG_VCS_ECLASS} ]]; then
 _GOLANG_VCS_ECLASS=1
 
-inherit estack golang-base
+inherit estack golang-base go-env
 
 PROPERTIES+=" live"
 
@@ -63,6 +63,7 @@ PROPERTIES+=" live"
 # @INTERNAL
 # @DESCRIPTION:
 # Create EGO_STORE_DIR if necessary.
+# Set compile env via go-env.
 _golang-vcs_env_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -84,6 +85,8 @@ _golang-vcs_env_setup() {
 	mkdir -p "${WORKDIR}/${P}/src" ||
 		die "${ECLASS}: unable to create ${WORKDIR}/${P}"
 	return 0
+
+	go-env_set_compile_environment
 }
 
 # @FUNCTION: _golang-vcs_fetch
