@@ -285,12 +285,6 @@ dev-libs/libchdr
 # this. Removal on 2023-11-07. Bug #905187.
 app-misc/dvorakng
 
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Unmaintained, EAPI 6, tons of patches we have to carry, last release
-# 20 years ago, all major distros have removed this.
-# Removal on 2023-11-07. Bug #602382.
-app-backup/flexbackup
-
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
