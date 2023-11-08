@@ -34,7 +34,12 @@ RDEPEND="
 
 	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
 
-	qsv? ( media-libs/oneVPL[wayland?,X?,${MULTILIB_USEDEP}] )
+	qsv? (
+		dev-libs/libgudev[${MULTILIB_USEDEP}]
+		media-libs/libva[wayland?,X?,${MULTILIB_USEDEP}]
+		media-libs/oneVPL[wayland?,X?,${MULTILIB_USEDEP}]
+		x11-libs/libdrm[${MULTILIB_USEDEP}]
+	)
 "
 
 DEPEND="${RDEPEND}"
