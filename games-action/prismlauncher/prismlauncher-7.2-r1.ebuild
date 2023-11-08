@@ -74,6 +74,7 @@ COMMON_DEPENDS="
 	!qt6? ( >=dev-libs/quazip-1.3:=[qt5(+)] )
 	 qt6? ( >=dev-libs/quazip-1.3:=[qt6(-)] )
 
+	app-text/cmark
 	sys-libs/zlib
 "
 
@@ -81,7 +82,6 @@ COMMON_DEPENDS="
 # only on legacy macOS. Still, we need it present at build time to appease CMake, and having it like this
 # makes it easier to maintain than patching the CMakeLists file directly.
 BDEPEND="
-	app-text/cmark
 	app-text/scdoc
 	dev-cpp/gulrak-filesystem
 	kde-frameworks/extra-cmake-modules:5
