@@ -1,10 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (2023-11-08)
-# Uses glibc features like execinfo and %Y printf modifier
-=mail-mta/exim-4.97
-
 # Maciej Barć <xgqt@gentoo.org> (2023-09-16)
 # Binary package, which is compiled against glibc
 dev-lang/dafny-bin
