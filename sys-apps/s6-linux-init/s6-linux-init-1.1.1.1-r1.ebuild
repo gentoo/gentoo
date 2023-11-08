@@ -11,12 +11,12 @@ SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+sysv-utils"
 
 RDEPEND="
 	dev-lang/execline:=
-	>=dev-libs/skalibs-2.13.0.0:=
+	dev-libs/skalibs:0/2.13
 	sys-apps/s6:=[execline]
 	sysv-utils? (
 		!sys-apps/openrc[sysv-utils(-)]
