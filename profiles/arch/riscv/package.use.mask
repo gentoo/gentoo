@@ -39,8 +39,8 @@ media-video/mpv lua_single_target_luajit -lua_single_target_lua5-1
 
 # Mike Gilbert <floppym@gentoo.org> (2023-05-27)
 # sd-boot should work here.
-sys-apps/systemd -boot -gnuefi
-sys-apps/systemd-utils -boot
+sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd-utils -boot -ukify
 
 # Sam James <sam@gentoo.org> (2023-05-10)
 # sys-cluster/ceph not keyworded here
