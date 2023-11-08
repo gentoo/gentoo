@@ -354,12 +354,6 @@ dev-python/django-mptt
 # upstream. Last release in 2012. Removal on 2023-10-23.
 dev-ruby/kirbybase
 
-# Hans de Graaff <graaff@gentoo.org> (2023-09-23)
-# ruby31-only package. No reverse dependencies. Discontinued by
-# upstream who recommends using dev-ruby/bunny instead. Removal on
-# 2023-10-23.
-dev-ruby/amqp
-
 # Michał Górny <mgorny@gentoo.org> (2023-09-22)
 # =dev-python/setuptools-scm-8.0.1 broke compatibility hard but reverted
 # the changes in 8.0.2.
