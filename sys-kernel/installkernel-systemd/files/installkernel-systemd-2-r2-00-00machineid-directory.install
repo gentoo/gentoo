@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# this file is installed by sys-kernel/installkernel-systemd-boot
+# this file is installed by sys-kernel/installkernel-systemd
 
 COMMAND="${1}"
 ENTRY_DIR_ABS="${3}"

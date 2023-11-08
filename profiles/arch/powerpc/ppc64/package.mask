@@ -7,7 +7,7 @@
 
 # Sam James <sam@gentoo.org> (2022-10-08)
 # sys-boot/gnu-efi isn't keyworded here right now
-sys-kernel/installkernel-systemd-boot
+sys-kernel/installkernel-systemd
 
 # Michał Górny <mgorny@gentoo.org> (2022-08-25)
 # Only ppc64le binpkg is provided.
