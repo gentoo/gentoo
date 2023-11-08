@@ -27,14 +27,15 @@ RDEPEND="
 		dev-python/tomlkit[${PYTHON_USEDEP}]
 	)
 "
+PDEPEND="
+	>=dev-python/doit-py-0.4.0[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
+		${PDEPEND}
 		$(python_gen_impl_dep sqlite)
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 	)
-"
-PDEPEND="
-	>=dev-python/doit-py-0.4.0[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
