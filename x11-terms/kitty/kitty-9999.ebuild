@@ -24,7 +24,7 @@ DESCRIPTION="Fast, feature-rich, GPU-based terminal"
 HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 
 LICENSE="GPL-3 ZLIB"
-LICENSE+=" Apache-2.0 BSD BSD-2 MIT MPL-2.0 " # go
+LICENSE+=" Apache-2.0 BSD BSD-2 MIT MPL-2.0" # go
 SLOT="0"
 IUSE="+X test wayland"
 REQUIRED_USE="
@@ -50,7 +50,10 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 	~x11-terms/kitty-shell-integration-${PV}
 	~x11-terms/kitty-terminfo-${PV}
-	X? ( x11-libs/libX11 )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXcursor
+	)
 	wayland? ( dev-libs/wayland )
 	!sci-mathematics/kissat
 "
@@ -58,7 +61,6 @@ DEPEND="
 	${RDEPEND}
 	X? (
 		x11-base/xorg-proto
-		x11-libs/libXcursor
 		x11-libs/libXi
 		x11-libs/libXinerama
 		x11-libs/libXrandr
@@ -76,10 +78,6 @@ BDEPEND="
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
 QA_FLAGS_IGNORED="usr/bin/kitten" # written in Go
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.30.1-no-sudo.patch
-)
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
