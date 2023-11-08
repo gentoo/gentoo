@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 multiprocessing pypi
 
 DESCRIPTION="A parallel Python test runner built around subunit"
 HOMEPAGE="
@@ -41,5 +41,6 @@ BDEPEND="
 python_test() {
 	local -x PYTHONPATH="${BUILD_DIR}/install$(python_get_sitedir)"
 	stestr init || die
-	stestr run || die "Tests failed with ${EPYTHON}"
+	stestr run --concurrency "${EPYTEST_JOBS:-$(makeopts_jobs)}" ||
+		die "Tests failed with ${EPYTHON}"
 }
