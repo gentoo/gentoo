@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Finds the correct path to exceptions in the requests library"
 HOMEPAGE="
 	https://opendev.org/openstack/requestsexceptions/
-	https://github.com/openstack-infra/requestsexceptions/
+	https://github.com/openstack/requestsexceptions/
 	https://pypi.org/project/requestsexceptions/
 "
 
