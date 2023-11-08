@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit db-use toolchain-funcs pam systemd
+inherit db-use flag-o-matic toolchain-funcs pam systemd
 
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
 dsn gdbm gnutls idn ipv6 ldap lmtp maildir mbx
@@ -153,6 +153,7 @@ src_configure() {
 
 	if use elibc_musl; then
 		sed -i -e 's/^LIBS = -lnsl/LIBS =/g' OS/Makefile-Linux || die
+		append-cflags -DNO_EXECINFO
 	fi
 
 	local conffile="${EPREFIX}/etc/exim/exim.conf"
