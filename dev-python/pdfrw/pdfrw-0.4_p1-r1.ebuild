@@ -61,7 +61,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${FILESDIR}/pdfrw-fix-import-collections-warning.patch"
-	eapply "${FILESDIR}/pdfrw-static-fix-import-collections-warning.patch"
+	use test && eapply "${FILESDIR}/pdfrw-static-fix-import-collections-warning.patch"
 
 	distutils-r1_src_prepare
 }
