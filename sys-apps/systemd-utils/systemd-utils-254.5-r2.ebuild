@@ -28,9 +28,11 @@ SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.t
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="+acl boot +kmod selinux split-usr sysusers +tmpfiles test +udev"
+IUSE="+acl boot +kmod kernel-install selinux split-usr sysusers +tmpfiles test +udev ukify"
 REQUIRED_USE="
-	|| ( boot tmpfiles sysusers udev )
+	|| ( kernel-install tmpfiles sysusers udev )
+	boot? ( kernel-install )
+	ukify? ( boot )
 	${PYTHON_REQUIRED_USE}
 "
 RESTRICT="!test? ( test )"
@@ -61,8 +63,8 @@ DEPEND="${COMMON_DEPEND}
 PEFILE_DEPEND='dev-python/pefile[${PYTHON_USEDEP}]'
 
 RDEPEND="${COMMON_DEPEND}
-	boot? (
-		!<sys-boot/systemd-boot-250
+	boot? ( !<sys-boot/systemd-boot-250 )
+	ukify? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep "${PEFILE_DEPEND}")
 	)
@@ -105,10 +107,8 @@ BDEPEND="
 	$(python_gen_cond_dep "
 		dev-python/jinja[\${PYTHON_USEDEP}]
 		dev-python/lxml[\${PYTHON_USEDEP}]
-		boot? (
-			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
-			test? ( ${PEFILE_DEPEND} )
-		)
+		boot? ( >=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}] )
+		ukify? ( test? ( ${PEFILE_DEPEND} ) )
 	")
 "
 
@@ -159,11 +159,13 @@ multilib_src_configure() {
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
 		-Dsysvinit-path=
 		$(meson_native_use_bool boot bootloader)
+		$(meson_native_use_bool kernel-install)
 		$(meson_native_use_bool selinux)
 		$(meson_native_use_bool sysusers)
 		$(meson_use test tests)
 		$(meson_native_use_bool tmpfiles)
 		$(meson_use udev hwdb)
+		$(meson_native_use_bool ukify)
 
 		# Link staticly with libsystemd-shared
 		-Dlink-boot-shared=false
@@ -282,12 +284,16 @@ multilib_src_compile() {
 		if use boot; then
 			targets+=(
 				bootctl
-				kernel-install
 				man/bootctl.1
-				man/kernel-install.8
-				90-loaderentry.install
 				src/boot/efi/linux$(efi_arch).efi.stub
 				src/boot/efi/systemd-boot$(efi_arch).efi
+			)
+		fi
+		if use kernel-install; then
+			targets+=(
+				kernel-install
+				90-loaderentry.install
+				man/kernel-install.8
 			)
 		fi
 		if use sysusers; then
@@ -359,6 +365,13 @@ multilib_src_compile() {
 				)
 			fi
 		fi
+		if use ukify; then
+			targets+=(
+				ukify
+				60-ukify.install
+				man/ukify.1
+			)
+		fi
 	fi
 	if use udev; then
 		targets+=(
@@ -425,13 +438,18 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		if use boot; then
 			into /usr
-			dobin bootctl kernel-install
-			doman man/{bootctl.1,kernel-install.8}
-			# 90-loaderentry.install is generated from 90-loaderentry.install.in
-			exeinto usr/lib/kernel/install.d
-			doexe src/kernel-install/*.install
+			dobin bootctl
+			doman man/bootctl.1
 			insinto usr/lib/systemd/boot/efi
 			doins src/boot/efi/{linux$(efi_arch).{efi,elf}.stub,systemd-boot$(efi_arch).efi}
+		fi
+		if use kernel-install; then
+			dobin kernel-install
+			doman man/kernel-install.8
+			# copy the default set of plugins
+			cp "${S}/src/kernel-install/"*.install src/kernel-install || die
+			exeinto usr/lib/kernel/install.d
+			doexe src/kernel-install/*.install
 		fi
 		if use sysusers; then
 			into "${rootprefix:-/}"
@@ -467,6 +485,11 @@ multilib_src_install() {
 			newman man/systemd-udevd.service.8 systemd-udevd.8
 			doman man/libudev.3
 			doman man/udev_*.3
+		fi
+		if use ukify; then
+			exeinto "${rootprefix}"/lib/systemd/
+			doexe ukify
+			doman man/ukify.1
 		fi
 	fi
 	if use udev; then
@@ -524,6 +547,7 @@ multilib_src_install_all() {
 		doins shell-completion/zsh/_udevadm
 	fi
 
+	use ukify && python_fix_shebang "${ED}"
 	use boot && secureboot_auto_sign
 }
 
