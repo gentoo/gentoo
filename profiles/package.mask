@@ -343,12 +343,6 @@ dev-java/loadlib
 # Removal on 2023-11-03.  Bug #915162.
 dev-python/memory-profiler
 
-# Michał Górny <mgorny@gentoo.org> (2023-09-29)
-# The project is no longer maintained upstream.  We haven't handled
-# the version bump from a year ago yet.  No reverse dependencies.
-# Removal on 2023-10-29.  Bug #894592.
-dev-python/django-mptt
-
 # Michał Górny <mgorny@gentoo.org> (2023-09-22)
 # =dev-python/setuptools-scm-8.0.1 broke compatibility hard but reverted
 # the changes in 8.0.2.
